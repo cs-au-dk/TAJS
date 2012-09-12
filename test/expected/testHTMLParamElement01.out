@@ -1,0 +1,10 @@
+test/browser/domlegacy/html/HTMLParamElement01.tidy.html:16: [definite] Reading absent property name
+test/browser/domlegacy/html/HTMLParamElement01.tidy.html:17: [definite] Reading absent property type
+test/browser/domlegacy/html/HTMLParamElement01.tidy.html:18: [definite] Reading absent property value
+test/browser/domlegacy/html/HTMLParamElement01.tidy.html:19: [definite] Reading absent property valueType
+test/browser/domlegacy/html/HTMLParamElement01.tidy.html:13: [info] Abstract value: [@HTMLParamElement[native] constructor]
+test/browser/domlegacy/html/HTMLParamElement01.tidy.html:14: [info] Prototype: [@Function.prototype[native]] -> [@Object.prototype[native]]
+test/browser/domlegacy/html/HTMLParamElement01.tidy.html:16: [info] Abstract value: Undef
+test/browser/domlegacy/html/HTMLParamElement01.tidy.html:17: [info] Abstract value: Undef
+test/browser/domlegacy/html/HTMLParamElement01.tidy.html:18: [info] Abstract value: Undef
+test/browser/domlegacy/html/HTMLParamElement01.tidy.html:19: [info] Abstract value: Undef

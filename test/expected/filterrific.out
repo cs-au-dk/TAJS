@@ -1,0 +1,244 @@
+test/10k/filterrific.tidy.html:393: [definite] Reading absent property wheelDelta
+test/10k/filterrific.tidy.html:624: [definite] Too many parameters to function Object.prototype.toLocaleString
+test/10k/filterrific.tidy.html:624: [definite] Too many parameters to function Object.prototype.toString
+test/10k/filterrific.tidy.html:624: [definite] Too many parameters to function Object.prototype.valueOf
+test/10k/filterrific.tidy.html:288: [definite] Converting primitive string to object
+test/10k/filterrific.tidy.html:288: [definite] Converting primitive string to object
+test/10k/filterrific.tidy.html:261: [maybe] Reading absent property getContext
+test/10k/filterrific.tidy.html:261: [maybe] TypeError, call to non-function
+test/10k/filterrific.tidy.html:261: [maybe] TypeError, reading property of null/undefined
+test/10k/filterrific.tidy.html:265: [maybe] Reading absent property appendChild
+test/10k/filterrific.tidy.html:265: [maybe] TypeError, call to non-function
+test/10k/filterrific.tidy.html:265: [maybe] TypeError, reading property of null/undefined
+test/10k/filterrific.tidy.html:268: [maybe] TypeError, writing property of null/undefined
+test/10k/filterrific.tidy.html:274: [maybe] Reading absent property getBoundingClientRect
+test/10k/filterrific.tidy.html:274: [maybe] TypeError, call to non-function
+test/10k/filterrific.tidy.html:274: [maybe] TypeError, reading property of null/undefined
+test/10k/filterrific.tidy.html:275: [maybe] TypeError, reading property of null/undefined
+test/10k/filterrific.tidy.html:278: [maybe] TypeError, writing property of null/undefined
+test/10k/filterrific.tidy.html:291: [maybe] Reading absent property style
+test/10k/filterrific.tidy.html:291: [maybe] TypeError, reading property of null/undefined
+test/10k/filterrific.tidy.html:307: [maybe] TypeError, writing property of null/undefined
+test/10k/filterrific.tidy.html:307: [maybe] TypeError, writing property of null/undefined
+test/10k/filterrific.tidy.html:327: [maybe] Reading absent property innerHTML
+test/10k/filterrific.tidy.html:341: [maybe] TypeError, writing property of null/undefined
+test/10k/filterrific.tidy.html:347: [maybe] TypeError, writing property of null/undefined
+test/10k/filterrific.tidy.html:366: [maybe] Reading absent property innerHTML
+test/10k/filterrific.tidy.html:366: [maybe] Reading absent property split
+test/10k/filterrific.tidy.html:366: [maybe] TypeError, call to non-function
+test/10k/filterrific.tidy.html:366: [maybe] TypeError, reading property of null/undefined
+test/10k/filterrific.tidy.html:366: [maybe] TypeError, reading property of null/undefined
+test/10k/filterrific.tidy.html:369: [maybe] RangeError, assigning invalid value to array 'length' property
+test/10k/filterrific.tidy.html:369: [maybe] Reading absent property (computed name)
+test/10k/filterrific.tidy.html:373: [maybe] Reading absent property (computed name)
+test/10k/filterrific.tidy.html:375: [maybe] Reading absent property (computed name)
+test/10k/filterrific.tidy.html:386: [maybe] TypeError, writing property of null/undefined
+test/10k/filterrific.tidy.html:392: [maybe] Reading absent property addEventListener
+test/10k/filterrific.tidy.html:392: [maybe] TypeError, call to non-function
+test/10k/filterrific.tidy.html:393: [maybe] Reading absent property detail
+test/10k/filterrific.tidy.html:394: [maybe] Reading absent property style
+test/10k/filterrific.tidy.html:394: [maybe] TypeError, writing property of null/undefined
+test/10k/filterrific.tidy.html:404: [maybe] TypeError, reading property of null/undefined
+test/10k/filterrific.tidy.html:408: [maybe] Reading absent property (computed name)
+test/10k/filterrific.tidy.html:413: [maybe] Reading absent property (computed name)
+test/10k/filterrific.tidy.html:413: [maybe] Reading absent property (computed name)
+test/10k/filterrific.tidy.html:413: [maybe] Reading absent property (computed name)
+test/10k/filterrific.tidy.html:419: [maybe] Reading absent property (computed name)
+test/10k/filterrific.tidy.html:419: [maybe] Reading absent property (computed name)
+test/10k/filterrific.tidy.html:419: [maybe] Reading absent property (computed name)
+test/10k/filterrific.tidy.html:426: [maybe] Reading absent property (computed name)
+test/10k/filterrific.tidy.html:426: [maybe] Reading absent property (computed name)
+test/10k/filterrific.tidy.html:426: [maybe] TypeError, reading property of null/undefined
+test/10k/filterrific.tidy.html:430: [maybe] Reading absent property (computed name)
+test/10k/filterrific.tidy.html:430: [maybe] Reading absent property (computed name)
+test/10k/filterrific.tidy.html:432: [maybe] Reading absent property (computed name)
+test/10k/filterrific.tidy.html:432: [maybe] TypeError, reading property of null/undefined
+test/10k/filterrific.tidy.html:436: [maybe] Reading absent property (computed name)
+test/10k/filterrific.tidy.html:437: [maybe] Reading absent property (computed name)
+test/10k/filterrific.tidy.html:438: [maybe] Reading absent property (computed name)
+test/10k/filterrific.tidy.html:443: [maybe] Reading absent property (computed name)
+test/10k/filterrific.tidy.html:445: [maybe] Reading absent property (computed name)
+test/10k/filterrific.tidy.html:450: [maybe] Reading absent property (computed name)
+test/10k/filterrific.tidy.html:450: [maybe] TypeError, reading property of null/undefined
+test/10k/filterrific.tidy.html:452: [maybe] Reading absent property (computed name)
+test/10k/filterrific.tidy.html:453: [maybe] Reading absent property (computed name)
+test/10k/filterrific.tidy.html:454: [maybe] Reading absent property (computed name)
+test/10k/filterrific.tidy.html:464: [maybe] Reading absent property (computed name)
+test/10k/filterrific.tidy.html:465: [maybe] Reading absent property (computed name)
+test/10k/filterrific.tidy.html:466: [maybe] Reading absent property (computed name)
+test/10k/filterrific.tidy.html:469: [maybe] Reading absent property (computed name)
+test/10k/filterrific.tidy.html:469: [maybe] Reading absent property a
+test/10k/filterrific.tidy.html:469: [maybe] TypeError, reading property of null/undefined
+test/10k/filterrific.tidy.html:473: [maybe] Reading absent property (computed name)
+test/10k/filterrific.tidy.html:473: [maybe] Reading absent property (computed name)
+test/10k/filterrific.tidy.html:473: [maybe] Reading absent property (computed name)
+test/10k/filterrific.tidy.html:473: [maybe] Reading absent property (computed name)
+test/10k/filterrific.tidy.html:473: [maybe] Reading absent property (computed name)
+test/10k/filterrific.tidy.html:473: [maybe] Reading absent property (computed name)
+test/10k/filterrific.tidy.html:473: [maybe] Reading absent property (computed name)
+test/10k/filterrific.tidy.html:473: [maybe] Reading absent property (computed name)
+test/10k/filterrific.tidy.html:473: [maybe] Reading absent property (computed name)
+test/10k/filterrific.tidy.html:473: [maybe] Reading absent property a
+test/10k/filterrific.tidy.html:473: [maybe] TypeError, reading property of null/undefined
+test/10k/filterrific.tidy.html:482: [maybe] Reading absent property (computed name)
+test/10k/filterrific.tidy.html:482: [maybe] Reading absent property (computed name)
+test/10k/filterrific.tidy.html:482: [maybe] Reading absent property (computed name)
+test/10k/filterrific.tidy.html:482: [maybe] Reading absent property a
+test/10k/filterrific.tidy.html:482: [maybe] TypeError, reading property of null/undefined
+test/10k/filterrific.tidy.html:486: [maybe] Reading absent property (computed name)
+test/10k/filterrific.tidy.html:486: [maybe] Reading absent property (computed name)
+test/10k/filterrific.tidy.html:486: [maybe] TypeError, reading property of null/undefined
+test/10k/filterrific.tidy.html:487: [maybe] Reading absent property (computed name)
+test/10k/filterrific.tidy.html:490: [maybe] Reading absent property (computed name)
+test/10k/filterrific.tidy.html:490: [maybe] Reading absent property (computed name)
+test/10k/filterrific.tidy.html:490: [maybe] Reading absent property (computed name)
+test/10k/filterrific.tidy.html:557: [maybe] Reading absent property (computed name)
+test/10k/filterrific.tidy.html:557: [maybe] TypeError, reading property of null/undefined
+test/10k/filterrific.tidy.html:558: [maybe] Reading absent property (computed name)
+test/10k/filterrific.tidy.html:559: [maybe] Reading absent property (computed name)
+test/10k/filterrific.tidy.html:566: [maybe] Reading absent property (computed name)
+test/10k/filterrific.tidy.html:566: [maybe] Reading absent property (computed name)
+test/10k/filterrific.tidy.html:566: [maybe] Reading absent property (computed name)
+test/10k/filterrific.tidy.html:566: [maybe] Reading absent property (computed name)
+test/10k/filterrific.tidy.html:566: [maybe] Reading absent property (computed name)
+test/10k/filterrific.tidy.html:566: [maybe] Reading absent property (computed name)
+test/10k/filterrific.tidy.html:578: [maybe] Reading absent property (computed name)
+test/10k/filterrific.tidy.html:578: [maybe] Reading absent property (computed name)
+test/10k/filterrific.tidy.html:578: [maybe] Reading absent property (computed name)
+test/10k/filterrific.tidy.html:578: [maybe] Reading absent property (computed name)
+test/10k/filterrific.tidy.html:578: [maybe] Reading absent property (computed name)
+test/10k/filterrific.tidy.html:578: [maybe] Reading absent property (computed name)
+test/10k/filterrific.tidy.html:578: [maybe] Reading absent property (computed name)
+test/10k/filterrific.tidy.html:578: [maybe] Reading absent property (computed name)
+test/10k/filterrific.tidy.html:578: [maybe] Reading absent property (computed name)
+test/10k/filterrific.tidy.html:583: [maybe] TypeError, non-HTMLImageElement or non-HTMLCanvasElement as argument to drawImage
+test/10k/filterrific.tidy.html:607: [maybe] Reading absent property (computed name)
+test/10k/filterrific.tidy.html:607: [maybe] Reading absent property (computed name)
+test/10k/filterrific.tidy.html:607: [maybe] Reading absent property (computed name)
+test/10k/filterrific.tidy.html:608: [maybe] Reading absent property (computed name)
+test/10k/filterrific.tidy.html:611: [maybe] Reading absent property (computed name)
+test/10k/filterrific.tidy.html:611: [maybe] Reading absent property (computed name)
+test/10k/filterrific.tidy.html:615: [maybe] Reading absent property (computed name)
+test/10k/filterrific.tidy.html:616: [maybe] Reading absent property (computed name)
+test/10k/filterrific.tidy.html:616: [maybe] Reading absent property (computed name)
+test/10k/filterrific.tidy.html:616: [maybe] TypeError, reading property of null/undefined
+test/10k/filterrific.tidy.html:617: [maybe] Reading absent property (computed name)
+test/10k/filterrific.tidy.html:624: [maybe] TypeError, argument is not of expected type: ImageData
+test/10k/filterrific.tidy.html:624: [maybe] TypeError, call to non-function
+test/10k/filterrific.tidy.html:639: [maybe] Reading absent property style
+test/10k/filterrific.tidy.html:639: [maybe] TypeError, writing property of null/undefined
+test/10k/filterrific.tidy.html:640: [maybe] RangeError, assigning invalid value to array 'length' property
+test/10k/filterrific.tidy.html:646: [maybe] TypeError, converting undefined to object
+test/10k/filterrific.tidy.html:647: [maybe] Reading absent property (computed name)
+test/10k/filterrific.tidy.html:647: [maybe] TypeError, reading property of null/undefined
+test/10k/filterrific.tidy.html:648: [maybe] Reading absent property (computed name)
+test/10k/filterrific.tidy.html:648: [maybe] TypeError, reading property of null/undefined
+test/10k/filterrific.tidy.html:649: [maybe] Reading absent property (computed name)
+test/10k/filterrific.tidy.html:649: [maybe] Reading absent property (computed name)
+test/10k/filterrific.tidy.html:649: [maybe] Reading absent property (computed name)
+test/10k/filterrific.tidy.html:649: [maybe] Reading absent property (computed name)
+test/10k/filterrific.tidy.html:654: [maybe] RangeError, assigning invalid value to array 'length' property
+test/10k/filterrific.tidy.html:654: [maybe] Reading absent property b
+test/10k/filterrific.tidy.html:654: [maybe] TypeError, reading property of null/undefined
+test/10k/filterrific.tidy.html:655: [maybe] Reading absent property style
+test/10k/filterrific.tidy.html:655: [maybe] TypeError, reading property of null/undefined
+test/10k/filterrific.tidy.html:655: [maybe] TypeError, writing property of null/undefined
+test/10k/filterrific.tidy.html:656: [maybe] RangeError in Number function
+test/10k/filterrific.tidy.html:656: [maybe] Reading absent property toFixed
+test/10k/filterrific.tidy.html:656: [maybe] TypeError, call to non-function
+test/10k/filterrific.tidy.html:656: [maybe] TypeError, native function Number.prototype.toFixed called on invalid object kind, expected Number
+test/10k/filterrific.tidy.html:660: [maybe] TypeError, writing property of null/undefined
+test/10k/filterrific.tidy.html:250: [maybe] Uncaught exception, constructed at [test/10k/filterrific.tidy.html:261, test/10k/filterrific.tidy.html:265, test/10k/filterrific.tidy.html:268, test/10k/filterrific.tidy.html:274, test/10k/filterrific.tidy.html:275, test/10k/filterrific.tidy.html:278, test/10k/filterrific.tidy.html:291, test/10k/filterrific.tidy.html:307, test/10k/filterrific.tidy.html:341, test/10k/filterrific.tidy.html:347, test/10k/filterrific.tidy.html:366, test/10k/filterrific.tidy.html:369, test/10k/filterrific.tidy.html:386, test/10k/filterrific.tidy.html:392, test/10k/filterrific.tidy.html:394, test/10k/filterrific.tidy.html:404, test/10k/filterrific.tidy.html:426, test/10k/filterrific.tidy.html:432, test/10k/filterrific.tidy.html:450, test/10k/filterrific.tidy.html:469, test/10k/filterrific.tidy.html:473, test/10k/filterrific.tidy.html:482, test/10k/filterrific.tidy.html:486, test/10k/filterrific.tidy.html:557, test/10k/filterrific.tidy.html:616, test/10k/filterrific.tidy.html:624, test/10k/filterrific.tidy.html:639, test/10k/filterrific.tidy.html:640, test/10k/filterrific.tidy.html:647, test/10k/filterrific.tidy.html:648, test/10k/filterrific.tidy.html:654, test/10k/filterrific.tidy.html:655, test/10k/filterrific.tidy.html:656, test/10k/filterrific.tidy.html:660]
+test/10k/filterrific.tidy.html:257: [maybe] Converting undefined to string
+test/10k/filterrific.tidy.html:268: [maybe] Converting primitive number to object
+test/10k/filterrific.tidy.html:274: [maybe] Converting primitive number to object
+test/10k/filterrific.tidy.html:274: [maybe] Converting primitive number to object
+test/10k/filterrific.tidy.html:281: [maybe] Conversion to number yields NaN
+test/10k/filterrific.tidy.html:281: [maybe] Conversion to number yields NaN
+test/10k/filterrific.tidy.html:288: [maybe] Conversion to number yields NaN
+test/10k/filterrific.tidy.html:352: [maybe] Conversion to number yields NaN
+test/10k/filterrific.tidy.html:353: [maybe] Conversion to number yields NaN
+test/10k/filterrific.tidy.html:356: [maybe] Conversion to number yields NaN
+test/10k/filterrific.tidy.html:366: [maybe] Converting primitive number to object
+test/10k/filterrific.tidy.html:366: [maybe] Converting primitive number to object
+test/10k/filterrific.tidy.html:366: [maybe] Converting primitive string to object
+test/10k/filterrific.tidy.html:366: [maybe] Converting primitive string to object
+test/10k/filterrific.tidy.html:393: [maybe] Conversion to number yields NaN
+test/10k/filterrific.tidy.html:408: [maybe] Conversion to number yields NaN
+test/10k/filterrific.tidy.html:413: [maybe] Conversion to number yields NaN
+test/10k/filterrific.tidy.html:413: [maybe] Conversion to number yields NaN
+test/10k/filterrific.tidy.html:419: [maybe] Conversion to number yields NaN
+test/10k/filterrific.tidy.html:419: [maybe] Conversion to number yields NaN
+test/10k/filterrific.tidy.html:426: [maybe] Conversion to number yields NaN
+test/10k/filterrific.tidy.html:426: [maybe] Conversion to number yields NaN
+test/10k/filterrific.tidy.html:426: [maybe] Conversion to number yields NaN
+test/10k/filterrific.tidy.html:430: [maybe] Conversion to number yields NaN
+test/10k/filterrific.tidy.html:432: [maybe] Conversion to number yields NaN
+test/10k/filterrific.tidy.html:450: [maybe] Conversion to number yields NaN
+test/10k/filterrific.tidy.html:473: [maybe] Conversion to number yields NaN
+test/10k/filterrific.tidy.html:473: [maybe] Conversion to number yields NaN
+test/10k/filterrific.tidy.html:473: [maybe] Conversion to number yields NaN
+test/10k/filterrific.tidy.html:473: [maybe] Conversion to number yields NaN
+test/10k/filterrific.tidy.html:473: [maybe] Conversion to number yields NaN
+test/10k/filterrific.tidy.html:482: [maybe] Conversion to number yields NaN
+test/10k/filterrific.tidy.html:482: [maybe] Conversion to number yields NaN
+test/10k/filterrific.tidy.html:486: [maybe] Conversion to number yields NaN
+test/10k/filterrific.tidy.html:486: [maybe] Conversion to number yields NaN
+test/10k/filterrific.tidy.html:487: [maybe] Conversion to number yields NaN
+test/10k/filterrific.tidy.html:490: [maybe] Conversion to number yields NaN
+test/10k/filterrific.tidy.html:490: [maybe] Conversion to number yields NaN
+test/10k/filterrific.tidy.html:493: [maybe] Conversion to number yields NaN
+test/10k/filterrific.tidy.html:493: [maybe] Conversion to number yields NaN
+test/10k/filterrific.tidy.html:493: [maybe] Conversion to number yields NaN
+test/10k/filterrific.tidy.html:493: [maybe] Conversion to number yields NaN
+test/10k/filterrific.tidy.html:493: [maybe] Conversion to number yields NaN
+test/10k/filterrific.tidy.html:493: [maybe] Conversion to number yields NaN
+test/10k/filterrific.tidy.html:537: [maybe] Conversion to number yields NaN
+test/10k/filterrific.tidy.html:538: [maybe] Conversion to number yields NaN
+test/10k/filterrific.tidy.html:539: [maybe] Conversion to number yields NaN
+test/10k/filterrific.tidy.html:543: [maybe] Conversion to number yields NaN
+test/10k/filterrific.tidy.html:544: [maybe] Conversion to number yields NaN
+test/10k/filterrific.tidy.html:545: [maybe] Conversion to number yields NaN
+test/10k/filterrific.tidy.html:557: [maybe] Conversion to number yields NaN
+test/10k/filterrific.tidy.html:558: [maybe] Conversion to number yields NaN
+test/10k/filterrific.tidy.html:559: [maybe] Conversion to number yields NaN
+test/10k/filterrific.tidy.html:566: [maybe] Conversion to number yields NaN
+test/10k/filterrific.tidy.html:566: [maybe] Conversion to number yields NaN
+test/10k/filterrific.tidy.html:566: [maybe] Conversion to number yields NaN
+test/10k/filterrific.tidy.html:566: [maybe] Conversion to number yields NaN
+test/10k/filterrific.tidy.html:566: [maybe] Conversion to number yields NaN
+test/10k/filterrific.tidy.html:578: [maybe] Conversion to number yields NaN
+test/10k/filterrific.tidy.html:578: [maybe] Conversion to number yields NaN
+test/10k/filterrific.tidy.html:578: [maybe] Conversion to number yields NaN
+test/10k/filterrific.tidy.html:578: [maybe] Conversion to number yields NaN
+test/10k/filterrific.tidy.html:578: [maybe] Conversion to number yields NaN
+test/10k/filterrific.tidy.html:578: [maybe] Conversion to number yields NaN
+test/10k/filterrific.tidy.html:578: [maybe] Conversion to number yields NaN
+test/10k/filterrific.tidy.html:578: [maybe] Conversion to number yields NaN
+test/10k/filterrific.tidy.html:578: [maybe] Conversion to number yields NaN
+test/10k/filterrific.tidy.html:583: [maybe] Conversion to number yields NaN
+test/10k/filterrific.tidy.html:595: [maybe] Conversion to number yields NaN
+test/10k/filterrific.tidy.html:607: [maybe] Conversion to number yields NaN
+test/10k/filterrific.tidy.html:607: [maybe] Conversion to number yields NaN
+test/10k/filterrific.tidy.html:608: [maybe] Conversion to number yields NaN
+test/10k/filterrific.tidy.html:611: [maybe] Conversion to number yields NaN
+test/10k/filterrific.tidy.html:611: [maybe] Conversion to number yields NaN
+test/10k/filterrific.tidy.html:624: [maybe] Converting undefined to string
+test/10k/filterrific.tidy.html:639: [maybe] Conversion to number yields NaN
+test/10k/filterrific.tidy.html:639: [maybe] Conversion to number yields NaN
+test/10k/filterrific.tidy.html:640: [maybe] Conversion to number yields NaN
+test/10k/filterrific.tidy.html:648: [maybe] Converting primitive number to object
+test/10k/filterrific.tidy.html:649: [maybe] Converting primitive number to object
+test/10k/filterrific.tidy.html:649: [maybe] Converting primitive number to object
+test/10k/filterrific.tidy.html:649: [maybe] Converting primitive number to object
+test/10k/filterrific.tidy.html:649: [maybe] Converting primitive number to object
+test/10k/filterrific.tidy.html:654: [maybe] Conversion to number yields NaN
+test/10k/filterrific.tidy.html:654: [maybe] Conversion to number yields NaN
+test/10k/filterrific.tidy.html:654: [maybe] Converting primitive number to object
+test/10k/filterrific.tidy.html:654: [maybe] Converting undefined to string
+test/10k/filterrific.tidy.html:656: [maybe] Conversion to number yields NaN
+test/10k/filterrific.tidy.html:656: [maybe] Conversion to number yields NaN
+test/10k/filterrific.tidy.html:656: [maybe] Converting primitive number to object
+test/10k/filterrific.tidy.html:656: [maybe] Converting primitive number to object
+test/10k/filterrific.tidy.html:656: [maybe] Converting primitive string to object
+test/10k/filterrific.tidy.html:656: [maybe] Converting primitive string to object

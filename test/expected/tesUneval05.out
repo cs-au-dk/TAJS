@@ -1,0 +1,3 @@
+Unevalizer: Starting on: "if("
+test/uneval/uneval05.js:2:1: [definite] Unreachable code
+test/uneval/uneval05.js:1:1: [maybe] Uncaught exception, constructed at [test/uneval/uneval05.js:1:11]

@@ -1,0 +1,622 @@
+benchmark/kraken/stanford-crypto-pbkdf2.html:4: [definite] TypeError, call to non-function
+benchmark/kraken/stanford-crypto-pbkdf2.html:929: [definite] Too many parameters to function Window.print
+benchmark/kraken/stanford-crypto-pbkdf2.html:547: [definite] Variable is null/undefined: b
+benchmark/kraken/stanford-crypto-pbkdf2.html:563: [definite] Variable is null/undefined: b
+benchmark/kraken/stanford-crypto-pbkdf2.html:568: [definite] Variable is null/undefined: d
+benchmark/kraken/stanford-crypto-pbkdf2.html:570: [definite] Variable is null/undefined: e
+benchmark/kraken/stanford-crypto-pbkdf2.html:574: [definite] Variable is null/undefined: d
+benchmark/kraken/stanford-crypto-pbkdf2.html:901: [definite] Variable is null/undefined: callback
+benchmark/kraken/stanford-crypto-pbkdf2.html:916: [definite] Variable is null/undefined: callback
+benchmark/kraken/stanford-crypto-pbkdf2.html:1001: [definite] Variable is null/undefined: message
+benchmark/kraken/stanford-crypto-pbkdf2.html:1049: [definite] Variable is null/undefined: tests
+benchmark/kraken/stanford-crypto-pbkdf2.html:1058: [definite] Variable is null/undefined: callback
+benchmark/kraken/stanford-crypto-pbkdf2.html: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:1: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:3: [definite] [unused] The conditional expression is always true.
+benchmark/kraken/stanford-crypto-pbkdf2.html:4: [definite] Reading absent property: recordResult
+benchmark/kraken/stanford-crypto-pbkdf2.html:16: [definite] Unreachable function
+benchmark/kraken/stanford-crypto-pbkdf2.html:16: [definite] [unused] The function <anon> is never invoked.
+benchmark/kraken/stanford-crypto-pbkdf2.html:17: [definite] Unreachable function
+benchmark/kraken/stanford-crypto-pbkdf2.html:17: [definite] [unused] The function <anon> is never invoked.
+benchmark/kraken/stanford-crypto-pbkdf2.html:23: [definite] Unreachable function
+benchmark/kraken/stanford-crypto-pbkdf2.html:23: [definite] [unused] The function <anon> is never invoked.
+benchmark/kraken/stanford-crypto-pbkdf2.html:28: [definite] Unreachable function
+benchmark/kraken/stanford-crypto-pbkdf2.html:28: [definite] [unused] The function <anon> is never invoked.
+benchmark/kraken/stanford-crypto-pbkdf2.html:29: [definite] Unreachable function
+benchmark/kraken/stanford-crypto-pbkdf2.html:29: [definite] [unused] The function <anon> is never invoked.
+benchmark/kraken/stanford-crypto-pbkdf2.html:36: [definite] Unreachable function
+benchmark/kraken/stanford-crypto-pbkdf2.html:36: [definite] [unused] The function <anon> is never invoked.
+benchmark/kraken/stanford-crypto-pbkdf2.html:37: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:38: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:42: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:43: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:44: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:45: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:46: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:47: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:49: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:53: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:55: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:56: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:57: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:61: [definite] Unreachable function
+benchmark/kraken/stanford-crypto-pbkdf2.html:61: [definite] [unused] The function <anon> is never invoked.
+benchmark/kraken/stanford-crypto-pbkdf2.html:64: [definite] Unreachable function
+benchmark/kraken/stanford-crypto-pbkdf2.html:64: [definite] [unused] The function <anon> is never invoked.
+benchmark/kraken/stanford-crypto-pbkdf2.html:83: [definite] Unreachable function
+benchmark/kraken/stanford-crypto-pbkdf2.html:83: [definite] [unused] The function <anon> is never invoked.
+benchmark/kraken/stanford-crypto-pbkdf2.html:84: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:91: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:92: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:93: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:100: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:101: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:105: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:107: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:108: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:111: [definite] Unreachable function
+benchmark/kraken/stanford-crypto-pbkdf2.html:111: [definite] [unused] The function <anon> is never invoked.
+benchmark/kraken/stanford-crypto-pbkdf2.html:112: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:113: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:117: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:118: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:127: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:128: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:137: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:138: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:145: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:149: [definite] Unreachable function
+benchmark/kraken/stanford-crypto-pbkdf2.html:149: [definite] [unused] The function <anon> is never invoked.
+benchmark/kraken/stanford-crypto-pbkdf2.html:150: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:151: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:179: [definite] Unreachable function
+benchmark/kraken/stanford-crypto-pbkdf2.html:179: [definite] [unused] The function <anon> is never invoked.
+benchmark/kraken/stanford-crypto-pbkdf2.html:180: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:181: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:183: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:184: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:189: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:189: [definite] [unused] The conditional expression is always false.
+benchmark/kraken/stanford-crypto-pbkdf2.html:204: [definite] Unreachable function
+benchmark/kraken/stanford-crypto-pbkdf2.html:204: [definite] [unused] The function <anon> is never invoked.
+benchmark/kraken/stanford-crypto-pbkdf2.html:209: [definite] Unreachable function
+benchmark/kraken/stanford-crypto-pbkdf2.html:209: [definite] [unused] The function <anon> is never invoked.
+benchmark/kraken/stanford-crypto-pbkdf2.html:210: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:213: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:214: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:215: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:218: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:254: [definite] Unreachable function
+benchmark/kraken/stanford-crypto-pbkdf2.html:254: [definite] [unused] The function <anon> is never invoked.
+benchmark/kraken/stanford-crypto-pbkdf2.html:255: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:260: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:261: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:263: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:267: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:271: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:272: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:274: [definite] Unreachable function
+benchmark/kraken/stanford-crypto-pbkdf2.html:274: [definite] [unused] The function <anon> is never invoked.
+benchmark/kraken/stanford-crypto-pbkdf2.html:275: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:276: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:281: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:282: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:283: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:284: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:285: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:287: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:289: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:293: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:294: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:298: [definite] [unused] The conditional expression is always false.
+benchmark/kraken/stanford-crypto-pbkdf2.html:299: [definite] [unused] The conditional expression is always false.
+benchmark/kraken/stanford-crypto-pbkdf2.html:299: [definite] [unused] The conditional expression is always true.
+benchmark/kraken/stanford-crypto-pbkdf2.html:317: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:317: [definite] [unused] The conditional expression is always false.
+benchmark/kraken/stanford-crypto-pbkdf2.html:370: [definite] [suspicious] The assignment to n has no effect.
+benchmark/kraken/stanford-crypto-pbkdf2.html:371: [definite] [suspicious] The assignment to m has no effect.
+benchmark/kraken/stanford-crypto-pbkdf2.html:372: [definite] [suspicious] The assignment to l has no effect.
+benchmark/kraken/stanford-crypto-pbkdf2.html:374: [definite] [suspicious] The assignment to k has no effect.
+benchmark/kraken/stanford-crypto-pbkdf2.html:375: [definite] [suspicious] The assignment to i has no effect.
+benchmark/kraken/stanford-crypto-pbkdf2.html:376: [definite] [suspicious] The assignment to h has no effect.
+benchmark/kraken/stanford-crypto-pbkdf2.html:391: [definite] Unreachable function
+benchmark/kraken/stanford-crypto-pbkdf2.html:391: [definite] [unused] The function <anon> is never invoked.
+benchmark/kraken/stanford-crypto-pbkdf2.html:392: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:396: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:397: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:398: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:399: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:400: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:401: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:402: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:403: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:406: [definite] Unreachable function
+benchmark/kraken/stanford-crypto-pbkdf2.html:406: [definite] [unused] The function <anon> is never invoked.
+benchmark/kraken/stanford-crypto-pbkdf2.html:407: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:408: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:409: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:415: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:416: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:417: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:418: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:419: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:420: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:421: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:422: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:424: [definite] Unreachable function
+benchmark/kraken/stanford-crypto-pbkdf2.html:424: [definite] [unused] The function <anon> is never invoked.
+benchmark/kraken/stanford-crypto-pbkdf2.html:425: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:429: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:430: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:431: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:432: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:433: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:434: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:436: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:437: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:438: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:439: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:440: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:442: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:443: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:445: [definite] Unreachable function
+benchmark/kraken/stanford-crypto-pbkdf2.html:445: [definite] [unused] The function <anon> is never invoked.
+benchmark/kraken/stanford-crypto-pbkdf2.html:446: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:448: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:450: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:451: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:452: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:456: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:457: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:458: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:464: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:472: [definite] Unreachable function
+benchmark/kraken/stanford-crypto-pbkdf2.html:472: [definite] [unused] The function <anon> is never invoked.
+benchmark/kraken/stanford-crypto-pbkdf2.html:473: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:474: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:478: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:479: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:480: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:481: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:482: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:483: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:484: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:485: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:486: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:488: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:489: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:490: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:491: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:492: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:493: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:494: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:495: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:497: [definite] Unreachable function
+benchmark/kraken/stanford-crypto-pbkdf2.html:497: [definite] [unused] The function <anon> is never invoked.
+benchmark/kraken/stanford-crypto-pbkdf2.html:498: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:499: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:500: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:507: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:508: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:509: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:510: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:511: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:512: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:514: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:515: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:516: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:517: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:518: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:519: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:520: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:521: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:523: [definite] Unreachable function
+benchmark/kraken/stanford-crypto-pbkdf2.html:523: [definite] [unused] The function <anon> is never invoked.
+benchmark/kraken/stanford-crypto-pbkdf2.html:524: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:529: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:530: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:531: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:532: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:534: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:535: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:536: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:537: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:539: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:542: [definite] Unreachable function
+benchmark/kraken/stanford-crypto-pbkdf2.html:542: [definite] [unused] The function <anon> is never invoked.
+benchmark/kraken/stanford-crypto-pbkdf2.html:547: [definite] [unused] The conditional expression is always false.
+benchmark/kraken/stanford-crypto-pbkdf2.html:567: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:567: [definite] [suspicious] The assignment to c has no effect.
+benchmark/kraken/stanford-crypto-pbkdf2.html:567: [definite] [unused] The conditional expression is always true.
+benchmark/kraken/stanford-crypto-pbkdf2.html:569: [definite] [unused] The conditional expression is always true.
+benchmark/kraken/stanford-crypto-pbkdf2.html:570: [definite] [unused] The conditional expression is always false.
+benchmark/kraken/stanford-crypto-pbkdf2.html:574: [definite] [unused] The conditional expression is always false.
+benchmark/kraken/stanford-crypto-pbkdf2.html:582: [definite] [unused] The conditional expression is always true.
+benchmark/kraken/stanford-crypto-pbkdf2.html:586: [definite] Unreachable function
+benchmark/kraken/stanford-crypto-pbkdf2.html:586: [definite] [unused] The function <anon> is never invoked.
+benchmark/kraken/stanford-crypto-pbkdf2.html:587: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:588: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:590: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:591: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:592: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:593: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:594: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:597: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:598: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:600: [definite] Unreachable function
+benchmark/kraken/stanford-crypto-pbkdf2.html:600: [definite] [unused] The function <anon> is never invoked.
+benchmark/kraken/stanford-crypto-pbkdf2.html:603: [definite] Unreachable function
+benchmark/kraken/stanford-crypto-pbkdf2.html:603: [definite] [unused] The function <anon> is never invoked.
+benchmark/kraken/stanford-crypto-pbkdf2.html:604: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:605: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:609: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:610: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:611: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:612: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:616: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:617: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:620: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:623: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:624: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:625: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:628: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:630: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:633: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:634: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:637: [definite] Unreachable function
+benchmark/kraken/stanford-crypto-pbkdf2.html:637: [definite] [unused] The function <anon> is never invoked.
+benchmark/kraken/stanford-crypto-pbkdf2.html:638: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:639: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:641: [definite] Unreachable function
+benchmark/kraken/stanford-crypto-pbkdf2.html:641: [definite] [unused] The function <anon> is never invoked.
+benchmark/kraken/stanford-crypto-pbkdf2.html:642: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:643: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:645: [definite] Unreachable function
+benchmark/kraken/stanford-crypto-pbkdf2.html:645: [definite] [unused] The function <anon> is never invoked.
+benchmark/kraken/stanford-crypto-pbkdf2.html:647: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:648: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:649: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:650: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:651: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:652: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:653: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:654: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:657: [definite] Unreachable function
+benchmark/kraken/stanford-crypto-pbkdf2.html:657: [definite] [unused] The function <anon> is never invoked.
+benchmark/kraken/stanford-crypto-pbkdf2.html:659: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:660: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:661: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:662: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:663: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:664: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:666: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:669: [definite] Unreachable function
+benchmark/kraken/stanford-crypto-pbkdf2.html:669: [definite] [unused] The function <anon> is never invoked.
+benchmark/kraken/stanford-crypto-pbkdf2.html:672: [definite] Unreachable function
+benchmark/kraken/stanford-crypto-pbkdf2.html:672: [definite] [unused] The function <anon> is never invoked.
+benchmark/kraken/stanford-crypto-pbkdf2.html:674: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:675: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:676: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:677: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:678: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:703: [definite] Unreachable function
+benchmark/kraken/stanford-crypto-pbkdf2.html:703: [definite] [unused] The function <anon> is never invoked.
+benchmark/kraken/stanford-crypto-pbkdf2.html:704: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:705: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:708: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:710: [definite] Unreachable function
+benchmark/kraken/stanford-crypto-pbkdf2.html:710: [definite] [unused] The function <anon> is never invoked.
+benchmark/kraken/stanford-crypto-pbkdf2.html:711: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:712: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:714: [definite] Unreachable function
+benchmark/kraken/stanford-crypto-pbkdf2.html:714: [definite] [unused] The function <anon> is never invoked.
+benchmark/kraken/stanford-crypto-pbkdf2.html:715: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:717: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:718: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:719: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:723: [definite] Unreachable function
+benchmark/kraken/stanford-crypto-pbkdf2.html:723: [definite] [unused] The function <anon> is never invoked.
+benchmark/kraken/stanford-crypto-pbkdf2.html:724: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:727: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:728: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:729: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:730: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:733: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:735: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:736: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:737: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:739: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:740: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:741: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:744: [definite] Unreachable function
+benchmark/kraken/stanford-crypto-pbkdf2.html:744: [definite] [unused] The function <anon> is never invoked.
+benchmark/kraken/stanford-crypto-pbkdf2.html:745: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:747: [definite] Unreachable function
+benchmark/kraken/stanford-crypto-pbkdf2.html:747: [definite] [unused] The function <anon> is never invoked.
+benchmark/kraken/stanford-crypto-pbkdf2.html:748: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:750: [definite] Unreachable function
+benchmark/kraken/stanford-crypto-pbkdf2.html:750: [definite] [unused] The function <anon> is never invoked.
+benchmark/kraken/stanford-crypto-pbkdf2.html:752: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:753: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:754: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:755: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:768: [definite] Unreachable function
+benchmark/kraken/stanford-crypto-pbkdf2.html:768: [definite] [unused] The function <anon> is never invoked.
+benchmark/kraken/stanford-crypto-pbkdf2.html:769: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:770: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:771: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:776: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:777: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:778: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:779: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:780: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:781: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:784: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:785: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:787: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:788: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:791: [definite] Unreachable function
+benchmark/kraken/stanford-crypto-pbkdf2.html:791: [definite] [unused] The function <anon> is never invoked.
+benchmark/kraken/stanford-crypto-pbkdf2.html:792: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:793: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:795: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:796: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:797: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:798: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:799: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:800: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:801: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:804: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:805: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:807: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:810: [definite] Unreachable function
+benchmark/kraken/stanford-crypto-pbkdf2.html:810: [definite] [unused] The function <anon> is never invoked.
+benchmark/kraken/stanford-crypto-pbkdf2.html:811: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:813: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:814: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:815: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:817: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:820: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:823: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:826: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:829: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:832: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:834: [definite] Unreachable function
+benchmark/kraken/stanford-crypto-pbkdf2.html:834: [definite] [unused] The function <anon> is never invoked.
+benchmark/kraken/stanford-crypto-pbkdf2.html:835: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:836: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:837: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:840: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:841: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:842: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:844: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:846: [definite] Unreachable function
+benchmark/kraken/stanford-crypto-pbkdf2.html:846: [definite] [unused] The function <anon> is never invoked.
+benchmark/kraken/stanford-crypto-pbkdf2.html:847: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:848: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:850: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:851: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:852: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:854: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:856: [definite] Unreachable function
+benchmark/kraken/stanford-crypto-pbkdf2.html:856: [definite] [unused] The function <anon> is never invoked.
+benchmark/kraken/stanford-crypto-pbkdf2.html:857: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:859: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:860: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:862: [definite] Unreachable function
+benchmark/kraken/stanford-crypto-pbkdf2.html:862: [definite] [unused] The function <anon> is never invoked.
+benchmark/kraken/stanford-crypto-pbkdf2.html:863: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:865: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:866: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:872: [definite] Unreachable function
+benchmark/kraken/stanford-crypto-pbkdf2.html:872: [definite] [unused] The function <anon> is never invoked.
+benchmark/kraken/stanford-crypto-pbkdf2.html:873: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:875: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:876: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:877: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:878: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:881: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:882: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:883: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:897: [definite] [unused] The parameter pause is never used.
+benchmark/kraken/stanford-crypto-pbkdf2.html:901: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:901: [definite] [unused] The conditional expression is always false.
+benchmark/kraken/stanford-crypto-pbkdf2.html:915: [definite] [unused] The parameter callback is never used.
+benchmark/kraken/stanford-crypto-pbkdf2.html:915: [definite] [unused] The parameter pause is never used.
+benchmark/kraken/stanford-crypto-pbkdf2.html:921: [definite] Unreachable function
+benchmark/kraken/stanford-crypto-pbkdf2.html:921: [definite] [unused] The function <anon> is never invoked.
+benchmark/kraken/stanford-crypto-pbkdf2.html:922: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:923: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:924: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:931: [definite] Unreachable function
+benchmark/kraken/stanford-crypto-pbkdf2.html:931: [definite] [unused] The function <anon> is never invoked.
+benchmark/kraken/stanford-crypto-pbkdf2.html:933: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:935: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:936: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:939: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:945: [definite] Unreachable function
+benchmark/kraken/stanford-crypto-pbkdf2.html:945: [definite] [unused] The function <anon> is never invoked.
+benchmark/kraken/stanford-crypto-pbkdf2.html:949: [definite] Unreachable function
+benchmark/kraken/stanford-crypto-pbkdf2.html:949: [definite] [unused] The function <anon> is never invoked.
+benchmark/kraken/stanford-crypto-pbkdf2.html:961: [definite] Reading absent property: allPassed
+benchmark/kraken/stanford-crypto-pbkdf2.html:961: [definite] [unused] The conditional expression is always true.
+benchmark/kraken/stanford-crypto-pbkdf2.html:981: [definite] [unused] The conditional expression is always true.
+benchmark/kraken/stanford-crypto-pbkdf2.html:984: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:990: [definite] Unreachable function
+benchmark/kraken/stanford-crypto-pbkdf2.html:990: [definite] [unused] The function <anon> is never invoked.
+benchmark/kraken/stanford-crypto-pbkdf2.html:1001: [definite] [unused] The conditional expression is always false.
+benchmark/kraken/stanford-crypto-pbkdf2.html:1002: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:1018: [definite] Unreachable function
+benchmark/kraken/stanford-crypto-pbkdf2.html:1018: [definite] [unused] The function <anon> is never invoked.
+benchmark/kraken/stanford-crypto-pbkdf2.html:1019: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:1021: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:1022: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:1023: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:1024: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:1025: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:1027: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:1029: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:1039: [definite] [unused] The conditional expression is always true.
+benchmark/kraken/stanford-crypto-pbkdf2.html:1049: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:1049: [definite] [unused] The conditional expression is always true.
+benchmark/kraken/stanford-crypto-pbkdf2.html:1049: [definite] [unused] The conditional expression is always true.
+benchmark/kraken/stanford-crypto-pbkdf2.html:1067: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:1067: [definite] [unused] The conditional expression is always true.
+benchmark/kraken/stanford-crypto-pbkdf2.html:1068: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:1068: [definite] [unused] The conditional expression is always true.
+benchmark/kraken/stanford-crypto-pbkdf2.html:1069: [definite] Unreachable function
+benchmark/kraken/stanford-crypto-pbkdf2.html:1069: [definite] [unused] The function <anon> is never invoked.
+benchmark/kraken/stanford-crypto-pbkdf2.html:1070: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:1072: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:1073: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:1075: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:1077: [definite] Unreachable function
+benchmark/kraken/stanford-crypto-pbkdf2.html:1077: [definite] [unused] The function <anon> is never invoked.
+benchmark/kraken/stanford-crypto-pbkdf2.html:1078: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:1080: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:1083: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:1084: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:1086: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:1097: [definite] [unused] The conditional expression is always false.
+benchmark/kraken/stanford-crypto-pbkdf2.html:1097: [definite] [unused] The conditional expression is always false.
+benchmark/kraken/stanford-crypto-pbkdf2.html:1097: [definite] [unused] The conditional expression is always false.
+benchmark/kraken/stanford-crypto-pbkdf2.html:1098: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:1099: [definite] Unreachable code
+benchmark/kraken/stanford-crypto-pbkdf2.html:1113: [definite] [unused] The conditional expression is always true.
+benchmark/kraken/stanford-crypto-pbkdf2.html:1: [definite] Uncaught exception: Undef
+benchmark/kraken/stanford-crypto-pbkdf2.html:224: [definite] Converting primitive string to object
+benchmark/kraken/stanford-crypto-pbkdf2.html:225: [definite] Converting primitive string to object
+benchmark/kraken/stanford-crypto-pbkdf2.html:225: [definite] Converting primitive string to object
+benchmark/kraken/stanford-crypto-pbkdf2.html:239: [definite] Converting primitive number to object
+benchmark/kraken/stanford-crypto-pbkdf2.html:239: [definite] Converting primitive number to object
+benchmark/kraken/stanford-crypto-pbkdf2.html:239: [definite] Converting primitive string to object
+benchmark/kraken/stanford-crypto-pbkdf2.html:239: [definite] Converting primitive string to object
+benchmark/kraken/stanford-crypto-pbkdf2.html:240: [definite] Converting primitive string to object
+benchmark/kraken/stanford-crypto-pbkdf2.html:240: [definite] Converting primitive string to object
+benchmark/kraken/stanford-crypto-pbkdf2.html:245: [definite] Converting primitive string to object
+benchmark/kraken/stanford-crypto-pbkdf2.html:245: [definite] Converting primitive string to object
+benchmark/kraken/stanford-crypto-pbkdf2.html:246: [definite] Converting primitive string to object
+benchmark/kraken/stanford-crypto-pbkdf2.html:248: [definite] Converting primitive string to object
+benchmark/kraken/stanford-crypto-pbkdf2.html:248: [definite] Converting primitive string to object
+benchmark/kraken/stanford-crypto-pbkdf2.html:248: [definite] Converting primitive string to object
+benchmark/kraken/stanford-crypto-pbkdf2.html:1112: [definite] Converting primitive string to object
+benchmark/kraken/stanford-crypto-pbkdf2.html:1112: [definite] Converting primitive string to object
+benchmark/kraken/stanford-crypto-pbkdf2.html:1112: [definite] Converting primitive string to object
+benchmark/kraken/stanford-crypto-pbkdf2.html:327: [maybe] RangeError, invalid value of array length
+benchmark/kraken/stanford-crypto-pbkdf2.html:575: [maybe] RangeError, invalid value of array length
+benchmark/kraken/stanford-crypto-pbkdf2.html:904: [maybe] ReferenceError, reading absent variable: called
+benchmark/kraken/stanford-crypto-pbkdf2.html:982: [maybe] TypeError, call to non-function
+benchmark/kraken/stanford-crypto-pbkdf2.html:1000: [maybe] TypeError, call to non-function
+benchmark/kraken/stanford-crypto-pbkdf2.html:1004: [maybe] TypeError, call to non-function
+benchmark/kraken/stanford-crypto-pbkdf2.html:1037: [maybe] TypeError, call to non-function
+benchmark/kraken/stanford-crypto-pbkdf2.html:1038: [maybe] ReferenceError, reading absent variable: thiz
+benchmark/kraken/stanford-crypto-pbkdf2.html:1038: [maybe] TypeError, call to non-function
+benchmark/kraken/stanford-crypto-pbkdf2.html:1059: [maybe] TypeError, call to non-function
+benchmark/kraken/stanford-crypto-pbkdf2.html:1059: [maybe] TypeError, reading property of null/undefined
+benchmark/kraken/stanford-crypto-pbkdf2.html:1104: [maybe] ReferenceError, reading absent variable: index
+benchmark/kraken/stanford-crypto-pbkdf2.html:1112: [maybe] TypeError, call to non-function
+benchmark/kraken/stanford-crypto-pbkdf2.html:976: [maybe] Reading absent property: passes
+benchmark/kraken/stanford-crypto-pbkdf2.html:982: [maybe] Reading absent property: log
+benchmark/kraken/stanford-crypto-pbkdf2.html:982: [maybe] Reading absent property: name
+benchmark/kraken/stanford-crypto-pbkdf2.html:986: [maybe] Reading absent property: failures
+benchmark/kraken/stanford-crypto-pbkdf2.html:1000: [maybe] Reading absent property: pass
+benchmark/kraken/stanford-crypto-pbkdf2.html:1004: [maybe] Reading absent property: fail
+benchmark/kraken/stanford-crypto-pbkdf2.html:1037: [maybe] Reading absent property: pauseAndThen
+benchmark/kraken/stanford-crypto-pbkdf2.html:1038: [maybe] Reading absent property: doRun
+benchmark/kraken/stanford-crypto-pbkdf2.html:1046: [maybe] [unused] The parameter callback is never used.
+benchmark/kraken/stanford-crypto-pbkdf2.html:1059: [maybe] Reading absent property: run
+benchmark/kraken/stanford-crypto-pbkdf2.html:1112: [maybe] Reading absent property: require
+benchmark/kraken/stanford-crypto-pbkdf2.html:155: [maybe] Reading absent property (computed name)
+benchmark/kraken/stanford-crypto-pbkdf2.html:157: [maybe] Conversion to number yields NaN
+benchmark/kraken/stanford-crypto-pbkdf2.html:162: [maybe] Reading absent property (computed name)
+benchmark/kraken/stanford-crypto-pbkdf2.html:169: [maybe] Conversion to number yields NaN
+benchmark/kraken/stanford-crypto-pbkdf2.html:169: [maybe] Reading absent property (computed name)
+benchmark/kraken/stanford-crypto-pbkdf2.html:174: [maybe] Conversion to number yields NaN
+benchmark/kraken/stanford-crypto-pbkdf2.html:174: [maybe] Conversion to number yields NaN
+benchmark/kraken/stanford-crypto-pbkdf2.html:177: [maybe] Conversion to number yields NaN
+benchmark/kraken/stanford-crypto-pbkdf2.html:196: [maybe] Conversion to number yields NaN
+benchmark/kraken/stanford-crypto-pbkdf2.html:196: [maybe] Reading absent property (computed name)
+benchmark/kraken/stanford-crypto-pbkdf2.html:197: [maybe] Conversion to number yields NaN
+benchmark/kraken/stanford-crypto-pbkdf2.html:197: [maybe] Reading absent property (computed name)
+benchmark/kraken/stanford-crypto-pbkdf2.html:199: [maybe] Reading absent property (computed name)
+benchmark/kraken/stanford-crypto-pbkdf2.html:239: [maybe] Conversion to number yields NaN
+benchmark/kraken/stanford-crypto-pbkdf2.html:239: [maybe] Reading absent property (computed name)
+benchmark/kraken/stanford-crypto-pbkdf2.html:245: [maybe] Converting boolean to string
+benchmark/kraken/stanford-crypto-pbkdf2.html:298: [maybe] Reading absent property (computed name)
+benchmark/kraken/stanford-crypto-pbkdf2.html:351: [maybe] Reading absent property (computed name)
+benchmark/kraken/stanford-crypto-pbkdf2.html:351: [maybe] Reading absent property (computed name)
+benchmark/kraken/stanford-crypto-pbkdf2.html:351: [maybe] Reading absent property (computed name)
+benchmark/kraken/stanford-crypto-pbkdf2.html:351: [maybe] Reading absent property (computed name)
+benchmark/kraken/stanford-crypto-pbkdf2.html:351: [maybe] Reading absent property (computed name)
+benchmark/kraken/stanford-crypto-pbkdf2.html:351: [maybe] Reading absent property (computed name)
+benchmark/kraken/stanford-crypto-pbkdf2.html:351: [maybe] Reading absent property (computed name)
+benchmark/kraken/stanford-crypto-pbkdf2.html:351: [maybe] Reading absent property (computed name)
+benchmark/kraken/stanford-crypto-pbkdf2.html:363: [maybe] Reading absent property (computed name)
+benchmark/kraken/stanford-crypto-pbkdf2.html:365: [maybe] Reading absent property (computed name)
+benchmark/kraken/stanford-crypto-pbkdf2.html:366: [maybe] Reading absent property (computed name)
+benchmark/kraken/stanford-crypto-pbkdf2.html:367: [maybe] Conversion to number yields NaN
+benchmark/kraken/stanford-crypto-pbkdf2.html:367: [maybe] Conversion to number yields NaN
+benchmark/kraken/stanford-crypto-pbkdf2.html:367: [maybe] Conversion to number yields NaN
+benchmark/kraken/stanford-crypto-pbkdf2.html:367: [maybe] Conversion to number yields NaN
+benchmark/kraken/stanford-crypto-pbkdf2.html:367: [maybe] Conversion to number yields NaN
+benchmark/kraken/stanford-crypto-pbkdf2.html:367: [maybe] Conversion to number yields NaN
+benchmark/kraken/stanford-crypto-pbkdf2.html:367: [maybe] Conversion to number yields NaN
+benchmark/kraken/stanford-crypto-pbkdf2.html:367: [maybe] Conversion to number yields NaN
+benchmark/kraken/stanford-crypto-pbkdf2.html:367: [maybe] Conversion to number yields NaN
+benchmark/kraken/stanford-crypto-pbkdf2.html:367: [maybe] Conversion to number yields NaN
+benchmark/kraken/stanford-crypto-pbkdf2.html:367: [maybe] Conversion to number yields NaN
+benchmark/kraken/stanford-crypto-pbkdf2.html:367: [maybe] Conversion to number yields NaN
+benchmark/kraken/stanford-crypto-pbkdf2.html:367: [maybe] Reading absent property (computed name)
+benchmark/kraken/stanford-crypto-pbkdf2.html:367: [maybe] Reading absent property (computed name)
+benchmark/kraken/stanford-crypto-pbkdf2.html:369: [maybe] Conversion to number yields NaN
+benchmark/kraken/stanford-crypto-pbkdf2.html:369: [maybe] Conversion to number yields NaN
+benchmark/kraken/stanford-crypto-pbkdf2.html:369: [maybe] Conversion to number yields NaN
+benchmark/kraken/stanford-crypto-pbkdf2.html:369: [maybe] Conversion to number yields NaN
+benchmark/kraken/stanford-crypto-pbkdf2.html:369: [maybe] Conversion to number yields NaN
+benchmark/kraken/stanford-crypto-pbkdf2.html:369: [maybe] Conversion to number yields NaN
+benchmark/kraken/stanford-crypto-pbkdf2.html:369: [maybe] Conversion to number yields NaN
+benchmark/kraken/stanford-crypto-pbkdf2.html:369: [maybe] Conversion to number yields NaN
+benchmark/kraken/stanford-crypto-pbkdf2.html:369: [maybe] Conversion to number yields NaN
+benchmark/kraken/stanford-crypto-pbkdf2.html:369: [maybe] Conversion to number yields NaN
+benchmark/kraken/stanford-crypto-pbkdf2.html:369: [maybe] Conversion to number yields NaN
+benchmark/kraken/stanford-crypto-pbkdf2.html:369: [maybe] Reading absent property (computed name)
+benchmark/kraken/stanford-crypto-pbkdf2.html:373: [maybe] Conversion to number yields NaN
+benchmark/kraken/stanford-crypto-pbkdf2.html:377: [maybe] Conversion to number yields NaN
+benchmark/kraken/stanford-crypto-pbkdf2.html:377: [maybe] Conversion to number yields NaN
+benchmark/kraken/stanford-crypto-pbkdf2.html:377: [maybe] Conversion to number yields NaN
+benchmark/kraken/stanford-crypto-pbkdf2.html:377: [maybe] Conversion to number yields NaN
+benchmark/kraken/stanford-crypto-pbkdf2.html:377: [maybe] Conversion to number yields NaN
+benchmark/kraken/stanford-crypto-pbkdf2.html:377: [maybe] Conversion to number yields NaN
+benchmark/kraken/stanford-crypto-pbkdf2.html:377: [maybe] Conversion to number yields NaN
+benchmark/kraken/stanford-crypto-pbkdf2.html:377: [maybe] Conversion to number yields NaN
+benchmark/kraken/stanford-crypto-pbkdf2.html:377: [maybe] Conversion to number yields NaN
+benchmark/kraken/stanford-crypto-pbkdf2.html:379: [maybe] Conversion to number yields NaN
+benchmark/kraken/stanford-crypto-pbkdf2.html:379: [maybe] Reading absent property (computed name)
+benchmark/kraken/stanford-crypto-pbkdf2.html:380: [maybe] Conversion to number yields NaN
+benchmark/kraken/stanford-crypto-pbkdf2.html:380: [maybe] Reading absent property (computed name)
+benchmark/kraken/stanford-crypto-pbkdf2.html:381: [maybe] Conversion to number yields NaN
+benchmark/kraken/stanford-crypto-pbkdf2.html:381: [maybe] Reading absent property (computed name)
+benchmark/kraken/stanford-crypto-pbkdf2.html:382: [maybe] Conversion to number yields NaN
+benchmark/kraken/stanford-crypto-pbkdf2.html:382: [maybe] Reading absent property (computed name)
+benchmark/kraken/stanford-crypto-pbkdf2.html:383: [maybe] Conversion to number yields NaN
+benchmark/kraken/stanford-crypto-pbkdf2.html:383: [maybe] Reading absent property (computed name)
+benchmark/kraken/stanford-crypto-pbkdf2.html:384: [maybe] Conversion to number yields NaN
+benchmark/kraken/stanford-crypto-pbkdf2.html:384: [maybe] Reading absent property (computed name)
+benchmark/kraken/stanford-crypto-pbkdf2.html:385: [maybe] Conversion to number yields NaN
+benchmark/kraken/stanford-crypto-pbkdf2.html:385: [maybe] Reading absent property (computed name)
+benchmark/kraken/stanford-crypto-pbkdf2.html:386: [maybe] Conversion to number yields NaN
+benchmark/kraken/stanford-crypto-pbkdf2.html:386: [maybe] Reading absent property (computed name)
+benchmark/kraken/stanford-crypto-pbkdf2.html:556: [maybe] Conversion to number yields NaN
+benchmark/kraken/stanford-crypto-pbkdf2.html:556: [maybe] Reading absent property (computed name)
+benchmark/kraken/stanford-crypto-pbkdf2.html:557: [maybe] Conversion to number yields NaN
+benchmark/kraken/stanford-crypto-pbkdf2.html:557: [maybe] Reading absent property (computed name)
+benchmark/kraken/stanford-crypto-pbkdf2.html:568: [maybe] Conversion to number yields NaN
+benchmark/kraken/stanford-crypto-pbkdf2.html:578: [maybe] Conversion to number yields NaN
+benchmark/kraken/stanford-crypto-pbkdf2.html:578: [maybe] Reading absent property (computed name)
+benchmark/kraken/stanford-crypto-pbkdf2.html:578: [maybe] Reading absent property (computed name)
+benchmark/kraken/stanford-crypto-pbkdf2.html:917: [maybe] Reading absent property (computed name)
+benchmark/kraken/stanford-crypto-pbkdf2.html:976: [maybe] Conversion to number yields NaN
+benchmark/kraken/stanford-crypto-pbkdf2.html:982: [maybe] Converting undefined to string
+benchmark/kraken/stanford-crypto-pbkdf2.html:986: [maybe] Conversion to number yields NaN
+benchmark/kraken/stanford-crypto-pbkdf2.html:1059: [maybe] Reading absent property (computed name)
+benchmark/kraken/stanford-crypto-pbkdf2.html:1059: [maybe] Reading absent property (computed name)

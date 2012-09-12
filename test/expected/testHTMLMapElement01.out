@@ -1,0 +1,5 @@
+test/browser/domlegacy/html/HTMLMapElement01.tidy.html:14: [definite] Reading absent property areas
+test/browser/domlegacy/html/HTMLMapElement01.tidy.html:15: [definite] Reading absent property name
+test/browser/domlegacy/html/HTMLMapElement01.tidy.html:13: [info] Abstract value: [@HTMLMapElement[native] constructor]
+test/browser/domlegacy/html/HTMLMapElement01.tidy.html:14: [info] Abstract value: Undef
+test/browser/domlegacy/html/HTMLMapElement01.tidy.html:15: [info] Abstract value: Undef

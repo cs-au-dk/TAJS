@@ -1,0 +1,44 @@
+<html>
+
+<script>
+  //slice
+
+if (!window.Scribd) var Scribd = new Object();
+
+Scribd.ServerOptions = {
+    "boomerang_enable_bandwidth_test": true,
+    "boomerang_action_probability_word/view": 0.2,
+    "boomerang_action_probability_explore/index": "0.20",
+    "boomerang_action_probability_solr/documents": "0.03",
+    "boomerang_action_probability_login/login": 0.3,
+    "boomerang_action_probability_home/index": 0.015,
+    "boomerang_send_to_ga": true,
+    "boomerang_logging_enabled": true,
+    "boomerang_action_probability_people/view": "0.20",
+    "boomerang_action_probability_word/show": 0.2,
+    "boomerang_default_probability": 1.0,
+    "boomerang_action_probability_upload/upload_new": 0.3,
+    "boomerang_action_probability_user_document_collections/show": 0.2,
+    "ad_refresh_engagement_tracking_delay": 1200,
+    "ad_refresh_idle_time_before_inactive": 60,
+    "ad_refresh_interval": 60,
+    "boomerang_send_to_scribd": true
+};;
+
+
+var get_server_option = function(name, default_value) {
+  if (typeof Scribd.ServerOptions == 'undefined' || eval('typeof Scribd.ServerOptions.' + name) == 'undefined')
+    return default_value;
+
+  return eval('Scribd.ServerOptions.' + name);
+};
+
+get_server_option('ad_refresh_idle_time_before_inactive', 60);
+get_server_option('ad_refresh_interval', 60);
+get_server_option('ad_refresh_engagement_tracking_delay', 0);
+</script>
+
+<body>
+</body>
+
+</html>

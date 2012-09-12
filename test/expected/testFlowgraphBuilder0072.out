@@ -1,0 +1,22 @@
+fg2: <main> function()
+  block 0: [entry]
+    node 0: constant[undefined,v1] (test/flowgraph_builder/flowgraph_builder0072.js:1:1)
+    ->[block 1]
+  block 1:
+    node 1: read-variable['SyntaxError',v3,-] (test/flowgraph_builder/flowgraph_builder0072.js:1:11)
+    node 2: constant["hi",v4] (test/flowgraph_builder/flowgraph_builder0072.js:1:23)
+    ->[block 2]
+  block 2:
+    node 3: construct[-,v3,v4,v2] (test/flowgraph_builder/flowgraph_builder0072.js:1:11)
+    ->[block 3]
+  block 3:
+    node 4: throw[v2]* (test/flowgraph_builder/flowgraph_builder0072.js:1:1)
+    ->[block 4]
+  block 4: [exit-ordinary]
+    node 5: return[v1] (test/flowgraph_builder/flowgraph_builder0072.js:1:1)
+    ->[]
+  block 5: [exit-exceptional]
+    node 6: exceptional-return (test/flowgraph_builder/flowgraph_builder0072.js:1:1)
+    ->[]
+
+test/flowgraph_builder/flowgraph_builder0072.js:1:1: [maybe] Uncaught exception, constructed at [test/flowgraph_builder/flowgraph_builder0072.js:1:11]

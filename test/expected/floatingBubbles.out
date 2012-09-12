@@ -1,0 +1,598 @@
+test/10k/floating_bubbles.tidy.html:83: [definite] Reading absent property snappedPoint
+test/10k/floating_bubbles.tidy.html:271: [definite] Reading absent property filter
+test/10k/floating_bubbles.tidy.html:271: [definite] TypeError, call to non-function
+test/10k/floating_bubbles.tidy.html:47: [definite] Unreachable code
+test/10k/floating_bubbles.tidy.html:63: [definite] Unreachable function: u
+test/10k/floating_bubbles.tidy.html:64: [definite] Unreachable code
+test/10k/floating_bubbles.tidy.html:65: [definite] Unreachable code
+test/10k/floating_bubbles.tidy.html:271: [definite] Unreachable code
+test/10k/floating_bubbles.tidy.html:271: [definite] Unreachable function
+test/10k/floating_bubbles.tidy.html:274: [definite] Unreachable code
+test/10k/floating_bubbles.tidy.html:295: [definite] Dead assignment, property x is never read
+test/10k/floating_bubbles.tidy.html:296: [definite] Dead assignment, property y is never read
+test/10k/floating_bubbles.tidy.html:331: [definite] Dead assignment, property divideBy is never read
+test/10k/floating_bubbles.tidy.html:331: [definite] Unreachable function
+test/10k/floating_bubbles.tidy.html:71: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.tidy.html:71: [maybe] Reading absent property animateBubble
+test/10k/floating_bubbles.tidy.html:71: [maybe] TypeError, call to non-function
+test/10k/floating_bubbles.tidy.html:71: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:88: [maybe] RangeError, assigning invalid value to array 'length' property
+test/10k/floating_bubbles.tidy.html:93: [maybe] Reading absent property nrOfPoints
+test/10k/floating_bubbles.tidy.html:94: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.tidy.html:94: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.tidy.html:94: [maybe] Reading absent property leftOf
+test/10k/floating_bubbles.tidy.html:94: [maybe] Reading absent property points
+test/10k/floating_bubbles.tidy.html:94: [maybe] Reading absent property points
+test/10k/floating_bubbles.tidy.html:94: [maybe] Reading absent property vectorTo
+test/10k/floating_bubbles.tidy.html:94: [maybe] TypeError, call to non-function
+test/10k/floating_bubbles.tidy.html:94: [maybe] TypeError, call to non-function
+test/10k/floating_bubbles.tidy.html:94: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:94: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:94: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:97: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.tidy.html:97: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.tidy.html:97: [maybe] Reading absent property points
+test/10k/floating_bubbles.tidy.html:97: [maybe] Reading absent property points
+test/10k/floating_bubbles.tidy.html:97: [maybe] Reading absent property rightOf
+test/10k/floating_bubbles.tidy.html:97: [maybe] Reading absent property vectorTo
+test/10k/floating_bubbles.tidy.html:97: [maybe] TypeError, call to non-function
+test/10k/floating_bubbles.tidy.html:97: [maybe] TypeError, call to non-function
+test/10k/floating_bubbles.tidy.html:97: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:97: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:97: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:100: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.tidy.html:100: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.tidy.html:100: [maybe] Reading absent property leftOf
+test/10k/floating_bubbles.tidy.html:100: [maybe] Reading absent property points
+test/10k/floating_bubbles.tidy.html:100: [maybe] Reading absent property points
+test/10k/floating_bubbles.tidy.html:100: [maybe] Reading absent property rightOf
+test/10k/floating_bubbles.tidy.html:100: [maybe] Reading absent property vectorTo
+test/10k/floating_bubbles.tidy.html:100: [maybe] TypeError, call to non-function
+test/10k/floating_bubbles.tidy.html:100: [maybe] TypeError, call to non-function
+test/10k/floating_bubbles.tidy.html:100: [maybe] TypeError, call to non-function
+test/10k/floating_bubbles.tidy.html:100: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:100: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:100: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:102: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.tidy.html:102: [maybe] Reading absent property points
+test/10k/floating_bubbles.tidy.html:102: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:102: [maybe] TypeError, writing property of null/undefined
+test/10k/floating_bubbles.tidy.html:103: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.tidy.html:103: [maybe] Reading absent property forces
+test/10k/floating_bubbles.tidy.html:103: [maybe] Reading absent property points
+test/10k/floating_bubbles.tidy.html:103: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:103: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:103: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:104: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.tidy.html:104: [maybe] Reading absent property forces
+test/10k/floating_bubbles.tidy.html:104: [maybe] Reading absent property points
+test/10k/floating_bubbles.tidy.html:104: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:104: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:104: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:105: [maybe] Reading absent property nrOfPoints
+test/10k/floating_bubbles.tidy.html:106: [maybe] Reading absent property leftOf
+test/10k/floating_bubbles.tidy.html:106: [maybe] Reading absent property rightOf
+test/10k/floating_bubbles.tidy.html:106: [maybe] TypeError, call to non-function
+test/10k/floating_bubbles.tidy.html:106: [maybe] TypeError, call to non-function
+test/10k/floating_bubbles.tidy.html:109: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.tidy.html:109: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.tidy.html:109: [maybe] Reading absent property clone
+test/10k/floating_bubbles.tidy.html:109: [maybe] Reading absent property points
+test/10k/floating_bubbles.tidy.html:109: [maybe] Reading absent property points
+test/10k/floating_bubbles.tidy.html:109: [maybe] TypeError, call to non-function
+test/10k/floating_bubbles.tidy.html:109: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:109: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:109: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:113: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.tidy.html:113: [maybe] Reading absent property forces
+test/10k/floating_bubbles.tidy.html:113: [maybe] Reading absent property points
+test/10k/floating_bubbles.tidy.html:113: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:113: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:113: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:116: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.tidy.html:116: [maybe] Reading absent property points
+test/10k/floating_bubbles.tidy.html:116: [maybe] Reading absent property x
+test/10k/floating_bubbles.tidy.html:116: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:116: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:117: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.tidy.html:117: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.tidy.html:117: [maybe] Reading absent property forces
+test/10k/floating_bubbles.tidy.html:117: [maybe] Reading absent property points
+test/10k/floating_bubbles.tidy.html:117: [maybe] Reading absent property points
+test/10k/floating_bubbles.tidy.html:117: [maybe] Reading absent property x
+test/10k/floating_bubbles.tidy.html:117: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:117: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:117: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:117: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:117: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:119: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.tidy.html:119: [maybe] Reading absent property canvas
+test/10k/floating_bubbles.tidy.html:119: [maybe] Reading absent property points
+test/10k/floating_bubbles.tidy.html:119: [maybe] Reading absent property x
+test/10k/floating_bubbles.tidy.html:119: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:119: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:119: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:120: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.tidy.html:120: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.tidy.html:120: [maybe] Reading absent property canvas
+test/10k/floating_bubbles.tidy.html:120: [maybe] Reading absent property forces
+test/10k/floating_bubbles.tidy.html:120: [maybe] Reading absent property points
+test/10k/floating_bubbles.tidy.html:120: [maybe] Reading absent property points
+test/10k/floating_bubbles.tidy.html:120: [maybe] Reading absent property x
+test/10k/floating_bubbles.tidy.html:120: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:120: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:120: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:120: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:120: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:120: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:123: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.tidy.html:123: [maybe] Reading absent property points
+test/10k/floating_bubbles.tidy.html:123: [maybe] Reading absent property y
+test/10k/floating_bubbles.tidy.html:123: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:123: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:124: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.tidy.html:124: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.tidy.html:124: [maybe] Reading absent property forces
+test/10k/floating_bubbles.tidy.html:124: [maybe] Reading absent property points
+test/10k/floating_bubbles.tidy.html:124: [maybe] Reading absent property points
+test/10k/floating_bubbles.tidy.html:124: [maybe] Reading absent property y
+test/10k/floating_bubbles.tidy.html:124: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:124: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:124: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:124: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:124: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:126: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.tidy.html:126: [maybe] Reading absent property canvas
+test/10k/floating_bubbles.tidy.html:126: [maybe] Reading absent property points
+test/10k/floating_bubbles.tidy.html:126: [maybe] Reading absent property y
+test/10k/floating_bubbles.tidy.html:126: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:126: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:126: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:127: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.tidy.html:127: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.tidy.html:127: [maybe] Reading absent property canvas
+test/10k/floating_bubbles.tidy.html:127: [maybe] Reading absent property forces
+test/10k/floating_bubbles.tidy.html:127: [maybe] Reading absent property points
+test/10k/floating_bubbles.tidy.html:127: [maybe] Reading absent property points
+test/10k/floating_bubbles.tidy.html:127: [maybe] Reading absent property y
+test/10k/floating_bubbles.tidy.html:127: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:127: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:127: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:127: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:127: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:127: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:130: [maybe] Reading absent property isSnapped
+test/10k/floating_bubbles.tidy.html:131: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.tidy.html:131: [maybe] Reading absent property forces
+test/10k/floating_bubbles.tidy.html:131: [maybe] Reading absent property points
+test/10k/floating_bubbles.tidy.html:131: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:131: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:131: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:132: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.tidy.html:132: [maybe] Reading absent property forces
+test/10k/floating_bubbles.tidy.html:132: [maybe] Reading absent property points
+test/10k/floating_bubbles.tidy.html:132: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:132: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:132: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:134: [maybe] Reading absent property isSnapped
+test/10k/floating_bubbles.tidy.html:134: [maybe] Reading absent property snappedPoint
+test/10k/floating_bubbles.tidy.html:135: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.tidy.html:135: [maybe] Reading absent property points
+test/10k/floating_bubbles.tidy.html:135: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:136: [maybe] Reading absent property nrOfPointsFactor
+test/10k/floating_bubbles.tidy.html:136: [maybe] TypeError, call to non-function
+test/10k/floating_bubbles.tidy.html:138: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.tidy.html:138: [maybe] Reading absent property add
+test/10k/floating_bubbles.tidy.html:138: [maybe] Reading absent property points
+test/10k/floating_bubbles.tidy.html:138: [maybe] TypeError, call to non-function
+test/10k/floating_bubbles.tidy.html:138: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:138: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:139: [maybe] Reading absent property isInside
+test/10k/floating_bubbles.tidy.html:140: [maybe] Reading absent property splitBubble
+test/10k/floating_bubbles.tidy.html:140: [maybe] TypeError, call to non-function
+test/10k/floating_bubbles.tidy.html:142: [maybe] Reading absent property isInside
+test/10k/floating_bubbles.tidy.html:143: [maybe] Reading absent property leavePoint
+test/10k/floating_bubbles.tidy.html:143: [maybe] TypeError, call to non-function
+test/10k/floating_bubbles.tidy.html:145: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.tidy.html:145: [maybe] Reading absent property points
+test/10k/floating_bubbles.tidy.html:145: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:145: [maybe] TypeError, writing property of null/undefined
+test/10k/floating_bubbles.tidy.html:146: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.tidy.html:146: [maybe] Reading absent property points
+test/10k/floating_bubbles.tidy.html:146: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:146: [maybe] TypeError, writing property of null/undefined
+test/10k/floating_bubbles.tidy.html:148: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.tidy.html:148: [maybe] Reading absent property points
+test/10k/floating_bubbles.tidy.html:148: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:148: [maybe] TypeError, writing property of null/undefined
+test/10k/floating_bubbles.tidy.html:150: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.tidy.html:150: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.tidy.html:150: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.tidy.html:150: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.tidy.html:150: [maybe] Reading absent property forces
+test/10k/floating_bubbles.tidy.html:150: [maybe] Reading absent property forces
+test/10k/floating_bubbles.tidy.html:150: [maybe] Reading absent property points
+test/10k/floating_bubbles.tidy.html:150: [maybe] Reading absent property points
+test/10k/floating_bubbles.tidy.html:150: [maybe] Reading absent property points
+test/10k/floating_bubbles.tidy.html:150: [maybe] Reading absent property points
+test/10k/floating_bubbles.tidy.html:150: [maybe] Reading absent property velocity
+test/10k/floating_bubbles.tidy.html:150: [maybe] Reading absent property velocity
+test/10k/floating_bubbles.tidy.html:150: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:150: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:150: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:150: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:150: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:150: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:150: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:150: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:150: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:150: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:150: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:150: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:151: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.tidy.html:151: [maybe] Reading absent property points
+test/10k/floating_bubbles.tidy.html:151: [maybe] Reading absent property velocity
+test/10k/floating_bubbles.tidy.html:151: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:151: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:151: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:153: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.tidy.html:153: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.tidy.html:153: [maybe] Reading absent property add
+test/10k/floating_bubbles.tidy.html:153: [maybe] Reading absent property points
+test/10k/floating_bubbles.tidy.html:153: [maybe] Reading absent property points
+test/10k/floating_bubbles.tidy.html:153: [maybe] Reading absent property velocity
+test/10k/floating_bubbles.tidy.html:153: [maybe] TypeError, call to non-function
+test/10k/floating_bubbles.tidy.html:153: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:153: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:153: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:153: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:154: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.tidy.html:154: [maybe] Reading absent property points
+test/10k/floating_bubbles.tidy.html:154: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:154: [maybe] TypeError, writing property of null/undefined
+test/10k/floating_bubbles.tidy.html:155: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.tidy.html:155: [maybe] Reading absent property points
+test/10k/floating_bubbles.tidy.html:155: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:155: [maybe] TypeError, writing property of null/undefined
+test/10k/floating_bubbles.tidy.html:156: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.tidy.html:156: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.tidy.html:156: [maybe] Reading absent property cpL
+test/10k/floating_bubbles.tidy.html:156: [maybe] Reading absent property points
+test/10k/floating_bubbles.tidy.html:156: [maybe] Reading absent property points
+test/10k/floating_bubbles.tidy.html:156: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:156: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:156: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:156: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:157: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.tidy.html:157: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.tidy.html:157: [maybe] Reading absent property cpR
+test/10k/floating_bubbles.tidy.html:157: [maybe] Reading absent property points
+test/10k/floating_bubbles.tidy.html:157: [maybe] Reading absent property points
+test/10k/floating_bubbles.tidy.html:157: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:157: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:157: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:157: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:158: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.tidy.html:158: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.tidy.html:158: [maybe] Reading absent property points
+test/10k/floating_bubbles.tidy.html:158: [maybe] Reading absent property points
+test/10k/floating_bubbles.tidy.html:158: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:158: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:158: [maybe] TypeError, writing property of null/undefined
+test/10k/floating_bubbles.tidy.html:162: [maybe] Reading absent property nrOfPoints
+test/10k/floating_bubbles.tidy.html:166: [maybe] Reading absent property nrOfPoints
+test/10k/floating_bubbles.tidy.html:171: [maybe] Reading absent property nrOfPoints
+test/10k/floating_bubbles.tidy.html:177: [maybe] Reading absent property ctx
+test/10k/floating_bubbles.tidy.html:177: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:178: [maybe] Reading absent property canvas
+test/10k/floating_bubbles.tidy.html:178: [maybe] Reading absent property canvas
+test/10k/floating_bubbles.tidy.html:178: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:178: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:179: [maybe] Reading absent property isInside
+test/10k/floating_bubbles.tidy.html:181: [maybe] Reading absent property leavePoint
+test/10k/floating_bubbles.tidy.html:181: [maybe] TypeError, call to non-function
+test/10k/floating_bubbles.tidy.html:185: [maybe] Reading absent property leavePoint
+test/10k/floating_bubbles.tidy.html:185: [maybe] TypeError, call to non-function
+test/10k/floating_bubbles.tidy.html:187: [maybe] Reading absent property snapPoint
+test/10k/floating_bubbles.tidy.html:187: [maybe] TypeError, call to non-function
+test/10k/floating_bubbles.tidy.html:192: [maybe] Reading absent property snapPoint
+test/10k/floating_bubbles.tidy.html:192: [maybe] TypeError, call to non-function
+test/10k/floating_bubbles.tidy.html:194: [maybe] Reading absent property leavePoint
+test/10k/floating_bubbles.tidy.html:194: [maybe] TypeError, call to non-function
+test/10k/floating_bubbles.tidy.html:197: [maybe] Reading absent property isSnapped
+test/10k/floating_bubbles.tidy.html:198: [maybe] Reading absent property isInside
+test/10k/floating_bubbles.tidy.html:199: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.tidy.html:199: [maybe] Reading absent property forces
+test/10k/floating_bubbles.tidy.html:199: [maybe] Reading absent property nrOfPointsFactor
+test/10k/floating_bubbles.tidy.html:199: [maybe] Reading absent property points
+test/10k/floating_bubbles.tidy.html:199: [maybe] Reading absent property snappedPoint
+test/10k/floating_bubbles.tidy.html:199: [maybe] TypeError, call to non-function
+test/10k/floating_bubbles.tidy.html:199: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:199: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:199: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:200: [maybe] Reading absent property splitBubble
+test/10k/floating_bubbles.tidy.html:200: [maybe] TypeError, call to non-function
+test/10k/floating_bubbles.tidy.html:201: [maybe] Reading absent property leavePoint
+test/10k/floating_bubbles.tidy.html:201: [maybe] TypeError, call to non-function
+test/10k/floating_bubbles.tidy.html:204: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.tidy.html:204: [maybe] Reading absent property forces
+test/10k/floating_bubbles.tidy.html:204: [maybe] Reading absent property nrOfPointsFactor
+test/10k/floating_bubbles.tidy.html:204: [maybe] Reading absent property points
+test/10k/floating_bubbles.tidy.html:204: [maybe] Reading absent property snappedPoint
+test/10k/floating_bubbles.tidy.html:204: [maybe] TypeError, call to non-function
+test/10k/floating_bubbles.tidy.html:204: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:204: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:204: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:205: [maybe] Reading absent property leavePoint
+test/10k/floating_bubbles.tidy.html:205: [maybe] TypeError, call to non-function
+test/10k/floating_bubbles.tidy.html:210: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.tidy.html:210: [maybe] Reading absent property forces
+test/10k/floating_bubbles.tidy.html:210: [maybe] Reading absent property nrOfPointsFactor
+test/10k/floating_bubbles.tidy.html:210: [maybe] Reading absent property points
+test/10k/floating_bubbles.tidy.html:210: [maybe] Reading absent property snappedPoint
+test/10k/floating_bubbles.tidy.html:210: [maybe] TypeError, call to non-function
+test/10k/floating_bubbles.tidy.html:210: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:210: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:210: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:211: [maybe] Reading absent property leavePoint
+test/10k/floating_bubbles.tidy.html:211: [maybe] TypeError, call to non-function
+test/10k/floating_bubbles.tidy.html:219: [maybe] Reading absent property nrOfPoints
+test/10k/floating_bubbles.tidy.html:220: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.tidy.html:220: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.tidy.html:220: [maybe] Reading absent property m2pDist
+test/10k/floating_bubbles.tidy.html:220: [maybe] Reading absent property m2pDist
+test/10k/floating_bubbles.tidy.html:220: [maybe] Reading absent property points
+test/10k/floating_bubbles.tidy.html:220: [maybe] Reading absent property points
+test/10k/floating_bubbles.tidy.html:220: [maybe] Reading absent property snappedPoint
+test/10k/floating_bubbles.tidy.html:220: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:220: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:220: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:220: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:231: [maybe] Reading absent property canvas
+test/10k/floating_bubbles.tidy.html:231: [maybe] Reading absent property canvas
+test/10k/floating_bubbles.tidy.html:231: [maybe] Reading absent property ctx
+test/10k/floating_bubbles.tidy.html:231: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:231: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:231: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:234: [maybe] Reading absent property ctx
+test/10k/floating_bubbles.tidy.html:234: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:235: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.tidy.html:235: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.tidy.html:235: [maybe] Reading absent property ctx
+test/10k/floating_bubbles.tidy.html:235: [maybe] Reading absent property points
+test/10k/floating_bubbles.tidy.html:235: [maybe] Reading absent property points
+test/10k/floating_bubbles.tidy.html:235: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:235: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:235: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:235: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:235: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:236: [maybe] Reading absent property nrOfPoints
+test/10k/floating_bubbles.tidy.html:237: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.tidy.html:237: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.tidy.html:237: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.tidy.html:237: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.tidy.html:237: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.tidy.html:237: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.tidy.html:237: [maybe] Reading absent property cpL
+test/10k/floating_bubbles.tidy.html:237: [maybe] Reading absent property cpL
+test/10k/floating_bubbles.tidy.html:237: [maybe] Reading absent property cpR
+test/10k/floating_bubbles.tidy.html:237: [maybe] Reading absent property cpR
+test/10k/floating_bubbles.tidy.html:237: [maybe] Reading absent property ctx
+test/10k/floating_bubbles.tidy.html:237: [maybe] Reading absent property points
+test/10k/floating_bubbles.tidy.html:237: [maybe] Reading absent property points
+test/10k/floating_bubbles.tidy.html:237: [maybe] Reading absent property points
+test/10k/floating_bubbles.tidy.html:237: [maybe] Reading absent property points
+test/10k/floating_bubbles.tidy.html:237: [maybe] Reading absent property points
+test/10k/floating_bubbles.tidy.html:237: [maybe] Reading absent property points
+test/10k/floating_bubbles.tidy.html:237: [maybe] Reading absent property rightOf
+test/10k/floating_bubbles.tidy.html:237: [maybe] Reading absent property rightOf
+test/10k/floating_bubbles.tidy.html:237: [maybe] Reading absent property rightOf
+test/10k/floating_bubbles.tidy.html:237: [maybe] Reading absent property rightOf
+test/10k/floating_bubbles.tidy.html:237: [maybe] Reading absent property x
+test/10k/floating_bubbles.tidy.html:237: [maybe] Reading absent property y
+test/10k/floating_bubbles.tidy.html:237: [maybe] TypeError, call to non-function
+test/10k/floating_bubbles.tidy.html:237: [maybe] TypeError, call to non-function
+test/10k/floating_bubbles.tidy.html:237: [maybe] TypeError, call to non-function
+test/10k/floating_bubbles.tidy.html:237: [maybe] TypeError, call to non-function
+test/10k/floating_bubbles.tidy.html:237: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:237: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:237: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:237: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:237: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:237: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:237: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:237: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:237: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:237: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:237: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:237: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:237: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:237: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:237: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:237: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:237: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:239: [maybe] Reading absent property ctx
+test/10k/floating_bubbles.tidy.html:239: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:242: [maybe] Reading absent property processMouseInteractivity
+test/10k/floating_bubbles.tidy.html:242: [maybe] TypeError, call to non-function
+test/10k/floating_bubbles.tidy.html:243: [maybe] Reading absent property processElasticBehaviour
+test/10k/floating_bubbles.tidy.html:243: [maybe] TypeError, call to non-function
+test/10k/floating_bubbles.tidy.html:244: [maybe] Reading absent property clearCanvas
+test/10k/floating_bubbles.tidy.html:244: [maybe] TypeError, call to non-function
+test/10k/floating_bubbles.tidy.html:245: [maybe] Reading absent property plotBubble
+test/10k/floating_bubbles.tidy.html:245: [maybe] TypeError, call to non-function
+test/10k/floating_bubbles.tidy.html:258: [maybe] Reading absent property nrOfPoints
+test/10k/floating_bubbles.tidy.html:258: [maybe] Reading absent property points
+test/10k/floating_bubbles.tidy.html:258: [maybe] TypeError, call to non-function
+test/10k/floating_bubbles.tidy.html:258: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:260: [maybe] Reading absent property nrOfPoints
+test/10k/floating_bubbles.tidy.html:261: [maybe] Reading absent property nrOfPoints
+test/10k/floating_bubbles.tidy.html:261: [maybe] Reading absent property points
+test/10k/floating_bubbles.tidy.html:261: [maybe] TypeError, call to non-function
+test/10k/floating_bubbles.tidy.html:261: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:263: [maybe] Reading absent property points
+test/10k/floating_bubbles.tidy.html:263: [maybe] TypeError, call to non-function
+test/10k/floating_bubbles.tidy.html:263: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:264: [maybe] Reading absent property nrOfPoints
+test/10k/floating_bubbles.tidy.html:264: [maybe] Reading absent property points
+test/10k/floating_bubbles.tidy.html:264: [maybe] TypeError, call to non-function
+test/10k/floating_bubbles.tidy.html:264: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:271: [maybe] Reading absent property clone
+test/10k/floating_bubbles.tidy.html:271: [maybe] Reading absent property clone
+test/10k/floating_bubbles.tidy.html:271: [maybe] Reading absent property index
+test/10k/floating_bubbles.tidy.html:271: [maybe] Reading absent property nrOfPoints
+test/10k/floating_bubbles.tidy.html:271: [maybe] Reading absent property opositeIndex
+test/10k/floating_bubbles.tidy.html:271: [maybe] Reading absent property opositeIndex
+test/10k/floating_bubbles.tidy.html:271: [maybe] Reading absent property reduceBubble
+test/10k/floating_bubbles.tidy.html:271: [maybe] Reading absent property reduceBubble
+test/10k/floating_bubbles.tidy.html:271: [maybe] Reading absent property snappedPoint
+test/10k/floating_bubbles.tidy.html:271: [maybe] Reading absent property snappedPoint
+test/10k/floating_bubbles.tidy.html:271: [maybe] Reading absent property snappedPoint
+test/10k/floating_bubbles.tidy.html:271: [maybe] Reading absent property snappedPoint
+test/10k/floating_bubbles.tidy.html:271: [maybe] TypeError, call to non-function
+test/10k/floating_bubbles.tidy.html:271: [maybe] TypeError, call to non-function
+test/10k/floating_bubbles.tidy.html:271: [maybe] TypeError, call to non-function
+test/10k/floating_bubbles.tidy.html:271: [maybe] TypeError, call to non-function
+test/10k/floating_bubbles.tidy.html:271: [maybe] TypeError, call to non-function
+test/10k/floating_bubbles.tidy.html:271: [maybe] TypeError, call to non-function
+test/10k/floating_bubbles.tidy.html:279: [maybe] Reading absent property nrOfPoints
+test/10k/floating_bubbles.tidy.html:281: [maybe] Reading absent property nrOfPoints
+test/10k/floating_bubbles.tidy.html:286: [maybe] Reading absent property nrOfPoints
+test/10k/floating_bubbles.tidy.html:287: [maybe] Reading absent property nrOfPoints
+test/10k/floating_bubbles.tidy.html:288: [maybe] RangeError, assigning invalid value to array 'length' property
+test/10k/floating_bubbles.tidy.html:288: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.tidy.html:288: [maybe] Reading absent property clone
+test/10k/floating_bubbles.tidy.html:288: [maybe] Reading absent property points
+test/10k/floating_bubbles.tidy.html:288: [maybe] TypeError, call to non-function
+test/10k/floating_bubbles.tidy.html:288: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:288: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:311: [maybe] Reading absent property x
+test/10k/floating_bubbles.tidy.html:311: [maybe] Reading absent property x
+test/10k/floating_bubbles.tidy.html:311: [maybe] Reading absent property y
+test/10k/floating_bubbles.tidy.html:311: [maybe] Reading absent property y
+test/10k/floating_bubbles.tidy.html:311: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:317: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.tidy.html:317: [maybe] Reading absent property x
+test/10k/floating_bubbles.tidy.html:317: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:318: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.tidy.html:318: [maybe] Reading absent property y
+test/10k/floating_bubbles.tidy.html:322: [maybe] Reading absent property x
+test/10k/floating_bubbles.tidy.html:322: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:323: [maybe] Reading absent property y
+test/10k/floating_bubbles.tidy.html:349: [maybe] Reading absent property x
+test/10k/floating_bubbles.tidy.html:349: [maybe] Reading absent property y
+test/10k/floating_bubbles.tidy.html:350: [maybe] Reading absent property cpL
+test/10k/floating_bubbles.tidy.html:350: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:351: [maybe] Reading absent property cpR
+test/10k/floating_bubbles.tidy.html:351: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:354: [maybe] Reading absent property m2pDist
+test/10k/floating_bubbles.tidy.html:375: [maybe] Reading absent property parentNode
+test/10k/floating_bubbles.tidy.html:375: [maybe] TypeError, argument is not of expected type: Node.prototype
+test/10k/floating_bubbles.tidy.html:375: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:375: [maybe] TypeError, reading property of null/undefined
+test/10k/floating_bubbles.tidy.html:14: [maybe] Uncaught exception, constructed at [test/10k/floating_bubbles.tidy.html:71, test/10k/floating_bubbles.tidy.html:88, test/10k/floating_bubbles.tidy.html:94, test/10k/floating_bubbles.tidy.html:97, test/10k/floating_bubbles.tidy.html:100, test/10k/floating_bubbles.tidy.html:102, test/10k/floating_bubbles.tidy.html:103, test/10k/floating_bubbles.tidy.html:104, test/10k/floating_bubbles.tidy.html:106, test/10k/floating_bubbles.tidy.html:109, test/10k/floating_bubbles.tidy.html:113, test/10k/floating_bubbles.tidy.html:116, test/10k/floating_bubbles.tidy.html:117, test/10k/floating_bubbles.tidy.html:119, test/10k/floating_bubbles.tidy.html:120, test/10k/floating_bubbles.tidy.html:123, test/10k/floating_bubbles.tidy.html:124, test/10k/floating_bubbles.tidy.html:126, test/10k/floating_bubbles.tidy.html:127, test/10k/floating_bubbles.tidy.html:131, test/10k/floating_bubbles.tidy.html:132, test/10k/floating_bubbles.tidy.html:135, test/10k/floating_bubbles.tidy.html:136, test/10k/floating_bubbles.tidy.html:138, test/10k/floating_bubbles.tidy.html:140, test/10k/floating_bubbles.tidy.html:143, test/10k/floating_bubbles.tidy.html:145, test/10k/floating_bubbles.tidy.html:146, test/10k/floating_bubbles.tidy.html:148, test/10k/floating_bubbles.tidy.html:150, test/10k/floating_bubbles.tidy.html:151, test/10k/floating_bubbles.tidy.html:153, test/10k/floating_bubbles.tidy.html:154, test/10k/floating_bubbles.tidy.html:155, test/10k/floating_bubbles.tidy.html:156, test/10k/floating_bubbles.tidy.html:157, test/10k/floating_bubbles.tidy.html:158, test/10k/floating_bubbles.tidy.html:177, test/10k/floating_bubbles.tidy.html:178, test/10k/floating_bubbles.tidy.html:181, test/10k/floating_bubbles.tidy.html:185, test/10k/floating_bubbles.tidy.html:187, test/10k/floating_bubbles.tidy.html:192, test/10k/floating_bubbles.tidy.html:194, test/10k/floating_bubbles.tidy.html:199, test/10k/floating_bubbles.tidy.html:200, test/10k/floating_bubbles.tidy.html:201, test/10k/floating_bubbles.tidy.html:204, test/10k/floating_bubbles.tidy.html:205, test/10k/floating_bubbles.tidy.html:210, test/10k/floating_bubbles.tidy.html:211, test/10k/floating_bubbles.tidy.html:220, test/10k/floating_bubbles.tidy.html:231, test/10k/floating_bubbles.tidy.html:234, test/10k/floating_bubbles.tidy.html:235, test/10k/floating_bubbles.tidy.html:237, test/10k/floating_bubbles.tidy.html:239, test/10k/floating_bubbles.tidy.html:242, test/10k/floating_bubbles.tidy.html:243, test/10k/floating_bubbles.tidy.html:244, test/10k/floating_bubbles.tidy.html:245, test/10k/floating_bubbles.tidy.html:258, test/10k/floating_bubbles.tidy.html:261, test/10k/floating_bubbles.tidy.html:263, test/10k/floating_bubbles.tidy.html:264, test/10k/floating_bubbles.tidy.html:271, test/10k/floating_bubbles.tidy.html:288, test/10k/floating_bubbles.tidy.html:311, test/10k/floating_bubbles.tidy.html:317, test/10k/floating_bubbles.tidy.html:322, test/10k/floating_bubbles.tidy.html:350, test/10k/floating_bubbles.tidy.html:351, test/10k/floating_bubbles.tidy.html:375]
+test/10k/floating_bubbles.tidy.html:71: [maybe] Converting primitive number to object
+test/10k/floating_bubbles.tidy.html:71: [maybe] Converting primitive number to object
+test/10k/floating_bubbles.tidy.html:85: [maybe] Conversion to number yields NaN
+test/10k/floating_bubbles.tidy.html:86: [maybe] Conversion to number yields NaN
+test/10k/floating_bubbles.tidy.html:87: [maybe] Conversion to number yields NaN
+test/10k/floating_bubbles.tidy.html:93: [maybe] Conversion to number yields NaN
+test/10k/floating_bubbles.tidy.html:94: [maybe] Converting primitive number to object
+test/10k/floating_bubbles.tidy.html:94: [maybe] Converting primitive number to object
+test/10k/floating_bubbles.tidy.html:97: [maybe] Converting primitive number to object
+test/10k/floating_bubbles.tidy.html:97: [maybe] Converting primitive number to object
+test/10k/floating_bubbles.tidy.html:100: [maybe] Converting primitive number to object
+test/10k/floating_bubbles.tidy.html:100: [maybe] Converting primitive number to object
+test/10k/floating_bubbles.tidy.html:102: [maybe] Converting primitive number to object
+test/10k/floating_bubbles.tidy.html:103: [maybe] Converting primitive number to object
+test/10k/floating_bubbles.tidy.html:104: [maybe] Converting primitive number to object
+test/10k/floating_bubbles.tidy.html:105: [maybe] Conversion to number yields NaN
+test/10k/floating_bubbles.tidy.html:109: [maybe] Converting primitive number to object
+test/10k/floating_bubbles.tidy.html:109: [maybe] Converting primitive number to object
+test/10k/floating_bubbles.tidy.html:113: [maybe] Converting primitive number to object
+test/10k/floating_bubbles.tidy.html:116: [maybe] Conversion to number yields NaN
+test/10k/floating_bubbles.tidy.html:116: [maybe] Converting primitive number to object
+test/10k/floating_bubbles.tidy.html:117: [maybe] Conversion to number yields NaN
+test/10k/floating_bubbles.tidy.html:117: [maybe] Converting primitive number to object
+test/10k/floating_bubbles.tidy.html:117: [maybe] Converting primitive number to object
+test/10k/floating_bubbles.tidy.html:119: [maybe] Conversion to number yields NaN
+test/10k/floating_bubbles.tidy.html:119: [maybe] Converting primitive number to object
+test/10k/floating_bubbles.tidy.html:120: [maybe] Conversion to number yields NaN
+test/10k/floating_bubbles.tidy.html:120: [maybe] Converting primitive number to object
+test/10k/floating_bubbles.tidy.html:120: [maybe] Converting primitive number to object
+test/10k/floating_bubbles.tidy.html:123: [maybe] Conversion to number yields NaN
+test/10k/floating_bubbles.tidy.html:123: [maybe] Converting primitive number to object
+test/10k/floating_bubbles.tidy.html:124: [maybe] Conversion to number yields NaN
+test/10k/floating_bubbles.tidy.html:124: [maybe] Converting primitive number to object
+test/10k/floating_bubbles.tidy.html:124: [maybe] Converting primitive number to object
+test/10k/floating_bubbles.tidy.html:126: [maybe] Conversion to number yields NaN
+test/10k/floating_bubbles.tidy.html:126: [maybe] Converting primitive number to object
+test/10k/floating_bubbles.tidy.html:127: [maybe] Conversion to number yields NaN
+test/10k/floating_bubbles.tidy.html:127: [maybe] Converting primitive number to object
+test/10k/floating_bubbles.tidy.html:127: [maybe] Converting primitive number to object
+test/10k/floating_bubbles.tidy.html:131: [maybe] Converting primitive number to object
+test/10k/floating_bubbles.tidy.html:132: [maybe] Converting primitive number to object
+test/10k/floating_bubbles.tidy.html:138: [maybe] Converting primitive number to object
+test/10k/floating_bubbles.tidy.html:138: [maybe] Converting primitive number to object
+test/10k/floating_bubbles.tidy.html:145: [maybe] Converting primitive number to object
+test/10k/floating_bubbles.tidy.html:146: [maybe] Converting primitive number to object
+test/10k/floating_bubbles.tidy.html:148: [maybe] Converting primitive number to object
+test/10k/floating_bubbles.tidy.html:150: [maybe] Converting primitive number to object
+test/10k/floating_bubbles.tidy.html:150: [maybe] Converting primitive number to object
+test/10k/floating_bubbles.tidy.html:150: [maybe] Converting primitive number to object
+test/10k/floating_bubbles.tidy.html:150: [maybe] Converting primitive number to object
+test/10k/floating_bubbles.tidy.html:151: [maybe] Converting primitive number to object
+test/10k/floating_bubbles.tidy.html:153: [maybe] Converting primitive number to object
+test/10k/floating_bubbles.tidy.html:153: [maybe] Converting primitive number to object
+test/10k/floating_bubbles.tidy.html:153: [maybe] Converting primitive number to object
+test/10k/floating_bubbles.tidy.html:154: [maybe] Converting primitive number to object
+test/10k/floating_bubbles.tidy.html:155: [maybe] Converting primitive number to object
+test/10k/floating_bubbles.tidy.html:156: [maybe] Converting primitive number to object
+test/10k/floating_bubbles.tidy.html:157: [maybe] Converting primitive number to object
+test/10k/floating_bubbles.tidy.html:158: [maybe] Converting primitive number to object
+test/10k/floating_bubbles.tidy.html:162: [maybe] Conversion to number yields NaN
+test/10k/floating_bubbles.tidy.html:166: [maybe] Conversion to number yields NaN
+test/10k/floating_bubbles.tidy.html:171: [maybe] Conversion to number yields NaN
+test/10k/floating_bubbles.tidy.html:199: [maybe] Converting primitive number to object
+test/10k/floating_bubbles.tidy.html:204: [maybe] Converting primitive number to object
+test/10k/floating_bubbles.tidy.html:210: [maybe] Converting primitive number to object
+test/10k/floating_bubbles.tidy.html:219: [maybe] Conversion to number yields NaN
+test/10k/floating_bubbles.tidy.html:220: [maybe] Conversion to number yields NaN
+test/10k/floating_bubbles.tidy.html:220: [maybe] Converting primitive number to object
+test/10k/floating_bubbles.tidy.html:220: [maybe] Converting primitive number to object
+test/10k/floating_bubbles.tidy.html:235: [maybe] Conversion to number yields NaN
+test/10k/floating_bubbles.tidy.html:236: [maybe] Conversion to number yields NaN
+test/10k/floating_bubbles.tidy.html:237: [maybe] Conversion to number yields NaN
+test/10k/floating_bubbles.tidy.html:237: [maybe] Converting primitive number to object
+test/10k/floating_bubbles.tidy.html:237: [maybe] Converting primitive number to object
+test/10k/floating_bubbles.tidy.html:237: [maybe] Converting primitive number to object
+test/10k/floating_bubbles.tidy.html:237: [maybe] Converting primitive number to object
+test/10k/floating_bubbles.tidy.html:237: [maybe] Converting primitive number to object
+test/10k/floating_bubbles.tidy.html:237: [maybe] Converting primitive number to object
+test/10k/floating_bubbles.tidy.html:255: [maybe] Conversion to number yields NaN
+test/10k/floating_bubbles.tidy.html:256: [maybe] Conversion to number yields NaN
+test/10k/floating_bubbles.tidy.html:258: [maybe] Conversion to number yields NaN
+test/10k/floating_bubbles.tidy.html:260: [maybe] Conversion to number yields NaN
+test/10k/floating_bubbles.tidy.html:261: [maybe] Conversion to number yields NaN
+test/10k/floating_bubbles.tidy.html:264: [maybe] Conversion to number yields NaN
+test/10k/floating_bubbles.tidy.html:279: [maybe] Conversion to number yields NaN
+test/10k/floating_bubbles.tidy.html:279: [maybe] Conversion to number yields NaN
+test/10k/floating_bubbles.tidy.html:281: [maybe] Conversion to number yields NaN
+test/10k/floating_bubbles.tidy.html:287: [maybe] Conversion to number yields NaN
+test/10k/floating_bubbles.tidy.html:288: [maybe] Converting primitive number to object
+test/10k/floating_bubbles.tidy.html:288: [maybe] Converting primitive number to object
+test/10k/floating_bubbles.tidy.html:311: [maybe] Conversion to number yields NaN
+test/10k/floating_bubbles.tidy.html:311: [maybe] Conversion to number yields NaN
+test/10k/floating_bubbles.tidy.html:311: [maybe] Converting primitive number to object
+test/10k/floating_bubbles.tidy.html:311: [maybe] Converting primitive number to object
+test/10k/floating_bubbles.tidy.html:317: [maybe] Conversion to number yields NaN
+test/10k/floating_bubbles.tidy.html:317: [maybe] Converting primitive number to object
+test/10k/floating_bubbles.tidy.html:318: [maybe] Conversion to number yields NaN
+test/10k/floating_bubbles.tidy.html:318: [maybe] Converting primitive number to object
+test/10k/floating_bubbles.tidy.html:322: [maybe] Conversion to number yields NaN
+test/10k/floating_bubbles.tidy.html:322: [maybe] Converting primitive number to object
+test/10k/floating_bubbles.tidy.html:323: [maybe] Conversion to number yields NaN
+test/10k/floating_bubbles.tidy.html:323: [maybe] Converting primitive number to object
+test/10k/floating_bubbles.tidy.html:327: [maybe] Conversion to number yields NaN
+test/10k/floating_bubbles.tidy.html:328: [maybe] Conversion to number yields NaN
+test/10k/floating_bubbles.tidy.html:374: [maybe] Converting undefined to string

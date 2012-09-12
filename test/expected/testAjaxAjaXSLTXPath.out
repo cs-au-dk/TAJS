@@ -1,0 +1,648 @@
+xpath_script.js:56:17: [definite] ReferenceError, reading absent variable Option
+../dom.js:284:37: [definite] Variable opt_value is null/undefined
+../dom.js:284:48: [definite] Variable opt_owner is null/undefined
+../dom.js:291:25: [definite] Variable value is null/undefined
+../dom.js:292:24: [definite] Variable owner is null/undefined
+xpath_script.js:55:3: [definite] The conditional expression is always true
+../dom.js:281:3: [definite] Dead assignment, property attributes is never read
+../dom.js:282:3: [definite] Dead assignment, property childNodes is never read
+../dom.js:289:3: [definite] Dead assignment, property nodeType is never read
+../dom.js:290:3: [definite] Dead assignment, property nodeName is never read
+../dom.js:291:3: [definite] Dead assignment, property nodeValue is never read
+../dom.js:292:3: [definite] Dead assignment, property ownerDocument is never read
+../dom.js:294:3: [definite] Dead assignment, property firstChild is never read
+../dom.js:295:3: [definite] Dead assignment, property lastChild is never read
+../dom.js:296:3: [definite] Dead assignment, property nextSibling is never read
+../dom.js:297:3: [definite] Dead assignment, property previousSibling is never read
+../dom.js:298:3: [definite] Dead assignment, property parentNode is never read
+../dom.js:339:1: [definite] Dead assignment, property appendChild is never read
+../dom.js:365:1: [definite] Dead assignment, property replaceChild is never read
+../dom.js:406:1: [definite] Dead assignment, property insertBefore is never read
+../dom.js:445:1: [definite] Dead assignment, property removeChild is never read
+../dom.js:470:1: [definite] Dead assignment, property hasAttributes is never read
+../dom.js:475:1: [definite] Dead assignment, property setAttribute is never read
+../dom.js:486:1: [definite] Dead assignment, property getAttribute is never read
+../dom.js:496:1: [definite] Dead assignment, property removeAttribute is never read
+../dom.js:507:1: [definite] Dead assignment, property getElementsByTagName is never read
+../dom.js:527:1: [definite] Dead assignment, property getElementById is never read
+../dom.js:548:1: [definite] Dead assignment, property clear is never read
+../dom.js:553:1: [definite] Dead assignment, property appendChild is never read
+../dom.js:558:1: [definite] Dead assignment, property createElement is never read
+../dom.js:562:1: [definite] Dead assignment, property createDocumentFragment is never read
+../dom.js:567:1: [definite] Dead assignment, property createTextNode is never read
+../dom.js:571:1: [definite] Dead assignment, property createAttribute is never read
+../dom.js:575:1: [definite] Dead assignment, property createComment is never read
+../dom.js:579:1: [definite] Dead assignment, property createCDATASection is never read
+../util.js:95:1: [definite] Dead assignment, property size is never read
+../util.js:100:1: [definite] Dead assignment, property add is never read
+../util.js:109:1: [definite] Dead assignment, property set is never read
+../util.js:123:1: [definite] Dead assignment, property inc is never read
+../util.js:132:1: [definite] Dead assignment, property get is never read
+../util.js:142:1: [definite] Dead assignment, property remove is never read
+../util.js:150:1: [definite] Dead assignment, property contains is never read
+../util.js:155:1: [definite] Dead assignment, property items is never read
+../util.js:168:1: [definite] Dead assignment, property map is never read
+../util.js:175:1: [definite] Dead assignment, property clear is never read
+../xpath.js:451:1: [definite] Dead assignment, property clone is never read
+../xpath.js:459:1: [definite] Dead assignment, property setVariable is never read
+../xpath.js:477:1: [definite] Dead assignment, property getVariable is never read
+../xpath.js:489:1: [definite] Dead assignment, property setNode is never read
+../xpath.js:494:1: [definite] Dead assignment, property contextSize is never read
+../xpath.js:498:1: [definite] Dead assignment, property isCaseInsensitive is never read
+../xpath.js:502:1: [definite] Dead assignment, property setCaseInsensitive is never read
+../xpath.js:506:1: [definite] Dead assignment, property isIgnoreAttributesWithoutValue is never read
+../xpath.js:510:1: [definite] Dead assignment, property setIgnoreAttributesWithoutValue is never read
+../xpath.js:552:1: [definite] Dead assignment, property stringValue is never read
+../xpath.js:556:1: [definite] Dead assignment, property booleanValue is never read
+../xpath.js:560:1: [definite] Dead assignment, property numberValue is never read
+../xpath.js:564:1: [definite] Dead assignment, property nodeSetValue is never read
+../xpath.js:573:1: [definite] Dead assignment, property stringValue is never read
+../xpath.js:577:1: [definite] Dead assignment, property booleanValue is never read
+../xpath.js:581:1: [definite] Dead assignment, property numberValue is never read
+../xpath.js:585:1: [definite] Dead assignment, property nodeSetValue is never read
+../xpath.js:594:1: [definite] Dead assignment, property stringValue is never read
+../xpath.js:598:1: [definite] Dead assignment, property booleanValue is never read
+../xpath.js:602:1: [definite] Dead assignment, property numberValue is never read
+../xpath.js:606:1: [definite] Dead assignment, property nodeSetValue is never read
+../xpath.js:615:1: [definite] Dead assignment, property stringValue is never read
+../xpath.js:623:1: [definite] Dead assignment, property booleanValue is never read
+../xpath.js:627:1: [definite] Dead assignment, property numberValue is never read
+../xpath.js:631:1: [definite] Dead assignment, property nodeSetValue is never read
+../xpath.js:656:1: [definite] Dead assignment, property evaluate is never read
+../xpath.js:665:1: [definite] Dead assignment, property appendStep is never read
+../xpath.js:674:1: [definite] Dead assignment, property prependStep is never read
+../xpath.js:684:1: [definite] Dead assignment, property _combineSteps is never read
+../xpath.js:708:1: [definite] Dead assignment, property evaluate is never read
+../xpath.js:742:1: [definite] Dead assignment, property appendPredicate is never read
+../xpath.js:746:1: [definite] Dead assignment, property evaluate is never read
+../xpath.js:866:1: [definite] Dead assignment, property evaluate is never read
+../xpath.js:872:1: [definite] Dead assignment, property evaluate is never read
+../xpath.js:880:1: [definite] Dead assignment, property evaluate is never read
+../xpath.js:886:1: [definite] Dead assignment, property evaluate is never read
+../xpath.js:894:1: [definite] Dead assignment, property evaluate is never read
+../xpath.js:905:1: [definite] Dead assignment, property evaluate is never read
+../xpath.js:915:1: [definite] Dead assignment, property evaluate is never read
+../xpath.js:929:1: [definite] Dead assignment, property evaluate is never read
+../xpath.js:946:1: [definite] Dead assignment, property appendArg is never read
+../xpath.js:950:1: [definite] Dead assignment, property evaluate is never read
+../xpath.js:961:1: [definite] Dead assignment, property xpathfunctions is never read
+../xpath.js:961:45: [definite] Dead assignment, property boolean is never read
+../xpath.js:961:45: [definite] Dead assignment, property ceiling is never read
+../xpath.js:961:45: [definite] Dead assignment, property concat is never read
+../xpath.js:961:45: [definite] Dead assignment, property contains is never read
+../xpath.js:961:45: [definite] Dead assignment, property count is never read
+../xpath.js:961:45: [definite] Dead assignment, property ext-cardinal is never read
+../xpath.js:961:45: [definite] Dead assignment, property ext-if is never read
+../xpath.js:961:45: [definite] Dead assignment, property ext-join is never read
+../xpath.js:961:45: [definite] Dead assignment, property false is never read
+../xpath.js:961:45: [definite] Dead assignment, property floor is never read
+../xpath.js:961:45: [definite] Dead assignment, property id is never read
+../xpath.js:961:45: [definite] Dead assignment, property lang is never read
+../xpath.js:961:45: [definite] Dead assignment, property last is never read
+../xpath.js:961:45: [definite] Dead assignment, property local-name is never read
+../xpath.js:961:45: [definite] Dead assignment, property name is never read
+../xpath.js:961:45: [definite] Dead assignment, property namespace-uri is never read
+../xpath.js:961:45: [definite] Dead assignment, property normalize-space is never read
+../xpath.js:961:45: [definite] Dead assignment, property not is never read
+../xpath.js:961:45: [definite] Dead assignment, property number is never read
+../xpath.js:961:45: [definite] Dead assignment, property position is never read
+../xpath.js:961:45: [definite] Dead assignment, property round is never read
+../xpath.js:961:45: [definite] Dead assignment, property starts-with is never read
+../xpath.js:961:45: [definite] Dead assignment, property string is never read
+../xpath.js:961:45: [definite] Dead assignment, property string-length is never read
+../xpath.js:961:45: [definite] Dead assignment, property substring is never read
+../xpath.js:961:45: [definite] Dead assignment, property substring-after is never read
+../xpath.js:961:45: [definite] Dead assignment, property substring-before is never read
+../xpath.js:961:45: [definite] Dead assignment, property sum is never read
+../xpath.js:961:45: [definite] Dead assignment, property translate is never read
+../xpath.js:961:45: [definite] Dead assignment, property true is never read
+../xpath.js:1275:1: [definite] Dead assignment, property evaluate is never read
+../xpath.js:1300:1: [definite] Dead assignment, property evaluate is never read
+../xpath.js:1317:1: [definite] Dead assignment, property evaluate is never read
+../xpath.js:1337:1: [definite] Dead assignment, property evaluate is never read
+../xpath.js:1347:1: [definite] Dead assignment, property evaluate is never read
+../xpath.js:1415:1: [definite] Dead assignment, property compare is never read
+../xpath.js:1511:1: [definite] Dead assignment, property evaluate is never read
+../xpath.js:1519:1: [definite] Dead assignment, property evaluate is never read
+../xpath.js:1527:1: [definite] Dead assignment, property evaluate is never read
+../xpath.js:1810:18: [definite] Dead assignment, property label is never read
+../xpath.js:1810:18: [definite] Dead assignment, property prec is never read
+../xpath.js:1810:18: [definite] Dead assignment, property re is never read
+../xpath.js:1811:18: [definite] Dead assignment, property label is never read
+../xpath.js:1811:18: [definite] Dead assignment, property prec is never read
+../xpath.js:1811:18: [definite] Dead assignment, property re is never read
+../xpath.js:1812:18: [definite] Dead assignment, property label is never read
+../xpath.js:1812:18: [definite] Dead assignment, property prec is never read
+../xpath.js:1812:18: [definite] Dead assignment, property re is never read
+../xpath.js:1813:18: [definite] Dead assignment, property label is never read
+../xpath.js:1813:18: [definite] Dead assignment, property prec is never read
+../xpath.js:1813:18: [definite] Dead assignment, property re is never read
+../xpath.js:1814:18: [definite] Dead assignment, property label is never read
+../xpath.js:1814:18: [definite] Dead assignment, property prec is never read
+../xpath.js:1814:18: [definite] Dead assignment, property re is never read
+../xpath.js:1815:20: [definite] Dead assignment, property label is never read
+../xpath.js:1815:20: [definite] Dead assignment, property re is never read
+../xpath.js:1816:18: [definite] Dead assignment, property label is never read
+../xpath.js:1816:18: [definite] Dead assignment, property prec is never read
+../xpath.js:1816:18: [definite] Dead assignment, property re is never read
+../xpath.js:1817:18: [definite] Dead assignment, property label is never read
+../xpath.js:1817:18: [definite] Dead assignment, property re is never read
+../xpath.js:1818:18: [definite] Dead assignment, property label is never read
+../xpath.js:1818:18: [definite] Dead assignment, property prec is never read
+../xpath.js:1818:18: [definite] Dead assignment, property re is never read
+../xpath.js:1819:18: [definite] Dead assignment, property label is never read
+../xpath.js:1819:18: [definite] Dead assignment, property prec is never read
+../xpath.js:1819:18: [definite] Dead assignment, property re is never read
+../xpath.js:1820:18: [definite] Dead assignment, property label is never read
+../xpath.js:1820:18: [definite] Dead assignment, property prec is never read
+../xpath.js:1820:18: [definite] Dead assignment, property re is never read
+../xpath.js:1822:18: [definite] Dead assignment, property label is never read
+../xpath.js:1822:18: [definite] Dead assignment, property re is never read
+../xpath.js:1824:18: [definite] Dead assignment, property label is never read
+../xpath.js:1824:18: [definite] Dead assignment, property prec is never read
+../xpath.js:1824:18: [definite] Dead assignment, property re is never read
+../xpath.js:1825:18: [definite] Dead assignment, property label is never read
+../xpath.js:1825:18: [definite] Dead assignment, property prec is never read
+../xpath.js:1825:18: [definite] Dead assignment, property re is never read
+../xpath.js:1826:18: [definite] Dead assignment, property label is never read
+../xpath.js:1826:18: [definite] Dead assignment, property prec is never read
+../xpath.js:1826:18: [definite] Dead assignment, property re is never read
+../xpath.js:1827:18: [definite] Dead assignment, property label is never read
+../xpath.js:1827:18: [definite] Dead assignment, property prec is never read
+../xpath.js:1827:18: [definite] Dead assignment, property re is never read
+../xpath.js:1828:18: [definite] Dead assignment, property label is never read
+../xpath.js:1828:18: [definite] Dead assignment, property prec is never read
+../xpath.js:1828:18: [definite] Dead assignment, property re is never read
+../xpath.js:1829:18: [definite] Dead assignment, property label is never read
+../xpath.js:1829:18: [definite] Dead assignment, property prec is never read
+../xpath.js:1829:18: [definite] Dead assignment, property re is never read
+../xpath.js:1830:18: [definite] Dead assignment, property label is never read
+../xpath.js:1830:18: [definite] Dead assignment, property prec is never read
+../xpath.js:1830:18: [definite] Dead assignment, property re is never read
+../xpath.js:1831:18: [definite] Dead assignment, property label is never read
+../xpath.js:1831:18: [definite] Dead assignment, property prec is never read
+../xpath.js:1831:18: [definite] Dead assignment, property re is never read
+../xpath.js:1832:18: [definite] Dead assignment, property label is never read
+../xpath.js:1832:18: [definite] Dead assignment, property left is never read
+../xpath.js:1832:18: [definite] Dead assignment, property prec is never read
+../xpath.js:1832:18: [definite] Dead assignment, property re is never read
+../xpath.js:1833:18: [definite] Dead assignment, property label is never read
+../xpath.js:1833:18: [definite] Dead assignment, property left is never read
+../xpath.js:1833:18: [definite] Dead assignment, property prec is never read
+../xpath.js:1833:18: [definite] Dead assignment, property re is never read
+../xpath.js:1834:18: [definite] Dead assignment, property label is never read
+../xpath.js:1834:18: [definite] Dead assignment, property left is never read
+../xpath.js:1834:18: [definite] Dead assignment, property prec is never read
+../xpath.js:1834:18: [definite] Dead assignment, property re is never read
+../xpath.js:1835:18: [definite] Dead assignment, property label is never read
+../xpath.js:1835:18: [definite] Dead assignment, property left is never read
+../xpath.js:1835:18: [definite] Dead assignment, property prec is never read
+../xpath.js:1835:18: [definite] Dead assignment, property re is never read
+../xpath.js:1837:18: [definite] Dead assignment, property label is never read
+../xpath.js:1837:18: [definite] Dead assignment, property prec is never read
+../xpath.js:1837:18: [definite] Dead assignment, property re is never read
+../xpath.js:1838:18: [definite] Dead assignment, property label is never read
+../xpath.js:1838:18: [definite] Dead assignment, property re is never read
+../xpath.js:1839:18: [definite] Dead assignment, property label is never read
+../xpath.js:1839:18: [definite] Dead assignment, property re is never read
+../xpath.js:1841:18: [definite] Dead assignment, property label is never read
+../xpath.js:1841:18: [definite] Dead assignment, property re is never read
+../xpath.js:1843:20: [definite] Dead assignment, property label is never read
+../xpath.js:1843:20: [definite] Dead assignment, property left is never read
+../xpath.js:1843:20: [definite] Dead assignment, property prec is never read
+../xpath.js:1843:20: [definite] Dead assignment, property re is never read
+../xpath.js:1844:20: [definite] Dead assignment, property label is never read
+../xpath.js:1844:20: [definite] Dead assignment, property prec is never read
+../xpath.js:1844:20: [definite] Dead assignment, property re is never read
+../xpath.js:1845:21: [definite] Dead assignment, property label is never read
+../xpath.js:1845:21: [definite] Dead assignment, property prec is never read
+../xpath.js:1845:21: [definite] Dead assignment, property re is never read
+../xpath.js:1851:19: [definite] Dead assignment, property label is never read
+../xpath.js:1851:19: [definite] Dead assignment, property prec is never read
+../xpath.js:1851:19: [definite] Dead assignment, property re is never read
+../xpath.js:1856:17: [definite] Dead assignment, property label is never read
+../xpath.js:1856:17: [definite] Dead assignment, property re is never read
+../xpath.js:1861:17: [definite] Dead assignment, property label is never read
+../xpath.js:1861:17: [definite] Dead assignment, property re is never read
+../xpath.js:1914:25: [definite] Dead assignment, property label is never read
+../xpath.js:1915:33: [definite] Dead assignment, property label is never read
+../xpath.js:1916:33: [definite] Dead assignment, property label is never read
+../xpath.js:1917:17: [definite] Dead assignment, property label is never read
+../xpath.js:1918:21: [definite] Dead assignment, property label is never read
+../xpath.js:1919:22: [definite] Dead assignment, property label is never read
+../xpath.js:1920:20: [definite] Dead assignment, property label is never read
+../xpath.js:1921:17: [definite] Dead assignment, property label is never read
+../xpath.js:1922:24: [definite] Dead assignment, property label is never read
+../xpath.js:1923:30: [definite] Dead assignment, property label is never read
+../xpath.js:1924:19: [definite] Dead assignment, property label is never read
+../xpath.js:1925:25: [definite] Dead assignment, property label is never read
+../xpath.js:1926:30: [definite] Dead assignment, property label is never read
+../xpath.js:1927:21: [definite] Dead assignment, property label is never read
+../xpath.js:1928:22: [definite] Dead assignment, property label is never read
+../xpath.js:1929:23: [definite] Dead assignment, property label is never read
+../xpath.js:1930:19: [definite] Dead assignment, property label is never read
+../xpath.js:1953:12: [definite] Dead assignment, property label is never read
+../xpath.js:1954:12: [definite] Dead assignment, property label is never read
+../xpath.js:1955:12: [definite] Dead assignment, property label is never read
+../xpath_unittest.js:384:22: [definite] Dead assignment, property foo is never read
+../xpath_unittest.js:385:20: [definite] Dead assignment, property foo is never read
+../xpath_unittest.js:386:21: [definite] Dead assignment, property foo is never read
+../xpath_unittest.js:387:24: [definite] Dead assignment, property foo is never read
+../xpath_unittest.js:389:40: [definite] Dead assignment, property ほげ is never read
+../xpath_unittest.js:390:29: [definite] Dead assignment, property ほげ is never read
+../xpath_unittest.js:391:30: [definite] Dead assignment, property ほげ is never read
+../xpath_unittest.js:392:33: [definite] Dead assignment, property ほげ is never read
+../xpathdebug.js:36:1: [definite] Dead assignment, property toString is never read
+../xpathdebug.js:40:1: [definite] Dead assignment, property parseTree is never read
+../xpathdebug.js:45:1: [definite] Dead assignment, property toString is never read
+../xpathdebug.js:59:1: [definite] Dead assignment, property parseTree is never read
+../xpathdebug.js:68:1: [definite] Dead assignment, property toString is never read
+../xpathdebug.js:76:1: [definite] Dead assignment, property parseTree is never read
+../xpathdebug.js:86:1: [definite] Dead assignment, property toString is never read
+../xpathdebug.js:94:1: [definite] Dead assignment, property toString is never read
+../xpathdebug.js:98:1: [definite] Dead assignment, property parseTree is never read
+../xpathdebug.js:100:1: [definite] Dead assignment, property toString is never read
+../xpathdebug.js:104:1: [definite] Dead assignment, property parseTree is never read
+../xpathdebug.js:106:1: [definite] Dead assignment, property toString is never read
+../xpathdebug.js:110:1: [definite] Dead assignment, property parseTree is never read
+../xpathdebug.js:112:1: [definite] Dead assignment, property toString is never read
+../xpathdebug.js:116:1: [definite] Dead assignment, property parseTree is never read
+../xpathdebug.js:118:1: [definite] Dead assignment, property toString is never read
+../xpathdebug.js:122:1: [definite] Dead assignment, property parseTree is never read
+../xpathdebug.js:124:1: [definite] Dead assignment, property toString is never read
+../xpathdebug.js:128:1: [definite] Dead assignment, property parseTree is never read
+../xpathdebug.js:130:1: [definite] Dead assignment, property toString is never read
+../xpathdebug.js:135:1: [definite] Dead assignment, property parseTree is never read
+../xpathdebug.js:140:1: [definite] Dead assignment, property toString is never read
+../xpathdebug.js:152:1: [definite] Dead assignment, property parseTree is never read
+../xpathdebug.js:160:1: [definite] Dead assignment, property toString is never read
+../xpathdebug.js:164:1: [definite] Dead assignment, property parseTree is never read
+../xpathdebug.js:171:1: [definite] Dead assignment, property toString is never read
+../xpathdebug.js:177:1: [definite] Dead assignment, property parseTree is never read
+../xpathdebug.js:186:1: [definite] Dead assignment, property toString is never read
+../xpathdebug.js:194:1: [definite] Dead assignment, property parseTree is never read
+../xpathdebug.js:205:1: [definite] Dead assignment, property toString is never read
+../xpathdebug.js:209:1: [definite] Dead assignment, property parseTree is never read
+../xpathdebug.js:213:1: [definite] Dead assignment, property toString is never read
+../xpathdebug.js:218:1: [definite] Dead assignment, property parseTree is never read
+../xpathdebug.js:224:1: [definite] Dead assignment, property toString is never read
+../xpathdebug.js:228:1: [definite] Dead assignment, property parseTree is never read
+../xpathdebug.js:232:1: [definite] Dead assignment, property toString is never read
+../xpathdebug.js:236:1: [definite] Dead assignment, property parseTree is never read
+../xpathdebug.js:240:1: [definite] Dead assignment, property toString is never read
+../xpathdebug.js:244:1: [definite] Dead assignment, property parseTree is never read
+../xpathdebug.js:248:1: [definite] Dead assignment, property toString is never read
+../xpathdebug.js:252:1: [definite] Dead assignment, property toString is never read
+../xpathdebug.js:261:1: [definite] Dead assignment, property toString is never read
+../xpathdebug.js:262:1: [definite] Dead assignment, property toString is never read
+../xpathdebug.js:263:1: [definite] Dead assignment, property toString is never read
+../xpathdebug.js:264:1: [definite] Dead assignment, property toString is never read
+../dom.js:33:1: [definite] Unreachable function xmlResolveEntities
+../dom.js:92:1: [definite] Unreachable function xmlParse
+../dom.js:249:1: [definite] Unreachable function domTraverseElements
+../dom.js:303:17: [definite] Unreachable function
+../dom.js:329:16: [definite] Unreachable function
+../dom.js:339:31: [definite] Unreachable function
+../dom.js:365:32: [definite] Unreachable function
+../dom.js:406:32: [definite] Unreachable function
+../dom.js:445:31: [definite] Unreachable function
+../dom.js:470:33: [definite] Unreachable function
+../dom.js:475:32: [definite] Unreachable function
+../dom.js:486:32: [definite] Unreachable function
+../dom.js:496:35: [definite] Unreachable function
+../dom.js:507:40: [definite] Unreachable function
+../dom.js:511:31: [definite] Unreachable function
+../dom.js:516:31: [definite] Unreachable function
+../dom.js:527:34: [definite] Unreachable function
+../dom.js:529:29: [definite] Unreachable function
+../dom.js:539:1: [definite] Unreachable function XDocument
+../dom.js:548:29: [definite] Unreachable function
+../dom.js:553:35: [definite] Unreachable function
+../dom.js:558:37: [definite] Unreachable function
+../dom.js:562:46: [definite] Unreachable function
+../dom.js:567:38: [definite] Unreachable function
+../dom.js:571:39: [definite] Unreachable function
+../dom.js:575:37: [definite] Unreachable function
+../dom.js:579:42: [definite] Unreachable function
+../simplelog.js:44:1: [definite] Unreachable function Log
+../simplelog.js:48:13: [definite] Unreachable function
+../simplelog.js:56:16: [definite] Unreachable function
+../simplelog.js:67:16: [definite] Unreachable function
+../simplelog.js:74:13: [definite] Unreachable function
+../simplelog.js:82:12: [definite] Unreachable function
+../simplelog.js:89:11: [definite] Unreachable function
+../simplelog.js:110:1: [definite] Unreachable function xpathLog
+../simplelog.js:113:1: [definite] Unreachable function xsltLog
+../simplelog.js:114:1: [definite] Unreachable function xsltLogXml
+../util.js:14:1: [definite] Unreachable function xpathLog
+../util.js:15:1: [definite] Unreachable function xsltLog
+../util.js:16:1: [definite] Unreachable function xsltLogXml
+../util.js:21:1: [definite] Unreachable function assert
+../util.js:30:1: [definite] Unreachable function stringSplit
+../util.js:52:1: [definite] Unreachable function xmlImportNode
+../util.js:91:1: [definite] Unreachable function Set
+../util.js:95:22: [definite] Unreachable function
+../util.js:100:21: [definite] Unreachable function
+../util.js:109:21: [definite] Unreachable function
+../util.js:123:21: [definite] Unreachable function
+../util.js:132:21: [definite] Unreachable function
+../util.js:142:24: [definite] Unreachable function
+../util.js:150:26: [definite] Unreachable function
+../util.js:155:23: [definite] Unreachable function
+../util.js:168:21: [definite] Unreachable function
+../util.js:175:23: [definite] Unreachable function
+../util.js:185:1: [definite] Unreachable function mapExec
+../util.js:193:1: [definite] Unreachable function mapExpr
+../util.js:202:1: [definite] Unreachable function reverseInplace
+../util.js:213:1: [definite] Unreachable function removeFromArray
+../util.js:226:1: [definite] Unreachable function copyArray
+../util.js:240:1: [definite] Unreachable function copyArrayIgnoringAttributesWithoutValue
+../util.js:255:1: [definite] Unreachable function xmlValue
+../util.js:281:1: [definite] Unreachable function xmlValueIE6Hack
+../util.js:292:1: [definite] Unreachable function xmlText
+../util.js:298:1: [definite] Unreachable function xmlTextR
+../util.js:340:1: [definite] Unreachable function xmlFullNodeName
+../util.js:351:1: [definite] Unreachable function xmlEscapeText
+../util.js:360:1: [definite] Unreachable function xmlEscapeAttr
+../util.js:366:1: [definite] Unreachable function xmlEscapeTags
+../util.js:378:1: [definite] Unreachable function xmlOwnerDocument
+../util.js:387:1: [definite] Unreachable function domGetAttribute
+../util.js:391:1: [definite] Unreachable function domSetAttribute
+../util.js:395:1: [definite] Unreachable function domRemoveAttribute
+../util.js:399:1: [definite] Unreachable function domAppendChild
+../util.js:403:1: [definite] Unreachable function domRemoveChild
+../util.js:407:1: [definite] Unreachable function domReplaceChild
+../util.js:411:1: [definite] Unreachable function domInsertBefore
+../util.js:415:1: [definite] Unreachable function domRemoveNode
+../util.js:419:1: [definite] Unreachable function domCreateTextNode
+../util.js:423:1: [definite] Unreachable function domCreateElement
+../util.js:427:1: [definite] Unreachable function domCreateAttribute
+../util.js:431:1: [definite] Unreachable function domCreateCDATASection
+../util.js:435:1: [definite] Unreachable function domCreateComment
+../util.js:439:1: [definite] Unreachable function domCreateDocumentFragment
+../util.js:443:1: [definite] Unreachable function domGetElementById
+../util.js:448:1: [definite] Unreachable function windowSetInterval
+../util.js:452:1: [definite] Unreachable function windowClearInterval
+../xpath.js:63:1: [definite] Unreachable function xpathParse
+../xpath.js:189:1: [definite] Unreachable function xpathCacheLookup
+../xpath.js:219:1: [definite] Unreachable function xpathReduce
+../xpath.js:255:41: [definite] Unreachable function
+../xpath.js:275:1: [definite] Unreachable function xpathMatchStack
+../xpath.js:334:35: [definite] Unreachable function
+../xpath.js:347:1: [definite] Unreachable function xpathTokenPrecedence
+../xpath.js:351:1: [definite] Unreachable function xpathGrammarPrecedence
+../xpath.js:377:1: [definite] Unreachable function stackToString
+../xpath.js:430:1: [definite] Unreachable function ExprContext
+../xpath.js:451:31: [definite] Unreachable function
+../xpath.js:459:37: [definite] Unreachable function
+../xpath.js:477:37: [definite] Unreachable function
+../xpath.js:489:33: [definite] Unreachable function
+../xpath.js:494:37: [definite] Unreachable function
+../xpath.js:498:43: [definite] Unreachable function
+../xpath.js:502:44: [definite] Unreachable function
+../xpath.js:506:56: [definite] Unreachable function
+../xpath.js:510:57: [definite] Unreachable function
+../xpath.js:547:1: [definite] Unreachable function StringValue
+../xpath.js:552:37: [definite] Unreachable function
+../xpath.js:556:38: [definite] Unreachable function
+../xpath.js:560:37: [definite] Unreachable function
+../xpath.js:564:38: [definite] Unreachable function
+../xpath.js:568:1: [definite] Unreachable function BooleanValue
+../xpath.js:573:38: [definite] Unreachable function
+../xpath.js:577:39: [definite] Unreachable function
+../xpath.js:581:38: [definite] Unreachable function
+../xpath.js:585:39: [definite] Unreachable function
+../xpath.js:589:1: [definite] Unreachable function NumberValue
+../xpath.js:594:37: [definite] Unreachable function
+../xpath.js:598:38: [definite] Unreachable function
+../xpath.js:602:37: [definite] Unreachable function
+../xpath.js:606:38: [definite] Unreachable function
+../xpath.js:610:1: [definite] Unreachable function NodeSetValue
+../xpath.js:615:38: [definite] Unreachable function
+../xpath.js:623:39: [definite] Unreachable function
+../xpath.js:627:38: [definite] Unreachable function
+../xpath.js:631:39: [definite] Unreachable function
+../xpath.js:652:1: [definite] Unreachable function TokenExpr
+../xpath.js:656:32: [definite] Unreachable function
+../xpath.js:660:1: [definite] Unreachable function LocationExpr
+../xpath.js:665:37: [definite] Unreachable function
+../xpath.js:674:38: [definite] Unreachable function
+../xpath.js:684:40: [definite] Unreachable function
+../xpath.js:708:35: [definite] Unreachable function
+../xpath.js:722:1: [definite] Unreachable function xPathStep
+../xpath.js:736:1: [definite] Unreachable function StepExpr
+../xpath.js:742:38: [definite] Unreachable function
+../xpath.js:746:31: [definite] Unreachable function
+../xpath.js:862:1: [definite] Unreachable function NodeTestAny
+../xpath.js:866:34: [definite] Unreachable function
+../xpath.js:870:1: [definite] Unreachable function NodeTestElementOrAttribute
+../xpath.js:872:49: [definite] Unreachable function
+../xpath.js:878:1: [definite] Unreachable function NodeTestText
+../xpath.js:880:35: [definite] Unreachable function
+../xpath.js:884:1: [definite] Unreachable function NodeTestComment
+../xpath.js:886:38: [definite] Unreachable function
+../xpath.js:890:1: [definite] Unreachable function NodeTestPI
+../xpath.js:894:33: [definite] Unreachable function
+../xpath.js:900:1: [definite] Unreachable function NodeTestNC
+../xpath.js:905:33: [definite] Unreachable function
+../xpath.js:910:1: [definite] Unreachable function NodeTestName
+../xpath.js:915:35: [definite] Unreachable function
+../xpath.js:925:1: [definite] Unreachable function PredicateExpr
+../xpath.js:929:36: [definite] Unreachable function
+../xpath.js:941:1: [definite] Unreachable function FunctionCallExpr
+../xpath.js:946:40: [definite] Unreachable function
+../xpath.js:950:39: [definite] Unreachable function
+../xpath.js:962:11: [definite] Unreachable function
+../xpath.js:968:15: [definite] Unreachable function
+../xpath.js:974:12: [definite] Unreachable function
+../xpath.js:980:9: [definite] Unreachable function
+../xpath.js:1007:17: [definite] Unreachable function
+../xpath.js:1011:20: [definite] Unreachable function
+../xpath.js:1015:11: [definite] Unreachable function
+../xpath.js:1031:14: [definite] Unreachable function
+../xpath.js:1040:13: [definite] Unreachable function
+../xpath.js:1048:18: [definite] Unreachable function
+../xpath.js:1055:15: [definite] Unreachable function
+../xpath.js:1062:23: [definite] Unreachable function
+../xpath.js:1076:22: [definite] Unreachable function
+../xpath.js:1090:16: [definite] Unreachable function
+../xpath.js:1111:20: [definite] Unreachable function
+../xpath.js:1121:22: [definite] Unreachable function
+../xpath.js:1132:16: [definite] Unreachable function
+../xpath.js:1144:14: [definite] Unreachable function
+../xpath.js:1149:10: [definite] Unreachable function
+../xpath.js:1155:11: [definite] Unreachable function
+../xpath.js:1160:12: [definite] Unreachable function
+../xpath.js:1165:11: [definite] Unreachable function
+../xpath.js:1186:13: [definite] Unreachable function
+../xpath.js:1196:10: [definite] Unreachable function
+../xpath.js:1206:12: [definite] Unreachable function
+../xpath.js:1212:14: [definite] Unreachable function
+../xpath.js:1218:12: [definite] Unreachable function
+../xpath.js:1228:15: [definite] Unreachable function
+../xpath.js:1246:13: [definite] Unreachable function
+../xpath.js:1259:19: [definite] Unreachable function
+../xpath.js:1270:1: [definite] Unreachable function UnionExpr
+../xpath.js:1275:32: [definite] Unreachable function
+../xpath.js:1295:1: [definite] Unreachable function PathExpr
+../xpath.js:1300:31: [definite] Unreachable function
+../xpath.js:1312:1: [definite] Unreachable function FilterExpr
+../xpath.js:1317:33: [definite] Unreachable function
+../xpath.js:1333:1: [definite] Unreachable function UnaryMinusExpr
+../xpath.js:1337:37: [definite] Unreachable function
+../xpath.js:1341:1: [definite] Unreachable function BinaryExpr
+../xpath.js:1347:33: [definite] Unreachable function
+../xpath.js:1386:31: [definite] Unreachable function
+../xpath.js:1390:31: [definite] Unreachable function
+../xpath.js:1394:31: [definite] Unreachable function
+../xpath.js:1398:31: [definite] Unreachable function
+../xpath.js:1402:31: [definite] Unreachable function
+../xpath.js:1406:31: [definite] Unreachable function
+../xpath.js:1415:32: [definite] Unreachable function
+../xpath.js:1507:1: [definite] Unreachable function LiteralExpr
+../xpath.js:1511:34: [definite] Unreachable function
+../xpath.js:1515:1: [definite] Unreachable function NumberExpr
+../xpath.js:1519:33: [definite] Unreachable function
+../xpath.js:1523:1: [definite] Unreachable function VariableExpr
+../xpath.js:1527:35: [definite] Unreachable function
+../xpath.js:1540:1: [definite] Unreachable function makeTokenExpr
+../xpath.js:1544:1: [definite] Unreachable function passExpr
+../xpath.js:1548:1: [definite] Unreachable function makeLocationExpr1
+../xpath.js:1553:1: [definite] Unreachable function makeLocationExpr2
+../xpath.js:1559:1: [definite] Unreachable function makeLocationExpr3
+../xpath.js:1566:1: [definite] Unreachable function makeLocationExpr4
+../xpath.js:1573:1: [definite] Unreachable function makeLocationExpr5
+../xpath.js:1579:1: [definite] Unreachable function makeLocationExpr6
+../xpath.js:1584:1: [definite] Unreachable function makeLocationExpr7
+../xpath.js:1590:1: [definite] Unreachable function makeStepExpr1
+../xpath.js:1594:1: [definite] Unreachable function makeStepExpr2
+../xpath.js:1598:1: [definite] Unreachable function makeStepExpr3
+../xpath.js:1602:1: [definite] Unreachable function makeStepExpr4
+../xpath.js:1606:1: [definite] Unreachable function makeStepExpr5
+../xpath.js:1610:1: [definite] Unreachable function makeStepExpr6
+../xpath.js:1615:1: [definite] Unreachable function makeAbbrevStep
+../xpath.js:1628:1: [definite] Unreachable function makeNodeTestExpr1
+../xpath.js:1632:1: [definite] Unreachable function makeNodeTestExpr2
+../xpath.js:1636:1: [definite] Unreachable function makeNodeTestExpr3
+../xpath.js:1640:1: [definite] Unreachable function makeNodeTestExpr4
+../xpath.js:1657:1: [definite] Unreachable function makeNodeTestExpr5
+../xpath.js:1665:1: [definite] Unreachable function makePredicateExpr
+../xpath.js:1669:1: [definite] Unreachable function makePrimaryExpr
+../xpath.js:1673:1: [definite] Unreachable function makeFunctionCallExpr1
+../xpath.js:1677:1: [definite] Unreachable function makeFunctionCallExpr2
+../xpath.js:1686:1: [definite] Unreachable function makeArgumentExpr
+../xpath.js:1690:1: [definite] Unreachable function makeUnionExpr
+../xpath.js:1694:1: [definite] Unreachable function makePathExpr1
+../xpath.js:1698:1: [definite] Unreachable function makePathExpr2
+../xpath.js:1703:1: [definite] Unreachable function makeFilterExpr
+../xpath.js:1711:1: [definite] Unreachable function makeUnaryMinusExpr
+../xpath.js:1715:1: [definite] Unreachable function makeBinaryExpr
+../xpath.js:1719:1: [definite] Unreachable function makeLiteralExpr
+../xpath.js:1725:1: [definite] Unreachable function makeNumberExpr
+../xpath.js:1729:1: [definite] Unreachable function makeVariableReference
+../xpath.js:1735:1: [definite] Unreachable function makeSimpleExpr
+../xpath.js:1755:1: [definite] Unreachable function makeSimpleExpr2
+../xpath.js:2134:1: [definite] Unreachable function xpathParseInit
+../xpath.js:2143:26: [definite] Unreachable function
+../xpath.js:2175:3: [definite] Unreachable function push_
+../xpath.js:2205:23: [definite] Unreachable function
+../xpath.js:2217:1: [definite] Unreachable function xpathCollectDescendants
+../xpath.js:2229:1: [definite] Unreachable function xpathExtractTagNameFromNodeTest
+../xpath.js:2237:1: [definite] Unreachable function xpathCollectDescendantsReverse
+../xpath.js:2247:1: [definite] Unreachable function xpathDomEval
+../xpath.js:2255:1: [definite] Unreachable function xpathSort
+../xpath.js:2306:1: [definite] Unreachable function xpathSortByKey
+../xpath.js:2325:1: [definite] Unreachable function xpathEval
+../xpath_unittest.js:37:1: [definite] Unreachable function exposeTestFunctionNames
+../xpath_unittest.js:341:1: [definite] Unreachable function testParse
+../xpath_unittest.js:407:1: [definite] Unreachable function testEval
+../xpath_unittest.js:460:1: [definite] Unreachable function testAxes
+../xpath_unittest.js:489:1: [definite] Unreachable function testAttributeAsterisk
+../xpath_unittest.js:497:1: [definite] Unreachable function evalNodeSet
+../xpath_unittest.js:503:1: [definite] Unreachable function testEvalDom
+../xpath_unittest.js:516:1: [definite] Unreachable function testEvalDomJapanese
+../xpath_unittest.js:532:1: [definite] Unreachable function doTestEvalDom
+../xpathdebug.js:36:32: [definite] Unreachable function
+../xpathdebug.js:40:33: [definite] Unreachable function
+../xpathdebug.js:45:35: [definite] Unreachable function
+../xpathdebug.js:59:36: [definite] Unreachable function
+../xpathdebug.js:68:31: [definite] Unreachable function
+../xpathdebug.js:76:32: [definite] Unreachable function
+../xpathdebug.js:86:34: [definite] Unreachable function
+../xpathdebug.js:90:35: [definite] Unreachable function
+../xpathdebug.js:94:49: [definite] Unreachable function
+../xpathdebug.js:100:35: [definite] Unreachable function
+../xpathdebug.js:106:38: [definite] Unreachable function
+../xpathdebug.js:112:33: [definite] Unreachable function
+../xpathdebug.js:118:33: [definite] Unreachable function
+../xpathdebug.js:124:35: [definite] Unreachable function
+../xpathdebug.js:130:36: [definite] Unreachable function
+../xpathdebug.js:135:37: [definite] Unreachable function
+../xpathdebug.js:140:39: [definite] Unreachable function
+../xpathdebug.js:152:40: [definite] Unreachable function
+../xpathdebug.js:160:32: [definite] Unreachable function
+../xpathdebug.js:164:33: [definite] Unreachable function
+../xpathdebug.js:171:31: [definite] Unreachable function
+../xpathdebug.js:177:32: [definite] Unreachable function
+../xpathdebug.js:186:33: [definite] Unreachable function
+../xpathdebug.js:194:34: [definite] Unreachable function
+../xpathdebug.js:205:37: [definite] Unreachable function
+../xpathdebug.js:209:38: [definite] Unreachable function
+../xpathdebug.js:213:33: [definite] Unreachable function
+../xpathdebug.js:218:34: [definite] Unreachable function
+../xpathdebug.js:224:34: [definite] Unreachable function
+../xpathdebug.js:228:35: [definite] Unreachable function
+../xpathdebug.js:232:33: [definite] Unreachable function
+../xpathdebug.js:236:34: [definite] Unreachable function
+../xpathdebug.js:240:35: [definite] Unreachable function
+../xpathdebug.js:244:36: [definite] Unreachable function
+../xpathdebug.js:248:28: [definite] Unreachable function
+../xpathdebug.js:252:34: [definite] Unreachable function
+../xpathdebug.js:257:1: [definite] Unreachable function Value_toString
+test/benchmarks/ajax/ajaxslt/test/xpath.tidy.html:46:2: [definite] The variable event is never used
+test/benchmarks/ajax/ajaxslt/test/xpath.tidy.html:48:2: [definite] Unreachable function
+xpath_script.js: [definite] Unreachable code
+xpath_script.js:41:1: [definite] The variable DOM_ATTRIBUTE_NODE is never used
+xpath_script.js:41:1: [definite] The variable DOM_CDATA_SECTION_NODE is never used
+xpath_script.js:41:1: [definite] The variable DOM_COMMENT_NODE is never used
+xpath_script.js:41:1: [definite] The variable DOM_DOCUMENT_FRAGMENT_NODE is never used
+xpath_script.js:41:1: [definite] The variable DOM_DOCUMENT_TYPE_NODE is never used
+xpath_script.js:41:1: [definite] The variable DOM_ELEMENT_NODE is never used
+xpath_script.js:41:1: [definite] The variable DOM_ENTITY_NODE is never used
+xpath_script.js:41:1: [definite] The variable DOM_ENTITY_REFERENCE_NODE is never used
+xpath_script.js:41:1: [definite] The variable DOM_NOTATION_NODE is never used
+xpath_script.js:41:1: [definite] The variable DOM_PROCESSING_INSTRUCTION_NODE is never used
+xpath_script.js:41:1: [definite] The variable DOM_TEXT_NODE is never used
+xpath_script.js:41:1: [definite] The variable Q_01 is never used
+xpath_script.js:41:1: [definite] The variable Q_1M is never used
+xpath_script.js:41:1: [definite] The variable XML10_ATTRIBUTE_REGEXP is never used
+xpath_script.js:41:1: [definite] The variable XML10_TAGNAME_REGEXP is never used
+xpath_script.js:41:1: [definite] The variable XML10_VERSION_INFO is never used
+xpath_script.js:41:1: [definite] The variable XML11_ATTRIBUTE_REGEXP is never used
+xpath_script.js:41:1: [definite] The variable XML11_TAGNAME_REGEXP is never used
+xpath_script.js:41:1: [definite] The variable XML11_VERSION_INFO is never used
+xpath_script.js:41:1: [definite] The variable ajaxsltIsIE6 is never used
+xpath_script.js:41:1: [definite] The variable axisTests is never used
+xpath_script.js:41:1: [definite] The variable logging__ is never used
+xpath_script.js:41:1: [definite] The variable numExpr is never used
+xpath_script.js:41:1: [definite] The variable xpathGrammarRules is never used
+xpath_script.js:41:1: [definite] The variable xpathNonTerminals is never used
+xpath_script.js:41:1: [definite] The variable xpathParseCache is never used
+xpath_script.js:41:1: [definite] The variable xpathRules is never used
+xpath_script.js:41:1: [definite] The variable xpathTokenRules is never used
+xpath_script.js:53:1: [definite] The variable o is never used
+xpath_script.js:53:1: [definite] The variable s is never used
+xpath_script.js:56:24: [definite] Unreachable code
+xpath_script.js:62:1: [definite] Unreachable function xpath_test
+../xmltoken.js:37:9: [maybe] TypeError, accessing property of null/undefined
+../xmltoken.js:37:9: [maybe] TypeError, call to non-function
+../xmltoken.js:37:9: [maybe] Reading absent property search
+../dom.js:291:20: [maybe] Converting undefined to string
+../util.js:18:20: [maybe] Converting primitive string to object
+../xmltoken.js:37:9: [maybe] Conversion from string to number yields NaN
+../xmltoken.js:37:9: [maybe] Converting primitive number to object
+../xmltoken.js:37:9: [maybe] Converting primitive string to object
+../xmltoken.js:37:9: [maybe] Reading absent property (computed name)
+../xmltoken.js:37:36: [maybe] Reading absent property (computed name)
+../xmltoken.js:37:54: [maybe] Reading absent property (computed name)
+xpath_script.js:41:1: [maybe] Uncaught exception, constructed at [../xmltoken.js:37:9, xpath_script.js:56:17]

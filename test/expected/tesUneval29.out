@@ -1,0 +1,109 @@
+Unevalizer: Starting on: "function getUrlWithPID_CM(fullurl, split) {     if(peerID_CM == null || fullurl == null)              return fullurl;     var index = fullurl.indexOf('?');      if(index < 0) return fullurl;     if (index == fullurl.length - 1)              return  fullurl + peerID_CM;     if (split == null) {             split = '&';     }     return fullurl.substring(0, index + 1) + peerID_CM + split + fullurl.substring(index + 1);}"
+Unevalizer: Valid program
+Unevalizer: No name capture
+Unevalizer: Starting on: "var mz=document.createElement('script'); mz.type='text/javascript'; mz.async=true; mz.src='http://js.miaozhen.com/sd.js'; var t=document.getElementsByTagName('script')[0]; t.parentNode.insertBefore(mz,t); function domz(posid){ var _mzh= window._mzh || []; _mzh.push(['_clear']); _mzh.push(['_set_pid', '1']); _mzh.push(['_set_tid', posid]); _mzh.push(['_set_cid', '-']); _mzh.push(['_set_sid', '-']); if(peerID&&peerID.length>11) _mzh.push(['_set_uid', peerID.substr(11)]); _mzh.push(['_send']); } "
+Unevalizer: Valid program
+Unevalizer: No name capture
+Unevalizer: Starting on: "function addEventHandler_CM(oTarget, sEventType, fnHandler){     if (oTarget.addEventListener) {             oTarget.addEventListener(sEventType, fnHandler, false);}else if (oTarget.attachEvent) {             oTarget.attachEvent('on' + sEventType, fnHandler);}else {             oTarget['on'+ sEventType] = fnHandler;}}"
+Unevalizer: Valid program
+Unevalizer: No name capture
+Unevalizer: Starting on: "function removeEventHandler_CM(oTarget, sEventType, fnHandler){     if (oTarget.removeEventListener) {             oTarget.removeEventListener(sEventType, fnHandler, false);}else if (oTarget.detachEvent) {             oTarget.detachEvent('on' + sEventType, fnHandler);}else {             oTarget['on' + sEventType] = null;}}"
+Unevalizer: Valid program
+Unevalizer: No name capture
+Unevalizer: Starting on: "function position_CM(o){     var p = {             Top: 0,     Left: 0 }; while (!!o) {             p.Top += o.offsetTop;     p.Left += o.offsetLeft;     o = o.offsetParent;     } return p;}"
+Unevalizer: Valid program
+Unevalizer: No name capture
+Unevalizer: Starting on: "function isInView_CM(id){     var min = {};     var max = {}; min.Top = document.body.scrollTop + document.documentElement.scrollTop; min.Left = document.documentElement.scrollLeft; max.Top = min.Top + document.documentElement.clientHeight;     max.Left = min.Left + document.documentElement.clientWidth; var obj=document.getElementById(id); if(obj==null || obj==undefined) return true; var width = obj.clientWidth;     var height = obj.clientHeight; var wh = position_CM(obj); if ((wh.Top >= min.Top && wh.Top <= max.Top && wh.Left >= min.Left && wh.Left <= max.Left) ||  ((wh.Top + height) >= min.Top && wh.Top <= max.Top && (wh.Left + width) >= min.Left && wh.Left <= max.Left)) { return true; }else{ return false; }}"
+Unevalizer: Valid program
+Unevalizer: No name capture
+Unevalizer: Starting on: "getNextAd_1162()"
+Unevalizer: Valid program
+Unevalizer: No name capture
+test/uneval/uneval29.tidy.html:16:50: [definite] TypeError, call to non-function
+test/uneval/uneval29.tidy.html:27:46: [definite] TypeError, call to non-function
+test/uneval/uneval29.tidy.html:183:30: [definite] Too many parameters to function HTMLImageElement.constructor
+test/uneval/uneval29.tidy.html:1:42: [definite] The conditional expression is always true
+test/uneval/uneval29.tidy.html:1:45: [definite] The conditional expression is always true
+test/uneval/uneval29.tidy.html:1:45: [definite] Variable peerID_CM is null/undefined
+test/uneval/uneval29.tidy.html:1:59: [definite] The conditional expression is always true
+test/uneval/uneval29.tidy.html:1:62: [definite] The conditional expression is always true
+test/uneval/uneval29.tidy.html:1:223: [definite] Property is null/undefined
+test/uneval/uneval29.tidy.html:1:470: [definite] Property is null/undefined
+test/uneval/uneval29.tidy.html:2:50: [definite] Property is null/undefined
+test/uneval/uneval29.tidy.html:11:1: [definite] The conditional expression is always true
+test/uneval/uneval29.tidy.html:11:5: [definite] The conditional expression is always true
+test/uneval/uneval29.tidy.html:22:1: [definite] The conditional expression is always true
+test/uneval/uneval29.tidy.html:22:5: [definite] The conditional expression is always true
+test/uneval/uneval29.tidy.html:33:1: [definite] The conditional expression is always true
+test/uneval/uneval29.tidy.html:50:1: [definite] The conditional expression is always true
+test/uneval/uneval29.tidy.html:71:1: [definite] The conditional expression is always true
+test/uneval/uneval29.tidy.html:88:1: [definite] The conditional expression is always true
+test/uneval/uneval29.tidy.html:105:1: [definite] The conditional expression is always true
+test/uneval/uneval29.tidy.html:122:1: [definite] The conditional expression is always true
+test/uneval/uneval29.tidy.html:187:9: [definite] The conditional expression is always false
+test/uneval/uneval29.tidy.html:1:56: [definite] Reading absent property scrollTop
+test/uneval/uneval29.tidy.html:1:80: [definite] Reading absent property scrollTop
+test/uneval/uneval29.tidy.html:1:124: [definite] Reading absent property scrollLeft
+test/uneval/uneval29.tidy.html:16:50: [definite] Reading absent property Get
+test/uneval/uneval29.tidy.html:27:46: [definite] Reading absent property Get
+test/uneval/uneval29.tidy.html:33:12: [definite] Reading absent property getUrlWithPID_CM
+test/uneval/uneval29.tidy.html:50:12: [definite] Reading absent property mz
+test/uneval/uneval29.tidy.html:71:12: [definite] Reading absent property addEventHandler_CM
+test/uneval/uneval29.tidy.html:88:12: [definite] Reading absent property removeEventHandler_CM
+test/uneval/uneval29.tidy.html:105:12: [definite] Reading absent property position_CM
+test/uneval/uneval29.tidy.html:122:12: [definite] Reading absent property isInView_CM
+test/uneval/uneval29.tidy.html:1:1: [definite] The variable index is never used
+test/uneval/uneval29.tidy.html:1:1: [definite] The variable split is never used
+test/uneval/uneval29.tidy.html:1:200: [definite] Unreachable function domz
+test/uneval/uneval29.tidy.html:9: [definite] The variable interval_1162 is never used
+test/uneval/uneval29.tidy.html:16:34: [definite] Unreachable code
+test/uneval/uneval29.tidy.html:27:37: [definite] Unreachable code
+test/uneval/uneval29.tidy.html:185:29: [definite] Unreachable function
+test/uneval/uneval29.tidy.html:191:10: [definite] Unreachable code
+test/uneval/uneval29.tidy.html:1:56: [maybe] TypeError, accessing property of null/undefined
+test/uneval/uneval29.tidy.html:1:64: [maybe] TypeError, accessing property of null/undefined
+test/uneval/uneval29.tidy.html:1:168: [maybe] TypeError, accessing property of null/undefined
+test/uneval/uneval29.tidy.html:1:356: [maybe] TypeError, accessing property of null/undefined
+test/uneval/uneval29.tidy.html:16:50: [maybe] TypeError, accessing property of null/undefined
+test/uneval/uneval29.tidy.html:27:46: [maybe] TypeError, accessing property of null/undefined
+test/uneval/uneval29.tidy.html:152:9: [maybe] TypeError, accessing property of null/undefined
+test/uneval/uneval29.tidy.html:152:9: [maybe] TypeError, accessing property of null/undefined
+test/uneval/uneval29.tidy.html:162:28: [maybe] TypeError, accessing property of null/undefined
+test/uneval/uneval29.tidy.html:162:28: [maybe] TypeError, accessing property of null/undefined
+test/uneval/uneval29.tidy.html:165:25: [maybe] TypeError, accessing property of null/undefined
+test/uneval/uneval29.tidy.html:173:17: [maybe] TypeError, accessing property of null/undefined
+test/uneval/uneval29.tidy.html:173:17: [maybe] TypeError, accessing property of null/undefined
+test/uneval/uneval29.tidy.html:1:56: [maybe] Reading absent property body
+test/uneval/uneval29.tidy.html:1:64: [maybe] Reading absent property offsetTop
+test/uneval/uneval29.tidy.html:1:84: [maybe] Reading absent property offsetLeft
+test/uneval/uneval29.tidy.html:1:99: [maybe] Reading absent property offsetParent
+test/uneval/uneval29.tidy.html:1:356: [maybe] Reading absent property clientWidth
+test/uneval/uneval29.tidy.html:1:383: [maybe] Reading absent property clientHeight
+test/uneval/uneval29.tidy.html:152:9: [maybe] Reading absent property style
+test/uneval/uneval29.tidy.html:162:28: [maybe] Reading absent property display
+test/uneval/uneval29.tidy.html:162:28: [maybe] Reading absent property style
+test/uneval/uneval29.tidy.html:165:25: [maybe] Reading absent property style
+test/uneval/uneval29.tidy.html:173:17: [maybe] Reading absent property style
+test/uneval/uneval29.tidy.html:1:54: [maybe] The variable o has values with different types
+test/uneval/uneval29.tidy.html:1:56: [maybe] Conversion to number yields NaN
+test/uneval/uneval29.tidy.html:1:57: [maybe] Conversion to number yields NaN
+test/uneval/uneval29.tidy.html:1:64: [maybe] Converting primitive number to object
+test/uneval/uneval29.tidy.html:1:64: [maybe] The variable o has values with different types
+test/uneval/uneval29.tidy.html:1:76: [maybe] Conversion to number yields NaN
+test/uneval/uneval29.tidy.html:1:84: [maybe] Converting primitive number to object
+test/uneval/uneval29.tidy.html:1:84: [maybe] The variable o has values with different types
+test/uneval/uneval29.tidy.html:1:99: [maybe] Converting primitive number to object
+test/uneval/uneval29.tidy.html:1:99: [maybe] The variable o has values with different types
+test/uneval/uneval29.tidy.html:1:125: [maybe] Reading absent property (computed name)
+test/uneval/uneval29.tidy.html:1:223: [maybe] Converting undefined to string
+test/uneval/uneval29.tidy.html:1:444: [maybe] Conversion from string to number yields NaN
+test/uneval/uneval29.tidy.html:1:480: [maybe] Conversion from string to number yields NaN
+test/uneval/uneval29.tidy.html:1:499: [maybe] Conversion from string to number yields NaN
+test/uneval/uneval29.tidy.html:1:499: [maybe] Conversion to number yields NaN
+test/uneval/uneval29.tidy.html:2:1: [maybe] The variable height has values with different types
+test/uneval/uneval29.tidy.html:2:18: [maybe] Conversion from string to number yields NaN
+test/uneval/uneval29.tidy.html:2:35: [maybe] Conversion from string to number yields NaN
+test/uneval/uneval29.tidy.html:2:35: [maybe] Conversion to number yields NaN
+test/uneval/uneval29.tidy.html:2:43: [maybe] The variable width has values with different types
+test/uneval/uneval29.tidy.html:2:60: [maybe] Conversion from string to number yields NaN
+test/uneval/uneval29.tidy.html:9: [maybe] Uncaught exception, constructed at [test/uneval/uneval29.tidy.html:1:56, test/uneval/uneval29.tidy.html:1:64, test/uneval/uneval29.tidy.html:1:168, test/uneval/uneval29.tidy.html:1:356, test/uneval/uneval29.tidy.html:152:9]

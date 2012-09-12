@@ -1,0 +1,6 @@
+test/micro/test176.js:5:12: [maybe] Reading absent property (computed name)
+test/micro/test176.js:3:1: [info] Abstract object: {a:234.0,b:23.0,t:44.0,[[Prototype]]=[@Object.prototype[native]]}
+test/micro/test176.js:7:1: [info] Abstract object: {[[DefaultNonArray]]=Undef|UInt|[@Object[native], @Object.prototype.toString[native], @Object.prototype.toLocaleString[native], @Object.prototype.valueOf[native], @Object.prototype.hasOwnProperty[native], @Object.prototype.isPrototypeOf[native], @Object.prototype.propertyIsEnumerable[native]]|absent,[[Prototype]]=[@Object.prototype[native]]}
+test/micro/test176.js:5:5: [info] Writing to unknown property that may cause loss of precision
+test/micro/test176.js:4:1: [info] Reading from unknown property that may cause loss of precision
+test/micro/test176.js:5:12: [info] Reading from unknown property that may cause loss of precision

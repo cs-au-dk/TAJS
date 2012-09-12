@@ -1,0 +1,3 @@
+test/resig/ejohn36.js:5:3: [definite] Dead assignment, property obj_name is never read
+test/resig/ejohn36.js:9:12: [definite] The function User is invoked both as constructor and function
+test/resig/ejohn36.js:2:10: [maybe] Reading 'this' yields the global object

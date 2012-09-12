@@ -1,0 +1,6 @@
+Unevalizer: Starting on: "x = 12"
+Unevalizer: Valid program
+Unevalizer: No name capture
+test/uneval/uneval07.js:11:11: [maybe] The variable x has values with different types
+test/uneval/uneval07.js:4:2: [info] Abstract value: "x = 12"
+test/uneval/uneval07.js:11:1: [info] Abstract value: 12.0|"foo"

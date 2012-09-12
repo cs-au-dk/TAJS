@@ -1,0 +1,166 @@
+test/chrome/kaleidoscope.tidy.html:109: [definite] Too many parameters to function Math.random
+test/chrome/kaleidoscope.tidy.html:110: [definite] Too many parameters to function Math.random
+test/chrome/kaleidoscope.tidy.html:115: [definite] Too many parameters to function Math.random
+test/chrome/kaleidoscope.tidy.html:116: [definite] Too many parameters to function Math.random
+test/chrome/kaleidoscope.tidy.html:231: [definite] Reading absent property which
+test/chrome/kaleidoscope.tidy.html:71: [definite] Unreachable code
+test/chrome/kaleidoscope.tidy.html:72: [definite] Unreachable code
+test/chrome/kaleidoscope.tidy.html:99: [definite] Dead assignment, property width is never read
+test/chrome/kaleidoscope.tidy.html:100: [definite] Dead assignment, property height is never read
+test/chrome/kaleidoscope.tidy.html:212: [definite] Unreachable function: draw_dot
+test/chrome/kaleidoscope.tidy.html:215: [definite] Unreachable code
+test/chrome/kaleidoscope.tidy.html:216: [definite] Unreachable code
+test/chrome/kaleidoscope.tidy.html:217: [definite] Unreachable code
+test/chrome/kaleidoscope.tidy.html:218: [definite] Unreachable code
+test/chrome/kaleidoscope.tidy.html:224: [definite] Unreachable code
+test/chrome/kaleidoscope.tidy.html:230: [definite] Unreachable code
+test/chrome/kaleidoscope.tidy.html:232: [definite] Dead assignment, property ctrl is never read
+test/chrome/kaleidoscope.tidy.html:99: [definite] Converting primitive string to object
+test/chrome/kaleidoscope.tidy.html:100: [definite] Converting primitive string to object
+test/chrome/kaleidoscope.tidy.html:79: [maybe] Reading absent property style
+test/chrome/kaleidoscope.tidy.html:79: [maybe] TypeError, reading property of null/undefined
+test/chrome/kaleidoscope.tidy.html:79: [maybe] TypeError, writing property of null/undefined
+test/chrome/kaleidoscope.tidy.html:80: [maybe] Reading absent property style
+test/chrome/kaleidoscope.tidy.html:80: [maybe] TypeError, writing property of null/undefined
+test/chrome/kaleidoscope.tidy.html:81: [maybe] Reading absent property style
+test/chrome/kaleidoscope.tidy.html:81: [maybe] TypeError, writing property of null/undefined
+test/chrome/kaleidoscope.tidy.html:82: [maybe] Reading absent property style
+test/chrome/kaleidoscope.tidy.html:82: [maybe] TypeError, writing property of null/undefined
+test/chrome/kaleidoscope.tidy.html:83: [maybe] Reading absent property style
+test/chrome/kaleidoscope.tidy.html:83: [maybe] TypeError, writing property of null/undefined
+test/chrome/kaleidoscope.tidy.html:84: [maybe] Reading absent property style
+test/chrome/kaleidoscope.tidy.html:84: [maybe] TypeError, writing property of null/undefined
+test/chrome/kaleidoscope.tidy.html:86: [maybe] Reading absent property style
+test/chrome/kaleidoscope.tidy.html:86: [maybe] TypeError, reading property of null/undefined
+test/chrome/kaleidoscope.tidy.html:86: [maybe] TypeError, writing property of null/undefined
+test/chrome/kaleidoscope.tidy.html:87: [maybe] Reading absent property style
+test/chrome/kaleidoscope.tidy.html:87: [maybe] TypeError, writing property of null/undefined
+test/chrome/kaleidoscope.tidy.html:88: [maybe] Reading absent property style
+test/chrome/kaleidoscope.tidy.html:88: [maybe] TypeError, writing property of null/undefined
+test/chrome/kaleidoscope.tidy.html:91: [maybe] Reading absent property getContext
+test/chrome/kaleidoscope.tidy.html:91: [maybe] TypeError, call to non-function
+test/chrome/kaleidoscope.tidy.html:93: [maybe] Reading absent property style
+test/chrome/kaleidoscope.tidy.html:93: [maybe] TypeError, reading property of null/undefined
+test/chrome/kaleidoscope.tidy.html:93: [maybe] TypeError, writing property of null/undefined
+test/chrome/kaleidoscope.tidy.html:94: [maybe] Reading absent property style
+test/chrome/kaleidoscope.tidy.html:94: [maybe] TypeError, writing property of null/undefined
+test/chrome/kaleidoscope.tidy.html:95: [maybe] Reading absent property style
+test/chrome/kaleidoscope.tidy.html:95: [maybe] TypeError, writing property of null/undefined
+test/chrome/kaleidoscope.tidy.html:96: [maybe] Reading absent property style
+test/chrome/kaleidoscope.tidy.html:96: [maybe] TypeError, writing property of null/undefined
+test/chrome/kaleidoscope.tidy.html:97: [maybe] Reading absent property style
+test/chrome/kaleidoscope.tidy.html:97: [maybe] TypeError, writing property of null/undefined
+test/chrome/kaleidoscope.tidy.html:98: [maybe] Reading absent property style
+test/chrome/kaleidoscope.tidy.html:98: [maybe] TypeError, writing property of null/undefined
+test/chrome/kaleidoscope.tidy.html:99: [maybe] Reading absent property (computed name)
+test/chrome/kaleidoscope.tidy.html:99: [maybe] TypeError, reading property of null/undefined
+test/chrome/kaleidoscope.tidy.html:100: [maybe] Reading absent property (computed name)
+test/chrome/kaleidoscope.tidy.html:100: [maybe] TypeError, reading property of null/undefined
+test/chrome/kaleidoscope.tidy.html:113: [maybe] ReferenceError, reading absent variable i
+test/chrome/kaleidoscope.tidy.html:113: [maybe] ReferenceError, reading absent variable i
+test/chrome/kaleidoscope.tidy.html:115: [maybe] RangeError, assigning invalid value to array 'length' property
+test/chrome/kaleidoscope.tidy.html:115: [maybe] ReferenceError, reading absent variable i
+test/chrome/kaleidoscope.tidy.html:116: [maybe] RangeError, assigning invalid value to array 'length' property
+test/chrome/kaleidoscope.tidy.html:116: [maybe] ReferenceError, reading absent variable i
+test/chrome/kaleidoscope.tidy.html:122: [maybe] Reading absent property (computed name)
+test/chrome/kaleidoscope.tidy.html:122: [maybe] Reading absent property (computed name)
+test/chrome/kaleidoscope.tidy.html:122: [maybe] Reading absent property (computed name)
+test/chrome/kaleidoscope.tidy.html:122: [maybe] Reading absent property (computed name)
+test/chrome/kaleidoscope.tidy.html:122: [maybe] Reading absent property (computed name)
+test/chrome/kaleidoscope.tidy.html:122: [maybe] Reading absent property (computed name)
+test/chrome/kaleidoscope.tidy.html:123: [maybe] Reading absent property (computed name)
+test/chrome/kaleidoscope.tidy.html:123: [maybe] Reading absent property (computed name)
+test/chrome/kaleidoscope.tidy.html:123: [maybe] Reading absent property (computed name)
+test/chrome/kaleidoscope.tidy.html:123: [maybe] Reading absent property (computed name)
+test/chrome/kaleidoscope.tidy.html:123: [maybe] Reading absent property (computed name)
+test/chrome/kaleidoscope.tidy.html:123: [maybe] Reading absent property (computed name)
+test/chrome/kaleidoscope.tidy.html:135: [maybe] ReferenceError, reading absent variable a1
+test/chrome/kaleidoscope.tidy.html:138: [maybe] ReferenceError, reading absent variable a3
+test/chrome/kaleidoscope.tidy.html:139: [maybe] ReferenceError, reading absent variable a4
+test/chrome/kaleidoscope.tidy.html:147: [maybe] Reading absent property (computed name)
+test/chrome/kaleidoscope.tidy.html:147: [maybe] Reading absent property (computed name)
+test/chrome/kaleidoscope.tidy.html:147: [maybe] Reading absent property (computed name)
+test/chrome/kaleidoscope.tidy.html:147: [maybe] Reading absent property (computed name)
+test/chrome/kaleidoscope.tidy.html:147: [maybe] Reading absent property (computed name)
+test/chrome/kaleidoscope.tidy.html:147: [maybe] Reading absent property (computed name)
+test/chrome/kaleidoscope.tidy.html:148: [maybe] Reading absent property (computed name)
+test/chrome/kaleidoscope.tidy.html:148: [maybe] Reading absent property (computed name)
+test/chrome/kaleidoscope.tidy.html:148: [maybe] Reading absent property (computed name)
+test/chrome/kaleidoscope.tidy.html:148: [maybe] Reading absent property (computed name)
+test/chrome/kaleidoscope.tidy.html:148: [maybe] Reading absent property (computed name)
+test/chrome/kaleidoscope.tidy.html:148: [maybe] Reading absent property (computed name)
+test/chrome/kaleidoscope.tidy.html:151: [maybe] ReferenceError, reading absent variable c3
+test/chrome/kaleidoscope.tidy.html:152: [maybe] ReferenceError, reading absent variable c3
+test/chrome/kaleidoscope.tidy.html:154: [maybe] ReferenceError, reading absent variable a1
+test/chrome/kaleidoscope.tidy.html:154: [maybe] ReferenceError, reading absent variable c1
+test/chrome/kaleidoscope.tidy.html:154: [maybe] ReferenceError, reading absent variable c1
+test/chrome/kaleidoscope.tidy.html:154: [maybe] ReferenceError, reading absent variable c2
+test/chrome/kaleidoscope.tidy.html:155: [maybe] ReferenceError, reading absent variable a3
+test/chrome/kaleidoscope.tidy.html:157: [maybe] ReferenceError, reading absent variable a3
+test/chrome/kaleidoscope.tidy.html:159: [maybe] ReferenceError, reading absent variable a1
+test/chrome/kaleidoscope.tidy.html:159: [maybe] ReferenceError, reading absent variable c1
+test/chrome/kaleidoscope.tidy.html:159: [maybe] ReferenceError, reading absent variable c1
+test/chrome/kaleidoscope.tidy.html:159: [maybe] ReferenceError, reading absent variable c2
+test/chrome/kaleidoscope.tidy.html:160: [maybe] ReferenceError, reading absent variable a3
+test/chrome/kaleidoscope.tidy.html:163: [maybe] ReferenceError, reading absent variable a3
+test/chrome/kaleidoscope.tidy.html:165: [maybe] ReferenceError, reading absent variable a1
+test/chrome/kaleidoscope.tidy.html:165: [maybe] ReferenceError, reading absent variable c1
+test/chrome/kaleidoscope.tidy.html:165: [maybe] ReferenceError, reading absent variable c1
+test/chrome/kaleidoscope.tidy.html:165: [maybe] ReferenceError, reading absent variable c2
+test/chrome/kaleidoscope.tidy.html:166: [maybe] ReferenceError, reading absent variable a3
+test/chrome/kaleidoscope.tidy.html:169: [maybe] ReferenceError, reading absent variable a2
+test/chrome/kaleidoscope.tidy.html:29: [maybe] Uncaught exception, constructed at [test/chrome/kaleidoscope.tidy.html:79, test/chrome/kaleidoscope.tidy.html:80, test/chrome/kaleidoscope.tidy.html:81, test/chrome/kaleidoscope.tidy.html:82, test/chrome/kaleidoscope.tidy.html:83, test/chrome/kaleidoscope.tidy.html:84, test/chrome/kaleidoscope.tidy.html:86, test/chrome/kaleidoscope.tidy.html:87, test/chrome/kaleidoscope.tidy.html:88, test/chrome/kaleidoscope.tidy.html:91, test/chrome/kaleidoscope.tidy.html:93, test/chrome/kaleidoscope.tidy.html:94, test/chrome/kaleidoscope.tidy.html:95, test/chrome/kaleidoscope.tidy.html:96, test/chrome/kaleidoscope.tidy.html:97, test/chrome/kaleidoscope.tidy.html:98, test/chrome/kaleidoscope.tidy.html:99, test/chrome/kaleidoscope.tidy.html:100, test/chrome/kaleidoscope.tidy.html:113, test/chrome/kaleidoscope.tidy.html:115, test/chrome/kaleidoscope.tidy.html:116, test/chrome/kaleidoscope.tidy.html:135, test/chrome/kaleidoscope.tidy.html:138, test/chrome/kaleidoscope.tidy.html:139, test/chrome/kaleidoscope.tidy.html:151, test/chrome/kaleidoscope.tidy.html:152, test/chrome/kaleidoscope.tidy.html:154, test/chrome/kaleidoscope.tidy.html:155, test/chrome/kaleidoscope.tidy.html:157, test/chrome/kaleidoscope.tidy.html:159, test/chrome/kaleidoscope.tidy.html:160, test/chrome/kaleidoscope.tidy.html:163, test/chrome/kaleidoscope.tidy.html:165, test/chrome/kaleidoscope.tidy.html:166, test/chrome/kaleidoscope.tidy.html:169]
+test/chrome/kaleidoscope.tidy.html:108: [maybe] Conversion to number yields NaN
+test/chrome/kaleidoscope.tidy.html:113: [maybe] Conversion to number yields NaN
+test/chrome/kaleidoscope.tidy.html:113: [maybe] Conversion to number yields NaN
+test/chrome/kaleidoscope.tidy.html:115: [maybe] Converting undefined to string
+test/chrome/kaleidoscope.tidy.html:116: [maybe] Converting undefined to string
+test/chrome/kaleidoscope.tidy.html:122: [maybe] Conversion to number yields NaN
+test/chrome/kaleidoscope.tidy.html:122: [maybe] Conversion to number yields NaN
+test/chrome/kaleidoscope.tidy.html:122: [maybe] Conversion to number yields NaN
+test/chrome/kaleidoscope.tidy.html:122: [maybe] Conversion to number yields NaN
+test/chrome/kaleidoscope.tidy.html:122: [maybe] Conversion to number yields NaN
+test/chrome/kaleidoscope.tidy.html:122: [maybe] Conversion to number yields NaN
+test/chrome/kaleidoscope.tidy.html:123: [maybe] Conversion to number yields NaN
+test/chrome/kaleidoscope.tidy.html:123: [maybe] Conversion to number yields NaN
+test/chrome/kaleidoscope.tidy.html:123: [maybe] Conversion to number yields NaN
+test/chrome/kaleidoscope.tidy.html:123: [maybe] Conversion to number yields NaN
+test/chrome/kaleidoscope.tidy.html:123: [maybe] Conversion to number yields NaN
+test/chrome/kaleidoscope.tidy.html:123: [maybe] Conversion to number yields NaN
+test/chrome/kaleidoscope.tidy.html:135: [maybe] Conversion to number yields NaN
+test/chrome/kaleidoscope.tidy.html:138: [maybe] Conversion to number yields NaN
+test/chrome/kaleidoscope.tidy.html:138: [maybe] Conversion to number yields NaN
+test/chrome/kaleidoscope.tidy.html:139: [maybe] Conversion to number yields NaN
+test/chrome/kaleidoscope.tidy.html:139: [maybe] Conversion to number yields NaN
+test/chrome/kaleidoscope.tidy.html:147: [maybe] Conversion to number yields NaN
+test/chrome/kaleidoscope.tidy.html:147: [maybe] Conversion to number yields NaN
+test/chrome/kaleidoscope.tidy.html:147: [maybe] Conversion to number yields NaN
+test/chrome/kaleidoscope.tidy.html:147: [maybe] Conversion to number yields NaN
+test/chrome/kaleidoscope.tidy.html:147: [maybe] Conversion to number yields NaN
+test/chrome/kaleidoscope.tidy.html:147: [maybe] Conversion to number yields NaN
+test/chrome/kaleidoscope.tidy.html:148: [maybe] Conversion to number yields NaN
+test/chrome/kaleidoscope.tidy.html:148: [maybe] Conversion to number yields NaN
+test/chrome/kaleidoscope.tidy.html:148: [maybe] Conversion to number yields NaN
+test/chrome/kaleidoscope.tidy.html:148: [maybe] Conversion to number yields NaN
+test/chrome/kaleidoscope.tidy.html:148: [maybe] Conversion to number yields NaN
+test/chrome/kaleidoscope.tidy.html:148: [maybe] Conversion to number yields NaN
+test/chrome/kaleidoscope.tidy.html:151: [maybe] Conversion to number yields NaN
+test/chrome/kaleidoscope.tidy.html:152: [maybe] Conversion to number yields NaN
+test/chrome/kaleidoscope.tidy.html:154: [maybe] Conversion to number yields NaN
+test/chrome/kaleidoscope.tidy.html:154: [maybe] Conversion to number yields NaN
+test/chrome/kaleidoscope.tidy.html:154: [maybe] Conversion to number yields NaN
+test/chrome/kaleidoscope.tidy.html:154: [maybe] Conversion to number yields NaN
+test/chrome/kaleidoscope.tidy.html:155: [maybe] Conversion to number yields NaN
+test/chrome/kaleidoscope.tidy.html:157: [maybe] Conversion to number yields NaN
+test/chrome/kaleidoscope.tidy.html:159: [maybe] Conversion to number yields NaN
+test/chrome/kaleidoscope.tidy.html:159: [maybe] Conversion to number yields NaN
+test/chrome/kaleidoscope.tidy.html:159: [maybe] Conversion to number yields NaN
+test/chrome/kaleidoscope.tidy.html:159: [maybe] Conversion to number yields NaN
+test/chrome/kaleidoscope.tidy.html:160: [maybe] Conversion to number yields NaN
+test/chrome/kaleidoscope.tidy.html:163: [maybe] Conversion to number yields NaN
+test/chrome/kaleidoscope.tidy.html:165: [maybe] Conversion to number yields NaN
+test/chrome/kaleidoscope.tidy.html:165: [maybe] Conversion to number yields NaN
+test/chrome/kaleidoscope.tidy.html:165: [maybe] Conversion to number yields NaN
+test/chrome/kaleidoscope.tidy.html:165: [maybe] Conversion to number yields NaN
+test/chrome/kaleidoscope.tidy.html:166: [maybe] Conversion to number yields NaN
+test/chrome/kaleidoscope.tidy.html:169: [maybe] Conversion to number yields NaN

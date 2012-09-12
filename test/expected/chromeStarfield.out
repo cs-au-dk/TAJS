@@ -1,0 +1,257 @@
+test/chrome/starfield.tidy.html:145: [definite] Reading absent property which
+test/chrome/starfield.tidy.html:185: [definite] Reading absent property wheelDelta
+test/chrome/starfield.tidy.html:29: [definite] Unreachable code
+test/chrome/starfield.tidy.html:29: [definite] Unreachable function: $r
+test/chrome/starfield.tidy.html:30: [definite] Unreachable function: $t
+test/chrome/starfield.tidy.html:31: [definite] Unreachable function: $c
+test/chrome/starfield.tidy.html:32: [definite] Unreachable code
+test/chrome/starfield.tidy.html:32: [definite] Unreachable function: $h
+test/chrome/starfield.tidy.html:33: [definite] Unreachable code
+test/chrome/starfield.tidy.html:33: [definite] Unreachable function: _i
+test/chrome/starfield.tidy.html:34: [definite] Unreachable code
+test/chrome/starfield.tidy.html:34: [definite] Unreachable function: _h
+test/chrome/starfield.tidy.html:81: [definite] Dead assignment, property a is never read
+test/chrome/starfield.tidy.html:137: [definite] Unreachable code
+test/chrome/starfield.tidy.html:144: [definite] Unreachable code
+test/chrome/starfield.tidy.html:183: [definite] Unreachable code
+test/chrome/starfield.tidy.html:187: [definite] Unreachable code
+test/chrome/starfield.tidy.html:47: [definite] Converting primitive string to object
+test/chrome/starfield.tidy.html:47: [definite] Converting primitive string to object
+test/chrome/starfield.tidy.html:47: [definite] Converting primitive string to object
+test/chrome/starfield.tidy.html:47: [definite] Converting primitive string to object
+test/chrome/starfield.tidy.html:47: [definite] Converting primitive string to object
+test/chrome/starfield.tidy.html:47: [definite] Converting primitive string to object
+test/chrome/starfield.tidy.html:47: [definite] Converting primitive string to object
+test/chrome/starfield.tidy.html:47: [definite] Converting primitive string to object
+test/chrome/starfield.tidy.html:47: [definite] Converting primitive string to object
+test/chrome/starfield.tidy.html:47: [definite] Converting primitive string to object
+test/chrome/starfield.tidy.html:47: [definite] Converting primitive string to object
+test/chrome/starfield.tidy.html:47: [definite] Converting primitive string to object
+test/chrome/starfield.tidy.html:47: [definite] Converting primitive string to object
+test/chrome/starfield.tidy.html:47: [definite] Converting primitive string to object
+test/chrome/starfield.tidy.html:47: [definite] Converting primitive string to object
+test/chrome/starfield.tidy.html:47: [definite] Converting primitive string to object
+test/chrome/starfield.tidy.html:47: [definite] Converting primitive string to object
+test/chrome/starfield.tidy.html:47: [definite] Converting primitive string to object
+test/chrome/starfield.tidy.html:47: [definite] Converting primitive string to object
+test/chrome/starfield.tidy.html:47: [definite] Converting primitive string to object
+test/chrome/starfield.tidy.html:47: [definite] Converting primitive string to object
+test/chrome/starfield.tidy.html:47: [definite] Converting primitive string to object
+test/chrome/starfield.tidy.html:47: [definite] Converting primitive string to object
+test/chrome/starfield.tidy.html:205: [definite] Converting primitive string to object
+test/chrome/starfield.tidy.html:205: [definite] Converting primitive string to object
+test/chrome/starfield.tidy.html:205: [definite] Converting primitive string to object
+test/chrome/starfield.tidy.html:205: [definite] Converting primitive string to object
+test/chrome/starfield.tidy.html:205: [definite] Converting primitive string to object
+test/chrome/starfield.tidy.html:205: [definite] Converting primitive string to object
+test/chrome/starfield.tidy.html:205: [definite] Converting primitive string to object
+test/chrome/starfield.tidy.html:205: [definite] Converting primitive string to object
+test/chrome/starfield.tidy.html:205: [definite] Converting primitive string to object
+test/chrome/starfield.tidy.html:205: [definite] Converting primitive string to object
+test/chrome/starfield.tidy.html:205: [definite] Converting primitive string to object
+test/chrome/starfield.tidy.html:205: [definite] Converting primitive string to object
+test/chrome/starfield.tidy.html:205: [definite] Converting primitive string to object
+test/chrome/starfield.tidy.html:205: [definite] Converting primitive string to object
+test/chrome/starfield.tidy.html:205: [definite] Converting primitive string to object
+test/chrome/starfield.tidy.html:205: [definite] Converting primitive string to object
+test/chrome/starfield.tidy.html:205: [definite] Converting primitive string to object
+test/chrome/starfield.tidy.html:205: [definite] Converting primitive string to object
+test/chrome/starfield.tidy.html:205: [definite] Converting primitive string to object
+test/chrome/starfield.tidy.html:205: [definite] Converting primitive string to object
+test/chrome/starfield.tidy.html:205: [definite] Converting primitive string to object
+test/chrome/starfield.tidy.html:205: [definite] Converting primitive string to object
+test/chrome/starfield.tidy.html:205: [definite] Converting primitive string to object
+test/chrome/starfield.tidy.html:206: [definite] Converting primitive string to object
+test/chrome/starfield.tidy.html:206: [definite] Converting primitive string to object
+test/chrome/starfield.tidy.html:206: [definite] Converting primitive string to object
+test/chrome/starfield.tidy.html:206: [definite] Converting primitive string to object
+test/chrome/starfield.tidy.html:206: [definite] Converting primitive string to object
+test/chrome/starfield.tidy.html:206: [definite] Converting primitive string to object
+test/chrome/starfield.tidy.html:206: [definite] Converting primitive string to object
+test/chrome/starfield.tidy.html:206: [definite] Converting primitive string to object
+test/chrome/starfield.tidy.html:206: [definite] Converting primitive string to object
+test/chrome/starfield.tidy.html:206: [definite] Converting primitive string to object
+test/chrome/starfield.tidy.html:206: [definite] Converting primitive string to object
+test/chrome/starfield.tidy.html:206: [definite] Converting primitive string to object
+test/chrome/starfield.tidy.html:206: [definite] Converting primitive string to object
+test/chrome/starfield.tidy.html:206: [definite] Converting primitive string to object
+test/chrome/starfield.tidy.html:206: [definite] Converting primitive string to object
+test/chrome/starfield.tidy.html:206: [definite] Converting primitive string to object
+test/chrome/starfield.tidy.html:206: [definite] Converting primitive string to object
+test/chrome/starfield.tidy.html:206: [definite] Converting primitive string to object
+test/chrome/starfield.tidy.html:206: [definite] Converting primitive string to object
+test/chrome/starfield.tidy.html:206: [definite] Converting primitive string to object
+test/chrome/starfield.tidy.html:206: [definite] Converting primitive string to object
+test/chrome/starfield.tidy.html:206: [definite] Converting primitive string to object
+test/chrome/starfield.tidy.html:206: [definite] Converting primitive string to object
+test/chrome/starfield.tidy.html:58: [maybe] RangeError, invalid value of array length
+test/chrome/starfield.tidy.html:84: [maybe] RangeError, assigning invalid value to array 'length' property
+test/chrome/starfield.tidy.html:85: [maybe] Reading absent property (computed name)
+test/chrome/starfield.tidy.html:85: [maybe] TypeError, writing property of null/undefined
+test/chrome/starfield.tidy.html:86: [maybe] Reading absent property (computed name)
+test/chrome/starfield.tidy.html:86: [maybe] TypeError, writing property of null/undefined
+test/chrome/starfield.tidy.html:87: [maybe] Reading absent property (computed name)
+test/chrome/starfield.tidy.html:87: [maybe] TypeError, writing property of null/undefined
+test/chrome/starfield.tidy.html:88: [maybe] Reading absent property (computed name)
+test/chrome/starfield.tidy.html:88: [maybe] TypeError, writing property of null/undefined
+test/chrome/starfield.tidy.html:89: [maybe] Reading absent property (computed name)
+test/chrome/starfield.tidy.html:89: [maybe] TypeError, writing property of null/undefined
+test/chrome/starfield.tidy.html:92: [maybe] Reading absent property style
+test/chrome/starfield.tidy.html:92: [maybe] TypeError, reading property of null/undefined
+test/chrome/starfield.tidy.html:92: [maybe] TypeError, writing property of null/undefined
+test/chrome/starfield.tidy.html:95: [maybe] Reading absent property getContext
+test/chrome/starfield.tidy.html:95: [maybe] TypeError, call to non-function
+test/chrome/starfield.tidy.html:100: [maybe] Reading absent property style
+test/chrome/starfield.tidy.html:100: [maybe] TypeError, reading property of null/undefined
+test/chrome/starfield.tidy.html:100: [maybe] TypeError, writing property of null/undefined
+test/chrome/starfield.tidy.html:101: [maybe] Reading absent property style
+test/chrome/starfield.tidy.html:101: [maybe] TypeError, writing property of null/undefined
+test/chrome/starfield.tidy.html:102: [maybe] Reading absent property style
+test/chrome/starfield.tidy.html:102: [maybe] TypeError, writing property of null/undefined
+test/chrome/starfield.tidy.html:103: [maybe] Reading absent property style
+test/chrome/starfield.tidy.html:103: [maybe] TypeError, writing property of null/undefined
+test/chrome/starfield.tidy.html:104: [maybe] Reading absent property style
+test/chrome/starfield.tidy.html:104: [maybe] TypeError, writing property of null/undefined
+test/chrome/starfield.tidy.html:115: [maybe] Reading absent property (computed name)
+test/chrome/starfield.tidy.html:115: [maybe] Reading absent property (computed name)
+test/chrome/starfield.tidy.html:115: [maybe] TypeError, reading property of null/undefined
+test/chrome/starfield.tidy.html:116: [maybe] Reading absent property (computed name)
+test/chrome/starfield.tidy.html:116: [maybe] Reading absent property (computed name)
+test/chrome/starfield.tidy.html:116: [maybe] TypeError, reading property of null/undefined
+test/chrome/starfield.tidy.html:117: [maybe] Reading absent property (computed name)
+test/chrome/starfield.tidy.html:117: [maybe] Reading absent property (computed name)
+test/chrome/starfield.tidy.html:117: [maybe] Reading absent property (computed name)
+test/chrome/starfield.tidy.html:117: [maybe] Reading absent property (computed name)
+test/chrome/starfield.tidy.html:117: [maybe] Reading absent property (computed name)
+test/chrome/starfield.tidy.html:117: [maybe] Reading absent property (computed name)
+test/chrome/starfield.tidy.html:117: [maybe] Reading absent property (computed name)
+test/chrome/starfield.tidy.html:117: [maybe] Reading absent property (computed name)
+test/chrome/starfield.tidy.html:117: [maybe] Reading absent property (computed name)
+test/chrome/starfield.tidy.html:117: [maybe] Reading absent property (computed name)
+test/chrome/starfield.tidy.html:117: [maybe] TypeError, reading property of null/undefined
+test/chrome/starfield.tidy.html:117: [maybe] TypeError, reading property of null/undefined
+test/chrome/starfield.tidy.html:117: [maybe] TypeError, reading property of null/undefined
+test/chrome/starfield.tidy.html:117: [maybe] TypeError, reading property of null/undefined
+test/chrome/starfield.tidy.html:117: [maybe] TypeError, reading property of null/undefined
+test/chrome/starfield.tidy.html:118: [maybe] Reading absent property (computed name)
+test/chrome/starfield.tidy.html:118: [maybe] Reading absent property (computed name)
+test/chrome/starfield.tidy.html:118: [maybe] Reading absent property (computed name)
+test/chrome/starfield.tidy.html:118: [maybe] Reading absent property (computed name)
+test/chrome/starfield.tidy.html:118: [maybe] Reading absent property (computed name)
+test/chrome/starfield.tidy.html:118: [maybe] Reading absent property (computed name)
+test/chrome/starfield.tidy.html:118: [maybe] Reading absent property (computed name)
+test/chrome/starfield.tidy.html:118: [maybe] Reading absent property (computed name)
+test/chrome/starfield.tidy.html:118: [maybe] Reading absent property (computed name)
+test/chrome/starfield.tidy.html:118: [maybe] Reading absent property (computed name)
+test/chrome/starfield.tidy.html:118: [maybe] TypeError, reading property of null/undefined
+test/chrome/starfield.tidy.html:118: [maybe] TypeError, reading property of null/undefined
+test/chrome/starfield.tidy.html:118: [maybe] TypeError, reading property of null/undefined
+test/chrome/starfield.tidy.html:118: [maybe] TypeError, reading property of null/undefined
+test/chrome/starfield.tidy.html:118: [maybe] TypeError, reading property of null/undefined
+test/chrome/starfield.tidy.html:119: [maybe] Reading absent property (computed name)
+test/chrome/starfield.tidy.html:119: [maybe] Reading absent property (computed name)
+test/chrome/starfield.tidy.html:119: [maybe] Reading absent property (computed name)
+test/chrome/starfield.tidy.html:119: [maybe] Reading absent property (computed name)
+test/chrome/starfield.tidy.html:119: [maybe] Reading absent property (computed name)
+test/chrome/starfield.tidy.html:119: [maybe] Reading absent property (computed name)
+test/chrome/starfield.tidy.html:119: [maybe] Reading absent property (computed name)
+test/chrome/starfield.tidy.html:119: [maybe] Reading absent property (computed name)
+test/chrome/starfield.tidy.html:119: [maybe] Reading absent property (computed name)
+test/chrome/starfield.tidy.html:119: [maybe] Reading absent property (computed name)
+test/chrome/starfield.tidy.html:119: [maybe] TypeError, reading property of null/undefined
+test/chrome/starfield.tidy.html:119: [maybe] TypeError, reading property of null/undefined
+test/chrome/starfield.tidy.html:119: [maybe] TypeError, reading property of null/undefined
+test/chrome/starfield.tidy.html:119: [maybe] TypeError, reading property of null/undefined
+test/chrome/starfield.tidy.html:119: [maybe] TypeError, reading property of null/undefined
+test/chrome/starfield.tidy.html:120: [maybe] Reading absent property (computed name)
+test/chrome/starfield.tidy.html:120: [maybe] Reading absent property (computed name)
+test/chrome/starfield.tidy.html:120: [maybe] Reading absent property (computed name)
+test/chrome/starfield.tidy.html:120: [maybe] Reading absent property (computed name)
+test/chrome/starfield.tidy.html:120: [maybe] Reading absent property (computed name)
+test/chrome/starfield.tidy.html:120: [maybe] TypeError, reading property of null/undefined
+test/chrome/starfield.tidy.html:120: [maybe] TypeError, reading property of null/undefined
+test/chrome/starfield.tidy.html:120: [maybe] TypeError, writing property of null/undefined
+test/chrome/starfield.tidy.html:121: [maybe] Reading absent property (computed name)
+test/chrome/starfield.tidy.html:121: [maybe] Reading absent property (computed name)
+test/chrome/starfield.tidy.html:121: [maybe] Reading absent property (computed name)
+test/chrome/starfield.tidy.html:121: [maybe] Reading absent property (computed name)
+test/chrome/starfield.tidy.html:121: [maybe] Reading absent property (computed name)
+test/chrome/starfield.tidy.html:121: [maybe] TypeError, reading property of null/undefined
+test/chrome/starfield.tidy.html:121: [maybe] TypeError, reading property of null/undefined
+test/chrome/starfield.tidy.html:121: [maybe] TypeError, writing property of null/undefined
+test/chrome/starfield.tidy.html:124: [maybe] Reading absent property (computed name)
+test/chrome/starfield.tidy.html:124: [maybe] Reading absent property (computed name)
+test/chrome/starfield.tidy.html:124: [maybe] TypeError, reading property of null/undefined
+test/chrome/starfield.tidy.html:127: [maybe] Reading absent property (computed name)
+test/chrome/starfield.tidy.html:127: [maybe] Reading absent property (computed name)
+test/chrome/starfield.tidy.html:127: [maybe] Reading absent property (computed name)
+test/chrome/starfield.tidy.html:127: [maybe] Reading absent property (computed name)
+test/chrome/starfield.tidy.html:127: [maybe] TypeError, reading property of null/undefined
+test/chrome/starfield.tidy.html:127: [maybe] TypeError, reading property of null/undefined
+test/chrome/starfield.tidy.html:189: [maybe] Reading absent property detail
+test/chrome/starfield.tidy.html:191: [maybe] Reading absent property detail
+test/chrome/starfield.tidy.html:26: [maybe] Uncaught exception, constructed at [test/chrome/starfield.tidy.html:58, test/chrome/starfield.tidy.html:84, test/chrome/starfield.tidy.html:85, test/chrome/starfield.tidy.html:86, test/chrome/starfield.tidy.html:87, test/chrome/starfield.tidy.html:88, test/chrome/starfield.tidy.html:89, test/chrome/starfield.tidy.html:92, test/chrome/starfield.tidy.html:95, test/chrome/starfield.tidy.html:100, test/chrome/starfield.tidy.html:101, test/chrome/starfield.tidy.html:102, test/chrome/starfield.tidy.html:103, test/chrome/starfield.tidy.html:104, test/chrome/starfield.tidy.html:115, test/chrome/starfield.tidy.html:116, test/chrome/starfield.tidy.html:117, test/chrome/starfield.tidy.html:118, test/chrome/starfield.tidy.html:119, test/chrome/starfield.tidy.html:120, test/chrome/starfield.tidy.html:121, test/chrome/starfield.tidy.html:124, test/chrome/starfield.tidy.html:127]
+test/chrome/starfield.tidy.html:85: [maybe] Converting primitive number to object
+test/chrome/starfield.tidy.html:86: [maybe] Converting primitive number to object
+test/chrome/starfield.tidy.html:87: [maybe] Converting primitive number to object
+test/chrome/starfield.tidy.html:88: [maybe] Converting primitive number to object
+test/chrome/starfield.tidy.html:89: [maybe] Converting primitive number to object
+test/chrome/starfield.tidy.html:115: [maybe] Converting primitive number to object
+test/chrome/starfield.tidy.html:116: [maybe] Converting primitive number to object
+test/chrome/starfield.tidy.html:117: [maybe] Conversion to number yields NaN
+test/chrome/starfield.tidy.html:117: [maybe] Conversion to number yields NaN
+test/chrome/starfield.tidy.html:117: [maybe] Conversion to number yields NaN
+test/chrome/starfield.tidy.html:117: [maybe] Conversion to number yields NaN
+test/chrome/starfield.tidy.html:117: [maybe] Conversion to number yields NaN
+test/chrome/starfield.tidy.html:117: [maybe] Converting primitive number to object
+test/chrome/starfield.tidy.html:117: [maybe] Converting primitive number to object
+test/chrome/starfield.tidy.html:117: [maybe] Converting primitive number to object
+test/chrome/starfield.tidy.html:117: [maybe] Converting primitive number to object
+test/chrome/starfield.tidy.html:117: [maybe] Converting primitive number to object
+test/chrome/starfield.tidy.html:117: [maybe] Converting primitive number to object
+test/chrome/starfield.tidy.html:117: [maybe] Converting primitive number to object
+test/chrome/starfield.tidy.html:117: [maybe] Converting primitive number to object
+test/chrome/starfield.tidy.html:118: [maybe] Conversion to number yields NaN
+test/chrome/starfield.tidy.html:118: [maybe] Conversion to number yields NaN
+test/chrome/starfield.tidy.html:118: [maybe] Conversion to number yields NaN
+test/chrome/starfield.tidy.html:118: [maybe] Conversion to number yields NaN
+test/chrome/starfield.tidy.html:118: [maybe] Conversion to number yields NaN
+test/chrome/starfield.tidy.html:118: [maybe] Converting primitive number to object
+test/chrome/starfield.tidy.html:118: [maybe] Converting primitive number to object
+test/chrome/starfield.tidy.html:118: [maybe] Converting primitive number to object
+test/chrome/starfield.tidy.html:118: [maybe] Converting primitive number to object
+test/chrome/starfield.tidy.html:118: [maybe] Converting primitive number to object
+test/chrome/starfield.tidy.html:118: [maybe] Converting primitive number to object
+test/chrome/starfield.tidy.html:118: [maybe] Converting primitive number to object
+test/chrome/starfield.tidy.html:118: [maybe] Converting primitive number to object
+test/chrome/starfield.tidy.html:119: [maybe] Conversion to number yields NaN
+test/chrome/starfield.tidy.html:119: [maybe] Conversion to number yields NaN
+test/chrome/starfield.tidy.html:119: [maybe] Conversion to number yields NaN
+test/chrome/starfield.tidy.html:119: [maybe] Conversion to number yields NaN
+test/chrome/starfield.tidy.html:119: [maybe] Converting primitive number to object
+test/chrome/starfield.tidy.html:119: [maybe] Converting primitive number to object
+test/chrome/starfield.tidy.html:119: [maybe] Converting primitive number to object
+test/chrome/starfield.tidy.html:119: [maybe] Converting primitive number to object
+test/chrome/starfield.tidy.html:119: [maybe] Converting primitive number to object
+test/chrome/starfield.tidy.html:119: [maybe] Converting primitive number to object
+test/chrome/starfield.tidy.html:119: [maybe] Converting primitive number to object
+test/chrome/starfield.tidy.html:119: [maybe] Converting primitive number to object
+test/chrome/starfield.tidy.html:120: [maybe] Conversion to number yields NaN
+test/chrome/starfield.tidy.html:120: [maybe] Converting primitive number to object
+test/chrome/starfield.tidy.html:120: [maybe] Converting primitive number to object
+test/chrome/starfield.tidy.html:120: [maybe] Converting primitive number to object
+test/chrome/starfield.tidy.html:121: [maybe] Conversion to number yields NaN
+test/chrome/starfield.tidy.html:121: [maybe] Converting primitive number to object
+test/chrome/starfield.tidy.html:121: [maybe] Converting primitive number to object
+test/chrome/starfield.tidy.html:121: [maybe] Converting primitive number to object
+test/chrome/starfield.tidy.html:122: [maybe] Conversion to number yields NaN
+test/chrome/starfield.tidy.html:122: [maybe] Conversion to number yields NaN
+test/chrome/starfield.tidy.html:122: [maybe] Conversion to number yields NaN
+test/chrome/starfield.tidy.html:122: [maybe] Conversion to number yields NaN
+test/chrome/starfield.tidy.html:124: [maybe] Conversion to number yields NaN
+test/chrome/starfield.tidy.html:124: [maybe] Converting primitive number to object
+test/chrome/starfield.tidy.html:126: [maybe] Conversion to number yields NaN
+test/chrome/starfield.tidy.html:127: [maybe] Conversion to number yields NaN
+test/chrome/starfield.tidy.html:127: [maybe] Converting primitive number to object
+test/chrome/starfield.tidy.html:127: [maybe] Converting primitive number to object
+test/chrome/starfield.tidy.html:191: [maybe] Conversion to number yields NaN

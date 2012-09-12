@@ -1,0 +1,19 @@
+test/micro/test64.js:1:9: [definite] Dead assignment, property gb is never read
+test/micro/test64.js:1:9: [definite] Dead assignment, property gh is never read
+test/micro/test64.js:7:12: [definite] Reading 'this' yields the global object
+test/micro/test64.js:9:16: [definite] Reading 'this' yields the global object
+test/micro/test64.js:10:18: [definite] Reading 'this' yields the global object
+test/micro/test64.js:11:12: [definite] Reading 'this' yields the global object
+test/micro/test64.js:3:1: [info] Abstract object: {gb:10.0,gh:32.0,[[Prototype]]=[@Object.prototype[native]]}
+test/micro/test64.js:5:1: [info] Abstract object: {gb:absent,gh:32.0,[[Prototype]]=[@Object.prototype[native]]}
+test/micro/test64.js:7:1: [info] Abstract object: {arr:Undef,dumpObject:[@dumpObject[native]],id:[@id#fun1],p:[@Object#node6],s:Undef,t:Undef,[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Prototype]]=?,[[Value]]=?,[[Scope]]=?}
+test/micro/test64.js:9:1: [info] Property attributes: (DontDelete-)(DontEnum+)(ReadOnly-)
+test/micro/test64.js:10:1: [info] Abstract value: true
+test/micro/test64.js:11:1: [info] Abstract object: {Function:absent,arr:Undef,dumpAttributes:[@dumpAttributes[native]],dumpObject:[@dumpObject[native]],dumpValue:[@dumpValue[native]],id:[@id#fun1],p:[@Object#node6],s:Undef,t:Undef,[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Prototype]]=?,[[Value]]=?,[[Scope]]=?}
+test/micro/test64.js:13:1: [info] Property attributes: (DontDelete+)(DontEnum+)(ReadOnly+)
+test/micro/test64.js:14:1: [info] Abstract value: false
+test/micro/test64.js:15:1: [info] Abstract object: {length:1.0,[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Prototype]]=?,[[Value]]=?,[[Scope]]=?}
+test/micro/test64.js:19:1: [info] Abstract object: {0:0.0,1:1.0,10:34.0,11:55.0,12:89.0,2:1.0,3:2.0,4:3.0,5:5.0,6:8.0,7:13.0,8:"not a fib number",9:21.0,length:13.0,[[Prototype]]=[@Array.prototype[native]]}
+test/micro/test64.js:21:1: [info] Abstract object: {0:0.0,1:1.0,10:34.0,11:55.0,12:89.0,2:1.0,3:2.0,4:3.0,5:5.0,6:8.0,7:13.0,8:absent,9:21.0,length:13.0,[[Prototype]]=[@Array.prototype[native]]}
+test/micro/test64.js:25:1: [info] Abstract value: "ab"
+test/micro/test64.js:27:1: [info] Abstract object: {0:0.0,1:1.0,10:34.0,11:55.0,12:89.0,2:1.0,3:2.0,4:3.0,5:5.0,6:8.0,7:13.0,8:absent,9:21.0,length:13.0,[[Prototype]]=[@Array.prototype[native]]}

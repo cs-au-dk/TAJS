@@ -1,0 +1,5 @@
+test/micro/test158.js:9:1: [definite] Dead assignment, property dead is never read
+test/micro/test158.js:8:11: [maybe] Reading absent property pro
+test/micro/test158.js:3:2: [info] Abstract value: 3.0
+test/micro/test158.js:7:1: [info] Abstract value: [@Object#node2]
+test/micro/test158.js:8:1: [info] Abstract value: Undef|"seje"

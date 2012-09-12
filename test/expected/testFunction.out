@@ -1,0 +1,19 @@
+Unevalizer: Starting on: "aLF25HTA = (function (a) {return a;})"
+Unevalizer: Valid program
+Unevalizer: No name capture
+Unevalizer: Starting on: "aZW4F5KV = (function () {Lblablabla})"
+Unevalizer: Valid program
+Unevalizer: No name capture
+Unevalizer: Starting on: "a0KN8SFY = (function (x,y) {return x+y;})"
+Unevalizer: Valid program
+Unevalizer: No name capture
+test/micro/testFunction.js:1:10: [definite] Unreachable function
+test/micro/testFunction.js:1:10: [definite] Unreachable function
+test/micro/testFunction.js:1:10: [definite] Unreachable function
+test/micro/testFunction.js:2:1: [definite] Unreachable function g
+test/micro/testFunction.js:6:1: [info] Abstract value: [@Object#node59]
+test/micro/testFunction.js:7:1: [info] Abstract value: [@Object#node2]
+test/micro/testFunction.js:8:1: [info] Abstract value: [@Object#node65]
+test/micro/testFunction.js:9:1: [info] Abstract value: [@<anonymous>#fun4]
+test/micro/testFunction.js:11:1: [info] Abstract value: [@Function.prototype[native]]
+test/micro/testFunction.js:12:1: [info] Abstract value: Undef

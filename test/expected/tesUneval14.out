@@ -1,0 +1,5 @@
+Unevalizer: Starting on: "dumpValue(3)"
+Unevalizer: Valid program
+Unevalizer: No name capture
+test/uneval/uneval14.tidy.html:1:15: [info] Abstract value: 3.0
+test/uneval/uneval14.tidy.html:7:15: [info] Abstract value: 33.0

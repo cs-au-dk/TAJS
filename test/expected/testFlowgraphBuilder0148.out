@@ -1,0 +1,21 @@
+fg2: <main> function()
+  block 0: [entry]
+    node 0: constant[undefined,v1] (test/flowgraph_builder/flowgraph_builder0148b.js:1:1)
+    ->[block 1]
+  block 1:
+    node 1: constant[1.0,v2] (test/flowgraph_builder/flowgraph_builder0148a.js:1:5)
+    node 2: write-variable[v2,'x']* (test/flowgraph_builder/flowgraph_builder0148a.js:1:1)
+    node 3: read-variable['dumpValue',v4,v3] (test/flowgraph_builder/flowgraph_builder0148b.js:1:1)
+    node 4: read-variable['x',v5,-] (test/flowgraph_builder/flowgraph_builder0148b.js:1:11)
+    ->[block 2]
+  block 2:
+    node 5: call[v3,v4,v5,-]* (test/flowgraph_builder/flowgraph_builder0148b.js:1:1)
+    ->[block 3]
+  block 3: [exit-ordinary]
+    node 6: return[v1] (test/flowgraph_builder/flowgraph_builder0148b.js:1:1)
+    ->[]
+  block 4: [exit-exceptional]
+    node 7: exceptional-return (test/flowgraph_builder/flowgraph_builder0148b.js:1:1)
+    ->[]
+
+test/flowgraph_builder/flowgraph_builder0148b.js:1:1: [info] Abstract value: 1.0

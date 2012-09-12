@@ -1,0 +1,167 @@
+fg2: <main> function()
+  block 0: [entry]
+    node 0: constant[undefined,v1] (test/flowgraph_builder/flowgraph_builder0155.tidy.html:8)
+    node 1: function-decl[function CSlider(c),-] (test/flowgraph_builder/flowgraph_builder0155.tidy.html:10:1)
+    ->[block 1]
+  block 1:
+    node 2: read-variable['CSlider',v3,-] (test/flowgraph_builder/flowgraph_builder0155.tidy.html:11:11)
+    ->[block 2]
+  block 2:
+    node 3: construct[-,v3,v2] (test/flowgraph_builder/flowgraph_builder0155.tidy.html:11:11)
+    ->[block 3]
+  block 3:
+    node 4: write-variable[v2,'cs1']* (test/flowgraph_builder/flowgraph_builder0155.tidy.html:11:1)
+    node 5: read-variable['cs1',v5,-] (test/flowgraph_builder/flowgraph_builder0155.tidy.html:12:1)
+    node 6: read-variable['setInterval',v7,v6] (test/flowgraph_builder/flowgraph_builder0155.tidy.html:12:16)
+    node 7: constant["cs1.l()",v8] (test/flowgraph_builder/flowgraph_builder0155.tidy.html:12:28)
+    node 8: constant[1000.0,v9] (test/flowgraph_builder/flowgraph_builder0155.tidy.html:12:39)
+    ->[block 4]
+  block 4:
+    node 9: call[v6,v7,v8,v9,v4] (test/flowgraph_builder/flowgraph_builder0155.tidy.html:12:16)
+    ->[block 5]
+  block 5:
+    node 10: write-property[v5,'autointrvl',v4] (test/flowgraph_builder/flowgraph_builder0155.tidy.html:12:1)
+    node 11: <variable-non-null-undef>['cs1']* (test/flowgraph_builder/flowgraph_builder0155.tidy.html:12:1)
+    ->[block 6]
+  block 6:
+    node 12: event-entry (test/flowgraph_builder/flowgraph_builder0155.tidy.html)
+    ->[block 7,block 8]
+  block 7:
+    node 13: event-dispatcher <LOAD> (test/flowgraph_builder/flowgraph_builder0155.tidy.html)
+    ->[block 8]
+  block 8:
+    node 14: nop (test/flowgraph_builder/flowgraph_builder0155.tidy.html)
+    ->[block 7,block 9,block 10]
+  block 9:
+    node 15: event-dispatcher <OTHER> (test/flowgraph_builder/flowgraph_builder0155.tidy.html)
+    ->[block 10]
+  block 10:
+    node 16: nop (test/flowgraph_builder/flowgraph_builder0155.tidy.html)
+    ->[block 9,block 11,block 12]
+  block 11:
+    node 17: event-dispatcher <UNLOAD> (test/flowgraph_builder/flowgraph_builder0155.tidy.html)
+    ->[block 12]
+  block 12:
+    node 18: nop (test/flowgraph_builder/flowgraph_builder0155.tidy.html)
+    ->[block 11,block 13]
+  block 13: [exit-ordinary]
+    node 19: return[v1] (test/flowgraph_builder/flowgraph_builder0155.tidy.html:8)
+    ->[]
+  block 14: [exit-exceptional]
+    node 20: exceptional-return (test/flowgraph_builder/flowgraph_builder0155.tidy.html:8)
+    ->[]
+function CSlider(c)
+  block 15: [entry]
+    node 21: constant[undefined,v1] (test/flowgraph_builder/flowgraph_builder0155.tidy.html:10:1)
+    ->[block 16]
+  block 16:
+    node 22: read-variable['this',v3,-] (test/flowgraph_builder/flowgraph_builder0155.tidy.html:10:23)
+    node 23: constant[4.0,v2] (test/flowgraph_builder/flowgraph_builder0155.tidy.html:10:32)
+    node 24: write-property[v3,'c',v2]* (test/flowgraph_builder/flowgraph_builder0155.tidy.html:10:23)
+    ->[block 17]
+  block 17: [exit-ordinary]
+    node 25: return[v1] (test/flowgraph_builder/flowgraph_builder0155.tidy.html:10:1)
+    ->[]
+  block 18: [exit-exceptional]
+    node 26: exceptional-return (test/flowgraph_builder/flowgraph_builder0155.tidy.html:10:1)
+    ->[]
+
+Unevalizer: Starting on: "cs1.l()"
+Unevalizer: Valid program
+Unevalizer: No name capture
+fg2: <main> function()
+  block 0: [entry]
+    node 0: constant[undefined,v1] (test/flowgraph_builder/flowgraph_builder0155.tidy.html:8)
+    node 1: function-decl[function CSlider(c),-] (test/flowgraph_builder/flowgraph_builder0155.tidy.html:10:1)
+    ->[block 1]
+  block 1:
+    node 2: read-variable['CSlider',v3,-] (test/flowgraph_builder/flowgraph_builder0155.tidy.html:11:11)
+    ->[block 2]
+  block 2:
+    node 3: construct[-,v3,v2] (test/flowgraph_builder/flowgraph_builder0155.tidy.html:11:11)
+    ->[block 3]
+  block 3:
+    node 4: write-variable[v2,'cs1']* (test/flowgraph_builder/flowgraph_builder0155.tidy.html:11:1)
+    node 5: read-variable['cs1',v5,-] (test/flowgraph_builder/flowgraph_builder0155.tidy.html:12:1)
+    node 6: read-variable['setInterval',v7,v6] (test/flowgraph_builder/flowgraph_builder0155.tidy.html:12:16)
+    node 7: constant["cs1.l()",v8] (test/flowgraph_builder/flowgraph_builder0155.tidy.html:12:28)
+    node 8: constant[1000.0,v9] (test/flowgraph_builder/flowgraph_builder0155.tidy.html:12:39)
+    ->[block 4]
+  block 4:
+    node 9: call[v6,v7,v8,v9,v4] (test/flowgraph_builder/flowgraph_builder0155.tidy.html:12:16)
+    ->[block 5]
+  block 5:
+    node 10: write-property[v5,'autointrvl',v4] (test/flowgraph_builder/flowgraph_builder0155.tidy.html:12:1)
+    node 11: <variable-non-null-undef>['cs1']* (test/flowgraph_builder/flowgraph_builder0155.tidy.html:12:1)
+    ->[block 6]
+  block 6:
+    node 12: event-entry (test/flowgraph_builder/flowgraph_builder0155.tidy.html)
+    ->[block 7,block 8]
+  block 7:
+    node 13: event-dispatcher <LOAD> (test/flowgraph_builder/flowgraph_builder0155.tidy.html)
+    ->[block 8]
+  block 8:
+    node 14: nop (test/flowgraph_builder/flowgraph_builder0155.tidy.html)
+    ->[block 7,block 9,block 10]
+  block 9:
+    node 15: event-dispatcher <OTHER> (test/flowgraph_builder/flowgraph_builder0155.tidy.html)
+    ->[block 10]
+  block 10:
+    node 16: nop (test/flowgraph_builder/flowgraph_builder0155.tidy.html)
+    ->[block 9,block 11,block 12]
+  block 11:
+    node 17: event-dispatcher <UNLOAD> (test/flowgraph_builder/flowgraph_builder0155.tidy.html)
+    ->[block 12]
+  block 12:
+    node 18: nop (test/flowgraph_builder/flowgraph_builder0155.tidy.html)
+    ->[block 11,block 13]
+  block 13: [exit-ordinary]
+    node 19: return[v1] (test/flowgraph_builder/flowgraph_builder0155.tidy.html:8)
+    ->[]
+  block 14: [exit-exceptional]
+    node 20: exceptional-return (test/flowgraph_builder/flowgraph_builder0155.tidy.html:8)
+    ->[]
+  block 19:
+    node 27: constant[undefined,v4] (test/flowgraph_builder/flowgraph_builder0155.tidy.html:8)
+    node 28: function-expr[function(),v4] (test/flowgraph_builder/flowgraph_builder0155.tidy.html:1:2)
+    ->[block 5]
+function CSlider(c)
+  block 15: [entry]
+    node 21: constant[undefined,v1] (test/flowgraph_builder/flowgraph_builder0155.tidy.html:10:1)
+    ->[block 16]
+  block 16:
+    node 22: read-variable['this',v3,-] (test/flowgraph_builder/flowgraph_builder0155.tidy.html:10:23)
+    node 23: constant[4.0,v2] (test/flowgraph_builder/flowgraph_builder0155.tidy.html:10:32)
+    node 24: write-property[v3,'c',v2]* (test/flowgraph_builder/flowgraph_builder0155.tidy.html:10:23)
+    ->[block 17]
+  block 17: [exit-ordinary]
+    node 25: return[v1] (test/flowgraph_builder/flowgraph_builder0155.tidy.html:10:1)
+    ->[]
+  block 18: [exit-exceptional]
+    node 26: exceptional-return (test/flowgraph_builder/flowgraph_builder0155.tidy.html:10:1)
+    ->[]
+function()
+  block 20: [entry]
+    node 29: constant[undefined,v1] (test/flowgraph_builder/flowgraph_builder0155.tidy.html:1:2)
+    ->[block 21]
+  block 21:
+    node 30: read-variable['cs1',v3,-] (test/flowgraph_builder/flowgraph_builder0155.tidy.html:1:15)
+    node 31: read-property[v3,'l',v2] (test/flowgraph_builder/flowgraph_builder0155.tidy.html:1:15)
+    node 32: <variable-non-null-undef>['cs1'] (test/flowgraph_builder/flowgraph_builder0155.tidy.html:1:15)
+    ->[block 22]
+  block 22:
+    node 33: call[v3,v2,-]* (test/flowgraph_builder/flowgraph_builder0155.tidy.html:1:15)
+    ->[block 23]
+  block 23: [exit-ordinary]
+    node 34: return[v1] (test/flowgraph_builder/flowgraph_builder0155.tidy.html:1:2)
+    ->[]
+  block 24: [exit-exceptional]
+    node 35: exceptional-return (test/flowgraph_builder/flowgraph_builder0155.tidy.html:1:2)
+    ->[]
+
+test/flowgraph_builder/flowgraph_builder0155.tidy.html:1:15: [definite] TypeError, call to non-function
+test/flowgraph_builder/flowgraph_builder0155.tidy.html:1:15: [definite] Reading absent property l
+test/flowgraph_builder/flowgraph_builder0155.tidy.html:10:23: [definite] Dead assignment, property c is never read
+test/flowgraph_builder/flowgraph_builder0155.tidy.html:12:1: [definite] Dead assignment, property autointrvl is never read
+test/flowgraph_builder/flowgraph_builder0155.tidy.html:10:1: [definite] The variable c is never used
+test/flowgraph_builder/flowgraph_builder0155.tidy.html:8: [maybe] Uncaught exception, constructed at [test/flowgraph_builder/flowgraph_builder0155.tidy.html:1:15]

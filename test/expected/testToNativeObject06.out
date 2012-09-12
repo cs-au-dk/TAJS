@@ -1,0 +1,3 @@
+test/browser/domlegacy/toNativeObject06.tidy.html:20: [maybe] TypeError, argument is not of expected type: ImageData
+test/browser/domlegacy/toNativeObject06.tidy.html:18: [info] Abstract value: [*HTMLElement[native], *ImageData[native]]
+test/browser/domlegacy/toNativeObject06.tidy.html:20: [info] Abstract value: Undef

@@ -1,0 +1,494 @@
+test/chrome/3ddemo.tidy.html:779: [definite] Reading absent property setStrokeColor
+test/chrome/3ddemo.tidy.html:785: [definite] Reading absent property setFillColor
+test/chrome/3ddemo.tidy.html:870: [definite] Too many parameters to function Array.prototype.pop
+test/chrome/3ddemo.tidy.html:870: [definite] Too many parameters to function Array.prototype.reverse
+test/chrome/3ddemo.tidy.html:870: [definite] Too many parameters to function Array.prototype.shift
+test/chrome/3ddemo.tidy.html:870: [definite] Too many parameters to function Array.prototype.toLocaleString
+test/chrome/3ddemo.tidy.html:870: [definite] Too many parameters to function Array.prototype.toString
+test/chrome/3ddemo.tidy.html:870: [definite] Too many parameters to function Object.prototype.toLocaleString
+test/chrome/3ddemo.tidy.html:870: [definite] Too many parameters to function Object.prototype.toString
+test/chrome/3ddemo.tidy.html:870: [definite] Too many parameters to function Object.prototype.valueOf
+test/chrome/3ddemo.tidy.html:1086: [definite] TypeError, reading property of null/undefined
+test/chrome/3ddemo.tidy.html:1040: [definite] Property is null/undefined
+test/chrome/3ddemo.tidy.html:1040: [definite] Property is null/undefined
+test/chrome/3ddemo.tidy.html:1084: [definite] Property is null/undefined
+test/chrome/3ddemo.tidy.html:1085: [definite] Variable aY is null/undefined
+test/chrome/3ddemo.tidy.html:1086: [definite] Variable aY is null/undefined
+test/chrome/3ddemo.tidy.html:70: [definite] Dead assignment, property h is never read
+test/chrome/3ddemo.tidy.html:76: [definite] Unreachable function: aE
+test/chrome/3ddemo.tidy.html:98: [definite] Unreachable function: C
+test/chrome/3ddemo.tidy.html:105: [definite] Unreachable function: a
+test/chrome/3ddemo.tidy.html:109: [definite] Unreachable function: aD
+test/chrome/3ddemo.tidy.html:119: [definite] Unreachable function: ab
+test/chrome/3ddemo.tidy.html:195: [definite] Unreachable function: i
+test/chrome/3ddemo.tidy.html:196: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:197: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:205: [definite] Unreachable function: ar
+test/chrome/3ddemo.tidy.html:240: [definite] Dead assignment, property x is never read
+test/chrome/3ddemo.tidy.html:240: [definite] Dead assignment, property y is never read
+test/chrome/3ddemo.tidy.html:240: [definite] Dead assignment, property z is never read
+test/chrome/3ddemo.tidy.html:249: [definite] Unreachable function: ag
+test/chrome/3ddemo.tidy.html:250: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:251: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:253: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:255: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:260: [definite] Unreachable function: ai
+test/chrome/3ddemo.tidy.html:261: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:262: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:263: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:264: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:265: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:266: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:267: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:268: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:276: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:277: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:280: [definite] Unreachable function: w
+test/chrome/3ddemo.tidy.html:281: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:281: [definite] Unreachable function
+test/chrome/3ddemo.tidy.html:293: [definite] Unreachable function: V
+test/chrome/3ddemo.tidy.html:297: [definite] Unreachable function: ad
+test/chrome/3ddemo.tidy.html:298: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:318: [definite] Dead assignment, property rotateZ is never read
+test/chrome/3ddemo.tidy.html:318: [definite] Unreachable function: n
+test/chrome/3ddemo.tidy.html:319: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:324: [definite] Dead assignment, property translatePre is never read
+test/chrome/3ddemo.tidy.html:324: [definite] Unreachable function: I
+test/chrome/3ddemo.tidy.html:325: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:327: [definite] Dead assignment, property scale is never read
+test/chrome/3ddemo.tidy.html:327: [definite] Unreachable function: aw
+test/chrome/3ddemo.tidy.html:328: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:330: [definite] Dead assignment, property scalePre is never read
+test/chrome/3ddemo.tidy.html:330: [definite] Unreachable function: aF
+test/chrome/3ddemo.tidy.html:331: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:333: [definite] Dead assignment, property transformPoint is never read
+test/chrome/3ddemo.tidy.html:333: [definite] Unreachable function: aH
+test/chrome/3ddemo.tidy.html:341: [definite] Dead assignment, property r is never read
+test/chrome/3ddemo.tidy.html:342: [definite] Dead assignment, property g is never read
+test/chrome/3ddemo.tidy.html:343: [definite] Dead assignment, property b is never read
+test/chrome/3ddemo.tidy.html:344: [definite] Dead assignment, property a is never read
+test/chrome/3ddemo.tidy.html:346: [definite] Dead assignment, property setRGB is never read
+test/chrome/3ddemo.tidy.html:346: [definite] Unreachable function
+test/chrome/3ddemo.tidy.html:349: [definite] Dead assignment, property invert is never read
+test/chrome/3ddemo.tidy.html:349: [definite] Unreachable function
+test/chrome/3ddemo.tidy.html:354: [definite] Unreachable function: l
+test/chrome/3ddemo.tidy.html:371: [definite] Dead assignment, property centroid is never read
+test/chrome/3ddemo.tidy.html:372: [definite] Dead assignment, property normal1 is never read
+test/chrome/3ddemo.tidy.html:373: [definite] Dead assignment, property normal2 is never read
+test/chrome/3ddemo.tidy.html:374: [definite] Dead assignment, property fill_rgba is never read
+test/chrome/3ddemo.tidy.html:375: [definite] Dead assignment, property texture is never read
+test/chrome/3ddemo.tidy.html:381: [definite] Dead assignment, property setQuad is never read
+test/chrome/3ddemo.tidy.html:381: [definite] Unreachable function
+test/chrome/3ddemo.tidy.html:387: [definite] Dead assignment, property setTriangle is never read
+test/chrome/3ddemo.tidy.html:387: [definite] Unreachable function
+test/chrome/3ddemo.tidy.html:400: [definite] Unreachable function: af
+test/chrome/3ddemo.tidy.html:405: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:408: [definite] Dead assignment, property selectAll is never read
+test/chrome/3ddemo.tidy.html:408: [definite] Unreachable function: an
+test/chrome/3ddemo.tidy.html:409: [definite] Unreachable function
+test/chrome/3ddemo.tidy.html:413: [definite] Dead assignment, property selectRandom is never read
+test/chrome/3ddemo.tidy.html:413: [definite] Unreachable function: c
+test/chrome/3ddemo.tidy.html:414: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:415: [definite] Unreachable function
+test/chrome/3ddemo.tidy.html:416: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:419: [definite] Dead assignment, property distance is never read
+test/chrome/3ddemo.tidy.html:419: [definite] Unreachable function: N
+test/chrome/3ddemo.tidy.html:422: [definite] Dead assignment, property set_distance is never read
+test/chrome/3ddemo.tidy.html:422: [definite] Unreachable function: au
+test/chrome/3ddemo.tidy.html:425: [definite] Dead assignment, property count is never read
+test/chrome/3ddemo.tidy.html:425: [definite] Unreachable function: g
+test/chrome/3ddemo.tidy.html:428: [definite] Dead assignment, property set_count is never read
+test/chrome/3ddemo.tidy.html:428: [definite] Unreachable function: y
+test/chrome/3ddemo.tidy.html:431: [definite] Dead assignment, property extrude is never read
+test/chrome/3ddemo.tidy.html:431: [definite] Unreachable function: H
+test/chrome/3ddemo.tidy.html:432: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:433: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:442: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:443: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:444: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:445: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:448: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:449: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:452: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:453: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:454: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:455: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:456: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:458: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:460: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:461: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:462: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:464: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:465: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:466: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:467: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:468: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:470: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:471: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:472: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:473: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:475: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:476: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:477: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:478: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:480: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:481: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:483: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:487: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:491: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:493: [definite] Dead assignment, property averageSmooth is never read
+test/chrome/3ddemo.tidy.html:493: [definite] Unreachable function: U
+test/chrome/3ddemo.tidy.html:494: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:495: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:497: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:499: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:500: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:501: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:502: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:504: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:505: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:507: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:508: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:509: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:510: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:513: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:514: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:516: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:517: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:526: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:530: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:532: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:535: [definite] Dead assignment, property linearSubdivide is never read
+test/chrome/3ddemo.tidy.html:535: [definite] Unreachable function: ak
+test/chrome/3ddemo.tidy.html:536: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:538: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:539: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:548: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:549: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:550: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:551: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:554: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:556: [definite] Unreachable function
+test/chrome/3ddemo.tidy.html:559: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:561: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:563: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:564: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:565: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:566: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:569: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:570: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:572: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:589: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:590: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:595: [definite] Dead assignment, property aO is never read
+test/chrome/3ddemo.tidy.html:609: [definite] Dead assignment, property forEachFace is never read
+test/chrome/3ddemo.tidy.html:609: [definite] Unreachable function
+test/chrome/3ddemo.tidy.html:610: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:611: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:612: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:617: [definite] Unreachable function: G
+test/chrome/3ddemo.tidy.html:618: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:619: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:620: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:622: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:643: [definite] Unreachable function: ac
+test/chrome/3ddemo.tidy.html:644: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:645: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:679: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:681: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:683: [definite] Unreachable function: S
+test/chrome/3ddemo.tidy.html:684: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:685: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:686: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:687: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:688: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:689: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:690: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:691: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:694: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:696: [definite] Unreachable function: F
+test/chrome/3ddemo.tidy.html:697: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:698: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:701: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:702: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:703: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:704: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:705: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:706: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:709: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:710: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:711: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:712: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:716: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:720: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:721: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:722: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:723: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:725: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:729: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:731: [definite] Unreachable function: W
+test/chrome/3ddemo.tidy.html:739: [definite] Dead assignment, property isRunning is never read
+test/chrome/3ddemo.tidy.html:739: [definite] Unreachable function
+test/chrome/3ddemo.tidy.html:742: [definite] Dead assignment, property start is never read
+test/chrome/3ddemo.tidy.html:742: [definite] Unreachable function
+test/chrome/3ddemo.tidy.html:743: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:746: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:747: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:747: [definite] Unreachable function
+test/chrome/3ddemo.tidy.html:748: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:750: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:753: [definite] Dead assignment, property stop is never read
+test/chrome/3ddemo.tidy.html:753: [definite] Unreachable function
+test/chrome/3ddemo.tidy.html:754: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:757: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:758: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:760: [definite] Dead assignment, property set_t is never read
+test/chrome/3ddemo.tidy.html:760: [definite] Unreachable function
+test/chrome/3ddemo.tidy.html:763: [definite] Dead assignment, property set_step is never read
+test/chrome/3ddemo.tidy.html:763: [definite] Unreachable function
+test/chrome/3ddemo.tidy.html:766: [definite] Dead assignment, property reverse_step_direction is never read
+test/chrome/3ddemo.tidy.html:766: [definite] Unreachable function
+test/chrome/3ddemo.tidy.html:799: [definite] Dead assignment, property projectPointsToCanvas is never read
+test/chrome/3ddemo.tidy.html:799: [definite] Unreachable function: T
+test/chrome/3ddemo.tidy.html:800: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:801: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:802: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:803: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:805: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:836: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:840: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:843: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:868: [definite] Dead assignment, property canvas_x is never read
+test/chrome/3ddemo.tidy.html:868: [definite] Dead assignment, property canvas_y is never read
+test/chrome/3ddemo.tidy.html:870: [definite] Too few parameters to function Array.prototype.splice
+test/chrome/3ddemo.tidy.html:877: [definite] Dead assignment, property rotate_z is never read
+test/chrome/3ddemo.tidy.html:931: [definite] Dead assignment, property autoToolbar is never read
+test/chrome/3ddemo.tidy.html:931: [definite] Unreachable function: s
+test/chrome/3ddemo.tidy.html:932: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:933: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:934: [definite] Unreachable function
+test/chrome/3ddemo.tidy.html:938: [definite] Unreachable function
+test/chrome/3ddemo.tidy.html:942: [definite] Unreachable function
+test/chrome/3ddemo.tidy.html:946: [definite] Unreachable function
+test/chrome/3ddemo.tidy.html:950: [definite] Unreachable function
+test/chrome/3ddemo.tidy.html:954: [definite] Unreachable function
+test/chrome/3ddemo.tidy.html:955: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:959: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:960: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:964: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:966: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:969: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:971: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:972: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:973: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:974: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:976: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:979: [definite] Unreachable function: ah
+test/chrome/3ddemo.tidy.html:993: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:1007: [definite] Dead assignment, property aR is never read
+test/chrome/3ddemo.tidy.html:1008: [definite] Dead assignment, property ba is never read
+test/chrome/3ddemo.tidy.html:1033: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:1037: [definite] Dead assignment, property centroid is never read
+test/chrome/3ddemo.tidy.html:1038: [definite] Dead assignment, property normal1 is never read
+test/chrome/3ddemo.tidy.html:1039: [definite] Dead assignment, property normal2 is never read
+test/chrome/3ddemo.tidy.html:1050: [definite] Dead assignment, property aO is never read
+test/chrome/3ddemo.tidy.html:1051: [definite] Dead assignment, property bc is never read
+test/chrome/3ddemo.tidy.html:1062: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:1087: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:1088: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:1093: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:1094: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:1097: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:1098: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:1099: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:1100: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:1101: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:1102: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:1103: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:1104: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:1105: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:1106: [definite] Unreachable code
+test/chrome/3ddemo.tidy.html:1111: [definite] Dead assignment, property Math is never read
+test/chrome/3ddemo.tidy.html:1111: [definite] Dead assignment, property TextureInfo is never read
+test/chrome/3ddemo.tidy.html:1111: [definite] Dead assignment, property Ticker is never read
+test/chrome/3ddemo.tidy.html:1111: [definite] Dead assignment, property Transform is never read
+test/chrome/3ddemo.tidy.html:1111: [definite] Dead assignment, property addPoints2d is never read
+test/chrome/3ddemo.tidy.html:1111: [definite] Dead assignment, property addPoints3d is never read
+test/chrome/3ddemo.tidy.html:1111: [definite] Dead assignment, property crossProduct is never read
+test/chrome/3ddemo.tidy.html:1111: [definite] Dead assignment, property dotProduct2d is never read
+test/chrome/3ddemo.tidy.html:1111: [definite] Dead assignment, property dotProduct3d is never read
+test/chrome/3ddemo.tidy.html:1111: [definite] Dead assignment, property linearInterpolate is never read
+test/chrome/3ddemo.tidy.html:1111: [definite] Dead assignment, property mulPoint2d is never read
+test/chrome/3ddemo.tidy.html:1111: [definite] Dead assignment, property mulPoint3d is never read
+test/chrome/3ddemo.tidy.html:1111: [definite] Dead assignment, property subPoints2d is never read
+test/chrome/3ddemo.tidy.html:1111: [definite] Dead assignment, property subPoints3d is never read
+test/chrome/3ddemo.tidy.html:1111: [definite] Dead assignment, property unitVector2d is never read
+test/chrome/3ddemo.tidy.html:1111: [definite] Dead assignment, property unitVector3d is never read
+test/chrome/3ddemo.tidy.html:1111: [definite] Dead assignment, property vecMag2d is never read
+test/chrome/3ddemo.tidy.html:1111: [definite] Dead assignment, property vecMag3d is never read
+test/chrome/3ddemo.tidy.html:85: [maybe] TypeError, reading property of null/undefined
+test/chrome/3ddemo.tidy.html:85: [maybe] TypeError, reading property of null/undefined
+test/chrome/3ddemo.tidy.html:89: [maybe] TypeError, reading property of null/undefined
+test/chrome/3ddemo.tidy.html:89: [maybe] TypeError, reading property of null/undefined
+test/chrome/3ddemo.tidy.html:93: [maybe] TypeError, reading property of null/undefined
+test/chrome/3ddemo.tidy.html:93: [maybe] TypeError, writing property of null/undefined
+test/chrome/3ddemo.tidy.html:114: [maybe] TypeError, reading property of null/undefined
+test/chrome/3ddemo.tidy.html:114: [maybe] TypeError, writing property of null/undefined
+test/chrome/3ddemo.tidy.html:168: [maybe] Reading absent property x
+test/chrome/3ddemo.tidy.html:168: [maybe] Reading absent property x
+test/chrome/3ddemo.tidy.html:168: [maybe] Reading absent property x
+test/chrome/3ddemo.tidy.html:168: [maybe] Reading absent property y
+test/chrome/3ddemo.tidy.html:168: [maybe] Reading absent property y
+test/chrome/3ddemo.tidy.html:168: [maybe] Reading absent property y
+test/chrome/3ddemo.tidy.html:168: [maybe] Reading absent property z
+test/chrome/3ddemo.tidy.html:168: [maybe] Reading absent property z
+test/chrome/3ddemo.tidy.html:168: [maybe] Reading absent property z
+test/chrome/3ddemo.tidy.html:168: [maybe] TypeError, reading property of null/undefined
+test/chrome/3ddemo.tidy.html:216: [maybe] TypeError, reading property of null/undefined
+test/chrome/3ddemo.tidy.html:219: [maybe] RangeError, assigning invalid value to array 'length' property
+test/chrome/3ddemo.tidy.html:219: [maybe] Reading absent property (computed name)
+test/chrome/3ddemo.tidy.html:227: [maybe] Reading absent property (computed name)
+test/chrome/3ddemo.tidy.html:228: [maybe] Reading absent property x
+test/chrome/3ddemo.tidy.html:228: [maybe] TypeError, reading property of null/undefined
+test/chrome/3ddemo.tidy.html:229: [maybe] Reading absent property y
+test/chrome/3ddemo.tidy.html:230: [maybe] Reading absent property z
+test/chrome/3ddemo.tidy.html:379: [maybe] Reading absent property i3
+test/chrome/3ddemo.tidy.html:579: [maybe] Reading absent property (computed name)
+test/chrome/3ddemo.tidy.html:582: [maybe] Reading absent property (computed name)
+test/chrome/3ddemo.tidy.html:582: [maybe] Reading absent property i0
+test/chrome/3ddemo.tidy.html:582: [maybe] TypeError, reading property of null/undefined
+test/chrome/3ddemo.tidy.html:583: [maybe] Reading absent property (computed name)
+test/chrome/3ddemo.tidy.html:583: [maybe] Reading absent property i1
+test/chrome/3ddemo.tidy.html:584: [maybe] Reading absent property (computed name)
+test/chrome/3ddemo.tidy.html:584: [maybe] Reading absent property i2
+test/chrome/3ddemo.tidy.html:588: [maybe] Reading absent property isTriangle
+test/chrome/3ddemo.tidy.html:588: [maybe] TypeError, call to non-function
+test/chrome/3ddemo.tidy.html:592: [maybe] Reading absent property (computed name)
+test/chrome/3ddemo.tidy.html:592: [maybe] Reading absent property i3
+test/chrome/3ddemo.tidy.html:604: [maybe] Reading absent property quads
+test/chrome/3ddemo.tidy.html:604: [maybe] TypeError, reading property of null/undefined
+test/chrome/3ddemo.tidy.html:794: [maybe] Reading absent property z
+test/chrome/3ddemo.tidy.html:794: [maybe] TypeError, reading property of null/undefined
+test/chrome/3ddemo.tidy.html:808: [maybe] TypeError, reading property of null/undefined
+test/chrome/3ddemo.tidy.html:808: [maybe] TypeError, writing property of null/undefined
+test/chrome/3ddemo.tidy.html:870: [maybe] Reading absent property (computed name)
+test/chrome/3ddemo.tidy.html:870: [maybe] TypeError, call to non-function
+test/chrome/3ddemo.tidy.html:990: [maybe] Reading absent property setFillColor
+test/chrome/3ddemo.tidy.html:990: [maybe] TypeError, call to non-function
+test/chrome/3ddemo.tidy.html:997: [maybe] Reading absent property setStrokeColor
+test/chrome/3ddemo.tidy.html:997: [maybe] TypeError, call to non-function
+test/chrome/3ddemo.tidy.html:1002: [maybe] Reading absent property (computed name)
+test/chrome/3ddemo.tidy.html:1002: [maybe] Reading absent property numQuads
+test/chrome/3ddemo.tidy.html:1002: [maybe] TypeError, call to non-function
+test/chrome/3ddemo.tidy.html:1002: [maybe] TypeError, reading property of null/undefined
+test/chrome/3ddemo.tidy.html:1010: [maybe] Reading absent property (computed name)
+test/chrome/3ddemo.tidy.html:1011: [maybe] Reading absent property transform
+test/chrome/3ddemo.tidy.html:1011: [maybe] TypeError, reading property of null/undefined
+test/chrome/3ddemo.tidy.html:1011: [maybe] TypeError, reading property of null/undefined
+test/chrome/3ddemo.tidy.html:1013: [maybe] Reading absent property vertices
+test/chrome/3ddemo.tidy.html:1014: [maybe] Reading absent property quads
+test/chrome/3ddemo.tidy.html:1015: [maybe] Reading absent property rgba_legacy_
+test/chrome/3ddemo.tidy.html:1016: [maybe] Reading absent property numQuads
+test/chrome/3ddemo.tidy.html:1016: [maybe] TypeError, call to non-function
+test/chrome/3ddemo.tidy.html:1017: [maybe] Reading absent property (computed name)
+test/chrome/3ddemo.tidy.html:1017: [maybe] TypeError, reading property of null/undefined
+test/chrome/3ddemo.tidy.html:1018: [maybe] Reading absent property centroid
+test/chrome/3ddemo.tidy.html:1018: [maybe] TypeError, reading property of null/undefined
+test/chrome/3ddemo.tidy.html:1022: [maybe] Reading absent property normal1
+test/chrome/3ddemo.tidy.html:1023: [maybe] Reading absent property normal2
+test/chrome/3ddemo.tidy.html:1032: [maybe] Reading absent property isTriangle
+test/chrome/3ddemo.tidy.html:1032: [maybe] TypeError, call to non-function
+test/chrome/3ddemo.tidy.html:1035: [maybe] Reading absent property (computed name)
+test/chrome/3ddemo.tidy.html:1035: [maybe] Reading absent property (computed name)
+test/chrome/3ddemo.tidy.html:1035: [maybe] Reading absent property (computed name)
+test/chrome/3ddemo.tidy.html:1035: [maybe] Reading absent property (computed name)
+test/chrome/3ddemo.tidy.html:1035: [maybe] Reading absent property i0
+test/chrome/3ddemo.tidy.html:1035: [maybe] Reading absent property i1
+test/chrome/3ddemo.tidy.html:1035: [maybe] Reading absent property i2
+test/chrome/3ddemo.tidy.html:1035: [maybe] Reading absent property i3
+test/chrome/3ddemo.tidy.html:1040: [maybe] Reading absent property fill_rgba
+test/chrome/3ddemo.tidy.html:1040: [maybe] Reading absent property texture
+test/chrome/3ddemo.tidy.html:1054: [maybe] Reading absent property (computed name)
+test/chrome/3ddemo.tidy.html:1055: [maybe] Reading absent property qf
+test/chrome/3ddemo.tidy.html:1055: [maybe] TypeError, reading property of null/undefined
+test/chrome/3ddemo.tidy.html:1057: [maybe] TypeError, reading property of null/undefined
+test/chrome/3ddemo.tidy.html:1059: [maybe] TypeError, reading property of null/undefined
+test/chrome/3ddemo.tidy.html:1069: [maybe] TypeError, reading property of null/undefined
+test/chrome/3ddemo.tidy.html:1069: [maybe] TypeError, reading property of null/undefined
+test/chrome/3ddemo.tidy.html:1070: [maybe] TypeError, reading property of null/undefined
+test/chrome/3ddemo.tidy.html:1070: [maybe] TypeError, reading property of null/undefined
+test/chrome/3ddemo.tidy.html:1071: [maybe] TypeError, reading property of null/undefined
+test/chrome/3ddemo.tidy.html:1071: [maybe] TypeError, reading property of null/undefined
+test/chrome/3ddemo.tidy.html:1073: [maybe] TypeError, reading property of null/undefined
+test/chrome/3ddemo.tidy.html:1073: [maybe] TypeError, reading property of null/undefined
+test/chrome/3ddemo.tidy.html:1076: [maybe] Reading absent property rgba
+test/chrome/3ddemo.tidy.html:1078: [maybe] Reading absent property intensity
+test/chrome/3ddemo.tidy.html:1079: [maybe] Reading absent property setFillColor
+test/chrome/3ddemo.tidy.html:1079: [maybe] TypeError, call to non-function
+test/chrome/3ddemo.tidy.html:1079: [maybe] TypeError, reading property of null/undefined
+test/chrome/3ddemo.tidy.html:1084: [maybe] Reading absent property texture
+test/chrome/3ddemo.tidy.html:1143: [maybe] Reading absent property body
+test/chrome/3ddemo.tidy.html:1143: [maybe] TypeError, writing property of null/undefined
+test/chrome/3ddemo.tidy.html:1146: [maybe] Reading absent property body
+test/chrome/3ddemo.tidy.html:1146: [maybe] TypeError, writing property of null/undefined
+test/chrome/3ddemo.tidy.html:48: [maybe] Uncaught exception, constructed at [test/chrome/3ddemo.tidy.html:85, test/chrome/3ddemo.tidy.html:89, test/chrome/3ddemo.tidy.html:93, test/chrome/3ddemo.tidy.html:114, test/chrome/3ddemo.tidy.html:168, test/chrome/3ddemo.tidy.html:216, test/chrome/3ddemo.tidy.html:219, test/chrome/3ddemo.tidy.html:228, test/chrome/3ddemo.tidy.html:582, test/chrome/3ddemo.tidy.html:588, test/chrome/3ddemo.tidy.html:604, test/chrome/3ddemo.tidy.html:794, test/chrome/3ddemo.tidy.html:808, test/chrome/3ddemo.tidy.html:870, test/chrome/3ddemo.tidy.html:990, test/chrome/3ddemo.tidy.html:997, test/chrome/3ddemo.tidy.html:1002, test/chrome/3ddemo.tidy.html:1011, test/chrome/3ddemo.tidy.html:1016, test/chrome/3ddemo.tidy.html:1017, test/chrome/3ddemo.tidy.html:1018, test/chrome/3ddemo.tidy.html:1032, test/chrome/3ddemo.tidy.html:1055, test/chrome/3ddemo.tidy.html:1057, test/chrome/3ddemo.tidy.html:1059, test/chrome/3ddemo.tidy.html:1069, test/chrome/3ddemo.tidy.html:1070, test/chrome/3ddemo.tidy.html:1071, test/chrome/3ddemo.tidy.html:1073, test/chrome/3ddemo.tidy.html:1079, test/chrome/3ddemo.tidy.html:1086, test/chrome/3ddemo.tidy.html:1143, test/chrome/3ddemo.tidy.html:1146]
+test/chrome/3ddemo.tidy.html:168: [maybe] Conversion to number yields NaN
+test/chrome/3ddemo.tidy.html:168: [maybe] Conversion to number yields NaN
+test/chrome/3ddemo.tidy.html:168: [maybe] Conversion to number yields NaN
+test/chrome/3ddemo.tidy.html:168: [maybe] Conversion to number yields NaN
+test/chrome/3ddemo.tidy.html:168: [maybe] Conversion to number yields NaN
+test/chrome/3ddemo.tidy.html:168: [maybe] Conversion to number yields NaN
+test/chrome/3ddemo.tidy.html:168: [maybe] Conversion to number yields NaN
+test/chrome/3ddemo.tidy.html:168: [maybe] Conversion to number yields NaN
+test/chrome/3ddemo.tidy.html:168: [maybe] Conversion to number yields NaN
+test/chrome/3ddemo.tidy.html:168: [maybe] Converting primitive number to object
+test/chrome/3ddemo.tidy.html:168: [maybe] Converting primitive number to object
+test/chrome/3ddemo.tidy.html:168: [maybe] Converting primitive number to object
+test/chrome/3ddemo.tidy.html:168: [maybe] Converting primitive number to object
+test/chrome/3ddemo.tidy.html:168: [maybe] Converting primitive number to object
+test/chrome/3ddemo.tidy.html:168: [maybe] Converting primitive number to object
+test/chrome/3ddemo.tidy.html:168: [maybe] Converting primitive number to object
+test/chrome/3ddemo.tidy.html:168: [maybe] Converting primitive number to object
+test/chrome/3ddemo.tidy.html:168: [maybe] Converting primitive number to object
+test/chrome/3ddemo.tidy.html:228: [maybe] Conversion to number yields NaN
+test/chrome/3ddemo.tidy.html:228: [maybe] Converting primitive number to object
+test/chrome/3ddemo.tidy.html:229: [maybe] Conversion to number yields NaN
+test/chrome/3ddemo.tidy.html:229: [maybe] Converting primitive number to object
+test/chrome/3ddemo.tidy.html:230: [maybe] Conversion to number yields NaN
+test/chrome/3ddemo.tidy.html:230: [maybe] Converting primitive number to object
+test/chrome/3ddemo.tidy.html:582: [maybe] Converting primitive number to object
+test/chrome/3ddemo.tidy.html:583: [maybe] Converting primitive number to object
+test/chrome/3ddemo.tidy.html:584: [maybe] Converting primitive number to object
+test/chrome/3ddemo.tidy.html:588: [maybe] Converting primitive number to object
+test/chrome/3ddemo.tidy.html:588: [maybe] Converting primitive number to object
+test/chrome/3ddemo.tidy.html:592: [maybe] Converting primitive number to object
+test/chrome/3ddemo.tidy.html:598: [maybe] Converting primitive number to object
+test/chrome/3ddemo.tidy.html:599: [maybe] Converting primitive number to object
+test/chrome/3ddemo.tidy.html:600: [maybe] Converting primitive number to object
+test/chrome/3ddemo.tidy.html:794: [maybe] Conversion to number yields NaN
+test/chrome/3ddemo.tidy.html:1002: [maybe] Converting primitive number to object
+test/chrome/3ddemo.tidy.html:1002: [maybe] Converting primitive number to object
+test/chrome/3ddemo.tidy.html:1011: [maybe] Converting primitive number to object
+test/chrome/3ddemo.tidy.html:1013: [maybe] Converting primitive number to object
+test/chrome/3ddemo.tidy.html:1014: [maybe] Converting primitive number to object
+test/chrome/3ddemo.tidy.html:1015: [maybe] Converting primitive number to object
+test/chrome/3ddemo.tidy.html:1016: [maybe] Converting primitive number to object
+test/chrome/3ddemo.tidy.html:1016: [maybe] Converting primitive number to object
+test/chrome/3ddemo.tidy.html:1018: [maybe] Converting primitive number to object
+test/chrome/3ddemo.tidy.html:1022: [maybe] Converting primitive number to object
+test/chrome/3ddemo.tidy.html:1023: [maybe] Converting primitive number to object
+test/chrome/3ddemo.tidy.html:1032: [maybe] Converting primitive number to object
+test/chrome/3ddemo.tidy.html:1032: [maybe] Converting primitive number to object
+test/chrome/3ddemo.tidy.html:1035: [maybe] Converting primitive number to object
+test/chrome/3ddemo.tidy.html:1035: [maybe] Converting primitive number to object
+test/chrome/3ddemo.tidy.html:1035: [maybe] Converting primitive number to object
+test/chrome/3ddemo.tidy.html:1035: [maybe] Converting primitive number to object
+test/chrome/3ddemo.tidy.html:1040: [maybe] Converting primitive number to object
+test/chrome/3ddemo.tidy.html:1040: [maybe] Converting primitive number to object
+test/chrome/3ddemo.tidy.html:1055: [maybe] Converting primitive number to object
+test/chrome/3ddemo.tidy.html:1076: [maybe] Converting primitive number to object
+test/chrome/3ddemo.tidy.html:1078: [maybe] Converting primitive number to object
+test/chrome/3ddemo.tidy.html:1079: [maybe] Conversion to number yields NaN
+test/chrome/3ddemo.tidy.html:1079: [maybe] Conversion to number yields NaN
+test/chrome/3ddemo.tidy.html:1079: [maybe] Conversion to number yields NaN
+test/chrome/3ddemo.tidy.html:1084: [maybe] Converting primitive number to object

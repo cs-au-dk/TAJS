@@ -1,0 +1,4 @@
+test/chrome/breathinggalaxies.tidy.html:35: [maybe] Reading absent property T
+test/chrome/breathinggalaxies.tidy.html:92: [maybe] Reading absent property onmousemove
+test/chrome/breathinggalaxies.tidy.html:92: [maybe] TypeError, call to non-function
+test/chrome/breathinggalaxies.tidy.html:8: [maybe] Uncaught exception, constructed at [test/chrome/breathinggalaxies.tidy.html:92]

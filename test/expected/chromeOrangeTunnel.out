@@ -1,0 +1,36 @@
+test/chrome/orangetunnel.tidy.html:28: [definite] Unreachable code
+test/chrome/orangetunnel.tidy.html:28: [definite] Unreachable function
+test/chrome/orangetunnel.tidy.html:21: [maybe] RangeError, assigning invalid value to array 'length' property
+test/chrome/orangetunnel.tidy.html:22: [maybe] RangeError, assigning invalid value to array 'length' property
+test/chrome/orangetunnel.tidy.html:46: [maybe] RangeError, assigning invalid value to array 'length' property
+test/chrome/orangetunnel.tidy.html:53: [maybe] Reading absent property (computed name)
+test/chrome/orangetunnel.tidy.html:53: [maybe] Reading absent property (computed name)
+test/chrome/orangetunnel.tidy.html:53: [maybe] Reading absent property (computed name)
+test/chrome/orangetunnel.tidy.html:53: [maybe] TypeError, writing property of null/undefined
+test/chrome/orangetunnel.tidy.html:55: [maybe] Reading absent property (computed name)
+test/chrome/orangetunnel.tidy.html:55: [maybe] Reading absent property (computed name)
+test/chrome/orangetunnel.tidy.html:55: [maybe] Reading absent property (computed name)
+test/chrome/orangetunnel.tidy.html:55: [maybe] TypeError, writing property of null/undefined
+test/chrome/orangetunnel.tidy.html:69: [maybe] Reading absent property (computed name)
+test/chrome/orangetunnel.tidy.html:69: [maybe] Reading absent property (computed name)
+test/chrome/orangetunnel.tidy.html:69: [maybe] TypeError, reading property of null/undefined
+test/chrome/orangetunnel.tidy.html:69: [maybe] TypeError, reading property of null/undefined
+test/chrome/orangetunnel.tidy.html:70: [maybe] Reading absent property (computed name)
+test/chrome/orangetunnel.tidy.html:70: [maybe] Reading absent property (computed name)
+test/chrome/orangetunnel.tidy.html:70: [maybe] TypeError, reading property of null/undefined
+test/chrome/orangetunnel.tidy.html:70: [maybe] TypeError, reading property of null/undefined
+test/chrome/orangetunnel.tidy.html:71: [maybe] Reading absent property (computed name)
+test/chrome/orangetunnel.tidy.html:71: [maybe] Reading absent property (computed name)
+test/chrome/orangetunnel.tidy.html:71: [maybe] TypeError, reading property of null/undefined
+test/chrome/orangetunnel.tidy.html:71: [maybe] TypeError, reading property of null/undefined
+test/chrome/orangetunnel.tidy.html:72: [maybe] Reading absent property (computed name)
+test/chrome/orangetunnel.tidy.html:72: [maybe] Reading absent property (computed name)
+test/chrome/orangetunnel.tidy.html:72: [maybe] TypeError, reading property of null/undefined
+test/chrome/orangetunnel.tidy.html:72: [maybe] TypeError, reading property of null/undefined
+test/chrome/orangetunnel.tidy.html:6: [maybe] Uncaught exception, constructed at [test/chrome/orangetunnel.tidy.html:21, test/chrome/orangetunnel.tidy.html:22, test/chrome/orangetunnel.tidy.html:46, test/chrome/orangetunnel.tidy.html:53, test/chrome/orangetunnel.tidy.html:55, test/chrome/orangetunnel.tidy.html:69, test/chrome/orangetunnel.tidy.html:70, test/chrome/orangetunnel.tidy.html:71, test/chrome/orangetunnel.tidy.html:72]
+test/chrome/orangetunnel.tidy.html:53: [maybe] Conversion to number yields NaN
+test/chrome/orangetunnel.tidy.html:53: [maybe] Conversion to number yields NaN
+test/chrome/orangetunnel.tidy.html:53: [maybe] Converting primitive number to object
+test/chrome/orangetunnel.tidy.html:55: [maybe] Conversion to number yields NaN
+test/chrome/orangetunnel.tidy.html:55: [maybe] Conversion to number yields NaN
+test/chrome/orangetunnel.tidy.html:55: [maybe] Converting primitive number to object

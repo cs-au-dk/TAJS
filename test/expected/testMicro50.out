@@ -1,0 +1,6 @@
+test/micro/test50.js:10:1: [maybe] Converting primitive number to object
+test/micro/test50.js:10:11: [maybe] The variable x has values with different types
+test/micro/test50.js:5:1: [info] Abstract value: IdentPartsStr
+test/micro/test50.js:12:1: [info] Abstract value: IdentPartsStr
+test/micro/test50.js:3:1: [info] Reading from unknown property that may cause loss of precision
+test/micro/test50.js:10:1: [info] Reading from unknown property that may cause loss of precision

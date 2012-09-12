@@ -1,0 +1,2 @@
+test/resig/ejohn66.js:8:1: [definite] Dead assignment, property swingSword is never read
+test/resig/ejohn66.js:8:30: [definite] Unreachable function

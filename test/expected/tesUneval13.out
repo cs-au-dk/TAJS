@@ -1,0 +1,7 @@
+Unevalizer: Starting on: "eval(x)"
+Unevalizer: Valid program
+Unevalizer: No name capture
+Unevalizer: Starting on: "dumpValue(8)"
+Unevalizer: Valid program
+Unevalizer: No name capture
+test/uneval/uneval13.js:1:1: [info] Abstract value: 8.0

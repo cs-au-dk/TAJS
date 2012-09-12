@@ -1,0 +1,4 @@
+Unevalizer: Starting on: "dumpValue(3)"
+Unevalizer: Valid program
+Unevalizer: No name capture
+test/uneval/uneval06.js:1:1: [info] Abstract value: 3.0

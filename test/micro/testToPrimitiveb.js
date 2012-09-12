@@ -1,0 +1,1 @@
+conversionToPrimitive(Math,"NUM");

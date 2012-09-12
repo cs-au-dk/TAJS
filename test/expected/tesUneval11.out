@@ -1,0 +1,8 @@
+Unevalizer: Starting on: "y = 34"
+Unevalizer: Valid program
+Unevalizer: No name capture
+Unevalizer: Starting on: "y = 100"
+Unevalizer: Valid program
+Unevalizer: No name capture
+test/uneval/uneval11.js:6:1: [info] Abstract value: 34.0
+test/uneval/uneval11.js:8:1: [info] Abstract value: 100.0

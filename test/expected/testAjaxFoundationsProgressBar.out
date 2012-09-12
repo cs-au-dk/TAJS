@@ -1,0 +1,15 @@
+test/benchmarks/ajax/foundations/chp4/progressBar.tidy.html:15:13: [definite] The conditional expression is always true
+test/benchmarks/ajax/foundations/chp4/progressBar.tidy.html:6: [definite] The variable bar_color is never used
+test/benchmarks/ajax/foundations/chp4/progressBar.tidy.html:6: [definite] The variable key is never used
+test/benchmarks/ajax/foundations/chp4/progressBar.tidy.html:6: [definite] The variable span_id is never used
+test/benchmarks/ajax/foundations/chp4/progressBar.tidy.html:34:9: [definite] Unreachable function goCallback
+test/benchmarks/ajax/foundations/chp4/progressBar.tidy.html:42:9: [definite] Unreachable function pollServer
+test/benchmarks/ajax/foundations/chp4/progressBar.tidy.html:50:9: [definite] Unreachable function pollCallback
+test/benchmarks/ajax/foundations/chp4/progressBar.tidy.html:76:9: [definite] Unreachable function processResult
+test/benchmarks/ajax/foundations/chp4/progressBar.tidy.html:112:2: [definite] The variable event is never used
+test/benchmarks/ajax/foundations/chp4/progressBar.tidy.html:29:13: [maybe] TypeError, accessing property of null/undefined
+test/benchmarks/ajax/foundations/chp4/progressBar.tidy.html:101:17: [maybe] TypeError, accessing property of null/undefined
+test/benchmarks/ajax/foundations/chp4/progressBar.tidy.html:102:17: [maybe] TypeError, accessing property of null/undefined
+test/benchmarks/ajax/foundations/chp4/progressBar.tidy.html:90:17: [maybe] Reading absent property visibility
+test/benchmarks/ajax/foundations/chp4/progressBar.tidy.html:102:17: [maybe] Reading absent property style
+test/benchmarks/ajax/foundations/chp4/progressBar.tidy.html:6: [maybe] Uncaught exception, constructed at [test/benchmarks/ajax/foundations/chp4/progressBar.tidy.html:29:13, test/benchmarks/ajax/foundations/chp4/progressBar.tidy.html:101:17, test/benchmarks/ajax/foundations/chp4/progressBar.tidy.html:102:17]

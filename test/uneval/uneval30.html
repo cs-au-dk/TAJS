@@ -1,0 +1,56 @@
+<html>
+<script>
+var linkone='<a href="http://www.zedo.com/product/adserverDirectSales.htm">Learn more</a>';
+var linktwo='<a href="http://www.zedo.com/product/yieldOptimizer.htm">Learn more</a>';
+var linkthree='<a href="http://www.zedo.com/product/selfServiceAdvertising.htm">Learn more</a>';
+var linkfour='<a href="http://www.zedo.com/product/admagic.htm">Learn more</a>';
+var linkfive='<a href="http://www.zedo.com/product/adOperations.htm">Learn more</a>';
+var linksix='<a href="http://www.zedo.com/product/richMedia.htm">Learn more</a>';
+
+var pointArr = new Array("Full Fledged ad server for direct sold inventory","Ad Network Revenue Maximizer","Self Service Advertising","ADMagic","Ad Trafficking services","Innovative new ad formats for incremental sales");
+var subPointArr_0 = new Array("Meet the needs of your advertisers while keeping","operations costs low with our cutting edge ad server. "+linkone);
+var subPointArr_1 = new Array("Earn more from your remnant inventory by letting","ZEDO find the best network for each impression. "+linktwo);
+var subPointArr_2 = new Array("Our Self Service advertising system plugs right into","your site and lets you sell advertising to your users. "+linkthree);
+var subPointArr_3 = new Array("On-page ad analysis saves you  hours of","troubleshooting time with our browser plugin. "+linkfour);
+var subPointArr_4 = new Array("Our experienced team of ad operations professionals","will cut your operating costs and works 24 hours a day. "+linkfive);
+var subPointArr_5 = new Array("Earn more with popular new ad formats that","don't cut into your existing site real estate. "+linksix);
+ 
+function point_DrawTable(){
+    var pointVar = '<table cellpadding="4" cellspacing="0" border="0" style="width:300px;">';
+    for(i=0;i<pointArr.length;i++){					
+	if(i==0){ 
+	    pointVar = pointVar +'<tr><td valign="top" style="padding-top:4px;_padding-top:5px;#padding-top:5px;"><div class="orangeBullet_down" id="bulletPoint_'+i+'" onclick="showHidePoints('+i+','+pointArr.length+')"></div></td><td class="greyTablContent" align="left" valign="top" style="padding-top:0px;_padding-top:0px;#padding-top:0px;"><label style="text-decoration:underline;cursor:pointer;" id="labelPoint_'+i+'" onclick="showHidePoints('+i+','+pointArr.length+')">'+pointArr[i]+'</label>'
+		+'<table cellpadding="0" cellspacing="0" border="0" style="padding-left:15px;padding-top:6px;padding-bottom:6px;" id="subPoint_'+i+'">';
+
+	}else{
+	    pointVar = pointVar +'<tr><td valign="top" style="padding-top:12px;_padding-top:5px;#padding-top:5px;"><div class="orangeBullet"  id="bulletPoint_'+i+'" onclick="showHidePoints('+i+','+pointArr.length+')"></div></td><td class="greyTablContent" valign="top" style="padding-top:8px;_padding-top:0px;#padding-top:0px;"><label style="text-decoration:underline;cursor:pointer;" id="labelPoint_'+i+'" onclick="showHidePoints('+i+','+pointArr.length+')">'+pointArr[i]+'</label>'
+		+'<table cellpadding="0" cellspacing="0" border="0" style="padding-left:15px;padding-top:6px;padding-bottom:6px;display:none;" id="subPoint_'+i+'">';
+			}
+	for(j=0;j<eval("subPointArr_"+i).length;j++){ 
+	    if(j==0){ 
+		pointVar=pointVar+'<tr><td class="greyTablContent" style="width:300px;">'+eval("subPointArr_"+i)[j]+'</td></tr>';
+	    }else{
+		pointVar=pointVar+'<tr><td class="greyTablContent" style="padding-top:0px;width:300px;">'+eval("subPointArr_"+i)[j]+'</td></tr>';
+	    }
+	}
+	pointVar= pointVar+'</table>'
+	    +'</td></tr>';
+    }		
+    pointVar= pointVar+ '</table>';
+    document.write(pointVar);
+}
+ 
+function showHidePoints(idVal,len){
+	for(i=0;i<len;i++){ 
+	    document.getElementById("subPoint_"+i).style.display="none"; 
+	    document.getElementById("bulletPoint_"+i).className="orangeBullet"; 
+	    
+	} 
+    document.getElementById("subPoint_"+idVal).style.display=""; 
+    document.getElementById("bulletPoint_"+idVal).className="orangeBullet_down"; 
+} 
+point_DrawTable()
+
+</script>
+
+</html>

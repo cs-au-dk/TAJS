@@ -1,0 +1,18 @@
+fg2: <main> function()
+  block 0: [entry]
+    node 0: constant[undefined,v1] (test/flowgraph_builder/flowgraph_builder0011.js:1:1)
+    ->[block 1]
+  block 1:
+    node 1: new[v2] (test/flowgraph_builder/flowgraph_builder0011.js:1:5)
+    node 2: constant[2.0,v3] (test/flowgraph_builder/flowgraph_builder0011.js:1:8)
+    node 3: write-property[v2,'a',v3] (test/flowgraph_builder/flowgraph_builder0011.js:1:5)
+    node 4: write-variable[v2,'x']* (test/flowgraph_builder/flowgraph_builder0011.js:1:1)
+    ->[block 2]
+  block 2: [exit-ordinary]
+    node 5: return[v1] (test/flowgraph_builder/flowgraph_builder0011.js:1:1)
+    ->[]
+  block 3: [exit-exceptional]
+    node 6: exceptional-return (test/flowgraph_builder/flowgraph_builder0011.js:1:1)
+    ->[]
+
+test/flowgraph_builder/flowgraph_builder0011.js:1:5: [definite] Dead assignment, property a is never read

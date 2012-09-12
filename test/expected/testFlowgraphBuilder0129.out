@@ -1,0 +1,31 @@
+fg2: <main> function()
+  block 0: [entry]
+    node 0: constant[undefined,v1] (test/flowgraph_builder/flowgraph_builder0129.js:1:1)
+    node 1: function-decl[function f(),-] (test/flowgraph_builder/flowgraph_builder0129.js:1:1)
+    ->[block 1]
+  block 1:
+    node 2: read-variable['f',v4,v3] (test/flowgraph_builder/flowgraph_builder0129.js:5:5)
+    ->[block 2]
+  block 2:
+    node 3: call[v3,v4,v2] (test/flowgraph_builder/flowgraph_builder0129.js:5:5)
+    ->[block 3]
+  block 3:
+    node 4: write-variable[v2,'x']* (test/flowgraph_builder/flowgraph_builder0129.js:5:1)
+    ->[block 4]
+  block 4: [exit-ordinary]
+    node 5: return[v1] (test/flowgraph_builder/flowgraph_builder0129.js:1:1)
+    ->[]
+  block 5: [exit-exceptional]
+    node 6: exceptional-return (test/flowgraph_builder/flowgraph_builder0129.js:1:1)
+    ->[]
+function f()
+  block 6: [entry]
+    node 7: constant[undefined,v1] (test/flowgraph_builder/flowgraph_builder0129.js:1:1)
+    ->[block 7]
+  block 7: [exit-ordinary]
+    node 8: return[v1] (test/flowgraph_builder/flowgraph_builder0129.js:1:1)
+    ->[]
+  block 8: [exit-exceptional]
+    node 9: exceptional-return (test/flowgraph_builder/flowgraph_builder0129.js:1:1)
+    ->[]
+

@@ -1,0 +1,2 @@
+test/browser/domlegacy/toNativeObject08.tidy.html:18: [info] Abstract value: [*ImageData[native]]
+test/browser/domlegacy/toNativeObject08.tidy.html:20: [info] Abstract value: Undef

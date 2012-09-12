@@ -1,0 +1,2 @@
+test/micro/test185.js:11:13: [maybe] Converting primitive number to object
+test/micro/test185.js:11:1: [info] Abstract value: "-1.234e+27"

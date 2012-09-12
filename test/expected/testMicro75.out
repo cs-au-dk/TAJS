@@ -1,0 +1,3 @@
+test/micro/test75.js:3:3: [definite] ReferenceError, reading absent variable document
+test/micro/test75.js:12:1: [info] Abstract value: true
+test/micro/test75.js:13:1: [info] Abstract value: 42.0

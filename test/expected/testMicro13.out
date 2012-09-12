@@ -1,0 +1,18 @@
+test/micro/test13.js:7:21: [definite] Dead assignment, property GlossList is never read
+test/micro/test13.js:7:21: [definite] Dead assignment, property title is never read
+test/micro/test13.js:9:20: [definite] Dead assignment, property GlossEntry is never read
+test/micro/test13.js:10:32: [definite] Dead assignment, property Abbrev is never read
+test/micro/test13.js:10:32: [definite] Dead assignment, property Acronym is never read
+test/micro/test13.js:10:32: [definite] Dead assignment, property GlossDef is never read
+test/micro/test13.js:10:32: [definite] Dead assignment, property GlossSee is never read
+test/micro/test13.js:10:32: [definite] Dead assignment, property GlossTerm is never read
+test/micro/test13.js:10:32: [definite] Dead assignment, property ID is never read
+test/micro/test13.js:10:32: [definite] Dead assignment, property SortAs is never read
+test/micro/test13.js:16:22: [definite] Dead assignment, property GlossSeeAlso is never read
+test/micro/test13.js:16:22: [definite] Dead assignment, property para is never read
+test/micro/test13.js:30:1: [info] Abstract value: "example glossary"
+test/micro/test13.js:31:1: [info] Abstract value: "example glossaryhat"
+test/micro/test13.js:32:1: [info] Abstract object: {glossary:[@Object#node5],[[Prototype]]=[@Object.prototype[native]]}
+test/micro/test13.js:33:1: [info] Abstract object: {GlossDiv:[@Object#node8],title:"example glossary",[[Prototype]]=[@Object.prototype[native]]}
+test/micro/test13.js:34:1: [info] Abstract object: {GlossDiv:[@Object#node8],title:"example glossary",[[Prototype]]=[@Object.prototype[native]]}
+test/micro/test13.js:35:1: [info] Abstract object: {GlossList:[@Object#node11],title:"S",[[Prototype]]=[@Object.prototype[native]]}

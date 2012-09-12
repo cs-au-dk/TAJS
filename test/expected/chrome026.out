@@ -1,0 +1,1498 @@
+test/chrome/raytracer.tidy.html:952: [definite] Reading absent property value
+test/chrome/raytracer.tidy.html:953: [definite] Reading absent property value
+test/chrome/raytracer.tidy.html:17: [definite] Unreachable code
+test/chrome/raytracer.tidy.html:17: [definite] Unreachable function: checked
+test/chrome/raytracer.tidy.html:107: [definite] Dead assignment, property ir is never read
+test/chrome/raytracer.tidy.html:108: [definite] Dead assignment, property c is never read
+test/chrome/raytracer.tidy.html:114: [definite] Dead assignment, property obj is never read
+test/chrome/raytracer.tidy.html:114: [definite] Dead assignment, property parent is never read
+test/chrome/raytracer.tidy.html:114: [definite] Dead assignment, property setbitmap is never read
+test/chrome/raytracer.tidy.html:114: [definite] Dead assignment, property setuv is never read
+test/chrome/raytracer.tidy.html:262: [definite] Dead assignment, property 0 is never read
+test/chrome/raytracer.tidy.html:271: [definite] Dead assignment, property ir2 is never read
+test/chrome/raytracer.tidy.html:279: [definite] Dead assignment, property len is never read
+test/chrome/raytracer.tidy.html:283: [definite] Dead assignment, property obj is never read
+test/chrome/raytracer.tidy.html:283: [definite] Dead assignment, property parent is never read
+test/chrome/raytracer.tidy.html:283: [definite] Dead assignment, property setbitmap is never read
+test/chrome/raytracer.tidy.html:286: [definite] Unreachable function
+test/chrome/raytracer.tidy.html:301: [definite] Unreachable function
+test/chrome/raytracer.tidy.html:414: [definite] Unreachable function: plane
+test/chrome/raytracer.tidy.html:415: [definite] Unreachable code
+test/chrome/raytracer.tidy.html:429: [definite] Unreachable code
+test/chrome/raytracer.tidy.html:432: [definite] Unreachable function
+test/chrome/raytracer.tidy.html:438: [definite] Unreachable function
+test/chrome/raytracer.tidy.html:444: [definite] Unreachable code
+test/chrome/raytracer.tidy.html:444: [definite] Unreachable function
+test/chrome/raytracer.tidy.html:445: [definite] Unreachable function
+test/chrome/raytracer.tidy.html:450: [definite] Unreachable function
+test/chrome/raytracer.tidy.html:452: [definite] Unreachable code
+test/chrome/raytracer.tidy.html:458: [definite] Unreachable code
+test/chrome/raytracer.tidy.html:464: [definite] Unreachable function: pl_intersect
+test/chrome/raytracer.tidy.html:466: [definite] Unreachable code
+test/chrome/raytracer.tidy.html:467: [definite] Unreachable code
+test/chrome/raytracer.tidy.html:469: [definite] Unreachable code
+test/chrome/raytracer.tidy.html:481: [definite] Unreachable code
+test/chrome/raytracer.tidy.html:484: [definite] Unreachable function: pl_hit
+test/chrome/raytracer.tidy.html:495: [definite] Unreachable function: pl_li_intersect
+test/chrome/raytracer.tidy.html:496: [definite] Unreachable code
+test/chrome/raytracer.tidy.html:498: [definite] Unreachable code
+test/chrome/raytracer.tidy.html:499: [definite] Unreachable code
+test/chrome/raytracer.tidy.html:517: [definite] Dead assignment, property r2 is never read
+test/chrome/raytracer.tidy.html:518: [definite] Dead assignment, property D is never read
+test/chrome/raytracer.tidy.html:519: [definite] Dead assignment, property ul2 is never read
+test/chrome/raytracer.tidy.html:520: [definite] Dead assignment, property vl2 is never read
+test/chrome/raytracer.tidy.html:523: [definite] Dead assignment, property ocb is never read
+test/chrome/raytracer.tidy.html:523: [definite] Dead assignment, property ocg is never read
+test/chrome/raytracer.tidy.html:523: [definite] Dead assignment, property ocr is never read
+test/chrome/raytracer.tidy.html:525: [definite] Dead assignment, property texture is never read
+test/chrome/raytracer.tidy.html:525: [definite] Dead assignment, property uo is never read
+test/chrome/raytracer.tidy.html:525: [definite] Dead assignment, property vo is never read
+test/chrome/raytracer.tidy.html:625: [definite] Unreachable function: tilebitmap
+test/chrome/raytracer.tidy.html:627: [definite] Unreachable code
+test/chrome/raytracer.tidy.html:628: [definite] Unreachable code
+test/chrome/raytracer.tidy.html:630: [definite] Unreachable code
+test/chrome/raytracer.tidy.html:631: [definite] Unreachable code
+test/chrome/raytracer.tidy.html:632: [definite] Unreachable code
+test/chrome/raytracer.tidy.html:662: [definite] Unreachable function: bitmap
+test/chrome/raytracer.tidy.html:664: [definite] Unreachable code
+test/chrome/raytracer.tidy.html:665: [definite] Unreachable code
+test/chrome/raytracer.tidy.html:667: [definite] Unreachable code
+test/chrome/raytracer.tidy.html:668: [definite] Unreachable code
+test/chrome/raytracer.tidy.html:670: [definite] Unreachable code
+test/chrome/raytracer.tidy.html:701: [definite] Unreachable function: envmap
+test/chrome/raytracer.tidy.html:703: [definite] Unreachable code
+test/chrome/raytracer.tidy.html:806: [definite] Unreachable code
+test/chrome/raytracer.tidy.html:807: [definite] Unreachable code
+test/chrome/raytracer.tidy.html:1175: [definite] Dead assignment, property lb is never read
+test/chrome/raytracer.tidy.html:1175: [definite] Dead assignment, property lg is never read
+test/chrome/raytracer.tidy.html:1175: [definite] Dead assignment, property lr is never read
+test/chrome/raytracer.tidy.html:1241: [definite] Unreachable code
+test/chrome/raytracer.tidy.html:1253: [definite] Unreachable code
+test/chrome/raytracer.tidy.html:1253: [definite] Unreachable function: hun
+test/chrome/raytracer.tidy.html:1293: [definite] Dead assignment, property value is never read
+test/chrome/raytracer.tidy.html:1294: [definite] Dead assignment, property value is never read
+test/chrome/raytracer.tidy.html:952: [definite] Converting primitive string to object
+test/chrome/raytracer.tidy.html:953: [definite] Converting primitive string to object
+test/chrome/raytracer.tidy.html:1293: [definite] Converting primitive string to object
+test/chrome/raytracer.tidy.html:1294: [definite] Converting primitive string to object
+test/chrome/raytracer.tidy.html:100: [maybe] RangeError, assigning invalid value to array 'length' property
+test/chrome/raytracer.tidy.html:101: [maybe] Reading absent property (computed name)
+test/chrome/raytracer.tidy.html:102: [maybe] TypeError, writing property of null/undefined
+test/chrome/raytracer.tidy.html:107: [maybe] Reading absent property r
+test/chrome/raytracer.tidy.html:108: [maybe] Reading absent property r
+test/chrome/raytracer.tidy.html:108: [maybe] Reading absent property r
+test/chrome/raytracer.tidy.html:108: [maybe] Reading absent property x
+test/chrome/raytracer.tidy.html:108: [maybe] Reading absent property x
+test/chrome/raytracer.tidy.html:108: [maybe] Reading absent property y
+test/chrome/raytracer.tidy.html:108: [maybe] Reading absent property y
+test/chrome/raytracer.tidy.html:108: [maybe] Reading absent property z
+test/chrome/raytracer.tidy.html:108: [maybe] Reading absent property z
+test/chrome/raytracer.tidy.html:114: [maybe] Reading absent property getuv
+test/chrome/raytracer.tidy.html:114: [maybe] Reading absent property obj
+test/chrome/raytracer.tidy.html:114: [maybe] Reading absent property precalc
+test/chrome/raytracer.tidy.html:114: [maybe] Reading absent property r
+test/chrome/raytracer.tidy.html:114: [maybe] Reading absent property setbitmap
+test/chrome/raytracer.tidy.html:114: [maybe] Reading absent property setuv
+test/chrome/raytracer.tidy.html:114: [maybe] Reading absent property x
+test/chrome/raytracer.tidy.html:114: [maybe] Reading absent property y
+test/chrome/raytracer.tidy.html:114: [maybe] Reading absent property z
+test/chrome/raytracer.tidy.html:121: [maybe] Reading absent property inside
+test/chrome/raytracer.tidy.html:125: [maybe] Reading absent property cb
+test/chrome/raytracer.tidy.html:125: [maybe] Reading absent property cg
+test/chrome/raytracer.tidy.html:125: [maybe] Reading absent property cr
+test/chrome/raytracer.tidy.html:151: [maybe] Reading absent property x
+test/chrome/raytracer.tidy.html:151: [maybe] Reading absent property y
+test/chrome/raytracer.tidy.html:151: [maybe] Reading absent property z
+test/chrome/raytracer.tidy.html:152: [maybe] Reading absent property ir
+test/chrome/raytracer.tidy.html:152: [maybe] Reading absent property vx
+test/chrome/raytracer.tidy.html:152: [maybe] Reading absent property vy
+test/chrome/raytracer.tidy.html:152: [maybe] Reading absent property vz
+test/chrome/raytracer.tidy.html:153: [maybe] Reading absent property r
+test/chrome/raytracer.tidy.html:153: [maybe] Reading absent property ux
+test/chrome/raytracer.tidy.html:153: [maybe] Reading absent property uy
+test/chrome/raytracer.tidy.html:153: [maybe] Reading absent property uz
+test/chrome/raytracer.tidy.html:154: [maybe] Reading absent property uo
+test/chrome/raytracer.tidy.html:155: [maybe] Reading absent property vo
+test/chrome/raytracer.tidy.html:156: [maybe] Reading absent property u
+test/chrome/raytracer.tidy.html:156: [maybe] Reading absent property wx
+test/chrome/raytracer.tidy.html:156: [maybe] Reading absent property wy
+test/chrome/raytracer.tidy.html:156: [maybe] Reading absent property wz
+test/chrome/raytracer.tidy.html:157: [maybe] Reading absent property (computed name)
+test/chrome/raytracer.tidy.html:157: [maybe] Reading absent property ul
+test/chrome/raytracer.tidy.html:158: [maybe] Reading absent property (computed name)
+test/chrome/raytracer.tidy.html:158: [maybe] Reading absent property vl
+test/chrome/raytracer.tidy.html:161: [maybe] Reading absent property precalc
+test/chrome/raytracer.tidy.html:161: [maybe] TypeError, call to non-function
+test/chrome/raytracer.tidy.html:163: [maybe] RangeError, assigning invalid value to array 'length' property
+test/chrome/raytracer.tidy.html:171: [maybe] Reading absent property obj
+test/chrome/raytracer.tidy.html:173: [maybe] Reading absent property nx
+test/chrome/raytracer.tidy.html:175: [maybe] Reading absent property x
+test/chrome/raytracer.tidy.html:175: [maybe] Reading absent property y
+test/chrome/raytracer.tidy.html:175: [maybe] Reading absent property z
+test/chrome/raytracer.tidy.html:177: [maybe] Reading absent property c
+test/chrome/raytracer.tidy.html:177: [maybe] Reading absent property x
+test/chrome/raytracer.tidy.html:177: [maybe] Reading absent property y
+test/chrome/raytracer.tidy.html:177: [maybe] Reading absent property z
+test/chrome/raytracer.tidy.html:180: [maybe] Reading absent property nx
+test/chrome/raytracer.tidy.html:187: [maybe] Reading absent property obj
+test/chrome/raytracer.tidy.html:196: [maybe] Reading absent property nx
+test/chrome/raytracer.tidy.html:196: [maybe] Reading absent property ny
+test/chrome/raytracer.tidy.html:196: [maybe] Reading absent property nz
+test/chrome/raytracer.tidy.html:196: [maybe] Reading absent property x
+test/chrome/raytracer.tidy.html:196: [maybe] Reading absent property y
+test/chrome/raytracer.tidy.html:196: [maybe] Reading absent property z
+test/chrome/raytracer.tidy.html:197: [maybe] Reading absent property obj
+test/chrome/raytracer.tidy.html:205: [maybe] Reading absent property nx
+test/chrome/raytracer.tidy.html:205: [maybe] Reading absent property ny
+test/chrome/raytracer.tidy.html:205: [maybe] Reading absent property nz
+test/chrome/raytracer.tidy.html:205: [maybe] Reading absent property x
+test/chrome/raytracer.tidy.html:205: [maybe] Reading absent property y
+test/chrome/raytracer.tidy.html:205: [maybe] Reading absent property z
+test/chrome/raytracer.tidy.html:206: [maybe] Reading absent property obj
+test/chrome/raytracer.tidy.html:216: [maybe] Reading absent property ir
+test/chrome/raytracer.tidy.html:216: [maybe] Reading absent property x
+test/chrome/raytracer.tidy.html:217: [maybe] Reading absent property ir
+test/chrome/raytracer.tidy.html:217: [maybe] Reading absent property y
+test/chrome/raytracer.tidy.html:218: [maybe] Reading absent property ir
+test/chrome/raytracer.tidy.html:218: [maybe] Reading absent property z
+test/chrome/raytracer.tidy.html:224: [maybe] Reading absent property obj
+test/chrome/raytracer.tidy.html:226: [maybe] Reading absent property nx
+test/chrome/raytracer.tidy.html:228: [maybe] Reading absent property x
+test/chrome/raytracer.tidy.html:228: [maybe] Reading absent property y
+test/chrome/raytracer.tidy.html:228: [maybe] Reading absent property z
+test/chrome/raytracer.tidy.html:229: [maybe] Reading absent property c
+test/chrome/raytracer.tidy.html:229: [maybe] Reading absent property x
+test/chrome/raytracer.tidy.html:229: [maybe] Reading absent property y
+test/chrome/raytracer.tidy.html:229: [maybe] Reading absent property z
+test/chrome/raytracer.tidy.html:232: [maybe] Reading absent property nx
+test/chrome/raytracer.tidy.html:246: [maybe] Reading absent property nx
+test/chrome/raytracer.tidy.html:246: [maybe] Reading absent property ny
+test/chrome/raytracer.tidy.html:246: [maybe] Reading absent property nz
+test/chrome/raytracer.tidy.html:246: [maybe] Reading absent property x
+test/chrome/raytracer.tidy.html:246: [maybe] Reading absent property y
+test/chrome/raytracer.tidy.html:246: [maybe] Reading absent property z
+test/chrome/raytracer.tidy.html:252: [maybe] Reading absent property nx
+test/chrome/raytracer.tidy.html:252: [maybe] Reading absent property ny
+test/chrome/raytracer.tidy.html:252: [maybe] Reading absent property nz
+test/chrome/raytracer.tidy.html:252: [maybe] Reading absent property x
+test/chrome/raytracer.tidy.html:252: [maybe] Reading absent property y
+test/chrome/raytracer.tidy.html:252: [maybe] Reading absent property z
+test/chrome/raytracer.tidy.html:269: [maybe] Reading absent property r
+test/chrome/raytracer.tidy.html:269: [maybe] Reading absent property r
+test/chrome/raytracer.tidy.html:270: [maybe] Reading absent property r
+test/chrome/raytracer.tidy.html:271: [maybe] Reading absent property r2
+test/chrome/raytracer.tidy.html:273: [maybe] Reading absent property x
+test/chrome/raytracer.tidy.html:273: [maybe] Reading absent property x1
+test/chrome/raytracer.tidy.html:274: [maybe] Reading absent property y
+test/chrome/raytracer.tidy.html:274: [maybe] Reading absent property y1
+test/chrome/raytracer.tidy.html:275: [maybe] Reading absent property z
+test/chrome/raytracer.tidy.html:275: [maybe] Reading absent property z1
+test/chrome/raytracer.tidy.html:276: [maybe] Reading absent property nx
+test/chrome/raytracer.tidy.html:276: [maybe] Reading absent property nx
+test/chrome/raytracer.tidy.html:276: [maybe] Reading absent property ny
+test/chrome/raytracer.tidy.html:276: [maybe] Reading absent property ny
+test/chrome/raytracer.tidy.html:276: [maybe] Reading absent property nz
+test/chrome/raytracer.tidy.html:276: [maybe] Reading absent property nz
+test/chrome/raytracer.tidy.html:277: [maybe] Reading absent property len2
+test/chrome/raytracer.tidy.html:278: [maybe] Reading absent property len2
+test/chrome/raytracer.tidy.html:278: [maybe] Reading absent property r2
+test/chrome/raytracer.tidy.html:279: [maybe] Reading absent property len2
+test/chrome/raytracer.tidy.html:308: [maybe] Reading absent property nx
+test/chrome/raytracer.tidy.html:308: [maybe] Reading absent property ny
+test/chrome/raytracer.tidy.html:308: [maybe] Reading absent property nz
+test/chrome/raytracer.tidy.html:308: [maybe] Reading absent property x
+test/chrome/raytracer.tidy.html:308: [maybe] Reading absent property y
+test/chrome/raytracer.tidy.html:308: [maybe] Reading absent property z
+test/chrome/raytracer.tidy.html:310: [maybe] Reading absent property ir
+test/chrome/raytracer.tidy.html:310: [maybe] Reading absent property ux
+test/chrome/raytracer.tidy.html:310: [maybe] Reading absent property uy
+test/chrome/raytracer.tidy.html:310: [maybe] Reading absent property uz
+test/chrome/raytracer.tidy.html:311: [maybe] Reading absent property u
+test/chrome/raytracer.tidy.html:311: [maybe] Reading absent property wx
+test/chrome/raytracer.tidy.html:311: [maybe] Reading absent property wy
+test/chrome/raytracer.tidy.html:311: [maybe] Reading absent property wz
+test/chrome/raytracer.tidy.html:312: [maybe] Reading absent property u
+test/chrome/raytracer.tidy.html:312: [maybe] Reading absent property ul
+test/chrome/raytracer.tidy.html:312: [maybe] Reading absent property uo
+test/chrome/raytracer.tidy.html:313: [maybe] Reading absent property vl
+test/chrome/raytracer.tidy.html:313: [maybe] Reading absent property vo
+test/chrome/raytracer.tidy.html:318: [maybe] RangeError, assigning invalid value to array 'length' property
+test/chrome/raytracer.tidy.html:325: [maybe] Reading absent property obj
+test/chrome/raytracer.tidy.html:328: [maybe] Reading absent property x
+test/chrome/raytracer.tidy.html:328: [maybe] Reading absent property y
+test/chrome/raytracer.tidy.html:328: [maybe] Reading absent property z
+test/chrome/raytracer.tidy.html:329: [maybe] Reading absent property nx
+test/chrome/raytracer.tidy.html:329: [maybe] Reading absent property nx
+test/chrome/raytracer.tidy.html:329: [maybe] Reading absent property ny
+test/chrome/raytracer.tidy.html:329: [maybe] Reading absent property ny
+test/chrome/raytracer.tidy.html:329: [maybe] Reading absent property nz
+test/chrome/raytracer.tidy.html:329: [maybe] Reading absent property nz
+test/chrome/raytracer.tidy.html:330: [maybe] Reading absent property nx
+test/chrome/raytracer.tidy.html:330: [maybe] Reading absent property nx
+test/chrome/raytracer.tidy.html:330: [maybe] Reading absent property ny
+test/chrome/raytracer.tidy.html:330: [maybe] Reading absent property ny
+test/chrome/raytracer.tidy.html:330: [maybe] Reading absent property nz
+test/chrome/raytracer.tidy.html:330: [maybe] Reading absent property nz
+test/chrome/raytracer.tidy.html:332: [maybe] Reading absent property c
+test/chrome/raytracer.tidy.html:338: [maybe] Reading absent property x
+test/chrome/raytracer.tidy.html:338: [maybe] Reading absent property y
+test/chrome/raytracer.tidy.html:338: [maybe] Reading absent property z
+test/chrome/raytracer.tidy.html:339: [maybe] Reading absent property ilen2
+test/chrome/raytracer.tidy.html:339: [maybe] Reading absent property nx
+test/chrome/raytracer.tidy.html:339: [maybe] Reading absent property ny
+test/chrome/raytracer.tidy.html:339: [maybe] Reading absent property nz
+test/chrome/raytracer.tidy.html:348: [maybe] Reading absent property x
+test/chrome/raytracer.tidy.html:348: [maybe] Reading absent property y
+test/chrome/raytracer.tidy.html:348: [maybe] Reading absent property z
+test/chrome/raytracer.tidy.html:349: [maybe] Reading absent property ilen2
+test/chrome/raytracer.tidy.html:349: [maybe] Reading absent property nx
+test/chrome/raytracer.tidy.html:349: [maybe] Reading absent property ny
+test/chrome/raytracer.tidy.html:349: [maybe] Reading absent property nz
+test/chrome/raytracer.tidy.html:356: [maybe] Reading absent property x
+test/chrome/raytracer.tidy.html:356: [maybe] Reading absent property y
+test/chrome/raytracer.tidy.html:356: [maybe] Reading absent property z
+test/chrome/raytracer.tidy.html:357: [maybe] Reading absent property ilen2
+test/chrome/raytracer.tidy.html:357: [maybe] Reading absent property nx
+test/chrome/raytracer.tidy.html:357: [maybe] Reading absent property ny
+test/chrome/raytracer.tidy.html:357: [maybe] Reading absent property nz
+test/chrome/raytracer.tidy.html:365: [maybe] Reading absent property ir
+test/chrome/raytracer.tidy.html:365: [maybe] Reading absent property obj
+test/chrome/raytracer.tidy.html:369: [maybe] Reading absent property nx
+test/chrome/raytracer.tidy.html:369: [maybe] Reading absent property x
+test/chrome/raytracer.tidy.html:370: [maybe] Reading absent property ny
+test/chrome/raytracer.tidy.html:370: [maybe] Reading absent property y
+test/chrome/raytracer.tidy.html:371: [maybe] Reading absent property nz
+test/chrome/raytracer.tidy.html:371: [maybe] Reading absent property z
+test/chrome/raytracer.tidy.html:376: [maybe] Reading absent property obj
+test/chrome/raytracer.tidy.html:378: [maybe] Reading absent property x
+test/chrome/raytracer.tidy.html:378: [maybe] Reading absent property y
+test/chrome/raytracer.tidy.html:378: [maybe] Reading absent property z
+test/chrome/raytracer.tidy.html:379: [maybe] Reading absent property nx
+test/chrome/raytracer.tidy.html:379: [maybe] Reading absent property nx
+test/chrome/raytracer.tidy.html:379: [maybe] Reading absent property ny
+test/chrome/raytracer.tidy.html:379: [maybe] Reading absent property ny
+test/chrome/raytracer.tidy.html:379: [maybe] Reading absent property nz
+test/chrome/raytracer.tidy.html:379: [maybe] Reading absent property nz
+test/chrome/raytracer.tidy.html:380: [maybe] Reading absent property nx
+test/chrome/raytracer.tidy.html:380: [maybe] Reading absent property nx
+test/chrome/raytracer.tidy.html:380: [maybe] Reading absent property ny
+test/chrome/raytracer.tidy.html:380: [maybe] Reading absent property ny
+test/chrome/raytracer.tidy.html:380: [maybe] Reading absent property nz
+test/chrome/raytracer.tidy.html:380: [maybe] Reading absent property nz
+test/chrome/raytracer.tidy.html:382: [maybe] Reading absent property c
+test/chrome/raytracer.tidy.html:388: [maybe] Reading absent property x
+test/chrome/raytracer.tidy.html:388: [maybe] Reading absent property y
+test/chrome/raytracer.tidy.html:388: [maybe] Reading absent property z
+test/chrome/raytracer.tidy.html:389: [maybe] Reading absent property ilen2
+test/chrome/raytracer.tidy.html:389: [maybe] Reading absent property nx
+test/chrome/raytracer.tidy.html:389: [maybe] Reading absent property ny
+test/chrome/raytracer.tidy.html:389: [maybe] Reading absent property nz
+test/chrome/raytracer.tidy.html:397: [maybe] Reading absent property x
+test/chrome/raytracer.tidy.html:397: [maybe] Reading absent property y
+test/chrome/raytracer.tidy.html:397: [maybe] Reading absent property z
+test/chrome/raytracer.tidy.html:398: [maybe] Reading absent property ilen2
+test/chrome/raytracer.tidy.html:398: [maybe] Reading absent property nx
+test/chrome/raytracer.tidy.html:398: [maybe] Reading absent property ny
+test/chrome/raytracer.tidy.html:398: [maybe] Reading absent property nz
+test/chrome/raytracer.tidy.html:404: [maybe] Reading absent property x
+test/chrome/raytracer.tidy.html:404: [maybe] Reading absent property y
+test/chrome/raytracer.tidy.html:404: [maybe] Reading absent property z
+test/chrome/raytracer.tidy.html:405: [maybe] Reading absent property ilen2
+test/chrome/raytracer.tidy.html:405: [maybe] Reading absent property nx
+test/chrome/raytracer.tidy.html:405: [maybe] Reading absent property ny
+test/chrome/raytracer.tidy.html:405: [maybe] Reading absent property nz
+test/chrome/raytracer.tidy.html:507: [maybe] RangeError, assigning invalid value to array 'length' property
+test/chrome/raytracer.tidy.html:508: [maybe] Reading absent property (computed name)
+test/chrome/raytracer.tidy.html:510: [maybe] TypeError, writing property of null/undefined
+test/chrome/raytracer.tidy.html:518: [maybe] Reading absent property nx
+test/chrome/raytracer.tidy.html:518: [maybe] Reading absent property ny
+test/chrome/raytracer.tidy.html:518: [maybe] Reading absent property nz
+test/chrome/raytracer.tidy.html:518: [maybe] Reading absent property x
+test/chrome/raytracer.tidy.html:518: [maybe] Reading absent property y
+test/chrome/raytracer.tidy.html:518: [maybe] Reading absent property z
+test/chrome/raytracer.tidy.html:519: [maybe] Reading absent property ux
+test/chrome/raytracer.tidy.html:519: [maybe] Reading absent property ux
+test/chrome/raytracer.tidy.html:519: [maybe] Reading absent property uy
+test/chrome/raytracer.tidy.html:519: [maybe] Reading absent property uy
+test/chrome/raytracer.tidy.html:519: [maybe] Reading absent property uz
+test/chrome/raytracer.tidy.html:519: [maybe] Reading absent property uz
+test/chrome/raytracer.tidy.html:520: [maybe] Reading absent property vx
+test/chrome/raytracer.tidy.html:520: [maybe] Reading absent property vx
+test/chrome/raytracer.tidy.html:520: [maybe] Reading absent property vy
+test/chrome/raytracer.tidy.html:520: [maybe] Reading absent property vy
+test/chrome/raytracer.tidy.html:520: [maybe] Reading absent property vz
+test/chrome/raytracer.tidy.html:520: [maybe] Reading absent property vz
+test/chrome/raytracer.tidy.html:523: [maybe] Reading absent property cb
+test/chrome/raytracer.tidy.html:523: [maybe] Reading absent property cg
+test/chrome/raytracer.tidy.html:523: [maybe] Reading absent property cr
+test/chrome/raytracer.tidy.html:536: [maybe] Reading absent property x
+test/chrome/raytracer.tidy.html:536: [maybe] Reading absent property y
+test/chrome/raytracer.tidy.html:536: [maybe] Reading absent property z
+test/chrome/raytracer.tidy.html:537: [maybe] Reading absent property ul2
+test/chrome/raytracer.tidy.html:537: [maybe] Reading absent property uo
+test/chrome/raytracer.tidy.html:537: [maybe] Reading absent property ux
+test/chrome/raytracer.tidy.html:537: [maybe] Reading absent property uy
+test/chrome/raytracer.tidy.html:537: [maybe] Reading absent property uz
+test/chrome/raytracer.tidy.html:538: [maybe] Reading absent property ul2
+test/chrome/raytracer.tidy.html:538: [maybe] Reading absent property uo
+test/chrome/raytracer.tidy.html:538: [maybe] Reading absent property ux
+test/chrome/raytracer.tidy.html:538: [maybe] Reading absent property uy
+test/chrome/raytracer.tidy.html:538: [maybe] Reading absent property uz
+test/chrome/raytracer.tidy.html:539: [maybe] Reading absent property vl2
+test/chrome/raytracer.tidy.html:539: [maybe] Reading absent property vo
+test/chrome/raytracer.tidy.html:539: [maybe] Reading absent property vx
+test/chrome/raytracer.tidy.html:539: [maybe] Reading absent property vy
+test/chrome/raytracer.tidy.html:539: [maybe] Reading absent property vz
+test/chrome/raytracer.tidy.html:542: [maybe] Reading absent property precalc
+test/chrome/raytracer.tidy.html:542: [maybe] TypeError, call to non-function
+test/chrome/raytracer.tidy.html:544: [maybe] RangeError, assigning invalid value to array 'length' property
+test/chrome/raytracer.tidy.html:551: [maybe] Reading absent property obj
+test/chrome/raytracer.tidy.html:552: [maybe] Reading absent property D
+test/chrome/raytracer.tidy.html:552: [maybe] Reading absent property nx
+test/chrome/raytracer.tidy.html:552: [maybe] Reading absent property nx
+test/chrome/raytracer.tidy.html:552: [maybe] Reading absent property ny
+test/chrome/raytracer.tidy.html:552: [maybe] Reading absent property ny
+test/chrome/raytracer.tidy.html:552: [maybe] Reading absent property nz
+test/chrome/raytracer.tidy.html:552: [maybe] Reading absent property nz
+test/chrome/raytracer.tidy.html:555: [maybe] Reading absent property x
+test/chrome/raytracer.tidy.html:556: [maybe] Reading absent property y
+test/chrome/raytracer.tidy.html:557: [maybe] Reading absent property z
+test/chrome/raytracer.tidy.html:558: [maybe] Reading absent property r2
+test/chrome/raytracer.tidy.html:559: [maybe] Reading absent property obj
+test/chrome/raytracer.tidy.html:568: [maybe] Reading absent property nx
+test/chrome/raytracer.tidy.html:569: [maybe] Reading absent property ny
+test/chrome/raytracer.tidy.html:570: [maybe] Reading absent property nz
+test/chrome/raytracer.tidy.html:574: [maybe] Reading absent property obj
+test/chrome/raytracer.tidy.html:576: [maybe] Reading absent property D
+test/chrome/raytracer.tidy.html:576: [maybe] Reading absent property nx
+test/chrome/raytracer.tidy.html:576: [maybe] Reading absent property nx
+test/chrome/raytracer.tidy.html:576: [maybe] Reading absent property ny
+test/chrome/raytracer.tidy.html:576: [maybe] Reading absent property ny
+test/chrome/raytracer.tidy.html:576: [maybe] Reading absent property nz
+test/chrome/raytracer.tidy.html:576: [maybe] Reading absent property nz
+test/chrome/raytracer.tidy.html:579: [maybe] Reading absent property x
+test/chrome/raytracer.tidy.html:580: [maybe] Reading absent property y
+test/chrome/raytracer.tidy.html:581: [maybe] Reading absent property z
+test/chrome/raytracer.tidy.html:582: [maybe] Reading absent property r2
+test/chrome/raytracer.tidy.html:590: [maybe] RangeError, assigning invalid value to array 'length' property
+test/chrome/raytracer.tidy.html:591: [maybe] Reading absent property (computed name)
+test/chrome/raytracer.tidy.html:592: [maybe] TypeError, writing property of null/undefined
+test/chrome/raytracer.tidy.html:597: [maybe] Reading absent property rad
+test/chrome/raytracer.tidy.html:598: [maybe] Reading absent property rad
+test/chrome/raytracer.tidy.html:598: [maybe] Reading absent property rad
+test/chrome/raytracer.tidy.html:598: [maybe] Reading absent property x
+test/chrome/raytracer.tidy.html:598: [maybe] Reading absent property x
+test/chrome/raytracer.tidy.html:598: [maybe] Reading absent property y
+test/chrome/raytracer.tidy.html:598: [maybe] Reading absent property y
+test/chrome/raytracer.tidy.html:598: [maybe] Reading absent property z
+test/chrome/raytracer.tidy.html:598: [maybe] Reading absent property z
+test/chrome/raytracer.tidy.html:608: [maybe] Reading absent property x
+test/chrome/raytracer.tidy.html:608: [maybe] Reading absent property y
+test/chrome/raytracer.tidy.html:608: [maybe] Reading absent property z
+test/chrome/raytracer.tidy.html:611: [maybe] Reading absent property c
+test/chrome/raytracer.tidy.html:611: [maybe] Reading absent property x
+test/chrome/raytracer.tidy.html:611: [maybe] Reading absent property y
+test/chrome/raytracer.tidy.html:611: [maybe] Reading absent property z
+test/chrome/raytracer.tidy.html:617: [maybe] Reading absent property ir
+test/chrome/raytracer.tidy.html:617: [maybe] Reading absent property z
+test/chrome/raytracer.tidy.html:640: [maybe] Reading absent property getuv
+test/chrome/raytracer.tidy.html:640: [maybe] TypeError, call to non-function
+test/chrome/raytracer.tidy.html:641: [maybe] Reading absent property bmpw
+test/chrome/raytracer.tidy.html:641: [maybe] Reading absent property bmpw
+test/chrome/raytracer.tidy.html:641: [maybe] Reading absent property bmpw
+test/chrome/raytracer.tidy.html:641: [maybe] Reading absent property u
+test/chrome/raytracer.tidy.html:642: [maybe] Reading absent property bmph
+test/chrome/raytracer.tidy.html:642: [maybe] Reading absent property bmph
+test/chrome/raytracer.tidy.html:642: [maybe] Reading absent property bmph
+test/chrome/raytracer.tidy.html:642: [maybe] Reading absent property v
+test/chrome/raytracer.tidy.html:645: [maybe] Reading absent property bmp
+test/chrome/raytracer.tidy.html:645: [maybe] Reading absent property bmpw
+test/chrome/raytracer.tidy.html:646: [maybe] Reading absent property (computed name)
+test/chrome/raytracer.tidy.html:646: [maybe] Reading absent property (computed name)
+test/chrome/raytracer.tidy.html:646: [maybe] Reading absent property (computed name)
+test/chrome/raytracer.tidy.html:646: [maybe] TypeError, reading property of null/undefined
+test/chrome/raytracer.tidy.html:648: [maybe] Reading absent property bmpw
+test/chrome/raytracer.tidy.html:648: [maybe] Reading absent property bmpw
+test/chrome/raytracer.tidy.html:649: [maybe] Reading absent property (computed name)
+test/chrome/raytracer.tidy.html:649: [maybe] Reading absent property (computed name)
+test/chrome/raytracer.tidy.html:649: [maybe] Reading absent property (computed name)
+test/chrome/raytracer.tidy.html:651: [maybe] Reading absent property bmph
+test/chrome/raytracer.tidy.html:651: [maybe] Reading absent property bmpw
+test/chrome/raytracer.tidy.html:652: [maybe] Reading absent property (computed name)
+test/chrome/raytracer.tidy.html:652: [maybe] Reading absent property (computed name)
+test/chrome/raytracer.tidy.html:652: [maybe] Reading absent property (computed name)
+test/chrome/raytracer.tidy.html:654: [maybe] Reading absent property bmpw
+test/chrome/raytracer.tidy.html:654: [maybe] Reading absent property bmpw
+test/chrome/raytracer.tidy.html:655: [maybe] Reading absent property (computed name)
+test/chrome/raytracer.tidy.html:655: [maybe] Reading absent property (computed name)
+test/chrome/raytracer.tidy.html:655: [maybe] Reading absent property (computed name)
+test/chrome/raytracer.tidy.html:657: [maybe] Reading absent property ocr
+test/chrome/raytracer.tidy.html:658: [maybe] Reading absent property ocg
+test/chrome/raytracer.tidy.html:659: [maybe] Reading absent property ocb
+test/chrome/raytracer.tidy.html:679: [maybe] Reading absent property getuv
+test/chrome/raytracer.tidy.html:679: [maybe] TypeError, call to non-function
+test/chrome/raytracer.tidy.html:680: [maybe] Reading absent property bmp
+test/chrome/raytracer.tidy.html:681: [maybe] Reading absent property bmpw
+test/chrome/raytracer.tidy.html:681: [maybe] Reading absent property u
+test/chrome/raytracer.tidy.html:682: [maybe] Reading absent property bmph
+test/chrome/raytracer.tidy.html:682: [maybe] Reading absent property v
+test/chrome/raytracer.tidy.html:683: [maybe] Reading absent property bmpw
+test/chrome/raytracer.tidy.html:684: [maybe] Reading absent property bmph
+test/chrome/raytracer.tidy.html:684: [maybe] Reading absent property bmpw
+test/chrome/raytracer.tidy.html:685: [maybe] Reading absent property (computed name)
+test/chrome/raytracer.tidy.html:685: [maybe] Reading absent property (computed name)
+test/chrome/raytracer.tidy.html:685: [maybe] Reading absent property (computed name)
+test/chrome/raytracer.tidy.html:685: [maybe] TypeError, reading property of null/undefined
+test/chrome/raytracer.tidy.html:687: [maybe] Reading absent property bmph
+test/chrome/raytracer.tidy.html:687: [maybe] Reading absent property bmpw
+test/chrome/raytracer.tidy.html:688: [maybe] Reading absent property (computed name)
+test/chrome/raytracer.tidy.html:688: [maybe] Reading absent property (computed name)
+test/chrome/raytracer.tidy.html:688: [maybe] Reading absent property (computed name)
+test/chrome/raytracer.tidy.html:688: [maybe] TypeError, reading property of null/undefined
+test/chrome/raytracer.tidy.html:689: [maybe] Reading absent property bmpw
+test/chrome/raytracer.tidy.html:690: [maybe] Reading absent property bmph
+test/chrome/raytracer.tidy.html:690: [maybe] Reading absent property bmpw
+test/chrome/raytracer.tidy.html:691: [maybe] Reading absent property (computed name)
+test/chrome/raytracer.tidy.html:691: [maybe] Reading absent property (computed name)
+test/chrome/raytracer.tidy.html:691: [maybe] Reading absent property (computed name)
+test/chrome/raytracer.tidy.html:691: [maybe] TypeError, reading property of null/undefined
+test/chrome/raytracer.tidy.html:693: [maybe] Reading absent property bmph
+test/chrome/raytracer.tidy.html:693: [maybe] Reading absent property bmpw
+test/chrome/raytracer.tidy.html:694: [maybe] Reading absent property (computed name)
+test/chrome/raytracer.tidy.html:694: [maybe] Reading absent property (computed name)
+test/chrome/raytracer.tidy.html:694: [maybe] Reading absent property (computed name)
+test/chrome/raytracer.tidy.html:694: [maybe] TypeError, reading property of null/undefined
+test/chrome/raytracer.tidy.html:696: [maybe] Reading absent property ocr
+test/chrome/raytracer.tidy.html:697: [maybe] Reading absent property ocg
+test/chrome/raytracer.tidy.html:698: [maybe] Reading absent property ocb
+test/chrome/raytracer.tidy.html:713: [maybe] Reading absent property getuv
+test/chrome/raytracer.tidy.html:713: [maybe] TypeError, call to non-function
+test/chrome/raytracer.tidy.html:714: [maybe] Reading absent property u
+test/chrome/raytracer.tidy.html:715: [maybe] Reading absent property v
+test/chrome/raytracer.tidy.html:721: [maybe] Reading absent property getuv
+test/chrome/raytracer.tidy.html:721: [maybe] TypeError, call to non-function
+test/chrome/raytracer.tidy.html:722: [maybe] Reading absent property u
+test/chrome/raytracer.tidy.html:723: [maybe] Reading absent property v
+test/chrome/raytracer.tidy.html:729: [maybe] Reading absent property getuv
+test/chrome/raytracer.tidy.html:729: [maybe] TypeError, call to non-function
+test/chrome/raytracer.tidy.html:730: [maybe] Reading absent property u
+test/chrome/raytracer.tidy.html:730: [maybe] Reading absent property ul
+test/chrome/raytracer.tidy.html:730: [maybe] Reading absent property v
+test/chrome/raytracer.tidy.html:730: [maybe] Reading absent property vl
+test/chrome/raytracer.tidy.html:731: [maybe] Reading absent property ul
+test/chrome/raytracer.tidy.html:744: [maybe] Reading absent property (computed name)
+test/chrome/raytracer.tidy.html:744: [maybe] Reading absent property obj
+test/chrome/raytracer.tidy.html:754: [maybe] Reading absent property obj
+test/chrome/raytracer.tidy.html:756: [maybe] Reading absent property (computed name)
+test/chrome/raytracer.tidy.html:756: [maybe] Reading absent property obj
+test/chrome/raytracer.tidy.html:758: [maybe] Reading absent property bmp
+test/chrome/raytracer.tidy.html:758: [maybe] TypeError, reading property of null/undefined
+test/chrome/raytracer.tidy.html:759: [maybe] Reading absent property i
+test/chrome/raytracer.tidy.html:759: [maybe] Reading absent property width
+test/chrome/raytracer.tidy.html:759: [maybe] TypeError, reading property of null/undefined
+test/chrome/raytracer.tidy.html:760: [maybe] Reading absent property height
+test/chrome/raytracer.tidy.html:760: [maybe] Reading absent property i
+test/chrome/raytracer.tidy.html:760: [maybe] TypeError, reading property of null/undefined
+test/chrome/raytracer.tidy.html:761: [maybe] Reading absent property i
+test/chrome/raytracer.tidy.html:761: [maybe] Reading absent property width
+test/chrome/raytracer.tidy.html:761: [maybe] TypeError, reading property of null/undefined
+test/chrome/raytracer.tidy.html:762: [maybe] Reading absent property height
+test/chrome/raytracer.tidy.html:762: [maybe] Reading absent property i
+test/chrome/raytracer.tidy.html:762: [maybe] TypeError, reading property of null/undefined
+test/chrome/raytracer.tidy.html:767: [maybe] Reading absent property ownerobj
+test/chrome/raytracer.tidy.html:768: [maybe] Reading absent property tex
+test/chrome/raytracer.tidy.html:768: [maybe] TypeError, reading property of null/undefined
+test/chrome/raytracer.tidy.html:769: [maybe] Reading absent property height
+test/chrome/raytracer.tidy.html:769: [maybe] Reading absent property tex
+test/chrome/raytracer.tidy.html:769: [maybe] Reading absent property width
+test/chrome/raytracer.tidy.html:771: [maybe] TypeError, writing property of null/undefined
+test/chrome/raytracer.tidy.html:772: [maybe] Reading absent property canv
+test/chrome/raytracer.tidy.html:772: [maybe] Reading absent property setAttribute
+test/chrome/raytracer.tidy.html:772: [maybe] TypeError, call to non-function
+test/chrome/raytracer.tidy.html:772: [maybe] TypeError, reading property of null/undefined
+test/chrome/raytracer.tidy.html:773: [maybe] Reading absent property canv
+test/chrome/raytracer.tidy.html:773: [maybe] Reading absent property setAttribute
+test/chrome/raytracer.tidy.html:773: [maybe] TypeError, call to non-function
+test/chrome/raytracer.tidy.html:773: [maybe] TypeError, reading property of null/undefined
+test/chrome/raytracer.tidy.html:774: [maybe] Reading absent property canv
+test/chrome/raytracer.tidy.html:774: [maybe] Reading absent property getContext
+test/chrome/raytracer.tidy.html:774: [maybe] TypeError, call to non-function
+test/chrome/raytracer.tidy.html:774: [maybe] TypeError, reading property of null/undefined
+test/chrome/raytracer.tidy.html:775: [maybe] Reading absent property ctx
+test/chrome/raytracer.tidy.html:775: [maybe] Reading absent property drawImage
+test/chrome/raytracer.tidy.html:775: [maybe] TypeError, call to non-function
+test/chrome/raytracer.tidy.html:775: [maybe] TypeError, non-HTMLImageElement or non-HTMLCanvasElement as argument to drawImage
+test/chrome/raytracer.tidy.html:775: [maybe] TypeError, reading property of null/undefined
+test/chrome/raytracer.tidy.html:778: [maybe] Reading absent property ctx
+test/chrome/raytracer.tidy.html:778: [maybe] Reading absent property ctx
+test/chrome/raytracer.tidy.html:778: [maybe] Reading absent property getImageData
+test/chrome/raytracer.tidy.html:778: [maybe] TypeError, reading property of null/undefined
+test/chrome/raytracer.tidy.html:778: [maybe] TypeError, reading property of null/undefined
+test/chrome/raytracer.tidy.html:779: [maybe] Reading absent property ctx
+test/chrome/raytracer.tidy.html:779: [maybe] Reading absent property getImageData
+test/chrome/raytracer.tidy.html:779: [maybe] TypeError, call to non-function
+test/chrome/raytracer.tidy.html:779: [maybe] TypeError, reading property of null/undefined
+test/chrome/raytracer.tidy.html:780: [maybe] Reading absent property bmp
+test/chrome/raytracer.tidy.html:781: [maybe] RangeError, assigning invalid value to array 'length' property
+test/chrome/raytracer.tidy.html:781: [maybe] RangeError, assigning invalid value to array 'length' property
+test/chrome/raytracer.tidy.html:781: [maybe] RangeError, assigning invalid value to array 'length' property
+test/chrome/raytracer.tidy.html:781: [maybe] Reading absent property (computed name)
+test/chrome/raytracer.tidy.html:781: [maybe] Reading absent property (computed name)
+test/chrome/raytracer.tidy.html:781: [maybe] Reading absent property (computed name)
+test/chrome/raytracer.tidy.html:781: [maybe] TypeError, writing property of null/undefined
+test/chrome/raytracer.tidy.html:785: [maybe] RangeError, assigning invalid value to array 'length' property
+test/chrome/raytracer.tidy.html:785: [maybe] Reading absent property bmp
+test/chrome/raytracer.tidy.html:785: [maybe] TypeError, writing property of null/undefined
+test/chrome/raytracer.tidy.html:789: [maybe] Reading absent property bmp
+test/chrome/raytracer.tidy.html:789: [maybe] Reading absent property tex
+test/chrome/raytracer.tidy.html:789: [maybe] TypeError, writing property of null/undefined
+test/chrome/raytracer.tidy.html:791: [maybe] Reading absent property src
+test/chrome/raytracer.tidy.html:817: [maybe] Reading absent property setbitmap
+test/chrome/raytracer.tidy.html:817: [maybe] Reading absent property setuv
+test/chrome/raytracer.tidy.html:817: [maybe] TypeError, call to non-function
+test/chrome/raytracer.tidy.html:817: [maybe] TypeError, call to non-function
+test/chrome/raytracer.tidy.html:819: [maybe] Reading absent property sethalf
+test/chrome/raytracer.tidy.html:819: [maybe] TypeError, call to non-function
+test/chrome/raytracer.tidy.html:826: [maybe] Reading absent property setbitmap
+test/chrome/raytracer.tidy.html:826: [maybe] Reading absent property setuv
+test/chrome/raytracer.tidy.html:826: [maybe] TypeError, call to non-function
+test/chrome/raytracer.tidy.html:826: [maybe] TypeError, call to non-function
+test/chrome/raytracer.tidy.html:828: [maybe] Reading absent property setbitmap
+test/chrome/raytracer.tidy.html:828: [maybe] Reading absent property setuv
+test/chrome/raytracer.tidy.html:828: [maybe] TypeError, call to non-function
+test/chrome/raytracer.tidy.html:828: [maybe] TypeError, call to non-function
+test/chrome/raytracer.tidy.html:830: [maybe] Reading absent property setuv
+test/chrome/raytracer.tidy.html:830: [maybe] TypeError, call to non-function
+test/chrome/raytracer.tidy.html:832: [maybe] Reading absent property setuv
+test/chrome/raytracer.tidy.html:832: [maybe] TypeError, call to non-function
+test/chrome/raytracer.tidy.html:852: [maybe] Reading absent property (computed name)
+test/chrome/raytracer.tidy.html:853: [maybe] Reading absent property (computed name)
+test/chrome/raytracer.tidy.html:853: [maybe] Reading absent property precalc
+test/chrome/raytracer.tidy.html:853: [maybe] TypeError, call to non-function
+test/chrome/raytracer.tidy.html:853: [maybe] TypeError, reading property of null/undefined
+test/chrome/raytracer.tidy.html:856: [maybe] Reading absent property (computed name)
+test/chrome/raytracer.tidy.html:857: [maybe] Reading absent property (computed name)
+test/chrome/raytracer.tidy.html:857: [maybe] Reading absent property (computed name)
+test/chrome/raytracer.tidy.html:857: [maybe] Reading absent property precalc
+test/chrome/raytracer.tidy.html:857: [maybe] Reading absent property precalc
+test/chrome/raytracer.tidy.html:857: [maybe] TypeError, call to non-function
+test/chrome/raytracer.tidy.html:857: [maybe] TypeError, reading property of null/undefined
+test/chrome/raytracer.tidy.html:857: [maybe] TypeError, reading property of null/undefined
+test/chrome/raytracer.tidy.html:858: [maybe] Reading absent property (computed name)
+test/chrome/raytracer.tidy.html:858: [maybe] Reading absent property inside
+test/chrome/raytracer.tidy.html:858: [maybe] TypeError, reading property of null/undefined
+test/chrome/raytracer.tidy.html:859: [maybe] Reading absent property (computed name)
+test/chrome/raytracer.tidy.html:859: [maybe] Reading absent property inside
+test/chrome/raytracer.tidy.html:859: [maybe] TypeError, reading property of null/undefined
+test/chrome/raytracer.tidy.html:860: [maybe] Reading absent property (computed name)
+test/chrome/raytracer.tidy.html:860: [maybe] Reading absent property inside
+test/chrome/raytracer.tidy.html:860: [maybe] Reading absent property precalc
+test/chrome/raytracer.tidy.html:860: [maybe] TypeError, call to non-function
+test/chrome/raytracer.tidy.html:860: [maybe] TypeError, reading property of null/undefined
+test/chrome/raytracer.tidy.html:860: [maybe] TypeError, reading property of null/undefined
+test/chrome/raytracer.tidy.html:865: [maybe] RangeError, assigning invalid value to array 'length' property
+test/chrome/raytracer.tidy.html:866: [maybe] RangeError, assigning invalid value to array 'length' property
+test/chrome/raytracer.tidy.html:866: [maybe] Reading absent property (computed name)
+test/chrome/raytracer.tidy.html:866: [maybe] TypeError, writing property of null/undefined
+test/chrome/raytracer.tidy.html:883: [maybe] Reading absent property x
+test/chrome/raytracer.tidy.html:883: [maybe] Reading absent property y
+test/chrome/raytracer.tidy.html:883: [maybe] Reading absent property z
+test/chrome/raytracer.tidy.html:883: [maybe] TypeError, reading property of null/undefined
+test/chrome/raytracer.tidy.html:885: [maybe] Reading absent property x1
+test/chrome/raytracer.tidy.html:886: [maybe] Reading absent property x1
+test/chrome/raytracer.tidy.html:886: [maybe] Reading absent property y1
+test/chrome/raytracer.tidy.html:886: [maybe] Reading absent property z1
+test/chrome/raytracer.tidy.html:889: [maybe] Reading absent property nx
+test/chrome/raytracer.tidy.html:890: [maybe] Reading absent property nx
+test/chrome/raytracer.tidy.html:890: [maybe] Reading absent property ny
+test/chrome/raytracer.tidy.html:890: [maybe] Reading absent property nz
+test/chrome/raytracer.tidy.html:892: [maybe] Reading absent property ux
+test/chrome/raytracer.tidy.html:893: [maybe] Reading absent property ux
+test/chrome/raytracer.tidy.html:893: [maybe] Reading absent property uy
+test/chrome/raytracer.tidy.html:893: [maybe] Reading absent property uz
+test/chrome/raytracer.tidy.html:895: [maybe] Reading absent property vx
+test/chrome/raytracer.tidy.html:896: [maybe] Reading absent property vx
+test/chrome/raytracer.tidy.html:896: [maybe] Reading absent property vy
+test/chrome/raytracer.tidy.html:896: [maybe] Reading absent property vz
+test/chrome/raytracer.tidy.html:898: [maybe] Reading absent property wx
+test/chrome/raytracer.tidy.html:899: [maybe] Reading absent property wx
+test/chrome/raytracer.tidy.html:899: [maybe] Reading absent property wy
+test/chrome/raytracer.tidy.html:899: [maybe] Reading absent property wz
+test/chrome/raytracer.tidy.html:940: [maybe] Reading absent property value
+test/chrome/raytracer.tidy.html:940: [maybe] Reading absent property value
+test/chrome/raytracer.tidy.html:940: [maybe] TypeError, reading property of null/undefined
+test/chrome/raytracer.tidy.html:940: [maybe] TypeError, reading property of null/undefined
+test/chrome/raytracer.tidy.html:941: [maybe] Reading absent property value
+test/chrome/raytracer.tidy.html:941: [maybe] Reading absent property value
+test/chrome/raytracer.tidy.html:941: [maybe] TypeError, reading property of null/undefined
+test/chrome/raytracer.tidy.html:941: [maybe] TypeError, reading property of null/undefined
+test/chrome/raytracer.tidy.html:942: [maybe] Reading absent property value
+test/chrome/raytracer.tidy.html:942: [maybe] Reading absent property value
+test/chrome/raytracer.tidy.html:942: [maybe] TypeError, reading property of null/undefined
+test/chrome/raytracer.tidy.html:942: [maybe] TypeError, reading property of null/undefined
+test/chrome/raytracer.tidy.html:943: [maybe] TypeError, writing property of null/undefined
+test/chrome/raytracer.tidy.html:944: [maybe] TypeError, writing property of null/undefined
+test/chrome/raytracer.tidy.html:945: [maybe] TypeError, writing property of null/undefined
+test/chrome/raytracer.tidy.html:951: [maybe] Reading absent property getContext
+test/chrome/raytracer.tidy.html:951: [maybe] TypeError, reading property of null/undefined
+test/chrome/raytracer.tidy.html:952: [maybe] Reading absent property attributes
+test/chrome/raytracer.tidy.html:952: [maybe] Reading absent property width
+test/chrome/raytracer.tidy.html:952: [maybe] TypeError, reading property of null/undefined
+test/chrome/raytracer.tidy.html:952: [maybe] TypeError, reading property of null/undefined
+test/chrome/raytracer.tidy.html:952: [maybe] TypeError, reading property of null/undefined
+test/chrome/raytracer.tidy.html:953: [maybe] Reading absent property attributes
+test/chrome/raytracer.tidy.html:953: [maybe] Reading absent property height
+test/chrome/raytracer.tidy.html:953: [maybe] TypeError, reading property of null/undefined
+test/chrome/raytracer.tidy.html:953: [maybe] TypeError, reading property of null/undefined
+test/chrome/raytracer.tidy.html:954: [maybe] Reading absent property getContext
+test/chrome/raytracer.tidy.html:954: [maybe] TypeError, call to non-function
+test/chrome/raytracer.tidy.html:959: [maybe] Reading absent property clientWidth
+test/chrome/raytracer.tidy.html:959: [maybe] TypeError, reading property of null/undefined
+test/chrome/raytracer.tidy.html:960: [maybe] Reading absent property clientHeight
+test/chrome/raytracer.tidy.html:960: [maybe] TypeError, reading property of null/undefined
+test/chrome/raytracer.tidy.html:962: [maybe] TypeError, writing property of null/undefined
+test/chrome/raytracer.tidy.html:964: [maybe] TypeError, writing property of null/undefined
+test/chrome/raytracer.tidy.html:981: [maybe] TypeError, writing property of null/undefined
+test/chrome/raytracer.tidy.html:984: [maybe] Reading absent property putImageData
+test/chrome/raytracer.tidy.html:984: [maybe] TypeError, call to non-function
+test/chrome/raytracer.tidy.html:987: [maybe] Reading absent property style
+test/chrome/raytracer.tidy.html:987: [maybe] TypeError, reading property of null/undefined
+test/chrome/raytracer.tidy.html:987: [maybe] TypeError, writing property of null/undefined
+test/chrome/raytracer.tidy.html:992: [maybe] Reading absent property (computed name)
+test/chrome/raytracer.tidy.html:992: [maybe] Reading absent property (computed name)
+test/chrome/raytracer.tidy.html:992: [maybe] Reading absent property (computed name)
+test/chrome/raytracer.tidy.html:992: [maybe] TypeError, reading property of null/undefined
+test/chrome/raytracer.tidy.html:993: [maybe] Reading absent property fillRect
+test/chrome/raytracer.tidy.html:993: [maybe] TypeError, call to non-function
+test/chrome/raytracer.tidy.html:996: [maybe] TypeError, writing property of null/undefined
+test/chrome/raytracer.tidy.html:1007: [maybe] Reading absent property (computed name)
+test/chrome/raytracer.tidy.html:1007: [maybe] Reading absent property intersect
+test/chrome/raytracer.tidy.html:1007: [maybe] TypeError, call to non-function
+test/chrome/raytracer.tidy.html:1007: [maybe] TypeError, reading property of null/undefined
+test/chrome/raytracer.tidy.html:1012: [maybe] Reading absent property (computed name)
+test/chrome/raytracer.tidy.html:1012: [maybe] Reading absent property hit
+test/chrome/raytracer.tidy.html:1012: [maybe] TypeError, call to non-function
+test/chrome/raytracer.tidy.html:1012: [maybe] TypeError, reading property of null/undefined
+test/chrome/raytracer.tidy.html:1032: [maybe] Reading absent property (computed name)
+test/chrome/raytracer.tidy.html:1032: [maybe] TypeError, reading property of null/undefined
+test/chrome/raytracer.tidy.html:1033: [maybe] Reading absent property (computed name)
+test/chrome/raytracer.tidy.html:1033: [maybe] Reading absent property li_intersect
+test/chrome/raytracer.tidy.html:1033: [maybe] TypeError, call to non-function
+test/chrome/raytracer.tidy.html:1033: [maybe] TypeError, reading property of null/undefined
+test/chrome/raytracer.tidy.html:1036: [maybe] Reading absent property (computed name)
+test/chrome/raytracer.tidy.html:1036: [maybe] Reading absent property li_intersect
+test/chrome/raytracer.tidy.html:1036: [maybe] TypeError, call to non-function
+test/chrome/raytracer.tidy.html:1036: [maybe] TypeError, reading property of null/undefined
+test/chrome/raytracer.tidy.html:1037: [maybe] RangeError, assigning invalid value to array 'length' property
+test/chrome/raytracer.tidy.html:1046: [maybe] Reading absent property (computed name)
+test/chrome/raytracer.tidy.html:1047: [maybe] Reading absent property (computed name)
+test/chrome/raytracer.tidy.html:1050: [maybe] Reading absent property inside
+test/chrome/raytracer.tidy.html:1050: [maybe] Reading absent property inside
+test/chrome/raytracer.tidy.html:1050: [maybe] TypeError, reading property of null/undefined
+test/chrome/raytracer.tidy.html:1050: [maybe] TypeError, reading property of null/undefined
+test/chrome/raytracer.tidy.html:1051: [maybe] Reading absent property texture
+test/chrome/raytracer.tidy.html:1051: [maybe] Reading absent property texture
+test/chrome/raytracer.tidy.html:1051: [maybe] TypeError, call to non-function
+test/chrome/raytracer.tidy.html:1051: [maybe] TypeError, reading property of null/undefined
+test/chrome/raytracer.tidy.html:1055: [maybe] Reading absent property (computed name)
+test/chrome/raytracer.tidy.html:1055: [maybe] Reading absent property x
+test/chrome/raytracer.tidy.html:1055: [maybe] TypeError, reading property of null/undefined
+test/chrome/raytracer.tidy.html:1056: [maybe] Reading absent property (computed name)
+test/chrome/raytracer.tidy.html:1056: [maybe] Reading absent property y
+test/chrome/raytracer.tidy.html:1056: [maybe] TypeError, reading property of null/undefined
+test/chrome/raytracer.tidy.html:1057: [maybe] Reading absent property (computed name)
+test/chrome/raytracer.tidy.html:1057: [maybe] Reading absent property z
+test/chrome/raytracer.tidy.html:1057: [maybe] TypeError, reading property of null/undefined
+test/chrome/raytracer.tidy.html:1066: [maybe] Reading absent property d
+test/chrome/raytracer.tidy.html:1078: [maybe] Reading absent property p
+test/chrome/raytracer.tidy.html:1078: [maybe] Reading absent property pp
+test/chrome/raytracer.tidy.html:1080: [maybe] Reading absent property (computed name)
+test/chrome/raytracer.tidy.html:1080: [maybe] Reading absent property cr
+test/chrome/raytracer.tidy.html:1080: [maybe] Reading absent property r
+test/chrome/raytracer.tidy.html:1080: [maybe] TypeError, reading property of null/undefined
+test/chrome/raytracer.tidy.html:1081: [maybe] Reading absent property (computed name)
+test/chrome/raytracer.tidy.html:1081: [maybe] Reading absent property cg
+test/chrome/raytracer.tidy.html:1081: [maybe] Reading absent property g
+test/chrome/raytracer.tidy.html:1081: [maybe] TypeError, reading property of null/undefined
+test/chrome/raytracer.tidy.html:1082: [maybe] Reading absent property (computed name)
+test/chrome/raytracer.tidy.html:1082: [maybe] Reading absent property b
+test/chrome/raytracer.tidy.html:1082: [maybe] Reading absent property cb
+test/chrome/raytracer.tidy.html:1082: [maybe] TypeError, reading property of null/undefined
+test/chrome/raytracer.tidy.html:1094: [maybe] Reading absent property (computed name)
+test/chrome/raytracer.tidy.html:1094: [maybe] Reading absent property intersect
+test/chrome/raytracer.tidy.html:1094: [maybe] TypeError, call to non-function
+test/chrome/raytracer.tidy.html:1094: [maybe] TypeError, reading property of null/undefined
+test/chrome/raytracer.tidy.html:1096: [maybe] Reading absent property (computed name)
+test/chrome/raytracer.tidy.html:1097: [maybe] Reading absent property b
+test/chrome/raytracer.tidy.html:1097: [maybe] Reading absent property g
+test/chrome/raytracer.tidy.html:1097: [maybe] Reading absent property r
+test/chrome/raytracer.tidy.html:1097: [maybe] TypeError, reading property of null/undefined
+test/chrome/raytracer.tidy.html:1104: [maybe] Reading absent property (computed name)
+test/chrome/raytracer.tidy.html:1104: [maybe] Reading absent property (computed name)
+test/chrome/raytracer.tidy.html:1104: [maybe] Reading absent property (computed name)
+test/chrome/raytracer.tidy.html:1104: [maybe] Reading absent property inside
+test/chrome/raytracer.tidy.html:1104: [maybe] Reading absent property inside
+test/chrome/raytracer.tidy.html:1104: [maybe] TypeError, reading property of null/undefined
+test/chrome/raytracer.tidy.html:1104: [maybe] TypeError, reading property of null/undefined
+test/chrome/raytracer.tidy.html:1105: [maybe] Reading absent property cr
+test/chrome/raytracer.tidy.html:1105: [maybe] TypeError, reading property of null/undefined
+test/chrome/raytracer.tidy.html:1106: [maybe] Reading absent property cg
+test/chrome/raytracer.tidy.html:1107: [maybe] Reading absent property cb
+test/chrome/raytracer.tidy.html:1112: [maybe] Reading absent property (computed name)
+test/chrome/raytracer.tidy.html:1112: [maybe] Reading absent property (computed name)
+test/chrome/raytracer.tidy.html:1112: [maybe] Reading absent property (computed name)
+test/chrome/raytracer.tidy.html:1112: [maybe] Reading absent property inside
+test/chrome/raytracer.tidy.html:1112: [maybe] Reading absent property inside
+test/chrome/raytracer.tidy.html:1112: [maybe] Reading absent property rf
+test/chrome/raytracer.tidy.html:1112: [maybe] Reading absent property rf
+test/chrome/raytracer.tidy.html:1112: [maybe] TypeError, reading property of null/undefined
+test/chrome/raytracer.tidy.html:1112: [maybe] TypeError, reading property of null/undefined
+test/chrome/raytracer.tidy.html:1112: [maybe] TypeError, reading property of null/undefined
+test/chrome/raytracer.tidy.html:1112: [maybe] TypeError, reading property of null/undefined
+test/chrome/raytracer.tidy.html:1163: [maybe] Reading absent property fillRect
+test/chrome/raytracer.tidy.html:1163: [maybe] TypeError, call to non-function
+test/chrome/raytracer.tidy.html:1164: [maybe] Reading absent property getImageData
+test/chrome/raytracer.tidy.html:1164: [maybe] TypeError, call to non-function
+test/chrome/raytracer.tidy.html:1168: [maybe] TypeError, writing property of null/undefined
+test/chrome/raytracer.tidy.html:1189: [maybe] TypeError, writing property of null/undefined
+test/chrome/raytracer.tidy.html:1189: [maybe] TypeError, writing property of null/undefined
+test/chrome/raytracer.tidy.html:1189: [maybe] TypeError, writing property of null/undefined
+test/chrome/raytracer.tidy.html:1192: [maybe] TypeError, writing property of null/undefined
+test/chrome/raytracer.tidy.html:1212: [maybe] TypeError, writing property of null/undefined
+test/chrome/raytracer.tidy.html:1230: [maybe] TypeError, reading property of null/undefined
+test/chrome/raytracer.tidy.html:1230: [maybe] TypeError, writing property of null/undefined
+test/chrome/raytracer.tidy.html:1233: [maybe] Reading absent property (computed name)
+test/chrome/raytracer.tidy.html:1233: [maybe] TypeError, reading property of null/undefined
+test/chrome/raytracer.tidy.html:1263: [maybe] TypeError, writing property of null/undefined
+test/chrome/raytracer.tidy.html:1264: [maybe] TypeError, writing property of null/undefined
+test/chrome/raytracer.tidy.html:1265: [maybe] TypeError, writing property of null/undefined
+test/chrome/raytracer.tidy.html:1274: [maybe] Reading absent property value
+test/chrome/raytracer.tidy.html:1274: [maybe] TypeError, reading property of null/undefined
+test/chrome/raytracer.tidy.html:1288: [maybe] Reading absent property style
+test/chrome/raytracer.tidy.html:1288: [maybe] TypeError, reading property of null/undefined
+test/chrome/raytracer.tidy.html:1288: [maybe] TypeError, writing property of null/undefined
+test/chrome/raytracer.tidy.html:1289: [maybe] Reading absent property style
+test/chrome/raytracer.tidy.html:1289: [maybe] TypeError, writing property of null/undefined
+test/chrome/raytracer.tidy.html:1292: [maybe] Reading absent property getContext
+test/chrome/raytracer.tidy.html:1292: [maybe] TypeError, reading property of null/undefined
+test/chrome/raytracer.tidy.html:1293: [maybe] Reading absent property attributes
+test/chrome/raytracer.tidy.html:1293: [maybe] Reading absent property width
+test/chrome/raytracer.tidy.html:1293: [maybe] TypeError, reading property of null/undefined
+test/chrome/raytracer.tidy.html:1293: [maybe] TypeError, reading property of null/undefined
+test/chrome/raytracer.tidy.html:1293: [maybe] TypeError, writing property of null/undefined
+test/chrome/raytracer.tidy.html:1294: [maybe] Reading absent property attributes
+test/chrome/raytracer.tidy.html:1294: [maybe] Reading absent property height
+test/chrome/raytracer.tidy.html:1294: [maybe] TypeError, reading property of null/undefined
+test/chrome/raytracer.tidy.html:1294: [maybe] TypeError, writing property of null/undefined
+test/chrome/raytracer.tidy.html:1302: [maybe] Reading absent property checked
+test/chrome/raytracer.tidy.html:1302: [maybe] TypeError, reading property of null/undefined
+test/chrome/raytracer.tidy.html:5: [maybe] Uncaught exception, constructed at [test/chrome/raytracer.tidy.html:100, test/chrome/raytracer.tidy.html:102, test/chrome/raytracer.tidy.html:161, test/chrome/raytracer.tidy.html:163, test/chrome/raytracer.tidy.html:318, test/chrome/raytracer.tidy.html:507, test/chrome/raytracer.tidy.html:510, test/chrome/raytracer.tidy.html:542, test/chrome/raytracer.tidy.html:544, test/chrome/raytracer.tidy.html:590, test/chrome/raytracer.tidy.html:592, test/chrome/raytracer.tidy.html:640, test/chrome/raytracer.tidy.html:646, test/chrome/raytracer.tidy.html:679, test/chrome/raytracer.tidy.html:685, test/chrome/raytracer.tidy.html:688, test/chrome/raytracer.tidy.html:691, test/chrome/raytracer.tidy.html:694, test/chrome/raytracer.tidy.html:713, test/chrome/raytracer.tidy.html:721, test/chrome/raytracer.tidy.html:729, test/chrome/raytracer.tidy.html:758, test/chrome/raytracer.tidy.html:759, test/chrome/raytracer.tidy.html:760, test/chrome/raytracer.tidy.html:761, test/chrome/raytracer.tidy.html:762, test/chrome/raytracer.tidy.html:768, test/chrome/raytracer.tidy.html:771, test/chrome/raytracer.tidy.html:772, test/chrome/raytracer.tidy.html:773, test/chrome/raytracer.tidy.html:774, test/chrome/raytracer.tidy.html:775, test/chrome/raytracer.tidy.html:778, test/chrome/raytracer.tidy.html:779, test/chrome/raytracer.tidy.html:781, test/chrome/raytracer.tidy.html:785, test/chrome/raytracer.tidy.html:789, test/chrome/raytracer.tidy.html:817, test/chrome/raytracer.tidy.html:819, test/chrome/raytracer.tidy.html:826, test/chrome/raytracer.tidy.html:828, test/chrome/raytracer.tidy.html:830, test/chrome/raytracer.tidy.html:832, test/chrome/raytracer.tidy.html:853, test/chrome/raytracer.tidy.html:857, test/chrome/raytracer.tidy.html:858, test/chrome/raytracer.tidy.html:859, test/chrome/raytracer.tidy.html:860, test/chrome/raytracer.tidy.html:865, test/chrome/raytracer.tidy.html:866, test/chrome/raytracer.tidy.html:883, test/chrome/raytracer.tidy.html:940, test/chrome/raytracer.tidy.html:941, test/chrome/raytracer.tidy.html:942, test/chrome/raytracer.tidy.html:943, test/chrome/raytracer.tidy.html:944, test/chrome/raytracer.tidy.html:945, test/chrome/raytracer.tidy.html:951, test/chrome/raytracer.tidy.html:952, test/chrome/raytracer.tidy.html:953, test/chrome/raytracer.tidy.html:954, test/chrome/raytracer.tidy.html:959, test/chrome/raytracer.tidy.html:960, test/chrome/raytracer.tidy.html:962, test/chrome/raytracer.tidy.html:964, test/chrome/raytracer.tidy.html:981, test/chrome/raytracer.tidy.html:984, test/chrome/raytracer.tidy.html:987, test/chrome/raytracer.tidy.html:992, test/chrome/raytracer.tidy.html:993, test/chrome/raytracer.tidy.html:996, test/chrome/raytracer.tidy.html:1007, test/chrome/raytracer.tidy.html:1012, test/chrome/raytracer.tidy.html:1032, test/chrome/raytracer.tidy.html:1033, test/chrome/raytracer.tidy.html:1036, test/chrome/raytracer.tidy.html:1037, test/chrome/raytracer.tidy.html:1050, test/chrome/raytracer.tidy.html:1051, test/chrome/raytracer.tidy.html:1055, test/chrome/raytracer.tidy.html:1056, test/chrome/raytracer.tidy.html:1057, test/chrome/raytracer.tidy.html:1080, test/chrome/raytracer.tidy.html:1081, test/chrome/raytracer.tidy.html:1082, test/chrome/raytracer.tidy.html:1094, test/chrome/raytracer.tidy.html:1097, test/chrome/raytracer.tidy.html:1104, test/chrome/raytracer.tidy.html:1105, test/chrome/raytracer.tidy.html:1112, test/chrome/raytracer.tidy.html:1163, test/chrome/raytracer.tidy.html:1164, test/chrome/raytracer.tidy.html:1168, test/chrome/raytracer.tidy.html:1189, test/chrome/raytracer.tidy.html:1192, test/chrome/raytracer.tidy.html:1212, test/chrome/raytracer.tidy.html:1230, test/chrome/raytracer.tidy.html:1233, test/chrome/raytracer.tidy.html:1263, test/chrome/raytracer.tidy.html:1264, test/chrome/raytracer.tidy.html:1265, test/chrome/raytracer.tidy.html:1274, test/chrome/raytracer.tidy.html:1288, test/chrome/raytracer.tidy.html:1289, test/chrome/raytracer.tidy.html:1292, test/chrome/raytracer.tidy.html:1293, test/chrome/raytracer.tidy.html:1294, test/chrome/raytracer.tidy.html:1302]
+test/chrome/raytracer.tidy.html:102: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:102: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:102: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:102: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:103: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:103: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:103: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:104: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:104: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:104: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:104: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:106: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:107: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:108: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:108: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:108: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:108: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:110: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:114: [maybe] Converting undefined to string
+test/chrome/raytracer.tidy.html:123: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:143: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:144: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:146: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:147: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:148: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:149: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:151: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:151: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:151: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:152: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:152: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:152: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:152: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:153: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:153: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:153: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:153: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:154: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:155: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:156: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:156: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:156: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:156: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:157: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:158: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:161: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:161: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:162: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:173: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:175: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:175: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:175: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:177: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:177: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:177: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:177: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:196: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:196: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:196: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:196: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:196: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:196: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:196: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:196: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:196: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:205: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:205: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:205: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:205: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:205: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:205: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:205: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:205: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:205: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:212: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:213: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:214: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:216: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:216: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:216: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:217: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:217: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:217: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:218: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:218: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:218: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:226: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:228: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:228: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:228: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:229: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:229: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:229: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:229: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:229: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:246: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:246: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:246: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:246: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:246: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:246: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:246: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:246: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:246: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:252: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:252: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:252: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:252: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:252: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:252: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:252: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:252: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:252: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:269: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:270: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:271: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:273: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:274: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:275: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:276: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:276: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:276: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:277: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:278: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:279: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:308: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:308: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:308: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:308: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:308: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:308: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:309: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:309: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:309: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:310: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:310: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:310: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:310: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:311: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:311: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:311: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:311: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:312: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:312: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:313: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:313: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:313: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:326: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:328: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:328: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:328: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:329: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:329: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:329: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:329: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:329: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:329: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:330: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:330: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:330: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:330: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:330: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:330: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:332: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:337: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:337: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:337: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:338: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:338: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:338: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:339: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:339: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:339: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:339: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:347: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:347: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:347: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:348: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:348: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:348: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:349: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:349: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:349: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:349: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:355: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:355: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:355: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:356: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:356: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:356: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:357: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:357: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:357: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:357: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:365: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:369: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:369: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:369: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:369: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:370: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:370: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:370: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:370: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:371: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:371: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:371: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:371: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:377: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:378: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:378: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:378: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:379: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:379: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:379: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:379: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:379: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:379: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:380: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:380: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:380: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:380: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:380: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:380: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:382: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:387: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:387: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:387: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:388: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:388: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:388: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:389: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:389: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:389: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:389: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:396: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:396: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:396: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:397: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:397: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:397: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:398: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:398: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:398: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:398: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:403: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:403: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:403: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:404: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:404: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:404: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:405: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:405: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:405: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:405: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:510: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:510: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:510: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:511: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:511: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:511: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:511: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:512: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:512: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:512: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:514: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:514: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:514: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:516: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:518: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:518: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:518: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:519: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:519: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:519: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:520: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:520: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:520: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:522: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:528: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:529: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:531: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:532: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:533: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:534: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:536: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:536: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:536: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:537: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:537: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:537: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:537: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:537: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:538: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:538: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:538: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:538: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:538: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:539: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:539: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:539: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:539: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:539: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:542: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:542: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:543: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:552: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:552: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:552: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:552: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:552: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:552: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:552: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:555: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:555: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:556: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:556: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:557: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:557: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:558: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:564: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:565: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:566: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:576: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:576: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:576: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:576: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:576: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:576: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:576: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:579: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:579: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:580: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:580: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:581: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:581: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:582: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:592: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:592: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:592: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:593: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:593: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:593: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:594: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:596: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:597: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:598: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:598: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:598: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:598: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:600: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:608: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:608: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:608: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:611: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:611: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:611: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:611: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:616: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:617: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:617: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:641: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:641: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:641: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:642: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:642: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:642: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:645: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:646: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:646: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:646: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:646: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:646: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:646: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:648: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:648: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:649: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:649: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:649: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:649: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:649: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:649: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:651: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:651: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:652: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:652: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:652: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:652: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:652: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:652: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:654: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:654: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:655: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:655: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:655: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:655: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:655: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:655: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:657: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:658: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:659: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:681: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:682: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:683: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:684: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:684: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:685: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:685: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:685: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:685: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:685: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:685: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:687: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:687: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:688: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:688: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:688: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:688: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:688: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:688: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:689: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:690: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:690: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:691: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:691: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:691: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:691: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:691: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:691: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:693: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:693: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:694: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:694: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:694: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:694: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:694: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:694: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:696: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:697: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:698: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:714: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:715: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:722: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:723: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:730: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:730: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:730: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:731: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:754: [maybe] Converting undefined to string
+test/chrome/raytracer.tidy.html:759: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:760: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:761: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:761: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:762: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:762: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:771: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:772: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:772: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:772: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:772: [maybe] Converting undefined to string
+test/chrome/raytracer.tidy.html:773: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:773: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:773: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:773: [maybe] Converting undefined to string
+test/chrome/raytracer.tidy.html:774: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:774: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:774: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:774: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:775: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:775: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:775: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:778: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:778: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:778: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:779: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:779: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:779: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:779: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:779: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:780: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:781: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:781: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:781: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:781: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:781: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:781: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:785: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:785: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:788: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:788: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:789: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:817: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:817: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:819: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:819: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:826: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:826: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:828: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:828: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:830: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:830: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:832: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:832: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:853: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:853: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:857: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:857: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:857: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:858: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:859: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:860: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:860: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:860: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:866: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:875: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:875: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:875: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:876: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:876: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:876: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:877: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:877: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:877: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:883: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:883: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:883: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:883: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:883: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:883: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:884: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:884: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:884: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:885: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:886: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:886: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:886: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:886: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:886: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:886: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:887: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:887: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:887: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:889: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:890: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:890: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:890: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:890: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:890: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:890: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:892: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:893: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:893: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:893: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:893: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:893: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:893: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:895: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:896: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:896: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:896: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:896: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:896: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:896: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:898: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:899: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:899: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:899: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:899: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:899: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:899: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:940: [maybe] Converting undefined to string
+test/chrome/raytracer.tidy.html:941: [maybe] Converting undefined to string
+test/chrome/raytracer.tidy.html:942: [maybe] Converting undefined to string
+test/chrome/raytracer.tidy.html:968: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:969: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:972: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:972: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:974: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:975: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:981: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:984: [maybe] Converting primitive boolean to object
+test/chrome/raytracer.tidy.html:984: [maybe] Converting primitive boolean to object
+test/chrome/raytracer.tidy.html:990: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:991: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:992: [maybe] Converting primitive boolean to object
+test/chrome/raytracer.tidy.html:992: [maybe] Converting undefined to string
+test/chrome/raytracer.tidy.html:993: [maybe] Converting primitive boolean to object
+test/chrome/raytracer.tidy.html:993: [maybe] Converting primitive boolean to object
+test/chrome/raytracer.tidy.html:1007: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:1007: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:1010: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:1012: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:1012: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:1012: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:1013: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:1013: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:1013: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:1027: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:1027: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:1027: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:1030: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:1030: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:1030: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:1032: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:1033: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:1033: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:1033: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:1036: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:1036: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:1037: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:1050: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:1050: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:1050: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:1051: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:1051: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:1051: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:1055: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:1055: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:1056: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:1056: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:1057: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:1057: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:1065: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:1065: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:1065: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:1066: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:1066: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:1069: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:1069: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:1069: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:1070: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:1071: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:1072: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:1075: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:1075: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:1075: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:1076: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:1076: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:1076: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:1078: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:1078: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:1078: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:1078: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:1080: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:1080: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:1080: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:1080: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:1081: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:1081: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:1081: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:1081: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:1082: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:1082: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:1082: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:1082: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:1094: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:1094: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:1095: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:1096: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:1096: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:1097: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:1097: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:1097: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:1100: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:1104: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:1104: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:1104: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:1105: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:1105: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:1106: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:1106: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:1107: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:1107: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:1112: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:1112: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:1112: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:1112: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:1112: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:1112: [maybe] Converting primitive number to object
+test/chrome/raytracer.tidy.html:1115: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:1115: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:1115: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:1117: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:1117: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:1117: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:1119: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:1119: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:1119: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:1120: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:1120: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:1120: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:1124: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:1163: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:1163: [maybe] Converting primitive boolean to object
+test/chrome/raytracer.tidy.html:1163: [maybe] Converting primitive boolean to object
+test/chrome/raytracer.tidy.html:1164: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:1164: [maybe] Converting primitive boolean to object
+test/chrome/raytracer.tidy.html:1164: [maybe] Converting primitive boolean to object
+test/chrome/raytracer.tidy.html:1180: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:1199: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:1225: [maybe] Conversion to number yields NaN
+test/chrome/raytracer.tidy.html:1274: [maybe] Conversion from string to number yields NaN
+test/chrome/raytracer.tidy.html:1274: [maybe] Conversion from string to number yields NaN
+test/chrome/raytracer.tidy.html:1274: [maybe] Conversion from string to number yields NaN
+test/chrome/raytracer.tidy.html:1274: [maybe] Conversion from string to number yields NaN
+test/chrome/raytracer.tidy.html:1274: [maybe] Conversion from string to number yields NaN
+test/chrome/raytracer.tidy.html:1274: [maybe] Conversion from string to number yields NaN
+test/chrome/raytracer.tidy.html:1274: [maybe] Conversion from string to number yields NaN
+test/chrome/raytracer.tidy.html:1274: [maybe] Conversion from string to number yields NaN
+test/chrome/raytracer.tidy.html:1274: [maybe] Conversion from string to number yields NaN

@@ -1,0 +1,5 @@
+test/micro/test49.js:10:1: [definite] Dead assignment, property 45 is never read
+test/micro/test49.js:6:1: [info] Abstract value: UInt
+test/micro/test49.js:9:1: [info] Abstract object: {0:1.0|absent,1:2.0|absent,2:3.0|absent,length:UInt,[[Prototype]]=[@Array.prototype[native]]}
+test/micro/test49.js:11:1: [info] Abstract object: {0:1.0|absent,1:2.0|absent,2:3.0|absent,45:10.0,length:UInt,[[Prototype]]=[@Array.prototype[native]]}
+test/micro/test49.js:13:1: [info] Abstract object: {0:1.0|absent,1:2.0|absent,2:3.0|absent,45:10.0|absent,length:6.0,[[Prototype]]=[@Array.prototype[native]]}

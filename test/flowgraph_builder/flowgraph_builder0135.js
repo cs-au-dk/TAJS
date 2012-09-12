@@ -1,0 +1,1 @@
+dumpObject(Object(null));

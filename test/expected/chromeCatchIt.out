@@ -1,0 +1,94 @@
+test/chrome/catchit.tidy.html:74: [maybe] TypeError, writing property of null/undefined
+test/chrome/catchit.tidy.html:75: [maybe] TypeError, writing property of null/undefined
+test/chrome/catchit.tidy.html:77: [maybe] TypeError, writing property of null/undefined
+test/chrome/catchit.tidy.html:89: [maybe] Reading absent property x
+test/chrome/catchit.tidy.html:91: [maybe] Reading absent property xsee
+test/chrome/catchit.tidy.html:92: [maybe] Reading absent property x
+test/chrome/catchit.tidy.html:94: [maybe] Reading absent property xsee
+test/chrome/catchit.tidy.html:97: [maybe] Reading absent property y
+test/chrome/catchit.tidy.html:99: [maybe] Reading absent property ysee
+test/chrome/catchit.tidy.html:100: [maybe] Reading absent property y
+test/chrome/catchit.tidy.html:102: [maybe] Reading absent property ysee
+test/chrome/catchit.tidy.html:105: [maybe] Reading absent property (computed name)
+test/chrome/catchit.tidy.html:105: [maybe] Reading absent property xsee
+test/chrome/catchit.tidy.html:106: [maybe] Reading absent property (computed name)
+test/chrome/catchit.tidy.html:106: [maybe] Reading absent property ysee
+test/chrome/catchit.tidy.html:109: [maybe] Reading absent property x
+test/chrome/catchit.tidy.html:109: [maybe] Reading absent property y
+test/chrome/catchit.tidy.html:126: [maybe] Reading absent property getContext
+test/chrome/catchit.tidy.html:126: [maybe] TypeError, call to non-function
+test/chrome/catchit.tidy.html:126: [maybe] TypeError, reading property of null/undefined
+test/chrome/catchit.tidy.html:146: [maybe] Reading absent property (computed name)
+test/chrome/catchit.tidy.html:146: [maybe] Reading absent property move
+test/chrome/catchit.tidy.html:146: [maybe] TypeError, call to non-function
+test/chrome/catchit.tidy.html:146: [maybe] TypeError, reading property of null/undefined
+test/chrome/catchit.tidy.html:148: [maybe] Reading absent property (computed name)
+test/chrome/catchit.tidy.html:148: [maybe] Reading absent property (computed name)
+test/chrome/catchit.tidy.html:148: [maybe] Reading absent property (computed name)
+test/chrome/catchit.tidy.html:148: [maybe] Reading absent property (computed name)
+test/chrome/catchit.tidy.html:148: [maybe] Reading absent property (computed name)
+test/chrome/catchit.tidy.html:148: [maybe] Reading absent property (computed name)
+test/chrome/catchit.tidy.html:148: [maybe] Reading absent property (computed name)
+test/chrome/catchit.tidy.html:148: [maybe] Reading absent property (computed name)
+test/chrome/catchit.tidy.html:148: [maybe] Reading absent property x
+test/chrome/catchit.tidy.html:148: [maybe] Reading absent property x
+test/chrome/catchit.tidy.html:148: [maybe] Reading absent property x
+test/chrome/catchit.tidy.html:148: [maybe] Reading absent property x
+test/chrome/catchit.tidy.html:148: [maybe] Reading absent property y
+test/chrome/catchit.tidy.html:148: [maybe] Reading absent property y
+test/chrome/catchit.tidy.html:148: [maybe] Reading absent property y
+test/chrome/catchit.tidy.html:148: [maybe] Reading absent property y
+test/chrome/catchit.tidy.html:148: [maybe] TypeError, reading property of null/undefined
+test/chrome/catchit.tidy.html:148: [maybe] TypeError, reading property of null/undefined
+test/chrome/catchit.tidy.html:148: [maybe] TypeError, reading property of null/undefined
+test/chrome/catchit.tidy.html:148: [maybe] TypeError, reading property of null/undefined
+test/chrome/catchit.tidy.html:148: [maybe] TypeError, reading property of null/undefined
+test/chrome/catchit.tidy.html:148: [maybe] TypeError, reading property of null/undefined
+test/chrome/catchit.tidy.html:148: [maybe] TypeError, reading property of null/undefined
+test/chrome/catchit.tidy.html:148: [maybe] TypeError, reading property of null/undefined
+test/chrome/catchit.tidy.html:173: [maybe] Reading absent property (computed name)
+test/chrome/catchit.tidy.html:173: [maybe] Reading absent property (computed name)
+test/chrome/catchit.tidy.html:173: [maybe] Reading absent property xsee
+test/chrome/catchit.tidy.html:173: [maybe] TypeError, reading property of null/undefined
+test/chrome/catchit.tidy.html:173: [maybe] TypeError, writing property of null/undefined
+test/chrome/catchit.tidy.html:174: [maybe] Reading absent property (computed name)
+test/chrome/catchit.tidy.html:174: [maybe] Reading absent property (computed name)
+test/chrome/catchit.tidy.html:174: [maybe] Reading absent property ysee
+test/chrome/catchit.tidy.html:174: [maybe] TypeError, reading property of null/undefined
+test/chrome/catchit.tidy.html:174: [maybe] TypeError, writing property of null/undefined
+test/chrome/catchit.tidy.html:45: [maybe] Uncaught exception, constructed at [test/chrome/catchit.tidy.html:74, test/chrome/catchit.tidy.html:75, test/chrome/catchit.tidy.html:77, test/chrome/catchit.tidy.html:126, test/chrome/catchit.tidy.html:146, test/chrome/catchit.tidy.html:148, test/chrome/catchit.tidy.html:173, test/chrome/catchit.tidy.html:174]
+test/chrome/catchit.tidy.html:89: [maybe] Conversion to number yields NaN
+test/chrome/catchit.tidy.html:91: [maybe] Conversion to number yields NaN
+test/chrome/catchit.tidy.html:92: [maybe] Conversion to number yields NaN
+test/chrome/catchit.tidy.html:94: [maybe] Conversion to number yields NaN
+test/chrome/catchit.tidy.html:97: [maybe] Conversion to number yields NaN
+test/chrome/catchit.tidy.html:99: [maybe] Conversion to number yields NaN
+test/chrome/catchit.tidy.html:100: [maybe] Conversion to number yields NaN
+test/chrome/catchit.tidy.html:102: [maybe] Conversion to number yields NaN
+test/chrome/catchit.tidy.html:105: [maybe] Conversion to number yields NaN
+test/chrome/catchit.tidy.html:106: [maybe] Conversion to number yields NaN
+test/chrome/catchit.tidy.html:109: [maybe] Conversion to number yields NaN
+test/chrome/catchit.tidy.html:146: [maybe] Converting primitive number to object
+test/chrome/catchit.tidy.html:146: [maybe] Converting primitive number to object
+test/chrome/catchit.tidy.html:148: [maybe] Conversion to number yields NaN
+test/chrome/catchit.tidy.html:148: [maybe] Conversion to number yields NaN
+test/chrome/catchit.tidy.html:148: [maybe] Conversion to number yields NaN
+test/chrome/catchit.tidy.html:148: [maybe] Conversion to number yields NaN
+test/chrome/catchit.tidy.html:148: [maybe] Conversion to number yields NaN
+test/chrome/catchit.tidy.html:148: [maybe] Conversion to number yields NaN
+test/chrome/catchit.tidy.html:148: [maybe] Conversion to number yields NaN
+test/chrome/catchit.tidy.html:148: [maybe] Conversion to number yields NaN
+test/chrome/catchit.tidy.html:148: [maybe] Converting primitive number to object
+test/chrome/catchit.tidy.html:148: [maybe] Converting primitive number to object
+test/chrome/catchit.tidy.html:148: [maybe] Converting primitive number to object
+test/chrome/catchit.tidy.html:148: [maybe] Converting primitive number to object
+test/chrome/catchit.tidy.html:148: [maybe] Converting primitive number to object
+test/chrome/catchit.tidy.html:148: [maybe] Converting primitive number to object
+test/chrome/catchit.tidy.html:148: [maybe] Converting primitive number to object
+test/chrome/catchit.tidy.html:148: [maybe] Converting primitive number to object
+test/chrome/catchit.tidy.html:173: [maybe] Conversion to number yields NaN
+test/chrome/catchit.tidy.html:173: [maybe] Converting primitive number to object
+test/chrome/catchit.tidy.html:173: [maybe] Converting primitive number to object
+test/chrome/catchit.tidy.html:174: [maybe] Conversion to number yields NaN
+test/chrome/catchit.tidy.html:174: [maybe] Converting primitive number to object
+test/chrome/catchit.tidy.html:174: [maybe] Converting primitive number to object

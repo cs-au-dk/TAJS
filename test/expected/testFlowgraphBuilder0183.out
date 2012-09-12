@@ -1,0 +1,85 @@
+fg2: <main> function()
+  block 0: [entry]
+    node 0: constant[undefined,v1] (test/flowgraph_builder/flowgraph_builder0183.js:2:1)
+    node 1: function-decl[function BigInteger(),-] (test/flowgraph_builder/flowgraph_builder0183.js:2:1)
+    node 2: function-decl[function bnpDAddOffset(w),-] (test/flowgraph_builder/flowgraph_builder0183.js:8:1)
+    ->[block 1]
+  block 1:
+    node 3: read-variable['BigInteger',v4,-] (test/flowgraph_builder/flowgraph_builder0183.js:12:1)
+    node 4: read-property[v4,'prototype',v3] (test/flowgraph_builder/flowgraph_builder0183.js:12:1)
+    node 5: <variable-non-null-undef>['BigInteger'] (test/flowgraph_builder/flowgraph_builder0183.js:12:1)
+    node 6: read-variable['bnpDAddOffset',v2,-] (test/flowgraph_builder/flowgraph_builder0183.js:12:35)
+    node 7: write-property[v3,'dAddOffset',v2] (test/flowgraph_builder/flowgraph_builder0183.js:12:1)
+    node 8: <property-non-null-undef>[v4,'prototype']* (test/flowgraph_builder/flowgraph_builder0183.js:12:1)
+    node 9: read-variable['BigInteger',v5,-] (test/flowgraph_builder/flowgraph_builder0183.js:13:5)
+    ->[block 2]
+  block 2:
+    node 10: construct[-,v5,-]* (test/flowgraph_builder/flowgraph_builder0183.js:13:5)
+    ->[block 3]
+  block 3: [exit-ordinary]
+    node 11: return[v1] (test/flowgraph_builder/flowgraph_builder0183.js:2:1)
+    ->[]
+  block 4: [exit-exceptional]
+    node 12: exceptional-return (test/flowgraph_builder/flowgraph_builder0183.js:2:1)
+    ->[]
+function BigInteger()
+  block 5: [entry]
+    node 13: constant[undefined,v1] (test/flowgraph_builder/flowgraph_builder0183.js:2:1)
+    ->[block 6]
+  block 6:
+    node 14: read-variable['this',v3,-] (test/flowgraph_builder/flowgraph_builder0183.js:3:5)
+    node 15: read-variable['Array',v4,-] (test/flowgraph_builder/flowgraph_builder0183.js:3:18)
+    ->[block 7]
+  block 7:
+    node 16: construct[-,v4,v2] (test/flowgraph_builder/flowgraph_builder0183.js:3:18)
+    ->[block 8]
+  block 8:
+    node 17: write-property[v3,'array',v2]* (test/flowgraph_builder/flowgraph_builder0183.js:3:5)
+    node 18: read-variable['Math',v7,-] (test/flowgraph_builder/flowgraph_builder0183.js:4:7)
+    node 19: read-property[v7,'random',v6] (test/flowgraph_builder/flowgraph_builder0183.js:4:7)
+    node 20: <variable-non-null-undef>['Math'] (test/flowgraph_builder/flowgraph_builder0183.js:4:7)
+    ->[block 9]
+  block 9:
+    node 21: call[v7,v6,v5] (test/flowgraph_builder/flowgraph_builder0183.js:4:7)
+    ->[block 10]
+  block 10:
+    node 22: if[v5](true-block:11,false-block:13) (test/flowgraph_builder/flowgraph_builder0183.js:4:3)
+    ->[block 11,block 13]
+  block 11:
+    node 23: read-variable['this',v9,-] (test/flowgraph_builder/flowgraph_builder0183.js:5:5)
+    node 24: read-property[v9,'dAddOffset',v8] (test/flowgraph_builder/flowgraph_builder0183.js:5:5)
+    ->[block 12]
+  block 12:
+    node 25: call[v9,v8,-]* (test/flowgraph_builder/flowgraph_builder0183.js:5:5)
+    ->[block 13]
+  block 13: [exit-ordinary]
+    node 26: return[v1] (test/flowgraph_builder/flowgraph_builder0183.js:2:1)
+    ->[]
+  block 14: [exit-exceptional]
+    node 27: exceptional-return (test/flowgraph_builder/flowgraph_builder0183.js:2:1)
+    ->[]
+function bnpDAddOffset(w)
+  block 15: [entry]
+    node 28: constant[undefined,v1] (test/flowgraph_builder/flowgraph_builder0183.js:8:1)
+    ->[block 16]
+  block 16:
+    node 29: read-variable['this',v6,-] (test/flowgraph_builder/flowgraph_builder0183.js:9:3)
+    node 30: read-property[v6,'array',v4] (test/flowgraph_builder/flowgraph_builder0183.js:9:3)
+    node 31: read-variable['w',v5,-] (test/flowgraph_builder/flowgraph_builder0183.js:9:14)
+    node 32: read-property[v4,v5,v3] (test/flowgraph_builder/flowgraph_builder0183.js:9:3)
+    node 33: <property-non-null-undef>[v6,'array'] (test/flowgraph_builder/flowgraph_builder0183.js:9:3)
+    node 34: constant[0.0,v7] (test/flowgraph_builder/flowgraph_builder0183.js:9:20)
+    node 35: +[v3,v7,v2] (test/flowgraph_builder/flowgraph_builder0183.js:9:3)
+    node 36: write-property[v4,v5,v2] (test/flowgraph_builder/flowgraph_builder0183.js:9:3)
+    node 37: <property-non-null-undef>[v6,'array']* (test/flowgraph_builder/flowgraph_builder0183.js:9:3)
+    ->[block 17]
+  block 17: [exit-ordinary]
+    node 38: return[v1] (test/flowgraph_builder/flowgraph_builder0183.js:8:1)
+    ->[]
+  block 18: [exit-exceptional]
+    node 39: exceptional-return (test/flowgraph_builder/flowgraph_builder0183.js:8:1)
+    ->[]
+
+test/flowgraph_builder/flowgraph_builder0183.js:9:14: [definite] Variable w is null/undefined
+test/flowgraph_builder/flowgraph_builder0183.js:9:3: [maybe] Conversion to number yields NaN
+test/flowgraph_builder/flowgraph_builder0183.js:9:3: [maybe] Reading absent property (computed name)

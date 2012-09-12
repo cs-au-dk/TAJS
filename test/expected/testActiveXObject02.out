@@ -1,0 +1,6 @@
+test/browser/domlegacy/ajax/activeXObject02.tidy.html:10: [info] Abstract value: Undef
+test/browser/domlegacy/ajax/activeXObject02.tidy.html:11: [info] Abstract value: Undef
+test/browser/domlegacy/ajax/activeXObject02.tidy.html:12: [info] Abstract value: Undef
+test/browser/domlegacy/ajax/activeXObject02.tidy.html:13: [info] Abstract value: Undef
+test/browser/domlegacy/ajax/activeXObject02.tidy.html:14: [info] Abstract value: Str
+test/browser/domlegacy/ajax/activeXObject02.tidy.html:15: [info] Abstract value: Str

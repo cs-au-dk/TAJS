@@ -1,0 +1,24 @@
+test/micro/testToPrimitive.js:2:11: [definite] Variable a is null/undefined
+test/micro/testToPrimitive.js:4:11: [definite] Variable b is null/undefined
+test/micro/testToPrimitive.js:2:1: [info] Abstract value: Null
+test/micro/testToPrimitive.js:4:1: [info] Abstract value: Undef
+test/micro/testToPrimitive.js:6:1: [info] Abstract value: true
+test/micro/testToPrimitive.js:8:1: [info] Abstract value: 47.11
+test/micro/testToPrimitive.js:10:1: [info] Abstract value: "use it or lose it"
+test/micro/testToPrimitive.js:13:1: [info] Abstract value: "[object Object]"
+test/micro/testToPrimitive.js:14:1: [info] Abstract value: "[object Object]"
+test/micro/testToPrimitive.js:15:1: [info] Abstract value: "[object Object]"
+test/micro/testToPrimitive.js:16:1: [info] Abstract value: "[object Math]"
+test/micro/testToPrimitive.js:17:1: [info] Abstract value: "[object Math]"
+test/micro/testToPrimitive.js:18:1: [info] Abstract value: Str
+test/micro/testToPrimitive.js:19:1: [info] Abstract value: Str
+test/micro/testToPrimitive.js:22:1: [info] Abstract value: 42.001
+test/micro/testToPrimitive.js:23:1: [info] Abstract value: 42.001
+test/micro/testToPrimitive.js:24:1: [info] Abstract value: "42.001"
+test/micro/testToPrimitive.js:26:1: [info] Abstract value: false
+test/micro/testToPrimitive.js:27:1: [info] Abstract value: false
+test/micro/testToPrimitive.js:28:1: [info] Abstract value: "false"
+test/micro/testToPrimitive.js:30:1: [info] Abstract value: [@Number#node99, @Boolean#node122]
+test/micro/testToPrimitive.js:31:1: [info] Abstract value: false|42.001
+test/micro/testToPrimitive.js:32:1: [info] Abstract value: false|42.001
+test/micro/testToPrimitive.js:33:1: [info] Abstract value: NotUIntStr|IdentPartsStr

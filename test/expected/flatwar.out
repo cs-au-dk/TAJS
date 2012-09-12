@@ -1,0 +1,205 @@
+test/10k/flatwar.tidy.html:365: [definite] ReferenceError, reading absent variable levelInfo
+test/10k/flatwar.tidy.html:372: [definite] ReferenceError, reading absent variable levelInfo
+test/10k/flatwar.tidy.html:17: [definite] Unreachable code
+test/10k/flatwar.tidy.html:18: [definite] Unreachable code
+test/10k/flatwar.tidy.html:27: [definite] Unreachable code
+test/10k/flatwar.tidy.html:32: [definite] Unreachable code
+test/10k/flatwar.tidy.html:101: [definite] Unreachable function: round
+test/10k/flatwar.tidy.html:102: [definite] Unreachable code
+test/10k/flatwar.tidy.html:103: [definite] Unreachable code
+test/10k/flatwar.tidy.html:134: [definite] Unreachable code
+test/10k/flatwar.tidy.html:135: [definite] Unreachable code
+test/10k/flatwar.tidy.html:136: [definite] Unreachable code
+test/10k/flatwar.tidy.html:146: [definite] Unreachable code
+test/10k/flatwar.tidy.html:147: [definite] Unreachable code
+test/10k/flatwar.tidy.html:184: [definite] Unreachable code
+test/10k/flatwar.tidy.html:185: [definite] Unreachable code
+test/10k/flatwar.tidy.html:186: [definite] Unreachable code
+test/10k/flatwar.tidy.html:193: [definite] Unreachable code
+test/10k/flatwar.tidy.html:194: [definite] Unreachable code
+test/10k/flatwar.tidy.html:200: [definite] Unreachable code
+test/10k/flatwar.tidy.html:210: [definite] Unreachable code
+test/10k/flatwar.tidy.html:211: [definite] Unreachable code
+test/10k/flatwar.tidy.html:212: [definite] Unreachable code
+test/10k/flatwar.tidy.html:222: [definite] Unreachable code
+test/10k/flatwar.tidy.html:223: [definite] Unreachable code
+test/10k/flatwar.tidy.html:224: [definite] Unreachable code
+test/10k/flatwar.tidy.html:238: [definite] Unreachable code
+test/10k/flatwar.tidy.html:239: [definite] Unreachable code
+test/10k/flatwar.tidy.html:240: [definite] Unreachable code
+test/10k/flatwar.tidy.html:241: [definite] Unreachable code
+test/10k/flatwar.tidy.html:242: [definite] Unreachable code
+test/10k/flatwar.tidy.html:243: [definite] Unreachable code
+test/10k/flatwar.tidy.html:246: [definite] Unreachable code
+test/10k/flatwar.tidy.html:247: [definite] Unreachable code
+test/10k/flatwar.tidy.html:248: [definite] Unreachable code
+test/10k/flatwar.tidy.html:249: [definite] Unreachable code
+test/10k/flatwar.tidy.html:250: [definite] Unreachable code
+test/10k/flatwar.tidy.html:253: [definite] Unreachable code
+test/10k/flatwar.tidy.html:254: [definite] Unreachable code
+test/10k/flatwar.tidy.html:258: [definite] Unreachable code
+test/10k/flatwar.tidy.html:263: [definite] Unreachable code
+test/10k/flatwar.tidy.html:264: [definite] Unreachable code
+test/10k/flatwar.tidy.html:265: [definite] Unreachable code
+test/10k/flatwar.tidy.html:267: [definite] Unreachable code
+test/10k/flatwar.tidy.html:271: [definite] Unreachable code
+test/10k/flatwar.tidy.html:272: [definite] Unreachable code
+test/10k/flatwar.tidy.html:273: [definite] Unreachable code
+test/10k/flatwar.tidy.html:275: [definite] Unreachable code
+test/10k/flatwar.tidy.html:279: [definite] Unreachable code
+test/10k/flatwar.tidy.html:280: [definite] Unreachable code
+test/10k/flatwar.tidy.html:284: [definite] Unreachable code
+test/10k/flatwar.tidy.html:285: [definite] Unreachable code
+test/10k/flatwar.tidy.html:286: [definite] Unreachable code
+test/10k/flatwar.tidy.html:288: [definite] Unreachable code
+test/10k/flatwar.tidy.html:289: [definite] Unreachable code
+test/10k/flatwar.tidy.html:290: [definite] Unreachable code
+test/10k/flatwar.tidy.html:291: [definite] Unreachable code
+test/10k/flatwar.tidy.html:294: [definite] Unreachable code
+test/10k/flatwar.tidy.html:295: [definite] Unreachable code
+test/10k/flatwar.tidy.html:360: [definite] Unreachable code
+test/10k/flatwar.tidy.html:368: [definite] Conversion to number yields NaN
+test/10k/flatwar.tidy.html:382: [definite] Conversion to number yields NaN
+test/10k/flatwar.tidy.html:445: [definite] Converting primitive string to object
+test/10k/flatwar.tidy.html:445: [definite] Converting primitive string to object
+test/10k/flatwar.tidy.html:445: [definite] Converting primitive string to object
+test/10k/flatwar.tidy.html:445: [definite] Converting primitive string to object
+test/10k/flatwar.tidy.html:39: [maybe] RangeError, assigning invalid value to array 'length' property
+test/10k/flatwar.tidy.html:40: [maybe] RangeError, assigning invalid value to array 'length' property
+test/10k/flatwar.tidy.html:44: [maybe] RangeError, assigning invalid value to array 'length' property
+test/10k/flatwar.tidy.html:44: [maybe] Reading absent property (computed name)
+test/10k/flatwar.tidy.html:45: [maybe] RangeError, assigning invalid value to array 'length' property
+test/10k/flatwar.tidy.html:45: [maybe] Reading absent property (computed name)
+test/10k/flatwar.tidy.html:118: [maybe] Reading absent property (computed name)
+test/10k/flatwar.tidy.html:118: [maybe] Reading absent property (computed name)
+test/10k/flatwar.tidy.html:118: [maybe] Reading absent property (computed name)
+test/10k/flatwar.tidy.html:119: [maybe] Reading absent property (computed name)
+test/10k/flatwar.tidy.html:119: [maybe] Reading absent property (computed name)
+test/10k/flatwar.tidy.html:120: [maybe] Reading absent property (computed name)
+test/10k/flatwar.tidy.html:120: [maybe] Reading absent property (computed name)
+test/10k/flatwar.tidy.html:162: [maybe] Reading absent property (computed name)
+test/10k/flatwar.tidy.html:163: [maybe] RangeError, assigning invalid value to array 'length' property
+test/10k/flatwar.tidy.html:163: [maybe] Reading absent property (computed name)
+test/10k/flatwar.tidy.html:164: [maybe] RangeError, assigning invalid value to array 'length' property
+test/10k/flatwar.tidy.html:164: [maybe] Reading absent property (computed name)
+test/10k/flatwar.tidy.html:165: [maybe] RangeError, assigning invalid value to array 'length' property
+test/10k/flatwar.tidy.html:165: [maybe] Reading absent property (computed name)
+test/10k/flatwar.tidy.html:166: [maybe] RangeError, assigning invalid value to array 'length' property
+test/10k/flatwar.tidy.html:166: [maybe] Reading absent property (computed name)
+test/10k/flatwar.tidy.html:167: [maybe] RangeError, assigning invalid value to array 'length' property
+test/10k/flatwar.tidy.html:167: [maybe] Reading absent property (computed name)
+test/10k/flatwar.tidy.html:172: [maybe] RangeError, assigning invalid value to array 'length' property
+test/10k/flatwar.tidy.html:172: [maybe] Reading absent property (computed name)
+test/10k/flatwar.tidy.html:173: [maybe] RangeError, assigning invalid value to array 'length' property
+test/10k/flatwar.tidy.html:173: [maybe] Reading absent property (computed name)
+test/10k/flatwar.tidy.html:175: [maybe] RangeError, assigning invalid value to array 'length' property
+test/10k/flatwar.tidy.html:175: [maybe] Reading absent property (computed name)
+test/10k/flatwar.tidy.html:176: [maybe] RangeError, assigning invalid value to array 'length' property
+test/10k/flatwar.tidy.html:176: [maybe] Reading absent property (computed name)
+test/10k/flatwar.tidy.html:177: [maybe] RangeError, assigning invalid value to array 'length' property
+test/10k/flatwar.tidy.html:177: [maybe] Reading absent property (computed name)
+test/10k/flatwar.tidy.html:201: [maybe] Reading absent property (computed name)
+test/10k/flatwar.tidy.html:204: [maybe] Reading absent property (computed name)
+test/10k/flatwar.tidy.html:204: [maybe] Reading absent property (computed name)
+test/10k/flatwar.tidy.html:205: [maybe] Reading absent property (computed name)
+test/10k/flatwar.tidy.html:205: [maybe] Reading absent property (computed name)
+test/10k/flatwar.tidy.html:206: [maybe] Reading absent property (computed name)
+test/10k/flatwar.tidy.html:206: [maybe] Reading absent property (computed name)
+test/10k/flatwar.tidy.html:207: [maybe] Reading absent property (computed name)
+test/10k/flatwar.tidy.html:207: [maybe] Reading absent property (computed name)
+test/10k/flatwar.tidy.html:208: [maybe] Reading absent property (computed name)
+test/10k/flatwar.tidy.html:217: [maybe] Reading absent property (computed name)
+test/10k/flatwar.tidy.html:218: [maybe] RangeError, assigning invalid value to array 'length' property
+test/10k/flatwar.tidy.html:218: [maybe] Reading absent property (computed name)
+test/10k/flatwar.tidy.html:219: [maybe] RangeError, assigning invalid value to array 'length' property
+test/10k/flatwar.tidy.html:219: [maybe] Reading absent property (computed name)
+test/10k/flatwar.tidy.html:300: [maybe] Reading absent property (computed name)
+test/10k/flatwar.tidy.html:301: [maybe] Reading absent property (computed name)
+test/10k/flatwar.tidy.html:301: [maybe] Reading absent property (computed name)
+test/10k/flatwar.tidy.html:302: [maybe] Reading absent property (computed name)
+test/10k/flatwar.tidy.html:304: [maybe] RangeError, assigning invalid value to array 'length' property
+test/10k/flatwar.tidy.html:304: [maybe] Reading absent property (computed name)
+test/10k/flatwar.tidy.html:310: [maybe] Reading absent property (computed name)
+test/10k/flatwar.tidy.html:311: [maybe] Reading absent property (computed name)
+test/10k/flatwar.tidy.html:311: [maybe] Reading absent property (computed name)
+test/10k/flatwar.tidy.html:311: [maybe] Reading absent property (computed name)
+test/10k/flatwar.tidy.html:311: [maybe] Reading absent property (computed name)
+test/10k/flatwar.tidy.html:311: [maybe] Reading absent property (computed name)
+test/10k/flatwar.tidy.html:311: [maybe] Reading absent property (computed name)
+test/10k/flatwar.tidy.html:311: [maybe] Reading absent property (computed name)
+test/10k/flatwar.tidy.html:311: [maybe] Reading absent property (computed name)
+test/10k/flatwar.tidy.html:312: [maybe] Reading absent property (computed name)
+test/10k/flatwar.tidy.html:313: [maybe] Reading absent property (computed name)
+test/10k/flatwar.tidy.html:315: [maybe] Reading absent property (computed name)
+test/10k/flatwar.tidy.html:316: [maybe] Reading absent property (computed name)
+test/10k/flatwar.tidy.html:317: [maybe] RangeError, assigning invalid value to array 'length' property
+test/10k/flatwar.tidy.html:317: [maybe] Reading absent property (computed name)
+test/10k/flatwar.tidy.html:317: [maybe] Reading absent property (computed name)
+test/10k/flatwar.tidy.html:318: [maybe] RangeError, assigning invalid value to array 'length' property
+test/10k/flatwar.tidy.html:318: [maybe] Reading absent property (computed name)
+test/10k/flatwar.tidy.html:318: [maybe] Reading absent property (computed name)
+test/10k/flatwar.tidy.html:335: [maybe] ReferenceError, reading absent variable color
+test/10k/flatwar.tidy.html:337: [maybe] Reading absent property (computed name)
+test/10k/flatwar.tidy.html:337: [maybe] Reading absent property (computed name)
+test/10k/flatwar.tidy.html:364: [maybe] TypeError, writing property of null/undefined
+test/10k/flatwar.tidy.html:368: [maybe] RangeError, assigning invalid value to array 'length' property
+test/10k/flatwar.tidy.html:369: [maybe] Reading absent property style
+test/10k/flatwar.tidy.html:369: [maybe] TypeError, reading property of null/undefined
+test/10k/flatwar.tidy.html:369: [maybe] TypeError, writing property of null/undefined
+test/10k/flatwar.tidy.html:370: [maybe] Reading absent property style
+test/10k/flatwar.tidy.html:370: [maybe] TypeError, writing property of null/undefined
+test/10k/flatwar.tidy.html:377: [maybe] Reading absent property style
+test/10k/flatwar.tidy.html:377: [maybe] TypeError, reading property of null/undefined
+test/10k/flatwar.tidy.html:377: [maybe] TypeError, writing property of null/undefined
+test/10k/flatwar.tidy.html:378: [maybe] Reading absent property style
+test/10k/flatwar.tidy.html:378: [maybe] TypeError, writing property of null/undefined
+test/10k/flatwar.tidy.html:381: [maybe] Reading absent property (computed name)
+test/10k/flatwar.tidy.html:382: [maybe] RangeError, assigning invalid value to array 'length' property
+test/10k/flatwar.tidy.html:390: [maybe] Reading absent property getContext
+test/10k/flatwar.tidy.html:390: [maybe] TypeError, call to non-function
+test/10k/flatwar.tidy.html:390: [maybe] TypeError, reading property of null/undefined
+test/10k/flatwar.tidy.html:14: [maybe] Uncaught exception, constructed at [test/10k/flatwar.tidy.html:39, test/10k/flatwar.tidy.html:40, test/10k/flatwar.tidy.html:44, test/10k/flatwar.tidy.html:45, test/10k/flatwar.tidy.html:163, test/10k/flatwar.tidy.html:164, test/10k/flatwar.tidy.html:165, test/10k/flatwar.tidy.html:166, test/10k/flatwar.tidy.html:167, test/10k/flatwar.tidy.html:172, test/10k/flatwar.tidy.html:173, test/10k/flatwar.tidy.html:175, test/10k/flatwar.tidy.html:176, test/10k/flatwar.tidy.html:177, test/10k/flatwar.tidy.html:218, test/10k/flatwar.tidy.html:219, test/10k/flatwar.tidy.html:304, test/10k/flatwar.tidy.html:317, test/10k/flatwar.tidy.html:318, test/10k/flatwar.tidy.html:335, test/10k/flatwar.tidy.html:364, test/10k/flatwar.tidy.html:365, test/10k/flatwar.tidy.html:368, test/10k/flatwar.tidy.html:369, test/10k/flatwar.tidy.html:370, test/10k/flatwar.tidy.html:372, test/10k/flatwar.tidy.html:377, test/10k/flatwar.tidy.html:378, test/10k/flatwar.tidy.html:382, test/10k/flatwar.tidy.html:390]
+test/10k/flatwar.tidy.html:44: [maybe] Conversion to number yields NaN
+test/10k/flatwar.tidy.html:45: [maybe] Conversion to number yields NaN
+test/10k/flatwar.tidy.html:60: [maybe] Conversion to number yields NaN
+test/10k/flatwar.tidy.html:61: [maybe] Conversion to number yields NaN
+test/10k/flatwar.tidy.html:61: [maybe] Conversion to number yields NaN
+test/10k/flatwar.tidy.html:62: [maybe] Conversion to number yields NaN
+test/10k/flatwar.tidy.html:62: [maybe] Conversion to number yields NaN
+test/10k/flatwar.tidy.html:63: [maybe] Conversion to number yields NaN
+test/10k/flatwar.tidy.html:63: [maybe] Conversion to number yields NaN
+test/10k/flatwar.tidy.html:66: [maybe] Conversion to number yields NaN
+test/10k/flatwar.tidy.html:66: [maybe] Conversion to number yields NaN
+test/10k/flatwar.tidy.html:66: [maybe] Conversion to number yields NaN
+test/10k/flatwar.tidy.html:66: [maybe] Conversion to number yields NaN
+test/10k/flatwar.tidy.html:86: [maybe] Conversion to number yields NaN
+test/10k/flatwar.tidy.html:106: [maybe] Conversion to number yields NaN
+test/10k/flatwar.tidy.html:107: [maybe] Conversion to number yields NaN
+test/10k/flatwar.tidy.html:118: [maybe] Conversion to number yields NaN
+test/10k/flatwar.tidy.html:119: [maybe] Conversion to number yields NaN
+test/10k/flatwar.tidy.html:119: [maybe] Conversion to number yields NaN
+test/10k/flatwar.tidy.html:120: [maybe] Conversion to number yields NaN
+test/10k/flatwar.tidy.html:120: [maybe] Conversion to number yields NaN
+test/10k/flatwar.tidy.html:163: [maybe] Conversion to number yields NaN
+test/10k/flatwar.tidy.html:164: [maybe] Conversion to number yields NaN
+test/10k/flatwar.tidy.html:165: [maybe] Conversion to number yields NaN
+test/10k/flatwar.tidy.html:166: [maybe] Conversion to number yields NaN
+test/10k/flatwar.tidy.html:167: [maybe] Conversion to number yields NaN
+test/10k/flatwar.tidy.html:172: [maybe] Conversion to number yields NaN
+test/10k/flatwar.tidy.html:173: [maybe] Conversion to number yields NaN
+test/10k/flatwar.tidy.html:175: [maybe] Conversion to number yields NaN
+test/10k/flatwar.tidy.html:176: [maybe] Conversion to number yields NaN
+test/10k/flatwar.tidy.html:177: [maybe] Conversion to number yields NaN
+test/10k/flatwar.tidy.html:218: [maybe] Conversion to number yields NaN
+test/10k/flatwar.tidy.html:219: [maybe] Conversion to number yields NaN
+test/10k/flatwar.tidy.html:302: [maybe] Conversion to number yields NaN
+test/10k/flatwar.tidy.html:304: [maybe] Conversion to number yields NaN
+test/10k/flatwar.tidy.html:311: [maybe] Conversion to number yields NaN
+test/10k/flatwar.tidy.html:312: [maybe] Conversion to number yields NaN
+test/10k/flatwar.tidy.html:313: [maybe] Conversion to number yields NaN
+test/10k/flatwar.tidy.html:315: [maybe] Conversion to number yields NaN
+test/10k/flatwar.tidy.html:316: [maybe] Conversion to number yields NaN
+test/10k/flatwar.tidy.html:317: [maybe] Conversion to number yields NaN
+test/10k/flatwar.tidy.html:317: [maybe] Conversion to number yields NaN
+test/10k/flatwar.tidy.html:318: [maybe] Conversion to number yields NaN
+test/10k/flatwar.tidy.html:318: [maybe] Conversion to number yields NaN

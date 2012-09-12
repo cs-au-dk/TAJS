@@ -1,0 +1,33 @@
+fg2: <main> function()
+  block 0: [entry]
+    node 0: constant[undefined,v1] (test/flowgraph_builder/flowgraph_builder0101.js:1:1)
+    ->[block 1]
+  block 1:
+    node 1: constant[1.0,v2] (test/flowgraph_builder/flowgraph_builder0101.js:1:5)
+    node 2: write-variable[v2,'y']* (test/flowgraph_builder/flowgraph_builder0101.js:1:1)
+    node 3: new[v3] (test/flowgraph_builder/flowgraph_builder0101.js:2:5)
+    node 4: constant[2.0,v4] (test/flowgraph_builder/flowgraph_builder0101.js:2:10)
+    node 5: write-property[v3,'f',v4] (test/flowgraph_builder/flowgraph_builder0101.js:2:5)
+    node 6: write-variable[v3,'x']* (test/flowgraph_builder/flowgraph_builder0101.js:2:1)
+    node 7: read-variable['x',v5,-] (test/flowgraph_builder/flowgraph_builder0101.js:3:7)
+    node 8: enter-with[v5]* (test/flowgraph_builder/flowgraph_builder0101.js:3:1)
+    ->[block 2]
+  block 2:
+    node 9: constant[3.0,v7] (test/flowgraph_builder/flowgraph_builder0101.js:4:7)
+    node 10: write-variable[v7,'f']* (test/flowgraph_builder/flowgraph_builder0101.js:4:3)
+    node 11: constant[4.0,v8] (test/flowgraph_builder/flowgraph_builder0101.js:5:7)
+    node 12: write-variable[v8,'y']* (test/flowgraph_builder/flowgraph_builder0101.js:5:3)
+    node 13: leave-with* (test/flowgraph_builder/flowgraph_builder0101.js:3:1)
+    ->[block 4]
+  block 3:
+    node 14: leave-with* (test/flowgraph_builder/flowgraph_builder0101.js:3:1)
+    ->[block 5]
+  block 4: [exit-ordinary]
+    node 15: return[v1] (test/flowgraph_builder/flowgraph_builder0101.js:1:1)
+    ->[]
+  block 5: [exit-exceptional]
+    node 16: exceptional-return (test/flowgraph_builder/flowgraph_builder0101.js:1:1)
+    ->[]
+
+test/flowgraph_builder/flowgraph_builder0101.js:2:5: [definite] Dead assignment, property f is never read
+test/flowgraph_builder/flowgraph_builder0101.js:4:3: [definite] Dead assignment, property f is never read

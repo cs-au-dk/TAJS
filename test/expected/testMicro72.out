@@ -1,0 +1,3 @@
+test/micro/test72.js:2:2: [definite] Dead assignment, property baz1 is never read
+test/micro/test72.js:10:1: [info] Abstract value: 42.0
+test/micro/test72.js:15:1: [info] Abstract value: 42.0

@@ -1,0 +1,5 @@
+test/micro/test07.js:12:11: [definite] Variable y is null/undefined
+test/micro/test07.js:26:1: [definite] The variable x is never used
+test/micro/test07.js:26:1: [definite] The variable y is never used
+test/micro/test07.js:12:9: [maybe] Conversion to number yields NaN
+test/micro/test07.js:37:1: [info] Abstract value: 4.0

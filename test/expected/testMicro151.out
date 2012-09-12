@@ -1,0 +1,2 @@
+test/micro/test151.js:10:6: [maybe] Reading absent property (computed name)
+test/micro/test151.js:11:2: [info] Abstract value: Undef|42.0

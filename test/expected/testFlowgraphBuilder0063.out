@@ -1,0 +1,37 @@
+fg2: <main> function()
+  block 0: [entry]
+    node 0: constant[undefined,v1] (test/flowgraph_builder/flowgraph_builder0063.js:1:1)
+    ->[block 1]
+  block 1:
+    node 1: function-expr[function(x),v6] (test/flowgraph_builder/flowgraph_builder0063.js:1:8)
+    ->[block 2]
+  block 2:
+    node 2: call[-,v6,v4] (test/flowgraph_builder/flowgraph_builder0063.js:1:8)
+    ->[block 3]
+  block 3:
+    node 3: constant[5678.0,v5] (test/flowgraph_builder/flowgraph_builder0063.js:3:8)
+    node 4: *[v4,v5,v3] (test/flowgraph_builder/flowgraph_builder0063.js:3:8)
+    node 5: ![v3,v2] (test/flowgraph_builder/flowgraph_builder0063.js:1:5)
+    node 6: write-variable[v2,'y']* (test/flowgraph_builder/flowgraph_builder0063.js:1:1)
+    ->[block 4]
+  block 4: [exit-ordinary]
+    node 7: return[v1] (test/flowgraph_builder/flowgraph_builder0063.js:1:1)
+    ->[]
+  block 5: [exit-exceptional]
+    node 8: exceptional-return (test/flowgraph_builder/flowgraph_builder0063.js:1:1)
+    ->[]
+function(x)
+  block 6: [entry]
+    node 9: constant[undefined,v1] (test/flowgraph_builder/flowgraph_builder0063.js:1:8)
+    ->[block 7]
+  block 7:
+    node 10: constant[777.0,v1] (test/flowgraph_builder/flowgraph_builder0063.js:2:9)
+    ->[block 8]
+  block 8: [exit-ordinary]
+    node 11: return[v1] (test/flowgraph_builder/flowgraph_builder0063.js:1:8)
+    ->[]
+  block 9: [exit-exceptional]
+    node 12: exceptional-return (test/flowgraph_builder/flowgraph_builder0063.js:1:8)
+    ->[]
+
+test/flowgraph_builder/flowgraph_builder0063.js:1:8: [definite] The variable x is never used

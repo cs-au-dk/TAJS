@@ -1,0 +1,21 @@
+function f(x) {
+	return eval(x + " = 42");
+}
+f("boogie_nights")
+dumpValue(boogie_nights)
+f("sjov")
+dumpValue(sjov)
+f("boogie_nights1")
+dumpValue(boogie_nights1)
+f("boogie_nights2")
+dumpValue(boogie_nights2)
+f("boogie_nights3")
+dumpValue(boogie_nights3)
+f("boogie_nights4")
+dumpValue(boogie_nights4)
+f("boogie_nights5")
+dumpValue(boogie_nights5)
+f("boogie_nights6")
+dumpValue(boogie_nights6)
+f("boogie_nights7")
+dumpValue(boogie_nights7)

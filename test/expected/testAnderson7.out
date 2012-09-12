@@ -1,0 +1,4 @@
+test/anderson/anderson7.js:4:6: [definite] TypeError, accessing property of null/undefined
+test/anderson/anderson7.js:3:2: [definite] The conditional expression is always true
+test/anderson/anderson7.js:4:6: [definite] Variable x is null/undefined
+test/anderson/anderson7.js:1:1: [maybe] Uncaught exception, constructed at [test/anderson/anderson7.js:4:6]

@@ -1,0 +1,6 @@
+test/benchmarks/applications/projavascript/sun/08-sun.tidy.html:9:12: [definite] Dead assignment, property earth is never read
+test/benchmarks/applications/projavascript/sun/08-sun.tidy.html:9:12: [definite] Dead assignment, property moon is never read
+test/benchmarks/applications/projavascript/sun/08-sun.tidy.html:9:12: [definite] Dead assignment, property sun is never read
+test/benchmarks/applications/projavascript/sun/08-sun.tidy.html:6: [definite] The variable imgs is never used
+test/benchmarks/applications/projavascript/sun/08-sun.tidy.html:12:17: [definite] Unreachable function
+test/benchmarks/applications/projavascript/sun/08-sun.tidy.html:21:1: [definite] Unreachable function draw

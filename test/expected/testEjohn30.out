@@ -1,0 +1,4 @@
+test/resig/ejohn30.js:6:10: [definite] Variable ninjaA is null/undefined
+test/resig/ejohn30.js:5:14: [definite] The function Ninja is invoked both as constructor and function
+test/resig/ejohn30.js:2:3: [maybe] Reading 'this' yields the global object
+test/resig/ejohn30.js:10:1: [info] Abstract value: "Ninja"

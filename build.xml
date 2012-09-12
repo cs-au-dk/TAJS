@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<project name="TAJS" default="all" basedir=".">
+
+    <property name="project" value="tajs" />
+    <property name="version" value="0.9" />
+    <property name="release" value="1" />
+
+    <property name="optimize" value="on" />
+    <property name="debug" value="off" />
+
+    <property file="local.properties" />
+
+    <path id="classpath">
+        <fileset dir="." includes="lib/**/*.jar" />
+    </path>
+
+    <path id="classpath.test">
+        <fileset dir="." includes="lib/**/*.jar" />
+        <pathelement location="build" />
+    </path>
+
+    <target name="all" depends="clean,jar-all,doc" />
+
+    <target name="compile">
+        <!--
+        <property name="cp" refid="classpath"/>
+        <echo message="Classpath is ${cp}"/>
+        -->
+        <mkdir dir="build" />
+        <javac srcdir="src" includes="**" destdir="build" optimize="${optimize}" 
+                debug="${debug}" includeantruntime="false" source="1.7">
+            <classpath refid="classpath" />
+            <compilerarg line="-encoding ISO-8859-1" compiler="modern" />
+            <!--
+            <compilerarg line="-Xlint -Xlint:-serial -Xlint:-path" compiler="modern" />
+            -->
+        </javac>
+    </target>
+
+    <target name="jar" depends="compile">
+        <mkdir dir="dist" />
+        <jar jarfile="dist/${project}.jar" basedir="build" includes="**" />
+    </target>
+
+    <target name="jar-all" depends="jar">
+        <mkdir dir="temp" />
+        <unzip src="lib/jtidy.jar" dest="temp" />
+        <unzip src="lib/jdom-1.1.1.jar" dest="temp" />
+        <unzip src="lib/jdom-contrib-1.1.1.jar" dest="temp" />
+        <unzip src="lib/compiler.jar" dest="temp" />
+        <unzip src="lib/log4j.jar" dest="temp" />
+        <unzip src="dist/${project}.jar" dest="temp" />
+        <jar jarfile="dist/${project}-all.jar" basedir="temp" includes="**/*.*">
+            <manifest>
+                <attribute name="Main-Class" value="dk.brics.tajs.Main" />
+            </manifest>
+        </jar>
+        <delete dir="temp" />
+    </target>
+
+    <target name="clean">
+        <delete dir="build" />
+        <delete dir="doc" />
+        <delete dir="flowgraphs" />
+        <delete file="javascript.js" />
+    </target>
+
+    <target name="doc" depends="jar">
+        <mkdir dir="doc" />
+        <javadoc packagenames="dk.brics.tajs,
+                               dk.brics.tajs.analysis,
+                               dk.brics.tajs.analysis.js,
+                               dk.brics.tajs.analysis.nativeobjects,
+                               dk.brics.tajs.analysis.uneval,
+                               dk.brics.tajs.flowgraph,
+                               dk.brics.tajs.flowgraph.jsnodes,
+                               dk.brics.tajs.js2flowgraph,
+                               dk.brics.tajs.htmlparser,
+                               dk.brics.tajs.lattice,
+                               dk.brics.tajs.monitoring,
+                               dk.brics.tajs.options,
+                               dk.brics.tajs.solver,
+                               dk.brics.tajs.unevalizer,
+                               dk.brics.tajs.util,
+                               dk.brics.tajs.gui" 
+        	    overview="src/overview.html" Package="true" sourcepath="src" destdir="doc" nodeprecated="true" author="true" notree="true" nohelp="true" windowtitle="TAJS">
+            <doctitle>
+                <![CDATA[Type Analyzer for JavaScript (TAJS) API Specification]]>
+            </doctitle>
+            <bottom><![CDATA[<i> Copyright &#169; 2012 Aarhus University </i>]]></bottom>
+            <link href="http://docs.oracle.com/javase/6/docs/api/" />
+            <link href="http://www.mozilla.org/rhino/apidocs/" />
+            <classpath refid="classpath" />
+        </javadoc>
+    </target>
+
+    <target name="zip" depends="clean,all">
+        <fail message="option 'debug' should be disabled before making zip">
+            <condition>
+                <istrue value="${debug}" />
+            </condition>
+        </fail>
+        <property name="dir" value="${project}-${version}" />
+        <mkdir dir="${dir}" />
+        <copy todir="${dir}">
+            <fileset dir="." includes="README,COPYING,build.xml" />
+        </copy>
+        <copy file="dist/${project}.jar" todir="${dir}/dist" />
+        <mkdir dir="${dir}/doc" />
+        <copy todir="${dir}/doc">
+            <fileset dir="doc" />
+        </copy>
+        <mkdir dir="${dir}/src" />
+        <copy todir="${dir}/src">
+            <fileset dir="src" includes="dk/**,*.txt" excludes="**/*.class" />
+        </copy>
+        <zip zipfile="dist/${dir}-${release}.zip" basedir="." includes="${dir}/**" />
+        <!--
+        <tar tarfile="${dir}-${release}.tar" basedir="." includes="${dir}/**" />
+        <gzip zipfile="${dir}-${release}.tar.gz" src="${dir}-${release}.tar" />
+        <delete file="${dir}-${release}.tar" />
+        -->
+        <delete dir="${dir}" />
+    </target>
+
+    <target name="test">
+        <javac srcdir="test/src" includes="**" destdir="build" optimize="${optimize}" debug="${debug}" 
+                includeantruntime="false" source="1.7">
+            <classpath refid="classpath" />
+            <compilerarg line="-encoding ISO-8859-1" compiler="modern" />
+            <compilerarg line="-Xlint -Xlint:-serial -Xlint:-path" compiler="modern" />
+        </javac>
+        <junit fork="true" printsummary="yes" showoutput="yes" haltonfailure="no" haltonerror="no">
+            <classpath refid="classpath.test" />
+            <test name="dk.brics.tajs.test.RunRegression" />
+        </junit>
+    </target>
+
+    <target name="test-all" depends="clean,compile">
+        <javac srcdir="test/src" includes="**" destdir="build" optimize="${optimize}" debug="${debug}" 
+                includeantruntime="false" source="1.7">
+            <classpath refid="classpath" />
+            <compilerarg line="-encoding ISO-8859-1" compiler="modern" />
+            <compilerarg line="-Xlint -Xlint:-serial -Xlint:-path" compiler="modern" />
+        </javac>
+        <junit fork="true" printsummary="yes" showoutput="yes" haltonfailure="no" haltonerror="no">
+            <classpath refid="classpath.test" />
+            <test name="dk.brics.tajs.test.RunAll" />
+        </junit>
+    </target>
+
+    <target name="publish" depends="all">
+        <fail message="property 'public' should be set in local.properties">
+            <condition>
+                <not>
+                    <isset property="public" />
+                </not>
+            </condition>
+        </fail>
+        <fail message="option 'debug' should be disabled before publishing">
+            <condition>
+                <istrue value="${debug}" />
+            </condition>
+        </fail>
+        <delete dir="${public}/doc" />
+        <mkdir dir="${public}/doc" />
+        <copy todir="${public}/doc">
+            <fileset dir="doc" />
+        </copy>
+        <mkdir dir="${public}/dist" />
+        <copy todir="${public}/dist">
+            <!-- NOTE: excluding zip at publish
+                <fileset dir="dist" includes="*.zip" />
+            -->
+            <fileset dir="dist" includes="*.jar" />
+        </copy>
+        <copy file="${public}/dist/${project}.jar" tofile="${public}/dist/${project}-${version}-${release}.jar" />
+        <copy file="${public}/dist/${project}-all.jar" tofile="${public}/dist/${project}-${version}-${release}-all.jar" />
+        <mkdir dir="${public}/lib" />
+        <copy todir="${public}/lib">
+            <fileset dir="lib" />
+        </copy>
+        <chmod dir="${public}" perm="go+r" includes="doc/**,doc,dist/**,dist,lib/**,lib,*.zip" type="both" />
+        <chmod dir="${public}" perm="go+x" includes="dist/**,dist,lib/**,lib" type="dir" />
+    </target>
+
+    <target name="dotview">
+        <fail message="parameter 'dotfile' missing">
+            <condition>
+                <not>
+                    <isset property="dotfile" />
+                </not>
+            </condition>
+        </fail>
+        <fail message="property 'dot' should be set in local.properties">
+            <condition>
+                <not>
+                    <isset property="dot" />
+                </not>
+            </condition>
+        </fail>
+        <fail message="property 'imgviewer' should be set in local.properties">
+            <condition>
+                <not>
+                    <isset property="imgviewer" />
+                </not>
+            </condition>
+        </fail>
+        <tempfile property="temp.file" suffix=".png" destdir="${java.io.tmpdir}" />
+        <exec executable="${dot}">
+            <arg value="-Tpng" />
+            <arg value="-o${temp.file}" />
+            <arg value="${dotfile}" />
+        </exec>
+        <echo message="Created PNG: ${temp.file}" />
+        <exec executable="${imgviewer}" spawn="true">
+            <arg value="${temp.file}" />
+        </exec>
+    </target>
+
+    <target name="view-callgraph">
+        <antcall target="dotview">
+            <param name="dotfile" value="out/callgraph.dot" />
+        </antcall>
+    </target>
+
+    <target name="view-state">
+        <antcall target="dotview">
+            <param name="dotfile" value="out/state.dot" />
+        </antcall>
+    </target>
+
+    <target name="view-flowgraph">
+        <antcall target="dotview">
+            <param name="dotfile" value="out/flowgraphs/final.dot" />
+        </antcall>
+    </target>
+
+    <target name="dotfiles">
+        <fail message="parameter 'dotdir' missing">
+            <condition>
+                <not>
+                    <isset property="dotdir" />
+                </not>
+            </condition>
+        </fail>
+        <fail message="property 'dot' should be set in local.properties">
+            <condition>
+                <not>
+                    <isset property="dot" />
+                </not>
+            </condition>
+        </fail>
+        <fileset dir="${dotdir}" id="dotfiles">
+            <include name="**/*.dot" />
+        </fileset>
+        <pathconvert pathsep=" " property="dotfiles_flattened" refid="dotfiles" />
+        <echo message="Converting dot files: ${dotfiles_flattened}" />
+        <exec executable="${dot}">
+            <arg value="-Tpng" />
+            <arg value="-O" />
+            <arg line="${dotfiles_flattened}" />
+        </exec>
+    </target>
+
+    <target name="dot-flowgraphs">
+        <antcall target="dotfiles">
+            <param name="dotdir" value="out/flowgraphs" />
+        </antcall>
+    </target>
+
+    <target name="dot-newflows">
+        <antcall target="dotfiles">
+            <param name="dotdir" value="out/newflows" />
+        </antcall>
+    </target>
+
+</project>

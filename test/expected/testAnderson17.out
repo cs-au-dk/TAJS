@@ -1,0 +1,4 @@
+test/anderson/anderson17.js:8:2: [definite] Dead assignment, property m is never read
+test/anderson/anderson17.js:13:2: [definite] Dead assignment, property m is never read
+test/anderson/anderson17.js:3:3: [definite] Unreachable function f
+test/anderson/anderson17.js:5:5: [definite] Unreachable function h

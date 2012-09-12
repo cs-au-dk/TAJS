@@ -1,0 +1,6 @@
+test/micro/test67.js:4:1: [definite] The conditional expression is always true
+test/micro/test67.js:7:1: [definite] The conditional expression is always false
+test/micro/test67.js:12:1: [definite] The conditional expression is always true
+test/micro/test67.js:16:1: [info] Abstract value: 42.0
+test/micro/test67.js:17:1: [info] Abstract value: 87.0
+test/micro/test67.js:18:1: [info] Abstract value: 44.0

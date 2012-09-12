@@ -1,0 +1,5 @@
+test/html/html03.html:9: [maybe] TypeError, reading property of null/undefined
+test/html/html03.html:15: [maybe] TypeError, reading property of null/undefined
+test/html/html03.html:6: [info] Abstract value: [@Object#node16]
+test/html/html03.html:8: [info] Abstract value: Null|[@Object#node32]
+test/html/html03.html:1: [definite] Uncaught exception, constructed at [test/html/html03.html:9, test/html/html03.html:15]

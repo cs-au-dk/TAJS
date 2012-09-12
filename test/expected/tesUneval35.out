@@ -1,0 +1,9 @@
+Unevalizer: Starting on: "g(2," + TAJS_TEMPORARY_8 + ")"
+Unevalizer: Not a constant string
+test/uneval/uneval35.tidy.html:8:12: [definite] TypeError, call to non-function
+test/uneval/uneval35.tidy.html:8:12: [definite] Reading absent property Random
+test/uneval/uneval35.tidy.html:7:1: [definite] The variable x is never used
+test/uneval/uneval35.tidy.html:7:1: [definite] The variable y is never used
+test/uneval/uneval35.tidy.html:8:28: [definite] Unreachable code
+test/uneval/uneval35.tidy.html:16:1: [definite] Unreachable code
+test/uneval/uneval35.tidy.html:5: [maybe] Uncaught exception, constructed at [test/uneval/uneval35.tidy.html:8:12]

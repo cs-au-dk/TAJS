@@ -1,0 +1,5 @@
+test/micro/test81.js:8:12: [maybe] The variable e has values with different types
+test/micro/test81.js:8:2: [info] Abstract value: "Exception!"|[@Object[native]]
+test/micro/test81.js:12:2: [info] Abstract value: [@Number[native]]
+test/micro/test81.js:19:6: [info] Abstract value: [@Number[native]]
+test/micro/test81.js:24:1: [info] Abstract value: Undef|[@Number[native]]

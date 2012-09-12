@@ -1,0 +1,2 @@
+test/micro/test112.js:2:1: [info] Abstract object: {0:1.0,1:2.0,2:3.0,3:4.0,4:5.0,5:6.0,length:6.0,[[Prototype]]=[@Array.prototype[native]]}
+test/micro/test112.js:5:1: [info] Abstract object: {0:1.0,1:2.0,2:4.0,3:6.0,length:4.0,[[Prototype]]=[@Array.prototype[native]]}

@@ -1,0 +1,18 @@
+test/micro/test59.js:18:11: [definite] Reading absent property (computed name)
+test/micro/test59.js:19:11: [definite] Reading absent property (computed name)
+test/micro/test59.js:22:8: [definite] Reading absent property (computed name)
+test/micro/test59.js:23:8: [definite] Reading absent property (computed name)
+test/micro/test59.js:10:1: [maybe] Assertion fails
+test/micro/test59.js:21:1: [maybe] Assertion fails
+test/micro/test59.js:24:1: [maybe] Assertion fails
+test/micro/test59.js:17:11: [maybe] Reading absent property dfg
+test/micro/test59.js:20:11: [maybe] Reading absent property ab
+test/micro/test59.js:21:8: [maybe] Reading absent property dfg
+test/micro/test59.js:24:8: [maybe] Reading absent property ab
+test/micro/test59.js:9:1: [info] Abstract value: PrefixIdentPartsStr[a]
+test/micro/test59.js:15:1: [info] Abstract object: {[[DefaultNonArray]]="hello"|absent,[[Prototype]]=[@Object.prototype[native]]}
+test/micro/test59.js:17:1: [info] Abstract value: Undef|"hello"
+test/micro/test59.js:18:1: [info] Abstract value: Undef
+test/micro/test59.js:19:1: [info] Abstract value: Undef
+test/micro/test59.js:20:1: [info] Abstract value: Undef|"hello"
+test/micro/test59.js:13:1: [info] Writing to unknown property that may cause loss of precision

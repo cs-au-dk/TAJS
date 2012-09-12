@@ -1,0 +1,54 @@
+Unevalizer: Starting on: "boogie_nights = 42"
+Unevalizer: Valid program
+Unevalizer: No name capture
+Unevalizer: Return value of eval is used
+Unevalizer: Last expression has value
+Unevalizer: Starting on: "sjov = 42"
+Unevalizer: Valid program
+Unevalizer: No name capture
+Unevalizer: Return value of eval is used
+Unevalizer: Last expression has value
+Unevalizer: Starting on: "boogie_nights1 = 42"
+Unevalizer: Valid program
+Unevalizer: No name capture
+Unevalizer: Return value of eval is used
+Unevalizer: Last expression has value
+Unevalizer: Starting on: "boogie_nights2 = 42"
+Unevalizer: Valid program
+Unevalizer: No name capture
+Unevalizer: Return value of eval is used
+Unevalizer: Last expression has value
+Unevalizer: Starting on: "boogie_nights3 = 42"
+Unevalizer: Valid program
+Unevalizer: No name capture
+Unevalizer: Return value of eval is used
+Unevalizer: Last expression has value
+Unevalizer: Starting on: "boogie_nights4 = 42"
+Unevalizer: Valid program
+Unevalizer: No name capture
+Unevalizer: Return value of eval is used
+Unevalizer: Last expression has value
+Unevalizer: Starting on: "boogie_nights5 = 42"
+Unevalizer: Valid program
+Unevalizer: No name capture
+Unevalizer: Return value of eval is used
+Unevalizer: Last expression has value
+Unevalizer: Starting on: "boogie_nights6 = 42"
+Unevalizer: Valid program
+Unevalizer: No name capture
+Unevalizer: Return value of eval is used
+Unevalizer: Last expression has value
+Unevalizer: Starting on: "boogie_nights7 = 42"
+Unevalizer: Valid program
+Unevalizer: No name capture
+Unevalizer: Return value of eval is used
+Unevalizer: Last expression has value
+test/uneval/uneval18.js:5:1: [info] Abstract value: 42.0
+test/uneval/uneval18.js:7:1: [info] Abstract value: 42.0
+test/uneval/uneval18.js:9:1: [info] Abstract value: 42.0
+test/uneval/uneval18.js:11:1: [info] Abstract value: 42.0
+test/uneval/uneval18.js:13:1: [info] Abstract value: 42.0
+test/uneval/uneval18.js:15:1: [info] Abstract value: 42.0
+test/uneval/uneval18.js:17:1: [info] Abstract value: 42.0
+test/uneval/uneval18.js:19:1: [info] Abstract value: 42.0
+test/uneval/uneval18.js:21:1: [info] Abstract value: 42.0

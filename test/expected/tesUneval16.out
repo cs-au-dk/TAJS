@@ -1,0 +1,12 @@
+Unevalizer: Starting on: "var_0"
+Unevalizer: Valid program
+Unevalizer: No name capture
+Unevalizer: Return value of eval is used
+Unevalizer: Last expression has value
+Unevalizer: Starting on: "var_" + TAJS_TEMPORARY_16
+Unevalizer: Not a constant string
+Unevalizer: Starting on: "var_" + TAJS_TEMPORARY_16
+Unevalizer: Not a constant string
+test/uneval/uneval16.tidy.html:1:12: [maybe] Reading absent property (computed name)
+test/uneval/uneval16.tidy.html:13:9: [info] Abstract value: Undef|true|1.0|"str"
+test/uneval/uneval16.tidy.html:1:12: [info] Reading from unknown property that may cause loss of precision

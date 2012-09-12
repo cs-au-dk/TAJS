@@ -1,0 +1,23 @@
+test/browser/domlegacy/html/HTMLIFrameElement01.tidy.html:14: [definite] Reading absent property align
+test/browser/domlegacy/html/HTMLIFrameElement01.tidy.html:15: [definite] Reading absent property frameBorder
+test/browser/domlegacy/html/HTMLIFrameElement01.tidy.html:16: [definite] Reading absent property height
+test/browser/domlegacy/html/HTMLIFrameElement01.tidy.html:17: [definite] Reading absent property longDesc
+test/browser/domlegacy/html/HTMLIFrameElement01.tidy.html:18: [definite] Reading absent property marginHeight
+test/browser/domlegacy/html/HTMLIFrameElement01.tidy.html:19: [definite] Reading absent property marginWidth
+test/browser/domlegacy/html/HTMLIFrameElement01.tidy.html:20: [definite] Reading absent property name
+test/browser/domlegacy/html/HTMLIFrameElement01.tidy.html:21: [definite] Reading absent property scrolling
+test/browser/domlegacy/html/HTMLIFrameElement01.tidy.html:22: [definite] Reading absent property src
+test/browser/domlegacy/html/HTMLIFrameElement01.tidy.html:23: [definite] Reading absent property width
+test/browser/domlegacy/html/HTMLIFrameElement01.tidy.html:24: [definite] Reading absent property contentDocument
+test/browser/domlegacy/html/HTMLIFrameElement01.tidy.html:13: [info] Abstract value: [@HTMLIFrameElement[native] constructor]
+test/browser/domlegacy/html/HTMLIFrameElement01.tidy.html:14: [info] Abstract value: Undef
+test/browser/domlegacy/html/HTMLIFrameElement01.tidy.html:15: [info] Abstract value: Undef
+test/browser/domlegacy/html/HTMLIFrameElement01.tidy.html:16: [info] Abstract value: Undef
+test/browser/domlegacy/html/HTMLIFrameElement01.tidy.html:17: [info] Abstract value: Undef
+test/browser/domlegacy/html/HTMLIFrameElement01.tidy.html:18: [info] Abstract value: Undef
+test/browser/domlegacy/html/HTMLIFrameElement01.tidy.html:19: [info] Abstract value: Undef
+test/browser/domlegacy/html/HTMLIFrameElement01.tidy.html:20: [info] Abstract value: Undef
+test/browser/domlegacy/html/HTMLIFrameElement01.tidy.html:21: [info] Abstract value: Undef
+test/browser/domlegacy/html/HTMLIFrameElement01.tidy.html:22: [info] Abstract value: Undef
+test/browser/domlegacy/html/HTMLIFrameElement01.tidy.html:23: [info] Abstract value: Undef
+test/browser/domlegacy/html/HTMLIFrameElement01.tidy.html:24: [info] Abstract value: Undef

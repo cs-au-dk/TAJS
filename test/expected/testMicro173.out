@@ -1,0 +1,2 @@
+test/micro/test173.js:2:11: [maybe] Converting primitive string to object
+test/micro/test173.js:2:1: [info] Abstract value: Str

@@ -1,0 +1,5 @@
+test/browser/domlegacy/events/DOMOnClick01.tidy.html:15: [definite] ReferenceError, reading absent variable b
+test/browser/domlegacy/events/DOMOnClick01.tidy.html: [definite] Unreachable code
+test/browser/domlegacy/events/DOMOnClick01.tidy.html:9: [definite] Unreachable code
+test/browser/domlegacy/events/DOMOnClick01.tidy.html:11: [definite] Unreachable function: a
+test/browser/domlegacy/events/DOMOnClick01.tidy.html:9: [definite] Uncaught exception, constructed at [test/dom/events/DOMOnClick01.tidy.html:15]

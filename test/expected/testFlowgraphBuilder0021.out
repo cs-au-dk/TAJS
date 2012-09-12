@@ -1,0 +1,21 @@
+fg2: <main> function()
+  block 0: [entry]
+    node 0: constant[undefined,v1] (test/flowgraph_builder/flowgraph_builder0021.js:1:1)
+    ->[block 1]
+  block 1:
+    node 1: constant[1.0,v2] (test/flowgraph_builder/flowgraph_builder0021.js:1:5)
+    node 2: write-variable[v2,'x']* (test/flowgraph_builder/flowgraph_builder0021.js:1:1)
+    node 3: read-variable['this',v3,-] (test/flowgraph_builder/flowgraph_builder0021.js:2:1)
+    node 4: constant["x",v5] (test/flowgraph_builder/flowgraph_builder0021.js:2:6)
+    node 5: constant["",v6] (test/flowgraph_builder/flowgraph_builder0021.js:2:12)
+    node 6: +[v5,v6,v4] (test/flowgraph_builder/flowgraph_builder0021.js:2:6)
+    node 7: read-property[v3,v4,-]* (test/flowgraph_builder/flowgraph_builder0021.js:2:1)
+    ->[block 2]
+  block 2: [exit-ordinary]
+    node 8: return[v1] (test/flowgraph_builder/flowgraph_builder0021.js:1:1)
+    ->[]
+  block 3: [exit-exceptional]
+    node 9: exceptional-return (test/flowgraph_builder/flowgraph_builder0021.js:1:1)
+    ->[]
+
+test/flowgraph_builder/flowgraph_builder0021.js:2:1: [definite] Reading 'this' yields the global object

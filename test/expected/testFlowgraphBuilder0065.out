@@ -1,0 +1,43 @@
+fg2: <main> function()
+  block 0: [entry]
+    node 0: constant[undefined,v1] (test/flowgraph_builder/flowgraph_builder0065.js:1:1)
+    node 1: function-decl[function f(),-] (test/flowgraph_builder/flowgraph_builder0065.js:1:1)
+    ->[block 1]
+  block 1:
+    node 2: read-variable['o',v5,-] (test/flowgraph_builder/flowgraph_builder0065.js:5:5)
+    node 3: read-variable['f',v8,v7] (test/flowgraph_builder/flowgraph_builder0065.js:5:7)
+    ->[block 2]
+  block 2:
+    node 4: call[v7,v8,v6] (test/flowgraph_builder/flowgraph_builder0065.js:5:7)
+    ->[block 3]
+  block 3:
+    node 5: read-property[v5,v6,v3] (test/flowgraph_builder/flowgraph_builder0065.js:5:5)
+    node 6: <variable-non-null-undef>['o'] (test/flowgraph_builder/flowgraph_builder0065.js:5:5)
+    node 7: constant[3.0,v4] (test/flowgraph_builder/flowgraph_builder0065.js:5:14)
+    node 8: *[v3,v4,v2] (test/flowgraph_builder/flowgraph_builder0065.js:5:5)
+    node 9: write-variable[v2,'y']* (test/flowgraph_builder/flowgraph_builder0065.js:5:1)
+    ->[block 4]
+  block 4: [exit-ordinary]
+    node 10: return[v1] (test/flowgraph_builder/flowgraph_builder0065.js:1:1)
+    ->[]
+  block 5: [exit-exceptional]
+    node 11: exceptional-return (test/flowgraph_builder/flowgraph_builder0065.js:1:1)
+    ->[]
+function f()
+  block 6: [entry]
+    node 12: constant[undefined,v1] (test/flowgraph_builder/flowgraph_builder0065.js:1:1)
+    ->[block 7]
+  block 7:
+    node 13: constant["hi",v1] (test/flowgraph_builder/flowgraph_builder0065.js:2:11)
+    ->[block 8]
+  block 8: [exit-ordinary]
+    node 14: return[v1] (test/flowgraph_builder/flowgraph_builder0065.js:1:1)
+    ->[]
+  block 9: [exit-exceptional]
+    node 15: exceptional-return (test/flowgraph_builder/flowgraph_builder0065.js:1:1)
+    ->[]
+
+test/flowgraph_builder/flowgraph_builder0065.js:5:5: [definite] ReferenceError, reading absent variable o
+test/flowgraph_builder/flowgraph_builder0065.js:1:1: [definite] Unreachable function f
+test/flowgraph_builder/flowgraph_builder0065.js:5:7: [definite] Unreachable code
+test/flowgraph_builder/flowgraph_builder0065.js:1:1: [maybe] Uncaught exception, constructed at [test/flowgraph_builder/flowgraph_builder0065.js:5:5]

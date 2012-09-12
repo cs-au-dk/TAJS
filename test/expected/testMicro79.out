@@ -1,0 +1,9 @@
+test/micro/test79.js:15:11: [definite] Dead assignment, property ex is never read
+test/micro/test79.js:1:1: [definite] The variable x is never used
+test/micro/test79.js:17:15: [maybe] The variable e has values with different types
+test/micro/test79.js:18:16: [maybe] The variable e has values with different types
+test/micro/test79.js:21:11: [maybe] The variable glob has values with different types
+test/micro/test79.js:12:2: [info] Abstract value: 30.0
+test/micro/test79.js:17:5: [info] Abstract value: "30"|[@Object#node20]
+test/micro/test79.js:18:5: [info] Abstract object: {ex:"yes",[[Prototype]]=[@Object.prototype[native]]}
+test/micro/test79.js:21:1: [info] Abstract value: 42.0|"42"

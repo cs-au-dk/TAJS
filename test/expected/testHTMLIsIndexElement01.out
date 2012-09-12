@@ -1,0 +1,5 @@
+test/browser/domlegacy/html/HTMLIsIndexElement01.tidy.html:14: [definite] Reading absent property form
+test/browser/domlegacy/html/HTMLIsIndexElement01.tidy.html:15: [definite] Reading absent property prompt
+test/browser/domlegacy/html/HTMLIsIndexElement01.tidy.html:13: [info] Abstract value: [@HTMLListIndexElement[native] constructor]
+test/browser/domlegacy/html/HTMLIsIndexElement01.tidy.html:14: [info] Abstract value: Undef
+test/browser/domlegacy/html/HTMLIsIndexElement01.tidy.html:15: [info] Abstract value: Undef

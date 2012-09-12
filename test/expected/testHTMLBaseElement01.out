@@ -1,0 +1,6 @@
+test/browser/domlegacy/html/HTMLBaseElement01.tidy.html:16: [definite] Reading absent property href
+test/browser/domlegacy/html/HTMLBaseElement01.tidy.html:17: [definite] Reading absent property target
+test/browser/domlegacy/html/HTMLBaseElement01.tidy.html:13: [info] Abstract value: [@HTMLBaseElement[native] constructor]
+test/browser/domlegacy/html/HTMLBaseElement01.tidy.html:14: [info] Prototype: [@Object.prototype[native]]
+test/browser/domlegacy/html/HTMLBaseElement01.tidy.html:16: [info] Abstract value: Undef
+test/browser/domlegacy/html/HTMLBaseElement01.tidy.html:17: [info] Abstract value: Undef

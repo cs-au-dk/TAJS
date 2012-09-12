@@ -1,0 +1,3 @@
+test/browser/domlegacy/html/HTMLDirectoryElement01.tidy.html:14: [definite] Reading absent property compact
+test/browser/domlegacy/html/HTMLDirectoryElement01.tidy.html:13: [info] Abstract value: [@HTMLDirectoryElement[native] constructor]
+test/browser/domlegacy/html/HTMLDirectoryElement01.tidy.html:14: [info] Abstract value: Undef

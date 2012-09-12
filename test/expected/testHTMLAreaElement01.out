@@ -1,0 +1,18 @@
+test/browser/domlegacy/html/HTMLAreaElement01.tidy.html:16: [definite] Reading absent property accessKey
+test/browser/domlegacy/html/HTMLAreaElement01.tidy.html:17: [definite] Reading absent property alt
+test/browser/domlegacy/html/HTMLAreaElement01.tidy.html:18: [definite] Reading absent property coords
+test/browser/domlegacy/html/HTMLAreaElement01.tidy.html:19: [definite] Reading absent property href
+test/browser/domlegacy/html/HTMLAreaElement01.tidy.html:20: [definite] Reading absent property noHref
+test/browser/domlegacy/html/HTMLAreaElement01.tidy.html:21: [definite] Reading absent property shape
+test/browser/domlegacy/html/HTMLAreaElement01.tidy.html:22: [definite] Reading absent property tabIndex
+test/browser/domlegacy/html/HTMLAreaElement01.tidy.html:23: [definite] Reading absent property target
+test/browser/domlegacy/html/HTMLAreaElement01.tidy.html:13: [info] Abstract value: [@HTMLAreaElement[native] constructor]
+test/browser/domlegacy/html/HTMLAreaElement01.tidy.html:14: [info] Prototype: [@Object.prototype[native]]
+test/browser/domlegacy/html/HTMLAreaElement01.tidy.html:16: [info] Abstract value: Undef
+test/browser/domlegacy/html/HTMLAreaElement01.tidy.html:17: [info] Abstract value: Undef
+test/browser/domlegacy/html/HTMLAreaElement01.tidy.html:18: [info] Abstract value: Undef
+test/browser/domlegacy/html/HTMLAreaElement01.tidy.html:19: [info] Abstract value: Undef
+test/browser/domlegacy/html/HTMLAreaElement01.tidy.html:20: [info] Abstract value: Undef
+test/browser/domlegacy/html/HTMLAreaElement01.tidy.html:21: [info] Abstract value: Undef
+test/browser/domlegacy/html/HTMLAreaElement01.tidy.html:22: [info] Abstract value: Undef
+test/browser/domlegacy/html/HTMLAreaElement01.tidy.html:23: [info] Abstract value: Undef

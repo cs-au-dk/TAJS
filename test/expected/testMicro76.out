@@ -1,0 +1,4 @@
+test/micro/test76.js:8:1: [info] Abstract value: -1.0
+test/micro/test76.js:9:1: [info] Abstract value: 1.0
+test/micro/test76.js:10:1: [info] Abstract value: -2.0
+test/micro/test76.js:11:1: [info] Abstract value: false

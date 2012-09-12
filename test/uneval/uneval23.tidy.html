@@ -1,0 +1,112 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="generator"
+content="HTML Tidy for Java (vers. 2009-12-01), see jtidy.sourceforge.net" />
+<title></title>
+</head>
+<body>
+<script type="text/javascript">
+//<![CDATA[
+function CSlider(c, t, n) {
+    this.c = document.getElementById(c);
+    if (t != "ud") t = "lr";
+    //CHANGED: Use item instead of [] to accomodate standard
+    this.s = (t == "lr") ? this.c.rows.item(0).cells.item(0).offsetWidth : 
+        this.c.rows.item(0).cells.item(0).offsetHeight;
+    this.p = (t == "lr") ? "left" : "top";
+    this.l = false;
+    this.np = 0;
+    this.n = n;
+    this.intrvl = null;
+    this.as = true;
+    this.stct = 0;
+    this.astopl = false;
+    this.astopr = false;
+    this.tmp = 1; //use for auto scroll count
+    this.autointrvl = null;
+    this.lnr = false;
+    this.startSlide = function (d, o) {
+        if (this.l) {
+            return;
+        }
+
+        if (this.lnr) {
+            if (this.stct == 0) {
+                this.stct = this.c.rows[0].cells[0].innerHTML
+            }
+            if ((this.astopr && d == 'r') || (this.astopl && d == 'l')) return;
+            if (this.c.rows[0].cells[0].innerHTML == '1AM' && d == 'r') {
+                var tmpvl1 = document.getElementById(o + "_rb");
+                tmpvl1.className = "" + tmpvl1.getAttribute("off");
+                var tmpvl2 = document.getElementById(o + "_lb");
+                tmpvl2.className = "" + tmpvl2.getAttribute("on");
+
+                this.astopr = true;
+                this.astopl = false;
+            } else if (this.c.rows[0].cells[1].innerHTML == this.stct && d == 'l') {
+                var tmpvl1 = document.getElementById(o + "_rb");
+                tmpvl1.className = "" + tmpvl1.getAttribute("on");
+                var tmpvl2 = document.getElementById(o + "_lb");
+                tmpvl2.className = "" + tmpvl2.getAttribute("off");
+                this.astopl = true;
+                this.astopr = false;
+            } else {
+                var tmpvl1 = document.getElementById(o + "_lb");
+                tmpvl1.className = tmpvl1.getAttribute("on");
+                var tmpvl2 = document.getElementById(o + "_rb");
+                tmpvl2.className = tmpvl2.getAttribute("on");
+                this.astopr = false;
+                this.astopl = false;
+            }
+        }
+        this.l = true;
+        this.intrvl = setInterval("" + o + ".move('" + d + "')", 10);
+        this.np = this.getNP(d);
+    };
+    this.move = function (d) { }
+    this.getNP = function (d) {
+        if (d == 'l') {
+            return (this.getCP() - (this.s * this.n));
+        } else {
+            return (this.getCP() + (this.s * this.n));
+        }
+    };
+    this.getCP = function (d) {
+        return eval("parseInt(this.c.style." + this.p + ".substring(0,this.c.style." + this.p + ".length-2))");
+    };
+    this.autoSlide = function (d, o) {
+        this.tmp++;
+        if (this.tmp > 10) this.tmp = 1;
+        showTab(totalSlideShowIds, "current#notcurrent", getObj("em_dll" + this.tmp));
+        if (this.as) {
+            this.startSlide(d, o);
+        } else {
+            this.as = false;
+            clearTimeout(this.autointrvl);
+        }
+    };
+
+}
+
+var cs1 = new CSlider("vs_cntr11","lr",1);
+cs1.autointrvl=setInterval("cs1.autoSlide('l','cs1')",10000);
+//]]>
+</script>
+<div>
+<div class="sh_c">
+<table border="0" cellspacing="0" cellpadding="0" id="vs_cntr11"
+style="width:428px;position:relative;left:0px;top:0px;overflow:hidden">
+<tr>
+<td valign="top">
+<div class="r_arow" id="topp" value="l"
+onclick="cs1.startSlide('l','cs1');cs1.as=false;"><img
+src="5240654.cms" width="20" height="32" border="0"
+pg="beScrollRight" /></div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</body>
+</html>
+

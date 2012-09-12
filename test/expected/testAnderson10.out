@@ -1,0 +1,2 @@
+test/anderson/anderson10.js:1:3: [definite] The variable x is never used
+test/anderson/anderson10.js:2:1: [definite] The variable x is never used

@@ -1,0 +1,10 @@
+test/micro/test106.js:2:3: [definite] Dead assignment, property name is never read
+test/micro/test106.js:4:5: [definite] Dead assignment, property value is never read
+test/micro/test106.js:6:5: [definite] Dead assignment, property value is never read
+test/micro/test106.js:11:3: [definite] Dead assignment, property dept is never read
+test/micro/test106.js:12:3: [definite] The function product is invoked both as constructor and function
+test/micro/test106.js:9:1: [definite] The variable name is never used
+test/micro/test106.js:9:1: [definite] The variable value is never used
+test/micro/test106.js:3:7: [maybe] Conversion to number yields NaN
+test/micro/test106.js:20:1: [info] Abstract object: {dept:"food",name:"feta",value:5.0,[[Prototype]]=[@Object#node7]}
+test/micro/test106.js:21:1: [info] Abstract object: {dept:"auto",name:"honda",value:999.0,[[Prototype]]=[@Object#node7]}

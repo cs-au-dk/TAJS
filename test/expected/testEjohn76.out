@@ -1,0 +1,3 @@
+test/resig/ejohn76.js:8:19: [definite] Dead assignment, property dance is never read
+test/resig/ejohn76.js:2:26: [definite] Unreachable function
+test/resig/ejohn76.js:10:1: [maybe] Assertion fails

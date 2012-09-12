@@ -1,0 +1,3 @@
+test/sunspider/access-nsieve.js:10:1: [definite] Unreachable function pad
+test/sunspider/access-nsieve.js:26:11: [maybe] Reading absent property (computed name)
+test/sunspider/access-nsieve.js:47:1: [info] Abstract value: UInt

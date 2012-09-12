@@ -1,0 +1,190 @@
+test/10k/minesweeper.tidy.html:168: [definite] Dead assignment, property hasFlag is never read
+test/10k/minesweeper.tidy.html:168: [definite] Dead assignment, property hasMine is never read
+test/10k/minesweeper.tidy.html:168: [definite] Dead assignment, property visible is never read
+test/10k/minesweeper.tidy.html:47: [maybe] Reading absent property (computed name)
+test/10k/minesweeper.tidy.html:47: [maybe] Reading absent property (computed name)
+test/10k/minesweeper.tidy.html:47: [maybe] TypeError, reading property of null/undefined
+test/10k/minesweeper.tidy.html:56: [maybe] Reading absent property (computed name)
+test/10k/minesweeper.tidy.html:56: [maybe] Reading absent property (computed name)
+test/10k/minesweeper.tidy.html:56: [maybe] TypeError, reading property of null/undefined
+test/10k/minesweeper.tidy.html:57: [maybe] Reading absent property a
+test/10k/minesweeper.tidy.html:57: [maybe] Reading absent property b
+test/10k/minesweeper.tidy.html:57: [maybe] Reading absent property h
+test/10k/minesweeper.tidy.html:57: [maybe] TypeError, reading property of null/undefined
+test/10k/minesweeper.tidy.html:61: [maybe] Reading absent property a
+test/10k/minesweeper.tidy.html:61: [maybe] Reading absent property b
+test/10k/minesweeper.tidy.html:61: [maybe] Reading absent property g
+test/10k/minesweeper.tidy.html:61: [maybe] Reading absent property h
+test/10k/minesweeper.tidy.html:62: [maybe] Reading absent property (computed name)
+test/10k/minesweeper.tidy.html:62: [maybe] Reading absent property g
+test/10k/minesweeper.tidy.html:63: [maybe] Reading absent property g
+test/10k/minesweeper.tidy.html:79: [maybe] Reading absent property (computed name)
+test/10k/minesweeper.tidy.html:79: [maybe] Reading absent property (computed name)
+test/10k/minesweeper.tidy.html:79: [maybe] TypeError, reading property of null/undefined
+test/10k/minesweeper.tidy.html:80: [maybe] Reading absent property a
+test/10k/minesweeper.tidy.html:80: [maybe] Reading absent property b
+test/10k/minesweeper.tidy.html:80: [maybe] ReferenceError, reading absent variable c
+test/10k/minesweeper.tidy.html:80: [maybe] ReferenceError, reading absent variable c
+test/10k/minesweeper.tidy.html:80: [maybe] TypeError, reading property of null/undefined
+test/10k/minesweeper.tidy.html:80: [maybe] TypeError, reading property of null/undefined
+test/10k/minesweeper.tidy.html:82: [maybe] Reading absent property g
+test/10k/minesweeper.tidy.html:82: [maybe] ReferenceError, reading absent variable c
+test/10k/minesweeper.tidy.html:82: [maybe] TypeError, reading property of null/undefined
+test/10k/minesweeper.tidy.html:83: [maybe] ReferenceError, reading absent variable c
+test/10k/minesweeper.tidy.html:83: [maybe] TypeError, writing property of null/undefined
+test/10k/minesweeper.tidy.html:84: [maybe] ReferenceError, reading absent variable c
+test/10k/minesweeper.tidy.html:84: [maybe] TypeError, writing property of null/undefined
+test/10k/minesweeper.tidy.html:85: [maybe] Reading absent property h
+test/10k/minesweeper.tidy.html:85: [maybe] ReferenceError, reading absent variable c
+test/10k/minesweeper.tidy.html:85: [maybe] TypeError, reading property of null/undefined
+test/10k/minesweeper.tidy.html:90: [maybe] ReferenceError, reading absent variable c
+test/10k/minesweeper.tidy.html:90: [maybe] TypeError, writing property of null/undefined
+test/10k/minesweeper.tidy.html:91: [maybe] Reading absent property (computed name)
+test/10k/minesweeper.tidy.html:91: [maybe] Reading absent property (computed name)
+test/10k/minesweeper.tidy.html:91: [maybe] Reading absent property b
+test/10k/minesweeper.tidy.html:91: [maybe] ReferenceError, reading absent variable c
+test/10k/minesweeper.tidy.html:91: [maybe] ReferenceError, reading absent variable c
+test/10k/minesweeper.tidy.html:91: [maybe] ReferenceError, reading absent variable c
+test/10k/minesweeper.tidy.html:91: [maybe] ReferenceError, reading absent variable c
+test/10k/minesweeper.tidy.html:91: [maybe] ReferenceError, reading absent variable c
+test/10k/minesweeper.tidy.html:91: [maybe] ReferenceError, reading absent variable c
+test/10k/minesweeper.tidy.html:91: [maybe] ReferenceError, reading absent variable f
+test/10k/minesweeper.tidy.html:91: [maybe] ReferenceError, reading absent variable f
+test/10k/minesweeper.tidy.html:91: [maybe] ReferenceError, reading absent variable f
+test/10k/minesweeper.tidy.html:91: [maybe] ReferenceError, reading absent variable f
+test/10k/minesweeper.tidy.html:91: [maybe] ReferenceError, reading absent variable f
+test/10k/minesweeper.tidy.html:91: [maybe] ReferenceError, reading absent variable f
+test/10k/minesweeper.tidy.html:91: [maybe] TypeError, reading property of null/undefined
+test/10k/minesweeper.tidy.html:91: [maybe] TypeError, reading property of null/undefined
+test/10k/minesweeper.tidy.html:102: [maybe] Reading absent property offsetTop
+test/10k/minesweeper.tidy.html:102: [maybe] Reading absent property pageY
+test/10k/minesweeper.tidy.html:102: [maybe] Reading absent property target
+test/10k/minesweeper.tidy.html:102: [maybe] TypeError, reading property of null/undefined
+test/10k/minesweeper.tidy.html:103: [maybe] Reading absent property offsetLeft
+test/10k/minesweeper.tidy.html:103: [maybe] Reading absent property pageX
+test/10k/minesweeper.tidy.html:103: [maybe] Reading absent property target
+test/10k/minesweeper.tidy.html:103: [maybe] TypeError, reading property of null/undefined
+test/10k/minesweeper.tidy.html:116: [maybe] Reading absent property (computed name)
+test/10k/minesweeper.tidy.html:116: [maybe] Reading absent property (computed name)
+test/10k/minesweeper.tidy.html:116: [maybe] TypeError, reading property of null/undefined
+test/10k/minesweeper.tidy.html:117: [maybe] Reading absent property a
+test/10k/minesweeper.tidy.html:117: [maybe] Reading absent property b
+test/10k/minesweeper.tidy.html:117: [maybe] TypeError, reading property of null/undefined
+test/10k/minesweeper.tidy.html:118: [maybe] Reading absent property a
+test/10k/minesweeper.tidy.html:118: [maybe] TypeError, reading property of null/undefined
+test/10k/minesweeper.tidy.html:118: [maybe] TypeError, writing property of null/undefined
+test/10k/minesweeper.tidy.html:119: [maybe] Reading absent property a
+test/10k/minesweeper.tidy.html:144: [maybe] Reading absent property innerHTML
+test/10k/minesweeper.tidy.html:174: [maybe] Reading absent property (computed name)
+test/10k/minesweeper.tidy.html:174: [maybe] Reading absent property (computed name)
+test/10k/minesweeper.tidy.html:174: [maybe] Reading absent property h
+test/10k/minesweeper.tidy.html:174: [maybe] TypeError, reading property of null/undefined
+test/10k/minesweeper.tidy.html:174: [maybe] TypeError, reading property of null/undefined
+test/10k/minesweeper.tidy.html:175: [maybe] Reading absent property (computed name)
+test/10k/minesweeper.tidy.html:175: [maybe] Reading absent property (computed name)
+test/10k/minesweeper.tidy.html:175: [maybe] TypeError, reading property of null/undefined
+test/10k/minesweeper.tidy.html:175: [maybe] TypeError, writing property of null/undefined
+test/10k/minesweeper.tidy.html:176: [maybe] Reading absent property (computed name)
+test/10k/minesweeper.tidy.html:176: [maybe] Reading absent property (computed name)
+test/10k/minesweeper.tidy.html:176: [maybe] Reading absent property (computed name)
+test/10k/minesweeper.tidy.html:176: [maybe] Reading absent property (computed name)
+test/10k/minesweeper.tidy.html:176: [maybe] Reading absent property g
+test/10k/minesweeper.tidy.html:176: [maybe] TypeError, reading property of null/undefined
+test/10k/minesweeper.tidy.html:176: [maybe] TypeError, reading property of null/undefined
+test/10k/minesweeper.tidy.html:176: [maybe] TypeError, reading property of null/undefined
+test/10k/minesweeper.tidy.html:176: [maybe] TypeError, writing property of null/undefined
+test/10k/minesweeper.tidy.html:40: [maybe] Uncaught exception, constructed at [test/10k/minesweeper.tidy.html:47, test/10k/minesweeper.tidy.html:56, test/10k/minesweeper.tidy.html:57, test/10k/minesweeper.tidy.html:79, test/10k/minesweeper.tidy.html:80, test/10k/minesweeper.tidy.html:82, test/10k/minesweeper.tidy.html:83, test/10k/minesweeper.tidy.html:84, test/10k/minesweeper.tidy.html:85, test/10k/minesweeper.tidy.html:90, test/10k/minesweeper.tidy.html:91, test/10k/minesweeper.tidy.html:102, test/10k/minesweeper.tidy.html:103, test/10k/minesweeper.tidy.html:116, test/10k/minesweeper.tidy.html:117, test/10k/minesweeper.tidy.html:118, test/10k/minesweeper.tidy.html:174, test/10k/minesweeper.tidy.html:175, test/10k/minesweeper.tidy.html:176]
+test/10k/minesweeper.tidy.html:47: [maybe] Converting primitive boolean to object
+test/10k/minesweeper.tidy.html:47: [maybe] Converting primitive number to object
+test/10k/minesweeper.tidy.html:56: [maybe] Converting primitive boolean to object
+test/10k/minesweeper.tidy.html:56: [maybe] Converting primitive number to object
+test/10k/minesweeper.tidy.html:57: [maybe] Converting primitive boolean to object
+test/10k/minesweeper.tidy.html:57: [maybe] Converting primitive boolean to object
+test/10k/minesweeper.tidy.html:57: [maybe] Converting primitive boolean to object
+test/10k/minesweeper.tidy.html:57: [maybe] Converting primitive number to object
+test/10k/minesweeper.tidy.html:57: [maybe] Converting primitive number to object
+test/10k/minesweeper.tidy.html:57: [maybe] Converting primitive number to object
+test/10k/minesweeper.tidy.html:61: [maybe] Conversion to number yields NaN
+test/10k/minesweeper.tidy.html:61: [maybe] Converting primitive boolean to object
+test/10k/minesweeper.tidy.html:61: [maybe] Converting primitive boolean to object
+test/10k/minesweeper.tidy.html:61: [maybe] Converting primitive boolean to object
+test/10k/minesweeper.tidy.html:61: [maybe] Converting primitive boolean to object
+test/10k/minesweeper.tidy.html:61: [maybe] Converting primitive number to object
+test/10k/minesweeper.tidy.html:61: [maybe] Converting primitive number to object
+test/10k/minesweeper.tidy.html:61: [maybe] Converting primitive number to object
+test/10k/minesweeper.tidy.html:61: [maybe] Converting primitive number to object
+test/10k/minesweeper.tidy.html:62: [maybe] Conversion to number yields NaN
+test/10k/minesweeper.tidy.html:62: [maybe] Converting primitive boolean to object
+test/10k/minesweeper.tidy.html:62: [maybe] Converting primitive number to object
+test/10k/minesweeper.tidy.html:63: [maybe] Converting primitive boolean to object
+test/10k/minesweeper.tidy.html:63: [maybe] Converting primitive number to object
+test/10k/minesweeper.tidy.html:63: [maybe] Converting undefined to string
+test/10k/minesweeper.tidy.html:79: [maybe] Converting boolean to string
+test/10k/minesweeper.tidy.html:79: [maybe] Converting primitive boolean to object
+test/10k/minesweeper.tidy.html:79: [maybe] Converting primitive number to object
+test/10k/minesweeper.tidy.html:80: [maybe] Converting primitive boolean to object
+test/10k/minesweeper.tidy.html:80: [maybe] Converting primitive boolean to object
+test/10k/minesweeper.tidy.html:80: [maybe] Converting primitive number to object
+test/10k/minesweeper.tidy.html:80: [maybe] Converting primitive number to object
+test/10k/minesweeper.tidy.html:82: [maybe] Converting primitive boolean to object
+test/10k/minesweeper.tidy.html:82: [maybe] Converting primitive number to object
+test/10k/minesweeper.tidy.html:83: [maybe] Converting primitive boolean to object
+test/10k/minesweeper.tidy.html:83: [maybe] Converting primitive number to object
+test/10k/minesweeper.tidy.html:84: [maybe] Converting primitive boolean to object
+test/10k/minesweeper.tidy.html:84: [maybe] Converting primitive number to object
+test/10k/minesweeper.tidy.html:85: [maybe] Converting primitive boolean to object
+test/10k/minesweeper.tidy.html:85: [maybe] Converting primitive number to object
+test/10k/minesweeper.tidy.html:90: [maybe] Converting primitive boolean to object
+test/10k/minesweeper.tidy.html:90: [maybe] Converting primitive number to object
+test/10k/minesweeper.tidy.html:91: [maybe] Conversion to number yields NaN
+test/10k/minesweeper.tidy.html:91: [maybe] Conversion to number yields NaN
+test/10k/minesweeper.tidy.html:91: [maybe] Conversion to number yields NaN
+test/10k/minesweeper.tidy.html:91: [maybe] Conversion to number yields NaN
+test/10k/minesweeper.tidy.html:91: [maybe] Conversion to number yields NaN
+test/10k/minesweeper.tidy.html:91: [maybe] Conversion to number yields NaN
+test/10k/minesweeper.tidy.html:91: [maybe] Conversion to number yields NaN
+test/10k/minesweeper.tidy.html:91: [maybe] Conversion to number yields NaN
+test/10k/minesweeper.tidy.html:91: [maybe] Conversion to number yields NaN
+test/10k/minesweeper.tidy.html:91: [maybe] Conversion to number yields NaN
+test/10k/minesweeper.tidy.html:91: [maybe] Converting boolean to string
+test/10k/minesweeper.tidy.html:91: [maybe] Converting primitive boolean to object
+test/10k/minesweeper.tidy.html:91: [maybe] Converting primitive boolean to object
+test/10k/minesweeper.tidy.html:91: [maybe] Converting primitive number to object
+test/10k/minesweeper.tidy.html:91: [maybe] Converting primitive number to object
+test/10k/minesweeper.tidy.html:102: [maybe] Conversion to number yields NaN
+test/10k/minesweeper.tidy.html:102: [maybe] Converting primitive number to object
+test/10k/minesweeper.tidy.html:102: [maybe] Converting primitive number to object
+test/10k/minesweeper.tidy.html:103: [maybe] Conversion to number yields NaN
+test/10k/minesweeper.tidy.html:103: [maybe] Converting primitive number to object
+test/10k/minesweeper.tidy.html:103: [maybe] Converting primitive number to object
+test/10k/minesweeper.tidy.html:116: [maybe] Converting primitive boolean to object
+test/10k/minesweeper.tidy.html:116: [maybe] Converting primitive number to object
+test/10k/minesweeper.tidy.html:117: [maybe] Converting primitive boolean to object
+test/10k/minesweeper.tidy.html:117: [maybe] Converting primitive boolean to object
+test/10k/minesweeper.tidy.html:117: [maybe] Converting primitive number to object
+test/10k/minesweeper.tidy.html:117: [maybe] Converting primitive number to object
+test/10k/minesweeper.tidy.html:118: [maybe] Converting primitive boolean to object
+test/10k/minesweeper.tidy.html:118: [maybe] Converting primitive boolean to object
+test/10k/minesweeper.tidy.html:118: [maybe] Converting primitive number to object
+test/10k/minesweeper.tidy.html:118: [maybe] Converting primitive number to object
+test/10k/minesweeper.tidy.html:119: [maybe] Converting primitive boolean to object
+test/10k/minesweeper.tidy.html:119: [maybe] Converting primitive boolean to object
+test/10k/minesweeper.tidy.html:119: [maybe] Converting primitive number to object
+test/10k/minesweeper.tidy.html:119: [maybe] Converting primitive number to object
+test/10k/minesweeper.tidy.html:174: [maybe] Converting primitive boolean to object
+test/10k/minesweeper.tidy.html:174: [maybe] Converting primitive boolean to object
+test/10k/minesweeper.tidy.html:174: [maybe] Converting primitive number to object
+test/10k/minesweeper.tidy.html:174: [maybe] Converting primitive number to object
+test/10k/minesweeper.tidy.html:175: [maybe] Converting primitive boolean to object
+test/10k/minesweeper.tidy.html:175: [maybe] Converting primitive boolean to object
+test/10k/minesweeper.tidy.html:175: [maybe] Converting primitive number to object
+test/10k/minesweeper.tidy.html:175: [maybe] Converting primitive number to object
+test/10k/minesweeper.tidy.html:176: [maybe] Conversion to number yields NaN
+test/10k/minesweeper.tidy.html:176: [maybe] Converting primitive boolean to object
+test/10k/minesweeper.tidy.html:176: [maybe] Converting primitive boolean to object
+test/10k/minesweeper.tidy.html:176: [maybe] Converting primitive boolean to object
+test/10k/minesweeper.tidy.html:176: [maybe] Converting primitive boolean to object
+test/10k/minesweeper.tidy.html:176: [maybe] Converting primitive number to object
+test/10k/minesweeper.tidy.html:176: [maybe] Converting primitive number to object
+test/10k/minesweeper.tidy.html:176: [maybe] Converting primitive number to object
+test/10k/minesweeper.tidy.html:176: [maybe] Converting primitive number to object

@@ -1,0 +1,5 @@
+test/micro/test102.js:3:1: [info] Abstract value: 0.0
+test/micro/test102.js:4:1: [info] Abstract value: 799.0
+test/micro/test102.js:6:2: [info] Abstract value: "foo"
+test/micro/test102.js:9:1: [info] Abstract value: UInt
+test/micro/test102.js:10:1: [info] Abstract value: "bar"

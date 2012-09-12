@@ -1,0 +1,18 @@
+test/benchmarks/ajax/foundations/chp4/autoComplete.tidy.html:30:13: [definite] The conditional expression is always true
+test/benchmarks/ajax/foundations/chp4/autoComplete.tidy.html:20: [definite] The variable nameTable is never used
+test/benchmarks/ajax/foundations/chp4/autoComplete.tidy.html:58:9: [definite] Unreachable function callback
+test/benchmarks/ajax/foundations/chp4/autoComplete.tidy.html:69:9: [definite] Unreachable function setNames
+test/benchmarks/ajax/foundations/chp4/autoComplete.tidy.html:80:35: [definite] Unreachable function
+test/benchmarks/ajax/foundations/chp4/autoComplete.tidy.html:81:36: [definite] Unreachable function
+test/benchmarks/ajax/foundations/chp4/autoComplete.tidy.html:84:32: [definite] Unreachable function
+test/benchmarks/ajax/foundations/chp4/autoComplete.tidy.html:93:9: [definite] Unreachable function setOffsets
+test/benchmarks/ajax/foundations/chp4/autoComplete.tidy.html:104:9: [definite] Unreachable function calculateOffsetLeft
+test/benchmarks/ajax/foundations/chp4/autoComplete.tidy.html:108:9: [definite] Unreachable function calculateOffsetTop
+test/benchmarks/ajax/foundations/chp4/autoComplete.tidy.html:112:9: [definite] Unreachable function calculateOffset
+test/benchmarks/ajax/foundations/chp4/autoComplete.tidy.html:121:9: [definite] Unreachable function populateName
+test/benchmarks/ajax/foundations/chp4/autoComplete.tidy.html:128:44: [definite] Unreachable code
+test/benchmarks/ajax/foundations/chp4/autoComplete.tidy.html:141:2: [definite] The variable event is never used
+test/benchmarks/ajax/foundations/chp4/autoComplete.tidy.html:50:17: [maybe] TypeError, accessing property of null/undefined
+test/benchmarks/ajax/foundations/chp4/autoComplete.tidy.html:20: [maybe] Uncaught exception, constructed at [test/benchmarks/ajax/foundations/chp4/autoComplete.tidy.html:50:17]
+test/benchmarks/ajax/foundations/chp4/autoComplete.tidy.html:47:17: [maybe] Converting primitive string to object
+test/benchmarks/ajax/foundations/chp4/autoComplete.tidy.html:129:44: [maybe] Reading absent property (computed name)

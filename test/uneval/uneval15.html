@@ -1,0 +1,8 @@
+<script>
+function f() {dumpValue(33)}
+if (Math.random() == 0.5)
+	ed = f;
+else
+	ed = "dumpValue(42)"
+window.setTimeout(ed,10);
+</script>

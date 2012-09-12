@@ -1,0 +1,24 @@
+test/resig/ejohn90.js:18:14: [maybe] TypeError, accessing property of null/undefined
+test/resig/ejohn90.js:30:12: [maybe] TypeError, accessing property of null/undefined
+test/resig/ejohn90.js:47:1: [maybe] Assertion fails
+test/resig/ejohn90.js:47:9: [maybe] TypeError, accessing property of null/undefined
+test/resig/ejohn90.js:48:1: [maybe] Assertion fails
+test/resig/ejohn90.js:48:9: [maybe] TypeError, accessing property of null/undefined
+test/resig/ejohn90.js:49:1: [maybe] Assertion fails
+test/resig/ejohn90.js:49:9: [maybe] TypeError, accessing property of null/undefined
+test/resig/ejohn90.js:50:1: [maybe] Assertion fails
+test/resig/ejohn90.js:1:1: [maybe] Uncaught exception, constructed at [test/resig/ejohn90.js:18:14, test/resig/ejohn90.js:30:12, test/resig/ejohn90.js:47:9, test/resig/ejohn90.js:48:9, test/resig/ejohn90.js:49:9]
+test/resig/ejohn90.js:6:13: [maybe] Reading absent property (computed name)
+test/resig/ejohn90.js:30:12: [maybe] Converting primitive string to object
+test/resig/ejohn90.js:30:12: [maybe] Reading absent property (computed name)
+test/resig/ejohn90.js:31:19: [maybe] Reading absent property (computed name)
+test/resig/ejohn90.js:40:12: [maybe] Reading absent property (computed name)
+test/resig/ejohn90.js:40:26: [maybe] Converting undefined to string
+test/resig/ejohn90.js:40:26: [maybe] Converting undefined to string
+test/resig/ejohn90.js:41:19: [maybe] Reading absent property (computed name)
+test/resig/ejohn90.js:2:4: [info] Abstract value: "find"
+test/resig/ejohn90.js:3:4: [info] Abstract value: [@Object#node5]
+test/resig/ejohn90.js:4:4: [info] Abstract value: [@<anonymous>#fun4, @<anonymous>#fun5, @<anonymous>#fun6]
+test/resig/ejohn90.js:35:5: [info] Abstract value: [@Object#node5]
+test/resig/ejohn90.js:36:2: [info] Abstract value: Undef|IdentStr
+test/resig/ejohn90.js:37:2: [info] Abstract value: Undef|IdentStr

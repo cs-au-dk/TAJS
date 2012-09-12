@@ -1,0 +1,18 @@
+Unevalizer: Starting on: "z = 3"
+Unevalizer: Valid program
+Unevalizer: No name capture
+Unevalizer: Return value of eval is used
+Unevalizer: Last expression has value
+Unevalizer: Starting on: "y = 4"
+Unevalizer: Valid program
+Unevalizer: No name capture
+Unevalizer: Return value of eval is used
+Unevalizer: Last expression has value
+Unevalizer: Starting on: "y = 5"
+Unevalizer: Valid program
+Unevalizer: No name capture
+Unevalizer: Return value of eval is used
+Unevalizer: Last expression has value
+test/uneval/uneval36.js:5:1: [info] Abstract value: 3.0
+test/uneval/uneval36.js:6:1: [info] Abstract value: 4.0
+test/uneval/uneval36.js:7:1: [info] Abstract value: 5.0

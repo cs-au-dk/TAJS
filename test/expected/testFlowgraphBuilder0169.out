@@ -1,0 +1,116 @@
+fg2: <main> function()
+  block 0: [entry]
+    node 0: constant[undefined,v1] (test/flowgraph_builder/flowgraph_builder0169.js:1:1)
+    node 1: function-decl[function Board(),-] (test/flowgraph_builder/flowgraph_builder0169.js:7:1)
+    ->[block 1]
+  block 1:
+    node 2: read-variable['this',v3,-] (test/flowgraph_builder/flowgraph_builder0169.js:1:3)
+    node 3: read-variable['Board',v4,-] (test/flowgraph_builder/flowgraph_builder0169.js:1:24)
+    ->[block 2]
+  block 2:
+    node 4: construct[-,v4,v2] (test/flowgraph_builder/flowgraph_builder0169.js:1:24)
+    ->[block 3]
+  block 3:
+    node 5: write-property[v3,'board',v2]* (test/flowgraph_builder/flowgraph_builder0169.js:1:3)
+    node 6: read-variable['this',v7,-] (test/flowgraph_builder/flowgraph_builder0169.js:3:1)
+    node 7: read-property[v7,'board',v6] (test/flowgraph_builder/flowgraph_builder0169.js:3:1)
+    node 8: read-property[v6,'create',v5] (test/flowgraph_builder/flowgraph_builder0169.js:3:1)
+    node 9: <property-non-null-undef>[v7,'board'] (test/flowgraph_builder/flowgraph_builder0169.js:3:1)
+    node 10: constant[10.0,v8] (test/flowgraph_builder/flowgraph_builder0169.js:3:19)
+    node 11: constant[10.0,v9] (test/flowgraph_builder/flowgraph_builder0169.js:3:23)
+    node 12: constant[10.0,v10] (test/flowgraph_builder/flowgraph_builder0169.js:3:28)
+    ->[block 4]
+  block 4:
+    node 13: call[v6,v5,v8,v9,v10,-]* (test/flowgraph_builder/flowgraph_builder0169.js:3:1)
+    ->[block 5]
+  block 5:
+    node 14: read-variable['this',v13,-] (test/flowgraph_builder/flowgraph_builder0169.js:4:1)
+    node 15: read-property[v13,'board',v12] (test/flowgraph_builder/flowgraph_builder0169.js:4:1)
+    node 16: read-property[v12,'create',v11] (test/flowgraph_builder/flowgraph_builder0169.js:4:1)
+    node 17: <property-non-null-undef>[v13,'board'] (test/flowgraph_builder/flowgraph_builder0169.js:4:1)
+    node 18: constant[15.0,v14] (test/flowgraph_builder/flowgraph_builder0169.js:4:19)
+    node 19: constant[15.0,v15] (test/flowgraph_builder/flowgraph_builder0169.js:4:23)
+    node 20: constant[25.0,v16] (test/flowgraph_builder/flowgraph_builder0169.js:4:28)
+    ->[block 6]
+  block 6:
+    node 21: call[v12,v11,v14,v15,v16,-]* (test/flowgraph_builder/flowgraph_builder0169.js:4:1)
+    ->[block 7]
+  block 7: [exit-ordinary]
+    node 22: return[v1] (test/flowgraph_builder/flowgraph_builder0169.js:1:1)
+    ->[]
+  block 8: [exit-exceptional]
+    node 23: exceptional-return (test/flowgraph_builder/flowgraph_builder0169.js:1:1)
+    ->[]
+function Board()
+  block 18: [entry]
+    node 58: constant[undefined,v1] (test/flowgraph_builder/flowgraph_builder0169.js:7:1)
+    ->[block 19]
+  block 19:
+    node 59: read-variable['this',v3,-] (test/flowgraph_builder/flowgraph_builder0169.js:8:3)
+    node 60: function-expr[function(rows,cols),v2] (test/flowgraph_builder/flowgraph_builder0169.js:8:17)
+    node 61: write-property[v3,'create',v2]* (test/flowgraph_builder/flowgraph_builder0169.js:8:3)
+    ->[block 20]
+  block 20: [exit-ordinary]
+    node 62: return[v1] (test/flowgraph_builder/flowgraph_builder0169.js:7:1)
+    ->[]
+  block 21: [exit-exceptional]
+    node 63: exceptional-return (test/flowgraph_builder/flowgraph_builder0169.js:7:1)
+    ->[]
+function(rows,cols)
+  block 9: [entry]
+    node 24: constant[undefined,v1] (test/flowgraph_builder/flowgraph_builder0169.js:8:17)
+    ->[block 10]
+  block 10:
+    node 25: read-variable['this',v3,-] (test/flowgraph_builder/flowgraph_builder0169.js:9:5)
+    node 26: constant[17.0,v2] (test/flowgraph_builder/flowgraph_builder0169.js:9:18)
+    node 27: write-property[v3,'cells',v2]* (test/flowgraph_builder/flowgraph_builder0169.js:9:5)
+    node 28: constant[0.0,v5] (test/flowgraph_builder/flowgraph_builder0169.js:10:17)
+    node 29: write-variable[v5,'row'] (test/flowgraph_builder/flowgraph_builder0169.js:10:11)
+    ->[block 11]
+  block 11:
+    node 30: read-variable['row',v6,-] (test/flowgraph_builder/flowgraph_builder0169.js:10:20)
+    node 31: read-variable['rows',v7,-] (test/flowgraph_builder/flowgraph_builder0169.js:10:27)
+    node 32: !=[v6,v7,v4] (test/flowgraph_builder/flowgraph_builder0169.js:10:20)
+    node 33: if[v4](true-block:12,false-block:16) (test/flowgraph_builder/flowgraph_builder0169.js:10:5)
+    ->[block 12,block 16]
+  block 12:
+    node 34: constant[0.0,v9] (test/flowgraph_builder/flowgraph_builder0169.js:11:18)
+    node 35: write-variable[v9,'col'] (test/flowgraph_builder/flowgraph_builder0169.js:11:12)
+    ->[block 13]
+  block 13:
+    node 36: read-variable['col',v10,-] (test/flowgraph_builder/flowgraph_builder0169.js:11:21)
+    node 37: read-variable['cols',v11,-] (test/flowgraph_builder/flowgraph_builder0169.js:11:28)
+    node 38: !=[v10,v11,v8] (test/flowgraph_builder/flowgraph_builder0169.js:11:21)
+    node 39: if[v8](true-block:14,false-block:15) (test/flowgraph_builder/flowgraph_builder0169.js:11:7)
+    ->[block 14,block 15]
+  block 14:
+    node 40: read-variable['this',v15,-] (test/flowgraph_builder/flowgraph_builder0169.js:12:9)
+    node 41: read-property[v15,'cells',v13] (test/flowgraph_builder/flowgraph_builder0169.js:12:9)
+    node 42: read-variable['col',v14,-] (test/flowgraph_builder/flowgraph_builder0169.js:12:20)
+    node 43: constant[3.0,v12] (test/flowgraph_builder/flowgraph_builder0169.js:12:27)
+    node 44: write-property[v13,v14,v12] (test/flowgraph_builder/flowgraph_builder0169.js:12:9)
+    node 45: <property-non-null-undef>[v15,'cells']* (test/flowgraph_builder/flowgraph_builder0169.js:12:9)
+    node 46: constant[1.0,v16] (test/flowgraph_builder/flowgraph_builder0169.js:11:34)
+    node 47: read-variable['col',v17,-] (test/flowgraph_builder/flowgraph_builder0169.js:11:37)
+    node 48: +[v17,v18] (test/flowgraph_builder/flowgraph_builder0169.js:11:34)
+    node 49: +[v18,v16,v19] (test/flowgraph_builder/flowgraph_builder0169.js:11:34)
+    node 50: write-variable[v19,'col'] (test/flowgraph_builder/flowgraph_builder0169.js:11:34)
+    ->[block 13]
+  block 15:
+    node 51: constant[1.0,v12] (test/flowgraph_builder/flowgraph_builder0169.js:10:33)
+    node 52: read-variable['row',v13,-] (test/flowgraph_builder/flowgraph_builder0169.js:10:36)
+    node 53: +[v13,v14] (test/flowgraph_builder/flowgraph_builder0169.js:10:33)
+    node 54: +[v14,v12,v15] (test/flowgraph_builder/flowgraph_builder0169.js:10:33)
+    node 55: write-variable[v15,'row'] (test/flowgraph_builder/flowgraph_builder0169.js:10:33)
+    ->[block 11]
+  block 16: [exit-ordinary]
+    node 56: return[v1] (test/flowgraph_builder/flowgraph_builder0169.js:8:17)
+    ->[]
+  block 17: [exit-exceptional]
+    node 57: exceptional-return (test/flowgraph_builder/flowgraph_builder0169.js:8:17)
+    ->[]
+
+test/flowgraph_builder/flowgraph_builder0169.js:1:3: [definite] Reading 'this' yields the global object
+test/flowgraph_builder/flowgraph_builder0169.js:3:1: [definite] Reading 'this' yields the global object
+test/flowgraph_builder/flowgraph_builder0169.js:4:1: [definite] Reading 'this' yields the global object
+test/flowgraph_builder/flowgraph_builder0169.js:12:9: [maybe] Converting primitive number to object

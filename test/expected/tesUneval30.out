@@ -1,0 +1,70 @@
+Unevalizer: Starting on: "subPointArr_0"
+Unevalizer: Valid program
+Unevalizer: No name capture
+Unevalizer: Return value of eval is used
+Unevalizer: Last expression has value
+Unevalizer: Starting on: "subPointArr_0"
+Unevalizer: Valid program
+Unevalizer: No name capture
+Unevalizer: Return value of eval is used
+Unevalizer: Last expression has value
+Unevalizer: Starting on: "subPointArr_0"
+Unevalizer: Valid program
+Unevalizer: No name capture
+Unevalizer: Return value of eval is used
+Unevalizer: Last expression has value
+Unevalizer: Starting on: "subPointArr_0"
+Unevalizer: Valid program
+Unevalizer: No name capture
+Unevalizer: Return value of eval is used
+Unevalizer: Last expression has value
+Unevalizer: Starting on: "subPointArr_0"
+Unevalizer: Valid program
+Unevalizer: No name capture
+Unevalizer: Return value of eval is used
+Unevalizer: Last expression has value
+Unevalizer: Starting on: "subPointArr_0"
+Unevalizer: Valid program
+Unevalizer: No name capture
+Unevalizer: Return value of eval is used
+Unevalizer: Last expression has value
+Unevalizer: Starting on: "subPointArr_0"
+Unevalizer: Valid program
+Unevalizer: No name capture
+Unevalizer: Return value of eval is used
+Unevalizer: Last expression has value
+Unevalizer: Starting on: "subPointArr_" + TAJS_TEMPORARY_20
+Unevalizer: Not a constant string
+Unevalizer: Starting on: "subPointArr_" + TAJS_TEMPORARY_36
+Unevalizer: Not a constant string
+Unevalizer: Starting on: "subPointArr_" + TAJS_TEMPORARY_20
+Unevalizer: Not a constant string
+Unevalizer: Starting on: "subPointArr_" + TAJS_TEMPORARY_36
+Unevalizer: Not a constant string
+Unevalizer: Starting on: "subPointArr_" + TAJS_TEMPORARY_36
+Unevalizer: Not a constant string
+test/uneval/uneval30.tidy.html:5: [definite] The variable subPointArr_0 is never used
+test/uneval/uneval30.tidy.html:5: [definite] The variable subPointArr_1 is never used
+test/uneval/uneval30.tidy.html:5: [definite] The variable subPointArr_2 is never used
+test/uneval/uneval30.tidy.html:5: [definite] The variable subPointArr_3 is never used
+test/uneval/uneval30.tidy.html:5: [definite] The variable subPointArr_4 is never used
+test/uneval/uneval30.tidy.html:5: [definite] The variable subPointArr_5 is never used
+test/uneval/uneval30.tidy.html:47:1: [definite] Unreachable function showHidePoints
+test/uneval/uneval30.tidy.html:33:19: [maybe] TypeError, accessing property of null/undefined
+test/uneval/uneval30.tidy.html:35:91: [maybe] TypeError, accessing property of null/undefined
+test/uneval/uneval30.tidy.html:37:107: [maybe] TypeError, accessing property of null/undefined
+test/uneval/uneval30.tidy.html:1:12: [maybe] Reading absent property (computed name)
+test/uneval/uneval30.tidy.html:1:12: [maybe] Reading absent property (computed name)
+test/uneval/uneval30.tidy.html:1:12: [maybe] Reading absent property (computed name)
+test/uneval/uneval30.tidy.html:5: [maybe] Uncaught exception, constructed at [test/uneval/uneval30.tidy.html:33:19, test/uneval/uneval30.tidy.html:35:91, test/uneval/uneval30.tidy.html:37:107]
+test/uneval/uneval30.tidy.html:26:24: [maybe] Converting undefined to string
+test/uneval/uneval30.tidy.html:26:478: [maybe] Reading absent property (computed name)
+test/uneval/uneval30.tidy.html:30:24: [maybe] Converting undefined to string
+test/uneval/uneval30.tidy.html:30:462: [maybe] Reading absent property (computed name)
+test/uneval/uneval30.tidy.html:35:26: [maybe] Converting undefined to string
+test/uneval/uneval30.tidy.html:35:91: [maybe] Reading absent property (computed name)
+test/uneval/uneval30.tidy.html:37:26: [maybe] Converting undefined to string
+test/uneval/uneval30.tidy.html:37:107: [maybe] Reading absent property (computed name)
+test/uneval/uneval30.tidy.html:1:12: [info] Reading from unknown property that may cause loss of precision
+test/uneval/uneval30.tidy.html:1:12: [info] Reading from unknown property that may cause loss of precision
+test/uneval/uneval30.tidy.html:1:12: [info] Reading from unknown property that may cause loss of precision

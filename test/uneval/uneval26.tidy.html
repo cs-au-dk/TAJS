@@ -1,0 +1,101 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN"
+lang="zh-CN">
+<head>
+<meta name="generator"
+content="HTML Tidy for Java (vers. 2009-12-01), see jtidy.sourceforge.net" />
+<meta http-equiv="content-type" content="text/html; charset=GBK" />
+<title></title>
+</head>
+<body>
+<script type="text/javascript" language="Javascript">
+//<![CDATA[
+var _N = false,
+    _O = _P = new Array(),
+    _M = document.body;
+
+document.pv = new Array();
+
+function _SoAD_Paraminit() {
+        _M = document.body;
+}
+
+function _SoAD_init() {
+    if (!_M) {
+        _SoAD_Paraminit();
+    }
+    if (_N) {
+        return;
+    }
+    _N = !_N;
+    _O.sort(function(a, b) {
+        return (a.p > b.p) ? 1 : ((a.p == b.p) ? 0 : -1);
+    });
+    for (var i = 0; i < _O.length; i++) {
+         _O[i].s = 1;
+         _SoAD_exec(_O[i]);
+    }
+}
+function _SoAD_exec(o) {
+    if (eval("typeof(" + o.t + "_main)") == "function") {
+        eval(o.t + "_main(o)");
+    }
+}
+function AddSchedule(o) {
+    if (o && o instanceof ADM) {
+        switch (o.t) {
+        case "FULL":
+        case "BEITOU":
+            if (o.src.length > 0) {
+                _O.push(o);
+            }
+            break;
+        case "FLOAT":
+            if (o.src) {
+                _O.push(o);
+            }
+            break;
+        case "LIUMEITI":
+            if (o.src) {
+                _O.push(o);
+            }
+            break;
+        case "COUPLET":
+            if (o.src.length > 0) {
+                _O.push(o);
+            }
+            break;
+        default:
+            _O.push(o);
+        }
+    }
+}
+
+ 
+function FULL_main(o) { }
+function BEITOU_main(o) { }
+
+
+function ADM(a, b) {
+    this.t = a;
+}
+
+AD = new ADM("FULL", 1);
+AD.StartTime = [];
+AD.EndTime = [];
+AD.src = [];
+AD.href = [];
+
+AD.StartTime.push("2008/01/03 08:00");
+    AD.EndTime.push("2008/01/03 23:00");
+    AD.src.push("http://images.sohu.com/cs/button/kelaisile/2007/7604801108g.jpg");
+    AD.href.push("http://doc.go.sohu.com/200711/e4c8096bc2890a825d1531e2e5b89b36.php");
+AddSchedule(AD);
+AD = new ADM("BEITOU", 4);
+AD.src=[];
+AddSchedule(AD);
+_SoAD_init()
+//]]>
+</script>
+</body>
+</html>
+

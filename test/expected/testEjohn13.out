@@ -1,0 +1,3 @@
+test/resig/ejohn13.js:3:20: [maybe] TypeError, accessing property of null/undefined
+test/resig/ejohn13.js:6:1: [maybe] Assertion fails
+test/resig/ejohn13.js:14:3: [maybe] Assertion fails

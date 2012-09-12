@@ -1,0 +1,2 @@
+test/micro/testFunctionApply.js:16:1: [definite] Dead assignment, property 0 is never read
+test/micro/testFunctionApply.js:15:1: [info] Abstract object: {length:2.0,[[Prototype]]=[@Array.prototype[native]]}

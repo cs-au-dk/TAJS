@@ -1,0 +1,52 @@
+fg2: <main> function()
+  block 0: [entry]
+    node 0: constant[undefined,v1] (test/flowgraph_builder/flowgraph_builder0110.js:1:1)
+    node 1: vardecl['x'] (test/flowgraph_builder/flowgraph_builder0110.js:1:1)
+    node 2: vardecl['y'] (test/flowgraph_builder/flowgraph_builder0110.js:2:1)
+    ->[block 1]
+  block 1:
+    node 3: new[v2] (test/flowgraph_builder/flowgraph_builder0110.js:1:9)
+    node 4: constant[42.0,v3] (test/flowgraph_builder/flowgraph_builder0110.js:1:12)
+    node 5: write-property[v2,'a',v3] (test/flowgraph_builder/flowgraph_builder0110.js:1:9)
+    node 6: write-variable[v2,'x']* (test/flowgraph_builder/flowgraph_builder0110.js:1:1)
+    node 7: new[v4] (test/flowgraph_builder/flowgraph_builder0110.js:2:9)
+    node 8: constant[42.0,v5] (test/flowgraph_builder/flowgraph_builder0110.js:2:12)
+    node 9: write-property[v4,'b',v5] (test/flowgraph_builder/flowgraph_builder0110.js:2:9)
+    node 10: write-variable[v4,'y']* (test/flowgraph_builder/flowgraph_builder0110.js:2:1)
+    node 11: read-variable['z',v11,-] (test/flowgraph_builder/flowgraph_builder0110.js:4:12)
+    node 12: if[v11](true-block:2,false-block:3) (test/flowgraph_builder/flowgraph_builder0110.js:4:12)
+    ->[block 2,block 3]
+  block 2:
+    node 13: read-variable['x',v7,-] (test/flowgraph_builder/flowgraph_builder0110.js:4:16)
+    ->[block 4]
+  block 3:
+    node 14: read-variable['y',v7,-] (test/flowgraph_builder/flowgraph_builder0110.js:4:20)
+    ->[block 4]
+  block 4:
+    node 15: begin-for-in[v7,v8] (test/flowgraph_builder/flowgraph_builder0110.js:4:1)
+    ->[block 5]
+  block 5:
+    node 16: has-next[v8,v9] (test/flowgraph_builder/flowgraph_builder0110.js:4:1)
+    node 17: if[v9](true-block:6,false-block:8) (test/flowgraph_builder/flowgraph_builder0110.js:4:1)
+    ->[block 6,block 8]
+  block 6:
+    node 18: next-property[v8,v10] (test/flowgraph_builder/flowgraph_builder0110.js:4:1)
+    node 19: write-variable[v10,'b'] (test/flowgraph_builder/flowgraph_builder0110.js:4:1)
+    ->[block 7]
+  block 7:
+    node 20: end-for-in(begin-node:15) (test/flowgraph_builder/flowgraph_builder0110.js:4:1)
+    ->[block 5]
+  block 8: [exit-ordinary]
+    node 21: return[v1] (test/flowgraph_builder/flowgraph_builder0110.js:1:1)
+    ->[]
+  block 9: [exit-exceptional]
+    node 22: exceptional-return (test/flowgraph_builder/flowgraph_builder0110.js:1:1)
+    ->[]
+
+test/flowgraph_builder/flowgraph_builder0110.js:4:12: [definite] ReferenceError, reading absent variable z
+test/flowgraph_builder/flowgraph_builder0110.js:1:9: [definite] Dead assignment, property a is never read
+test/flowgraph_builder/flowgraph_builder0110.js:2:9: [definite] Dead assignment, property b is never read
+test/flowgraph_builder/flowgraph_builder0110.js:1:1: [definite] The variable x is never used
+test/flowgraph_builder/flowgraph_builder0110.js:1:1: [definite] The variable y is never used
+test/flowgraph_builder/flowgraph_builder0110.js:4:12: [definite] Unreachable code
+test/flowgraph_builder/flowgraph_builder0110.js:1:1: [maybe] Uncaught exception, constructed at [test/flowgraph_builder/flowgraph_builder0110.js:4:12]

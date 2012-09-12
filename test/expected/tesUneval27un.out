@@ -1,0 +1,44 @@
+Unevalizer: Starting on: "window.wl10202camp"
+Unevalizer: Valid program
+Unevalizer: No name capture
+Unevalizer: Return value of eval is used
+Unevalizer: Last expression has value
+Unevalizer: Starting on: "window." + TAJS_TEMPORARY_37
+Unevalizer: Not a constant string
+Unevalizer: Starting on: "window." + TAJS_TEMPORARY_37
+Unevalizer: Not a constant string
+Unevalizer: Starting on: "window." + TAJS_TEMPORARY_46 + ".length"
+Unevalizer: Not a constant string
+Unevalizer: Starting on: "window." + TAJS_TEMPORARY_37
+Unevalizer: Not a constant string
+Unevalizer: Starting on: "window." + TAJS_TEMPORARY_46 + ".length"
+Unevalizer: Not a constant string
+Unevalizer: Starting on: "window." + TAJS_TEMPORARY_37
+Unevalizer: Not a constant string
+Unevalizer: Starting on: "window." + TAJS_TEMPORARY_46 + ".length"
+Unevalizer: Not a constant string
+Unevalizer: Starting on: "window." + TAJS_TEMPORARY_37
+Unevalizer: Not a constant string
+Unevalizer: Starting on: "window." + TAJS_TEMPORARY_46 + ".length"
+Unevalizer: Not a constant string
+Unevalizer: Starting on: "window." + TAJS_TEMPORARY_37
+Unevalizer: Not a constant string
+Unevalizer: Starting on: "window." + TAJS_TEMPORARY_46 + ".length"
+Unevalizer: Not a constant string
+test/uneval/uneval27.tidy.html:7: [definite] The variable tmgAds is never used
+test/uneval/uneval27.tidy.html:1:12: [maybe] TypeError, accessing property of null/undefined
+test/uneval/uneval27.tidy.html:17:41: [maybe] TypeError, accessing property of null/undefined
+test/uneval/uneval27.tidy.html:1:12: [maybe] Reading absent property length
+test/uneval/uneval27.tidy.html:1:12: [maybe] Converting primitive number to object
+test/uneval/uneval27.tidy.html:1:12: [maybe] Converting primitive string to object
+test/uneval/uneval27.tidy.html:1:12: [maybe] Reading absent property (computed name)
+test/uneval/uneval27.tidy.html:1:12: [maybe] Reading absent property (computed name)
+test/uneval/uneval27.tidy.html:7: [maybe] Uncaught exception, constructed at [test/uneval/uneval27.tidy.html:1:12, test/uneval/uneval27.tidy.html:17:41]
+test/uneval/uneval27.tidy.html:14:24: [maybe] Reading absent property (computed name)
+test/uneval/uneval27.tidy.html:16:18: [maybe] Converting undefined to string
+test/uneval/uneval27.tidy.html:16:60: [maybe] Conversion to number yields NaN
+test/uneval/uneval27.tidy.html:16:65: [maybe] Converting undefined to string
+test/uneval/uneval27.tidy.html:17:41: [maybe] Converting primitive string to object
+test/uneval/uneval27.tidy.html:17:41: [maybe] Reading absent property (computed name)
+test/uneval/uneval27.tidy.html:1:12: [info] Reading from unknown property that may cause loss of precision
+test/uneval/uneval27.tidy.html:1:12: [info] Reading from unknown property that may cause loss of precision

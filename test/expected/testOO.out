@@ -1,0 +1,27 @@
+test/micro/testOO.js:4:3: [definite] Dead assignment, property name is never read
+test/micro/testOO.js:5:3: [definite] Dead assignment, property count is never read
+test/micro/testOO.js:27:3: [definite] The function Person is invoked both as constructor and function
+test/micro/testOO.js:32:1: [definite] Dead assignment, property Super is never read
+test/micro/testOO.js:54:3: [definite] The function Singer is invoked both as constructor and function
+test/micro/testOO.js:18:1: [info] Abstract value: "jimmy"
+test/micro/testOO.js:19:1: [info] Abstract value: "hello"
+test/micro/testOO.js:20:1: [info] Abstract value: "argh"
+test/micro/testOO.js:21:1: [info] Abstract value: IdentStr
+test/micro/testOO.js:22:1: [info] Abstract value: IdentStr
+test/micro/testOO.js:29:1: [info] Abstract object: {constructor:[@Singer#fun5],[[Prototype]]=[@Object.prototype[native]],[[Value]]=NaN}
+test/micro/testOO.js:31:1: [info] Abstract object: {count:0.0,name:Undef,[[Prototype]]=[@Object#node1]}
+test/micro/testOO.js:33:1: [info] Abstract object: {Super:[@Object#node1],count:0.0,name:Undef,[[Prototype]]=[@Object#node1]}
+test/micro/testOO.js:35:1: [info] Abstract object: {Super:[@Object#node1],count:0.0,name:Undef,sing:[@<anonymous>#fun6],[[Prototype]]=[@Object#node1]}
+test/micro/testOO.js:38:1: [info] Abstract object: {count:0.0,name:"jerry",[[Prototype]]=[@Object#node67]}
+test/micro/testOO.js:39:1: [info] Abstract object: {length:1.0,prototype:[@Object#node67],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@<the global object>[native]]]}
+test/micro/testOO.js:40:1: [info] Abstract object: {Super:[@Object#node1],count:0.0,name:Undef,sing:[@<anonymous>#fun6],[[Prototype]]=[@Object#node1]}
+test/micro/testOO.js:41:1: [info] Abstract object: {length:1.0,prototype:[@Object#node1],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@<the global object>[native]]]}
+test/micro/testOO.js:42:1: [info] Abstract object: {constructor:[@Person#fun1],getName:[@<anonymous>#fun2],say:[@<anonymous>#fun3],slap:[@<anonymous>#fun4],[[Prototype]]=[@Object.prototype[native]],[[Value]]=NaN}
+test/micro/testOO.js:43:1: [info] Abstract value: "jerry"
+test/micro/testOO.js:44:1: [info] Abstract value: "hello"
+test/micro/testOO.js:45:1: [info] Abstract value: "a song tra-la-la"
+test/micro/testOO.js:46:1: [info] Abstract value: "argh"
+test/micro/testOO.js:61:1: [info] Abstract value: "marilyn"
+test/micro/testOO.js:62:1: [info] Abstract value: "Gee, I'm bad"
+test/micro/testOO.js:63:1: [info] Abstract value: Str
+test/micro/testOO.js:64:1: [info] Abstract value: "argh"

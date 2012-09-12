@@ -1,0 +1,456 @@
+includes/fpsometer.js:160: [definite] Reading absent property bodyWidth
+includes/fpsometer.js:161: [definite] Reading absent property bodyHeight
+includes/fpsometer.js:162: [definite] Reading absent property windowSize
+includes/fpsometer.js:167: [definite] Reading absent property ctx
+includes/fpsometer.js:168: [definite] Reading absent property canvas
+includes/fpsometer.js:395: [definite] Reading absent property width
+includes/fpsometer.js:395: [definite] Reading absent property width
+includes/fpsometer.js:396: [definite] Reading absent property height
+includes/fpsometer.js:449: [definite] Reading absent property styleSheets
+test/msie9/mrpotatogun.tidy.html:118: [definite] Reading absent property all
+test/msie9/mrpotatogun.tidy.html:121: [definite] ReferenceError, reading absent variable ev
+test/msie9/mrpotatogun.tidy.html:146: [definite] Reading absent property all
+test/msie9/mrpotatogun.tidy.html:149: [definite] ReferenceError, reading absent variable ev
+test/msie9/mrpotatogun.tidy.html:386: [definite] Reading absent property entranceTime
+test/msie9/mrpotatogun.tidy.html:389: [definite] Reading absent property lastMoveTime
+test/msie9/mrpotatogun.tidy.html:461: [definite] Reading absent property data
+test/msie9/mrpotatogun.tidy.html:488: [definite] Reading absent property play
+test/msie9/mrpotatogun.tidy.html:488: [definite] TypeError, call to non-function
+test/msie9/mrpotatogun.tidy.html:523: [definite] Reading absent property play
+test/msie9/mrpotatogun.tidy.html:523: [definite] TypeError, call to non-function
+test/msie9/mrpotatogun.tidy.html:724: [definite] Reading absent property visible
+test/msie9/mrpotatogun.tidy.html:764: [definite] Reading absent property postMessage
+test/msie9/mrpotatogun.tidy.html:764: [definite] TypeError, call to non-function
+includes/fpsometer.js:130: [definite] Variable initialScore is null/undefined
+includes/fpsometer.js:137: [definite] Variable scoreLabel is null/undefined
+includes/fpsometer.js:284: [definite] Variable snap is null/undefined
+includes/fpsometer.js:296: [definite] Variable snap is null/undefined
+includes/fpsometer.js:464: [definite] Variable retVal is null/undefined
+includes/fpsometer.js:58: [definite] The variable KEY_ENTER is never used
+includes/fpsometer.js:58: [definite] The variable debug is never used
+includes/fpsometer.js:58: [definite] The variable drawInterval is never used
+includes/fpsometer.js:58: [definite] The variable imgBackground is never used
+includes/fpsometer.js:58: [definite] The variable imgReloadHover is never used
+includes/fpsometer.js:58: [definite] The variable labelBrowser is never used
+includes/fpsometer.js:58: [definite] The variable labelScreenSize is never used
+includes/fpsometer.js:148: [definite] Dead assignment, property fps is never read
+includes/fpsometer.js:151: [definite] Dead assignment, property timeDelta is never read
+includes/fpsometer.js:152: [definite] Dead assignment, property timeDeltaS is never read
+includes/fpsometer.js:155: [definite] Dead assignment, property timeDeltaSinceLastFrame is never read
+includes/fpsometer.js:158: [definite] Dead assignment, property frames is never read
+includes/fpsometer.js:163: [definite] Dead assignment, property fpsLabel is never read
+includes/fpsometer.js:170: [definite] Dead assignment, property infoPanel is never read
+includes/fpsometer.js:171: [definite] Dead assignment, property infoPanelScore is never read
+includes/fpsometer.js:172: [definite] Dead assignment, property infoPanelFps is never read
+includes/fpsometer.js:173: [definite] Dead assignment, property infoPanelWindowSize is never read
+includes/fpsometer.js:174: [definite] Dead assignment, property infoPanelScoreLabel is never read
+includes/fpsometer.js:175: [definite] Dead assignment, property infoPanelWindowSizeLabel is never read
+includes/fpsometer.js:178: [definite] Dead assignment, property meterPercentGoal is never read
+includes/fpsometer.js:188: [definite] Dead assignment, property SetSettingsHtml is never read
+includes/fpsometer.js:188: [definite] Unreachable function
+includes/fpsometer.js:189: [definite] Unreachable code
+includes/fpsometer.js:213: [definite] Dead assignment, property timeDeltaS is never read
+includes/fpsometer.js:261: [definite] Unreachable code
+includes/fpsometer.js:266: [definite] Dead assignment, property globalAlpha is never read
+includes/fpsometer.js:284: [definite] The conditional expression is always true
+includes/fpsometer.js:291: [definite] Unreachable code
+includes/fpsometer.js:296: [definite] The conditional expression is always true
+includes/fpsometer.js:304: [definite] Unreachable code
+includes/fpsometer.js:339: [definite] Unreachable code
+includes/fpsometer.js:346: [definite] Dead assignment, property globalAlpha is never read
+includes/fpsometer.js:393: [definite] Dead assignment, property meterFps is never read
+includes/fpsometer.js:429: [definite] The variable e is never used
+includes/fpsometer.js:431: [definite] The conditional expression is always false
+includes/fpsometer.js:431: [definite] Unreachable code
+includes/fpsometer.js:443: [definite] The variable i is never used
+includes/fpsometer.js:443: [definite] The variable rule is never used
+includes/fpsometer.js:443: [definite] The variable ruleIndex is never used
+includes/fpsometer.js:443: [definite] The variable sheet is never used
+includes/fpsometer.js:449: [definite] The conditional expression is always false
+includes/fpsometer.js:450: [definite] Unreachable code
+includes/fpsometer.js:451: [definite] Unreachable code
+includes/fpsometer.js:453: [definite] Unreachable code
+includes/fpsometer.js:455: [definite] Unreachable code
+includes/fpsometer.js:456: [definite] Unreachable code
+includes/fpsometer.js:457: [definite] Unreachable code
+includes/fpsometer.js:464: [definite] The conditional expression is always true
+includes/fpsometer.js:468: [definite] Unreachable code
+test/msie9/mrpotatogun.tidy.html:87: [definite] The conditional expression is always true
+test/msie9/mrpotatogun.tidy.html:118: [definite] The conditional expression is always false
+test/msie9/mrpotatogun.tidy.html:119: [definite] Unreachable code
+test/msie9/mrpotatogun.tidy.html:146: [definite] The conditional expression is always false
+test/msie9/mrpotatogun.tidy.html:147: [definite] Unreachable code
+test/msie9/mrpotatogun.tidy.html:166: [definite] The conditional expression is always false
+test/msie9/mrpotatogun.tidy.html:167: [definite] Unreachable code
+test/msie9/mrpotatogun.tidy.html:176: [definite] The variable e is never used
+test/msie9/mrpotatogun.tidy.html:196: [definite] The assignment to surfaceLeft has no effect
+test/msie9/mrpotatogun.tidy.html:197: [definite] The assignment to surfaceTop has no effect
+test/msie9/mrpotatogun.tidy.html:202: [definite] The conditional expression is always true
+test/msie9/mrpotatogun.tidy.html:353: [definite] Dead assignment, property file is never read
+test/msie9/mrpotatogun.tidy.html:355: [definite] Dead assignment, property frame is never read
+test/msie9/mrpotatogun.tidy.html:358: [definite] Dead assignment, property xInitial is never read
+test/msie9/mrpotatogun.tidy.html:360: [definite] Dead assignment, property rInitial is never read
+test/msie9/mrpotatogun.tidy.html:372: [definite] Dead assignment, property sndVolume is never read
+test/msie9/mrpotatogun.tidy.html:373: [definite] Dead assignment, property sndLastPlay is never read
+test/msie9/mrpotatogun.tidy.html:379: [definite] Dead assignment, property sndDampening is never read
+test/msie9/mrpotatogun.tidy.html:406: [definite] The assignment to labelMovesValue has no effect
+test/msie9/mrpotatogun.tidy.html:410: [definite] The assignment to labelFPSValue has no effect
+test/msie9/mrpotatogun.tidy.html:411: [definite] The assignment to sceneAnimating has no effect
+test/msie9/mrpotatogun.tidy.html:412: [definite] The assignment to sceneDescending has no effect
+test/msie9/mrpotatogun.tidy.html:413: [definite] The assignment to animateInTurboMode has no effect
+test/msie9/mrpotatogun.tidy.html:424: [definite] The assignment to displayHead has no effect
+test/msie9/mrpotatogun.tidy.html:427: [definite] The assignment to sceneReloading has no effect
+test/msie9/mrpotatogun.tidy.html:428: [definite] The assignment to gunLoaded has no effect
+test/msie9/mrpotatogun.tidy.html:439: [definite] The assignment to sceneDescending has no effect
+test/msie9/mrpotatogun.tidy.html:441: [definite] The assignment to gunLoaded has no effect
+test/msie9/mrpotatogun.tidy.html:453: [definite] The assignment to turboModeEnabled has no effect
+test/msie9/mrpotatogun.tidy.html:457: [definite] The assignment to turboModeEnabled has no effect
+test/msie9/mrpotatogun.tidy.html:477: [definite] The assignment to sceneAnimating has no effect
+test/msie9/mrpotatogun.tidy.html:483: [definite] The variable piece has values with different types
+test/msie9/mrpotatogun.tidy.html:492: [definite] The assignment to animateInTurboMode has no effect
+test/msie9/mrpotatogun.tidy.html:519: [definite] The assignment to sceneReloading has no effect
+test/msie9/mrpotatogun.tidy.html:536: [definite] The assignment to sceneDescending has no effect
+test/msie9/mrpotatogun.tidy.html:537: [definite] The assignment to displayHead has no effect
+test/msie9/mrpotatogun.tidy.html:564: [definite] The variable piece has values with different types
+test/msie9/mrpotatogun.tidy.html:566: [definite] The assignment to stillAnimating has no effect
+test/msie9/mrpotatogun.tidy.html:739: [definite] The variable labelFPSValue has values with different types
+test/msie9/mrpotatogun.tidy.html:744: [definite] The variable labelMovesValue has values with different types
+test/msie9/mrpotatogun.tidy.html:765: [definite] Unreachable code
+test/msie9/mrpotatogun.tidy.html:766: [definite] Unreachable code
+test/msie9/mrpotatogun.tidy.html:767: [definite] Unreachable code
+test/msie9/mrpotatogun.tidy.html:768: [definite] Unreachable code
+test/msie9/mrpotatogun.tidy.html:769: [definite] Unreachable code
+test/msie9/mrpotatogun.tidy.html:777: [definite] The variable piece is never used
+test/msie9/mrpotatogun.tidy.html:801: [definite] The variable event is never used
+includes/fpsometer.js:69: [definite] Converting primitive string to object
+includes/fpsometer.js:69: [definite] Converting primitive string to object
+includes/fpsometer.js:73: [definite] Converting primitive string to object
+includes/fpsometer.js:73: [definite] Converting primitive string to object
+includes/fpsometer.js:74: [definite] Converting primitive string to object
+includes/fpsometer.js:74: [definite] Converting primitive string to object
+includes/fpsometer.js:76: [definite] Converting primitive string to object
+includes/fpsometer.js:76: [definite] Converting primitive string to object
+includes/fpsometer.js:78: [definite] Converting primitive string to object
+includes/fpsometer.js:78: [definite] Converting primitive string to object
+includes/fpsometer.js:79: [definite] Converting primitive string to object
+includes/fpsometer.js:79: [definite] Converting primitive string to object
+includes/fpsometer.js:81: [definite] Converting primitive string to object
+includes/fpsometer.js:81: [definite] Converting primitive string to object
+includes/fpsometer.js:83: [definite] Converting primitive string to object
+includes/fpsometer.js:83: [definite] Converting primitive string to object
+includes/fpsometer.js:84: [definite] Converting primitive string to object
+includes/fpsometer.js:84: [definite] Converting primitive string to object
+includes/fpsometer.js:86: [definite] Converting primitive string to object
+includes/fpsometer.js:86: [definite] Converting primitive string to object
+includes/fpsometer.js:90: [definite] Converting primitive string to object
+includes/fpsometer.js:90: [definite] Converting primitive string to object
+includes/fpsometer.js:91: [definite] Converting primitive string to object
+includes/fpsometer.js:91: [definite] Converting primitive string to object
+includes/fpsometer.js:92: [definite] Converting primitive string to object
+includes/fpsometer.js:92: [definite] Converting primitive string to object
+includes/fpsometer.js:94: [definite] Converting primitive string to object
+includes/fpsometer.js:94: [definite] Converting primitive string to object
+includes/fpsometer.js:445: [definite] Converting primitive string to object
+includes/fpsometer.js:445: [definite] Converting primitive string to object
+includes/fpsometer.js:105: [maybe] Reading absent property body
+includes/fpsometer.js:105: [maybe] Reading absent property body
+includes/fpsometer.js:105: [maybe] TypeError, reading property of null/undefined
+includes/fpsometer.js:105: [maybe] TypeError, reading property of null/undefined
+includes/fpsometer.js:111: [maybe] Reading absent property body
+includes/fpsometer.js:111: [maybe] Reading absent property body
+includes/fpsometer.js:111: [maybe] TypeError, reading property of null/undefined
+includes/fpsometer.js:111: [maybe] TypeError, reading property of null/undefined
+includes/fpsometer.js:130: [maybe] TypeError, writing property of null/undefined
+includes/fpsometer.js:137: [maybe] TypeError, writing property of null/undefined
+includes/fpsometer.js:138: [maybe] TypeError, writing property of null/undefined
+includes/fpsometer.js:139: [maybe] TypeError, writing property of null/undefined
+includes/fpsometer.js:439: [maybe] TypeError, writing property of null/undefined
+includes/fpsometer.js:440: [maybe] TypeError, writing property of null/undefined
+test/msie9/mrpotatogun.tidy.html:396: [maybe] TypeError, writing property of null/undefined
+test/msie9/mrpotatogun.tidy.html:482: [maybe] Reading absent property (computed name)
+test/msie9/mrpotatogun.tidy.html:483: [maybe] TypeError, writing property of null/undefined
+test/msie9/mrpotatogun.tidy.html:487: [maybe] TypeError, writing property of null/undefined
+test/msie9/mrpotatogun.tidy.html:522: [maybe] TypeError, writing property of null/undefined
+test/msie9/mrpotatogun.tidy.html:560: [maybe] Reading absent property (computed name)
+test/msie9/mrpotatogun.tidy.html:564: [maybe] Reading absent property animating
+test/msie9/mrpotatogun.tidy.html:564: [maybe] TypeError, reading property of null/undefined
+test/msie9/mrpotatogun.tidy.html:570: [maybe] Reading absent property hDirection
+test/msie9/mrpotatogun.tidy.html:571: [maybe] Reading absent property diameter
+test/msie9/mrpotatogun.tidy.html:571: [maybe] Reading absent property velocity
+test/msie9/mrpotatogun.tidy.html:571: [maybe] Reading absent property xCurrent
+test/msie9/mrpotatogun.tidy.html:572: [maybe] Reading absent property diameter
+test/msie9/mrpotatogun.tidy.html:574: [maybe] Reading absent property spin
+test/msie9/mrpotatogun.tidy.html:578: [maybe] Reading absent property (computed name)
+test/msie9/mrpotatogun.tidy.html:578: [maybe] Reading absent property velocity
+test/msie9/mrpotatogun.tidy.html:582: [maybe] Reading absent property velocity
+test/msie9/mrpotatogun.tidy.html:582: [maybe] Reading absent property xCurrent
+test/msie9/mrpotatogun.tidy.html:585: [maybe] Reading absent property spin
+test/msie9/mrpotatogun.tidy.html:589: [maybe] Reading absent property velocity
+test/msie9/mrpotatogun.tidy.html:589: [maybe] Reading absent property xCurrent
+test/msie9/mrpotatogun.tidy.html:594: [maybe] Reading absent property entrance
+test/msie9/mrpotatogun.tidy.html:594: [maybe] Reading absent property xCurrent
+test/msie9/mrpotatogun.tidy.html:596: [maybe] Reading absent property entrance
+test/msie9/mrpotatogun.tidy.html:602: [maybe] Reading absent property vDirection
+test/msie9/mrpotatogun.tidy.html:604: [maybe] Reading absent property yEaseDown
+test/msie9/mrpotatogun.tidy.html:605: [maybe] Reading absent property easeCount
+test/msie9/mrpotatogun.tidy.html:605: [maybe] Reading absent property easeStage
+test/msie9/mrpotatogun.tidy.html:606: [maybe] Reading absent property easeStage
+test/msie9/mrpotatogun.tidy.html:606: [maybe] Reading absent property fallingvelocity
+test/msie9/mrpotatogun.tidy.html:606: [maybe] Reading absent property yCurrent
+test/msie9/mrpotatogun.tidy.html:606: [maybe] Reading absent property yEaseFactor
+test/msie9/mrpotatogun.tidy.html:607: [maybe] Reading absent property easeStage
+test/msie9/mrpotatogun.tidy.html:616: [maybe] Reading absent property entranceTime
+test/msie9/mrpotatogun.tidy.html:617: [maybe] Reading absent property bouncing
+test/msie9/mrpotatogun.tidy.html:617: [maybe] Reading absent property diameter
+test/msie9/mrpotatogun.tidy.html:617: [maybe] Reading absent property duration
+test/msie9/mrpotatogun.tidy.html:617: [maybe] Reading absent property fallingvelocity
+test/msie9/mrpotatogun.tidy.html:617: [maybe] Reading absent property yCurrent
+test/msie9/mrpotatogun.tidy.html:617: [maybe] Reading absent property yInitial
+test/msie9/mrpotatogun.tidy.html:617: [maybe] Reading absent property yInitial
+test/msie9/mrpotatogun.tidy.html:619: [maybe] Reading absent property diameter
+test/msie9/mrpotatogun.tidy.html:621: [maybe] Reading absent property bouncing
+test/msie9/mrpotatogun.tidy.html:622: [maybe] Reading absent property diameter
+test/msie9/mrpotatogun.tidy.html:622: [maybe] Reading absent property yInitial
+test/msie9/mrpotatogun.tidy.html:626: [maybe] Reading absent property diameter
+test/msie9/mrpotatogun.tidy.html:628: [maybe] Reading absent property (computed name)
+test/msie9/mrpotatogun.tidy.html:628: [maybe] Reading absent property bDampening
+test/msie9/mrpotatogun.tidy.html:628: [maybe] Reading absent property yBounceTop
+test/msie9/mrpotatogun.tidy.html:629: [maybe] Reading absent property vDampening
+test/msie9/mrpotatogun.tidy.html:629: [maybe] Reading absent property velocity
+test/msie9/mrpotatogun.tidy.html:630: [maybe] Reading absent property rDampening
+test/msie9/mrpotatogun.tidy.html:630: [maybe] Reading absent property rotation
+test/msie9/mrpotatogun.tidy.html:631: [maybe] Reading absent property bounce
+test/msie9/mrpotatogun.tidy.html:632: [maybe] Reading absent property yBounceTop
+test/msie9/mrpotatogun.tidy.html:641: [maybe] Reading absent property fallingvelocity
+test/msie9/mrpotatogun.tidy.html:641: [maybe] Reading absent property yCurrent
+test/msie9/mrpotatogun.tidy.html:642: [maybe] Reading absent property yBounceTop
+test/msie9/mrpotatogun.tidy.html:644: [maybe] Reading absent property resetEaseLevel
+test/msie9/mrpotatogun.tidy.html:645: [maybe] Reading absent property yBounceTop
+test/msie9/mrpotatogun.tidy.html:645: [maybe] Reading absent property yEaseLevel
+test/msie9/mrpotatogun.tidy.html:646: [maybe] Reading absent property easeCount
+test/msie9/mrpotatogun.tidy.html:650: [maybe] Reading absent property easeStage
+test/msie9/mrpotatogun.tidy.html:651: [maybe] Reading absent property easeStage
+test/msie9/mrpotatogun.tidy.html:651: [maybe] Reading absent property fallingvelocity
+test/msie9/mrpotatogun.tidy.html:651: [maybe] Reading absent property yCurrent
+test/msie9/mrpotatogun.tidy.html:651: [maybe] Reading absent property yEaseFactor
+test/msie9/mrpotatogun.tidy.html:652: [maybe] Reading absent property easeStage
+test/msie9/mrpotatogun.tidy.html:666: [maybe] Reading absent property rCurrent
+test/msie9/mrpotatogun.tidy.html:666: [maybe] Reading absent property rCurrent
+test/msie9/mrpotatogun.tidy.html:666: [maybe] Reading absent property rotation
+test/msie9/mrpotatogun.tidy.html:666: [maybe] Reading absent property rotation
+test/msie9/mrpotatogun.tidy.html:666: [maybe] Reading absent property spin
+test/msie9/mrpotatogun.tidy.html:671: [maybe] Reading absent property radius
+test/msie9/mrpotatogun.tidy.html:671: [maybe] Reading absent property radius
+test/msie9/mrpotatogun.tidy.html:671: [maybe] Reading absent property xCurrent
+test/msie9/mrpotatogun.tidy.html:671: [maybe] Reading absent property yCurrent
+test/msie9/mrpotatogun.tidy.html:672: [maybe] Reading absent property rCurrent
+test/msie9/mrpotatogun.tidy.html:674: [maybe] Reading absent property entrance
+test/msie9/mrpotatogun.tidy.html:675: [maybe] Reading absent property diameter
+test/msie9/mrpotatogun.tidy.html:675: [maybe] Reading absent property image
+test/msie9/mrpotatogun.tidy.html:675: [maybe] Reading absent property radius
+test/msie9/mrpotatogun.tidy.html:675: [maybe] TypeError, non-HTMLImageElement or non-HTMLCanvasElement as argument to drawImage
+test/msie9/mrpotatogun.tidy.html:678: [maybe] Reading absent property animating
+test/msie9/mrpotatogun.tidy.html:682: [maybe] Reading absent property diameter
+test/msie9/mrpotatogun.tidy.html:682: [maybe] Reading absent property diameter
+test/msie9/mrpotatogun.tidy.html:682: [maybe] Reading absent property image
+test/msie9/mrpotatogun.tidy.html:682: [maybe] Reading absent property radius
+test/msie9/mrpotatogun.tidy.html:682: [maybe] Reading absent property radius
+test/msie9/mrpotatogun.tidy.html:682: [maybe] TypeError, non-HTMLImageElement or non-HTMLCanvasElement as argument to drawImage
+test/msie9/mrpotatogun.tidy.html:716: [maybe] Reading absent property body
+test/msie9/mrpotatogun.tidy.html:716: [maybe] Reading absent property body
+test/msie9/mrpotatogun.tidy.html:716: [maybe] Reading absent property cursor
+test/msie9/mrpotatogun.tidy.html:716: [maybe] TypeError, reading property of null/undefined
+test/msie9/mrpotatogun.tidy.html:716: [maybe] TypeError, reading property of null/undefined
+test/msie9/mrpotatogun.tidy.html:720: [maybe] TypeError, reading property of null/undefined
+test/msie9/mrpotatogun.tidy.html:720: [maybe] TypeError, reading property of null/undefined
+includes/fpsometer.js:58: [maybe] Uncaught exception, constructed at [includes/fpsometer.js:105, includes/fpsometer.js:111, includes/fpsometer.js:130, includes/fpsometer.js:137, includes/fpsometer.js:138, includes/fpsometer.js:139, includes/fpsometer.js:439, includes/fpsometer.js:440, test/msie9/mrpotatogun.tidy.html:121, test/msie9/mrpotatogun.tidy.html:149, test/msie9/mrpotatogun.tidy.html:396, test/msie9/mrpotatogun.tidy.html:483, test/msie9/mrpotatogun.tidy.html:564, test/msie9/mrpotatogun.tidy.html:716, test/msie9/mrpotatogun.tidy.html:720, test/msie9/mrpotatogun.tidy.html:764]
+includes/fpsometer.js:395: [maybe] Conversion to number yields NaN
+includes/fpsometer.js:395: [maybe] Conversion to number yields NaN
+includes/fpsometer.js:396: [maybe] Conversion to number yields NaN
+test/msie9/mrpotatogun.tidy.html:178: [maybe] Conversion to number yields NaN
+test/msie9/mrpotatogun.tidy.html:178: [maybe] Conversion to number yields NaN
+test/msie9/mrpotatogun.tidy.html:178: [maybe] Conversion to number yields NaN
+test/msie9/mrpotatogun.tidy.html:178: [maybe] Conversion to number yields NaN
+test/msie9/mrpotatogun.tidy.html:181: [maybe] Conversion to number yields NaN
+test/msie9/mrpotatogun.tidy.html:181: [maybe] Conversion to number yields NaN
+test/msie9/mrpotatogun.tidy.html:181: [maybe] Conversion to number yields NaN
+test/msie9/mrpotatogun.tidy.html:181: [maybe] Conversion to number yields NaN
+test/msie9/mrpotatogun.tidy.html:483: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:553: [maybe] Conversion to number yields NaN
+test/msie9/mrpotatogun.tidy.html:555: [maybe] Conversion to number yields NaN
+test/msie9/mrpotatogun.tidy.html:564: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:567: [maybe] Conversion to number yields NaN
+test/msie9/mrpotatogun.tidy.html:570: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:571: [maybe] Conversion to number yields NaN
+test/msie9/mrpotatogun.tidy.html:571: [maybe] Conversion to number yields NaN
+test/msie9/mrpotatogun.tidy.html:571: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:571: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:571: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:572: [maybe] Conversion to number yields NaN
+test/msie9/mrpotatogun.tidy.html:572: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:572: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:573: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:574: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:574: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:574: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:574: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:578: [maybe] Conversion to number yields NaN
+test/msie9/mrpotatogun.tidy.html:578: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:578: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:578: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:582: [maybe] Conversion to number yields NaN
+test/msie9/mrpotatogun.tidy.html:582: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:582: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:583: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:584: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:585: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:585: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:585: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:585: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:589: [maybe] Conversion to number yields NaN
+test/msie9/mrpotatogun.tidy.html:589: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:589: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:589: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:594: [maybe] Conversion to number yields NaN
+test/msie9/mrpotatogun.tidy.html:594: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:594: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:596: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:597: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:598: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:602: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:604: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:605: [maybe] Conversion to number yields NaN
+test/msie9/mrpotatogun.tidy.html:605: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:605: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:606: [maybe] Conversion to number yields NaN
+test/msie9/mrpotatogun.tidy.html:606: [maybe] Conversion to number yields NaN
+test/msie9/mrpotatogun.tidy.html:606: [maybe] Conversion to number yields NaN
+test/msie9/mrpotatogun.tidy.html:606: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:606: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:606: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:606: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:606: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:607: [maybe] Conversion to number yields NaN
+test/msie9/mrpotatogun.tidy.html:607: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:607: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:610: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:611: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:616: [maybe] Conversion to number yields NaN
+test/msie9/mrpotatogun.tidy.html:616: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:617: [maybe] Conversion to number yields NaN
+test/msie9/mrpotatogun.tidy.html:617: [maybe] Conversion to number yields NaN
+test/msie9/mrpotatogun.tidy.html:617: [maybe] Conversion to number yields NaN
+test/msie9/mrpotatogun.tidy.html:617: [maybe] Conversion to number yields NaN
+test/msie9/mrpotatogun.tidy.html:617: [maybe] Conversion to number yields NaN
+test/msie9/mrpotatogun.tidy.html:617: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:617: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:617: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:617: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:617: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:617: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:617: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:619: [maybe] Conversion to number yields NaN
+test/msie9/mrpotatogun.tidy.html:619: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:621: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:622: [maybe] Conversion to number yields NaN
+test/msie9/mrpotatogun.tidy.html:622: [maybe] Conversion to number yields NaN
+test/msie9/mrpotatogun.tidy.html:622: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:622: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:622: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:625: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:626: [maybe] Conversion to number yields NaN
+test/msie9/mrpotatogun.tidy.html:626: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:626: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:627: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:628: [maybe] Conversion to number yields NaN
+test/msie9/mrpotatogun.tidy.html:628: [maybe] Conversion to number yields NaN
+test/msie9/mrpotatogun.tidy.html:628: [maybe] Conversion to number yields NaN
+test/msie9/mrpotatogun.tidy.html:628: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:628: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:628: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:628: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:629: [maybe] Conversion to number yields NaN
+test/msie9/mrpotatogun.tidy.html:629: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:629: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:629: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:630: [maybe] Conversion to number yields NaN
+test/msie9/mrpotatogun.tidy.html:630: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:630: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:630: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:631: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:631: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:632: [maybe] Conversion to number yields NaN
+test/msie9/mrpotatogun.tidy.html:632: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:632: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:636: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:641: [maybe] Conversion to number yields NaN
+test/msie9/mrpotatogun.tidy.html:641: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:641: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:642: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:644: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:645: [maybe] Conversion to number yields NaN
+test/msie9/mrpotatogun.tidy.html:645: [maybe] Conversion to number yields NaN
+test/msie9/mrpotatogun.tidy.html:645: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:645: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:645: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:646: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:646: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:647: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:650: [maybe] Conversion to number yields NaN
+test/msie9/mrpotatogun.tidy.html:650: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:651: [maybe] Conversion to number yields NaN
+test/msie9/mrpotatogun.tidy.html:651: [maybe] Conversion to number yields NaN
+test/msie9/mrpotatogun.tidy.html:651: [maybe] Conversion to number yields NaN
+test/msie9/mrpotatogun.tidy.html:651: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:651: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:651: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:651: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:651: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:652: [maybe] Conversion to number yields NaN
+test/msie9/mrpotatogun.tidy.html:652: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:652: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:655: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:656: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:657: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:661: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:666: [maybe] Conversion to number yields NaN
+test/msie9/mrpotatogun.tidy.html:666: [maybe] Conversion to number yields NaN
+test/msie9/mrpotatogun.tidy.html:666: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:666: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:666: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:666: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:666: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:666: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:671: [maybe] Conversion to number yields NaN
+test/msie9/mrpotatogun.tidy.html:671: [maybe] Conversion to number yields NaN
+test/msie9/mrpotatogun.tidy.html:671: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:671: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:671: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:671: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:672: [maybe] Conversion to number yields NaN
+test/msie9/mrpotatogun.tidy.html:672: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:674: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:675: [maybe] Conversion to number yields NaN
+test/msie9/mrpotatogun.tidy.html:675: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:675: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:675: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:678: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:682: [maybe] Conversion to number yields NaN
+test/msie9/mrpotatogun.tidy.html:682: [maybe] Conversion to number yields NaN
+test/msie9/mrpotatogun.tidy.html:682: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:682: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:682: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:682: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:682: [maybe] Converting primitive number to object
+test/msie9/mrpotatogun.tidy.html:691: [maybe] Conversion to number yields NaN
+test/msie9/mrpotatogun.tidy.html:698: [maybe] Conversion to number yields NaN
+test/msie9/mrpotatogun.tidy.html:698: [maybe] Conversion to number yields NaN
+test/msie9/mrpotatogun.tidy.html:698: [maybe] Conversion to number yields NaN
+test/msie9/mrpotatogun.tidy.html:698: [maybe] Conversion to number yields NaN
+test/msie9/mrpotatogun.tidy.html:707: [maybe] Conversion to number yields NaN
+test/msie9/mrpotatogun.tidy.html:707: [maybe] Conversion to number yields NaN
+test/msie9/mrpotatogun.tidy.html:707: [maybe] Conversion to number yields NaN
+test/msie9/mrpotatogun.tidy.html:707: [maybe] Conversion to number yields NaN
+test/msie9/mrpotatogun.tidy.html:721: [maybe] Conversion to number yields NaN
+test/msie9/mrpotatogun.tidy.html:739: [maybe] Converting undefined to string
+test/msie9/mrpotatogun.tidy.html:744: [maybe] Converting undefined to string

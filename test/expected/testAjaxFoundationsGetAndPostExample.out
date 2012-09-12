@@ -1,0 +1,8 @@
+test/benchmarks/ajax/foundations/chp3/getAndPostExample.tidy.html:11:5: [definite] The conditional expression is always true
+test/benchmarks/ajax/foundations/chp3/getAndPostExample.tidy.html:53:1: [definite] Unreachable function handleStateChange
+test/benchmarks/ajax/foundations/chp3/getAndPostExample.tidy.html:61:1: [definite] Unreachable function parseResults
+test/benchmarks/ajax/foundations/chp3/getAndPostExample.tidy.html:94:2: [definite] The variable event is never used
+test/benchmarks/ajax/foundations/chp3/getAndPostExample.tidy.html:97:2: [definite] The variable event is never used
+test/benchmarks/ajax/foundations/chp3/getAndPostExample.tidy.html:36:5: [maybe] TypeError, accessing property of null/undefined
+test/benchmarks/ajax/foundations/chp3/getAndPostExample.tidy.html:47:5: [maybe] TypeError, accessing property of null/undefined
+test/benchmarks/ajax/foundations/chp3/getAndPostExample.tidy.html:6: [maybe] Uncaught exception, constructed at [test/benchmarks/ajax/foundations/chp3/getAndPostExample.tidy.html:36:5, test/benchmarks/ajax/foundations/chp3/getAndPostExample.tidy.html:47:5]

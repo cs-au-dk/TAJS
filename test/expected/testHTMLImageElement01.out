@@ -1,0 +1,26 @@
+test/browser/domlegacy/html/HTMLImageElement01.tidy.html:16: [definite] Reading absent property name
+test/browser/domlegacy/html/HTMLImageElement01.tidy.html:17: [definite] Reading absent property align
+test/browser/domlegacy/html/HTMLImageElement01.tidy.html:18: [definite] Reading absent property alt
+test/browser/domlegacy/html/HTMLImageElement01.tidy.html:19: [definite] Reading absent property border
+test/browser/domlegacy/html/HTMLImageElement01.tidy.html:20: [definite] Reading absent property height
+test/browser/domlegacy/html/HTMLImageElement01.tidy.html:21: [definite] Reading absent property hspace
+test/browser/domlegacy/html/HTMLImageElement01.tidy.html:22: [definite] Reading absent property isMap
+test/browser/domlegacy/html/HTMLImageElement01.tidy.html:23: [definite] Reading absent property longDesc
+test/browser/domlegacy/html/HTMLImageElement01.tidy.html:24: [definite] Reading absent property src
+test/browser/domlegacy/html/HTMLImageElement01.tidy.html:25: [definite] Reading absent property useMap
+test/browser/domlegacy/html/HTMLImageElement01.tidy.html:26: [definite] Reading absent property vspace
+test/browser/domlegacy/html/HTMLImageElement01.tidy.html:27: [definite] Reading absent property width
+test/browser/domlegacy/html/HTMLImageElement01.tidy.html:13: [info] Abstract value: [@HTMLImageElement.constructor[native]]
+test/browser/domlegacy/html/HTMLImageElement01.tidy.html:14: [info] Prototype: [@Function.prototype[native]] -> [@Object.prototype[native]]
+test/browser/domlegacy/html/HTMLImageElement01.tidy.html:16: [info] Abstract value: Undef
+test/browser/domlegacy/html/HTMLImageElement01.tidy.html:17: [info] Abstract value: Undef
+test/browser/domlegacy/html/HTMLImageElement01.tidy.html:18: [info] Abstract value: Undef
+test/browser/domlegacy/html/HTMLImageElement01.tidy.html:19: [info] Abstract value: Undef
+test/browser/domlegacy/html/HTMLImageElement01.tidy.html:20: [info] Abstract value: Undef
+test/browser/domlegacy/html/HTMLImageElement01.tidy.html:21: [info] Abstract value: Undef
+test/browser/domlegacy/html/HTMLImageElement01.tidy.html:22: [info] Abstract value: Undef
+test/browser/domlegacy/html/HTMLImageElement01.tidy.html:23: [info] Abstract value: Undef
+test/browser/domlegacy/html/HTMLImageElement01.tidy.html:24: [info] Abstract value: Undef
+test/browser/domlegacy/html/HTMLImageElement01.tidy.html:25: [info] Abstract value: Undef
+test/browser/domlegacy/html/HTMLImageElement01.tidy.html:26: [info] Abstract value: Undef
+test/browser/domlegacy/html/HTMLImageElement01.tidy.html:27: [info] Abstract value: Undef

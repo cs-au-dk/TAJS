@@ -1,0 +1,25 @@
+fg2: <main> function()
+  block 0: [entry]
+    node 0: constant[undefined,v1] (test/flowgraph_builder/flowgraph_builder0182.js:2:1)
+    node 1: vardecl['numObj'] (test/flowgraph_builder/flowgraph_builder0182.js:2:1)
+    ->[block 1]
+  block 1:
+    node 2: new[v2] (test/flowgraph_builder/flowgraph_builder0182.js:2:14)
+    node 3: write-variable[v2,'numObj']* (test/flowgraph_builder/flowgraph_builder0182.js:2:1)
+    node 4: read-variable['Array',v4,-] (test/flowgraph_builder/flowgraph_builder0182.js:3:11)
+    node 5: constant[undefined,v5] (test/flowgraph_builder/flowgraph_builder0182.js:3:11)
+    node 6: read-variable['numObj',v6,-] (test/flowgraph_builder/flowgraph_builder0182.js:3:15)
+    ->[block 2]
+  block 2:
+    node 7: construct[-,v4,v5,v6,v3] (test/flowgraph_builder/flowgraph_builder0182.js:3:11)
+    ->[block 3]
+  block 3:
+    node 8: write-variable[v3,'whatnot']* (test/flowgraph_builder/flowgraph_builder0182.js:3:1)
+    ->[block 4]
+  block 4: [exit-ordinary]
+    node 9: return[v1] (test/flowgraph_builder/flowgraph_builder0182.js:2:1)
+    ->[]
+  block 5: [exit-exceptional]
+    node 10: exceptional-return (test/flowgraph_builder/flowgraph_builder0182.js:2:1)
+    ->[]
+

@@ -1,0 +1,11 @@
+var a = "foo";
+var b = 1000;
+var bb = 1000 + 42;
+var ab = a + b;
+dumpValue(a);
+dumpValue(ab);
+dumpValue(bb);
+assert(a == "foo");
+assert(ab == "foo1000");
+assert(bb == 1042);
+dumpValue(this);

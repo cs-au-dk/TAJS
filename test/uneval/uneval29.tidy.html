@@ -1,0 +1,212 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="generator"
+content="HTML Tidy for Java (vers. 2009-12-01), see jtidy.sourceforge.net" />
+<base target="_blank" />
+<title></title>
+</head>
+<body class="topic_body">
+<script type="text/javascript">
+//<![CDATA[
+if (typeof(peerID) == "undefined" || peerID == null) {
+        peerID = null;
+        try {
+                peeridobj = new ActiveXObject("DapCtrl.DapCtrl");
+                if (peeridobj != null)
+                        peerID = "xlpeeruuid=" + peeridobj.Get("sPeerID");
+        } catch(e) {
+                peerID = null;
+        }
+}
+
+if (typeof(peerID_CM) == "undefined" || peerID_CM == null) {
+        peerID_CM = null;
+        try {
+                peeridobj = new ActiveXObject("DapCtrl.DapCtrl");
+                if (peeridobj != null)
+                        peerID_CM = "pid=" + peeridobj.Get("sPeerID");
+        } catch(e) {
+                peerID_CM = null;
+        }
+}
+
+if (typeof(window.getUrlWithPID_CM) == "undefined") {
+        eval(
+                  "function getUrlWithPID_CM(fullurl, split) {"
+                + "     if(peerID_CM == null || fullurl == null) "
+                + "             return fullurl;"
+                + "     var index = fullurl.indexOf('?'); "
+                + "     if(index < 0) return fullurl;"
+                + "     if (index == fullurl.length - 1) "
+                + "             return  fullurl + peerID_CM;"
+                + "     if (split == null) {"
+                + "             split = '&';"
+                + "     }"
+                + "     return fullurl.substring(0, index + 1) + peerID_CM + split + fullurl.substring(index + 1);"
+                + "}"
+        );
+}
+
+if (typeof(window.mz) == "undefined") {
+        eval(
+                  "var mz=document.createElement('script'); "
+                + "mz.type='text/javascript'; mz.async=true; "
+                + "mz.src='http://js.miaozhen.com/sd.js'; "
+                + "var t=document.getElementsByTagName('script')[0]; "
+                + "t.parentNode.insertBefore(mz,t); "
+                + "function domz(posid){ "
+                + "var _mzh= window._mzh || []; "
+                + "_mzh.push(['_clear']); "
+                + "_mzh.push(['_set_pid', '1']); "
+                + "_mzh.push(['_set_tid', posid]); "
+                + "_mzh.push(['_set_cid', '-']); "
+                + "_mzh.push(['_set_sid', '-']); "
+                + "if(peerID&&peerID.length>11) "
+                + "_mzh.push(['_set_uid', peerID.substr(11)]); "
+                + "_mzh.push(['_send']); "
+                + "} "
+        );
+}
+
+if (typeof(window.addEventHandler_CM) == "undefined") {
+        eval(
+                  "function addEventHandler_CM(oTarget, sEventType, fnHandler){"
+                + "     if (oTarget.addEventListener) {"
+                + "             oTarget.addEventListener(sEventType, fnHandler, false);"
+                + "}"
+                + "else"
+                + " if (oTarget.attachEvent) {"
+                + "             oTarget.attachEvent('on' + sEventType, fnHandler);"
+                + "}"
+                + "else {"
+                + "             oTarget['on'+ sEventType] = fnHandler;"
+                + "}"
+                +"}"
+        );
+}
+
+if (typeof(window.removeEventHandler_CM) == "undefined") {
+        eval(
+                  "function removeEventHandler_CM(oTarget, sEventType, fnHandler){"
+                + "     if (oTarget.removeEventListener) {"
+                + "             oTarget.removeEventListener(sEventType, fnHandler, false);"
+                + "}"
+                + "else"
+                + " if (oTarget.detachEvent) {"
+                + "             oTarget.detachEvent('on' + sEventType, fnHandler);"
+                + "}"
+                + "else {"
+                + "             oTarget['on' + sEventType] = null;"
+                + "}"
+                +"}"
+        );
+}
+
+if (typeof(window.position_CM) == "undefined") {
+        eval(
+                  "function position_CM(o){"
+                + "     var p = {"
+                + "             Top: 0,"
+                + "     Left: 0"
+                + " };"
+                + " while (!!o) {"
+                + "             p.Top += o.offsetTop;"
+                + "     p.Left += o.offsetLeft;"
+                + "     o = o.offsetParent;"
+                + "     }"
+                + " return p;"
+                + "}"
+        );
+}
+
+if (typeof(window.isInView_CM) == "undefined") {
+        eval(
+                  "function isInView_CM(id){"
+                + "     var min = {};"
+                + "     var max = {};"
+                + " min.Top = document.body.scrollTop + document.documentElement.scrollTop;"
+                + " min.Left = document.documentElement.scrollLeft;"
+                + " max.Top = min.Top + document.documentElement.clientHeight;"
+                + "     max.Left = min.Left + document.documentElement.clientWidth;"
+                + " var obj=document.getElementById(id);"
+                + " if(obj==null || obj==undefined) return true;"
+                + " var width = obj.clientWidth;"
+                + "     var height = obj.clientHeight;"
+                + " var wh = position_CM(obj);"
+                + " if ((wh.Top >= min.Top && wh.Top <= max.Top && wh.Left >= min.Left && wh.Left <= max.Left) ||"
+                + "  ((wh.Top + height) >= min.Top && wh.Top <= max.Top && (wh.Left + width) >= min.Left && wh.Left <= max.Left)) {"
+                + " return true;"
+                + " }else{"
+                + " return false;"
+                + " }"
+                + "}"
+        );
+}
+
+var str_1162 = ""; 
+
+str_1162 += "<iframe id='i_1162_0' src='http://img.alimama.cn/cms/images/1323855883957.html?pid=mm_10839307_2308336_8945044' style='display:none; border:0px; width:970px; height:80px; text-align:center; margin:0 auto; float:left;' frameBorder='no' scrolling='no'></iframe>";
+
+var targetDiv = document.getElementById("cm1162");
+if(targetDiv != null && targetDiv != undefined) {
+        targetDiv.style.display = "block";
+        targetDiv.innerHTML = str_1162;
+}
+
+function getNextAd_1162(){
+        var length = 1;
+        var randomNumber = -1;
+        try{
+                for(var n=0; n<length; n++){
+                        var iframe = document.getElementById("i_1162_" + n);
+                        if(iframe.style.display == "block"){
+                                randomNumber = n + 1;
+                        }
+                        iframe.style.display = "none";
+                }
+                if(randomNumber < 0){
+                        randomNumber = Math.floor(Math.random() * length);
+                }else{
+                        if(randomNumber >= length) randomNumber = 0;
+                }
+                var nextiframe = document.getElementById("i_1162_" + randomNumber);
+                nextiframe.style.display = "block";
+        }catch(e){}
+}
+getNextAd_1162();
+var interval_1162 = setInterval('getNextAd_1162()', 86400*1000);
+
+function sendPv_1162(){
+        try{
+        var r_1162 = Math.floor(Math.random() * 1000);
+        if(r_1162 < 100){
+            var i_1162 = new Image(1,1);
+            i_1162.src = getUrlWithPID_CM('http://pv.cm.sandai.net/UPV?gs=cmupvEnhance&pvkey=1162&materialid=m13014966');
+            i_1162.onload = function() {return;}
+        }
+        if(1162 == 1039){
+                //miaozhen
+                setTimeout("domz(1162)", 1000);
+        }
+        }catch(e){}
+}
+
+if(isInView_CM("cm1162")){
+        sendPv_1162();
+}else{
+        addEventHandler_CM(window,'scroll',resize_CM_1162);
+}
+
+function resize_CM_1162(){
+    if(isInView_CM("cm1162")){
+                sendPv_1162();
+                removeEventHandler_CM(window,'scroll',resize_CM_1162);
+        }
+}
+
+
+//]]>
+</script>
+</body>
+</html>
+

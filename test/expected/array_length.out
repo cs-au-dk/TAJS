@@ -1,0 +1,16 @@
+test/v8tests/array_length.js:86: [definite] RangeError, assigning invalid value to array 'length' property
+test/v8tests/array_length.js:91: [definite] RangeError, assigning invalid value to array 'length' property
+test/v8tests/array_length.js:96: [definite] RangeError, assigning invalid value to array 'length' property
+test/v8tests/array_length.js:101: [definite] RangeError, assigning invalid value to array 'length' property
+test/v8tests/array_length.js:91: [definite] Conversion to number yields NaN
+test/v8tests/array_length.js:86: [maybe] Conversion from string to number yields NaN
+test/v8tests/array_length.js:36: [info] Abstract value: "number"
+test/v8tests/array_length.js:37: [info] Abstract value: UInt
+test/v8tests/array_length.js:43: [info] Abstract value: "number"
+test/v8tests/array_length.js:44: [info] Abstract value: UInt
+test/v8tests/array_length.js:50: [info] Abstract value: "number"
+test/v8tests/array_length.js:51: [info] Abstract value: UInt
+test/v8tests/array_length.js:57: [info] Abstract value: "number"
+test/v8tests/array_length.js:58: [info] Abstract value: UInt
+test/v8tests/array_length.js:64: [info] Abstract value: "number"
+test/v8tests/array_length.js:65: [info] Abstract value: UInt

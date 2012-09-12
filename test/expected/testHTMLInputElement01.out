@@ -1,0 +1,46 @@
+test/browser/domlegacy/html/HTMLInputElement01.tidy.html:16: [definite] Reading absent property defaultValue
+test/browser/domlegacy/html/HTMLInputElement01.tidy.html:17: [definite] Reading absent property defaultChecked
+test/browser/domlegacy/html/HTMLInputElement01.tidy.html:18: [definite] Reading absent property form
+test/browser/domlegacy/html/HTMLInputElement01.tidy.html:19: [definite] Reading absent property accept
+test/browser/domlegacy/html/HTMLInputElement01.tidy.html:20: [definite] Reading absent property accessKey
+test/browser/domlegacy/html/HTMLInputElement01.tidy.html:21: [definite] Reading absent property align
+test/browser/domlegacy/html/HTMLInputElement01.tidy.html:22: [definite] Reading absent property alt
+test/browser/domlegacy/html/HTMLInputElement01.tidy.html:23: [definite] Reading absent property checked
+test/browser/domlegacy/html/HTMLInputElement01.tidy.html:24: [definite] Reading absent property disabled
+test/browser/domlegacy/html/HTMLInputElement01.tidy.html:25: [definite] Reading absent property maxLength
+test/browser/domlegacy/html/HTMLInputElement01.tidy.html:26: [definite] Reading absent property name
+test/browser/domlegacy/html/HTMLInputElement01.tidy.html:27: [definite] Reading absent property readOnly
+test/browser/domlegacy/html/HTMLInputElement01.tidy.html:28: [definite] Reading absent property size
+test/browser/domlegacy/html/HTMLInputElement01.tidy.html:29: [definite] Reading absent property src
+test/browser/domlegacy/html/HTMLInputElement01.tidy.html:30: [definite] Reading absent property tabIndex
+test/browser/domlegacy/html/HTMLInputElement01.tidy.html:31: [definite] Reading absent property type
+test/browser/domlegacy/html/HTMLInputElement01.tidy.html:32: [definite] Reading absent property useMap
+test/browser/domlegacy/html/HTMLInputElement01.tidy.html:33: [definite] Reading absent property value
+test/browser/domlegacy/html/HTMLInputElement01.tidy.html:35: [definite] Reading absent property blur
+test/browser/domlegacy/html/HTMLInputElement01.tidy.html:36: [definite] Reading absent property focus
+test/browser/domlegacy/html/HTMLInputElement01.tidy.html:37: [definite] Reading absent property select
+test/browser/domlegacy/html/HTMLInputElement01.tidy.html:38: [definite] Reading absent property click
+test/browser/domlegacy/html/HTMLInputElement01.tidy.html:13: [info] Abstract value: [@HTMLInputElement[native] constructor]
+test/browser/domlegacy/html/HTMLInputElement01.tidy.html:14: [info] Prototype: [@Function.prototype[native]] -> [@Object.prototype[native]]
+test/browser/domlegacy/html/HTMLInputElement01.tidy.html:16: [info] Abstract value: Undef
+test/browser/domlegacy/html/HTMLInputElement01.tidy.html:17: [info] Abstract value: Undef
+test/browser/domlegacy/html/HTMLInputElement01.tidy.html:18: [info] Abstract value: Undef
+test/browser/domlegacy/html/HTMLInputElement01.tidy.html:19: [info] Abstract value: Undef
+test/browser/domlegacy/html/HTMLInputElement01.tidy.html:20: [info] Abstract value: Undef
+test/browser/domlegacy/html/HTMLInputElement01.tidy.html:21: [info] Abstract value: Undef
+test/browser/domlegacy/html/HTMLInputElement01.tidy.html:22: [info] Abstract value: Undef
+test/browser/domlegacy/html/HTMLInputElement01.tidy.html:23: [info] Abstract value: Undef
+test/browser/domlegacy/html/HTMLInputElement01.tidy.html:24: [info] Abstract value: Undef
+test/browser/domlegacy/html/HTMLInputElement01.tidy.html:25: [info] Abstract value: Undef
+test/browser/domlegacy/html/HTMLInputElement01.tidy.html:26: [info] Abstract value: Undef
+test/browser/domlegacy/html/HTMLInputElement01.tidy.html:27: [info] Abstract value: Undef
+test/browser/domlegacy/html/HTMLInputElement01.tidy.html:28: [info] Abstract value: Undef
+test/browser/domlegacy/html/HTMLInputElement01.tidy.html:29: [info] Abstract value: Undef
+test/browser/domlegacy/html/HTMLInputElement01.tidy.html:30: [info] Abstract value: Undef
+test/browser/domlegacy/html/HTMLInputElement01.tidy.html:31: [info] Abstract value: Undef
+test/browser/domlegacy/html/HTMLInputElement01.tidy.html:32: [info] Abstract value: Undef
+test/browser/domlegacy/html/HTMLInputElement01.tidy.html:33: [info] Abstract value: Undef
+test/browser/domlegacy/html/HTMLInputElement01.tidy.html:35: [info] Abstract value: Undef
+test/browser/domlegacy/html/HTMLInputElement01.tidy.html:36: [info] Abstract value: Undef
+test/browser/domlegacy/html/HTMLInputElement01.tidy.html:37: [info] Abstract value: Undef
+test/browser/domlegacy/html/HTMLInputElement01.tidy.html:38: [info] Abstract value: Undef

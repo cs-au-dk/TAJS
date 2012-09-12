@@ -1,0 +1,9 @@
+test/wala/string-prims.js:8:22: [maybe] TypeError, accessing property of null/undefined
+test/wala/string-prims.js:2:1: [maybe] Uncaught exception, constructed at [test/wala/string-prims.js:8:22]
+test/wala/string-prims.js:6:17: [maybe] Reading absent property (computed name)
+test/wala/string-prims.js:8:22: [maybe] Converting object to string
+test/wala/string-prims.js:8:22: [maybe] Converting primitive string to object
+test/wala/string-prims.js:10:1: [info] Abstract value: "this is a string of words"
+test/wala/string-prims.js:11:1: [info] Abstract object: {length:UInt,[[DefaultArray]]=Str|absent,[[Prototype]]=[@Array.prototype[native]]}
+test/wala/string-prims.js:12:1: [info] Abstract value: Str
+test/wala/string-prims.js:13:1: [info] Abstract value: Str

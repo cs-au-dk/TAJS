@@ -1,0 +1,29 @@
+fg2: <main> function()
+  block 0: [entry]
+    node 0: constant[undefined,v1] (test/flowgraph_builder/flowgraph_builder0170.js:1:1)
+    ->[block 1]
+  block 1:
+    node 1: read-variable['document',v5,-] (test/flowgraph_builder/flowgraph_builder0170.js:1:1)
+    node 2: read-property[v5,'getElementById',v4] (test/flowgraph_builder/flowgraph_builder0170.js:1:1)
+    node 3: <variable-non-null-undef>['document'] (test/flowgraph_builder/flowgraph_builder0170.js:1:1)
+    node 4: constant["bulletPoint_",v7] (test/flowgraph_builder/flowgraph_builder0170.js:1:25)
+    node 5: read-variable['idVal',v8,-] (test/flowgraph_builder/flowgraph_builder0170.js:1:40)
+    node 6: +[v7,v8,v6] (test/flowgraph_builder/flowgraph_builder0170.js:1:25)
+    ->[block 2]
+  block 2:
+    node 7: call[v5,v4,v6,v3] (test/flowgraph_builder/flowgraph_builder0170.js:1:1)
+    ->[block 3]
+  block 3:
+    node 8: constant["orangeBullet_down",v2] (test/flowgraph_builder/flowgraph_builder0170.js:1:57)
+    node 9: write-property[v3,'className',v2]* (test/flowgraph_builder/flowgraph_builder0170.js:1:1)
+    ->[block 4]
+  block 4: [exit-ordinary]
+    node 10: return[v1] (test/flowgraph_builder/flowgraph_builder0170.js:1:1)
+    ->[]
+  block 5: [exit-exceptional]
+    node 11: exceptional-return (test/flowgraph_builder/flowgraph_builder0170.js:1:1)
+    ->[]
+
+test/flowgraph_builder/flowgraph_builder0170.js:1:1: [definite] ReferenceError, reading absent variable document
+test/flowgraph_builder/flowgraph_builder0170.js:1:1: [definite] Unreachable code
+test/flowgraph_builder/flowgraph_builder0170.js:1:1: [maybe] Uncaught exception, constructed at [test/flowgraph_builder/flowgraph_builder0170.js:1:1]

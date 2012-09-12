@@ -1,0 +1,17 @@
+<html><script>
+function g(x, y) {
+    return Math.Random() > 0.3 ? x : y;
+}
+
+
+function ff(x, y) {
+    return eval("g(" + x + "," + y + ")")
+}
+
+xx1 = ff(2, Math.random())
+xx2 = ff(2, Math.random())
+
+dumpValue(xx1)
+dumpValue(xx2)
+
+</script></html>

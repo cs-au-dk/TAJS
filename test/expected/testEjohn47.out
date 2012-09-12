@@ -1,0 +1,3 @@
+test/resig/ejohn47.js:11:1: [maybe] Assertion fails
+test/resig/ejohn47.js:6:28: [maybe] Conversion to number yields NaN
+test/resig/ejohn47.js:12:1: [info] Abstract value: Num

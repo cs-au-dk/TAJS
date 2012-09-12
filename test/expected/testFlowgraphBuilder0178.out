@@ -1,0 +1,41 @@
+fg2: <main> function()
+  block 0: [entry]
+    node 0: constant[undefined,v1] (test/flowgraph_builder/flowgraph_builder0178.tidy.html:13)
+    ->[block 1]
+  block 1:
+    node 1: constant[3.0,v2] (test/flowgraph_builder/flowgraph_builder0178.tidy.html:7:5)
+    node 2: write-variable[v2,'x']* (test/flowgraph_builder/flowgraph_builder0178.tidy.html:7:1)
+    node 3: read-variable['alert',v4,v3] (test/flowgraph_builder/flowgraph_builder0178.tidy.html:15:1)
+    node 4: read-variable['x',v5,-] (test/flowgraph_builder/flowgraph_builder0178.tidy.html:15:7)
+    ->[block 2]
+  block 2:
+    node 5: call[v3,v4,v5,-]* (test/flowgraph_builder/flowgraph_builder0178.tidy.html:15:1)
+    ->[block 3]
+  block 3:
+    node 6: event-entry (test/flowgraph_builder/flowgraph_builder0178.tidy.html)
+    ->[block 4,block 5]
+  block 4:
+    node 7: event-dispatcher <LOAD> (test/flowgraph_builder/flowgraph_builder0178.tidy.html)
+    ->[block 5]
+  block 5:
+    node 8: nop (test/flowgraph_builder/flowgraph_builder0178.tidy.html)
+    ->[block 4,block 6,block 7]
+  block 6:
+    node 9: event-dispatcher <OTHER> (test/flowgraph_builder/flowgraph_builder0178.tidy.html)
+    ->[block 7]
+  block 7:
+    node 10: nop (test/flowgraph_builder/flowgraph_builder0178.tidy.html)
+    ->[block 6,block 8,block 9]
+  block 8:
+    node 11: event-dispatcher <UNLOAD> (test/flowgraph_builder/flowgraph_builder0178.tidy.html)
+    ->[block 9]
+  block 9:
+    node 12: nop (test/flowgraph_builder/flowgraph_builder0178.tidy.html)
+    ->[block 8,block 10]
+  block 10: [exit-ordinary]
+    node 13: return[v1] (test/flowgraph_builder/flowgraph_builder0178.tidy.html:13)
+    ->[]
+  block 11: [exit-exceptional]
+    node 14: exceptional-return (test/flowgraph_builder/flowgraph_builder0178.tidy.html:13)
+    ->[]
+

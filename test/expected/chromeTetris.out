@@ -1,0 +1,264 @@
+benchmark/chrome/tetris.html:89: [definite] Unreachable code
+benchmark/chrome/tetris.html:90: [definite] Unreachable code
+benchmark/chrome/tetris.html:94: [definite] Unreachable code
+benchmark/chrome/tetris.html:95: [definite] Reading absent property: which
+benchmark/chrome/tetris.html:143: [definite] Unreachable function: menu
+benchmark/chrome/tetris.html:342: [definite] Unreachable function: nextLevel
+benchmark/chrome/tetris.html:567: [definite] Unreachable function
+benchmark/chrome/tetris.html:569: [definite] Unreachable code
+benchmark/chrome/tetris.html:570: [definite] Unreachable code
+benchmark/chrome/tetris.html:586: [definite] Unreachable function
+benchmark/chrome/tetris.html:588: [definite] Unreachable code
+benchmark/chrome/tetris.html:590: [definite] Unreachable code
+benchmark/chrome/tetris.html:592: [definite] Unreachable code
+benchmark/chrome/tetris.html:53: [definite] Converting primitive string to object
+benchmark/chrome/tetris.html:53: [definite] Converting primitive string to object
+benchmark/chrome/tetris.html:74: [maybe] TypeError, writing property of null/undefined
+benchmark/chrome/tetris.html:149: [maybe] TypeError, reading property of null/undefined
+benchmark/chrome/tetris.html:228: [maybe] TypeError, reading property of null/undefined
+benchmark/chrome/tetris.html:242: [maybe] TypeError, reading property of null/undefined
+benchmark/chrome/tetris.html:245: [maybe] TypeError, reading property of null/undefined
+benchmark/chrome/tetris.html:248: [maybe] TypeError, reading property of null/undefined
+benchmark/chrome/tetris.html:248: [maybe] TypeError, reading property of null/undefined
+benchmark/chrome/tetris.html:250: [maybe] TypeError, call to non-function
+benchmark/chrome/tetris.html:250: [maybe] TypeError, reading property of null/undefined
+benchmark/chrome/tetris.html:251: [maybe] TypeError, reading property of null/undefined
+benchmark/chrome/tetris.html:253: [maybe] RangeError, assigning invalid value to array 'length' property
+benchmark/chrome/tetris.html:253: [maybe] TypeError, writing property of null/undefined
+benchmark/chrome/tetris.html:268: [maybe] TypeError, reading property of null/undefined
+benchmark/chrome/tetris.html:288: [maybe] TypeError, reading property of null/undefined
+benchmark/chrome/tetris.html:290: [maybe] TypeError, reading property of null/undefined
+benchmark/chrome/tetris.html:290: [maybe] TypeError, writing property of null/undefined
+benchmark/chrome/tetris.html:294: [maybe] TypeError, writing property of null/undefined
+benchmark/chrome/tetris.html:296: [maybe] TypeError, writing property of null/undefined
+benchmark/chrome/tetris.html:298: [maybe] TypeError, reading property of null/undefined
+benchmark/chrome/tetris.html:298: [maybe] TypeError, writing property of null/undefined
+benchmark/chrome/tetris.html:313: [maybe] TypeError, reading property of null/undefined
+benchmark/chrome/tetris.html:315: [maybe] TypeError, reading property of null/undefined
+benchmark/chrome/tetris.html:323: [maybe] TypeError, reading property of null/undefined
+benchmark/chrome/tetris.html:325: [maybe] TypeError, reading property of null/undefined
+benchmark/chrome/tetris.html:339: [maybe] TypeError, reading property of null/undefined
+benchmark/chrome/tetris.html:395: [maybe] TypeError, reading property of null/undefined
+benchmark/chrome/tetris.html:432: [maybe] TypeError, writing property of null/undefined
+benchmark/chrome/tetris.html:435: [maybe] TypeError, reading property of null/undefined
+benchmark/chrome/tetris.html:439: [maybe] TypeError, reading property of null/undefined
+benchmark/chrome/tetris.html:444: [maybe] RangeError, assigning invalid value to array 'length' property
+benchmark/chrome/tetris.html:444: [maybe] TypeError, writing property of null/undefined
+benchmark/chrome/tetris.html:495: [maybe] TypeError, reading property of null/undefined
+benchmark/chrome/tetris.html:519: [maybe] TypeError, call to non-function
+benchmark/chrome/tetris.html:519: [maybe] TypeError, reading property of null/undefined
+benchmark/chrome/tetris.html:523: [maybe] TypeError, writing property of null/undefined
+benchmark/chrome/tetris.html:524: [maybe] TypeError, reading property of null/undefined
+benchmark/chrome/tetris.html:525: [maybe] TypeError, reading property of null/undefined
+benchmark/chrome/tetris.html:526: [maybe] TypeError, reading property of null/undefined
+benchmark/chrome/tetris.html:531: [maybe] TypeError, reading property of null/undefined
+benchmark/chrome/tetris.html:540: [maybe] TypeError, reading property of null/undefined
+benchmark/chrome/tetris.html:149: [maybe] Reading absent property: s
+benchmark/chrome/tetris.html:242: [maybe] Reading absent property: length
+benchmark/chrome/tetris.html:243: [maybe] Reading absent property: length
+benchmark/chrome/tetris.html:246: [maybe] Reading absent property: length
+benchmark/chrome/tetris.html:247: [maybe] Reading absent property: length
+benchmark/chrome/tetris.html:250: [maybe] Reading absent property: appendChild
+benchmark/chrome/tetris.html:313: [maybe] Reading absent property: p
+benchmark/chrome/tetris.html:323: [maybe] Reading absent property: length
+benchmark/chrome/tetris.html:324: [maybe] Reading absent property: length
+benchmark/chrome/tetris.html:326: [maybe] Reading absent property: length
+benchmark/chrome/tetris.html:327: [maybe] Reading absent property: length
+benchmark/chrome/tetris.html:395: [maybe] Reading absent property: length
+benchmark/chrome/tetris.html:396: [maybe] Reading absent property: length
+benchmark/chrome/tetris.html:435: [maybe] Reading absent property: length
+benchmark/chrome/tetris.html:437: [maybe] Reading absent property: length
+benchmark/chrome/tetris.html:438: [maybe] Reading absent property: length
+benchmark/chrome/tetris.html:440: [maybe] Reading absent property: length
+benchmark/chrome/tetris.html:441: [maybe] Reading absent property: length
+benchmark/chrome/tetris.html:442: [maybe] Reading absent property: length
+benchmark/chrome/tetris.html:519: [maybe] Reading absent property: f
+benchmark/chrome/tetris.html:519: [maybe] Reading absent property: split
+benchmark/chrome/tetris.html:520: [maybe] Reading absent property: p
+benchmark/chrome/tetris.html:531: [maybe] Reading absent property: r
+benchmark/chrome/tetris.html:532: [maybe] Reading absent property: x
+benchmark/chrome/tetris.html:533: [maybe] Reading absent property: y
+benchmark/chrome/tetris.html:534: [maybe] Reading absent property: t
+benchmark/chrome/tetris.html:536: [maybe] Reading absent property: n
+benchmark/chrome/tetris.html:537: [maybe] Reading absent property: s
+benchmark/chrome/tetris.html:538: [maybe] Reading absent property: v
+benchmark/chrome/tetris.html:539: [maybe] Reading absent property: l
+benchmark/chrome/tetris.html:540: [maybe] Reading absent property: s
+benchmark/chrome/tetris.html:547: [maybe] Reading absent property: y
+benchmark/chrome/tetris.html:548: [maybe] Reading absent property: x
+benchmark/chrome/tetris.html:1: [maybe] Uncaught exception, constructed at [benchmark/chrome/tetris.html:74, benchmark/chrome/tetris.html:149, benchmark/chrome/tetris.html:228, benchmark/chrome/tetris.html:242, benchmark/chrome/tetris.html:245, benchmark/chrome/tetris.html:248, benchmark/chrome/tetris.html:250, benchmark/chrome/tetris.html:251, benchmark/chrome/tetris.html:253, benchmark/chrome/tetris.html:268, benchmark/chrome/tetris.html:288, benchmark/chrome/tetris.html:290, benchmark/chrome/tetris.html:294, benchmark/chrome/tetris.html:296, benchmark/chrome/tetris.html:298, benchmark/chrome/tetris.html:313, benchmark/chrome/tetris.html:315, benchmark/chrome/tetris.html:323, benchmark/chrome/tetris.html:325, benchmark/chrome/tetris.html:339, benchmark/chrome/tetris.html:395, benchmark/chrome/tetris.html:432, benchmark/chrome/tetris.html:435, benchmark/chrome/tetris.html:439, benchmark/chrome/tetris.html:444, benchmark/chrome/tetris.html:495, benchmark/chrome/tetris.html:519, benchmark/chrome/tetris.html:523, benchmark/chrome/tetris.html:524, benchmark/chrome/tetris.html:525, benchmark/chrome/tetris.html:526, benchmark/chrome/tetris.html:531, benchmark/chrome/tetris.html:540]
+benchmark/chrome/tetris.html:74: [maybe] Reading absent property (computed name)
+benchmark/chrome/tetris.html:149: [maybe] Converting boolean to string
+benchmark/chrome/tetris.html:149: [maybe] Converting primitive number to object
+benchmark/chrome/tetris.html:149: [maybe] Reading absent property (computed name)
+benchmark/chrome/tetris.html:162: [maybe] Conversion to number yields NaN
+benchmark/chrome/tetris.html:209: [maybe] Conversion to number yields NaN
+benchmark/chrome/tetris.html:223: [maybe] Conversion to number yields NaN
+benchmark/chrome/tetris.html:224: [maybe] Conversion to number yields NaN
+benchmark/chrome/tetris.html:241: [maybe] Converting boolean to string
+benchmark/chrome/tetris.html:241: [maybe] Reading absent property (computed name)
+benchmark/chrome/tetris.html:242: [maybe] Conversion to number yields NaN
+benchmark/chrome/tetris.html:242: [maybe] Converting primitive number to object
+benchmark/chrome/tetris.html:243: [maybe] Conversion to number yields NaN
+benchmark/chrome/tetris.html:243: [maybe] Converting primitive number to object
+benchmark/chrome/tetris.html:245: [maybe] Converting primitive number to object
+benchmark/chrome/tetris.html:245: [maybe] Converting primitive number to object
+benchmark/chrome/tetris.html:245: [maybe] Converting primitive string to object
+benchmark/chrome/tetris.html:245: [maybe] Reading absent property (computed name)
+benchmark/chrome/tetris.html:245: [maybe] Reading absent property (computed name)
+benchmark/chrome/tetris.html:246: [maybe] Converting primitive number to object
+benchmark/chrome/tetris.html:247: [maybe] Converting primitive number to object
+benchmark/chrome/tetris.html:248: [maybe] Reading absent property (computed name)
+benchmark/chrome/tetris.html:248: [maybe] Reading absent property (computed name)
+benchmark/chrome/tetris.html:250: [maybe] Conversion to number yields NaN
+benchmark/chrome/tetris.html:250: [maybe] Converting primitive number to object
+benchmark/chrome/tetris.html:250: [maybe] Converting primitive number to object
+benchmark/chrome/tetris.html:250: [maybe] Reading absent property (computed name)
+benchmark/chrome/tetris.html:251: [maybe] Conversion to number yields NaN
+benchmark/chrome/tetris.html:253: [maybe] Conversion to number yields NaN
+benchmark/chrome/tetris.html:253: [maybe] Conversion to number yields NaN
+benchmark/chrome/tetris.html:253: [maybe] Conversion to number yields NaN
+benchmark/chrome/tetris.html:253: [maybe] Converting primitive number to object
+benchmark/chrome/tetris.html:253: [maybe] Reading absent property (computed name)
+benchmark/chrome/tetris.html:268: [maybe] Reading absent property (computed name)
+benchmark/chrome/tetris.html:268: [maybe] Reading absent property (computed name)
+benchmark/chrome/tetris.html:277: [maybe] Conversion to number yields NaN
+benchmark/chrome/tetris.html:277: [maybe] Conversion to number yields NaN
+benchmark/chrome/tetris.html:277: [maybe] Conversion to number yields NaN
+benchmark/chrome/tetris.html:277: [maybe] Reading absent property (computed name)
+benchmark/chrome/tetris.html:278: [maybe] Conversion to number yields NaN
+benchmark/chrome/tetris.html:288: [maybe] Reading absent property (computed name)
+benchmark/chrome/tetris.html:290: [maybe] Reading absent property (computed name)
+benchmark/chrome/tetris.html:290: [maybe] Reading absent property (computed name)
+benchmark/chrome/tetris.html:290: [maybe] Reading absent property (computed name)
+benchmark/chrome/tetris.html:294: [maybe] Reading absent property (computed name)
+benchmark/chrome/tetris.html:294: [maybe] Reading absent property (computed name)
+benchmark/chrome/tetris.html:295: [maybe] Conversion to number yields NaN
+benchmark/chrome/tetris.html:295: [maybe] Conversion to number yields NaN
+benchmark/chrome/tetris.html:295: [maybe] Reading absent property (computed name)
+benchmark/chrome/tetris.html:296: [maybe] Conversion to number yields NaN
+benchmark/chrome/tetris.html:296: [maybe] Reading absent property (computed name)
+benchmark/chrome/tetris.html:296: [maybe] Reading absent property (computed name)
+benchmark/chrome/tetris.html:298: [maybe] Conversion to number yields NaN
+benchmark/chrome/tetris.html:298: [maybe] Conversion to number yields NaN
+benchmark/chrome/tetris.html:298: [maybe] Reading absent property (computed name)
+benchmark/chrome/tetris.html:298: [maybe] Reading absent property (computed name)
+benchmark/chrome/tetris.html:298: [maybe] Reading absent property (computed name)
+benchmark/chrome/tetris.html:308: [maybe] Conversion to number yields NaN
+benchmark/chrome/tetris.html:312: [maybe] Converting boolean to string
+benchmark/chrome/tetris.html:312: [maybe] Reading absent property (computed name)
+benchmark/chrome/tetris.html:313: [maybe] Converting boolean to string
+benchmark/chrome/tetris.html:313: [maybe] Converting primitive number to object
+benchmark/chrome/tetris.html:313: [maybe] Reading absent property (computed name)
+benchmark/chrome/tetris.html:314: [maybe] Conversion to number yields NaN
+benchmark/chrome/tetris.html:315: [maybe] Reading absent property (computed name)
+benchmark/chrome/tetris.html:322: [maybe] Converting boolean to string
+benchmark/chrome/tetris.html:322: [maybe] Reading absent property (computed name)
+benchmark/chrome/tetris.html:323: [maybe] Conversion to number yields NaN
+benchmark/chrome/tetris.html:323: [maybe] Converting primitive number to object
+benchmark/chrome/tetris.html:324: [maybe] Conversion to number yields NaN
+benchmark/chrome/tetris.html:324: [maybe] Converting primitive number to object
+benchmark/chrome/tetris.html:325: [maybe] Converting primitive number to object
+benchmark/chrome/tetris.html:325: [maybe] Converting primitive number to object
+benchmark/chrome/tetris.html:325: [maybe] Converting primitive string to object
+benchmark/chrome/tetris.html:325: [maybe] Reading absent property (computed name)
+benchmark/chrome/tetris.html:325: [maybe] Reading absent property (computed name)
+benchmark/chrome/tetris.html:326: [maybe] Converting primitive number to object
+benchmark/chrome/tetris.html:327: [maybe] Converting primitive number to object
+benchmark/chrome/tetris.html:328: [maybe] Conversion to number yields NaN
+benchmark/chrome/tetris.html:328: [maybe] Conversion to number yields NaN
+benchmark/chrome/tetris.html:339: [maybe] Converting primitive number to object
+benchmark/chrome/tetris.html:339: [maybe] Reading absent property (computed name)
+benchmark/chrome/tetris.html:339: [maybe] Reading absent property (computed name)
+benchmark/chrome/tetris.html:389: [maybe] Converting boolean to string
+benchmark/chrome/tetris.html:389: [maybe] Reading absent property (computed name)
+benchmark/chrome/tetris.html:393: [maybe] Conversion to number yields NaN
+benchmark/chrome/tetris.html:394: [maybe] Conversion to number yields NaN
+benchmark/chrome/tetris.html:395: [maybe] Conversion to number yields NaN
+benchmark/chrome/tetris.html:395: [maybe] Converting primitive number to object
+benchmark/chrome/tetris.html:396: [maybe] Conversion to number yields NaN
+benchmark/chrome/tetris.html:396: [maybe] Converting primitive number to object
+benchmark/chrome/tetris.html:433: [maybe] Converting boolean to string
+benchmark/chrome/tetris.html:433: [maybe] Reading absent property (computed name)
+benchmark/chrome/tetris.html:435: [maybe] Conversion to number yields NaN
+benchmark/chrome/tetris.html:435: [maybe] Converting primitive number to object
+benchmark/chrome/tetris.html:437: [maybe] Conversion to number yields NaN
+benchmark/chrome/tetris.html:437: [maybe] Converting primitive number to object
+benchmark/chrome/tetris.html:438: [maybe] Conversion to number yields NaN
+benchmark/chrome/tetris.html:438: [maybe] Converting primitive number to object
+benchmark/chrome/tetris.html:439: [maybe] Converting primitive number to object
+benchmark/chrome/tetris.html:439: [maybe] Converting primitive number to object
+benchmark/chrome/tetris.html:439: [maybe] Converting primitive string to object
+benchmark/chrome/tetris.html:439: [maybe] Reading absent property (computed name)
+benchmark/chrome/tetris.html:439: [maybe] Reading absent property (computed name)
+benchmark/chrome/tetris.html:440: [maybe] Converting primitive number to object
+benchmark/chrome/tetris.html:441: [maybe] Converting primitive number to object
+benchmark/chrome/tetris.html:442: [maybe] Converting boolean to string
+benchmark/chrome/tetris.html:442: [maybe] Converting primitive number to object
+benchmark/chrome/tetris.html:442: [maybe] Reading absent property (computed name)
+benchmark/chrome/tetris.html:444: [maybe] Converting undefined to string
+benchmark/chrome/tetris.html:444: [maybe] Reading absent property (computed name)
+benchmark/chrome/tetris.html:457: [maybe] Conversion to number yields NaN
+benchmark/chrome/tetris.html:459: [maybe] Conversion to number yields NaN
+benchmark/chrome/tetris.html:469: [maybe] Conversion to number yields NaN
+benchmark/chrome/tetris.html:471: [maybe] Conversion to number yields NaN
+benchmark/chrome/tetris.html:485: [maybe] Conversion to number yields NaN
+benchmark/chrome/tetris.html:486: [maybe] Conversion to number yields NaN
+benchmark/chrome/tetris.html:495: [maybe] Reading absent property (computed name)
+benchmark/chrome/tetris.html:495: [maybe] Reading absent property (computed name)
+benchmark/chrome/tetris.html:519: [maybe] Converting primitive boolean to object
+benchmark/chrome/tetris.html:519: [maybe] Converting primitive boolean to object
+benchmark/chrome/tetris.html:519: [maybe] Converting primitive boolean to object
+benchmark/chrome/tetris.html:519: [maybe] Converting primitive number to object
+benchmark/chrome/tetris.html:519: [maybe] Converting primitive number to object
+benchmark/chrome/tetris.html:519: [maybe] Converting primitive number to object
+benchmark/chrome/tetris.html:519: [maybe] Converting primitive string to object
+benchmark/chrome/tetris.html:519: [maybe] Converting primitive string to object
+benchmark/chrome/tetris.html:519: [maybe] Converting primitive string to object
+benchmark/chrome/tetris.html:520: [maybe] Converting primitive boolean to object
+benchmark/chrome/tetris.html:520: [maybe] Converting primitive number to object
+benchmark/chrome/tetris.html:520: [maybe] Converting primitive string to object
+benchmark/chrome/tetris.html:523: [maybe] Converting undefined to string
+benchmark/chrome/tetris.html:523: [maybe] Reading absent property (computed name)
+benchmark/chrome/tetris.html:524: [maybe] Reading absent property (computed name)
+benchmark/chrome/tetris.html:524: [maybe] Reading absent property (computed name)
+benchmark/chrome/tetris.html:525: [maybe] Conversion to number yields NaN
+benchmark/chrome/tetris.html:525: [maybe] Reading absent property (computed name)
+benchmark/chrome/tetris.html:525: [maybe] Reading absent property (computed name)
+benchmark/chrome/tetris.html:525: [maybe] Reading absent property (computed name)
+benchmark/chrome/tetris.html:526: [maybe] Reading absent property (computed name)
+benchmark/chrome/tetris.html:531: [maybe] Converting primitive boolean to object
+benchmark/chrome/tetris.html:531: [maybe] Converting primitive number to object
+benchmark/chrome/tetris.html:531: [maybe] Converting primitive string to object
+benchmark/chrome/tetris.html:532: [maybe] Converting primitive boolean to object
+benchmark/chrome/tetris.html:532: [maybe] Converting primitive number to object
+benchmark/chrome/tetris.html:532: [maybe] Converting primitive string to object
+benchmark/chrome/tetris.html:533: [maybe] Converting primitive boolean to object
+benchmark/chrome/tetris.html:533: [maybe] Converting primitive number to object
+benchmark/chrome/tetris.html:533: [maybe] Converting primitive string to object
+benchmark/chrome/tetris.html:534: [maybe] Converting primitive boolean to object
+benchmark/chrome/tetris.html:534: [maybe] Converting primitive number to object
+benchmark/chrome/tetris.html:534: [maybe] Converting primitive string to object
+benchmark/chrome/tetris.html:536: [maybe] Converting primitive boolean to object
+benchmark/chrome/tetris.html:536: [maybe] Converting primitive number to object
+benchmark/chrome/tetris.html:536: [maybe] Converting primitive string to object
+benchmark/chrome/tetris.html:537: [maybe] Converting primitive boolean to object
+benchmark/chrome/tetris.html:537: [maybe] Converting primitive number to object
+benchmark/chrome/tetris.html:537: [maybe] Converting primitive string to object
+benchmark/chrome/tetris.html:538: [maybe] Converting primitive boolean to object
+benchmark/chrome/tetris.html:538: [maybe] Converting primitive number to object
+benchmark/chrome/tetris.html:538: [maybe] Converting primitive string to object
+benchmark/chrome/tetris.html:539: [maybe] Converting primitive boolean to object
+benchmark/chrome/tetris.html:539: [maybe] Converting primitive number to object
+benchmark/chrome/tetris.html:539: [maybe] Converting primitive string to object
+benchmark/chrome/tetris.html:540: [maybe] Converting boolean to string
+benchmark/chrome/tetris.html:540: [maybe] Converting primitive number to object
+benchmark/chrome/tetris.html:540: [maybe] Reading absent property (computed name)
+benchmark/chrome/tetris.html:547: [maybe] Converting primitive boolean to object
+benchmark/chrome/tetris.html:547: [maybe] Converting primitive number to object
+benchmark/chrome/tetris.html:547: [maybe] Converting primitive string to object
+benchmark/chrome/tetris.html:548: [maybe] Converting primitive boolean to object
+benchmark/chrome/tetris.html:548: [maybe] Converting primitive number to object
+benchmark/chrome/tetris.html:548: [maybe] Converting primitive string to object
+benchmark/chrome/tetris.html:550: [maybe] Conversion to number yields NaN
+benchmark/chrome/tetris.html:551: [maybe] Conversion to number yields NaN

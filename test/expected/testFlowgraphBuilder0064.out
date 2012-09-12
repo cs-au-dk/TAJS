@@ -1,0 +1,42 @@
+fg2: <main> function()
+  block 0: [entry]
+    node 0: constant[undefined,v1] (test/flowgraph_builder/flowgraph_builder0064.js:1:1)
+    node 1: function-decl[function f(),-] (test/flowgraph_builder/flowgraph_builder0064.js:1:1)
+    ->[block 1]
+  block 1:
+    node 2: read-variable['o',v4,-] (test/flowgraph_builder/flowgraph_builder0064.js:5:1)
+    node 3: read-variable['f',v7,v6] (test/flowgraph_builder/flowgraph_builder0064.js:5:3)
+    ->[block 2]
+  block 2:
+    node 4: call[v6,v7,v5] (test/flowgraph_builder/flowgraph_builder0064.js:5:3)
+    ->[block 3]
+  block 3:
+    node 5: read-property[v4,v5,v2] (test/flowgraph_builder/flowgraph_builder0064.js:5:1)
+    node 6: <variable-non-null-undef>['o'] (test/flowgraph_builder/flowgraph_builder0064.js:5:1)
+    node 7: constant[3.0,v3] (test/flowgraph_builder/flowgraph_builder0064.js:5:10)
+    node 8: *[v2,v3,-]* (test/flowgraph_builder/flowgraph_builder0064.js:5:1)
+    ->[block 4]
+  block 4: [exit-ordinary]
+    node 9: return[v1] (test/flowgraph_builder/flowgraph_builder0064.js:1:1)
+    ->[]
+  block 5: [exit-exceptional]
+    node 10: exceptional-return (test/flowgraph_builder/flowgraph_builder0064.js:1:1)
+    ->[]
+function f()
+  block 6: [entry]
+    node 11: constant[undefined,v1] (test/flowgraph_builder/flowgraph_builder0064.js:1:1)
+    ->[block 7]
+  block 7:
+    node 12: constant["hi",v1] (test/flowgraph_builder/flowgraph_builder0064.js:2:11)
+    ->[block 8]
+  block 8: [exit-ordinary]
+    node 13: return[v1] (test/flowgraph_builder/flowgraph_builder0064.js:1:1)
+    ->[]
+  block 9: [exit-exceptional]
+    node 14: exceptional-return (test/flowgraph_builder/flowgraph_builder0064.js:1:1)
+    ->[]
+
+test/flowgraph_builder/flowgraph_builder0064.js:5:1: [definite] ReferenceError, reading absent variable o
+test/flowgraph_builder/flowgraph_builder0064.js:1:1: [definite] Unreachable function f
+test/flowgraph_builder/flowgraph_builder0064.js:5:3: [definite] Unreachable code
+test/flowgraph_builder/flowgraph_builder0064.js:1:1: [maybe] Uncaught exception, constructed at [test/flowgraph_builder/flowgraph_builder0064.js:5:1]

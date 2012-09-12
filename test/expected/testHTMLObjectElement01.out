@@ -1,0 +1,39 @@
+test/browser/domlegacy/html/HTMLObjectElement01.tidy.html:14: [definite] Reading absent property form
+test/browser/domlegacy/html/HTMLObjectElement01.tidy.html:15: [definite] Reading absent property code
+test/browser/domlegacy/html/HTMLObjectElement01.tidy.html:16: [definite] Reading absent property align
+test/browser/domlegacy/html/HTMLObjectElement01.tidy.html:17: [definite] Reading absent property archive
+test/browser/domlegacy/html/HTMLObjectElement01.tidy.html:18: [definite] Reading absent property border
+test/browser/domlegacy/html/HTMLObjectElement01.tidy.html:19: [definite] Reading absent property codeBase
+test/browser/domlegacy/html/HTMLObjectElement01.tidy.html:20: [definite] Reading absent property codeType
+test/browser/domlegacy/html/HTMLObjectElement01.tidy.html:21: [definite] Reading absent property data
+test/browser/domlegacy/html/HTMLObjectElement01.tidy.html:22: [definite] Reading absent property declare
+test/browser/domlegacy/html/HTMLObjectElement01.tidy.html:23: [definite] Reading absent property height
+test/browser/domlegacy/html/HTMLObjectElement01.tidy.html:24: [definite] Reading absent property hspace
+test/browser/domlegacy/html/HTMLObjectElement01.tidy.html:25: [definite] Reading absent property name
+test/browser/domlegacy/html/HTMLObjectElement01.tidy.html:26: [definite] Reading absent property standby
+test/browser/domlegacy/html/HTMLObjectElement01.tidy.html:27: [definite] Reading absent property tabIndex
+test/browser/domlegacy/html/HTMLObjectElement01.tidy.html:28: [definite] Reading absent property type
+test/browser/domlegacy/html/HTMLObjectElement01.tidy.html:29: [definite] Reading absent property useMap
+test/browser/domlegacy/html/HTMLObjectElement01.tidy.html:30: [definite] Reading absent property vspace
+test/browser/domlegacy/html/HTMLObjectElement01.tidy.html:31: [definite] Reading absent property width
+test/browser/domlegacy/html/HTMLObjectElement01.tidy.html:32: [definite] Reading absent property contentDocument
+test/browser/domlegacy/html/HTMLObjectElement01.tidy.html:13: [info] Abstract value: [@HTMLObjectElement[native] constructor]
+test/browser/domlegacy/html/HTMLObjectElement01.tidy.html:14: [info] Abstract value: Undef
+test/browser/domlegacy/html/HTMLObjectElement01.tidy.html:15: [info] Abstract value: Undef
+test/browser/domlegacy/html/HTMLObjectElement01.tidy.html:16: [info] Abstract value: Undef
+test/browser/domlegacy/html/HTMLObjectElement01.tidy.html:17: [info] Abstract value: Undef
+test/browser/domlegacy/html/HTMLObjectElement01.tidy.html:18: [info] Abstract value: Undef
+test/browser/domlegacy/html/HTMLObjectElement01.tidy.html:19: [info] Abstract value: Undef
+test/browser/domlegacy/html/HTMLObjectElement01.tidy.html:20: [info] Abstract value: Undef
+test/browser/domlegacy/html/HTMLObjectElement01.tidy.html:21: [info] Abstract value: Undef
+test/browser/domlegacy/html/HTMLObjectElement01.tidy.html:22: [info] Abstract value: Undef
+test/browser/domlegacy/html/HTMLObjectElement01.tidy.html:23: [info] Abstract value: Undef
+test/browser/domlegacy/html/HTMLObjectElement01.tidy.html:24: [info] Abstract value: Undef
+test/browser/domlegacy/html/HTMLObjectElement01.tidy.html:25: [info] Abstract value: Undef
+test/browser/domlegacy/html/HTMLObjectElement01.tidy.html:26: [info] Abstract value: Undef
+test/browser/domlegacy/html/HTMLObjectElement01.tidy.html:27: [info] Abstract value: Undef
+test/browser/domlegacy/html/HTMLObjectElement01.tidy.html:28: [info] Abstract value: Undef
+test/browser/domlegacy/html/HTMLObjectElement01.tidy.html:29: [info] Abstract value: Undef
+test/browser/domlegacy/html/HTMLObjectElement01.tidy.html:30: [info] Abstract value: Undef
+test/browser/domlegacy/html/HTMLObjectElement01.tidy.html:31: [info] Abstract value: Undef
+test/browser/domlegacy/html/HTMLObjectElement01.tidy.html:32: [info] Abstract value: Undef

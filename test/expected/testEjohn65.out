@@ -1,0 +1,2 @@
+test/resig/ejohn65.js:8:10: [definite] Variable ninjaA is null/undefined
+test/resig/ejohn65.js:7:14: [definite] The function Ninja is invoked both as constructor and function

@@ -1,0 +1,39 @@
+fg2: <main> function()
+  block 0: [entry]
+    node 0: constant[undefined,v1] (test/flowgraph_builder/flowgraph_builder0125.js:1:1)
+    node 1: function-decl[function f(),-] (test/flowgraph_builder/flowgraph_builder0125.js:1:1)
+    ->[block 1]
+  block 1:
+    node 2: read-variable['f',v4,v3] (test/flowgraph_builder/flowgraph_builder0125.js:6:5)
+    ->[block 2]
+  block 2:
+    node 3: call[v3,v4,v2] (test/flowgraph_builder/flowgraph_builder0125.js:6:5)
+    ->[block 3]
+  block 3:
+    node 4: write-variable[v2,'y']* (test/flowgraph_builder/flowgraph_builder0125.js:6:1)
+    ->[block 4]
+  block 4: [exit-ordinary]
+    node 5: return[v1] (test/flowgraph_builder/flowgraph_builder0125.js:1:1)
+    ->[]
+  block 5: [exit-exceptional]
+    node 6: exceptional-return (test/flowgraph_builder/flowgraph_builder0125.js:1:1)
+    ->[]
+function f()
+  block 6: [entry]
+    node 7: constant[undefined,v1] (test/flowgraph_builder/flowgraph_builder0125.js:1:1)
+    ->[block 7]
+  block 7:
+    node 8: constant[1.0,v1] (test/flowgraph_builder/flowgraph_builder0125.js:2:9)
+    ->[block 9]
+  block 8:
+    node 9: constant[2.0,v2] (test/flowgraph_builder/flowgraph_builder0125.js:3:6)
+    node 10: write-variable[v2,'x']* (test/flowgraph_builder/flowgraph_builder0125.js:3:2)
+    ->[block 9]
+  block 9: [exit-ordinary]
+    node 11: return[v1] (test/flowgraph_builder/flowgraph_builder0125.js:1:1)
+    ->[]
+  block 10: [exit-exceptional]
+    node 12: exceptional-return (test/flowgraph_builder/flowgraph_builder0125.js:1:1)
+    ->[]
+
+test/flowgraph_builder/flowgraph_builder0125.js:3:6: [definite] Unreachable code

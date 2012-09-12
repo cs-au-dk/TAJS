@@ -1,0 +1,102 @@
+test/benchmarks/suites/v8/richards.js:121: [definite] Variable is null/undefined: queue
+test/benchmarks/suites/v8/richards.js:151: [definite] Variable is null/undefined: queue
+test/benchmarks/suites/v8/richards.js:162: [definite] Variable is null/undefined: queue
+test/benchmarks/suites/v8/richards.js:41: [definite] [unused] The variable msg is never used.
+test/benchmarks/suites/v8/richards.js:41: [definite] [unused] The variable queue is never used.
+test/benchmarks/suites/v8/richards.js:41: [definite] [unused] The variable scheduler is never used.
+test/benchmarks/suites/v8/richards.js:236: [definite] [suspicious] The variable packet has values with different types. (E.g. mixing integers and strings)
+test/benchmarks/suites/v8/richards.js:331: [definite] [suspicious] The variable packet has values with different types. (E.g. mixing integers and strings)
+test/benchmarks/suites/v8/richards.js:341: [definite] [suspicious] The variable packet has values with different types. (E.g. mixing integers and strings)
+test/benchmarks/suites/v8/richards.js:350: [definite] Unreachable function
+test/benchmarks/suites/v8/richards.js:368: [definite] [unused] The variable packet is never used.
+test/benchmarks/suites/v8/richards.js:380: [definite] Unreachable function
+test/benchmarks/suites/v8/richards.js:395: [definite] [unused] The variable v is never used.
+test/benchmarks/suites/v8/richards.js:396: [definite] [suspicious] The variable packet has values with different types. (E.g. mixing integers and strings)
+test/benchmarks/suites/v8/richards.js:407: [definite] Unreachable function
+test/benchmarks/suites/v8/richards.js:425: [definite] [suspicious] The variable packet has values with different types. (E.g. mixing integers and strings)
+test/benchmarks/suites/v8/richards.js:444: [definite] Unreachable function
+test/benchmarks/suites/v8/richards.js:459: [definite] [unused] The variable count is never used.
+test/benchmarks/suites/v8/richards.js:459: [definite] [unused] The variable v is never used.
+test/benchmarks/suites/v8/richards.js:460: [definite] [suspicious] The variable packet has values with different types. (E.g. mixing integers and strings)
+test/benchmarks/suites/v8/richards.js:487: [definite] Unreachable function
+test/benchmarks/suites/v8/richards.js:521: [definite] [unused] The variable peek is never used.
+test/benchmarks/suites/v8/richards.js:525: [definite] [unused] The conditional expression is always false.
+test/benchmarks/suites/v8/richards.js:531: [definite] Unreachable function
+test/benchmarks/suites/v8/richards.js:185: [maybe] TypeError, reading property of null/undefined
+test/benchmarks/suites/v8/richards.js:186: [maybe] TypeError, reading property of null/undefined
+test/benchmarks/suites/v8/richards.js:188: [maybe] TypeError, reading property of null/undefined
+test/benchmarks/suites/v8/richards.js:201: [maybe] TypeError, reading property of null/undefined
+test/benchmarks/suites/v8/richards.js:236: [maybe] TypeError, reading property of null/undefined
+test/benchmarks/suites/v8/richards.js:241: [maybe] TypeError, reading property of null/undefined
+test/benchmarks/suites/v8/richards.js:322: [maybe] TypeError, reading property of null/undefined
+test/benchmarks/suites/v8/richards.js:345: [maybe] TypeError, call to non-function
+test/benchmarks/suites/v8/richards.js:433: [maybe] TypeError, writing property of null/undefined
+test/benchmarks/suites/v8/richards.js:438: [maybe] TypeError, writing property of null/undefined
+test/benchmarks/suites/v8/richards.js:461: [maybe] TypeError, reading property of null/undefined
+test/benchmarks/suites/v8/richards.js:462: [maybe] TypeError, call to non-function
+test/benchmarks/suites/v8/richards.js:464: [maybe] TypeError, call to non-function
+test/benchmarks/suites/v8/richards.js:468: [maybe] TypeError, reading property of null/undefined
+test/benchmarks/suites/v8/richards.js:473: [maybe] TypeError, reading property of null/undefined
+test/benchmarks/suites/v8/richards.js:474: [maybe] TypeError, reading property of null/undefined
+test/benchmarks/suites/v8/richards.js:474: [maybe] TypeError, reading property of null/undefined
+test/benchmarks/suites/v8/richards.js:474: [maybe] TypeError, writing property of null/undefined
+test/benchmarks/suites/v8/richards.js:475: [maybe] TypeError, writing property of null/undefined
+test/benchmarks/suites/v8/richards.js:480: [maybe] TypeError, reading property of null/undefined
+test/benchmarks/suites/v8/richards.js:525: [maybe] TypeError, reading property of null/undefined
+test/benchmarks/suites/v8/richards.js:236: [maybe] Reading absent property: id
+test/benchmarks/suites/v8/richards.js:322: [maybe] Reading absent property: link
+test/benchmarks/suites/v8/richards.js:345: [maybe] Reading absent property: addTo
+test/benchmarks/suites/v8/richards.js:369: [maybe] Reading absent property: count
+test/benchmarks/suites/v8/richards.js:370: [maybe] Reading absent property: count
+test/benchmarks/suites/v8/richards.js:436: [maybe] Reading absent property: v2
+test/benchmarks/suites/v8/richards.js:437: [maybe] Reading absent property: v2
+test/benchmarks/suites/v8/richards.js:438: [maybe] Reading absent property: a2
+test/benchmarks/suites/v8/richards.js:438: [maybe] Reading absent property: v2
+test/benchmarks/suites/v8/richards.js:461: [maybe] Reading absent property: kind
+test/benchmarks/suites/v8/richards.js:462: [maybe] Reading absent property: addTo
+test/benchmarks/suites/v8/richards.js:464: [maybe] Reading absent property: addTo
+test/benchmarks/suites/v8/richards.js:464: [maybe] Reading absent property: v2
+test/benchmarks/suites/v8/richards.js:468: [maybe] Reading absent property: a1
+test/benchmarks/suites/v8/richards.js:471: [maybe] Reading absent property: v2
+test/benchmarks/suites/v8/richards.js:472: [maybe] Reading absent property: v2
+test/benchmarks/suites/v8/richards.js:473: [maybe] Reading absent property: link
+test/benchmarks/suites/v8/richards.js:473: [maybe] Reading absent property: v2
+test/benchmarks/suites/v8/richards.js:474: [maybe] Reading absent property: a2
+test/benchmarks/suites/v8/richards.js:480: [maybe] Reading absent property: link
+test/benchmarks/suites/v8/richards.js:523: [maybe] [suspicious] The variable queue has values with different types. (E.g. mixing integers and strings)
+test/benchmarks/suites/v8/richards.js:525: [maybe] Reading absent property: link
+test/benchmarks/suites/v8/richards.js:525: [maybe] [suspicious] The variable next has values with different types. (E.g. mixing integers and strings)
+test/benchmarks/suites/v8/richards.js:1: [maybe] Uncaught exception, constructed at [test/benchmarks/suites/v8/richards.js:70, test/benchmarks/suites/v8/richards.js:185, test/benchmarks/suites/v8/richards.js:186, test/benchmarks/suites/v8/richards.js:188, test/benchmarks/suites/v8/richards.js:201, test/benchmarks/suites/v8/richards.js:236, test/benchmarks/suites/v8/richards.js:241, test/benchmarks/suites/v8/richards.js:322, test/benchmarks/suites/v8/richards.js:345, test/benchmarks/suites/v8/richards.js:433, test/benchmarks/suites/v8/richards.js:438, test/benchmarks/suites/v8/richards.js:461, test/benchmarks/suites/v8/richards.js:462, test/benchmarks/suites/v8/richards.js:464, test/benchmarks/suites/v8/richards.js:468, test/benchmarks/suites/v8/richards.js:473, test/benchmarks/suites/v8/richards.js:474, test/benchmarks/suites/v8/richards.js:475, test/benchmarks/suites/v8/richards.js:480, test/benchmarks/suites/v8/richards.js:525]
+test/benchmarks/suites/v8/richards.js:199: [maybe] Reading absent property (computed name)
+test/benchmarks/suites/v8/richards.js:236: [maybe] Converting primitive number to object
+test/benchmarks/suites/v8/richards.js:236: [maybe] Reading absent property (computed name)
+test/benchmarks/suites/v8/richards.js:239: [maybe] Converting primitive number to object
+test/benchmarks/suites/v8/richards.js:240: [maybe] Converting primitive number to object
+test/benchmarks/suites/v8/richards.js:322: [maybe] Converting primitive number to object
+test/benchmarks/suites/v8/richards.js:345: [maybe] Converting primitive number to object
+test/benchmarks/suites/v8/richards.js:345: [maybe] Converting primitive number to object
+test/benchmarks/suites/v8/richards.js:369: [maybe] Conversion to number yields NaN
+test/benchmarks/suites/v8/richards.js:371: [maybe] Conversion to number yields NaN
+test/benchmarks/suites/v8/richards.js:372: [maybe] Conversion to number yields NaN
+test/benchmarks/suites/v8/richards.js:375: [maybe] Conversion to number yields NaN
+test/benchmarks/suites/v8/richards.js:433: [maybe] Converting primitive number to object
+test/benchmarks/suites/v8/richards.js:434: [maybe] Converting primitive number to object
+test/benchmarks/suites/v8/richards.js:436: [maybe] Conversion to number yields NaN
+test/benchmarks/suites/v8/richards.js:437: [maybe] Conversion to number yields NaN
+test/benchmarks/suites/v8/richards.js:438: [maybe] Converting primitive number to object
+test/benchmarks/suites/v8/richards.js:461: [maybe] Converting primitive number to object
+test/benchmarks/suites/v8/richards.js:462: [maybe] Converting primitive number to object
+test/benchmarks/suites/v8/richards.js:462: [maybe] Converting primitive number to object
+test/benchmarks/suites/v8/richards.js:464: [maybe] Converting primitive number to object
+test/benchmarks/suites/v8/richards.js:464: [maybe] Converting primitive number to object
+test/benchmarks/suites/v8/richards.js:468: [maybe] Converting primitive number to object
+test/benchmarks/suites/v8/richards.js:470: [maybe] Conversion to number yields NaN
+test/benchmarks/suites/v8/richards.js:473: [maybe] Converting primitive number to object
+test/benchmarks/suites/v8/richards.js:474: [maybe] Converting primitive number to object
+test/benchmarks/suites/v8/richards.js:474: [maybe] Converting primitive number to object
+test/benchmarks/suites/v8/richards.js:474: [maybe] Reading absent property (computed name)
+test/benchmarks/suites/v8/richards.js:475: [maybe] Conversion to number yields NaN
+test/benchmarks/suites/v8/richards.js:475: [maybe] Converting primitive number to object
+test/benchmarks/suites/v8/richards.js:480: [maybe] Converting primitive number to object
+test/benchmarks/suites/v8/richards.js:525: [maybe] Converting primitive number to object
+test/benchmarks/suites/v8/richards.js:527: [maybe] Converting primitive number to object

@@ -1,0 +1,32 @@
+test/chrome/plasma.tidy.html:23: [definite] Variable test2504afjd is null/undefined
+test/chrome/plasma.tidy.html:23: [definite] Unreachable code
+test/chrome/plasma.tidy.html:32: [definite] Dead assignment, property xscale is never read
+test/chrome/plasma.tidy.html:32: [definite] Dead assignment, property yscale is never read
+test/chrome/plasma.tidy.html:52: [definite] Unreachable code
+test/chrome/plasma.tidy.html:53: [definite] Unreachable code
+test/chrome/plasma.tidy.html:62: [definite] Unreachable code
+test/chrome/plasma.tidy.html:63: [definite] Unreachable code
+test/chrome/plasma.tidy.html:67: [definite] Unreachable code
+test/chrome/plasma.tidy.html:76: [definite] Unreachable code
+test/chrome/plasma.tidy.html:45: [maybe] RangeError, assigning invalid value to array 'length' property
+test/chrome/plasma.tidy.html:97: [maybe] Reading absent property (computed name)
+test/chrome/plasma.tidy.html:117: [maybe] RangeError, assigning invalid value to array 'length' property
+test/chrome/plasma.tidy.html:118: [maybe] RangeError, assigning invalid value to array 'length' property
+test/chrome/plasma.tidy.html:119: [maybe] RangeError, assigning invalid value to array 'length' property
+test/chrome/plasma.tidy.html:133: [maybe] Reading absent property (computed name)
+test/chrome/plasma.tidy.html:134: [maybe] Reading absent property (computed name)
+test/chrome/plasma.tidy.html:135: [maybe] Reading absent property (computed name)
+test/chrome/plasma.tidy.html:10: [maybe] Uncaught exception, constructed at [test/chrome/plasma.tidy.html:45, test/chrome/plasma.tidy.html:117, test/chrome/plasma.tidy.html:118, test/chrome/plasma.tidy.html:119]
+test/chrome/plasma.tidy.html:71: [maybe] Conversion to number yields NaN
+test/chrome/plasma.tidy.html:84: [maybe] Conversion to number yields NaN
+test/chrome/plasma.tidy.html:85: [maybe] Conversion to number yields NaN
+test/chrome/plasma.tidy.html:86: [maybe] Conversion to number yields NaN
+test/chrome/plasma.tidy.html:117: [maybe] Conversion to number yields NaN
+test/chrome/plasma.tidy.html:118: [maybe] Conversion to number yields NaN
+test/chrome/plasma.tidy.html:119: [maybe] Conversion to number yields NaN
+test/chrome/plasma.tidy.html:133: [maybe] Conversion to number yields NaN
+test/chrome/plasma.tidy.html:133: [maybe] Conversion to number yields NaN
+test/chrome/plasma.tidy.html:134: [maybe] Conversion to number yields NaN
+test/chrome/plasma.tidy.html:134: [maybe] Conversion to number yields NaN
+test/chrome/plasma.tidy.html:135: [maybe] Conversion to number yields NaN
+test/chrome/plasma.tidy.html:135: [maybe] Conversion to number yields NaN

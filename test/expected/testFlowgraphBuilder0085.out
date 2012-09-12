@@ -1,0 +1,37 @@
+fg2: <main> function()
+  block 0: [entry]
+    node 0: constant[undefined,v1] (test/flowgraph_builder/flowgraph_builder0085.js:1:1)
+    node 1: function-decl[function f(),-] (test/flowgraph_builder/flowgraph_builder0085.js:1:1)
+    ->[block 1]
+  block 1:
+    node 2: read-variable['RegExp',v3,-] (test/flowgraph_builder/flowgraph_builder0085.js:5:5)
+    node 3: constant["f()",v4] (test/flowgraph_builder/flowgraph_builder0085.js:5:5)
+    node 4: constant["ig",v5] (test/flowgraph_builder/flowgraph_builder0085.js:5:5)
+    ->[block 2]
+  block 2:
+    node 5: construct[-,v3,v4,v5,v2] (test/flowgraph_builder/flowgraph_builder0085.js:5:5)
+    ->[block 3]
+  block 3:
+    node 6: write-variable[v2,'r']* (test/flowgraph_builder/flowgraph_builder0085.js:5:1)
+    ->[block 4]
+  block 4: [exit-ordinary]
+    node 7: return[v1] (test/flowgraph_builder/flowgraph_builder0085.js:1:1)
+    ->[]
+  block 5: [exit-exceptional]
+    node 8: exceptional-return (test/flowgraph_builder/flowgraph_builder0085.js:1:1)
+    ->[]
+function f()
+  block 6: [entry]
+    node 9: constant[undefined,v1] (test/flowgraph_builder/flowgraph_builder0085.js:1:1)
+    ->[block 7]
+  block 7:
+    node 10: constant["ab+",v1] (test/flowgraph_builder/flowgraph_builder0085.js:2:11)
+    ->[block 8]
+  block 8: [exit-ordinary]
+    node 11: return[v1] (test/flowgraph_builder/flowgraph_builder0085.js:1:1)
+    ->[]
+  block 9: [exit-exceptional]
+    node 12: exceptional-return (test/flowgraph_builder/flowgraph_builder0085.js:1:1)
+    ->[]
+
+test/flowgraph_builder/flowgraph_builder0085.js:1:1: [definite] Unreachable function f

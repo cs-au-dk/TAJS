@@ -1,0 +1,5 @@
+test/micro/test188.js:1:10: [definite] Unreachable function
+test/micro/test188.js:15:11: [definite] Unreachable function
+test/micro/test188.js:7:6: [info] Abstract object: {browser:^(@Object#node10.browser[present]),each:^(@Object#node10.each[present]),[[Prototype]]=[@Object.prototype[native]],[[Value]]=?,[[Scope]]=?}
+test/micro/test188.js:9:8: [info] Abstract value: "Inside loop"
+test/micro/test188.js:8:6: [info] Reading from unknown property that may cause loss of precision

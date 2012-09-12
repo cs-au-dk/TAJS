@@ -1,0 +1,3 @@
+test/micro/test111.js:2:2: [info] Abstract value: 3.0
+test/micro/test111.js:2:2: [info] Abstract value: UInt
+test/micro/test111.js:10:1: [info] Abstract value: UInt

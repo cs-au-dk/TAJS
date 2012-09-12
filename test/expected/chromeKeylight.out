@@ -1,0 +1,455 @@
+test/chrome/keylight.tidy.html:192: [definite] Reading absent property touches
+test/chrome/keylight.tidy.html:192: [definite] TypeError, reading property of null/undefined
+test/chrome/keylight.tidy.html:202: [definite] Reading absent property touches
+test/chrome/keylight.tidy.html:202: [definite] TypeError, reading property of null/undefined
+test/chrome/keylight.tidy.html:425: [definite] Reading absent property (computed name)
+test/chrome/keylight.tidy.html:425: [definite] TypeError, reading property of null/undefined
+test/chrome/keylight.tidy.html:66: [definite] Dead assignment, property isMobile is never read
+test/chrome/keylight.tidy.html:69: [definite] Dead assignment, property width is never read
+test/chrome/keylight.tidy.html:89: [definite] Dead assignment, property mouseIsDown is never read
+test/chrome/keylight.tidy.html:166: [definite] Dead assignment, property mouseIsDown is never read
+test/chrome/keylight.tidy.html:175: [definite] Dead assignment, property mouseIsDown is never read
+test/chrome/keylight.tidy.html:184: [definite] Dead assignment, property mouseIsDown is never read
+test/chrome/keylight.tidy.html:193: [definite] Unreachable code
+test/chrome/keylight.tidy.html:195: [definite] Unreachable code
+test/chrome/keylight.tidy.html:203: [definite] Unreachable code
+test/chrome/keylight.tidy.html:205: [definite] Unreachable code
+test/chrome/keylight.tidy.html:208: [definite] Unreachable code
+test/chrome/keylight.tidy.html:212: [definite] Dead assignment, property mouseIsDown is never read
+test/chrome/keylight.tidy.html:427: [definite] Unreachable code
+test/chrome/keylight.tidy.html:429: [definite] Unreachable code
+test/chrome/keylight.tidy.html:432: [definite] Unreachable code
+test/chrome/keylight.tidy.html:456: [definite] Unreachable code
+test/chrome/keylight.tidy.html:457: [definite] Unreachable code
+test/chrome/keylight.tidy.html:458: [definite] Unreachable code
+test/chrome/keylight.tidy.html:468: [definite] Unreachable code
+test/chrome/keylight.tidy.html:469: [definite] Unreachable code
+test/chrome/keylight.tidy.html:472: [definite] Unreachable code
+test/chrome/keylight.tidy.html:473: [definite] Unreachable code
+test/chrome/keylight.tidy.html:474: [definite] Unreachable code
+test/chrome/keylight.tidy.html:478: [definite] Unreachable code
+test/chrome/keylight.tidy.html:479: [definite] Unreachable code
+test/chrome/keylight.tidy.html:482: [definite] Unreachable code
+test/chrome/keylight.tidy.html:483: [definite] Unreachable code
+test/chrome/keylight.tidy.html:488: [definite] Unreachable code
+test/chrome/keylight.tidy.html:651: [definite] Dead assignment, property position is never read
+test/chrome/keylight.tidy.html:651: [definite] Dead assignment, property x is never read
+test/chrome/keylight.tidy.html:651: [definite] Dead assignment, property y is never read
+test/chrome/keylight.tidy.html:700: [definite] Dead assignment, property x is never read
+test/chrome/keylight.tidy.html:701: [definite] Dead assignment, property y is never read
+test/chrome/keylight.tidy.html:702: [definite] Dead assignment, property r is never read
+test/chrome/keylight.tidy.html:704: [definite] Dead assignment, property rotationRadius is never read
+test/chrome/keylight.tidy.html:714: [definite] Dead assignment, property x is never read
+test/chrome/keylight.tidy.html:714: [definite] Dead assignment, property y is never read
+test/chrome/keylight.tidy.html:715: [definite] Dead assignment, property r is never read
+test/chrome/keylight.tidy.html:715: [definite] Dead assignment, property x is never read
+test/chrome/keylight.tidy.html:715: [definite] Dead assignment, property y is never read
+test/chrome/keylight.tidy.html:716: [definite] Dead assignment, property rotation is never read
+test/chrome/keylight.tidy.html:717: [definite] Dead assignment, property rotationRadius is never read
+test/chrome/keylight.tidy.html:728: [definite] Dead assignment, property size is never read
+test/chrome/keylight.tidy.html:730: [definite] Dead assignment, property a is never read
+test/chrome/keylight.tidy.html:65: [definite] Converting primitive string to object
+test/chrome/keylight.tidy.html:65: [definite] Converting primitive string to object
+test/chrome/keylight.tidy.html:66: [definite] Converting primitive string to object
+test/chrome/keylight.tidy.html:66: [definite] Converting primitive string to object
+test/chrome/keylight.tidy.html:66: [definite] Converting primitive string to object
+test/chrome/keylight.tidy.html:66: [definite] Converting primitive string to object
+test/chrome/keylight.tidy.html:270: [definite] Converting primitive number to object
+test/chrome/keylight.tidy.html:270: [definite] Converting primitive number to object
+test/chrome/keylight.tidy.html:278: [definite] Converting primitive string to object
+test/chrome/keylight.tidy.html:278: [definite] Converting primitive string to object
+test/chrome/keylight.tidy.html:278: [definite] Converting primitive string to object
+test/chrome/keylight.tidy.html:278: [definite] Converting primitive string to object
+test/chrome/keylight.tidy.html:278: [definite] Converting primitive string to object
+test/chrome/keylight.tidy.html:278: [definite] Converting primitive string to object
+test/chrome/keylight.tidy.html:285: [definite] Converting primitive string to object
+test/chrome/keylight.tidy.html:285: [definite] Converting primitive string to object
+test/chrome/keylight.tidy.html:265: [maybe] Reading absent property (computed name)
+test/chrome/keylight.tidy.html:265: [maybe] Reading absent property (computed name)
+test/chrome/keylight.tidy.html:265: [maybe] Reading absent property position
+test/chrome/keylight.tidy.html:265: [maybe] Reading absent property position
+test/chrome/keylight.tidy.html:265: [maybe] TypeError, reading property of null/undefined
+test/chrome/keylight.tidy.html:265: [maybe] TypeError, reading property of null/undefined
+test/chrome/keylight.tidy.html:265: [maybe] TypeError, reading property of null/undefined
+test/chrome/keylight.tidy.html:265: [maybe] TypeError, reading property of null/undefined
+test/chrome/keylight.tidy.html:285: [maybe] TypeError, reading property of null/undefined
+test/chrome/keylight.tidy.html:290: [maybe] Reading absent property (computed name)
+test/chrome/keylight.tidy.html:291: [maybe] Reading absent property (computed name)
+test/chrome/keylight.tidy.html:299: [maybe] Reading absent property (computed name)
+test/chrome/keylight.tidy.html:300: [maybe] Reading absent property (computed name)
+test/chrome/keylight.tidy.html:365: [maybe] Reading absent property (computed name)
+test/chrome/keylight.tidy.html:367: [maybe] Reading absent property distanceTo
+test/chrome/keylight.tidy.html:367: [maybe] TypeError, call to non-function
+test/chrome/keylight.tidy.html:367: [maybe] TypeError, reading property of null/undefined
+test/chrome/keylight.tidy.html:375: [maybe] Reading absent property (computed name)
+test/chrome/keylight.tidy.html:376: [maybe] Reading absent property (computed name)
+test/chrome/keylight.tidy.html:376: [maybe] TypeError, writing property of null/undefined
+test/chrome/keylight.tidy.html:382: [maybe] Reading absent property (computed name)
+test/chrome/keylight.tidy.html:382: [maybe] TypeError, writing property of null/undefined
+test/chrome/keylight.tidy.html:419: [maybe] Reading absent property color
+test/chrome/keylight.tidy.html:419: [maybe] TypeError, writing property of null/undefined
+test/chrome/keylight.tidy.html:420: [maybe] Reading absent property color
+test/chrome/keylight.tidy.html:420: [maybe] TypeError, writing property of null/undefined
+test/chrome/keylight.tidy.html:421: [maybe] Reading absent property color
+test/chrome/keylight.tidy.html:421: [maybe] TypeError, writing property of null/undefined
+test/chrome/keylight.tidy.html:451: [maybe] Reading absent property (computed name)
+test/chrome/keylight.tidy.html:454: [maybe] Reading absent property particles
+test/chrome/keylight.tidy.html:454: [maybe] TypeError, reading property of null/undefined
+test/chrome/keylight.tidy.html:454: [maybe] TypeError, reading property of null/undefined
+test/chrome/keylight.tidy.html:492: [maybe] Reading absent property (computed name)
+test/chrome/keylight.tidy.html:492: [maybe] Reading absent property position
+test/chrome/keylight.tidy.html:492: [maybe] TypeError, reading property of null/undefined
+test/chrome/keylight.tidy.html:493: [maybe] Reading absent property scale
+test/chrome/keylight.tidy.html:497: [maybe] Reading absent property position
+test/chrome/keylight.tidy.html:497: [maybe] Reading absent property reflection
+test/chrome/keylight.tidy.html:497: [maybe] TypeError, reading property of null/undefined
+test/chrome/keylight.tidy.html:497: [maybe] TypeError, writing property of null/undefined
+test/chrome/keylight.tidy.html:498: [maybe] Reading absent property position
+test/chrome/keylight.tidy.html:498: [maybe] Reading absent property reflection
+test/chrome/keylight.tidy.html:498: [maybe] Reading absent property scale
+test/chrome/keylight.tidy.html:498: [maybe] TypeError, reading property of null/undefined
+test/chrome/keylight.tidy.html:498: [maybe] TypeError, writing property of null/undefined
+test/chrome/keylight.tidy.html:500: [maybe] Reading absent property position
+test/chrome/keylight.tidy.html:500: [maybe] TypeError, reading property of null/undefined
+test/chrome/keylight.tidy.html:505: [maybe] Reading absent property position
+test/chrome/keylight.tidy.html:505: [maybe] TypeError, reading property of null/undefined
+test/chrome/keylight.tidy.html:506: [maybe] Reading absent property position
+test/chrome/keylight.tidy.html:506: [maybe] TypeError, reading property of null/undefined
+test/chrome/keylight.tidy.html:507: [maybe] Reading absent property (computed name)
+test/chrome/keylight.tidy.html:508: [maybe] Reading absent property position
+test/chrome/keylight.tidy.html:508: [maybe] Reading absent property reflection
+test/chrome/keylight.tidy.html:508: [maybe] Reading absent property scale
+test/chrome/keylight.tidy.html:508: [maybe] TypeError, reading property of null/undefined
+test/chrome/keylight.tidy.html:508: [maybe] TypeError, reading property of null/undefined
+test/chrome/keylight.tidy.html:510: [maybe] Reading absent property position
+test/chrome/keylight.tidy.html:510: [maybe] TypeError, reading property of null/undefined
+test/chrome/keylight.tidy.html:511: [maybe] Reading absent property position
+test/chrome/keylight.tidy.html:511: [maybe] TypeError, reading property of null/undefined
+test/chrome/keylight.tidy.html:512: [maybe] Reading absent property (computed name)
+test/chrome/keylight.tidy.html:513: [maybe] Reading absent property position
+test/chrome/keylight.tidy.html:513: [maybe] Reading absent property reflection
+test/chrome/keylight.tidy.html:513: [maybe] Reading absent property scale
+test/chrome/keylight.tidy.html:513: [maybe] TypeError, reading property of null/undefined
+test/chrome/keylight.tidy.html:513: [maybe] TypeError, reading property of null/undefined
+test/chrome/keylight.tidy.html:516: [maybe] Reading absent property reflection
+test/chrome/keylight.tidy.html:516: [maybe] TypeError, reading property of null/undefined
+test/chrome/keylight.tidy.html:519: [maybe] Reading absent property reflection
+test/chrome/keylight.tidy.html:519: [maybe] Reading absent property reflection
+test/chrome/keylight.tidy.html:519: [maybe] TypeError, reading property of null/undefined
+test/chrome/keylight.tidy.html:519: [maybe] TypeError, writing property of null/undefined
+test/chrome/keylight.tidy.html:521: [maybe] Reading absent property position
+test/chrome/keylight.tidy.html:521: [maybe] Reading absent property position
+test/chrome/keylight.tidy.html:521: [maybe] Reading absent property position
+test/chrome/keylight.tidy.html:521: [maybe] Reading absent property position
+test/chrome/keylight.tidy.html:521: [maybe] Reading absent property size
+test/chrome/keylight.tidy.html:521: [maybe] TypeError, reading property of null/undefined
+test/chrome/keylight.tidy.html:521: [maybe] TypeError, reading property of null/undefined
+test/chrome/keylight.tidy.html:521: [maybe] TypeError, reading property of null/undefined
+test/chrome/keylight.tidy.html:521: [maybe] TypeError, reading property of null/undefined
+test/chrome/keylight.tidy.html:521: [maybe] TypeError, reading property of null/undefined
+test/chrome/keylight.tidy.html:522: [maybe] Reading absent property color
+test/chrome/keylight.tidy.html:522: [maybe] Reading absent property color
+test/chrome/keylight.tidy.html:522: [maybe] Reading absent property color
+test/chrome/keylight.tidy.html:522: [maybe] Reading absent property color
+test/chrome/keylight.tidy.html:522: [maybe] TypeError, reading property of null/undefined
+test/chrome/keylight.tidy.html:522: [maybe] TypeError, reading property of null/undefined
+test/chrome/keylight.tidy.html:522: [maybe] TypeError, reading property of null/undefined
+test/chrome/keylight.tidy.html:522: [maybe] TypeError, reading property of null/undefined
+test/chrome/keylight.tidy.html:523: [maybe] Reading absent property color
+test/chrome/keylight.tidy.html:523: [maybe] Reading absent property color
+test/chrome/keylight.tidy.html:523: [maybe] Reading absent property color
+test/chrome/keylight.tidy.html:523: [maybe] Reading absent property color
+test/chrome/keylight.tidy.html:523: [maybe] TypeError, reading property of null/undefined
+test/chrome/keylight.tidy.html:523: [maybe] TypeError, reading property of null/undefined
+test/chrome/keylight.tidy.html:523: [maybe] TypeError, reading property of null/undefined
+test/chrome/keylight.tidy.html:523: [maybe] TypeError, reading property of null/undefined
+test/chrome/keylight.tidy.html:527: [maybe] Reading absent property position
+test/chrome/keylight.tidy.html:527: [maybe] Reading absent property position
+test/chrome/keylight.tidy.html:527: [maybe] Reading absent property scale
+test/chrome/keylight.tidy.html:527: [maybe] Reading absent property size
+test/chrome/keylight.tidy.html:527: [maybe] TypeError, reading property of null/undefined
+test/chrome/keylight.tidy.html:527: [maybe] TypeError, reading property of null/undefined
+test/chrome/keylight.tidy.html:527: [maybe] TypeError, reading property of null/undefined
+test/chrome/keylight.tidy.html:530: [maybe] Reading absent property reflection
+test/chrome/keylight.tidy.html:530: [maybe] Reading absent property reflection
+test/chrome/keylight.tidy.html:530: [maybe] Reading absent property reflection
+test/chrome/keylight.tidy.html:530: [maybe] Reading absent property reflection
+test/chrome/keylight.tidy.html:530: [maybe] Reading absent property scale
+test/chrome/keylight.tidy.html:530: [maybe] Reading absent property size
+test/chrome/keylight.tidy.html:530: [maybe] TypeError, reading property of null/undefined
+test/chrome/keylight.tidy.html:530: [maybe] TypeError, reading property of null/undefined
+test/chrome/keylight.tidy.html:530: [maybe] TypeError, reading property of null/undefined
+test/chrome/keylight.tidy.html:530: [maybe] TypeError, reading property of null/undefined
+test/chrome/keylight.tidy.html:530: [maybe] TypeError, reading property of null/undefined
+test/chrome/keylight.tidy.html:531: [maybe] Reading absent property color
+test/chrome/keylight.tidy.html:531: [maybe] Reading absent property color
+test/chrome/keylight.tidy.html:531: [maybe] Reading absent property color
+test/chrome/keylight.tidy.html:531: [maybe] Reading absent property color
+test/chrome/keylight.tidy.html:531: [maybe] TypeError, reading property of null/undefined
+test/chrome/keylight.tidy.html:531: [maybe] TypeError, reading property of null/undefined
+test/chrome/keylight.tidy.html:531: [maybe] TypeError, reading property of null/undefined
+test/chrome/keylight.tidy.html:531: [maybe] TypeError, reading property of null/undefined
+test/chrome/keylight.tidy.html:532: [maybe] Reading absent property color
+test/chrome/keylight.tidy.html:532: [maybe] Reading absent property color
+test/chrome/keylight.tidy.html:532: [maybe] Reading absent property color
+test/chrome/keylight.tidy.html:532: [maybe] TypeError, reading property of null/undefined
+test/chrome/keylight.tidy.html:532: [maybe] TypeError, reading property of null/undefined
+test/chrome/keylight.tidy.html:532: [maybe] TypeError, reading property of null/undefined
+test/chrome/keylight.tidy.html:536: [maybe] Reading absent property reflection
+test/chrome/keylight.tidy.html:536: [maybe] Reading absent property reflection
+test/chrome/keylight.tidy.html:536: [maybe] Reading absent property scale
+test/chrome/keylight.tidy.html:536: [maybe] Reading absent property size
+test/chrome/keylight.tidy.html:536: [maybe] TypeError, reading property of null/undefined
+test/chrome/keylight.tidy.html:536: [maybe] TypeError, reading property of null/undefined
+test/chrome/keylight.tidy.html:536: [maybe] TypeError, reading property of null/undefined
+test/chrome/keylight.tidy.html:539: [maybe] Reading absent property dragging
+test/chrome/keylight.tidy.html:540: [maybe] Reading absent property position
+test/chrome/keylight.tidy.html:540: [maybe] Reading absent property position
+test/chrome/keylight.tidy.html:540: [maybe] TypeError, reading property of null/undefined
+test/chrome/keylight.tidy.html:540: [maybe] TypeError, reading property of null/undefined
+test/chrome/keylight.tidy.html:541: [maybe] Reading absent property position
+test/chrome/keylight.tidy.html:541: [maybe] Reading absent property position
+test/chrome/keylight.tidy.html:541: [maybe] TypeError, reading property of null/undefined
+test/chrome/keylight.tidy.html:541: [maybe] TypeError, reading property of null/undefined
+test/chrome/keylight.tidy.html:543: [maybe] Reading absent property position
+test/chrome/keylight.tidy.html:543: [maybe] Reading absent property position
+test/chrome/keylight.tidy.html:543: [maybe] Reading absent property position
+test/chrome/keylight.tidy.html:543: [maybe] Reading absent property position
+test/chrome/keylight.tidy.html:543: [maybe] TypeError, reading property of null/undefined
+test/chrome/keylight.tidy.html:543: [maybe] TypeError, reading property of null/undefined
+test/chrome/keylight.tidy.html:543: [maybe] TypeError, reading property of null/undefined
+test/chrome/keylight.tidy.html:543: [maybe] TypeError, reading property of null/undefined
+test/chrome/keylight.tidy.html:547: [maybe] Reading absent property cloudSize
+test/chrome/keylight.tidy.html:547: [maybe] Reading absent property cloudSize
+test/chrome/keylight.tidy.html:547: [maybe] Reading absent property cloudSize
+test/chrome/keylight.tidy.html:547: [maybe] TypeError, reading property of null/undefined
+test/chrome/keylight.tidy.html:547: [maybe] TypeError, reading property of null/undefined
+test/chrome/keylight.tidy.html:547: [maybe] TypeError, reading property of null/undefined
+test/chrome/keylight.tidy.html:548: [maybe] Reading absent property size
+test/chrome/keylight.tidy.html:548: [maybe] Reading absent property size
+test/chrome/keylight.tidy.html:548: [maybe] Reading absent property size
+test/chrome/keylight.tidy.html:548: [maybe] TypeError, reading property of null/undefined
+test/chrome/keylight.tidy.html:548: [maybe] TypeError, reading property of null/undefined
+test/chrome/keylight.tidy.html:548: [maybe] TypeError, reading property of null/undefined
+test/chrome/keylight.tidy.html:551: [maybe] Reading absent property position
+test/chrome/keylight.tidy.html:551: [maybe] Reading absent property position
+test/chrome/keylight.tidy.html:551: [maybe] TypeError, reading property of null/undefined
+test/chrome/keylight.tidy.html:551: [maybe] TypeError, reading property of null/undefined
+test/chrome/keylight.tidy.html:564: [maybe] Reading absent property (computed name)
+test/chrome/keylight.tidy.html:566: [maybe] Reading absent property rx
+test/chrome/keylight.tidy.html:566: [maybe] Reading absent property ry
+test/chrome/keylight.tidy.html:566: [maybe] Reading absent property x
+test/chrome/keylight.tidy.html:566: [maybe] Reading absent property y
+test/chrome/keylight.tidy.html:566: [maybe] TypeError, reading property of null/undefined
+test/chrome/keylight.tidy.html:566: [maybe] TypeError, reading property of null/undefined
+test/chrome/keylight.tidy.html:566: [maybe] TypeError, reading property of null/undefined
+test/chrome/keylight.tidy.html:566: [maybe] TypeError, reading property of null/undefined
+test/chrome/keylight.tidy.html:566: [maybe] TypeError, reading property of null/undefined
+test/chrome/keylight.tidy.html:568: [maybe] Reading absent property x
+test/chrome/keylight.tidy.html:568: [maybe] TypeError, reading property of null/undefined
+test/chrome/keylight.tidy.html:569: [maybe] Reading absent property y
+test/chrome/keylight.tidy.html:569: [maybe] TypeError, reading property of null/undefined
+test/chrome/keylight.tidy.html:571: [maybe] Reading absent property rx
+test/chrome/keylight.tidy.html:571: [maybe] TypeError, reading property of null/undefined
+test/chrome/keylight.tidy.html:572: [maybe] Reading absent property ry
+test/chrome/keylight.tidy.html:572: [maybe] TypeError, reading property of null/undefined
+test/chrome/keylight.tidy.html:587: [maybe] Reading absent property (computed name)
+test/chrome/keylight.tidy.html:587: [maybe] TypeError, reading property of null/undefined
+test/chrome/keylight.tidy.html:599: [maybe] Reading absent property (computed name)
+test/chrome/keylight.tidy.html:600: [maybe] Reading absent property (computed name)
+test/chrome/keylight.tidy.html:606: [maybe] TypeError, reading property of null/undefined
+test/chrome/keylight.tidy.html:607: [maybe] TypeError, reading property of null/undefined
+test/chrome/keylight.tidy.html:610: [maybe] Reading absent property (computed name)
+test/chrome/keylight.tidy.html:611: [maybe] Reading absent property (computed name)
+test/chrome/keylight.tidy.html:613: [maybe] Reading absent property x
+test/chrome/keylight.tidy.html:613: [maybe] Reading absent property x
+test/chrome/keylight.tidy.html:613: [maybe] Reading absent property x
+test/chrome/keylight.tidy.html:613: [maybe] Reading absent property x
+test/chrome/keylight.tidy.html:613: [maybe] Reading absent property y
+test/chrome/keylight.tidy.html:613: [maybe] Reading absent property y
+test/chrome/keylight.tidy.html:613: [maybe] Reading absent property y
+test/chrome/keylight.tidy.html:613: [maybe] Reading absent property y
+test/chrome/keylight.tidy.html:613: [maybe] TypeError, reading property of null/undefined
+test/chrome/keylight.tidy.html:613: [maybe] TypeError, reading property of null/undefined
+test/chrome/keylight.tidy.html:618: [maybe] Reading absent property (computed name)
+test/chrome/keylight.tidy.html:619: [maybe] Reading absent property (computed name)
+test/chrome/keylight.tidy.html:626: [maybe] TypeError, reading property of null/undefined
+test/chrome/keylight.tidy.html:627: [maybe] TypeError, reading property of null/undefined
+test/chrome/keylight.tidy.html:630: [maybe] Reading absent property (computed name)
+test/chrome/keylight.tidy.html:631: [maybe] Reading absent property (computed name)
+test/chrome/keylight.tidy.html:633: [maybe] Reading absent property rx
+test/chrome/keylight.tidy.html:633: [maybe] Reading absent property rx
+test/chrome/keylight.tidy.html:633: [maybe] Reading absent property rx
+test/chrome/keylight.tidy.html:633: [maybe] Reading absent property rx
+test/chrome/keylight.tidy.html:633: [maybe] Reading absent property ry
+test/chrome/keylight.tidy.html:633: [maybe] Reading absent property ry
+test/chrome/keylight.tidy.html:633: [maybe] Reading absent property ry
+test/chrome/keylight.tidy.html:633: [maybe] Reading absent property ry
+test/chrome/keylight.tidy.html:633: [maybe] TypeError, reading property of null/undefined
+test/chrome/keylight.tidy.html:633: [maybe] TypeError, reading property of null/undefined
+test/chrome/keylight.tidy.html:639: [maybe] Reading absent property x
+test/chrome/keylight.tidy.html:639: [maybe] Reading absent property y
+test/chrome/keylight.tidy.html:639: [maybe] TypeError, reading property of null/undefined
+test/chrome/keylight.tidy.html:654: [maybe] Reading absent property position
+test/chrome/keylight.tidy.html:654: [maybe] TypeError, reading property of null/undefined
+test/chrome/keylight.tidy.html:655: [maybe] Reading absent property position
+test/chrome/keylight.tidy.html:655: [maybe] TypeError, reading property of null/undefined
+test/chrome/keylight.tidy.html:735: [maybe] Reading absent property x
+test/chrome/keylight.tidy.html:735: [maybe] TypeError, reading property of null/undefined
+test/chrome/keylight.tidy.html:736: [maybe] Reading absent property y
+test/chrome/keylight.tidy.html:747: [maybe] Reading absent property (computed name)
+test/chrome/keylight.tidy.html:52: [maybe] Uncaught exception, constructed at [test/chrome/keylight.tidy.html:192, test/chrome/keylight.tidy.html:202, test/chrome/keylight.tidy.html:265, test/chrome/keylight.tidy.html:285, test/chrome/keylight.tidy.html:367, test/chrome/keylight.tidy.html:376, test/chrome/keylight.tidy.html:382, test/chrome/keylight.tidy.html:419, test/chrome/keylight.tidy.html:420, test/chrome/keylight.tidy.html:421, test/chrome/keylight.tidy.html:425, test/chrome/keylight.tidy.html:454, test/chrome/keylight.tidy.html:492, test/chrome/keylight.tidy.html:497, test/chrome/keylight.tidy.html:498, test/chrome/keylight.tidy.html:500, test/chrome/keylight.tidy.html:505, test/chrome/keylight.tidy.html:506, test/chrome/keylight.tidy.html:508, test/chrome/keylight.tidy.html:510, test/chrome/keylight.tidy.html:511, test/chrome/keylight.tidy.html:513, test/chrome/keylight.tidy.html:516, test/chrome/keylight.tidy.html:519, test/chrome/keylight.tidy.html:521, test/chrome/keylight.tidy.html:522, test/chrome/keylight.tidy.html:523, test/chrome/keylight.tidy.html:527, test/chrome/keylight.tidy.html:530, test/chrome/keylight.tidy.html:531, test/chrome/keylight.tidy.html:532, test/chrome/keylight.tidy.html:536, test/chrome/keylight.tidy.html:540, test/chrome/keylight.tidy.html:541, test/chrome/keylight.tidy.html:543, test/chrome/keylight.tidy.html:547, test/chrome/keylight.tidy.html:548, test/chrome/keylight.tidy.html:551, test/chrome/keylight.tidy.html:566, test/chrome/keylight.tidy.html:568, test/chrome/keylight.tidy.html:569, test/chrome/keylight.tidy.html:571, test/chrome/keylight.tidy.html:572, test/chrome/keylight.tidy.html:587, test/chrome/keylight.tidy.html:606, test/chrome/keylight.tidy.html:607, test/chrome/keylight.tidy.html:613, test/chrome/keylight.tidy.html:626, test/chrome/keylight.tidy.html:627, test/chrome/keylight.tidy.html:633, test/chrome/keylight.tidy.html:639, test/chrome/keylight.tidy.html:654, test/chrome/keylight.tidy.html:655, test/chrome/keylight.tidy.html:735]
+test/chrome/keylight.tidy.html:265: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:265: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:290: [maybe] Converting undefined to string
+test/chrome/keylight.tidy.html:291: [maybe] Converting undefined to string
+test/chrome/keylight.tidy.html:299: [maybe] Converting undefined to string
+test/chrome/keylight.tidy.html:300: [maybe] Converting undefined to string
+test/chrome/keylight.tidy.html:367: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:367: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:376: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:382: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:419: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:420: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:421: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:454: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:491: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:492: [maybe] Conversion to number yields NaN
+test/chrome/keylight.tidy.html:492: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:492: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:492: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:493: [maybe] Conversion to number yields NaN
+test/chrome/keylight.tidy.html:493: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:493: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:497: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:497: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:498: [maybe] Conversion to number yields NaN
+test/chrome/keylight.tidy.html:498: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:498: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:498: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:500: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:505: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:506: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:507: [maybe] Conversion to number yields NaN
+test/chrome/keylight.tidy.html:507: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:507: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:508: [maybe] Conversion to number yields NaN
+test/chrome/keylight.tidy.html:508: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:508: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:508: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:510: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:511: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:512: [maybe] Conversion to number yields NaN
+test/chrome/keylight.tidy.html:512: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:512: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:513: [maybe] Conversion to number yields NaN
+test/chrome/keylight.tidy.html:513: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:513: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:513: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:516: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:519: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:519: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:521: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:521: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:521: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:521: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:521: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:522: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:522: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:522: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:522: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:523: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:523: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:523: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:523: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:527: [maybe] Conversion to number yields NaN
+test/chrome/keylight.tidy.html:527: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:527: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:527: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:527: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:530: [maybe] Conversion to number yields NaN
+test/chrome/keylight.tidy.html:530: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:530: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:530: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:530: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:530: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:530: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:531: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:531: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:531: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:531: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:532: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:532: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:532: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:536: [maybe] Conversion to number yields NaN
+test/chrome/keylight.tidy.html:536: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:536: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:536: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:536: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:539: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:540: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:540: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:541: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:541: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:543: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:543: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:543: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:543: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:547: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:547: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:547: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:548: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:548: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:548: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:551: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:551: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:566: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:566: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:566: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:566: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:568: [maybe] Conversion to number yields NaN
+test/chrome/keylight.tidy.html:568: [maybe] Conversion to number yields NaN
+test/chrome/keylight.tidy.html:568: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:569: [maybe] Conversion to number yields NaN
+test/chrome/keylight.tidy.html:569: [maybe] Conversion to number yields NaN
+test/chrome/keylight.tidy.html:569: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:571: [maybe] Conversion to number yields NaN
+test/chrome/keylight.tidy.html:571: [maybe] Conversion to number yields NaN
+test/chrome/keylight.tidy.html:571: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:572: [maybe] Conversion to number yields NaN
+test/chrome/keylight.tidy.html:572: [maybe] Conversion to number yields NaN
+test/chrome/keylight.tidy.html:572: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:593: [maybe] Conversion to number yields NaN
+test/chrome/keylight.tidy.html:613: [maybe] Conversion to number yields NaN
+test/chrome/keylight.tidy.html:613: [maybe] Conversion to number yields NaN
+test/chrome/keylight.tidy.html:613: [maybe] Conversion to number yields NaN
+test/chrome/keylight.tidy.html:613: [maybe] Conversion to number yields NaN
+test/chrome/keylight.tidy.html:613: [maybe] Conversion to number yields NaN
+test/chrome/keylight.tidy.html:613: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:613: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:613: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:613: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:613: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:613: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:613: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:613: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:633: [maybe] Conversion to number yields NaN
+test/chrome/keylight.tidy.html:633: [maybe] Conversion to number yields NaN
+test/chrome/keylight.tidy.html:633: [maybe] Conversion to number yields NaN
+test/chrome/keylight.tidy.html:633: [maybe] Conversion to number yields NaN
+test/chrome/keylight.tidy.html:633: [maybe] Conversion to number yields NaN
+test/chrome/keylight.tidy.html:633: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:633: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:633: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:633: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:633: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:633: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:633: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:633: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:639: [maybe] Conversion to number yields NaN
+test/chrome/keylight.tidy.html:639: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:639: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:735: [maybe] Conversion to number yields NaN
+test/chrome/keylight.tidy.html:735: [maybe] Converting primitive number to object
+test/chrome/keylight.tidy.html:736: [maybe] Conversion to number yields NaN
+test/chrome/keylight.tidy.html:736: [maybe] Converting primitive number to object

@@ -1,0 +1,3 @@
+test/micro/test57.js:2:3: [definite] Unreachable function f1
+test/micro/test57.js:15:1: [info] Abstract value: [@f2#fun2]
+test/micro/test57.js:16:1: [info] Abstract value: 10002.0

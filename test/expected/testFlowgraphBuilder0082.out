@@ -1,0 +1,22 @@
+fg2: <main> function()
+  block 0: [entry]
+    node 0: constant[undefined,v1] (test/flowgraph_builder/flowgraph_builder0082.js:1:1)
+    ->[block 1]
+  block 1:
+    node 1: read-variable['RegExp',v3,-] (test/flowgraph_builder/flowgraph_builder0082.js:1:9)
+    node 2: constant["ab*",v4] (test/flowgraph_builder/flowgraph_builder0082.js:1:16)
+    node 3: constant["ig",v5] (test/flowgraph_builder/flowgraph_builder0082.js:1:23)
+    ->[block 2]
+  block 2:
+    node 4: construct[-,v3,v4,v5,v2] (test/flowgraph_builder/flowgraph_builder0082.js:1:9)
+    ->[block 3]
+  block 3:
+    node 5: write-variable[v2,'a']* (test/flowgraph_builder/flowgraph_builder0082.js:1:1)
+    ->[block 4]
+  block 4: [exit-ordinary]
+    node 6: return[v1] (test/flowgraph_builder/flowgraph_builder0082.js:1:1)
+    ->[]
+  block 5: [exit-exceptional]
+    node 7: exceptional-return (test/flowgraph_builder/flowgraph_builder0082.js:1:1)
+    ->[]
+

@@ -1,0 +1,267 @@
+test/google/richards.js:6:3: [definite] ReferenceError, reading absent variable document
+test/google/richards.js:49:5: [definite] The conditional expression is always true
+test/google/richards.js:55:5: [definite] The conditional expression is always true
+test/google/richards.js:116:37: [definite] Variable queue is null/undefined
+test/google/richards.js:146:30: [definite] Variable queue is null/undefined
+test/google/richards.js:157:30: [definite] Variable queue is null/undefined
+test/google/richards.js:530:1: [definite] The conditional expression is always true
+test/google/richards.js:345:1: [definite] Dead assignment, property toString is never read
+test/google/richards.js:375:1: [definite] Dead assignment, property toString is never read
+test/google/richards.js:402:1: [definite] Dead assignment, property toString is never read
+test/google/richards.js:439:1: [definite] Dead assignment, property toString is never read
+test/google/richards.js:482:1: [definite] Dead assignment, property toString is never read
+test/google/richards.js:522:3: [definite] Dead assignment, property link is never read
+test/google/richards.js:526:1: [definite] Dead assignment, property toString is never read
+test/google/richards.js:345:39: [definite] Unreachable function
+test/google/richards.js:363:26: [definite] The variable packet is never used
+test/google/richards.js:375:31: [definite] Unreachable function
+test/google/richards.js:402:33: [definite] Unreachable function
+test/google/richards.js:439:33: [definite] Unreachable function
+test/google/richards.js:482:34: [definite] Unreachable function
+test/google/richards.js:526:29: [definite] Unreachable function
+test/google/richards.js:180:9: [maybe] TypeError, accessing property of null/undefined
+test/google/richards.js:180:9: [maybe] TypeError, call to non-function
+test/google/richards.js:184:25: [maybe] TypeError, call to non-function
+test/google/richards.js:196:3: [maybe] TypeError, accessing property of null/undefined
+test/google/richards.js:211:3: [maybe] TypeError, call to non-function
+test/google/richards.js:220:3: [maybe] TypeError, call to non-function
+test/google/richards.js:231:11: [maybe] Implicit call to non-native toString method
+test/google/richards.js:231:23: [maybe] TypeError, accessing property of null/undefined
+test/google/richards.js:236:10: [maybe] TypeError, accessing property of null/undefined
+test/google/richards.js:236:10: [maybe] TypeError, call to non-function
+test/google/richards.js:317:18: [maybe] TypeError, accessing property of null/undefined
+test/google/richards.js:326:10: [maybe] TypeError, accessing property of null/undefined
+test/google/richards.js:337:5: [maybe] TypeError, call to non-function
+test/google/richards.js:340:18: [maybe] TypeError, call to non-function
+test/google/richards.js:366:8: [maybe] Implicit call to non-native toString method
+test/google/richards.js:367:15: [maybe] Implicit call to non-native toString method
+test/google/richards.js:370:16: [maybe] Implicit call to non-native toString method
+test/google/richards.js:423:9: [maybe] Implicit call to non-native toString method
+test/google/richards.js:428:5: [maybe] TypeError, accessing property of null/undefined
+test/google/richards.js:431:7: [maybe] Implicit call to non-native toString method
+test/google/richards.js:432:11: [maybe] Implicit call to non-native toString method
+test/google/richards.js:433:7: [maybe] TypeError, accessing property of null/undefined
+test/google/richards.js:456:9: [maybe] TypeError, accessing property of null/undefined
+test/google/richards.js:457:17: [maybe] TypeError, call to non-function
+test/google/richards.js:459:17: [maybe] TypeError, call to non-function
+test/google/richards.js:463:17: [maybe] TypeError, accessing property of null/undefined
+test/google/richards.js:465:9: [maybe] Implicit call to non-native toString method
+test/google/richards.js:468:19: [maybe] TypeError, accessing property of null/undefined
+test/google/richards.js:469:9: [maybe] TypeError, accessing property of null/undefined
+test/google/richards.js:469:16: [maybe] Implicit call to non-native toString method
+test/google/richards.js:469:16: [maybe] TypeError, accessing property of null/undefined
+test/google/richards.js:469:16: [maybe] TypeError, accessing property of null/undefined
+test/google/richards.js:470:9: [maybe] TypeError, accessing property of null/undefined
+test/google/richards.js:470:22: [maybe] Implicit call to non-native toString method
+test/google/richards.js:475:17: [maybe] TypeError, accessing property of null/undefined
+test/google/richards.js:520:18: [maybe] TypeError, accessing property of null/undefined
+test/google/richards.js:180:9: [maybe] Reading absent property isHeldOrSuspended
+test/google/richards.js:181:25: [maybe] Reading absent property link
+test/google/richards.js:183:24: [maybe] Reading absent property id
+test/google/richards.js:184:25: [maybe] Reading absent property run
+test/google/richards.js:197:22: [maybe] Reading absent property priority
+test/google/richards.js:211:3: [maybe] Reading absent property markAsHeld
+test/google/richards.js:212:10: [maybe] Reading absent property link
+test/google/richards.js:220:3: [maybe] Reading absent property markAsSuspended
+test/google/richards.js:231:23: [maybe] Reading absent property id
+test/google/richards.js:236:10: [maybe] Reading absent property checkPriorityAdd
+test/google/richards.js:295:16: [maybe] Reading absent property state
+test/google/richards.js:299:11: [maybe] Reading absent property state
+test/google/richards.js:299:45: [maybe] Reading absent property state
+test/google/richards.js:303:16: [maybe] Reading absent property state
+test/google/richards.js:307:16: [maybe] Reading absent property state
+test/google/richards.js:315:7: [maybe] Reading absent property state
+test/google/richards.js:316:14: [maybe] Reading absent property queue
+test/google/richards.js:317:18: [maybe] Reading absent property link
+test/google/richards.js:318:9: [maybe] Reading absent property queue
+test/google/richards.js:326:10: [maybe] Reading absent property task
+test/google/richards.js:335:7: [maybe] Reading absent property queue
+test/google/richards.js:337:5: [maybe] Reading absent property markAsRunnable
+test/google/richards.js:338:9: [maybe] Reading absent property priority
+test/google/richards.js:338:25: [maybe] Reading absent property priority
+test/google/richards.js:340:18: [maybe] Reading absent property addTo
+test/google/richards.js:340:31: [maybe] Reading absent property queue
+test/google/richards.js:364:3: [maybe] Reading absent property count
+test/google/richards.js:365:7: [maybe] Reading absent property count
+test/google/richards.js:431:7: [maybe] Reading absent property v2
+test/google/richards.js:432:11: [maybe] Reading absent property v2
+test/google/richards.js:433:7: [maybe] Reading absent property a2
+test/google/richards.js:433:22: [maybe] Reading absent property v2
+test/google/richards.js:456:9: [maybe] Reading absent property kind
+test/google/richards.js:457:17: [maybe] Reading absent property addTo
+test/google/richards.js:459:17: [maybe] Reading absent property addTo
+test/google/richards.js:459:30: [maybe] Reading absent property v2
+test/google/richards.js:463:17: [maybe] Reading absent property a1
+test/google/richards.js:466:11: [maybe] Reading absent property v2
+test/google/richards.js:467:13: [maybe] Reading absent property v2
+test/google/richards.js:468:19: [maybe] Reading absent property link
+test/google/richards.js:468:19: [maybe] Reading absent property v2
+test/google/richards.js:469:16: [maybe] Reading absent property a2
+test/google/richards.js:475:17: [maybe] Reading absent property link
+test/google/richards.js:520:18: [maybe] Reading absent property link
+test/google/richards.js:1:1: [maybe] Uncaught exception, constructed at [test/google/richards.js:180:9, test/google/richards.js:184:25, test/google/richards.js:196:3, test/google/richards.js:211:3, test/google/richards.js:220:3, test/google/richards.js:231:23, test/google/richards.js:236:10, test/google/richards.js:317:18, test/google/richards.js:326:10, test/google/richards.js:337:5, test/google/richards.js:340:18, test/google/richards.js:428:5, test/google/richards.js:433:7, test/google/richards.js:456:9, test/google/richards.js:457:17, test/google/richards.js:459:17, test/google/richards.js:463:17, test/google/richards.js:468:19, test/google/richards.js:469:9, test/google/richards.js:469:16, test/google/richards.js:470:9, test/google/richards.js:475:17, test/google/richards.js:520:18]
+test/google/richards.js:180:9: [maybe] Converting primitive number to object
+test/google/richards.js:181:25: [maybe] Converting primitive number to object
+test/google/richards.js:183:24: [maybe] Converting primitive number to object
+test/google/richards.js:184:25: [maybe] Converting primitive number to object
+test/google/richards.js:194:13: [maybe] Reading absent property (computed name)
+test/google/richards.js:197:7: [maybe] Conversion to number yields NaN
+test/google/richards.js:197:22: [maybe] Converting primitive number to object
+test/google/richards.js:211:3: [maybe] Converting primitive number to object
+test/google/richards.js:212:10: [maybe] Converting primitive number to object
+test/google/richards.js:220:3: [maybe] Converting primitive number to object
+test/google/richards.js:231:11: [maybe] Converting object to string
+test/google/richards.js:231:11: [maybe] Reading absent property (computed name)
+test/google/richards.js:231:23: [maybe] Converting primitive number to object
+test/google/richards.js:231:23: [maybe] The variable packet has values with different types
+test/google/richards.js:232:7: [maybe] The variable t has values with different types
+test/google/richards.js:232:25: [maybe] The variable t has values with different types
+test/google/richards.js:234:3: [maybe] Converting primitive number to object
+test/google/richards.js:234:3: [maybe] The variable packet has values with different types
+test/google/richards.js:235:3: [maybe] Converting primitive number to object
+test/google/richards.js:235:3: [maybe] The variable packet has values with different types
+test/google/richards.js:236:10: [maybe] Converting primitive number to object
+test/google/richards.js:236:10: [maybe] The variable t has values with different types
+test/google/richards.js:236:46: [maybe] The variable packet has values with different types
+test/google/richards.js:295:16: [maybe] Conversion to number yields NaN
+test/google/richards.js:299:11: [maybe] Conversion to number yields NaN
+test/google/richards.js:303:16: [maybe] Conversion to number yields NaN
+test/google/richards.js:307:16: [maybe] Conversion to number yields NaN
+test/google/richards.js:317:18: [maybe] Converting primitive number to object
+test/google/richards.js:317:18: [maybe] The variable packet has values with different types
+test/google/richards.js:326:24: [maybe] The variable packet has values with different types
+test/google/richards.js:336:18: [maybe] The variable packet has values with different types
+test/google/richards.js:338:9: [maybe] Conversion to number yields NaN
+test/google/richards.js:338:25: [maybe] Converting primitive number to object
+test/google/richards.js:338:25: [maybe] The variable task has values with different types
+test/google/richards.js:340:18: [maybe] Converting primitive number to object
+test/google/richards.js:340:18: [maybe] The variable packet has values with different types
+test/google/richards.js:342:10: [maybe] The variable task has values with different types
+test/google/richards.js:364:3: [maybe] Conversion to number yields NaN
+test/google/richards.js:366:8: [maybe] Conversion from string to number yields NaN
+test/google/richards.js:366:8: [maybe] Conversion to number yields NaN
+test/google/richards.js:367:15: [maybe] Conversion from string to number yields NaN
+test/google/richards.js:367:15: [maybe] Conversion to number yields NaN
+test/google/richards.js:370:16: [maybe] Conversion from string to number yields NaN
+test/google/richards.js:370:16: [maybe] Conversion to number yields NaN
+test/google/richards.js:391:7: [maybe] The variable packet has values with different types
+test/google/richards.js:395:33: [maybe] The variable v has values with different types
+test/google/richards.js:397:15: [maybe] The variable packet has values with different types
+test/google/richards.js:420:7: [maybe] The variable packet has values with different types
+test/google/richards.js:423:9: [maybe] Conversion from string to number yields NaN
+test/google/richards.js:428:5: [maybe] Converting primitive number to object
+test/google/richards.js:428:5: [maybe] The variable packet has values with different types
+test/google/richards.js:429:5: [maybe] Converting primitive number to object
+test/google/richards.js:429:5: [maybe] The variable packet has values with different types
+test/google/richards.js:431:7: [maybe] Conversion from string to number yields NaN
+test/google/richards.js:431:7: [maybe] Conversion to number yields NaN
+test/google/richards.js:432:11: [maybe] Conversion from string to number yields NaN
+test/google/richards.js:432:11: [maybe] Conversion to number yields NaN
+test/google/richards.js:433:7: [maybe] Converting primitive number to object
+test/google/richards.js:433:7: [maybe] The variable packet has values with different types
+test/google/richards.js:435:33: [maybe] The variable packet has values with different types
+test/google/richards.js:455:7: [maybe] The variable packet has values with different types
+test/google/richards.js:456:9: [maybe] Converting primitive number to object
+test/google/richards.js:456:9: [maybe] The variable packet has values with different types
+test/google/richards.js:457:17: [maybe] Converting primitive number to object
+test/google/richards.js:457:17: [maybe] The variable packet has values with different types
+test/google/richards.js:459:17: [maybe] Converting primitive number to object
+test/google/richards.js:459:17: [maybe] The variable packet has values with different types
+test/google/richards.js:463:17: [maybe] Converting primitive number to object
+test/google/richards.js:465:9: [maybe] Conversion from string to number yields NaN
+test/google/richards.js:465:9: [maybe] Conversion to number yields NaN
+test/google/richards.js:465:9: [maybe] The variable count has values with different types
+test/google/richards.js:468:19: [maybe] Converting primitive number to object
+test/google/richards.js:469:9: [maybe] Converting primitive number to object
+test/google/richards.js:469:9: [maybe] The variable v has values with different types
+test/google/richards.js:469:16: [maybe] Converting object to string
+test/google/richards.js:469:16: [maybe] Converting primitive number to object
+test/google/richards.js:469:16: [maybe] Reading absent property (computed name)
+test/google/richards.js:469:27: [maybe] The variable count has values with different types
+test/google/richards.js:470:9: [maybe] Converting primitive number to object
+test/google/richards.js:470:22: [maybe] Conversion to number yields NaN
+test/google/richards.js:470:22: [maybe] The variable count has values with different types
+test/google/richards.js:471:37: [maybe] The variable v has values with different types
+test/google/richards.js:475:17: [maybe] Converting primitive number to object
+test/google/richards.js:476:35: [maybe] The variable v has values with different types
+test/google/richards.js:518:7: [maybe] The variable queue has values with different types
+test/google/richards.js:519:20: [maybe] The variable queue has values with different types
+test/google/richards.js:520:18: [maybe] Converting primitive number to object
+test/google/richards.js:520:18: [maybe] The variable next has values with different types
+test/google/richards.js:522:3: [maybe] Converting primitive number to object
+test/google/richards.js:522:3: [maybe] The variable next has values with different types
+test/google/richards.js:523:10: [maybe] The variable queue has values with different types
+test/google/richards.js:231:11: [info] Reading from unknown property that may cause loss of precision
+test/google/richards.js:291:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/richards.js:291:16: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/richards.js:295:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/richards.js:295:16: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/richards.js:299:11: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/richards.js:299:45: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/richards.js:303:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/richards.js:303:16: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/richards.js:307:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/richards.js:307:16: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/richards.js:315:7: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/richards.js:316:14: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/richards.js:317:5: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/richards.js:318:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/richards.js:319:7: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/richards.js:321:7: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/richards.js:326:10: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/richards.js:335:7: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/richards.js:336:5: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/richards.js:337:5: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/richards.js:338:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/richards.js:338:47: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/richards.js:340:5: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/richards.js:340:31: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/richards.js:364:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/richards.js:365:7: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/richards.js:365:31: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/richards.js:366:8: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/richards.js:367:5: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/richards.js:367:15: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/richards.js:368:12: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/richards.js:370:5: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/richards.js:370:16: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/richards.js:371:12: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/richards.js:392:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/richards.js:392:33: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/richards.js:393:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/richards.js:394:5: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/richards.js:395:12: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/richards.js:397:5: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/richards.js:398:12: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/richards.js:421:12: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/richards.js:423:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/richards.js:424:7: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/richards.js:426:7: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/richards.js:428:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/richards.js:431:7: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/richards.js:432:11: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/richards.js:432:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/richards.js:433:22: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/richards.js:435:12: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/richards.js:457:7: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/richards.js:457:30: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/richards.js:459:7: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/richards.js:459:30: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/richards.js:462:7: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/richards.js:463:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/richards.js:466:11: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/richards.js:467:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/richards.js:468:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/richards.js:468:19: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/richards.js:469:16: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/richards.js:469:16: [info] Reading from unknown property that may cause loss of precision
+test/google/richards.js:470:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/richards.js:471:16: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/richards.js:474:11: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/richards.js:475:7: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/richards.js:475:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/richards.js:476:14: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/richards.js:479:10: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/richards.js:517:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/richards.js:518:29: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/richards.js:522:15: [info] 'this' refers to multiple abstract objects, which may cause loss of precision

@@ -1,0 +1,3 @@
+test/micro/test29.js:4:4: [definite] TypeError, accessing property of null/undefined
+test/micro/test29.js:4:4: [definite] Variable x is null/undefined
+test/micro/test29.js:4:2: [definite] Unreachable code

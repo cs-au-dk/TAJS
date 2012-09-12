@@ -1,0 +1,3 @@
+test/micro/test156.js:14:11: [definite] Reading absent property p
+test/micro/test156.js:14:1: [info] Abstract value: Undef
+test/micro/test156.js:15:1: [info] Abstract value: 43.0

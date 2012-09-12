@@ -1,0 +1,2 @@
+test/micro/test78.js:7:15: [maybe] The variable e has values with different types
+test/micro/test78.js:7:5: [info] Abstract value: 10.0|"String"

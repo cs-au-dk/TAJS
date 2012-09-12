@@ -1,0 +1,25 @@
+test/micro/testNumber.js:34:11: [maybe] Converting primitive number to object
+test/micro/testNumber.js:35:11: [maybe] Converting primitive number to object
+test/micro/testNumber.js:36:11: [maybe] Converting primitive number to object
+test/micro/testNumber.js:6:1: [info] Abstract value: 0.0
+test/micro/testNumber.js:7:1: [info] Abstract value: 42.66
+test/micro/testNumber.js:8:1: [info] Abstract value: 1.0
+test/micro/testNumber.js:17:1: [info] Abstract value: [@Number#node43]
+test/micro/testNumber.js:18:1: [info] Abstract value: 0.0
+test/micro/testNumber.js:19:1: [info] Abstract value: [@Number#node47]
+test/micro/testNumber.js:20:1: [info] Abstract value: 47.11
+test/micro/testNumber.js:21:1: [info] Abstract value: [@Number#node51]
+test/micro/testNumber.js:22:1: [info] Abstract value: 1.0
+test/micro/testNumber.js:25:1: [info] Abstract value: 0.0
+test/micro/testNumber.js:26:1: [info] Abstract value: 1.7976931348623157E308
+test/micro/testNumber.js:27:1: [info] Abstract value: 4.9E-324
+test/micro/testNumber.js:28:1: [info] Abstract value: NaN
+test/micro/testNumber.js:29:1: [info] Abstract value: -Infinity
+test/micro/testNumber.js:30:1: [info] Abstract value: Infinity
+test/micro/testNumber.js:33:1: [info] Abstract value: "47.11"
+test/micro/testNumber.js:34:1: [info] Abstract value: "42.66"
+test/micro/testNumber.js:35:1: [info] Abstract value: 42.66
+test/micro/testNumber.js:36:1: [info] Abstract value: "4.3e+01"
+test/micro/testNumber.js:37:1: [info] Abstract value: "47"
+test/micro/testNumber.js:38:1: [info] Abstract value: "4.7110e+01"
+test/micro/testNumber.js:39:1: [info] Abstract value: "47.11000000"

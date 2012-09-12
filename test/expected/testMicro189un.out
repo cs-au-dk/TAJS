@@ -1,0 +1,6 @@
+test/micro/test189.js:1:10: [definite] Unreachable function
+test/micro/test189.js:14:11: [definite] Unreachable function
+test/micro/test189.js:6:6: [info] Abstract object: {[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Prototype]]=?,[[Value]]=?,[[Scope]]=?}
+test/micro/test189.js:18:1: [info] Abstract object: {browser:[@Object#node13],each:[@<anonymous>#fun3],extend:[@<anonymous>#fun2],length:0.0,prototype:[@Object#node1],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@<the global object>[native]]]}
+test/micro/test189.js:19:1: [info] Abstract value: [@Object#node13]
+test/micro/test189.js:20:1: [info] Abstract value: [@<anonymous>#fun3]

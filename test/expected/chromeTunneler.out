@@ -1,0 +1,465 @@
+test/chrome/tunneler.tidy.html:158: [definite] Variable seed is null/undefined
+test/chrome/tunneler.tidy.html:224: [definite] Property is null/undefined
+test/chrome/tunneler.tidy.html:236: [definite] Variable z is null/undefined
+test/chrome/tunneler.tidy.html:91: [definite] Unreachable function: line
+test/chrome/tunneler.tidy.html:93: [definite] Unreachable code
+test/chrome/tunneler.tidy.html:94: [definite] Unreachable code
+test/chrome/tunneler.tidy.html:95: [definite] Unreachable code
+test/chrome/tunneler.tidy.html:96: [definite] Unreachable code
+test/chrome/tunneler.tidy.html:99: [definite] Unreachable function: fillStrokeCircle
+test/chrome/tunneler.tidy.html:101: [definite] Unreachable code
+test/chrome/tunneler.tidy.html:102: [definite] Unreachable code
+test/chrome/tunneler.tidy.html:103: [definite] Unreachable code
+test/chrome/tunneler.tidy.html:104: [definite] Unreachable code
+test/chrome/tunneler.tidy.html:105: [definite] Unreachable code
+test/chrome/tunneler.tidy.html:106: [definite] Unreachable code
+test/chrome/tunneler.tidy.html:118: [definite] Unreachable function: strokeCircle
+test/chrome/tunneler.tidy.html:120: [definite] Unreachable code
+test/chrome/tunneler.tidy.html:121: [definite] Unreachable code
+test/chrome/tunneler.tidy.html:122: [definite] Unreachable code
+test/chrome/tunneler.tidy.html:123: [definite] Unreachable code
+test/chrome/tunneler.tidy.html:126: [definite] Unreachable function: dist
+test/chrome/tunneler.tidy.html:127: [definite] Unreachable code
+test/chrome/tunneler.tidy.html:145: [definite] Dead assignment, property nextDouble is never read
+test/chrome/tunneler.tidy.html:145: [definite] Unreachable function
+test/chrome/tunneler.tidy.html:146: [definite] Unreachable code
+test/chrome/tunneler.tidy.html:147: [definite] Unreachable code
+test/chrome/tunneler.tidy.html:158: [definite] Unreachable code
+test/chrome/tunneler.tidy.html:164: [maybe] RangeError, assigning invalid value to array 'length' property
+test/chrome/tunneler.tidy.html:165: [maybe] RangeError, assigning invalid value to array 'length' property
+test/chrome/tunneler.tidy.html:165: [maybe] Reading absent property (computed name)
+test/chrome/tunneler.tidy.html:165: [maybe] Reading absent property (computed name)
+test/chrome/tunneler.tidy.html:167: [maybe] RangeError, assigning invalid value to array 'length' property
+test/chrome/tunneler.tidy.html:167: [maybe] Reading absent property (computed name)
+test/chrome/tunneler.tidy.html:191: [maybe] Reading absent property (computed name)
+test/chrome/tunneler.tidy.html:191: [maybe] Reading absent property (computed name)
+test/chrome/tunneler.tidy.html:191: [maybe] Reading absent property (computed name)
+test/chrome/tunneler.tidy.html:191: [maybe] Reading absent property (computed name)
+test/chrome/tunneler.tidy.html:191: [maybe] Reading absent property (computed name)
+test/chrome/tunneler.tidy.html:191: [maybe] Reading absent property (computed name)
+test/chrome/tunneler.tidy.html:192: [maybe] Reading absent property (computed name)
+test/chrome/tunneler.tidy.html:192: [maybe] Reading absent property (computed name)
+test/chrome/tunneler.tidy.html:192: [maybe] Reading absent property (computed name)
+test/chrome/tunneler.tidy.html:192: [maybe] Reading absent property (computed name)
+test/chrome/tunneler.tidy.html:192: [maybe] Reading absent property (computed name)
+test/chrome/tunneler.tidy.html:192: [maybe] Reading absent property (computed name)
+test/chrome/tunneler.tidy.html:192: [maybe] Reading absent property (computed name)
+test/chrome/tunneler.tidy.html:192: [maybe] Reading absent property (computed name)
+test/chrome/tunneler.tidy.html:203: [maybe] Reading absent property (computed name)
+test/chrome/tunneler.tidy.html:203: [maybe] Reading absent property (computed name)
+test/chrome/tunneler.tidy.html:204: [maybe] Reading absent property (computed name)
+test/chrome/tunneler.tidy.html:204: [maybe] Reading absent property (computed name)
+test/chrome/tunneler.tidy.html:204: [maybe] Reading absent property (computed name)
+test/chrome/tunneler.tidy.html:204: [maybe] Reading absent property (computed name)
+test/chrome/tunneler.tidy.html:213: [maybe] Reading absent property (computed name)
+test/chrome/tunneler.tidy.html:213: [maybe] Reading absent property (computed name)
+test/chrome/tunneler.tidy.html:232: [maybe] TypeError, reading property of null/undefined
+test/chrome/tunneler.tidy.html:234: [maybe] TypeError, reading property of null/undefined
+test/chrome/tunneler.tidy.html:236: [maybe] TypeError, reading property of null/undefined
+test/chrome/tunneler.tidy.html:258: [maybe] Reading absent property (computed name)
+test/chrome/tunneler.tidy.html:265: [maybe] Reading absent property life
+test/chrome/tunneler.tidy.html:266: [maybe] Reading absent property life
+test/chrome/tunneler.tidy.html:267: [maybe] Reading absent property (computed name)
+test/chrome/tunneler.tidy.html:267: [maybe] Reading absent property thickness
+test/chrome/tunneler.tidy.html:267: [maybe] Reading absent property thicknessTarget
+test/chrome/tunneler.tidy.html:268: [maybe] Reading absent property (computed name)
+test/chrome/tunneler.tidy.html:269: [maybe] Reading absent property thickness
+test/chrome/tunneler.tidy.html:269: [maybe] Reading absent property thicknessTarget
+test/chrome/tunneler.tidy.html:270: [maybe] Reading absent property thicknessTarget
+test/chrome/tunneler.tidy.html:271: [maybe] Reading absent property (computed name)
+test/chrome/tunneler.tidy.html:271: [maybe] Reading absent property rotation
+test/chrome/tunneler.tidy.html:272: [maybe] Reading absent property counter
+test/chrome/tunneler.tidy.html:273: [maybe] Reading absent property counter
+test/chrome/tunneler.tidy.html:273: [maybe] Reading absent property rate
+test/chrome/tunneler.tidy.html:273: [maybe] Reading absent property segments
+test/chrome/tunneler.tidy.html:273: [maybe] TypeError, reading property of null/undefined
+test/chrome/tunneler.tidy.html:274: [maybe] Reading absent property counter
+test/chrome/tunneler.tidy.html:276: [maybe] Reading absent property segments
+test/chrome/tunneler.tidy.html:276: [maybe] Reading absent property segments
+test/chrome/tunneler.tidy.html:276: [maybe] Reading absent property segments
+test/chrome/tunneler.tidy.html:276: [maybe] Reading absent property thickness
+test/chrome/tunneler.tidy.html:276: [maybe] Reading absent property thicknessTarget
+test/chrome/tunneler.tidy.html:276: [maybe] TypeError, reading property of null/undefined
+test/chrome/tunneler.tidy.html:276: [maybe] TypeError, reading property of null/undefined
+test/chrome/tunneler.tidy.html:276: [maybe] TypeError, reading property of null/undefined
+test/chrome/tunneler.tidy.html:277: [maybe] Reading absent property detail
+test/chrome/tunneler.tidy.html:278: [maybe] Reading absent property heading
+test/chrome/tunneler.tidy.html:279: [maybe] Reading absent property heading
+test/chrome/tunneler.tidy.html:280: [maybe] Reading absent property walk
+test/chrome/tunneler.tidy.html:280: [maybe] TypeError, call to non-function
+test/chrome/tunneler.tidy.html:283: [maybe] Reading absent property segments
+test/chrome/tunneler.tidy.html:283: [maybe] TypeError, reading property of null/undefined
+test/chrome/tunneler.tidy.html:284: [maybe] Reading absent property segments
+test/chrome/tunneler.tidy.html:284: [maybe] TypeError, reading property of null/undefined
+test/chrome/tunneler.tidy.html:287: [maybe] Reading absent property (computed name)
+test/chrome/tunneler.tidy.html:288: [maybe] Reading absent property (computed name)
+test/chrome/tunneler.tidy.html:289: [maybe] Reading absent property thickness
+test/chrome/tunneler.tidy.html:296: [maybe] Reading absent property segments
+test/chrome/tunneler.tidy.html:296: [maybe] TypeError, reading property of null/undefined
+test/chrome/tunneler.tidy.html:297: [maybe] Reading absent property (computed name)
+test/chrome/tunneler.tidy.html:297: [maybe] Reading absent property segments
+test/chrome/tunneler.tidy.html:297: [maybe] TypeError, reading property of null/undefined
+test/chrome/tunneler.tidy.html:298: [maybe] Reading absent property ooo
+test/chrome/tunneler.tidy.html:298: [maybe] TypeError, call to non-function
+test/chrome/tunneler.tidy.html:298: [maybe] TypeError, reading property of null/undefined
+test/chrome/tunneler.tidy.html:306: [maybe] Reading absent property x
+test/chrome/tunneler.tidy.html:307: [maybe] Reading absent property y
+test/chrome/tunneler.tidy.html:308: [maybe] Reading absent property (computed name)
+test/chrome/tunneler.tidy.html:309: [maybe] Reading absent property (computed name)
+test/chrome/tunneler.tidy.html:310: [maybe] Reading absent property lx
+test/chrome/tunneler.tidy.html:310: [maybe] Reading absent property ly
+test/chrome/tunneler.tidy.html:310: [maybe] Reading absent property thickness
+test/chrome/tunneler.tidy.html:310: [maybe] Reading absent property x
+test/chrome/tunneler.tidy.html:310: [maybe] Reading absent property y
+test/chrome/tunneler.tidy.html:311: [maybe] Reading absent property segments
+test/chrome/tunneler.tidy.html:311: [maybe] TypeError, reading property of null/undefined
+test/chrome/tunneler.tidy.html:313: [maybe] Reading absent property segments
+test/chrome/tunneler.tidy.html:313: [maybe] TypeError, reading property of null/undefined
+test/chrome/tunneler.tidy.html:314: [maybe] Reading absent property (computed name)
+test/chrome/tunneler.tidy.html:314: [maybe] Reading absent property (computed name)
+test/chrome/tunneler.tidy.html:314: [maybe] Reading absent property segments
+test/chrome/tunneler.tidy.html:314: [maybe] Reading absent property segments
+test/chrome/tunneler.tidy.html:314: [maybe] Reading absent property segments
+test/chrome/tunneler.tidy.html:314: [maybe] Reading absent property segments
+test/chrome/tunneler.tidy.html:314: [maybe] Reading absent property smoothAgainst
+test/chrome/tunneler.tidy.html:314: [maybe] TypeError, call to non-function
+test/chrome/tunneler.tidy.html:314: [maybe] TypeError, reading property of null/undefined
+test/chrome/tunneler.tidy.html:314: [maybe] TypeError, reading property of null/undefined
+test/chrome/tunneler.tidy.html:314: [maybe] TypeError, reading property of null/undefined
+test/chrome/tunneler.tidy.html:314: [maybe] TypeError, reading property of null/undefined
+test/chrome/tunneler.tidy.html:314: [maybe] TypeError, reading property of null/undefined
+test/chrome/tunneler.tidy.html:316: [maybe] Reading absent property maxLength
+test/chrome/tunneler.tidy.html:316: [maybe] Reading absent property segments
+test/chrome/tunneler.tidy.html:316: [maybe] TypeError, reading property of null/undefined
+test/chrome/tunneler.tidy.html:317: [maybe] Reading absent property segments
+test/chrome/tunneler.tidy.html:317: [maybe] TypeError, reading property of null/undefined
+test/chrome/tunneler.tidy.html:349: [maybe] Reading absent property leftX1
+test/chrome/tunneler.tidy.html:349: [maybe] Reading absent property leftX2
+test/chrome/tunneler.tidy.html:349: [maybe] TypeError, reading property of null/undefined
+test/chrome/tunneler.tidy.html:349: [maybe] TypeError, writing property of null/undefined
+test/chrome/tunneler.tidy.html:350: [maybe] Reading absent property leftY1
+test/chrome/tunneler.tidy.html:350: [maybe] Reading absent property leftY2
+test/chrome/tunneler.tidy.html:351: [maybe] Reading absent property rightX1
+test/chrome/tunneler.tidy.html:351: [maybe] Reading absent property rightX2
+test/chrome/tunneler.tidy.html:352: [maybe] Reading absent property rightY1
+test/chrome/tunneler.tidy.html:352: [maybe] Reading absent property rightY2
+test/chrome/tunneler.tidy.html:356: [maybe] Reading absent property x1
+test/chrome/tunneler.tidy.html:356: [maybe] Reading absent property x1
+test/chrome/tunneler.tidy.html:356: [maybe] Reading absent property x2
+test/chrome/tunneler.tidy.html:356: [maybe] Reading absent property x2
+test/chrome/tunneler.tidy.html:356: [maybe] Reading absent property y1
+test/chrome/tunneler.tidy.html:356: [maybe] Reading absent property y1
+test/chrome/tunneler.tidy.html:356: [maybe] Reading absent property y2
+test/chrome/tunneler.tidy.html:356: [maybe] Reading absent property y2
+test/chrome/tunneler.tidy.html:390: [maybe] Reading absent property (computed name)
+test/chrome/tunneler.tidy.html:391: [maybe] Reading absent property update
+test/chrome/tunneler.tidy.html:391: [maybe] TypeError, call to non-function
+test/chrome/tunneler.tidy.html:391: [maybe] TypeError, reading property of null/undefined
+test/chrome/tunneler.tidy.html:392: [maybe] Reading absent property c
+test/chrome/tunneler.tidy.html:392: [maybe] TypeError, reading property of null/undefined
+test/chrome/tunneler.tidy.html:396: [maybe] Reading absent property segments
+test/chrome/tunneler.tidy.html:396: [maybe] TypeError, reading property of null/undefined
+test/chrome/tunneler.tidy.html:398: [maybe] Reading absent property (computed name)
+test/chrome/tunneler.tidy.html:398: [maybe] Reading absent property (computed name)
+test/chrome/tunneler.tidy.html:398: [maybe] Reading absent property segments
+test/chrome/tunneler.tidy.html:398: [maybe] Reading absent property segments
+test/chrome/tunneler.tidy.html:398: [maybe] TypeError, reading property of null/undefined
+test/chrome/tunneler.tidy.html:398: [maybe] TypeError, reading property of null/undefined
+test/chrome/tunneler.tidy.html:398: [maybe] TypeError, reading property of null/undefined
+test/chrome/tunneler.tidy.html:398: [maybe] TypeError, reading property of null/undefined
+test/chrome/tunneler.tidy.html:399: [maybe] Reading absent property segments
+test/chrome/tunneler.tidy.html:399: [maybe] TypeError, reading property of null/undefined
+test/chrome/tunneler.tidy.html:400: [maybe] Reading absent property (computed name)
+test/chrome/tunneler.tidy.html:400: [maybe] Reading absent property segments
+test/chrome/tunneler.tidy.html:400: [maybe] TypeError, reading property of null/undefined
+test/chrome/tunneler.tidy.html:401: [maybe] Reading absent property leftX1
+test/chrome/tunneler.tidy.html:401: [maybe] Reading absent property leftY1
+test/chrome/tunneler.tidy.html:401: [maybe] TypeError, reading property of null/undefined
+test/chrome/tunneler.tidy.html:403: [maybe] Reading absent property (computed name)
+test/chrome/tunneler.tidy.html:403: [maybe] Reading absent property (computed name)
+test/chrome/tunneler.tidy.html:403: [maybe] Reading absent property rightX1
+test/chrome/tunneler.tidy.html:403: [maybe] Reading absent property rightY1
+test/chrome/tunneler.tidy.html:403: [maybe] Reading absent property segments
+test/chrome/tunneler.tidy.html:403: [maybe] Reading absent property segments
+test/chrome/tunneler.tidy.html:403: [maybe] Reading absent property segments
+test/chrome/tunneler.tidy.html:403: [maybe] Reading absent property segments
+test/chrome/tunneler.tidy.html:403: [maybe] TypeError, reading property of null/undefined
+test/chrome/tunneler.tidy.html:403: [maybe] TypeError, reading property of null/undefined
+test/chrome/tunneler.tidy.html:403: [maybe] TypeError, reading property of null/undefined
+test/chrome/tunneler.tidy.html:403: [maybe] TypeError, reading property of null/undefined
+test/chrome/tunneler.tidy.html:403: [maybe] TypeError, reading property of null/undefined
+test/chrome/tunneler.tidy.html:403: [maybe] TypeError, reading property of null/undefined
+test/chrome/tunneler.tidy.html:404: [maybe] Reading absent property segments
+test/chrome/tunneler.tidy.html:404: [maybe] TypeError, reading property of null/undefined
+test/chrome/tunneler.tidy.html:405: [maybe] Reading absent property (computed name)
+test/chrome/tunneler.tidy.html:405: [maybe] Reading absent property segments
+test/chrome/tunneler.tidy.html:405: [maybe] TypeError, reading property of null/undefined
+test/chrome/tunneler.tidy.html:406: [maybe] Reading absent property rightX1
+test/chrome/tunneler.tidy.html:406: [maybe] Reading absent property rightY1
+test/chrome/tunneler.tidy.html:406: [maybe] TypeError, reading property of null/undefined
+test/chrome/tunneler.tidy.html:415: [maybe] Reading absent property segments
+test/chrome/tunneler.tidy.html:415: [maybe] TypeError, reading property of null/undefined
+test/chrome/tunneler.tidy.html:416: [maybe] Reading absent property (computed name)
+test/chrome/tunneler.tidy.html:416: [maybe] Reading absent property segments
+test/chrome/tunneler.tidy.html:416: [maybe] TypeError, reading property of null/undefined
+test/chrome/tunneler.tidy.html:416: [maybe] TypeError, reading property of null/undefined
+test/chrome/tunneler.tidy.html:417: [maybe] Reading absent property (computed name)
+test/chrome/tunneler.tidy.html:417: [maybe] Reading absent property segments
+test/chrome/tunneler.tidy.html:417: [maybe] TypeError, reading property of null/undefined
+test/chrome/tunneler.tidy.html:417: [maybe] TypeError, reading property of null/undefined
+test/chrome/tunneler.tidy.html:418: [maybe] Reading absent property (computed name)
+test/chrome/tunneler.tidy.html:418: [maybe] Reading absent property segments
+test/chrome/tunneler.tidy.html:418: [maybe] TypeError, reading property of null/undefined
+test/chrome/tunneler.tidy.html:418: [maybe] TypeError, reading property of null/undefined
+test/chrome/tunneler.tidy.html:419: [maybe] Reading absent property thickness
+test/chrome/tunneler.tidy.html:420: [maybe] Reading absent property thickness
+test/chrome/tunneler.tidy.html:424: [maybe] Reading absent property (computed name)
+test/chrome/tunneler.tidy.html:424: [maybe] Reading absent property (computed name)
+test/chrome/tunneler.tidy.html:424: [maybe] Reading absent property segments
+test/chrome/tunneler.tidy.html:424: [maybe] Reading absent property segments
+test/chrome/tunneler.tidy.html:424: [maybe] TypeError, reading property of null/undefined
+test/chrome/tunneler.tidy.html:424: [maybe] TypeError, reading property of null/undefined
+test/chrome/tunneler.tidy.html:424: [maybe] TypeError, reading property of null/undefined
+test/chrome/tunneler.tidy.html:424: [maybe] TypeError, reading property of null/undefined
+test/chrome/tunneler.tidy.html:429: [maybe] Reading absent property (computed name)
+test/chrome/tunneler.tidy.html:429: [maybe] Reading absent property segments
+test/chrome/tunneler.tidy.html:429: [maybe] Reading absent property segments
+test/chrome/tunneler.tidy.html:429: [maybe] Reading absent property x1
+test/chrome/tunneler.tidy.html:429: [maybe] TypeError, reading property of null/undefined
+test/chrome/tunneler.tidy.html:429: [maybe] TypeError, reading property of null/undefined
+test/chrome/tunneler.tidy.html:429: [maybe] TypeError, reading property of null/undefined
+test/chrome/tunneler.tidy.html:430: [maybe] Reading absent property (computed name)
+test/chrome/tunneler.tidy.html:430: [maybe] Reading absent property segments
+test/chrome/tunneler.tidy.html:430: [maybe] Reading absent property segments
+test/chrome/tunneler.tidy.html:430: [maybe] Reading absent property y1
+test/chrome/tunneler.tidy.html:430: [maybe] TypeError, reading property of null/undefined
+test/chrome/tunneler.tidy.html:430: [maybe] TypeError, reading property of null/undefined
+test/chrome/tunneler.tidy.html:430: [maybe] TypeError, reading property of null/undefined
+test/chrome/tunneler.tidy.html:431: [maybe] Reading absent property (computed name)
+test/chrome/tunneler.tidy.html:431: [maybe] Reading absent property segments
+test/chrome/tunneler.tidy.html:431: [maybe] Reading absent property segments
+test/chrome/tunneler.tidy.html:431: [maybe] Reading absent property thickness
+test/chrome/tunneler.tidy.html:431: [maybe] TypeError, reading property of null/undefined
+test/chrome/tunneler.tidy.html:431: [maybe] TypeError, reading property of null/undefined
+test/chrome/tunneler.tidy.html:431: [maybe] TypeError, reading property of null/undefined
+test/chrome/tunneler.tidy.html:432: [maybe] Reading absent property thickness
+test/chrome/tunneler.tidy.html:433: [maybe] Reading absent property thickness
+test/chrome/tunneler.tidy.html:437: [maybe] Reading absent property (computed name)
+test/chrome/tunneler.tidy.html:437: [maybe] Reading absent property (computed name)
+test/chrome/tunneler.tidy.html:437: [maybe] Reading absent property lAngle
+test/chrome/tunneler.tidy.html:437: [maybe] Reading absent property rAngle
+test/chrome/tunneler.tidy.html:437: [maybe] Reading absent property segments
+test/chrome/tunneler.tidy.html:437: [maybe] Reading absent property segments
+test/chrome/tunneler.tidy.html:437: [maybe] Reading absent property segments
+test/chrome/tunneler.tidy.html:437: [maybe] Reading absent property segments
+test/chrome/tunneler.tidy.html:437: [maybe] TypeError, reading property of null/undefined
+test/chrome/tunneler.tidy.html:437: [maybe] TypeError, reading property of null/undefined
+test/chrome/tunneler.tidy.html:437: [maybe] TypeError, reading property of null/undefined
+test/chrome/tunneler.tidy.html:437: [maybe] TypeError, reading property of null/undefined
+test/chrome/tunneler.tidy.html:437: [maybe] TypeError, reading property of null/undefined
+test/chrome/tunneler.tidy.html:437: [maybe] TypeError, reading property of null/undefined
+test/chrome/tunneler.tidy.html:442: [maybe] Reading absent property thickness
+test/chrome/tunneler.tidy.html:443: [maybe] Reading absent property thickness
+test/chrome/tunneler.tidy.html:444: [maybe] Reading absent property thickness
+test/chrome/tunneler.tidy.html:445: [maybe] Reading absent property (computed name)
+test/chrome/tunneler.tidy.html:445: [maybe] Reading absent property (computed name)
+test/chrome/tunneler.tidy.html:445: [maybe] Reading absent property segments
+test/chrome/tunneler.tidy.html:445: [maybe] Reading absent property segments
+test/chrome/tunneler.tidy.html:445: [maybe] TypeError, reading property of null/undefined
+test/chrome/tunneler.tidy.html:445: [maybe] TypeError, reading property of null/undefined
+test/chrome/tunneler.tidy.html:445: [maybe] TypeError, reading property of null/undefined
+test/chrome/tunneler.tidy.html:445: [maybe] TypeError, reading property of null/undefined
+test/chrome/tunneler.tidy.html:446: [maybe] Reading absent property (computed name)
+test/chrome/tunneler.tidy.html:446: [maybe] Reading absent property segments
+test/chrome/tunneler.tidy.html:446: [maybe] Reading absent property segments
+test/chrome/tunneler.tidy.html:446: [maybe] Reading absent property thickness
+test/chrome/tunneler.tidy.html:446: [maybe] TypeError, reading property of null/undefined
+test/chrome/tunneler.tidy.html:446: [maybe] TypeError, reading property of null/undefined
+test/chrome/tunneler.tidy.html:446: [maybe] TypeError, reading property of null/undefined
+test/chrome/tunneler.tidy.html:447: [maybe] Reading absent property thickness
+test/chrome/tunneler.tidy.html:448: [maybe] Reading absent property thickness
+test/chrome/tunneler.tidy.html:449: [maybe] Reading absent property (computed name)
+test/chrome/tunneler.tidy.html:449: [maybe] Reading absent property (computed name)
+test/chrome/tunneler.tidy.html:449: [maybe] Reading absent property segments
+test/chrome/tunneler.tidy.html:449: [maybe] Reading absent property segments
+test/chrome/tunneler.tidy.html:449: [maybe] Reading absent property segments
+test/chrome/tunneler.tidy.html:449: [maybe] Reading absent property segments
+test/chrome/tunneler.tidy.html:449: [maybe] Reading absent property x1
+test/chrome/tunneler.tidy.html:449: [maybe] Reading absent property y1
+test/chrome/tunneler.tidy.html:449: [maybe] TypeError, reading property of null/undefined
+test/chrome/tunneler.tidy.html:449: [maybe] TypeError, reading property of null/undefined
+test/chrome/tunneler.tidy.html:449: [maybe] TypeError, reading property of null/undefined
+test/chrome/tunneler.tidy.html:449: [maybe] TypeError, reading property of null/undefined
+test/chrome/tunneler.tidy.html:449: [maybe] TypeError, reading property of null/undefined
+test/chrome/tunneler.tidy.html:449: [maybe] TypeError, reading property of null/undefined
+test/chrome/tunneler.tidy.html:451: [maybe] Reading absent property life
+test/chrome/tunneler.tidy.html:453: [maybe] Reading absent property (computed name)
+test/chrome/tunneler.tidy.html:453: [maybe] Reading absent property (computed name)
+test/chrome/tunneler.tidy.html:453: [maybe] Reading absent property segments
+test/chrome/tunneler.tidy.html:453: [maybe] Reading absent property segments
+test/chrome/tunneler.tidy.html:453: [maybe] TypeError, reading property of null/undefined
+test/chrome/tunneler.tidy.html:453: [maybe] TypeError, reading property of null/undefined
+test/chrome/tunneler.tidy.html:453: [maybe] TypeError, reading property of null/undefined
+test/chrome/tunneler.tidy.html:453: [maybe] TypeError, reading property of null/undefined
+test/chrome/tunneler.tidy.html:459: [maybe] Reading absent property (computed name)
+test/chrome/tunneler.tidy.html:460: [maybe] Reading absent property ooo
+test/chrome/tunneler.tidy.html:460: [maybe] TypeError, reading property of null/undefined
+test/chrome/tunneler.tidy.html:18: [maybe] Uncaught exception, constructed at [test/chrome/tunneler.tidy.html:164, test/chrome/tunneler.tidy.html:165, test/chrome/tunneler.tidy.html:167, test/chrome/tunneler.tidy.html:232, test/chrome/tunneler.tidy.html:234, test/chrome/tunneler.tidy.html:236, test/chrome/tunneler.tidy.html:273, test/chrome/tunneler.tidy.html:276, test/chrome/tunneler.tidy.html:280, test/chrome/tunneler.tidy.html:283, test/chrome/tunneler.tidy.html:284, test/chrome/tunneler.tidy.html:296, test/chrome/tunneler.tidy.html:297, test/chrome/tunneler.tidy.html:298, test/chrome/tunneler.tidy.html:311, test/chrome/tunneler.tidy.html:313, test/chrome/tunneler.tidy.html:314, test/chrome/tunneler.tidy.html:316, test/chrome/tunneler.tidy.html:317, test/chrome/tunneler.tidy.html:349, test/chrome/tunneler.tidy.html:391, test/chrome/tunneler.tidy.html:392, test/chrome/tunneler.tidy.html:396, test/chrome/tunneler.tidy.html:398, test/chrome/tunneler.tidy.html:399, test/chrome/tunneler.tidy.html:400, test/chrome/tunneler.tidy.html:401, test/chrome/tunneler.tidy.html:403, test/chrome/tunneler.tidy.html:404, test/chrome/tunneler.tidy.html:405, test/chrome/tunneler.tidy.html:406, test/chrome/tunneler.tidy.html:415, test/chrome/tunneler.tidy.html:416, test/chrome/tunneler.tidy.html:417, test/chrome/tunneler.tidy.html:418, test/chrome/tunneler.tidy.html:424, test/chrome/tunneler.tidy.html:429, test/chrome/tunneler.tidy.html:430, test/chrome/tunneler.tidy.html:431, test/chrome/tunneler.tidy.html:437, test/chrome/tunneler.tidy.html:445, test/chrome/tunneler.tidy.html:446, test/chrome/tunneler.tidy.html:449, test/chrome/tunneler.tidy.html:453, test/chrome/tunneler.tidy.html:460]
+test/chrome/tunneler.tidy.html:110: [maybe] Conversion to number yields NaN
+test/chrome/tunneler.tidy.html:113: [maybe] Conversion to number yields NaN
+test/chrome/tunneler.tidy.html:165: [maybe] Conversion to number yields NaN
+test/chrome/tunneler.tidy.html:167: [maybe] Conversion to number yields NaN
+test/chrome/tunneler.tidy.html:170: [maybe] Conversion to number yields NaN
+test/chrome/tunneler.tidy.html:177: [maybe] Conversion to number yields NaN
+test/chrome/tunneler.tidy.html:178: [maybe] Conversion to number yields NaN
+test/chrome/tunneler.tidy.html:182: [maybe] Conversion to number yields NaN
+test/chrome/tunneler.tidy.html:191: [maybe] Conversion to number yields NaN
+test/chrome/tunneler.tidy.html:191: [maybe] Conversion to number yields NaN
+test/chrome/tunneler.tidy.html:191: [maybe] Conversion to number yields NaN
+test/chrome/tunneler.tidy.html:191: [maybe] Conversion to number yields NaN
+test/chrome/tunneler.tidy.html:191: [maybe] Conversion to number yields NaN
+test/chrome/tunneler.tidy.html:191: [maybe] Conversion to number yields NaN
+test/chrome/tunneler.tidy.html:203: [maybe] Conversion to number yields NaN
+test/chrome/tunneler.tidy.html:203: [maybe] Conversion to number yields NaN
+test/chrome/tunneler.tidy.html:234: [maybe] Conversion to number yields NaN
+test/chrome/tunneler.tidy.html:236: [maybe] Conversion to number yields NaN
+test/chrome/tunneler.tidy.html:236: [maybe] Conversion to number yields NaN
+test/chrome/tunneler.tidy.html:265: [maybe] Conversion to number yields NaN
+test/chrome/tunneler.tidy.html:266: [maybe] Conversion to number yields NaN
+test/chrome/tunneler.tidy.html:267: [maybe] Conversion to number yields NaN
+test/chrome/tunneler.tidy.html:267: [maybe] Conversion to number yields NaN
+test/chrome/tunneler.tidy.html:268: [maybe] Conversion to number yields NaN
+test/chrome/tunneler.tidy.html:269: [maybe] Conversion to number yields NaN
+test/chrome/tunneler.tidy.html:271: [maybe] Conversion to number yields NaN
+test/chrome/tunneler.tidy.html:272: [maybe] Conversion to number yields NaN
+test/chrome/tunneler.tidy.html:273: [maybe] Conversion to number yields NaN
+test/chrome/tunneler.tidy.html:274: [maybe] Conversion to number yields NaN
+test/chrome/tunneler.tidy.html:276: [maybe] Conversion to number yields NaN
+test/chrome/tunneler.tidy.html:276: [maybe] Conversion to number yields NaN
+test/chrome/tunneler.tidy.html:277: [maybe] Conversion to number yields NaN
+test/chrome/tunneler.tidy.html:278: [maybe] Conversion to number yields NaN
+test/chrome/tunneler.tidy.html:279: [maybe] Conversion to number yields NaN
+test/chrome/tunneler.tidy.html:287: [maybe] Conversion to number yields NaN
+test/chrome/tunneler.tidy.html:288: [maybe] Conversion to number yields NaN
+test/chrome/tunneler.tidy.html:289: [maybe] Conversion to number yields NaN
+test/chrome/tunneler.tidy.html:298: [maybe] Converting primitive number to object
+test/chrome/tunneler.tidy.html:298: [maybe] Converting primitive number to object
+test/chrome/tunneler.tidy.html:308: [maybe] Conversion to number yields NaN
+test/chrome/tunneler.tidy.html:309: [maybe] Conversion to number yields NaN
+test/chrome/tunneler.tidy.html:314: [maybe] Converting primitive number to object
+test/chrome/tunneler.tidy.html:314: [maybe] Converting primitive number to object
+test/chrome/tunneler.tidy.html:316: [maybe] Conversion to number yields NaN
+test/chrome/tunneler.tidy.html:330: [maybe] Conversion to number yields NaN
+test/chrome/tunneler.tidy.html:330: [maybe] Conversion to number yields NaN
+test/chrome/tunneler.tidy.html:333: [maybe] Conversion to number yields NaN
+test/chrome/tunneler.tidy.html:334: [maybe] Conversion to number yields NaN
+test/chrome/tunneler.tidy.html:335: [maybe] Conversion to number yields NaN
+test/chrome/tunneler.tidy.html:336: [maybe] Conversion to number yields NaN
+test/chrome/tunneler.tidy.html:337: [maybe] Conversion to number yields NaN
+test/chrome/tunneler.tidy.html:338: [maybe] Conversion to number yields NaN
+test/chrome/tunneler.tidy.html:341: [maybe] Conversion to number yields NaN
+test/chrome/tunneler.tidy.html:342: [maybe] Conversion to number yields NaN
+test/chrome/tunneler.tidy.html:343: [maybe] Conversion to number yields NaN
+test/chrome/tunneler.tidy.html:344: [maybe] Conversion to number yields NaN
+test/chrome/tunneler.tidy.html:345: [maybe] Conversion to number yields NaN
+test/chrome/tunneler.tidy.html:346: [maybe] Conversion to number yields NaN
+test/chrome/tunneler.tidy.html:349: [maybe] Conversion to number yields NaN
+test/chrome/tunneler.tidy.html:349: [maybe] Converting primitive number to object
+test/chrome/tunneler.tidy.html:349: [maybe] Converting primitive number to object
+test/chrome/tunneler.tidy.html:350: [maybe] Conversion to number yields NaN
+test/chrome/tunneler.tidy.html:350: [maybe] Converting primitive number to object
+test/chrome/tunneler.tidy.html:350: [maybe] Converting primitive number to object
+test/chrome/tunneler.tidy.html:351: [maybe] Conversion to number yields NaN
+test/chrome/tunneler.tidy.html:351: [maybe] Converting primitive number to object
+test/chrome/tunneler.tidy.html:351: [maybe] Converting primitive number to object
+test/chrome/tunneler.tidy.html:352: [maybe] Conversion to number yields NaN
+test/chrome/tunneler.tidy.html:352: [maybe] Converting primitive number to object
+test/chrome/tunneler.tidy.html:352: [maybe] Converting primitive number to object
+test/chrome/tunneler.tidy.html:356: [maybe] Conversion to number yields NaN
+test/chrome/tunneler.tidy.html:356: [maybe] Conversion to number yields NaN
+test/chrome/tunneler.tidy.html:356: [maybe] Conversion to number yields NaN
+test/chrome/tunneler.tidy.html:356: [maybe] Conversion to number yields NaN
+test/chrome/tunneler.tidy.html:356: [maybe] Conversion to number yields NaN
+test/chrome/tunneler.tidy.html:356: [maybe] Conversion to number yields NaN
+test/chrome/tunneler.tidy.html:356: [maybe] Conversion to number yields NaN
+test/chrome/tunneler.tidy.html:356: [maybe] Conversion to number yields NaN
+test/chrome/tunneler.tidy.html:391: [maybe] Converting primitive number to object
+test/chrome/tunneler.tidy.html:391: [maybe] Converting primitive number to object
+test/chrome/tunneler.tidy.html:392: [maybe] Converting primitive number to object
+test/chrome/tunneler.tidy.html:396: [maybe] Converting primitive number to object
+test/chrome/tunneler.tidy.html:398: [maybe] Converting primitive number to object
+test/chrome/tunneler.tidy.html:398: [maybe] Converting primitive number to object
+test/chrome/tunneler.tidy.html:399: [maybe] Converting primitive number to object
+test/chrome/tunneler.tidy.html:400: [maybe] Converting primitive number to object
+test/chrome/tunneler.tidy.html:401: [maybe] Conversion to number yields NaN
+test/chrome/tunneler.tidy.html:401: [maybe] Converting primitive number to object
+test/chrome/tunneler.tidy.html:401: [maybe] Converting primitive number to object
+test/chrome/tunneler.tidy.html:403: [maybe] Conversion to number yields NaN
+test/chrome/tunneler.tidy.html:403: [maybe] Converting primitive number to object
+test/chrome/tunneler.tidy.html:403: [maybe] Converting primitive number to object
+test/chrome/tunneler.tidy.html:403: [maybe] Converting primitive number to object
+test/chrome/tunneler.tidy.html:403: [maybe] Converting primitive number to object
+test/chrome/tunneler.tidy.html:403: [maybe] Converting primitive number to object
+test/chrome/tunneler.tidy.html:403: [maybe] Converting primitive number to object
+test/chrome/tunneler.tidy.html:404: [maybe] Converting primitive number to object
+test/chrome/tunneler.tidy.html:405: [maybe] Converting primitive number to object
+test/chrome/tunneler.tidy.html:406: [maybe] Conversion to number yields NaN
+test/chrome/tunneler.tidy.html:406: [maybe] Converting primitive number to object
+test/chrome/tunneler.tidy.html:406: [maybe] Converting primitive number to object
+test/chrome/tunneler.tidy.html:415: [maybe] Converting primitive number to object
+test/chrome/tunneler.tidy.html:416: [maybe] Converting primitive number to object
+test/chrome/tunneler.tidy.html:417: [maybe] Converting primitive number to object
+test/chrome/tunneler.tidy.html:418: [maybe] Converting primitive number to object
+test/chrome/tunneler.tidy.html:419: [maybe] Conversion to number yields NaN
+test/chrome/tunneler.tidy.html:419: [maybe] Converting primitive number to object
+test/chrome/tunneler.tidy.html:420: [maybe] Converting primitive number to object
+test/chrome/tunneler.tidy.html:421: [maybe] Conversion to number yields NaN
+test/chrome/tunneler.tidy.html:424: [maybe] Conversion to number yields NaN
+test/chrome/tunneler.tidy.html:424: [maybe] Converting primitive number to object
+test/chrome/tunneler.tidy.html:424: [maybe] Converting primitive number to object
+test/chrome/tunneler.tidy.html:429: [maybe] Converting primitive number to object
+test/chrome/tunneler.tidy.html:429: [maybe] Converting primitive number to object
+test/chrome/tunneler.tidy.html:429: [maybe] Converting primitive number to object
+test/chrome/tunneler.tidy.html:430: [maybe] Converting primitive number to object
+test/chrome/tunneler.tidy.html:430: [maybe] Converting primitive number to object
+test/chrome/tunneler.tidy.html:430: [maybe] Converting primitive number to object
+test/chrome/tunneler.tidy.html:431: [maybe] Converting primitive number to object
+test/chrome/tunneler.tidy.html:431: [maybe] Converting primitive number to object
+test/chrome/tunneler.tidy.html:431: [maybe] Converting primitive number to object
+test/chrome/tunneler.tidy.html:432: [maybe] Conversion to number yields NaN
+test/chrome/tunneler.tidy.html:432: [maybe] Converting primitive number to object
+test/chrome/tunneler.tidy.html:433: [maybe] Converting primitive number to object
+test/chrome/tunneler.tidy.html:434: [maybe] Conversion to number yields NaN
+test/chrome/tunneler.tidy.html:437: [maybe] Conversion to number yields NaN
+test/chrome/tunneler.tidy.html:437: [maybe] Converting primitive number to object
+test/chrome/tunneler.tidy.html:437: [maybe] Converting primitive number to object
+test/chrome/tunneler.tidy.html:437: [maybe] Converting primitive number to object
+test/chrome/tunneler.tidy.html:437: [maybe] Converting primitive number to object
+test/chrome/tunneler.tidy.html:437: [maybe] Converting primitive number to object
+test/chrome/tunneler.tidy.html:437: [maybe] Converting primitive number to object
+test/chrome/tunneler.tidy.html:442: [maybe] Conversion to number yields NaN
+test/chrome/tunneler.tidy.html:442: [maybe] Converting primitive number to object
+test/chrome/tunneler.tidy.html:443: [maybe] Conversion to number yields NaN
+test/chrome/tunneler.tidy.html:443: [maybe] Converting primitive number to object
+test/chrome/tunneler.tidy.html:444: [maybe] Converting primitive number to object
+test/chrome/tunneler.tidy.html:445: [maybe] Converting primitive number to object
+test/chrome/tunneler.tidy.html:445: [maybe] Converting primitive number to object
+test/chrome/tunneler.tidy.html:446: [maybe] Conversion to number yields NaN
+test/chrome/tunneler.tidy.html:446: [maybe] Converting primitive number to object
+test/chrome/tunneler.tidy.html:446: [maybe] Converting primitive number to object
+test/chrome/tunneler.tidy.html:446: [maybe] Converting primitive number to object
+test/chrome/tunneler.tidy.html:447: [maybe] Conversion to number yields NaN
+test/chrome/tunneler.tidy.html:447: [maybe] Converting primitive number to object
+test/chrome/tunneler.tidy.html:448: [maybe] Converting primitive number to object
+test/chrome/tunneler.tidy.html:449: [maybe] Converting primitive number to object
+test/chrome/tunneler.tidy.html:449: [maybe] Converting primitive number to object
+test/chrome/tunneler.tidy.html:449: [maybe] Converting primitive number to object
+test/chrome/tunneler.tidy.html:449: [maybe] Converting primitive number to object
+test/chrome/tunneler.tidy.html:449: [maybe] Converting primitive number to object
+test/chrome/tunneler.tidy.html:449: [maybe] Converting primitive number to object
+test/chrome/tunneler.tidy.html:451: [maybe] Conversion to number yields NaN
+test/chrome/tunneler.tidy.html:451: [maybe] Converting primitive number to object
+test/chrome/tunneler.tidy.html:453: [maybe] Conversion to number yields NaN
+test/chrome/tunneler.tidy.html:453: [maybe] Converting primitive number to object
+test/chrome/tunneler.tidy.html:453: [maybe] Converting primitive number to object
+test/chrome/tunneler.tidy.html:460: [maybe] Converting primitive number to object

@@ -1,0 +1,66 @@
+fg2: <main> function()
+  block 0: [entry]
+    node 0: constant[undefined,v1] (test/flowgraph_builder/flowgraph_builder0139.tidy.html:9)
+    node 1: function-decl[function f(),-] (test/flowgraph_builder/flowgraph_builder0139.tidy.html:11:1)
+    ->[block 1]
+  block 1:
+    node 2: function-expr[function(event),v2] (test/flowgraph_builder/flowgraph_builder0139.tidy.html:8:2)
+    ->[block 2]
+  block 2:
+    node 3: event-entry (test/flowgraph_builder/flowgraph_builder0139.tidy.html)
+    ->[block 3,block 4]
+  block 3:
+    node 4: event-dispatcher <LOAD> (test/flowgraph_builder/flowgraph_builder0139.tidy.html)
+    ->[block 4]
+  block 4:
+    node 5: nop (test/flowgraph_builder/flowgraph_builder0139.tidy.html)
+    ->[block 3,block 5,block 6]
+  block 5:
+    node 6: event-dispatcher <OTHER> (test/flowgraph_builder/flowgraph_builder0139.tidy.html)
+    ->[block 6]
+  block 6:
+    node 7: nop (test/flowgraph_builder/flowgraph_builder0139.tidy.html)
+    ->[block 5,block 7,block 8]
+  block 7:
+    node 8: event-dispatcher <UNLOAD> (test/flowgraph_builder/flowgraph_builder0139.tidy.html)
+    ->[block 8]
+  block 8:
+    node 9: nop (test/flowgraph_builder/flowgraph_builder0139.tidy.html)
+    ->[block 7,block 9]
+  block 9: [exit-ordinary]
+    node 10: return[v1] (test/flowgraph_builder/flowgraph_builder0139.tidy.html:9)
+    ->[]
+  block 10: [exit-exceptional]
+    node 11: exceptional-return (test/flowgraph_builder/flowgraph_builder0139.tidy.html:9)
+    ->[]
+function f()
+  block 11: [entry]
+    node 12: constant[undefined,v1] (test/flowgraph_builder/flowgraph_builder0139.tidy.html:11:1)
+    ->[block 12]
+  block 12:
+    node 13: constant[1.0,v1] (test/flowgraph_builder/flowgraph_builder0139.tidy.html:11:23)
+    ->[block 13]
+  block 13: [exit-ordinary]
+    node 14: return[v1] (test/flowgraph_builder/flowgraph_builder0139.tidy.html:11:1)
+    ->[]
+  block 14: [exit-exceptional]
+    node 15: exceptional-return (test/flowgraph_builder/flowgraph_builder0139.tidy.html:11:1)
+    ->[]
+function(event)
+  block 15: [entry]
+    node 16: constant[undefined,v1] (test/flowgraph_builder/flowgraph_builder0139.tidy.html:8:2)
+    ->[block 16]
+  block 16:
+    node 17: read-variable['f',v3,v2] (test/flowgraph_builder/flowgraph_builder0139.tidy.html:8:31)
+    ->[block 17]
+  block 17:
+    node 18: call[v2,v3,-]* (test/flowgraph_builder/flowgraph_builder0139.tidy.html:8:31)
+    ->[block 18]
+  block 18: [exit-ordinary]
+    node 19: return[v1] (test/flowgraph_builder/flowgraph_builder0139.tidy.html:8:2)
+    ->[]
+  block 19: [exit-exceptional]
+    node 20: exceptional-return (test/flowgraph_builder/flowgraph_builder0139.tidy.html:8:2)
+    ->[]
+
+test/flowgraph_builder/flowgraph_builder0139.tidy.html:8:2: [definite] The variable event is never used

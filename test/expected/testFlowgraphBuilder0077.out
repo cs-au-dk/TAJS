@@ -1,0 +1,20 @@
+fg2: <main> function()
+  block 0: [entry]
+    node 0: constant[undefined,v1] (test/flowgraph_builder/flowgraph_builder0077.js:1:1)
+    ->[block 1]
+  block 1:
+    node 1: new[v2] (test/flowgraph_builder/flowgraph_builder0077.js:1:5)
+    node 2: write-variable[v2,'o']* (test/flowgraph_builder/flowgraph_builder0077.js:1:1)
+    node 3: read-variable['o',v4,-] (test/flowgraph_builder/flowgraph_builder0077.js:2:1)
+    node 4: constant[1.0,v3] (test/flowgraph_builder/flowgraph_builder0077.js:2:7)
+    node 5: write-property[v4,'x',v3] (test/flowgraph_builder/flowgraph_builder0077.js:2:1)
+    node 6: <variable-non-null-undef>['o']* (test/flowgraph_builder/flowgraph_builder0077.js:2:1)
+    ->[block 2]
+  block 2: [exit-ordinary]
+    node 7: return[v1] (test/flowgraph_builder/flowgraph_builder0077.js:1:1)
+    ->[]
+  block 3: [exit-exceptional]
+    node 8: exceptional-return (test/flowgraph_builder/flowgraph_builder0077.js:1:1)
+    ->[]
+
+test/flowgraph_builder/flowgraph_builder0077.js:2:1: [definite] Dead assignment, property x is never read

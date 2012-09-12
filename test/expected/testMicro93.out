@@ -1,0 +1,4 @@
+test/micro/test93.js:2:13: [maybe] The variable y has values with different types
+test/micro/test93.js:9:11: [maybe] The variable b has values with different types
+test/micro/test93.js:8:1: [info] Abstract value: 3.0
+test/micro/test93.js:9:1: [info] Abstract value: 3.0|"12"

@@ -1,0 +1,98 @@
+test/msie9/flyingimages.tidy.html:234: [definite] Reading absent property offsetParent
+test/msie9/flyingimages.tidy.html:235: [definite] Reading absent property offsetTop
+test/msie9/flyingimages.tidy.html:236: [definite] Reading absent property offsetLeft
+test/msie9/flyingimages.tidy.html:140: [definite] The variable TIMEOUT is never used
+test/msie9/flyingimages.tidy.html:140: [definite] The variable insidecontrolpanel is never used
+test/msie9/flyingimages.tidy.html:140: [definite] The variable intervalID is never used
+test/msie9/flyingimages.tidy.html:140: [definite] The variable mouseOverControls is never used
+test/msie9/flyingimages.tidy.html:140: [definite] The variable timeLastAnimation is never used
+test/msie9/flyingimages.tidy.html:140: [definite] The variable zoomed is never used
+test/msie9/flyingimages.tidy.html:140: [definite] The variable zoomingOut is never used
+test/msie9/flyingimages.tidy.html:209: [definite] The conditional expression is always true
+test/msie9/flyingimages.tidy.html:214: [definite] Unreachable code
+test/msie9/flyingimages.tidy.html:215: [definite] Unreachable code
+test/msie9/flyingimages.tidy.html:216: [definite] Unreachable code
+test/msie9/flyingimages.tidy.html:217: [definite] Unreachable code
+test/msie9/flyingimages.tidy.html:311: [definite] The variable img has values with different types
+test/msie9/flyingimages.tidy.html:415: [definite] The conditional expression is always false
+test/msie9/flyingimages.tidy.html:416: [definite] Unreachable code
+test/msie9/flyingimages.tidy.html:424: [definite] The assignment to yDAMPING has no effect
+test/msie9/flyingimages.tidy.html:428: [definite] The assignment to yDAMPING has no effect
+test/msie9/flyingimages.tidy.html:433: [definite] The assignment to controlpanelzoomed has no effect
+test/msie9/flyingimages.tidy.html:439: [definite] The assignment to controlpanelzoomed has no effect
+test/msie9/flyingimages.tidy.html:454: [definite] The conditional expression is always false
+test/msie9/flyingimages.tidy.html:454: [definite] Unreachable code
+test/msie9/flyingimages.tidy.html:459: [definite] The conditional expression is always false
+test/msie9/flyingimages.tidy.html:462: [definite] The conditional expression is always false
+test/msie9/flyingimages.tidy.html:465: [definite] The conditional expression is always false
+test/msie9/flyingimages.tidy.html:468: [definite] The conditional expression is always false
+test/msie9/flyingimages.tidy.html:471: [definite] The conditional expression is always false
+test/msie9/flyingimages.tidy.html:503: [definite] The assignment to useBrowserLogos has no effect
+test/msie9/flyingimages.tidy.html:509: [definite] The assignment to useBrowserLogos has no effect
+test/msie9/flyingimages.tidy.html:515: [definite] The assignment to useBrowserLogos has no effect
+test/msie9/flyingimages.tidy.html:521: [definite] The assignment to useBrowserLogos has no effect
+test/msie9/flyingimages.tidy.html:527: [definite] The assignment to useBrowserLogos has no effect
+test/msie9/flyingimages.tidy.html:562: [definite] The variable event is never used
+test/msie9/flyingimages.tidy.html:564: [definite] The variable event is never used
+test/msie9/flyingimages.tidy.html:567: [definite] The variable event is never used
+test/msie9/flyingimages.tidy.html:569: [definite] The variable event is never used
+test/msie9/flyingimages.tidy.html:571: [definite] The variable event is never used
+test/msie9/flyingimages.tidy.html:576: [definite] The variable event is never used
+test/msie9/flyingimages.tidy.html:578: [definite] The variable event is never used
+test/msie9/flyingimages.tidy.html:580: [definite] The variable event is never used
+test/msie9/flyingimages.tidy.html:582: [definite] The variable event is never used
+test/msie9/flyingimages.tidy.html:584: [definite] The variable event is never used
+test/msie9/flyingimages.tidy.html:595: [definite] The variable event is never used
+test/msie9/flyingimages.tidy.html:234: [definite] Converting primitive number to object
+test/msie9/flyingimages.tidy.html:235: [definite] Converting primitive number to object
+test/msie9/flyingimages.tidy.html:236: [definite] Converting primitive number to object
+test/msie9/flyingimages.tidy.html:528: [definite] Converting primitive string to object
+test/msie9/flyingimages.tidy.html:528: [definite] Converting primitive string to object
+test/msie9/flyingimages.tidy.html:528: [definite] Converting primitive string to object
+test/msie9/flyingimages.tidy.html:528: [definite] Converting primitive string to object
+test/msie9/flyingimages.tidy.html:532: [definite] Converting primitive string to object
+test/msie9/flyingimages.tidy.html:532: [definite] Converting primitive string to object
+test/msie9/flyingimages.tidy.html:532: [definite] Converting primitive string to object
+test/msie9/flyingimages.tidy.html:532: [definite] Converting primitive string to object
+test/msie9/flyingimages.tidy.html:540: [definite] Converting primitive string to object
+test/msie9/flyingimages.tidy.html:540: [definite] Converting primitive string to object
+test/msie9/flyingimages.tidy.html:540: [definite] Converting primitive string to object
+test/msie9/flyingimages.tidy.html:540: [definite] Converting primitive string to object
+test/msie9/flyingimages.tidy.html:235: [maybe] TypeError, reading property of null/undefined
+test/msie9/flyingimages.tidy.html:310: [maybe] Reading absent property (computed name)
+test/msie9/flyingimages.tidy.html:311: [maybe] Reading absent property x3d
+test/msie9/flyingimages.tidy.html:311: [maybe] TypeError, reading property of null/undefined
+test/msie9/flyingimages.tidy.html:312: [maybe] Reading absent property z3d
+test/msie9/flyingimages.tidy.html:318: [maybe] Reading absent property style
+test/msie9/flyingimages.tidy.html:318: [maybe] TypeError, writing property of null/undefined
+test/msie9/flyingimages.tidy.html:319: [maybe] Reading absent property style
+test/msie9/flyingimages.tidy.html:319: [maybe] TypeError, writing property of null/undefined
+test/msie9/flyingimages.tidy.html:324: [maybe] Reading absent property style
+test/msie9/flyingimages.tidy.html:324: [maybe] TypeError, writing property of null/undefined
+test/msie9/flyingimages.tidy.html:325: [maybe] Reading absent property style
+test/msie9/flyingimages.tidy.html:325: [maybe] TypeError, writing property of null/undefined
+test/msie9/flyingimages.tidy.html:329: [maybe] Reading absent property style
+test/msie9/flyingimages.tidy.html:329: [maybe] TypeError, writing property of null/undefined
+test/msie9/flyingimages.tidy.html:330: [maybe] Reading absent property style
+test/msie9/flyingimages.tidy.html:330: [maybe] TypeError, writing property of null/undefined
+test/msie9/flyingimages.tidy.html:332: [maybe] Reading absent property style
+test/msie9/flyingimages.tidy.html:332: [maybe] TypeError, writing property of null/undefined
+test/msie9/flyingimages.tidy.html:140: [maybe] Uncaught exception, constructed at [test/msie9/flyingimages.tidy.html:235, test/msie9/flyingimages.tidy.html:311, test/msie9/flyingimages.tidy.html:318, test/msie9/flyingimages.tidy.html:319, test/msie9/flyingimages.tidy.html:324, test/msie9/flyingimages.tidy.html:325, test/msie9/flyingimages.tidy.html:329, test/msie9/flyingimages.tidy.html:330, test/msie9/flyingimages.tidy.html:332]
+test/msie9/flyingimages.tidy.html:235: [maybe] Conversion to number yields NaN
+test/msie9/flyingimages.tidy.html:236: [maybe] Conversion to number yields NaN
+test/msie9/flyingimages.tidy.html:311: [maybe] Conversion to number yields NaN
+test/msie9/flyingimages.tidy.html:311: [maybe] Converting primitive number to object
+test/msie9/flyingimages.tidy.html:312: [maybe] Conversion to number yields NaN
+test/msie9/flyingimages.tidy.html:312: [maybe] Converting primitive number to object
+test/msie9/flyingimages.tidy.html:318: [maybe] Converting primitive number to object
+test/msie9/flyingimages.tidy.html:319: [maybe] Converting primitive number to object
+test/msie9/flyingimages.tidy.html:324: [maybe] Converting primitive number to object
+test/msie9/flyingimages.tidy.html:325: [maybe] Converting primitive number to object
+test/msie9/flyingimages.tidy.html:329: [maybe] Converting primitive number to object
+test/msie9/flyingimages.tidy.html:330: [maybe] Converting primitive number to object
+test/msie9/flyingimages.tidy.html:332: [maybe] Converting primitive number to object
+test/msie9/flyingimages.tidy.html:459: [maybe] Conversion from string to number yields NaN
+test/msie9/flyingimages.tidy.html:462: [maybe] Conversion from string to number yields NaN
+test/msie9/flyingimages.tidy.html:465: [maybe] Conversion from string to number yields NaN
+test/msie9/flyingimages.tidy.html:468: [maybe] Conversion from string to number yields NaN
+test/msie9/flyingimages.tidy.html:471: [maybe] Conversion from string to number yields NaN

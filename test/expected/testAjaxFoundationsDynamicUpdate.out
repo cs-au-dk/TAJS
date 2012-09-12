@@ -1,0 +1,9 @@
+test/benchmarks/ajax/foundations/chp4/dynamicUpdate.tidy.html:11:13: [definite] The conditional expression is always true
+test/benchmarks/ajax/foundations/chp4/dynamicUpdate.tidy.html:27:9: [definite] Unreachable function startCallback
+test/benchmarks/ajax/foundations/chp4/dynamicUpdate.tidy.html:36:9: [definite] Unreachable function pollServer
+test/benchmarks/ajax/foundations/chp4/dynamicUpdate.tidy.html:44:9: [definite] Unreachable function refreshTime
+test/benchmarks/ajax/foundations/chp4/dynamicUpdate.tidy.html:59:9: [definite] Unreachable function pollCallback
+test/benchmarks/ajax/foundations/chp4/dynamicUpdate.tidy.html:77:9: [definite] Unreachable function createRow
+test/benchmarks/ajax/foundations/chp4/dynamicUpdate.tidy.html:92:2: [definite] The variable event is never used
+test/benchmarks/ajax/foundations/chp4/dynamicUpdate.tidy.html:22:13: [maybe] TypeError, accessing property of null/undefined
+test/benchmarks/ajax/foundations/chp4/dynamicUpdate.tidy.html:6: [maybe] Uncaught exception, constructed at [test/benchmarks/ajax/foundations/chp4/dynamicUpdate.tidy.html:22:13]
