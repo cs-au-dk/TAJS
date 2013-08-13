@@ -1,0 +1,17 @@
+test/v8tests/function-names.js:31:5: [definite] ReferenceError, reading absent variable assertEquals
+test/v8tests/function-names.js:30:3: [definite] The conditional expression is always true
+test/v8tests/function-names.js:29:1: [definite] The variable object is never used
+test/v8tests/function-names.js:31:18: [definite] Unreachable code
+test/v8tests/function-names.js:46:5: [definite] The variable booleanPrototypeFunctions is never used
+test/v8tests/function-names.js:46:33: [definite] Unreachable code
+test/v8tests/function-names.js:52:5: [definite] The variable dateFunctions is never used
+test/v8tests/function-names.js:58:5: [definite] The variable datePrototypeFunctions is never used
+test/v8tests/function-names.js:75:5: [definite] The variable functionPrototypeFunctions is never used
+test/v8tests/function-names.js:80:5: [definite] The variable mathFunctions is never used
+test/v8tests/function-names.js:88:5: [definite] The variable numberPrototypeFunctions is never used
+test/v8tests/function-names.js:95:5: [definite] The variable objectPrototypeFunctions is never used
+test/v8tests/function-names.js:103:5: [definite] The variable regExpPrototypeFunctions is never used
+test/v8tests/function-names.js:108:5: [definite] The variable stringFunctions is never used
+test/v8tests/function-names.js:114:5: [definite] The variable stringPrototypeFunctions is never used
+test/v8tests/function-names.js:126:5: [definite] The variable globalFunctions is never used
+test/v8tests/function-names.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/function-names.js:31:5]

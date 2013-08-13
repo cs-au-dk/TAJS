@@ -1,0 +1,4 @@
+test/resig/ejohn19.js:4:8: [maybe] Reading absent property (computed name)
+test/resig/ejohn19.js:5:15: [maybe] Reading absent property (computed name)
+test/resig/ejohn19.js:15:1: [info] Abstract value: [*NodeList instances[dom]]
+test/resig/ejohn19.js:18:1: [info] Abstract value: Undef|[*NodeList instances[dom]]

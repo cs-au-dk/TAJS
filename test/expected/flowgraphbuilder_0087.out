@@ -1,0 +1,31 @@
+fg2: <main> function()
+  block 0: [entry]
+    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0087.js:1:1)
+    node 1: function-decl[function fooo(),-] (test/flowgraphbuilder/flowgraph_builder0087.js:1:1)
+    ->[block 1]
+  block 1: [exit-ordinary]
+    node 2: return[v1] (test/flowgraphbuilder/flowgraph_builder0087.js:1:1)
+    ->[]
+  block 2: [exit-exceptional]
+    node 3: exceptional-return (test/flowgraphbuilder/flowgraph_builder0087.js:1:1)
+    ->[]
+function fooo()
+  block 3: [entry]
+    node 4: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0087.js:1:1)
+    ->[block 4]
+  block 4:
+    node 5: read-variable['Math',v3,-] (test/flowgraphbuilder/flowgraph_builder0087.js:2:9)
+    node 6: read-property[v3,'random',-] (test/flowgraphbuilder/flowgraph_builder0087.js:2:9)
+    node 7: <variable-non-null-undef>['Math'] (test/flowgraphbuilder/flowgraph_builder0087.js:2:9)
+    ->[block 5]
+  block 5:
+    node 8: call[v3,'random',v1] (test/flowgraphbuilder/flowgraph_builder0087.js:2:9)
+    ->[block 6]
+  block 6: [exit-ordinary]
+    node 9: return[v1] (test/flowgraphbuilder/flowgraph_builder0087.js:2:9)
+    ->[]
+  block 7: [exit-exceptional]
+    node 10: exceptional-return (test/flowgraphbuilder/flowgraph_builder0087.js:2:9)
+    ->[]
+
+test/flowgraphbuilder/flowgraph_builder0087.js:1:1: [definite] Unreachable function fooo

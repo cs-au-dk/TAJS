@@ -1,0 +1,627 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+
+    <HEAD>
+        <META NAME="description" content="Spider Solitaire is a PC-Game written in HTML and JavaScript">
+        <META NAME="author" content="Lutz Tautenhahn">
+        <META NAME="keywords" content="Game, Spider Solitaire, Streich, Stroke, JavaScript">
+        <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+        <title>
+            Spider Solitaire
+        </title>
+        <script language="JavaScript1.2">
+            var i, j, I_Sel, J_Sel, IsNetscape = false,
+                IsNetscape4 = false,
+                StartTime, EndTime;
+            var MoveCount, MaxMoveCount, MaxMove = 777,
+                NeedToRemove, N_Deals;
+
+            PrePile = new Array(104);
+            Pile = new Array(104);
+            N_Col = new Array(18);
+            X0 = new Array(18);
+            Y0 = new Array(18);
+            dY = new Array(18);
+            Temp = new Array(104);
+            History = new Array(4);
+            for (i = 0; i < 4; i++)
+            History[i] = new Array(MaxMove);
+
+            var ebid = (document.getElementById) ? true : false;
+
+            function ElementById(id) {
+                if (ebid) return (document.getElementById(id));
+                else return (eval("document.all." + id));
+            }
+
+            function Init() {
+                var ii1, jj1, ii2, jj2, nn, mm, pp;
+                if (NeedToRemove) return;
+                for (ii1 = 0; ii1 < 8; ii1++) {
+                    X0[ii1] = 164 + ii1 * 77;
+                    Y0[ii1] = 20;
+                    dY[ii1] = 0;
+                }
+                for (ii1 = 0; ii1 < 10; ii1++) {
+                    X0[ii1 + 8] = 10 + ii1 * 77;
+                    Y0[ii1 + 8] = 138;
+                    dY[ii1 + 8] = 24;
+                }
+                for (ii1 = 0; ii1 < 8; ii1++) {
+                    for (jj1 = 0; jj1 < 13; jj1++)
+                    PrePile[ii1 * 13 + jj1] = 100 * ii1 + jj1;
+                }
+                for (nn = 0; nn < 8000; nn++) {
+                    ii1 = Math.floor(Math.random() * 1000) % 104;
+                    ii2 = Math.floor(Math.random() * 1000) % 104;
+                    pp = PrePile[ii1];
+                    PrePile[ii1] = PrePile[ii2];
+                    PrePile[ii2] = pp;
+                }
+                for (ii1 = 0; ii1 < 5; ii1++) N_Col[ii1] = 10;
+                for (ii1 = 5; ii1 < 8; ii1++) N_Col[ii1] = 0;
+                nn = 50;
+                mm = 5;
+                for (ii1 = 0; ii1 < 10; ii1++) {
+                    if (ii1 == 4) mm = 4;
+                    for (jj1 = 0; jj1 < mm; jj1++) {
+                        PrePile[nn] += 1000;
+                        nn++;
+                    }
+                    nn++;
+                    N_Col[ii1 + 8] = mm + 1;
+                }
+                for (ii1 = 0; ii1 < 104; ii1++)
+                Pile[ii1] = PrePile[ii1];
+                MoveCount = 0;
+                MaxMoveCount = 0;
+                NeedToRemove = 0;
+                N_Deals = 0;
+                Select(-1, -1);
+                RefreshScreen();
+                Now = new Date();
+                StartTime = Now.getTime() / 1000;
+            }
+
+            function Resize() {
+                if (IsNetscape4) history.go(0);
+            }
+
+            function DealCards() {
+                var ii;
+                if (NeedToRemove) return;
+                if (N_Deals >= 5) {
+                    alert("No more cards to deal.");
+                    return;
+                }
+                Select(-1, -1);
+                for (ii = 0; ii < 10; ii++) {
+                    if (N_Col[8 + ii] == 0) {
+                        alert("No empty columns allowed when dealing.");
+                        return;
+                    }
+                }
+                N_Deals++;
+                for (ii = 0; ii < 10; ii++) Move(5 - N_Deals, 9 - ii, 8 + ii, N_Col[8 + ii]);
+                MoveCount = 0;
+                MaxMoveCount = 0;
+                ii = 49 - N_Deals;
+                if (IsNetscape4) {
+                    with(document.layers['b' + ii]) visibility = "hide";
+                }
+                else {
+                    with(ElementById('b' + ii + '0')) style.visibility = "hidden";
+                }
+            }
+
+            function Back() {
+                var ii1, ii2, jj1, jj2;
+                if (NeedToRemove) return;
+                if (MoveCount == 0) return;
+                Select(-1, -1);
+                MoveCount--;
+                ii1 = History[0][MoveCount];
+                jj1 = History[1][MoveCount];
+                ii2 = History[2][MoveCount];
+                jj2 = History[3][MoveCount];
+                Move(ii2, jj2, ii1, jj1);
+            }
+
+            function Replay() {
+                var ii1, ii2, jj1, jj2;
+                if (NeedToRemove) return;
+                if (MoveCount >= MaxMoveCount) return;
+                Select(-1, -1);
+                ii1 = History[0][MoveCount];
+                jj1 = History[1][MoveCount];
+                ii2 = History[2][MoveCount];
+                jj2 = History[3][MoveCount];
+                Move(ii1, jj1, ii2, jj2);
+                MoveCount++;
+            }
+
+            function GetPile(ii, jj) {
+                var kk, nn = 0;
+                for (kk = 0; kk < ii; kk++) nn += N_Col[kk];
+                nn += jj;
+                return (nn);
+            }
+
+            function MouseDown(xx, yy) {
+                if (NeedToRemove) return;
+                if (MoveCount >= MaxMove - 1) {
+                    alert("Sorry, no more moves !");
+                    return;
+                }
+                var ii, jj, tt, ll, iisel = -1,
+                    jjsel = -1,
+                    nn, mm, cc;
+                for (ii = 8; ii < 18; ii++) {
+                    for (jj = -1; jj < N_Col[ii]; jj++) {
+                        tt = Y0[ii] + jj * dY[ii];
+                        ll = X0[ii];
+                        if ((ll <= xx) && (xx <= ll + 71) && (tt <= yy) && (yy <= tt + 96)) {
+                            iisel = ii;
+                            jjsel = jj;
+                        }
+                    }
+                }
+                if ((iisel < 0) || ((iisel == I_Sel) && (jjsel == J_Sel))) {
+                    Select(-1, -1);
+                    return;
+                }
+                if (I_Sel < 0) {
+                    if (jjsel < 0) return;
+                    if (jjsel == N_Col[iisel] - 1) {
+                        nn = GetPile(iisel, jjsel);
+                        if (Pile[nn] >= 1000) {
+                            MakeMove(iisel, jjsel, iisel, jjsel);
+                            Select(-1, -1);
+                            return;
+                        }
+                    }
+                    nn = GetPile(iisel, jjsel);
+                    if (Pile[nn] >= 1000) return;
+                    for (jj = 1; jj < N_Col[iisel] - jjsel; jj++) {
+                        if (Pile[nn + jj] % 400 + jj != Pile[nn] % 400) return;
+                    }
+                    Select(iisel, jjsel);
+                    return;
+                }
+                if (iisel == I_Sel) {
+                    Select(-1, -1);
+                    return;
+                }
+                if (jjsel < N_Col[iisel] - 1) return;
+                nn = GetPile(I_Sel, J_Sel);
+                cc = Pile[nn];
+                if (jjsel >= 0) {
+                    nn = GetPile(iisel, jjsel);
+                    if (Pile[nn] % 100 - 1 != cc % 100) return;
+                }
+                MakeMove(I_Sel, J_Sel, iisel, jjsel + 1);
+                if (J_Sel > 0) {
+                    nn = GetPile(I_Sel, J_Sel - 1);
+                    if (Pile[nn] >= 1000) MakeMove(I_Sel, J_Sel - 1, I_Sel, J_Sel - 1);
+                }
+                Select(-1, -1);
+                NeedToRemove = CanAutoRemove();
+            }
+
+            function Select(iisel, jjsel) {
+                I_Sel = iisel;
+                J_Sel = jjsel;
+                if (IsNetscape4) {
+                    document.layers['s0'].visibility = "hide";
+                    if ((iisel < 0) || (jjsel < 0)) return;
+                    with(document.layers['s0']) {
+                        top = Y0[iisel] + jjsel * dY[iisel];
+                        left = X0[iisel];
+                        zIndex = 2 * (jjsel + 1);
+                        visibility = "show";
+                    }
+                }
+                else {
+                    with(ElementById('s00')) style.visibility = "hidden";
+                    if ((iisel < 0) || (jjsel < 0)) return;
+                    with(ElementById('s00')) {
+                        style.top = Y0[iisel] + jjsel * dY[iisel];
+                        style.left = X0[iisel];
+                        style.zIndex = 2 * (jjsel + 1);
+                        style.visibility = "visible";
+                    }
+                }
+            }
+
+            function CanAutoRemove() {
+                var ii, jj, cc, nn, bb, rr = 0;
+                for (ii = 8; ii < 18; ii++) {
+                    if (N_Col[ii] >= 13) {
+                        jj = N_Col[ii] - 1;
+                        nn = GetPile(ii, jj);
+                        cc = Pile[nn];
+                        if (cc % 100 == 0) {
+                            cc = Math.floor(cc / 100) % 4;
+                            bb = true;
+                            for (jj = 1; jj < 13; jj++) {
+                                if (Pile[nn - jj] >= 1000) bb = false;
+                                if (Pile[nn - jj] % 400 != 1 + Pile[nn - jj + 1] % 400) bb = false;
+                            }
+                            if (bb) rr = ii;
+                        }
+                    }
+                }
+                if (rr > 0) {
+                    ii = 7;
+                    while ((N_Col[ii] > 0) && (ii > 0)) ii--;
+                    jj = N_Col[rr] - 1;
+                    AutoRemove(rr, jj, ii, 0);
+                }
+                return (rr);
+            }
+
+            function AutoRemove(ii1, jj1, ii2, jj2) {
+                Move(ii1, jj1, ii2, jj2);
+                if (jj2 < 12) {
+                    setTimeout("AutoRemove(" + ii1 + "," + eval(jj1 - 1) + "," + ii2 + "," + eval(jj2 + 1) + ")", 300);
+                    return;
+                }
+                NeedToRemove = 0;
+                MoveCount = 0;
+                MaxMoveCount = 0;
+                NeedToRemove = 0;
+                var ii;
+                for (ii = 0; ii < 8; ii++) {
+                    if (N_Col[ii] < 13) return;
+                }
+                Now = new Date();
+                EndTime = Now.getTime() / 1000;
+                ii = Math.floor(EndTime - StartTime);
+                if (window.opener) {
+                    if (window.opener.SetHighscores) window.opener.SetHighscores("Spider", "", ii, -1);
+                }
+                if (confirm("Super, you solved this game in " + Math.floor(ii / 60) + " minutes and " + eval(ii % 60) + " seconds !\r\nPlay again?")) Init(true);
+            }
+
+            function Timer() {
+                if (NeedToRemove) AutoRemove();
+            }
+
+            function MakeMove(ii1, jj1, ii2, jj2) {
+                Move(ii1, jj1, ii2, jj2);
+                if (History[0][MoveCount] != ii1) {
+                    History[0][MoveCount] = ii1;
+                    MaxMoveCount = MoveCount + 1;
+                }
+                if (History[1][MoveCount] != jj1) {
+                    History[1][MoveCount] = jj1;
+                    MaxMoveCount = MoveCount + 1;
+                }
+                if (History[2][MoveCount] != ii2) {
+                    History[2][MoveCount] = ii2;
+                    MaxMoveCount = MoveCount + 1;
+                }
+                if (History[3][MoveCount] != jj2) {
+                    History[3][MoveCount] = jj2;
+                    MaxMoveCount = MoveCount + 1;
+                }
+                MoveCount++;
+                if (MaxMoveCount < MoveCount) MaxMoveCount = MoveCount;
+            }
+
+            function Move(ii1, jj1, ii2, jj2) {
+                var nn, mm, kk, ll, tt, cc;
+                //alert("Move("+ii1+","+jj1+","+ii2+","+jj2+")");
+                nn = GetPile(ii1, jj1);
+                mm = GetPile(ii2, jj2);
+                if (mm > nn) mm -= (N_Col[ii1] - jj1);
+                kk = N_Col[ii1] - jj1;
+                if ((ii1 == ii2) && (jj1 == jj2)) {
+                    if (Pile[nn] < 1000) Pile[nn] += 1000;
+                    else Pile[nn] -= 1000;
+                    RefreshCol(ii1);
+                }
+                else {
+                    N_Col[ii1] -= kk;
+                    N_Col[ii2] += kk;
+                    for (cc = 0; cc < kk; cc++) Temp[cc] = Pile[nn + cc];
+                    for (cc = nn; cc < 104 - kk; cc++) Pile[cc] = Pile[cc + kk];
+                    for (cc = 103 - kk; cc >= mm; cc--) Pile[cc + kk] = Pile[cc];
+                    for (cc = 0; cc < kk; cc++) Pile[mm + cc] = Temp[cc];
+                    RefreshCol(ii1);
+                    RefreshCol(ii2);
+                }
+            }
+
+            function RefreshCol(iic) {
+                var ii, jj, nn, mm, cc, vv = 0,
+                    hh = 0;
+                if (iic >= 8) {
+                    dY[iic] = 24;
+                    if (N_Col[iic] > 16) dY[iic] = Math.floor(384 / N_Col[iic]);
+                }
+                if (IsNetscape4) {
+                    for (ii = 0; ii < 18; ii++) {
+                        for (jj = 0; jj < N_Col[ii]; jj++) {
+                            if (ii == iic) {
+                                nn = Pile[vv] % 100;
+                                mm = (Pile[vv] % 1000 - nn) / 100;
+                                with(document.layers['c' + eval(8 * nn + mm)]) {
+                                    top = Y0[ii] + jj * dY[ii];
+                                    left = X0[ii];
+                                    zIndex = 2 * jj + 1;
+                                    visibility = "show";
+                                }
+                                if ((iic >= 8) && (iic <= 11) && (jj < 5)) {
+                                    hh = (iic - 8) * 5 + jj;
+                                    with(document.layers['b' + hh]) {
+                                        if (Pile[vv] >= 1000) {
+                                            top = Y0[ii] + jj * dY[ii];
+                                            left = X0[ii];
+                                            zIndex = 2 * jj + 2;
+                                            visibility = "show";
+                                        }
+                                        else visibility = "hide";
+                                    }
+                                }
+                                if ((iic > 11) && (jj < 4)) {
+                                    hh = (iic - 12) * 4 + 20 + jj;
+                                    with(document.layers['b' + hh]) {
+                                        if (Pile[vv] >= 1000) {
+                                            top = Y0[ii] + jj * dY[ii];
+                                            left = X0[ii];
+                                            zIndex = 2 * jj + 2;
+                                            visibility = "show";
+                                        }
+                                        else visibility = "hide";
+                                    }
+                                }
+                            }
+                            vv++;
+                        }
+                    }
+                }
+                else {
+                    for (ii = 0; ii < 18; ii++) {
+                        for (jj = 0; jj < N_Col[ii]; jj++) {
+                            if (ii == iic) {
+                                nn = Pile[vv] % 100;
+                                mm = (Pile[vv] % 1000 - nn) / 100;
+                                cc = 8 * nn + mm;
+                                with(ElementById('c' + cc + '0')) {
+                                    style.top = Y0[ii] + jj * dY[ii];
+                                    style.left = X0[ii];
+                                    style.zIndex = 2 * jj + 1;
+                                    style.visibility = "visible";
+                                }
+                                if ((iic >= 8) && (iic <= 11) && (jj < 5)) {
+                                    hh = (iic - 8) * 5 + jj;
+                                    if (Pile[vv] >= 1000) {
+                                        with(ElementById('b' + hh + '0')) {
+                                            style.top = Y0[ii] + jj * dY[ii];
+                                            style.left = X0[ii];
+                                            style.zIndex = 2 * jj + 2;
+                                            style.visibility = "visible";
+                                        }
+                                    }
+                                    else with(ElementById('b' + hh + '0')) style.visibility = "hidden";
+                                }
+                                if ((iic > 11) && (jj < 4)) {
+                                    hh = (iic - 12) * 4 + 20 + jj;
+                                    if (Pile[vv] >= 1000) {
+                                        with(ElementById('b' + hh + '0')) {
+                                            style.top = Y0[ii] + jj * dY[ii];
+                                            style.left = X0[ii];
+                                            style.zIndex = 2 * jj + 2;
+                                            style.visibility = "visible";
+                                        }
+                                    }
+                                    else with(ElementById('b' + hh + '0')) style.visibility = "hidden";
+                                }
+                            }
+                            vv++;
+                        }
+                    }
+                }
+            }
+
+            function RefreshScreen() {
+                var ii, jj, nn, mm, cc, vv = 0,
+                    hh = 0;
+                if (IsNetscape4) {
+                    for (ii = 0; ii < 104; ii++)
+                    document.layers['c' + ii].visibility = "hide";
+                    for (ii = 0; ii < 44; ii++)
+                    document.layers['b' + ii].visibility = "hide";
+                    for (ii = 0; ii < 18; ii++) {
+                        for (jj = 0; jj < N_Col[ii]; jj++) {
+                            nn = Pile[vv] % 100;
+                            mm = (Pile[vv] % 1000 - nn) / 100;
+                            with(document.layers['c' + eval(8 * nn + mm)]) {
+                                top = Y0[ii] + jj * dY[ii];
+                                left = X0[ii];
+                                zIndex = 2 * jj + 1;
+                                visibility = "show";
+                            }
+                            if (Pile[vv] >= 1000) {
+                                with(document.layers['b' + hh]) {
+                                    top = Y0[ii] + jj * dY[ii];
+                                    left = X0[ii];
+                                    zIndex = 2 * jj + 2;
+                                    visibility = "show";
+                                }
+                                hh++;
+                            }
+                            vv++;
+                        }
+                    }
+                    for (ii = 0; ii < 5; ii++) {
+                        with(document.layers['b' + hh]) {
+                            top = Y0[ii];
+                            left = X0[ii];
+                            zIndex = 30;
+                            visibility = "show";
+                        }
+                        hh++;
+                    }
+                }
+                else {
+                    for (ii = 0; ii < 18; ii++) {
+                        for (jj = 0; jj < N_Col[ii]; jj++) {
+                            nn = Pile[vv] % 100;
+                            mm = (Pile[vv] % 1000 - nn) / 100;
+                            cc = 8 * nn + mm;
+                            with(ElementById('c' + cc + '0')) {
+                                style.top = Y0[ii] + jj * dY[ii];
+                                style.left = X0[ii];
+                                style.zIndex = 2 * jj + 1;
+                                style.visibility = "visible";
+                            }
+                            if (Pile[vv] >= 1000) {
+                                with(ElementById('b' + hh + '0')) {
+                                    style.top = Y0[ii] + jj * dY[ii];
+                                    style.left = X0[ii];
+                                    style.zIndex = 2 * jj + 2;
+                                    style.visibility = "visible";
+                                }
+                                hh++;
+                            }
+                            vv++;
+                        }
+                    }
+                    for (ii = 0; ii < 5; ii++) {
+                        with(ElementById('b' + hh + '0')) {
+                            style.top = Y0[ii];
+                            style.left = X0[ii];
+                            style.zIndex = 30;
+                            style.visibility = "visible";
+                        }
+                        hh++;
+                    }
+                }
+            }
+
+            function ShowHelp() {
+                alert("Arrange all cards into piles of the same suit in descending order to get them removed." + "\nThe cards will then be removed to one of the 8 home piles at the top of the playing area." + "\nYou can move the cards according to the following rules:" + "\n* You can move a face up card and all cards below it (which must be a series) to the top" + "\nof a pile in the playing area, if the destination is the next higher card of any suit." + "\n* You can move a card and all cards below it (if they belong to a series) to an empty pile." + "\nTo move a card, click first on the card you want to move and then on its destination." + "\nWhen you can't move any more cards or when you're done, click Deal to get more cards." + "\nWith a good strategy, almost 50% of the games can be solved." + "\nGood luck!");
+            }
+
+            if (navigator.appName == "Netscape") {
+                IsNetscape = true;
+                if (parseInt(navigator.appVersion) < 5) IsNetscape4 = true;
+            }
+            if ((navigator.appName != "Microsoft Internet Explorer") && (navigator.appName != "Konqueror")) document.captureEvents(Event.MOUSEDOWN);
+            document.onmousedown = NetscapeMouseDown;
+
+            function NetscapeMouseDown(Event) {
+                if (isNaN(Event.pageX)) MouseDown(Event.clientX, Event.clientY);
+                else MouseDown(Event.pageX, Event.pageY);
+            }
+        </script>
+        <script for="document" Event="onmousedown()" language="JScript">
+            if (window.event) MouseDown(window.event.x, window.event.y);
+        </script>
+    </head>
+
+    <body bgcolor=#008800 onResize="Resize()">
+        <div align=left>
+            <form name="ButtonsForm">
+                <table align=left noborder cellpadding=0 cellspacing=0>
+                    <tr>
+                        <td align=left>
+                            <input type=button value="&nbsp;&lt;&lt;&nbsp;" style="width:40" onClick="javascript:Back()">
+                        </td>
+                        <td align=right>
+                            <input type=button value="&nbsp;&gt;&gt;&nbsp;" style="width:40" onClick="javascript:Replay()">
+                        </td>
+                    </tr>
+                    <tr align=center>
+                        <td colspan=2>
+                            <input type=button name="Deal" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+                            style="width:80" onClick="javascript:DealCards()">
+                        </td>
+                    </tr>
+                    <tr align=center>
+                        <td colspan=2>
+                            <input type=button name="Help" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+                            style="width:80" onClick="javascript:ShowHelp()">
+                        </td>
+                    </tr>
+                    <tr align=center>
+                        <td colspan=2>
+                            <input type=button name="New" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+                            style="width:80" onClick="javascript:Init()">
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+        <script language="JavaScript">
+            document.open("text/plain");
+            if (IsNetscape4) {
+                for (j = 0; j < 8; j++) {
+                    document.writeln("<layer id='c" + eval(j) + "' top=20 left=" + eval(10 + (j + 2) * 77) + " width=71 height=96 visibility=hide>");
+                    document.writeln("<img src=\"card_" + eval(j % 4 + 1) + eval(14) + ".gif\">");
+                    document.writeln("</layer>");
+                }
+                for (i = 1; i < 13; i++) {
+                    for (j = 0; j < 8; j++) {
+                        document.writeln("<layer id='c" + eval(i * 8 + j) + "' top=20 left=" + eval(10 + (j + 2) * 77) + " width=71 height=96 visibility=hide>");
+                        document.writeln("<img src=\"card_" + eval(j % 4 + 1) + eval(i + 1) + ".gif\">");
+                        document.writeln("</layer>");
+                    }
+                }
+                for (j = 0; j < 1; j++) {
+                    document.writeln("<layer id='s" + j + "' top=20 left=87 width=71 height=96 z-index=0 visibility=hide>");
+                    document.writeln("<img src=\"card_pos.gif\">");
+                    document.writeln("</layer>");
+                }
+                for (j = 0; j < 49; j++) {
+                    document.writeln("<layer id='b" + j + "' top=20 left=" + eval(10 + (j + 2) * 77) + " width=71 height=96 z-index=0 visibility=hide>");
+                    document.writeln("<img src=\"cardback.gif\">");
+                    document.writeln("</layer>");
+                }
+                for (j = 0; j < 8; j++) {
+                    document.writeln("<layer id='home" + j + "' top=20 left=" + eval(10 + (j + 2) * 77) + " width=71 height=96 z-index=0 visibility=show>");
+                    document.writeln("<img src=\"card_pos.gif\">");
+                    document.writeln("</layer>");
+                }
+            }
+            else {
+                for (j = 0; j < 8; j++) {
+                    document.writeln("<div id=\"c "+eval(j)+"0\" style=\"position:absolute; top:20; left:" + eval(10 + (j + 2) * 77) + "; width:71; height:96; visibility:hidden;\">");
+                    document.writeln("<img src=\"card_" + eval(j % 4 + 1) + eval(14) + ".gif\">");
+                    document.writeln("</div>");
+                }
+                for (i = 1; i < 13; i++) {
+                    for (j = 0; j < 8; j++) {
+                        document.writeln("<div id=\"c "+eval(8*i+j)+"0\" style=\"position:absolute; top:20; left:" + eval(10 + (j + 2) * 77) + "; width:71; height:96; visibility:hidden;\">");
+                        document.writeln("<img src=\"card_" + eval(j % 4 + 1) + eval(i + 1) + ".gif\">");
+                        document.writeln("</div>");
+                    }
+                }
+                for (j = 0; j < 1; j++) {
+                    document.writeln("<div id=\"s "+j+"0\" style=\"position:absolute; top:20; left:164; width:71; height:96; z-index=0; visibility:hidden;\">");
+                    document.writeln("<img src=\"card_pos.gif\">");
+                    document.writeln("</div>");
+                }
+                for (j = 0; j < 49; j++) {
+                    document.writeln("<div id=\"b "+j+"0\" style=\"position:absolute; top:20; left:" + eval(10 + (j + 2) * 77) + "; width:71; height:96; z-index=0; visibility:hidden;\">");
+                    document.writeln("<img src=\"cardback.gif\">");
+                    document.writeln("</div>");
+                }
+                for (j = 0; j < 8; j++) {
+                    document.writeln("<div id=\"home "+j+"0\" style=\"position:absolute; top:20; left:" + eval(10 + (j + 2) * 77) + "; width:71; height:96; z-index=0; visibility:visible;\">");
+                    document.writeln("<img src=\"card_pos.gif\">");
+                    document.writeln("</div>");
+                }
+            }
+            document.close;
+            Init();
+            setInterval("Timer()", 500);
+            window.document.ButtonsForm.Deal.value = "Deal";
+            window.document.ButtonsForm.New.value = "New";
+            window.document.ButtonsForm.Help.value = "Help";
+        </script>
+    </body>
+
+</html>

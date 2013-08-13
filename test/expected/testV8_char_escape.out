@@ -1,0 +1,6 @@
+test/v8tests/char-escape.js:32:3: [definite] ReferenceError, reading absent variable assertEquals
+test/v8tests/char-escape.js:30:1: [definite] The conditional expression is always true
+test/v8tests/char-escape.js:31:7: [definite] The variable str is never used
+test/v8tests/char-escape.js:32:16: [definite] Unreachable code
+test/v8tests/char-escape.js:36:1: [definite] Unreachable function code
+test/v8tests/char-escape.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/char-escape.js:32:3]

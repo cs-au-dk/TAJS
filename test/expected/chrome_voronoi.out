@@ -1,0 +1,208 @@
+test/chromeexperiments/voronoi.tidy.html:74:3: [definite] The conditional expression is always true
+test/chromeexperiments/voronoi.tidy.html:102:3: [definite] The conditional expression is always false
+test/chromeexperiments/voronoi.tidy.html:108:14: [definite] Variable mouse_x is null/undefined
+test/chromeexperiments/voronoi.tidy.html:109:14: [definite] Variable mouse_y is null/undefined
+test/chromeexperiments/voronoi.tidy.html:110:22: [definite] Variable mouse_x is null/undefined
+test/chromeexperiments/voronoi.tidy.html:111:22: [definite] Variable mouse_y is null/undefined
+test/chromeexperiments/voronoi.tidy.html:122:16: [definite] Variable mouse_x is null/undefined
+test/chromeexperiments/voronoi.tidy.html:123:16: [definite] Variable mouse_y is null/undefined
+test/chromeexperiments/voronoi.tidy.html:128:5: [definite] The conditional expression is always false
+test/chromeexperiments/voronoi.tidy.html:187:5: [definite] The conditional expression is always false
+test/chromeexperiments/voronoi.tidy.html:187:8: [definite] The conditional expression is always false
+test/chromeexperiments/voronoi.tidy.html:191:5: [definite] The conditional expression is always false
+test/chromeexperiments/voronoi.tidy.html:211:5: [definite] The conditional expression is always true
+test/chromeexperiments/voronoi.tidy.html:213:7: [definite] The conditional expression is always true
+test/chromeexperiments/voronoi.tidy.html:438:3: [definite] The conditional expression is always true
+test/chromeexperiments/voronoi.tidy.html:503:3: [definite] The conditional expression is always true
+test/chromeexperiments/voronoi.tidy.html:337:1: [definite] Dead assignment, property set_right is never read
+test/chromeexperiments/voronoi.tidy.html:344:1: [definite] Dead assignment, property rnext is never read
+test/chromeexperiments/voronoi.tidy.html:345:1: [definite] Dead assignment, property dnext is never read
+test/chromeexperiments/voronoi.tidy.html:348:1: [definite] Dead assignment, property rprev is never read
+test/chromeexperiments/voronoi.tidy.html:351:1: [definite] Dead assignment, property is_crust is never read
+test/chromeexperiments/voronoi.tidy.html:356:1: [definite] Dead assignment, property to_s is never read
+test/chromeexperiments/voronoi.tidy.html:364:3: [definite] Dead assignment, property vx is never read
+test/chromeexperiments/voronoi.tidy.html:365:3: [definite] Dead assignment, property vy is never read
+test/chromeexperiments/voronoi.tidy.html:366:18: [definite] Dead assignment, property painted is never read
+test/chromeexperiments/voronoi.tidy.html:370:1: [definite] Dead assignment, property to_s is never read
+test/chromeexperiments/voronoi.tidy.html:57:5: [definite] The variable canvas_div is never used
+test/chromeexperiments/voronoi.tidy.html:58:5: [definite] The variable outer_div is never used
+test/chromeexperiments/voronoi.tidy.html:59:5: [definite] The variable boundary is never used
+test/chromeexperiments/voronoi.tidy.html:64:5: [definite] The variable blow_distance is never used
+test/chromeexperiments/voronoi.tidy.html:70:5: [definite] The variable active_canvas is never used
+test/chromeexperiments/voronoi.tidy.html:130:15: [definite] The variable blow_acceleration is never used
+test/chromeexperiments/voronoi.tidy.html:196:132: [definite] Unreachable function
+test/chromeexperiments/voronoi.tidy.html:204:132: [definite] Unreachable function
+test/chromeexperiments/voronoi.tidy.html:253:1: [definite] Unreachable function on_mouse_move
+test/chromeexperiments/voronoi.tidy.html:271:5: [definite] The variable valid_keys is never used
+test/chromeexperiments/voronoi.tidy.html:272:1: [definite] Unreachable function on_key_press
+test/chromeexperiments/voronoi.tidy.html:282:1: [definite] Unreachable function clip
+test/chromeexperiments/voronoi.tidy.html:287:1: [definite] Unreachable function on_mouse_down
+test/chromeexperiments/voronoi.tidy.html:292:1: [definite] Unreachable function on_mouse_up
+test/chromeexperiments/voronoi.tidy.html:337:28: [definite] Unreachable function
+test/chromeexperiments/voronoi.tidy.html:344:24: [definite] Unreachable function
+test/chromeexperiments/voronoi.tidy.html:345:24: [definite] Unreachable function
+test/chromeexperiments/voronoi.tidy.html:348:24: [definite] Unreachable function
+test/chromeexperiments/voronoi.tidy.html:351:27: [definite] Unreachable function
+test/chromeexperiments/voronoi.tidy.html:356:23: [definite] Unreachable function
+test/chromeexperiments/voronoi.tidy.html:370:25: [definite] Unreachable function
+test/chromeexperiments/voronoi.tidy.html:384:1: [definite] Unreachable function dist_sqr
+test/chromeexperiments/voronoi.tidy.html:404:87: [definite] The variable qq is never used
+test/chromeexperiments/voronoi.tidy.html:415:22: [definite] The variable cc is never used
+test/chromeexperiments/voronoi.tidy.html:471:7: [definite] The variable declaration cc shadows a parameter
+test/chromeexperiments/voronoi.tidy.html:524:2: [definite] The variable event is never used
+test/chromeexperiments/voronoi.tidy.html:103:3: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/voronoi.tidy.html:118:13: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/voronoi.tidy.html:183:15: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/voronoi.tidy.html:214:63: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/voronoi.tidy.html:215:64: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/voronoi.tidy.html:216:13: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/voronoi.tidy.html:217:13: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/voronoi.tidy.html:226:18: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/voronoi.tidy.html:227:18: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/voronoi.tidy.html:236:18: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/voronoi.tidy.html:237:18: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/voronoi.tidy.html:311:13: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/voronoi.tidy.html:312:13: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/voronoi.tidy.html:312:13: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/voronoi.tidy.html:316:13: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/voronoi.tidy.html:317:14: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/voronoi.tidy.html:323:13: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/voronoi.tidy.html:325:3: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/voronoi.tidy.html:326:15: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/voronoi.tidy.html:327:3: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/voronoi.tidy.html:327:21: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/voronoi.tidy.html:332:42: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/voronoi.tidy.html:333:43: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/voronoi.tidy.html:333:43: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/voronoi.tidy.html:336:44: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/voronoi.tidy.html:338:43: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/voronoi.tidy.html:338:43: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/voronoi.tidy.html:339:41: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/voronoi.tidy.html:339:41: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/voronoi.tidy.html:340:43: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/voronoi.tidy.html:340:43: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/voronoi.tidy.html:340:43: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/voronoi.tidy.html:341:41: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/voronoi.tidy.html:341:41: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/voronoi.tidy.html:341:41: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/voronoi.tidy.html:346:44: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/voronoi.tidy.html:346:44: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/voronoi.tidy.html:346:44: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/voronoi.tidy.html:346:44: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/voronoi.tidy.html:347:44: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/voronoi.tidy.html:347:44: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/voronoi.tidy.html:349:44: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/voronoi.tidy.html:349:44: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/voronoi.tidy.html:349:44: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/voronoi.tidy.html:349:44: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/voronoi.tidy.html:349:44: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/voronoi.tidy.html:349:44: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/voronoi.tidy.html:350:44: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/voronoi.tidy.html:350:44: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/voronoi.tidy.html:352:55: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/voronoi.tidy.html:352:81: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/voronoi.tidy.html:371:58: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/voronoi.tidy.html:374:22: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/voronoi.tidy.html:374:29: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/voronoi.tidy.html:374:38: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/voronoi.tidy.html:383:37: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/voronoi.tidy.html:383:44: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/voronoi.tidy.html:383:51: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/voronoi.tidy.html:397:5: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/voronoi.tidy.html:398:5: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/voronoi.tidy.html:404:55: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/voronoi.tidy.html:417:44: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/voronoi.tidy.html:430:62: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/voronoi.tidy.html:437:6: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/voronoi.tidy.html:439:64: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/voronoi.tidy.html:440:9: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/voronoi.tidy.html:440:9: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/voronoi.tidy.html:441:9: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/voronoi.tidy.html:447:3: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/voronoi.tidy.html:448:3: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/voronoi.tidy.html:448:18: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/voronoi.tidy.html:452:22: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/voronoi.tidy.html:452:29: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/voronoi.tidy.html:452:43: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/voronoi.tidy.html:464:30: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/voronoi.tidy.html:466:3: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/voronoi.tidy.html:471:44: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/voronoi.tidy.html:474:3: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/voronoi.tidy.html:475:3: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/voronoi.tidy.html:487:6: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/voronoi.tidy.html:495:12: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/voronoi.tidy.html:502:11: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/voronoi.tidy.html:504:14: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/voronoi.tidy.html:505:29: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/voronoi.tidy.html:516:14: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/voronoi.tidy.html:51: [maybe] Uncaught exception, constructed at [test/chromeexperiments/voronoi.tidy.html:103:3, test/chromeexperiments/voronoi.tidy.html:118:13, test/chromeexperiments/voronoi.tidy.html:183:15, test/chromeexperiments/voronoi.tidy.html:214:63, test/chromeexperiments/voronoi.tidy.html:215:64, test/chromeexperiments/voronoi.tidy.html:216:13, test/chromeexperiments/voronoi.tidy.html:217:13, test/chromeexperiments/voronoi.tidy.html:226:18, test/chromeexperiments/voronoi.tidy.html:227:18, test/chromeexperiments/voronoi.tidy.html:236:18, test/chromeexperiments/voronoi.tidy.html:237:18, test/chromeexperiments/voronoi.tidy.html:311:13, test/chromeexperiments/voronoi.tidy.html:312:13, test/chromeexperiments/voronoi.tidy.html:316:13, test/chromeexperiments/voronoi.tidy.html:317:14, test/chromeexperiments/voronoi.tidy.html:323:13, test/chromeexperiments/voronoi.tidy.html:325:3, test/chromeexperiments/voronoi.tidy.html:326:15, test/chromeexperiments/voronoi.tidy.html:327:3, test/chromeexperiments/voronoi.tidy.html:327:21, test/chromeexperiments/voronoi.tidy.html:332:42, test/chromeexperiments/voronoi.tidy.html:333:43, test/chromeexperiments/voronoi.tidy.html:336:44, test/chromeexperiments/voronoi.tidy.html:338:43, test/chromeexperiments/voronoi.tidy.html:339:41, test/chromeexperiments/voronoi.tidy.html:340:43, test/chromeexperiments/voronoi.tidy.html:341:41, test/chromeexperiments/voronoi.tidy.html:346:44, test/chromeexperiments/voronoi.tidy.html:347:44, test/chromeexperiments/voronoi.tidy.html:350:44, test/chromeexperiments/voronoi.tidy.html:352:55, test/chromeexperiments/voronoi.tidy.html:352:81, test/chromeexperiments/voronoi.tidy.html:374:22, test/chromeexperiments/voronoi.tidy.html:374:29, test/chromeexperiments/voronoi.tidy.html:374:38, test/chromeexperiments/voronoi.tidy.html:383:37, test/chromeexperiments/voronoi.tidy.html:383:44, test/chromeexperiments/voronoi.tidy.html:383:51, test/chromeexperiments/voronoi.tidy.html:397:5, test/chromeexperiments/voronoi.tidy.html:398:5, test/chromeexperiments/voronoi.tidy.html:404:55, test/chromeexperiments/voronoi.tidy.html:417:44, test/chromeexperiments/voronoi.tidy.html:430:62, test/chromeexperiments/voronoi.tidy.html:447:3, test/chromeexperiments/voronoi.tidy.html:448:3, test/chromeexperiments/voronoi.tidy.html:448:18, test/chromeexperiments/voronoi.tidy.html:452:22, test/chromeexperiments/voronoi.tidy.html:452:29, test/chromeexperiments/voronoi.tidy.html:452:43, test/chromeexperiments/voronoi.tidy.html:464:30, test/chromeexperiments/voronoi.tidy.html:466:3, test/chromeexperiments/voronoi.tidy.html:471:44, test/chromeexperiments/voronoi.tidy.html:474:3, test/chromeexperiments/voronoi.tidy.html:475:3, test/chromeexperiments/voronoi.tidy.html:487:6, test/chromeexperiments/voronoi.tidy.html:495:12, test/chromeexperiments/voronoi.tidy.html:502:11, test/chromeexperiments/voronoi.tidy.html:504:14, test/chromeexperiments/voronoi.tidy.html:505:29, test/chromeexperiments/voronoi.tidy.html:516:14]
+test/chromeexperiments/voronoi.tidy.html:108:14: [maybe] Conversion to number yields NaN
+test/chromeexperiments/voronoi.tidy.html:109:14: [maybe] Conversion to number yields NaN
+test/chromeexperiments/voronoi.tidy.html:117:18: [maybe] Reading absent property (computed name)
+test/chromeexperiments/voronoi.tidy.html:122:14: [maybe] Conversion to number yields NaN
+test/chromeexperiments/voronoi.tidy.html:123:14: [maybe] Conversion to number yields NaN
+test/chromeexperiments/voronoi.tidy.html:244:15: [maybe] Conversion to number yields NaN
+test/chromeexperiments/voronoi.tidy.html:244:15: [maybe] Conversion to number yields NaN
+test/chromeexperiments/voronoi.tidy.html:397:5: [maybe] Reading absent property (computed name)
+test/chromeexperiments/voronoi.tidy.html:397:15: [maybe] Reading absent property (computed name)
+test/chromeexperiments/voronoi.tidy.html:397:17: [maybe] Reading absent property (computed name)
+test/chromeexperiments/voronoi.tidy.html:398:5: [maybe] Reading absent property (computed name)
+test/chromeexperiments/voronoi.tidy.html:398:16: [maybe] Reading absent property (computed name)
+test/chromeexperiments/voronoi.tidy.html:398:18: [maybe] Reading absent property (computed name)
+test/chromeexperiments/voronoi.tidy.html:403:77: [maybe] Reading absent property (computed name)
+test/chromeexperiments/voronoi.tidy.html:430:52: [maybe] Conversion to number yields NaN
+test/chromeexperiments/voronoi.tidy.html:430:52: [maybe] The variable cosmic has values with different types
+test/chromeexperiments/voronoi.tidy.html:431:10: [maybe] The variable cosmic has values with different types
+test/chromeexperiments/voronoi.tidy.html:484:8: [maybe] The variable exception has values with different types
+test/chromeexperiments/voronoi.tidy.html:485:5: [maybe] Converting object to string
+test/chromeexperiments/voronoi.tidy.html:485:11: [maybe] The variable exception has values with different types
+test/chromeexperiments/voronoi.tidy.html:311:13: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/voronoi.tidy.html:311:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/voronoi.tidy.html:313:13: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/voronoi.tidy.html:313:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/voronoi.tidy.html:314:3: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/voronoi.tidy.html:314:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/voronoi.tidy.html:322:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/voronoi.tidy.html:323:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/voronoi.tidy.html:324:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/voronoi.tidy.html:325:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/voronoi.tidy.html:326:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/voronoi.tidy.html:327:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/voronoi.tidy.html:328:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/voronoi.tidy.html:329:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/voronoi.tidy.html:332:42: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/voronoi.tidy.html:332:42: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/voronoi.tidy.html:333:43: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/voronoi.tidy.html:334:42: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/voronoi.tidy.html:334:42: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/voronoi.tidy.html:335:40: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/voronoi.tidy.html:335:40: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/voronoi.tidy.html:336:44: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/voronoi.tidy.html:338:43: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/voronoi.tidy.html:338:43: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/voronoi.tidy.html:339:41: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/voronoi.tidy.html:339:41: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/voronoi.tidy.html:340:43: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/voronoi.tidy.html:341:41: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/voronoi.tidy.html:342:48: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/voronoi.tidy.html:342:65: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/voronoi.tidy.html:343:44: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/voronoi.tidy.html:346:44: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/voronoi.tidy.html:346:44: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/voronoi.tidy.html:347:44: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/voronoi.tidy.html:349:44: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/voronoi.tidy.html:350:44: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/voronoi.tidy.html:352:55: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/voronoi.tidy.html:352:81: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/voronoi.tidy.html:353:68: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/voronoi.tidy.html:353:68: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/voronoi.tidy.html:353:80: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/voronoi.tidy.html:353:80: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/voronoi.tidy.html:354:70: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/voronoi.tidy.html:354:70: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/voronoi.tidy.html:354:82: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/voronoi.tidy.html:354:82: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/voronoi.tidy.html:355:67: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/voronoi.tidy.html:355:79: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/voronoi.tidy.html:371:48: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/voronoi.tidy.html:371:65: [info] 'this' refers to multiple abstract objects, which may cause loss of precision

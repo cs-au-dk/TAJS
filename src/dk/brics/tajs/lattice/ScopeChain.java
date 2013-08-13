@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Aarhus University
+ * Copyright 2009-2013 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -327,5 +327,17 @@ public final class ScopeChain {
 				};
 			};
 		};
+	}
+	
+	/**
+	 * Returns the set of object labels appearing in the given scope chain.
+	 */
+	public static Set<ObjectLabel> getObjectLabels(ScopeChain scope) {
+		if (scope == null)
+			return java.util.Collections.emptySet();
+		Set<ObjectLabel> objlabels = newSet();
+		for (Set<ObjectLabel> ls : ScopeChain.iterable(scope))
+			objlabels.addAll(ls);
+		return objlabels;
 	}
 }

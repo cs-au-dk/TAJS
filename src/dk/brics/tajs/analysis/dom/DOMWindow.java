@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Aarhus University
+ * Copyright 2009-2013 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -37,7 +37,6 @@ import dk.brics.tajs.analysis.uneval.UnevalTools;
 import dk.brics.tajs.flowgraph.FlowGraph;
 import dk.brics.tajs.flowgraph.FlowGraphFragment;
 import dk.brics.tajs.flowgraph.jsnodes.CallNode;
-import dk.brics.tajs.flowgraph.jsnodes.DeclareFunctionNode;
 import dk.brics.tajs.js2flowgraph.RhinoASTToFlowgraph;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.ObjectLabel.Kind;
@@ -204,8 +203,8 @@ public class DOMWindow {
 		 */
 		s.newObject(JSON);
 		s.writeInternalPrototype(JSON, Value.makeObject(InitialStateBuilder.OBJECT_PROTOTYPE));
-		createDOMProperty(s, WINDOW, "JSON", Value.makeObject(JSON)); // XXX: DOMSpec.LEVEL_0?
-		createDOMFunction(s, JSON, DOMObjects.WINDOW_JSON_PARSE, "parse", 1); // XXX: DOMSpec.LEVEL_0?
+		createDOMProperty(s, WINDOW, "JSON", Value.makeObject(JSON)); // TODO: DOMSpec.LEVEL_0?
+		createDOMFunction(s, JSON, DOMObjects.WINDOW_JSON_PARSE, "parse", 1); // TODO: DOMSpec.LEVEL_0?
 	}
 
 	public static Value evaluate(DOMObjects nativeObject, final CallInfo call, final State s, Solver.SolverInterface c) {

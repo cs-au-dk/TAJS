@@ -1,0 +1,10 @@
+test/v8tests/string-compare-alignment.js:44:3: [definite] ReferenceError, reading absent variable assertTrue
+test/v8tests/string-compare-alignment.js:41:5: [definite] The variable first_time is never used
+test/v8tests/string-compare-alignment.js:43:10: [definite] The variable x is never used
+test/v8tests/string-compare-alignment.js:44:14: [definite] Unreachable code
+test/v8tests/string-compare-alignment.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/string-compare-alignment.js:44:3]
+test/v8tests/string-compare-alignment.js:34:10: [maybe] Converting primitive string to object
+test/v8tests/string-compare-alignment.js:35:10: [maybe] Converting primitive string to object
+test/v8tests/string-compare-alignment.js:38:1: [info] Writing to unknown property that may cause loss of precision
+test/v8tests/string-compare-alignment.js:39:1: [info] Writing to unknown property that may cause loss of precision
+test/v8tests/string-compare-alignment.js:43:1: [info] Reading from unknown property that may cause loss of precision

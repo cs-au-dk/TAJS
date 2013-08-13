@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Aarhus University
+ * Copyright 2009-2013 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -33,6 +33,7 @@ import dk.brics.tajs.flowgraph.FlowGraph;
 import dk.brics.tajs.flowgraph.Function;
 import dk.brics.tajs.flowgraph.jsnodes.CallNode;
 import dk.brics.tajs.util.AnalysisException;
+import dk.brics.tajs.util.Pair;
 import dk.brics.tajs.util.Strings;
 
 /**
@@ -45,12 +46,13 @@ public class CallGraph<BlockStateType extends IBlockState<BlockStateType, ?, Cal
 	private static Logger logger = Logger.getLogger(CallGraph.class); 
 
 	/**
-	 * Map from callee to callers.
+	 * Map from (callee entry, callee context) to set of ((caller node, caller context), edge context).
 	 */
-	private Map<BlockAndContext<CallContextType>,Set<NodeAndContext<CallContextType>>> call_sources; // default is empty maps
+	private Map<BlockAndContext<CallContextType>,Set<Pair<NodeAndContext<CallContextType>,CallContextType>>> call_sources; // default is empty maps
 	
 	/**
-	 * Map from caller to callee to call edge info.
+	 * Map from (caller node, caller context) to (callee entry, edge context) to call edge info.
+	 * Note that this map uses edge contexts, not callee contexts.
 	 */
 	private Map<NodeAndContext<CallContextType>,Map<BlockAndContext<CallContextType>,CallEdgeType>> call_edge_info; // default is empty maps
 	
@@ -74,36 +76,43 @@ public class CallGraph<BlockStateType extends IBlockState<BlockStateType, ?, Cal
 	 * Adds an edge from the given call node to the given function.
 	 * @return the edge state delta
 	 */
-	public BlockStateType addTarget(AbstractNode caller, CallContextType caller_context, BasicBlock callee, CallContextType callee_context, 
-			 CallEdgeType edge, SolverSynchronizer sync) {
-		registerBlockContext(callee, callee_context);
+	public BlockStateType addTarget(AbstractNode caller, CallContextType caller_context, BasicBlock callee, CallContextType edge_context, 
+			 BlockStateType edge_state, SolverSynchronizer sync, IAnalysis<BlockStateType, ?, CallEdgeType, ?, ?> analysis) {
+        BlockStateType edge_state_diff = edge_state.clone();
 		NodeAndContext<CallContextType> nc = new NodeAndContext<>(caller, caller_context);
-		BlockAndContext<CallContextType> fc = new BlockAndContext<>(callee, callee_context);
-		// update call source map
-		addToMapSet(call_sources, fc, nc);
-		// update call edge info map
 		Map<BlockAndContext<CallContextType>,CallEdgeType> mb = call_edge_info.get(nc);
 		if (mb == null) {
 			mb = newMap();
 			call_edge_info.put(nc, mb);
 		}
-		BlockStateType edge_state_diff = edge.getState().clone();
-		CallEdgeType old_call_edge = mb.get(fc); // old_call_edge state must be subsumed by the new edge state *modulo recovery operations*
-		if (old_call_edge == null) {
+		BlockAndContext<CallContextType> fc = new BlockAndContext<>(callee, edge_context);
+		CallEdgeType call_edge = mb.get(fc); // old call edge state must be subsumed by the new edge state *modulo recovery operations*
+		if (call_edge == null) {
 			// new edge
-			mb.put(fc, edge); 
+			mb.put(fc, analysis.makeCallEdge(edge_state)); 
 			if (sync != null && isOrdinaryCallEdge(callee))
 				sync.callEdgeAdded(caller.getBlock().getFunction(), callee.getFunction());
 		} else {
-			// edge already exists, find the diff and overwrite the state
-			edge_state_diff.remove(old_call_edge.getState()); // comment out this line to disable storing only the diff at call edges
-			// TODO: new option to disable state diff at edge states?
-			old_call_edge.setState(edge.getState());
+			// edge already exists, find the diff and overwrite the edge state
+			edge_state_diff.remove(call_edge.getState()); 
+			call_edge.setState(edge_state);
 		}
 		if (logger.isDebugEnabled()) 
-			logger.debug((old_call_edge == null ? "Adding" : "Updating") + " call edge from node " + caller.getIndex() + " to " +
-					(isOrdinaryCallEdge(callee) ? "function " : "for-in body ") + callee.getIndex() + " context " + callee_context);
-		return edge_state_diff;
+			logger.debug((call_edge == null ? "adding" : "updating") + " call edge from node " + caller.getIndex() + " to " +
+					(isOrdinaryCallEdge(callee) ? "function " : "for-in body ") + callee.getIndex() + " context " + edge_context);
+		return edge_state_diff; // TODO: optionally use edge_state instead of edge_state_diff?
+	}
+	
+	/**
+	 * Adds a reverse edge.
+	 * Also registers the callee and callee_context.
+	 */
+	public void addSource(AbstractNode caller, CallContextType caller_context, BasicBlock callee, CallContextType callee_context,
+			CallContextType edge_context) {
+		registerBlockContext(callee, callee_context);
+		NodeAndContext<CallContextType> nc = new NodeAndContext<>(caller, caller_context);
+		BlockAndContext<CallContextType> fc = new BlockAndContext<>(callee, callee_context);
+		addToMapSet(call_sources, fc, Pair.make(nc, edge_context));
 	}
 	
 	/**
@@ -133,10 +142,10 @@ public class CallGraph<BlockStateType extends IBlockState<BlockStateType, ?, Cal
 	}
 	
 	/**
-	 * Returns the call nodes and caller contexts that have the given basic block as target for a given callee context.
+	 * Returns the call nodes, caller contexts, and edge contexts that have the given basic block as target for a given callee context.
 	 */
-	public Set<NodeAndContext<CallContextType>> getSources(BasicBlock b, CallContextType callee_context) {
-		Set<NodeAndContext<CallContextType>> s = call_sources.get(new BlockAndContext<>(b, callee_context));
+	public Set<Pair<NodeAndContext<CallContextType>,CallContextType>> getSources(BasicBlock b, CallContextType callee_context) {
+		Set<Pair<NodeAndContext<CallContextType>,CallContextType>> s = call_sources.get(new BlockAndContext<>(b, callee_context));
 		if (s == null)
 			return Collections.emptySet();
 		return s;
@@ -145,16 +154,22 @@ public class CallGraph<BlockStateType extends IBlockState<BlockStateType, ?, Cal
 	/**
 	 * Returns the specified call edge info.
 	 */
-	public CallEdgeType getCallEdge(AbstractNode caller, CallContextType caller_context, BasicBlock callee, CallContextType callee_context) {
-		NodeAndContext<CallContextType> nc = new NodeAndContext<>(caller, caller_context);
-		Map<BlockAndContext<CallContextType>,CallEdgeType> mb = call_edge_info.get(nc);
-		if (mb == null)
-			throw new AnalysisException("No edge from " + caller + " in context " + caller_context + " to " + callee.getIndex() + " in context " + callee_context);
-		BlockAndContext<CallContextType> fc = new BlockAndContext<>(callee, callee_context);
-		CallEdgeType b = mb.get(fc);
+	public CallEdgeType getCallEdge(AbstractNode caller, CallContextType caller_context, BasicBlock callee, CallContextType edge_context) {
+		Map<BlockAndContext<CallContextType>, CallEdgeType> mb = getCallEdges(caller, caller_context);
+		CallEdgeType b = mb.get(new BlockAndContext<>(callee, edge_context));
 		if (b == null)
 			throw new AnalysisException("No such edge!?");
 		return b;
+	}
+
+	/**
+	 * Returns the specified map from (callee entry, edge context) to call edge info.
+	 */
+	public Map<BlockAndContext<CallContextType>, CallEdgeType> getCallEdges(AbstractNode caller, CallContextType caller_context) {
+		Map<BlockAndContext<CallContextType>,CallEdgeType> mb = call_edge_info.get(new NodeAndContext<>(caller, caller_context));
+		if (mb == null)
+			throw new AnalysisException("No such edge!?");
+		return mb;
 	}
 	
 	/**
@@ -176,7 +191,7 @@ public class CallGraph<BlockStateType extends IBlockState<BlockStateType, ?, Cal
 	
 	private Map<Function,Set<AbstractNode>> getReverseEdgesIgnoreContexts() {
 		Map<Function,Set<AbstractNode>> m = newMap();
-		for (Map.Entry<BlockAndContext<CallContextType>,Set<NodeAndContext<CallContextType>>> me : call_sources.entrySet()) {
+		for (Map.Entry<BlockAndContext<CallContextType>,Set<Pair<NodeAndContext<CallContextType>,CallContextType>>> me : call_sources.entrySet()) {
 			BasicBlock b = me.getKey().getBlock();
 			if (isOrdinaryCallEdge(b)) {
 				Function f = b.getFunction();
@@ -185,8 +200,8 @@ public class CallGraph<BlockStateType extends IBlockState<BlockStateType, ?, Cal
 					s = newSet();
 					m.put(f, s);
 				}
-				for (NodeAndContext<CallContextType> nc : me.getValue())
-					s.add(nc.getNode());
+				for (Pair<NodeAndContext<CallContextType>,CallContextType> nc : me.getValue())
+					s.add(nc.getFirst().getNode());
 			}
 		}
 		return m;

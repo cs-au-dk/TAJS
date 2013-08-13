@@ -1,0 +1,60 @@
+test/chromeexperiments/apophis.tidy.html:1437:13: [definite] ReferenceError, reading absent variable LOADING
+test/chromeexperiments/apophis.tidy.html:76:3: [definite] The conditional expression is always true
+test/chromeexperiments/apophis.tidy.html:99:1: [definite] Unreachable function writeText
+test/chromeexperiments/apophis.tidy.html:150:1: [definite] Unreachable function drawMoon
+test/chromeexperiments/apophis.tidy.html:160:21: [definite] Unreachable function
+test/chromeexperiments/apophis.tidy.html:164:1: [definite] Unreachable function trackMouse
+test/chromeexperiments/apophis.tidy.html:171:1: [definite] Unreachable function picLoadInit
+test/chromeexperiments/apophis.tidy.html:207:1: [definite] Unreachable function resetButton
+test/chromeexperiments/apophis.tidy.html:231:1: [definite] Unreachable function gameOver
+test/chromeexperiments/apophis.tidy.html:242:1: [definite] Unreachable function getReady
+test/chromeexperiments/apophis.tidy.html:253:23: [definite] Unreachable function
+test/chromeexperiments/apophis.tidy.html:259:23: [definite] Unreachable function
+test/chromeexperiments/apophis.tidy.html:269:1: [definite] Unreachable function isImageOk
+test/chromeexperiments/apophis.tidy.html:283:1: [definite] Unreachable function doReactivate
+test/chromeexperiments/apophis.tidy.html:288:30: [definite] Unreachable function
+test/chromeexperiments/apophis.tidy.html:298:1: [definite] Unreachable function showInfo
+test/chromeexperiments/apophis.tidy.html:308:1: [definite] Unreachable function togglePaused
+test/chromeexperiments/apophis.tidy.html:328:1: [definite] Unreachable function initScreen
+test/chromeexperiments/apophis.tidy.html:368:1: [definite] Unreachable function initLive
+test/chromeexperiments/apophis.tidy.html:399:1: [definite] Unreachable function initShields
+test/chromeexperiments/apophis.tidy.html:417:1: [definite] Unreachable function drawShields
+test/chromeexperiments/apophis.tidy.html:434:1: [definite] Unreachable function tankExplosion
+test/chromeexperiments/apophis.tidy.html:449:31: [definite] Unreachable function
+test/chromeexperiments/apophis.tidy.html:455:1: [definite] Unreachable function fireMeteor
+test/chromeexperiments/apophis.tidy.html:482:1: [definite] Unreachable function maintainMeteor
+test/chromeexperiments/apophis.tidy.html:487:31: [definite] Unreachable function
+test/chromeexperiments/apophis.tidy.html:573:30: [definite] Unreachable function
+test/chromeexperiments/apophis.tidy.html:579:1: [definite] Unreachable function doRain
+test/chromeexperiments/apophis.tidy.html:596:21: [definite] Unreachable function
+test/chromeexperiments/apophis.tidy.html:600:1: [definite] Unreachable function fireMissile
+test/chromeexperiments/apophis.tidy.html:623:1: [definite] Unreachable function maintainMissile
+test/chromeexperiments/apophis.tidy.html:628:23: [definite] Unreachable function
+test/chromeexperiments/apophis.tidy.html:674:31: [definite] Unreachable function
+test/chromeexperiments/apophis.tidy.html:679:1: [definite] Unreachable function puffer
+test/chromeexperiments/apophis.tidy.html:724:1: [definite] Unreachable function collide
+test/chromeexperiments/apophis.tidy.html:747:1: [definite] Unreachable function maintainPuff
+test/chromeexperiments/apophis.tidy.html:764:25: [definite] Unreachable function
+test/chromeexperiments/apophis.tidy.html:770:31: [definite] Unreachable function
+test/chromeexperiments/apophis.tidy.html:775:1: [definite] Unreachable function explosion
+test/chromeexperiments/apophis.tidy.html:793:23: [definite] Unreachable function
+test/chromeexperiments/apophis.tidy.html:798:1: [definite] Unreachable function maintainExplosion
+test/chromeexperiments/apophis.tidy.html:815:25: [definite] Unreachable function
+test/chromeexperiments/apophis.tidy.html:821:31: [definite] Unreachable function
+test/chromeexperiments/apophis.tidy.html:827:1: [definite] Unreachable function moveTank
+test/chromeexperiments/apophis.tidy.html:865:1: [definite] Unreachable function waveGrass1
+test/chromeexperiments/apophis.tidy.html:889:21: [definite] Unreachable function
+test/chromeexperiments/apophis.tidy.html:891:1: [definite] Unreachable function waveGrass2
+test/chromeexperiments/apophis.tidy.html:915:21: [definite] Unreachable function
+test/chromeexperiments/apophis.tidy.html:919:1: [definite] Unreachable function cloudJiggler
+test/chromeexperiments/apophis.tidy.html:925:21: [definite] Unreachable function
+test/chromeexperiments/apophis.tidy.html:929:1: [definite] Unreachable function moveObjTo
+test/chromeexperiments/apophis.tidy.html:940:2: [definite] Unreachable function
+test/chromeexperiments/apophis.tidy.html:940:2: [definite] Unreachable function
+test/chromeexperiments/apophis.tidy.html:940:2: [definite] Unreachable function
+test/chromeexperiments/apophis.tidy.html:1112:2: [definite] Unreachable function
+test/chromeexperiments/apophis.tidy.html:1121:2: [definite] Unreachable function
+test/chromeexperiments/apophis.tidy.html:1124:2: [definite] Unreachable function
+test/chromeexperiments/apophis.tidy.html:1433:2: [definite] Unreachable function
+test/chromeexperiments/apophis.tidy.html:1437:22: [definite] Unreachable code
+test/chromeexperiments/apophis.tidy.html:1432: [maybe] Uncaught exception, constructed at [test/chromeexperiments/apophis.tidy.html:1437:13]

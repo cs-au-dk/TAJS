@@ -1,0 +1,5 @@
+test/v8tests/try_catch_scopes.js:38:5: [definite] ReferenceError, reading absent variable assertEquals
+test/v8tests/try_catch_scopes.js:38:18: [definite] Unreachable code
+test/v8tests/try_catch_scopes.js:40:3: [definite] Unreachable code
+test/v8tests/try_catch_scopes.js:42:1: [definite] Unreachable code
+test/v8tests/try_catch_scopes.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/try_catch_scopes.js:38:5]

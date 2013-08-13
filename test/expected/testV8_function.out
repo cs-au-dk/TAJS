@@ -1,0 +1,11 @@
+test/v8tests/function.js:29:1: [definite] ReferenceError, reading absent variable assertTrue
+test/v8tests/function.js:28:5: [definite] The variable f is never used
+test/v8tests/function.js:29:19: [definite] Unreachable code
+test/v8tests/function.js:47:5: [definite] The variable x is never used
+test/v8tests/function.js:56:5: [definite] The variable anonymous is never used
+test/v8tests/function.js:74:26: [definite] Unreachable function
+test/v8tests/function.js:75:5: [definite] The variable y is never used
+test/v8tests/function.js:75:26: [definite] Unreachable function
+test/v8tests/function.js:76:5: [definite] The variable z is never used
+test/v8tests/function.js:76:26: [definite] Unreachable function
+test/v8tests/function.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/function.js:29:1]

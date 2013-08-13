@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Aarhus University
+ * Copyright 2009-2013 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,7 +19,6 @@ package dk.brics.tajs.flowgraph.jsnodes;
 import dk.brics.tajs.flowgraph.BasicBlock;
 import dk.brics.tajs.flowgraph.Function;
 import dk.brics.tajs.flowgraph.SourceLocation;
-import dk.brics.tajs.options.Options;
 import dk.brics.tajs.util.AnalysisException;
 
 /**
@@ -81,7 +80,7 @@ public class DeclareFunctionNode extends LoadNode {
     public void check(BasicBlock b) {
         if (f == null)
             throw new AnalysisException("Declare function node with null function: " + toString());
-        if (!Options.isOldFlowgraphBuilderEnabled() && !expression && getResultRegister() != NO_VALUE)
+        if (!expression && getResultRegister() != NO_VALUE)
             throw new AnalysisException("Declare function node with nonsense result register: " + toString());
     }
 }

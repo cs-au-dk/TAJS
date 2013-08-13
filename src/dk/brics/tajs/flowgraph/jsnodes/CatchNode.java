@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Aarhus University
+ * Copyright 2009-2013 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -44,7 +44,7 @@ public class CatchNode extends Node {
 	 * @param scopeobj_reg The object to be added to the scope chain when entering the catch block.
      * @param location The source location.
 	 */
-	public CatchNode(String varname, int scopeobj_reg, SourceLocation location) { // XXX: javadoc for scopeobj_reg?
+	public CatchNode(String varname, int scopeobj_reg, SourceLocation location) { // TODO: javadoc for scopeobj_reg?
 		super(location);
 		this.varname = varname;
 		this.scopeobj_reg = scopeobj_reg;

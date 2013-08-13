@@ -1,0 +1,11 @@
+test/v8tests/greedy.js:47:3: [definite] ReferenceError, reading absent variable assertEquals
+test/v8tests/greedy.js:32:3: [definite] The conditional expression is always false
+test/v8tests/greedy.js:40:3: [definite] The conditional expression is always true
+test/v8tests/greedy.js:31:15: [definite] The variable f1 is never used
+test/v8tests/greedy.js:33:9: [definite] The variable f2 is never used
+test/v8tests/greedy.js:44:1: [definite] The variable expected is never used
+test/v8tests/greedy.js:45:7: [definite] The variable i is never used
+test/v8tests/greedy.js:46:7: [definite] The variable r is never used
+test/v8tests/greedy.js:47:16: [definite] Unreachable code
+test/v8tests/greedy.js:52:1: [definite] Unreachable code
+test/v8tests/greedy.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/greedy.js:47:3]

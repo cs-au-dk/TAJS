@@ -1,0 +1,213 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+
+
+    
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="description" content="JavaScript controlled particles follow the mouse generating a smooth pattern. The HTML5 canvas element is used for visual output.">
+		<meta name="keywords" content="hakim, elhattab, hakim el hattab, hakim elhattab, interactive, developer, flash, html5, canvas, web, experiments">
+		<meta name="author" content="Hakim El Hattab">
+		<meta http-equiv="X-UA-Compatible" content="chrome=1">
+	    		
+        <title>Trail - an experiment with particle movement patterns using HTML5.</title>
+		
+		<style type="text/css"> html{color:#000;background:#222222;}a{cursor:pointer;}html,body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0;}table{border-collapse:collapse;border-spacing:0;}fieldset,img{border:0;}address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:normal;}li{list-style:none;}caption,th{text-align:left;}q:before,q:after{content:'';}abbr,acronym {border:0;font-variant:normal;}sup {vertical-align:text-top;}sub {vertical-align:text-bottom;}input,textarea,select{font-family:inherit;font-size:inherit;font-weight:inherit;outline-style:none;outline-width:0pt;}legend{color:#000;}a:focus,object,h1,h2,h3,h4,h5,h6{-moz-outline-style: none; border:0px;}strong {font-weight: bold;}@font-face { font-family: Delicious; font-weight: bold; src: url('../../../assets/fonts/Delicious-Bold.otf'); }body {overflow: hidden;font-family: Georgia, Helvetica, Arial, sans-serif;color: #333333;font-size: 11px;}a, a:hover {transition: all .08s linear;-o-transition: all .08s linear;-moz-transition: all .08s linear;-webkit-transition: all .08s linear;padding: 1px;}p.noCanvas {color: #999999;font-size: 24px;text-align: center;margin-top: 150px;}#panel {position: absolute; margin: 5px;padding: 5px;z-index: 99;background-color: #FFFECF;border: 1px solid #e1e0af;}#panel a {color: #333333;background-color: #FFFECF;text-decoration: underline;}#panel a:hover {color: #FFFECF;background-color: #333333;}#panel a.versionLink {padding: 1px;text-decoration: underline;}#panel a.versionLink.selected {color: #888888;text-decoration: none;}#panel p {padding: 0px 5px 5px 5px;line-height: 1.6em;}#panel h2 {font-size: 20px;font-weight: bold;font-family: Delicious, Helvetica, sans-serif;padding: 5px 5px 5px 5px;}#chromeBadge {position: absolute; bottom: 0; right: 0;padding: 4px;}#sharing {background-color: #FFFECF;position: absolute; top: 0;right: 0;margin: 5px;padding: 7px 0 4px 10px;z-index: 98;border: 1px solid #e1e0af;}#facebook_button {float: left;}#retweet_button {float: left;}#flattr_button {float: right;margin: 1px 10px 0 4px;}			
+		</style>
+
+<style type="text/css">
+html, body {
+	background-color: #333333;
+}
+canvas {
+	background-color: #000000;
+	border: 6px #444444 solid;
+}
+</style>
+	
+    </head><body>
+		<div id="panel">
+			<h2><a href="http://hakim.se/experiments/">Experiments</a> / Trail / 03</h2>
+			<p>Click and hold to increase the radius.<br>If you liked this you should check out:</p>
+			<div style="padding: 5px;"><a href="http://hakim.se/experiments/html5/trail/01/" class="versionLink">Trail 01</a> - <a href="http://hakim.se/experiments/html5/trail/02/" class="versionLink">Trail 02</a> - <a href="http://hakim.se/experiments/html5/trail/03/" class="versionLink selected">Trail 03</a></div>					</div>
+		
+<canvas style="position: absolute; left: 128.5px; top: 57.5px;" height="600" width="900" id="world"><p class="noCanvas">You need a <a href="http://www.google.com/chrome">modern browser</a> to view this.</p></canvas>
+
+
+<script type="text/javascript">
+	
+	/**
+	 * With love.
+	 * http://hakim.se/experiments/
+	 * http://twitter.com/hakimel
+	 */
+	
+	var SCREEN_WIDTH = 900;
+	var SCREEN_HEIGHT = 600;
+	
+	var RADIUS = 110;
+	
+	var RADIUS_SCALE = 1;
+	var RADIUS_SCALE_MIN = 1;
+	var RADIUS_SCALE_MAX = 1.5;
+	
+	// The number of particles that are used to generate the trail
+	var QUANTITY = 25;
+
+	var canvas;
+	var context;
+	var particles;
+	
+	var mouseX = (window.innerWidth - SCREEN_WIDTH);
+	var mouseY = (window.innerHeight - SCREEN_HEIGHT);
+	var mouseIsDown = false;
+	
+	init();
+
+	function init() {
+
+		canvas = document.getElementById( 'world' );
+		
+		if (canvas && canvas.getContext) {
+			context = canvas.getContext('2d');
+			
+			// Register event listeners
+			document.addEventListener('mousemove', documentMouseMoveHandler, false);
+			document.addEventListener('mousedown', documentMouseDownHandler, false);
+			document.addEventListener('mouseup', documentMouseUpHandler, false);
+			canvas.addEventListener('touchstart', canvasTouchStartHandler, false);
+			canvas.addEventListener('touchmove', canvasTouchMoveHandler, false);
+			window.addEventListener('resize', windowResizeHandler, false);
+			
+			createParticles();
+			
+			windowResizeHandler();
+			
+			setInterval( loop, 1000 / 60 );
+		}
+	}
+
+	function createParticles() {
+		particles = [];
+		
+		for (var i = 0; i < QUANTITY; i++) {
+			var particle = {
+				position: { x: mouseX, y: mouseY },
+				shift: { x: mouseX, y: mouseY },
+				size: 1,
+				angle: 0,
+				speed: 0.01+Math.random()*0.04,
+				targetSize: 1,
+				fillColor: '#' + (Math.random() * 0x404040 + 0xaaaaaa | 0).toString(16),
+				orbit: RADIUS*.5 + (RADIUS * .5 * Math.random())
+			};
+			
+			particles.push( particle );
+		}
+	}
+
+	function documentMouseMoveHandler(event) {
+		mouseX = event.clientX - (window.innerWidth - SCREEN_WIDTH) * .5;
+		mouseY = event.clientY - (window.innerHeight - SCREEN_HEIGHT) * .5;
+	}
+	
+	function documentMouseDownHandler(event) {
+		mouseIsDown = true;
+	}
+	
+	function documentMouseUpHandler(event) {
+		mouseIsDown = false;
+	}
+
+	function canvasTouchStartHandler(event) {
+		if(event.touches.length == 1) {
+			event.preventDefault();
+
+			mouseX = event.touches[0].pageX - (window.innerWidth - SCREEN_WIDTH) * .5;
+			mouseY = event.touches[0].pageY - (window.innerHeight - SCREEN_HEIGHT) * .5;
+		}
+	}
+	
+	function canvasTouchMoveHandler(event) {
+		if(event.touches.length == 1) {
+			event.preventDefault();
+
+			mouseX = event.touches[0].pageX - (window.innerWidth - SCREEN_WIDTH) * .5;
+			mouseY = event.touches[0].pageY - (window.innerHeight - SCREEN_HEIGHT) * .5;
+		}
+	}
+	
+	function windowResizeHandler() {
+		//SCREEN_WIDTH = window.innerWidth;
+		//SCREEN_HEIGHT = window.innerHeight;
+		
+		canvas.width = SCREEN_WIDTH;
+		canvas.height = SCREEN_HEIGHT;
+		
+		canvas.style.position = 'absolute';
+		canvas.style.left = (window.innerWidth - SCREEN_WIDTH) * .5 + 'px';
+		canvas.style.top = (window.innerHeight - SCREEN_HEIGHT) * .5 + 'px';
+	}
+
+	function loop() {
+		
+		if( mouseIsDown ) {
+			// Scale upward to the max scale
+			RADIUS_SCALE += ( RADIUS_SCALE_MAX - RADIUS_SCALE ) * (0.02);
+		}
+		else {
+			// Scale downward to the min scale
+			RADIUS_SCALE -= ( RADIUS_SCALE - RADIUS_SCALE_MIN ) * (0.02);
+		}
+		
+		RADIUS_SCALE = Math.min( RADIUS_SCALE, RADIUS_SCALE_MAX );
+		
+		// Fade out the lines slowly by drawing a rectangle over the entire canvas
+		context.fillStyle = 'rgba(0,0,0,0.05)';
+   		context.fillRect(0, 0, context.canvas.width, context.canvas.height);
+		
+		for (i = 0, len = particles.length; i < len; i++) {
+			var particle = particles[i];
+			
+			var lp = { x: particle.position.x, y: particle.position.y };
+			
+			// Offset the angle to keep the spin going
+			particle.angle += particle.speed;
+			
+			// Follow mouse with some lag
+			particle.shift.x += ( mouseX - particle.shift.x) * (particle.speed);
+			particle.shift.y += ( mouseY - particle.shift.y) * (particle.speed);
+			
+			// Apply position
+			particle.position.x = particle.shift.x + Math.cos(i + particle.angle) * (particle.orbit*RADIUS_SCALE);
+			particle.position.y = particle.shift.y + Math.sin(i + particle.angle) * (particle.orbit*RADIUS_SCALE);
+			
+			// Limit to screen bounds
+			particle.position.x = Math.max( Math.min( particle.position.x, SCREEN_WIDTH ), 0 );
+			particle.position.y = Math.max( Math.min( particle.position.y, SCREEN_HEIGHT ), 0 );
+			
+			particle.size += ( particle.targetSize - particle.size ) * 0.05;
+			
+			// If we're at the target size, set a new one. Think of it like a regular day at work.
+			if( Math.round( particle.size ) == Math.round( particle.targetSize ) ) {
+				particle.targetSize = 1 + Math.random() * 7;
+			}
+			
+			context.beginPath();
+			context.fillStyle = particle.fillColor;
+			context.strokeStyle = particle.fillColor;
+			context.lineWidth = particle.size;
+			context.moveTo(lp.x, lp.y);
+			context.lineTo(particle.position.x, particle.position.y);
+			context.stroke();
+			context.arc(particle.position.x, particle.position.y, particle.size/2, 0, Math.PI*2, true);
+			context.fill();
+		}
+	}
+	
+	
+	
+	
+</script>
+		
+
+    </body></html>

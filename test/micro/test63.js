@@ -3,7 +3,7 @@
 var p = {gh: 32, gb: 10}
 //var sum = 0;
 
-for (x in p) {
+for (var x in p) {
 	dumpValue(x);
 //    sum = sum + x;
 }

@@ -1,0 +1,34 @@
+test/chromeexperiments/magnetic.tidy.html:106:9: [definite] The conditional expression is always true
+test/chromeexperiments/magnetic.tidy.html:106:13: [definite] The conditional expression is always true
+test/chromeexperiments/magnetic.tidy.html:282:36: [definite] Reading absent property width
+test/chromeexperiments/magnetic.tidy.html:282:58: [definite] Reading absent property height
+test/chromeexperiments/magnetic.tidy.html:46:9: [definite] The variable mouseIsDown is never used
+test/chromeexperiments/magnetic.tidy.html:206:5: [definite] The variable event is never used
+test/chromeexperiments/magnetic.tidy.html:161:23: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/magnetic.tidy.html:196:33: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/magnetic.tidy.html:211:13: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/magnetic.tidy.html:262:13: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/magnetic.tidy.html:262:34: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/magnetic.tidy.html:280:13: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/magnetic.tidy.html:281:33: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/magnetic.tidy.html:295:17: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/magnetic.tidy.html:305:42: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/magnetic.tidy.html:306:42: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/magnetic.tidy.html:335:51: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/magnetic.tidy.html:335:70: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/magnetic.tidy.html:356:17: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/magnetic.tidy.html:360:13: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/magnetic.tidy.html:26: [maybe] Uncaught exception, constructed at [test/chromeexperiments/magnetic.tidy.html:161:23, test/chromeexperiments/magnetic.tidy.html:196:33, test/chromeexperiments/magnetic.tidy.html:211:13, test/chromeexperiments/magnetic.tidy.html:262:13, test/chromeexperiments/magnetic.tidy.html:262:34, test/chromeexperiments/magnetic.tidy.html:280:13, test/chromeexperiments/magnetic.tidy.html:281:33, test/chromeexperiments/magnetic.tidy.html:295:17, test/chromeexperiments/magnetic.tidy.html:305:42, test/chromeexperiments/magnetic.tidy.html:306:42, test/chromeexperiments/magnetic.tidy.html:335:51, test/chromeexperiments/magnetic.tidy.html:335:70, test/chromeexperiments/magnetic.tidy.html:356:17, test/chromeexperiments/magnetic.tidy.html:360:13]
+test/chromeexperiments/magnetic.tidy.html:161:23: [maybe] Reading absent property (computed name)
+test/chromeexperiments/magnetic.tidy.html:194:22: [maybe] Reading absent property (computed name)
+test/chromeexperiments/magnetic.tidy.html:210:22: [maybe] Reading absent property (computed name)
+test/chromeexperiments/magnetic.tidy.html:262:13: [maybe] Reading absent property (computed name)
+test/chromeexperiments/magnetic.tidy.html:262:34: [maybe] Reading absent property (computed name)
+test/chromeexperiments/magnetic.tidy.html:280:13: [maybe] Reading absent property (computed name)
+test/chromeexperiments/magnetic.tidy.html:281:33: [maybe] Reading absent property (computed name)
+test/chromeexperiments/magnetic.tidy.html:282:13: [maybe] Conversion to number yields NaN
+test/chromeexperiments/magnetic.tidy.html:293:22: [maybe] Reading absent property (computed name)
+test/chromeexperiments/magnetic.tidy.html:305:42: [maybe] Reading absent property (computed name)
+test/chromeexperiments/magnetic.tidy.html:306:42: [maybe] Reading absent property (computed name)
+test/chromeexperiments/magnetic.tidy.html:323:24: [maybe] Reading absent property (computed name)
+test/chromeexperiments/magnetic.tidy.html:333:26: [maybe] Reading absent property (computed name)

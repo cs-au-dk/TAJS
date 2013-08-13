@@ -1,3 +1,0 @@
-test/html/html12.js:4: [info] Abstract value: "here"
-test/html/html12.js:6: [info] Abstract value: 34.0|[@<anonymous>#fun1]
-test/html/html12.js:2: [definite] Assigning an invalid event handler

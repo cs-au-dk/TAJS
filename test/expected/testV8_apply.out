@@ -1,0 +1,22 @@
+test/v8tests/apply.js:36:1: [definite] ReferenceError, reading absent variable assertTrue
+test/v8tests/apply.js:28:1: [definite] Unreachable function f0
+test/v8tests/apply.js:32:1: [definite] Unreachable function f1
+test/v8tests/apply.js:36:12: [definite] Unreachable code
+test/v8tests/apply.js:75:5: [definite] The variable arr is never used
+test/v8tests/apply.js:76:1: [definite] Unreachable function j
+test/v8tests/apply.js:81:5: [definite] The variable expect is never used
+test/v8tests/apply.js:82:10: [definite] The variable i is never used
+test/v8tests/apply.js:90:1: [definite] Unreachable function f
+test/v8tests/apply.js:100:1: [definite] Unreachable function s
+test/v8tests/apply.js:110:1: [definite] Unreachable function al
+test/v8tests/apply.js:115:10: [definite] The variable declaration j shadows a function
+test/v8tests/apply.js:115:10: [definite] The variable j is never used
+test/v8tests/apply.js:117:9: [definite] The variable a is never used
+test/v8tests/apply.js:120:5: [definite] Unreachable code
+test/v8tests/apply.js:123:11: [definite] The variable caught is never used
+test/v8tests/apply.js:129:9: [definite] Unreachable code
+test/v8tests/apply.js:139:5: [definite] The variable primes is never used
+test/v8tests/apply.js:141:1: [definite] Unreachable function isPrime
+test/v8tests/apply.js:160:5: [definite] The variable same_primes is never used
+test/v8tests/apply.js:169:5: [definite] The variable holey is never used
+test/v8tests/apply.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/apply.js:36:1]

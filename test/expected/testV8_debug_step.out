@@ -1,0 +1,7 @@
+test/v8tests/debug-step.js:30:9: [definite] ReferenceError, reading absent variable debug
+test/v8tests/debug-step.js:30:9: [definite] Unreachable code
+test/v8tests/debug-step.js:36:5: [definite] The variable bp1 is never used
+test/v8tests/debug-step.js:36:10: [definite] The variable bp2 is never used
+test/v8tests/debug-step.js:38:1: [definite] Unreachable function listener
+test/v8tests/debug-step.js:58:1: [definite] Unreachable function f
+test/v8tests/debug-step.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/debug-step.js:30:9]

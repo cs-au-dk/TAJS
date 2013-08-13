@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Aarhus University
+ * Copyright 2009-2013 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -64,6 +64,10 @@ public class Message implements Comparable<Message> {
 	 * Severity level.
 	 */
 	public enum Severity { // order of declarations in this enum determines their sorting order
+		/**
+		 * Errors and missing features in TAJS which does not require the analysis to throw an exception immediately  
+		 */
+		TAJS_ERROR,
 		
 		/**
 		 * Important, an runtime error is generated if this situation occurs.

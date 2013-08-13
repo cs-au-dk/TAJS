@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Aarhus University
+ * Copyright 2009-2013 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -74,11 +74,10 @@ public interface IAnalysisLatticeElement<BlockStateType extends IBlockState<Bloc
 	/**
 	 * Propagates s into the entry state of b in call context c.
 	 * The given state may be modified by the operation.
-	 * @param trim if set, trim the state while joining
-	 * @param overwrite if set, overwrite the existing state
+	 * @param localize if set, localize the state while joining
 	 * @return a merge result, or null if no new flow added.
 	 */
-	public MergeResult propagate(BlockStateType s, BasicBlock b, CallContextType c, boolean trim, boolean overwrite);
+	public MergeResult propagate(BlockStateType s, BasicBlock b, CallContextType c, boolean localize);
 	
 	/**
 	 * Checks that all states are consistent.

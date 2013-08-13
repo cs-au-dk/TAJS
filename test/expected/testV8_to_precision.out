@@ -1,0 +1,76 @@
+test/v8tests/to-precision.js:30:12: [maybe] Converting primitive number to object
+test/v8tests/to-precision.js:32:12: [maybe] Converting primitive number to object
+test/v8tests/to-precision.js:34:12: [maybe] Converting primitive number to object
+test/v8tests/to-precision.js:39:12: [maybe] Converting primitive number to object
+test/v8tests/to-precision.js:41:12: [maybe] Converting primitive number to object
+test/v8tests/to-precision.js:43:12: [maybe] Converting primitive number to object
+test/v8tests/to-precision.js:47:13: [maybe] Converting primitive number to object
+test/v8tests/to-precision.js:49:13: [maybe] Converting primitive number to object
+test/v8tests/to-precision.js:51:13: [maybe] Converting primitive number to object
+test/v8tests/to-precision.js:56:13: [maybe] Converting primitive number to object
+test/v8tests/to-precision.js:58:13: [maybe] Converting primitive number to object
+test/v8tests/to-precision.js:60:13: [maybe] Converting primitive number to object
+test/v8tests/to-precision.js:66:12: [maybe] Converting primitive number to object
+test/v8tests/to-precision.js:68:12: [maybe] Converting primitive number to object
+test/v8tests/to-precision.js:70:12: [maybe] Converting primitive number to object
+test/v8tests/to-precision.js:73:13: [maybe] Converting primitive number to object
+test/v8tests/to-precision.js:75:13: [maybe] Converting primitive number to object
+test/v8tests/to-precision.js:77:13: [maybe] Converting primitive number to object
+test/v8tests/to-precision.js:83:12: [maybe] Converting primitive number to object
+test/v8tests/to-precision.js:85:12: [maybe] Converting primitive number to object
+test/v8tests/to-precision.js:87:12: [maybe] Converting primitive number to object
+test/v8tests/to-precision.js:93:13: [maybe] Converting primitive number to object
+test/v8tests/to-precision.js:95:13: [maybe] Converting primitive number to object
+test/v8tests/to-precision.js:97:13: [maybe] Converting primitive number to object
+test/v8tests/to-precision.js:103:12: [maybe] Converting primitive number to object
+test/v8tests/to-precision.js:105:12: [maybe] Converting primitive number to object
+test/v8tests/to-precision.js:107:12: [maybe] Converting primitive number to object
+test/v8tests/to-precision.js:109:12: [maybe] Converting primitive number to object
+test/v8tests/to-precision.js:111:12: [maybe] Converting primitive number to object
+test/v8tests/to-precision.js:113:12: [maybe] Converting primitive number to object
+test/v8tests/to-precision.js:115:12: [maybe] Converting primitive number to object
+test/v8tests/to-precision.js:121:13: [maybe] Converting primitive number to object
+test/v8tests/to-precision.js:123:13: [maybe] Converting primitive number to object
+test/v8tests/to-precision.js:125:13: [maybe] Converting primitive number to object
+test/v8tests/to-precision.js:127:13: [maybe] Converting primitive number to object
+test/v8tests/to-precision.js:129:13: [maybe] Converting primitive number to object
+test/v8tests/to-precision.js:131:13: [maybe] Converting primitive number to object
+test/v8tests/to-precision.js:133:13: [maybe] Converting primitive number to object
+test/v8tests/to-precision.js:30:1: [info] Abstract value: "1e+27"
+test/v8tests/to-precision.js:32:1: [info] Abstract value: "1.2e+27"
+test/v8tests/to-precision.js:34:1: [info] Abstract value: "1.23e+27"
+test/v8tests/to-precision.js:39:1: [info] Abstract value: "1.2345e+27"
+test/v8tests/to-precision.js:41:1: [info] Abstract value: "1.23450e+27"
+test/v8tests/to-precision.js:43:1: [info] Abstract value: "1.234500e+27"
+test/v8tests/to-precision.js:47:1: [info] Abstract value: "-1e+27"
+test/v8tests/to-precision.js:49:1: [info] Abstract value: "-1.2e+27"
+test/v8tests/to-precision.js:51:1: [info] Abstract value: "-1.23e+27"
+test/v8tests/to-precision.js:56:1: [info] Abstract value: "-1.2345e+27"
+test/v8tests/to-precision.js:58:1: [info] Abstract value: "-1.23450e+27"
+test/v8tests/to-precision.js:60:1: [info] Abstract value: "-1.234500e+27"
+test/v8tests/to-precision.js:66:1: [info] Abstract value: "7"
+test/v8tests/to-precision.js:68:1: [info] Abstract value: "7.0"
+test/v8tests/to-precision.js:70:1: [info] Abstract value: "7.00"
+test/v8tests/to-precision.js:73:1: [info] Abstract value: "-7"
+test/v8tests/to-precision.js:75:1: [info] Abstract value: "-7.0"
+test/v8tests/to-precision.js:77:1: [info] Abstract value: "-7.00"
+test/v8tests/to-precision.js:83:1: [info] Abstract value: "91"
+test/v8tests/to-precision.js:85:1: [info] Abstract value: "91.0"
+test/v8tests/to-precision.js:87:1: [info] Abstract value: "91.00"
+test/v8tests/to-precision.js:93:1: [info] Abstract value: "-91"
+test/v8tests/to-precision.js:95:1: [info] Abstract value: "-91.0"
+test/v8tests/to-precision.js:97:1: [info] Abstract value: "-91.00"
+test/v8tests/to-precision.js:103:1: [info] Abstract value: "91"
+test/v8tests/to-precision.js:105:1: [info] Abstract value: "91.1"
+test/v8tests/to-precision.js:107:1: [info] Abstract value: "91.12"
+test/v8tests/to-precision.js:109:1: [info] Abstract value: "91.123"
+test/v8tests/to-precision.js:111:1: [info] Abstract value: "91.1234"
+test/v8tests/to-precision.js:113:1: [info] Abstract value: "91.12340"
+test/v8tests/to-precision.js:115:1: [info] Abstract value: "91.123400"
+test/v8tests/to-precision.js:121:1: [info] Abstract value: "-91"
+test/v8tests/to-precision.js:123:1: [info] Abstract value: "-91.1"
+test/v8tests/to-precision.js:125:1: [info] Abstract value: "-91.12"
+test/v8tests/to-precision.js:127:1: [info] Abstract value: "-91.123"
+test/v8tests/to-precision.js:129:1: [info] Abstract value: "-91.1234"
+test/v8tests/to-precision.js:131:1: [info] Abstract value: "-91.12340"
+test/v8tests/to-precision.js:133:1: [info] Abstract value: "-91.123400"

@@ -1,7 +1,0 @@
-test/browser/domlegacy/html/HTMLTableRowElement02.tidy.html:14: [definite] Reading absent property insertCell
-test/browser/domlegacy/html/HTMLTableRowElement02.tidy.html:14: [definite] TypeError, call to non-function
-test/browser/domlegacy/html/HTMLTableRowElement02.tidy.html: [definite] Unreachable code
-test/browser/domlegacy/html/HTMLTableRowElement02.tidy.html:8: [definite] Unreachable code
-test/browser/domlegacy/html/HTMLTableRowElement02.tidy.html:15: [definite] Unreachable code
-test/browser/domlegacy/html/HTMLTableRowElement02.tidy.html:8: [definite] Uncaught exception, constructed at [test/dom/html/HTMLTableRowElement02.tidy.html:14]
-test/browser/domlegacy/html/HTMLTableRowElement02.tidy.html:13: [info] Abstract value: [@HTMLTableRowElement[native] constructor]

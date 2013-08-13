@@ -1,0 +1,8 @@
+test/v8tests/array-concat.js:35:3: [definite] ReferenceError, reading absent variable assertEquals
+test/v8tests/array-concat.js:33:1: [definite] The conditional expression is always true
+test/v8tests/array-concat.js:34:7: [definite] The variable a is never used
+test/v8tests/array-concat.js:35:16: [definite] Unreachable code
+test/v8tests/array-concat.js:38:7: [definite] The variable b is never used
+test/v8tests/array-concat.js:39:7: [definite] The variable c is never used
+test/v8tests/array-concat.js:46:7: [definite] The variable onetwofour is never used
+test/v8tests/array-concat.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/array-concat.js:35:3]

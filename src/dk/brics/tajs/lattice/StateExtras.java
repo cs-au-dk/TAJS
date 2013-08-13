@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Aarhus University
+ * Copyright 2009-2013 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,7 +31,7 @@ import org.apache.log4j.Logger;
 
 import dk.brics.tajs.options.Options;
 
-public class StateExtras { // XXX: javadoc + review
+public class StateExtras { // FIXME: javadoc + review
 
 	private static Logger logger = Logger.getLogger(StateExtras.class); 
 
@@ -230,7 +230,7 @@ public class StateExtras { // XXX: javadoc + review
     }
 
     @Override
-    public boolean equals(Object obj) { // TODO: StateExtras.equals and hashCode are only used by BlockState, remove them?
+    public boolean equals(Object obj) {
         if (obj == this) {
             return true;
         }

@@ -1,0 +1,19 @@
+test/chromeexperiments/jstouch_example.tidy.html:12:22: [definite] Dead assignment, property g is never read
+test/chromeexperiments/jstouch_example.tidy.html:12:22: [definite] Dead assignment, property texture is never read
+test/chromeexperiments/jstouch_example.tidy.html:17:9: [definite] Dead assignment, property clear is never read
+test/chromeexperiments/jstouch_example.tidy.html:30:13: [definite] Dead assignment, property mTickCount is never read
+test/chromeexperiments/jstouch_example.tidy.html:31:13: [definite] Dead assignment, property mLoadCount is never read
+test/chromeexperiments/jstouch_example.tidy.html:34:13: [definite] Dead assignment, property g is never read
+test/chromeexperiments/jstouch_example.tidy.html:38:13: [definite] Dead assignment, property w is never read
+test/chromeexperiments/jstouch_example.tidy.html:39:13: [definite] Dead assignment, property h is never read
+test/chromeexperiments/jstouch_example.tidy.html:40:13: [definite] Dead assignment, property ow is never read
+test/chromeexperiments/jstouch_example.tidy.html:41:13: [definite] Dead assignment, property oh is never read
+test/chromeexperiments/jstouch_example.tidy.html:51:30: [definite] Dead assignment, property onInterval is never read
+test/chromeexperiments/jstouch_example.tidy.html:51:30: [definite] Dead assignment, property start is never read
+test/chromeexperiments/jstouch_example.tidy.html:17:21: [definite] Unreachable function
+test/chromeexperiments/jstouch_example.tidy.html:29:17: [definite] The variable _this is never used
+test/chromeexperiments/jstouch_example.tidy.html:44:26: [definite] Unreachable function
+test/chromeexperiments/jstouch_example.tidy.html:52:20: [definite] Unreachable function
+test/chromeexperiments/jstouch_example.tidy.html:56:25: [definite] Unreachable function
+test/chromeexperiments/jstouch_example.tidy.html:61:28: [definite] Unreachable function
+test/chromeexperiments/jstouch_example.tidy.html:71:2: [definite] The variable event is never used

@@ -1,0 +1,3 @@
+test/micro/test09.js:19:5: [definite] The variable bar2 is never used
+test/micro/test09.js:8:1: [info] Abstract value: 11678.0
+test/micro/test09.js:20:1: [info] Abstract value: 6915.0

@@ -1,0 +1,337 @@
+test/google/delta-blue.js:18:3: [definite] ReferenceError, reading absent variable document
+test/google/delta-blue.js:860:3: [definite] The conditional expression is always true
+test/google/delta-blue.js:866:1: [definite] The conditional expression is always true
+test/google/delta-blue.js:78:3: [definite] Dead assignment, property strengthValue is never read
+test/google/delta-blue.js:79:3: [definite] Dead assignment, property name is never read
+test/google/delta-blue.js:520:3: [definite] Dead assignment, property name is never read
+test/google/delta-blue.js:94:22: [definite] Unreachable function
+test/google/delta-blue.js:221:40: [definite] The variable mark is never used
+test/google/delta-blue.js:137:3: [maybe] TypeError, call to non-function
+test/google/delta-blue.js:149:3: [maybe] TypeError, call to non-function
+test/google/delta-blue.js:150:8: [maybe] TypeError, call to non-function
+test/google/delta-blue.js:155:3: [maybe] TypeError, call to non-function
+test/google/delta-blue.js:156:13: [maybe] TypeError, call to non-function
+test/google/delta-blue.js:157:20: [maybe] TypeError, accessing property of null/undefined
+test/google/delta-blue.js:158:27: [maybe] TypeError, accessing property of null/undefined
+test/google/delta-blue.js:158:27: [maybe] TypeError, call to non-function
+test/google/delta-blue.js:167:7: [maybe] TypeError, call to non-function
+test/google/delta-blue.js:168:8: [maybe] TypeError, call to non-function
+test/google/delta-blue.js:201:3: [maybe] TypeError, accessing property of null/undefined
+test/google/delta-blue.js:210:21: [maybe] TypeError, accessing property of null/undefined
+test/google/delta-blue.js:211:41: [maybe] TypeError, accessing property of null/undefined
+test/google/delta-blue.js:238:3: [maybe] TypeError, accessing property of null/undefined
+test/google/delta-blue.js:239:3: [maybe] TypeError, accessing property of null/undefined
+test/google/delta-blue.js:240:7: [maybe] TypeError, accessing property of null/undefined
+test/google/delta-blue.js:240:27: [maybe] TypeError, call to non-function
+test/google/delta-blue.js:255:30: [maybe] TypeError, accessing property of null/undefined
+test/google/delta-blue.js:333:7: [maybe] TypeError, accessing property of null/undefined
+test/google/delta-blue.js:334:23: [maybe] TypeError, accessing property of null/undefined
+test/google/delta-blue.js:334:80: [maybe] TypeError, accessing property of null/undefined
+test/google/delta-blue.js:338:7: [maybe] TypeError, accessing property of null/undefined
+test/google/delta-blue.js:339:23: [maybe] TypeError, accessing property of null/undefined
+test/google/delta-blue.js:339:80: [maybe] TypeError, accessing property of null/undefined
+test/google/delta-blue.js:343:23: [maybe] TypeError, accessing property of null/undefined
+test/google/delta-blue.js:343:45: [maybe] TypeError, accessing property of null/undefined
+test/google/delta-blue.js:344:55: [maybe] TypeError, accessing property of null/undefined
+test/google/delta-blue.js:348:55: [maybe] TypeError, accessing property of null/undefined
+test/google/delta-blue.js:358:3: [maybe] TypeError, accessing property of null/undefined
+test/google/delta-blue.js:374:3: [maybe] TypeError, accessing property of null/undefined
+test/google/delta-blue.js:374:3: [maybe] TypeError, call to non-function
+test/google/delta-blue.js:397:13: [maybe] TypeError, call to non-function
+test/google/delta-blue.js:397:33: [maybe] TypeError, call to non-function
+test/google/delta-blue.js:398:3: [maybe] TypeError, accessing property of null/undefined
+test/google/delta-blue.js:398:56: [maybe] TypeError, accessing property of null/undefined
+test/google/delta-blue.js:400:17: [maybe] TypeError, call to non-function
+test/google/delta-blue.js:411:11: [maybe] TypeError, call to non-function
+test/google/delta-blue.js:412:10: [maybe] TypeError, accessing property of null/undefined
+test/google/delta-blue.js:416:24: [maybe] TypeError, accessing property of null/undefined
+test/google/delta-blue.js:417:24: [maybe] TypeError, accessing property of null/undefined
+test/google/delta-blue.js:444:3: [maybe] TypeError, accessing property of null/undefined
+test/google/delta-blue.js:445:3: [maybe] TypeError, accessing property of null/undefined
+test/google/delta-blue.js:450:3: [maybe] TypeError, accessing property of null/undefined
+test/google/delta-blue.js:451:27: [maybe] TypeError, accessing property of null/undefined
+test/google/delta-blue.js:452:28: [maybe] TypeError, accessing property of null/undefined
+test/google/delta-blue.js:456:3: [maybe] TypeError, accessing property of null/undefined
+test/google/delta-blue.js:457:3: [maybe] TypeError, accessing property of null/undefined
+test/google/delta-blue.js:457:21: [maybe] TypeError, accessing property of null/undefined
+test/google/delta-blue.js:465:5: [maybe] TypeError, accessing property of null/undefined
+test/google/delta-blue.js:465:21: [maybe] TypeError, accessing property of null/undefined
+test/google/delta-blue.js:465:37: [maybe] TypeError, accessing property of null/undefined
+test/google/delta-blue.js:465:56: [maybe] TypeError, accessing property of null/undefined
+test/google/delta-blue.js:467:5: [maybe] TypeError, accessing property of null/undefined
+test/google/delta-blue.js:467:22: [maybe] TypeError, accessing property of null/undefined
+test/google/delta-blue.js:467:38: [maybe] TypeError, accessing property of null/undefined
+test/google/delta-blue.js:467:59: [maybe] TypeError, accessing property of null/undefined
+test/google/delta-blue.js:477:13: [maybe] TypeError, call to non-function
+test/google/delta-blue.js:477:33: [maybe] TypeError, call to non-function
+test/google/delta-blue.js:478:3: [maybe] TypeError, accessing property of null/undefined
+test/google/delta-blue.js:478:56: [maybe] TypeError, accessing property of null/undefined
+test/google/delta-blue.js:479:26: [maybe] TypeError, accessing property of null/undefined
+test/google/delta-blue.js:479:45: [maybe] TypeError, accessing property of null/undefined
+test/google/delta-blue.js:480:17: [maybe] TypeError, call to non-function
+test/google/delta-blue.js:500:3: [maybe] TypeError, accessing property of null/undefined
+test/google/delta-blue.js:500:3: [maybe] TypeError, call to non-function
+test/google/delta-blue.js:500:25: [maybe] TypeError, accessing property of null/undefined
+test/google/delta-blue.js:500:25: [maybe] TypeError, call to non-function
+test/google/delta-blue.js:566:20: [maybe] TypeError, accessing property of null/undefined
+test/google/delta-blue.js:566:20: [maybe] TypeError, call to non-function
+test/google/delta-blue.js:568:18: [maybe] TypeError, accessing property of null/undefined
+test/google/delta-blue.js:583:13: [maybe] TypeError, call to non-function
+test/google/delta-blue.js:584:3: [maybe] TypeError, call to non-function
+test/google/delta-blue.js:585:3: [maybe] TypeError, call to non-function
+test/google/delta-blue.js:591:11: [maybe] TypeError, accessing property of null/undefined
+test/google/delta-blue.js:594:16: [maybe] TypeError, accessing property of null/undefined
+test/google/delta-blue.js:630:9: [maybe] TypeError, accessing property of null/undefined
+test/google/delta-blue.js:630:9: [maybe] TypeError, accessing property of null/undefined
+test/google/delta-blue.js:630:9: [maybe] TypeError, call to non-function
+test/google/delta-blue.js:630:36: [maybe] TypeError, call to non-function
+test/google/delta-blue.js:632:7: [maybe] TypeError, accessing property of null/undefined
+test/google/delta-blue.js:632:7: [maybe] TypeError, call to non-function
+test/google/delta-blue.js:633:38: [maybe] TypeError, call to non-function
+test/google/delta-blue.js:647:9: [maybe] TypeError, accessing property of null/undefined
+test/google/delta-blue.js:647:9: [maybe] TypeError, call to non-function
+test/google/delta-blue.js:647:24: [maybe] TypeError, call to non-function
+test/google/delta-blue.js:672:9: [maybe] TypeError, accessing property of null/undefined
+test/google/delta-blue.js:672:9: [maybe] TypeError, accessing property of null/undefined
+test/google/delta-blue.js:672:9: [maybe] TypeError, call to non-function
+test/google/delta-blue.js:676:5: [maybe] TypeError, call to non-function
+test/google/delta-blue.js:677:36: [maybe] TypeError, call to non-function
+test/google/delta-blue.js:689:3: [maybe] TypeError, accessing property of null/undefined
+test/google/delta-blue.js:697:25: [maybe] TypeError, accessing property of null/undefined
+test/google/delta-blue.js:699:12: [maybe] TypeError, accessing property of null/undefined
+test/google/delta-blue.js:699:12: [maybe] TypeError, call to non-function
+test/google/delta-blue.js:705:34: [maybe] TypeError, accessing property of null/undefined
+test/google/delta-blue.js:705:34: [maybe] TypeError, call to non-function
+test/google/delta-blue.js:706:9: [maybe] TypeError, accessing property of null/undefined
+test/google/delta-blue.js:706:9: [maybe] TypeError, call to non-function
+test/google/delta-blue.js:707:18: [maybe] TypeError, call to non-function
+test/google/delta-blue.js:715:21: [maybe] TypeError, accessing property of null/undefined
+test/google/delta-blue.js:719:29: [maybe] TypeError, accessing property of null/undefined
+test/google/delta-blue.js:719:29: [maybe] TypeError, call to non-function
+test/google/delta-blue.js:752:5: [maybe] TypeError, accessing property of null/undefined
+test/google/delta-blue.js:752:5: [maybe] TypeError, call to non-function
+test/google/delta-blue.js:794:5: [maybe] TypeError, accessing property of null/undefined
+test/google/delta-blue.js:796:9: [maybe] TypeError, accessing property of null/undefined
+test/google/delta-blue.js:823:7: [maybe] TypeError, accessing property of null/undefined
+test/google/delta-blue.js:825:7: [maybe] TypeError, accessing property of null/undefined
+test/google/delta-blue.js:828:9: [maybe] TypeError, accessing property of null/undefined
+test/google/delta-blue.js:833:9: [maybe] TypeError, accessing property of null/undefined
+test/google/delta-blue.js:844:5: [maybe] TypeError, accessing property of null/undefined
+test/google/delta-blue.js:137:3: [maybe] Reading absent property addToGraph
+test/google/delta-blue.js:149:3: [maybe] Reading absent property chooseMethod
+test/google/delta-blue.js:150:8: [maybe] Reading absent property isSatisfied
+test/google/delta-blue.js:155:3: [maybe] Reading absent property markInputs
+test/google/delta-blue.js:156:13: [maybe] Reading absent property output
+test/google/delta-blue.js:158:27: [maybe] Reading absent property markUnsatisfied
+test/google/delta-blue.js:167:7: [maybe] Reading absent property isSatisfied
+test/google/delta-blue.js:168:8: [maybe] Reading absent property removeFromGraph
+test/google/delta-blue.js:201:3: [maybe] Reading absent property myOutput
+test/google/delta-blue.js:210:21: [maybe] Reading absent property myOutput
+test/google/delta-blue.js:211:41: [maybe] Reading absent property myOutput
+test/google/delta-blue.js:218:10: [maybe] Reading absent property satisfied
+test/google/delta-blue.js:229:10: [maybe] Reading absent property myOutput
+test/google/delta-blue.js:238:3: [maybe] Reading absent property myOutput
+test/google/delta-blue.js:239:3: [maybe] Reading absent property myOutput
+test/google/delta-blue.js:240:7: [maybe] Reading absent property myOutput
+test/google/delta-blue.js:240:27: [maybe] Reading absent property execute
+test/google/delta-blue.js:255:7: [maybe] Reading absent property myOutput
+test/google/delta-blue.js:255:30: [maybe] Reading absent property myOutput
+test/google/delta-blue.js:333:7: [maybe] Reading absent property v1
+test/google/delta-blue.js:334:23: [maybe] Reading absent property v1
+test/google/delta-blue.js:334:80: [maybe] Reading absent property v2
+test/google/delta-blue.js:338:7: [maybe] Reading absent property v2
+test/google/delta-blue.js:339:23: [maybe] Reading absent property v1
+test/google/delta-blue.js:339:80: [maybe] Reading absent property v1
+test/google/delta-blue.js:343:23: [maybe] Reading absent property v1
+test/google/delta-blue.js:343:45: [maybe] Reading absent property v2
+test/google/delta-blue.js:344:55: [maybe] Reading absent property v1
+test/google/delta-blue.js:348:55: [maybe] Reading absent property v2
+test/google/delta-blue.js:358:3: [maybe] Reading absent property v1
+test/google/delta-blue.js:367:10: [maybe] Reading absent property direction
+test/google/delta-blue.js:374:3: [maybe] Reading absent property input
+test/google/delta-blue.js:381:11: [maybe] Reading absent property direction
+test/google/delta-blue.js:381:50: [maybe] Reading absent property v1
+test/google/delta-blue.js:381:60: [maybe] Reading absent property v2
+test/google/delta-blue.js:388:11: [maybe] Reading absent property direction
+test/google/delta-blue.js:388:50: [maybe] Reading absent property v2
+test/google/delta-blue.js:388:60: [maybe] Reading absent property v1
+test/google/delta-blue.js:397:13: [maybe] Reading absent property input
+test/google/delta-blue.js:397:33: [maybe] Reading absent property output
+test/google/delta-blue.js:400:17: [maybe] Reading absent property execute
+test/google/delta-blue.js:411:11: [maybe] Reading absent property input
+test/google/delta-blue.js:416:7: [maybe] Reading absent property v1
+test/google/delta-blue.js:416:24: [maybe] Reading absent property v1
+test/google/delta-blue.js:417:7: [maybe] Reading absent property v2
+test/google/delta-blue.js:417:24: [maybe] Reading absent property v2
+test/google/delta-blue.js:444:3: [maybe] Reading absent property addToGraph
+test/google/delta-blue.js:445:3: [maybe] Reading absent property scale
+test/google/delta-blue.js:450:3: [maybe] Reading absent property removeFromGraph
+test/google/delta-blue.js:451:7: [maybe] Reading absent property scale
+test/google/delta-blue.js:451:27: [maybe] Reading absent property scale
+test/google/delta-blue.js:452:7: [maybe] Reading absent property offset
+test/google/delta-blue.js:452:28: [maybe] Reading absent property offset
+test/google/delta-blue.js:456:3: [maybe] Reading absent property markInputs
+test/google/delta-blue.js:457:3: [maybe] Reading absent property scale
+test/google/delta-blue.js:457:21: [maybe] Reading absent property offset
+test/google/delta-blue.js:464:7: [maybe] Reading absent property direction
+test/google/delta-blue.js:465:5: [maybe] Reading absent property v2
+test/google/delta-blue.js:465:21: [maybe] Reading absent property v1
+test/google/delta-blue.js:465:37: [maybe] Reading absent property scale
+test/google/delta-blue.js:465:56: [maybe] Reading absent property offset
+test/google/delta-blue.js:467:5: [maybe] Reading absent property v1
+test/google/delta-blue.js:467:22: [maybe] Reading absent property v2
+test/google/delta-blue.js:467:38: [maybe] Reading absent property offset
+test/google/delta-blue.js:467:59: [maybe] Reading absent property scale
+test/google/delta-blue.js:477:13: [maybe] Reading absent property input
+test/google/delta-blue.js:477:33: [maybe] Reading absent property output
+test/google/delta-blue.js:479:26: [maybe] Reading absent property scale
+test/google/delta-blue.js:479:45: [maybe] Reading absent property offset
+test/google/delta-blue.js:480:17: [maybe] Reading absent property execute
+test/google/delta-blue.js:500:3: [maybe] Reading absent property output
+test/google/delta-blue.js:500:25: [maybe] Reading absent property input
+test/google/delta-blue.js:566:20: [maybe] Reading absent property satisfy
+test/google/delta-blue.js:583:13: [maybe] Reading absent property output
+test/google/delta-blue.js:584:3: [maybe] Reading absent property markUnsatisfied
+test/google/delta-blue.js:585:3: [maybe] Reading absent property removeFromGraph
+test/google/delta-blue.js:591:11: [maybe] Reading absent property strength
+test/google/delta-blue.js:630:9: [maybe] Reading absent property output
+test/google/delta-blue.js:630:36: [maybe] Reading absent property inputsKnown
+test/google/delta-blue.js:632:7: [maybe] Reading absent property output
+test/google/delta-blue.js:633:38: [maybe] Reading absent property output
+test/google/delta-blue.js:647:9: [maybe] Reading absent property isInput
+test/google/delta-blue.js:647:24: [maybe] Reading absent property isSatisfied
+test/google/delta-blue.js:672:9: [maybe] Reading absent property output
+test/google/delta-blue.js:676:5: [maybe] Reading absent property recalculate
+test/google/delta-blue.js:677:36: [maybe] Reading absent property output
+test/google/delta-blue.js:699:12: [maybe] Reading absent property isSatisfied
+test/google/delta-blue.js:705:34: [maybe] Reading absent property isSatisfied
+test/google/delta-blue.js:706:9: [maybe] Reading absent property recalculate
+test/google/delta-blue.js:707:18: [maybe] Reading absent property output
+test/google/delta-blue.js:719:29: [maybe] Reading absent property isSatisfied
+test/google/delta-blue.js:752:5: [maybe] Reading absent property execute
+test/google/delta-blue.js:828:9: [maybe] Reading absent property value
+test/google/delta-blue.js:833:9: [maybe] Reading absent property value
+test/google/delta-blue.js:1:1: [maybe] Uncaught exception, constructed at [test/google/delta-blue.js:137:3, test/google/delta-blue.js:149:3, test/google/delta-blue.js:150:8, test/google/delta-blue.js:155:3, test/google/delta-blue.js:156:13, test/google/delta-blue.js:157:20, test/google/delta-blue.js:158:27, test/google/delta-blue.js:167:7, test/google/delta-blue.js:168:8, test/google/delta-blue.js:201:3, test/google/delta-blue.js:210:21, test/google/delta-blue.js:211:41, test/google/delta-blue.js:238:3, test/google/delta-blue.js:239:3, test/google/delta-blue.js:240:7, test/google/delta-blue.js:240:27, test/google/delta-blue.js:255:30, test/google/delta-blue.js:333:7, test/google/delta-blue.js:334:23, test/google/delta-blue.js:334:80, test/google/delta-blue.js:338:7, test/google/delta-blue.js:339:23, test/google/delta-blue.js:339:80, test/google/delta-blue.js:343:23, test/google/delta-blue.js:343:45, test/google/delta-blue.js:344:55, test/google/delta-blue.js:348:55, test/google/delta-blue.js:358:3, test/google/delta-blue.js:374:3, test/google/delta-blue.js:397:13, test/google/delta-blue.js:397:33, test/google/delta-blue.js:398:3, test/google/delta-blue.js:398:56, test/google/delta-blue.js:400:17, test/google/delta-blue.js:411:11, test/google/delta-blue.js:412:10, test/google/delta-blue.js:416:24, test/google/delta-blue.js:417:24, test/google/delta-blue.js:444:3, test/google/delta-blue.js:445:3, test/google/delta-blue.js:450:3, test/google/delta-blue.js:451:27, test/google/delta-blue.js:452:28, test/google/delta-blue.js:456:3, test/google/delta-blue.js:457:3, test/google/delta-blue.js:457:21, test/google/delta-blue.js:465:5, test/google/delta-blue.js:465:21, test/google/delta-blue.js:465:37, test/google/delta-blue.js:465:56, test/google/delta-blue.js:467:5, test/google/delta-blue.js:467:22, test/google/delta-blue.js:467:38, test/google/delta-blue.js:467:59, test/google/delta-blue.js:477:13, test/google/delta-blue.js:477:33, test/google/delta-blue.js:478:3, test/google/delta-blue.js:478:56, test/google/delta-blue.js:479:26, test/google/delta-blue.js:479:45, test/google/delta-blue.js:480:17, test/google/delta-blue.js:500:3, test/google/delta-blue.js:500:25, test/google/delta-blue.js:566:20, test/google/delta-blue.js:568:18, test/google/delta-blue.js:583:13, test/google/delta-blue.js:584:3, test/google/delta-blue.js:585:3, test/google/delta-blue.js:591:11, test/google/delta-blue.js:594:16, test/google/delta-blue.js:630:9, test/google/delta-blue.js:630:36, test/google/delta-blue.js:632:7, test/google/delta-blue.js:633:38, test/google/delta-blue.js:647:9, test/google/delta-blue.js:647:24, test/google/delta-blue.js:672:9, test/google/delta-blue.js:676:5, test/google/delta-blue.js:677:36, test/google/delta-blue.js:689:3, test/google/delta-blue.js:697:25, test/google/delta-blue.js:699:12, test/google/delta-blue.js:705:34, test/google/delta-blue.js:706:9, test/google/delta-blue.js:707:18, test/google/delta-blue.js:715:21, test/google/delta-blue.js:719:29, test/google/delta-blue.js:752:5, test/google/delta-blue.js:794:5, test/google/delta-blue.js:796:9, test/google/delta-blue.js:823:7, test/google/delta-blue.js:825:7, test/google/delta-blue.js:828:9, test/google/delta-blue.js:833:9, test/google/delta-blue.js:844:5]
+test/google/delta-blue.js:41:10: [maybe] Reading absent property (computed name)
+test/google/delta-blue.js:55:17: [maybe] Reading absent property (computed name)
+test/google/delta-blue.js:589:21: [maybe] Conversion to number yields NaN
+test/google/delta-blue.js:589:45: [maybe] Conversion to number yields NaN
+test/google/delta-blue.js:37:3: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/delta-blue.js:37:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:41:10: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:45:10: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:54:23: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/delta-blue.js:54:23: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:55:17: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/delta-blue.js:55:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:57:7: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/delta-blue.js:57:7: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:64:5: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/delta-blue.js:64:5: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:99:11: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:149:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:150:8: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:151:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:155:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:156:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:159:22: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:160:29: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:210:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:210:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:211:26: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:211:41: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:218:10: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:229:10: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:238:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:238:32: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:239:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:239:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:240:7: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:240:27: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:247:3: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/delta-blue.js:247:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:255:7: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:255:30: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:255:61: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:256:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:333:7: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:334:5: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:334:23: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:334:65: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:334:80: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:338:7: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:339:5: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:339:23: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:339:65: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:339:80: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:343:23: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:343:45: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:344:5: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:344:40: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:344:55: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:348:5: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:348:40: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:348:55: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:367:10: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:374:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:381:11: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:381:50: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:381:60: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:388:11: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:388:50: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:388:60: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:397:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:397:33: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:398:41: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:400:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:407:3: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/delta-blue.js:407:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:411:11: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:416:7: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:416:24: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:416:49: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:417:7: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:417:24: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:417:49: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:418:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:450:67: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:451:7: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:451:27: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:451:55: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:452:7: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:452:28: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:452:57: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:456:62: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:457:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:457:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:464:7: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:465:5: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:465:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:465:37: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:465:56: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:467:5: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:467:22: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:467:38: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:467:59: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:477:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:477:33: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:478:41: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:479:26: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:479:45: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:480:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:500:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:500:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:528:3: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/delta-blue.js:528:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:535:3: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/delta-blue.js:535:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:536:7: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/delta-blue.js:536:7: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:536:31: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/delta-blue.js:536:31: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:565:14: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:586:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:592:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:602:12: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:673:7: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/delta-blue.js:677:5: [info] 'this' refers to multiple abstract objects, which may cause loss of precision

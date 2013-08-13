@@ -1,0 +1,14 @@
+test/micro/test152.js:3:21: [info] Abstract state:
+Abstract state:
+  Execution context: ScopeChain=[[@activation#node28],[@<the global object>[native]]], VariableObject=[@activation#node28], this=[@<the global object>[native]]
+  Summarized: maybe=[@activation#node35, @arguments#node35], definitely=[@activation#node35, @arguments#node35]
+  Store (excluding basis and default objects): 
+    @<the global object>[native] (<initial state>): {dumpState:^(@<the global object>[native].dumpState[present]),f4:^(@<the global object>[native].f4[present]),x:^(@<the global object>[native].y[present]),y:^(@<the global object>[native].y[present]),[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Prototype]]=?,[[Value]]=?,[[Scope]]=?}
+    @activation#node28 (test/micro/test152.js:3:1): {dumpState:^(@activation#node28.dumpState[absent]),f4:^(@activation#node28.f4[absent]),[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Value]]=?,[[Scope]]=?}
+    @activation#node35 (test/micro/test152.js:4:1): {<none>}
+    @arguments#node35 (test/micro/test152.js:4:1): {<none>}
+  Registers: 
+    v1=Undef
+    v4=[@<the global object>[native]]
+    v5=^(@<the global object>[native].dumpState[present])
+test/micro/test152.js:8:1: [info] Abstract value: 2.0

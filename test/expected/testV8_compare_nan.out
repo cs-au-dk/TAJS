@@ -1,0 +1,5 @@
+test/v8tests/compare-nan.js:31:3: [definite] ReferenceError, reading absent variable assertFalse
+test/v8tests/compare-nan.js:30:7: [definite] The variable x is never used
+test/v8tests/compare-nan.js:31:15: [definite] Unreachable code
+test/v8tests/compare-nan.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/compare-nan.js:31:3]
+test/v8tests/compare-nan.js:30:11: [maybe] Reading absent property (computed name)

@@ -1,4 +1,0 @@
-test/anderson/anderson2.js:8:2: [definite] Reading absent property b
-test/anderson/anderson2.js:12:2: [definite] Dead assignment, property b is never read
-test/anderson/anderson2.js:16:2: [definite] Dead assignment, property c is never read
-test/anderson/anderson2.js:1:1: [definite] The variable x is never used

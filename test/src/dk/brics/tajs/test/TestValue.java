@@ -103,7 +103,7 @@ public class TestValue {
 	}
 
 	@Test
-	public void testValue() {
+	public void value() {
 		Misc.init();
 		Misc.captureSystemOutput();
 
@@ -200,16 +200,16 @@ public class TestValue {
 		printInfo(v1);
 		v1 = v1.joinAbsent();
 		printInfo(v1);
-		v1 = vUndef.joinAbsentWithModified();
+		v1 = vUndef.joinAbsentModified();
 		printInfo(v1);
 		v1 = v1.restrictToNotAbsent();
 		printInfo(v1);
 		v1 = v1.restrictToNotAbsent();
 		printInfo(v1);
 
-		Value v2 = vUndef.joinAbsentWithModified();
+		Value v2 = vUndef.joinAbsentModified();
 		printInfo(v2);
-		v2 = v2.joinAbsentWithModified();
+		v2 = v2.joinAbsentModified();
 		printInfo(v2);
 
 		Value v3 = vUndef.setDontDelete().setDontEnum().setReadOnly();
@@ -230,8 +230,6 @@ public class TestValue {
 		printInfo(v4);
 		v4 = v4.joinNotDontDelete().joinNotDontEnum().joinNotReadOnly();
 
-		printInfo(vTrue.joinWithModified(vFalse));
-		printInfo(vTrue.joinWithModified(vTrue));
 		printInfo(Value.join(vTrue, vFalse, vUndef, v314159, vSomeStr));
 		printInfo(Value.join());
 		printInfo(Value.join(vTrue, vTrue));

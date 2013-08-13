@@ -1,0 +1,355 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Snake</title>
+<!-- CSS -->
+<link rel="stylesheet" href="css/main.css"/>
+<!-- JavaScript -->
+<script type="text/javascript">
+
+// TODO: Added support for Array.some
+Array.prototype.some = function (callback) {
+    for (var i = 0; i < this.length; i++) {
+        var found = callback(this[i], i, this);
+        if (found) {
+            return true;
+        }
+    }
+    return false;
+};
+
+var b_cnv;
+var b_ctx;
+var ng = 0;
+var frame = 0;
+var cr = 640 / 2;
+var ab = 0;
+function b_bor(sh) {
+    var i;
+    var j;
+    b_ctx.save();
+    b_ctx.clearRect(0, 0, 640, 343);
+    b_ctx.fillStyle = "#545454";
+    for (i = 0; i <= 343; i += 2)
+        for (j = 0; j <= 640; j += 4) {
+            if (i % 4 == 0)b_ctx.fillRect(j, i, 2, 2); else b_ctx.fillRect(j + 2, i, 2, 2);
+        }
+    shd();
+    for (j = 0; j <= 316; j += 4)
+        for (i = 0; i <= 640; i += 4) {
+            if (j >= 4 && j <= 312 && i >= 4 && i <= 635)continue;
+            b_ctx.fillRect(i + 1, j + 20, 2, 2);
+        }
+    b_ctx.restore();
+}
+function menu() {
+    b_ctx.save();
+    shd();
+    for (i = 0; i <= 186; i += 4) {
+        b_ctx.fillRect(i + 226, 130, 2, 2);
+        b_ctx.fillRect(i + 226, 225, 2, 2);
+    }
+    b_ctx.textAlign = 'center';
+    b_ctx.font = '35px Terminal';
+    b_ctx.fillText("ZmeyKO", cr, 120);
+    b_ctx.font = '25px Terminal';
+    b_ctx.fillText("NEW GAME", cr, 170);
+    b_ctx.fillText("ABOUT", cr, 205);
+    b_ctx.restore();
+}
+function about() {
+    ab = 1;
+    b_ctx.save();
+    shd();
+    b_ctx.textAlign = 'center';
+    b_ctx.font = '35px Terminal';
+    b_ctx.fillText("Coding by Gr3mA", cr, 150);
+    b_ctx.fillText("Design by DeburgER", cr, 200);
+    b_ctx.restore();
+}
+function shd() {
+    b_ctx.fillStyle = "#fff";
+    b_ctx.shadowOffsetX = 1;
+    b_ctx.shadowOffsetY = 1;
+    b_ctx.shadowColor = 'black';
+}
+function offsetPosition(element) {
+    var offsetLeft = 0,offsetTop = 0;
+    do{
+        offsetLeft += element.offsetLeft
+        offsetTop += element.offsetTop;
+    }
+    while (element = element.offsetParent);
+    return[offsetLeft,offsetTop];
+}
+function drw() {
+    b_cnv = document.getElementById('canvaz');
+    b_ctx = b_cnv.getContext('2d');
+    b_ctx.clearRect(0, 0, 640, 343);
+    b_ctx.save();
+    var i;
+    var j;
+    if (frame == 0)b_cnv.addEventListener("click", function(e) {
+        var xy = offsetPosition(b_cnv);
+        var x = e.clientX - xy[0];
+        var y = e.clientY - xy[1];
+        var l = 270;
+        var r = 365;
+        var n = 150;
+        var a = 185;
+        if (ab == 1) {
+            ab = 0;
+            b_bor();
+            menu();
+            return false;
+        }
+        ;
+        if (x >= l && x <= r && y >= n && y <= n + 25 && ng == 0 && ab == 0) {
+            ng = 1;
+            b_bor();
+            checkSupported();
+        }
+        ;
+        if (x >= l && x <= r && y >= a && y <= a + 25 && ng == 0 && ab == 0) {
+            b_bor();
+            about();
+        }
+        ;
+    }, false);
+    b_bor();
+    if (ng != 1)menu();
+    b_ctx.restore();
+    frame++;
+}
+var alscore = 0;
+var score = 0;
+var speed = 50;
+var lvl = 0;
+var life = 5;
+var allscore = 0;
+var pau = 0;
+function checkSupported() {
+    cns = document.getElementById('snake');
+    cns.style.display = 'block';
+    ctx = cns.getContext('2d');
+    this.gridSize = 10;
+    start();
+}
+function start() {
+    ctx.clearRect(0, 0, cns.width, cns.height);
+    this.crP = {'x':50,'y':50};
+    snakeBody = [];
+    if (life == 0) {
+        allscore = 0
+        alscore = 0;
+        score = 0;
+        life = 5;
+        speed = 50;
+        lvl = 0;
+    }
+    snakeLength = 3;
+    upS();
+    udL();
+    upL();
+    makeFoodItem();
+    drawSnake();
+    drc = 'r';
+    play();
+}
+function restart() {
+    pause();
+    start();
+}
+function pause() {
+    clearInterval(interval);
+    allowPressKeys = false;
+}
+function play() {
+    interval = setInterval(moveSnake, speed);
+    allowPressKeys = true;
+}
+function drawSnake() {
+    if (snakeBody.some(hasEatenItself)) {
+        gameOver();
+        return false;
+    }
+    snakeBody.push([crP['x'],crP['y']]);
+    ctx.fillStyle = '#fff';
+    ctx.fillRect(crP['x'], crP['y'], gridSize, gridSize);
+    if (snakeBody.length > snakeLength) {
+        var itemToRemove = snakeBody.shift();
+        ctx.clearRect(itemToRemove[0], itemToRemove[1], gridSize, gridSize + 1);
+    }
+    if (crP['x'] == sgP[0] && crP['y'] == sgP[1]) {
+        makeFoodItem();
+        snakeLength += 1;
+        upS();
+        udL();
+    }
+}
+function lP() {
+    return crP['x'] - gridSize;
+}
+function rP() {
+    return crP['x'] + gridSize;
+}
+function upP() {
+    return crP['y'] - gridSize;
+}
+function dP() {
+    return crP['y'] + gridSize;
+}
+function moveUp() {
+    if (upP() >= 0) {
+        executeMove('u', 'y', upP());
+    } else {
+        gameOver();
+    }
+}
+function moveDown() {
+    if (dP() < cns.height) {
+        executeMove('d', 'y', dP());
+    } else {
+        gameOver();
+    }
+}
+function moveLeft() {
+    if (lP() >= 0) {
+        executeMove('l', 'x', lP());
+    } else {
+        gameOver();
+    }
+}
+function moveRight() {
+    if (rP() < cns.width) {
+        executeMove('r', 'x', rP());
+    } else {
+        gameOver();
+    }
+}
+function executeMove(dirValue, axisType, axisValue) {
+    drc = dirValue;
+    crP[axisType] = axisValue;
+    drawSnake();
+}
+function makeFoodItem() {
+    sgP = [Math.floor(Math.random() * (cns.width / gridSize)) * gridSize,Math.floor(Math.random() * (cns.height / gridSize)) * gridSize];
+    if (snakeBody.some(hasPoint)) {
+        makeFoodItem();
+    } else {
+        ctx.fillStyle = "#fff";
+        ctx.beginPath();
+        var d = gridSize / 2;
+        ctx.arc(sgP[0] + d, sgP[1] + d, d - 2, 0, Math.PI * 2, true);
+        ctx.closePath();
+        ctx.fill();
+    }
+    ;
+}
+function hasPoint(element, index, array) {
+    return(element[0] == sgP[0] && element[1] == sgP[1]);
+}
+function hasEatenItself(element, index, array) {
+    return(element[0] == crP['x'] && element[1] == crP['y']);
+}
+function gameOver() {
+    pause();
+    upS();
+    ctx.clearRect(0, 0, cns.width, cns.height);
+    life--;
+    alscore += score;
+    upL();
+    if (life == 0) {
+        cns.style.display = 'none';
+        ng = 0;
+        menu();
+    }
+    else
+        start();
+}
+function upL() {
+    var i;
+    var r = '';
+    for (i = 0; i <= life - 1; i++)r += '|';
+    document.getElementById('life').innerHTML = 'life: ' + r;
+}
+function upS() {
+    score = (snakeLength - 3) * 10;
+    allscore = alscore + score;
+    document.getElementById('score').innerHTML = 'score: ' + allscore;
+}
+function udL() {
+    var shag = 100;
+    var yep = allscore / (lvl + 1);
+    if (yep >= shag) {
+        lvl++;
+        shag = shag * (lvl + 1);
+        if (speed > 1)speed--;
+        pause();
+        play();
+    }
+    document.getElementById('lvl').innerHTML = 'lvl: ' + lvl;
+}
+document.onkeydown = function(event) {
+    var keyCode;
+    if (event == null) {
+        keyCode = window.event.keyCode;
+    }
+    else {
+        keyCode = event.keyCode;
+    }
+    if (!allowPressKeys && keyCode != 32) {
+        return null;
+    }
+    switch (keyCode) {case 32:if (pau == 1) {
+        document.getElementById('pause').style.display = 'none';
+        play();
+        pau = 0;
+    }
+    else {
+        document.getElementById('pause').style.display = 'block';
+        pause();
+        pau = 1;
+    }
+        break;case 37:if (drc != "r") {
+        moveLeft();
+    }
+        break;case 38:if (drc != "d") {
+        moveUp();
+    }
+        break;case 39:if (drc != "l") {
+        moveRight();
+    }
+        break;case 40:if (drc != "u") {
+        moveDown();
+    }
+        break;default:break;
+    }
+}
+function moveSnake() {
+    switch (drc) {case'u':moveUp();break;case'd':moveDown();break;case'l':moveLeft();break;case'r':moveRight();break;
+    }
+}
+</script>
+</head>
+
+<body onload="drw();">
+<div id="tp"></div>
+<div id="game">
+    <canvas id="canvaz" height="343" width="640"></canvas>
+    <canvas id="snake" height="310" width="630" class="di"></canvas>
+    <div id="info">
+        <span id="score">score: 0</span>
+        <span id="lvl">lvl: 0</span>
+
+        <span id="life">life: |||||</span>
+    </div>
+    <div id="pause" class="di">
+        <h2>PAUSE</h2>
+
+        <p>press SPACE to continue</p>
+    </div>
+</div>
+
+</body>
+</html>

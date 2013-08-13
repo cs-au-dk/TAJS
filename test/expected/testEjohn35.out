@@ -1,3 +1,0 @@
-test/resig/ejohn35.js:2:3: [definite] Reading 'this' yields the global object
-test/resig/ejohn35.js:1:1: [definite] The variable user is never used
-test/resig/ejohn35.js:9:1: [info] Abstract value: "John Resig"

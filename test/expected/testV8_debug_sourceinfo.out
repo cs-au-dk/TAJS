@@ -1,0 +1,18 @@
+test/v8tests/debug-sourceinfo.js:43:9: [definite] ReferenceError, reading absent variable debug
+test/v8tests/debug-sourceinfo.js:30:1: [definite] Unreachable function a
+test/v8tests/debug-sourceinfo.js:31:1: [definite] Unreachable function b
+test/v8tests/debug-sourceinfo.js:34:3: [definite] Unreachable function c
+test/v8tests/debug-sourceinfo.js:43:9: [definite] Unreachable code
+test/v8tests/debug-sourceinfo.js:46:5: [definite] The variable comment_lines is never used
+test/v8tests/debug-sourceinfo.js:50:5: [definite] The variable comment_line_length is never used
+test/v8tests/debug-sourceinfo.js:51:5: [definite] The variable start_a is never used
+test/v8tests/debug-sourceinfo.js:52:5: [definite] The variable start_b is never used
+test/v8tests/debug-sourceinfo.js:53:5: [definite] The variable start_c is never used
+test/v8tests/debug-sourceinfo.js:59:5: [definite] The variable script is never used
+test/v8tests/debug-sourceinfo.js:67:5: [definite] The variable position is never used
+test/v8tests/debug-sourceinfo.js:68:5: [definite] The variable line is never used
+test/v8tests/debug-sourceinfo.js:69:5: [definite] The variable column is never used
+test/v8tests/debug-sourceinfo.js:70:10: [definite] The variable p is never used
+test/v8tests/debug-sourceinfo.js:71:7: [definite] The variable location is never used
+test/v8tests/debug-sourceinfo.js:202:10: [definite] The variable i is never used
+test/v8tests/debug-sourceinfo.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/debug-sourceinfo.js:43:9]

@@ -1,0 +1,8 @@
+test/v8tests/instanceof.js:28:1: [definite] ReferenceError, reading absent variable assertTrue
+test/v8tests/instanceof.js:28:12: [definite] Unreachable code
+test/v8tests/instanceof.js:34:1: [definite] Unreachable function TestChains
+test/v8tests/instanceof.js:41:3: [definite] Unreachable function F
+test/v8tests/instanceof.js:61:1: [definite] Unreachable function TestExceptions
+test/v8tests/instanceof.js:62:3: [definite] Unreachable function F
+test/v8tests/instanceof.js:88:3: [definite] Unreachable function G
+test/v8tests/instanceof.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/instanceof.js:28:1]

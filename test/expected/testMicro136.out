@@ -1,4 +1,0 @@
-test/micro/test136.js:10:12: [maybe] The variable x has values with different types
-test/micro/test136.js:15:1: [info] Abstract value: [@Object#node36]
-test/micro/test136.js:16:1: [info] Abstract value: [*Object#node36]
-test/micro/test136.js:17:1: [info] Abstract value: 42.0

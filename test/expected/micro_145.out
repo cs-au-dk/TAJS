@@ -1,0 +1,5 @@
+test/micro/test145.js:2:9: [definite] Dead assignment, property a is never read
+test/micro/test145.js:8:2: [definite] Dead assignment, property a is never read
+test/micro/test145.js:2:12: [maybe] The variable v has values with different types
+test/micro/test145.js:14:1: [info] Abstract value: [*Object#node19]
+test/micro/test145.js:15:1: [info] Abstract object: {a:true,[[Prototype]]=[@Object.prototype[native]]}

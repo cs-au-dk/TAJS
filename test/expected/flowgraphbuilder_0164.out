@@ -1,0 +1,27 @@
+fg2: <main> function()
+  block 0: [entry]
+    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0164.js:1:1)
+    ->[block 1]
+  block 1:
+    node 1: read-variable['z',v6,-] (test/flowgraphbuilder/flowgraph_builder0164.js:1:1)
+    node 2: read-property[v6,'c',v5] (test/flowgraphbuilder/flowgraph_builder0164.js:1:1)
+    node 3: <variable-non-null-undef>['z'] (test/flowgraphbuilder/flowgraph_builder0164.js:1:1)
+    node 4: read-property[v5,'rows',v4] (test/flowgraphbuilder/flowgraph_builder0164.js:1:1)
+    node 5: <property-non-null-undef>[v6,'c'] (test/flowgraphbuilder/flowgraph_builder0164.js:1:1)
+    node 6: read-property[v4,'cells',v3] (test/flowgraphbuilder/flowgraph_builder0164.js:1:1)
+    node 7: <property-non-null-undef>[v5,'rows'] (test/flowgraphbuilder/flowgraph_builder0164.js:1:1)
+    node 8: read-property[v3,'item',v2] (test/flowgraphbuilder/flowgraph_builder0164.js:1:1)
+    node 9: <property-non-null-undef>[v4,'cells'] (test/flowgraphbuilder/flowgraph_builder0164.js:1:1)
+    node 10: read-property[v2,'offsetHeight',-] (test/flowgraphbuilder/flowgraph_builder0164.js:1:1)
+    node 11: <property-non-null-undef>[v3,'item']* (test/flowgraphbuilder/flowgraph_builder0164.js:1:1)
+    ->[block 2]
+  block 2: [exit-ordinary]
+    node 12: return[v1] (test/flowgraphbuilder/flowgraph_builder0164.js:1:1)
+    ->[]
+  block 3: [exit-exceptional]
+    node 13: exceptional-return (test/flowgraphbuilder/flowgraph_builder0164.js:1:1)
+    ->[]
+
+test/flowgraphbuilder/flowgraph_builder0164.js:1:1: [definite] ReferenceError, reading absent variable z
+test/flowgraphbuilder/flowgraph_builder0164.js:1:1: [definite] Unreachable code
+test/flowgraphbuilder/flowgraph_builder0164.js:1:1: [maybe] Uncaught exception, constructed at [test/flowgraphbuilder/flowgraph_builder0164.js:1:1]

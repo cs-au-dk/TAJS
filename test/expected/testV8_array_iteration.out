@@ -1,0 +1,42 @@
+test/v8tests/array-iteration.js:42:3: [definite] ReferenceError, reading absent variable assertArrayEquals
+test/v8tests/array-iteration.js:41:7: [definite] The variable a is never used
+test/v8tests/array-iteration.js:42:21: [definite] Unreachable code
+test/v8tests/array-iteration.js:42:35: [definite] Unreachable function
+test/v8tests/array-iteration.js:46:7: [definite] The variable o is never used
+test/v8tests/array-iteration.js:48:39: [definite] Unreachable function
+test/v8tests/array-iteration.js:52:39: [definite] Unreachable function
+test/v8tests/array-iteration.js:58:34: [definite] Unreachable function
+test/v8tests/array-iteration.js:63:7: [definite] The variable count is never used
+test/v8tests/array-iteration.js:67:20: [definite] Unreachable function
+test/v8tests/array-iteration.js:69:12: [definite] The variable i is never used
+test/v8tests/array-iteration.js:77:2: [definite] Unreachable code
+test/v8tests/array-iteration.js:77:2: [definite] Unreachable function
+test/v8tests/array-iteration.js:81:13: [definite] Unreachable function
+test/v8tests/array-iteration.js:87:13: [definite] Unreachable function
+test/v8tests/array-iteration.js:93:13: [definite] Unreachable function
+test/v8tests/array-iteration.js:101:13: [definite] Unreachable function
+test/v8tests/array-iteration.js:109:13: [definite] Unreachable function
+test/v8tests/array-iteration.js:118:2: [definite] Unreachable function
+test/v8tests/array-iteration.js:121:23: [definite] Unreachable function
+test/v8tests/array-iteration.js:123:22: [definite] Unreachable function
+test/v8tests/array-iteration.js:124:23: [definite] Unreachable function
+test/v8tests/array-iteration.js:129:23: [definite] Unreachable function
+test/v8tests/array-iteration.js:131:22: [definite] Unreachable function
+test/v8tests/array-iteration.js:135:23: [definite] Unreachable function
+test/v8tests/array-iteration.js:141:22: [definite] Unreachable function
+test/v8tests/array-iteration.js:149:22: [definite] Unreachable function
+test/v8tests/array-iteration.js:157:2: [definite] Unreachable function
+test/v8tests/array-iteration.js:162:35: [definite] Unreachable function
+test/v8tests/array-iteration.js:168:35: [definite] Unreachable function
+test/v8tests/array-iteration.js:173:35: [definite] Unreachable function
+test/v8tests/array-iteration.js:180:35: [definite] Unreachable function
+test/v8tests/array-iteration.js:186:13: [definite] Unreachable function
+test/v8tests/array-iteration.js:194:2: [definite] Unreachable function
+test/v8tests/array-iteration.js:198:21: [definite] Unreachable function
+test/v8tests/array-iteration.js:199:22: [definite] Unreachable function
+test/v8tests/array-iteration.js:204:21: [definite] Unreachable function
+test/v8tests/array-iteration.js:206:22: [definite] Unreachable function
+test/v8tests/array-iteration.js:210:21: [definite] Unreachable function
+test/v8tests/array-iteration.js:215:22: [definite] Unreachable function
+test/v8tests/array-iteration.js:224:21: [definite] Unreachable function
+test/v8tests/array-iteration.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/array-iteration.js:42:3]

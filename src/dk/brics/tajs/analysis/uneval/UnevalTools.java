@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Aarhus University
+ * Copyright 2009-2013 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -90,7 +90,7 @@ public class UnevalTools {
             AbstractNode n = ns.get(idx);
 
             if (!effects_only && n instanceof LoadNode && ((LoadNode) n).getResultRegister() == var) {
-                String varStr = s.isRegisterDefined(var) ? Conversion.toString(s.readRegister(var), var, c).getStr() : null;
+                String varStr = s.isRegisterDefined(var) ? Conversion.toString(UnknownValueResolver.getRealValue(s.readRegister(var), s), var, c).getStr() : null;
 
                 if (varStr != null) {
                     // We know the value of the register but we still need to traverse the rest of the flow graph to get
@@ -212,7 +212,17 @@ public class UnevalTools {
                 CallNode call = (CallNode) n;
                 if (call.getResultRegister() == var) {
                     StringBuilder b = new StringBuilder();
-                    b.append(paren(p_build_full(call.getFunctionRegister(), n, dr)));
+                    b.append("(");
+                    if (call.getFunctionRegister() != AbstractNode.NO_VALUE) {
+                    	b.append(p_build_full(call.getFunctionRegister(), n, dr));
+                    } else {
+                    	b.append(paren(p_build_full(call.getBaseRegister(), n, dr)));
+                    	if (call.getPropertyString() != null)
+                    		b.append(".").append(call.getPropertyString());
+                    	else
+                    		b.append("[").append(p_build_full(call.getPropertyRegister(), n, dr)).append("]");
+                    }
+                    b.append(")");
                     b.append("(");
                     for (int i = 0; i < call.getNumberOfArgs(); i++) {
                         b.append(paren(p_build_full(call.getArgRegister(i), n, dr)));
@@ -327,7 +337,9 @@ public class UnevalTools {
 			 */
 			@Override
 			public boolean isDefinitelyJSONData(String placeholder) {
-				Value v = state.readRegister(input.getMapping().get(placeholder)).restrictToStr();//state.readVariable(var, null);
+				Value v = state.readRegister(input.getMapping().get(placeholder));
+				v = UnknownValueResolver.getRealValue(v, state);
+				v = v.restrictToStr();
 				if (v.isStrJSON()) {
 					return true;
 				}
@@ -339,7 +351,9 @@ public class UnevalTools {
 			 */
 			@Override
 			public boolean isDefinitelyIdentifierFragment(String placeholder) {
-				Value v = state.readRegister(input.getMapping().get(placeholder)).restrictToStr();
+				Value v = state.readRegister(input.getMapping().get(placeholder));
+				v = UnknownValueResolver.getRealValue(v, state);
+				v = v.restrictToStr();
 				if (v.isStrIdentifierOrIdentifierParts())
 					return true;
 				return false;
@@ -350,7 +364,9 @@ public class UnevalTools {
 			 */
 			@Override
 			public boolean isDefinitelyIdentifier(String placeholder) {
-				Value v = state.readRegister(input.getMapping().get(placeholder)).restrictToStr();
+				Value v = state.readRegister(input.getMapping().get(placeholder));
+				v = UnknownValueResolver.getRealValue(v, state);
+				v = v.restrictToStr();
 				if (v.isStrIdentifier())
 					return true;
 				return false;
@@ -381,6 +397,7 @@ public class UnevalTools {
 			@Override
 			public boolean isDefinitelyBoolean(String placeholder) {
 				Value v = state.readRegister(input.getMapping().get(placeholder));
+				v = UnknownValueResolver.getRealValue(v, state);
 				if (v.isMaybeOtherThanBool())
 					return false;
 				return true;
@@ -391,7 +408,8 @@ public class UnevalTools {
 			 */
 			@Override
 			public boolean isDefinitelyInteger(String placeholder) {
-				Value v  = state.readRegister(input.getMapping().get(placeholder));//state.readVariable(var, null);
+				Value v  = state.readRegister(input.getMapping().get(placeholder));
+				v = UnknownValueResolver.getRealValue(v, state);
 				if (v.isMaybeOtherThanNum())
 					return false;
 				return true;
@@ -411,6 +429,8 @@ public class UnevalTools {
      * Returns the function name that was used to call the function or empty string if unknown.
      */
     public static String get_call_name(FlowGraph fg, CallNode n) {
+    	if (n.getFunctionRegister() == AbstractNode.NO_VALUE)
+    		return null; // TODO: what if eval is accessed by a read-property operation instead of a read-variable?
         return get_read_variable_node(new Decorator(fg), n, n.getFunctionRegister(), Collections.<Integer>newSet());
     }
 

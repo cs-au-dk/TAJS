@@ -25,7 +25,7 @@ public class TestWala {
 	}
 
 	@Test
-	public void testWalaForIn() throws Exception {
+	public void wala_forin() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/wala/forin.js"};
@@ -35,18 +35,18 @@ public class TestWala {
 
 	@Ignore
 	@Test
-	public void testWalaForInct() throws Exception {
+	public void wala_forinct() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
-		Options.enableCorrelationTracking();
-		String[] args = {"test/wala/forin.js"};
+		Options.enableForInSpecialization();
+		String[] args = {"test/wala/forin.js"}; // TODO: should work with for-in specialization and specialized context sensitivity?
 		Misc.run(args);
-		Options.disableCorrelationTracking();
+		Options.disableForInSpecialization();
 		Misc.checkSystemOutput();
 	}
 
 	@Test
-	public void testWalaFunctions() throws Exception {
+	public void wala_functions() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/wala/functions.js"};
@@ -55,7 +55,7 @@ public class TestWala {
 	}
 
 	@Test
-	public void testWalaInherit() throws Exception { 
+	public void wala_inherit() throws Exception { 
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/wala/inherit.js"};
@@ -64,7 +64,7 @@ public class TestWala {
 	}
 
 	@Test
-	public void testWalaMoreControlFlow() throws Exception {
+	public void wala_more_control_flow() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/wala/more-control-flow.js"};
@@ -73,21 +73,17 @@ public class TestWala {
 	}
 
 	@Test
-	public void testWalaNewFn() throws Exception {
+	public void wala_newfn() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
-        boolean newFg = Options.isOldFlowgraphBuilderEnabled();
-        Options.disableOldFlowgraphBuilder();
         Options.enableUnevalMode();
 		String[] args = {"test/wala/newfn.js"};
 		Misc.run(args);
-        if (!newFg)
-            Options.enableOldFlowgraphBuilder();
         Misc.checkSystemOutput();
 	}
 
 	@Test
-	public void testWalaObjects() throws Exception {
+	public void wala_objects() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/wala/objects.js"};
@@ -95,8 +91,9 @@ public class TestWala {
 		Misc.checkSystemOutput();
 	}
 
+	@Ignore // FIXME: assignment to innerHTML
 	@Test // TODO: HTML DOM
-	public void testWalaPortalExampleSimple() throws Exception {
+	public void wala_portal_example_simple() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/wala/portal-example-simple.html"};
@@ -105,7 +102,7 @@ public class TestWala {
 	}
 
 	@Test
-	public void testWalaSimpleLexical() throws Exception {
+	public void wala_simple_lexical() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/wala/simple-lexical.js"};
@@ -114,7 +111,7 @@ public class TestWala {
 	}
 
 	@Test
-	public void testWalaSimple() throws Exception {
+	public void wala_simple() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/wala/simple.js"};
@@ -123,7 +120,7 @@ public class TestWala {
 	}
 
 	@Test
-	public void testWalaSimpler() throws Exception {
+	public void wala_simpler() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/wala/simpler.js"};
@@ -132,7 +129,7 @@ public class TestWala {
 	}
 
 	@Test
-	public void testWalaStringOp() throws Exception {
+	public void wala_string_op() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/wala/string-op.js"}; //note: bug in assumption
@@ -141,7 +138,7 @@ public class TestWala {
 	}
 
 	@Test
-	public void testWalaStringPrims() throws Exception {
+	public void wala_string_prims() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/wala/string-prims.js"};
@@ -151,20 +148,16 @@ public class TestWala {
 
 
 	@Test
-	public void testWalaTry() throws Exception {
+	public void wala_try() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
-        boolean newFg = Options.isOldFlowgraphBuilderEnabled();
-        Options.disableOldFlowgraphBuilder();
 		String[] args = {"test/wala/try.js"};
 		Misc.run(args);
-        if (!newFg)
-            Options.enableOldFlowgraphBuilder();
 		Misc.checkSystemOutput();
 	}
 
 	@Test
-	public void testWalaUpward() throws Exception {
+	public void wala_upward() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/wala/upward.js"};
@@ -173,7 +166,7 @@ public class TestWala {
 	}
 
     @Test
-    public void testWalaArgs() throws Exception {
+    public void wala_args() throws Exception {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/wala/args.js"};

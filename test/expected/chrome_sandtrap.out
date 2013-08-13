@@ -1,0 +1,134 @@
+test/chromeexperiments/sandtrap.tidy.html:92:9: [definite] TypeError, accessing property of null/undefined
+test/chromeexperiments/sandtrap.tidy.html:383:17: [definite] TypeError, accessing property of null/undefined
+test/chromeexperiments/sandtrap.tidy.html:1094:9: [definite] TypeError, call to non-function
+test/chromeexperiments/sandtrap.tidy.html:1114:13: [definite] TypeError, accessing property of null/undefined
+test/chromeexperiments/sandtrap.tidy.html:1119:13: [definite] TypeError, accessing property of null/undefined
+test/chromeexperiments/sandtrap.tidy.html:86:5: [definite] The conditional expression is always false
+test/chromeexperiments/sandtrap.tidy.html:87:5: [definite] The conditional expression is always false
+test/chromeexperiments/sandtrap.tidy.html:92:9: [definite] Variable box is null/undefined
+test/chromeexperiments/sandtrap.tidy.html:96:1: [definite] The conditional expression is always true
+test/chromeexperiments/sandtrap.tidy.html:319:13: [definite] The conditional expression is always true
+test/chromeexperiments/sandtrap.tidy.html:319:18: [definite] Variable e is null/undefined
+test/chromeexperiments/sandtrap.tidy.html:383:17: [definite] Variable box is null/undefined
+test/chromeexperiments/sandtrap.tidy.html:412:5: [definite] The conditional expression is always true
+test/chromeexperiments/sandtrap.tidy.html:1088:5: [definite] The conditional expression is always true
+test/chromeexperiments/sandtrap.tidy.html:1114:13: [definite] Variable song is null/undefined
+test/chromeexperiments/sandtrap.tidy.html:1119:13: [definite] Variable song is null/undefined
+test/chromeexperiments/sandtrap.tidy.html:1147:20: [definite] The conditional expression is always true
+test/chromeexperiments/sandtrap.tidy.html:87:9: [definite] Reading absent property wheelDelta
+test/chromeexperiments/sandtrap.tidy.html:1094:9: [definite] Reading absent property load
+test/chromeexperiments/sandtrap.tidy.html:20:5: [definite] The variable WIDTH is never used
+test/chromeexperiments/sandtrap.tidy.html:22:5: [definite] The variable DEGREE is never used
+test/chromeexperiments/sandtrap.tidy.html:23:5: [definite] The variable GRAVITY is never used
+test/chromeexperiments/sandtrap.tidy.html:24:5: [definite] The variable AIR_FRICTION is never used
+test/chromeexperiments/sandtrap.tidy.html:25:5: [definite] The variable FRICTION is never used
+test/chromeexperiments/sandtrap.tidy.html:26:5: [definite] The variable ROTATIONAL_FRICTION is never used
+test/chromeexperiments/sandtrap.tidy.html:27:5: [definite] The variable WALL_SIZE is never used
+test/chromeexperiments/sandtrap.tidy.html:28:5: [definite] The variable TILE_COLORS is never used
+test/chromeexperiments/sandtrap.tidy.html:29:5: [definite] The variable SHADOW is never used
+test/chromeexperiments/sandtrap.tidy.html:63:22: [definite] Unreachable function
+test/chromeexperiments/sandtrap.tidy.html:80:20: [definite] Unreachable function
+test/chromeexperiments/sandtrap.tidy.html:92:20: [definite] Unreachable code
+test/chromeexperiments/sandtrap.tidy.html:98:5: [definite] The variable mouseIsDown is never used
+test/chromeexperiments/sandtrap.tidy.html:99:5: [definite] The variable mouseClicked is never used
+test/chromeexperiments/sandtrap.tidy.html:100:5: [definite] The variable startAngle is never used
+test/chromeexperiments/sandtrap.tidy.html:102:1: [definite] Unreachable function addRotateInput
+test/chromeexperiments/sandtrap.tidy.html:109:21: [definite] Unreachable function
+test/chromeexperiments/sandtrap.tidy.html:114:19: [definite] Unreachable function
+test/chromeexperiments/sandtrap.tidy.html:119:20: [definite] Unreachable function
+test/chromeexperiments/sandtrap.tidy.html:122:21: [definite] Unreachable function
+test/chromeexperiments/sandtrap.tidy.html:149:23: [definite] Unreachable function
+test/chromeexperiments/sandtrap.tidy.html:152:15: [definite] Unreachable function
+test/chromeexperiments/sandtrap.tidy.html:176:5: [definite] The variable resizeQueue is never used
+test/chromeexperiments/sandtrap.tidy.html:178:1: [definite] Unreachable function addAutoResize
+test/chromeexperiments/sandtrap.tidy.html:180:16: [definite] Unreachable function
+test/chromeexperiments/sandtrap.tidy.html:202:5: [definite] The variable resizeGame is never used
+test/chromeexperiments/sandtrap.tidy.html:202:18: [definite] Unreachable function
+test/chromeexperiments/sandtrap.tidy.html:209:5: [definite] The variable currentLevel is never used
+test/chromeexperiments/sandtrap.tidy.html:211:1: [definite] Unreachable function resetGame
+test/chromeexperiments/sandtrap.tidy.html:217:5: [definite] The variable stepUpdateTime is never used
+test/chromeexperiments/sandtrap.tidy.html:218:5: [definite] The variable stepRenderTime is never used
+test/chromeexperiments/sandtrap.tidy.html:219:5: [definite] The variable stepDelay is never used
+test/chromeexperiments/sandtrap.tidy.html:221:1: [definite] Unreachable function startStepping
+test/chromeexperiments/sandtrap.tidy.html:228:1: [definite] Unreachable function updateStepper
+test/chromeexperiments/sandtrap.tidy.html:238:5: [definite] The variable testRenderTime is never used
+test/chromeexperiments/sandtrap.tidy.html:239:5: [definite] The variable testRenderSteps is never used
+test/chromeexperiments/sandtrap.tidy.html:241:1: [definite] Unreachable function renderStepper
+test/chromeexperiments/sandtrap.tidy.html:303:1: [definite] Unreachable function testingStepper
+test/chromeexperiments/sandtrap.tidy.html:330:1: [definite] Unreachable function showNotification
+test/chromeexperiments/sandtrap.tidy.html:346:1: [definite] Unreachable function showTime
+test/chromeexperiments/sandtrap.tidy.html:350:1: [definite] Unreachable function convertTime
+test/chromeexperiments/sandtrap.tidy.html:355:1: [definite] Unreachable function showPlayNow
+test/chromeexperiments/sandtrap.tidy.html:370:1: [definite] Unreachable function doNothing
+test/chromeexperiments/sandtrap.tidy.html:380:1: [definite] The variable b is never used
+test/chromeexperiments/sandtrap.tidy.html:383:9: [definite] Unreachable code
+test/chromeexperiments/sandtrap.tidy.html:383:13: [definite] The variable d is never used
+test/chromeexperiments/sandtrap.tidy.html:384:13: [definite] The variable c is never used
+test/chromeexperiments/sandtrap.tidy.html:403:5: [definite] The variable startLevelTime is never used
+test/chromeexperiments/sandtrap.tidy.html:409:7: [definite] Unreachable code
+test/chromeexperiments/sandtrap.tidy.html:414:13: [definite] The variable a is never used
+test/chromeexperiments/sandtrap.tidy.html:425:5: [definite] The variable aBox is never used
+test/chromeexperiments/sandtrap.tidy.html:425:12: [definite] Unreachable function
+test/chromeexperiments/sandtrap.tidy.html:474:13: [definite] Unreachable function
+test/chromeexperiments/sandtrap.tidy.html:478:16: [definite] Unreachable function
+test/chromeexperiments/sandtrap.tidy.html:485:19: [definite] Unreachable function
+test/chromeexperiments/sandtrap.tidy.html:567:25: [definite] Unreachable function
+test/chromeexperiments/sandtrap.tidy.html:570:29: [definite] Unreachable function
+test/chromeexperiments/sandtrap.tidy.html:574:16: [definite] Unreachable function
+test/chromeexperiments/sandtrap.tidy.html:582:16: [definite] Unreachable function
+test/chromeexperiments/sandtrap.tidy.html:609:16: [definite] Unreachable function
+test/chromeexperiments/sandtrap.tidy.html:651:5: [definite] The variable aBucket is never used
+test/chromeexperiments/sandtrap.tidy.html:651:15: [definite] Unreachable function
+test/chromeexperiments/sandtrap.tidy.html:666:20: [definite] Unreachable function
+test/chromeexperiments/sandtrap.tidy.html:670:20: [definite] Unreachable function
+test/chromeexperiments/sandtrap.tidy.html:700:5: [definite] The variable aSand is never used
+test/chromeexperiments/sandtrap.tidy.html:700:13: [definite] Unreachable function
+test/chromeexperiments/sandtrap.tidy.html:711:20: [definite] Unreachable function
+test/chromeexperiments/sandtrap.tidy.html:724:27: [definite] Unreachable function
+test/chromeexperiments/sandtrap.tidy.html:727:18: [definite] Unreachable function
+test/chromeexperiments/sandtrap.tidy.html:785:20: [definite] Unreachable function
+test/chromeexperiments/sandtrap.tidy.html:792:20: [definite] Unreachable function
+test/chromeexperiments/sandtrap.tidy.html:824:5: [definite] The variable aPanel is never used
+test/chromeexperiments/sandtrap.tidy.html:824:14: [definite] Unreachable function
+test/chromeexperiments/sandtrap.tidy.html:838:20: [definite] Unreachable function
+test/chromeexperiments/sandtrap.tidy.html:869:27: [definite] Unreachable function
+test/chromeexperiments/sandtrap.tidy.html:911:27: [definite] Unreachable function
+test/chromeexperiments/sandtrap.tidy.html:914:18: [definite] Unreachable function
+test/chromeexperiments/sandtrap.tidy.html:945:20: [definite] Unreachable function
+test/chromeexperiments/sandtrap.tidy.html:1000:26: [definite] Unreachable function
+test/chromeexperiments/sandtrap.tidy.html:1013:20: [definite] Unreachable function
+test/chromeexperiments/sandtrap.tidy.html:1028:5: [definite] The variable aWall is never used
+test/chromeexperiments/sandtrap.tidy.html:1028:13: [definite] Unreachable function
+test/chromeexperiments/sandtrap.tidy.html:1036:20: [definite] Unreachable function
+test/chromeexperiments/sandtrap.tidy.html:1046:27: [definite] Unreachable function
+test/chromeexperiments/sandtrap.tidy.html:1047:18: [definite] Unreachable function
+test/chromeexperiments/sandtrap.tidy.html:1048:20: [definite] Unreachable function
+test/chromeexperiments/sandtrap.tidy.html:1057:20: [definite] Unreachable function
+test/chromeexperiments/sandtrap.tidy.html:1060:1: [definite] Unreachable function polarToCartesian
+test/chromeexperiments/sandtrap.tidy.html:1065:1: [definite] Unreachable function cartesianToPolar
+test/chromeexperiments/sandtrap.tidy.html:1074:5: [definite] The variable playarea is never used
+test/chromeexperiments/sandtrap.tidy.html:1077:1: [definite] Unreachable function begin
+test/chromeexperiments/sandtrap.tidy.html:1095:9: [definite] Unreachable code
+test/chromeexperiments/sandtrap.tidy.html:1096:40: [definite] Unreachable function
+test/chromeexperiments/sandtrap.tidy.html:1099:40: [definite] Unreachable function
+test/chromeexperiments/sandtrap.tidy.html:1109:9: [definite] The variable b is never used
+test/chromeexperiments/sandtrap.tidy.html:1110:9: [definite] The variable a is never used
+test/chromeexperiments/sandtrap.tidy.html:1131:2: [definite] The variable event is never used
+test/chromeexperiments/sandtrap.tidy.html:1131:2: [definite] The variable event is never used
+test/chromeexperiments/sandtrap.tidy.html:1145:2: [definite] The variable event is never used
+test/chromeexperiments/sandtrap.tidy.html:1147:2: [definite] The variable event is never used
+test/chromeexperiments/sandtrap.tidy.html:1148:2: [definite] The variable event is never used
+test/chromeexperiments/sandtrap.tidy.html:1149:2: [definite] The variable event is never used
+test/chromeexperiments/sandtrap.tidy.html:1151:2: [definite] The variable event is never used
+test/chromeexperiments/sandtrap.tidy.html:1154:2: [definite] The variable event is never used
+test/chromeexperiments/sandtrap.tidy.html:1168:2: [definite] The variable event is never used
+test/chromeexperiments/sandtrap.tidy.html:1177:2: [definite] The variable event is never used
+test/chromeexperiments/sandtrap.tidy.html:1094:9: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/sandtrap.tidy.html:89:14: [maybe] Reading absent property detail
+test/chromeexperiments/sandtrap.tidy.html:89:33: [maybe] Reading absent property detail
+test/chromeexperiments/sandtrap.tidy.html:16: [maybe] Uncaught exception, constructed at [test/chromeexperiments/sandtrap.tidy.html:92:9, test/chromeexperiments/sandtrap.tidy.html:383:17, test/chromeexperiments/sandtrap.tidy.html:1094:9]
+test/chromeexperiments/sandtrap.tidy.html:89:24: [maybe] Conversion to number yields NaN
+test/chromeexperiments/sandtrap.tidy.html:207:16: [maybe] Conversion from string to number yields NaN
+test/chromeexperiments/sandtrap.tidy.html:367:15: [maybe] Converting undefined to string
+test/chromeexperiments/sandtrap.tidy.html:367:116: [maybe] Reading absent property (computed name)
+test/chromeexperiments/sandtrap.tidy.html:424:6: [maybe] The variable mapResolution has values with different types

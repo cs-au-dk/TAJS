@@ -1,0 +1,5 @@
+test/v8tests/regexp-standalones.js:37:1: [definite] ReferenceError, reading absent variable assertEquals
+test/v8tests/regexp-standalones.js:36:5: [definite] The variable result is never used
+test/v8tests/regexp-standalones.js:37:14: [definite] Unreachable code
+test/v8tests/regexp-standalones.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/regexp-standalones.js:37:1]
+test/v8tests/regexp-standalones.js:36:14: [maybe] Converting primitive string to object

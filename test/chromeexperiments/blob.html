@@ -1,0 +1,596 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+
+
+    
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="description" content="This soft blob bounces off the edges of the browser window and can be split into multiple blobs. The HTML5 canvas element is used for visual output.">
+		<meta name="keywords" content="hakim, elhattab, hakim el hattab, hakim elhattab, interactive, developer, flash, html5, canvas, web, experiments">
+		<meta name="author" content="Hakim El Hattab">
+		<meta http-equiv="X-UA-Compatible" content="chrome=1">
+	    <meta name="apple-mobile-web-app-capable" content="yes"><meta name="viewport" content="width = 670">		
+        <title>Blob - an experiment with soft bouncy physics built using the HTML5 canvas tag.</title>
+	
+		<style type="text/css"> html{color:#000;background:#222222;}a{cursor:pointer;}html,body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0;}table{border-collapse:collapse;border-spacing:0;}fieldset,img{border:0;}address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:normal;}li{list-style:none;}caption,th{text-align:left;}q:before,q:after{content:'';}abbr,acronym {border:0;font-variant:normal;}sup {vertical-align:text-top;}sub {vertical-align:text-bottom;}input,textarea,select{font-family:inherit;font-size:inherit;font-weight:inherit;outline-style:none;outline-width:0pt;}legend{color:#000;}a:focus,object,h1,h2,h3,h4,h5,h6{-moz-outline-style: none; border:0px;}strong {font-weight: bold;}@font-face { font-family: Delicious; font-weight: bold; src: url('../../../assets/fonts/Delicious-Bold.otf'); }body {overflow: hidden;font-family: Georgia, Helvetica, Arial, sans-serif;color: #333333;font-size: 11px;}a, a:hover {transition: all .08s linear;-o-transition: all .08s linear;-moz-transition: all .08s linear;-webkit-transition: all .08s linear;padding: 1px;}p.noCanvas {color: #999999;font-size: 24px;text-align: center;margin-top: 150px;}#panel {position: absolute; margin: 5px;padding: 5px;z-index: 99;background-color: #FFFECF;border: 1px solid #e1e0af;}#panel a {color: #333333;background-color: #FFFECF;text-decoration: underline;}#panel a:hover {color: #FFFECF;background-color: #333333;}#panel a.versionLink {padding: 1px;text-decoration: underline;}#panel a.versionLink.selected {color: #888888;text-decoration: none;}#panel p {padding: 0px 5px 5px 5px;line-height: 1.6em;}#panel h2 {font-size: 20px;font-weight: bold;font-family: Delicious, Helvetica, sans-serif;padding: 5px 5px 5px 5px;}#chromeBadge {position: absolute; bottom: 0; right: 0;padding: 4px;}#sharing {background-color: #FFFECF;position: absolute; top: 0;right: 0;margin: 5px;padding: 7px 0 4px 10px;z-index: 98;border: 1px solid #e1e0af;}#facebook_button {float: left;}#retweet_button {float: left;}#flattr_button {float: right;margin: 1px 10px 0 4px;}			
+		</style>
+		
+		<style type="text/css">body, html {
+	background-color: #222222;
+}
+
+canvas {
+}
+</style>
+
+
+    </head><body style="background-color: rgb(34, 34, 34);">
+		<div id="panel">
+			<h2><a href="http://hakim.se/experiments/">Experiments</a> / Blob / 03</h2>
+			<p><b>Double click</b> on a blob to split it, drag together to merge<br><b>Shake</b> the browser window to make them bounce.<br>Use the keyboard <b><a id="keyboardUp" href="#">up</a> / <a id="keyboardDown" href="#">down</a></b> arrows to change blob size and<br>the <b><a id="keyboardLeft" href="#">left</a> / <a id="keyboardRight" href="#">right</a></b> arrows to change between skins.</p>
+								</div>
+		
+<canvas height="715" width="1157" id="world"><p class="noCanvas">You need a <a href="http://www.google.com/chrome">modern browser</a> to view this.</p></canvas>
+
+</script><script type="text/javascript">
+var BlobWorld = new(function () {
+    function b(f, h) {
+        var d = new Blob;
+        d.position.x = f.x;
+        d.position.y = f.y;
+        d.velocity.x = h.x;
+        d.velocity.y = h.y;
+        d.generateNodes();
+        j.push(d)
+    }
+    function e(f) {
+        u = f.clientX - (window.innerWidth - g.width) * 0.5;
+        v = f.clientY - (window.innerHeight - g.height) * 0.5
+    }
+    function i(f) {
+        f.preventDefault();
+        y = true;
+        E()
+    }
+    function k() {
+        y = false;
+        if (q) {
+            q.dragNodeIndex = -1;
+            q = null
+        }
+    }
+    function s(f) {
+        if (f.touches.length == 1) {
+            f.preventDefault();
+            y = true;
+            u = f.touches[0].pageX - (window.innerWidth - g.width) * 0.5;
+            v = f.touches[0].pageY - (window.innerHeight - g.height) * 0.5;
+            (new Date).getTime() - F < 300 ? G() : E();
+            F = (new Date).getTime()
+        }
+    }
+    function z(f) {
+        if (f.touches.length == 1) {
+            f.preventDefault();
+            u = f.touches[0].pageX - (window.innerWidth - g.width) * 0.5;
+            v = f.touches[0].pageY - (window.innerHeight - g.height) * 0.5
+        }
+    }
+    function L() {
+        y = false;
+        if (q) {
+            q.dragNodeIndex = -1;
+            q = null
+        }
+    }
+    function M() {
+        G()
+    }
+    function E() {
+        q = j[D(j, {
+            x: u,
+            y: v
+        })];
+        q.dragNodeIndex = D(q.nodes, {
+            x: u,
+            y: v
+        })
+    }
+    function G() {
+        var f = {
+            x: u,
+            y: v
+        },
+            h = j[D(j, f)];
+        distanceBetween(h.position, f) < h.radius + 30 && h.quality > 8 && j.push(h.split())
+    }
+    function N(f) {
+        switch (f.keyCode) {
+        case 40:
+            A(-10);
+            f.preventDefault();
+            break;
+        case 38:
+            A(10);
+            f.preventDefault();
+            break;
+        case 37:
+            B(-1);
+            f.preventDefault();
+            break;
+        case 39:
+            B(1);
+            f.preventDefault();
+            break
+        }
+    }
+    function O() {
+        A(20)
+    }
+    function P() {
+        A(-20)
+    }
+    function Q() {
+        B(-1)
+    }
+    function R() {
+        B(1)
+    }
+    function B(f) {
+        w += f;
+        w = w < 0 ? C.length - 1 : w;
+        w = w > C.length - 1 ? 0 : w;
+        document.body.style.backgroundColor = C[w].backgroundColor
+    }
+    function A(f) {
+        for (var h = 0, d = j.length; h < d; h++) {
+            blob = j[h];
+            var n = blob.radius;
+            blob.radius += f;
+            blob.radius = Math.max(40, Math.min(blob.radius, 280));
+            blob.radius != n && blob.updateNormals()
+        }
+    }
+
+    function D(f, h) {
+        for (var d = 9999, n = 9999, a = -1, o = 0, r = f.length; o < r; o++) {
+            n = distanceBetween(f[o].position, {
+                x: h.x,
+                y: h.y
+            });
+            if (n < d) {
+                d = n;
+                a = o
+            }
+        }
+        return a
+    }
+    function H() {
+        g.width = window.innerWidth;
+        g.height = window.innerHeight;
+        t.width = g.width;
+        t.height = g.height;
+        g.x = 3;
+        g.y = 3;
+        g.width -= 6;
+        g.height -= 6
+    }
+    function S() {
+        var f = C[w],
+            h, d, n, a;
+        h = 0;
+        for (n = j.length; h < n; h++) {
+            a = j[h];
+            l.clearRect(a.dirtyRegion.left - 80, a.dirtyRegion.top - 80, a.dirtyRegion.right - a.dirtyRegion.left + 160, a.dirtyRegion.bottom - a.dirtyRegion.top + 160);
+            a.dirtyRegion.reset()
+        }
+        if (x.blobA != -1 && x.blobB != -1) {
+            h = x.blobA;
+            n = x.blobB;
+            a = getTime();
+            if (j[h] && j[n]) if (a - j[h].lastSplitTime > 500 && a - j[n].lastSplitTime > 500) {
+                j[h].merge(j[n]);
+                if (q == j[n] && y) q = j[h];
+                j.splice(n, 1)
+            }
+            x.blobA = -1;
+            x.blobB = -1
+        }
+        if (q) {
+            q.velocity.x += (u - q.position.x) * 0.01;
+            q.velocity.y += (v + 100 - q.position.y) * 0.01
+        }
+        h = 0;
+        for (n = j.length; h < n; h++) {
+            a = j[h];
+            for (d = 0; d < n; d++) {
+                var o = j[d];
+                if (o != a) if (distanceBetween({
+                    x: a.position.x,
+                    y: a.position.y
+                }, {
+                    x: o.position.x,
+                    y: o.position.y
+                }) < a.radius + o.radius) {
+                    x.blobA = a.position.x > o.position.x ? h : d;
+                    x.blobB = a.position.x > o.position.x ? d : h
+                }
+            }
+            a.velocity.x += (window.screenX - I) * (0.04 + Math.random() * 0.1);
+            a.velocity.y += (window.screenY - J) * (0.04 + Math.random() * 0.1);
+            d = {
+                x: 1.035,
+                y: 1.035
+            };
+            if (a.position.x > g.x + g.width) {
+                a.velocity.x -= (a.position.x - g.width) * 0.04;
+                d.y += 0.035
+            } else if (a.position.x < g.x) {
+                a.velocity.x += Math.abs(g.x - a.position.x) * 0.04;
+                d.y += 0.035
+            }
+            if (a.position.y + a.radius * 0.25 > g.y + g.height) {
+                a.velocity.y -= (a.position.y + a.radius * 0.25 - g.height) * 0.04;
+                d.x += 0.015
+            } else if (a.position.y < g.y) {
+                a.velocity.y += Math.abs(g.y - a.position.y) * 0.04;
+                d.x += 0.015
+            }
+            a.velocity.x += K.x;
+            a.velocity.y += K.y;
+            a.velocity.x /= d.x;
+            a.velocity.y /= d.y;
+            a.position.x += a.velocity.x;
+            a.position.y += a.velocity.y;
+            var r, c, m, p;
+            d = 0;
+            for (o = a.nodes.length; d < o; d++) {
+                c = a.nodes[d];
+                c.ghost.x = c.position.x;
+                c.ghost.y = c.position.y
+            }
+            if (a.nodes[a.dragNodeIndex]) {
+                a.rotation.target = Math.atan2(v - a.position.y - a.radius * 4, u - a.position.x);
+                a.rotation.current += (a.rotation.target - a.rotation.current) * 0.2;
+                a.updateNormals()
+            }
+            d = 0;
+            for (o = a.nodes.length; d < o; d++) {
+                c = a.nodes[d];
+                c.normal.x += (c.normalTarget.x - c.normal.x) * 0.05;
+                c.normal.y += (c.normalTarget.y - c.normal.y) * 0.05;
+                p = {
+                    x: a.position.x,
+                    y: a.position.y
+                };
+                for (r = 0; r < c.joints.length; r++) {
+                    m = c.joints[r];
+                    var T = m.node.ghost.y - c.ghost.y - (m.node.normal.y - c.normal.y);
+                    m.strain.x += (m.node.ghost.x - c.ghost.x - (m.node.normal.x - c.normal.x) - m.strain.x) * 0.3;
+                    m.strain.y += (T - m.strain.y) * 0.3;
+                    p.x += m.strain.x * m.strength;
+                    p.y += m.strain.y * m.strength
+                }
+                p.x += c.normal.x;
+                p.y += c.normal.y;
+                r = getArrayIndexByOffset(a.nodes, a.dragNodeIndex, -1);
+                m = getArrayIndexByOffset(a.nodes, a.dragNodeIndex, 1);
+                if (a.dragNodeIndex != -1 && (d == a.dragNodeIndex || a.nodes.length > 8 && (d == r || d == m))) {
+                    r = d == a.dragNodeIndex ? 0.7 : 0.5;
+                    p.x += (u - p.x) * r;
+                    p.y += (v - p.y) * r
+                }
+                c.position.x += (p.x - c.position.x) * 0.1;
+                c.position.y += (p.y - c.position.y) * 0.1;
+                c.position.x = Math.max(Math.min(c.position.x, g.x + g.width), g.x);
+                c.position.y = Math.max(Math.min(c.position.y, g.y + g.height), g.y);
+                a.dirtyRegion.inflate(c.position.x, c.position.y)
+            }
+            if (!f.debug) {
+                l.beginPath();
+                l.fillStyle = f.fillStyle;
+                l.strokeStyle = f.strokeStyle;
+                l.lineWidth = f.lineWidth
+            }
+            c = getArrayElementByOffset(a.nodes, 0, -1);
+            p = getArrayElementByOffset(a.nodes, 0, 0);
+            l.moveTo(c.position.x + (p.position.x - c.position.x) / 2, c.position.y + (p.position.y - c.position.y) / 2);
+            d = 0;
+            for (o = a.nodes.length; d < o; d++) {
+                c = getArrayElementByOffset(a.nodes, d, 0);
+                p = getArrayElementByOffset(a.nodes, d, 1);
+                if (f.debug) {
+                    l.beginPath();
+                    l.lineWidth = 1;
+                    l.strokeStyle = "#ababab";
+                    for (r = 0; r < c.joints.length; r++) {
+                        m = c.joints[r];
+                        l.moveTo(c.position.x, c.position.y);
+                        l.lineTo(m.node.position.x, m.node.position.y)
+                    }
+                    l.stroke();
+                    l.beginPath();
+                    l.fillStyle = d == 0 ? "#00ff00" : d == a.dragNodeIndex ? "ff0000" : "#dddddd";
+                    l.arc(c.position.x, c.position.y, 5, 0, Math.PI * 2, true);
+                    l.fill()
+                } else l.quadraticCurveTo(c.position.x, c.position.y, c.position.x + (p.position.x - c.position.x) / 2, c.position.y + (p.position.y - c.position.y) / 2)
+            }
+            l.stroke();
+            l.fill()
+        }
+        I = window.screenX;
+        J = window.screenY
+    }
+    var g = {
+        x: 0,
+        y: 0,
+        width: window.innerWidth,
+        height: window.innerHeight
+    },
+        t, l, j = [],
+        q, I = window.screenX,
+        J = window.screenY,
+        u = g.width * 0.5,
+        v = g.height * 0.5,
+        y = false,
+        F = 0,
+        K = {
+            x: 0,
+            y: 1.2
+        },
+        x = {
+            blobA: -1,
+            blobB: -1
+        },
+        w = 0,
+        C = [{
+            fillStyle: "rgba(0,200,250,1.0)",
+            strokeStyle: "#ffffff",
+            lineWidth: 5,
+            backgroundColor: "#222222",
+            debug: false
+        },
+        {
+            fillStyle: "",
+            strokeStyle: "",
+            lineWidth: 0,
+            backgroundColor: "#222222",
+            debug: true
+        },
+        {
+            fillStyle: "rgba(0,0,0,0.1)",
+            strokeStyle: "rgba(255,255,255,1.0)",
+            lineWidth: 6,
+            backgroundColor: "#222222",
+            debug: false
+        },
+        {
+            fillStyle: "rgba(255,60,60,1.0)",
+            strokeStyle: "rgba(0,0,0,1.0)",
+            lineWidth: 2,
+            backgroundColor: "#222222",
+            debug: false
+        },
+        {
+            fillStyle: "rgba(255,255,0,1.0)",
+            strokeStyle: "rgba(0,0,0,1.0)",
+            lineWidth: 4,
+            backgroundColor: "#222222",
+            debug: false
+        },
+        {
+            fillStyle: "rgba(255,255,255,1.0)",
+            strokeStyle: "rgba(0,0,0,1.0)",
+            lineWidth: 4,
+            backgroundColor: "#000000",
+            debug: false
+        },
+        {
+            fillStyle: "rgba(0,0,0,1.0)",
+            strokeStyle: "rgba(0,0,0,1.0)",
+            lineWidth: 4,
+            backgroundColor: "#ffffff",
+            debug: false
+        }];
+    this.init = function () {
+        if ((t = document.getElementById("world")) && t.getContext) {
+            l = t.getContext("2d");
+            document.addEventListener("mousemove", e, false);
+            t.addEventListener("mousedown", i, false);
+            t.addEventListener("dblclick", M, false);
+            document.addEventListener("mouseup", k, false);
+            document.addEventListener("keydown", N, false);
+            t.addEventListener("touchstart", s, false);
+            t.addEventListener("touchmove", z, false);
+            t.addEventListener("touchend", L, false);
+            window.addEventListener("resize", H, false);
+            document.getElementById("keyboardUp").addEventListener("click", O, false);
+            document.getElementById("keyboardDown").addEventListener("click", P, false);
+            document.getElementById("keyboardLeft").addEventListener("click", Q, false);
+            document.getElementById("keyboardRight").addEventListener("click", R, false);
+            b({
+                x: g.width * 0.15,
+                y: g.height * Math.random() * 0.2
+            }, {
+                x: g.width * 0.011,
+                y: 0
+            });
+            b({
+                x: g.width * 0.85,
+                y: g.height * Math.random() * 0.2
+            }, {
+                x: -g.width * 0.011,
+                y: 0
+            });
+            H();
+            setInterval(S, 1E3 / 60)
+        }
+    }
+});
+
+function Region() {
+    this.top = this.left = 999999;
+    this.bottom = this.right = 0
+}
+Region.prototype.reset = function () {
+    this.top = this.left = 999999;
+    this.bottom = this.right = 0
+};
+Region.prototype.inflate = function (b, e) {
+    this.left = Math.min(this.left, b);
+    this.top = Math.min(this.top, e);
+    this.right = Math.max(this.right, b);
+    this.bottom = Math.max(this.bottom, e)
+};
+
+function Blob() {
+    this.position = {
+        x: 0,
+        y: 0
+    };
+    this.velocity = {
+        x: 0,
+        y: 0
+    };
+    this.radius = 85;
+    this.nodes = [];
+    this.rotation = {
+        current: 0,
+        target: 0
+    };
+    this.dragNodeIndex = -1;
+    this.lastSplitTime = 0;
+    this.quality = 16;
+    this.dirtyRegion = new Region
+}
+Blob.prototype.generateNodes = function () {
+    this.nodes = [];
+    var b, e;
+    for (b = 0; b < this.quality; b++) {
+        e = {
+            normal: {
+                x: 0,
+                y: 0
+            },
+            normalTarget: {
+                x: 0,
+                y: 0
+            },
+            position: {
+                x: this.position.x,
+                y: this.position.y
+            },
+            ghost: {
+                x: this.position.x,
+                y: this.position.y
+            },
+            angle: 0
+        };
+        this.nodes.push(e)
+    }
+    this.updateJoints();
+    this.updateNormals()
+};
+Blob.prototype.updateJoints = function () {
+    for (var b = 0; b < this.quality; b++) {
+        var e = this.nodes[b];
+        e.joints = [];
+        e.joints.push(new Joint(getArrayElementByOffset(this.nodes, b, -1), 0.4));
+        e.joints.push(new Joint(getArrayElementByOffset(this.nodes, b, 1), 0.4));
+        if (this.quality > 4) {
+            e.joints.push(new Joint(getArrayElementByOffset(this.nodes, b, -2), 0.4));
+            e.joints.push(new Joint(getArrayElementByOffset(this.nodes, b, 2), 0.4))
+        }
+        if (this.quality > 8) {
+            e.joints.push(new Joint(getArrayElementByOffset(this.nodes, b, -3), 0.4));
+            e.joints.push(new Joint(getArrayElementByOffset(this.nodes, b, 3), 0.4))
+        }
+    }
+};
+Blob.prototype.updateNormals = function () {
+    var b, e, i;
+    for (b = 0; b < this.quality; b++) {
+        i = this.nodes[b];
+        if (this.dragNodeIndex != -1) {
+            e = b - Math.round(this.dragNodeIndex);
+            e = e < 0 ? this.quality + e : e
+        } else e = b;
+        i.angle = e / this.quality * Math.PI * 2 + this.rotation.target;
+        i.normalTarget.x = Math.cos(i.angle) * this.radius;
+        i.normalTarget.y = Math.sin(i.angle) * this.radius;
+        if (i.normal.x == 0 && i.normal.y == 0) {
+            i.normal.x = i.normalTarget.x;
+            i.normal.y = i.normalTarget.y
+        }
+    }
+};
+Blob.prototype.split = function () {
+    var b = this.radius / 10,
+        e = Math.round(this.nodes.length * 0.5),
+        i = this.radius * 0.5,
+        k = new Blob;
+    k.position.x = this.position.x;
+    k.position.y = this.position.y;
+    k.nodes = [];
+    for (var s = 0; s++ < e;) k.nodes.push(this.nodes.shift());
+    var z = e = 0;
+    for (s = 0; s < this.nodes.length; s++) e += this.nodes[s].position.x;
+    for (s = 0; s < k.nodes.length; s++) z += k.nodes[s].position.x;
+    k.velocity.x = z > e ? b : -b;
+    k.velocity.y = this.velocity.y;
+    k.radius = i;
+    k.quality = k.nodes.length;
+    this.velocity.x = e > z ? b : -b;
+    this.radius = i;
+    this.quality =
+    this.nodes.length;
+    this.dragNodeIndex = -1;
+    this.updateJoints();
+    this.updateNormals();
+    k.dragNodeIndex = -1;
+    k.updateJoints();
+    k.updateNormals();
+    k.lastSplitTime = getTime();
+    this.lastSplitTime = getTime();
+    return k
+};
+Blob.prototype.merge = function (b) {
+    this.velocity.x *= 0.5;
+    this.velocity.y *= 0.5;
+    this.velocity.x += b.velocity.x * 0.5;
+    for (this.velocity.y += b.velocity.y * 0.5; b.nodes.length;) this.nodes.push(b.nodes.shift());
+    this.quality = this.nodes.length;
+    this.radius += b.radius;
+    this.dragNodeIndex = b.dragNodeIndex != -1 ? b.dragNodeIndex : this.dragNodeIndex;
+    this.updateNormals();
+    this.updateJoints()
+};
+
+function Joint(b, e) {
+    this.node = b;
+    this.strength = e;
+    this.strain = {
+        x: 0,
+        y: 0
+    }
+}
+
+function getArrayIndexByOffset(b, e, i) {
+    if (b[e + i]) return e + i;
+    if (e + i > b.length - 1) return e - b.length + i;
+    if (e + i < 0) return b.length + (e + i)
+}
+function getArrayElementByOffset(b, e, i) {
+    return b[getArrayIndexByOffset(b, e, i)]
+}
+function getTime() {
+    return (new Date).getTime()
+}
+function distanceBetween(b, e) {
+    var i = e.x - b.x,
+        k = e.y - b.y;
+    return Math.sqrt(i * i + k * k)
+}
+BlobWorld.init();
+</script>
+
+    </body></html>

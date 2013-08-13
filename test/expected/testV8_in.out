@@ -1,0 +1,6 @@
+test/v8tests/in.js:32:1: [definite] ReferenceError, reading absent variable assertFalse
+test/v8tests/in.js:31:5: [definite] The variable o is never used
+test/v8tests/in.js:32:13: [definite] Unreachable code
+test/v8tests/in.js:53:5: [definite] The variable a is never used
+test/v8tests/in.js:99:10: [definite] The variable i is never used
+test/v8tests/in.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/in.js:32:1]

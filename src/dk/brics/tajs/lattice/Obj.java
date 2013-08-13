@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Aarhus University
+ * Copyright 2009-2013 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,8 +20,9 @@ import static dk.brics.tajs.util.Collections.newMap;
 import static dk.brics.tajs.util.Collections.newSet;
 import static dk.brics.tajs.util.Collections.sortedEntries;
 
+import dk.brics.tajs.solver.ICallContext;
 import dk.brics.tajs.util.AnalysisException;
-import dk.brics.tajs.util.Collections;
+import java.util.Collections;
 import java.util.Map;
 import java.util.Set;
 
@@ -81,11 +82,21 @@ public final class Obj {
 	}
 	
 	/**
+	 * Sets all properties to none and scope to empty.
+	 */
+	public void setToNone() {
+		default_nonarray_property = default_array_property = internal_prototype = internal_value = Value.makeNone();
+		properties = java.util.Collections.emptyMap();
+		scope_unknown = false;
+		writable_properties = false;
+	}
+
+	/**
 	 * Constructs an abstract object where all properties are absent (but modified) and scope is set to empty.
 	 */
 	public static Obj makeAbsentModified() {
 		Obj obj = new Obj();
-		obj.properties = Collections.newMap();
+		obj.properties = Collections.emptyMap();
 		obj.default_nonarray_property = obj.default_array_property = obj.internal_prototype = obj.internal_value = Value.makeAbsentModified();
 		return obj;
 	}
@@ -95,8 +106,18 @@ public final class Obj {
 	 */
 	public static Obj makeNone() {
 		Obj obj = new Obj();
-		obj.properties = Collections.newMap();
+		obj.properties = Collections.emptyMap();
 		obj.default_nonarray_property = obj.default_array_property = obj.internal_prototype = obj.internal_value = Value.makeNone();
+		return obj;
+	}
+	
+	/**
+	 * Constructs an abstract object where all properties are none, but modified, and scope is set to empty.
+	 */
+	public static Obj makeNoneModified() {
+		Obj obj = new Obj();
+		obj.properties = Collections.emptyMap();
+		obj.default_nonarray_property = obj.default_array_property = obj.internal_prototype = obj.internal_value = Value.makeNoneModified();
 		return obj;
 	}
 	
@@ -105,8 +126,7 @@ public final class Obj {
 	 */
 	public static Obj makeUnknown() {
 		Obj obj = new Obj();
-		obj.properties = Collections.newMap();
-		obj.writable_properties = false;
+		obj.properties = Collections.emptyMap();
 		obj.default_array_property = obj.default_nonarray_property = obj.internal_prototype = obj.internal_value = Value.makeUnknown();
 		obj.scope_unknown = true;
 		return obj;
@@ -126,12 +146,22 @@ public final class Obj {
 	/**
 	 * Checks whether all properties have the none value.
 	 */
-	public boolean isNone() {
+	public boolean isAllNone() {
 		for (Value v : properties.values())
 			if (!v.isNone())
 				return false;
 		return default_array_property.isNone() && default_nonarray_property.isNone() && internal_prototype.isNone()
-		&& internal_value.isNone() && !scope_unknown && scope == null;
+				&& internal_value.isNone() && !scope_unknown && scope == null;
+	}
+	
+	/**
+	 * Checks whether some property has the none value.
+	 */
+	public boolean isSomeNone() {
+		for (Value v : properties.values())
+			if (v.isNone())
+				return true;
+		return default_array_property.isNone() || default_nonarray_property.isNone() || internal_prototype.isNone() || internal_value.isNone();
 	}
 	
 	/**
@@ -183,6 +213,8 @@ public final class Obj {
 			scope = other.scope;
 			scope_unknown = other.scope_unknown;
 		}
+		if (isSomeNone())
+			setToNone();
 	}
 	
 	/**
@@ -398,7 +430,7 @@ public final class Obj {
 	
 	/**
 	 * Replaces all occurrences of oldlabel by newlabel.
-	 * Does not change modified flags.
+	 * Sets the modified flag on values that contain oldlabel.
 	 * Ignores 'unknown' values.
 	 */
 	public void replaceObjectLabel(ObjectLabel oldlabel, ObjectLabel newlabel, Map<ScopeChain,ScopeChain> cache) {
@@ -605,13 +637,13 @@ public final class Obj {
 		objlabels.addAll(default_nonarray_property.getObjectLabels());
 		objlabels.addAll(internal_prototype.getObjectLabels());
 		objlabels.addAll(internal_value.getObjectLabels());
-		for (Set<ObjectLabel> ls : ScopeChain.iterable(scope))
-			objlabels.addAll(ls);
+		objlabels.addAll(ScopeChain.getObjectLabels(scope));
 		return objlabels;
 	}
 	
 	/**
-	 * Returns the designated value.
+	 * Returns the designated property value of this object.
+	 * Note that the object label of the property reference is not used.
 	 */
 	public Value getValue(PropertyReference prop) {
 		switch (prop.getKind()) {
@@ -631,23 +663,61 @@ public final class Obj {
 	}
 
 	/**
+	 * Sets the designated property value of this object.
+	 * Note that the object label of the property reference is not used.
+	 */
+	public void setValue(PropertyReference prop, Value v) {
+		switch (prop.getKind()) {
+		case ORDINARY:
+			setProperty(prop.getPropertyName(), v);
+			break;
+		case DEFAULT_ARRAY:
+			setDefaultArrayProperty(v);
+			break;
+		case DEFAULT_NONARRAY:
+			setDefaultNonArrayProperty(v);
+			break;
+		case INTERNAL_VALUE:
+			setInternalValue(v);
+			break;
+		case INTERNAL_PROTOTYPE:
+			setInternalPrototype(v);
+			break;
+		default:
+			throw new AnalysisException("Unexpected property reference kind");
+		}		
+	}
+
+	/**
 	 * Trims this object according to the given existing object.
 	 */
-	public void trim(Obj obj) {
+	public <BlockStateType extends BlockState<BlockStateType,CallContextType,CallEdgeType>,
+	CallContextType extends ICallContext<CallContextType>,
+	CallEdgeType extends CallEdge<BlockStateType>>
+	void localize(Obj obj, ObjectLabel objlabel, BlockState<BlockStateType,CallContextType,CallEdgeType> s) {
+		makeWritableProperties();
+		// materialize properties before changing the default properties
+		for (String propertyname : obj.properties.keySet()) {
+			properties.put(propertyname, getProperty(propertyname));
+		}
 		// reduce those properties that are unknown or polymorphic in obj
+		default_array_property = UnknownValueResolver.localize(default_array_property, obj.default_array_property, s, 
+				PropertyReference.makeDefaultArrayPropertyReference(objlabel)); 
+		default_nonarray_property = UnknownValueResolver.localize(default_nonarray_property, obj.default_nonarray_property, s, 
+				PropertyReference.makeDefaultNonArrayPropertyReference(objlabel)); 
+		internal_value = UnknownValueResolver.localize(internal_value, obj.internal_value, s, 
+				PropertyReference.makeInternalValuePropertyReference(objlabel)); 
+		internal_prototype = UnknownValueResolver.localize(internal_prototype, obj.internal_prototype, s, 
+				PropertyReference.makeInternalPrototypePropertyReference(objlabel)); 
 		Map<String,Value> new_properties = newMap();
-		for (Map.Entry<String,Value> me : properties.entrySet()) {
+		for (Map.Entry<String,Value> me : properties.entrySet()) { // obj is writable, so materializations from defaults will appear here
 			String propertyname = me.getKey();
 			Value v = me.getValue();
 			Value obj_v = obj.getProperty(propertyname);
-			new_properties.put(propertyname, v.trim(obj_v));
+			new_properties.put(propertyname, UnknownValueResolver.localize(v, obj_v, s, 
+					PropertyReference.makeOrdinaryPropertyReference(objlabel, propertyname)));
 		}
 		properties = new_properties;
-		writable_properties = true;
-		default_array_property = default_array_property.trim(obj.default_array_property); 
-		default_nonarray_property = default_nonarray_property.trim(obj.default_nonarray_property); 
-		internal_value = internal_value.trim(obj.internal_value); 
-		internal_prototype = internal_prototype.trim(obj.internal_prototype); 
 		if (obj.scope_unknown) { // TODO: scope chain polymorphic?
 			scope = null;
 			scope_unknown = true;
@@ -677,5 +747,6 @@ public final class Obj {
 		internal_prototype = internal_prototype.remove(obj.internal_prototype);
 		internal_value = internal_value.remove(obj.internal_value);
 		scope = ScopeChain.remove(scope,  obj.scope);
+		// TODO: could remove properties that have same value as their default?
 	}
 }

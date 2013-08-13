@@ -1,0 +1,8 @@
+test/v8tests/number-limits.js:36:5: [definite] ReferenceError, reading absent variable assertTrue
+test/v8tests/number-limits.js:31:3: [definite] The conditional expression is always true
+test/v8tests/number-limits.js:32:9: [definite] The variable mulAboveMax is never used
+test/v8tests/number-limits.js:33:9: [definite] The variable addAboveMax is never used
+test/v8tests/number-limits.js:34:9: [definite] The variable mulBelowMin is never used
+test/v8tests/number-limits.js:35:9: [definite] The variable addBelowMin is never used
+test/v8tests/number-limits.js:36:16: [definite] Unreachable code
+test/v8tests/number-limits.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/number-limits.js:36:5]

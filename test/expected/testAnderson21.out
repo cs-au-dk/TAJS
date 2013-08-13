@@ -1,2 +1,0 @@
-test/anderson/anderson21.js:3:2: [definite] The variable x is never used
-test/anderson/anderson21.js:3:18: [definite] The variable declaration x shadows a parameter

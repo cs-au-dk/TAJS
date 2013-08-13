@@ -1,2 +1,0 @@
-test/browser/domlegacy/events/DOMOnLoad06.tidy.html:13: [maybe] TypeError, reading property of null/undefined
-test/browser/domlegacy/events/DOMOnLoad06.tidy.html:6: [maybe] Uncaught exception, constructed at [test/dom/events/DOMOnLoad06.tidy.html:13]

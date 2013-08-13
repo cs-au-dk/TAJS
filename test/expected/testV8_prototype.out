@@ -1,0 +1,13 @@
+test/v8tests/prototype.js:48:1: [definite] ReferenceError, reading absent variable assertEquals
+test/v8tests/prototype.js:45:1: [definite] Dead assignment, property x is never read
+test/v8tests/prototype.js:46:1: [definite] Dead assignment, property y is never read
+test/v8tests/prototype.js:47:1: [definite] Dead assignment, property z is never read
+test/v8tests/prototype.js:48:14: [definite] Unreachable code
+test/v8tests/prototype.js:54:10: [definite] The variable i is never used
+test/v8tests/prototype.js:63:1: [definite] Unreachable function D
+test/v8tests/prototype.js:66:5: [definite] The variable p is never used
+test/v8tests/prototype.js:77:1: [definite] Unreachable function X
+test/v8tests/prototype.js:78:1: [definite] Unreachable function Y
+test/v8tests/prototype.js:80:15: [definite] Unreachable function
+test/v8tests/prototype.js:88:5: [definite] The variable test is never used
+test/v8tests/prototype.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/prototype.js:48:1]

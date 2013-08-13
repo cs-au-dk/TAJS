@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Aarhus University
+ * Copyright 2009-2013 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,6 +18,9 @@ package dk.brics.tajs.htmlparser;
 
 import org.jdom.Element;
 
+/**
+ * Visitor interface for JDOM HTML document traversal.
+ */
 public interface HTMLVisitor {
 
     public void visitDocument();
@@ -137,5 +140,4 @@ public interface HTMLVisitor {
     public void visitTR(Element element);
 
     public void visitUL(Element element);
-
 }

@@ -1,0 +1,566 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+
+
+    
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="description" content="Core - an HTML5 canvas game. Protect the core!">
+		<meta name="keywords" content="hakim, elhattab, hakim el hattab, hakim elhattab, interactive, developer, flash, html5, canvas, web, experiments">
+		<meta name="author" content="Hakim El Hattab">
+		<meta http-equiv="X-UA-Compatible" content="chrome=1">
+	    <meta name="apple-mobile-web-app-capable" content="yes"><meta name="viewport" content="width = 450">		
+        <title>Core - an HTML5 canvas game.</title>
+        
+		<style type="text/css"> html{color:#000;background:#222222;}a{cursor:pointer;}html,body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0;}table{border-collapse:collapse;border-spacing:0;}fieldset,img{border:0;}address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:normal;}li{list-style:none;}caption,th{text-align:left;}q:before,q:after{content:'';}abbr,acronym {border:0;font-variant:normal;}sup {vertical-align:text-top;}sub {vertical-align:text-bottom;}input,textarea,select{font-family:inherit;font-size:inherit;font-weight:inherit;outline-style:none;outline-width:0pt;}legend{color:#000;}a:focus,object,h1,h2,h3,h4,h5,h6{-moz-outline-style: none; border:0px;}strong {font-weight: bold;}@font-face { font-family: Delicious; font-weight: bold; src: url('../../../assets/fonts/Delicious-Bold.otf'); }body {overflow: hidden;font-family: Georgia, Helvetica, Arial, sans-serif;color: #333333;font-size: 11px;}a, a:hover {transition: all .08s linear;-o-transition: all .08s linear;-moz-transition: all .08s linear;-webkit-transition: all .08s linear;padding: 1px;}p.noCanvas {color: #999999;font-size: 24px;text-align: center;margin-top: 150px;}#panel {position: absolute; margin: 5px;padding: 5px;z-index: 99;background-color: #FFFECF;border: 1px solid #e1e0af;}#panel a {color: #333333;background-color: #FFFECF;text-decoration: underline;}#panel a:hover {color: #FFFECF;background-color: #333333;}#panel a.versionLink {padding: 1px;text-decoration: underline;}#panel a.versionLink.selected {color: #888888;text-decoration: none;}#panel p {padding: 0px 5px 5px 5px;line-height: 1.6em;}#panel h2 {font-size: 20px;font-weight: bold;font-family: Delicious, Helvetica, sans-serif;padding: 5px 5px 5px 5px;}#chromeBadge {position: absolute; bottom: 0; right: 0;padding: 4px;}#sharing {background-color: #FFFECF;position: absolute; top: 0;right: 0;margin: 5px;padding: 7px 0 4px 10px;z-index: 98;border: 1px solid #e1e0af;}#facebook_button {float: left;}#retweet_button {float: left;}#flattr_button {float: right;margin: 1px 10px 0 4px;}			
+		</style>
+		
+<style type="text/css">
+html{color:#000;background:#222222;}
+a{cursor:pointer;}
+html,body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0;}
+table{border-collapse:collapse;border-spacing:0;}
+fieldset,img{border:0;}
+address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:normal;}
+li{list-style:none;}
+caption,th{text-align:left;}
+/* h1,h2,h3,h4,h5,h6{font-size:100%;} */
+q:before,q:after{content:'';}
+abbr,acronym {border:0;font-variant:normal;}
+sup {vertical-align:text-top;}
+sub {vertical-align:text-bottom;}
+input,textarea,select{font-family:inherit;font-size:inherit;font-weight:inherit;outline-style:none;outline-width:0pt;}
+legend{color:#000;}
+a:focus,object,h1,h2,h3,h4,h5,h6{-moz-outline-style: none; border:0px;}
+strong {font-weight: bold;}
+
+body, html {
+	background-color: #010c12;
+}
+
+canvas {
+	border: 6px #333333 solid;
+	cursor: crosshair;
+	z-index: 1;
+}
+
+canvas.background {
+	border: none;
+	z-index: 0;
+}
+
+.ui {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #999999;
+	text-align: left;
+	padding: 8px;
+	background-color: rgba(0,0,0,0.5);
+	float: left;
+}
+
+#status {
+	width: 884px;
+	height: 15px;
+	padding: 8px;
+	display: none;
+	position: absolute;
+	z-index: 2;
+}
+
+#status span {
+	color: #bbbbbb;
+	font-weight: bold;
+	margin-right: 5px;
+}
+
+#status .fps {
+	float: right;
+}
+
+#panels {
+	width: 100%;
+	position: absolute;
+	z-index: 3;
+}
+
+#message {
+	padding: 16px;
+	margin-top: 10px;
+	width: 225px;
+}
+
+.ui h2 {
+	margin-bottom: 20px;
+	color: #eeeeee;
+}
+
+.ui ul {
+	margin: 10px 0;
+}
+
+.ui ul li {
+	margin: 0 0 2px 0;
+}
+
+.ui a {
+	outline: none;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 38px;
+	text-decoration: none;
+	color: #bbbbbb;
+	padding: 2px;
+	display: block;
+	transition: all .18s linear;
+	-o-transition: all .18s linear;
+	-moz-transition: all .18s linear;
+	-webkit-transition: all .18s linear;
+}
+
+.ui a:hover {
+	color: #ffffff;
+	background-color: #000000;
+	transition: all .18s linear;
+	-o-transition: all .18s linear;
+	-moz-transition: all .18s linear;
+	-webkit-transition: all .18s linear;
+}
+
+.ui a.external {
+	outline: none;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-weight: bold;
+	text-decoration: none;
+	color: #bbbbbb;
+	display: inline;
+	padding: 0;
+}
+
+.ui a.external:hover {
+	color: #ffffff;
+}
+</style>
+
+    </head><body>
+		<div id="panel">
+			<h2><a href="http://hakim.se/experiments/">Experiments</a> / Core / 01</h2>
+			<p>A sibling game to <a class="external" href="http://hakim.se/experiments/html5/sinuous/01">Sinuous</a>.<br>Your objective is to protect the core from <br>red dots while letting green ones through.<br>Press &amp; hold <b>SPACE</b> for shield.</p>
+								</div>
+		<div style="left: 134.5px; top: 88.5px;" id="status" class="ui"></div><div style="left: 134.5px; top: 282.5px;" id="panels"><div id="message" class="ui"><h2 id="title">Core</h2>A sibling game to <a class="external" href="http://hakim.se/experiments/html5/sinuous/01">Sinuous</a>.<ul><li>1. Protect the core.</li><li>2. Gather energy (green dots).</li><li>2. Hold SPACE for shield (depletes energy).</li></ul><a href="#" id="startButton">Start</a></div></div><canvas style="position: absolute; left: 134.5px; top: 88.5px;" height="550" width="900" class="background" id="background-canvas"></canvas>
+<canvas style="position: absolute; left: 128.5px; top: 82.5px;" height="550" width="900" id="world"><p class="noCanvas">You need a <a href="http://www.google.com/chrome">modern browser</a> to view this.</p></canvas>
+<script type="text/javascript">
+CoreWorld = new
+function () {
+    function d() {
+        if (o == false) {
+            o = true;
+            q = [];
+            k = 0;
+            t = 1;
+            ms = I = J = 0;
+            b.energy = 30;
+            m.style.display = "none";
+            l.style.display = "block";
+            D = (new Date).getTime()
+        }
+    }
+    function h(a) {
+        switch (a.keyCode) {
+        case 32:
+            if (!u && b.energy > 15) b.energy -= 4;
+            u = true;
+            a.preventDefault()
+        }
+    }
+    function x(a) {
+        switch (a.keyCode) {
+        case 32:
+            u = false;
+            a.preventDefault()
+        }
+    }
+    function R(a) {
+        y = a.clientX - (window.innerWidth - e) * 0.5 - 6;
+        z = a.clientY - (window.innerHeight - f) * 0.5 - 6
+    }
+    function S() {}
+    function T() {}
+    function U(a) {
+        if (a.touches.length == 1) {
+            a.preventDefault();
+            y = a.touches[0].pageX - (window.innerWidth - e) * 0.5;
+            z = a.touches[0].pageY - (window.innerHeight - f) * 0.5
+        }
+    }
+    function V(a) {
+        if (a.touches.length == 1) {
+            a.preventDefault();
+            y = a.touches[0].pageX - (window.innerWidth - e) * 0.5 - 60;
+            z = a.touches[0].pageY - (window.innerHeight - f) * 0.5 - 30
+        }
+    }
+    function W() {}
+    function K() {
+        e = r ? window.innerWidth : 900;
+        f = r ? window.innerHeight : 550;
+        b.position.x = e * 0.5;
+        b.position.y = f * 0.5;
+        i.width = e;
+        i.height = f;
+        n.width = e;
+        n.height = f;
+        var a = (window.innerWidth - e) * 0.5,
+            g = (window.innerHeight - f) * 0.5;
+        i.style.position = "absolute";
+        i.style.left = a + "px";
+        i.style.top = g + "px";
+        n.style.position = "absolute";
+        n.style.left = a + 6 + "px";
+        n.style.top = g + 6 + "px";
+        if (r) {
+            m.style.left = "0px";
+            m.style.top = "0px";
+            l.style.left = "0px";
+            l.style.top = "0px"
+        } else {
+            m.style.left = a + 6 + "px";
+            m.style.top = g + 200 + "px";
+            l.style.left = a + 6 + "px";
+            l.style.top = g + 6 + "px"
+        }
+    }
+    function L(a, g, v, j) {
+        for (j = j + Math.random() * j; --j >= 0;) {
+            var w = new Point;
+            w.position.x = a.x + Math.sin(j) * v;
+            w.position.y = a.y + Math.cos(j) * v;
+            w.velocity = {
+                x: g.x + (-1 + Math.random() * 2),
+                y: g.y + (-1 + Math.random() * 2)
+            };
+            w.alpha = 1;
+            A.push(w)
+        }
+    }
+
+    function M() {
+        var a = (new Date).getTime();
+        E++;
+        if (a > F + 1E3) {
+            B = Math.min(Math.round(E * 1E3 / (a - F)), s);
+            F = a;
+            E = 0
+        }
+        a = 0.01 + Math.max(Math.min(B, s), 0) / s * 0.99;
+        a *= a;
+        c.clearRect(0, 0, i.width, i.height);
+        if (o) {
+            t += 0.0015;
+            k += 0.4 * t * a;
+            J++;
+            I += 0.4 * t * a;
+            a = Math.atan2(z - b.position.y, y - b.position.x);
+            if (Math.abs(a - b.angle) > Math.PI) b.angle = a;
+            b.angle += (a - b.angle) * 0.2;
+            b.energyRadiusTarget = b.energy / 100 * b.radius * 0.8;
+            b.energyRadius += (b.energyRadiusTarget - b.energyRadius) * 0.2;
+            b.shield = {
+                x: b.position.x + Math.cos(b.angle) * b.radius,
+                y: b.position.y + Math.sin(b.angle) * b.radius
+            };
+            c.beginPath();
+            c.strokeStyle = "#648d93";
+            c.lineWidth = 3;
+            c.arc(b.position.x, b.position.y, b.radius, b.angle + 1.6, b.angle - 1.6, true);
+            c.stroke();
+            c.beginPath();
+            c.fillStyle = "#249d93";
+            c.strokeStyle = "#3be2d4";
+            c.lineWidth = 1.5;
+            b.updateCore();
+            var g = b.coreNodes.concat();
+            g.push(b.coreNodes[0]);
+            for (a = 0; a < g.length; a++) {
+                p = g[a];
+                p2 = g[a + 1];
+                p.position.x += (b.position.x + p.normal.x + p.offset.x - p.position.x) * 0.2;
+                p.position.y += (b.position.y + p.normal.y + p.offset.y - p.position.y) * 0.2;
+                if (a == 0) c.moveTo(p.position.x, p.position.y);
+                else p2 && c.quadraticCurveTo(p.position.x, p.position.y, p.position.x + (p2.position.x - p.position.x) / 2, p.position.y + (p2.position.y - p.position.y) / 2)
+            }
+            c.closePath();
+            c.fill();
+            c.stroke()
+        }
+        if (u && b.energy > 10) {
+            b.energy -= 0.1;
+            c.beginPath();
+            c.fillStyle = "rgba( 0, 100, 100, " + b.energy / 100 * 0.9 + " )";
+            c.arc(b.position.x, b.position.y, b.radius, 0, Math.PI * 2, true);
+            c.fill()
+        }
+        var v = g = 0;
+        for (a = 0; a < q.length; a++) {
+            p = q[a];
+            p.position.x += p.velocity.x;
+            p.position.y += p.velocity.y;
+            p.alpha += (1 - p.alpha) * 0.1;
+            if (p.type == G) c.fillStyle = "rgba( 255, 0, 0, " + p.alpha + " )";
+            if (p.type == H) c.fillStyle = "rgba( 0, 235, 190, " + p.alpha + " )";
+            c.beginPath();
+            c.arc(p.position.x, p.position.y, p.size / 2, 0, Math.PI * 2, true);
+            c.fill();
+            var j = Math.atan2(p.position.y - b.position.y, p.position.x - b.position.x);
+            if (o) {
+                j = Math.abs(j - b.angle);
+                if (j > Math.PI) j = Math.PI * 2 - j;
+                if (j < 1.6) if (p.distanceTo(b.position) > b.radius - 5 && p.distanceTo(b.position) < b.radius + 5) p.dead = true;
+                if (u && p.distanceTo(b.position) < b.radius && b.energy > 11) {
+                    p.dead = true;
+                    k += 4
+                }
+                if (p.distanceTo(b.position) < b.energyRadius + p.size * 0.5) {
+                    if (p.type == G) b.energy -= 6;
+                    if (p.type == H) {
+                        b.energy += 8;
+                        k += 30
+                    }
+                    b.energy = Math.max(Math.min(b.energy, 100), 0);
+                    p.dead = true
+                }
+            }
+            if (p.position.x < -p.size || p.position.x > e + p.size || p.position.y < -p.size || p.position.y > f + p.size) p.dead = true;
+            if (p.dead) {
+                L(p.position, {
+                    x: (p.position.x - b.position.x) * 0.02,
+                    y: (p.position.y - b.position.y) * 0.02
+                }, 5, 5);
+                q.splice(a, 1);
+                a--
+            } else {
+                p.type == G && g++;
+                p.type == H && v++
+            }
+        }
+        if (g < 1 * t && (new Date).getTime() - N > 100) {
+            q.push(O(new Enemy));
+            N = (new Date).getTime()
+        }
+        v < 1 && Math.random() > 0.996 && q.push(O(new Energy));
+        for (a = 0; a < A.length; a++) {
+            p = A[a];
+            p.position.x += p.velocity.x;
+            p.position.y += p.velocity.y;
+            p.alpha -= 0.02;
+            c.fillStyle = "rgba(255,255,255," + Math.max(p.alpha, 0) + ")";
+            c.fillRect(p.position.x, p.position.y, 1, 1);
+            p.alpha <= 0 && A.splice(a, 1)
+        }
+        if (o) {
+            scoreText = "Score: <span>" + Math.round(k) + "</span>";
+            scoreText += " Time: <span>" + Math.round(((new Date).getTime() - D) / 1E3 * 100) / 100 + "s</span>";
+            scoreText += ' <p class="fps">FPS: <span>' + Math.round(B) + " (" + Math.round(Math.max(Math.min(B / s, s), 0) * 100) + "%)</span></p>";
+            l.innerHTML = scoreText;
+            if (b.energy === 0) {
+                L(b.position, {
+                    x: 0,
+                    y: 0
+                }, 10, 40);
+                o = false;
+                (new Date).getTime();
+                m.style.display = "block";
+                k = Math.round(k);
+                P.innerHTML = "Game Over! (" + k + " points)";
+                scoreText = "Score: <span>" + Math.round(k) + "</span>";
+                scoreText += " Time: <span>" + Math.round(((new Date).getTime() - D) / 1E3 * 100) / 100 + "s</span>";
+                l.innerHTML = scoreText
+            }
+        }
+    }
+    function O(a) {
+        switch (Math.round(Math.random() * 3)) {
+        case 0:
+            a.position.x = 10;
+            a.position.y = f * Math.random();
+            break;
+        case 1:
+            a.position.x = e * Math.random();
+            a.position.y = 10;
+            break;
+        case 2:
+            a.position.x =
+            e - 10;
+            a.position.y = f * Math.random();
+            break;
+        case 3:
+            a.position.x = e * Math.random();
+            a.position.y = f - 10
+        }
+        a.speed = Math.min(Math.max(Math.random(), 0.6), 0.75);
+        a.velocity.x = (b.position.x - a.position.x) * 0.0060 * a.speed;
+        a.velocity.y = (b.position.y - a.position.y) * 0.0060 * a.speed;
+        if (a.type == "enemy") {
+            a.velocity.x *= 1 + Math.random() * 0.1;
+            a.velocity.y *= 1 + Math.random() * 0.1
+        }
+        a.alpha = 0;
+        return a
+    }
+    var r = navigator.userAgent.toLowerCase().indexOf("android") != -1 || navigator.userAgent.toLowerCase().indexOf("iphone") != -1 || navigator.userAgent.toLowerCase().indexOf("ipad") != -1,
+        e = r ? window.innerWidth : 900,
+        f = r ? window.innerHeight : 550,
+        G = "enemy",
+        H = "energy",
+        s = 60,
+        i, c, n, C, l, m, P, Q, q = [],
+        A = [],
+        b, y = window.innerWidth - e,
+        z = window.innerHeight - f,
+        u = false,
+        o = false,
+        k = 0,
+        D = 0,
+        t = 1,
+        N = 0,
+        J = 0,
+        I = 0,
+        B = 0,
+        F = (new Date).getTime(),
+        E = 0;
+    this.init = function () {
+        i = document.getElementById("world");
+        n = document.getElementById("background-canvas");
+        m = document.getElementById("panels");
+        l = document.getElementById("status");
+        document.getElementById("message");
+        P = document.getElementById("title");
+        Q = document.getElementById("startButton");
+        if (i && i.getContext) {
+            c = i.getContext("2d");
+            C = n.getContext("2d");
+            document.addEventListener("mousemove", R, false);
+            document.addEventListener("mousedown", S, false);
+            document.addEventListener("mouseup", T, false);
+            i.addEventListener("touchstart", U, false);
+            document.addEventListener("touchmove", V, false);
+            document.addEventListener("touchend", W, false);
+            window.addEventListener("resize", K, false);
+            Q.addEventListener("click", d, false);
+            document.addEventListener("keydown", h, false);
+            document.addEventListener("keyup", x, false);
+            b = new Player;
+            K();
+            if (r) {
+                document.getElementById("panel").style.display = "none";
+                l.style.width = e + "px";
+                i.style.border = "none";
+                setInterval(M, 1E3 / 30)
+            } else setInterval(M, 1E3 / s);
+            var a = C.createRadialGradient(e * 0.5, f * 0.5, 0, e * 0.5, f * 0.5, 500);
+            a.addColorStop(0, "rgba(0, 70, 70, 1)");
+            a.addColorStop(1, "rgba(0, 8, 14, 1)");
+            C.fillStyle = a;
+            C.fillRect(0, 0, e, f)
+        }
+    }
+};
+
+function Point(d, h) {
+    this.position = {
+        x: d,
+        y: h
+    }
+}
+Point.prototype.distanceTo = function (d) {
+    var h = d.x - this.position.x;
+    d = d.y - this.position.y;
+    return Math.sqrt(h * h + d * d)
+};
+Point.prototype.clonePosition = function () {
+    return {
+        x: this.position.x,
+        y: this.position.y
+    }
+};
+
+function Player() {
+    this.position = {
+        x: 0,
+        y: 0
+    };
+    this.length = 15;
+    this.energy = 30;
+    this.energyRadiusTarget = this.energyRadius = 0;
+    this.radius = 60;
+    this.angle = 0;
+    this.coreQuality = 16;
+    this.coreNodes = []
+}
+Player.prototype = new Point;
+Player.prototype.updateCore = function () {
+    var d, h;
+    if (this.coreNodes.length == 0) for (d = 0; d < this.coreQuality; d++) {
+        h = {
+            position: {
+                x: this.position.x,
+                y: this.position.y
+            },
+            normal: {
+                x: 0,
+                y: 0
+            },
+            normalTarget: {
+                x: 0,
+                y: 0
+            },
+            offset: {
+                x: 0,
+                y: 0
+            }
+        };
+        this.coreNodes.push(h)
+    }
+    for (d = 0; d < this.coreQuality; d++) {
+        h = this.coreNodes[d];
+        var x = d / this.coreQuality * Math.PI * 2;
+        h.normal.x = Math.cos(x) * this.energyRadius;
+        h.normal.y = Math.sin(x) * this.energyRadius;
+        h.offset.x = Math.random() * 5;
+        h.offset.y = Math.random() * 5
+    }
+};
+
+function Enemy() {
+    this.position = {
+        x: 0,
+        y: 0
+    };
+    this.velocity = {
+        x: 0,
+        y: 0
+    };
+    this.size = 6 + Math.random() * 4;
+    this.speed = 1;
+    this.type = "enemy"
+}
+Enemy.prototype = new Point;
+
+function Energy() {
+    this.position = {
+        x: 0,
+        y: 0
+    };
+    this.velocity = {
+        x: 0,
+        y: 0
+    };
+    this.size = 10 + Math.random() * 6;
+    this.speed = 1;
+    this.type = "energy"
+}
+Energy.prototype = new Point;
+CoreWorld.init();
+</script>
+		
+
+    </body></html>

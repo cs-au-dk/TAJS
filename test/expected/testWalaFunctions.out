@@ -1,2 +1,0 @@
-test/wala/functions.js:2:1: [definite] The variable local is never used
-test/wala/functions.js:17:1: [info] Abstract value: 10.0

@@ -1,0 +1,19 @@
+Unevalizer: Starting on: "clock()"
+Unevalizer: Valid program
+Unevalizer: No name capture
+Unevalizer: Starting on: "clock()"
+Unevalizer: Valid program
+Unevalizer: No name capture
+test/chromeexperiments/catchit.tidy.html:145:13: [definite] The conditional expression is always false
+test/chromeexperiments/catchit.tidy.html:62:13: [definite] The variable tries is never used
+test/chromeexperiments/catchit.tidy.html:63:13: [definite] The variable score is never used
+test/chromeexperiments/catchit.tidy.html:64:13: [definite] The variable max_score is never used
+test/chromeexperiments/catchit.tidy.html:72:9: [definite] Unreachable function updateStat
+test/chromeexperiments/catchit.tidy.html:80:9: [definite] Unreachable function Ball
+test/chromeexperiments/catchit.tidy.html:87:25: [definite] Unreachable function
+test/chromeexperiments/catchit.tidy.html:115:9: [definite] Unreachable function createBall
+test/chromeexperiments/catchit.tidy.html:170:28: [definite] Unreachable function
+test/chromeexperiments/catchit.tidy.html:178:32: [definite] Unreachable function
+test/chromeexperiments/catchit.tidy.html:197:2: [definite] The variable event is never used
+test/chromeexperiments/catchit.tidy.html:133:13: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/catchit.tidy.html:43: [maybe] Uncaught exception, constructed at [test/chromeexperiments/catchit.tidy.html:133:13]

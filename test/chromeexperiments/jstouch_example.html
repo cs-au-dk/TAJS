@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+<head>
+    <meta name="viewport" content="width=480, user-scalable=no"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Style-Type" content="text/css"/>
+
+    <script type="text/javascript">
+        window.P3D = {
+            texture: null,
+            g: null
+        };
+
+        P3D.clear = function(f, w, h) {
+            var g = this.g;
+            g.beginPath();
+            g.fillStyle = f;
+            g.fillRect(0, 0, w, h);
+
+        }
+    </script>
+
+    <script type="text/javascript">
+        function TouchApp() {
+            var _this = this;
+            this.mTickCount = 0;
+            this.mLoadCount = 2;
+
+            this.canvas = document.getElementById("cv");
+            P3D.g = this.canvas.getContext("2d");
+
+
+            this.mViewport = {};
+            this.mViewport.w = 480;
+            this.mViewport.h = 300;
+            this.mViewport.ow = 240;
+            this.mViewport.oh = 150;
+
+            var tex = new Image();
+            tex.onload = function() {
+                _this.start();
+            };
+            tex.src = "http://img.f.hatena.ne.jp/images/fotolife/g/gyuque/20090319/20090319144649.png";
+
+        }
+
+        TouchApp.prototype = {
+            start: function() {
+                this.onInterval();
+            },
+
+            onInterval: function() {
+
+                P3D.clear("#000", this.mViewport.w, this.mViewport.h);
+
+                var _this = this;
+                setTimeout(function() {
+                    _this.onInterval();
+                }, 20);
+            }
+        }
+
+    </script>
+
+
+    <title>js touch</title>
+</head>
+<body onload="void( new TouchApp() );">
+<div id="main">
+
+    <canvas id="cv" width="480" height="300"></canvas>
+    <p style="height:75px;">
+        <a href="http://www.chromeexperiments.com/detail/js-touch/"><img align="left"
+                                                                         src="http://www.d4.dion.ne.jp/~uym/images/chexp.gif"
+                                                                         alt="ChromeExperiments"/></a>
+        "3D on 2D Canvas" demo 3<br/>(Sphere Environment Mapping)</p>
+
+    <div id="renderer-selection">
+        Renderer:
+        <ul class="navi-sub">
+            <li class="selected">2D Canvas</li>
+            <li><a href="touch-opera-gecko.html">Opera 3D or Gecko 3D</a></li>
+
+            <li><a href="touch-o3d.html">O3D</a></li>
+            <li><a href="touch-wgl.html">WebGL <span class="newmark">NEW</span></a></li>
+        </ul>
+    </div>
+</div>
+<ul class="navi">
+    <li><a href="">demo 1</a></li>
+
+    <li><a href="miku.html">demo 2</a></li>
+    <li class="selected">demo 3</li>
+</ul>
+</body>
+</html>

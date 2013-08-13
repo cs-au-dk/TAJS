@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Aarhus University
+ * Copyright 2009-2013 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,7 +18,6 @@ package dk.brics.tajs.analysis;
 
 import dk.brics.tajs.flowgraph.BasicBlock;
 import dk.brics.tajs.lattice.CallEdge;
-import dk.brics.tajs.solver.BlockAndContext;
 import dk.brics.tajs.solver.CallGraph;
 import dk.brics.tajs.solver.IWorkListStrategy;
 
@@ -62,10 +61,8 @@ public class WorkListStrategy implements IWorkListStrategy<CallContext> {
 				return E2_FIRST; 
 		}
 		
-		BlockAndContext<CallContext> bc1 = e1.getContext().toEntry(e1.getBlock());
-		int function_context_order1 = call_graph.getBlockContextOrder(bc1.getBlock(), bc1.getContext());
-		BlockAndContext<CallContext> bc2 = e2.getContext().toEntry(e2.getBlock());
-		int function_context_order2 = call_graph.getBlockContextOrder(bc2.getBlock(), bc2.getContext());
+		int function_context_order1 = call_graph.getBlockContextOrder(e1.getContext().getEntry(), e1.getContext());
+		int function_context_order2 = call_graph.getBlockContextOrder(e2.getContext().getEntry(), e2.getContext());
 		
 		// different function/context: order by occurrence number
 		if (function_context_order1 < function_context_order2)

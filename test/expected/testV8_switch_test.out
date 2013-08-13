@@ -1,0 +1,34 @@
+test/v8tests/switch.js:40:10: [definite] Unreachable code
+test/v8tests/switch.js:49:11: [maybe] The variable x has values with different types
+test/v8tests/switch.js:44:1: [info] Abstract value: "f1"
+test/v8tests/switch.js:45:1: [info] Abstract value: "f1"
+test/v8tests/switch.js:69:1: [info] Abstract value: "zero"
+test/v8tests/switch.js:71:1: [info] Abstract value: IdentPartsStr
+test/v8tests/switch.js:73:1: [info] Abstract value: IdentPartsStr
+test/v8tests/switch.js:75:1: [info] Abstract value: IdentPartsStr
+test/v8tests/switch.js:77:1: [info] Abstract value: IdentPartsStr
+test/v8tests/switch.js:80:1: [info] Abstract value: IdentPartsStr
+test/v8tests/switch.js:82:1: [info] Abstract value: IdentPartsStr
+test/v8tests/switch.js:84:1: [info] Abstract value: IdentPartsStr
+test/v8tests/switch.js:86:1: [info] Abstract value: IdentPartsStr
+test/v8tests/switch.js:88:1: [info] Abstract value: IdentPartsStr
+test/v8tests/switch.js:90:1: [info] Abstract value: IdentPartsStr
+test/v8tests/switch.js:119:1: [info] Abstract value: "two"
+test/v8tests/switch.js:121:1: [info] Abstract value: IdentPartsStr|OtherStr
+test/v8tests/switch.js:123:1: [info] Abstract value: Str
+test/v8tests/switch.js:125:1: [info] Abstract value: Str
+test/v8tests/switch.js:127:1: [info] Abstract value: Str
+test/v8tests/switch.js:129:1: [info] Abstract value: Str
+test/v8tests/switch.js:145:1: [info] Abstract value: 2.0
+test/v8tests/switch.js:146:1: [info] Abstract value: UInt
+test/v8tests/switch.js:147:1: [info] Abstract value: UInt
+test/v8tests/switch.js:149:1: [info] Abstract value: UInt
+test/v8tests/switch.js:163:1: [info] Abstract value: true
+test/v8tests/switch.js:165:1: [info] Abstract value: Bool|42.0
+test/v8tests/switch.js:167:1: [info] Abstract value: Bool|42.0
+test/v8tests/switch.js:169:1: [info] Abstract value: Bool|42.0
+test/v8tests/switch.js:171:1: [info] Abstract value: Bool|42.0
+test/v8tests/switch.js:250:1: [info] Abstract value: UInt
+test/v8tests/switch.js:252:1: [info] Abstract value: UInt
+test/v8tests/switch.js:254:1: [info] Abstract value: UInt
+test/v8tests/switch.js:256:1: [info] Abstract value: UInt

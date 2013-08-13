@@ -1,0 +1,21 @@
+Unevalizer: Starting on: "cs1.move('l')"
+Unevalizer: Valid program
+Unevalizer: No name capture
+Unevalizer: Starting on: "parseInt(this.c.style.left.substring(0,this.c.style.left.length-2))"
+Unevalizer: Valid program
+Unevalizer: No name capture
+Unevalizer: Return value of eval is used
+Unevalizer: Last expression has value
+test/sourcelocations/htmlProblematicCase.tidy.html:17:16: [definite] TypeError, accessing property of null/undefined
+test/sourcelocations/htmlProblematicCase.tidy.html:11:15: [definite] The conditional expression is always true
+test/sourcelocations/htmlProblematicCase.tidy.html:13:9: [definite] Dead assignment, property intrvl is never read
+test/sourcelocations/htmlProblematicCase.tidy.html:17:16: [definite] Reading absent property c
+test/sourcelocations/htmlProblematicCase.tidy.html:1:2: [definite] Unreachable function
+test/sourcelocations/htmlProblematicCase.tidy.html:10:1: [definite] The variable c is never used
+test/sourcelocations/htmlProblematicCase.tidy.html:10:1: [definite] The variable n is never used
+test/sourcelocations/htmlProblematicCase.tidy.html:14:9: [definite] Unreachable code
+test/sourcelocations/htmlProblematicCase.tidy.html:16:18: [definite] The variable d is never used
+test/sourcelocations/htmlProblematicCase.tidy.html:17:16: [definite] Unreachable code
+test/sourcelocations/htmlProblematicCase.tidy.html:26:2: [definite] The variable event is never used
+test/sourcelocations/htmlProblematicCase.tidy.html:26:46: [definite] Unreachable code
+test/sourcelocations/htmlProblematicCase.tidy.html:6: [maybe] Uncaught exception, constructed at [test/sourcelocations/htmlProblematicCase.tidy.html:17:16]

@@ -7,7 +7,7 @@ for (var a in x) {
     break;
   else if (z == 49)
     continue;
-  if (z = 42)
+  if (z == 42)
     delete x["c"]
 }
 

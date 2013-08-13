@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Aarhus University
+ * Copyright 2009-2013 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,6 @@ import static dk.brics.tajs.util.Collections.addToMapSet;
 import static dk.brics.tajs.util.Collections.newList;
 import static dk.brics.tajs.util.Collections.newMap;
 import static dk.brics.tajs.util.Collections.newSet;
-import static dk.brics.tajs.util.Collections.singleton;
 import static dk.brics.tajs.util.Collections.sortedEntries;
 
 import java.util.ArrayList;
@@ -37,10 +36,8 @@ import java.util.TreeSet;
 
 import org.apache.log4j.Logger;
 
-import dk.brics.tajs.analysis.InitialStateBuilder;
 import dk.brics.tajs.flowgraph.AbstractNode;
 import dk.brics.tajs.flowgraph.BasicBlock;
-import dk.brics.tajs.flowgraph.Function;
 import dk.brics.tajs.lattice.ObjectLabel.Kind;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.solver.GenericSolver;
@@ -70,7 +67,7 @@ public abstract class BlockState<BlockStateType extends BlockState<BlockStateTyp
     /**
      *  The call context for this state.
      */
-    private CallContextType context;
+    private CallContextType context; // may be shared by other BlockState objects
 
     /**
      * Map from ObjectLabel to Object.
@@ -506,14 +503,18 @@ public abstract class BlockState<BlockStateType extends BlockState<BlockStateTyp
     /**
      * Replaces all definitely non-modified parts of this state by the corresponding parts of the given states.
      * The store is restored from the call edge state; the stack is restored from the caller state.
-     * Returns the updated returnval.
+     * The caller_entry_state is used for resolving polymorphic values.
+     * Returns the updated returnval if non-null.
      */
     public Value mergeFunctionReturn(BlockState<BlockStateType, CallContextType, CallEdgeType> caller_state,
     		BlockState<BlockStateType, CallContextType, CallEdgeType> calledge_state,
     		BlockState<BlockStateType, CallContextType, CallEdgeType> caller_entry_state,
     		Summarized callee_summarized,
     		Value returnval) {
+    	block = caller_state.block.getSingleSuccessor();
+    	context = caller_state.context;
         makeWritableStore();
+        store_default = caller_state.store_default;
         check();
         caller_state.check();
         calledge_state.check();
@@ -524,7 +525,7 @@ public abstract class BlockState<BlockStateType extends BlockState<BlockStateTyp
         summarized_calledge.summarizeStore(summarized);
         for (ObjectLabel objlabel : store.keySet()) {
             Obj obj = getObject(objlabel, true); // always preparing for object updates, even if no changes are made
-            replacePolymorphicValues(obj, calledge_state, caller_entry_state, callee_summarized);
+			replacePolymorphicValues(obj, calledge_state, caller_entry_state, callee_summarized);
             Obj calledge_obj = summarized_calledge.getObject(objlabel, false);
 			if (logger.isDebugEnabled()) 
 				logger.debug("strengthenNonModifiedParts on " + objlabel);
@@ -533,13 +534,17 @@ public abstract class BlockState<BlockStateType extends BlockState<BlockStateTyp
         // restore objects that were not used by the callee (i.e. either 'unknown' or never retrieved from basis_store to store)
         for (Map.Entry<ObjectLabel, Obj> me : summarized_calledge.getStore().entrySet())
             if (!store.containsKey(me.getKey()))
-                putObject(me.getKey(), me.getValue());
+                putObject(me.getKey(), me.getValue()); // obj is freshly created at summarizeStore 
         // remove objects that are equal to the default object
         for (Iterator<Map.Entry<ObjectLabel, Obj>> it = store.entrySet().iterator(); it.hasNext();) {
         	Map.Entry<ObjectLabel, Obj> me = it.next();
             if (me.getValue().equals(store_default)) {
     			if (logger.isDebugEnabled()) 
     				logger.debug("removing object equal to the default: " + me.getKey());
+                it.remove();
+            } else if (caller_entry_state.store_default.isSomeNone() && store_default.isUnknown() && me.getValue().isSomeNone()) {
+    			if (logger.isDebugEnabled()) 
+    				logger.debug("removing none object: " + me.getKey());
                 it.remove();
             }
         }
@@ -553,124 +558,305 @@ public abstract class BlockState<BlockStateType extends BlockState<BlockStateTyp
             stacked_objlabels = callee_summarized.summarize(caller_state.stacked_objlabels);
         writable_stacked_objlabels = false;
         // merge summarized sets
-        summarized = new Summarized();
-        summarized.getMaybeSummarized().addAll(caller_state.summarized.getMaybeSummarized());
-        summarized.getMaybeSummarized().addAll(callee_summarized.getMaybeSummarized());
-        summarized.getDefinitelySummarized().addAll(caller_state.summarized.getDefinitelySummarized());
-        summarized.getDefinitelySummarized().addAll(callee_summarized.getDefinitelySummarized());
-        Value res = replacePolymorphicValue(returnval, calledge_state, caller_entry_state, callee_summarized);
-        // TODO: restoring objects from call edge may cause some references to refer to "none" objects - prune such references? (see also checkNoDanglingRefs)
+        summarized.add(calledge_state.summarized);
+        Value res = returnval == null ? null : replacePolymorphicValue(returnval, calledge_state, caller_entry_state, callee_summarized);
         check();
         logger.debug("mergeFunctionReturn(...) done");
         return res;
     }
-
-	/**
-     * Merges parallel_state into the current state. Returns false if the merge failed.
+    
+    /**
+     * Merges the modified parts of other state into this one.
+     * When both this and other write to the same location, take the least upper bound.
+     * Also merges reads_other into reads.
+     * @return true if read/write conflict, i.e. writes of this overlap with reads_other or writes of other overlap with reads.
      */
-    public boolean mergeForInEnd(BlockState<BlockStateType, CallContextType, CallEdgeType> parallel_state,
-                                 String loop_var) { // FIXME: review
-        makeWritableStore();
-        if (basis_store != parallel_state.basis_store)
-            throw new AnalysisException("Not identical basis stores");
-        for (ObjectLabel objlabel : store.keySet()) {
-            Obj obj = getObject(objlabel, true); // always preparing for object updates, even if no changes are made
-            Obj parallel_obj = parallel_state.getObject(objlabel, false);
-            if (objlabel == InitialStateBuilder.GLOBAL) { // Join the loop-variable on the global object.
-                Value tmp = readPropertyRaw(singleton(objlabel), Value.makeTemporaryStr(loop_var)).join(parallel_state.readPropertyRaw(singleton(objlabel), Value.makeTemporaryStr(loop_var)));
-                obj.setProperty(loop_var, tmp);
-                parallel_obj.setProperty(loop_var, tmp);
-            }
-            // Merge properties present in the parallel object.
-            for (Map.Entry<String, Value> props : parallel_obj.getProperties().entrySet()) {
-                Value prop1 = UnknownValueResolver.getProperty(objlabel, props.getKey(), this, true);
-                Value prop2 = UnknownValueResolver.getProperty(objlabel, props.getKey(), parallel_state, true);
-                if (prop1.isMaybePresent() && prop2.isMaybePresent() && !prop1.equals(prop2) && !props.getKey().equals(loop_var)) {
-                    logger.debug("Conflict in merge on property: " + props.getKey());
-                    return false;
-                }
-                if (prop2.isMaybePresent())
-                    obj.setProperty(props.getKey(), prop2);
-            }
-        }
-        // remove objects that are equal to the default object
-        for (Iterator<Map.Entry<ObjectLabel, Obj>> it = store.entrySet().iterator(); it.hasNext();) {
-            Map.Entry<ObjectLabel, Obj> me = it.next();
-            if (me.getValue().equals(store_default)) {
-    			if (logger.isDebugEnabled()) 
-    				logger.debug("removing object equal to the default: " + me.getKey());
-                it.remove();
-            }
-        }
-        makeWritableRegisters();
-        for (int i = 0; i < registers.size() || i < parallel_state.registers.size(); i++) {
-            if (isRegisterDefined(i) && parallel_state.isRegisterDefined(i)) {
-            	Value tr = registers.get(i);
-            	Value pr = parallel_state.registers.get(i);
-            	if (tr.isPolymorphic() != pr.isPolymorphic() || (tr.isPolymorphic() && !tr.getPropertyReference().equals(pr.getPropertyReference()))) {
-            		tr = UnknownValueResolver.getRealValue(tr, this);
-            		pr = UnknownValueResolver.getRealValue(pr, parallel_state);
-            	}
-                Value reg_val = tr.join(pr);
-                registers.set(i, reg_val);
-            }
-        }
-        summarized = new Summarized();
-        summarized.getMaybeSummarized().addAll(parallel_state.summarized.getMaybeSummarized());
-        summarized.getDefinitelySummarized().addAll(parallel_state.summarized.getDefinitelySummarized());
-        return true;
+    public boolean mergeForInSpecialization(BlockState<BlockStateType, CallContextType, CallEdgeType> other,
+    		BlockState<BlockStateType, CallContextType, CallEdgeType> reads,
+    		BlockState<BlockStateType, CallContextType, CallEdgeType> reads_other) {
+		makeWritableStore();
+		if (basis_store != other.basis_store)
+			throw new AnalysisException("Not identical basis stores");
+		if (logger.isDebugEnabled()) {
+			// assuming that store_default, execution_context, stacked_objlabels, and registers are identical in this and other
+			if (!store_default.equals(other.store_default) ||
+					!execution_context.equals(other.execution_context) ||
+					!stacked_objlabels.equals(other.stacked_objlabels) ||
+					!reads.store_default.equals(reads_other.store_default) ||
+					!reads.execution_context.equals(reads_other.execution_context) ||
+					!reads.stacked_objlabels.equals(reads_other.stacked_objlabels))
+				throw new AnalysisException("Not identical store_default / execution_context / stacked_objlabels");
+		}
+		boolean conflict = false;
+		if (!(extras.equals(other.extras))) {
+			logger.debug("mergeForInSpecialization: conflict at state extras");
+			conflict = true;
+		}
+    	// report conflict if writes of this overlap with reads_other or writes of other overlap with reads
+		if (checkReadWriteConflict(this, reads_other) || checkReadWriteConflict(other, reads)) {
+			logger.debug("mergeForInSpecialization: read/write conflict");
+			conflict = true;
+		}
+		// merge reads_other into reads (if both read, take least upper bound)
+		for (Map.Entry<ObjectLabel,Obj> me : reads_other.store.entrySet()) {
+			ObjectLabel objlabel = me.getKey();
+			Obj reads_other_obj = me.getValue();
+			Obj reads_obj = reads.getObject(objlabel, true);
+			for (Map.Entry<String, Value> me2 : reads_other_obj.getProperties().entrySet()) {
+				String propertyname = me2.getKey();
+				Value other_val = me2.getValue();
+				if (!other_val.isUnknown()) {
+					Value reads_val = reads_obj.getProperty(propertyname);
+					Value new_reads_val = reads_val.join(other_val);
+					reads_obj.setProperty(propertyname, new_reads_val);
+				}
+			}
+			Value reads_other_defaultarray_val = reads_other_obj.getDefaultArrayProperty();
+			if (!reads_other_defaultarray_val.isUnknown()) {
+				reads_obj.setDefaultArrayProperty(reads_other_defaultarray_val);
+				// also merge with the explicit array properties in reads_obj that are not already handled
+				for (Map.Entry<String, Value> me2 : reads_obj.getProperties().entrySet()) {
+					String propertyname = me2.getKey();
+					if (Strings.isArrayIndex(propertyname) && !reads_other_obj.getProperties().containsKey(propertyname)) {
+						Value reads_val = me2.getValue();
+						Value new_reads_val = reads_val.join(reads_other_defaultarray_val);
+						reads_obj.setProperty(propertyname, new_reads_val);
+					}
+				}
+			}
+			Value reads_other_defaultnonarray_val = reads_other_obj.getDefaultNonArrayProperty();
+			if (!reads_other_defaultnonarray_val.isUnknown()) {
+				reads_obj.setDefaultNonArrayProperty(reads_other_defaultnonarray_val);
+				// also merge with the explicit array properties in reads_obj that are not already handled
+				for (Map.Entry<String, Value> me2 : reads_obj.getProperties().entrySet()) {
+					String propertyname = me2.getKey();
+					if (!Strings.isArrayIndex(propertyname) && !reads_other_obj.getProperties().containsKey(propertyname)) {
+						Value reads_val = me2.getValue();
+						Value new_reads_val = reads_val.join(reads_other_defaultnonarray_val);
+						reads_obj.setProperty(propertyname, new_reads_val);
+					}
+				}
+			}
+			Value reads_other_internalprototype_val = reads_other_obj.getInternalPrototype();
+			if (!reads_other_internalprototype_val.isUnknown()) {
+				Value reads_internalprototype_val = reads_obj.getInternalPrototype();
+				Value new_reads_internalprototype_val = reads_internalprototype_val.join(reads_other_internalprototype_val);
+				reads_obj.setInternalPrototype(new_reads_internalprototype_val);
+			}
+			Value reads_other_internalvalue_val = reads_other_obj.getInternalValue();
+			if (!reads_other_internalvalue_val.isUnknown()) {
+				Value reads_internalvalue_val = reads_obj.getInternalValue();
+				Value new_reads_internalvalue_val = reads_internalvalue_val.join(reads_other_internalvalue_val);
+				reads_obj.setInternalValue(new_reads_internalvalue_val);
+			}
+			if (!reads_other_obj.isScopeChainUnknown()) {
+				ScopeChain new_reads_scopechain;
+				if (!reads_obj.isScopeChainUnknown()) {
+					new_reads_scopechain = ScopeChain.add(reads_obj.getScopeChain(), reads_other_obj.getScopeChain());
+				} else {
+					new_reads_scopechain = reads_other_obj.getScopeChain();
+				}
+				reads_obj.setScopeChain(new_reads_scopechain);
+			}
+		}
+		// merge writes of other into this (if both write, take least upper bound)
+		for (Map.Entry<ObjectLabel,Obj> me : other.store.entrySet()) {
+			ObjectLabel objlabel = me.getKey();
+			Obj other_obj = me.getValue();
+			Obj this_obj = getObject(objlabel, true);
+			// merge properties of other_obj into this_obj
+			for (Map.Entry<String, Value> me2 : other_obj.getProperties().entrySet()) {
+				String propertyname = me2.getKey();
+				Value other_val = me2.getValue();
+				if (other_val.isMaybeModified()) {
+					Value this_val = this_obj.getProperty(propertyname);
+					Value new_this_val = mergeForInSpecializationValue(this_val, other_val, other);
+					this_obj.setProperty(propertyname, new_this_val);
+				}
+			}
+			Value other_defaultarray_val = other_obj.getDefaultArrayProperty();
+			if (other_defaultarray_val.isMaybeModified()) {
+				Value this_defaultarray_val = this_obj.getDefaultArrayProperty();
+				Value new_this_defaultarray_val = mergeForInSpecializationValue(this_defaultarray_val, other_defaultarray_val, other);
+				this_obj.setDefaultArrayProperty(new_this_defaultarray_val);
+				// also merge with the explicit array properties in this_obj that are not already handled
+				for (Map.Entry<String, Value> me2 : this_obj.getProperties().entrySet()) {
+					String propertyname = me2.getKey();
+					if (Strings.isArrayIndex(propertyname) && !other_obj.getProperties().containsKey(propertyname)) {
+						Value this_val = me2.getValue();
+						Value new_this_val = mergeForInSpecializationValue(this_val, other_defaultarray_val, other);
+						this_obj.setProperty(propertyname, new_this_val);						
+					}
+				}
+			}
+			Value other_defaultnonarray_val = other_obj.getDefaultNonArrayProperty();
+			if (other_defaultnonarray_val.isMaybeModified()) {
+				Value this_defaultnonarray_val = this_obj.getDefaultNonArrayProperty();
+				Value new_this_defaultnonarray_val = mergeForInSpecializationValue(this_defaultnonarray_val, other_defaultnonarray_val, other);
+				this_obj.setDefaultNonArrayProperty(new_this_defaultnonarray_val);
+				// also merge with the explicit array properties in this_obj that are not already handled
+				for (Map.Entry<String, Value> me2 : this_obj.getProperties().entrySet()) {
+					String propertyname = me2.getKey();
+					if (!Strings.isArrayIndex(propertyname) && !other_obj.getProperties().containsKey(propertyname)) {
+						Value this_val = me2.getValue();
+						Value new_this_val = mergeForInSpecializationValue(this_val, other_defaultarray_val, other);
+						this_obj.setProperty(propertyname, new_this_val);						
+					}
+				}
+			}
+			Value other_internalprototype_val = other_obj.getInternalPrototype();
+			if (other_internalprototype_val.isMaybeModified()) {
+				Value this_internalprototype_val = this_obj.getInternalPrototype();
+				Value new_this_internalprototype_val = mergeForInSpecializationValue(this_internalprototype_val, other_internalprototype_val, other);
+				this_obj.setInternalPrototype(new_this_internalprototype_val);
+			}
+			Value other_internalvalue_val = other_obj.getInternalValue();
+			if (other_internalvalue_val.isMaybeModified()) {
+				Value this_internalvalue_val = this_obj.getInternalValue();
+				Value new_this_internalvalue_val = mergeForInSpecializationValue(this_internalvalue_val, other_internalvalue_val, other);
+				this_obj.setInternalValue(new_this_internalvalue_val);
+			}
+			if (!other_obj.isScopeChainUnknown()) {
+				ScopeChain new_this_scopechain;
+				if (!this_obj.isScopeChainUnknown()) {
+					new_this_scopechain = ScopeChain.add(this_obj.getScopeChain(), other_obj.getScopeChain());
+				} else {
+					new_this_scopechain = other_obj.getScopeChain();
+				}
+				this_obj.setScopeChain(new_this_scopechain);
+			}
+		}
+		summarized.getMaybeSummarized().addAll(other.summarized.getMaybeSummarized());
+		summarized.getDefinitelySummarized().addAll(other.summarized.getDefinitelySummarized());
+		return conflict;
     }
 
     /**
-     * Copies the calledge state the current state.
+     * Checks whether modified parts of the writes store overlap with the non-unknown parts of the reads store.
+     * @return true if conflict
      */
-    public void copyUnknowns(BlockState<BlockStateType, CallContextType, CallEdgeType> calledge_state) { // FIXME: review
-        makeWritableStore(); // TODO: Should share code with mergeFunctionReturn.
-        check();
-        calledge_state.check();
-        if (basis_store != calledge_state.basis_store)
-            throw new AnalysisException("Not identical basis stores");
-        // strengthen each object and replace polymorphic values
-        BlockState<BlockStateType, CallContextType, CallEdgeType> summarized_calledge = calledge_state.clone();
-        summarized_calledge.summarizeStore(summarized);
-        for (ObjectLabel objlabel : store.keySet()) {
-            Obj obj = getObject(objlabel, true); // always preparing for object updates, even if no changes are made
-            replacePolymorphicValues(obj, calledge_state, this, summarized);
-            Obj calledge_obj = summarized_calledge.getObject(objlabel, false);
-            logger.debug("strengthenNonModifiedParts on " + objlabel);
-            obj.replaceNonModifiedParts(calledge_obj);
-        }
-        // restore objects that were not used by the callee (i.e. either 'unknown' or never retrieved from basis_store to store)
-        for (Map.Entry<ObjectLabel, Obj> me : summarized_calledge.getStore().entrySet())
-            if (!store.containsKey(me.getKey()))
-                putObject(me.getKey(), me.getValue());
-        // remove objects that are equal to the default object
-        for (Iterator<Map.Entry<ObjectLabel, Obj>> it = store.entrySet().iterator(); it.hasNext();) {
-            Map.Entry<ObjectLabel, Obj> me = it.next();
-            if (me.getValue().equals(store_default)) {
-                logger.debug("removing object equal to the default: " + me.getKey());
-                it.remove();
-            }
-        }
-        // restore execution_context and stacked_objlabels from calledge state
-        execution_context = calledge_state.execution_context.clone();
-        execution_context.summarize(summarized);
-        writable_execution_context = true;
-        if (Options.isLazyDisabled())
-            stacked_objlabels = summarized.summarize(calledge_state.stacked_objlabels);
-        writable_stacked_objlabels = false;
-        Summarized old_summarized = summarized;
-        // merge summarized sets
-        summarized = new Summarized();
-        summarized.getMaybeSummarized().addAll(calledge_state.summarized.getMaybeSummarized());
-        summarized.getMaybeSummarized().addAll(old_summarized.getMaybeSummarized());
-        summarized.getDefinitelySummarized().addAll(calledge_state.summarized.getDefinitelySummarized());
-        summarized.getDefinitelySummarized().addAll(old_summarized.getDefinitelySummarized());
-        // Value res = replacePolymorphicValue(returnval, calledge_state, caller_entry_state, callee_summarized);
-        // TODO: restoring objects from call edge may cause some references to refer to "none" objects - prune such references? (see also checkNoDanglingRefs)
-        check();
-        logger.debug("copyUnknowns(...) done");
-    }
+	private static boolean checkReadWriteConflict(BlockState<?, ?, ?> writes, BlockState<?, ?, ?> reads) {
+		for (Map.Entry<ObjectLabel,Obj> me : writes.store.entrySet()) {
+			ObjectLabel objlabel = me.getKey();
+			Obj writes_obj = me.getValue();
+			Obj reads_obj = reads.getObject(objlabel, true);
+			for (Map.Entry<String, Value> me2 : writes_obj.getProperties().entrySet()) {
+				String propertyname = me2.getKey();
+				Value writes_val = me2.getValue();
+				if (writes_val.isMaybeModified()) {
+					Value reads_val = reads_obj.getProperty(propertyname);
+					if (checkReadWriteConflictValue(writes_val, reads_val)) {
+						logger.debug("checkReadWriteConflict: writing " + writes_val + " reading " + reads_val + " from " + objlabel + "." + propertyname);
+						return true;
+					}
+				}
+			}
+			Value writes_defaultarray_val = writes_obj.getDefaultArrayProperty();
+			if (writes_defaultarray_val.isMaybeModified()) {
+				Value reads_defaultarray_val = reads_obj.getDefaultArrayProperty();
+				if (checkReadWriteConflictValue(writes_defaultarray_val, reads_defaultarray_val)) {
+					logger.debug("checkReadWriteConflict: writing " + writes_defaultarray_val + " reading " + reads_defaultarray_val + " from " + objlabel + ".[[defaultarray]]");
+					return true;
+				}
+				// also check the explicit array properties in reads_obj that are not already handled
+				for (Map.Entry<String, Value> me2 : reads_obj.getProperties().entrySet()) {
+					String propertyname = me2.getKey();
+					if (Strings.isArrayIndex(propertyname) && !writes_obj.getProperties().containsKey(propertyname)) {
+						Value reads_val = me2.getValue();
+						if (checkReadWriteConflictValue(writes_defaultarray_val, reads_val)) {
+							logger.debug("checkReadWriteConflict: writing " + writes_defaultarray_val + " reading " + reads_val + " from " + objlabel + "." + propertyname);
+							return true;
+						}
+					}
+				}
+			}
+			Value writes_defaultnonarray_val = writes_obj.getDefaultNonArrayProperty();
+			if (writes_defaultnonarray_val.isMaybeModified()) {
+				Value reads_defaultnonarray_val = reads_obj.getDefaultNonArrayProperty();
+				if (checkReadWriteConflictValue(writes_defaultnonarray_val, reads_defaultnonarray_val)) {
+					logger.debug("checkReadWriteConflict: writing " + writes_defaultnonarray_val + " reading " + reads_defaultnonarray_val + " from " + objlabel + ".[[defaultnonarray]]");
+					return true;
+				}
+				// also check the explicit nonarray properties in reads_obj that are not already handled
+				for (Map.Entry<String, Value> me2 : reads_obj.getProperties().entrySet()) {
+					String propertyname = me2.getKey();
+					if (!Strings.isArrayIndex(propertyname) && !writes_obj.getProperties().containsKey(propertyname)) {
+						Value reads_val = me2.getValue();
+						if (checkReadWriteConflictValue(writes_defaultnonarray_val, reads_val)) {
+							logger.debug("checkReadWriteConflict: writing " + writes_defaultnonarray_val + " reading " + reads_val + " from " + objlabel + "." + propertyname);
+							return true;
+						}
+					}
+				}
+			}
+			Value writes_internalprototype_val = writes_obj.getInternalPrototype();
+			if (writes_internalprototype_val.isMaybeModified()) {
+				Value reads_internalprototype_val = reads_obj.getInternalPrototype();
+				if (checkReadWriteConflictValue(writes_internalprototype_val, reads_internalprototype_val)) {
+					logger.debug("checkReadWriteConflict: writing " + writes_internalprototype_val + " reading " + reads_internalprototype_val + " from " + objlabel + ".[[Prototype]]");
+					return true;
+				}
+			}
+			Value writes_internalvalue_val = writes_obj.getInternalValue();
+			if (writes_internalvalue_val.isMaybeModified()) {
+				Value reads_internalvalue_val = reads_obj.getInternalValue();
+				if (checkReadWriteConflictValue(writes_internalvalue_val, reads_internalvalue_val)) {
+					logger.debug("checkReadWriteConflict: writing " + writes_internalvalue_val + " reading " + reads_internalvalue_val + " from " + objlabel + ".[[Value]]");
+					return true;
+				}
+			}
+			if (!writes_obj.isScopeChainUnknown()) {
+				if (!reads_obj.isScopeChainUnknown()) {
+					logger.debug("checkReadWriteConflict: writing " + writes_obj.getScopeChain() + " reading " + reads_obj.getScopeChain() + " from " + objlabel + ".[[Scope]]");
+					return checkReadWriteConflictScopeChain(writes_obj.getScopeChain(), reads_obj.getScopeChain());
+				}
+			}
+		}
+		return false;
+	}
+
+	/**
+	 * Checks whether the written value may affect the read value.
+	 * @return true if potential conflict, false if definitely no conflict
+	 */
+	private static boolean checkReadWriteConflictValue(Value writes_val, Value reads_val) {
+		if (reads_val.isUnknown()) { // if reads_val is 'unknown', the location has not been read 
+			return false;
+		}
+		if (reads_val.isPolymorphic()) { // if reads_val is a polymorphic value, the location has been partially read (i.e. only its attributes)
+			return !writes_val.lessEqualAttributes(reads_val);
+		}
+		return !writes_val.lessEqual(reads_val);
+	}
+
+	/**
+	 * Checks whether the written value may affect the read value.
+	 * @return true if potential conflict, false if definitely no conflict
+	 */
+	private static boolean checkReadWriteConflictScopeChain(ScopeChain writes_scope, ScopeChain reads_scope) {
+		if ((writes_scope == null && reads_scope == null) || (writes_scope != null && writes_scope.equals(reads_scope))) // TODO: would improve precision slightly if instead checking writes_scope.lessEqual(reads_scope)
+			return false;
+		return true;
+	}
+
+	/**
+	 * Merges this value with the other value.
+	 * Assumes that the other value is maybe modified.
+	 * This value is ignored if it is not maybe modified.
+	 */
+	private Value mergeForInSpecializationValue(Value this_val, Value other_val, BlockState<BlockStateType, CallContextType, CallEdgeType> other) {
+		Value new_this_val;
+		if (!this_val.isMaybeModified()) {
+			// not modified in this state, so get the value directly from the other state
+			new_this_val = other_val;
+		} else {
+			// maybe modified in this state and in other state, so join the two values
+			this_val = UnknownValueResolver.getRealValue(this_val, this);
+			other_val = UnknownValueResolver.getRealValue(other_val, other);
+			new_this_val = this_val.join(other_val);
+		}
+		return new_this_val;
+	}
 
 	/**
 	 * Replaces the polymorphic properties of the given object.
@@ -705,7 +891,8 @@ public abstract class BlockState<BlockStateType extends BlockState<BlockStateTyp
     	if (!v.isPolymorphic())
     		return v;
     	PropertyReference p = v.getPropertyReference();
-    	Obj calledge_obj = calledge_state.getObject(p.getObjectLabel(), false);
+		ObjectLabel edge_objlabel = p.getObjectLabel();
+		Obj calledge_obj = calledge_state.getObject(edge_objlabel, false);
     	Value res;
     	switch (p.getKind()) {
     	case ORDINARY:
@@ -722,7 +909,7 @@ public abstract class BlockState<BlockStateType extends BlockState<BlockStateTyp
     		throw new AnalysisException("Unexpected value variable");
     	}
     	if (res.isUnknown()) {
-        	Obj caller_entry_obj = caller_entry_state.getObject(p.getObjectLabel(), false);
+			Obj caller_entry_obj = caller_entry_state.getObject(edge_objlabel, false);
         	switch (p.getKind()) {
         	case ORDINARY:
         		res = caller_entry_obj.getProperty(p.getPropertyName());
@@ -738,11 +925,11 @@ public abstract class BlockState<BlockStateType extends BlockState<BlockStateTyp
         		throw new AnalysisException("Unexpected value variable");
         	}
         	if (res.isUnknown())
-        		throw new AnalysisException("Unexpected value");
+				throw new AnalysisException("Unexpected value (property reference: " + p + ", edge object label: " + edge_objlabel + ")");
         	res = res.summarize(calledge_state.getSummarized());
     	}
-    	res = res.summarize(callee_summarized).setModifiedFrom(v);
-    	return res;
+    	res = res.summarize(callee_summarized);
+    	return v.replaceValue(res);
     }
 
     /**
@@ -757,7 +944,7 @@ public abstract class BlockState<BlockStateType extends BlockState<BlockStateTyp
             me.getValue().summarize(s);
             if (objlabel.isSingleton()) {
                 if (s.isMaybeSummarized(objlabel))
-                	propagateObj(objlabel.makeSummary(), this, objlabel);
+                	propagateObj(objlabel.makeSummary(), this, objlabel, true);
                 if (s.isDefinitelySummarized(objlabel))
                 	store.remove(objlabel);
             }
@@ -770,9 +957,7 @@ public abstract class BlockState<BlockStateType extends BlockState<BlockStateTyp
      * Assumes that the states belong to the same block and context.
      * @return true if an object changed (note there may be other changes due to recoveries)
      */
-    protected boolean propagate(BlockState<BlockStateType, CallContextType, CallEdgeType> s) {
-        if (block != s.block)
-        	throw new AnalysisException("Expected states to belong to the same basic block");
+    protected boolean propagate(BlockState<BlockStateType, CallContextType, CallEdgeType> s, boolean funentry) {
         if (Options.isDebugOrTestEnabled() && !store_default.equals(s.store_default))
         	throw new AnalysisException("Expected store default objects to be equal");
         if (logger.isDebugEnabled() && Options.isIntermediateStatesEnabled()) {
@@ -788,23 +973,25 @@ public abstract class BlockState<BlockStateType extends BlockState<BlockStateTyp
         labs.addAll(store.keySet());
         labs.addAll(s.store.keySet());
         for (ObjectLabel lab : labs)
-            changed |= propagateObj(lab, s, lab);
-        changed |= summarized.join(s.summarized);
-        for (int i = 0; i < registers.size() || i < s.registers.size(); i++) {
-            Value v1 = i < registers.size() ? registers.get(i) : null;
-            Value v2 = i < s.registers.size() ? s.registers.get(i) : null;
-            Value v = (v1 != null && v2 != null) ? UnknownValueResolver.join(v1, v2, this) : null; // if either is null, it must be dead anyway
-            if ((v1 == null && v != null) || (v1 != null && !v1.equals(v))) {
-                if (i < registers.size())
-                    registers.set(i, v);
-                else
-                    registers.add(v);
-                changed = true;
-            }
-        }
+            changed |= propagateObj(lab, s, lab, false);
         if (Options.isLazyDisabled())
             changed |= stacked_objlabels.addAll(s.stacked_objlabels);
         changed |= extras.propagate(s.extras);
+        if (!funentry) {
+        	for (int i = 0; i < registers.size() || i < s.registers.size(); i++) {
+        		Value v1 = i < registers.size() ? registers.get(i) : null;
+        		Value v2 = i < s.registers.size() ? s.registers.get(i) : null;
+        		Value v = (v1 != null && v2 != null) ? UnknownValueResolver.join(v1, this, v2, s) : null; // if either is null, it must be dead anyway
+        		if ((v1 == null && v != null) || (v1 != null && !v1.equals(v))) {
+        			if (i < registers.size())
+        				registers.set(i, v);
+        			else
+        				registers.add(v);
+        			changed = true;
+        		}
+        	}
+        	changed |= summarized.join(s.summarized);
+        }
         check();
         if (logger.isDebugEnabled()) {
             if (Options.isIntermediateStatesEnabled())
@@ -819,11 +1006,12 @@ public abstract class BlockState<BlockStateType extends BlockState<BlockStateTyp
      * Propagates objlabel2 from state2 into objlabel1 in this state.
      * Replaces 'unknown' and polymorphic values when necessary.
      * Assumes that the states belong to the same block and context.
+     * @param modified if true, set modified flag on written values
      * @return true if the object changed (note there may be other changes due to recoveries)
      */
-    private boolean propagateObj(ObjectLabel objlabel_to, BlockState<BlockStateType, CallContextType, CallEdgeType> state_from, ObjectLabel objlabel_from) {
+    private boolean propagateObj(ObjectLabel objlabel_to, BlockState<BlockStateType, CallContextType, CallEdgeType> state_from, ObjectLabel objlabel_from, boolean modified) {
     	Obj obj_from = state_from.getObject(objlabel_from, false);
-        if (obj_from.isNone()) {
+        if (obj_from.isAllNone()) {
         	// obj_from object is none, so nothing to do
         	return false;
         }
@@ -832,86 +1020,91 @@ public abstract class BlockState<BlockStateType extends BlockState<BlockStateTyp
         boolean changed = false;
         Value default_array_property_to = obj_to.getDefaultArrayProperty();
         Value default_array_property_from = obj_from.getDefaultArrayProperty();
-        Value default_nonarray_property_to = obj_to.getDefaultNonArrayProperty();
-        Value default_nonarray_property_from = obj_from.getDefaultNonArrayProperty();
     	Value default_array_property_to_original = default_array_property_to;
-    	Value default_nonarray_property_to_original = default_nonarray_property_to;
-        if (default_array_property_to != default_array_property_from) {
+        if (!default_array_property_to.isUnknown() || !default_array_property_from.isUnknown()) {
         	if (default_array_property_to.isUnknown())
         		default_array_property_to = UnknownValueResolver.getDefaultArrayProperty(objlabel_to, this);
         	if (default_array_property_from.isUnknown())
         		default_array_property_from = UnknownValueResolver.getDefaultArrayProperty(objlabel_from, state_from);
-        	Value v = UnknownValueResolver.join(default_array_property_to, default_array_property_from, this);
-        	if (!v.equals(default_array_property_to_original)) {
-        		obj_to.setDefaultArrayProperty(v);
+        	default_array_property_to = default_array_property_to.join(default_array_property_from);
+            if (modified)
+            	default_array_property_to = default_array_property_to.joinModified();
+        	if (default_array_property_to != default_array_property_to_original) {
+        		obj_to.setDefaultArrayProperty(default_array_property_to);
         		changed = true;
         	}
         }
-        if (default_nonarray_property_to != default_nonarray_property_from) {
+        Value default_nonarray_property_to = obj_to.getDefaultNonArrayProperty();
+        Value default_nonarray_property_from = obj_from.getDefaultNonArrayProperty();
+    	Value default_nonarray_property_to_original = default_nonarray_property_to;
+        if (!default_nonarray_property_to.isUnknown() || !default_nonarray_property_from.isUnknown()) {
         	if (default_nonarray_property_to.isUnknown())
         		default_nonarray_property_to = UnknownValueResolver.getDefaultNonArrayProperty(objlabel_to, this);
         	if (default_nonarray_property_from.isUnknown())
         		default_nonarray_property_from = UnknownValueResolver.getDefaultNonArrayProperty(objlabel_from, state_from);
-        	Value v = UnknownValueResolver.join(default_nonarray_property_to, default_nonarray_property_from, this);
-        	if (!v.equals(default_nonarray_property_to_original)) {
-        		obj_to.setDefaultNonArrayProperty(v);
+        	default_nonarray_property_to = default_nonarray_property_to.join(default_nonarray_property_from);
+            if (modified)
+            	default_nonarray_property_to = default_nonarray_property_to.joinModified();
+        	if (default_nonarray_property_to != default_nonarray_property_to_original) {
+        		obj_to.setDefaultNonArrayProperty(default_nonarray_property_to);
         		changed = true;
         	}
         }
         obj_from = state_from.getObject(objlabel_from, false); // propagating defaults may have materialized properties, so get the latest version
-        for (Map.Entry<String,Value> me : obj_from.getProperties().entrySet()) {
-        	String propertyname = me.getKey();
-        	Value value = me.getValue();
+        for (String propertyname : obj_from.getProperties().keySet()) {
         	if (!obj_to.getProperties().containsKey(propertyname)) {
-        		boolean a = Strings.isArrayIndex(propertyname);
-        		if (!(a ? default_array_property_from : default_nonarray_property_from).equals(value)) { // skip properties with same value as the default
-        			Value v = a ? default_array_property_to_original : default_nonarray_property_to_original;
-        			obj_to.setProperty(propertyname, v); // materializing from default doesn't affect 'changed'
-//        			logger.debug("Materialized " + objlabel_to + "." + propertyname + " = " + v);
-        		}
+        		Value v = Strings.isArrayIndex(propertyname) ? default_array_property_to_original : default_nonarray_property_to_original;
+        		obj_to.setProperty(propertyname, v); // materializing from default doesn't affect 'changed'
+//        		logger.debug("Materialized " + objlabel_to + "." + propertyname + " = " + v);
         	}
         }
-        for (String propertyname : obj_to.getPropertyNames()) {
+        for (String propertyname : newList(obj_to.getPropertyNames())) { // TODO: need newList (to avoid ConcurrentModificationException)?
         	Value v_to = obj_to.getProperty(propertyname);
-        	Value v_to_original = v_to;
         	Value v_from = obj_from.getProperty(propertyname);
-        	if (v_to != v_from) {
+        	if (!v_to.isUnknown() || !v_from.isUnknown()) {
+            	Value v_to_original = v_to;
         		if (v_to.isUnknown()) 
         			v_to = UnknownValueResolver.getProperty(objlabel_to, propertyname, this, v_from.isPolymorphic());
         		if (v_from.isUnknown()) 
         			v_from = UnknownValueResolver.getProperty(objlabel_from, propertyname, state_from, v_to.isPolymorphic());
-        		Value v = UnknownValueResolver.join(v_to, v_from, this);
-        		if (!v.equals(v_to_original)) {
-        			obj_to.setProperty(propertyname, v);
+        		v_to = UnknownValueResolver.join(v_to, this, v_from, state_from);
+            	if (modified)
+            		v_to = v_to.joinModified();
+        		if (v_to != v_to_original) {
+        			obj_to.setProperty(propertyname, v_to);
         			changed = true;
         		}
         	}
         }
         Value internal_prototype_to = obj_to.getInternalPrototype();
         Value internal_prototype_from = obj_from.getInternalPrototype();
-        if (internal_prototype_to != internal_prototype_from) {
+        if (!internal_prototype_to.isUnknown() || !internal_prototype_from.isUnknown()) {
         	Value internal_prototype_to_original = internal_prototype_to;
         	if (internal_prototype_to.isUnknown())
         		internal_prototype_to = UnknownValueResolver.getInternalPrototype(objlabel_to, this, internal_prototype_from.isPolymorphic());
         	if (internal_prototype_from.isUnknown())
         		internal_prototype_from = UnknownValueResolver.getInternalPrototype(objlabel_from, state_from, internal_prototype_to.isPolymorphic());
-        	Value v = UnknownValueResolver.join(internal_prototype_to, internal_prototype_from, this);
-        	if (!v.equals(internal_prototype_to_original)) {
-        		obj_to.setInternalPrototype(v);
+        	internal_prototype_to = UnknownValueResolver.join(internal_prototype_to, this, internal_prototype_from, state_from);
+        	if (modified)
+        		internal_prototype_to = internal_prototype_to.joinModified();
+        	if (internal_prototype_to != internal_prototype_to_original) {
+        		obj_to.setInternalPrototype(internal_prototype_to);
         		changed = true;
         	}
         }
         Value internal_value_to = obj_to.getInternalValue();
         Value internal_value_from = obj_from.getInternalValue();
-        if (internal_value_to != internal_value_from) {
+        if (!internal_value_to.isUnknown() || !internal_value_from.isUnknown()) {
         	Value internal_value_to_original = internal_value_to;
         	if (internal_value_to.isUnknown())
         		internal_value_to = UnknownValueResolver.getInternalValue(objlabel_to, this, internal_value_from.isPolymorphic());
         	if (internal_value_from.isUnknown())
         		internal_value_from = UnknownValueResolver.getInternalValue(objlabel_from, state_from, internal_value_to.isPolymorphic());
-        	Value v = UnknownValueResolver.join(internal_value_to, internal_value_from, this);
-        	if (!v.equals(internal_value_to_original)) {
-        		obj_to.setInternalValue(v);
+        	internal_value_to = UnknownValueResolver.join(internal_value_to, this, internal_value_from, state_from);
+        	if (modified)
+        		internal_value_to = internal_value_to.joinModified();
+        	if (internal_value_to != internal_value_to_original) {
+        		obj_to.setInternalValue(internal_value_to);
         		changed = true;
         	}
         }
@@ -938,14 +1131,14 @@ public abstract class BlockState<BlockStateType extends BlockState<BlockStateTyp
     	return readPropertyValue(objlabels, Value.makeTemporaryStr(propertyname));
     }
 
-    /**
-     * 8.6.2.1 [[Get]] 
-     * Returns the value of the given property in the given objects.
-     * The internal prototype chains are used.
-     * Absent is converted to undefined. Attributes are set to bottom.
-     */
-    public Value readPropertyValue(Collection<ObjectLabel> objlabels, Str propertystr) {
-		Value v = readPropertyRaw(objlabels, propertystr);
+	/**
+	 * 8.6.2.1 [[Get]]
+	 * Returns the value of the given property in the given objects.
+	 * The internal prototype chains are used.
+	 * Absent is converted to undefined. Attributes are set to bottom.
+	 */
+	public Value readPropertyValue(Collection<ObjectLabel> objlabels, Str propertystr) {
+		Value v = readPropertyRaw(objlabels, propertystr, false);
 		if (v.isMaybeAbsent())
 		    v = v.restrictToNotAbsent().joinUndef();
 		v = v.setBottomAttributes();
@@ -962,63 +1155,71 @@ public abstract class BlockState<BlockStateType extends BlockState<BlockStateTyp
     	return readPropertyWithAttributes(objlabels, Value.makeTemporaryStr(propertyname));
     }
 
-    /**
-     * Returns the value of the given property in the given objects.
-     * The internal prototype chains are used.
-     */
-    public Value readPropertyWithAttributes(Collection<ObjectLabel> objlabels, Str propertystr) {
-        Value v = readPropertyRaw(objlabels, propertystr);
-		if (logger.isDebugEnabled()) 
+	/**
+	 * Returns the value of the given property in the given objects.
+	 * The internal prototype chains are used.
+	 */
+	public Value readPropertyWithAttributes(Collection<ObjectLabel> objlabels, Str propertystr) {
+		Value v = readPropertyRaw(objlabels, propertystr, false);
+		if (logger.isDebugEnabled())
 			logger.debug("readPropertyWithAttributes(" + objlabels + "," + propertystr + ") = " + v);
         return v;
     }
 
-    /**
-     * Returns the value of the given property in the given objects.
-     * The internal prototype chains are used.
-     */
-    private Value readPropertyRaw(Collection<ObjectLabel> objlabels, Str propertystr) {
-    	Collection<Value> values = newList();
-    	Collection<ObjectLabel> ol = objlabels;
-    	Set<ObjectLabel> visited = newSet();
-    	while (!ol.isEmpty()) {
-    		Set<ObjectLabel> ol2 = newSet();
-    		for (ObjectLabel l : ol)
-    			if (!visited.contains(l)) {
-    				visited.add(l);
-    				Value v = readPropertyDirect(l, propertystr);
-                    // String objects have their own [[GetOwnProperty]], see 15.5.5.2 in the ECMAScript 5 standard.
-/*                    if (v.isMaybeAbsent() && l.getKind() == Kind.STRING && (propertystr.isMaybeStrOnlyUInt() || (propertystr.getStr() != null && Strings.isArrayIndex(propertystr.getStr())))) { // XXX: review (note that this is new in ES5)
-                        Value tmp = null;
-                        Value internal_value = UnknownValueResolver.getInternalValue(l, this, true);
-                        Value lenV = UnknownValueResolver.getProperty(l, "length", this, true).restrictToNum();
-                        String value = internal_value.getStr();
-                        Double obj_len = lenV.getNum();
-                        Integer prop_len = propertystr.getStr() == null ? -1 : Integer.valueOf(propertystr.getStr());
-                        if (obj_len != null && value != null && prop_len > -1 && prop_len < obj_len)
-                            tmp = Value.makeStr(value.substring(prop_len, prop_len + 1));
-                        else if (obj_len != null && prop_len > -1 && prop_len >= obj_len)
-                            tmp = Value.makeUndef();
-                        if (tmp != null)
-                            v = v.isNotPresent() ? tmp : v.join(tmp);
-                    }*/
-    				Value v2 = v.restrictToNotAbsent();
-    				values.add(v2);
-    				if (v.isMaybeAbsent() || v.isNotPresent()) {
-    					Value proto = UnknownValueResolver.getInternalPrototype(l, this, false);
-    					ol2.addAll(proto.getObjectLabels());
-    					if (proto.isMaybeAbsent() || proto.isMaybeNull()) {
-    						values.add(Value.makeAbsent());
-    					}
-    				}
-    			}
-    		ol = ol2;
-    	}
-    	return UnknownValueResolver.join(values, this);
-    }
-    
-    public static class Properties {
-    	
+	/**
+	 * Returns the value of the given property in the given objects.
+	 * The internal prototype chains are used.
+	 * @param only_attributes if set, only attributes (incl. pseudo-attributes) are considered
+	 */
+	private Value readPropertyRaw(Collection<ObjectLabel> objlabels, Str propertystr, boolean only_attributes) {
+		Collection<Value> values = newList();
+		Collection<ObjectLabel> ol = objlabels;
+		Set<ObjectLabel> visited = newSet();
+		while (!ol.isEmpty()) {
+			Set<ObjectLabel> ol2 = newSet();
+			for (ObjectLabel l : ol)
+				if (!visited.contains(l)) {
+					visited.add(l);
+					Value v = readPropertyDirect(l, propertystr);
+					// String objects have their own [[GetOwnProperty]], see 15.5.5.2 in the ECMAScript 5 standard.
+/*                    if (v.isMaybeAbsent() && l.getKind() == Kind.STRING && (propertystr.isMaybeStrOnlyUInt() || (propertystr.getStr() != null && Strings.isArrayIndex(propertystr.getStr())))) { // TODO: review (note that this is new in ES5)
+                    	Value tmp = null;
+                    	Value internal_value = UnknownValueResolver.getInternalValue(l, this, true);
+                    	Value lenV = UnknownValueResolver.getProperty(l, "length", this, true).restrictToNum();
+                    	String value = internal_value.getStr();
+                    	Double obj_len = lenV.getNum();
+                    	Integer prop_len = propertystr.getStr() == null ? -1 : Integer.valueOf(propertystr.getStr());
+                    	if (obj_len != null && value != null && prop_len > -1 && prop_len < obj_len)
+                        	tmp = Value.makeStr(value.substring(prop_len, prop_len + 1));
+                    	else if (obj_len != null && prop_len > -1 && prop_len >= obj_len)
+                        	tmp = Value.makeUndef();
+                    	if (tmp != null)
+                        	v = v.isNotPresent() ? tmp : v.join(tmp);
+                }*/
+					Value v2 = v.restrictToNotAbsent();
+					if (!v2.isNone()) {
+						if (only_attributes)
+							v2 = v2.restrictToAttributes();
+						values.add(v2);
+					}
+					if (v.isMaybeAbsent() || v.isNotPresent()) {
+						Value proto = UnknownValueResolver.getInternalPrototype(l, this, false);
+						ol2.addAll(proto.getObjectLabels());
+						if (proto.isMaybeAbsent() || proto.isMaybeNull()) {
+							values.add(Value.makeAbsent());
+						}
+					}
+				}
+			ol = ol2;
+		}
+		return UnknownValueResolver.join(values, this);
+	}
+
+	/**
+	 * Collection of property names.
+	 */
+	public static class Properties {
+
 		/**
     	 * Property names that are maybe (including definitely) included.
     	 */
@@ -1098,6 +1299,27 @@ public abstract class BlockState<BlockStateType extends BlockState<BlockStateTyp
 				return false;
 			return true;
 		}
+		
+		/**
+		 * Returns true if the exact set of property names is known and finite.
+		 */
+		public boolean isDefinite() {
+			return !array && !nonarray && maybe.equals(definitely);
+		}
+		
+		/**
+		 * Returns a value that represents the least upper bound of the property names.
+		 */
+		public Value toValue() {
+			Collection<Value> vs = new ArrayList<>();
+        	if (array)
+        		vs.add(Value.makeAnyStrUInt());
+        	if (nonarray)
+        		vs.add(Value.makeAnyStrNotUInt());
+        	for (String k : maybe) // maybe includes definitely
+        		vs.add(Value.makeStr(k));
+        	return Value.join(vs);
+		}
     }
     
     /**
@@ -1161,39 +1383,39 @@ public abstract class BlockState<BlockStateType extends BlockState<BlockStateTyp
     	boolean first = true;
     	for (ObjectLabel objlabel : objlabels) {
 			Properties p = props.get(objlabel);
-            if (p == null)
-                throw new AnalysisException("Verify that the prototype chains for " + objlabel.toString() + " are correct.");
-    		if (first) {
-    			res.maybe.addAll(p.maybe);
-    			res.definitely.addAll(p.definitely);
-    			res.array = p.array;
-    			res.nonarray = p.nonarray;
-    			first = false;
-    		} else {
-    			res.maybe.addAll(p.maybe);
-    			res.definitely.retainAll(p.definitely);
-    			res.array |= p.array;
-    			res.nonarray |= p.nonarray;
-    		}
+            if (p != null) {
+            	if (first) {
+            		res.maybe.addAll(p.maybe);
+            		res.definitely.addAll(p.definitely);
+            		res.array = p.array;
+            		res.nonarray = p.nonarray;
+            		first = false;
+            	} else {
+            		res.maybe.addAll(p.maybe);
+            		res.definitely.retainAll(p.definitely);
+            		res.array |= p.array;
+            		res.nonarray |= p.nonarray;
+            	}
+            }
     	}
     	return res;
     }
 
-    /**
-     * [[HasProperty]].
-     * The internal prototype chains are used.
-     */
-    private Bool hasPropertyRaw(Collection<ObjectLabel> objlabels, String propertyname) {
-    	Value v = readPropertyRaw(objlabels, Value.makeTemporaryStr(propertyname));
-    	boolean maybe_present = v.isMaybePresent();
-    	boolean maybe_absent = v.isMaybeAbsent();
-    	return maybe_present ? (maybe_absent ? Value.makeAnyBool() : Value.makeBool(true)) : (maybe_absent ? Value.makeBool(false): Value.makeNone());
-    }
+	/**
+	 * [[HasProperty]].
+	 * The internal prototype chains are used.
+	 */
+	private Bool hasPropertyRaw(Collection<ObjectLabel> objlabels, String propertyname) {
+		Value v = readPropertyRaw(objlabels, Value.makeTemporaryStr(propertyname), true);
+		boolean maybe_present = v.isMaybePresent();
+		boolean maybe_absent = v.isMaybeAbsent();
+		return maybe_present ? (maybe_absent ? Value.makeAnyBool() : Value.makeBool(true)) : (maybe_absent ? Value.makeBool(false) : Value.makeNone());
+	}
 
     /**
      * Returns the set of objects in the prototype chain that contain the property.
      */
-	public Set<ObjectLabel> getPrototypeWithProperty(ObjectLabel objlabel, String propertyname) { // XXX: review (used only in Monitoring)
+	public Set<ObjectLabel> getPrototypeWithProperty(ObjectLabel objlabel, String propertyname) { // TODO: review (used only in Monitoring)
         Set<ObjectLabel> ol = Collections.singleton(objlabel);
         Set<ObjectLabel> visited = newSet();
         Set<ObjectLabel> res = newSet();
@@ -1225,7 +1447,7 @@ public abstract class BlockState<BlockStateType extends BlockState<BlockStateTyp
         return res;
     }
 
-    public Set<ObjectLabel> getPrototypesUsedForUnknown(ObjectLabel objlabel) { // XXX: review (used only in Monitoring)
+    public Set<ObjectLabel> getPrototypesUsedForUnknown(ObjectLabel objlabel) { // TODO: review (used only in Monitoring)
     	Set<ObjectLabel> ol = Collections.singleton(objlabel);
     	Set<ObjectLabel> visited = newSet();
     	Set<ObjectLabel> res = newSet();
@@ -1257,12 +1479,12 @@ public abstract class BlockState<BlockStateType extends BlockState<BlockStateTyp
         return b;
     }
 
-    /**
-     * 8.6.2.3 [[CanPut]] Checks whether the given property can be assigned in the given object.
-     * The internal prototype chains are used.
+	/**
+	 * 8.6.2.3 [[CanPut]] Checks whether the given property can be assigned in the given object.
+	 * The internal prototype chains are used.
      * @param propertystr description of the property names to consider (assumed not to be a single string)
-     */
-    private Bool canPut(ObjectLabel objlabel, Str propertystr) {
+	 */
+	private Bool canPut(ObjectLabel objlabel, Str propertystr) {
         /*
         ReadOnly properties:
         - the function name in scope object of a function expression
@@ -1272,33 +1494,31 @@ public abstract class BlockState<BlockStateType extends BlockState<BlockStateTyp
         - 'source', 'global', etc. of regexp objects
         (note: CanPut considers the internal prototype chain...)
         */
-    	if (Options.isAlwaysCanPut())
-    		return Value.makeBool(true);  
-        Value v = readPropertyRaw(Collections.singleton(objlabel), propertystr); // TODO: possible to optimize modeling of [[CanPut]]? i.e. in some cases omit this call to readPropertyRaw?
-        Bool b;
-        if (v.isNotPresent() || v.isNotReadOnly())
-            b = Value.makeBool(true);
-        else if (v.isReadOnly() && !v.isMaybeAbsent())
-            b = Value.makeBool(false);
-        else
-            b = Value.makeAnyBool();
-		if (logger.isDebugEnabled()) 
+		if (Options.isAlwaysCanPut())
+			return Value.makeBool(true);
+		Value v = readPropertyRaw(Collections.singleton(objlabel), propertystr, true); // TODO: possible to optimize modeling of [[CanPut]]? i.e. in some cases omit this call to readPropertyRaw?
+		Bool b;
+		if (v.isNotPresent() || v.isNotReadOnly())
+			b = Value.makeBool(true);
+		else if (v.isReadOnly() && !v.isMaybeAbsent())
+			b = Value.makeBool(false);
+		else
+			b = Value.makeAnyBool();
+		if (logger.isDebugEnabled())
 			logger.debug("canPut(" + objlabel + ") = " + b);
         return b;
     }
 
-    /**
-     * Returns the value of the given property in the objects.
-     * The internal prototype chains and scope chains are <emph>not</emph> used.
-     */
-    public Value readPropertyDirect(Collection<ObjectLabel> objlabels, String propertyname) {
-    	Collection<Value> values = newList();
-    	for (ObjectLabel obj : objlabels) {
-    		Value v = UnknownValueResolver.getProperty(obj, propertyname, this, true);
-    		values.add(v);
-    	}
-    	Value v = UnknownValueResolver.join(values, this);
-		if (logger.isDebugEnabled()) 
+	/**
+	 * Returns the value of the given property in the objects.
+	 * The internal prototype chains and scope chains are <emph>not</emph> used.
+	 */
+	public Value readPropertyDirect(Collection<ObjectLabel> objlabels, String propertyname) {
+		Collection<Value> values = newList();
+		for (ObjectLabel obj : objlabels)
+			values.add(UnknownValueResolver.getProperty(obj, propertyname, this, true));
+		Value v = UnknownValueResolver.join(values, this);
+		if (logger.isDebugEnabled())
 			logger.debug("readPropertyDirect(" + objlabels + "," + propertyname + ") = " + v);
         return v;
     }
@@ -1335,10 +1555,10 @@ public abstract class BlockState<BlockStateType extends BlockState<BlockStateTyp
         if (!Options.isRecencyDisabled()) {
         	if (!objlabel.isSingleton())
         		throw new AnalysisException("Expected singleton object label");
-            if (!oldobj.isNone()) {
+            if (!oldobj.isSomeNone()) {
                 // join singleton object into its summary object
                 ObjectLabel summarylabel = objlabel.makeSummary();
-                propagateObj(summarylabel, this, objlabel);
+                propagateObj(summarylabel, this, objlabel, true);
                 // update references 
                 Map<ScopeChain, ScopeChain> cache = new HashMap<>();
                 for (Obj obj : store.values())
@@ -1370,20 +1590,33 @@ public abstract class BlockState<BlockStateType extends BlockState<BlockStateTyp
         	Obj obj = getObject(objlabel, true);
         	Value old_array = UnknownValueResolver.getDefaultArrayProperty(objlabel, this);
        		Value old_nonarray = UnknownValueResolver.getDefaultNonArrayProperty(objlabel, this);
-       		obj.setDefaultArrayProperty(old_array.joinAbsentWithModified());
-       		obj.setDefaultNonArrayProperty(old_nonarray.joinAbsentWithModified());
+       		obj.setDefaultArrayProperty(old_array.joinAbsentModified());
+       		obj.setDefaultNonArrayProperty(old_nonarray.joinAbsentModified());
        	   	for (Map.Entry<String, Value> me : newSet(UnknownValueResolver.getProperties(objlabel, this).entrySet())) {
         		String propertyname = me.getKey();
         		Value v = me.getValue();
         		if (v.isUnknown())
         			v = UnknownValueResolver.getProperty(objlabel, propertyname, this, true);
-        		obj.setProperty(propertyname, v.joinAbsentWithModified());
+        		obj.setProperty(propertyname, v.joinAbsentModified());
         	}
-        	obj.setInternalPrototype(UnknownValueResolver.getInternalPrototype(objlabel, this, true).joinAbsentWithModified());
-        	obj.setInternalValue(UnknownValueResolver.getInternalValue(objlabel, this, true).joinAbsentWithModified());
+        	obj.setInternalPrototype(UnknownValueResolver.getInternalPrototype(objlabel, this, true).joinAbsentModified());
+        	obj.setInternalValue(UnknownValueResolver.getInternalValue(objlabel, this, true).joinAbsentModified());
         }
 		if (logger.isDebugEnabled()) 
 			logger.debug("newObject(" + objlabel + ")");
+    }
+    
+    /**
+     * Summarizes the given objects.
+     * Moves the given objects from singleton to summary, such that each represents
+     * an unknown number of concrete objects.
+     */
+    public void summarize(Set<ObjectLabel> objs) {
+    	for (ObjectLabel objlabel : objs) {
+    		if (store.containsKey(objlabel)) {
+    			multiplyObject(objlabel);
+    		}
+    	}
     }
 
     /**
@@ -1397,7 +1630,7 @@ public abstract class BlockState<BlockStateType extends BlockState<BlockStateTyp
         if (objlabel.isSingleton()) {
             // move the object
             ObjectLabel summarylabel = objlabel.makeSummary();
-            propagateObj(summarylabel, this, objlabel);
+            propagateObj(summarylabel, this, objlabel, true);
             store.remove(objlabel);
             // update references 
             Map<ScopeChain, ScopeChain> cache = new HashMap<>();
@@ -1418,15 +1651,15 @@ public abstract class BlockState<BlockStateType extends BlockState<BlockStateTyp
                     stacked_objlabels.remove(objlabel);
                     stacked_objlabels.add(summarylabel);
                 }
+    		if (logger.isDebugEnabled()) 
+    			logger.debug("multiplyObject(" + objlabel + ")");
         }
-		if (logger.isDebugEnabled()) 
-			logger.debug("multiplyObject(" + objlabel + ")");
     }
 
     /**
      * 8.6.2.2 [[Put]]
      * Assigns the given value to the given property of the given objects.
-     * Attributes are cleared or copied from the old value according to 8.6.2.2.
+     * Modified is set on all values being written (not considering the put flag).
      * @param put if set, attributes are cleared or copied from the old value according to 8.6.2.2
      * @param force_weak if set, force weak update disregarding objlabels
      */
@@ -1450,8 +1683,8 @@ public abstract class BlockState<BlockStateType extends BlockState<BlockStateTyp
     						v = v.removeAttributes(); // 8.6.2.2 item 6
     					Value oldval = UnknownValueResolver.getDefaultArrayProperty(objlabel, this);
     					if (!oldval.isNone()) {
-    						Value newval = UnknownValueResolver.joinWithModified(oldval, v, this);
-    						getObject(objlabel, true).setDefaultArrayProperty(newval);
+    						Value newval = UnknownValueResolver.join(oldval, v, this);
+    						getObject(objlabel, true).setDefaultArrayProperty(newval.joinModified());
     					} // otherwise, the abstract object represents zero concrete objects (due to restoring of unmodified properties), so ignore
     				}
     				// TODO: generate warning if [[CanPut]] gives false?
@@ -1463,8 +1696,8 @@ public abstract class BlockState<BlockStateType extends BlockState<BlockStateTyp
     				        v = v.removeAttributes(); // 8.6.2.2 item 6
     				    Value oldval = UnknownValueResolver.getDefaultNonArrayProperty(objlabel, this);
     				    if (!oldval.isNone()) {
-    				    	Value newval = UnknownValueResolver.joinWithModified(oldval, v, this);
-    				    	getObject(objlabel, true).setDefaultNonArrayProperty(newval);
+    				    	Value newval = UnknownValueResolver.join(oldval, v, this);
+    				    	getObject(objlabel, true).setDefaultNonArrayProperty(newval.joinModified());
     				    } // otherwise, the abstract object represents zero concrete objects (due to restoring of unmodified properties), so ignore
     				}
     				// TODO: generate warning if [[CanPut]] gives false?
@@ -1482,6 +1715,7 @@ public abstract class BlockState<BlockStateType extends BlockState<BlockStateTyp
      * 8.6.2.2 [[Put]]
      * Assigns the given value to the given property of the given object.
      * Attributes are cleared or copied from the old value according to 8.6.2.2.
+     * Modified is set on all values being written.
      */
     public void writeProperty(ObjectLabel objlabel, String propertyname, Value value) {
         writeProperty(Collections.singleton(objlabel), Value.makeTemporaryStr(propertyname), value, true, false);
@@ -1490,7 +1724,7 @@ public abstract class BlockState<BlockStateType extends BlockState<BlockStateTyp
     /**
      * Assigns the given value to the given property of the given objects, with attributes.
      * Attributes are taken from the given value.
-     * @param real if set, the modified flag if set if the value changes as result of the operation
+     * @param real if set, the modified flag is set on written values
      */
     public void writePropertyWithAttributes(Collection<ObjectLabel> objlabels, String propertyname, Value value, boolean real) {
         writePropertyRaw(objlabels, propertyname, value, false, real, true, false);
@@ -1501,6 +1735,7 @@ public abstract class BlockState<BlockStateType extends BlockState<BlockStateTyp
     /**
      * Assigns the given value to the given property of the given objects, with attributes.
      * Attributes are taken from the given value.
+     * Modified is set on all values being written.
      */
     public void writePropertyWithAttributes(Collection<ObjectLabel> objlabels, String propertyname, Value value) {
     	writePropertyWithAttributes(objlabels, propertyname, value, true);
@@ -1509,6 +1744,7 @@ public abstract class BlockState<BlockStateType extends BlockState<BlockStateTyp
     /**
      * Assigns the given value to the given property of the given object, with attributes.
      * Attributes are taken from the given value.
+     * Modified is set on all values being written.
      */
     public void writePropertyWithAttributes(ObjectLabel objlabel, String propertyname, Value value) {
         writePropertyWithAttributes(Collections.singleton(objlabel), propertyname, value, true);
@@ -1517,7 +1753,7 @@ public abstract class BlockState<BlockStateType extends BlockState<BlockStateTyp
     /**
      * Assigns the given value to the given property of the given objects, with attributes.
      * @param put if set, attributes are cleared or copied from the old value according to 8.6.2.2
-     * @param real if set, the modified flag if set if the value changes as result of the operation
+     * @param real if set, the modified flag is set on written values
      * @param allow_overwrite if set, allow overwriting of existing values (if not set, do nothing if the property already exists)
      * @param force_weak if set, force weak update disregarding objlabels
      */
@@ -1531,7 +1767,7 @@ public abstract class BlockState<BlockStateType extends BlockState<BlockStateTyp
      * Assigns the given value to the given object property if [[CanPut]] is true.
      * Takes ReadOnly into account.
      * @param put if set, attributes are cleared or copied from the old value according to 8.6.2.2
-     * @param real if set, the modified flag if set if the value changes as result of the operation
+     * @param real if set, the modified flag is set on written values
      * @param allow_overwrite if set, allow overwriting of existing values (if not set, do nothing if the property already exists)
      * @param force_weak if set, force weak update
      */
@@ -1553,7 +1789,7 @@ public abstract class BlockState<BlockStateType extends BlockState<BlockStateTyp
     /**
      * Assigns the given value to the given property of an object.
      * @param put if set, attributes are cleared or copied from the old value according to 8.6.2.2
-     * @param real if set, the modified flag if set if the value changes as result of the operation
+     * @param real if set, the modified flag is set on written values
      * @param allow_overwrite if set, allow overwriting of existing values (if not set, do nothing if the property already exists)
      * @param force_weak if set, force weak update
      */
@@ -1572,15 +1808,15 @@ public abstract class BlockState<BlockStateType extends BlockState<BlockStateTyp
     	}
     	if (force_weak || !objlabel.isSingleton() || (!allow_overwrite && oldvalue.isMaybePresent())) // weak update
     		value = UnknownValueResolver.join(value, oldvalue, this);
-        if (value.equals(oldvalue))
-            return;
         if (real || oldvalue.isMaybeModified())
-        	value = value.joinModified();    		
+        	value = value.joinModified();
     	checkProperty(value);
     	// TODO: setters & getters
     	//            if (objlabel.isHostObject() && objlabel.getHostObject().hasSetter(propertyname)) {
     	//                c.getAnalysis().evaluateSetter(objlabel.getHostObject(), objlabel, propertyname, newvalue, c);
     	//            }
+        if (value.equals(oldvalue))
+            return; // don't request writable obj if the value doesn't change anyway
     	getObject(objlabel, true).setProperty(propertyname, value);
     }
 
@@ -1626,15 +1862,15 @@ public abstract class BlockState<BlockStateType extends BlockState<BlockStateTyp
     	else if (!v.isMaybeAbsent() && v.isDontDelete()) // definitely present already, definitely can't delete
     		res = Value.makeBool(false);
     	else {
-    		Obj obj = getObject(objlabel, true);
     		Value newval;
     		if (v.isNotDontDelete()) { // maybe present already, definitely can delete
     			newval = Value.makeAbsentModified(); // FIXME: deleting magic properties? (also other places...)
     			res = Value.makeBool(true);
     		} else { // don't know, maybe delete
-    			newval = v.joinAbsentWithModified();
+    			newval = v.joinAbsentModified();
     			res = Value.makeAnyBool();
     		}
+    		Obj obj = getObject(objlabel, true);
     		obj.setProperty(propertyname, newval);
     	}
 		return res;
@@ -1668,7 +1904,7 @@ public abstract class BlockState<BlockStateType extends BlockState<BlockStateTyp
     
     private Value weakDeleteProperty(PropertyReference p) {
     	Value res;
-		Value v = readProperty(p);
+		Value v = readProperty(p, true);
 	   	if (!v.isMaybePresent()) // property is definitely absent already
     		res = Value.makeBool(true);
     	else if (!v.isMaybeAbsent() && v.isDontDelete()) // definitely present already, definitely can't delete
@@ -1678,24 +1914,27 @@ public abstract class BlockState<BlockStateType extends BlockState<BlockStateTyp
     			res = Value.makeBool(true);
     		else // don't know, maybe delete
     			res = Value.makeAnyBool();
-    		writeProperty(p, v.joinAbsentWithModified());
+    		writeProperty(p, v.joinAbsentModified());
     	}
 	   	return res;
     }
 
-    private Value readProperty(PropertyReference p) {
+	/**
+	 * Reads the designated property value.
+	 */
+	public Value readProperty(PropertyReference p, boolean partial) {
     	ObjectLabel objlabel = p.getObjectLabel();
 		switch (p.getKind()) {
 		case ORDINARY:
-			return UnknownValueResolver.getProperty(objlabel, p.getPropertyName(), this, true);
+			return UnknownValueResolver.getProperty(objlabel, p.getPropertyName(), this, partial);
 		case DEFAULT_ARRAY:
 			return UnknownValueResolver.getDefaultArrayProperty(objlabel, this);
 		case DEFAULT_NONARRAY:
 			return UnknownValueResolver.getDefaultNonArrayProperty(objlabel, this);
 		case INTERNAL_PROTOTYPE:
-			return UnknownValueResolver.getInternalPrototype(objlabel, this, true);
+			return UnknownValueResolver.getInternalPrototype(objlabel, this, partial);
 		case INTERNAL_VALUE:
-			return UnknownValueResolver.getInternalValue(objlabel, this, true);
+			return UnknownValueResolver.getInternalValue(objlabel, this, partial);
 		default:
 			throw new AnalysisException("Unexpected property reference");
 		}
@@ -1726,7 +1965,7 @@ public abstract class BlockState<BlockStateType extends BlockState<BlockStateTyp
     
     /**
      * Assigns the given value to the internal prototype links of the given objects.
-     * Takes recency abstraction into account.
+     * Modified is set on all values being written.
      */
     public void writeInternalPrototype(Collection<ObjectLabel> objlabels, Value value) {
         value.assertNonEmpty();
@@ -1735,8 +1974,8 @@ public abstract class BlockState<BlockStateType extends BlockState<BlockStateTyp
 				getObject(objlabel, true).setInternalPrototype(value.joinModified());
 			else { // weak update
 				Value oldval = UnknownValueResolver.getInternalPrototype(objlabel, this, true);
-				Value newval = UnknownValueResolver.joinWithModified(oldval, value, this);
-				getObject(objlabel, true).setInternalPrototype(newval);
+				Value newval = UnknownValueResolver.join(oldval, value, this);
+				getObject(objlabel, true).setInternalPrototype(newval.joinModified());
 			}
 		if (logger.isDebugEnabled()) 
 			logger.debug("writeInternalPrototype(" + objlabels + "," + value + ")");
@@ -1744,6 +1983,7 @@ public abstract class BlockState<BlockStateType extends BlockState<BlockStateTyp
 
     /**
      * Assigns the given value to the internal prototype link of the given object.
+     * Modified is set on all values being written.
      */
     public void writeInternalPrototype(ObjectLabel objlabel, Value value) {
         writeInternalPrototype(Collections.singleton(objlabel), value);
@@ -1751,16 +1991,17 @@ public abstract class BlockState<BlockStateType extends BlockState<BlockStateTyp
 
     /**
      * Assign the given value to the internal [[Value]] property of the given objects.
+     * Modified is set on all values being written.
      */
     public void writeInternalValue(Collection<ObjectLabel> objlabels, Value value) {
     	value.assertNonEmpty();
     	for (ObjectLabel objlabel : objlabels)
     		if (objlabels.size() == 1 && objlabel.isSingleton()) // strong update
-				getObject(objlabel, true).setInternalValue(value.joinModified()); // joins modified conservatively to avoid recover operation
+				getObject(objlabel, true).setInternalValue(value.joinModified());
 			else { // weak update
 				Value oldval = UnknownValueResolver.getInternalValue(objlabel, this, true);
-				Value newval = UnknownValueResolver.joinWithModified(oldval, value, this);
-				getObject(objlabel, true).setInternalValue(newval);
+				Value newval = UnknownValueResolver.join(oldval, value, this);
+				getObject(objlabel, true).setInternalValue(newval.joinModified());
 			}
 		if (logger.isDebugEnabled()) 
 			logger.debug("writeInternalValue(" + objlabels + "," + value + ")");
@@ -1768,21 +2009,21 @@ public abstract class BlockState<BlockStateType extends BlockState<BlockStateTyp
     
     /**
      * Assigns the given value to the internal [[Value]] property of the given object.
+     * Modified is set on all values being written.
      */
     public void writeInternalValue(ObjectLabel objlabel, Value value) {
     	writeInternalValue(Collections.singleton(objlabel), value);
     }
 
-    /**
-     * Returns the value of the internal value property of the given objects.
-     */
-    public Value readInternalValue(Collection<ObjectLabel> objlabels) {
-        Collection<Value> values = newList();
-        for (ObjectLabel obj : objlabels) {
-        	values.add(UnknownValueResolver.getInternalValue(obj, this, true));
-        }
-        Value v = UnknownValueResolver.join(values, this);
-		if (logger.isDebugEnabled()) 
+	/**
+	 * Returns the value of the internal value property of the given objects.
+	 */
+	public Value readInternalValue(Collection<ObjectLabel> objlabels) {
+		Collection<Value> values = newList();
+		for (ObjectLabel obj : objlabels)
+			values.add(UnknownValueResolver.getInternalValue(obj, this, true));
+		Value v = UnknownValueResolver.join(values, this);
+		if (logger.isDebugEnabled())
 			logger.debug("readInternalValue(" + objlabels + ") = " + v);
         return v;
     }
@@ -1856,31 +2097,18 @@ public abstract class BlockState<BlockStateType extends BlockState<BlockStateTyp
 		execution_context.popScopeChain();
 	}
 
+	/**
+	 * Clears the variable object pointer in the execution context.
+	 */
+	public void clearVariableObject() {
+		makeWritableExecutionContext();
+		execution_context.setVariableObject(dk.brics.tajs.util.Collections.<ObjectLabel>newSet());
+	}
+
     /**
      * Sets the execution context.
      */
     public void setExecutionContext(ExecutionContext e) {
-// XXX: test the following code with test/google/delta-blue.js
-//
-//    	unexpected execution contexts: 
-//    		[ScopeChain=[*activation#node702,@<the global object>[native]], 
-//    		 VariableObject=*activation#node702, 
-//    		 this=@<the global object>[native]] 
-//    		 <-> 
-//    		[ScopeChain=[@activation#node702,@<the global object>[native]], 
-//    		 VariableObject=@activation#node702, 
-//    		 this=@<the global object>[native]]
-//    	
-//    	if (es.size() > 1) {
-//    		Iterator<ExecutionContext> i = es.iterator();
-//    		ExecutionContext first = i.next();
-//    		while (i.hasNext()) {
-//    			ExecutionContext ec = i.next();
-//    			if (!first.getScopeChain().equals(ec.getScopeChain())
-//    					|| !first.getVariableObject().equals(ec.getVariableObject()))
-//    				throw new AnalysisException("unexpected execution contexts: " + first + " <-> " + ec);// XXX: improve representation of execution contexts? (looks like the scope chains are always identical!)
-//    		}
-//    	}
     	execution_context = e;
         writable_execution_context = true;
 		if (logger.isDebugEnabled()) 
@@ -1972,7 +2200,7 @@ public abstract class BlockState<BlockStateType extends BlockState<BlockStateTyp
             Obj xo = old.getObject(me.getKey(), false);
             if (!me.getValue().equals(xo)) {
                 b.append("\n      changed object ").append(me.getKey()).append(" at ").append(me.getKey().getSourceLocation()).append(": ");
-                me.getValue().diff(xo, b);
+                me.getValue().diff(xo, b); // FIXME: Value.diff is not optimal
             }
         }
         Set<ObjectLabel> temp = newSet(execution_context.getVariableObject());
@@ -2027,6 +2255,7 @@ public abstract class BlockState<BlockStateType extends BlockState<BlockStateTyp
         b.append("\n  Store (excluding basis and default objects): ");
         for (Map.Entry<ObjectLabel, Obj> me : sortedEntries(store))
             b.append("\n    ").append(me.getKey()).append(" (").append(me.getKey().getSourceLocation()).append("): ").append(me.getValue()).append("");
+        //b.append("\n  Default object: ").append(store_default);
         b.append("\n  Registers: ");
         for (int i = 0; i < registers.size(); i++)
             if (registers.get(i) != null)
@@ -2073,6 +2302,7 @@ public abstract class BlockState<BlockStateType extends BlockState<BlockStateTyp
         b.append("\n  Summarized: ").append(summarized);
         b.append("\n  Store (excluding non-modified): ");
         printModifiedStore(b);
+        //b.append("\n  Default object: ").append(store_default);
         return b.toString();
     }
 
@@ -2292,37 +2522,35 @@ public abstract class BlockState<BlockStateType extends BlockState<BlockStateTyp
 
     /**
      * Reduces this state.
-     * @see #gc()
+     * @see #gc(Value)
      */
-	public void reduce() {
-        gc();
+	public void reduce(Value extra) {
+        gc(extra);
     }
 
     /**
      * Runs garbage collection on the contents of this state.
      * Ignored if {@link Options#isGCDisabled()} or {@link Options#isRecencyDisabled()} is set.
      */
-    public void gc() {
+    public void gc(Value extra) {
         if (Options.isGCDisabled() || Options.isRecencyDisabled())
             return;
         check();
         if (Options.isIntermediateStatesEnabled())
         	logger.debug("gc(): Before: " + this);
-        Set<ObjectLabel> live = findLiveObjectLabels();
+        Set<ObjectLabel> dead = newSet(store.keySet());
+        dead.removeAll(findLiveObjectLabels(extra));
         if (logger.isDebugEnabled()) {
-            Set<ObjectLabel> dead = newSet(store.keySet());
-            dead.removeAll(live);
             logger.debug("gc(): Unreachable objects: " + dead);
         }
         makeWritableStore();
-        Map<ObjectLabel, Obj> newstore = newMap();
-        for (ObjectLabel objlabel : live) {
-            Obj obj = store.get(objlabel);
-            if (obj != null)
-                newstore.put(objlabel, obj);
+        BlockStateType entry_state = c.getAnalysisLatticeElement().getState(context.getEntry(), context);
+        for (ObjectLabel objlabel : dead) {
+        	if (entry_state != null && UnknownValueResolver.willResolveToNone(objlabel, entry_state))
+        		store.remove(objlabel);
+        	else
+        		store.put(objlabel, Obj.makeNoneModified());
         }
-        store = newstore;
-        writable_store = true;
         // don't remove from summarized (it may contain dead object labels)
         check();
         if (Options.isIntermediateStatesEnabled())
@@ -2333,8 +2561,10 @@ public abstract class BlockState<BlockStateType extends BlockState<BlockStateTyp
      * Finds live object labels (i.e. those reachable from the execution context, registers, or stacked object labels).
      * Note that the summarized sets may contain dead object labels.
      */
-    private Set<ObjectLabel> findLiveObjectLabels() {
+    private Set<ObjectLabel> findLiveObjectLabels(Value extra) {
         Set<ObjectLabel> live = execution_context.getObjectLabels();
+        if (extra != null)
+        	live.addAll(extra.getObjectLabels());
         for (Value v : registers)
             if (v != null)
                 live.addAll(v.getObjectLabels());
@@ -2441,7 +2671,7 @@ public abstract class BlockState<BlockStateType extends BlockState<BlockStateTyp
      * Returns true if the given register is defined.
      */
     public boolean isRegisterDefined(int reg) {
-        return (reg < registers.size() && registers.get(reg) != null);
+		return reg < registers.size() && registers.get(reg) != null;
     }
     
     /**
@@ -2457,28 +2687,6 @@ public abstract class BlockState<BlockStateType extends BlockState<BlockStateTyp
             throw new AnalysisException("Reading undefined register v" + reg);
 		if (logger.isDebugEnabled()) 
 			logger.debug("readRegister(v" + reg + ") = " + res);
-        return res;
-    }
-
-    /**
-     * Pushes the given value onto the register list.
-     */
-    public void pushRegister(Value value) {
-        makeWritableRegisters();
-        registers.add(value);
-		if (logger.isDebugEnabled()) 
-			logger.debug("pushRegister(" + value + ")");
-    }
-
-    /**
-     * Pops a value from the register list.
-     */
-    public Value popRegister() {
-        makeWritableRegisters();
-        int last = registers.size() - 1;
-        Value  res = registers.remove(last);
-		if (logger.isDebugEnabled()) 
-			logger.debug("popRegister() = " + res);
         return res;
     }
 
@@ -2554,7 +2762,7 @@ public abstract class BlockState<BlockStateType extends BlockState<BlockStateTyp
      * Assigns the given value to the given variable.
      * @param varname the variable name
      * @param value the new value
-     * @param real if set, the modified flag if set if the value changes as result of the operation
+     * @param real if set, the modified flag is set on written values
      * @return the set of objects where the variable may be stored (i.e. the base objects)
      */
     public Set<ObjectLabel> writeVariable(String varname, Value value, boolean real) {
@@ -2615,34 +2823,34 @@ public abstract class BlockState<BlockStateType extends BlockState<BlockStateTyp
 			logger.debug("declareAndWriteVariable(" + varname + "," + value + ")");
     }
 
-    /**
-     * Returns the value of the given variable.
+	/**
+	 * Returns the value of the given variable.
      * @param varname the variable name
      * @param base_objs collection where base objects are added (ignored if null)
-     */
-    public Value readVariable(String varname, Collection<ObjectLabel> base_objs) {
-    	Collection<Value> values = newList();
-    	boolean definitely_found = false;
-    	for (Set<ObjectLabel> sc : ScopeChain.iterable(execution_context.getScopeChain())) {
-    		definitely_found = true;
-    		for (ObjectLabel objlabel : sc) {
-    			Value v = readPropertyRaw(Collections.singleton(objlabel), Value.makeTemporaryStr(varname));
-    			if (v.isMaybePresent()) {
-    				Value v2 = v.restrictToNotAbsent(); // found one (maybe)
-    				values.add(v2);
-    				if (base_objs != null)
-    					base_objs.add(objlabel); // collecting the object from the scope chain (although the property may be in its prototype chain)
-    			}
-    			if (v.isMaybeAbsent())
-    				definitely_found = false;    				
-    		}
-    		if (definitely_found)
-    			break;
-    	}
-    	if (!definitely_found)
-    		values.add(Value.makeAbsent()); // end of scope chain, so add absent
-        Value res = UnknownValueResolver.join(values, this);
-		if (logger.isDebugEnabled()) 
+	 */
+	public Value readVariable(String varname, Collection<ObjectLabel> base_objs) {
+		Collection<Value> values = newList();
+		boolean definitely_found = false;
+		for (Set<ObjectLabel> sc : ScopeChain.iterable(execution_context.getScopeChain())) {
+			definitely_found = true;
+			for (ObjectLabel objlabel : sc) {
+				Value v = readPropertyRaw(Collections.singleton(objlabel), Value.makeTemporaryStr(varname), false);
+				if (v.isMaybePresent()) {
+					Value v2 = v.restrictToNotAbsent(); // found one (maybe)
+					values.add(v2);
+					if (base_objs != null)
+						base_objs.add(objlabel); // collecting the object from the scope chain (although the property may be in its prototype chain)
+				}
+				if (v.isMaybeAbsent())
+					definitely_found = false;
+			}
+			if (definitely_found)
+				break;
+		}
+		if (!definitely_found)
+			values.add(Value.makeAbsent()); // end of scope chain, so add absent
+		Value res = UnknownValueResolver.join(values, this);
+		if (logger.isDebugEnabled())
 			logger.debug("readVariable(" + varname + ") = " + res + (base_objs != null ? " at " + base_objs : ""));
     	return res;
     }
@@ -2709,9 +2917,10 @@ public abstract class BlockState<BlockStateType extends BlockState<BlockStateTyp
 
     /**
      * Introduces 'unknown' values in this state according to the given function entry state.
+     * Also clears modified flags and summarized sets.
      */
     @Override
-    public void trim(BlockStateType s) {
+	public void localize(BlockStateType s) {
         if (!Options.isLazyDisabled()) {
             if (s == null) {
                 // set everything to unknown
@@ -2719,13 +2928,13 @@ public abstract class BlockState<BlockStateType extends BlockState<BlockStateTyp
                 store_default = Obj.makeUnknown();
                 writable_store = true;
             } else {
-                // trim each object
+				// localize each object
                 makeWritableStore();
                 for (Map.Entry<ObjectLabel, Obj> me : newList(store.entrySet())) {
                     ObjectLabel objlabel = me.getKey();
                     Obj other = s.getObject(objlabel, false);
                     Obj obj = me.getValue();
-                    obj.trim(other);
+					obj.localize(other, objlabel, this);
                 }
                 // remove all-unknown objects
                 Map<ObjectLabel, Obj> new_store = newMap();
@@ -2735,7 +2944,10 @@ public abstract class BlockState<BlockStateType extends BlockState<BlockStateTyp
                 store = new_store;
                 store_default = Obj.makeUnknown();
             }
+        } else {
+        	clearModified();
         }
+        summarized.clear();
     }
 
 	/**
@@ -2747,13 +2959,15 @@ public abstract class BlockState<BlockStateType extends BlockState<BlockStateTyp
     }
     
     @Override
-	public void transform(CallEdgeType edge, BlockStateType callee_entry_state, Function callee, CallContextType callee_context) {
-		if (logger.isDebugEnabled()) 
-			logger.debug("transform from call " + edge.getState().getBasicBlock().getSourceLocation() + " to " + callee.getSourceLocation());
-		clearEffects();
+    public CallContextType transform(CallEdgeType edge, CallContextType edge_context, 
+			Map<CallContextType, BlockStateType> callee_entry_states, BasicBlock callee) {
+//		if (logger.isDebugEnabled()) 
+//			logger.debug("transform from call " + edge.getState().getBasicBlock().getSourceLocation() + " to " + callee.getSourceLocation());
+		return edge_context;
 	}
 
     @Override
-	public void transformInverse(CallEdgeType edge, BlockStateType callee_entry_state) {
+	public boolean transformInverse(CallEdgeType edge, BasicBlock callee, CallContextType callee_context) {
+		return false;
 	}
 }

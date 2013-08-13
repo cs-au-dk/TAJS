@@ -20,7 +20,7 @@ public class TestGoogle {
 	}
 	
 	@Test
-	public void testRichards() throws Exception { 
+	public void google_richards() throws Exception { 
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/google/richards.js"};
@@ -29,7 +29,7 @@ public class TestGoogle {
 	}
 	
 	@Test
-	public void testBenchpress() throws Exception {
+	public void google_benchpress() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/google/benchpress.js"};
@@ -38,7 +38,16 @@ public class TestGoogle {
 	}
 	
 	@Test
-	public void testCryptobench() throws Exception { 
+	public void google_splay() throws Exception {
+		Misc.init();
+		Misc.captureSystemOutput();
+		String[] args = {"test/google/splay.js"};
+		Misc.run(args);
+		Misc.checkSystemOutput();
+	}
+	
+	@Test
+	public void google_cryptobench() throws Exception { 
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/google/cryptobench.js"};
@@ -47,7 +56,7 @@ public class TestGoogle {
 	}
 
 	@Test
-	public void testDeltaBlue() throws Exception {
+	public void google_delta_blue() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/google/delta-blue.js"};

@@ -1,0 +1,3 @@
+test/v8tests/invalid-lhs.js:33:1: [definite] ReferenceError, reading absent variable assertThrows
+test/v8tests/invalid-lhs.js:33:14: [definite] Unreachable code
+test/v8tests/invalid-lhs.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/invalid-lhs.js:33:1]

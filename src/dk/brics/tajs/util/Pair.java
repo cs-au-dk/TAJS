@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Aarhus University
+ * Copyright 2009-2013 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -33,7 +33,7 @@ public class Pair<F,S> {
 	/**
 	 * Constructs a new pair.
 	 */
-	public static <F,S> Pair<F, S> make(F fst,S snd) {
+	public static <F,S> Pair<F, S> make(F fst, S snd) {
 		return new Pair<>(fst,snd);
 	}
 

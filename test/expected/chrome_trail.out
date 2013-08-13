@@ -1,0 +1,17 @@
+test/chromeexperiments/trail.tidy.html:139:20: [definite] TypeError, accessing property of null/undefined
+test/chromeexperiments/trail.tidy.html:148:20: [definite] TypeError, accessing property of null/undefined
+test/chromeexperiments/trail.tidy.html:87:17: [definite] The conditional expression is always true
+test/chromeexperiments/trail.tidy.html:87:21: [definite] The conditional expression is always true
+test/chromeexperiments/trail.tidy.html:139:20: [definite] Reading absent property touches
+test/chromeexperiments/trail.tidy.html:148:20: [definite] Reading absent property touches
+test/chromeexperiments/trail.tidy.html:183:40: [definite] Reading absent property width
+test/chromeexperiments/trail.tidy.html:183:62: [definite] Reading absent property height
+test/chromeexperiments/trail.tidy.html:130:9: [definite] The variable event is never used
+test/chromeexperiments/trail.tidy.html:134:9: [definite] The variable event is never used
+test/chromeexperiments/trail.tidy.html:139:44: [definite] Unreachable code
+test/chromeexperiments/trail.tidy.html:148:44: [definite] Unreachable code
+test/chromeexperiments/trail.tidy.html:188:39: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/trail.tidy.html:50: [maybe] Uncaught exception, constructed at [test/chromeexperiments/trail.tidy.html:139:20, test/chromeexperiments/trail.tidy.html:148:20, test/chromeexperiments/trail.tidy.html:188:39]
+test/chromeexperiments/trail.tidy.html:117:51: [maybe] Converting primitive number to object
+test/chromeexperiments/trail.tidy.html:183:17: [maybe] Conversion to number yields NaN
+test/chromeexperiments/trail.tidy.html:186:40: [maybe] Reading absent property (computed name)

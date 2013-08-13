@@ -5,16 +5,24 @@ import org.junit.runners.Suite;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
+        TestMicro.class,
+        TestFlowgraphBuilder.class,
+        TestSourceLocations.class,
         TestValue.class,
         TestAnderson.class,
-        TestMicro.class,
         TestResig.class,
         TestWala.class,
         TestUneval.class,
         TestSunspider.class,
-        TestFlowgraphBuilder.class,
-        TestGoogle.class
+        TestV8.class,
+        TestGoogle.class,
+        Test10K.class,
+        TestChromeExperiments.class
+        
 })
 public class RunRegression {
-    // Empty
+
+	public static void main(String[] args) {
+        org.junit.runner.JUnitCore.main("dk.brics.tajs.test.RunRegression");
+    }
 }

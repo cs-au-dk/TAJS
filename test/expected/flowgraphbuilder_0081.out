@@ -1,0 +1,22 @@
+fg2: <main> function()
+  block 0: [entry]
+    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0081.js:1:1)
+    ->[block 1]
+  block 1:
+    node 1: read-variable['Array',v3,-] (test/flowgraphbuilder/flowgraph_builder0081.js:1:7)
+    node 2: constant[0.0,v4] (test/flowgraphbuilder/flowgraph_builder0081.js:1:8)
+    node 3: constant[1.0,v5] (test/flowgraphbuilder/flowgraph_builder0081.js:1:10)
+    ->[block 2]
+  block 2:
+    node 4: construct[-,v3,v4,v5,v2] (test/flowgraphbuilder/flowgraph_builder0081.js:1:7)
+    ->[block 3]
+  block 3:
+    node 5: write-variable[v2,'arr']* (test/flowgraphbuilder/flowgraph_builder0081.js:1:1)
+    ->[block 4]
+  block 4: [exit-ordinary]
+    node 6: return[v1] (test/flowgraphbuilder/flowgraph_builder0081.js:1:1)
+    ->[]
+  block 5: [exit-exceptional]
+    node 7: exceptional-return (test/flowgraphbuilder/flowgraph_builder0081.js:1:1)
+    ->[]
+

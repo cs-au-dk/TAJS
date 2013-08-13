@@ -1,0 +1,5 @@
+test/v8tests/declare-locally.js:36:1: [definite] TypeError, accessing property of null/undefined
+test/v8tests/declare-locally.js:36:1: [definite] Reading 'this' yields the global object
+test/v8tests/declare-locally.js:36:1: [definite] Reading absent property __proto__
+test/v8tests/declare-locally.js:37:1: [definite] Unreachable code
+test/v8tests/declare-locally.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/declare-locally.js:36:1]

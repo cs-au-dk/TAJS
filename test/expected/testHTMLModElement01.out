@@ -1,5 +1,0 @@
-test/browser/domlegacy/html/HTMLModElement01.tidy.html:14: [definite] Reading absent property cite
-test/browser/domlegacy/html/HTMLModElement01.tidy.html:15: [definite] Reading absent property dateTime
-test/browser/domlegacy/html/HTMLModElement01.tidy.html:13: [info] Abstract value: [@HTMLModeElement[native] constructor]
-test/browser/domlegacy/html/HTMLModElement01.tidy.html:14: [info] Abstract value: Undef
-test/browser/domlegacy/html/HTMLModElement01.tidy.html:15: [info] Abstract value: Undef

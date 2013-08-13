@@ -1,0 +1,181 @@
+test/10k/rgb_color_wheel.tidy.html:74:1: [definite] Unreachable function cs
+test/10k/rgb_color_wheel.tidy.html:208:9: [definite] The variable r is never used
+test/10k/rgb_color_wheel.tidy.html:208:12: [definite] The variable theta is never used
+test/10k/rgb_color_wheel.tidy.html:209:9: [definite] The variable x is never used
+test/10k/rgb_color_wheel.tidy.html:209:12: [definite] The variable y is never used
+test/10k/rgb_color_wheel.tidy.html:236:1: [definite] Unreachable function getClickPoint
+test/10k/rgb_color_wheel.tidy.html:399:2: [definite] The variable event is never used
+test/10k/rgb_color_wheel.tidy.html:400:2: [definite] The variable event is never used
+test/10k/rgb_color_wheel.tidy.html:405:2: [definite] The variable event is never used
+test/10k/rgb_color_wheel.tidy.html:406:2: [definite] The variable event is never used
+test/10k/rgb_color_wheel.tidy.html:416:2: [definite] The variable event is never used
+test/10k/rgb_color_wheel.tidy.html:417:2: [definite] The variable event is never used
+test/10k/rgb_color_wheel.tidy.html:421:2: [definite] The variable event is never used
+test/10k/rgb_color_wheel.tidy.html:426:2: [definite] The variable event is never used
+test/10k/rgb_color_wheel.tidy.html:428:2: [definite] The variable event is never used
+test/10k/rgb_color_wheel.tidy.html:433:2: [definite] The variable event is never used
+test/10k/rgb_color_wheel.tidy.html:441:2: [definite] The variable event is never used
+test/10k/rgb_color_wheel.tidy.html:81:12: [maybe] TypeError, accessing property of null/undefined
+test/10k/rgb_color_wheel.tidy.html:111:24: [maybe] TypeError, accessing property of null/undefined
+test/10k/rgb_color_wheel.tidy.html:129:5: [maybe] TypeError, accessing property of null/undefined
+test/10k/rgb_color_wheel.tidy.html:132:13: [maybe] TypeError, accessing property of null/undefined
+test/10k/rgb_color_wheel.tidy.html:132:21: [maybe] TypeError, accessing property of null/undefined
+test/10k/rgb_color_wheel.tidy.html:136:20: [maybe] TypeError, accessing property of null/undefined
+test/10k/rgb_color_wheel.tidy.html:136:28: [maybe] TypeError, accessing property of null/undefined
+test/10k/rgb_color_wheel.tidy.html:137:20: [maybe] TypeError, accessing property of null/undefined
+test/10k/rgb_color_wheel.tidy.html:137:28: [maybe] TypeError, accessing property of null/undefined
+test/10k/rgb_color_wheel.tidy.html:139:19: [maybe] TypeError, accessing property of null/undefined
+test/10k/rgb_color_wheel.tidy.html:139:27: [maybe] TypeError, accessing property of null/undefined
+test/10k/rgb_color_wheel.tidy.html:143:20: [maybe] TypeError, accessing property of null/undefined
+test/10k/rgb_color_wheel.tidy.html:143:28: [maybe] TypeError, accessing property of null/undefined
+test/10k/rgb_color_wheel.tidy.html:144:20: [maybe] TypeError, accessing property of null/undefined
+test/10k/rgb_color_wheel.tidy.html:144:28: [maybe] TypeError, accessing property of null/undefined
+test/10k/rgb_color_wheel.tidy.html:146:19: [maybe] TypeError, accessing property of null/undefined
+test/10k/rgb_color_wheel.tidy.html:146:27: [maybe] TypeError, accessing property of null/undefined
+test/10k/rgb_color_wheel.tidy.html:171:5: [maybe] TypeError, accessing property of null/undefined
+test/10k/rgb_color_wheel.tidy.html:194:28: [maybe] TypeError, accessing property of null/undefined
+test/10k/rgb_color_wheel.tidy.html:202:5: [maybe] TypeError, accessing property of null/undefined
+test/10k/rgb_color_wheel.tidy.html:202:5: [maybe] TypeError, accessing property of null/undefined
+test/10k/rgb_color_wheel.tidy.html:203:27: [maybe] TypeError, accessing property of null/undefined
+test/10k/rgb_color_wheel.tidy.html:204:5: [maybe] TypeError, accessing property of null/undefined
+test/10k/rgb_color_wheel.tidy.html:221:26: [maybe] TypeError, accessing property of null/undefined
+test/10k/rgb_color_wheel.tidy.html:221:34: [maybe] TypeError, accessing property of null/undefined
+test/10k/rgb_color_wheel.tidy.html:227:30: [maybe] TypeError, accessing property of null/undefined
+test/10k/rgb_color_wheel.tidy.html:227:38: [maybe] TypeError, accessing property of null/undefined
+test/10k/rgb_color_wheel.tidy.html:282:5: [maybe] TypeError, accessing property of null/undefined
+test/10k/rgb_color_wheel.tidy.html:282:5: [maybe] TypeError, accessing property of null/undefined
+test/10k/rgb_color_wheel.tidy.html:283:5: [maybe] TypeError, accessing property of null/undefined
+test/10k/rgb_color_wheel.tidy.html:283:5: [maybe] TypeError, accessing property of null/undefined
+test/10k/rgb_color_wheel.tidy.html:288:15: [maybe] TypeError, accessing property of null/undefined
+test/10k/rgb_color_wheel.tidy.html:288:15: [maybe] TypeError, call to non-function
+test/10k/rgb_color_wheel.tidy.html:294:17: [maybe] TypeError, accessing property of null/undefined
+test/10k/rgb_color_wheel.tidy.html:298:9: [maybe] TypeError, accessing property of null/undefined
+test/10k/rgb_color_wheel.tidy.html:298:9: [maybe] TypeError, accessing property of null/undefined
+test/10k/rgb_color_wheel.tidy.html:299:9: [maybe] TypeError, accessing property of null/undefined
+test/10k/rgb_color_wheel.tidy.html:327:12: [maybe] TypeError, accessing property of null/undefined
+test/10k/rgb_color_wheel.tidy.html:328:9: [maybe] TypeError, call to non-function
+test/10k/rgb_color_wheel.tidy.html:330:25: [maybe] TypeError, accessing property of null/undefined
+test/10k/rgb_color_wheel.tidy.html:333:9: [maybe] TypeError, call to non-function
+test/10k/rgb_color_wheel.tidy.html:344:5: [maybe] TypeError, accessing property of null/undefined
+test/10k/rgb_color_wheel.tidy.html:344:5: [maybe] TypeError, accessing property of null/undefined
+test/10k/rgb_color_wheel.tidy.html:345:5: [maybe] TypeError, accessing property of null/undefined
+test/10k/rgb_color_wheel.tidy.html:345:5: [maybe] TypeError, accessing property of null/undefined
+test/10k/rgb_color_wheel.tidy.html:350:9: [maybe] TypeError, accessing property of null/undefined
+test/10k/rgb_color_wheel.tidy.html:351:9: [maybe] TypeError, accessing property of null/undefined
+test/10k/rgb_color_wheel.tidy.html:352:9: [maybe] TypeError, accessing property of null/undefined
+test/10k/rgb_color_wheel.tidy.html:358:25: [maybe] TypeError, accessing property of null/undefined
+test/10k/rgb_color_wheel.tidy.html:365:5: [maybe] TypeError, accessing property of null/undefined
+test/10k/rgb_color_wheel.tidy.html:375:5: [maybe] TypeError, accessing property of null/undefined
+test/10k/rgb_color_wheel.tidy.html:375:5: [maybe] TypeError, accessing property of null/undefined
+test/10k/rgb_color_wheel.tidy.html:376:5: [maybe] TypeError, accessing property of null/undefined
+test/10k/rgb_color_wheel.tidy.html:376:5: [maybe] TypeError, accessing property of null/undefined
+test/10k/rgb_color_wheel.tidy.html:381:11: [maybe] TypeError, accessing property of null/undefined
+test/10k/rgb_color_wheel.tidy.html:381:11: [maybe] TypeError, call to non-function
+test/10k/rgb_color_wheel.tidy.html:390:5: [maybe] TypeError, accessing property of null/undefined
+test/10k/rgb_color_wheel.tidy.html:391:5: [maybe] TypeError, accessing property of null/undefined
+test/10k/rgb_color_wheel.tidy.html:81:12: [maybe] Reading absent property selectedIndex
+test/10k/rgb_color_wheel.tidy.html:202:5: [maybe] Reading absent property style
+test/10k/rgb_color_wheel.tidy.html:282:5: [maybe] Reading absent property style
+test/10k/rgb_color_wheel.tidy.html:283:5: [maybe] Reading absent property style
+test/10k/rgb_color_wheel.tidy.html:288:15: [maybe] Reading absent property getContext
+test/10k/rgb_color_wheel.tidy.html:298:9: [maybe] Reading absent property style
+test/10k/rgb_color_wheel.tidy.html:299:9: [maybe] Reading absent property style
+test/10k/rgb_color_wheel.tidy.html:327:12: [maybe] Reading absent property lastChild
+test/10k/rgb_color_wheel.tidy.html:328:9: [maybe] Reading absent property removeChild
+test/10k/rgb_color_wheel.tidy.html:328:23: [maybe] Reading absent property lastChild
+test/10k/rgb_color_wheel.tidy.html:333:9: [maybe] Reading absent property appendChild
+test/10k/rgb_color_wheel.tidy.html:344:5: [maybe] Reading absent property style
+test/10k/rgb_color_wheel.tidy.html:345:5: [maybe] Reading absent property style
+test/10k/rgb_color_wheel.tidy.html:358:25: [maybe] Reading absent property value
+test/10k/rgb_color_wheel.tidy.html:375:5: [maybe] Reading absent property style
+test/10k/rgb_color_wheel.tidy.html:376:5: [maybe] Reading absent property style
+test/10k/rgb_color_wheel.tidy.html:381:11: [maybe] Reading absent property getContext
+test/10k/rgb_color_wheel.tidy.html:383:14: [maybe] Reading absent property width
+test/10k/rgb_color_wheel.tidy.html:384:15: [maybe] Reading absent property height
+test/10k/rgb_color_wheel.tidy.html:46: [maybe] Uncaught exception, constructed at [test/10k/rgb_color_wheel.tidy.html:81:12, test/10k/rgb_color_wheel.tidy.html:111:24, test/10k/rgb_color_wheel.tidy.html:129:5, test/10k/rgb_color_wheel.tidy.html:132:13, test/10k/rgb_color_wheel.tidy.html:132:21, test/10k/rgb_color_wheel.tidy.html:136:20, test/10k/rgb_color_wheel.tidy.html:136:28, test/10k/rgb_color_wheel.tidy.html:137:20, test/10k/rgb_color_wheel.tidy.html:137:28, test/10k/rgb_color_wheel.tidy.html:139:19, test/10k/rgb_color_wheel.tidy.html:139:27, test/10k/rgb_color_wheel.tidy.html:143:20, test/10k/rgb_color_wheel.tidy.html:143:28, test/10k/rgb_color_wheel.tidy.html:144:20, test/10k/rgb_color_wheel.tidy.html:144:28, test/10k/rgb_color_wheel.tidy.html:146:19, test/10k/rgb_color_wheel.tidy.html:146:27, test/10k/rgb_color_wheel.tidy.html:171:5, test/10k/rgb_color_wheel.tidy.html:194:28, test/10k/rgb_color_wheel.tidy.html:202:5, test/10k/rgb_color_wheel.tidy.html:203:27, test/10k/rgb_color_wheel.tidy.html:204:5, test/10k/rgb_color_wheel.tidy.html:221:26, test/10k/rgb_color_wheel.tidy.html:221:34, test/10k/rgb_color_wheel.tidy.html:227:30, test/10k/rgb_color_wheel.tidy.html:227:38, test/10k/rgb_color_wheel.tidy.html:282:5, test/10k/rgb_color_wheel.tidy.html:283:5, test/10k/rgb_color_wheel.tidy.html:288:15, test/10k/rgb_color_wheel.tidy.html:294:17, test/10k/rgb_color_wheel.tidy.html:298:9, test/10k/rgb_color_wheel.tidy.html:299:9, test/10k/rgb_color_wheel.tidy.html:327:12, test/10k/rgb_color_wheel.tidy.html:328:9, test/10k/rgb_color_wheel.tidy.html:330:25, test/10k/rgb_color_wheel.tidy.html:333:9, test/10k/rgb_color_wheel.tidy.html:344:5, test/10k/rgb_color_wheel.tidy.html:345:5, test/10k/rgb_color_wheel.tidy.html:350:9, test/10k/rgb_color_wheel.tidy.html:351:9, test/10k/rgb_color_wheel.tidy.html:352:9, test/10k/rgb_color_wheel.tidy.html:358:25, test/10k/rgb_color_wheel.tidy.html:365:5, test/10k/rgb_color_wheel.tidy.html:375:5, test/10k/rgb_color_wheel.tidy.html:376:5, test/10k/rgb_color_wheel.tidy.html:381:11, test/10k/rgb_color_wheel.tidy.html:390:5, test/10k/rgb_color_wheel.tidy.html:391:5]
+test/10k/rgb_color_wheel.tidy.html:72:12: [maybe] Converting undefined to string
+test/10k/rgb_color_wheel.tidy.html:88:33: [maybe] Conversion to number yields NaN
+test/10k/rgb_color_wheel.tidy.html:89:22: [maybe] Conversion to number yields NaN
+test/10k/rgb_color_wheel.tidy.html:90:29: [maybe] Conversion to number yields NaN
+test/10k/rgb_color_wheel.tidy.html:90:47: [maybe] Conversion to number yields NaN
+test/10k/rgb_color_wheel.tidy.html:101:14: [maybe] Conversion to number yields NaN
+test/10k/rgb_color_wheel.tidy.html:102:14: [maybe] Conversion to number yields NaN
+test/10k/rgb_color_wheel.tidy.html:106:12: [maybe] Conversion to number yields NaN
+test/10k/rgb_color_wheel.tidy.html:106:12: [maybe] Converting primitive string to object
+test/10k/rgb_color_wheel.tidy.html:106:12: [maybe] Reading absent property (computed name)
+test/10k/rgb_color_wheel.tidy.html:106:20: [maybe] Conversion to number yields NaN
+test/10k/rgb_color_wheel.tidy.html:106:38: [maybe] Converting primitive string to object
+test/10k/rgb_color_wheel.tidy.html:106:38: [maybe] Reading absent property (computed name)
+test/10k/rgb_color_wheel.tidy.html:106:45: [maybe] Conversion to number yields NaN
+test/10k/rgb_color_wheel.tidy.html:111:13: [maybe] Conversion to number yields NaN
+test/10k/rgb_color_wheel.tidy.html:111:24: [maybe] Reading absent property (computed name)
+test/10k/rgb_color_wheel.tidy.html:111:38: [maybe] Conversion to number yields NaN
+test/10k/rgb_color_wheel.tidy.html:111:49: [maybe] Reading absent property (computed name)
+test/10k/rgb_color_wheel.tidy.html:111:63: [maybe] Conversion to number yields NaN
+test/10k/rgb_color_wheel.tidy.html:111:74: [maybe] Reading absent property (computed name)
+test/10k/rgb_color_wheel.tidy.html:132:13: [maybe] Reading absent property (computed name)
+test/10k/rgb_color_wheel.tidy.html:132:21: [maybe] Reading absent property (computed name)
+test/10k/rgb_color_wheel.tidy.html:134:9: [maybe] Conversion to number yields NaN
+test/10k/rgb_color_wheel.tidy.html:136:20: [maybe] Reading absent property (computed name)
+test/10k/rgb_color_wheel.tidy.html:136:28: [maybe] Reading absent property (computed name)
+test/10k/rgb_color_wheel.tidy.html:137:20: [maybe] Reading absent property (computed name)
+test/10k/rgb_color_wheel.tidy.html:137:28: [maybe] Reading absent property (computed name)
+test/10k/rgb_color_wheel.tidy.html:139:19: [maybe] Reading absent property (computed name)
+test/10k/rgb_color_wheel.tidy.html:139:27: [maybe] Reading absent property (computed name)
+test/10k/rgb_color_wheel.tidy.html:141:9: [maybe] Conversion to number yields NaN
+test/10k/rgb_color_wheel.tidy.html:143:20: [maybe] Reading absent property (computed name)
+test/10k/rgb_color_wheel.tidy.html:143:28: [maybe] Reading absent property (computed name)
+test/10k/rgb_color_wheel.tidy.html:144:20: [maybe] Reading absent property (computed name)
+test/10k/rgb_color_wheel.tidy.html:144:28: [maybe] Reading absent property (computed name)
+test/10k/rgb_color_wheel.tidy.html:146:19: [maybe] Reading absent property (computed name)
+test/10k/rgb_color_wheel.tidy.html:146:27: [maybe] Reading absent property (computed name)
+test/10k/rgb_color_wheel.tidy.html:155:18: [maybe] Reading absent property (computed name)
+test/10k/rgb_color_wheel.tidy.html:156:13: [maybe] Reading absent property (computed name)
+test/10k/rgb_color_wheel.tidy.html:159:18: [maybe] Reading absent property (computed name)
+test/10k/rgb_color_wheel.tidy.html:162:27: [maybe] Conversion to number yields NaN
+test/10k/rgb_color_wheel.tidy.html:162:27: [maybe] Reading absent property (computed name)
+test/10k/rgb_color_wheel.tidy.html:162:46: [maybe] Conversion to number yields NaN
+test/10k/rgb_color_wheel.tidy.html:172:24: [maybe] Conversion to number yields NaN
+test/10k/rgb_color_wheel.tidy.html:172:36: [maybe] Conversion to number yields NaN
+test/10k/rgb_color_wheel.tidy.html:177:20: [maybe] Conversion to number yields NaN
+test/10k/rgb_color_wheel.tidy.html:183:13: [maybe] Conversion to number yields NaN
+test/10k/rgb_color_wheel.tidy.html:184:13: [maybe] Conversion to number yields NaN
+test/10k/rgb_color_wheel.tidy.html:185:21: [maybe] Conversion to number yields NaN
+test/10k/rgb_color_wheel.tidy.html:185:36: [maybe] Conversion to number yields NaN
+test/10k/rgb_color_wheel.tidy.html:203:27: [maybe] Reading absent property (computed name)
+test/10k/rgb_color_wheel.tidy.html:203:41: [maybe] Reading absent property (computed name)
+test/10k/rgb_color_wheel.tidy.html:203:55: [maybe] Reading absent property (computed name)
+test/10k/rgb_color_wheel.tidy.html:220:9: [maybe] Conversion to number yields NaN
+test/10k/rgb_color_wheel.tidy.html:221:26: [maybe] Reading absent property (computed name)
+test/10k/rgb_color_wheel.tidy.html:221:34: [maybe] Reading absent property (computed name)
+test/10k/rgb_color_wheel.tidy.html:226:13: [maybe] Conversion to number yields NaN
+test/10k/rgb_color_wheel.tidy.html:227:30: [maybe] Reading absent property (computed name)
+test/10k/rgb_color_wheel.tidy.html:227:38: [maybe] Reading absent property (computed name)
+test/10k/rgb_color_wheel.tidy.html:274:25: [maybe] Reading absent property (computed name)
+test/10k/rgb_color_wheel.tidy.html:290:9: [maybe] Conversion to number yields NaN
+test/10k/rgb_color_wheel.tidy.html:292:25: [maybe] Reading absent property (computed name)
+test/10k/rgb_color_wheel.tidy.html:295:25: [maybe] Conversion to number yields NaN
+test/10k/rgb_color_wheel.tidy.html:295:43: [maybe] Conversion to number yields NaN
+test/10k/rgb_color_wheel.tidy.html:298:34: [maybe] Reading absent property (computed name)
+test/10k/rgb_color_wheel.tidy.html:300:17: [maybe] Reading absent property (computed name)
+test/10k/rgb_color_wheel.tidy.html:301:34: [maybe] Reading absent property (computed name)
+test/10k/rgb_color_wheel.tidy.html:305:38: [maybe] Reading absent property (computed name)
+test/10k/rgb_color_wheel.tidy.html:305:44: [maybe] Conversion to number yields NaN
+test/10k/rgb_color_wheel.tidy.html:309:38: [maybe] Reading absent property (computed name)
+test/10k/rgb_color_wheel.tidy.html:309:45: [maybe] Conversion to number yields NaN
+test/10k/rgb_color_wheel.tidy.html:311:38: [maybe] Reading absent property (computed name)
+test/10k/rgb_color_wheel.tidy.html:311:45: [maybe] Conversion to number yields NaN
+test/10k/rgb_color_wheel.tidy.html:325:15: [maybe] Reading absent property (computed name)
+test/10k/rgb_color_wheel.tidy.html:332:24: [maybe] Converting undefined to string
+test/10k/rgb_color_wheel.tidy.html:332:48: [maybe] Reading absent property (computed name)
+test/10k/rgb_color_wheel.tidy.html:339:19: [maybe] Conversion to number yields NaN
+test/10k/rgb_color_wheel.tidy.html:340:19: [maybe] Conversion to number yields NaN
+test/10k/rgb_color_wheel.tidy.html:344:32: [maybe] Conversion to number yields NaN
+test/10k/rgb_color_wheel.tidy.html:345:36: [maybe] Conversion to number yields NaN
+test/10k/rgb_color_wheel.tidy.html:346:9: [maybe] Conversion to number yields NaN
+test/10k/rgb_color_wheel.tidy.html:358:16: [maybe] Converting undefined to string
+test/10k/rgb_color_wheel.tidy.html:383:14: [maybe] Conversion from string to number yields NaN
+test/10k/rgb_color_wheel.tidy.html:383:14: [maybe] Conversion to number yields NaN
+test/10k/rgb_color_wheel.tidy.html:384:15: [maybe] Conversion from string to number yields NaN
+test/10k/rgb_color_wheel.tidy.html:384:15: [maybe] Conversion to number yields NaN
+test/10k/rgb_color_wheel.tidy.html:394:15: [maybe] Reading absent property (computed name)

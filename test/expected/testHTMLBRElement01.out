@@ -1,4 +1,0 @@
-test/browser/domlegacy/html/HTMLBRElement01.tidy.html:16: [definite] Reading absent property clear
-test/browser/domlegacy/html/HTMLBRElement01.tidy.html:13: [info] Abstract value: [@HTMLBRElement[native] constructor]
-test/browser/domlegacy/html/HTMLBRElement01.tidy.html:14: [info] Prototype: [@Object.prototype[native]]
-test/browser/domlegacy/html/HTMLBRElement01.tidy.html:16: [info] Abstract value: Undef

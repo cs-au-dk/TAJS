@@ -1,0 +1,4 @@
+test/micro/test122.js:5:6: [definite] Reading absent property e
+test/micro/test122.js:4:5: [definite] The variable a is never used
+test/micro/test122.js:9:1: [info] Abstract value: UInt
+test/micro/test122.js:5:1: [info] Reading from unknown property that may cause loss of precision

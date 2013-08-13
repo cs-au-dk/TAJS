@@ -1,0 +1,27 @@
+test/chromeexperiments/liquidparticles.tidy.html:34:5: [definite] The conditional expression is always true
+test/chromeexperiments/liquidparticles.tidy.html:77:15: [definite] Variable mouseX is null/undefined
+test/chromeexperiments/liquidparticles.tidy.html:78:15: [definite] Variable mouseY is null/undefined
+test/chromeexperiments/liquidparticles.tidy.html:79:18: [definite] Variable mouseX is null/undefined
+test/chromeexperiments/liquidparticles.tidy.html:80:18: [definite] Variable mouseY is null/undefined
+test/chromeexperiments/liquidparticles.tidy.html:104:22: [definite] Variable mouseX is null/undefined
+test/chromeexperiments/liquidparticles.tidy.html:105:22: [definite] Variable mouseY is null/undefined
+test/chromeexperiments/liquidparticles.tidy.html:111:9: [definite] The conditional expression is always false
+test/chromeexperiments/liquidparticles.tidy.html:61:9: [definite] Dead assignment, property size is never read
+test/chromeexperiments/liquidparticles.tidy.html:222:5: [definite] Dead assignment, property size is never read
+test/chromeexperiments/liquidparticles.tidy.html:16:5: [definite] The variable canvasDiv is never used
+test/chromeexperiments/liquidparticles.tidy.html:17:5: [definite] The variable outerDiv is never used
+test/chromeexperiments/liquidparticles.tidy.html:84:9: [definite] The variable blowDist is never used
+test/chromeexperiments/liquidparticles.tidy.html:115:21: [definite] The variable blowAcc is never used
+test/chromeexperiments/liquidparticles.tidy.html:192:1: [definite] Unreachable function onDocMouseMove
+test/chromeexperiments/liquidparticles.tidy.html:199:1: [definite] Unreachable function onDocMouseDown
+test/chromeexperiments/liquidparticles.tidy.html:205:1: [definite] Unreachable function onDocMouseUp
+test/chromeexperiments/liquidparticles.tidy.html:229:1: [definite] Unreachable function rect
+test/chromeexperiments/liquidparticles.tidy.html:250:2: [definite] The variable event is never used
+test/chromeexperiments/liquidparticles.tidy.html:72:5: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/liquidparticles.tidy.html:99:17: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/liquidparticles.tidy.html:9: [maybe] Uncaught exception, constructed at [test/chromeexperiments/liquidparticles.tidy.html:72:5, test/chromeexperiments/liquidparticles.tidy.html:99:17]
+test/chromeexperiments/liquidparticles.tidy.html:77:15: [maybe] Conversion to number yields NaN
+test/chromeexperiments/liquidparticles.tidy.html:78:15: [maybe] Conversion to number yields NaN
+test/chromeexperiments/liquidparticles.tidy.html:98:17: [maybe] Reading absent property (computed name)
+test/chromeexperiments/liquidparticles.tidy.html:104:18: [maybe] Conversion to number yields NaN
+test/chromeexperiments/liquidparticles.tidy.html:105:18: [maybe] Conversion to number yields NaN

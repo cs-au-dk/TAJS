@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Aarhus University
+ * Copyright 2009-2013 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,9 +26,9 @@ import dk.brics.tajs.util.AnalysisException;
 /**
  * Event dispatcher node.
  */
-public class EventDispatcherNode extends Node implements ICallNode { // XXX: why is this an ICallNode?
+public class EventDispatcherNode extends Node implements ICallNode {
 
-    // XXX: javadoc for enum and each type
+    // TODO: javadoc for enum and each type
     public enum Type { 
         LOAD, 
         UNLOAD, 

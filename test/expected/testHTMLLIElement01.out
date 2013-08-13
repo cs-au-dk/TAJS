@@ -1,5 +1,0 @@
-test/browser/domlegacy/html/HTMLLIElement01.tidy.html:14: [definite] Reading absent property type
-test/browser/domlegacy/html/HTMLLIElement01.tidy.html:15: [definite] Reading absent property value
-test/browser/domlegacy/html/HTMLLIElement01.tidy.html:13: [info] Abstract value: [@HTMLLIElement[native] constructor]
-test/browser/domlegacy/html/HTMLLIElement01.tidy.html:14: [info] Abstract value: Undef
-test/browser/domlegacy/html/HTMLLIElement01.tidy.html:15: [info] Abstract value: Undef

@@ -1,0 +1,6 @@
+test/v8tests/with-function-expression.js:31:1: [definite] ReferenceError, reading absent variable assertDoesNotThrow
+test/v8tests/with-function-expression.js:28:5: [definite] The variable source is never used
+test/v8tests/with-function-expression.js:31:20: [definite] Unreachable code
+test/v8tests/with-function-expression.js:35:5: [definite] The variable regexp is never used
+test/v8tests/with-function-expression.js:36:5: [definite] The variable res is never used
+test/v8tests/with-function-expression.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/with-function-expression.js:31:1]

@@ -1,0 +1,67 @@
+test/10k/zmeyko.tidy.html:122:5: [definite] The conditional expression is always true
+test/10k/zmeyko.tidy.html:332:5: [definite] The conditional expression is always false
+test/10k/zmeyko.tidy.html:332:5: [definite] The conditional expression is always false
+test/10k/zmeyko.tidy.html:332:5: [definite] The conditional expression is always false
+test/10k/zmeyko.tidy.html:332:5: [definite] The conditional expression is always true
+test/10k/zmeyko.tidy.html:137:5: [definite] Reading 'this' yields the global object
+test/10k/zmeyko.tidy.html:142:5: [definite] Reading 'this' yields the global object
+test/10k/zmeyko.tidy.html:29:1: [definite] The variable sh is never used
+test/10k/zmeyko.tidy.html:92:9: [definite] The variable i is never used
+test/10k/zmeyko.tidy.html:93:9: [definite] The variable j is never used
+test/10k/zmeyko.tidy.html:132:5: [definite] The variable pau is never used
+test/10k/zmeyko.tidy.html:161:1: [definite] Unreachable function restart
+test/10k/zmeyko.tidy.html:192:1: [definite] Unreachable function lP
+test/10k/zmeyko.tidy.html:198:1: [definite] Unreachable function upP
+test/10k/zmeyko.tidy.html:201:1: [definite] Unreachable function dP
+test/10k/zmeyko.tidy.html:204:1: [definite] Unreachable function moveUp
+test/10k/zmeyko.tidy.html:211:1: [definite] Unreachable function moveDown
+test/10k/zmeyko.tidy.html:218:1: [definite] Unreachable function moveLeft
+test/10k/zmeyko.tidy.html:251:1: [definite] The variable array is never used
+test/10k/zmeyko.tidy.html:251:1: [definite] The variable index is never used
+test/10k/zmeyko.tidy.html:254:1: [definite] The variable array is never used
+test/10k/zmeyko.tidy.html:254:1: [definite] The variable index is never used
+test/10k/zmeyko.tidy.html:295:22: [definite] Unreachable function
+test/10k/zmeyko.tidy.html:338:2: [definite] The variable event is never used
+test/10k/zmeyko.tidy.html:32:5: [maybe] TypeError, accessing property of null/undefined
+test/10k/zmeyko.tidy.html:48:5: [maybe] TypeError, accessing property of null/undefined
+test/10k/zmeyko.tidy.html:64:5: [maybe] TypeError, accessing property of null/undefined
+test/10k/zmeyko.tidy.html:81:23: [maybe] TypeError, accessing property of null/undefined
+test/10k/zmeyko.tidy.html:166:19: [maybe] ReferenceError, reading absent variable interval
+test/10k/zmeyko.tidy.html:174:9: [maybe] ReferenceError, reading absent variable snakeBody
+test/10k/zmeyko.tidy.html:179:5: [maybe] ReferenceError, reading absent variable ctx
+test/10k/zmeyko.tidy.html:180:38: [maybe] ReferenceError, reading absent variable gridSize
+test/10k/zmeyko.tidy.html:180:48: [maybe] ReferenceError, reading absent variable gridSize
+test/10k/zmeyko.tidy.html:181:28: [maybe] ReferenceError, reading absent variable snakeLength
+test/10k/zmeyko.tidy.html:183:23: [maybe] TypeError, accessing property of null/undefined
+test/10k/zmeyko.tidy.html:183:57: [maybe] ReferenceError, reading absent variable gridSize
+test/10k/zmeyko.tidy.html:183:67: [maybe] ReferenceError, reading absent variable gridSize
+test/10k/zmeyko.tidy.html:185:21: [maybe] ReferenceError, reading absent variable sgP
+test/10k/zmeyko.tidy.html:187:9: [maybe] ReferenceError, reading absent variable snakeLength
+test/10k/zmeyko.tidy.html:196:12: [maybe] ReferenceError, reading absent variable crP
+test/10k/zmeyko.tidy.html:196:23: [maybe] ReferenceError, reading absent variable gridSize
+test/10k/zmeyko.tidy.html:226:16: [maybe] ReferenceError, reading absent variable cns
+test/10k/zmeyko.tidy.html:234:5: [maybe] ReferenceError, reading absent variable crP
+test/10k/zmeyko.tidy.html:238:52: [maybe] ReferenceError, reading absent variable gridSize
+test/10k/zmeyko.tidy.html:238:65: [maybe] ReferenceError, reading absent variable gridSize
+test/10k/zmeyko.tidy.html:238:115: [maybe] ReferenceError, reading absent variable gridSize
+test/10k/zmeyko.tidy.html:238:128: [maybe] ReferenceError, reading absent variable gridSize
+test/10k/zmeyko.tidy.html:244:17: [maybe] ReferenceError, reading absent variable gridSize
+test/10k/zmeyko.tidy.html:252:12: [maybe] TypeError, accessing property of null/undefined
+test/10k/zmeyko.tidy.html:252:26: [maybe] ReferenceError, reading absent variable sgP
+test/10k/zmeyko.tidy.html:255:12: [maybe] TypeError, accessing property of null/undefined
+test/10k/zmeyko.tidy.html:260:5: [maybe] ReferenceError, reading absent variable ctx
+test/10k/zmeyko.tidy.html:279:14: [maybe] ReferenceError, reading absent variable snakeLength
+test/10k/zmeyko.tidy.html:332:13: [maybe] ReferenceError, reading absent variable drc
+test/10k/zmeyko.tidy.html:81:23: [maybe] Reading absent property offsetLeft
+test/10k/zmeyko.tidy.html:82:22: [maybe] Reading absent property offsetTop
+test/10k/zmeyko.tidy.html:84:22: [maybe] Reading absent property offsetParent
+test/10k/zmeyko.tidy.html:7: [maybe] Uncaught exception, constructed at [test/10k/zmeyko.tidy.html:32:5, test/10k/zmeyko.tidy.html:48:5, test/10k/zmeyko.tidy.html:64:5, test/10k/zmeyko.tidy.html:81:23, test/10k/zmeyko.tidy.html:166:19, test/10k/zmeyko.tidy.html:174:9, test/10k/zmeyko.tidy.html:179:5, test/10k/zmeyko.tidy.html:180:38, test/10k/zmeyko.tidy.html:180:48, test/10k/zmeyko.tidy.html:181:28, test/10k/zmeyko.tidy.html:183:23, test/10k/zmeyko.tidy.html:183:57, test/10k/zmeyko.tidy.html:183:67, test/10k/zmeyko.tidy.html:185:21, test/10k/zmeyko.tidy.html:187:9, test/10k/zmeyko.tidy.html:196:12, test/10k/zmeyko.tidy.html:196:23, test/10k/zmeyko.tidy.html:226:16, test/10k/zmeyko.tidy.html:234:5, test/10k/zmeyko.tidy.html:238:52, test/10k/zmeyko.tidy.html:238:65, test/10k/zmeyko.tidy.html:238:115, test/10k/zmeyko.tidy.html:238:128, test/10k/zmeyko.tidy.html:244:17, test/10k/zmeyko.tidy.html:252:12, test/10k/zmeyko.tidy.html:252:26, test/10k/zmeyko.tidy.html:255:12, test/10k/zmeyko.tidy.html:260:5, test/10k/zmeyko.tidy.html:279:14, test/10k/zmeyko.tidy.html:332:13]
+test/10k/zmeyko.tidy.html:15:30: [maybe] Reading absent property (computed name)
+test/10k/zmeyko.tidy.html:81:9: [maybe] Conversion to number yields NaN
+test/10k/zmeyko.tidy.html:81:23: [maybe] Converting primitive number to object
+test/10k/zmeyko.tidy.html:81:23: [maybe] The variable element has values with different types
+test/10k/zmeyko.tidy.html:82:9: [maybe] Conversion to number yields NaN
+test/10k/zmeyko.tidy.html:82:22: [maybe] Converting primitive number to object
+test/10k/zmeyko.tidy.html:82:22: [maybe] The variable element has values with different types
+test/10k/zmeyko.tidy.html:84:22: [maybe] Converting primitive number to object
+test/10k/zmeyko.tidy.html:84:22: [maybe] The variable element has values with different types

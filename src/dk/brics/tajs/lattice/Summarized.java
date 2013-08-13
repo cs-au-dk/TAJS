@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Aarhus University
+ * Copyright 2009-2013 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -111,8 +111,15 @@ public final class Summarized {
 	 * @return true if changed
 	 */
 	public boolean join(Summarized s) {
-		return maybe_summarized.addAll(s.maybe_summarized)
-		|| definitely_summarized.retainAll(s.definitely_summarized);
+		return maybe_summarized.addAll(s.maybe_summarized) | definitely_summarized.retainAll(s.definitely_summarized);
+	}
+
+	/**
+	 * Adds the given summarized sets to this pair.
+	 * @return true if changed
+	 */
+	public boolean add(Summarized s) {
+		return maybe_summarized.addAll(s.maybe_summarized) | definitely_summarized.addAll(s.definitely_summarized);
 	}
 
 	/**

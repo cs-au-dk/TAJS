@@ -1,0 +1,132 @@
+Unevalizer: Starting on: "r()"
+Unevalizer: Valid program
+Unevalizer: No name capture
+Unevalizer: Starting on: "l()"
+Unevalizer: Valid program
+Unevalizer: No name capture
+Unevalizer: Starting on: "l()"
+Unevalizer: Valid program
+Unevalizer: No name capture
+Unevalizer: Starting on: "r()"
+Unevalizer: Valid program
+Unevalizer: No name capture
+Unevalizer: Starting on: "l()"
+Unevalizer: Valid program
+Unevalizer: No name capture
+Unevalizer: Starting on: "r()"
+Unevalizer: Valid program
+Unevalizer: No name capture
+Unevalizer: Starting on: "r()"
+Unevalizer: Valid program
+Unevalizer: No name capture
+test/10k/10k_world.tidy.html:112:17: [definite] The conditional expression is always false
+test/10k/10k_world.tidy.html:113:17: [definite] The conditional expression is always false
+test/10k/10k_world.tidy.html:386:94: [definite] The conditional expression is always true
+test/10k/10k_world.tidy.html:148:25: [definite] Dead assignment, property angle is never read
+test/10k/10k_world.tidy.html:321:13: [definite] Dead assignment, property SetAttitude is never read
+test/10k/10k_world.tidy.html:338:13: [definite] Dead assignment, property PushAction is never read
+test/10k/10k_world.tidy.html:428:40: [definite] Reading absent property description
+test/10k/10k_world.tidy.html:35:2: [definite] The variable event is never used
+test/10k/10k_world.tidy.html:36:2: [definite] The variable event is never used
+test/10k/10k_world.tidy.html:37:2: [definite] The variable event is never used
+test/10k/10k_world.tidy.html:57:9: [definite] The variable a is never used
+test/10k/10k_world.tidy.html:321:32: [definite] Unreachable function
+test/10k/10k_world.tidy.html:338:31: [definite] Unreachable function
+test/10k/10k_world.tidy.html:413:24: [definite] Unreachable function
+test/10k/10k_world.tidy.html:87:46: [maybe] TypeError, accessing property of null/undefined
+test/10k/10k_world.tidy.html:87:64: [maybe] TypeError, accessing property of null/undefined
+test/10k/10k_world.tidy.html:106:63: [maybe] TypeError, accessing property of null/undefined
+test/10k/10k_world.tidy.html:109:63: [maybe] TypeError, accessing property of null/undefined
+test/10k/10k_world.tidy.html:127:29: [maybe] TypeError, accessing property of null/undefined
+test/10k/10k_world.tidy.html:128:29: [maybe] TypeError, accessing property of null/undefined
+test/10k/10k_world.tidy.html:138:67: [maybe] TypeError, accessing property of null/undefined
+test/10k/10k_world.tidy.html:143:54: [maybe] TypeError, accessing property of null/undefined
+test/10k/10k_world.tidy.html:176:72: [maybe] TypeError, accessing property of null/undefined
+test/10k/10k_world.tidy.html:176:72: [maybe] TypeError, accessing property of null/undefined
+test/10k/10k_world.tidy.html:199:19: [maybe] TypeError, accessing property of null/undefined
+test/10k/10k_world.tidy.html:199:19: [maybe] TypeError, accessing property of null/undefined
+test/10k/10k_world.tidy.html:220:52: [maybe] TypeError, accessing property of null/undefined
+test/10k/10k_world.tidy.html:238:36: [maybe] TypeError, accessing property of null/undefined
+test/10k/10k_world.tidy.html:242:59: [maybe] TypeError, accessing property of null/undefined
+test/10k/10k_world.tidy.html:242:74: [maybe] TypeError, accessing property of null/undefined
+test/10k/10k_world.tidy.html:265:38: [maybe] TypeError, accessing property of null/undefined
+test/10k/10k_world.tidy.html:266:29: [maybe] TypeError, accessing property of null/undefined
+test/10k/10k_world.tidy.html:343:45: [maybe] TypeError, accessing property of null/undefined
+test/10k/10k_world.tidy.html:343:97: [maybe] TypeError, accessing property of null/undefined
+test/10k/10k_world.tidy.html:344:25: [maybe] TypeError, accessing property of null/undefined
+test/10k/10k_world.tidy.html:344:25: [maybe] TypeError, accessing property of null/undefined
+test/10k/10k_world.tidy.html:345:25: [maybe] TypeError, accessing property of null/undefined
+test/10k/10k_world.tidy.html:345:25: [maybe] TypeError, accessing property of null/undefined
+test/10k/10k_world.tidy.html:347:36: [maybe] TypeError, accessing property of null/undefined
+test/10k/10k_world.tidy.html:348:27: [maybe] TypeError, accessing property of null/undefined
+test/10k/10k_world.tidy.html:384:57: [maybe] TypeError, accessing property of null/undefined
+test/10k/10k_world.tidy.html:385:27: [maybe] TypeError, accessing property of null/undefined
+test/10k/10k_world.tidy.html:397:30: [maybe] TypeError, accessing property of null/undefined
+test/10k/10k_world.tidy.html:398:30: [maybe] TypeError, accessing property of null/undefined
+test/10k/10k_world.tidy.html:405:39: [maybe] TypeError, accessing property of null/undefined
+test/10k/10k_world.tidy.html:176:72: [maybe] Reading absent property childs
+test/10k/10k_world.tidy.html:199:19: [maybe] Reading absent property childs
+test/10k/10k_world.tidy.html:343:97: [maybe] Reading absent property target
+test/10k/10k_world.tidy.html:344:25: [maybe] Reading absent property target
+test/10k/10k_world.tidy.html:344:25: [maybe] Reading absent property x
+test/10k/10k_world.tidy.html:345:25: [maybe] Reading absent property target
+test/10k/10k_world.tidy.html:345:25: [maybe] Reading absent property y
+test/10k/10k_world.tidy.html:347:36: [maybe] Reading absent property target
+test/10k/10k_world.tidy.html:384:57: [maybe] Reading absent property target
+test/10k/10k_world.tidy.html:397:30: [maybe] Reading absent property target
+test/10k/10k_world.tidy.html:398:30: [maybe] Reading absent property target
+test/10k/10k_world.tidy.html:46: [maybe] Uncaught exception, constructed at [test/10k/10k_world.tidy.html:87:46, test/10k/10k_world.tidy.html:87:64, test/10k/10k_world.tidy.html:106:63, test/10k/10k_world.tidy.html:109:63, test/10k/10k_world.tidy.html:127:29, test/10k/10k_world.tidy.html:128:29, test/10k/10k_world.tidy.html:143:54, test/10k/10k_world.tidy.html:220:52, test/10k/10k_world.tidy.html:238:36, test/10k/10k_world.tidy.html:242:59, test/10k/10k_world.tidy.html:242:74, test/10k/10k_world.tidy.html:265:38, test/10k/10k_world.tidy.html:266:29, test/10k/10k_world.tidy.html:343:45, test/10k/10k_world.tidy.html:343:97, test/10k/10k_world.tidy.html:344:25, test/10k/10k_world.tidy.html:345:25, test/10k/10k_world.tidy.html:347:36, test/10k/10k_world.tidy.html:348:27, test/10k/10k_world.tidy.html:384:57, test/10k/10k_world.tidy.html:385:27, test/10k/10k_world.tidy.html:397:30, test/10k/10k_world.tidy.html:398:30, test/10k/10k_world.tidy.html:405:39]
+test/10k/10k_world.tidy.html:52:48: [maybe] Conversion to number yields NaN
+test/10k/10k_world.tidy.html:52:69: [maybe] Conversion to number yields NaN
+test/10k/10k_world.tidy.html:85:330: [maybe] Converting primitive string to object
+test/10k/10k_world.tidy.html:86:21: [maybe] Converting object to string
+test/10k/10k_world.tidy.html:86:21: [maybe] Converting primitive string to object
+test/10k/10k_world.tidy.html:87:21: [maybe] Converting primitive string to object
+test/10k/10k_world.tidy.html:87:46: [maybe] Reading absent property (computed name)
+test/10k/10k_world.tidy.html:87:46: [maybe] Reading absent property (computed name)
+test/10k/10k_world.tidy.html:87:64: [maybe] Reading absent property (computed name)
+test/10k/10k_world.tidy.html:88:21: [maybe] Converting primitive string to object
+test/10k/10k_world.tidy.html:90:20: [maybe] Converting object to string
+test/10k/10k_world.tidy.html:90:20: [maybe] Converting object to string
+test/10k/10k_world.tidy.html:90:20: [maybe] Converting primitive string to object
+test/10k/10k_world.tidy.html:90:20: [maybe] Converting primitive string to object
+test/10k/10k_world.tidy.html:90:48: [maybe] Converting primitive string to object
+test/10k/10k_world.tidy.html:103:24: [maybe] Converting object to string
+test/10k/10k_world.tidy.html:103:24: [maybe] Reading absent property (computed name)
+test/10k/10k_world.tidy.html:103:26: [maybe] The variable f has values with different types
+test/10k/10k_world.tidy.html:106:47: [maybe] Reading absent property (computed name)
+test/10k/10k_world.tidy.html:106:63: [maybe] Reading absent property (computed name)
+test/10k/10k_world.tidy.html:109:47: [maybe] Reading absent property (computed name)
+test/10k/10k_world.tidy.html:109:63: [maybe] Reading absent property (computed name)
+test/10k/10k_world.tidy.html:127:21: [maybe] Reading absent property (computed name)
+test/10k/10k_world.tidy.html:127:29: [maybe] Reading absent property (computed name)
+test/10k/10k_world.tidy.html:128:21: [maybe] Reading absent property (computed name)
+test/10k/10k_world.tidy.html:128:29: [maybe] Reading absent property (computed name)
+test/10k/10k_world.tidy.html:138:51: [maybe] Reading absent property (computed name)
+test/10k/10k_world.tidy.html:138:67: [maybe] Reading absent property (computed name)
+test/10k/10k_world.tidy.html:143:46: [maybe] Reading absent property (computed name)
+test/10k/10k_world.tidy.html:143:54: [maybe] Reading absent property (computed name)
+test/10k/10k_world.tidy.html:176:72: [maybe] Conversion from string to number yields NaN
+test/10k/10k_world.tidy.html:176:72: [maybe] Converting primitive number to object
+test/10k/10k_world.tidy.html:176:72: [maybe] Reading absent property (computed name)
+test/10k/10k_world.tidy.html:176:72: [maybe] The variable b has values with different types
+test/10k/10k_world.tidy.html:178:23: [maybe] The variable b has values with different types
+test/10k/10k_world.tidy.html:181:23: [maybe] The variable b has values with different types
+test/10k/10k_world.tidy.html:199:19: [maybe] Converting primitive number to object
+test/10k/10k_world.tidy.html:199:19: [maybe] Reading absent property (computed name)
+test/10k/10k_world.tidy.html:199:19: [maybe] The variable b has values with different types
+test/10k/10k_world.tidy.html:210:39: [maybe] The variable c has values with different types
+test/10k/10k_world.tidy.html:263:61: [maybe] Conversion to number yields NaN
+test/10k/10k_world.tidy.html:263:61: [maybe] Reading absent property (computed name)
+test/10k/10k_world.tidy.html:312:21: [maybe] Conversion to number yields NaN
+test/10k/10k_world.tidy.html:312:21: [maybe] Reading absent property (computed name)
+test/10k/10k_world.tidy.html:344:25: [maybe] Converting primitive number to object
+test/10k/10k_world.tidy.html:345:25: [maybe] Converting primitive number to object
+test/10k/10k_world.tidy.html:370:37: [maybe] Conversion to number yields NaN
+test/10k/10k_world.tidy.html:370:55: [maybe] Conversion to number yields NaN
+test/10k/10k_world.tidy.html:379:37: [maybe] Conversion to number yields NaN
+test/10k/10k_world.tidy.html:380:37: [maybe] Conversion to number yields NaN
+test/10k/10k_world.tidy.html:428:23: [maybe] Converting undefined to string
+test/10k/10k_world.tidy.html:87:46: [info] Reading from unknown property that may cause loss of precision
+test/10k/10k_world.tidy.html:87:64: [info] Reading from unknown property that may cause loss of precision
+test/10k/10k_world.tidy.html:115:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision

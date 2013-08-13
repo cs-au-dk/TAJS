@@ -1,5 +1,0 @@
-test/benchmarks/ajax/foundations/chp2/simpleRequest.tidy.html:11:5: [definite] The conditional expression is always true
-test/benchmarks/ajax/foundations/chp2/simpleRequest.tidy.html:26:1: [definite] Unreachable function handleStateChange
-test/benchmarks/ajax/foundations/chp2/simpleRequest.tidy.html:39:2: [definite] The variable event is never used
-test/benchmarks/ajax/foundations/chp2/simpleRequest.tidy.html:21:5: [maybe] TypeError, accessing property of null/undefined
-test/benchmarks/ajax/foundations/chp2/simpleRequest.tidy.html:6: [maybe] Uncaught exception, constructed at [test/benchmarks/ajax/foundations/chp2/simpleRequest.tidy.html:21:5]

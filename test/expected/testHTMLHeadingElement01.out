@@ -1,3 +1,0 @@
-test/browser/domlegacy/html/HTMLHeadingElement01.tidy.html:14: [definite] Reading absent property align
-test/browser/domlegacy/html/HTMLHeadingElement01.tidy.html:13: [info] Abstract value: [@HTMLHeadingElement[native] constructor]
-test/browser/domlegacy/html/HTMLHeadingElement01.tidy.html:14: [info] Abstract value: Undef

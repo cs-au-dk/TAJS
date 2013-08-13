@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Aarhus University
+ * Copyright 2009-2013 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,8 +28,8 @@ public class Renaming {
 	 * If the object label is null or it does not occur in the map, it is returned unchanged. 
 	 */
 	public static ObjectLabel apply(Map<ObjectLabel, ObjectLabel> m, ObjectLabel objlabel) {
-		if (objlabel == null)
-			return null;
+		if (m == null || objlabel == null)
+			return objlabel;
 		ObjectLabel new_objlabel = m.get(objlabel);
 		if (new_objlabel == null)
 			new_objlabel = objlabel;
@@ -38,6 +38,7 @@ public class Renaming {
 
 	/**
 	 * Renames the given object labels according to the map.
+	 * @return a new set of object labels, or null if the given set is null
 	 */
 	public static Set<ObjectLabel> apply(Map<ObjectLabel, ObjectLabel> m, Set<ObjectLabel> objlabels) {
 		if (objlabels == null)

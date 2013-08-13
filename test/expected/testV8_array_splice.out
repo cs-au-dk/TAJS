@@ -1,0 +1,44 @@
+test/v8tests/array-splice.js:204:5: [definite] ReferenceError, reading absent variable assertEquals
+test/v8tests/array-splice.js:47:1: [definite] The conditional expression is always true
+test/v8tests/array-splice.js:59:3: [definite] The conditional expression is always false
+test/v8tests/array-splice.js:124:3: [definite] The conditional expression is always true
+test/v8tests/array-splice.js:126:5: [definite] The conditional expression is always false
+test/v8tests/array-splice.js:142:5: [definite] The conditional expression is always false
+test/v8tests/array-splice.js:140:5: [definite] Dead assignment, property 1 is never read
+test/v8tests/array-splice.js:42:5: [definite] The variable fourhundredth is never used
+test/v8tests/array-splice.js:52:7: [definite] The variable concat_function is never used
+test/v8tests/array-splice.js:53:7: [definite] The variable slice_function is never used
+test/v8tests/array-splice.js:55:7: [definite] The variable splice_function_2 is never used
+test/v8tests/array-splice.js:56:7: [definite] The variable unshift_function is never used
+test/v8tests/array-splice.js:57:7: [definite] The variable unshift_function_2 is never used
+test/v8tests/array-splice.js:58:7: [definite] The variable shift_function is never used
+test/v8tests/array-splice.js:60:20: [definite] Unreachable function
+test/v8tests/array-splice.js:64:21: [definite] Unreachable function
+test/v8tests/array-splice.js:67:23: [definite] Unreachable function
+test/v8tests/array-splice.js:70:22: [definite] Unreachable function
+test/v8tests/array-splice.js:73:23: [definite] Unreachable function
+test/v8tests/array-splice.js:76:25: [definite] Unreachable function
+test/v8tests/array-splice.js:79:24: [definite] Unreachable function
+test/v8tests/array-splice.js:82:26: [definite] Unreachable function
+test/v8tests/array-splice.js:85:22: [definite] Unreachable function
+test/v8tests/array-splice.js:101:23: [definite] Unreachable function
+test/v8tests/array-splice.js:104:22: [definite] Unreachable function
+test/v8tests/array-splice.js:110:25: [definite] Unreachable function
+test/v8tests/array-splice.js:113:24: [definite] Unreachable function
+test/v8tests/array-splice.js:116:26: [definite] Unreachable function
+test/v8tests/array-splice.js:119:22: [definite] Unreachable function
+test/v8tests/array-splice.js:131:11: [definite] The variable b is never used
+test/v8tests/array-splice.js:133:11: [definite] The variable c is never used
+test/v8tests/array-splice.js:160:11: [definite] The variable ab is never used
+test/v8tests/array-splice.js:164:11: [definite] The variable ba is never used
+test/v8tests/array-splice.js:170:11: [definite] The variable join is never used
+test/v8tests/array-splice.js:179:11: [definite] The variable sparse is never used
+test/v8tests/array-splice.js:203:9: [definite] The variable zero is never used
+test/v8tests/array-splice.js:204:18: [definite] Unreachable code
+test/v8tests/array-splice.js:215:9: [definite] The variable nothing is never used
+test/v8tests/array-splice.js:229:9: [definite] The variable one is never used
+test/v8tests/array-splice.js:255:9: [definite] The variable baz is never used
+test/v8tests/array-splice.js:262:9: [definite] The variable bar is never used
+test/v8tests/array-splice.js:274:10: [definite] The variable i is never used
+test/v8tests/array-splice.js:280:7: [definite] The variable top is never used
+test/v8tests/array-splice.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/array-splice.js:204:5]

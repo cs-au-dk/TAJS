@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Aarhus University
+ * Copyright 2009-2013 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,7 +16,9 @@
 
 package dk.brics.tajs.solver;
 
-import dk.brics.tajs.flowgraph.Function;
+import java.util.Map;
+
+import dk.brics.tajs.flowgraph.BasicBlock;
 import dk.brics.tajs.util.AnalysisException;
 
 /**
@@ -43,7 +45,7 @@ CallEdgeType extends ICallEdge<BlockStateType>> extends Cloneable {
 	 * Propagates the given state into this state.
 	 * @return true if changed
 	 */
-	public boolean propagate(BlockStateType s);
+	public boolean propagate(BlockStateType s, boolean funentry);
 	
     /**
      * Checks whether this abstract state represents the empty set of concrete states.
@@ -76,17 +78,23 @@ CallEdgeType extends ICallEdge<BlockStateType>> extends Cloneable {
 	public void remove(BlockStateType other);
 	
 	/**
-	 * Trims this state according to the given existing state.
+	 * Localizes this state according to the given existing state.
 	 */
-	public void trim(BlockStateType s);
+	public void localize(BlockStateType s);
 	
 	/**
 	 * Transforms this state according to the given edge.
+	 * @param edge edge information
+	 * @param callee_entry_states all states of the callee entry
+	 * @param callee the callee function entry
+	 * @return the call context for the transformed state
 	 */
-	public void transform(CallEdgeType edge, BlockStateType callee_entry_state, Function callee, CallContextType callee_context);
+	public CallContextType transform(CallEdgeType edge, CallContextType edge_context, 
+			Map<CallContextType, BlockStateType> callee_entry_states, BasicBlock callee);
 	
 	/**
 	 * Transforms this state inversely according to the given edge.
+	 * @return true if the incoming flow needs to be recomputed
 	 */
-	public void transformInverse(CallEdgeType edge, BlockStateType callee_entry_state);
+	public boolean transformInverse(CallEdgeType edge, BasicBlock callee, CallContextType callee_context);
 }

@@ -1,3 +1,0 @@
-test/html/html18.js:2: [info] Abstract value: 3.0
-test/html/html18.js:4: [info] Abstract value: Undef|UInt|NotUInt
-test/html/html18.js:7: [info] Abstract value: UInt

@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Aarhus University
+ * Copyright 2009-2013 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,9 +31,11 @@ import dk.brics.tajs.util.AnalysisException;
  * Note that <i>v</i><sub><i>function</i></sub> represents the function value (not the property name),
  * and <i>v</i><sub><i>base</i></sub> represents the base object (or {@link dk.brics.tajs.flowgraph.AbstractNode#NO_VALUE} if absent).
  * <p>
+ * The function may be given as a property name (fixed or computed) instead of a register. 
+ * <p>
  * Must be the only node in its block. The block must have precisely one successor.
  */
-public class CallNode extends LoadNode implements ICallNode {
+public class CallNode extends LoadNode implements ICallNode  {
 	
 	private boolean constructor;
 
@@ -41,7 +43,11 @@ public class CallNode extends LoadNode implements ICallNode {
 
 	private int base_reg; // NO_VALUE if absent (i.e. implicitly the global object, used for arraylits and regular expressions)
 	
-	private int function_reg;
+	private int function_reg = NO_VALUE; // NO_VALUE if property_reg or property_str is used instead
+	
+	private int property_reg = NO_VALUE;
+	
+	private String property_str; // null if not used
 
 	private int[] arg_regs;
 	
@@ -62,6 +68,28 @@ public class CallNode extends LoadNode implements ICallNode {
         this.arraylit = arraylit;
         this.base_reg = base_reg;
         this.function_reg = function_reg;
+        this.arg_regs = new int[arg_regs.size()];
+        for (int i = 0; i < this.arg_regs.length; i++)
+            this.arg_regs[i] = arg_regs.get(i);
+    }
+
+    /**
+     * Constructs a new call/construct node with a property read.
+     *
+     * @param constructor Is this a constructor.
+     * @param result_reg The register for the result.
+     * @param base_reg The base object register.
+     * @param property_reg The property register, if not fixed property name.
+     * @param property_str The property, if fixed-string property name
+     * @param arg_regs The argument registers as a list.
+     * @param location The source location.
+     */
+    public CallNode(boolean constructor, int result_reg, int base_reg, int property_reg, String property_str, List<Integer> arg_regs, SourceLocation location) {
+        super(result_reg, location);
+        this.constructor = constructor;
+        this.base_reg = base_reg;
+        this.property_reg = property_reg;
+        this.property_str = property_str;
         this.arg_regs = new int[arg_regs.size()];
         for (int i = 0; i < this.arg_regs.length; i++)
             this.arg_regs[i] = arg_regs.get(i);
@@ -91,14 +119,14 @@ public class CallNode extends LoadNode implements ICallNode {
     /**
      * Sets the base register.
      */
-    public void setBaseRegister(int base_var) {
+	public void setBaseRegister(int base_var) {
         this.base_reg = base_var;
     }
 
     /**
-     * Returns the function register.
+     * Returns the function register, or {@link dk.brics.tajs.flowgraph.AbstractNode#NO_VALUE} if not applicable.
      */
-	public int getFunctionRegister() {
+	public int getFunctionRegister() { // FIXME: update uses of getFunctionRegister in the uneval package
 		return function_reg;
 	}
 
@@ -108,6 +136,41 @@ public class CallNode extends LoadNode implements ICallNode {
     public void setFunctionRegister(int function_reg) {
         this.function_reg = function_reg;
     }
+
+    /**
+     * Returns the property register, or {@link dk.brics.tajs.flowgraph.AbstractNode#NO_VALUE} if not applicable.
+     */
+    public int getPropertyRegister() {
+		return property_reg;
+	}
+
+    /**
+     * Set the property register.
+     */
+    public void setPropertyRegister(int property_reg) {
+        this.property_reg = property_reg;
+    }
+	
+    /**
+     * Returns the property string, or null if not fixed.
+     */
+    public String getPropertyString() {
+		return property_str;
+	}
+	
+    /**
+     * Sets the property string.
+     */
+    public void setPropertyString(String property_str) {
+        this.property_str = property_str;
+    }
+	
+    /**
+     * Returns true if the property is a fixed string.
+     */
+    public boolean isPropertyFixed() {
+		return property_str != null;
+	}
 
     /**
      * Returns the given argument register.
@@ -144,7 +207,12 @@ public class CallNode extends LoadNode implements ICallNode {
 			b.append('-');
 		else
 			b.append('v').append(base_reg);
-		b.append(",v").append(function_reg);
+		if (property_str != null) 
+			b.append(",'").append(property_str).append("'");
+		else if (property_reg != NO_VALUE)
+			b.append(",[v").append(property_reg).append("]");
+		else
+			b.append(",v").append(function_reg);
 		for (int v : arg_regs) 
 			b.append(",v").append(v);
         b.append(",");
@@ -171,8 +239,6 @@ public class CallNode extends LoadNode implements ICallNode {
 	public void check(BasicBlock b) {
         if (b.getNodes().size() != 1)
             throw new AnalysisException("Node should have its own basic block: " + toString());
-        if (function_reg == NO_VALUE)
-            throw new AnalysisException("No function register for call node: " + toString());
         if (b.getSuccessors().size() > 1)
             throw new AnalysisException("More than one successor for call node block: " + b.toString());
 	}

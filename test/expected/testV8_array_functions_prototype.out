@@ -1,0 +1,14 @@
+test/v8tests/array-functions-prototype.js:62:3: [definite] ReferenceError, reading absent variable assertEquals
+test/v8tests/array-functions-prototype.js:35:13: [definite] Dead assignment, property 0 is never read
+test/v8tests/array-functions-prototype.js:35:13: [definite] Dead assignment, property 1 is never read
+test/v8tests/array-functions-prototype.js:35:13: [definite] Dead assignment, property 2 is never read
+test/v8tests/array-functions-prototype.js:35:13: [definite] Dead assignment, property length is never read
+test/v8tests/array-functions-prototype.js:47:1: [definite] Unreachable function assertHasOwnProperties
+test/v8tests/array-functions-prototype.js:59:7: [definite] The variable nonArray is never used
+test/v8tests/array-functions-prototype.js:60:7: [definite] The variable array is never used
+test/v8tests/array-functions-prototype.js:62:16: [definite] Unreachable code
+test/v8tests/array-functions-prototype.js:89:11: [definite] Unreachable code
+test/v8tests/array-functions-prototype.js:89:11: [definite] Unreachable function
+test/v8tests/array-functions-prototype.js:120:11: [definite] Unreachable function
+test/v8tests/array-functions-prototype.js:150:11: [definite] Unreachable function
+test/v8tests/array-functions-prototype.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/array-functions-prototype.js:62:3]

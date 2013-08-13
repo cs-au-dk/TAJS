@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Aarhus University
+ * Copyright 2009-2013 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,77 +17,176 @@
 package dk.brics.tajs.htmlparser;
 
 /**
- * A compound structure that contains meta-information about a single source "file". Used for communicating
- * the results between the HTMLParser and Main.
+ * JavaScript code snippet with meta-information.
  */
-public class JavaScriptSource {
-	
-    private String fileName;
-    private String javaScript;
-    private String eventName;
-    private int lineNumber;
+public interface JavaScriptSource {
 
-    /**
-     * Returns the file name.
-     *
-     * @return Returns the file name associated with the code.
-     */
-    public String getFileName() {
-        return fileName;
-    }
+	/**
+	 * JavaScript code embedded in a 'script' element in an HTML file.
+	 */
+	public static class EmbeddedJavaScriptSource implements JavaScriptSource {
 
-    /**
-     * Returns the code.
-     *
-     * @return Returns the code.
-     */
-    public String getJavaScript() {
-        return javaScript;
-    }
+		private final String fileName;
+		
+		private final String javaScript;
+		
+		private final int lineNumberOffset; // TODO: also need column number (for the first line)
 
-    /**
-     * Returns the starting line number.
-     *
-     * @return Returns the starting line number.
-     */
-    public int getLineNumber() {
-        return lineNumber;
-    }
+		/**
+		 * Constructs a new code snippet descriptor.
+		 */
+		public EmbeddedJavaScriptSource(String fileName, String javaScript, int lineNumberOffset) {
+			this.fileName = fileName;
+			this.javaScript = javaScript;
+			this.lineNumberOffset = lineNumberOffset;
+		}
 
-    /**
-     * Returns the name of the event.
-     *
-     * @return The name of the event.
-     */
-    public String getEventName() {
-        return eventName;
-    }
+		@Override
+		public <T> T apply(JavaScriptSourceVisitor<T> v) {
+			return v.visit(this);
+		}
 
-    /**
-     * Constructs the meta-information about a single file.
-     *
-     * @param fileName The file name.
-     * @param javaScript The code string.
-     * @param lineNumber The line number.
-     */
-    public JavaScriptSource(String fileName, String javaScript, int lineNumber) {
-        this.fileName = fileName;
-        this.javaScript = javaScript;
-        this.lineNumber = lineNumber;
-    }
+		@Override
+		public String getFileName() {
+			return fileName;
+		}
 
-    /**
-     * Constructs the meta-information about an event handler.
-     *
-     * @param fileName The file name.
-     * @param eventName The event name.
-     * @param javaScript The code string.
-     * @param lineNumber The line number.
-     */
-    public JavaScriptSource(String fileName, String eventName, String javaScript, int lineNumber) {
-        this.fileName = fileName;
-        this.eventName = eventName;
-        this.javaScript = javaScript;
-        this.lineNumber = lineNumber;
-    }
+		@Override
+		public String getJavaScript() {
+			return javaScript;
+		}
+
+		/**
+		 * Returns the starting line number.
+		 */
+		public int getLineNumberOffset() {
+			return lineNumberOffset;
+		}
+
+		@Override
+		public String toString() {
+			return String.format("%s(fileName: %s, lineNumber: %s)", getClass().getSimpleName(), fileName, lineNumberOffset);
+		}
+	}
+
+	/**
+	 * JavaScript code embedded in a "javascript:" event handler attribute in an HTML file.
+	 */
+	public static class EventHandlerJavaScriptSource implements JavaScriptSource {
+		
+		private final String fileName;
+
+		private final String javaScript;
+
+		private final int lineNumberOffset;
+		
+		private final String eventName;
+
+		/**
+		 * Constructs a new code snippet descriptor.
+		 */
+		public EventHandlerJavaScriptSource(String fileName, String javaScript, int lineNumber, String eventName) {
+			this.fileName = fileName;
+			this.javaScript = javaScript;
+			this.lineNumberOffset = lineNumber;
+			this.eventName = eventName;
+		}
+
+		@Override
+		public <T> T apply(JavaScriptSourceVisitor<T> v) {
+			return v.visit(this);
+		}
+
+		/**
+		 * Returns the event name.
+		 */
+		public String getEventName() {
+			return eventName;
+		}
+
+		@Override
+		public String getFileName() {
+			return fileName;
+		}
+
+		@Override
+		public String getJavaScript() {
+			return javaScript;
+		}
+
+		/**
+		 * Returns the starting line number.
+		 */
+		public int getLineNumberOffset() {
+			return lineNumberOffset;
+		}
+
+		@Override
+		public String toString() {
+			return String.format("%s(fileName: %s, lineNumber: %s)", getClass().getSimpleName(), fileName, lineNumberOffset);
+		}
+	}
+
+	/**
+	 * JavaScript code referenced from a 'script' element in an HTML file.
+	 */
+	public static class ExternalJavaScriptSource implements JavaScriptSource {
+
+		private final String fileName;
+		
+		private final String javaScript;
+
+		/**
+		 * Constructs a new code snippet descriptor.
+		 */
+		public ExternalJavaScriptSource(String fileName, String javaScript) {
+			this.fileName = fileName;
+			this.javaScript = javaScript;
+		}
+
+		@Override
+		public <T> T apply(JavaScriptSourceVisitor<T> v) {
+			return v.visit(this);
+		}
+
+		@Override
+		public String getFileName() {
+			return fileName;
+		}
+
+		@Override
+		public String getJavaScript() {
+			return javaScript;
+		}
+
+		@Override
+		public String toString() {
+			return String.format("%s(fileName: %s)", getClass().getSimpleName(), fileName);
+		}
+
+	}
+
+	/**
+	 * Visitor interface for the different kinds of JavaScript source code.
+	 */
+	public interface JavaScriptSourceVisitor<T> {
+
+		T visit(EmbeddedJavaScriptSource s);
+
+		T visit(EventHandlerJavaScriptSource s);
+
+		T visit(ExternalJavaScriptSource s);
+	}
+
+	public <T> T apply(JavaScriptSourceVisitor<T> v);
+
+	/**
+	 * Returns the file name associated with the code.
+	 */
+	public String getFileName();
+
+	/**
+	 * Returns the code.
+	 */
+	public String getJavaScript();
 }

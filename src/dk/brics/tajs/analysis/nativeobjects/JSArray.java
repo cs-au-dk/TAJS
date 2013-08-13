@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Aarhus University
+ * Copyright 2009-2013 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -222,8 +222,8 @@ public class JSArray {
 
         case ARRAY_FOREACH: {
             NativeFunctions.expectParameters(nativeobject, call, c, 1, 2);
-            /* Value callbackfn = */ NativeFunctions.readParameter(call, state, 0);
-            Value this_arg =  call.getNumberOfArgs() >= 1 ? NativeFunctions.readParameter(call, state, 1) : Value.makeNone();
+            @SuppressWarnings("unused") Value callbackfn = NativeFunctions.readParameter(call, state, 0);
+            @SuppressWarnings("unused") Value this_arg =  call.getNumberOfArgs() >= 1 ? NativeFunctions.readParameter(call, state, 1) : Value.makeNone();
             return Value.makeUndef();
         }
 		
@@ -365,14 +365,14 @@ public class JSArray {
 
         case ARRAY_SOME: {
             NativeFunctions.expectParameters(nativeobject, call, c, 1, 2);
-            Value callback = NativeFunctions.readParameter(call, state, 0);
-            Value thisfn = call.getNumberOfArgs() >= 1 ? NativeFunctions.readParameter(call, state, 1) : Value.makeNone();
+            @SuppressWarnings("unused") Value callback = NativeFunctions.readParameter(call, state, 0);
+            @SuppressWarnings("unused") Value thisfn = call.getNumberOfArgs() >= 1 ? NativeFunctions.readParameter(call, state, 1) : Value.makeNone();
             return Value.makeAnyBool();
         }
 
 		case ARRAY_SORT: {
 			NativeFunctions.expectParameters(nativeobject, call, c, 0, 1);
-            Value comparefn = call.getNumberOfArgs() >= 1 ? NativeFunctions.readParameter(call, state, 0) : Value.makeNone();
+			@SuppressWarnings("unused") Value comparefn = call.getNumberOfArgs() >= 1 ? NativeFunctions.readParameter(call, state, 0) : Value.makeNone();
 			Set<ObjectLabel> thisobj = state.readThisObjects();
 			state.writeProperty(thisobj, Value.makeAnyStrUInt(), state.readPropertyValue(thisobj, Value.makeAnyStrUInt()), true, false);
 			return Value.makeObject(thisobj); // TODO: improve precision?

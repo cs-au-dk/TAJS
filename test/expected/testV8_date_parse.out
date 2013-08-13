@@ -1,0 +1,10 @@
+test/v8tests/date-parse.js:256:3: [definite] ReferenceError, reading absent variable assertEquals
+test/v8tests/date-parse.js:253:1: [definite] The conditional expression is always true
+test/v8tests/date-parse.js:34:1: [definite] Unreachable function testDateParse
+test/v8tests/date-parse.js:42:1: [definite] Unreachable function testDateParseLocalTime
+test/v8tests/date-parse.js:48:1: [definite] Unreachable function testDateParseMisc
+test/v8tests/date-parse.js:255:7: [definite] The variable s is never used
+test/v8tests/date-parse.js:256:16: [definite] Unreachable code
+test/v8tests/date-parse.js:260:5: [definite] The variable testCasesNegative is never used
+test/v8tests/date-parse.js:265:27: [definite] Unreachable function
+test/v8tests/date-parse.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/date-parse.js:256:3]

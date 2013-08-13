@@ -1,2 +1,0 @@
-test/browser/domlegacy/events/ExceptionalFlow01.html:4: [definite] ReferenceError, reading absent variable: a
-test/browser/domlegacy/events/ExceptionalFlow01.html:1: [definite] Uncaught exception, constructed at [test/dom/events/ExceptionalFlow01.html:4]

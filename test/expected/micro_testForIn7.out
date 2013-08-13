@@ -1,0 +1,2 @@
+test/micro/testForIn7.js:2:13: [definite] The variable k is never used
+test/micro/testForIn7.js:6:1: [info] Abstract value: "HERE"

@@ -4,7 +4,7 @@
 
     <property name="project" value="tajs" />
     <property name="version" value="0.9" />
-    <property name="release" value="1" />
+    <property name="release" value="2" />
 
     <property name="optimize" value="on" />
     <property name="debug" value="off" />
@@ -88,7 +88,7 @@
             <doctitle>
                 <![CDATA[Type Analyzer for JavaScript (TAJS) API Specification]]>
             </doctitle>
-            <bottom><![CDATA[<i> Copyright &#169; 2012 Aarhus University </i>]]></bottom>
+            <bottom><![CDATA[<i> Copyright &#169; 2009-2013 Aarhus University </i>]]></bottom>
             <link href="http://docs.oracle.com/javase/6/docs/api/" />
             <link href="http://www.mozilla.org/rhino/apidocs/" />
             <classpath refid="classpath" />

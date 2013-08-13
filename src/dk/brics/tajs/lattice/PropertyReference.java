@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Aarhus University
+ * Copyright 2009-2013 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -49,7 +49,7 @@ public class PropertyReference {
 		this.kind = kind;
 		this.objlabel = objlabel;
 		this.propertyname = propertyname;
-		hashcode = kind.hashCode() * 5 + objlabel.hashCode() * 13 + (propertyname != null ? propertyname.hashCode() * 31 : 0);
+		hashcode = kind.hashCode() * 5 + (objlabel != null ? objlabel.hashCode() * 13 : 0) + (propertyname != null ? propertyname.hashCode() * 31 : 0);
 	}
 
 	/**

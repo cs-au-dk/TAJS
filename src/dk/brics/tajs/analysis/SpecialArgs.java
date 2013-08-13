@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Aarhus University
+ * Copyright 2009-2013 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,7 +16,7 @@
 
 package dk.brics.tajs.analysis;
 
-import static dk.brics.tajs.util.Collections.newSet;
+import static dk.brics.tajs.util.Collections.newMap;
 
 import java.util.Collection;
 import java.util.Map;
@@ -30,6 +30,7 @@ import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.solver.CallGraph;
 import dk.brics.tajs.solver.NodeAndContext;
 import dk.brics.tajs.util.Collections;
+import dk.brics.tajs.util.Pair;
 
 /**
  * Function arguments relevant for context sensitivity.
@@ -62,12 +63,12 @@ public class SpecialArgs { // FIXME: need some kind of widening to avoid infinit
      * @param state state
      * @param f function
      */
-	public Set<Value> getSpecialArgValues(State state, Function f) {
+	public Map<String,Value> getSpecialArgValues(State state, Function f) {
 		Set<String> args = special_args.get(f);
 		if (args != null) {
-			Set<Value> values = newSet();
+			Map<String,Value> values = newMap();
 			for (String s : args) {
-				values.add(state.readVariable(s, null));
+				values.put(s, state.readVariable(s, null));
 			}
 			return values;
 		}
@@ -75,13 +76,14 @@ public class SpecialArgs { // FIXME: need some kind of widening to avoid infinit
 	}
 
     /**
-     * Makes a single function f context sensitive on the parameters args. Does nothing if args are not parameters to f.
+     * Makes the given function context sensitive on selected parameters, and recursively backward through the call graph.
+     * @param f the function
+     * @param args the parameter names
      */
-    public void addContextSensitivity(Function f, Collection<String> args, State s, Solver.SolverInterface c) { // TODO: explain in the javadoc how this works (note that it's currently a hack that assumes that the parameters are passed unchanged between the functions)
-        // Avoid doing the search if there is nothing to search for.
+    public void addContextSensitivity(Function f, Collection<String> args, State s, Solver.SolverInterface c) { 
+    	// TODO: explain in the javadoc how this works (note that it's currently a hack that assumes that the parameters are passed unchanged between the functions)
         if (args.isEmpty())
             return;
-
         boolean added = false;
         for (String param : f.getParameterNames()) {
             if (args.contains(param)) {
@@ -89,12 +91,12 @@ public class SpecialArgs { // FIXME: need some kind of widening to avoid infinit
                 added = true;
             }
         }
-        if (added) {
+        if (added) { // TODO: explain the interaction with the unevalizer...
         	CallGraph<?, CallContext, ?>  cg = c.getAnalysisLatticeElement().getCallGraph();
-        	Set<NodeAndContext<CallContext>> callers = cg.getSources(f.getEntry(), c.getCurrentContext());
-        	for (NodeAndContext<CallContext> caller : callers) {
-        		NormalForm nf = UnevalTools.rebuildNormalForm(c.getFlowGraph(), (CallNode) caller.getNode(), s, c);
-        		addContextSensitivity(caller.getNode().getBlock().getFunction(), nf.getArgumentsInUse(), s, c);
+        	Set<Pair<NodeAndContext<CallContext>,CallContext>> callers = cg.getSources(f.getEntry(), c.getCurrentContext());
+        	for (Pair<NodeAndContext<CallContext>,CallContext> caller : callers) { // propagate recursively backward through the call graph 
+        		NormalForm nf = UnevalTools.rebuildNormalForm(c.getFlowGraph(), (CallNode) caller.getFirst().getNode(), s, c);
+        		addContextSensitivity(caller.getFirst().getNode().getBlock().getFunction(), nf.getArgumentsInUse(), s, c);
         	}
         }
     }

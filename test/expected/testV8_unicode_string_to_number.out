@@ -1,0 +1,5 @@
+test/v8tests/unicode-string-to-number.js:30:1: [definite] ReferenceError, reading absent variable assertEquals
+test/v8tests/unicode-string-to-number.js:30:14: [definite] Unreachable code
+test/v8tests/unicode-string-to-number.js:34:5: [definite] The variable s is never used
+test/v8tests/unicode-string-to-number.js:35:10: [definite] The variable i is never used
+test/v8tests/unicode-string-to-number.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/unicode-string-to-number.js:30:1]

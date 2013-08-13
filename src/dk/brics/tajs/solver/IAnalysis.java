@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Aarhus University
+ * Copyright 2009-2013 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -66,4 +66,9 @@ public interface IAnalysis<BlockStateType extends IBlockState<BlockStateType, Ca
 	 * Sets the current solver interface.
 	 */
 	public void setSolverInterface(GenericSolver<BlockStateType,CallContextType,CallEdgeType,MonitoringType,AnalysisType>.SolverInterface c);
+	
+	/**
+	 * Constructs a new call edge for the given abstract state.
+	 */
+	public CallEdgeType makeCallEdge(BlockStateType edge_state);
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Aarhus University
+ * Copyright 2009-2013 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,6 @@ import org.apache.log4j.Logger;
 
 import dk.brics.tajs.flowgraph.AbstractNode;
 import dk.brics.tajs.flowgraph.BasicBlock;
-import dk.brics.tajs.flowgraph.Function;
 import dk.brics.tajs.flowgraph.jsnodes.CallNode;
 import dk.brics.tajs.flowgraph.jsnodes.Node;
 import dk.brics.tajs.solver.IBlockTransfer;
@@ -62,9 +61,9 @@ IBlockTransfer<State,CallContext> {
     }
 
 	@Override
-	public void transferReturn(AbstractNode call_node, Function callee,
-			CallContext caller_context, CallContext callee_context) {
-		js_node_transfer.transferReturn(call_node, callee, caller_context, callee_context);
+	public void transferReturn(AbstractNode call_node, BasicBlock callee_entry,
+			CallContext caller_context, CallContext callee_context, CallContext edge_context) {
+		js_node_transfer.transferReturn(call_node, callee_entry, caller_context, callee_context, edge_context);
 	}
 
 	@Override

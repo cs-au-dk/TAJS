@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Aarhus University
+ * Copyright 2009-2013 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,9 +16,9 @@
 
 package dk.brics.tajs.solver;
 
-import dk.brics.tajs.flowgraph.Function;
 import dk.brics.tajs.flowgraph.AbstractNode;
 import dk.brics.tajs.flowgraph.AbstractNodeVisitor;
+import dk.brics.tajs.flowgraph.BasicBlock;
 
 /**
  * Interface for node transfer function classes.
@@ -34,5 +34,6 @@ public interface INodeTransfer<BlockStateType extends IBlockState<BlockStateType
 	/**
 	 * Processes ordinary and exceptional return flow when a new call edge has been added.
 	 */
-	public void transferReturn(AbstractNode call_node, Function callee, CallContextType caller_context, CallContextType callee_context);
+	public void transferReturn(AbstractNode call_node, BasicBlock callee_entry, CallContextType caller_context, 
+			CallContextType callee_context, CallContextType edge_context);
 }

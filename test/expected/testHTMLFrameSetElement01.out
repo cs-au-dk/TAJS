@@ -1,5 +1,0 @@
-test/browser/domlegacy/html/HTMLFrameSetElement01.tidy.html:14: [definite] Reading absent property cols
-test/browser/domlegacy/html/HTMLFrameSetElement01.tidy.html:15: [definite] Reading absent property rows
-test/browser/domlegacy/html/HTMLFrameSetElement01.tidy.html:13: [info] Abstract value: [@HTMLFramesetElement[native] constructor]
-test/browser/domlegacy/html/HTMLFrameSetElement01.tidy.html:14: [info] Abstract value: Undef
-test/browser/domlegacy/html/HTMLFrameSetElement01.tidy.html:15: [info] Abstract value: Undef

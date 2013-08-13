@@ -1,0 +1,15 @@
+test/micro/test180.js:21:13: [maybe] TypeError, accessing property of null/undefined
+test/micro/test180.js:1:1: [maybe] Uncaught exception, constructed at [test/micro/test180.js:21:13]
+test/micro/test180.js:10:13: [maybe] Reading absent property (computed name)
+test/micro/test180.js:19:13: [maybe] Reading absent property (computed name)
+test/micro/test180.js:8:3: [info] Abstract value: UInt
+test/micro/test180.js:9:3: [info] Abstract value: [*Object#node171, @Object#node171]
+test/micro/test180.js:18:3: [info] Abstract value: UInt
+test/micro/test180.js:21:3: [info] Abstract value: Undef|Null|[*Object#node171, @Object#node171]
+test/micro/test180.js:28:3: [info] Abstract value: UInt
+test/micro/test180.js:29:3: [info] Abstract value: UInt
+test/micro/test180.js:35:3: [info] Abstract value: UInt
+test/micro/test180.js:36:3: [info] Abstract value: UInt
+test/micro/test180.js:41:5: [info] Abstract value: UInt
+test/micro/test180.js:58:1: [info] Abstract value: UInt
+test/micro/test180.js:61:1: [info] Abstract object: {0:Undef|Null|[*Object#node171, @Object#node171],1:Undef|Null|[*Object#node171, @Object#node171],2:Undef|Null|[*Object#node171, @Object#node171],length:UInt,[[DefaultArray]]=Undef|Null|[*Object#node171, @Object#node171]|absent,[[Prototype]]=[@Array.prototype[native]]}

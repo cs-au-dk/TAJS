@@ -1,7 +1,0 @@
-test/browser/domlegacy/html/HTMLOListElement01.tidy.html:14: [definite] Reading absent property compact
-test/browser/domlegacy/html/HTMLOListElement01.tidy.html:15: [definite] Reading absent property start
-test/browser/domlegacy/html/HTMLOListElement01.tidy.html:16: [definite] Reading absent property type
-test/browser/domlegacy/html/HTMLOListElement01.tidy.html:13: [info] Abstract value: [@HTMLOListElement[native] constructor]
-test/browser/domlegacy/html/HTMLOListElement01.tidy.html:14: [info] Abstract value: Undef
-test/browser/domlegacy/html/HTMLOListElement01.tidy.html:15: [info] Abstract value: Undef
-test/browser/domlegacy/html/HTMLOListElement01.tidy.html:16: [info] Abstract value: Undef

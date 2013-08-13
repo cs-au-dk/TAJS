@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Aarhus University
+ * Copyright 2009-2013 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -83,6 +83,7 @@ public final class Value implements Undef, Null, Bool, Num, Str {
 	private static int objset_cache_misses;
 
 	private static Value theNone;
+	private static Value theNoneModified;
 	private static Value theUndef;
 	private static Value theNull;
 	private static Value theBoolTrue;
@@ -171,6 +172,7 @@ public final class Value implements Undef, Null, Bool, Num, Str {
 		objset_cache_hits = 0;
 		objset_cache_misses = 0;
 		theNone = reallyMakeNone();
+		theNoneModified = reallyMakeNoneModified();
 		theUndef = reallyMakeUndef(null);
 		theNull = reallyMakeNull(null);
 		theBoolTrue = reallyMakeBool(true);
@@ -251,17 +253,8 @@ public final class Value implements Undef, Null, Bool, Num, Str {
 				throw new AnalysisException("Unexpected polymorphic value");
 		}
 		canonicalizing = true;
-		if (v.object_labels != null) {
-			WeakReference<Set<ObjectLabel>> ref1 = objset_cache.get(v.object_labels);
-			Set<ObjectLabel> so = ref1 != null ? ref1.get() : null;
-			if (so == null) {
-				objset_cache.put(v.object_labels, new WeakReference<>(v.object_labels));
-				objset_cache_misses++;
-			} else {
-				v.object_labels = so;
-				objset_cache_hits++;
-			}
-		}
+		if (v.object_labels != null)
+			v.object_labels = canonicalize(v.object_labels);
 		WeakReference<Value> ref2 = value_cache.get(v);
 		Value cv = ref2 != null ? ref2.get() : null;
 		if (cv == null) {
@@ -272,6 +265,25 @@ public final class Value implements Undef, Null, Bool, Num, Str {
 			value_cache_hits++;
 		canonicalizing = false;
 		return cv;
+	}
+
+	/**
+	 * Put the object label set into canonical form.
+	 * The resulting set is immutable.
+	 */
+	public static Set<ObjectLabel> canonicalize(Set<ObjectLabel> objlabels) { // TODO: use this method for all immutable object label sets (but only for those that are immutable!)
+		Set<ObjectLabel> res;
+		WeakReference<Set<ObjectLabel>> ref1 = objset_cache.get(objlabels);
+		Set<ObjectLabel> so = ref1 != null ? ref1.get() : null;
+		if (so == null) {
+			objset_cache.put(objlabels, new WeakReference<>(objlabels));
+			res = objlabels;
+			objset_cache_misses++;
+		} else {
+			res = so;
+			objset_cache_hits++;
+		}
+		return java.util.Collections.unmodifiableSet(res);
 	}
 
 	/**
@@ -346,44 +358,30 @@ public final class Value implements Undef, Null, Bool, Num, Str {
 	}
 
 	/**
-	 * Constructs a fresh polymorphic value.
-	 * Takes the attributes (including absence and presence) of the given value.
+	 * Constructs a fresh polymorphic value from the attributes (including absence and presence) of this value.
 	 */
-	public static Value makePolymorphic(PropertyReference var, Value v) {
+	public Value makePolymorphic(PropertyReference prop) {
 		Value r = new Value();
-		r.var = var;
-		r.flags = v.flags & (ATTR | ABSENT | PRESENT | EXTENDEDSCOPE);
-		if (v.isMaybePresent())
+		r.var = prop;
+		r.flags |= flags & (ATTR | ABSENT | PRESENT | EXTENDEDSCOPE);
+		if (isMaybePresent())
 			r.flags |= PRESENT;
 		return canonicalize(r);
 	}
 
 	/**
-	 * Constructs a value by trimming this value according to the given value.
+	 * Constructs a fresh non-polymorphic value using the attributes (excluding presence) of the given value.
 	 */
-	public Value trim(Value v) {
-		if (v.isPolymorphic() && !isUnknown()) {
-			Value r = new Value();
-			r.flags = flags & (ATTR | ABSENT | PRESENT | EXTENDEDSCOPE);
-			if (!isPolymorphic() && isMaybePresent())
-				r.flags |= PRESENT;
-			r.var = v.var;
-			return canonicalize(r);
-		} else if (v.isUnknown())
-			return makeUnknown();
-		return this;
+	public Value makeNonPolymorphic() {
+		if (var == null)
+			return this;
+		Value r = new Value(this);
+		r.var = null;
+		r.flags &= ~PRESENT;
+		return canonicalize(r);
 	}
 
-//    /**
-//     * Asserts that the value is not polymorphic.
-//     * @throws AnalysisException if the value is polymorphic.
-//     */
-//	private void checkNotPolymorphic() {
-//		if (isPolymorphic())
-//			throw new AnalysisException("Unexpected polymorphic value!");
-//	}
-
-    /**
+	/**
      * Asserts that the value is not 'unknown'.
      * @throws AnalysisException if the value is 'unknown'.
      */
@@ -414,12 +412,24 @@ public final class Value implements Undef, Null, Bool, Num, Str {
 		return theNone;
 	}
 
+	private static Value reallyMakeNoneModified() {
+		return canonicalize(new Value().joinModified());
+	}
+
+	/**
+	 * Constructs the empty abstract value that is marked as modified.
+	 */
+	public static Value makeNoneModified() {
+		return theNoneModified;
+	}
+
 	/**
 	 * Returns true if this is the abstract value representing no concrete values.
 	 * (If a property value is none, the abstract object represents zero concrete objects.)
+	 * The modified flag is ignored.
 	 */
 	public boolean isNone() {
-		return flags == 0 && num == null && str == null && object_labels == null && var == null;
+		return (flags & ~MODIFIED) == 0 && num == null && str == null && object_labels == null && var == null;
 	}
 
 	/**
@@ -495,7 +505,7 @@ public final class Value implements Undef, Null, Bool, Num, Str {
 			return this;
 		Value r = new Value(this);
 		r.flags &= ~ABSENT;
-		if (r.var != null && (r.flags & (ABSENT | PRESENT)) == 0)
+		if (r.var != null && (r.flags & PRESENT) == 0)
 			r.var = null;
 		return canonicalize(r);
 	}
@@ -535,12 +545,11 @@ public final class Value implements Undef, Null, Bool, Num, Str {
 	}
 
 	/**
-	 * Constructs a value as a copy of this value but marked as maybe absent
-	 * and marks it as maybe modified if the resulting value is different from this value.
+	 * Constructs a value as a copy of this value but marked as maybe absent and maybe modified.
 	 */
-	public Value joinAbsentWithModified() {
+	public Value joinAbsentModified() {
 		checkNotUnknown();
-		if (isMaybeAbsent())
+		if (isMaybeAbsent() && isMaybeModified())
 			return this;
 		Value r = new Value(this);
 		r.flags |= ABSENT | MODIFIED;
@@ -868,7 +877,13 @@ public final class Value implements Undef, Null, Bool, Num, Str {
 	 * Constructs a value as the join of this value and the given value.
 	 */
 	public Value join(Value v) {
-		return join(v, false);
+		if (v == this)
+			return this;
+		Value r = new Value(this);
+		if (r.joinMutable(v)) {
+			return canonicalize(r);
+		}
+		return this;
 	}
 
 	/**
@@ -1009,32 +1024,6 @@ public final class Value implements Undef, Null, Bool, Num, Str {
 	}
 
 	/**
-	 * Constructs a value as the join of this value and the given value
-	 * and marks it as maybe modified if the resulting value is different from this value.
-	 */
-	public Value joinWithModified(Value v) {
-		return join(v, true);
-	}
-
-	/**
-	 * Constructs a value as the join of this value and the given value.
-	 * 
-	 * @param set_modified
-	 *            if true, the resulting value is marked as maybe modified if different from this value.
-	 */
-	public Value join(Value v, boolean set_modified) {
-		if (v == this)
-			return this;
-		Value r = new Value(this);
-		if (r.joinMutable(v)) {
-			if (set_modified)
-				r.flags |= MODIFIED;
-			return canonicalize(r);
-		}
-		return this;
-	}
-
-	/**
 	 * Constructs a value as the join of the given collection of values.
 	 */
 	@SuppressWarnings("null")
@@ -1168,26 +1157,33 @@ public final class Value implements Undef, Null, Bool, Num, Str {
 
 	/**
 	 * Returns a copy of this value where all parts that are also in the given value have been removed.
-	 * It is assumed that this value subsumes v. If one value is unknown or polymorphic, then this value is returned.
 	 * Note that the resulting value may be an over-approximation, for example if removing a single string from AnyString.
 	 */
 	public Value remove(Value v) {
-		if (v.isUnknown() || isUnknown() || isPolymorphic() || v.isPolymorphic() || v.isNone())
-			return this;
-		if (v == this)
+		if (v == this && !isPolymorphicOrUnknown())
 			return makeNone();
+		if (v.isPolymorphicOrUnknown() || isPolymorphicOrUnknown() || v.isNone())
+			return this;
 		Value r = new Value(this);
-		if (r.num != null && v.num != null)
-			r.num = null; // this subsumes v, so the num values must be equal in this case
-		if (r.str != null && v.str != null && (r.flags & STR_PREFIX) == (v.flags & STR_PREFIX) && r.str.equals(v.str))
-			r.str = null; // sound to remove str in this case
 		if (r.object_labels != null && v.object_labels != null) {
 			r.object_labels = newSet(r.object_labels);
 			r.object_labels.removeAll(v.object_labels);
 			if (r.object_labels.isEmpty())
 				r.object_labels = null;
 		}
-		r.flags &= ~v.flags; // works fine since this subsumes v and approximations can be required
+		if (r.num != null && v.num != null && r.num == v.num)
+			r.num = null;
+		if (r.str != null && v.str != null && (r.flags & STR_PREFIX) == (v.flags & STR_PREFIX) && r.str.equals(v.str)) {
+			r.str = null;
+			r.flags &= ~STR_PREFIX;
+		}
+		if (r.str != null && (v.flags & (STR_UINT | STR_OTHERNUM | STR_IDENTIFIERPARTS | STR_OTHER)) == (STR_UINT | STR_OTHERNUM | STR_IDENTIFIERPARTS | STR_OTHER)) {
+			r.str = null;
+			r.flags &= ~STR_PREFIX;
+		}
+		if ((v.flags & (STR_IDENTIFIER | STR_IDENTIFIERPARTS)) != 0)
+			r.flags &= ~STR_IDENTIFIER;
+		r.flags &= ~(v.flags & (BOOL | NUM | UNDEF | NULL | STR_UINT | STR_OTHERNUM | STR_JSON | STR_IDENTIFIERPARTS | STR_OTHER));
 		return canonicalize(r);
 	}
 
@@ -1200,7 +1196,7 @@ public final class Value implements Undef, Null, Bool, Num, Str {
 	 */
 	public void diff(Value old, StringBuilder b) {
 		Value v = new Value(this);
-		v.flags &= ~old.flags;
+		v.flags &= ~old.flags; // FIXME: see Value.remove
 		if (v.object_labels != null && old.object_labels != null) {
 			v.object_labels = newSet(v.object_labels);
 			v.object_labels.removeAll(old.object_labels);
@@ -1250,6 +1246,8 @@ public final class Value implements Undef, Null, Bool, Num, Str {
 				b.append("present");
 			}
 			b.append("])");
+//			if (var_summarized != null)
+//			b.append('<').append(var_summarized).append('>');	
 			any = true;
 		} else {
 			if (isMaybeUndef()) {
@@ -1385,8 +1383,8 @@ public final class Value implements Undef, Null, Bool, Num, Str {
 		}
 		if (!any)
 			b.append("<no value>");
-		// if (isMaybeModified())
-		// b.append("%");
+//		 if (isMaybeModified())
+//		 b.append("%");
 		return b.toString();
 	}
 
@@ -2576,12 +2574,13 @@ public final class Value implements Undef, Null, Bool, Num, Str {
 		if (s == null || isUnknown() || isPolymorphic())
 			return this;
 		Set<ObjectLabel> ss = s.summarize(getObjectLabels());
-		if (ss == getObjectLabels())
+		if (ss.equals(getObjectLabels()))
 			return this;
 		Value r = new Value(this);
 		if (ss.isEmpty())
 			ss = null;
 		r.object_labels = ss;
+		r.flags |= MODIFIED;
 		return canonicalize(r);
 	}
 
@@ -2594,6 +2593,13 @@ public final class Value implements Undef, Null, Bool, Num, Str {
 			return (flags & PRESENT) != 0;
 		else
 			return (flags & PRIMITIVE) != 0 || num != null || str != null || object_labels != null;
+	}
+
+	/**
+	 * Returns true if this value is maybe present in the polymorphic part.
+	 */
+	public boolean isMaybePolymorphicPresent() {
+		return (flags & PRESENT) != 0;
 	}
 
 	/**
@@ -2666,19 +2672,22 @@ public final class Value implements Undef, Null, Bool, Num, Str {
 
 	/**
 	 * Returns a copy of this value where the given object label has been replaced, if present.
-	 * Does not change modified flags.
+	 * Sets the modified flags on values that contain oldlabel.
      *
      * @param oldlabel The object label to replace.
      * @param newlabel The object label to replace oldlabel with.
 	 */
 	public Value replaceObjectLabel(ObjectLabel oldlabel, ObjectLabel newlabel) {
-		if (object_labels == null || oldlabel.equals(newlabel) || !object_labels.contains(oldlabel))
+		if (oldlabel.equals(newlabel))
+			throw new AnalysisException("Equal object labels not expected");
+		if (object_labels == null || !object_labels.contains(oldlabel))
 			return this;
 		Set<ObjectLabel> newobjlabels = newSet(object_labels);
 		newobjlabels.remove(oldlabel);
 		newobjlabels.add(newlabel);
 		Value r = new Value(this);
 		r.object_labels = newobjlabels;
+		r.flags |= MODIFIED;
 		return canonicalize(r);
 	}
 
@@ -2706,6 +2715,18 @@ public final class Value implements Undef, Null, Bool, Num, Str {
 		Value r = new Value(this);
 		r.object_labels = newobjlabels;
 		return canonicalize(r);
+	}
+	
+	/**
+	 * Replaces objects labels in the given values.
+	 * See {@link #replaceObjectLabels(Map)}.
+	 * @return a new set with the resulting values
+	 */
+	public static Set<Value> replaceObjectLabels(Map<ObjectLabel, ObjectLabel> m, Set<Value> values) {
+		Set<Value> res = newSet();
+		for (Value v : values)
+			res.add(v.replaceObjectLabels(m));
+		return res;
 	}
 
 	/**
@@ -2742,5 +2763,73 @@ public final class Value implements Undef, Null, Bool, Num, Str {
 		if (!isNotNull() || isMaybeObject())
 			c++;
 		return c;
+	}
+
+	/**
+	 * Checks whether this value is subsumed by that value.
+	 */
+    public boolean lessEqual(Value that) {
+        return (this.join(that)).equals(that); // FIXME: make more efficient check
+    }
+    
+//	/**
+//	 * Checks whether this value is subsumed by that value, ignoring the modified flag.
+//	 */
+//    public boolean lessEqualIgnoreModified(Value that) {
+//        return (this.restrictToNotModified().join(that)).equals(that); // FIXME: make more efficient check
+//    }
+    
+//	/**
+//	 * Checks whether this value is subsumed by that value, ignoring object labels and the modified flag.
+//	 */
+//    public boolean lessEqualPrimitivesIgnoreModified(Value that) {
+//        return (this.restrictToNotObject().restrictToNotModified().join(that)).equals(that); // FIXME: make more efficient check
+//    }
+    
+	/**
+	 * Checks whether this value is subsumed by that value, considering only attributes.
+	 */
+    public boolean lessEqualAttributes(Value that) {
+    	int attr = flags & (ATTR | ABSENT | PRESENT);
+    	if ((flags & PRIMITIVE) != 0 || num != null || str != null || object_labels != null)
+    		attr |= PRESENT;
+    	int that_attr = that.flags & (ATTR | ABSENT | PRESENT);
+    	if ((that.flags & PRIMITIVE) != 0 || that.num != null || that.str != null || that.object_labels != null)
+    		that_attr |= PRESENT;
+    	return (attr | that_attr) == that_attr;
+    }
+    
+	/**
+	 * Constructs a value as a copy of this value but for reading attributes.
+	 */
+	public Value restrictToAttributes() {
+		Value r = new Value(this);
+		r.num = null;
+		r.str = null;
+		r.var = null;
+		r.flags &= ATTR | ABSENT | UNKNOWN;
+		if (!isUnknown() && isMaybePresent())
+			r.flags |= UNDEF; // just a dummy value, to satisfy the representation invariant for PRESENT
+		return canonicalize(r);
+	}
+	
+	/**
+	 * Constructs a value as a copy of this value but with all attributes set to bottom.
+	 */
+	public Value restrictToNonAttributes() {
+		Value r = new Value(this);
+		r.flags &= ~(PROPERTYDATA | ABSENT |  PRESENT);
+		return canonicalize(r);
+	}
+	/**
+	 * Constructs a value as a copy of the given value but with the attributes from this value.
+	 */
+	public Value replaceValue(Value v) {
+		Value r = new Value(v);
+		r.flags &= ~(PROPERTYDATA | ABSENT |  PRESENT);
+		r.flags |= flags & (PROPERTYDATA | ABSENT);
+		if (r.var != null && (flags & PRESENT) != 0)
+			r.flags |= PRESENT;
+		return canonicalize(r);
 	}
 }

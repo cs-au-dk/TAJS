@@ -19,7 +19,7 @@ public class TestAnderson {
 	}
 
 	@Test
-	public void testAnderson1() throws Exception
+	public void anderson_1() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
@@ -29,7 +29,7 @@ public class TestAnderson {
 	}
 
 	@Test
-	public void testAnderson2() throws Exception
+	public void anderson_2() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
@@ -39,7 +39,7 @@ public class TestAnderson {
 	}
 
 	@Test
-	public void testAnderson3() throws Exception
+	public void anderson_3() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
@@ -49,7 +49,7 @@ public class TestAnderson {
 	}
 
 	@Test
-	public void testAnderson4() throws Exception
+	public void anderson_4() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
@@ -59,7 +59,7 @@ public class TestAnderson {
 	}
 
 	@Test
-	public void testAnderson5() throws Exception
+	public void anderson_5() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
@@ -69,7 +69,7 @@ public class TestAnderson {
 	}
 
 	@Test
-	public void testAnderson6() throws Exception
+	public void anderson_6() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
@@ -79,7 +79,7 @@ public class TestAnderson {
 	}
 
 	@Test
-	public void testAnderson7() throws Exception
+	public void anderson_7() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
@@ -89,7 +89,7 @@ public class TestAnderson {
 	}
 
 	@Test
-	public void testAnderson8() throws Exception
+	public void anderson_8() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
@@ -99,7 +99,7 @@ public class TestAnderson {
 	}
 
 	@Test
-	public void testAnderson9() throws Exception
+	public void anderson_9() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
@@ -109,7 +109,7 @@ public class TestAnderson {
 	}
 
 	@Test
-	public void testAnderson10() throws Exception
+	public void anderson_10() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
@@ -119,7 +119,7 @@ public class TestAnderson {
 	}
 
 	@Test
-	public void testAnderson11() throws Exception
+	public void anderson_11() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
@@ -129,7 +129,7 @@ public class TestAnderson {
 	}
 
 	@Test
-	public void testAnderson12() throws Exception
+	public void anderson_12() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
@@ -139,7 +139,7 @@ public class TestAnderson {
 	}
 
 	@Test
-	public void testAnderson13() throws Exception
+	public void anderson_13() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
@@ -149,7 +149,7 @@ public class TestAnderson {
 	}
 
 	@Test
-	public void testAnderson14() throws Exception
+	public void anderson_14() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
@@ -159,7 +159,7 @@ public class TestAnderson {
 	}
 
 	@Test
-	public void testAnderson15() throws Exception
+	public void anderson_15() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
@@ -169,7 +169,7 @@ public class TestAnderson {
 	}
 
 	@Test
-	public void testAnderson16() throws Exception
+	public void anderson_16() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
@@ -179,7 +179,7 @@ public class TestAnderson {
 	}
 
 	@Test
-	public void testAnderson17() throws Exception
+	public void anderson_17() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
@@ -189,7 +189,7 @@ public class TestAnderson {
 	}
 
 	@Test
-	public void testAnderson18() throws Exception
+	public void anderson_18() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
@@ -199,7 +199,7 @@ public class TestAnderson {
 	}
 
 	@Test
-	public void testAnderson19() throws Exception
+	public void anderson_19() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
@@ -209,7 +209,7 @@ public class TestAnderson {
 	}
 
 	@Test
-	public void testAnderson20() throws Exception
+	public void anderson_20() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
@@ -219,7 +219,7 @@ public class TestAnderson {
 	}
 
 	@Test
-	public void testAnderson21() throws Exception
+	public void anderson_21() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
@@ -229,7 +229,7 @@ public class TestAnderson {
 	}
 
 	@Test
-	public void testAnderson22() throws Exception
+	public void anderson_22() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
@@ -239,7 +239,7 @@ public class TestAnderson {
 	}
 
 	@Test
-	public void testAnderson23() throws Exception
+	public void anderson_23() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
@@ -249,7 +249,7 @@ public class TestAnderson {
 	}
 
 	@Test
-	public void testAnderson24() throws Exception
+	public void anderson_24() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
@@ -259,7 +259,7 @@ public class TestAnderson {
 	}
 
 	@Test
-	public void testAnderson25() throws Exception
+	public void anderson_25() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
@@ -269,7 +269,7 @@ public class TestAnderson {
 	}
 
 	@Test
-	public void testAnderson26() throws Exception
+	public void anderson_26() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
@@ -279,7 +279,7 @@ public class TestAnderson {
 	}
 
 	@Test
-	public void testAnderson27() throws Exception
+	public void anderson_27() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
@@ -289,7 +289,7 @@ public class TestAnderson {
 	}
 
 	@Test
-	public void testAnderson28() throws Exception
+	public void anderson_28() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();

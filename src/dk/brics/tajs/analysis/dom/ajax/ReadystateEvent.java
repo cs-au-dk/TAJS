@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Aarhus University
+ * Copyright 2009-2013 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -56,7 +56,7 @@ public class ReadystateEvent {
         /*
          *  ResponseText + ResponseXML (TODO)
          */
-//FIXME:        createDOMProperty(s, INSTANCES, "responseText", Value.makeJSONStr(), DOMSpec.LEVEL_0);
+//TODO:        createDOMProperty(s, INSTANCES, "responseText", Value.makeJSONStr(), DOMSpec.LEVEL_0);
 
 
         // DOM Registry

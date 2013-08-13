@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Aarhus University
+ * Copyright 2009-2013 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,8 +16,12 @@
 
 package dk.brics.tajs.htmlparser;
 
+/**
+ * Auxiliary methods for recognizing HTML attribute names related to event handlers.
+ */
 public class DOMEventHelpers {
-    /**
+
+	/**
      * Returns true iff the specified attribute is an event attribute.
      */
     public static boolean isEventAttribute(String attribute) {

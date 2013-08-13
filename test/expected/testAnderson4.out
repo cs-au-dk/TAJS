@@ -1,2 +1,0 @@
-test/anderson/anderson4.js:5:2: [definite] Dead assignment, property n is never read
-test/anderson/anderson4.js:1:1: [definite] The variable a is never used

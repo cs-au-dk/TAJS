@@ -1,0 +1,4 @@
+test/v8tests/regexp-multiline.js:33:1: [definite] ReferenceError, reading absent variable assertTrue
+test/v8tests/regexp-multiline.js:33:12: [definite] Unreachable code
+test/v8tests/regexp-multiline.js:82:1: [definite] Unreachable function check_case
+test/v8tests/regexp-multiline.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/regexp-multiline.js:33:1]

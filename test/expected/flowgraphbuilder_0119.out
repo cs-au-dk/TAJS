@@ -1,0 +1,70 @@
+fg2: <main> function()
+  block 0: [entry]
+    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0119.js:1:1)
+    node 1: vardecl['glob'] (test/flowgraphbuilder/flowgraph_builder0119.js:1:5)
+    ->[block 1]
+  block 1:
+    node 2: constant[42.0,v2] (test/flowgraphbuilder/flowgraph_builder0119.js:1:12)
+    node 3: write-variable[v2,'glob']* (test/flowgraphbuilder/flowgraph_builder0119.js:1:1)
+    ->[block 2]
+  block 2:
+    node 4: read-variable['Math',v5,-] (test/flowgraphbuilder/flowgraph_builder0119.js:4:6)
+    node 5: read-property[v5,'random',-] (test/flowgraphbuilder/flowgraph_builder0119.js:4:6)
+    node 6: <variable-non-null-undef>['Math'] (test/flowgraphbuilder/flowgraph_builder0119.js:4:6)
+    ->[block 3] ~> [ block 7]
+  block 3:
+    node 7: call[v5,'random',v3] (test/flowgraphbuilder/flowgraph_builder0119.js:4:6)
+    ->[block 4] ~> [ block 7]
+  block 4:
+    node 8: if[v3](true-block:5,false-block:6) (test/flowgraphbuilder/flowgraph_builder0119.js:4:2)
+    ->[block 5,block 6] ~> [ block 7]
+  block 5:
+    node 9: constant[30.0,v6] (test/flowgraphbuilder/flowgraph_builder0119.js:5:12)
+    node 10: throw[v6]* (test/flowgraphbuilder/flowgraph_builder0119.js:5:6)
+    ->[block 6] ~> [ block 7]
+  block 6:
+    node 11: new[v5] (test/flowgraphbuilder/flowgraph_builder0119.js:9:11)
+    node 12: constant["yes",v6] (test/flowgraphbuilder/flowgraph_builder0119.js:9:16)
+    node 13: write-property[v5,'ex',v6] (test/flowgraphbuilder/flowgraph_builder0119.js:9:11)
+    node 14: throw[v5]* (test/flowgraphbuilder/flowgraph_builder0119.js:9:5)
+    ->[block 10] ~> [ block 11]
+  block 7:
+    node 15: catch[ee,v3] (test/flowgraphbuilder/flowgraph_builder0119.js:6:7)
+    node 16: begin-with[v3] (test/flowgraphbuilder/flowgraph_builder0119.js:6:7)
+    ->[block 8] ~> [ block 11]
+  block 8:
+    node 17: constant["",v6] (test/flowgraphbuilder/flowgraph_builder0119.js:7:8)
+    node 18: read-variable['ee',v7,v4] (test/flowgraphbuilder/flowgraph_builder0119.js:7:13)
+    node 19: +[v6,v7,v5] (test/flowgraphbuilder/flowgraph_builder0119.js:7:8)
+    node 20: throw[v5]* (test/flowgraphbuilder/flowgraph_builder0119.js:7:2)
+    node 21: end-with (test/flowgraphbuilder/flowgraph_builder0119.js:6:7)
+    ->[block 6] ~> [ block 9]
+  block 9:
+    node 22: end-with (test/flowgraphbuilder/flowgraph_builder0119.js:6:7)
+    ->[block 11]
+  block 10:
+    node 23: read-variable['dumpValue',v6,v5] (test/flowgraphbuilder/flowgraph_builder0119.js:13:1)
+    node 24: read-variable['glob',v7,-] (test/flowgraphbuilder/flowgraph_builder0119.js:13:11)
+    ->[block 14]
+  block 11:
+    node 25: catch[e,v3] (test/flowgraphbuilder/flowgraph_builder0119.js:10:3)
+    node 26: begin-with[v3] (test/flowgraphbuilder/flowgraph_builder0119.js:10:3)
+    ->[block 12]
+  block 12:
+    node 27: end-with (test/flowgraphbuilder/flowgraph_builder0119.js:10:3)
+    ->[block 10] ~> [ block 13]
+  block 13:
+    node 28: end-with (test/flowgraphbuilder/flowgraph_builder0119.js:10:3)
+    ->[block 16]
+  block 14:
+    node 29: call[v5,v6,v7,-]* (test/flowgraphbuilder/flowgraph_builder0119.js:13:1)
+    ->[block 15]
+  block 15: [exit-ordinary]
+    node 30: return[v1] (test/flowgraphbuilder/flowgraph_builder0119.js:1:1)
+    ->[]
+  block 16: [exit-exceptional]
+    node 31: exceptional-return (test/flowgraphbuilder/flowgraph_builder0119.js:1:1)
+    ->[]
+
+test/flowgraphbuilder/flowgraph_builder0119.js:9:11: [definite] Dead assignment, property ex is never read
+test/flowgraphbuilder/flowgraph_builder0119.js:13:1: [info] Abstract value: 42.0

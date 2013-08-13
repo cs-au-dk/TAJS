@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Aarhus University
+ * Copyright 2009-2013 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -169,7 +169,7 @@ public class BasicBlock {
     }
 
  	/**
-     * Replaces the set of nodes in a basic block.
+     * Replaces the set of nodes in the basic block.
      */
     public void replaceNodes(List<AbstractNode> ns) {
         nodes = ns;
@@ -183,7 +183,7 @@ public class BasicBlock {
 	}
 
     /**
-     * Returns true if there are no nodes in the block.
+     * Returns true if there are no nodes in the basic block.
      */
     public boolean isEmpty() {
         return nodes.isEmpty();

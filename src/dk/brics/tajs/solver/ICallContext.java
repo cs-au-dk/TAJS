@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Aarhus University
+ * Copyright 2009-2013 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -43,7 +43,7 @@ public interface ICallContext<CallContextType extends ICallContext<?>> {
 	public String toString();
 
     /**
-     * Returns the entry of the nearest enclosing basic block and context.
+     * Returns the entry of the function or for-in body.
      */
-    public BlockAndContext<CallContextType> toEntry(BasicBlock b); // XXX: correct javadoc?
+    public BasicBlock getEntry();
 }

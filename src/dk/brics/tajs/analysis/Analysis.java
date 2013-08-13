@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Aarhus University
+ * Copyright 2009-2013 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,6 +16,12 @@
 
 package dk.brics.tajs.analysis;
 
+import static dk.brics.tajs.util.Collections.newMap;
+
+import java.util.List;
+import java.util.Map;
+
+import dk.brics.tajs.flowgraph.AbstractNode;
 import dk.brics.tajs.flowgraph.FlowGraph;
 import dk.brics.tajs.lattice.AnalysisLatticeElement;
 import dk.brics.tajs.lattice.CallEdge;
@@ -24,6 +30,7 @@ import dk.brics.tajs.solver.IAnalysis;
 import dk.brics.tajs.solver.IBlockTransfer;
 import dk.brics.tajs.solver.IEdgeTransfer;
 import dk.brics.tajs.solver.IWorkListStrategy;
+import dk.brics.tajs.solver.NodeAndContext;
 import dk.brics.tajs.solver.SolverSynchronizer;
 
 /**
@@ -45,7 +52,13 @@ public final class Analysis implements IAnalysis<State,CallContext,CallEdge<Stat
 	
 	private EvalCache eval_cache;
 	
-	private SpecialArgs special_args;
+	private SpecialArgs special_args; // TODO: move this into AnalysisLatticeElement ?
+
+	/**
+	 * For-in specializations.
+	 * For each BeginForInNode and non-specialized call context, gives a list of specialized contexts.
+	 */
+	private Map<NodeAndContext<CallContext>,List<CallContext>> for_in_specializations;  // TODO: move this into AnalysisLatticeElement ?
 
 	/**
 	 * Constructs a new analysis object.
@@ -57,6 +70,7 @@ public final class Analysis implements IAnalysis<State,CallContext,CallEdge<Stat
 		monitoring = new Monitoring<>();
 		eval_cache = new EvalCache();
 		special_args = new SpecialArgs();
+		for_in_specializations = newMap();
 		solver = new Solver(this, sync);
 	}
 	
@@ -120,5 +134,18 @@ public final class Analysis implements IAnalysis<State,CallContext,CallEdge<Stat
 	 */
 	public SpecialArgs getSpecialArgs() {
 		return special_args;
+	}
+
+	@Override
+	public CallEdge<State> makeCallEdge(State edge_state) {
+		return new CallEdge<>(edge_state);
+	}
+	
+	public void setForInSpecializations(AbstractNode begin, CallContext nonspec, List<CallContext> spec) {
+		for_in_specializations.put(new NodeAndContext<>(begin, nonspec), spec);
+	}
+	
+	public List<CallContext> getForInSpecializations(AbstractNode begin, CallContext nonspec) {
+		return for_in_specializations.get(new NodeAndContext<>(begin, nonspec));
 	}
 }

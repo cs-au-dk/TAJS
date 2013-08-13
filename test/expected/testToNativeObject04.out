@@ -1,5 +1,0 @@
-test/browser/domlegacy/toNativeObject04.tidy.html:19: [definite] Reading absent property add
-test/browser/domlegacy/toNativeObject04.tidy.html:19: [definite] TypeError, call to non-function
-test/browser/domlegacy/toNativeObject04.tidy.html: [definite] Unreachable code
-test/browser/domlegacy/toNativeObject04.tidy.html:8: [definite] Unreachable code
-test/browser/domlegacy/toNativeObject04.tidy.html:8: [definite] Uncaught exception, constructed at [test/dom/toNativeObject04.tidy.html:19]

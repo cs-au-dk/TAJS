@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Aarhus University
+ * Copyright 2009-2013 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -51,7 +51,7 @@ public class HTMLElement {
         // Multiplied Object
         s.newObject(ELEMENT);
         s.writeInternalPrototype(ELEMENT, Value.makeObject(ELEMENT_PROTOTYPE));
-        s.writePropertyWithAttributes(ELEMENT, "length", Value.makeNum(0).setAttributes(true, true, true)); // FIXME: ?
+        s.writePropertyWithAttributes(ELEMENT, "length", Value.makeNum(0).setAttributes(true, true, true)); // TODO: ?
         s.writePropertyWithAttributes(ELEMENT, "prototype", Value.makeObject(ELEMENT_PROTOTYPE).setAttributes(true, true, true));
         s.writeProperty(DOMWindow.WINDOW, "HTMLElement", Value.makeObject(ELEMENT));
 

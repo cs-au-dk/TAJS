@@ -7,7 +7,8 @@ var Button = {
 var elem = document.createElement("li"); 
 elem.innerHTML = "Click me!"; 
 elem.onclick = Button.click; 
-document.getElementById("results").appendChild(elem); 
+document.getElementById("results").appendChild(elem);
+dumpValue(document.getElementById("results"))
  
 elem.onclick(); 
 assert( elem.clicked );

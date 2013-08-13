@@ -1,0 +1,11 @@
+test/v8tests/substr.js:29:1: [definite] ReferenceError, reading absent variable assertEquals
+test/v8tests/substr.js:28:5: [definite] The variable s is never used
+test/v8tests/substr.js:29:14: [definite] Unreachable code
+test/v8tests/substr.js:36:37: [definite] Unreachable function
+test/v8tests/substr.js:37:38: [definite] Unreachable function
+test/v8tests/substr.js:39:5: [definite] The variable s1 is never used
+test/v8tests/substr.js:44:38: [definite] Unreachable function
+test/v8tests/substr.js:45:39: [definite] Unreachable function
+test/v8tests/substr.js:47:10: [definite] The variable i is never used
+test/v8tests/substr.js:48:12: [definite] The variable j is never used
+test/v8tests/substr.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/substr.js:29:1]

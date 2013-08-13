@@ -1,0 +1,6 @@
+test/v8tests/negate-zero.js:38:1: [definite] ReferenceError, reading absent variable assertTrue
+test/v8tests/negate-zero.js:28:1: [definite] Unreachable function IsNegativeZero
+test/v8tests/negate-zero.js:35:5: [definite] The variable pz is never used
+test/v8tests/negate-zero.js:36:5: [definite] The variable nz is never used
+test/v8tests/negate-zero.js:38:12: [definite] Unreachable code
+test/v8tests/negate-zero.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/negate-zero.js:38:1]

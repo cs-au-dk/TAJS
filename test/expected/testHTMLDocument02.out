@@ -1,9 +1,0 @@
-test/browser/domlegacy/html/HTMLDocument02.tidy.html:13: [definite] Reading absent property open
-test/browser/domlegacy/html/HTMLDocument02.tidy.html:13: [definite] TypeError, call to non-function
-test/browser/domlegacy/html/HTMLDocument02.tidy.html: [definite] Unreachable code
-test/browser/domlegacy/html/HTMLDocument02.tidy.html:8: [definite] Unreachable code
-test/browser/domlegacy/html/HTMLDocument02.tidy.html:14: [definite] Unreachable code
-test/browser/domlegacy/html/HTMLDocument02.tidy.html:15: [definite] Unreachable code
-test/browser/domlegacy/html/HTMLDocument02.tidy.html:16: [definite] Unreachable code
-test/browser/domlegacy/html/HTMLDocument02.tidy.html:17: [definite] Unreachable code
-test/browser/domlegacy/html/HTMLDocument02.tidy.html:8: [definite] Uncaught exception, constructed at [test/dom/html/HTMLDocument02.tidy.html:13]

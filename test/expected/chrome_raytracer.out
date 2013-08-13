@@ -1,0 +1,1460 @@
+Unevalizer: Starting on: "refresh()"
+Unevalizer: Valid program
+Unevalizer: No name capture
+Unevalizer: Starting on: "tick()"
+Unevalizer: Valid program
+Unevalizer: No name capture
+Unevalizer: Starting on: "refresh()"
+Unevalizer: Valid program
+Unevalizer: No name capture
+Unevalizer: Starting on: "tick()"
+Unevalizer: Valid program
+Unevalizer: No name capture
+Unevalizer: Starting on: "tick()"
+Unevalizer: Valid program
+Unevalizer: No name capture
+Unevalizer: Starting on: "refresh();"
+Unevalizer: Valid program
+Unevalizer: No name capture
+Unevalizer: Starting on: "tick()"
+Unevalizer: Valid program
+Unevalizer: No name capture
+Unevalizer: Starting on: "refresh();"
+Unevalizer: Valid program
+Unevalizer: No name capture
+Unevalizer: Starting on: "tick()"
+Unevalizer: Valid program
+Unevalizer: No name capture
+Unevalizer: Starting on: "refresh();"
+Unevalizer: Valid program
+Unevalizer: No name capture
+Unevalizer: Starting on: "refresh();"
+Unevalizer: Valid program
+Unevalizer: No name capture
+Unevalizer: Starting on: "refresh()"
+Unevalizer: Valid program
+Unevalizer: No name capture
+Unevalizer: Starting on: "tick()"
+Unevalizer: Valid program
+Unevalizer: No name capture
+Unevalizer: Starting on: "refresh()"
+Unevalizer: Valid program
+Unevalizer: No name capture
+Unevalizer: Starting on: "tick()"
+Unevalizer: Valid program
+Unevalizer: No name capture
+Unevalizer: Starting on: "tick()"
+Unevalizer: Valid program
+Unevalizer: No name capture
+Unevalizer: Starting on: "refresh();"
+Unevalizer: Valid program
+Unevalizer: No name capture
+test/chromeexperiments/raytracer.tidy.html:646:19: [definite] TypeError, accessing property of null/undefined
+test/chromeexperiments/raytracer.tidy.html:685:26: [definite] TypeError, accessing property of null/undefined
+test/chromeexperiments/raytracer.tidy.html:688:27: [definite] TypeError, accessing property of null/undefined
+test/chromeexperiments/raytracer.tidy.html:691:27: [definite] TypeError, accessing property of null/undefined
+test/chromeexperiments/raytracer.tidy.html:694:27: [definite] TypeError, accessing property of null/undefined
+test/chromeexperiments/raytracer.tidy.html:645:21: [definite] Property is null/undefined
+test/chromeexperiments/raytracer.tidy.html:646:19: [definite] Variable p is null/undefined
+test/chromeexperiments/raytracer.tidy.html:680:21: [definite] Property is null/undefined
+test/chromeexperiments/raytracer.tidy.html:685:26: [definite] Variable p is null/undefined
+test/chromeexperiments/raytracer.tidy.html:688:27: [definite] Variable p is null/undefined
+test/chromeexperiments/raytracer.tidy.html:691:27: [definite] Variable p is null/undefined
+test/chromeexperiments/raytracer.tidy.html:694:27: [definite] Variable p is null/undefined
+test/chromeexperiments/raytracer.tidy.html:806:31: [definite] The conditional expression is always true
+test/chromeexperiments/raytracer.tidy.html:807:32: [definite] The conditional expression is always true
+test/chromeexperiments/raytracer.tidy.html:955:25: [definite] The conditional expression is always true
+test/chromeexperiments/raytracer.tidy.html:1142:17: [definite] The conditional expression is always false
+test/chromeexperiments/raytracer.tidy.html:1240:25: [definite] The conditional expression is always false
+test/chromeexperiments/raytracer.tidy.html:107:25: [definite] Dead assignment, property ir is never read
+test/chromeexperiments/raytracer.tidy.html:108:25: [definite] Dead assignment, property c is never read
+test/chromeexperiments/raytracer.tidy.html:114:39: [definite] Dead assignment, property getuv is never read
+test/chromeexperiments/raytracer.tidy.html:114:39: [definite] Dead assignment, property obj is never read
+test/chromeexperiments/raytracer.tidy.html:114:39: [definite] Dead assignment, property parent is never read
+test/chromeexperiments/raytracer.tidy.html:114:39: [definite] Dead assignment, property setbitmap is never read
+test/chromeexperiments/raytracer.tidy.html:114:39: [definite] Dead assignment, property setuv is never read
+test/chromeexperiments/raytracer.tidy.html:125:25: [definite] Dead assignment, property ocr is never read
+test/chromeexperiments/raytracer.tidy.html:125:49: [definite] Dead assignment, property ocg is never read
+test/chromeexperiments/raytracer.tidy.html:125:73: [definite] Dead assignment, property ocb is never read
+test/chromeexperiments/raytracer.tidy.html:262:25: [definite] Dead assignment, property 0 is never read
+test/chromeexperiments/raytracer.tidy.html:271:25: [definite] Dead assignment, property ir2 is never read
+test/chromeexperiments/raytracer.tidy.html:277:25: [definite] Dead assignment, property ilen2 is never read
+test/chromeexperiments/raytracer.tidy.html:278:25: [definite] Dead assignment, property c is never read
+test/chromeexperiments/raytracer.tidy.html:279:25: [definite] Dead assignment, property len is never read
+test/chromeexperiments/raytracer.tidy.html:283:39: [definite] Dead assignment, property obj is never read
+test/chromeexperiments/raytracer.tidy.html:283:39: [definite] Dead assignment, property parent is never read
+test/chromeexperiments/raytracer.tidy.html:283:39: [definite] Dead assignment, property setbitmap is never read
+test/chromeexperiments/raytracer.tidy.html:292:25: [definite] Dead assignment, property ocr is never read
+test/chromeexperiments/raytracer.tidy.html:292:49: [definite] Dead assignment, property ocg is never read
+test/chromeexperiments/raytracer.tidy.html:292:73: [definite] Dead assignment, property ocb is never read
+test/chromeexperiments/raytracer.tidy.html:758:34: [definite] Reading absent property bmp
+test/chromeexperiments/raytracer.tidy.html:952:31: [definite] Reading absent property value
+test/chromeexperiments/raytracer.tidy.html:953:31: [definite] Reading absent property value
+test/chromeexperiments/raytracer.tidy.html:1293:25: [definite] Dead assignment, property value is never read
+test/chromeexperiments/raytracer.tidy.html:1294:25: [definite] Dead assignment, property value is never read
+test/chromeexperiments/raytracer.tidy.html:17:9: [definite] Unreachable function checked
+test/chromeexperiments/raytracer.tidy.html:20:13: [definite] The variable fovy is never used
+test/chromeexperiments/raytracer.tidy.html:124:31: [definite] The variable v is never used
+test/chromeexperiments/raytracer.tidy.html:124:33: [definite] The variable wx is never used
+test/chromeexperiments/raytracer.tidy.html:124:36: [definite] The variable wy is never used
+test/chromeexperiments/raytracer.tidy.html:124:39: [definite] The variable wz is never used
+test/chromeexperiments/raytracer.tidy.html:150:39: [definite] The variable r is never used
+test/chromeexperiments/raytracer.tidy.html:286:99: [definite] Unreachable function
+test/chromeexperiments/raytracer.tidy.html:301:29: [definite] Unreachable function
+test/chromeexperiments/raytracer.tidy.html:414:9: [definite] Unreachable function plane
+test/chromeexperiments/raytracer.tidy.html:432:29: [definite] Unreachable function
+test/chromeexperiments/raytracer.tidy.html:438:27: [definite] Unreachable function
+test/chromeexperiments/raytracer.tidy.html:444:31: [definite] Unreachable function
+test/chromeexperiments/raytracer.tidy.html:445:29: [definite] Unreachable function
+test/chromeexperiments/raytracer.tidy.html:450:27: [definite] Unreachable function
+test/chromeexperiments/raytracer.tidy.html:464:17: [definite] Unreachable function pl_intersect
+test/chromeexperiments/raytracer.tidy.html:484:17: [definite] Unreachable function pl_hit
+test/chromeexperiments/raytracer.tidy.html:495:17: [definite] Unreachable function pl_li_intersect
+test/chromeexperiments/raytracer.tidy.html:625:9: [definite] Unreachable function tilebitmap
+test/chromeexperiments/raytracer.tidy.html:639:33: [definite] The variable f is never used
+test/chromeexperiments/raytracer.tidy.html:639:35: [definite] The variable r is never used
+test/chromeexperiments/raytracer.tidy.html:639:37: [definite] The variable g is never used
+test/chromeexperiments/raytracer.tidy.html:639:39: [definite] The variable b is never used
+test/chromeexperiments/raytracer.tidy.html:646:24: [definite] Unreachable code
+test/chromeexperiments/raytracer.tidy.html:662:9: [definite] Unreachable function bitmap
+test/chromeexperiments/raytracer.tidy.html:685:31: [definite] Unreachable code
+test/chromeexperiments/raytracer.tidy.html:688:32: [definite] Unreachable code
+test/chromeexperiments/raytracer.tidy.html:691:32: [definite] Unreachable code
+test/chromeexperiments/raytracer.tidy.html:694:32: [definite] Unreachable code
+test/chromeexperiments/raytracer.tidy.html:701:9: [definite] Unreachable function envmap
+test/chromeexperiments/raytracer.tidy.html:720:25: [definite] The variable i is never used
+test/chromeexperiments/raytracer.tidy.html:766:9: [definite] Unreachable function gotbitmap
+test/chromeexperiments/raytracer.tidy.html:803:21: [definite] The variable s is never used
+test/chromeexperiments/raytracer.tidy.html:803:23: [definite] The variable p is never used
+test/chromeexperiments/raytracer.tidy.html:803:25: [definite] The variable d is never used
+test/chromeexperiments/raytracer.tidy.html:905:51: [definite] The variable tx is never used
+test/chromeexperiments/raytracer.tidy.html:905:54: [definite] The variable ty is never used
+test/chromeexperiments/raytracer.tidy.html:905:57: [definite] The variable tz is never used
+test/chromeexperiments/raytracer.tidy.html:1035:36: [definite] Unreachable code
+test/chromeexperiments/raytracer.tidy.html:1045:23: [definite] The variable j is never used
+test/chromeexperiments/raytracer.tidy.html:1141:21: [definite] The variable i is never used
+test/chromeexperiments/raytracer.tidy.html:1175:26: [definite] The variable lr is never used
+test/chromeexperiments/raytracer.tidy.html:1175:31: [definite] The variable lg is never used
+test/chromeexperiments/raytracer.tidy.html:1175:36: [definite] The variable lb is never used
+test/chromeexperiments/raytracer.tidy.html:1175:41: [definite] The variable R is never used
+test/chromeexperiments/raytracer.tidy.html:1175:43: [definite] The variable G is never used
+test/chromeexperiments/raytracer.tidy.html:1175:45: [definite] The variable B is never used
+test/chromeexperiments/raytracer.tidy.html:1175:47: [definite] The variable d is never used
+test/chromeexperiments/raytracer.tidy.html:1175:49: [definite] The variable xa is never used
+test/chromeexperiments/raytracer.tidy.html:1175:52: [definite] The variable ya is never used
+test/chromeexperiments/raytracer.tidy.html:1253:9: [definite] Unreachable function hun
+test/chromeexperiments/raytracer.tidy.html:1331:2: [definite] The variable event is never used
+test/chromeexperiments/raytracer.tidy.html:1346:2: [definite] The variable event is never used
+test/chromeexperiments/raytracer.tidy.html:1357:2: [definite] The variable event is never used
+test/chromeexperiments/raytracer.tidy.html:1372:2: [definite] The variable event is never used
+test/chromeexperiments/raytracer.tidy.html:1374:2: [definite] The variable event is never used
+test/chromeexperiments/raytracer.tidy.html:102:17: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/raytracer.tidy.html:161:17: [maybe] TypeError, call to non-function
+test/chromeexperiments/raytracer.tidy.html:510:17: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/raytracer.tidy.html:542:17: [maybe] TypeError, call to non-function
+test/chromeexperiments/raytracer.tidy.html:592:17: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/raytracer.tidy.html:640:17: [maybe] TypeError, call to non-function
+test/chromeexperiments/raytracer.tidy.html:679:17: [maybe] TypeError, call to non-function
+test/chromeexperiments/raytracer.tidy.html:713:17: [maybe] TypeError, call to non-function
+test/chromeexperiments/raytracer.tidy.html:721:17: [maybe] TypeError, call to non-function
+test/chromeexperiments/raytracer.tidy.html:758:34: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/raytracer.tidy.html:817:17: [maybe] TypeError, call to non-function
+test/chromeexperiments/raytracer.tidy.html:817:17: [maybe] TypeError, call to non-function
+test/chromeexperiments/raytracer.tidy.html:819:17: [maybe] TypeError, call to non-function
+test/chromeexperiments/raytracer.tidy.html:826:17: [maybe] TypeError, call to non-function
+test/chromeexperiments/raytracer.tidy.html:826:17: [maybe] TypeError, call to non-function
+test/chromeexperiments/raytracer.tidy.html:828:17: [maybe] TypeError, call to non-function
+test/chromeexperiments/raytracer.tidy.html:828:17: [maybe] TypeError, call to non-function
+test/chromeexperiments/raytracer.tidy.html:830:17: [maybe] TypeError, call to non-function
+test/chromeexperiments/raytracer.tidy.html:832:17: [maybe] TypeError, call to non-function
+test/chromeexperiments/raytracer.tidy.html:853:25: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/raytracer.tidy.html:853:25: [maybe] TypeError, call to non-function
+test/chromeexperiments/raytracer.tidy.html:857:29: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/raytracer.tidy.html:857:44: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/raytracer.tidy.html:857:44: [maybe] TypeError, call to non-function
+test/chromeexperiments/raytracer.tidy.html:858:29: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/raytracer.tidy.html:859:47: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/raytracer.tidy.html:860:33: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/raytracer.tidy.html:860:33: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/raytracer.tidy.html:860:33: [maybe] TypeError, call to non-function
+test/chromeexperiments/raytracer.tidy.html:866:49: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/raytracer.tidy.html:883:31: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/raytracer.tidy.html:940:21: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/raytracer.tidy.html:940:66: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/raytracer.tidy.html:941:21: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/raytracer.tidy.html:941:66: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/raytracer.tidy.html:942:21: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/raytracer.tidy.html:942:66: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/raytracer.tidy.html:943:17: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/raytracer.tidy.html:944:17: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/raytracer.tidy.html:945:17: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/raytracer.tidy.html:951:29: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/raytracer.tidy.html:952:31: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/raytracer.tidy.html:952:31: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/raytracer.tidy.html:952:31: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/raytracer.tidy.html:953:31: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/raytracer.tidy.html:953:31: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/raytracer.tidy.html:954:31: [maybe] TypeError, call to non-function
+test/chromeexperiments/raytracer.tidy.html:959:31: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/raytracer.tidy.html:960:31: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/raytracer.tidy.html:962:33: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/raytracer.tidy.html:964:33: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/raytracer.tidy.html:981:32: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/raytracer.tidy.html:984:25: [maybe] TypeError, call to non-function
+test/chromeexperiments/raytracer.tidy.html:987:25: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/raytracer.tidy.html:987:25: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/raytracer.tidy.html:992:62: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/raytracer.tidy.html:993:41: [maybe] TypeError, call to non-function
+test/chromeexperiments/raytracer.tidy.html:996:25: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/raytracer.tidy.html:1007:41: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/raytracer.tidy.html:1007:41: [maybe] TypeError, call to non-function
+test/chromeexperiments/raytracer.tidy.html:1012:25: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/raytracer.tidy.html:1012:25: [maybe] TypeError, call to non-function
+test/chromeexperiments/raytracer.tidy.html:1032:24: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/raytracer.tidy.html:1033:32: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/raytracer.tidy.html:1033:32: [maybe] TypeError, call to non-function
+test/chromeexperiments/raytracer.tidy.html:1036:41: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/raytracer.tidy.html:1036:41: [maybe] TypeError, call to non-function
+test/chromeexperiments/raytracer.tidy.html:1050:31: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/raytracer.tidy.html:1050:43: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/raytracer.tidy.html:1051:21: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/raytracer.tidy.html:1051:32: [maybe] TypeError, call to non-function
+test/chromeexperiments/raytracer.tidy.html:1055:30: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/raytracer.tidy.html:1056:30: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/raytracer.tidy.html:1057:30: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/raytracer.tidy.html:1080:44: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/raytracer.tidy.html:1081:44: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/raytracer.tidy.html:1082:44: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/raytracer.tidy.html:1094:47: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/raytracer.tidy.html:1094:47: [maybe] TypeError, call to non-function
+test/chromeexperiments/raytracer.tidy.html:1097:30: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/raytracer.tidy.html:1104:32: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/raytracer.tidy.html:1104:50: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/raytracer.tidy.html:1105:25: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/raytracer.tidy.html:1112:42: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/raytracer.tidy.html:1112:60: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/raytracer.tidy.html:1112:60: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/raytracer.tidy.html:1112:80: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/raytracer.tidy.html:1163:25: [maybe] TypeError, call to non-function
+test/chromeexperiments/raytracer.tidy.html:1164:35: [maybe] TypeError, call to non-function
+test/chromeexperiments/raytracer.tidy.html:1168:17: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/raytracer.tidy.html:1189:49: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/raytracer.tidy.html:1189:57: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/raytracer.tidy.html:1189:67: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/raytracer.tidy.html:1192:41: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/raytracer.tidy.html:1212:49: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/raytracer.tidy.html:1230:25: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/raytracer.tidy.html:1230:88: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/raytracer.tidy.html:1233:33: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/raytracer.tidy.html:1263:17: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/raytracer.tidy.html:1264:17: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/raytracer.tidy.html:1265:17: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/raytracer.tidy.html:1274:25: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/raytracer.tidy.html:1288:17: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/raytracer.tidy.html:1288:17: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/raytracer.tidy.html:1289:17: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/raytracer.tidy.html:1292:29: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/raytracer.tidy.html:1293:25: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/raytracer.tidy.html:1293:25: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/raytracer.tidy.html:1293:25: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/raytracer.tidy.html:1294:25: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/raytracer.tidy.html:1294:25: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/raytracer.tidy.html:1302:43: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/raytracer.tidy.html:107:37: [maybe] Reading absent property r
+test/chromeexperiments/raytracer.tidy.html:108:34: [maybe] Reading absent property x
+test/chromeexperiments/raytracer.tidy.html:108:41: [maybe] Reading absent property x
+test/chromeexperiments/raytracer.tidy.html:108:50: [maybe] Reading absent property y
+test/chromeexperiments/raytracer.tidy.html:108:57: [maybe] Reading absent property y
+test/chromeexperiments/raytracer.tidy.html:108:66: [maybe] Reading absent property z
+test/chromeexperiments/raytracer.tidy.html:108:73: [maybe] Reading absent property z
+test/chromeexperiments/raytracer.tidy.html:108:82: [maybe] Reading absent property r
+test/chromeexperiments/raytracer.tidy.html:108:89: [maybe] Reading absent property r
+test/chromeexperiments/raytracer.tidy.html:115:35: [maybe] Reading absent property x
+test/chromeexperiments/raytracer.tidy.html:115:51: [maybe] Reading absent property y
+test/chromeexperiments/raytracer.tidy.html:115:67: [maybe] Reading absent property z
+test/chromeexperiments/raytracer.tidy.html:115:83: [maybe] Reading absent property r
+test/chromeexperiments/raytracer.tidy.html:117:37: [maybe] Reading absent property obj
+test/chromeexperiments/raytracer.tidy.html:119:41: [maybe] Reading absent property precalc
+test/chromeexperiments/raytracer.tidy.html:119:61: [maybe] Reading absent property setuv
+test/chromeexperiments/raytracer.tidy.html:119:79: [maybe] Reading absent property getuv
+test/chromeexperiments/raytracer.tidy.html:120:43: [maybe] Reading absent property setbitmap
+test/chromeexperiments/raytracer.tidy.html:121:32: [maybe] Reading absent property inside
+test/chromeexperiments/raytracer.tidy.html:125:34: [maybe] Reading absent property cr
+test/chromeexperiments/raytracer.tidy.html:125:58: [maybe] Reading absent property cg
+test/chromeexperiments/raytracer.tidy.html:125:82: [maybe] Reading absent property cb
+test/chromeexperiments/raytracer.tidy.html:151:32: [maybe] Reading absent property x
+test/chromeexperiments/raytracer.tidy.html:151:48: [maybe] Reading absent property y
+test/chromeexperiments/raytracer.tidy.html:151:64: [maybe] Reading absent property z
+test/chromeexperiments/raytracer.tidy.html:152:43: [maybe] Reading absent property vx
+test/chromeexperiments/raytracer.tidy.html:152:53: [maybe] Reading absent property vy
+test/chromeexperiments/raytracer.tidy.html:152:63: [maybe] Reading absent property vz
+test/chromeexperiments/raytracer.tidy.html:152:72: [maybe] Reading absent property ir
+test/chromeexperiments/raytracer.tidy.html:153:32: [maybe] Reading absent property ux
+test/chromeexperiments/raytracer.tidy.html:153:42: [maybe] Reading absent property uy
+test/chromeexperiments/raytracer.tidy.html:153:52: [maybe] Reading absent property uz
+test/chromeexperiments/raytracer.tidy.html:153:62: [maybe] Reading absent property r
+test/chromeexperiments/raytracer.tidy.html:154:34: [maybe] Reading absent property uo
+test/chromeexperiments/raytracer.tidy.html:155:34: [maybe] Reading absent property vo
+test/chromeexperiments/raytracer.tidy.html:156:32: [maybe] Reading absent property wx
+test/chromeexperiments/raytracer.tidy.html:156:42: [maybe] Reading absent property wy
+test/chromeexperiments/raytracer.tidy.html:156:52: [maybe] Reading absent property wz
+test/chromeexperiments/raytracer.tidy.html:156:73: [maybe] Reading absent property u
+test/chromeexperiments/raytracer.tidy.html:157:25: [maybe] Reading absent property u
+test/chromeexperiments/raytracer.tidy.html:157:35: [maybe] Reading absent property ul
+test/chromeexperiments/raytracer.tidy.html:158:25: [maybe] Reading absent property v
+test/chromeexperiments/raytracer.tidy.html:158:35: [maybe] Reading absent property vl
+test/chromeexperiments/raytracer.tidy.html:161:17: [maybe] Reading absent property precalc
+test/chromeexperiments/raytracer.tidy.html:171:31: [maybe] Reading absent property obj
+test/chromeexperiments/raytracer.tidy.html:173:38: [maybe] Reading absent property nx
+test/chromeexperiments/raytracer.tidy.html:175:29: [maybe] Reading absent property x
+test/chromeexperiments/raytracer.tidy.html:175:43: [maybe] Reading absent property y
+test/chromeexperiments/raytracer.tidy.html:175:57: [maybe] Reading absent property z
+test/chromeexperiments/raytracer.tidy.html:177:42: [maybe] Reading absent property x
+test/chromeexperiments/raytracer.tidy.html:177:56: [maybe] Reading absent property y
+test/chromeexperiments/raytracer.tidy.html:177:70: [maybe] Reading absent property z
+test/chromeexperiments/raytracer.tidy.html:177:85: [maybe] Reading absent property c
+test/chromeexperiments/raytracer.tidy.html:180:29: [maybe] Reading absent property nx
+test/chromeexperiments/raytracer.tidy.html:187:61: [maybe] Reading absent property obj
+test/chromeexperiments/raytracer.tidy.html:196:59: [maybe] Reading absent property x
+test/chromeexperiments/raytracer.tidy.html:196:67: [maybe] Reading absent property nx
+test/chromeexperiments/raytracer.tidy.html:196:90: [maybe] Reading absent property y
+test/chromeexperiments/raytracer.tidy.html:196:98: [maybe] Reading absent property ny
+test/chromeexperiments/raytracer.tidy.html:196:121: [maybe] Reading absent property z
+test/chromeexperiments/raytracer.tidy.html:196:129: [maybe] Reading absent property nz
+test/chromeexperiments/raytracer.tidy.html:197:58: [maybe] Reading absent property obj
+test/chromeexperiments/raytracer.tidy.html:205:43: [maybe] Reading absent property x
+test/chromeexperiments/raytracer.tidy.html:205:51: [maybe] Reading absent property nx
+test/chromeexperiments/raytracer.tidy.html:205:74: [maybe] Reading absent property y
+test/chromeexperiments/raytracer.tidy.html:205:82: [maybe] Reading absent property ny
+test/chromeexperiments/raytracer.tidy.html:205:105: [maybe] Reading absent property z
+test/chromeexperiments/raytracer.tidy.html:205:113: [maybe] Reading absent property nz
+test/chromeexperiments/raytracer.tidy.html:206:34: [maybe] Reading absent property obj
+test/chromeexperiments/raytracer.tidy.html:216:41: [maybe] Reading absent property x
+test/chromeexperiments/raytracer.tidy.html:216:49: [maybe] Reading absent property ir
+test/chromeexperiments/raytracer.tidy.html:217:41: [maybe] Reading absent property y
+test/chromeexperiments/raytracer.tidy.html:217:49: [maybe] Reading absent property ir
+test/chromeexperiments/raytracer.tidy.html:218:41: [maybe] Reading absent property z
+test/chromeexperiments/raytracer.tidy.html:218:49: [maybe] Reading absent property ir
+test/chromeexperiments/raytracer.tidy.html:224:31: [maybe] Reading absent property obj
+test/chromeexperiments/raytracer.tidy.html:226:38: [maybe] Reading absent property nx
+test/chromeexperiments/raytracer.tidy.html:228:29: [maybe] Reading absent property x
+test/chromeexperiments/raytracer.tidy.html:228:41: [maybe] Reading absent property y
+test/chromeexperiments/raytracer.tidy.html:228:53: [maybe] Reading absent property z
+test/chromeexperiments/raytracer.tidy.html:229:40: [maybe] Reading absent property x
+test/chromeexperiments/raytracer.tidy.html:229:52: [maybe] Reading absent property y
+test/chromeexperiments/raytracer.tidy.html:229:64: [maybe] Reading absent property z
+test/chromeexperiments/raytracer.tidy.html:229:77: [maybe] Reading absent property c
+test/chromeexperiments/raytracer.tidy.html:232:29: [maybe] Reading absent property nx
+test/chromeexperiments/raytracer.tidy.html:246:46: [maybe] Reading absent property x
+test/chromeexperiments/raytracer.tidy.html:246:54: [maybe] Reading absent property nx
+test/chromeexperiments/raytracer.tidy.html:246:73: [maybe] Reading absent property y
+test/chromeexperiments/raytracer.tidy.html:246:81: [maybe] Reading absent property ny
+test/chromeexperiments/raytracer.tidy.html:246:100: [maybe] Reading absent property z
+test/chromeexperiments/raytracer.tidy.html:246:108: [maybe] Reading absent property nz
+test/chromeexperiments/raytracer.tidy.html:252:38: [maybe] Reading absent property x
+test/chromeexperiments/raytracer.tidy.html:252:46: [maybe] Reading absent property nx
+test/chromeexperiments/raytracer.tidy.html:252:65: [maybe] Reading absent property y
+test/chromeexperiments/raytracer.tidy.html:252:73: [maybe] Reading absent property ny
+test/chromeexperiments/raytracer.tidy.html:252:92: [maybe] Reading absent property z
+test/chromeexperiments/raytracer.tidy.html:252:100: [maybe] Reading absent property nz
+test/chromeexperiments/raytracer.tidy.html:308:35: [maybe] Reading absent property nx
+test/chromeexperiments/raytracer.tidy.html:308:59: [maybe] Reading absent property ny
+test/chromeexperiments/raytracer.tidy.html:308:83: [maybe] Reading absent property nz
+test/chromeexperiments/raytracer.tidy.html:310:76: [maybe] Reading absent property ir
+test/chromeexperiments/raytracer.tidy.html:518:34: [maybe] Reading absent property nx
+test/chromeexperiments/raytracer.tidy.html:518:42: [maybe] Reading absent property x
+test/chromeexperiments/raytracer.tidy.html:518:51: [maybe] Reading absent property ny
+test/chromeexperiments/raytracer.tidy.html:518:59: [maybe] Reading absent property y
+test/chromeexperiments/raytracer.tidy.html:518:68: [maybe] Reading absent property nz
+test/chromeexperiments/raytracer.tidy.html:518:76: [maybe] Reading absent property z
+test/chromeexperiments/raytracer.tidy.html:519:36: [maybe] Reading absent property ux
+test/chromeexperiments/raytracer.tidy.html:519:44: [maybe] Reading absent property ux
+test/chromeexperiments/raytracer.tidy.html:519:54: [maybe] Reading absent property uy
+test/chromeexperiments/raytracer.tidy.html:519:62: [maybe] Reading absent property uy
+test/chromeexperiments/raytracer.tidy.html:519:72: [maybe] Reading absent property uz
+test/chromeexperiments/raytracer.tidy.html:519:80: [maybe] Reading absent property uz
+test/chromeexperiments/raytracer.tidy.html:520:36: [maybe] Reading absent property vx
+test/chromeexperiments/raytracer.tidy.html:520:44: [maybe] Reading absent property vx
+test/chromeexperiments/raytracer.tidy.html:520:54: [maybe] Reading absent property vy
+test/chromeexperiments/raytracer.tidy.html:520:62: [maybe] Reading absent property vy
+test/chromeexperiments/raytracer.tidy.html:520:72: [maybe] Reading absent property vz
+test/chromeexperiments/raytracer.tidy.html:520:80: [maybe] Reading absent property vz
+test/chromeexperiments/raytracer.tidy.html:523:34: [maybe] Reading absent property cr
+test/chromeexperiments/raytracer.tidy.html:523:58: [maybe] Reading absent property cg
+test/chromeexperiments/raytracer.tidy.html:523:82: [maybe] Reading absent property cb
+test/chromeexperiments/raytracer.tidy.html:536:32: [maybe] Reading absent property x
+test/chromeexperiments/raytracer.tidy.html:536:48: [maybe] Reading absent property y
+test/chromeexperiments/raytracer.tidy.html:536:64: [maybe] Reading absent property z
+test/chromeexperiments/raytracer.tidy.html:537:34: [maybe] Reading absent property uo
+test/chromeexperiments/raytracer.tidy.html:537:48: [maybe] Reading absent property ux
+test/chromeexperiments/raytracer.tidy.html:537:61: [maybe] Reading absent property uy
+test/chromeexperiments/raytracer.tidy.html:537:74: [maybe] Reading absent property uz
+test/chromeexperiments/raytracer.tidy.html:537:83: [maybe] Reading absent property ul2
+test/chromeexperiments/raytracer.tidy.html:538:34: [maybe] Reading absent property uo
+test/chromeexperiments/raytracer.tidy.html:538:48: [maybe] Reading absent property ux
+test/chromeexperiments/raytracer.tidy.html:538:61: [maybe] Reading absent property uy
+test/chromeexperiments/raytracer.tidy.html:538:74: [maybe] Reading absent property uz
+test/chromeexperiments/raytracer.tidy.html:538:83: [maybe] Reading absent property ul2
+test/chromeexperiments/raytracer.tidy.html:539:38: [maybe] Reading absent property vo
+test/chromeexperiments/raytracer.tidy.html:539:52: [maybe] Reading absent property vx
+test/chromeexperiments/raytracer.tidy.html:539:65: [maybe] Reading absent property vy
+test/chromeexperiments/raytracer.tidy.html:539:78: [maybe] Reading absent property vz
+test/chromeexperiments/raytracer.tidy.html:539:87: [maybe] Reading absent property vl2
+test/chromeexperiments/raytracer.tidy.html:542:17: [maybe] Reading absent property precalc
+test/chromeexperiments/raytracer.tidy.html:551:29: [maybe] Reading absent property obj
+test/chromeexperiments/raytracer.tidy.html:552:30: [maybe] Reading absent property D
+test/chromeexperiments/raytracer.tidy.html:552:39: [maybe] Reading absent property nx
+test/chromeexperiments/raytracer.tidy.html:552:54: [maybe] Reading absent property ny
+test/chromeexperiments/raytracer.tidy.html:552:69: [maybe] Reading absent property nz
+test/chromeexperiments/raytracer.tidy.html:553:34: [maybe] Reading absent property nx
+test/chromeexperiments/raytracer.tidy.html:553:49: [maybe] Reading absent property ny
+test/chromeexperiments/raytracer.tidy.html:553:64: [maybe] Reading absent property nz
+test/chromeexperiments/raytracer.tidy.html:555:47: [maybe] Reading absent property x
+test/chromeexperiments/raytracer.tidy.html:556:47: [maybe] Reading absent property y
+test/chromeexperiments/raytracer.tidy.html:557:47: [maybe] Reading absent property z
+test/chromeexperiments/raytracer.tidy.html:558:57: [maybe] Reading absent property r2
+test/chromeexperiments/raytracer.tidy.html:559:34: [maybe] Reading absent property obj
+test/chromeexperiments/raytracer.tidy.html:568:30: [maybe] Reading absent property nx
+test/chromeexperiments/raytracer.tidy.html:569:30: [maybe] Reading absent property ny
+test/chromeexperiments/raytracer.tidy.html:570:30: [maybe] Reading absent property nz
+test/chromeexperiments/raytracer.tidy.html:574:29: [maybe] Reading absent property obj
+test/chromeexperiments/raytracer.tidy.html:576:30: [maybe] Reading absent property D
+test/chromeexperiments/raytracer.tidy.html:576:39: [maybe] Reading absent property nx
+test/chromeexperiments/raytracer.tidy.html:576:52: [maybe] Reading absent property ny
+test/chromeexperiments/raytracer.tidy.html:576:65: [maybe] Reading absent property nz
+test/chromeexperiments/raytracer.tidy.html:576:80: [maybe] Reading absent property nx
+test/chromeexperiments/raytracer.tidy.html:576:93: [maybe] Reading absent property ny
+test/chromeexperiments/raytracer.tidy.html:576:106: [maybe] Reading absent property nz
+test/chromeexperiments/raytracer.tidy.html:579:41: [maybe] Reading absent property x
+test/chromeexperiments/raytracer.tidy.html:580:41: [maybe] Reading absent property y
+test/chromeexperiments/raytracer.tidy.html:581:41: [maybe] Reading absent property z
+test/chromeexperiments/raytracer.tidy.html:582:48: [maybe] Reading absent property r2
+test/chromeexperiments/raytracer.tidy.html:597:37: [maybe] Reading absent property rad
+test/chromeexperiments/raytracer.tidy.html:598:34: [maybe] Reading absent property x
+test/chromeexperiments/raytracer.tidy.html:598:41: [maybe] Reading absent property x
+test/chromeexperiments/raytracer.tidy.html:598:50: [maybe] Reading absent property y
+test/chromeexperiments/raytracer.tidy.html:598:57: [maybe] Reading absent property y
+test/chromeexperiments/raytracer.tidy.html:598:66: [maybe] Reading absent property z
+test/chromeexperiments/raytracer.tidy.html:598:73: [maybe] Reading absent property z
+test/chromeexperiments/raytracer.tidy.html:598:82: [maybe] Reading absent property rad
+test/chromeexperiments/raytracer.tidy.html:598:91: [maybe] Reading absent property rad
+test/chromeexperiments/raytracer.tidy.html:608:29: [maybe] Reading absent property x
+test/chromeexperiments/raytracer.tidy.html:608:43: [maybe] Reading absent property y
+test/chromeexperiments/raytracer.tidy.html:608:57: [maybe] Reading absent property z
+test/chromeexperiments/raytracer.tidy.html:611:42: [maybe] Reading absent property x
+test/chromeexperiments/raytracer.tidy.html:611:56: [maybe] Reading absent property y
+test/chromeexperiments/raytracer.tidy.html:611:70: [maybe] Reading absent property z
+test/chromeexperiments/raytracer.tidy.html:611:85: [maybe] Reading absent property c
+test/chromeexperiments/raytracer.tidy.html:617:36: [maybe] Reading absent property z
+test/chromeexperiments/raytracer.tidy.html:617:44: [maybe] Reading absent property ir
+test/chromeexperiments/raytracer.tidy.html:640:17: [maybe] Reading absent property getuv
+test/chromeexperiments/raytracer.tidy.html:641:23: [maybe] Reading absent property u
+test/chromeexperiments/raytracer.tidy.html:641:30: [maybe] Reading absent property bmpw
+test/chromeexperiments/raytracer.tidy.html:641:41: [maybe] Reading absent property bmpw
+test/chromeexperiments/raytracer.tidy.html:641:71: [maybe] Reading absent property bmpw
+test/chromeexperiments/raytracer.tidy.html:642:23: [maybe] Reading absent property v
+test/chromeexperiments/raytracer.tidy.html:642:30: [maybe] Reading absent property bmph
+test/chromeexperiments/raytracer.tidy.html:642:41: [maybe] Reading absent property bmph
+test/chromeexperiments/raytracer.tidy.html:642:71: [maybe] Reading absent property bmph
+test/chromeexperiments/raytracer.tidy.html:645:21: [maybe] Reading absent property bmp
+test/chromeexperiments/raytracer.tidy.html:645:46: [maybe] Reading absent property bmpw
+test/chromeexperiments/raytracer.tidy.html:679:17: [maybe] Reading absent property getuv
+test/chromeexperiments/raytracer.tidy.html:680:21: [maybe] Reading absent property bmp
+test/chromeexperiments/raytracer.tidy.html:681:22: [maybe] Reading absent property u
+test/chromeexperiments/raytracer.tidy.html:681:29: [maybe] Reading absent property bmpw
+test/chromeexperiments/raytracer.tidy.html:682:22: [maybe] Reading absent property v
+test/chromeexperiments/raytracer.tidy.html:682:29: [maybe] Reading absent property bmph
+test/chromeexperiments/raytracer.tidy.html:683:24: [maybe] Reading absent property bmpw
+test/chromeexperiments/raytracer.tidy.html:684:34: [maybe] Reading absent property bmpw
+test/chromeexperiments/raytracer.tidy.html:684:48: [maybe] Reading absent property bmph
+test/chromeexperiments/raytracer.tidy.html:687:34: [maybe] Reading absent property bmpw
+test/chromeexperiments/raytracer.tidy.html:687:48: [maybe] Reading absent property bmph
+test/chromeexperiments/raytracer.tidy.html:689:25: [maybe] Reading absent property bmpw
+test/chromeexperiments/raytracer.tidy.html:690:34: [maybe] Reading absent property bmpw
+test/chromeexperiments/raytracer.tidy.html:690:48: [maybe] Reading absent property bmph
+test/chromeexperiments/raytracer.tidy.html:693:34: [maybe] Reading absent property bmpw
+test/chromeexperiments/raytracer.tidy.html:693:48: [maybe] Reading absent property bmph
+test/chromeexperiments/raytracer.tidy.html:696:29: [maybe] Reading absent property ocr
+test/chromeexperiments/raytracer.tidy.html:697:29: [maybe] Reading absent property ocg
+test/chromeexperiments/raytracer.tidy.html:698:29: [maybe] Reading absent property ocb
+test/chromeexperiments/raytracer.tidy.html:713:17: [maybe] Reading absent property getuv
+test/chromeexperiments/raytracer.tidy.html:714:32: [maybe] Reading absent property u
+test/chromeexperiments/raytracer.tidy.html:715:32: [maybe] Reading absent property v
+test/chromeexperiments/raytracer.tidy.html:721:17: [maybe] Reading absent property getuv
+test/chromeexperiments/raytracer.tidy.html:722:32: [maybe] Reading absent property u
+test/chromeexperiments/raytracer.tidy.html:723:32: [maybe] Reading absent property v
+test/chromeexperiments/raytracer.tidy.html:744:30: [maybe] Reading absent property obj
+test/chromeexperiments/raytracer.tidy.html:754:34: [maybe] Reading absent property obj
+test/chromeexperiments/raytracer.tidy.html:756:42: [maybe] Reading absent property obj
+test/chromeexperiments/raytracer.tidy.html:817:17: [maybe] Reading absent property setbitmap
+test/chromeexperiments/raytracer.tidy.html:817:17: [maybe] Reading absent property setuv
+test/chromeexperiments/raytracer.tidy.html:819:17: [maybe] Reading absent property sethalf
+test/chromeexperiments/raytracer.tidy.html:826:17: [maybe] Reading absent property setbitmap
+test/chromeexperiments/raytracer.tidy.html:826:17: [maybe] Reading absent property setuv
+test/chromeexperiments/raytracer.tidy.html:828:17: [maybe] Reading absent property setbitmap
+test/chromeexperiments/raytracer.tidy.html:828:17: [maybe] Reading absent property setuv
+test/chromeexperiments/raytracer.tidy.html:830:17: [maybe] Reading absent property setuv
+test/chromeexperiments/raytracer.tidy.html:832:17: [maybe] Reading absent property setuv
+test/chromeexperiments/raytracer.tidy.html:853:25: [maybe] Reading absent property precalc
+test/chromeexperiments/raytracer.tidy.html:857:29: [maybe] Reading absent property precalc
+test/chromeexperiments/raytracer.tidy.html:857:44: [maybe] Reading absent property precalc
+test/chromeexperiments/raytracer.tidy.html:858:29: [maybe] Reading absent property inside
+test/chromeexperiments/raytracer.tidy.html:859:47: [maybe] Reading absent property inside
+test/chromeexperiments/raytracer.tidy.html:860:33: [maybe] Reading absent property inside
+test/chromeexperiments/raytracer.tidy.html:883:31: [maybe] Reading absent property x
+test/chromeexperiments/raytracer.tidy.html:883:43: [maybe] Reading absent property y
+test/chromeexperiments/raytracer.tidy.html:883:55: [maybe] Reading absent property z
+test/chromeexperiments/raytracer.tidy.html:885:21: [maybe] Reading absent property x1
+test/chromeexperiments/raytracer.tidy.html:886:39: [maybe] Reading absent property x1
+test/chromeexperiments/raytracer.tidy.html:886:52: [maybe] Reading absent property y1
+test/chromeexperiments/raytracer.tidy.html:886:65: [maybe] Reading absent property z1
+test/chromeexperiments/raytracer.tidy.html:889:21: [maybe] Reading absent property nx
+test/chromeexperiments/raytracer.tidy.html:890:39: [maybe] Reading absent property nx
+test/chromeexperiments/raytracer.tidy.html:890:45: [maybe] Reading absent property ny
+test/chromeexperiments/raytracer.tidy.html:890:51: [maybe] Reading absent property nz
+test/chromeexperiments/raytracer.tidy.html:892:21: [maybe] Reading absent property ux
+test/chromeexperiments/raytracer.tidy.html:893:39: [maybe] Reading absent property ux
+test/chromeexperiments/raytracer.tidy.html:893:45: [maybe] Reading absent property uy
+test/chromeexperiments/raytracer.tidy.html:893:51: [maybe] Reading absent property uz
+test/chromeexperiments/raytracer.tidy.html:895:21: [maybe] Reading absent property vx
+test/chromeexperiments/raytracer.tidy.html:896:39: [maybe] Reading absent property vx
+test/chromeexperiments/raytracer.tidy.html:896:45: [maybe] Reading absent property vy
+test/chromeexperiments/raytracer.tidy.html:896:51: [maybe] Reading absent property vz
+test/chromeexperiments/raytracer.tidy.html:898:21: [maybe] Reading absent property wx
+test/chromeexperiments/raytracer.tidy.html:899:39: [maybe] Reading absent property wx
+test/chromeexperiments/raytracer.tidy.html:899:45: [maybe] Reading absent property wy
+test/chromeexperiments/raytracer.tidy.html:899:51: [maybe] Reading absent property wz
+test/chromeexperiments/raytracer.tidy.html:940:21: [maybe] Reading absent property value
+test/chromeexperiments/raytracer.tidy.html:940:66: [maybe] Reading absent property value
+test/chromeexperiments/raytracer.tidy.html:941:21: [maybe] Reading absent property value
+test/chromeexperiments/raytracer.tidy.html:941:66: [maybe] Reading absent property value
+test/chromeexperiments/raytracer.tidy.html:942:21: [maybe] Reading absent property value
+test/chromeexperiments/raytracer.tidy.html:942:66: [maybe] Reading absent property value
+test/chromeexperiments/raytracer.tidy.html:951:29: [maybe] Reading absent property getContext
+test/chromeexperiments/raytracer.tidy.html:952:31: [maybe] Reading absent property attributes
+test/chromeexperiments/raytracer.tidy.html:952:31: [maybe] Reading absent property width
+test/chromeexperiments/raytracer.tidy.html:953:31: [maybe] Reading absent property attributes
+test/chromeexperiments/raytracer.tidy.html:953:31: [maybe] Reading absent property height
+test/chromeexperiments/raytracer.tidy.html:954:31: [maybe] Reading absent property getContext
+test/chromeexperiments/raytracer.tidy.html:959:31: [maybe] Reading absent property clientWidth
+test/chromeexperiments/raytracer.tidy.html:960:31: [maybe] Reading absent property clientHeight
+test/chromeexperiments/raytracer.tidy.html:984:25: [maybe] Reading absent property putImageData
+test/chromeexperiments/raytracer.tidy.html:987:25: [maybe] Reading absent property style
+test/chromeexperiments/raytracer.tidy.html:993:41: [maybe] Reading absent property fillRect
+test/chromeexperiments/raytracer.tidy.html:1007:41: [maybe] Reading absent property intersect
+test/chromeexperiments/raytracer.tidy.html:1012:25: [maybe] Reading absent property hit
+test/chromeexperiments/raytracer.tidy.html:1033:32: [maybe] Reading absent property li_intersect
+test/chromeexperiments/raytracer.tidy.html:1036:41: [maybe] Reading absent property li_intersect
+test/chromeexperiments/raytracer.tidy.html:1050:31: [maybe] Reading absent property inside
+test/chromeexperiments/raytracer.tidy.html:1050:43: [maybe] Reading absent property inside
+test/chromeexperiments/raytracer.tidy.html:1051:21: [maybe] Reading absent property texture
+test/chromeexperiments/raytracer.tidy.html:1051:32: [maybe] Reading absent property texture
+test/chromeexperiments/raytracer.tidy.html:1055:30: [maybe] Reading absent property x
+test/chromeexperiments/raytracer.tidy.html:1056:30: [maybe] Reading absent property y
+test/chromeexperiments/raytracer.tidy.html:1057:30: [maybe] Reading absent property z
+test/chromeexperiments/raytracer.tidy.html:1066:47: [maybe] Reading absent property d
+test/chromeexperiments/raytracer.tidy.html:1078:45: [maybe] Reading absent property pp
+test/chromeexperiments/raytracer.tidy.html:1078:51: [maybe] Reading absent property p
+test/chromeexperiments/raytracer.tidy.html:1080:34: [maybe] Reading absent property cr
+test/chromeexperiments/raytracer.tidy.html:1080:44: [maybe] Reading absent property r
+test/chromeexperiments/raytracer.tidy.html:1081:34: [maybe] Reading absent property cg
+test/chromeexperiments/raytracer.tidy.html:1081:44: [maybe] Reading absent property g
+test/chromeexperiments/raytracer.tidy.html:1082:34: [maybe] Reading absent property cb
+test/chromeexperiments/raytracer.tidy.html:1082:44: [maybe] Reading absent property b
+test/chromeexperiments/raytracer.tidy.html:1094:47: [maybe] Reading absent property intersect
+test/chromeexperiments/raytracer.tidy.html:1097:30: [maybe] Reading absent property r
+test/chromeexperiments/raytracer.tidy.html:1097:46: [maybe] Reading absent property g
+test/chromeexperiments/raytracer.tidy.html:1097:62: [maybe] Reading absent property b
+test/chromeexperiments/raytracer.tidy.html:1104:32: [maybe] Reading absent property inside
+test/chromeexperiments/raytracer.tidy.html:1104:50: [maybe] Reading absent property inside
+test/chromeexperiments/raytracer.tidy.html:1105:25: [maybe] Reading absent property cr
+test/chromeexperiments/raytracer.tidy.html:1106:25: [maybe] Reading absent property cg
+test/chromeexperiments/raytracer.tidy.html:1107:25: [maybe] Reading absent property cb
+test/chromeexperiments/raytracer.tidy.html:1112:42: [maybe] Reading absent property inside
+test/chromeexperiments/raytracer.tidy.html:1112:60: [maybe] Reading absent property inside
+test/chromeexperiments/raytracer.tidy.html:1112:80: [maybe] Reading absent property rf
+test/chromeexperiments/raytracer.tidy.html:1163:25: [maybe] Reading absent property fillRect
+test/chromeexperiments/raytracer.tidy.html:1164:35: [maybe] Reading absent property getImageData
+test/chromeexperiments/raytracer.tidy.html:1233:33: [maybe] Reading absent property innerHTML
+test/chromeexperiments/raytracer.tidy.html:1274:25: [maybe] Reading absent property value
+test/chromeexperiments/raytracer.tidy.html:1288:17: [maybe] Reading absent property style
+test/chromeexperiments/raytracer.tidy.html:1289:17: [maybe] Reading absent property style
+test/chromeexperiments/raytracer.tidy.html:1292:29: [maybe] Reading absent property getContext
+test/chromeexperiments/raytracer.tidy.html:1293:25: [maybe] Reading absent property attributes
+test/chromeexperiments/raytracer.tidy.html:1293:25: [maybe] Reading absent property width
+test/chromeexperiments/raytracer.tidy.html:1294:25: [maybe] Reading absent property attributes
+test/chromeexperiments/raytracer.tidy.html:1294:25: [maybe] Reading absent property height
+test/chromeexperiments/raytracer.tidy.html:1302:43: [maybe] Reading absent property checked
+test/chromeexperiments/raytracer.tidy.html:3: [maybe] Uncaught exception, constructed at [test/chromeexperiments/raytracer.tidy.html:102:17, test/chromeexperiments/raytracer.tidy.html:161:17, test/chromeexperiments/raytracer.tidy.html:510:17, test/chromeexperiments/raytracer.tidy.html:542:17, test/chromeexperiments/raytracer.tidy.html:592:17, test/chromeexperiments/raytracer.tidy.html:640:17, test/chromeexperiments/raytracer.tidy.html:646:19, test/chromeexperiments/raytracer.tidy.html:679:17, test/chromeexperiments/raytracer.tidy.html:685:26, test/chromeexperiments/raytracer.tidy.html:688:27, test/chromeexperiments/raytracer.tidy.html:691:27, test/chromeexperiments/raytracer.tidy.html:694:27, test/chromeexperiments/raytracer.tidy.html:713:17, test/chromeexperiments/raytracer.tidy.html:721:17, test/chromeexperiments/raytracer.tidy.html:758:34, test/chromeexperiments/raytracer.tidy.html:817:17, test/chromeexperiments/raytracer.tidy.html:819:17, test/chromeexperiments/raytracer.tidy.html:826:17, test/chromeexperiments/raytracer.tidy.html:828:17, test/chromeexperiments/raytracer.tidy.html:830:17, test/chromeexperiments/raytracer.tidy.html:832:17, test/chromeexperiments/raytracer.tidy.html:853:25, test/chromeexperiments/raytracer.tidy.html:857:29, test/chromeexperiments/raytracer.tidy.html:857:44, test/chromeexperiments/raytracer.tidy.html:858:29, test/chromeexperiments/raytracer.tidy.html:859:47, test/chromeexperiments/raytracer.tidy.html:860:33, test/chromeexperiments/raytracer.tidy.html:866:49, test/chromeexperiments/raytracer.tidy.html:883:31, test/chromeexperiments/raytracer.tidy.html:940:21, test/chromeexperiments/raytracer.tidy.html:940:66, test/chromeexperiments/raytracer.tidy.html:941:21, test/chromeexperiments/raytracer.tidy.html:941:66, test/chromeexperiments/raytracer.tidy.html:942:21, test/chromeexperiments/raytracer.tidy.html:942:66, test/chromeexperiments/raytracer.tidy.html:943:17, test/chromeexperiments/raytracer.tidy.html:944:17, test/chromeexperiments/raytracer.tidy.html:945:17, test/chromeexperiments/raytracer.tidy.html:951:29, test/chromeexperiments/raytracer.tidy.html:952:31, test/chromeexperiments/raytracer.tidy.html:953:31, test/chromeexperiments/raytracer.tidy.html:954:31, test/chromeexperiments/raytracer.tidy.html:959:31, test/chromeexperiments/raytracer.tidy.html:960:31, test/chromeexperiments/raytracer.tidy.html:962:33, test/chromeexperiments/raytracer.tidy.html:964:33, test/chromeexperiments/raytracer.tidy.html:981:32, test/chromeexperiments/raytracer.tidy.html:984:25, test/chromeexperiments/raytracer.tidy.html:987:25, test/chromeexperiments/raytracer.tidy.html:992:62, test/chromeexperiments/raytracer.tidy.html:993:41, test/chromeexperiments/raytracer.tidy.html:996:25, test/chromeexperiments/raytracer.tidy.html:1007:41, test/chromeexperiments/raytracer.tidy.html:1012:25, test/chromeexperiments/raytracer.tidy.html:1032:24, test/chromeexperiments/raytracer.tidy.html:1033:32, test/chromeexperiments/raytracer.tidy.html:1036:41, test/chromeexperiments/raytracer.tidy.html:1050:31, test/chromeexperiments/raytracer.tidy.html:1050:43, test/chromeexperiments/raytracer.tidy.html:1051:21, test/chromeexperiments/raytracer.tidy.html:1051:32, test/chromeexperiments/raytracer.tidy.html:1055:30, test/chromeexperiments/raytracer.tidy.html:1056:30, test/chromeexperiments/raytracer.tidy.html:1057:30, test/chromeexperiments/raytracer.tidy.html:1080:44, test/chromeexperiments/raytracer.tidy.html:1081:44, test/chromeexperiments/raytracer.tidy.html:1082:44, test/chromeexperiments/raytracer.tidy.html:1094:47, test/chromeexperiments/raytracer.tidy.html:1097:30, test/chromeexperiments/raytracer.tidy.html:1104:32, test/chromeexperiments/raytracer.tidy.html:1104:50, test/chromeexperiments/raytracer.tidy.html:1105:25, test/chromeexperiments/raytracer.tidy.html:1112:42, test/chromeexperiments/raytracer.tidy.html:1112:60, test/chromeexperiments/raytracer.tidy.html:1112:80, test/chromeexperiments/raytracer.tidy.html:1163:25, test/chromeexperiments/raytracer.tidy.html:1164:35, test/chromeexperiments/raytracer.tidy.html:1168:17, test/chromeexperiments/raytracer.tidy.html:1189:49, test/chromeexperiments/raytracer.tidy.html:1189:57, test/chromeexperiments/raytracer.tidy.html:1189:67, test/chromeexperiments/raytracer.tidy.html:1192:41, test/chromeexperiments/raytracer.tidy.html:1212:49, test/chromeexperiments/raytracer.tidy.html:1230:25, test/chromeexperiments/raytracer.tidy.html:1230:88, test/chromeexperiments/raytracer.tidy.html:1233:33, test/chromeexperiments/raytracer.tidy.html:1263:17, test/chromeexperiments/raytracer.tidy.html:1264:17, test/chromeexperiments/raytracer.tidy.html:1265:17, test/chromeexperiments/raytracer.tidy.html:1274:25, test/chromeexperiments/raytracer.tidy.html:1288:17, test/chromeexperiments/raytracer.tidy.html:1289:17, test/chromeexperiments/raytracer.tidy.html:1292:29, test/chromeexperiments/raytracer.tidy.html:1293:25, test/chromeexperiments/raytracer.tidy.html:1294:25, test/chromeexperiments/raytracer.tidy.html:1302:43]
+test/chromeexperiments/raytracer.tidy.html:101:25: [maybe] Reading absent property (computed name)
+test/chromeexperiments/raytracer.tidy.html:107:35: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:108:34: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:108:50: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:108:66: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:108:82: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:117:37: [maybe] Converting undefined to string
+test/chromeexperiments/raytracer.tidy.html:151:29: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:151:45: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:151:61: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:152:39: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:152:41: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:152:51: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:152:61: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:153:30: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:153:40: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:153:50: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:153:62: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:154:34: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:155:34: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:156:30: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:156:40: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:156:50: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:156:71: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:157:25: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:158:25: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:173:60: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:175:29: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:175:43: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:175:57: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:177:29: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:177:42: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:177:56: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:177:70: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:196:47: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:196:47: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:196:47: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:196:78: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:196:78: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:196:78: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:196:109: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:196:109: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:196:109: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:205:31: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:205:31: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:205:31: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:205:62: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:205:62: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:205:62: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:205:93: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:205:93: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:205:93: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:212:30: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:213:30: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:214:30: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:216:30: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:216:30: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:216:36: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:217:30: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:217:30: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:217:36: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:218:30: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:218:30: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:218:36: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:226:60: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:228:29: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:228:41: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:228:53: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:229:29: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:229:29: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:229:40: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:229:52: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:229:64: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:246:38: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:246:38: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:246:38: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:246:65: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:246:65: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:246:65: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:246:92: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:246:92: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:246:92: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:252:30: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:252:30: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:252:30: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:252:57: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:252:57: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:252:57: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:252:84: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:252:84: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:252:84: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:308:35: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:308:59: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:308:83: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:309:27: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:309:43: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:309:59: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:310:45: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:313:35: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:326:37: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:328:31: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:328:79: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:328:127: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:337:38: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:337:63: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:337:87: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:347:46: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:347:71: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:347:95: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:355:46: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:355:71: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:355:95: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:365:41: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:369:30: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:369:38: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:369:53: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:370:30: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:370:38: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:370:53: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:371:30: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:371:38: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:371:53: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:377:37: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:378:31: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:378:79: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:378:127: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:387:39: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:387:63: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:387:87: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:396:39: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:396:63: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:396:87: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:403:31: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:403:55: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:403:79: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:508:25: [maybe] Reading absent property (computed name)
+test/chromeexperiments/raytracer.tidy.html:518:34: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:518:51: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:518:68: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:519:36: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:519:54: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:519:72: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:520:36: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:520:54: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:520:72: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:536:29: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:536:45: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:536:61: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:537:34: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:537:45: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:537:45: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:537:58: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:537:71: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:538:34: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:538:45: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:538:45: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:538:58: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:538:71: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:539:34: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:539:49: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:539:49: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:539:62: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:539:75: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:552:30: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:552:39: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:552:54: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:552:69: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:553:34: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:553:49: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:553:64: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:555:31: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:555:31: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:556:31: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:556:31: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:557:31: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:557:31: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:558:30: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:564:30: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:565:30: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:566:30: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:576:30: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:576:39: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:576:52: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:576:65: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:576:80: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:576:93: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:576:106: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:579:29: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:579:29: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:580:29: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:580:29: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:581:29: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:581:29: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:582:34: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:591:25: [maybe] Reading absent property (computed name)
+test/chromeexperiments/raytracer.tidy.html:597:35: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:598:34: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:598:50: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:598:66: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:598:82: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:608:29: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:608:43: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:608:57: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:611:29: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:611:42: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:611:56: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:611:70: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:617:31: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:617:31: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:641:23: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:641:23: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:641:67: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:642:23: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:642:23: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:642:67: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:645:44: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:681:22: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:682:22: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:683:22: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:684:31: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:684:45: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:687:31: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:687:45: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:689:25: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:690:31: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:690:45: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:693:31: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:693:45: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:696:27: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:697:27: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:698:27: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:714:21: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:715:21: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:722:21: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:723:21: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:744:21: [maybe] Reading absent property (computed name)
+test/chromeexperiments/raytracer.tidy.html:756:33: [maybe] Reading absent property (computed name)
+test/chromeexperiments/raytracer.tidy.html:852:39: [maybe] Reading absent property (computed name)
+test/chromeexperiments/raytracer.tidy.html:853:25: [maybe] Reading absent property (computed name)
+test/chromeexperiments/raytracer.tidy.html:856:39: [maybe] Reading absent property (computed name)
+test/chromeexperiments/raytracer.tidy.html:857:29: [maybe] Reading absent property (computed name)
+test/chromeexperiments/raytracer.tidy.html:857:44: [maybe] Reading absent property (computed name)
+test/chromeexperiments/raytracer.tidy.html:858:29: [maybe] Reading absent property (computed name)
+test/chromeexperiments/raytracer.tidy.html:859:47: [maybe] Reading absent property (computed name)
+test/chromeexperiments/raytracer.tidy.html:860:33: [maybe] Reading absent property (computed name)
+test/chromeexperiments/raytracer.tidy.html:866:49: [maybe] Reading absent property (computed name)
+test/chromeexperiments/raytracer.tidy.html:875:23: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:875:43: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:875:67: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:876:23: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:876:43: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:876:67: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:877:23: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:877:43: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:877:67: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:883:31: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:883:43: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:883:55: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:886:39: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:886:52: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:886:65: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:940:55: [maybe] Converting undefined to string
+test/chromeexperiments/raytracer.tidy.html:941:55: [maybe] Converting undefined to string
+test/chromeexperiments/raytracer.tidy.html:942:55: [maybe] Converting undefined to string
+test/chromeexperiments/raytracer.tidy.html:948:21: [maybe] The variable timer has values with different types
+test/chromeexperiments/raytracer.tidy.html:948:30: [maybe] Conversion from string to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:948:43: [maybe] The variable timer has values with different types
+test/chromeexperiments/raytracer.tidy.html:952:31: [maybe] Converting primitive string to object
+test/chromeexperiments/raytracer.tidy.html:953:31: [maybe] Converting primitive string to object
+test/chromeexperiments/raytracer.tidy.html:961:30: [maybe] The variable ctx has values with different types
+test/chromeexperiments/raytracer.tidy.html:968:22: [maybe] Conversion from string to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:968:22: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:968:22: [maybe] The variable wid has values with different types
+test/chromeexperiments/raytracer.tidy.html:969:22: [maybe] Conversion from string to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:969:22: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:969:22: [maybe] The variable hei has values with different types
+test/chromeexperiments/raytracer.tidy.html:972:22: [maybe] Conversion from string to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:972:22: [maybe] Conversion from string to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:972:22: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:972:22: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:972:27: [maybe] The variable hei has values with different types
+test/chromeexperiments/raytracer.tidy.html:972:31: [maybe] The variable wid has values with different types
+test/chromeexperiments/raytracer.tidy.html:974:23: [maybe] Conversion from string to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:974:23: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:974:26: [maybe] The variable wid has values with different types
+test/chromeexperiments/raytracer.tidy.html:975:23: [maybe] Conversion from string to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:975:23: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:975:26: [maybe] The variable hei has values with different types
+test/chromeexperiments/raytracer.tidy.html:981:86: [maybe] Conversion from string to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:981:86: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:981:98: [maybe] The variable hei has values with different types
+test/chromeexperiments/raytracer.tidy.html:984:25: [maybe] Converting primitive boolean to object
+test/chromeexperiments/raytracer.tidy.html:984:25: [maybe] The variable ctx has values with different types
+test/chromeexperiments/raytracer.tidy.html:984:42: [maybe] The variable imgdata has values with different types
+test/chromeexperiments/raytracer.tidy.html:990:38: [maybe] Conversion from string to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:990:38: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:990:40: [maybe] The variable hei has values with different types
+test/chromeexperiments/raytracer.tidy.html:991:43: [maybe] Conversion from string to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:991:43: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:991:45: [maybe] The variable wid has values with different types
+test/chromeexperiments/raytracer.tidy.html:992:41: [maybe] Converting primitive boolean to object
+test/chromeexperiments/raytracer.tidy.html:992:41: [maybe] The variable ctx has values with different types
+test/chromeexperiments/raytracer.tidy.html:992:55: [maybe] Converting undefined to string
+test/chromeexperiments/raytracer.tidy.html:992:55: [maybe] Converting undefined to string
+test/chromeexperiments/raytracer.tidy.html:992:55: [maybe] Converting undefined to string
+test/chromeexperiments/raytracer.tidy.html:992:62: [maybe] Reading absent property (computed name)
+test/chromeexperiments/raytracer.tidy.html:992:72: [maybe] Reading absent property (computed name)
+test/chromeexperiments/raytracer.tidy.html:992:84: [maybe] Reading absent property (computed name)
+test/chromeexperiments/raytracer.tidy.html:993:41: [maybe] Converting primitive boolean to object
+test/chromeexperiments/raytracer.tidy.html:993:41: [maybe] The variable ctx has values with different types
+test/chromeexperiments/raytracer.tidy.html:1007:41: [maybe] Reading absent property (computed name)
+test/chromeexperiments/raytracer.tidy.html:1010:21: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1012:25: [maybe] Reading absent property (computed name)
+test/chromeexperiments/raytracer.tidy.html:1012:44: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1013:33: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1013:41: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1013:49: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1027:22: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1027:28: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1027:34: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1030:25: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1030:33: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1030:41: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1032:24: [maybe] Reading absent property (computed name)
+test/chromeexperiments/raytracer.tidy.html:1033:21: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1033:32: [maybe] Reading absent property (computed name)
+test/chromeexperiments/raytracer.tidy.html:1036:41: [maybe] Reading absent property (computed name)
+test/chromeexperiments/raytracer.tidy.html:1046:25: [maybe] Reading absent property (computed name)
+test/chromeexperiments/raytracer.tidy.html:1047:19: [maybe] Reading absent property (computed name)
+test/chromeexperiments/raytracer.tidy.html:1050:21: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1055:30: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1055:30: [maybe] Reading absent property (computed name)
+test/chromeexperiments/raytracer.tidy.html:1056:30: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1056:30: [maybe] Reading absent property (computed name)
+test/chromeexperiments/raytracer.tidy.html:1057:30: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1057:30: [maybe] Reading absent property (computed name)
+test/chromeexperiments/raytracer.tidy.html:1065:30: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1065:36: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1065:42: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1066:44: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1069:32: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1069:38: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1069:44: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1070:30: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1071:30: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1072:30: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1075:50: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1075:58: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1075:66: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1076:31: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1076:37: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1076:43: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1078:34: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1078:34: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1080:32: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1080:32: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1080:44: [maybe] Reading absent property (computed name)
+test/chromeexperiments/raytracer.tidy.html:1081:32: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1081:32: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1081:44: [maybe] Reading absent property (computed name)
+test/chromeexperiments/raytracer.tidy.html:1082:32: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1082:32: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1082:44: [maybe] Reading absent property (computed name)
+test/chromeexperiments/raytracer.tidy.html:1094:47: [maybe] Reading absent property (computed name)
+test/chromeexperiments/raytracer.tidy.html:1095:21: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1096:29: [maybe] Reading absent property (computed name)
+test/chromeexperiments/raytracer.tidy.html:1096:32: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1096:56: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1097:30: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1097:46: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1097:62: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1100:21: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1104:22: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1104:32: [maybe] Reading absent property (computed name)
+test/chromeexperiments/raytracer.tidy.html:1104:50: [maybe] Reading absent property (computed name)
+test/chromeexperiments/raytracer.tidy.html:1104:67: [maybe] Reading absent property (computed name)
+test/chromeexperiments/raytracer.tidy.html:1105:25: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1106:25: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1107:25: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1112:25: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1112:32: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1112:42: [maybe] Reading absent property (computed name)
+test/chromeexperiments/raytracer.tidy.html:1112:60: [maybe] Reading absent property (computed name)
+test/chromeexperiments/raytracer.tidy.html:1112:80: [maybe] Reading absent property (computed name)
+test/chromeexperiments/raytracer.tidy.html:1115:32: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1115:42: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1115:52: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1117:32: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1117:48: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1117:64: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1119:35: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1119:47: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1119:59: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1120:35: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1120:47: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1120:59: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1124:29: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1162:30: [maybe] The variable imgdata has values with different types
+test/chromeexperiments/raytracer.tidy.html:1163:25: [maybe] Conversion from string to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1163:25: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1163:25: [maybe] Converting primitive boolean to object
+test/chromeexperiments/raytracer.tidy.html:1163:25: [maybe] The variable ctx has values with different types
+test/chromeexperiments/raytracer.tidy.html:1163:43: [maybe] The variable wid has values with different types
+test/chromeexperiments/raytracer.tidy.html:1163:47: [maybe] The variable hei has values with different types
+test/chromeexperiments/raytracer.tidy.html:1164:35: [maybe] Conversion from string to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1164:35: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1164:35: [maybe] Converting primitive boolean to object
+test/chromeexperiments/raytracer.tidy.html:1164:35: [maybe] The variable ctx has values with different types
+test/chromeexperiments/raytracer.tidy.html:1164:56: [maybe] The variable wid has values with different types
+test/chromeexperiments/raytracer.tidy.html:1164:60: [maybe] The variable hei has values with different types
+test/chromeexperiments/raytracer.tidy.html:1180:33: [maybe] Conversion from string to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1180:33: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1180:41: [maybe] The variable wid has values with different types
+test/chromeexperiments/raytracer.tidy.html:1180:50: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1181:40: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1182:55: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1183:55: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1199:33: [maybe] Conversion from string to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1199:33: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1199:41: [maybe] The variable wid has values with different types
+test/chromeexperiments/raytracer.tidy.html:1199:50: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1200:40: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1202:52: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1202:76: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1206:60: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1206:84: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1208:60: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1208:84: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1210:60: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1210:84: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1225:21: [maybe] Conversion from string to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1225:21: [maybe] Conversion to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1225:29: [maybe] The variable hei has values with different types
+test/chromeexperiments/raytracer.tidy.html:1228:29: [maybe] The variable updatetimer has values with different types
+test/chromeexperiments/raytracer.tidy.html:1228:44: [maybe] Conversion from string to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1228:58: [maybe] The variable updatetimer has values with different types
+test/chromeexperiments/raytracer.tidy.html:1232:29: [maybe] The variable ctx has values with different types
+test/chromeexperiments/raytracer.tidy.html:1233:33: [maybe] Converting undefined to string
+test/chromeexperiments/raytracer.tidy.html:1274:17: [maybe] Conversion from string to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1274:17: [maybe] Conversion from string to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1274:17: [maybe] Conversion from string to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1274:17: [maybe] Conversion from string to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1274:17: [maybe] Conversion from string to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1274:17: [maybe] Conversion from string to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1274:17: [maybe] Conversion from string to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1274:17: [maybe] Conversion from string to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1274:17: [maybe] Conversion from string to number yields NaN
+test/chromeexperiments/raytracer.tidy.html:1293:25: [maybe] Converting primitive string to object
+test/chromeexperiments/raytracer.tidy.html:1294:25: [maybe] Converting primitive string to object
+test/chromeexperiments/raytracer.tidy.html:107:25: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:107:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:107:37: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:107:37: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:108:25: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:108:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:108:34: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:108:34: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:108:41: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:108:41: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:108:50: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:108:50: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:108:57: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:108:57: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:108:66: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:108:66: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:108:73: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:108:73: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:108:82: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:108:82: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:108:89: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:108:89: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:113:25: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:113:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:113:41: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:113:41: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:113:57: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:113:57: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:114:25: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:114:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:115:35: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:115:35: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:115:51: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:115:51: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:115:67: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:115:67: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:115:83: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:115:83: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:117:37: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:117:37: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:117:63: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:117:63: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:119:41: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:119:41: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:119:61: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:119:61: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:119:79: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:119:79: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:120:43: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:120:43: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:121:32: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:121:32: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:125:25: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:125:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:125:34: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:125:34: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:125:49: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:125:49: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:125:58: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:125:58: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:125:73: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:125:73: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:125:82: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:125:82: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:126:25: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:126:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:127:25: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:127:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:137:25: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:137:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:137:49: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:137:49: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:137:73: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:137:73: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:139:25: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:139:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:139:41: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:139:41: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:139:57: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:139:57: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:139:73: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:139:73: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:139:89: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:139:89: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:139:105: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:139:105: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:140:25: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:140:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:140:41: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:140:41: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:140:57: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:140:57: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:141:32: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:141:32: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:143:60: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:143:60: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:143:82: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:143:82: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:151:32: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:151:48: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:151:64: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:152:43: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:152:53: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:152:63: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:152:72: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:153:32: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:153:42: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:153:52: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:153:62: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:154:25: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:154:34: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:155:25: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:155:34: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:156:32: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:156:42: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:156:52: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:156:64: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:156:73: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:157:25: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:157:35: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:158:25: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:158:35: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:171:31: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:173:38: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:175:29: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:175:43: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:175:57: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:177:42: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:177:56: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:177:70: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:177:85: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:180:29: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:187:61: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:196:59: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:196:67: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:196:90: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:196:98: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:196:121: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:196:129: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:197:58: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:205:43: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:205:51: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:205:74: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:205:82: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:205:105: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:205:113: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:206:34: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:216:41: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:216:49: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:217:41: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:217:49: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:218:41: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:218:49: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:224:31: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:226:38: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:228:29: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:228:41: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:228:53: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:229:40: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:229:52: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:229:64: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:229:77: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:232:29: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:246:46: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:246:54: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:246:73: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:246:81: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:246:100: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:246:108: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:252:38: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:252:46: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:252:65: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:252:73: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:252:92: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:252:100: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:517:25: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:517:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:518:25: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:518:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:518:34: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:518:34: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:518:42: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:518:42: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:518:51: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:518:51: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:518:59: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:518:59: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:518:68: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:518:68: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:518:76: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:518:76: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:519:25: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:519:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:519:36: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:519:36: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:519:44: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:519:44: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:519:54: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:519:54: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:519:62: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:519:62: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:519:72: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:519:72: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:519:80: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:519:80: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:520:25: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:520:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:520:36: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:520:36: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:520:44: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:520:44: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:520:54: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:520:54: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:520:62: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:520:62: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:520:72: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:520:72: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:520:80: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:520:80: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:523:25: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:523:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:523:34: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:523:34: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:523:49: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:523:49: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:523:58: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:523:58: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:523:73: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:523:73: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:523:82: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:523:82: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:524:25: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:524:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:524:41: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:524:41: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:524:57: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:524:57: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:524:73: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:524:73: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:524:89: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:524:89: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:524:105: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:524:105: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:525:25: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:525:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:525:41: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:525:41: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:525:57: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:525:57: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:526:32: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:526:32: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:528:60: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:528:60: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:528:82: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:528:82: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:536:32: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:536:32: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:536:48: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:536:48: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:536:64: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:536:64: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:537:25: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:537:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:537:34: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:537:34: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:537:48: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:537:48: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:537:61: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:537:61: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:537:74: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:537:74: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:537:83: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:537:83: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:538:25: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:538:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:538:34: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:538:34: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:538:48: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:538:48: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:538:61: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:538:61: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:538:74: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:538:74: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:538:83: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:538:83: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:539:25: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:539:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:539:38: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:539:38: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:539:52: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:539:52: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:539:65: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:539:65: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:539:78: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:539:78: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:539:87: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:539:87: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:551:29: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:552:30: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:552:39: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:552:54: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:552:69: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:553:34: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:553:49: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:553:64: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:555:47: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:556:47: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:557:47: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:558:57: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:559:34: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:568:30: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:569:30: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:570:30: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:574:29: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:576:30: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:576:39: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:576:52: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:576:65: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:576:80: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:576:93: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:576:106: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:579:41: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:580:41: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:581:41: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:582:48: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:597:25: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:597:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:597:37: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:597:37: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:598:25: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:598:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:598:34: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:598:34: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:598:41: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:598:41: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:598:50: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:598:50: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:598:57: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:598:57: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:598:66: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:598:66: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:598:73: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:598:73: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:598:82: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:598:82: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:598:91: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:598:91: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:608:29: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:608:43: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:608:57: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:611:42: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:611:56: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:611:70: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:611:85: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:617:36: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:617:44: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:640:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:641:23: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:641:30: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:641:41: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:641:71: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:642:23: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:642:30: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:642:41: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:642:71: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:645:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:645:46: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:679:17: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:679:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:680:21: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:680:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:681:22: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:681:22: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:681:29: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:681:29: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:682:22: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:682:22: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:682:29: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:682:29: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:683:24: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:683:24: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:684:34: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:684:34: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:684:48: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:684:48: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:687:34: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:687:34: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:687:48: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:687:48: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:689:25: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:689:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:690:34: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:690:34: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:690:48: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:690:48: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:693:34: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:693:34: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:693:48: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:693:48: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:696:17: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:696:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:696:29: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:696:29: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:697:17: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:697:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:697:29: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:697:29: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:698:17: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:698:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:698:29: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:698:29: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:713:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:714:32: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:715:32: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:717:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:717:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:717:36: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:721:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:722:32: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:723:32: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:724:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:724:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/raytracer.tidy.html:724:33: [info] 'this' refers to multiple abstract objects, which may cause loss of precision

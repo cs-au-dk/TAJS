@@ -1,0 +1,46 @@
+test/10k/sinuous.tidy.html:119:17: [definite] TypeError, accessing property of null/undefined
+test/10k/sinuous.tidy.html:128:17: [definite] TypeError, accessing property of null/undefined
+test/10k/sinuous.tidy.html:57:13: [definite] The conditional expression is always true
+test/10k/sinuous.tidy.html:57:17: [definite] The conditional expression is always true
+test/10k/sinuous.tidy.html:119:17: [definite] Reading absent property touches
+test/10k/sinuous.tidy.html:128:17: [definite] Reading absent property touches
+test/10k/sinuous.tidy.html:308:9: [definite] Dead assignment, property p is never read
+test/10k/sinuous.tidy.html:339:9: [definite] Dead assignment, property f is never read
+test/10k/sinuous.tidy.html:340:9: [definite] Dead assignment, property color is never read
+test/10k/sinuous.tidy.html:45:13: [definite] The variable J is never used
+test/10k/sinuous.tidy.html:82:9: [definite] The variable L is never used
+test/10k/sinuous.tidy.html:110:9: [definite] The variable L is never used
+test/10k/sinuous.tidy.html:114:9: [definite] The variable L is never used
+test/10k/sinuous.tidy.html:119:37: [definite] Unreachable code
+test/10k/sinuous.tidy.html:128:37: [definite] Unreachable code
+test/10k/sinuous.tidy.html:135:9: [definite] The variable L is never used
+test/10k/sinuous.tidy.html:162:9: [definite] The variable L is never used
+test/10k/sinuous.tidy.html:177:23: [definite] The variable L is never used
+test/10k/sinuous.tidy.html:200:30: [maybe] TypeError, accessing property of null/undefined
+test/10k/sinuous.tidy.html:221:40: [maybe] TypeError, accessing property of null/undefined
+test/10k/sinuous.tidy.html:222:27: [maybe] TypeError, accessing property of null/undefined
+test/10k/sinuous.tidy.html:228:29: [maybe] TypeError, accessing property of null/undefined
+test/10k/sinuous.tidy.html:236:23: [maybe] TypeError, accessing property of null/undefined
+test/10k/sinuous.tidy.html:247:21: [maybe] TypeError, accessing property of null/undefined
+test/10k/sinuous.tidy.html:251:29: [maybe] TypeError, accessing property of null/undefined
+test/10k/sinuous.tidy.html:278:17: [maybe] TypeError, accessing property of null/undefined
+test/10k/sinuous.tidy.html:106:17: [maybe] Reading absent property clientX
+test/10k/sinuous.tidy.html:107:17: [maybe] Reading absent property clientY
+test/10k/sinuous.tidy.html:24: [maybe] Uncaught exception, constructed at [test/10k/sinuous.tidy.html:119:17, test/10k/sinuous.tidy.html:128:17, test/10k/sinuous.tidy.html:200:30, test/10k/sinuous.tidy.html:221:40, test/10k/sinuous.tidy.html:222:27, test/10k/sinuous.tidy.html:228:29, test/10k/sinuous.tidy.html:236:23, test/10k/sinuous.tidy.html:247:21, test/10k/sinuous.tidy.html:251:29, test/10k/sinuous.tidy.html:278:17]
+test/10k/sinuous.tidy.html:29:17: [maybe] Converting object to string
+test/10k/sinuous.tidy.html:29:17: [maybe] Converting primitive string to object
+test/10k/sinuous.tidy.html:30:18: [maybe] Converting primitive string to object
+test/10k/sinuous.tidy.html:30:50: [maybe] Converting primitive string to object
+test/10k/sinuous.tidy.html:30:81: [maybe] Converting primitive string to object
+test/10k/sinuous.tidy.html:106:17: [maybe] Conversion to number yields NaN
+test/10k/sinuous.tidy.html:107:17: [maybe] Conversion to number yields NaN
+test/10k/sinuous.tidy.html:199:25: [maybe] Reading absent property (computed name)
+test/10k/sinuous.tidy.html:200:21: [maybe] Conversion to number yields NaN
+test/10k/sinuous.tidy.html:201:21: [maybe] Conversion to number yields NaN
+test/10k/sinuous.tidy.html:202:21: [maybe] Conversion to number yields NaN
+test/10k/sinuous.tidy.html:219:21: [maybe] Reading absent property (computed name)
+test/10k/sinuous.tidy.html:246:21: [maybe] Reading absent property (computed name)
+test/10k/sinuous.tidy.html:250:29: [maybe] Reading absent property (computed name)
+test/10k/sinuous.tidy.html:277:21: [maybe] Reading absent property (computed name)
+test/10k/sinuous.tidy.html:311:23: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/sinuous.tidy.html:312:23: [info] 'this' refers to multiple abstract objects, which may cause loss of precision

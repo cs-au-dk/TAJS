@@ -1,0 +1,8 @@
+test/v8tests/property-object-key.js:31:1: [definite] ReferenceError, reading absent variable assertEquals
+test/v8tests/property-object-key.js:28:11: [definite] Dead assignment, property toString is never read
+test/v8tests/property-object-key.js:29:14: [definite] Dead assignment, property baz is never read
+test/v8tests/property-object-key.js:28:5: [definite] The variable key is never used
+test/v8tests/property-object-key.js:28:23: [definite] Unreachable function
+test/v8tests/property-object-key.js:29:5: [definite] The variable object is never used
+test/v8tests/property-object-key.js:31:14: [definite] Unreachable code
+test/v8tests/property-object-key.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/property-object-key.js:31:1]

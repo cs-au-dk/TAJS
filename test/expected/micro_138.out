@@ -1,0 +1,30 @@
+test/micro/test138.js:6:1: [definite] Dead assignment, property a is never read
+test/micro/test138.js:7:1: [definite] Dead assignment, property b is never read
+test/micro/test138.js:11:2: [definite] Dead assignment, property a is never read
+test/micro/test138.js:12:2: [definite] Dead assignment, property c is never read
+test/micro/test138.js:13:2: [definite] Dead assignment, property d is never read
+test/micro/test138.js:18:1: [info] Abstract state (modified parts):
+  @<the global object>[native] (<initial state>):
+    make: [@make#fun1]
+    x: [@Object#node40, *Object#node40]
+    y: Undef|[@Object#node40]
+  @Math[native] (<initial state>):
+  @Object.prototype[native] (<initial state>):
+  @Object#node1 (test/micro/test138.js:1:1):
+    constructor: [@make#fun1]
+    [[Prototype]] = [@Object.prototype[native]]
+    [[Value]] = NaN
+  @make#fun1 (test/micro/test138.js:1:1):
+    length: 0.0
+    prototype: [@Object#node1]
+    [[Prototype]] = [@Function.prototype[native]]
+  *Object#node40 (test/micro/test138.js:2:9):
+    a: 7.0
+    b: [*Object#node40]
+    [[Prototype]] = [@Object.prototype[native]]
+  @Object#node40 (test/micro/test138.js:2:9):
+    a: 7.0|"foo"
+    b: [@Object#node40]|absent
+    c: [@Object#node40]|absent
+    d: [*Object#node40]|absent
+    [[Prototype]] = [@Object.prototype[native]]

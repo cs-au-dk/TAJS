@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Aarhus University
+ * Copyright 2009-2013 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,6 +16,7 @@
 
 package dk.brics.tajs.solver;
 
+import static dk.brics.tajs.util.Collections.addToMapSet;
 import static dk.brics.tajs.util.Collections.newMap;
 import static dk.brics.tajs.util.Collections.newSet;
 
@@ -24,8 +25,7 @@ import java.util.Set;
 
 import org.apache.log4j.Logger;
 
-import dk.brics.tajs.flowgraph.AbstractNode;
-import dk.brics.tajs.flowgraph.Function;
+import dk.brics.tajs.flowgraph.BasicBlock;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.util.AnalysisException;
 import dk.brics.tajs.util.Collections;
@@ -45,22 +45,25 @@ public class CallDependencies<CallContextType extends ICallContext<CallContextTy
 
 	private final class Edge {
 
-		private AbstractNode caller;
+		private BasicBlock caller;
 		
 		private CallContextType caller_context;
 		
-		private Function callee;
+		private CallContextType edge_context;
+		
+		private BasicBlock callee;
 		
 		private CallContextType callee_context;
 		
-		public Edge(AbstractNode caller, CallContextType caller_context, Function callee, CallContextType callee_context) {
+		public Edge(BasicBlock caller, CallContextType caller_context, CallContextType edge_context, BasicBlock callee, CallContextType callee_context) {
 			this.caller = caller;
 			this.caller_context = caller_context;
+			this.edge_context = edge_context;
 			this.callee = callee;
 			this.callee_context = callee_context;
 		}
 
-		public Function getCallee() {
+		public BasicBlock getCallee() {
 			return callee;
 		}
 
@@ -75,6 +78,7 @@ public class CallDependencies<CallContextType extends ICallContext<CallContextTy
 			result = prime * result + callee_context.hashCode();
 			result = prime * result + caller.getIndex();
 			result = prime * result + caller_context.hashCode();
+			result = prime * result + edge_context.hashCode();
 			return result;
 		}
 
@@ -96,12 +100,14 @@ public class CallDependencies<CallContextType extends ICallContext<CallContextTy
 				return false;
 			if (!caller_context.equals(other.caller_context))
 				return false;
+			if (!edge_context.equals(other.edge_context))
+				return false;
 			return true;
 		}
 
 		@Override
 		public String toString() {
-			return "(" + caller + " " + caller.getSourceLocation() + ", " + caller_context + ", " + callee + ", " + callee_context + ")";
+			return "(" + caller + " " + caller.getSourceLocation() + ", " + caller_context + ", " + edge_context + ", " + callee + ", " + callee_context + ")";
 		}		
 	}
 
@@ -132,18 +138,13 @@ public class CallDependencies<CallContextType extends ICallContext<CallContextTy
      * Records a call edge that awaits return flow.
      * Has no effect if charged edges are disabled.
      */
-    public void chargeCallEdge(AbstractNode caller, CallContextType caller_context, Function callee, CallContextType callee_context) {
+    public void chargeCallEdge(BasicBlock caller, CallContextType caller_context, CallContextType edge_context, BasicBlock callee, CallContextType callee_context) {
 		if (Options.isChargedCallsDisabled())
 			return;
-		Edge e = new Edge(caller, caller_context, callee, callee_context);
+		Edge e = new Edge(caller, caller_context, edge_context, callee, callee_context);
 		if (charged_call_edges.add(e)) {
-			BlockAndContext<CallContextType> caller_entry = new BlockAndContext<>(caller.getBlock().getFunction().getEntry(), caller_context.toEntry(caller.getBlock()).getContext());
-			Set<Edge> s = charged_call_edges_map.get(caller_entry);
-			if (s == null) {
-				s = newSet();
-				charged_call_edges_map.put(caller_entry, s);
-			}
-			s.add(e);
+			BlockAndContext<CallContextType> caller_entry = new BlockAndContext<>(caller_context.getEntry(), caller_context);
+			addToMapSet(charged_call_edges_map, caller_entry, e);
 			logger.debug("charging call edge " + e);
 		}
     }
@@ -152,12 +153,12 @@ public class CallDependencies<CallContextType extends ICallContext<CallContextTy
      * Discharges return flow for a call edge.
      * Has no effect if charged edges are disabled.
      */
-    public void dischargeCallEdge(AbstractNode caller, CallContextType caller_context, Function callee, CallContextType callee_context) {
+    public void dischargeCallEdge(BasicBlock caller, CallContextType caller_context, CallContextType edge_context, BasicBlock callee, CallContextType callee_context) {
 		if (Options.isChargedCallsDisabled())
 			return;
-		Edge e = new Edge(caller, caller_context, callee, callee_context);
+		Edge e = new Edge(caller, caller_context, edge_context, callee, callee_context);
 		if (charged_call_edges.remove(e)) {
-			BlockAndContext<CallContextType> caller_entry = new BlockAndContext<>(caller.getBlock().getFunction().getEntry(), caller_context.toEntry(caller.getBlock()).getContext());
+			BlockAndContext<CallContextType> caller_entry = new BlockAndContext<>(caller_context.getEntry(), caller_context);
 			Set<Edge> s = charged_call_edges_map.get(caller_entry);
 			if (s == null)
 				throw new AnalysisException("unexpected null set");
@@ -172,43 +173,43 @@ public class CallDependencies<CallContextType extends ICallContext<CallContextTy
      * Checks whether the given edge is charged.
      * Always returns true if charged edges are disabled.
      */
-    public boolean isCallEdgeCharged(AbstractNode caller, CallContextType caller_context, Function callee, CallContextType callee_context) {
+    public boolean isCallEdgeCharged(BasicBlock caller, CallContextType caller_context, CallContextType edge_context, BasicBlock callee, CallContextType callee_context) {
 		if (Options.isChargedCallsDisabled())
 			return true;
-		return charged_call_edges.contains(new Edge(caller, caller_context, callee, callee_context));
+		return charged_call_edges.contains(new Edge(caller, caller_context, edge_context, callee, callee_context));
     }
     
-    private void addToFunctionActivityLevel(Function f, CallContextType c, int value) {
-    	BlockAndContext<CallContextType> bc = new BlockAndContext<>(f.getEntry(), c);
+    private void addToFunctionActivityLevel(BasicBlock f_entry, CallContextType c, int value) {
+    	BlockAndContext<CallContextType> bc = new BlockAndContext<>(f_entry, c);
     	Integer i = function_activity_level.get(bc);
     	if (i == null)
     		i = 0;
     	i += value;
     	if (i != 0) {
     		if (i < 0)
-    			throw new AnalysisException("negative function activity level for " + f + " " + f.getSourceLocation() + ", " + c);
+    			throw new AnalysisException("negative function activity level for " + f_entry + " " + f_entry.getSourceLocation() + ", " + c);
     		function_activity_level.put(bc, i);
     	} else
     		function_activity_level.remove(bc);
-    	logger.debug("function activity level for " + f + " " + f.getSourceLocation() + ", " + c + ": " + i);
+    	logger.debug("function activity level for " + f_entry + " " + f_entry.getSourceLocation() + ", " + c + ": " + i);
     }
 
     /**
      * Increments the function activity level for the given function and context.
      */
-    public void incrementFunctionActivityLevel(Function f, CallContextType c) {
+    public void incrementFunctionActivityLevel(BasicBlock f_entry, CallContextType c) {
 		if (Options.isChargedCallsDisabled())
 			return;
-    	addToFunctionActivityLevel(f, c, 1);
+    	addToFunctionActivityLevel(f_entry, c, 1);
     }
     
     /**
      * Decrements the function activity level for the given function and context.
      */
-    public void decrementFunctionActivityLevel(Function f, CallContextType c) {
+    public void decrementFunctionActivityLevel(BasicBlock f_entry, CallContextType c) {
 		if (Options.isChargedCallsDisabled())
 			return;
-    	addToFunctionActivityLevel(f, c, -1);
+    	addToFunctionActivityLevel(f_entry, c, -1);
     }
     
     /**
@@ -216,14 +217,14 @@ public class CallDependencies<CallContextType extends ICallContext<CallContextTy
      * i.e. if a function is reachable along charged edges and the function contains a location that is in the worklist.
      * Always returns true if charged calls are disabled.
      */
-    public boolean isFunctionActive(Function f, CallContextType c) {
+    public boolean isFunctionActive(BasicBlock f_entry, CallContextType c) {
 		if (Options.isChargedCallsDisabled())
 			return true;
-		return isFunctionActive(f, c, Collections.<BlockAndContext<CallContextType>>newSet());
+		return isFunctionActive(f_entry, c, Collections.<BlockAndContext<CallContextType>>newSet());
     }
     
-    private boolean isFunctionActive(Function f, CallContextType c, Set<BlockAndContext<CallContextType>> visited) {
-    	BlockAndContext<CallContextType> b = new BlockAndContext<>(f.getEntry(), c);
+    private boolean isFunctionActive(BasicBlock f_entry, CallContextType c, Set<BlockAndContext<CallContextType>> visited) {
+    	BlockAndContext<CallContextType> b = new BlockAndContext<>(f_entry, c);
     	if (visited.contains(b))
     		return false;
     	visited.add(b);

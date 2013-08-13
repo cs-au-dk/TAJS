@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Aarhus University
+ * Copyright 2009-2013 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -44,24 +44,37 @@ import org.w3c.tidy.Tidy;
 import org.w3c.tidy.TidyMessage;
 import org.w3c.tidy.TidyMessageListener;
 
-import com.sun.org.apache.xml.internal.serialize.XMLSerializer;
+// import com.sun.org.apache.xml.internal.serialize.XMLSerializer;
 
+import dk.brics.tajs.htmlparser.JavaScriptSource.EmbeddedJavaScriptSource;
+import dk.brics.tajs.htmlparser.JavaScriptSource.EventHandlerJavaScriptSource;
+import dk.brics.tajs.htmlparser.JavaScriptSource.ExternalJavaScriptSource;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.util.AnalysisException;
 import dk.brics.tajs.util.Collections;
 
+/**
+ * HTML parser using JTidy and JDOM to extract JavaScript code and HTML elements from HTML files.
+ */
 public class HTMLParser {
 
 	private static Logger logger = Logger.getLogger(HTMLParser.class); 
 
-	private List<JavaScriptSource> jsList;
-    private List<JavaScriptSource> jsEventList;
-    private List<HtmlSource> htmlElementList;
+	private List<JavaScriptSource> scriptList;
+
+	private List<EventHandlerJavaScriptSource> eventList;
+    
+	private List<HtmlSource> htmlElementList;
 
     public HTMLParser() { }
 
+    /**
+     * Parses the given HTML file.
+     * @param inputFileName
+     * @return the JDOM document of the HTML file
+     * @throws IOException if unable to read the file
+     */
     public Document build(String inputFileName) throws IOException {
-
         String outputFileName;
         if (inputFileName.endsWith(".htm")) {
             outputFileName = inputFileName.substring(0, inputFileName.indexOf(".htm")) + ".tidy.htm";
@@ -70,17 +83,11 @@ public class HTMLParser {
         } else {
             outputFileName = inputFileName + ".tidy";
         }
-
-        {
+        try (FileInputStream in = new FileInputStream(inputFileName); 
+        		FileOutputStream outputStream = new FileOutputStream(outputFileName)) {
             Tidy tidy = newTidy();
-            org.w3c.dom.Document document = tidy.parseDOM(new FileInputStream(inputFileName), null); // TODO: potential resource leak?
-            XMLSerializer serializer = new XMLSerializer();
-            serializer.setOutputByteStream(new FileOutputStream(outputFileName)); // TODO: potential resource leak?
-            FileOutputStream outputStream = new FileOutputStream(outputFileName);
-            tidy.pprint(document, outputStream);
-            outputStream.close();
+        	tidy.pprint(tidy.parseDOM(in, null), outputStream);
         }
-
         SAXBuilder builder = new LineNumberSAXBuilder();
         Document document;
         try {
@@ -88,47 +95,60 @@ public class HTMLParser {
         } catch (JDOMException e) {
             throw new IOException(e);
         }
-
-        JavaScriptVisitor visitor = new JavaScriptVisitor(document, outputFileName);
+        ScriptVisitor visitor = new ScriptVisitor(document, outputFileName);
         visitor.visitDocument();
-        jsList = visitor.getJavaScript();
-
+        scriptList = visitor.getJavaScript();
         if (!Options.isIgnoreHTMLContent()) {
             EventVisitor eventVisitor = new EventVisitor(document, outputFileName);
             eventVisitor.visitDocument();
-            jsEventList = eventVisitor.getJsEventList();
+            eventList = eventVisitor.getEventHandlerAttributeList();
             htmlElementList = eventVisitor.getHtmlElementList();
         }
-
         return document;
     }
 
-    public List<JavaScriptSource> getJsEventList() {
-        return jsEventList;
+    /**
+     * Returns the JavaScript code from event handler attributes with "javascript:".
+     */
+    public List<EventHandlerJavaScriptSource> getEventHandlerAttributeList() {
+        return eventList;
     }
 
-    public List<JavaScriptSource> getJsList() {
-        return jsList;
+    /**
+     * Returns the JavaScript code from 'script' elements, both embedded and external.
+     */
+    public List<JavaScriptSource> getScriptList() {
+        return scriptList;
     }
 
-    public List<HtmlSource> getHtmlSourceList() {
+    /**
+     * Returns the HTML elements (only if DSL is enabled).
+     */
+    public List<HtmlSource> getHtmlSourceList() { // FIXME: really need this for DSL?
         return htmlElementList;
     }
 
+    private static int getElementLineNumber(Element element) {
+        return ((LineNumberElement) element).getStartLine() - 1;
+    }
+
     private static class EventVisitor extends HTMLVisitorImpl {
-        private List<JavaScriptSource> jsEventList;
-        private List<HtmlSource> htmlElementList;
-        private final String filename;
+
+    	private List<EventHandlerJavaScriptSource> eventList;
+        
+    	private List<HtmlSource> htmlElementList;
+        
+    	private final String filename;
 
         public EventVisitor(Document document, String filename) {
             super(document);
-            this.jsEventList = newList();
+            this.eventList = newList();
             this.htmlElementList = newList();
             this.filename = filename;
         }
 
-        public List<JavaScriptSource> getJsEventList() {
-            return jsEventList;
+        public List<EventHandlerJavaScriptSource> getEventHandlerAttributeList() {
+            return eventList;
         }
         
         public List<HtmlSource> getHtmlElementList() {
@@ -143,9 +163,9 @@ public class HTMLParser {
             // Pick up event handlers
             for (Attribute attribute : (List<Attribute>) element.getAttributes()) {
                 String name = attribute.getName();
-                String value = attribute.getValue();
+                String javaScriptSource = attribute.getValue();
                 if (DOMEventHelpers.isEventAttribute(name)) {
-                    jsEventList.add(new JavaScriptSource(filename, name, value, getElementLinenumber(element)));
+                    eventList.add(new EventHandlerJavaScriptSource(filename, javaScriptSource, getElementLineNumber(element), name));
                 }
             }
             
@@ -155,13 +175,8 @@ public class HTMLParser {
                 for (Attribute attribute : (List<Attribute>) element.getAttributes()) {
                     attributes.put(attribute.getName(), attribute.getValue());    
                 }
-                htmlElementList.add(new HtmlSource(tag, attributes, filename, getElementLinenumber(element)));
+                htmlElementList.add(new HtmlSource(tag, attributes, filename, getElementLineNumber(element)));
             }
-
-        }
-
-        private static int getElementLinenumber(Element element) {
-            return ((LineNumberElement) element).getStartLine() - 1;
         }
 
         @Override
@@ -175,7 +190,7 @@ public class HTMLParser {
 
             if (href.startsWith("javascript:")) {
                 String jsCode = href.substring("javascript:".length());
-                jsEventList.add(new JavaScriptSource(filename, "onclick", jsCode, getElementLinenumber(element)));
+                eventList.add(new EventHandlerJavaScriptSource(filename, jsCode, getElementLineNumber(element), "onclick"));
             }
         }
 
@@ -187,17 +202,14 @@ public class HTMLParser {
                 String value = attribute.getValue();
 
                 if (DOMEventHelpers.isLoadEventAttribute(name) || DOMEventHelpers.isUnloadEventAttribute(name)) {
-                    jsEventList.add(new JavaScriptSource(filename, name, value, getElementLinenumber(element)));
+                    eventList.add(new EventHandlerJavaScriptSource(filename, value, getElementLineNumber(element), name));
                 }
             }
         }
-
     }
 
     /**
      * Configures a new JTidy instance.
-     *
-     * @return Returns a new configured JTidy instance.
      */
     private static Tidy newTidy() {
         Tidy tidy = new Tidy();
@@ -205,9 +217,7 @@ public class HTMLParser {
 
             @Override
             public void messageReceived(TidyMessage msg) {
-    			if (logger.isDebugEnabled()) 
-    				logger.debug(String.format("HTML warning at %s:%s : %s", new Object[]{
-    						msg.getLine(), msg.getColumn(), msg.getMessage()}));
+            	logger.warn(String.format("HTML warning at %s:%s: %s", msg.getLine(), msg.getColumn(), msg.getMessage()));
             }
         });
         tidy.setDropEmptyParas(false);
@@ -234,19 +244,31 @@ public class HTMLParser {
         return tidy;
     }
 
-    private static class JavaScriptVisitor extends HTMLVisitorImpl {
+    /**
+     * HTML document visitor that extracts JavaScript code from 'script' elements.
+     */
+    private static class ScriptVisitor extends HTMLVisitorImpl {
 
         private List<JavaScriptSource> fileToJS = Collections.newList();
 
         private final String htmlFileName;
+
         private final File file;
 
-        private JavaScriptVisitor(Document document, String htmlFileName) {
+        /**
+         * Constructs a new visitor.
+         * @param document the HTML document to traverse
+         * @param htmlFileName the name of the HTML file
+         */
+        private ScriptVisitor(Document document, String htmlFileName) {
             super(document);
             this.htmlFileName = htmlFileName;
             this.file = new File(htmlFileName);
         }
 
+        /**
+         * Returns the resulting list of JavaScript snippets.
+         */
         public List<JavaScriptSource> getJavaScript() {
             return fileToJS;
         }
@@ -255,50 +277,40 @@ public class HTMLParser {
         public void visitScript(Element element) {
             LineNumberElement elm = (LineNumberElement) element;
             String src = element.getAttributeValue("src");
-            
-            if (src == null) {
-                // Embedded script
-                fileToJS.add(new JavaScriptSource(htmlFileName, element.getText() + "\n", elm.getStartLine()));
-            } else {
-                // External script
-
-                if (Options.isDSLEnabled()) {
-                    // Libraries for which we have models
-                    if ("phonegap.js".equals(src)) {
-                        return;
-                    }
-                }
-
-                // Script in file?
+            if (src == null) { // embedded script
+                fileToJS.add(new EmbeddedJavaScriptSource(htmlFileName, element.getText(), getElementLineNumber(elm)));
+            } else { // external script
+            	// TODO: use Loader.resolveRelative and Loader.getString instead of readScriptFile and readScriptURL
+                // script in file?
                 String pathname = file.getParent() + File.separator + src;
                 File srcFile = new File(pathname);
                 if (srcFile.exists()) {
                     String s = readScriptFile(srcFile);
                     if (s != null) {
-                        fileToJS.add(new JavaScriptSource(src, s, elm.getStartLine()));
+                        fileToJS.add(new ExternalJavaScriptSource(src, s));
                     }
                     return;
                 }
-
-                // Script in url?
+                // script in url?
                 URL url;
                 try {
                     url = new URL(src);
                     String s = readScriptURL(url);
                     if (s != null) {
-                        fileToJS.add(new JavaScriptSource(src, s, elm.getStartLine()));
+                        fileToJS.add(new ExternalJavaScriptSource(src, s));
                     }
                 } catch (MalformedURLException e) {
                     throw new AnalysisException(e);
                 }
-
             }
         }
 
+        /**
+         * Reads JavaScript code from a file.
+         */
         private static String readScriptFile(File file) {
-            try {
+            try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
                 StringBuilder sb = new StringBuilder();
-                BufferedReader reader = new BufferedReader(new FileReader(file)); // TODO: resource leak?
                 String line;
                 while ((line = reader.readLine()) != null) {
                     sb.append(line);
@@ -312,9 +324,8 @@ public class HTMLParser {
         }
 
         private static String readScriptURL(URL url) {
-            try {
+            try (BufferedReader bfr = new BufferedReader(new InputStreamReader(url.openStream()))) {
                 StringBuilder sb = new StringBuilder();
-                BufferedReader bfr = new BufferedReader(new InputStreamReader(url.openStream()));
                 String line;
                 while ((line = bfr.readLine()) != null) {
                     sb.append(line);
@@ -329,7 +340,5 @@ public class HTMLParser {
                 return null;
             }
         }
-
     }
-
 }

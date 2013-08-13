@@ -1,3 +1,0 @@
-test/html/html08.js:2: [info] Abstract value: "here!"
-test/html/html08.js:5: [definite] Unreachable function
-test/html/html08.js:6: [definite] Unreachable code

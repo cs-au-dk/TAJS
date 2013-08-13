@@ -1,0 +1,21 @@
+test/v8tests/unicode-test.js:9087:1: [definite] ReferenceError, reading absent variable assertEquals
+test/v8tests/unicode-test.js:9050:1: [definite] Unreachable function get_most_popular
+test/v8tests/unicode-test.js:9071:5: [definite] The variable languages is never used
+test/v8tests/unicode-test.js:9085:5: [definite] The variable number_re is never used
+test/v8tests/unicode-test.js:9086:5: [definite] The variable latin_lc is never used
+test/v8tests/unicode-test.js:9087:14: [definite] Unreachable code
+test/v8tests/unicode-test.js:9088:5: [definite] The variable latin_lc_re is never used
+test/v8tests/unicode-test.js:9089:5: [definite] The variable latin_lc_re2 is never used
+test/v8tests/unicode-test.js:9107:5: [definite] The variable i is never used
+test/v8tests/unicode-test.js:9110:7: [definite] The variable text is never used
+test/v8tests/unicode-test.js:9114:7: [definite] The variable most_popular is never used
+test/v8tests/unicode-test.js:9115:7: [definite] The variable idx is never used
+test/v8tests/unicode-test.js:9116:7: [definite] The variable re is never used
+test/v8tests/unicode-test.js:9117:7: [definite] The variable last_c is never used
+test/v8tests/unicode-test.js:9119:9: [definite] The variable c is never used
+test/v8tests/unicode-test.js:9132:7: [definite] The variable char_class is never used
+test/v8tests/unicode-test.js:9133:7: [definite] The variable munged is never used
+test/v8tests/unicode-test.js:9137:5: [definite] The variable thai_l_thingy is never used
+test/v8tests/unicode-test.js:9138:5: [definite] The variable thai_l_regexp is never used
+test/v8tests/unicode-test.js:9139:5: [definite] The variable thai_l_regexp2 is never used
+test/v8tests/unicode-test.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/unicode-test.js:9087:1]

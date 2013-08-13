@@ -1,0 +1,9 @@
+test/v8tests/mirror-date.js:33:16: [definite] ReferenceError, reading absent variable debug
+test/v8tests/mirror-date.js:31:1: [definite] The variable d is never used
+test/v8tests/mirror-date.js:31:1: [definite] The variable iso8601 is never used
+test/v8tests/mirror-date.js:33:7: [definite] The variable mirror is never used
+test/v8tests/mirror-date.js:33:16: [definite] Unreachable code
+test/v8tests/mirror-date.js:34:7: [definite] The variable json is never used
+test/v8tests/mirror-date.js:51:7: [definite] The variable fromJSON is never used
+test/v8tests/mirror-date.js:60:9: [definite] Unreachable code
+test/v8tests/mirror-date.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/mirror-date.js:33:16]

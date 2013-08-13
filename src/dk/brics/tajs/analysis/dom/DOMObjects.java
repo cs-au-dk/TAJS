@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Aarhus University
+ * Copyright 2009-2013 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -84,7 +84,7 @@ public enum DOMObjects implements HostObject {
     WINDOW_REMOVE_EVENT_LISTENER("Window.removeEventListener"),
 
     // Window JSON
-    WINDOW_JSON("Window.JSON"), // XXX: JSON.parse is in ES5
+    WINDOW_JSON("Window.JSON"), // TODO: JSON.parse is in ES5
     WINDOW_JSON_PARSE("Window.JSON.parse"),
 
     // /////////////////////////////////////////////////////////////////////////
@@ -628,7 +628,7 @@ public enum DOMObjects implements HostObject {
         return api;
     }
 
-// XXX: getters/setters
+// TODO: getters/setters
 //    @Override
 //    public boolean hasGetter(String p) {
 //        return false;

@@ -1,0 +1,55 @@
+test/micro/test87.js:1:9: [definite] Dead assignment, property b is never read
+test/micro/test87.js:1:9: [definite] Dead assignment, property c is never read
+test/micro/test87.js:6:2: [definite] Dead assignment, property b is never read
+test/micro/test87.js:5:2: [info] Abstract state:
+Abstract state:
+  Execution context: ScopeChain=[[@activation#node21],[@<the global object>[native]]], VariableObject=[@activation#node21], this=[@<the global object>[native]]
+  Summarized: maybe=[], definitely=[]
+  Store (excluding basis and default objects): 
+    @<the global object>[native] (<initial state>): {dumpState:^(@<the global object>[native].dumpState[present]),[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Prototype]]=?,[[Value]]=?,[[Scope]]=?}
+    @activation#node21 (test/micro/test87.js:3:1): {dumpState:^(@activation#node21.dumpState[absent]),[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Value]]=?,[[Scope]]=?}
+  Registers: 
+    v1=Undef
+    v2=[@<the global object>[native]]
+    v3=^(@<the global object>[native].dumpState[present])
+test/micro/test87.js:7:2: [info] Abstract state:
+Abstract state:
+  Execution context: ScopeChain=[[@activation#node21],[@<the global object>[native]]], VariableObject=[@activation#node21], this=[@<the global object>[native]]
+  Summarized: maybe=[], definitely=[]
+  Store (excluding basis and default objects): 
+    @<the global object>[native] (<initial state>): {a:[@Object#node3],dumpState:^(@<the global object>[native].dumpState[present]),[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Prototype]]=?,[[Value]]=?,[[Scope]]=?}
+    @Object#node3 (test/micro/test87.js:1:9): {b:^(@activation#node21.x[present]),[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Prototype]]=?,[[Value]]=?,[[Scope]]=?}
+    @activation#node21 (test/micro/test87.js:3:1): {a:^(@activation#node21.a[absent]),dumpState:^(@activation#node21.dumpState[absent]),x:^(@activation#node21.x[present]),[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Value]]=?,[[Scope]]=?}
+  Registers: 
+    v1=Undef
+    v6=[@<the global object>[native]]
+    v7=^(@<the global object>[native].dumpState[present])
+test/micro/test87.js:11:1: [info] Abstract state:
+Abstract state:
+  Execution context: ScopeChain=[[@<the global object>[native]]], VariableObject=[@<the global object>[native]], this=[@<the global object>[native]]
+  Summarized: maybe=[@f#fun1, @Object#node2, @Object#node3], definitely=[@f#fun1, @Object#node2, @Object#node3]
+  Store (excluding basis and default objects): 
+    @<the global object>[native] (<initial state>): {a:[@Object#node3],dumpState:^(@<the global object>[native].dumpState[present]),f:[@f#fun1],[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Prototype]]=?,[[Value]]=?,[[Scope]]=?}
+    @Object.prototype[native] (<initial state>): {b:^(@Object.prototype[native].b[absent]),c:^(@Object.prototype[native].c[absent]),[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Prototype]]=Null,[[Value]]=?,[[Scope]]=?}
+    @Object#node3 (test/micro/test87.js:1:9): {b:42.0,c:true,[[Prototype]]=[@Object.prototype[native]]}
+    @Object#node2 (test/micro/test87.js:3:1): {constructor:[@f#fun1],[[Prototype]]=[@Object.prototype[native]],[[Value]]=NaN}
+    @f#fun1 (test/micro/test87.js:3:1): {length:1.0,prototype:[@Object#node2],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@<the global object>[native]]]}
+  Registers: 
+    v1=Undef
+    v5=[@<the global object>[native]]
+    v6=^(@<the global object>[native].dumpState[present])
+test/micro/test87.js:13:1: [info] Abstract state:
+Abstract state:
+  Execution context: ScopeChain=[[@<the global object>[native]]], VariableObject=[@<the global object>[native]], this=[@<the global object>[native]]
+  Summarized: maybe=[@f#fun1, @Object#node2, @Object#node3, @activation#node21, @arguments#node21], definitely=[@f#fun1, @Object#node2, @Object#node3, @activation#node21, @arguments#node21]
+  Store (excluding basis and default objects): 
+    @<the global object>[native] (<initial state>): {a:[@Object#node3],dumpState:[@dumpState[native]],f:[@f#fun1],[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Prototype]]=?,[[Value]]=?,[[Scope]]=?}
+    @Object.prototype[native] (<initial state>): {b:^(@Object.prototype[native].b[absent]),c:^(@Object.prototype[native].c[absent]),[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Prototype]]=Null,[[Value]]=?,[[Scope]]=?}
+    @Object#node3 (test/micro/test87.js:1:9): {b:17.0,c:true,[[Prototype]]=[@Object.prototype[native]]}
+    @Object#node2 (test/micro/test87.js:3:1): {constructor:[@f#fun1],[[Prototype]]=[@Object.prototype[native]],[[Value]]=NaN}
+    @f#fun1 (test/micro/test87.js:3:1): {length:1.0,prototype:[@Object#node2],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@<the global object>[native]]]}
+  Registers: 
+    v1=Undef
+    v10=[@<the global object>[native]]
+    v11=[@dumpState[native]]
+test/micro/test87.js:15:1: [info] Abstract object: {b:17.0,c:true,[[Prototype]]=[@Object.prototype[native]]}

@@ -1,0 +1,2 @@
+
+var jsVar2;

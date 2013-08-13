@@ -1,4 +1,0 @@
-test/micro/test146.js:2:11: [maybe] Converting primitive string to object
-test/micro/test146.js:3:11: [maybe] Converting primitive string to object
-test/micro/test146.js:2:1: [info] Abstract value: "H"
-test/micro/test146.js:3:1: [info] Abstract value: "W"

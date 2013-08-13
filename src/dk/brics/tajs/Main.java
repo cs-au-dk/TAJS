@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Aarhus University
+ * Copyright 2009-2013 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -34,8 +34,8 @@ import dk.brics.tajs.analysis.CallContext;
 import dk.brics.tajs.analysis.State;
 import dk.brics.tajs.flowgraph.FlowGraph;
 import dk.brics.tajs.htmlparser.HTMLParser;
-import dk.brics.tajs.htmlparser.HtmlSource;
 import dk.brics.tajs.htmlparser.JavaScriptSource;
+import dk.brics.tajs.htmlparser.JavaScriptSource.EventHandlerJavaScriptSource;
 import dk.brics.tajs.js2flowgraph.RhinoASTToFlowgraph;
 import dk.brics.tajs.lattice.BlockState;
 import dk.brics.tajs.lattice.CallEdge;
@@ -70,6 +70,7 @@ public class Main {
 	 * the usage. Terminates with System.exit.
 	 */
 	public static void main(String[] args) {
+		Options.reset();
 		try {
 			initLogging();
 			Analysis a = init(args, null);
@@ -101,36 +102,22 @@ public class Main {
 	 */
 	public static Analysis init(String[] args, SolverSynchronizer sync) throws AnalysisException {
 		boolean show_usage = false;
-		boolean collect_libraries = false;
-		List<String> files = newList();
-		for (String arg : args)
-			if (arg.startsWith("-") && arg.length() > 1) {
-				if (!Options.set(arg)) {
-					System.out.println("Option not recognized: " + arg);
-					show_usage = true;
-					collect_libraries = false;
-				} else
-					collect_libraries = arg.equals("-ignore-libraries");
-			} else if (collect_libraries)
-				Options.addLibrary(arg);
-			else
-				files.add(arg);
+		Options.parse(args);
+		List<String> files = Options.getArguments();
+		
 		if (files.isEmpty()) {
 			System.out.println("No source files");
 			show_usage = true;
 		}
-		if (show_usage || !Options.isQuietEnabled()) {
-			if (show_usage)
-				System.out.println();
-			System.out.println("TAJS - Type Analyzer for JavaScript");
-			System.out.println("Copyright 2012 Aarhus University\n");
-		}
 		if (show_usage) {
+			System.out.println("TAJS - Type Analyzer for JavaScript");
+			System.out.println("Copyright 2009-2013 Aarhus University\n");
 			System.out.println("Usage: java -jar tajs-all.jar [OPTION]... [FILE]...\n");
-			System.out.print(Options.describe());
+			Options.describe();
 			return null;
 		}
-		Options.dump();
+		if(Options.isDebugEnabled())
+			Options.dump();
 
 		enterPhase(LOADING_FILES);
 
@@ -147,7 +134,6 @@ public class Main {
 					js_files.add(fn);
 			}
 			RhinoASTToFlowgraph builder = new RhinoASTToFlowgraph();
-			builder.buildFromFiles(js_files);
 			if (!html_files.isEmpty()) {
 				if (html_files.size() > 1)
 					throw new AnalysisException("Only one HTML file can be analyzed at a time.");
@@ -155,11 +141,13 @@ public class Main {
 					Options.enableIncludeDom(); // enable DOM if any HTML files are involved, unless DSL is enabled
 				HTMLParser p = new HTMLParser();
 				document = p.build(html_files.get(0));
-                List<JavaScriptSource> jsEventList = p.getJsEventList();
-                List<JavaScriptSource> jsList = p.getJsList();
-                List<HtmlSource> htmlSourceList = p.getHtmlSourceList();
-
-                builder.buildFromSources(htmlSourceList, jsEventList, jsList); // TODO: correct order of combination of the code/page fragments?
+                List<EventHandlerJavaScriptSource> eventList = p.getEventHandlerAttributeList();
+                List<JavaScriptSource> scriptList = p.getScriptList();
+//                List<HtmlSource> htmlSourceList = p.getHtmlSourceList(); // TODO: getHtmlSourceList not used (intended for DSL mode?)
+                builder.buildFromHTMLFile(scriptList, eventList); // TODO: correct order of combination of the code/page fragments?
+			} // TODO: support analyzing one .html plus a number of .js files as one program?
+			if (!js_files.isEmpty()) {
+				builder.buildFromJavaScriptFiles(js_files);
 			}
 			fg = builder.close();
             fg.check();
@@ -199,19 +187,23 @@ public class Main {
 	 */
 	public static void run(Analysis analysis) throws AnalysisException {
 		long time = System.currentTimeMillis();
+        long elapsed = 0;
 
 		enterPhase(DATA_FLOW_ANALYSIS);
 		analysis.getSolver().solve();
+    	elapsed = (System.currentTimeMillis() - time);
 		if (Options.isTimingEnabled())
-			logger.info("Analysis finished in " + (System.currentTimeMillis() - time) + "ms");
+        	logger.info("Analysis finished in " + elapsed + "ms");
 		leavePhase(DATA_FLOW_ANALYSIS);
 
         if (Options.isFlowGraphEnabled())
             dumpFlowGraph(analysis.getSolver().getFlowGraph(), true);
 
-		enterPhase(MESSAGES);
-		analysis.getSolver().scan();
-		leavePhase(MESSAGES);
+        if (!Options.isNoMessages()) {
+        	enterPhase(MESSAGES);
+        	analysis.getSolver().scan();
+        	leavePhase(MESSAGES);
+        }
 
 		CallGraph<State,CallContext,CallEdge<State>> call_graph = analysis.getSolver().getAnalysisLatticeElement().getCallGraph();
 		if (Options.isStatisticsEnabled()) {
@@ -219,7 +211,6 @@ public class Main {
 			logger.info(analysis.getMonitoring());
             System.out.println(call_graph.getCallGraphStatistics(analysis.getSolver().getFlowGraph()));
 //			System.out.println(analysis.getOptimizer());
-			System.out.println("Renamings (excluding identity items):");
 			System.out.println("BlockState: created=" + BlockState.getNumberOfStatesCreated() + ", makeWritableStore=" + BlockState.getNumberOfMakeWritableStoreCalls());
 			System.out.println("Obj: created=" + Obj.getNumberOfObjsCreated() + ", makeWritableProperties=" + Obj.getNumberOfMakeWritablePropertiesCalls());
 			System.out.println("Value cache: hits=" + Value.getNumberOfValueCacheHits() + ", misses=" + Value.getNumberOfValueCacheMisses() + ", finalSize=" + Value.getValueCacheSize());

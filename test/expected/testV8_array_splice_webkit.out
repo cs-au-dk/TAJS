@@ -1,0 +1,4 @@
+test/v8tests/array-splice-webkit.js:30:1: [definite] ReferenceError, reading absent variable assertArrayEquals
+test/v8tests/array-splice-webkit.js:29:5: [definite] The variable arr is never used
+test/v8tests/array-splice-webkit.js:30:19: [definite] Unreachable code
+test/v8tests/array-splice-webkit.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/array-splice-webkit.js:30:1]

@@ -1,0 +1,1 @@
+test/sourcelocations/htmlWithInternalJavascript.tidy.html:9:5: [definite] The variable htmlVar is never used

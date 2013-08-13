@@ -1,0 +1,965 @@
+test/google/cryptobench.js:798:5: [definite] TypeError, call to non-function
+test/google/cryptobench.js:1702:3: [definite] ReferenceError, reading absent variable document
+test/google/cryptobench.js:55:50: [definite] Variable c is null/undefined
+test/google/cryptobench.js:229:8: [definite] The conditional expression is always false
+test/google/cryptobench.js:230:8: [definite] The conditional expression is always true
+test/google/cryptobench.js:276:3: [definite] The conditional expression is always true
+test/google/cryptobench.js:644:3: [definite] The conditional expression is always false
+test/google/cryptobench.js:644:6: [definite] The conditional expression is always false
+test/google/cryptobench.js:784:25: [definite] Variable c is null/undefined
+test/google/cryptobench.js:1435:1: [definite] The conditional expression is always true
+test/google/cryptobench.js:1435:4: [definite] Variable rng_pool is null/undefined
+test/google/cryptobench.js:1532:3: [definite] The conditional expression is always true
+test/google/cryptobench.js:1532:6: [definite] The conditional expression is always true
+test/google/cryptobench.js:1532:19: [definite] The conditional expression is always true
+test/google/cryptobench.js:1532:32: [definite] The conditional expression is always true
+test/google/cryptobench.js:1550:3: [definite] The conditional expression is always false
+test/google/cryptobench.js:1599:3: [definite] The conditional expression is always true
+test/google/cryptobench.js:1599:6: [definite] The conditional expression is always true
+test/google/cryptobench.js:1599:19: [definite] The conditional expression is always true
+test/google/cryptobench.js:1599:32: [definite] The conditional expression is always true
+test/google/cryptobench.js:1649:3: [definite] The conditional expression is always false
+test/google/cryptobench.js:1649:6: [definite] The conditional expression is always false
+test/google/cryptobench.js:1666:3: [definite] The conditional expression is always false
+test/google/cryptobench.js:1713:3: [definite] The conditional expression is always true
+test/google/cryptobench.js:1724:3: [definite] The conditional expression is always true
+test/google/cryptobench.js:1729:1: [definite] The conditional expression is always true
+test/google/cryptobench.js:798:5: [definite] Reading absent property nextBytes
+test/google/cryptobench.js:1040:1: [definite] Dead assignment, property convert is never read
+test/google/cryptobench.js:1041:1: [definite] Dead assignment, property revert is never read
+test/google/cryptobench.js:1042:1: [definite] Dead assignment, property mulTo is never read
+test/google/cryptobench.js:1043:1: [definite] Dead assignment, property sqrTo is never read
+test/google/cryptobench.js:1308:1: [definite] Dead assignment, property chunkSize is never read
+test/google/cryptobench.js:1309:1: [definite] Dead assignment, property toRadix is never read
+test/google/cryptobench.js:1310:1: [definite] Dead assignment, property fromRadix is never read
+test/google/cryptobench.js:1313:1: [definite] Dead assignment, property changeBit is never read
+test/google/cryptobench.js:1315:1: [definite] Dead assignment, property dMultiply is never read
+test/google/cryptobench.js:1323:1: [definite] Dead assignment, property clone is never read
+test/google/cryptobench.js:1324:1: [definite] Dead assignment, property intValue is never read
+test/google/cryptobench.js:1325:1: [definite] Dead assignment, property byteValue is never read
+test/google/cryptobench.js:1326:1: [definite] Dead assignment, property shortValue is never read
+test/google/cryptobench.js:1327:1: [definite] Dead assignment, property signum is never read
+test/google/cryptobench.js:1329:1: [definite] Dead assignment, property equals is never read
+test/google/cryptobench.js:1330:1: [definite] Dead assignment, property min is never read
+test/google/cryptobench.js:1331:1: [definite] Dead assignment, property max is never read
+test/google/cryptobench.js:1332:1: [definite] Dead assignment, property and is never read
+test/google/cryptobench.js:1333:1: [definite] Dead assignment, property or is never read
+test/google/cryptobench.js:1334:1: [definite] Dead assignment, property xor is never read
+test/google/cryptobench.js:1335:1: [definite] Dead assignment, property andNot is never read
+test/google/cryptobench.js:1336:1: [definite] Dead assignment, property not is never read
+test/google/cryptobench.js:1340:1: [definite] Dead assignment, property bitCount is never read
+test/google/cryptobench.js:1342:1: [definite] Dead assignment, property setBit is never read
+test/google/cryptobench.js:1343:1: [definite] Dead assignment, property clearBit is never read
+test/google/cryptobench.js:1344:1: [definite] Dead assignment, property flipBit is never read
+test/google/cryptobench.js:1349:1: [definite] Dead assignment, property remainder is never read
+test/google/cryptobench.js:1350:1: [definite] Dead assignment, property divideAndRemainder is never read
+test/google/cryptobench.js:1352:1: [definite] Dead assignment, property modInverse is never read
+test/google/cryptobench.js:1353:1: [definite] Dead assignment, property pow is never read
+test/google/cryptobench.js:1354:1: [definite] Dead assignment, property gcd is never read
+test/google/cryptobench.js:1521:3: [definite] Dead assignment, property e is never read
+test/google/cryptobench.js:1522:3: [definite] Dead assignment, property d is never read
+test/google/cryptobench.js:1523:3: [definite] Dead assignment, property p is never read
+test/google/cryptobench.js:1524:3: [definite] Dead assignment, property q is never read
+test/google/cryptobench.js:1525:3: [definite] Dead assignment, property dmp1 is never read
+test/google/cryptobench.js:1526:3: [definite] Dead assignment, property dmq1 is never read
+test/google/cryptobench.js:1527:3: [definite] Dead assignment, property coeff is never read
+test/google/cryptobench.js:1601:5: [definite] Dead assignment, property e is never read
+test/google/cryptobench.js:1602:5: [definite] Dead assignment, property d is never read
+test/google/cryptobench.js:1681:1: [definite] Dead assignment, property setPrivate is never read
+test/google/cryptobench.js:1683:1: [definite] Dead assignment, property generate is never read
+test/google/cryptobench.js:49:5: [definite] The variable j_lm is never used
+test/google/cryptobench.js:71:1: [definite] Unreachable function am1
+test/google/cryptobench.js:85:1: [definite] Unreachable function am2
+test/google/cryptobench.js:102:1: [definite] Unreachable function am3
+test/google/cryptobench.js:155:5: [definite] The variable calibrations is never used
+test/google/cryptobench.js:159:19: [definite] Unreachable function
+test/google/cryptobench.js:438:7: [definite] The variable this_array is never used
+test/google/cryptobench.js:698:1: [definite] Unreachable function bnClone
+test/google/cryptobench.js:701:1: [definite] Unreachable function bnIntValue
+test/google/cryptobench.js:714:1: [definite] Unreachable function bnByteValue
+test/google/cryptobench.js:720:1: [definite] Unreachable function bnShortValue
+test/google/cryptobench.js:726:1: [definite] Unreachable function bnpChunkSize
+test/google/cryptobench.js:729:1: [definite] Unreachable function bnSigNum
+test/google/cryptobench.js:737:1: [definite] Unreachable function bnpToRadix
+test/google/cryptobench.js:752:1: [definite] Unreachable function bnpFromRadix
+test/google/cryptobench.js:796:26: [definite] The variable t is never used
+test/google/cryptobench.js:799:8: [definite] Unreachable code
+test/google/cryptobench.js:830:1: [definite] Unreachable function bnEquals
+test/google/cryptobench.js:831:1: [definite] Unreachable function bnMin
+test/google/cryptobench.js:832:1: [definite] Unreachable function bnMax
+test/google/cryptobench.js:856:1: [definite] Unreachable function op_and
+test/google/cryptobench.js:857:1: [definite] Unreachable function bnAnd
+test/google/cryptobench.js:861:1: [definite] Unreachable function bnOr
+test/google/cryptobench.js:864:1: [definite] Unreachable function op_xor
+test/google/cryptobench.js:865:1: [definite] Unreachable function bnXor
+test/google/cryptobench.js:868:1: [definite] Unreachable function op_andnot
+test/google/cryptobench.js:869:1: [definite] Unreachable function bnAndNot
+test/google/cryptobench.js:872:1: [definite] Unreachable function bnNot
+test/google/cryptobench.js:919:1: [definite] Unreachable function cbit
+test/google/cryptobench.js:926:1: [definite] Unreachable function bnBitCount
+test/google/cryptobench.js:941:1: [definite] Unreachable function bnpChangeBit
+test/google/cryptobench.js:948:1: [definite] Unreachable function bnSetBit
+test/google/cryptobench.js:951:1: [definite] Unreachable function bnClearBit
+test/google/cryptobench.js:954:1: [definite] Unreachable function bnFlipBit
+test/google/cryptobench.js:1005:1: [definite] Unreachable function bnRemainder
+test/google/cryptobench.js:1008:1: [definite] Unreachable function bnDivideAndRemainder
+test/google/cryptobench.js:1015:1: [definite] Unreachable function bnpDMultiply
+test/google/cryptobench.js:1035:1: [definite] Unreachable function NullExp
+test/google/cryptobench.js:1036:1: [definite] Unreachable function nNop
+test/google/cryptobench.js:1037:1: [definite] Unreachable function nMulTo
+test/google/cryptobench.js:1038:1: [definite] Unreachable function nSqrTo
+test/google/cryptobench.js:1046:1: [definite] Unreachable function bnPow
+test/google/cryptobench.js:1180:1: [definite] Unreachable function bnGCD
+test/google/cryptobench.js:1219:1: [definite] Unreachable function bnModInverse
+test/google/cryptobench.js:1479:1: [definite] Unreachable function linebrk
+test/google/cryptobench.js:1489:1: [definite] Unreachable function byte2Hex
+test/google/cryptobench.js:1587:1: [definite] Unreachable function RSASetPrivate
+test/google/cryptobench.js:1614:1: [definite] Unreachable function RSAGenerate
+test/google/cryptobench.js:237:11: [maybe] TypeError, accessing property of null/undefined
+test/google/cryptobench.js:241:10: [maybe] TypeError, call to non-function
+test/google/cryptobench.js:439:17: [maybe] TypeError, accessing property of null/undefined
+test/google/cryptobench.js:440:27: [maybe] TypeError, accessing property of null/undefined
+test/google/cryptobench.js:541:23: [maybe] TypeError, accessing property of null/undefined
+test/google/cryptobench.js:606:17: [maybe] TypeError, accessing property of null/undefined
+test/google/cryptobench.js:798:5: [maybe] TypeError, accessing property of null/undefined
+test/google/cryptobench.js:1098:3: [maybe] TypeError, accessing property of null/undefined
+test/google/cryptobench.js:1162:7: [maybe] TypeError, accessing property of null/undefined
+test/google/cryptobench.js:1461:10: [maybe] TypeError, accessing property of null/undefined
+test/google/cryptobench.js:1542:10: [maybe] TypeError, accessing property of null/undefined
+test/google/cryptobench.js:205:15: [maybe] Reading absent property t
+test/google/cryptobench.js:206:9: [maybe] Reading absent property t
+test/google/cryptobench.js:207:9: [maybe] Reading absent property s
+test/google/cryptobench.js:241:10: [maybe] Reading absent property charAt
+test/google/cryptobench.js:267:11: [maybe] Reading absent property s
+test/google/cryptobench.js:268:9: [maybe] Reading absent property t
+test/google/cryptobench.js:268:34: [maybe] Reading absent property t
+test/google/cryptobench.js:268:52: [maybe] Reading absent property t
+test/google/cryptobench.js:274:6: [maybe] Reading absent property s
+test/google/cryptobench.js:282:48: [maybe] Reading absent property t
+test/google/cryptobench.js:306:28: [maybe] Reading absent property s
+test/google/cryptobench.js:313:11: [maybe] Reading absent property s
+test/google/cryptobench.js:313:18: [maybe] Reading absent property s
+test/google/cryptobench.js:315:11: [maybe] Reading absent property t
+test/google/cryptobench.js:316:9: [maybe] Reading absent property t
+test/google/cryptobench.js:336:6: [maybe] Reading absent property t
+test/google/cryptobench.js:337:17: [maybe] Reading absent property t
+test/google/cryptobench.js:337:44: [maybe] Reading absent property t
+test/google/cryptobench.js:337:55: [maybe] Reading absent property s
+test/google/cryptobench.js:345:11: [maybe] Reading absent property t
+test/google/cryptobench.js:347:9: [maybe] Reading absent property t
+test/google/cryptobench.js:348:9: [maybe] Reading absent property s
+test/google/cryptobench.js:355:22: [maybe] Reading absent property t
+test/google/cryptobench.js:356:18: [maybe] Reading absent property t
+test/google/cryptobench.js:357:9: [maybe] Reading absent property s
+test/google/cryptobench.js:367:38: [maybe] Reading absent property s
+test/google/cryptobench.js:368:11: [maybe] Reading absent property t
+test/google/cryptobench.js:374:9: [maybe] Reading absent property t
+test/google/cryptobench.js:375:9: [maybe] Reading absent property s
+test/google/cryptobench.js:383:9: [maybe] Reading absent property s
+test/google/cryptobench.js:385:12: [maybe] Reading absent property t
+test/google/cryptobench.js:390:25: [maybe] Reading absent property t
+test/google/cryptobench.js:394:22: [maybe] Reading absent property t
+test/google/cryptobench.js:394:39: [maybe] Reading absent property s
+test/google/cryptobench.js:395:9: [maybe] Reading absent property t
+test/google/cryptobench.js:404:34: [maybe] Reading absent property t
+test/google/cryptobench.js:404:38: [maybe] Reading absent property t
+test/google/cryptobench.js:410:6: [maybe] Reading absent property t
+test/google/cryptobench.js:410:12: [maybe] Reading absent property t
+test/google/cryptobench.js:411:10: [maybe] Reading absent property s
+test/google/cryptobench.js:412:15: [maybe] Reading absent property t
+test/google/cryptobench.js:417:10: [maybe] Reading absent property s
+test/google/cryptobench.js:420:10: [maybe] Reading absent property s
+test/google/cryptobench.js:421:15: [maybe] Reading absent property t
+test/google/cryptobench.js:426:10: [maybe] Reading absent property s
+test/google/cryptobench.js:443:11: [maybe] Reading absent property t
+test/google/cryptobench.js:444:11: [maybe] Reading absent property t
+test/google/cryptobench.js:446:18: [maybe] Reading absent property t
+test/google/cryptobench.js:446:38: [maybe] Reading absent property t
+test/google/cryptobench.js:446:69: [maybe] Reading absent property t
+test/google/cryptobench.js:449:6: [maybe] Reading absent property s
+test/google/cryptobench.js:449:16: [maybe] Reading absent property s
+test/google/cryptobench.js:458:19: [maybe] Reading absent property t
+test/google/cryptobench.js:460:18: [maybe] Reading absent property t
+test/google/cryptobench.js:462:19: [maybe] Reading absent property t
+test/google/cryptobench.js:462:57: [maybe] Reading absent property t
+test/google/cryptobench.js:463:17: [maybe] Reading absent property t
+test/google/cryptobench.js:464:17: [maybe] Reading absent property t
+test/google/cryptobench.js:467:6: [maybe] Reading absent property t
+test/google/cryptobench.js:467:23: [maybe] Reading absent property t
+test/google/cryptobench.js:476:6: [maybe] Reading absent property t
+test/google/cryptobench.js:478:6: [maybe] Reading absent property t
+test/google/cryptobench.js:478:13: [maybe] Reading absent property t
+test/google/cryptobench.js:484:23: [maybe] Reading absent property s
+test/google/cryptobench.js:484:36: [maybe] Reading absent property s
+test/google/cryptobench.js:486:34: [maybe] Reading absent property t
+test/google/cryptobench.js:489:12: [maybe] Reading absent property t
+test/google/cryptobench.js:496:11: [maybe] Reading absent property t
+test/google/cryptobench.js:501:13: [maybe] Reading absent property t
+test/google/cryptobench.js:506:9: [maybe] Reading absent property t
+test/google/cryptobench.js:506:27: [maybe] Reading absent property t
+test/google/cryptobench.js:530:6: [maybe] Reading absent property s
+test/google/cryptobench.js:537:6: [maybe] Reading absent property s
+test/google/cryptobench.js:563:6: [maybe] Reading absent property t
+test/google/cryptobench.js:584:16: [maybe] Reading absent property t
+test/google/cryptobench.js:590:21: [maybe] Reading absent property t
+test/google/cryptobench.js:592:6: [maybe] Reading absent property s
+test/google/cryptobench.js:607:9: [maybe] Reading absent property t
+test/google/cryptobench.js:608:13: [maybe] Reading absent property t
+test/google/cryptobench.js:609:22: [maybe] Reading absent property t
+test/google/cryptobench.js:614:11: [maybe] Reading absent property t
+test/google/cryptobench.js:615:40: [maybe] Reading absent property t
+test/google/cryptobench.js:620:15: [maybe] Reading absent property t
+test/google/cryptobench.js:639:12: [maybe] Reading absent property t
+test/google/cryptobench.js:639:40: [maybe] Reading absent property s
+test/google/cryptobench.js:839:26: [maybe] Reading absent property t
+test/google/cryptobench.js:839:30: [maybe] Reading absent property t
+test/google/cryptobench.js:841:6: [maybe] Reading absent property t
+test/google/cryptobench.js:841:12: [maybe] Reading absent property t
+test/google/cryptobench.js:842:9: [maybe] Reading absent property s
+test/google/cryptobench.js:843:20: [maybe] Reading absent property t
+test/google/cryptobench.js:844:11: [maybe] Reading absent property t
+test/google/cryptobench.js:847:9: [maybe] Reading absent property s
+test/google/cryptobench.js:848:20: [maybe] Reading absent property t
+test/google/cryptobench.js:849:11: [maybe] Reading absent property t
+test/google/cryptobench.js:851:12: [maybe] Reading absent property s
+test/google/cryptobench.js:851:19: [maybe] Reading absent property s
+test/google/cryptobench.js:912:22: [maybe] Reading absent property t
+test/google/cryptobench.js:914:6: [maybe] Reading absent property s
+test/google/cryptobench.js:914:25: [maybe] Reading absent property t
+test/google/cryptobench.js:936:11: [maybe] Reading absent property t
+test/google/cryptobench.js:936:26: [maybe] Reading absent property s
+test/google/cryptobench.js:961:34: [maybe] Reading absent property t
+test/google/cryptobench.js:961:38: [maybe] Reading absent property t
+test/google/cryptobench.js:967:6: [maybe] Reading absent property t
+test/google/cryptobench.js:967:12: [maybe] Reading absent property t
+test/google/cryptobench.js:968:10: [maybe] Reading absent property s
+test/google/cryptobench.js:969:15: [maybe] Reading absent property t
+test/google/cryptobench.js:974:10: [maybe] Reading absent property s
+test/google/cryptobench.js:977:10: [maybe] Reading absent property s
+test/google/cryptobench.js:978:15: [maybe] Reading absent property t
+test/google/cryptobench.js:983:10: [maybe] Reading absent property s
+test/google/cryptobench.js:1025:9: [maybe] Reading absent property t
+test/google/cryptobench.js:1025:33: [maybe] Reading absent property t
+test/google/cryptobench.js:1029:15: [maybe] Reading absent property t
+test/google/cryptobench.js:1029:34: [maybe] Reading absent property t
+test/google/cryptobench.js:1053:20: [maybe] Reading absent property t
+test/google/cryptobench.js:1053:27: [maybe] Reading absent property t
+test/google/cryptobench.js:1058:11: [maybe] Reading absent property t
+test/google/cryptobench.js:1058:15: [maybe] Reading absent property t
+test/google/cryptobench.js:1058:45: [maybe] Reading absent property t
+test/google/cryptobench.js:1058:82: [maybe] Reading absent property t
+test/google/cryptobench.js:1059:20: [maybe] Reading absent property t
+test/google/cryptobench.js:1069:17: [maybe] Reading absent property t
+test/google/cryptobench.js:1069:24: [maybe] Reading absent property t
+test/google/cryptobench.js:1072:22: [maybe] Reading absent property t
+test/google/cryptobench.js:1072:37: [maybe] Reading absent property t
+test/google/cryptobench.js:1073:13: [maybe] Reading absent property t
+test/google/cryptobench.js:1073:56: [maybe] Reading absent property t
+test/google/cryptobench.js:1083:30: [maybe] Reading absent property t
+test/google/cryptobench.js:1089:6: [maybe] Reading absent property s
+test/google/cryptobench.js:1089:17: [maybe] Reading absent property t
+test/google/cryptobench.js:1089:25: [maybe] Reading absent property t
+test/google/cryptobench.js:1098:15: [maybe] Reading absent property t
+test/google/cryptobench.js:1099:6: [maybe] Reading absent property t
+test/google/cryptobench.js:1099:12: [maybe] Reading absent property t
+test/google/cryptobench.js:1099:32: [maybe] Reading absent property t
+test/google/cryptobench.js:1100:35: [maybe] Reading absent property t
+test/google/cryptobench.js:1101:34: [maybe] Reading absent property t
+test/google/cryptobench.js:1102:50: [maybe] Reading absent property t
+test/google/cryptobench.js:1149:11: [maybe] Reading absent property t
+test/google/cryptobench.js:1211:25: [maybe] Reading absent property s
+test/google/cryptobench.js:1212:6: [maybe] Reading absent property t
+test/google/cryptobench.js:1214:22: [maybe] Reading absent property t
+test/google/cryptobench.js:1267:6: [maybe] Reading absent property t
+test/google/cryptobench.js:1:1: [maybe] Uncaught exception, constructed at [test/google/cryptobench.js:237:11, test/google/cryptobench.js:241:10, test/google/cryptobench.js:439:17, test/google/cryptobench.js:440:27, test/google/cryptobench.js:541:23, test/google/cryptobench.js:606:17, test/google/cryptobench.js:798:5, test/google/cryptobench.js:1098:3, test/google/cryptobench.js:1162:7, test/google/cryptobench.js:1461:10, test/google/cryptobench.js:1542:10]
+test/google/cryptobench.js:54:6: [maybe] The variable a has values with different types
+test/google/cryptobench.js:55:46: [maybe] The variable a has values with different types
+test/google/cryptobench.js:57:26: [maybe] The variable a has values with different types
+test/google/cryptobench.js:124:12: [maybe] Conversion from string to number yields NaN
+test/google/cryptobench.js:124:12: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:124:12: [maybe] The variable x has values with different types
+test/google/cryptobench.js:124:27: [maybe] Conversion from string to number yields NaN
+test/google/cryptobench.js:124:27: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:124:27: [maybe] The variable x has values with different types
+test/google/cryptobench.js:125:9: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:126:13: [maybe] Conversion from string to number yields NaN
+test/google/cryptobench.js:126:13: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:126:13: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:127:13: [maybe] Conversion from string to number yields NaN
+test/google/cryptobench.js:127:13: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:127:13: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:129:9: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:129:31: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:130:10: [maybe] Conversion from string to number yields NaN
+test/google/cryptobench.js:130:10: [maybe] The variable l has values with different types
+test/google/cryptobench.js:131:20: [maybe] Conversion from string to number yields NaN
+test/google/cryptobench.js:131:20: [maybe] The variable l has values with different types
+test/google/cryptobench.js:187:6: [maybe] Converting object to string
+test/google/cryptobench.js:187:6: [maybe] Converting primitive string to object
+test/google/cryptobench.js:189:6: [maybe] Converting object to string
+test/google/cryptobench.js:189:6: [maybe] Converting primitive string to object
+test/google/cryptobench.js:191:6: [maybe] Converting object to string
+test/google/cryptobench.js:191:6: [maybe] Converting primitive string to object
+test/google/cryptobench.js:194:31: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:194:31: [maybe] Converting object to string
+test/google/cryptobench.js:194:31: [maybe] Converting primitive string to object
+test/google/cryptobench.js:196:11: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:196:17: [maybe] Converting object to string
+test/google/cryptobench.js:196:17: [maybe] Converting primitive string to object
+test/google/cryptobench.js:197:11: [maybe] The variable c has values with different types
+test/google/cryptobench.js:197:23: [maybe] The variable c has values with different types
+test/google/cryptobench.js:205:15: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:205:51: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:214:13: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:215:6: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:217:11: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:217:35: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:237:11: [maybe] Converting primitive string to object
+test/google/cryptobench.js:237:11: [maybe] The variable s has values with different types
+test/google/cryptobench.js:239:20: [maybe] Conversion from string to number yields NaN
+test/google/cryptobench.js:239:20: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:239:20: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:240:8: [maybe] Conversion from string to number yields NaN
+test/google/cryptobench.js:240:8: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:240:8: [maybe] The variable x has values with different types
+test/google/cryptobench.js:241:10: [maybe] Converting object to string
+test/google/cryptobench.js:241:10: [maybe] Converting primitive string to object
+test/google/cryptobench.js:246:30: [maybe] The variable x has values with different types
+test/google/cryptobench.js:248:7: [maybe] Conversion from string to number yields NaN
+test/google/cryptobench.js:248:7: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:248:7: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:248:32: [maybe] Conversion from string to number yields NaN
+test/google/cryptobench.js:248:32: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:248:32: [maybe] The variable x has values with different types
+test/google/cryptobench.js:249:31: [maybe] Conversion from string to number yields NaN
+test/google/cryptobench.js:249:31: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:249:31: [maybe] The variable x has values with different types
+test/google/cryptobench.js:252:7: [maybe] Conversion from string to number yields NaN
+test/google/cryptobench.js:252:7: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:252:7: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:252:31: [maybe] Conversion from string to number yields NaN
+test/google/cryptobench.js:252:31: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:252:31: [maybe] The variable x has values with different types
+test/google/cryptobench.js:256:17: [maybe] Conversion from string to number yields NaN
+test/google/cryptobench.js:256:17: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:256:17: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:258:16: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:258:16: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:267:11: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:268:9: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:268:23: [maybe] Conversion from string to number yields NaN
+test/google/cryptobench.js:268:23: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:268:34: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:268:50: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:274:6: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:283:18: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:284:6: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:285:26: [maybe] Conversion from string to number yields NaN
+test/google/cryptobench.js:285:26: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:285:26: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:288:14: [maybe] Conversion from string to number yields NaN
+test/google/cryptobench.js:288:14: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:288:14: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:289:14: [maybe] Conversion from string to number yields NaN
+test/google/cryptobench.js:289:14: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:289:14: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:292:14: [maybe] Conversion from string to number yields NaN
+test/google/cryptobench.js:292:14: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:292:14: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:306:28: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:313:11: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:316:7: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:318:9: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:318:25: [maybe] Conversion from string to number yields NaN
+test/google/cryptobench.js:318:25: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:318:25: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:318:39: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:325:9: [maybe] Conversion from string to number yields NaN
+test/google/cryptobench.js:325:9: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:325:9: [maybe] The variable x has values with different types
+test/google/cryptobench.js:326:9: [maybe] Conversion from string to number yields NaN
+test/google/cryptobench.js:326:9: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:326:9: [maybe] The variable x has values with different types
+test/google/cryptobench.js:327:9: [maybe] Conversion from string to number yields NaN
+test/google/cryptobench.js:327:9: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:327:9: [maybe] The variable x has values with different types
+test/google/cryptobench.js:328:9: [maybe] Conversion from string to number yields NaN
+test/google/cryptobench.js:328:9: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:328:9: [maybe] The variable x has values with different types
+test/google/cryptobench.js:329:9: [maybe] Conversion from string to number yields NaN
+test/google/cryptobench.js:329:9: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:329:9: [maybe] The variable x has values with different types
+test/google/cryptobench.js:336:6: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:337:17: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:337:33: [maybe] Conversion from string to number yields NaN
+test/google/cryptobench.js:337:33: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:337:33: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:337:44: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:337:55: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:345:11: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:345:42: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:345:49: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:346:11: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:347:9: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:355:18: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:355:30: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:355:43: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:355:50: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:356:18: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:367:38: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:368:11: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:369:24: [maybe] Conversion from string to number yields NaN
+test/google/cryptobench.js:369:24: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:369:24: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:370:10: [maybe] Conversion from string to number yields NaN
+test/google/cryptobench.js:370:10: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:370:10: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:374:9: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:389:16: [maybe] Conversion from string to number yields NaN
+test/google/cryptobench.js:389:16: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:389:16: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:391:5: [maybe] Conversion from string to number yields NaN
+test/google/cryptobench.js:391:5: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:391:5: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:391:25: [maybe] Conversion from string to number yields NaN
+test/google/cryptobench.js:391:25: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:391:25: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:392:21: [maybe] Conversion from string to number yields NaN
+test/google/cryptobench.js:392:21: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:392:21: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:394:14: [maybe] Conversion from string to number yields NaN
+test/google/cryptobench.js:394:14: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:394:14: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:394:22: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:394:39: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:395:9: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:404:25: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:406:10: [maybe] Conversion from string to number yields NaN
+test/google/cryptobench.js:406:10: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:406:10: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:406:24: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:410:6: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:411:5: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:412:11: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:413:7: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:413:12: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:414:22: [maybe] Conversion from string to number yields NaN
+test/google/cryptobench.js:414:22: [maybe] The variable c has values with different types
+test/google/cryptobench.js:415:7: [maybe] Conversion from string to number yields NaN
+test/google/cryptobench.js:415:7: [maybe] The variable c has values with different types
+test/google/cryptobench.js:417:5: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:420:5: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:421:11: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:422:7: [maybe] Conversion from string to number yields NaN
+test/google/cryptobench.js:422:7: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:422:12: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:426:5: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:444:9: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:445:9: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:446:14: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:446:36: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:446:52: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:458:17: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:460:18: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:461:20: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:462:9: [maybe] Conversion from string to number yields NaN
+test/google/cryptobench.js:462:9: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:462:9: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:462:17: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:462:34: [maybe] Conversion from string to number yields NaN
+test/google/cryptobench.js:462:34: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:462:36: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:462:57: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:463:7: [maybe] Conversion from string to number yields NaN
+test/google/cryptobench.js:463:7: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:463:7: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:463:15: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:464:15: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:467:6: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:467:15: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:467:15: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:467:23: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:467:40: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:476:6: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:478:6: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:486:25: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:486:34: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:492:12: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:492:20: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:493:6: [maybe] Conversion from string to number yields NaN
+test/google/cryptobench.js:493:6: [maybe] The variable y0 has values with different types
+test/google/cryptobench.js:494:12: [maybe] Conversion from string to number yields NaN
+test/google/cryptobench.js:494:12: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:494:12: [maybe] The variable y0 has values with different types
+test/google/cryptobench.js:494:28: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:494:34: [maybe] Conversion from string to number yields NaN
+test/google/cryptobench.js:494:34: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:494:34: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:494:42: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:496:20: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:501:13: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:506:9: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:506:27: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:509:15: [maybe] Conversion from string to number yields NaN
+test/google/cryptobench.js:509:15: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:509:23: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:509:29: [maybe] The variable y0 has values with different types
+test/google/cryptobench.js:509:50: [maybe] Conversion from string to number yields NaN
+test/google/cryptobench.js:509:50: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:509:50: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:509:65: [maybe] Conversion from string to number yields NaN
+test/google/cryptobench.js:509:65: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:509:65: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:510:9: [maybe] Conversion from string to number yields NaN
+test/google/cryptobench.js:510:9: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:510:9: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:513:13: [maybe] Conversion from string to number yields NaN
+test/google/cryptobench.js:513:13: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:513:13: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:523:6: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:530:6: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:537:6: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:563:6: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:564:11: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:565:7: [maybe] Conversion from string to number yields NaN
+test/google/cryptobench.js:565:7: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:565:7: [maybe] The variable x has values with different types
+test/google/cryptobench.js:566:11: [maybe] Conversion from string to number yields NaN
+test/google/cryptobench.js:566:11: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:566:11: [maybe] The variable x has values with different types
+test/google/cryptobench.js:567:14: [maybe] Conversion from string to number yields NaN
+test/google/cryptobench.js:567:14: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:567:14: [maybe] The variable x has values with different types
+test/google/cryptobench.js:568:14: [maybe] Conversion from string to number yields NaN
+test/google/cryptobench.js:568:14: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:568:14: [maybe] The variable x has values with different types
+test/google/cryptobench.js:569:16: [maybe] Conversion from string to number yields NaN
+test/google/cryptobench.js:569:16: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:569:16: [maybe] The variable x has values with different types
+test/google/cryptobench.js:572:13: [maybe] Conversion from string to number yields NaN
+test/google/cryptobench.js:572:13: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:572:13: [maybe] The variable x has values with different types
+test/google/cryptobench.js:584:14: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:592:6: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:608:13: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:609:18: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:611:13: [maybe] Conversion from string to number yields NaN
+test/google/cryptobench.js:611:13: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:611:13: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:612:41: [maybe] Conversion from string to number yields NaN
+test/google/cryptobench.js:612:41: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:612:41: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:614:9: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:615:5: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:615:5: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:617:11: [maybe] Conversion from string to number yields NaN
+test/google/cryptobench.js:617:11: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:617:11: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:617:34: [maybe] Conversion from string to number yields NaN
+test/google/cryptobench.js:617:34: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:617:34: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:617:55: [maybe] Conversion from string to number yields NaN
+test/google/cryptobench.js:617:55: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:617:55: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:639:12: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:639:23: [maybe] Conversion from string to number yields NaN
+test/google/cryptobench.js:639:23: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:639:23: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:782:8: [maybe] Conversion from string to number yields NaN
+test/google/cryptobench.js:782:8: [maybe] The variable a has values with different types
+test/google/cryptobench.js:784:23: [maybe] The variable a has values with different types
+test/google/cryptobench.js:785:24: [maybe] Conversion from string to number yields NaN
+test/google/cryptobench.js:785:24: [maybe] The variable a has values with different types
+test/google/cryptobench.js:786:49: [maybe] Conversion from string to number yields NaN
+test/google/cryptobench.js:786:49: [maybe] The variable a has values with different types
+test/google/cryptobench.js:790:12: [maybe] Conversion from string to number yields NaN
+test/google/cryptobench.js:790:31: [maybe] The variable a has values with different types
+test/google/cryptobench.js:790:70: [maybe] Conversion from string to number yields NaN
+test/google/cryptobench.js:790:70: [maybe] The variable a has values with different types
+test/google/cryptobench.js:796:30: [maybe] Conversion from string to number yields NaN
+test/google/cryptobench.js:796:30: [maybe] The variable a has values with different types
+test/google/cryptobench.js:797:17: [maybe] Conversion from string to number yields NaN
+test/google/cryptobench.js:797:17: [maybe] The variable a has values with different types
+test/google/cryptobench.js:798:5: [maybe] Converting primitive number to object
+test/google/cryptobench.js:811:26: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:811:26: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:812:16: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:815:14: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:815:14: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:816:14: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:816:14: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:819:14: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:819:14: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:839:17: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:840:42: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:840:56: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:841:6: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:842:9: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:843:49: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:847:9: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:848:48: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:860:30: [maybe] Conversion from string to number yields NaN
+test/google/cryptobench.js:860:30: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:860:30: [maybe] The variable x has values with different types
+test/google/cryptobench.js:860:32: [maybe] The variable y has values with different types
+test/google/cryptobench.js:899:6: [maybe] Conversion from string to number yields NaN
+test/google/cryptobench.js:899:6: [maybe] The variable x has values with different types
+test/google/cryptobench.js:901:7: [maybe] Conversion from string to number yields NaN
+test/google/cryptobench.js:901:7: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:901:7: [maybe] The variable x has values with different types
+test/google/cryptobench.js:901:25: [maybe] Conversion from string to number yields NaN
+test/google/cryptobench.js:901:25: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:901:25: [maybe] The variable x has values with different types
+test/google/cryptobench.js:902:7: [maybe] Conversion from string to number yields NaN
+test/google/cryptobench.js:902:7: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:902:7: [maybe] The variable x has values with different types
+test/google/cryptobench.js:902:23: [maybe] Conversion from string to number yields NaN
+test/google/cryptobench.js:902:23: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:902:23: [maybe] The variable x has values with different types
+test/google/cryptobench.js:903:7: [maybe] Conversion from string to number yields NaN
+test/google/cryptobench.js:903:7: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:903:7: [maybe] The variable x has values with different types
+test/google/cryptobench.js:903:22: [maybe] Conversion from string to number yields NaN
+test/google/cryptobench.js:903:22: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:903:22: [maybe] The variable x has values with different types
+test/google/cryptobench.js:904:7: [maybe] Conversion from string to number yields NaN
+test/google/cryptobench.js:904:7: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:904:7: [maybe] The variable x has values with different types
+test/google/cryptobench.js:904:20: [maybe] Conversion from string to number yields NaN
+test/google/cryptobench.js:904:20: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:904:20: [maybe] The variable x has values with different types
+test/google/cryptobench.js:905:7: [maybe] Conversion from string to number yields NaN
+test/google/cryptobench.js:905:7: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:905:7: [maybe] The variable x has values with different types
+test/google/cryptobench.js:912:18: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:913:8: [maybe] Conversion from string to number yields NaN
+test/google/cryptobench.js:913:8: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:913:48: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:914:6: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:914:25: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:937:11: [maybe] Conversion from string to number yields NaN
+test/google/cryptobench.js:937:11: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:937:11: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:961:25: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:963:10: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:963:10: [maybe] Converting undefined to string
+test/google/cryptobench.js:963:10: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:963:24: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:964:20: [maybe] Conversion from string to number yields NaN
+test/google/cryptobench.js:964:20: [maybe] The variable c has values with different types
+test/google/cryptobench.js:965:5: [maybe] Conversion from string to number yields NaN
+test/google/cryptobench.js:965:5: [maybe] The variable c has values with different types
+test/google/cryptobench.js:967:6: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:968:5: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:969:11: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:970:7: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:970:12: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:971:22: [maybe] Conversion from string to number yields NaN
+test/google/cryptobench.js:971:22: [maybe] The variable c has values with different types
+test/google/cryptobench.js:972:7: [maybe] Conversion from string to number yields NaN
+test/google/cryptobench.js:972:7: [maybe] The variable c has values with different types
+test/google/cryptobench.js:974:5: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:977:5: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:978:11: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:979:7: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:979:12: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:980:22: [maybe] Conversion from string to number yields NaN
+test/google/cryptobench.js:980:22: [maybe] The variable c has values with different types
+test/google/cryptobench.js:981:7: [maybe] Conversion from string to number yields NaN
+test/google/cryptobench.js:981:7: [maybe] The variable c has values with different types
+test/google/cryptobench.js:983:5: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:1025:9: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:1025:33: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:1026:3: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:1026:3: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:1027:9: [maybe] Conversion from string to number yields NaN
+test/google/cryptobench.js:1027:9: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:1027:9: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:1028:5: [maybe] Conversion from string to number yields NaN
+test/google/cryptobench.js:1028:5: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:1028:5: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:1029:8: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:1029:34: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:1030:5: [maybe] Conversion from string to number yields NaN
+test/google/cryptobench.js:1030:5: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:1030:7: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:1053:20: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:1058:11: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:1058:43: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:1058:65: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:1059:11: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:1059:50: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:1069:17: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:1072:20: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:1073:13: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:1073:39: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:1073:56: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:1083:28: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:1089:6: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:1089:23: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:1098:15: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:1099:12: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:1099:32: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:1100:35: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:1101:34: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:1102:50: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:1144:18: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:1144:25: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:1149:11: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:1150:13: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:1152:22: [maybe] Conversion from string to number yields NaN
+test/google/cryptobench.js:1152:22: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:1152:22: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:1154:12: [maybe] Conversion from string to number yields NaN
+test/google/cryptobench.js:1154:12: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:1154:12: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:1155:22: [maybe] Conversion from string to number yields NaN
+test/google/cryptobench.js:1155:22: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:1155:22: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:1162:7: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:1168:18: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:1171:22: [maybe] Conversion from string to number yields NaN
+test/google/cryptobench.js:1171:22: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:1171:22: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:1210:6: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:1211:11: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:1211:25: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:1211:35: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:1212:6: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:1213:20: [maybe] Conversion from string to number yields NaN
+test/google/cryptobench.js:1213:20: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:1213:20: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:1214:22: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:1214:50: [maybe] Conversion from string to number yields NaN
+test/google/cryptobench.js:1214:50: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:1214:50: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:1214:54: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:1267:18: [maybe] Conversion from string to number yields NaN
+test/google/cryptobench.js:1267:18: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:1267:18: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:1269:10: [maybe] Conversion from string to number yields NaN
+test/google/cryptobench.js:1269:10: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:1269:24: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:1275:13: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:1276:35: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:1276:46: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:1276:51: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:1278:21: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:1278:23: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:1289:8: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:1293:15: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:1380:10: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:1380:10: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:1380:14: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:1380:26: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:1381:9: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:1382:17: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:1392:13: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:1392:22: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:1393:7: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:1394:20: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:1396:10: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:1396:18: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:1396:22: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:1422:3: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:1422:3: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:1423:3: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:1423:3: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:1424:3: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:1424:3: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:1425:3: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:1425:3: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:1476:25: [maybe] The variable str has values with different types
+test/google/cryptobench.js:1498:10: [maybe] Converting primitive string to object
+test/google/cryptobench.js:1503:11: [maybe] Converting primitive string to object
+test/google/cryptobench.js:1504:36: [maybe] Converting object to string
+test/google/cryptobench.js:1504:36: [maybe] Converting primitive string to object
+test/google/cryptobench.js:1532:32: [maybe] Converting primitive string to object
+test/google/cryptobench.js:1532:48: [maybe] Converting primitive string to object
+test/google/cryptobench.js:1552:7: [maybe] Converting primitive string to object
+test/google/cryptobench.js:1574:25: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:1575:27: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:1578:9: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:1582:12: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:1582:32: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:1599:32: [maybe] Converting primitive string to object
+test/google/cryptobench.js:1599:48: [maybe] Converting primitive string to object
+test/google/cryptobench.js:1664:23: [maybe] The variable ctext has values with different types
+test/google/cryptobench.js:1715:10: [maybe] The variable result has values with different types
+test/google/cryptobench.js:1722:16: [maybe] The variable text has values with different types
+test/google/cryptobench.js:1723:52: [maybe] The variable text has values with different types
+test/google/cryptobench.js:1726:10: [maybe] The variable result has values with different types
+test/google/cryptobench.js:1733:27: [maybe] The variable encrypted has values with different types
+test/google/cryptobench.js:1735:7: [maybe] The variable decrypted has values with different types
+test/google/cryptobench.js:121:20: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/cryptobench.js:121:20: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/cryptobench.js:196:11: [info] Reading from unknown property that may cause loss of precision
+test/google/cryptobench.js:202:20: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/cryptobench.js:202:20: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/cryptobench.js:205:15: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/cryptobench.js:205:15: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/cryptobench.js:206:9: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/cryptobench.js:206:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/cryptobench.js:207:9: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/cryptobench.js:207:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/cryptobench.js:212:20: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/cryptobench.js:213:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/cryptobench.js:214:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/cryptobench.js:218:8: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/cryptobench.js:266:20: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/cryptobench.js:266:20: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/cryptobench.js:267:11: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/cryptobench.js:267:11: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/cryptobench.js:268:9: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/cryptobench.js:268:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/cryptobench.js:268:34: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/cryptobench.js:268:34: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/cryptobench.js:268:52: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/cryptobench.js:268:52: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/cryptobench.js:273:20: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/cryptobench.js:274:6: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/cryptobench.js:274:29: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/cryptobench.js:282:48: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/cryptobench.js:303:60: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/cryptobench.js:303:60: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/cryptobench.js:306:28: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/cryptobench.js:306:28: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/cryptobench.js:306:38: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/cryptobench.js:306:38: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/cryptobench.js:306:52: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/cryptobench.js:306:52: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/cryptobench.js:310:20: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/cryptobench.js:310:20: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/cryptobench.js:313:11: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/cryptobench.js:313:11: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/cryptobench.js:315:11: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/cryptobench.js:315:11: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/cryptobench.js:335:20: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/cryptobench.js:335:20: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/cryptobench.js:336:6: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/cryptobench.js:336:6: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/cryptobench.js:337:17: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/cryptobench.js:337:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/cryptobench.js:337:44: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/cryptobench.js:337:44: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/cryptobench.js:337:55: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/cryptobench.js:337:55: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/cryptobench.js:342:20: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/cryptobench.js:342:20: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/cryptobench.js:345:11: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/cryptobench.js:345:11: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/cryptobench.js:347:9: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/cryptobench.js:347:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/cryptobench.js:348:9: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/cryptobench.js:348:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/cryptobench.js:353:20: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/cryptobench.js:353:20: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/cryptobench.js:355:22: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/cryptobench.js:355:22: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/cryptobench.js:356:18: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/cryptobench.js:356:18: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/cryptobench.js:357:9: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/cryptobench.js:357:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/cryptobench.js:362:20: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/cryptobench.js:362:20: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/cryptobench.js:367:38: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/cryptobench.js:367:38: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/cryptobench.js:368:11: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/cryptobench.js:368:11: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/cryptobench.js:374:9: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/cryptobench.js:374:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/cryptobench.js:375:9: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/cryptobench.js:375:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/cryptobench.js:381:20: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/cryptobench.js:383:9: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/cryptobench.js:385:12: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/cryptobench.js:390:25: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/cryptobench.js:394:22: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/cryptobench.js:394:39: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/cryptobench.js:395:9: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/cryptobench.js:401:20: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/cryptobench.js:401:20: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/cryptobench.js:404:38: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/cryptobench.js:404:38: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/cryptobench.js:410:12: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/cryptobench.js:410:12: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/cryptobench.js:412:15: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/cryptobench.js:412:15: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/cryptobench.js:417:10: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/cryptobench.js:417:10: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/cryptobench.js:420:10: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/cryptobench.js:420:10: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/cryptobench.js:438:20: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/cryptobench.js:438:20: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/cryptobench.js:440:11: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/cryptobench.js:440:11: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/cryptobench.js:449:6: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/cryptobench.js:449:6: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/cryptobench.js:454:11: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/cryptobench.js:454:11: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/cryptobench.js:477:12: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/cryptobench.js:477:12: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/cryptobench.js:480:19: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/cryptobench.js:484:23: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/cryptobench.js:484:23: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/cryptobench.js:529:3: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/cryptobench.js:529:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/cryptobench.js:530:6: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/cryptobench.js:530:6: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/cryptobench.js:562:20: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/cryptobench.js:562:20: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/cryptobench.js:563:6: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/cryptobench.js:563:6: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/cryptobench.js:638:20: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/cryptobench.js:638:20: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/cryptobench.js:639:12: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/cryptobench.js:639:12: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/cryptobench.js:639:40: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/cryptobench.js:639:40: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/cryptobench.js:645:44: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/cryptobench.js:659:10: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/cryptobench.js:886:13: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/cryptobench.js:886:39: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/cryptobench.js:893:13: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/cryptobench.js:893:39: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/cryptobench.js:958:20: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/cryptobench.js:961:38: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/cryptobench.js:967:12: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/cryptobench.js:969:15: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/cryptobench.js:974:10: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/cryptobench.js:977:10: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/cryptobench.js:993:36: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/cryptobench.js:996:41: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/cryptobench.js:996:41: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/cryptobench.js:999:41: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/cryptobench.js:1002:39: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/cryptobench.js:1024:20: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/cryptobench.js:1025:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/cryptobench.js:1025:33: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/cryptobench.js:1029:15: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/cryptobench.js:1029:34: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/cryptobench.js:1053:20: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/cryptobench.js:1053:20: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/cryptobench.js:1058:15: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/cryptobench.js:1058:15: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/cryptobench.js:1058:45: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/cryptobench.js:1058:45: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/cryptobench.js:1058:55: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/cryptobench.js:1058:55: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/cryptobench.js:1058:82: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/cryptobench.js:1058:82: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/cryptobench.js:1059:40: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/cryptobench.js:1059:40: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/cryptobench.js:1069:17: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/cryptobench.js:1072:22: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/cryptobench.js:1073:13: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/cryptobench.js:1073:27: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/cryptobench.js:1073:56: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/cryptobench.js:1138:20: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/google/cryptobench.js:1209:20: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/cryptobench.js:1211:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/cryptobench.js:1212:6: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/cryptobench.js:1214:22: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/cryptobench.js:1285:12: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/cryptobench.js:1294:24: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/google/cryptobench.js:1298:27: [info] 'this' refers to multiple abstract objects, which may cause loss of precision

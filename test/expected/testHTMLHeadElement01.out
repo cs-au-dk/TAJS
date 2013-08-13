@@ -1,3 +1,0 @@
-test/browser/domlegacy/html/HTMLHeadElement01.tidy.html:14: [definite] Reading absent property profile
-test/browser/domlegacy/html/HTMLHeadElement01.tidy.html:13: [info] Abstract value: [@HTMLHeadElement[native] constructor]
-test/browser/domlegacy/html/HTMLHeadElement01.tidy.html:14: [info] Abstract value: Undef

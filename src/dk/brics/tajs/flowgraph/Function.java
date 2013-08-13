@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Aarhus University
+ * Copyright 2009-2013 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -91,14 +91,19 @@ public class Function {
     private int max_register;
 
     /**
+     * True iff this function has a syntactic 'this' in its source code.
+     */
+	private boolean uses_this;
+
+    /**
      * Constructs a new function.
      * The node set is initially empty, and the entry/exit nodes are not set.
      * The function name is null for anonymous functions.
      *
-     * @param name Function name. Null for anonymous functions.
-     * @param parameter_names A list of parameter names.
-     * @param outer_function the outer function
-     * @param location The source location.
+     * @param name function name, null for anonymous functions
+     * @param parameter_names list of parameter names, null can be used in place of an empty list
+     * @param outer_function the outer function, null if none
+     * @param location source location
      */
 	public Function(String name, List<String> parameter_names, Function outer_function, SourceLocation location) {
 		this.name = name;
@@ -107,6 +112,7 @@ public class Function {
         this.outer_function = outer_function;
 		this.variable_names = newSet();
 		blocks = newList();
+		this.uses_this = false;
 	}
 
     /**
@@ -385,4 +391,18 @@ public class Function {
         for (BasicBlock bb : blocks)
             bb.check(ordinary_exit, exceptional_exit, seen_blocks, seen_nodes);
     }
+
+    /**
+     * Marks the function as having a syntactic 'this' in its source code or not. 
+     */
+	public void setUsesThis(boolean usesThis) {
+		this.uses_this = usesThis;
+	}
+	
+	/**
+	 * Returns true if this function has a syntactic 'this' in its source code.
+	 */
+	public boolean isUsesThis() {
+		return uses_this;
+	}
 }

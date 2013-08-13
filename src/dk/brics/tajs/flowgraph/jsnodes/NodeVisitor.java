@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Aarhus University
+ * Copyright 2009-2013 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -57,9 +57,9 @@ public interface NodeVisitor<ArgType> {
 	public void visit(DeletePropertyNode n, ArgType a);
 
 	/**
-	 * Visits an EnterWithNode.
+	 * Visits an BeginWithNode.
 	 */
-	public void visit(EnterWithNode n, ArgType a);
+	public void visit(BeginWithNode n, ArgType a);
 
 	/**
 	 * Visits an ExceptionalReturnNode.
@@ -82,9 +82,9 @@ public interface NodeVisitor<ArgType> {
 	public void visit(IfNode n, ArgType a);
 
 	/**
-	 * Visits a LeaveWithNode.
+	 * Visits a EndWithNode.
 	 */
-	public void visit(LeaveWithNode n, ArgType a);
+	public void visit(EndWithNode n, ArgType a);
 
 	/**
 	 * Visits a NewObjectNode.

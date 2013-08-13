@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Aarhus University
+ * Copyright 2009-2013 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -219,14 +219,14 @@ public enum ECMAScriptObjects implements HostObject {
     ASSERT_MOST_RECENT_OBJ("assertMostRecentObj"), //nonstandard
     ASSERT_SUMMARY_OBJ("assertSummaryObj"), //nonstandard
     CONVERSION_TO_PRIMITIVE("conversionToPrimitive"), // nonstandard
-    ASSUME_NON_NULLUNDEF("assumeNonNullUndef"), // nonstandard
     TAJS_GET_UI_EVENT("_TAJS_getUIEvent"), // nonstandard
     TAJS_GET_DOCUMENT_EVENT("_TAJS_getDocumentEvent"), // nonstandard
     TAJS_GET_MOUSE_EVENT("_TAJS_getMouseEvent"), // nonstandard
     TAJS_GET_KEYBOARD_EVENT("_TAJS_getKeyboardEvent"), // nonstandard
     TAJS_GET_EVENT_LISTENER("_TAJS_getEventListener"), // nonstandard
     TAJS_GET_WHEEL_EVENT("_TAJS_getWheelEvent"), // nonstandard
-    TAJS_GET_AJAX_EVENT("_TAJS_getAjaxEvent"); // nonstandard
+    TAJS_GET_AJAX_EVENT("_TAJS_getAjaxEvent"), // nonstandard
+    ADD_CONTEXT_SENSITIVITY("_TAJS_addContextSensitivity"); // nonstandard
 
     private HostAPIs api;
     

@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Aarhus University
+ * Copyright 2009-2013 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,7 +16,6 @@
 
 package dk.brics.tajs.lattice;
 
-import static dk.brics.tajs.util.Collections.newList;
 import static dk.brics.tajs.util.Collections.newMap;
 import static dk.brics.tajs.util.Collections.newSet;
 
@@ -33,24 +32,26 @@ import org.apache.log4j.Logger;
 import dk.brics.tajs.flowgraph.BasicBlock;
 import dk.brics.tajs.lattice.PropertyReference.Kind;
 import dk.brics.tajs.options.Options;
-import dk.brics.tajs.solver.BlockAndContext;
 import dk.brics.tajs.solver.GenericSolver;
 import dk.brics.tajs.solver.ICallContext;
 import dk.brics.tajs.solver.NodeAndContext;
 import dk.brics.tajs.util.AnalysisException;
 import dk.brics.tajs.util.Collections;
+import dk.brics.tajs.util.Pair;
 import dk.brics.tajs.util.Strings;
 
 /**
  * Resolves 'unknown' and polymorphic properties.
  * Contains wrappers for certain methods in {@link Obj}.
  * Each method reads the appropriate property. If unknown/polymorphic, it is recovered via the function entry state in the call graph.
+ * 
+ * @author Anders M&oslash;ller &lt;<a href="mailto:amoeller@cs.au.dk">amoeller@cs.au.dk</a>&gt;
  */
 public final class UnknownValueResolver {
 
 	public static Logger logger = Logger.getLogger(UnknownValueResolver.class); 
 
-	static { LogManager.getLogger(UnknownValueResolver.class).setLevel(Level.INFO); } // set to Level.DEBUG to enable debug output
+	static { LogManager.getLogger(UnknownValueResolver.class).setLevel(Level.INFO); } // set to Level.DEBUG to force debug output or Level.INFO to disable
 
 	/**
 	 * A recovery graph node is a triple of a basic block, a call context, and a property reference.
@@ -117,29 +118,36 @@ public final class UnknownValueResolver {
 		 * The internal representation groups the callee nodes with same function entry.
 		 */
 		private Map<Node<CallContextType>, // target or call node
-		Map<Node<CallContextType>, // callee function entry (groups callee nodes with same function entry)
+		Map<Pair<CallContextType,Node<CallContextType>>, // edge context and callee function entry (groups callee nodes with same function entry)
 		Set<Node<CallContextType>>>> graph; // callee node
 
 		private Set<Node<CallContextType>> roots;
 
 		private LinkedList<Node<CallContextType>> pending;
 		
+		private Map<Node<CallContextType>,Value> original_polymorphic_value;
+
 		/**
 		 * Constructs a new empty recovery graph.
 		 */
-		public RecoveryGraph() {
-			 graph = newMap();
-			 roots = newSet();
-			 pending = new LinkedList<>();
+		public RecoveryGraph() {}
+		
+		private void prepare() {
+			if (graph == null) {
+				 graph = newMap();
+				 roots = newSet();
+				 pending = new LinkedList<>();
+				 original_polymorphic_value = newMap();
+			}
 		}
 		
 		/**
 		 * Marks the given node as a root.
 		 */
 		public void addRoot(Node<CallContextType> n) {
-			roots.add(n);
-			if (logger.isDebugEnabled()) 
-				logger.debug("adding root " + n);
+			if (roots.add(n))
+				if (logger.isDebugEnabled()) 
+					logger.debug("adding root " + n);
 		}
 		
 		/**
@@ -147,14 +155,15 @@ public final class UnknownValueResolver {
 		 * (Modifications of the returned set will affect subsequent calls to the method.)
 		 */
 		public Set<Node<CallContextType>> getRoots() {
-			return roots;
+			return roots != null ? roots : java.util.Collections.<Node<CallContextType>>emptySet();
 		}
 		
 		/**
 		 * Adds a node (caller) and updates the pending list accordingly.
 		 */
 		public void addNode(Node<CallContextType> n) {
-			graph.put(n, dk.brics.tajs.util.Collections.<Node<CallContextType>,Set<Node<CallContextType>>>newMap());
+			prepare();
+			graph.put(n, dk.brics.tajs.util.Collections.<Pair<CallContextType,Node<CallContextType>>,Set<Node<CallContextType>>>newMap());
 			pending.add(n);
 			if (logger.isDebugEnabled()) 
 				logger.debug("adding node " + n);
@@ -164,7 +173,7 @@ public final class UnknownValueResolver {
 		 * Checks whether the pending list is empty.
 		 */
 		public boolean pendingIsEmpty() {
-			return pending.isEmpty();
+			return pending == null || pending.isEmpty();
 		}
 
 		/**
@@ -178,26 +187,28 @@ public final class UnknownValueResolver {
 		 * Returns the set of nodes.
 		 */
 		public Set<Node<CallContextType>> getNodes() {
-			return graph.keySet();
+			return graph != null ? graph.keySet() : java.util.Collections.<Node<CallContextType>>emptySet();
 		}
 		
 		/**
 		 * Returns the number of nodes.
 		 */
 		public int getNumberOfNodes() {
-			return graph.size();
+			return graph != null ? graph.size() : 0;
 		}
 		
 		/**
 		 * Adds a node (caller) and an edge (from caller to callee) and updates the pending list accordingly.
 		 */
 		public void addNodeAndEdge(
-				Node<CallContextType> callee,
 				NodeAndContext<CallContextType> caller,
-				PropertyReference caller_prop) {
+				PropertyReference caller_prop,
+				CallContextType edge_context,
+				Node<CallContextType> callee) {
+			prepare();
 			Node<CallContextType> caller_n = 
 				new Node<>(caller.getNode().getBlock(), caller.getContext(), caller_prop);
-			Map<Node<CallContextType>,Set<Node<CallContextType>>> t2 = graph.get(caller_n);
+			Map<Pair<CallContextType,Node<CallContextType>>,Set<Node<CallContextType>>> t2 = graph.get(caller_n);
 			if (t2 == null) {
 				t2 = newMap();
 				graph.put(caller_n, t2);
@@ -205,10 +216,9 @@ public final class UnknownValueResolver {
 				if (logger.isDebugEnabled()) 
 					logger.debug("adding caller node " + caller_n);
 			}
-			BlockAndContext<CallContextType> entry = callee.getContext().toEntry(callee.getBlock());
 			Node<CallContextType> callee_functionentry_n = 
-				new Node<>(entry.getBlock(), entry.getContext(), callee.getPropertyReference());
-			Collections.addToMapSet(t2, callee_functionentry_n, callee);
+				new Node<>(callee.getContext().getEntry(), callee.getContext(), callee.getPropertyReference());
+			Collections.addToMapSet(t2, Pair.make(edge_context, callee_functionentry_n), callee);
 			if (logger.isDebugEnabled()) 
 				logger.debug("adding edge from node " + caller_n + " to node " + callee);
 		}
@@ -216,9 +226,31 @@ public final class UnknownValueResolver {
 		/**
 		 * Returns the callees, grouped by function entry location.
 		 */
-		public Set<Map.Entry<Node<CallContextType>,Set<Node<CallContextType>>>> 
-		getCallees(Node<CallContextType> n) {
-			return graph.get(n).entrySet();
+		public Set<Map.Entry<Pair<CallContextType,Node<CallContextType>>,Set<Node<CallContextType>>>> getCallees(Node<CallContextType> n) {
+			return graph != null ? graph.get(n).entrySet() : 
+				java.util.Collections.<Map.Entry<Pair<CallContextType,Node<CallContextType>>,Set<Node<CallContextType>>>>emptySet();
+		}
+
+		/**
+		 * Records the given value if non-null and polymorphic.
+		 */
+		public void setPolymorphic(BasicBlock b, CallContextType c, PropertyReference p, Value v) {
+			if (v != null && v.isPolymorphic())
+				original_polymorphic_value.put(new Node<>(b, c, p), v);
+		}
+		
+		/**
+		 * Returns the original value for the given location, or null if not polymorphic.
+		 */
+		public Value getPolymorphic(BasicBlock b, CallContextType c, PropertyReference p) {
+			return getPolymorphic(new Node<>(b, c, p));
+		}
+		
+		/**
+		 * Returns the original value for the given location, or null if not polymorphic.
+		 */
+		public Value getPolymorphic(Node<CallContextType> n) {
+			return original_polymorphic_value.get(n);
 		}
 	}
 
@@ -243,73 +275,83 @@ public final class UnknownValueResolver {
 	Obj recover(
 			BlockState<BlockStateType,CallContextType,CallEdgeType> s,
 			PropertyReference prop, 
-			boolean partial) { // TODO: make fast track for recoveries that only need to look at the function entry state
+			boolean partial) {
+		PropertyReferencePair entry_prop = toEntry(s, prop);
+		if (partial && entry_prop.prop1 != null && entry_prop.prop2 != null) {
+			if (logger.isDebugEnabled())
+				logger.debug("switching from partial to full recover");
+			return recover(s, prop, false);
+		}
 		if (logger.isDebugEnabled()) 
 			logger.debug((partial ? "partially" : "fully") + " recovering " + prop  + " at block " + s.getBasicBlock().getIndex() + " context " + s.getContext());
 		GenericSolver<BlockStateType,CallContextType,CallEdgeType,?,?>.SolverInterface c = s.getSolverInterface();
-		c.getMonitoring().visitUnknownValueResolve();
+		c.getMonitoring().visitUnknownValueResolve(partial, c.isScanning());
 		// build recovery graph
 		RecoveryGraph<CallContextType> g = new RecoveryGraph<>();
-		PropertyReferencePair entry_prop = toEntry(s, prop);
-		g.addNode(new Node<>(s.getBasicBlock(), s.getContext(), entry_prop.prop1));
-		if (entry_prop.prop2 != null)
+		BlockStateType entry_state = getEntryState(s);
+		if (entry_prop.prop1 != null && !isOK(entry_state, entry_prop.prop1, partial))
+			g.addNode(new Node<>(s.getBasicBlock(), s.getContext(), entry_prop.prop1));
+		if (entry_prop.prop2 != null && !isOK(entry_state, entry_prop.prop2, partial))
 			g.addNode(new Node<>(s.getBasicBlock(), s.getContext(), entry_prop.prop2));
+		Value value_at_s = getValue(s, prop);
 		while (!g.pendingIsEmpty()) {
 			Node<CallContextType> n = g.getNextPending();
+			BasicBlock n_entry = n.getContext().getEntry();
+			// remember whether the value is polymorphic at the entry location
+			BlockStateType callee_functionentry_state = getEntryState(c, n.getContext());
+			if (!partial)
+				g.setPolymorphic(n_entry, n.getContext(), n.getPropertyReference(), getValue(callee_functionentry_state, n.getPropertyReference()));
 			// iterate through incoming call edges
-			BlockAndContext<CallContextType> n_entry = n.getContext().toEntry(n.getBlock());
-			for (NodeAndContext<CallContextType> cs : c.getAnalysisLatticeElement().getCallGraph().getSources(n_entry.getBlock(), n_entry.getContext())) {
-				CallEdgeType call_edge = c.getAnalysisLatticeElement().getCallGraph().getCallEdge(cs.getNode(), cs.getContext(), n_entry.getBlock(), n_entry.getContext());
+			for (Pair<NodeAndContext<CallContextType>,CallContextType> cs : c.getAnalysisLatticeElement().getCallGraph().getSources(n_entry, n.getContext())) {
+				NodeAndContext<CallContextType> caller = cs.getFirst();
+				CallContextType edge_context = cs.getSecond();
+				CallEdgeType call_edge = c.getAnalysisLatticeElement().getCallGraph().getCallEdge(caller.getNode(), caller.getContext(), n_entry, edge_context);
 				BlockStateType call_edge_state = call_edge.getState();
 				PropertyReference call_edge_prop = n.getPropertyReference();
 				if (isOK(call_edge_state, call_edge_prop, partial)) // value is available at the call edge
 					g.addRoot(n);
-				else {
-					BlockStateType caller_functionentry_state = getEntryState(c, cs.getNode().getBlock(), cs.getContext());
+				else { // need to go to the function entry of the caller
+					BlockStateType caller_functionentry_state = getEntryState(c, caller.getContext());
 					PropertyReferencePair caller_functionentry_prop = toEntry(call_edge_state, call_edge_prop);
-					if (isOK(caller_functionentry_state, caller_functionentry_prop.prop1, partial)) // value is available at the function entry of the caller (primary property reference)
-						g.addRoot(n);
-					else 
-						g.addNodeAndEdge(n, cs, caller_functionentry_prop.prop1); // proceed backward through call graph
-					if (caller_functionentry_prop.prop2 != null) {
-						if (isOK(caller_functionentry_state, caller_functionentry_prop.prop2, partial)) // value is available at the function entry of the caller (secondary property reference)
-							g.addRoot(n);
-						else 
-							g.addNodeAndEdge(n, cs, caller_functionentry_prop.prop2); // proceed backward through call graph
+					if (partial && caller_functionentry_prop.prop1 != null && caller_functionentry_prop.prop2 != null) {
+						if (logger.isDebugEnabled())
+							logger.debug("switching from partial to full recover");
+						return recover(s, prop, false);
 					}
+					if (caller_functionentry_prop.prop1 != null)
+						addRootOrPredecessors(n, caller, edge_context, caller_functionentry_state, caller_functionentry_prop.prop1, g, partial);
+					if (caller_functionentry_prop.prop2 != null)
+						addRootOrPredecessors(n, caller, edge_context, caller_functionentry_state, caller_functionentry_prop.prop2, g, partial);
 				}
 			}
 		}
 		if (Options.isStatisticsEnabled())
 			c.getMonitoring().visitRecoveryGraph(g.getNumberOfNodes());
 		// recover at roots
-		for (Node<CallContextType> n : g.getRoots()) {
-			BlockStateType callee_functionentry_state = getEntryState(c, n.getBlock(), n.getContext());
+		for (Node<CallContextType> n : g.getRoots()) { // TODO: recover at roots as soon as we mark them as roots instead of having a separate phase?
+			BlockStateType callee_functionentry_state = getEntryState(c, n.getContext());
 			boolean changed = false;
-			BlockAndContext<CallContextType> n_entry = n.getContext().toEntry(n.getBlock());
-			for (NodeAndContext<CallContextType> cs : c.getAnalysisLatticeElement().getCallGraph().getSources(n_entry.getBlock(), n_entry.getContext())) {
-				CallEdgeType call_edge = c.getAnalysisLatticeElement().getCallGraph().getCallEdge(cs.getNode(), cs.getContext(), n_entry.getBlock(), n_entry.getContext());
+			BasicBlock n_entry = n.getContext().getEntry();
+			for (Pair<NodeAndContext<CallContextType>,CallContextType> cs : c.getAnalysisLatticeElement().getCallGraph().getSources(n_entry, n.getContext())) {
+				NodeAndContext<CallContextType> caller = cs.getFirst();
+				CallContextType edge_context = cs.getSecond();
+				CallEdgeType call_edge = c.getAnalysisLatticeElement().getCallGraph().getCallEdge(caller.getNode(), caller.getContext(), n_entry, edge_context);
 				BlockStateType call_edge_state = call_edge.getState();
-				PropertyReference call_edge_prop =n.getPropertyReference();
+				PropertyReference call_edge_prop = n.getPropertyReference();
 				if (isOK(call_edge_state, call_edge_prop, partial)) { // recover from call edge
-					changed |= propagate(callee_functionentry_state, n.getPropertyReference(), call_edge_state, call_edge_prop, null, partial); // no summarization
-				} else {
-					BlockStateType caller_functionentry_state = getEntryState(c, cs.getNode().getBlock(), cs.getContext());
+					Value poly_at_n_entry = partial ? null : g.getPolymorphic(n_entry, n.getContext(), n.getPropertyReference());
+					changed |= propagate(call_edge_state, call_edge_prop, callee_functionentry_state, n.getPropertyReference(), null, partial, true, poly_at_n_entry); // no summarization
+				} else { // recover from the function entry of the caller
+					BlockStateType caller_functionentry_state = getEntryState(c, caller.getContext());
 					PropertyReferencePair caller_functionentry_prop = toEntry(call_edge_state, call_edge_prop);
-					if (isOK(caller_functionentry_state, caller_functionentry_prop.prop1, partial)) { // recover from entry of caller function
-						propagate(call_edge_state, call_edge_prop, caller_functionentry_state, caller_functionentry_prop.prop1, call_edge_state.getSummarized(), partial);
-						changed |= propagate(callee_functionentry_state, n.getPropertyReference(), call_edge_state, call_edge_prop, null, partial);
-					}
-					if (caller_functionentry_prop.prop2 != null) {
-						if (isOK(caller_functionentry_state, caller_functionentry_prop.prop2, partial)) { // recover from entry of caller function
-							propagate(call_edge_state, call_edge_prop, caller_functionentry_state, caller_functionentry_prop.prop2, call_edge_state.getSummarized(), partial);
-							changed |= propagate(callee_functionentry_state, n.getPropertyReference(), call_edge_state, call_edge_prop, null, partial);
-						}
-					}
+					if (caller_functionentry_prop.prop1 != null)
+						changed |= recoverAtRootFromCallerFunctionEntry(n, caller_functionentry_state, caller_functionentry_prop.prop1, call_edge_state, call_edge_prop, callee_functionentry_state, partial, g);
+					if (caller_functionentry_prop.prop2 != null)
+						changed |= recoverAtRootFromCallerFunctionEntry(n, caller_functionentry_state, caller_functionentry_prop.prop2, call_edge_state, call_edge_prop, callee_functionentry_state, partial, g);
 				}
 			}
 			if (changed) {
-				s.getSolverInterface().getMonitoring().visitNewFlow(n_entry.getBlock(), n_entry.getContext(), callee_functionentry_state, null, "recover");
+				s.getSolverInterface().getMonitoring().visitNewFlow(n_entry, n.getContext(), callee_functionentry_state, null, "recover");
 				if (logger.isDebugEnabled()) 
 					logger.debug("recovered value at root " + n);
 			}
@@ -320,17 +362,20 @@ public final class UnknownValueResolver {
 		while (!pending2.isEmpty()) {
 			Node<CallContextType> n = pending_list2.remove();
 			pending2.remove(n);
-			BlockStateType n_functionentry_state = getEntryState(c, n.getBlock(), n.getContext());
-			for (Map.Entry<Node<CallContextType>, 
+			BlockStateType n_functionentry_state = getEntryState(c, n.getContext());
+			for (Map.Entry<Pair<CallContextType,Node<CallContextType>>, 
 					Set<Node<CallContextType>>> me : g.getCallees(n)) {
-				Node<CallContextType> callee_functionentry_n = me.getKey();
+				Node<CallContextType> callee_functionentry_n = me.getKey().getSecond();
+				CallContextType edge_context = me.getKey().getFirst();
 				CallEdgeType call_edge = c.getAnalysisLatticeElement().getCallGraph().getCallEdge(n.getBlock().getSingleNode(), n.getContext(), 
-						callee_functionentry_n.getBlock(), callee_functionentry_n.getContext());
+						callee_functionentry_n.getBlock(), edge_context);
 				BlockStateType call_edge_state = call_edge.getState();
 				BlockStateType callee_functionentry_state = c.getAnalysisLatticeElement().getState(callee_functionentry_n.getBlock(), callee_functionentry_n.getContext());
 				PropertyReference call_edge_prop = callee_functionentry_n.getPropertyReference();
-				propagate(call_edge_state, callee_functionentry_n.getPropertyReference(), n_functionentry_state, n.getPropertyReference(), call_edge_state.getSummarized(), partial);
-				boolean changed = propagate(callee_functionentry_state, callee_functionentry_n.getPropertyReference(), call_edge_state, call_edge_prop, null, partial);
+				Value value_at_call_edge = partial ? null : getValue(call_edge_state, call_edge_prop);
+				propagate(n_functionentry_state, n.getPropertyReference(), call_edge_state, call_edge_prop, call_edge_state.getSummarized(), partial, false, value_at_call_edge);
+				Value poly_at_callee_functionentry = partial ? null : g.getPolymorphic(callee_functionentry_n);
+				boolean changed = propagate(call_edge_state, call_edge_prop, callee_functionentry_state, callee_functionentry_n.getPropertyReference(), null, partial, true, poly_at_callee_functionentry);
 				if (changed) {
 					for (Node<CallContextType> callee_n : me.getValue()) {
 						if (!pending2.contains(callee_n)) { // propagate further if changed
@@ -346,55 +391,68 @@ public final class UnknownValueResolver {
 		}
 		if (Options.isDebugOrTestEnabled()) {
 			for (Node<CallContextType> n : g.getNodes()) {
-				BlockStateType n_state = getEntryState(c, n.getBlock(), n.getContext());
-				if (!isOK(n_state, n.getPropertyReference(), partial))
+				BlockStateType n_entry_state = getEntryState(c, n.getContext());
+				if (!isOK(n_entry_state, n.getPropertyReference(), partial))
 					throw new AnalysisException("Unexpected value at " + n.getPropertyReference() + ", should have been recovered!?");
 			}
 		}
 		// propagate to the current state (necessary for materializing all properties and for abstract gc)
-		Obj dst_obj = s.getObject(prop.getObjectLabel(), true); 
-		// TODO: skip if already at function entry state?
-		switch (prop.getKind()) {
-		case ORDINARY:
-			dst_obj.setProperty(prop.getPropertyName(), getValueFromFunctionEntry(s, entry_prop, null, partial));
-			break;
-		case INTERNAL_VALUE:
-			dst_obj.setInternalValue(getValueFromFunctionEntry(s, entry_prop, null, partial));
-			break;
-		case INTERNAL_PROTOTYPE:
-			dst_obj.setInternalPrototype(getValueFromFunctionEntry(s, entry_prop, null, partial));
-			break;
-		case DEFAULT_ARRAY:
-			Collection<String> src_array_props = newList();
-			dst_obj.setDefaultArrayProperty(getValueFromFunctionEntry(s, entry_prop, src_array_props, partial));
-			materializeProperties(dst_obj, src_array_props);
-			break;
-		case DEFAULT_NONARRAY:
-			Collection<String> src_nonarray_props = newList();
-			dst_obj.setDefaultNonArrayProperty(getValueFromFunctionEntry(s, entry_prop, src_nonarray_props, partial));
-			materializeProperties(dst_obj, src_nonarray_props);
-			break;
-		case INTERNAL_SCOPE:
-			dst_obj.setScopeChain(getInternalScopeFromFunctionEntry(s, entry_prop));
-			break;
-		default:
-			throw new AnalysisException("Unexpected property reference kind");
-		}
-		return dst_obj;
+		if (entry_prop.prop1 != null)
+			propagate(entry_state, entry_prop.prop1, s, prop, s.getSummarized(), partial, false, value_at_s);
+		if (entry_prop.prop2 != null)
+			propagate(entry_state, entry_prop.prop2, s, prop, s.getSummarized(), partial, false, value_at_s);
+		return s.getObject(prop.getObjectLabel(), false);
 	}
 
 	/**
-	 * Materializes the given explicit properties as 'unknown' if not already present.
+	 * Adds n as root to the recovery graph or proceeds backward through the call graph to add more nodes and edges.
+	 * @param n recovery graph node being visited
+	 * @param caller an incoming function call
+	 * @param edge_context the call context at the edge
+	 * @param caller_functionentry_state abstract state at the function entry of the caller
+	 * @param caller_functionentry_prop the relevant property at the function entry of the caller
 	 */
-	private static void materializeProperties(Obj dst_obj, Collection<String> materialize) {
-		for (String p : materialize)
-			if (!dst_obj.getProperties().containsKey(p)) {
-				if (logger.isDebugEnabled()) 
-					logger.debug("materialized property " + p);
-				dst_obj.setProperty(p, Value.makeUnknown());
-			}
+	private static <BlockStateType extends BlockState<BlockStateType,CallContextType,CallEdgeType>,
+	CallContextType extends ICallContext<CallContextType>,
+	CallEdgeType extends CallEdge<BlockStateType>> 
+	void addRootOrPredecessors(Node<CallContextType> n, 
+			NodeAndContext<CallContextType> caller, 
+			CallContextType edge_context, 
+			BlockStateType caller_functionentry_state, 
+			PropertyReference caller_functionentry_prop, 
+			RecoveryGraph<CallContextType> g, 
+			boolean partial) {
+		if (isOK(caller_functionentry_state, caller_functionentry_prop, partial)) // value is available at the function entry of the caller
+			g.addRoot(n);
+		else 
+			g.addNodeAndEdge(caller, caller_functionentry_prop, edge_context, n); // proceed backward through call graph
 	}
-	
+
+	/**
+	 * Recovers the value to the function entry of n from the caller via the call edge.
+	 * @param n the recovery graph node
+	 * @return true if the value changed at n
+	 */
+	private static <BlockStateType extends BlockState<BlockStateType, CallContextType, CallEdgeType>, 
+	CallEdgeType extends CallEdge<BlockStateType>, 
+	CallContextType extends ICallContext<CallContextType>> 
+	boolean recoverAtRootFromCallerFunctionEntry(Node<CallContextType> n, 
+			BlockStateType caller_functionentry_state, 
+			PropertyReference caller_functionentry_prop, 
+			BlockStateType call_edge_state, 
+			PropertyReference call_edge_prop, 
+			BlockStateType callee_functionentry_state, 
+			boolean partial,
+			RecoveryGraph<CallContextType> g) {
+		if (isOK(caller_functionentry_state, caller_functionentry_prop, partial)) { // recover from entry of caller function
+			Value value_at_call_edge = partial ? null : getValue(call_edge_state, call_edge_prop);
+			propagate(caller_functionentry_state, caller_functionentry_prop, call_edge_state, call_edge_prop, call_edge_state.getSummarized(), partial, false, value_at_call_edge);
+			Value poly_at_callee_functionentry = partial ? null : g.getPolymorphic(n.getContext().getEntry(), n.getContext(), n.getPropertyReference());
+			return propagate(call_edge_state, call_edge_prop, callee_functionentry_state, n.getPropertyReference(), null, partial, true, poly_at_callee_functionentry);
+		}
+		return false;
+	}
+
 	/**
 	 * If the given property reference refers to a polymorphic value, then a 
 	 * reference to the corresponding property at function entry is returned,
@@ -433,6 +491,23 @@ public final class UnknownValueResolver {
 				p.prop2 = prop.makeSingleton();
 		}
 		return p;
+	}
+
+	/**
+	 * Returns the designated value, or null if internal scope. 
+	 */
+	private static <BlockStateType extends BlockState<BlockStateType,CallContextType,?>,
+	CallContextType extends ICallContext<CallContextType>>
+	Value getValue(
+			BlockState<BlockStateType,CallContextType,?> s, 
+			PropertyReference prop) {
+		switch (prop.getKind()) {
+		case INTERNAL_SCOPE:
+			return null;
+		default:
+			Obj obj = s.getObject(prop.getObjectLabel(), false);
+			return obj.getValue(prop);
+		}		
 	}
 
 	/**
@@ -476,224 +551,77 @@ public final class UnknownValueResolver {
 	 * Propagates a property from src into dst.
 	 * Must pass isOK for the src arguments.
 	 * @param summarized summarization sets, null if no summarization necessary
-	 * @param renaming renaming, null if no renaming necessary
+	 * @param to_entry propagation to function entry if true, propagating from function entry if false
+	 * @param orig_dst_v original value at dst, if polymorphic
 	 * @return true if dst is changed
 	 */
 	private static <BlockStateType extends BlockState<BlockStateType,CallContextType,?>,
 	CallContextType extends ICallContext<CallContextType>>
 	boolean propagate(
-			BlockState<BlockStateType,CallContextType,?> dst_s, PropertyReference dst_prop,
 			BlockState<BlockStateType,CallContextType,?> src_s, PropertyReference src_prop,
+			BlockState<BlockStateType,CallContextType,?> dst_s, PropertyReference dst_prop,
 			Summarized summarized,
-			boolean partial) {
+			boolean partial, boolean to_entry, Value orig_dst_v) {
 		if (src_s == dst_s && src_prop == dst_prop)
 			return false; // joining to itself, nothing changes
 		Obj src_obj = src_s.getObject(src_prop.getObjectLabel(), false);
 		if (Options.isDebugOrTestEnabled() && !isOK(src_s, src_prop, partial))
 			throw new AnalysisException("Unexpected value");
 		Kind r = dst_prop.getKind();
-		if (!(r == Kind.ORDINARY || r == Kind.INTERNAL_VALUE || r == Kind.INTERNAL_PROTOTYPE) && src_prop.getKind() != dst_prop.getKind())
+		if (!(r == Kind.ORDINARY || r == Kind.INTERNAL_VALUE || r == Kind.INTERNAL_PROTOTYPE) && src_prop.getKind() != r)
 			throw new AnalysisException("Unexpected property reference kind");
+		boolean changed = false;
 		Obj dst_obj = dst_s.getObject(dst_prop.getObjectLabel(), true);
-		switch (dst_prop.getKind()) {
-		case INTERNAL_SCOPE:
-			return propagateInternalScope(dst_obj, src_obj.getScopeChain(), summarized);
-		case DEFAULT_ARRAY:
-			return propagateDefaultArray(dst_obj, src_obj, summarized);
-		case DEFAULT_NONARRAY:
-			return propagateDefaultNonArray(dst_obj, src_obj, summarized);
-		case ORDINARY:
-			return propagateProperty(dst_obj, dst_prop.getObjectLabel(), dst_prop.getPropertyName(), src_obj.getValue(src_prop), summarized, partial);
-		case INTERNAL_VALUE:
-			return propagateInternalValue(dst_obj, dst_prop.getObjectLabel(), src_obj.getValue(src_prop), summarized, partial);
-		case INTERNAL_PROTOTYPE:
-			return propagateInternalPrototype(dst_obj, dst_prop.getObjectLabel(), src_obj.getValue(src_prop), summarized, partial);
-		default:
-			throw new AnalysisException("Unexpected property reference kind");
-		}
-	}
-	
-	/**
-	 * Propagates the given value into the internal prototype property of the destination object.
-	 * Restricts to not-modified and summarizes the value, and introduces polymorphic value if necessary.
-	 */
-	private static boolean propagateInternalPrototype(Obj dst_obj, ObjectLabel dst_objlabel, Value src_v, Summarized s, boolean partial) {
-		src_v = src_v.restrictToNotModified();
-		Value dst_v = dst_obj.getInternalPrototype();
-		Value new_dst_v;
-		if (partial)
-			new_dst_v = Value.makePolymorphic(PropertyReference.makeInternalPrototypePropertyReference(dst_objlabel), src_v);
-		else {
-			new_dst_v = src_v.summarize(s);
-		}
-		new_dst_v = new_dst_v.join(dst_v);
-		dst_obj.setInternalPrototype(new_dst_v);
-		return !new_dst_v.equals(dst_v);
-	}
-	
-	/**
-	 * Propagates the given value into the internal value property of the destination object.
-	 * Restricts to not-modified and summarizes the value, and introduces polymorphic value if necessary.
-	 */
-	private static boolean propagateInternalValue(Obj dst_obj, ObjectLabel dst_objlabel, Value src_v, Summarized s, boolean partial) {
-		src_v = src_v.restrictToNotModified();
-		Value dst_v = dst_obj.getInternalValue();
-		Value new_dst_v;
-		if (partial)
-			new_dst_v = Value.makePolymorphic(PropertyReference.makeInternalValuePropertyReference(dst_objlabel), src_v);
-		else {
-			new_dst_v = src_v.summarize(s);
-		}
-		new_dst_v = new_dst_v.join(dst_v);
-		dst_obj.setInternalValue(new_dst_v);
-		return !new_dst_v.equals(dst_v);
-	}
-	
-	/**
-	 * Propagates the given value into the given ordinary property of the destination object.
-	 * Restricts to not-modified and summarizes the value, and introduces polymorphic value if necessary.
-	 */
-	private static boolean propagateProperty(Obj dst_obj, ObjectLabel dst_objlabel, String dst_propertyname, Value src_v, Summarized s, boolean partial) {
-		src_v = src_v.restrictToNotModified();
-		Value dst_v = dst_obj.getProperty(dst_propertyname);
-		Value new_dst_v;
-		if (partial)
-			new_dst_v = Value.makePolymorphic(PropertyReference.makeOrdinaryPropertyReference(dst_objlabel, dst_propertyname), src_v);
-		else {
-			new_dst_v = src_v.summarize(s);
-		}
-		new_dst_v = new_dst_v.join(dst_v);
-		dst_obj.setProperty(dst_propertyname, new_dst_v);
-		return !new_dst_v.equals(dst_v);
-	}
-	
-	/**
-	 * Propagates the default array property value.
-	 * Restricts to not-modified and summarizes the value.
-	 * As a side-effect, ordinary properties may be materialized (to 'unknown').
-	 */
-	private static boolean propagateDefaultArray(Obj dst_obj, Obj src_obj, Summarized s) {
-		Value src_v = src_obj.getDefaultArrayProperty().restrictToNotModified().summarize(s);
-		Value dst_v = dst_obj.getDefaultArrayProperty();
-		Value new_dst_v = dst_v.join(src_v);
-		dst_obj.setDefaultArrayProperty(new_dst_v);
-		for (String p : src_obj.getPropertyNames())
-			if (Strings.isArrayIndex(p) && !dst_obj.getProperties().containsKey(p)) {
-				if (logger.isDebugEnabled()) 
-					logger.debug("materialized property " + p);
-				dst_obj.setProperty(p, Value.makeUnknown());
+		if (r != Kind.INTERNAL_SCOPE) {
+			Value old_src_v = src_obj.getValue(src_prop);
+			Value old_dst_v = dst_obj.getValue(dst_prop);
+			Value src_v = to_entry ?
+					old_src_v.restrictToNotModified() : // to entry: remove modified flags
+					(partial ? old_src_v : old_src_v.summarize(summarized)); // to non-entry and full: summarize
+			Value dst_v = old_dst_v;
+			if (partial) {
+				if (to_entry)
+					src_v = src_v.makePolymorphic(dst_prop);
+				else
+					src_v = src_v.makePolymorphic(src_prop);
+			} else {
+				if (orig_dst_v != null && orig_dst_v.isPolymorphic()) {
+					if (orig_dst_v.isMaybePolymorphicPresent())
+						src_v = src_v.restrictToNonAttributes(); // recover only the non-attributes part
+					else
+						src_v = Value.makeNone(); // not expecting to recover anything from the polymorphic part (will propagate later)
+				}
+				dst_v = dst_v.makeNonPolymorphic();
 			}
-		return !new_dst_v.equals(dst_v);
-	}
-	
-	/**
-	 * Propagates the default non-array property value.
-	 * Restricts to not-modified and summarizes the value.
-	 * As a side-effect, ordinary properties may be materialized (to 'unknown').
-	 */
-	private static boolean propagateDefaultNonArray(Obj dst_obj, Obj src_obj, Summarized s) {
-		Value src_v = src_obj.getDefaultNonArrayProperty().restrictToNotModified().summarize(s);
-		Value dst_v = dst_obj.getDefaultNonArrayProperty();
-		Value new_dst_v = dst_v.join(src_v);
-		dst_obj.setDefaultNonArrayProperty(new_dst_v);
-		for (String p : src_obj.getPropertyNames())
-			if (!Strings.isArrayIndex(p) && !dst_obj.getProperties().containsKey(p)) {
-				if (logger.isDebugEnabled()) 
-					logger.debug("materialized property " + p);
-				dst_obj.setProperty(p, Value.makeUnknown());
+			Value new_dst_v = src_v.join(dst_v);
+			dst_obj.setValue(dst_prop, new_dst_v);
+			if (logger.isDebugEnabled())
+				logger.debug("propagating " + old_src_v + " (" + src_prop + " at " + src_s.getBasicBlock().getFirstNode().getSourceLocation() + 
+						") into " + old_dst_v + " (" + dst_prop + " at " + dst_s.getBasicBlock().getFirstNode().getSourceLocation() + 
+						" block " + dst_s.getBasicBlock().getIndex() +
+						") resulting in " + new_dst_v);
+			if (r==Kind.DEFAULT_ARRAY || r==Kind.DEFAULT_NONARRAY)
+				for (String p : src_obj.getPropertyNames())
+					if (Strings.isArrayIndex(p)==(r==Kind.DEFAULT_ARRAY) && !dst_obj.getProperties().containsKey(p)) {
+						if (logger.isDebugEnabled()) 
+							logger.debug("materialized property " + p);
+						dst_obj.setProperty(p, Value.makeUnknown());
+					}
+			changed = !new_dst_v.equals(old_dst_v);
+		} else {
+			ScopeChain src_v = src_obj.getScopeChain();
+			if (src_v != null && !to_entry) {
+				src_v = ScopeChain.summarize(src_v, summarized);
 			}
-		return !new_dst_v.equals(dst_v);
-	}
-	
-	/**
-	 * Propagates the given value into the internal scope property of the destination object.
-	 * Summarizes the value.
-	 */
-	private static boolean propagateInternalScope(Obj dst_obj, ScopeChain src_v, Summarized s) {
-		boolean changed;
-		if (src_v != null) {
-			src_v = ScopeChain.summarize(src_v, s);
+			if (dst_obj.isScopeChainUnknown()) {
+				dst_obj.setScopeChain(src_v);
+				changed = true;
+			} else 
+				changed = dst_obj.addToScopeChain(src_v);
 		}
-		if (dst_obj.isScopeChainUnknown()) {
-			dst_obj.setScopeChain(src_v);
-			changed = true;
-		} else 
-			changed = dst_obj.addToScopeChain(src_v);
 		return changed;
 	}
 	
-	/**
-	 * Gets the given property value from the function entry state.
-	 * Summarizes the value.
-	 * Also collects the explicit properties in the source objects if getting a default property.
-	 */
-	private static <BlockStateType extends BlockState<BlockStateType,CallContextType,CallEdgeType>,
-	CallContextType extends ICallContext<CallContextType>,
-	CallEdgeType extends CallEdge<BlockStateType>> 
-	Value getValueFromFunctionEntry(
-			BlockState<BlockStateType, CallContextType, CallEdgeType> s,
-			PropertyReferencePair entry_prop,
-			Collection<String> src_props,
-			boolean partial) {
-		BlockStateType entry_state = getEntryState(s);
-		Obj obj1 = entry_state.getObject(entry_prop.prop1.getObjectLabel(), false);
-		switch (entry_prop.prop1.getKind()) {
-		case DEFAULT_ARRAY:
-			addProperties(obj1, src_props, true);
-			break;
-		case DEFAULT_NONARRAY:
-			addProperties(obj1, src_props, false);
-			break;
-		default:
-			// do nothing
-			break;
-		}
-		Value res = obj1.getValue(entry_prop.prop1).summarize(s.getSummarized());
-		if (entry_prop.prop2 != null) {
-			Obj obj2 = entry_state.getObject(entry_prop.prop2.getObjectLabel(), false);
-			switch (entry_prop.prop2.getKind()) {
-			case DEFAULT_ARRAY:
-				addProperties(obj2, src_props, true);
-				break;
-			case DEFAULT_NONARRAY:
-				addProperties(obj2, src_props, false);
-				break;
-			default:
-				// do nothing
-				break;
-			}
-			res = join(res, obj2.getValue(entry_prop.prop2).summarize(s.getSummarized()), s);
-		}
-		if (Options.isDebugOrTestEnabled() && !isValueOK(res, partial))
-			throw new AnalysisException("Unexpected value " + res);
-		return res;
-	}
-
-	/**
-	 * Collects the explicit properties of the given kind.
-	 */
-	private static void addProperties(Obj obj, Collection<String> src_props, boolean array) { 
-		for (String p : obj.getPropertyNames())
-			if (array == Strings.isArrayIndex(p))
-				src_props.add(p);
-	}
-
-	/**
-	 * Gets the given internal scope property value from the function entry state.
-	 * Summarizes the value.
-	 */
-	private static <BlockStateType extends BlockState<BlockStateType,CallContextType,?>,
-	CallContextType extends ICallContext<CallContextType>> 
-	ScopeChain getInternalScopeFromFunctionEntry(
-			BlockState<BlockStateType, CallContextType, ?> s,
-			PropertyReferencePair entry_prop) {
-		BlockStateType entry_state = getEntryState(s);
-		ScopeChain res = ScopeChain.summarize(entry_state.getObject(entry_prop.prop1.getObjectLabel(), false).getScopeChain(), s.getSummarized());
-		if (entry_prop.prop2 != null)
-			res = ScopeChain.add(res, ScopeChain.summarize(entry_state.getObject(entry_prop.prop2.getObjectLabel(), false).getScopeChain(), s.getSummarized()));
-		return res;
-	}
-
 	/**
 	 * Returns the enclosing entry state for the location of the given state.
 	 * The enclosing entry is the nearest for-in body entry or function entry.
@@ -701,7 +629,7 @@ public final class UnknownValueResolver {
 	private static <BlockStateType extends BlockState<BlockStateType,CallContextType,?>,
 	CallContextType extends ICallContext<CallContextType>> 
 	BlockStateType getEntryState(BlockState<BlockStateType, CallContextType, ?> s) {
-		return getEntryState(s.getSolverInterface(), s.getBasicBlock(), s.getContext());
+		return getEntryState(s.getSolverInterface(), s.getContext());
 	}
 
 	/**
@@ -711,10 +639,8 @@ public final class UnknownValueResolver {
 	CallContextType extends ICallContext<CallContextType>> 
 	BlockStateType getEntryState(
 			GenericSolver<BlockStateType,CallContextType,?,?,?>.SolverInterface c,
-			BasicBlock block,
 			CallContextType context) {
-		BlockAndContext<CallContextType> enclosing = context.toEntry(block); 
-		return c.getAnalysisLatticeElement().getState(enclosing.getBlock(), enclosing.getContext());
+		return c.getAnalysisLatticeElement().getState(context.getEntry(), context);
 	}
 
 	/**
@@ -740,8 +666,8 @@ public final class UnknownValueResolver {
 
 	/**
 	 * Wrapper for {@link Obj#getDefaultArrayProperty}.
-	 * Never returns 'unknown'.
-	 * As a side-effect, ordinary properties may be materialized (to 'unknown').
+	 * Never returns 'unknown' or polymorphic value.
+	 * As a side-effect, ordinary properties may be materialized.
 	 */
 	public static <BlockStateType extends BlockState<BlockStateType,CallContextType,CallEdgeType>,
 	CallContextType extends ICallContext<CallContextType>,
@@ -760,8 +686,8 @@ public final class UnknownValueResolver {
 
 	/**
 	 * Wrapper for {@link Obj#getDefaultNonArrayProperty}.
-	 * Never returns 'unknown'.
-	 * As a side-effect, ordinary properties may be materialized (to 'unknown').
+	 * Never returns 'unknown' or polymorphic value.
+	 * As a side-effect, ordinary properties may be materialized.
 	 */
 	public static <BlockStateType extends BlockState<BlockStateType,CallContextType,CallEdgeType>,
 	CallContextType extends ICallContext<CallContextType>,
@@ -899,11 +825,8 @@ public final class UnknownValueResolver {
 		default:
 			throw new AnalysisException("Unexpected property reference kind");
 		}
-		if (v.isMaybeModified()) // inherit the modified status from v
-			res = res.joinModified();
-		else
-			res = res.restrictToNotModified();
-		return res.summarize(s.getSummarized());
+		res = res.summarize(s.getSummarized());
+		return v.replaceValue(res);
 	}
 
 	/**
@@ -954,30 +877,26 @@ public final class UnknownValueResolver {
 			Value v1, 
 			Value v2, 
 			BlockState<BlockStateType,CallContextType,CallEdgeType> s) {
-		if (!canJoin(v1, v2)) {
-			v1 = getRealValue(v1, s);
-			v2 = getRealValue(v2, s);
-		}
-		return v1.join(v2);
+		return join(v1, s, v2, s);
 	}
 
 	/**
 	 * Joins the given values, performing full recovery for polymorphic values if necessary.
-	 * Marks the resulting value as maybe modified if different from v1.
 	 * Assumes that both values are non-unknown.
 	 */
 	public static <BlockStateType extends BlockState<BlockStateType,CallContextType,CallEdgeType>,
 	CallContextType extends ICallContext<CallContextType>,
 	CallEdgeType extends CallEdge<BlockStateType>>
-	Value joinWithModified(
+	Value join(
 			Value v1, 
+			BlockState<BlockStateType,CallContextType,CallEdgeType> s1,
 			Value v2, 
-			BlockState<BlockStateType,CallContextType,CallEdgeType> s) {
+			BlockState<BlockStateType,CallContextType,CallEdgeType> s2) {
 		if (!canJoin(v1, v2)) {
-			v1 = getRealValue(v1, s);
-			v2 = getRealValue(v2, s);
+			v1 = getRealValue(v1, s1);
+			v2 = getRealValue(v2, s2);
 		}
-		return v1.joinWithModified(v2);
+		return v1.join(v2);
 	}
 
 	/**
@@ -999,5 +918,45 @@ public final class UnknownValueResolver {
 			vs.add(v);
 		}
 		return Value.join(vs);
+	}
+	
+	/**
+	 * Returns true if the given object label can quickly be seen to resolve to the none object.
+	 */
+	public static <BlockStateType extends BlockState<?,?,?>>
+	boolean willResolveToNone(ObjectLabel objlabel, BlockStateType entry_state) {
+		return entry_state.getObject(objlabel, false).getDefaultArrayProperty().isNone();
+	}
+	
+	/**
+	 * Localizes a value for function entry propagation.
+	 * @param v value to be localized
+	 * @param other existing value at destination
+	 * @param s current state containing v
+	 * @param v_prop store location of v
+	 */
+	public static <BlockStateType extends BlockState<BlockStateType,CallContextType,CallEdgeType>,
+	CallContextType extends ICallContext<CallContextType>,
+	CallEdgeType extends CallEdge<BlockStateType>>
+	Value localize(Value v, Value other, BlockState<BlockStateType,CallContextType,CallEdgeType> s, PropertyReference v_prop) {
+		Value res;
+		if (other.isUnknown()) {
+			// reduce to unknown
+			res = Value.makeUnknown();
+		} else if (other.isPolymorphic()) {
+			// reduce or recover to polymorphic
+			if (v.isUnknown()) {
+				v = s.readProperty(v_prop, true);
+			}
+			res = v.makePolymorphic(other.getPropertyReference());
+		} else { // other is fully known value
+			if (v.isUnknown()) {
+				v = s.readProperty(v_prop, false);
+			} else if (v.isPolymorphic()) {
+				v = getRealValue(v, s);
+			}
+			res = v.restrictToNotModified();
+		}
+		return res;
 	}
 }

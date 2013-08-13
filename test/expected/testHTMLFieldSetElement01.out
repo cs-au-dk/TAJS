@@ -1,3 +1,0 @@
-test/browser/domlegacy/html/HTMLFieldSetElement01.tidy.html:14: [definite] Reading absent property form
-test/browser/domlegacy/html/HTMLFieldSetElement01.tidy.html:13: [info] Abstract value: [@HTMLFieldsetElement[native] constructor]
-test/browser/domlegacy/html/HTMLFieldSetElement01.tidy.html:14: [info] Abstract value: Undef

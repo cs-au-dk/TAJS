@@ -1,0 +1,30 @@
+fg2: <main> function()
+  block 0: [entry]
+    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0105.js:1:1)
+    ->[block 1]
+  block 1:
+    node 1: new[v2] (test/flowgraphbuilder/flowgraph_builder0105.js:1:5)
+    node 2: constant[1.0,v3] (test/flowgraphbuilder/flowgraph_builder0105.js:1:8)
+    node 3: write-property[v2,'a',v3] (test/flowgraphbuilder/flowgraph_builder0105.js:1:5)
+    node 4: write-variable[v2,'x']* (test/flowgraphbuilder/flowgraph_builder0105.js:1:1)
+    node 5: new[v4] (test/flowgraphbuilder/flowgraph_builder0105.js:2:5)
+    node 6: read-variable['x',v5,-] (test/flowgraphbuilder/flowgraph_builder0105.js:2:8)
+    node 7: write-property[v4,'b',v5] (test/flowgraphbuilder/flowgraph_builder0105.js:2:5)
+    node 8: write-variable[v4,'y']* (test/flowgraphbuilder/flowgraph_builder0105.js:2:1)
+    node 9: read-variable['y',v9,-] (test/flowgraphbuilder/flowgraph_builder0105.js:3:1)
+    node 10: read-property[v9,'b',v8] (test/flowgraphbuilder/flowgraph_builder0105.js:3:1)
+    node 11: <variable-non-null-undef>['y'] (test/flowgraphbuilder/flowgraph_builder0105.js:3:1)
+    node 12: read-property[v8,'a',v7] (test/flowgraphbuilder/flowgraph_builder0105.js:3:1)
+    node 13: <property-non-null-undef>[v9,'b'] (test/flowgraphbuilder/flowgraph_builder0105.js:3:1)
+    node 14: constant[2.0,v10] (test/flowgraphbuilder/flowgraph_builder0105.js:3:10)
+    node 15: +[v7,v10,v6] (test/flowgraphbuilder/flowgraph_builder0105.js:3:1)
+    node 16: write-property[v8,'a',v6] (test/flowgraphbuilder/flowgraph_builder0105.js:3:1)
+    node 17: <property-non-null-undef>[v9,'b']* (test/flowgraphbuilder/flowgraph_builder0105.js:3:1)
+    ->[block 2]
+  block 2: [exit-ordinary]
+    node 18: return[v1] (test/flowgraphbuilder/flowgraph_builder0105.js:1:1)
+    ->[]
+  block 3: [exit-exceptional]
+    node 19: exceptional-return (test/flowgraphbuilder/flowgraph_builder0105.js:1:1)
+    ->[]
+

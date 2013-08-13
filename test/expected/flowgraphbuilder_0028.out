@@ -1,0 +1,25 @@
+fg2: <main> function()
+  block 0: [entry]
+    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0028.js:1:1)
+    node 1: vardecl['x'] (test/flowgraphbuilder/flowgraph_builder0028.js:1:5)
+    node 2: vardecl['y'] (test/flowgraphbuilder/flowgraph_builder0028.js:1:12)
+    node 3: vardecl['z'] (test/flowgraphbuilder/flowgraph_builder0028.js:1:19)
+    ->[block 1]
+  block 1:
+    node 4: constant[1.0,v2] (test/flowgraphbuilder/flowgraph_builder0028.js:1:9)
+    node 5: write-variable[v2,'x']* (test/flowgraphbuilder/flowgraph_builder0028.js:1:1)
+    node 6: constant[2.0,v3] (test/flowgraphbuilder/flowgraph_builder0028.js:1:16)
+    node 7: write-variable[v3,'y']* (test/flowgraphbuilder/flowgraph_builder0028.js:1:1)
+    node 8: constant[3.0,v4] (test/flowgraphbuilder/flowgraph_builder0028.js:1:23)
+    node 9: write-variable[v4,'z']* (test/flowgraphbuilder/flowgraph_builder0028.js:1:1)
+    ->[block 2]
+  block 2: [exit-ordinary]
+    node 10: return[v1] (test/flowgraphbuilder/flowgraph_builder0028.js:1:1)
+    ->[]
+  block 3: [exit-exceptional]
+    node 11: exceptional-return (test/flowgraphbuilder/flowgraph_builder0028.js:1:1)
+    ->[]
+
+test/flowgraphbuilder/flowgraph_builder0028.js:1:5: [definite] The variable x is never used
+test/flowgraphbuilder/flowgraph_builder0028.js:1:12: [definite] The variable y is never used
+test/flowgraphbuilder/flowgraph_builder0028.js:1:19: [definite] The variable z is never used

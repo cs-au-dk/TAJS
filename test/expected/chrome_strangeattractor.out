@@ -1,0 +1,190 @@
+test/chromeexperiments/strangeattractor.tidy.html:325:19: [definite] Variable Y is null/undefined
+test/chromeexperiments/strangeattractor.tidy.html:329:16: [definite] Property is null/undefined
+test/chromeexperiments/strangeattractor.tidy.html:382:9: [definite] The conditional expression is always true
+test/chromeexperiments/strangeattractor.tidy.html:388:9: [definite] The conditional expression is always true
+test/chromeexperiments/strangeattractor.tidy.html:566:19: [definite] The conditional expression is always false
+test/chromeexperiments/strangeattractor.tidy.html:572:13: [definite] The conditional expression is always true
+test/chromeexperiments/strangeattractor.tidy.html:259:5: [definite] Dead assignment, property translatePre is never read
+test/chromeexperiments/strangeattractor.tidy.html:262:5: [definite] Dead assignment, property scale is never read
+test/chromeexperiments/strangeattractor.tidy.html:265:5: [definite] Dead assignment, property scalePre is never read
+test/chromeexperiments/strangeattractor.tidy.html:268:5: [definite] Dead assignment, property transformPoint is never read
+test/chromeexperiments/strangeattractor.tidy.html:276:9: [definite] Dead assignment, property r is never read
+test/chromeexperiments/strangeattractor.tidy.html:277:9: [definite] Dead assignment, property g is never read
+test/chromeexperiments/strangeattractor.tidy.html:278:9: [definite] Dead assignment, property b is never read
+test/chromeexperiments/strangeattractor.tidy.html:279:9: [definite] Dead assignment, property a is never read
+test/chromeexperiments/strangeattractor.tidy.html:281:5: [definite] Dead assignment, property setRGB is never read
+test/chromeexperiments/strangeattractor.tidy.html:284:5: [definite] Dead assignment, property invert is never read
+test/chromeexperiments/strangeattractor.tidy.html:289:5: [definite] Dead assignment, property dup is never read
+test/chromeexperiments/strangeattractor.tidy.html:302:5: [definite] Dead assignment, property isTriangle is never read
+test/chromeexperiments/strangeattractor.tidy.html:305:5: [definite] Dead assignment, property setQuad is never read
+test/chromeexperiments/strangeattractor.tidy.html:311:5: [definite] Dead assignment, property setTriangle is never read
+test/chromeexperiments/strangeattractor.tidy.html:331:5: [definite] Dead assignment, property setQuadratic is never read
+test/chromeexperiments/strangeattractor.tidy.html:336:5: [definite] Dead assignment, property setCubic is never read
+test/chromeexperiments/strangeattractor.tidy.html:365:9: [definite] Dead assignment, property perform_z_sorting is never read
+test/chromeexperiments/strangeattractor.tidy.html:366:9: [definite] Dead assignment, property draw_overdraw is never read
+test/chromeexperiments/strangeattractor.tidy.html:367:9: [definite] Dead assignment, property draw_backfaces is never read
+test/chromeexperiments/strangeattractor.tidy.html:368:9: [definite] Dead assignment, property texture is never read
+test/chromeexperiments/strangeattractor.tidy.html:369:9: [definite] Dead assignment, property fill_rgba is never read
+test/chromeexperiments/strangeattractor.tidy.html:370:9: [definite] Dead assignment, property stroke_rgba is never read
+test/chromeexperiments/strangeattractor.tidy.html:371:9: [definite] Dead assignment, property normal1_rgba is never read
+test/chromeexperiments/strangeattractor.tidy.html:372:9: [definite] Dead assignment, property normal2_rgba is never read
+test/chromeexperiments/strangeattractor.tidy.html:377:9: [definite] Dead assignment, property quad_callback is never read
+test/chromeexperiments/strangeattractor.tidy.html:380:9: [definite] Dead assignment, property buffered_quads_ is never read
+test/chromeexperiments/strangeattractor.tidy.html:382:13: [definite] Reading absent property setStrokeColor
+test/chromeexperiments/strangeattractor.tidy.html:388:13: [definite] Reading absent property setFillColor
+test/chromeexperiments/strangeattractor.tidy.html:397:9: [definite] Dead assignment, property buffered_quads_ is never read
+test/chromeexperiments/strangeattractor.tidy.html:413:5: [definite] Dead assignment, property projectQuadFaceToCanvasIP is never read
+test/chromeexperiments/strangeattractor.tidy.html:442:13: [definite] Dead assignment, property x is never read
+test/chromeexperiments/strangeattractor.tidy.html:442:13: [definite] Dead assignment, property y is never read
+test/chromeexperiments/strangeattractor.tidy.html:442:13: [definite] Dead assignment, property z is never read
+test/chromeexperiments/strangeattractor.tidy.html:443:5: [definite] Dead assignment, property bufferShape is never read
+test/chromeexperiments/strangeattractor.tidy.html:488:5: [definite] Dead assignment, property clearBackground is never read
+test/chromeexperiments/strangeattractor.tidy.html:491:5: [definite] Dead assignment, property drawBuffer is never read
+test/chromeexperiments/strangeattractor.tidy.html:585:11: [definite] Dead assignment, property Camera is never read
+test/chromeexperiments/strangeattractor.tidy.html:585:11: [definite] Dead assignment, property Math is never read
+test/chromeexperiments/strangeattractor.tidy.html:585:11: [definite] Dead assignment, property QuadFace is never read
+test/chromeexperiments/strangeattractor.tidy.html:585:11: [definite] Dead assignment, property Shape is never read
+test/chromeexperiments/strangeattractor.tidy.html:585:11: [definite] Dead assignment, property TextureInfo is never read
+test/chromeexperiments/strangeattractor.tidy.html:585:11: [definite] Dead assignment, property Transform is never read
+test/chromeexperiments/strangeattractor.tidy.html:585:104: [definite] Dead assignment, property addPoints2d is never read
+test/chromeexperiments/strangeattractor.tidy.html:585:104: [definite] Dead assignment, property addPoints3d is never read
+test/chromeexperiments/strangeattractor.tidy.html:585:104: [definite] Dead assignment, property averagePoints is never read
+test/chromeexperiments/strangeattractor.tidy.html:585:104: [definite] Dead assignment, property crossProduct is never read
+test/chromeexperiments/strangeattractor.tidy.html:585:104: [definite] Dead assignment, property dotProduct2d is never read
+test/chromeexperiments/strangeattractor.tidy.html:585:104: [definite] Dead assignment, property dotProduct3d is never read
+test/chromeexperiments/strangeattractor.tidy.html:585:104: [definite] Dead assignment, property linearInterpolate is never read
+test/chromeexperiments/strangeattractor.tidy.html:585:104: [definite] Dead assignment, property linearInterpolatePoints3d is never read
+test/chromeexperiments/strangeattractor.tidy.html:585:104: [definite] Dead assignment, property mulPoint2d is never read
+test/chromeexperiments/strangeattractor.tidy.html:585:104: [definite] Dead assignment, property mulPoint3d is never read
+test/chromeexperiments/strangeattractor.tidy.html:585:104: [definite] Dead assignment, property subPoints2d is never read
+test/chromeexperiments/strangeattractor.tidy.html:585:104: [definite] Dead assignment, property subPoints3d is never read
+test/chromeexperiments/strangeattractor.tidy.html:585:104: [definite] Dead assignment, property unitVector2d is never read
+test/chromeexperiments/strangeattractor.tidy.html:585:104: [definite] Dead assignment, property unitVector3d is never read
+test/chromeexperiments/strangeattractor.tidy.html:585:104: [definite] Dead assignment, property vecMag2d is never read
+test/chromeexperiments/strangeattractor.tidy.html:585:104: [definite] Dead assignment, property vecMag3d is never read
+test/chromeexperiments/strangeattractor.tidy.html:632:11: [definite] Dead assignment, property makeCircle is never read
+test/chromeexperiments/strangeattractor.tidy.html:632:11: [definite] Dead assignment, property makeSpiral is never read
+test/chromeexperiments/strangeattractor.tidy.html:661:5: [definite] Dead assignment, property isRunning is never read
+test/chromeexperiments/strangeattractor.tidy.html:664:5: [definite] Dead assignment, property start is never read
+test/chromeexperiments/strangeattractor.tidy.html:675:5: [definite] Dead assignment, property stop is never read
+test/chromeexperiments/strangeattractor.tidy.html:682:5: [definite] Dead assignment, property set_t is never read
+test/chromeexperiments/strangeattractor.tidy.html:685:5: [definite] Dead assignment, property set_step is never read
+test/chromeexperiments/strangeattractor.tidy.html:688:5: [definite] Dead assignment, property reverse_step_direction is never read
+test/chromeexperiments/strangeattractor.tidy.html:692:17: [definite] Dead assignment, property first_event is never read
+test/chromeexperiments/strangeattractor.tidy.html:692:17: [definite] Dead assignment, property is_clicking is never read
+test/chromeexperiments/strangeattractor.tidy.html:692:17: [definite] Dead assignment, property last_x is never read
+test/chromeexperiments/strangeattractor.tidy.html:692:17: [definite] Dead assignment, property last_y is never read
+test/chromeexperiments/strangeattractor.tidy.html:783:5: [definite] Dead assignment, property addEntry is never read
+test/chromeexperiments/strangeattractor.tidy.html:786:5: [definite] Dead assignment, property populateDiv is never read
+test/chromeexperiments/strangeattractor.tidy.html:806:5: [definite] Dead assignment, property createBefore is never read
+test/chromeexperiments/strangeattractor.tidy.html:812:11: [definite] Dead assignment, property Ticker is never read
+test/chromeexperiments/strangeattractor.tidy.html:812:11: [definite] Dead assignment, property ToggleToolbar is never read
+test/chromeexperiments/strangeattractor.tidy.html:812:11: [definite] Dead assignment, property registerMouseListener is never read
+test/chromeexperiments/strangeattractor.tidy.html:884:9: [definite] Dead assignment, property c is never read
+test/chromeexperiments/strangeattractor.tidy.html:885:9: [definite] Dead assignment, property c is never read
+test/chromeexperiments/strangeattractor.tidy.html:886:9: [definite] Dead assignment, property c is never read
+test/chromeexperiments/strangeattractor.tidy.html:887:9: [definite] Dead assignment, property c is never read
+test/chromeexperiments/strangeattractor.tidy.html:888:9: [definite] Dead assignment, property c is never read
+test/chromeexperiments/strangeattractor.tidy.html:889:9: [definite] Dead assignment, property c is never read
+test/chromeexperiments/strangeattractor.tidy.html:56:5: [definite] Unreachable function N
+test/chromeexperiments/strangeattractor.tidy.html:60:5: [definite] Unreachable function k
+test/chromeexperiments/strangeattractor.tidy.html:64:5: [definite] Unreachable function O
+test/chromeexperiments/strangeattractor.tidy.html:68:5: [definite] Unreachable function P
+test/chromeexperiments/strangeattractor.tidy.html:72:5: [definite] Unreachable function D
+test/chromeexperiments/strangeattractor.tidy.html:76:5: [definite] Unreachable function E
+test/chromeexperiments/strangeattractor.tidy.html:82:5: [definite] Unreachable function R
+test/chromeexperiments/strangeattractor.tidy.html:89:5: [definite] Unreachable function v
+test/chromeexperiments/strangeattractor.tidy.html:93:5: [definite] Unreachable function V
+test/chromeexperiments/strangeattractor.tidy.html:97:5: [definite] Unreachable function G
+test/chromeexperiments/strangeattractor.tidy.html:103:5: [definite] Unreachable function d
+test/chromeexperiments/strangeattractor.tidy.html:110:5: [definite] Unreachable function e
+test/chromeexperiments/strangeattractor.tidy.html:114:5: [definite] Unreachable function K
+test/chromeexperiments/strangeattractor.tidy.html:118:5: [definite] Unreachable function a
+test/chromeexperiments/strangeattractor.tidy.html:123:5: [definite] Unreachable function J
+test/chromeexperiments/strangeattractor.tidy.html:128:5: [definite] Unreachable function H
+test/chromeexperiments/strangeattractor.tidy.html:132:5: [definite] Unreachable function w
+test/chromeexperiments/strangeattractor.tidy.html:136:5: [definite] Unreachable function x
+test/chromeexperiments/strangeattractor.tidy.html:140:5: [definite] Unreachable function F
+test/chromeexperiments/strangeattractor.tidy.html:197:5: [definite] Unreachable function h
+test/chromeexperiments/strangeattractor.tidy.html:201:5: [definite] Unreachable function y
+test/chromeexperiments/strangeattractor.tidy.html:216:5: [definite] Unreachable function p
+test/chromeexperiments/strangeattractor.tidy.html:231:5: [definite] Unreachable function n
+test/chromeexperiments/strangeattractor.tidy.html:259:32: [definite] Unreachable function
+test/chromeexperiments/strangeattractor.tidy.html:262:25: [definite] Unreachable function
+test/chromeexperiments/strangeattractor.tidy.html:265:28: [definite] Unreachable function
+test/chromeexperiments/strangeattractor.tidy.html:268:34: [definite] Unreachable function
+test/chromeexperiments/strangeattractor.tidy.html:281:26: [definite] Unreachable function
+test/chromeexperiments/strangeattractor.tidy.html:284:26: [definite] Unreachable function
+test/chromeexperiments/strangeattractor.tidy.html:289:23: [definite] Unreachable function
+test/chromeexperiments/strangeattractor.tidy.html:292:5: [definite] Unreachable function B
+test/chromeexperiments/strangeattractor.tidy.html:302:30: [definite] Unreachable function
+test/chromeexperiments/strangeattractor.tidy.html:305:27: [definite] Unreachable function
+test/chromeexperiments/strangeattractor.tidy.html:311:31: [definite] Unreachable function
+test/chromeexperiments/strangeattractor.tidy.html:317:5: [definite] Unreachable function j
+test/chromeexperiments/strangeattractor.tidy.html:331:32: [definite] Unreachable function
+test/chromeexperiments/strangeattractor.tidy.html:336:28: [definite] Unreachable function
+test/chromeexperiments/strangeattractor.tidy.html:352:5: [definite] Unreachable function i
+test/chromeexperiments/strangeattractor.tidy.html:413:45: [definite] Unreachable function
+test/chromeexperiments/strangeattractor.tidy.html:422:5: [definite] Unreachable function S
+test/chromeexperiments/strangeattractor.tidy.html:442:9: [definite] The variable u is never used
+test/chromeexperiments/strangeattractor.tidy.html:443:31: [definite] Unreachable function L
+test/chromeexperiments/strangeattractor.tidy.html:481:5: [definite] Unreachable function W
+test/chromeexperiments/strangeattractor.tidy.html:488:35: [definite] Unreachable function
+test/chromeexperiments/strangeattractor.tidy.html:491:30: [definite] Unreachable function l
+test/chromeexperiments/strangeattractor.tidy.html:578:21: [definite] The variable Z is never used
+test/chromeexperiments/strangeattractor.tidy.html:588:5: [definite] Unreachable function b
+test/chromeexperiments/strangeattractor.tidy.html:603:5: [definite] Unreachable function a
+test/chromeexperiments/strangeattractor.tidy.html:635:5: [definite] Unreachable function c
+test/chromeexperiments/strangeattractor.tidy.html:642:5: [definite] Unreachable function a
+test/chromeexperiments/strangeattractor.tidy.html:649:5: [definite] Unreachable function g
+test/chromeexperiments/strangeattractor.tidy.html:653:5: [definite] Unreachable function f
+test/chromeexperiments/strangeattractor.tidy.html:661:29: [definite] Unreachable function
+test/chromeexperiments/strangeattractor.tidy.html:664:25: [definite] Unreachable function
+test/chromeexperiments/strangeattractor.tidy.html:669:45: [definite] Unreachable function
+test/chromeexperiments/strangeattractor.tidy.html:675:24: [definite] Unreachable function
+test/chromeexperiments/strangeattractor.tidy.html:682:25: [definite] Unreachable function
+test/chromeexperiments/strangeattractor.tidy.html:685:28: [definite] Unreachable function
+test/chromeexperiments/strangeattractor.tidy.html:688:42: [definite] Unreachable function
+test/chromeexperiments/strangeattractor.tidy.html:691:5: [definite] The variable k is never used
+test/chromeexperiments/strangeattractor.tidy.html:692:13: [definite] The variable j is never used
+test/chromeexperiments/strangeattractor.tidy.html:694:9: [definite] Unreachable function h
+test/chromeexperiments/strangeattractor.tidy.html:708:41: [definite] Unreachable function
+test/chromeexperiments/strangeattractor.tidy.html:714:39: [definite] Unreachable function
+test/chromeexperiments/strangeattractor.tidy.html:717:40: [definite] Unreachable function
+test/chromeexperiments/strangeattractor.tidy.html:720:41: [definite] Unreachable function
+test/chromeexperiments/strangeattractor.tidy.html:735:5: [definite] The variable r is never used
+test/chromeexperiments/strangeattractor.tidy.html:747:13: [definite] The variable p is never used
+test/chromeexperiments/strangeattractor.tidy.html:748:21: [definite] Unreachable function
+test/chromeexperiments/strangeattractor.tidy.html:770:28: [definite] Unreachable function
+test/chromeexperiments/strangeattractor.tidy.html:779:5: [definite] Unreachable function e
+test/chromeexperiments/strangeattractor.tidy.html:783:28: [definite] Unreachable function
+test/chromeexperiments/strangeattractor.tidy.html:786:31: [definite] Unreachable function
+test/chromeexperiments/strangeattractor.tidy.html:806:32: [definite] Unreachable function
+test/chromeexperiments/strangeattractor.tidy.html:906:22: [definite] The variable a is never used
+test/chromeexperiments/strangeattractor.tidy.html:907:20: [definite] Unreachable function
+test/chromeexperiments/strangeattractor.tidy.html:160:25: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/strangeattractor.tidy.html:400:45: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/strangeattractor.tidy.html:568:19: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/strangeattractor.tidy.html:572:17: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/strangeattractor.tidy.html:575:37: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/strangeattractor.tidy.html:575:49: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/strangeattractor.tidy.html:894:9: [maybe] TypeError, call to non-function
+test/chromeexperiments/strangeattractor.tidy.html:896:9: [maybe] TypeError, call to non-function
+test/chromeexperiments/strangeattractor.tidy.html:913:47: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/strangeattractor.tidy.html:916:5: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/strangeattractor.tidy.html:916:35: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/strangeattractor.tidy.html:894:9: [maybe] Reading absent property setFillColor
+test/chromeexperiments/strangeattractor.tidy.html:896:9: [maybe] Reading absent property setStrokeColor
+test/chromeexperiments/strangeattractor.tidy.html:916:5: [maybe] Reading absent property body
+test/chromeexperiments/strangeattractor.tidy.html:916:35: [maybe] Reading absent property body
+test/chromeexperiments/strangeattractor.tidy.html:211:26: [maybe] Reading absent property (computed name)
+test/chromeexperiments/strangeattractor.tidy.html:409:46: [maybe] Reading absent property (computed name)
+test/chromeexperiments/strangeattractor.tidy.html:566:98: [maybe] Reading absent property (computed name)
+test/chromeexperiments/strangeattractor.tidy.html:571:21: [maybe] Reading absent property (computed name)
+test/chromeexperiments/strangeattractor.tidy.html:573:26: [maybe] Reading absent property (computed name)
+test/chromeexperiments/strangeattractor.tidy.html:574:26: [maybe] Reading absent property (computed name)
+test/chromeexperiments/strangeattractor.tidy.html:844: [maybe] Uncaught exception, constructed at [test/chromeexperiments/strangeattractor.tidy.html:160:25, test/chromeexperiments/strangeattractor.tidy.html:400:45, test/chromeexperiments/strangeattractor.tidy.html:568:19, test/chromeexperiments/strangeattractor.tidy.html:572:17, test/chromeexperiments/strangeattractor.tidy.html:575:37, test/chromeexperiments/strangeattractor.tidy.html:575:49, test/chromeexperiments/strangeattractor.tidy.html:894:9, test/chromeexperiments/strangeattractor.tidy.html:896:9, test/chromeexperiments/strangeattractor.tidy.html:913:47, test/chromeexperiments/strangeattractor.tidy.html:916:5, test/chromeexperiments/strangeattractor.tidy.html:916:35]
+test/chromeexperiments/strangeattractor.tidy.html:903:17: [maybe] Reading absent property (computed name)
+test/chromeexperiments/strangeattractor.tidy.html:329:16: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/strangeattractor.tidy.html:385:17: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/strangeattractor.tidy.html:391:17: [info] 'this' refers to a summary abstract object, which may cause loss of precision

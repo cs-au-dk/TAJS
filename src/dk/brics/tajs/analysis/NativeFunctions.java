@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Aarhus University
+ * Copyright 2009-2013 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -96,7 +96,7 @@ public class NativeFunctions { // TODO: to be replaced by the host model system
         Double old_length = UnknownValueResolver.getRealValue(state.readPropertyValue(arrays, "length"), state).getNum();
 		if (definitely_length || maybe_length) {
 			value = UnknownValueResolver.getRealValue(value, state);
-			Value numvalue = Conversion.toNumber(value, register, c); // XXX: Implicit call to valueOf/toString. See TestMicro183.
+			Value numvalue = Conversion.toNumber(value, register, c); // FIXME: Implicit call to valueOf/toString. See TestMicro183.
 			// throw RangeError exception if illegal value
 			boolean invalid = false;
 			if (numvalue.isMaybeSingleNum()) {

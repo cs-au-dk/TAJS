@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Aarhus University
+ * Copyright 2009-2013 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,24 +20,37 @@ import org.apache.log4j.Logger;
 import org.jdom.Document;
 import org.jdom.Element;
 
+/**
+ * Pre-order traversal of JDOM HTML document.
+ */
 public abstract class HTMLVisitorImpl implements HTMLVisitor {
 
 	private static Logger logger = Logger.getLogger(HTMLVisitorImpl.class); 
 
 	private final Document document;
 
+	/**
+	 * Constructs a new visitor for the given document.
+	 */
     protected HTMLVisitorImpl(Document document) {
         if (document == null)
-            throw new NullPointerException("HTMLVisitorImpl constructed with null document. Please fix the caller");
-
+            throw new NullPointerException();
         this.document = document;
     }
 
+    /**
+     * Traverses the document.
+     * The element visitor methods do nothing by default.
+     */
     @Override
     public void visitDocument() {
   		visit(document.getRootElement());
     }
 
+    /**
+     * Dispatches to the visitor method of the name of the given element.
+     * The element visitor methods do nothing by default.
+     */
     @Override
     public void visit(Element element) {
         String tagName = element.getName();
@@ -167,286 +180,286 @@ public abstract class HTMLVisitorImpl implements HTMLVisitor {
 
     @Override
     public void visitA(Element element) {
-
+    	// do nothing
     }
 
     @Override
     public void visitApplet(Element element) {
-
+    	// do nothing
     }
 
     @Override
     public void visitArea(Element element) {
-
+    	// do nothing
     }
 
     @Override
     public void visitBase(Element element) {
-
+    	// do nothing
     }
 
     @Override
     public void visitBaseFont(Element element) {
-
+    	// do nothing
     }
 
     @Override
     public void visitBR(Element element) {
-
+    	// do nothing
     }
 
     @Override
     public void visitBody(Element element) {
-
+    	// do nothing
     }
 
     @Override
     public void visitButton(Element element) {
-
+    	// do nothing
     }
 
     @Override
     public void visitCaption(Element element) {
-
+    	// do nothing
     }
 
     @Override
     public void visitCol(Element element) {
-
+    	// do nothing
     }
 
     @Override
     public void visitDir(Element element) {
-
+    	// do nothing
     }
 
     @Override
     public void visitDiv(Element element) {
-
+    	// do nothing
     }
 
     @Override
     public void visitDl(Element element) {
-
+    	// do nothing
     }
 
     @Override
     public void visitFieldSet(Element element) {
-
+    	// do nothing
     }
 
     @Override
     public void visitFont(Element element) {
-
+    	// do nothing
     }
 
     @Override
     public void visitForm(Element element) {
-
+    	// do nothing
     }
 
     @Override
     public void visitFrame(Element element) {
-
+    	// do nothing
     }
 
     @Override
     public void visitFrameSet(Element element) {
-
+    	// do nothing
     }
 
     @Override
     public void visitH1(Element element) {
-
+    	// do nothing
     }
 
     @Override
     public void visitH2(Element element) {
-
+    	// do nothing
     }
 
     @Override
     public void visitH3(Element element) {
-
+    	// do nothing
     }
 
     @Override
     public void visitH4(Element element) {
-
+    	// do nothing
     }
 
     @Override
     public void visitH5(Element element) {
-
+    	// do nothing
     }
 
     @Override
     public void visitH6(Element element) {
-
+    	// do nothing
     }
 
     @Override
     public void visitHead(Element element) {
-
+    	// do nothing
     }
 
     @Override
     public void visitHR(Element element) {
-
+    	// do nothing
     }
 
     @Override
     public void visitHTML(Element element) {
-
+    	// do nothing
     }
 
     @Override
     public void visitIFrame(Element element) {
-
+    	// do nothing
     }
 
     @Override
     public void visitImg(Element element) {
-
+    	// do nothing
     }
 
     @Override
     public void visitInput(Element element) {
-
+    	// do nothing
     }
 
     @Override
     public void visitLabel(Element element) {
-
+    	// do nothing
     }
 
     @Override
     public void visitLegend(Element element) {
-
+    	// do nothing
     }
 
     @Override
     public void visitLI(Element element) {
-
+    	// do nothing
     }
 
     @Override
     public void visitLink(Element element) {
-
+    	// do nothing
     }
 
     @Override
     public void visitMap(Element element) {
-
+    	// do nothing
     }
 
     @Override
     public void visitMenu(Element element) {
-
+    	// do nothing
     }
 
     @Override
     public void visitMeta(Element element) {
-
+    	// do nothing
     }
 
     @Override
     public void visitObject(Element element) {
-
+    	// do nothing
     }
 
     @Override
     public void visitOL(Element element) {
-
+    	// do nothing
     }
 
     @Override
     public void visitOptGroup(Element element) {
-
+    	// do nothing
     }
 
     @Override
     public void visitOption(Element element) {
-
+    	// do nothing
     }
 
     @Override
     public void visitP(Element element) {
-
+    	// do nothing
     }
 
     @Override
     public void visitParam(Element element) {
-
+    	// do nothing
     }
 
     @Override
     public void visitPre(Element element) {
-
+    	// do nothing
     }
 
     @Override
     public void visitScript(Element element) {
-
+    	// do nothing
     }
 
     @Override
     public void visitSelect(Element element) {
-
+    	// do nothing
     }
 
     @Override
     public void visitStyle(Element element) {
-
+    	// do nothing
     }
 
     @Override
     public void visitTable(Element element) {
-
+    	// do nothing
     }
 
     @Override
     public void visitTBody(Element element) {
-
+    	// do nothing
     }
 
     @Override
     public void visitTD(Element element) {
-
+    	// do nothing
     }
 
     @Override
     public void visitTextArea(Element element) {
-
+    	// do nothing
     }
 
     @Override
     public void visitTFoot(Element element) {
-
+    	// do nothing
     }
 
     @Override
     public void visitTH(Element element) {
-
+    	// do nothing
     }
 
     @Override
     public void visitTHead(Element element) {
-
+    	// do nothing
     }
 
     @Override
     public void visitTitle(Element element) {
-
+    	// do nothing
     }
 
     @Override
     public void visitTR(Element element) {
-
+    	// do nothing
     }
 
     @Override
     public void visitUL(Element element) {
-
+    	// do nothing
     }
 }

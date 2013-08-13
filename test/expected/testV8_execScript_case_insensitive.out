@@ -1,0 +1,4 @@
+test/v8tests/execScript-case-insensitive.js:29:1: [definite] ReferenceError, reading absent variable execScript
+test/v8tests/execScript-case-insensitive.js:28:5: [definite] The variable x is never used
+test/v8tests/execScript-case-insensitive.js:29:12: [definite] Unreachable code
+test/v8tests/execScript-case-insensitive.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/execScript-case-insensitive.js:29:1]

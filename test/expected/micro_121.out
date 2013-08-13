@@ -1,0 +1,10 @@
+test/micro/test121.js:6:3: [maybe] Conversion to number yields NaN
+test/micro/test121.js:6:3: [maybe] Converting undefined to string
+test/micro/test121.js:6:3: [maybe] The variable z has values with different types
+test/micro/test121.js:6:8: [maybe] Reading absent property (computed name)
+test/micro/test121.js:7:7: [maybe] Conversion from string to number yields NaN
+test/micro/test121.js:7:7: [maybe] The variable z has values with different types
+test/micro/test121.js:11:11: [maybe] The variable z has values with different types
+test/micro/test121.js:11:1: [info] Abstract value: UInt|NaN|Str
+test/micro/test121.js:5:1: [info] Reading from unknown property that may cause loss of precision
+test/micro/test121.js:6:8: [info] Reading from unknown property that may cause loss of precision

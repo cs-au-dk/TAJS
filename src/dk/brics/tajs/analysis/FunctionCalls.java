@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Aarhus University
+ * Copyright 2009-2013 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,32 +20,24 @@ import static dk.brics.tajs.util.Collections.newSet;
 
 import java.util.Set;
 
-import org.apache.log4j.Logger;
-
 import dk.brics.tajs.analysis.dom.DOMObjects;
 import dk.brics.tajs.analysis.dom.html.HTMLBuilder;
 import dk.brics.tajs.analysis.js.UserFunctionCalls;
 import dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects;
 import dk.brics.tajs.flowgraph.AbstractNode;
-import dk.brics.tajs.flowgraph.Function;
-import dk.brics.tajs.flowgraph.ICallNode;
 import dk.brics.tajs.flowgraph.jsnodes.Node;
 import dk.brics.tajs.lattice.ExecutionContext;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.ObjectLabel.Kind;
-import dk.brics.tajs.lattice.Summarized;
 import dk.brics.tajs.lattice.UnknownValueResolver;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.options.Options;
-import dk.brics.tajs.solver.NodeAndContext;
 import dk.brics.tajs.util.AnalysisException;
 
 /**
  * Models function calls.
  */
 public class FunctionCalls {
-
-	private static Logger logger = Logger.getLogger(FunctionCalls.class); 
 
 	private FunctionCalls() {}
 	
@@ -252,71 +244,5 @@ public class FunctionCalls {
 		c.getMonitoring().visitCall(c.getCurrentNode(), maybe_non_function, maybe_function);
 		if (maybe_non_function) 
 			Exceptions.throwTypeError(caller_state, c);
-	}
-	
-	/**
-	 * Leaves a function.
-	 */
-	public static void leaveFunction(NodeAndContext<CallContext> caller, Value returnval, boolean exceptional, Function f, State state, Value thisval, Solver.SolverInterface c) {
-        AbstractNode node = caller.getNode();
-        ICallNode callnode;
-        if (node instanceof ICallNode)
-            callnode = (ICallNode) node;
-        else
-            return; // FIXME: implicit function call to valueOf/toString (node may then not be first in its block!), how do we handle such return flow? by additional call nodes?
-		CallContext caller_context = caller.getContext();
-        boolean is_constructor = callnode.isConstructorCall();
-        int result_reg = callnode.getResultRegister();
-
-		if (logger.isDebugEnabled()) 
-			logger.debug("trying call node " + node.getIndex() + ": " + node
-					+ " at " + node.getSourceLocation() + "\n" +
-					"caller context: " + caller_context + ", callee context: " + c.getCurrentContext());
-
-		// apply inverse renaming
-		state.pushRegister(returnval);
-		state.pushRegister(thisval);
-		c.returnFromFunctionExit(state, node, caller_context, f, c.getCurrentContext());
-		if (state.isNone())
-			return; // flow was cancelled, probably something needs to be recomputed
-		thisval = state.popRegister();
-		returnval = state.popRegister();
-
-		// merge newstate with caller state and call edge state
-		Summarized callee_summarized = new Summarized(state.getSummarized());
-		ObjectLabel activation_obj = new ObjectLabel(f.getEntry().getFirstNode(), Kind.ACTIVATION);
-		callee_summarized.addDefinitelySummarized(activation_obj);
-		ObjectLabel arguments_obj = new ObjectLabel(f.getEntry().getFirstNode(), Kind.ARGUMENTS);
-		callee_summarized.addDefinitelySummarized(arguments_obj);
-		if (is_constructor) {
-			ObjectLabel this_obj = new ObjectLabel(node, Kind.OBJECT);
-			callee_summarized.addDefinitelySummarized(this_obj);
-		} // FIXME: prepareThis may create additional objects (for enterUserFunction)!!!
-		returnval = state.mergeFunctionReturn(c.getAnalysisLatticeElement().getStates(node.getBlock()).get(caller_context), 
-				c.getAnalysisLatticeElement().getCallGraph().getCallEdge(node, caller_context, f.getEntry(), c.getCurrentContext()).getState(), 
-				c.getAnalysisLatticeElement().getState(node.getBlock().getFunction().getEntry(), caller_context), 
-				callee_summarized,
-				returnval); // TODO: not obvious why this part is in dk.brics.tajs.analysis and the renaming and trimming is done via dk.brics.tajs.solver... 
-		if (node.isRegistersDone())
-			state.clearOrdinaryRegisters();
-
-		if (exceptional) { 
-			// transfer exception value to caller
-			Exceptions.throwException(state, returnval, c, node, caller_context);
-
-		} else { 
-			returnval = UnknownValueResolver.getRealValue(returnval, state);
-			if (is_constructor && returnval.isMaybePrimitive()) { // FIXME: skip this if f is a host function
-				// 13.2.2.7-8 replace non-object by the new object (which is kept in 'this')
-				returnval = returnval.restrictToObject().join(thisval);
-			}
-
-			// transfer ordinary return value to caller
-			if (result_reg != AbstractNode.NO_VALUE)
-				state.writeRegister(result_reg, returnval);
-
-			// flow to next basic block after call_node
-			c.propagateToBasicBlock(state, node.getBlock().getSingleSuccessor(), caller_context);
-		}
 	}
 }

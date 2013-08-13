@@ -1,0 +1,20 @@
+test/v8tests/array_length.js:50:18: [definite] Property is null/undefined
+test/v8tests/array_length.js:51:11: [definite] Property is null/undefined
+test/v8tests/array_length.js:95:7: [definite] The variable j is never used
+test/v8tests/array_length.js:86:3: [maybe] RangeError, assigning invalid value to array 'length' property
+test/v8tests/array_length.js:91:3: [maybe] RangeError, assigning invalid value to array 'length' property
+test/v8tests/array_length.js:96:3: [maybe] RangeError, assigning invalid value to array 'length' property
+test/v8tests/array_length.js:101:3: [maybe] RangeError, assigning invalid value to array 'length' property
+test/v8tests/array_length.js:86:3: [maybe] Conversion from string to number yields NaN
+test/v8tests/array_length.js:91:3: [maybe] Conversion to number yields NaN
+test/v8tests/array_length.js:96:3: [maybe] Conversion from string to number yields NaN
+test/v8tests/array_length.js:36:1: [info] Abstract value: "number"
+test/v8tests/array_length.js:37:1: [info] Abstract value: 2.147483648E9
+test/v8tests/array_length.js:43:1: [info] Abstract value: "string"
+test/v8tests/array_length.js:44:1: [info] Abstract value: "2147483648"
+test/v8tests/array_length.js:50:1: [info] Abstract value: "object"
+test/v8tests/array_length.js:51:1: [info] Abstract value: Null
+test/v8tests/array_length.js:57:1: [info] Abstract value: "boolean"
+test/v8tests/array_length.js:58:1: [info] Abstract value: false
+test/v8tests/array_length.js:64:1: [info] Abstract value: "boolean"
+test/v8tests/array_length.js:65:1: [info] Abstract value: true

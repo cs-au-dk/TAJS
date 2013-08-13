@@ -1,0 +1,8 @@
+test/micro/testForIn5.js:23:1: [maybe] Assertion fails
+test/micro/testForIn5.js:24:1: [maybe] Assertion fails
+test/micro/testForIn5.js:13:1: [info] Abstract value: [*Object#node18]
+test/micro/testForIn5.js:14:1: [info] Abstract value: [*Object#node18]
+test/micro/testForIn5.js:15:1: [info] Abstract object: {a:UInt,[[Prototype]]=[@Object.prototype[native]]}
+test/micro/testForIn5.js:16:1: [info] Abstract object: {a:UInt,[[Prototype]]=[@Object.prototype[native]]}
+test/micro/testForIn5.js:20:1: [info] Abstract value: UInt|"dyt"
+test/micro/testForIn5.js:21:1: [info] Abstract value: UInt|"dyt"

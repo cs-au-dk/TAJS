@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html>
+<head><title>Filterrific!</title>
+    <style>body {
+        -moz-user-select: none;
+        cursor: default;
+        font: 11px Arial;
+        margin: 0;
+        overflow: hidden
+    }
+
+    body, #bg, #v, .u #g {
+        height: 100%;
+        width: 100%
+    }
+
+    #q {
+        height: 660px;
+        left: 50%;
+        margin: -330px 0 0 -490px;
+        top: 50%;
+        width: 980px
+    }
+
+    #l, #k, #t, .w, .n, body, #bg, #q, #u, #g {
+        position: absolute
+    }
+
+    #u {
+        background-color: #f00;
+        bottom: 8px;
+        height: 32px;
+        left: 8px;
+        width: 32px
+    }
+
+    #u.u {
+        height: 256px;
+        width: 256px
+    }
+
+    #g {
+        top: 0;
+        height: 33px;
+        width: 32px
+    }
+
+    a {
+        text-decoration: none
+    }
+
+    a:hover, #o label, #l .h {
+        color: #def
+    }
+
+    #l, #k, #t, .w {
+        left: 50%
+    }
+
+    #l, #k, #m {
+        width: 71.5%
+    }
+
+    #l, #k {
+        font: 70px Arial Black;
+        letter-spacing: 21px;
+        opacity: .4;
+        top: -14px
+    }
+
+    #l, #k, a {
+        color: #bcd
+    }
+
+    #k {
+        color: #234;
+        padding: 1px
+    }
+
+    #t {
+        color: #89a;
+        left: 91%;
+        top: 8%
+    }
+
+    .w, .t {
+        -moz-border-radius: 10px 10px 0 0;
+        background-color: rgba(240, 245, 255, .25);
+        border-radius: 10px 10px 0 0
+    }
+
+    body, .t, #e a {
+        color: #456
+    }
+
+    .t {
+        height: 21px;
+        padding: 4px 1px 1px 10px
+    }
+
+    .t, #e, .s, #v {
+        text-shadow: 1px 1px #fff
+    }
+
+    .t, #e a, #v, .n {
+        background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAaCAYAAAB2BDbRAAAAOklEQVQImXXMsQkAIBAEweNbsgVbsP8eBBPhb01MfDCbYFnNtYm0FTaqSqNwUVphuCrJd/Uman0ggANAdE5H6cmMEQAAAABJRU5ErkJggg==)
+    }
+
+    #m, #l, #k {
+        margin-left: -485px
+    }
+
+    #m, #e {
+        height: 87%;
+        margin-top: 71px
+    }
+
+    #p {
+        margin: 37% 0 0 50%
+    }
+
+    .w, #i, #e a:hover {
+        -moz-box-shadow: 4px 4px 4px rgba(0, 0, 0, .4);
+        -webkit-box-shadow: 4px 4px 5px rgba(0, 0, 0, .4);
+        box-shadow: 4px 4px 4px rgba(0, 0, 0, .4)
+    }
+
+    #i, .s, #b {
+        position: relative
+    }
+
+    #i {
+        margin: -200px
+    }
+
+    #o {
+        height: 20%;
+        margin-top: 369px
+    }
+
+    #j {
+        height: 19%;
+        margin-top: 521px
+    }
+
+    #h {
+        height: 80px;
+        margin: 4%;
+        width: 90%
+    }
+
+    #e, #j, #o {
+        margin-left: 24%;
+        width: 26%
+    }
+
+    #e {
+        height: 42%
+    }
+
+    #v, #e a, .t {
+        font: 12px Arial Black
+    }
+
+    #v, #e a, .n, .s, #o label {
+        display: inline-block
+    }
+
+    #v, #e a, .n, .s {
+        -moz-border-radius: 4px;
+        border-radius: 4px
+    }
+
+    #v, #e a, .n {
+        height: 16px;
+        margin: 0 0 2% 4%;
+        padding: 1px 5px;
+        width: 39%
+    }
+
+    #e a:hover {
+        background-color: #def;
+        background-image: none;
+        margin-left: 3%;
+        margin-right: -1%;
+        width: 41%
+    }
+
+    #y {
+        margin: 5px 0 0 10px
+    }
+
+    #o label {
+        margin: 3px 5px;
+        padding-top: 1px;
+        width: 70px
+    }
+
+    .s, .n, #i, .w, #e a, #v, #u {
+        border: 1px solid #345
+    }
+
+    .s {
+        -moz-box-shadow: 1px 1px #fff;
+        -webkit-box-shadow: 1px 1px #fff;
+        box-shadow: 1px 1px #fff;
+        height: 4px;
+        width: 140px
+    }
+
+    .n, #v {
+        text-align: center
+    }
+
+    .n {
+        margin: -8px 0 0 -20px;
+        padding: 1px 0 0;
+        width: 30px
+    }
+
+    #v {
+        margin: 5px 95px
+    }
+
+    #b {
+        -moz-border-radius: 15px;
+        border: 5px solid;
+        border-radius: 15px;
+        height: 20px;
+        width: 20px
+    }
+
+    #i, #b, #u {
+        cursor: crosshair
+    }
+
+    .x {
+        display: none
+    }
+
+    #e ul, #e .c {
+        margin-top: 10px
+    }</style>
+    <script>var a,d = 0,e,f,g,j,aa,o,r,w,x,y = 400,B = y * 4,C = y / 2,D = 255,_ = 100,E,F,G,J = Math,ba = J.PI * 2,ca = J.random,da = J.sqrt,K = J.min,L = J.max,M = document,ea = window;
+    function N(b) {
+        return M.getElementById(b)
+    }
+    function O(b) {
+        return M.createElement(b || "canvas")
+    }
+    var P,fa,R,ga,ha = ea.setTimeout,ia,S;
+    function T(b) {
+        return b.getContext("2d")
+    }
+    var ja = 0;
+    function U(b, c) {
+        return b.appendChild(c)
+    }
+    function ka(b, c) {
+        b.className = c
+    }
+    function sa(c, v) {
+        c.globalAlpha = v
+    }
+    function gm(a, b, c) {
+        c = a.getBoundingClientRect();
+        return [b.clientX - c.left,b.clientY - c.top]
+    }
+    function la(b, c) {
+        b.innerHTML = c
+    }
+    function V(b) {
+        return b < 0 ? 0 : b > D ? D : b
+    }
+    ea.onload = function() {
+        M.onselectstart = function() {
+            return !1
+        };
+        function b(u, H) {
+            return(A.charCodeAt(u) - 48) / 42 * (H || D)
+        }
+
+        var c = N("bg"),h = T(c),p = (S = N("b")).style,i = 0,m = _,s = 50,v,t,n = N("g");
+        c = T(n);
+        var q = N("u"),z = h.createRadialGradient(D, D / 2, 50, D, D, 500),A = "T@1PJG5<DSST:G897W4EDAD7Z444L0O;>6DBP0J2??1?>OKD@P@GE2@OOHM<:D?B1SR7:=2RS=;AHE:FIHNE776YUD?KZJDIPF156Z0OZOXWLWCWMB2=Z:MCC>Z7ZRDDMALP:NDIOZGIGRK?LVAV?T?:;HYQQ>TGZIT0S60ICM0CMMIN0=VX>A78H=CZIR;OOS64ZP5GW@E?K0W0WV=09BXRX3W3WKUT>>=XJ0JZ?A9G:Q@@7G6@J4F5@:5622MZVPXZ1EUX3Q152Z?P5BLW0Z?XWL0M5ZG:0R0ZMZY44HG5;M:B2205485V4ZHQHF=E4=O?8JKE0ENB3E6353?A>VOWP9QNRT<J7?2H?EOB0FIJW=BRKJG:@I686F300OJUJA<D5R:UEL@<90<I8=9H>I7D5>:WW>>?TA>NH06:OS@O2L@S;ZY61J5J55K5HWII15:EWVX0W1WY7ZSVTM?TCSIMOK?JONRV4UJTIOOK5ZP77WZZZIZ7ZMVZ";
+        z.addColorStop(0, "#689");
+        z.addColorStop(1, "#234");
+        X(h, z, 0, 0, 800, 600);
+        sa(h, .1);
+        h.moveTo(-200, _);
+        h.bezierCurveTo(_, y, 700, _, 600, -_);
+        h.lineTo(1850, -50);
+        h.bezierCurveTo(650, 300, _, 500, 0, 900);
+        h.fillStyle = "#79b";
+        h.fill();
+        h.stroke();
+        o = N("i");
+        x = T(w = O());
+        o.width = o.height = w.width = w.height = y;
+        X(r = T(o), "#fff", 0, 0, y, y);
+        for (d = 0; d < 504; d += 14) {
+            r.beginPath();
+            for (e = 0; e < 5; e++)r.lineTo(b(d + 4 + e * 2, y), b(d + 5 + e * 2, y));
+            sa(r, b(d + 3, 1));
+            r.fillStyle = "rgb(" + (b(d) >> 0) + "," + (b(d + 1) >> 0) + "," + (b(d + 2) >> 0) + ")";
+            r.fill()
+        }
+        Y(x, o);
+        // ma("Blur", [.8]);
+        ma("Blur", [1]);
+        sa(r, .4);
+        Y(r, w);
+        sa(r, 1);
+        na();
+        ga = $(r);
+        r.lineCap = "round";
+        for (f in ia) {
+            U(N("r"), e = O("a")).onclick = function() {
+                ma(this.innerHTML)
+            };
+            la(e, f)
+        }
+        M.onmousedown = function(u) {
+            var Z = gm(o, u);
+            v = Z[0];
+            t = Z[1];
+            E = 1
+        };
+        M.onmouseup = function() {
+            G && ha(na, 1);
+            E = F = G = 0
+        };
+        S.onmousemove = o.onmousemove = function(u) {
+            var Z = gm(o, u);
+            b = Z[0];
+            c = Z[1];
+            now = (new Date).getTime();
+            ka(S, b < 0 || c < 0 || b > y || c > y || E ? "x" : "");
+            p.borderColor = r.strokeStyle = "hsl(" + i + "," + m + "%," + s + "%)";
+            p.left = b - 215 + "px";
+            p.top = c - 220 + "px";
+            if (E) {
+                G = 1;
+                lx = b - v;
+                ly = c - t;
+                r.beginPath();
+                r.lineWidth = L(2, 10 - (lx * lx + ly * ly) / (now - ja) / 2);
+                r.moveTo(v, t);
+                r.lineTo(b, c);
+                r.stroke();
+                v = b;
+                t = c;
+                ja = now
+            }
+        };
+        var I = [];
+        h = N("l");
+        z = h.innerHTML.split("");
+        la(h, "");
+        e = 0;
+        for (l = 11; e < l;)la(U(h, I[e] = O("span")), z[e++]);
+        setInterval(function() {
+            for (k = 0; k < l;)(function(u) {
+                ha(function() {
+                    ka(I[u], "h");
+                    ha(function() {
+                        ka(I[u], "")
+                    }, 200)
+                }, 1E3 + u * 70)
+            })(k++)
+        }, 2E4);
+        for (j = 0; j < 64; j++)for (g = 0; g < 64; g++) {
+            sa(c, 1 - g / 64);
+            X(c, "#888", g * 4, j * 4, 4, 4);
+            sa(c, j < 32 ? 1 - j / 32 : (j - 32) / 32);
+            X(c, j < 32 ? "#fff" : "#000", g * 4, j * 4, 4, 4)
+        }
+        q.onmouseover = function() {
+            ka(this, "u")
+        };
+        q.onmouseout = function() {
+            ka(this, "")
+        };
+        q.addEventListener("DOMMouseScroll", q.onmousewheel = function(u) {
+            i = (i + 360 + (u.wheelDelta || u.detail * 40) / 20) % 360;
+            q.style.backgroundColor = "hsl(" + i + ",100%,50%)"
+        }, 0);
+        q.onclick = function(u) {
+            var H = gm(n, u);
+            s = _ - H[1] / D * _;
+            m = H[0] / D * _;
+            ka(q, "")
+        }
+    };
+    function $(b) {
+        return b.getImageData(0, 0, y, y)
+    }
+    ia = {Invert:function() {
+        for (; d < a;) {
+            R[d] = (d + 1) % 4 ? D - P[d] : D;
+            d++
+        }
+    },Desaturate:function() {
+        for (; d < a;) {
+            f = P[d] + P[d + 1] + P[d + 2];
+            R[d++] = R[d++] = R[d++] = f / 3;
+            d++
+        }
+    },Sepia:function() {
+        for (; d < a;) {
+            f = (P[d] + P[d + 1] + P[d + 2]) / 3;
+            R[d++] = f + 39 > D ? D : f + 39;
+            R[d++] = f + 4 > D ? D : f + 4;
+            R[d++] = f - 36 < 0 ? 0 : f - 36;
+            d++
+        }
+    },Posterize:[function(b) {
+        for (e = b[0]; d < a; d++)R[d] = V((d + 1) % 4 ? D / (e - 1) * (P[d] / D * e >> 0) : D)
+    },[
+        ["Levels",1,32,8]
+    ]],Solarize:function() {
+        for (; d < a; d++)R[d] = (d + 1) % 4 ? K(D - P[d], P[d]) : D
+    },Mosaic:[function(b) {
+        f = b[0] >> 0;
+        for (g = 0; g < y; g++)for (j = 0; j < y; j++) {
+            d = j * B + g * 4;
+            e = (j - j % f) * B + (g - g % f) * 4;
+            R[d] = P[e];
+            R[d + 1] = P[e + 1];
+            R[d + 2] = P[e + 2]
+        }
+    },[
+        ["Size",1,32,8]
+    ]],FlipV:function() {
+        for (; d < a; d++)R[d] = P[(y - 1 - d / B >> 0) * B + (d / 4 >> 0) % y * 4 + d % 4]
+    },FlipH:function() {
+        for (; d < a; d++)R[d] = P[((d / 4 >> 0) / y >> 0) * B + B - 4 - (d / 4 >> 0) % y * 4 + d % 4]
+    },Fisheye:[function(b) {
+        for (g = 0; g < y; g++)for (j = 0; j < y; j++) {
+            var c = j * B + g * 4,h = g - C,p = j - C,i = da(h * h + p * p),m = C;
+            if (i < m) {
+                f = J.pow(m / i * J.asin(i / m) / J.PI * 2, b[0]) || 0;
+                e = K(y - 1, L(0, p * f + C >> 0)) * B + K(y - 1, L(0, h * f + C >> 0)) * 4;
+                R[c] = P[e];
+                R[c + 1] = P[e + 1];
+                R[c + 2] = P[e + 2]
+            }
+        }
+    },[
+        ["Amount",-1,1,.5,.1]
+    ]],"Polar Coords":function() {
+        for (g = 0; g < y; g++)for (j = 0; j < y; j++) {
+            var b = j * B + g * 4,c = g - C,h = j - C,p = J.atan2(h, c) + J.PI / 2;
+            if (p < 0)p += ba;
+            f = L(0, K(y - 1, da(c * c + h * h) * 2 >> 0)) * B + L(0, K(y - 1, (ba - p) / ba * y >> 0)) * 4;
+            R[b] = P[f];
+            R[b + 1] = P[f + 1];
+            R[b + 2] = P[f + 2]
+        }
+    },Blur:[function(b) {
+        return $(oa(b[0]).a)
+    },[
+        ["Amount",0,1,.5,.1]
+    ]],"Unsharp Mask":[function(b) {
+        for (e = $(oa(b[0]).a).data; d < a; d++)R[d] = V((d + 1) % 4 ? J.abs(P[d] - e[d]) > b[2] ? e[d] + (P[d] - e[d]) * (b[1] + 1) : P[d] : D)
+    },[
+        ["Blur",0,1,.5,.1],
+        ["Amount",0,5,1.5,.1],
+        ["Threshold",0,50,5,1]
+    ]],Edges:function() {
+        f = -.125;
+        pa(f, f, f, f, 1, f, f, f, f, -8)
+    },Glow:[function(b) {
+        for (e = $(oa(.5).a).data; d < a; d++)R[d] = V((d + 1) % 4 ? P[d] + e[d] * b[0] : D)
+    },[
+        ["Amount",0,1,.2,.1]
+    ]],HSL:[function(b) {
+        var c = b[0] % 360 / 360,h = b[1] / _;
+        b = b[2] / _;
+        h = h < 0 ? 1 + h : 1 + h * 2;
+        for (var p = b * D; d < a;) {
+            var i = P[d],m = P[d + 1],s = P[d + 2],v = L(i, m, s),t = K(i, m, s),n = v - t,q = v + t,z = q / 510,A = v / n;
+            if (z > 0)if (n > 0) {
+                q = z > .5 ? z + (1 - z) * K(1, n * h / (510 - q)) : z * (1 + K(1, n * h / q));
+                v = i == v ? m == t ? 5 + A - s / n : 1 - A + m / n : m == v ? s == t ? 1 + A - i / n : v = 3 - A + s / n : i == t ? 3 + A - m / n : 5 - A + i / n;
+                v += c * 6;
+                if (v < 0)v += 6;
+                if (v >= 6)v -= 6;
+                n = z + z - q;
+                t = v >> 0;
+                A = (q - n) * (v - t);
+                q = q * D;
+                n = n * D;
+                z = n + A * D;
+                A = q - A * D;
+                if (t == 0) {
+                    i = q;
+                    m = z;
+                    s = n
+                }
+                if (t == 1) {
+                    i = A;
+                    m = q;
+                    s = n
+                }
+                if (t == 2) {
+                    i = n;
+                    m = q;
+                    s = z
+                }
+                if (t == 3) {
+                    i = n;
+                    m = A;
+                    s = q
+                }
+                if (t == 4) {
+                    i = z;
+                    m = n;
+                    s = q
+                }
+                if (t == 5) {
+                    i = q;
+                    m = n;
+                    s = A
+                }
+            }
+            if (b < 0) {
+                lm = b + 1;
+                i *= lm;
+                m *= lm;
+                s *= lm
+            }
+            if (b > 0) {
+                lm = 1 - b;
+                i = i * lm + p;
+                m = m * lm + p;
+                s = s * b + p
+            }
+            R[d++] = i;
+            R[d++] = m;
+            R[d++] = s;
+            d++
+        }
+    },[
+        ["Hue",-180,180,0],
+        ["Saturation",-_,_,0],
+        ["Lightness",-_,_,0]
+    ]],"B/C":[function(b) {
+        var c = 1 + b[1];
+        b = (1 + K(150, L(-150, b[0])) / 150) * c;
+        for (c = 128 - c * 128; d < a; d++)R[d] = V((d + 1) % 4 ? P[d] * b + c : D)
+    },[
+        ["Brightness",-150,150,0],
+        ["Contrast",-1,1,0,.1]
+    ]],Emboss:function() {
+        pa(4, 1, 0, 2, 1, -2, 0, 1, -4, 1 / 3);
+        for (d = 0; d < a;) {
+            R[d] = R[d + 1] = R[d + 2] = 127 + (R[d] + R[d + 1] + R[d + 2] - P[d] - P[d + 1] - P[d + 2]) / 6;
+            d += 4
+        }
+    },Reset:function() {
+        return ga
+    }};
+    function pa(b, c, h, p, i, m, s, v, t, n) {
+        for (; d < a;) {
+            f = d - B;
+            e = d + B;
+            if (f < 0)f = d;
+            if (e < a - 1)e = d;
+            f = (d + 1) % 4 ? (P[L(0, f - 4)] * b + P[f] * c + P[K(f + 4, a - 1)] * h + P[L(0, d - 4)] * p + P[d] * i + P[K(d + 4, a - 1)] * m + P[L(0, e - 4)] * s + P[e] * v + P[K(e + 4, a - 1)] * t) * n : D;
+            R[d++] = V(f)
+        }
+    }
+    function Y(b, c, h, p, i, m) {
+        b.drawImage(c, h || 0, p || 0, i || y, m || y)
+    }
+    function X(b, c, h, p, i, m) {
+        if (i > 0 && m > 0) {
+            b.fillStyle = c;
+            b.fillRect(h, p, i, m)
+        }
+    }
+    function oa(b) {
+        var c = O(),h = c.a = T(c);
+        c.width = c.height = y;
+        Y(h, o);
+        for (e = 0; e++ < 10 * b;) {
+            x.clearRect(0, 0, y, y);
+            Y(x, c, y / 4, y / 4, C, C);
+            Y(h, w, -C, -C, y * 2, y * 2)
+        }
+        Y(x, o);
+        return c
+    }
+    function na() {
+        var b = [],c = $(r).data,h = T(N("h")),p = 0,i;
+        for (d = 0; d <= D;)b[d++] = 0;
+        for (d = 0; d < y * B; d++) {
+            i = (p += f = (c[d++] + c[d++] + c[d++]) / 3 >> 0) / (y * y * 20 * D);
+            b[f]++
+        }
+        h.clearRect(0, 0, y, y);
+        for (d in b)X(h, "#345", d * 230 / D >> 0, 70 - i * b[d], 1, i * b[d])
+    }
+    function ma(b, c) {
+        ka(S, "x");
+        f = ia[b];
+        if (f[1] && !c)return qa(b, f[1]);
+        aa = f[0] || f;
+        ka(N("y"), "x");
+        d = 0;
+        a = y * B;
+        P = $(r).data;
+        Y(x, o, 0, 0);
+        R = (fa = $(x)).data;
+        r.putImageData(aa(c) || fa, 0, 0);
+        na()
+    }
+    function qa(b, c) {
+        function h(I, u, H, Z) {
+            var Q = O("div"),W = U(Q, O("div"));
+            ka(Q, "s");
+            ka(W, "n");
+            W.onmousedown = function(ra) {
+                t = W;
+                n = I;
+                q = u;
+                z = Z;
+                F = Q
+            };
+            W.style.left = (H - I) / (u - I) * p + "px";
+            la(W, s[Q.b = v++] = H);
+            return Q
+        }
+
+        var p = 140,i,s = [],v = 0,t,n,q,z,A = N("z");
+        la(A, "");
+        for (n in c) {
+            e = c[n];
+            la(U(A, O("label")), e[0]);
+            U(A, h(e[1], e[2], e[3], e[4] || 1))
+        }
+        M.onmousemove = function(I) {
+            if (E && F) {
+                var Z = L(0, K(p, gm(F, I)[0]));
+                f = s[F.b] = n + Z / p * (q - n);
+                t.style.left = Z + "px";
+                la(t, f.toFixed(z < 1))
+            }
+        };
+        ka(N("y"), "");
+        N("v").onclick = function() {
+            ma(b, s)
+        }
+    }
+    ;</script>
+</head>
+<body>
+<canvas id=bg width=800 height=600></canvas>
+<div id=q>
+    <div>
+        <div id=k>FILTERRIFIC</div>
+        <div id=l>FILTERRIFIC</div>
+    </div>
+    <div id=t>By <a href=http://blog.nihilogic.dk>Jacob Seidelin</a></div>
+    <div id=e class=w>
+        <div class=t>Actions</div>
+        <div class=c id=r></div>
+    </div>
+    <div id=o class=w>
+        <div class=t>Settings</div>
+        <div class=c id=y>
+            <div id=z></div>
+            <div id=v>OK</div>
+        </div>
+    </div>
+    <div id=j class=w>
+        <div class=t>Histogram</div>
+        <div class=c>
+            <canvas id=h width=230 height=70></canvas>
+        </div>
+    </div>
+    <div id=m class=w>
+        <div class=t>Mondrian</div>
+        <div class=c>
+            <div id=p>
+                <canvas id=i></canvas>
+                <div id=b class=x></div>
+            </div>
+        </div>
+        <div id=u>
+            <canvas id=g width=256 height=256></canvas>
+        </div>
+    </div>
+</div>
+</body>
+</html>

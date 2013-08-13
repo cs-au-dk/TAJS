@@ -1,0 +1,39 @@
+fg2: <main> function()
+  block 0: [entry]
+    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0059.js:1:1)
+    node 1: function-decl[function f(),-] (test/flowgraphbuilder/flowgraph_builder0059.js:1:1)
+    ->[block 1]
+  block 1:
+    node 2: read-variable['f',v4,v3] (test/flowgraphbuilder/flowgraph_builder0059.js:2:5)
+    ->[block 2]
+  block 2:
+    node 3: call[v3,v4,v2] (test/flowgraphbuilder/flowgraph_builder0059.js:2:5)
+    ->[block 3]
+  block 3:
+    node 4: if[v2](true-block:4,false-block:5) (test/flowgraphbuilder/flowgraph_builder0059.js:2:5)
+    ->[block 4,block 5]
+  block 4:
+    node 5: constant[true,v5] (test/flowgraphbuilder/flowgraph_builder0059.js:2:19)
+    node 6: typeof[v5,v2] (test/flowgraphbuilder/flowgraph_builder0059.js:2:12)
+    ->[block 5]
+  block 5:
+    node 7: write-variable[v2,'y']* (test/flowgraphbuilder/flowgraph_builder0059.js:2:1)
+    ->[block 6]
+  block 6: [exit-ordinary]
+    node 8: return[v1] (test/flowgraphbuilder/flowgraph_builder0059.js:1:1)
+    ->[]
+  block 7: [exit-exceptional]
+    node 9: exceptional-return (test/flowgraphbuilder/flowgraph_builder0059.js:1:1)
+    ->[]
+function f()
+  block 8: [entry]
+    node 10: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0059.js:1:1)
+    ->[block 9]
+  block 9: [exit-ordinary]
+    node 11: return[v1] (test/flowgraphbuilder/flowgraph_builder0059.js:1:14)
+    ->[]
+  block 10: [exit-exceptional]
+    node 12: exceptional-return (test/flowgraphbuilder/flowgraph_builder0059.js:1:14)
+    ->[]
+
+test/flowgraphbuilder/flowgraph_builder0059.js:2:5: [definite] The conditional expression is always false

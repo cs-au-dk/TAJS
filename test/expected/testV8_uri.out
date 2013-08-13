@@ -1,0 +1,25 @@
+test/v8tests/uri.js:30:1: [definite] ReferenceError, reading absent variable assertEquals
+test/v8tests/uri.js:30:14: [definite] Unreachable code
+test/v8tests/uri.js:33:5: [definite] The variable cc1 is never used
+test/v8tests/uri.js:34:5: [definite] The variable s1 is never used
+test/v8tests/uri.js:35:5: [definite] The variable cc2 is never used
+test/v8tests/uri.js:36:5: [definite] The variable s2 is never used
+test/v8tests/uri.js:37:5: [definite] The variable cc3 is never used
+test/v8tests/uri.js:38:5: [definite] The variable s3 is never used
+test/v8tests/uri.js:39:5: [definite] The variable cc4 is never used
+test/v8tests/uri.js:40:5: [definite] The variable s4 is never used
+test/v8tests/uri.js:41:5: [definite] The variable cc5 is never used
+test/v8tests/uri.js:42:5: [definite] The variable s5 is never used
+test/v8tests/uri.js:43:5: [definite] The variable cc6 is never used
+test/v8tests/uri.js:44:5: [definite] The variable s6 is never used
+test/v8tests/uri.js:45:5: [definite] The variable cc7 is never used
+test/v8tests/uri.js:46:5: [definite] The variable s7 is never used
+test/v8tests/uri.js:47:5: [definite] The variable cc8_1 is never used
+test/v8tests/uri.js:48:5: [definite] The variable cc8_2 is never used
+test/v8tests/uri.js:49:5: [definite] The variable s8 is never used
+test/v8tests/uri.js:50:5: [definite] The variable cc9_1 is never used
+test/v8tests/uri.js:51:5: [definite] The variable cc9_2 is never used
+test/v8tests/uri.js:52:5: [definite] The variable s9 is never used
+test/v8tests/uri.js:53:5: [definite] The variable cc10 is never used
+test/v8tests/uri.js:54:5: [definite] The variable s10 is never used
+test/v8tests/uri.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/uri.js:30:1]

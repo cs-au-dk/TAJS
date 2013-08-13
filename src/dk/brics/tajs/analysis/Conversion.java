@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Aarhus University
+ * Copyright 2009-2013 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -87,12 +87,14 @@ public class Conversion {
 			// 8. If Result(7) is a primitive value, return Result(7).
 			// 9. Throw a TypeError exception.
 			Value tostring = s.readPropertyWithAttributes(Collections.singleton(obj), "toString");
+			tostring = UnknownValueResolver.getRealValue(tostring, s);
 			result = ECMAScriptFunctions.internalToString(obj, tostring.getObjectLabels(), c);
-			result = UnknownValueResolver.getRealValue(result, c.getCurrentState());
+			result = UnknownValueResolver.getRealValue(result, s);
 			if (tostring.isMaybePrimitive() || result.isMaybeObject()) {
 				Value valueof = s.readPropertyWithAttributes(Collections.singleton(obj), "valueOf");
+				valueof = UnknownValueResolver.getRealValue(valueof, s);
 				result = result.restrictToNotObject().join(ECMAScriptFunctions.internalValueOf(obj, valueof.getObjectLabels(), register, c));
-				result = UnknownValueResolver.getRealValue(result, c.getCurrentState());
+				result = UnknownValueResolver.getRealValue(result, s);
 				if (valueof.isMaybePrimitive() || result.isMaybeObject())
 					maybe_typeerror = true;
 			}
@@ -108,12 +110,14 @@ public class Conversion {
 			// 8. If Result(7) is a primitive value, return Result(7).
 			// 9. Throw a TypeError exception.
 			Value valueof = s.readPropertyWithAttributes(Collections.singleton(obj), "valueOf");
+			valueof = UnknownValueResolver.getRealValue(valueof, s);
 			result = ECMAScriptFunctions.internalValueOf(obj, valueof.getObjectLabels(), register, c);
-			result = UnknownValueResolver.getRealValue(result, c.getCurrentState());
+			result = UnknownValueResolver.getRealValue(result, s);
 			if (valueof.isMaybePrimitive() || result.isMaybeObject()) {
 				Value tostring = s.readPropertyWithAttributes(Collections.singleton(obj), "toString");
+				tostring = UnknownValueResolver.getRealValue(tostring, s);
 				result = result.restrictToNotObject().join(ECMAScriptFunctions.internalToString(obj, tostring.getObjectLabels(), c));
-				result = UnknownValueResolver.getRealValue(result, c.getCurrentState());
+				result = UnknownValueResolver.getRealValue(result, s);
 				if (tostring.isMaybePrimitive() || result.isMaybeObject())
 					maybe_typeerror = true;
 			}

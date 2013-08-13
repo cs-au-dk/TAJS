@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Aarhus University
+ * Copyright 2009-2013 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -492,7 +492,7 @@ public class InitialStateBuilder implements IInitialStateBuilder<State, CallCont
         createPrimitiveFunction(s, global, lFunProto, ECMAScriptObjects.ASSERT_MOST_RECENT_OBJ, "assertMostRecentObj", 1);
         createPrimitiveFunction(s, global, lFunProto, ECMAScriptObjects.ASSERT_SUMMARY_OBJ, "assertSummaryObj", 1);
 		createPrimitiveFunction(s, global, lFunProto, ECMAScriptObjects.CONVERSION_TO_PRIMITIVE, "conversionToPrimitive", 2);
-		createPrimitiveFunction(s, global, lFunProto, ECMAScriptObjects.ASSUME_NON_NULLUNDEF, "assumeNonNullUndef", 2);
+		createPrimitiveFunction(s, global, lFunProto, ECMAScriptObjects.ADD_CONTEXT_SENSITIVITY, ECMAScriptObjects.ADD_CONTEXT_SENSITIVITY.toString(), 1);
 		
         if (Options.isDOMEnabled()) {
     		// build initial DOM state
@@ -532,7 +532,7 @@ public class InitialStateBuilder implements IInitialStateBuilder<State, CallCont
 		s.clearEffects();
 		s.freezeBasisStore();
 
-        CallContext call_context = new CallContext(s, global_entry_block.getFunction());
+        CallContext call_context = new CallContext(s, global_entry_block);
 		// s.setContext(call_context);
 		c.propagateToBasicBlock(s, global_entry_block, call_context);
 		c.getAnalysisLatticeElement().getCallGraph().registerBlockContext(global_entry_block, call_context);

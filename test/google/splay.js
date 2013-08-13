@@ -336,3 +336,7 @@ SplayTree.Node.prototype.traverse_ = function(f) {
     current = current.right;
   }
 };
+
+SplaySetup();  // call inserted for analysis
+SplayRun();  // call inserted for analysis
+SplayTearDown();  // call inserted for analysis

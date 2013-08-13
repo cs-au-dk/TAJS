@@ -1,0 +1,5 @@
+test/v8tests/for-in-null-or-undefined.js:33:1: [definite] ReferenceError, reading absent variable assertEquals
+test/v8tests/for-in-null-or-undefined.js:30:5: [definite] The variable count is never used
+test/v8tests/for-in-null-or-undefined.js:31:10: [definite] The variable p is never used
+test/v8tests/for-in-null-or-undefined.js:33:14: [definite] Unreachable code
+test/v8tests/for-in-null-or-undefined.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/for-in-null-or-undefined.js:31:1, test/v8tests/for-in-null-or-undefined.js:32:1, test/v8tests/for-in-null-or-undefined.js:33:1]

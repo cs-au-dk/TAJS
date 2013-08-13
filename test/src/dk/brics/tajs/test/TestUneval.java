@@ -1,6 +1,7 @@
 package dk.brics.tajs.test;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import dk.brics.tajs.options.Options;
@@ -22,7 +23,7 @@ public class TestUneval {
 	}
 	
 	@Test
-	public void tesUneval00() throws Exception {
+	public void uneval_00() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/uneval/uneval00.js"};
@@ -31,7 +32,7 @@ public class TestUneval {
 	}
 	
 	@Test
-	public void tesUneval01() throws Exception {
+	public void uneval_01() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/uneval/uneval01.js"};
@@ -40,7 +41,7 @@ public class TestUneval {
 	}
 	
 	@Test
-	public void tesUneval02() throws Exception {
+	public void uneval_02() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/uneval/uneval02.js"};
@@ -49,7 +50,7 @@ public class TestUneval {
 	}
 	
 	@Test
-	public void tesUneval03() throws Exception {
+	public void uneval_03() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/uneval/uneval03.js"};
@@ -58,7 +59,7 @@ public class TestUneval {
 	}
 	
 	@Test
-	public void tesUneval04() throws Exception {
+	public void uneval_04() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/uneval/uneval04.js"};
@@ -67,7 +68,7 @@ public class TestUneval {
 	}
 	
 	@Test
-	public void tesUneval05() throws Exception {
+	public void uneval_05() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/uneval/uneval05.js"};
@@ -76,7 +77,7 @@ public class TestUneval {
 	}
 
 	@Test
-	public void tesUneval06() throws Exception {
+	public void uneval_06() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/uneval/uneval06.js"};
@@ -85,7 +86,7 @@ public class TestUneval {
 	}
 	
 	@Test(expected=AnalysisException.class)
-	public void tesUneval07() throws Exception {
+	public void uneval_07() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/uneval/uneval07.js"};
@@ -94,7 +95,7 @@ public class TestUneval {
 	}
 	
 	@Test
-	public void tesUneval08() throws Exception {
+	public void uneval_08() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/uneval/uneval08.js"};
@@ -103,7 +104,7 @@ public class TestUneval {
 	}
 	
 	@Test
-	public void tesUneval09() throws Exception {
+	public void uneval_09() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/uneval/uneval09.js"};
@@ -112,7 +113,7 @@ public class TestUneval {
 	}
 	
 	@Test(expected=AnalysisException.class)
-	public void tesUneval10() throws Exception {
+	public void uneval_10() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/uneval/uneval10.js"};
@@ -121,7 +122,7 @@ public class TestUneval {
 	}
 	
 	@Test
-	public void tesUneval11() throws Exception {
+	public void uneval_11() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/uneval/uneval11.js"};
@@ -130,7 +131,7 @@ public class TestUneval {
 	}
 	
 	@Test
-	public void tesUneval12() throws Exception {
+	public void uneval_12() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/uneval/uneval12.js"};
@@ -139,7 +140,7 @@ public class TestUneval {
 	}
 	
 	@Test
-	public void tesUneval13() throws Exception {
+	public void uneval_13() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/uneval/uneval13.js"};
@@ -148,7 +149,7 @@ public class TestUneval {
 	}
 	
 	@Test
-	public void tesUneval14() throws Exception {
+	public void uneval_14() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		Options.enableIncludeDom();
@@ -159,7 +160,7 @@ public class TestUneval {
 	}
 	
 	@Test
-	public void tesUneval15() throws Exception {
+	public void uneval_15() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		Options.enableIncludeDom();
@@ -170,7 +171,7 @@ public class TestUneval {
 	}
 	
 	@Test
-	public void tesUneval16() throws Exception {
+	public void uneval_16() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		Options.enableIncludeDom();
@@ -181,7 +182,7 @@ public class TestUneval {
 	}
 	
 	@Test
-	public void tesUneval17() throws Exception {
+	public void uneval_17() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/uneval/uneval17.js"};
@@ -190,7 +191,7 @@ public class TestUneval {
 	}
 	
 	@Test
-	public void tesUneval18() throws Exception {
+	public void uneval_18() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/uneval/uneval18.js"};
@@ -199,7 +200,7 @@ public class TestUneval {
 	}
 	
 	@Test
-	public void tesUneval19() throws Exception {
+	public void uneval_19() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		Options.enableIncludeDom();
@@ -210,7 +211,7 @@ public class TestUneval {
 	}
 	
 	@Test
-	public void tesUneval20() throws Exception {
+	public void uneval_20() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/uneval/uneval20.js"};
@@ -219,7 +220,7 @@ public class TestUneval {
 	}
 
     @Test
-    public void tesUneval21() throws Exception {
+    public void uneval_21() throws Exception {
         Misc.init();
         Misc.captureSystemOutput();
         Options.enableIncludeDom();
@@ -230,7 +231,7 @@ public class TestUneval {
     }
 
     @Test
-    public void tesUneval22() throws Exception {
+    public void uneval_22() throws Exception {
         Misc.init();
         Misc.captureSystemOutput();
         Options.enableIncludeDom();
@@ -241,7 +242,7 @@ public class TestUneval {
     }
 
     @Test
-    public void tesUneval23() throws Exception {
+    public void uneval_23() throws Exception {
         Misc.init();
         Misc.captureSystemOutput();
         Options.enableIncludeDom();
@@ -252,7 +253,7 @@ public class TestUneval {
     }
 
     @Test
-    public void tesUneval24() throws Exception {
+    public void uneval_24() throws Exception {
         Misc.init();
         Misc.captureSystemOutput();
         Options.enableIncludeDom();
@@ -263,7 +264,7 @@ public class TestUneval {
     }
 
     @Test
-    public void tesUneval25() throws Exception {
+    public void uneval_25() throws Exception {
         Misc.init();
         Misc.captureSystemOutput();
         Options.enableIncludeDom();
@@ -274,7 +275,7 @@ public class TestUneval {
     }
 
     @Test(expected=AnalysisException.class)
-    public void tesUneval26() throws Exception {
+    public void uneval_26() throws Exception {
         Misc.init();
         Misc.captureSystemOutput();
         Options.enableIncludeDom();
@@ -285,7 +286,7 @@ public class TestUneval {
     }
 
     @Test
-    public void tesUneval27() throws Exception {
+    public void uneval_27() throws Exception {
         Misc.init();
         Misc.captureSystemOutput();
         Options.enableIncludeDom();
@@ -296,7 +297,7 @@ public class TestUneval {
     }
 
     @Test
-    public void tesUneval27un() throws Exception {
+    public void uneval_27un() throws Exception {
         Misc.init();
         Misc.captureSystemOutput();
         Options.enableIncludeDom();
@@ -310,7 +311,7 @@ public class TestUneval {
 
 
     @Test
-    public void tesUneval28() throws Exception {
+    public void uneval_28() throws Exception {
         Misc.init();
         Misc.captureSystemOutput();
         Options.enableIncludeDom();
@@ -320,8 +321,9 @@ public class TestUneval {
         Misc.checkSystemOutput();
     }
 
+	@Ignore // FIXME: assignment to innerHTML
     @Test
-    public void tesUneval29() throws Exception {
+    public void uneval_29() throws Exception {
         Misc.init();
         Misc.captureSystemOutput();
         Options.enableIncludeDom();
@@ -332,7 +334,7 @@ public class TestUneval {
     }
 
     @Test
-    public void tesUneval30() throws Exception {
+    public void uneval_30() throws Exception {
         Misc.init();
         Misc.captureSystemOutput();
         Options.enableIncludeDom();
@@ -343,7 +345,7 @@ public class TestUneval {
     }
 
     @Test
-    public void tesUneval30un() throws Exception {
+    public void uneval_30un() throws Exception {
         Misc.init();
         Misc.captureSystemOutput();
         Options.enableIncludeDom();
@@ -356,7 +358,7 @@ public class TestUneval {
     }
 
     @Test
-    public void tesUneval31() throws Exception {
+    public void uneval_31() throws Exception {
         Misc.init();
         Misc.captureSystemOutput();
         Options.enableIncludeDom();
@@ -367,7 +369,7 @@ public class TestUneval {
     }
 
     @Test
-    public void tesUneval32() throws Exception {
+    public void uneval_32() throws Exception {
         Misc.init();
         Misc.captureSystemOutput();
         Options.enableIncludeDom();
@@ -378,7 +380,7 @@ public class TestUneval {
     }
 
     @Test
-    public void tesUneval33() throws Exception {
+    public void uneval_33() throws Exception {
         Misc.init();
         Misc.captureSystemOutput();
         Options.enableIncludeDom();
@@ -389,7 +391,7 @@ public class TestUneval {
     }
 
     @Test
-    public void tesUneval34() throws Exception {
+    public void uneval_34() throws Exception {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/uneval/uneval34.js"};
@@ -398,7 +400,7 @@ public class TestUneval {
     }
 
     @Test
-    public void tesUneval35() throws Exception {
+    public void uneval_35() throws Exception {
         Misc.init();
         Misc.captureSystemOutput();
         Options.enableIncludeDom();
@@ -409,7 +411,7 @@ public class TestUneval {
     }
 
     @Test
-    public void tesUneval36() throws Exception {
+    public void uneval_36() throws Exception {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/uneval/uneval36.js"};
@@ -418,7 +420,7 @@ public class TestUneval {
     }
 
     @Test
-    public void tesUneval37() throws Exception {
+    public void uneval_37() throws Exception {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/uneval/uneval37.js"};
@@ -427,7 +429,7 @@ public class TestUneval {
     }
 
     @Test
-    public void tesUneval38() throws Exception {
+    public void uneval_38() throws Exception {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/uneval/uneval38.js"};
@@ -436,7 +438,7 @@ public class TestUneval {
     }
 
     @Test
-    public void tesUneval39() throws Exception {
+    public void uneval_39() throws Exception {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/uneval/uneval39.js"};
@@ -445,7 +447,7 @@ public class TestUneval {
     }
 
     @Test
-    public void tesUneval40() throws Exception {
+    public void uneval_40() throws Exception {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/uneval/uneval40.js"};
@@ -454,7 +456,7 @@ public class TestUneval {
     }
 
     @Test
-    public void tesUneval41() throws Exception {
+    public void uneval_41() throws Exception {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/uneval/uneval41.js"};
@@ -463,7 +465,7 @@ public class TestUneval {
     }
 
     @Test
-    public void tesUneval42() throws Exception {
+    public void uneval_42() throws Exception {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/uneval/uneval42.js"};
@@ -472,7 +474,7 @@ public class TestUneval {
     }
 
     @Test
-    public void tesUneval43() throws Exception {
+    public void uneval_43() throws Exception {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/uneval/uneval43.js"};
@@ -481,7 +483,7 @@ public class TestUneval {
     }
 
     @Test
-    public void tesUneval44() throws Exception {
+    public void uneval_44() throws Exception {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/uneval/uneval44.js"};
@@ -490,7 +492,7 @@ public class TestUneval {
     }
 
     @Test
-    public void tesUneval45() throws Exception {
+    public void uneval_45() throws Exception {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/uneval/uneval45.js"};
@@ -499,7 +501,7 @@ public class TestUneval {
     }
 
     @Test
-    public void tesUneval46() throws Exception {
+    public void uneval_46() throws Exception {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/uneval/uneval46.js"};
@@ -508,7 +510,7 @@ public class TestUneval {
     }
 
     @Test(expected=AnalysisException.class)
-    public void tesUneval47() throws Exception {
+    public void uneval_47() throws Exception {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/uneval/uneval47.js"};
@@ -517,7 +519,7 @@ public class TestUneval {
     }
 
     @Test
-    public void tesUneval48() throws Exception { // FIXME: 'this' is incorrect for setInterval code (see FIXME in FunctionCalls.EventHandlerCall)
+    public void uneval_48() throws Exception { // FIXME: 'this' is incorrect for setInterval code (see FIXME in FunctionCalls.EventHandlerCall)
         Misc.init();
         Misc.captureSystemOutput();
         Options.enableIncludeDom();

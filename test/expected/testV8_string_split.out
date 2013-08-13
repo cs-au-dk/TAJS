@@ -1,0 +1,4 @@
+test/v8tests/string-split.js:30:1: [definite] ReferenceError, reading absent variable assertArrayEquals
+test/v8tests/string-split.js:30:19: [definite] Unreachable code
+test/v8tests/string-split.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/string-split.js:30:1]
+test/v8tests/string-split.js:29:10: [maybe] Converting primitive string to object

@@ -1,0 +1,5 @@
+Unevalizer: Starting on: "var x"
+Unevalizer: Valid program
+Unevalizer: No name capture
+test/sourcelocations/htmlWithFunctionWithMultiLineEvalInternalJavascript.tidy.html:11:1: [definite] The variable x is never used
+test/sourcelocations/htmlWithFunctionWithMultiLineEvalInternalJavascript.tidy.html:13:5: [definite] The variable functionResult is never used

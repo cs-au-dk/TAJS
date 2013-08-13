@@ -1,5 +1,0 @@
-test/html/html05.html:5: [info] Abstract object: {localName:Str,value:Str,[[Prototype]]=[@element[native]]}
-test/html/html05.html:11: [info] Abstract value: "jher"
-test/html/html05.html:13: [info] Abstract object: {localName:Str,value:Str,[[Prototype]]=[@element[native]]}
-test/html/html05.html:18: [info] Abstract value: "KILROY IS HERE!"
-test/html/html05.html:20: [info] Abstract value: [@<anonymous>#fun4]

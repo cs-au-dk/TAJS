@@ -1,0 +1,4 @@
+Unevalizer: Starting on: "window.opera"
+Unevalizer: Valid program
+Unevalizer: No name capture
+test/uneval/uneval32.tidy.html:7:1: [definite] Reading absent property opera

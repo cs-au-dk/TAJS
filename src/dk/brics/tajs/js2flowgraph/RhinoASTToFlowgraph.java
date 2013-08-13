@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Aarhus University
+ * Copyright 2009-2013 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,13 +20,20 @@ import static dk.brics.tajs.util.Collections.newList;
 import static dk.brics.tajs.util.Collections.newMap;
 import static dk.brics.tajs.util.Collections.newSet;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.MappedByteBuffer;
+import java.nio.channels.FileChannel;
+import java.nio.charset.Charset;
+import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.apache.log4j.Logger;
 
@@ -34,7 +41,6 @@ import com.google.javascript.jscomp.CompilationLevel;
 import com.google.javascript.jscomp.Compiler;
 import com.google.javascript.jscomp.CompilerOptions;
 import com.google.javascript.jscomp.JSSourceFile;
-import com.google.javascript.jscomp.SourceFile;
 import com.google.javascript.rhino.Node;
 import com.google.javascript.rhino.Token;
 
@@ -57,14 +63,14 @@ import dk.brics.tajs.flowgraph.jsnodes.DeclareFunctionNode;
 import dk.brics.tajs.flowgraph.jsnodes.DeclareVariableNode;
 import dk.brics.tajs.flowgraph.jsnodes.DeletePropertyNode;
 import dk.brics.tajs.flowgraph.jsnodes.EndForInNode;
-import dk.brics.tajs.flowgraph.jsnodes.EnterWithNode;
+import dk.brics.tajs.flowgraph.jsnodes.BeginWithNode;
 import dk.brics.tajs.flowgraph.jsnodes.EventDispatcherNode;
 import dk.brics.tajs.flowgraph.jsnodes.EventEntryNode;
 import dk.brics.tajs.flowgraph.jsnodes.ExceptionalReturnNode;
 import dk.brics.tajs.flowgraph.jsnodes.HasNextPropertyNode;
 import dk.brics.tajs.flowgraph.jsnodes.IPropertyNode;
 import dk.brics.tajs.flowgraph.jsnodes.IfNode;
-import dk.brics.tajs.flowgraph.jsnodes.LeaveWithNode;
+import dk.brics.tajs.flowgraph.jsnodes.EndWithNode;
 import dk.brics.tajs.flowgraph.jsnodes.LoadNode;
 import dk.brics.tajs.flowgraph.jsnodes.NewObjectNode;
 import dk.brics.tajs.flowgraph.jsnodes.NextPropertyNode;
@@ -78,93 +84,135 @@ import dk.brics.tajs.flowgraph.jsnodes.UnaryOperatorNode;
 import dk.brics.tajs.flowgraph.jsnodes.WritePropertyNode;
 import dk.brics.tajs.flowgraph.jsnodes.WriteVariableNode;
 import dk.brics.tajs.htmlparser.DOMEventHelpers;
-import dk.brics.tajs.htmlparser.HtmlSource;
 import dk.brics.tajs.htmlparser.JavaScriptSource;
+import dk.brics.tajs.htmlparser.JavaScriptSource.EmbeddedJavaScriptSource;
+import dk.brics.tajs.htmlparser.JavaScriptSource.EventHandlerJavaScriptSource;
+import dk.brics.tajs.htmlparser.JavaScriptSource.ExternalJavaScriptSource;
+import dk.brics.tajs.htmlparser.JavaScriptSource.JavaScriptSourceVisitor;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.util.AnalysisException;
 import dk.brics.tajs.util.Collections;
 import dk.brics.tajs.util.Pair;
 
-public class RhinoASTToFlowgraph { // TODO: javadoc
+public class RhinoASTToFlowgraph { // TODO: improve javadoc
 
 	private static Logger logger = Logger.getLogger(RhinoASTToFlowgraph.class);
 
-	private static final String TAJS_DIVIDER = "<TAJS_DIVIDER>"; // TODO: fix this weird hack?
+	/**
+	 * When multiple JavaScript sources from HTML are parsed, their host filenames need to be modified in order to distinguish them.
+	 * The divider string is used for encoding the offset into the filename of the parsed nodes in {@link JSSourceFile} objects.
+	 * @see #getRealLineNumber
+	 */
+	private static class EncodedFileName {
+
+		private final String fileName;
+
+		private final int offset;
+
+		private static final String TAJS_DIVIDER = "<TAJS_DIVIDER>";
+
+		public EncodedFileName(String fileName) {
+			this.fileName = fileName;
+			this.offset = 0;
+		}
+
+		public EncodedFileName(String fileName, int offset) {
+			this.fileName = fileName;
+			this.offset = offset;
+		}
+
+		@Override
+		public String toString() {
+			return offset + TAJS_DIVIDER + fileName;
+		}
+		
+		/**
+		 * Gets the line number in the file containing the given Rhino node.
+		 */
+		public static int getRealLineNumber(Node n) {
+			String fname = n.getSourceFileName();
+			int dividerIndex = fname.indexOf(TAJS_DIVIDER);
+			if (dividerIndex == -1) {
+				throw new IllegalStateException("No TAJS_DIVIDER in sourceFileName: " + fname + " for " + n.toString());
+			}
+			final int offset = Integer.parseInt(fname.substring(0, dividerIndex));
+			return n.getLineno() + offset;
+		}
+
+		/**
+		 * Gets the name of the file containing the given Rhino node.
+		 */
+		public static String getDecodedFileName(Node n) {
+			String fname = n.getSourceFileName();
+			int dividerIndex = fname.indexOf(TAJS_DIVIDER);
+			if (dividerIndex == -1) {
+				throw new IllegalStateException("No TAJS_DIVIDER in sourceFileName: " + fname + " for " + n.toString());
+			}
+			return fname.substring(dividerIndex + TAJS_DIVIDER.length());
+		}
+	}
 
 	/**
-	 * The graph being constructed.
+	 * The flow graph being constructed.
 	 */
-	private final FlowGraph graph;
+	private final FlowGraph graph = new FlowGraph();
 
 	/**
 	 * The environment for the compiler; always the same once it is initialized.
 	 */
-	private final CompilerOptions compilerOptions;
+	private final CompilerOptions compilerOptions = new CompilerOptions();
 
 	/**
-	 * The maximum value that is used for a temporary variable.
+	 * The maximum register number in use for the current function.
 	 */
-	private int maxTmp = AbstractNode.FIRST_ORDINARY_REG;
+	private int maxReg = AbstractNode.FIRST_ORDINARY_REG;
 
 	/**
-	 * Event Handlers
+	 * Event handlers.
 	 */
-	private Collection<JavaScriptSource> eventHandlers = newSet();
-
-	private Collection<HtmlSource> htmlElements = new HashSet<>();
+	private Collection<EventHandlerJavaScriptSource> eventHandlers = newSet();
 
 	/**
-	 * The constructor. Translates a Rhino AST to a TAJS flow graph.
+	 * Counter to ensure unique file names for dummy nodes.
+	 */
+	private int dummyCount = 0;
+	
+	private SourceLocation lastSrcLoc;
+
+	/**
+	 * Constructs a new translator from a Rhino AST to a TAJS flow graph.
 	 */
 	public RhinoASTToFlowgraph() {
-		graph = new FlowGraph();
-		compilerOptions = new CompilerOptions();
 		compilerOptions.setIdeMode(false);
 		CompilationLevel.WHITESPACE_ONLY.setOptionsForCompilationLevel(compilerOptions);
 	}
 
 	/**
 	 * Builds a flow graph for a list of source files.
-	 * 
-	 * @throws IOException
+	 * @throws IOException if unable to read the files
 	 */
-	public void buildFromFiles(List<String> files) {
-		if (files.isEmpty())
-			return;
-		Pair<Node, Map<String, Integer>> p = parseFiles(files);
-		buildTopLevel(p.getFirst(), p.getSecond());
+	public void buildFromJavaScriptFiles(List<String> files) throws IOException {
+		buildTopLevel(parseJavaScriptFiles(files));
 	}
 
 	/**
 	 * Builds a flow graph for a list of sources gathered from an HTML file.
 	 */
-	public void buildFromSources(List<HtmlSource> elements, List<JavaScriptSource> newEventHandlers, List<JavaScriptSource> sources) { // FIXME: should have stripped "javascript:" from the source code before calling this method
-		htmlElements.addAll(elements);
-		eventHandlers.addAll(newEventHandlers);
-		build(sources);
-	}
-
-	private void build(String sourceString, String sourceFile, int lineNo) {
-		Node root = parse(sourceString, lineNo + TAJS_DIVIDER + sourceFile);
-		Map<String, Integer> map = newMap();
-		map.put(lineNo + TAJS_DIVIDER + sourceFile, lineNo);
-		buildTopLevel(root, map);
-	}
-
-	private void build(List<JavaScriptSource> sources) {
-		if (sources.isEmpty()) {
-			build("", "dummy_placeholder.js", 0);
+	public void buildFromHTMLFile(List<JavaScriptSource> scriptList, List<EventHandlerJavaScriptSource> eventList) { // FIXME: should have stripped "javascript:" from the source code before calling this method
+		eventHandlers.addAll(eventList);
+		if (scriptList.isEmpty()) {
+			// TODO: no script elements, handle this elsewhere?
+			buildTopLevel(parse("", "dummy" + dummyCount++ + ".js", 0));
 			return;
 		}
-		Pair<Node, Map<String, Integer>> p = parseSources(sources);
-		buildTopLevel(p.getFirst(), p.getSecond());
+		buildTopLevel(parseSources(scriptList));
 	}
 
 	/**
 	 * Finishes the flow graph being constructed by this builder and returns the
 	 * flow graph. Call this method when all JS code has been parsed.
 	 */
-	public FlowGraph close() {
+	public FlowGraph close() { // TODO: move this to the end of buildTopLevel?
 		FlowGraph fg = graph.complete();
 		if (Options.isTestFlowGraphBuilderEnabled())
 			System.out.println("fg2: " + fg.toString());
@@ -173,18 +221,17 @@ public class RhinoASTToFlowgraph { // TODO: javadoc
 	}
 
 	/**
-	 * Adds and event loop to the flow graph. Does not make sense if DOM is
-	 * not enabled.
+	 * Adds an event loop to the flow graph. Does not make sense if DOM is not enabled.
 	 */
 	private BasicBlock addEventLoop(FlowGraphEnv env, BasicBlock bb, String filename) {
 		if (!(Options.isDOMEnabled() || Options.isDSLEnabled()))
 			return bb;
 
-		BasicBlock currBB = newBasicBlock(env, bb);
+		BasicBlock currBB = newSuccessorBasicBlock(env, bb);
 
-		int eventVar = nextTemporary(env);
-		for (JavaScriptSource src : eventHandlers) {
-			Function f = translateEventHandler(env, currBB, src, eventVar);
+		int eventReg = nextRegister(env);
+		for (EventHandlerJavaScriptSource src : eventHandlers) {
+			Function f = translateEventHandler(env, currBB, src, eventReg);
 			String name = src.getEventName();
 			CallbackKind k;
 			if (DOMEventHelpers.isLoadEventAttribute(name))
@@ -200,8 +247,7 @@ public class RhinoASTToFlowgraph { // TODO: javadoc
 			env.fg.addCallback(f, k);
 		}
 
-		SourceLocation srcLoc = newSourceLocation(0, -1, filename);
-
+		SourceLocation srcLoc = SourceLocationMaker.makeUnknown(filename);
 		if (Options.isSingleEventHandlerLoop()) { // TODO: remove Options.isSingleEventHandlerLoop()?
 			/*
 			 * // *ALL* Event Handlers
@@ -220,30 +266,30 @@ public class RhinoASTToFlowgraph { // TODO: javadoc
 		// The other blocks can't be empty because of flow graph invariants so there's nop nodes in there.
 
 		// Event Entry Block
-		BasicBlock entryBB = newBasicBlock(env, currBB);
+		BasicBlock entryBB = newSuccessorBasicBlock(env, currBB);
 		entryBB.addNode(new EventEntryNode(srcLoc));
 
 		// Load Event Handlers
-		BasicBlock loadBB = newBasicBlock(env, entryBB);
+		BasicBlock loadBB = newSuccessorBasicBlock(env, entryBB);
 		loadBB.addNode(new EventDispatcherNode(EventDispatcherNode.Type.LOAD, srcLoc));
 
-		BasicBlock nopPostLoad = newBasicBlock(env, loadBB);
+		BasicBlock nopPostLoad = newSuccessorBasicBlock(env, loadBB);
 		nopPostLoad.addNode(new NopNode(srcLoc));
 		nopPostLoad.addSuccessor(loadBB);
 
 		// Other Event Handlers
-		BasicBlock otherBB = newBasicBlock(env, nopPostLoad);
+		BasicBlock otherBB = newSuccessorBasicBlock(env, nopPostLoad);
 		otherBB.addNode(new EventDispatcherNode(EventDispatcherNode.Type.OTHER, srcLoc));
 
-		BasicBlock nopPostOther = newBasicBlock(env, otherBB);
+		BasicBlock nopPostOther = newSuccessorBasicBlock(env, otherBB);
 		nopPostOther.addNode(new NopNode(srcLoc));
 		nopPostOther.addSuccessor(otherBB);
 
 		// Unload Event Handlers
-		BasicBlock unloadBB = newBasicBlock(env, nopPostOther);
+		BasicBlock unloadBB = newSuccessorBasicBlock(env, nopPostOther);
 		unloadBB.addNode(new EventDispatcherNode(EventDispatcherNode.Type.UNLOAD, srcLoc));
 
-		BasicBlock nopPostUnload = newBasicBlock(env, unloadBB);
+		BasicBlock nopPostUnload = newSuccessorBasicBlock(env, unloadBB);
 		nopPostUnload.addNode(new NopNode(srcLoc));
 		nopPostUnload.addSuccessor(unloadBB);
 
@@ -254,72 +300,150 @@ public class RhinoASTToFlowgraph { // TODO: javadoc
 		return nopPostUnload;
 	}
 
-	private Function translateEventHandler(FlowGraphEnv env, BasicBlock bb, JavaScriptSource src, int resultVar) {
-		// XXX: Should the function be added to env.declsBB?
+	/**
+	 * Encapsulates the construction of SourceLocations.
+	 */
+	public static class SourceLocationMaker {
+		
+		public static SourceLocation makeUnknown(String filename) {
+			return make(0, 0, filename);
+		}
+
+		public static SourceLocation makeFromNode(Node node) {
+			int line = EncodedFileName.getRealLineNumber(node);
+			int column = node.getCharno();
+			String filename = EncodedFileName.getDecodedFileName(node);
+			// The closure compiler uses 0-indexed column numbers and this seems unlikely to change in the nearby future.
+			// Add one to all column numbers so that the user gets the left-adjusted syntactic construct starting in column one.
+			return make(line, column + 1, filename);
+		}
+
+		private static SourceLocation make(int line, int column, String filename) {
+			// The test suite does plain text string comparisons of the output. Since
+			// the separator is different between Windows and Unix that will cause
+			// test failures; normalize the output so that it is always "/" to
+			// avoid this problem.
+			return new SourceLocation(line, column, filename.replace("\\", "/"));
+		}
+	}
+
+	private Function translateEventHandler(FlowGraphEnv env, BasicBlock bb, EventHandlerJavaScriptSource src, int resultReg) {
+		// TODO: Should the function be added to env.declsBB?
 		String params = src.getEventName().equals("TIMEOUT") ? "" : "event";
 		String wrappedJS = "(function (" + params + ") {" + src.getJavaScript() + "})";
-		String mapName = src.getLineNumber() + TAJS_DIVIDER + src.getFileName();
-		Node evRoot = parse(wrappedJS, mapName).getLastChild().getLastChild().getLastChild();
-		env.lineOffsets.put(mapName, src.getLineNumber());
-		SourceLocation srcLoc = newSourceLocation(getLine(evRoot, env.lineOffsets), evRoot.getCharno(), src.getFileName());
-		return translateFunction(env, bb, evRoot, srcLoc, resultVar);
+		final int lineNumberOffset = src.getLineNumberOffset();
+		final String fileName = src.getFileName();
+		Node evRoot = parse(wrappedJS, fileName, lineNumberOffset).getLastChild().getLastChild().getLastChild();
+		SourceLocation srcLoc = SourceLocationMaker.makeFromNode(evRoot);
+		lastSrcLoc = srcLoc;
+		return translateFunction(env, bb, evRoot, srcLoc, resultReg);
 	}
 
-	private Pair<Node, Map<String, Integer>> parseSources(List<JavaScriptSource> sources) {
+	/**
+	 * Runs the Rhino parser on the given JavaScript snippets.
+	 * @return Rhino AST node (last child of the root)
+	 */
+	private Node parseSources(List<JavaScriptSource> sources) {
 		Compiler compiler = new Compiler();
-		JSSourceFile[] fs = new JSSourceFile[sources.size()];
-		Map<String, Integer> map = newMap();
-		for (int i = 0; i < fs.length; i++) {
-			JavaScriptSource ss = sources.get(i);
-			fs[i] = JSSourceFile.fromCode(ss.getLineNumber() + TAJS_DIVIDER + ss.getFileName(), ss.getJavaScript());
-			int lineCompensation = ss.getFileName().endsWith(".htm") || ss.getFileName().endsWith(".html") ? -1 : 0;
-			map.put(ss.getLineNumber() + TAJS_DIVIDER + ss.getFileName(), ss.getLineNumber() + lineCompensation);
+		List<JSSourceFile> fs = new ArrayList<>();
+		for (JavaScriptSource ss : sources) {
+			Integer offset = ss.apply(new JavaScriptSourceVisitor<Integer>() {
+				@Override
+				public Integer visit(EmbeddedJavaScriptSource s) {
+					return s.getLineNumberOffset();
+				}
+
+				@Override
+				public Integer visit(EventHandlerJavaScriptSource s) {
+					return s.getLineNumberOffset();
+				}
+
+				@Override
+				public Integer visit(ExternalJavaScriptSource s) {
+					return 0;
+				}
+			});
+			fs.add(fromCode(ss.getJavaScript(), new EncodedFileName(ss.getFileName(), offset)));
 		}
-		SourceFile dummy = SourceFile.fromCode("dummy.js", "");
-
-		compiler.compile(dummy, fs, compilerOptions);
-
+		// FIXME: externs vs modules as parameters??
+		compiler.compile(newList(Collections.singleton(fromEmptyCode())), fs, compilerOptions);
 		if (compiler.getErrorCount() > 0)
 			throw new AnalysisException("Parse error in file:");
-
-		return Pair.make(getParentOfFirstInterestingNode(compiler), map);
-	}
-
-	private Node parse(String sourceString, String sourceFile) {
-		Compiler compiler = new Compiler();
-
-		compiler.compile(JSSourceFile.fromCode("dummy.js", ""), JSSourceFile.fromCode(sourceFile, sourceString), compilerOptions);
-
-		if (compiler.getErrorCount() > 0)
-			throw new AnalysisException("Parse error on code:" + sourceString);
-
 		return getParentOfFirstInterestingNode(compiler);
 	}
 
-	private Pair<Node, Map<String, Integer>> parseFiles(List<String> sourceFiles) {
+	/**
+	 * Runs the Rhino parser on the given JavaScript snippet.
+	 * @return Rhino AST node (last child of the root)
+	 */
+	private Node parse(String sourceString, String sourceFile, int lineNumberOffset) {
+		Compiler compiler = new Compiler();
+		compiler.compile(fromEmptyCode(), fromCode(sourceString, new EncodedFileName(sourceFile, lineNumberOffset)), compilerOptions);
+		if (compiler.getErrorCount() > 0)
+			throw new AnalysisException("Parse error on code: " + sourceString);
+		return getParentOfFirstInterestingNode(compiler);
+	}
+
+	/**
+	 * Runs the Rhino parser on the given JavaScript snippets.
+	 * @return Rhino AST node (last child of the root)
+	 */
+	private Node parseJavaScriptFiles(List<String> sourceFiles) throws IOException {
 		Compiler compiler = new Compiler();
 		JSSourceFile[] fs = new JSSourceFile[sourceFiles.size()];
-		Map<String, Integer> map = newMap();
 		for (int i = 0; i < fs.length; i++) {
-			if ("-".equals(sourceFiles.get(i))) { // Read from stdin
+			final File file;
+			final String sourceFileName = sourceFiles.get(i);
+			if ("-".equals(sourceFileName)) { // Read from stdin
 				try {
-					fs[i] = JSSourceFile.fromInputStream("<stdin>", System.in);
+					file = File.createTempFile("TAJS_<stdin>", ".js");
+					try (FileOutputStream out = new FileOutputStream(file)) {
+						byte[] buffer = new byte[1024];
+						int len;
+						while ((len = System.in.read(buffer)) != -1) {
+							out.write(buffer, 0, len);
+						}
+					}
 				} catch (Exception e) {
 					throw new AnalysisException("Unable to parse stdin");
 				}
-			} else
-				fs[i] = JSSourceFile.fromFile(sourceFiles.get(i));
-			map.put(sourceFiles.get(i), 0);
+			} else {
+				file = new File(sourceFileName);
+			}
+			fs[i] = fromFile(file);
 		}
-
-		SourceFile dummy = SourceFile.fromCode("dummy.js", "");
-
-		compiler.compile(dummy, fs, compilerOptions);
-
+		compiler.compile(fromEmptyCode(), fs, compilerOptions);
 		if (compiler.getErrorCount() > 0)
 			throw new AnalysisException("Parse error in file: " + sourceFiles);
+		return getParentOfFirstInterestingNode(compiler);
+	}
 
-		return Pair.make(getParentOfFirstInterestingNode(compiler), map);
+	/**
+	 * Constructs a JSSourceFile from a JavaScript file.
+	 * @throws IOException if unable to read the file
+	 */
+	static JSSourceFile fromFile(File file) throws IOException {
+		try (FileInputStream stream = new FileInputStream(file)) {
+			try (FileChannel fc = stream.getChannel()) {
+				MappedByteBuffer bb = fc.map(FileChannel.MapMode.READ_ONLY, 0, fc.size());
+				final Charset charset = Charset.forName("UTF-8");
+				return fromCode(charset.decode(bb).toString(), new EncodedFileName(file.getPath()));
+			}
+		}
+	}
+
+	/**
+	 * Constructs a JSSourceFile from a JavaScript snippet.
+	 */
+	static JSSourceFile fromCode(String source, EncodedFileName fileName) {
+		return JSSourceFile.fromCode(fileName.toString(), source);
+	}
+
+	/**
+	 * Empty JavaScript code snippet; used by the Rhino parser.
+	 */
+	static JSSourceFile fromEmptyCode() { // TODO: why is this method needed??
+		return fromCode("", new EncodedFileName("dummy.js"));
 	}
 
 	/**
@@ -329,43 +453,36 @@ public class RhinoASTToFlowgraph { // TODO: javadoc
 		return comp.getRoot().getLastChild();
 	}
 
-	private static int getLine(Node n, Map<String, Integer> map) {
-		Integer offset = map.get(n.getSourceFileName());
-		return n.getLineno() + (offset == null ? 0 : offset);
-	}
-
-	private static String getFileName(Node n) {
-		String fname = n.getSourceFileName();
-		int dividerIndex = fname.indexOf(TAJS_DIVIDER);
-		return dividerIndex < 0 ? fname : fname.substring(dividerIndex + TAJS_DIVIDER.length());
-	}
-
 	/**
-	 * Build the top level of a javascript file.
+	 * Builds the flow graph for the top level of a JavaScript file.
 	 */
-	private void buildTopLevel(Node root, Map<String, Integer> map) { // TODO: javadoc (this 'map' stuff looks like a messy hack...)
-		// The HTML parser is wrong about the line numbers. Try to correct it with some magic constants.
-		boolean fromHtmlParser = root.getLastChild().getSourceFileName().endsWith("html") || root.getLastChild().getSourceFileName().endsWith("htm");
+	private void buildTopLevel(Node root) {
+		final Node lastChild = root.getLastChild();
 
-		// The line information might be garbled and give us negative line numbers. If that happens the block order
-		// gets wrong, so pick a sub node to avoid crashing.
-		Node subRoot = getLine(root.getLastChild(), map) < 0 ? root.getLastChild().getFirstChild() : root.getLastChild();
-
-		SourceLocation srcLoc = newSourceLocation(getLine(subRoot, map) + (fromHtmlParser ? 2 : 0), subRoot.getCharno(), getFileName(subRoot));
+		// The line information might be garbled and give us negative line numbers. 
+		// If that happens the block order gets wrong, so pick a sub node to avoid crashing.
+		// TODO: how are we guaranteed that the subnode has a better line number?
+		final boolean garbledLineNumbers = EncodedFileName.getRealLineNumber(lastChild) < 0;
+		Node subRoot = garbledLineNumbers ? lastChild.getFirstChild() : lastChild;
+		if (EncodedFileName.getRealLineNumber(subRoot) < 0)
+			throw new IllegalStateException("Line numbers too garbled at: " + subRoot + " --> " + EncodedFileName.getRealLineNumber(subRoot));
+		SourceLocation srcLoc = SourceLocationMaker.makeFromNode(subRoot);
+		lastSrcLoc = srcLoc;
 
 		Function fun = new Function(null, null, null, srcLoc);
 
-		FlowGraphEnv env = new FlowGraphEnv(graph, dk.brics.tajs.util.Collections.<List<BasicBlock>> newList(), newBBList(), fun, map);
+		FlowGraphEnv env = new FlowGraphEnv(graph, dk.brics.tajs.util.Collections.<List<BasicBlock>> newList(), 
+				dk.brics.tajs.util.Collections.<BasicBlock> newList(), fun);
 
-		BasicBlock bb = setupFunction(env, fun, srcLoc);
+		BasicBlock bb = setupFunction(env, fun);
 		BasicBlock retBlock = translateChildren(env, bb, root, AbstractNode.RETURN_REG);
 
 		BasicBlock retBlockPostEvents = addEventLoop(env, retBlock, srcLoc.getFileName());
 		retBlockPostEvents.addSuccessor(env.retBB);
-		fun.setMaxRegister(maxTmp);
+		fun.setMaxRegister(maxReg);
 
 		env.pendingBBs.add(env.retBB);
-		env.pendingBBs.add(env.panicBB);
+		env.pendingBBs.add(env.exceptionretBB);
 
 		for (List<BasicBlock> funBBs : env.pendingFuns)
 			env.pendingBBs.addAll(funBBs);
@@ -483,28 +600,28 @@ public class RhinoASTToFlowgraph { // TODO: javadoc
 	 * Convenience function that translates all the children of a node.
 	 * Only for statement-level nodes.
 	 */
-	private BasicBlock translateChildren(FlowGraphEnv env, BasicBlock bb, Node root, int resultVar) {
+	private BasicBlock translateChildren(FlowGraphEnv env, BasicBlock bb, Node root, int resultReg) {
 		BasicBlock currBB = bb;
 		for (Node n : root.children())
-			currBB = translateNode(env, currBB, n, resultVar, true);
+			currBB = translateNode(env, currBB, n, resultReg, true);
 		return currBB;
 	}
 
 	/**
 	 * Helper function that translates a function.
 	 */
-	private Function translateFunction(FlowGraphEnv env, BasicBlock bb, Node sn, SourceLocation srcLoc, int resultVar) {
+	private Function translateFunction(FlowGraphEnv env, BasicBlock bb, Node sn, SourceLocation srcLoc, int resultReg) {
 		Node left = sn.getFirstChild();
 		Node params = left.getNext();
 		Node body = params.getNext();
 		List<String> args = params.hasChildren() ? Collections.<String> newList() : java.util.Collections.<String> emptyList();
 
 		// If we don't have a name we're a function expression. But we're also a function expression if
-		// we're in a RHS position, so if our resultVar is different from the constant node in the entry block
+		// we're in a RHS position, so if our resultReg is different from the constant node in the entry block
 		// that's it. BUT we can also be a target for the unevalizer, so that might also make us a function expression.
 		boolean exprContext = (left.isName() && left.getString().isEmpty()) || !left.isName() ||
-				!(((ConstantNode) env.declsBB.getFirstNode()).getResultRegister() == resultVar ||
-				(env.evalResultMap != null && env.evalResultMap.getSecond() == resultVar));
+				!(((ConstantNode) env.declsBB.getFirstNode()).getResultRegister() == resultReg ||
+				(env.evalResultMap != null && env.evalResultMap.getSecond() == resultReg));
 
 		String name = left.isName() && !left.getString().isEmpty() ? left.getString() : null;
 
@@ -514,17 +631,18 @@ public class RhinoASTToFlowgraph { // TODO: javadoc
 		// Move f into FlowGraphEnv?
 		Function f = new Function(name, args, env.fun, srcLoc);
 
-		int oldMaxTmp = maxTmp;
-		maxTmp = AbstractNode.FIRST_ORDINARY_REG;
+		int oldMaxTmp = maxReg;
+		maxReg = AbstractNode.FIRST_ORDINARY_REG;
 
-		FlowGraphEnv envTmp = new FlowGraphEnv(env.fg, env.pendingFuns, newBBList(), f, env.lineOffsets);
-		int newWithScope = exprContext && name != null ? nextTemporary(envTmp) : AbstractNode.NO_VALUE;
-		FlowGraphEnv env2 = envTmp.copyAndUpdateBaseObj(newWithScope);
-		BasicBlock bb2 = setupFunction(env2, f, srcLoc);
+		FlowGraphEnv envTmp = new FlowGraphEnv(env.fg, env.pendingFuns, 
+				dk.brics.tajs.util.Collections.<BasicBlock> newList(), f);
+		int newWithScope = exprContext && name != null ? nextRegister(envTmp) : AbstractNode.NO_VALUE;
+		FlowGraphEnv env2 = envTmp.copyAndUpdateBaseReg(newWithScope);
+		BasicBlock bb2 = setupFunction(env2, f);
 
 		// Function declarations and function expressions are different. It's even worse with named function expressions.
 		if (exprContext)
-			bb.addNode(new DeclareFunctionNode(f, true, resultVar, srcLoc));
+			bb.addNode(new DeclareFunctionNode(f, true, resultReg, srcLoc));
 		else
 			env.declsBB.addNode(new DeclareFunctionNode(f, false, AbstractNode.NO_VALUE, srcLoc));
 
@@ -532,11 +650,14 @@ public class RhinoASTToFlowgraph { // TODO: javadoc
 		ret.addSuccessor(env2.retBB);
 
 		env2.pendingBBs.add(env2.retBB);
-		env2.pendingBBs.add(env2.panicBB);
+		env2.pendingBBs.add(env2.exceptionretBB);
 		env.pendingFuns.add(env2.pendingBBs);
 
-		f.setMaxRegister(maxTmp);
-		maxTmp = oldMaxTmp;
+		f.getOrdinaryExit().getFirstNode().setSourceLocation(lastSrcLoc);
+		f.getExceptionalExit().getFirstNode().setSourceLocation(lastSrcLoc);
+		
+		f.setMaxRegister(maxReg);
+		maxReg = oldMaxTmp;
 
 		return f;
 	}
@@ -544,16 +665,22 @@ public class RhinoASTToFlowgraph { // TODO: javadoc
 	/**
 	 * The main worker. Pattern matches on the Rhino node type and calls itself recursively. Returns the last basic
 	 * block for the entire translation.
+	 * 
+	 * @param env environment
+	 * @param bb current basic block
+	 * @param sn node to translate
+	 * @param resultReg register where the result should be stored
 	 */
 	@SuppressWarnings("null")
-	private BasicBlock translateNode(FlowGraphEnv env, BasicBlock bb, Node sn, int resultVar, boolean statement) {
-		SourceLocation srcLoc = newSourceLocation(getLine(sn, env.lineOffsets), sn.getCharno(), getFileName(sn));
+	private BasicBlock translateNode(FlowGraphEnv env, BasicBlock bb, Node sn, int resultReg, boolean statement) {
+		SourceLocation srcLoc = SourceLocationMaker.makeFromNode(sn);
+		lastSrcLoc = srcLoc;
 		int snType = sn.getType();
 		if (logger.isDebugEnabled())
 			logger.debug("translating node " + sn.toString(true, true, true));
 		switch (snType) {
 		case Token.FUNCTION: // function [id]([args]...) {}
-			translateFunction(env, bb, sn, srcLoc, resultVar);
+			translateFunction(env, bb, sn, srcLoc, resultReg);
 			return bb;
 		case Token.CONST:
 			throw new AnalysisException("Const keyword currently not handled.");
@@ -562,13 +689,15 @@ public class RhinoASTToFlowgraph { // TODO: javadoc
 			BasicBlock currBB = bb;
 			for (Node child : sn.children()) {
 				String id = child.getString();
-				env.declsBB.addNode(new DeclareVariableNode(id, srcLoc));
+				// env.declsBB.addNode(new DeclareVariableNode(id, srcLoc));
+				final SourceLocation mySourceLoc = SourceLocationMaker.makeFromNode(child);
+				env.declsBB.addNode(new DeclareVariableNode(id, mySourceLoc));
 				env.fun.addVariableName(id);
 				// Handle variable initializations in the declaration.
 				if ((grandchild = child.getFirstChild()) != null) {
-					int writeVar = nextTemporary(env);
-					currBB = translateNode(env, currBB, grandchild, writeVar, false);
-					addNodeToBlock(env, currBB, new WriteVariableNode(writeVar, id, srcLoc), writeVar, true);
+					int writeReg = nextRegister(env);
+					currBB = translateNode(env, currBB, grandchild, writeReg, false);
+					addNodeToBlock(env, currBB, new WriteVariableNode(writeReg, id, srcLoc), writeReg, true);
 				}
 			}
 			return currBB;
@@ -576,41 +705,60 @@ public class RhinoASTToFlowgraph { // TODO: javadoc
 		case Token.EXPR_RESULT: // [expr]; Expression statements.
 		case Token.SCRIPT:
 		case Token.BLOCK:
-			return translateChildren(env, bb, sn, snType == Token.EXPR_RESULT ? AbstractNode.NO_VALUE : resultVar);
+			return translateChildren(env, bb, sn, snType == Token.EXPR_RESULT ? AbstractNode.NO_VALUE : resultReg);
 		case Token.NEW:
 		case Token.CALL: { // [new] [fn-name]([arg1],...,[argn])
 			Node firstChild = sn.getFirstChild();
 			boolean complexChildType = firstChild.isGetElem() || firstChild.isGetProp();
-			int objVal = snType == Token.NEW || !firstChild.isName() ? AbstractNode.NO_VALUE : nextTemporary(env);
-			int lhsVal = nextTemporary(env);
-			FlowGraphEnv env2 = env.copyAndUpdateBaseObj(objVal);
-			BasicBlock currBB = translateNode(env2, bb, firstChild, lhsVal, false);
-			env.nextTmp = env2.nextTmp; // Do not overwrite used registers.
+			
+			int objReg = snType == Token.NEW || !firstChild.isName() ? AbstractNode.NO_VALUE : nextRegister(env);
+			int lhsReg = nextRegister(env);
+			FlowGraphEnv env2 = env.copyAndUpdateBaseReg(objReg);
+			BasicBlock currBB = translateNode(env2, bb, firstChild, lhsReg, false); // Must ensure right order of execution
+			env.nextReg = env2.nextReg; // Do not overwrite used registers.
+			
+			int propReg = AbstractNode.NO_VALUE;
+			String propStr = null;
 			if (complexChildType) {
-				AbstractNode an = env.propertyNodes.get(lhsVal);
-				if (an instanceof IPropertyNode)
-					objVal = ((IPropertyNode) an).getBaseRegister();
-				else if (an instanceof ReadVariableNode)
-					objVal = ((ReadVariableNode) an).getResultRegister();
+				AbstractNode an = env.propertyNodes.get(lhsReg);
+				if (an instanceof IPropertyNode) {
+					objReg = ((IPropertyNode) an).getBaseRegister();
+					if (an instanceof ReadPropertyNode) {
+						((ReadPropertyNode) an).setResultRegister(AbstractNode.NO_VALUE); // Don't need the result anymore.
+					}
+				} else if (an instanceof ReadVariableNode) {
+					objReg = ((ReadVariableNode) an).getResultRegister();
+				}
+				Node prop = firstChild.getFirstChild().getNext();
+				if (prop.isString())
+					propStr = prop.getString();
+				else {
+					propReg = ((IPropertyNode) an).getPropertyRegister();
+				}
 			}
-			List<Integer> rhsVals = newList();
+			List<Integer> rhsRegs = newList();
 			for (Node child : sn.children()) {
 				if (child == firstChild)
 					continue;
-				currBB = translateNode(env, currBB, child, nextTemporary(env, rhsVals), false);
+				currBB = translateNode(env, currBB, child, nextRegister(env, rhsRegs), false);
 			}
-			BasicBlock bb2 = newBasicBlock(env, currBB);
-			addNodeToBlock(env, bb2, new CallNode(snType == Token.NEW, false, resultVar, objVal, lhsVal, rhsVals, srcLoc), objVal, statement);
-			return newBasicBlock(env, bb2);
+			BasicBlock bb2 = newSuccessorBasicBlock(env, currBB);
+			CallNode cn;
+			if (complexChildType)
+				cn = new CallNode(snType == Token.NEW, resultReg, objReg, propReg, propStr, rhsRegs, srcLoc);
+			else
+				cn = new CallNode(snType == Token.NEW, false, resultReg, objReg, lhsReg, rhsRegs, srcLoc);
+			addNodeToBlock(env, bb2, cn, objReg, statement);
+			return newSuccessorBasicBlock(env, bb2);
 		}
 		case Token.NAME: // var reference
-			addNodeToBlock(env, bb, new ReadVariableNode(sn.getString(), resultVar, env.baseVal, srcLoc), resultVar, statement);
+			addNodeToBlock(env, bb, new ReadVariableNode(sn.getString(), resultReg, env.baseReg, srcLoc), resultReg, statement);
 			return bb;
 		case Token.STRING: // [string]
-			addNodeToBlock(bb, ConstantNode.makeString(sn.getString(), resultVar, srcLoc), statement);
+			addNodeToBlock(bb, ConstantNode.makeString(sn.getString(), resultReg, srcLoc), statement);
 			return bb;
 		case Token.NUMBER: // [number]
-			addNodeToBlock(bb, ConstantNode.makeNumber(sn.getDouble(), resultVar, srcLoc), statement);
+			addNodeToBlock(bb, ConstantNode.makeNumber(sn.getDouble(), resultReg, srcLoc), statement);
 			return bb;
 		case Token.TYPEOF: {
 			BasicBlock currBB = bb;
@@ -619,22 +767,22 @@ public class RhinoASTToFlowgraph { // TODO: javadoc
 			// There's two typeof. One is called with a register, and one with a plain text name. The old Rhino
 			// had different tokens for these.
 			if (firstChild.isName())
-				tp = new TypeofNode(firstChild.getString(), resultVar, srcLoc);
+				tp = new TypeofNode(firstChild.getString(), resultReg, srcLoc);
 			else {
-				int argVal = nextTemporary(env);
-				currBB = translateNode(env, bb, firstChild, argVal, false);
-				tp = new TypeofNode(argVal, resultVar, srcLoc);
+				int argReg = nextRegister(env);
+				currBB = translateNode(env, bb, firstChild, argReg, false);
+				tp = new TypeofNode(argReg, resultReg, srcLoc);
 			}
-			addNodeToBlock(env, currBB, tp, resultVar, statement);
+			addNodeToBlock(env, currBB, tp, resultReg, statement);
 			return currBB;
 		}
 		case Token.BITNOT:
 		case Token.NOT:
 		case Token.POS:
 		case Token.NEG: { // [op] [operand]
-			int argVal = nextTemporary(env);
-			BasicBlock childBlock = translateNode(env, bb, sn.getFirstChild(), argVal, false);
-			addNodeToBlock(childBlock, new UnaryOperatorNode(getFlowGraphUnaryOp(snType), argVal, resultVar, srcLoc), statement);
+			int argReg = nextRegister(env);
+			BasicBlock childBlock = translateNode(env, bb, sn.getFirstChild(), argReg, false);
+			addNodeToBlock(childBlock, new UnaryOperatorNode(getFlowGraphUnaryOp(snType), argReg, resultReg, srcLoc), statement);
 			return childBlock;
 		}
 		case Token.IN:
@@ -658,10 +806,10 @@ public class RhinoASTToFlowgraph { // TODO: javadoc
 		case Token.EQ:
 		case Token.INSTANCEOF:
 		case Token.ADD: { // [left-operand] [op] [right-operand]
-			int arg1Val = nextTemporary(env), arg2Val = nextTemporary(env);
-			BasicBlock currBB = translateNode(env, bb, sn.getFirstChild(), arg1Val, false);
-			currBB = translateNode(env, currBB, sn.getLastChild(), arg2Val, false);
-			addNodeToBlock(currBB, new BinaryOperatorNode(getFlowGraphBinaryOp(snType), arg1Val, arg2Val, resultVar, srcLoc), statement);
+			int arg1Reg = nextRegister(env), arg2Reg = nextRegister(env);
+			BasicBlock currBB = translateNode(env, bb, sn.getFirstChild(), arg1Reg, false);
+			currBB = translateNode(env, currBB, sn.getLastChild(), arg2Reg, false);
+			addNodeToBlock(currBB, new BinaryOperatorNode(getFlowGraphBinaryOp(snType), arg1Reg, arg2Reg, resultReg, srcLoc), statement);
 			return currBB;
 		}
 		case Token.ASSIGN_ADD:
@@ -676,70 +824,69 @@ public class RhinoASTToFlowgraph { // TODO: javadoc
 		case Token.ASSIGN_SUB:
 		case Token.ASSIGN_URSH:
 		case Token.ASSIGN: {
-			// This is somewhat messy. A plain assignment is lhs = rhs. Other assignments such as lhs += rhs
-			// are not plain.
+			// This is somewhat messy. A plain assignment is lhs = rhs. Other assignments such as lhs += rhs are not plain.
 			boolean isPlainAssignment = snType == Token.ASSIGN;
 			Node firstChild = sn.getFirstChild(); // lhs
 			Node grandChild = firstChild.getLastChild(); // property name of lhs, null if not a property write
 			boolean inUnevalMappingMode = env.evalResultMap != null && Options.isUnevalEnabled() && isPlainAssignment
 					&& firstChild.isName() && firstChild.getString().equals(env.evalResultMap.getFirst());
-			int rhsVal = resultVar == AbstractNode.NO_VALUE ? nextTemporary(env) : resultVar;
-			int lhsVal = isPlainAssignment ? AbstractNode.NO_VALUE : nextTemporary(env);
-			int baseFirstChildVal = AbstractNode.NO_VALUE;
-			int propFirstChildVal = AbstractNode.NO_VALUE;
-			int oldRhsVal = AbstractNode.NO_VALUE;
+			int rhsReg = resultReg == AbstractNode.NO_VALUE ? nextRegister(env) : resultReg;
+			int lhsReg = isPlainAssignment ? AbstractNode.NO_VALUE : nextRegister(env);
+			int baseFirstChildReg = AbstractNode.NO_VALUE;
+			int propFirstChildReg = AbstractNode.NO_VALUE;
+			int oldRhsReg = AbstractNode.NO_VALUE;
 			BasicBlock currBB;
 			if (firstChild.isName()) // lhs is a variable?
 				currBB = bb;
 			else { // lhs is a property write
-				baseFirstChildVal = nextTemporary(env);
-				propFirstChildVal = grandChild == null || grandChild.isString() ? AbstractNode.NO_VALUE : nextTemporary(env);
-				currBB = translateNode(env, bb, firstChild.getFirstChild(), baseFirstChildVal, false); // translating first part of lhs
-				if (propFirstChildVal != AbstractNode.NO_VALUE)
-					currBB = translateNode(env, currBB, grandChild, propFirstChildVal, false);
+				baseFirstChildReg = nextRegister(env);
+				propFirstChildReg = grandChild == null || grandChild.isString() ? AbstractNode.NO_VALUE : nextRegister(env);
+				currBB = translateNode(env, bb, firstChild.getFirstChild(), baseFirstChildReg, false); // translating first part of lhs
+				if (propFirstChildReg != AbstractNode.NO_VALUE)
+					currBB = translateNode(env, currBB, grandChild, propFirstChildReg, false);
 			}
 
 			if (!isPlainAssignment) {
 				AbstractNode rn;
-				oldRhsVal = rhsVal;
-				rhsVal = nextTemporary(env);
+				oldRhsReg = rhsReg;
+				rhsReg = nextRegister(env);
 				if (firstChild.isName())
-					rn = new ReadVariableNode(firstChild.getString(), lhsVal, env.baseVal, srcLoc);
+					rn = new ReadVariableNode(firstChild.getString(), lhsReg, env.baseReg, srcLoc);
 				else {
 					if (firstChild.getLastChild().isString())
-						rn = new ReadPropertyNode(baseFirstChildVal, firstChild.getLastChild().getString(), lhsVal, srcLoc);
+						rn = new ReadPropertyNode(baseFirstChildReg, firstChild.getLastChild().getString(), lhsReg, srcLoc);
 					else
-						rn = new ReadPropertyNode(baseFirstChildVal, propFirstChildVal, lhsVal, srcLoc);
+						rn = new ReadPropertyNode(baseFirstChildReg, propFirstChildReg, lhsReg, srcLoc);
 				}
-				addNodeToBlock(env, currBB, rn, baseFirstChildVal, false);
+				addNodeToBlock(env, currBB, rn, baseFirstChildReg, false);
 			}
-			currBB = translateNode(env, currBB, sn.getLastChild(), inUnevalMappingMode ? env.evalResultMap.getSecond() : rhsVal, false); // translating rhs
+			currBB = translateNode(env, currBB, sn.getLastChild(), inUnevalMappingMode ? env.evalResultMap.getSecond() : rhsReg, false); // translating rhs
 			if (!isPlainAssignment) {
-				addNodeToBlock(env, currBB, new BinaryOperatorNode(getFlowGraphBinaryOp(sn.getType()), lhsVal, rhsVal, oldRhsVal, srcLoc), rhsVal, false);
-				rhsVal = oldRhsVal;
+				addNodeToBlock(env, currBB, new BinaryOperatorNode(getFlowGraphBinaryOp(sn.getType()), lhsReg, rhsReg, oldRhsReg, srcLoc), rhsReg, false);
+				rhsReg = oldRhsReg;
 			}
 			if (inUnevalMappingMode)
 				return currBB;
 			if (firstChild.isName()) // lhs is a variable?
-				addNodeToBlock(env, currBB, new WriteVariableNode(rhsVal, firstChild.getString(), srcLoc), rhsVal, statement);
+				addNodeToBlock(env, currBB, new WriteVariableNode(rhsReg, firstChild.getString(), srcLoc), rhsReg, statement);
 			else if (firstChild.isGetElem() || firstChild.isGetProp()) { // lhs is a property write
-				AbstractNode an = env.propertyNodes.get(baseFirstChildVal);
+				AbstractNode an = env.propertyNodes.get(baseFirstChildReg);
 				WritePropertyNode wp;
 				if (an instanceof ReadPropertyNode) {
 					if (grandChild.isString())
-						wp = new WritePropertyNode(((LoadNode) an).getResultRegister(), grandChild.getString(), rhsVal, srcLoc);
+						wp = new WritePropertyNode(((LoadNode) an).getResultRegister(), grandChild.getString(), rhsReg, srcLoc);
 					else
-						wp = new WritePropertyNode(((LoadNode) an).getResultRegister(), propFirstChildVal, rhsVal, srcLoc);
+						wp = new WritePropertyNode(((LoadNode) an).getResultRegister(), propFirstChildReg, rhsReg, srcLoc);
 				} else if (an instanceof ReadVariableNode) {
 					if (grandChild.isString())
-						wp = new WritePropertyNode(((ReadVariableNode) an).getResultRegister(), grandChild.getString(), rhsVal, srcLoc);
+						wp = new WritePropertyNode(((ReadVariableNode) an).getResultRegister(), grandChild.getString(), rhsReg, srcLoc);
 					else
-						wp = new WritePropertyNode(((ReadVariableNode) an).getResultRegister(), propFirstChildVal, rhsVal, srcLoc);
+						wp = new WritePropertyNode(((ReadVariableNode) an).getResultRegister(), propFirstChildReg, rhsReg, srcLoc);
 				} else {
 					if (grandChild.isString())
-						wp = new WritePropertyNode(baseFirstChildVal, grandChild.getString(), rhsVal, srcLoc);
+						wp = new WritePropertyNode(baseFirstChildReg, grandChild.getString(), rhsReg, srcLoc);
 					else
-						wp = new WritePropertyNode(baseFirstChildVal, propFirstChildVal, rhsVal, srcLoc);
+						wp = new WritePropertyNode(baseFirstChildReg, propFirstChildReg, rhsReg, srcLoc);
 				}
 				addNodeToBlock(env, currBB, wp, wp.getBaseRegister(), statement);
 			}
@@ -749,99 +896,100 @@ public class RhinoASTToFlowgraph { // TODO: javadoc
 		case Token.DEC: {
 			Node firstChild = sn.getFirstChild();
 			boolean isPost = sn.getIntProp(Node.INCRDECR_PROP) == 1;
-			boolean resultUsed = resultVar != AbstractNode.NO_VALUE;
+			boolean resultUsed = resultReg != AbstractNode.NO_VALUE;
 			BinaryOperatorNode.Op op = Token.INC == snType ? BinaryOperatorNode.Op.ADD : BinaryOperatorNode.Op.SUB;
-			int oneVar = nextTemporary(env), res = nextTemporary(env);
-			bb.addNode(ConstantNode.makeNumber(1, oneVar, srcLoc));
+			int oneReg = nextRegister(env), res = nextRegister(env);
+			bb.addNode(ConstantNode.makeNumber(1, oneReg, srcLoc));
 			BasicBlock currBB = translateNode(env, bb, firstChild, res, false);
-			int toNumberVar = isPost && resultUsed ? resultVar : nextTemporary(env);
-			int binopVar = isPost ? nextTemporary(env) : (resultUsed ? resultVar : nextTemporary(env));
-			currBB.addNode(new UnaryOperatorNode(UnaryOperatorNode.Op.PLUS, res, toNumberVar, srcLoc));
-			currBB.addNode(new BinaryOperatorNode(op, toNumberVar, oneVar, binopVar, srcLoc));
+			int toNumberReg = isPost && resultUsed ? resultReg : nextRegister(env);
+			int binopReg = isPost ? nextRegister(env) : (resultUsed ? resultReg : nextRegister(env));
+			currBB.addNode(new UnaryOperatorNode(UnaryOperatorNode.Op.PLUS, res, toNumberReg, srcLoc));
+			currBB.addNode(new BinaryOperatorNode(op, toNumberReg, oneReg, binopReg, srcLoc));
 			if (firstChild.isName())
-				addNodeToBlock(env, currBB, new WriteVariableNode(binopVar, firstChild.getString(), srcLoc), binopVar, statement);
+				addNodeToBlock(env, currBB, new WriteVariableNode(binopReg, firstChild.getString(), srcLoc), binopReg, statement);
 			else if (firstChild.isGetElem() || firstChild.isGetProp()) {
 				ReadPropertyNode rn = (ReadPropertyNode) env.propertyNodes.get(res);
 				WritePropertyNode wp;
 				if (rn.isPropertyFixed())
-					wp = new WritePropertyNode(rn.getBaseRegister(), rn.getPropertyString(), binopVar, srcLoc);
+					wp = new WritePropertyNode(rn.getBaseRegister(), rn.getPropertyString(), binopReg, srcLoc);
 				else
-					wp = new WritePropertyNode(rn.getBaseRegister(), rn.getPropertyRegister(), binopVar, srcLoc);
+					wp = new WritePropertyNode(rn.getBaseRegister(), rn.getPropertyRegister(), binopReg, srcLoc);
 				addNodeToBlock(env, currBB, wp, rn.getBaseRegister(), statement);
 			}
 			return currBB;
 		}
 		case Token.HOOK:
 		case Token.IF: {
-			// XXX: Insert assume nodes for comparisons with null
+			// TODO: Insert assume nodes for comparisons with null
 			Node condNode = sn.getFirstChild();
 			Node trueNode = condNode.getNext();
 			Node falseNode = trueNode.getNext();
-			int condVar = nextTemporary(env);
-			BasicBlock condBlock = translateNode(env, bb, condNode, condVar, false);
+			int condReg = nextRegister(env);
+			BasicBlock condBlock = translateNode(env, bb, condNode, condReg, false);
 
-			BasicBlock trueBranch = newBasicBlock(env, condBlock);
-			BasicBlock falseBranch = newBasicBlock(env, condBlock);
+			BasicBlock trueBranch = newSuccessorBasicBlock(env, condBlock);
+			BasicBlock falseBranch = newSuccessorBasicBlock(env, condBlock);
 
-			IfNode ifn = new IfNode(condVar, srcLoc);
+			IfNode ifn = new IfNode(condReg, srcLoc);
 			ifn.setSuccessors(trueBranch, falseBranch);
-			FlowGraphEnv env2 = env.copyAndGiveUniquePnodes(AbstractNode.NO_VALUE);
-			addNodeToBlock(env2, condBlock, ifn, condVar, false); // can't set end-of-statement, condVar may be used at the edges
+			FlowGraphEnv env2 = env.copyAndGiveUniquePropertyNodes(AbstractNode.NO_VALUE);
+			addNodeToBlock(env2, condBlock, ifn, condReg, false); // can't set end-of-statement, condReg may be used at the edges
 
-			BasicBlock trueBlock = translateNode(env2.copyAndGiveUniquePnodes(AbstractNode.NO_VALUE), trueBranch, trueNode, resultVar, false);
-			BasicBlock falseBlock = falseNode == null ? falseBranch : translateNode(env.copyAndGiveUniquePnodes(condVar), falseBranch, falseNode, resultVar, false);
+			BasicBlock trueBlock = translateNode(env2.copyAndGiveUniquePropertyNodes(AbstractNode.NO_VALUE), trueBranch, trueNode, resultReg, false);
+			BasicBlock falseBlock = falseNode == null ? falseBranch : translateNode(env.copyAndGiveUniquePropertyNodes(condReg), falseBranch, falseNode, resultReg, false);
 			return newJoinBasicBlock(env, trueBlock, falseBlock);
 		}
 		case Token.TRUE:
 		case Token.FALSE:
-			addNodeToBlock(bb, ConstantNode.makeBoolean(snType == Token.TRUE, resultVar, srcLoc), statement);
+			addNodeToBlock(bb, ConstantNode.makeBoolean(snType == Token.TRUE, resultReg, srcLoc), statement);
 			return bb;
 		case Token.NULL:
-			addNodeToBlock(bb, ConstantNode.makeNull(resultVar, srcLoc), statement);
+			addNodeToBlock(bb, ConstantNode.makeNull(resultReg, srcLoc), statement);
 			return bb;
 		case Token.GET:
 		case Token.GETELEM:
 		case Token.GETPROP: {
 			Node obj = sn.getFirstChild();
 			ReadPropertyNode rp;
-			int baseVar = nextTemporary(env);
-			BasicBlock currBB = translateNode(env, bb, obj, baseVar, false);
+			int baseReg = nextRegister(env);
+			BasicBlock currBB = translateNode(env, bb, obj, baseReg, false);
 			Node prop = obj.getNext();
 
 			if (prop.isString())
-				rp = new ReadPropertyNode(baseVar, prop.getString(), resultVar, srcLoc);
+				rp = new ReadPropertyNode(baseReg, prop.getString(), resultReg, srcLoc);
 			else {
-				int rpVal = nextTemporary(env);
-				currBB = translateNode(env, currBB, prop, rpVal, false);
-				rp = new ReadPropertyNode(baseVar, rpVal, resultVar, srcLoc);
+				int rpReg = nextRegister(env);
+				currBB = translateNode(env, currBB, prop, rpReg, false);
+				rp = new ReadPropertyNode(baseReg, rpReg, resultReg, srcLoc);
 			}
-			addNodeToBlock(env, currBB, rp, baseVar, statement);
+			addNodeToBlock(env, currBB, rp, baseReg, statement);
 			return currBB;
 		}
 		case Token.SET: {
-			throw new AnalysisException("Not implemented" + Token.name(sn.getType()));
-			// AssumeNode.makePropertyNonNullUndef(baseVar, propNode.getString(), wn, srcLoc);
+			throw new AnalysisException("Not implemented: " + Token.name(sn.getType()));
+			// AssumeNode.makePropertyNonNullUndef(baseReg, propNode.getString(), wn, srcLoc);
 		}
 		case Token.THIS:
-			addNodeToBlock(env, bb, new ReadVariableNode("this", resultVar, AbstractNode.NO_VALUE, srcLoc), resultVar, statement);
+			bb.getFunction().setUsesThis(true);
+			addNodeToBlock(env, bb, new ReadVariableNode("this", resultReg, AbstractNode.NO_VALUE, srcLoc), resultReg, statement);
 			return bb;
 		case Token.BREAK:
-		case Token.CONTINUE: {
+		case Token.CONTINUE: { // FIXME: support break/continue statements with label!
 			bb.addSuccessor(snType == Token.BREAK ? env.breakBlock : env.continueBlock);
-			return newStandaloneBasicBlock(env, bb);
+			return newBasicBlock(env, bb);
 		}
 		case Token.EMPTY:
-		case Token.LABEL_NAME:
+		case Token.LABEL_NAME: 
 			return bb;
-		case Token.LABEL:
-			return translateChildren(env, bb, sn, resultVar);
+		case Token.LABEL: // FIXME: collect labels for break/continue (see testFlowgraphBuilder0188.js)
+			return translateChildren(env, bb, sn, resultReg);
 		case Token.RETURN: {
 			BasicBlock currBB = bb;
 			Node firstChild = sn.getFirstChild();
 			if (firstChild != null)
-				currBB = translateNode(env, bb, firstChild, resultVar, false);
+				currBB = translateNode(env, bb, firstChild, resultReg, false);
 			currBB.addSuccessor(env.retBB);
-			return newStandaloneBasicBlock(env, currBB);
+			return newBasicBlock(env, currBB);
 		}
 		case Token.TRY: {
 			Node tryNode = sn.getFirstChild();
@@ -852,34 +1000,34 @@ public class RhinoASTToFlowgraph { // TODO: javadoc
 			catchNode = catchNode != null && catchNode.getFirstChild() == null ? null : catchNode;
 			BasicBlock bbPanicBB = bb.getExceptionHandler();
 
-			BasicBlock tryBlock = newBasicBlock(env, bb);
+			BasicBlock tryBlock = newSuccessorBasicBlock(env, bb);
 			BasicBlock finallyBlock = null, catchBlock = null;
 
 			// We need to allocate the catch block early so that all children gets the right exception handler.
 			if (catchNode != null)
 				catchBlock = newCatchBasicBlock(env, tryBlock);
 
-			BasicBlock retBlock = newStandaloneBasicBlock(env, bb);
+			BasicBlock retBlock = newBasicBlock(env, bb);
 
 			if (finallyNode != null) {
-				finallyBlock = newStandaloneBasicBlock(env, bb);
+				finallyBlock = newBasicBlock(env, bb);
 				if (catchNode != null)
 					catchBlock.setExceptionHandler(finallyBlock);
 				else
 					tryBlock.setExceptionHandler(finallyBlock);
 			}
 
-			FlowGraphEnv env2 = env.specialCopy(env.continueBlock, retBlock).copyAndGiveUniquePnodes(AbstractNode.NO_VALUE);
+			FlowGraphEnv env2 = env.copyAndUpdateContinueBreak(env.continueBlock, retBlock).copyAndGiveUniquePropertyNodes(AbstractNode.NO_VALUE);
 			if (finallyNode != null)
 				env2.retBB = retBlock; // see wala/try.js, crazy.
-			BasicBlock tryBB = translateNode(env2, tryBlock, tryNode, resultVar, false);
+			BasicBlock tryBB = translateNode(env2, tryBlock, tryNode, resultReg, false);
 
 			bumpToFrontOfPending(env, retBlock);
 			tryBB.addSuccessor(retBlock);
 
 			if (catchNode != null) {
 				bumpToFrontOfPending(env, catchBlock);
-				BasicBlock currBB = translateNode(env, catchBlock, catchNode, resultVar, false);
+				BasicBlock currBB = translateNode(env, catchBlock, catchNode, resultReg, false);
 				currBB.addSuccessor(retBlock);
 				if (finallyNode != null)
 					currBB.getExceptionHandler().addSuccessor(finallyBlock);
@@ -888,84 +1036,87 @@ public class RhinoASTToFlowgraph { // TODO: javadoc
 			// Translate the finally block for the case when an exception is thrown.
 			if (finallyNode != null) {
 				bumpToFrontOfPending(env, finallyBlock);
-				int tryVal = nextTemporary(env);
+				int tryReg = nextRegister(env);
 				// Catch nodes are used for finally blocks as well.
-				CatchNode cn = new CatchNode(tryVal, srcLoc);
+				CatchNode cn = new CatchNode(tryReg, srcLoc);
 				cn.setArtificial();
 				finallyBlock.addNode(cn);
-				BasicBlock tmpBB = translateNode(env, finallyBlock, finallyNode, resultVar, false);
-				ThrowNode tn = new ThrowNode(tryVal, srcLoc);
+				BasicBlock tmpBB = translateNode(env, finallyBlock, finallyNode, resultReg, false);
+				ThrowNode tn = new ThrowNode(tryReg, srcLoc);
 				tn.setArtificial();
 				tmpBB.addNode(tn);
 				tmpBB.addSuccessor(bbPanicBB);
 				BasicBlock tmpRet = retBlock;
 				FlowGraphEnv env3 = env.copyAndInitializeForCopy(tmpRet);
 				// Insert a copy of the finally block with a regular return point.
-				retBlock = translateNode(env3, retBlock, finallyNode, resultVar, false);
+				retBlock = translateNode(env3, retBlock, finallyNode, resultReg, false);
 				setDuplicateBlocks(env3.copyBlocks, Collections.<BasicBlock> newList(), tmpRet, finallyBlock);
 			}
 			return retBlock;
 		}
 		case Token.CATCH: {
-			int catchVal = resultVar;
+			int catchReg = resultReg;
 			Node firstChild = sn.getFirstChild();
 			if (firstChild.isName()) {
-				catchVal = nextTemporary(env);
-				bb.addNode(new CatchNode(firstChild.getString(), catchVal, srcLoc));
+				catchReg = nextRegister(env);
+				bb.addNode(new CatchNode(firstChild.getString(), catchReg, srcLoc));
 			}
-			bb.addNode(new EnterWithNode(catchVal, srcLoc));
-			BasicBlock tempBB = newBasicBlock(env, bb);
+			bb.addNode(new BeginWithNode(catchReg, srcLoc));
+			BasicBlock tempBB = newSuccessorBasicBlock(env, bb);
 			BasicBlock panicBB = newCatchBasicBlock(env, tempBB);
-			panicBB.addNode(new LeaveWithNode(srcLoc));
+			panicBB.addNode(new EndWithNode(srcLoc));
 			panicBB.setExceptionHandler(null);
 			panicBB.addSuccessor(bb.getExceptionHandler());
-			int childVal = nextTemporary(env);
-			BasicBlock childBB = translateNode(env.copyAndUpdateBaseObj(childVal), tempBB, sn.getLastChild(), resultVar, false);
-			childBB.addNode(new LeaveWithNode(srcLoc));
+			int childReg = nextRegister(env);
+			BasicBlock childBB = translateNode(env.copyAndUpdateBaseReg(childReg), tempBB, sn.getLastChild(), resultReg, false);
+			childBB.addNode(new EndWithNode(srcLoc));
 			return childBB;
 		}
 		case Token.THROW: {
-			int throwVal = nextTemporary(env);
-			BasicBlock throwBB = translateNode(env, bb, sn.getFirstChild(), throwVal, false);
-			addNodeToBlock(throwBB, new ThrowNode(throwVal, srcLoc), statement);
+			int throwReg = nextRegister(env);
+			BasicBlock throwBB = translateNode(env, bb, sn.getFirstChild(), throwReg, false);
+			addNodeToBlock(throwBB, new ThrowNode(throwReg, srcLoc), statement);
 			return throwBB;
 		}
 		case Token.WITH: {
-			int withVal = nextTemporary(env);
-			BasicBlock currBB = translateNode(env, bb, sn.getFirstChild(), withVal, false);
-			addNodeToBlock(currBB, new EnterWithNode(withVal, srcLoc), statement);
-			currBB = newBasicBlock(env, currBB);
+			int withReg = nextRegister(env);
+			BasicBlock currBB = translateNode(env, bb, sn.getFirstChild(), withReg, false);
+			addNodeToBlock(currBB, new BeginWithNode(withReg, srcLoc), statement);
+			currBB = newSuccessorBasicBlock(env, currBB);
 			BasicBlock panicBB = newCatchBasicBlock(env, currBB);
-			addNodeToBlock(panicBB, new LeaveWithNode(srcLoc), statement);
+			addNodeToBlock(panicBB, new EndWithNode(srcLoc), statement);
 			panicBB.addSuccessor(bb.getExceptionHandler());
 			panicBB.setExceptionHandler(null);
-			int baseVal = nextTemporary(env);
-			currBB = translateNode(env.copyAndUpdateBaseObj(baseVal), currBB, sn.getLastChild(), resultVar, false);
+			int baseReg = nextRegister(env);
+			currBB = translateNode(env.copyAndUpdateBaseReg(baseReg), currBB, sn.getLastChild(), resultReg, false);
 			AbstractNode lastNode = currBB.isEmpty() ? null : currBB.getLastNode();
-			currBB = requiresNewBlock(lastNode) ? newBasicBlock(env, currBB) : currBB;
-			addNodeToBlock(currBB, new LeaveWithNode(srcLoc), statement);
+			currBB = requiresNewBlock(lastNode) ? newSuccessorBasicBlock(env, currBB) : currBB;
+			addNodeToBlock(currBB, new EndWithNode(srcLoc), statement);
 			currBB.setExceptionHandler(bb.getExceptionHandler());
 			return currBB;
 		}
 		case Token.ARRAYLIT: {
-			List<Integer> argVars = newList();
+			List<Integer> argRegs = newList();
 			BasicBlock currBB = bb;
-			int arrVal = nextTemporary(env);
-			addNodeToBlock(env, currBB, new ReadVariableNode("Array", arrVal, AbstractNode.NO_VALUE, srcLoc), arrVal, false);
+			int arrReg = nextRegister(env);
+			addNodeToBlock(env, currBB, new ReadVariableNode("Array", arrReg, AbstractNode.NO_VALUE, srcLoc), arrReg, false);
 			for (Node child : sn.children()) {
 				if (child.isEmpty())
-					currBB.addNode(ConstantNode.makeUndefined(nextTemporary(env, argVars), srcLoc));
+					currBB.addNode(ConstantNode.makeUndefined(nextRegister(env, argRegs), srcLoc));
 				else
-					currBB = translateNode(env, currBB, child, nextTemporary(env, argVars), false);
+					currBB = translateNode(env, currBB, child, nextRegister(env, argRegs), false);
 			}
 
-			currBB = newBasicBlock(env, currBB);
-			addNodeToBlock(env, currBB, new CallNode(true, true, resultVar, AbstractNode.NO_VALUE, arrVal, argVars, srcLoc), resultVar, statement);
-			return newBasicBlock(env, currBB);
+			currBB = newSuccessorBasicBlock(env, currBB);
+			addNodeToBlock(env, currBB, new CallNode(true, true, resultReg, AbstractNode.NO_VALUE, arrReg, argRegs, srcLoc), resultReg, statement);
+			return newSuccessorBasicBlock(env, currBB);
 		}
 		case Token.OBJECTLIT: { // {(prop: [exp])*}
 			BasicBlock currBB = bb;
-			addNodeToBlock(env, currBB, new NewObjectNode(resultVar, srcLoc), resultVar, false);
+			if (resultReg == AbstractNode.NO_VALUE) {
+				resultReg = nextRegister(env);
+			}
+			addNodeToBlock(env, currBB, new NewObjectNode(resultReg, srcLoc), resultReg, false);
 
 			// So the children of object literals have their own children, even if they are of a simple
 			// data type. Special case for them here.
@@ -973,16 +1124,16 @@ public class RhinoASTToFlowgraph { // TODO: javadoc
 			// SPEC: 11.1.5 A property name can be either a string or number literal.
 			for (Node child : sn.children()) {
 				WritePropertyNode wn;
-				int propValueVar = nextTemporary(env);
-				currBB = translateNode(env, currBB, child.getFirstChild(), propValueVar, false);
+				int propValueReg = nextRegister(env);
+				currBB = translateNode(env, currBB, child.getFirstChild(), propValueReg, false);
 				if (child.isString())
-					wn = new WritePropertyNode(resultVar, child.getString(), propValueVar, srcLoc);
+					wn = new WritePropertyNode(resultReg, child.getString(), propValueReg, srcLoc);
 				else {
-					int propNameVar = nextTemporary(env);
-					currBB = translateNode(env, currBB, child, propNameVar, false);
-					wn = new WritePropertyNode(resultVar, propNameVar, propValueVar, srcLoc);
+					int propNameReg = nextRegister(env);
+					currBB = translateNode(env, currBB, child, propNameReg, false);
+					wn = new WritePropertyNode(resultReg, propNameReg, propValueReg, srcLoc);
 				}
-				addNodeToBlock(env, currBB, wn, resultVar, false);
+				addNodeToBlock(env, currBB, wn, resultReg, false);
 			}
 			return currBB;
 		}
@@ -990,26 +1141,26 @@ public class RhinoASTToFlowgraph { // TODO: javadoc
 			BasicBlock currBB = bb;
 			Node firstChild = sn.getFirstChild();
 			int firstChildType = firstChild.getType();
-			int delVal = resultVar == AbstractNode.NO_VALUE ? nextTemporary(env) : resultVar;
+			int delReg = resultReg == AbstractNode.NO_VALUE ? nextRegister(env) : resultReg;
 			if (firstChildType == Token.GETELEM || firstChildType == Token.GETPROP) {
-				int objVal = nextTemporary(env), propVal = nextTemporary(env);
-				currBB = translateNode(env, bb, firstChild.getFirstChild(), objVal, false);
-				currBB = translateNode(env, currBB, firstChild.getLastChild(), propVal, false);
-				addNodeToBlock(currBB, new DeletePropertyNode(objVal, propVal, delVal, srcLoc), statement);
+				int objReg = nextRegister(env), propReg = nextRegister(env);
+				currBB = translateNode(env, bb, firstChild.getFirstChild(), objReg, false);
+				currBB = translateNode(env, currBB, firstChild.getLastChild(), propReg, false);
+				addNodeToBlock(currBB, new DeletePropertyNode(objReg, propReg, delReg, srcLoc), statement);
 			} else
-				addNodeToBlock(currBB, new DeletePropertyNode(firstChild.getString(), delVal, srcLoc), statement);
+				addNodeToBlock(currBB, new DeletePropertyNode(firstChild.getString(), delReg, srcLoc), statement);
 			return currBB;
 		}
 		case Token.OR:
 		case Token.AND: { // [exp] AND/OR [exp]
-			int arg1Val = resultVar == AbstractNode.NO_VALUE ? nextTemporary(env) : resultVar;
-			IfNode ifn = new IfNode(arg1Val, srcLoc);
-			FlowGraphEnv env2 = snType == Token.AND ? env : env.copyAndGiveUniquePnodes(AbstractNode.NO_VALUE);
+			int arg1Reg = resultReg == AbstractNode.NO_VALUE ? nextRegister(env) : resultReg;
+			IfNode ifn = new IfNode(arg1Reg, srcLoc);
+			FlowGraphEnv env2 = snType == Token.AND ? env : env.copyAndGiveUniquePropertyNodes(AbstractNode.NO_VALUE);
 
-			BasicBlock arg1Block = translateNode(env2, bb, sn.getFirstChild(), arg1Val, false);
+			BasicBlock arg1Block = translateNode(env2, bb, sn.getFirstChild(), arg1Reg, false);
 
-			BasicBlock trueBranch = newBasicBlock(env, arg1Block);
-			BasicBlock falseBranch = newBasicBlock(env, arg1Block);
+			BasicBlock trueBranch = newSuccessorBasicBlock(env, arg1Block);
+			BasicBlock falseBranch = newSuccessorBasicBlock(env, arg1Block);
 
 			if (snType == Token.AND)
 				ifn.setSuccessors(falseBranch, trueBranch);
@@ -1018,9 +1169,9 @@ public class RhinoASTToFlowgraph { // TODO: javadoc
 				ifn.setSuccessors(trueBranch, falseBranch);
 			}
 
-			addNodeToBlock(env2, arg1Block, ifn, arg1Val, false);
+			addNodeToBlock(env2, arg1Block, ifn, arg1Reg, false);
 
-			BasicBlock falseBlock = translateNode(env2.copyAndGiveUniquePnodes(arg1Val), falseBranch, sn.getLastChild(), resultVar, false);
+			BasicBlock falseBlock = translateNode(env2.copyAndGiveUniquePropertyNodes(arg1Reg), falseBranch, sn.getLastChild(), resultReg, false);
 
 			return newJoinBasicBlock(env, trueBranch, falseBlock);
 		}
@@ -1028,24 +1179,24 @@ public class RhinoASTToFlowgraph { // TODO: javadoc
 			Node lastChild = sn.getLastChild();
 			BasicBlock currBB = bb;
 			for (Node n : sn.children())
-				currBB = translateNode(env, currBB, n, n == lastChild ? resultVar : AbstractNode.NO_VALUE, false);
+				currBB = translateNode(env, currBB, n, n == lastChild ? resultReg : AbstractNode.NO_VALUE, false);
 			return currBB;
 		}
 		case Token.VOID: {
 			BasicBlock voidBB = translateNode(env, bb, sn.getFirstChild(), AbstractNode.NO_VALUE, false);
-			addNodeToBlock(voidBB, ConstantNode.makeUndefined(resultVar, srcLoc), statement);
+			addNodeToBlock(voidBB, ConstantNode.makeUndefined(resultReg, srcLoc), statement);
 			return voidBB;
 		}
 		case Token.SWITCH: {
 			Node firstChild = sn.getFirstChild();
 			Node defaultNode = null, lastChild = null;
-			int condVal = nextTemporary(env);
-			BasicBlock currBB = translateNode(env, bb, firstChild, condVal, false);
+			int condReg = nextRegister(env);
+			BasicBlock currBB = translateNode(env, bb, firstChild, condReg, false);
 			BasicBlock trueBranch = null, falseBranch = null, oldTrueBranch;
-			int caseVal = sn.hasMoreThanOneChild() ? nextTemporary(env) : AbstractNode.NO_VALUE;
-			int compVal = sn.hasMoreThanOneChild() ? nextTemporary(env) : AbstractNode.NO_VALUE;
-			BasicBlock retBlock = newStandaloneBasicBlock(env, currBB);
-			FlowGraphEnv env2 = env.specialCopy(currBB, retBlock);
+			int caseReg = sn.hasMoreThanOneChild() ? nextRegister(env) : AbstractNode.NO_VALUE;
+			int compReg = sn.hasMoreThanOneChild() ? nextRegister(env) : AbstractNode.NO_VALUE;
+			BasicBlock retBlock = newBasicBlock(env, currBB);
+			FlowGraphEnv env2 = env.copyAndUpdateContinueBreak(currBB, retBlock);
 			for (Node child : sn.children()) {
 				if (child == firstChild)
 					continue;
@@ -1063,31 +1214,31 @@ public class RhinoASTToFlowgraph { // TODO: javadoc
 					continue;
 				}
 
-				trueBranch = newBasicBlock(env2, currBB);
-				falseBranch = newBasicBlock(env2, currBB);
+				trueBranch = newSuccessorBasicBlock(env2, currBB);
+				falseBranch = newSuccessorBasicBlock(env2, currBB);
 
 				if (oldTrueBranch != null && !oldTrueBranch.getSuccessors().contains(retBlock))
 					oldTrueBranch.addSuccessor(trueBranch);
 
-				currBB = translateNode(env2, currBB, child.getFirstChild(), caseVal, false);
-				currBB.addNode(new BinaryOperatorNode(BinaryOperatorNode.Op.EQ, condVal, caseVal, compVal, srcLoc));
-				IfNode ifn = new IfNode(compVal, srcLoc);
+				currBB = translateNode(env2, currBB, child.getFirstChild(), caseReg, false);
+				currBB.addNode(new BinaryOperatorNode(BinaryOperatorNode.Op.EQ, condReg, caseReg, compReg, srcLoc));
+				IfNode ifn = new IfNode(compReg, srcLoc);
 				currBB.addNode(ifn);
 				ifn.setSuccessors(trueBranch, falseBranch);
 
-				trueBranch = translateNode(env2, trueBranch, child.getLastChild(), resultVar, false);
+				trueBranch = translateNode(env2, trueBranch, child.getLastChild(), resultReg, false);
 				currBB = falseBranch;
 			}
 			if (trueBranch != null && defaultNode != null && lastChild != defaultNode)
 				trueBranch.addSuccessor(retBlock);
 
 			if (defaultNode != null) {
-				BasicBlock defaultBlock = newBasicBlock(env2, currBB);
+				BasicBlock defaultBlock = newSuccessorBasicBlock(env2, currBB);
 				if (falseBranch != null && !falseBranch.getSuccessors().contains(retBlock))
 					falseBranch.addSuccessor(defaultBlock);
 				if (trueBranch != null && !trueBranch.getSuccessors().contains(retBlock))
 					trueBranch.addSuccessor(defaultBlock);
-				currBB = translateNode(env2, defaultBlock, defaultNode, resultVar, false);
+				currBB = translateNode(env2, defaultBlock, defaultNode, resultReg, false);
 			} else {
 				if (trueBranch != null && !trueBranch.getSuccessors().contains(retBlock))
 					trueBranch.addSuccessor(currBB);
@@ -1102,21 +1253,21 @@ public class RhinoASTToFlowgraph { // TODO: javadoc
 			// The parameters are interpreted as strings, so no need to traverse the children.
 			// Translate the construction into new RegExp(regexp,flags).
 			List<Integer> args = newList();
-			int reVal = nextTemporary(env), expVal = nextTemporary(env, args);
-			int flagVal = sn.getChildCount() > 1 ? nextTemporary(env, args) : AbstractNode.NO_VALUE;
-			bb.addNode(new ReadVariableNode("RegExp", reVal, AbstractNode.NO_VALUE, srcLoc));
-			bb.addNode(ConstantNode.makeString(sn.getFirstChild().getString(), expVal, srcLoc));
-			if (flagVal != AbstractNode.NO_VALUE)
-				bb.addNode(ConstantNode.makeString(sn.getLastChild().getString(), flagVal, srcLoc));
-			BasicBlock callBlock = newBasicBlock(env, bb);
-			addNodeToBlock(callBlock, new CallNode(true, false, resultVar, AbstractNode.NO_VALUE, reVal, args, srcLoc), statement);
-			return newBasicBlock(env, callBlock);
+			int reReg = nextRegister(env), expReg = nextRegister(env, args);
+			int flagReg = sn.getChildCount() > 1 ? nextRegister(env, args) : AbstractNode.NO_VALUE;
+			bb.addNode(new ReadVariableNode("RegExp", reReg, AbstractNode.NO_VALUE, srcLoc));
+			bb.addNode(ConstantNode.makeString(sn.getFirstChild().getString(), expReg, srcLoc));
+			if (flagReg != AbstractNode.NO_VALUE)
+				bb.addNode(ConstantNode.makeString(sn.getLastChild().getString(), flagReg, srcLoc));
+			BasicBlock callBlock = newSuccessorBasicBlock(env, bb);
+			addNodeToBlock(callBlock, new CallNode(true, false, resultReg, AbstractNode.NO_VALUE, reReg, args, srcLoc), statement);
+			return newSuccessorBasicBlock(env, callBlock);
 		}
 		case Token.FOR:
 		case Token.WHILE: {
 			BasicBlock currBB = bb, condBlock;
 			Node condNode = snType == Token.FOR ? sn.getFirstChild().getNext() : sn.getFirstChild();
-			int condVal = nextTemporary(env);
+			int condReg = nextRegister(env);
 
 			// There are two kinds of for-nodes in the closure compiler AST. One is the regular
 			// one and the second one is for (x in obj) {}, and the difference is the number of
@@ -1124,43 +1275,43 @@ public class RhinoASTToFlowgraph { // TODO: javadoc
 
 			// Special treatment of for-in loop, it's really a different kind of beast.
 			if (sn.getChildCount() == 3)
-				return translateForIn(env, bb, sn, resultVar, srcLoc);
+				return translateForIn(env, bb, sn, resultReg, srcLoc);
 
 			// Handle the regular for-loop initialization.
 			if (snType == Token.FOR)
 				currBB = translateNode(env, currBB, sn.getFirstChild(), AbstractNode.NO_VALUE, false);
 
-			BasicBlock condBB = newBasicBlock(env, currBB);
+			BasicBlock condBB = newSuccessorBasicBlock(env, currBB);
 			currBB = condBB;
 
 			// Insert a synthetic node "true" in case the condition block in the for-loop is empty.
 			if (snType == Token.FOR && condNode.isEmpty()) {
-				ConstantNode bn = ConstantNode.makeBoolean(true, condVal, srcLoc);
+				ConstantNode bn = ConstantNode.makeBoolean(true, condReg, srcLoc);
 				bn.setArtificial();
 				condBB.addNode(bn);
-				currBB = newBasicBlock(env, currBB);
+				currBB = newSuccessorBasicBlock(env, currBB);
 			}
 
-			condBlock = translateNode(env, currBB, condNode, condVal, false);
+			condBlock = translateNode(env, currBB, condNode, condReg, false);
 
-			BasicBlock trueBranch = newBasicBlock(env, condBlock);
-			BasicBlock falseBranch = newBasicBlock(env, condBlock);
+			BasicBlock trueBranch = newSuccessorBasicBlock(env, condBlock);
+			BasicBlock falseBranch = newSuccessorBasicBlock(env, condBlock);
 
-			IfNode ifn = new IfNode(condVal, srcLoc);
+			IfNode ifn = new IfNode(condReg, srcLoc);
 			condBlock.addNode(ifn);
 			ifn.setSuccessors(trueBranch, falseBranch);
 
-			FlowGraphEnv freshEnv = env.specialCopy(condBB, falseBranch).copyAndGiveUniquePnodes(AbstractNode.NO_VALUE);
+			FlowGraphEnv freshEnv = env.copyAndUpdateContinueBreak(condBB, falseBranch).copyAndGiveUniquePropertyNodes(AbstractNode.NO_VALUE);
 
-			BasicBlock trueBlock = translateNode(freshEnv, trueBranch, sn.getLastChild(), resultVar, false);
+			BasicBlock trueBlock = translateNode(freshEnv, trueBranch, sn.getLastChild(), resultReg, false);
 			if (snType == Token.FOR) {
 				trueBlock = translateNode(freshEnv, trueBlock, sn.getFirstChild().getNext().getNext(), AbstractNode.NO_VALUE, false);
 				if (Options.isUnrollOneAndAHalfEnabled()) {
-					BasicBlock tmpRet = newBasicBlock(freshEnv, trueBlock);
+					BasicBlock tmpRet = newSuccessorBasicBlock(freshEnv, trueBlock);
 					FlowGraphEnv env3 = freshEnv.copyAndInitializeForCopy(tmpRet);
 					// Insert a copy of the condition block with a quick bail out.
-					trueBlock = translateNode(freshEnv, tmpRet, condNode, condVal, false);
-					ifn = new IfNode(condVal, srcLoc);
+					trueBlock = translateNode(freshEnv, tmpRet, condNode, condReg, false);
+					ifn = new IfNode(condReg, srcLoc);
 					ifn.setSuccessors(trueBranch, falseBranch);
 					trueBlock.addNode(ifn);
 					trueBlock.addSuccessor(trueBranch);
@@ -1174,17 +1325,17 @@ public class RhinoASTToFlowgraph { // TODO: javadoc
 			return falseBranch;
 		}
 		case Token.DO: {
-			BasicBlock entryBB = newBasicBlock(env, bb);
+			BasicBlock entryBB = newSuccessorBasicBlock(env, bb);
 
-			int condVal = nextTemporary(env);
-			BasicBlock falseBranch = newStandaloneBasicBlock(env, bb);
-			FlowGraphEnv freshEnv = env.specialCopy(entryBB, falseBranch);
+			int condReg = nextRegister(env);
+			BasicBlock falseBranch = newBasicBlock(env, bb);
+			FlowGraphEnv freshEnv = env.copyAndUpdateContinueBreak(entryBB, falseBranch);
 
-			BasicBlock trueBlock = translateNode(freshEnv, entryBB, sn.getFirstChild(), resultVar, false);
+			BasicBlock trueBlock = translateNode(freshEnv, entryBB, sn.getFirstChild(), resultReg, false);
 
-			BasicBlock condBB = translateNode(env, newBasicBlock(freshEnv, trueBlock), sn.getLastChild(), condVal, false);
+			BasicBlock condBB = translateNode(env, newSuccessorBasicBlock(freshEnv, trueBlock), sn.getLastChild(), condReg, false);
 
-			IfNode ifn = new IfNode(condVal, srcLoc);
+			IfNode ifn = new IfNode(condReg, srcLoc);
 			ifn.setSuccessors(entryBB, falseBranch);
 			condBB.addNode(ifn);
 			condBB.addSuccessor(entryBB);
@@ -1204,45 +1355,66 @@ public class RhinoASTToFlowgraph { // TODO: javadoc
 			node.setRegistersDone(true);
 	}
 
-	private static void addNodeToBlock(FlowGraphEnv env, BasicBlock bb, AbstractNode node, int baseVar, boolean endOfStatement) {
-		BasicBlock workingBB = bb;
-		workingBB.addNode(node);
-		AbstractNode prevNode = env.propertyNodes.get(baseVar);
-		AbstractNode lastNode = node;
-
-		// Figure out if we need to add this node to our property node map, and how to index it.
-		Integer mapReg = AbstractNode.NO_VALUE;
-		if (node instanceof WritePropertyNode)
-			mapReg = ((WritePropertyNode) node).getBaseRegister();
-		else if (node instanceof ReadVariableNode || node instanceof ReadPropertyNode)
-			mapReg = ((LoadNode) node).getResultRegister();
-		if (mapReg != AbstractNode.NO_VALUE)
-			env.propertyNodes.put(mapReg, node);
-
-		if (prevNode != null) {
-			AbstractNode prevPrevNode = null;
-			
-			// We have a case for placing an assume node. Figure out what to place it.
-			if (node instanceof IfNode)
-				workingBB = ((IfNode) node).getSuccTrue();
-
-			if (prevNode instanceof ReadVariableNode && node instanceof IPropertyNode) {
-				if (!(((ReadVariableNode) prevNode).getVariableName().equals("this"))) {
-					workingBB.addNode(AssumeNode.makeVariableNonNullUndef(((ReadVariableNode) prevNode).getVariableName(), node.getSourceLocation()));
-					lastNode = workingBB.getLastNode();
-				}
-			} else if (prevNode instanceof ReadPropertyNode && (node instanceof IPropertyNode || node instanceof IfNode)) {
-				prevPrevNode = prevNode; // env.propertyNodes.get(((IPropertyNode) prevNode).getBaseRegister());
-			}
-
-			if (prevPrevNode != null) {
-				workingBB.addNode(AssumeNode.makePropertyNonNullUndef(prevNode));
-				lastNode = workingBB.getLastNode();
+	/**
+	 * Adds the given node to the given basic block.
+	 * 
+	 * @param env
+	 *            environment
+	 * @param bb
+	 *            basic block
+	 * @param node
+	 *            node to add
+	 * @param baseReg
+	 * @param endOfStatement
+	 *            if true, mark the node as registers-done
+	 */
+	private static void addNodeToBlock(FlowGraphEnv env, BasicBlock bb, AbstractNode node, int baseReg, boolean endOfStatement) {
+		bb.addNode(node);
+		{
+			// Figure out if we need to add this node to our property node map, and how to index it.
+			if (node instanceof WritePropertyNode) { 
+				env.registerPropertyWrite((WritePropertyNode) node);
+			} else if(node instanceof LoadNode){
+				env.registerRegisterLoad((LoadNode) node);
 			}
 		}
-		
+		Set<AssumeNode> assumeNodesToAdd = newSet();
+		{
+			// check if we can add assume nodes for property dereferences
+			AbstractNode baseNode = env.loadNodes.get(baseReg);
+			if (node instanceof IPropertyNode && baseNode != null) {
+				// we have something of the form x.p, where x is either a variable or property (the base)
+				// x will be non-null and non-undefined after the dereference, otherwise a crash would have occured
+				if (baseNode instanceof ReadVariableNode) {
+					// x.p, and x is a variable
+					final ReadVariableNode readNode = (ReadVariableNode) baseNode;
+					if (!(readNode.getVariableName().equals("this"))) {
+						assumeNodesToAdd.add(AssumeNode.makeVariableNonNullUndef(readNode.getVariableName(), node.getSourceLocation()));
+					}
+				} else if (baseNode instanceof ReadPropertyNode) {
+					// x.p, and x is a property (thus the full form is o.x.p)
+					assumeNodesToAdd.add(AssumeNode.makePropertyNonNullUndef(baseNode));
+				}
+			}
+		}
+		if (!assumeNodesToAdd.isEmpty()) {
+			Set<BasicBlock> blocksToAddAssumesTo = Collections.newSet();
+			if (node instanceof IfNode) {
+				// special case: IfNode must be the last node in its block, so add assume to successors
+				final IfNode ifNode = (IfNode) node;
+				blocksToAddAssumesTo.add(ifNode.getSuccTrue());
+				blocksToAddAssumesTo.add(ifNode.getSuccFalse());
+			} else {
+				blocksToAddAssumesTo.add(bb);
+			}
+			for (BasicBlock block : blocksToAddAssumesTo) {
+				for (AssumeNode assume: assumeNodesToAdd) {
+					block.addNode(assume);
+				}
+			}
+		}
 		if (endOfStatement)
-			lastNode.setRegistersDone(true);
+			bb.getLastNode().setRegistersDone(true);
 	}
 
 	/**
@@ -1253,9 +1425,9 @@ public class RhinoASTToFlowgraph { // TODO: javadoc
 		BasicBlock bb = n.getBlock();
 		SourceLocation srcLoc = bb.getSourceLocation();
 		Function f = bb.getFunction();
-		maxTmp = f.getMaxRegister();
-		int resultReg = maxTmp++;
-		// XXX: Ponder copyOf.
+		maxReg = f.getMaxRegister();
+		int resultReg = maxReg++;
+		// TODO: Ponder copyOf.
 		List<AbstractNode> newnodes = newList();
 		BasicBlock lowerBlock = new BasicBlock(f);
 		BasicBlock callBlock1 = new BasicBlock(f);
@@ -1287,7 +1459,7 @@ public class RhinoASTToFlowgraph { // TODO: javadoc
 		callBlock1.addSuccessor(callBlock2);
 		callBlock2.addSuccessor(lowerBlock);
 		// Make sure to update book-keeping things.
-		f.setMaxRegister(maxTmp);
+		f.setMaxRegister(maxReg);
 		fg.addBlock(callBlock1);
 		fg.addBlock(callBlock2);
 		fg.addBlock(lowerBlock);
@@ -1308,30 +1480,63 @@ public class RhinoASTToFlowgraph { // TODO: javadoc
 		Function fun = callBlock.getFunction();
 		int resultRegister = n.getResultRegister();
 
-		FlowGraphEnv env = new FlowGraphEnv(fg, new LinkedList<List<BasicBlock>>(), newBBList(), fun, Collections.<String, Integer> newMap());
+		FlowGraphEnv env = new FlowGraphEnv(fg, dk.brics.tajs.util.Collections.<List<BasicBlock>> newList(), 
+				dk.brics.tajs.util.Collections.<BasicBlock> newList(), fun);
 
 		BasicBlock bb = setupEnv(callBlock, env, previousExt);
 		env.evalResultMap = varName == null ? null : Pair.make(varName, resultRegister);
 
-		Node root = parse(sourceString, s.getFileName());
-		int resultVar = nextTemporary(env);
+		Node root = parse(sourceString, s.getFileName(), 0 /* will be overridden later */);
+
+		// set the line and column numbers of the created nodes, to the location the parsing happens at!
+		// TODO somehow encode original location of parsed code?
+		setLineAndColumnNumbers(root, s.getLineNumber(), s.getColumnNumber() - 1);
+
+		int resultReg = nextRegister(env);
 		// Insert a dummy node to prevent empty basic blocks. We need a constant node to get uniform treatment
 		// with other "functions".
-		env.declsBB.addNode(ConstantNode.makeUndefined(resultVar, env.fun.getSourceLocation()));
+		env.declsBB.addNode(ConstantNode.makeUndefined(resultReg, env.fun.getSourceLocation()));
 
-		BasicBlock retBlock = translateChildren(env, bb, root.getLastChild(), resultVar);
+		BasicBlock retBlock = translateChildren(env, bb, root.getLastChild(), resultReg);
 
 		return postTranslationFixup(env, normalizedSourceString, retBlock);
 	}
 
+	/**
+	 * Overwrites the line and column number for the given AST node and its successors and descendants.
+	 */
+	private static void setLineAndColumnNumbers(Node root, int lineNumber, int columnNumber) {
+		LinkedList<Node> worklist = new LinkedList<>();
+		worklist.add(root);
+		while (!worklist.isEmpty()) {
+			Node current = worklist.pop();
+			if (current == null)
+				continue;
+			current.setLineno(lineNumber);
+			current.setCharno(columnNumber);
+			worklist.add(current.getNext());
+			worklist.add(current.getFirstChild());
+		}
+	}
+
+	/**
+	 * Prepares env for a flow graph extension.
+	 * Creates a new basic block,, sets retBB as the after-call block and exceptionretBB as the exception handler of the call node. 
+	 * 
+	 * @param callBlock call block where the extension is made
+	 * @param env environment
+	 * @param previousExt previous flow graph extension to be removed, or null if none
+	 * @return the new basic block for declarations
+	 */
 	private BasicBlock setupEnv(BasicBlock callBlock, FlowGraphEnv env, FlowGraphFragment previousExt) {
-		nukeExtension(env.fg, env.fun, previousExt);
-		env.declsBB = newStandaloneBasicBlock(env, callBlock);
+		if (previousExt != null)
+			nukeExtension(env.fg, env.fun, previousExt);
+		env.declsBB = newBasicBlock(env, callBlock);
 		env.retBB = callBlock.getSingleSuccessor();
-		env.panicBB = callBlock.getExceptionHandler();
+		env.exceptionretBB = callBlock.getExceptionHandler();
 		// Start allocating registers one more than the previous max.
-		maxTmp = env.fun.getMaxRegister() + 1;
-		env.nextTmp = maxTmp;
+		maxReg = env.fun.getMaxRegister() + 1;
+		env.nextReg = maxReg;
 		return env.declsBB;
 	}
 
@@ -1341,21 +1546,25 @@ public class RhinoASTToFlowgraph { // TODO: javadoc
 	public FlowGraphFragment extendFlowGraphWithEventHandler(FlowGraph fg, String sourceString, FlowGraphFragment previousExt, LoadNode n) {
 		BasicBlock callBlock = n.getBlock();
 		Function fun = n.getBlock().getFunction();
-		FlowGraphEnv env = new FlowGraphEnv(fg, new LinkedList<List<BasicBlock>>(), newBBList(), fun, Collections.<String, Integer> newMap());
+		FlowGraphEnv env = new FlowGraphEnv(fg, dk.brics.tajs.util.Collections.<List<BasicBlock>> newList(), 
+				dk.brics.tajs.util.Collections.<BasicBlock> newList(), fun);
 
 		BasicBlock bb = setupEnv(callBlock, env, previousExt);
 
-		int resultVar = n.getResultRegister() == AbstractNode.NO_VALUE ? nextTemporary(env) : n.getResultRegister();
+		int resultReg = n.getResultRegister() == AbstractNode.NO_VALUE ? nextRegister(env) : n.getResultRegister();
 		// Insert a dummy node to prevent empty basic blocks. We need a constant node to get uniform treatment
 		// with other "functions".
-		env.declsBB.addNode(ConstantNode.makeUndefined(resultVar, env.fun.getSourceLocation()));
+		env.declsBB.addNode(ConstantNode.makeUndefined(resultReg, env.fun.getSourceLocation()));
 
-		// XXX: Should we add the event variable as argument here as well?
-		translateEventHandler(env, bb, new JavaScriptSource(fun.getSourceLocation().getFileName(), "TIMEOUT", sourceString, 0), resultVar);
+		// TODO: Should we add the event variable as argument here as well?
+		translateEventHandler(env, bb, new EventHandlerJavaScriptSource(fun.getSourceLocation().getFileName(), sourceString, 0, "TIMEOUT"), resultReg);
 
 		return postTranslationFixup(env, sourceString, bb);
 	}
 
+	/**
+	 * Fixes the flow graph after an extension has been made and returns a new FlowGraphFragment.
+	 */
 	private FlowGraphFragment postTranslationFixup(FlowGraphEnv env, String sourceString, BasicBlock retBlock) {
 		Collection<Function> fs = newSet();
 		Function firstFun = env.pendingFuns.isEmpty() ? null : env.pendingFuns.get(0).get(0).getFunction();
@@ -1365,7 +1574,7 @@ public class RhinoASTToFlowgraph { // TODO: javadoc
 		Collection<BasicBlock> bbs = newSet();
 		bbs.addAll(env.pendingBBs);
 
-		Collection<AbstractNode> ns = newSet();
+		Collection<AbstractNode> ns = newSet(); // FIXME: not used?? (intended for the unevalizer?)
 		// Dig out the newly inserted declare function/declare variable nodes from the declaration block.
 		for (AbstractNode nss : env.declsBB.getNodes()) {
 			// TODO: Dig through fun.getEntry() rather than env.declsBB. Does not matter which with the current code.
@@ -1379,7 +1588,7 @@ public class RhinoASTToFlowgraph { // TODO: javadoc
 		}
 
 		retBlock.addSuccessor(env.retBB);
-		env.fun.setMaxRegister(maxTmp);
+		env.fun.setMaxRegister(maxReg);
 
 		for (List<BasicBlock> funBBs : env.pendingFuns)
 			env.pendingBBs.addAll(funBBs);
@@ -1389,7 +1598,7 @@ public class RhinoASTToFlowgraph { // TODO: javadoc
 		removeEmptyBlocks(env, pointedTo);
 
 		for (BasicBlock pending : env.pendingBBs)
-			if ((pointedTo.containsKey(pending) && (pointedTo.get(pending) > 0)) || !pending.isEmpty())
+			if ((pointedTo.containsKey(pending) && (pointedTo.get(pending) > 0)) || !pending.isEmpty()) // TODO: why this isEmpty check?
 				env.fg.addBlock(pending);
 
 		env.fg.complete();
@@ -1401,35 +1610,34 @@ public class RhinoASTToFlowgraph { // TODO: javadoc
 	}
 
 	/**
-	 * Removes a flow graph extension from a flow graph.
+	 * Removes the given flow graph extension from the flow graph and function.
 	 */
 	private static void nukeExtension(FlowGraph fg, Function fun, FlowGraphFragment e) {
-		if (e == null)
-			return;
-
 		fg.removeFunctions(e.getFunction());
 		fun.removeBlocks(e.getBlocks());
 		fun.getEntry().removeNodes(e.getNodes());
 	}
 
+	/**
+	 * Checks whether the given node is of a kind that can only be at the end of its basic block.
+	 */
 	private static boolean requiresNewBlock(AbstractNode n) {
 		return (n instanceof ThrowNode
 				|| n instanceof ICallNode
 				|| n instanceof ExceptionalReturnNode
 				|| n instanceof ReturnNode
-				|| n instanceof EnterWithNode
-				|| n instanceof LeaveWithNode);
+				|| n instanceof BeginWithNode
+				|| n instanceof EndWithNode);
 	}
 
 	/**
-	 * This function translates the for (x in obj) for, which is smashed into the same token type as regular for
-	 * in Rhino. The parse trees look different though.
+	 * Translates for-in.
 	 */
-	private BasicBlock translateForIn(FlowGraphEnv env, BasicBlock bb, Node sn, int resultVar, SourceLocation srcLoc) {
-		int baseVal = nextTemporary(env), propListVal = nextTemporary(env), condVal = nextTemporary(env);
-		int propertyVal = nextTemporary(env);
+	private BasicBlock translateForIn(FlowGraphEnv env, BasicBlock bb, Node sn, int resultReg, SourceLocation srcLoc) {
+		int objectReg = nextRegister(env), propListReg = nextRegister(env), condReg = nextRegister(env), propertyReg = nextRegister(env);
 		Node firstChild = sn.getFirstChild();
 		BasicBlock currBB = bb;
+		
 		String loopVar;
 		if (firstChild.isName())
 			loopVar = firstChild.getString();
@@ -1438,46 +1646,48 @@ public class RhinoASTToFlowgraph { // TODO: javadoc
 			currBB = translateNode(env, currBB, firstChild, AbstractNode.NO_VALUE, false);
 		}
 
-		currBB = translateNode(env, currBB, firstChild.getNext(), baseVal, false);
-		currBB = newBasicBlock(env, currBB);
-		BeginForInNode bf = new BeginForInNode(baseVal, propListVal, srcLoc);
+		// translate the object expression and add a BeginForInNode
+		currBB = translateNode(env, currBB, firstChild.getNext(), objectReg, false);
+		currBB = newSuccessorBasicBlock(env, currBB);
+		BeginForInNode bf = new BeginForInNode(objectReg, propListReg, srcLoc);
 		currBB.addNode(bf);
 
-		BasicBlock condBlock = newBasicBlock(env, currBB);
-
-		condBlock.addNode(new HasNextPropertyNode(propListVal, condVal, srcLoc));
-
-		BasicBlock trueBranch = newBasicBlock(env, condBlock);
-		BasicBlock falseBranch = newBasicBlock(env, condBlock);
-		BasicBlock trueEndBlock = newStandaloneBasicBlock(env, condBlock);
-
-		IfNode ifn = new IfNode(condVal, srcLoc);
+		// start a new basic block with a HasNextPropertyNode and an IfNode
+		BasicBlock condBlock = newSuccessorBasicBlock(env, currBB);
+		condBlock.addNode(new HasNextPropertyNode(propListReg, condReg, srcLoc));
+		BasicBlock trueBranch = newSuccessorBasicBlock(env, condBlock);
+		BasicBlock falseBranch = newSuccessorBasicBlock(env, condBlock);
+		BasicBlock trueEndBlock = newBasicBlock(env, condBlock);
+		IfNode ifn = new IfNode(condReg, srcLoc);
 		condBlock.addNode(ifn);
 		ifn.setSuccessors(trueBranch, falseBranch);
 		ifn.setArtificial();
 
-		trueBranch.addNode(new NextPropertyNode(propListVal, propertyVal, srcLoc));
-		trueBranch.addNode(new WriteVariableNode(propertyVal, loopVar, srcLoc));
-		FlowGraphEnv env2 = env.specialCopy(trueEndBlock, falseBranch).copyAndGiveUniquePnodes(AbstractNode.NO_VALUE);
-		BasicBlock trueBlock = translateNode(env2, trueBranch, sn.getLastChild(), resultVar, false);
-
+		// add a NextPropertyNode and translate the loop body at the true branch
+		trueBranch.addNode(new NextPropertyNode(propListReg, propertyReg, srcLoc));
+		trueBranch.addNode(new WriteVariableNode(propertyReg, loopVar, srcLoc)); // FIXME: not necessarily a variable, could be a property reference
+		FlowGraphEnv env2 = env.copyAndUpdateContinueBreak(trueEndBlock, falseBranch).copyAndGiveUniquePropertyNodes(AbstractNode.NO_VALUE);
+		BasicBlock trueBlock = translateNode(env2, trueBranch, sn.getLastChild(), resultReg, false); // FIXME: exceptions (and labeled break/continue!) should flow through a separate EndForInNode (see flowgraph_builder0187.js)
+		
+		// connect the basic blocks
 		trueBlock.addSuccessor(trueEndBlock);
 		bumpToFrontOfPending(env, trueEndBlock);
 		bumpToFrontOfPending(env, falseBranch);
-		trueEndBlock.addNode(new EndForInNode(bf, srcLoc));
+		EndForInNode ef = new EndForInNode(bf, lastSrcLoc);
+		bf.setEndNode(ef);
+		trueEndBlock.addNode(ef);
 		trueEndBlock.addSuccessor(condBlock);
 
-		falseBranch.setExceptionHandler(bb.getExceptionHandler());
+		falseBranch.setExceptionHandler(bb.getExceptionHandler()); // TODO: is this step necessary?
 
 		return falseBranch;
 	}
-
+	
 	/**
 	 * Creates a new basic block that joins trueBlock and falseBlock; typically used for if and similar constructs.
 	 */
 	private static BasicBlock newJoinBasicBlock(FlowGraphEnv env, BasicBlock trueBlock, BasicBlock falseBlock) {
-		BasicBlock joinBlock = newStandaloneBasicBlock(env, trueBlock);
-
+		BasicBlock joinBlock = newBasicBlock(env, trueBlock);
 		if (!hasSpecialSuccessors(env, trueBlock))
 			trueBlock.addSuccessor(joinBlock);
 		if (!hasSpecialSuccessors(env, falseBlock))
@@ -1486,8 +1696,9 @@ public class RhinoASTToFlowgraph { // TODO: javadoc
 	}
 
 	/**
-	 * Helper function that iterates over the successors of the block and see if they are the continue or break
-	 * blocks of env.
+	 * Helper function that iterates over the successors of the block and see if 
+	 * they are the continue or break blocks of env.
+	 * Used by {@see #newJoinBasicBlock(FlowGraphEnv, BasicBlock, BasicBlock)}.
 	 */
 	private static boolean hasSpecialSuccessors(FlowGraphEnv env, BasicBlock bb) {
 		for (BasicBlock b : bb.getSuccessors())
@@ -1497,10 +1708,16 @@ public class RhinoASTToFlowgraph { // TODO: javadoc
 	}
 
 	/**
-	 * Traverses the children of the blocks and marks the duplicates.
+	 * Traverses the children of the blocks and marks the duplicates 
+	 * by calling {@link dk.brics.tajs.flowgraph.AbstractNode#setDuplicateOf(AbstractNode)}.
+	 * 
+	 * @param copyBlocks collection of all the copy blocks
+	 * @param seenBlocks blocks already visited in the traversal (initially empty)
+	 * @param copyBlock head of the copy blocks
+	 * @param origBlock head of the original blocks
 	 */
 	private void setDuplicateBlocks(List<BasicBlock> copyBlocks, List<BasicBlock> seenBlocks, BasicBlock copyBlock, BasicBlock origBlock) {
-		if (!copyBlocks.contains(copyBlock) || seenBlocks.contains(copyBlock))
+		if (!copyBlocks.contains(copyBlock) || seenBlocks.contains(copyBlock)) // TODO: use sets instead of lists
 			return;
 		setDuplicateNodes(copyBlock, origBlock);
 		seenBlocks.add(copyBlock);
@@ -1513,6 +1730,7 @@ public class RhinoASTToFlowgraph { // TODO: javadoc
 
 	/**
 	 * Traverses the nodes of the blocks and marks the duplicates.
+	 * Used by {@link #setDuplicateBlocks(List, List, BasicBlock, BasicBlock)}.
 	 */
 	private static void setDuplicateNodes(BasicBlock copyBlock, BasicBlock origBlock) {
 		Iterator<AbstractNode> ci = copyBlock.getNodes().iterator();
@@ -1522,67 +1740,43 @@ public class RhinoASTToFlowgraph { // TODO: javadoc
 			if (!ci.hasNext())
 				break;
 			AbstractNode cn = ci.next();
-			if (!on.getSourceLocation().equals(cn.getSourceLocation()) && oi.hasNext())
+			if (!on.getSourceLocation().equals(cn.getSourceLocation()) && oi.hasNext()) // TODO: why is this check necessary?
 				on = oi.next();
 			cn.setDuplicateOf(on);
 		}
-
 	}
 
 	/**
-	 * Create a new source location.
+	 * Creates a new basic block as a successor of the given basic block.
 	 */
-	private static SourceLocation newSourceLocation(int line, int column, String filename) {
-		// The test suite does plain text string comparisons of the output. Since
-		// the separator is different between Windows and Unix that will cause
-		// test failures; normalize the output so that it is always "/" to
-		// avoid this problem.
-		String normalized_filename = filename.replace("\\", "/");
-		// The closure compiler uses 0-indexed column numbers and this seems unlikely to change in the nearby future.
-		// Add one to all column numbers so that the user gets the left-adjusted syntactic construct starting
-		// in column one.
-		return new SourceLocation(line, column + 1, normalized_filename);
-	}
-
-	/**
-	 * Create a new basic block that becomes a successor to the incoming basic block.
-	 */
-	private static BasicBlock newBasicBlock(FlowGraphEnv env, BasicBlock bb) {
-		BasicBlock bb2 = newStandaloneBasicBlock(env, bb);
+	private static BasicBlock newSuccessorBasicBlock(FlowGraphEnv env, BasicBlock bb) {
+		BasicBlock bb2 = newBasicBlock(env, bb);
 		bb.addSuccessor(bb2);
-		if (env.copyBlocks != null)
-			env.copyBlocks.add(bb2);
 		return bb2;
 	}
 
 	/**
-	 * Create a new basic block that becomes the exception handler for the incoming basic block.
+	 * Creates a new basic block that becomes the exception handler for the given basic block.
 	 */
 	private static BasicBlock newCatchBasicBlock(FlowGraphEnv env, BasicBlock bb) {
-		BasicBlock bb2 = newStandaloneBasicBlock(env, bb);
+		BasicBlock bb2 = newBasicBlock(env, bb);
 		bb.setExceptionHandler(bb2);
-		if (env.copyBlocks != null)
-			env.copyBlocks.add(bb2);
 		return bb2;
 	}
 
 	/**
-	 * Create a stand alone basic block.
+	 * Creates a new basic block.
+	 * The new basic block is added to the pending list.
+	 * The exception handler is inherited from the given basic block.
+	 * If using copy blocks, the new basic block is also added to the copy blocks.
 	 */
-	private static BasicBlock newStandaloneBasicBlock(FlowGraphEnv env, BasicBlock bb) {
+	private static BasicBlock newBasicBlock(FlowGraphEnv env, BasicBlock bb) {
 		BasicBlock bb2 = new BasicBlock(env.fun);
 		bb2.setExceptionHandler(bb.getExceptionHandler());
 		env.pendingBBs.add(bb2);
 		if (env.copyBlocks != null)
 			env.copyBlocks.add(bb2);
 		return bb2;
-	}
-
-	/**
-	 * Allocate a new list of a particular type.
-	 */
-	private static List<BasicBlock> newBBList() {
-		return newList();
 	}
 
 	/**
@@ -1666,31 +1860,43 @@ public class RhinoASTToFlowgraph { // TODO: javadoc
 		}
 	}
 
-	private int nextTemporary(FlowGraphEnv env) {
-		maxTmp += env.nextTmp > maxTmp ? 1 : 0;
-		return env.nextTmp++;
+	/**
+	 * Returns the next available register number.
+	 */
+	private int nextRegister(FlowGraphEnv env) {
+		maxReg += env.nextReg > maxReg ? 1 : 0;
+		return env.nextReg++;
 	}
 
-	private int nextTemporary(FlowGraphEnv env, Collection<Integer> l) {
-		int tmpVal = nextTemporary(env);
-		l.add(tmpVal);
-		return tmpVal;
+	/**
+	 * Returns the next available register number and adds it to the given collection.
+	 */
+	private int nextRegister(FlowGraphEnv env, Collection<Integer> l) {
+		int tmpReg = nextRegister(env);
+		l.add(tmpReg);
+		return tmpReg;
 	}
 
 	/**
 	 * Moves bb from wherever it is in the pending queue to the front of the queue.
 	 */
-	private static void bumpToFrontOfPending(FlowGraphEnv env, BasicBlock bb) {
+	private static void bumpToFrontOfPending(FlowGraphEnv env, BasicBlock bb) { // TODO: why is this done?
 		env.pendingBBs.remove(bb);
 		env.pendingBBs.add(bb);
 	}
 
 	/**
-	 * Helper function that does a lot of the work for setting up a function.
+	 * Initializes flow graph segment for a function.
+	 * Creates the basic blocks for declarations, ordinary return, and exceptional return.
+	 * The caller is responsible for adding retBB and exceptionretBB to the pending blocks after the function body is created.
+	 * 
+	 * @param env environment
+	 * @param fun newly created function object
+	 * @return new basic block for construction of the function body
 	 */
-	private static BasicBlock setupFunction(FlowGraphEnv env, Function fun, SourceLocation srcLoc) {
+	private static BasicBlock setupFunction(FlowGraphEnv env, Function fun) {
 		BasicBlock entryBB = new BasicBlock(fun);
-		entryBB.addNode(ConstantNode.makeUndefined(AbstractNode.RETURN_REG, srcLoc));
+		entryBB.addNode(ConstantNode.makeUndefined(AbstractNode.RETURN_REG, fun.getSourceLocation()));
 
 		// Declarations basic block
 		env.declsBB = entryBB; // TODO: could merge the declsBB and its successor after the function has been completed?
@@ -1698,26 +1904,26 @@ public class RhinoASTToFlowgraph { // TODO: javadoc
 		if (env.copyBlocks != null)
 			env.copyBlocks.add(entryBB);
 
-		// Exceptional exit (singleton BB)
-		BasicBlock panicBB = newCatchBasicBlock(env, entryBB);
+		// Exceptional exit (in a singleton basic block)
+		BasicBlock exceptionretBB = newCatchBasicBlock(env, entryBB);
 		// We like to read our functions in a linear fashion, so remove the block from the pending queue and add it
 		// in the caller of setupFunction instead.
-		env.pendingBBs.remove(panicBB);
-		env.panicBB = panicBB;
-		panicBB.addNode(new ExceptionalReturnNode(srcLoc));
+		env.pendingBBs.remove(exceptionretBB);
+		env.exceptionretBB = exceptionretBB;
+		exceptionretBB.addNode(new ExceptionalReturnNode(fun.getSourceLocation()));
 
-		BasicBlock bb = newBasicBlock(env, entryBB);
+		BasicBlock bb = newSuccessorBasicBlock(env, entryBB);
 
-		// Normal exit node (in a singleton BB)
-		BasicBlock exitBB = newStandaloneBasicBlock(env, bb);
+		// Normal exit node (in a singleton basic block)
+		BasicBlock retBB = newBasicBlock(env, bb);
 		// We like to read our functions from top to bottom, so add the exit block second to last in the caller instead.
-		env.pendingBBs.remove(exitBB);
-		env.retBB = exitBB;
-		exitBB.addNode(new ReturnNode(AbstractNode.RETURN_REG, srcLoc));
+		env.pendingBBs.remove(retBB);
+		env.retBB = retBB;
+		retBB.addNode(new ReturnNode(AbstractNode.RETURN_REG, fun.getSourceLocation()));
 
 		fun.setEntry(entryBB);
-		fun.setExceptionalExit(panicBB);
-		fun.setOrdinaryExit(exitBB);
+		fun.setExceptionalExit(exceptionretBB);
+		fun.setOrdinaryExit(retBB);
 		env.fg.addFunction(fun);
 		return bb;
 	}
@@ -1728,77 +1934,170 @@ public class RhinoASTToFlowgraph { // TODO: javadoc
  * Flows *downwards*. It's really just a record, so all the fields are
  * public. That does not mean you should mutate the fields though, copy them!
  */
-class FlowGraphEnv { // TODO: javadoc for the FlowGraphEnv fields
-
+class FlowGraphEnv {
+	
+	/**
+	 * Flow graph being constructed.
+	 */
 	public FlowGraph fg;
-	public List<List<BasicBlock>> pendingFuns;
-	public List<BasicBlock> pendingBBs;
-	public Map<Integer, AbstractNode> propertyNodes;
-	public Function fun;
-	public BasicBlock breakBlock;
-	public BasicBlock continueBlock;
-	public BasicBlock declsBB; // variable/function declarations are added here
-	public BasicBlock retBB;
-	public BasicBlock panicBB;
-	public List<BasicBlock> copyBlocks;
-	public int nextTmp;
-	public Pair<String, Integer> evalResultMap;
-	public int baseVal;
-	public Map<String, Integer> lineOffsets;
 
-	public FlowGraphEnv(FlowGraph fg, List<List<BasicBlock>> pendingFuns, List<BasicBlock> pendingBBs, Function fun, Map<String, Integer> lineOffsets) {
+	/**
+	 * Basic blocks of functions to be added to the flow graph (if not empty).
+	 */
+	public List<List<BasicBlock>> pendingFuns;
+	
+	/**
+	 * Basic blocks to be added to the flow graph (if not empty).
+	 */
+	public List<BasicBlock> pendingBBs;
+		
+	/**
+	 * Current flow graph function object.
+	 */
+	public Function fun;
+	
+	/**
+	 * Block to go to in case of a 'break'.
+	 */
+	public BasicBlock breakBlock;
+	
+	/**
+	 * Block to go to in case of a 'continue'.
+	 */
+	public BasicBlock continueBlock;
+	
+	/**
+	 * Basic block containing variable/function declarations.
+	 */
+	public BasicBlock declsBB;
+	
+	/**
+	 * Basic block containing the ordinary function return node.
+	 */
+	public BasicBlock retBB;
+	
+	/**
+	 * Basic block containing the exceptional function return node.
+	 */
+	public BasicBlock exceptionretBB;
+	
+	/**
+	 * Copy of constructed basic blocks, for 'finally' blocks and Options.isUnrollOneAndAHalfEnabled.
+	 * If null, don't make a copy.
+	 */
+	public List<BasicBlock> copyBlocks;
+	
+	/**
+	 * Next free register number.
+	 */
+	public int nextReg;
+	
+	public Pair<String, Integer> evalResultMap; // TODO: javadoc (for unevalizer)
+	
+	/**
+	 * Register to use for result base value at ReadVariableNodes.
+	 */
+	public int baseReg;
+
+	/**
+	 * Map from register to last WritePropertyNode having that register as base register
+	 * or to last ReadPropertyNode or ReadVariableNode having that register as result register.
+	 * Used for AssumeNodes and CallNodes.
+	 */
+	public Map<Integer, AbstractNode> propertyNodes; // TODO: explain more about what this is used for
+
+	/**
+	 * Map from register to last LoadNode having that register as result register.
+	 * Used for AssumeNodes. Is subsumed by the {@link #propertyNodes} map.
+	 */
+	public Map<Integer, LoadNode> loadNodes;
+	
+	private FlowGraphEnv(FlowGraph fg, List<List<BasicBlock>> pendingFuns, List<BasicBlock> pendingBBs, Map<Integer, AbstractNode> propertyNodes, Map<Integer, LoadNode> loadNodes, Function fun,
+			BasicBlock breakBlock, BasicBlock continueBlock, BasicBlock declsBB, BasicBlock retBB, BasicBlock exceptionretBB, List<BasicBlock> copyBlocks,
+			int nextReg, int baseReg, Pair<String, Integer> evalResultMap) {
+		this(fg, pendingFuns, pendingBBs, fun);
+		this.propertyNodes = propertyNodes;
+		this.loadNodes = loadNodes;
+		this.breakBlock = breakBlock;
+		this.continueBlock = continueBlock;
+		this.declsBB = declsBB;
+		this.retBB = retBB;
+		this.exceptionretBB = exceptionretBB;
+		this.copyBlocks = copyBlocks;
+		this.nextReg = nextReg;
+		this.baseReg = baseReg;
+		this.evalResultMap = evalResultMap;
+	}	
+
+	/**
+	 * Constructs a new environment.
+	 * 
+	 * @param fg current flow graph
+	 * @param pendingFuns current pending functions
+	 * @param pendingBBs current pending basic blocks
+	 * @param fun current function
+	 */
+	public FlowGraphEnv(FlowGraph fg, List<List<BasicBlock>> pendingFuns, List<BasicBlock> pendingBBs, Function fun) {
 		this.fg = fg;
 		this.pendingFuns = pendingFuns;
 		this.pendingBBs = pendingBBs;
 		this.propertyNodes = newMap();
+		this.loadNodes = newMap();
 		this.fun = fun;
 		this.breakBlock = null;
 		this.continueBlock = null;
 		this.declsBB = null;
 		this.retBB = null;
-		this.panicBB = null;
+		this.exceptionretBB = null;
 		this.copyBlocks = null;
-		this.nextTmp = AbstractNode.FIRST_ORDINARY_REG;
+		this.nextReg = AbstractNode.FIRST_ORDINARY_REG;
 		this.evalResultMap = null;
-		this.baseVal = AbstractNode.NO_VALUE;
-		this.lineOffsets = lineOffsets;
+		this.baseReg = AbstractNode.NO_VALUE;
 	}
 
-	private FlowGraphEnv(FlowGraph fg, List<List<BasicBlock>> pendingFuns, List<BasicBlock> pendingBBs, Map<Integer, AbstractNode> propertyNodes, Function fun,
-			BasicBlock breakBlock, BasicBlock continueBlock, BasicBlock declsBB, BasicBlock retBB, BasicBlock panicBB, List<BasicBlock> copyBlocks,
-			int nextTmp, int baseVal, Map<String, Integer> lineOffsets, Pair<String, Integer> evalResultMap) {
-		this(fg, pendingFuns, pendingBBs, fun, lineOffsets);
-		this.propertyNodes = propertyNodes;
-		this.breakBlock = breakBlock;
-		this.continueBlock = continueBlock;
-		this.declsBB = declsBB;
-		this.retBB = retBB;
-		this.panicBB = panicBB;
-		this.copyBlocks = copyBlocks;
-		this.nextTmp = nextTmp;
-		this.baseVal = baseVal;
-		this.evalResultMap = evalResultMap;
+	/**
+	 * Constructs a copy of this environment but updating the continue block and the break block.
+	 */
+	public FlowGraphEnv copyAndUpdateContinueBreak(BasicBlock newContinueBlock, BasicBlock newBreakBlock) {
+		return new FlowGraphEnv(fg, pendingFuns, pendingBBs, propertyNodes, loadNodes, fun, newBreakBlock, newContinueBlock, declsBB, retBB, exceptionretBB, copyBlocks, nextReg, baseReg, evalResultMap);
 	}
 
-	public FlowGraphEnv specialCopy(BasicBlock contBlock, BasicBlock escBlock) {
-		return new FlowGraphEnv(fg, pendingFuns, pendingBBs, propertyNodes, fun, escBlock, contBlock, declsBB, retBB, panicBB, copyBlocks, nextTmp, baseVal, lineOffsets, evalResultMap);
+	/**
+	 * Constructs a copy of this environment but updating the base register.
+	 */
+	public FlowGraphEnv copyAndUpdateBaseReg(int newBaseReg) {
+		return new FlowGraphEnv(fg, pendingFuns, pendingBBs, propertyNodes, loadNodes, fun, breakBlock, continueBlock, declsBB, retBB, exceptionretBB, copyBlocks, nextReg, newBaseReg, evalResultMap);
 	}
 
-	public FlowGraphEnv copyAndUpdateBaseObj(int newBaseVal) {
-		return new FlowGraphEnv(fg, pendingFuns, pendingBBs, propertyNodes, fun, breakBlock, continueBlock, declsBB, retBB, panicBB, copyBlocks, nextTmp, newBaseVal, lineOffsets, evalResultMap);
-	}
-
-	public FlowGraphEnv copyAndGiveUniquePnodes(int disqualifiedNode) {
+	/**
+	 * Constructs a copy of this environment but with its own property node map.
+	 * @param disqualifiedNode if no NO_VALUE, this register is removed from the new map
+	 */
+	public FlowGraphEnv copyAndGiveUniquePropertyNodes(int disqualifiedNode) {
 		Map<Integer, AbstractNode> pnodes = newMap(propertyNodes);
-		if (disqualifiedNode != AbstractNode.NO_VALUE)
+		Map<Integer, LoadNode> lnodes = newMap(loadNodes);
+		if (disqualifiedNode != AbstractNode.NO_VALUE){
 			pnodes.remove(disqualifiedNode);
-		return new FlowGraphEnv(fg, pendingFuns, pendingBBs, pnodes, fun, breakBlock, continueBlock, declsBB, retBB, panicBB, copyBlocks, nextTmp, baseVal, lineOffsets, evalResultMap);
-
+			lnodes.remove(disqualifiedNode);
+		}
+		return new FlowGraphEnv(fg, pendingFuns, pendingBBs, pnodes, lnodes, fun, breakBlock, continueBlock, declsBB, retBB, exceptionretBB, copyBlocks, nextReg, baseReg, evalResultMap);
 	}
 
+	/**
+	 * Constructs a copy of this environment but with a new fresh list of copy blocks initially containing the given block.
+	 */
 	public FlowGraphEnv copyAndInitializeForCopy(BasicBlock initBlock) {
 		List<BasicBlock> newCopyBlocks = newList();
 		newCopyBlocks.add(initBlock);
-		return new FlowGraphEnv(fg, pendingFuns, pendingBBs, propertyNodes, fun, breakBlock, continueBlock, declsBB, retBB, panicBB, newCopyBlocks, nextTmp, baseVal, lineOffsets, evalResultMap);
+		return new FlowGraphEnv(fg, pendingFuns, pendingBBs, propertyNodes, loadNodes, fun, breakBlock, continueBlock, declsBB, retBB, exceptionretBB, newCopyBlocks, nextReg, baseReg, evalResultMap);
+	}
+	
+	public void registerPropertyWrite(WritePropertyNode node){
+		this.propertyNodes.put(node.getBaseRegister(), node);
+	}
+	
+	public void registerRegisterLoad(LoadNode node){
+		this.propertyNodes.put(node.getResultRegister(), node);
+		this.loadNodes.put(node.getResultRegister(), node);
 	}
 }

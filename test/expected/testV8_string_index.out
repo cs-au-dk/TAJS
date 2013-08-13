@@ -1,0 +1,11 @@
+test/v8tests/string-index.js:33:1: [definite] ReferenceError, reading absent variable assertEquals
+test/v8tests/string-index.js:32:5: [definite] The variable foo is never used
+test/v8tests/string-index.js:33:14: [definite] Unreachable code
+test/v8tests/string-index.js:55:5: [definite] The variable S is never used
+test/v8tests/string-index.js:125:5: [definite] The variable N is never used
+test/v8tests/string-index.js:133:5: [definite] The variable A is never used
+test/v8tests/string-index.js:134:5: [definite] The variable A2 is never used
+test/v8tests/string-index.js:139:5: [definite] The variable S2 is never used
+test/v8tests/string-index.js:143:5: [definite] The variable s is never used
+test/v8tests/string-index.js:144:5: [definite] The variable s2 is never used
+test/v8tests/string-index.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/string-index.js:33:1]

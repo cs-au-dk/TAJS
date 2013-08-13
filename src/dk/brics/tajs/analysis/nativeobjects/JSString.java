@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Aarhus University
+ * Copyright 2009-2013 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -289,7 +289,7 @@ public class JSString {
 		case STRING_SUBSTR: { // B.2.3
 			NativeFunctions.expectParameters(nativeobject, call, c, 1, 2);
       /* Value split_pos = */ NativeFunctions.readParameter(call, state, 0);
-			return Value.makeAnyStr(); // TODO: improve precision?
+			return Value.makeAnyStr(); // TODO: improve precision? (see test/micro/test184.js)
 		}
 
         case STRING_TRIM: { // 15.5.4.20

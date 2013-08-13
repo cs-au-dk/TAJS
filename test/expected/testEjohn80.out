@@ -1,3 +1,0 @@
-test/resig/ejohn80.js:1:1: [definite] The conditional expression is always false
-test/resig/ejohn80.js:2:29: [definite] Unreachable function
-test/resig/ejohn80.js:9:25: [definite] Unreachable function

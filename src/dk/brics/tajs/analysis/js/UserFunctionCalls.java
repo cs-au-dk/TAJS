@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Aarhus University
+ * Copyright 2009-2013 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,13 +28,14 @@ import org.apache.log4j.Logger;
 
 import dk.brics.tajs.analysis.CallContext;
 import dk.brics.tajs.analysis.Conversion;
-import dk.brics.tajs.analysis.FunctionCalls;
+import dk.brics.tajs.analysis.Exceptions;
 import dk.brics.tajs.analysis.FunctionCalls.CallInfo;
 import dk.brics.tajs.analysis.InitialStateBuilder;
 import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.analysis.State;
 import dk.brics.tajs.flowgraph.AbstractNode;
 import dk.brics.tajs.flowgraph.Function;
+import dk.brics.tajs.flowgraph.ICallNode;
 import dk.brics.tajs.flowgraph.SourceLocation;
 import dk.brics.tajs.flowgraph.jsnodes.DeclareFunctionNode;
 import dk.brics.tajs.lattice.CallEdge;
@@ -45,9 +46,11 @@ import dk.brics.tajs.lattice.ScopeChain;
 import dk.brics.tajs.lattice.Summarized;
 import dk.brics.tajs.lattice.UnknownValueResolver;
 import dk.brics.tajs.lattice.Value;
+import dk.brics.tajs.options.Options;
 import dk.brics.tajs.solver.CallGraph;
 import dk.brics.tajs.solver.Message.Severity;
 import dk.brics.tajs.solver.NodeAndContext;
+import dk.brics.tajs.util.Pair;
 
 /**
  * Models calls to user-defined (non-host) functions.
@@ -120,100 +123,108 @@ public class UserFunctionCalls {
 			logger.debug("enterUserFunction from call node " + n.getIndex() + " at " + n.getSourceLocation() 
 					+ " to " + f+ " at " + f.getSourceLocation());
 		
-		State callee_state = caller_state.clone();
+		State edge_state = caller_state.clone();
 
-		// new stack frame
-		callee_state.stackObjectLabels();
-		callee_state.clearRegisters();
-
-		Summarized s = new Summarized();
-		Set<ObjectLabel> this_objs = call.prepareThis(caller_state, callee_state);
+		Set<ObjectLabel> this_objs;
+		Summarized extra_summarized = new Summarized();
 		if (call.isConstructorCall()) {
 			// 13.2.2.1-2 create new object
-			ObjectLabel new_obj = new ObjectLabel(n, Kind.OBJECT); // same as new object in determineThis
-			s.addDefinitelySummarized(new_obj);
+			this_objs = newSet();
+			ObjectLabel new_obj = new ObjectLabel(n, Kind.OBJECT);
+			edge_state.newObject(new_obj);
+			extra_summarized.addDefinitelySummarized(new_obj);
+			this_objs.add(new_obj);
 			// 13.2.2.3-5 provide [[Prototype]]
 			Value prototype = caller_state.readPropertyDirect(Collections.singleton(obj_f), "prototype");
 			prototype = UnknownValueResolver.getRealValue(prototype, caller_state);
 			if (prototype.isMaybePrimitive()) 
 				prototype = prototype.restrictToObject().joinObject(InitialStateBuilder.OBJECT_PROTOTYPE);
-			callee_state.writeInternalPrototype(new_obj, prototype);
+			edge_state.writeInternalPrototype(new_obj, prototype);
+		} else {
+			this_objs = call.prepareThis(caller_state, edge_state);
 		}
 		// 10.2.3 enter new execution context, 13.2.1 transfer parameters, 10.1.6/8 provide 'arguments' object
 		ObjectLabel varobj = new ObjectLabel(f.getEntry().getFirstNode(), Kind.ACTIVATION); // better to use entry than invoke here
-		callee_state.newObject(varobj); 
-		s.addDefinitelySummarized(varobj);
+		edge_state.newObject(varobj); 
+		extra_summarized.addDefinitelySummarized(varobj);
 		ObjectLabel argobj = new ObjectLabel(f.getEntry().getFirstNode(), Kind.ARGUMENTS);
-		callee_state.newObject(argobj);
-		s.addDefinitelySummarized(argobj);
+		edge_state.newObject(argobj);
+		extra_summarized.addDefinitelySummarized(argobj);
 		ScopeChain obj_f_sc = caller_state.readObjectScope(obj_f);
 		ScopeChain sc = ScopeChain.make(Collections.singleton(varobj), obj_f_sc);
 
-// XXX: (experiment with splitting states if 'this' holds multiple abstract objects)
-//		for (ObjectLabel this_obj : this_objs) {
-//			State copy = callee_state.clone(); // don't clone for the last one
-//			// TODO: group all summary object labels?
-		
-		callee_state.setExecutionContext(new ExecutionContext(sc, singleton(varobj), newSet(this_objs)));
-		callee_state.declareAndWriteVariable("arguments", Value.makeObject(argobj), true);
-		callee_state.writeInternalPrototype(argobj, Value.makeObject(InitialStateBuilder.OBJECT_PROTOTYPE));
-		callee_state.writePropertyWithAttributes(argobj, "callee", Value.makeObject(obj_f).setAttributes(true, false, false));
+		edge_state.setExecutionContext(new ExecutionContext(sc, singleton(varobj), newSet(this_objs)));
+		edge_state.declareAndWriteVariable("arguments", Value.makeObject(argobj), true);
+		edge_state.writeInternalPrototype(argobj, Value.makeObject(InitialStateBuilder.OBJECT_PROTOTYPE));
+		edge_state.writePropertyWithAttributes(argobj, "callee", Value.makeObject(obj_f).setAttributes(true, false, false));
 		int num_formals = f.getParameterNames().size();
 		int num_actuals = call.getNumberOfArgs();
 		boolean num_actuals_unknown = call.isUnknownNumberOfArgs();
-		callee_state.writePropertyWithAttributes(argobj, "length",
+		edge_state.writePropertyWithAttributes(argobj, "length",
 				(num_actuals_unknown ? Value.makeAnyNumUInt() : Value.makeNum(num_actuals)).setAttributes(true, false, false));
-		if (num_actuals_unknown)
-			callee_state.writeProperty(Collections.singleton(argobj), Value.makeAnyStrUInt(), call.getUnknownArg().setAttributes(true, false, false), false, false);
+		if (num_actuals_unknown) {
+			Value v = call.getUnknownArg().summarize(extra_summarized);
+			edge_state.writeProperty(Collections.singleton(argobj), Value.makeAnyStrUInt(), v.setAttributes(true, false, false), false, false);
+		}
 		for (int i = 0; i < num_formals || (!num_actuals_unknown && i < num_actuals); i++) {
 			Value v;
 			if (num_actuals_unknown || i < num_actuals) {
-				v = call.getArg(i).summarize(s);
-				callee_state.writePropertyWithAttributes(argobj, Integer.toString(i), v.setAttributes(true, false, false));
+				v = call.getArg(i).summarize(extra_summarized);
+				edge_state.writePropertyWithAttributes(argobj, Integer.toString(i), v.setAttributes(true, false, false));
 			} else
 				v = Value.makeUndef(); // 10.1.3
 			if (i < num_formals)
-				callee_state.declareAndWriteVariable(f.getParameterNames().get(i), v, true); // 10.1.3
+				edge_state.declareAndWriteVariable(f.getParameterNames().get(i), v, true); // 10.1.3
 		}
 		// FIXME: properties of 'arguments' should be shared with the formal parameters (see 10.1.8 item 4) - easy solution that does not require Reference types?
 		// (see comment at NodeTransfer/WriteVariable... - also needs the other way around...)
 
-		CallContext caller_context = c.getCurrentContext();
-		CallContext callee_context = new CallContext(callee_state, f, caller_context, null, null, c.getAnalysis().getSpecialArgs());
-		c.propagateToFunctionEntry(new CallEdge<>(callee_state), n, caller_context, f, callee_context);
+		if (c.isScanning())
+			return;
+		
+		edge_state.stackObjectLabels();
+		edge_state.clearRegisters();
 
-//			callee_state = copy;
-//		}
+		if (this_objs.size() > 1 && Options.isContextSpecializationEnabled()) {
+			// specialize edge_state such that 'this' becomes a singleton
+			logger.debug("specializing edge state, this = " + this_objs);
+			for (Iterator<ObjectLabel> it = this_objs.iterator(); it.hasNext();) {
+				ObjectLabel this_obj = it.next();
+				State next_edge_state = it.hasNext() ? edge_state.clone() : edge_state; 
+				next_edge_state.getExecutionContext().setThisObject(singleton(this_obj)); // (execution context should be writable here)
+				propagateToFunctionEntry(next_edge_state, n, f, c);
+			}
+		} else
+			propagateToFunctionEntry(edge_state, n, f, c);
+	}
+
+	private static void propagateToFunctionEntry(State edge_state, AbstractNode n, Function f, Solver.SolverInterface c) {
+		CallContext caller_context = c.getCurrentContext();
+		CallContext edge_context = new CallContext(edge_state, f.getEntry(), c.getAnalysis().getSpecialArgs());
+		c.propagateToFunctionEntry(n, caller_context, edge_state, edge_context, f.getEntry());
 	}
 
     /**
      * Determines the value of 'this' when entering a function (other than call/apply and other than constructor call to host function).
-     * May have side-effects on callee_state.
+     * May have side-effects on callee_state due to wrapping of primitive values.
      */
 	public static Set<ObjectLabel> determineThis(AbstractNode n, 
 			State caller_state, State callee_state, Solver.SolverInterface c, 
-			boolean is_constructor_call, int base_reg) {
+			int base_reg) {
 		Set<ObjectLabel> this_obj = newSet();
-		if (is_constructor_call) {
-			// 13.2.2.1-2 create new object
-			ObjectLabel t = new ObjectLabel(n, Kind.OBJECT); // same as new object in enterUserFunction
-			callee_state.newObject(t);
-			this_obj.add(t);
+		// 10.2.3.3 and 11.2.3.6
+		if (base_reg == AbstractNode.NO_VALUE) { // 11.2.1.5
+			this_obj.add(InitialStateBuilder.GLOBAL);
 		} else {
-			// 10.2.3.3 and 11.2.3.6
-			if (base_reg == AbstractNode.NO_VALUE) { // 11.2.1.5
-				this_obj.add(InitialStateBuilder.GLOBAL);
-			} else {
-				// FIXME: see 10.2.3, 11.2.3 and 11.2.1.5 - is following call to toObjectLabels correct?
-				Set<ObjectLabel> t = Conversion.toObjectLabels(callee_state, n, caller_state.readRegister(base_reg), c); // TODO: likely loss of precision if multiple object labels (or a summary object) as 'this' value
-				// TODO: disable conversion warnings for this call to Conversion.toObjectLabels? (test/micro/test163.js)
-				// 11.2.3 and 10.1.6: replace activation objects by the global object
-				for (ObjectLabel objlabel : t)
-					if (objlabel.getKind() == Kind.ACTIVATION)
-						this_obj.add(InitialStateBuilder.GLOBAL);
-					else
-						this_obj.add(objlabel);
-			}
+			// FIXME: see 10.2.3, 11.2.3 and 11.2.1.5 - is following call to toObjectLabels correct?
+			Set<ObjectLabel> t = Conversion.toObjectLabels(callee_state, n, caller_state.readRegister(base_reg), c); // TODO: likely loss of precision if multiple object labels (or a summary object) as 'this' value
+			// TODO: disable conversion warnings for this call to Conversion.toObjectLabels? (test/micro/test163.js)
+			// 11.2.3 and 10.1.6: replace activation objects by the global object
+			for (ObjectLabel objlabel : t)
+				if (objlabel.getKind() == Kind.ACTIVATION)
+					this_obj.add(InitialStateBuilder.GLOBAL);
+				else
+					this_obj.add(objlabel);
 		}
 		return this_obj;
 	}
@@ -222,7 +233,7 @@ public class UserFunctionCalls {
      * Leaves a user-defined function.
      */
 	public static void leaveUserFunction(Value returnval, boolean exceptional, Function f, State state, Solver.SolverInterface c,
-			NodeAndContext<CallContext> specific_caller) {
+			NodeAndContext<CallContext> specific_caller, CallContext specific_edge_context) {
 
 		if (f.isMain()) { // TODO: also report uncaught exceptions and return immediately for event handlers
 			final String msgkey = "Uncaught exception";
@@ -246,23 +257,95 @@ public class UserFunctionCalls {
 		if (logger.isDebugEnabled()) 
 			logger.debug("leaveUserFunction from " + f + " at " + f.getSourceLocation());
 	
-		// collect garbage
-		state.clearRegisters();
-		state.writeRegister(0, returnval); // ensures that returnval is treated as live
-		state.reduce();
+		// pop activation record
+		state.popScopeChain();
+		state.clearVariableObject();
 		state.clearRegisters();
 
 		if (specific_caller != null)
-			FunctionCalls.leaveFunction(specific_caller, returnval, exceptional, f, state, state.readThis(), c);
+			returnToCaller(specific_caller, specific_edge_context, returnval, exceptional, f, state, c);
 		else {
 			// try each call node that calls f with the current callee context
 			CallGraph<State, CallContext, CallEdge<State>> cg = c.getAnalysisLatticeElement().getCallGraph();
-			Set<NodeAndContext<CallContext>> es = cg.getSources(f.getEntry(), c.getCurrentContext());
-			for (Iterator<NodeAndContext<CallContext>> i = es.iterator(); i.hasNext(); ) {
-				NodeAndContext<CallContext> p = i.next();
-				if (c.isCallEdgeCharged(p.getNode(), p.getContext(), f, c.getCurrentContext()))
-					FunctionCalls.leaveFunction(p, returnval, exceptional, f, i.hasNext() ? state.clone() : state, state.readThis(), c);
+			Set<Pair<NodeAndContext<CallContext>,CallContext>> es = cg.getSources(c.getCurrentContext().getEntry(), c.getCurrentContext());
+			for (Iterator<Pair<NodeAndContext<CallContext>,CallContext>> i = es.iterator(); i.hasNext(); ) {
+				Pair<NodeAndContext<CallContext>,CallContext> p = i.next();
+				NodeAndContext<CallContext> caller = p.getFirst();
+				CallContext edge_context = p.getSecond();
+				if (c.isCallEdgeCharged(caller.getNode().getBlock(), caller.getContext(), edge_context, c.getCurrentContext().getEntry(), c.getCurrentContext()))
+					returnToCaller(caller, edge_context, returnval, exceptional, f, i.hasNext() ? state.clone() : state, c);
+				else if (logger.isDebugEnabled())
+					logger.debug("skipping call edge from " + caller + ", edge context " + edge_context);
 			}
+		}
+	}
+	
+	private static void returnToCaller(NodeAndContext<CallContext> caller, CallContext edge_context, Value returnval, boolean exceptional, Function f, State state, Solver.SolverInterface c) {
+        AbstractNode node = caller.getNode();
+        ICallNode callnode;
+        if (node instanceof ICallNode)
+            callnode = (ICallNode) node;
+        else
+            return; // FIXME: implicit function call to valueOf/toString (node may then not be first in its block!), how do we handle such return flow? by additional call nodes?
+		CallContext caller_context = caller.getContext();
+        boolean is_constructor = callnode.isConstructorCall();
+        int result_reg = callnode.getResultRegister();
+
+		if (logger.isDebugEnabled()) 
+			logger.debug("trying call node " + node.getIndex() + ": " + node
+					+ " at " + node.getSourceLocation() + "\n" +
+					"caller context: " + caller_context + ", callee context: " + c.getCurrentContext());
+
+		// apply inverse transform
+		state.writeRegister(0, returnval); // TODO: pass returnval explicitly through returnFromFunctionExit instead of using a register
+		c.returnFromFunctionExit(state, node, caller_context, f.getEntry(), c.getCurrentContext(), edge_context);
+		returnval = state.readRegister(0);
+		state.clearRegisters();
+		if (state.isNone())
+			return; // flow was cancelled, probably something needs to be recomputed
+
+		// merge newstate with caller state and call edge state
+		Summarized callee_summarized = new Summarized(state.getSummarized());
+		ObjectLabel activation_obj = new ObjectLabel(f.getEntry().getFirstNode(), Kind.ACTIVATION);
+		callee_summarized.addDefinitelySummarized(activation_obj);
+		ObjectLabel arguments_obj = new ObjectLabel(f.getEntry().getFirstNode(), Kind.ARGUMENTS);
+		callee_summarized.addDefinitelySummarized(arguments_obj);
+		if (is_constructor) {
+			ObjectLabel this_obj = new ObjectLabel(node, Kind.OBJECT);
+			callee_summarized.addDefinitelySummarized(this_obj);
+		} // FIXME: determineThis may create additional objects (wrapped primitives in toObjectLabels conversion) that should be included in callee_summarized!
+		State calledge_state = c.getAnalysisLatticeElement().getCallGraph().getCallEdge(node, caller_context, f.getEntry(), edge_context).getState();
+		returnval = state.mergeFunctionReturn(c.getAnalysisLatticeElement().getStates(node.getBlock()).get(caller_context), 
+				calledge_state, 
+				c.getAnalysisLatticeElement().getState(caller_context.getEntry(), caller_context),
+				callee_summarized,
+				returnval); // TODO: not obvious why this part is in dk.brics.tajs.analysis and the renaming and localization is done via dk.brics.tajs.solver... 
+		if (node.isRegistersDone())
+			state.clearOrdinaryRegisters();
+		
+		if (exceptional) { 
+			// collect garbage
+			state.reduce(returnval);
+
+			// transfer exception value to caller
+			Exceptions.throwException(state, returnval, c, node, caller_context);
+
+		} else { 
+			returnval = UnknownValueResolver.getRealValue(returnval, state);
+			if (is_constructor && returnval.isMaybePrimitive()) {
+				// 13.2.2.7-8 replace non-object by the new object (which is kept in 'this' at the call edge)
+				returnval = returnval.restrictToObject().join(Value.makeObject(calledge_state.getExecutionContext().getThisObject()));
+			}
+
+			// collect garbage
+			state.reduce(returnval);
+
+			// transfer ordinary return value to caller
+			if (result_reg != AbstractNode.NO_VALUE)
+				state.writeRegister(result_reg, returnval);
+
+			// flow to next basic block after call_node
+			c.propagateToBasicBlock(state, node.getBlock().getSingleSuccessor(), caller_context);
 		}
 	}
 }

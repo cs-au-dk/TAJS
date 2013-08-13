@@ -1,0 +1,10 @@
+test/v8tests/regexp.js:29:3: [definite] ReferenceError, reading absent variable assertEquals
+test/v8tests/regexp.js:28:1: [definite] The variable regex is never used
+test/v8tests/regexp.js:28:1: [definite] The variable str is never used
+test/v8tests/regexp.js:29:16: [definite] Unreachable code
+test/v8tests/regexp.js:33:1: [definite] Unreachable code
+test/v8tests/regexp.js:38:5: [definite] The variable s is never used
+test/v8tests/regexp.js:39:5: [definite] The variable re is never used
+test/v8tests/regexp.js:46:5: [definite] The variable result is never used
+test/v8tests/regexp.js:224:1: [definite] Unreachable function lazyLiteral
+test/v8tests/regexp.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/regexp.js:29:3]

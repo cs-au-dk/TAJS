@@ -12,5 +12,7 @@ function getElements( name ) {
 } 
 getElements.cache = {}; 
 	 
-dumpObject( getElements("pre") );
-dumpValue(getElements.cache.length)
+dumpValue( getElements("pre") );
+//dumpValue(getElements.cache.length);
+
+dumpValue( getElements("pre") );

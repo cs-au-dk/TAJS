@@ -1,3 +1,0 @@
-test/browser/domlegacy/html/HTMLTitleElement01.tidy.html:14: [definite] Reading absent property text
-test/browser/domlegacy/html/HTMLTitleElement01.tidy.html:13: [info] Abstract value: [@HTMLTitleElement[native] constructor]
-test/browser/domlegacy/html/HTMLTitleElement01.tidy.html:14: [info] Abstract value: Undef

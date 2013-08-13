@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Aarhus University
+ * Copyright 2009-2013 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,6 +19,7 @@ package dk.brics.tajs.lattice;
 import dk.brics.tajs.flowgraph.Function;
 import dk.brics.tajs.flowgraph.AbstractNode;
 import dk.brics.tajs.flowgraph.SourceLocation;
+import dk.brics.tajs.js2flowgraph.RhinoASTToFlowgraph.SourceLocationMaker;
 import dk.brics.tajs.options.Options;
 
 /**
@@ -30,7 +31,7 @@ public final class ObjectLabel implements Comparable<ObjectLabel> { // TODO: can
 	/**
 	 * Source location used for host functions.
 	 */
-	public static final SourceLocation initial_source = new SourceLocation(0, -1, "<initial state>");
+	public static final SourceLocation initial_source = SourceLocationMaker.makeUnknown("<initial state>");
 	
 	/**
 	 * Object kinds.
@@ -78,7 +79,6 @@ public final class ObjectLabel implements Comparable<ObjectLabel> { // TODO: can
 				(node != null ? node.getIndex() : 0) +
 				(singleton ? 123 : 0) +
 				kind.ordinal() * 117; // avoids using enum hashcodes
-
 	}
 	
 	/**

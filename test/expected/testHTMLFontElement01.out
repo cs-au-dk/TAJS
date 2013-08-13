@@ -1,7 +1,0 @@
-test/browser/domlegacy/html/HTMLFontElement01.tidy.html:14: [definite] Reading absent property color
-test/browser/domlegacy/html/HTMLFontElement01.tidy.html:15: [definite] Reading absent property face
-test/browser/domlegacy/html/HTMLFontElement01.tidy.html:16: [definite] Reading absent property size
-test/browser/domlegacy/html/HTMLFontElement01.tidy.html:13: [info] Abstract value: [@HTMLFontElement[native] constructor]
-test/browser/domlegacy/html/HTMLFontElement01.tidy.html:14: [info] Abstract value: Undef
-test/browser/domlegacy/html/HTMLFontElement01.tidy.html:15: [info] Abstract value: Undef
-test/browser/domlegacy/html/HTMLFontElement01.tidy.html:16: [info] Abstract value: Undef

@@ -1,3 +1,0 @@
-test/browser/domlegacy/html/HTMLMenuElement01.tidy.html:14: [definite] Reading absent property compact
-test/browser/domlegacy/html/HTMLMenuElement01.tidy.html:13: [info] Abstract value: [@HTMLMenuElement[native] constructor]
-test/browser/domlegacy/html/HTMLMenuElement01.tidy.html:14: [info] Abstract value: Undef

@@ -1,0 +1,53 @@
+fg2: <main> function()
+  block 0: [entry]
+    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0113.js:1:1)
+    node 1: function-decl[function f(x,y),-] (test/flowgraphbuilder/flowgraph_builder0113.js:1:1)
+    ->[block 1]
+  block 1:
+    node 2: new[v2] (test/flowgraphbuilder/flowgraph_builder0113.js:5:5)
+    node 3: function-expr[function(x),v3] (test/flowgraphbuilder/flowgraph_builder0113.js:5:10)
+    node 4: write-property[v2,'g',v3] (test/flowgraphbuilder/flowgraph_builder0113.js:5:5)
+    node 5: write-variable[v2,'a']* (test/flowgraphbuilder/flowgraph_builder0113.js:5:1)
+    ->[block 2]
+  block 2: [exit-ordinary]
+    node 6: return[v1] (test/flowgraphbuilder/flowgraph_builder0113.js:1:1)
+    ->[]
+  block 3: [exit-exceptional]
+    node 7: exceptional-return (test/flowgraphbuilder/flowgraph_builder0113.js:1:1)
+    ->[]
+function f(x,y)
+  block 4: [entry]
+    node 8: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0113.js:1:1)
+    ->[block 5]
+  block 5:
+    node 9: read-variable['x',v3,-] (test/flowgraphbuilder/flowgraph_builder0113.js:2:9)
+    node 10: read-property[v3,'g',-] (test/flowgraphbuilder/flowgraph_builder0113.js:2:9)
+    node 11: <variable-non-null-undef>['x'] (test/flowgraphbuilder/flowgraph_builder0113.js:2:9)
+    node 12: read-variable['y',v4,-] (test/flowgraphbuilder/flowgraph_builder0113.js:2:13)
+    ->[block 6]
+  block 6:
+    node 13: call[v3,'g',v4,v1] (test/flowgraphbuilder/flowgraph_builder0113.js:2:9)
+    ->[block 7]
+  block 7: [exit-ordinary]
+    node 14: return[v1] (test/flowgraphbuilder/flowgraph_builder0113.js:2:13)
+    ->[]
+  block 8: [exit-exceptional]
+    node 15: exceptional-return (test/flowgraphbuilder/flowgraph_builder0113.js:2:13)
+    ->[]
+function(x)
+  block 9: [entry]
+    node 16: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0113.js:5:10)
+    ->[block 10]
+  block 10:
+    node 17: read-variable['x',v1,-] (test/flowgraphbuilder/flowgraph_builder0113.js:5:31)
+    ->[block 11]
+  block 11: [exit-ordinary]
+    node 18: return[v1] (test/flowgraphbuilder/flowgraph_builder0113.js:5:31)
+    ->[]
+  block 12: [exit-exceptional]
+    node 19: exceptional-return (test/flowgraphbuilder/flowgraph_builder0113.js:5:31)
+    ->[]
+
+test/flowgraphbuilder/flowgraph_builder0113.js:5:5: [definite] Dead assignment, property g is never read
+test/flowgraphbuilder/flowgraph_builder0113.js:1:1: [definite] Unreachable function f
+test/flowgraphbuilder/flowgraph_builder0113.js:5:10: [definite] Unreachable function

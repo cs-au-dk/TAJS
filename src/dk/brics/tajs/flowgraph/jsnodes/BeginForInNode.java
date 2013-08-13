@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Aarhus University
+ * Copyright 2009-2013 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,6 +24,8 @@ import dk.brics.tajs.util.AnalysisException;
  * Begin for-in node.
  * <p>
  * for (<i>v</i><sub><i>property</i></sub> in <i>v</i><sub><i>object</i></sub>) { ... }
+ * <p>
+ * The block must have precisely one successor.
  */
 public class BeginForInNode extends Node {
 
@@ -32,12 +34,31 @@ public class BeginForInNode extends Node {
 	private int propertylist_reg;
 	
 	/**
+     * End node for this block.
+     */
+    private EndForInNode end_node;
+
+	/**
 	 * Constructs a new begin for-in node.
 	 */
 	public BeginForInNode(int object_reg, int propertylist_reg, SourceLocation location) {
 		super(location);
 		this.object_reg = object_reg;
 		this.propertylist_reg = propertylist_reg;
+	}
+	
+	/**
+	 * Sets the end node for this block.
+	 */
+	public void setEndNode(EndForInNode end_node) {
+		this.end_node = end_node;
+	}
+	
+	/**
+	 * Returns the end node for this block.
+	 */
+	public EndForInNode getEndNode() {
+		return end_node;
 	}
 
 	/**
@@ -78,6 +99,8 @@ public class BeginForInNode extends Node {
 
     @Override
     public void check(BasicBlock b) {
+        if (b.getSuccessors().size() > 1)
+            throw new AnalysisException("More than one successor for begin-for-in node block: " + b.toString());
         if (object_reg == NO_VALUE)
             throw new AnalysisException("Invalid object register: " + toString());
     }

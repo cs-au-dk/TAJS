@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Aarhus University
+ * Copyright 2009-2013 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -115,24 +115,23 @@ public class AnalysisLatticeElement<
 	}
 	
 	@Override
-	public MergeResult propagate(BlockStateType s, BasicBlock b, CallContextType c, boolean trim, boolean overwrite) {
-		logger.debug((overwrite ? "overwriting state at" : "propagating state to") + 
-				" block " + b.getIndex() + " at " + b.getSourceLocation());
+	public MergeResult propagate(BlockStateType s, BasicBlock b, CallContextType c, boolean localize) {
+		logger.debug("propagating state to block " + b.getIndex() + " at " + b.getSourceLocation());
 		s.check();
-		if (Options.isIntermediateStatesEnabled() && trim) {
-			logger.debug("before trim: " + s.toString());
+		if (Options.isIntermediateStatesEnabled() && localize) {
+			logger.debug("before localization: " + s.toString());
 		}
 		boolean add;
 		String diff = null;
 		Map<CallContextType,BlockStateType> m = getStates(b);
-		BlockStateType state_current = overwrite ? null : m.get(c);
-		s.setBasicBlock(b);
-		s.setContext(c);
+		BlockStateType state_current = m.get(c);
 		if (state_current == null) {
 			add = true;
-			if (trim) {
-				s.trim(null);
+			if (localize) {
+				s.localize(null);
 			}
+			s.setBasicBlock(b);
+			s.setContext(c);
 			m.put(c, s);
 			state_current = s;
 		} else {
@@ -144,13 +143,16 @@ public class AnalysisLatticeElement<
 				state_old = state_current.clone();
 			}
 			state_current.checkOwner(b, c);
-			if (trim) {
-				s.trim(state_current);
+//			if (Options.isIntermediateStatesEnabled() && localize) {
+//				logger.debug("before localization: " + s.toString());
+//			}
+			if (localize) {
+				s.localize(state_current);
 			}
-			if (Options.isIntermediateStatesEnabled() && trim) {
-				logger.debug("after trim, before join: " + s.toString());
+			if (Options.isIntermediateStatesEnabled() && localize) {
+				logger.debug("after localization, before join: " + s.toString());
 			}
-			add = state_current.propagate(s);
+			add = state_current.propagate(s, localize);
 			s.getSolverInterface().getMonitoring().visitJoin();
 			if (Options.isNewFlowEnabled()) {
 				diff = state_current.diff(state_old);

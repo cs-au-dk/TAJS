@@ -1,0 +1,2 @@
+test/sourcelocations/eventhandlers.tidy.html:8:2: [definite] The variable event is never used
+test/sourcelocations/eventhandlers.tidy.html:8:24: [definite] The variable varEH is never used

@@ -1,0 +1,41 @@
+Unevalizer: Starting on: "self.document"
+Unevalizer: Valid program
+Unevalizer: No name capture
+Unevalizer: Return value of eval is used
+Unevalizer: Last expression has value
+Unevalizer: Starting on: "self.document"
+Unevalizer: Valid program
+Unevalizer: No name capture
+Unevalizer: Return value of eval is used
+Unevalizer: Last expression has value
+test/uneval/uneval28.tidy.html:10:26: [definite] Variable PWAd is null/undefined
+test/uneval/uneval28.tidy.html:13:25: [definite] Variable PWAd is null/undefined
+test/uneval/uneval28.tidy.html:16:29: [definite] Variable PWAd is null/undefined
+test/uneval/uneval28.tidy.html:19:23: [definite] Variable PWAd is null/undefined
+test/uneval/uneval28.tidy.html:22:29: [definite] Variable PWAd is null/undefined
+test/uneval/uneval28.tidy.html:25:28: [definite] Variable PWAd is null/undefined
+test/uneval/uneval28.tidy.html:28:30: [definite] Variable PWAd is null/undefined
+test/uneval/uneval28.tidy.html:31:23: [definite] Variable PWAd is null/undefined
+test/uneval/uneval28.tidy.html:34:28: [definite] Variable PWAd is null/undefined
+test/uneval/uneval28.tidy.html:37:27: [definite] Variable PWAd is null/undefined
+test/uneval/uneval28.tidy.html:40:27: [definite] Variable PWAd is null/undefined
+test/uneval/uneval28.tidy.html:43:27: [definite] Variable PWAd is null/undefined
+test/uneval/uneval28.tidy.html:46:27: [definite] Variable PWAd is null/undefined
+test/uneval/uneval28.tidy.html:49:27: [definite] Variable PWAd is null/undefined
+test/uneval/uneval28.tidy.html:52:27: [definite] Variable PWAd is null/undefined
+test/uneval/uneval28.tidy.html:55:27: [definite] Variable PWAd is null/undefined
+test/uneval/uneval28.tidy.html:58:27: [definite] Variable PWAd is null/undefined
+test/uneval/uneval28.tidy.html:61:27: [definite] Variable PWAd is null/undefined
+test/uneval/uneval28.tidy.html:64:27: [definite] Variable PWAd is null/undefined
+test/uneval/uneval28.tidy.html:67:27: [definite] Variable PWAd is null/undefined
+test/uneval/uneval28.tidy.html:70:24: [definite] Variable PWAd is null/undefined
+test/uneval/uneval28.tidy.html:73:27: [definite] Variable PWAd is null/undefined
+test/uneval/uneval28.tidy.html:76:27: [definite] Variable PWAd is null/undefined
+test/uneval/uneval28.tidy.html:79:27: [definite] Variable PWAd is null/undefined
+test/uneval/uneval28.tidy.html:110:5: [definite] The conditional expression is always true
+test/uneval/uneval28.tidy.html:110:10: [definite] The conditional expression is always true
+test/uneval/uneval28.tidy.html:81:7: [definite] Unreachable code
+test/uneval/uneval28.tidy.html:86:1: [definite] Unreachable function PWAjel
+test/uneval/uneval28.tidy.html:109:1: [definite] The variable c is never used
+test/uneval/uneval28.tidy.html:111:13: [definite] The variable declaration dgg shadows a parameter
+test/uneval/uneval28.tidy.html:113:9: [definite] The variable document is never used

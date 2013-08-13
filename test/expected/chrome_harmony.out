@@ -1,0 +1,287 @@
+test/chromeexperiments/harmony.tidy.html:996:29: [definite] TypeError, call to non-function
+test/chromeexperiments/harmony.tidy.html:1005:21: [definite] TypeError, call to non-function
+test/chromeexperiments/harmony.tidy.html:497:5: [definite] The conditional expression is always false
+test/chromeexperiments/harmony.tidy.html:970:9: [definite] The conditional expression is always false
+test/chromeexperiments/harmony.tidy.html:978:9: [definite] The conditional expression is always false
+test/chromeexperiments/harmony.tidy.html:983:9: [definite] The conditional expression is always false
+test/chromeexperiments/harmony.tidy.html:1003:5: [definite] The conditional expression is always true
+test/chromeexperiments/harmony.tidy.html:1003:10: [definite] Variable brush is null/undefined
+test/chromeexperiments/harmony.tidy.html:27:21: [definite] Dead assignment, property context is never read
+test/chromeexperiments/harmony.tidy.html:27:21: [definite] Dead assignment, property count is never read
+test/chromeexperiments/harmony.tidy.html:27:21: [definite] Dead assignment, property destroy is never read
+test/chromeexperiments/harmony.tidy.html:27:21: [definite] Dead assignment, property init is never read
+test/chromeexperiments/harmony.tidy.html:27:21: [definite] Dead assignment, property prevMouseX is never read
+test/chromeexperiments/harmony.tidy.html:27:21: [definite] Dead assignment, property prevMouseY is never read
+test/chromeexperiments/harmony.tidy.html:27:21: [definite] Dead assignment, property stroke is never read
+test/chromeexperiments/harmony.tidy.html:27:21: [definite] Dead assignment, property strokeEnd is never read
+test/chromeexperiments/harmony.tidy.html:27:21: [definite] Dead assignment, property strokeStart is never read
+test/chromeexperiments/harmony.tidy.html:66:20: [definite] Dead assignment, property context is never read
+test/chromeexperiments/harmony.tidy.html:66:20: [definite] Dead assignment, property count is never read
+test/chromeexperiments/harmony.tidy.html:66:20: [definite] Dead assignment, property destroy is never read
+test/chromeexperiments/harmony.tidy.html:66:20: [definite] Dead assignment, property init is never read
+test/chromeexperiments/harmony.tidy.html:66:20: [definite] Dead assignment, property points is never read
+test/chromeexperiments/harmony.tidy.html:66:20: [definite] Dead assignment, property prevMouseX is never read
+test/chromeexperiments/harmony.tidy.html:66:20: [definite] Dead assignment, property prevMouseY is never read
+test/chromeexperiments/harmony.tidy.html:66:20: [definite] Dead assignment, property stroke is never read
+test/chromeexperiments/harmony.tidy.html:66:20: [definite] Dead assignment, property strokeEnd is never read
+test/chromeexperiments/harmony.tidy.html:66:20: [definite] Dead assignment, property strokeStart is never read
+test/chromeexperiments/harmony.tidy.html:116:17: [definite] Dead assignment, property context is never read
+test/chromeexperiments/harmony.tidy.html:116:17: [definite] Dead assignment, property count is never read
+test/chromeexperiments/harmony.tidy.html:116:17: [definite] Dead assignment, property destroy is never read
+test/chromeexperiments/harmony.tidy.html:116:17: [definite] Dead assignment, property init is never read
+test/chromeexperiments/harmony.tidy.html:116:17: [definite] Dead assignment, property points is never read
+test/chromeexperiments/harmony.tidy.html:116:17: [definite] Dead assignment, property prevMouseX is never read
+test/chromeexperiments/harmony.tidy.html:116:17: [definite] Dead assignment, property prevMouseY is never read
+test/chromeexperiments/harmony.tidy.html:116:17: [definite] Dead assignment, property stroke is never read
+test/chromeexperiments/harmony.tidy.html:116:17: [definite] Dead assignment, property strokeEnd is never read
+test/chromeexperiments/harmony.tidy.html:116:17: [definite] Dead assignment, property strokeStart is never read
+test/chromeexperiments/harmony.tidy.html:162:18: [definite] Dead assignment, property context is never read
+test/chromeexperiments/harmony.tidy.html:162:18: [definite] Dead assignment, property destroy is never read
+test/chromeexperiments/harmony.tidy.html:162:18: [definite] Dead assignment, property init is never read
+test/chromeexperiments/harmony.tidy.html:162:18: [definite] Dead assignment, property stroke is never read
+test/chromeexperiments/harmony.tidy.html:162:18: [definite] Dead assignment, property strokeEnd is never read
+test/chromeexperiments/harmony.tidy.html:162:18: [definite] Dead assignment, property strokeStart is never read
+test/chromeexperiments/harmony.tidy.html:193:21: [definite] Dead assignment, property context is never read
+test/chromeexperiments/harmony.tidy.html:193:21: [definite] Dead assignment, property count is never read
+test/chromeexperiments/harmony.tidy.html:193:21: [definite] Dead assignment, property destroy is never read
+test/chromeexperiments/harmony.tidy.html:193:21: [definite] Dead assignment, property init is never read
+test/chromeexperiments/harmony.tidy.html:193:21: [definite] Dead assignment, property points is never read
+test/chromeexperiments/harmony.tidy.html:193:21: [definite] Dead assignment, property stroke is never read
+test/chromeexperiments/harmony.tidy.html:193:21: [definite] Dead assignment, property strokeEnd is never read
+test/chromeexperiments/harmony.tidy.html:193:21: [definite] Dead assignment, property strokeStart is never read
+test/chromeexperiments/harmony.tidy.html:230:20: [definite] Dead assignment, property context is never read
+test/chromeexperiments/harmony.tidy.html:230:20: [definite] Dead assignment, property destroy is never read
+test/chromeexperiments/harmony.tidy.html:230:20: [definite] Dead assignment, property init is never read
+test/chromeexperiments/harmony.tidy.html:230:20: [definite] Dead assignment, property interval is never read
+test/chromeexperiments/harmony.tidy.html:230:20: [definite] Dead assignment, property mouseX is never read
+test/chromeexperiments/harmony.tidy.html:230:20: [definite] Dead assignment, property mouseY is never read
+test/chromeexperiments/harmony.tidy.html:230:20: [definite] Dead assignment, property painters is never read
+test/chromeexperiments/harmony.tidy.html:230:20: [definite] Dead assignment, property stroke is never read
+test/chromeexperiments/harmony.tidy.html:230:20: [definite] Dead assignment, property strokeEnd is never read
+test/chromeexperiments/harmony.tidy.html:230:20: [definite] Dead assignment, property strokeStart is never read
+test/chromeexperiments/harmony.tidy.html:291:20: [definite] Dead assignment, property context is never read
+test/chromeexperiments/harmony.tidy.html:291:20: [definite] Dead assignment, property count is never read
+test/chromeexperiments/harmony.tidy.html:291:20: [definite] Dead assignment, property destroy is never read
+test/chromeexperiments/harmony.tidy.html:291:20: [definite] Dead assignment, property init is never read
+test/chromeexperiments/harmony.tidy.html:291:20: [definite] Dead assignment, property points is never read
+test/chromeexperiments/harmony.tidy.html:291:20: [definite] Dead assignment, property prevMouseX is never read
+test/chromeexperiments/harmony.tidy.html:291:20: [definite] Dead assignment, property prevMouseY is never read
+test/chromeexperiments/harmony.tidy.html:291:20: [definite] Dead assignment, property stroke is never read
+test/chromeexperiments/harmony.tidy.html:291:20: [definite] Dead assignment, property strokeEnd is never read
+test/chromeexperiments/harmony.tidy.html:291:20: [definite] Dead assignment, property strokeStart is never read
+test/chromeexperiments/harmony.tidy.html:334:20: [definite] Dead assignment, property context is never read
+test/chromeexperiments/harmony.tidy.html:334:20: [definite] Dead assignment, property destroy is never read
+test/chromeexperiments/harmony.tidy.html:334:20: [definite] Dead assignment, property init is never read
+test/chromeexperiments/harmony.tidy.html:334:20: [definite] Dead assignment, property prevMouseX is never read
+test/chromeexperiments/harmony.tidy.html:334:20: [definite] Dead assignment, property prevMouseY is never read
+test/chromeexperiments/harmony.tidy.html:334:20: [definite] Dead assignment, property stroke is never read
+test/chromeexperiments/harmony.tidy.html:334:20: [definite] Dead assignment, property strokeEnd is never read
+test/chromeexperiments/harmony.tidy.html:334:20: [definite] Dead assignment, property strokeStart is never read
+test/chromeexperiments/harmony.tidy.html:363:21: [definite] Dead assignment, property context is never read
+test/chromeexperiments/harmony.tidy.html:363:21: [definite] Dead assignment, property count is never read
+test/chromeexperiments/harmony.tidy.html:363:21: [definite] Dead assignment, property destroy is never read
+test/chromeexperiments/harmony.tidy.html:363:21: [definite] Dead assignment, property init is never read
+test/chromeexperiments/harmony.tidy.html:363:21: [definite] Dead assignment, property points is never read
+test/chromeexperiments/harmony.tidy.html:363:21: [definite] Dead assignment, property prevMouseX is never read
+test/chromeexperiments/harmony.tidy.html:363:21: [definite] Dead assignment, property prevMouseY is never read
+test/chromeexperiments/harmony.tidy.html:363:21: [definite] Dead assignment, property stroke is never read
+test/chromeexperiments/harmony.tidy.html:363:21: [definite] Dead assignment, property strokeEnd is never read
+test/chromeexperiments/harmony.tidy.html:363:21: [definite] Dead assignment, property strokeStart is never read
+test/chromeexperiments/harmony.tidy.html:410:21: [definite] Dead assignment, property context is never read
+test/chromeexperiments/harmony.tidy.html:410:21: [definite] Dead assignment, property destroy is never read
+test/chromeexperiments/harmony.tidy.html:410:21: [definite] Dead assignment, property init is never read
+test/chromeexperiments/harmony.tidy.html:410:21: [definite] Dead assignment, property prevMouseX is never read
+test/chromeexperiments/harmony.tidy.html:410:21: [definite] Dead assignment, property prevMouseY is never read
+test/chromeexperiments/harmony.tidy.html:410:21: [definite] Dead assignment, property stroke is never read
+test/chromeexperiments/harmony.tidy.html:410:21: [definite] Dead assignment, property strokeEnd is never read
+test/chromeexperiments/harmony.tidy.html:410:21: [definite] Dead assignment, property strokeStart is never read
+test/chromeexperiments/harmony.tidy.html:450:17: [definite] Dead assignment, property context is never read
+test/chromeexperiments/harmony.tidy.html:450:17: [definite] Dead assignment, property count is never read
+test/chromeexperiments/harmony.tidy.html:450:17: [definite] Dead assignment, property destroy is never read
+test/chromeexperiments/harmony.tidy.html:450:17: [definite] Dead assignment, property init is never read
+test/chromeexperiments/harmony.tidy.html:450:17: [definite] Dead assignment, property points is never read
+test/chromeexperiments/harmony.tidy.html:450:17: [definite] Dead assignment, property prevMouseX is never read
+test/chromeexperiments/harmony.tidy.html:450:17: [definite] Dead assignment, property prevMouseY is never read
+test/chromeexperiments/harmony.tidy.html:450:17: [definite] Dead assignment, property stroke is never read
+test/chromeexperiments/harmony.tidy.html:450:17: [definite] Dead assignment, property strokeEnd is never read
+test/chromeexperiments/harmony.tidy.html:450:17: [definite] Dead assignment, property strokeStart is never read
+test/chromeexperiments/harmony.tidy.html:559:27: [definite] Dead assignment, property changeEvent is never read
+test/chromeexperiments/harmony.tidy.html:559:27: [definite] Dead assignment, property color is never read
+test/chromeexperiments/harmony.tidy.html:559:27: [definite] Dead assignment, property container is never read
+test/chromeexperiments/harmony.tidy.html:559:27: [definite] Dead assignment, property dispatcher is never read
+test/chromeexperiments/harmony.tidy.html:559:27: [definite] Dead assignment, property getColor is never read
+test/chromeexperiments/harmony.tidy.html:559:27: [definite] Dead assignment, property hide is never read
+test/chromeexperiments/harmony.tidy.html:559:27: [definite] Dead assignment, property hueSelector is never read
+test/chromeexperiments/harmony.tidy.html:559:27: [definite] Dead assignment, property luminosity is never read
+test/chromeexperiments/harmony.tidy.html:559:27: [definite] Dead assignment, property luminosityData is never read
+test/chromeexperiments/harmony.tidy.html:559:27: [definite] Dead assignment, property luminosityPosition is never read
+test/chromeexperiments/harmony.tidy.html:559:27: [definite] Dead assignment, property luminositySelector is never read
+test/chromeexperiments/harmony.tidy.html:559:27: [definite] Dead assignment, property removeEventListener is never read
+test/chromeexperiments/harmony.tidy.html:559:27: [definite] Dead assignment, property show is never read
+test/chromeexperiments/harmony.tidy.html:697:9: [definite] Dead assignment, property color is never read
+test/chromeexperiments/harmony.tidy.html:738:9: [definite] Dead assignment, property luminosityData is never read
+test/chromeexperiments/harmony.tidy.html:785:18: [definite] Dead assignment, property about is never read
+test/chromeexperiments/harmony.tidy.html:785:18: [definite] Dead assignment, property backgroundColor is never read
+test/chromeexperiments/harmony.tidy.html:785:18: [definite] Dead assignment, property clear is never read
+test/chromeexperiments/harmony.tidy.html:785:18: [definite] Dead assignment, property container is never read
+test/chromeexperiments/harmony.tidy.html:785:18: [definite] Dead assignment, property foregroundColor is never read
+test/chromeexperiments/harmony.tidy.html:785:18: [definite] Dead assignment, property save is never read
+test/chromeexperiments/harmony.tidy.html:785:18: [definite] Dead assignment, property selector is never read
+test/chromeexperiments/harmony.tidy.html:864:19: [definite] Dead assignment, property container is never read
+test/chromeexperiments/harmony.tidy.html:864:19: [definite] Dead assignment, property hide is never read
+test/chromeexperiments/harmony.tidy.html:864:19: [definite] Dead assignment, property init is never read
+test/chromeexperiments/harmony.tidy.html:864:19: [definite] Dead assignment, property show is never read
+test/chromeexperiments/harmony.tidy.html:970:13: [definite] Reading absent property canvas
+test/chromeexperiments/harmony.tidy.html:978:13: [definite] Reading absent property brush_color_red
+test/chromeexperiments/harmony.tidy.html:983:13: [definite] Reading absent property background_color_red
+test/chromeexperiments/harmony.tidy.html: [definite] Unreachable code
+test/chromeexperiments/harmony.tidy.html:24:1: [definite] Unreachable function circles
+test/chromeexperiments/harmony.tidy.html:32:11: [definite] Unreachable function
+test/chromeexperiments/harmony.tidy.html:36:14: [definite] Unreachable function
+test/chromeexperiments/harmony.tidy.html:37:18: [definite] Unreachable function
+test/chromeexperiments/harmony.tidy.html:41:13: [definite] Unreachable function
+test/chromeexperiments/harmony.tidy.html:60:16: [definite] Unreachable function
+test/chromeexperiments/harmony.tidy.html:63:1: [definite] Unreachable function chrome
+test/chromeexperiments/harmony.tidy.html:72:11: [definite] Unreachable function
+test/chromeexperiments/harmony.tidy.html:80:14: [definite] Unreachable function
+test/chromeexperiments/harmony.tidy.html:81:18: [definite] Unreachable function
+test/chromeexperiments/harmony.tidy.html:85:13: [definite] Unreachable function
+test/chromeexperiments/harmony.tidy.html:110:16: [definite] Unreachable function
+test/chromeexperiments/harmony.tidy.html:113:1: [definite] Unreachable function fur
+test/chromeexperiments/harmony.tidy.html:122:11: [definite] Unreachable function
+test/chromeexperiments/harmony.tidy.html:127:14: [definite] Unreachable function
+test/chromeexperiments/harmony.tidy.html:128:18: [definite] Unreachable function
+test/chromeexperiments/harmony.tidy.html:132:13: [definite] Unreachable function
+test/chromeexperiments/harmony.tidy.html:156:16: [definite] Unreachable function
+test/chromeexperiments/harmony.tidy.html:159:1: [definite] Unreachable function grid
+test/chromeexperiments/harmony.tidy.html:164:11: [definite] Unreachable function
+test/chromeexperiments/harmony.tidy.html:170:14: [definite] Unreachable function
+test/chromeexperiments/harmony.tidy.html:171:18: [definite] Unreachable function
+test/chromeexperiments/harmony.tidy.html:172:13: [definite] Unreachable function
+test/chromeexperiments/harmony.tidy.html:187:16: [definite] Unreachable function
+test/chromeexperiments/harmony.tidy.html:190:1: [definite] Unreachable function longfur
+test/chromeexperiments/harmony.tidy.html:197:11: [definite] Unreachable function
+test/chromeexperiments/harmony.tidy.html:203:14: [definite] Unreachable function
+test/chromeexperiments/harmony.tidy.html:204:18: [definite] Unreachable function
+test/chromeexperiments/harmony.tidy.html:205:13: [definite] Unreachable function
+test/chromeexperiments/harmony.tidy.html:224:16: [definite] Unreachable function
+test/chromeexperiments/harmony.tidy.html:227:1: [definite] Unreachable function ribbon
+test/chromeexperiments/harmony.tidy.html:236:11: [definite] Unreachable function
+test/chromeexperiments/harmony.tidy.html:255:9: [definite] Unreachable function d
+test/chromeexperiments/harmony.tidy.html:269:14: [definite] Unreachable function
+test/chromeexperiments/harmony.tidy.html:272:18: [definite] Unreachable function
+test/chromeexperiments/harmony.tidy.html:281:13: [definite] Unreachable function
+test/chromeexperiments/harmony.tidy.html:285:16: [definite] Unreachable function
+test/chromeexperiments/harmony.tidy.html:288:1: [definite] Unreachable function shaded
+test/chromeexperiments/harmony.tidy.html:297:11: [definite] Unreachable function
+test/chromeexperiments/harmony.tidy.html:303:14: [definite] Unreachable function
+test/chromeexperiments/harmony.tidy.html:304:18: [definite] Unreachable function
+test/chromeexperiments/harmony.tidy.html:308:13: [definite] Unreachable function
+test/chromeexperiments/harmony.tidy.html:328:16: [definite] Unreachable function
+test/chromeexperiments/harmony.tidy.html:331:1: [definite] Unreachable function simple
+test/chromeexperiments/harmony.tidy.html:338:11: [definite] Unreachable function
+test/chromeexperiments/harmony.tidy.html:342:14: [definite] Unreachable function
+test/chromeexperiments/harmony.tidy.html:343:18: [definite] Unreachable function
+test/chromeexperiments/harmony.tidy.html:347:13: [definite] Unreachable function
+test/chromeexperiments/harmony.tidy.html:357:16: [definite] Unreachable function
+test/chromeexperiments/harmony.tidy.html:360:1: [definite] Unreachable function sketchy
+test/chromeexperiments/harmony.tidy.html:369:11: [definite] Unreachable function
+test/chromeexperiments/harmony.tidy.html:375:14: [definite] Unreachable function
+test/chromeexperiments/harmony.tidy.html:376:18: [definite] Unreachable function
+test/chromeexperiments/harmony.tidy.html:380:13: [definite] Unreachable function
+test/chromeexperiments/harmony.tidy.html:404:16: [definite] Unreachable function
+test/chromeexperiments/harmony.tidy.html:407:1: [definite] Unreachable function squares
+test/chromeexperiments/harmony.tidy.html:414:11: [definite] Unreachable function
+test/chromeexperiments/harmony.tidy.html:418:14: [definite] Unreachable function
+test/chromeexperiments/harmony.tidy.html:419:18: [definite] Unreachable function
+test/chromeexperiments/harmony.tidy.html:423:13: [definite] Unreachable function
+test/chromeexperiments/harmony.tidy.html:444:16: [definite] Unreachable function
+test/chromeexperiments/harmony.tidy.html:447:1: [definite] Unreachable function web
+test/chromeexperiments/harmony.tidy.html:456:11: [definite] Unreachable function
+test/chromeexperiments/harmony.tidy.html:462:14: [definite] Unreachable function
+test/chromeexperiments/harmony.tidy.html:463:18: [definite] Unreachable function
+test/chromeexperiments/harmony.tidy.html:467:13: [definite] Unreachable function
+test/chromeexperiments/harmony.tidy.html:492:16: [definite] Unreachable function
+test/chromeexperiments/harmony.tidy.html:570:13: [definite] The variable m is never used
+test/chromeexperiments/harmony.tidy.html:571:19: [definite] The variable d is never used
+test/chromeexperiments/harmony.tidy.html:625:9: [definite] Unreachable function l
+test/chromeexperiments/harmony.tidy.html:630:9: [definite] Unreachable function c
+test/chromeexperiments/harmony.tidy.html:633:9: [definite] Unreachable function h
+test/chromeexperiments/harmony.tidy.html:638:9: [definite] Unreachable function f
+test/chromeexperiments/harmony.tidy.html:646:9: [definite] Unreachable function a
+test/chromeexperiments/harmony.tidy.html:652:9: [definite] Unreachable function j
+test/chromeexperiments/harmony.tidy.html:659:9: [definite] Unreachable function e
+test/chromeexperiments/harmony.tidy.html:686:11: [definite] Unreachable function
+test/chromeexperiments/harmony.tidy.html:689:11: [definite] Unreachable function
+test/chromeexperiments/harmony.tidy.html:692:15: [definite] Unreachable function
+test/chromeexperiments/harmony.tidy.html:746:26: [definite] Unreachable function
+test/chromeexperiments/harmony.tidy.html:861:1: [definite] Unreachable function About
+test/chromeexperiments/harmony.tidy.html:866:11: [definite] Unreachable function
+test/chromeexperiments/harmony.tidy.html:902:11: [definite] Unreachable function
+test/chromeexperiments/harmony.tidy.html:905:11: [definite] Unreachable function
+test/chromeexperiments/harmony.tidy.html:909:5: [definite] The variable REV is never used
+test/chromeexperiments/harmony.tidy.html:912:5: [definite] The variable BRUSH_SIZE is never used
+test/chromeexperiments/harmony.tidy.html:913:5: [definite] The variable BRUSH_PRESSURE is never used
+test/chromeexperiments/harmony.tidy.html:917:12: [definite] The variable saveTimeOut is never used
+test/chromeexperiments/harmony.tidy.html:917:25: [definite] The variable wacom is never used
+test/chromeexperiments/harmony.tidy.html:917:35: [definite] The variable mouseX is never used
+test/chromeexperiments/harmony.tidy.html:918:5: [definite] The variable mouseY is never used
+test/chromeexperiments/harmony.tidy.html:919:72: [definite] The variable about is never used
+test/chromeexperiments/harmony.tidy.html:919:111: [definite] The variable isFgColorSelectorVisible is never used
+test/chromeexperiments/harmony.tidy.html:920:5: [definite] The variable isBgColorSelectorVisible is never used
+test/chromeexperiments/harmony.tidy.html:921:5: [definite] The variable isAboutVisible is never used
+test/chromeexperiments/harmony.tidy.html:922:5: [definite] The variable isMenuMouseOver is never used
+test/chromeexperiments/harmony.tidy.html:923:5: [definite] The variable shiftKeyIsDown is never used
+test/chromeexperiments/harmony.tidy.html:924:5: [definite] The variable altKeyIsDown is never used
+test/chromeexperiments/harmony.tidy.html:928:24: [definite] The variable embed is never used
+test/chromeexperiments/harmony.tidy.html:928:31: [definite] The variable localStorageImage is never used
+test/chromeexperiments/harmony.tidy.html:972:56: [definite] Unreachable function
+test/chromeexperiments/harmony.tidy.html:996:17: [definite] Unreachable code
+test/chromeexperiments/harmony.tidy.html:1005:9: [definite] Unreachable code
+test/chromeexperiments/harmony.tidy.html:1021:1: [definite] Unreachable function onWindowMouseMove
+test/chromeexperiments/harmony.tidy.html:1025:1: [definite] Unreachable function onWindowResize
+test/chromeexperiments/harmony.tidy.html:1032:1: [definite] Unreachable function onWindowKeyDown
+test/chromeexperiments/harmony.tidy.html:1056:1: [definite] Unreachable function onWindowKeyUp
+test/chromeexperiments/harmony.tidy.html:1074:1: [definite] Unreachable function onWindowBlur
+test/chromeexperiments/harmony.tidy.html:1078:1: [definite] Unreachable function onDocumentMouseDown
+test/chromeexperiments/harmony.tidy.html:1083:1: [definite] Unreachable function onDocumentMouseOut
+test/chromeexperiments/harmony.tidy.html:1086:1: [definite] Unreachable function onForegroundColorSelectorChange
+test/chromeexperiments/harmony.tidy.html:1095:1: [definite] Unreachable function onBackgroundColorSelectorChange
+test/chromeexperiments/harmony.tidy.html:1105:1: [definite] Unreachable function onMenuForegroundColor
+test/chromeexperiments/harmony.tidy.html:1112:1: [definite] Unreachable function onMenuBackgroundColor
+test/chromeexperiments/harmony.tidy.html:1119:1: [definite] Unreachable function onMenuSelectorChange
+test/chromeexperiments/harmony.tidy.html:1129:1: [definite] Unreachable function onMenuMouseOver
+test/chromeexperiments/harmony.tidy.html:1132:1: [definite] Unreachable function onMenuMouseOut
+test/chromeexperiments/harmony.tidy.html:1135:1: [definite] Unreachable function onMenuSave
+test/chromeexperiments/harmony.tidy.html:1139:1: [definite] Unreachable function onMenuClear
+test/chromeexperiments/harmony.tidy.html:1150:1: [definite] Unreachable function onMenuAbout
+test/chromeexperiments/harmony.tidy.html:1155:1: [definite] Unreachable function onCanvasMouseDown
+test/chromeexperiments/harmony.tidy.html:1171:1: [definite] Unreachable function onCanvasMouseMove
+test/chromeexperiments/harmony.tidy.html:1175:1: [definite] Unreachable function onCanvasMouseUp
+test/chromeexperiments/harmony.tidy.html:1184:1: [definite] Unreachable function onCanvasTouchStart
+test/chromeexperiments/harmony.tidy.html:1193:1: [definite] Unreachable function onCanvasTouchMove
+test/chromeexperiments/harmony.tidy.html:1199:1: [definite] Unreachable function onCanvasTouchEnd
+test/chromeexperiments/harmony.tidy.html:1207:1: [definite] Unreachable function saveToLocalStorage
+test/chromeexperiments/harmony.tidy.html:1210:1: [definite] Unreachable function flatten
+test/chromeexperiments/harmony.tidy.html:1216:1: [definite] Unreachable function cleanPopUps
+test/chromeexperiments/harmony.tidy.html:822:27: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/harmony.tidy.html:936:5: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/harmony.tidy.html:20: [maybe] Uncaught exception, constructed at [test/chromeexperiments/harmony.tidy.html:822:27, test/chromeexperiments/harmony.tidy.html:936:5, test/chromeexperiments/harmony.tidy.html:996:29, test/chromeexperiments/harmony.tidy.html:1005:21]
+test/chromeexperiments/harmony.tidy.html:704:9: [maybe] Conversion to number yields NaN
+test/chromeexperiments/harmony.tidy.html:705:9: [maybe] Conversion to number yields NaN
+test/chromeexperiments/harmony.tidy.html:706:9: [maybe] Conversion to number yields NaN
+test/chromeexperiments/harmony.tidy.html:822:27: [maybe] Converting object to string
+test/chromeexperiments/harmony.tidy.html:822:27: [maybe] Converting primitive string to object
+test/chromeexperiments/harmony.tidy.html:822:27: [maybe] Reading absent property (computed name)
+test/chromeexperiments/harmony.tidy.html:909:153: [maybe] Converting object to string
+test/chromeexperiments/harmony.tidy.html:909:153: [maybe] Converting primitive string to object
+test/chromeexperiments/harmony.tidy.html:929:9: [maybe] Converting primitive string to object
+test/chromeexperiments/harmony.tidy.html:929:46: [maybe] Converting primitive string to object
+test/chromeexperiments/harmony.tidy.html:932:9: [maybe] Converting primitive string to object
+test/chromeexperiments/harmony.tidy.html:932:45: [maybe] Converting primitive string to object
+test/chromeexperiments/harmony.tidy.html:936:5: [maybe] Reading absent property (computed name)
+test/chromeexperiments/harmony.tidy.html:969:9: [maybe] The variable STORAGE has values with different types
+test/chromeexperiments/harmony.tidy.html:992:16: [maybe] Converting primitive string to object
+test/chromeexperiments/harmony.tidy.html:992:47: [maybe] Converting primitive string to object
+test/chromeexperiments/harmony.tidy.html:994:25: [maybe] Reading absent property (computed name)
+test/chromeexperiments/harmony.tidy.html:995:32: [maybe] Reading absent property (computed name)

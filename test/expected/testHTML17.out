@@ -1,5 +1,0 @@
-test/html/html17.html:1: [definite] ReferenceError, reading absent variable: hest
-test/html/html17.html:1: [definite] Uncaught exception, constructed at [test/html/html17.html:1]
-test/html/html17.html:1: [definite] Unreachable code
-test/html/html17.html:1: [definite] Unreachable function
-test/html/html17.html:2: [definite] Unreachable code

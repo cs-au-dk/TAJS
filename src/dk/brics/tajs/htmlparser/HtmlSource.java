@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Aarhus University
+ * Copyright 2009-2013 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,8 +28,11 @@ import java.util.Map;
 public class HtmlSource {
 
     private final String tag;
+
     private final Map<String, String> attributes;
+    
     private final String fileName;
+    
     private final int lineNumber;
 
     /**

@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Aarhus University
+ * Copyright 2009-2013 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,7 +23,6 @@ import java.util.Set;
 
 import org.apache.log4j.Logger;
 
-import dk.brics.tajs.unevalizer.Unevalizer;
 import dk.brics.tajs.analysis.CallContext;
 import dk.brics.tajs.analysis.Conversion;
 import dk.brics.tajs.analysis.EvalCache;
@@ -49,6 +48,7 @@ import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.solver.Message.Severity;
 import dk.brics.tajs.solver.NodeAndContext;
+import dk.brics.tajs.unevalizer.Unevalizer;
 import dk.brics.tajs.util.AnalysisException;
 import dk.brics.tajs.util.Strings;
 
@@ -76,11 +76,6 @@ public class JSFunction {
                 return Value.makeNone();
 
 			if (Options.isUnevalEnabled()) {
-                // Let the tests run on the new flow graph builder despite running with an old flow graph builder, but
-                // otherwise bail out.
-                if (Options.isOldFlowgraphBuilderEnabled())
-                    throw new AnalysisException("-uneval needs the new flow graph builder to work.");
-
                 FlowGraph currentFg = c.getFlowGraph();
 
 				//First parse the argument string

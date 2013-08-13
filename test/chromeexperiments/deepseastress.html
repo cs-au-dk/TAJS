@@ -1,0 +1,477 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en"><head>
+
+	
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<title>Deep Sea Stress JS</title>
+		<script type="text/javascript">
+/* Deep Sea JS. Copyright (C) 2010 Monokai. */
+var z = {
+    a: {}
+};
+window.deepSea = z;
+z.a.g = function (O, P, I, J, Q, R, S, K, r) {
+    function s(k, t) {
+        return Math.atan2(Math.sin(k - t), Math.cos(k - t))
+    }
+    function C() {
+        if (i) {
+            i.b();
+            i.c();
+            V = Math.atan2(p - L, h - X);
+            if (Math.abs(s(V, i.h())) < A / 2) M += s(V, M) * T;
+            var k = M + A,
+                t = i.b() + Math.cos(k) * j;
+            k = i.c() + Math.sin(k) * j;
+            f += (t - h) * d;
+            g += (k - p) * d;
+            h += f *= l;
+            p += g *= l
+        }
+        if (Math.random() < 0.01) M += Math.random() * A / 4 - A / 8
+    }
+    function x() {
+        return M
+    }
+    function u() {
+        return h
+    }
+    function F() {
+        return p
+    }
+    function v() {
+        return m
+    }
+    function w(k) {
+        M = k
+    }
+    function q(k, t) {
+        X = k;
+        L = t
+    }
+    function D(k) {
+        h = k
+    }
+    function y(k) {
+        p = k
+    }
+    function E() {
+        e.beginPath();
+        e.arc(h, p, Y, 0, a, false);
+        e.closePath();
+        e.fill()
+    }
+    var A = Math.PI,
+        a = A * 2,
+        e, h, p, i, f = 0,
+        g = 0,
+        d, l, j, V = 0,
+        X = 0,
+        L = 0,
+        T, m, M = Math.random() * a,
+        Y = 3;
+    e = O;
+    h = P || 0;
+    p = I || 0;
+    i = J;
+    T = Q || 0;
+    j = R || 10;
+    m = S || 0;
+    d = K || 0;
+    l = r || 0;
+    return {
+        e: E,
+        h: x,
+        b: u,
+        c: F,
+        m: v,
+        o: w,
+        d: q,
+        i: D,
+        j: y,
+        update: C
+    }
+};
+z.a.l = function (O, P, I, J, Q, R, S) {
+    function K() {
+        y.push(v);
+        for (var d = v, l = a, j = 1; j < q; j++) {
+            d = new u(w, v.b(), v.c(), d, D * j / q, l, j, i, f);
+            l *= e;
+            y.push(d);
+            d = d
+        }
+    }
+    function r() {
+        for (var d = 0; d < q; d++) {
+            var l = y[d];
+            l.o(l.h() + Math.random() * F - F / 2)
+        }
+    }
+    function s() {
+        var d;
+        w.moveTo(v.b(), v.c());
+        w.beginPath();
+        g = [Number.MAX_VALUE, Number.MAX_VALUE, Number.MIN_VALUE, Number.MIN_VALUE];
+        for (var l = 0; l < q; l++) {
+            d = y[l];
+            d.d(E, A);
+            d.update();
+            w.lineWidth = p + (h - p) * (q - d.m()) / q;
+            var j = d.b();
+            d = d.c();
+            if (j < g[0]) g[0] = j;
+            if (d < g[1]) g[1] = d;
+            if (j > g[2]) g[2] = j;
+            if (d > g[3]) g[3] = d;
+            w.lineTo(j, d);
+            w.stroke()
+        }
+    }
+    function C() {
+        return [g[0] - h, g[1] - h, g[2] + h, g[3] + h]
+    }
+    function x(d, l) {
+        E = d;
+        A = l
+    }
+    var u = z.a.g,
+        F = Math.PI,
+        v, w, q, D = 0.025,
+        y = [],
+        E = 0,
+        A = 0,
+        a, e, h = 8,
+        p = 2,
+        i, f, g;
+    w = O;
+    v = P;
+    q = I || 8;
+    a = R || 50;
+    e = S || 0.75;
+    i = J;
+    f = Q;
+    q++;
+    K();
+    return {
+        e: s,
+        f: C,
+        d: x,
+        stress: r
+    }
+};
+z.a.k = function (O, P, I, J, Q, R, S, K, r) {
+    function s() {
+        j = new h;
+        for (var b = 0; b < g; b++) {
+            k.push(new h(f, n, o));
+            var c = new p(f, k[b], d, ca, da, ea, fa);
+            l.push(c)
+        }
+        x(n, o)
+    }
+    function C(b, c) {
+        t = b;
+        N = c
+    }
+    function x(b, c) {
+        j.i(b);
+        j.j(c);
+        for (b = 0; b < k.length; b++) {
+            k[b].i(j.b() + Math.cos(b / g * i) * V);
+            k[b].j(j.c() + Math.sin(b / g * i) * V)
+        }
+    }
+    function u() {
+        T += Y;
+        if (T > i) T -= i;
+        m = Math.sin(T) * M;
+        n += G *= ga;
+        o += H *= ga;
+        x(n, o + m);
+        if (Math.abs(G) < 0.1 && Math.abs(H) < 0.1) U = false;
+        if (Math.abs(G) < 2 && Math.abs(H) < 2) Z = false;
+        Math.random() < 0.0030 && !U && q();
+        Math.random() < 0.0020 && !U && D();
+        F($) && w();
+        F(ia) && !Z && v();
+        if (n < 0) {
+            G *= -0.5;
+            n = 0
+        }
+        if (n > aa) {
+            G *= -0.5;
+            n = aa
+        }
+        if (o + m < 100) {
+            H *= -0.5;
+            o = 100 - m
+        }
+        if (o + m > ba) {
+            H *= -0.5;
+            o = ba - m
+        }
+    }
+    function F(b) {
+        var c = t - n,
+            W = N - o - m;
+        return c * c + W * W <= b * b
+    }
+    function v() {
+        Z = U = true;
+        var b = Math.atan2(N - o - m, t - n) + Math.PI,
+            c = Math.random() * 8 + 5;
+        G = Math.cos(b) * c;
+        H = Math.sin(b) * c;
+        for (b = 0; b < g; b++) Math.random() < 0.65 && l[b].stress()
+    }
+    function w() {
+        U = true;
+        var b = Math.atan2(N - o - m, t - n) + Math.PI,
+            c = t - n,
+            W = N - o - m;
+        c = Math.sqrt(c * c + W * W);
+        G += Math.cos(b) * ($ - c) * ha;
+        H += Math.sin(b) * ($ - c) * ha
+    }
+    function q() {
+        U = true;
+        var b =
+        Math.atan2(N - o - m, t - n),
+            c = Math.sqrt(Math.pow(N - o - m, 2) + Math.pow(t - n, 2)) / 75;
+        G = Math.cos(b) * c;
+        H = Math.sin(b) * c
+    }
+    function D() {
+        U = true;
+        var b = Math.random() * i,
+            c = Math.random() * 10;
+        G = Math.cos(b) * c;
+        H = Math.sin(b) * c
+    }
+    function y() {
+        f.fillStyle = "#000";
+        B = [n - L - 5, o + m - L - 5, n + L + 5, o + m + L + 5];
+        for (var b = 0; b < g; b++) {
+            var c = l[b];
+            c.d(t, N);
+            c.e();
+            c = c.f();
+            if (c[0] < B[0]) B[0] = c[0];
+            if (c[1] < B[1]) B[1] = c[1];
+            if (c[2] > B[2]) B[2] = c[2];
+            if (c[3] > B[3]) B[3] = c[3]
+        }
+        f.beginPath();
+        f.arc(n, o + m, L, 0, i, false);
+        f.closePath();
+        f.fill();
+        f.fillStyle = "#fff";
+        f.beginPath();
+        f.arc(n, o + m, X, 0, i, false);
+        f.closePath();
+        f.fill()
+    }
+    function E() {
+        return n
+    }
+    function A() {
+        return o + m
+    }
+    function a() {
+        aa = f.canvas.width;
+        ba = f.canvas.height
+    }
+    function e() {
+        return B
+    }
+    var h = z.a.g,
+        p = z.a.l,
+        i = Math.PI * 2,
+        f, g, d, l = [],
+        j, V = 10,
+        X = 8,
+        L = 15,
+        T = 0,
+        m, M = 25,
+        Y = 0.015,
+        k = [],
+        t, N, n, o, G = 0,
+        H = 0,
+        ga = 0.98,
+        U = false,
+        Z = false,
+        ia = 20,
+        $ = 150,
+        ha = 2.5E-4,
+        aa, ba, ca, da, ea, fa, B;
+    f = O;
+    n = P;
+    o = I;
+    g = J || 8;
+    d = Q || 8;
+    ca = R;
+    da = S;
+    ea = K;
+    fa = r;
+    a();
+    B = [0, 0, f.canvas.width, f.canvas.height];
+    s();
+    return {
+        f: e,
+        b: E,
+        c: A,
+        e: y,
+        n: a,
+        d: C,
+        update: u
+    }
+};
+z.a.p = function () {
+    function O(a, e, h, p, i, f, g, d, l, j) {
+        q = e || false;
+        E = h || true;
+        r = p || 1;
+        C = document.getElementById(a);
+        u = C.appendChild(document.createElement("canvas"));
+        x = u.getContext("2d");
+        q && I();
+        u.addEventListener("mousemove", Q, false);
+        if (q) window.onresize = I;
+        else {
+            u.width = C.offsetWidth;
+            u.height = C.offsetHeight;
+            J()
+        }
+        D = u.width;
+        y = u.height;
+        for (a = 0; a < r; a++) s.push(new K(x, Math.random() * D, Math.random() * y, i, f, g, d, l, j));
+        A = window.setInterval(R, 1E3 / F)
+    }
+    function P(a, e, h, p, i, f, g) {
+        r = a;
+        s = [];
+        for (a = 0; a < r; a++) s.push(new K(x, Math.random() * D, Math.random() * y, e, h, p, i, f, g))
+    }
+    function I() {
+        u.width = window.innerWidth;
+        u.height = window.innerHeight;
+        for (var a = 0; a < r; a++) s[a] && s[a].n();
+        J()
+    }
+    function J() {
+        x.strokeStyle = "#000";
+        x.lineCap = x.lineJoin = "round"
+    }
+    function Q(a) {
+        if (a.layerX || a.layerX === 0) {
+            v = a.layerX;
+            w = a.layerY
+        } else if (a.offsetX || a.offsetX === 0) {
+            v = a.offsetX;
+            w = a.offsetY
+        }
+    }
+    function R() {
+        for (var a = 0; a < r; a++) {
+            var e = s[a];
+            e = e.f();
+            x.clearRect(e[0], e[1], e[2] - e[0], e[3] - e[1])
+        }
+        for (a = 0; a < r; a++) {
+            e = s[a];
+            if (E) e.d(v, w);
+            else if (r == 1) e.d(D / 2, y / 2);
+            else {
+                var h = s[(a + 1) % r];
+                e.d(h.b(), h.c())
+            }
+            e.update();
+            e.e()
+        }
+    }
+    function S(a) {
+        E = a
+    }
+    var K = z.a.k,
+        r, s = [],
+        C, x, u, F = 60,
+        v = 0,
+        w = 0,
+        q, D, y, E, A;
+    z.init = O;
+    z.reload = P;
+    z.setMouseInteraction = S
+}();
+
+</script>
+		<link href="deepseastress_files/deepSea.css" rel="stylesheet" type="text/css">
+
+	</head><body>
+		<div id="stats"></div>
+		<div id="header">
+			<form action="javascript:;" method="get" id="deepSeaForm">
+				<label for="numCreatures" id="labelNumCreatures"># creatures</label>
+				<input name="numCreatures" id="numCreatures" class="valueBox" onkeypress="javascript:onKeyPressed(event, this.form);" value="10" type="text">
+				<label for="numTentacles" id="labelNumTentacles"># tentacles</label>
+				<input name="numTentacles" id="numTentacles" class="valueBox" onkeypress="javascript:onKeyPressed(event, this.form);" value="2" type="text">
+				<label for="numJoints" id="labelJoints"># joints</label>
+				<input name="numJoints" id="numJoints" class="valueBox" onkeypress="javascript:onKeyPressed(event, this.form);" value="16" type="text">
+				<label for="springFactor" id="labelSpringFactor">spring factor </label>
+				<input name="springFactor" id="springFactor" class="valueBox" onkeypress="javascript:onKeyPressed(event, this.form);" value="0.4" type="text">
+				<label for="friction" id="labelFriction">friction </label>
+				<input name="friction" id="friction" class="valueBox" onkeypress="javascript:onKeyPressed(event, this.form);" value="0.12" type="text">				
+				<br>
+				<label for="partLength" id="labelPartLength">part length</label>
+				<input name="partLength" id="partLength" class="valueBox" onkeypress="javascript:onKeyPressed(event, this.form);" value="25" type="text">				
+				<label for="growFactor" id="labelGrowFactor">grow factor</label>
+				<input name="growFactor" id="growFactor" class="valueBox" onkeypress="javascript:onKeyPressed(event, this.form);" value="0.75" type="text">				
+				<label for="toggle" id="labelToggle">mouse interaction</label>
+				<input name="toggle" id="toggle" onclick="javascript:toggleMouseInteraction(this.form);" value="disable" type="button">
+			</form>
+			<p>D<a href="http://www.monokai.nl/">Monokai</a>  Also have a look at my other project: <a href="http://www.monoslideshow.com/">Monoslideshow</a></p>
+		</div>
+		<div id="deepSea"><canvas height="716" width="1157"></canvas></div>
+		<script type="text/javascript">
+			
+			/*
+			try {
+				var stats = new Stats();
+				document.getElementById('stats').appendChild(stats.domElement);
+				setInterval(function () {
+					stats.update();
+				}, 1000 / 60);
+			} catch(e) {
+				log('error loading Stats:' + e);
+			}
+			*/
+			
+			var mouseInteractionToggle = true;
+			
+			function onKeyPressed(event, form) {
+				var key = event.keyCode || event.which;
+				if (key != 13) return;
+				deepSea.reload(form.numCreatures.value, form.numTentacles.value, form.numJoints.value, form.springFactor.value, form.friction.value, form.partLength.value, form.growFactor.value);
+			}
+			
+			function toggleMouseInteraction(form) {
+				mouseInteractionToggle = !mouseInteractionToggle;
+				form.toggle.value = mouseInteractionToggle ? "disable" : "enable";
+				deepSea.setMouseInteraction(mouseInteractionToggle);
+			}
+			
+			window.onload = function() {
+				var form = document.getElementById("deepSeaForm");
+				form.numCreatures.value = 1;
+				form.numTentacles.value = 8;
+				form.numJoints.value = 8;
+				form.springFactor.value = 0.4;
+				form.friction.value = 0.12;
+				form.partLength.value = 50;
+				form.growFactor.value = 0.75;
+				
+				deepSea.init('deepSea', true, true, form.numCreatures.value, form.numTentacles.value, form.numJoints.value, form.springFactor.value, form.friction.value, form.partLength.value, form.growFactor.value);
+			};
+			
+		</script>
+	</body></html>

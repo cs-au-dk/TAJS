@@ -1,0 +1,10 @@
+test/v8tests/obj-construct.js:38:1: [definite] ReferenceError, reading absent variable assertFalse
+test/v8tests/obj-construct.js:28:5: [definite] The variable consCalled is never used
+test/v8tests/obj-construct.js:30:1: [definite] Unreachable function Object
+test/v8tests/obj-construct.js:34:1: [definite] Unreachable function Array
+test/v8tests/obj-construct.js:38:13: [definite] Unreachable code
+test/v8tests/obj-construct.js:39:5: [definite] The variable x1 is never used
+test/v8tests/obj-construct.js:41:5: [definite] The variable x2 is never used
+test/v8tests/obj-construct.js:43:5: [definite] The variable x3 is never used
+test/v8tests/obj-construct.js:45:5: [definite] The variable x4 is never used
+test/v8tests/obj-construct.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/obj-construct.js:38:1]

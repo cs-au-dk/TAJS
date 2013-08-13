@@ -4,7 +4,7 @@ var z = 0;
 var a;
 for (a in x) {
   z += x[a];
-  if (z = 42)
+  if (z == 42)
     delete x["c"]
 }
 

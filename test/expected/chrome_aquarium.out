@@ -1,0 +1,46 @@
+test/chromeexperiments/aquarium.tidy.html:151:2: [definite] Unreachable function mmouse
+test/chromeexperiments/aquarium.tidy.html:123:40: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/aquarium.tidy.html:123:51: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/aquarium.tidy.html:124:40: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/aquarium.tidy.html:124:51: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/aquarium.tidy.html:127:41: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/aquarium.tidy.html:128:41: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/aquarium.tidy.html:130:41: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/aquarium.tidy.html:131:41: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/aquarium.tidy.html:135:31: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/aquarium.tidy.html:136:31: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/aquarium.tidy.html:139:25: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/aquarium.tidy.html:140:25: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/aquarium.tidy.html:143:17: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/aquarium.tidy.html:144:17: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/aquarium.tidy.html:26: [maybe] Uncaught exception, constructed at [test/chromeexperiments/aquarium.tidy.html:123:40, test/chromeexperiments/aquarium.tidy.html:123:51, test/chromeexperiments/aquarium.tidy.html:124:40, test/chromeexperiments/aquarium.tidy.html:124:51, test/chromeexperiments/aquarium.tidy.html:127:41, test/chromeexperiments/aquarium.tidy.html:128:41, test/chromeexperiments/aquarium.tidy.html:130:41, test/chromeexperiments/aquarium.tidy.html:131:41, test/chromeexperiments/aquarium.tidy.html:135:31, test/chromeexperiments/aquarium.tidy.html:136:31, test/chromeexperiments/aquarium.tidy.html:139:25, test/chromeexperiments/aquarium.tidy.html:140:25, test/chromeexperiments/aquarium.tidy.html:143:17, test/chromeexperiments/aquarium.tidy.html:144:17]
+test/chromeexperiments/aquarium.tidy.html:123:40: [maybe] Reading absent property (computed name)
+test/chromeexperiments/aquarium.tidy.html:123:51: [maybe] Reading absent property (computed name)
+test/chromeexperiments/aquarium.tidy.html:124:40: [maybe] Reading absent property (computed name)
+test/chromeexperiments/aquarium.tidy.html:124:51: [maybe] Reading absent property (computed name)
+test/chromeexperiments/aquarium.tidy.html:127:41: [maybe] Reading absent property (computed name)
+test/chromeexperiments/aquarium.tidy.html:128:41: [maybe] Reading absent property (computed name)
+test/chromeexperiments/aquarium.tidy.html:130:41: [maybe] Reading absent property (computed name)
+test/chromeexperiments/aquarium.tidy.html:131:41: [maybe] Reading absent property (computed name)
+test/chromeexperiments/aquarium.tidy.html:135:31: [maybe] Reading absent property (computed name)
+test/chromeexperiments/aquarium.tidy.html:136:31: [maybe] Reading absent property (computed name)
+test/chromeexperiments/aquarium.tidy.html:139:25: [maybe] Reading absent property (computed name)
+test/chromeexperiments/aquarium.tidy.html:140:25: [maybe] Reading absent property (computed name)
+test/chromeexperiments/aquarium.tidy.html:143:17: [maybe] Reading absent property (computed name)
+test/chromeexperiments/aquarium.tidy.html:144:17: [maybe] Reading absent property (computed name)
+test/chromeexperiments/aquarium.tidy.html:54:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/aquarium.tidy.html:54:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/aquarium.tidy.html:55:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/aquarium.tidy.html:55:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/aquarium.tidy.html:56:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/aquarium.tidy.html:57:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/aquarium.tidy.html:58:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/aquarium.tidy.html:59:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/aquarium.tidy.html:65:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/aquarium.tidy.html:65:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/aquarium.tidy.html:66:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/aquarium.tidy.html:66:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/aquarium.tidy.html:86:27: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/aquarium.tidy.html:86:34: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/aquarium.tidy.html:87:30: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/aquarium.tidy.html:87:38: [info] 'this' refers to multiple abstract objects, which may cause loss of precision

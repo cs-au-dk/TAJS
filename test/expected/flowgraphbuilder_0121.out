@@ -1,0 +1,79 @@
+fg2: <main> function()
+  block 0: [entry]
+    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0121.js:1:1)
+    node 1: vardecl['fib'] (test/flowgraphbuilder/flowgraph_builder0121.js:1:5)
+    node 2: vardecl['t'] (test/flowgraphbuilder/flowgraph_builder0121.js:9:5)
+    ->[block 1]
+  block 1:
+    node 3: function-expr[function f(x),v2] (test/flowgraphbuilder/flowgraph_builder0121.js:1:11)
+    node 4: write-variable[v2,'fib']* (test/flowgraphbuilder/flowgraph_builder0121.js:1:1)
+    node 5: read-variable['fib',v5,v4] (test/flowgraphbuilder/flowgraph_builder0121.js:9:9)
+    node 6: constant[3.0,v6] (test/flowgraphbuilder/flowgraph_builder0121.js:9:13)
+    ->[block 2]
+  block 2:
+    node 7: call[v4,v5,v6,v3] (test/flowgraphbuilder/flowgraph_builder0121.js:9:9)
+    ->[block 3]
+  block 3:
+    node 8: write-variable[v3,'t']* (test/flowgraphbuilder/flowgraph_builder0121.js:9:1)
+    node 9: read-variable['dumpValue',v8,v7] (test/flowgraphbuilder/flowgraph_builder0121.js:10:1)
+    node 10: read-variable['t',v9,-] (test/flowgraphbuilder/flowgraph_builder0121.js:10:11)
+    ->[block 4]
+  block 4:
+    node 11: call[v7,v8,v9,-]* (test/flowgraphbuilder/flowgraph_builder0121.js:10:1)
+    ->[block 5]
+  block 5: [exit-ordinary]
+    node 12: return[v1] (test/flowgraphbuilder/flowgraph_builder0121.js:1:1)
+    ->[]
+  block 6: [exit-exceptional]
+    node 13: exceptional-return (test/flowgraphbuilder/flowgraph_builder0121.js:1:1)
+    ->[]
+function f(x)
+  block 7: [entry]
+    node 14: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0121.js:1:11)
+    ->[block 8]
+  block 8:
+    node 15: read-variable['dumpValue',v4,v3] (test/flowgraphbuilder/flowgraph_builder0121.js:2:2)
+    node 16: read-variable['x',v5,v2] (test/flowgraphbuilder/flowgraph_builder0121.js:2:12)
+    ->[block 9]
+  block 9:
+    node 17: call[v3,v4,v5,-]* (test/flowgraphbuilder/flowgraph_builder0121.js:2:2)
+    ->[block 10]
+  block 10:
+    node 18: read-variable['x',v7,v2] (test/flowgraphbuilder/flowgraph_builder0121.js:3:6)
+    node 19: constant[1.0,v8] (test/flowgraphbuilder/flowgraph_builder0121.js:3:11)
+    node 20: <=[v7,v8,v6] (test/flowgraphbuilder/flowgraph_builder0121.js:3:6)
+    node 21: if[v6](true-block:11,false-block:12) (test/flowgraphbuilder/flowgraph_builder0121.js:3:2)
+    ->[block 11,block 12]
+  block 11:
+    node 22: constant[1.0,v1] (test/flowgraphbuilder/flowgraph_builder0121.js:4:10)
+    ->[block 17]
+  block 12:
+    node 23: read-variable['f',v12,v11] (test/flowgraphbuilder/flowgraph_builder0121.js:6:10)
+    node 24: read-variable['x',v14,v2] (test/flowgraphbuilder/flowgraph_builder0121.js:6:12)
+    node 25: constant[1.0,v15] (test/flowgraphbuilder/flowgraph_builder0121.js:6:14)
+    node 26: -[v14,v15,v13] (test/flowgraphbuilder/flowgraph_builder0121.js:6:12)
+    ->[block 13]
+  block 13:
+    node 27: call[v11,v12,v13,v9] (test/flowgraphbuilder/flowgraph_builder0121.js:6:10)
+    ->[block 14]
+  block 14:
+    node 28: read-variable['f',v17,v16] (test/flowgraphbuilder/flowgraph_builder0121.js:6:19)
+    node 29: read-variable['x',v19,v2] (test/flowgraphbuilder/flowgraph_builder0121.js:6:21)
+    node 30: constant[2.0,v20] (test/flowgraphbuilder/flowgraph_builder0121.js:6:23)
+    node 31: -[v19,v20,v18] (test/flowgraphbuilder/flowgraph_builder0121.js:6:21)
+    ->[block 15]
+  block 15:
+    node 32: call[v16,v17,v18,v10] (test/flowgraphbuilder/flowgraph_builder0121.js:6:19)
+    ->[block 16]
+  block 16:
+    node 33: +[v9,v10,v1] (test/flowgraphbuilder/flowgraph_builder0121.js:6:10)
+    ->[block 17]
+  block 17: [exit-ordinary]
+    node 34: return[v1] (test/flowgraphbuilder/flowgraph_builder0121.js:6:23)
+    ->[]
+  block 18: [exit-exceptional]
+    node 35: exceptional-return (test/flowgraphbuilder/flowgraph_builder0121.js:6:23)
+    ->[]
+
+test/flowgraphbuilder/flowgraph_builder0121.js:2:2: [info] Abstract value: UInt
+test/flowgraphbuilder/flowgraph_builder0121.js:10:1: [info] Abstract value: UInt

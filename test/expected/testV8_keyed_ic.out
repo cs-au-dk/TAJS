@@ -1,0 +1,22 @@
+test/v8tests/keyed-ic.js:44:9: [definite] ReferenceError, reading absent variable assertEquals
+test/v8tests/keyed-ic.js:41:5: [definite] The conditional expression is always true
+test/v8tests/keyed-ic.js:43:7: [definite] The conditional expression is always true
+test/v8tests/keyed-ic.js:53:3: [definite] The conditional expression is always true
+test/v8tests/keyed-ic.js:36:7: [definite] The variable H is never used
+test/v8tests/keyed-ic.js:38:11: [definite] Unreachable function
+test/v8tests/keyed-ic.js:42:11: [definite] The variable property is never used
+test/v8tests/keyed-ic.js:44:22: [definite] Unreachable code
+test/v8tests/keyed-ic.js:53:27: [definite] Unreachable code
+test/v8tests/keyed-ic.js:65:11: [definite] Unreachable code
+test/v8tests/keyed-ic.js:65:11: [definite] Unreachable function
+test/v8tests/keyed-ic.js:72:3: [definite] Unreachable function arrayLengthTest
+test/v8tests/keyed-ic.js:93:11: [definite] Unreachable function
+test/v8tests/keyed-ic.js:100:3: [definite] Unreachable function stringLengthTest
+test/v8tests/keyed-ic.js:121:11: [definite] Unreachable function
+test/v8tests/keyed-ic.js:128:3: [definite] Unreachable function fieldTest
+test/v8tests/keyed-ic.js:150:11: [definite] Unreachable function
+test/v8tests/keyed-ic.js:151:3: [definite] Unreachable function fun
+test/v8tests/keyed-ic.js:161:3: [definite] Unreachable function constantFunctionTest
+test/v8tests/keyed-ic.js:183:11: [definite] Unreachable function
+test/v8tests/keyed-ic.js:190:3: [definite] Unreachable function fieldTest
+test/v8tests/keyed-ic.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/keyed-ic.js:44:9]

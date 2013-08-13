@@ -1,0 +1,5 @@
+test/v8tests/dont-reinit-global-var.js:29:1: [definite] ReferenceError, reading absent variable assertEquals
+test/v8tests/dont-reinit-global-var.js:28:5: [definite] The variable foo is never used
+test/v8tests/dont-reinit-global-var.js:29:14: [definite] Unreachable code
+test/v8tests/dont-reinit-global-var.js:37:5: [definite] The variable bar is never used
+test/v8tests/dont-reinit-global-var.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/dont-reinit-global-var.js:29:1]

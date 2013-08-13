@@ -1,0 +1,166 @@
+<!DOCTYPE HTML>
+<html>
+ <head>
+
+  <title>Shoals of fish</title>
+
+  <style type="text/css">
+	body{
+		margin: 0;
+		padding: 0;
+		overflow: hidden;
+		background: black;
+		color: white;
+		text-align: right;
+		font-family: Arial, Helvetica, sans-serif;
+		font-size: 0.8em;
+	}
+  </style>
+ </head>
+
+ <body>
+<canvas id="canapea"></canvas>
+
+<a href="http://www.chromeexperiments.com/detail/aquarium/" style="float:left;"><img src="badge.png" alt="See my Experiment on ChromeExperiments.com" /></a>
+<p>Try and catch them but you'll just scare them away. Poor little fish.</p>
+<script type="text/javascript">
+ var context = document.getElementById('canapea').getContext('2d');
+ var mousex=0,mousey=0;
+
+ var imagine=new Image();
+ imagine.src="fish.png";
+
+//class with pestisor
+function pestisor(){
+	this.x=Math.random()*context.canvas.width;
+	this.y=Math.random()*context.canvas.height;
+	this.vx=0;
+	this.vy=0;
+
+	this.move=pestisor_move;
+	this.draw=pestisor_draw;
+}
+function pestisor_move(){
+	//the speed limit
+	//if(this.vx>3)this.vx=3;
+	//if(this.vx<-3)this.vx=-3;
+	//if(this.vy>3)this.vy=3;
+	//if(this.vy<-3)this.vy=-3;
+
+
+	this.x+=this.vx;
+	this.y+=this.vy;
+	this.vx*=0.9;
+	this.vy*=0.9;
+	this.vx+=(Math.random()-0.5)*0.4;
+	this.vy+=(Math.random()-0.5)*0.4;
+
+
+
+
+	//tendenci to go towards center;)
+	this.x=(this.x*500+context.canvas.width/2)/501;
+	this.y=(this.y*500+context.canvas.height/2)/501;
+}
+function angle(x,y){//the strangest of functions
+	var angle=0;
+	if(x<0){
+		angle+=Math.PI;
+	}
+	if(y<0){
+		y=-y;
+		x=-x;
+	}
+	angle+=Math.atan(y/x);
+	return angle
+}
+
+
+function pestisor_draw(){
+	context.save();
+	context.beginPath();
+
+	context.translate(this.x,this.y)
+	context.rotate(angle(this.vx,this.vy));
+	context.drawImage(imagine,-10,-5);
+
+	//context.arc(this.x,this.y,5,0,Math.PI*2,true);//this is to print balls instead of fish.png
+
+	context.fillStyle = 'white';
+	context.fill();
+	context.restore();
+}
+
+ //the bank o fish
+ var pesti=new Array();
+
+
+ function begin(){
+	 for(var i=0;i<100;i++){
+		var temp=new pestisor();
+		pesti.push(temp);
+	 }
+
+}
+function work(){
+	var x;
+	context.save();
+	context.beginPath();
+	context.fillStyle = 'black';
+	context.strokeStyle ='white';
+	context.rect(0,0,context.canvas.width,context.canvas.height);
+	context.fill();
+	context.stroke();
+	context.restore();
+
+	 for(x in pesti){
+		var y;
+		for(y in pesti){
+			if(y!=x){
+				var dx=pesti[y].x-pesti[x].x;
+				var dy=pesti[y].y-pesti[x].y;
+				var d=Math.sqrt(dx*dx+dy*dy);
+				if(d<40){
+					pesti[x].vx+=20*(-dx/(d*d));
+					pesti[x].vy+=20*(-dy/(d*d));
+				}else if(d<100){
+					pesti[x].vx+=0.07*(dx/d);
+					pesti[x].vy+=0.07*(dy/d);
+				}
+			}
+		}
+		var dx=mousex-pesti[x].x;
+		var dy=mousey-pesti[x].y;
+		var d=Math.sqrt(dx*dx+dy*dy);
+		if(d<100){
+			pesti[x].vx+=1*(-dx/(d));
+			pesti[x].vy+=1*(-dy/(d));
+		}
+
+		pesti[x].move();
+		pesti[x].draw();
+	}
+
+}
+
+
+//it works, don't touch
+ function mmouse(event) {
+	mousex=event.pageX;
+	mousey=event.pageY;
+ }
+ context.canvas.onmousemove = mmouse;
+ function resize_context(){
+	context.canvas.width=window.innerWidth;
+	context.canvas.height=window.innerHeight-100;
+}
+
+window.onresize=resize_context;
+onLoad=resize_context();
+
+onLoad=begin();
+setInterval(work,10);
+
+</script>
+</body>
+</html>

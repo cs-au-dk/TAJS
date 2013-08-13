@@ -1,0 +1,4 @@
+test/micro/test142.js:4:5: [definite] The variable z is never used
+test/micro/test142.js:4:9: [maybe] TypeError, accessing property of null/undefined
+test/micro/test142.js:1:1: [maybe] Uncaught exception, constructed at [test/micro/test142.js:4:9]
+test/micro/test142.js:3:9: [maybe] Reading absent property (computed name)

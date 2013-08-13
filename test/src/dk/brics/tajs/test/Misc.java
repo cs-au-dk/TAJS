@@ -4,11 +4,14 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintStream;
+import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 
 import dk.brics.tajs.Main;
@@ -18,6 +21,8 @@ import dk.brics.tajs.util.AnalysisException;
 
 public class Misc {
 
+	private static final File OUT_DIR = new File("out");
+	
 	static ByteArrayOutputStream os;
 
 	static PrintStream ps;
@@ -125,5 +130,25 @@ public class Misc {
 			old_out.write(buf, off, len);
 		}
 
+	}
+
+	public static String[] makeArgsFromSourceLines(String... src) {
+		// make file
+		StringBuilder sb = new StringBuilder();
+		for (int i = 0; i < src.length; i++) {
+			sb.append(src[i] + "\n");
+		}
+		final File file;
+		try {
+			file = File.createTempFile("temp-source-file", ".js", OUT_DIR);
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
+		try (PrintWriter writer = new PrintWriter(file)) {
+			writer.write(sb.toString());
+		} catch (FileNotFoundException e) {
+			throw new RuntimeException(e);
+		}
+		return new String[] { file.getPath() };
 	}
 }

@@ -1,0 +1,35 @@
+fg2: <main> function()
+  block 0: [entry]
+    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0056.js:1:1)
+    node 1: function-decl[function id(x),-] (test/flowgraphbuilder/flowgraph_builder0056.js:1:1)
+    ->[block 1]
+  block 1:
+    node 2: read-variable['id',v4,v3] (test/flowgraphbuilder/flowgraph_builder0056.js:3:5)
+    node 3: constant["hi",v5] (test/flowgraphbuilder/flowgraph_builder0056.js:3:8)
+    ->[block 2]
+  block 2:
+    node 4: call[v3,v4,v5,v2] (test/flowgraphbuilder/flowgraph_builder0056.js:3:5)
+    ->[block 3]
+  block 3:
+    node 5: write-variable[v2,'y']* (test/flowgraphbuilder/flowgraph_builder0056.js:3:1)
+    ->[block 4]
+  block 4: [exit-ordinary]
+    node 6: return[v1] (test/flowgraphbuilder/flowgraph_builder0056.js:1:1)
+    ->[]
+  block 5: [exit-exceptional]
+    node 7: exceptional-return (test/flowgraphbuilder/flowgraph_builder0056.js:1:1)
+    ->[]
+function id(x)
+  block 6: [entry]
+    node 8: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0056.js:1:1)
+    ->[block 7]
+  block 7:
+    node 9: read-variable['x',v1,-] (test/flowgraphbuilder/flowgraph_builder0056.js:1:25)
+    ->[block 8]
+  block 8: [exit-ordinary]
+    node 10: return[v1] (test/flowgraphbuilder/flowgraph_builder0056.js:1:25)
+    ->[]
+  block 9: [exit-exceptional]
+    node 11: exceptional-return (test/flowgraphbuilder/flowgraph_builder0056.js:1:25)
+    ->[]
+

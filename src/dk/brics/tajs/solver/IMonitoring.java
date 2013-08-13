@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Aarhus University
+ * Copyright 2009-2013 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -47,7 +47,7 @@ public interface IMonitoring<BlockStateType extends IBlockState<BlockStateType, 
 	/**
 	 * Registers a recovery of an unknown value.
 	 */
-	void visitUnknownValueResolve();
+	void visitUnknownValueResolve(boolean partial, boolean scanning);
 	
 	/**
 	 * Registers a property recovery graph size.

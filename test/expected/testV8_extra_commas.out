@@ -1,0 +1,7 @@
+Unevalizer: Starting on: "f(,)"
+test/v8tests/extra-commas.js:34:5: [definite] ReferenceError, reading absent variable assertTrue
+test/v8tests/extra-commas.js:29:7: [definite] The variable caught is never used
+test/v8tests/extra-commas.js:34:16: [definite] Unreachable code
+test/v8tests/extra-commas.js:36:3: [definite] Unreachable code
+test/v8tests/extra-commas.js:41:1: [definite] Unreachable code
+test/v8tests/extra-commas.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/extra-commas.js:34:5]

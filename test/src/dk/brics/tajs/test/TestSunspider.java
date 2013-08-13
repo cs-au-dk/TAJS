@@ -24,7 +24,7 @@ public class TestSunspider {
 	}
 
 	@Test
-	public void testSunspider3DCube() throws Exception {  // FIXME: check output
+	public void sunspider_3d_cube() throws Exception {  // FIXME: check output
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/sunspider/3d-cube.js"};
@@ -33,7 +33,7 @@ public class TestSunspider {
 	}
 
 	@Test
-	public void testSunspider3DMorph() throws Exception { 
+	public void sunspider_3d_morph() throws Exception { 
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/sunspider/3d-morph.js"};
@@ -42,7 +42,7 @@ public class TestSunspider {
 	}
 
 	@Test
-	public void testSunspider3DRaytrace() throws Exception {  // FIXME: check output
+	public void sunspider_3d_raytrace() throws Exception {  // FIXME: check output
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/sunspider/3d-raytrace.js"};
@@ -51,7 +51,7 @@ public class TestSunspider {
 	}
 
 	@Test
-	public void testSunspiderAccessBinaryTrees() throws Exception { 
+	public void sunspider_access_binary_trees() throws Exception { 
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/sunspider/access-binary-trees.js"};
@@ -60,7 +60,7 @@ public class TestSunspider {
 	}
 
 	@Test
-	public void testSunspiderAccessFannkuch() throws Exception { 
+	public void sunspider_access_fannkuch() throws Exception { 
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/sunspider/access-fannkuch.js"};
@@ -69,7 +69,7 @@ public class TestSunspider {
 	}
 
 	@Test
-	public void testSunspiderAccessNBody() throws Exception { 
+	public void sunspider_access_nbody() throws Exception { 
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/sunspider/access-nbody.js"};
@@ -78,7 +78,7 @@ public class TestSunspider {
 	}
 
 	@Test
-	public void testSunspiderAccessNSieve() throws Exception { 
+	public void sunspider_access_nsieve() throws Exception { 
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/sunspider/access-nsieve.js"};
@@ -87,7 +87,7 @@ public class TestSunspider {
 	}
 
 	@Test
-	public void testSunspiderBitops3BitBitsInByte() throws Exception { 
+	public void sunspider_bitops_3bit_bits_in_byte() throws Exception { 
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/sunspider/bitops-3bit-bits-in-byte.js"};
@@ -96,7 +96,7 @@ public class TestSunspider {
 	}
 
 	@Test
-	public void testSunspiderBitopsBitwiseAnd() throws Exception { 
+	public void sunspider_bitops_bitwise_and() throws Exception { 
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/sunspider/bitops-bitwise-and.js"};
@@ -105,7 +105,7 @@ public class TestSunspider {
 	}
 
 	@Test
-	public void testSunspiderBitopsNSieveBits() throws Exception { 
+	public void sunspider_bitops_nsieve_bits() throws Exception { 
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/sunspider/bitops-nsieve-bits.js"};
@@ -114,7 +114,7 @@ public class TestSunspider {
 	}
 
 	@Test
-	public void testSunspiderControlflowRecursive() throws Exception { 
+	public void sunspider_controlflow_recursive() throws Exception { 
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/sunspider/controlflow-recursive.js"};
@@ -124,7 +124,7 @@ public class TestSunspider {
 
 	@Ignore // TODO: RegExp
 	@Test
-	public void testSunspiderCryptoAES() throws Exception { 
+	public void sunspider_crypto_aes() throws Exception { 
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/sunspider/crypto-aes.js"};
@@ -133,7 +133,7 @@ public class TestSunspider {
 	}
 
 	@Test
-	public void testSunspiderCryptoMD5() throws Exception { 
+	public void sunspider_crypto_md5() throws Exception { 
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/sunspider/crypto-md5.js"};
@@ -142,7 +142,7 @@ public class TestSunspider {
 	}
 
 	@Test
-	public void testSunspiderCryptoSHA1() throws Exception {
+	public void sunspider_crypto_sha1() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/sunspider/crypto-sha1.js"};
@@ -152,7 +152,7 @@ public class TestSunspider {
 
 	@Ignore // TODO: eval
 	@Test
-	public void testSunspiderDateFormatTofte() throws Exception { 
+	public void sunspider_date_format_tofte() throws Exception { 
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/sunspider/date-format-tofte.js"};
@@ -162,7 +162,7 @@ public class TestSunspider {
 
 	@Ignore // TODO: RegExp
 	@Test
-	public void testSunspiderDateFormatXParb() throws Exception { 
+	public void sunspider_date_format_xparb() throws Exception { 
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/sunspider/date-format-xparb.js"};
@@ -171,7 +171,7 @@ public class TestSunspider {
 	}
 
 	@Test
-	public void testSunspiderMathCordic() throws Exception { 
+	public void sunspider_math_cordic() throws Exception { 
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/sunspider/math-cordic.js"};
@@ -180,7 +180,7 @@ public class TestSunspider {
 	}
 
 	@Test
-	public void testSunspiderMathPartialSums() throws Exception { 
+	public void sunspider_math_partial_sums() throws Exception { 
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/sunspider/math-partial-sums.js"};
@@ -189,7 +189,7 @@ public class TestSunspider {
 	}
 
 	@Test
-	public void testSunspiderMathSpectralNorm() throws Exception { 
+	public void sunspider_math_spectral_norm() throws Exception { 
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/sunspider/math-spectral-norm.js"};
@@ -197,18 +197,18 @@ public class TestSunspider {
 		Misc.checkSystemOutput();
 	}
 
-	@Ignore // TODO: for-in + RegExp
+	@Ignore // TODO: RegExp
 	@Test
-	public void testSunspiderRegexpDNA() throws Exception { 
+	public void sunspider_regexp_dna() throws Exception { 
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/sunspider/regexp-dna.js"};
+		String[] args = {"test/sunspider/regexp-dna.js"}; // can't specialize for-in due to r/w conflict (in fact, the output is non-deterministic)
 		Misc.run(args);
 		fail(); // Misc.checkSystemOutput();
 	}
 
 	@Test
-	public void testSunspiderStringBase64() throws Exception {
+	public void sunspider_string_base64() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/sunspider/string-base64.js"}; // TODO: known to be buggy (according to Google Aarhus)
@@ -217,27 +217,27 @@ public class TestSunspider {
 	}
 
 	@Test
-	public void testSunspiderStringFasta() throws Exception { 
+	public void sunspider_string_fasta() throws Exception { 
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/sunspider/string-fasta.js"};
+		String[] args = {"test/sunspider/string-fasta.js"}; // can't specialize for-in due to r/w conflict
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
-	@Ignore // TODO: for-in + RegExp
+	@Ignore // TODO: RegExp
 	@Test
-	public void testSunspiderStringTagcloud() throws Exception { 
+	public void sunspider_string_tagcloud() throws Exception { 
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/sunspider/string-tagcloud.js"};
+		String[] args = {"test/sunspider/string-tagcloud.js"}; // can't specialize for-in due to r/w conflict
 		Misc.run(args);
 		fail(); // Misc.checkSystemOutput();
 	}
 
 	@Ignore // TODO: for-in + RegExp
 	@Test
-	public void testSunspiderStringUnpackCode() throws Exception { 
+	public void sunspider_string_unpack_code() throws Exception { 
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/sunspider/string-unpack-code.js"};
@@ -247,7 +247,7 @@ public class TestSunspider {
 
 	@Ignore // TODO: for-in + RegExp
 	@Test
-	public void testSunspiderStringValidateInput() throws Exception { 
+	public void sunspider_string_validate_input() throws Exception { 
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/sunspider/string-validate-input.js"};

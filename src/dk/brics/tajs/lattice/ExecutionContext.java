@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Aarhus University
+ * Copyright 2009-2013 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@ import dk.brics.tajs.util.AnalysisException;
 /**
  * Abstract execution context.
  */
-public final class ExecutionContext implements Cloneable { // TODO: move all this into BlockState?
+public final class ExecutionContext implements Cloneable {
 	
 	private ScopeChain scope_chain;
 	
@@ -98,6 +98,20 @@ public final class ExecutionContext implements Cloneable { // TODO: move all thi
 	}
 	
 	/**
+	 * Sets the 'this' object of this execution context.
+	 */
+	public void setThisObject(Set<ObjectLabel> new_this_obj) {
+		this_obj = new_this_obj;
+	}
+	
+	/**
+	 * Sets the variable object of this execution context.
+	 */
+	public void setVariableObject(Set<ObjectLabel> new_var_obj) {
+		var_obj = new_var_obj;
+	}
+	
+	/**
 	 * Pushes a new item onto the scope chain.
 	 */
 	public void pushScopeChain(Set<ObjectLabel> objlabels) {
@@ -147,7 +161,7 @@ public final class ExecutionContext implements Cloneable { // TODO: move all thi
 	public void replaceObjectLabels(Map<ObjectLabel, ObjectLabel> m, Map<ScopeChain,ScopeChain> cache) {
 		scope_chain = ScopeChain.replaceObjectLabels(scope_chain, m, cache);
 		var_obj = Renaming.apply(m, var_obj);
-		this_obj = Renaming.apply(m, this_obj); 
+		this_obj = Renaming.apply(m, this_obj);
 	}
 	
 	/**

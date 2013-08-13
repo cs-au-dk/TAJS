@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Aarhus University
+ * Copyright 2009-2013 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -33,6 +33,7 @@ import dk.brics.tajs.analysis.State;
 import dk.brics.tajs.flowgraph.BasicBlock;
 import dk.brics.tajs.js2flowgraph.RhinoASTToFlowgraph;
 import dk.brics.tajs.lattice.ObjectLabel;
+import dk.brics.tajs.lattice.UnknownValueResolver;
 import dk.brics.tajs.lattice.ObjectLabel.Kind;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.solver.Message.Severity;
@@ -251,7 +252,7 @@ public class ECMAScriptFunctions {
             case ASSERT_MOST_RECENT_OBJ:
             case ASSERT_SUMMARY_OBJ:
             case CONVERSION_TO_PRIMITIVE:
-            case ASSUME_NON_NULLUNDEF:
+            case ADD_CONTEXT_SENSITIVITY:
             case TAJS_GET_KEYBOARD_EVENT:
             case TAJS_GET_MOUSE_EVENT:
             case TAJS_GET_UI_EVENT:
@@ -323,9 +324,11 @@ public class ECMAScriptFunctions {
     					// 15.5.4.2 String.prototype.toString ( )
     					// Returns this string value. (Note that, for a String object, the toString method happens to return the same thing as
     					// the valueOf method.)
-    					if (thiss.getKind() == Kind.STRING)
-    						result.add(c.getCurrentState().readInternalValue(singleton(thiss)));
-    					else
+    					if (thiss.getKind() == Kind.STRING) {
+    						Value v = c.getCurrentState().readInternalValue(singleton(thiss));
+    						v = UnknownValueResolver.getRealValue(v, c.getCurrentState());
+    						result.add(v);
+    					} else
     						Exceptions.throwTypeError(c.getCurrentState(), c);
     					break;
     				case BOOLEAN_TOSTRING:
@@ -334,6 +337,7 @@ public class ECMAScriptFunctions {
     					// the string "false" is returned.
     					if (thiss.getKind() == Kind.BOOLEAN) {
     						Value v = c.getCurrentState().readInternalValue(singleton(thiss));
+    						v = UnknownValueResolver.getRealValue(v, c.getCurrentState());
     						if (v.isMaybeTrueButNotFalse())
     							result.add(Value.makeStr("true"));
     						else if (v.isMaybeFalseButNotTrue())
@@ -350,6 +354,7 @@ public class ECMAScriptFunctions {
     					// If radix is an integer from 2 to 36, but not 10, the result is a string, the choice of which is implementation-dependent.
     					if (thiss.getKind() == Kind.NUMBER) {
     						Value v = c.getCurrentState().readInternalValue(singleton(thiss));
+    						v = UnknownValueResolver.getRealValue(v, c.getCurrentState());
     						result.add(Conversion.toString(v, c));
     					} else
     						Exceptions.throwTypeError(c.getCurrentState(), c);
@@ -410,25 +415,31 @@ public class ECMAScriptFunctions {
     				case STRING_VALUEOF:
     					// 15.5.4.3 String.prototype.valueOf ( )
     					// Returns this string value.
-    					if (thiss.getKind() == Kind.STRING)
-    						result.add(c.getCurrentState().readInternalValue(singleton(thiss)));
-    					else
+    					if (thiss.getKind() == Kind.STRING) {
+    						Value v = c.getCurrentState().readInternalValue(singleton(thiss));
+    						v = UnknownValueResolver.getRealValue(v, c.getCurrentState());
+    						result.add(v);
+    					} else
     						Exceptions.throwTypeError(c.getCurrentState(), c);
     					break;
     				case BOOLEAN_VALUEOF:
     					// 15.6.4.3 Boolean.prototype.valueOf ( )
     					// Returns this boolean value.
-    					if (thiss.getKind() == Kind.BOOLEAN)
-    						result.add(c.getCurrentState().readInternalValue(singleton(thiss)));
-    					else
+    					if (thiss.getKind() == Kind.BOOLEAN) {
+    						Value v = c.getCurrentState().readInternalValue(singleton(thiss));
+    						v = UnknownValueResolver.getRealValue(v, c.getCurrentState());
+    						result.add(v);
+    					} else
     						Exceptions.throwTypeError(c.getCurrentState(), c);
     					break;
     				case NUMBER_VALUEOF:
     					// 15.7.4.4 Number.prototype.valueOf ( )
     					// Returns this number value.
-    					if (thiss.getKind() == Kind.NUMBER)
-    						result.add(c.getCurrentState().readInternalValue(singleton(thiss)));
-    					else
+    					if (thiss.getKind() == Kind.NUMBER) {
+    						Value v = c.getCurrentState().readInternalValue(singleton(thiss));
+    						v = UnknownValueResolver.getRealValue(v, c.getCurrentState());
+    						result.add(v);
+    					} else
     						Exceptions.throwTypeError(c.getCurrentState(), c);
     					break;
     				case DATE_VALUEOF:

@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Aarhus University
+ * Copyright 2009-2013 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,7 +23,6 @@ import java.util.regex.Pattern;
 
 import org.apache.log4j.Logger;
 
-import dk.brics.tajs.unevalizer.Unevalizer;
 import dk.brics.tajs.analysis.CallContext;
 import dk.brics.tajs.analysis.Conversion;
 import dk.brics.tajs.analysis.EvalCache;
@@ -43,6 +42,7 @@ import dk.brics.tajs.analysis.uneval.UnevalTools;
 import dk.brics.tajs.flowgraph.AbstractNode;
 import dk.brics.tajs.flowgraph.FlowGraph;
 import dk.brics.tajs.flowgraph.FlowGraphFragment;
+import dk.brics.tajs.flowgraph.Function;
 import dk.brics.tajs.flowgraph.jsnodes.CallNode;
 import dk.brics.tajs.js2flowgraph.RhinoASTToFlowgraph;
 import dk.brics.tajs.lattice.BlockState;
@@ -51,6 +51,7 @@ import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.solver.Message.Severity;
 import dk.brics.tajs.solver.NodeAndContext;
+import dk.brics.tajs.unevalizer.Unevalizer;
 import dk.brics.tajs.util.AnalysisException;
 
 /**
@@ -87,10 +88,6 @@ public class JSGlobal {
 			if (evalValue.isStrJSON()) { 
 				return DOMFunctions.makeAnyJSONObject(state).join(evalValue.restrictToNotStr());
 			} else if (Options.isUnevalEnabled()) {
-                // Let the tests run on the new flow graph builder despite running with an old flow graph builder, but
-                // otherwise bail out.
-                if (Options.isOldFlowgraphBuilderEnabled())
-                    throw new AnalysisException("-uneval needs the new flow graph builder to work.");
                 CallNode evalCall = (CallNode) call.getSourceNode();
                 FlowGraph currentFg = c.getFlowGraph();
                 boolean ignoreResult = evalCall.getResultRegister() == AbstractNode.NO_VALUE;
@@ -292,12 +289,12 @@ public class JSGlobal {
                     outdir.mkdir();
                 }
 				FileWriter fw = new FileWriter("out" + File.separator + "state.dot");
-				fw.write(state.toDot(false));
+				fw.write(state.toDot());
 				fw.close();			
 			} catch (IOException e) {
 				throw new AnalysisException(e);
 			}
-			 */
+			*/
 			return Value.makeUndef();
 		}
 
@@ -409,25 +406,24 @@ public class JSGlobal {
 				}
 		}
 
-		case ASSUME_NON_NULLUNDEF: { // FIXME: remove assumeNonNullUndef? (see AssumeNode)
-			NativeFunctions.expectParameters(nativeobject, call, c, 1, 2);
+		case ADD_CONTEXT_SENSITIVITY:{
+			NativeFunctions.expectParameters(nativeobject, call, c, 1, 1);
 			if (call.isUnknownNumberOfArgs()) {
-				c.getMonitoring().addMessageInfo(c.getCurrentNode(), Severity.HIGH, "Calling assumeNonNullUndef with unknown number of arguments");				
+				throw new AnalysisException("Calling TAJS_addContextSensitivity with unknown number of arguments");
 			} else {
-				if (call.getNumberOfArgs() == 1) {
-					Value varg = NativeFunctions.readParameter(call, state, 0);
-					if (!varg.isMaybeSingleStr()) {
-						c.getMonitoring().addMessageInfo(c.getCurrentNode(), Severity.HIGH, "Calling assumeNonNullUndef with non-constant variable string");
+				Value paramName = NativeFunctions.readParameter(call, state, 0);
+				if (paramName.isStrIdentifier()){
+					final Function enclosingFunction = call.getSourceNode().getBlock().getFunction();
+					final String concreteParamName = paramName.getStr();
+					boolean hasParam = enclosingFunction.getParameterNames().contains(concreteParamName);
+					if (hasParam) {
+						c.getAnalysis().getSpecialArgs().addToSpecialArgs(enclosingFunction, concreteParamName);
 					} else {
-						String varname = varg.getStr();
-						Value v = state.readVariable(varname,null);
-						v = v.restrictToNotNullNotUndef().restrictToNotAbsent();
-						if (v.isNotPresent())
-							return Value.makeNone();
-						state.writeVariable(varname, v, false);
+						throw new AnalysisException(String.format("Calling TAJS_addContextSensitivity with non-existing parameter-name: '%s'. Function has: '%s'",
+								concreteParamName, enclosingFunction.getParameterNames()));
 					}
-				} else if (call.getNumberOfArgs() == 2) {
-					throw new AnalysisException("2 arg variant of assumeNonNullUndef not yet implemented");// TODO: assumeNonNullUndef
+				} else {
+					throw new AnalysisException("Calling TAJS_addContextSensitivity with non-identifier parameter-name: " + paramName);
 				}
 			}
 			return Value.makeUndef();

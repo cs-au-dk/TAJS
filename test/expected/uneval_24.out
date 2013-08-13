@@ -1,0 +1,7 @@
+Unevalizer: Starting on: "window.PicFocus_"
+Unevalizer: Valid program
+Unevalizer: No name capture
+Unevalizer: Return value of eval is used
+Unevalizer: Last expression has value
+test/uneval/uneval24.tidy.html:8:17: [definite] Reading absent property PicFocus_
+test/uneval/uneval24.tidy.html:8:13: [definite] The variable y is never used

@@ -1,0 +1,10 @@
+test/micro/test123.js:6:15: [maybe] Conversion to number yields NaN
+test/micro/test123.js:6:15: [maybe] Converting undefined to string
+test/micro/test123.js:6:15: [maybe] Reading absent property (computed name)
+test/micro/test123.js:6:22: [maybe] Reading absent property (computed name)
+test/micro/test123.js:10:1: [info] Abstract object: {[[DefaultArray]]=UInt|NaN|Str|absent,[[DefaultNonArray]]=UInt|NaN|Str|absent,[[Prototype]]=[@Object.prototype[native]]}
+test/micro/test123.js:6:3: [info] Writing to unknown property that may cause loss of precision
+test/micro/test123.js:4:1: [info] Reading from unknown property that may cause loss of precision
+test/micro/test123.js:5:2: [info] Reading from unknown property that may cause loss of precision
+test/micro/test123.js:6:15: [info] Reading from unknown property that may cause loss of precision
+test/micro/test123.js:6:22: [info] Reading from unknown property that may cause loss of precision

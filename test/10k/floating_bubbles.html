@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Floating Bubbles</title>
+    <meta charset="utf-8">
+    <meta name="description"
+          content="The lifecycle of an interactive organic bubble that splits itself on smaller parts until they pop.">
+    <link rel='stylesheet' href='css/main.css'>
+</head>
+<body>
+<p>Touch the floating bubbles...</p>
+
+<div id="canvas_container"></div>
+<script>
+    BubbleSystem = new function() {
+        var w = 9;
+        var v = 7;
+        var r = 5;
+        var C = 50;
+        var B = 1000;
+        var t = 0.36;
+        var h = 8;
+        var e = 9;
+        var g = 3;
+        var p = 10;
+        var c = 0.0005;
+        var f = 1.5;
+        var E = 400;
+        var x = "#FFFFFF";
+        var o = 1000;
+        var j = 40;
+        var k = 100;
+        var s = 0.03;
+        var z;
+        var l;
+        var m = 0;
+        this.init = function() {
+            if (a()) {
+                l = new Array();
+                y();
+                z = new D(0, 0);
+                document.onmousemove = d;
+                window.onresize = u;
+                setInterval(q, 0)
+            } else {
+                alert("You need Safari or Firefox 1.5+ to see this app.");
+                return
+            }
+        };
+        function d(G) {
+            if (G.offsetX) {
+                z.x = G.offsetX;
+                z.y = G.offsetY
+            } else {
+                if (G.layerX) {
+                    z.x = G.layerX;
+                    z.y = G.layerY
+                }
+            }
+        }
+
+        function u() {
+            for (var G = 0; G < l.length; G++) {
+                l[G].resetCanvas()
+            }
+        }
+
+        function q() {
+            for (var G = 0; G < l.length; G++) {
+                l[G].animateBubble()
+            }
+        }
+
+        function b(K) {
+            this.index = m++;
+            this.nrOfPoints = K;
+            this.canvas = A(this.index);
+            this.resetCanvas();
+            this.points = new Array(this.nrOfPoints);
+            this.isSnapped = false;
+            this.isInside = false;
+            this.snappedPoint;
+            var H = new D(Math.random() * this.canvas.width, Math.random() * this.canvas.height);
+            var I = 2 * Math.PI / this.nrOfPoints;
+            var G = C * this.nrOfPoints / (2 * Math.PI);
+            for (var J = 0; J < this.nrOfPoints; J++) {
+                this.points[J] = new n(H.x + G * Math.cos(I * J) * (0.5 + Math.random()), H.y + G * Math.sin(I * J) * (0.5 + Math.random()))
+            }
+        }
+
+        b.prototype.processElasticBehaviour = function() {
+            for (var M = 0; M < this.nrOfPoints; M++) {
+                var N = this.points[M].vectorTo(this.points[this.leftOf(M)]);
+                var O = N.getModulus();
+                var S = N.getNorm();
+                var U = this.points[M].vectorTo(this.points[this.rightOf(M)]);
+                var V = U.getModulus();
+                var J = U.getNorm();
+                var R = this.points[this.rightOf(M)].vectorTo(this.points[this.leftOf(M)]);
+                var P = R.getNorm();
+                this.points[M].forces = new D(0, 0);
+                this.points[M].forces.add(S.clone().multiplyBy(C - O));
+                this.points[M].forces.add(J.clone().multiplyBy(C - V));
+                for (var L = 0; L < this.nrOfPoints; L++) {
+                    if (L == M || L == this.leftOf(M) || L == this.rightOf(M)) {
+                        continue
+                    }
+                    var H = this.points[L].clone().subtract(this.points[M]);
+                    var Q = H.getModulus();
+                    var G = H.getNorm();
+                    if (Q > 0) {
+                        this.points[M].forces.subtract(G.multiplyBy(B / Q))
+                    }
+                }
+                if (this.points[M].x < 0) {
+                    this.points[M].forces.x += -this.points[M].x
+                } else {
+                    if (this.points[M].x > this.canvas.width) {
+                        this.points[M].forces.x += this.canvas.width - this.points[M].x
+                    }
+                }
+                if (this.points[M].y < 0) {
+                    this.points[M].forces.y += -this.points[M].y
+                } else {
+                    if (this.points[M].y > this.canvas.height) {
+                        this.points[M].forces.y += this.canvas.height - this.points[M].y
+                    }
+                }
+                if (!this.isSnapped && Math.random() < c) {
+                    this.points[M].forces.x += E * 2 * (Math.random() - 0.5);
+                    this.points[M].forces.y += E * 2 * (Math.random() - 0.5)
+                }
+                if (this.isSnapped && M == this.snappedPoint) {
+                    var T = z.vectorTo(this.points[M]);
+                    var I = this.nrOfPointsFactor() * p;
+                    if (T.getModulus() > I) {
+                        this.points[M].add(T.getNorm().multiplyBy(I));
+                        if (this.isInside) {
+                            this.splitBubble()
+                        }
+                        this.isInside = !this.isInside;
+                        this.leavePoint()
+                    } else {
+                        this.points[M].x = z.x;
+                        this.points[M].y = z.y
+                    }
+                    this.points[M].velocity = new D(0, s)
+                } else {
+                    var K = new D((j * this.points[M].forces.x - k * this.points[M].velocity.x) / o, (j * this.points[M].forces.y - k * this.points[M].velocity.y) / o + s);
+                    this.points[M].velocity.add(K)
+                }
+                this.points[M].add(this.points[M].velocity);
+                this.points[M].cpL = P.clone().multiplyBy(-t * O);
+                this.points[M].cpR = P.clone().multiplyBy(+t * V);
+                this.points[M].cpL.add(this.points[M]);
+                this.points[M].cpR.add(this.points[M]);
+                this.points[M].m2pDist = z.distanceTo(this.points[M])
+            }
+        };
+        b.prototype.nrOfPointsFactor = function() {
+            return Math.pow(this.nrOfPoints, f)
+        };
+        b.prototype.leftOf = function(G) {
+            if (G == 0) {
+                return this.nrOfPoints - 1
+            }
+            return G - 1
+        };
+        b.prototype.rightOf = function(G) {
+            if (G == this.nrOfPoints - 1) {
+                return 0
+            }
+            return G + 1
+        };
+        b.prototype.processMouseInteractivity = function() {
+            var H = this.ctx.isPointInPath(z.x, z.y);
+            var G = z.x < 0 || z.x > this.canvas.width || z.y < 0 || z.y > this.canvas.height;
+            if (this.isInside) {
+                if (G) {
+                    this.leavePoint();
+                    this.isInside = false
+                } else {
+                    if (H) {
+                        this.leavePoint()
+                    } else {
+                        this.snapPoint()
+                    }
+                }
+            } else {
+                if (H) {
+                    this.snapPoint()
+                } else {
+                    this.leavePoint()
+                }
+            }
+            if (this.isSnapped) {
+                if (this.isInside) {
+                    if (this.points[this.snappedPoint].forces.getModulus() > this.nrOfPointsFactor() * e) {
+                        this.splitBubble();
+                        this.leavePoint();
+                        this.isInside = false
+                    } else {
+                        if (this.points[this.snappedPoint].forces.getModulus() > this.nrOfPointsFactor() * h) {
+                            this.leavePoint();
+                            this.isInside = false
+                        }
+                    }
+                } else {
+                    if (this.points[this.snappedPoint].forces.getModulus() > this.nrOfPointsFactor() * g) {
+                        this.leavePoint();
+                        this.isInside = true
+                    }
+                }
+            }
+        };
+        b.prototype.snapPoint = function() {
+            this.snappedPoint = 0;
+            for (i = 1; i < this.nrOfPoints; i++) {
+                if (this.points[i].m2pDist < this.points[this.snappedPoint].m2pDist) {
+                    this.snappedPoint = i
+                }
+            }
+            this.isSnapped = true
+        };
+        b.prototype.leavePoint = function() {
+            this.snappedPoint = -1;
+            this.isSnapped = false
+        };
+        b.prototype.clearCanvas = function() {
+            this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
+        };
+        b.prototype.plotBubble = function() {
+            this.ctx.beginPath();
+            this.ctx.moveTo(this.points[0].x, this.points[0].y);
+            for (var G = 0; G < this.nrOfPoints; G++) {
+                this.ctx.bezierCurveTo(this.points[G].cpR.x, this.points[G].cpR.y, this.points[this.rightOf(G)].cpL.x, this.points[this.rightOf(G)].cpL.y, this.points[this.rightOf(G)].x, this.points[this.rightOf(G)].y)
+            }
+            this.ctx.fill()
+        };
+        b.prototype.animateBubble = function() {
+            this.processMouseInteractivity();
+            this.processElasticBehaviour();
+            this.clearCanvas();
+            this.plotBubble()
+        };
+        b.prototype.resetCanvas = function() {
+            this.canvas.width = window.innerWidth;
+            this.canvas.height = window.innerHeight;
+            this.ctx = this.canvas.getContext("2d");
+            this.ctx.globalAlpha = 0.5;
+            this.ctx.fillStyle = x
+        };
+        b.prototype.reduceBubble = function(J, I) {
+            var H = I - Math.floor(J / 2);
+            var G = I + Math.floor(J / 2);
+            if (H < 0) {
+                this.points.splice(G, this.nrOfPoints - J)
+            } else {
+                if (G > this.nrOfPoints - 1) {
+                    this.points.splice(H, this.nrOfPoints - J)
+                } else {
+                    this.points.splice(0, H);
+                    this.points.splice(G + 1, this.nrOfPoints - (G + 1))
+                }
+            }
+            this.nrOfPoints = J;
+            return this
+        };
+        b.prototype.splitBubble = function() {
+            switch (this.nrOfPoints) {case w:l.push(this.clone().reduceBubble(v, this.opositeIndex(this.snappedPoint)));this.reduceBubble(v, this.snappedPoint);break;case v:l.push(this.clone().reduceBubble(r, this.opositeIndex(this.snappedPoint)));this.reduceBubble(r, this.snappedPoint);break;case r:F(this.index);l.splice(l.indexOf(this), 1);if (l.filter(function(G) {
+                return G != undefined
+            }).length == 0) {
+                setTimeout(y, 2000)
+            }break
+            }
+        };
+        b.prototype.opositeIndex = function(G) {
+            var H = G - Math.floor(this.nrOfPoints / 2);
+            if (H < 0) {
+                H += this.nrOfPoints
+            }
+            return H
+        };
+        b.prototype.clone = function() {
+            var G = new b(this.nrOfPoints);
+            for (var H = 0; H < this.nrOfPoints; H++) {
+                G.points[H] = this.points[H].clone()
+            }
+            G.isSnapped = false;
+            G.isInside = false;
+            return G
+        };
+        function D(G, H) {
+            this.x = G;
+            this.y = H;
+            return true
+        }
+
+        D.prototype.clone = function() {
+            return new D(this.x, this.y)
+        };
+        D.prototype.getModulus = function() {
+            return Math.sqrt(this.x * this.x + this.y * this.y)
+        };
+        D.prototype.getNorm = function() {
+            var G = this.getModulus();
+            return new D(this.x / G, this.y / G)
+        };
+        D.prototype.vectorTo = function(G) {
+            return new D(this.x - G.x, this.y - G.y)
+        };
+        D.prototype.distanceTo = function(G) {
+            return this.vectorTo(G).getModulus()
+        };
+        D.prototype.add = function(G) {
+            this.x += G.x;
+            this.y += G.y;
+            return this
+        };
+        D.prototype.subtract = function(G) {
+            this.x -= G.x;
+            this.y -= G.y;
+            return this
+        };
+        D.prototype.multiplyBy = function(G) {
+            this.x *= G;
+            this.y *= G;
+            return this
+        };
+        D.prototype.divideBy = function(G) {
+            this.x /= G;
+            this.y /= G;
+            return this
+        };
+        function n(G, H) {
+            this.x = G;
+            this.y = H;
+            this.cpL = new D(this.x, this.y);
+            this.cpR = new D(this.x, this.y);
+            this.velocity = new D(0, 0);
+            this.forces = new D(0, 0);
+            this.m2pDist = 0;
+            return true
+        }
+
+        n.prototype = new D();
+        n.prototype.clone = function() {
+            var G = new n(this.x, this.y);
+            G.cpL = this.cpL.clone();
+            G.cpR = this.cpR.clone();
+            G.velocity = new D(0, 0);
+            G.forces = new D(0, 0);
+            G.m2pDist = this.m2pDist;
+            return G
+        };
+        function y() {
+            l.push(new b(w))
+        }
+
+        function a() {
+            return !!document.createElement("canvas").getContext
+        }
+
+        function A(H) {
+            var I = document.getElementById("canvas_container");
+            var G = document.createElement("canvas");
+            G.setAttribute("id", "canvas" + H);
+            I.appendChild(G);
+            return G
+        }
+
+        function F(H) {
+            var G = document.getElementById("canvas" + H);
+            G.parentNode.removeChild(G)
+        }
+    };
+    BubbleSystem.init();
+</script>
+</body>
+</html>

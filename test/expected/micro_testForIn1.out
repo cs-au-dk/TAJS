@@ -1,0 +1,8 @@
+test/micro/testForIn1.js:12:11: [definite] Reading absent property z
+test/micro/testForIn1.js:6:5: [info] Abstract value: "x"
+test/micro/testForIn1.js:6:5: [info] Abstract value: "y"
+test/micro/testForIn1.js:9:1: [info] Abstract value: IdentStr
+test/micro/testForIn1.js:10:1: [info] Abstract value: 1.0
+test/micro/testForIn1.js:11:1: [info] Abstract value: 2.0
+test/micro/testForIn1.js:12:1: [info] Abstract value: Undef
+test/micro/testForIn1.js:13:1: [info] Abstract object: {x:1.0,y:2.0,[[Prototype]]=[@Object.prototype[native]]}

@@ -1,0 +1,101 @@
+test/10k/floating_bubbles.tidy.html:39:13: [definite] The conditional expression is always true
+test/10k/floating_bubbles.tidy.html:70:13: [definite] The conditional expression is always true
+test/10k/floating_bubbles.tidy.html:93:13: [definite] The conditional expression is always true
+test/10k/floating_bubbles.tidy.html:105:17: [definite] The conditional expression is always true
+test/10k/floating_bubbles.tidy.html:106:21: [definite] The conditional expression is always true
+test/10k/floating_bubbles.tidy.html:106:25: [definite] The conditional expression is always true
+test/10k/floating_bubbles.tidy.html:165:13: [definite] The conditional expression is always true
+test/10k/floating_bubbles.tidy.html:171:13: [definite] The conditional expression is always false
+test/10k/floating_bubbles.tidy.html:178:21: [definite] The conditional expression is always false
+test/10k/floating_bubbles.tidy.html:178:59: [definite] The conditional expression is always false
+test/10k/floating_bubbles.tidy.html:179:13: [definite] The conditional expression is always false
+test/10k/floating_bubbles.tidy.html:198:17: [definite] The conditional expression is always false
+test/10k/floating_bubbles.tidy.html:210:21: [definite] The conditional expression is always false
+test/10k/floating_bubbles.tidy.html:220:17: [definite] The conditional expression is always false
+test/10k/floating_bubbles.tidy.html:83:13: [definite] Reading absent property snappedPoint
+test/10k/floating_bubbles.tidy.html:230:9: [definite] Dead assignment, property clearCanvas is never read
+test/10k/floating_bubbles.tidy.html:233:9: [definite] Dead assignment, property plotBubble is never read
+test/10k/floating_bubbles.tidy.html:254:9: [definite] Dead assignment, property reduceBubble is never read
+test/10k/floating_bubbles.tidy.html:270:9: [definite] Dead assignment, property splitBubble is never read
+test/10k/floating_bubbles.tidy.html:278:9: [definite] Dead assignment, property opositeIndex is never read
+test/10k/floating_bubbles.tidy.html:285:9: [definite] Dead assignment, property clone is never read
+test/10k/floating_bubbles.tidy.html:295:13: [definite] Dead assignment, property x is never read
+test/10k/floating_bubbles.tidy.html:296:13: [definite] Dead assignment, property y is never read
+test/10k/floating_bubbles.tidy.html:313:9: [definite] Dead assignment, property distanceTo is never read
+test/10k/floating_bubbles.tidy.html:321:9: [definite] Dead assignment, property subtract is never read
+test/10k/floating_bubbles.tidy.html:331:9: [definite] Dead assignment, property divideBy is never read
+test/10k/floating_bubbles.tidy.html:339:13: [definite] Dead assignment, property cpL is never read
+test/10k/floating_bubbles.tidy.html:340:13: [definite] Dead assignment, property cpR is never read
+test/10k/floating_bubbles.tidy.html:341:13: [definite] Dead assignment, property velocity is never read
+test/10k/floating_bubbles.tidy.html:348:9: [definite] Dead assignment, property clone is never read
+test/10k/floating_bubbles.tidy.html:18:13: [definite] The variable v is never used
+test/10k/floating_bubbles.tidy.html:19:13: [definite] The variable r is never used
+test/10k/floating_bubbles.tidy.html:21:13: [definite] The variable B is never used
+test/10k/floating_bubbles.tidy.html:22:13: [definite] The variable t is never used
+test/10k/floating_bubbles.tidy.html:23:13: [definite] The variable h is never used
+test/10k/floating_bubbles.tidy.html:24:13: [definite] The variable e is never used
+test/10k/floating_bubbles.tidy.html:26:13: [definite] The variable p is never used
+test/10k/floating_bubbles.tidy.html:27:13: [definite] The variable c is never used
+test/10k/floating_bubbles.tidy.html:29:13: [definite] The variable E is never used
+test/10k/floating_bubbles.tidy.html:31:13: [definite] The variable o is never used
+test/10k/floating_bubbles.tidy.html:32:13: [definite] The variable j is never used
+test/10k/floating_bubbles.tidy.html:33:13: [definite] The variable k is never used
+test/10k/floating_bubbles.tidy.html:34:13: [definite] The variable s is never used
+test/10k/floating_bubbles.tidy.html:51:9: [definite] Unreachable function d
+test/10k/floating_bubbles.tidy.html:63:9: [definite] Unreachable function u
+test/10k/floating_bubbles.tidy.html:70:43: [definite] Unreachable code
+test/10k/floating_bubbles.tidy.html:101:21: [definite] The variable P is never used
+test/10k/floating_bubbles.tidy.html:109:25: [definite] The variable H is never used
+test/10k/floating_bubbles.tidy.html:110:25: [definite] The variable Q is never used
+test/10k/floating_bubbles.tidy.html:111:25: [definite] The variable G is never used
+test/10k/floating_bubbles.tidy.html:135:25: [definite] The variable T is never used
+test/10k/floating_bubbles.tidy.html:136:25: [definite] The variable I is never used
+test/10k/floating_bubbles.tidy.html:150:25: [definite] The variable K is never used
+test/10k/floating_bubbles.tidy.html:178:17: [definite] The variable G is never used
+test/10k/floating_bubbles.tidy.html:230:35: [definite] Unreachable function
+test/10k/floating_bubbles.tidy.html:233:34: [definite] Unreachable function
+test/10k/floating_bubbles.tidy.html:244:13: [definite] Unreachable code
+test/10k/floating_bubbles.tidy.html:254:36: [definite] Unreachable function
+test/10k/floating_bubbles.tidy.html:270:35: [definite] Unreachable function
+test/10k/floating_bubbles.tidy.html:271:358: [definite] Unreachable function
+test/10k/floating_bubbles.tidy.html:278:36: [definite] Unreachable function
+test/10k/floating_bubbles.tidy.html:285:29: [definite] Unreachable function
+test/10k/floating_bubbles.tidy.html:313:34: [definite] Unreachable function
+test/10k/floating_bubbles.tidy.html:321:32: [definite] Unreachable function
+test/10k/floating_bubbles.tidy.html:331:32: [definite] Unreachable function
+test/10k/floating_bubbles.tidy.html:348:29: [definite] Unreachable function
+test/10k/floating_bubbles.tidy.html:373:9: [definite] Unreachable function F
+test/10k/floating_bubbles.tidy.html:94:25: [maybe] TypeError, accessing property of null/undefined
+test/10k/floating_bubbles.tidy.html:97:25: [maybe] TypeError, accessing property of null/undefined
+test/10k/floating_bubbles.tidy.html:100:25: [maybe] TypeError, accessing property of null/undefined
+test/10k/floating_bubbles.tidy.html:102:17: [maybe] TypeError, accessing property of null/undefined
+test/10k/floating_bubbles.tidy.html:103:17: [maybe] TypeError, accessing property of null/undefined
+test/10k/floating_bubbles.tidy.html:104:17: [maybe] TypeError, accessing property of null/undefined
+test/10k/floating_bubbles.tidy.html:210:25: [maybe] TypeError, accessing property of null/undefined
+test/10k/floating_bubbles.tidy.html:220:21: [maybe] TypeError, accessing property of null/undefined
+test/10k/floating_bubbles.tidy.html:220:46: [maybe] TypeError, accessing property of null/undefined
+test/10k/floating_bubbles.tidy.html:311:35: [maybe] TypeError, accessing property of null/undefined
+test/10k/floating_bubbles.tidy.html:12: [maybe] Uncaught exception, constructed at [test/10k/floating_bubbles.tidy.html:94:25, test/10k/floating_bubbles.tidy.html:97:25, test/10k/floating_bubbles.tidy.html:100:25, test/10k/floating_bubbles.tidy.html:102:17, test/10k/floating_bubbles.tidy.html:103:17, test/10k/floating_bubbles.tidy.html:104:17, test/10k/floating_bubbles.tidy.html:210:25, test/10k/floating_bubbles.tidy.html:220:21, test/10k/floating_bubbles.tidy.html:220:46, test/10k/floating_bubbles.tidy.html:311:35]
+test/10k/floating_bubbles.tidy.html:94:25: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.tidy.html:94:49: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.tidy.html:97:25: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.tidy.html:97:49: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.tidy.html:100:25: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.tidy.html:100:63: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.tidy.html:102:17: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.tidy.html:103:17: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.tidy.html:104:17: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.tidy.html:210:25: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.tidy.html:220:21: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.tidy.html:220:46: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.tidy.html:301:26: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/10k/floating_bubbles.tidy.html:301:34: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/10k/floating_bubbles.tidy.html:304:30: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.tidy.html:304:39: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.tidy.html:304:48: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.tidy.html:304:57: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.tidy.html:311:26: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.tidy.html:311:40: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.tidy.html:317:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.tidy.html:318:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.tidy.html:319:20: [info] 'this' refers to multiple abstract objects, which may cause loss of precision

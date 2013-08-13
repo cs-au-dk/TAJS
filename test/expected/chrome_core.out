@@ -1,0 +1,55 @@
+test/chromeexperiments/core.tidy.html:222:13: [definite] TypeError, accessing property of null/undefined
+test/chromeexperiments/core.tidy.html:229:13: [definite] TypeError, accessing property of null/undefined
+test/chromeexperiments/core.tidy.html:471:9: [definite] The conditional expression is always true
+test/chromeexperiments/core.tidy.html:471:13: [definite] The conditional expression is always true
+test/chromeexperiments/core.tidy.html:503:12: [definite] Variable d is null/undefined
+test/chromeexperiments/core.tidy.html:504:12: [definite] Variable h is null/undefined
+test/chromeexperiments/core.tidy.html:222:13: [definite] Reading absent property touches
+test/chromeexperiments/core.tidy.html:229:13: [definite] Reading absent property touches
+test/chromeexperiments/core.tidy.html:300:13: [definite] Dead assignment, property shield is never read
+test/chromeexperiments/core.tidy.html:300:24: [definite] Dead assignment, property x is never read
+test/chromeexperiments/core.tidy.html:300:24: [definite] Dead assignment, property y is never read
+test/chromeexperiments/core.tidy.html:502:5: [definite] Dead assignment, property position is never read
+test/chromeexperiments/core.tidy.html:512:1: [definite] Dead assignment, property clonePosition is never read
+test/chromeexperiments/core.tidy.html:524:5: [definite] Dead assignment, property length is never read
+test/chromeexperiments/core.tidy.html:536:13: [definite] Dead assignment, property normalTarget is never read
+test/chromeexperiments/core.tidy.html:545:27: [definite] Dead assignment, property x is never read
+test/chromeexperiments/core.tidy.html:545:27: [definite] Dead assignment, property y is never read
+test/chromeexperiments/core.tidy.html:222:33: [definite] Unreachable code
+test/chromeexperiments/core.tidy.html:229:33: [definite] Unreachable code
+test/chromeexperiments/core.tidy.html:512:33: [definite] Unreachable function
+test/chromeexperiments/core.tidy.html:319:17: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/core.tidy.html:322:91: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/core.tidy.html:338:13: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/core.tidy.html:385:13: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/core.tidy.html:559:9: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/core.tidy.html:340:13: [maybe] Reading absent property alpha
+test/chromeexperiments/core.tidy.html:340:29: [maybe] Reading absent property alpha
+test/chromeexperiments/core.tidy.html:341:66: [maybe] Reading absent property alpha
+test/chromeexperiments/core.tidy.html:342:68: [maybe] Reading absent property alpha
+test/chromeexperiments/core.tidy.html:366:17: [maybe] Reading absent property dead
+test/chromeexperiments/core.tidy.html:181: [maybe] Uncaught exception, constructed at [test/chromeexperiments/core.tidy.html:222:13, test/chromeexperiments/core.tidy.html:229:13, test/chromeexperiments/core.tidy.html:319:17, test/chromeexperiments/core.tidy.html:322:91, test/chromeexperiments/core.tidy.html:338:13, test/chromeexperiments/core.tidy.html:385:13, test/chromeexperiments/core.tidy.html:559:9]
+test/chromeexperiments/core.tidy.html:315:20: [maybe] Reading absent property (computed name)
+test/chromeexperiments/core.tidy.html:317:21: [maybe] Reading absent property (computed name)
+test/chromeexperiments/core.tidy.html:318:22: [maybe] Reading absent property (computed name)
+test/chromeexperiments/core.tidy.html:337:17: [maybe] Reading absent property (computed name)
+test/chromeexperiments/core.tidy.html:340:13: [maybe] Conversion to number yields NaN
+test/chromeexperiments/core.tidy.html:340:25: [maybe] Conversion to number yields NaN
+test/chromeexperiments/core.tidy.html:341:44: [maybe] Converting undefined to string
+test/chromeexperiments/core.tidy.html:342:44: [maybe] Converting undefined to string
+test/chromeexperiments/core.tidy.html:384:17: [maybe] Reading absent property (computed name)
+test/chromeexperiments/core.tidy.html:385:13: [maybe] Conversion to number yields NaN
+test/chromeexperiments/core.tidy.html:386:13: [maybe] Conversion to number yields NaN
+test/chromeexperiments/core.tidy.html:389:13: [maybe] Conversion to number yields NaN
+test/chromeexperiments/core.tidy.html:442:13: [maybe] Converting object to string
+test/chromeexperiments/core.tidy.html:442:13: [maybe] Converting primitive string to object
+test/chromeexperiments/core.tidy.html:442:13: [maybe] Converting primitive string to object
+test/chromeexperiments/core.tidy.html:442:75: [maybe] Converting object to string
+test/chromeexperiments/core.tidy.html:442:75: [maybe] Converting primitive string to object
+test/chromeexperiments/core.tidy.html:442:75: [maybe] Converting primitive string to object
+test/chromeexperiments/core.tidy.html:442:136: [maybe] Converting object to string
+test/chromeexperiments/core.tidy.html:442:136: [maybe] Converting primitive string to object
+test/chromeexperiments/core.tidy.html:442:136: [maybe] Converting primitive string to object
+test/chromeexperiments/core.tidy.html:557:13: [maybe] Reading absent property (computed name)
+test/chromeexperiments/core.tidy.html:508:19: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/core.tidy.html:509:15: [info] 'this' refers to multiple abstract objects, which may cause loss of precision

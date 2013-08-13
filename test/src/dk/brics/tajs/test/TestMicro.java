@@ -12,7 +12,7 @@ import dk.brics.tajs.util.AnalysisException;
 
 @SuppressWarnings("static-method")
 public class TestMicro {
-
+	
 	public static void main(String[] args) {
 		org.junit.runner.JUnitCore.main("dk.brics.tajs.test.TestMicro");
 	}
@@ -29,7 +29,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro00() throws Exception {
+	public void micro_00() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test00.js"};
@@ -38,7 +38,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro01() throws Exception {
+	public void micro_01() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test01.js"};
@@ -47,7 +47,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro02() throws Exception {
+	public void micro_02() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test02.js"};
@@ -56,7 +56,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro03() throws Exception {
+	public void micro_03() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test03.js"};
@@ -65,7 +65,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro04() throws Exception {
+	public void micro_04() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test04.js"};
@@ -74,7 +74,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro05() throws Exception {
+	public void micro_05() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test05.js"};
@@ -83,7 +83,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro06() throws Exception {
+	public void micro_06() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test06.js"};
@@ -92,7 +92,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro07() throws Exception {
+	public void micro_07() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test07.js"};
@@ -101,7 +101,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro08() throws Exception {
+	public void micro_08() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test08.js"};
@@ -110,7 +110,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro09() throws Exception {
+	public void micro_09() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test09.js"};
@@ -119,7 +119,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro10() throws Exception {
+	public void micro_10() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test10.js"};
@@ -128,7 +128,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro11() throws Exception {
+	public void micro_11() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test11.js"};
@@ -137,7 +137,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro12() throws Exception {
+	public void micro_12() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test12.js"};
@@ -146,7 +146,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro13() throws Exception {
+	public void micro_13() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test13.js"};
@@ -155,7 +155,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro14() throws Exception {
+	public void micro_14() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test14.js"};
@@ -164,7 +164,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro15() throws Exception {
+	public void micro_15() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test15.js"};
@@ -173,7 +173,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro16() throws Exception {
+	public void micro_16() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test16.js"};
@@ -182,7 +182,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro17() throws Exception {
+	public void micro_17() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test17.js"};
@@ -191,7 +191,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro18() throws Exception {
+	public void micro_18() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test18.js"};
@@ -200,7 +200,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro19() throws Exception {
+	public void micro_19() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test19.js"};
@@ -209,7 +209,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro20() throws Exception {
+	public void micro_20() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test20.js"};
@@ -218,7 +218,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro21() throws Exception {
+	public void micro_21() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test21.js"};
@@ -227,7 +227,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro22() throws Exception {
+	public void micro_22() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test22.js"};
@@ -236,7 +236,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro23() throws Exception {
+	public void micro_23() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test23.js"};
@@ -245,7 +245,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro24() throws Exception {
+	public void micro_24() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test24.js"};
@@ -254,7 +254,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro25() throws Exception {
+	public void micro_25() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test25.js"};
@@ -263,7 +263,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro26() throws Exception {
+	public void micro_26() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test26.js"};
@@ -272,7 +272,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro27() throws Exception {
+	public void micro_27() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test27.js"};
@@ -281,7 +281,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro28() throws Exception {
+	public void micro_28() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test28.js"};
@@ -290,7 +290,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro29() throws Exception {
+	public void micro_29() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test29.js"};
@@ -299,7 +299,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro30() throws Exception {
+	public void micro_30() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test30.js"};
@@ -308,7 +308,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro31() throws Exception {
+	public void micro_31() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test31.js"};
@@ -317,7 +317,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro32() throws Exception {
+	public void micro_32() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test32.js"};
@@ -326,7 +326,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro33() throws Exception {
+	public void micro_33() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test33.js"};
@@ -335,7 +335,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro34() throws Exception {
+	public void micro_34() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test34.js"};
@@ -344,7 +344,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro35() throws Exception {
+	public void micro_35() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test35.js"};
@@ -353,7 +353,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro36() throws Exception {
+	public void micro_36() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test36.js"};
@@ -362,7 +362,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro37() throws Exception {
+	public void micro_37() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test37.js"};
@@ -371,7 +371,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro38() throws Exception {
+	public void micro_38() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test38.js"};
@@ -380,7 +380,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro39() throws Exception {
+	public void micro_39() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test39.js"};
@@ -389,7 +389,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro40() throws Exception {
+	public void micro_40() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test40.js"};
@@ -398,7 +398,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro41() throws Exception {
+	public void micro_41() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test41.js", "test/micro/test41b.js"};
@@ -407,7 +407,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro42() throws Exception {
+	public void micro_42() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test42.js"};
@@ -416,7 +416,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro43() throws Exception {
+	public void micro_43() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test43.js"};
@@ -425,7 +425,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro44() throws Exception {
+	public void micro_44() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test44.js"};
@@ -434,7 +434,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro45() throws Exception {
+	public void micro_45() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test45.js"};
@@ -443,16 +443,16 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro46() throws Exception {
+	public void micro_46() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test46.js"};
 		Misc.run(args);
-		Misc.checkSystemOutput();// TODO: summary function object (related to function object joining?)
+		Misc.checkSystemOutput();
 	}
 
 	@Test
-	public void testMicro47() throws Exception {
+	public void micro_47() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test47.js"};
@@ -461,7 +461,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro48() throws Exception {
+	public void micro_48() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test48.js"};
@@ -470,7 +470,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro49() throws Exception {
+	public void micro_49() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test49.js"};
@@ -479,7 +479,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro50() throws Exception {
+	public void micro_50() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test50.js"};
@@ -487,20 +487,20 @@ public class TestMicro {
 		Misc.checkSystemOutput();
 	}
 
-	@Ignore
+	@Ignore // TODO: can't specialize for-in due to r/w conflict
 	@Test
-	public void testMicro50ct() throws Exception {
+	public void micro_50ct() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
-		Options.enableCorrelationTracking();
+		Options.enableForInSpecialization();
 		String[] args = {"test/micro/test50.js"};
 		Misc.run(args);
-		Options.disableCorrelationTracking();
+		Options.disableForInSpecialization();
 		Misc.checkSystemOutput();
 	}
 
 	@Test
-	public void testMicro51() throws Exception {
+	public void micro_51() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test51.js"};
@@ -509,7 +509,17 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro52() throws Exception {
+	public void micro_51ct() throws Exception {
+		Misc.init();
+		Misc.captureSystemOutput();
+		Options.enableForInSpecialization();
+		String[] args = {"test/micro/test51.js"};
+		Misc.run(args);
+		Misc.checkSystemOutput();
+	}
+
+	@Test
+	public void micro_52() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test52.js"};
@@ -518,7 +528,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro53() throws Exception {
+	public void micro_53() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test53.js"};
@@ -527,7 +537,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro54() throws Exception {
+	public void micro_54() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test54.js"};
@@ -536,7 +546,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro55() throws Exception {
+	public void micro_55() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test55.js"};
@@ -545,7 +555,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro56() throws Exception {
+	public void micro_56() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test56.js"};
@@ -554,7 +564,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro57() throws Exception {
+	public void micro_57() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test57.js"};
@@ -563,7 +573,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro58() throws Exception {
+	public void micro_58() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test58.js"};
@@ -572,7 +582,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro59() throws Exception { // TODO: precision could be improved at concatenation of uint / non-uint strings
+	public void micro_59() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test59.js"};
@@ -581,7 +591,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro60() throws Exception {
+	public void micro_60() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test60.js"};
@@ -590,7 +600,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro61() throws Exception {
+	public void micro_61() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test61.js"};
@@ -599,7 +609,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro62() throws Exception {
+	public void micro_62() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test62.js"};
@@ -608,7 +618,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro63() throws Exception {
+	public void micro_63() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test63.js"};
@@ -616,20 +626,19 @@ public class TestMicro {
 		Misc.checkSystemOutput();
 	}
 
-	@Ignore
 	@Test
-	public void testMicro63ct() throws Exception {
+	public void micro_63ct() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
-		Options.enableCorrelationTracking();
+		Options.enableForInSpecialization();
 		String[] args = {"test/micro/test63.js"};
 		Misc.run(args);
-		Options.disableCorrelationTracking();
+		Options.disableForInSpecialization();
 		Misc.checkSystemOutput();
 	}
 
 	@Test
-	public void testMicro64() throws Exception {
+	public void micro_64() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test64.js"};
@@ -638,7 +647,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro65() throws Exception {
+	public void micro_65() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test65.js"};
@@ -647,7 +656,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro66() throws Exception {
+	public void micro_66() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test66.js"};
@@ -656,7 +665,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro67() throws Exception {
+	public void micro_67() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test67.js"};
@@ -665,7 +674,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro68() throws Exception {
+	public void micro_68() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test68.js"};
@@ -674,7 +683,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro69() throws Exception {
+	public void micro_69() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test69.js"};
@@ -683,7 +692,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro70() throws Exception {
+	public void micro_70() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test70.js"};
@@ -692,7 +701,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro71() throws Exception {
+	public void micro_71() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test71.js"};
@@ -701,7 +710,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro72() throws Exception {
+	public void micro_72() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test72.js"};
@@ -710,7 +719,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro73() throws Exception {
+	public void micro_73() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test73.js"};
@@ -719,7 +728,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro74() throws Exception {
+	public void micro_74() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test74.js"};
@@ -727,21 +736,19 @@ public class TestMicro {
 		Misc.checkSystemOutput();
 	}
 
-	@Ignore
 	@Test
-	public void testMicro74ct() throws Exception {
+	public void micro_74ct() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
-		Options.enableCorrelationTracking();
+		Options.enableForInSpecialization();
 		String[] args = {"test/micro/test74.js"};
 		Misc.run(args);
-		Options.disableCorrelationTracking();
+		Options.disableForInSpecialization();
 		Misc.checkSystemOutput();
 	}
 
-	// TODO: Gets the exception handler wrong for a lot of blocks with the old flow graph builder.
 	@Test
-	public void testMicro75() throws Exception {
+	public void micro_75() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test75.js"};
@@ -750,7 +757,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro76() throws Exception {
+	public void micro_76() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test76.js"};
@@ -759,7 +766,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro77() throws Exception {
+	public void micro_77() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test77.js"};
@@ -768,7 +775,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro78() throws Exception {
+	public void micro_78() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test78.js"};
@@ -777,7 +784,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro79() throws Exception {
+	public void micro_79() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test79.js"};
@@ -786,7 +793,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro80() throws Exception {
+	public void micro_80() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test80.js"};
@@ -795,7 +802,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro81() throws Exception {
+	public void micro_81() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test81.js"};
@@ -804,7 +811,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro82() throws Exception {
+	public void micro_82() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test82.js"};
@@ -813,7 +820,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro83() throws Exception {
+	public void micro_83() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test83.js"};
@@ -822,7 +829,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro84() throws Exception {
+	public void micro_84() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test84.js"};
@@ -831,7 +838,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro85() throws Exception {
+	public void micro_85() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test85.js"};
@@ -840,7 +847,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro86() throws Exception {
+	public void micro_86() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test86.js"};
@@ -849,7 +856,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro87() throws Exception {
+	public void micro_87() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test87.js"};
@@ -858,7 +865,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro88() throws Exception {
+	public void micro_88() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test88.js"};
@@ -867,7 +874,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro89() throws Exception {
+	public void micro_89() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test89.js"};
@@ -876,7 +883,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro90() throws Exception {
+	public void micro_90() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test90.js"};
@@ -885,7 +892,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro91() throws Exception {
+	public void micro_91() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test91.js"};
@@ -894,7 +901,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro92() throws Exception {
+	public void micro_92() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test92.js"};
@@ -903,7 +910,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro93() throws Exception {
+	public void micro_93() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test93.js"};
@@ -912,7 +919,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro94() throws Exception {
+	public void micro_94() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test94.js"};
@@ -921,7 +928,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro95() throws Exception {
+	public void micro_95() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test95.js"};
@@ -930,7 +937,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro96() throws Exception {
+	public void micro_96() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test96.js"};
@@ -939,7 +946,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro97() throws Exception {
+	public void micro_97() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test97.js"};
@@ -948,7 +955,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro98() throws Exception {
+	public void micro_98() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test98.js"};
@@ -957,7 +964,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro99() throws Exception {
+	public void micro_99() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test99.js"};
@@ -966,7 +973,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro100() throws Exception {
+	public void micro_100() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test100.js"};
@@ -975,7 +982,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro101() throws Exception {
+	public void micro_101() throws Exception { // TODO: should insert assume node automatically
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test101.js"};
@@ -984,7 +991,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro102() throws Exception {
+	public void micro_102() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test102.js"};
@@ -993,7 +1000,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro103() throws Exception {
+	public void micro_103() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test103.js"};
@@ -1002,7 +1009,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro104() throws Exception {
+	public void micro_104() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test104.js"};
@@ -1011,7 +1018,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro105() throws Exception {
+	public void micro_105() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test105.js"};
@@ -1020,7 +1027,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro106() throws Exception {
+	public void micro_106() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test106.js"};
@@ -1029,7 +1036,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro107() throws Exception {
+	public void micro_107() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test107.js"};
@@ -1038,7 +1045,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro108() throws Exception {
+	public void micro_108() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test108.js"};
@@ -1047,7 +1054,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro109() throws Exception {
+	public void micro_109() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test109.js"};
@@ -1056,7 +1063,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro110() throws Exception {
+	public void micro_110() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test110.js"};
@@ -1065,7 +1072,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro111() throws Exception {
+	public void micro_111() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test111.js"};
@@ -1074,7 +1081,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro112() throws Exception {
+	public void micro_112() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test112.js"};
@@ -1083,7 +1090,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro113() throws Exception {
+	public void micro_113() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test113.js"};
@@ -1093,20 +1100,16 @@ public class TestMicro {
 
 	// Should be runtime error, but Sec 16 p.149 allows us to report the error early.
 	@Test(expected=AnalysisException.class)
-	public void testMicro114() throws Exception {
+	public void micro_114() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
-		boolean newFg = Options.isOldFlowgraphBuilderEnabled();
-		Options.disableOldFlowgraphBuilder();
 		String[] args = {"test/micro/test114.js"};
 		Misc.run(args);
-		if (!newFg)
-			Options.enableOldFlowgraphBuilder();
 		Misc.checkSystemOutput();
 	}
 
 	@Test
-	public void testMicro115() throws Exception {
+	public void micro_115() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test115.js"};
@@ -1115,7 +1118,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro116() throws Exception {
+	public void micro_116() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test116.js"};
@@ -1124,7 +1127,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro117() throws Exception {
+	public void micro_117() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test117.js"};
@@ -1133,7 +1136,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro118() throws Exception {
+	public void micro_118() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test118.js"};
@@ -1142,7 +1145,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro119() throws Exception {
+	public void micro_119() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test119.js"};
@@ -1151,7 +1154,55 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro123() throws Exception {
+	public void micro_120() throws Exception {
+		Misc.init();
+		Misc.captureSystemOutput();
+		String[] args = {"test/micro/test120.js"};
+		Misc.run(args);
+		Misc.checkSystemOutput();
+	}
+
+	@Ignore // FIXME: for-in with break/continue/delete
+	@Test
+	public void micro_120ct() throws Exception {
+		Misc.init();
+		Misc.captureSystemOutput();
+		Options.enableForInSpecialization();
+		String[] args = {"test/micro/test120.js"};
+		Misc.run(args);
+		Misc.checkSystemOutput();
+	}
+
+	@Test
+	public void micro_121() throws Exception {
+		Misc.init();
+		Misc.captureSystemOutput();
+		String[] args = {"test/micro/test121.js"};
+		Misc.run(args);
+		Misc.checkSystemOutput();
+	}
+
+	@Test
+	public void micro_121ct() throws Exception {
+		Misc.init();
+		Misc.captureSystemOutput();
+		Options.enableForInSpecialization();
+		String[] args = {"test/micro/test121.js"}; // can't specialize for-in due to r/w conflict
+		Misc.run(args);
+		Misc.checkSystemOutput();
+	}
+
+	@Test
+	public void micro_122() throws Exception {
+		Misc.init();
+		Misc.captureSystemOutput();
+		String[] args = {"test/micro/test122.js"}; // FIXME: flow graph wrong!
+		Misc.run(args);
+		Misc.checkSystemOutput();
+	}
+
+	@Test
+	public void micro_123() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test123.js"};
@@ -1159,20 +1210,19 @@ public class TestMicro {
 		Misc.checkSystemOutput();
 	}
 
-	@Ignore
 	@Test
-	public void testMicro123ct() throws Exception {
+	public void micro_123ct() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
-		Options.enableCorrelationTracking();
+		Options.enableForInSpecialization();
 		String[] args = {"test/micro/test123.js"};
 		Misc.run(args);
-		Options.disableCorrelationTracking();
+		Options.disableForInSpecialization();
 		Misc.checkSystemOutput();
 	}
 
 	@Test
-	public void testMicro126() throws Exception {
+	public void micro_126() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test126.js"};
@@ -1181,7 +1231,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro127() throws Exception {
+	public void micro_127() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test127.js"};
@@ -1190,7 +1240,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro128() throws Exception {
+	public void micro_128() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test128.js"};
@@ -1199,7 +1249,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro129() throws Exception {
+	public void micro_129() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test129.js"};
@@ -1208,7 +1258,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro130() throws Exception {
+	public void micro_130() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test130.js"};
@@ -1217,7 +1267,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro131() throws Exception {
+	public void micro_131() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test131.js"};
@@ -1226,7 +1276,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro132() throws Exception {
+	public void micro_132() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test132.js"};
@@ -1235,7 +1285,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro133() throws Exception {
+	public void micro_133() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test133.js"};
@@ -1244,7 +1294,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro134() throws Exception {
+	public void micro_134() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test134.js"};
@@ -1253,7 +1303,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro135() throws Exception {
+	public void micro_135() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test135.js"};
@@ -1262,7 +1312,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro136() throws Exception {
+	public void micro_136() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test136.js"};
@@ -1271,7 +1321,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro137() throws Exception {
+	public void micro_137() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test137.js"};
@@ -1280,7 +1330,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro138() throws Exception {
+	public void micro_138() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test138.js"};
@@ -1289,7 +1339,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro139() throws Exception {
+	public void micro_139() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test139.js"};
@@ -1298,20 +1348,16 @@ public class TestMicro {
 	}
 
 	@Test(expected=AnalysisException.class)
-	public void testMicro140() throws Exception {
+	public void micro_140() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
-		boolean newFg = Options.isOldFlowgraphBuilderEnabled();
-		Options.disableOldFlowgraphBuilder();
 		String[] args = {"test/micro/test140.js"};
 		Misc.run(args);
-		if (!newFg)
-			Options.enableOldFlowgraphBuilder();
 		Misc.checkSystemOutput();
 	}
 
 	@Test
-	public void testMicro141() throws Exception {
+	public void micro_141() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test141.js"};
@@ -1320,7 +1366,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro142() throws Exception {
+	public void micro_142() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test142.js"};
@@ -1330,7 +1376,7 @@ public class TestMicro {
 
 	@Ignore // TODO: getters/setters
 	@Test
-	public void testMicro143() throws Exception {
+	public void micro_143() throws Exception {
 		Assert.fail("Add support for getters/setters");
 		Misc.init();
 		Misc.captureSystemOutput();
@@ -1341,7 +1387,7 @@ public class TestMicro {
 
 	@Ignore // TODO: getters/setters
 	@Test
-	public void testMicro144() throws Exception {
+	public void micro_144() throws Exception {
 		Assert.fail("Add support for getters/setters");
 		Misc.init();
 		Misc.captureSystemOutput();
@@ -1351,7 +1397,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro145() throws Exception {
+	public void micro_145() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test145.js"};
@@ -1361,7 +1407,7 @@ public class TestMicro {
 
 	@Ignore // FIXME: BlockState (readPropertyRaw?) currently doesn't model ES5-style string index properties
 	@Test
-	public void testMicro146() throws Exception {
+	public void micro_146() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test146.js"};
@@ -1370,7 +1416,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro147() throws Exception {
+	public void micro_147() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test147.js"};
@@ -1379,7 +1425,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro148() throws Exception {
+	public void micro_148() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test148.js"};
@@ -1388,7 +1434,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro148b() throws Exception {
+	public void micro_148b() throws Exception {
 		Options.enableNoModified(); // maybe-modified can make a difference, even with lazy prop
 		Misc.init();
 		Misc.captureSystemOutput();
@@ -1398,7 +1444,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro149() throws Exception {
+	public void micro_149() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test149.js"};
@@ -1407,7 +1453,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro150() throws Exception {
+	public void micro_150() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test150.js"};
@@ -1416,7 +1462,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro151() throws Exception {
+	public void micro_151() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test151.js"};
@@ -1425,7 +1471,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro152() throws Exception {
+	public void micro_152() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test152.js"};
@@ -1434,7 +1480,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro153() throws Exception {
+	public void micro_153() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test153.js"};
@@ -1443,7 +1489,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro154() throws Exception {
+	public void micro_154() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test154.js"};
@@ -1452,7 +1498,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro155() throws Exception {
+	public void micro_155() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test155.js"};
@@ -1461,7 +1507,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro156() throws Exception {
+	public void micro_156() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test156.js"};
@@ -1470,7 +1516,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro157() throws Exception {
+	public void micro_157() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test157.js"};
@@ -1479,7 +1525,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro158() throws Exception {
+	public void micro_158() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test158.js"};
@@ -1488,7 +1534,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro159() throws Exception {
+	public void micro_159() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test159.js"};
@@ -1497,7 +1543,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro160() throws Exception {
+	public void micro_160() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test160.js"};
@@ -1506,7 +1552,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro161() throws Exception { // TODO: pop from scope chain before gc?
+	public void micro_161() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test161.js"};
@@ -1515,7 +1561,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro162() throws Exception { 
+	public void micro_162() throws Exception { 
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test162.js"};
@@ -1524,7 +1570,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro163() throws Exception {
+	public void micro_163() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test163.js"};
@@ -1533,7 +1579,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro164() throws Exception {
+	public void micro_164() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test164.js"};
@@ -1542,7 +1588,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro165() throws Exception {
+	public void micro_165() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test165.js"};
@@ -1551,7 +1597,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro166() throws Exception {
+	public void micro_166() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test166.js"};
@@ -1560,7 +1606,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro167() throws Exception {
+	public void micro_167() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test167.js"};
@@ -1569,7 +1615,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro168() throws Exception {
+	public void micro_168() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test168.js"};
@@ -1578,7 +1624,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro169() throws Exception {
+	public void micro_169() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test169.js"};
@@ -1587,7 +1633,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro170() throws Exception {
+	public void micro_170() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test170.js"};
@@ -1596,7 +1642,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro171() throws Exception {
+	public void micro_171() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test171.js"};
@@ -1605,7 +1651,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro172() throws Exception {
+	public void micro_172() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test172.js"};
@@ -1614,7 +1660,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro173() throws Exception {
+	public void micro_173() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test173.js"};
@@ -1623,7 +1669,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro174() throws Exception {
+	public void micro_174() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test174.js"};
@@ -1632,7 +1678,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro175() throws Exception {
+	public void micro_175() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test175.js"};
@@ -1640,7 +1686,7 @@ public class TestMicro {
 		Misc.checkSystemOutput();
 	}
 	@Test
-	public void testMicro176() throws Exception {
+	public void micro_176() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test176.js"};
@@ -1648,20 +1694,19 @@ public class TestMicro {
 		Misc.checkSystemOutput();
 	}
 
-	@Ignore
 	@Test
-	public void testMicro176ct() throws Exception {
+	public void micro_176ct() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
-		Options.enableCorrelationTracking();
+		Options.enableForInSpecialization();
 		String[] args = {"test/micro/test176.js"};
 		Misc.run(args);
-		Options.disableCorrelationTracking();
+		Options.disableForInSpecialization();
 		Misc.checkSystemOutput();
 	}
 
 	@Test
-	public void testMicro177() throws Exception {
+	public void micro_177() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test177.js"};
@@ -1670,7 +1715,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro178() throws Exception { // FIXME: don't report "Reading absent property" when the read is used as a branch condition (see Monitoring.visitReadProperty)
+	public void micro_178() throws Exception { // FIXME: don't report "Reading absent property" when the read is used as a branch condition (see Monitoring.visitReadProperty)
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test178.js"};
@@ -1678,9 +1723,9 @@ public class TestMicro {
 		Misc.checkSystemOutput();
 	}
 
-	@Ignore
+	@Ignore // FIXME: for-in, iterating over the chars of a string
 	@Test
-	public void testMicro179() throws Exception { // FIXME: for-in
+	public void micro_179() throws Exception { 
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test179.js"};
@@ -1689,7 +1734,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro180() throws Exception {
+	public void micro_180() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test180.js"};
@@ -1698,7 +1743,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro181() throws Exception {
+	public void micro_181() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test181.js"};
@@ -1706,9 +1751,9 @@ public class TestMicro {
 		Misc.checkSystemOutput();
 	}
 
-	@Ignore
+	@Ignore // FIXME: toString
 	@Test
-	public void testMicro182() throws Exception { // FIXME: toString
+	public void micro_182() throws Exception { 
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test182.js"};
@@ -1716,9 +1761,9 @@ public class TestMicro {
 		fail(); // Misc.checkSystemOutput();
 	}
 
-	@Ignore
+	@Ignore // FIXME: valueOf
 	@Test
-	public void testMicro183() throws Exception { // FIXME: valueOf
+	public void micro_183() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test183.js"};
@@ -1726,19 +1771,18 @@ public class TestMicro {
 		fail(); // Misc.checkSystemOutput();
 	}
 
-	@Ignore
 	@Test
-	public void testMicro184() throws Exception { // TODO: Too few parameters to function String.prototype.substr?
+	public void micro_184() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test184.js"};
 		Misc.run(args);
-		fail(); // Misc.checkSystemOutput();
+		Misc.checkSystemOutput();
 	}
 
-	@Ignore
+	@Ignore // FIXME: Rounding error.
 	@Test
-	public void testMicro185() throws Exception { // FIXME: Rounding error.
+	public void micro_185() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test185.js"};
@@ -1747,7 +1791,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro186() throws Exception { // TODO: Improve precision, should give 0.
+	public void micro_186() throws Exception { // TODO: Improve precision, should give 0.
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test186.js"};
@@ -1756,7 +1800,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro187() throws Exception {
+	public void micro_187() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test187.js"};
@@ -1765,7 +1809,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro188() throws Exception {
+	public void micro_188() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test188.js"};
@@ -1774,7 +1818,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testMicro188un() throws Exception {
+	public void micro_188un() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		Options.enableUnrollOneAndAHalf();
@@ -1786,32 +1830,59 @@ public class TestMicro {
 
 	@Ignore
 	@Test
-	public void testMicro189() throws Exception {
+	public void micro_189() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
-		Options.enableCorrelationTracking();
+		Options.enableForInSpecialization();
 		String[] args = {"test/micro/test189.js"};
 		Misc.run(args);
-		Options.disableCorrelationTracking();
+		Options.disableForInSpecialization();
 		Misc.checkSystemOutput();
 	}
 
 	@Ignore
 	@Test
-	public void testMicro189un() throws Exception {
+	public void micro_189un() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
-		Options.enableCorrelationTracking();
+		Options.enableForInSpecialization();
 		Options.enableUnrollOneAndAHalf();
 		String[] args = {"test/micro/test189.js"};
 		Misc.run(args);
-		Options.disableCorrelationTracking();
+		Options.disableForInSpecialization();
 		Options.disableUnrollOneAndAHalf();
 		Misc.checkSystemOutput();
 	}
 
 	@Test
-	public void testArray() throws Exception {
+	public void micro_190() throws Exception {
+		Misc.init();
+		Misc.captureSystemOutput();
+		String[] args = {"test/micro/test190.js"};
+		Misc.run(args);
+		Misc.checkSystemOutput();
+	}
+
+	@Test
+	public void micro_191() throws Exception {
+		Misc.init();
+		Misc.captureSystemOutput();
+		String[] args = {"test/micro/test191.js"};
+		Misc.run(args);
+		Misc.checkSystemOutput();
+	}
+
+	@Test
+	public void micro_192() throws Exception {
+		Misc.init();
+		Misc.captureSystemOutput();
+		String[] args = {"test/micro/test192.js"};
+		Misc.run(args);
+		Misc.checkSystemOutput();
+	}
+
+	@Test
+	public void micro_testArray() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/testArray.js"};
@@ -1820,7 +1891,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testBoolean() throws Exception {
+	public void micro_testBoolean() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/testBoolean.js"};
@@ -1828,37 +1899,29 @@ public class TestMicro {
 		Misc.checkSystemOutput();
 	}
 
-	@Test(expected=AnalysisException.class)
-	public void testEval() throws Exception { 
+	@Test(expected=AnalysisException.class) // TODO: unevalable eval
+	public void micro_testEval() throws Exception { 
 		Misc.init();
 		Misc.captureSystemOutput();
 		Options.enableUnevalMode();
-		boolean newFg = Options.isOldFlowgraphBuilderEnabled();
-		Options.disableOldFlowgraphBuilder();
 		String[] args = {"test/micro/testEval.js"};
 		Misc.run(args);
-		if (!newFg)
-			Options.enableOldFlowgraphBuilder();
 		Misc.checkSystemOutput();
 	}
 
 	@Test
-	public void testFunction() throws Exception {
+	public void micro_testFunction() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
-		boolean newFg = Options.isOldFlowgraphBuilderEnabled();
 		Options.enableUnevalMode();
-		Options.disableOldFlowgraphBuilder();
 		String[] args = {"test/micro/testFunction.js"};
 		Misc.run(args);
-		if (!newFg)
-			Options.enableOldFlowgraphBuilder();
 		Options.disableUnevalMode();
 		Misc.checkSystemOutput();
 	}
 
 	@Test
-	public void testFunctionApply() throws Exception {
+	public void micro_testFunctionApply() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/testFunctionApply.js"};
@@ -1867,7 +1930,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testFunctionCall() throws Exception {
+	public void micro_testFunctionCall() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/testFunctionCall.js"};
@@ -1876,7 +1939,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testNumber() throws Exception {
+	public void micro_testNumber() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/testNumber.js"};
@@ -1885,7 +1948,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testObject() throws Exception {
+	public void micro_testObject() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/testObject.js"};
@@ -1894,7 +1957,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testOO() throws Exception {
+	public void micro_testOO() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/testOO.js"};
@@ -1903,7 +1966,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testRegExp() throws Exception {
+	public void micro_testRegExp() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/testRegExp.js"};
@@ -1912,7 +1975,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testString() throws Exception {
+	public void micro_testString() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/testString.js"};
@@ -1921,7 +1984,7 @@ public class TestMicro {
 	}
 
 	@Test // TODO: Check output; Handle valueOf/toString correctly. testToPrimitive.js
-	public void testToPrimitive() throws Exception { // TODO: testToPrimitive.js:19:1: [info] Abstract value: Str => could be "xy*"
+	public void micro_testToPrimitive() throws Exception { // TODO: testToPrimitive.js:19:1: [info] Abstract value: Str => could be "xy*"
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/testToPrimitive.js"};
@@ -1930,10 +1993,132 @@ public class TestMicro {
 	}
 
 	@Test
-	public void testPaper() throws Exception {
+	public void micro_testPaper() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/testPaper.js"};
+		Misc.run(args);
+		Misc.checkSystemOutput();
+	}
+
+	@Test
+	public void micro_testForIn1() throws Exception {
+		Misc.init();
+		Options.enableForInSpecialization();
+		Misc.captureSystemOutput();
+		String[] args = {"test/micro/testForIn1.js"};
+		Misc.run(args);
+		Misc.checkSystemOutput();
+	}
+
+	@Ignore // FIXME: need new flowgraph builder...
+	@Test
+	public void micro_testForIn2() throws Exception { // FIXME: for-in with break
+		Misc.init();
+		Options.enableForInSpecialization();
+		Misc.captureSystemOutput();
+		String[] args = {"test/micro/testForIn2.js"};
+		Misc.run(args);
+		Misc.checkSystemOutput();
+	}
+
+	@Ignore // FIXME: need new flowgraph builder...
+	@Test
+	public void micro_testForIn3() throws Exception { // FIXME: for-in with exception
+		Misc.init();
+		Options.enableForInSpecialization();
+		Misc.captureSystemOutput();
+		String[] args = { "test/micro/testForIn3.js" };
+		Misc.run(args);
+		Misc.checkSystemOutput();
+	}
+
+	@Test
+	public void micro_testForIn4() throws Exception {
+		Misc.init();
+		Options.enableForInSpecialization();
+		Misc.captureSystemOutput();
+		String[] args = { "test/micro/testForIn4.js" };
+		Misc.run(args);
+		Misc.checkSystemOutput();
+	}
+
+	@Test
+	public void micro_testForIn5() throws Exception {
+		Misc.init();
+		Options.enableForInSpecialization();
+		Misc.captureSystemOutput();
+		String[] args = { "test/micro/testForIn5.js" };
+		Misc.run(args);
+		Misc.checkSystemOutput();
+	}
+
+	@Test
+	public void micro_testForIn6() throws Exception {
+		Misc.init();
+		Options.enableForInSpecialization();
+		Misc.captureSystemOutput();
+		String[] args = { "test/micro/testForIn6.js" };
+		Misc.run(args);
+		Misc.checkSystemOutput();
+	}
+
+	@Test
+	public void micro_testForIn7() throws Exception {
+		Misc.init();
+		Options.enableForInSpecialization();
+		Misc.captureSystemOutput();
+		String[] args = { "test/micro/testForIn7.js" };
+		Misc.run(args);
+		Misc.checkSystemOutput();
+	}
+
+	@Test
+	public void micro_testForInHasOwn() throws Exception {
+		Misc.init();
+		Options.enableForInSpecialization();
+		String[] args = { "test/micro/testForInHasOwn.js" };
+		Misc.run(args);
+	}
+
+	@Test
+	public void micro_testForInPrototypeProperties() throws Exception {
+		Misc.init();
+		Options.enableForInSpecialization();
+		String[] args = { "test/micro/testForInPrototypeProperties.js" };
+		Misc.run(args);
+	}
+	
+	@Test
+	public void micro_testForInNoEnumerablePrototypeProperties() throws Exception {
+		Misc.init();
+		Options.enableForInSpecialization();
+		String[] args = { "test/micro/testForInNoEnumerablePrototypeProperties.js" };
+		Misc.run(args);
+	}
+	
+	@Test
+	public void micro_testForInEach() throws Exception {
+		Misc.init();
+		Options.enableForInSpecialization();
+		String[] args = {"test/micro/testForInEach.js"};
+		Misc.run(args);	
+	}
+	
+	@Test
+	public void micro_testCall1() throws Exception {
+		Misc.init();
+		Misc.captureSystemOutput();
+		String[] args = {"test/micro/testCall1.js"};
+		Misc.run(args);
+		Misc.checkSystemOutput();
+	}
+	
+	@Test
+	public void micro_testCall2() throws Exception {
+		Misc.init();
+		Misc.captureSystemOutput();
+		String[] args = {"test/micro/testCall2.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}

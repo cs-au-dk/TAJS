@@ -1,0 +1,72 @@
+fg2: <main> function()
+  block 0: [entry]
+    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0153.js:1:1)
+    ->[block 1]
+  block 1:
+    node 1: read-variable['eval',v3,v2] (test/flowgraphbuilder/flowgraph_builder0153.js:1:1)
+    node 2: constant["function f() \{ var p = \{ Left : 3 \}; p.Left++; \}; f()",v4] (test/flowgraphbuilder/flowgraph_builder0153.js:1:6)
+    ->[block 2]
+  block 2:
+    node 3: call[v2,v3,v4,-]* (test/flowgraphbuilder/flowgraph_builder0153.js:1:1)
+    ->[block 3]
+  block 3: [exit-ordinary]
+    node 4: return[v1] (test/flowgraphbuilder/flowgraph_builder0153.js:1:1)
+    ->[]
+  block 4: [exit-exceptional]
+    node 5: exceptional-return (test/flowgraphbuilder/flowgraph_builder0153.js:1:1)
+    ->[]
+
+Unevalizer: Starting on: "function f() { var p = { Left : 3 }; p.Left++; }; f()"
+Unevalizer: Valid program
+Unevalizer: No name capture
+fg2: <main> function()
+  block 0: [entry]
+    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0153.js:1:1)
+    ->[block 1]
+  block 1:
+    node 1: read-variable['eval',v3,v2] (test/flowgraphbuilder/flowgraph_builder0153.js:1:1)
+    node 2: constant["function f() \{ var p = \{ Left : 3 \}; p.Left++; \}; f()",v4] (test/flowgraphbuilder/flowgraph_builder0153.js:1:6)
+    ->[block 2]
+  block 2:
+    node 3: call[v2,v3,v4,-]* (test/flowgraphbuilder/flowgraph_builder0153.js:1:1)
+    ->[block 3]
+  block 3: [exit-ordinary]
+    node 4: return[v1] (test/flowgraphbuilder/flowgraph_builder0153.js:1:1)
+    ->[]
+  block 4: [exit-exceptional]
+    node 5: exceptional-return (test/flowgraphbuilder/flowgraph_builder0153.js:1:1)
+    ->[]
+  block 5:
+    node 6: constant[undefined,v5] (test/flowgraphbuilder/flowgraph_builder0153.js:1:1)
+    node 7: function-decl[function f(),-] (test/flowgraphbuilder/flowgraph_builder0153.js:1:1)
+    node 8: read-variable['f',v7,v6] (test/flowgraphbuilder/flowgraph_builder0153.js:1:1)
+    ->[block 6]
+  block 6:
+    node 9: call[v6,v7,-]* (test/flowgraphbuilder/flowgraph_builder0153.js:1:1)
+    ->[block 3]
+function f()
+  block 7: [entry]
+    node 10: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0153.js:1:1)
+    node 11: vardecl['p'] (test/flowgraphbuilder/flowgraph_builder0153.js:1:1)
+    ->[block 8]
+  block 8:
+    node 12: new[v2] (test/flowgraphbuilder/flowgraph_builder0153.js:1:1)
+    node 13: constant[3.0,v3] (test/flowgraphbuilder/flowgraph_builder0153.js:1:1)
+    node 14: write-property[v2,'Left',v3] (test/flowgraphbuilder/flowgraph_builder0153.js:1:1)
+    node 15: write-variable[v2,'p']* (test/flowgraphbuilder/flowgraph_builder0153.js:1:1)
+    node 16: constant[1.0,v4] (test/flowgraphbuilder/flowgraph_builder0153.js:1:1)
+    node 17: read-variable['p',v6,-] (test/flowgraphbuilder/flowgraph_builder0153.js:1:1)
+    node 18: read-property[v6,'Left',v5] (test/flowgraphbuilder/flowgraph_builder0153.js:1:1)
+    node 19: <variable-non-null-undef>['p'] (test/flowgraphbuilder/flowgraph_builder0153.js:1:1)
+    node 20: +[v5,v7] (test/flowgraphbuilder/flowgraph_builder0153.js:1:1)
+    node 21: +[v7,v4,v8] (test/flowgraphbuilder/flowgraph_builder0153.js:1:1)
+    node 22: write-property[v6,'Left',v8] (test/flowgraphbuilder/flowgraph_builder0153.js:1:1)
+    node 23: <variable-non-null-undef>['p']* (test/flowgraphbuilder/flowgraph_builder0153.js:1:1)
+    ->[block 9]
+  block 9: [exit-ordinary]
+    node 24: return[v1] (test/flowgraphbuilder/flowgraph_builder0153.js:1:1)
+    ->[]
+  block 10: [exit-exceptional]
+    node 25: exceptional-return (test/flowgraphbuilder/flowgraph_builder0153.js:1:1)
+    ->[]
+

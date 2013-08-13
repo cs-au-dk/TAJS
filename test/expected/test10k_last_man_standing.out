@@ -1,0 +1,64 @@
+test/10k/last_man_standing.tidy.html:35:5: [definite] The conditional expression is always false
+test/10k/last_man_standing.tidy.html:35:9: [definite] The conditional expression is always false
+test/10k/last_man_standing.tidy.html:97:18: [definite] Dead assignment, property R is never read
+test/10k/last_man_standing.tidy.html:104:19: [definite] Dead assignment, property u is never read
+test/10k/last_man_standing.tidy.html:115:9: [definite] Unreachable function
+test/10k/last_man_standing.tidy.html:40:29: [maybe] TypeError, accessing property of null/undefined
+test/10k/last_man_standing.tidy.html:40:50: [maybe] TypeError, accessing property of null/undefined
+test/10k/last_man_standing.tidy.html:42:13: [maybe] TypeError, accessing property of null/undefined
+test/10k/last_man_standing.tidy.html:43:13: [maybe] TypeError, accessing property of null/undefined
+test/10k/last_man_standing.tidy.html:44:13: [maybe] TypeError, accessing property of null/undefined
+test/10k/last_man_standing.tidy.html:206:18: [maybe] TypeError, accessing property of null/undefined
+test/10k/last_man_standing.tidy.html:215:13: [maybe] TypeError, accessing property of null/undefined
+test/10k/last_man_standing.tidy.html:219:21: [maybe] TypeError, accessing property of null/undefined
+test/10k/last_man_standing.tidy.html:231:18: [maybe] TypeError, accessing property of null/undefined
+test/10k/last_man_standing.tidy.html:232:17: [maybe] TypeError, inf or NaN as arguments to CanvasRenderingContext2D.putImageData
+test/10k/last_man_standing.tidy.html:240:18: [maybe] TypeError, accessing property of null/undefined
+test/10k/last_man_standing.tidy.html:261:13: [maybe] TypeError, inf or NaN as arguments to CanvasRenderingContext2D.putImageData
+test/10k/last_man_standing.tidy.html:27: [maybe] Uncaught exception, constructed at [test/10k/last_man_standing.tidy.html:40:29, test/10k/last_man_standing.tidy.html:40:50, test/10k/last_man_standing.tidy.html:42:13, test/10k/last_man_standing.tidy.html:43:13, test/10k/last_man_standing.tidy.html:44:13, test/10k/last_man_standing.tidy.html:206:18, test/10k/last_man_standing.tidy.html:215:13, test/10k/last_man_standing.tidy.html:219:21, test/10k/last_man_standing.tidy.html:231:18, test/10k/last_man_standing.tidy.html:240:18]
+test/10k/last_man_standing.tidy.html:40:29: [maybe] Reading absent property (computed name)
+test/10k/last_man_standing.tidy.html:40:50: [maybe] Reading absent property (computed name)
+test/10k/last_man_standing.tidy.html:40:50: [maybe] Reading absent property (computed name)
+test/10k/last_man_standing.tidy.html:42:13: [maybe] Reading absent property (computed name)
+test/10k/last_man_standing.tidy.html:43:13: [maybe] Reading absent property (computed name)
+test/10k/last_man_standing.tidy.html:44:13: [maybe] Reading absent property (computed name)
+test/10k/last_man_standing.tidy.html:109:23: [maybe] Reading absent property (computed name)
+test/10k/last_man_standing.tidy.html:109:46: [maybe] Reading absent property (computed name)
+test/10k/last_man_standing.tidy.html:110:23: [maybe] Reading absent property (computed name)
+test/10k/last_man_standing.tidy.html:110:46: [maybe] Reading absent property (computed name)
+test/10k/last_man_standing.tidy.html:205:21: [maybe] Reading absent property (computed name)
+test/10k/last_man_standing.tidy.html:214:21: [maybe] Reading absent property (computed name)
+test/10k/last_man_standing.tidy.html:230:21: [maybe] Reading absent property (computed name)
+test/10k/last_man_standing.tidy.html:232:32: [maybe] Reading absent property (computed name)
+test/10k/last_man_standing.tidy.html:239:21: [maybe] Reading absent property (computed name)
+test/10k/last_man_standing.tidy.html:261:28: [maybe] Reading absent property (computed name)
+test/10k/last_man_standing.tidy.html:61:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/last_man_standing.tidy.html:62:15: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/last_man_standing.tidy.html:62:24: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/last_man_standing.tidy.html:63:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/last_man_standing.tidy.html:64:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/last_man_standing.tidy.html:64:23: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/last_man_standing.tidy.html:65:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/last_man_standing.tidy.html:65:23: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/last_man_standing.tidy.html:68:16: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/last_man_standing.tidy.html:68:31: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/last_man_standing.tidy.html:68:45: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/last_man_standing.tidy.html:68:59: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/last_man_standing.tidy.html:68:73: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/last_man_standing.tidy.html:81:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/last_man_standing.tidy.html:82:15: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/last_man_standing.tidy.html:82:24: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/last_man_standing.tidy.html:83:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/last_man_standing.tidy.html:84:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/last_man_standing.tidy.html:84:31: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/last_man_standing.tidy.html:85:34: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/last_man_standing.tidy.html:85:48: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/last_man_standing.tidy.html:86:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/last_man_standing.tidy.html:86:23: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/last_man_standing.tidy.html:87:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/last_man_standing.tidy.html:87:23: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/last_man_standing.tidy.html:90:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/last_man_standing.tidy.html:90:36: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/last_man_standing.tidy.html:90:56: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/last_man_standing.tidy.html:90:71: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/last_man_standing.tidy.html:92:16: [info] 'this' refers to multiple abstract objects, which may cause loss of precision

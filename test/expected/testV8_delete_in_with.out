@@ -1,0 +1,4 @@
+test/v8tests/delete-in-with.js:32:16: [definite] ReferenceError, reading absent variable assertTrue
+test/v8tests/delete-in-with.js:31:13: [definite] Dead assignment, property x is never read
+test/v8tests/delete-in-with.js:32:27: [definite] Unreachable code
+test/v8tests/delete-in-with.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/delete-in-with.js:32:16]

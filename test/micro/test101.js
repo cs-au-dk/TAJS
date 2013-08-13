@@ -9,7 +9,7 @@ dumpValue(x.a);
 
 var temp = x.a;
 if (temp != null) {
-	assumeNonNullUndef("temp");
+	//assumeNonNullUndef("temp");
 	dumpValue(temp); // expected: [REGEXP]  (not Undef!!!!)
 }
 	

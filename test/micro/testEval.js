@@ -7,7 +7,5 @@ dumpValue(c);
 var d = eval("function funfun(x) { funfun(x); }");
 dumpValue(d);
 dumpObject(d);
-var e = d.a;
-dumpValue(e);
 var f = d(1,2,3,4);
 dumpValue(f);

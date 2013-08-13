@@ -1,0 +1,2 @@
+test/sourcelocations/doubleVar.js:1:5: [definite] The variable jsVar is never used
+test/sourcelocations/doubleVar.js:1:12: [definite] The variable jsVar2 is never used

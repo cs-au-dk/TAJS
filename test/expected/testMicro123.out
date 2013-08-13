@@ -1,3 +1,0 @@
-test/micro/test123.js:10:1: [info] Abstract value: IdentPartsStr
-test/micro/test123.js:4:1: [info] Reading from unknown property that may cause loss of precision
-test/micro/test123.js:5:2: [info] Reading from unknown property that may cause loss of precision

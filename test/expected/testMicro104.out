@@ -1,7 +1,0 @@
-test/micro/test104.js:12:24: [definite] ReferenceError, reading absent variable a
-test/micro/test104.js:1:1: [definite] The variable ta is never used
-test/micro/test104.js:1:1: [definite] The variable tb is never used
-test/micro/test104.js:1:1: [definite] The variable tc is never used
-test/micro/test104.js:12:24: [definite] Unreachable code
-test/micro/test104.js:17:1: [definite] Unreachable code
-test/micro/test104.js:1:1: [maybe] Uncaught exception, constructed at [test/micro/test104.js:12:24]

@@ -1,0 +1,16 @@
+test/micro/test161.js:5:2: [info] Abstract value: 123.0
+test/micro/test161.js:12:1: [info] Abstract object: {a:7.0,[[Prototype]]=[@Object.prototype[native]]}
+test/micro/test161.js:13:1: [info] Abstract state:
+Abstract state:
+  Execution context: ScopeChain=[[@<the global object>[native]]], VariableObject=[@<the global object>[native]], this=[@<the global object>[native]]
+  Summarized: maybe=[@Object#node29, @f#fun1, @Object#node3, @Object#node4, @activation#node27, @arguments#node27], definitely=[@Object#node29, @f#fun1, @Object#node3, @Object#node4, @activation#node27, @arguments#node27]
+  Store (excluding basis and default objects): 
+    @<the global object>[native] (<initial state>): {assert:^(@<the global object>[native].assert[present]),dumpObject:^(@<the global object>[native].dumpObject[present]),dumpState:^(@<the global object>[native].dumpState[present]),dumpValue:[@dumpValue[native]],f:[@f#fun1],x:Null,y:[@Object#node4],[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Prototype]]=?,[[Value]]=?,[[Scope]]=?}
+    @Object.prototype[native] (<initial state>): {a:^(@Object.prototype[native].a[absent]),garbage:^(@Object.prototype[native].garbage[absent]),[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Prototype]]=Null,[[Value]]=?,[[Scope]]=?}
+    @Object#node4 (test/micro/test161.js:1:9): {a:7.0,[[Prototype]]=[@Object.prototype[native]]}
+    @Object#node3 (test/micro/test161.js:3:1): {constructor:[@f#fun1],[[Prototype]]=[@Object.prototype[native]],[[Value]]=NaN}
+    @f#fun1 (test/micro/test161.js:3:1): {length:1.0,prototype:[@Object#node3],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@<the global object>[native]]]}
+  Registers: 
+    v1=Undef
+    v17=[@<the global object>[native]]
+    v18=^(@<the global object>[native].dumpState[present])

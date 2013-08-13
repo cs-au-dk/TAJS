@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Aarhus University
+ * Copyright 2009-2013 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,17 +16,15 @@
 
 package dk.brics.tajs.monitoring;
 
+import static dk.brics.tajs.util.Collections.addAllToMapSet;
+import static dk.brics.tajs.util.Collections.addToMapList;
+import static dk.brics.tajs.util.Collections.addToMapSet;
 import static dk.brics.tajs.util.Collections.newList;
 import static dk.brics.tajs.util.Collections.newMap;
 import static dk.brics.tajs.util.Collections.newSet;
-import static dk.brics.tajs.util.Collections.addAllToMapSet;
-import static dk.brics.tajs.util.Collections.addToMapSet;
-import static dk.brics.tajs.util.Collections.addToMapList;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.text.NumberFormat;
 import java.util.Collection;
@@ -36,6 +34,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+import java.util.TreeMap;
 
 import org.apache.log4j.Logger;
 
@@ -56,13 +55,13 @@ import dk.brics.tajs.flowgraph.jsnodes.DeclareFunctionNode;
 import dk.brics.tajs.flowgraph.jsnodes.DeclareVariableNode;
 import dk.brics.tajs.flowgraph.jsnodes.DeletePropertyNode;
 import dk.brics.tajs.flowgraph.jsnodes.EndForInNode;
-import dk.brics.tajs.flowgraph.jsnodes.EnterWithNode;
+import dk.brics.tajs.flowgraph.jsnodes.BeginWithNode;
 import dk.brics.tajs.flowgraph.jsnodes.EventDispatcherNode;
 import dk.brics.tajs.flowgraph.jsnodes.EventEntryNode;
 import dk.brics.tajs.flowgraph.jsnodes.ExceptionalReturnNode;
 import dk.brics.tajs.flowgraph.jsnodes.HasNextPropertyNode;
 import dk.brics.tajs.flowgraph.jsnodes.IfNode;
-import dk.brics.tajs.flowgraph.jsnodes.LeaveWithNode;
+import dk.brics.tajs.flowgraph.jsnodes.EndWithNode;
 import dk.brics.tajs.flowgraph.jsnodes.NewObjectNode;
 import dk.brics.tajs.flowgraph.jsnodes.NextPropertyNode;
 import dk.brics.tajs.flowgraph.jsnodes.Node;
@@ -121,9 +120,24 @@ CallEdgeType extends CallEdge<BlockStateType>> implements
 	private int block_transfers = 0;
 
 	/**
-	 * Number of calls to the UnknownValueResolver where a value is recovered partially or fully.
+	 * Number of calls to the UnknownValueResolver where a value is recovered partially in non-scanning mode.
 	 */
-	private int unknown_value_resolve = 0;
+	private int unknown_value_resolve_analyzing_partial = 0;
+
+	/**
+	 * Number of calls to the UnknownValueResolver where a value is recovered fully in non-scanning mode.
+	 */
+	private int unknown_value_resolve_analyzing_full = 0;
+
+	/**
+	 * Number of calls to the UnknownValueResolver where a value is recovered partially in scanning mode.
+	 */
+	private int unknown_value_resolve_scanning_partial = 0;
+
+	/**
+	 * Number of calls to the UnknownValueResolver where a value is recovered fully in scanning mode.
+	 */
+	private int unknown_value_resolve_scanning_full = 0;
 
 	/**
 	 * Number of abstract state join operations.
@@ -234,10 +248,10 @@ CallEdgeType extends CallEdge<BlockStateType>> implements
     
     private TypeCollector type_collector;
     
-    /**
-     * Counter for {@link #visitNewFlow(BasicBlock, ICallContext, IBlockState, String, String)}..
-     */
-    private int next_newflow_file;
+//    /**
+//     * Counter for {@link #visitNewFlow(BasicBlock, ICallContext, IBlockState, String, String)}.
+//     */
+//    private int next_newflow_file;
     
     /**
      * Number of property recovery graphs of different sizes.
@@ -270,7 +284,7 @@ CallEdgeType extends CallEdge<BlockStateType>> implements
         called_as_constructor = newSet();
         type_collector = new TypeCollector();
         recovery_graph_sizes = newMap();
-        next_newflow_file = 1;
+//        next_newflow_file = 1;
         messages = null;
 	}
 
@@ -368,10 +382,10 @@ CallEdgeType extends CallEdge<BlockStateType>> implements
 								public void visit(CatchNode n, Void a) {}
 
 								@Override
-								public void visit(EnterWithNode n, Void a) {}
+								public void visit(BeginWithNode n, Void a) {}
 
 								@Override
-								public void visit(LeaveWithNode n, Void a) {}
+								public void visit(EndWithNode n, Void a) {}
 
 								@Override
 								public void visit(BeginForInNode n, Void a) {}
@@ -454,31 +468,56 @@ CallEdgeType extends CallEdge<BlockStateType>> implements
     			// flag if definitely written and definitely not read (excluding 'length' and any-string properties)
     			if (rw.getWriteStatus(s) == ObjReadsWrites.W_Status.WRITTEN &&
     					rw.getReadStatus(s) == ObjReadsWrites.R_Status.NOT_READ) { 
-    				for (AbstractNode n : rw.getWriteLocations(s)) {
+    				for (AbstractNode n : rw.getDefiniteWriteLocations(s)) {
     					String m_s = "Dead assignment, property " + s + " is never read";
     					Message m = new Message(n, Status.CERTAIN, m_s, Severity.MEDIUM, true);
     					messages.put(m, m);
     				}
     			}
     		}
+    		/* TODO: this needs more testing:
+    		if (rw.isDefaultWritten() && !rw.isSomePropertyRead()) {
+    			for (AbstractNode n : rw.getDefaultWriteLocations()) {
+    				String m_s = "Dead assignment, property is never read";
+    				Message m = new Message(n, Status.CERTAIN, m_s, Severity.MEDIUM, true);
+    				messages.put(m, m);
+				}
+    		}
+    		*/
     	}
 	}
     
-    private void reportUnusedVariableOrParameter(FlowGraph fg) {
-    	for (Function f : fg.getFunctions()) {
-            // Skip reporting unused variables and parameters for dead code.
-            if (unreachable_functions.contains(f))
-                continue;
-            Set<String> names = newSet(f.getVariableNames());
-            names.addAll(f.getParameterNames());
-            Set<String> rv = read_variables.get(f);
-            if (rv != null)
-                names.removeAll(rv);
-            for (String n : names)
-                addMessage(f.getEntry().getFirstNode(), Status.CERTAIN, Severity.LOW, "The variable " + Strings.escape(n) + " is never used");
-    	}
-    }
-	
+	private void reportUnusedVariableOrParameter(FlowGraph fg) {
+		for (Function f : fg.getFunctions()) {
+			// Skip reporting unused variables and parameters for dead code.
+			if (unreachable_functions.contains(f))
+				continue;
+			Set<String> names = newSet(f.getVariableNames());
+			names.addAll(f.getParameterNames());
+			Set<String> rv = read_variables.get(f);
+			if (rv != null)
+				names.removeAll(rv);
+			for (String n : names) {
+				final AbstractNode declNode = getVarDeclNode(f, n);
+				addMessage(declNode, Status.CERTAIN, Severity.LOW, "The variable " + Strings.escape(n) + " is never used");
+			}
+		}
+	}
+
+	private static AbstractNode getVarDeclNode(Function f, String n) {
+		Collection<BasicBlock> blocks = f.getBlocks();
+		if (f.getParameterNames().contains(n))
+			return f.getEntry().getFirstNode();
+		for (BasicBlock block : blocks) {
+			List<AbstractNode> nodes = block.getNodes();
+			for (AbstractNode node : nodes) {
+				if (node instanceof DeclareVariableNode && ((DeclareVariableNode) node).getVariableName().equals(n)) {
+					return node;
+				}
+			}
+		}
+		throw new IllegalArgumentException("Variable " + n + " is not declared in this function!?!");
+	}	
     
     /**
      * Add messages about shadowing. Shadowing occurs when a declared variable clashes either local functions or parameters. 
@@ -544,8 +583,18 @@ CallEdgeType extends CallEdge<BlockStateType>> implements
 	}
 
 	@Override
-	public void visitUnknownValueResolve() {
-		unknown_value_resolve++;
+	public void visitUnknownValueResolve(boolean partial, boolean scanning) {
+		if (scanning) {
+			if (partial)
+				unknown_value_resolve_scanning_partial++;
+			else
+				unknown_value_resolve_scanning_full++;
+		} else {
+			if (partial)
+				unknown_value_resolve_analyzing_partial++;
+			else
+				unknown_value_resolve_analyzing_full++;
+		}
 	}
 
 	@Override
@@ -564,21 +613,31 @@ CallEdgeType extends CallEdge<BlockStateType>> implements
 				}
 				addToMapList(m, c, diff);
 			}
-			if (info != null) {
-				try {
-					File outdir = new File("out" + File.separator + "newflows"); // TODO: separate files for separate contexts?
-					if (!outdir.exists()) {
-						outdir.mkdirs();
-					}
-					try (FileWriter fw = new FileWriter("out" + File.separator + "newflows" + File.separator + "line" + b.getFunction().getSourceLocation().getLineNumber() + "-" + 
-							(next_newflow_file++) + "-" + info + ".dot")) {
-						fw.write(s.toDot());
-					}
-				} catch (IOException e) {
-					throw new AnalysisException(e);
-				}
-			}
+//			if (info != null) {
+//				try {
+//					File outdir = new File("out" + File.separator + "newflows"); // TODO: separate files for separate contexts?
+//					if (!outdir.exists()) {
+//						outdir.mkdirs();
+//					}
+//					try (FileWriter fw = new FileWriter("out" + File.separator + "newflows" + File.separator + "line" + b.getFunction().getSourceLocation().getLineNumber() + "-" + 
+//							(next_newflow_file++) + "-" + info + ".dot")) {
+//						fw.write(s.toDot());
+//					}
+//				} catch (IOException e) {
+//					throw new AnalysisException(e);
+//				}
+//			}
+
 		}
+//					try (FileWriter fw = new FileWriter("out" + File.separator + "newflows" + File.separator + "line" + b.getFunction().getSourceLocation().getLineNumber() + "-" + 
+//							(next_newflow_file++) + "-" + info + ".dot")) {
+//						fw.write(s.toDot());
+//					}
+//				} catch (IOException e) {
+//					throw new AnalysisException(e);
+//				}
+//			}
+//		}
 	}
 
 	/**
@@ -625,7 +684,7 @@ CallEdgeType extends CallEdge<BlockStateType>> implements
 			return;
         }
         Status s;
-        if (v.isNotPresent()) {
+        if (v.isMaybeAbsent() && !v.isMaybePresent()) {
             s = Status.CERTAIN;
         } else if (v.isMaybeAbsent()) {
             s = Status.MAYBE;
@@ -870,7 +929,7 @@ CallEdgeType extends CallEdge<BlockStateType>> implements
         }
         Value v = state.readPropertyWithAttributes(objlabels, propertystr);
         Status s;
-        if (!maybe && v.isNotPresent()) {
+        if (!maybe && v.isMaybeAbsent() && !v.isMaybePresent()) {
             s = Status.CERTAIN;
         } else if (v.isMaybeAbsent()) {
             s = Status.MAYBE;
@@ -898,38 +957,43 @@ CallEdgeType extends CallEdge<BlockStateType>> implements
     }
 	
 	/**
-	 * Warns about writes to unknown properties;
+	 * Warns about reads from unknown properties;
 	 * also registers a read operation on abstract objects.
 	 * Properties named 'length' on array objects are ignored.
 	 * @param n the node responsible for the read
 	 * @param objs the objects being read from
 	 * @param propertystr description of the property name
+	 * @param check_unknown if set, warn about reads from unknown properties
 	 */
-	public void visitPropertyRead(Node n, Set<ObjectLabel> objs, Str propertystr, BlockStateType state) {
+	public void visitPropertyRead(Node n, Set<ObjectLabel> objs, Str propertystr, BlockStateType state, boolean check_unknown) {
         if (!scan_phase) {
         	return;
         }
         // warn about potential loss of precision
-        if (checkPropertyNameMayInterfereWithBuiltInProperties(propertystr)) {
+        if (check_unknown && checkPropertyNameMayInterfereWithBuiltInProperties(propertystr)) {
         	addMessage(n, Status.INFO, Severity.LOW,
     				"Reading from unknown property that may cause loss of precision"); // ...but still sound!
         }
-        // register write operation on abstract object
+        // register read operation on abstract object
         String propertyname = propertystr.getStr();
-		if (propertyname != null && propertyname.equals("length")) {
-            // Proceed if we find an object label that is *not* an array.
-            for (ObjectLabel ol : objs)
-                if (!ol.getKind().equals(ObjectLabel.Kind.ARRAY))
-                     break;
-            return;
-		}
-		Set<ObjectLabel> os = newSet();
+        if (propertyname != null && propertyname.equals("length")) {
+        	// Proceed if we find an object label that is *not* an array.
+        	boolean only_array_length = true;
+        	for (ObjectLabel ol : objs)
+        		if (!ol.getKind().equals(ObjectLabel.Kind.ARRAY)) {
+        			only_array_length = false;
+        			break;
+        		}
+        	if (only_array_length)
+        		return;
+        }
+        Set<ObjectLabel> os = newSet();
         // Only give warnings for objects created by the user (getNode != null) since reading and writing properties
         // related to the DOM might be desirable for side effects.
 		for (ObjectLabel objlabel : objs) {
-            // XXX: objlabel.isHostObject() exists, but does not do precisely the same thing. Figure out what the correct behavior is.
+            // TODO: objlabel.isHostObject() exists, but does not do precisely the same thing. Figure out what the correct behavior is.
 			if (objlabel.getNode() != null) {
-				for (ObjectLabel oo : (propertyname == null ? state.getPrototypesUsedForUnknown(objlabel) : state.getPrototypeWithProperty(objlabel, propertyname))) { // XXX: this is also used for ReadVariableNode?
+				for (ObjectLabel oo : (propertyname == null ? state.getPrototypesUsedForUnknown(objlabel) : state.getPrototypeWithProperty(objlabel, propertyname))) { // TODO: this is also used for ReadVariableNode?
 					if (oo.getNode() != null) { // TODO: Only give warnings for user objects, others maybe DOM or similar with side effects
 						os.add(oo.makeSingleton());
 					}
@@ -962,9 +1026,9 @@ CallEdgeType extends CallEdge<BlockStateType>> implements
 			if (propertyname == null) {
 				i.readAny();
 			} else if (os.size() == 1) {
-				i.readDefinite(propertyname, n);
+				i.readDefinite(propertyname);
 			} else {
-				i.readMaybe(propertyname, n);
+				i.readMaybe(propertyname);
 			}
 		}
 	}
@@ -998,11 +1062,15 @@ CallEdgeType extends CallEdge<BlockStateType>> implements
         // register write operation on abstract object
         String propertyname = propertystr.getStr();
 		if (propertyname != null && propertyname.equals("length")) {
-            // Proceed if we find an object label that is *not* an array.
-            for (ObjectLabel ol : objs)
-                if (!ol.getKind().equals(ObjectLabel.Kind.ARRAY))
-                    break;
-			return;
+			// Proceed if we find an object label that is *not* an array.
+        	boolean only_array_length = true;
+        	for (ObjectLabel ol : objs)
+        		if (!ol.getKind().equals(ObjectLabel.Kind.ARRAY)) {
+        			only_array_length = false;
+        			break;
+        		}
+        	if (only_array_length)
+        		return;
 		}
 		Set<ObjectLabel> os = newSet();
 		for (ObjectLabel o : objs) {
@@ -1019,11 +1087,11 @@ CallEdgeType extends CallEdge<BlockStateType>> implements
 				obj_reads_writes.put(objlabel, i);
 			}
 			if (propertyname == null) {
-				i.writeAny();
+				i.writeAny(n);
 			} else if (objs.size() == 1) {
 				i.writeDefinite(propertyname, n);
 			} else {
-				i.writeMaybe(propertyname, n);
+				i.writeMaybe(propertyname);
 			}
 		}
 	}
@@ -1124,10 +1192,11 @@ CallEdgeType extends CallEdge<BlockStateType>> implements
 	/**
 	 * Record type information about a var/prop read.
 	 */
-	public void visitRead(Node n, ICallContext<?> c, Value v) { // FIXME: v can be polymorphic here (recovering the real value would ruin the use of polymorphic values...)
+	public void visitRead(Node n, ICallContext<?> c, Value v, BlockStateType state) {
         if (!scan_phase) {
         	return;
         }
+        v = UnknownValueResolver.getRealValue(v, state); // TODO: does this ruin the benefits of polymorphic values?
 		value_reads.put(new NodeAndContext<ICallContext<?>>(n, c), v);
 	}
 	
@@ -1136,7 +1205,7 @@ CallEdgeType extends CallEdge<BlockStateType>> implements
 	 * @param n (non-this) read variable operation 
 	 * @param v value being read
 	 */
-	public void visitVariableAsRead(ReadVariableNode n, Value v) { 
+	public void visitVariableAsRead(ReadVariableNode n, Value v, BlockStateType state) { 
         if (!scan_phase) {
         	return;
         }
@@ -1152,28 +1221,25 @@ CallEdgeType extends CallEdge<BlockStateType>> implements
     	}
     	addToMapSet(read_variables, f, varname);
     	// report suspicious type mixings
+        v = UnknownValueResolver.getRealValue(v, state);
         Status s; // TODO: join values across contexts when checking for suspicious type mixings?
-        if (v.isPolymorphic() || v.isUnknown() || v.isNotPresent() || v.isNone()) {
-            s = Status.NONE;
+        int i = 0;
+        if (!v.isNotStr()) {
+        	i++;
+        }
+        if (!v.isNotNum()) {
+        	i++;
+        }
+        if (!v.isNotBool()) {
+        	i++;
+        }
+        if (v.isMaybeObject() || v.isMaybeNull()) {
+        	i++;
+        }
+        if (i > 1) {
+        	s = Status.MAYBE;
         } else {
-        	int i = 0;
-        	if (!v.isNotStr()) {
-        		i++;
-        	}
-        	if (!v.isNotNum()) {
-        		i++;
-        	}
-        	if (!v.isNotBool()) {
-        		i++;
-        	}
-        	if (v.isMaybeObject() || v.isMaybeNull()) {
-        		i++;
-        	}
-        	if (i > 1) {
-        		s = Status.MAYBE;
-        	} else {
-        		s = Status.NONE;
-        	}
+        	s = Status.NONE;
         }
 		addMessage(n, s, Severity.LOW, "The variable " + Strings.escape(varname) + " has values with different types"); // TODO: also check property reads with different types?
     }
@@ -1195,6 +1261,7 @@ CallEdgeType extends CallEdge<BlockStateType>> implements
 		StringBuilder b = new StringBuilder();
 
 		if (Options.isNewFlowEnabled()) {
+			TreeMap<Integer,String> sorted = new TreeMap<>();
 			b.append("\nNew flow at each function for each context:");
 			for (Map.Entry<BasicBlock,Map<ICallContext<?>,List<String>>> me1 : newflows.entrySet()) {
 				Function f = me1.getKey().getFunction();
@@ -1206,8 +1273,12 @@ CallEdgeType extends CallEdge<BlockStateType>> implements
 							b.append("\n    state diff:").append(diff);
 						}
 					}
+					sorted.put(me2.getValue().size(), me1.getKey().getFunction() + " " + me1.getKey().getFunction().getSourceLocation() + ", context " + me2.getKey());
 				}
 			}
+			b.append("\nSorted new flow:");
+			for (Map.Entry<Integer,String> me : sorted.entrySet())
+				b.append("\n" + me.getKey() + " new flows at " + me.getValue());
 		}
 
 		b.append("\n\nCall/construct nodes with potential call to non-function:                     " + call_to_non_function.size());
@@ -1251,7 +1322,9 @@ CallEdgeType extends CallEdge<BlockStateType>> implements
 
 		b.append("\n\nNode transfers: " + node_transfers);
 		b.append("\nBlock transfers: " + block_transfers);
-		b.append("\nUnknown-value recoveries: " + unknown_value_resolve);
+		b.append("\nUnknown-value recoveries: \n" + 
+				" analysis: partial=" + unknown_value_resolve_analyzing_partial + ", full=" + unknown_value_resolve_analyzing_full + "\n" +
+				" scanning: partial=" + unknown_value_resolve_scanning_partial + ", full=" + unknown_value_resolve_scanning_full);
 		b.append("\nState joins: " + joins + "\n");
 
 		if (Options.isMemoryMeasurementEnabled()) {

@@ -1,0 +1,4 @@
+Unevalizer: Starting on: "(function (x) {return x})"
+Unevalizer: Valid program
+Unevalizer: No name capture
+test/uneval/uneval38.js:1:5: [definite] Unreachable function

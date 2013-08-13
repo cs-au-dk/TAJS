@@ -1,0 +1,6 @@
+test/v8tests/class-of-builtins.js:43:5: [definite] ReferenceError, reading absent variable assertEquals
+test/v8tests/class-of-builtins.js:43:18: [definite] Unreachable code
+test/v8tests/class-of-builtins.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/class-of-builtins.js:42:3, test/v8tests/class-of-builtins.js:43:5]
+test/v8tests/class-of-builtins.js:42:13: [maybe] Reading absent property (computed name)
+test/v8tests/class-of-builtins.js:41:1: [info] Reading from unknown property that may cause loss of precision
+test/v8tests/class-of-builtins.js:42:13: [info] Reading from unknown property that may cause loss of precision

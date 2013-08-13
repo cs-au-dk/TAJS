@@ -1,0 +1,25 @@
+test/v8tests/sparse-array-reverse.js:50:1: [definite] ReferenceError, reading absent variable assertEquals
+test/v8tests/sparse-array-reverse.js:42:1: [definite] Dead assignment, property 15 is never read
+test/v8tests/sparse-array-reverse.js:43:1: [definite] Dead assignment, property 30 is never read
+test/v8tests/sparse-array-reverse.js:45:1: [definite] Dead assignment, property 40 is never read
+test/v8tests/sparse-array-reverse.js:46:1: [definite] Dead assignment, property 50 is never read
+test/v8tests/sparse-array-reverse.js:48:1: [definite] Dead assignment, property 1959 is never read
+test/v8tests/sparse-array-reverse.js:49:1: [definite] Dead assignment, property 1999 is never read
+test/v8tests/sparse-array-reverse.js:32:5: [definite] The variable VERYLARGE is never used
+test/v8tests/sparse-array-reverse.js:50:14: [definite] Unreachable code
+test/v8tests/sparse-array-reverse.js:57:5: [definite] The variable seed is never used
+test/v8tests/sparse-array-reverse.js:61:1: [definite] Unreachable function DoOrDont
+test/v8tests/sparse-array-reverse.js:66:5: [definite] The variable sizes is never used
+test/v8tests/sparse-array-reverse.js:67:5: [definite] The variable poses is never used
+test/v8tests/sparse-array-reverse.js:71:10: [definite] The variable iterations is never used
+test/v8tests/sparse-array-reverse.js:72:12: [definite] The variable size_pos is never used
+test/v8tests/sparse-array-reverse.js:73:9: [definite] The variable size is never used
+test/v8tests/sparse-array-reverse.js:75:9: [definite] The variable to_delete is never used
+test/v8tests/sparse-array-reverse.js:79:9: [definite] The variable expected is never used
+test/v8tests/sparse-array-reverse.js:80:9: [definite] The variable expected_reversed is never used
+test/v8tests/sparse-array-reverse.js:82:14: [definite] The variable pos_pos is never used
+test/v8tests/sparse-array-reverse.js:83:11: [definite] The variable pos is never used
+test/v8tests/sparse-array-reverse.js:84:11: [definite] The variable letter is never used
+test/v8tests/sparse-array-reverse.js:96:9: [definite] The variable expected2 is never used
+test/v8tests/sparse-array-reverse.js:97:9: [definite] The variable expected_reversed2 is never used
+test/v8tests/sparse-array-reverse.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/sparse-array-reverse.js:50:1]

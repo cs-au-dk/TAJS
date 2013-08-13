@@ -1,0 +1,5 @@
+test/v8tests/arguments-enum.js:44:1: [definite] ReferenceError, reading absent variable assertEquals
+test/v8tests/arguments-enum.js:28:1: [definite] Unreachable function countArguments
+test/v8tests/arguments-enum.js:35:1: [definite] Unreachable function setArgumentCount
+test/v8tests/arguments-enum.js:44:14: [definite] Unreachable code
+test/v8tests/arguments-enum.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/arguments-enum.js:44:1]

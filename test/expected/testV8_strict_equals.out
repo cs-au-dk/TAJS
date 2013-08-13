@@ -1,0 +1,7 @@
+test/v8tests/strict-equals.js:30:1: [definite] ReferenceError, reading absent variable assertTrue
+test/v8tests/strict-equals.js:28:5: [definite] The variable n is never used
+test/v8tests/strict-equals.js:29:5: [definite] The variable u is never used
+test/v8tests/strict-equals.js:30:12: [definite] Unreachable code
+test/v8tests/strict-equals.js:49:5: [definite] The variable s is never used
+test/v8tests/strict-equals.js:60:5: [definite] The variable x is never used
+test/v8tests/strict-equals.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/strict-equals.js:30:1]

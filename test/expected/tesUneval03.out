@@ -1,4 +1,0 @@
-Unevalizer: Starting on: "(function (x) {dumpValue(x)})(42)"
-Unevalizer: Valid program
-Unevalizer: No name capture
-test/uneval/uneval03.js:1:14: [info] Abstract value: 42.0

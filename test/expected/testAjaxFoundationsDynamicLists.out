@@ -1,8 +1,0 @@
-test/benchmarks/ajax/foundations/chp4/dynamicLists.tidy.html:11:5: [definite] The conditional expression is always true
-test/benchmarks/ajax/foundations/chp4/dynamicLists.tidy.html:42:1: [definite] Unreachable function handleStateChange
-test/benchmarks/ajax/foundations/chp4/dynamicLists.tidy.html:50:1: [definite] Unreachable function updateModelsList
-test/benchmarks/ajax/foundations/chp4/dynamicLists.tidy.html:66:28: [definite] Reading absent property (computed name)
-test/benchmarks/ajax/foundations/chp4/dynamicLists.tidy.html:75:2: [definite] The variable event is never used
-test/benchmarks/ajax/foundations/chp4/dynamicLists.tidy.html:84:2: [definite] The variable event is never used
-test/benchmarks/ajax/foundations/chp4/dynamicLists.tidy.html:32:5: [maybe] TypeError, accessing property of null/undefined
-test/benchmarks/ajax/foundations/chp4/dynamicLists.tidy.html:6: [maybe] Uncaught exception, constructed at [test/benchmarks/ajax/foundations/chp4/dynamicLists.tidy.html:32:5]

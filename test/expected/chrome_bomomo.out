@@ -1,0 +1,341 @@
+Unevalizer: Starting on: "switchSubmode()"
+Unevalizer: Valid program
+Unevalizer: No name capture
+Unevalizer: Starting on: "switchSubmode()"
+Unevalizer: Valid program
+Unevalizer: No name capture
+Unevalizer: Starting on: "switchSubmode()"
+Unevalizer: Valid program
+Unevalizer: No name capture
+test/chromeexperiments/bomomo.tidy.html:763:5: [definite] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.tidy.html:376:5: [definite] The conditional expression is always false
+test/chromeexperiments/bomomo.tidy.html:382:5: [definite] The conditional expression is always false
+test/chromeexperiments/bomomo.tidy.html:394:5: [definite] The conditional expression is always false
+test/chromeexperiments/bomomo.tidy.html:403:5: [definite] The conditional expression is always false
+test/chromeexperiments/bomomo.tidy.html:451:12: [definite] The conditional expression is always false
+test/chromeexperiments/bomomo.tidy.html:455:5: [definite] The conditional expression is always false
+test/chromeexperiments/bomomo.tidy.html:478:5: [definite] The conditional expression is always false
+test/chromeexperiments/bomomo.tidy.html:763:5: [definite] Property is null/undefined
+test/chromeexperiments/bomomo.tidy.html:2825:5: [definite] The conditional expression is always true
+test/chromeexperiments/bomomo.tidy.html:333:13: [definite] Reading absent property x
+test/chromeexperiments/bomomo.tidy.html:334:13: [definite] Reading absent property y
+test/chromeexperiments/bomomo.tidy.html:337:9: [definite] Dead assignment, property lastCursorX is never read
+test/chromeexperiments/bomomo.tidy.html:338:9: [definite] Dead assignment, property lastCursorY is never read
+test/chromeexperiments/bomomo.tidy.html:345:5: [definite] Dead assignment, property cursorActive is never read
+test/chromeexperiments/bomomo.tidy.html:352:5: [definite] Dead assignment, property cursorActive is never read
+test/chromeexperiments/bomomo.tidy.html:367:5: [definite] Dead assignment, property cursorIn is never read
+test/chromeexperiments/bomomo.tidy.html:371:5: [definite] Dead assignment, property cursorIn is never read
+test/chromeexperiments/bomomo.tidy.html:372:5: [definite] Dead assignment, property cursorActive is never read
+test/chromeexperiments/bomomo.tidy.html:418:5: [definite] Dead assignment, property rageMode is never read
+test/chromeexperiments/bomomo.tidy.html:419:5: [definite] Dead assignment, property rageAmount is never read
+test/chromeexperiments/bomomo.tidy.html:520:5: [definite] Dead assignment, property pressed is never read
+test/chromeexperiments/bomomo.tidy.html:523:5: [definite] Dead assignment, property lastCursorX is never read
+test/chromeexperiments/bomomo.tidy.html:524:5: [definite] Dead assignment, property lastCursorY is never read
+test/chromeexperiments/bomomo.tidy.html:525:5: [definite] Dead assignment, property cursorIn is never read
+test/chromeexperiments/bomomo.tidy.html:526:5: [definite] Dead assignment, property cursorActive is never read
+test/chromeexperiments/bomomo.tidy.html:527:5: [definite] Dead assignment, property intervalMS is never read
+test/chromeexperiments/bomomo.tidy.html:528:5: [definite] Dead assignment, property intervalID is never read
+test/chromeexperiments/bomomo.tidy.html:530:5: [definite] Dead assignment, property fullCircle is never read
+test/chromeexperiments/bomomo.tidy.html:533:5: [definite] Dead assignment, property canvasBackground is never read
+test/chromeexperiments/bomomo.tidy.html:535:5: [definite] Dead assignment, property canvasForeground is never read
+test/chromeexperiments/bomomo.tidy.html:536:5: [definite] Dead assignment, property canvasForegroundContext is never read
+test/chromeexperiments/bomomo.tidy.html:541:5: [definite] Dead assignment, property colors is never read
+test/chromeexperiments/bomomo.tidy.html:545:5: [definite] Dead assignment, property rageMode is never read
+test/chromeexperiments/bomomo.tidy.html:546:5: [definite] Dead assignment, property rageAmount is never read
+test/chromeexperiments/bomomo.tidy.html:547:5: [definite] Dead assignment, property rageModeCounter is never read
+test/chromeexperiments/bomomo.tidy.html:548:5: [definite] Dead assignment, property rageModeJustActivated is never read
+test/chromeexperiments/bomomo.tidy.html:549:5: [definite] Dead assignment, property rageModeJustInactivated is never read
+test/chromeexperiments/bomomo.tidy.html:551:5: [definite] Dead assignment, property enumHunter is never read
+test/chromeexperiments/bomomo.tidy.html:552:5: [definite] Dead assignment, property enumBouncer is never read
+test/chromeexperiments/bomomo.tidy.html:553:5: [definite] Dead assignment, property enumEraser is never read
+test/chromeexperiments/bomomo.tidy.html:554:5: [definite] Dead assignment, property enumRobot is never read
+test/chromeexperiments/bomomo.tidy.html:555:5: [definite] Dead assignment, property enumCircleHunter is never read
+test/chromeexperiments/bomomo.tidy.html:556:5: [definite] Dead assignment, property enumCircle is never read
+test/chromeexperiments/bomomo.tidy.html:557:5: [definite] Dead assignment, property enumCrosshatch is never read
+test/chromeexperiments/bomomo.tidy.html:558:5: [definite] Dead assignment, property enumBubble is never read
+test/chromeexperiments/bomomo.tidy.html:559:5: [definite] Dead assignment, property enumCurve is never read
+test/chromeexperiments/bomomo.tidy.html:560:5: [definite] Dead assignment, property enumComet is never read
+test/chromeexperiments/bomomo.tidy.html:561:5: [definite] Dead assignment, property enumPendulum is never read
+test/chromeexperiments/bomomo.tidy.html:562:5: [definite] Dead assignment, property enumLines is never read
+test/chromeexperiments/bomomo.tidy.html:563:5: [definite] Dead assignment, property enumGrid is never read
+test/chromeexperiments/bomomo.tidy.html:564:5: [definite] Dead assignment, property enumSpray is never read
+test/chromeexperiments/bomomo.tidy.html:565:5: [definite] Dead assignment, property enumLineSpray is never read
+test/chromeexperiments/bomomo.tidy.html:566:5: [definite] Dead assignment, property enumMatrix is never read
+test/chromeexperiments/bomomo.tidy.html:567:5: [definite] Dead assignment, property enumFollower is never read
+test/chromeexperiments/bomomo.tidy.html:568:5: [definite] Dead assignment, property enumRectangler is never read
+test/chromeexperiments/bomomo.tidy.html:569:5: [definite] Dead assignment, property enumSprinkler is never read
+test/chromeexperiments/bomomo.tidy.html:570:5: [definite] Dead assignment, property enumShaper is never read
+test/chromeexperiments/bomomo.tidy.html:574:5: [definite] Dead assignment, property indexRed is never read
+test/chromeexperiments/bomomo.tidy.html:575:5: [definite] Dead assignment, property indexGreen is never read
+test/chromeexperiments/bomomo.tidy.html:576:5: [definite] Dead assignment, property indexBlue is never read
+test/chromeexperiments/bomomo.tidy.html:577:5: [definite] Dead assignment, property paletteMax is never read
+test/chromeexperiments/bomomo.tidy.html:581:5: [definite] Dead assignment, property enumDrawInk is never read
+test/chromeexperiments/bomomo.tidy.html:582:5: [definite] Dead assignment, property enumShow is never read
+test/chromeexperiments/bomomo.tidy.html:584:5: [definite] Dead assignment, property teleported is never read
+test/chromeexperiments/bomomo.tidy.html:587:1: [definite] Dead assignment, property init is never read
+test/chromeexperiments/bomomo.tidy.html:598:1: [definite] Dead assignment, property getHasSaveTypes is never read
+test/chromeexperiments/bomomo.tidy.html:616:1: [definite] Dead assignment, property inCanvasWithPadding is never read
+test/chromeexperiments/bomomo.tidy.html:621:1: [definite] Dead assignment, property draw is never read
+test/chromeexperiments/bomomo.tidy.html:631:1: [definite] Dead assignment, property handleRageMode is never read
+test/chromeexperiments/bomomo.tidy.html:674:1: [definite] Dead assignment, property initColors is never read
+test/chromeexperiments/bomomo.tidy.html:699:1: [definite] Dead assignment, property initCanvas is never read
+test/chromeexperiments/bomomo.tidy.html:713:1: [definite] Dead assignment, property drawBackground is never read
+test/chromeexperiments/bomomo.tidy.html:721:1: [definite] Dead assignment, property pendulum is never read
+test/chromeexperiments/bomomo.tidy.html:733:1: [definite] Dead assignment, property mixColors is never read
+test/chromeexperiments/bomomo.tidy.html:744:1: [definite] Dead assignment, property toGridX is never read
+test/chromeexperiments/bomomo.tidy.html:752:1: [definite] Dead assignment, property toGridY is never read
+test/chromeexperiments/bomomo.tidy.html:772:5: [definite] Dead assignment, property radius is never read
+test/chromeexperiments/bomomo.tidy.html:773:5: [definite] Dead assignment, property speedX is never read
+test/chromeexperiments/bomomo.tidy.html:774:5: [definite] Dead assignment, property speedY is never read
+test/chromeexperiments/bomomo.tidy.html:776:5: [definite] Dead assignment, property speedMaxY is never read
+test/chromeexperiments/bomomo.tidy.html:777:5: [definite] Dead assignment, property speedStep is never read
+test/chromeexperiments/bomomo.tidy.html:779:5: [definite] Dead assignment, property originX is never read
+test/chromeexperiments/bomomo.tidy.html:780:5: [definite] Dead assignment, property originY is never read
+test/chromeexperiments/bomomo.tidy.html:782:5: [definite] Dead assignment, property targetX is never read
+test/chromeexperiments/bomomo.tidy.html:783:5: [definite] Dead assignment, property targetY is never read
+test/chromeexperiments/bomomo.tidy.html:785:5: [definite] Dead assignment, property oldX is never read
+test/chromeexperiments/bomomo.tidy.html:786:5: [definite] Dead assignment, property oldY is never read
+test/chromeexperiments/bomomo.tidy.html:788:5: [definite] Dead assignment, property speedStepX is never read
+test/chromeexperiments/bomomo.tidy.html:789:5: [definite] Dead assignment, property speedStepY is never read
+test/chromeexperiments/bomomo.tidy.html:791:5: [definite] Dead assignment, property offset is never read
+test/chromeexperiments/bomomo.tidy.html:792:5: [definite] Dead assignment, property offsetX is never read
+test/chromeexperiments/bomomo.tidy.html:793:5: [definite] Dead assignment, property offsetY is never read
+test/chromeexperiments/bomomo.tidy.html:794:5: [definite] Dead assignment, property offsetXbase is never read
+test/chromeexperiments/bomomo.tidy.html:795:5: [definite] Dead assignment, property offsetYbase is never read
+test/chromeexperiments/bomomo.tidy.html:796:5: [definite] Dead assignment, property offsetRadius is never read
+test/chromeexperiments/bomomo.tidy.html:797:5: [definite] Dead assignment, property counter is never read
+test/chromeexperiments/bomomo.tidy.html:799:5: [definite] Dead assignment, property type is never read
+test/chromeexperiments/bomomo.tidy.html:800:5: [definite] Dead assignment, property energy is never read
+test/chromeexperiments/bomomo.tidy.html:801:5: [definite] Dead assignment, property colorR is never read
+test/chromeexperiments/bomomo.tidy.html:802:5: [definite] Dead assignment, property colorG is never read
+test/chromeexperiments/bomomo.tidy.html:803:5: [definite] Dead assignment, property colorB is never read
+test/chromeexperiments/bomomo.tidy.html:804:5: [definite] Dead assignment, property colorDirection is never read
+test/chromeexperiments/bomomo.tidy.html:806:5: [definite] Dead assignment, property opacity is never read
+test/chromeexperiments/bomomo.tidy.html:807:5: [definite] Dead assignment, property maxOpacity is never read
+test/chromeexperiments/bomomo.tidy.html:808:5: [definite] Dead assignment, property opacityStep is never read
+test/chromeexperiments/bomomo.tidy.html:810:5: [definite] Dead assignment, property inited is never read
+test/chromeexperiments/bomomo.tidy.html:811:5: [definite] Dead assignment, property initedAfterCursorActive is never read
+test/chromeexperiments/bomomo.tidy.html:812:5: [definite] Dead assignment, property initedAfterCursorInactive is never read
+test/chromeexperiments/bomomo.tidy.html:815:1: [definite] Dead assignment, property move is never read
+test/chromeexperiments/bomomo.tidy.html:837:1: [definite] Dead assignment, property followTarget is never read
+test/chromeexperiments/bomomo.tidy.html:858:1: [definite] Dead assignment, property handleType is never read
+test/chromeexperiments/bomomo.tidy.html:2084:1: [definite] Dead assignment, property setRGBFromOtherSprite is never read
+test/chromeexperiments/bomomo.tidy.html:2090:1: [definite] Dead assignment, property keepInCanvasByTeleport is never read
+test/chromeexperiments/bomomo.tidy.html:2111:1: [definite] Dead assignment, property setCircleOffset is never read
+test/chromeexperiments/bomomo.tidy.html:2124:1: [definite] Dead assignment, property setColorFromPosition is never read
+test/chromeexperiments/bomomo.tidy.html:2160:1: [definite] Dead assignment, property crosshatch is never read
+test/chromeexperiments/bomomo.tidy.html:2204:1: [definite] Dead assignment, property scrollRed is never read
+test/chromeexperiments/bomomo.tidy.html:2211:1: [definite] Dead assignment, property scrollGreen is never read
+test/chromeexperiments/bomomo.tidy.html:2218:1: [definite] Dead assignment, property scrollBlue is never read
+test/chromeexperiments/bomomo.tidy.html:2225:1: [definite] Dead assignment, property getCursorDistance is never read
+test/chromeexperiments/bomomo.tidy.html:2232:1: [definite] Dead assignment, property getCursorDistanceFromOrigin is never read
+test/chromeexperiments/bomomo.tidy.html:2239:1: [definite] Dead assignment, property doCenter is never read
+test/chromeexperiments/bomomo.tidy.html:2244:1: [definite] Dead assignment, property doRelax is never read
+test/chromeexperiments/bomomo.tidy.html:2248:1: [definite] Dead assignment, property adjustOpacityToCursor is never read
+test/chromeexperiments/bomomo.tidy.html:2259:1: [definite] Dead assignment, property follow is never read
+test/chromeexperiments/bomomo.tidy.html:2289:1: [definite] Dead assignment, property followSimple is never read
+test/chromeexperiments/bomomo.tidy.html:2309:1: [definite] Dead assignment, property followX is never read
+test/chromeexperiments/bomomo.tidy.html:2328:1: [definite] Dead assignment, property followY is never read
+test/chromeexperiments/bomomo.tidy.html:2347:1: [definite] Dead assignment, property setRGB is never read
+test/chromeexperiments/bomomo.tidy.html:2353:1: [definite] Dead assignment, property setRGBRandom is never read
+test/chromeexperiments/bomomo.tidy.html:2359:1: [definite] Dead assignment, property setRGBSemiRandom is never read
+test/chromeexperiments/bomomo.tidy.html:2365:1: [definite] Dead assignment, property keepInCanvas is never read
+test/chromeexperiments/bomomo.tidy.html:2377:1: [definite] Dead assignment, property keepInCanvasAllowOverlap is never read
+test/chromeexperiments/bomomo.tidy.html:2389:1: [definite] Dead assignment, property keepInCanvasWithMargin is never read
+test/chromeexperiments/bomomo.tidy.html:2401:1: [definite] Dead assignment, property getRGBString is never read
+test/chromeexperiments/bomomo.tidy.html:2408:1: [definite] Dead assignment, property draw is never read
+test/chromeexperiments/bomomo.tidy.html:2768:1: [definite] Dead assignment, property getRandom is never read
+test/chromeexperiments/bomomo.tidy.html:2772:1: [definite] Dead assignment, property chance is never read
+test/chromeexperiments/bomomo.tidy.html:2776:1: [definite] Dead assignment, property showLayer is never read
+test/chromeexperiments/bomomo.tidy.html:2783:1: [definite] Dead assignment, property hideLayer is never read
+test/chromeexperiments/bomomo.tidy.html:2790:1: [definite] Dead assignment, property debug is never read
+test/chromeexperiments/bomomo.tidy.html:2794:1: [definite] Dead assignment, property debug2 is never read
+test/chromeexperiments/bomomo.tidy.html:2798:1: [definite] Dead assignment, property writeInLayer is never read
+test/chromeexperiments/bomomo.tidy.html:2805:1: [definite] Dead assignment, property forceMinMax is never read
+test/chromeexperiments/bomomo.tidy.html:2815:1: [definite] Dead assignment, property forceMin is never read
+test/chromeexperiments/bomomo.tidy.html:2819:1: [definite] Dead assignment, property forceMax is never read
+test/chromeexperiments/bomomo.tidy.html:2833:1: [definite] Dead assignment, property getDistance is never read
+test/chromeexperiments/bomomo.tidy.html:310:1: [definite] Unreachable function init
+test/chromeexperiments/bomomo.tidy.html:315:1: [definite] Unreachable function run
+test/chromeexperiments/bomomo.tidy.html:344:1: [definite] The variable e is never used
+test/chromeexperiments/bomomo.tidy.html:351:1: [definite] The variable e is never used
+test/chromeexperiments/bomomo.tidy.html:366:1: [definite] The variable e is never used
+test/chromeexperiments/bomomo.tidy.html:370:1: [definite] The variable e is never used
+test/chromeexperiments/bomomo.tidy.html:462:17: [definite] The variable data is never used
+test/chromeexperiments/bomomo.tidy.html:463:17: [definite] The variable elmInput is never used
+test/chromeexperiments/bomomo.tidy.html:465:17: [definite] The variable elmForm is never used
+test/chromeexperiments/bomomo.tidy.html:479:13: [definite] The variable data is never used
+test/chromeexperiments/bomomo.tidy.html:485:17: [definite] The variable win is never used
+test/chromeexperiments/bomomo.tidy.html:499:5: [definite] Unreachable code
+test/chromeexperiments/bomomo.tidy.html:587:22: [definite] Unreachable function
+test/chromeexperiments/bomomo.tidy.html:598:33: [definite] Unreachable function
+test/chromeexperiments/bomomo.tidy.html:616:37: [definite] Unreachable function
+test/chromeexperiments/bomomo.tidy.html:621:22: [definite] Unreachable function
+test/chromeexperiments/bomomo.tidy.html:631:32: [definite] Unreachable function
+test/chromeexperiments/bomomo.tidy.html:674:28: [definite] Unreachable function
+test/chromeexperiments/bomomo.tidy.html:699:28: [definite] Unreachable function
+test/chromeexperiments/bomomo.tidy.html:713:32: [definite] Unreachable function
+test/chromeexperiments/bomomo.tidy.html:715:18: [definite] Unreachable function
+test/chromeexperiments/bomomo.tidy.html:721:26: [definite] Unreachable function
+test/chromeexperiments/bomomo.tidy.html:733:27: [definite] Unreachable function
+test/chromeexperiments/bomomo.tidy.html:744:25: [definite] Unreachable function
+test/chromeexperiments/bomomo.tidy.html:752:25: [definite] Unreachable function
+test/chromeexperiments/bomomo.tidy.html:763:44: [definite] Unreachable code
+test/chromeexperiments/bomomo.tidy.html:815:25: [definite] Unreachable function
+test/chromeexperiments/bomomo.tidy.html:837:33: [definite] Unreachable function
+test/chromeexperiments/bomomo.tidy.html:858:31: [definite] Unreachable function
+test/chromeexperiments/bomomo.tidy.html:2084:42: [definite] Unreachable function
+test/chromeexperiments/bomomo.tidy.html:2090:43: [definite] Unreachable function
+test/chromeexperiments/bomomo.tidy.html:2111:36: [definite] Unreachable function
+test/chromeexperiments/bomomo.tidy.html:2124:41: [definite] Unreachable function
+test/chromeexperiments/bomomo.tidy.html:2160:31: [definite] Unreachable function
+test/chromeexperiments/bomomo.tidy.html:2204:30: [definite] Unreachable function
+test/chromeexperiments/bomomo.tidy.html:2211:32: [definite] Unreachable function
+test/chromeexperiments/bomomo.tidy.html:2218:31: [definite] Unreachable function
+test/chromeexperiments/bomomo.tidy.html:2225:38: [definite] Unreachable function
+test/chromeexperiments/bomomo.tidy.html:2232:48: [definite] Unreachable function
+test/chromeexperiments/bomomo.tidy.html:2239:29: [definite] Unreachable function
+test/chromeexperiments/bomomo.tidy.html:2244:28: [definite] Unreachable function
+test/chromeexperiments/bomomo.tidy.html:2248:42: [definite] Unreachable function
+test/chromeexperiments/bomomo.tidy.html:2259:27: [definite] Unreachable function
+test/chromeexperiments/bomomo.tidy.html:2289:33: [definite] Unreachable function
+test/chromeexperiments/bomomo.tidy.html:2309:28: [definite] Unreachable function
+test/chromeexperiments/bomomo.tidy.html:2328:28: [definite] Unreachable function
+test/chromeexperiments/bomomo.tidy.html:2347:27: [definite] Unreachable function
+test/chromeexperiments/bomomo.tidy.html:2353:33: [definite] Unreachable function
+test/chromeexperiments/bomomo.tidy.html:2359:37: [definite] Unreachable function
+test/chromeexperiments/bomomo.tidy.html:2365:33: [definite] Unreachable function
+test/chromeexperiments/bomomo.tidy.html:2377:45: [definite] Unreachable function
+test/chromeexperiments/bomomo.tidy.html:2389:43: [definite] Unreachable function
+test/chromeexperiments/bomomo.tidy.html:2401:33: [definite] Unreachable function
+test/chromeexperiments/bomomo.tidy.html:2408:25: [definite] Unreachable function
+test/chromeexperiments/bomomo.tidy.html:2768:35: [definite] Unreachable function
+test/chromeexperiments/bomomo.tidy.html:2772:32: [definite] Unreachable function
+test/chromeexperiments/bomomo.tidy.html:2776:35: [definite] Unreachable function
+test/chromeexperiments/bomomo.tidy.html:2783:35: [definite] Unreachable function
+test/chromeexperiments/bomomo.tidy.html:2790:31: [definite] Unreachable function
+test/chromeexperiments/bomomo.tidy.html:2794:32: [definite] Unreachable function
+test/chromeexperiments/bomomo.tidy.html:2798:38: [definite] Unreachable function
+test/chromeexperiments/bomomo.tidy.html:2805:37: [definite] Unreachable function
+test/chromeexperiments/bomomo.tidy.html:2815:34: [definite] Unreachable function
+test/chromeexperiments/bomomo.tidy.html:2819:34: [definite] Unreachable function
+test/chromeexperiments/bomomo.tidy.html:2833:37: [definite] Unreachable function
+test/chromeexperiments/bomomo.tidy.html:2855:2: [definite] The variable event is never used
+test/chromeexperiments/bomomo.tidy.html:2855:2: [definite] The variable event is never used
+test/chromeexperiments/bomomo.tidy.html:2855:2: [definite] The variable event is never used
+test/chromeexperiments/bomomo.tidy.html:2859:2: [definite] The variable event is never used
+test/chromeexperiments/bomomo.tidy.html:2859:2: [definite] The variable event is never used
+test/chromeexperiments/bomomo.tidy.html:2859:2: [definite] The variable event is never used
+test/chromeexperiments/bomomo.tidy.html:2863:2: [definite] The variable event is never used
+test/chromeexperiments/bomomo.tidy.html:2863:2: [definite] The variable event is never used
+test/chromeexperiments/bomomo.tidy.html:2863:2: [definite] The variable event is never used
+test/chromeexperiments/bomomo.tidy.html:2867:2: [definite] The variable event is never used
+test/chromeexperiments/bomomo.tidy.html:2867:2: [definite] The variable event is never used
+test/chromeexperiments/bomomo.tidy.html:2867:2: [definite] The variable event is never used
+test/chromeexperiments/bomomo.tidy.html:2871:2: [definite] The variable event is never used
+test/chromeexperiments/bomomo.tidy.html:2871:2: [definite] The variable event is never used
+test/chromeexperiments/bomomo.tidy.html:2871:2: [definite] The variable event is never used
+test/chromeexperiments/bomomo.tidy.html:2875:2: [definite] The variable event is never used
+test/chromeexperiments/bomomo.tidy.html:2875:2: [definite] The variable event is never used
+test/chromeexperiments/bomomo.tidy.html:2875:2: [definite] The variable event is never used
+test/chromeexperiments/bomomo.tidy.html:2879:2: [definite] The variable event is never used
+test/chromeexperiments/bomomo.tidy.html:2879:2: [definite] The variable event is never used
+test/chromeexperiments/bomomo.tidy.html:2879:2: [definite] The variable event is never used
+test/chromeexperiments/bomomo.tidy.html:2883:2: [definite] The variable event is never used
+test/chromeexperiments/bomomo.tidy.html:2883:2: [definite] The variable event is never used
+test/chromeexperiments/bomomo.tidy.html:2883:2: [definite] The variable event is never used
+test/chromeexperiments/bomomo.tidy.html:2887:2: [definite] The variable event is never used
+test/chromeexperiments/bomomo.tidy.html:2887:2: [definite] The variable event is never used
+test/chromeexperiments/bomomo.tidy.html:2887:2: [definite] The variable event is never used
+test/chromeexperiments/bomomo.tidy.html:2891:2: [definite] The variable event is never used
+test/chromeexperiments/bomomo.tidy.html:2891:2: [definite] The variable event is never used
+test/chromeexperiments/bomomo.tidy.html:2891:2: [definite] The variable event is never used
+test/chromeexperiments/bomomo.tidy.html:2895:2: [definite] The variable event is never used
+test/chromeexperiments/bomomo.tidy.html:2895:2: [definite] The variable event is never used
+test/chromeexperiments/bomomo.tidy.html:2895:2: [definite] The variable event is never used
+test/chromeexperiments/bomomo.tidy.html:2899:2: [definite] The variable event is never used
+test/chromeexperiments/bomomo.tidy.html:2899:2: [definite] The variable event is never used
+test/chromeexperiments/bomomo.tidy.html:2899:2: [definite] The variable event is never used
+test/chromeexperiments/bomomo.tidy.html:2903:2: [definite] The variable event is never used
+test/chromeexperiments/bomomo.tidy.html:2903:2: [definite] The variable event is never used
+test/chromeexperiments/bomomo.tidy.html:2903:2: [definite] The variable event is never used
+test/chromeexperiments/bomomo.tidy.html:2907:2: [definite] The variable event is never used
+test/chromeexperiments/bomomo.tidy.html:2907:2: [definite] The variable event is never used
+test/chromeexperiments/bomomo.tidy.html:2907:2: [definite] The variable event is never used
+test/chromeexperiments/bomomo.tidy.html:2911:2: [definite] The variable event is never used
+test/chromeexperiments/bomomo.tidy.html:2911:2: [definite] The variable event is never used
+test/chromeexperiments/bomomo.tidy.html:2911:2: [definite] The variable event is never used
+test/chromeexperiments/bomomo.tidy.html:2915:2: [definite] The variable event is never used
+test/chromeexperiments/bomomo.tidy.html:2915:2: [definite] The variable event is never used
+test/chromeexperiments/bomomo.tidy.html:2915:2: [definite] The variable event is never used
+test/chromeexperiments/bomomo.tidy.html:2919:2: [definite] The variable event is never used
+test/chromeexperiments/bomomo.tidy.html:2919:2: [definite] The variable event is never used
+test/chromeexperiments/bomomo.tidy.html:2919:2: [definite] The variable event is never used
+test/chromeexperiments/bomomo.tidy.html:2923:2: [definite] The variable event is never used
+test/chromeexperiments/bomomo.tidy.html:2923:2: [definite] The variable event is never used
+test/chromeexperiments/bomomo.tidy.html:2923:2: [definite] The variable event is never used
+test/chromeexperiments/bomomo.tidy.html:2927:2: [definite] The variable event is never used
+test/chromeexperiments/bomomo.tidy.html:2927:2: [definite] The variable event is never used
+test/chromeexperiments/bomomo.tidy.html:2927:2: [definite] The variable event is never used
+test/chromeexperiments/bomomo.tidy.html:2931:2: [definite] The variable event is never used
+test/chromeexperiments/bomomo.tidy.html:2931:2: [definite] The variable event is never used
+test/chromeexperiments/bomomo.tidy.html:2931:2: [definite] The variable event is never used
+test/chromeexperiments/bomomo.tidy.html:2935:2: [definite] The variable event is never used
+test/chromeexperiments/bomomo.tidy.html:2937:2: [definite] The variable event is never used
+test/chromeexperiments/bomomo.tidy.html:2941:2: [definite] The variable event is never used
+test/chromeexperiments/bomomo.tidy.html:2941:2: [definite] The variable event is never used
+test/chromeexperiments/bomomo.tidy.html:2941:2: [definite] The variable event is never used
+test/chromeexperiments/bomomo.tidy.html:2944:2: [definite] The variable event is never used
+test/chromeexperiments/bomomo.tidy.html:2944:2: [definite] The variable event is never used
+test/chromeexperiments/bomomo.tidy.html:2946:2: [definite] The variable event is never used
+test/chromeexperiments/bomomo.tidy.html:2946:2: [definite] The variable event is never used
+test/chromeexperiments/bomomo.tidy.html:2946:2: [definite] The variable event is never used
+test/chromeexperiments/bomomo.tidy.html:2948:2: [definite] The variable event is never used
+test/chromeexperiments/bomomo.tidy.html:2948:2: [definite] The variable event is never used
+test/chromeexperiments/bomomo.tidy.html:2948:2: [definite] The variable event is never used
+test/chromeexperiments/bomomo.tidy.html:2951:2: [definite] The variable event is never used
+test/chromeexperiments/bomomo.tidy.html:2951:2: [definite] The variable event is never used
+test/chromeexperiments/bomomo.tidy.html:2951:2: [definite] The variable event is never used
+test/chromeexperiments/bomomo.tidy.html:2954:2: [definite] The variable event is never used
+test/chromeexperiments/bomomo.tidy.html:2954:2: [definite] The variable event is never used
+test/chromeexperiments/bomomo.tidy.html:2964:2: [definite] The variable event is never used
+test/chromeexperiments/bomomo.tidy.html:2983:2: [definite] The variable event is never used
+test/chromeexperiments/bomomo.tidy.html:347:9: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.tidy.html:357:9: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.tidy.html:424:13: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.tidy.html:424:13: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.tidy.html:425:13: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.tidy.html:426:13: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.tidy.html:427:13: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.tidy.html:428:13: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.tidy.html:431:13: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.tidy.html:431:13: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.tidy.html:432:13: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.tidy.html:433:13: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.tidy.html:434:13: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.tidy.html:435:13: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.tidy.html:442:5: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.tidy.html:442:5: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.tidy.html:447:5: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.tidy.html:447:5: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.tidy.html:612:9: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.tidy.html:2830:16: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.tidy.html:2830:16: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.tidy.html:424:13: [maybe] Reading absent property style
+test/chromeexperiments/bomomo.tidy.html:425:13: [maybe] Reading absent property style
+test/chromeexperiments/bomomo.tidy.html:426:13: [maybe] Reading absent property style
+test/chromeexperiments/bomomo.tidy.html:427:13: [maybe] Reading absent property style
+test/chromeexperiments/bomomo.tidy.html:428:13: [maybe] Reading absent property style
+test/chromeexperiments/bomomo.tidy.html:431:13: [maybe] Reading absent property style
+test/chromeexperiments/bomomo.tidy.html:432:13: [maybe] Reading absent property style
+test/chromeexperiments/bomomo.tidy.html:433:13: [maybe] Reading absent property style
+test/chromeexperiments/bomomo.tidy.html:434:13: [maybe] Reading absent property style
+test/chromeexperiments/bomomo.tidy.html:435:13: [maybe] Reading absent property style
+test/chromeexperiments/bomomo.tidy.html:442:5: [maybe] Reading absent property style
+test/chromeexperiments/bomomo.tidy.html:447:5: [maybe] Reading absent property style
+test/chromeexperiments/bomomo.tidy.html:2830:16: [maybe] Reading absent property style
+test/chromeexperiments/bomomo.tidy.html:299: [maybe] Uncaught exception, constructed at [test/chromeexperiments/bomomo.tidy.html:347:9, test/chromeexperiments/bomomo.tidy.html:357:9, test/chromeexperiments/bomomo.tidy.html:424:13, test/chromeexperiments/bomomo.tidy.html:425:13, test/chromeexperiments/bomomo.tidy.html:426:13, test/chromeexperiments/bomomo.tidy.html:427:13, test/chromeexperiments/bomomo.tidy.html:428:13, test/chromeexperiments/bomomo.tidy.html:431:13, test/chromeexperiments/bomomo.tidy.html:432:13, test/chromeexperiments/bomomo.tidy.html:433:13, test/chromeexperiments/bomomo.tidy.html:434:13, test/chromeexperiments/bomomo.tidy.html:435:13, test/chromeexperiments/bomomo.tidy.html:442:5, test/chromeexperiments/bomomo.tidy.html:447:5, test/chromeexperiments/bomomo.tidy.html:612:9, test/chromeexperiments/bomomo.tidy.html:763:5, test/chromeexperiments/bomomo.tidy.html:2830:16]
+test/chromeexperiments/bomomo.tidy.html:347:9: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bomomo.tidy.html:353:9: [maybe] Conversion from string to number yields NaN
+test/chromeexperiments/bomomo.tidy.html:357:9: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bomomo.tidy.html:612:9: [maybe] Reading absent property (computed name)

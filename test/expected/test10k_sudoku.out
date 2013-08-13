@@ -1,0 +1,32 @@
+test/10k/sudoku.tidy.html:12:17: [definite] Unreachable function
+test/10k/sudoku.tidy.html:36:5: [definite] Unreachable function gs
+test/10k/sudoku.tidy.html:40:5: [definite] Unreachable function $
+test/10k/sudoku.tidy.html:43:5: [definite] Unreachable function x
+test/10k/sudoku.tidy.html:47:5: [definite] Unreachable function y
+test/10k/sudoku.tidy.html:51:5: [definite] Unreachable function sx
+test/10k/sudoku.tidy.html:55:5: [definite] Unreachable function sy
+test/10k/sudoku.tidy.html:59:5: [definite] Unreachable function cs
+test/10k/sudoku.tidy.html:63:5: [definite] Unreachable function c
+test/10k/sudoku.tidy.html:67:5: [definite] Unreachable function sc
+test/10k/sudoku.tidy.html:71:5: [definite] Unreachable function init
+test/10k/sudoku.tidy.html:84:5: [definite] Unreachable function repro
+test/10k/sudoku.tidy.html:90:5: [definite] Unreachable function unset
+test/10k/sudoku.tidy.html:95:5: [definite] Unreachable function improbable
+test/10k/sudoku.tidy.html:101:5: [definite] Unreachable function set
+test/10k/sudoku.tidy.html:114:5: [definite] Unreachable function solved
+test/10k/sudoku.tidy.html:138:27: [definite] Unreachable function
+test/10k/sudoku.tidy.html:142:21: [definite] Unreachable function
+test/10k/sudoku.tidy.html:150:32: [definite] Unreachable function
+test/10k/sudoku.tidy.html:170:34: [definite] Unreachable function
+test/10k/sudoku.tidy.html:182:5: [definite] Unreachable function refresh
+test/10k/sudoku.tidy.html:193:5: [definite] Unreachable function loadGame
+test/10k/sudoku.tidy.html:199:5: [definite] Unreachable function has
+test/10k/sudoku.tidy.html:205:5: [definite] Unreachable function randomNumber
+test/10k/sudoku.tidy.html:210:5: [definite] Unreachable function fill
+test/10k/sudoku.tidy.html:224:5: [definite] Unreachable function create
+test/10k/sudoku.tidy.html:236:5: [definite] Unreachable function unSolve
+test/10k/sudoku.tidy.html:237:16: [definite] Unreachable function
+test/10k/sudoku.tidy.html:254:5: [definite] Unreachable function busy
+test/10k/sudoku.tidy.html:260:5: [definite] Unreachable function free
+test/10k/sudoku.tidy.html:266:5: [definite] Unreachable function newGame
+test/10k/sudoku.tidy.html:273:5: [definite] Unreachable function blankGame

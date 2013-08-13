@@ -1,0 +1,3 @@
+test/v8tests/function-arguments-null.js:30:1: [definite] ReferenceError, reading absent variable assertTrue
+test/v8tests/function-arguments-null.js:30:12: [definite] Unreachable code
+test/v8tests/function-arguments-null.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/function-arguments-null.js:30:1]

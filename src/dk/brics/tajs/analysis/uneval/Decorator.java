@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Aarhus University
+ * Copyright 2009-2013 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -277,8 +277,8 @@ public class Decorator { // TODO: copied from optimizer, needs review
             if (deletePropertyNode.getPropertyRegister() == targetVar) {
                 deletePropertyNode.setPropertyRegister(replacementVar);
             }
-        } else if (node instanceof EnterWithNode) {
-            EnterWithNode enterWithNode = (EnterWithNode) node;
+        } else if (node instanceof BeginWithNode) {
+            BeginWithNode enterWithNode = (BeginWithNode) node;
             if (enterWithNode.getObjectRegister() == targetVar) {
                 enterWithNode.setObjectRegister(replacementVar);
             }
@@ -300,7 +300,7 @@ public class Decorator { // TODO: copied from optimizer, needs review
             if (ifNode.getConditionRegister() == targetVar) {
                 ifNode.setConditionRegister(replacementVar);
             }
-        } else if (node instanceof LeaveWithNode) {
+        } else if (node instanceof EndWithNode) {
             // do nothing
         } else if (node instanceof NewObjectNode) {
             // do nothing

@@ -1,6 +1,0 @@
-test/browser/domlegacy/html/HTMLCollection01.tidy.html:15: [definite] Reading absent property item
-test/browser/domlegacy/html/HTMLCollection01.tidy.html:16: [definite] Reading absent property namedItem
-test/browser/domlegacy/html/HTMLCollection01.tidy.html:13: [info] Abstract value: [@HTMLCollection[native] constructor]
-test/browser/domlegacy/html/HTMLCollection01.tidy.html:14: [info] Abstract value: 0.0
-test/browser/domlegacy/html/HTMLCollection01.tidy.html:15: [info] Abstract value: Undef
-test/browser/domlegacy/html/HTMLCollection01.tidy.html:16: [info] Abstract value: Undef
