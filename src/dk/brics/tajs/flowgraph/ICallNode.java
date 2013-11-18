@@ -19,7 +19,7 @@ package dk.brics.tajs.flowgraph;
 /**
  * Interface of call nodes.
  */
-public interface ICallNode {
+public interface ICallNode { // TODO: remove ICallNode?
 
 	/**
      * Checks whether this is a constructor call or an ordinary call.

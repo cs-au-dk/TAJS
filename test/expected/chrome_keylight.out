@@ -5,7 +5,7 @@ test/chromeexperiments/keylight.tidy.html:100:17: [definite] The conditional exp
 test/chromeexperiments/keylight.tidy.html:100:21: [definite] The conditional expression is always true
 test/chromeexperiments/keylight.tidy.html:282:24: [definite] The conditional expression is always true
 test/chromeexperiments/keylight.tidy.html:454:25: [definite] The conditional expression is always false
-test/chromeexperiments/keylight.tidy.html:602:29: [definite] The conditional expression is always true
+test/chromeexperiments/keylight.tidy.html:530:25: [definite] The assignment to color has no effect
 test/chromeexperiments/keylight.tidy.html:69:19: [definite] Dead assignment, property width is never read
 test/chromeexperiments/keylight.tidy.html:192:20: [definite] Reading absent property touches
 test/chromeexperiments/keylight.tidy.html:202:20: [definite] Reading absent property touches
@@ -56,9 +56,11 @@ test/chromeexperiments/keylight.tidy.html:569:61: [maybe] TypeError, accessing p
 test/chromeexperiments/keylight.tidy.html:571:64: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/keylight.tidy.html:572:64: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/keylight.tidy.html:587:49: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/keylight.tidy.html:606:57: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/keylight.tidy.html:607:58: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/keylight.tidy.html:613:67: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/keylight.tidy.html:613:88: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/keylight.tidy.html:626:59: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/keylight.tidy.html:627:59: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/keylight.tidy.html:633:67: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/keylight.tidy.html:633:91: [maybe] TypeError, accessing property of null/undefined
@@ -68,7 +70,7 @@ test/chromeexperiments/keylight.tidy.html:566:42: [maybe] Reading absent propert
 test/chromeexperiments/keylight.tidy.html:566:71: [maybe] Reading absent property y
 test/chromeexperiments/keylight.tidy.html:566:125: [maybe] Reading absent property rx
 test/chromeexperiments/keylight.tidy.html:566:156: [maybe] Reading absent property ry
-test/chromeexperiments/keylight.tidy.html:50: [maybe] Uncaught exception, constructed at [test/chromeexperiments/keylight.tidy.html:192:20, test/chromeexperiments/keylight.tidy.html:202:20, test/chromeexperiments/keylight.tidy.html:265:45, test/chromeexperiments/keylight.tidy.html:265:107, test/chromeexperiments/keylight.tidy.html:285:29, test/chromeexperiments/keylight.tidy.html:367:43, test/chromeexperiments/keylight.tidy.html:376:25, test/chromeexperiments/keylight.tidy.html:382:25, test/chromeexperiments/keylight.tidy.html:425:17, test/chromeexperiments/keylight.tidy.html:454:29, test/chromeexperiments/keylight.tidy.html:566:42, test/chromeexperiments/keylight.tidy.html:566:71, test/chromeexperiments/keylight.tidy.html:566:104, test/chromeexperiments/keylight.tidy.html:566:125, test/chromeexperiments/keylight.tidy.html:566:156, test/chromeexperiments/keylight.tidy.html:568:61, test/chromeexperiments/keylight.tidy.html:569:61, test/chromeexperiments/keylight.tidy.html:571:64, test/chromeexperiments/keylight.tidy.html:572:64, test/chromeexperiments/keylight.tidy.html:587:49, test/chromeexperiments/keylight.tidy.html:607:58, test/chromeexperiments/keylight.tidy.html:613:67, test/chromeexperiments/keylight.tidy.html:613:88, test/chromeexperiments/keylight.tidy.html:627:59, test/chromeexperiments/keylight.tidy.html:633:67, test/chromeexperiments/keylight.tidy.html:633:91, test/chromeexperiments/keylight.tidy.html:639:40, test/chromeexperiments/keylight.tidy.html:735:22]
+test/chromeexperiments/keylight.tidy.html:50: [maybe] Uncaught exception, constructed at [test/chromeexperiments/keylight.tidy.html:192:20, test/chromeexperiments/keylight.tidy.html:202:20, test/chromeexperiments/keylight.tidy.html:265:45, test/chromeexperiments/keylight.tidy.html:265:107, test/chromeexperiments/keylight.tidy.html:285:29, test/chromeexperiments/keylight.tidy.html:367:43, test/chromeexperiments/keylight.tidy.html:376:25, test/chromeexperiments/keylight.tidy.html:382:25, test/chromeexperiments/keylight.tidy.html:425:17, test/chromeexperiments/keylight.tidy.html:454:29, test/chromeexperiments/keylight.tidy.html:566:42, test/chromeexperiments/keylight.tidy.html:566:71, test/chromeexperiments/keylight.tidy.html:566:104, test/chromeexperiments/keylight.tidy.html:566:125, test/chromeexperiments/keylight.tidy.html:566:156, test/chromeexperiments/keylight.tidy.html:568:61, test/chromeexperiments/keylight.tidy.html:569:61, test/chromeexperiments/keylight.tidy.html:571:64, test/chromeexperiments/keylight.tidy.html:572:64, test/chromeexperiments/keylight.tidy.html:587:49, test/chromeexperiments/keylight.tidy.html:606:57, test/chromeexperiments/keylight.tidy.html:607:58, test/chromeexperiments/keylight.tidy.html:613:67, test/chromeexperiments/keylight.tidy.html:613:88, test/chromeexperiments/keylight.tidy.html:626:59, test/chromeexperiments/keylight.tidy.html:627:59, test/chromeexperiments/keylight.tidy.html:633:67, test/chromeexperiments/keylight.tidy.html:633:91, test/chromeexperiments/keylight.tidy.html:639:40, test/chromeexperiments/keylight.tidy.html:735:22]
 test/chromeexperiments/keylight.tidy.html:65:21: [maybe] Converting object to string
 test/chromeexperiments/keylight.tidy.html:65:21: [maybe] Converting primitive string to object
 test/chromeexperiments/keylight.tidy.html:66:25: [maybe] Converting primitive string to object
@@ -104,9 +106,11 @@ test/chromeexperiments/keylight.tidy.html:572:25: [maybe] Conversion to number y
 test/chromeexperiments/keylight.tidy.html:572:39: [maybe] Conversion to number yields NaN
 test/chromeexperiments/keylight.tidy.html:587:49: [maybe] Reading absent property (computed name)
 test/chromeexperiments/keylight.tidy.html:593:45: [maybe] Conversion to number yields NaN
+test/chromeexperiments/keylight.tidy.html:599:34: [maybe] Reading absent property (computed name)
 test/chromeexperiments/keylight.tidy.html:600:34: [maybe] Reading absent property (computed name)
 test/chromeexperiments/keylight.tidy.html:610:46: [maybe] Reading absent property (computed name)
 test/chromeexperiments/keylight.tidy.html:611:46: [maybe] Reading absent property (computed name)
+test/chromeexperiments/keylight.tidy.html:618:38: [maybe] Reading absent property (computed name)
 test/chromeexperiments/keylight.tidy.html:619:38: [maybe] Reading absent property (computed name)
 test/chromeexperiments/keylight.tidy.html:630:46: [maybe] Reading absent property (computed name)
 test/chromeexperiments/keylight.tidy.html:631:46: [maybe] Reading absent property (computed name)

@@ -1,4 +1,5 @@
 test/micro/testToPrimitive.js:2:11: [definite] Variable a is null/undefined
+test/micro/testToPrimitive.js:3:9: [definite] The assignment to b has no effect
 test/micro/testToPrimitive.js:4:11: [definite] Variable b is null/undefined
 test/micro/testToPrimitive.js:2:1: [info] Abstract value: Null
 test/micro/testToPrimitive.js:4:1: [info] Abstract value: Undef

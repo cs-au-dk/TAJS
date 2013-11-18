@@ -17,7 +17,6 @@ public class TestGoogle2 {
 	public void init() {
         Options.reset();
 		Options.enableTest();
-        Options.enablePolymorphic();
 	}
 	
 	@Test

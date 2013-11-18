@@ -27,7 +27,7 @@ import dk.brics.tajs.flowgraph.BasicBlock;
 /**
  * Work list used by solver.
  */
-public class WorkList<CallContextType extends ICallContext<?>> {
+public class WorkList<ContextType extends IContext<?>> {
 	
 	private static Logger logger = Logger.getLogger(WorkList.class); 
 
@@ -39,14 +39,14 @@ public class WorkList<CallContextType extends ICallContext<?>> {
 	
 	private PriorityQueue<Entry> pending_queue;
 	
-	private IWorkListStrategy<CallContextType> worklist_strategy;
+	private IWorkListStrategy<ContextType> worklist_strategy;
 	
 	// TODO: replace pending_set+pending_queue by a combined data structure?
 
 	/**
 	 * Constructs a new empty work list.
 	 */
-	public WorkList(IWorkListStrategy<CallContextType> w) {
+	public WorkList(IWorkListStrategy<ContextType> w) {
 		worklist_strategy = w;
 		pending_set = new HashSet<>();
 		pending_queue = new PriorityQueue<>();
@@ -113,13 +113,13 @@ public class WorkList<CallContextType extends ICallContext<?>> {
 	
 	/**
 	 * Work list entry.
-	 * Consists of a block and a call context.
+	 * Consists of a block and a context.
 	 */
-	public class Entry implements IWorkListStrategy.IEntry<CallContextType>, Comparable<Entry> {
+	public class Entry implements IWorkListStrategy.IEntry<ContextType>, Comparable<Entry> {
 		
 		private BasicBlock b;
 		
-		private CallContextType c;
+		private ContextType c;
 		
 		private int serial;
 		
@@ -128,7 +128,7 @@ public class WorkList<CallContextType extends ICallContext<?>> {
 		/**
 		 * Constructs a new entry.
 		 */
-		public Entry(BasicBlock b, CallContextType c) {
+		public Entry(BasicBlock b, ContextType c) {
 			this.b = b;
 			this.c = c;
 			serial = next_serial++;
@@ -141,7 +141,7 @@ public class WorkList<CallContextType extends ICallContext<?>> {
 		}
 		
 		@Override
-		public CallContextType getContext() {
+		public ContextType getContext() {
 			return c;
 		}
 		

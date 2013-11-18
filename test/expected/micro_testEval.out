@@ -1,0 +1,6 @@
+test/micro/testEval.js:1:5: [definite] The variable a is never used
+test/micro/testEval.js:1:9: [definite] Unreachable code
+test/micro/testEval.js:3:5: [definite] The variable b is never used
+test/micro/testEval.js:5:5: [definite] The variable c is never used
+test/micro/testEval.js:7:5: [definite] The variable d is never used
+test/micro/testEval.js:10:5: [definite] The variable f is never used

@@ -1,12 +1,2 @@
-Unevalizer: Starting on: "horse"
-Unevalizer: Valid program
-Unevalizer: No name capture
-Unevalizer: Return value of eval is used
-Unevalizer: Last expression has value
-Unevalizer: Starting on: "cow"
-Unevalizer: Valid program
-Unevalizer: No name capture
-Unevalizer: Return value of eval is used
-Unevalizer: Last expression has value
 test/uneval/uneval17.js:8:1: [info] Abstract value: "horse_var"
 test/uneval/uneval17.js:9:1: [info] Abstract value: "cow_var"

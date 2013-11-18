@@ -1,9 +1,3 @@
-Unevalizer: Starting on: "clock()"
-Unevalizer: Valid program
-Unevalizer: No name capture
-Unevalizer: Starting on: "clock()"
-Unevalizer: Valid program
-Unevalizer: No name capture
 test/chromeexperiments/catchit.tidy.html:145:13: [definite] The conditional expression is always false
 test/chromeexperiments/catchit.tidy.html:62:13: [definite] The variable tries is never used
 test/chromeexperiments/catchit.tidy.html:63:13: [definite] The variable score is never used

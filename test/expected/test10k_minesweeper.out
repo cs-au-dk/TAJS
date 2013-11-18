@@ -65,7 +65,6 @@ test/10k/minesweeper.tidy.html:79:19: [maybe] The variable a has values with dif
 test/10k/minesweeper.tidy.html:88:26: [maybe] The variable a has values with different types
 test/10k/minesweeper.tidy.html:91:26: [maybe] Conversion from string to number yields NaN
 test/10k/minesweeper.tidy.html:91:26: [maybe] The variable a has values with different types
-test/10k/minesweeper.tidy.html:91:33: [maybe] Conversion from string to number yields NaN
 test/10k/minesweeper.tidy.html:91:33: [maybe] The variable c has values with different types
 test/10k/minesweeper.tidy.html:91:38: [maybe] The variable a has values with different types
 test/10k/minesweeper.tidy.html:91:45: [maybe] Conversion from string to number yields NaN
@@ -73,11 +72,7 @@ test/10k/minesweeper.tidy.html:91:45: [maybe] The variable c has values with dif
 test/10k/minesweeper.tidy.html:91:62: [maybe] Conversion to number yields NaN
 test/10k/minesweeper.tidy.html:91:74: [maybe] Conversion to number yields NaN
 test/10k/minesweeper.tidy.html:91:81: [maybe] Conversion to number yields NaN
-test/10k/minesweeper.tidy.html:91:89: [maybe] Conversion to number yields NaN
-test/10k/minesweeper.tidy.html:91:99: [maybe] Conversion from string to number yields NaN
 test/10k/minesweeper.tidy.html:91:99: [maybe] The variable c has values with different types
-test/10k/minesweeper.tidy.html:91:109: [maybe] Conversion to number yields NaN
-test/10k/minesweeper.tidy.html:91:118: [maybe] Conversion from string to number yields NaN
 test/10k/minesweeper.tidy.html:91:118: [maybe] The variable c has values with different types
 test/10k/minesweeper.tidy.html:91:124: [maybe] Converting object to string
 test/10k/minesweeper.tidy.html:91:124: [maybe] Reading absent property (computed name)

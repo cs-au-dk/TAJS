@@ -97,6 +97,9 @@ public class DOMElement {
         
         // DOM Level 2
         createDOMProperty(s, DOMAttr.INSTANCES, "ownerElement", Value.makeObject(DOMElement.INSTANCES).setReadOnly());
+        
+        // semistandard
+        createDOMFunction(s, PROTOTYPE, DOMObjects.ELEMENT_QUERY_SELECTOR_ALL, "querySelectorAll", 1);
     }
 
     /**
@@ -210,6 +213,10 @@ public class DOMElement {
                 /* Value idAttr =*/ DOMConversion.toAttr(NativeFunctions.readParameter(call, s, 0), c);
                 /* Value isId =*/ Conversion.toBoolean(NativeFunctions.readParameter(call, s, 1));
                 return Value.makeUndef();
+            }
+            case ELEMENT_QUERY_SELECTOR_ALL: {
+            	NativeFunctions.expectParameters(nativeObject, call, c, 1, 1);
+            	return Value.makeObject(DOMNodeList.INSTANCES);
             }
             default: {
                 throw new AnalysisException("Unknown Native Object: " + nativeObject);

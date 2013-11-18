@@ -1,5 +1,6 @@
 test/chromeexperiments/jstouch.tidy.html:830:9: [definite] The conditional expression is always false
 test/chromeexperiments/jstouch.tidy.html:830:13: [definite] Variable cpy is null/undefined
+test/chromeexperiments/jstouch.tidy.html:1108:13: [definite] The assignment to tex has no effect
 test/chromeexperiments/jstouch.tidy.html:12:29: [definite] Dead assignment, property face_groups is never read
 test/chromeexperiments/jstouch.tidy.html:12:29: [definite] Dead assignment, property poss is never read
 test/chromeexperiments/jstouch.tidy.html:203:18: [definite] Dead assignment, property face_groups is never read

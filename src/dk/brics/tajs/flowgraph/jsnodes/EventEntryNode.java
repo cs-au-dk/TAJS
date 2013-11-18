@@ -28,6 +28,7 @@ public class EventEntryNode extends Node { // (EventEntryNode nodes are useful i
 	 */
 	public EventEntryNode(SourceLocation location) {
 		super(location);
+		setArtificial();
 	}
 
 	@Override

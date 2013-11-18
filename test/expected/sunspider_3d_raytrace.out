@@ -95,7 +95,6 @@ test/sunspider/3d-raytrace.js:168:42: [maybe] Conversion to number yields NaN
 test/sunspider/3d-raytrace.js:168:52: [maybe] Reading absent property (computed name)
 test/sunspider/3d-raytrace.js:168:62: [maybe] Conversion to number yields NaN
 test/sunspider/3d-raytrace.js:168:72: [maybe] Reading absent property (computed name)
-test/sunspider/3d-raytrace.js:169:21: [maybe] Conversion to number yields NaN
 test/sunspider/3d-raytrace.js:169:25: [maybe] The variable far has values with different types
 test/sunspider/3d-raytrace.js:171:14: [maybe] Conversion to number yields NaN
 test/sunspider/3d-raytrace.js:171:14: [maybe] Conversion to number yields NaN
@@ -110,7 +109,6 @@ test/sunspider/3d-raytrace.js:172:28: [maybe] Reading absent property (computed 
 test/sunspider/3d-raytrace.js:196:24: [maybe] Reading absent property (computed name)
 test/sunspider/3d-raytrace.js:197:55: [maybe] The variable far has values with different types
 test/sunspider/3d-raytrace.js:198:13: [maybe] The variable d has values with different types
-test/sunspider/3d-raytrace.js:198:26: [maybe] Conversion to number yields NaN
 test/sunspider/3d-raytrace.js:198:26: [maybe] The variable d has values with different types
 test/sunspider/3d-raytrace.js:198:30: [maybe] The variable far has values with different types
 test/sunspider/3d-raytrace.js:198:37: [maybe] The variable d has values with different types
@@ -123,7 +121,6 @@ test/sunspider/3d-raytrace.js:233:30: [maybe] Conversion to number yields NaN
 test/sunspider/3d-raytrace.js:234:9: [maybe] Conversion to number yields NaN
 test/sunspider/3d-raytrace.js:243:38: [maybe] Conversion to number yields NaN
 test/sunspider/3d-raytrace.js:254:13: [maybe] The variable d has values with different types
-test/sunspider/3d-raytrace.js:254:26: [maybe] Conversion to number yields NaN
 test/sunspider/3d-raytrace.js:254:26: [maybe] The variable d has values with different types
 test/sunspider/3d-raytrace.js:254:37: [maybe] The variable d has values with different types
 test/sunspider/3d-raytrace.js:304:13: [maybe] Reading absent property (computed name)

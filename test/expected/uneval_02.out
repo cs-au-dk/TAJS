@@ -1,4 +1,1 @@
-Unevalizer: Starting on: "y =5"
-Unevalizer: Valid program
-Unevalizer: No name capture
 test/uneval/uneval02.js:5:1: [info] Abstract value: 5.0

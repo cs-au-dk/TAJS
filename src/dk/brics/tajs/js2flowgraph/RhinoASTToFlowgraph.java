@@ -96,6 +96,25 @@ import dk.brics.tajs.util.Pair;
 
 public class RhinoASTToFlowgraph { // TODO: improve javadoc
 
+    public enum Directive { // spelling is significant, it is used for matching with the source code directives
+        UNREACHABLE("TAJS_unreachable");
+
+        private final String name;
+
+        private Directive(String name) {
+            this.name = name;
+        }
+
+        @Override
+        public String toString() {
+            return name;
+        }
+
+        public String getName() {
+            return name;
+        }
+    }
+
 	private static Logger logger = Logger.getLogger(RhinoASTToFlowgraph.class);
 
 	/**
@@ -224,7 +243,7 @@ public class RhinoASTToFlowgraph { // TODO: improve javadoc
 	 * Adds an event loop to the flow graph. Does not make sense if DOM is not enabled.
 	 */
 	private BasicBlock addEventLoop(FlowGraphEnv env, BasicBlock bb, String filename) {
-		if (!(Options.isDOMEnabled() || Options.isDSLEnabled()))
+		if (!Options.isDOMEnabled())
 			return bb;
 
 		BasicBlock currBB = newSuccessorBasicBlock(env, bb);
@@ -274,7 +293,9 @@ public class RhinoASTToFlowgraph { // TODO: improve javadoc
 		loadBB.addNode(new EventDispatcherNode(EventDispatcherNode.Type.LOAD, srcLoc));
 
 		BasicBlock nopPostLoad = newSuccessorBasicBlock(env, loadBB);
-		nopPostLoad.addNode(new NopNode(srcLoc));
+		NopNode nopPostNode = new NopNode(srcLoc);
+		nopPostNode.setArtificial();
+		nopPostLoad.addNode(nopPostNode);
 		nopPostLoad.addSuccessor(loadBB);
 
 		// Other Event Handlers
@@ -282,7 +303,9 @@ public class RhinoASTToFlowgraph { // TODO: improve javadoc
 		otherBB.addNode(new EventDispatcherNode(EventDispatcherNode.Type.OTHER, srcLoc));
 
 		BasicBlock nopPostOther = newSuccessorBasicBlock(env, otherBB);
-		nopPostOther.addNode(new NopNode(srcLoc));
+		AbstractNode nopPostOtherNode = new NopNode(srcLoc);
+		nopPostOtherNode.setArtificial();
+		nopPostOther.addNode(nopPostOtherNode);
 		nopPostOther.addSuccessor(otherBB);
 
 		// Unload Event Handlers
@@ -290,7 +313,9 @@ public class RhinoASTToFlowgraph { // TODO: improve javadoc
 		unloadBB.addNode(new EventDispatcherNode(EventDispatcherNode.Type.UNLOAD, srcLoc));
 
 		BasicBlock nopPostUnload = newSuccessorBasicBlock(env, unloadBB);
-		nopPostUnload.addNode(new NopNode(srcLoc));
+		AbstractNode nopPostUnloadNode = new NopNode(srcLoc);
+		nopPostUnloadNode.setArtificial();
+		nopPostUnload.addNode(nopPostUnloadNode );
 		nopPostUnload.addSuccessor(unloadBB);
 
 		entryBB.addSuccessor(nopPostLoad);
@@ -695,14 +720,28 @@ public class RhinoASTToFlowgraph { // TODO: improve javadoc
 				env.fun.addVariableName(id);
 				// Handle variable initializations in the declaration.
 				if ((grandchild = child.getFirstChild()) != null) {
+					final SourceLocation initializerLocation = SourceLocationMaker.makeFromNode(grandchild);
 					int writeReg = nextRegister(env);
 					currBB = translateNode(env, currBB, grandchild, writeReg, false);
-					addNodeToBlock(env, currBB, new WriteVariableNode(writeReg, id, srcLoc), writeReg, true);
+					addNodeToBlock(env, currBB, new WriteVariableNode(writeReg, id, initializerLocation), writeReg, true);
 				}
 			}
 			return currBB;
 		}
-		case Token.EXPR_RESULT: // [expr]; Expression statements.
+		case Token.EXPR_RESULT: { // [expr]; Expression statements.
+			Directive directive = getDirective(sn);
+			if (directive != null) {
+				switch (directive) {
+				case UNREACHABLE: {
+					addNodeToBlock(bb, AssumeNode.makeUnreachable(srcLoc), statement);
+					return bb;
+				}
+				default:
+					throw new UnsupportedOperationException("Unhandled enum: " + directive);
+				}
+			}
+		}
+		//$FALL-THROUGH$		
 		case Token.SCRIPT:
 		case Token.BLOCK:
 			return translateChildren(env, bb, sn, snType == Token.EXPR_RESULT ? AbstractNode.NO_VALUE : resultReg);
@@ -828,7 +867,7 @@ public class RhinoASTToFlowgraph { // TODO: improve javadoc
 			boolean isPlainAssignment = snType == Token.ASSIGN;
 			Node firstChild = sn.getFirstChild(); // lhs
 			Node grandChild = firstChild.getLastChild(); // property name of lhs, null if not a property write
-			boolean inUnevalMappingMode = env.evalResultMap != null && Options.isUnevalEnabled() && isPlainAssignment
+			boolean inUnevalMappingMode = env.evalResultMap != null && Options.isUnevalizerEnabled() && isPlainAssignment
 					&& firstChild.isName() && firstChild.getString().equals(env.evalResultMap.getFirst());
 			int rhsReg = resultReg == AbstractNode.NO_VALUE ? nextRegister(env) : resultReg;
 			int lhsReg = isPlainAssignment ? AbstractNode.NO_VALUE : nextRegister(env);
@@ -986,8 +1025,13 @@ public class RhinoASTToFlowgraph { // TODO: improve javadoc
 		case Token.RETURN: {
 			BasicBlock currBB = bb;
 			Node firstChild = sn.getFirstChild();
-			if (firstChild != null)
+			if (firstChild != null) {
 				currBB = translateNode(env, bb, firstChild, resultReg, false);
+			} else {
+				// add the implicit undefined return node, so line can be visited
+				final ConstantNode undefined = ConstantNode.makeUndefined(resultReg, SourceLocationMaker.makeFromNode(sn));
+				currBB.addNode(undefined);
+			}
 			currBB.addSuccessor(env.retBB);
 			return newBasicBlock(env, currBB);
 		}
@@ -1061,15 +1105,23 @@ public class RhinoASTToFlowgraph { // TODO: improve javadoc
 				catchReg = nextRegister(env);
 				bb.addNode(new CatchNode(firstChild.getString(), catchReg, srcLoc));
 			}
-			bb.addNode(new BeginWithNode(catchReg, srcLoc));
+			BeginWithNode enter1 = new BeginWithNode(catchReg, srcLoc);
+			enter1.setArtificial();
+			bb.addNode(enter1);
 			BasicBlock tempBB = newSuccessorBasicBlock(env, bb);
 			BasicBlock panicBB = newCatchBasicBlock(env, tempBB);
-			panicBB.addNode(new EndWithNode(srcLoc));
+			EndWithNode leave1 = new EndWithNode(srcLoc);
+			leave1.setArtificial();
+			panicBB.addNode(leave1);
+
 			panicBB.setExceptionHandler(null);
 			panicBB.addSuccessor(bb.getExceptionHandler());
 			int childReg = nextRegister(env);
 			BasicBlock childBB = translateNode(env.copyAndUpdateBaseReg(childReg), tempBB, sn.getLastChild(), resultReg, false);
-			childBB.addNode(new EndWithNode(srcLoc));
+			EndWithNode leave2 = new EndWithNode(srcLoc);
+			leave2.setArtificial();
+			childBB.addNode(leave2);
+
 			return childBB;
 		}
 		case Token.THROW: {
@@ -1184,7 +1236,9 @@ public class RhinoASTToFlowgraph { // TODO: improve javadoc
 		}
 		case Token.VOID: {
 			BasicBlock voidBB = translateNode(env, bb, sn.getFirstChild(), AbstractNode.NO_VALUE, false);
-			addNodeToBlock(voidBB, ConstantNode.makeUndefined(resultReg, srcLoc), statement);
+			final ConstantNode undefined = ConstantNode.makeUndefined(resultReg, srcLoc);
+			undefined.setArtificial();
+			addNodeToBlock(voidBB, undefined, statement);
 			return voidBB;
 		}
 		case Token.SWITCH: {
@@ -1284,7 +1338,7 @@ public class RhinoASTToFlowgraph { // TODO: improve javadoc
 			BasicBlock condBB = newSuccessorBasicBlock(env, currBB);
 			currBB = condBB;
 
-			// Insert a synthetic node "true" in case the condition block in the for-loop is empty.
+			// Insert a synthetic node "true" in case the condition block in the for-loop is empty. (Copied below.)
 			if (snType == Token.FOR && condNode.isEmpty()) {
 				ConstantNode bn = ConstantNode.makeBoolean(true, condReg, srcLoc);
 				bn.setArtificial();
@@ -1310,6 +1364,12 @@ public class RhinoASTToFlowgraph { // TODO: improve javadoc
 					BasicBlock tmpRet = newSuccessorBasicBlock(freshEnv, trueBlock);
 					FlowGraphEnv env3 = freshEnv.copyAndInitializeForCopy(tmpRet);
 					// Insert a copy of the condition block with a quick bail out.
+					if (snType == Token.FOR && condNode.isEmpty()) {
+						ConstantNode bn = ConstantNode.makeBoolean(true, condReg, srcLoc);
+						bn.setArtificial();
+						tmpRet.addNode(bn);
+						tmpRet = newSuccessorBasicBlock(freshEnv, tmpRet);
+					}
 					trueBlock = translateNode(freshEnv, tmpRet, condNode, condReg, false);
 					ifn = new IfNode(condReg, srcLoc);
 					ifn.setSuccessors(trueBranch, falseBranch);
@@ -1347,6 +1407,27 @@ public class RhinoASTToFlowgraph { // TODO: improve javadoc
 			throw new AnalysisException("Unknown node type: " + Token.name(sn.getType()) + " at " + srcLoc + ":" + sn.toStringTree());
 		}
 		}
+	}
+
+	/**
+	 * Decides if a node is a directive, and if so what kind of directive it is.
+	 * @see Directive for how the directives should be spelled
+	 */
+	private static Directive getDirective(Node n) {
+		if (n != null) {
+			int nType = n.getType();
+			final boolean typeIsOk = nType == Token.EXPR_RESULT || nType == Token.VOID;
+			final boolean valTypeIsOk = n.getFirstChild().getType() == Token.STRING;
+			if (typeIsOk && valTypeIsOk) {
+				final String text = n.getFirstChild().getString();
+				for (Directive d : Directive.values()) {
+					if (text.equalsIgnoreCase(d.getName())) {
+						return d;
+					}
+				}
+			}
+		}
+		return null;
 	}
 
 	private static void addNodeToBlock(BasicBlock bb, AbstractNode node, boolean endOfStatement) {
@@ -1393,7 +1474,7 @@ public class RhinoASTToFlowgraph { // TODO: improve javadoc
 					}
 				} else if (baseNode instanceof ReadPropertyNode) {
 					// x.p, and x is a property (thus the full form is o.x.p)
-					assumeNodesToAdd.add(AssumeNode.makePropertyNonNullUndef(baseNode));
+					assumeNodesToAdd.add(AssumeNode.makePropertyNonNullUndef((ReadPropertyNode)baseNode));
 				}
 			}
 		}
@@ -1495,8 +1576,9 @@ public class RhinoASTToFlowgraph { // TODO: improve javadoc
 		int resultReg = nextRegister(env);
 		// Insert a dummy node to prevent empty basic blocks. We need a constant node to get uniform treatment
 		// with other "functions".
-		env.declsBB.addNode(ConstantNode.makeUndefined(resultReg, env.fun.getSourceLocation()));
-
+		final ConstantNode undefined = ConstantNode.makeUndefined(resultReg, env.fun.getSourceLocation());
+		undefined.setArtificial();
+		env.declsBB.addNode(undefined);
 		BasicBlock retBlock = translateChildren(env, bb, root.getLastChild(), resultReg);
 
 		return postTranslationFixup(env, normalizedSourceString, retBlock);
@@ -1554,7 +1636,9 @@ public class RhinoASTToFlowgraph { // TODO: improve javadoc
 		int resultReg = n.getResultRegister() == AbstractNode.NO_VALUE ? nextRegister(env) : n.getResultRegister();
 		// Insert a dummy node to prevent empty basic blocks. We need a constant node to get uniform treatment
 		// with other "functions".
-		env.declsBB.addNode(ConstantNode.makeUndefined(resultReg, env.fun.getSourceLocation()));
+		final ConstantNode undef = ConstantNode.makeUndefined(resultReg, env.fun.getSourceLocation());
+		undef.setArtificial();		
+		env.declsBB.addNode(undef);
 
 		// TODO: Should we add the event variable as argument here as well?
 		translateEventHandler(env, bb, new EventHandlerJavaScriptSource(fun.getSourceLocation().getFileName(), sourceString, 0, "TIMEOUT"), resultReg);
@@ -1896,7 +1980,9 @@ public class RhinoASTToFlowgraph { // TODO: improve javadoc
 	 */
 	private static BasicBlock setupFunction(FlowGraphEnv env, Function fun) {
 		BasicBlock entryBB = new BasicBlock(fun);
-		entryBB.addNode(ConstantNode.makeUndefined(AbstractNode.RETURN_REG, fun.getSourceLocation()));
+		final ConstantNode returnUndefinedByDefault = ConstantNode.makeUndefined(AbstractNode.RETURN_REG, fun.getSourceLocation());
+		returnUndefinedByDefault.setArtificial();
+		entryBB.addNode(returnUndefinedByDefault);
 
 		// Declarations basic block
 		env.declsBB = entryBB; // TODO: could merge the declsBB and its successor after the function has been completed?
@@ -1910,7 +1996,9 @@ public class RhinoASTToFlowgraph { // TODO: improve javadoc
 		// in the caller of setupFunction instead.
 		env.pendingBBs.remove(exceptionretBB);
 		env.exceptionretBB = exceptionretBB;
-		exceptionretBB.addNode(new ExceptionalReturnNode(fun.getSourceLocation()));
+		final ExceptionalReturnNode expeptionalReturn = new ExceptionalReturnNode(fun.getSourceLocation());
+		expeptionalReturn.setArtificial();
+		exceptionretBB.addNode(expeptionalReturn);
 
 		BasicBlock bb = newSuccessorBasicBlock(env, entryBB);
 
@@ -1919,7 +2007,9 @@ public class RhinoASTToFlowgraph { // TODO: improve javadoc
 		// We like to read our functions from top to bottom, so add the exit block second to last in the caller instead.
 		env.pendingBBs.remove(retBB);
 		env.retBB = retBB;
-		retBB.addNode(new ReturnNode(AbstractNode.RETURN_REG, fun.getSourceLocation()));
+		final ReturnNode returnNode = new ReturnNode(AbstractNode.RETURN_REG, fun.getSourceLocation());
+		returnNode.setArtificial();
+		retBB.addNode(returnNode);
 
 		fun.setEntry(entryBB);
 		fun.setExceptionalExit(exceptionretBB);

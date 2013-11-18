@@ -1,4 +1,3 @@
-Unevalizer: Starting on: "const a"
 test/v8tests/global-const-var-conflicts.js:31:5: [definite] The variable caught is never used
 test/v8tests/global-const-var-conflicts.js:34:7: [definite] Unreachable code
 test/v8tests/global-const-var-conflicts.js:34:24: [definite] Unreachable code

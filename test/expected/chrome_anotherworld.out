@@ -93,10 +93,6 @@ test/chromeexperiments/anotherworld.tidy.html:430:32: [maybe] The variable src h
 test/chromeexperiments/anotherworld.tidy.html:472:26: [maybe] Converting undefined to string
 test/chromeexperiments/anotherworld.tidy.html:472:26: [maybe] Converting undefined to string
 test/chromeexperiments/anotherworld.tidy.html:472:26: [maybe] Converting undefined to string
-test/chromeexperiments/anotherworld.tidy.html:474:21: [maybe] Conversion from string to number yields NaN
-test/chromeexperiments/anotherworld.tidy.html:474:21: [maybe] Conversion to number yields NaN
-test/chromeexperiments/anotherworld.tidy.html:474:32: [maybe] Conversion from string to number yields NaN
-test/chromeexperiments/anotherworld.tidy.html:474:32: [maybe] Conversion to number yields NaN
 test/chromeexperiments/anotherworld.tidy.html:476:25: [maybe] Conversion from string to number yields NaN
 test/chromeexperiments/anotherworld.tidy.html:476:25: [maybe] Conversion to number yields NaN
 test/chromeexperiments/anotherworld.tidy.html:479:46: [maybe] The variable src has values with different types
@@ -130,7 +126,6 @@ test/chromeexperiments/anotherworld.tidy.html:512:26: [maybe] The variable y has
 test/chromeexperiments/anotherworld.tidy.html:512:31: [maybe] Conversion from string to number yields NaN
 test/chromeexperiments/anotherworld.tidy.html:512:31: [maybe] Conversion to number yields NaN
 test/chromeexperiments/anotherworld.tidy.html:512:63: [maybe] The variable zoom has values with different types
-test/chromeexperiments/anotherworld.tidy.html:515:24: [maybe] Conversion from string to number yields NaN
 test/chromeexperiments/anotherworld.tidy.html:515:24: [maybe] The variable n has values with different types
 test/chromeexperiments/anotherworld.tidy.html:517:37: [maybe] Conversion from string to number yields NaN
 test/chromeexperiments/anotherworld.tidy.html:517:37: [maybe] Conversion from string to number yields NaN
@@ -152,7 +147,6 @@ test/chromeexperiments/anotherworld.tidy.html:541:29: [maybe] Conversion to numb
 test/chromeexperiments/anotherworld.tidy.html:541:29: [maybe] The variable zoom has values with different types
 test/chromeexperiments/anotherworld.tidy.html:543:27: [maybe] Conversion from string to number yields NaN
 test/chromeexperiments/anotherworld.tidy.html:544:27: [maybe] Conversion from string to number yields NaN
-test/chromeexperiments/anotherworld.tidy.html:548:31: [maybe] Conversion from string to number yields NaN
 test/chromeexperiments/anotherworld.tidy.html:550:34: [maybe] Conversion from string to number yields NaN
 test/chromeexperiments/anotherworld.tidy.html:551:34: [maybe] Conversion from string to number yields NaN
 test/chromeexperiments/anotherworld.tidy.html:556:26: [maybe] Conversion from string to number yields NaN
@@ -165,14 +159,11 @@ test/chromeexperiments/anotherworld.tidy.html:558:26: [maybe] Conversion to numb
 test/chromeexperiments/anotherworld.tidy.html:558:26: [maybe] The variable y has values with different types
 test/chromeexperiments/anotherworld.tidy.html:559:26: [maybe] Conversion to number yields NaN
 test/chromeexperiments/anotherworld.tidy.html:559:26: [maybe] The variable y has values with different types
-test/chromeexperiments/anotherworld.tidy.html:563:33: [maybe] Conversion from string to number yields NaN
 test/chromeexperiments/anotherworld.tidy.html:563:33: [maybe] The variable x2 has values with different types
-test/chromeexperiments/anotherworld.tidy.html:563:55: [maybe] Conversion from string to number yields NaN
 test/chromeexperiments/anotherworld.tidy.html:563:55: [maybe] The variable y2 has values with different types
 test/chromeexperiments/anotherworld.tidy.html:568:27: [maybe] Conversion from string to number yields NaN
 test/chromeexperiments/anotherworld.tidy.html:568:27: [maybe] Conversion to number yields NaN
 test/chromeexperiments/anotherworld.tidy.html:573:21: [maybe] Conversion from string to number yields NaN
-test/chromeexperiments/anotherworld.tidy.html:582:31: [maybe] Conversion from string to number yields NaN
 test/chromeexperiments/anotherworld.tidy.html:584:40: [maybe] Reading absent property (computed name)
 test/chromeexperiments/anotherworld.tidy.html:585:40: [maybe] Reading absent property (computed name)
 test/chromeexperiments/anotherworld.tidy.html:596:27: [maybe] Conversion from string to number yields NaN
@@ -198,7 +189,6 @@ test/chromeexperiments/anotherworld.tidy.html:665:26: [maybe] Converting undefin
 test/chromeexperiments/anotherworld.tidy.html:665:53: [maybe] The variable x has values with different types
 test/chromeexperiments/anotherworld.tidy.html:665:63: [maybe] The variable y has values with different types
 test/chromeexperiments/anotherworld.tidy.html:667:48: [maybe] Conversion to number yields NaN
-test/chromeexperiments/anotherworld.tidy.html:668:21: [maybe] Conversion from string to number yields NaN
 test/chromeexperiments/anotherworld.tidy.html:670:29: [maybe] Conversion to number yields NaN
 test/chromeexperiments/anotherworld.tidy.html:672:41: [maybe] Conversion from string to number yields NaN
 test/chromeexperiments/anotherworld.tidy.html:676:25: [maybe] Conversion to number yields NaN
@@ -209,8 +199,6 @@ test/chromeexperiments/anotherworld.tidy.html:682:29: [maybe] Conversion from st
 test/chromeexperiments/anotherworld.tidy.html:685:59: [maybe] The variable zoom has values with different types
 test/chromeexperiments/anotherworld.tidy.html:685:65: [maybe] The variable x has values with different types
 test/chromeexperiments/anotherworld.tidy.html:685:68: [maybe] The variable y has values with different types
-test/chromeexperiments/anotherworld.tidy.html:702:21: [maybe] Conversion from string to number yields NaN
-test/chromeexperiments/anotherworld.tidy.html:702:21: [maybe] Conversion to number yields NaN
 test/chromeexperiments/anotherworld.tidy.html:702:21: [maybe] The variable i has values with different types
 test/chromeexperiments/anotherworld.tidy.html:704:32: [maybe] Conversion from string to number yields NaN
 test/chromeexperiments/anotherworld.tidy.html:704:32: [maybe] Conversion to number yields NaN
@@ -322,20 +310,12 @@ test/chromeexperiments/anotherworld.tidy.html:928:70: [maybe] The variable b has
 test/chromeexperiments/anotherworld.tidy.html:929:65: [maybe] Conversion from string to number yields NaN
 test/chromeexperiments/anotherworld.tidy.html:929:65: [maybe] The variable a has values with different types
 test/chromeexperiments/anotherworld.tidy.html:929:70: [maybe] The variable b has values with different types
-test/chromeexperiments/anotherworld.tidy.html:930:65: [maybe] Conversion from string to number yields NaN
-test/chromeexperiments/anotherworld.tidy.html:930:65: [maybe] Conversion to number yields NaN
 test/chromeexperiments/anotherworld.tidy.html:930:65: [maybe] The variable a has values with different types
 test/chromeexperiments/anotherworld.tidy.html:930:69: [maybe] The variable b has values with different types
-test/chromeexperiments/anotherworld.tidy.html:931:65: [maybe] Conversion from string to number yields NaN
-test/chromeexperiments/anotherworld.tidy.html:931:65: [maybe] Conversion to number yields NaN
 test/chromeexperiments/anotherworld.tidy.html:931:65: [maybe] The variable a has values with different types
 test/chromeexperiments/anotherworld.tidy.html:931:70: [maybe] The variable b has values with different types
-test/chromeexperiments/anotherworld.tidy.html:932:65: [maybe] Conversion from string to number yields NaN
-test/chromeexperiments/anotherworld.tidy.html:932:65: [maybe] Conversion to number yields NaN
 test/chromeexperiments/anotherworld.tidy.html:932:65: [maybe] The variable a has values with different types
 test/chromeexperiments/anotherworld.tidy.html:932:69: [maybe] The variable b has values with different types
-test/chromeexperiments/anotherworld.tidy.html:933:65: [maybe] Conversion from string to number yields NaN
-test/chromeexperiments/anotherworld.tidy.html:933:65: [maybe] Conversion to number yields NaN
 test/chromeexperiments/anotherworld.tidy.html:933:65: [maybe] The variable a has values with different types
 test/chromeexperiments/anotherworld.tidy.html:933:70: [maybe] The variable b has values with different types
 test/chromeexperiments/anotherworld.tidy.html:946:50: [maybe] Converting undefined to string
@@ -344,8 +324,6 @@ test/chromeexperiments/anotherworld.tidy.html:952:49: [maybe] Conversion to numb
 test/chromeexperiments/anotherworld.tidy.html:953:49: [maybe] Conversion from string to number yields NaN
 test/chromeexperiments/anotherworld.tidy.html:953:49: [maybe] Conversion to number yields NaN
 test/chromeexperiments/anotherworld.tidy.html:959:53: [maybe] Conversion from string to number yields NaN
-test/chromeexperiments/anotherworld.tidy.html:966:58: [maybe] Conversion from string to number yields NaN
-test/chromeexperiments/anotherworld.tidy.html:966:58: [maybe] Conversion to number yields NaN
 test/chromeexperiments/anotherworld.tidy.html:979:50: [maybe] Converting undefined to string
 test/chromeexperiments/anotherworld.tidy.html:1000:50: [maybe] Converting undefined to string
 test/chromeexperiments/anotherworld.tidy.html:1005:45: [maybe] Conversion from string to number yields NaN

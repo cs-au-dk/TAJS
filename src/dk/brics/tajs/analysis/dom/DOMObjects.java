@@ -79,6 +79,9 @@ public enum DOMObjects implements HostObject {
     WINDOW_STOP("Window.stop"),
     WINDOW_UNESCAPE("Window.unescape"),
 
+    // DOM LEVEL 2
+    WINDOW_GET_COMPUTED_STYLE("Window.getComputedStyle"),
+
     // DOM LEVEL 0: addEventListener / removeEventListener
     WINDOW_ADD_EVENT_LISTENER("Window.addEventListener"),
     WINDOW_REMOVE_EVENT_LISTENER("Window.removeEventListener"),
@@ -116,6 +119,9 @@ public enum DOMObjects implements HostObject {
     DOCUMENT_RENAME_NODE("Document.renameNode"),
     DOCUMENT_NORMALIZEDOCUMENT("Document.normalizeDocument"),
     DOCUMENT_ADOPT_NODE("Document.adoptNode"),
+
+    // semistandard
+    DOCUMENT_QUERY_SELECTOR_ALL("Document.querySelectorAll"),
 
     // /////////////////////////////////////////////////////////////////////////
     // / EVENT ///
@@ -178,6 +184,7 @@ public enum DOMObjects implements HostObject {
     ELEMENT_GET_BOUNDING_CLIENT_RECT("Element.getBoundingClientRect"),
     ELEMENT_GET_ELEMENTS_BY_TAGNAME("Element.getElementsByTagName"),
     ELEMENT_GET_ELEMENTS_BY_TAGNAME_NS("Element.getElementsByTagNameNS"),
+    ELEMENT_QUERY_SELECTOR_ALL("Element.querySelectorAll"),
     ELEMENT_HAS_ATTRIBUTE("Element.hasAttribute"),
     ELEMENT_HAS_ATTRIBUTE_NS("Element.hasAttributeNS"),
     ELEMENT_REMOVE_ATTRIBUTE("Element.removeAttribute"),
@@ -233,6 +240,8 @@ public enum DOMObjects implements HostObject {
     NODE_IS_SUPPORTED("Node.isSupported"),
     NODE_HAS_ATTRIBUTES("Node.hasAttributes"),
     NODE_NORMALIZE("Node.normalize"),
+    NODE_COMPARE_DOCUMENT_POSITION("compareDocumentPosition"),
+    NODE_CONTAINS("contains"),
 
     NODELIST_CONSTRUCTOR("NodeList constructor"),
     NODELIST_PROTOTYPE("NodeList.prototype"),
@@ -336,6 +345,7 @@ public enum DOMObjects implements HostObject {
     HTMLELEMENT("HTMLElement"),
     HTMLELEMENT_PROTOTYPE("HTMLElement.prototype"),
     HTMLELEMENT_GET_ELEMENTS_BY_CLASS_NAME("HTMLElement.prototype.getElementsByClassName"),
+    HTMLELEMENT_MATCHES_SELECTOR("HTMLElement.prototype.(*)MatchesSelector"),
     HTMLFIELDSETELEMENT_CONSTRUCTOR("HTMLFieldsetElement constructor"),
     HTMLFIELDSETELEMENT_PROTOTYPE("HTMLFieldsetElement.prototype"),
     HTMLFIELDSETELEMENT_INSTANCES("HTMLFieldsetElement instances"),

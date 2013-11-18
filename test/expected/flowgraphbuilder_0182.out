@@ -5,7 +5,7 @@ fg2: <main> function()
     ->[block 1]
   block 1:
     node 2: new[v2] (test/flowgraphbuilder/flowgraph_builder0182.js:2:14)
-    node 3: write-variable[v2,'numObj']* (test/flowgraphbuilder/flowgraph_builder0182.js:2:1)
+    node 3: write-variable[v2,'numObj']* (test/flowgraphbuilder/flowgraph_builder0182.js:2:14)
     node 4: read-variable['Array',v4,-] (test/flowgraphbuilder/flowgraph_builder0182.js:3:11)
     node 5: constant[undefined,v5] (test/flowgraphbuilder/flowgraph_builder0182.js:3:11)
     node 6: read-variable['numObj',v6,-] (test/flowgraphbuilder/flowgraph_builder0182.js:3:15)

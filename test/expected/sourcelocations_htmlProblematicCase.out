@@ -1,11 +1,3 @@
-Unevalizer: Starting on: "cs1.move('l')"
-Unevalizer: Valid program
-Unevalizer: No name capture
-Unevalizer: Starting on: "parseInt(this.c.style.left.substring(0,this.c.style.left.length-2))"
-Unevalizer: Valid program
-Unevalizer: No name capture
-Unevalizer: Return value of eval is used
-Unevalizer: Last expression has value
 test/sourcelocations/htmlProblematicCase.tidy.html:17:16: [definite] TypeError, accessing property of null/undefined
 test/sourcelocations/htmlProblematicCase.tidy.html:11:15: [definite] The conditional expression is always true
 test/sourcelocations/htmlProblematicCase.tidy.html:13:9: [definite] Dead assignment, property intrvl is never read

@@ -55,6 +55,7 @@ test/10k/defend_yourself.tidy.html:269:1: [maybe] TypeError, accessing property 
 test/10k/defend_yourself.tidy.html:438:9: [maybe] TypeError, accessing property of null/undefined
 test/10k/defend_yourself.tidy.html:438:9: [maybe] TypeError, call to non-function
 test/10k/defend_yourself.tidy.html:439:16: [maybe] TypeError, accessing property of null/undefined
+test/10k/defend_yourself.tidy.html:440:13: [maybe] TypeError, argument is not of expected type: Node.prototype
 test/10k/defend_yourself.tidy.html:440:13: [maybe] TypeError, call to non-function
 test/10k/defend_yourself.tidy.html:446:9: [maybe] TypeError, call to non-function
 test/10k/defend_yourself.tidy.html:451:9: [maybe] TypeError, call to non-function

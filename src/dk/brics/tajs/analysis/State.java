@@ -24,12 +24,12 @@ import dk.brics.tajs.solver.GenericSolver;
 /**
  * Abstract state.
  */
-public final class State extends BlockState<State,CallContext,CallEdge<State>> {
+public final class State extends BlockState<State,Context,CallEdge<State>> {
 
 	/**
 	 * Constructs a new abstract state.
 	 */
-	public State(GenericSolver<State,CallContext,CallEdge<State>,?,?>.SolverInterface c, BasicBlock block) {
+	public State(GenericSolver<State,Context,CallEdge<State>,?,?>.SolverInterface c, BasicBlock block) {
 		super(c, block);
 	}
 	
@@ -44,16 +44,16 @@ public final class State extends BlockState<State,CallContext,CallEdge<State>> {
 
 	@Override
 	public String diff(State old) {
-		return super.diff((BlockState<State,CallContext,CallEdge<State>>)old);
+		return super.diff((BlockState<State,Context,CallEdge<State>>)old);
 	}
 
 	@Override
 	public void remove(State other) {
-		super.remove((BlockState<State,CallContext,CallEdge<State>>)other);
+		super.remove((BlockState<State,Context,CallEdge<State>>)other);
 	}
 
 	@Override
 	public boolean propagate(State s, boolean funentry) {
-		return super.propagate((BlockState<State,CallContext,CallEdge<State>>)s, funentry);
+		return super.propagate((BlockState<State,Context,CallEdge<State>>)s, funentry);
 	}
 }

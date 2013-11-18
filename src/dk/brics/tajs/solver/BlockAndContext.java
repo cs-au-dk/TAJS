@@ -19,18 +19,18 @@ package dk.brics.tajs.solver;
 import dk.brics.tajs.flowgraph.BasicBlock;
 
 /**
- * Pair of a basic block and a call context.
+ * Pair of a basic block and a context.
  */
-public final class BlockAndContext<CallContextType extends ICallContext<?>> {
+public final class BlockAndContext<ContextType extends IContext<?>> {
 
 	private BasicBlock b;
 	
-	private CallContextType c;
+	private ContextType c;
 
 	/**
 	 * Constructs a new pair.
 	 */
-	public BlockAndContext(BasicBlock b, CallContextType c) {
+	public BlockAndContext(BasicBlock b, ContextType c) {
 		this.b = b;
 		this.c = c;
 	}
@@ -45,7 +45,7 @@ public final class BlockAndContext<CallContextType extends ICallContext<?>> {
 	/**
 	 * Returns the context.
 	 */
-	public CallContextType getContext() {
+	public ContextType getContext() {
 		return c;
 	}
 
@@ -57,7 +57,7 @@ public final class BlockAndContext<CallContextType extends ICallContext<?>> {
 	public boolean equals(Object obj) {
 		if (!(obj instanceof BlockAndContext))
 			return false;
-		BlockAndContext<CallContextType> fcp = (BlockAndContext<CallContextType>) obj;
+		BlockAndContext<ContextType> fcp = (BlockAndContext<ContextType>) obj;
 		return fcp.b == b && fcp.c.equals(c);
 	}
 

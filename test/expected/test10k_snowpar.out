@@ -1,3 +1,5 @@
+test/10k/snowpar.tidy.html:151:5: [definite] The assignment to padding has no effect
+test/10k/snowpar.tidy.html:283:5: [definite] The assignment to padding has no effect
 test/10k/snowpar.tidy.html:26:2: [definite] The variable event is never used
 test/10k/snowpar.tidy.html:26:2: [definite] The variable event is never used
 test/10k/snowpar.tidy.html:29:2: [definite] The variable event is never used
@@ -15,9 +17,7 @@ test/10k/snowpar.tidy.html:177:17: [definite] The variable declaration e shadows
 test/10k/snowpar.tidy.html:199:22: [definite] Unreachable function keyDown
 test/10k/snowpar.tidy.html:52:35: [maybe] Reading absent property value
 test/10k/snowpar.tidy.html:52:63: [maybe] Reading absent property value
-test/10k/snowpar.tidy.html:65:27: [maybe] Conversion from string to number yields NaN
 test/10k/snowpar.tidy.html:65:31: [maybe] Conversion to number yields NaN
-test/10k/snowpar.tidy.html:66:31: [maybe] Conversion from string to number yields NaN
 test/10k/snowpar.tidy.html:66:35: [maybe] Conversion to number yields NaN
 test/10k/snowpar.tidy.html:114:5: [maybe] Conversion to number yields NaN
 test/10k/snowpar.tidy.html:117:5: [maybe] Conversion to number yields NaN
@@ -34,9 +34,7 @@ test/10k/snowpar.tidy.html:145:56: [maybe] Conversion from string to number yiel
 test/10k/snowpar.tidy.html:145:56: [maybe] Conversion to number yields NaN
 test/10k/snowpar.tidy.html:146:56: [maybe] Conversion from string to number yields NaN
 test/10k/snowpar.tidy.html:146:56: [maybe] Conversion to number yields NaN
-test/10k/snowpar.tidy.html:155:27: [maybe] Conversion from string to number yields NaN
 test/10k/snowpar.tidy.html:155:31: [maybe] Conversion to number yields NaN
-test/10k/snowpar.tidy.html:156:31: [maybe] Conversion from string to number yields NaN
 test/10k/snowpar.tidy.html:156:35: [maybe] Conversion to number yields NaN
 test/10k/snowpar.tidy.html:244:30: [maybe] Reading absent property (computed name)
 test/10k/snowpar.tidy.html:244:40: [maybe] Reading absent property (computed name)
@@ -52,19 +50,15 @@ test/10k/snowpar.tidy.html:259:23: [maybe] Conversion to number yields NaN
 test/10k/snowpar.tidy.html:259:31: [maybe] Reading absent property (computed name)
 test/10k/snowpar.tidy.html:266:9: [maybe] Conversion to number yields NaN
 test/10k/snowpar.tidy.html:266:9: [maybe] Reading absent property (computed name)
-test/10k/snowpar.tidy.html:266:22: [maybe] Conversion to number yields NaN
 test/10k/snowpar.tidy.html:266:30: [maybe] Reading absent property (computed name)
 test/10k/snowpar.tidy.html:267:9: [maybe] Conversion to number yields NaN
 test/10k/snowpar.tidy.html:267:9: [maybe] Reading absent property (computed name)
-test/10k/snowpar.tidy.html:267:22: [maybe] Conversion to number yields NaN
 test/10k/snowpar.tidy.html:267:30: [maybe] Reading absent property (computed name)
 test/10k/snowpar.tidy.html:270:9: [maybe] Conversion to number yields NaN
 test/10k/snowpar.tidy.html:270:9: [maybe] Reading absent property (computed name)
-test/10k/snowpar.tidy.html:270:22: [maybe] Conversion to number yields NaN
 test/10k/snowpar.tidy.html:270:30: [maybe] Reading absent property (computed name)
 test/10k/snowpar.tidy.html:271:9: [maybe] Conversion to number yields NaN
 test/10k/snowpar.tidy.html:271:9: [maybe] Reading absent property (computed name)
-test/10k/snowpar.tidy.html:271:22: [maybe] Conversion to number yields NaN
 test/10k/snowpar.tidy.html:271:30: [maybe] Reading absent property (computed name)
 test/10k/snowpar.tidy.html:278:16: [maybe] Reading absent property (computed name)
 test/10k/snowpar.tidy.html:278:26: [maybe] Reading absent property (computed name)

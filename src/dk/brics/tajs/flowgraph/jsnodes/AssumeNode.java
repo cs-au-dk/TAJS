@@ -40,8 +40,22 @@ public class AssumeNode extends Node { // TODO: split different kinds into separ
 		/**
 		 * Property value is not null/undefined.
 		 */
-		PROPERTY_NON_NULL_UNDEF
+		PROPERTY_NON_NULL_UNDEF,
 		
+		/**
+		 * No flow reaches this location
+		 */ 
+		UNREACHABLE, 
+		
+		/**
+		 * A variable has a known to-boolean value.
+		 */
+		VARIABLE_BOOLY, 
+
+		/**
+		 * A property has a known to-boolean value.
+		 */
+		PROPERTY_BOOLY
 		// TODO: other assumption kinds?
 	}
 	
@@ -55,7 +69,9 @@ public class AssumeNode extends Node { // TODO: split different kinds into separ
 	
 	private String property_str;
 	
-	private AbstractNode access_node;
+	private boolean booly_value; 
+	
+	private ReadPropertyNode access_node;
 	
 	private AssumeNode(Kind kind, SourceLocation location) {
 		super(location);
@@ -82,15 +98,14 @@ public class AssumeNode extends Node { // TODO: split different kinds into separ
      * @param access_node The access node.
      * @return A new assume node for property value not null/undefined.
      */
-	public static AssumeNode makePropertyNonNullUndef(AbstractNode access_node) {
+	public static AssumeNode makePropertyNonNullUndef(ReadPropertyNode access_node) {
         // Doesn't make sense to insert property non null undef unless access_node is a read or write property node.
-        IPropertyNode n = (IPropertyNode) access_node;
 		AssumeNode an = new AssumeNode(Kind.PROPERTY_NON_NULL_UNDEF, access_node.getSourceLocation());
-		an.base_reg = n.getBaseRegister();
-        if (n.isPropertyFixed())
-            an.property_str = n.getPropertyString();
+		an.base_reg = access_node.getBaseRegister();
+        if (access_node.isPropertyFixed())
+            an.property_str = access_node.getPropertyString();
         else 
-		    an.property_reg = n.getPropertyRegister();
+		    an.property_reg = access_node.getPropertyRegister();
 		an.access_node = access_node;
 		return an;
 	}
@@ -162,10 +177,11 @@ public class AssumeNode extends Node { // TODO: split different kinds into separ
 	public String toString() {
 		StringBuilder b = new StringBuilder();
 		switch (kind) {
-			case VARIABLE_NON_NULL_UNDEF:
+		case VARIABLE_NON_NULL_UNDEF: {
 				b.append("<variable-non-null-undef>['").append(Strings.escape(varname)).append("']");
 				break;
-			case PROPERTY_NON_NULL_UNDEF:
+		}
+		case PROPERTY_NON_NULL_UNDEF: {
 				b.append("<property-non-null-undef>[v").append(base_reg);
 				if (property_str != null)
 					b.append(",\'").append(Strings.escape(property_str)).append('\'');
@@ -173,6 +189,27 @@ public class AssumeNode extends Node { // TODO: split different kinds into separ
 					b.append(",v").append(property_reg);
 				b.append(']');
 				break;
+		}
+		case UNREACHABLE: {
+			b.append("<unreachable>");
+			break;
+		}
+		case VARIABLE_BOOLY:{
+			b.append("<variable-"+booly_value+">['").append(Strings.escape(varname)).append("']");
+			break;
+		}
+		case PROPERTY_BOOLY:{
+			b.append("<property-" + booly_value + ">[v").append(base_reg);
+			if (property_str != null)
+				b.append(",\'").append(Strings.escape(property_str)).append('\'');
+			else
+				b.append(",v").append(property_reg);
+			b.append(']');
+			break;
+		}		
+
+		default:
+			throw new UnsupportedOperationException("Unhandled enum: " + kind);
 		}
 		return b.toString();
 	}
@@ -195,5 +232,38 @@ public class AssumeNode extends Node { // TODO: split different kinds into separ
             throw new AnalysisException("Property non null undef with no base object: " + toString());
         if (kind  == Kind.PROPERTY_NON_NULL_UNDEF && property_reg == NO_VALUE && property_str == null)
             throw new AnalysisException("Both property register and property string are undefined: " + toString());
+        if (kind  == Kind.VARIABLE_BOOLY && varname == null)
+            throw new AnalysisException("Variable with null variable name: " + toString());
+        if (kind  == Kind.PROPERTY_BOOLY && base_reg == NO_VALUE)
+            throw new AnalysisException("Property with no base object: " + toString());
+        if (kind  == Kind.PROPERTY_BOOLY && property_reg == NO_VALUE && property_str == null)
+            throw new AnalysisException("Both property register and property string are undefined: " + toString());
+    }
+
+	public static AssumeNode makeUnreachable(SourceLocation srcLoc){
+		return new AssumeNode(Kind.UNREACHABLE, srcLoc);	
+	}
+
+	public static AbstractNode makeVariableBooly(SourceLocation srcLoc, String variableName, boolean booly) {
+		final AssumeNode assumeNode = new AssumeNode(Kind.VARIABLE_BOOLY, srcLoc);
+		assumeNode.varname = variableName;
+		assumeNode.booly_value = booly;
+		return assumeNode;
+	}
+	
+	public boolean getBoolyValue(){
+		return booly_value;
+	}
+
+	public static AbstractNode makePropertyBooly(ReadPropertyNode node, boolean booly) {
+		AssumeNode assume = new AssumeNode(Kind.PROPERTY_BOOLY, node.getSourceLocation());
+		assume.booly_value = booly;
+		assume.base_reg = node.getBaseRegister();
+        if (node.isPropertyFixed())
+            assume.property_str = node.getPropertyString();
+        else 
+		    assume.property_reg = node.getPropertyRegister();
+		assume.access_node = node;
+		return assume;
     }
 }

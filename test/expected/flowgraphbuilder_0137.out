@@ -7,7 +7,7 @@ fg2: <main> function()
     node 2: new[v2] (test/flowgraphbuilder/flowgraph_builder0137.js:1:11)
     node 3: function-expr[function(),v3] (test/flowgraphbuilder/flowgraph_builder0137.js:1:20)
     node 4: write-property[v2,'Object',v3] (test/flowgraphbuilder/flowgraph_builder0137.js:1:11)
-    node 5: write-variable[v2,'foo']* (test/flowgraphbuilder/flowgraph_builder0137.js:1:1)
+    node 5: write-variable[v2,'foo']* (test/flowgraphbuilder/flowgraph_builder0137.js:1:11)
     node 6: read-variable['foo',v4,-] (test/flowgraphbuilder/flowgraph_builder0137.js:3:7)
     node 7: begin-with[v4]* (test/flowgraphbuilder/flowgraph_builder0137.js:3:1)
     ->[block 2]

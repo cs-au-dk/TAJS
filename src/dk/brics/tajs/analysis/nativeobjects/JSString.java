@@ -294,6 +294,11 @@ public class JSString {
 
         case STRING_TRIM: { // 15.5.4.20
             NativeFunctions.expectParameters(nativeobject, call, c, 0, 0);
+            Value vthisstring = Conversion.toString(Value.makeObject(state.readThisObjects()), c);
+            if (vthisstring.isMaybeSingleStr()) {
+                String sthis = vthisstring.getStr();
+                return Value.makeStr(sthis.trim());
+            }
             return Value.makeAnyStr();
         }
 		

@@ -20,7 +20,7 @@ import static dk.brics.tajs.util.Collections.newMap;
 import static dk.brics.tajs.util.Collections.newSet;
 import static dk.brics.tajs.util.Collections.sortedEntries;
 
-import dk.brics.tajs.solver.ICallContext;
+import dk.brics.tajs.solver.IContext;
 import dk.brics.tajs.util.AnalysisException;
 import java.util.Collections;
 import java.util.Map;
@@ -554,6 +554,8 @@ public final class Obj {
 		}
 		for (Map.Entry<String,Value> me : sortedEntries(properties)) {
 			Value v = me.getValue();
+			if (v == (Strings.isArrayIndex(me.getKey()) ? default_array_property : default_nonarray_property))
+				continue;
 			if (any)
 				b.append(",");
 			else
@@ -691,10 +693,10 @@ public final class Obj {
 	/**
 	 * Trims this object according to the given existing object.
 	 */
-	public <BlockStateType extends BlockState<BlockStateType,CallContextType,CallEdgeType>,
-	CallContextType extends ICallContext<CallContextType>,
+	public <BlockStateType extends BlockState<BlockStateType,ContextType,CallEdgeType>,
+	ContextType extends IContext<ContextType>,
 	CallEdgeType extends CallEdge<BlockStateType>>
-	void localize(Obj obj, ObjectLabel objlabel, BlockState<BlockStateType,CallContextType,CallEdgeType> s) {
+	void localize(Obj obj, ObjectLabel objlabel, BlockState<BlockStateType,ContextType,CallEdgeType> s) {
 		makeWritableProperties();
 		// materialize properties before changing the default properties
 		for (String propertyname : obj.properties.keySet()) {

@@ -20,6 +20,8 @@ import static dk.brics.tajs.util.Collections.newSet;
 
 import java.util.Set;
 
+import org.apache.log4j.Logger;
+
 import com.google.javascript.jscomp.CheckLevel;
 import com.google.javascript.jscomp.CompilationLevel;
 import com.google.javascript.jscomp.Compiler;
@@ -32,12 +34,14 @@ import com.google.javascript.rhino.Token;
 
 public class Unevalizer {
 	
-    /**
+	private static Logger logger = Logger.getLogger(Unevalizer.class); 
+
+	/**
      * Morally this is function has the type:
      * AnalyzerCallback -> EvalString -> Bool -> Maybe ResultVar -> Maybe String
      */
     public String uneval(AnalyzerCallback callback, String source, boolean aliasedEval, String resVar) {
-        log("Starting on: " + source);
+    	logger.debug("Starting on: " + source);
 
         // TODO: Immediately fail on aliased calls. Not hard to handle, but no real use cases yet.
         if (aliasedEval)
@@ -69,13 +73,13 @@ public class Unevalizer {
             if (comp.getErrorCount() > 0)
                 return "throw new SyntaxError()";
 
-            log("Valid program");
+            logger.debug("Valid program");
 
             // Basic sanity checking complete; jump to the interesting work for the constant string case.
             return unevalConst(callback, comp, resVar);
         }
 
-        log("Not a constant string");
+        logger.debug("Not a constant string");
 
         // So e = ".." + x1 + ".." + x2 + ..
 
@@ -101,7 +105,7 @@ public class Unevalizer {
             return contractEval(callback, comp, holeNames, resVar);
         }
 
-        log("Failed to refactor, returning null");
+        logger.debug("Failed to refactor, returning null");
         return null;
     }
 
@@ -182,17 +186,17 @@ public class Unevalizer {
         Set<String> boundVariables = boundVariables(comp);
         // Fail if there's name capture (bv(s) \cap (D_G \cup D_L \cup D_M) \neq \emptyset).
         if (callback.anyDeclared(boundVariables)) {
-            log("Failed due to name capture");
+        	logger.debug("Failed due to name capture");
             return null;
         }
 
-        log("No name capture");
+        logger.debug("No name capture");
 
         // We're done if nobody cares about the result value (r == false or \mathcal{C} = \epsilon).
         if (resVar == null)
             return comp.toSource();
 
-        log("Return value of eval is used");
+        logger.debug("Return value of eval is used");
 
         // Our input is "s1; s2; ..; sn". Get sn and detach it from the parent for closure compiler reasons.
         Node sn = getLastStmt(getParentOfFirstInterestingNode(comp));
@@ -202,11 +206,11 @@ public class Unevalizer {
         // If the last statement in our input doesn't have a value we need to abort (hv(sn))
         // TODO: isExpr needed here? Remove isExpr
         if (!hasValue(sn) || !isExpr(sn)) {
-            log("Last expression is NOT the value yielding one");
+        	logger.debug("Last expression is NOT the value yielding one");
             return null;
          }
 
-        log("Last expression has value");
+        logger.debug("Last expression has value");
 
         // Getting the program back from the compiler. A play in two acts.
         // AST -> String for s1..s(n-1)
@@ -376,12 +380,12 @@ public class Unevalizer {
                         String rsub = v.substring(i + hole.length(), v.length());
                         if (lsub.length() > 0) {
                             if (!(callback.isDefinitelyIdentifierFragment(hole) || callback.isDefinitelyInteger(hole))) {
-                                log("Failed due to non IdentifierFragment and non Integer");
+                                logger.debug("Failed due to non IdentifierFragment and non Integer");
                                 return false;
                             }
                             // If there isn't a global identifier starting with lsub we're smoked.
                             if (!isGlobalIdentifierPrefix(callback, lsub))  {
-                                log("Failed due to local shadowing");
+                                logger.debug("Failed due to local shadowing");
                                 return false;
                             }
                             tmpNode1 = new Node(Token.ADD, newString(lsub), nam);
@@ -389,7 +393,7 @@ public class Unevalizer {
                             tmpNode1.clonePropsFrom(nam);
                         } else {
                             if (!(callback.isDefinitelyIdentifier(hole) || callback.isDefinitelyBoolean(hole) || callback.isDefinitelyInteger(hole))) {
-                                log("Not an identifier for sure: " + hole);
+                            	logger.debug("Not an identifier for sure: " + hole);
                                 return false;
                             }
                             tmpNode1 = nam;
@@ -397,13 +401,13 @@ public class Unevalizer {
 
                         if (rsub.length() > 0) {
                             if (!isGlobalIdentifierSuffix(callback, rsub)) {
-                                log("Failed due to local shadowing");
+                            	logger.debug("Failed due to local shadowing");
                                 return false;
                             }
                             // Check if there are more than one hole in this node, and if so, give up.
                             for (String hole2 : holes) {
                                 if (rsub.contains(hole2)) {
-                                    log("Failed due to multiple holes in same node");
+                                	logger.debug("Failed due to multiple holes in same node");
                                     return false;
                                 }
                             }
@@ -502,12 +506,5 @@ public class Unevalizer {
         if (n.isVar())
             return false;
         return true;
-    }
-
-    /**
-     * Log the string s.
-     */
-    private static void log(String s) { // FIXME: replace calls to this method with calls to log4j
-        System.out.println("Unevalizer: " + s);
     }
 }

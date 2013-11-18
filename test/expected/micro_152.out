@@ -7,6 +7,7 @@ Abstract state:
     @activation#node28 (test/micro/test152.js:3:1): {dumpState:^(@activation#node28.dumpState[absent]),f4:^(@activation#node28.f4[absent]),[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Value]]=?,[[Scope]]=?}
     @activation#node35 (test/micro/test152.js:4:1): {<none>}
     @arguments#node35 (test/micro/test152.js:4:1): {<none>}
+    @f4#fun4 (test/micro/test152.js:4:1): {prototype:^(@f4#fun4.prototype[present]),[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Prototype]]=?,[[Value]]=?,[[Scope]]=[[@<the global object>[native]]]}
   Registers: 
     v1=Undef
     v4=[@<the global object>[native]]

@@ -27,7 +27,7 @@ import dk.brics.tajs.flowgraph.Function;
 /**
  * Records various information during fixpoint solving.
  */
-public interface IMonitoring<BlockStateType extends IBlockState<BlockStateType, ?, ?>, CallContextType extends ICallContext<CallContextType>> {
+public interface IMonitoring<BlockStateType extends IBlockState<BlockStateType, ?, ?>, ContextType extends IContext<ContextType>> {
 
 	/**
 	 * Registers a node transfer occurrence.
@@ -42,7 +42,7 @@ public interface IMonitoring<BlockStateType extends IBlockState<BlockStateType, 
 	/**
 	 * Registers new dataflow being propagated.
 	 */
-	void visitNewFlow(BasicBlock b, ICallContext<?> c, IBlockState<?, ?, ?> s, String diff, String info);
+	void visitNewFlow(BasicBlock b, IContext<?> c, IBlockState<?, ?, ?> s, String diff, String info);
 	
 	/**
 	 * Registers a recovery of an unknown value.

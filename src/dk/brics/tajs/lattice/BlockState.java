@@ -42,7 +42,7 @@ import dk.brics.tajs.lattice.ObjectLabel.Kind;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.solver.GenericSolver;
 import dk.brics.tajs.solver.IBlockState;
-import dk.brics.tajs.solver.ICallContext;
+import dk.brics.tajs.solver.IContext;
 import dk.brics.tajs.util.AnalysisException;
 import dk.brics.tajs.util.Strings;
 
@@ -50,14 +50,14 @@ import dk.brics.tajs.util.Strings;
  * Abstract state for block entries.
  * Mutable.
  */
-public abstract class BlockState<BlockStateType extends BlockState<BlockStateType, CallContextType, CallEdgeType>,
-	CallContextType extends ICallContext<CallContextType>,
+public abstract class BlockState<BlockStateType extends BlockState<BlockStateType, ContextType, CallEdgeType>,
+	ContextType extends IContext<ContextType>,
 	CallEdgeType extends CallEdge<BlockStateType>>
-        implements IBlockState<BlockStateType,CallContextType,CallEdgeType> {
+        implements IBlockState<BlockStateType,ContextType,CallEdgeType> {
 
 	private static Logger logger = Logger.getLogger(BlockState.class); 
 
-	private GenericSolver<BlockStateType, CallContextType, CallEdgeType, ?, ?>.SolverInterface c;
+	private GenericSolver<BlockStateType, ContextType, CallEdgeType, ?, ?>.SolverInterface c;
 
 	/**
 	 *  The basic block owning this state.
@@ -65,9 +65,9 @@ public abstract class BlockState<BlockStateType extends BlockState<BlockStateTyp
     private BasicBlock block;
 
     /**
-     *  The call context for this state.
+     *  The context for this state.
      */
-    private CallContextType context; // may be shared by other BlockState objects
+    private ContextType context; // may be shared by other BlockState objects
 
     /**
      * Map from ObjectLabel to Object.
@@ -115,7 +115,7 @@ public abstract class BlockState<BlockStateType extends BlockState<BlockStateTyp
     /**
      * Constructs a new none-state (representing the empty set of concrete states).
      */
-    public BlockState(GenericSolver<BlockStateType, CallContextType, CallEdgeType, ?, ?>.SolverInterface c, BasicBlock block) {
+    public BlockState(GenericSolver<BlockStateType, ContextType, CallEdgeType, ?, ?>.SolverInterface c, BasicBlock block) {
         this.c = c;
         this.block = block;
         summarized = new Summarized();
@@ -128,7 +128,7 @@ public abstract class BlockState<BlockStateType extends BlockState<BlockStateTyp
     /**
      * Constructs a new state as a copy of the given state.
      */
-    protected BlockState(BlockState<BlockStateType, CallContextType, CallEdgeType> x) {
+    protected BlockState(BlockState<BlockStateType, ContextType, CallEdgeType> x) {
         c = x.c;
         block = x.block;
         context = x.context;
@@ -169,7 +169,7 @@ public abstract class BlockState<BlockStateType extends BlockState<BlockStateTyp
     /**
      * Returns the solver interface.
      */
-    public GenericSolver<BlockStateType, CallContextType, CallEdgeType, ?, ?>.SolverInterface getSolverInterface() {
+    public GenericSolver<BlockStateType, ContextType, CallEdgeType, ?, ?>.SolverInterface getSolverInterface() {
         return c;
     }
 
@@ -187,10 +187,8 @@ public abstract class BlockState<BlockStateType extends BlockState<BlockStateTyp
         return block;
     }
 
-    /**
-     * Returns the call context for this state.
-     */
-    public CallContextType getContext() {
+    @Override
+    public ContextType getContext() {
         return context;
     }
 
@@ -202,9 +200,9 @@ public abstract class BlockState<BlockStateType extends BlockState<BlockStateTyp
     }
 
     /**
-     * Sets the call context.
+     * Sets the context.
      */
-    public void setContext(CallContextType context) {
+    public void setContext(ContextType context) {
         this.context = context;
     }
 
@@ -212,7 +210,7 @@ public abstract class BlockState<BlockStateType extends BlockState<BlockStateTyp
      * Checks that the owner block and context are the given.
      * @throws AnalysisException if mismatch
      */
-    public void checkOwner(BasicBlock other_block, CallContextType other_context) {
+    public void checkOwner(BasicBlock other_block, ContextType other_context) {
         if (!block.equals(other_block) || !context.equals(other_context))
             throw new AnalysisException("BlockState owner block/context mismatch!");
     }
@@ -384,78 +382,6 @@ public abstract class BlockState<BlockStateType extends BlockState<BlockStateTyp
     }
 
     /**
-     * Checks that this state is consistent.
-     * Does nothing if debug mode and test mode are disabled.
-     * @see #checkNoDanglingRefs()
-     */
-    @Override
-	public void check() {
-    	if (Options.isDebugOrTestEnabled()) {
-    		checkNoDanglingRefs();
-    	}
-    }
-
-    /**
-     * Checks for dangling references.
-     * Ignored if lazy propagation is enabled.
-     * @throws AnalysisException if dangling references are found
-     */
-    public void checkNoDanglingRefs() {
-// TODO: not used, see comment about pruning references in mergeFunctionReturn
-//    	Set<ObjectLabel> used = newSet();
-//    	for (ExecutionContext e : execution_context) {
-//    		for (ObjectLabel l : e.getScopeChain())
-//    			used.add(l);
-//    		ObjectLabel varobj = e.getVariableObject();
-//    		if (varobj != null)
-//    			used.add(varobj);
-//    	}
-//    	for (ObjectLabel objlabel : store.keySet())
-//    		used.addAll(getAllObjectLabels(objlabel));
-//    	if (basis_store != null)
-//    		for (ObjectLabel objlabel : basis_store.keySet())
-//    			used.addAll(getAllObjectLabels(objlabel));
-//    	for (Value v : registers)
-//    		if (v != null)
-//    			used.addAll(v.getObjectLabels());
-//    	used.addAll(stacked_objlabels);
-//    	for (ObjectLabel objlabel : used) {
-//    		Obj obj = getObject(objlabel, false);
-//    		if (obj.getDefaultArrayProperty().isNone())
-//    			throw new AnalysisException("Reference to none abstract object: " + objlabel);
-//    	}
-//
-// TODO: currently disabled, doesn't work when mergeFunctionReturn removes objects that are equal to the default
-//        if (!Options.isLazyDisabled())
-//            return;
-//        Set<ObjectLabel> used = newSet();
-//        for (ExecutionContext e : execution_context) {
-//            for (ObjectLabel l : e.getScopeChain())
-//                used.add(l);
-//            ObjectLabel varobj = e.getVariableObject();
-//            if (varobj != null)
-//                used.add(varobj);
-//        }
-//        for (ObjectLabel objlabel : store.keySet())
-//            used.addAll(getAllObjectLabels(objlabel));
-//        if (basis_store != null)
-//            for (ObjectLabel objlabel : basis_store.keySet())
-//                used.addAll(getAllObjectLabels(objlabel));
-//        for (Value v : registers)
-//            if (v != null)
-//                used.addAll(v.getObjectLabels());
-//        used.addAll(stacked_objlabels);
-//        used.removeAll(store.keySet());
-//        if (basis_store != null)
-//            used.removeAll(basis_store.keySet());
-//        if (!used.isEmpty()) {
-//            if (logger.isDebugEnabled())
-//                logger.debug(this);
-//            throw new AnalysisException("Dangling references: " + used);
-//        }
-    }
-
-    /**
      * Sets this state to the none-state (representing the empty set of concrete states).
      * Used for representing 'no flow'.
      */
@@ -506,22 +432,17 @@ public abstract class BlockState<BlockStateType extends BlockState<BlockStateTyp
      * The caller_entry_state is used for resolving polymorphic values.
      * Returns the updated returnval if non-null.
      */
-    public Value mergeFunctionReturn(BlockState<BlockStateType, CallContextType, CallEdgeType> caller_state,
-    		BlockState<BlockStateType, CallContextType, CallEdgeType> calledge_state,
-    		BlockState<BlockStateType, CallContextType, CallEdgeType> caller_entry_state,
+    public Value mergeFunctionReturn(BlockState<BlockStateType, ContextType, CallEdgeType> caller_state,
+    		BlockState<BlockStateType, ContextType, CallEdgeType> calledge_state,
+    		BlockState<BlockStateType, ContextType, CallEdgeType> caller_entry_state,
     		Summarized callee_summarized,
     		Value returnval) {
-    	block = caller_state.block.getSingleSuccessor();
-    	context = caller_state.context;
         makeWritableStore();
         store_default = caller_state.store_default;
-        check();
-        caller_state.check();
-        calledge_state.check();
         if (basis_store != caller_state.basis_store || basis_store != calledge_state.basis_store)
             throw new AnalysisException("Not identical basis stores");
         // strengthen each object and replace polymorphic values
-        BlockState<BlockStateType, CallContextType, CallEdgeType> summarized_calledge = calledge_state.clone();
+        BlockState<BlockStateType, ContextType, CallEdgeType> summarized_calledge = calledge_state.clone();
         summarized_calledge.summarizeStore(summarized);
         for (ObjectLabel objlabel : store.keySet()) {
             Obj obj = getObject(objlabel, true); // always preparing for object updates, even if no changes are made
@@ -560,7 +481,9 @@ public abstract class BlockState<BlockStateType extends BlockState<BlockStateTyp
         // merge summarized sets
         summarized.add(calledge_state.summarized);
         Value res = returnval == null ? null : replacePolymorphicValue(returnval, calledge_state, caller_entry_state, callee_summarized);
-        check();
+        // finally, move to the successor of the caller block
+    	block = caller_state.block.getSingleSuccessor();
+    	context = caller_state.context;
         logger.debug("mergeFunctionReturn(...) done");
         return res;
     }
@@ -571,9 +494,9 @@ public abstract class BlockState<BlockStateType extends BlockState<BlockStateTyp
      * Also merges reads_other into reads.
      * @return true if read/write conflict, i.e. writes of this overlap with reads_other or writes of other overlap with reads.
      */
-    public boolean mergeForInSpecialization(BlockState<BlockStateType, CallContextType, CallEdgeType> other,
-    		BlockState<BlockStateType, CallContextType, CallEdgeType> reads,
-    		BlockState<BlockStateType, CallContextType, CallEdgeType> reads_other) {
+    public boolean mergeForInSpecialization(BlockState<BlockStateType, ContextType, CallEdgeType> other,
+    		BlockState<BlockStateType, ContextType, CallEdgeType> reads,
+    		BlockState<BlockStateType, ContextType, CallEdgeType> reads_other) {
 		makeWritableStore();
 		if (basis_store != other.basis_store)
 			throw new AnalysisException("Not identical basis stores");
@@ -844,7 +767,7 @@ public abstract class BlockState<BlockStateType extends BlockState<BlockStateTyp
 	 * Assumes that the other value is maybe modified.
 	 * This value is ignored if it is not maybe modified.
 	 */
-	private Value mergeForInSpecializationValue(Value this_val, Value other_val, BlockState<BlockStateType, CallContextType, CallEdgeType> other) {
+	private Value mergeForInSpecializationValue(Value this_val, Value other_val, BlockState<BlockStateType, ContextType, CallEdgeType> other) {
 		Value new_this_val;
 		if (!this_val.isMaybeModified()) {
 			// not modified in this state, so get the value directly from the other state
@@ -957,7 +880,7 @@ public abstract class BlockState<BlockStateType extends BlockState<BlockStateTyp
      * Assumes that the states belong to the same block and context.
      * @return true if an object changed (note there may be other changes due to recoveries)
      */
-    protected boolean propagate(BlockState<BlockStateType, CallContextType, CallEdgeType> s, boolean funentry) {
+    protected boolean propagate(BlockState<BlockStateType, ContextType, CallEdgeType> s, boolean funentry) {
         if (Options.isDebugOrTestEnabled() && !store_default.equals(s.store_default))
         	throw new AnalysisException("Expected store default objects to be equal");
         if (logger.isDebugEnabled() && Options.isIntermediateStatesEnabled()) {
@@ -992,7 +915,6 @@ public abstract class BlockState<BlockStateType extends BlockState<BlockStateTyp
         	}
         	changed |= summarized.join(s.summarized);
         }
-        check();
         if (logger.isDebugEnabled()) {
             if (Options.isIntermediateStatesEnabled())
             	logger.debug("propagate result state: " + this);
@@ -1009,7 +931,7 @@ public abstract class BlockState<BlockStateType extends BlockState<BlockStateTyp
      * @param modified if true, set modified flag on written values
      * @return true if the object changed (note there may be other changes due to recoveries)
      */
-    private boolean propagateObj(ObjectLabel objlabel_to, BlockState<BlockStateType, CallContextType, CallEdgeType> state_from, ObjectLabel objlabel_from, boolean modified) {
+    private boolean propagateObj(ObjectLabel objlabel_to, BlockState<BlockStateType, ContextType, CallEdgeType> state_from, ObjectLabel objlabel_from, boolean modified) {
     	Obj obj_from = state_from.getObject(objlabel_from, false);
         if (obj_from.isAllNone()) {
         	// obj_from object is none, so nothing to do
@@ -1141,7 +1063,7 @@ public abstract class BlockState<BlockStateType extends BlockState<BlockStateTyp
 		Value v = readPropertyRaw(objlabels, propertystr, false);
 		if (v.isMaybeAbsent())
 		    v = v.restrictToNotAbsent().joinUndef();
-		v = v.setBottomAttributes();
+		v = v.setBottomPropertyData();
 		if (logger.isDebugEnabled()) 
 			logger.debug("readPropertyValue(" + objlabels + "," + propertystr + ") = " + v);
 		return v;
@@ -2115,61 +2037,7 @@ public abstract class BlockState<BlockStateType extends BlockState<BlockStateTyp
 			logger.debug("setExecutionContext(" + e + ")");
     }
 
-    /**
-     * Checks whether the given state is equal to this one.
-     */
-    @SuppressWarnings("unchecked")
-    @Override
-    public boolean equals(Object obj) { // TODO: BlockState.equals and hashCode are not used, remove them?
-        if (obj == this)
-            return true;
-        if (!(obj instanceof BlockState))
-            return false;
-        BlockState<BlockStateType, CallContextType, CallEdgeType> x =
-        	(BlockState<BlockStateType, CallContextType, CallEdgeType>) obj;
-        if (basis_store != x.basis_store) {
-        	logger.debug("equals(...)=false, not identical basis stores");
-            return false;
-        }
-        if (!store_default.equals(x.store_default)) {
-        	logger.debug("equals(...)=false, not identical store default object");
-            return false;
-        }
-        for (Map.Entry<ObjectLabel, Obj> me : store.entrySet()) 
-            if (!x.getObject(me.getKey(), false).equals(me.getValue())) {
-            	logger.debug("equals(...)=false, stores differ on " + me.getKey());
-                return false;
-            }
-        for (Map.Entry<ObjectLabel, Obj> me : x.store.entrySet()) // TODO: avoid iterating through both stores? (e.g. if there are no explicit objects that are equal to the store_default)
-            if (!getObject(me.getKey(), false).equals(me.getValue())) {
-    			if (logger.isDebugEnabled()) 
-    				logger.debug("equals(...)=false, stores differ on " + me.getKey());
-                return false;
-            }
-        if (!execution_context.equals(x.execution_context)) {
-        	logger.debug("equals(...)=false, execution contexts differ");
-            return false;
-        }
-        if (!summarized.equals(x.summarized)) {
-        	logger.debug("equals(...)=false, summarized sets differ");
-            return false;
-        }
-        if (!registers.equals(x.registers)) {
-        	logger.debug("equals(...)=false, registers differ");
-            return false;
-        }
-        if (!stacked_objlabels.equals(x.stacked_objlabels)) {
-        	logger.debug("equals(...)=false, stacked registers object labels differ");
-            return false;
-        }
-        if (!extras.equals(x.extras)) {
-        	return false; // logging is done in extras.equals
-        }
-        logger.debug("equals(...)=true");
-        return true;
-    }
-
-    protected void remove(BlockState<BlockStateType, CallContextType, CallEdgeType> other) {
+    protected void remove(BlockState<BlockStateType, ContextType, CallEdgeType> other) {
         makeWritableStore();
         makeWritableExecutionContext();
         makeWritableRegisters();
@@ -2194,7 +2062,7 @@ public abstract class BlockState<BlockStateType extends BlockState<BlockStateTyp
     /**
      * Returns a string description of the differences between this state and the given one.
      */
-    protected String diff(BlockState<BlockStateType, CallContextType, CallEdgeType> old) {
+    protected String diff(BlockState<BlockStateType, ContextType, CallEdgeType> old) {
         StringBuilder b = new StringBuilder();
         for (Map.Entry<ObjectLabel, Obj> me : sortedEntries(store)) {
             Obj xo = old.getObject(me.getKey(), false);
@@ -2229,19 +2097,6 @@ public abstract class BlockState<BlockStateType extends BlockState<BlockStateTyp
             b.append("\n      registers changed");
         // TODO: implement diff for StateExtras?
         return b.toString();
-    }
-
-    /**
-     * Computes the hash code for this state.
-     */
-    @Override
-    public int hashCode() {
-        return execution_context.hashCode() * 7
-                + store.hashCode() * 2
-                + summarized.hashCode() * 37
-                + registers.hashCode() * 5
-                + stacked_objlabels.hashCode() * 17
-                + extras.hashCode();
     }
 
     /**
@@ -2535,33 +2390,41 @@ public abstract class BlockState<BlockStateType extends BlockState<BlockStateTyp
     public void gc(Value extra) {
         if (Options.isGCDisabled() || Options.isRecencyDisabled())
             return;
-        check();
         if (Options.isIntermediateStatesEnabled())
         	logger.debug("gc(): Before: " + this);
         Set<ObjectLabel> dead = newSet(store.keySet());
-        dead.removeAll(findLiveObjectLabels(extra));
+        BlockStateType entry_state = c.getAnalysisLatticeElement().getState(context.getEntryBlockAndContext());
+        dead.removeAll(findLiveObjectLabels(extra, entry_state));
         if (logger.isDebugEnabled()) {
             logger.debug("gc(): Unreachable objects: " + dead);
         }
         makeWritableStore();
-        BlockStateType entry_state = c.getAnalysisLatticeElement().getState(context.getEntry(), context);
         for (ObjectLabel objlabel : dead) {
-        	if (entry_state != null && UnknownValueResolver.willResolveToNone(objlabel, entry_state))
+        	if (noneAtEntry(objlabel, entry_state))
         		store.remove(objlabel);
         	else
         		store.put(objlabel, Obj.makeNoneModified());
         }
         // don't remove from summarized (it may contain dead object labels)
-        check();
         if (Options.isIntermediateStatesEnabled())
         	logger.debug("gc(): After: " + this);
     }
 
+	/**
+	 * Returns true if the given object label is definitely the none object at the given function entry state.
+	 */
+	private static <BlockStateType extends BlockState<?,?,?>>
+	boolean noneAtEntry(ObjectLabel objlabel, BlockStateType entry_state) {
+		return entry_state.getObject(objlabel, false).getDefaultArrayProperty().isNone();
+	}
+	
     /**
      * Finds live object labels (i.e. those reachable from the execution context, registers, or stacked object labels).
      * Note that the summarized sets may contain dead object labels.
+     * @param extra extra value that should be treated as root, ignored if null
+     * @param entry_state at function entry
      */
-    private Set<ObjectLabel> findLiveObjectLabels(Value extra) {
+    private Set<ObjectLabel> findLiveObjectLabels(Value extra, BlockStateType entry_state) {
         Set<ObjectLabel> live = execution_context.getObjectLabels();
         if (extra != null)
         	live.addAll(extra.getObjectLabels());
@@ -2571,9 +2434,13 @@ public abstract class BlockState<BlockStateType extends BlockState<BlockStateTyp
         live.addAll(stacked_objlabels);
         extras.getAllObjectLabels(live);
         if (!Options.isLazyDisabled())
-            for (ObjectLabel objlabel : store.keySet())
-                if (!objlabel.isSingleton() || !summarized.isDefinitelySummarized(objlabel))
+            for (ObjectLabel objlabel : store.keySet()) {
+            	// some object represented by objlabel may originate from the caller (so it must be treated as live),
+            	// unless it is a singleton object marked as definitely summarized or it is 'none' at function entry
+                if (!((objlabel.isSingleton() && summarized.isDefinitelySummarized(objlabel)) || 
+                		noneAtEntry(objlabel, entry_state)))
                     live.add(objlabel);
+            }
         LinkedHashSet<ObjectLabel> pending = new LinkedHashSet<>(live);
         while (!pending.isEmpty()) {
             Iterator<ObjectLabel> it = pending.iterator();
@@ -2835,9 +2702,8 @@ public abstract class BlockState<BlockStateType extends BlockState<BlockStateTyp
 			definitely_found = true;
 			for (ObjectLabel objlabel : sc) {
 				Value v = readPropertyRaw(Collections.singleton(objlabel), Value.makeTemporaryStr(varname), false);
-				if (v.isMaybePresent()) {
-					Value v2 = v.restrictToNotAbsent(); // found one (maybe)
-					values.add(v2);
+				if (v.isMaybePresent()) { // found one (maybe)
+					values.add(v.setBottomPropertyData());
 					if (base_objs != null)
 						base_objs.add(objlabel); // collecting the object from the scope chain (although the property may be in its prototype chain)
 				}
@@ -2959,15 +2825,15 @@ public abstract class BlockState<BlockStateType extends BlockState<BlockStateTyp
     }
     
     @Override
-    public CallContextType transform(CallEdgeType edge, CallContextType edge_context, 
-			Map<CallContextType, BlockStateType> callee_entry_states, BasicBlock callee) {
+    public ContextType transform(CallEdgeType edge, ContextType edge_context, 
+			Map<ContextType, BlockStateType> callee_entry_states, BasicBlock callee) {
 //		if (logger.isDebugEnabled()) 
 //			logger.debug("transform from call " + edge.getState().getBasicBlock().getSourceLocation() + " to " + callee.getSourceLocation());
 		return edge_context;
 	}
 
     @Override
-	public boolean transformInverse(CallEdgeType edge, BasicBlock callee, CallContextType callee_context) {
+	public boolean transformInverse(CallEdgeType edge, BasicBlock callee, ContextType callee_context) {
 		return false;
 	}
 }

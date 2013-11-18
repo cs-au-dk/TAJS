@@ -150,7 +150,6 @@ test/chromeexperiments/voronoi.tidy.html:398:5: [maybe] Reading absent property 
 test/chromeexperiments/voronoi.tidy.html:398:16: [maybe] Reading absent property (computed name)
 test/chromeexperiments/voronoi.tidy.html:398:18: [maybe] Reading absent property (computed name)
 test/chromeexperiments/voronoi.tidy.html:403:77: [maybe] Reading absent property (computed name)
-test/chromeexperiments/voronoi.tidy.html:430:52: [maybe] Conversion to number yields NaN
 test/chromeexperiments/voronoi.tidy.html:430:52: [maybe] The variable cosmic has values with different types
 test/chromeexperiments/voronoi.tidy.html:431:10: [maybe] The variable cosmic has values with different types
 test/chromeexperiments/voronoi.tidy.html:484:8: [maybe] The variable exception has values with different types

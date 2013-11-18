@@ -1,0 +1,81 @@
+test/apps/minesweeper/minesweeper.tidy.html:185:3: [definite] Dead assignment, property onLeftClick is never read
+test/apps/minesweeper/minesweeper.tidy.html:196:3: [definite] Dead assignment, property onRightClick is never read
+test/apps/minesweeper/minesweeper.tidy.html:204:3: [definite] Dead assignment, property tryWinGame is never read
+test/apps/minesweeper/minesweeper.tidy.html:208:3: [definite] Dead assignment, property winGame is never read
+test/apps/minesweeper/minesweeper.tidy.html:213:3: [definite] Dead assignment, property looseGame is never read
+test/apps/minesweeper/minesweeper.tidy.html:218:3: [definite] Dead assignment, property endGame is never read
+test/apps/minesweeper/minesweeper.tidy.html:227:3: [definite] Dead assignment, property showSmiley is never read
+test/apps/minesweeper/minesweeper.tidy.html:240:3: [definite] Dead assignment, property stopTimer is never read
+test/apps/minesweeper/minesweeper.tidy.html:260:3: [definite] Dead assignment, property unregisterMouse is never read
+test/apps/minesweeper/minesweeper.tidy.html:287:3: [definite] Dead assignment, property downs is never read
+test/apps/minesweeper/minesweeper.tidy.html:291:3: [definite] Dead assignment, property imgWidth is never read
+test/apps/minesweeper/minesweeper.tidy.html:292:3: [definite] Dead assignment, property imgHeight is never read
+test/apps/minesweeper/minesweeper.tidy.html:301:5: [definite] Dead assignment, property downs is never read
+test/apps/minesweeper/minesweeper.tidy.html:371:3: [definite] Dead assignment, property flip is never read
+test/apps/minesweeper/minesweeper.tidy.html:380:3: [definite] Dead assignment, property flipCell is never read
+test/apps/minesweeper/minesweeper.tidy.html:385:3: [definite] Dead assignment, property roundFlip is never read
+test/apps/minesweeper/minesweeper.tidy.html:402:3: [definite] Dead assignment, property changeState is never read
+test/apps/minesweeper/minesweeper.tidy.html:415:3: [definite] Dead assignment, property getNextState is never read
+test/apps/minesweeper/minesweeper.tidy.html:423:3: [definite] Dead assignment, property testFlags is never read
+test/apps/minesweeper/minesweeper.tidy.html:431:3: [definite] Dead assignment, property showMines is never read
+test/apps/minesweeper/minesweeper.tidy.html:437:3: [definite] Dead assignment, property showMine is never read
+test/apps/minesweeper/minesweeper.tidy.html:446:3: [definite] Dead assignment, property showFlags is never read
+test/apps/minesweeper/minesweeper.tidy.html:458:3: [definite] Dead assignment, property isHole is never read
+test/apps/minesweeper/minesweeper.tidy.html:461:3: [definite] Dead assignment, property isFlag is never read
+test/apps/minesweeper/minesweeper.tidy.html:464:3: [definite] Dead assignment, property isDown is never read
+test/apps/minesweeper/minesweeper.tidy.html:468:3: [definite] Dead assignment, property isCell is never read
+test/apps/minesweeper/minesweeper.tidy.html:471:3: [definite] Dead assignment, property getImgElement is never read
+test/apps/minesweeper/minesweeper.tidy.html:487:3: [definite] Dead assignment, property state is never read
+test/apps/minesweeper/minesweeper.tidy.html:137:2: [definite] The variable event is never used
+test/apps/minesweeper/minesweeper.tidy.html:141:2: [definite] The variable event is never used
+test/apps/minesweeper/minesweeper.tidy.html:174:22: [definite] Unreachable function
+test/apps/minesweeper/minesweeper.tidy.html:185:22: [definite] Unreachable function
+test/apps/minesweeper/minesweeper.tidy.html:196:23: [definite] Unreachable function
+test/apps/minesweeper/minesweeper.tidy.html:204:21: [definite] Unreachable function
+test/apps/minesweeper/minesweeper.tidy.html:208:18: [definite] Unreachable function
+test/apps/minesweeper/minesweeper.tidy.html:213:20: [definite] Unreachable function
+test/apps/minesweeper/minesweeper.tidy.html:218:18: [definite] Unreachable function
+test/apps/minesweeper/minesweeper.tidy.html:227:21: [definite] Unreachable function
+test/apps/minesweeper/minesweeper.tidy.html:240:20: [definite] Unreachable function
+test/apps/minesweeper/minesweeper.tidy.html:256:36: [definite] Unreachable function
+test/apps/minesweeper/minesweeper.tidy.html:257:36: [definite] Unreachable function
+test/apps/minesweeper/minesweeper.tidy.html:258:36: [definite] Unreachable function
+test/apps/minesweeper/minesweeper.tidy.html:260:26: [definite] Unreachable function
+test/apps/minesweeper/minesweeper.tidy.html:371:15: [definite] Unreachable function
+test/apps/minesweeper/minesweeper.tidy.html:380:19: [definite] Unreachable function
+test/apps/minesweeper/minesweeper.tidy.html:385:20: [definite] Unreachable function
+test/apps/minesweeper/minesweeper.tidy.html:402:22: [definite] Unreachable function
+test/apps/minesweeper/minesweeper.tidy.html:415:23: [definite] Unreachable function
+test/apps/minesweeper/minesweeper.tidy.html:423:20: [definite] Unreachable function
+test/apps/minesweeper/minesweeper.tidy.html:431:20: [definite] Unreachable function
+test/apps/minesweeper/minesweeper.tidy.html:437:19: [definite] Unreachable function
+test/apps/minesweeper/minesweeper.tidy.html:446:20: [definite] Unreachable function
+test/apps/minesweeper/minesweeper.tidy.html:458:17: [definite] Unreachable function
+test/apps/minesweeper/minesweeper.tidy.html:461:17: [definite] Unreachable function
+test/apps/minesweeper/minesweeper.tidy.html:464:17: [definite] Unreachable function
+test/apps/minesweeper/minesweeper.tidy.html:468:17: [definite] Unreachable function
+test/apps/minesweeper/minesweeper.tidy.html:471:24: [definite] Unreachable function
+test/apps/minesweeper/minesweeper.tidy.html:497:1: [definite] Unreachable function getMouseObject
+test/apps/minesweeper/minesweeper.tidy.html:500:1: [definite] Unreachable function getMouseButton
+test/apps/minesweeper/minesweeper.tidy.html:314:9: [maybe] TypeError, accessing property of null/undefined
+test/apps/minesweeper/minesweeper.tidy.html:333:5: [maybe] TypeError, accessing property of null/undefined
+test/apps/minesweeper/minesweeper.tidy.html:333:5: [maybe] TypeError, accessing property of null/undefined
+test/apps/minesweeper/minesweeper.tidy.html:339:14: [maybe] TypeError, accessing property of null/undefined
+test/apps/minesweeper/minesweeper.tidy.html:339:14: [maybe] TypeError, accessing property of null/undefined
+test/apps/minesweeper/minesweeper.tidy.html:368:5: [maybe] TypeError, argument is not of expected type: Node.prototype
+test/apps/minesweeper/minesweeper.tidy.html:456:20: [maybe] TypeError, accessing property of null/undefined
+test/apps/minesweeper/minesweeper.tidy.html:456:20: [maybe] TypeError, accessing property of null/undefined
+test/apps/minesweeper/minesweeper.tidy.html:145: [maybe] Uncaught exception, constructed at [test/apps/minesweeper/minesweeper.tidy.html:314:9, test/apps/minesweeper/minesweeper.tidy.html:333:5, test/apps/minesweeper/minesweeper.tidy.html:339:14, test/apps/minesweeper/minesweeper.tidy.html:456:20]
+test/apps/minesweeper/minesweeper.tidy.html:249:17: [maybe] Converting primitive string to object
+test/apps/minesweeper/minesweeper.tidy.html:249:32: [maybe] Converting primitive string to object
+test/apps/minesweeper/minesweeper.tidy.html:249:57: [maybe] Converting primitive string to object
+test/apps/minesweeper/minesweeper.tidy.html:249:72: [maybe] Converting primitive string to object
+test/apps/minesweeper/minesweeper.tidy.html:314:9: [maybe] Reading absent property (computed name)
+test/apps/minesweeper/minesweeper.tidy.html:333:5: [maybe] Reading absent property (computed name)
+test/apps/minesweeper/minesweeper.tidy.html:333:5: [maybe] Reading absent property (computed name)
+test/apps/minesweeper/minesweeper.tidy.html:339:11: [maybe] Conversion from string to number yields NaN
+test/apps/minesweeper/minesweeper.tidy.html:339:14: [maybe] Reading absent property (computed name)
+test/apps/minesweeper/minesweeper.tidy.html:339:14: [maybe] Reading absent property (computed name)
+test/apps/minesweeper/minesweeper.tidy.html:456:13: [maybe] Conversion from string to number yields NaN
+test/apps/minesweeper/minesweeper.tidy.html:456:20: [maybe] Reading absent property (computed name)
+test/apps/minesweeper/minesweeper.tidy.html:456:20: [maybe] Reading absent property (computed name)

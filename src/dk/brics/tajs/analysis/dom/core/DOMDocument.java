@@ -16,19 +16,26 @@
 
 package dk.brics.tajs.analysis.dom.core;
 
-import dk.brics.tajs.analysis.*;
-import dk.brics.tajs.analysis.FunctionCalls.CallInfo;
-import dk.brics.tajs.analysis.dom.*;
-import dk.brics.tajs.lattice.ObjectLabel;
-import dk.brics.tajs.lattice.ObjectLabel.Kind;
-import dk.brics.tajs.lattice.Value;
-import dk.brics.tajs.util.AnalysisException;
+import static dk.brics.tajs.analysis.dom.DOMFunctions.createDOMFunction;
+import static dk.brics.tajs.analysis.dom.DOMFunctions.createDOMProperty;
 
 import java.util.Collections;
 import java.util.Set;
 
-import static dk.brics.tajs.analysis.dom.DOMFunctions.createDOMFunction;
-import static dk.brics.tajs.analysis.dom.DOMFunctions.createDOMProperty;
+import dk.brics.tajs.analysis.Conversion;
+import dk.brics.tajs.analysis.FunctionCalls.CallInfo;
+import dk.brics.tajs.analysis.InitialStateBuilder;
+import dk.brics.tajs.analysis.NativeFunctions;
+import dk.brics.tajs.analysis.Solver;
+import dk.brics.tajs.analysis.State;
+import dk.brics.tajs.analysis.dom.DOMFunctions;
+import dk.brics.tajs.analysis.dom.DOMObjects;
+import dk.brics.tajs.analysis.dom.DOMRegistry;
+import dk.brics.tajs.analysis.dom.DOMWindow;
+import dk.brics.tajs.lattice.ObjectLabel;
+import dk.brics.tajs.lattice.ObjectLabel.Kind;
+import dk.brics.tajs.lattice.Value;
+import dk.brics.tajs.solver.Message.Severity;
 
 /**
  * The Document interface represents the entire HTML or XML document.
@@ -69,7 +76,10 @@ public class DOMDocument {
         // NB: The documentElement property is written by HTMLBuilder (due to cyclic dependency).
 
         // DOM LEVEL 2
-        // None.
+        // various properties from the NODE Interface:
+        createDOMProperty(s, INSTANCES, "nodeName", Value.makeStr("#document").setReadOnly());
+        createDOMProperty(s, INSTANCES, "nodeValue", Value.makeNull().setReadOnly());
+        createDOMProperty(s, INSTANCES, "nodeType", Value.makeNum(9).setReadOnly());
 
         // DOM LEVEL 3
         createDOMProperty(s, INSTANCES, "inputEncoding", Value.makeAnyStr().setReadOnly());
@@ -87,6 +97,7 @@ public class DOMDocument {
          * Properties from DOMWindow
          */
         createDOMProperty(s, INSTANCES, "location", Value.makeObject(DOMWindow.LOCATION));
+        createDOMProperty(s, INSTANCES, "readyState", Value.makeAnyStrNotUInt().setReadOnly());
 
         /**
          * Functions.
@@ -113,6 +124,10 @@ public class DOMDocument {
         createDOMFunction(s, PROTOTYPE, DOMObjects.DOCUMENT_ADOPT_NODE, "adoptNode", 1);
         createDOMFunction(s, PROTOTYPE, DOMObjects.DOCUMENT_NORMALIZEDOCUMENT, "normalizeDocument", 0);
         createDOMFunction(s, PROTOTYPE, DOMObjects.DOCUMENT_RENAME_NODE, "renameNode", 3);
+        
+        // semistandard
+        createDOMFunction(s, PROTOTYPE, DOMObjects.DOCUMENT_QUERY_SELECTOR_ALL, "querySelectorAll", 1);
+
     }
 
     /**
@@ -122,7 +137,6 @@ public class DOMDocument {
         switch (nativeobject) {
             case DOCUMENT_ADOPT_NODE: {
                 NativeFunctions.expectParameters(nativeobject, call, c, 1, 1);
-                //throw new UnsupportedOperationException("DOCUMENT_ADOPT_NODE not supported.");
                 return Value.makeObject(DOMElement.INSTANCES);
             }
             case DOCUMENT_CREATE_ATTRIBUTE: {
@@ -131,9 +145,7 @@ public class DOMDocument {
                 Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
                 return Value.makeObject(DOMAttr.INSTANCES);
             }
-            case DOCUMENT_CREATE_ATTRIBUTE_NS: {
-                throw new UnsupportedOperationException("DOCUMENT_CREATE_ATTRIBUTE_NS not supported.");
-            }
+   
             case DOCUMENT_CREATE_CDATASECTION: {
                 NativeFunctions.expectParameters(nativeobject, call, c, 1, 1);
                 Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
@@ -211,7 +223,7 @@ public class DOMDocument {
             case DOCUMENT_GET_ELEMENTS_BY_TAGNAME: {
                 NativeFunctions.expectParameters(nativeobject, call, c, 1, 1);
                 Value tagname = Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
-                if (tagname.isMaybeSingleStr()) {
+                if (tagname.isMaybeSingleStr() && (!"*".equals(tagname.getStr()))){
                     Set<ObjectLabel> labels = s.getExtras().getFromMayMap(DOMRegistry.MayMaps.ELEMENTS_BY_TAGNAME.name(), tagname.getStr());
                     Value v = Value.makeObject(labels);
                     ObjectLabel nodeList = DOMFunctions.makeEmptyNodeList();
@@ -222,21 +234,21 @@ public class DOMDocument {
                 }
                 return DOMFunctions.makeAnyHTMLNodeList(s);
             }
-            case DOCUMENT_GET_ELEMENTS_BY_TAGNAME_NS: {
-                throw new UnsupportedOperationException("DOCUMENT_GET_ELEMENTS_BY_TAGNAME_NS not supported.");
-            }
-            case DOCUMENT_IMPORT_NODE: {
-                throw new UnsupportedOperationException("DOCUMENT_IMPORT_NODE not supported.");
-            }
-            case DOCUMENT_NORMALIZEDOCUMENT: {
-                throw new UnsupportedOperationException("DOCUMENT_NORMALIZEDOCUMENT not supported.");
-            }
             case DOCUMENT_RENAME_NODE: {
                 NativeFunctions.expectParameters(nativeobject, call, c, 1, 3);
                 return DOMFunctions.makeAnyHTMLElement();
             }
+            case DOCUMENT_QUERY_SELECTOR_ALL: {
+            	NativeFunctions.expectParameters(nativeobject, call, c, 1, 1);
+            	return Value.makeObject(DOMNodeList.INSTANCES);
+            }
+            case DOCUMENT_CREATE_ATTRIBUTE_NS:
+            case DOCUMENT_GET_ELEMENTS_BY_TAGNAME_NS:
+            case DOCUMENT_IMPORT_NODE: 
+            case DOCUMENT_NORMALIZEDOCUMENT:
             default: {
-                throw new AnalysisException("Unsupported Native Object: " + nativeobject);
+            	c.getMonitoring().addMessage(call.getSourceNode(), Severity.TAJS_ERROR, "Unsupported operation: " + nativeobject);
+                return Value.makeNone();
             }
         }
     }

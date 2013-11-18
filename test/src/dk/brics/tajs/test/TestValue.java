@@ -220,7 +220,7 @@ public class TestValue {
 		printInfo(v4);
 		v4 = v4.removeAttributes();
 		printInfo(v4);
-		v4 = v4.setBottomAttributes();
+		v4 = v4.restrictToNonAttributes();
 		printInfo(v4);
 		v4 = v4.setNotDontDelete().setNotDontEnum().setNotReadOnly();
 		printInfo(v4);

@@ -1,0 +1,53 @@
+test/apps/simplecalc/math2.tidy.html:50:24: [definite] TypeError, accessing property of null/undefined
+test/apps/simplecalc/math2.tidy.html:50:24: [definite] Reading absent property calculator
+test/apps/simplecalc/math2.tidy.html:8:5: [definite] The variable Result is never used
+test/apps/simplecalc/math2.tidy.html:8:15: [definite] The variable Operator is never used
+test/apps/simplecalc/math2.tidy.html:8:27: [definite] The variable Second is never used
+test/apps/simplecalc/math2.tidy.html:8:37: [definite] The variable Ready is never used
+test/apps/simplecalc/math2.tidy.html:8:46: [definite] The variable Done is never used
+test/apps/simplecalc/math2.tidy.html:8:54: [definite] The variable Complete is never used
+test/apps/simplecalc/math2.tidy.html:8:66: [definite] The variable Integer is never used
+test/apps/simplecalc/math2.tidy.html:8:75: [definite] The variable CurrentValue is never used
+test/apps/simplecalc/math2.tidy.html:10:1: [definite] Unreachable function reset
+test/apps/simplecalc/math2.tidy.html:20:1: [definite] Unreachable function SetValue
+test/apps/simplecalc/math2.tidy.html:46:1: [definite] The variable Caption is never used
+test/apps/simplecalc/math2.tidy.html:50:24: [definite] Unreachable code
+test/apps/simplecalc/math2.tidy.html:440:2: [definite] The variable event is never used
+test/apps/simplecalc/math2.tidy.html:442:2: [definite] The variable event is never used
+test/apps/simplecalc/math2.tidy.html:452:2: [definite] The variable event is never used
+test/apps/simplecalc/math2.tidy.html:454:2: [definite] The variable event is never used
+test/apps/simplecalc/math2.tidy.html:456:2: [definite] The variable event is never used
+test/apps/simplecalc/math2.tidy.html:458:2: [definite] The variable event is never used
+test/apps/simplecalc/math2.tidy.html:460:2: [definite] The variable event is never used
+test/apps/simplecalc/math2.tidy.html:462:2: [definite] The variable event is never used
+test/apps/simplecalc/math2.tidy.html:466:2: [definite] The variable event is never used
+test/apps/simplecalc/math2.tidy.html:468:2: [definite] The variable event is never used
+test/apps/simplecalc/math2.tidy.html:470:2: [definite] The variable event is never used
+test/apps/simplecalc/math2.tidy.html:472:2: [definite] The variable event is never used
+test/apps/simplecalc/math2.tidy.html:474:2: [definite] The variable event is never used
+test/apps/simplecalc/math2.tidy.html:476:2: [definite] The variable event is never used
+test/apps/simplecalc/math2.tidy.html:480:2: [definite] The variable event is never used
+test/apps/simplecalc/math2.tidy.html:482:2: [definite] The variable event is never used
+test/apps/simplecalc/math2.tidy.html:484:2: [definite] The variable event is never used
+test/apps/simplecalc/math2.tidy.html:486:2: [definite] The variable event is never used
+test/apps/simplecalc/math2.tidy.html:488:2: [definite] The variable event is never used
+test/apps/simplecalc/math2.tidy.html:490:2: [definite] The variable event is never used
+test/apps/simplecalc/math2.tidy.html:494:2: [definite] The variable event is never used
+test/apps/simplecalc/math2.tidy.html:496:2: [definite] The variable event is never used
+test/apps/simplecalc/math2.tidy.html:498:2: [definite] The variable event is never used
+test/apps/simplecalc/math2.tidy.html:500:2: [definite] The variable event is never used
+test/apps/simplecalc/math2.tidy.html:502:2: [definite] The variable event is never used
+test/apps/simplecalc/math2.tidy.html:504:2: [definite] The variable event is never used
+test/apps/simplecalc/math2.tidy.html:508:2: [definite] The variable event is never used
+test/apps/simplecalc/math2.tidy.html:510:2: [definite] The variable event is never used
+test/apps/simplecalc/math2.tidy.html:512:2: [definite] The variable event is never used
+test/apps/simplecalc/math2.tidy.html:514:2: [definite] The variable event is never used
+test/apps/simplecalc/math2.tidy.html:516:2: [definite] The variable event is never used
+test/apps/simplecalc/math2.tidy.html:518:2: [definite] The variable event is never used
+test/apps/simplecalc/math2.tidy.html:522:2: [definite] The variable event is never used
+test/apps/simplecalc/math2.tidy.html:524:2: [definite] The variable event is never used
+test/apps/simplecalc/math2.tidy.html:526:2: [definite] The variable event is never used
+test/apps/simplecalc/math2.tidy.html:528:2: [definite] The variable event is never used
+test/apps/simplecalc/math2.tidy.html:530:2: [definite] The variable event is never used
+test/apps/simplecalc/math2.tidy.html:532:2: [definite] The variable event is never used
+test/apps/simplecalc/math2.tidy.html:3: [maybe] Uncaught exception, constructed at [test/apps/simplecalc/math2.tidy.html:50:24]

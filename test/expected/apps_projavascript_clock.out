@@ -1,0 +1,2 @@
+test/apps/projavascript/clock/07-clock.tidy.html:9:17: [definite] Unreachable function
+test/apps/projavascript/clock/07-clock.tidy.html:17:1: [definite] Unreachable function clock

@@ -13,7 +13,7 @@ fg2: <main> function()
   block 3:
     node 5: constant[5678.0,v4] (test/flowgraphbuilder/flowgraph_builder0050.js:3:12)
     node 6: *[v3,v4,v2] (test/flowgraphbuilder/flowgraph_builder0050.js:3:10)
-    node 7: write-variable[v2,'q']* (test/flowgraphbuilder/flowgraph_builder0050.js:1:1)
+    node 7: write-variable[v2,'q']* (test/flowgraphbuilder/flowgraph_builder0050.js:3:10)
     ->[block 4]
   block 4: [exit-ordinary]
     node 8: return[v1] (test/flowgraphbuilder/flowgraph_builder0050.js:1:1)

@@ -1,14 +1,3 @@
-Unevalizer: Starting on: "if(typeof(wt_sampleValue)!='string') wt_sampleValue='';"
-Unevalizer: Valid program
-Unevalizer: No name capture
-Unevalizer: Starting on: "if(typeof(" + TAJS_TEMPORARY_35 + ")!='string') " + TAJS_TEMPORARY_31 + "='';"
-Unevalizer: Not a constant string
-Unevalizer: Starting on: "if(typeof(" + TAJS_TEMPORARY_35 + ")!='string') " + TAJS_TEMPORARY_31 + "='';"
-Unevalizer: Not a constant string
-Unevalizer: Starting on: "if(typeof(" + TAJS_TEMPORARY_35 + ")!='string') " + TAJS_TEMPORARY_31 + "='';"
-Unevalizer: Not a constant string
-Unevalizer: Starting on: "if(typeof(" + TAJS_TEMPORARY_35 + ")!='string') " + TAJS_TEMPORARY_31 + "='';"
-Unevalizer: Not a constant string
 test/uneval/uneval21.tidy.html:25:1: [definite] Dead assignment, property $iTXT.debug.Util is never read
 test/uneval/uneval21.tidy.html:26:1: [definite] Dead assignment, property $iTXT.fx.Base is never read
 test/uneval/uneval21.tidy.html:27:1: [definite] Dead assignment, property $iTXT.fx.Util is never read

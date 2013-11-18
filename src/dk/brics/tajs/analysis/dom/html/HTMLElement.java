@@ -51,7 +51,7 @@ public class HTMLElement {
         // Multiplied Object
         s.newObject(ELEMENT);
         s.writeInternalPrototype(ELEMENT, Value.makeObject(ELEMENT_PROTOTYPE));
-        s.writePropertyWithAttributes(ELEMENT, "length", Value.makeNum(0).setAttributes(true, true, true)); // TODO: ?
+        s.writePropertyWithAttributes(ELEMENT, "length", Value.makeNum(0).setAttributes(true, true, true)); // FIXME: ?
         s.writePropertyWithAttributes(ELEMENT, "prototype", Value.makeObject(ELEMENT_PROTOTYPE).setAttributes(true, true, true));
         s.writeProperty(DOMWindow.WINDOW, "HTMLElement", Value.makeObject(ELEMENT));
 
@@ -94,6 +94,10 @@ public class HTMLElement {
          * Functions.
          */
         createDOMFunction(s, ELEMENT_PROTOTYPE, DOMObjects.HTMLELEMENT_GET_ELEMENTS_BY_CLASS_NAME, "getElementsByClassName", 1);
+        
+        // semistandard
+        // NB: webkit version!
+        createDOMFunction(s, ELEMENT_PROTOTYPE, DOMObjects.HTMLELEMENT_MATCHES_SELECTOR, "webkitMatchesSelector", 1);
     }
 
     /**
@@ -106,6 +110,10 @@ public class HTMLElement {
                 /* Value className =*/ Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
                 return DOMFunctions.makeAnyHTMLNodeList(s);
             }
+			case HTMLELEMENT_MATCHES_SELECTOR: {
+				NativeFunctions.expectParameters(nativeObject, call, c, 1, 1);
+				return Value.makeAnyBool();
+			}
             default: {
                 throw new AnalysisException("Unsupported Native Object: " + nativeObject);
             }

@@ -24,6 +24,7 @@ import dk.brics.tajs.analysis.NativeFunctions;
 import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.analysis.State;
 import dk.brics.tajs.lattice.ObjectLabel;
+import dk.brics.tajs.lattice.UnknownValueResolver;
 import dk.brics.tajs.lattice.ObjectLabel.Kind;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.solver.Message.Severity;
@@ -82,6 +83,7 @@ public class JSNumber {
 			else
 				f = Value.makeNum(0);
 			Value x = state.readInternalValue(state.readThisObjects());
+			x = UnknownValueResolver.getRealValue(x, c.getCurrentState());
 			boolean definitely_rangeerror = false;
 			boolean maybe_rangeerror = false;
 			int f_int = 0;

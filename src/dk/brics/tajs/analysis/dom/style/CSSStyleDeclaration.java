@@ -33,7 +33,7 @@ public class CSSStyleDeclaration {
 
         s.newObject(STYLEDECLARATION);
         s.writeInternalPrototype(STYLEDECLARATION, Value.makeObject(InitialStateBuilder.OBJECT_PROTOTYPE));
-        s.writeProperty(Collections.singleton(STYLEDECLARATION), Value.makeAnyStrUInt(), Value.makeAnyStr(), true, false);
+        s.writeProperty(Collections.singleton(STYLEDECLARATION), Value.makeAnyStrNotUInt(), Value.makeAnyStr(), true, false);
         s.multiplyObject(STYLEDECLARATION);
         STYLEDECLARATION = STYLEDECLARATION.makeSingleton().makeSummary();
     }

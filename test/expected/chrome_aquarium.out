@@ -1,3 +1,4 @@
+test/chromeexperiments/aquarium.tidy.html:164:1: [definite] The assignment to onLoad has no effect
 test/chromeexperiments/aquarium.tidy.html:151:2: [definite] Unreachable function mmouse
 test/chromeexperiments/aquarium.tidy.html:123:40: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/aquarium.tidy.html:123:51: [maybe] TypeError, accessing property of null/undefined

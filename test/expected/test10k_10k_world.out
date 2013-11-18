@@ -1,24 +1,3 @@
-Unevalizer: Starting on: "r()"
-Unevalizer: Valid program
-Unevalizer: No name capture
-Unevalizer: Starting on: "l()"
-Unevalizer: Valid program
-Unevalizer: No name capture
-Unevalizer: Starting on: "l()"
-Unevalizer: Valid program
-Unevalizer: No name capture
-Unevalizer: Starting on: "r()"
-Unevalizer: Valid program
-Unevalizer: No name capture
-Unevalizer: Starting on: "l()"
-Unevalizer: Valid program
-Unevalizer: No name capture
-Unevalizer: Starting on: "r()"
-Unevalizer: Valid program
-Unevalizer: No name capture
-Unevalizer: Starting on: "r()"
-Unevalizer: Valid program
-Unevalizer: No name capture
 test/10k/10k_world.tidy.html:112:17: [definite] The conditional expression is always false
 test/10k/10k_world.tidy.html:113:17: [definite] The conditional expression is always false
 test/10k/10k_world.tidy.html:386:94: [definite] The conditional expression is always true
@@ -116,7 +95,6 @@ test/10k/10k_world.tidy.html:199:19: [maybe] Converting primitive number to obje
 test/10k/10k_world.tidy.html:199:19: [maybe] Reading absent property (computed name)
 test/10k/10k_world.tidy.html:199:19: [maybe] The variable b has values with different types
 test/10k/10k_world.tidy.html:210:39: [maybe] The variable c has values with different types
-test/10k/10k_world.tidy.html:263:61: [maybe] Conversion to number yields NaN
 test/10k/10k_world.tidy.html:263:61: [maybe] Reading absent property (computed name)
 test/10k/10k_world.tidy.html:312:21: [maybe] Conversion to number yields NaN
 test/10k/10k_world.tidy.html:312:21: [maybe] Reading absent property (computed name)
@@ -124,8 +102,6 @@ test/10k/10k_world.tidy.html:344:25: [maybe] Converting primitive number to obje
 test/10k/10k_world.tidy.html:345:25: [maybe] Converting primitive number to object
 test/10k/10k_world.tidy.html:370:37: [maybe] Conversion to number yields NaN
 test/10k/10k_world.tidy.html:370:55: [maybe] Conversion to number yields NaN
-test/10k/10k_world.tidy.html:379:37: [maybe] Conversion to number yields NaN
-test/10k/10k_world.tidy.html:380:37: [maybe] Conversion to number yields NaN
 test/10k/10k_world.tidy.html:428:23: [maybe] Converting undefined to string
 test/10k/10k_world.tidy.html:87:46: [info] Reading from unknown property that may cause loss of precision
 test/10k/10k_world.tidy.html:87:64: [info] Reading from unknown property that may cause loss of precision

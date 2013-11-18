@@ -19,18 +19,18 @@ package dk.brics.tajs.solver;
 import dk.brics.tajs.flowgraph.AbstractNode;
 
 /**
- * Pair of an abstract node and a call context.
+ * Pair of an abstract node and a context.
  */
-public final class NodeAndContext<CallContextType extends ICallContext<?>> {
+public final class NodeAndContext<ContextType extends IContext<?>> {
 
 	private AbstractNode n;
 	
-	private CallContextType c;
+	private ContextType c;
 	
 	/**
 	 * Constructs a new pair.
 	 */
-	public NodeAndContext(AbstractNode n, CallContextType c) {
+	public NodeAndContext(AbstractNode n, ContextType c) {
 		this.n = n;
 		this.c = c;
 	}
@@ -45,7 +45,7 @@ public final class NodeAndContext<CallContextType extends ICallContext<?>> {
 	/**
 	 * Returns the context.
 	 */
-	public CallContextType getContext() {
+	public ContextType getContext() {
 		return c;
 	}
 
@@ -57,7 +57,7 @@ public final class NodeAndContext<CallContextType extends ICallContext<?>> {
 	public boolean equals(Object obj) {
 		if (!(obj instanceof NodeAndContext))
 			return false;
-		NodeAndContext<CallContextType> ncp = (NodeAndContext<CallContextType>) obj;
+		NodeAndContext<ContextType> ncp = (NodeAndContext<ContextType>) obj;
 		return ncp.n == n && ncp.c.equals(c);
 	}
 

@@ -45,7 +45,7 @@ import dk.brics.tajs.util.Collections;
 /**
  * Sets up the initial state (Chapter 15).
  */
-public class InitialStateBuilder implements IInitialStateBuilder<State, CallContext, CallEdge<State>> { // TODO: to be replaced by the host model system
+public class InitialStateBuilder implements IInitialStateBuilder<State, Context, CallEdge<State>> { // TODO: to be replaced by the host model system
 
 	/**
 	 * Object label for the global object.
@@ -141,7 +141,7 @@ public class InitialStateBuilder implements IInitialStateBuilder<State, CallCont
 	 * Sets up the initial state.
 	 */
 	@Override
-	public void addInitialState(BasicBlock global_entry_block, GenericSolver<State, CallContext, CallEdge<State>, ?, ?>.SolverInterface c, Document document) {
+	public void addInitialState(BasicBlock global_entry_block, GenericSolver<State, Context, CallEdge<State>, ?, ?>.SolverInterface c, Document document) {
 		State s = new State(c, global_entry_block);
 		ObjectLabel global = GLOBAL; // same as DOMBuilder.WINDOW
 		s.newObject(global);
@@ -251,6 +251,9 @@ public class InitialStateBuilder implements IInitialStateBuilder<State, CallCont
 		createPrimitiveConstructor(s, global, lFunProto, lSyntaxErrorProto, lSyntaxError, "SyntaxError", 1);
 		createPrimitiveConstructor(s, global, lFunProto, lTypeErrorProto, lTypeError, "TypeError", 1);
 		createPrimitiveConstructor(s, global, lFunProto, lURIErrorProto, lURIError, "URIError", 1);
+
+		// 15.2.3 Properties of the Object Constructor
+		createPrimitiveFunction(s, lObject, lFunProto, ECMAScriptObjects.OBJECT_DEFINE_PROPERTY, "defineProperty", 3);
 
 		// 15.2.4 properties of the Object prototype object
 		s.writeInternalPrototype(lObjectPrototype, Value.makeNull());
@@ -492,20 +495,21 @@ public class InitialStateBuilder implements IInitialStateBuilder<State, CallCont
         createPrimitiveFunction(s, global, lFunProto, ECMAScriptObjects.ASSERT_MOST_RECENT_OBJ, "assertMostRecentObj", 1);
         createPrimitiveFunction(s, global, lFunProto, ECMAScriptObjects.ASSERT_SUMMARY_OBJ, "assertSummaryObj", 1);
 		createPrimitiveFunction(s, global, lFunProto, ECMAScriptObjects.CONVERSION_TO_PRIMITIVE, "conversionToPrimitive", 2);
-		createPrimitiveFunction(s, global, lFunProto, ECMAScriptObjects.ADD_CONTEXT_SENSITIVITY, ECMAScriptObjects.ADD_CONTEXT_SENSITIVITY.toString(), 1);
+		createPrimitiveFunction(s, global, lFunProto, ECMAScriptObjects.TAJS_ADD_CONTEXT_SENSITIVITY, ECMAScriptObjects.TAJS_ADD_CONTEXT_SENSITIVITY.toString(), 1);
+		createPrimitiveFunction(s, global, lFunProto, ECMAScriptObjects.TAJS_NEW_OBJECT, ECMAScriptObjects.TAJS_NEW_OBJECT.toString(), 0);
 		
         if (Options.isDOMEnabled()) {
     		// build initial DOM state
-        	createPrimitiveFunction(s, global, lFunProto, ECMAScriptObjects.TAJS_GET_UI_EVENT, "_TAJS_getUIEvent", 0);
-        	createPrimitiveFunction(s, global, lFunProto, ECMAScriptObjects.TAJS_GET_MOUSE_EVENT, "_TAJS_getMouseEvent", 0);
-        	createPrimitiveFunction(s, global, lFunProto, ECMAScriptObjects.TAJS_GET_KEYBOARD_EVENT, "_TAJS_getKeyboardEvent", 0);
-        	createPrimitiveFunction(s, global, lFunProto, ECMAScriptObjects.TAJS_GET_EVENT_LISTENER, "_TAJS_getEventListener", 0);
-        	createPrimitiveFunction(s, global, lFunProto, ECMAScriptObjects.TAJS_GET_WHEEL_EVENT, "_TAJS_getWheelEvent", 0);
+        	createPrimitiveFunction(s, global, lFunProto, ECMAScriptObjects.TAJS_GET_UI_EVENT, "TAJS_getUIEvent", 0);
+        	createPrimitiveFunction(s, global, lFunProto, ECMAScriptObjects.TAJS_GET_MOUSE_EVENT, "TAJS_getMouseEvent", 0);
+        	createPrimitiveFunction(s, global, lFunProto, ECMAScriptObjects.TAJS_GET_KEYBOARD_EVENT, "TAJS_getKeyboardEvent", 0);
+        	createPrimitiveFunction(s, global, lFunProto, ECMAScriptObjects.TAJS_GET_EVENT_LISTENER, "TAJS_getEventListener", 0);
+        	createPrimitiveFunction(s, global, lFunProto, ECMAScriptObjects.TAJS_GET_WHEEL_EVENT, "TAJS_getWheelEvent", 0);
 
 			DOMBuilder.addInitialState(s);
 		}
 
-        if (Options.isDOMEnabled() || Options.isDSLEnabled()) {
+        if (Options.isDOMEnabled()) {
             for (Function f : c.getFlowGraph().getCallbacksByKind(CallbackKind.LOAD)) {
                 createAndRegisterEventHandler(s, f, CallbackKind.LOAD);
             }
@@ -532,11 +536,8 @@ public class InitialStateBuilder implements IInitialStateBuilder<State, CallCont
 		s.clearEffects();
 		s.freezeBasisStore();
 
-        CallContext call_context = new CallContext(s, global_entry_block);
-		// s.setContext(call_context);
-		c.propagateToBasicBlock(s, global_entry_block, call_context);
-		c.getAnalysisLatticeElement().getCallGraph().registerBlockContext(global_entry_block, call_context);
-
+        Context context = Context.makeInitialContext(s, global_entry_block);
+		c.propagateToBasicBlock(s, global_entry_block, context);
 	}
 
     /**

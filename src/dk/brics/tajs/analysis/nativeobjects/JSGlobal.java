@@ -18,14 +18,16 @@ package dk.brics.tajs.analysis.nativeobjects;
 
 import java.io.File;
 import java.io.PrintWriter;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.apache.log4j.Logger;
 
-import dk.brics.tajs.analysis.CallContext;
+import dk.brics.tajs.analysis.Context;
 import dk.brics.tajs.analysis.Conversion;
 import dk.brics.tajs.analysis.EvalCache;
+import dk.brics.tajs.analysis.InitialStateBuilder;
 import dk.brics.tajs.analysis.FunctionCalls.CallInfo;
 import dk.brics.tajs.analysis.NativeFunctions;
 import dk.brics.tajs.analysis.Solver;
@@ -46,6 +48,8 @@ import dk.brics.tajs.flowgraph.Function;
 import dk.brics.tajs.flowgraph.jsnodes.CallNode;
 import dk.brics.tajs.js2flowgraph.RhinoASTToFlowgraph;
 import dk.brics.tajs.lattice.BlockState;
+import dk.brics.tajs.lattice.ObjectLabel;
+import dk.brics.tajs.lattice.ObjectLabel.Kind;
 import dk.brics.tajs.lattice.UnknownValueResolver;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.options.Options;
@@ -87,7 +91,7 @@ public class JSGlobal {
 				return Value.makeNone();
 			if (evalValue.isStrJSON()) { 
 				return DOMFunctions.makeAnyJSONObject(state).join(evalValue.restrictToNotStr());
-			} else if (Options.isUnevalEnabled()) {
+			} else if (Options.isUnevalizerEnabled()) {
                 CallNode evalCall = (CallNode) call.getSourceNode();
                 FlowGraph currentFg = c.getFlowGraph();
                 boolean ignoreResult = evalCall.getResultRegister() == AbstractNode.NO_VALUE;
@@ -95,7 +99,7 @@ public class JSGlobal {
                 NormalForm input = UnevalTools.rebuildNormalForm(currentFg, evalCall, state, c);
 
                 // Collect special args that should be analyzed context sensitively
-                c.getAnalysis().getSpecialArgs().addContextSensitivity(evalCall.getBlock().getFunction(), input.getArgumentsInUse(), state, c);
+                c.getAnalysis().getSpecialVars().addContextSensitivity(evalCall.getBlock().getFunction(), input.getArgumentsInUse(), state, c);
 
                 // What we should use as key for the eval cache is the entire tuple from the Uneval paper. Since that
                 // might contain infinite sets and other large things we just call the Unevalizer and compare the output
@@ -113,7 +117,7 @@ public class JSGlobal {
 
                 String unevaledSubst = ignoreResult ? unevaled : unevaled.replace(var, UnevalTools.VAR_PLACEHOLDER); // to avoid the random string in the cache
                 EvalCache evalCache = c.getAnalysis().getEvalCache();
-                NodeAndContext<CallContext> cc = new NodeAndContext<>(evalCall, c.getCurrentContext());
+                NodeAndContext<Context> cc = new NodeAndContext<>(evalCall, state.getContext());
                 FlowGraphFragment e = evalCache.getCode(cc);
 
                 // Cache miss.
@@ -121,10 +125,10 @@ public class JSGlobal {
                     e = (new RhinoASTToFlowgraph()).extendFlowgraph(currentFg, unevaled, unevaledSubst, evalCall, e, var);
 
                 evalCache.setCode(cc, e);
-                c.propagateToBasicBlock(state.clone(), e.getEntryBlock(), c.getCurrentContext());
+                c.propagateToBasicBlock(state.clone(), e.getEntryBlock(), state.getContext());
                 if (Options.isFlowGraphEnabled()) {
                 	try (PrintWriter pw = new PrintWriter(new File("out" + File.separator + "flowgraphs" + File.separator + "uneval-" + 
-                			evalCall.getIndex() + "-" + Integer.toHexString(c.getCurrentContext().hashCode()) + ".dot"))) {
+                			evalCall.getIndex() + "-" + Integer.toHexString(state.getContext().hashCode()) + ".dot"))) {
                 		currentFg.toDot(pw);
                         pw.flush();
                     } catch (Exception ee) {
@@ -406,29 +410,61 @@ public class JSGlobal {
 				}
 		}
 
-		case ADD_CONTEXT_SENSITIVITY:{
-			NativeFunctions.expectParameters(nativeobject, call, c, 1, 1);
-			if (call.isUnknownNumberOfArgs()) {
+		case TAJS_ADD_CONTEXT_SENSITIVITY: {
+			if (call.isUnknownNumberOfArgs())
 				throw new AnalysisException("Calling TAJS_addContextSensitivity with unknown number of arguments");
-			} else {
-				Value paramName = NativeFunctions.readParameter(call, state, 0);
-				if (paramName.isStrIdentifier()){
-					final Function enclosingFunction = call.getSourceNode().getBlock().getFunction();
-					final String concreteParamName = paramName.getStr();
-					boolean hasParam = enclosingFunction.getParameterNames().contains(concreteParamName);
-					if (hasParam) {
-						c.getAnalysis().getSpecialArgs().addToSpecialArgs(enclosingFunction, concreteParamName);
-					} else {
-						throw new AnalysisException(String.format("Calling TAJS_addContextSensitivity with non-existing parameter-name: '%s'. Function has: '%s'",
-								concreteParamName, enclosingFunction.getParameterNames()));
-					}
-				} else {
-					throw new AnalysisException("Calling TAJS_addContextSensitivity with non-identifier parameter-name: " + paramName);
+			Value param;
+			Function function;
+			if (call.getNumberOfArgs() == 1) { // enclosing function
+				param = NativeFunctions.readParameter(call, state, 0);
+				function = call.getSourceNode().getBlock().getFunction();
+			} else if (call.getNumberOfArgs() == 2) { // function given as first parameter
+				Value funval = NativeFunctions.readParameter(call, state, 0);
+				Set<ObjectLabel> objlabels = funval.getObjectLabels();
+				if (funval.isMaybeOtherThanObject())
+					throw new AnalysisException("Calling TAJS_addContextSensitivity with non-fixed argument: " + funval);
+				function = null;
+				for (ObjectLabel objlabel : objlabels) {
+					if (objlabel.getKind() != Kind.FUNCTION || objlabel.isHostObject())
+						throw new AnalysisException("Calling TAJS_addContextSensitivity with non-user-function argument: " + objlabel);
+					if (function == null)
+						function = objlabel.getFunction();
+					else if (function != objlabel.getFunction()) // in case of multiple function object labels, they must agree on the function
+						throw new AnalysisException("Calling TAJS_addContextSensitivity with non-fixed argument: " + funval);
 				}
-			}
+				if (function == null)
+					throw new AnalysisException("Calling TAJS_addContextSensitivity with non-user-function argument: " + funval);
+				param = NativeFunctions.readParameter(call, state, 1);
+			} else
+				throw new AnalysisException("Calling TAJS_addContextSensitivity with unexpected number of arguments");				
+			String var;
+			if (param.isMaybeSingleStr()) {
+				if (param.isMaybeOtherThanStr())
+					throw new AnalysisException("Calling TAJS_addContextSensitivity with non-fixed-string argument: " + param);
+				var = param.getStr();
+			} else if (param.isMaybeSingleNum()) {
+				if (param.isMaybeOtherThanNumUInt())
+					throw new AnalysisException("Calling TAJS_addContextSensitivity with non-fixed-index argument: " + param);
+				var = function.getParameterNames().get(param.getNum().intValue());
+			} else
+				throw new AnalysisException("Calling TAJS_addContextSensitivity with unexpected argument: " + param);
+			c.getAnalysis().getSpecialVars().addToSpecialVars(function, var);
 			return Value.makeUndef();
 		}
-
+		
+		case TAJS_NEW_OBJECT: {
+			ObjectLabel objlabel;
+            if (Options.isContextSensitiveHeapEnabled()) {
+                objlabel = new ObjectLabel(call.getSourceNode(), Kind.OBJECT,
+                        state.getContext().getSpecialEntryVars(), state.getContext().getSpecialVars(), state.getContext().getSpecialRegisters());
+            } else {
+                objlabel = new ObjectLabel(call.getSourceNode(), Kind.OBJECT);
+            }
+ 			state.newObject(objlabel);
+ 	        state.writeInternalPrototype(objlabel, Value.makeObject(InitialStateBuilder.OBJECT_PROTOTYPE));
+         	return Value.makeObject(objlabel);
+		}
+		
 		case TAJS_GET_UI_EVENT: {
 			return Value.makeObject(UIEvent.INSTANCES);
 		}

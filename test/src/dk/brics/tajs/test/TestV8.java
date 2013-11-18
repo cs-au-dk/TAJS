@@ -214,7 +214,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 	public void testV8_body_not_visible() throws Exception
 	{
 		Misc.init();
-		Options.enableUnevalMode();
+		Options.enableUnevalizer();
 		Misc.captureSystemOutput();
 		String[] args = {"test/v8tests/body-not-visible.js"};
 		Misc.run(args);
@@ -608,7 +608,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-        Options.enableUnevalMode();
+        Options.enableUnevalizer();
 		String[] args = {"test/v8tests/debug-sourceslice.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
@@ -692,7 +692,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-        Options.enableUnevalMode();
+        Options.enableUnevalizer();
 		String[] args = {"test/v8tests/delete-in-eval.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
@@ -715,7 +715,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-        Options.enableUnevalMode();
+        Options.enableUnevalizer();
 		String[] args = {"test/v8tests/delete-vars-from-eval.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
@@ -788,7 +788,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Options.enableForInSpecialization();
-		Options.enableUnevalMode();
+		Options.enableUnevalizer();
 		Misc.captureSystemOutput();
 		String[] args = {"test/v8tests/enumeration_order.js"};
 		Misc.run(args);
@@ -840,7 +840,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 	public void testV8_extra_commas() throws Exception
 	{
 		Misc.init();
-		Options.enableUnevalMode();
+		Options.enableUnevalizer();
 		Misc.captureSystemOutput();
 		String[] args = {"test/v8tests/extra-commas.js"};
 		Misc.run(args);
@@ -969,7 +969,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 	public void testV8_function() throws Exception
 	{
 		Misc.init();
-		Options.enableUnevalMode();
+		Options.enableUnevalizer();
 		Misc.captureSystemOutput();
 		String[] args = {"test/v8tests/function.js"};
 		Misc.run(args);
@@ -1012,7 +1012,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 	public void testV8_global_const_var_conflicts() throws Exception
 	{
 		Misc.init();
-		Options.enableUnevalMode();
+		Options.enableUnevalizer();
 		Misc.captureSystemOutput();
 		String[] args = {"test/v8tests/global-const-var-conflicts.js"};
 		Misc.run(args);
@@ -1023,7 +1023,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 	public void testV8_global_vars_eval() throws Exception
 	{
 		Misc.init();
-		Options.enableUnevalMode();
+		Options.enableUnevalizer();
 		Misc.captureSystemOutput();
 		String[] args = {"test/v8tests/global-vars-eval.js"};
 		Misc.run(args);
@@ -1168,7 +1168,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 	public void testV8_large_object_literal() throws Exception
 	{
 		Misc.init();
-		Options.enableUnevalMode();
+		Options.enableUnevalizer();
 		Misc.captureSystemOutput();
 		String[] args = {"test/v8tests/large-object-literal.js"};
 		Misc.run(args);

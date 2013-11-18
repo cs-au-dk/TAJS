@@ -1,0 +1,4 @@
+test/micro/test200.js:3:13: [maybe] Converting boolean to string
+test/micro/test200.js:3:3: [info] Abstract value: "0: 42"
+test/micro/test200.js:3:3: [info] Abstract value: "1: foo"
+test/micro/test200.js:3:3: [info] Abstract value: "2: true"

@@ -30,9 +30,9 @@ import dk.brics.tajs.solver.INodeTransfer;
  * Transfer for flow graph nodes and edges.
  */
 public class Transfer implements 
-INodeTransfer<State, CallContext>, 
-IEdgeTransfer<State, CallContext>, 
-IBlockTransfer<State,CallContext> {
+INodeTransfer<State, Context>, 
+IEdgeTransfer<State, Context>, 
+IBlockTransfer<State,Context> {
 
 	private static Logger logger = Logger.getLogger(Transfer.class); 
 
@@ -62,7 +62,7 @@ IBlockTransfer<State,CallContext> {
 
 	@Override
 	public void transferReturn(AbstractNode call_node, BasicBlock callee_entry,
-			CallContext caller_context, CallContext callee_context, CallContext edge_context) {
+			Context caller_context, Context callee_context, Context edge_context) {
 		js_node_transfer.transferReturn(call_node, callee_entry, caller_context, callee_context, edge_context);
 	}
 
@@ -79,9 +79,9 @@ IBlockTransfer<State,CallContext> {
 	}
 	
     @Override
-    public boolean transfer(BasicBlock src, BasicBlock dst, State state) {
-    	boolean res = js_edge_transfer.transfer(src, dst, state);
-    	if (!res)
+    public Context transfer(BasicBlock src, BasicBlock dst, State state) {
+    	Context res = js_edge_transfer.transfer(src, dst, state);
+    	if (res == null)
 			if (logger.isDebugEnabled()) 
 				logger.debug("Killing flow to block " + dst.getIndex());
     	return res;

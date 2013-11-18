@@ -1,61 +1,23 @@
-Unevalizer: Starting on: "refresh()"
-Unevalizer: Valid program
-Unevalizer: No name capture
-Unevalizer: Starting on: "tick()"
-Unevalizer: Valid program
-Unevalizer: No name capture
-Unevalizer: Starting on: "refresh()"
-Unevalizer: Valid program
-Unevalizer: No name capture
-Unevalizer: Starting on: "tick()"
-Unevalizer: Valid program
-Unevalizer: No name capture
-Unevalizer: Starting on: "tick()"
-Unevalizer: Valid program
-Unevalizer: No name capture
-Unevalizer: Starting on: "refresh();"
-Unevalizer: Valid program
-Unevalizer: No name capture
-Unevalizer: Starting on: "tick()"
-Unevalizer: Valid program
-Unevalizer: No name capture
-Unevalizer: Starting on: "refresh();"
-Unevalizer: Valid program
-Unevalizer: No name capture
-Unevalizer: Starting on: "tick()"
-Unevalizer: Valid program
-Unevalizer: No name capture
-Unevalizer: Starting on: "refresh();"
-Unevalizer: Valid program
-Unevalizer: No name capture
-Unevalizer: Starting on: "refresh();"
-Unevalizer: Valid program
-Unevalizer: No name capture
-Unevalizer: Starting on: "refresh()"
-Unevalizer: Valid program
-Unevalizer: No name capture
-Unevalizer: Starting on: "tick()"
-Unevalizer: Valid program
-Unevalizer: No name capture
-Unevalizer: Starting on: "refresh()"
-Unevalizer: Valid program
-Unevalizer: No name capture
-Unevalizer: Starting on: "tick()"
-Unevalizer: Valid program
-Unevalizer: No name capture
-Unevalizer: Starting on: "tick()"
-Unevalizer: Valid program
-Unevalizer: No name capture
-Unevalizer: Starting on: "refresh();"
-Unevalizer: Valid program
-Unevalizer: No name capture
 test/chromeexperiments/raytracer.tidy.html:646:19: [definite] TypeError, accessing property of null/undefined
 test/chromeexperiments/raytracer.tidy.html:685:26: [definite] TypeError, accessing property of null/undefined
 test/chromeexperiments/raytracer.tidy.html:688:27: [definite] TypeError, accessing property of null/undefined
 test/chromeexperiments/raytracer.tidy.html:691:27: [definite] TypeError, accessing property of null/undefined
 test/chromeexperiments/raytracer.tidy.html:694:27: [definite] TypeError, accessing property of null/undefined
+test/chromeexperiments/raytracer.tidy.html:126:73: [definite] The assignment to ux has no effect
+test/chromeexperiments/raytracer.tidy.html:126:81: [definite] The assignment to uy has no effect
+test/chromeexperiments/raytracer.tidy.html:126:89: [definite] The assignment to uz has no effect
+test/chromeexperiments/raytracer.tidy.html:127:35: [definite] The assignment to l has no effect
+test/chromeexperiments/raytracer.tidy.html:127:73: [definite] The assignment to vx has no effect
+test/chromeexperiments/raytracer.tidy.html:127:81: [definite] The assignment to vy has no effect
+test/chromeexperiments/raytracer.tidy.html:127:89: [definite] The assignment to vz has no effect
+test/chromeexperiments/raytracer.tidy.html:293:81: [definite] The assignment to uy has no effect
+test/chromeexperiments/raytracer.tidy.html:293:89: [definite] The assignment to uz has no effect
+test/chromeexperiments/raytracer.tidy.html:294:73: [definite] The assignment to vx has no effect
+test/chromeexperiments/raytracer.tidy.html:294:89: [definite] The assignment to vz has no effect
+test/chromeexperiments/raytracer.tidy.html:645:17: [definite] The assignment to p has no effect
 test/chromeexperiments/raytracer.tidy.html:645:21: [definite] Property is null/undefined
 test/chromeexperiments/raytracer.tidy.html:646:19: [definite] Variable p is null/undefined
+test/chromeexperiments/raytracer.tidy.html:680:17: [definite] The assignment to p has no effect
 test/chromeexperiments/raytracer.tidy.html:680:21: [definite] Property is null/undefined
 test/chromeexperiments/raytracer.tidy.html:685:26: [definite] Variable p is null/undefined
 test/chromeexperiments/raytracer.tidy.html:688:27: [definite] Variable p is null/undefined
@@ -65,6 +27,7 @@ test/chromeexperiments/raytracer.tidy.html:806:31: [definite] The conditional ex
 test/chromeexperiments/raytracer.tidy.html:807:32: [definite] The conditional expression is always true
 test/chromeexperiments/raytracer.tidy.html:955:25: [definite] The conditional expression is always true
 test/chromeexperiments/raytracer.tidy.html:1142:17: [definite] The conditional expression is always false
+test/chromeexperiments/raytracer.tidy.html:1143:17: [definite] The assignment to curline has no effect
 test/chromeexperiments/raytracer.tidy.html:1240:25: [definite] The conditional expression is always false
 test/chromeexperiments/raytracer.tidy.html:107:25: [definite] Dead assignment, property ir is never read
 test/chromeexperiments/raytracer.tidy.html:108:25: [definite] Dead assignment, property c is never read
@@ -612,7 +575,6 @@ test/chromeexperiments/raytracer.tidy.html:156:50: [maybe] Conversion to number 
 test/chromeexperiments/raytracer.tidy.html:156:71: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.tidy.html:157:25: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.tidy.html:158:25: [maybe] Conversion to number yields NaN
-test/chromeexperiments/raytracer.tidy.html:173:60: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.tidy.html:175:29: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.tidy.html:175:43: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.tidy.html:175:57: [maybe] Conversion to number yields NaN
@@ -650,7 +612,6 @@ test/chromeexperiments/raytracer.tidy.html:217:36: [maybe] Conversion to number 
 test/chromeexperiments/raytracer.tidy.html:218:30: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.tidy.html:218:30: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.tidy.html:218:36: [maybe] Conversion to number yields NaN
-test/chromeexperiments/raytracer.tidy.html:226:60: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.tidy.html:228:29: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.tidy.html:228:41: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.tidy.html:228:53: [maybe] Conversion to number yields NaN
@@ -685,7 +646,6 @@ test/chromeexperiments/raytracer.tidy.html:309:43: [maybe] Conversion to number 
 test/chromeexperiments/raytracer.tidy.html:309:59: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.tidy.html:310:45: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.tidy.html:313:35: [maybe] Conversion to number yields NaN
-test/chromeexperiments/raytracer.tidy.html:326:37: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.tidy.html:328:31: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.tidy.html:328:79: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.tidy.html:328:127: [maybe] Conversion to number yields NaN
@@ -708,7 +668,6 @@ test/chromeexperiments/raytracer.tidy.html:370:53: [maybe] Conversion to number 
 test/chromeexperiments/raytracer.tidy.html:371:30: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.tidy.html:371:38: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.tidy.html:371:53: [maybe] Conversion to number yields NaN
-test/chromeexperiments/raytracer.tidy.html:377:37: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.tidy.html:378:31: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.tidy.html:378:79: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.tidy.html:378:127: [maybe] Conversion to number yields NaN
@@ -762,7 +721,6 @@ test/chromeexperiments/raytracer.tidy.html:556:31: [maybe] Conversion to number 
 test/chromeexperiments/raytracer.tidy.html:556:31: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.tidy.html:557:31: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.tidy.html:557:31: [maybe] Conversion to number yields NaN
-test/chromeexperiments/raytracer.tidy.html:558:30: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.tidy.html:564:30: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.tidy.html:565:30: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.tidy.html:566:30: [maybe] Conversion to number yields NaN
@@ -779,7 +737,6 @@ test/chromeexperiments/raytracer.tidy.html:580:29: [maybe] Conversion to number 
 test/chromeexperiments/raytracer.tidy.html:580:29: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.tidy.html:581:29: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.tidy.html:581:29: [maybe] Conversion to number yields NaN
-test/chromeexperiments/raytracer.tidy.html:582:34: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.tidy.html:591:25: [maybe] Reading absent property (computed name)
 test/chromeexperiments/raytracer.tidy.html:597:35: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.tidy.html:598:34: [maybe] Conversion to number yields NaN
@@ -805,15 +762,7 @@ test/chromeexperiments/raytracer.tidy.html:645:44: [maybe] Conversion to number 
 test/chromeexperiments/raytracer.tidy.html:681:22: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.tidy.html:682:22: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.tidy.html:683:22: [maybe] Conversion to number yields NaN
-test/chromeexperiments/raytracer.tidy.html:684:31: [maybe] Conversion to number yields NaN
-test/chromeexperiments/raytracer.tidy.html:684:45: [maybe] Conversion to number yields NaN
-test/chromeexperiments/raytracer.tidy.html:687:31: [maybe] Conversion to number yields NaN
-test/chromeexperiments/raytracer.tidy.html:687:45: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.tidy.html:689:25: [maybe] Conversion to number yields NaN
-test/chromeexperiments/raytracer.tidy.html:690:31: [maybe] Conversion to number yields NaN
-test/chromeexperiments/raytracer.tidy.html:690:45: [maybe] Conversion to number yields NaN
-test/chromeexperiments/raytracer.tidy.html:693:31: [maybe] Conversion to number yields NaN
-test/chromeexperiments/raytracer.tidy.html:693:45: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.tidy.html:696:27: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.tidy.html:697:27: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.tidy.html:698:27: [maybe] Conversion to number yields NaN
@@ -880,11 +829,7 @@ test/chromeexperiments/raytracer.tidy.html:981:98: [maybe] The variable hei has 
 test/chromeexperiments/raytracer.tidy.html:984:25: [maybe] Converting primitive boolean to object
 test/chromeexperiments/raytracer.tidy.html:984:25: [maybe] The variable ctx has values with different types
 test/chromeexperiments/raytracer.tidy.html:984:42: [maybe] The variable imgdata has values with different types
-test/chromeexperiments/raytracer.tidy.html:990:38: [maybe] Conversion from string to number yields NaN
-test/chromeexperiments/raytracer.tidy.html:990:38: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.tidy.html:990:40: [maybe] The variable hei has values with different types
-test/chromeexperiments/raytracer.tidy.html:991:43: [maybe] Conversion from string to number yields NaN
-test/chromeexperiments/raytracer.tidy.html:991:43: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.tidy.html:991:45: [maybe] The variable wid has values with different types
 test/chromeexperiments/raytracer.tidy.html:992:41: [maybe] Converting primitive boolean to object
 test/chromeexperiments/raytracer.tidy.html:992:41: [maybe] The variable ctx has values with different types
@@ -897,7 +842,6 @@ test/chromeexperiments/raytracer.tidy.html:992:84: [maybe] Reading absent proper
 test/chromeexperiments/raytracer.tidy.html:993:41: [maybe] Converting primitive boolean to object
 test/chromeexperiments/raytracer.tidy.html:993:41: [maybe] The variable ctx has values with different types
 test/chromeexperiments/raytracer.tidy.html:1007:41: [maybe] Reading absent property (computed name)
-test/chromeexperiments/raytracer.tidy.html:1010:21: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.tidy.html:1012:25: [maybe] Reading absent property (computed name)
 test/chromeexperiments/raytracer.tidy.html:1012:44: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.tidy.html:1013:33: [maybe] Conversion to number yields NaN
@@ -910,12 +854,10 @@ test/chromeexperiments/raytracer.tidy.html:1030:25: [maybe] Conversion to number
 test/chromeexperiments/raytracer.tidy.html:1030:33: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.tidy.html:1030:41: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.tidy.html:1032:24: [maybe] Reading absent property (computed name)
-test/chromeexperiments/raytracer.tidy.html:1033:21: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.tidy.html:1033:32: [maybe] Reading absent property (computed name)
 test/chromeexperiments/raytracer.tidy.html:1036:41: [maybe] Reading absent property (computed name)
 test/chromeexperiments/raytracer.tidy.html:1046:25: [maybe] Reading absent property (computed name)
 test/chromeexperiments/raytracer.tidy.html:1047:19: [maybe] Reading absent property (computed name)
-test/chromeexperiments/raytracer.tidy.html:1050:21: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.tidy.html:1055:30: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.tidy.html:1055:30: [maybe] Reading absent property (computed name)
 test/chromeexperiments/raytracer.tidy.html:1056:30: [maybe] Conversion to number yields NaN
@@ -950,15 +892,12 @@ test/chromeexperiments/raytracer.tidy.html:1082:32: [maybe] Conversion to number
 test/chromeexperiments/raytracer.tidy.html:1082:32: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.tidy.html:1082:44: [maybe] Reading absent property (computed name)
 test/chromeexperiments/raytracer.tidy.html:1094:47: [maybe] Reading absent property (computed name)
-test/chromeexperiments/raytracer.tidy.html:1095:21: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.tidy.html:1096:29: [maybe] Reading absent property (computed name)
 test/chromeexperiments/raytracer.tidy.html:1096:32: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.tidy.html:1096:56: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.tidy.html:1097:30: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.tidy.html:1097:46: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.tidy.html:1097:62: [maybe] Conversion to number yields NaN
-test/chromeexperiments/raytracer.tidy.html:1100:21: [maybe] Conversion to number yields NaN
-test/chromeexperiments/raytracer.tidy.html:1104:22: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.tidy.html:1104:32: [maybe] Reading absent property (computed name)
 test/chromeexperiments/raytracer.tidy.html:1104:50: [maybe] Reading absent property (computed name)
 test/chromeexperiments/raytracer.tidy.html:1104:67: [maybe] Reading absent property (computed name)
@@ -966,7 +905,6 @@ test/chromeexperiments/raytracer.tidy.html:1105:25: [maybe] Conversion to number
 test/chromeexperiments/raytracer.tidy.html:1106:25: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.tidy.html:1107:25: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.tidy.html:1112:25: [maybe] Conversion to number yields NaN
-test/chromeexperiments/raytracer.tidy.html:1112:32: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.tidy.html:1112:42: [maybe] Reading absent property (computed name)
 test/chromeexperiments/raytracer.tidy.html:1112:60: [maybe] Reading absent property (computed name)
 test/chromeexperiments/raytracer.tidy.html:1112:80: [maybe] Reading absent property (computed name)
@@ -982,7 +920,6 @@ test/chromeexperiments/raytracer.tidy.html:1119:59: [maybe] Conversion to number
 test/chromeexperiments/raytracer.tidy.html:1120:35: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.tidy.html:1120:47: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.tidy.html:1120:59: [maybe] Conversion to number yields NaN
-test/chromeexperiments/raytracer.tidy.html:1124:29: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.tidy.html:1162:30: [maybe] The variable imgdata has values with different types
 test/chromeexperiments/raytracer.tidy.html:1163:25: [maybe] Conversion from string to number yields NaN
 test/chromeexperiments/raytracer.tidy.html:1163:25: [maybe] Conversion to number yields NaN
@@ -1016,8 +953,6 @@ test/chromeexperiments/raytracer.tidy.html:1208:60: [maybe] Conversion to number
 test/chromeexperiments/raytracer.tidy.html:1208:84: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.tidy.html:1210:60: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.tidy.html:1210:84: [maybe] Conversion to number yields NaN
-test/chromeexperiments/raytracer.tidy.html:1225:21: [maybe] Conversion from string to number yields NaN
-test/chromeexperiments/raytracer.tidy.html:1225:21: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.tidy.html:1225:29: [maybe] The variable hei has values with different types
 test/chromeexperiments/raytracer.tidy.html:1228:29: [maybe] The variable updatetimer has values with different types
 test/chromeexperiments/raytracer.tidy.html:1228:44: [maybe] Conversion from string to number yields NaN

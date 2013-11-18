@@ -127,7 +127,7 @@ public class Function {
      * Called when the function is added to a flow graph.
      */
 	void setIndex(int index) {
-		if (this.index != -1 && !Options.isUnevalEnabled())
+		if (this.index != -1 && !Options.isUnevalizerEnabled())
 			throw new IllegalArgumentException("Function already belongs to a flow graph: " + getSourceLocation());
 		this.index = index;
 	}

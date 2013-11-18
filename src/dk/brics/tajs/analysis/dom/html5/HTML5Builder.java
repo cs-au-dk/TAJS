@@ -28,7 +28,7 @@ import dk.brics.tajs.util.Collections;
 
 public class HTML5Builder {
 	
-	public static Set<ObjectLabel> HTML5_OBJECT_LABELS = Collections.newSet();
+	public static final Set<ObjectLabel> HTML5_OBJECT_LABELS = Collections.newSet();
 
     public static void build(State s) {
         CanvasRenderingContext2D.build(s);

@@ -113,6 +113,7 @@ import dk.brics.tajs.lattice.HostObject;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.options.Options;
+import dk.brics.tajs.solver.Message.Severity;
 import dk.brics.tajs.util.AnalysisException;
 import dk.brics.tajs.util.Collections;
 
@@ -238,11 +239,10 @@ public class DOMFunctions {
     }
 
     /**
-     * Create a new DOM property with the given name and value on the specified
-     * objectlabel.
+     * Create a new DOM property with the given name and value on the specified objectlabel.
      */
     public static void createDOMProperty(State s, ObjectLabel label, String property, Value v) {
-        s.writeProperty(label, property, v);
+        s.writePropertyWithAttributes(label, property, v.setAttributes(v.isDontEnum(), v.isDontDelete(), v.isReadOnly()));
     }
 
     /**
@@ -463,6 +463,7 @@ public class DOMFunctions {
             case WINDOW_SET_TIMEOUT:
             case WINDOW_STOP:
             case WINDOW_UNESCAPE:
+            case WINDOW_GET_COMPUTED_STYLE:
                 return DOMWindow.evaluate(nativeObject, call, s, c);
             case DOCUMENT_ADOPT_NODE:
             case DOCUMENT_CREATE_ATTRIBUTE:
@@ -478,6 +479,7 @@ public class DOMFunctions {
             case DOCUMENT_GET_ELEMENT_BY_ID:
             case DOCUMENT_GET_ELEMENTS_BY_TAGNAME:
             case DOCUMENT_GET_ELEMENTS_BY_TAGNAME_NS:
+            case DOCUMENT_QUERY_SELECTOR_ALL:
             case DOCUMENT_IMPORT_NODE:
             case DOCUMENT_NORMALIZEDOCUMENT:
             case DOCUMENT_RENAME_NODE:
@@ -495,6 +497,7 @@ public class DOMFunctions {
             case ELEMENT_GET_BOUNDING_CLIENT_RECT:
             case ELEMENT_GET_ELEMENTS_BY_TAGNAME:
             case ELEMENT_GET_ELEMENTS_BY_TAGNAME_NS:
+            case ELEMENT_QUERY_SELECTOR_ALL:
             case ELEMENT_HAS_ATTRIBUTE:
             case ELEMENT_HAS_ATTRIBUTE_NS:
             case ELEMENT_REMOVE_ATTRIBUTE:
@@ -531,6 +534,7 @@ public class DOMFunctions {
             case NODE_IS_SUPPORTED:
             case NODE_HAS_ATTRIBUTES:
             case NODE_NORMALIZE:
+            case NODE_COMPARE_DOCUMENT_POSITION:
                 return DOMNode.evaluate(nativeObject, call, s, c);
             case TEXT_SPLIT_TEXT:
             case TEXT_REPLACE_WHOLE_TEXT:
@@ -550,6 +554,7 @@ public class DOMFunctions {
             case HTMLDOCUMENT_GET_ELEMENTS_BY_CLASS_NAME:
                 return HTMLDocument.evaluate(nativeObject, call, s, c);
             case HTMLELEMENT_GET_ELEMENTS_BY_CLASS_NAME:
+            case HTMLELEMENT_MATCHES_SELECTOR:
                 return HTMLElement.evaluate(nativeObject, call, s, c);
             case HTMLIMAGEELEMENT_CONSTRUCTOR:
                 return HTMLImageElement.evaluate(nativeObject, call, s, c);
@@ -683,7 +688,8 @@ public class DOMFunctions {
             case ACTIVE_X_OBJECT_CONSTRUCTOR:
                 return ActiveXObject.evaluate(nativeObject, call, s, c);
             default: {
-                throw new AnalysisException("Native DOM function " + nativeObject + " not supported");
+            	c.getMonitoring().addMessage(call.getSourceNode(), Severity.HIGH, "TypeError, call to non-function (DOM): " + nativeObject);
+            	return Value.makeNone();
             }
         }
     }

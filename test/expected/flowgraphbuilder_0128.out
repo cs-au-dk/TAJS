@@ -13,11 +13,14 @@ function f()
   block 3: [entry]
     node 4: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0128.js:1:1)
     ->[block 4]
-  block 4: [exit-ordinary]
-    node 5: return[v1] (test/flowgraphbuilder/flowgraph_builder0128.js:2:2)
+  block 4:
+    node 5: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0128.js:2:2)
+    ->[block 5]
+  block 5: [exit-ordinary]
+    node 6: return[v1] (test/flowgraphbuilder/flowgraph_builder0128.js:2:2)
     ->[]
-  block 5: [exit-exceptional]
-    node 6: exceptional-return (test/flowgraphbuilder/flowgraph_builder0128.js:2:2)
+  block 6: [exit-exceptional]
+    node 7: exceptional-return (test/flowgraphbuilder/flowgraph_builder0128.js:2:2)
     ->[]
 
 test/flowgraphbuilder/flowgraph_builder0128.js:1:1: [definite] Unreachable function f

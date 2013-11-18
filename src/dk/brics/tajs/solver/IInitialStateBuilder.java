@@ -22,12 +22,12 @@ import org.jdom.Document;
 /**
  * Interface for initial state builder classes.
  */
-public interface IInitialStateBuilder<BlockStateType extends IBlockState<BlockStateType, CallContextType, CallEdgeType>,
-                                      CallContextType extends ICallContext<CallContextType>,
+public interface IInitialStateBuilder<BlockStateType extends IBlockState<BlockStateType, ContextType, CallEdgeType>,
+                                      ContextType extends IContext<ContextType>,
                                       CallEdgeType extends ICallEdge<BlockStateType>> {
 
 	/**
 	 * Builds the initial state.
 	 */
-	public void addInitialState(BasicBlock global_entry_block, GenericSolver<BlockStateType, CallContextType, CallEdgeType, ?, ?>.SolverInterface c, Document document);
+	public void addInitialState(BasicBlock global_entry_block, GenericSolver<BlockStateType, ContextType, CallEdgeType, ?, ?>.SolverInterface c, Document document);
 }

@@ -43,7 +43,7 @@ function PB(c,dgg)
     ->[block 10,block 11]
   block 10:
     node 21: constant["self.",v3] (test/flowgraphbuilder/flowgraph_builder0132.js:3:19)
-    node 22: write-variable[v3,'dgg']* (test/flowgraphbuilder/flowgraph_builder0132.js:3:9)
+    node 22: write-variable[v3,'dgg']* (test/flowgraphbuilder/flowgraph_builder0132.js:3:19)
     ->[block 11]
   block 11: [exit-ordinary]
     node 23: return[v1] (test/flowgraphbuilder/flowgraph_builder0132.js:3:19)

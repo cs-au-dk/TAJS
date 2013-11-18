@@ -14,7 +14,7 @@ fg2: <main> function()
     node 7: construct[-,v3,v4,v5,v6,v2] (test/flowgraphbuilder/flowgraph_builder0156.tidy.html:22:15)
     ->[block 3]
   block 3:
-    node 8: write-variable[v2,'cs1']* (test/flowgraphbuilder/flowgraph_builder0156.tidy.html:22:1)
+    node 8: write-variable[v2,'cs1']* (test/flowgraphbuilder/flowgraph_builder0156.tidy.html:22:15)
     ->[block 4]
   block 4:
     node 9: function-expr[function(event),v7] (test/flowgraphbuilder/flowgraph_builder0156.tidy.html:26:2)
@@ -171,9 +171,6 @@ function(event)
     node 86: exceptional-return (test/flowgraphbuilder/flowgraph_builder0156.tidy.html:26:53)
     ->[]
 
-Unevalizer: Starting on: "cs1.move('l')"
-Unevalizer: Valid program
-Unevalizer: No name capture
 fg2: <main> function()
   block 0: [entry]
     node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0156.tidy.html:6)
@@ -190,7 +187,7 @@ fg2: <main> function()
     node 7: construct[-,v3,v4,v5,v6,v2] (test/flowgraphbuilder/flowgraph_builder0156.tidy.html:22:15)
     ->[block 3]
   block 3:
-    node 8: write-variable[v2,'cs1']* (test/flowgraphbuilder/flowgraph_builder0156.tidy.html:22:1)
+    node 8: write-variable[v2,'cs1']* (test/flowgraphbuilder/flowgraph_builder0156.tidy.html:22:15)
     ->[block 4]
   block 4:
     node 9: function-expr[function(event),v7] (test/flowgraphbuilder/flowgraph_builder0156.tidy.html:26:2)
@@ -370,11 +367,6 @@ function()
     node 96: exceptional-return (test/flowgraphbuilder/flowgraph_builder0156.tidy.html:1:24)
     ->[]
 
-Unevalizer: Starting on: "parseInt(this.c.style.left.substring(0,this.c.style.left.length-2))"
-Unevalizer: Valid program
-Unevalizer: No name capture
-Unevalizer: Return value of eval is used
-Unevalizer: Last expression has value
 fg2: <main> function()
   block 0: [entry]
     node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0156.tidy.html:6)
@@ -391,7 +383,7 @@ fg2: <main> function()
     node 7: construct[-,v3,v4,v5,v6,v2] (test/flowgraphbuilder/flowgraph_builder0156.tidy.html:22:15)
     ->[block 3]
   block 3:
-    node 8: write-variable[v2,'cs1']* (test/flowgraphbuilder/flowgraph_builder0156.tidy.html:22:1)
+    node 8: write-variable[v2,'cs1']* (test/flowgraphbuilder/flowgraph_builder0156.tidy.html:22:15)
     ->[block 4]
   block 4:
     node 9: function-expr[function(event),v7] (test/flowgraphbuilder/flowgraph_builder0156.tidy.html:26:2)

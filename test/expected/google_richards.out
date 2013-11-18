@@ -35,7 +35,6 @@ test/google/richards.js:520:18: [maybe] TypeError, accessing property of null/un
 test/google/richards.js:1:1: [maybe] Uncaught exception, constructed at [test/google/richards.js:180:9, test/google/richards.js:196:3, test/google/richards.js:231:23, test/google/richards.js:236:10, test/google/richards.js:317:18, test/google/richards.js:428:5, test/google/richards.js:456:9, test/google/richards.js:463:17, test/google/richards.js:468:19, test/google/richards.js:469:9, test/google/richards.js:469:16, test/google/richards.js:470:9, test/google/richards.js:475:17, test/google/richards.js:520:18]
 test/google/richards.js:194:13: [maybe] Reading absent property (computed name)
 test/google/richards.js:231:11: [maybe] Reading absent property (computed name)
-test/google/richards.js:465:9: [maybe] Conversion to number yields NaN
 test/google/richards.js:469:16: [maybe] Reading absent property (computed name)
 test/google/richards.js:470:22: [maybe] Conversion to number yields NaN
 test/google/richards.js:291:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision

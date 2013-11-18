@@ -30,7 +30,7 @@ import org.apache.log4j.PropertyConfigurator;
 import org.jdom.Document;
 
 import dk.brics.tajs.analysis.Analysis;
-import dk.brics.tajs.analysis.CallContext;
+import dk.brics.tajs.analysis.Context;
 import dk.brics.tajs.analysis.State;
 import dk.brics.tajs.flowgraph.FlowGraph;
 import dk.brics.tajs.htmlparser.HTMLParser;
@@ -70,7 +70,6 @@ public class Main {
 	 * the usage. Terminates with System.exit.
 	 */
 	public static void main(String[] args) {
-		Options.reset();
 		try {
 			initLogging();
 			Analysis a = init(args, null);
@@ -88,6 +87,7 @@ public class Main {
 	 * Resets all internal counters and caches.
 	 */
 	public static void reset() {
+		Options.reset();
 		BlockState.reset();
 		Obj.reset();
 		Value.reset();
@@ -137,8 +137,7 @@ public class Main {
 			if (!html_files.isEmpty()) {
 				if (html_files.size() > 1)
 					throw new AnalysisException("Only one HTML file can be analyzed at a time.");
-				if (!Options.isDSLEnabled())
-					Options.enableIncludeDom(); // enable DOM if any HTML files are involved, unless DSL is enabled
+				Options.enableIncludeDom(); // enable DOM if any HTML files are involved
 				HTMLParser p = new HTMLParser();
 				document = p.build(html_files.get(0));
                 List<EventHandlerJavaScriptSource> eventList = p.getEventHandlerAttributeList();
@@ -205,11 +204,11 @@ public class Main {
         	leavePhase(MESSAGES);
         }
 
-		CallGraph<State,CallContext,CallEdge<State>> call_graph = analysis.getSolver().getAnalysisLatticeElement().getCallGraph();
+		CallGraph<State,Context,CallEdge<State>> call_graph = analysis.getSolver().getAnalysisLatticeElement().getCallGraph();
 		if (Options.isStatisticsEnabled()) {
 			enterPhase(STATISTICS);
 			logger.info(analysis.getMonitoring());
-            System.out.println(call_graph.getCallGraphStatistics(analysis.getSolver().getFlowGraph()));
+            System.out.println(call_graph.getCallGraphStatistics());
 //			System.out.println(analysis.getOptimizer());
 			System.out.println("BlockState: created=" + BlockState.getNumberOfStatesCreated() + ", makeWritableStore=" + BlockState.getNumberOfMakeWritableStoreCalls());
 			System.out.println("Obj: created=" + Obj.getNumberOfObjsCreated() + ", makeWritableProperties=" + Obj.getNumberOfMakeWritablePropertiesCalls());

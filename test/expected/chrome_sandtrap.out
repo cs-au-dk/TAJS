@@ -61,8 +61,8 @@ test/chromeexperiments/sandtrap.tidy.html:350:1: [definite] Unreachable function
 test/chromeexperiments/sandtrap.tidy.html:355:1: [definite] Unreachable function showPlayNow
 test/chromeexperiments/sandtrap.tidy.html:370:1: [definite] Unreachable function doNothing
 test/chromeexperiments/sandtrap.tidy.html:380:1: [definite] The variable b is never used
-test/chromeexperiments/sandtrap.tidy.html:383:9: [definite] Unreachable code
 test/chromeexperiments/sandtrap.tidy.html:383:13: [definite] The variable d is never used
+test/chromeexperiments/sandtrap.tidy.html:383:17: [definite] Unreachable code
 test/chromeexperiments/sandtrap.tidy.html:384:13: [definite] The variable c is never used
 test/chromeexperiments/sandtrap.tidy.html:403:5: [definite] The variable startLevelTime is never used
 test/chromeexperiments/sandtrap.tidy.html:409:7: [definite] Unreachable code

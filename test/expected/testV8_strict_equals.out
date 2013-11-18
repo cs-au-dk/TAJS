@@ -1,4 +1,5 @@
 test/v8tests/strict-equals.js:30:1: [definite] ReferenceError, reading absent variable assertTrue
+test/v8tests/strict-equals.js:29:9: [definite] The assignment to u has no effect
 test/v8tests/strict-equals.js:28:5: [definite] The variable n is never used
 test/v8tests/strict-equals.js:29:5: [definite] The variable u is never used
 test/v8tests/strict-equals.js:30:12: [definite] Unreachable code

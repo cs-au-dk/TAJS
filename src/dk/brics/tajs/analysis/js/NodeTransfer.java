@@ -28,7 +28,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import dk.brics.tajs.analysis.CallContext;
+import dk.brics.tajs.analysis.Context;
 import dk.brics.tajs.analysis.Conversion;
 import dk.brics.tajs.analysis.Exceptions;
 import dk.brics.tajs.analysis.FunctionCalls;
@@ -43,6 +43,7 @@ import dk.brics.tajs.flowgraph.Function;
 import dk.brics.tajs.flowgraph.IReturnNode;
 import dk.brics.tajs.flowgraph.jsnodes.AssumeNode;
 import dk.brics.tajs.flowgraph.jsnodes.BeginForInNode;
+import dk.brics.tajs.flowgraph.jsnodes.BeginWithNode;
 import dk.brics.tajs.flowgraph.jsnodes.BinaryOperatorNode;
 import dk.brics.tajs.flowgraph.jsnodes.CallConversionNode;
 import dk.brics.tajs.flowgraph.jsnodes.CallNode;
@@ -52,13 +53,12 @@ import dk.brics.tajs.flowgraph.jsnodes.DeclareFunctionNode;
 import dk.brics.tajs.flowgraph.jsnodes.DeclareVariableNode;
 import dk.brics.tajs.flowgraph.jsnodes.DeletePropertyNode;
 import dk.brics.tajs.flowgraph.jsnodes.EndForInNode;
-import dk.brics.tajs.flowgraph.jsnodes.BeginWithNode;
+import dk.brics.tajs.flowgraph.jsnodes.EndWithNode;
 import dk.brics.tajs.flowgraph.jsnodes.EventDispatcherNode;
 import dk.brics.tajs.flowgraph.jsnodes.EventEntryNode;
 import dk.brics.tajs.flowgraph.jsnodes.ExceptionalReturnNode;
 import dk.brics.tajs.flowgraph.jsnodes.HasNextPropertyNode;
 import dk.brics.tajs.flowgraph.jsnodes.IfNode;
-import dk.brics.tajs.flowgraph.jsnodes.EndWithNode;
 import dk.brics.tajs.flowgraph.jsnodes.NewObjectNode;
 import dk.brics.tajs.flowgraph.jsnodes.NextPropertyNode;
 import dk.brics.tajs.flowgraph.jsnodes.NodeVisitor;
@@ -73,6 +73,7 @@ import dk.brics.tajs.flowgraph.jsnodes.WritePropertyNode;
 import dk.brics.tajs.flowgraph.jsnodes.WriteVariableNode;
 import dk.brics.tajs.lattice.BlockState;
 import dk.brics.tajs.lattice.CallEdge;
+import dk.brics.tajs.lattice.ExecutionContext;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.ObjectLabel.Kind;
 import dk.brics.tajs.lattice.Str;
@@ -90,7 +91,7 @@ public class NodeTransfer implements NodeVisitor<State> {
 
     private Solver.SolverInterface c;
     
-    private Monitoring<State,CallContext,CallEdge<State>> m;
+    private Monitoring<State,Context,CallEdge<State>> m;
 
     /**
      * Constructs a new TransferFunctions object.
@@ -109,19 +110,19 @@ public class NodeTransfer implements NodeVisitor<State> {
     /**
      * Transfer ordinary and exceptional return for the given call node and callee entry.
      */
-    public void transferReturn(AbstractNode call_node, BasicBlock callee_entry, CallContext caller_context, CallContext callee_context,
-    		CallContext edge_context) {
+    public void transferReturn(AbstractNode call_node, BasicBlock callee_entry, Context caller_context, Context callee_context,
+    		Context edge_context) {
     	if (call_node instanceof BeginForInNode) {
     		BasicBlock end_block = ((BeginForInNode) call_node).getEndNode().getBlock();
-    		if (c.getAnalysisLatticeElement().getState(end_block, callee_context) != null)
+    		if (c.getAnalysisLatticeElement().getState(end_block, callee_context) != null)// (EndForInNode uses same context as corresponding BeginForInNode)
     			c.addToWorklist(end_block, callee_context);
     	} else { // call_node is an ordinary call node
     		Function callee = callee_entry.getFunction();
     		BasicBlock ordinary_exit = callee.getOrdinaryExit();
     		BasicBlock exceptional_exit = callee.getExceptionalExit();
-    		State ordinary_exit_state = c.getAnalysisLatticeElement().getState(ordinary_exit, callee_context);
+    		State ordinary_exit_state = c.getAnalysisLatticeElement().getState(ordinary_exit, callee_context);// (ReturnNode uses same context as corresponding function entry node)
     		State exceptional_exit_state = c.getAnalysisLatticeElement().getState(exceptional_exit, callee_context);
-    		NodeAndContext<CallContext> caller = new NodeAndContext<>(call_node, caller_context);
+    		NodeAndContext<Context> caller = new NodeAndContext<>(call_node, caller_context);
     		if (ordinary_exit_state != null) {
     			if (ordinary_exit.getFirstNode() instanceof IReturnNode) {
     				IReturnNode returnNode = (IReturnNode) ordinary_exit.getFirstNode();
@@ -345,7 +346,7 @@ public class NodeTransfer implements NodeVisitor<State> {
             }
             if (result_base_reg != AbstractNode.NO_VALUE)
             	state.writeRegister(result_base_reg, Value.makeObject(base_objs)); // see 10.1.4
-            m.visitRead(n, c.getCurrentContext(), v, state);
+            m.visitRead(n, v, state);
        		m.visitReadVariable(n, v, state); // TODO: combine some of these m.visitXYZ methods?
         }
         if (v.isNotPresent() && !Options.isPropagateDeadFlow()) {
@@ -436,7 +437,7 @@ public class NodeTransfer implements NodeVisitor<State> {
         	v = UnknownValueResolver.join(v, state.readPropertyValue(objlabels, "NaN"), state);
         }
         m.visitVariableOrProperty(n.getPropertyString(), n.getSourceLocation(), v);
-        m.visitRead(n, c.getCurrentContext(), v, state);
+        m.visitRead(n, v, state);
         if (v.isNotPresent() && !Options.isPropagateDeadFlow()) {
             state.setToNone();
             return;
@@ -585,7 +586,7 @@ public class NodeTransfer implements NodeVisitor<State> {
     @Override
     public void visit(final CallNode n, final State state) {
     	if (n.getFunctionRegister() != AbstractNode.NO_VALUE) // old style call (where the function is given as a variable read)
-    		FunctionCalls.callFunction(new CallInfo(n, state) {
+    		FunctionCalls.callFunction(new OrdinaryCallInfo(n, state) {
 
     			@Override
     			public Value getFunctionValue() {
@@ -660,7 +661,7 @@ public class NodeTransfer implements NodeVisitor<State> {
             for (Map.Entry<ObjectLabel,Set<ObjectLabel>> me : target2this.entrySet()) {
             	final ObjectLabel target = me.getKey();
             	final Set<ObjectLabel> this_objs = me.getValue();
-        		FunctionCalls.callFunction(new CallInfo(n, state) {
+        		FunctionCalls.callFunction(new OrdinaryCallInfo(n, state) {
 
         			@Override
         			public Value getFunctionValue() {
@@ -674,7 +675,7 @@ public class NodeTransfer implements NodeVisitor<State> {
         		}, state, c);
             }
             // also model calls to non-function values
-    		FunctionCalls.callFunction(new CallInfo(n, state) {
+    		FunctionCalls.callFunction(new OrdinaryCallInfo(n, state) {
 
     			@Override
     			public Value getFunctionValue() {
@@ -692,13 +693,13 @@ public class NodeTransfer implements NodeVisitor<State> {
     /**
      * Call information for an ordinary call/construct.
      */
-    private class CallInfo implements FunctionCalls.CallInfo {
+    private class OrdinaryCallInfo implements FunctionCalls.CallInfo {
     	
     	private CallNode n;
     	
     	private State state;
     	
-    	public CallInfo(CallNode n, State state) {
+    	public OrdinaryCallInfo(CallNode n, State state) {
     		this.n = n;
     		this.state = state;
     	}
@@ -757,8 +758,8 @@ public class NodeTransfer implements NodeVisitor<State> {
 		}
 
 		@Override
-		public int getBaseRegister() {
-			return n.getBaseRegister();
+		public ExecutionContext getExecutionContext() {
+			return state.getExecutionContext();
 		}
     }
 
@@ -784,7 +785,7 @@ public class NodeTransfer implements NodeVisitor<State> {
      *
      * @param caller if non-null, only consider this caller
      */
-    public void transferReturn(int valueReg, BasicBlock block, State state, NodeAndContext<CallContext> caller, CallContext edge_context) {
+    public void transferReturn(int valueReg, BasicBlock block, State state, NodeAndContext<Context> caller, Context edge_context) {
         Value v;
         if (valueReg != AbstractNode.NO_VALUE)
             v = state.readRegister(valueReg);
@@ -806,7 +807,7 @@ public class NodeTransfer implements NodeVisitor<State> {
      *
      * @param caller if non-null, only consider this caller
      */
-    public void transferExceptionalReturn(BasicBlock block, State state, NodeAndContext<CallContext> caller, CallContext edge_context) {
+    public void transferExceptionalReturn(BasicBlock block, State state, NodeAndContext<Context> caller, Context edge_context) {
         Value v = state.readRegister(AbstractNode.EXCEPTION_REG);
         state.removeRegister(AbstractNode.EXCEPTION_REG);
         UserFunctionCalls.leaveUserFunction(v, true, block.getFunction(), state, c, caller, edge_context);
@@ -818,7 +819,7 @@ public class NodeTransfer implements NodeVisitor<State> {
     @Override
     public void visit(ThrowNode n, State state) {
         Value v = state.readRegister(n.getValueRegister());
-        Exceptions.throwException(state.clone(), v, c, n, c.getCurrentContext());
+        Exceptions.throwException(state.clone(), v, c, n);
         state.setToNone();
     }
 
@@ -884,23 +885,23 @@ public class NodeTransfer implements NodeVisitor<State> {
         BlockState.Properties p = state.getEnumProperties(objs);
         Value proplist;
         int it = n.getPropertyListRegister();
-		if (Options.isForInSpecializationEnabled() && !Options.isContextSensitivityDisabled() && 
+		if (Options.isForInSpecializationEnabled() && 
 				p.isDefinite()) { // TODO: also specialize if some properties are optionally absent?
 	    	if (c.isScanning())
 	    		return; // not checking for messages in the rest of the method
         	// specialize contexts
             BasicBlock succ = n.getBlock().getSingleSuccessor();
-            List<CallContext> specialized_contexts = newList();
+            List<Context> specialized_contexts = newList();
         	for (String k : p.getDefinitely()) {
         		State specialized_state = state.clone();
         		Value v = Value.makeStr(k);
 				specialized_state.writeRegister(it, v.makeExtendedScope());
-        		CallContext specialized_context = new CallContext(c.getCurrentContext(), succ, it, v);
+        		Context specialized_context = Context.makeForInEntryContext(state.getContext(), succ, it, v);
         		specialized_contexts.add(specialized_context);
 				specialized_state.setContext(specialized_context);
-            	c.propagateToFunctionEntry(n, c.getCurrentContext(), specialized_state, specialized_context, succ);
+            	c.propagateToFunctionEntry(n, state.getContext(), specialized_state, specialized_context, succ);
         	}
-        	c.getAnalysis().setForInSpecializations(n, c.getCurrentContext(), specialized_contexts);
+        	c.getAnalysis().setForInSpecializations(n, state.getContext(), specialized_contexts);
         	if (specialized_contexts.isEmpty()) {
         		// already at end-of-list
         		state.writeRegister(it, Value.makeNull().makeExtendedScope());
@@ -921,8 +922,12 @@ public class NodeTransfer implements NodeVisitor<State> {
      */
     @Override
     public void visit(NextPropertyNode n, State state) {
-        Value property_name = state.readRegister(n.getPropertyListRegister());
-        state.writeRegister(n.getPropertyRegister(), property_name.restrictToStr()); // restrictToStr to remove Null (the end-of-list marker)
+        Value property_name = state.readRegister(n.getPropertyListRegister()).restrictToStr(); // restrictToStr to remove Null (the end-of-list marker)
+        if (property_name.isNone()) { // possible if branch pruning in EdgeTransfer is disabled
+        	state.setToNone();
+        	return;
+        }
+        state.writeRegister(n.getPropertyRegister(), property_name);
     }
 
     /**
@@ -949,16 +954,16 @@ public class NodeTransfer implements NodeVisitor<State> {
     	Value proplist = UnknownValueResolver.getRealValue(state.readRegister(it), state);
     	if (!proplist.isMaybeNull()) { // proplist contains Null iff not doing context specialization
 			// TODO: note that this currently gets executed for each specialized context, and repeatedly if new dataflow appears (try to eliminate some of the redundant work?)
-    		CallContext nonspecialized_context = c.getCurrentContext().getEnclosing();
-    		List<CallContext> specialized_contexts = c.getAnalysis().getForInSpecializations(n.getBeginNode(), nonspecialized_context);
+    		Context nonspecialized_context = state.getContext().getEnclosingContext();
+    		List<Context> specialized_contexts = c.getAnalysis().getForInSpecializations(n.getBeginNode(), nonspecialized_context);
     		BasicBlock entry_block = n.getBeginNode().getBlock().getSingleSuccessor();
     		BasicBlock exit_block = n.getBlock();
     		List<State> entry_states = newList();
     		List<State> exit_states = newList();
     		boolean all_arrived = true;
-    		for (CallContext sc : specialized_contexts) {
+    		for (Context sc : specialized_contexts) {
     			State sc_entry_state = c.getAnalysisLatticeElement().getState(entry_block, sc);
-    			State sc_exit_state = c.getAnalysisLatticeElement().getState(exit_block, sc);
+    			State sc_exit_state = c.getAnalysisLatticeElement().getState(exit_block, sc); // (EndForInNode uses same context as corresponding BeginForInNode)
     			if (sc_exit_state == null) {
     				all_arrived = false;
     				break;
@@ -995,13 +1000,12 @@ public class NodeTransfer implements NodeVisitor<State> {
     					merged = i_exit_state;
     				} else if (merged.mergeForInSpecialization(i_exit_state, reads, i_entry_state)) {
     					conflict = true;
-    					break;
     				}
     				// FIXME: also report conflict if properties being iterated over are deleted
     			}
     			// merge states
     			State begin_state = c.getAnalysisLatticeElement().getState(n.getBeginNode().getBlock(), nonspecialized_context);
-    			State caller_entry_state = c.getAnalysisLatticeElement().getState(nonspecialized_context.getEntry(), nonspecialized_context);
+    			State caller_entry_state = c.getAnalysisLatticeElement().getState(nonspecialized_context.getEntryBlockAndContext());
     			if (conflict) {
     				// read/write conflict, fall back to one-or-more iterations for each property
     				for (State entry_state : entry_states) {
@@ -1009,14 +1013,16 @@ public class NodeTransfer implements NodeVisitor<State> {
     					se.clearEffects();
     					se.setContext(entry_state.getContext());
     					se.writeRegister(it, entry_state.readRegister(it));
-    	    			c.propagateToBasicBlock(se, state.getBasicBlock().getSingleSuccessor(), entry_state.getContext());
+    	    			c.propagateToBasicBlock(se, state.getBasicBlock().getSingleSuccessor(), 
+    	    					Context.makeSuccessorContext(se, state.getBasicBlock().getSingleSuccessor()));
     				}
     			}
     			// propagate merged state with nonspecialized context and end-of-list iterator back to the HasNextPropertyNode
     			merged.mergeFunctionReturn(begin_state, begin_state, caller_entry_state, merged.getSummarized(), null);
     			merged.setContext(nonspecialized_context);
     			merged.writeRegister(it, Value.makeNull().makeExtendedScope());
-    			c.propagateToBasicBlock(merged, state.getBasicBlock().getSingleSuccessor(), nonspecialized_context);
+    			c.propagateToBasicBlock(merged, state.getBasicBlock().getSingleSuccessor(), 
+    					Context.makeSuccessorContext(merged, state.getBasicBlock().getSingleSuccessor()));
     		}
     		// cancel ordinary state propagation
 			state.setToNone();
@@ -1028,46 +1034,77 @@ public class NodeTransfer implements NodeVisitor<State> {
      */
     @Override
     public void visit(AssumeNode n, State state) {
-        if (Options.isLocalPathSensitivityDisabled())
+        if (Options.isControlSensitivityDisabled())
             return;
         switch (n.getKind()) {
 
-            case VARIABLE_NON_NULL_UNDEF: {
-                if (Options.isDOMEnabled() && n.getVariableName().equals("window")) // FIXME: ?
-                    return;
-                Value v = state.readVariable(n.getVariableName(), null);
-                v = UnknownValueResolver.getRealValue(v, state); // TODO: limits use of polymorphic values?
-                v = v.restrictToNotNullNotUndef().restrictToNotAbsent();
-                if (v.isNotPresent() && !Options.isPropagateDeadFlow())
-                    state.setToNone();
-                else
-                    state.writeVariable(n.getVariableName(), v, false);
-                break;
-            }
-
-            case PROPERTY_NON_NULL_UNDEF: {
-                String propname;
-                if (n.isPropertyFixed())
-                    propname = n.getPropertyString();
-                else {
-                    Value propval = state.readRegister(n.getPropertyRegister());
-                    propval = UnknownValueResolver.getRealValue(propval, state); // TODO: limits use of polymorphic values?
-                    if (!propval.isMaybeSingleStr() || propval.isMaybeOtherThanStr())
-                        break; // safe to do nothing here if it gets complicated
-                    propname = propval.getStr();
-                }
-                Set<ObjectLabel> baseobjs = Conversion.toObjectLabels(state, n.getAccessNode(), state.readRegister(n.getBaseRegister()), null); // TODO: omitting side-effects here
-                Value v = state.readPropertyWithAttributes(baseobjs, propname);
-                if (v.isNotPresent() && !Options.isPropagateDeadFlow())
-                    state.setToNone();
-                else if (baseobjs.size() == 1 && baseobjs.iterator().next().isSingleton()) {
-                    v = UnknownValueResolver.getRealValue(v, state); // TODO: limits use of polymorphic values?
-                    v = v.restrictToNotNullNotUndef().restrictToNotAbsent();
-                    state.writePropertyWithAttributes(baseobjs, propname, v, false);
-                }
-                break;
-            }
+        case VARIABLE_NON_NULL_UNDEF: {
+        	if (Options.isDOMEnabled() && n.getVariableName().equals("window")) // FIXME: ?
+        		return;
+        	Value v = state.readVariable(n.getVariableName(), null);
+        	v = UnknownValueResolver.getRealValue(v, state); // TODO: limits use of polymorphic values?
+        	v = v.restrictToNotNullNotUndef().restrictToNotAbsent();
+        	if (v.isNotPresent() && !Options.isPropagateDeadFlow())
+        		state.setToNone();
+        	else
+        		state.writeVariable(n.getVariableName(), v, false);
+        	break;
         }
+
+        case PROPERTY_NON_NULL_UNDEF: {
+        	String propname;
+        	if (n.isPropertyFixed())
+        		propname = n.getPropertyString();
+        	else {
+        		Value propval = state.readRegister(n.getPropertyRegister());
+        		propval = UnknownValueResolver.getRealValue(propval, state); // TODO: limits use of polymorphic values?
+        		if (!propval.isMaybeSingleStr() || propval.isMaybeOtherThanStr())
+        			break; // safe to do nothing here if it gets complicated
+        		propname = propval.getStr();
+        	}
+        	Set<ObjectLabel> baseobjs = Conversion.toObjectLabels(state, n.getAccessNode(), state.readRegister(n.getBaseRegister()), null); // TODO: omitting side-effects here
+        	Value v = state.readPropertyWithAttributes(baseobjs, propname);
+        	if (v.isNotPresent() && !Options.isPropagateDeadFlow())
+        		state.setToNone();
+        	else if (baseobjs.size() == 1 && baseobjs.iterator().next().isSingleton()) {
+        		v = UnknownValueResolver.getRealValue(v, state); // TODO: limits use of polymorphic values?
+        		v = v.restrictToNotNullNotUndef().restrictToNotAbsent();
+        		state.writePropertyWithAttributes(baseobjs, propname, v, false);
+        	}
+        	break;
+        }
+
+        case UNREACHABLE: {
+        	if (Options.isUnreachableEnabled()) {
+        		state.setToNone();
+        	}
+        	break;
+        }
+
+        default:
+        	throw new AnalysisException("Unhandled AssumeNode kind: " + n.getKind());
+        }
+    }
+
+    public static Value restrictToBooly(Value v, final boolean boolyValue) {
+    	// ECMA 5.1.9.2
+		Value falsyValues = Value.join(
+				Value.makeUndef(),
+				Value.makeNull(),
+				Value.makeBool(false),
+				// 0.0, NaN <-- they join to UInt!
+				Value.makeStr(""),
+				Value.makeAbsent() // TAJS specific
+				);
+		final Value restricted;
+		if (boolyValue) {
+			// can not use v.remove(falsyValues), immediately as .remove requires subsumption...
+			Value falsyParts = Value.join(v.restrictTo(falsyValues), v.restrictTo(Value.makeNum(0)), v.restrictTo(Value.makeNumNaN()));
+			restricted = v.remove(falsyParts);
+		} else {
+			restricted = Value.join(v.restrictTo(falsyValues), v.restrictTo(Value.makeNum(0)), v.restrictTo(Value.makeNumNaN()));
+		}
+		return restricted;
     }
 
     @Override

@@ -1,0 +1,4 @@
+test/micro/test203.js:6:3: [info] Abstract value: 0.0
+test/micro/test203.js:6:3: [info] Abstract value: 1.0
+test/micro/test203.js:6:3: [info] Abstract value: 2.0
+test/micro/test203.js:13:1: [info] Abstract value: "foobarbaz"

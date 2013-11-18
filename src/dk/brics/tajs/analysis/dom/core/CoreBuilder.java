@@ -47,8 +47,8 @@ public class CoreBuilder {
         DOMImplementation.build(s);
 
         // Set the remaining properties on DOMNode, due to circularity, and summarize.
-        createDOMProperty(s, DOMNode.PROTOTYPE, "attributes", Value.makeObject(DOMNamedNodeMap.INSTANCES));
-        createDOMProperty(s, DOMNode.PROTOTYPE, "ownerDocument", Value.makeObject(DOMDocument.INSTANCES));
+        createDOMProperty(s, DOMNode.INSTANCES, "attributes", Value.makeObject(DOMNamedNodeMap.INSTANCES).setReadOnly());
+        createDOMProperty(s, DOMNode.INSTANCES, "ownerDocument", Value.makeObject(DOMDocument.INSTANCES).joinNull().setReadOnly());
         s.multiplyObject(DOMNode.INSTANCES);
         DOMNode.INSTANCES = DOMNode.INSTANCES.makeSingleton().makeSummary();
     }

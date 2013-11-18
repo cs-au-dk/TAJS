@@ -19,14 +19,20 @@ package dk.brics.tajs.analysis.nativeobjects;
 import java.util.Collections;
 import java.util.Set;
 
-import dk.brics.tajs.analysis.*;
+import dk.brics.tajs.analysis.Conversion;
+import dk.brics.tajs.analysis.Exceptions;
 import dk.brics.tajs.analysis.FunctionCalls.CallInfo;
+import dk.brics.tajs.analysis.InitialStateBuilder;
+import dk.brics.tajs.analysis.NativeFunctions;
+import dk.brics.tajs.analysis.Solver;
+import dk.brics.tajs.analysis.State;
 import dk.brics.tajs.flowgraph.jsnodes.CallNode;
+import dk.brics.tajs.lattice.Bool;
+import dk.brics.tajs.lattice.Obj;
 import dk.brics.tajs.lattice.ObjectLabel;
+import dk.brics.tajs.lattice.ObjectLabel.Kind;
 import dk.brics.tajs.lattice.UnknownValueResolver;
 import dk.brics.tajs.lattice.Value;
-import dk.brics.tajs.lattice.Bool;
-import dk.brics.tajs.lattice.ObjectLabel.Kind;
 import dk.brics.tajs.solver.Message.Severity;
 import dk.brics.tajs.solver.Message.Status;
 import dk.brics.tajs.util.Strings;
@@ -147,6 +153,7 @@ public class JSArray {
             resString += zeroArg.isMaybeOtherThanUndef() ? Conversion.toString(zeroArg, c).getStr() + sep : "";
 			for (int i = 1; i < length; i++) {
 				Value prop = state.readPropertyValue(objlabels, Integer.toString(i));
+				prop = UnknownValueResolver.getRealValue(prop, state);
                 Value tmpStr = Conversion.toString(prop.restrictToNotNullNotUndef(), c);
                 if (!tmpStr.isMaybeSingleStr() && !(tmpStr.isNone() && (prop.isMaybeUndef() || prop.isMaybeNull())))
                     return Value.makeAnyStr();
@@ -300,8 +307,11 @@ public class JSArray {
                     else if (near_end.isMaybePresent())
                         state.writePropertyWithAttributes(thisobj, s1, near_end);
                 }
-            } else
-				state.writeProperty(thisobj, Value.makeAnyStrUInt(), state.readPropertyWithAttributes(thisobj, Value.makeAnyStrUInt()), true, false);
+            } else {
+            	Value v = state.readPropertyWithAttributes(thisobj, Value.makeAnyStrUInt());
+            	if (v.isMaybePresent())
+            		state.writeProperty(thisobj, Value.makeAnyStrUInt(), v, true, false);
+            }
 			return Value.makeObject(thisobj);
 		}
 		
@@ -318,7 +328,7 @@ public class JSArray {
             int max_index = -1;
             if (length < 0) { // Shift all properties by one even if we don't know the length.
                 for (ObjectLabel ll : thisobj) {
-                    for (String prop : state.getObject(ll, false).getPropertyNames()) {
+                    for (String prop : UnknownValueResolver.getProperties(ll, state).keySet()) {
                         if (!Strings.isArrayIndex(prop))
                             continue;
                         max_index = Math.max(max_index, Integer.valueOf(prop));
@@ -326,7 +336,7 @@ public class JSArray {
                 }
             }
             int loopmax = length > 0 ? Long.valueOf(length).intValue() : max_index;
-            for (int i = 1; i < loopmax; i++) {
+            for (int i = 1; i <= loopmax; i++) { // TODO: this may be bad if the array length is high
                 String s = Integer.toString(i);
                 Bool is_def = state.hasProperty(thisobj, s);
                 if (is_def.isMaybeTrue()) {
@@ -343,15 +353,51 @@ public class JSArray {
 		}
 		
 		case ARRAY_SLICE: {
-			NativeFunctions.expectParameters(nativeobject, call, c, 1, 2);
-			ObjectLabel objlabel = new ObjectLabel(call.getSourceNode(), Kind.ARRAY);
-			state.newObject(objlabel);
-			Value res = Value.makeObject(objlabel);
-			state.writeInternalPrototype(objlabel, Value.makeObject(InitialStateBuilder.ARRAY_PROTOTYPE));
-			Value v = state.readPropertyValue(state.readThisObjects(), Value.makeAnyStrUInt());
-			state.writeProperty(Collections.singleton(objlabel), Value.makeAnyStrUInt(), v, true, false);
-			state.writePropertyWithAttributes(objlabel, "length", Value.makeAnyNumUInt().setAttributes(true, true, false));
-			return res; // TODO: improve precision?
+			if (!call.isUnknownNumberOfArgs() && call.getNumberOfArgs() == 0) {
+				// sometimes used to clone arrays (or to create real arrays from array-like objects)
+				Set<ObjectLabel> thisobj = state.readThisObjects();
+				ObjectLabel objlabel = new ObjectLabel(call.getSourceNode(), Kind.ARRAY);
+				state.newObject(objlabel);
+				Value res = Value.makeObject(objlabel);
+				state.writeInternalPrototype(objlabel, Value.makeObject(InitialStateBuilder.ARRAY_PROTOTYPE));
+	            Value length_val = state.readPropertyValue(thisobj, "length");
+				state.writePropertyWithAttributes(objlabel, "length", length_val.setAttributes(true, true, false));
+                for (ObjectLabel ll : thisobj) {
+                	Set<String> from_props = UnknownValueResolver.getProperties(ll, state).keySet();
+                	for (String prop : from_props) {
+                    	if (Strings.isArrayIndex(prop)) {
+                    		Value v = state.readPropertyDirect(Collections.singleton(ll), prop);
+                    		if (v.isMaybePresent()) {
+                    			state.writeProperty(objlabel, prop, v);
+                    		}
+                    	}
+                    }
+                    Obj obj_to = state.getObject(objlabel, true);
+                    Obj obj_from = state.getObject(ll, false);
+					Value default_to = UnknownValueResolver.getDefaultArrayProperty(objlabel, state);
+                    Value default_from = UnknownValueResolver.getDefaultArrayProperty(ll, state);
+					obj_to.setDefaultArrayProperty(default_from.join(default_to));
+                	for (String prop : UnknownValueResolver.getProperties(objlabel, state).keySet()) {
+                    	if (!from_props.contains(prop) && Strings.isArrayIndex(prop)) {
+                    		Value v = obj_from.getDefaultArrayProperty();
+                    		if (v.isMaybePresent()) {
+                    			state.writeProperty(objlabel, prop, v);
+                    		}
+                    	}
+                    }
+                }
+				return res;
+			} else {
+				NativeFunctions.expectParameters(nativeobject, call, c, 1, 2);
+				ObjectLabel objlabel = new ObjectLabel(call.getSourceNode(), Kind.ARRAY);
+				state.newObject(objlabel);
+				Value res = Value.makeObject(objlabel);
+				state.writeInternalPrototype(objlabel, Value.makeObject(InitialStateBuilder.ARRAY_PROTOTYPE));
+				Value v = state.readPropertyValue(state.readThisObjects(), Value.makeAnyStrUInt());
+				state.writeProperty(Collections.singleton(objlabel), Value.makeAnyStrUInt(), v, true, false);
+				state.writePropertyWithAttributes(objlabel, "length", Value.makeAnyNumUInt().setAttributes(true, true, false));
+				return res; // TODO: improve precision?
+			}
 //			NativeFunctions.expectTwoParameters(solver, node, params, first_param);
 //			Value arr = NativeFunctions.readParameter(call, state, first_param-1);
 //			Value res = Value.makeBottom();

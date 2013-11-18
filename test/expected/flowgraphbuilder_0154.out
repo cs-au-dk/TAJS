@@ -37,9 +37,6 @@ fg2: <main> function()
     node 12: exceptional-return (test/flowgraphbuilder/flowgraph_builder0154.tidy.html:3)
     ->[]
 
-Unevalizer: Starting on: "function position_CM(o){ var p = { Left: 0 }; while (!!o) {     p.Left += 9; o = o.offsetParent;   }; return p; }"
-Unevalizer: Valid program
-Unevalizer: No name capture
 fg2: <main> function()
   block 0: [entry]
     node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0154.tidy.html:3)

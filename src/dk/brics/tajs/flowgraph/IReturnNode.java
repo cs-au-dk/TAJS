@@ -20,7 +20,7 @@ package dk.brics.tajs.flowgraph;
  * Interface for return nodes.
  *
  */
-public interface IReturnNode {
+public interface IReturnNode { // TODO: remove IReturnNode?
 
 	/**
 	 * Returns the return value register.

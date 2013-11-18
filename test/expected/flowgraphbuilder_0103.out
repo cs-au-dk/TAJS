@@ -8,7 +8,7 @@ fg2: <main> function()
     node 3: new[v2] (test/flowgraphbuilder/flowgraph_builder0103.js:1:9)
     node 4: constant[42.0,v3] (test/flowgraphbuilder/flowgraph_builder0103.js:1:12)
     node 5: write-property[v2,'a',v3] (test/flowgraphbuilder/flowgraph_builder0103.js:1:9)
-    node 6: write-variable[v2,'x']* (test/flowgraphbuilder/flowgraph_builder0103.js:1:1)
+    node 6: write-variable[v2,'x']* (test/flowgraphbuilder/flowgraph_builder0103.js:1:9)
     node 7: read-variable['x',v5,-] (test/flowgraphbuilder/flowgraph_builder0103.js:3:15)
     ->[block 2]
   block 2:

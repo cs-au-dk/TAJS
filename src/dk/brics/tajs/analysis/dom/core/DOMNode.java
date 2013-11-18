@@ -16,21 +16,21 @@
 
 package dk.brics.tajs.analysis.dom.core;
 
+import static dk.brics.tajs.analysis.dom.DOMFunctions.createDOMFunction;
+import static dk.brics.tajs.analysis.dom.DOMFunctions.createDOMProperty;
 import dk.brics.tajs.analysis.Conversion;
 import dk.brics.tajs.analysis.FunctionCalls;
 import dk.brics.tajs.analysis.InitialStateBuilder;
 import dk.brics.tajs.analysis.NativeFunctions;
 import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.analysis.State;
-import dk.brics.tajs.analysis.dom.*;
+import dk.brics.tajs.analysis.dom.DOMConversion;
+import dk.brics.tajs.analysis.dom.DOMObjects;
+import dk.brics.tajs.analysis.dom.DOMWindow;
+import dk.brics.tajs.analysis.dom.html.HTMLBuilder;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.util.AnalysisException;
-
-import java.util.Set;
-
-import static dk.brics.tajs.analysis.dom.DOMFunctions.createDOMFunction;
-import static dk.brics.tajs.analysis.dom.DOMFunctions.createDOMProperty;
 
 /**
  * The Node interface is the primary datatype for the entire Document Object
@@ -82,15 +82,10 @@ public class DOMNode {
          * Properties.
          */
         // DOM LEVEL 1
-        createDOMProperty(s, PROTOTYPE, "nodeName", Value.makeAnyStr());
-        createDOMProperty(s, PROTOTYPE, "nodeValue", Value.makeAnyStr());
-        createDOMProperty(s, PROTOTYPE, "nodeType", Value.makeAnyNum());
-        createDOMProperty(s, PROTOTYPE, "parentNode", Value.makeObject(INSTANCES));
-        createDOMProperty(s, PROTOTYPE, "childNodes", Value.makeObject(DOMNodeList.INSTANCES));
-        createDOMProperty(s, PROTOTYPE, "firstChild", Value.makeObject(INSTANCES));
-        createDOMProperty(s, PROTOTYPE, "lastChild", Value.makeObject(INSTANCES));
-        createDOMProperty(s, PROTOTYPE, "previousSibling", Value.makeObject(INSTANCES));
-        createDOMProperty(s, PROTOTYPE, "nextSibling", Value.makeObject(INSTANCES));
+        createDOMProperty(s, PROTOTYPE, "nodeName", Value.makeAnyStr().setReadOnly());
+        createDOMProperty(s, PROTOTYPE, "nodeValue", Value.makeAnyStr().setReadOnly());
+        createDOMProperty(s, PROTOTYPE, "nodeType", Value.makeAnyNum().setReadOnly());
+        createDOMProperty(s, PROTOTYPE, "childNodes", Value.makeObject(DOMNodeList.INSTANCES).setReadOnly());
         // NB: 'attributes' and 'ownerDocument' are set in CoreBuilder due to circularity
 
         // DOM LEVEL 2
@@ -115,6 +110,12 @@ public class DOMNode {
         createDOMFunction(s, PROTOTYPE, DOMObjects.NODE_IS_SUPPORTED, "isSupported", 2);
         createDOMFunction(s, PROTOTYPE, DOMObjects.NODE_HAS_ATTRIBUTES, "hasAttributes", 0);
         createDOMFunction(s, PROTOTYPE, DOMObjects.NODE_NORMALIZE, "normalize", 0);
+
+        // DOM LEVEL 3
+        createDOMFunction(s, PROTOTYPE, DOMObjects.NODE_COMPARE_DOCUMENT_POSITION, "compareDocumentPosition", 1);
+
+        // DOM LEVEL 4
+        createDOMFunction(s, PROTOTYPE, DOMObjects.NODE_CONTAINS, "contains", 1);
     }
 
     /**
@@ -129,9 +130,7 @@ public class DOMNode {
             case NODE_CLONE_NODE: {
                 NativeFunctions.expectParameters(nativeObject, call, c, 1, 1);
                 /* Value deep =*/ Conversion.toBoolean(NativeFunctions.readParameter(call, s, 0));
-                int baseReg = call.getBaseRegister();
-                Set<ObjectLabel> cloneLabels = s.readRegister(baseReg).getObjectLabels();
-                return Value.makeObject(cloneLabels);
+                return Value.makeObject(HTMLBuilder.HTML_OBJECT_LABELS);
             }
             case NODE_HAS_CHILD_NODES: {
                 NativeFunctions.expectParameters(nativeObject, call, c, 0, 0);
@@ -139,20 +138,20 @@ public class DOMNode {
             }
             case NODE_INSERT_BEFORE: {
                 NativeFunctions.expectParameters(nativeObject, call, c, 2, 2);
-                Value newChild = DOMConversion.toNode(NativeFunctions.readParameter(call, s, 0), c);
+                /* Value newChild =*/ DOMConversion.toNode(NativeFunctions.readParameter(call, s, 0), c);
                 /* Value refChild =*/ DOMConversion.toNode(NativeFunctions.readParameter(call, s, 1), c);
-                return newChild;
+                return Value.makeObject(HTMLBuilder.HTML_OBJECT_LABELS);
             }
             case NODE_REMOVE_CHILD: {
                 NativeFunctions.expectParameters(nativeObject, call, c, 1, 1);
-                Value oldChild = DOMConversion.toNode(NativeFunctions.readParameter(call, s, 0), c);
-                return oldChild;
+                /*Value oldChild =*/ DOMConversion.toNode(NativeFunctions.readParameter(call, s, 0), c);
+                return Value.makeObject(HTMLBuilder.HTML_OBJECT_LABELS);
             }
             case NODE_REPLACE_CHILD: {
                 NativeFunctions.expectParameters(nativeObject, call, c, 2, 2);
                 /* Value newChild =*/ DOMConversion.toNode(NativeFunctions.readParameter(call, s, 0), c);
-                Value oldChild = DOMConversion.toNode(NativeFunctions.readParameter(call, s, 1), c);
-                return oldChild;
+                /* Value oldChild =*/ DOMConversion.toNode(NativeFunctions.readParameter(call, s, 1), c);
+                return Value.makeObject(HTMLBuilder.HTML_OBJECT_LABELS);
             }
             case NODE_IS_SUPPORTED: {
                 NativeFunctions.expectParameters(nativeObject, call, c, 2, 2);
@@ -167,6 +166,14 @@ public class DOMNode {
             case NODE_NORMALIZE: {
                 NativeFunctions.expectParameters(nativeObject, call, c, 0, 0);
                 return Value.makeUndef();
+            }
+            case NODE_COMPARE_DOCUMENT_POSITION: {
+            	NativeFunctions.expectParameters(nativeObject, call, c, 1, 1);
+            	return Value.makeAnyNumUInt();
+            }
+            case NODE_CONTAINS: {
+                NativeFunctions.expectParameters(nativeObject, call, c, 1, 1);
+                return Value.makeAnyBool();
             }
             default: {
                 throw new AnalysisException("Unsupported Native Object: " + nativeObject);

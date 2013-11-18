@@ -21,7 +21,11 @@ public class TestMicro {
 	public void init() {
 		Options.reset();
 		Options.enableTest();
-		Options.enablePolymorphic();
+		Options.enableContextSensitiveHeap();
+		Options.enableParameterSensitivity();
+		Options.enableNumericVariableSensitivity();
+		//Options.enableForInSpecialization();
+		//Options.enableNoPolymorphic();
 		//Options.enableNoModified();
 		//Options.enableNoLazy();
 		//Options.enableDebug();
@@ -1882,6 +1886,62 @@ public class TestMicro {
 	}
 
 	@Test
+	public void micro_200() throws Exception {
+		Misc.init();
+		Options.enableForInSpecialization();
+		Misc.captureSystemOutput();
+		String[] args = {"test/micro/test200.js"};
+		Misc.run(args);
+		Misc.checkSystemOutput();
+	}
+
+	@Test
+	public void micro_201() throws Exception {
+		Misc.init();
+		Options.enableForInSpecialization();
+		Misc.captureSystemOutput();
+		String[] args = {"test/micro/test201.js"};
+		Misc.run(args);
+		Misc.checkSystemOutput();
+	}
+
+	@Test
+	public void micro_202() throws Exception {
+		Misc.init();
+		Options.enableForInSpecialization();
+		Misc.captureSystemOutput();
+		String[] args = {"test/micro/test202.js"};
+		Misc.run(args);
+		Misc.checkSystemOutput();
+	}
+
+	@Test
+	public void micro_203() throws Exception {
+		Misc.init();
+		Misc.captureSystemOutput();
+		String[] args = {"test/micro/test203.js"};
+		Misc.run(args);
+		Misc.checkSystemOutput();
+	}
+
+	@Test
+	public void micro_204() throws Exception {
+		Misc.init();
+		Misc.captureSystemOutput();
+		String[] args = {"test/micro/test204.js"};
+		Misc.run(args);
+		Misc.checkSystemOutput();
+	}
+
+	@Test
+	public void micro_205() throws Exception {
+		Misc.init();
+		Misc.captureSystemOutput();
+		String[] args = {"test/micro/test205.js"};
+		Misc.run(args);
+		Misc.checkSystemOutput();
+	}
+
 	public void micro_testArray() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
@@ -1903,7 +1963,7 @@ public class TestMicro {
 	public void micro_testEval() throws Exception { 
 		Misc.init();
 		Misc.captureSystemOutput();
-		Options.enableUnevalMode();
+		Options.enableUnevalizer();
 		String[] args = {"test/micro/testEval.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
@@ -1913,10 +1973,10 @@ public class TestMicro {
 	public void micro_testFunction() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
-		Options.enableUnevalMode();
+		Options.enableUnevalizer();
 		String[] args = {"test/micro/testFunction.js"};
 		Misc.run(args);
-		Options.disableUnevalMode();
+		Options.disableUnevalizer();
 		Misc.checkSystemOutput();
 	}
 

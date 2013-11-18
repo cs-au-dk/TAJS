@@ -22,7 +22,6 @@ test/google/splay.js:333:16: [maybe] TypeError, accessing property of null/undef
 test/google/splay.js:334:15: [maybe] TypeError, accessing property of null/undefined
 test/google/splay.js:336:15: [maybe] TypeError, accessing property of null/undefined
 test/google/splay.js:1:1: [maybe] Uncaught exception, constructed at [test/google/splay.js:59:15, test/google/splay.js:65:17, test/google/splay.js:77:27, test/google/splay.js:127:7, test/google/splay.js:154:11, test/google/splay.js:157:7, test/google/splay.js:158:11, test/google/splay.js:170:5, test/google/splay.js:188:10, test/google/splay.js:205:7, test/google/splay.js:208:12, test/google/splay.js:221:5, test/google/splay.js:221:55, test/google/splay.js:250:15, test/google/splay.js:254:17, test/google/splay.js:257:24, test/google/splay.js:272:17, test/google/splay.js:275:25, test/google/splay.js:333:16, test/google/splay.js:334:15, test/google/splay.js:336:15]
-test/google/splay.js:64:9: [maybe] Conversion to number yields NaN
 test/google/splay.js:64:9: [maybe] Reading absent property (computed name)
 test/google/splay.js:64:20: [maybe] Reading absent property (computed name)
 test/google/splay.js:331:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision

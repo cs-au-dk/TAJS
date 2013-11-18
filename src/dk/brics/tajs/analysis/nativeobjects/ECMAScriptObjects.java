@@ -34,6 +34,7 @@ public enum ECMAScriptObjects implements HostObject {
     OBJECT_HASOWNPROPERTY("Object.prototype.hasOwnProperty"),
     OBJECT_ISPROTOTYPEOF("Object.prototype.isPrototypeOf"),
     OBJECT_PROPERTYISENUMERABLE("Object.prototype.propertyIsEnumerable"),
+    OBJECT_DEFINE_PROPERTY("Object.defineProperty"),
 
     FUNCTION("Function"),
     FUNCTION_PROTOTYPE("Function.prototype"),
@@ -219,14 +220,15 @@ public enum ECMAScriptObjects implements HostObject {
     ASSERT_MOST_RECENT_OBJ("assertMostRecentObj"), //nonstandard
     ASSERT_SUMMARY_OBJ("assertSummaryObj"), //nonstandard
     CONVERSION_TO_PRIMITIVE("conversionToPrimitive"), // nonstandard
-    TAJS_GET_UI_EVENT("_TAJS_getUIEvent"), // nonstandard
-    TAJS_GET_DOCUMENT_EVENT("_TAJS_getDocumentEvent"), // nonstandard
-    TAJS_GET_MOUSE_EVENT("_TAJS_getMouseEvent"), // nonstandard
-    TAJS_GET_KEYBOARD_EVENT("_TAJS_getKeyboardEvent"), // nonstandard
-    TAJS_GET_EVENT_LISTENER("_TAJS_getEventListener"), // nonstandard
-    TAJS_GET_WHEEL_EVENT("_TAJS_getWheelEvent"), // nonstandard
-    TAJS_GET_AJAX_EVENT("_TAJS_getAjaxEvent"), // nonstandard
-    ADD_CONTEXT_SENSITIVITY("_TAJS_addContextSensitivity"); // nonstandard
+    TAJS_GET_UI_EVENT("TAJS_getUIEvent"), // nonstandard
+    TAJS_GET_DOCUMENT_EVENT("TAJS_getDocumentEvent"), // nonstandard
+    TAJS_GET_MOUSE_EVENT("TAJS_getMouseEvent"), // nonstandard
+    TAJS_GET_KEYBOARD_EVENT("TAJS_getKeyboardEvent"), // nonstandard
+    TAJS_GET_EVENT_LISTENER("TAJS_getEventListener"), // nonstandard
+    TAJS_GET_WHEEL_EVENT("TAJS_getWheelEvent"), // nonstandard
+    TAJS_GET_AJAX_EVENT("TAJS_getAjaxEvent"), // nonstandard
+    TAJS_ADD_CONTEXT_SENSITIVITY("TAJS_addContextSensitivity"), // nonstandard
+    TAJS_NEW_OBJECT("TAJS_newObject"); // nonstandard
 
     private HostAPIs api;
     

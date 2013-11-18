@@ -66,9 +66,6 @@ function CSlider(c)
     node 26: exceptional-return (test/flowgraphbuilder/flowgraph_builder0155.tidy.html:10:32)
     ->[]
 
-Unevalizer: Starting on: "cs1.l()"
-Unevalizer: Valid program
-Unevalizer: No name capture
 fg2: <main> function()
   block 0: [entry]
     node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0155.tidy.html:6)

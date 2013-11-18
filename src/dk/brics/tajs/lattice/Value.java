@@ -27,6 +27,7 @@ import java.util.Set;
 import java.util.WeakHashMap;
 
 import dk.brics.tajs.flowgraph.SourceLocation;
+import dk.brics.tajs.lattice.ObjectLabel.Kind;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.util.AnalysisException;
 import dk.brics.tajs.util.Strings;
@@ -249,7 +250,7 @@ public final class Value implements Undef, Null, Bool, Num, Str {
 			if (msg != null)
 				throw new AnalysisException("Invalid value (0x" + Integer.toHexString(v.flags) + ","
 						+ Strings.escape(v.str) + "," + v.num + "," + v.object_labels + "), " + msg);
-			if (!Options.isPolymorphicEnabled() && v.isPolymorphic())
+			if (Options.isPolymorphicDisabled() && v.isPolymorphic())
 				throw new AnalysisException("Unexpected polymorphic value");
 		}
 		canonicalizing = true;
@@ -429,7 +430,10 @@ public final class Value implements Undef, Null, Bool, Num, Str {
 	 * The modified flag is ignored.
 	 */
 	public boolean isNone() {
-		return (flags & ~MODIFIED) == 0 && num == null && str == null && object_labels == null && var == null;
+		if (var == null)
+			return (flags & ~MODIFIED) == 0 && num == null && str == null && object_labels == null;
+		else
+			return (flags & (ABSENT | PRESENT)) == 0;
 	}
 
 	/**
@@ -594,16 +598,6 @@ public final class Value implements Undef, Null, Bool, Num, Str {
 		Value r = new Value(this);
 		r.flags &= ~ATTR;
 		r.flags |= from.flags & ATTR;
-		return canonicalize(r);
-	}
-
-	/**
-	 * Constructs a value as a copy of this value but with no attribute information.
-	 */
-	public Value setBottomAttributes() {
-		checkNotUnknown();
-		Value r = new Value(this);
-		r.flags &= ~ATTR;
 		return canonicalize(r);
 	}
 
@@ -1696,6 +1690,35 @@ public final class Value implements Undef, Null, Bool, Num, Str {
 	}
 
 	/**
+	 * Constructs a value as a copy of this value but definitely not falsy.
+	 */
+	public Value restrictToTruthy() {
+		checkNotPolymorphicOrUnknown();
+		Value r = new Value(this);
+		if ((r.flags & STR_PREFIX) == 0 && r.str != null && r.str.length() == 0)
+			r.str = null;
+		if (r.num != null && Math.abs(r.num) == 0.0)
+			r.num = null;
+		r.flags &= ~(BOOL_FALSE | NULL | UNDEF | NUM_NAN);
+		return canonicalize(r);
+	}
+
+	/**
+	 * Constructs a value as a copy of this value but definitely not truthy.
+	 */
+	public Value restrictToFalsy() {
+		checkNotPolymorphicOrUnknown();
+		Value r = new Value(this);
+		if ((r.flags & STR_PREFIX) != 0 || (r.str != null && r.str.length() > 0))
+			r.str = null;
+		if (r.num != null && Math.abs(r.num) != 0.0)
+			r.num = null;
+		r.object_labels = null;
+		r.flags &= ~(BOOL_TRUE | STR_PREFIX);
+		return canonicalize(r);
+	}
+
+	/**
 	 * Constructs a value from this value where only the string/boolean/number facets are considered.
 	 */
 	public Value restrictToStrBoolNum() {
@@ -2745,8 +2768,8 @@ public final class Value implements Undef, Null, Bool, Num, Str {
 
 	/**
 	 * Returns the number of different types of this value.
-	 * The possible types are here boolean/string/number/undef/object where null counts as an object.
-	 * Polymorphic and unknown values count as 0.
+	 * The possible types are here boolean/string/number/function/array/native/dom/other. Undef and null are ignored, except if they are the only value. 
+	 * Polymorphic and unknown values also count as 0.
 	 */
 	public int typeSize() {
 		if (isUnknown() || isPolymorphic())
@@ -2758,10 +2781,45 @@ public final class Value implements Undef, Null, Bool, Num, Str {
 			c++;
 		if (!isNotNum())
 			c++;
-		if (!isNotUndef())
-			c++;
-		if (!isNotNull() || isMaybeObject())
-			c++;
+		if (object_labels != null) {
+			boolean is_function = false;
+			boolean is_array = false;
+			boolean is_native = false;
+			boolean is_dom = false;
+			boolean is_other = false;
+			for (ObjectLabel objlabel : object_labels) {
+				if (objlabel.getKind() == Kind.FUNCTION)
+					is_function = true;
+				else if (objlabel.getKind() == Kind.ARRAY)
+					is_array = true;
+				else if (objlabel.isHostObject()) {
+					switch (objlabel.getHostObject().getAPI().getShortName()) {
+					case "native":
+						is_native = true;
+						break;
+					case "dom":
+						is_dom = true;
+						break;
+					default:
+						is_other = true;
+					}
+				} else
+					is_other = true;
+			}
+			if (is_function)
+				c++;
+			if (is_array)
+				c++;
+			if (is_native)
+				c++;
+			if (is_dom)
+				c++;
+			if (is_other)
+				c++;
+		}
+		if (c == 0 && (isMaybeNull() || isMaybeUndef())) {
+			c = 1;
+		}
 		return c;
 	}
 

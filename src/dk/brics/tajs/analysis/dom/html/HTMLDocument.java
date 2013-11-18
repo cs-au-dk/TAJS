@@ -80,6 +80,11 @@ public class HTMLDocument {
         createDOMProperty(s, INSTANCES, "width", Value.makeAnyNumUInt());
         createDOMProperty(s, INSTANCES, "height", Value.makeAnyNumUInt());
 
+        // various properties from the NODE Interface:
+        createDOMProperty(s, INSTANCES, "nodeName", Value.makeStr("#document").setReadOnly());
+        createDOMProperty(s, INSTANCES, "nodeValue", Value.makeNull().setReadOnly());
+        createDOMProperty(s, INSTANCES, "nodeType", Value.makeNum(9).setReadOnly());
+
         s.multiplyObject(INSTANCES);
         INSTANCES = INSTANCES.makeSingleton().makeSummary();
 

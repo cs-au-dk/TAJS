@@ -65,9 +65,6 @@ function(event)
     node 22: exceptional-return (test/flowgraphbuilder/flowgraph_builder0172.tidy.html:9:51)
     ->[]
 
-Unevalizer: Starting on: "with(x){active=0}"
-Unevalizer: Valid program
-Unevalizer: No name capture
 fg2: <main> function()
   block 0: [entry]
     node 0: constant[undefined,v1] (dummy0.js:1:1)
@@ -161,9 +158,6 @@ function()
     node 33: exceptional-return (test/flowgraphbuilder/flowgraph_builder0172.tidy.html:1:29)
     ->[]
 
-Unevalizer: Starting on: "with(x){active=0}"
-Unevalizer: Valid program
-Unevalizer: No name capture
 test/flowgraphbuilder/flowgraph_builder0172.tidy.html:1:20: [definite] ReferenceError, reading absent variable x
 test/flowgraphbuilder/flowgraph_builder0172.tidy.html:1:15: [definite] Unreachable code
 test/flowgraphbuilder/flowgraph_builder0172.tidy.html:8:2: [definite] The variable event is never used

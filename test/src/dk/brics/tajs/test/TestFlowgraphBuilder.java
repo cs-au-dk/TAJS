@@ -1388,9 +1388,9 @@ public class TestFlowgraphBuilder {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/flowgraphbuilder/flowgraph_builder0150.js"};
-        Options.enableUnevalMode();
+        Options.enableUnevalizer();
         Misc.run(args);
-        Options.disableUnevalMode();
+        Options.disableUnevalizer();
         Misc.checkSystemOutput();
     }
 
@@ -1399,9 +1399,9 @@ public class TestFlowgraphBuilder {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/flowgraphbuilder/flowgraph_builder0151.js"};
-        Options.enableUnevalMode();
+        Options.enableUnevalizer();
         Misc.run(args);
-        Options.disableUnevalMode();
+        Options.disableUnevalizer();
         Misc.checkSystemOutput();
     }
 
@@ -1410,9 +1410,9 @@ public class TestFlowgraphBuilder {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/flowgraphbuilder/flowgraph_builder0152.js"};
-        Options.enableUnevalMode();
+        Options.enableUnevalizer();
         Misc.run(args);
-        Options.disableUnevalMode();
+        Options.disableUnevalizer();
         Misc.checkSystemOutput();
     }
 
@@ -1421,9 +1421,9 @@ public class TestFlowgraphBuilder {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/flowgraphbuilder/flowgraph_builder0153.js"};
-        Options.enableUnevalMode();
+        Options.enableUnevalizer();
         Misc.run(args);
-        Options.disableUnevalMode();
+        Options.disableUnevalizer();
         Misc.checkSystemOutput();
     }
 
@@ -1432,9 +1432,9 @@ public class TestFlowgraphBuilder {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/flowgraphbuilder/flowgraph_builder0154.html"};
-        Options.enableUnevalMode();
+        Options.enableUnevalizer();
         Misc.run(args);
-        Options.disableUnevalMode();
+        Options.disableUnevalizer();
         Misc.checkSystemOutput();
     }
 
@@ -1443,9 +1443,9 @@ public class TestFlowgraphBuilder {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/flowgraphbuilder/flowgraph_builder0155.html"};
-        Options.enableUnevalMode();
+        Options.enableUnevalizer();
         Misc.run(args);
-        Options.disableUnevalMode();
+        Options.disableUnevalizer();
         Misc.checkSystemOutput();
     }
 
@@ -1455,9 +1455,9 @@ public class TestFlowgraphBuilder {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/flowgraphbuilder/flowgraph_builder0156.html"};
-        Options.enableUnevalMode();
+        Options.enableUnevalizer();
         Misc.run(args);
-        Options.disableUnevalMode();
+        Options.disableUnevalizer();
         Misc.checkSystemOutput();
     }
 
@@ -1602,10 +1602,10 @@ public class TestFlowgraphBuilder {
     public void flowgraphbuilder_0171() throws Exception {
         Misc.init();
         Misc.captureSystemOutput();
-        Options.enableUnevalMode();
+        Options.enableUnevalizer();
         String[] args = {"test/flowgraphbuilder/flowgraph_builder0171.js"};
         Misc.run(args);
-        Options.disableUnevalMode();
+        Options.disableUnevalizer();
         Misc.checkSystemOutput();
     }
 
@@ -1613,11 +1613,11 @@ public class TestFlowgraphBuilder {
     public void flowgraphbuilder_0171un() throws Exception {
         Misc.init();
         Misc.captureSystemOutput();
-        Options.enableUnevalMode();
+        Options.enableUnevalizer();
         Options.enableUnrollOneAndAHalf();
         String[] args = {"test/flowgraphbuilder/flowgraph_builder0171.js"};
         Misc.run(args);
-        Options.disableUnevalMode();
+        Options.disableUnevalizer();
         Options.disableUnrollOneAndAHalf();
         Misc.checkSystemOutput();
     }
@@ -1626,10 +1626,10 @@ public class TestFlowgraphBuilder {
     public void flowgraphbuilder_0172() throws Exception {
         Misc.init();
         Misc.captureSystemOutput();
-        Options.enableUnevalMode();
+        Options.enableUnevalizer();
         String[] args = {"test/flowgraphbuilder/flowgraph_builder0172.html"};
         Misc.run(args);
-        Options.disableUnevalMode();
+        Options.disableUnevalizer();
         Misc.checkSystemOutput();
     }
 
@@ -1657,10 +1657,10 @@ public class TestFlowgraphBuilder {
     public void flowgraphbuilder_0175() throws Exception {
         Misc.init();
         Misc.captureSystemOutput();
-        Options.enableUnevalMode();
+        Options.enableUnevalizer();
         String[] args = {"test/flowgraphbuilder/flowgraph_builder0175.js"};
         Misc.run(args);
-        Options.disableUnevalMode();
+        Options.disableUnevalizer();
         Misc.checkSystemOutput();
     }
 

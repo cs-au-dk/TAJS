@@ -19,7 +19,10 @@ public class TestUneval {
 	public void init() {
         Options.reset();
         Options.enableTest();
-        Options.enableUnevalMode();
+        Options.enableUnevalizer();
+		Options.enableContextSensitiveHeap();
+		Options.enableParameterSensitivity();
+		Options.enableNumericVariableSensitivity();
 	}
 	
 	@Test

@@ -7,11 +7,11 @@ fg2: <main> function()
     ->[block 1]
   block 1:
     node 4: constant[1.0,v2] (test/flowgraphbuilder/flowgraph_builder0028.js:1:9)
-    node 5: write-variable[v2,'x']* (test/flowgraphbuilder/flowgraph_builder0028.js:1:1)
+    node 5: write-variable[v2,'x']* (test/flowgraphbuilder/flowgraph_builder0028.js:1:9)
     node 6: constant[2.0,v3] (test/flowgraphbuilder/flowgraph_builder0028.js:1:16)
-    node 7: write-variable[v3,'y']* (test/flowgraphbuilder/flowgraph_builder0028.js:1:1)
+    node 7: write-variable[v3,'y']* (test/flowgraphbuilder/flowgraph_builder0028.js:1:16)
     node 8: constant[3.0,v4] (test/flowgraphbuilder/flowgraph_builder0028.js:1:23)
-    node 9: write-variable[v4,'z']* (test/flowgraphbuilder/flowgraph_builder0028.js:1:1)
+    node 9: write-variable[v4,'z']* (test/flowgraphbuilder/flowgraph_builder0028.js:1:23)
     ->[block 2]
   block 2: [exit-ordinary]
     node 10: return[v1] (test/flowgraphbuilder/flowgraph_builder0028.js:1:1)

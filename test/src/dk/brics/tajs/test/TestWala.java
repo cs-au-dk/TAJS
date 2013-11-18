@@ -20,7 +20,6 @@ public class TestWala {
 	public void init() {
         Options.reset();
 		Options.enableTest();
-		Options.enablePolymorphic();
 		// Options.enableNoLazy();
 	}
 
@@ -76,7 +75,7 @@ public class TestWala {
 	public void wala_newfn() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
-        Options.enableUnevalMode();
+        Options.enableUnevalizer();
 		String[] args = {"test/wala/newfn.js"};
 		Misc.run(args);
         Misc.checkSystemOutput();

@@ -23,7 +23,7 @@ import java.util.Set;
 
 import org.apache.log4j.Logger;
 
-import dk.brics.tajs.analysis.CallContext;
+import dk.brics.tajs.analysis.Context;
 import dk.brics.tajs.analysis.Conversion;
 import dk.brics.tajs.analysis.EvalCache;
 import dk.brics.tajs.analysis.Exceptions;
@@ -41,6 +41,7 @@ import dk.brics.tajs.flowgraph.FlowGraphFragment;
 import dk.brics.tajs.flowgraph.jsnodes.CallNode;
 import dk.brics.tajs.flowgraph.jsnodes.Node;
 import dk.brics.tajs.js2flowgraph.RhinoASTToFlowgraph;
+import dk.brics.tajs.lattice.ExecutionContext;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.ObjectLabel.Kind;
 import dk.brics.tajs.lattice.UnknownValueResolver;
@@ -75,7 +76,7 @@ public class JSFunction {
             if (c.isScanning())
                 return Value.makeNone();
 
-			if (Options.isUnevalEnabled()) {
+			if (Options.isUnevalizerEnabled()) {
                 FlowGraph currentFg = c.getFlowGraph();
 
 				//First parse the argument string
@@ -114,14 +115,14 @@ public class JSFunction {
     				logger.debug("Unevalized: " + unevaled);
 
                 EvalCache evalCache = c.getAnalysis().getEvalCache();
-                NodeAndContext<CallContext> cc = new NodeAndContext<>(callNode, c.getCurrentContext());
+                NodeAndContext<Context> cc = new NodeAndContext<>(callNode, state.getContext());
                 FlowGraphFragment e = evalCache.getCode(cc);
 
                 if (e == null || !e.getKey().equals(unevaledSubst))
                     e = (new RhinoASTToFlowgraph()).extendFlowgraph(currentFg, unevaled, unevaledSubst, callNode, e, var);
 
                 evalCache.setCode(cc, e);
-                c.propagateToBasicBlock(state.clone(), e.getEntryBlock(), c.getCurrentContext());
+                c.propagateToBasicBlock(state.clone(), e.getEntryBlock(), state.getContext());
                 return Value.makeNone();
 			}
 			throw new AnalysisException("Don't know how to handle call to 'Function' - unevalizer isn't enabled");
@@ -240,14 +241,15 @@ public class JSFunction {
 				}
 
 				@Override
-				public int getBaseRegister() {
-					return call.getResultRegister();
+				public ExecutionContext getExecutionContext() {
+					return call.getExecutionContext();
 				}
 			}, state, c);
 			return Value.makeNone();
 		} 
 		
 		case FUNCTION_CALL: { // 15.3.4.4
+			NativeFunctions.expectParameters(nativeobject, call, c, 1, -1);
 			FunctionCalls.callFunction(new FunctionCalls.CallInfo() {
 
 				@Override
@@ -282,7 +284,8 @@ public class JSFunction {
 
 				@Override
 				public int getNumberOfArgs() {
-					return call.getNumberOfArgs() - 1;
+					int n = call.getNumberOfArgs();
+					return n > 0 ? n - 1 : 0;
 				}
 
 				@Override
@@ -301,8 +304,8 @@ public class JSFunction {
 				}
 
 				@Override
-				public int getBaseRegister() {
-					return call.getBaseRegister();
+				public ExecutionContext getExecutionContext() {
+					return call.getExecutionContext();
 				}
 			}, state, c);
 			return Value.makeNone(); // no direct flow to the successor

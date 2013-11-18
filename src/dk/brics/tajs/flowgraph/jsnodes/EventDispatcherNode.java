@@ -44,6 +44,7 @@ public class EventDispatcherNode extends Node implements ICallNode {
 	public EventDispatcherNode(Type type, SourceLocation location) {
 		super(location);
         this.type = type;
+        setArtificial();
 	}
 
 	/**
@@ -80,7 +81,7 @@ public class EventDispatcherNode extends Node implements ICallNode {
 
 	@Override
 	public void check(BasicBlock b) {
-        if (!Options.isDOMEnabled() && !Options.isDSLEnabled())
-            throw new AnalysisException("EventDispatcherNode found without DOM or DSL enabled: " + toString());
+        if (!Options.isDOMEnabled())
+            throw new AnalysisException("EventDispatcherNode found without DOM enabled: " + toString());
 	}
 }

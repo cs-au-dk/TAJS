@@ -1,6 +1,1 @@
-Unevalizer: Starting on: "z = 3"
-Unevalizer: Valid program
-Unevalizer: No name capture
-Unevalizer: Return value of eval is used
-Unevalizer: Last expression has value
 test/uneval/uneval41.js:9:1: [info] Abstract value: 3.0

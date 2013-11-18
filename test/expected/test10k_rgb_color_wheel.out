@@ -1,3 +1,4 @@
+test/10k/rgb_color_wheel.tidy.html:213:35: [definite] The assignment to delta2 has no effect
 test/10k/rgb_color_wheel.tidy.html:74:1: [definite] Unreachable function cs
 test/10k/rgb_color_wheel.tidy.html:208:9: [definite] The variable r is never used
 test/10k/rgb_color_wheel.tidy.html:208:12: [definite] The variable theta is never used
@@ -53,6 +54,7 @@ test/10k/rgb_color_wheel.tidy.html:298:9: [maybe] TypeError, accessing property 
 test/10k/rgb_color_wheel.tidy.html:298:9: [maybe] TypeError, accessing property of null/undefined
 test/10k/rgb_color_wheel.tidy.html:299:9: [maybe] TypeError, accessing property of null/undefined
 test/10k/rgb_color_wheel.tidy.html:327:12: [maybe] TypeError, accessing property of null/undefined
+test/10k/rgb_color_wheel.tidy.html:328:9: [maybe] TypeError, argument is not of expected type: Node.prototype
 test/10k/rgb_color_wheel.tidy.html:328:9: [maybe] TypeError, call to non-function
 test/10k/rgb_color_wheel.tidy.html:330:25: [maybe] TypeError, accessing property of null/undefined
 test/10k/rgb_color_wheel.tidy.html:333:9: [maybe] TypeError, call to non-function
@@ -115,14 +117,12 @@ test/10k/rgb_color_wheel.tidy.html:111:63: [maybe] Conversion to number yields N
 test/10k/rgb_color_wheel.tidy.html:111:74: [maybe] Reading absent property (computed name)
 test/10k/rgb_color_wheel.tidy.html:132:13: [maybe] Reading absent property (computed name)
 test/10k/rgb_color_wheel.tidy.html:132:21: [maybe] Reading absent property (computed name)
-test/10k/rgb_color_wheel.tidy.html:134:9: [maybe] Conversion to number yields NaN
 test/10k/rgb_color_wheel.tidy.html:136:20: [maybe] Reading absent property (computed name)
 test/10k/rgb_color_wheel.tidy.html:136:28: [maybe] Reading absent property (computed name)
 test/10k/rgb_color_wheel.tidy.html:137:20: [maybe] Reading absent property (computed name)
 test/10k/rgb_color_wheel.tidy.html:137:28: [maybe] Reading absent property (computed name)
 test/10k/rgb_color_wheel.tidy.html:139:19: [maybe] Reading absent property (computed name)
 test/10k/rgb_color_wheel.tidy.html:139:27: [maybe] Reading absent property (computed name)
-test/10k/rgb_color_wheel.tidy.html:141:9: [maybe] Conversion to number yields NaN
 test/10k/rgb_color_wheel.tidy.html:143:20: [maybe] Reading absent property (computed name)
 test/10k/rgb_color_wheel.tidy.html:143:28: [maybe] Reading absent property (computed name)
 test/10k/rgb_color_wheel.tidy.html:144:20: [maybe] Reading absent property (computed name)
@@ -145,14 +145,11 @@ test/10k/rgb_color_wheel.tidy.html:185:36: [maybe] Conversion to number yields N
 test/10k/rgb_color_wheel.tidy.html:203:27: [maybe] Reading absent property (computed name)
 test/10k/rgb_color_wheel.tidy.html:203:41: [maybe] Reading absent property (computed name)
 test/10k/rgb_color_wheel.tidy.html:203:55: [maybe] Reading absent property (computed name)
-test/10k/rgb_color_wheel.tidy.html:220:9: [maybe] Conversion to number yields NaN
 test/10k/rgb_color_wheel.tidy.html:221:26: [maybe] Reading absent property (computed name)
 test/10k/rgb_color_wheel.tidy.html:221:34: [maybe] Reading absent property (computed name)
-test/10k/rgb_color_wheel.tidy.html:226:13: [maybe] Conversion to number yields NaN
 test/10k/rgb_color_wheel.tidy.html:227:30: [maybe] Reading absent property (computed name)
 test/10k/rgb_color_wheel.tidy.html:227:38: [maybe] Reading absent property (computed name)
 test/10k/rgb_color_wheel.tidy.html:274:25: [maybe] Reading absent property (computed name)
-test/10k/rgb_color_wheel.tidy.html:290:9: [maybe] Conversion to number yields NaN
 test/10k/rgb_color_wheel.tidy.html:292:25: [maybe] Reading absent property (computed name)
 test/10k/rgb_color_wheel.tidy.html:295:25: [maybe] Conversion to number yields NaN
 test/10k/rgb_color_wheel.tidy.html:295:43: [maybe] Conversion to number yields NaN
@@ -168,11 +165,6 @@ test/10k/rgb_color_wheel.tidy.html:311:45: [maybe] Conversion to number yields N
 test/10k/rgb_color_wheel.tidy.html:325:15: [maybe] Reading absent property (computed name)
 test/10k/rgb_color_wheel.tidy.html:332:24: [maybe] Converting undefined to string
 test/10k/rgb_color_wheel.tidy.html:332:48: [maybe] Reading absent property (computed name)
-test/10k/rgb_color_wheel.tidy.html:339:19: [maybe] Conversion to number yields NaN
-test/10k/rgb_color_wheel.tidy.html:340:19: [maybe] Conversion to number yields NaN
-test/10k/rgb_color_wheel.tidy.html:344:32: [maybe] Conversion to number yields NaN
-test/10k/rgb_color_wheel.tidy.html:345:36: [maybe] Conversion to number yields NaN
-test/10k/rgb_color_wheel.tidy.html:346:9: [maybe] Conversion to number yields NaN
 test/10k/rgb_color_wheel.tidy.html:358:16: [maybe] Converting undefined to string
 test/10k/rgb_color_wheel.tidy.html:383:14: [maybe] Conversion from string to number yields NaN
 test/10k/rgb_color_wheel.tidy.html:383:14: [maybe] Conversion to number yields NaN

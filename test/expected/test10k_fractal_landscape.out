@@ -1,9 +1,4 @@
-Unevalizer: Starting on: "animatedDraw()"
-Unevalizer: Valid program
-Unevalizer: No name capture
-Unevalizer: Starting on: "animatedDraw()"
-Unevalizer: Valid program
-Unevalizer: No name capture
+test/10k/fractal_landscape.tidy.html:54:13: [definite] The conditional expression is always false
 test/10k/fractal_landscape.tidy.html:54:17: [definite] Reading absent property Count
 test/10k/fractal_landscape.tidy.html:112:2: [definite] The variable event is never used
 test/10k/fractal_landscape.tidy.html:162:2: [definite] The variable event is never used

@@ -1,19 +1,20 @@
-test/chromeexperiments/browserball.tidy.html:169:69: [definite] TypeError, accessing property of null/undefined
+test/chromeexperiments/browserball.tidy.html:169:29: [definite] TypeError, accessing property of null/undefined
+test/chromeexperiments/browserball.tidy.html:188:29: [definite] TypeError, accessing property of null/undefined
 test/chromeexperiments/browserball.tidy.html:200:85: [definite] TypeError, accessing property of null/undefined
-test/chromeexperiments/browserball.tidy.html:169:69: [definite] Variable A is null/undefined
-test/chromeexperiments/browserball.tidy.html:189:21: [definite] The conditional expression is always false
-test/chromeexperiments/browserball.tidy.html:189:25: [definite] The conditional expression is always true
-test/chromeexperiments/browserball.tidy.html:189:39: [definite] Variable v is null/undefined
 test/chromeexperiments/browserball.tidy.html:200:25: [definite] The conditional expression is always false
+test/chromeexperiments/browserball.tidy.html:200:62: [definite] The assignment to u has no effect
 test/chromeexperiments/browserball.tidy.html:200:85: [definite] Variable u is null/undefined
 test/chromeexperiments/browserball.tidy.html:214:21: [definite] The conditional expression is always false
 test/chromeexperiments/browserball.tidy.html:365:25: [definite] The conditional expression is always true
 test/chromeexperiments/browserball.tidy.html:366:17: [definite] The conditional expression is always false
 test/chromeexperiments/browserball.tidy.html:366:21: [definite] The conditional expression is always false
+test/chromeexperiments/browserball.tidy.html:380:17: [definite] The assignment to v has no effect
 test/chromeexperiments/browserball.tidy.html:386:17: [definite] The conditional expression is always false
+test/chromeexperiments/browserball.tidy.html:403:17: [definite] The assignment to v has no effect
 test/chromeexperiments/browserball.tidy.html:9:21: [definite] Reading 'this' yields the global object
 test/chromeexperiments/browserball.tidy.html:11:21: [definite] Dead assignment, property angle is never read
 test/chromeexperiments/browserball.tidy.html:11:21: [definite] Dead assignment, property drag_point is never read
+test/chromeexperiments/browserball.tidy.html:11:21: [definite] Dead assignment, property dragging is never read
 test/chromeexperiments/browserball.tidy.html:11:21: [definite] Dead assignment, property inside is never read
 test/chromeexperiments/browserball.tidy.html:11:21: [definite] Dead assignment, property radius is never read
 test/chromeexperiments/browserball.tidy.html:11:21: [definite] Dead assignment, property rotation is never read
@@ -34,10 +35,11 @@ test/chromeexperiments/browserball.tidy.html:92:44: [definite] Dead assignment, 
 test/chromeexperiments/browserball.tidy.html:92:44: [definite] Dead assignment, property x is never read
 test/chromeexperiments/browserball.tidy.html:92:44: [definite] Dead assignment, property y is never read
 test/chromeexperiments/browserball.tidy.html:168:23: [definite] Dead assignment, property track is never read
-test/chromeexperiments/browserball.tidy.html:169:29: [definite] Reading absent property defaultView
-test/chromeexperiments/browserball.tidy.html:188:29: [definite] Reading absent property defaultView
+test/chromeexperiments/browserball.tidy.html:169:29: [definite] Reading absent property ownerDocument
+test/chromeexperiments/browserball.tidy.html:188:29: [definite] Reading absent property ownerDocument
 test/chromeexperiments/browserball.tidy.html:200:25: [definite] Reading absent property defaultView
 test/chromeexperiments/browserball.tidy.html:200:69: [definite] Reading absent property quad_ref
+test/chromeexperiments/browserball.tidy.html:232:17: [definite] Dead assignment, property dragging is never read
 test/chromeexperiments/browserball.tidy.html:233:17: [definite] Dead assignment, property rotation is never read
 test/chromeexperiments/browserball.tidy.html:364:19: [definite] Dead assignment, property addChild is never read
 test/chromeexperiments/browserball.tidy.html:364:19: [definite] Dead assignment, property removeChild is never read
@@ -57,14 +59,17 @@ test/chromeexperiments/browserball.tidy.html:55:25: [definite] The variable v is
 test/chromeexperiments/browserball.tidy.html:80:27: [definite] The variable w is never used
 test/chromeexperiments/browserball.tidy.html:128:23: [definite] Unreachable function
 test/chromeexperiments/browserball.tidy.html:138:23: [definite] Unreachable function
+test/chromeexperiments/browserball.tidy.html:167:21: [definite] The variable v is never used
 test/chromeexperiments/browserball.tidy.html:167:30: [definite] The variable u is never used
+test/chromeexperiments/browserball.tidy.html:169:25: [definite] The variable A is never used
+test/chromeexperiments/browserball.tidy.html:169:29: [definite] Unreachable code
 test/chromeexperiments/browserball.tidy.html:169:64: [definite] The variable w is never used
-test/chromeexperiments/browserball.tidy.html:169:81: [definite] Unreachable code
 test/chromeexperiments/browserball.tidy.html:169:99: [definite] The variable B is never used
 test/chromeexperiments/browserball.tidy.html:179:25: [definite] Unreachable function
 test/chromeexperiments/browserball.tidy.html:188:25: [definite] The variable x is never used
-test/chromeexperiments/browserball.tidy.html:200:17: [definite] Unreachable code
+test/chromeexperiments/browserball.tidy.html:188:29: [definite] Unreachable code
 test/chromeexperiments/browserball.tidy.html:200:81: [definite] The variable v is never used
+test/chromeexperiments/browserball.tidy.html:200:85: [definite] Unreachable code
 test/chromeexperiments/browserball.tidy.html:210:21: [definite] The variable y is never used
 test/chromeexperiments/browserball.tidy.html:227:21: [definite] The variable y is never used
 test/chromeexperiments/browserball.tidy.html:237:17: [definite] The variable t is never used
@@ -105,21 +110,15 @@ test/chromeexperiments/browserball.tidy.html:92:47: [maybe] TypeError, accessing
 test/chromeexperiments/browserball.tidy.html:97:29: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/browserball.tidy.html:97:67: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/browserball.tidy.html:131:31: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/browserball.tidy.html:169:29: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/browserball.tidy.html:188:29: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/browserball.tidy.html:213:25: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/browserball.tidy.html:218:25: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/browserball.tidy.html:218:61: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/browserball.tidy.html:378:17: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/browserball.tidy.html:383:17: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/browserball.tidy.html:169:29: [maybe] Reading absent property ownerDocument
-test/chromeexperiments/browserball.tidy.html:188:29: [maybe] Reading absent property ownerDocument
 test/chromeexperiments/browserball.tidy.html:378:17: [maybe] Reading absent property body
 test/chromeexperiments/browserball.tidy.html:383:17: [maybe] Reading absent property body
-test/chromeexperiments/browserball.tidy.html:4: [maybe] Uncaught exception, constructed at [test/chromeexperiments/browserball.tidy.html:33:25, test/chromeexperiments/browserball.tidy.html:58:21, test/chromeexperiments/browserball.tidy.html:58:31, test/chromeexperiments/browserball.tidy.html:59:21, test/chromeexperiments/browserball.tidy.html:59:31, test/chromeexperiments/browserball.tidy.html:60:21, test/chromeexperiments/browserball.tidy.html:60:31, test/chromeexperiments/browserball.tidy.html:60:50, test/chromeexperiments/browserball.tidy.html:61:21, test/chromeexperiments/browserball.tidy.html:61:31, test/chromeexperiments/browserball.tidy.html:61:50, test/chromeexperiments/browserball.tidy.html:70:25, test/chromeexperiments/browserball.tidy.html:75:25, test/chromeexperiments/browserball.tidy.html:84:48, test/chromeexperiments/browserball.tidy.html:87:33, test/chromeexperiments/browserball.tidy.html:87:44, test/chromeexperiments/browserball.tidy.html:88:38, test/chromeexperiments/browserball.tidy.html:88:48, test/chromeexperiments/browserball.tidy.html:88:71, test/chromeexperiments/browserball.tidy.html:88:81, test/chromeexperiments/browserball.tidy.html:90:38, test/chromeexperiments/browserball.tidy.html:90:48, test/chromeexperiments/browserball.tidy.html:90:71, test/chromeexperiments/browserball.tidy.html:90:81, test/chromeexperiments/browserball.tidy.html:92:47, test/chromeexperiments/browserball.tidy.html:97:29, test/chromeexperiments/browserball.tidy.html:97:67, test/chromeexperiments/browserball.tidy.html:131:31, test/chromeexperiments/browserball.tidy.html:169:29, test/chromeexperiments/browserball.tidy.html:169:69, test/chromeexperiments/browserball.tidy.html:188:29, test/chromeexperiments/browserball.tidy.html:200:85, test/chromeexperiments/browserball.tidy.html:213:25, test/chromeexperiments/browserball.tidy.html:218:25, test/chromeexperiments/browserball.tidy.html:218:61, test/chromeexperiments/browserball.tidy.html:378:17, test/chromeexperiments/browserball.tidy.html:383:17]
+test/chromeexperiments/browserball.tidy.html:4: [maybe] Uncaught exception, constructed at [test/chromeexperiments/browserball.tidy.html:33:25, test/chromeexperiments/browserball.tidy.html:58:21, test/chromeexperiments/browserball.tidy.html:58:31, test/chromeexperiments/browserball.tidy.html:59:21, test/chromeexperiments/browserball.tidy.html:59:31, test/chromeexperiments/browserball.tidy.html:60:21, test/chromeexperiments/browserball.tidy.html:60:31, test/chromeexperiments/browserball.tidy.html:60:50, test/chromeexperiments/browserball.tidy.html:61:21, test/chromeexperiments/browserball.tidy.html:61:31, test/chromeexperiments/browserball.tidy.html:61:50, test/chromeexperiments/browserball.tidy.html:70:25, test/chromeexperiments/browserball.tidy.html:75:25, test/chromeexperiments/browserball.tidy.html:84:48, test/chromeexperiments/browserball.tidy.html:87:33, test/chromeexperiments/browserball.tidy.html:87:44, test/chromeexperiments/browserball.tidy.html:88:38, test/chromeexperiments/browserball.tidy.html:88:48, test/chromeexperiments/browserball.tidy.html:88:71, test/chromeexperiments/browserball.tidy.html:88:81, test/chromeexperiments/browserball.tidy.html:90:38, test/chromeexperiments/browserball.tidy.html:90:48, test/chromeexperiments/browserball.tidy.html:90:71, test/chromeexperiments/browserball.tidy.html:90:81, test/chromeexperiments/browserball.tidy.html:92:47, test/chromeexperiments/browserball.tidy.html:97:29, test/chromeexperiments/browserball.tidy.html:97:67, test/chromeexperiments/browserball.tidy.html:131:31, test/chromeexperiments/browserball.tidy.html:169:29, test/chromeexperiments/browserball.tidy.html:188:29, test/chromeexperiments/browserball.tidy.html:200:85, test/chromeexperiments/browserball.tidy.html:213:25, test/chromeexperiments/browserball.tidy.html:218:25, test/chromeexperiments/browserball.tidy.html:218:61, test/chromeexperiments/browserball.tidy.html:378:17, test/chromeexperiments/browserball.tidy.html:383:17]
 test/chromeexperiments/browserball.tidy.html:33:25: [maybe] Reading absent property (computed name)
-test/chromeexperiments/browserball.tidy.html:34:25: [maybe] Conversion to number yields NaN
-test/chromeexperiments/browserball.tidy.html:35:25: [maybe] Conversion to number yields NaN
 test/chromeexperiments/browserball.tidy.html:39:24: [maybe] Conversion to number yields NaN
 test/chromeexperiments/browserball.tidy.html:40:24: [maybe] Conversion to number yields NaN
 test/chromeexperiments/browserball.tidy.html:44:144: [maybe] Conversion to number yields NaN

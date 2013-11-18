@@ -41,8 +41,6 @@ test/10k/attractor.tidy.html:87:37: [maybe] Converting primitive string to objec
 test/10k/attractor.tidy.html:87:37: [maybe] Reading absent property (computed name)
 test/10k/attractor.tidy.html:106:13: [maybe] Converting primitive string to object
 test/10k/attractor.tidy.html:106:23: [maybe] Converting primitive number to object
-test/10k/attractor.tidy.html:113:24: [maybe] Conversion from string to number yields NaN
-test/10k/attractor.tidy.html:113:24: [maybe] Conversion to number yields NaN
 test/10k/attractor.tidy.html:113:28: [maybe] The variable h has values with different types
 test/10k/attractor.tidy.html:113:32: [maybe] The variable h has values with different types
 test/10k/attractor.tidy.html:116:21: [maybe] Conversion from string to number yields NaN
@@ -58,11 +56,7 @@ test/10k/attractor.tidy.html:118:23: [maybe] Conversion from string to number yi
 test/10k/attractor.tidy.html:118:23: [maybe] Conversion to number yields NaN
 test/10k/attractor.tidy.html:118:23: [maybe] The variable y has values with different types
 test/10k/attractor.tidy.html:118:27: [maybe] The variable w has values with different types
-test/10k/attractor.tidy.html:123:17: [maybe] Conversion from string to number yields NaN
-test/10k/attractor.tidy.html:123:17: [maybe] Conversion to number yields NaN
 test/10k/attractor.tidy.html:123:21: [maybe] The variable h has values with different types
-test/10k/attractor.tidy.html:124:21: [maybe] Conversion from string to number yields NaN
-test/10k/attractor.tidy.html:124:21: [maybe] Conversion to number yields NaN
 test/10k/attractor.tidy.html:124:25: [maybe] The variable w has values with different types
 test/10k/attractor.tidy.html:125:19: [maybe] Reading absent property (computed name)
 test/10k/attractor.tidy.html:126:24: [maybe] Conversion to number yields NaN
@@ -108,11 +102,7 @@ test/10k/attractor.tidy.html:141:43: [maybe] The variable height has values with
 test/10k/attractor.tidy.html:142:20: [maybe] The variable TDATA has values with different types
 test/10k/attractor.tidy.html:142:27: [maybe] The variable width has values with different types
 test/10k/attractor.tidy.html:142:34: [maybe] The variable height has values with different types
-test/10k/attractor.tidy.html:145:17: [maybe] Conversion from string to number yields NaN
-test/10k/attractor.tidy.html:145:17: [maybe] Conversion to number yields NaN
 test/10k/attractor.tidy.html:145:21: [maybe] The variable height has values with different types
-test/10k/attractor.tidy.html:146:21: [maybe] Conversion from string to number yields NaN
-test/10k/attractor.tidy.html:146:21: [maybe] Conversion to number yields NaN
 test/10k/attractor.tidy.html:146:25: [maybe] The variable width has values with different types
 test/10k/attractor.tidy.html:147:19: [maybe] Conversion from string to number yields NaN
 test/10k/attractor.tidy.html:147:19: [maybe] Conversion from string to number yields NaN
@@ -144,11 +134,7 @@ test/10k/attractor.tidy.html:169:14: [maybe] Conversion from string to number yi
 test/10k/attractor.tidy.html:169:14: [maybe] Conversion to number yields NaN
 test/10k/attractor.tidy.html:169:36: [maybe] The variable width has values with different types
 test/10k/attractor.tidy.html:169:43: [maybe] The variable height has values with different types
-test/10k/attractor.tidy.html:172:17: [maybe] Conversion from string to number yields NaN
-test/10k/attractor.tidy.html:172:17: [maybe] Conversion to number yields NaN
 test/10k/attractor.tidy.html:172:21: [maybe] The variable width has values with different types
-test/10k/attractor.tidy.html:173:21: [maybe] Conversion from string to number yields NaN
-test/10k/attractor.tidy.html:173:21: [maybe] Conversion to number yields NaN
 test/10k/attractor.tidy.html:173:25: [maybe] The variable height has values with different types
 test/10k/attractor.tidy.html:174:26: [maybe] Conversion from string to number yields NaN
 test/10k/attractor.tidy.html:174:26: [maybe] Conversion to number yields NaN
@@ -236,7 +222,6 @@ test/10k/attractor.tidy.html:222:51: [maybe] Conversion to number yields NaN
 test/10k/attractor.tidy.html:228:19: [maybe] Converting primitive number to object
 test/10k/attractor.tidy.html:228:19: [maybe] Reading absent property (computed name)
 test/10k/attractor.tidy.html:228:19: [maybe] The variable DATA has values with different types
-test/10k/attractor.tidy.html:229:33: [maybe] Conversion to number yields NaN
 test/10k/attractor.tidy.html:229:33: [maybe] Converting primitive number to object
 test/10k/attractor.tidy.html:229:33: [maybe] Reading absent property (computed name)
 test/10k/attractor.tidy.html:229:33: [maybe] The variable DATA has values with different types
@@ -247,7 +232,6 @@ test/10k/attractor.tidy.html:231:13: [maybe] Conversion from string to number yi
 test/10k/attractor.tidy.html:231:13: [maybe] Conversion to number yields NaN
 test/10k/attractor.tidy.html:231:36: [maybe] The variable width has values with different types
 test/10k/attractor.tidy.html:231:43: [maybe] The variable height has values with different types
-test/10k/attractor.tidy.html:233:13: [maybe] Conversion to number yields NaN
 test/10k/attractor.tidy.html:233:13: [maybe] Converting primitive number to object
 test/10k/attractor.tidy.html:233:13: [maybe] Reading absent property (computed name)
 test/10k/attractor.tidy.html:233:13: [maybe] The variable DATA has values with different types

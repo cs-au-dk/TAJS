@@ -1,15 +1,3 @@
-Unevalizer: Starting on: "update()"
-Unevalizer: Valid program
-Unevalizer: No name capture
-Unevalizer: Starting on: "update()"
-Unevalizer: Valid program
-Unevalizer: No name capture
-Unevalizer: Starting on: "update()"
-Unevalizer: Valid program
-Unevalizer: No name capture
-Unevalizer: Starting on: "update()"
-Unevalizer: Valid program
-Unevalizer: No name capture
 test/10k/nbody.tidy.html:37:5: [definite] The variable counter2 is never used
 test/10k/nbody.tidy.html:479:2: [definite] The variable event is never used
 test/10k/nbody.tidy.html:69:13: [maybe] TypeError, accessing property of null/undefined
@@ -686,15 +674,11 @@ test/10k/nbody.tidy.html:264:21: [maybe] Converting primitive number to object
 test/10k/nbody.tidy.html:264:21: [maybe] Converting primitive string to object
 test/10k/nbody.tidy.html:264:21: [maybe] Converting primitive string to object
 test/10k/nbody.tidy.html:264:21: [maybe] The variable rect has values with different types
-test/10k/nbody.tidy.html:266:9: [maybe] Conversion from string to number yields NaN
-test/10k/nbody.tidy.html:266:9: [maybe] Conversion to number yields NaN
 test/10k/nbody.tidy.html:266:18: [maybe] Converting primitive number to object
 test/10k/nbody.tidy.html:266:18: [maybe] Converting primitive number to object
 test/10k/nbody.tidy.html:266:18: [maybe] Converting primitive string to object
 test/10k/nbody.tidy.html:266:18: [maybe] Converting primitive string to object
 test/10k/nbody.tidy.html:266:18: [maybe] The variable line has values with different types
-test/10k/nbody.tidy.html:266:35: [maybe] Conversion from string to number yields NaN
-test/10k/nbody.tidy.html:266:35: [maybe] Conversion to number yields NaN
 test/10k/nbody.tidy.html:266:44: [maybe] Converting primitive number to object
 test/10k/nbody.tidy.html:266:44: [maybe] Converting primitive number to object
 test/10k/nbody.tidy.html:266:44: [maybe] Converting primitive string to object
@@ -792,15 +776,11 @@ test/10k/nbody.tidy.html:285:21: [maybe] Converting primitive number to object
 test/10k/nbody.tidy.html:285:21: [maybe] Converting primitive string to object
 test/10k/nbody.tidy.html:285:21: [maybe] Converting primitive string to object
 test/10k/nbody.tidy.html:285:21: [maybe] The variable rect has values with different types
-test/10k/nbody.tidy.html:287:9: [maybe] Conversion from string to number yields NaN
-test/10k/nbody.tidy.html:287:9: [maybe] Conversion to number yields NaN
 test/10k/nbody.tidy.html:287:18: [maybe] Converting primitive number to object
 test/10k/nbody.tidy.html:287:18: [maybe] Converting primitive number to object
 test/10k/nbody.tidy.html:287:18: [maybe] Converting primitive string to object
 test/10k/nbody.tidy.html:287:18: [maybe] Converting primitive string to object
 test/10k/nbody.tidy.html:287:18: [maybe] The variable line has values with different types
-test/10k/nbody.tidy.html:287:35: [maybe] Conversion from string to number yields NaN
-test/10k/nbody.tidy.html:287:35: [maybe] Conversion to number yields NaN
 test/10k/nbody.tidy.html:287:44: [maybe] Converting primitive number to object
 test/10k/nbody.tidy.html:287:44: [maybe] Converting primitive number to object
 test/10k/nbody.tidy.html:287:44: [maybe] Converting primitive string to object
@@ -1036,8 +1016,6 @@ test/10k/nbody.tidy.html:395:9: [maybe] Conversion to number yields NaN
 test/10k/nbody.tidy.html:395:9: [maybe] Converting primitive number to object
 test/10k/nbody.tidy.html:395:9: [maybe] Converting primitive string to object
 test/10k/nbody.tidy.html:395:9: [maybe] Reading absent property (computed name)
-test/10k/nbody.tidy.html:397:13: [maybe] Conversion from string to number yields NaN
-test/10k/nbody.tidy.html:397:13: [maybe] Conversion to number yields NaN
 test/10k/nbody.tidy.html:397:13: [maybe] Converting primitive number to object
 test/10k/nbody.tidy.html:397:13: [maybe] Converting primitive string to object
 test/10k/nbody.tidy.html:397:13: [maybe] Reading absent property (computed name)

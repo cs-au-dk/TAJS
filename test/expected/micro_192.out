@@ -5,10 +5,7 @@ Abstract state:
   Summarized: maybe=[@f#fun1, @Object#node1, @activation#node11, @arguments#node11], definitely=[@f#fun1, @Object#node1, @activation#node11, @arguments#node11]
   Store (excluding basis and default objects): 
     @<the global object>[native] (<initial state>): {dumpState:^(@<the global object>[native].dumpState[present]),f:[@f#fun1],t:42.0,[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Prototype]]=?,[[Value]]=?,[[Scope]]=?}
-    *activation#node11 (test/micro/test192.js:1:1): {arguments:[*arguments#node11, @arguments#node11],f:absent,x:UInt}
-    *arguments#node11 (test/micro/test192.js:1:1): {0:UInt,callee:[@f#fun1],length:1.0,[[Prototype]]=[@Object.prototype[native]]}
     @Object#node1 (test/micro/test192.js:1:1): {constructor:[@f#fun1],[[Prototype]]=[@Object.prototype[native]],[[Value]]=NaN}
-    @arguments#node11 (test/micro/test192.js:1:1): {0:UInt,callee:[@f#fun1],length:1.0,[[Prototype]]=[@Object.prototype[native]]}
     @f#fun1 (test/micro/test192.js:1:1): {length:1.0,prototype:[@Object#node1],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@<the global object>[native]]]}
   Registers: 
     v1=Undef

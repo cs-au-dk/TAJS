@@ -26,6 +26,7 @@ import dk.brics.tajs.analysis.State;
 import dk.brics.tajs.analysis.FunctionCalls.CallInfo;
 import dk.brics.tajs.lattice.Obj;
 import dk.brics.tajs.lattice.ObjectLabel;
+import dk.brics.tajs.lattice.UnknownValueResolver;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.lattice.ObjectLabel.Kind;
 
@@ -63,6 +64,13 @@ public class JSObject {
 				res = res.joinObject(obj);
 			}
 			return res;
+		}
+		case OBJECT_DEFINE_PROPERTY: { // 15.2.3.6
+			NativeFunctions.expectParameters(nativeobject, call, c, 2, 2); // TODO allow 1-3 arguments
+        	Value o = NativeFunctions.readParameter(call, state, 0);
+        	Value nameString = Conversion.toString(NativeFunctions.readParameter(call, state, 1), c);
+        	state.writeProperty(o.getObjectLabels(), nameString, Value.makeUndef(), true, false); // FIXME: unsound (?)
+			return NativeFunctions.readParameter(call, state, 0);
 		}
 
 		case OBJECT_TOSTRING: // 15.2.4.2
@@ -102,7 +110,12 @@ public class JSObject {
 			}
             for (ObjectLabel ol : thisobj) {
                 Obj o = state.getObject(ol, false);
-                if (!o.getPropertyNames().isEmpty())
+                for (String propname : o.getProperties().keySet()) {
+                	if (UnknownValueResolver.getProperty(ol, propname, state, true).isMaybePresent())
+                        return Value.makeAnyBool();
+                }
+                if (UnknownValueResolver.getDefaultArrayProperty(ol, state).isMaybePresent() ||
+                		UnknownValueResolver.getDefaultNonArrayProperty(ol, state).isMaybePresent())
                     return Value.makeAnyBool();
             }
             return Value.makeBool(false);
@@ -132,7 +145,12 @@ public class JSObject {
 			}
             for (ObjectLabel ol : thisobj) {
                 Obj o = state.getObject(ol, false);
-                if (!o.getPropertyNames().isEmpty())
+                for (String propname : o.getProperties().keySet()) {
+                	if (UnknownValueResolver.getProperty(ol, propname, state, true).isMaybeNotDontEnum())
+                        return Value.makeAnyBool();
+                }
+                if (UnknownValueResolver.getDefaultArrayProperty(ol, state).isMaybeNotDontEnum() ||
+                		UnknownValueResolver.getDefaultNonArrayProperty(ol, state).isMaybeNotDontEnum())
                     return Value.makeAnyBool();
             }
             return Value.makeBool(false);

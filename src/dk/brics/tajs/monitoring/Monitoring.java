@@ -84,7 +84,7 @@ import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.monitoring.TypeCollector.VariableSummary;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.solver.IBlockState;
-import dk.brics.tajs.solver.ICallContext;
+import dk.brics.tajs.solver.IContext;
 import dk.brics.tajs.solver.IMonitoring;
 import dk.brics.tajs.solver.Message;
 import dk.brics.tajs.solver.Message.Severity;
@@ -97,10 +97,10 @@ import dk.brics.tajs.util.Strings;
  * Records various information during the scan phase of an analysis.
  */
 public class Monitoring<
-BlockStateType extends BlockState<BlockStateType,CallContextType,CallEdgeType>,
-CallContextType extends ICallContext<CallContextType>,
+BlockStateType extends BlockState<BlockStateType,ContextType,CallEdgeType>,
+ContextType extends IContext<ContextType>,
 CallEdgeType extends CallEdge<BlockStateType>> implements
-                            IMonitoring<BlockStateType,CallContextType> {
+                            IMonitoring<BlockStateType,ContextType> {
 	
 	private static Logger logger = Logger.getLogger(Monitoring.class); 
 
@@ -197,7 +197,7 @@ CallEdgeType extends CallEdge<BlockStateType>> implements
 	/**
 	 * Store information about values read during analysis. 
 	 */
-	private Map<NodeAndContext<ICallContext<?>>, Value> value_reads;
+	private Map<NodeAndContext<IContext<?>>, Value> value_reads;
 
 	/**
 	 * Values passed to eval.
@@ -212,7 +212,7 @@ CallEdgeType extends CallEdge<BlockStateType>> implements
 	/**
 	 * Descriptions of new dataflow at function entry blocks.
 	 */
-	private Map<BasicBlock,Map<ICallContext<?>,List<String>>> newflows;
+	private Map<BasicBlock,Map<IContext<?>,List<String>>> newflows;
 
 	/**
 	 * Maximum memory usage measured.
@@ -249,7 +249,7 @@ CallEdgeType extends CallEdge<BlockStateType>> implements
     private TypeCollector type_collector;
     
 //    /**
-//     * Counter for {@link #visitNewFlow(BasicBlock, ICallContext, IBlockState, String, String)}.
+//     * Counter for {@link #visitNewFlow(BasicBlock, IContext, IBlockState, String, String)}.
 //     */
 //    private int next_newflow_file;
     
@@ -603,10 +603,10 @@ CallEdgeType extends CallEdge<BlockStateType>> implements
 	}
 
 	@Override
-	public void visitNewFlow(BasicBlock b, ICallContext<?> c, IBlockState<?, ?, ?> s, String diff, String info) {
+	public void visitNewFlow(BasicBlock b, IContext<?> c, IBlockState<?, ?, ?> s, String diff, String info) {
 		if (Options.isNewFlowEnabled() && b.isEntry()) {
 			if (diff != null) {
-				Map<ICallContext<?>,List<String>> m = newflows.get(b);
+				Map<IContext<?>,List<String>> m = newflows.get(b);
 				if (m == null) {
 					m = newMap();
 					newflows.put(b, m);
@@ -1192,12 +1192,12 @@ CallEdgeType extends CallEdge<BlockStateType>> implements
 	/**
 	 * Record type information about a var/prop read.
 	 */
-	public void visitRead(Node n, ICallContext<?> c, Value v, BlockStateType state) {
+	public void visitRead(Node n, Value v, BlockStateType state) {
         if (!scan_phase) {
         	return;
         }
         v = UnknownValueResolver.getRealValue(v, state); // TODO: does this ruin the benefits of polymorphic values?
-		value_reads.put(new NodeAndContext<ICallContext<?>>(n, c), v);
+		value_reads.put(new NodeAndContext<IContext<?>>(n, state.getContext()), v);
 	}
 	
 	/**
@@ -1263,10 +1263,10 @@ CallEdgeType extends CallEdge<BlockStateType>> implements
 		if (Options.isNewFlowEnabled()) {
 			TreeMap<Integer,String> sorted = new TreeMap<>();
 			b.append("\nNew flow at each function for each context:");
-			for (Map.Entry<BasicBlock,Map<ICallContext<?>,List<String>>> me1 : newflows.entrySet()) {
+			for (Map.Entry<BasicBlock,Map<IContext<?>,List<String>>> me1 : newflows.entrySet()) {
 				Function f = me1.getKey().getFunction();
 				b.append("\n").append(f).append(" at ").append(f.getSourceLocation()).append(":");
-				for (Map.Entry<ICallContext<?>,List<String>> me2 : me1.getValue().entrySet()) {
+				for (Map.Entry<IContext<?>,List<String>> me2 : me1.getValue().entrySet()) {
 					b.append("\n  ").append(me2.getKey()).append(" state diffs: ").append(me2.getValue().size());
 					for (String diff : me2.getValue()) {
 						if (diff != null) {
@@ -1364,7 +1364,7 @@ CallEdgeType extends CallEdge<BlockStateType>> implements
 
 	private int getVarReadsSize() {
 		int res = 0;
-		for (NodeAndContext<ICallContext<?>> n : value_reads.keySet()) {
+		for (NodeAndContext<IContext<?>> n : value_reads.keySet()) {
 			if (n.getNode() instanceof ReadVariableNode) { 
 				res++;
 			}
@@ -1374,7 +1374,7 @@ CallEdgeType extends CallEdge<BlockStateType>> implements
 
 	private int getPropReadsSize() {
 		int res = 0;
-		for (NodeAndContext<ICallContext<?>> n : value_reads.keySet()) {
+		for (NodeAndContext<IContext<?>> n : value_reads.keySet()) {
 			if (n.getNode() instanceof ReadPropertyNode) {
 				res++;
 			}
@@ -1385,7 +1385,7 @@ CallEdgeType extends CallEdge<BlockStateType>> implements
 	private double getAverageVariableTypeSize() {
 		double res = 0;
 		int div = 0;
-		for (NodeAndContext<ICallContext<?>> n : value_reads.keySet()) {
+		for (NodeAndContext<IContext<?>> n : value_reads.keySet()) {
 			if (n.getNode() instanceof ReadVariableNode) {
 				res += value_reads.get(n).typeSize();
 				div ++;
@@ -1401,7 +1401,7 @@ CallEdgeType extends CallEdge<BlockStateType>> implements
 	private double getAveragePropertyTypeSize() {
 		double res = 0;
 		int div = 0;
-		for (NodeAndContext<ICallContext<?>> n : value_reads.keySet()) {
+		for (NodeAndContext<IContext<?>> n : value_reads.keySet()) {
 			if (n.getNode() instanceof ReadPropertyNode) {
 				res += value_reads.get(n).typeSize();
 				div ++;
@@ -1416,7 +1416,7 @@ CallEdgeType extends CallEdge<BlockStateType>> implements
 
 	private double geTotalAverageTypeSize() {
 		double res = 0;
-		for (NodeAndContext<ICallContext<?>> n : value_reads.keySet()) {
+		for (NodeAndContext<IContext<?>> n : value_reads.keySet()) {
 			res += value_reads.get(n).typeSize();
 		}
 		res = (1000*res) / value_reads.size();
@@ -1425,7 +1425,7 @@ CallEdgeType extends CallEdge<BlockStateType>> implements
 
     private int getReadsWithAtMostOneType() {
         int res = 0;
-		for (NodeAndContext<ICallContext<?>> n : value_reads.keySet()) {
+		for (NodeAndContext<IContext<?>> n : value_reads.keySet()) {
 			if(value_reads.get(n).typeSize() <= 1) {
                 res++;
             }
@@ -1435,7 +1435,7 @@ CallEdgeType extends CallEdge<BlockStateType>> implements
 
     private int getReadsWithAtleastTwoTypes() {
         int res = 0;
-		for (NodeAndContext<ICallContext<?>> n : value_reads.keySet()) {
+		for (NodeAndContext<IContext<?>> n : value_reads.keySet()) {
 			if(value_reads.get(n).typeSize() > 1) {
                 res++;
             }
@@ -1445,7 +1445,7 @@ CallEdgeType extends CallEdge<BlockStateType>> implements
 
 	private int getSingletonPropertyReads() {
 		int res = 0;
-		for (NodeAndContext<ICallContext<?>> n : value_reads.keySet()) {
+		for (NodeAndContext<IContext<?>> n : value_reads.keySet()) {
 			if (n.getNode() instanceof ReadPropertyNode) {
 				if (value_reads.get(n).typeSize() == 1)
 					res++;
@@ -1456,7 +1456,7 @@ CallEdgeType extends CallEdge<BlockStateType>> implements
 
 	private int getSingletonVariableReads() {
 		int res = 0;
-		for (NodeAndContext<ICallContext<?>> n : value_reads.keySet()) {
+		for (NodeAndContext<IContext<?>> n : value_reads.keySet()) {
 			if (n.getNode() instanceof ReadVariableNode) {
 				if (value_reads.get(n).typeSize() == 1)
 					res++;

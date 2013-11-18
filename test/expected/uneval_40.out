@@ -1,5 +1,2 @@
-Unevalizer: Starting on: "aOGDBZTZ = (function (x) {return x})"
-Unevalizer: Valid program
-Unevalizer: No name capture
 test/uneval/uneval40.js:2:1: [info] Abstract value: 3.0
-test/uneval/uneval40.js:3:1: [info] Abstract value: UInt
+test/uneval/uneval40.js:3:1: [info] Abstract value: 9.0

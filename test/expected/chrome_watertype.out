@@ -12,7 +12,6 @@ test/chromeexperiments/watertype.tidy.html:243:61: [maybe] TypeError, accessing 
 test/chromeexperiments/watertype.tidy.html:245:54: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/watertype.tidy.html:245:70: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/watertype.tidy.html:19: [maybe] Uncaught exception, constructed at [test/chromeexperiments/watertype.tidy.html:158:53, test/chromeexperiments/watertype.tidy.html:172:53, test/chromeexperiments/watertype.tidy.html:225:53, test/chromeexperiments/watertype.tidy.html:243:61, test/chromeexperiments/watertype.tidy.html:245:54, test/chromeexperiments/watertype.tidy.html:245:70]
-test/chromeexperiments/watertype.tidy.html:225:53: [maybe] Conversion to number yields NaN
 test/chromeexperiments/watertype.tidy.html:225:53: [maybe] Reading absent property (computed name)
 test/chromeexperiments/watertype.tidy.html:245:54: [maybe] Reading absent property (computed name)
 test/chromeexperiments/watertype.tidy.html:245:70: [maybe] Reading absent property (computed name)
@@ -28,7 +27,6 @@ test/chromeexperiments/watertype.tidy.html:257:134: [maybe] Reading absent prope
 test/chromeexperiments/watertype.tidy.html:290:61: [maybe] Reading absent property (computed name)
 test/chromeexperiments/watertype.tidy.html:291:61: [maybe] Conversion to number yields NaN
 test/chromeexperiments/watertype.tidy.html:291:61: [maybe] Reading absent property (computed name)
-test/chromeexperiments/watertype.tidy.html:297:61: [maybe] Conversion to number yields NaN
 test/chromeexperiments/watertype.tidy.html:297:61: [maybe] Reading absent property (computed name)
 test/chromeexperiments/watertype.tidy.html:297:86: [maybe] Reading absent property (computed name)
 test/chromeexperiments/watertype.tidy.html:297:98: [maybe] Reading absent property (computed name)

@@ -1,12 +1,3 @@
-Unevalizer: Starting on: "aOGDBZTZ = (function (a,b,c) {return a+b+c})"
-Unevalizer: Valid program
-Unevalizer: No name capture
-Unevalizer: Starting on: "aLF25HTA = (function (a, b, c) {return a+b+c})"
-Unevalizer: Valid program
-Unevalizer: No name capture
-Unevalizer: Starting on: "aZW4F5KV = (function (a, b,c) {return a+b+c})"
-Unevalizer: Valid program
-Unevalizer: No name capture
 test/wala/newfn.js:17:1: [info] Abstract value: 16.0
 test/wala/newfn.js:18:1: [info] Abstract value: 13.0
 test/wala/newfn.js:19:1: [info] Abstract value: 10.0

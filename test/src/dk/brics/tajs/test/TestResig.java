@@ -19,8 +19,6 @@ public class TestResig {
 	public void init() {
         Options.reset();
 		Options.enableTest();
-		// Options.enableNoLazy();
-		// Options.enablePolymorphic();
 	}
 
 	@Test

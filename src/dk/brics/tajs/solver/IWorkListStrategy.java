@@ -21,7 +21,7 @@ import dk.brics.tajs.flowgraph.BasicBlock;
 /**
  * Interface for work list strategies.
  */
-public interface IWorkListStrategy<CallContextType extends ICallContext<?>> {
+public interface IWorkListStrategy<ContextType extends IContext<?>> {
 
 	/**
 	 * Compares two work list entries.
@@ -29,12 +29,12 @@ public interface IWorkListStrategy<CallContextType extends ICallContext<?>> {
 	 * a positive value means that the second has higher priority than the first.
 	 * This must be a stable comparison.
 	 */
-	public int compare(IEntry<CallContextType> e1, IEntry<CallContextType> e2);
+	public int compare(IEntry<ContextType> e1, IEntry<ContextType> e2);
 	
 	/**
 	 * Interface for work list entries.
 	 */
-	public interface IEntry<CallContextType extends ICallContext<?>> {
+	public interface IEntry<ContextType extends IContext<?>> {
 		
 		/**
 		 * Returns the block.
@@ -44,7 +44,7 @@ public interface IWorkListStrategy<CallContextType extends ICallContext<?>> {
 		/**
 		 * Returns the context.
 		 */
-		public CallContextType getContext();
+		public ContextType getContext();
 		
 		/**
 		 * Returns the entry serial number.

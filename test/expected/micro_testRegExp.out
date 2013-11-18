@@ -1,5 +1,5 @@
-test/micro/testRegExp.js:28:1: [definite] Unreachable code
 test/micro/testRegExp.js:28:5: [definite] The variable d is never used
+test/micro/testRegExp.js:28:9: [definite] Unreachable code
 test/micro/testRegExp.js:13:11: [maybe] TypeError, accessing property of null/undefined
 test/micro/testRegExp.js:28:9: [maybe] SyntaxError, invalid flags at RegExp constructor
 test/micro/testRegExp.js:1:1: [maybe] Uncaught exception, constructed at [test/micro/testRegExp.js:13:11, test/micro/testRegExp.js:28:9]

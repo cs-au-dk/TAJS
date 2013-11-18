@@ -48,9 +48,6 @@ fg2: <main> function()
     node 27: exceptional-return (test/flowgraphbuilder/flowgraph_builder0171.js:1:1)
     ->[]
 
-Unevalizer: Starting on: "wt_1stPartySet='';"
-Unevalizer: Valid program
-Unevalizer: No name capture
 fg2: <main> function()
   block 0: [entry]
     node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0171.js:1:1)
@@ -106,8 +103,6 @@ fg2: <main> function()
     node 30: write-variable[v23,'wt_1stPartySet']* (test/flowgraphbuilder/flowgraph_builder0171.js:3:5)
     ->[block 7]
 
-Unevalizer: Starting on: TAJS_TEMPORARY_14 + "='';"
-Unevalizer: Not a constant string
 fg2: <main> function()
   block 0: [entry]
     node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0171.js:1:1)

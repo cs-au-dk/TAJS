@@ -27,9 +27,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Properties;
 
 import org.apache.log4j.Logger;
@@ -44,14 +42,13 @@ import org.w3c.tidy.Tidy;
 import org.w3c.tidy.TidyMessage;
 import org.w3c.tidy.TidyMessageListener;
 
-// import com.sun.org.apache.xml.internal.serialize.XMLSerializer;
-
 import dk.brics.tajs.htmlparser.JavaScriptSource.EmbeddedJavaScriptSource;
 import dk.brics.tajs.htmlparser.JavaScriptSource.EventHandlerJavaScriptSource;
 import dk.brics.tajs.htmlparser.JavaScriptSource.ExternalJavaScriptSource;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.util.AnalysisException;
 import dk.brics.tajs.util.Collections;
+// import com.sun.org.apache.xml.internal.serialize.XMLSerializer;
 
 /**
  * HTML parser using JTidy and JDOM to extract JavaScript code and HTML elements from HTML files.
@@ -77,9 +74,9 @@ public class HTMLParser {
     public Document build(String inputFileName) throws IOException {
         String outputFileName;
         if (inputFileName.endsWith(".htm")) {
-            outputFileName = inputFileName.substring(0, inputFileName.indexOf(".htm")) + ".tidy.htm";
+            outputFileName = inputFileName.substring(0, inputFileName.lastIndexOf(".htm")) + ".tidy.htm";
         } else if (inputFileName.endsWith(".html")) {
-            outputFileName = inputFileName.substring(0, inputFileName.indexOf(".html")) + ".tidy.html";
+            outputFileName = inputFileName.substring(0, inputFileName.lastIndexOf(".html")) + ".tidy.html";
         } else {
             outputFileName = inputFileName + ".tidy";
         }
@@ -169,14 +166,14 @@ public class HTMLParser {
                 }
             }
             
-            if (Options.isDSLEnabled()) {
-                String tag = element.getName();
-                Map<String, String> attributes = new HashMap<>();
-                for (Attribute attribute : (List<Attribute>) element.getAttributes()) {
-                    attributes.put(attribute.getName(), attribute.getValue());    
-                }
-                htmlElementList.add(new HtmlSource(tag, attributes, filename, getElementLineNumber(element)));
-            }
+//            if (Options.isDSLEnabled()) {
+//                String tag = element.getName();
+//                Map<String, String> attributes = new HashMap<>();
+//                for (Attribute attribute : (List<Attribute>) element.getAttributes()) {
+//                    attributes.put(attribute.getName(), attribute.getValue());    
+//                }
+//                htmlElementList.add(new HtmlSource(tag, attributes, filename, getElementLineNumber(element)));
+//            }
         }
 
         @Override

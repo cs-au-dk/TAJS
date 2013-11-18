@@ -1,6 +1,3 @@
-Unevalizer: Starting on: "if (b) y=3; else y=true"
-Unevalizer: Valid program
-Unevalizer: No name capture
 test/uneval/uneval04.js:6:11: [maybe] The variable y has values with different types
 test/uneval/uneval04.js:2:1: [info] Abstract value: Bool
 test/uneval/uneval04.js:6:1: [info] Abstract value: true|3.0

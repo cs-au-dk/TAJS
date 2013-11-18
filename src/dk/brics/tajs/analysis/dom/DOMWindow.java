@@ -24,7 +24,7 @@ import java.io.PrintWriter;
 
 import org.apache.log4j.Logger;
 
-import dk.brics.tajs.analysis.CallContext;
+import dk.brics.tajs.analysis.Context;
 import dk.brics.tajs.analysis.Conversion;
 import dk.brics.tajs.analysis.EvalCache;
 import dk.brics.tajs.analysis.FunctionCalls.CallInfo;
@@ -32,6 +32,7 @@ import dk.brics.tajs.analysis.InitialStateBuilder;
 import dk.brics.tajs.analysis.NativeFunctions;
 import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.analysis.State;
+import dk.brics.tajs.analysis.dom.style.CSSStyleDeclaration;
 import dk.brics.tajs.analysis.uneval.NormalForm;
 import dk.brics.tajs.analysis.uneval.UnevalTools;
 import dk.brics.tajs.flowgraph.FlowGraph;
@@ -132,6 +133,9 @@ public class DOMWindow {
 		createDOMFunction(s, WINDOW, DOMObjects.WINDOW_STOP, "stop", 0);
 		createDOMFunction(s, WINDOW, DOMObjects.WINDOW_UNESCAPE, "unescape", 1);
 
+		// DOM LEVEL 2
+		createDOMFunction(s, WINDOW, DOMObjects.WINDOW_GET_COMPUTED_STYLE, "getComputedStyle", 0);
+		
 		/**
 		 * WINDOW HISTORY object
 		 */
@@ -395,7 +399,7 @@ public class DOMWindow {
             Conversion.toNumber(NativeFunctions.readParameter(call, s, 1), c);
 			if (!c.isScanning()) {
 				if (!functionOrCode.isNotStr()) {
-					if (Options.isUnevalEnabled()) {
+					if (Options.isUnevalizerEnabled()) {
 						CallNode callNode = (CallNode) call.getSourceNode();
 						FlowGraph currFg = c.getFlowGraph();
 						NormalForm nf = UnevalTools.rebuildNormalForm(currFg, callNode, s, c);
@@ -412,7 +416,7 @@ public class DOMWindow {
 							unevaled = UnevalTools.rebuildFullFromMapping(currFg, unevaled, nf.getMapping(), callNode);
 
 						EvalCache evalCache = c.getAnalysis().getEvalCache();
-                        NodeAndContext<CallContext> cc = new NodeAndContext<>(callNode, c.getCurrentContext());
+                        NodeAndContext<Context> cc = new NodeAndContext<>(callNode, s.getContext());
                         FlowGraphFragment e = evalCache.getCode(cc);
 
                         // Cache miss.
@@ -422,7 +426,7 @@ public class DOMWindow {
                         evalCache.setCode(cc, e);
                         if (Options.isFlowGraphEnabled()) {
                         	try (PrintWriter pw = new PrintWriter(new File("out" + File.separator + "flowgraphs" + File.separator + "uneval-" + 
-                        			callNode.getIndex() + "-" + Integer.toHexString(c.getCurrentContext().hashCode()) + ".dot"))) {
+                        			callNode.getIndex() + "-" + Integer.toHexString(s.getContext().hashCode()) + ".dot"))) {
                         		currFg.toDot(pw);
                                 pw.flush();
                             } catch (Exception ee) {
@@ -431,7 +435,7 @@ public class DOMWindow {
                         }
                         State state = s.clone();
                         state.getExtras().addToMaySet(DOMRegistry.MaySets.TIMEOUT_EVENT_HANDLERS.name(), Collections.singleton(new ObjectLabel(e.getEntryFunction())));
-                        c.propagateToBasicBlock(state, e.getEntryBlock(), c.getCurrentContext());
+                        c.propagateToBasicBlock(state, e.getEntryBlock(), state.getContext()); // FIXME: is it correct to call propagateToBasicBlock here? 
 					} else 
 						throw new UnsupportedOperationException("Can't handle arbitrary strings in setInterval/setTimeout. Try with -uneval");
 				}
@@ -447,6 +451,10 @@ public class DOMWindow {
 		NativeFunctions.expectParameters(nativeObject, call, c, 1, 1);
 		Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
 		return Value.makeAnyStr();
+	}
+	case WINDOW_GET_COMPUTED_STYLE: {
+		NativeFunctions.expectParameters(nativeObject, call, c, 1, 2);
+		return Value.makeObject(CSSStyleDeclaration.STYLEDECLARATION);
 	}
 	default: {
 		throw new AnalysisException("Unsupported Native Object: " + nativeObject);

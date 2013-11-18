@@ -40,7 +40,7 @@ public class Exceptions {
 		if (Options.isExceptionsDisabled())
 			return;
 		state = state.clone();
-		throwException(state, makeException(state, InitialStateBuilder.TYPE_ERROR_PROTOTYPE, c), c, c.getCurrentNode(), c.getCurrentContext());
+		throwException(state, makeException(state, InitialStateBuilder.TYPE_ERROR_PROTOTYPE, c), c, c.getCurrentNode());
 	}
 	
 	/**
@@ -52,7 +52,7 @@ public class Exceptions {
 		if (Options.isExceptionsDisabled())
 			return;
 		state = state.clone();
-		throwException(state, makeException(state, InitialStateBuilder.REFERENCE_ERROR_PROTOTYPE, c), c, c.getCurrentNode(), c.getCurrentContext());
+		throwException(state, makeException(state, InitialStateBuilder.REFERENCE_ERROR_PROTOTYPE, c), c, c.getCurrentNode());
 	}
 	
 	/**
@@ -64,7 +64,7 @@ public class Exceptions {
 		if (Options.isExceptionsDisabled())
 			return;
 		state = state.clone();
-		throwException(state, makeException(state, InitialStateBuilder.RANGE_ERROR_PROTOTYPE, c), c, c.getCurrentNode(), c.getCurrentContext());
+		throwException(state, makeException(state, InitialStateBuilder.RANGE_ERROR_PROTOTYPE, c), c, c.getCurrentNode());
 	}
 	
 	/**
@@ -76,7 +76,7 @@ public class Exceptions {
 		if (Options.isExceptionsDisabled())
 			return;
 		state = state.clone();
-		throwException(state, makeException(state, InitialStateBuilder.SYNTAX_ERROR_PROTOTYPE, c), c, c.getCurrentNode(), c.getCurrentContext());
+		throwException(state, makeException(state, InitialStateBuilder.SYNTAX_ERROR_PROTOTYPE, c), c, c.getCurrentNode());
 	}
 	
 	/**
@@ -96,13 +96,14 @@ public class Exceptions {
 	 * Modifies the given state.
 	 * Don't forget to set the state to none if the exception will definitely occur.
 	 */
-	public static void throwException(State state, Value v, Solver.SolverInterface c, AbstractNode source, CallContext context) {
+	public static void throwException(State state, Value v, Solver.SolverInterface c, AbstractNode source) {
 		if (!source.canThrowExceptions())
 			throw new AnalysisException("Exception at non-throwing-exception node!?");
 		if (v.isMaybePresent() || Options.isPropagateDeadFlow()) {
 			BasicBlock handlerblock = source.getBlock().getExceptionHandler();
 			state.writeRegister(AbstractNode.EXCEPTION_REG, v);
-			c.propagateToBasicBlock(state, handlerblock, context);
+			c.propagateToBasicBlock(state, handlerblock, 
+					Context.makeSuccessorContext(state, handlerblock));
 		}
 	}
 }

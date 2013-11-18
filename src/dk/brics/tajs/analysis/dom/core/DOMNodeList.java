@@ -22,6 +22,7 @@ import dk.brics.tajs.analysis.FunctionCalls.CallInfo;
 import dk.brics.tajs.analysis.InitialStateBuilder;
 import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.analysis.State;
+import dk.brics.tajs.analysis.dom.DOMFunctions;
 import dk.brics.tajs.analysis.dom.DOMObjects;
 import dk.brics.tajs.analysis.dom.DOMWindow;
 import dk.brics.tajs.lattice.ObjectLabel;
@@ -81,10 +82,10 @@ public class DOMNodeList {
     /**
      * Transfer Functions.
      */
-    public static Value evaluate(DOMObjects nativeobject, CallInfo call, State s, Solver.SolverInterface c) {
+    public static Value evaluate(DOMObjects nativeobject, @SuppressWarnings("unused") CallInfo call, @SuppressWarnings("unused") State s, @SuppressWarnings("unused") Solver.SolverInterface c) {
         switch (nativeobject) {
             case NODELIST_ITEM: {
-            	return Value.makeObject(DOMElement.INSTANCES);
+            	return DOMFunctions.makeAnyHTMLElement();
             //    throw new UnsupportedOperationException("NODELIST_ITEM not supported: "
              //           + nativeobject);
             }

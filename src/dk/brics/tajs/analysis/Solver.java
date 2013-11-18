@@ -24,7 +24,7 @@ import dk.brics.tajs.solver.SolverSynchronizer;
 /**
  * Fixpoint solver.
  */
-public final class Solver extends GenericSolver<State,CallContext,CallEdge<State>,Monitoring<State,CallContext,CallEdge<State>>,Analysis> {
+public final class Solver extends GenericSolver<State,Context,CallEdge<State>,Monitoring<State,Context,CallEdge<State>>,Analysis> {
 
 	/**
 	 * Constructs a new solver.

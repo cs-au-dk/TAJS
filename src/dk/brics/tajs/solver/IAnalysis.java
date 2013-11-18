@@ -21,41 +21,41 @@ import dk.brics.tajs.flowgraph.FlowGraph;
 /**
  * Interface for analyses on flow graphs.
  */
-public interface IAnalysis<BlockStateType extends IBlockState<BlockStateType, CallContextType, CallEdgeType>,
-                           CallContextType extends ICallContext<CallContextType>,
+public interface IAnalysis<BlockStateType extends IBlockState<BlockStateType, ContextType, CallEdgeType>,
+                           ContextType extends IContext<ContextType>,
                            CallEdgeType extends ICallEdge<BlockStateType>,
-					       MonitoringType extends IMonitoring<BlockStateType,CallContextType>,
-					       AnalysisType extends IAnalysis<BlockStateType, CallContextType, CallEdgeType, MonitoringType, AnalysisType>> {
+					       MonitoringType extends IMonitoring<BlockStateType,ContextType>,
+					       AnalysisType extends IAnalysis<BlockStateType, ContextType, CallEdgeType, MonitoringType, AnalysisType>> {
 
 	/**
 	 * Returns a new global analysis lattice element.
 	 */
-	public IAnalysisLatticeElement<BlockStateType,CallContextType,CallEdgeType> makeAnalysisLattice(FlowGraph fg);
+	public IAnalysisLatticeElement<BlockStateType,ContextType,CallEdgeType> makeAnalysisLattice(FlowGraph fg);
 
 	/**
 	 * Returns the initial state builder.
 	 */
-	public IInitialStateBuilder<BlockStateType,CallContextType,CallEdgeType> getInitialStateBuilder();
+	public IInitialStateBuilder<BlockStateType,ContextType,CallEdgeType> getInitialStateBuilder();
 
 	/**
 	 * Returns the node transfer functions.
 	 */
-	public INodeTransfer<BlockStateType,CallContextType> getNodeTransferFunctions();
+	public INodeTransfer<BlockStateType,ContextType> getNodeTransferFunctions();
 
 	/**
 	 * Returns the end-of-block transfer function.
 	 */
-	public IBlockTransfer<BlockStateType,CallContextType> getBlockTransferFunction();
+	public IBlockTransfer<BlockStateType,ContextType> getBlockTransferFunction();
 
 	/**
 	 * Returns the edge transfer functions.
 	 */
-	public IEdgeTransfer<BlockStateType,CallContextType> getEdgeTransferFunctions();
+	public IEdgeTransfer<BlockStateType,ContextType> getEdgeTransferFunctions();
 	
 	/**
 	 * Returns the work list strategy.
 	 */
-	public IWorkListStrategy<CallContextType> getWorklistStrategy();
+	public IWorkListStrategy<ContextType> getWorklistStrategy();
 	
 	/**
 	 * Returns the monitoring object.
@@ -65,7 +65,7 @@ public interface IAnalysis<BlockStateType extends IBlockState<BlockStateType, Ca
 	/**
 	 * Sets the current solver interface.
 	 */
-	public void setSolverInterface(GenericSolver<BlockStateType,CallContextType,CallEdgeType,MonitoringType,AnalysisType>.SolverInterface c);
+	public void setSolverInterface(GenericSolver<BlockStateType,ContextType,CallEdgeType,MonitoringType,AnalysisType>.SolverInterface c);
 	
 	/**
 	 * Constructs a new call edge for the given abstract state.

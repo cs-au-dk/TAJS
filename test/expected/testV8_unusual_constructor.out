@@ -1,7 +1,7 @@
 test/v8tests/unusual-constructor.js:28:16: [definite] TypeError, call to non-function
 test/v8tests/unusual-constructor.js:28:16: [definite] Reading absent property __proto__
-test/v8tests/unusual-constructor.js:28:1: [definite] Unreachable code
 test/v8tests/unusual-constructor.js:28:5: [definite] The variable obj is never used
+test/v8tests/unusual-constructor.js:28:16: [definite] Unreachable code
 test/v8tests/unusual-constructor.js:31:5: [definite] The variable threw is never used
 test/v8tests/unusual-constructor.js:34:3: [definite] Unreachable code
 test/v8tests/unusual-constructor.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/unusual-constructor.js:28:16]

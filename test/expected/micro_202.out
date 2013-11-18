@@ -1,0 +1,8 @@
+test/micro/test202.js:12:2: [definite] Dead assignment, property ajaxStart is never read
+test/micro/test202.js:12:2: [definite] Dead assignment, property ajaxStop is never read
+test/micro/test202.js:12:2: [definite] Dead assignment, property ajaxSuccess is never read
+test/micro/test202.js:11:1: [definite] The variable i is never used
+test/micro/test202.js:27:3: [maybe] Converting primitive string to object
+test/micro/test202.js:37:1: [info] Abstract value: "ajaxError"
+test/micro/test202.js:38:1: [info] Abstract value: "ajaxComplete"
+test/micro/test202.js:39:1: [info] Abstract value: "ajaxSend"

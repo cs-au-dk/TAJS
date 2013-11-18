@@ -16,7 +16,6 @@ public class TestApps {
 	public void init() {
         Options.reset();
 		Options.enableTest();
-        Options.enablePolymorphic();
 	}
 	
 	@Test

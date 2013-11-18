@@ -1,5 +1,7 @@
+test/micro/test74.js:10:11: [maybe] The variable sum has values with different types
+test/micro/test74.js:12:11: [maybe] The variable sum has values with different types
 test/micro/test74.js:5:1: [info] Abstract value: "crazy"
 test/micro/test74.js:9:5: [info] Abstract value: "a"
 test/micro/test74.js:9:5: [info] Abstract value: "b"
 test/micro/test74.js:9:5: [info] Abstract value: "t"
-test/micro/test74.js:12:1: [info] Abstract value: UInt
+test/micro/test74.js:12:1: [info] Abstract value: UInt|IdentPartsStr

@@ -16,9 +16,6 @@ fg2: <main> function()
     node 5: exceptional-return (test/flowgraphbuilder/flowgraph_builder0150.js:1:1)
     ->[]
 
-Unevalizer: Starting on: "4"
-Unevalizer: Valid program
-Unevalizer: No name capture
 fg2: <main> function()
   block 0: [entry]
     node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0150.js:1:1)

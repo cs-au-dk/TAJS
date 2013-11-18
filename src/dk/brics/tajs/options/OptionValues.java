@@ -23,72 +23,14 @@ import dk.brics.tajs.util.Pair;
 
 public class OptionValues {
 	
-	private static void copyFields(OptionValues from, OptionValues to) {
-		for (Field f : OptionValues.class.getDeclaredFields()) {
-			f.setAccessible(true);
-			try {
-				Object value = f.get(from);
-				if (value instanceof Cloneable) {
-					for (Method possibleClone : value.getClass().getDeclaredMethods()) {
-						possibleClone.setAccessible(true);
-						if ("clone".equals(possibleClone.getName()) && possibleClone.getParameterTypes().length == 0) {
-							value = possibleClone.invoke(value);
-						}
-					}
-				}
-				f.set(to, value);
-			} catch (IllegalArgumentException | IllegalAccessException e) {
-				throw new RuntimeException(e);
-			} catch (InvocationTargetException e) {
-				throw new RuntimeException(e);
-			}
-		}
-	}
-
-	public static void parse(OptionValues base, String... args) {
-		CmdLineParser parser = new CmdLineParser(base);
-		try {
-			parser.parseArgument(args);
-			{
-				// special cases which has side effects when enabled
-				// TODO avoid these brittle side effects?
-				if (base.iterationBoundString != null && !base.iterationBoundString.isEmpty()) {
-					base.iterationBound = Integer.parseInt(base.iterationBoundString);
-				}
-				if (base.ignoredLibrariesString != null && !base.ignoredLibrariesString.isEmpty()) {
-					base.ignoreLibraries = true;
-					base.ignoredLibraries = Collections.newSet(Arrays.asList(base.ignoredLibrariesString.split(",")));
-				}
-				if (base.test) {
-					base.enableTest();
-				}
-				if (base.testFlowgraphBuilder) {
-					base.enableTestFlowGraphBuiler();
-				}
-				if (base.debug) {
-					base.enableDebug();
-				}
-			}
-			if (base.help) {
-				base.describe();
-			}
-		} catch (CmdLineException e) {
-			parser.printUsage(System.err);
-			throw new RuntimeException(e);
-		}
-	}
-
-	@Option(name = "-debug-output-on-crash", usage = "Tries to output extra debug information on crashes")
-	private boolean debugOutputOnCrash;
-
-	@Option(name = "-context-specialization", usage = "Enables context specialization")
+	@Option(name = "-context-specialization", usage = "Enable context specialization")
 	private boolean contextSpecialization;
 	
-	@Option(name = "-no-local-path-sensitivity", usage = "Disable local path sensitivity")
-	private boolean noLocalPathSensitivity;
+	@Option(name = "-no-control-sensitivity", usage = "Disable control sensitivity")
+	private boolean noControlSensitivity;
 	
-	@Option(name = "-no-context-sensitivity", usage = "Disable context sensitivity")
-	private boolean noContextSensitivity;
+	@Option(name = "-no-object-sensitivity", usage = "Disable object sensitivity")
+	private boolean noObjectSensitivity;
 	
 	@Option(name = "-no-recency", usage = "Disable recency abstraction")
 	private boolean noRecency;
@@ -105,8 +47,8 @@ public class OptionValues {
 	@Option(name = "-no-lazy", usage = "Disable lazy propagation")
 	private boolean noLazy;
 	
-	@Option(name = "-flowgraph-optimization", usage = "Enable flowgraph optimization")
-	private boolean flowgraphOptimization;
+//	@Option(name = "-flowgraph-optimization", usage = "Enable flowgraph optimization")
+//	private boolean flowgraphOptimization;
 	
 	@Option(name = "-no-copy-on-write", usage = "Disable copy-on-write")
 	private boolean noCopyOnWrite;
@@ -165,16 +107,13 @@ public class OptionValues {
 	@Option(name = "-propagate-dead-flow", usage = "Propagate empty values")
 	private boolean propagateDeadFlow;
 
-	@Option(name = "-correlation-tracking", usage = "Enable correlation tracking")
-	private boolean correlationTrackingMode;
-	
 	@Option(name = "-unroll-one-and-a-half", usage = "Enable 1 1/2 loop unrolling")
 	private boolean unrollOneAndAHalf;
 	
 	@Option(name = "-always-canput", usage = "Assume [[CanPut]] always succeeds")
 	private boolean alwaysCanput;
 	
-	@Option(name = "-eval-statistics", usage = "Don't fail on use of eval and innerHTML, but record their use")
+	@Option(name = "-eval-statistics", usage = "Report uses of eval and innerHTML")
 	private boolean evalStatistics;
 	
 	@Option(name = "-coverage", usage = "Output a view of the source with unreachable lines highlighted")
@@ -183,34 +122,28 @@ public class OptionValues {
 	@Option(name = "-single-event-handler-loop", usage = "Use a single non-deterministic event loop for events")
 	private boolean singleEventHandlerLoop;
 
-	@Option(name = "-no-messages", usage = "Don't output analysis messages")
+	@Option(name = "-no-messages", usage = "Disable analysis messages")
 	private boolean no_messages;
 	
 	@Option(name = "-single-event-handler-type", usage = "Do not distinguish between different types of event handlers")
 	private boolean single_event_handler_type;
 	
-	@Option(name = "-introduce-error", usage = "Measure precision by randomly introducing syntax errors")
-	private boolean introduceError;
+//	@Option(name = "-introduce-error", usage = "Measure precision by randomly introducing syntax errors")
+//	private boolean introduceError;
 	
-	@Option(name = "-ignore-html-content", usage = "Ignore the content of the HTML page, i.e. id, names, event handlers etc.")
+	@Option(name = "-ignore-html-content", usage = "Ignore the content of the HTML page")
 	private boolean ignore_html_content;
 	
-	@Option(name = "-dsl", usage = "Load DSL object models")
-	private boolean dsl;
-	
 	@Option(name = "-uneval", usage = "Try to remove calls to eval")
-	private boolean unevalMode;
+	private boolean unevalizer;
 	
-	@Option(name = "-serialize-final-state", usage = "Serialize the final analysis state")
-	private boolean serializeFinalState;
-	
-	@Option(name = "-polymorphic", usage = "Enables use of polymorphic objects")
-	private boolean polymorphic;
+	@Option(name = "-no-polymorphic", usage = "Disable use of polymorphic objects")
+	private boolean no_polymorphic;
 	
 	@Option(name = "-return-json", usage = "Assume that AJAX calls return JSON")
 	private boolean ajaxReturnsJson;
 	
-	@Option(name = "-help", usage = "prints this message")
+	@Option(name = "-help", usage = "Prints this message")
 	private boolean help;
 	
 	@Option(name = "-iteration-bound", usage = "Bounds the number of iterations the solver performs")
@@ -225,10 +158,75 @@ public class OptionValues {
 	private boolean ignoreLibraries;
 	private Set<String> ignoredLibraries = new LinkedHashSet<>();
 
-	private int maxSuspiciousnessLevel = -1;
+	@Option(name = "-context-sensitive-heap", usage = "Enable selective context sensitive heap abstract")
+    private boolean contextSensitiveHeapEnabled;
+    
+    @Option(name = "-parameter-sensitivity", usage = "Enabled usage of different contexts for (some) calls based on the argument values")
+    private boolean parameterSensitivityEnabled;
+
+    @Option(name = "-numeric-variable-sensitivity", usage = "Enable numeric variable sensitivity")
+    private boolean numericVariableSensitivityEnabled;
+
+    @Option(name = "-unreachable", usage = "Ignore code parts which has been marked as unreachable")
+    private boolean unreachableEnabled;
 
 	@Argument
 	private List<String> arguments = new ArrayList<>();
+
+	private static void copyFields(OptionValues from, OptionValues to) {
+		for (Field f : OptionValues.class.getDeclaredFields()) {
+			f.setAccessible(true);
+			try {
+				Object value = f.get(from);
+				if (value instanceof Cloneable) {
+					for (Method possibleClone : value.getClass().getDeclaredMethods()) {
+						possibleClone.setAccessible(true);
+						if ("clone".equals(possibleClone.getName()) && possibleClone.getParameterTypes().length == 0) {
+							value = possibleClone.invoke(value);
+						}
+					}
+				}
+				f.set(to, value);
+			} catch (IllegalArgumentException | IllegalAccessException e) {
+				throw new RuntimeException(e);
+			} catch (InvocationTargetException e) {
+				throw new RuntimeException(e);
+			}
+		}
+	}
+
+	public static void parse(OptionValues base, String... args) {
+		CmdLineParser parser = new CmdLineParser(base);
+		try {
+			parser.parseArgument(args);
+			{
+				// special cases which has side effects when enabled
+				// TODO avoid these brittle side effects?
+				if (base.iterationBoundString != null && !base.iterationBoundString.isEmpty()) {
+					base.iterationBound = Integer.parseInt(base.iterationBoundString);
+				}
+				if (base.ignoredLibrariesString != null && !base.ignoredLibrariesString.isEmpty()) {
+					base.ignoreLibraries = true;
+					base.ignoredLibraries = Collections.newSet(Arrays.asList(base.ignoredLibrariesString.split(",")));
+				}
+				if (base.test) {
+					base.enableTest();
+				}
+				if (base.testFlowgraphBuilder) {
+					base.enableTestFlowGraphBuiler();
+				}
+				if (base.debug) {
+					base.enableDebug();
+				}
+			}
+			if (base.help) {
+				base.describe();
+			}
+		} catch (CmdLineException e) {
+			parser.printUsage(System.err);
+			throw new RuntimeException(e);
+		}
+	}
 
 	public OptionValues() {
 		this(null, null);
@@ -264,7 +262,7 @@ public class OptionValues {
 	}
 
 	/**
-	 * Assume AJAX returns anything.
+	 * Assumes that AJAX returns anything.
 	 */
 	public void disableAjaxReturnsJson() {
 		ajaxReturnsJson = false;
@@ -278,7 +276,7 @@ public class OptionValues {
 	}
 
 	/**
-	 * Disables a bounded number of iterations
+	 * Disable bounded number of iterations
 	 */
 	public void disableBoundedIterations() {
 		iterationBoundString = "-1";
@@ -307,30 +305,12 @@ public class OptionValues {
 	}
 
 	/**
-	 * Disable correlation tracking.
-	 */
-	public void disableCorrelationTracking() {
-		correlationTrackingMode = false;
-	}
-
-	/**
 	 * Disable debug mode.
 	 * Also sets log level to Level.INFO.
 	 */
 	public void disableDebug() {
 		debug = false;
 		Logger.getRootLogger().setLevel(Level.INFO);
-	}
-
-	public void disableDebugOutputOnCrash() {
-		debugOutputOnCrash = false;
-	}
-
-	/**
-	 * Disable the DOM DSL.
-	 */
-	public void disableDSL() {
-		dsl = false;
 	}
 
 	/**
@@ -340,12 +320,12 @@ public class OptionValues {
 		flowgraph = false;
 	}
 
-	/**
-	 * Disable flow graph optimization.
-	 */
-	public void disableFlowgraphOptimization() {
-		flowgraphOptimization = false;
-	}
+//	/**
+//	 * Disable flow graph optimization.
+//	 */
+//	public void disableFlowgraphOptimization() {
+//		flowgraphOptimization = false;
+//	}
 
 	/**
 	 * Do not ignore HTML content.
@@ -361,7 +341,6 @@ public class OptionValues {
 		ignoreLibraries = false;
 		ignoredLibrariesString = "";
 		ignoredLibraries = new LinkedHashSet<>();
-
 	}
 
 	/**
@@ -393,17 +372,17 @@ public class OptionValues {
 	}
 
 	/**
-	 * Disables no charged calls.
+	 * Enable charged calls.
 	 */
 	public void disableNoChargedCalls() {
 		noChargedCalls = false;
 	}
 
 	/**
-	 * Enable context sensitivity.
+	 * Enable object sensitivity.
 	 */
-	public void disableNoContextSensitivity() {
-		noContextSensitivity = false;
+	public void disableNoObjectSensitivity() {
+		noObjectSensitivity = false;
 	}
 
 	/**
@@ -442,14 +421,14 @@ public class OptionValues {
 	}
 
 	/**
-	 * Disable local path sensitivity.
+	 * Enable control sensitivity.
 	 */
-	public void disableNoLocalPathSensitivity() {
-		noLocalPathSensitivity = false;
+	public void enableControlSensitivity() {
+		noControlSensitivity = false;
 	}
 
 	/**
-	 * Disables no analysis messages.
+	 * Enable analysis messages.
 	 */
 	public void disableNoMessages() {
 		no_messages = false;
@@ -470,10 +449,10 @@ public class OptionValues {
 	}
 
 	/**
-	 * Disable polymorphic values.
+	 * Enable polymorphic values.
 	 */
-	public void disablePolymorphic() {
-		polymorphic = false;
+	public void disableNoPolymorphic() {
+		no_polymorphic = false;
 	}
 
 	/**
@@ -488,13 +467,6 @@ public class OptionValues {
 	 */
 	public void disableQuiet() {
 		quiet = false;
-	}
-
-	/**
-	 * Enables serialization of final analysis state
-	 */
-	public void disableSerializeFinalState() {
-		serializeFinalState = false;
 	}
 
 	/**
@@ -535,7 +507,7 @@ public class OptionValues {
 	}
 
 	/**
-	 * Disable testing of flow graph builder. Also disables test mode.
+	 * Disable testing of flow graph builder. Also disable test mode.
 	 */
 	public void disableTestFlowGraphBuilder() {
 		disableTest();
@@ -552,8 +524,8 @@ public class OptionValues {
 	/**
 	 * Disable uneval mode.
 	 */
-	public void disableUnevalMode() {
-		unevalMode = false;
+	public void disableUnevalizer() {
+		unevalizer = false;
 	}
 
 	/**
@@ -585,7 +557,7 @@ public class OptionValues {
 	}
 
 	/**
-	 * Enables a bounded number of iterations
+	 * Enable a bounded number of iterations
 	 */
 	public void enableBoundedIterations(int bound) {
 		iterationBoundString = bound + "";
@@ -614,13 +586,6 @@ public class OptionValues {
 	}
 
 	/**
-	 * Enable correlation tracking.
-	 */
-	public void enableCorrelationTracking() {
-		correlationTrackingMode = true;
-	}
-
-	/**
 	 * Enable coverage view.
 	 */
 	public void enableCoverage() {
@@ -636,23 +601,12 @@ public class OptionValues {
 		Logger.getRootLogger().setLevel(Level.DEBUG);
 	}
 
-	public void enableDebugOutputOnCrash() {
-		debugOutputOnCrash = true;
-	}
-
-	/**
-	 * Enable the DOM DSL.
-	 */
-	public void enableDSL() {
-		dsl = true;
-	}
-
-	/**
-	 * Introduce random errors.
-	 */
-	public void enableErrorBatchMode() {
-		introduceError = true;
-	}
+//	/**
+//	 * Introduce random errors.
+//	 */
+//	public void enableErrorBatchMode() {
+//		introduceError = true;
+//	}
 
 	/**
 	 * Enable eval statistics.
@@ -668,12 +622,12 @@ public class OptionValues {
 		flowgraph = true;
 	}
 
-	/**
-	 * Enable flow graph optimization.
-	 */
-	public void enableFlowgraphOptimization() {
-		flowgraphOptimization = true;
-	}
+//	/**
+//	 * Enable flow graph optimization.
+//	 */
+//	public void enableFlowgraphOptimization() {
+//		flowgraphOptimization = true;
+//	}
 
 	/**
 	 * Ignore HTML content.
@@ -718,17 +672,17 @@ public class OptionValues {
 	}
 
 	/**
-	 * Enables no charged calls.
+	 * Disable charged calls.
 	 */
 	public void enableNoChargedCalls() {
 		noChargedCalls = true;
 	}
 
 	/**
-	 * Disable context sensitivity.
+	 * Disable object sensitivity.
 	 */
-	public void enableNoContextSensitivity() {
-		noContextSensitivity = true;
+	public void enableNoObjectSensitivity() {
+		noObjectSensitivity = true;
 	}
 
 	/**
@@ -767,14 +721,14 @@ public class OptionValues {
 	}
 
 	/**
-	 * Disable local path sensitivity.
+	 * Disable control sensitivity.
 	 */
-	public void enableNoLocalPathSensitivity() {
-		noLocalPathSensitivity = true;
+	public void disableControlSensitivity() {
+		noControlSensitivity = true;
 	}
 
 	/**
-	 * Enables no analysis messages.
+	 * Disable analysis messages.
 	 */
 	public void enableNoMessages() {
 		no_messages = true;
@@ -795,10 +749,10 @@ public class OptionValues {
 	}
 
 	/**
-	 * Enable polymorphic values.
+	 * Disable polymorphic values.
 	 */
-	public void enablePolymorphic() { // TODO: enable polymorphic by default?
-		polymorphic = true;
+	public void enableNoPolymorphic() {
+		no_polymorphic = true;
 	}
 
 	/**
@@ -813,13 +767,6 @@ public class OptionValues {
 	 */
 	public void enableQuiet() {
 		quiet = true;
-	}
-
-	/**
-	 * Enables serialization of final analysis state
-	 */
-	public void enableSerializeFinalState() {
-		serializeFinalState = true;
 	}
 
 	/**
@@ -878,8 +825,8 @@ public class OptionValues {
 	/**
 	 * Enable uneval mode.
 	 */
-	public void enableUnevalMode() {
-		unevalMode = true;
+	public void enableUnevalizer() {
+		unevalizer = true;
 	}
 
 	/**
@@ -909,10 +856,6 @@ public class OptionValues {
 	 */
 	public Set<String> getLibraries() {
 		return ignoredLibraries;
-	}
-
-	public int getMaxSuspiciousnessLevel() {
-		return maxSuspiciousnessLevel;
 	}
 
 	public List<Pair<String, ?>> getOptionValues() {
@@ -949,10 +892,6 @@ public class OptionValues {
 		}
 	}
 
-	public boolean isAbortOnSuspiciousValueCreationEnabled() {
-		return maxSuspiciousnessLevel >= 0;
-	}
-
 	public boolean isAlwaysCanPut() {
 		return alwaysCanput;
 	}
@@ -984,10 +923,10 @@ public class OptionValues {
 	}
 
 	/**
-	 * If set, do not use context sensitivity.
+	 * If set, do not use object sensitivity.
 	 */
-	public boolean isContextSensitivityDisabled() {
-		return noContextSensitivity;
+	public boolean isObjectSensitivityDisabled() {
+		return noObjectSensitivity;
 	}
 
 	/**
@@ -1005,16 +944,7 @@ public class OptionValues {
 	}
 
 	/**
-	 * Is correlation tracking enabled.
-	 */
-	public boolean isCorrelationTrackingEnabled() {
-		return correlationTrackingMode;
-	}
-
-	/**
 	 * Is coverage enabled.
-	 * 
-	 * @return True if coverage view is enabled.
 	 */
 	public boolean isCoverageEnabled() {
 		return coverage;
@@ -1034,10 +964,6 @@ public class OptionValues {
 		return debug || test;
 	}
 
-	public boolean isDebugOutputOnCrashEnabled() {
-		return debugOutputOnCrash;
-	}
-
 	/**
 	 * If set, the DOM objects and functions are part of the initial state.
 	 */
@@ -1045,19 +971,12 @@ public class OptionValues {
 		return includeDom;
 	}
 
-	/**
-	 * Is the DOM DSL enabled.
-	 */
-	public boolean isDSLEnabled() {
-		return dsl;
-	}
-
-	/**
-	 * Do we introduce random errors.
-	 */
-	public boolean isErrorBatchMode() {
-		return introduceError;
-	}
+//	/**
+//	 * Do we introduce random errors.
+//	 */
+//	public boolean isErrorBatchMode() {
+//		return introduceError;
+//	}
 
 	/**
 	 * Eval statistics enabled.
@@ -1080,12 +999,12 @@ public class OptionValues {
 		return flowgraph;
 	}
 
-	/**
-	 * If set, do not perform flowgraph optimization.
-	 */
-	public boolean isFlowGraphOptimizationEnabled() {
-		return flowgraphOptimization;
-	}
+//	/**
+//	 * If set, do not perform flowgraph optimization.
+//	 */
+//	public boolean isFlowGraphOptimizationEnabled() {
+//		return flowgraphOptimization;
+//	}
 
 	/**
 	 * If set, do not use abstract garbage collection.
@@ -1130,10 +1049,10 @@ public class OptionValues {
 	}
 
 	/**
-	 * If set, do not use local path sensitivity, including assume node effects.
+	 * If set, do not use control sensitivity.
 	 */
-	public boolean isLocalPathSensitivityDisabled() {
-		return noLocalPathSensitivity;
+	public boolean isControlSensitivityDisabled() {
+		return noControlSensitivity;
 	}
 
 	/**
@@ -1172,10 +1091,10 @@ public class OptionValues {
 	}
 
 	/**
-	 * If set, use polymorphic abstract values.
+	 * If set, polymorphic abstract values are disabled.
 	 */
-	public boolean isPolymorphicEnabled() {
-		return polymorphic;
+	public boolean isPolymorphicDisabled() {
+		return no_polymorphic;
 	}
 
 	/**
@@ -1204,10 +1123,6 @@ public class OptionValues {
 	 */
 	public boolean isReturnJSON() {
 		return ajaxReturnsJson;
-	}
-
-	public boolean isSerializeFinalStateEnabled() {
-		return serializeFinalState;
 	}
 
 	/**
@@ -1257,8 +1172,8 @@ public class OptionValues {
 	/**
 	 * Is uneval mode enabled.
 	 */
-	public boolean isUnevalEnabled() { // FIXME: enable unevalizer by default? (affects use of live variables!)
-		return unevalMode;
+	public boolean isUnevalizerEnabled() { // FIXME: enable unevalizer by default? (affects use of live variables!)
+		return unevalizer;
 	}
 
 	/**
@@ -1273,10 +1188,6 @@ public class OptionValues {
 	 */
 	public boolean isUnsoundEnabled() {
 		return unsound;
-	}
-
-	public void setMaxSuspiciousnessLevel(int level) {
-		maxSuspiciousnessLevel = level;
 	}
 
 	@Override
@@ -1321,7 +1232,55 @@ public class OptionValues {
 		this.forInSpecialization = false;
 	}
 	
-	public boolean isForInSpecializationEnabled(){
+	public boolean isForInSpecializationEnabled() {
 		return forInSpecialization;
+	}
+
+	public void disableContextSensitiveHeap() {
+		contextSensitiveHeapEnabled = false;
+	}
+
+	public void enableContextSensitiveHeap() {
+		contextSensitiveHeapEnabled = true;
+	}
+
+	public boolean isContextSensitiveHeapEnabled() {
+		return contextSensitiveHeapEnabled;
+	}
+
+	public void disableParameterSensitivity() {
+		parameterSensitivityEnabled = false;
+	}
+
+	public void enableParameterSensitivity() {
+		parameterSensitivityEnabled = true;
+	}
+
+	public boolean isParameterSensitivityEnabled() {
+		return parameterSensitivityEnabled;
+	}
+
+	public void disableNumericVariableSensitivity() {
+		numericVariableSensitivityEnabled = false;
+	}
+
+	public void enableNumericVariableSensitivity() {
+		numericVariableSensitivityEnabled = true;
+	}
+
+	public boolean isNumericVariableSensitivityEnabled() {
+		return numericVariableSensitivityEnabled;
+	}
+
+	public void enableUnreachable() {
+		unreachableEnabled = true;
+	}
+
+	public void disableUnreachable() {
+		unreachableEnabled = false;
+	}
+
+	public boolean isUnreachableEnabled() {
+		return unreachableEnabled;
 	}
 }

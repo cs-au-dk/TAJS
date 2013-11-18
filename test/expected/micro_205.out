@@ -1,0 +1,47 @@
+test/micro/test205.js:2:11: [definite] Reading 'this' yields the global object
+test/micro/test205.js:15:11: [definite] Reading 'this' yields the global object
+test/micro/test205.js:23:11: [definite] Reading 'this' yields the global object
+test/micro/test205.js:30:11: [definite] Reading 'this' yields the global object
+test/micro/test205.js:37:11: [definite] Reading 'this' yields the global object
+test/micro/test205.js:44:11: [definite] Reading 'this' yields the global object
+test/micro/test205.js:52:11: [definite] Reading 'this' yields the global object
+test/micro/test205.js:61:11: [definite] Reading 'this' yields the global object
+test/micro/test205.js:55:7: [definite] The variable z3 is never used
+test/micro/test205.js:55:12: [definite] Unreachable code
+test/micro/test205.js:55:12: [maybe] TypeError, call to non-function
+test/micro/test205.js:17:23: [maybe] Reading 'this' yields the global object
+test/micro/test205.js:49:10: [maybe] Too few parameters to function Function.prototype.call
+test/micro/test205.js:55:12: [maybe] Too few parameters to function Function.prototype.call
+test/micro/test205.js:12:10: [maybe] Converting primitive number to object
+test/micro/test205.js:18:10: [maybe] Converting primitive string to object
+test/micro/test205.js:25:10: [maybe] Converting primitive string to object
+test/micro/test205.js:32:10: [maybe] Converting primitive string to object
+test/micro/test205.js:39:10: [maybe] Converting primitive string to object
+test/micro/test205.js:2:1: [info] Abstract value: [@<the global object>[native]]
+test/micro/test205.js:3:1: [info] Abstract value: [@Array#node23]
+test/micro/test205.js:7:1: [info] Abstract value: 42.0
+test/micro/test205.js:9:1: [info] Abstract value: 42.0
+test/micro/test205.js:11:1: [info] Abstract value: 42.0
+test/micro/test205.js:13:1: [info] Abstract value: 42.0
+test/micro/test205.js:15:1: [info] Abstract value: [@<the global object>[native]]
+test/micro/test205.js:19:1: [info] Abstract object: {0:[@String#node100],1:[@arguments#node309],length:2.0,[[Prototype]]=[@Array.prototype[native]]}
+test/micro/test205.js:20:1: [info] Abstract value: "foo"
+test/micro/test205.js:21:1: [info] Abstract object: {0:"bar",1:"baz",callee:[@g#fun2],length:2.0,[[Prototype]]=[@Object.prototype[native]]}
+test/micro/test205.js:23:1: [info] Abstract value: [@<the global object>[native]]
+test/micro/test205.js:26:1: [info] Abstract object: {0:[@String#node134],1:[@arguments#node309],length:2.0,[[Prototype]]=[@Array.prototype[native]]}
+test/micro/test205.js:27:1: [info] Abstract value: "foo"
+test/micro/test205.js:28:1: [info] Abstract object: {0:"bar",1:"baz",callee:[@g#fun2],length:2.0,[[Prototype]]=[@Object.prototype[native]]}
+test/micro/test205.js:30:1: [info] Abstract value: [@<the global object>[native]]
+test/micro/test205.js:33:1: [info] Abstract object: {0:[@String#node179],1:[@arguments#node309],length:2.0,[[Prototype]]=[@Array.prototype[native]]}
+test/micro/test205.js:34:1: [info] Abstract value: "foo"
+test/micro/test205.js:35:1: [info] Abstract object: {0:"bar",1:"baz",callee:[@g#fun2],length:2.0,[[Prototype]]=[@Object.prototype[native]]}
+test/micro/test205.js:37:1: [info] Abstract value: [@<the global object>[native]]
+test/micro/test205.js:40:1: [info] Abstract object: {0:[@String#node231],1:[@arguments#node309],length:2.0,[[Prototype]]=[@Array.prototype[native]]}
+test/micro/test205.js:41:1: [info] Abstract value: "foo"
+test/micro/test205.js:42:1: [info] Abstract object: {0:"bar",1:"baz",callee:[@g#fun2],length:2.0,[[Prototype]]=[@Object.prototype[native]]}
+test/micro/test205.js:44:1: [info] Abstract value: [@<the global object>[native]]
+test/micro/test205.js:48:1: [info] Abstract object: {0:[@Function.prototype.call[native]],1:[@arguments#node309],length:2.0,[[Prototype]]=[@Array.prototype[native]]}
+test/micro/test205.js:50:1: [info] Abstract object: {0:[@<the global object>[native]],1:[@arguments#node309],length:2.0,[[Prototype]]=[@Array.prototype[native]]}
+test/micro/test205.js:52:1: [info] Abstract value: [@<the global object>[native]]
+test/micro/test205.js:58:3: [info] Abstract object: {message:Str,[[Prototype]]=[@TypeError.prototype[native]]}
+test/micro/test205.js:61:1: [info] Abstract value: [@<the global object>[native]]

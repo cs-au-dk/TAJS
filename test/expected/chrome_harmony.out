@@ -1,6 +1,11 @@
 test/chromeexperiments/harmony.tidy.html:996:29: [definite] TypeError, call to non-function
 test/chromeexperiments/harmony.tidy.html:1005:21: [definite] TypeError, call to non-function
 test/chromeexperiments/harmony.tidy.html:497:5: [definite] The conditional expression is always false
+test/chromeexperiments/harmony.tidy.html:600:9: [definite] The assignment to b has no effect
+test/chromeexperiments/harmony.tidy.html:618:9: [definite] The assignment to b has no effect
+test/chromeexperiments/harmony.tidy.html:816:9: [definite] The assignment to c has no effect
+test/chromeexperiments/harmony.tidy.html:826:9: [definite] The assignment to c has no effect
+test/chromeexperiments/harmony.tidy.html:832:9: [definite] The assignment to c has no effect
 test/chromeexperiments/harmony.tidy.html:970:9: [definite] The conditional expression is always false
 test/chromeexperiments/harmony.tidy.html:978:9: [definite] The conditional expression is always false
 test/chromeexperiments/harmony.tidy.html:983:9: [definite] The conditional expression is always false
@@ -134,7 +139,6 @@ test/chromeexperiments/harmony.tidy.html:864:19: [definite] Dead assignment, pro
 test/chromeexperiments/harmony.tidy.html:970:13: [definite] Reading absent property canvas
 test/chromeexperiments/harmony.tidy.html:978:13: [definite] Reading absent property brush_color_red
 test/chromeexperiments/harmony.tidy.html:983:13: [definite] Reading absent property background_color_red
-test/chromeexperiments/harmony.tidy.html: [definite] Unreachable code
 test/chromeexperiments/harmony.tidy.html:24:1: [definite] Unreachable function circles
 test/chromeexperiments/harmony.tidy.html:32:11: [definite] Unreachable function
 test/chromeexperiments/harmony.tidy.html:36:14: [definite] Unreachable function
@@ -264,6 +268,7 @@ test/chromeexperiments/harmony.tidy.html:1199:1: [definite] Unreachable function
 test/chromeexperiments/harmony.tidy.html:1207:1: [definite] Unreachable function saveToLocalStorage
 test/chromeexperiments/harmony.tidy.html:1210:1: [definite] Unreachable function flatten
 test/chromeexperiments/harmony.tidy.html:1216:1: [definite] Unreachable function cleanPopUps
+test/chromeexperiments/harmony.tidy.html:744:9: [maybe] EventTarget.dispatchEvent not implemented
 test/chromeexperiments/harmony.tidy.html:822:27: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/harmony.tidy.html:936:5: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/harmony.tidy.html:20: [maybe] Uncaught exception, constructed at [test/chromeexperiments/harmony.tidy.html:822:27, test/chromeexperiments/harmony.tidy.html:936:5, test/chromeexperiments/harmony.tidy.html:996:29, test/chromeexperiments/harmony.tidy.html:1005:21]

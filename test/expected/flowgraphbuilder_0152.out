@@ -19,11 +19,6 @@ fg2: <main> function()
     node 6: exceptional-return (test/flowgraphbuilder/flowgraph_builder0152.js:1:1)
     ->[]
 
-Unevalizer: Starting on: "x = 4"
-Unevalizer: Valid program
-Unevalizer: No name capture
-Unevalizer: Return value of eval is used
-Unevalizer: Last expression has value
 fg2: <main> function()
   block 0: [entry]
     node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0152.js:1:1)

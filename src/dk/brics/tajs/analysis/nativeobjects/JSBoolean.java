@@ -23,6 +23,7 @@ import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.analysis.State;
 import dk.brics.tajs.analysis.FunctionCalls.CallInfo;
 import dk.brics.tajs.lattice.ObjectLabel;
+import dk.brics.tajs.lattice.UnknownValueResolver;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.lattice.ObjectLabel.Kind;
 
@@ -61,6 +62,7 @@ public class JSBoolean {
 			if (NativeFunctions.throwTypeErrorIfWrongKindOfThis(nativeobject, call, state, c, Kind.BOOLEAN))
 				return Value.makeNone();
 			Value val = state.readInternalValue(state.readThisObjects());
+			val = UnknownValueResolver.getRealValue(val, c.getCurrentState());
 			if (val.isMaybeTrueButNotFalse())
 				return Value.makeStr("true");
 			else if (val.isMaybeFalseButNotTrue())

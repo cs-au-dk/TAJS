@@ -31,7 +31,7 @@ import org.apache.log4j.Logger;
 
 import dk.brics.tajs.options.Options;
 
-public class StateExtras { // FIXME: javadoc + review
+public class StateExtras { // FIXME: javadoc
 
 	private static Logger logger = Logger.getLogger(StateExtras.class); 
 
@@ -49,7 +49,7 @@ public class StateExtras { // FIXME: javadoc + review
     private boolean writable_must_maps;
     
     protected StateExtras() {
-    	// do nothing
+    	setToNone();
     }
     
     protected StateExtras(StateExtras x) {
@@ -61,14 +61,14 @@ public class StateExtras { // FIXME: javadoc + review
             must_maps = newMapMapSet(x.must_maps);
         } else {
             may_sets = x.may_sets;
-            writable_may_sets = false;
+            writable_may_sets = x.writable_may_sets = false;
             must_sets = x.must_sets;
-            writable_must_sets = false;
+            writable_must_sets = x.writable_must_sets = false;
             may_maps = x.may_maps;
             may_maps_default = x.may_maps_default;
-            writable_may_maps = false;
+            writable_may_maps = x.writable_may_maps = false;
             must_maps = x.must_maps;
-            writable_must_maps = false;
+            writable_must_maps = x.writable_must_maps = false;
         }
     }
 
@@ -132,14 +132,14 @@ public class StateExtras { // FIXME: javadoc + review
             must_maps = newMap();
             writable_must_maps = true;
         } else {
-            may_sets = newMap();
+            may_sets = Collections.emptyMap();
             writable_may_sets = false;
-            must_sets = newMap();
+            must_sets = Collections.emptyMap();
             writable_must_sets = false;
-            may_maps = newMap();
-            may_maps_default = newMap();
+            may_maps = Collections.emptyMap();
+            may_maps_default = Collections.emptyMap();
             writable_may_maps = false;
-            must_maps = newMap();
+            must_maps = Collections.emptyMap();
             writable_must_maps = false;
         }
     }
@@ -152,6 +152,9 @@ public class StateExtras { // FIXME: javadoc + review
 			if (!s.isEmpty())
 				return false;
 		for (Set<ObjectLabel> s : must_sets.values())
+			if (!s.isEmpty())
+				return false;
+		for (Set<ObjectLabel> s : may_maps_default.values())
 			if (!s.isEmpty())
 				return false;
 		for (Map<String,Set<ObjectLabel>> s1 : may_maps.values())
@@ -172,14 +175,14 @@ public class StateExtras { // FIXME: javadoc + review
         makeMustMapsWritable();
         boolean changed = false;
         // MaySets
-        for(Map.Entry<String, Set<ObjectLabel>> e : s.may_sets.entrySet()){
+        for(Map.Entry<String, Set<ObjectLabel>> e : s.may_sets.entrySet()) {
             Set<ObjectLabel> thismayset = may_sets.get(e.getKey());
             thismayset = (thismayset == null) ? dk.brics.tajs.util.Collections.<ObjectLabel>newSet() : thismayset;
             may_sets.put(e.getKey(), thismayset);
             changed |= thismayset.addAll(e.getValue());
         }
         // MustSets
-        for(Map.Entry<String, Set<ObjectLabel>> e : s.must_sets.entrySet()){
+        for(Map.Entry<String, Set<ObjectLabel>> e : s.must_sets.entrySet()) {
             Set<ObjectLabel> thismustset = must_sets.get(e.getKey());
             thismustset = (thismustset == null) ? dk.brics.tajs.util.Collections.<ObjectLabel>newSet() : thismustset;
             must_sets.put(e.getKey(), thismustset);
@@ -342,7 +345,7 @@ public class StateExtras { // FIXME: javadoc + review
      * Adds a collection of object labels to the named must set.
      */
     public void addToMustSet(String name, Collection<ObjectLabel> labels) {
-        makeMustMapsWritable();
+        makeMustSetsWritable();
         addAllToMapSet(must_sets, name, labels);
     }
 

@@ -418,34 +418,29 @@ public class Operators {
 		Value p2 = Conversion.toPrimitive(v2, register2, Conversion.Hint.NUM, c);
 		if (p1.isMaybeFuzzyStr() || p2.isMaybeFuzzyStr() 
 				|| p1.isMaybeAnyBool() || p2.isMaybeAnyBool()
-				|| p1.isMaybeFuzzyNum() || p2.isMaybeFuzzyNum()) {
-			Value r = Value.makeAnyBool();
-			if ((p1.isMaybeOtherThanStr() || p2.isMaybeOtherThanStr())
-					&& (Conversion.toNumber(p1, register1, c).isMaybeNaN() || Conversion.toNumber(p2, register2, c).isMaybeNaN()))
-				r = r.joinUndef(); // undefined is the correct outcome. see items 6 and 7!
+				|| p1.isMaybeFuzzyNum() || p2.isMaybeFuzzyNum())
+			return Value.makeAnyBool();  // may be undefined according to items 6 and 7, but changed to false in 11.8.1-4
+		else if (p1.isNotStr() || p2.isNotStr()) {
+			// at most one argument is a string: perform numeric comparison
+			return numericComparison(p1, register1, p2, register2, c);
+		} else {
+			// (at least) two defined string arguments: perform a string comparison
+			Value r;
+			String st1 = p1.getStr();
+			String st2 = p2.getStr();
+			if (st1 != null && st2 != null) {
+				if (st1.compareTo(st2) < 0)
+					r = Value.makeBool(true);
+				else
+					r = Value.makeBool(false);
+			} else
+				r = Value.makeNone();
+			if (p1.isMaybeOtherThanStr() || p2.isMaybeOtherThanStr())
+				r = r.join(numericComparison(p1, register1, p2, register2, c));
 			return r;
-		} else
-			if (p1.isNotStr() || p2.isNotStr()) {
-				// at most one argument is a string: perform numeric comparison
-				return numericComparison(p1, register1, p2, register2, c);
-			} else {
-				// (at least) two defined string arguments: perform a string comparison
-				Value r;
-				String st1 = p1.getStr();
-				String st2 = p2.getStr();
-				if (st1 != null && st2 != null) {
-					if (st1.compareTo(st2) < 0)
-						r = Value.makeBool(true);
-					else
-						r = Value.makeBool(false);
-				} else
-					r = Value.makeNone();
-				if (p1.isMaybeOtherThanStr() || p2.isMaybeOtherThanStr())
-					r = r.join(numericComparison(p1, register1, p2, register2, c));
-				return r;
-			}
+		}
 	}
-	
+
 	/**
 	 * Numeric comparison, used by abstractRelationalComparison.
 	 */
@@ -454,21 +449,11 @@ public class Operators {
 			return Value.makeNone();
 		Value n1 = Conversion.toNumber(p1, register1, c);
 		Value n2 = Conversion.toNumber(p2, register2, c);
-		if (n1.isMaybeSingleNum() && n2.isMaybeSingleNum()) {
-			Double d1 = n1.getNum();
-			Double d2 = n2.getNum();
-			if (d1.isNaN() || d2.isNaN())
-				return Value.makeUndef();
-			if (d1 < d2) 
-				return Value.makeBool(true);
-			else
-				return Value.makeBool(false);
-		} else {
-			Value r = Value.makeAnyBool();
-			if (n1.isMaybeNaN() || n2.isMaybeNaN())
-				r = r.joinUndef();
-			return r;
-		}
+		if (n1.isMaybeSingleNum() && n2.isMaybeSingleNum())
+			return Value.makeBool(n1.getNum() < n2.getNum());
+		if (n1.isNaN() || n2.isNaN())
+			return Value.makeBool(false);
+		return Value.makeAnyBool();
 	}
 	
 	/** 

@@ -27,9 +27,5 @@ test/chromeexperiments/burncanvas.tidy.html:135:26: [maybe] Conversion to number
 test/chromeexperiments/burncanvas.tidy.html:135:38: [maybe] Conversion to number yields NaN
 test/chromeexperiments/burncanvas.tidy.html:136:26: [maybe] Conversion to number yields NaN
 test/chromeexperiments/burncanvas.tidy.html:136:38: [maybe] Conversion to number yields NaN
-test/chromeexperiments/burncanvas.tidy.html:137:21: [maybe] Conversion to number yields NaN
-test/chromeexperiments/burncanvas.tidy.html:138:21: [maybe] Conversion to number yields NaN
-test/chromeexperiments/burncanvas.tidy.html:139:21: [maybe] Conversion to number yields NaN
-test/chromeexperiments/burncanvas.tidy.html:140:21: [maybe] Conversion to number yields NaN
 test/chromeexperiments/burncanvas.tidy.html:141:48: [maybe] Conversion to number yields NaN
 test/chromeexperiments/burncanvas.tidy.html:141:55: [maybe] Conversion to number yields NaN

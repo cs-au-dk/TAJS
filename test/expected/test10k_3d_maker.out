@@ -1,3 +1,5 @@
+test/10k/3d_maker.tidy.html:390:5: [definite] The assignment to REAL_X has no effect
+test/10k/3d_maker.tidy.html:391:5: [definite] The assignment to REAL_Y has no effect
 test/10k/3d_maker.tidy.html:19:9: [definite] Reading 'this' yields the global object
 test/10k/3d_maker.tidy.html:20:9: [definite] Reading 'this' yields the global object
 test/10k/3d_maker.tidy.html:21:9: [definite] Reading 'this' yields the global object
@@ -121,14 +123,12 @@ test/10k/3d_maker.tidy.html:4: [maybe] Uncaught exception, constructed at [test/
 test/10k/3d_maker.tidy.html:29:18: [maybe] Converting primitive number to object
 test/10k/3d_maker.tidy.html:29:18: [maybe] Reading absent property (computed name)
 test/10k/3d_maker.tidy.html:29:18: [maybe] The variable m has values with different types
-test/10k/3d_maker.tidy.html:29:45: [maybe] Conversion to number yields NaN
 test/10k/3d_maker.tidy.html:29:45: [maybe] Converting primitive number to object
 test/10k/3d_maker.tidy.html:29:45: [maybe] Reading absent property (computed name)
 test/10k/3d_maker.tidy.html:29:45: [maybe] The variable m has values with different types
 test/10k/3d_maker.tidy.html:29:72: [maybe] Converting primitive number to object
 test/10k/3d_maker.tidy.html:29:72: [maybe] Reading absent property (computed name)
 test/10k/3d_maker.tidy.html:29:72: [maybe] The variable m has values with different types
-test/10k/3d_maker.tidy.html:29:99: [maybe] Conversion to number yields NaN
 test/10k/3d_maker.tidy.html:29:99: [maybe] Converting primitive number to object
 test/10k/3d_maker.tidy.html:29:99: [maybe] Reading absent property (computed name)
 test/10k/3d_maker.tidy.html:29:99: [maybe] The variable m has values with different types

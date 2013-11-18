@@ -22,6 +22,7 @@ import java.util.Set;
 
 import dk.brics.tajs.analysis.State;
 import dk.brics.tajs.analysis.dom.core.DOMDocument;
+import dk.brics.tajs.analysis.dom.core.DOMNode;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.util.Collections;
@@ -150,9 +151,17 @@ public class HTMLBuilder {
         HTML_OBJECT_LABELS.add(HTMLUListElement.INSTANCES);
 
         // Write documentElement (due to cyclic dependency) and summarize DOMDocument.
-        createDOMProperty(s, DOMDocument.INSTANCES, "documentElement", Value.makeObject(HTMLHtmlElement.INSTANCES));
+        createDOMProperty(s, DOMDocument.INSTANCES, "documentElement", Value.makeObject(HTMLHtmlElement.INSTANCES).setReadOnly());
         s.multiplyObject(DOMDocument.INSTANCES);
         DOMDocument.INSTANCES = DOMDocument.INSTANCES.makeSingleton().makeSummary();
+        
+        // Set the remaining properties on DOMNode, due to circularity
+        createDOMProperty(s, DOMNode.PROTOTYPE, "firstChild", Value.makeObject(HTMLBuilder.HTML_OBJECT_LABELS).joinNull().setReadOnly());
+        createDOMProperty(s, DOMNode.PROTOTYPE, "parentNode", Value.makeObject(HTMLBuilder.HTML_OBJECT_LABELS).joinNull().setReadOnly());
+        createDOMProperty(s, DOMNode.PROTOTYPE, "lastChild", Value.makeObject(HTMLBuilder.HTML_OBJECT_LABELS).setReadOnly());
+        createDOMProperty(s, DOMNode.PROTOTYPE, "previousSibling", Value.makeObject(HTMLBuilder.HTML_OBJECT_LABELS).joinNull().setReadOnly());
+        createDOMProperty(s, DOMNode.PROTOTYPE, "nextSibling", Value.makeObject(HTMLBuilder.HTML_OBJECT_LABELS).joinNull().setReadOnly());
+
     }
 
 }

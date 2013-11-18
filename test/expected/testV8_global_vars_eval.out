@@ -1,4 +1,3 @@
-Unevalizer: Starting on: ""
 test/v8tests/global-vars-eval.js:30:1: [definite] ReferenceError, reading absent variable assertEquals
 test/v8tests/global-vars-eval.js:29:1: [definite] Reading 'this' yields the global object
 test/v8tests/global-vars-eval.js:30:14: [definite] Unreachable code

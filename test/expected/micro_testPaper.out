@@ -2,8 +2,8 @@ test/micro/testPaper.js:6:44: [definite] Dead assignment, property name is never
 test/micro/testPaper.js:9:5: [definite] The function Person is invoked both as constructor and function
 test/micro/testPaper.js:11:5: [definite] Dead assignment, property studentid is never read
 test/micro/testPaper.js:11:22: [maybe] Converting primitive number to object
-test/micro/testPaper.js:19:3: [info] Abstract object: {b:absent,name:"Joe Average",studentid:"100026",[[Prototype]]=[@Object#node20]}
-test/micro/testPaper.js:20:3: [info] Abstract object: {b:absent,name:"John Q. Doe",studentid:"100027",[[Prototype]]=[@Object#node20]}
+test/micro/testPaper.js:19:3: [info] Abstract object: {name:"Joe Average",studentid:"100026",[[Prototype]]=[@Object#node20]}
+test/micro/testPaper.js:20:3: [info] Abstract object: {name:"John Q. Doe",studentid:"100027",[[Prototype]]=[@Object#node20]}
 test/micro/testPaper.js:26:1: [info] Abstract state (modified parts):
   @<the global object>[native] (<initial state>):
     Person: [@Person#fun1]

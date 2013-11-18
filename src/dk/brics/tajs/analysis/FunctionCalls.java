@@ -104,13 +104,11 @@ public class FunctionCalls {
 		 * Returns the result register.
 		 */
 		public int getResultRegister();
-
+		
 		/**
-		 * Returns the base register.
+		 * Returns the execution context.
 		 */
-        // TODO: What is this used for?
-        @Deprecated
-		public int getBaseRegister();
+		public ExecutionContext getExecutionContext();
 	}
 
 	/**
@@ -123,6 +121,8 @@ public class FunctionCalls {
         private Value function;
         
         private Value arg1;
+        
+        private ExecutionContext ec;
 
         public EventHandlerCall(Node sourceNode, Value function, Value arg1) {
             this.sourceNode = sourceNode;
@@ -152,6 +152,7 @@ public class FunctionCalls {
 
         @Override
         public Set<ObjectLabel> prepareThis(State caller_state, State callee_state) {
+        	ec = caller_state.getExecutionContext();
             return HTMLBuilder.HTML_OBJECT_LABELS; // FIXME: setTimeout/setInterval should use the global object instead (uneval48.js)
         }
 
@@ -186,10 +187,10 @@ public class FunctionCalls {
             return AbstractNode.NO_VALUE;
         }
 
-        @Override
-        public int getBaseRegister() {
-            return AbstractNode.NO_VALUE;
-        }
+		@Override
+		public ExecutionContext getExecutionContext() {
+			return ec;
+		}
     }
 
 	/**
@@ -218,16 +219,16 @@ public class FunctionCalls {
 						State ts = c.getCurrentState();
 						c.setCurrentState(newstate); // note that the calling context is not affected, even though e.g. 'this' may get a different value
 						Value res = HostAPIs.evaluate(objlabel.getHostObject(), call, newstate, c);
-						c.setCurrentState(ts);
 						if (call.getSourceNode().isRegistersDone())
 							newstate.clearOrdinaryRegisters();
 						if ((!res.isNone() && !newstate.isNone()) || Options.isPropagateDeadFlow()) {
-							if (old_ec != null)
-								newstate.setExecutionContext(old_ec);
+							newstate.setExecutionContext(call.getExecutionContext());
 							if (call.getResultRegister() != AbstractNode.NO_VALUE)
 								newstate.writeRegister(call.getResultRegister(), res);
-							c.propagateToBasicBlock(newstate, call.getSourceNode().getBlock().getSingleSuccessor(), c.getCurrentContext());
+							c.propagateToBasicBlock(newstate, call.getSourceNode().getBlock().getSingleSuccessor(), 
+									Context.makeSuccessorContext(newstate, call.getSourceNode().getBlock().getSingleSuccessor()));
 						}
+						c.setCurrentState(ts);
 				} else { // user-defined function
 					UserFunctionCalls.enterUserFunction(objlabel, call, caller_state, c);
 					c.getMonitoring().visitUserFunctionCall(objlabel.getFunction(), call.getSourceNode(), call.isConstructorCall());
@@ -239,7 +240,8 @@ public class FunctionCalls {
 			State newstate = caller_state.clone();
 			if (call.getResultRegister() != AbstractNode.NO_VALUE)
 				newstate.writeRegister(call.getResultRegister(), Value.makeNone());
-			c.propagateToBasicBlock(newstate, call.getSourceNode().getBlock().getSingleSuccessor(), c.getCurrentContext());
+			c.propagateToBasicBlock(newstate, call.getSourceNode().getBlock().getSingleSuccessor(), 
+					Context.makeSuccessorContext(newstate, call.getSourceNode().getBlock().getSingleSuccessor()));
 		}
 		c.getMonitoring().visitCall(c.getCurrentNode(), maybe_non_function, maybe_function);
 		if (maybe_non_function) 

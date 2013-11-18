@@ -34,11 +34,11 @@ import dk.brics.tajs.solver.NodeAndContext;
 import dk.brics.tajs.solver.SolverSynchronizer;
 
 /**
- * Encapsulation of the analysis using {@link State}, {@link CallContext}, {@link Monitoring}, 
+ * Encapsulation of the analysis using {@link State}, {@link Context}, {@link Monitoring}, 
  * {@link Solver}, {@link InitialStateBuilder}, {@link Transfer},  
  * {@link WorkListStrategy}, {@link Monitoring}, and {@link NativeFunctions}.
  */
-public final class Analysis implements IAnalysis<State,CallContext,CallEdge<State>,Monitoring<State,CallContext,CallEdge<State>>,Analysis> {
+public final class Analysis implements IAnalysis<State,Context,CallEdge<State>,Monitoring<State,Context,CallEdge<State>>,Analysis> {
 	
 	private Solver solver;
 	
@@ -48,17 +48,17 @@ public final class Analysis implements IAnalysis<State,CallContext,CallEdge<Stat
 	
 	private WorkListStrategy worklist_strategy;
 	
-	private Monitoring<State,CallContext,CallEdge<State>> monitoring;
+	private Monitoring<State,Context,CallEdge<State>> monitoring;
 	
 	private EvalCache eval_cache;
 	
-	private SpecialArgs special_args; // TODO: move this into AnalysisLatticeElement ?
+	private SpecialVars specialvars; // TODO: move this into AnalysisLatticeElement ?
 
 	/**
 	 * For-in specializations.
-	 * For each BeginForInNode and non-specialized call context, gives a list of specialized contexts.
+	 * For each BeginForInNode and non-specialized context, gives a list of specialized contexts.
 	 */
-	private Map<NodeAndContext<CallContext>,List<CallContext>> for_in_specializations;  // TODO: move this into AnalysisLatticeElement ?
+	private Map<NodeAndContext<Context>,List<Context>> for_in_specializations;  // TODO: move this into AnalysisLatticeElement ?
 
 	/**
 	 * Constructs a new analysis object.
@@ -69,13 +69,13 @@ public final class Analysis implements IAnalysis<State,CallContext,CallEdge<Stat
 		worklist_strategy = new WorkListStrategy();
 		monitoring = new Monitoring<>();
 		eval_cache = new EvalCache();
-		special_args = new SpecialArgs();
+		specialvars = new SpecialVars();
 		for_in_specializations = newMap();
 		solver = new Solver(this, sync);
 	}
 	
 	@Override
-	public AnalysisLatticeElement<State,CallContext,CallEdge<State>> makeAnalysisLattice(FlowGraph fg) {
+	public AnalysisLatticeElement<State,Context,CallEdge<State>> makeAnalysisLattice(FlowGraph fg) {
 		return new AnalysisLatticeElement<>(fg);
 	}
 
@@ -90,22 +90,22 @@ public final class Analysis implements IAnalysis<State,CallContext,CallEdge<Stat
 	}
 
 	@Override
-	public IBlockTransfer<State,CallContext> getBlockTransferFunction() {
+	public IBlockTransfer<State,Context> getBlockTransferFunction() {
 		return transfer;
 	}
 
 	@Override
-	public IEdgeTransfer<State,CallContext> getEdgeTransferFunctions() {
+	public IEdgeTransfer<State,Context> getEdgeTransferFunctions() {
 		return transfer;
 	}
 
 	@Override
-	public IWorkListStrategy<CallContext> getWorklistStrategy() {
+	public IWorkListStrategy<Context> getWorklistStrategy() {
 		return worklist_strategy;
 	}
 
 	@Override
-	public Monitoring<State,CallContext,CallEdge<State>> getMonitoring() {
+	public Monitoring<State,Context,CallEdge<State>> getMonitoring() {
 		return monitoring;
 	}
 
@@ -130,10 +130,10 @@ public final class Analysis implements IAnalysis<State,CallContext,CallEdge<Stat
 	}
 	
 	/**
-	 * Returns the special args info.
+	 * Returns the special variables info.
 	 */
-	public SpecialArgs getSpecialArgs() {
-		return special_args;
+	public SpecialVars getSpecialVars() {
+		return specialvars;
 	}
 
 	@Override
@@ -141,11 +141,11 @@ public final class Analysis implements IAnalysis<State,CallContext,CallEdge<Stat
 		return new CallEdge<>(edge_state);
 	}
 	
-	public void setForInSpecializations(AbstractNode begin, CallContext nonspec, List<CallContext> spec) {
+	public void setForInSpecializations(AbstractNode begin, Context nonspec, List<Context> spec) {
 		for_in_specializations.put(new NodeAndContext<>(begin, nonspec), spec);
 	}
 	
-	public List<CallContext> getForInSpecializations(AbstractNode begin, CallContext nonspec) {
+	public List<Context> getForInSpecializations(AbstractNode begin, Context nonspec) {
 		return for_in_specializations.get(new NodeAndContext<>(begin, nonspec));
 	}
 }

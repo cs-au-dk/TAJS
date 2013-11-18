@@ -19,23 +19,15 @@ package dk.brics.tajs.solver;
 import java.util.Map;
 
 import dk.brics.tajs.flowgraph.BasicBlock;
-import dk.brics.tajs.util.AnalysisException;
 
 /**
  * Interface for abstract states for block entries.
  */
 public interface IBlockState
-<BlockStateType extends IBlockState<BlockStateType,CallContextType,CallEdgeType>, 
-CallContextType extends ICallContext<CallContextType>,
+<BlockStateType extends IBlockState<BlockStateType,ContextType,CallEdgeType>, 
+ContextType extends IContext<ContextType>,
 CallEdgeType extends ICallEdge<BlockStateType>> extends Cloneable {
 
-	/**
-	 * Checks that this state is consistent.
-     * Does nothing if debug mode and test mode are disabled.
-	 * @throws AnalysisException if inconsistent
-	 */
-	public void check();
-	
 	/**
 	 * Constructs a new state as a copy of this state.
 	 */
@@ -87,14 +79,19 @@ CallEdgeType extends ICallEdge<BlockStateType>> extends Cloneable {
 	 * @param edge edge information
 	 * @param callee_entry_states all states of the callee entry
 	 * @param callee the callee function entry
-	 * @return the call context for the transformed state
+	 * @return the context for the transformed state
 	 */
-	public CallContextType transform(CallEdgeType edge, CallContextType edge_context, 
-			Map<CallContextType, BlockStateType> callee_entry_states, BasicBlock callee);
+	public ContextType transform(CallEdgeType edge, ContextType edge_context, 
+			Map<ContextType, BlockStateType> callee_entry_states, BasicBlock callee);
 	
 	/**
 	 * Transforms this state inversely according to the given edge.
 	 * @return true if the incoming flow needs to be recomputed
 	 */
-	public boolean transformInverse(CallEdgeType edge, BasicBlock callee, CallContextType callee_context);
+	public boolean transformInverse(CallEdgeType edge, BasicBlock callee, ContextType callee_context);
+
+	/**
+     * Returns the context for this state.
+     */
+    public ContextType getContext();
 }

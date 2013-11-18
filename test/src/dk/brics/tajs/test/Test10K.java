@@ -20,7 +20,6 @@ public class Test10K {
         Options.reset();
 		Options.enableTest();
         Options.enableIncludeDom();
-		Options.enablePolymorphic();
 	}
 
 	@Ignore
@@ -36,7 +35,7 @@ public class Test10K {
     @Test
     public void test10k_10k_world() throws Exception {
         Misc.init();
-        Options.enableUnevalMode();
+        Options.enableUnevalizer();
         Misc.captureSystemOutput();
         String[] args = { "test/10k/10k_world.html" };
         Misc.run(args);
@@ -118,7 +117,7 @@ public class Test10K {
     @Test
     public void test10k_fractal_landscape() throws Exception {
         Misc.init();
-        Options.enableUnevalMode();
+        Options.enableUnevalizer();
         Misc.captureSystemOutput();
         String[] args = { "test/10k/fractal_landscape.html" };
         Misc.run(args);
@@ -173,7 +172,7 @@ public class Test10K {
     @Test
     public void test10k_nbody() throws Exception {
         Misc.init();
-        Options.enableUnevalMode();
+        Options.enableUnevalizer();
         Misc.captureSystemOutput();
         String[] args = { "test/10k/nbody.html" };
         Misc.run(args);

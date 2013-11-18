@@ -24,9 +24,9 @@ import dk.brics.tajs.solver.IWorkListStrategy;
 /**
  * Work list strategy.
  */
-public class WorkListStrategy implements IWorkListStrategy<CallContext> {
+public class WorkListStrategy implements IWorkListStrategy<Context> {
 	
-	private CallGraph<State,CallContext,CallEdge<State>> call_graph;
+	private CallGraph<State,Context,CallEdge<State>> call_graph;
 	
 	/**
 	 * Constructs a new WorkListStrategy object.
@@ -36,12 +36,12 @@ public class WorkListStrategy implements IWorkListStrategy<CallContext> {
 	/**
 	 * Sets the call graph.
 	 */
-	public void setCallGraph(CallGraph<State,CallContext,CallEdge<State>> call_graph) {
+	public void setCallGraph(CallGraph<State,Context,CallEdge<State>> call_graph) {
 		this.call_graph = call_graph;
 	}
 
 	@Override
-	public int compare(IEntry<CallContext> e1, IEntry<CallContext> e2) { 
+	public int compare(IEntry<Context> e1, IEntry<Context> e2) { 
 		BasicBlock n1 = e1.getBlock();
 		BasicBlock n2 = e2.getBlock();
 		int serial1 = e1.getSerial();
@@ -61,8 +61,8 @@ public class WorkListStrategy implements IWorkListStrategy<CallContext> {
 				return E2_FIRST; 
 		}
 		
-		int function_context_order1 = call_graph.getBlockContextOrder(e1.getContext().getEntry(), e1.getContext());
-		int function_context_order2 = call_graph.getBlockContextOrder(e2.getContext().getEntry(), e2.getContext());
+		int function_context_order1 = call_graph.getBlockContextOrder(e1.getContext().getEntryBlockAndContext());
+		int function_context_order2 = call_graph.getBlockContextOrder(e2.getContext().getEntryBlockAndContext());
 		
 		// different function/context: order by occurrence number
 		if (function_context_order1 < function_context_order2)

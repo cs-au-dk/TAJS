@@ -22,7 +22,7 @@ import dk.brics.tajs.flowgraph.BasicBlock;
  * Interface for end-of-block transfer function classes.
  */
 public interface IBlockTransfer<BlockStateType extends IBlockState<BlockStateType, ?, ?>,
-                                CallContextType extends ICallContext<?>> {
+                                ContextType extends IContext<?>> {
 	
 	/**
 	 * Applies the transfer function on the given block and input state.

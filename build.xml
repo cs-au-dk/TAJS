@@ -4,7 +4,7 @@
 
     <property name="project" value="tajs" />
     <property name="version" value="0.9" />
-    <property name="release" value="2" />
+    <property name="release" value="3" />
 
     <property name="optimize" value="on" />
     <property name="debug" value="off" />

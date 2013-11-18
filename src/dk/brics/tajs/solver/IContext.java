@@ -16,13 +16,11 @@
 
 package dk.brics.tajs.solver;
 
-import dk.brics.tajs.flowgraph.BasicBlock;
-
 /**
- * Interface for analysis call contexts.
+ * Interface for analysis contexts.
  * Must be immutable.
  */
-public interface ICallContext<CallContextType extends ICallContext<?>> {
+public interface IContext<ContextType extends IContext<?>> {
 
 	/**
 	 * Checks whether this context is equal to the given object. 
@@ -37,13 +35,13 @@ public interface ICallContext<CallContextType extends ICallContext<?>> {
 	public int hashCode();
 	
 	/**
-	 * Returns a description of this call context.
+	 * Returns a description of this context.
 	 */
 	@Override
 	public String toString();
 
     /**
-     * Returns the entry of the function or for-in body.
+     * Returns the block and context for the entry of the function or for-in body.
      */
-    public BasicBlock getEntry();
+	public BlockAndContext<ContextType> getEntryBlockAndContext();
 }

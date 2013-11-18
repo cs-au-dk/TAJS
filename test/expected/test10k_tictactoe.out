@@ -10,6 +10,8 @@ test/10k/tictactoe.tidy.html:269:9: [definite] The conditional expression is alw
 test/10k/tictactoe.tidy.html:11:69: [definite] The variable q is never used
 test/10k/tictactoe.tidy.html:69:17: [definite] The variable d is never used
 test/10k/tictactoe.tidy.html:69:29: [definite] The variable f is never used
+test/10k/tictactoe.tidy.html:24:21: [maybe] TypeError, accessing property of null/undefined
+test/10k/tictactoe.tidy.html:24:21: [maybe] TypeError, call to non-function
 test/10k/tictactoe.tidy.html:39:25: [maybe] TypeError, accessing property of null/undefined
 test/10k/tictactoe.tidy.html:40:25: [maybe] TypeError, accessing property of null/undefined
 test/10k/tictactoe.tidy.html:41:25: [maybe] TypeError, accessing property of null/undefined
@@ -65,7 +67,8 @@ test/10k/tictactoe.tidy.html:237:41: [maybe] TypeError, accessing property of nu
 test/10k/tictactoe.tidy.html:238:9: [maybe] TypeError, accessing property of null/undefined
 test/10k/tictactoe.tidy.html:238:25: [maybe] TypeError, accessing property of null/undefined
 test/10k/tictactoe.tidy.html:238:41: [maybe] TypeError, accessing property of null/undefined
-test/10k/tictactoe.tidy.html:7: [maybe] Uncaught exception, constructed at [test/10k/tictactoe.tidy.html:39:25, test/10k/tictactoe.tidy.html:40:25, test/10k/tictactoe.tidy.html:41:25, test/10k/tictactoe.tidy.html:97:9, test/10k/tictactoe.tidy.html:98:9, test/10k/tictactoe.tidy.html:161:43, test/10k/tictactoe.tidy.html:161:53, test/10k/tictactoe.tidy.html:182:83, test/10k/tictactoe.tidy.html:183:9, test/10k/tictactoe.tidy.html:187:20, test/10k/tictactoe.tidy.html:190:20, test/10k/tictactoe.tidy.html:192:20, test/10k/tictactoe.tidy.html:194:9, test/10k/tictactoe.tidy.html:201:83, test/10k/tictactoe.tidy.html:202:9, test/10k/tictactoe.tidy.html:206:20, test/10k/tictactoe.tidy.html:209:20, test/10k/tictactoe.tidy.html:211:20, test/10k/tictactoe.tidy.html:213:9, test/10k/tictactoe.tidy.html:225:13, test/10k/tictactoe.tidy.html:225:29, test/10k/tictactoe.tidy.html:225:45, test/10k/tictactoe.tidy.html:225:62, test/10k/tictactoe.tidy.html:225:78, test/10k/tictactoe.tidy.html:225:94, test/10k/tictactoe.tidy.html:226:13, test/10k/tictactoe.tidy.html:226:29, test/10k/tictactoe.tidy.html:226:45, test/10k/tictactoe.tidy.html:226:62, test/10k/tictactoe.tidy.html:226:78, test/10k/tictactoe.tidy.html:226:94, test/10k/tictactoe.tidy.html:228:9, test/10k/tictactoe.tidy.html:228:25, test/10k/tictactoe.tidy.html:228:41, test/10k/tictactoe.tidy.html:228:58, test/10k/tictactoe.tidy.html:228:74, test/10k/tictactoe.tidy.html:228:90, test/10k/tictactoe.tidy.html:229:9, test/10k/tictactoe.tidy.html:229:25, test/10k/tictactoe.tidy.html:229:41, test/10k/tictactoe.tidy.html:229:58, test/10k/tictactoe.tidy.html:229:74, test/10k/tictactoe.tidy.html:229:90, test/10k/tictactoe.tidy.html:234:13, test/10k/tictactoe.tidy.html:234:29, test/10k/tictactoe.tidy.html:234:45, test/10k/tictactoe.tidy.html:235:13, test/10k/tictactoe.tidy.html:235:29, test/10k/tictactoe.tidy.html:235:45, test/10k/tictactoe.tidy.html:237:9, test/10k/tictactoe.tidy.html:237:25, test/10k/tictactoe.tidy.html:237:41, test/10k/tictactoe.tidy.html:238:9, test/10k/tictactoe.tidy.html:238:25, test/10k/tictactoe.tidy.html:238:41]
+test/10k/tictactoe.tidy.html:24:21: [maybe] Reading absent property appendChild
+test/10k/tictactoe.tidy.html:7: [maybe] Uncaught exception, constructed at [test/10k/tictactoe.tidy.html:24:21, test/10k/tictactoe.tidy.html:39:25, test/10k/tictactoe.tidy.html:40:25, test/10k/tictactoe.tidy.html:41:25, test/10k/tictactoe.tidy.html:97:9, test/10k/tictactoe.tidy.html:98:9, test/10k/tictactoe.tidy.html:161:43, test/10k/tictactoe.tidy.html:161:53, test/10k/tictactoe.tidy.html:182:83, test/10k/tictactoe.tidy.html:183:9, test/10k/tictactoe.tidy.html:187:20, test/10k/tictactoe.tidy.html:190:20, test/10k/tictactoe.tidy.html:192:20, test/10k/tictactoe.tidy.html:194:9, test/10k/tictactoe.tidy.html:201:83, test/10k/tictactoe.tidy.html:202:9, test/10k/tictactoe.tidy.html:206:20, test/10k/tictactoe.tidy.html:209:20, test/10k/tictactoe.tidy.html:211:20, test/10k/tictactoe.tidy.html:213:9, test/10k/tictactoe.tidy.html:225:13, test/10k/tictactoe.tidy.html:225:29, test/10k/tictactoe.tidy.html:225:45, test/10k/tictactoe.tidy.html:225:62, test/10k/tictactoe.tidy.html:225:78, test/10k/tictactoe.tidy.html:225:94, test/10k/tictactoe.tidy.html:226:13, test/10k/tictactoe.tidy.html:226:29, test/10k/tictactoe.tidy.html:226:45, test/10k/tictactoe.tidy.html:226:62, test/10k/tictactoe.tidy.html:226:78, test/10k/tictactoe.tidy.html:226:94, test/10k/tictactoe.tidy.html:228:9, test/10k/tictactoe.tidy.html:228:25, test/10k/tictactoe.tidy.html:228:41, test/10k/tictactoe.tidy.html:228:58, test/10k/tictactoe.tidy.html:228:74, test/10k/tictactoe.tidy.html:228:90, test/10k/tictactoe.tidy.html:229:9, test/10k/tictactoe.tidy.html:229:25, test/10k/tictactoe.tidy.html:229:41, test/10k/tictactoe.tidy.html:229:58, test/10k/tictactoe.tidy.html:229:74, test/10k/tictactoe.tidy.html:229:90, test/10k/tictactoe.tidy.html:234:13, test/10k/tictactoe.tidy.html:234:29, test/10k/tictactoe.tidy.html:234:45, test/10k/tictactoe.tidy.html:235:13, test/10k/tictactoe.tidy.html:235:29, test/10k/tictactoe.tidy.html:235:45, test/10k/tictactoe.tidy.html:237:9, test/10k/tictactoe.tidy.html:237:25, test/10k/tictactoe.tidy.html:237:41, test/10k/tictactoe.tidy.html:238:9, test/10k/tictactoe.tidy.html:238:25, test/10k/tictactoe.tidy.html:238:41]
 test/10k/tictactoe.tidy.html:39:25: [maybe] Reading absent property (computed name)
 test/10k/tictactoe.tidy.html:40:25: [maybe] Reading absent property (computed name)
 test/10k/tictactoe.tidy.html:41:25: [maybe] Reading absent property (computed name)
@@ -77,27 +80,23 @@ test/10k/tictactoe.tidy.html:98:9: [maybe] Reading absent property (computed nam
 test/10k/tictactoe.tidy.html:161:43: [maybe] Reading absent property (computed name)
 test/10k/tictactoe.tidy.html:161:53: [maybe] Reading absent property (computed name)
 test/10k/tictactoe.tidy.html:161:53: [maybe] Reading absent property (computed name)
-test/10k/tictactoe.tidy.html:182:61: [maybe] Conversion to number yields NaN
 test/10k/tictactoe.tidy.html:182:75: [maybe] Conversion to number yields NaN
 test/10k/tictactoe.tidy.html:182:83: [maybe] Reading absent property (computed name)
 test/10k/tictactoe.tidy.html:182:83: [maybe] Reading absent property (computed name)
 test/10k/tictactoe.tidy.html:183:9: [maybe] Reading absent property (computed name)
 test/10k/tictactoe.tidy.html:186:29: [maybe] Conversion to number yields NaN
 test/10k/tictactoe.tidy.html:187:20: [maybe] Reading absent property (computed name)
-test/10k/tictactoe.tidy.html:190:13: [maybe] Conversion to number yields NaN
 test/10k/tictactoe.tidy.html:190:13: [maybe] Reading absent property (computed name)
 test/10k/tictactoe.tidy.html:190:20: [maybe] Reading absent property (computed name)
 test/10k/tictactoe.tidy.html:191:29: [maybe] Conversion to number yields NaN
 test/10k/tictactoe.tidy.html:192:20: [maybe] Reading absent property (computed name)
 test/10k/tictactoe.tidy.html:194:9: [maybe] Reading absent property (computed name)
-test/10k/tictactoe.tidy.html:201:61: [maybe] Conversion to number yields NaN
 test/10k/tictactoe.tidy.html:201:75: [maybe] Conversion to number yields NaN
 test/10k/tictactoe.tidy.html:201:83: [maybe] Reading absent property (computed name)
 test/10k/tictactoe.tidy.html:201:83: [maybe] Reading absent property (computed name)
 test/10k/tictactoe.tidy.html:202:9: [maybe] Reading absent property (computed name)
 test/10k/tictactoe.tidy.html:205:29: [maybe] Conversion to number yields NaN
 test/10k/tictactoe.tidy.html:206:20: [maybe] Reading absent property (computed name)
-test/10k/tictactoe.tidy.html:209:13: [maybe] Conversion to number yields NaN
 test/10k/tictactoe.tidy.html:209:13: [maybe] Reading absent property (computed name)
 test/10k/tictactoe.tidy.html:209:20: [maybe] Reading absent property (computed name)
 test/10k/tictactoe.tidy.html:210:29: [maybe] Conversion to number yields NaN
@@ -178,5 +177,3 @@ test/10k/tictactoe.tidy.html:238:41: [maybe] Reading absent property (computed n
 test/10k/tictactoe.tidy.html:247:15: [maybe] Reading absent property (computed name)
 test/10k/tictactoe.tidy.html:252:14: [maybe] Conversion to number yields NaN
 test/10k/tictactoe.tidy.html:253:15: [maybe] Conversion to number yields NaN
-test/10k/tictactoe.tidy.html:263:17: [maybe] Conversion to number yields NaN
-test/10k/tictactoe.tidy.html:263:38: [maybe] Conversion to number yields NaN

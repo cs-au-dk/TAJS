@@ -26,32 +26,33 @@ import dk.brics.tajs.flowgraph.BasicBlock;
 import dk.brics.tajs.flowgraph.FlowGraph;
 import dk.brics.tajs.flowgraph.Function;
 import dk.brics.tajs.options.Options;
+import dk.brics.tajs.solver.BlockAndContext;
 import dk.brics.tajs.solver.CallGraph;
 import dk.brics.tajs.solver.IAnalysisLatticeElement;
-import dk.brics.tajs.solver.ICallContext;
+import dk.brics.tajs.solver.IContext;
 
 /**
  * Global analysis lattice element.
  */
 public class AnalysisLatticeElement<
-		BlockStateType extends BlockState<BlockStateType,CallContextType,CallEdgeType>,
-		CallContextType extends ICallContext<CallContextType>,
+		BlockStateType extends BlockState<BlockStateType,ContextType,CallEdgeType>,
+		ContextType extends IContext<ContextType>,
 		CallEdgeType extends CallEdge<BlockStateType>> implements
-                                    IAnalysisLatticeElement<BlockStateType,CallContextType,CallEdgeType> {
+                                    IAnalysisLatticeElement<BlockStateType,ContextType,CallEdgeType> {
 
 	private static Logger logger = Logger.getLogger(AnalysisLatticeElement.class); 
 
 	/**
 	 * Abstract block states.
-	 * Stores an abstract state for each basic block entry and call context. 
+	 * Stores an abstract state for each basic block entry and context. 
 	 * Default is none.
 	 */
-	private Map<BasicBlock,Map<CallContextType,BlockStateType>> block_entry_states;
+	private Map<BasicBlock,Map<ContextType,BlockStateType>> block_entry_states;
 	
 	/**
 	 * Call graph.
 	 */
-	private CallGraph<BlockStateType,CallContextType,CallEdgeType> call_graph;
+	private CallGraph<BlockStateType,ContextType,CallEdgeType> call_graph;
 	
 	/**
 	 * Constructs a new global analysis lattice element.
@@ -60,7 +61,7 @@ public class AnalysisLatticeElement<
 		block_entry_states = newMap();
 		for (Function ff : fg.getFunctions()) {
 			for (BasicBlock bb : ff.getBlocks()) {
-				Map<CallContextType,BlockStateType> m = newMap();
+				Map<ContextType,BlockStateType> m = newMap();
 				block_entry_states.put(bb,m);				
 			}
 		}
@@ -68,25 +69,16 @@ public class AnalysisLatticeElement<
 	}
 	
 	@Override
-	public CallGraph<BlockStateType,CallContextType,CallEdgeType> getCallGraph() {
+	public CallGraph<BlockStateType,ContextType,CallEdgeType> getCallGraph() {
 		return call_graph;
 	}
 	
 	@Override
-	public void check() {
-		for (Map<CallContextType,BlockStateType> m : block_entry_states.values()) {
-			for (BlockStateType b : m.values()) {
-				b.check();
-			}
-		}
-	}
-	
-	@Override
-	public BlockStateType getState(BasicBlock block, CallContextType context) {
-		Map<CallContextType, BlockStateType> bs = block_entry_states.get(block);
+	public BlockStateType getState(BasicBlock block, ContextType context) {
+		Map<ContextType, BlockStateType> bs = block_entry_states.get(block);
 		BlockStateType b;
 		if (bs == null) {
-			Map<CallContextType,BlockStateType> m = newMap();
+			Map<ContextType,BlockStateType> m = newMap();
 			block_entry_states.put(block, m);
 			b = null;			
 		}
@@ -100,8 +92,13 @@ public class AnalysisLatticeElement<
 	}
 
 	@Override
-	public Map<CallContextType,BlockStateType> getStates(BasicBlock block) {
-		Map<CallContextType,BlockStateType> m = block_entry_states.get(block);
+	public BlockStateType getState(BlockAndContext<ContextType> bc) {
+		return getState(bc.getBlock(), bc.getContext());
+	}
+
+	@Override
+	public Map<ContextType,BlockStateType> getStates(BasicBlock block) {
+		Map<ContextType,BlockStateType> m = block_entry_states.get(block);
 		if (m == null) {
 			m = newMap();
 			block_entry_states.put(block, m);
@@ -115,15 +112,14 @@ public class AnalysisLatticeElement<
 	}
 	
 	@Override
-	public MergeResult propagate(BlockStateType s, BasicBlock b, CallContextType c, boolean localize) {
+	public MergeResult propagate(BlockStateType s, BasicBlock b, ContextType c, boolean localize) {
 		logger.debug("propagating state to block " + b.getIndex() + " at " + b.getSourceLocation());
-		s.check();
 		if (Options.isIntermediateStatesEnabled() && localize) {
 			logger.debug("before localization: " + s.toString());
 		}
 		boolean add;
 		String diff = null;
-		Map<CallContextType,BlockStateType> m = getStates(b);
+		Map<ContextType,BlockStateType> m = getStates(b);
 		BlockStateType state_current = m.get(c);
 		if (state_current == null) {
 			add = true;
@@ -159,7 +155,6 @@ public class AnalysisLatticeElement<
 			}
 		}
 		if (add) {
-			state_current.check();
 			if (Options.isIntermediateStatesEnabled()) {
 				logger.debug("Added block entry state at block " + b.getIndex()+ ": " + state_current);
 			}

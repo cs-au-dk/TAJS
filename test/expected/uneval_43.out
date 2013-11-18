@@ -1,13 +1,3 @@
-Unevalizer: Starting on: "z = 3"
-Unevalizer: Valid program
-Unevalizer: No name capture
-Unevalizer: Return value of eval is used
-Unevalizer: Last expression has value
-Unevalizer: Starting on: "z = 5"
-Unevalizer: Valid program
-Unevalizer: No name capture
-Unevalizer: Return value of eval is used
-Unevalizer: Last expression has value
 test/uneval/uneval43.js:5:1: [definite] The variable a is never used
 test/uneval/uneval43.js:9:1: [info] Abstract value: 3.0
 test/uneval/uneval43.js:10:1: [info] Abstract value: 5.0

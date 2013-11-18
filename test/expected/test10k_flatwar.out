@@ -2,9 +2,15 @@ test/10k/flatwar.tidy.html:365:9: [definite] ReferenceError, reading absent vari
 test/10k/flatwar.tidy.html:372:9: [definite] ReferenceError, reading absent variable levelInfo
 test/10k/flatwar.tidy.html:111:9: [definite] The conditional expression is always true
 test/10k/flatwar.tidy.html:134:13: [definite] The conditional expression is always false
+test/10k/flatwar.tidy.html:145:13: [definite] The assignment to bs has no effect
 test/10k/flatwar.tidy.html:146:13: [definite] The conditional expression is always false
+test/10k/flatwar.tidy.html:146:18: [definite] The assignment to i has no effect
+test/10k/flatwar.tidy.html:160:13: [definite] The assignment to n has no effect
+test/10k/flatwar.tidy.html:161:18: [definite] The assignment to i has no effect
 test/10k/flatwar.tidy.html:184:13: [definite] The conditional expression is always false
+test/10k/flatwar.tidy.html:192:13: [definite] The assignment to cs has no effect
 test/10k/flatwar.tidy.html:193:13: [definite] The conditional expression is always false
+test/10k/flatwar.tidy.html:193:18: [definite] The assignment to i has no effect
 test/10k/flatwar.tidy.html:200:9: [definite] The conditional expression is always false
 test/10k/flatwar.tidy.html:201:15: [definite] The conditional expression is always false
 test/10k/flatwar.tidy.html:204:9: [definite] The conditional expression is always false
@@ -15,13 +21,23 @@ test/10k/flatwar.tidy.html:206:9: [definite] The conditional expression is alway
 test/10k/flatwar.tidy.html:206:13: [definite] The conditional expression is always false
 test/10k/flatwar.tidy.html:207:9: [definite] The conditional expression is always false
 test/10k/flatwar.tidy.html:207:13: [definite] The conditional expression is always false
+test/10k/flatwar.tidy.html:208:9: [definite] The assignment to cMR has no effect
 test/10k/flatwar.tidy.html:208:16: [definite] The conditional expression is always false
 test/10k/flatwar.tidy.html:210:13: [definite] The conditional expression is always false
+test/10k/flatwar.tidy.html:216:18: [definite] The assignment to i has no effect
 test/10k/flatwar.tidy.html:222:13: [definite] The conditional expression is always false
+test/10k/flatwar.tidy.html:228:13: [definite] The assignment to boX has no effect
+test/10k/flatwar.tidy.html:229:13: [definite] The assignment to boY has no effect
+test/10k/flatwar.tidy.html:233:13: [definite] The assignment to pcX has no effect
+test/10k/flatwar.tidy.html:234:13: [definite] The assignment to pcY has no effect
 test/10k/flatwar.tidy.html:238:9: [definite] The conditional expression is always false
 test/10k/flatwar.tidy.html:263:9: [definite] The conditional expression is always false
+test/10k/flatwar.tidy.html:263:14: [definite] The assignment to i has no effect
 test/10k/flatwar.tidy.html:271:9: [definite] The conditional expression is always false
+test/10k/flatwar.tidy.html:271:14: [definite] The assignment to i has no effect
 test/10k/flatwar.tidy.html:284:9: [definite] The conditional expression is always false
+test/10k/flatwar.tidy.html:284:14: [definite] The assignment to i has no effect
+test/10k/flatwar.tidy.html:299:14: [definite] The assignment to i has no effect
 test/10k/flatwar.tidy.html:337:9: [definite] The conditional expression is always true
 test/10k/flatwar.tidy.html:337:13: [definite] The conditional expression is always true
 test/10k/flatwar.tidy.html:349:17: [definite] The conditional expression is always false
@@ -122,7 +138,6 @@ test/10k/flatwar.tidy.html:302:27: [maybe] Reading absent property (computed nam
 test/10k/flatwar.tidy.html:304:21: [maybe] Conversion to number yields NaN
 test/10k/flatwar.tidy.html:304:21: [maybe] Reading absent property (computed name)
 test/10k/flatwar.tidy.html:310:17: [maybe] Reading absent property (computed name)
-test/10k/flatwar.tidy.html:311:21: [maybe] Conversion to number yields NaN
 test/10k/flatwar.tidy.html:311:21: [maybe] Reading absent property (computed name)
 test/10k/flatwar.tidy.html:311:36: [maybe] Reading absent property (computed name)
 test/10k/flatwar.tidy.html:311:44: [maybe] Reading absent property (computed name)
@@ -141,11 +156,9 @@ test/10k/flatwar.tidy.html:316:24: [maybe] Conversion to number yields NaN
 test/10k/flatwar.tidy.html:316:31: [maybe] Reading absent property (computed name)
 test/10k/flatwar.tidy.html:317:17: [maybe] Conversion to number yields NaN
 test/10k/flatwar.tidy.html:317:17: [maybe] Reading absent property (computed name)
-test/10k/flatwar.tidy.html:317:28: [maybe] Conversion to number yields NaN
 test/10k/flatwar.tidy.html:317:28: [maybe] Reading absent property (computed name)
 test/10k/flatwar.tidy.html:318:17: [maybe] Conversion to number yields NaN
 test/10k/flatwar.tidy.html:318:17: [maybe] Reading absent property (computed name)
-test/10k/flatwar.tidy.html:318:28: [maybe] Conversion to number yields NaN
 test/10k/flatwar.tidy.html:318:28: [maybe] Reading absent property (computed name)
 test/10k/flatwar.tidy.html:445:17: [maybe] Converting object to string
 test/10k/flatwar.tidy.html:445:17: [maybe] Converting primitive string to object

@@ -31,7 +31,7 @@ public class EvalCache {
     /**
      * A map from "call sites" to entries, where the call site is identified by the call node and context.
      */
-	private Map<NodeAndContext<CallContext>, FlowGraphFragment> cache;
+	private Map<NodeAndContext<Context>, FlowGraphFragment> cache;
 	
 	/**
 	 * Constructs a new uneval cache.
@@ -43,14 +43,14 @@ public class EvalCache {
     /**
      * Stores the abstract value and associated code in the cache.
      */
-	public void setCode(NodeAndContext<CallContext> nc, FlowGraphFragment extension) {
+	public void setCode(NodeAndContext<Context> nc, FlowGraphFragment extension) {
 		cache.put(nc, extension);
 	}
 	
     /**
      * Returns the entry_block, or null if not found.
      */
-	public FlowGraphFragment getCode(NodeAndContext<CallContext> nc) {
+	public FlowGraphFragment getCode(NodeAndContext<Context> nc) {
 		return cache.get(nc);
 	}
 }

@@ -47,7 +47,9 @@ public class ActiveXObject {
         s.writePropertyWithAttributes(CONSTRUCTOR, "length", Value.makeNum(0).setAttributes(true, true, true));
         s.writePropertyWithAttributes(CONSTRUCTOR, "prototype", Value.makeObject(PROTOTYPE).setAttributes(true, true, true));
         s.writeInternalPrototype(CONSTRUCTOR, Value.makeObject(InitialStateBuilder.OBJECT_PROTOTYPE));
-        s.writeProperty(DOMWindow.WINDOW, "ActiveXObject", Value.makeObject(CONSTRUCTOR));
+
+        // TODO modelling choice: ActiveXObject is IE only..
+        // s.writeProperty(DOMWindow.WINDOW, "ActiveXObject", Value.makeObject(CONSTRUCTOR)); 
 
         // Prototype object
         s.newObject(PROTOTYPE);

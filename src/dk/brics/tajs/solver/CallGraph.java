@@ -29,7 +29,6 @@ import org.apache.log4j.Logger;
 
 import dk.brics.tajs.flowgraph.AbstractNode;
 import dk.brics.tajs.flowgraph.BasicBlock;
-import dk.brics.tajs.flowgraph.FlowGraph;
 import dk.brics.tajs.flowgraph.Function;
 import dk.brics.tajs.flowgraph.jsnodes.CallNode;
 import dk.brics.tajs.util.AnalysisException;
@@ -40,7 +39,7 @@ import dk.brics.tajs.util.Strings;
  * Call graph.
  */
 public class CallGraph<BlockStateType extends IBlockState<BlockStateType, ?, CallEdgeType>, 
-	CallContextType extends ICallContext<?>, 
+	ContextType extends IContext<?>, 
 	CallEdgeType extends ICallEdge<BlockStateType>> {
 	
 	private static Logger logger = Logger.getLogger(CallGraph.class); 
@@ -48,18 +47,18 @@ public class CallGraph<BlockStateType extends IBlockState<BlockStateType, ?, Cal
 	/**
 	 * Map from (callee entry, callee context) to set of ((caller node, caller context), edge context).
 	 */
-	private Map<BlockAndContext<CallContextType>,Set<Pair<NodeAndContext<CallContextType>,CallContextType>>> call_sources; // default is empty maps
+	private Map<BlockAndContext<ContextType>,Set<Pair<NodeAndContext<ContextType>,ContextType>>> call_sources; // default is empty maps
 	
 	/**
 	 * Map from (caller node, caller context) to (callee entry, edge context) to call edge info.
 	 * Note that this map uses edge contexts, not callee contexts.
 	 */
-	private Map<NodeAndContext<CallContextType>,Map<BlockAndContext<CallContextType>,CallEdgeType>> call_edge_info; // default is empty maps
+	private Map<NodeAndContext<ContextType>,Map<BlockAndContext<ContextType>,CallEdgeType>> call_edge_info; // default is empty maps
 	
 	/**
 	 * Map from basic block and context to occurrence order.
 	 */
-	private Map<BlockAndContext<CallContextType>,Integer> block_context_order;
+	private Map<BlockAndContext<ContextType>,Integer> block_context_order;
 	
 	private int next_block_context_order;
 	
@@ -76,16 +75,16 @@ public class CallGraph<BlockStateType extends IBlockState<BlockStateType, ?, Cal
 	 * Adds an edge from the given call node to the given function.
 	 * @return the edge state delta
 	 */
-	public BlockStateType addTarget(AbstractNode caller, CallContextType caller_context, BasicBlock callee, CallContextType edge_context, 
+	public BlockStateType addTarget(AbstractNode caller, ContextType caller_context, BasicBlock callee, ContextType edge_context, 
 			 BlockStateType edge_state, SolverSynchronizer sync, IAnalysis<BlockStateType, ?, CallEdgeType, ?, ?> analysis) {
         BlockStateType edge_state_diff = edge_state.clone();
-		NodeAndContext<CallContextType> nc = new NodeAndContext<>(caller, caller_context);
-		Map<BlockAndContext<CallContextType>,CallEdgeType> mb = call_edge_info.get(nc);
+		NodeAndContext<ContextType> nc = new NodeAndContext<>(caller, caller_context);
+		Map<BlockAndContext<ContextType>,CallEdgeType> mb = call_edge_info.get(nc);
 		if (mb == null) {
 			mb = newMap();
 			call_edge_info.put(nc, mb);
 		}
-		BlockAndContext<CallContextType> fc = new BlockAndContext<>(callee, edge_context);
+		BlockAndContext<ContextType> fc = new BlockAndContext<>(callee, edge_context);
 		CallEdgeType call_edge = mb.get(fc); // old call edge state must be subsumed by the new edge state *modulo recovery operations*
 		if (call_edge == null) {
 			// new edge
@@ -105,13 +104,11 @@ public class CallGraph<BlockStateType extends IBlockState<BlockStateType, ?, Cal
 	
 	/**
 	 * Adds a reverse edge.
-	 * Also registers the callee and callee_context.
 	 */
-	public void addSource(AbstractNode caller, CallContextType caller_context, BasicBlock callee, CallContextType callee_context,
-			CallContextType edge_context) {
-		registerBlockContext(callee, callee_context);
-		NodeAndContext<CallContextType> nc = new NodeAndContext<>(caller, caller_context);
-		BlockAndContext<CallContextType> fc = new BlockAndContext<>(callee, callee_context);
+	public void addSource(AbstractNode caller, ContextType caller_context, BasicBlock callee, ContextType callee_context,
+			ContextType edge_context) {
+		NodeAndContext<ContextType> nc = new NodeAndContext<>(caller, caller_context);
+		BlockAndContext<ContextType> fc = new BlockAndContext<>(callee, callee_context);
 		addToMapSet(call_sources, fc, Pair.make(nc, edge_context));
 	}
 	
@@ -125,8 +122,8 @@ public class CallGraph<BlockStateType extends IBlockState<BlockStateType, ?, Cal
 	/**
 	 * Assigns an order to the given (basic block,context).
 	 */
-	public void registerBlockContext(BasicBlock b, CallContextType context) { // TODO: use proper topological order? (worklist order must be stable)
-		BlockAndContext<CallContextType> fc = new BlockAndContext<>(b, context);
+	public void registerBlockContext(BasicBlock b, ContextType context) { // TODO: use proper topological order? (worklist order must be stable)
+		BlockAndContext<ContextType> fc = new BlockAndContext<>(b, context);
 		if (!block_context_order.containsKey(fc))
 			block_context_order.put(fc, next_block_context_order++);
 	}
@@ -134,18 +131,18 @@ public class CallGraph<BlockStateType extends IBlockState<BlockStateType, ?, Cal
 	/**
 	 * Returns the occurrence order of the given (basic block,context).
 	 */
-	public int getBlockContextOrder(BasicBlock b, CallContextType context) {
-		Integer order = block_context_order.get(new BlockAndContext<>(b, context));
+	public int getBlockContextOrder(BlockAndContext<ContextType> bc) {
+		Integer order = block_context_order.get(bc);
 		if (order == null)
-			throw new AnalysisException("Unexpected basic block and context: block " + b.getIndex() + " at " + b.getSourceLocation() + ", " + context);
+			throw new AnalysisException("Unexpected basic block and context: " + bc);
 		return order;
 	}
 	
 	/**
 	 * Returns the call nodes, caller contexts, and edge contexts that have the given basic block as target for a given callee context.
 	 */
-	public Set<Pair<NodeAndContext<CallContextType>,CallContextType>> getSources(BasicBlock b, CallContextType callee_context) {
-		Set<Pair<NodeAndContext<CallContextType>,CallContextType>> s = call_sources.get(new BlockAndContext<>(b, callee_context));
+	public Set<Pair<NodeAndContext<ContextType>,ContextType>> getSources(BlockAndContext<ContextType> bc) {
+		Set<Pair<NodeAndContext<ContextType>,ContextType>> s = call_sources.get(bc);
 		if (s == null)
 			return Collections.emptySet();
 		return s;
@@ -154,8 +151,8 @@ public class CallGraph<BlockStateType extends IBlockState<BlockStateType, ?, Cal
 	/**
 	 * Returns the specified call edge info.
 	 */
-	public CallEdgeType getCallEdge(AbstractNode caller, CallContextType caller_context, BasicBlock callee, CallContextType edge_context) {
-		Map<BlockAndContext<CallContextType>, CallEdgeType> mb = getCallEdges(caller, caller_context);
+	public CallEdgeType getCallEdge(AbstractNode caller, ContextType caller_context, BasicBlock callee, ContextType edge_context) {
+		Map<BlockAndContext<ContextType>, CallEdgeType> mb = getCallEdges(caller, caller_context);
 		CallEdgeType b = mb.get(new BlockAndContext<>(callee, edge_context));
 		if (b == null)
 			throw new AnalysisException("No such edge!?");
@@ -165,8 +162,8 @@ public class CallGraph<BlockStateType extends IBlockState<BlockStateType, ?, Cal
 	/**
 	 * Returns the specified map from (callee entry, edge context) to call edge info.
 	 */
-	public Map<BlockAndContext<CallContextType>, CallEdgeType> getCallEdges(AbstractNode caller, CallContextType caller_context) {
-		Map<BlockAndContext<CallContextType>,CallEdgeType> mb = call_edge_info.get(new NodeAndContext<>(caller, caller_context));
+	public Map<BlockAndContext<ContextType>, CallEdgeType> getCallEdges(AbstractNode caller, ContextType caller_context) {
+		Map<BlockAndContext<ContextType>,CallEdgeType> mb = call_edge_info.get(new NodeAndContext<>(caller, caller_context));
 		if (mb == null)
 			throw new AnalysisException("No such edge!?");
 		return mb;
@@ -191,7 +188,7 @@ public class CallGraph<BlockStateType extends IBlockState<BlockStateType, ?, Cal
 	
 	private Map<Function,Set<AbstractNode>> getReverseEdgesIgnoreContexts() {
 		Map<Function,Set<AbstractNode>> m = newMap();
-		for (Map.Entry<BlockAndContext<CallContextType>,Set<Pair<NodeAndContext<CallContextType>,CallContextType>>> me : call_sources.entrySet()) {
+		for (Map.Entry<BlockAndContext<ContextType>,Set<Pair<NodeAndContext<ContextType>,ContextType>>> me : call_sources.entrySet()) {
 			BasicBlock b = me.getKey().getBlock();
 			if (isOrdinaryCallEdge(b)) {
 				Function f = b.getFunction();
@@ -200,26 +197,8 @@ public class CallGraph<BlockStateType extends IBlockState<BlockStateType, ?, Cal
 					s = newSet();
 					m.put(f, s);
 				}
-				for (Pair<NodeAndContext<CallContextType>,CallContextType> nc : me.getValue())
+				for (Pair<NodeAndContext<ContextType>,ContextType> nc : me.getValue())
 					s.add(nc.getFirst().getNode());
-			}
-		}
-		return m;
-	}
-	
-	private Map<AbstractNode,Set<Function>> getForwardEdgesIgnoreContexts() {
-		Map<AbstractNode,Set<Function>> m = newMap();
-		for (Map.Entry<NodeAndContext<CallContextType>, Map<BlockAndContext<CallContextType>, CallEdgeType>> me : call_edge_info.entrySet()) {
-			AbstractNode n = me.getKey().getNode();
-			Set<Function> s = m.get(n);
-			if (s == null) {
-				s = newSet();
-				m.put(n, s);
-			}
-			for (BlockAndContext<CallContextType> fc : me.getValue().keySet()) {
-				BasicBlock b = fc.getBlock();
-				if (isOrdinaryCallEdge(b))
-					s.add(b.getFunction());			
 			}
 		}
 		return m;
@@ -275,33 +254,52 @@ public class CallGraph<BlockStateType extends IBlockState<BlockStateType, ?, Cal
 	}
 
 	/**
-	 * Returns the total number of method invocation nodes.
-	 * @param single_target_only if true, only count invocations with unique target
+	 * Returns the total number of call nodes with reachable contexts.
+	 * Each call node is counted once for each reachable context.
 	 */
-	private int getNumberOfInvocations(FlowGraph fg, boolean single_target_only) { // FIXME: ok to ignore calls to host functions?
-		Map<AbstractNode,Set<Function>> m = getForwardEdgesIgnoreContexts();
-		int res = 0;
-		for (Function f : fg.getFunctions())
-			for (BasicBlock b : f.getBlocks())
-				for (AbstractNode n : b.getNodes())
-					if (n instanceof CallNode && ((CallNode) n).getBaseRegister() != AbstractNode.NO_VALUE)  { // FIXME: Is NO_VALUE for arrays and regexps, but not function calls in general (trying to identify method vs. function call)
-						Set<Function> fs = m.get(n);
-						if (fs != null && (single_target_only ? fs.size() == 1 : fs.size() >= 1))
-							res++; // FIXME: was:  res +=  call_targets.get(n) != null ? call_targets.get(n).size() : 0;   (and not excluding those with 0 targets)
-					}
-		return res; // FIXME: impl. vs. javadoc?
+	public int getNumberOfInvocationsInDifferentContexts() {
+		int c = 0;
+		for (NodeAndContext<ContextType> nc : call_edge_info.keySet()) {
+			AbstractNode n = nc.getNode();
+			if (n instanceof CallNode 
+					&& ((CallNode) n).getBaseRegister() != AbstractNode.NO_VALUE) { // skip array/regexp literals
+				c++;
+			}
+		}
+		return c;
+	}
+	
+	/**
+	 * Returns the total number of call nodes with reachable contexts and with a unique target function.
+	 * Each call node is counted once for each reachable context.
+	 */
+	public int getNumberOfInvocationsInDifferentContextsWithUniqueTarget() {
+		int c = 0;
+		for (Map.Entry<NodeAndContext<ContextType>,Map<BlockAndContext<ContextType>,CallEdgeType>> me : call_edge_info.entrySet()) {
+			AbstractNode n = me.getKey().getNode();
+			if (n instanceof CallNode 
+					&& ((CallNode) n).getBaseRegister() != AbstractNode.NO_VALUE) { // skip array/regexp literals
+				Set<BasicBlock> targets = newSet();
+				for (BlockAndContext<ContextType> bc : me.getValue().keySet()) {
+					targets.add(bc.getBlock());
+				}
+				if (targets.size() <= 1)
+					c++;
+			}
+		}
+		return c;
 	}
 
     /**
      * Return call graph statistics on the number of invocations in human readable form.
      */
-    public String getCallGraphStatistics(FlowGraph fg) {
-        int total_inv = getNumberOfInvocations(fg, false);
-        int single_inv = getNumberOfInvocations(fg, true);
+    public String getCallGraphStatistics() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Total invocations: ").append(total_inv).append("\n");
-        sb.append("Total invocations with single target: ").append(single_inv).append("\n");
-        sb.append("==> % single target invocations: ").append((100 * ((float) single_inv) / total_inv)).append("%\n");
+        int total = getNumberOfInvocationsInDifferentContexts();
+        int single = getNumberOfInvocationsInDifferentContextsWithUniqueTarget();
+        sb.append("Total invocations: ").append(total).append("\n");
+        sb.append("Total invocations with single target: ").append(single).append("\n");
+        sb.append("==> % single target invocations: ").append((100 * ((float) single) / total)).append("%\n");
         return sb.toString();
     }
     
@@ -311,8 +309,8 @@ public class CallGraph<BlockStateType extends IBlockState<BlockStateType, ?, Cal
      * Visits all edges by the given visitor.
      */
     public void visitAllEdges(ICallEdge.Visitor<CallEdgeType> visitor) {
-    	for (Map.Entry<NodeAndContext<CallContextType>,Map<BlockAndContext<CallContextType>,CallEdgeType>> me1 : call_edge_info.entrySet())
-    		for (Map.Entry<BlockAndContext<CallContextType>,CallEdgeType> me2 : me1.getValue().entrySet()) 
+    	for (Map.Entry<NodeAndContext<ContextType>,Map<BlockAndContext<ContextType>,CallEdgeType>> me1 : call_edge_info.entrySet())
+    		for (Map.Entry<BlockAndContext<ContextType>,CallEdgeType> me2 : me1.getValue().entrySet()) 
     			visitor.visit(me1.getKey(), me2.getValue(), me2.getKey());
     }
 }

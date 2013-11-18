@@ -25,16 +25,14 @@ import java.util.Set;
 import org.apache.log4j.Logger;
 
 import dk.brics.tajs.analysis.Conversion;
-import dk.brics.tajs.analysis.FunctionCalls.CallInfo;
 import dk.brics.tajs.analysis.Exceptions;
+import dk.brics.tajs.analysis.FunctionCalls.CallInfo;
 import dk.brics.tajs.analysis.HostAPIs;
 import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.analysis.State;
-import dk.brics.tajs.flowgraph.BasicBlock;
-import dk.brics.tajs.js2flowgraph.RhinoASTToFlowgraph;
 import dk.brics.tajs.lattice.ObjectLabel;
-import dk.brics.tajs.lattice.UnknownValueResolver;
 import dk.brics.tajs.lattice.ObjectLabel.Kind;
+import dk.brics.tajs.lattice.UnknownValueResolver;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.solver.Message.Severity;
 import dk.brics.tajs.util.AnalysisException;
@@ -62,6 +60,7 @@ public class ECMAScriptFunctions {
             case OBJECT_HASOWNPROPERTY:
             case OBJECT_ISPROTOTYPEOF:
             case OBJECT_PROPERTYISENUMERABLE:
+            case OBJECT_DEFINE_PROPERTY:
                 res = JSObject.evaluate(nativeobject, call, state, c);
                 break;
 
@@ -252,7 +251,8 @@ public class ECMAScriptFunctions {
             case ASSERT_MOST_RECENT_OBJ:
             case ASSERT_SUMMARY_OBJ:
             case CONVERSION_TO_PRIMITIVE:
-            case ADD_CONTEXT_SENSITIVITY:
+            case TAJS_ADD_CONTEXT_SENSITIVITY:
+            case TAJS_NEW_OBJECT:
             case TAJS_GET_KEYBOARD_EVENT:
             case TAJS_GET_MOUSE_EVENT:
             case TAJS_GET_UI_EVENT:
@@ -463,14 +463,14 @@ public class ECMAScriptFunctions {
     			}
     		else {
 				c.getMonitoring().addMessage(c.getCurrentNode(), Severity.HIGH, "Implicit call to non-native valueOf method");
-                BasicBlock b = c.getCurrentNode().getBlock();
-                State entry_state = c.getAnalysisLatticeElement().getState(b, c.getCurrentContext());
-                if (false || false) {
-                    (new RhinoASTToFlowgraph()).extendFlowgraphWithCallAtNode(c.getFlowGraph(), c.getCurrentNode(), register);
-                    c.propagateToBasicBlock(entry_state.clone(), b, c.getCurrentContext());
-                    c.getCurrentState().setToNone();
-                    return Value.makeNone();
-                }
+//                BasicBlock b = c.getCurrentNode().getBlock();
+//                State entry_state = c.getAnalysisLatticeElement().getState(b, c.getCurrentContext());
+//                if (false || false) {
+//                    (new RhinoASTToFlowgraph()).extendFlowgraphWithCallAtNode(c.getFlowGraph(), c.getCurrentNode(), register);
+//                    c.propagateToBasicBlock(entry_state.clone(), b, c.getCurrentContext());
+//                    c.getCurrentState().setToNone();
+//                    return Value.makeNone();
+//                }
 				result.add(Value.makeAnyStr()); // FIXME: implicit call to non-native toString method
     		}
     	return Value.join(result);

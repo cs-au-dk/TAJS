@@ -28,7 +28,7 @@ import dk.brics.tajs.util.Pair;
  * 
  * Implemented as a singleton without the static get() method.
  */
-public class Options { // TODO: better management of options (i.e. not static fields)?
+public class Options { // TODO: better management of options?
 
 	private static final Logger logger = Logger.getLogger(Options.class);
 
@@ -62,29 +62,17 @@ public class Options { // TODO: better management of options (i.e. not static fi
 		optionValues.disableContextSpecialization();
 	}
 
-	public static void disableCorrelationTracking() {
-		optionValues.disableCorrelationTracking();
-	}
-
 	public static void disableDebug() {
 		optionValues.disableDebug();
-	}
-
-	public static void disableDebugOutputOnCrash() {
-		optionValues.disableDebugOutputOnCrash();
-	}
-
-	public static void disableDSL() {
-		optionValues.disableDSL();
 	}
 
 	public static void disableFlowgraph() {
 		optionValues.disableFlowgraph();
 	}
 
-	public static void disableFlowgraphOptimization() {
-		optionValues.disableFlowgraphOptimization();
-	}
+//	public static void disableFlowgraphOptimization() {
+//		optionValues.disableFlowgraphOptimization();
+//	}
 
 	public static void disableIgnoreHTMLContent() {
 		optionValues.disableIgnoreHTMLContent();
@@ -114,8 +102,8 @@ public class Options { // TODO: better management of options (i.e. not static fi
 		optionValues.disableNoChargedCalls();
 	}
 
-	public static void disableNoContextSensitivity() {
-		optionValues.disableNoContextSensitivity();
+	public static void disableNoObjectSensitivity() {
+		optionValues.disableNoObjectSensitivity();
 	}
 
 	public static void disableNoCopyOnWrite() {
@@ -138,8 +126,8 @@ public class Options { // TODO: better management of options (i.e. not static fi
 		optionValues.disableNoLazy();
 	}
 
-	public static void disableNoLocalPathSensitivity() {
-		optionValues.disableNoLocalPathSensitivity();
+	public static void disableControlSensitivity() {
+		optionValues.disableControlSensitivity();
 	}
 
 	public static void disableNoMessages() {
@@ -154,8 +142,8 @@ public class Options { // TODO: better management of options (i.e. not static fi
 		optionValues.disableNoRecency();
 	}
 
-	public static void disablePolymorphic() {
-		optionValues.disablePolymorphic();
+	public static void disableNoPolymorphic() {
+		optionValues.disableNoPolymorphic();
 	}
 
 	public static void disablePropagateDeadFlow() {
@@ -164,10 +152,6 @@ public class Options { // TODO: better management of options (i.e. not static fi
 
 	public static void disableQuiet() {
 		optionValues.disableQuiet();
-	}
-
-	public static void disableSerializeFinalState() {
-		optionValues.disableSerializeFinalState();
 	}
 
 	public static void disableSingleEventHandlerLoop() {
@@ -198,8 +182,8 @@ public class Options { // TODO: better management of options (i.e. not static fi
 		optionValues.disableTiming();
 	}
 
-	public static void disableUnevalMode() {
-		optionValues.disableUnevalMode();
+	public static void disableUnevalizer() {
+		optionValues.disableUnevalizer();
 	}
 
 	public static void disableUnrollOneAndAHalf() {
@@ -243,10 +227,6 @@ public class Options { // TODO: better management of options (i.e. not static fi
 		optionValues.enableContextSpecialization();
 	}
 
-	public static void enableCorrelationTracking() {
-		optionValues.enableCorrelationTracking();
-	}
-
 	public static void enableCoverage() {
 		optionValues.enableCoverage();
 	}
@@ -255,17 +235,9 @@ public class Options { // TODO: better management of options (i.e. not static fi
 		optionValues.enableDebug();
 	}
 
-	public static void enableDebugOutputOnCrash() {
-		optionValues.enableDebugOutputOnCrash();
-	}
-
-	public static void enableDSL() {
-		optionValues.enableDSL();
-	}
-
-	public static void enableErrorBatchMode() {
-		optionValues.enableErrorBatchMode();
-	}
+//	public static void enableErrorBatchMode() {
+//		optionValues.enableErrorBatchMode();
+//	}
 
 	public static void enableEvalStatistics() {
 		optionValues.enableEvalStatistics();
@@ -275,9 +247,9 @@ public class Options { // TODO: better management of options (i.e. not static fi
 		optionValues.enableFlowgraph();
 	}
 
-	public static void enableFlowgraphOptimization() {
-		optionValues.enableFlowgraphOptimization();
-	}
+//	public static void enableFlowgraphOptimization() {
+//		optionValues.enableFlowgraphOptimization();
+//	}
 
 	public static void enableIgnoreHTMLContent() {
 		optionValues.enableIgnoreHTMLContent();
@@ -307,8 +279,8 @@ public class Options { // TODO: better management of options (i.e. not static fi
 		optionValues.enableNoChargedCalls();
 	}
 
-	public static void enableNoContextSensitivity() {
-		optionValues.enableNoContextSensitivity();
+	public static void enableNoObjectSensitivity() {
+		optionValues.enableNoObjectSensitivity();
 	}
 
 	public static void enableNoCopyOnWrite() {
@@ -331,8 +303,8 @@ public class Options { // TODO: better management of options (i.e. not static fi
 		optionValues.enableNoLazy();
 	}
 
-	public static void enableNoLocalPathSensitivity() {
-		optionValues.enableNoLocalPathSensitivity();
+	public static void enableControlSensitivity() {
+		optionValues.enableControlSensitivity();
 	}
 
 	public static void enableNoMessages() {
@@ -347,8 +319,8 @@ public class Options { // TODO: better management of options (i.e. not static fi
 		optionValues.enableNoRecency();
 	}
 
-	public static void enablePolymorphic() {
-		optionValues.enablePolymorphic();
+	public static void enableNoPolymorphic() {
+		optionValues.enableNoPolymorphic();
 	}
 
 	public static void enablePropagateDeadFlow() {
@@ -357,10 +329,6 @@ public class Options { // TODO: better management of options (i.e. not static fi
 
 	public static void enableQuiet() {
 		optionValues.enableQuiet();
-	}
-
-	public static void enableSerializeFinalState() {
-		optionValues.enableSerializeFinalState();
 	}
 
 	public static void enableSingleEventHandlerLoop() {
@@ -391,8 +359,8 @@ public class Options { // TODO: better management of options (i.e. not static fi
 		optionValues.enableTiming();
 	}
 
-	public static void enableUnevalMode() {
-		optionValues.enableUnevalMode();
+	public static void enableUnevalizer() {
+		optionValues.enableUnevalizer();
 	}
 
 	public static void enableUnrollOneAndAHalf() {
@@ -415,16 +383,8 @@ public class Options { // TODO: better management of options (i.e. not static fi
 		return optionValues.getLibraries();
 	}
 
-	public static int getMaxSuspiciousnessLevel() {
-		return optionValues.getMaxSuspiciousnessLevel();
-	}
-
 	public static List<Pair<String, ?>> getEnabledOptionValues() {
 		return optionValues.getOptionValues();
-	}
-
-	public static boolean isAbortOnSuspiciousValueCreationEnabled() {
-		return optionValues.isAbortOnSuspiciousValueCreationEnabled();
 	}
 
 	public static boolean isAlwaysCanPut() {
@@ -447,8 +407,8 @@ public class Options { // TODO: better management of options (i.e. not static fi
 		return optionValues.isCollectVariableInfoEnabled();
 	}
 
-	public static boolean isContextSensitivityDisabled() {
-		return optionValues.isContextSensitivityDisabled();
+	public static boolean isObjectSensitivityDisabled() {
+		return optionValues.isObjectSensitivityDisabled();
 	}
 
 	public static boolean isContextSpecializationEnabled() {
@@ -457,10 +417,6 @@ public class Options { // TODO: better management of options (i.e. not static fi
 
 	public static boolean isCopyOnWriteDisabled() {
 		return optionValues.isCopyOnWriteDisabled();
-	}
-
-	public static boolean isCorrelationTrackingEnabled() {
-		return optionValues.isCorrelationTrackingEnabled();
 	}
 
 	public static boolean isCoverageEnabled() {
@@ -475,21 +431,13 @@ public class Options { // TODO: better management of options (i.e. not static fi
 		return optionValues.isDebugOrTestEnabled();
 	}
 
-	public static boolean isDebugOutputOnCrashEnabled() {
-		return optionValues.isDebugOutputOnCrashEnabled();
-	}
-
 	public static boolean isDOMEnabled() {
 		return optionValues.isDOMEnabled();
 	}
 
-	public static boolean isDSLEnabled() {
-		return optionValues.isDSLEnabled();
-	}
-
-	public static boolean isErrorBatchMode() {
-		return optionValues.isErrorBatchMode();
-	}
+//	public static boolean isErrorBatchMode() {
+//		return optionValues.isErrorBatchMode();
+//	}
 
 	public static boolean isEvalStatistics() {
 		return optionValues.isEvalStatistics();
@@ -503,9 +451,9 @@ public class Options { // TODO: better management of options (i.e. not static fi
 		return optionValues.isFlowGraphEnabled();
 	}
 
-	public static boolean isFlowGraphOptimizationEnabled() {
-		return optionValues.isFlowGraphOptimizationEnabled();
-	}
+//	public static boolean isFlowGraphOptimizationEnabled() {
+//		return optionValues.isFlowGraphOptimizationEnabled();
+//	}
 
 	public static boolean isGCDisabled() {
 		return optionValues.isGCDisabled();
@@ -531,8 +479,8 @@ public class Options { // TODO: better management of options (i.e. not static fi
 		return optionValues.isLazyDisabled();
 	}
 
-	public static boolean isLocalPathSensitivityDisabled() {
-		return optionValues.isLocalPathSensitivityDisabled();
+	public static boolean isControlSensitivityDisabled() {
+		return optionValues.isControlSensitivityDisabled();
 	}
 
 	public static boolean isLowSeverityEnabled() {
@@ -555,8 +503,8 @@ public class Options { // TODO: better management of options (i.e. not static fi
 		return optionValues.isNoMessages();
 	}
 
-	public static boolean isPolymorphicEnabled() {
-		return optionValues.isPolymorphicEnabled();
+	public static boolean isPolymorphicDisabled() {
+		return optionValues.isPolymorphicDisabled();
 	}
 
 	public static boolean isPropagateDeadFlow() {
@@ -573,10 +521,6 @@ public class Options { // TODO: better management of options (i.e. not static fi
 
 	public static boolean isReturnJSON() {
 		return optionValues.isReturnJSON();
-	}
-
-	public static boolean isSerializeFinalStateEnabled() {
-		return optionValues.isSerializeFinalStateEnabled();
 	}
 
 	public static boolean isSingleEventHandlerLoop() {
@@ -603,8 +547,8 @@ public class Options { // TODO: better management of options (i.e. not static fi
 		return optionValues.isTimingEnabled();
 	}
 
-	public static boolean isUnevalEnabled() {
-		return optionValues.isUnevalEnabled();
+	public static boolean isUnevalizerEnabled() {
+		return optionValues.isUnevalizerEnabled();
 	}
 
 	public static boolean isUnrollOneAndAHalfEnabled() {
@@ -636,10 +580,6 @@ public class Options { // TODO: better management of options (i.e. not static fi
 		Options.optionValues = optionValues.clone();
 	}
 
-	public static void setMaxSuspiciousnessLevel(int level) {
-		optionValues.setMaxSuspiciousnessLevel(level);
-	}
-
 	private Options() {
 		// do nothing
 	}
@@ -647,12 +587,60 @@ public class Options { // TODO: better management of options (i.e. not static fi
 	public static void enableForInSpecialization() {
 		optionValues.enableForInSpecialization();
 	}
-	
+
 	public static void disableForInSpecialization() {
 		optionValues.disableForInSpecialization();
 	}
-	
+
 	public static boolean isForInSpecializationEnabled(){
 		return optionValues.isForInSpecializationEnabled();
+	}
+
+	public static void disableContextSensitiveHeap() {
+		optionValues.disableContextSensitiveHeap();
+	}
+
+	public static void enableContextSensitiveHeap() {
+		optionValues.enableContextSensitiveHeap();
+	}
+
+	public static boolean isContextSensitiveHeapEnabled() {
+		return optionValues.isContextSensitiveHeapEnabled();
+	}
+
+	public static void enableNumericVariableSensitivity() {
+		optionValues.enableNumericVariableSensitivity();
+	}
+
+	public static void disableNumericVariableSensitivity() {
+		optionValues.disableNumericVariableSensitivity();
+	}
+
+	public static boolean isNumericVariableSensitivityEnabled() {
+		return optionValues.isNumericVariableSensitivityEnabled();
+	}
+
+	public static void enableParameterSensitivity() {
+		optionValues.enableParameterSensitivity();
+	}
+
+	public static void disableParameterSensitivity() {
+		optionValues.disableParameterSensitivity();
+	}
+
+	public static boolean isParameterSensitivityEnabled() {
+		return optionValues.isParameterSensitivityEnabled();
+	}
+
+	public static void enableUnreachable() {
+		optionValues.enableUnreachable();
+	}
+
+	public static void disableUnreachable() {
+		optionValues.disableUnreachable();
+	}
+
+	public static boolean isUnreachableEnabled() {
+		return optionValues.isUnreachableEnabled();
 	}
 }
