@@ -1,12 +1,12 @@
-fg2: <main> function()
+fg2: function()
   block 0: [entry]
     node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0176.js:1:1)
     ->[block 1]
   block 1:
     node 1: read-variable['undefined',v2,-] (test/flowgraphbuilder/flowgraph_builder0176.js:1:5)
     node 2: write-variable[v2,'x']* (test/flowgraphbuilder/flowgraph_builder0176.js:1:1)
-    node 3: read-variable['dumpValue',v4,v3] (test/flowgraphbuilder/flowgraph_builder0176.js:2:1)
-    node 4: read-variable['undefined',v5,-] (test/flowgraphbuilder/flowgraph_builder0176.js:2:11)
+    node 3: read-variable['TAJS_dumpValue',v4,v3] (test/flowgraphbuilder/flowgraph_builder0176.js:2:1)
+    node 4: read-variable['undefined',v5,-] (test/flowgraphbuilder/flowgraph_builder0176.js:2:16)
     ->[block 2]
   block 2:
     node 5: call[v3,v4,v5,-]* (test/flowgraphbuilder/flowgraph_builder0176.js:2:1)

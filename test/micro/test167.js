@@ -2,4 +2,4 @@
 var x = 1;
 var x;
 
-dumpValue(x)
+TAJS_dumpValue(x)

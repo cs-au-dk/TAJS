@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2013 Aarhus University
+ * Copyright 2009-2015 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,13 +16,15 @@
 
 package dk.brics.tajs.flowgraph;
 
+import dk.brics.tajs.flowgraph.jsnodes.Node;
+
 /**
- * Visitor for nodes.
+ * Visitor for flowgraph nodes.
  */
 public interface AbstractNodeVisitor<ArgType> {
 
-	/**
-	 * Visits an JavaScript code node.
-	 */
-	public void visit(dk.brics.tajs.flowgraph.jsnodes.Node n, ArgType a);
+    /**
+     * Visits a flowgraph node.
+     */
+    void visit(Node n, ArgType a);
 }

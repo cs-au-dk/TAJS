@@ -1,18 +1,18 @@
 var a = new Boolean();
-dumpObject(a);
+TAJS_dumpObject(a);
 var b = new Boolean(36984);
-dumpObject(b);
-dumpValue(b.xy);
+TAJS_dumpObject(b);
+TAJS_dumpValue(b.xy);
 var c = new Boolean(true);
-dumpObject(c);
+TAJS_dumpObject(c);
 var d = Boolean("false");
-dumpValue(d);
+TAJS_dumpValue(d);
 var e = Boolean("");
-dumpValue(e);
+TAJS_dumpValue(e);
 var f = b.toString();
-dumpValue(f);
+TAJS_dumpValue(f);
 var g = c.valueOf();
-dumpValue(g)
+TAJS_dumpValue(g)
 var h = new Number(16384);
 
 h.booString = a.toString;
@@ -22,5 +22,5 @@ h.valuOf();
 
 b.boo = a.toString;
 var i = b.boo();
-dumpValue(i);
+TAJS_dumpValue(i);
 

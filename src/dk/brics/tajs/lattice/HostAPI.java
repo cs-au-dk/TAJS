@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2013 Aarhus University
+ * Copyright 2009-2015 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,35 +22,14 @@ package dk.brics.tajs.lattice;
  */
 public interface HostAPI {
 
-//	private String name;
-//	
-//	private String short_name;
-	
-//	/**
-//	 * Constructs a new host API object.
-//	 */
-//	public HostAPI(String name, String short_name) {
-//		this.name = name;
-//		this.short_name = short_name;
-//	}
-//	
-//	@Override
-//	public String toString() {
-//		return name;
-//	}
-//	
-//	public String getShortName() {
-//		return short_name;
-//	}
-	
-	/**
-	 * Returns the full name of this host API.
-	 */
-	@Override
-	public String toString();
-	
-	/**
-	 * Returns the short name of this host API.
-	 */
-	public String getShortName();
+    /**
+     * Returns the full name of this host API.
+     */
+    @Override
+    String toString();
+
+    /**
+     * Returns the short name of this host API.
+     */
+    String getShortName();
 }

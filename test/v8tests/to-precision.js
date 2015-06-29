@@ -27,108 +27,108 @@
 
 // Test the exponential notation output.
 // Should be 1e+27
-dumpValue((1.2345e+27).toPrecision(1));
+TAJS_dumpValue((1.2345e+27).toPrecision(1));
 // Should be 1.2e+27
-dumpValue((1.2345e+27).toPrecision(2));
+TAJS_dumpValue((1.2345e+27).toPrecision(2));
 // Should be 1.23e+27
-dumpValue((1.2345e+27).toPrecision(3));
+TAJS_dumpValue((1.2345e+27).toPrecision(3));
 // Should be 1.234e+27
 // FIXME: Fix failing/testtoprecision1.js and uncomment this line.
-// dumpValue((1.2345e+27).toPrecision(4));
+// TAJS_dumpValue((1.2345e+27).toPrecision(4));
 // Should be 1.2345e+27
-dumpValue((1.2345e+27).toPrecision(5));
+TAJS_dumpValue((1.2345e+27).toPrecision(5));
 // Should be 1.23450e+27
-dumpValue((1.2345e+27).toPrecision(6));
+TAJS_dumpValue((1.2345e+27).toPrecision(6));
 // Should be 1.234500e+27
-dumpValue((1.2345e+27).toPrecision(7));
+TAJS_dumpValue((1.2345e+27).toPrecision(7));
 
 
 // Should be -1e+27
-dumpValue((-1.2345e+27).toPrecision(1));
+TAJS_dumpValue((-1.2345e+27).toPrecision(1));
 // Should be -1.2e+27
-dumpValue((-1.2345e+27).toPrecision(2));
+TAJS_dumpValue((-1.2345e+27).toPrecision(2));
 // Should be -1.23e+27
-dumpValue((-1.2345e+27).toPrecision(3));
+TAJS_dumpValue((-1.2345e+27).toPrecision(3));
 // Should be -1.234e+27
 // FIXME: Fix toprecision1.js and uncomment the line below
-// dumpValue((-1.2345e+27).toPrecision(4));
+// TAJS_dumpValue((-1.2345e+27).toPrecision(4));
 // Should be -1.2345e+27
-dumpValue((-1.2345e+27).toPrecision(5));
+TAJS_dumpValue((-1.2345e+27).toPrecision(5));
 // Should be -1.23450e+27
-dumpValue((-1.2345e+27).toPrecision(6));
+TAJS_dumpValue((-1.2345e+27).toPrecision(6));
 // Should be -1.234500e+27
-dumpValue((-1.2345e+27).toPrecision(7));
+TAJS_dumpValue((-1.2345e+27).toPrecision(7));
 
 
 // Test the fixed notation output.
 
 // Should be 7.
-dumpValue((7).toPrecision(1));
+TAJS_dumpValue((7).toPrecision(1));
 // Should be 7.0
-dumpValue((7).toPrecision(2));
+TAJS_dumpValue((7).toPrecision(2));
 // Should be 7.00
-dumpValue((7).toPrecision(3));
+TAJS_dumpValue((7).toPrecision(3));
 
 // Should be -7
-dumpValue((-7).toPrecision(1));
+TAJS_dumpValue((-7).toPrecision(1));
 // Should be -7.0
-dumpValue((-7).toPrecision(2));
+TAJS_dumpValue((-7).toPrecision(2));
 // Should be -7.00
-dumpValue((-7).toPrecision(3));
+TAJS_dumpValue((-7).toPrecision(3));
 
 // Should be 9e+1
 // FIXME: Fix testtoprecision2.js and uncomment the line below
-//dumpValue((91).toPrecision(1));
+//TAJS_dumpValue((91).toPrecision(1));
 // Should be 91
-dumpValue((91).toPrecision(2));
+TAJS_dumpValue((91).toPrecision(2));
 // Should be 91.0
-dumpValue((91).toPrecision(3));
+TAJS_dumpValue((91).toPrecision(3));
 // Should be 91.00
-dumpValue((91).toPrecision(4));
+TAJS_dumpValue((91).toPrecision(4));
 
 // Should be -9e+1
 // FIXME: Fix testtoprecision2.js and uncomment the line below
-//dumpValue((-91).toPrecision(1));
+//TAJS_dumpValue((-91).toPrecision(1));
 // Should be -91.
-dumpValue((-91).toPrecision(2));
+TAJS_dumpValue((-91).toPrecision(2));
 // Should be -91.0
-dumpValue((-91).toPrecision(3));
+TAJS_dumpValue((-91).toPrecision(3));
 // Should be -91.00
-dumpValue((-91).toPrecision(4));
+TAJS_dumpValue((-91).toPrecision(4));
 
 // Should be 9e+1
 // FIXME: Fix testtoprecision2.js and uncomment the line below
-// dumpValue((91.1234).toPrecision(1));
+// TAJS_dumpValue((91.1234).toPrecision(1));
 // Should be 91.
-dumpValue((91.1234).toPrecision(2));
+TAJS_dumpValue((91.1234).toPrecision(2));
 // Should be 91.1
-dumpValue((91.1234).toPrecision(3));
+TAJS_dumpValue((91.1234).toPrecision(3));
 // Should be 91.12
-dumpValue((91.1234).toPrecision(4));
+TAJS_dumpValue((91.1234).toPrecision(4));
 // Should be 91.123
-dumpValue((91.1234).toPrecision(5));
+TAJS_dumpValue((91.1234).toPrecision(5));
 // Should be 91.1234
-dumpValue((91.1234).toPrecision(6));
+TAJS_dumpValue((91.1234).toPrecision(6));
 // Should be 91.12340
-dumpValue((91.1234).toPrecision(7));
+TAJS_dumpValue((91.1234).toPrecision(7));
 // Should be 91.123400
-dumpValue((91.1234).toPrecision(8));
+TAJS_dumpValue((91.1234).toPrecision(8));
 
 // Should be -9e+1
 // FIXME: Fix testtoprecision1.js and uncomment the line below.
-// dumpValue((-91.1234).toPrecision(1));
+// TAJS_dumpValue((-91.1234).toPrecision(1));
 // Should be -91
-dumpValue((-91.1234).toPrecision(2));
+TAJS_dumpValue((-91.1234).toPrecision(2));
 // Should be -91.1
-dumpValue((-91.1234).toPrecision(3));
+TAJS_dumpValue((-91.1234).toPrecision(3));
 // Should be -91.12
-dumpValue((-91.1234).toPrecision(4));
+TAJS_dumpValue((-91.1234).toPrecision(4));
 // Should be -91.123
-dumpValue((-91.1234).toPrecision(5));
+TAJS_dumpValue((-91.1234).toPrecision(5));
 // Should be -91.1234
-dumpValue((-91.1234).toPrecision(6));
+TAJS_dumpValue((-91.1234).toPrecision(6));
 // Should be -91.12340
-dumpValue((-91.1234).toPrecision(7));
+TAJS_dumpValue((-91.1234).toPrecision(7));
 // Should be -91.123400
-dumpValue((-91.1234).toPrecision(8));
+TAJS_dumpValue((-91.1234).toPrecision(8));
 

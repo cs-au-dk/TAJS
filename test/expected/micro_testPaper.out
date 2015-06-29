@@ -1,6 +1,4 @@
-test/micro/testPaper.js:6:44: [definite] Dead assignment, property name is never read
 test/micro/testPaper.js:9:5: [definite] The function Person is invoked both as constructor and function
-test/micro/testPaper.js:11:5: [definite] Dead assignment, property studentid is never read
 test/micro/testPaper.js:11:22: [maybe] Converting primitive number to object
 test/micro/testPaper.js:19:3: [info] Abstract object: {name:"Joe Average",studentid:"100026",[[Prototype]]=[@Object#node20]}
 test/micro/testPaper.js:20:3: [info] Abstract object: {name:"John Q. Doe",studentid:"100027",[[Prototype]]=[@Object#node20]}
@@ -35,14 +33,14 @@ test/micro/testPaper.js:26:1: [info] Abstract state (modified parts):
     length: 2.0
     prototype: [@Object#node20]
     [[Prototype]] = [@Function.prototype[native]]
-  @Object#node20 (test/micro/testPaper.js:13:27):
+  @Object#node20 (test/micro/testPaper.js:13:23):
     name: Undef
     [[Prototype]] = [@Object#node1]
-  @Object#node32 (test/micro/testPaper.js:16:15):
+  @Object#node32 (test/micro/testPaper.js:16:11):
     name: "Joe Average"
     studentid: "100026"
     [[Prototype]] = [@Object#node20]
-  @Object#node37 (test/micro/testPaper.js:17:15):
+  @Object#node37 (test/micro/testPaper.js:17:11):
     name: "John Q. Doe"
     studentid: "100027"
     [[Prototype]] = [@Object#node20]

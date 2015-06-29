@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2013 Aarhus University
+ * Copyright 2009-2015 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,71 +19,71 @@ package dk.brics.tajs.util;
 /**
  * Pair of objects.
  */
-public class Pair<F,S> {
+public class Pair<F, S> {
 
-	private F first;
-	
-	private S second;
-	
-	private Pair(F fst, S snd) {
-		this.first = fst;
-		this.second = snd;
-	}
+    private F first;
 
-	/**
-	 * Constructs a new pair.
-	 */
-	public static <F,S> Pair<F, S> make(F fst, S snd) {
-		return new Pair<>(fst,snd);
-	}
+    private S second;
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((first == null) ? 0 : first.hashCode());
-		result = prime * result + ((second == null) ? 0 : second.hashCode());
-		return result;
-	}
+    private Pair(F fst, S snd) {
+        this.first = fst;
+        this.second = snd;
+    }
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Pair<?,?> other = (Pair<?,?>) obj;
-		if (first == null) {
-			if (other.first != null)
-				return false;
-		} else if (!first.equals(other.first))
-			return false;
-		if (second == null) {
-			if (other.second != null)
-				return false;
-		} else if (!second.equals(other.second))
-			return false;
-		return true;
-	}
+    /**
+     * Constructs a new pair.
+     */
+    public static <F, S> Pair<F, S> make(F fst, S snd) {
+        return new Pair<>(fst, snd);
+    }
 
-	/**
-	 * Returns the first object.
-	 */
-	public F getFirst() {
-		return first;
-	}
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((first == null) ? 0 : first.hashCode());
+        result = prime * result + ((second == null) ? 0 : second.hashCode());
+        return result;
+    }
 
-	/**
-	 * Returns the second object.
-	 */
-	public S getSecond() {
-		return second;
-	}
-	
-	@Override
-	public String toString() {
-		return "(" + first + ", " + second + ")";
-	}
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Pair<?, ?> other = (Pair<?, ?>) obj;
+        if (first == null) {
+            if (other.first != null)
+                return false;
+        } else if (!first.equals(other.first))
+            return false;
+        if (second == null) {
+            if (other.second != null)
+                return false;
+        } else if (!second.equals(other.second))
+            return false;
+        return true;
+    }
+
+    /**
+     * Returns the first object.
+     */
+    public F getFirst() {
+        return first;
+    }
+
+    /**
+     * Returns the second object.
+     */
+    public S getSecond() {
+        return second;
+    }
+
+    @Override
+    public String toString() {
+        return "(" + first + ", " + second + ")";
+    }
 }

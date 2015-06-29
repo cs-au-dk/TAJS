@@ -3,9 +3,9 @@ function f() {
 
 function g() {
 	var ttttt = x;
-	dumpValue(ttttt);
+	TAJS_dumpValue(ttttt);
 	x = f();
-	dumpValue(ttttt); // should be same as above
+	TAJS_dumpValue(ttttt); // should be same as above
 }
 
 var x = "dyt";

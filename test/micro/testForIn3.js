@@ -7,4 +7,4 @@ for (p in x) {
 		throw {};
 }
 
-dumpObject(y);
+TAJS_dumpObject(y);

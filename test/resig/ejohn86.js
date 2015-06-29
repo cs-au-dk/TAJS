@@ -18,4 +18,4 @@ elem.onclick = Button.click.bind(Button, false);
 document.getElementById("results").appendChild(elem); 
  
 elem.onclick(); 
-assert( Button.clicked === false );
+TAJS_assert( Button.clicked === false );

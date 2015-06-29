@@ -1,34 +1,51 @@
-test/chromeexperiments/magnetic.tidy.html:106:9: [definite] The conditional expression is always true
-test/chromeexperiments/magnetic.tidy.html:106:13: [definite] The conditional expression is always true
-test/chromeexperiments/magnetic.tidy.html:282:36: [definite] Reading absent property width
-test/chromeexperiments/magnetic.tidy.html:282:58: [definite] Reading absent property height
-test/chromeexperiments/magnetic.tidy.html:46:9: [definite] The variable mouseIsDown is never used
-test/chromeexperiments/magnetic.tidy.html:206:5: [definite] The variable event is never used
-test/chromeexperiments/magnetic.tidy.html:161:23: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/magnetic.tidy.html:196:33: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/magnetic.tidy.html:211:13: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/magnetic.tidy.html:262:13: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/magnetic.tidy.html:262:34: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/magnetic.tidy.html:280:13: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/magnetic.tidy.html:281:33: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/magnetic.tidy.html:295:17: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/magnetic.tidy.html:305:42: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/magnetic.tidy.html:306:42: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/magnetic.tidy.html:335:51: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/magnetic.tidy.html:335:70: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/magnetic.tidy.html:356:17: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/magnetic.tidy.html:360:13: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/magnetic.tidy.html:26: [maybe] Uncaught exception, constructed at [test/chromeexperiments/magnetic.tidy.html:161:23, test/chromeexperiments/magnetic.tidy.html:196:33, test/chromeexperiments/magnetic.tidy.html:211:13, test/chromeexperiments/magnetic.tidy.html:262:13, test/chromeexperiments/magnetic.tidy.html:262:34, test/chromeexperiments/magnetic.tidy.html:280:13, test/chromeexperiments/magnetic.tidy.html:281:33, test/chromeexperiments/magnetic.tidy.html:295:17, test/chromeexperiments/magnetic.tidy.html:305:42, test/chromeexperiments/magnetic.tidy.html:306:42, test/chromeexperiments/magnetic.tidy.html:335:51, test/chromeexperiments/magnetic.tidy.html:335:70, test/chromeexperiments/magnetic.tidy.html:356:17, test/chromeexperiments/magnetic.tidy.html:360:13]
-test/chromeexperiments/magnetic.tidy.html:161:23: [maybe] Reading absent property (computed name)
-test/chromeexperiments/magnetic.tidy.html:194:22: [maybe] Reading absent property (computed name)
-test/chromeexperiments/magnetic.tidy.html:210:22: [maybe] Reading absent property (computed name)
-test/chromeexperiments/magnetic.tidy.html:262:13: [maybe] Reading absent property (computed name)
-test/chromeexperiments/magnetic.tidy.html:262:34: [maybe] Reading absent property (computed name)
-test/chromeexperiments/magnetic.tidy.html:280:13: [maybe] Reading absent property (computed name)
-test/chromeexperiments/magnetic.tidy.html:281:33: [maybe] Reading absent property (computed name)
-test/chromeexperiments/magnetic.tidy.html:282:13: [maybe] Conversion to number yields NaN
-test/chromeexperiments/magnetic.tidy.html:293:22: [maybe] Reading absent property (computed name)
-test/chromeexperiments/magnetic.tidy.html:305:42: [maybe] Reading absent property (computed name)
-test/chromeexperiments/magnetic.tidy.html:306:42: [maybe] Reading absent property (computed name)
-test/chromeexperiments/magnetic.tidy.html:323:24: [maybe] Reading absent property (computed name)
-test/chromeexperiments/magnetic.tidy.html:333:26: [maybe] Reading absent property (computed name)
+test/chromeexperiments/magnetic.html:100:9: [definite] The conditional expression is always true
+test/chromeexperiments/magnetic.html:100:13: [definite] The conditional expression is always true
+test/chromeexperiments/magnetic.html:182:13: [definite] The assignment to mouseDownTime has no effect
+test/chromeexperiments/magnetic.html:201:9: [definite] The assignment to mouseIsDown has no effect
+test/chromeexperiments/magnetic.html:274:9: [definite] The conditional expression is always true
+test/chromeexperiments/magnetic.html:289:13: [definite] The conditional expression is always false
+test/chromeexperiments/magnetic.html:53:13: [definite] Dead assignment, property glowA is never read
+test/chromeexperiments/magnetic.html:54:13: [definite] Dead assignment, property glowB is never read
+test/chromeexperiments/magnetic.html:56:13: [definite] Dead assignment, property fadeFill is never read
+test/chromeexperiments/magnetic.html:57:13: [definite] Dead assignment, property useFade is never read
+test/chromeexperiments/magnetic.html:60:13: [definite] Dead assignment, property glowA is never read
+test/chromeexperiments/magnetic.html:61:13: [definite] Dead assignment, property glowB is never read
+test/chromeexperiments/magnetic.html:63:13: [definite] Dead assignment, property fadeFill is never read
+test/chromeexperiments/magnetic.html:64:13: [definite] Dead assignment, property useFade is never read
+test/chromeexperiments/magnetic.html:67:13: [definite] Dead assignment, property glowA is never read
+test/chromeexperiments/magnetic.html:68:13: [definite] Dead assignment, property glowB is never read
+test/chromeexperiments/magnetic.html:70:13: [definite] Dead assignment, property fadeFill is never read
+test/chromeexperiments/magnetic.html:71:13: [definite] Dead assignment, property useFade is never read
+test/chromeexperiments/magnetic.html:74:13: [definite] Dead assignment, property glowA is never read
+test/chromeexperiments/magnetic.html:75:13: [definite] Dead assignment, property glowB is never read
+test/chromeexperiments/magnetic.html:77:13: [definite] Dead assignment, property fadeFill is never read
+test/chromeexperiments/magnetic.html:78:13: [definite] Dead assignment, property useFade is never read
+test/chromeexperiments/magnetic.html:81:13: [definite] Dead assignment, property glowA is never read
+test/chromeexperiments/magnetic.html:82:13: [definite] Dead assignment, property glowB is never read
+test/chromeexperiments/magnetic.html:84:13: [definite] Dead assignment, property fadeFill is never read
+test/chromeexperiments/magnetic.html:85:13: [definite] Dead assignment, property useFade is never read
+test/chromeexperiments/magnetic.html:88:13: [definite] Dead assignment, property glowA is never read
+test/chromeexperiments/magnetic.html:89:13: [definite] Dead assignment, property glowB is never read
+test/chromeexperiments/magnetic.html:91:13: [definite] Dead assignment, property fadeFill is never read
+test/chromeexperiments/magnetic.html:92:13: [definite] Dead assignment, property useFade is never read
+test/chromeexperiments/magnetic.html:276:36: [definite] Reading absent property width
+test/chromeexperiments/magnetic.html:276:58: [definite] Reading absent property height
+test/chromeexperiments/magnetic.html:40:9: [definite] The variable mouseIsDown is never used
+test/chromeexperiments/magnetic.html:200:5: [definite] The variable event is never used
+test/chromeexperiments/magnetic.html:190:33: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/magnetic.html:205:13: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/magnetic.html:256:13: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/magnetic.html:256:34: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/magnetic.html:289:17: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/magnetic.html:329:51: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/magnetic.html:329:70: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/magnetic.html:350:17: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/magnetic.html:354:13: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/magnetic.html:188:22: [maybe] Reading absent property (computed name)
+test/chromeexperiments/magnetic.html:204:22: [maybe] Reading absent property (computed name)
+test/chromeexperiments/magnetic.html:256:13: [maybe] Reading absent property (computed name)
+test/chromeexperiments/magnetic.html:256:34: [maybe] Reading absent property (computed name)
+test/chromeexperiments/magnetic.html:276:13: [maybe] Conversion to number yields NaN
+test/chromeexperiments/magnetic.html:287:22: [maybe] Reading absent property (computed name)
+test/chromeexperiments/magnetic.html:317:24: [maybe] Reading absent property (computed name)
+test/chromeexperiments/magnetic.html:327:26: [maybe] Reading absent property (computed name)

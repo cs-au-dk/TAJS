@@ -18,9 +18,9 @@ public class TestSunspider {
 	@Before
 	public void init() {
         Options.reset();
-		Options.enableTest();
-		// Options.enableNoLazy();
-		// Options.enablePolymorphic();
+		Options.get().enableTest();
+		// Options.get().enableNoLazy();
+		// Options.get().enablePolymorphic();
 	}
 
 	@Test

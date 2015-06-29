@@ -1,5 +1,5 @@
 test/micro/test137.js:5:14: [maybe] The variable x has values with different types
-test/micro/test137.js:6:12: [maybe] The variable ttttt has values with different types
-test/micro/test137.js:8:12: [maybe] The variable ttttt has values with different types
+test/micro/test137.js:6:17: [maybe] The variable ttttt has values with different types
+test/micro/test137.js:8:17: [maybe] The variable ttttt has values with different types
 test/micro/test137.js:6:2: [info] Abstract value: 42.0|"dyt"
 test/micro/test137.js:8:2: [info] Abstract value: 42.0|"dyt"

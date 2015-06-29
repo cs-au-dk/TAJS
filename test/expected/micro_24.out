@@ -1,3 +1,2 @@
-test/micro/test24.js:13:1: [maybe] Assertion fails
 test/micro/test24.js:14:1: [info] Abstract value: 4.0
 test/micro/test24.js:15:1: [info] Abstract value: UInt

@@ -7,5 +7,5 @@ test/micro/test47.js:23:5: [definite] Dead assignment, property area is never re
 test/micro/test47.js:8:3: [definite] The variable side_len is never used
 test/micro/test47.js:8:3: [definite] The variable top_len is never used
 test/micro/test47.js:23:17: [definite] Unreachable function area
-test/micro/test47.js:34:1: [info] Abstract object: {edges:8.0,temp:Null,[[Prototype]]=[@Object#node39]}
-test/micro/test47.js:35:1: [info] Abstract object: {area:[@area#fun6],edges:4.0,side:7.0,top:3.0,[[Prototype]]=[@Object#node73]}
+test/micro/test47.js:34:1: [info] Abstract object: {edges:8.0,temp:Null,[[Prototype]]=[@Object#node27]}
+test/micro/test47.js:35:1: [info] Abstract object: {area:[@area#fun6],edges:4.0,side:7.0,top:3.0,[[Prototype]]=[@Object#node50]}

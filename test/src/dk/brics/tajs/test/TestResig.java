@@ -18,7 +18,7 @@ public class TestResig {
 	@Before
 	public void init() {
         Options.reset();
-		Options.enableTest();
+		Options.get().enableTest();
 	}
 
 	@Test
@@ -78,7 +78,7 @@ public class TestResig {
 	@Test
 	public void resig_ejohn19() throws Exception {
 		Misc.init();
-        Options.enableIncludeDom();
+        Options.get().enableIncludeDom();
 		Misc.captureSystemOutput();
 		String[] args = {"test/resig/ejohn19.js"};
 		Misc.run(args);
@@ -211,14 +211,13 @@ public class TestResig {
 		Misc.checkSystemOutput();
 	}
 
-	@Ignore // TODO: for-in
 	@Test
 	public void resig_ejohn40() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/resig/ejohn40.js"};
 		Misc.run(args);
-		fail(); // Misc.checkSystemOutput();
+		Misc.checkSystemOutput();
 	}
 
 	@Test
@@ -463,20 +462,19 @@ public class TestResig {
 		Misc.checkSystemOutput();
 	}
 
-	@Ignore // TODO: for-in
 	@Test
 	public void resig_ejohn81() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/resig/ejohn81.js"};
 		Misc.run(args);
-		fail("check output"); // Misc.checkSystemOutput();
+		Misc.checkSystemOutput();
 	}
 
     @Ignore
 	@Test
 	public void resig_ejohn83() throws Exception { // TODO: check output
-        Options.enableIncludeDom();
+        Options.get().enableIncludeDom();
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/resig/ejohn83.js"};
@@ -487,7 +485,7 @@ public class TestResig {
     @Ignore
 	@Test
 	public void resig_ejohn84() throws Exception {  // TODO: check output
-        Options.enableIncludeDom();
+        Options.get().enableIncludeDom();
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/resig/ejohn84.js"};
@@ -498,7 +496,7 @@ public class TestResig {
     @Ignore
 	@Test
 	public void resig_ejohn85() throws Exception {  // TODO: check output
-        Options.enableIncludeDom();
+        Options.get().enableIncludeDom();
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/resig/ejohn85.js"};
@@ -509,7 +507,7 @@ public class TestResig {
     @Ignore
 	@Test
 	public void resig_ejohn86() throws Exception { // TODO: check output
-        Options.enableIncludeDom();
+        Options.get().enableIncludeDom();
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/resig/ejohn86.js"};

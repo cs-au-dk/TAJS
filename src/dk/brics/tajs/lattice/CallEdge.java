@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2013 Aarhus University
+ * Copyright 2009-2015 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,24 +21,24 @@ import dk.brics.tajs.solver.ICallEdge;
 /**
  * Information stored at an edge in a call graph.
  */
-public class CallEdge<BlockStateType extends BlockState<?,?,?>> implements ICallEdge<BlockStateType> {
+public class CallEdge<BlockStateType extends BlockState<?, ?, ?>> implements ICallEdge<BlockStateType> {
 
-	private BlockStateType state;
-	
-	/**
-	 * Constructs a new edge object.
-	 */
-	public CallEdge(BlockStateType state) {
-		this.state = state;
-	}
+    private BlockStateType state;
 
-	@Override
-	public BlockStateType getState() {
-		return state;
-	}
+    /**
+     * Constructs a new edge object.
+     */
+    public CallEdge(BlockStateType state) {
+        this.state = state;
+    }
 
-	@Override
-	public void setState(BlockStateType s) {
-		state = s;
-	}
+    @Override
+    public BlockStateType getState() {
+        return state;
+    }
+
+    @Override
+    public void setState(BlockStateType s) {
+        state = s;
+    }
 }

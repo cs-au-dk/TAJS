@@ -29,111 +29,111 @@
 
 // Should all be 0.
 // FIXME: Fix toint321.js and uncomment all lines except the line below the next FIXME.
-// dumpValue(Infinity | 0);
-// dumpValue(-Infinity | 0);
+// TAJS_dumpValue(Infinity | 0);
+// TAJS_dumpValue(-Infinity | 0);
 // FIXME: Fix toint322.js and uncomment the line below.
-// dumpValue(NaN | 0);
-// dumpValue(0.0 | 0);
-// dumpValue(-0.0 | 0);
+// TAJS_dumpValue(NaN | 0);
+// TAJS_dumpValue(0.0 | 0);
+// TAJS_dumpValue(-0.0 | 0);
 
-// dumpValue(Number.MIN_VALUE | 0);
-// dumpValue(-Number.MIN_VALUE | 0);
-// dumpValue(0.1 | 0);
-// dumpValue(-0.1 | 0);
+// TAJS_dumpValue(Number.MIN_VALUE | 0);
+// TAJS_dumpValue(-Number.MIN_VALUE | 0);
+// TAJS_dumpValue(0.1 | 0);
+// TAJS_dumpValue(-0.1 | 0);
 
 // Should be 1.
-// dumpValue(1 | 0);
-// dumpValue(1.1 | 0);
+// TAJS_dumpValue(1 | 0);
+// TAJS_dumpValue(1.1 | 0);
 // Should be -1
-// dumpValue(-1 | 0);
+// TAJS_dumpValue(-1 | 0);
 
 // Should be 2147483647
-// dumpValue(2147483647 | 0);
+// TAJS_dumpValue(2147483647 | 0);
 // Should be -2147483648.
-// dumpValue(2147483648 | 0);
+// TAJS_dumpValue(2147483648 | 0);
 // Should be -2147483647
-// dumpValue(2147483649 | 0);
+// TAJS_dumpValue(2147483649 | 0);
 
 // Should be -1
 // FIXME: Fix testtoint321.js and uncomment the line below.
-// dumpValue(4294967295 | 0);
+// TAJS_dumpValue(4294967295 | 0);
 // XXX: What is the expected result?
-// dumpValue(4294967296 | 0);
+// TAJS_dumpValue(4294967296 | 0);
 // Should be 1.
 // FIXME: Fix testtoint321.js and uncomment the line below.
-// dumpValue(4294967297 | 0);
+// TAJS_dumpValue(4294967297 | 0);
 
 // Should be -2147483647
 // FIXME: Fix testtoint321.js and uncomment the line below.
-// dumpValue(-2147483647 | 0);
+// TAJS_dumpValue(-2147483647 | 0);
 // Should be -2147483648
 // FIXME: Fix testtoint321.js and uncomment the line below.
-// dumpValue(-2147483648 | 0);
+// TAJS_dumpValue(-2147483648 | 0);
 // Should be 2147483647
 // FIXME: Fix testtoint321.js and uncomment the line below.
-// dumpValue(-2147483649 | 0);
+// TAJS_dumpValue(-2147483649 | 0);
 
 // Should be 1
 // FIXME: Fix testtoint321.js and uncomment the line below.
-// dumpValue(-4294967295 | 0);
+// TAJS_dumpValue(-4294967295 | 0);
 // XXX: What is the expected result?
-// dumpValue(-4294967296 | 0);
+// TAJS_dumpValue(-4294967296 | 0);
 // Should be -1
 // FIXME: Fix testtoint321.js and uncomment the line below.
-// dumpValue(-4294967297 | 0);
+// TAJS_dumpValue(-4294967297 | 0);
 
 // Should be -2147483648
 // FIXME: Fix testtoint321.js and uncomment the line below.
-// dumpValue(2147483648.25 | 0);
+// TAJS_dumpValue(2147483648.25 | 0);
 // Should be -2147483648
 // FIXME: Fix testtoint321.js and uncomment the line below.
-// dumpValue(2147483648.5 | 0);
+// TAJS_dumpValue(2147483648.5 | 0);
 // Should be -2147483648
 // FIXME: Fix testtoint321.js and uncomment the line below.
-// dumpValue(2147483648.75 | 0);
+// TAJS_dumpValue(2147483648.75 | 0);
 // Should be -1
 // FIXME: Fix testtoint321.js and uncomment the line below.
-// dumpValue(4294967295.25 | 0);
+// TAJS_dumpValue(4294967295.25 | 0);
 // Should be -1
 // FIXME: Fix testtoint321.js and uncomment the line below.
-// dumpValue(4294967295.5 | 0);
+// TAJS_dumpValue(4294967295.5 | 0);
 // Should be -1
 // FIXME: Fix testtoint321.js and uncomment the line below.
-// dumpValue(4294967295.75 | 0);
+// TAJS_dumpValue(4294967295.75 | 0);
 // Should be -1294967296
 // FIXME: Fix testtoint321.js and uncomment the line below.
-// dumpValue(3000000000.25 | 0);
+// TAJS_dumpValue(3000000000.25 | 0);
 // Should be -1294967296
 // FIXME: Fix testtoint321.js and uncomment the line below.
-// dumpValue(3000000000.5 | 0);
+// TAJS_dumpValue(3000000000.5 | 0);
 // Should be -1294967296
 // FIXME: Fix testtoint321.js and uncomment the line below.
-// dumpValue(3000000000.75 | 0);
+// TAJS_dumpValue(3000000000.75 | 0);
 
 // Should be -2147483648
 // FIXME: Fix testtoint321.js and uncomment the line below.
-// dumpValue(-2147483648.25 | 0);
+// TAJS_dumpValue(-2147483648.25 | 0);
 // Should be -2147483648
 // FIXME: Fix testtoint321.js and uncomment the line below.
-// dumpValue(-2147483648.5 | 0);
+// TAJS_dumpValue(-2147483648.5 | 0);
 // Should be -2147483648
 // FIXME: Fix testtoint321.js and uncomment the line below.
-// dumpValue(-2147483648.75 | 0);
+// TAJS_dumpValue(-2147483648.75 | 0);
 // Should be 1
 // FIXME: Fix testtoint321.js and uncomment the line below.
-// dumpValue(-4294967295.25 | 0);
+// TAJS_dumpValue(-4294967295.25 | 0);
 // Should be 1
 // FIXME: Fix testtoint321.js and uncomment the line below.
-// dumpValue(-4294967295.5 | 0);
+// TAJS_dumpValue(-4294967295.5 | 0);
 // Should be 1
 // FIXME: Fix testtoint321.js and uncomment the line below.
-// dumpValue(-4294967295.75 | 0);
+// TAJS_dumpValue(-4294967295.75 | 0);
 // Should be 1294967296
 // FIXME: Fix testtoint321.js and uncomment the line below.
-// dumpValue(-3000000000.25 | 0);
+// TAJS_dumpValue(-3000000000.25 | 0);
 // Should be 1294967296
 // FIXME: Fix testtoint321.js and uncomment the line below.
-// dumpValue(-3000000000.5 | 0);
+// TAJS_dumpValue(-3000000000.5 | 0);
 // Should be 1294967296
 // FIXME: Fix testtoint321.js and uncomment the line below.
-// dumpValue(-3000000000.75 | 0);
+// TAJS_dumpValue(-3000000000.75 | 0);

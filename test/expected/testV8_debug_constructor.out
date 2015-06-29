@@ -1,9 +1,0 @@
-test/v8tests/debug-constructor.js:30:9: [definite] ReferenceError, reading absent variable debug
-test/v8tests/debug-constructor.js:30:9: [definite] Unreachable code
-test/v8tests/debug-constructor.js:33:5: [definite] The variable call_graph is never used
-test/v8tests/debug-constructor.js:34:1: [definite] Unreachable function listener
-test/v8tests/debug-constructor.js:46:1: [definite] Unreachable function a
-test/v8tests/debug-constructor.js:50:1: [definite] Unreachable function b
-test/v8tests/debug-constructor.js:55:1: [definite] Unreachable function c
-test/v8tests/debug-constructor.js:60:1: [definite] Unreachable function d
-test/v8tests/debug-constructor.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/debug-constructor.js:30:9]

@@ -9,6 +9,6 @@ for (var p in x) {
 	i++;
 }
 
-dumpValue(y);
-dumpValue(i);
-dumpObject(y);
+TAJS_dumpValue(y);
+TAJS_dumpValue(i);
+TAJS_dumpObject(y);

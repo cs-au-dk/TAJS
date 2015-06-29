@@ -8,6 +8,6 @@ try {
 	fail(gt)
     }
 } catch (e) {
-    dumpValue(e)
-    dumpValue(gt) //Should be absent
+    TAJS_dumpValue(e)
+    TAJS_dumpValue(gt) //Should be absent
 }

@@ -13,6 +13,6 @@ if (a != b)
 	e = 44;
 else
 	e = 98;
-dumpValue(c);
-dumpValue(d);
-dumpValue(e);
+TAJS_dumpValue(c);
+TAJS_dumpValue(d);
+TAJS_dumpValue(e);

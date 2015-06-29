@@ -9,4 +9,4 @@ var o = {
     },
     log: []
 };
-dumpObject(o);
+TAJS_dumpObject(o);

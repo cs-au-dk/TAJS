@@ -1,0 +1,95 @@
+fg2: function()
+  block 0: [entry]
+    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0199.js:1:1)
+    node 1: vardecl['x']* (test/flowgraphbuilder/flowgraph_builder0199.js:1:5)
+    node 2: vardecl['z']* (test/flowgraphbuilder/flowgraph_builder0199.js:3:5)
+    node 3: vardecl['a']* (test/flowgraphbuilder/flowgraph_builder0199.js:4:10)
+    ->[block 1]
+  block 1:
+    node 4: new[v2] (test/flowgraphbuilder/flowgraph_builder0199.js:1:9)
+    node 5: constant[42.0,v3] (test/flowgraphbuilder/flowgraph_builder0199.js:1:12)
+    node 6: write-property[v2,'a',v3] (test/flowgraphbuilder/flowgraph_builder0199.js:1:10)
+    node 7: constant[7.0,v4] (test/flowgraphbuilder/flowgraph_builder0199.js:1:18)
+    node 8: write-property[v2,'b',v4] (test/flowgraphbuilder/flowgraph_builder0199.js:1:16)
+    node 9: constant[1.0,v5] (test/flowgraphbuilder/flowgraph_builder0199.js:1:23)
+    node 10: write-property[v2,'c',v5] (test/flowgraphbuilder/flowgraph_builder0199.js:1:21)
+    node 11: constant[1234.0,v6] (test/flowgraphbuilder/flowgraph_builder0199.js:1:29)
+    node 12: write-property[v2,'d',v6] (test/flowgraphbuilder/flowgraph_builder0199.js:1:26)
+    node 13: write-variable[v2,'x']* (test/flowgraphbuilder/flowgraph_builder0199.js:1:9)
+    node 14: constant[0.0,v7] (test/flowgraphbuilder/flowgraph_builder0199.js:3:9)
+    node 15: write-variable[v7,'z']* (test/flowgraphbuilder/flowgraph_builder0199.js:3:9)
+    node 16: read-variable['x',v8,-] (test/flowgraphbuilder/flowgraph_builder0199.js:4:15)
+    ->[block 2]
+  block 2:
+    node 17: begin-for-in[v8,v9] (test/flowgraphbuilder/flowgraph_builder0199.js:4:1)
+    ->[block 3]
+  block 3:
+    node 18: has-next[v9,v10] (test/flowgraphbuilder/flowgraph_builder0199.js:4:1)
+    node 19: if[v10](true-block:4,false-block:14) (test/flowgraphbuilder/flowgraph_builder0199.js:4:1)
+    ->[block 4,block 14]
+  block 4:
+    node 20: next-property[v9,v11] (test/flowgraphbuilder/flowgraph_builder0199.js:4:10)
+    node 21: write-variable[v11,'a']* (test/flowgraphbuilder/flowgraph_builder0199.js:4:10)
+    node 22: read-variable['z',v12,-] (test/flowgraphbuilder/flowgraph_builder0199.js:5:3)
+    node 23: read-variable['x',v14,-] (test/flowgraphbuilder/flowgraph_builder0199.js:5:8)
+    node 24: read-variable['a',v15,-] (test/flowgraphbuilder/flowgraph_builder0199.js:5:10)
+    node 25: read-property[v14,v15,v13] (test/flowgraphbuilder/flowgraph_builder0199.js:5:8)
+    node 26: <variable-non-null-undef>['x'] (test/flowgraphbuilder/flowgraph_builder0199.js:5:8)
+    node 27: +[v12,v13,v16] (test/flowgraphbuilder/flowgraph_builder0199.js:5:3)
+    node 28: write-variable[v16,'z']* (test/flowgraphbuilder/flowgraph_builder0199.js:5:3)
+    node 29: read-variable['z',v18,-] (test/flowgraphbuilder/flowgraph_builder0199.js:6:7)
+    node 30: constant[123456.0,v19] (test/flowgraphbuilder/flowgraph_builder0199.js:6:12)
+    node 31: ==[v18,v19,v17] (test/flowgraphbuilder/flowgraph_builder0199.js:6:7)
+    node 32: if[v17](true-block:5,false-block:7)* (test/flowgraphbuilder/flowgraph_builder0199.js:6:3)
+    ->[block 5,block 7] ~>[block 13]
+  block 5:
+    node 33: nop(break <DEFAULT>)* (test/flowgraphbuilder/flowgraph_builder0199.js:7:5)
+    ->[block 6] ~>[block 13]
+  block 6:
+    node 34: end-for-in(begin-node:17)* (test/flowgraphbuilder/flowgraph_builder0199.js:12:1)
+    ->[block 14]
+  block 7:
+    node 35: read-variable['z',v21,-] (test/flowgraphbuilder/flowgraph_builder0199.js:8:12)
+    node 36: constant[49.0,v22] (test/flowgraphbuilder/flowgraph_builder0199.js:8:17)
+    node 37: ==[v21,v22,v20] (test/flowgraphbuilder/flowgraph_builder0199.js:8:12)
+    node 38: if[v20](true-block:8,false-block:10)* (test/flowgraphbuilder/flowgraph_builder0199.js:8:8)
+    ->[block 8,block 10] ~>[block 13]
+  block 8:
+    node 39: nop(continue <DEFAULT>)* (test/flowgraphbuilder/flowgraph_builder0199.js:9:5)
+    ->[block 9] ~>[block 13]
+  block 9:
+    node 40: end-for-in(begin-node:17)* (test/flowgraphbuilder/flowgraph_builder0199.js:12:1)
+    ->[block 2]
+  block 10:
+    node 41: read-variable['z',v21,-] (test/flowgraphbuilder/flowgraph_builder0199.js:10:7)
+    node 42: constant[42.0,v22] (test/flowgraphbuilder/flowgraph_builder0199.js:10:12)
+    node 43: ==[v21,v22,v20] (test/flowgraphbuilder/flowgraph_builder0199.js:10:7)
+    node 44: if[v20](true-block:11,false-block:12)* (test/flowgraphbuilder/flowgraph_builder0199.js:10:3)
+    ->[block 11,block 12] ~>[block 13]
+  block 11:
+    node 45: read-variable['x',v24,-] (test/flowgraphbuilder/flowgraph_builder0199.js:11:12)
+    node 46: delete-property[v24,'c',-]* (test/flowgraphbuilder/flowgraph_builder0199.js:11:5)
+    ->[block 12] ~>[block 13]
+  block 12:
+    node 47: end-for-in(begin-node:17)* (test/flowgraphbuilder/flowgraph_builder0199.js:12:1)
+    ->[block 2] ~>[block 13]
+  block 13:
+    node 48: end-for-in(begin-node:17)* (test/flowgraphbuilder/flowgraph_builder0199.js:12:1)
+    ->[block 17]
+  block 14:
+    node 49: read-variable['TAJS_dumpValue',v24,v23] (test/flowgraphbuilder/flowgraph_builder0199.js:14:1)
+    node 50: read-variable['z',v25,-] (test/flowgraphbuilder/flowgraph_builder0199.js:14:16)
+    ->[block 15]
+  block 15:
+    node 51: call[v23,v24,v25,-]* (test/flowgraphbuilder/flowgraph_builder0199.js:14:1)
+    ->[block 16]
+  block 16: [exit-ordinary]
+    node 52: return[v1] (test/flowgraphbuilder/flowgraph_builder0199.js:1:1)
+    ->[]
+  block 17: [exit-exceptional]
+    node 53: exceptional-return (test/flowgraphbuilder/flowgraph_builder0199.js:1:1)
+    ->[]
+
+test/flowgraphbuilder/flowgraph_builder0199.js:5:3: [maybe] Conversion to number yields NaN
+test/flowgraphbuilder/flowgraph_builder0199.js:5:8: [maybe] Reading absent property (computed name)
+test/flowgraphbuilder/flowgraph_builder0199.js:14:1: [info] Abstract value: UInt|NaN

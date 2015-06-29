@@ -1,29 +1,32 @@
-fg2: <main> function()
+fg2: function()
   block 0: [entry]
     node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0096.js:1:1)
     ->[block 1]
   block 1:
     node 1: constant[true,v2] (test/flowgraphbuilder/flowgraph_builder0096.js:1:8)
-    node 2: if[v2](true-block:2,false-block:3) (test/flowgraphbuilder/flowgraph_builder0096.js:1:1)
-    ->[block 2,block 3]
+    node 2: if[v2](true-block:2,false-block:5) (test/flowgraphbuilder/flowgraph_builder0096.js:1:8)
+    ->[block 2,block 5]
   block 2:
     node 3: read-variable['x',v3,-] (test/flowgraphbuilder/flowgraph_builder0096.js:2:8)
-    node 4: if[v3](true-block:3,false-block:4) (test/flowgraphbuilder/flowgraph_builder0096.js:2:4)
+    node 4: if[v3](true-block:3,false-block:4)* (test/flowgraphbuilder/flowgraph_builder0096.js:2:4)
     ->[block 3,block 4]
   block 3:
-    node 5: constant[33.0,-]* (test/flowgraphbuilder/flowgraph_builder0096.js:7:1)
+    node 5: nop(break <DEFAULT>)* (test/flowgraphbuilder/flowgraph_builder0096.js:3:2)
     ->[block 5]
   block 4:
     node 6: constant[88.0,-]* (test/flowgraphbuilder/flowgraph_builder0096.js:4:4)
     ->[block 1]
-  block 5: [exit-ordinary]
-    node 7: return[v1] (test/flowgraphbuilder/flowgraph_builder0096.js:1:1)
+  block 5:
+    node 7: constant[33.0,-]* (test/flowgraphbuilder/flowgraph_builder0096.js:7:1)
+    ->[block 6]
+  block 6: [exit-ordinary]
+    node 8: return[v1] (test/flowgraphbuilder/flowgraph_builder0096.js:1:1)
     ->[]
-  block 6: [exit-exceptional]
-    node 8: exceptional-return (test/flowgraphbuilder/flowgraph_builder0096.js:1:1)
+  block 7: [exit-exceptional]
+    node 9: exceptional-return (test/flowgraphbuilder/flowgraph_builder0096.js:1:1)
     ->[]
 
 test/flowgraphbuilder/flowgraph_builder0096.js:2:8: [definite] ReferenceError, reading absent variable x
-test/flowgraphbuilder/flowgraph_builder0096.js:1:1: [definite] The conditional expression is always true
+test/flowgraphbuilder/flowgraph_builder0096.js:1:8: [definite] The conditional expression is always true
 test/flowgraphbuilder/flowgraph_builder0096.js:2:4: [definite] Unreachable code
 test/flowgraphbuilder/flowgraph_builder0096.js:1:1: [maybe] Uncaught exception, constructed at [test/flowgraphbuilder/flowgraph_builder0096.js:2:8]

@@ -12,6 +12,6 @@ function baz(z) {
 
 var t = baz(6);
 
-assert(t === 21);
-dumpValue(t);
+TAJS_assert(t === 21);
+TAJS_dumpValue(t);
 

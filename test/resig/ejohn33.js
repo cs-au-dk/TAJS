@@ -7,9 +7,9 @@ function Ninja(name){
 } 
  
 var ninja = new Ninja("John"); 
-assert( ninja.name == "John" ); 
-dumpValue(ninja.name);
+TAJS_assert( ninja.name == "John" ); 
+TAJS_dumpValue(ninja.name);
  
 ninja.changeName("Bob"); 
-assert( ninja.name == "Bob" );
-dumpValue(ninja.name);
+TAJS_assert( ninja.name == "Bob" );
+TAJS_dumpValue(ninja.name);

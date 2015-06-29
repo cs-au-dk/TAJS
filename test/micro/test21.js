@@ -17,10 +17,10 @@ var y3 = xxx.baz3;
 
 var z1 = foo1(-23);
 
-assert(y1 === 42); 
-assert(y2 === 43);
-assert(y3 === 44);
-assert(z1 === 100); 
+TAJS_assert(y1 === 42);
+TAJS_assert(y2 === 43);
+TAJS_assert(y3 === 44);
+TAJS_assert(z1 === 100);
 
-dumpValue(y1); 
-dumpValue(z1);
+TAJS_dumpValue(y1); 
+TAJS_dumpValue(z1);

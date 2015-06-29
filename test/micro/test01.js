@@ -8,4 +8,4 @@ var h = f;
 
 var result = h(a, "hello");
 
-assert(result == "hello-42");
+TAJS_assert(result == "hello-42");

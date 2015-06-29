@@ -1,11 +1,11 @@
 var obj = {}; 
 
-dumpValue(obj == false);
-dumpValue(obj == true);
-dumpValue(false == obj);
-dumpValue(true == obj);
+TAJS_dumpValue(obj == false);
+TAJS_dumpValue(obj == true);
+TAJS_dumpValue(false == obj);
+TAJS_dumpValue(true == obj);
 
-assert((obj == false) === false);
-assert((obj == true) === false);
-assert((false == obj) === false);
-assert((true == obj) === false);
+TAJS_assert((obj == false) === false);
+TAJS_assert((obj == true) === false);
+TAJS_assert((false == obj) === false);
+TAJS_assert((true == obj) === false);

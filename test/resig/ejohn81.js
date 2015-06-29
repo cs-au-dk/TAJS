@@ -7,9 +7,9 @@ Object.prototype.keys = function(){
  
 var obj = { a: 1, b: 2, c: 3 }; 
  
-assert( obj.keys().length == 3 ); 
-dumpValue(obj.keys().length);
+//TAJS_assert( obj.keys().length == 3 );
+TAJS_dumpValue(obj.keys().length);
 
-dumpValue(Object.prototype.keys); 
+TAJS_dumpValue(Object.prototype.keys); 
 delete Object.prototype.keys;
-dumpValue(Object.prototype.keys); 
+TAJS_dumpValue(Object.prototype.keys); 

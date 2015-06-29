@@ -1,6 +1,13 @@
-test/v8tests/var.js:28:1: [definite] ReferenceError, reading absent variable assertTrue
-test/v8tests/var.js:28:13: [definite] Unreachable code
-test/v8tests/var.js:30:18: [definite] The variable x is never used
-test/v8tests/var.js:31:18: [definite] The variable y is never used
-test/v8tests/var.js:36:18: [definite] The variable z is never used
-test/v8tests/var.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/var.js:28:1]
+test/v8tests/var.js:28:12: [definite] The conditional expression is always true
+test/v8tests/var.js:28:13: [definite] Variable x is null/undefined
+test/v8tests/var.js:29:12: [definite] The conditional expression is always true
+test/v8tests/var.js:29:13: [definite] Variable y is null/undefined
+test/v8tests/var.js:30:1: [definite] The conditional expression is always false
+test/v8tests/var.js:31:1: [definite] The conditional expression is always true
+test/v8tests/var.js:32:12: [definite] The conditional expression is always true
+test/v8tests/var.js:32:13: [definite] Variable x is null/undefined
+test/v8tests/var.js:35:12: [definite] The conditional expression is always true
+test/v8tests/var.js:35:13: [definite] Variable z is null/undefined
+test/v8tests/var.js:36:1: [definite] The conditional expression is always false
+test/v8tests/var.js:37:12: [definite] The conditional expression is always true
+test/v8tests/var.js:37:13: [definite] Variable z is null/undefined

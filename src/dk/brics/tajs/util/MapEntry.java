@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2013 Aarhus University
+ * Copyright 2009-2015 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,50 +23,50 @@ import java.util.Map.Entry;
  * Map entry.
  * Pair of a key and a value.
  */
-class MapEntry<K,V> implements Map.Entry<K,V> {
+class MapEntry<K, V> implements Map.Entry<K, V> {
 
-	private K key;
-	
-	private V value;
-	
-	/**
-	 * Constructs a new map entry.
-	 */
-	public MapEntry(K key, V value) {
-		this.key = key;
-		this.value = value;
-	}
-	
-	@Override
-	public K getKey() {
-		return key;
-	}
+    private K key;
 
-	@Override
-	public V getValue() {
-		return value;
-	}
+    private V value;
 
-	@Override
-	public V setValue(V value) {
-		V old = this.value;
-		this.value = value;
-		return old;
-	}
+    /**
+     * Constructs a new map entry.
+     */
+    public MapEntry(K key, V value) {
+        this.key = key;
+        this.value = value;
+    }
 
-	@Override
-	public boolean equals(Object obj) {
-		if (obj == this)
-			return true;
-		if (!(obj instanceof Entry<?,?>))
-			return false;
-		Entry<?,?> e = (Entry<?,?>)obj;
-		return (key==null ? e.getKey()==null : key.equals(e.getKey())) 
-		&& (value==null ? e.getValue()==null : value.equals(e.getValue()));
-	}
+    @Override
+    public K getKey() {
+        return key;
+    }
 
-	@Override
-	public int hashCode() {
-		return (key==null ? 0 : key.hashCode()) ^ (value == null ? 0 : value.hashCode());
-	}
+    @Override
+    public V getValue() {
+        return value;
+    }
+
+    @Override
+    public V setValue(V value) {
+        V old = this.value;
+        this.value = value;
+        return old;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this)
+            return true;
+        if (!(obj instanceof Entry<?, ?>))
+            return false;
+        Entry<?, ?> e = (Entry<?, ?>) obj;
+        return (key == null ? e.getKey() == null : key.equals(e.getKey()))
+                && (value == null ? e.getValue() == null : value.equals(e.getValue()));
+    }
+
+    @Override
+    public int hashCode() {
+        return (key == null ? 0 : key.hashCode()) ^ (value == null ? 0 : value.hashCode());
+    }
 }

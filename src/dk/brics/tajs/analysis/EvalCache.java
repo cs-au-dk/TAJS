@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2013 Aarhus University
+ * Copyright 2009-2015 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,12 +16,12 @@
 
 package dk.brics.tajs.analysis;
 
-import static dk.brics.tajs.util.Collections.newMap;
+import dk.brics.tajs.flowgraph.FlowGraphFragment;
+import dk.brics.tajs.solver.NodeAndContext;
 
 import java.util.Map;
 
-import dk.brics.tajs.flowgraph.FlowGraphFragment;
-import dk.brics.tajs.solver.NodeAndContext;
+import static dk.brics.tajs.util.Collections.newMap;
 
 /**
  * Cache for the unevalizer.
@@ -29,28 +29,28 @@ import dk.brics.tajs.solver.NodeAndContext;
 public class EvalCache {
 
     /**
-     * A map from "call sites" to entries, where the call site is identified by the call node and context.
+     * A map from call sites to entries, where the call site is identified by the call node and context.
      */
-	private Map<NodeAndContext<Context>, FlowGraphFragment> cache;
-	
-	/**
-	 * Constructs a new uneval cache.
-	 */
-	public EvalCache() {
-		cache = newMap();
-	}
-	
+    private Map<NodeAndContext<Context>, FlowGraphFragment> cache;
+
+    /**
+     * Constructs a new unevalizer cache.
+     */
+    public EvalCache() {
+        cache = newMap();
+    }
+
     /**
      * Stores the abstract value and associated code in the cache.
      */
-	public void setCode(NodeAndContext<Context> nc, FlowGraphFragment extension) {
-		cache.put(nc, extension);
-	}
-	
+    public void setCode(NodeAndContext<Context> nc, FlowGraphFragment extension) {
+        cache.put(nc, extension);
+    }
+
     /**
-     * Returns the entry_block, or null if not found.
+     * Returns the flow graph fragment, or null if not found.
      */
-	public FlowGraphFragment getCode(NodeAndContext<Context> nc) {
-		return cache.get(nc);
-	}
+    public FlowGraphFragment getCode(NodeAndContext<Context> nc) {
+        return cache.get(nc);
+    }
 }

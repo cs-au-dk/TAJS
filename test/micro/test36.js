@@ -2,7 +2,7 @@ this.foo = 42;
 function q() {
 	foo = "sdf";
 }
-dumpValue(foo);
+TAJS_dumpValue(foo);
 q();
-dumpValue(foo);
-assert(foo == "sdf");
+TAJS_dumpValue(foo);
+TAJS_assert(foo == "sdf");

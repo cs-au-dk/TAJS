@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2013 Aarhus University
+ * Copyright 2009-2015 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,14 +16,13 @@
 
 package dk.brics.tajs.analysis.dom;
 
-import java.util.Collection;
-import java.util.Set;
-
 import dk.brics.tajs.analysis.State;
-import dk.brics.tajs.htmlparser.DOMEventHelpers;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.util.Collections;
+
+import java.util.Collection;
+import java.util.Set;
 
 public class DOMEvents {
 
@@ -126,5 +125,4 @@ public class DOMEvents {
     public static void addUnloadEventHandler(State s, Collection<ObjectLabel> labels) {
         s.getExtras().addToMaySet(DOMRegistry.MaySets.UNLOAD_EVENT_HANDLERS.name(), labels);
     }
-
 }

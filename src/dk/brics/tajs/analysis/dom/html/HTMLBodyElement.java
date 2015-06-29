@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2013 Aarhus University
+ * Copyright 2009-2015 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -33,7 +33,9 @@ import static dk.brics.tajs.analysis.dom.DOMFunctions.createDOMProperty;
 public class HTMLBodyElement {
 
     public static ObjectLabel CONSTRUCTOR;
+
     public static ObjectLabel PROTOTYPE;
+
     public static ObjectLabel INSTANCES;
 
     public static void build(State s) {
@@ -66,7 +68,7 @@ public class HTMLBodyElement {
         createDOMProperty(s, INSTANCES, "link", Value.makeAnyStr());
         createDOMProperty(s, INSTANCES, "text", Value.makeAnyStr());
         createDOMProperty(s, INSTANCES, "vLink", Value.makeAnyStr());
-        
+
         s.multiplyObject(INSTANCES);
         INSTANCES = INSTANCES.makeSingleton().makeSummary();
 
@@ -75,7 +77,6 @@ public class HTMLBodyElement {
          */
         // No functions.
 
-        createDOMProperty(s, HTMLDocument.INSTANCES, "body", Value.makeObject(HTMLBodyElement.INSTANCES));
+        createDOMProperty(s, HTMLDocument.INSTANCES, "body", Value.makeObject(INSTANCES));
     }
-
 }

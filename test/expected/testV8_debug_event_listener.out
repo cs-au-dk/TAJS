@@ -1,6 +1,0 @@
-test/v8tests/debug-event-listener.js:30:9: [definite] ReferenceError, reading absent variable debug
-test/v8tests/debug-event-listener.js:30:9: [definite] Unreachable code
-test/v8tests/debug-event-listener.js:34:1: [definite] Unreachable function listener
-test/v8tests/debug-event-listener.js:50:2: [definite] Unreachable function f
-test/v8tests/debug-event-listener.js:63:1: [definite] Unreachable function a
-test/v8tests/debug-event-listener.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/debug-event-listener.js:30:9]

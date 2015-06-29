@@ -1,1 +1,1 @@
-dumpValue(f())
+TAJS_dumpValue(f())

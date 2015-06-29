@@ -18,21 +18,21 @@ var y = new g2();
 
 with (x) {
 	with (y) {
-		dumpState();
+		TAJS_dumpState();
 		v1 = v1 + "#";
 		v2 = v2 + "#";
 		w1 = w1 + "#";
 		w2 = w2 + "#";
 		var foo = 42;
-		dumpValue(v1);
-		dumpValue(v2);
-		dumpValue(w1);
-		dumpValue(w2);
-		dumpValue(foo);
+		TAJS_dumpValue(v1);
+		TAJS_dumpValue(v2);
+		TAJS_dumpValue(w1);
+		TAJS_dumpValue(w2);
+		TAJS_dumpValue(foo);
 	}
-	dumpState();
+	TAJS_dumpState();
 }
-dumpState();
-dumpValue(x.v1);
-dumpValue(y.w1);
-dumpValue(foo);
+TAJS_dumpState();
+TAJS_dumpValue(x.v1);
+TAJS_dumpValue(y.w1);
+TAJS_dumpValue(foo);

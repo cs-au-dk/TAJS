@@ -4,12 +4,12 @@ function make() {
 
 function f() {
 	make();
-	dumpValue(x.p);
+	TAJS_dumpValue(x.p);
 	make();
-	dumpValue(x.p);
+	TAJS_dumpValue(x.p);
 }
 
 var x = make();
 x.p = 42;
 f();
-dumpValue(x.p);
+TAJS_dumpValue(x.p);

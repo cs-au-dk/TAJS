@@ -9,7 +9,7 @@ Ninja.prototype.swingSword = function(){
   return this.swung; 
 }; 
  
-assert( ninjaA.swingSword() ); 
-assert( ninjaB.swingSword() );
-dumpValue(ninjaA.swingSword());
-dumpValue(ninjaB.swingSword());
+TAJS_assert( ninjaA.swingSword() ); 
+TAJS_assert( ninjaB.swingSword() );
+TAJS_dumpValue(ninjaA.swingSword());
+TAJS_dumpValue(ninjaB.swingSword());

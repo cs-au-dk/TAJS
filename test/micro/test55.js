@@ -1,3 +1,3 @@
 var b = {}
-dumpValue(b.xy);
-assert(b.xy === undefined);
+TAJS_dumpValue(b.xy);
+TAJS_assert(b.xy === undefined);

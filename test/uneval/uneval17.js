@@ -5,5 +5,5 @@ function f(x) {
 	return eval(x);
 }
 
-dumpValue(f("horse"))
-dumpValue(f("cow"))
+TAJS_dumpValue(f("horse"))
+TAJS_dumpValue(f("cow"))

@@ -9,4 +9,4 @@ function Rectangle() {
 new Polygon();
 var rec1 = new Rectangle();
 
-dumpObject(rec1);
+TAJS_dumpObject(rec1);

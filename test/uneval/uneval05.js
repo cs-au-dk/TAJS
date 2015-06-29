@@ -1,2 +1,2 @@
 eval("if(") //invalid syntax
-dumpValue("HEP") //unreachble code
+TAJS_dumpValue("HEP") //unreachble code

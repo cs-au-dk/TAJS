@@ -1,2 +1,2 @@
 x = undefined
-dumpValue(undefined)
+TAJS_dumpValue(undefined)

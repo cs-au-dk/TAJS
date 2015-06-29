@@ -1,4 +1,4 @@
-fg2: <main> function()
+fg2: function()
   block 0: [entry]
     node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0058.js:1:1)
     node 1: function-decl[function f(),-] (test/flowgraphbuilder/flowgraph_builder0058.js:1:1)
@@ -27,10 +27,10 @@ function f()
     node 9: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0058.js:1:1)
     ->[block 8]
   block 8: [exit-ordinary]
-    node 10: return[v1] (test/flowgraphbuilder/flowgraph_builder0058.js:1:14)
+    node 10: return[v1] (test/flowgraphbuilder/flowgraph_builder0058.js:1:15)
     ->[]
   block 9: [exit-exceptional]
-    node 11: exceptional-return (test/flowgraphbuilder/flowgraph_builder0058.js:1:14)
+    node 11: exceptional-return (test/flowgraphbuilder/flowgraph_builder0058.js:1:15)
     ->[]
 
 test/flowgraphbuilder/flowgraph_builder0058.js:2:1: [definite] The conditional expression is always false

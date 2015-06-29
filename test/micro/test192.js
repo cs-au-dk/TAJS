@@ -6,4 +6,4 @@ function f(x) {
 }
 
 var t = f(10);
-dumpState();
+TAJS_dumpState();

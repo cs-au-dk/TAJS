@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2013 Aarhus University
+ * Copyright 2009-2015 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,70 +24,71 @@ import dk.brics.tajs.flowgraph.Function;
  * Synchronizer for solver events.
  */
 abstract public class SolverSynchronizer {
-	
-	/**
-	 * If set, single-stepping is enabled. 
-	 */
-	private boolean single_step;
-	
-	/**
-	 * Constructs a new synchronizer.
-	 */
-	public SolverSynchronizer() {}
-	
-	/**
-	 * Checks whether single-stepping is enabled.
-	 */
-	public synchronized boolean isSingleStep() {
-		return single_step;
-	}
-	
-	/**
-	 * Enable/disable single-stepping.
-	 */
-	public synchronized void setSingleStep(boolean enable) {
-		this.single_step = enable;
-	}
 
-	/**
-	 * Waits for notification if single-stepping is enabled.
-	 */
-	synchronized void waitIfSingleStep() {
-		if (single_step)
-			try {
-				waiting();
-				wait(); // TODO: wrap in while loop to check condition
-			} catch (InterruptedException e) {
-				// ignore
-			}
-	}
-	
-	/**
-	 * Sends a notification to run/single-step.
-	 */
-	public synchronized void notifyRunOrSingleStep() {
-		notify();
-	}
-	
-	/**
-	 * Callback, invoked when initialing wait.
-	 */
-	abstract public void waiting();
+    /**
+     * If set, single-stepping is enabled.
+     */
+    private boolean single_step;
 
-	/**
-	 * Callback, invoked when flow graph has been constructed.
-	 */
+    /**
+     * Constructs a new synchronizer.
+     */
+    public SolverSynchronizer() {
+    }
+
+    /**
+     * Checks whether single-stepping is enabled.
+     */
+    public synchronized boolean isSingleStep() {
+        return single_step;
+    }
+
+    /**
+     * Enable/disable single-stepping.
+     */
+    public synchronized void setSingleStep(boolean enable) {
+        single_step = enable;
+    }
+
+    /**
+     * Waits for notification if single-stepping is enabled.
+     */
+    synchronized void waitIfSingleStep() {
+        if (single_step)
+            try {
+                waiting();
+                wait(); // TODO: wrap in while loop to check condition (to avoid spurious notifications)
+            } catch (InterruptedException e) {
+                // ignore
+            }
+    }
+
+    /**
+     * Sends a notification to run/single-step.
+     */
+    public synchronized void notifyRunOrSingleStep() {
+        notify();
+    }
+
+    /**
+     * Callback, invoked when initialing wait.
+     */
+    abstract public void waiting();
+
+    /**
+     * Callback, invoked when flow graph has been constructed.
+     */
     abstract public void setFlowGraph(FlowGraph g);
 
     /**
      * Callback, invoked when selecting a block for processing.
      */
-    abstract public  void markActiveBlock(BasicBlock b);
+    abstract public void markActiveBlock(BasicBlock b);
 
     /**
      * Callback, invoked when a block is added to the worklist.
      */
-    abstract public  void markPendingBlock(BasicBlock b);
+    abstract public void markPendingBlock(BasicBlock b);
 
     /**
      * Callback, invoked when a call edge is added.

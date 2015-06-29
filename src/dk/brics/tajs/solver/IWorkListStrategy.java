@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2013 Aarhus University
+ * Copyright 2009-2015 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,32 +23,32 @@ import dk.brics.tajs.flowgraph.BasicBlock;
  */
 public interface IWorkListStrategy<ContextType extends IContext<?>> {
 
-	/**
-	 * Compares two work list entries.
-	 * A negative value means that the first has higher priority than the second,
-	 * a positive value means that the second has higher priority than the first.
-	 * This must be a stable comparison.
-	 */
-	public int compare(IEntry<ContextType> e1, IEntry<ContextType> e2);
-	
-	/**
-	 * Interface for work list entries.
-	 */
-	public interface IEntry<ContextType extends IContext<?>> {
-		
-		/**
-		 * Returns the block.
-		 */
-		public BasicBlock getBlock();
-		
-		/**
-		 * Returns the context.
-		 */
-		public ContextType getContext();
-		
-		/**
-		 * Returns the entry serial number.
-		 */
-		public int getSerial();
-	}
+    /**
+     * Compares two work list entries.
+     * A negative value means that the first has higher priority than the second,
+     * a positive value means that the second has higher priority than the first.
+     * This must be a stable comparison.
+     */
+    int compare(IEntry<ContextType> e1, IEntry<ContextType> e2);
+
+    /**
+     * Interface for work list entries.
+     */
+    interface IEntry<ContextType extends IContext<?>> {
+
+        /**
+         * Returns the block.
+         */
+        BasicBlock getBlock();
+
+        /**
+         * Returns the context.
+         */
+        ContextType getContext();
+
+        /**
+         * Returns the entry serial number.
+         */
+        int getSerial();
+    }
 }

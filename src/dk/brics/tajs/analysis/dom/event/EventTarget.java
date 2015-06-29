@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2013 Aarhus University
+ * Copyright 2009-2015 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,10 +16,6 @@
 
 package dk.brics.tajs.analysis.dom.event;
 
-import static dk.brics.tajs.analysis.dom.DOMFunctions.createDOMFunction;
-
-import org.apache.log4j.Logger;
-
 import dk.brics.tajs.analysis.Conversion;
 import dk.brics.tajs.analysis.FunctionCalls;
 import dk.brics.tajs.analysis.NativeFunctions;
@@ -32,7 +28,9 @@ import dk.brics.tajs.analysis.dom.DOMWindow;
 import dk.brics.tajs.analysis.dom.core.DOMNode;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.solver.Message.Severity;
-import dk.brics.tajs.util.AnalysisException;
+import org.apache.log4j.Logger;
+
+import static dk.brics.tajs.analysis.dom.DOMFunctions.createDOMFunction;
 
 /**
  * The EventTarget interface is implemented by all Nodes in an implementation
@@ -43,71 +41,68 @@ import dk.brics.tajs.util.AnalysisException;
  */
 public class EventTarget {
 
-	private static Logger logger = Logger.getLogger(EventTarget.class); 
+    public static void build(State s) {
+        // Event target has no native object... see class comment.
 
-	public static void build(State s) {
-		// Event target has no native object... see class comment.
+        /*
+         * Properties.
+         */
+        // No properties.
 
-		/*
-		 * Properties.
-		 */
-		// No properties.
+        /*
+         * Functions.
+         */
+        createDOMFunction(s, DOMNode.PROTOTYPE, DOMObjects.EVENT_TARGET_ADD_EVENT_LISTENER, "addEventListener", 3);
+        createDOMFunction(s, DOMNode.PROTOTYPE, DOMObjects.EVENT_TARGET_REMOVE_EVENT_LISTENER, "removeEventListener", 3);
+        createDOMFunction(s, DOMNode.PROTOTYPE, DOMObjects.EVENT_TARGET_DISPATCH_EVENT, "dispatchEvent", 1);
 
-		/*
-		 * Functions.
-		 */
-		createDOMFunction(s, DOMNode.PROTOTYPE, DOMObjects.EVENT_TARGET_ADD_EVENT_LISTENER, "addEventListener", 3);
-		createDOMFunction(s, DOMNode.PROTOTYPE, DOMObjects.EVENT_TARGET_REMOVE_EVENT_LISTENER, "removeEventListener", 3);
-		createDOMFunction(s, DOMNode.PROTOTYPE, DOMObjects.EVENT_TARGET_DISPATCH_EVENT, "dispatchEvent", 1);
+        // DOM LEVEL 0
+        createDOMFunction(s, DOMWindow.WINDOW, DOMObjects.WINDOW_ADD_EVENT_LISTENER, "addEventListener", 3);
+        createDOMFunction(s, DOMWindow.WINDOW, DOMObjects.WINDOW_REMOVE_EVENT_LISTENER, "removeEventListener", 3);
+    }
 
-		// DOM LEVEL 0
-		createDOMFunction(s, DOMWindow.WINDOW, DOMObjects.WINDOW_ADD_EVENT_LISTENER, "addEventListener", 3);
-		createDOMFunction(s, DOMWindow.WINDOW, DOMObjects.WINDOW_REMOVE_EVENT_LISTENER, "removeEventListener", 3);
-	}
+    public static Value evaluate(DOMObjects nativeObject, FunctionCalls.CallInfo call, State s, Solver.SolverInterface c) {
+        switch (nativeObject) {
+        /*
+         * Events added with useCapture = true must be removed
+         * separately from events added with useCapture = false. Model this?
+         */
+            case EVENT_TARGET_ADD_EVENT_LISTENER:
+            case WINDOW_ADD_EVENT_LISTENER: {
+                NativeFunctions.expectParameters(nativeObject, call, c, 3, 3);
+                Value type = Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
+                Value function = NativeFunctions.readParameter(call, s, 1);
+            /* Value useCapture =*/
+                Conversion.toBoolean(NativeFunctions.readParameter(call, s, 2));
+                if (type.isMaybeSingleStr()) {
+                    DOMEvents.addEventHandler(s, type.getStr(), function);
+                } else {
+                    DOMEvents.addUnknownEventHandler(s, function.getObjectLabels());
+                }
+                return Value.makeUndef();
+            }
+            case EVENT_TARGET_REMOVE_EVENT_LISTENER:
+            case WINDOW_REMOVE_EVENT_LISTENER: {
+                NativeFunctions.expectParameters(nativeObject, call, c, 3, 3);
+                Value type = Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
+                Value function = DOMConversion.toEventHandler(NativeFunctions.readParameter(call, s, 1), c);
+            /* Value useCapture =*/
+                Conversion.toBoolean(NativeFunctions.readParameter(call, s, 2));
+                // FIXME: testUneval29 triggers this message.
 
-	public static Value evaluate(DOMObjects nativeObject, FunctionCalls.CallInfo call, State s, Solver.SolverInterface c) {
-		switch (nativeObject) {
-		/*
-		 * Events added with useCapture = true must be removed
-		 * separately from events added with useCapture = false. Model this?
-		 */
-		case EVENT_TARGET_ADD_EVENT_LISTENER:
-		case WINDOW_ADD_EVENT_LISTENER: {
-			NativeFunctions.expectParameters(nativeObject, call, c, 3, 3);
-			Value type = Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
-			Value function = NativeFunctions.readParameter(call, s, 1);
-			/* Value useCapture =*/
-			Conversion.toBoolean(NativeFunctions.readParameter(call, s, 2));
-			if (type.isMaybeSingleStr()) {
-				DOMEvents.addEventHandler(s, type.getStr(), function);
-			} else {
-				DOMEvents.addUnknownEventHandler(s, function.getObjectLabels());
-			}
-			return Value.makeUndef();
-		}
-		case EVENT_TARGET_REMOVE_EVENT_LISTENER:
-		case WINDOW_REMOVE_EVENT_LISTENER: {
-			NativeFunctions.expectParameters(nativeObject, call, c, 3, 3);
-			Value type = Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
-			Value function = DOMConversion.toEventHandler(NativeFunctions.readParameter(call, s, 1), c);
-			/* Value useCapture =*/	Conversion.toBoolean(NativeFunctions.readParameter(call, s, 2));
-			// FIXME: testUneval29 triggers this message.
-
-			// sound to ignore these functions
-			// c.getMonitoring().addMessage(call.getSourceNode(), Severity.HIGH, nativeObject + " not implemented");
-			return Value.makeUndef();
-
-		}
-		case EVENT_TARGET_DISPATCH_EVENT: {
-			NativeFunctions.expectParameters(nativeObject, call, c, 1, 1);
-			c.getMonitoring().addMessage(call.getSourceNode(), Severity.HIGH, nativeObject + " not implemented");
-			return Value.makeUndef();
-		}
-		default: {
-			c.getMonitoring().addMessage(call.getSourceNode(), Severity.HIGH, nativeObject + " not implemented");
-			return Value.makeUndef();
-		}
-		}
-	}
-
+                // sound to ignore these functions
+                // c.getMonitoring().addMessage(call.getSourceNode(), Severity.HIGH, nativeObject + " not implemented");
+                return Value.makeUndef();
+            }
+            case EVENT_TARGET_DISPATCH_EVENT: {
+                NativeFunctions.expectParameters(nativeObject, call, c, 1, 1);
+                c.getMonitoring().addMessage(call.getSourceNode(), Severity.HIGH, nativeObject + " not implemented");
+                return Value.makeUndef();
+            }
+            default: {
+                c.getMonitoring().addMessage(call.getSourceNode(), Severity.HIGH, nativeObject + " not implemented");
+                return Value.makeUndef();
+            }
+        }
+    }
 }

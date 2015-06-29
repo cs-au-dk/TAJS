@@ -3,4 +3,4 @@ var foo2 = function bar2() {
 }
 
 var xxx = new foo2();
-dumpValue(xxx); // * or @ ?
+TAJS_dumpValue(xxx); // * or @ ?

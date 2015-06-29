@@ -1,4 +1,4 @@
 var x = {a:777};
 var y = x.a;
-var foo = dumpValue;
+var foo = TAJS_dumpValue;
 foo(y);

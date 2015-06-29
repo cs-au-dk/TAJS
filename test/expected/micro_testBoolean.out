@@ -1,4 +1,4 @@
-test/micro/testBoolean.js:5:11: [definite] Reading absent property xy
+test/micro/testBoolean.js:5:16: [definite] Reading absent property xy
 test/micro/testBoolean.js:20:1: [definite] Unreachable code
 test/micro/testBoolean.js:24:5: [definite] The variable i is never used
 test/micro/testBoolean.js:19:1: [maybe] TypeError, native function Boolean.prototype.toString called on invalid object kind, expected Boolean

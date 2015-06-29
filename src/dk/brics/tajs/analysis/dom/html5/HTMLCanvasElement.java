@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2013 Aarhus University
+ * Copyright 2009-2015 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -33,7 +33,9 @@ import static dk.brics.tajs.analysis.dom.DOMFunctions.createDOMProperty;
 public class HTMLCanvasElement {
 
     public static ObjectLabel CONSTRUCTOR;
+
     public static ObjectLabel PROTOTYPE;
+
     public static ObjectLabel INSTANCES;
 
     public static void build(State s) {
@@ -52,7 +54,7 @@ public class HTMLCanvasElement {
         s.newObject(PROTOTYPE);
         createDOMFunction(s, PROTOTYPE, DOMObjects.HTMLCANVASELEMENT_GET_CONTEXT, "getContext", 1);
         createDOMFunction(s, PROTOTYPE, DOMObjects.HTMLCANVASELEMENT_TO_DATA_URL, "toDataURL", 1);
-        createDOMProperty(s, CanvasRenderingContext2D.CONTEXT2D_PROTOTYPE, "canvas", Value.makeObject(HTMLCanvasElement.CONSTRUCTOR));
+        createDOMProperty(s, CanvasRenderingContext2D.CONTEXT2D_PROTOTYPE, "canvas", Value.makeObject(CONSTRUCTOR));
         s.writeInternalPrototype(PROTOTYPE, Value.makeObject(HTMLElement.ELEMENT_PROTOTYPE));
 
         // Instances Object
@@ -87,7 +89,6 @@ public class HTMLCanvasElement {
     }
      */
 
-
     public static Value evaluate(DOMObjects nativeObject, FunctionCalls.CallInfo call, State s, Solver.SolverInterface c) {
         switch (nativeObject) {
             case HTMLCANVASELEMENT_GET_CONTEXT: {
@@ -104,5 +105,4 @@ public class HTMLCanvasElement {
             }
         }
     }
-
 }

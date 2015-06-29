@@ -10,4 +10,4 @@ function h() {
 }
 
 h();
-dumpValue(x); // expected: true
+TAJS_dumpValue(x); // expected: true

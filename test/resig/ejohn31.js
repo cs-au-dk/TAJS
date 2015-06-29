@@ -9,10 +9,10 @@ function Ninja(){
 } 
  
 var ninja = new Ninja(); 
-assert( ninja.swingSword() ); 
-assert( ninja.swung ); 
-dumpValue(ninja.swung);
+TAJS_assert( ninja.swingSword() ); 
+TAJS_assert( ninja.swung ); 
+TAJS_dumpValue(ninja.swung);
  
 var ninjaB = new Ninja(); 
-assert( !ninjaB.swung );
-dumpValue(ninjaB.swung);
+TAJS_assert( !ninjaB.swung );
+TAJS_dumpValue(ninjaB.swung);

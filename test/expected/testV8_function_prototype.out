@@ -1,14 +1,12 @@
-test/v8tests/function-prototype.js:47:1: [definite] ReferenceError, reading absent variable assertEquals
+test/v8tests/function-prototype.js:47:14: [definite] Reading absent property __proto__
+test/v8tests/function-prototype.js:50:32: [definite] Reading absent property __proto__
+test/v8tests/function-prototype.js:55:14: [definite] Reading absent property __proto__
+TAJS-dynamic-code(test/v8tests/function-prototype.js:94:11):1:13: [definite] Unreachable function
 test/v8tests/function-prototype.js:31:1: [definite] Unreachable function TestNonObjectPrototype
 test/v8tests/function-prototype.js:32:3: [definite] Unreachable function F
-test/v8tests/function-prototype.js:46:5: [definite] The variable f is never used
-test/v8tests/function-prototype.js:47:14: [definite] Unreachable code
-test/v8tests/function-prototype.js:62:1: [definite] Unreachable function GetPrototypeOf
-test/v8tests/function-prototype.js:68:5: [definite] The variable p is never used
 test/v8tests/function-prototype.js:73:1: [definite] Unreachable function NoPrototypeYet
 test/v8tests/function-prototype.js:77:1: [definite] Unreachable function NonObjectPrototype
 test/v8tests/function-prototype.js:81:1: [definite] Unreachable function NoInitialMap
-test/v8tests/function-prototype.js:94:5: [definite] The variable foo is never used
-test/v8tests/function-prototype.js:95:5: [definite] The variable result is never used
-test/v8tests/function-prototype.js:96:10: [definite] The variable n is never used
-test/v8tests/function-prototype.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/function-prototype.js:47:1]
+test/v8tests/function-prototype.js:63:10: [maybe] Reading absent property prototype
+test/v8tests/function-prototype.js:63:10: [maybe] Converting primitive number to object
+test/v8tests/function-prototype.js:63:10: [maybe] The variable f has values with different types

@@ -11,4 +11,4 @@ var x = {};
 
 x[a] = "hello";
 
-dumpObject(x);
+TAJS_dumpObject(x);

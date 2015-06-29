@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2013 Aarhus University
+ * Copyright 2009-2015 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,33 +21,33 @@ package dk.brics.tajs.lattice;
  */
 public interface Null {
 
-	/**
-	 * Returns true if this value is maybe null.
-	 */
-	public boolean isMaybeNull();
+    /**
+     * Returns true if this value is maybe null.
+     */
+    boolean isMaybeNull();
 
-	/**
-	 * Returns true if this value is definitely not null.
-	 */
-	public boolean isNotNull(); 
-	
-	/**
-	 * Returns true if this value is maybe some other than null.
-	 */
-	public boolean isMaybeOtherThanNull();
-	
-	/**
-	 * Constructs a value as the join of this value and maybe null.
-	 */
-	public Value joinNull();
+    /**
+     * Returns true if this value is definitely not null.
+     */
+    boolean isNotNull();
 
-	/**
-	 * Constructs a value as a copy of this value but definitely not null.
-	 */
-	public Value restrictToNotNull();
-	
-	/**
-	 * Constructs a value as a copy of this value but only considering its null facet.
-	 */
-	public Value restrictToNull();
+    /**
+     * Returns true if this value is maybe some other than null.
+     */
+    boolean isMaybeOtherThanNull();
+
+    /**
+     * Constructs a value as the join of this value and null.
+     */
+    Value joinNull();
+
+    /**
+     * Constructs a value as a copy of this value but definitely not null.
+     */
+    Value restrictToNotNull();
+
+    /**
+     * Constructs a value as a copy of this value but only considering its null facet.
+     */
+    Value restrictToNull();
 }

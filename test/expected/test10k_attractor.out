@@ -1,318 +1,276 @@
-test/10k/attractor.tidy.html:139:5: [definite] The conditional expression is always false
-test/10k/attractor.tidy.html:139:9: [definite] The conditional expression is always false
-test/10k/attractor.tidy.html:115:1: [definite] The variable h is never used
-test/10k/attractor.tidy.html:203:1: [definite] The variable size is never used
-test/10k/attractor.tidy.html:337:39: [definite] Reading absent property (computed name)
-test/10k/attractor.tidy.html:337:55: [definite] Reading absent property (computed name)
-test/10k/attractor.tidy.html:422:21: [definite] Unreachable function
-test/10k/attractor.tidy.html:425:22: [definite] Unreachable function
-test/10k/attractor.tidy.html:432:2: [definite] The variable event is never used
-test/10k/attractor.tidy.html:93:12: [maybe] TypeError, accessing property of null/undefined
-test/10k/attractor.tidy.html:93:12: [maybe] TypeError, call to non-function
-test/10k/attractor.tidy.html:135:45: [maybe] TypeError, accessing property of null/undefined
-test/10k/attractor.tidy.html:141:29: [maybe] RangeError, invalid value of array length
-test/10k/attractor.tidy.html:165:43: [maybe] TypeError, accessing property of null/undefined
-test/10k/attractor.tidy.html:186:47: [maybe] TypeError, accessing property of null/undefined
-test/10k/attractor.tidy.html:205:51: [maybe] TypeError, accessing property of null/undefined
-test/10k/attractor.tidy.html:211:20: [maybe] RangeError, invalid value of array length
-test/10k/attractor.tidy.html:267:34: [maybe] TypeError, accessing property of null/undefined
-test/10k/attractor.tidy.html:328:27: [maybe] TypeError, accessing property of null/undefined
-test/10k/attractor.tidy.html:334:20: [maybe] TypeError, accessing property of null/undefined
-test/10k/attractor.tidy.html:343:23: [maybe] TypeError, accessing property of null/undefined
-test/10k/attractor.tidy.html:368:31: [maybe] TypeError, accessing property of null/undefined
-test/10k/attractor.tidy.html:369:31: [maybe] TypeError, accessing property of null/undefined
-test/10k/attractor.tidy.html:387:5: [maybe] TypeError, non-HTMLImageElement or non-HTMLCanvasElement as argument to drawImage
-test/10k/attractor.tidy.html:405:5: [maybe] TypeError, accessing property of null/undefined
-test/10k/attractor.tidy.html:415:5: [maybe] TypeError, accessing property of null/undefined
-test/10k/attractor.tidy.html:422:5: [maybe] TypeError, accessing property of null/undefined
-test/10k/attractor.tidy.html:425:5: [maybe] TypeError, accessing property of null/undefined
-test/10k/attractor.tidy.html:93:12: [maybe] Reading absent property getContext
-test/10k/attractor.tidy.html:135:45: [maybe] Reading absent property width
-test/10k/attractor.tidy.html:135:65: [maybe] Reading absent property height
-test/10k/attractor.tidy.html:165:43: [maybe] Reading absent property width
-test/10k/attractor.tidy.html:165:62: [maybe] Reading absent property height
-test/10k/attractor.tidy.html:186:47: [maybe] Reading absent property width
-test/10k/attractor.tidy.html:186:65: [maybe] Reading absent property height
-test/10k/attractor.tidy.html:205:51: [maybe] Reading absent property width
-test/10k/attractor.tidy.html:205:74: [maybe] Reading absent property height
-test/10k/attractor.tidy.html:81: [maybe] Uncaught exception, constructed at [test/10k/attractor.tidy.html:93:12, test/10k/attractor.tidy.html:135:45, test/10k/attractor.tidy.html:141:29, test/10k/attractor.tidy.html:165:43, test/10k/attractor.tidy.html:186:47, test/10k/attractor.tidy.html:205:51, test/10k/attractor.tidy.html:211:20, test/10k/attractor.tidy.html:267:34, test/10k/attractor.tidy.html:328:27, test/10k/attractor.tidy.html:334:20, test/10k/attractor.tidy.html:343:23, test/10k/attractor.tidy.html:368:31, test/10k/attractor.tidy.html:369:31, test/10k/attractor.tidy.html:405:5, test/10k/attractor.tidy.html:415:5, test/10k/attractor.tidy.html:422:5, test/10k/attractor.tidy.html:425:5]
-test/10k/attractor.tidy.html:86:83: [maybe] Converting primitive string to object
-test/10k/attractor.tidy.html:87:37: [maybe] Converting primitive string to object
-test/10k/attractor.tidy.html:87:37: [maybe] Reading absent property (computed name)
-test/10k/attractor.tidy.html:106:13: [maybe] Converting primitive string to object
-test/10k/attractor.tidy.html:106:23: [maybe] Converting primitive number to object
-test/10k/attractor.tidy.html:113:28: [maybe] The variable h has values with different types
-test/10k/attractor.tidy.html:113:32: [maybe] The variable h has values with different types
-test/10k/attractor.tidy.html:116:21: [maybe] Conversion from string to number yields NaN
-test/10k/attractor.tidy.html:116:21: [maybe] Conversion to number yields NaN
-test/10k/attractor.tidy.html:116:21: [maybe] The variable w has values with different types
-test/10k/attractor.tidy.html:118:12: [maybe] Converting primitive number to object
-test/10k/attractor.tidy.html:118:12: [maybe] Reading absent property (computed name)
-test/10k/attractor.tidy.html:118:12: [maybe] The variable p has values with different types
-test/10k/attractor.tidy.html:118:14: [maybe] Conversion from string to number yields NaN
-test/10k/attractor.tidy.html:118:19: [maybe] Conversion to number yields NaN
-test/10k/attractor.tidy.html:118:19: [maybe] The variable x has values with different types
-test/10k/attractor.tidy.html:118:23: [maybe] Conversion from string to number yields NaN
-test/10k/attractor.tidy.html:118:23: [maybe] Conversion to number yields NaN
-test/10k/attractor.tidy.html:118:23: [maybe] The variable y has values with different types
-test/10k/attractor.tidy.html:118:27: [maybe] The variable w has values with different types
-test/10k/attractor.tidy.html:123:21: [maybe] The variable h has values with different types
-test/10k/attractor.tidy.html:124:25: [maybe] The variable w has values with different types
-test/10k/attractor.tidy.html:125:19: [maybe] Reading absent property (computed name)
-test/10k/attractor.tidy.html:126:24: [maybe] Conversion to number yields NaN
-test/10k/attractor.tidy.html:126:24: [maybe] Converting undefined to string
-test/10k/attractor.tidy.html:126:24: [maybe] The variable tot has values with different types
-test/10k/attractor.tidy.html:126:31: [maybe] Converting primitive number to object
-test/10k/attractor.tidy.html:126:31: [maybe] Reading absent property (computed name)
-test/10k/attractor.tidy.html:126:31: [maybe] The variable dst has values with different types
-test/10k/attractor.tidy.html:127:24: [maybe] Conversion to number yields NaN
-test/10k/attractor.tidy.html:127:24: [maybe] Converting undefined to string
-test/10k/attractor.tidy.html:127:24: [maybe] The variable tot has values with different types
-test/10k/attractor.tidy.html:127:31: [maybe] Converting primitive number to object
-test/10k/attractor.tidy.html:127:31: [maybe] Reading absent property (computed name)
-test/10k/attractor.tidy.html:127:31: [maybe] The variable dst has values with different types
-test/10k/attractor.tidy.html:127:36: [maybe] Conversion from string to number yields NaN
-test/10k/attractor.tidy.html:127:36: [maybe] Conversion to number yields NaN
-test/10k/attractor.tidy.html:127:40: [maybe] The variable w has values with different types
-test/10k/attractor.tidy.html:128:33: [maybe] Conversion from string to number yields NaN
-test/10k/attractor.tidy.html:128:33: [maybe] Conversion to number yields NaN
-test/10k/attractor.tidy.html:128:33: [maybe] The variable tot has values with different types
-test/10k/attractor.tidy.html:128:40: [maybe] Converting primitive number to object
-test/10k/attractor.tidy.html:128:40: [maybe] Reading absent property (computed name)
-test/10k/attractor.tidy.html:128:40: [maybe] The variable dst has values with different types
-test/10k/attractor.tidy.html:128:45: [maybe] Conversion from string to number yields NaN
-test/10k/attractor.tidy.html:128:45: [maybe] Conversion to number yields NaN
-test/10k/attractor.tidy.html:128:49: [maybe] The variable w has values with different types
-test/10k/attractor.tidy.html:129:13: [maybe] Converting primitive number to object
-test/10k/attractor.tidy.html:129:13: [maybe] The variable dst has values with different types
-test/10k/attractor.tidy.html:129:30: [maybe] The variable tot has values with different types
-test/10k/attractor.tidy.html:137:14: [maybe] Conversion from string to number yields NaN
-test/10k/attractor.tidy.html:137:14: [maybe] Conversion to number yields NaN
-test/10k/attractor.tidy.html:137:36: [maybe] The variable width has values with different types
-test/10k/attractor.tidy.html:137:43: [maybe] The variable height has values with different types
-test/10k/attractor.tidy.html:137:57: [maybe] Conversion from string to number yields NaN
-test/10k/attractor.tidy.html:137:57: [maybe] Conversion to number yields NaN
-test/10k/attractor.tidy.html:137:79: [maybe] The variable width has values with different types
-test/10k/attractor.tidy.html:137:86: [maybe] The variable height has values with different types
-test/10k/attractor.tidy.html:141:10: [maybe] The variable TDATA has values with different types
-test/10k/attractor.tidy.html:141:35: [maybe] Conversion from string to number yields NaN
-test/10k/attractor.tidy.html:141:35: [maybe] Conversion to number yields NaN
-test/10k/attractor.tidy.html:141:35: [maybe] The variable width has values with different types
-test/10k/attractor.tidy.html:141:43: [maybe] The variable height has values with different types
-test/10k/attractor.tidy.html:142:20: [maybe] The variable TDATA has values with different types
-test/10k/attractor.tidy.html:142:27: [maybe] The variable width has values with different types
-test/10k/attractor.tidy.html:142:34: [maybe] The variable height has values with different types
-test/10k/attractor.tidy.html:145:21: [maybe] The variable height has values with different types
-test/10k/attractor.tidy.html:146:25: [maybe] The variable width has values with different types
-test/10k/attractor.tidy.html:147:19: [maybe] Conversion from string to number yields NaN
-test/10k/attractor.tidy.html:147:19: [maybe] Conversion from string to number yields NaN
-test/10k/attractor.tidy.html:147:19: [maybe] Conversion to number yields NaN
-test/10k/attractor.tidy.html:147:19: [maybe] Conversion to number yields NaN
-test/10k/attractor.tidy.html:147:19: [maybe] Conversion to number yields NaN
-test/10k/attractor.tidy.html:147:19: [maybe] Converting undefined to string
-test/10k/attractor.tidy.html:147:23: [maybe] The variable TDATA has values with different types
-test/10k/attractor.tidy.html:147:30: [maybe] The variable width has values with different types
-test/10k/attractor.tidy.html:147:37: [maybe] The variable height has values with different types
-test/10k/attractor.tidy.html:148:27: [maybe] The variable TDATA has values with different types
-test/10k/attractor.tidy.html:148:34: [maybe] The variable width has values with different types
-test/10k/attractor.tidy.html:148:41: [maybe] The variable height has values with different types
-test/10k/attractor.tidy.html:149:27: [maybe] The variable TDATA has values with different types
-test/10k/attractor.tidy.html:149:34: [maybe] The variable width has values with different types
-test/10k/attractor.tidy.html:149:41: [maybe] The variable height has values with different types
-test/10k/attractor.tidy.html:150:27: [maybe] The variable TDATA has values with different types
-test/10k/attractor.tidy.html:150:34: [maybe] The variable width has values with different types
-test/10k/attractor.tidy.html:150:41: [maybe] The variable height has values with different types
-test/10k/attractor.tidy.html:167:14: [maybe] Conversion from string to number yields NaN
-test/10k/attractor.tidy.html:167:14: [maybe] Conversion to number yields NaN
-test/10k/attractor.tidy.html:167:44: [maybe] The variable width has values with different types
-test/10k/attractor.tidy.html:167:51: [maybe] The variable height has values with different types
-test/10k/attractor.tidy.html:168:14: [maybe] Conversion from string to number yields NaN
-test/10k/attractor.tidy.html:168:14: [maybe] Conversion to number yields NaN
-test/10k/attractor.tidy.html:168:44: [maybe] The variable width has values with different types
-test/10k/attractor.tidy.html:168:51: [maybe] The variable height has values with different types
-test/10k/attractor.tidy.html:169:14: [maybe] Conversion from string to number yields NaN
-test/10k/attractor.tidy.html:169:14: [maybe] Conversion to number yields NaN
-test/10k/attractor.tidy.html:169:36: [maybe] The variable width has values with different types
-test/10k/attractor.tidy.html:169:43: [maybe] The variable height has values with different types
-test/10k/attractor.tidy.html:172:21: [maybe] The variable width has values with different types
-test/10k/attractor.tidy.html:173:25: [maybe] The variable height has values with different types
-test/10k/attractor.tidy.html:174:26: [maybe] Conversion from string to number yields NaN
-test/10k/attractor.tidy.html:174:26: [maybe] Conversion to number yields NaN
-test/10k/attractor.tidy.html:174:30: [maybe] The variable width has values with different types
-test/10k/attractor.tidy.html:175:17: [maybe] Conversion from string to number yields NaN
-test/10k/attractor.tidy.html:175:17: [maybe] Conversion to number yields NaN
-test/10k/attractor.tidy.html:175:17: [maybe] Reading absent property (computed name)
-test/10k/attractor.tidy.html:176:30: [maybe] Conversion from string to number yields NaN
-test/10k/attractor.tidy.html:176:30: [maybe] Conversion to number yields NaN
-test/10k/attractor.tidy.html:176:34: [maybe] Reading absent property (computed name)
-test/10k/attractor.tidy.html:177:34: [maybe] Conversion from string to number yields NaN
-test/10k/attractor.tidy.html:177:34: [maybe] Conversion to number yields NaN
-test/10k/attractor.tidy.html:177:38: [maybe] Reading absent property (computed name)
-test/10k/attractor.tidy.html:178:34: [maybe] Conversion from string to number yields NaN
-test/10k/attractor.tidy.html:178:34: [maybe] Conversion to number yields NaN
-test/10k/attractor.tidy.html:178:38: [maybe] Reading absent property (computed name)
-test/10k/attractor.tidy.html:188:26: [maybe] Conversion from string to number yields NaN
-test/10k/attractor.tidy.html:188:26: [maybe] Conversion to number yields NaN
-test/10k/attractor.tidy.html:188:26: [maybe] The variable w has values with different types
-test/10k/attractor.tidy.html:188:30: [maybe] The variable w has values with different types
-test/10k/attractor.tidy.html:188:34: [maybe] Conversion from string to number yields NaN
-test/10k/attractor.tidy.html:188:34: [maybe] Conversion to number yields NaN
-test/10k/attractor.tidy.html:188:34: [maybe] The variable h has values with different types
-test/10k/attractor.tidy.html:188:38: [maybe] The variable h has values with different types
-test/10k/attractor.tidy.html:189:20: [maybe] Conversion from string to number yields NaN
-test/10k/attractor.tidy.html:189:20: [maybe] Conversion to number yields NaN
-test/10k/attractor.tidy.html:189:20: [maybe] The variable w has values with different types
-test/10k/attractor.tidy.html:189:42: [maybe] The variable w has values with different types
-test/10k/attractor.tidy.html:190:20: [maybe] Conversion from string to number yields NaN
-test/10k/attractor.tidy.html:190:20: [maybe] Conversion to number yields NaN
-test/10k/attractor.tidy.html:190:20: [maybe] The variable h has values with different types
-test/10k/attractor.tidy.html:190:42: [maybe] The variable h has values with different types
-test/10k/attractor.tidy.html:191:20: [maybe] Conversion from string to number yields NaN
-test/10k/attractor.tidy.html:191:20: [maybe] Conversion to number yields NaN
-test/10k/attractor.tidy.html:191:20: [maybe] The variable w has values with different types
-test/10k/attractor.tidy.html:191:42: [maybe] The variable w has values with different types
-test/10k/attractor.tidy.html:192:20: [maybe] Conversion from string to number yields NaN
-test/10k/attractor.tidy.html:192:20: [maybe] Conversion to number yields NaN
-test/10k/attractor.tidy.html:192:20: [maybe] The variable h has values with different types
-test/10k/attractor.tidy.html:192:42: [maybe] The variable h has values with different types
-test/10k/attractor.tidy.html:193:19: [maybe] Conversion from string to number yields NaN
-test/10k/attractor.tidy.html:193:19: [maybe] Conversion to number yields NaN
-test/10k/attractor.tidy.html:193:44: [maybe] The variable sx has values with different types
-test/10k/attractor.tidy.html:193:48: [maybe] The variable sy has values with different types
-test/10k/attractor.tidy.html:193:52: [maybe] The variable ex has values with different types
-test/10k/attractor.tidy.html:193:56: [maybe] The variable ey has values with different types
-test/10k/attractor.tidy.html:200:5: [maybe] Conversion from string to number yields NaN
-test/10k/attractor.tidy.html:200:5: [maybe] Conversion to number yields NaN
-test/10k/attractor.tidy.html:200:24: [maybe] The variable w has values with different types
-test/10k/attractor.tidy.html:200:27: [maybe] The variable h has values with different types
-test/10k/attractor.tidy.html:205:99: [maybe] Conversion from string to number yields NaN
-test/10k/attractor.tidy.html:205:99: [maybe] Conversion to number yields NaN
-test/10k/attractor.tidy.html:205:99: [maybe] The variable width has values with different types
-test/10k/attractor.tidy.html:205:120: [maybe] Conversion from string to number yields NaN
-test/10k/attractor.tidy.html:205:120: [maybe] Conversion to number yields NaN
-test/10k/attractor.tidy.html:205:120: [maybe] The variable height has values with different types
-test/10k/attractor.tidy.html:207:5: [maybe] Conversion from string to number yields NaN
-test/10k/attractor.tidy.html:207:5: [maybe] Conversion to number yields NaN
-test/10k/attractor.tidy.html:207:25: [maybe] The variable width has values with different types
-test/10k/attractor.tidy.html:207:32: [maybe] The variable height has values with different types
-test/10k/attractor.tidy.html:209:13: [maybe] Conversion from string to number yields NaN
-test/10k/attractor.tidy.html:209:13: [maybe] Conversion to number yields NaN
-test/10k/attractor.tidy.html:209:13: [maybe] The variable width has values with different types
-test/10k/attractor.tidy.html:209:21: [maybe] The variable height has values with different types
-test/10k/attractor.tidy.html:210:10: [maybe] The variable DATA has values with different types
-test/10k/attractor.tidy.html:213:29: [maybe] Converting primitive number to object
-test/10k/attractor.tidy.html:213:29: [maybe] The variable DATA has values with different types
-test/10k/attractor.tidy.html:219:29: [maybe] The variable width has values with different types
-test/10k/attractor.tidy.html:219:54: [maybe] The variable height has values with different types
-test/10k/attractor.tidy.html:219:62: [maybe] Conversion to number yields NaN
-test/10k/attractor.tidy.html:219:62: [maybe] Converting primitive number to object
-test/10k/attractor.tidy.html:219:62: [maybe] Reading absent property (computed name)
-test/10k/attractor.tidy.html:219:62: [maybe] The variable DATA has values with different types
-test/10k/attractor.tidy.html:219:72: [maybe] Conversion from string to number yields NaN
-test/10k/attractor.tidy.html:219:72: [maybe] Conversion to number yields NaN
-test/10k/attractor.tidy.html:219:77: [maybe] The variable width has values with different types
-test/10k/attractor.tidy.html:221:16: [maybe] Conversion to number yields NaN
-test/10k/attractor.tidy.html:221:29: [maybe] Conversion to number yields NaN
-test/10k/attractor.tidy.html:221:38: [maybe] Conversion to number yields NaN
-test/10k/attractor.tidy.html:221:51: [maybe] Conversion to number yields NaN
-test/10k/attractor.tidy.html:222:16: [maybe] Conversion to number yields NaN
-test/10k/attractor.tidy.html:222:29: [maybe] Conversion to number yields NaN
-test/10k/attractor.tidy.html:222:38: [maybe] Conversion to number yields NaN
-test/10k/attractor.tidy.html:222:51: [maybe] Conversion to number yields NaN
-test/10k/attractor.tidy.html:228:19: [maybe] Converting primitive number to object
-test/10k/attractor.tidy.html:228:19: [maybe] Reading absent property (computed name)
-test/10k/attractor.tidy.html:228:19: [maybe] The variable DATA has values with different types
-test/10k/attractor.tidy.html:229:33: [maybe] Converting primitive number to object
-test/10k/attractor.tidy.html:229:33: [maybe] Reading absent property (computed name)
-test/10k/attractor.tidy.html:229:33: [maybe] The variable DATA has values with different types
-test/10k/attractor.tidy.html:229:62: [maybe] Converting primitive number to object
-test/10k/attractor.tidy.html:229:62: [maybe] Reading absent property (computed name)
-test/10k/attractor.tidy.html:229:62: [maybe] The variable DATA has values with different types
-test/10k/attractor.tidy.html:231:13: [maybe] Conversion from string to number yields NaN
-test/10k/attractor.tidy.html:231:13: [maybe] Conversion to number yields NaN
-test/10k/attractor.tidy.html:231:36: [maybe] The variable width has values with different types
-test/10k/attractor.tidy.html:231:43: [maybe] The variable height has values with different types
-test/10k/attractor.tidy.html:233:13: [maybe] Converting primitive number to object
-test/10k/attractor.tidy.html:233:13: [maybe] Reading absent property (computed name)
-test/10k/attractor.tidy.html:233:13: [maybe] The variable DATA has values with different types
-test/10k/attractor.tidy.html:238:50: [maybe] Conversion to number yields NaN
-test/10k/attractor.tidy.html:238:50: [maybe] Conversion to number yields NaN
-test/10k/attractor.tidy.html:238:54: [maybe] Converting primitive number to object
-test/10k/attractor.tidy.html:238:54: [maybe] Reading absent property (computed name)
-test/10k/attractor.tidy.html:238:54: [maybe] The variable DATA has values with different types
-test/10k/attractor.tidy.html:300:26: [maybe] Conversion to number yields NaN
-test/10k/attractor.tidy.html:304:12: [maybe] Conversion to number yields NaN
-test/10k/attractor.tidy.html:304:12: [maybe] Conversion to number yields NaN
-test/10k/attractor.tidy.html:304:12: [maybe] Converting primitive string to object
-test/10k/attractor.tidy.html:304:12: [maybe] Reading absent property (computed name)
-test/10k/attractor.tidy.html:304:25: [maybe] Converting primitive string to object
-test/10k/attractor.tidy.html:304:25: [maybe] Reading absent property (computed name)
-test/10k/attractor.tidy.html:304:38: [maybe] Converting primitive string to object
-test/10k/attractor.tidy.html:304:38: [maybe] Reading absent property (computed name)
-test/10k/attractor.tidy.html:313:12: [maybe] Conversion to number yields NaN
-test/10k/attractor.tidy.html:313:12: [maybe] Conversion to number yields NaN
-test/10k/attractor.tidy.html:313:12: [maybe] Conversion to number yields NaN
-test/10k/attractor.tidy.html:313:12: [maybe] Converting primitive string to object
-test/10k/attractor.tidy.html:313:12: [maybe] Reading absent property (computed name)
-test/10k/attractor.tidy.html:313:25: [maybe] Converting primitive string to object
-test/10k/attractor.tidy.html:313:25: [maybe] Reading absent property (computed name)
-test/10k/attractor.tidy.html:313:38: [maybe] Converting primitive string to object
-test/10k/attractor.tidy.html:313:38: [maybe] Reading absent property (computed name)
-test/10k/attractor.tidy.html:313:51: [maybe] Converting primitive string to object
-test/10k/attractor.tidy.html:313:51: [maybe] Reading absent property (computed name)
-test/10k/attractor.tidy.html:317:12: [maybe] Converting primitive string to object
-test/10k/attractor.tidy.html:317:12: [maybe] Reading absent property (computed name)
-test/10k/attractor.tidy.html:324:12: [maybe] Conversion to number yields NaN
-test/10k/attractor.tidy.html:324:12: [maybe] Converting primitive string to object
-test/10k/attractor.tidy.html:324:12: [maybe] Reading absent property (computed name)
-test/10k/attractor.tidy.html:324:25: [maybe] Converting primitive string to object
-test/10k/attractor.tidy.html:324:25: [maybe] Reading absent property (computed name)
-test/10k/attractor.tidy.html:328:14: [maybe] Conversion to number yields NaN
-test/10k/attractor.tidy.html:328:14: [maybe] Conversion to number yields NaN
-test/10k/attractor.tidy.html:328:19: [maybe] Reading absent property (computed name)
-test/10k/attractor.tidy.html:328:27: [maybe] Converting primitive string to object
-test/10k/attractor.tidy.html:328:27: [maybe] Reading absent property (computed name)
-test/10k/attractor.tidy.html:328:35: [maybe] Conversion to number yields NaN
-test/10k/attractor.tidy.html:328:39: [maybe] Reading absent property (computed name)
-test/10k/attractor.tidy.html:328:47: [maybe] Converting primitive string to object
-test/10k/attractor.tidy.html:328:47: [maybe] Reading absent property (computed name)
-test/10k/attractor.tidy.html:328:59: [maybe] Reading absent property (computed name)
-test/10k/attractor.tidy.html:328:67: [maybe] Converting primitive string to object
-test/10k/attractor.tidy.html:328:67: [maybe] Reading absent property (computed name)
-test/10k/attractor.tidy.html:331:14: [maybe] Conversion to number yields NaN
-test/10k/attractor.tidy.html:331:14: [maybe] Conversion to number yields NaN
-test/10k/attractor.tidy.html:331:19: [maybe] Reading absent property (computed name)
-test/10k/attractor.tidy.html:331:27: [maybe] Converting primitive string to object
-test/10k/attractor.tidy.html:331:27: [maybe] Reading absent property (computed name)
-test/10k/attractor.tidy.html:331:35: [maybe] Conversion to number yields NaN
-test/10k/attractor.tidy.html:331:40: [maybe] Reading absent property (computed name)
-test/10k/attractor.tidy.html:331:48: [maybe] Converting primitive string to object
-test/10k/attractor.tidy.html:331:48: [maybe] Reading absent property (computed name)
-test/10k/attractor.tidy.html:331:60: [maybe] Conversion to number yields NaN
-test/10k/attractor.tidy.html:331:64: [maybe] Reading absent property (computed name)
-test/10k/attractor.tidy.html:331:72: [maybe] Converting primitive string to object
-test/10k/attractor.tidy.html:331:72: [maybe] Reading absent property (computed name)
-test/10k/attractor.tidy.html:331:84: [maybe] Reading absent property (computed name)
-test/10k/attractor.tidy.html:331:92: [maybe] Converting primitive string to object
-test/10k/attractor.tidy.html:331:92: [maybe] Reading absent property (computed name)
-test/10k/attractor.tidy.html:334:12: [maybe] Conversion to number yields NaN
-test/10k/attractor.tidy.html:334:12: [maybe] Reading absent property (computed name)
-test/10k/attractor.tidy.html:334:20: [maybe] Converting primitive string to object
-test/10k/attractor.tidy.html:334:20: [maybe] Reading absent property (computed name)
-test/10k/attractor.tidy.html:337:27: [maybe] Conversion to number yields NaN
-test/10k/attractor.tidy.html:337:27: [maybe] Conversion to number yields NaN
-test/10k/attractor.tidy.html:337:31: [maybe] Reading absent property (computed name)
-test/10k/attractor.tidy.html:337:39: [maybe] Converting primitive string to object
-test/10k/attractor.tidy.html:337:47: [maybe] Reading absent property (computed name)
-test/10k/attractor.tidy.html:337:55: [maybe] Converting primitive string to object
-test/10k/attractor.tidy.html:343:23: [maybe] Converting primitive string to object
-test/10k/attractor.tidy.html:343:59: [maybe] Converting primitive string to object
-test/10k/attractor.tidy.html:343:95: [maybe] Converting primitive string to object
-test/10k/attractor.tidy.html:349:12: [maybe] Conversion to number yields NaN
-test/10k/attractor.tidy.html:349:12: [maybe] Conversion to number yields NaN
-test/10k/attractor.tidy.html:349:12: [maybe] Conversion to number yields NaN
-test/10k/attractor.tidy.html:368:31: [maybe] Reading absent property (computed name)
-test/10k/attractor.tidy.html:369:31: [maybe] Reading absent property (computed name)
-test/10k/attractor.tidy.html:409:13: [maybe] Converting primitive string to object
-test/10k/attractor.tidy.html:410:31: [maybe] Reading absent property (computed name)
-test/10k/attractor.tidy.html:415:19: [maybe] Converting undefined to string
+test/10k/attractor.html:134:5: [definite] The conditional expression is always false
+test/10k/attractor.html:134:9: [definite] The conditional expression is always false
+test/10k/attractor.html:136:5: [definite] The conditional expression is always true
+test/10k/attractor.html:205:5: [definite] The conditional expression is always true
+test/10k/attractor.html:82:29: [definite] Dead assignment, property is never read
+test/10k/attractor.html:110:1: [definite] The variable h is never used
+test/10k/attractor.html:198:1: [definite] The variable size is never used
+test/10k/attractor.html:332:39: [definite] Reading absent property (computed name)
+test/10k/attractor.html:332:55: [definite] Reading absent property (computed name)
+test/10k/attractor.html:417:21: [definite] Unreachable function
+test/10k/attractor.html:420:22: [definite] Unreachable function
+test/10k/attractor.html:88:12: [maybe] TypeError, accessing property of null/undefined
+test/10k/attractor.html:88:12: [maybe] TypeError, call to non-function
+test/10k/attractor.html:130:45: [maybe] TypeError, accessing property of null/undefined
+test/10k/attractor.html:136:25: [maybe] RangeError, invalid value of array length
+test/10k/attractor.html:160:43: [maybe] TypeError, accessing property of null/undefined
+test/10k/attractor.html:181:47: [maybe] TypeError, accessing property of null/undefined
+test/10k/attractor.html:200:51: [maybe] TypeError, accessing property of null/undefined
+test/10k/attractor.html:206:16: [maybe] RangeError, invalid value of array length
+test/10k/attractor.html:262:34: [maybe] TypeError, accessing property of null/undefined
+test/10k/attractor.html:323:27: [maybe] TypeError, accessing property of null/undefined
+test/10k/attractor.html:329:20: [maybe] TypeError, accessing property of null/undefined
+test/10k/attractor.html:338:23: [maybe] TypeError, accessing property of null/undefined
+test/10k/attractor.html:363:31: [maybe] TypeError, accessing property of null/undefined
+test/10k/attractor.html:364:31: [maybe] TypeError, accessing property of null/undefined
+test/10k/attractor.html:382:5: [maybe] TypeError, non-HTMLImageElement or non-HTMLCanvasElement as argument to drawImage
+test/10k/attractor.html:400:5: [maybe] TypeError, accessing property of null/undefined
+test/10k/attractor.html:410:5: [maybe] TypeError, accessing property of null/undefined
+test/10k/attractor.html:417:5: [maybe] TypeError, accessing property of null/undefined
+test/10k/attractor.html:420:5: [maybe] TypeError, accessing property of null/undefined
+test/10k/attractor.html:88:12: [maybe] Reading absent property getContext
+test/10k/attractor.html:130:45: [maybe] Reading absent property width
+test/10k/attractor.html:130:65: [maybe] Reading absent property height
+test/10k/attractor.html:160:43: [maybe] Reading absent property width
+test/10k/attractor.html:160:62: [maybe] Reading absent property height
+test/10k/attractor.html:181:47: [maybe] Reading absent property width
+test/10k/attractor.html:181:65: [maybe] Reading absent property height
+test/10k/attractor.html:200:51: [maybe] Reading absent property width
+test/10k/attractor.html:200:74: [maybe] Reading absent property height
+test/10k/attractor.html:81:83: [maybe] Converting primitive string to object
+test/10k/attractor.html:82:37: [maybe] Converting primitive string to object
+test/10k/attractor.html:82:37: [maybe] Reading absent property (computed name)
+test/10k/attractor.html:101:12: [maybe] Conversion to number yields NaN
+test/10k/attractor.html:101:12: [maybe] Converting object to string
+test/10k/attractor.html:101:12: [maybe] Converting primitive string to object
+test/10k/attractor.html:101:23: [maybe] Converting primitive number to object
+test/10k/attractor.html:108:28: [maybe] The variable h has values with different types
+test/10k/attractor.html:108:32: [maybe] The variable h has values with different types
+test/10k/attractor.html:111:21: [maybe] Conversion from string to number yields NaN
+test/10k/attractor.html:111:21: [maybe] Conversion to number yields NaN
+test/10k/attractor.html:111:21: [maybe] The variable w has values with different types
+test/10k/attractor.html:113:12: [maybe] Reading absent property (computed name)
+test/10k/attractor.html:113:23: [maybe] Conversion from string to number yields NaN
+test/10k/attractor.html:113:23: [maybe] Conversion to number yields NaN
+test/10k/attractor.html:113:27: [maybe] The variable w has values with different types
+test/10k/attractor.html:118:21: [maybe] The variable h has values with different types
+test/10k/attractor.html:119:25: [maybe] The variable w has values with different types
+test/10k/attractor.html:120:19: [maybe] Reading absent property (computed name)
+test/10k/attractor.html:121:24: [maybe] Conversion to number yields NaN
+test/10k/attractor.html:121:31: [maybe] Reading absent property (computed name)
+test/10k/attractor.html:122:24: [maybe] Conversion to number yields NaN
+test/10k/attractor.html:122:31: [maybe] Reading absent property (computed name)
+test/10k/attractor.html:122:36: [maybe] Conversion from string to number yields NaN
+test/10k/attractor.html:122:36: [maybe] Conversion to number yields NaN
+test/10k/attractor.html:122:40: [maybe] The variable w has values with different types
+test/10k/attractor.html:123:33: [maybe] Conversion to number yields NaN
+test/10k/attractor.html:123:40: [maybe] Reading absent property (computed name)
+test/10k/attractor.html:123:45: [maybe] Conversion from string to number yields NaN
+test/10k/attractor.html:123:45: [maybe] Conversion to number yields NaN
+test/10k/attractor.html:123:49: [maybe] The variable w has values with different types
+test/10k/attractor.html:132:14: [maybe] Conversion from string to number yields NaN
+test/10k/attractor.html:132:14: [maybe] Conversion to number yields NaN
+test/10k/attractor.html:132:36: [maybe] The variable width has values with different types
+test/10k/attractor.html:132:43: [maybe] The variable height has values with different types
+test/10k/attractor.html:132:57: [maybe] Conversion from string to number yields NaN
+test/10k/attractor.html:132:57: [maybe] Conversion to number yields NaN
+test/10k/attractor.html:132:79: [maybe] The variable width has values with different types
+test/10k/attractor.html:132:86: [maybe] The variable height has values with different types
+test/10k/attractor.html:136:35: [maybe] Conversion from string to number yields NaN
+test/10k/attractor.html:136:35: [maybe] Conversion to number yields NaN
+test/10k/attractor.html:136:35: [maybe] The variable width has values with different types
+test/10k/attractor.html:136:43: [maybe] The variable height has values with different types
+test/10k/attractor.html:137:27: [maybe] The variable width has values with different types
+test/10k/attractor.html:137:34: [maybe] The variable height has values with different types
+test/10k/attractor.html:140:21: [maybe] The variable height has values with different types
+test/10k/attractor.html:141:25: [maybe] The variable width has values with different types
+test/10k/attractor.html:142:19: [maybe] Conversion to number yields NaN
+test/10k/attractor.html:142:19: [maybe] Conversion to number yields NaN
+test/10k/attractor.html:142:19: [maybe] Conversion to number yields NaN
+test/10k/attractor.html:142:30: [maybe] The variable width has values with different types
+test/10k/attractor.html:142:37: [maybe] The variable height has values with different types
+test/10k/attractor.html:143:34: [maybe] The variable width has values with different types
+test/10k/attractor.html:143:41: [maybe] The variable height has values with different types
+test/10k/attractor.html:144:34: [maybe] The variable width has values with different types
+test/10k/attractor.html:144:41: [maybe] The variable height has values with different types
+test/10k/attractor.html:145:34: [maybe] The variable width has values with different types
+test/10k/attractor.html:145:41: [maybe] The variable height has values with different types
+test/10k/attractor.html:162:14: [maybe] Conversion from string to number yields NaN
+test/10k/attractor.html:162:14: [maybe] Conversion to number yields NaN
+test/10k/attractor.html:162:44: [maybe] The variable width has values with different types
+test/10k/attractor.html:162:51: [maybe] The variable height has values with different types
+test/10k/attractor.html:163:14: [maybe] Conversion from string to number yields NaN
+test/10k/attractor.html:163:14: [maybe] Conversion to number yields NaN
+test/10k/attractor.html:163:44: [maybe] The variable width has values with different types
+test/10k/attractor.html:163:51: [maybe] The variable height has values with different types
+test/10k/attractor.html:164:14: [maybe] Conversion from string to number yields NaN
+test/10k/attractor.html:164:14: [maybe] Conversion to number yields NaN
+test/10k/attractor.html:164:36: [maybe] The variable width has values with different types
+test/10k/attractor.html:164:43: [maybe] The variable height has values with different types
+test/10k/attractor.html:167:21: [maybe] The variable width has values with different types
+test/10k/attractor.html:168:25: [maybe] The variable height has values with different types
+test/10k/attractor.html:169:26: [maybe] Conversion from string to number yields NaN
+test/10k/attractor.html:169:26: [maybe] Conversion to number yields NaN
+test/10k/attractor.html:169:30: [maybe] The variable width has values with different types
+test/10k/attractor.html:170:17: [maybe] Conversion to number yields NaN
+test/10k/attractor.html:170:17: [maybe] Reading absent property (computed name)
+test/10k/attractor.html:171:30: [maybe] Conversion to number yields NaN
+test/10k/attractor.html:171:34: [maybe] Reading absent property (computed name)
+test/10k/attractor.html:172:34: [maybe] Conversion to number yields NaN
+test/10k/attractor.html:172:38: [maybe] Reading absent property (computed name)
+test/10k/attractor.html:173:34: [maybe] Conversion to number yields NaN
+test/10k/attractor.html:173:38: [maybe] Reading absent property (computed name)
+test/10k/attractor.html:183:26: [maybe] Conversion from string to number yields NaN
+test/10k/attractor.html:183:26: [maybe] Conversion to number yields NaN
+test/10k/attractor.html:183:26: [maybe] The variable w has values with different types
+test/10k/attractor.html:183:30: [maybe] The variable w has values with different types
+test/10k/attractor.html:183:34: [maybe] Conversion from string to number yields NaN
+test/10k/attractor.html:183:34: [maybe] Conversion to number yields NaN
+test/10k/attractor.html:183:34: [maybe] The variable h has values with different types
+test/10k/attractor.html:183:38: [maybe] The variable h has values with different types
+test/10k/attractor.html:184:20: [maybe] Conversion from string to number yields NaN
+test/10k/attractor.html:184:20: [maybe] Conversion to number yields NaN
+test/10k/attractor.html:184:20: [maybe] The variable w has values with different types
+test/10k/attractor.html:184:42: [maybe] The variable w has values with different types
+test/10k/attractor.html:185:20: [maybe] Conversion from string to number yields NaN
+test/10k/attractor.html:185:20: [maybe] Conversion to number yields NaN
+test/10k/attractor.html:185:20: [maybe] The variable h has values with different types
+test/10k/attractor.html:185:42: [maybe] The variable h has values with different types
+test/10k/attractor.html:186:20: [maybe] Conversion from string to number yields NaN
+test/10k/attractor.html:186:20: [maybe] Conversion to number yields NaN
+test/10k/attractor.html:186:20: [maybe] The variable w has values with different types
+test/10k/attractor.html:186:42: [maybe] The variable w has values with different types
+test/10k/attractor.html:187:20: [maybe] Conversion from string to number yields NaN
+test/10k/attractor.html:187:20: [maybe] Conversion to number yields NaN
+test/10k/attractor.html:187:20: [maybe] The variable h has values with different types
+test/10k/attractor.html:187:42: [maybe] The variable h has values with different types
+test/10k/attractor.html:188:19: [maybe] Conversion from string to number yields NaN
+test/10k/attractor.html:188:19: [maybe] Conversion to number yields NaN
+test/10k/attractor.html:188:44: [maybe] The variable sx has values with different types
+test/10k/attractor.html:188:48: [maybe] The variable sy has values with different types
+test/10k/attractor.html:188:52: [maybe] The variable ex has values with different types
+test/10k/attractor.html:188:56: [maybe] The variable ey has values with different types
+test/10k/attractor.html:195:5: [maybe] Conversion from string to number yields NaN
+test/10k/attractor.html:195:5: [maybe] Conversion to number yields NaN
+test/10k/attractor.html:195:24: [maybe] The variable w has values with different types
+test/10k/attractor.html:195:27: [maybe] The variable h has values with different types
+test/10k/attractor.html:200:99: [maybe] Conversion from string to number yields NaN
+test/10k/attractor.html:200:99: [maybe] Conversion to number yields NaN
+test/10k/attractor.html:200:99: [maybe] The variable width has values with different types
+test/10k/attractor.html:200:120: [maybe] Conversion from string to number yields NaN
+test/10k/attractor.html:200:120: [maybe] Conversion to number yields NaN
+test/10k/attractor.html:200:120: [maybe] The variable height has values with different types
+test/10k/attractor.html:202:5: [maybe] Conversion from string to number yields NaN
+test/10k/attractor.html:202:5: [maybe] Conversion to number yields NaN
+test/10k/attractor.html:202:25: [maybe] The variable width has values with different types
+test/10k/attractor.html:202:32: [maybe] The variable height has values with different types
+test/10k/attractor.html:204:13: [maybe] Conversion from string to number yields NaN
+test/10k/attractor.html:204:13: [maybe] Conversion to number yields NaN
+test/10k/attractor.html:204:13: [maybe] The variable width has values with different types
+test/10k/attractor.html:204:21: [maybe] The variable height has values with different types
+test/10k/attractor.html:214:29: [maybe] The variable width has values with different types
+test/10k/attractor.html:214:54: [maybe] The variable height has values with different types
+test/10k/attractor.html:214:62: [maybe] Conversion to number yields NaN
+test/10k/attractor.html:214:62: [maybe] Reading absent property (computed name)
+test/10k/attractor.html:214:72: [maybe] Conversion from string to number yields NaN
+test/10k/attractor.html:214:72: [maybe] Conversion to number yields NaN
+test/10k/attractor.html:214:77: [maybe] The variable width has values with different types
+test/10k/attractor.html:216:16: [maybe] Conversion to number yields NaN
+test/10k/attractor.html:216:29: [maybe] Conversion to number yields NaN
+test/10k/attractor.html:216:38: [maybe] Conversion to number yields NaN
+test/10k/attractor.html:216:51: [maybe] Conversion to number yields NaN
+test/10k/attractor.html:217:16: [maybe] Conversion to number yields NaN
+test/10k/attractor.html:217:29: [maybe] Conversion to number yields NaN
+test/10k/attractor.html:217:38: [maybe] Conversion to number yields NaN
+test/10k/attractor.html:217:51: [maybe] Conversion to number yields NaN
+test/10k/attractor.html:223:19: [maybe] Reading absent property (computed name)
+test/10k/attractor.html:224:33: [maybe] Reading absent property (computed name)
+test/10k/attractor.html:224:62: [maybe] Reading absent property (computed name)
+test/10k/attractor.html:226:13: [maybe] Conversion from string to number yields NaN
+test/10k/attractor.html:226:13: [maybe] Conversion to number yields NaN
+test/10k/attractor.html:226:36: [maybe] The variable width has values with different types
+test/10k/attractor.html:226:43: [maybe] The variable height has values with different types
+test/10k/attractor.html:228:13: [maybe] Reading absent property (computed name)
+test/10k/attractor.html:233:50: [maybe] Conversion to number yields NaN
+test/10k/attractor.html:233:50: [maybe] Conversion to number yields NaN
+test/10k/attractor.html:233:54: [maybe] Reading absent property (computed name)
+test/10k/attractor.html:295:26: [maybe] Conversion to number yields NaN
+test/10k/attractor.html:299:12: [maybe] Conversion to number yields NaN
+test/10k/attractor.html:299:12: [maybe] Conversion to number yields NaN
+test/10k/attractor.html:299:12: [maybe] Converting primitive string to object
+test/10k/attractor.html:299:12: [maybe] Reading absent property (computed name)
+test/10k/attractor.html:299:25: [maybe] Converting primitive string to object
+test/10k/attractor.html:299:25: [maybe] Reading absent property (computed name)
+test/10k/attractor.html:299:38: [maybe] Converting primitive string to object
+test/10k/attractor.html:299:38: [maybe] Reading absent property (computed name)
+test/10k/attractor.html:308:12: [maybe] Conversion to number yields NaN
+test/10k/attractor.html:308:12: [maybe] Conversion to number yields NaN
+test/10k/attractor.html:308:12: [maybe] Conversion to number yields NaN
+test/10k/attractor.html:308:12: [maybe] Converting primitive string to object
+test/10k/attractor.html:308:12: [maybe] Reading absent property (computed name)
+test/10k/attractor.html:308:25: [maybe] Converting primitive string to object
+test/10k/attractor.html:308:25: [maybe] Reading absent property (computed name)
+test/10k/attractor.html:308:38: [maybe] Converting primitive string to object
+test/10k/attractor.html:308:38: [maybe] Reading absent property (computed name)
+test/10k/attractor.html:308:51: [maybe] Converting primitive string to object
+test/10k/attractor.html:308:51: [maybe] Reading absent property (computed name)
+test/10k/attractor.html:312:12: [maybe] Converting primitive string to object
+test/10k/attractor.html:312:12: [maybe] Reading absent property (computed name)
+test/10k/attractor.html:319:12: [maybe] Conversion to number yields NaN
+test/10k/attractor.html:319:12: [maybe] Converting primitive string to object
+test/10k/attractor.html:319:12: [maybe] Reading absent property (computed name)
+test/10k/attractor.html:319:25: [maybe] Converting primitive string to object
+test/10k/attractor.html:319:25: [maybe] Reading absent property (computed name)
+test/10k/attractor.html:323:14: [maybe] Conversion to number yields NaN
+test/10k/attractor.html:323:14: [maybe] Conversion to number yields NaN
+test/10k/attractor.html:323:19: [maybe] Reading absent property (computed name)
+test/10k/attractor.html:323:27: [maybe] Converting primitive string to object
+test/10k/attractor.html:323:27: [maybe] Reading absent property (computed name)
+test/10k/attractor.html:323:35: [maybe] Conversion to number yields NaN
+test/10k/attractor.html:323:39: [maybe] Reading absent property (computed name)
+test/10k/attractor.html:323:47: [maybe] Converting primitive string to object
+test/10k/attractor.html:323:47: [maybe] Reading absent property (computed name)
+test/10k/attractor.html:323:59: [maybe] Reading absent property (computed name)
+test/10k/attractor.html:323:67: [maybe] Converting primitive string to object
+test/10k/attractor.html:323:67: [maybe] Reading absent property (computed name)
+test/10k/attractor.html:326:14: [maybe] Conversion to number yields NaN
+test/10k/attractor.html:326:14: [maybe] Conversion to number yields NaN
+test/10k/attractor.html:326:19: [maybe] Reading absent property (computed name)
+test/10k/attractor.html:326:27: [maybe] Converting primitive string to object
+test/10k/attractor.html:326:27: [maybe] Reading absent property (computed name)
+test/10k/attractor.html:326:35: [maybe] Conversion to number yields NaN
+test/10k/attractor.html:326:40: [maybe] Reading absent property (computed name)
+test/10k/attractor.html:326:48: [maybe] Converting primitive string to object
+test/10k/attractor.html:326:48: [maybe] Reading absent property (computed name)
+test/10k/attractor.html:326:60: [maybe] Conversion to number yields NaN
+test/10k/attractor.html:326:64: [maybe] Reading absent property (computed name)
+test/10k/attractor.html:326:72: [maybe] Converting primitive string to object
+test/10k/attractor.html:326:72: [maybe] Reading absent property (computed name)
+test/10k/attractor.html:326:84: [maybe] Reading absent property (computed name)
+test/10k/attractor.html:326:92: [maybe] Converting primitive string to object
+test/10k/attractor.html:326:92: [maybe] Reading absent property (computed name)
+test/10k/attractor.html:329:12: [maybe] Conversion to number yields NaN
+test/10k/attractor.html:329:12: [maybe] Reading absent property (computed name)
+test/10k/attractor.html:329:20: [maybe] Converting primitive string to object
+test/10k/attractor.html:329:20: [maybe] Reading absent property (computed name)
+test/10k/attractor.html:332:27: [maybe] Conversion to number yields NaN
+test/10k/attractor.html:332:27: [maybe] Conversion to number yields NaN
+test/10k/attractor.html:332:31: [maybe] Reading absent property (computed name)
+test/10k/attractor.html:332:39: [maybe] Converting primitive string to object
+test/10k/attractor.html:332:47: [maybe] Reading absent property (computed name)
+test/10k/attractor.html:332:55: [maybe] Converting primitive string to object
+test/10k/attractor.html:338:23: [maybe] Converting object to string
+test/10k/attractor.html:338:23: [maybe] Converting primitive string to object
+test/10k/attractor.html:338:59: [maybe] Converting object to string
+test/10k/attractor.html:338:59: [maybe] Converting primitive string to object
+test/10k/attractor.html:338:95: [maybe] Converting object to string
+test/10k/attractor.html:338:95: [maybe] Converting primitive string to object
+test/10k/attractor.html:344:12: [maybe] Conversion to number yields NaN
+test/10k/attractor.html:344:12: [maybe] Conversion to number yields NaN
+test/10k/attractor.html:344:12: [maybe] Conversion to number yields NaN
+test/10k/attractor.html:363:31: [maybe] Reading absent property (computed name)
+test/10k/attractor.html:364:31: [maybe] Reading absent property (computed name)
+test/10k/attractor.html:404:13: [maybe] Converting object to string
+test/10k/attractor.html:404:13: [maybe] Converting primitive string to object
+test/10k/attractor.html:405:31: [maybe] Reading absent property (computed name)
+test/10k/attractor.html:410:19: [maybe] Converting undefined to string

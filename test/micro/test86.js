@@ -6,5 +6,5 @@ function f(x) {
 }
 
 var q = f(3);
-assert(q === 4);
-dumpValue(q);
+TAJS_assert(q, 'isMaybeNumUInt');
+TAJS_dumpValue(q);

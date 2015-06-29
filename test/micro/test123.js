@@ -7,4 +7,4 @@ for (var x in y) {
 	} 
 }		
 
-dumpObject(r)
+TAJS_dumpObject(r)

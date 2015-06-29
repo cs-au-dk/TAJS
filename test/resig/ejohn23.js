@@ -5,4 +5,4 @@ var katana = {
   } 
 }; 
 katana.use() 
-assert( !katana.isSharp );
+TAJS_assert( !katana.isSharp );

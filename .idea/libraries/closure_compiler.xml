@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="closure-compiler">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/closure-compiler.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jericho-html-3.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/log4j.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

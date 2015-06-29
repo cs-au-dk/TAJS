@@ -1,2 +1,2 @@
 var x = eval("5+5");
-dumpValue(x)
+TAJS_dumpValue(x)

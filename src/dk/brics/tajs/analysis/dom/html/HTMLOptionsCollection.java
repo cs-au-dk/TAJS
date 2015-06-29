@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2013 Aarhus University
+ * Copyright 2009-2015 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -40,7 +40,9 @@ import static dk.brics.tajs.analysis.dom.DOMFunctions.createDOMProperty;
 public class HTMLOptionsCollection {
 
     public static ObjectLabel CONSTRUCTOR;
+
     public static ObjectLabel PROTOTYPE;
+
     public static ObjectLabel INSTANCES;
 
     public static void build(State s) {
@@ -87,12 +89,14 @@ public class HTMLOptionsCollection {
         switch (nativeObject) {
             case HTMLOPTIONSCOLLECTION_ITEM: {
                 NativeFunctions.expectParameters(nativeObject, call, c, 1, 1);
-                /* Value index =*/ Conversion.toNumber(NativeFunctions.readParameter(call, s, 0), c);
+                /* Value index =*/
+                Conversion.toNumber(NativeFunctions.readParameter(call, s, 0), c);
                 return DOMFunctions.makeAnyHTMLElement().joinNull();
             }
             case HTMLOPTIONSCOLLECTION_NAMEDITEM: {
                 NativeFunctions.expectParameters(nativeObject, call, c, 1, 1);
-                /* Value name =*/ Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
+                /* Value name =*/
+                Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
                 return DOMFunctions.makeAnyHTMLElement().joinNull();
             }
             default: {
@@ -100,5 +104,4 @@ public class HTMLOptionsCollection {
             }
         }
     }
-
 }

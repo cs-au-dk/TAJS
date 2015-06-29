@@ -1,64 +1,77 @@
-test/10k/last_man_standing.tidy.html:35:5: [definite] The conditional expression is always false
-test/10k/last_man_standing.tidy.html:35:9: [definite] The conditional expression is always false
-test/10k/last_man_standing.tidy.html:97:18: [definite] Dead assignment, property R is never read
-test/10k/last_man_standing.tidy.html:104:19: [definite] Dead assignment, property u is never read
-test/10k/last_man_standing.tidy.html:115:9: [definite] Unreachable function
-test/10k/last_man_standing.tidy.html:40:29: [maybe] TypeError, accessing property of null/undefined
-test/10k/last_man_standing.tidy.html:40:50: [maybe] TypeError, accessing property of null/undefined
-test/10k/last_man_standing.tidy.html:42:13: [maybe] TypeError, accessing property of null/undefined
-test/10k/last_man_standing.tidy.html:43:13: [maybe] TypeError, accessing property of null/undefined
-test/10k/last_man_standing.tidy.html:44:13: [maybe] TypeError, accessing property of null/undefined
-test/10k/last_man_standing.tidy.html:206:18: [maybe] TypeError, accessing property of null/undefined
-test/10k/last_man_standing.tidy.html:215:13: [maybe] TypeError, accessing property of null/undefined
-test/10k/last_man_standing.tidy.html:219:21: [maybe] TypeError, accessing property of null/undefined
-test/10k/last_man_standing.tidy.html:231:18: [maybe] TypeError, accessing property of null/undefined
-test/10k/last_man_standing.tidy.html:232:17: [maybe] TypeError, inf or NaN as arguments to CanvasRenderingContext2D.putImageData
-test/10k/last_man_standing.tidy.html:240:18: [maybe] TypeError, accessing property of null/undefined
-test/10k/last_man_standing.tidy.html:261:13: [maybe] TypeError, inf or NaN as arguments to CanvasRenderingContext2D.putImageData
-test/10k/last_man_standing.tidy.html:27: [maybe] Uncaught exception, constructed at [test/10k/last_man_standing.tidy.html:40:29, test/10k/last_man_standing.tidy.html:40:50, test/10k/last_man_standing.tidy.html:42:13, test/10k/last_man_standing.tidy.html:43:13, test/10k/last_man_standing.tidy.html:44:13, test/10k/last_man_standing.tidy.html:206:18, test/10k/last_man_standing.tidy.html:215:13, test/10k/last_man_standing.tidy.html:219:21, test/10k/last_man_standing.tidy.html:231:18, test/10k/last_man_standing.tidy.html:240:18]
-test/10k/last_man_standing.tidy.html:40:29: [maybe] Reading absent property (computed name)
-test/10k/last_man_standing.tidy.html:40:50: [maybe] Reading absent property (computed name)
-test/10k/last_man_standing.tidy.html:40:50: [maybe] Reading absent property (computed name)
-test/10k/last_man_standing.tidy.html:42:13: [maybe] Reading absent property (computed name)
-test/10k/last_man_standing.tidy.html:43:13: [maybe] Reading absent property (computed name)
-test/10k/last_man_standing.tidy.html:44:13: [maybe] Reading absent property (computed name)
-test/10k/last_man_standing.tidy.html:109:23: [maybe] Reading absent property (computed name)
-test/10k/last_man_standing.tidy.html:109:46: [maybe] Reading absent property (computed name)
-test/10k/last_man_standing.tidy.html:110:23: [maybe] Reading absent property (computed name)
-test/10k/last_man_standing.tidy.html:110:46: [maybe] Reading absent property (computed name)
-test/10k/last_man_standing.tidy.html:205:21: [maybe] Reading absent property (computed name)
-test/10k/last_man_standing.tidy.html:214:21: [maybe] Reading absent property (computed name)
-test/10k/last_man_standing.tidy.html:230:21: [maybe] Reading absent property (computed name)
-test/10k/last_man_standing.tidy.html:232:32: [maybe] Reading absent property (computed name)
-test/10k/last_man_standing.tidy.html:239:21: [maybe] Reading absent property (computed name)
-test/10k/last_man_standing.tidy.html:261:28: [maybe] Reading absent property (computed name)
-test/10k/last_man_standing.tidy.html:61:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/10k/last_man_standing.tidy.html:62:15: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/10k/last_man_standing.tidy.html:62:24: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/10k/last_man_standing.tidy.html:63:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/10k/last_man_standing.tidy.html:64:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/10k/last_man_standing.tidy.html:64:23: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/10k/last_man_standing.tidy.html:65:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/10k/last_man_standing.tidy.html:65:23: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/10k/last_man_standing.tidy.html:68:16: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/10k/last_man_standing.tidy.html:68:31: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/10k/last_man_standing.tidy.html:68:45: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/10k/last_man_standing.tidy.html:68:59: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/10k/last_man_standing.tidy.html:68:73: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/10k/last_man_standing.tidy.html:81:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/10k/last_man_standing.tidy.html:82:15: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/10k/last_man_standing.tidy.html:82:24: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/10k/last_man_standing.tidy.html:83:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/10k/last_man_standing.tidy.html:84:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/10k/last_man_standing.tidy.html:84:31: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/10k/last_man_standing.tidy.html:85:34: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/10k/last_man_standing.tidy.html:85:48: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/10k/last_man_standing.tidy.html:86:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/10k/last_man_standing.tidy.html:86:23: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/10k/last_man_standing.tidy.html:87:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/10k/last_man_standing.tidy.html:87:23: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/10k/last_man_standing.tidy.html:90:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/10k/last_man_standing.tidy.html:90:36: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/10k/last_man_standing.tidy.html:90:56: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/10k/last_man_standing.tidy.html:90:71: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/10k/last_man_standing.tidy.html:92:16: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/last_man_standing.html:35:5: [definite] The conditional expression is always false
+test/10k/last_man_standing.html:35:9: [definite] The conditional expression is always false
+test/10k/last_man_standing.html:106:9: [definite] The conditional expression is always false
+test/10k/last_man_standing.html:183:9: [definite] The conditional expression is always true
+test/10k/last_man_standing.html:185:13: [definite] The conditional expression is always false
+test/10k/last_man_standing.html:196:9: [definite] The conditional expression is always false
+test/10k/last_man_standing.html:204:32: [definite] The conditional expression is always false
+test/10k/last_man_standing.html:213:45: [definite] The conditional expression is always false
+test/10k/last_man_standing.html:229:20: [definite] The conditional expression is always false
+test/10k/last_man_standing.html:238:25: [definite] The conditional expression is always false
+test/10k/last_man_standing.html:249:9: [definite] The conditional expression is always true
+test/10k/last_man_standing.html:253:13: [definite] The conditional expression is always false
+test/10k/last_man_standing.html:253:13: [definite] The conditional expression is always true
+test/10k/last_man_standing.html:256:13: [definite] The conditional expression is always true
+test/10k/last_man_standing.html:260:9: [definite] The conditional expression is always true
+test/10k/last_man_standing.html:279:9: [definite] The conditional expression is always false
+test/10k/last_man_standing.html:288:13: [definite] The conditional expression is always false
+test/10k/last_man_standing.html:288:13: [definite] The conditional expression is always false
+test/10k/last_man_standing.html:289:13: [definite] The conditional expression is always true
+test/10k/last_man_standing.html:289:13: [definite] The conditional expression is always true
+test/10k/last_man_standing.html:60:20: [definite] Dead assignment, property move is never read
+test/10k/last_man_standing.html:67:7: [definite] Dead assignment, property c is never read
+test/10k/last_man_standing.html:80:20: [definite] Dead assignment, property move is never read
+test/10k/last_man_standing.html:89:7: [definite] Dead assignment, property u is never read
+test/10k/last_man_standing.html:91:7: [definite] Dead assignment, property c is never read
+test/10k/last_man_standing.html:97:18: [definite] Dead assignment, property R is never read
+test/10k/last_man_standing.html:98:9: [definite] Dead assignment, property length is never read
+test/10k/last_man_standing.html:98:23: [definite] Dead assignment, property e is never read
+test/10k/last_man_standing.html:115:7: [definite] Dead assignment, property u is never read
+test/10k/last_man_standing.html:127:9: [definite] Dead assignment, property O is never read
+test/10k/last_man_standing.html:129:19: [definite] Dead assignment, property x is never read
+test/10k/last_man_standing.html:129:23: [definite] Dead assignment, property y is never read
+test/10k/last_man_standing.html:158:13: [definite] Dead assignment, property x is never read
+test/10k/last_man_standing.html:159:13: [definite] Dead assignment, property y is never read
+test/10k/last_man_standing.html:162:13: [definite] Dead assignment, property is never read
+test/10k/last_man_standing.html:165:13: [definite] Dead assignment, property is never read
+test/10k/last_man_standing.html:174:7: [definite] Dead assignment, property reset is never read
+test/10k/last_man_standing.html:48:5: [definite] Unreachable function q
+test/10k/last_man_standing.html:60:25: [definite] Unreachable function
+test/10k/last_man_standing.html:67:9: [definite] Unreachable function
+test/10k/last_man_standing.html:70:5: [definite] Unreachable function r
+test/10k/last_man_standing.html:80:25: [definite] Unreachable function
+test/10k/last_man_standing.html:89:9: [definite] Unreachable function
+test/10k/last_man_standing.html:91:9: [definite] Unreachable function
+test/10k/last_man_standing.html:108:17: [definite] The variable a is never used
+test/10k/last_man_standing.html:108:28: [definite] The variable b is never used
+test/10k/last_man_standing.html:115:9: [definite] Unreachable function
+test/10k/last_man_standing.html:136:24: [definite] Unreachable function
+test/10k/last_man_standing.html:141:24: [definite] Unreachable function
+test/10k/last_man_standing.html:174:13: [definite] Unreachable function
+test/10k/last_man_standing.html:189:25: [definite] The variable a is never used
+test/10k/last_man_standing.html:189:42: [definite] The variable b is never used
+test/10k/last_man_standing.html:198:17: [definite] The variable a is never used
+test/10k/last_man_standing.html:198:55: [definite] The variable b is never used
+test/10k/last_man_standing.html:205:17: [definite] The variable d is never used
+test/10k/last_man_standing.html:213:18: [definite] The variable a is never used
+test/10k/last_man_standing.html:214:17: [definite] The variable d is never used
+test/10k/last_man_standing.html:216:17: [definite] The variable u is never used
+test/10k/last_man_standing.html:218:21: [definite] The variable m is never used
+test/10k/last_man_standing.html:220:25: [definite] The variable v is never used
+test/10k/last_man_standing.html:230:17: [definite] The variable d is never used
+test/10k/last_man_standing.html:239:17: [definite] The variable b is never used
+test/10k/last_man_standing.html:280:17: [definite] The variable a is never used
+test/10k/last_man_standing.html:40:29: [maybe] TypeError, accessing property of null/undefined
+test/10k/last_man_standing.html:40:50: [maybe] TypeError, accessing property of null/undefined
+test/10k/last_man_standing.html:42:13: [maybe] TypeError, accessing property of null/undefined
+test/10k/last_man_standing.html:43:13: [maybe] TypeError, accessing property of null/undefined
+test/10k/last_man_standing.html:44:13: [maybe] TypeError, accessing property of null/undefined
+test/10k/last_man_standing.html:261:13: [maybe] TypeError, inf or NaN as arguments to CanvasRenderingContext2D.putImageData
+test/10k/last_man_standing.html:30:32: [maybe] Uncaught exception, constructed at [test/10k/last_man_standing.html:40:29, test/10k/last_man_standing.html:40:50, test/10k/last_man_standing.html:42:13, test/10k/last_man_standing.html:43:13, test/10k/last_man_standing.html:44:13]
+test/10k/last_man_standing.html:40:29: [maybe] Reading absent property (computed name)
+test/10k/last_man_standing.html:40:50: [maybe] Reading absent property (computed name)
+test/10k/last_man_standing.html:40:50: [maybe] Reading absent property (computed name)
+test/10k/last_man_standing.html:42:13: [maybe] Reading absent property (computed name)
+test/10k/last_man_standing.html:43:13: [maybe] Reading absent property (computed name)
+test/10k/last_man_standing.html:44:13: [maybe] Reading absent property (computed name)
+test/10k/last_man_standing.html:261:28: [maybe] Reading absent property (computed name)

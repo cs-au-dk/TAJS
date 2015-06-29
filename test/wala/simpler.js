@@ -80,9 +80,9 @@ function rubbish(one, two) {
     return rubbish(two, one);
 }
 
-assert(rubbish(stranger, weirder) == 4);
+TAJS_assert(rubbish(stranger, weirder), 'isMaybeAnyNum');
 
-assert(trivial(3, 2) == 3);
-assert(bad(4, 5) == -1);
-assert(weirder( silly( "whatever", 7 ) ) == Infinity);
-dumpValue(weirder( silly( "whatever", 7 ) ));
+TAJS_assert(trivial(3, 2) == 3);
+TAJS_assert(bad(4, 5) == -1);
+TAJS_assert(weirder( silly( "whatever", 7 ) ), 'isMaybeAnyNum');
+TAJS_dumpValue(weirder( silly( "whatever", 7 ) ));

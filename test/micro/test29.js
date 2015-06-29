@@ -6,4 +6,4 @@ try {
 catch (e) {
 	foo = 42;
 }
-assert(foo===42);
+TAJS_assert(foo===42);

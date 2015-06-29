@@ -1,0 +1,5 @@
+test/micro/testUintAdd.js:13:1: [info] Abstract value: UInt
+test/micro/testUintAdd.js:15:1: [info] Abstract value: UInt
+test/micro/testUintAdd.js:16:1: [info] Abstract value: UInt
+test/micro/testUintAdd.js:18:1: [info] Abstract value: Num
+test/micro/testUintAdd.js:19:1: [info] Abstract value: Num

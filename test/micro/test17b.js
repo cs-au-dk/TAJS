@@ -4,4 +4,4 @@ if (Math.random()) {
 	q = 42;
 }
 	
-dumpValue(q);
+TAJS_dumpValue(q);

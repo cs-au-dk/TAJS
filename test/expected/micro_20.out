@@ -1,4 +1,4 @@
-test/micro/test20.js:22:11: [definite] ReferenceError, reading absent variable bar4
+test/micro/test20.js:22:16: [definite] ReferenceError, reading absent variable bar4
 test/micro/test20.js:8:3: [definite] The assignment to foo has no effect
 test/micro/test20.js:2:2: [definite] Reading 'this' yields the global object
 test/micro/test20.js:17:8: [definite] Reading 'this' yields the global object
@@ -6,9 +6,9 @@ test/micro/test20.js:22:1: [definite] Unreachable code
 test/micro/test20.js:16:8: [maybe] TypeError, call to non-function
 test/micro/test20.js:17:8: [maybe] TypeError, call to non-function
 test/micro/test20.js:18:8: [maybe] TypeError, call to non-function
-test/micro/test20.js:1:1: [maybe] Uncaught exception, constructed at [test/micro/test20.js:16:8, test/micro/test20.js:17:8, test/micro/test20.js:18:8, test/micro/test20.js:22:11]
+test/micro/test20.js:1:1: [maybe] Uncaught exception, constructed at [test/micro/test20.js:16:8, test/micro/test20.js:17:8, test/micro/test20.js:18:8, test/micro/test20.js:22:16]
 test/micro/test20.js:3:9: [maybe] Conversion to number yields NaN
-test/micro/test20.js:13:11: [maybe] The variable foo has values with different types
+test/micro/test20.js:13:16: [maybe] The variable foo has values with different types
 test/micro/test20.js:16:8: [maybe] The variable foo has values with different types
 test/micro/test20.js:18:8: [maybe] The variable foo has values with different types
 test/micro/test20.js:13:1: [info] Abstract value: 44.0|[@foo#fun1]

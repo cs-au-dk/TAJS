@@ -1,5 +1,6 @@
-test/v8tests/new.js:30:1: [definite] ReferenceError, reading absent variable assertFalse
-test/v8tests/new.js:28:1: [definite] Unreachable function Construct
-test/v8tests/new.js:30:13: [definite] Unreachable code
 test/v8tests/new.js:54:5: [definite] Unreachable function
-test/v8tests/new.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/new.js:30:1]
+test/v8tests/new.js:28:32: [maybe] The variable x has values with different types
+test/v8tests/new.js:32:13: [maybe] Conversion from string to number yields NaN
+test/v8tests/new.js:33:13: [maybe] Conversion from string to number yields NaN
+test/v8tests/new.js:34:13: [maybe] Conversion from string to number yields NaN
+test/v8tests/new.js:36:13: [maybe] Conversion from string to number yields NaN

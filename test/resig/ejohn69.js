@@ -10,7 +10,7 @@ Ninja.prototype.swing = function(){
   return this; 
 }; 
  
-assert( !ninjaA.swing().swung ); 
-assert( !ninjaB.swing().swung );
-dumpValue(ninjaA.swing().swung);
-dumpValue(ninjaB.swing().swung);
+TAJS_assert( !ninjaA.swing().swung ); 
+TAJS_assert( !ninjaB.swing().swung );
+TAJS_dumpValue(ninjaA.swing().swung);
+TAJS_dumpValue(ninjaB.swing().swung);

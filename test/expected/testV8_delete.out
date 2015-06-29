@@ -1,7 +1,5 @@
-test/v8tests/delete.js:32:1: [definite] ReferenceError, reading absent variable assertTrue
-test/v8tests/delete.js:30:1: [definite] Unreachable function has
-test/v8tests/delete.js:32:19: [definite] Unreachable code
-test/v8tests/delete.js:52:5: [definite] The variable o is never used
-test/v8tests/delete.js:64:10: [definite] The variable i is never used
-test/v8tests/delete.js:77:5: [definite] The variable a is never used
-test/v8tests/delete.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/delete.js:32:1]
+test/v8tests/delete.js:30:36: [maybe] Reading absent property (computed name)
+test/v8tests/delete.js:30:38: [maybe] The variable k has values with different types
+test/v8tests/delete.js:65:3: [info] Writing to unknown property that may cause loss of precision
+test/v8tests/delete.js:66:3: [info] Writing to unknown property that may cause loss of precision
+test/v8tests/delete.js:30:36: [info] Reading from unknown property that may cause loss of precision

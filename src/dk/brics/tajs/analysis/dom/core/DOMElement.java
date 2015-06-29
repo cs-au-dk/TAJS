@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2013 Aarhus University
+ * Copyright 2009-2015 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,9 +16,15 @@
 
 package dk.brics.tajs.analysis.dom.core;
 
-import dk.brics.tajs.analysis.*;
+import dk.brics.tajs.analysis.Conversion;
 import dk.brics.tajs.analysis.FunctionCalls.CallInfo;
-import dk.brics.tajs.analysis.dom.*;
+import dk.brics.tajs.analysis.InitialStateBuilder;
+import dk.brics.tajs.analysis.NativeFunctions;
+import dk.brics.tajs.analysis.Solver;
+import dk.brics.tajs.analysis.State;
+import dk.brics.tajs.analysis.dom.DOMConversion;
+import dk.brics.tajs.analysis.dom.DOMObjects;
+import dk.brics.tajs.analysis.dom.DOMWindow;
 import dk.brics.tajs.analysis.dom.style.ClientBoundingRect;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.Value;
@@ -33,7 +39,9 @@ import static dk.brics.tajs.analysis.dom.DOMFunctions.createDOMProperty;
 public class DOMElement {
 
     public static ObjectLabel CONSTRUCTOR;
+
     public static ObjectLabel PROTOTYPE;
+
     public static ObjectLabel INSTANCES;
 
     public static void build(State s) {
@@ -56,7 +64,7 @@ public class DOMElement {
         s.newObject(INSTANCES);
         s.writeInternalPrototype(INSTANCES, Value.makeObject(PROTOTYPE));
 
-        /**
+        /*
          * Properties.
          */
         // DOM Level 1
@@ -65,7 +73,7 @@ public class DOMElement {
         s.multiplyObject(INSTANCES);
         INSTANCES = INSTANCES.makeSingleton().makeSummary();
 
-        /**
+        /*
          * Functions.
          */
         // Unknown
@@ -94,10 +102,10 @@ public class DOMElement {
         createDOMFunction(s, PROTOTYPE, DOMObjects.ELEMENT_SET_ID_ATTRIBUTE, "setIdAttribute", 2);
         createDOMFunction(s, PROTOTYPE, DOMObjects.ELEMENT_SET_ID_ATTRIBUTE_NS, "setIdAttributeNS", 3);
         createDOMFunction(s, PROTOTYPE, DOMObjects.ELEMENT_SET_ID_ATTRIBUTE_NODE, "setIdAttributeNode", 2);
-        
+
         // DOM Level 2
-        createDOMProperty(s, DOMAttr.INSTANCES, "ownerElement", Value.makeObject(DOMElement.INSTANCES).setReadOnly());
-        
+        createDOMProperty(s, DOMAttr.INSTANCES, "ownerElement", Value.makeObject(INSTANCES).setReadOnly());
+
         // semistandard
         createDOMFunction(s, PROTOTYPE, DOMObjects.ELEMENT_QUERY_SELECTOR_ALL, "querySelectorAll", 1);
     }
@@ -109,35 +117,44 @@ public class DOMElement {
         switch (nativeObject) {
             case ELEMENT_GET_ATTRIBUTE: {
                 NativeFunctions.expectParameters(nativeObject, call, c, 1, 1);
-                /* Value name =*/ Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
+                /* Value name =*/
+                Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
                 return Value.makeAnyStr();
             }
             case ELEMENT_SET_ATTRIBUTE: {
                 NativeFunctions.expectParameters(nativeObject, call, c, 2, 2);
-                /* Value name =*/ Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
-                /* Value value =*/ Conversion.toString(NativeFunctions.readParameter(call, s, 1), c);
+                /* Value name =*/
+                Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
+                /* Value value =*/
+                Conversion.toString(NativeFunctions.readParameter(call, s, 1), c);
                 return Value.makeUndef();
             }
             case ELEMENT_REMOVE_ATTRIBUTE: {
                 NativeFunctions.expectParameters(nativeObject, call, c, 1, 1);
-                /* Value name =*/ Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
+                /* Value name =*/
+                Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
                 return Value.makeUndef();
             }
             case ELEMENT_GET_ATTRIBUTE_NS: {
                 NativeFunctions.expectParameters(nativeObject, call, c, 2, 2);
-                /* Value namespace =*/ Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
-                /* Value name =*/ Conversion.toString(NativeFunctions.readParameter(call, s, 1), c);
+                /* Value namespace =*/
+                Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
+                /* Value name =*/
+                Conversion.toString(NativeFunctions.readParameter(call, s, 1), c);
                 return Value.makeAnyStr();
             }
             case ELEMENT_GET_ATTRIBUTE_NODE: {
                 NativeFunctions.expectParameters(nativeObject, call, c, 1, 1);
-                /* Value name =*/ Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
+                /* Value name =*/
+                Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
                 return Value.makeObject(DOMAttr.INSTANCES);
             }
             case ELEMENT_GET_ATTRIBUTE_NODE_NS: {
                 NativeFunctions.expectParameters(nativeObject, call, c, 2, 2);
-                /* Value namespace =*/ Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
-                /* Value name =*/ Conversion.toString(NativeFunctions.readParameter(call, s, 1), c);
+                /* Value namespace =*/
+                Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
+                /* Value name =*/
+                Conversion.toString(NativeFunctions.readParameter(call, s, 1), c);
                 return Value.makeObject(DOMAttr.INSTANCES);
             }
             case ELEMENT_GET_BOUNDING_CLIENT_RECT: {
@@ -147,76 +164,95 @@ public class DOMElement {
             case ELEMENT_GET_ELEMENTS_BY_TAGNAME: {
                 // TODO: needs precision, but cannot do like document.getElementsByTagName() bc. State is for everything
                 NativeFunctions.expectParameters(nativeObject, call, c, 1, 1);
-                /* Value name =*/ Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
+                /* Value name =*/
+                Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
                 return Value.makeObject(DOMNodeList.INSTANCES);
             }
             case ELEMENT_GET_ELEMENTS_BY_TAGNAME_NS: {
                 NativeFunctions.expectParameters(nativeObject, call, c, 2, 2);
-                /* Value namespace =*/ Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
-                /* Value name =*/ Conversion.toString(NativeFunctions.readParameter(call, s, 1), c);
+                /* Value namespace =*/
+                Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
+                /* Value name =*/
+                Conversion.toString(NativeFunctions.readParameter(call, s, 1), c);
                 return Value.makeObject(DOMNodeList.INSTANCES);
             }
             case ELEMENT_HAS_ATTRIBUTE: {
                 NativeFunctions.expectParameters(nativeObject, call, c, 1, 1);
-                /* Value name =*/ Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
+                /* Value name =*/
+                Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
                 return Value.makeAnyBool();
             }
             case ELEMENT_HAS_ATTRIBUTE_NS: {
                 NativeFunctions.expectParameters(nativeObject, call, c, 2, 2);
-                /* Value namespace =*/ Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
-                /* Value name =*/ Conversion.toString(NativeFunctions.readParameter(call, s, 1), c);
+                /* Value namespace =*/
+                Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
+                /* Value name =*/
+                Conversion.toString(NativeFunctions.readParameter(call, s, 1), c);
                 return Value.makeAnyBool();
             }
             case ELEMENT_REMOVE_ATTRIBUTE_NS: {
                 NativeFunctions.expectParameters(nativeObject, call, c, 2, 2);
-                /* Value namespaceURI =*/ Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
-                /* Value localName =*/ Conversion.toString(NativeFunctions.readParameter(call, s, 1), c);
+                /* Value namespaceURI =*/
+                Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
+                /* Value localName =*/
+                Conversion.toString(NativeFunctions.readParameter(call, s, 1), c);
                 return Value.makeUndef();
             }
             case ELEMENT_REMOVE_ATTRIBUTE_NODE: {
                 NativeFunctions.expectParameters(nativeObject, call, c, 1, 1);
-                Value oldAttr = DOMConversion.toAttr(NativeFunctions.readParameter(call, s, 0), c);
-                return oldAttr;
+                return DOMConversion.toAttr(NativeFunctions.readParameter(call, s, 0), c);
             }
             case ELEMENT_SET_ATTRIBUTE_NS: {
                 NativeFunctions.expectParameters(nativeObject, call, c, 3, 3);
-                /* Value namespace =*/ Conversion.toString(NativeFunctions.readParameter(call, s, 0), c).joinNull();
-                /* Value name =*/ Conversion.toString(NativeFunctions.readParameter(call, s, 1), c);
-                /* Value value =*/ Conversion.toString(NativeFunctions.readParameter(call, s, 2), c);
+                /* Value namespace =*/
+                Conversion.toString(NativeFunctions.readParameter(call, s, 0), c).joinNull();
+                /* Value name =*/
+                Conversion.toString(NativeFunctions.readParameter(call, s, 1), c);
+                /* Value value =*/
+                Conversion.toString(NativeFunctions.readParameter(call, s, 2), c);
                 return Value.makeUndef();
             }
             case ELEMENT_SET_ATTRIBUTE_NODE: {
                 NativeFunctions.expectParameters(nativeObject, call, c, 1, 1);
-                /* Value newAttr =*/ DOMConversion.toAttr(NativeFunctions.readParameter(call, s, 0), c);
+                /* Value newAttr =*/
+                DOMConversion.toAttr(NativeFunctions.readParameter(call, s, 0), c);
                 return Value.makeObject(DOMAttr.INSTANCES).joinNull();
             }
             case ELEMENT_SET_ATTRIBUTE_NODE_NS: {
                 NativeFunctions.expectParameters(nativeObject, call, c, 1, 1);
-                /* Value newAttr =*/ DOMConversion.toAttr(NativeFunctions.readParameter(call, s, 0), c);
+                /* Value newAttr =*/
+                DOMConversion.toAttr(NativeFunctions.readParameter(call, s, 0), c);
                 return Value.makeObject(DOMAttr.INSTANCES).joinNull();
             }
             case ELEMENT_SET_ID_ATTRIBUTE: {
                 NativeFunctions.expectParameters(nativeObject, call, c, 2, 2);
-                /* Value name =*/ Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
-                /* Value isId =*/ Conversion.toBoolean(NativeFunctions.readParameter(call, s, 1));
+                /* Value name =*/
+                Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
+                /* Value isId =*/
+                Conversion.toBoolean(NativeFunctions.readParameter(call, s, 1));
                 return Value.makeUndef();
             }
             case ELEMENT_SET_ID_ATTRIBUTE_NS: {
                 NativeFunctions.expectParameters(nativeObject, call, c, 3, 3);
-                /* Value namespaceURI =*/ Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
-                /* Value localName =*/ Conversion.toString(NativeFunctions.readParameter(call, s, 1), c);
-                /* Value isId =*/ Conversion.toBoolean(NativeFunctions.readParameter(call, s, 2));
+                /* Value namespaceURI =*/
+                Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
+                /* Value localName =*/
+                Conversion.toString(NativeFunctions.readParameter(call, s, 1), c);
+                /* Value isId =*/
+                Conversion.toBoolean(NativeFunctions.readParameter(call, s, 2));
                 return Value.makeUndef();
             }
             case ELEMENT_SET_ID_ATTRIBUTE_NODE: {
                 NativeFunctions.expectParameters(nativeObject, call, c, 2, 2);
-                /* Value idAttr =*/ DOMConversion.toAttr(NativeFunctions.readParameter(call, s, 0), c);
-                /* Value isId =*/ Conversion.toBoolean(NativeFunctions.readParameter(call, s, 1));
+                /* Value idAttr =*/
+                DOMConversion.toAttr(NativeFunctions.readParameter(call, s, 0), c);
+                /* Value isId =*/
+                Conversion.toBoolean(NativeFunctions.readParameter(call, s, 1));
                 return Value.makeUndef();
             }
             case ELEMENT_QUERY_SELECTOR_ALL: {
-            	NativeFunctions.expectParameters(nativeObject, call, c, 1, 1);
-            	return Value.makeObject(DOMNodeList.INSTANCES);
+                NativeFunctions.expectParameters(nativeObject, call, c, 1, 1);
+                return Value.makeObject(DOMNodeList.INSTANCES);
             }
             default: {
                 throw new AnalysisException("Unknown Native Object: " + nativeObject);

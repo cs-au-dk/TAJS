@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2013 Aarhus University
+ * Copyright 2009-2015 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,6 @@
 package dk.brics.tajs.flowgraph.jsnodes;
 
 import dk.brics.tajs.flowgraph.AbstractNode;
-import dk.brics.tajs.flowgraph.IReturnNode;
 import dk.brics.tajs.flowgraph.SourceLocation;
 
 /**
@@ -27,47 +26,46 @@ import dk.brics.tajs.flowgraph.SourceLocation;
  * <p>
  * Must be the only node in its block.
  */
-public class ReturnNode extends Node implements IReturnNode {
+public class ReturnNode extends Node {
 
-	private int value_reg; // NO_VALUE if absent
-	
-	/**
-	 * Constructs a new return node.
-	 * Variable number {@link AbstractNode#NO_VALUE} represents absent value (implicitly 'undefined').
-	 */
-	public ReturnNode(int value_reg, SourceLocation location) {
-		super(location);
-		this.value_reg = value_reg;
-	}
+    private int value_reg;
 
-	/**
-	 * Returns the return value register.
-	 * Variable number {@link AbstractNode#NO_VALUE} represents absent value (implicitly 'undefined').
-	 */
-	@Override
-	public int getReturnValueRegister() {
-		return value_reg;
-	}
+    /**
+     * Constructs a new return node.
+     * Variable number {@link AbstractNode#NO_VALUE} represents absent value (implicitly 'undefined').
+     */
+    public ReturnNode(int value_reg, SourceLocation location) {
+        super(location);
+        this.value_reg = value_reg;
+    }
+
+    /**
+     * Returns the return value register.
+     * Variable number {@link AbstractNode#NO_VALUE} represents absent value (implicitly 'undefined').
+     */
+    public int getReturnValueRegister() {
+        return value_reg;
+    }
 
     /**
      * Sets the return value register.
      */
     public void setReturnValueRegister(int value_var) {
-        this.value_reg = value_var;
+        value_reg = value_var;
     }
 
-	@Override
-	public String toString() {
-		return "return" + (value_reg != NO_VALUE ? "[v" + value_reg + "]" : "");
-	}
+    @Override
+    public String toString() {
+        return "return" + (value_reg != NO_VALUE ? "[v" + value_reg + "]" : "");
+    }
 
-	@Override
-	public <ArgType> void visitBy(NodeVisitor<ArgType> v, ArgType a) {
-		v.visit(this, a);
-	}
+    @Override
+    public <ArgType> void visitBy(NodeVisitor<ArgType> v, ArgType a) {
+        v.visit(this, a);
+    }
 
-	@Override
-	public boolean canThrowExceptions() {
-		return false;
-	}
+    @Override
+    public boolean canThrowExceptions() {
+        return false;
+    }
 }

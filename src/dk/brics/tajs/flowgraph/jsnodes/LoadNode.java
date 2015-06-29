@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2013 Aarhus University
+ * Copyright 2009-2015 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,30 +27,23 @@ import dk.brics.tajs.flowgraph.SourceLocation;
  */
 public abstract class LoadNode extends Node {
 
-	private int result_reg;
+    private int result_reg;
 
     /**
      * Constructs a new load node.
      *
      * @param result_reg The register to assign to.
-     * @param location The source location.
+     * @param location   The source location.
      */
-	public LoadNode(int result_reg, SourceLocation location) {
-		super(location);
-		this.result_reg = result_reg;
-	}
+    public LoadNode(int result_reg, SourceLocation location) {
+        super(location);
+        this.result_reg = result_reg;
+    }
 
     /**
      * Returns the result register, or {@link dk.brics.tajs.flowgraph.AbstractNode#NO_VALUE} if not applicable.
      */
-	public int getResultRegister() {
-		return result_reg;
-	}
-	
-	/**
-	 * Sets the result register.
-	 */
-	public void setResultRegister(int result_reg) {
-		this.result_reg = result_reg;
-	}
+    public int getResultRegister() {
+        return result_reg;
+    }
 }

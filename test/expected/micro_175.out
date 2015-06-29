@@ -1,3 +1,3 @@
-test/micro/test175.js:2:13: [definite] Unreachable function
+test/micro/test175.js:2:18: [definite] Unreachable function
 test/micro/test175.js:1:1: [info] Abstract object: {0:1.0,1:2.0,length:2.0,[[Prototype]]=[@Array.prototype[native]]}
 test/micro/test175.js:2:1: [info] Abstract object: {length:0.0,prototype:[@Object#node8],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@<the global object>[native]]]}

@@ -3,11 +3,11 @@ function f(x) {
 	return arguments[0]
 }
 
-dumpValue(f(3))
+TAJS_dumpValue(f(3))
 
 function g(x) {
         x = x * -1
 	return x
 }
 
-dumpValue(g(4))
+TAJS_dumpValue(g(4))

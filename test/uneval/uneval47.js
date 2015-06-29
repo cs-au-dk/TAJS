@@ -1,3 +1,3 @@
 geval = eval
 x = geval("3")
-dumpValue(x)
+TAJS_dumpValue(x)

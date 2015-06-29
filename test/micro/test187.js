@@ -1,27 +1,27 @@
 var x = {a:42};
-dumpValue(delete x.a); // true
-dumpValue(x.a); // Undef
-dumpValue(delete x.b); // true
-dumpValue(x.b); // Undef
-dumpValue(delete x); // false, cannot delete because property has [[DontDelete]]
-dumpValue(x);
+TAJS_dumpValue(delete x.a); // true
+TAJS_dumpValue(x.a); // Undef
+TAJS_dumpValue(delete x.b); // true
+TAJS_dumpValue(x.b); // Undef
+TAJS_dumpValue(delete x); // false, cannot delete because property has [[DontDelete]]
+TAJS_dumpValue(x);
 
 y = 7;
-dumpValue(delete y); // true
-// dumpValue(y); // ReferenceError
+TAJS_dumpValue(delete y); // true
+// TAJS_dumpValue(y); // ReferenceError
 
 (function() {
 	var x = 7;
-	dumpValue(delete x); // false, cannot delete because property has [[DontDelete]]
-	dumpValue(x); // not deleted
+	TAJS_dumpValue(delete x); // false, cannot delete because property has [[DontDelete]]
+	TAJS_dumpValue(x); // not deleted
 
 	z = 8;
-	dumpValue(delete z); // true
-	// dumpValue(z); // ReferenceError
+	TAJS_dumpValue(delete z); // true
+	// TAJS_dumpValue(z); // ReferenceError
 })();
 
-dumpValue(delete q); // true
+TAJS_dumpValue(delete q); // true
 
 function f() {}
-dumpValue(delete f); // false, cannot delete because property has [[DontDelete]]
+TAJS_dumpValue(delete f); // false, cannot delete because property has [[DontDelete]]
 

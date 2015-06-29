@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2013 Aarhus University
+ * Copyright 2009-2015 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,53 +21,53 @@ package dk.brics.tajs.lattice;
  */
 public interface Bool {
 
-	/**
-	 * Returns true if this value is maybe any boolean.
-	 */
-	public boolean isMaybeAnyBool();
+    /**
+     * Returns true if this value is maybe any boolean.
+     */
+    boolean isMaybeAnyBool();
 
-	/**
-	 * Returns true if this value is maybe true.
-	 */
-	public boolean isMaybeTrueButNotFalse();
+    /**
+     * Returns true if this value is maybe true but not false.
+     */
+    boolean isMaybeTrueButNotFalse();
 
-	/**
-	 * Returns true if this value is maybe false.
-	 */
-	public boolean isMaybeFalseButNotTrue();
-	
-	/**
-	 * Returns true if this value is maybe true.
-	 */
-	public boolean isMaybeTrue();
+    /**
+     * Returns true if this value is maybe false but not true.
+     */
+    boolean isMaybeFalseButNotTrue();
 
-	/**
-	 * Returns true if this value is maybe false.
-	 */
-	public boolean isMaybeFalse();
+    /**
+     * Returns true if this value is maybe true.
+     */
+    boolean isMaybeTrue();
 
-	/**
-	 * Returns true if this value is definitely not a boolean.
-	 */
-	public boolean isNotBool(); 
-	
-	/**
-	 * Returns true if this value is maybe a non-boolean.
-	 */
-	public boolean isMaybeOtherThanBool();
-	
-	/**
-	 * Constructs a value as the join of this value and maybe any boolean.
-	 */
-	public Value joinAnyBool();
+    /**
+     * Returns true if this value is maybe false.
+     */
+    boolean isMaybeFalse();
 
-	/**
-	 * Constructs a value as the join of this value and the given concrete boolean value.
-	 */
-	public Value joinBool(boolean x);
+    /**
+     * Returns true if this value is definitely not a boolean.
+     */
+    boolean isNotBool();
 
-	/**
-	 * Constructs a value as the join of this value and the given concrete boolean value.
-	 */
-	public Value joinBool(Value x);
+    /**
+     * Returns true if this value is maybe a non-boolean.
+     */
+    boolean isMaybeOtherThanBool();
+
+    /**
+     * Constructs a value as the join of this value and any boolean.
+     */
+    Value joinAnyBool();
+
+    /**
+     * Constructs a value as the join of this value and the given concrete boolean value.
+     */
+    Value joinBool(boolean x);
+
+    /**
+     * Constructs a value as the join of this value and the given concrete boolean value.
+     */
+    Value joinBool(Value x);
 }

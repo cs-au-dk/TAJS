@@ -1,4 +1,4 @@
-fg2: <main> function()
+fg2: function()
   block 0: [entry]
     node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0180.js:1:1)
     ->[block 1]
@@ -6,7 +6,7 @@ fg2: <main> function()
     node 1: read-variable['decrypted',v3,-] (test/flowgraphbuilder/flowgraph_builder0180.js:1:5)
     node 2: read-variable['text',v4,-] (test/flowgraphbuilder/flowgraph_builder0180.js:1:18)
     node 3: !=[v3,v4,v2] (test/flowgraphbuilder/flowgraph_builder0180.js:1:5)
-    node 4: if[v2](true-block:2,false-block:2) (test/flowgraphbuilder/flowgraph_builder0180.js:1:1)
+    node 4: if[v2](true-block:2,false-block:2)* (test/flowgraphbuilder/flowgraph_builder0180.js:1:1)
     ->[block 2]
   block 2: [exit-ordinary]
     node 5: return[v1] (test/flowgraphbuilder/flowgraph_builder0180.js:1:1)

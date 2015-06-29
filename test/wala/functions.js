@@ -13,7 +13,7 @@ function outer(outerArg) {
   return outerArg;
 }
 
-assert(outer(3) == 10);
-dumpValue(outer(3));
+TAJS_assert(outer(3) == 10);
+TAJS_dumpValue(outer(3));
 
   

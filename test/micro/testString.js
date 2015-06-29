@@ -4,62 +4,62 @@ var a = String();
 var b = String(true);
 var c = String(77);
 
-dumpValue(a);
-dumpValue(b);
-dumpValue(c);
-dumpValue(c.valueOf());
+TAJS_dumpValue(a);
+TAJS_dumpValue(b);
+TAJS_dumpValue(c);
+TAJS_dumpValue(c.valueOf());
 
 var d = new String();
 var e = new String(false);
 var f = new String(77.77);
 
-dumpValue(d);
-dumpValue(d.valueOf());
-dumpValue(d.length);
-dumpValue(e);
-dumpValue(e.valueOf());
-dumpValue(e.toUpperCase());
-dumpValue(e.length);
-dumpValue(f);
-dumpValue(f.toString());
-dumpValue(f.length);
+TAJS_dumpValue(d);
+TAJS_dumpValue(d.valueOf());
+TAJS_dumpValue(d.length);
+TAJS_dumpValue(e);
+TAJS_dumpValue(e.valueOf());
+TAJS_dumpValue(e.toUpperCase());
+TAJS_dumpValue(e.length);
+TAJS_dumpValue(f);
+TAJS_dumpValue(f.toString());
+TAJS_dumpValue(f.length);
 
-dumpValue(String.fromCharCode());
-dumpValue(String.fromCharCode(65, 66, 67, 68, 69, 70));
+TAJS_dumpValue(String.fromCharCode());
+TAJS_dumpValue(String.fromCharCode(65, 66, 67, 68, 69, 70));
 
-dumpValue(f.charAt(2));
-dumpValue(f.charAt(140));
+TAJS_dumpValue(f.charAt(2));
+TAJS_dumpValue(f.charAt(140));
 
-dumpValue(f.charCodeAt(2));
-dumpValue(f.charCodeAt(140));
+TAJS_dumpValue(f.charCodeAt(2));
+TAJS_dumpValue(f.charCodeAt(140));
 var g = new Number(42.125);
 g.charCodeAt = f.charCodeAt;
-dumpValue(g.charCodeAt(3));
+TAJS_dumpValue(g.charCodeAt(3));
 
 
-dumpValue(f.concat(e, "finish"));
+TAJS_dumpValue(f.concat(e, "finish"));
 g.concat = f.concat;
-dumpValue(g.concat(g));
+TAJS_dumpValue(g.concat(g));
 
 var h = new String("testing indexOf");
-dumpValue(h.indexOf("i"));
-dumpValue(h.indexOf("i", 7));
-dumpValue(h.indexOf("i", 40));
+TAJS_dumpValue(h.indexOf("i"));
+TAJS_dumpValue(h.indexOf("i", 7));
+TAJS_dumpValue(h.indexOf("i", 40));
 g.indexOf = h.indexOf;
-dumpValue(g.indexOf("."));
+TAJS_dumpValue(g.indexOf("."));
 
-dumpValue(h.lastIndexOf("i"));
-dumpValue(h.lastIndexOf("i", 7));
-dumpValue(h.lastIndexOf("i", 1));
+TAJS_dumpValue(h.lastIndexOf("i"));
+TAJS_dumpValue(h.lastIndexOf("i", 7));
+TAJS_dumpValue(h.lastIndexOf("i", 1));
 g.lastIndexOf = h.lastIndexOf;
-dumpValue(g.lastIndexOf("."));
+TAJS_dumpValue(g.lastIndexOf("."));
 
 var i = new String("testing localeCompare");
-dumpValue(i.localeCompare(i));
-dumpValue(i.localeCompare("test"));
-dumpValue(i.localeCompare("utest"));
-dumpValue(i.localeCompare());
+TAJS_dumpValue(i.localeCompare(i));
+TAJS_dumpValue(i.localeCompare("test"));
+TAJS_dumpValue(i.localeCompare("utest"));
+TAJS_dumpValue(i.localeCompare());
 
 // var j = new String("testing match");
-// dumpValue(j.match(/test/));
-// dumpValue(j.match(new RegExp("test")));
+// TAJS_dumpValue(j.match(/test/));
+// TAJS_dumpValue(j.match(new RegExp("test")));

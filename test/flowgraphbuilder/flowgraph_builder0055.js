@@ -4,4 +4,4 @@ function f() {
 
 x = f() && true 
 
-dumpValue(x)
+TAJS_dumpValue(x)

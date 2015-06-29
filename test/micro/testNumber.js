@@ -3,37 +3,37 @@
 var a = Number();
 var b = Number(42.66);
 var c = Number(true);
-dumpValue(a);
-dumpValue(b);
-dumpValue(c);
-assert(a == 0);
-assert(b == 42.66);
-assert(c == 1);
+TAJS_dumpValue(a);
+TAJS_dumpValue(b);
+TAJS_dumpValue(c);
+TAJS_assert(a == 0);
+TAJS_assert(b == 42.66);
+TAJS_assert(c == 1);
 
 // 15.7.2
 var d = new Number();
 var e = new Number(47.11);
 var f = new Number(true);
-dumpValue(d);
-dumpValue(d.valueOf());
-dumpValue(e);
-dumpValue(e.valueOf());
-dumpValue(f);
-dumpValue(f.valueOf());
+TAJS_dumpValue(d);
+TAJS_dumpValue(d.valueOf());
+TAJS_dumpValue(e);
+TAJS_dumpValue(e.valueOf());
+TAJS_dumpValue(f);
+TAJS_dumpValue(f.valueOf());
 
 // 15.7.3.1-6
-dumpValue(Number.prototype.valueOf());
-dumpValue(Number.MAX_VALUE);
-dumpValue(Number.MIN_VALUE);
-dumpValue(Number.NaN);
-dumpValue(Number.NEGATIVE_INFINITY);
-dumpValue(Number.POSITIVE_INFINITY);
+TAJS_dumpValue(Number.prototype.valueOf());
+TAJS_dumpValue(Number.MAX_VALUE);
+TAJS_dumpValue(Number.MIN_VALUE);
+TAJS_dumpValue(Number.NaN);
+TAJS_dumpValue(Number.NEGATIVE_INFINITY);
+TAJS_dumpValue(Number.POSITIVE_INFINITY);
 
 // 15.7.4
-dumpValue(e.toString());
-dumpValue(b.toString());
-dumpValue(b.valueOf());
-dumpValue(b.toExponential(1));
-dumpValue(e.toFixed());
-dumpValue(e.toExponential(4));
-dumpValue(e.toPrecision(10));
+TAJS_dumpValue(e.toString());
+TAJS_dumpValue(b.toString());
+TAJS_dumpValue(b.valueOf());
+TAJS_dumpValue(b.toExponential(1));
+TAJS_dumpValue(e.toFixed());
+TAJS_dumpValue(e.toExponential(4));
+TAJS_dumpValue(e.toPrecision(10));

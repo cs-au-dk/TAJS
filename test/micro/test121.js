@@ -8,4 +8,4 @@ for (a in x) {
     delete x["c"]
 }
 
-dumpValue(z);
+TAJS_dumpValue(z);

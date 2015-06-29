@@ -1,10 +1,10 @@
 var i = 0;
 var j = 799;
-dumpValue(i);
-dumpValue(j);
+TAJS_dumpValue(i);
+TAJS_dumpValue(j);
 while (i <= j) {
-	dumpValue("foo");
+	TAJS_dumpValue("foo");
 	i++;
 } 
-dumpValue(i);
-dumpValue("bar");
+TAJS_dumpValue(i);
+TAJS_dumpValue("bar");

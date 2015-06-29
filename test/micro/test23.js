@@ -9,7 +9,7 @@ function f(x) {
 var g1 = f(1);
 var g2 = g1(2);
 var g3 = g2(3);
-dumpValue(g1);
-dumpValue(g2);
-dumpValue(g3);
-assert(g3 === 6);
+TAJS_dumpValue(g1);
+TAJS_dumpValue(g2);
+TAJS_dumpValue(g3);
+TAJS_assert(g3 === 6);

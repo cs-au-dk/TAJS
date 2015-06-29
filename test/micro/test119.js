@@ -7,7 +7,7 @@ function recursive(disks) {
   } else {
     other = "FOO";
     recursive(disks - 1);
-    dumpValue(other);
+    TAJS_dumpValue(other);
   }
 }
 

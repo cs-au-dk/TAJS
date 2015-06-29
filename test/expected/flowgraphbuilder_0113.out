@@ -1,4 +1,4 @@
-fg2: <main> function()
+fg2: function()
   block 0: [entry]
     node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0113.js:1:1)
     node 1: function-decl[function f(x,y),-] (test/flowgraphbuilder/flowgraph_builder0113.js:1:1)
@@ -6,7 +6,7 @@ fg2: <main> function()
   block 1:
     node 2: new[v2] (test/flowgraphbuilder/flowgraph_builder0113.js:5:5)
     node 3: function-expr[function(x),v3] (test/flowgraphbuilder/flowgraph_builder0113.js:5:10)
-    node 4: write-property[v2,'g',v3] (test/flowgraphbuilder/flowgraph_builder0113.js:5:5)
+    node 4: write-property[v2,'g',v3] (test/flowgraphbuilder/flowgraph_builder0113.js:5:7)
     node 5: write-variable[v2,'a']* (test/flowgraphbuilder/flowgraph_builder0113.js:5:1)
     ->[block 2]
   block 2: [exit-ordinary]
@@ -29,25 +29,25 @@ function f(x,y)
     node 13: call[v3,'g',v4,v1] (test/flowgraphbuilder/flowgraph_builder0113.js:2:9)
     ->[block 7]
   block 7: [exit-ordinary]
-    node 14: return[v1] (test/flowgraphbuilder/flowgraph_builder0113.js:2:13)
+    node 14: return[v1] (test/flowgraphbuilder/flowgraph_builder0113.js:3:1)
     ->[]
   block 8: [exit-exceptional]
-    node 15: exceptional-return (test/flowgraphbuilder/flowgraph_builder0113.js:2:13)
+    node 15: exceptional-return (test/flowgraphbuilder/flowgraph_builder0113.js:3:1)
     ->[]
 function(x)
   block 9: [entry]
     node 16: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0113.js:5:10)
     ->[block 10]
   block 10:
-    node 17: read-variable['x',v1,-] (test/flowgraphbuilder/flowgraph_builder0113.js:5:31)
+    node 17: read-variable['x',v1,v2]* (test/flowgraphbuilder/flowgraph_builder0113.js:5:31)
     ->[block 11]
   block 11: [exit-ordinary]
-    node 18: return[v1] (test/flowgraphbuilder/flowgraph_builder0113.js:5:31)
+    node 18: return[v1] (test/flowgraphbuilder/flowgraph_builder0113.js:5:34)
     ->[]
   block 12: [exit-exceptional]
-    node 19: exceptional-return (test/flowgraphbuilder/flowgraph_builder0113.js:5:31)
+    node 19: exceptional-return (test/flowgraphbuilder/flowgraph_builder0113.js:5:34)
     ->[]
 
-test/flowgraphbuilder/flowgraph_builder0113.js:5:5: [definite] Dead assignment, property g is never read
+test/flowgraphbuilder/flowgraph_builder0113.js:5:7: [definite] Dead assignment, property g is never read
 test/flowgraphbuilder/flowgraph_builder0113.js:1:1: [definite] Unreachable function f
 test/flowgraphbuilder/flowgraph_builder0113.js:5:10: [definite] Unreachable function

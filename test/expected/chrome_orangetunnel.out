@@ -1,33 +1,33 @@
-test/chromeexperiments/orangetunnel.tidy.html:27:17: [definite] The conditional expression is always false
-test/chromeexperiments/orangetunnel.tidy.html:27:21: [definite] The conditional expression is always false
-test/chromeexperiments/orangetunnel.tidy.html:28:38: [definite] Unreachable function
-test/chromeexperiments/orangetunnel.tidy.html:103:2: [definite] The variable event is never used
-test/chromeexperiments/orangetunnel.tidy.html:53:29: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/orangetunnel.tidy.html:55:29: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/orangetunnel.tidy.html:69:40: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/orangetunnel.tidy.html:69:69: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/orangetunnel.tidy.html:70:40: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/orangetunnel.tidy.html:70:87: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/orangetunnel.tidy.html:71:40: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/orangetunnel.tidy.html:71:93: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/orangetunnel.tidy.html:72:40: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/orangetunnel.tidy.html:72:75: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/orangetunnel.tidy.html:4: [maybe] Uncaught exception, constructed at [test/chromeexperiments/orangetunnel.tidy.html:53:29, test/chromeexperiments/orangetunnel.tidy.html:55:29, test/chromeexperiments/orangetunnel.tidy.html:69:40, test/chromeexperiments/orangetunnel.tidy.html:69:69, test/chromeexperiments/orangetunnel.tidy.html:70:40, test/chromeexperiments/orangetunnel.tidy.html:70:87, test/chromeexperiments/orangetunnel.tidy.html:71:40, test/chromeexperiments/orangetunnel.tidy.html:71:93, test/chromeexperiments/orangetunnel.tidy.html:72:40, test/chromeexperiments/orangetunnel.tidy.html:72:75]
-test/chromeexperiments/orangetunnel.tidy.html:53:29: [maybe] Reading absent property (computed name)
-test/chromeexperiments/orangetunnel.tidy.html:53:67: [maybe] Conversion to number yields NaN
-test/chromeexperiments/orangetunnel.tidy.html:53:72: [maybe] Reading absent property (computed name)
-test/chromeexperiments/orangetunnel.tidy.html:54:51: [maybe] Conversion to number yields NaN
-test/chromeexperiments/orangetunnel.tidy.html:54:60: [maybe] Reading absent property (computed name)
-test/chromeexperiments/orangetunnel.tidy.html:55:29: [maybe] Reading absent property (computed name)
-test/chromeexperiments/orangetunnel.tidy.html:55:67: [maybe] Conversion to number yields NaN
-test/chromeexperiments/orangetunnel.tidy.html:55:72: [maybe] Reading absent property (computed name)
-test/chromeexperiments/orangetunnel.tidy.html:56:51: [maybe] Conversion to number yields NaN
-test/chromeexperiments/orangetunnel.tidy.html:56:60: [maybe] Reading absent property (computed name)
-test/chromeexperiments/orangetunnel.tidy.html:69:40: [maybe] Reading absent property (computed name)
-test/chromeexperiments/orangetunnel.tidy.html:69:69: [maybe] Reading absent property (computed name)
-test/chromeexperiments/orangetunnel.tidy.html:70:40: [maybe] Reading absent property (computed name)
-test/chromeexperiments/orangetunnel.tidy.html:70:87: [maybe] Reading absent property (computed name)
-test/chromeexperiments/orangetunnel.tidy.html:71:40: [maybe] Reading absent property (computed name)
-test/chromeexperiments/orangetunnel.tidy.html:71:93: [maybe] Reading absent property (computed name)
-test/chromeexperiments/orangetunnel.tidy.html:72:40: [maybe] Reading absent property (computed name)
-test/chromeexperiments/orangetunnel.tidy.html:72:75: [maybe] Reading absent property (computed name)
+test/chromeexperiments/orangetunnel.html:24:17: [definite] The conditional expression is always false
+test/chromeexperiments/orangetunnel.html:24:21: [definite] The conditional expression is always false
+test/chromeexperiments/orangetunnel.html:78:21: [definite] The conditional expression is always true
+test/chromeexperiments/orangetunnel.html:25:38: [definite] Unreachable function
+test/chromeexperiments/orangetunnel.html:82:50: [definite] Unreachable function
+test/chromeexperiments/orangetunnel.html:50:29: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/orangetunnel.html:52:29: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/orangetunnel.html:66:40: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/orangetunnel.html:66:69: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/orangetunnel.html:67:40: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/orangetunnel.html:67:87: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/orangetunnel.html:68:40: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/orangetunnel.html:68:93: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/orangetunnel.html:69:40: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/orangetunnel.html:69:75: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/orangetunnel.html:50:29: [maybe] Reading absent property (computed name)
+test/chromeexperiments/orangetunnel.html:50:67: [maybe] Conversion to number yields NaN
+test/chromeexperiments/orangetunnel.html:50:72: [maybe] Reading absent property (computed name)
+test/chromeexperiments/orangetunnel.html:51:51: [maybe] Conversion to number yields NaN
+test/chromeexperiments/orangetunnel.html:51:60: [maybe] Reading absent property (computed name)
+test/chromeexperiments/orangetunnel.html:52:29: [maybe] Reading absent property (computed name)
+test/chromeexperiments/orangetunnel.html:52:67: [maybe] Conversion to number yields NaN
+test/chromeexperiments/orangetunnel.html:52:72: [maybe] Reading absent property (computed name)
+test/chromeexperiments/orangetunnel.html:53:51: [maybe] Conversion to number yields NaN
+test/chromeexperiments/orangetunnel.html:53:60: [maybe] Reading absent property (computed name)
+test/chromeexperiments/orangetunnel.html:66:40: [maybe] Reading absent property (computed name)
+test/chromeexperiments/orangetunnel.html:66:69: [maybe] Reading absent property (computed name)
+test/chromeexperiments/orangetunnel.html:67:40: [maybe] Reading absent property (computed name)
+test/chromeexperiments/orangetunnel.html:67:87: [maybe] Reading absent property (computed name)
+test/chromeexperiments/orangetunnel.html:68:40: [maybe] Reading absent property (computed name)
+test/chromeexperiments/orangetunnel.html:68:93: [maybe] Reading absent property (computed name)
+test/chromeexperiments/orangetunnel.html:69:40: [maybe] Reading absent property (computed name)
+test/chromeexperiments/orangetunnel.html:69:75: [maybe] Reading absent property (computed name)

@@ -4,7 +4,7 @@ function f() {
   y = x.a;
 }
 f()
-dumpValue(x.a)
+TAJS_dumpValue(x.a)
 x = {a:"foo"}
 f()
-dumpValue(x.a)
+TAJS_dumpValue(x.a)

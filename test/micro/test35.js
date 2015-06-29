@@ -6,6 +6,6 @@ this.foo = function(xx) {
 var x = this.foo(2222);
 var y = this.fooo;
 
-assert(x == 2264);
-assert(y === 54);
-dumpValue(y);
+TAJS_assert(x == 2264);
+TAJS_assert(y === 54);
+TAJS_dumpValue(y);

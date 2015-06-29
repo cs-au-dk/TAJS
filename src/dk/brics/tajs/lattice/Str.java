@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2013 Aarhus University
+ * Copyright 2009-2015 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,158 +21,158 @@ package dk.brics.tajs.lattice;
  */
 public interface Str {
 
-	/**
-	 * Returns true if this value is maybe any string.
-	 */
-	public boolean isMaybeAnyStr();
+    /**
+     * Returns true if this value is maybe any string.
+     */
+    boolean isMaybeAnyStr();
 
-	/**
-	 * Returns true if value is maybe a singleton string.
-	 */
-	public boolean isMaybeSingleStr();
+    /**
+     * Returns true if value is maybe a singleton string.
+     */
+    boolean isMaybeSingleStr();
 
-	/**
-	 * Returns true if this value is maybe *any* UInt string.
-	 */
-	public boolean isMaybeStrUInt();
+    /**
+     * Returns true if this value is maybe any UInt string.
+     */
+    boolean isMaybeStrUInt();
 
-	/**
-	 * Returns true if this value is maybe *some* UInt string.
-	 */
-	public boolean isMaybeStrSomeUInt();
+    /**
+     * Returns true if this value is maybe some UInt string.
+     */
+    boolean isMaybeStrSomeUInt();
 
-	/**
-	 * Returns true if this value is maybe a non-UInt string.
-	 */
-	public boolean isMaybeStrSomeNonUInt();
+    /**
+     * Returns true if this value is maybe a non-UInt string.
+     */
+    boolean isMaybeStrSomeNonUInt();
 
-	/**
-	 * Returns true if this value is maybe any (unbounded) non-UInt number string, including Infinity, -Infinity, and NaN.
-	 */
-	public boolean isMaybeStrOtherNum();
+    /**
+     * Returns true if this value is maybe any (unbounded) non-UInt number string, including Infinity, -Infinity, and NaN.
+     */
+    boolean isMaybeStrOtherNum();
 
-	/**
-	 * Returns true if this value is maybe any identifier string.
-	 */
-	public boolean isMaybeStrIdentifier();
+    /**
+     * Returns true if this value is maybe any identifier string.
+     */
+    boolean isMaybeStrIdentifier();
 
-	/**
-	 * Returns true if this value is maybe any string consisting of identifier parts.
-	 */
-	public boolean isMaybeStrIdentifierParts();
+    /**
+     * Returns true if this value is maybe any string consisting of identifier parts.
+     */
+    boolean isMaybeStrIdentifierParts();
 
-	/**
-	 * Returns true if this value is maybe a fixed nonempty string followed by identifier parts.
-	 */
-	public boolean isMaybeStrPrefixedIdentifierParts();
+    /**
+     * Returns true if this value is maybe a fixed nonempty string followed by identifier parts.
+     */
+    boolean isMaybeStrPrefixedIdentifierParts();
 
-	/**
-	 * Returns true if this value is maybe any non-number, non-identifier-parts string.
-	 */
-	public boolean isMaybeStrOther();
+    /**
+     * Returns true if this value is maybe any non-number, non-identifier-parts string.
+     */
+    boolean isMaybeStrOther();
 
     /**
      * Returns true if this value maybe originates from a JSON source.
      */
-    public boolean isMaybeStrJSON();
+    boolean isMaybeStrJSON();
 
     /**
      * Returns true if this value is definitely originating from a JSON source.
      */
-    public boolean isStrJSON();
+    boolean isStrJSON();
 
     /**
      * Returns true if this value is definitely an identifier or identifier-parts string.
      */
-    public boolean isStrIdentifierOrIdentifierParts();
+    boolean isStrIdentifierOrIdentifierParts();
 
     /**
      * Returns true if this value is definitely an identifier string.
      */
-    public boolean isStrIdentifier();
+    boolean isStrIdentifier();
 
-	/**
-	 * Returns true if this value is maybe any UInt string but not a non-UInt string.
-	 */
-	public boolean isMaybeStrOnlyUInt();
-	
-	/**
-	 * Returns true if this value may be a non-string.
-	 */
-	public boolean isMaybeOtherThanStr();
+    /**
+     * Returns true if this value is maybe any UInt string but not a non-UInt string.
+     */
+    boolean isMaybeStrOnlyUInt();
 
-	/**
-	 * Returns true if this value is maybe a non-singleton string.
-	 */
-	public boolean isMaybeFuzzyStr();
+    /**
+     * Returns true if this value may be a non-string.
+     */
+    boolean isMaybeOtherThanStr();
 
-	/**
-	 * Returns the singleton string value, or null if definitely not a singleton string.
-	 */
-	public String getStr();
+    /**
+     * Returns true if this value is maybe a non-singleton string.
+     */
+    boolean isMaybeFuzzyStr();
 
-	/**
-	 * Returns the prefix value, or null if definitely not a fixed nonempty string followed by identifier parts.
-	 */
-	public String getPrefix();
+    /**
+     * Returns the singleton string value, or null if definitely not a singleton string.
+     */
+    String getStr();
 
-	/**
-	 * Returns true if this value is definitely not a string.
-	 */
-	public boolean isNotStr();
+    /**
+     * Returns the prefix value, or null if definitely not a fixed nonempty string followed by identifier parts.
+     */
+    String getPrefix();
 
-	/**
-	 * Constructs a value as the join of this value and maybe any string.
-	 */
-	public Value joinAnyStr();
+    /**
+     * Returns true if this value is definitely not a string.
+     */
+    boolean isNotStr();
 
-	/**
-	 * Constructs a value as the join of this value and maybe any UInt string.
-	 */
-	public Value joinAnyStrUInt();
+    /**
+     * Constructs a value as the join of this value and any string.
+     */
+    Value joinAnyStr();
 
-	/**
-	 * Constructs a value as the join of this value and maybe any non-UInt number string (excluding NaN and +/-Infinity).
-	 */
-	public Value joinAnyStrOtherNum();
+    /**
+     * Constructs a value as the join of this value and any UInt string.
+     */
+    Value joinAnyStrUInt();
 
-	/**
-	 * Constructs a value as the join of this value and maybe any identifier string.
-	 */
-	public Value joinAnyStrIdentifier();
+    /**
+     * Constructs a value as the join of this value and any non-UInt number string (excluding NaN and +/-Infinity).
+     */
+    Value joinAnyStrOtherNum();
 
-	/**
-	 * Constructs a value as the join of this value and maybe any identifier-parts string.
-	 */
-	public Value joinAnyStrIdentifierParts();
+    /**
+     * Constructs a value as the join of this value and any identifier string.
+     */
+    Value joinAnyStrIdentifier();
 
-	/**
-	 * Constructs a value as the join of this value and maybe any non-number, non-identifier-parts string (including NaN and +/-Infinity).
-	 */
-	public Value joinAnyStrOther();
+    /**
+     * Constructs a value as the join of this value and any identifier-parts string.
+     */
+    Value joinAnyStrIdentifierParts();
 
-	/**
-	 * Constructs a value as the join of this value and the given concrete string.
-	 */
-	public Value joinStr(String v);
-	
-	/**
-	 * Constructs a value as the join of this value and the given prefixed identifier-parts string.
-	 */
-	public Value joinPrefixedIdentifierParts(String v);
-	
-	/**
-	 * Constructs a value from this value where only the string facet is considered.
-	 */
-	public Value restrictToStr();
-	
-	/**
-	 * Constructs a value from this value but definitely not a string.
-	 */
-	public Value restrictToNotStr();
-	
-	/**
-	 * Checks whether the given string is matched by this value.
-	 */
-	public boolean isMaybeStr(String s);
+    /**
+     * Constructs a value as the join of this value and any non-number, non-identifier-parts string (including NaN and +/-Infinity).
+     */
+    Value joinAnyStrOther();
+
+    /**
+     * Constructs a value as the join of this value and the given concrete string.
+     */
+    Value joinStr(String v);
+
+    /**
+     * Constructs a value as the join of this value and the given prefixed identifier-parts string.
+     */
+    Value joinPrefixedIdentifierParts(String v);
+
+    /**
+     * Constructs a value from this value where only the string facet is considered.
+     */
+    Value restrictToStr();
+
+    /**
+     * Constructs a value from this value but definitely not a string.
+     */
+    Value restrictToNotStr();
+
+    /**
+     * Checks whether the given string is matched by this value.
+     */
+    boolean isMaybeStr(String s);
 }

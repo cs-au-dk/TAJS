@@ -2,6 +2,6 @@ function Ninja(){}
  
 var ninja = new Ninja(); 
  
-assert( typeof ninja == "object" );   
-assert( ninja instanceof Ninja ); 
-assert( ninja.constructor == Ninja );
+TAJS_assert( typeof ninja == "object" );   
+TAJS_assert( ninja instanceof Ninja ); 
+TAJS_assert( ninja.constructor == Ninja );

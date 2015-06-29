@@ -3,4 +3,4 @@ function foo(x) {
 }
 
 var y = foo(42);
-dumpValue(y);
+TAJS_dumpValue(y);

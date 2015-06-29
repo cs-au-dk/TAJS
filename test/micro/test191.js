@@ -1,2 +1,2 @@
 var x = (7).toString();
-dumpValue(x);
+TAJS_dumpValue(x);

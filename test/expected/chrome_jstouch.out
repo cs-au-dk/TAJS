@@ -1,134 +1,140 @@
-test/chromeexperiments/jstouch.tidy.html:830:9: [definite] The conditional expression is always false
-test/chromeexperiments/jstouch.tidy.html:830:13: [definite] Variable cpy is null/undefined
-test/chromeexperiments/jstouch.tidy.html:1108:13: [definite] The assignment to tex has no effect
-test/chromeexperiments/jstouch.tidy.html:12:29: [definite] Dead assignment, property face_groups is never read
-test/chromeexperiments/jstouch.tidy.html:12:29: [definite] Dead assignment, property poss is never read
-test/chromeexperiments/jstouch.tidy.html:203:18: [definite] Dead assignment, property face_groups is never read
-test/chromeexperiments/jstouch.tidy.html:203:18: [definite] Dead assignment, property poss is never read
-test/chromeexperiments/jstouch.tidy.html:203:18: [definite] Dead assignment, property texcoords is never read
-test/chromeexperiments/jstouch.tidy.html:493:14: [definite] Dead assignment, property g is never read
-test/chromeexperiments/jstouch.tidy.html:493:14: [definite] Dead assignment, property texture is never read
-test/chromeexperiments/jstouch.tidy.html:498:1: [definite] Dead assignment, property clear is never read
-test/chromeexperiments/jstouch.tidy.html:506:1: [definite] Dead assignment, property num_cmp is never read
-test/chromeexperiments/jstouch.tidy.html:508:1: [definite] Dead assignment, property drawTriangle is never read
-test/chromeexperiments/jstouch.tidy.html:583:1: [definite] Dead assignment, property drawTestByIndexBuffer is never read
-test/chromeexperiments/jstouch.tidy.html:627:1: [definite] Dead assignment, property drawByIndexBuffer is never read
-test/chromeexperiments/jstouch.tidy.html:754:9: [definite] Dead assignment, property x is never read
-test/chromeexperiments/jstouch.tidy.html:755:9: [definite] Dead assignment, property y is never read
-test/chromeexperiments/jstouch.tidy.html:756:9: [definite] Dead assignment, property z is never read
-test/chromeexperiments/jstouch.tidy.html:759:18: [definite] Dead assignment, property add is never read
-test/chromeexperiments/jstouch.tidy.html:759:18: [definite] Dead assignment, property copyFrom is never read
-test/chromeexperiments/jstouch.tidy.html:759:18: [definite] Dead assignment, property cp is never read
-test/chromeexperiments/jstouch.tidy.html:759:18: [definite] Dead assignment, property dpWith is never read
-test/chromeexperiments/jstouch.tidy.html:759:18: [definite] Dead assignment, property norm is never read
-test/chromeexperiments/jstouch.tidy.html:759:18: [definite] Dead assignment, property normalize is never read
-test/chromeexperiments/jstouch.tidy.html:759:18: [definite] Dead assignment, property smul is never read
-test/chromeexperiments/jstouch.tidy.html:759:18: [definite] Dead assignment, property sub is never read
-test/chromeexperiments/jstouch.tidy.html:759:18: [definite] Dead assignment, property toString is never read
-test/chromeexperiments/jstouch.tidy.html:759:18: [definite] Dead assignment, property zero is never read
-test/chromeexperiments/jstouch.tidy.html:837:17: [definite] Dead assignment, property copyFrom is never read
-test/chromeexperiments/jstouch.tidy.html:837:17: [definite] Dead assignment, property glRotate is never read
-test/chromeexperiments/jstouch.tidy.html:837:17: [definite] Dead assignment, property lookAtLH is never read
-test/chromeexperiments/jstouch.tidy.html:837:17: [definite] Dead assignment, property mul is never read
-test/chromeexperiments/jstouch.tidy.html:837:17: [definite] Dead assignment, property perspectiveLH is never read
-test/chromeexperiments/jstouch.tidy.html:837:17: [definite] Dead assignment, property transVec3 is never read
-test/chromeexperiments/jstouch.tidy.html:837:17: [definite] Dead assignment, property transVec3Rot is never read
-test/chromeexperiments/jstouch.tidy.html:837:17: [definite] Dead assignment, property translate is never read
-test/chromeexperiments/jstouch.tidy.html:837:17: [definite] Dead assignment, property transpose33 is never read
-test/chromeexperiments/jstouch.tidy.html:839:27: [definite] Dead assignment, property _12 is never read
-test/chromeexperiments/jstouch.tidy.html:839:38: [definite] Dead assignment, property _13 is never read
-test/chromeexperiments/jstouch.tidy.html:839:49: [definite] Dead assignment, property _14 is never read
-test/chromeexperiments/jstouch.tidy.html:840:17: [definite] Dead assignment, property _21 is never read
-test/chromeexperiments/jstouch.tidy.html:840:34: [definite] Dead assignment, property _23 is never read
-test/chromeexperiments/jstouch.tidy.html:840:45: [definite] Dead assignment, property _24 is never read
-test/chromeexperiments/jstouch.tidy.html:841:17: [definite] Dead assignment, property _31 is never read
-test/chromeexperiments/jstouch.tidy.html:841:28: [definite] Dead assignment, property _32 is never read
-test/chromeexperiments/jstouch.tidy.html:841:45: [definite] Dead assignment, property _34 is never read
-test/chromeexperiments/jstouch.tidy.html:842:17: [definite] Dead assignment, property _41 is never read
-test/chromeexperiments/jstouch.tidy.html:842:28: [definite] Dead assignment, property _42 is never read
-test/chromeexperiments/jstouch.tidy.html:842:39: [definite] Dead assignment, property _43 is never read
-test/chromeexperiments/jstouch.tidy.html:844:17: [definite] Dead assignment, property _11 is never read
-test/chromeexperiments/jstouch.tidy.html:844:28: [definite] Dead assignment, property _22 is never read
-test/chromeexperiments/jstouch.tidy.html:844:39: [definite] Dead assignment, property _33 is never read
-test/chromeexperiments/jstouch.tidy.html:844:50: [definite] Dead assignment, property _44 is never read
-test/chromeexperiments/jstouch.tidy.html:1054:1: [definite] Dead assignment, property getInvert is never read
-test/chromeexperiments/jstouch.tidy.html:1078:13: [definite] Dead assignment, property mTickCount is never read
-test/chromeexperiments/jstouch.tidy.html:1079:13: [definite] Dead assignment, property mLoadCount is never read
-test/chromeexperiments/jstouch.tidy.html:1082:13: [definite] Dead assignment, property g is never read
-test/chromeexperiments/jstouch.tidy.html:1084:13: [definite] Dead assignment, property vUP is never read
-test/chromeexperiments/jstouch.tidy.html:1085:13: [definite] Dead assignment, property vAT is never read
-test/chromeexperiments/jstouch.tidy.html:1086:13: [definite] Dead assignment, property mEye is never read
-test/chromeexperiments/jstouch.tidy.html:1090:13: [definite] Dead assignment, property w is never read
-test/chromeexperiments/jstouch.tidy.html:1091:13: [definite] Dead assignment, property h is never read
-test/chromeexperiments/jstouch.tidy.html:1095:13: [definite] Dead assignment, property mProjMat is never read
-test/chromeexperiments/jstouch.tidy.html:1096:13: [definite] Dead assignment, property mWorldMat is never read
-test/chromeexperiments/jstouch.tidy.html:1097:13: [definite] Dead assignment, property mViewMat is never read
-test/chromeexperiments/jstouch.tidy.html:1098:13: [definite] Dead assignment, property mAllMat is never read
-test/chromeexperiments/jstouch.tidy.html:1104:13: [definite] Dead assignment, property texture is never read
-test/chromeexperiments/jstouch.tidy.html:1109:13: [definite] Dead assignment, property texture2 is never read
-test/chromeexperiments/jstouch.tidy.html:1114:30: [definite] Dead assignment, property calcAllTransforms is never read
-test/chromeexperiments/jstouch.tidy.html:1114:30: [definite] Dead assignment, property drawFloor is never read
-test/chromeexperiments/jstouch.tidy.html:1114:30: [definite] Dead assignment, property onInterval is never read
-test/chromeexperiments/jstouch.tidy.html:1114:30: [definite] Dead assignment, property setupTransform is never read
-test/chromeexperiments/jstouch.tidy.html:1114:30: [definite] Dead assignment, property start is never read
-test/chromeexperiments/jstouch.tidy.html:1114:30: [definite] Dead assignment, property transformVertices is never read
-test/chromeexperiments/jstouch.tidy.html:1114:30: [definite] Dead assignment, property updateViewTrans is never read
-test/chromeexperiments/jstouch.tidy.html:1161:17: [definite] Dead assignment, property z is never read
-test/chromeexperiments/jstouch.tidy.html:1162:17: [definite] Dead assignment, property x is never read
-test/chromeexperiments/jstouch.tidy.html:1228:13: [definite] Dead assignment, property texture is never read
-test/chromeexperiments/jstouch.tidy.html:1229:13: [definite] Dead assignment, property mesh is never read
-test/chromeexperiments/jstouch.tidy.html:1231:13: [definite] Dead assignment, property sphmap_uvbuf is never read
-test/chromeexperiments/jstouch.tidy.html:1233:13: [definite] Dead assignment, property 112 is never read
-test/chromeexperiments/jstouch.tidy.html:1234:13: [definite] Dead assignment, property 113 is never read
-test/chromeexperiments/jstouch.tidy.html:1236:13: [definite] Dead assignment, property 114 is never read
-test/chromeexperiments/jstouch.tidy.html:1237:13: [definite] Dead assignment, property 115 is never read
-test/chromeexperiments/jstouch.tidy.html:1239:13: [definite] Dead assignment, property 116 is never read
-test/chromeexperiments/jstouch.tidy.html:1240:13: [definite] Dead assignment, property 117 is never read
-test/chromeexperiments/jstouch.tidy.html:1242:13: [definite] Dead assignment, property 118 is never read
-test/chromeexperiments/jstouch.tidy.html:1243:13: [definite] Dead assignment, property 119 is never read
-test/chromeexperiments/jstouch.tidy.html:1245:13: [definite] Dead assignment, property 120 is never read
-test/chromeexperiments/jstouch.tidy.html:1246:13: [definite] Dead assignment, property 121 is never read
-test/chromeexperiments/jstouch.tidy.html:1248:13: [definite] Dead assignment, property 122 is never read
-test/chromeexperiments/jstouch.tidy.html:1249:13: [definite] Dead assignment, property 123 is never read
-test/chromeexperiments/jstouch.tidy.html:1252:31: [definite] Dead assignment, property render is never read
-test/chromeexperiments/jstouch.tidy.html:1252:31: [definite] Dead assignment, property setSphereMapUVs is never read
-test/chromeexperiments/jstouch.tidy.html:203:5: [definite] The variable MESH_floor is never used
-test/chromeexperiments/jstouch.tidy.html:498:13: [definite] Unreachable function
-test/chromeexperiments/jstouch.tidy.html:506:15: [definite] Unreachable function
-test/chromeexperiments/jstouch.tidy.html:508:20: [definite] Unreachable function
-test/chromeexperiments/jstouch.tidy.html:583:29: [definite] Unreachable function
-test/chromeexperiments/jstouch.tidy.html:627:25: [definite] Unreachable function
-test/chromeexperiments/jstouch.tidy.html:760:15: [definite] Unreachable function
-test/chromeexperiments/jstouch.tidy.html:764:14: [definite] Unreachable function
-test/chromeexperiments/jstouch.tidy.html:772:14: [definite] Unreachable function
-test/chromeexperiments/jstouch.tidy.html:780:19: [definite] Unreachable function
-test/chromeexperiments/jstouch.tidy.html:788:14: [definite] Unreachable function
-test/chromeexperiments/jstouch.tidy.html:792:20: [definite] Unreachable function
-test/chromeexperiments/jstouch.tidy.html:803:15: [definite] Unreachable function
-test/chromeexperiments/jstouch.tidy.html:811:17: [definite] Unreachable function
-test/chromeexperiments/jstouch.tidy.html:815:13: [definite] Unreachable function
-test/chromeexperiments/jstouch.tidy.html:823:19: [definite] Unreachable function
-test/chromeexperiments/jstouch.tidy.html:849:19: [definite] Unreachable function
-test/chromeexperiments/jstouch.tidy.html:873:20: [definite] Unreachable function
-test/chromeexperiments/jstouch.tidy.html:880:23: [definite] Unreachable function
-test/chromeexperiments/jstouch.tidy.html:886:24: [definite] Unreachable function
-test/chromeexperiments/jstouch.tidy.html:910:19: [definite] Unreachable function
-test/chromeexperiments/jstouch.tidy.html:932:14: [definite] Unreachable function
-test/chromeexperiments/jstouch.tidy.html:956:20: [definite] Unreachable function
-test/chromeexperiments/jstouch.tidy.html:965:22: [definite] Unreachable function
-test/chromeexperiments/jstouch.tidy.html:984:19: [definite] Unreachable function
-test/chromeexperiments/jstouch.tidy.html:1046:1: [definite] Unreachable function M22
-test/chromeexperiments/jstouch.tidy.html:1054:27: [definite] Unreachable function
-test/chromeexperiments/jstouch.tidy.html:1105:26: [definite] Unreachable function
-test/chromeexperiments/jstouch.tidy.html:1110:26: [definite] Unreachable function
-test/chromeexperiments/jstouch.tidy.html:1115:20: [definite] Unreachable function
-test/chromeexperiments/jstouch.tidy.html:1122:25: [definite] Unreachable function
-test/chromeexperiments/jstouch.tidy.html:1143:28: [definite] Unreachable function
-test/chromeexperiments/jstouch.tidy.html:1146:30: [definite] Unreachable function
-test/chromeexperiments/jstouch.tidy.html:1165:29: [definite] Unreachable function
-test/chromeexperiments/jstouch.tidy.html:1171:32: [definite] Unreachable function
-test/chromeexperiments/jstouch.tidy.html:1177:32: [definite] Unreachable function
-test/chromeexperiments/jstouch.tidy.html:1220:24: [definite] Unreachable function
-test/chromeexperiments/jstouch.tidy.html:1253:21: [definite] Unreachable function
-test/chromeexperiments/jstouch.tidy.html:1271:30: [definite] Unreachable function
-test/chromeexperiments/jstouch.tidy.html:1433:2: [definite] The variable event is never used
+test/chromeexperiments/jstouch.html:826:2: [definite] The conditional expression is always false
+test/chromeexperiments/jstouch.html:826:6: [definite] Variable cpy is null/undefined
+test/chromeexperiments/jstouch.html:1103:13: [definite] The assignment to tex has no effect
+test/chromeexperiments/jstouch.html:11:1: [definite] Dead assignment, property poss is never read
+test/chromeexperiments/jstouch.html:76:1: [definite] Dead assignment, property face_groups is never read
+test/chromeexperiments/jstouch.html:202:1: [definite] Dead assignment, property poss is never read
+test/chromeexperiments/jstouch.html:295:1: [definite] Dead assignment, property texcoords is never read
+test/chromeexperiments/jstouch.html:384:1: [definite] Dead assignment, property face_groups is never read
+test/chromeexperiments/jstouch.html:490:2: [definite] Dead assignment, property texture is never read
+test/chromeexperiments/jstouch.html:491:2: [definite] Dead assignment, property g is never read
+test/chromeexperiments/jstouch.html:494:1: [definite] Dead assignment, property clear is never read
+test/chromeexperiments/jstouch.html:502:1: [definite] Dead assignment, property num_cmp is never read
+test/chromeexperiments/jstouch.html:504:1: [definite] Dead assignment, property drawTriangle is never read
+test/chromeexperiments/jstouch.html:579:1: [definite] Dead assignment, property drawTestByIndexBuffer is never read
+test/chromeexperiments/jstouch.html:623:1: [definite] Dead assignment, property drawByIndexBuffer is never read
+test/chromeexperiments/jstouch.html:750:2: [definite] Dead assignment, property x is never read
+test/chromeexperiments/jstouch.html:751:2: [definite] Dead assignment, property y is never read
+test/chromeexperiments/jstouch.html:752:2: [definite] Dead assignment, property z is never read
+test/chromeexperiments/jstouch.html:756:2: [definite] Dead assignment, property zero is never read
+test/chromeexperiments/jstouch.html:760:2: [definite] Dead assignment, property sub is never read
+test/chromeexperiments/jstouch.html:768:2: [definite] Dead assignment, property add is never read
+test/chromeexperiments/jstouch.html:776:2: [definite] Dead assignment, property copyFrom is never read
+test/chromeexperiments/jstouch.html:784:2: [definite] Dead assignment, property norm is never read
+test/chromeexperiments/jstouch.html:788:2: [definite] Dead assignment, property normalize is never read
+test/chromeexperiments/jstouch.html:799:2: [definite] Dead assignment, property smul is never read
+test/chromeexperiments/jstouch.html:807:2: [definite] Dead assignment, property dpWith is never read
+test/chromeexperiments/jstouch.html:811:2: [definite] Dead assignment, property cp is never read
+test/chromeexperiments/jstouch.html:819:2: [definite] Dead assignment, property toString is never read
+test/chromeexperiments/jstouch.html:835:6: [definite] Dead assignment, property _12 is never read
+test/chromeexperiments/jstouch.html:835:17: [definite] Dead assignment, property _13 is never read
+test/chromeexperiments/jstouch.html:835:28: [definite] Dead assignment, property _14 is never read
+test/chromeexperiments/jstouch.html:836:3: [definite] Dead assignment, property _21 is never read
+test/chromeexperiments/jstouch.html:836:20: [definite] Dead assignment, property _23 is never read
+test/chromeexperiments/jstouch.html:836:31: [definite] Dead assignment, property _24 is never read
+test/chromeexperiments/jstouch.html:837:3: [definite] Dead assignment, property _31 is never read
+test/chromeexperiments/jstouch.html:837:14: [definite] Dead assignment, property _32 is never read
+test/chromeexperiments/jstouch.html:837:31: [definite] Dead assignment, property _34 is never read
+test/chromeexperiments/jstouch.html:838:3: [definite] Dead assignment, property _41 is never read
+test/chromeexperiments/jstouch.html:838:14: [definite] Dead assignment, property _42 is never read
+test/chromeexperiments/jstouch.html:838:25: [definite] Dead assignment, property _43 is never read
+test/chromeexperiments/jstouch.html:840:3: [definite] Dead assignment, property _11 is never read
+test/chromeexperiments/jstouch.html:840:14: [definite] Dead assignment, property _22 is never read
+test/chromeexperiments/jstouch.html:840:25: [definite] Dead assignment, property _33 is never read
+test/chromeexperiments/jstouch.html:840:36: [definite] Dead assignment, property _44 is never read
+test/chromeexperiments/jstouch.html:845:2: [definite] Dead assignment, property copyFrom is never read
+test/chromeexperiments/jstouch.html:869:2: [definite] Dead assignment, property transVec3 is never read
+test/chromeexperiments/jstouch.html:876:2: [definite] Dead assignment, property transVec3Rot is never read
+test/chromeexperiments/jstouch.html:882:2: [definite] Dead assignment, property perspectiveLH is never read
+test/chromeexperiments/jstouch.html:906:2: [definite] Dead assignment, property lookAtLH is never read
+test/chromeexperiments/jstouch.html:928:2: [definite] Dead assignment, property mul is never read
+test/chromeexperiments/jstouch.html:952:2: [definite] Dead assignment, property translate is never read
+test/chromeexperiments/jstouch.html:961:2: [definite] Dead assignment, property transpose33 is never read
+test/chromeexperiments/jstouch.html:980:2: [definite] Dead assignment, property glRotate is never read
+test/chromeexperiments/jstouch.html:1050:1: [definite] Dead assignment, property getInvert is never read
+test/chromeexperiments/jstouch.html:1073:13: [definite] Dead assignment, property mTickCount is never read
+test/chromeexperiments/jstouch.html:1074:13: [definite] Dead assignment, property mLoadCount is never read
+test/chromeexperiments/jstouch.html:1077:13: [definite] Dead assignment, property g is never read
+test/chromeexperiments/jstouch.html:1079:13: [definite] Dead assignment, property vUP is never read
+test/chromeexperiments/jstouch.html:1080:13: [definite] Dead assignment, property vAT is never read
+test/chromeexperiments/jstouch.html:1081:13: [definite] Dead assignment, property mEye is never read
+test/chromeexperiments/jstouch.html:1082:13: [definite] Dead assignment, property mEyeA is never read
+test/chromeexperiments/jstouch.html:1085:13: [definite] Dead assignment, property w is never read
+test/chromeexperiments/jstouch.html:1086:13: [definite] Dead assignment, property h is never read
+test/chromeexperiments/jstouch.html:1087:13: [definite] Dead assignment, property ow is never read
+test/chromeexperiments/jstouch.html:1088:13: [definite] Dead assignment, property oh is never read
+test/chromeexperiments/jstouch.html:1090:13: [definite] Dead assignment, property mProjMat is never read
+test/chromeexperiments/jstouch.html:1091:13: [definite] Dead assignment, property mWorldMat is never read
+test/chromeexperiments/jstouch.html:1092:13: [definite] Dead assignment, property mViewMat is never read
+test/chromeexperiments/jstouch.html:1093:13: [definite] Dead assignment, property mAllMat is never read
+test/chromeexperiments/jstouch.html:1099:13: [definite] Dead assignment, property texture is never read
+test/chromeexperiments/jstouch.html:1104:13: [definite] Dead assignment, property texture2 is never read
+test/chromeexperiments/jstouch.html:1110:13: [definite] Dead assignment, property start is never read
+test/chromeexperiments/jstouch.html:1117:13: [definite] Dead assignment, property onInterval is never read
+test/chromeexperiments/jstouch.html:1141:13: [definite] Dead assignment, property updateViewTrans is never read
+test/chromeexperiments/jstouch.html:1145:13: [definite] Dead assignment, property onMouseMove is never read
+test/chromeexperiments/jstouch.html:1149:13: [definite] Dead assignment, property setEyePosTarget is never read
+test/chromeexperiments/jstouch.html:1160:13: [definite] Dead assignment, property setupTransform is never read
+test/chromeexperiments/jstouch.html:1166:13: [definite] Dead assignment, property calcAllTransforms is never read
+test/chromeexperiments/jstouch.html:1172:13: [definite] Dead assignment, property transformVertices is never read
+test/chromeexperiments/jstouch.html:1215:13: [definite] Dead assignment, property drawFloor is never read
+test/chromeexperiments/jstouch.html:1223:13: [definite] Dead assignment, property texture is never read
+test/chromeexperiments/jstouch.html:1224:13: [definite] Dead assignment, property mesh is never read
+test/chromeexperiments/jstouch.html:1226:13: [definite] Dead assignment, property sphmap_uvbuf is never read
+test/chromeexperiments/jstouch.html:1228:13: [definite] Dead assignment, property 112 is never read
+test/chromeexperiments/jstouch.html:1229:13: [definite] Dead assignment, property 113 is never read
+test/chromeexperiments/jstouch.html:1231:13: [definite] Dead assignment, property 114 is never read
+test/chromeexperiments/jstouch.html:1232:13: [definite] Dead assignment, property 115 is never read
+test/chromeexperiments/jstouch.html:1234:13: [definite] Dead assignment, property 116 is never read
+test/chromeexperiments/jstouch.html:1235:13: [definite] Dead assignment, property 117 is never read
+test/chromeexperiments/jstouch.html:1237:13: [definite] Dead assignment, property 118 is never read
+test/chromeexperiments/jstouch.html:1238:13: [definite] Dead assignment, property 119 is never read
+test/chromeexperiments/jstouch.html:1240:13: [definite] Dead assignment, property 120 is never read
+test/chromeexperiments/jstouch.html:1241:13: [definite] Dead assignment, property 121 is never read
+test/chromeexperiments/jstouch.html:1243:13: [definite] Dead assignment, property 122 is never read
+test/chromeexperiments/jstouch.html:1244:13: [definite] Dead assignment, property 123 is never read
+test/chromeexperiments/jstouch.html:1248:13: [definite] Dead assignment, property render is never read
+test/chromeexperiments/jstouch.html:1266:13: [definite] Dead assignment, property setSphereMapUVs is never read
+test/chromeexperiments/jstouch.html:201:5: [definite] The variable MESH_floor is never used
+test/chromeexperiments/jstouch.html:494:13: [definite] Unreachable function
+test/chromeexperiments/jstouch.html:502:15: [definite] Unreachable function
+test/chromeexperiments/jstouch.html:504:20: [definite] Unreachable function
+test/chromeexperiments/jstouch.html:579:29: [definite] Unreachable function
+test/chromeexperiments/jstouch.html:623:25: [definite] Unreachable function
+test/chromeexperiments/jstouch.html:756:8: [definite] Unreachable function
+test/chromeexperiments/jstouch.html:760:7: [definite] Unreachable function
+test/chromeexperiments/jstouch.html:768:7: [definite] Unreachable function
+test/chromeexperiments/jstouch.html:776:12: [definite] Unreachable function
+test/chromeexperiments/jstouch.html:784:7: [definite] Unreachable function
+test/chromeexperiments/jstouch.html:788:13: [definite] Unreachable function
+test/chromeexperiments/jstouch.html:799:8: [definite] Unreachable function
+test/chromeexperiments/jstouch.html:807:10: [definite] Unreachable function
+test/chromeexperiments/jstouch.html:811:6: [definite] Unreachable function
+test/chromeexperiments/jstouch.html:819:12: [definite] Unreachable function
+test/chromeexperiments/jstouch.html:845:12: [definite] Unreachable function
+test/chromeexperiments/jstouch.html:869:13: [definite] Unreachable function
+test/chromeexperiments/jstouch.html:876:16: [definite] Unreachable function
+test/chromeexperiments/jstouch.html:882:17: [definite] Unreachable function
+test/chromeexperiments/jstouch.html:906:12: [definite] Unreachable function
+test/chromeexperiments/jstouch.html:928:7: [definite] Unreachable function
+test/chromeexperiments/jstouch.html:952:13: [definite] Unreachable function
+test/chromeexperiments/jstouch.html:961:15: [definite] Unreachable function
+test/chromeexperiments/jstouch.html:980:12: [definite] Unreachable function
+test/chromeexperiments/jstouch.html:1042:1: [definite] Unreachable function M22
+test/chromeexperiments/jstouch.html:1050:27: [definite] Unreachable function
+test/chromeexperiments/jstouch.html:1072:17: [definite] The variable _this is never used
+test/chromeexperiments/jstouch.html:1096:55: [definite] Unreachable function
+test/chromeexperiments/jstouch.html:1100:26: [definite] Unreachable function
+test/chromeexperiments/jstouch.html:1105:26: [definite] Unreachable function
+test/chromeexperiments/jstouch.html:1110:20: [definite] Unreachable function
+test/chromeexperiments/jstouch.html:1117:25: [definite] Unreachable function
+test/chromeexperiments/jstouch.html:1138:28: [definite] Unreachable function
+test/chromeexperiments/jstouch.html:1141:30: [definite] Unreachable function
+test/chromeexperiments/jstouch.html:1145:26: [definite] Unreachable function
+test/chromeexperiments/jstouch.html:1149:30: [definite] Unreachable function
+test/chromeexperiments/jstouch.html:1160:29: [definite] Unreachable function
+test/chromeexperiments/jstouch.html:1166:32: [definite] Unreachable function
+test/chromeexperiments/jstouch.html:1172:32: [definite] Unreachable function
+test/chromeexperiments/jstouch.html:1215:24: [definite] Unreachable function
+test/chromeexperiments/jstouch.html:1248:21: [definite] Unreachable function
+test/chromeexperiments/jstouch.html:1266:30: [definite] Unreachable function

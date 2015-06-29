@@ -1,0 +1,14 @@
+fg2: function()
+  block 0: [entry]
+    node 0: constant[undefined,v1] (test/flowgraphbuilder/directive.js:1:1)
+    ->[block 1]
+  block 1:
+    node 1: <unreachable>* (test/flowgraphbuilder/directive.js:1:1)
+    ->[block 2]
+  block 2: [exit-ordinary]
+    node 2: return[v1] (test/flowgraphbuilder/directive.js:1:1)
+    ->[]
+  block 3: [exit-exceptional]
+    node 3: exceptional-return (test/flowgraphbuilder/directive.js:1:1)
+    ->[]
+

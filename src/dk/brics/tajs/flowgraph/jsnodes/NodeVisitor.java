@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2013 Aarhus University
+ * Copyright 2009-2015 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,148 +21,138 @@ package dk.brics.tajs.flowgraph.jsnodes;
  */
 public interface NodeVisitor<ArgType> {
 
-	/**
-	 * Visits an AssumeNode.
-	 */
-	public void visit(AssumeNode n, ArgType a);
-
-	/**
-	 * Visits a BinaryOperatorNode.
-	 */
-	public void visit(BinaryOperatorNode n, ArgType a);
-
-	/**
-	 * Visits a CallNode.
-	 */
-	public void visit(CallNode n, ArgType a);
-
-	/**
-	 * Visits a CallNode.
-	 */
-	public void visit(CallConversionNode n, ArgType a);
-
-	/**
-	 * Visits a CatchNode.
-	 */
-	public void visit(CatchNode n, ArgType a);
-
-	/**
-	 * Visits a ConstantNode.
-	 */
-	public void visit(ConstantNode n, ArgType a);
-
-	/**
-	 * Visits a DeletePropertyNode.
-	 */
-	public void visit(DeletePropertyNode n, ArgType a);
-
-	/**
-	 * Visits an BeginWithNode.
-	 */
-	public void visit(BeginWithNode n, ArgType a);
-
-	/**
-	 * Visits an ExceptionalReturnNode.
-	 */
-	public void visit(ExceptionalReturnNode n, ArgType a);
-
-	/**
-	 * Visits a DeclareFunctionNode.
-	 */
-	public void visit(DeclareFunctionNode n, ArgType a);
-
-	/**
-	 * Visits a BeginForInNode.
-	 */
-	public void visit(BeginForInNode n, ArgType a);
-
-	/**
-	 * Visits an IfNode.
-	 */
-	public void visit(IfNode n, ArgType a);
-
-	/**
-	 * Visits a EndWithNode.
-	 */
-	public void visit(EndWithNode n, ArgType a);
-
-	/**
-	 * Visits a NewObjectNode.
-	 */
-	public void visit(NewObjectNode n, ArgType a);
-
-	/**
-	 * Visits a NextPropertyNode.
-	 */
-	public void visit(NextPropertyNode n, ArgType a);
-	
-	/**
-	 * Visits a HasNextPropertyNode.
-	 */
-	public void visit(HasNextPropertyNode n, ArgType a);
-
-	/**
-	 * Visits a NopNode.
-	 */
-	public void visit(NopNode n, ArgType a);
-
-	/**
-	 * Visits a ReadPropertyNode.
-	 */
-	public void visit(ReadPropertyNode n, ArgType a);
-
-	/**
-	 * Visits a ReadVariableNode.
-	 */
-	public void visit(ReadVariableNode n, ArgType a);
-
-	/**
-	 * Visits a ReturnNode.
-	 */
-	public void visit(ReturnNode n, ArgType a);
-
-	/**
-	 * Visits a ThrowNode.
-	 */
-	public void visit(ThrowNode n, ArgType a);
-
-	/**
-	 * Visits a TypeofNode.
-	 */
-	public void visit(TypeofNode n, ArgType a);
-
-	/**
-	 * Visits a UnaryOperatorNode.
-	 */
-	public void visit(UnaryOperatorNode n, ArgType a);
-
-	/**
-	 * Visits a DeclareVariableNode.
-	 */
-	public void visit(DeclareVariableNode n, ArgType a);
-
-	/**
-	 * Visits a WritePropertyNode.
-	 */
-	public void visit(WritePropertyNode n, ArgType a);
-
-	/**
-	 * Visits a WriteVariableNode.
-	 */
-	public void visit(WriteVariableNode n, ArgType a);
-
-	/**
-	 * Visits an EventEntryNode.
-	 */
-	public void visit(EventEntryNode n, ArgType a);
-
-	/**
-	 * Visits an EventDispatcherNode.
-	 */
-	public void visit(EventDispatcherNode n, ArgType a);
+    /**
+     * Visits an AssumeNode.
+     */
+    void visit(AssumeNode n, ArgType a);
 
     /**
-     * Visits a EndForInNode.
+     * Visits a BinaryOperatorNode.
      */
-    public void visit(EndForInNode n, ArgType a);
+    void visit(BinaryOperatorNode n, ArgType a);
+
+    /**
+     * Visits a CallNode.
+     */
+    void visit(CallNode n, ArgType a);
+
+    /**
+     * Visits a CatchNode.
+     */
+    void visit(CatchNode n, ArgType a);
+
+    /**
+     * Visits a ConstantNode.
+     */
+    void visit(ConstantNode n, ArgType a);
+
+    /**
+     * Visits a DeletePropertyNode.
+     */
+    void visit(DeletePropertyNode n, ArgType a);
+
+    /**
+     * Visits a BeginWithNode.
+     */
+    void visit(BeginWithNode n, ArgType a);
+
+    /**
+     * Visits an ExceptionalReturnNode.
+     */
+    void visit(ExceptionalReturnNode n, ArgType a);
+
+    /**
+     * Visits a DeclareFunctionNode.
+     */
+    void visit(DeclareFunctionNode n, ArgType a);
+
+    /**
+     * Visits a BeginForInNode.
+     */
+    void visit(BeginForInNode n, ArgType a);
+
+    /**
+     * Visits an IfNode.
+     */
+    void visit(IfNode n, ArgType a);
+
+    /**
+     * Visits an EndWithNode.
+     */
+    void visit(EndWithNode n, ArgType a);
+
+    /**
+     * Visits a NewObjectNode.
+     */
+    void visit(NewObjectNode n, ArgType a);
+
+    /**
+     * Visits a NextPropertyNode.
+     */
+    void visit(NextPropertyNode n, ArgType a);
+
+    /**
+     * Visits a HasNextPropertyNode.
+     */
+    void visit(HasNextPropertyNode n, ArgType a);
+
+    /**
+     * Visits a NopNode.
+     */
+    void visit(NopNode n, ArgType a);
+
+    /**
+     * Visits a ReadPropertyNode.
+     */
+    void visit(ReadPropertyNode n, ArgType a);
+
+    /**
+     * Visits a ReadVariableNode.
+     */
+    void visit(ReadVariableNode n, ArgType a);
+
+    /**
+     * Visits a ReturnNode.
+     */
+    void visit(ReturnNode n, ArgType a);
+
+    /**
+     * Visits a ThrowNode.
+     */
+    void visit(ThrowNode n, ArgType a);
+
+    /**
+     * Visits a TypeofNode.
+     */
+    void visit(TypeofNode n, ArgType a);
+
+    /**
+     * Visits a UnaryOperatorNode.
+     */
+    void visit(UnaryOperatorNode n, ArgType a);
+
+    /**
+     * Visits a DeclareVariableNode.
+     */
+    void visit(DeclareVariableNode n, ArgType a);
+
+    /**
+     * Visits a WritePropertyNode.
+     */
+    void visit(WritePropertyNode n, ArgType a);
+
+    /**
+     * Visits a WriteVariableNode.
+     */
+    void visit(WriteVariableNode n, ArgType a);
+
+    /**
+     * Visits an EventDispatcherNode.
+     */
+    void visit(EventDispatcherNode n, ArgType a);
+
+    /**
+     * Visits an EndForInNode.
+     */
+    void visit(EndForInNode n, ArgType a);
 }

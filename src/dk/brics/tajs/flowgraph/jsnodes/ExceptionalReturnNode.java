@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2013 Aarhus University
+ * Copyright 2009-2015 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,25 +25,25 @@ import dk.brics.tajs.flowgraph.SourceLocation;
  */
 public class ExceptionalReturnNode extends Node {
 
-	/**
-	 * Constructs a new exceptional return node.
-	 */
-	public ExceptionalReturnNode(SourceLocation location) {
-		super(location);
-	}
+    /**
+     * Constructs a new exceptional return node.
+     */
+    public ExceptionalReturnNode(SourceLocation location) {
+        super(location);
+    }
 
-	@Override
-	public String toString() {
-		return "exceptional-return";
-	}
+    @Override
+    public String toString() {
+        return "exceptional-return";
+    }
 
-	@Override
-	public <ArgType> void visitBy(NodeVisitor<ArgType> v, ArgType a) {
-		v.visit(this, a);
-	}
+    @Override
+    public <ArgType> void visitBy(NodeVisitor<ArgType> v, ArgType a) {
+        v.visit(this, a);
+    }
 
-	@Override
-	public boolean canThrowExceptions() {
-		return false;
-	}
+    @Override
+    public boolean canThrowExceptions() {
+        return false;
+    }
 }

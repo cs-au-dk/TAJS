@@ -4,7 +4,7 @@ function CSlider(c, t, n) {
     this.c = document.getElementById(c);
     if (t != "ud") t = "lr";
     //CHANGED: Use item instead of [] to accomodate standard
-    this.s = (t == "lr") ? this.c.rows.item(0).cells.item(0).offsetWidth : 
+    this.s = (t == "lr") ? this.c.rows.item(0).cells.item(0).offsetWidth :
 	this.c.rows.item(0).cells.item(0).offsetHeight;
     this.p = (t == "lr") ? "left" : "top";
     this.l = false;
@@ -91,4 +91,5 @@ cs1.autointrvl=setInterval("cs1.autoSlide('l','cs1')",10000);
 <div class="r_arow" id="topp" value="l" onClick="cs1.startSlide('l','cs1');cs1.as=false;"><img src="5240654.cms" width="20" height="32" border="0" pg="beScrollRight"></div>
 </td>
 </table>
+</div></div>
 </body></html>

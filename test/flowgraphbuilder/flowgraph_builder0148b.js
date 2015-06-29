@@ -1,1 +1,1 @@
-dumpValue(x)
+TAJS_dumpValue(x)

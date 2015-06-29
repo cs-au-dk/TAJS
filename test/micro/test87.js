@@ -2,14 +2,14 @@ var a = {b:42, c:true}
 
 function f(x) {
 	
-	dumpState();
+	TAJS_dumpState();
 	a.b = x;
-	dumpState();
+	TAJS_dumpState();
 	
 }
 
-dumpState();
+TAJS_dumpState();
 f(17);
-dumpState();
+TAJS_dumpState();
 
-dumpObject(a);
+TAJS_dumpObject(a);

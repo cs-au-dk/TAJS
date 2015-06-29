@@ -1,10 +1,10 @@
 var x = {x:1,y:2};
 var y = {};
-dumpObject(y);
+TAJS_dumpObject(y);
 
 for (p in x) {
 	y[p] = x[p];
-	dumpObject(y);
+	TAJS_dumpObject(y);
 }
 
-dumpObject(y);
+TAJS_dumpObject(y);

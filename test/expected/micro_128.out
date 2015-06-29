@@ -1,4 +1,4 @@
-test/micro/test128.js:20:18: [definite] Reading 'this' yields the global object
+test/micro/test128.js:20:23: [definite] Reading 'this' yields the global object
 test/micro/test128.js:8:2: [info] Abstract value: 0.0
 test/micro/test128.js:8:2: [info] Abstract value: 1.0
 test/micro/test128.js:19:1: [info] Abstract value: [@Object#node18]

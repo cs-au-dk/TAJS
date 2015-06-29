@@ -11,5 +11,5 @@ function Ninja(){
  
 var ninja = new Ninja(); 
 ninja.slice(); 
-assert( ninja.getSlices() == 1 ); 
-assert( ninja.slices === undefined );
+TAJS_assert( ninja.getSlices() == 1 ); 
+TAJS_assert( ninja.slices === undefined );

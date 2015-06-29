@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2013 Aarhus University
+ * Copyright 2009-2015 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,8 +25,8 @@ import dk.brics.tajs.analysis.State;
 import dk.brics.tajs.analysis.dom.DOMObjects;
 import dk.brics.tajs.analysis.dom.DOMWindow;
 import dk.brics.tajs.lattice.ObjectLabel;
-import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.lattice.ObjectLabel.Kind;
+import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.util.AnalysisException;
 
 import static dk.brics.tajs.analysis.dom.DOMFunctions.createDOMFunction;
@@ -40,7 +40,9 @@ import static dk.brics.tajs.analysis.dom.DOMFunctions.createDOMProperty;
 public class DOMImplementation {
 
     public static ObjectLabel CONSTRUCTOR;
+
     public static ObjectLabel PROTOTYPE;
+
     public static ObjectLabel INSTANCES;
 
     public static void build(State s) {
@@ -80,9 +82,8 @@ public class DOMImplementation {
         // DOM Level 2
         createDOMFunction(s, PROTOTYPE, DOMObjects.DOMIMPLEMENTATION_CREATEDOCUMENTTYPE, "createDocumentType", 3);
         createDOMFunction(s, PROTOTYPE, DOMObjects.DOMIMPLEMENTATION_CREATEDOCUMENT, "createDocument", 3);
-        
-        createDOMProperty(s, DOMDocument.INSTANCES, "implementation", Value.makeObject(DOMImplementation.INSTANCES));
 
+        createDOMProperty(s, DOMDocument.INSTANCES, "implementation", Value.makeObject(INSTANCES));
     }
 
     /**
@@ -92,27 +93,34 @@ public class DOMImplementation {
         switch (nativeobject) {
             case DOMIMPLEMENTATION_HASFEATURE: {
                 NativeFunctions.expectParameters(nativeobject, call, c, 2, 2);
-                /* Value feature =*/ Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
-                /* Value version =*/ Conversion.toString(NativeFunctions.readParameter(call, s, 1), c);
+                /* Value feature =*/
+                Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
+                /* Value version =*/
+                Conversion.toString(NativeFunctions.readParameter(call, s, 1), c);
                 return Value.makeAnyBool();
             }
             case DOMIMPLEMENTATION_CREATEDOCUMENTTYPE: {
                 NativeFunctions.expectParameters(nativeobject, call, c, 3, 3);
-                /* Value qualifiedName =*/ Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
-                /* Value publicId =*/ Conversion.toString(NativeFunctions.readParameter(call, s, 1), c);
-                /* Value systemId =*/ Conversion.toString(NativeFunctions.readParameter(call, s, 2), c);
+                /* Value qualifiedName =*/
+                Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
+                /* Value publicId =*/
+                Conversion.toString(NativeFunctions.readParameter(call, s, 1), c);
+                /* Value systemId =*/
+                Conversion.toString(NativeFunctions.readParameter(call, s, 2), c);
                 return Value.makeObject(DOMDocumentType.INSTANCES);
             }
             case DOMIMPLEMENTATION_CREATEDOCUMENT: {
                 NativeFunctions.expectParameters(nativeobject, call, c, 3, 3);
-                /* Value namespaceURI =*/ Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
-                /* Value qualifiedName =*/ Conversion.toString(NativeFunctions.readParameter(call, s, 1), c);
-                /* Value docType =*/ Conversion.toString(NativeFunctions.readParameter(call, s, 2), c);
+                /* Value namespaceURI =*/
+                Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
+                /* Value qualifiedName =*/
+                Conversion.toString(NativeFunctions.readParameter(call, s, 1), c);
+                /* Value docType =*/
+                Conversion.toString(NativeFunctions.readParameter(call, s, 2), c);
                 return Value.makeObject(DOMDocument.INSTANCES);
             }
             default:
                 throw new AnalysisException("Unknown Native Object: " + nativeobject);
         }
     }
-
 }

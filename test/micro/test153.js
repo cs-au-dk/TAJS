@@ -4,7 +4,7 @@ function make() {
 
 function f() {
 	make();
-	dumpValue(x.p);
+	TAJS_dumpValue(x.p);
 }
 
 var x = make();

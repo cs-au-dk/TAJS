@@ -30,4 +30,4 @@
 // debug mode.
 
 // Should be 0.
-dumpValue(1e-500);
+TAJS_dumpValue(1e-500);

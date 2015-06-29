@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2013 Aarhus University
+ * Copyright 2009-2015 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,7 +21,7 @@ import dk.brics.tajs.flowgraph.SourceLocation;
 import dk.brics.tajs.util.AnalysisException;
 
 /**
- * Binary operator node. 
+ * Binary operator node.
  * <p>
  * <i>v</i><sub><i>result</i></sub> = &lt;<i>op</i>&gt;(<i>v</i><sub>1</sub>,<i>v</i><sub>1</sub>)
  */
@@ -30,238 +30,223 @@ public class BinaryOperatorNode extends LoadNode {
     /**
      * The different kinds of binary operators.
      */
-	public enum Op {
-		
-		/**
-		 * +
-		 */
-		ADD,
+    public enum Op {
 
-		/**
-		 * -
-		 */
-		SUB,
-		
-		/**
-		 * *
-		 */
-		MUL,
-		
-		/**
-		 * /
-		 */
-		DIV,
-		
-		/**
-		 * %
-		 */
-		REM,
-		
-		/**
-		 * &amp;
-		 */
-		AND,
-		
-		/**
-		 * |
-		 */
-		OR,
+        /**
+         * +
+         */
+        ADD,
 
-		/**
-		 * ^
-		 */
-		XOR,
+        /**
+         * -
+         */
+        SUB,
 
-		/**
-		 * ==
-		 */
-		EQ,
+        /**
+         * *
+         */
+        MUL,
 
-		/**
-		 * !=
-		 */
-		NE,
+        /**
+         * /
+         */
+        DIV,
 
-		/**
-		 * &lt;
-		 */
-		LT,
+        /**
+         * %
+         */
+        REM,
 
-		/**
-		 * >=
-		 */
-		GE,
+        /**
+         * &amp;
+         */
+        AND,
 
-		/**
-		 * &lt;=
-		 */
-		LE,
+        /**
+         * |
+         */
+        OR,
 
-		/**
-		 * >
-		 */
-		GT,
+        /**
+         * ^
+         */
+        XOR,
 
-		/**
-		 * &lt;&lt;
-		 */
-		SHL,
+        /**
+         * ==
+         */
+        EQ,
 
-		/**
-		 * >>
-		 */
-		SHR,
+        /**
+         * !=
+         */
+        NE,
 
-		/**
-		 * >>>
-		 */
-		USHR,
+        /**
+         * &lt;
+         */
+        LT,
 
-		/**
-		 * ===
-		 */
-		SEQ,
+        /**
+         * &gt;=
+         */
+        GE,
 
-		/**
-		 * !==
-		 */
-		SNE,
+        /**
+         * &lt;=
+         */
+        LE,
 
-		/**
-		 * in
-		 */
-		IN,
+        /**
+         * &gt;
+         */
+        GT,
 
-		/**
-		 * instanceof
-		 */
-		INSTANCEOF
-	}
+        /**
+         * &lt;&lt;
+         */
+        SHL,
 
-	private int arg1_reg;
+        /**
+         * &gt;&gt;
+         */
+        SHR,
 
-	private int arg2_reg;
+        /**
+         * &gt;&gt;&gt;
+         */
+        USHR,
 
-	private Op op;
+        /**
+         * ===
+         */
+        SEQ,
+
+        /**
+         * !==
+         */
+        SNE,
+
+        /**
+         * in
+         */
+        IN,
+
+        /**
+         * instanceof
+         */
+        INSTANCEOF
+    }
+
+    private int arg1_reg;
+
+    private int arg2_reg;
+
+    private Op op;
 
     /**
      * Constructs a new binary operator node.
      *
-     * @param op The operator
-     * @param arg1_reg The register for the first argument.
-     * @param arg2_reg The register for the second argument.
+     * @param op         The operator
+     * @param arg1_reg   The register for the first argument.
+     * @param arg2_reg   The register for the second argument.
      * @param result_reg The register for the result.
-     * @param location The source location.
+     * @param location   The source location.
      */
-	public BinaryOperatorNode(Op op, int arg1_reg, int arg2_reg, int result_reg, SourceLocation location) {
-		super(result_reg, location);
-		this.arg1_reg = arg1_reg;
-		this.arg2_reg = arg2_reg;
-		this.op = op;
-	}
-
-	/**
-	 * Returns the first argument register.
-	 */
-	public int getArg1Register() {
-		return arg1_reg;
-	}
-
-    /**
-     * Sets the first argument register.
-     */
-    public void setArg1Register(int arg1_reg) {
+    public BinaryOperatorNode(Op op, int arg1_reg, int arg2_reg, int result_reg, SourceLocation location) {
+        super(result_reg, location);
         this.arg1_reg = arg1_reg;
-    }
-
-    /**
-	 * Returns the second argument register.
-	 */
-	public int getArg2Register() {
-		return arg2_reg;
-	}
-
-    /**
-     * Sets the second argument register.
-     */
-    public void setArg2Register(int arg2_reg) {
         this.arg2_reg = arg2_reg;
+        this.op = op;
     }
 
     /**
-	 * Returns the operator.
-	 */
-	public Op getOperator() {
-		return op;
-	}
+     * Returns the first argument register.
+     */
+    public int getArg1Register() {
+        return arg1_reg;
+    }
+
+    /**
+     * Returns the second argument register.
+     */
+    public int getArg2Register() {
+        return arg2_reg;
+    }
+    /**
+     * Returns the operator.
+     */
+    public Op getOperator() {
+        return op;
+    }
 
     /**
      * Returns the operator in human readable form.
      */
-	public String operatorToString() {
-		switch (op) {
-		case ADD:
-			return "+";
-		case SUB:
-			return "-";
-		case MUL:
-			return "*";
-		case DIV:
-			return "/";
-		case REM:
-			return "%";
-		case AND:
-			return "&";
-		case OR:
-			return "|";
-		case XOR:
-			return "^";
-		case EQ:
-			return "==";
-		case NE:
-			return "!=";
-		case LT:
-			return "<";
-		case GE:
-			return ">=";
-		case LE:
-			return "<=";
-		case GT:
-			return ">";
-		case SHL:
-			return "<<";
-		case SHR:
-			return ">>";
-		case USHR:
-			return ">>>";
-		case SEQ:
-			return "===";
-		case SNE:
-			return "!==";
-		case IN:
-			return "in";
-		case INSTANCEOF:
-			return "instanceof";
-		default:
-			throw new AnalysisException("Unexpected operator");
-		}
-	}
+    public String operatorToString() {
+        switch (op) {
+            case ADD:
+                return "+";
+            case SUB:
+                return "-";
+            case MUL:
+                return "*";
+            case DIV:
+                return "/";
+            case REM:
+                return "%";
+            case AND:
+                return "&";
+            case OR:
+                return "|";
+            case XOR:
+                return "^";
+            case EQ:
+                return "==";
+            case NE:
+                return "!=";
+            case LT:
+                return "<";
+            case GE:
+                return ">=";
+            case LE:
+                return "<=";
+            case GT:
+                return ">";
+            case SHL:
+                return "<<";
+            case SHR:
+                return ">>";
+            case USHR:
+                return ">>>";
+            case SEQ:
+                return "===";
+            case SNE:
+                return "!==";
+            case IN:
+                return "in";
+            case INSTANCEOF:
+                return "instanceof";
+            default:
+                throw new AnalysisException("Unexpected operator");
+        }
+    }
 
-	@Override
-	public String toString() {
+    @Override
+    public String toString() {
         int resultReg = getResultRegister();
         return operatorToString() + "[v" + arg1_reg + ",v" + arg2_reg + "," + (resultReg == NO_VALUE ? "-" : ("v" + resultReg)) + "]";
-	}
+    }
 
-	@Override
-	public <ArgType> void visitBy(NodeVisitor<ArgType> v, ArgType a) {
-		v.visit(this, a);
-	}
+    @Override
+    public <ArgType> void visitBy(NodeVisitor<ArgType> v, ArgType a) {
+        v.visit(this, a);
+    }
 
-	@Override
-	public boolean canThrowExceptions() {
-		return true;
-	}
+    @Override
+    public boolean canThrowExceptions() {
+        return true;
+    }
 
     @Override
     public void check(BasicBlock b) {

@@ -1,4 +1,4 @@
-fg2: <main> function()
+fg2: function()
   block 0: [entry]
     node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0041.js:1:1)
     ->[block 1]
@@ -17,10 +17,10 @@ function()
     node 5: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0041.js:1:5)
     ->[block 5]
   block 5: [exit-ordinary]
-    node 6: return[v1] (test/flowgraphbuilder/flowgraph_builder0041.js:1:17)
+    node 6: return[v1] (test/flowgraphbuilder/flowgraph_builder0041.js:1:19)
     ->[]
   block 6: [exit-exceptional]
-    node 7: exceptional-return (test/flowgraphbuilder/flowgraph_builder0041.js:1:17)
+    node 7: exceptional-return (test/flowgraphbuilder/flowgraph_builder0041.js:1:19)
     ->[]
 
 test/flowgraphbuilder/flowgraph_builder0041.js:1:5: [definite] Unreachable function

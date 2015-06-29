@@ -11,5 +11,6 @@ var q = testForIn({
   bar: function testForIn2() { return "whatever"; }
 });
 
-assert(q == 7);
+TAJS_assert(q, 'isMaybeStrUInt');
+TAJS_assert(q, 'isMaybeStrIdentifierParts');
 

@@ -1,21 +1,19 @@
+test/micro/testRegExp.js:17:16: [definite] Reading absent property (computed name)
 test/micro/testRegExp.js:28:5: [definite] The variable d is never used
 test/micro/testRegExp.js:28:9: [definite] Unreachable code
-test/micro/testRegExp.js:13:11: [maybe] TypeError, accessing property of null/undefined
 test/micro/testRegExp.js:28:9: [maybe] SyntaxError, invalid flags at RegExp constructor
-test/micro/testRegExp.js:1:1: [maybe] Uncaught exception, constructed at [test/micro/testRegExp.js:13:11, test/micro/testRegExp.js:28:9]
-test/micro/testRegExp.js:16:11: [maybe] Reading absent property (computed name)
-test/micro/testRegExp.js:17:11: [maybe] Reading absent property (computed name)
-test/micro/testRegExp.js:2:1: [info] Abstract value: [@RegExp[native]]
+test/micro/testRegExp.js:1:1: [maybe] Uncaught exception, constructed at [test/micro/testRegExp.js:28:9]
+test/micro/testRegExp.js:2:1: [info] Abstract value: [@RegExp#node11]
 test/micro/testRegExp.js:3:1: [info] Abstract value: "ab*"
 test/micro/testRegExp.js:4:1: [info] Abstract value: 0.0
 test/micro/testRegExp.js:5:1: [info] Abstract value: true
-test/micro/testRegExp.js:7:1: [info] Abstract value: [@RegExp[native]]
-test/micro/testRegExp.js:9:1: [info] Abstract value: [*RegExp[native]]
-test/micro/testRegExp.js:12:1: [info] Abstract value: Null|[@Array#node49]
-test/micro/testRegExp.js:13:1: [info] Abstract value: UInt
-test/micro/testRegExp.js:14:1: [info] Abstract value: Str
-test/micro/testRegExp.js:15:1: [info] Abstract value: UInt
-test/micro/testRegExp.js:16:1: [info] Abstract value: Undef|Str
-test/micro/testRegExp.js:17:1: [info] Abstract value: Undef|Str
+test/micro/testRegExp.js:7:1: [info] Abstract value: [@RegExp#node33]
+test/micro/testRegExp.js:9:1: [info] Abstract value: [@RegExp#node11]
+test/micro/testRegExp.js:12:1: [info] Abstract value: [@Array#node49{<CONCRETE>="[\"abbb\"]"}]
+test/micro/testRegExp.js:13:1: [info] Abstract value: 1.0
+test/micro/testRegExp.js:14:1: [info] Abstract value: "abbb"
+test/micro/testRegExp.js:15:1: [info] Abstract value: 0.0
+test/micro/testRegExp.js:16:1: [info] Abstract value: "abbb"
+test/micro/testRegExp.js:17:1: [info] Abstract value: Undef
 test/micro/testRegExp.js:19:1: [info] Abstract value: Str
-test/micro/testRegExp.js:22:1: [info] Abstract value: [@RegExp[native]]
+test/micro/testRegExp.js:22:1: [info] Abstract value: [@RegExp#node90]

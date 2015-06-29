@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2013 Aarhus University
+ * Copyright 2009-2015 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,33 +15,33 @@
  */
 
 package dk.brics.tajs.unevalizer;
-import static com.google.javascript.rhino.Node.newString;
-import static dk.brics.tajs.util.Collections.newSet;
-
-import java.util.Set;
-
-import org.apache.log4j.Logger;
 
 import com.google.javascript.jscomp.CheckLevel;
 import com.google.javascript.jscomp.CompilationLevel;
 import com.google.javascript.jscomp.Compiler;
+import com.google.javascript.jscomp.Compiler.CodeBuilder;
 import com.google.javascript.jscomp.CompilerOptions;
 import com.google.javascript.jscomp.ErrorManager;
 import com.google.javascript.jscomp.JSError;
-import com.google.javascript.jscomp.JSSourceFile;
+import com.google.javascript.jscomp.SourceFile;
 import com.google.javascript.rhino.Node;
 import com.google.javascript.rhino.Token;
+import org.apache.log4j.Logger;
+
+import java.util.Set;
+
+import static com.google.javascript.rhino.Node.newString;
+import static dk.brics.tajs.util.Collections.newSet;
 
 public class Unevalizer {
-	
-	private static Logger logger = Logger.getLogger(Unevalizer.class); 
 
-	/**
-     * Morally this is function has the type:
-     * AnalyzerCallback -> EvalString -> Bool -> Maybe ResultVar -> Maybe String
+    private static Logger log = Logger.getLogger(Unevalizer.class);
+
+    /**
+     * Unevalizes the given code.
      */
-    public String uneval(AnalyzerCallback callback, String source, boolean aliasedEval, String resVar) {
-    	logger.debug("Starting on: " + source);
+    public String uneval(AnalyzerCallback callback, String source, boolean aliasedEval, String resVar) { // TODO: javadoc
+        log.debug("Starting on: " + source);
 
         // TODO: Immediately fail on aliased calls. Not hard to handle, but no real use cases yet.
         if (aliasedEval)
@@ -73,13 +73,13 @@ public class Unevalizer {
             if (comp.getErrorCount() > 0)
                 return "throw new SyntaxError()";
 
-            logger.debug("Valid program");
+            log.debug("Valid program");
 
             // Basic sanity checking complete; jump to the interesting work for the constant string case.
             return unevalConst(callback, comp, resVar);
         }
 
-        logger.debug("Not a constant string");
+        log.debug("Not a constant string");
 
         // So e = ".." + x1 + ".." + x2 + ..
 
@@ -98,14 +98,14 @@ public class Unevalizer {
                 code = code.substring(1, code.length() - 1);
 
             comp = parseString(code);
-            if (comp.getErrorCount() > 0) 
+            if (comp.getErrorCount() > 0)
                 throw new IllegalArgumentException("Invalid abstract expression");
 
             // Uneval the input by undoing the constant folding in a clever way.
             return contractEval(callback, comp, holeNames, resVar);
         }
 
-        logger.debug("Failed to refactor, returning null");
+        log.debug("Failed to refactor, returning null");
         return null;
     }
 
@@ -117,6 +117,7 @@ public class Unevalizer {
         Compiler compiler = new Compiler();
         ErrorManager em = new ErrorManager() {
             private int numErrs = 0;
+
             private JSError err;
 
             @Override
@@ -128,13 +129,18 @@ public class Unevalizer {
             }
 
             @Override
-            public void generateReport() { }
+            public void generateReport() {
+            }
 
             @Override
-            public int getErrorCount() { return numErrs; }
+            public int getErrorCount() {
+                return numErrs;
+            }
 
             @Override
-            public int getWarningCount() { return 0; }
+            public int getWarningCount() {
+                return 0;
+            }
 
             @Override
             public JSError[] getErrors() {
@@ -145,13 +151,18 @@ public class Unevalizer {
             }
 
             @Override
-            public JSError[] getWarnings() { return new JSError[0]; }
+            public JSError[] getWarnings() {
+                return new JSError[0];
+            }
 
             @Override
-            public void setTypedPercent(double v) { }
+            public void setTypedPercent(double v) {
+            }
 
             @Override
-            public double getTypedPercent() { return 0; }
+            public double getTypedPercent() {
+                return 0;
+            }
         };
         compiler.setErrorManager(em);
         CompilerOptions options = new CompilerOptions();
@@ -161,9 +172,9 @@ public class Unevalizer {
         // We only care about the AST, and that is gotten through "compiling" whitespace mode only.
         CompilationLevel.WHITESPACE_ONLY.setOptionsForCompilationLevel(options);
 
-        JSSourceFile dummy = JSSourceFile.fromCode("dummy.js", "");
+        SourceFile dummy = SourceFile.fromCode("dummy.js", "");
 
-        compiler.compile(dummy, JSSourceFile.fromCode("input.js", sourceString), options);
+        compiler.compile(dummy, SourceFile.fromCode("input.js", sourceString), options);
         return compiler;
     }
 
@@ -186,17 +197,17 @@ public class Unevalizer {
         Set<String> boundVariables = boundVariables(comp);
         // Fail if there's name capture (bv(s) \cap (D_G \cup D_L \cup D_M) \neq \emptyset).
         if (callback.anyDeclared(boundVariables)) {
-        	logger.debug("Failed due to name capture");
+            log.debug("Failed due to name capture");
             return null;
         }
 
-        logger.debug("No name capture");
+        log.debug("No name capture");
 
         // We're done if nobody cares about the result value (r == false or \mathcal{C} = \epsilon).
         if (resVar == null)
             return comp.toSource();
 
-        logger.debug("Return value of eval is used");
+        log.debug("Return value of eval is used");
 
         // Our input is "s1; s2; ..; sn". Get sn and detach it from the parent for closure compiler reasons.
         Node sn = getLastStmt(getParentOfFirstInterestingNode(comp));
@@ -206,21 +217,21 @@ public class Unevalizer {
         // If the last statement in our input doesn't have a value we need to abort (hv(sn))
         // TODO: isExpr needed here? Remove isExpr
         if (!hasValue(sn) || !isExpr(sn)) {
-        	logger.debug("Last expression is NOT the value yielding one");
+            log.debug("Last expression is NOT the value yielding one");
             return null;
-         }
+        }
 
-        logger.debug("Last expression has value");
+        log.debug("Last expression has value");
 
         // Getting the program back from the compiler. A play in two acts.
         // AST -> String for s1..s(n-1)
-        Compiler.CodeBuilder cb1 = new Compiler.CodeBuilder();
+        CodeBuilder cb1 = new CodeBuilder();
         // AST -> String for s_n
-        Compiler.CodeBuilder cb2 = new Compiler.CodeBuilder();
+        CodeBuilder cb2 = new CodeBuilder();
         comp.toSource(cb1, 1, comp.getRoot());
-        comp.toSource(cb2, 1, sn);       
+        comp.toSource(cb2, 1, sn);
 
-        return cb1.toString() + resVar + " = " + cb2.toString();
+        return cb1 + resVar + " = " + cb2;
     }
 
     /**
@@ -270,13 +281,13 @@ public class Unevalizer {
      */
     private void fillHolesAndConstantFold(Compiler compiler, Node root, Set<String> map) {
         boolean b = true;
-        
+
         while (b) {
             b = convertNamesToStrings(root.getLastChild().getLastChild().getLastChild().getLastChild(), map);
         }
-        
+
         b = true;
-        
+
         while (b) {
             b = constantFoldStrings(root.getLastChild().getLastChild().getLastChild().getLastChild());
         }
@@ -290,19 +301,19 @@ public class Unevalizer {
         if (root.isName()) {
             String name = root.getString();
             map.add(name);
-            Node nn = Node.newString(name);
+            Node nn = newString(name);
             root.getParent().replaceChild(root, nn);
             if (root.getParent() != null)
                 root.detachFromParent();
             return true;
         }
-        
+
         boolean res = false;
         for (Node n : root.children()) {
             res |= convertNamesToStrings(n, map);
         }
 
-        return res;                
+        return res;
     }
 
     /**
@@ -313,7 +324,7 @@ public class Unevalizer {
             Node left = root.getFirstChild();
             Node right = root.getLastChild();
             if (left.isString() && right.isString()) {
-                Node nn = Node.newString(left.getString() + right.getString());
+                Node nn = newString(left.getString() + right.getString());
                 root.getParent().replaceChild(root, nn);
                 return true;
             }
@@ -339,7 +350,7 @@ public class Unevalizer {
             res = "";
         else
             res = resVar + " = ";
-        
+
         // log("Map of holes: " + map.toString());
         boolean unevalSucceed = contractEvalHelper(callback, comp, stringRoot, map);
         // The helper modifies the AST.
@@ -349,7 +360,7 @@ public class Unevalizer {
             return null;
 
         String result = res + comp.toSource();
-        
+
         // log("Retval:" + result);
         return result;
     }
@@ -366,7 +377,7 @@ public class Unevalizer {
             // log("Looping: " + n.toStringTree() + ":" +  n.getClass().getSimpleName());
             // Our names ended up in name or string nodes; check all such nodes for occurrences and transform accordingly.
             if (n.isName() || n.isString()) {
-                String v = n.getString();               
+                String v = n.getString();
                 for (String hole : holes) {
                     int i = v.indexOf(hole);
                     // Hole exists somewhere in the name
@@ -378,14 +389,14 @@ public class Unevalizer {
                         String lsub = v.substring(0, i);
                         // The part to the right of the variable. Might be empty.
                         String rsub = v.substring(i + hole.length(), v.length());
-                        if (lsub.length() > 0) {
+                        if (!lsub.isEmpty()) {
                             if (!(callback.isDefinitelyIdentifierFragment(hole) || callback.isDefinitelyInteger(hole))) {
-                                logger.debug("Failed due to non IdentifierFragment and non Integer");
+                                log.debug("Failed due to non IdentifierFragment and non Integer");
                                 return false;
                             }
                             // If there isn't a global identifier starting with lsub we're smoked.
-                            if (!isGlobalIdentifierPrefix(callback, lsub))  {
-                                logger.debug("Failed due to local shadowing");
+                            if (!isGlobalIdentifierPrefix(callback, lsub)) {
+                                log.debug("Failed due to local shadowing");
                                 return false;
                             }
                             tmpNode1 = new Node(Token.ADD, newString(lsub), nam);
@@ -393,21 +404,21 @@ public class Unevalizer {
                             tmpNode1.clonePropsFrom(nam);
                         } else {
                             if (!(callback.isDefinitelyIdentifier(hole) || callback.isDefinitelyBoolean(hole) || callback.isDefinitelyInteger(hole))) {
-                            	logger.debug("Not an identifier for sure: " + hole);
+                                log.debug("Not an identifier for sure: " + hole);
                                 return false;
                             }
                             tmpNode1 = nam;
                         }
 
-                        if (rsub.length() > 0) {
+                        if (!rsub.isEmpty()) {
                             if (!isGlobalIdentifierSuffix(callback, rsub)) {
-                            	logger.debug("Failed due to local shadowing");
+                                log.debug("Failed due to local shadowing");
                                 return false;
                             }
                             // Check if there are more than one hole in this node, and if so, give up.
                             for (String hole2 : holes) {
                                 if (rsub.contains(hole2)) {
-                                	logger.debug("Failed due to multiple holes in same node");
+                                    log.debug("Failed due to multiple holes in same node");
                                     return false;
                                 }
                             }
@@ -416,12 +427,12 @@ public class Unevalizer {
                             tmpRoot = tmpNode1;
 
                         // Replace the old node with the newly constructed tree in the AST
-                        Node p = n.getParent();                       
+                        Node p = n.getParent();
                         p.replaceChild(n, tmpRoot);
                         comp.reportCodeChange();
                         n = tmpRoot;
                         if (!fixupParent(callback, comp, p, n, hole, lsub.isEmpty() && rsub.isEmpty()))
-                             return false;
+                            return false;
                     }
                 }
             }
@@ -469,7 +480,7 @@ public class Unevalizer {
     private Set<String> boundVariables(Compiler comp) {
         Node root = getParentOfFirstInterestingNode(comp);
         Set<String> bvs = newSet();
-        
+
         bvHelper(root, bvs);
 
         return bvs;
@@ -493,18 +504,13 @@ public class Unevalizer {
      * Returns true if the statement has a value.
      */
     private static boolean hasValue(Node n) {
-        if (n.isExprResult())
-            return true;
-
-        return false;
+        return n.isExprResult() || n.isFunction() /* Function statements can be used as expressions in an eval */;
     }
 
     /**
      * Returns true if the parameter is an expression
      */
     private static boolean isExpr(Node n) {
-        if (n.isVar())
-            return false;
-        return true;
+        return !n.isVar();
     }
 }

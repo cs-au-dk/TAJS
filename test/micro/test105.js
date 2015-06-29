@@ -5,5 +5,5 @@ function F(a) {
 var x = new F(117)
 var y = new F(87);
 
-dumpValue(x.foo);
-dumpValue(y.foo);
+TAJS_dumpValue(x.foo);
+TAJS_dumpValue(y.foo);

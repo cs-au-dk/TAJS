@@ -3,9 +3,9 @@ function highest(){
 } 
  
 function makeArray(array){ 
-  dumpValue(array)
+  TAJS_dumpValue(array)
   return Array().slice.call( array ); 
 } 
  
-dumpObject(highest(1, 1, 2, 3)); 
+TAJS_dumpObject(highest(1, 1, 2, 3)); 
 

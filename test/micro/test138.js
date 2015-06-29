@@ -15,4 +15,4 @@ if (Math.random()) {
 	
 }
 
-dumpModifiedState();
+TAJS_dumpModifiedState();

@@ -230,5 +230,5 @@ var sha1Output = hex_sha1(plainText);
 
 var _sunSpiderInterval = new Date() - _sunSpiderStartDate;
 
-dumpValue(_sunSpiderInterval);
+TAJS_dumpValue(_sunSpiderInterval);
 

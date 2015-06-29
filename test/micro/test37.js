@@ -1,3 +1,3 @@
 var x = {a:42}
 var y = x.a;
-dumpValue(y);
+TAJS_dumpValue(y);

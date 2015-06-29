@@ -28,5 +28,5 @@ try {
     xxx = e.message;
 }
 
-dumpValue(xxx);
-assert(xxx == "fail");
+TAJS_dumpValue(xxx);
+TAJS_assert(xxx == "fail");

@@ -15,7 +15,7 @@ public class TestAnderson {
 	@Before
 	public void init() {
         Options.reset();
-		Options.enableTest();
+		Options.get().enableTest();
 	}
 
 	@Test

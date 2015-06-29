@@ -1,396 +1,396 @@
-test/chromeexperiments/voxels.tidy.html:2174:5: [definite] ReferenceError, reading absent variable do_something
-test/chromeexperiments/voxels.tidy.html:2176:13: [definite] ReferenceError, reading absent variable b
-test/chromeexperiments/voxels.tidy.html:25:13: [definite] The conditional expression is always false
-test/chromeexperiments/voxels.tidy.html:25:13: [definite] Variable THREE is null/undefined
-test/chromeexperiments/voxels.tidy.html:43:9: [definite] The conditional expression is always true
-test/chromeexperiments/voxels.tidy.html:1288:46: [definite] Variable a is null/undefined
-test/chromeexperiments/voxels.tidy.html:30:25: [definite] Dead assignment, property copyRGB is never read
-test/chromeexperiments/voxels.tidy.html:30:25: [definite] Dead assignment, property copyRGBA is never read
-test/chromeexperiments/voxels.tidy.html:30:25: [definite] Dead assignment, property multiplySelfRGB is never read
-test/chromeexperiments/voxels.tidy.html:30:25: [definite] Dead assignment, property setRGBA is never read
-test/chromeexperiments/voxels.tidy.html:30:25: [definite] Dead assignment, property toString is never read
-test/chromeexperiments/voxels.tidy.html:30:25: [definite] Dead assignment, property updateHex is never read
-test/chromeexperiments/voxels.tidy.html:74:9: [definite] Dead assignment, property __styleString is never read
-test/chromeexperiments/voxels.tidy.html:84:27: [definite] Dead assignment, property add is never read
-test/chromeexperiments/voxels.tidy.html:84:27: [definite] Dead assignment, property addSelf is never read
-test/chromeexperiments/voxels.tidy.html:84:27: [definite] Dead assignment, property clone is never read
-test/chromeexperiments/voxels.tidy.html:84:27: [definite] Dead assignment, property copy is never read
-test/chromeexperiments/voxels.tidy.html:84:27: [definite] Dead assignment, property length is never read
-test/chromeexperiments/voxels.tidy.html:84:27: [definite] Dead assignment, property lengthSq is never read
-test/chromeexperiments/voxels.tidy.html:84:27: [definite] Dead assignment, property multiplyScalar is never read
-test/chromeexperiments/voxels.tidy.html:84:27: [definite] Dead assignment, property negate is never read
-test/chromeexperiments/voxels.tidy.html:84:27: [definite] Dead assignment, property set is never read
-test/chromeexperiments/voxels.tidy.html:84:27: [definite] Dead assignment, property sub is never read
-test/chromeexperiments/voxels.tidy.html:84:27: [definite] Dead assignment, property subSelf is never read
-test/chromeexperiments/voxels.tidy.html:84:27: [definite] Dead assignment, property toString is never read
-test/chromeexperiments/voxels.tidy.html:84:27: [definite] Dead assignment, property unit is never read
-test/chromeexperiments/voxels.tidy.html:143:5: [definite] Dead assignment, property x is never read
-test/chromeexperiments/voxels.tidy.html:144:5: [definite] Dead assignment, property y is never read
-test/chromeexperiments/voxels.tidy.html:145:5: [definite] Dead assignment, property z is never read
-test/chromeexperiments/voxels.tidy.html:147:27: [definite] Dead assignment, property add is never read
-test/chromeexperiments/voxels.tidy.html:147:27: [definite] Dead assignment, property addScalar is never read
-test/chromeexperiments/voxels.tidy.html:147:27: [definite] Dead assignment, property addSelf is never read
-test/chromeexperiments/voxels.tidy.html:147:27: [definite] Dead assignment, property clone is never read
-test/chromeexperiments/voxels.tidy.html:147:27: [definite] Dead assignment, property copy is never read
-test/chromeexperiments/voxels.tidy.html:147:27: [definite] Dead assignment, property cross is never read
-test/chromeexperiments/voxels.tidy.html:147:27: [definite] Dead assignment, property crossSelf is never read
-test/chromeexperiments/voxels.tidy.html:147:27: [definite] Dead assignment, property distanceTo is never read
-test/chromeexperiments/voxels.tidy.html:147:27: [definite] Dead assignment, property distanceToSquared is never read
-test/chromeexperiments/voxels.tidy.html:147:27: [definite] Dead assignment, property divideScalar is never read
-test/chromeexperiments/voxels.tidy.html:147:27: [definite] Dead assignment, property dot is never read
-test/chromeexperiments/voxels.tidy.html:147:27: [definite] Dead assignment, property isZero is never read
-test/chromeexperiments/voxels.tidy.html:147:27: [definite] Dead assignment, property length is never read
-test/chromeexperiments/voxels.tidy.html:147:27: [definite] Dead assignment, property lengthSq is never read
-test/chromeexperiments/voxels.tidy.html:147:27: [definite] Dead assignment, property multiplyScalar is never read
-test/chromeexperiments/voxels.tidy.html:147:27: [definite] Dead assignment, property multiplySelf is never read
-test/chromeexperiments/voxels.tidy.html:147:27: [definite] Dead assignment, property negate is never read
-test/chromeexperiments/voxels.tidy.html:147:27: [definite] Dead assignment, property normalize is never read
-test/chromeexperiments/voxels.tidy.html:147:27: [definite] Dead assignment, property set is never read
-test/chromeexperiments/voxels.tidy.html:147:27: [definite] Dead assignment, property setLength is never read
-test/chromeexperiments/voxels.tidy.html:147:27: [definite] Dead assignment, property sub is never read
-test/chromeexperiments/voxels.tidy.html:147:27: [definite] Dead assignment, property subSelf is never read
-test/chromeexperiments/voxels.tidy.html:147:27: [definite] Dead assignment, property toString is never read
-test/chromeexperiments/voxels.tidy.html:275:27: [definite] Dead assignment, property add is never read
-test/chromeexperiments/voxels.tidy.html:275:27: [definite] Dead assignment, property addSelf is never read
-test/chromeexperiments/voxels.tidy.html:275:27: [definite] Dead assignment, property clone is never read
-test/chromeexperiments/voxels.tidy.html:275:27: [definite] Dead assignment, property copy is never read
-test/chromeexperiments/voxels.tidy.html:275:27: [definite] Dead assignment, property set is never read
-test/chromeexperiments/voxels.tidy.html:275:27: [definite] Dead assignment, property sub is never read
-test/chromeexperiments/voxels.tidy.html:275:27: [definite] Dead assignment, property subSelf is never read
-test/chromeexperiments/voxels.tidy.html:275:27: [definite] Dead assignment, property toString is never read
-test/chromeexperiments/voxels.tidy.html:329:23: [definite] Dead assignment, property intersectObject is never read
-test/chromeexperiments/voxels.tidy.html:329:23: [definite] Dead assignment, property intersectScene is never read
-test/chromeexperiments/voxels.tidy.html:405:1: [definite] Dead assignment, property Rectangle is never read
-test/chromeexperiments/voxels.tidy.html:509:27: [definite] Dead assignment, property transpose is never read
-test/chromeexperiments/voxels.tidy.html:525:5: [definite] Dead assignment, property _x is never read
-test/chromeexperiments/voxels.tidy.html:526:5: [definite] Dead assignment, property _y is never read
-test/chromeexperiments/voxels.tidy.html:527:5: [definite] Dead assignment, property _z is never read
-test/chromeexperiments/voxels.tidy.html:529:27: [definite] Dead assignment, property clone is never read
-test/chromeexperiments/voxels.tidy.html:529:27: [definite] Dead assignment, property copy is never read
-test/chromeexperiments/voxels.tidy.html:529:27: [definite] Dead assignment, property crossVector is never read
-test/chromeexperiments/voxels.tidy.html:529:27: [definite] Dead assignment, property determinant is never read
-test/chromeexperiments/voxels.tidy.html:529:27: [definite] Dead assignment, property flatten is never read
-test/chromeexperiments/voxels.tidy.html:529:27: [definite] Dead assignment, property identity is never read
-test/chromeexperiments/voxels.tidy.html:529:27: [definite] Dead assignment, property lookAt is never read
-test/chromeexperiments/voxels.tidy.html:529:27: [definite] Dead assignment, property multiply is never read
-test/chromeexperiments/voxels.tidy.html:529:27: [definite] Dead assignment, property multiplyScalar is never read
-test/chromeexperiments/voxels.tidy.html:529:27: [definite] Dead assignment, property multiplySelf is never read
-test/chromeexperiments/voxels.tidy.html:529:27: [definite] Dead assignment, property n11 is never read
-test/chromeexperiments/voxels.tidy.html:529:27: [definite] Dead assignment, property n12 is never read
-test/chromeexperiments/voxels.tidy.html:529:27: [definite] Dead assignment, property n13 is never read
-test/chromeexperiments/voxels.tidy.html:529:27: [definite] Dead assignment, property n14 is never read
-test/chromeexperiments/voxels.tidy.html:529:27: [definite] Dead assignment, property n21 is never read
-test/chromeexperiments/voxels.tidy.html:529:27: [definite] Dead assignment, property n22 is never read
-test/chromeexperiments/voxels.tidy.html:529:27: [definite] Dead assignment, property n23 is never read
-test/chromeexperiments/voxels.tidy.html:529:27: [definite] Dead assignment, property n24 is never read
-test/chromeexperiments/voxels.tidy.html:529:27: [definite] Dead assignment, property n31 is never read
-test/chromeexperiments/voxels.tidy.html:529:27: [definite] Dead assignment, property n32 is never read
-test/chromeexperiments/voxels.tidy.html:529:27: [definite] Dead assignment, property n33 is never read
-test/chromeexperiments/voxels.tidy.html:529:27: [definite] Dead assignment, property n34 is never read
-test/chromeexperiments/voxels.tidy.html:529:27: [definite] Dead assignment, property n41 is never read
-test/chromeexperiments/voxels.tidy.html:529:27: [definite] Dead assignment, property n42 is never read
-test/chromeexperiments/voxels.tidy.html:529:27: [definite] Dead assignment, property n43 is never read
-test/chromeexperiments/voxels.tidy.html:529:27: [definite] Dead assignment, property n44 is never read
-test/chromeexperiments/voxels.tidy.html:529:27: [definite] Dead assignment, property toString is never read
-test/chromeexperiments/voxels.tidy.html:529:27: [definite] Dead assignment, property transform is never read
-test/chromeexperiments/voxels.tidy.html:529:27: [definite] Dead assignment, property transpose is never read
-test/chromeexperiments/voxels.tidy.html:924:26: [definite] Dead assignment, property toString is never read
-test/chromeexperiments/voxels.tidy.html:938:25: [definite] Dead assignment, property toString is never read
-test/chromeexperiments/voxels.tidy.html:953:25: [definite] Dead assignment, property toString is never read
-test/chromeexperiments/voxels.tidy.html:962:22: [definite] Dead assignment, property copy is never read
-test/chromeexperiments/voxels.tidy.html:962:22: [definite] Dead assignment, property toString is never read
-test/chromeexperiments/voxels.tidy.html:976:28: [definite] Dead assignment, property computeBoundingBox is never read
-test/chromeexperiments/voxels.tidy.html:976:28: [definite] Dead assignment, property computeCentroids is never read
-test/chromeexperiments/voxels.tidy.html:976:28: [definite] Dead assignment, property computeNormals is never read
-test/chromeexperiments/voxels.tidy.html:976:28: [definite] Dead assignment, property toString is never read
-test/chromeexperiments/voxels.tidy.html:1068:1: [definite] Dead assignment, property Camera is never read
-test/chromeexperiments/voxels.tidy.html:1085:26: [definite] Dead assignment, property createModel is never read
-test/chromeexperiments/voxels.tidy.html:1085:26: [definite] Dead assignment, property loadAsync is never read
-test/chromeexperiments/voxels.tidy.html:1085:26: [definite] Dead assignment, property loadWorker is never read
-test/chromeexperiments/voxels.tidy.html:1288:5: [definite] Dead assignment, property color is never read
-test/chromeexperiments/voxels.tidy.html:1294:1: [definite] Dead assignment, property constructor is never read
-test/chromeexperiments/voxels.tidy.html:1301:1: [definite] Dead assignment, property constructor is never read
-test/chromeexperiments/voxels.tidy.html:1308:1: [definite] Dead assignment, property constructor is never read
-test/chromeexperiments/voxels.tidy.html:1310:5: [definite] Dead assignment, property position is never read
-test/chromeexperiments/voxels.tidy.html:1311:5: [definite] Dead assignment, property rotation is never read
-test/chromeexperiments/voxels.tidy.html:1312:5: [definite] Dead assignment, property scale is never read
-test/chromeexperiments/voxels.tidy.html:1313:5: [definite] Dead assignment, property matrix is never read
-test/chromeexperiments/voxels.tidy.html:1314:5: [definite] Dead assignment, property matrixTranslation is never read
-test/chromeexperiments/voxels.tidy.html:1315:5: [definite] Dead assignment, property matrixRotation is never read
-test/chromeexperiments/voxels.tidy.html:1316:5: [definite] Dead assignment, property matrixScale is never read
-test/chromeexperiments/voxels.tidy.html:1317:5: [definite] Dead assignment, property screen is never read
-test/chromeexperiments/voxels.tidy.html:1318:5: [definite] Dead assignment, property autoUpdateMatrix is never read
-test/chromeexperiments/voxels.tidy.html:1319:5: [definite] Dead assignment, property updateMatrix is never read
-test/chromeexperiments/voxels.tidy.html:1336:1: [definite] Dead assignment, property constructor is never read
-test/chromeexperiments/voxels.tidy.html:1343:1: [definite] Dead assignment, property constructor is never read
-test/chromeexperiments/voxels.tidy.html:1359:1: [definite] Dead assignment, property constructor is never read
-test/chromeexperiments/voxels.tidy.html:1360:1: [definite] Dead assignment, property sortFacesByMaterial is never read
-test/chromeexperiments/voxels.tidy.html:1408:1: [definite] Dead assignment, property normalizeUVs is never read
-test/chromeexperiments/voxels.tidy.html:1426:37: [definite] Dead assignment, property toString is never read
-test/chromeexperiments/voxels.tidy.html:1431:1: [definite] Dead assignment, property MeshPhongMaterial is never read
-test/chromeexperiments/voxels.tidy.html:1441:1: [definite] Dead assignment, property MeshBitmapMaterial is never read
-test/chromeexperiments/voxels.tidy.html:1449:1: [definite] Dead assignment, property MeshBitmapMaterialCounter is never read
-test/chromeexperiments/voxels.tidy.html:1449:35: [definite] Dead assignment, property value is never read
-test/chromeexperiments/voxels.tidy.html:1452:1: [definite] Dead assignment, property MeshBitmapMaterialMode is never read
-test/chromeexperiments/voxels.tidy.html:1452:32: [definite] Dead assignment, property UVMAPPING is never read
-test/chromeexperiments/voxels.tidy.html:1455:1: [definite] Dead assignment, property MeshColorFillMaterial is never read
-test/chromeexperiments/voxels.tidy.html:1461:1: [definite] Dead assignment, property MeshColorStrokeMaterial is never read
-test/chromeexperiments/voxels.tidy.html:1468:1: [definite] Dead assignment, property MeshFaceMaterial is never read
-test/chromeexperiments/voxels.tidy.html:1473:1: [definite] Dead assignment, property ParticleBitmapMaterial is never read
-test/chromeexperiments/voxels.tidy.html:1480:1: [definite] Dead assignment, property ParticleCircleMaterial is never read
-test/chromeexperiments/voxels.tidy.html:1486:1: [definite] Dead assignment, property Scene is never read
-test/chromeexperiments/voxels.tidy.html:1511:1: [definite] Dead assignment, property Projector is never read
-test/chromeexperiments/voxels.tidy.html:1664:1: [definite] Dead assignment, property CanvasRenderer is never read
-test/chromeexperiments/voxels.tidy.html:2134:1: [definite] Dead assignment, property RenderableFace3 is never read
-test/chromeexperiments/voxels.tidy.html:2145:1: [definite] Dead assignment, property RenderableFace4 is never read
-test/chromeexperiments/voxels.tidy.html:2157:1: [definite] Dead assignment, property RenderableParticle is never read
-test/chromeexperiments/voxels.tidy.html:2166:1: [definite] Dead assignment, property RenderableLine is never read
-test/chromeexperiments/voxels.tidy.html:31:14: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:48:14: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:53:15: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:59:22: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:64:16: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:76:15: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:80:17: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:85:10: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:90:11: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:95:14: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:100:10: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:105:14: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:110:10: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:115:21: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:120:11: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:124:13: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:127:15: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:130:13: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:135:12: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:138:15: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:148:10: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:154:11: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:160:10: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:166:14: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:172:16: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:178:10: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:184:14: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:190:12: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:196:16: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:205:19: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:211:21: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:217:19: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:223:10: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:226:17: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:229:24: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:235:13: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:238:15: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:241:13: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:247:16: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:255:16: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:258:13: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:262:12: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:265:15: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:269:17: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:276:10: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:283:11: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:290:10: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:297:14: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:304:10: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:311:14: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:318:12: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:321:15: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:325:13: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:330:21: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:339:16: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:344:22: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:389:9: [definite] Unreachable function l
-test/chromeexperiments/voxels.tidy.html:405:19: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:408:5: [definite] Unreachable function b
-test/chromeexperiments/voxels.tidy.html:412:17: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:415:17: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:418:21: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:421:22: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:424:18: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:427:18: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:430:18: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:433:18: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:436:16: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:444:21: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:459:25: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:474:20: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:481:20: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:488:24: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:491:18: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:499:20: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:502:21: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:506:17: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:510:16: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:546:15: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:564:11: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:582:13: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:609:16: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:627:18: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:635:15: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:653:19: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:687:21: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:705:18: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:708:16: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:709:9: [definite] Unreachable function a
-test/chromeexperiments/voxels.tidy.html:722:12: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:742:14: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:745:15: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:749:35: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:756:29: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:763:33: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:770:33: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:777:33: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:784:41: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:803:28: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:824:31: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:853:29: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:880:33: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:888:27: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:915:16: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:925:15: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:929:15: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:939:15: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:943:15: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:954:15: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:958:12: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:963:11: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:967:15: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:971:18: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:977:23: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:998:21: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:1031:25: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:1064:15: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:1068:16: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:1077:25: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:1080:21: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:1084:16: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:1086:16: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:1093:17: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:1096:23: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:1101:18: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:1102:17: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:1112:13: [definite] Unreachable function m
-test/chromeexperiments/voxels.tidy.html:1121:13: [definite] Unreachable function o
-test/chromeexperiments/voxels.tidy.html:1144:13: [definite] Unreachable function i
-test/chromeexperiments/voxels.tidy.html:1184:13: [definite] Unreachable function q
-test/chromeexperiments/voxels.tidy.html:1187:13: [definite] Unreachable function l
-test/chromeexperiments/voxels.tidy.html:1191:13: [definite] Unreachable function j
-test/chromeexperiments/voxels.tidy.html:1195:13: [definite] Unreachable function n
-test/chromeexperiments/voxels.tidy.html:1208:13: [definite] Unreachable function k
-test/chromeexperiments/voxels.tidy.html:1224:13: [definite] Unreachable function g
-test/chromeexperiments/voxels.tidy.html:1234:13: [definite] Unreachable function s
-test/chromeexperiments/voxels.tidy.html:1240:13: [definite] Unreachable function h
-test/chromeexperiments/voxels.tidy.html:1244:13: [definite] Unreachable function e
-test/chromeexperiments/voxels.tidy.html:1248:13: [definite] Unreachable function p
-test/chromeexperiments/voxels.tidy.html:1254:32: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:1290:22: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:1295:26: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:1302:20: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:1309:18: [definite] The variable a is never used
-test/chromeexperiments/voxels.tidy.html:1319:25: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:1330:18: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:1337:14: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:1344:14: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:1360:44: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:1363:5: [definite] Unreachable function a
-test/chromeexperiments/voxels.tidy.html:1408:37: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:1422:27: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:1427:15: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:1431:27: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:1437:21: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:1441:28: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:1445:21: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:1455:31: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:1457:21: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:1461:33: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:1464:21: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:1468:26: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:1469:21: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:1473:32: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:1476:21: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:1480:32: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:1482:21: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:1486:15: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:1489:22: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:1492:25: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:1498:21: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:1501:24: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:1507:21: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:1511:19: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:1520:25: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:1652:16: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:1657:28: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:1664:24: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:1687:20: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:1696:18: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:1705:19: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:1849:5: [definite] Unreachable function B
-test/chromeexperiments/voxels.tidy.html:1861:5: [definite] Unreachable function u
-test/chromeexperiments/voxels.tidy.html:1878:5: [definite] Unreachable function a
-test/chromeexperiments/voxels.tidy.html:1903:5: [definite] Unreachable function m
-test/chromeexperiments/voxels.tidy.html:1956:5: [definite] Unreachable function e
-test/chromeexperiments/voxels.tidy.html:1975:5: [definite] Unreachable function i
-test/chromeexperiments/voxels.tidy.html:2037:5: [definite] Unreachable function g
-test/chromeexperiments/voxels.tidy.html:2105:5: [definite] Unreachable function w
-test/chromeexperiments/voxels.tidy.html:2126:5: [definite] Unreachable function c
-test/chromeexperiments/voxels.tidy.html:2134:25: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:2145:25: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:2157:28: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:2166:24: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:2174:5: [definite] Unreachable code
-test/chromeexperiments/voxels.tidy.html:2176:9: [definite] The variable a is never used
-test/chromeexperiments/voxels.tidy.html:2176:13: [definite] Unreachable code
-test/chromeexperiments/voxels.tidy.html:2186:5: [definite] The variable Cube is never used
-test/chromeexperiments/voxels.tidy.html:2186:12: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:2211:9: [definite] Unreachable function v
-test/chromeexperiments/voxels.tidy.html:2216:9: [definite] Unreachable function f4
-test/chromeexperiments/voxels.tidy.html:2238:5: [definite] The variable Plane is never used
-test/chromeexperiments/voxels.tidy.html:2238:13: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:2304:29: [definite] The variable container is never used
-test/chromeexperiments/voxels.tidy.html:2304:40: [definite] The variable interval is never used
-test/chromeexperiments/voxels.tidy.html:2305:25: [definite] The variable camera is never used
-test/chromeexperiments/voxels.tidy.html:2305:33: [definite] The variable scene is never used
-test/chromeexperiments/voxels.tidy.html:2305:40: [definite] The variable renderer is never used
-test/chromeexperiments/voxels.tidy.html:2306:25: [definite] The variable projector is never used
-test/chromeexperiments/voxels.tidy.html:2306:36: [definite] The variable plane is never used
-test/chromeexperiments/voxels.tidy.html:2306:43: [definite] The variable cube is never used
-test/chromeexperiments/voxels.tidy.html:2306:49: [definite] The variable linesMaterial is never used
-test/chromeexperiments/voxels.tidy.html:2307:25: [definite] The variable color is never used
-test/chromeexperiments/voxels.tidy.html:2307:35: [definite] The variable colors is never used
-test/chromeexperiments/voxels.tidy.html:2308:25: [definite] The variable ray is never used
-test/chromeexperiments/voxels.tidy.html:2308:30: [definite] The variable brush is never used
-test/chromeexperiments/voxels.tidy.html:2308:37: [definite] The variable objectHovered is never used
-test/chromeexperiments/voxels.tidy.html:2309:25: [definite] The variable mouse3D is never used
-test/chromeexperiments/voxels.tidy.html:2309:34: [definite] The variable isMouseDown is never used
-test/chromeexperiments/voxels.tidy.html:2309:55: [definite] The variable onMouseDownPosition is never used
-test/chromeexperiments/voxels.tidy.html:2310:25: [definite] The variable radious is never used
-test/chromeexperiments/voxels.tidy.html:2310:41: [definite] The variable theta is never used
-test/chromeexperiments/voxels.tidy.html:2310:53: [definite] The variable onMouseDownTheta is never used
-test/chromeexperiments/voxels.tidy.html:2310:76: [definite] The variable phi is never used
-test/chromeexperiments/voxels.tidy.html:2310:86: [definite] The variable onMouseDownPhi is never used
-test/chromeexperiments/voxels.tidy.html:2311:25: [definite] The variable isShiftDown is never used
-test/chromeexperiments/voxels.tidy.html:2316:25: [definite] Unreachable function init
-test/chromeexperiments/voxels.tidy.html:2416:25: [definite] Unreachable function onDocumentKeyDown
-test/chromeexperiments/voxels.tidy.html:2442:25: [definite] Unreachable function onDocumentKeyUp
-test/chromeexperiments/voxels.tidy.html:2452:25: [definite] Unreachable function onDocumentMouseDown
-test/chromeexperiments/voxels.tidy.html:2465:25: [definite] Unreachable function onDocumentMouseMove
-test/chromeexperiments/voxels.tidy.html:2491:25: [definite] Unreachable function onDocumentMouseUp
-test/chromeexperiments/voxels.tidy.html:2545:25: [definite] Unreachable function onDocumentMouseWheel
-test/chromeexperiments/voxels.tidy.html:2559:25: [definite] Unreachable function setBrushColor
-test/chromeexperiments/voxels.tidy.html:2568:25: [definite] Unreachable function buildFromHash
-test/chromeexperiments/voxels.tidy.html:2620:25: [definite] Unreachable function updateHash
-test/chromeexperiments/voxels.tidy.html:2687:25: [definite] Unreachable function offsetScene
-test/chromeexperiments/voxels.tidy.html:2709:25: [definite] Unreachable function interact
-test/chromeexperiments/voxels.tidy.html:2759:25: [definite] Unreachable function render
-test/chromeexperiments/voxels.tidy.html:2765:25: [definite] Unreachable function save
-test/chromeexperiments/voxels.tidy.html:2778:25: [definite] Unreachable function clear
-test/chromeexperiments/voxels.tidy.html:2810:25: [definite] Unreachable function decode
-test/chromeexperiments/voxels.tidy.html:2813:59: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:2818:25: [definite] Unreachable function encode
-test/chromeexperiments/voxels.tidy.html:2821:48: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:2836:2: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:2837:2: [definite] Unreachable function
-test/chromeexperiments/voxels.tidy.html:1288:34: [maybe] Conversion to number yields NaN
-test/chromeexperiments/voxels.tidy.html:2299: [maybe] Uncaught exception, constructed at [test/chromeexperiments/voxels.tidy.html:2174:5, test/chromeexperiments/voxels.tidy.html:2176:13]
+test/chromeexperiments/voxels.html:2169:5: [definite] ReferenceError, reading absent variable do_something
+test/chromeexperiments/voxels.html:2171:13: [definite] ReferenceError, reading absent variable b
+test/chromeexperiments/voxels.html:20:13: [definite] The conditional expression is always false
+test/chromeexperiments/voxels.html:20:13: [definite] Variable THREE is null/undefined
+test/chromeexperiments/voxels.html:38:9: [definite] The conditional expression is always true
+test/chromeexperiments/voxels.html:1283:46: [definite] Variable a is null/undefined
+test/chromeexperiments/voxels.html:26:5: [definite] Dead assignment, property setRGBA is never read
+test/chromeexperiments/voxels.html:43:5: [definite] Dead assignment, property copyRGB is never read
+test/chromeexperiments/voxels.html:48:5: [definite] Dead assignment, property copyRGBA is never read
+test/chromeexperiments/voxels.html:54:5: [definite] Dead assignment, property multiplySelfRGB is never read
+test/chromeexperiments/voxels.html:59:5: [definite] Dead assignment, property updateHex is never read
+test/chromeexperiments/voxels.html:69:9: [definite] Dead assignment, property __styleString is never read
+test/chromeexperiments/voxels.html:71:5: [definite] Dead assignment, property toString is never read
+test/chromeexperiments/voxels.html:80:5: [definite] Dead assignment, property set is never read
+test/chromeexperiments/voxels.html:85:5: [definite] Dead assignment, property copy is never read
+test/chromeexperiments/voxels.html:90:5: [definite] Dead assignment, property addSelf is never read
+test/chromeexperiments/voxels.html:95:5: [definite] Dead assignment, property add is never read
+test/chromeexperiments/voxels.html:100:5: [definite] Dead assignment, property subSelf is never read
+test/chromeexperiments/voxels.html:105:5: [definite] Dead assignment, property sub is never read
+test/chromeexperiments/voxels.html:110:5: [definite] Dead assignment, property multiplyScalar is never read
+test/chromeexperiments/voxels.html:115:5: [definite] Dead assignment, property unit is never read
+test/chromeexperiments/voxels.html:119:5: [definite] Dead assignment, property length is never read
+test/chromeexperiments/voxels.html:122:5: [definite] Dead assignment, property lengthSq is never read
+test/chromeexperiments/voxels.html:125:5: [definite] Dead assignment, property negate is never read
+test/chromeexperiments/voxels.html:130:5: [definite] Dead assignment, property clone is never read
+test/chromeexperiments/voxels.html:133:5: [definite] Dead assignment, property toString is never read
+test/chromeexperiments/voxels.html:138:5: [definite] Dead assignment, property x is never read
+test/chromeexperiments/voxels.html:139:5: [definite] Dead assignment, property y is never read
+test/chromeexperiments/voxels.html:140:5: [definite] Dead assignment, property z is never read
+test/chromeexperiments/voxels.html:143:5: [definite] Dead assignment, property set is never read
+test/chromeexperiments/voxels.html:149:5: [definite] Dead assignment, property copy is never read
+test/chromeexperiments/voxels.html:155:5: [definite] Dead assignment, property add is never read
+test/chromeexperiments/voxels.html:161:5: [definite] Dead assignment, property addSelf is never read
+test/chromeexperiments/voxels.html:167:5: [definite] Dead assignment, property addScalar is never read
+test/chromeexperiments/voxels.html:173:5: [definite] Dead assignment, property sub is never read
+test/chromeexperiments/voxels.html:179:5: [definite] Dead assignment, property subSelf is never read
+test/chromeexperiments/voxels.html:185:5: [definite] Dead assignment, property cross is never read
+test/chromeexperiments/voxels.html:191:5: [definite] Dead assignment, property crossSelf is never read
+test/chromeexperiments/voxels.html:200:5: [definite] Dead assignment, property multiplySelf is never read
+test/chromeexperiments/voxels.html:206:5: [definite] Dead assignment, property multiplyScalar is never read
+test/chromeexperiments/voxels.html:212:5: [definite] Dead assignment, property divideScalar is never read
+test/chromeexperiments/voxels.html:218:5: [definite] Dead assignment, property dot is never read
+test/chromeexperiments/voxels.html:221:5: [definite] Dead assignment, property distanceTo is never read
+test/chromeexperiments/voxels.html:224:5: [definite] Dead assignment, property distanceToSquared is never read
+test/chromeexperiments/voxels.html:230:5: [definite] Dead assignment, property length is never read
+test/chromeexperiments/voxels.html:233:5: [definite] Dead assignment, property lengthSq is never read
+test/chromeexperiments/voxels.html:236:5: [definite] Dead assignment, property negate is never read
+test/chromeexperiments/voxels.html:242:5: [definite] Dead assignment, property normalize is never read
+test/chromeexperiments/voxels.html:250:5: [definite] Dead assignment, property setLength is never read
+test/chromeexperiments/voxels.html:253:5: [definite] Dead assignment, property isZero is never read
+test/chromeexperiments/voxels.html:257:5: [definite] Dead assignment, property clone is never read
+test/chromeexperiments/voxels.html:260:5: [definite] Dead assignment, property toString is never read
+test/chromeexperiments/voxels.html:271:5: [definite] Dead assignment, property set is never read
+test/chromeexperiments/voxels.html:278:5: [definite] Dead assignment, property copy is never read
+test/chromeexperiments/voxels.html:285:5: [definite] Dead assignment, property add is never read
+test/chromeexperiments/voxels.html:292:5: [definite] Dead assignment, property addSelf is never read
+test/chromeexperiments/voxels.html:299:5: [definite] Dead assignment, property sub is never read
+test/chromeexperiments/voxels.html:306:5: [definite] Dead assignment, property subSelf is never read
+test/chromeexperiments/voxels.html:313:5: [definite] Dead assignment, property clone is never read
+test/chromeexperiments/voxels.html:316:5: [definite] Dead assignment, property toString is never read
+test/chromeexperiments/voxels.html:325:5: [definite] Dead assignment, property intersectScene is never read
+test/chromeexperiments/voxels.html:339:5: [definite] Dead assignment, property intersectObject is never read
+test/chromeexperiments/voxels.html:400:1: [definite] Dead assignment, property Rectangle is never read
+test/chromeexperiments/voxels.html:505:5: [definite] Dead assignment, property transpose is never read
+test/chromeexperiments/voxels.html:520:5: [definite] Dead assignment, property _x is never read
+test/chromeexperiments/voxels.html:521:5: [definite] Dead assignment, property _y is never read
+test/chromeexperiments/voxels.html:522:5: [definite] Dead assignment, property _z is never read
+test/chromeexperiments/voxels.html:525:5: [definite] Dead assignment, property n11 is never read
+test/chromeexperiments/voxels.html:526:5: [definite] Dead assignment, property n12 is never read
+test/chromeexperiments/voxels.html:527:5: [definite] Dead assignment, property n13 is never read
+test/chromeexperiments/voxels.html:528:5: [definite] Dead assignment, property n14 is never read
+test/chromeexperiments/voxels.html:529:5: [definite] Dead assignment, property n21 is never read
+test/chromeexperiments/voxels.html:530:5: [definite] Dead assignment, property n22 is never read
+test/chromeexperiments/voxels.html:531:5: [definite] Dead assignment, property n23 is never read
+test/chromeexperiments/voxels.html:532:5: [definite] Dead assignment, property n24 is never read
+test/chromeexperiments/voxels.html:533:5: [definite] Dead assignment, property n31 is never read
+test/chromeexperiments/voxels.html:534:5: [definite] Dead assignment, property n32 is never read
+test/chromeexperiments/voxels.html:535:5: [definite] Dead assignment, property n33 is never read
+test/chromeexperiments/voxels.html:536:5: [definite] Dead assignment, property n34 is never read
+test/chromeexperiments/voxels.html:537:5: [definite] Dead assignment, property n41 is never read
+test/chromeexperiments/voxels.html:538:5: [definite] Dead assignment, property n42 is never read
+test/chromeexperiments/voxels.html:539:5: [definite] Dead assignment, property n43 is never read
+test/chromeexperiments/voxels.html:540:5: [definite] Dead assignment, property n44 is never read
+test/chromeexperiments/voxels.html:541:5: [definite] Dead assignment, property identity is never read
+test/chromeexperiments/voxels.html:559:5: [definite] Dead assignment, property copy is never read
+test/chromeexperiments/voxels.html:577:5: [definite] Dead assignment, property lookAt is never read
+test/chromeexperiments/voxels.html:604:5: [definite] Dead assignment, property transform is never read
+test/chromeexperiments/voxels.html:622:5: [definite] Dead assignment, property crossVector is never read
+test/chromeexperiments/voxels.html:630:5: [definite] Dead assignment, property multiply is never read
+test/chromeexperiments/voxels.html:648:5: [definite] Dead assignment, property multiplySelf is never read
+test/chromeexperiments/voxels.html:682:5: [definite] Dead assignment, property multiplyScalar is never read
+test/chromeexperiments/voxels.html:700:5: [definite] Dead assignment, property determinant is never read
+test/chromeexperiments/voxels.html:703:5: [definite] Dead assignment, property transpose is never read
+test/chromeexperiments/voxels.html:717:5: [definite] Dead assignment, property clone is never read
+test/chromeexperiments/voxels.html:737:5: [definite] Dead assignment, property flatten is never read
+test/chromeexperiments/voxels.html:740:5: [definite] Dead assignment, property toString is never read
+test/chromeexperiments/voxels.html:920:5: [definite] Dead assignment, property toString is never read
+test/chromeexperiments/voxels.html:934:5: [definite] Dead assignment, property toString is never read
+test/chromeexperiments/voxels.html:949:5: [definite] Dead assignment, property toString is never read
+test/chromeexperiments/voxels.html:958:5: [definite] Dead assignment, property copy is never read
+test/chromeexperiments/voxels.html:962:5: [definite] Dead assignment, property toString is never read
+test/chromeexperiments/voxels.html:972:5: [definite] Dead assignment, property computeCentroids is never read
+test/chromeexperiments/voxels.html:993:5: [definite] Dead assignment, property computeNormals is never read
+test/chromeexperiments/voxels.html:1026:5: [definite] Dead assignment, property computeBoundingBox is never read
+test/chromeexperiments/voxels.html:1059:5: [definite] Dead assignment, property toString is never read
+test/chromeexperiments/voxels.html:1063:1: [definite] Dead assignment, property Camera is never read
+test/chromeexperiments/voxels.html:1081:5: [definite] Dead assignment, property loadAsync is never read
+test/chromeexperiments/voxels.html:1088:5: [definite] Dead assignment, property loadWorker is never read
+test/chromeexperiments/voxels.html:1096:5: [definite] Dead assignment, property createModel is never read
+test/chromeexperiments/voxels.html:1283:5: [definite] Dead assignment, property color is never read
+test/chromeexperiments/voxels.html:1289:1: [definite] Dead assignment, property constructor is never read
+test/chromeexperiments/voxels.html:1296:1: [definite] Dead assignment, property constructor is never read
+test/chromeexperiments/voxels.html:1303:1: [definite] Dead assignment, property constructor is never read
+test/chromeexperiments/voxels.html:1305:5: [definite] Dead assignment, property position is never read
+test/chromeexperiments/voxels.html:1306:5: [definite] Dead assignment, property rotation is never read
+test/chromeexperiments/voxels.html:1307:5: [definite] Dead assignment, property scale is never read
+test/chromeexperiments/voxels.html:1308:5: [definite] Dead assignment, property matrix is never read
+test/chromeexperiments/voxels.html:1309:5: [definite] Dead assignment, property matrixTranslation is never read
+test/chromeexperiments/voxels.html:1310:5: [definite] Dead assignment, property matrixRotation is never read
+test/chromeexperiments/voxels.html:1311:5: [definite] Dead assignment, property matrixScale is never read
+test/chromeexperiments/voxels.html:1312:5: [definite] Dead assignment, property screen is never read
+test/chromeexperiments/voxels.html:1313:5: [definite] Dead assignment, property autoUpdateMatrix is never read
+test/chromeexperiments/voxels.html:1314:5: [definite] Dead assignment, property updateMatrix is never read
+test/chromeexperiments/voxels.html:1331:1: [definite] Dead assignment, property constructor is never read
+test/chromeexperiments/voxels.html:1338:1: [definite] Dead assignment, property constructor is never read
+test/chromeexperiments/voxels.html:1354:1: [definite] Dead assignment, property constructor is never read
+test/chromeexperiments/voxels.html:1355:1: [definite] Dead assignment, property sortFacesByMaterial is never read
+test/chromeexperiments/voxels.html:1403:1: [definite] Dead assignment, property normalizeUVs is never read
+test/chromeexperiments/voxels.html:1422:5: [definite] Dead assignment, property toString is never read
+test/chromeexperiments/voxels.html:1426:1: [definite] Dead assignment, property MeshPhongMaterial is never read
+test/chromeexperiments/voxels.html:1436:1: [definite] Dead assignment, property MeshBitmapMaterial is never read
+test/chromeexperiments/voxels.html:1444:1: [definite] Dead assignment, property MeshBitmapMaterialCounter is never read
+test/chromeexperiments/voxels.html:1445:5: [definite] Dead assignment, property value is never read
+test/chromeexperiments/voxels.html:1447:1: [definite] Dead assignment, property MeshBitmapMaterialMode is never read
+test/chromeexperiments/voxels.html:1448:5: [definite] Dead assignment, property UVMAPPING is never read
+test/chromeexperiments/voxels.html:1450:1: [definite] Dead assignment, property MeshColorFillMaterial is never read
+test/chromeexperiments/voxels.html:1456:1: [definite] Dead assignment, property MeshColorStrokeMaterial is never read
+test/chromeexperiments/voxels.html:1463:1: [definite] Dead assignment, property MeshFaceMaterial is never read
+test/chromeexperiments/voxels.html:1468:1: [definite] Dead assignment, property ParticleBitmapMaterial is never read
+test/chromeexperiments/voxels.html:1475:1: [definite] Dead assignment, property ParticleCircleMaterial is never read
+test/chromeexperiments/voxels.html:1481:1: [definite] Dead assignment, property Scene is never read
+test/chromeexperiments/voxels.html:1506:1: [definite] Dead assignment, property Projector is never read
+test/chromeexperiments/voxels.html:1659:1: [definite] Dead assignment, property CanvasRenderer is never read
+test/chromeexperiments/voxels.html:2129:1: [definite] Dead assignment, property RenderableFace3 is never read
+test/chromeexperiments/voxels.html:2140:1: [definite] Dead assignment, property RenderableFace4 is never read
+test/chromeexperiments/voxels.html:2152:1: [definite] Dead assignment, property RenderableParticle is never read
+test/chromeexperiments/voxels.html:2161:1: [definite] Dead assignment, property RenderableLine is never read
+test/chromeexperiments/voxels.html:26:14: [definite] Unreachable function
+test/chromeexperiments/voxels.html:43:14: [definite] Unreachable function
+test/chromeexperiments/voxels.html:48:15: [definite] Unreachable function
+test/chromeexperiments/voxels.html:54:22: [definite] Unreachable function
+test/chromeexperiments/voxels.html:59:16: [definite] Unreachable function
+test/chromeexperiments/voxels.html:71:15: [definite] Unreachable function
+test/chromeexperiments/voxels.html:75:17: [definite] Unreachable function
+test/chromeexperiments/voxels.html:80:10: [definite] Unreachable function
+test/chromeexperiments/voxels.html:85:11: [definite] Unreachable function
+test/chromeexperiments/voxels.html:90:14: [definite] Unreachable function
+test/chromeexperiments/voxels.html:95:10: [definite] Unreachable function
+test/chromeexperiments/voxels.html:100:14: [definite] Unreachable function
+test/chromeexperiments/voxels.html:105:10: [definite] Unreachable function
+test/chromeexperiments/voxels.html:110:21: [definite] Unreachable function
+test/chromeexperiments/voxels.html:115:11: [definite] Unreachable function
+test/chromeexperiments/voxels.html:119:13: [definite] Unreachable function
+test/chromeexperiments/voxels.html:122:15: [definite] Unreachable function
+test/chromeexperiments/voxels.html:125:13: [definite] Unreachable function
+test/chromeexperiments/voxels.html:130:12: [definite] Unreachable function
+test/chromeexperiments/voxels.html:133:15: [definite] Unreachable function
+test/chromeexperiments/voxels.html:143:10: [definite] Unreachable function
+test/chromeexperiments/voxels.html:149:11: [definite] Unreachable function
+test/chromeexperiments/voxels.html:155:10: [definite] Unreachable function
+test/chromeexperiments/voxels.html:161:14: [definite] Unreachable function
+test/chromeexperiments/voxels.html:167:16: [definite] Unreachable function
+test/chromeexperiments/voxels.html:173:10: [definite] Unreachable function
+test/chromeexperiments/voxels.html:179:14: [definite] Unreachable function
+test/chromeexperiments/voxels.html:185:12: [definite] Unreachable function
+test/chromeexperiments/voxels.html:191:16: [definite] Unreachable function
+test/chromeexperiments/voxels.html:200:19: [definite] Unreachable function
+test/chromeexperiments/voxels.html:206:21: [definite] Unreachable function
+test/chromeexperiments/voxels.html:212:19: [definite] Unreachable function
+test/chromeexperiments/voxels.html:218:10: [definite] Unreachable function
+test/chromeexperiments/voxels.html:221:17: [definite] Unreachable function
+test/chromeexperiments/voxels.html:224:24: [definite] Unreachable function
+test/chromeexperiments/voxels.html:230:13: [definite] Unreachable function
+test/chromeexperiments/voxels.html:233:15: [definite] Unreachable function
+test/chromeexperiments/voxels.html:236:13: [definite] Unreachable function
+test/chromeexperiments/voxels.html:242:16: [definite] Unreachable function
+test/chromeexperiments/voxels.html:250:16: [definite] Unreachable function
+test/chromeexperiments/voxels.html:253:13: [definite] Unreachable function
+test/chromeexperiments/voxels.html:257:12: [definite] Unreachable function
+test/chromeexperiments/voxels.html:260:15: [definite] Unreachable function
+test/chromeexperiments/voxels.html:264:17: [definite] Unreachable function
+test/chromeexperiments/voxels.html:271:10: [definite] Unreachable function
+test/chromeexperiments/voxels.html:278:11: [definite] Unreachable function
+test/chromeexperiments/voxels.html:285:10: [definite] Unreachable function
+test/chromeexperiments/voxels.html:292:14: [definite] Unreachable function
+test/chromeexperiments/voxels.html:299:10: [definite] Unreachable function
+test/chromeexperiments/voxels.html:306:14: [definite] Unreachable function
+test/chromeexperiments/voxels.html:313:12: [definite] Unreachable function
+test/chromeexperiments/voxels.html:316:15: [definite] Unreachable function
+test/chromeexperiments/voxels.html:320:13: [definite] Unreachable function
+test/chromeexperiments/voxels.html:325:21: [definite] Unreachable function
+test/chromeexperiments/voxels.html:334:16: [definite] Unreachable function
+test/chromeexperiments/voxels.html:339:22: [definite] Unreachable function
+test/chromeexperiments/voxels.html:384:9: [definite] Unreachable function l
+test/chromeexperiments/voxels.html:400:19: [definite] Unreachable function
+test/chromeexperiments/voxels.html:403:5: [definite] Unreachable function b
+test/chromeexperiments/voxels.html:407:17: [definite] Unreachable function
+test/chromeexperiments/voxels.html:410:17: [definite] Unreachable function
+test/chromeexperiments/voxels.html:413:21: [definite] Unreachable function
+test/chromeexperiments/voxels.html:416:22: [definite] Unreachable function
+test/chromeexperiments/voxels.html:419:18: [definite] Unreachable function
+test/chromeexperiments/voxels.html:422:18: [definite] Unreachable function
+test/chromeexperiments/voxels.html:425:18: [definite] Unreachable function
+test/chromeexperiments/voxels.html:428:18: [definite] Unreachable function
+test/chromeexperiments/voxels.html:431:16: [definite] Unreachable function
+test/chromeexperiments/voxels.html:439:21: [definite] Unreachable function
+test/chromeexperiments/voxels.html:454:25: [definite] Unreachable function
+test/chromeexperiments/voxels.html:469:20: [definite] Unreachable function
+test/chromeexperiments/voxels.html:476:20: [definite] Unreachable function
+test/chromeexperiments/voxels.html:483:24: [definite] Unreachable function
+test/chromeexperiments/voxels.html:486:18: [definite] Unreachable function
+test/chromeexperiments/voxels.html:494:20: [definite] Unreachable function
+test/chromeexperiments/voxels.html:497:21: [definite] Unreachable function
+test/chromeexperiments/voxels.html:501:17: [definite] Unreachable function
+test/chromeexperiments/voxels.html:505:16: [definite] Unreachable function
+test/chromeexperiments/voxels.html:541:15: [definite] Unreachable function
+test/chromeexperiments/voxels.html:559:11: [definite] Unreachable function
+test/chromeexperiments/voxels.html:577:13: [definite] Unreachable function
+test/chromeexperiments/voxels.html:604:16: [definite] Unreachable function
+test/chromeexperiments/voxels.html:622:18: [definite] Unreachable function
+test/chromeexperiments/voxels.html:630:15: [definite] Unreachable function
+test/chromeexperiments/voxels.html:648:19: [definite] Unreachable function
+test/chromeexperiments/voxels.html:682:21: [definite] Unreachable function
+test/chromeexperiments/voxels.html:700:18: [definite] Unreachable function
+test/chromeexperiments/voxels.html:703:16: [definite] Unreachable function
+test/chromeexperiments/voxels.html:704:9: [definite] Unreachable function a
+test/chromeexperiments/voxels.html:717:12: [definite] Unreachable function
+test/chromeexperiments/voxels.html:737:14: [definite] Unreachable function
+test/chromeexperiments/voxels.html:740:15: [definite] Unreachable function
+test/chromeexperiments/voxels.html:744:35: [definite] Unreachable function
+test/chromeexperiments/voxels.html:751:29: [definite] Unreachable function
+test/chromeexperiments/voxels.html:758:33: [definite] Unreachable function
+test/chromeexperiments/voxels.html:765:33: [definite] Unreachable function
+test/chromeexperiments/voxels.html:772:33: [definite] Unreachable function
+test/chromeexperiments/voxels.html:779:41: [definite] Unreachable function
+test/chromeexperiments/voxels.html:798:28: [definite] Unreachable function
+test/chromeexperiments/voxels.html:819:31: [definite] Unreachable function
+test/chromeexperiments/voxels.html:848:29: [definite] Unreachable function
+test/chromeexperiments/voxels.html:875:33: [definite] Unreachable function
+test/chromeexperiments/voxels.html:883:27: [definite] Unreachable function
+test/chromeexperiments/voxels.html:910:16: [definite] Unreachable function
+test/chromeexperiments/voxels.html:920:15: [definite] Unreachable function
+test/chromeexperiments/voxels.html:924:15: [definite] Unreachable function
+test/chromeexperiments/voxels.html:934:15: [definite] Unreachable function
+test/chromeexperiments/voxels.html:938:15: [definite] Unreachable function
+test/chromeexperiments/voxels.html:949:15: [definite] Unreachable function
+test/chromeexperiments/voxels.html:953:12: [definite] Unreachable function
+test/chromeexperiments/voxels.html:958:11: [definite] Unreachable function
+test/chromeexperiments/voxels.html:962:15: [definite] Unreachable function
+test/chromeexperiments/voxels.html:966:18: [definite] Unreachable function
+test/chromeexperiments/voxels.html:972:23: [definite] Unreachable function
+test/chromeexperiments/voxels.html:993:21: [definite] Unreachable function
+test/chromeexperiments/voxels.html:1026:25: [definite] Unreachable function
+test/chromeexperiments/voxels.html:1059:15: [definite] Unreachable function
+test/chromeexperiments/voxels.html:1063:16: [definite] Unreachable function
+test/chromeexperiments/voxels.html:1072:25: [definite] Unreachable function
+test/chromeexperiments/voxels.html:1075:21: [definite] Unreachable function
+test/chromeexperiments/voxels.html:1079:16: [definite] Unreachable function
+test/chromeexperiments/voxels.html:1081:16: [definite] Unreachable function
+test/chromeexperiments/voxels.html:1088:17: [definite] Unreachable function
+test/chromeexperiments/voxels.html:1091:23: [definite] Unreachable function
+test/chromeexperiments/voxels.html:1096:18: [definite] Unreachable function
+test/chromeexperiments/voxels.html:1097:17: [definite] Unreachable function
+test/chromeexperiments/voxels.html:1107:13: [definite] Unreachable function m
+test/chromeexperiments/voxels.html:1116:13: [definite] Unreachable function o
+test/chromeexperiments/voxels.html:1139:13: [definite] Unreachable function i
+test/chromeexperiments/voxels.html:1179:13: [definite] Unreachable function q
+test/chromeexperiments/voxels.html:1182:13: [definite] Unreachable function l
+test/chromeexperiments/voxels.html:1186:13: [definite] Unreachable function j
+test/chromeexperiments/voxels.html:1190:13: [definite] Unreachable function n
+test/chromeexperiments/voxels.html:1203:13: [definite] Unreachable function k
+test/chromeexperiments/voxels.html:1219:13: [definite] Unreachable function g
+test/chromeexperiments/voxels.html:1229:13: [definite] Unreachable function s
+test/chromeexperiments/voxels.html:1235:13: [definite] Unreachable function h
+test/chromeexperiments/voxels.html:1239:13: [definite] Unreachable function e
+test/chromeexperiments/voxels.html:1243:13: [definite] Unreachable function p
+test/chromeexperiments/voxels.html:1249:32: [definite] Unreachable function
+test/chromeexperiments/voxels.html:1285:22: [definite] Unreachable function
+test/chromeexperiments/voxels.html:1290:26: [definite] Unreachable function
+test/chromeexperiments/voxels.html:1297:20: [definite] Unreachable function
+test/chromeexperiments/voxels.html:1304:18: [definite] The variable a is never used
+test/chromeexperiments/voxels.html:1314:25: [definite] Unreachable function
+test/chromeexperiments/voxels.html:1325:18: [definite] Unreachable function
+test/chromeexperiments/voxels.html:1332:14: [definite] Unreachable function
+test/chromeexperiments/voxels.html:1339:14: [definite] Unreachable function
+test/chromeexperiments/voxels.html:1355:44: [definite] Unreachable function
+test/chromeexperiments/voxels.html:1358:5: [definite] Unreachable function a
+test/chromeexperiments/voxels.html:1403:37: [definite] Unreachable function
+test/chromeexperiments/voxels.html:1417:27: [definite] Unreachable function
+test/chromeexperiments/voxels.html:1422:15: [definite] Unreachable function
+test/chromeexperiments/voxels.html:1426:27: [definite] Unreachable function
+test/chromeexperiments/voxels.html:1432:21: [definite] Unreachable function
+test/chromeexperiments/voxels.html:1436:28: [definite] Unreachable function
+test/chromeexperiments/voxels.html:1440:21: [definite] Unreachable function
+test/chromeexperiments/voxels.html:1450:31: [definite] Unreachable function
+test/chromeexperiments/voxels.html:1452:21: [definite] Unreachable function
+test/chromeexperiments/voxels.html:1456:33: [definite] Unreachable function
+test/chromeexperiments/voxels.html:1459:21: [definite] Unreachable function
+test/chromeexperiments/voxels.html:1463:26: [definite] Unreachable function
+test/chromeexperiments/voxels.html:1464:21: [definite] Unreachable function
+test/chromeexperiments/voxels.html:1468:32: [definite] Unreachable function
+test/chromeexperiments/voxels.html:1471:21: [definite] Unreachable function
+test/chromeexperiments/voxels.html:1475:32: [definite] Unreachable function
+test/chromeexperiments/voxels.html:1477:21: [definite] Unreachable function
+test/chromeexperiments/voxels.html:1481:15: [definite] Unreachable function
+test/chromeexperiments/voxels.html:1484:22: [definite] Unreachable function
+test/chromeexperiments/voxels.html:1487:25: [definite] Unreachable function
+test/chromeexperiments/voxels.html:1493:21: [definite] Unreachable function
+test/chromeexperiments/voxels.html:1496:24: [definite] Unreachable function
+test/chromeexperiments/voxels.html:1502:21: [definite] Unreachable function
+test/chromeexperiments/voxels.html:1506:19: [definite] Unreachable function
+test/chromeexperiments/voxels.html:1515:25: [definite] Unreachable function
+test/chromeexperiments/voxels.html:1647:16: [definite] Unreachable function
+test/chromeexperiments/voxels.html:1652:28: [definite] Unreachable function
+test/chromeexperiments/voxels.html:1659:24: [definite] Unreachable function
+test/chromeexperiments/voxels.html:1682:20: [definite] Unreachable function
+test/chromeexperiments/voxels.html:1691:18: [definite] Unreachable function
+test/chromeexperiments/voxels.html:1700:19: [definite] Unreachable function
+test/chromeexperiments/voxels.html:1844:5: [definite] Unreachable function B
+test/chromeexperiments/voxels.html:1856:5: [definite] Unreachable function u
+test/chromeexperiments/voxels.html:1873:5: [definite] Unreachable function a
+test/chromeexperiments/voxels.html:1898:5: [definite] Unreachable function m
+test/chromeexperiments/voxels.html:1951:5: [definite] Unreachable function e
+test/chromeexperiments/voxels.html:1970:5: [definite] Unreachable function i
+test/chromeexperiments/voxels.html:2032:5: [definite] Unreachable function g
+test/chromeexperiments/voxels.html:2100:5: [definite] Unreachable function w
+test/chromeexperiments/voxels.html:2121:5: [definite] Unreachable function c
+test/chromeexperiments/voxels.html:2129:25: [definite] Unreachable function
+test/chromeexperiments/voxels.html:2140:25: [definite] Unreachable function
+test/chromeexperiments/voxels.html:2152:28: [definite] Unreachable function
+test/chromeexperiments/voxels.html:2161:24: [definite] Unreachable function
+test/chromeexperiments/voxels.html:2169:5: [definite] Unreachable code
+test/chromeexperiments/voxels.html:2171:9: [definite] The variable a is never used
+test/chromeexperiments/voxels.html:2171:13: [definite] Unreachable code
+test/chromeexperiments/voxels.html:2179:5: [definite] The variable Cube is never used
+test/chromeexperiments/voxels.html:2179:12: [definite] Unreachable function
+test/chromeexperiments/voxels.html:2204:2: [definite] Unreachable function v
+test/chromeexperiments/voxels.html:2209:2: [definite] Unreachable function f4
+test/chromeexperiments/voxels.html:2229:5: [definite] The variable Plane is never used
+test/chromeexperiments/voxels.html:2229:13: [definite] Unreachable function
+test/chromeexperiments/voxels.html:2294:8: [definite] The variable container is never used
+test/chromeexperiments/voxels.html:2294:19: [definite] The variable interval is never used
+test/chromeexperiments/voxels.html:2295:4: [definite] The variable camera is never used
+test/chromeexperiments/voxels.html:2295:12: [definite] The variable scene is never used
+test/chromeexperiments/voxels.html:2295:19: [definite] The variable renderer is never used
+test/chromeexperiments/voxels.html:2296:4: [definite] The variable projector is never used
+test/chromeexperiments/voxels.html:2296:15: [definite] The variable plane is never used
+test/chromeexperiments/voxels.html:2296:22: [definite] The variable cube is never used
+test/chromeexperiments/voxels.html:2296:28: [definite] The variable linesMaterial is never used
+test/chromeexperiments/voxels.html:2297:4: [definite] The variable color is never used
+test/chromeexperiments/voxels.html:2297:14: [definite] The variable colors is never used
+test/chromeexperiments/voxels.html:2298:4: [definite] The variable ray is never used
+test/chromeexperiments/voxels.html:2298:9: [definite] The variable brush is never used
+test/chromeexperiments/voxels.html:2298:16: [definite] The variable objectHovered is never used
+test/chromeexperiments/voxels.html:2299:4: [definite] The variable mouse3D is never used
+test/chromeexperiments/voxels.html:2299:13: [definite] The variable isMouseDown is never used
+test/chromeexperiments/voxels.html:2299:34: [definite] The variable onMouseDownPosition is never used
+test/chromeexperiments/voxels.html:2300:4: [definite] The variable radious is never used
+test/chromeexperiments/voxels.html:2300:20: [definite] The variable theta is never used
+test/chromeexperiments/voxels.html:2300:32: [definite] The variable onMouseDownTheta is never used
+test/chromeexperiments/voxels.html:2300:55: [definite] The variable phi is never used
+test/chromeexperiments/voxels.html:2300:65: [definite] The variable onMouseDownPhi is never used
+test/chromeexperiments/voxels.html:2301:4: [definite] The variable isShiftDown is never used
+test/chromeexperiments/voxels.html:2306:4: [definite] Unreachable function init
+test/chromeexperiments/voxels.html:2406:4: [definite] Unreachable function onDocumentKeyDown
+test/chromeexperiments/voxels.html:2432:4: [definite] Unreachable function onDocumentKeyUp
+test/chromeexperiments/voxels.html:2442:4: [definite] Unreachable function onDocumentMouseDown
+test/chromeexperiments/voxels.html:2455:4: [definite] Unreachable function onDocumentMouseMove
+test/chromeexperiments/voxels.html:2481:4: [definite] Unreachable function onDocumentMouseUp
+test/chromeexperiments/voxels.html:2535:4: [definite] Unreachable function onDocumentMouseWheel
+test/chromeexperiments/voxels.html:2549:4: [definite] Unreachable function setBrushColor
+test/chromeexperiments/voxels.html:2558:4: [definite] Unreachable function buildFromHash
+test/chromeexperiments/voxels.html:2610:4: [definite] Unreachable function updateHash
+test/chromeexperiments/voxels.html:2677:4: [definite] Unreachable function offsetScene
+test/chromeexperiments/voxels.html:2699:4: [definite] Unreachable function interact
+test/chromeexperiments/voxels.html:2749:4: [definite] Unreachable function render
+test/chromeexperiments/voxels.html:2755:4: [definite] Unreachable function save
+test/chromeexperiments/voxels.html:2768:4: [definite] Unreachable function clear
+test/chromeexperiments/voxels.html:2800:4: [definite] Unreachable function decode
+test/chromeexperiments/voxels.html:2803:31: [definite] Unreachable function
+test/chromeexperiments/voxels.html:2808:4: [definite] Unreachable function encode
+test/chromeexperiments/voxels.html:2811:20: [definite] Unreachable function
+test/chromeexperiments/voxels.html:2816:460: [definite] Unreachable function
+test/chromeexperiments/voxels.html:2816:498: [definite] Unreachable function
+test/chromeexperiments/voxels.html:18:34: [maybe] Uncaught exception, constructed at [test/chromeexperiments/voxels.html:2169:5, test/chromeexperiments/voxels.html:2171:13]
+test/chromeexperiments/voxels.html:1283:34: [maybe] Conversion to number yields NaN

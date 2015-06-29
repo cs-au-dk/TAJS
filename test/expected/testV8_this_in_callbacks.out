@@ -1,6 +1,0 @@
-test/v8tests/this-in-callbacks.js:46:1: [definite] ReferenceError, reading absent variable assertEquals
-test/v8tests/this-in-callbacks.js:32:5: [definite] The variable my_identity is never used
-test/v8tests/this-in-callbacks.js:34:1: [definite] Unreachable function cp
-test/v8tests/this-in-callbacks.js:42:1: [definite] Unreachable function r
-test/v8tests/this-in-callbacks.js:46:14: [definite] Unreachable code
-test/v8tests/this-in-callbacks.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/this-in-callbacks.js:46:1]

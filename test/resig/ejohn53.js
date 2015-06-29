@@ -5,4 +5,4 @@ elem.onclick = function(){
   log( "Click #", count++ ); 
 }; 
 document.getElementById("results").appendChild( elem ); 
-assert( elem.parentNode );
+TAJS_assert( elem.parentNode );

@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2013 Aarhus University
+ * Copyright 2009-2015 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,87 +29,94 @@ import dk.brics.tajs.util.AnalysisException;
  * <p>
  * Note that reading a property may overwrite the base register due to ToObject coercion.
  */
-public class WritePropertyNode extends Node implements IPropertyNode {
+public class WritePropertyNode extends Node {
 
-	private int base_reg;
+    private int base_reg;
 
-	private int property_reg = NO_VALUE;
-	
-	private String property_str;
-	
-	private int value_reg;
+    private int property_reg = NO_VALUE;
+
+    private String property_str;
+
+    private int value_reg;
 
     /**
      * Constructs a new write property node with variable property name.
      *
-     * @param base_reg The register for the base value.
+     * @param base_reg     The register for the base value.
      * @param property_reg The register for the property value.
-     * @param value_reg The register for the value to write.
-     * @param location The source location.
+     * @param value_reg    The register for the value to write.
+     * @param location     The source location.
      */
-	public WritePropertyNode(int base_reg, int property_reg, int value_reg, SourceLocation location) {
-		super(location);
-		this.base_reg = base_reg;
-		this.property_reg = property_reg;
-		this.value_reg = value_reg;
-	}
+    public WritePropertyNode(int base_reg, int property_reg, int value_reg, SourceLocation location) {
+        super(location);
+        this.base_reg = base_reg;
+        this.property_reg = property_reg;
+        this.value_reg = value_reg;
+    }
 
     /**
      * Constructs a new write property node with fixed property name.
      *
-     * @param base_reg The register for the base value.
+     * @param base_reg     The register for the base value.
      * @param property_str The property string.
-     * @param value_reg The register holding the value to write.
-     * @param location The source location.
+     * @param value_reg    The register holding the value to write.
+     * @param location     The source location.
      */
-	public WritePropertyNode(int base_reg, String property_str, int value_reg, SourceLocation location) {
-		super(location);
-		this.base_reg = base_reg;
-		this.property_str = property_str;
-		this.value_reg = value_reg;
-	}
+    public WritePropertyNode(int base_reg, String property_str, int value_reg, SourceLocation location) {
+        super(location);
+        this.base_reg = base_reg;
+        this.property_str = property_str;
+        this.value_reg = value_reg;
+    }
 
-    @Override
-	public int getBaseRegister() {
-		return base_reg;
-	}
+    /**
+     * Returns the base register.
+     */
+    public int getBaseRegister() {
+        return base_reg;
+    }
 
-    @Override
+    /**
+     * Sets the base register.
+     */
     public void setBaseRegister(int base_reg) {
         this.base_reg = base_reg;
     }
 
-    @Override
-	public int getPropertyRegister() {
-		return property_reg;
-	}
+    /**
+     * Returns the property register, or {@link dk.brics.tajs.flowgraph.AbstractNode#NO_VALUE} if not applicable.
+     */
+    public int getPropertyRegister() {
+        return property_reg;
+    }
 
-    @Override
+    /**
+     * Set the property register.
+     */
     public void setPropertyRegister(int property_reg) {
         this.property_reg = property_reg;
     }
 
-    @Override
-	public String getPropertyString() {
-		return property_str;
-	}
-
-    @Override
-	public void setPropertyString(String property_str) {
-        this.property_str = property_str;
+    /**
+     * Returns the property string, or null if not fixed.
+     */
+    public String getPropertyString() {
+        return property_str;
     }
 
-    @Override
-	public boolean isPropertyFixed() {
-		return property_str != null;
-	}
+    /**
+     * Returns true if the property is a fixed string.
+     */
+    public boolean isPropertyFixed() {
+        return property_str != null;
+    }
 
     /**
      * Returns the value register.
      */
-	public int getValueRegister() {
-		return value_reg;
-	}
+    public int getValueRegister() {
+        return value_reg;
+    }
 
     /**
      * Sets the value register.
@@ -118,23 +125,23 @@ public class WritePropertyNode extends Node implements IPropertyNode {
         this.value_reg = value_reg;
     }
 
-	@Override
-	public String toString() {
-		return "write-property[v" + base_reg 
-		+ (property_str != null ? ",'" + property_str + "'" : ",v" + property_reg) 
-		+ ",v" + value_reg + "]";
-	}
+    @Override
+    public String toString() {
+        return "write-property[v" + base_reg
+                + (property_str != null ? ",'" + property_str + "'" : ",v" + property_reg)
+                + ",v" + value_reg + "]";
+    }
 
-	@Override
-	public <ArgType> void visitBy(NodeVisitor<ArgType> v, ArgType a) {
-		v.visit(this, a);
-	}
+    @Override
+    public <ArgType> void visitBy(NodeVisitor<ArgType> v, ArgType a) {
+        v.visit(this, a);
+    }
 
-	@Override
-	public boolean canThrowExceptions() {
-		return true;
-	}
-    
+    @Override
+    public boolean canThrowExceptions() {
+        return true;
+    }
+
     @Override
     public void check(BasicBlock b) {
         if (base_reg == NO_VALUE)

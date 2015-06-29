@@ -1,2 +1,1 @@
 test/wala/simple-lexical.js:15:5: [definite] The conditional expression is always false
-test/wala/simple-lexical.js:74:1: [maybe] Assertion fails

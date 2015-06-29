@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2013 Aarhus University
+ * Copyright 2009-2015 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,71 +16,65 @@
 
 package dk.brics.tajs.solver;
 
-import java.util.Collection;
-import java.util.List;
-
 import dk.brics.tajs.flowgraph.AbstractNode;
 import dk.brics.tajs.flowgraph.BasicBlock;
-import dk.brics.tajs.flowgraph.FlowGraph;
 import dk.brics.tajs.flowgraph.Function;
+
+import java.util.Collection;
 
 /**
  * Records various information during fixpoint solving.
  */
 public interface IMonitoring<BlockStateType extends IBlockState<BlockStateType, ?, ?>, ContextType extends IContext<ContextType>> {
 
-	/**
-	 * Registers a node transfer occurrence.
-	 */
-	void visitNodeTransfer(AbstractNode n);
-	
-	/**
-	 * Registers a block transfer occurrence.
-	 */
-	void visitBlockTransfer();
-	
-	/**
-	 * Registers new dataflow being propagated.
-	 */
-	void visitNewFlow(BasicBlock b, IContext<?> c, IBlockState<?, ?, ?> s, String diff, String info);
-	
-	/**
-	 * Registers a recovery of an unknown value.
-	 */
-	void visitUnknownValueResolve(boolean partial, boolean scanning);
-	
-	/**
-	 * Registers a property recovery graph size.
-	 */
-	void visitRecoveryGraph(int size);
-	
-	/**
-	 * Registers the given function in the scan phase. (Invoked once on each function.)
-	 */
-	void visitFunction(Function f, Collection<BlockStateType> entry_states);
-	
-	/**
-	 * Registers a maybe reachable node.
-	 */
-	void visitReachableNode(AbstractNode n);
+    /**
+     * Registers a node transfer occurrence.
+     */
+    void visitNodeTransfer(AbstractNode n);
 
-	/**
-	 * Registers a state join operation.
-	 */
-	void visitJoin();
-	
- 	/**
-	 * Initializes messages. Messages are not generated until this method is called.
-	 */
-	void beginScanPhase(FlowGraph fg);
+    /**
+     * Registers a block transfer occurrence.
+     */
+    void visitBlockTransfer(BasicBlock b, ContextType context);
 
- 	/**
-	 * Finalizes messages.
-	 */
-	List<Message> endScanPhase(FlowGraph fg);
+    /**
+     * Registers new dataflow being propagated.
+     */
+    void visitNewFlow(BasicBlock b, IContext<?> c, IBlockState<?, ?, ?> s, String diff, String info);
 
-	/**
-	 * Returns the total number of node transfers.
-	 */
-	int getTotalNumberOfNodeTransfers();
+    /**
+     * Registers a recovery of an unknown value.
+     */
+    void visitUnknownValueResolve(boolean partial, boolean scanning);
+
+    /**
+     * Registers a property recovery graph size.
+     */
+    void visitRecoveryGraph(int size);
+
+    /**
+     * Registers the given function in the scan phase.
+     * (Invoked once on each function.)
+     */
+    void visitFunction(Function f, Collection<BlockStateType> entry_states);
+
+    /**
+     * Registers a maybe reachable node.
+     */
+    void visitReachableNode(AbstractNode n);
+
+    /**
+     * Registers a state join operation.
+     */
+    void visitJoin();
+
+    /**
+     * Registers an analysis scan phase starting.
+     */
+    void visitBeginScanPhase();
+
+    /**
+     * Registers an analysis scan phase ending.
+     */
+    void visitEndScanPhase();
 }

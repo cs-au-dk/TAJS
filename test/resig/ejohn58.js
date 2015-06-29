@@ -6,12 +6,12 @@
       log( "Timer call: ", count ); 
       count++; 
     } else { 
-      assert( count == 5 ); 
-      assert( timer ); 
+      TAJS_assert( count == 5 ); 
+      TAJS_assert( timer ); 
       clearInterval( timer ); 
     } 
   }, 100); 
 })(); 
  
-assert( typeof count == "undefined" ); 
-assert( typeof timer == "undefined" );
+TAJS_assert( typeof count == "undefined" ); 
+TAJS_assert( typeof timer == "undefined" );

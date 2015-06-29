@@ -1,0 +1,30 @@
+fg2: function()
+  block 0: [entry]
+    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0205.js:1:1)
+    ->[block 1]
+  block 1:
+    node 1: read-variable['p',-,-]* (test/flowgraphbuilder/flowgraph_builder0205.js:2:5)
+    ->[block 6] ~>[block 2]
+  block 2:
+    node 2: catch[e,v2] (test/flowgraphbuilder/flowgraph_builder0205.js:3:3)
+    node 3: begin-with[v2]* (test/flowgraphbuilder/flowgraph_builder0205.js:3:3)
+    ->[block 3]
+  block 3:
+    node 4: read-variable['v',-,v3]* (test/flowgraphbuilder/flowgraph_builder0205.js:4:5)
+    ->[block 4] ~>[block 5]
+  block 4:
+    node 5: end-with* (test/flowgraphbuilder/flowgraph_builder0205.js:3:3)
+    ->[block 6] ~>[block 5]
+  block 5:
+    node 6: end-with* (test/flowgraphbuilder/flowgraph_builder0205.js:3:3)
+    ->[block 7]
+  block 6: [exit-ordinary]
+    node 7: return[v1] (test/flowgraphbuilder/flowgraph_builder0205.js:1:1)
+    ->[]
+  block 7: [exit-exceptional]
+    node 8: exceptional-return (test/flowgraphbuilder/flowgraph_builder0205.js:1:1)
+    ->[]
+
+test/flowgraphbuilder/flowgraph_builder0205.js:2:5: [definite] ReferenceError, reading absent variable p
+test/flowgraphbuilder/flowgraph_builder0205.js:4:5: [definite] ReferenceError, reading absent variable v
+test/flowgraphbuilder/flowgraph_builder0205.js:1:1: [maybe] Uncaught exception, constructed at [test/flowgraphbuilder/flowgraph_builder0205.js:4:5]

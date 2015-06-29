@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2013 Aarhus University
+ * Copyright 2009-2015 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,7 +21,10 @@ import dk.brics.tajs.analysis.FunctionCalls;
 import dk.brics.tajs.analysis.NativeFunctions;
 import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.analysis.State;
-import dk.brics.tajs.analysis.dom.*;
+import dk.brics.tajs.analysis.dom.DOMConversion;
+import dk.brics.tajs.analysis.dom.DOMObjects;
+import dk.brics.tajs.analysis.dom.DOMRegistry;
+import dk.brics.tajs.analysis.dom.DOMWindow;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.util.AnalysisException;
@@ -36,6 +39,7 @@ import static dk.brics.tajs.analysis.dom.DOMFunctions.createDOMProperty;
 public class MutationEvent {
 
     public static ObjectLabel PROTOTYPE;
+
     public static ObjectLabel INSTANCES;
 
     public static void build(State s) {
@@ -84,14 +88,22 @@ public class MutationEvent {
         switch (nativeObject) {
             case MUTATION_EVENT_INIT_MUTATION_EVENT: {
                 NativeFunctions.expectParameters(nativeObject, call, c, 8, 8);
-                /* Value typeArg =*/ Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
-                /* Value canBubble =*/ Conversion.toBoolean(NativeFunctions.readParameter(call, s, 1));
-                /* Value cancelable =*/ Conversion.toBoolean(NativeFunctions.readParameter(call, s, 2));
-                /* Value relatedNode =*/ DOMConversion.toNode(NativeFunctions.readParameter(call, s, 3), c);
-                /* Value prevValue =*/ Conversion.toString(NativeFunctions.readParameter(call, s, 4), c);
-                /* Value newValue =*/ Conversion.toString(NativeFunctions.readParameter(call, s, 5), c);
-                /* Value attrName =*/ Conversion.toString(NativeFunctions.readParameter(call, s, 6), c);
-                /* Value attrChange =*/ Conversion.toNumber(NativeFunctions.readParameter(call, s, 7), c);
+                /* Value typeArg =*/
+                Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
+                /* Value canBubble =*/
+                Conversion.toBoolean(NativeFunctions.readParameter(call, s, 1));
+                /* Value cancelable =*/
+                Conversion.toBoolean(NativeFunctions.readParameter(call, s, 2));
+                /* Value relatedNode =*/
+                DOMConversion.toNode(NativeFunctions.readParameter(call, s, 3), c);
+                /* Value prevValue =*/
+                Conversion.toString(NativeFunctions.readParameter(call, s, 4), c);
+                /* Value newValue =*/
+                Conversion.toString(NativeFunctions.readParameter(call, s, 5), c);
+                /* Value attrName =*/
+                Conversion.toString(NativeFunctions.readParameter(call, s, 6), c);
+                /* Value attrChange =*/
+                Conversion.toNumber(NativeFunctions.readParameter(call, s, 7), c);
                 return Value.makeUndef();
             }
             default:

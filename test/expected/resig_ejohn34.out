@@ -1,5 +1,5 @@
 test/resig/ejohn34.js:5:12: [definite] The assignment to user has no effect
-test/resig/ejohn34.js:8:11: [definite] Variable user is null/undefined
+test/resig/ejohn34.js:8:16: [definite] Variable user is null/undefined
 test/resig/ejohn34.js:2:3: [definite] Reading 'this' yields the global object
 test/resig/ejohn34.js:7:1: [info] Abstract value: "undefined"
 test/resig/ejohn34.js:8:1: [info] Abstract value: Undef

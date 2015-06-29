@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2013 Aarhus University
+ * Copyright 2009-2015 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,26 +19,16 @@ package dk.brics.tajs.solver;
 /**
  * Interface for call edges.
  */
-public interface ICallEdge<BlockStateType extends IBlockState<?,?,?>> {
+public interface ICallEdge<BlockStateType extends IBlockState<?, ?, ?>> {
 
-	/**
-	 * Returns the state at this edge.
-	 */
-	public BlockStateType getState();
-	
-	/**
-	 * Sets the state at this edge.
-	 */
-	public void setState(BlockStateType s);
-	
-	/**
-	 * Visitor for call edges.
-	 */
-	public static interface Visitor<CallEdgeType extends ICallEdge<?>> {
+    /**
+     * Returns the state at this edge.
+     */
+    BlockStateType getState();
 
-		/**
-		 * Called when visiting a call edge.
-		 */
-		public void visit(NodeAndContext<?> caller, CallEdgeType edge, BlockAndContext<?> callee);
-	}
+    /**
+     * Sets the state at this edge.
+     */
+    void setState(BlockStateType s);
+
 }

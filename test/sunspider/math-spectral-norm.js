@@ -57,5 +57,5 @@ for (var i = 6; i <= 48; i *= 2) {
 
 var _sunSpiderInterval = new Date() - _sunSpiderStartDate;
 
-dumpValue(_sunSpiderInterval);
+TAJS_dumpValue(_sunSpiderInterval);
 

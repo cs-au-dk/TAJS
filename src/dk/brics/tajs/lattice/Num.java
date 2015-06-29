@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2013 Aarhus University
+ * Copyright 2009-2015 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,113 +21,118 @@ package dk.brics.tajs.lattice;
  */
 public interface Num {
 
-	/**
-	 * Returns true if this value is maybe any number.
-	 */
-	public boolean isMaybeAnyNum();
-	
-	/**
-	 * Returns true if this value is maybe a singleton number, excluding NaN and +/-Inf.
-	 */
-	public boolean isMaybeSingleNum();
+    /**
+     * Returns true if this value is maybe any number.
+     */
+    boolean isMaybeAnyNum();
 
-	/**
-	 * Returns true if this value is maybe a singleton UInt number.
-	 */
-	public boolean isMaybeSingleNumUInt();
+    /**
+     * Returns true if this value is maybe a singleton number, excluding NaN and +/-Inf.
+     */
+    boolean isMaybeSingleNum();
 
-	/**
-	 * Returns true if this value is maybe a non-singleton number or NaN or +/-Inf.
-	 */
-	public boolean isMaybeFuzzyNum();
+    /**
+     * Returns true if this value is maybe a singleton UInt number.
+     */
+    boolean isMaybeSingleNumUInt();
 
-	/**
-	 * Returns true if this value is maybe NaN.
-	 */
-	public boolean isMaybeNaN();
-	
-	/**
-	 * Returns true if this value is definitely NaN.
-	 */
-	public boolean isNaN();
-	
-	/**
-	 * Returns true if this value is maybe infinite.
-	 */
-	public boolean isMaybeInf();
-	
-	/**
-	 * Returns true if this value is maybe any UInt number.
-	 */
-	public boolean isMaybeNumUInt();
-	
-	/**
-	 * Returns true if this value is maybe any non-UInt, non-Inf, non-NaN number.
-	 */
-	public boolean isMaybeNumOther();
-	
-	/**
-	 * Returns the singleton number value, or null if definitely not a singleton number.
-	 */
-	public Double getNum();
+    /**
+     * Returns true if this value is maybe a non-singleton number or NaN or +/-Inf.
+     */
+    boolean isMaybeFuzzyNum();
 
-	/**
-	 * Returns true if this value is definitely not a number.
-	 */
-	public boolean isNotNum(); 
-	
-	/**
-	 * Returns true if this value is maybe a non-number.
-	 */
-	public boolean isMaybeOtherThanNum();
-	
-	/**
-	 * Returns true if this value is maybe not an UInt-number.
-	 */
-	public boolean isMaybeOtherThanNumUInt();
-	
-	/**
-	 * Constructs a value as the join of this value and maybe any number.
-	 */
-	public Value joinAnyNum();
-	
-	/**
-	 * Constructs a value as the join of this value and maybe any UInt number.
-	 */
-	public Value joinAnyNumUInt();
-	
-	/**
-	 * Constructs a value as the join of this value and maybe any non-UInt number (excluding NaN and +/-Infinity).
-	 */
-	public Value joinAnyNumOther();
-	
-	/**
-	 * Constructs a value as the join of this value and the given concrete number.
-	 */
-	public Value joinNum(double v);
+    /**
+     * Returns true if this value is maybe NaN.
+     */
+    boolean isMaybeNaN();
 
-	/**
-	 * Constructs a value as the join of this value and NaN.
-	 */
-	public Value joinNumNaN();
+    /**
+     * Returns true if this value is definitely NaN.
+     */
+    boolean isNaN();
 
-	/**
-	 * Constructs a value as the join of this value and +/-Inf.
-	 */
-	public Value joinNumInf();
+    /**
+     * Returns true if this value is maybe infinite.
+     */
+    boolean isMaybeInf();
 
-	/**
-	 * Constructs a value as a copy of this value but definitely not NaN.
-	 */
-	public Value restrictToNotNaN();
-	
-	/**
-	 * Constructs a value from this value where only the number facet is considered.
-	 */
-	public Value restrictToNum();
-	
-	/**
-	 * Constructs a value from this value but definitely not a number.
-	 */
-	public Value restrictToNotNum();
+    /**
+     * Returns true if this value is definitely infinite.
+     */
+    boolean isInf();
+
+    /**
+     * Returns true if this value is maybe any UInt number.
+     */
+    boolean isMaybeNumUInt();
+
+    /**
+     * Returns true if this value is maybe any non-UInt, non-Inf, and non-NaN number.
+     */
+    boolean isMaybeNumOther();
+
+    /**
+     * Returns the singleton number value, or null if definitely not a singleton number.
+     */
+    Double getNum();
+
+    /**
+     * Returns true if this value is definitely not a number.
+     */
+    boolean isNotNum();
+
+    /**
+     * Returns true if this value is maybe a non-number.
+     */
+    boolean isMaybeOtherThanNum();
+
+    /**
+     * Returns true if this value is maybe a non-UInt-number.
+     */
+    boolean isMaybeOtherThanNumUInt();
+
+    /**
+     * Constructs a value as the join of this value and any number.
+     */
+    Value joinAnyNum();
+
+    /**
+     * Constructs a value as the join of this value and any UInt number.
+     */
+    Value joinAnyNumUInt();
+
+    /**
+     * Constructs a value as the join of this value and any non-UInt number (excluding NaN and +/-Infinity).
+     */
+    Value joinAnyNumOther();
+
+    /**
+     * Constructs a value as the join of this value and the given concrete number.
+     */
+    Value joinNum(double v);
+
+    /**
+     * Constructs a value as the join of this value and NaN.
+     */
+    Value joinNumNaN();
+
+    /**
+     * Constructs a value as the join of this value and +/-Inf.
+     */
+    Value joinNumInf();
+
+    /**
+     * Constructs a value as a copy of this value but definitely not NaN.
+     */
+    Value restrictToNotNaN();
+
+    /**
+     * Constructs a value from this value where only the number facet is considered.
+     */
+    Value restrictToNum();
+
+    /**
+     * Constructs a value from this value but definitely not a number.
+     */
+    Value restrictToNotNum();
 }

@@ -3,11 +3,11 @@ var dst = {};
 
 for (var p in src) {
     dst[p] = src[p];
-    dumpValue(p);
+    TAJS_dumpValue(p);
 }
 
-dumpValue(p);
-dumpValue(dst.x)
-dumpValue(dst.y)
-dumpValue(dst.z)
-dumpObject(dst);
+TAJS_dumpValue(p);
+TAJS_dumpValue(dst.x)
+TAJS_dumpValue(dst.y)
+TAJS_dumpValue(dst.z)
+TAJS_dumpObject(dst);

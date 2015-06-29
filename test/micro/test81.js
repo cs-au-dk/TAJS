@@ -5,20 +5,20 @@ try {
 	throw Object
 } catch (e) {
     try {
-	dumpValue(e)
+	TAJS_dumpValue(e)
 	if (Math.random())
 	    throw Number;
     } catch (e) {
-	dumpValue(e)
+	TAJS_dumpValue(e)
 	try {
 	    if (Math.random()) 
 		throw e
 	    else 
 		var xx = e;
 	} catch (e) {
-	    dumpValue(e);
+	    TAJS_dumpValue(e);
 	}
     }
 }
 
-dumpValue(xx);
+TAJS_dumpValue(xx);

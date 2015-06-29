@@ -5,4 +5,4 @@ function foo(){
 var ninjaA = foo(); 
  
 var ninjaB = new foo(); 
-dumpValue(ninjaB.name);
+TAJS_dumpValue(ninjaB.name);

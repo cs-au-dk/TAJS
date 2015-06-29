@@ -1,8 +1,8 @@
-test/10k/gravity.tidy.html:30:17: [definite] Unreachable function
-test/10k/gravity.tidy.html:41:5: [definite] Unreachable function circle
-test/10k/gravity.tidy.html:63:33: [definite] Unreachable function
-test/10k/gravity.tidy.html:99:29: [definite] Unreachable function
-test/10k/gravity.tidy.html:119:5: [definite] Unreachable function gvect
-test/10k/gravity.tidy.html:130:5: [definite] Unreachable function rvect
-test/10k/gravity.tidy.html:135:5: [definite] Unreachable function add
-test/10k/gravity.tidy.html:144:5: [definite] Unreachable function next
+test/10k/gravity.html:33:17: [definite] Unreachable function
+test/10k/gravity.html:44:5: [definite] Unreachable function circle
+test/10k/gravity.html:66:33: [definite] Unreachable function
+test/10k/gravity.html:102:29: [definite] Unreachable function
+test/10k/gravity.html:122:5: [definite] Unreachable function gvect
+test/10k/gravity.html:133:5: [definite] Unreachable function rvect
+test/10k/gravity.html:138:5: [definite] Unreachable function add
+test/10k/gravity.html:147:5: [definite] Unreachable function next

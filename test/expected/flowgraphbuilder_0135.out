@@ -1,14 +1,14 @@
-fg2: <main> function()
+fg2: function()
   block 0: [entry]
     node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0135.js:1:1)
     ->[block 1]
   block 1:
-    node 1: read-variable['dumpObject',v3,v2] (test/flowgraphbuilder/flowgraph_builder0135.js:1:1)
-    node 2: read-variable['Object',v6,v5] (test/flowgraphbuilder/flowgraph_builder0135.js:1:12)
-    node 3: constant[null,v7] (test/flowgraphbuilder/flowgraph_builder0135.js:1:19)
+    node 1: read-variable['TAJS_dumpObject',v3,v2] (test/flowgraphbuilder/flowgraph_builder0135.js:1:1)
+    node 2: read-variable['Object',v6,v5] (test/flowgraphbuilder/flowgraph_builder0135.js:1:17)
+    node 3: constant[null,v7] (test/flowgraphbuilder/flowgraph_builder0135.js:1:24)
     ->[block 2]
   block 2:
-    node 4: call[v5,v6,v7,v4] (test/flowgraphbuilder/flowgraph_builder0135.js:1:12)
+    node 4: call[v5,v6,v7,v4] (test/flowgraphbuilder/flowgraph_builder0135.js:1:17)
     ->[block 3]
   block 3:
     node 5: call[v2,v3,v4,-]* (test/flowgraphbuilder/flowgraph_builder0135.js:1:1)

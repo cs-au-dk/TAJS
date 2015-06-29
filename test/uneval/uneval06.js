@@ -1,5 +1,5 @@
 function f() {
-	eval("dumpValue(3)")
+	eval("TAJS_dumpValue(3)")
 }
 
 f()

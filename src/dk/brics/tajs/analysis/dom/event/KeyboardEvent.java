@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2013 Aarhus University
+ * Copyright 2009-2015 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -38,6 +38,7 @@ import static dk.brics.tajs.analysis.dom.DOMFunctions.createDOMProperty;
 public class KeyboardEvent {
 
     public static ObjectLabel PROTOTYPE;
+
     public static ObjectLabel INSTANCES;
 
     public static void build(State s) {
@@ -103,18 +104,25 @@ public class KeyboardEvent {
         switch (nativeObject) {
             case KEYBOARD_EVENT_GET_MODIFIER_STATE: {
                 NativeFunctions.expectParameters(nativeObject, call, c, 1, 1);
-                /* Value keyIdentifierArg =*/ Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
+                /* Value keyIdentifierArg =*/
+                Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
                 return Value.makeAnyBool();
             }
             case KEYBOARD_EVENT_INIT_KEYBOARD_EVENT: {
                 NativeFunctions.expectParameters(nativeObject, call, c, 7, 7);
-                /* Value typeArg =*/ Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
-                /* Value canBubbleArg =*/ Conversion.toBoolean(NativeFunctions.readParameter(call, s, 1));
-                /* Value cancelableArg =*/ Conversion.toBoolean(NativeFunctions.readParameter(call, s, 2));
+                /* Value typeArg =*/
+                Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
+                /* Value canBubbleArg =*/
+                Conversion.toBoolean(NativeFunctions.readParameter(call, s, 1));
+                /* Value cancelableArg =*/
+                Conversion.toBoolean(NativeFunctions.readParameter(call, s, 2));
                 // viewArg not checked...
-                /* Value keyIdentifierArg =*/ Conversion.toString(NativeFunctions.readParameter(call, s, 4), c);
-                /* Value keyLocationArg =*/ Conversion.toNumber(NativeFunctions.readParameter(call, s, 5), c);
-                /* Value modifiersListArg =*/ Conversion.toString(NativeFunctions.readParameter(call, s, 6), c);
+                /* Value keyIdentifierArg =*/
+                Conversion.toString(NativeFunctions.readParameter(call, s, 4), c);
+                /* Value keyLocationArg =*/
+                Conversion.toNumber(NativeFunctions.readParameter(call, s, 5), c);
+                /* Value modifiersListArg =*/
+                Conversion.toString(NativeFunctions.readParameter(call, s, 6), c);
                 return Value.makeUndef();
             }
             case KEYBOARD_EVENT_INIT_KEYBOARD_EVENT_NS: {
@@ -125,5 +133,4 @@ public class KeyboardEvent {
             }
         }
     }
-
 }

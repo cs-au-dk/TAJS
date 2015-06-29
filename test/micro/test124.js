@@ -18,4 +18,4 @@ function f4(y) {
 	y.b.a = true;
 }
 
-dumpValue(f1());
+TAJS_dumpValue(f1());

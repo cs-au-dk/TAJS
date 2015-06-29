@@ -1,8 +1,6 @@
-test/v8tests/no-semicolon.js:38:1: [definite] ReferenceError, reading absent variable assertTrue
-test/v8tests/no-semicolon.js:31:1: [definite] Unreachable function f
-test/v8tests/no-semicolon.js:33:1: [definite] Unreachable function g
-test/v8tests/no-semicolon.js:38:12: [definite] Unreachable code
-test/v8tests/no-semicolon.js:41:10: [definite] The variable i is never used
+test/v8tests/no-semicolon.js:41:17: [definite] The conditional expression is always true
+test/v8tests/no-semicolon.js:44:14: [definite] The assignment to i has no effect
+test/v8tests/no-semicolon.js:44:17: [definite] The conditional expression is always true
+test/v8tests/no-semicolon.js:35:5: [definite] Unreachable code
 test/v8tests/no-semicolon.js:41:25: [definite] Unreachable code
 test/v8tests/no-semicolon.js:44:25: [definite] Unreachable code
-test/v8tests/no-semicolon.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/no-semicolon.js:38:1]

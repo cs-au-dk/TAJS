@@ -81,10 +81,10 @@ o = {
  }
 };
 
-dumpValue(tryCatch(o, targetOne, targetTwo));
-dumpValue(tryFinally(o, targetOne, targetTwo));
-dumpValue(tryFinallyLoop(o, targetTwo));
-dumpValue(tryCatchFinally(o, targetOne, targetTwo));
-dumpValue(tryCatchFinally2(o, targetOne, targetTwo));
+TAJS_dumpValue(tryCatch(o, targetOne, targetTwo));
+TAJS_dumpValue(tryFinally(o, targetOne, targetTwo));
+TAJS_dumpValue(tryFinallyLoop(o, targetTwo));
+TAJS_dumpValue(tryCatchFinally(o, targetOne, targetTwo));
+TAJS_dumpValue(tryCatchFinally2(o, targetOne, targetTwo));
 
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2013 Aarhus University
+ * Copyright 2009-2015 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,9 +16,10 @@
 
 package dk.brics.tajs.analysis.dom.core;
 
-import static dk.brics.tajs.analysis.dom.DOMFunctions.createDOMProperty;
 import dk.brics.tajs.analysis.State;
 import dk.brics.tajs.lattice.Value;
+
+import static dk.brics.tajs.analysis.dom.DOMFunctions.createDOMProperty;
 
 public class CoreBuilder {
 
@@ -52,5 +53,4 @@ public class CoreBuilder {
         s.multiplyObject(DOMNode.INSTANCES);
         DOMNode.INSTANCES = DOMNode.INSTANCES.makeSingleton().makeSummary();
     }
-
 }

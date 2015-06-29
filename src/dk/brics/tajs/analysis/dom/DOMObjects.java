@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2013 Aarhus University
+ * Copyright 2009-2015 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -592,8 +592,7 @@ public enum DOMObjects implements HostObject {
     STORAGE_GET_ITEM("Storage.prototype.getItem"),
     STORAGE_SET_ITEM("Storage.prototype.setItem"),
     STORAGE_REMOVE_ITEM("Storage.prototype.removeItem"),
-    
-    
+
     // /////////////////////////////////////////////////////////////////////////
     // / AJAX ///
     // /////////////////////////////////////////////////////////////////////////
@@ -620,12 +619,12 @@ public enum DOMObjects implements HostObject {
     JSON_OBJECT("JSONObject");
 
     private HostAPIs api;
-    
+
     private String string;
 
-    private DOMObjects(String str) {
+    DOMObjects(String str) {
         api = HostAPIs.DOCUMENT_OBJECT_MODEL;
-        this.string = str;
+        string = str;
     }
 
     @Override

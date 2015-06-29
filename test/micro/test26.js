@@ -5,5 +5,5 @@ function f(x) {
 
 var a = f(1);
 
-assert(a == 2);
-dumpValue(a);
+TAJS_assert(a == 2);
+TAJS_dumpValue(a);

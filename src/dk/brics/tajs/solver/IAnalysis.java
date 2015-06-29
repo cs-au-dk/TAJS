@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2013 Aarhus University
+ * Copyright 2009-2015 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,53 +22,54 @@ import dk.brics.tajs.flowgraph.FlowGraph;
  * Interface for analyses on flow graphs.
  */
 public interface IAnalysis<BlockStateType extends IBlockState<BlockStateType, ContextType, CallEdgeType>,
-                           ContextType extends IContext<ContextType>,
-                           CallEdgeType extends ICallEdge<BlockStateType>,
-					       MonitoringType extends IMonitoring<BlockStateType,ContextType>,
-					       AnalysisType extends IAnalysis<BlockStateType, ContextType, CallEdgeType, MonitoringType, AnalysisType>> {
+        ContextType extends IContext<ContextType>,
+        CallEdgeType extends ICallEdge<BlockStateType>,
+        MonitoringType extends IMonitoring<BlockStateType, ContextType>,
+        SpecialVarsType,
+        AnalysisType extends IAnalysis<BlockStateType, ContextType, CallEdgeType, MonitoringType, SpecialVarsType, AnalysisType>> {
 
-	/**
-	 * Returns a new global analysis lattice element.
-	 */
-	public IAnalysisLatticeElement<BlockStateType,ContextType,CallEdgeType> makeAnalysisLattice(FlowGraph fg);
+    /**
+     * Returns a new global analysis lattice element.
+     */
+    IAnalysisLatticeElement<BlockStateType, ContextType, CallEdgeType, SpecialVarsType> makeAnalysisLattice(FlowGraph fg);
 
-	/**
-	 * Returns the initial state builder.
-	 */
-	public IInitialStateBuilder<BlockStateType,ContextType,CallEdgeType> getInitialStateBuilder();
+    /**
+     * Returns the initial state builder.
+     */
+    IInitialStateBuilder<BlockStateType, ContextType, CallEdgeType> getInitialStateBuilder();
 
-	/**
-	 * Returns the node transfer functions.
-	 */
-	public INodeTransfer<BlockStateType,ContextType> getNodeTransferFunctions();
+    /**
+     * Returns the node transfer functions.
+     */
+    INodeTransfer<BlockStateType, ContextType> getNodeTransferFunctions();
 
-	/**
-	 * Returns the end-of-block transfer function.
-	 */
-	public IBlockTransfer<BlockStateType,ContextType> getBlockTransferFunction();
+    /**
+     * Returns the edge transfer functions.
+     */
+    IEdgeTransfer<BlockStateType, ContextType> getEdgeTransferFunctions();
 
-	/**
-	 * Returns the edge transfer functions.
-	 */
-	public IEdgeTransfer<BlockStateType,ContextType> getEdgeTransferFunctions();
-	
-	/**
-	 * Returns the work list strategy.
-	 */
-	public IWorkListStrategy<ContextType> getWorklistStrategy();
-	
-	/**
-	 * Returns the monitoring object.
-	 */
-	public MonitoringType getMonitoring();
-	
-	/**
-	 * Sets the current solver interface.
-	 */
-	public void setSolverInterface(GenericSolver<BlockStateType,ContextType,CallEdgeType,MonitoringType,AnalysisType>.SolverInterface c);
-	
-	/**
-	 * Constructs a new call edge for the given abstract state.
-	 */
-	public CallEdgeType makeCallEdge(BlockStateType edge_state);
+    /**
+     * Returns the work list strategy.
+     */
+    IWorkListStrategy<ContextType> getWorklistStrategy();
+
+    /**
+     * Returns the monitoring object.
+     */
+    MonitoringType getMonitoring();
+
+    /**
+     * Sets the current solver interface.
+     */
+    void setSolverInterface(GenericSolver<BlockStateType, ContextType, CallEdgeType, MonitoringType, SpecialVarsType, AnalysisType>.SolverInterface c);
+
+    /**
+     * Constructs a new call edge for the given abstract state.
+     */
+    CallEdgeType makeCallEdge(BlockStateType edge_state);
+
+    /**
+     * Called before each fixpoint iteration, returns false if iteration should be aborted.
+     */
+    boolean allowNextIteration();
 }

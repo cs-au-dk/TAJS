@@ -1,88 +1,88 @@
-test/chromeexperiments/bingbong.tidy.html:180:17: [definite] ReferenceError, reading absent variable BRICK1
-test/chromeexperiments/bingbong.tidy.html:367:3: [definite] The conditional expression is always true
-test/chromeexperiments/bingbong.tidy.html:27:1: [definite] Dead assignment, property 1 is never read
-test/chromeexperiments/bingbong.tidy.html:28:1: [definite] Dead assignment, property 2 is never read
-test/chromeexperiments/bingbong.tidy.html:29:1: [definite] Dead assignment, property 3 is never read
-test/chromeexperiments/bingbong.tidy.html:30:1: [definite] Dead assignment, property 4 is never read
-test/chromeexperiments/bingbong.tidy.html:31:1: [definite] Dead assignment, property 5 is never read
-test/chromeexperiments/bingbong.tidy.html:32:1: [definite] Dead assignment, property 6 is never read
-test/chromeexperiments/bingbong.tidy.html:33:1: [definite] Dead assignment, property 7 is never read
-test/chromeexperiments/bingbong.tidy.html:34:1: [definite] Dead assignment, property 8 is never read
-test/chromeexperiments/bingbong.tidy.html:35:1: [definite] Dead assignment, property 9 is never read
-test/chromeexperiments/bingbong.tidy.html:36:1: [definite] Dead assignment, property 10 is never read
-test/chromeexperiments/bingbong.tidy.html:37:1: [definite] Dead assignment, property 11 is never read
-test/chromeexperiments/bingbong.tidy.html:38:1: [definite] Dead assignment, property 12 is never read
-test/chromeexperiments/bingbong.tidy.html:39:1: [definite] Dead assignment, property 13 is never read
-test/chromeexperiments/bingbong.tidy.html:40:1: [definite] Dead assignment, property 14 is never read
-test/chromeexperiments/bingbong.tidy.html:41:1: [definite] Dead assignment, property 15 is never read
-test/chromeexperiments/bingbong.tidy.html:42:1: [definite] Dead assignment, property 16 is never read
-test/chromeexperiments/bingbong.tidy.html:82:5: [definite] The variable brickH is never used
-test/chromeexperiments/bingbong.tidy.html:83:5: [definite] The variable brickV is never used
-test/chromeexperiments/bingbong.tidy.html:84:5: [definite] The variable brickStat is never used
-test/chromeexperiments/bingbong.tidy.html:87:1: [definite] Unreachable function infoDialogOn
-test/chromeexperiments/bingbong.tidy.html:101:1: [definite] Unreachable function infoDialogClose
-test/chromeexperiments/bingbong.tidy.html:112:1: [definite] Unreachable function brickJiggler
-test/chromeexperiments/bingbong.tidy.html:123:21: [definite] Unreachable function
-test/chromeexperiments/bingbong.tidy.html:128:1: [definite] Unreachable function doPaddlePower
-test/chromeexperiments/bingbong.tidy.html:147:1: [definite] Unreachable function ResizeDialogOn
-test/chromeexperiments/bingbong.tidy.html:159:1: [definite] Unreachable function resizeYes
-test/chromeexperiments/bingbong.tidy.html:169:1: [definite] Unreachable function resizeNo
-test/chromeexperiments/bingbong.tidy.html:180:7: [definite] Unreachable code
-test/chromeexperiments/bingbong.tidy.html:188:9: [definite] The variable i is never used
-test/chromeexperiments/bingbong.tidy.html:202:1: [definite] Unreachable function drawLevel
-test/chromeexperiments/bingbong.tidy.html:227:23: [definite] Unreachable function
-test/chromeexperiments/bingbong.tidy.html:239:1: [definite] Unreachable function isImageOk
-test/chromeexperiments/bingbong.tidy.html:254:1: [definite] Unreachable function freezeBall
-test/chromeexperiments/bingbong.tidy.html:264:23: [definite] Unreachable function
-test/chromeexperiments/bingbong.tidy.html:273:1: [definite] Unreachable function initBricks
-test/chromeexperiments/bingbong.tidy.html:360:31: [definite] Unreachable function
-test/chromeexperiments/bingbong.tidy.html:390:1: [definite] Unreachable function newWindow
-test/chromeexperiments/bingbong.tidy.html:409:1: [definite] Unreachable function killBrick
-test/chromeexperiments/bingbong.tidy.html:417:23: [definite] Unreachable function
-test/chromeexperiments/bingbong.tidy.html:423:23: [definite] Unreachable function
-test/chromeexperiments/bingbong.tidy.html:429:23: [definite] Unreachable function
-test/chromeexperiments/bingbong.tidy.html:438:1: [definite] Unreachable function killBall
-test/chromeexperiments/bingbong.tidy.html:446:23: [definite] Unreachable function
-test/chromeexperiments/bingbong.tidy.html:452:23: [definite] Unreachable function
-test/chromeexperiments/bingbong.tidy.html:458:23: [definite] Unreachable function
-test/chromeexperiments/bingbong.tidy.html:464:23: [definite] Unreachable function
-test/chromeexperiments/bingbong.tidy.html:475:1: [definite] Unreachable function goPing
-test/chromeexperiments/bingbong.tidy.html:482:23: [definite] Unreachable function
-test/chromeexperiments/bingbong.tidy.html:488:23: [definite] Unreachable function
-test/chromeexperiments/bingbong.tidy.html:497:1: [definite] Unreachable function initBall
-test/chromeexperiments/bingbong.tidy.html:509:1: [definite] Unreachable function moveBall
-test/chromeexperiments/bingbong.tidy.html:684:1: [definite] Unreachable function calcBall
-test/chromeexperiments/bingbong.tidy.html:695:1: [definite] Unreachable function setObjOpacity
-test/chromeexperiments/bingbong.tidy.html:702:1: [definite] Unreachable function moveObjTo
-test/chromeexperiments/bingbong.tidy.html:709:1: [definite] Unreachable function flipPause
-test/chromeexperiments/bingbong.tidy.html:726:1: [definite] Unreachable function placeText
-test/chromeexperiments/bingbong.tidy.html:744:1: [definite] Unreachable function writeScore
-test/chromeexperiments/bingbong.tidy.html:770:1: [definite] Unreachable function drawPaddle
-test/chromeexperiments/bingbong.tidy.html:782:1: [definite] Unreachable function popTitle
-test/chromeexperiments/bingbong.tidy.html:792:23: [definite] Unreachable function
-test/chromeexperiments/bingbong.tidy.html:803:25: [definite] Unreachable function
-test/chromeexperiments/bingbong.tidy.html:817:2: [definite] Unreachable function
-test/chromeexperiments/bingbong.tidy.html:817:2: [definite] Unreachable function
-test/chromeexperiments/bingbong.tidy.html:839:2: [definite] Unreachable code
-test/chromeexperiments/bingbong.tidy.html:839:2: [definite] Unreachable function
-test/chromeexperiments/bingbong.tidy.html:845:2: [definite] Unreachable function
-test/chromeexperiments/bingbong.tidy.html:849:2: [definite] Unreachable function
-test/chromeexperiments/bingbong.tidy.html:853:2: [definite] Unreachable function
-test/chromeexperiments/bingbong.tidy.html:862:2: [definite] Unreachable function
-test/chromeexperiments/bingbong.tidy.html:862:2: [definite] Unreachable function
-test/chromeexperiments/bingbong.tidy.html:862:2: [definite] Unreachable function
-test/chromeexperiments/bingbong.tidy.html:866:2: [definite] Unreachable function
-test/chromeexperiments/bingbong.tidy.html:873:2: [definite] Unreachable function
-test/chromeexperiments/bingbong.tidy.html:873:2: [definite] Unreachable function
-test/chromeexperiments/bingbong.tidy.html:873:2: [definite] Unreachable function
-test/chromeexperiments/bingbong.tidy.html:877:2: [definite] Unreachable function
-test/chromeexperiments/bingbong.tidy.html:882:2: [definite] Unreachable function
-test/chromeexperiments/bingbong.tidy.html:886:2: [definite] Unreachable function
-test/chromeexperiments/bingbong.tidy.html:890:2: [definite] Unreachable function
-test/chromeexperiments/bingbong.tidy.html:956:2: [definite] Unreachable function
-test/chromeexperiments/bingbong.tidy.html:956:2: [definite] Unreachable function
-test/chromeexperiments/bingbong.tidy.html:956:2: [definite] Unreachable function
-test/chromeexperiments/bingbong.tidy.html:965:2: [definite] Unreachable function
-test/chromeexperiments/bingbong.tidy.html:965:2: [definite] Unreachable function
-test/chromeexperiments/bingbong.tidy.html:965:2: [definite] Unreachable function
-test/chromeexperiments/bingbong.tidy.html:1139: [maybe] Uncaught exception, constructed at [test/chromeexperiments/bingbong.tidy.html:180:17]
+test/chromeexperiments/bingbong.html:178:17: [definite] ReferenceError, reading absent variable BRICK1
+test/chromeexperiments/bingbong.html:365:3: [definite] The conditional expression is always true
+test/chromeexperiments/bingbong.html:25:1: [definite] Dead assignment, property 1 is never read
+test/chromeexperiments/bingbong.html:26:1: [definite] Dead assignment, property 2 is never read
+test/chromeexperiments/bingbong.html:27:1: [definite] Dead assignment, property 3 is never read
+test/chromeexperiments/bingbong.html:28:1: [definite] Dead assignment, property 4 is never read
+test/chromeexperiments/bingbong.html:29:1: [definite] Dead assignment, property 5 is never read
+test/chromeexperiments/bingbong.html:30:1: [definite] Dead assignment, property 6 is never read
+test/chromeexperiments/bingbong.html:31:1: [definite] Dead assignment, property 7 is never read
+test/chromeexperiments/bingbong.html:32:1: [definite] Dead assignment, property 8 is never read
+test/chromeexperiments/bingbong.html:33:1: [definite] Dead assignment, property 9 is never read
+test/chromeexperiments/bingbong.html:34:1: [definite] Dead assignment, property 10 is never read
+test/chromeexperiments/bingbong.html:35:1: [definite] Dead assignment, property 11 is never read
+test/chromeexperiments/bingbong.html:36:1: [definite] Dead assignment, property 12 is never read
+test/chromeexperiments/bingbong.html:37:1: [definite] Dead assignment, property 13 is never read
+test/chromeexperiments/bingbong.html:38:1: [definite] Dead assignment, property 14 is never read
+test/chromeexperiments/bingbong.html:39:1: [definite] Dead assignment, property 15 is never read
+test/chromeexperiments/bingbong.html:40:1: [definite] Dead assignment, property 16 is never read
+test/chromeexperiments/bingbong.html:19:31: [definite] Unreachable code
+test/chromeexperiments/bingbong.html:80:5: [definite] The variable brickH is never used
+test/chromeexperiments/bingbong.html:81:5: [definite] The variable brickV is never used
+test/chromeexperiments/bingbong.html:82:5: [definite] The variable brickStat is never used
+test/chromeexperiments/bingbong.html:85:1: [definite] Unreachable function infoDialogOn
+test/chromeexperiments/bingbong.html:99:1: [definite] Unreachable function infoDialogClose
+test/chromeexperiments/bingbong.html:110:1: [definite] Unreachable function brickJiggler
+test/chromeexperiments/bingbong.html:121:21: [definite] Unreachable function
+test/chromeexperiments/bingbong.html:126:1: [definite] Unreachable function doPaddlePower
+test/chromeexperiments/bingbong.html:145:1: [definite] Unreachable function ResizeDialogOn
+test/chromeexperiments/bingbong.html:157:1: [definite] Unreachable function resizeYes
+test/chromeexperiments/bingbong.html:167:1: [definite] Unreachable function resizeNo
+test/chromeexperiments/bingbong.html:178:7: [definite] Unreachable code
+test/chromeexperiments/bingbong.html:186:9: [definite] The variable i is never used
+test/chromeexperiments/bingbong.html:200:1: [definite] Unreachable function drawLevel
+test/chromeexperiments/bingbong.html:225:23: [definite] Unreachable function
+test/chromeexperiments/bingbong.html:237:1: [definite] Unreachable function isImageOk
+test/chromeexperiments/bingbong.html:252:1: [definite] Unreachable function freezeBall
+test/chromeexperiments/bingbong.html:262:23: [definite] Unreachable function
+test/chromeexperiments/bingbong.html:271:1: [definite] Unreachable function initBricks
+test/chromeexperiments/bingbong.html:358:24: [definite] Unreachable function
+test/chromeexperiments/bingbong.html:388:1: [definite] Unreachable function newWindow
+test/chromeexperiments/bingbong.html:407:1: [definite] Unreachable function killBrick
+test/chromeexperiments/bingbong.html:415:23: [definite] Unreachable function
+test/chromeexperiments/bingbong.html:421:23: [definite] Unreachable function
+test/chromeexperiments/bingbong.html:427:23: [definite] Unreachable function
+test/chromeexperiments/bingbong.html:436:1: [definite] Unreachable function killBall
+test/chromeexperiments/bingbong.html:444:23: [definite] Unreachable function
+test/chromeexperiments/bingbong.html:450:23: [definite] Unreachable function
+test/chromeexperiments/bingbong.html:456:23: [definite] Unreachable function
+test/chromeexperiments/bingbong.html:462:23: [definite] Unreachable function
+test/chromeexperiments/bingbong.html:473:1: [definite] Unreachable function goPing
+test/chromeexperiments/bingbong.html:480:23: [definite] Unreachable function
+test/chromeexperiments/bingbong.html:486:23: [definite] Unreachable function
+test/chromeexperiments/bingbong.html:495:1: [definite] Unreachable function initBall
+test/chromeexperiments/bingbong.html:507:1: [definite] Unreachable function moveBall
+test/chromeexperiments/bingbong.html:682:1: [definite] Unreachable function calcBall
+test/chromeexperiments/bingbong.html:693:1: [definite] Unreachable function setObjOpacity
+test/chromeexperiments/bingbong.html:700:1: [definite] Unreachable function moveObjTo
+test/chromeexperiments/bingbong.html:707:1: [definite] Unreachable function flipPause
+test/chromeexperiments/bingbong.html:724:1: [definite] Unreachable function placeText
+test/chromeexperiments/bingbong.html:742:1: [definite] Unreachable function writeScore
+test/chromeexperiments/bingbong.html:768:1: [definite] Unreachable function drawPaddle
+test/chromeexperiments/bingbong.html:780:1: [definite] Unreachable function popTitle
+test/chromeexperiments/bingbong.html:790:23: [definite] Unreachable function
+test/chromeexperiments/bingbong.html:801:25: [definite] Unreachable function
+test/chromeexperiments/bingbong.html:814:17: [definite] Unreachable function
+test/chromeexperiments/bingbong.html:814:49: [definite] Unreachable function
+test/chromeexperiments/bingbong.html:829:167: [definite] Unreachable function
+test/chromeexperiments/bingbong.html:831:168: [definite] Unreachable function
+test/chromeexperiments/bingbong.html:832:161: [definite] Unreachable function
+test/chromeexperiments/bingbong.html:834:161: [definite] Unreachable function
+test/chromeexperiments/bingbong.html:837:187: [definite] Unreachable function
+test/chromeexperiments/bingbong.html:837:278: [definite] Unreachable function
+test/chromeexperiments/bingbong.html:837:363: [definite] Unreachable function
+test/chromeexperiments/bingbong.html:838:188: [definite] Unreachable function
+test/chromeexperiments/bingbong.html:839:186: [definite] Unreachable function
+test/chromeexperiments/bingbong.html:839:277: [definite] Unreachable function
+test/chromeexperiments/bingbong.html:839:362: [definite] Unreachable function
+test/chromeexperiments/bingbong.html:840:187: [definite] Unreachable function
+test/chromeexperiments/bingbong.html:841:180: [definite] Unreachable function
+test/chromeexperiments/bingbong.html:842:170: [definite] Unreachable function
+test/chromeexperiments/bingbong.html:844:158: [definite] Unreachable function
+test/chromeexperiments/bingbong.html:872:190: [definite] Unreachable function
+test/chromeexperiments/bingbong.html:872:281: [definite] Unreachable function
+test/chromeexperiments/bingbong.html:872:370: [definite] Unreachable function
+test/chromeexperiments/bingbong.html:874:188: [definite] Unreachable function
+test/chromeexperiments/bingbong.html:874:277: [definite] Unreachable function
+test/chromeexperiments/bingbong.html:874:364: [definite] Unreachable function
+test/chromeexperiments/bingbong.html:19:31: [maybe] Uncaught exception, constructed at [test/chromeexperiments/bingbong.html:178:17]

@@ -11,6 +11,6 @@ function h() {
 
 h();
 
-dumpValue(x);
-dumpObject(x);
+TAJS_dumpValue(x);
+TAJS_dumpObject(x);
 

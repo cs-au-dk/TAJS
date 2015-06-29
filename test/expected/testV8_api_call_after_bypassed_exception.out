@@ -1,2 +1,1 @@
-test/v8tests/api-call-after-bypassed-exception.js:40:1: [maybe] Assertion fails
 test/v8tests/api-call-after-bypassed-exception.js:38:1: [info] Abstract value: "baz"

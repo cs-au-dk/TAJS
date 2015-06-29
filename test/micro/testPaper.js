@@ -16,11 +16,11 @@
   var x = new Student("Joe Average", t++);
   var y = new Student("John Doe", t)
   y.setName("John Q. Doe");
-  dumpObject(x);
-  dumpObject(y);
-  assert(x.name === "Joe Average")
-  assert(y.name === "John Q. Doe")
-  assert(y.studentid === "100027");
-  assert(x.count === 3)
+  TAJS_dumpObject(x);
+  TAJS_dumpObject(y);
+  TAJS_assert(x.name === "Joe Average")
+  TAJS_assert(y.name === "John Q. Doe")
+  TAJS_assert(y.studentid === "100027");
+  TAJS_assert(x.count === 3)
   
-dumpModifiedState();
+TAJS_dumpModifiedState();

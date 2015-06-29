@@ -10,4 +10,4 @@ function plusNum(y) {
 var obj = { val: 7, operatorPlus: plusNum };
 
 var result =  ( getOp(obj, "Plus") )( 6 ); // Rhino gives NaN!
-dumpValue(result);
+TAJS_dumpValue(result);

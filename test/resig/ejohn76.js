@@ -7,12 +7,12 @@ function Ninja(){}
 Ninja.prototype = Person.prototype; 
 Ninja.prototype = { dance: Person.prototype.dance }; 
  
-assert( (new Ninja()) instanceof Person ); // fails!
+TAJS_assert( (new Ninja()) instanceof Person, 'isMaybeFalseButNotTrue' );
  
 // Only this maintains the prototype chain 
 Ninja.prototype = new Person(); 
  
 var ninja = new Ninja(); 
-assert( ninja instanceof Ninja ); 
-assert( ninja instanceof Person ); 
-assert( ninja instanceof Object );
+TAJS_assert( ninja instanceof Ninja ); 
+TAJS_assert( ninja instanceof Person ); 
+TAJS_assert( ninja instanceof Object );

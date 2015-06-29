@@ -1,5 +1,0 @@
-test/v8tests/getter-in-value-prototype.js:33:1: [definite] TypeError, call to non-function
-test/v8tests/getter-in-value-prototype.js:33:1: [definite] Reading absent property __defineGetter__
-test/v8tests/getter-in-value-prototype.js:33:40: [definite] Unreachable function
-test/v8tests/getter-in-value-prototype.js:34:1: [definite] Unreachable code
-test/v8tests/getter-in-value-prototype.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/getter-in-value-prototype.js:33:1]

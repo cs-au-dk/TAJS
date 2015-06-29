@@ -1,3 +1,4 @@
+test/micro/test169.js:18:9: [definite] Dead assignment, property is never read
 test/micro/test169.js:18:9: [maybe] TypeError, accessing property of null/undefined
 test/micro/test169.js:1:1: [maybe] Uncaught exception, constructed at [test/micro/test169.js:18:9]
 test/micro/test169.js:18:9: [maybe] Reading absent property (computed name)

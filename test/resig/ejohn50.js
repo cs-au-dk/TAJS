@@ -6,4 +6,4 @@ function addNum(myNum){
  
 num = 15; 
  
-assert( addNum(5) == 20 ); // modified to pass
+TAJS_assert( addNum(5) == 20 ); // modified to pass

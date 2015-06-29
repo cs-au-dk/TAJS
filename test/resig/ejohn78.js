@@ -9,4 +9,4 @@ function Me(){
 Me.prototype = new Person(); 
  
 var me = new Me(); 
-assert( me.getName() );
+TAJS_assert( !! me.getName() );

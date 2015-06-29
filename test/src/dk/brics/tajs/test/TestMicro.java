@@ -1,18 +1,16 @@
 package dk.brics.tajs.test;
 
-import static org.junit.Assert.fail;
-import junit.framework.Assert;
-
+import dk.brics.tajs.options.Options;
+import dk.brics.tajs.util.AnalysisException;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import dk.brics.tajs.options.Options;
-import dk.brics.tajs.util.AnalysisException;
+import static org.junit.Assert.fail;
 
 @SuppressWarnings("static-method")
 public class TestMicro {
-	
+
 	public static void main(String[] args) {
 		org.junit.runner.JUnitCore.main("dk.brics.tajs.test.TestMicro");
 	}
@@ -20,16 +18,16 @@ public class TestMicro {
 	@Before
 	public void init() {
 		Options.reset();
-		Options.enableTest();
-		Options.enableContextSensitiveHeap();
-		Options.enableParameterSensitivity();
-		Options.enableNumericVariableSensitivity();
-		//Options.enableForInSpecialization();
-		//Options.enableNoPolymorphic();
-		//Options.enableNoModified();
-		//Options.enableNoLazy();
-		//Options.enableDebug();
-		//Options.enableNoRecency();
+		Options.get().enableTest();
+		Options.get().enableContextSensitiveHeap();
+		Options.get().enableParameterSensitivity();
+		Options.get().enableNumericVariableSensitivity();
+		//Options.get().enableForInSpecialization();
+		//Options.get().enableNoPolymorphic();
+		//Options.get().enableNoModified();
+		//Options.get().enableNoLazy();
+		//Options.get().enableDebug();
+		//Options.get().enableNoRecency();
 	}
 
 	@Test
@@ -491,32 +489,10 @@ public class TestMicro {
 		Misc.checkSystemOutput();
 	}
 
-	@Ignore // TODO: can't specialize for-in due to r/w conflict
-	@Test
-	public void micro_50ct() throws Exception {
-		Misc.init();
-		Misc.captureSystemOutput();
-		Options.enableForInSpecialization();
-		String[] args = {"test/micro/test50.js"};
-		Misc.run(args);
-		Options.disableForInSpecialization();
-		Misc.checkSystemOutput();
-	}
-
 	@Test
 	public void micro_51() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/micro/test51.js"};
-		Misc.run(args);
-		Misc.checkSystemOutput();
-	}
-
-	@Test
-	public void micro_51ct() throws Exception {
-		Misc.init();
-		Misc.captureSystemOutput();
-		Options.enableForInSpecialization();
 		String[] args = {"test/micro/test51.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
@@ -631,17 +607,6 @@ public class TestMicro {
 	}
 
 	@Test
-	public void micro_63ct() throws Exception {
-		Misc.init();
-		Misc.captureSystemOutput();
-		Options.enableForInSpecialization();
-		String[] args = {"test/micro/test63.js"};
-		Misc.run(args);
-		Options.disableForInSpecialization();
-		Misc.checkSystemOutput();
-	}
-
-	@Test
 	public void micro_64() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
@@ -731,23 +696,22 @@ public class TestMicro {
 		Misc.checkSystemOutput();
 	}
 
+    @Test
+    public void micro_73simple() throws Exception {
+        Options.get().enableFlowgraph();
+        Misc.init();
+        Misc.captureSystemOutput();
+        String[] args = {"test/micro/test73simple.js"};
+        Misc.run(args);
+        Misc.checkSystemOutput();
+    }
+
 	@Test
 	public void micro_74() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test74.js"};
 		Misc.run(args);
-		Misc.checkSystemOutput();
-	}
-
-	@Test
-	public void micro_74ct() throws Exception {
-		Misc.init();
-		Misc.captureSystemOutput();
-		Options.enableForInSpecialization();
-		String[] args = {"test/micro/test74.js"};
-		Misc.run(args);
-		Options.disableForInSpecialization();
 		Misc.checkSystemOutput();
 	}
 
@@ -1102,12 +1066,11 @@ public class TestMicro {
 		Misc.checkSystemOutput();
 	}
 
-	// Should be runtime error, but Sec 16 p.149 allows us to report the error early.
-	@Test(expected=AnalysisException.class)
+	@Test(expected = AnalysisException.class)
 	public void micro_114() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/micro/test114.js"};
+		String[] args = {"test/micro/test114.js"}; // Should be runtime error, but Sec 16 p.149 allows us to report the error early
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -1166,17 +1129,6 @@ public class TestMicro {
 		Misc.checkSystemOutput();
 	}
 
-	@Ignore // FIXME: for-in with break/continue/delete
-	@Test
-	public void micro_120ct() throws Exception {
-		Misc.init();
-		Misc.captureSystemOutput();
-		Options.enableForInSpecialization();
-		String[] args = {"test/micro/test120.js"};
-		Misc.run(args);
-		Misc.checkSystemOutput();
-	}
-
 	@Test
 	public void micro_121() throws Exception {
 		Misc.init();
@@ -1187,20 +1139,10 @@ public class TestMicro {
 	}
 
 	@Test
-	public void micro_121ct() throws Exception {
-		Misc.init();
-		Misc.captureSystemOutput();
-		Options.enableForInSpecialization();
-		String[] args = {"test/micro/test121.js"}; // can't specialize for-in due to r/w conflict
-		Misc.run(args);
-		Misc.checkSystemOutput();
-	}
-
-	@Test
 	public void micro_122() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/micro/test122.js"}; // FIXME: flow graph wrong!
+		String[] args = {"test/micro/test122.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -1211,17 +1153,6 @@ public class TestMicro {
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test123.js"};
 		Misc.run(args);
-		Misc.checkSystemOutput();
-	}
-
-	@Test
-	public void micro_123ct() throws Exception {
-		Misc.init();
-		Misc.captureSystemOutput();
-		Options.enableForInSpecialization();
-		String[] args = {"test/micro/test123.js"};
-		Misc.run(args);
-		Options.disableForInSpecialization();
 		Misc.checkSystemOutput();
 	}
 
@@ -1351,13 +1282,19 @@ public class TestMicro {
 		Misc.checkSystemOutput();
 	}
 
-	@Test(expected=AnalysisException.class)
-	public void micro_140() throws Exception {
+	@Test(expected = AnalysisException.class /* top level return */)
+	public void micro_140a() throws Exception {
 		Misc.init();
-		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test140.js"};
 		Misc.run(args);
-		Misc.checkSystemOutput();
+	}
+
+	@Test(expected = AnalysisException.class /* top level return */)
+	public void micro_140b() throws Exception {
+		Misc.init();
+		Options.get().enableIncludeDom();
+		String[] args = {"test/micro/test140.js"};
+		Misc.run(args);
 	}
 
 	@Test
@@ -1381,7 +1318,7 @@ public class TestMicro {
 	@Ignore // TODO: getters/setters
 	@Test
 	public void micro_143() throws Exception {
-		Assert.fail("Add support for getters/setters");
+		fail("Add support for getters/setters");
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test143.js"};
@@ -1392,7 +1329,7 @@ public class TestMicro {
 	@Ignore // TODO: getters/setters
 	@Test
 	public void micro_144() throws Exception {
-		Assert.fail("Add support for getters/setters");
+		fail("Add support for getters/setters");
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test144.js"};
@@ -1439,7 +1376,7 @@ public class TestMicro {
 
 	@Test
 	public void micro_148b() throws Exception {
-		Options.enableNoModified(); // maybe-modified can make a difference, even with lazy prop
+		Options.get().enableNoModified(); // maybe-modified can make a difference, even with lazy prop
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test148.js"};
@@ -1565,7 +1502,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void micro_162() throws Exception { 
+	public void micro_162() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test162.js"};
@@ -1699,17 +1636,6 @@ public class TestMicro {
 	}
 
 	@Test
-	public void micro_176ct() throws Exception {
-		Misc.init();
-		Misc.captureSystemOutput();
-		Options.enableForInSpecialization();
-		String[] args = {"test/micro/test176.js"};
-		Misc.run(args);
-		Options.disableForInSpecialization();
-		Misc.checkSystemOutput();
-	}
-
-	@Test
 	public void micro_177() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
@@ -1729,7 +1655,7 @@ public class TestMicro {
 
 	@Ignore // FIXME: for-in, iterating over the chars of a string
 	@Test
-	public void micro_179() throws Exception { 
+	public void micro_179() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test179.js"};
@@ -1757,7 +1683,7 @@ public class TestMicro {
 
 	@Ignore // FIXME: toString
 	@Test
-	public void micro_182() throws Exception { 
+	public void micro_182() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test182.js"};
@@ -1825,36 +1751,29 @@ public class TestMicro {
 	public void micro_188un() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
-		Options.enableUnrollOneAndAHalf();
+		Options.get().enableUnrollOneAndAHalf();
 		String[] args = {"test/micro/test188.js"};
 		Misc.run(args);
-		Options.enableUnrollOneAndAHalf();
+		Options.get().enableUnrollOneAndAHalf();
 		Misc.checkSystemOutput();
 	}
 
-	@Ignore
 	@Test
 	public void micro_189() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
-		Options.enableForInSpecialization();
 		String[] args = {"test/micro/test189.js"};
 		Misc.run(args);
-		Options.disableForInSpecialization();
 		Misc.checkSystemOutput();
 	}
 
-	@Ignore
 	@Test
 	public void micro_189un() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
-		Options.enableForInSpecialization();
-		Options.enableUnrollOneAndAHalf();
+		Options.get().enableUnrollOneAndAHalf();
 		String[] args = {"test/micro/test189.js"};
 		Misc.run(args);
-		Options.disableForInSpecialization();
-		Options.disableUnrollOneAndAHalf();
 		Misc.checkSystemOutput();
 	}
 
@@ -1888,7 +1807,6 @@ public class TestMicro {
 	@Test
 	public void micro_200() throws Exception {
 		Misc.init();
-		Options.enableForInSpecialization();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test200.js"};
 		Misc.run(args);
@@ -1898,7 +1816,6 @@ public class TestMicro {
 	@Test
 	public void micro_201() throws Exception {
 		Misc.init();
-		Options.enableForInSpecialization();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test201.js"};
 		Misc.run(args);
@@ -1908,7 +1825,6 @@ public class TestMicro {
 	@Test
 	public void micro_202() throws Exception {
 		Misc.init();
-		Options.enableForInSpecialization();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test202.js"};
 		Misc.run(args);
@@ -1942,6 +1858,56 @@ public class TestMicro {
 		Misc.checkSystemOutput();
 	}
 
+	@Test
+	public void micro_206() throws Exception {
+		Misc.init();
+		Misc.captureSystemOutput();
+		String[] args = {"test/micro/test206.js"};
+		Misc.run(args);
+		Misc.checkSystemOutput();
+	}
+
+	@Test
+	public void micro_207() throws Exception {
+		Misc.init();
+		Misc.captureSystemOutput();
+		String[] args = {"test/micro/test207.js"};
+		Misc.run(args);
+		Misc.checkSystemOutput();
+	}
+
+	@Test
+	public void micro_208() throws Exception {
+		Misc.init();
+		Options.get().enableNoPolymorphic();
+		Options.get().enableNoChargedCalls();
+		Misc.captureSystemOutput();
+		String[] args = {"test/micro/test208.js"};
+		Misc.run(args);
+		Misc.checkSystemOutput();
+	}
+
+	@Test
+	public void micro_209() throws Exception {
+		Misc.init();
+		Options.get().enableNoPolymorphic();
+		Options.get().enableNoChargedCalls();
+		Misc.captureSystemOutput();
+		String[] args = {"test/micro/test209.js"};
+		Misc.run(args);
+		Misc.checkSystemOutput();
+	}
+
+	@Test
+	public void micro_210() throws Exception {
+		Misc.init();
+		Misc.captureSystemOutput();
+		String[] args = {"test/micro/test210.js"};
+		Misc.run(args);
+		Misc.checkSystemOutput();
+	}
+
+	@Test
 	public void micro_testArray() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
@@ -1959,12 +1925,12 @@ public class TestMicro {
 		Misc.checkSystemOutput();
 	}
 
-	@Test(expected=AnalysisException.class) // TODO: unevalable eval
-	public void micro_testEval() throws Exception { 
+	@Test
+	public void micro_testEval() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
-		Options.enableUnevalizer();
-		String[] args = {"test/micro/testEval.js"};
+		Options.get().enableUnevalizer();
+		String[] args = {"test/micro/testEval.js"}; // TODO: unevalable eval
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -1973,10 +1939,9 @@ public class TestMicro {
 	public void micro_testFunction() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
-		Options.enableUnevalizer();
+		Options.get().enableUnevalizer();
 		String[] args = {"test/micro/testFunction.js"};
 		Misc.run(args);
-		Options.disableUnevalizer();
 		Misc.checkSystemOutput();
 	}
 
@@ -2064,29 +2029,33 @@ public class TestMicro {
 	@Test
 	public void micro_testForIn1() throws Exception {
 		Misc.init();
-		Options.enableForInSpecialization();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/testForIn1.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
-	@Ignore // FIXME: need new flowgraph builder...
 	@Test
-	public void micro_testForIn2() throws Exception { // FIXME: for-in with break
+	public void micro_testForIn2() throws Exception {
 		Misc.init();
-		Options.enableForInSpecialization();
-		Misc.captureSystemOutput();
+        Misc.captureSystemOutput();
 		String[] args = {"test/micro/testForIn2.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
-	@Ignore // FIXME: need new flowgraph builder...
+    @Test
+    public void micro_testForIn2simple() throws Exception {
+        Misc.init();
+        Misc.captureSystemOutput();
+        String[] args = {"test/micro/testForIn2simple.js"};
+        Misc.run(args);
+        Misc.checkSystemOutput();
+    }
+
 	@Test
-	public void micro_testForIn3() throws Exception { // FIXME: for-in with exception
+	public void micro_testForIn3() throws Exception {
 		Misc.init();
-		Options.enableForInSpecialization();
 		Misc.captureSystemOutput();
 		String[] args = { "test/micro/testForIn3.js" };
 		Misc.run(args);
@@ -2096,7 +2065,6 @@ public class TestMicro {
 	@Test
 	public void micro_testForIn4() throws Exception {
 		Misc.init();
-		Options.enableForInSpecialization();
 		Misc.captureSystemOutput();
 		String[] args = { "test/micro/testForIn4.js" };
 		Misc.run(args);
@@ -2106,7 +2074,6 @@ public class TestMicro {
 	@Test
 	public void micro_testForIn5() throws Exception {
 		Misc.init();
-		Options.enableForInSpecialization();
 		Misc.captureSystemOutput();
 		String[] args = { "test/micro/testForIn5.js" };
 		Misc.run(args);
@@ -2116,7 +2083,6 @@ public class TestMicro {
 	@Test
 	public void micro_testForIn6() throws Exception {
 		Misc.init();
-		Options.enableForInSpecialization();
 		Misc.captureSystemOutput();
 		String[] args = { "test/micro/testForIn6.js" };
 		Misc.run(args);
@@ -2126,45 +2092,57 @@ public class TestMicro {
 	@Test
 	public void micro_testForIn7() throws Exception {
 		Misc.init();
-		Options.enableForInSpecialization();
 		Misc.captureSystemOutput();
 		String[] args = { "test/micro/testForIn7.js" };
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
+    @Test
+    public void micro_testForIn8() throws Exception {
+        Misc.init();
+        Misc.captureSystemOutput();
+        String[] args = { "test/micro/testForIn8.js" };
+        Misc.run(args);
+        Misc.checkSystemOutput();
+    }
+
 	@Test
 	public void micro_testForInHasOwn() throws Exception {
 		Misc.init();
-		Options.enableForInSpecialization();
 		String[] args = { "test/micro/testForInHasOwn.js" };
 		Misc.run(args);
 	}
 
+    @Test
+    public void micro_testForInException() throws Exception {
+        Misc.init();
+        Options.get().enableFlowgraph();
+        String[] args = { "test/micro/testForInException.js" };
+        Misc.run(args);
+    }
+
 	@Test
 	public void micro_testForInPrototypeProperties() throws Exception {
 		Misc.init();
-		Options.enableForInSpecialization();
 		String[] args = { "test/micro/testForInPrototypeProperties.js" };
 		Misc.run(args);
 	}
-	
+
 	@Test
 	public void micro_testForInNoEnumerablePrototypeProperties() throws Exception {
 		Misc.init();
-		Options.enableForInSpecialization();
 		String[] args = { "test/micro/testForInNoEnumerablePrototypeProperties.js" };
 		Misc.run(args);
 	}
-	
-	@Test
+
+    @Test
 	public void micro_testForInEach() throws Exception {
 		Misc.init();
-		Options.enableForInSpecialization();
 		String[] args = {"test/micro/testForInEach.js"};
-		Misc.run(args);	
+		Misc.run(args);
 	}
-	
+
 	@Test
 	public void micro_testCall1() throws Exception {
 		Misc.init();
@@ -2173,7 +2151,7 @@ public class TestMicro {
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
-	
+
 	@Test
 	public void micro_testCall2() throws Exception {
 		Misc.init();
@@ -2182,4 +2160,374 @@ public class TestMicro {
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
+
+    @Ignore // see https://github.com/cs-au-dk/TAJS-private/issues/112 - expected output has been handcrafted to succeed on new implementation
+    @Test
+    public void micro_testLazyAndOrLinearization() throws Exception {
+        Misc.init();
+        Misc.captureSystemOutput();
+        String[] args = {"test/micro/testLazyAndOrLinearization.js"};
+        Misc.run(args);
+        Misc.checkSystemOutput();
+    }
+
+	@Test
+	public void micro_testDeadAssignmentsAndDPAs() throws Exception {
+		Misc.init();
+		Misc.captureSystemOutput();
+		String[] args = {"test/micro/testDeadAssignmentsAndDPAs.js"};
+		Misc.run(args);
+		Misc.checkSystemOutput();
+	}
+
+	@Test
+	public void micro_testDeadAssignmentsAndNatives() throws Exception {
+		Misc.init();
+		Misc.captureSystemOutput();
+		String[] args = {"test/micro/testDeadAssignmentsAndNatives.js"};
+		Misc.run(args);
+		Misc.checkSystemOutput();
+	}
+
+	@Test
+	public void micro_testNumAdd() throws Exception {
+		Misc.init();
+		Misc.captureSystemOutput();
+		String[] args = {"test/micro/testNumAdd.js"};
+		Misc.run(args);
+		Misc.checkSystemOutput();
+	}
+
+	@Test
+	public void micro_testNumSub() throws Exception {
+		Misc.init();
+		Misc.captureSystemOutput();
+		String[] args = {"test/micro/testNumSub.js"};
+		Misc.run(args);
+		Misc.checkSystemOutput();
+	}
+
+	@Test
+	public void micro_testUintAdd() throws Exception {
+		Misc.init();
+		Misc.captureSystemOutput();
+		String[] args = {"test/micro/testUintAdd.js"};
+		Misc.run(args);
+		Misc.checkSystemOutput();
+	}
+
+	@Test
+	public void micro_testUintSub() throws Exception {
+		// XXX unsound, see reference to this test in Operators.java
+		Misc.init();
+		Misc.captureSystemOutput();
+		String[] args = {"test/micro/testUintSub.js"};
+		Misc.run(args);
+		Misc.checkSystemOutput();
+	}
+
+	@Test
+	public void micro_testConreteStrings() throws Exception {
+		Misc.init();
+		Misc.runSource(
+				"TAJS_assert(/x/.test('x'));",
+				"TAJS_assert(/-\\[/.test('-['));",
+				"TAJS_assert(/\\[-/.test('[-'));"
+		);
+	}
+
+	@Test
+	public void micro_testReplaceUnclosedCharacterClass() throws Exception {
+		Misc.init();
+		Misc.runSource(
+				"TAJS_assert('['.replace('[', 'x') === 'x');"
+		);
+	}
+
+	@Test
+	public void micro_escapedCharacters() throws Exception {
+		Misc.init();
+		String[] args = {"test/micro/escapedCharacters.js"};
+		Misc.run(args);
+	}
+
+	@Test
+	public void micro_testFunctionConstructor() throws Exception {
+		Misc.init();
+		Options.get().enableUnevalizer();
+		Misc.runSource(
+				// See GitHub #147
+				// "TAJS_assert((typeof new Function()) === 'function');",
+				// "TAJS_assert(new Function()() === undefined);",
+				"TAJS_assert((typeof new Function('')) === 'function');",
+				"TAJS_assert(new Function('')() === undefined);",
+				"TAJS_assert((typeof new Function('', '')) === 'function');",
+				"TAJS_assert(new Function('', '')() === undefined);"
+		);
+	}
+
+	@Test
+	public void micro_testConcreteDecodeURI() throws Exception {
+		Misc.init();
+		Misc.runSource(
+				"TAJS_assert(decodeURI() === 'undefined');",
+				"TAJS_assert(decodeURI('http://test.com/%20') === 'http://test.com/ ');"
+		);
+	}
+
+	@Test
+	public void micro_testConcreteDecodeURIComponent() throws Exception {
+		Misc.init();
+		Misc.runSource(
+				"TAJS_assert(decodeURIComponent() === 'undefined');",
+				"TAJS_assert(decodeURIComponent('%20') === ' ');"
+		);
+	}
+
+	@Test
+	public void micro_testConcreteEncodeURI() throws Exception {
+		Misc.init();
+		Misc.runSource(
+				"TAJS_assert(encodeURI() === 'undefined');",
+				"TAJS_assert(encodeURI('http://test.com/ ') === 'http://test.com/%20');"
+		);
+	}
+
+	@Test
+	public void micro_testConcreteEncodeURIComponent() throws Exception {
+		Misc.init();
+		Misc.runSource(
+				"TAJS_assert(encodeURIComponent() === 'undefined');",
+				"TAJS_assert(encodeURIComponent(' ') === '%20');"
+		);
+	}
+
+	@Test
+	public void micro_testConcreteEscape() throws Exception {
+		Misc.init();
+		Misc.runSource(
+				"TAJS_assert(escape() === 'undefined');",
+				"TAJS_assert(escape(' ') === '%20');"
+		);
+	}
+
+	@Test
+	public void micro_testConcreteUnescape() throws Exception {
+		Misc.init();
+		Misc.runSource(
+				"TAJS_assert(unescape() === 'undefined');",
+				"TAJS_assert(unescape('%20') === ' ');"
+		);
+	}
+
+	@Test
+	public void micro_testConcreteParseInt() throws Exception {
+		Misc.init();
+		Misc.runSource(
+				"TAJS_assert(parseInt(42) === 42);",
+				"TAJS_assert(parseInt('42') === 42);",
+				"TAJS_assert(parseInt('0x42') === 66);",
+				"TAJS_assert(parseInt('42', 5) === 22);",
+				"TAJS_assert(isNaN(parseInt('x')));",
+				"TAJS_assert(isNaN(parseInt(true)));"
+		);
+	}
+
+	@Test
+	public void micro_testConcreteParseFloat() throws Exception {
+		Misc.init();
+		Misc.runSource(
+				"TAJS_assert(parseFloat(42) === 42);",
+				"TAJS_assert(parseFloat('42') === 42);",
+				"TAJS_assert(parseFloat('42.3') === 42.3);",
+				"TAJS_assert(parseFloat('0x42') === 0);",
+				"TAJS_assert(isNaN(parseFloat('x')));",
+				"TAJS_assert(isNaN(parseFloat(true)));"
+		);
+	}
+
+	@Test
+	public void micro_testToString() throws Exception {
+		Misc.init();
+		Misc.runSource(
+				"var U = !!Math.random();",
+				"TAJS_assert(Object.prototype.toString.call({}) === '[object Object]');",
+				"TAJS_assert(Object.prototype.toString.call([]) === '[object Array]');",
+				"TAJS_assert(Object.prototype.toString.call(U? {}: {}) === '[object Object]');",
+				"TAJS_assert(Object.prototype.toString.call(U? {}: []), 'isMaybeStrOther');"
+		);
+	}
+	
+	@Test
+	public void micro_testAbstractGCPrecision() throws Exception {
+			Misc.init();
+			Misc.runSource(
+					"function f(v){return v.p;}",
+					"f({p: true})",
+					"if(f()){", // definite error (mainly due to abstract GC)
+					"	TAJS_assert(false);",
+					"}else{",
+					"	TAJS_assert(false);",
+					"}",
+					"TAJS_assert(false);"
+			);
+	}
+
+	@Test
+	public void micro_testLoopBeforeCallSequence() {
+		Misc.init();
+		Misc.captureSystemOutput();
+		String[] args = {"test/micro/testLoopBeforeCallSequence.js"};
+		Misc.run(args);
+		Misc.checkSystemOutput();
+	}
+
+	@Test
+	public void arrayJoin() {
+		Misc.init();
+		Misc.runSource("",
+				"var joined = ['foo',,'baz'].join();",
+				"TAJS_assert(joined === 'foo,,baz');",
+				""
+		);
+	}
+
+	@Test
+	public void micro_numberNaN() {
+		Misc.init();
+		Misc.runSource(
+				"TAJS_assert(isNaN(NaN));",
+				"TAJS_assert(isNaN(Number(NaN)));",
+				"TAJS_assert(isNaN(Number('NaN')));",
+				"TAJS_assert(isNaN(Number(' NaN ')));",
+				"",
+				"function toNumber1(val) {return Number(val);}",
+				"function toNumber2(val) {return Number(val);}",
+				"",
+				"toNumber1(' NaN ');",
+				"TAJS_assert(toNumber1('123'), 'isMaybeNaN');",
+				"",
+				"toNumber2('123');",
+				"TAJS_assert(toNumber2(' NaN '), 'isMaybeNaN');",
+				""
+		);
+	}
+
+	@Test
+	public void numberToString() {
+		Misc.init();
+		Misc.runSource("",
+				"TAJS_assert('111111111111111110000' === (111111111111111111111).toString());",
+				"TAJS_assert('-111111111111111110000' === (-111111111111111111111).toString());",
+				"TAJS_assert('0.00001' === (0.00001).toString());",
+				"TAJS_assert('1e-7' === (0.0000001).toString());",
+				"");
+	}
+
+	@Test
+	public void numberFormatters() {
+		Misc.init();
+		Misc.runSource("",
+				"TAJS_assert('1.1111111111111111e+21' === (1111111111111111111111).toFixed(8));",
+				"TAJS_assert('-1.1236e-4' === (-0.000112356).toExponential(4));",
+				"TAJS_assert('0.000555000000000000' === (0.000555).toPrecision(15));",
+				"");
+	}
+
+	@Test
+	public void arrayShifting_lit() {
+		Misc.init();
+		Misc.runSource("",
+				"var a = ['foo', 'bar'];",
+				"a.shift()",
+				"TAJS_assert('bar' === a[0]);",
+				"");
+	}
+
+	@Test
+	public void arrayShifting_pushDirect() {
+		Misc.init();
+		Misc.runSource("",
+				"var a = [];",
+				"a.push('foo');",
+				"a.push('bar');",
+				"a.shift()",
+				"TAJS_assert('bar' === a[0]);",
+				"");
+	}
+
+	@Test
+	public void arrayShifting_pushIndirect() {
+		Misc.init();
+		Misc.runSource("",
+				"function push(a, v){a.push(v);}",
+				"var a = [];",
+				"push(a, 'foo');",
+				"push(a, 'bar');",
+				"a.shift()",
+				"TAJS_assert(a[0], 'isMaybeStrIdentifier');",
+				"TAJS_assert(a[0], 'isMaybeUndef');",
+				"");
+	}
+
+	@Test
+	public void arrayProto() {
+		Misc.init();
+		Misc.runSource("",
+				"Array.prototype[1] = 'bar';",
+				"TAJS_assert([][1] === 'bar');",
+				"TAJS_assert(['foo',,'baz'][1] === 'bar');",
+				""
+		);
+	}
+
+	@Test
+	public void arrayProtoJoin1() {
+		Misc.init();
+		Misc.runSource("",
+				"Array.prototype[1] = 'bar';",
+				"TAJS_assert(['foo',,'baz'].join() === 'foo,bar,baz');",
+				""
+		);
+	}
+
+	@Test
+	public void arrayProtoJoin2() {
+		Misc.init();
+		Misc.runSource("",
+				"Array.prototype[1] = 'bar';",
+				"var a = []",
+				"a[0] = 'foo';",
+				"a[2] = 'baz';",
+				"TAJS_assert(a.join() === 'foo,bar,baz');",
+				""
+		);
+	}
+
+	@Test
+	public void arrayUnshift() {
+		Misc.init();
+		Misc.runSource("",
+				"var a = ['foo', 'bar', 'baz']",
+				"a.unshift('qux')",
+				"TAJS_assert(a.length === 4);",
+				"TAJS_assert(a[0] === 'qux');",
+				"TAJS_assert(a[1] === 'foo');",
+				"TAJS_assert(a[2] === 'bar');",
+				"TAJS_assert(a[3] === 'baz');",
+				""
+		);
+	}
+
+	@Test
+	public void arraySplice() {
+		Misc.init();
+		Misc.runSource("",
+				"var a = ['foo', 'bar', 'baz']",
+				"var v = a.splice(0, 1);",
+				"TAJS_assert(v[0], 'isMaybeStrIdentifier');",
+				"TAJS_assert(a[0], 'isMaybeStrIdentifier');",
+				"");
+	}
+
 }

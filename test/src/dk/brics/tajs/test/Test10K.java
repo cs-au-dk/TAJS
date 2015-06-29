@@ -18,13 +18,12 @@ public class Test10K {
 	@Before
 	public void init() {
         Options.reset();
-		Options.enableTest();
-        Options.enableIncludeDom();
+		Options.get().enableTest();
+        Options.get().enableIncludeDom();
 	}
 
-	@Ignore
     @Test
-    public void test10k_10k_snake() throws Exception { // FIXME: UnsupportedOperationException
+    public void test10k_10k_snake() throws Exception {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = { "test/10k/10k_snake.html" };
@@ -35,7 +34,7 @@ public class Test10K {
     @Test
     public void test10k_10k_world() throws Exception {
         Misc.init();
-        Options.enableUnevalizer();
+        Options.get().enableUnevalizer();
         Misc.captureSystemOutput();
         String[] args = { "test/10k/10k_world.html" };
         Misc.run(args);
@@ -117,7 +116,7 @@ public class Test10K {
     @Test
     public void test10k_fractal_landscape() throws Exception {
         Misc.init();
-        Options.enableUnevalizer();
+        Options.get().enableUnevalizer();
         Misc.captureSystemOutput();
         String[] args = { "test/10k/fractal_landscape.html" };
         Misc.run(args);
@@ -169,10 +168,11 @@ public class Test10K {
         Misc.checkSystemOutput();
     }
 
+    @Ignore // See GitHub #147
     @Test
     public void test10k_nbody() throws Exception {
         Misc.init();
-        Options.enableUnevalizer();
+        Options.get().enableUnevalizer();
         Misc.captureSystemOutput();
         String[] args = { "test/10k/nbody.html" };
         Misc.run(args);

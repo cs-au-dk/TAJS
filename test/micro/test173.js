@@ -1,2 +1,2 @@
 trim = String.prototype.trim
-dumpValue("  ".trim())
+TAJS_dumpValue("  ".trim())

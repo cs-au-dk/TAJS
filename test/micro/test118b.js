@@ -4,4 +4,4 @@ if (Math.random())
 else
   x = {a:42};
 
-dumpValue(x.a);
+TAJS_dumpValue(x.a);

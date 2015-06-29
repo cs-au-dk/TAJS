@@ -1,7 +1,7 @@
 var a = "string"
 var b = 1000
 var ab = a+b 
-dumpValue(ab);
+TAJS_dumpValue(ab);
 
 
 function X() {
@@ -9,4 +9,4 @@ function X() {
 }
 var object = new X()
 var s = object.Y + 1;
-dumpValue(s) 
+TAJS_dumpValue(s) 

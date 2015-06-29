@@ -1,5 +1,5 @@
-test/v8tests/array_length.js:50:18: [definite] Property is null/undefined
-test/v8tests/array_length.js:51:11: [definite] Property is null/undefined
+test/v8tests/array_length.js:50:23: [definite] Property is null/undefined
+test/v8tests/array_length.js:51:16: [definite] Property is null/undefined
 test/v8tests/array_length.js:95:7: [definite] The variable j is never used
 test/v8tests/array_length.js:86:3: [maybe] RangeError, assigning invalid value to array 'length' property
 test/v8tests/array_length.js:91:3: [maybe] RangeError, assigning invalid value to array 'length' property

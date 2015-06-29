@@ -1,3 +1,2 @@
-test/resig/ejohn31.js:5:3: [definite] Dead assignment, property swingSword is never read
 test/resig/ejohn31.js:14:1: [info] Abstract value: true
 test/resig/ejohn31.js:18:1: [info] Abstract value: false

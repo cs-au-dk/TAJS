@@ -5,7 +5,7 @@ Ninja.prototype.swingSword = function(){
 }; 
  
 var ninjaA = Ninja(); 
-assert( !ninjaA ); 
+TAJS_assert( !ninjaA ); 
  
 var ninjaB = new Ninja(); 
-assert( ninjaB.swingSword() );
+TAJS_assert( ninjaB.swingSword() );

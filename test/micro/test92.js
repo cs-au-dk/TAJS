@@ -3,4 +3,4 @@ function tak(x,y) {
  else return tak(tak(x-1,2),tak(x-1,1));
 }
 
-dumpValue(tak(1,2));
+TAJS_dumpValue(tak(1,2));

@@ -1,2 +1,2 @@
-var src = "(function (x) {dumpValue(x)})(42)"
+var src = "(function (x) {TAJS_dumpValue(x)})(42)"
 eval(src)

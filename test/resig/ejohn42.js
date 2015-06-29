@@ -4,5 +4,5 @@ function smallest(){
 function largest(){ 
   return Math.max.apply( Math, arguments ); 
 } 
-assert(smallest(0, 1, 2, 3) == 0); 
-assert(largest(0, 1, 2, 3) == 3);
+TAJS_assert(smallest(0, 1, 2, 3) == 0); 
+TAJS_assert(largest(0, 1, 2, 3) == 3);

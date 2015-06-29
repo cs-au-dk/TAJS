@@ -1,25 +1,35 @@
-test/v8tests/sparse-array-reverse.js:50:1: [definite] ReferenceError, reading absent variable assertEquals
-test/v8tests/sparse-array-reverse.js:42:1: [definite] Dead assignment, property 15 is never read
-test/v8tests/sparse-array-reverse.js:43:1: [definite] Dead assignment, property 30 is never read
-test/v8tests/sparse-array-reverse.js:45:1: [definite] Dead assignment, property 40 is never read
-test/v8tests/sparse-array-reverse.js:46:1: [definite] Dead assignment, property 50 is never read
-test/v8tests/sparse-array-reverse.js:48:1: [definite] Dead assignment, property 1959 is never read
-test/v8tests/sparse-array-reverse.js:49:1: [definite] Dead assignment, property 1999 is never read
-test/v8tests/sparse-array-reverse.js:32:5: [definite] The variable VERYLARGE is never used
-test/v8tests/sparse-array-reverse.js:50:14: [definite] Unreachable code
-test/v8tests/sparse-array-reverse.js:57:5: [definite] The variable seed is never used
-test/v8tests/sparse-array-reverse.js:61:1: [definite] Unreachable function DoOrDont
-test/v8tests/sparse-array-reverse.js:66:5: [definite] The variable sizes is never used
-test/v8tests/sparse-array-reverse.js:67:5: [definite] The variable poses is never used
-test/v8tests/sparse-array-reverse.js:71:10: [definite] The variable iterations is never used
-test/v8tests/sparse-array-reverse.js:72:12: [definite] The variable size_pos is never used
-test/v8tests/sparse-array-reverse.js:73:9: [definite] The variable size is never used
-test/v8tests/sparse-array-reverse.js:75:9: [definite] The variable to_delete is never used
-test/v8tests/sparse-array-reverse.js:79:9: [definite] The variable expected is never used
-test/v8tests/sparse-array-reverse.js:80:9: [definite] The variable expected_reversed is never used
-test/v8tests/sparse-array-reverse.js:82:14: [definite] The variable pos_pos is never used
-test/v8tests/sparse-array-reverse.js:83:11: [definite] The variable pos is never used
-test/v8tests/sparse-array-reverse.js:84:11: [definite] The variable letter is never used
-test/v8tests/sparse-array-reverse.js:96:9: [definite] The variable expected2 is never used
-test/v8tests/sparse-array-reverse.js:97:9: [definite] The variable expected_reversed2 is never used
-test/v8tests/sparse-array-reverse.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/sparse-array-reverse.js:50:1]
+test/v8tests/sparse-array-reverse.js:86:9: [maybe] RangeError, assigning invalid value to array 'length' property
+test/v8tests/sparse-array-reverse.js:90:9: [maybe] RangeError, assigning invalid value to array 'length' property
+test/v8tests/sparse-array-reverse.js:93:9: [maybe] TypeError, call to non-function
+test/v8tests/sparse-array-reverse.js:109:9: [maybe] TypeError, call to non-function
+test/v8tests/sparse-array-reverse.js:113:40: [maybe] TypeError, call to non-function
+test/v8tests/sparse-array-reverse.js:114:5: [maybe] TypeError, call to non-function
+test/v8tests/sparse-array-reverse.js:117:17: [maybe] TypeError, call to non-function
+test/v8tests/sparse-array-reverse.js:121:58: [maybe] TypeError, call to non-function
+test/v8tests/sparse-array-reverse.js:93:9: [maybe] Reading absent property push
+test/v8tests/sparse-array-reverse.js:109:9: [maybe] Reading absent property push
+test/v8tests/sparse-array-reverse.js:113:40: [maybe] Reading absent property join
+test/v8tests/sparse-array-reverse.js:114:5: [maybe] Reading absent property reverse
+test/v8tests/sparse-array-reverse.js:117:17: [maybe] Reading absent property pop
+test/v8tests/sparse-array-reverse.js:121:58: [maybe] Reading absent property join
+test/v8tests/prologue.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/sparse-array-reverse.js:86:9, test/v8tests/sparse-array-reverse.js:90:9, test/v8tests/sparse-array-reverse.js:93:9, test/v8tests/sparse-array-reverse.js:109:9, test/v8tests/sparse-array-reverse.js:113:40, test/v8tests/sparse-array-reverse.js:114:5, test/v8tests/sparse-array-reverse.js:117:17, test/v8tests/sparse-array-reverse.js:121:58]
+test/v8tests/sparse-array-reverse.js:73:16: [maybe] Reading absent property (computed name)
+test/v8tests/sparse-array-reverse.js:77:23: [maybe] The variable size has values with different types
+test/v8tests/sparse-array-reverse.js:83:17: [maybe] Reading absent property (computed name)
+test/v8tests/sparse-array-reverse.js:86:9: [maybe] Conversion from string to number yields NaN
+test/v8tests/sparse-array-reverse.js:86:11: [maybe] The variable pos has values with different types
+test/v8tests/sparse-array-reverse.js:90:9: [maybe] Conversion from string to number yields NaN
+test/v8tests/sparse-array-reverse.js:90:25: [maybe] The variable pos has values with different types
+test/v8tests/sparse-array-reverse.js:93:24: [maybe] The variable pos has values with different types
+test/v8tests/sparse-array-reverse.js:100:17: [maybe] Conversion from string to number yields NaN
+test/v8tests/sparse-array-reverse.js:100:17: [maybe] Conversion to number yields NaN
+test/v8tests/sparse-array-reverse.js:100:17: [maybe] The variable size has values with different types
+test/v8tests/sparse-array-reverse.js:100:24: [maybe] Reading absent property (computed name)
+test/v8tests/sparse-array-reverse.js:113:52: [maybe] Converting undefined to string
+test/v8tests/sparse-array-reverse.js:113:61: [maybe] The variable size has values with different types
+test/v8tests/sparse-array-reverse.js:118:7: [maybe] Converting undefined to string
+test/v8tests/sparse-array-reverse.js:118:30: [maybe] The variable pos has values with different types
+test/v8tests/sparse-array-reverse.js:121:70: [maybe] Converting undefined to string
+test/v8tests/sparse-array-reverse.js:121:92: [maybe] The variable size has values with different types
+test/v8tests/sparse-array-reverse.js:86:9: [info] Writing to unknown property that may cause loss of precision
+test/v8tests/sparse-array-reverse.js:90:9: [info] Writing to unknown property that may cause loss of precision

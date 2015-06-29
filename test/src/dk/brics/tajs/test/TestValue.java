@@ -1,17 +1,5 @@
 package dk.brics.tajs.test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
-import org.junit.Before;
-import org.junit.Test;
-
 import dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects;
 import dk.brics.tajs.flowgraph.AbstractNode;
 import dk.brics.tajs.flowgraph.BasicBlock;
@@ -23,83 +11,98 @@ import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.ObjectLabel.Kind;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.options.Options;
+import org.apache.log4j.Logger;
+import org.junit.Before;
+import org.junit.Test;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @SuppressWarnings("static-method")
 public class TestValue {
 
-	public static void main(String[] args) {
+    private static Logger log = Logger.getLogger(TestValue.class);
+
+    public static void main(String[] args) {
 		org.junit.runner.JUnitCore.main("dk.brics.tajs.test.TestValue");
 	}
 
 	@Before
 	public void init() {
 		Options.reset();
-		Options.enableTest();
-		Options.enableDebug();
+		Options.get().enableTest();
+		Options.get().enableDebug();
 	}
 
 	private static void printInfo(Value v) {
-		System.out.println("****" + v);
-		System.out.println("Attributes: " + v.printAttributes());
+		log.info("****" + v);
+		log.info("Attributes: " + v.printAttributes());
 
-		System.out.println("isBottom = " + v.isNone());
-		System.out.println("isNoValue = " + v.isNotPresent());
-		System.out.println("isMaybeValue = " + v.isMaybePresent());
-		System.out.println("isMaybePrimitive = " + v.isMaybePrimitive());
+		log.info("isBottom = " + v.isNone());
+		log.info("isNoValue = " + v.isNotPresent());
+		log.info("isMaybeValue = " + v.isMaybePresent());
+		log.info("isMaybePrimitive = " + v.isMaybePrimitive());
 
-		System.out.println("isMaybeAbsent = " + v.isMaybeAbsent());
-		System.out.println("isNotAbsent = " + v.isNotAbsent());
+		log.info("isMaybeAbsent = " + v.isMaybeAbsent());
+		log.info("isNotAbsent = " + v.isNotAbsent());
 
-		System.out.println("isMaybeUndef = " + v.isMaybeUndef());
-		System.out.println("isMaybeOtherThanUndef = " + v.isMaybeOtherThanUndef());
-		System.out.println("isNotUndef = " + v.isNotUndef());
+		log.info("isMaybeUndef = " + v.isMaybeUndef());
+		log.info("isMaybeOtherThanUndef = " + v.isMaybeOtherThanUndef());
+		log.info("isNotUndef = " + v.isNotUndef());
 
-		System.out.println("isMaybeNull = " + v.isMaybeNull());
-		System.out.println("isNotNull = " + v.isNotNull());
-		System.out.println("isMaybeOtherThanNull = " + v.isMaybeOtherThanNull());
-		System.out.println("isNullOrUndef = " + v.isNullOrUndef());
+		log.info("isMaybeNull = " + v.isMaybeNull());
+		log.info("isNotNull = " + v.isNotNull());
+		log.info("isMaybeOtherThanNull = " + v.isMaybeOtherThanNull());
+		log.info("isNullOrUndef = " + v.isNullOrUndef());
 
-		System.out.println("isMaybeAnyBool = " + v.isMaybeAnyBool());
-		System.out.println("isTrue = " + v.isMaybeTrueButNotFalse());
-		System.out.println("isFalse = " + v.isMaybeFalseButNotTrue());
-		System.out.println("isNotBool = " + v.isNotBool());
-		System.out.println("isMaybeOtherThanBool = " + v.isMaybeOtherThanBool());
-		System.out.println("isMaybeTrue = " + v.isMaybeTrue());
-		System.out.println("isMaybeFalse = " + v.isMaybeFalse());
+		log.info("isMaybeAnyBool = " + v.isMaybeAnyBool());
+		log.info("isTrue = " + v.isMaybeTrueButNotFalse());
+		log.info("isFalse = " + v.isMaybeFalseButNotTrue());
+		log.info("isNotBool = " + v.isNotBool());
+		log.info("isMaybeOtherThanBool = " + v.isMaybeOtherThanBool());
+		log.info("isMaybeTrue = " + v.isMaybeTrue());
+		log.info("isMaybeFalse = " + v.isMaybeFalse());
 
-		System.out.println("isNotNum = " + v.isNotNum());
-		System.out.println("isNaN = " + v.isNaN());
-		System.out.println("isMaybeInf = " + v.isMaybeInf());
-		System.out.println("isMaybeNumUInt = " + v.isMaybeNumUInt());
-		System.out.println("isMaybeNumNotUInt = " + v.isMaybeNumOther());
-		System.out.println("getNum = " + v.getNum());
-		System.out.println("isMaybeFuzzyNum = " + v.isMaybeFuzzyNum());
-		System.out.println("isMaybeOtherThanNum = " + v.isMaybeOtherThanNum());
+		log.info("isNotNum = " + v.isNotNum());
+		log.info("isNaN = " + v.isNaN());
+		log.info("isMaybeInf = " + v.isMaybeInf());
+		log.info("isMaybeNumUInt = " + v.isMaybeNumUInt());
+		log.info("isMaybeNumNotUInt = " + v.isMaybeNumOther());
+		log.info("getNum = " + v.getNum());
+		log.info("isMaybeFuzzyNum = " + v.isMaybeFuzzyNum());
+		log.info("isMaybeOtherThanNum = " + v.isMaybeOtherThanNum());
 
-		System.out.println("isMaybeOtherThanStr = " + v.isMaybeOtherThanStr());
-		System.out.println("isNotStr = " + v.isNotStr());
-		System.out.println("getStr = " + v.getStr());
-		System.out.println("isMaybeStrUInt = " + v.isMaybeStrUInt());
+		log.info("isMaybeOtherThanStr = " + v.isMaybeOtherThanStr());
+		log.info("isNotStr = " + v.isNotStr());
+		log.info("getStr = " + v.getStr());
+		log.info("isMaybeStrUInt = " + v.isMaybeStrUInt());
 
-		System.out.println("isObject = " + v.isMaybeObject());
-		System.out.println("getObjectLabels = " + v.getObjectLabels());
+		log.info("isObject = " + v.isMaybeObject());
+		log.info("getObjectLabels = " + v.getObjectLabels());
+		log.info("isMaybeSingleObjectLabel = " + v.isMaybeSingleObjectLabel());
+		log.info("isMaybeSingleObjectLabel = " + v.isMaybeSingleAllocationSite());
+		log.info("isNotASummarizedObject = " + v.isNotASummarizedObject());
+		log.info("isNotASingletonObject = " + v.isNotASingletonObject());
 
-		System.out.println("isMaybeModified = " + v.isMaybeModified());
+		log.info("isMaybeModified = " + v.isMaybeModified());
 
-		System.out.println("isDontEnum = " + v.isDontEnum());
-		System.out.println("isMaybeDontEnum = " + v.isMaybeDontEnum());
-		System.out.println("isMaybeNotDontEnum = " + v.isMaybeNotDontEnum());
-		System.out.println("isNotDontEnum = " + v.isNotDontEnum());
+		log.info("isDontEnum = " + v.isDontEnum());
+		log.info("isMaybeDontEnum = " + v.isMaybeDontEnum());
+		log.info("isMaybeNotDontEnum = " + v.isMaybeNotDontEnum());
+		log.info("isNotDontEnum = " + v.isNotDontEnum());
 
-		System.out.println("isDontDelete = " + v.isDontDelete());
-		System.out.println("isMaybeDontDelete = " + v.isMaybeDontDelete());
-		System.out.println("isMaybeNotDontDelete = " + v.isMaybeNotDontDelete());
-		System.out.println("isNotDontDelete = " + v.isNotDontDelete());
+		log.info("isDontDelete = " + v.isDontDelete());
+		log.info("isMaybeDontDelete = " + v.isMaybeDontDelete());
+		log.info("isMaybeNotDontDelete = " + v.isMaybeNotDontDelete());
+		log.info("isNotDontDelete = " + v.isNotDontDelete());
 
-		System.out.println("isReadOnly = " + v.isReadOnly());
-		System.out.println("isMaybeReadOnly = " + v.isMaybeReadOnly());
-		System.out.println("isMaybeNotReadOnly = " + v.isMaybeNotReadOnly());
-		System.out.println("isNotReadOnly = " + v.isNotReadOnly());
+		log.info("isReadOnly = " + v.isReadOnly());
+		log.info("isMaybeReadOnly = " + v.isMaybeReadOnly());
+		log.info("isMaybeNotReadOnly = " + v.isMaybeNotReadOnly());
+		log.info("isNotReadOnly = " + v.isNotReadOnly());
 	}
 
 	@Test
@@ -117,6 +120,7 @@ public class TestValue {
 		fg.addBlock(b);
 		f.complete();
 		fg.addFunction(f);
+		fg.setMain(f);
 		f.setMaxRegister(1000); // Ok for testing purposes
 
 		Value vBottom = Value.makeNone();
@@ -142,28 +146,28 @@ public class TestValue {
 		Value vObject1 = Value.makeObject(new ObjectLabel(n, Kind.OBJECT));
 		Value vObject2 = Value.makeObject(new ObjectLabel(n, Kind.BOOLEAN));
 
-		System.out.println(vBottom);
-		System.out.println(vAbsent);
-		System.out.println(vUndef);
-		System.out.println(vNull);
-		System.out.println(vAnyBool);
-		System.out.println(vTrue);
-		System.out.println(vFalse);
-		System.out.println(vAnyNum);
-		System.out.println(v65536);
-		System.out.println(v314159);
-		System.out.println(v127e35);
-		System.out.println(vNaN);
-		System.out.println(vNaN2);
-		System.out.println(vPosInf);
-		System.out.println(vInf);
-		System.out.println(vNumUInt);
-		System.out.println(vNumNotUInt);
-		System.out.println(vAnyStr);
-		System.out.println(vEmptyStr);
-		System.out.println(vSomeStr);
-		System.out.println(vObject1);
-		System.out.println(vObject2);
+		log.info(vBottom);
+		log.info(vAbsent);
+		log.info(vUndef);
+		log.info(vNull);
+		log.info(vAnyBool);
+		log.info(vTrue);
+		log.info(vFalse);
+		log.info(vAnyNum);
+		log.info(v65536);
+		log.info(v314159);
+		log.info(v127e35);
+		log.info(vNaN);
+		log.info(vNaN2);
+		log.info(vPosInf);
+		log.info(vInf);
+		log.info(vNumUInt);
+		log.info(vNumNotUInt);
+		log.info(vAnyStr);
+		log.info(vEmptyStr);
+		log.info(vSomeStr);
+		log.info(vObject1);
+		log.info(vObject2);
 
 		printInfo(vBottom);
 		printInfo(vAbsent);
@@ -238,8 +242,8 @@ public class TestValue {
 		printInfo(Value.join(Value.makeNum(1), Value.makeNum(2.5)));
 		printInfo(Value.join(Value.makeNum(1.5), Value.makeNum(2.5)));
 
-		System.out.println(vTrue.equals(vFalse));
-		System.out.println(vFalse.equals(vFalse));
+		log.info(vTrue.equals(vFalse));
+		log.info(vFalse.equals(vFalse));
 
 		printInfo(vTrue.join(vFalse));
 		printInfo(v65536.join(v314159));
@@ -356,192 +360,4 @@ public class TestValue {
 
 		// TODO: obtain full coverage of the Value class
 	}
-
-	private Value num;
-	private Value bool;
-	private Value str;
-	private Value bot;
-
-	@Before
-	public void restrict_to_before() {
-		num = Value.makeAnyNum();
-		bool = Value.makeAnyBool();
-		str = Value.makeAnyStr();
-		bot = Value.makeNone();
-	}
-
-	private void restrictToTest(Value original, Value restrictor, Value expected) {
-		final Value restricted = original.restrictTo(restrictor);
-		if (!expected.equals(restricted))
-			System.err.println(String.format("<%s>.restrictTo(<%s>) = <%s>, expected <%s>", original, restrictor, restricted, expected));
-		assertEquals(expected, restricted);
-	}
-
-	@Test
-	public void restrict_to_sanity() {
-		Value f1 = Value.makeBool(false);
-		Value f2 = Value.makeBool(false);
-		assertTrue(f1.equals(f2));
-	}
-
-	@Test
-	public void restrict_to_sanity2() {
-		Value f1 = Value.makeBool(false);
-		Value f2 = Value.makeBool(false);
-		assertTrue(f1.equals(f2));
-	}
-
-	@Test
-	public void restrict_to_self() {
-		final Value v = bool;
-		restrictToTest(v, v, v);
-	}
-
-	@Test
-	public void restrict_to_bot() {
-		final Value v1 = num;
-		final Value v2 = str;
-		restrictToTest(v1, v2, bot);
-	}
-
-	@Test
-	public void restrict_to_multi() {
-		final Value v1 = num;
-		final Value v2 = str.join(num);
-		restrictToTest(v1, v2, num);
-	}
-
-	@Test
-	public void restrict_to_concreteVSAbstract1() {
-		Value v1 = str;
-		Value v2 = Value.makeStr("");
-		restrictToTest(v1, v2, v2);
-	}
-
-	@Test
-	public void restrict_to_concreteVSAbstract2() {
-		Value v1 = Value.makeAnyNum();
-		Value v2 = Value.makeNum(1);
-		restrictToTest(v1, v2, v2);
-	}
-
-	@Test
-	public void restrict_to_concreteVSAbstract3() {
-		Value v1 = str;
-		Value v2 = Value.makeStr("x");
-		restrictToTest(v1, v2, v2);
-	}
-
-	@Test
-	public void restrict_to_concreteVSAbstract4() {
-		Value v1 = str;
-		Value v2 = Value.makeStr("-1");
-		restrictToTest(v1, v2, v2);
-	}
-
-	@Test
-	public void restrict_to_concreteVSAbstract5() {
-		Value v1 = str;
-		Value v2 = Value.makeStr("NaN");
-		restrictToTest(v1, v2, v2);
-	}
-
-	@Test
-	public void restrict_to_stringFlags_agree() {
-		Value v1 = Value.makeNone().joinAnyStrUInt();
-		Value v2 = Value.makeStr("1");
-		restrictToTest(v1, v2, v2);
-	}
-
-	@Test
-	public void restrict_to_stringFlags2_disagree() {
-		Value v1 = Value.makeNone().joinAnyStrUInt();
-		Value v2 = Value.makeStr("-1");
-		restrictToTest(v1, v2, bot);
-	}
-
-	@Test
-	public void restrict_to_numberFlags_agree() {
-		Value v1 = Value.makeAnyNumUInt();
-		Value v2 = Value.makeNum(1);
-		restrictToTest(v1, v2, v2);
-	}
-
-	@Test
-	public void restrict_to_numberFlags_disagree() {
-		Value v1 = Value.makeAnyNumUInt();
-		Value v2 = Value.makeNum(-1);
-		restrictToTest(v1, v2, bot);
-	}
-
-	@Test
-	public void restrict_to_str_subsumption() {
-		Value v1 = bot.joinAnyStrIdentifierParts();
-		Value v2 = bot.joinAnyStrUInt();
-		restrictToTest(v1, v2, v2);
-	}
-
-	@Test
-	public void restrict_to_str_subsumption_reverse() {
-		Value v1 = bot.joinAnyStrUInt();
-		Value v2 = bot.joinAnyStrIdentifierParts();
-		restrictToTest(v1, v2, v1);
-	}
-
-	@Test
-	public void restrict_to_str_subsumption_2() {
-		Value v1 = bot.joinAnyStrIdentifierParts();
-		Value v2 = bot.joinAnyStrIdentifier();
-		restrictToTest(v1, v2, v2);
-	}
-
-	@Test
-	public void restrict_to_str_subsumption_reverse_2() {
-		Value v1 = bot.joinAnyStrIdentifier();
-		Value v2 = bot.joinAnyStrIdentifierParts();
-		restrictToTest(v1, v2, v1);
-	}
-
-	@Test
-	public void restrict_to_str_overlap() {
-		Value v1 = bot.joinAnyStrIdentifier();
-		Value v2 = bot.joinAnyStrOtherNum();
-		restrictToTest(v1, v2, v1);
-	}
-
-	@Test
-	public void restrict_to_str_overlap_reverse() {
-		Value v1 = bot.joinAnyStrOtherNum();
-		Value v2 = bot.joinAnyStrIdentifier();
-		restrictToTest(v1, v2, v1);
-	}
-
-	@Test
-	public void restrict_to_str_other() {
-		Value v1 = bot.joinAnyStrIdentifier();
-		Value v2 = bot.joinAnyStrOther();
-		restrictToTest(v1, v2, bot);
-	}
-
-	@Test
-	public void restrict_to_str_disjoint() {
-		Value v1 = bot.joinAnyStrUInt();
-		Value v2 = bot.joinAnyStrOtherNum();
-		restrictToTest(v1, v2, bot);
-	}
-
-	@Test
-	public void restrict_to_str_advanced() {
-		Value v1 = bot.joinAnyStrUInt().joinAnyStrOtherNum();
-		Value v2 = bot.joinAnyStrIdentifier();
-		restrictToTest(v1, v2, bot.joinAnyStrOtherNum());
-	}
-
-	@Test
-	public void restrict_to_str_advanced_reverse() {
-		Value v1 = bot.joinAnyStrIdentifier();
-		Value v2 = bot.joinAnyStrUInt().joinAnyStrOtherNum();
-		restrictToTest(v1, v2, v1);
-	}
-
 }

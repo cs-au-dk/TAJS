@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2013 Aarhus University
+ * Copyright 2009-2015 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -204,22 +204,15 @@ public enum ECMAScriptObjects implements HostObject {
     ESCAPE("escape"),
     UNESCAPE("unescape"),
 
-    ASSERT("assert"), // nonstandard
-    DUMPVALUE("dumpValue"), // nonstandard
-    DUMPPROTOTYPE("dumpPrototype"), // nonstandard
-    DUMPOBJECT("dumpObject"), // nonstandard
-    DUMPSTATE("dumpState"), // nonstandard
-    DUMPMODIFIEDSTATE("dumpModifiedState"), // nonstandard
-    DUMPATTRIBUTES("dumpAttributes"), // nonstandard
-	DUMPOBJECTORIGIN("dumpObjectOrigin"), // nonstandard
-    DUMPEXPRESSION("dumpExp"), //nonstandard
-    DUMPNF("dumpNF"), //nonstandard
-    ASSERT_SINGLE_NUM("assertSingleNum"), //nonstandard
-    ASSERT_ONE_OBJ("assertOneObj"), //nonstandard
-    ASSERT_ABSENT("assertAbsent"), //nonstandard
-    ASSERT_MOST_RECENT_OBJ("assertMostRecentObj"), //nonstandard
-    ASSERT_SUMMARY_OBJ("assertSummaryObj"), //nonstandard
-    CONVERSION_TO_PRIMITIVE("conversionToPrimitive"), // nonstandard
+    TAJS_DUMPVALUE("TAJS_dumpValue"), // nonstandard
+    TAJS_DUMPPROTOTYPE("TAJS_dumpPrototype"), // nonstandard
+    TAJS_DUMPOBJECT("TAJS_dumpObject"), // nonstandard
+    TAJS_DUMPSTATE("TAJS_dumpState"), // nonstandard
+    TAJS_DUMPMODIFIEDSTATE("TAJS_dumpModifiedState"), // nonstandard
+    TAJS_DUMPATTRIBUTES("TAJS_dumpAttributes"), // nonstandard
+    TAJS_DUMPEXPRESSION("TAJS_dumpExp"), //nonstandard
+    TAJS_DUMPNF("TAJS_dumpNF"), //nonstandard
+    TAJS_CONVERSION_TO_PRIMITIVE("TAJS_conversionToPrimitive"), // nonstandard
     TAJS_GET_UI_EVENT("TAJS_getUIEvent"), // nonstandard
     TAJS_GET_DOCUMENT_EVENT("TAJS_getDocumentEvent"), // nonstandard
     TAJS_GET_MOUSE_EVENT("TAJS_getMouseEvent"), // nonstandard
@@ -228,15 +221,16 @@ public enum ECMAScriptObjects implements HostObject {
     TAJS_GET_WHEEL_EVENT("TAJS_getWheelEvent"), // nonstandard
     TAJS_GET_AJAX_EVENT("TAJS_getAjaxEvent"), // nonstandard
     TAJS_ADD_CONTEXT_SENSITIVITY("TAJS_addContextSensitivity"), // nonstandard
+    TAJS_ASSERT("TAJS_assert"), //nonstandard
     TAJS_NEW_OBJECT("TAJS_newObject"); // nonstandard
 
     private HostAPIs api;
-    
+
     private String string;
 
-    private ECMAScriptObjects(String str) {
+    ECMAScriptObjects(String str) {
         api = HostAPIs.ECMASCRIPT_NATIVE;
-        this.string = str;
+        string = str;
     }
 
     @Override

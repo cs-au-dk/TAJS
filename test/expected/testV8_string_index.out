@@ -1,11 +1,47 @@
-test/v8tests/string-index.js:33:1: [definite] ReferenceError, reading absent variable assertEquals
-test/v8tests/string-index.js:32:5: [definite] The variable foo is never used
-test/v8tests/string-index.js:33:14: [definite] Unreachable code
-test/v8tests/string-index.js:55:5: [definite] The variable S is never used
-test/v8tests/string-index.js:125:5: [definite] The variable N is never used
-test/v8tests/string-index.js:133:5: [definite] The variable A is never used
-test/v8tests/string-index.js:134:5: [definite] The variable A2 is never used
-test/v8tests/string-index.js:139:5: [definite] The variable S2 is never used
-test/v8tests/string-index.js:143:5: [definite] The variable s is never used
-test/v8tests/string-index.js:144:5: [definite] The variable s2 is never used
-test/v8tests/string-index.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/string-index.js:33:1]
+test/v8tests/string-index.js:148:10: [definite] The assignment to S2 has no effect
+test/v8tests/string-index.js:152:10: [definite] The assignment to s2 has no effect
+test/v8tests/string-index.js:39:19: [definite] Reading absent property 1
+test/v8tests/string-index.js:40:19: [definite] Reading absent property 2
+test/v8tests/string-index.js:47:1: [definite] Dead assignment, property 0 is never read
+test/v8tests/string-index.js:50:1: [definite] Dead assignment, property 3 is never read
+test/v8tests/string-index.js:58:19: [definite] Reading absent property 0
+test/v8tests/string-index.js:144:11: [definite] Dead assignment, property 0 is never read
+test/v8tests/string-index.js:152:11: [definite] Dead assignment, property -2 is never read
+test/v8tests/string-index.js:34:19: [definite] Reading absent property (computed name)
+test/v8tests/string-index.js:35:19: [definite] Reading absent property (computed name)
+test/v8tests/string-index.js:36:19: [definite] Reading absent property (computed name)
+test/v8tests/string-index.js:38:19: [definite] Reading absent property (computed name)
+test/v8tests/string-index.js:42:34: [definite] Reading absent property (computed name)
+test/v8tests/string-index.js:44:34: [definite] Reading absent property (computed name)
+test/v8tests/string-index.js:45:34: [definite] Reading absent property (computed name)
+test/v8tests/string-index.js:52:34: [definite] Reading absent property (computed name)
+test/v8tests/string-index.js:53:34: [definite] Reading absent property (computed name)
+test/v8tests/string-index.js:57:19: [definite] Reading absent property (computed name)
+test/v8tests/string-index.js:121:34: [definite] Reading absent property (computed name)
+test/v8tests/string-index.js:145:19: [definite] Reading absent property (computed name)
+test/v8tests/string-index.js:153:34: [definite] Reading absent property (computed name)
+test/v8tests/string-index.js:34:19: [maybe] Converting primitive string to object
+test/v8tests/string-index.js:35:19: [maybe] Converting primitive string to object
+test/v8tests/string-index.js:36:19: [maybe] Converting primitive string to object
+test/v8tests/string-index.js:38:19: [maybe] Converting primitive string to object
+test/v8tests/string-index.js:39:19: [maybe] Converting primitive string to object
+test/v8tests/string-index.js:40:19: [maybe] Converting primitive string to object
+test/v8tests/string-index.js:42:34: [maybe] Converting primitive string to object
+test/v8tests/string-index.js:44:34: [maybe] Converting primitive string to object
+test/v8tests/string-index.js:45:34: [maybe] Converting primitive string to object
+test/v8tests/string-index.js:47:1: [maybe] Converting primitive string to object
+test/v8tests/string-index.js:50:1: [maybe] Converting primitive string to object
+test/v8tests/string-index.js:52:34: [maybe] Converting primitive string to object
+test/v8tests/string-index.js:53:34: [maybe] Converting primitive string to object
+test/v8tests/string-index.js:100:20: [maybe] Converting primitive string to object
+test/v8tests/string-index.js:101:21: [maybe] Converting primitive string to object
+test/v8tests/string-index.js:102:20: [maybe] Converting primitive string to object
+test/v8tests/string-index.js:103:21: [maybe] Converting primitive string to object
+test/v8tests/string-index.js:105:20: [maybe] Converting primitive string to object
+test/v8tests/string-index.js:106:21: [maybe] Converting primitive string to object
+test/v8tests/string-index.js:107:20: [maybe] Converting primitive string to object
+test/v8tests/string-index.js:108:21: [maybe] Converting primitive string to object
+test/v8tests/string-index.js:144:11: [maybe] Converting primitive string to object
+test/v8tests/string-index.js:145:19: [maybe] Converting primitive string to object
+test/v8tests/string-index.js:152:11: [maybe] Converting primitive string to object
+test/v8tests/string-index.js:153:34: [maybe] Converting primitive string to object

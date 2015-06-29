@@ -1,57 +1,62 @@
-test/10k/lines.tidy.html:444:36: [definite] Too few parameters to function String.prototype.charAt
-test/10k/lines.tidy.html:64:13: [definite] The variable m is never used
-test/10k/lines.tidy.html:64:20: [definite] The variable t is never used
-test/10k/lines.tidy.html:64:27: [definite] The variable n is never used
-test/10k/lines.tidy.html:64:34: [definite] The variable r is never used
-test/10k/lines.tidy.html:64:43: [definite] The variable I is never used
-test/10k/lines.tidy.html:64:52: [definite] The variable i is never used
-test/10k/lines.tidy.html:64:58: [definite] The variable o is never used
-test/10k/lines.tidy.html:64:64: [definite] The variable x is never used
-test/10k/lines.tidy.html:64:73: [definite] The variable y is never used
-test/10k/lines.tidy.html:64:79: [definite] The variable k is never used
-test/10k/lines.tidy.html:64:86: [definite] The variable z is never used
-test/10k/lines.tidy.html:64:101: [definite] The variable A is never used
-test/10k/lines.tidy.html:64:122: [definite] The variable B is never used
-test/10k/lines.tidy.html:64:140: [definite] The variable C is never used
-test/10k/lines.tidy.html:64:173: [definite] The variable D is never used
-test/10k/lines.tidy.html:64:189: [definite] The variable E is never used
-test/10k/lines.tidy.html:64:206: [definite] The variable w is never used
-test/10k/lines.tidy.html:64:221: [definite] The variable X is never used
-test/10k/lines.tidy.html:64:241: [definite] The variable G is never used
-test/10k/lines.tidy.html:64:262: [definite] The variable s is never used
-test/10k/lines.tidy.html:64:271: [definite] The variable u is never used
-test/10k/lines.tidy.html:64:283: [definite] The variable F is never used
-test/10k/lines.tidy.html:64:285: [definite] The variable M is never used
-test/10k/lines.tidy.html:64:293: [definite] The variable N is never used
-test/10k/lines.tidy.html:66:9: [definite] Unreachable function J
-test/10k/lines.tidy.html:81:9: [definite] Unreachable function U
-test/10k/lines.tidy.html:94:25: [definite] Unreachable function
-test/10k/lines.tidy.html:160:24: [definite] Unreachable function
-test/10k/lines.tidy.html:166:22: [definite] Unreachable function
-test/10k/lines.tidy.html:171:9: [definite] Unreachable function O
-test/10k/lines.tidy.html:194:9: [definite] Unreachable function aa
-test/10k/lines.tidy.html:204:9: [definite] Unreachable function H
-test/10k/lines.tidy.html:208:9: [definite] Unreachable function Z
-test/10k/lines.tidy.html:229:9: [definite] Unreachable function $
-test/10k/lines.tidy.html:268:9: [definite] Unreachable function L
-test/10k/lines.tidy.html:293:9: [definite] Unreachable function ba
-test/10k/lines.tidy.html:344:9: [definite] Unreachable function ea
-test/10k/lines.tidy.html:355:9: [definite] Unreachable function V
-test/10k/lines.tidy.html:367:9: [definite] Unreachable function da
-test/10k/lines.tidy.html:375:9: [definite] Unreachable function K
-test/10k/lines.tidy.html:387:9: [definite] Unreachable function fa
-test/10k/lines.tidy.html:405:9: [definite] Unreachable function W
-test/10k/lines.tidy.html:434:9: [definite] Unreachable function ca
-test/10k/lines.tidy.html:444:36: [maybe] TypeError, accessing property of null/undefined
-test/10k/lines.tidy.html:59: [maybe] Uncaught exception, constructed at [test/10k/lines.tidy.html:444:36]
-test/10k/lines.tidy.html:443:26: [maybe] Converting primitive string to object
-test/10k/lines.tidy.html:444:30: [maybe] Reading absent property (computed name)
-test/10k/lines.tidy.html:444:36: [maybe] Conversion to number yields NaN
-test/10k/lines.tidy.html:444:36: [maybe] Converting object to string
-test/10k/lines.tidy.html:444:36: [maybe] Converting primitive string to object
-test/10k/lines.tidy.html:444:59: [maybe] Converting primitive string to object
-test/10k/lines.tidy.html:444:74: [maybe] Converting primitive string to object
-test/10k/lines.tidy.html:445:22: [maybe] Converting primitive string to object
-test/10k/lines.tidy.html:445:42: [maybe] Converting primitive string to object
-test/10k/lines.tidy.html:445:54: [maybe] Converting primitive string to object
-test/10k/lines.tidy.html:445:60: [maybe] Converting primitive string to object
+test/10k/lines.html:437:36: [definite] Too few parameters to function String.prototype.charAt
+test/10k/lines.html:57:13: [definite] The variable m is never used
+test/10k/lines.html:57:20: [definite] The variable t is never used
+test/10k/lines.html:57:27: [definite] The variable n is never used
+test/10k/lines.html:57:34: [definite] The variable r is never used
+test/10k/lines.html:57:43: [definite] The variable I is never used
+test/10k/lines.html:57:52: [definite] The variable i is never used
+test/10k/lines.html:57:58: [definite] The variable o is never used
+test/10k/lines.html:57:64: [definite] The variable x is never used
+test/10k/lines.html:57:73: [definite] The variable y is never used
+test/10k/lines.html:57:79: [definite] The variable k is never used
+test/10k/lines.html:57:86: [definite] The variable z is never used
+test/10k/lines.html:57:101: [definite] The variable A is never used
+test/10k/lines.html:57:122: [definite] The variable B is never used
+test/10k/lines.html:57:140: [definite] The variable C is never used
+test/10k/lines.html:57:173: [definite] The variable D is never used
+test/10k/lines.html:57:189: [definite] The variable E is never used
+test/10k/lines.html:57:206: [definite] The variable w is never used
+test/10k/lines.html:57:221: [definite] The variable X is never used
+test/10k/lines.html:57:241: [definite] The variable G is never used
+test/10k/lines.html:57:262: [definite] The variable s is never used
+test/10k/lines.html:57:271: [definite] The variable u is never used
+test/10k/lines.html:57:283: [definite] The variable F is never used
+test/10k/lines.html:57:285: [definite] The variable M is never used
+test/10k/lines.html:57:293: [definite] The variable N is never used
+test/10k/lines.html:59:9: [definite] Unreachable function J
+test/10k/lines.html:74:9: [definite] Unreachable function U
+test/10k/lines.html:87:25: [definite] Unreachable function
+test/10k/lines.html:153:24: [definite] Unreachable function
+test/10k/lines.html:159:22: [definite] Unreachable function
+test/10k/lines.html:164:9: [definite] Unreachable function O
+test/10k/lines.html:187:9: [definite] Unreachable function aa
+test/10k/lines.html:197:9: [definite] Unreachable function H
+test/10k/lines.html:201:9: [definite] Unreachable function Z
+test/10k/lines.html:222:9: [definite] Unreachable function $
+test/10k/lines.html:261:9: [definite] Unreachable function L
+test/10k/lines.html:286:9: [definite] Unreachable function ba
+test/10k/lines.html:337:9: [definite] Unreachable function ea
+test/10k/lines.html:348:9: [definite] Unreachable function V
+test/10k/lines.html:360:9: [definite] Unreachable function da
+test/10k/lines.html:368:9: [definite] Unreachable function K
+test/10k/lines.html:380:9: [definite] Unreachable function fa
+test/10k/lines.html:398:9: [definite] Unreachable function W
+test/10k/lines.html:427:9: [definite] Unreachable function ca
+test/10k/lines.html:437:36: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:55:32: [maybe] Uncaught exception, constructed at [test/10k/lines.html:437:36]
+test/10k/lines.html:436:26: [maybe] Converting object to string
+test/10k/lines.html:436:26: [maybe] Converting primitive string to object
+test/10k/lines.html:437:30: [maybe] Reading absent property (computed name)
+test/10k/lines.html:437:36: [maybe] Conversion to number yields NaN
+test/10k/lines.html:437:36: [maybe] Converting object to string
+test/10k/lines.html:437:36: [maybe] Converting primitive string to object
+test/10k/lines.html:437:59: [maybe] Converting object to string
+test/10k/lines.html:437:59: [maybe] Converting primitive string to object
+test/10k/lines.html:437:74: [maybe] Converting primitive string to object
+test/10k/lines.html:438:22: [maybe] Conversion to number yields NaN
+test/10k/lines.html:438:22: [maybe] Converting object to string
+test/10k/lines.html:438:22: [maybe] Converting primitive string to object
+test/10k/lines.html:438:42: [maybe] Converting object to string
+test/10k/lines.html:438:42: [maybe] Converting primitive string to object
+test/10k/lines.html:438:54: [maybe] Converting primitive string to object
+test/10k/lines.html:438:60: [maybe] Converting primitive string to object

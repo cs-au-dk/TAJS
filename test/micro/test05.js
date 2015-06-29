@@ -4,4 +4,4 @@ function foo(x) {
 
 var q = foo(1234) * 5678;
 
-assert (q === 11418458);
+TAJS_assert (q === 11418458);

@@ -1,8 +1,7 @@
-test/micro/test109.js:11:1: [maybe] Assertion fails
-test/micro/test109.js:2:8: [maybe] Too few parameters to function Function.prototype.call
+test/micro/test109.js:2:13: [maybe] Too few parameters to function Function.prototype.call
 test/micro/test109.js:7:24: [maybe] Conversion to number yields NaN
-test/micro/test109.js:9:14: [maybe] Converting primitive number to object
-test/micro/test109.js:10:11: [maybe] Converting primitive number to object
+test/micro/test109.js:9:19: [maybe] Converting primitive number to object
+test/micro/test109.js:10:16: [maybe] Converting primitive number to object
 test/micro/test109.js:5:1: [info] Abstract value: 42.0
 test/micro/test109.js:10:1: [info] Abstract value: NaN
 test/micro/test109.js:12:1: [info] Abstract value: UInt|NaN

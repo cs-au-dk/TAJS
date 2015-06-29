@@ -2,7 +2,7 @@ function f(x, y) {
    return eval(x + " = " + y);
 }
 
-dumpValue(f("z", "3"));
-dumpValue(f("y", "4"));
-dumpValue(f("y", "5"));
+TAJS_dumpValue(f("z", "3"));
+TAJS_dumpValue(f("y", "4"));
+TAJS_dumpValue(f("y", "5"));
 

@@ -1,5 +1,5 @@
 var fib = function f(x) {
-	dumpValue(x)
+	TAJS_dumpValue(x)
 	if (x <= 1)
 		return 1;
 	else
@@ -7,4 +7,4 @@ var fib = function f(x) {
 }
 
 var t = fib(3);
-dumpValue(t);
+TAJS_dumpValue(t);

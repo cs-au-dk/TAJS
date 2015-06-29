@@ -8,10 +8,10 @@ function f() {
 }
 var global = f();
 
-dumpValue(global.x);
-dumpValue(global.y);
-dumpValue(global.z);
-dumpValue(global.q);
-dumpValue(global.f);
-dumpValue(global.global);
-dumpValue(global);
+TAJS_dumpValue(global.x);
+TAJS_dumpValue(global.y);
+TAJS_dumpValue(global.z);
+TAJS_dumpValue(global.q);
+TAJS_dumpValue(global.f);
+TAJS_dumpValue(global.global);
+TAJS_dumpValue(global);

@@ -1,1 +1,1 @@
-dumpObject(Object(null));
+TAJS_dumpObject(Object(null));

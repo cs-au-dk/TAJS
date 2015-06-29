@@ -22,15 +22,15 @@ function eachWithCall(obj, callback) {
 eachSimple(
     {a: 'a'}, 
     function(name, prop){
-        assertSingleStr(name);
-        assertSingleStr(prop);
+        TAJS_assert(name, 'isMaybeSingleStr', true);
+        TAJS_assert(name, 'isMaybeSingleStr', true);
     }
 );
 
 eachWithCall(
     {a: 'a'}, 
     function(name){
-        assertSingleNum(this.length /* check for a String-object property */);
-        assertSingleStr(name);
+        TAJS_assert(this.length /* check for a String-object property */, 'isMaybeSingleNum', true);
+        TAJS_assert(name, 'isMaybeSingleStr', true);
     }
 );

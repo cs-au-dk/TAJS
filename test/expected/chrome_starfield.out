@@ -1,192 +1,236 @@
-test/chromeexperiments/starfield.tidy.html:191:13: [definite] The conditional expression is always true
-test/chromeexperiments/starfield.tidy.html:193:9: [definite] The conditional expression is always false
-test/chromeexperiments/starfield.tidy.html:202:9: [definite] The conditional expression is always true
-test/chromeexperiments/starfield.tidy.html:227:36: [definite] The conditional expression is always true
-test/chromeexperiments/starfield.tidy.html:193:12: [definite] Reading absent property wheelDelta
-test/chromeexperiments/starfield.tidy.html:37:1: [definite] Unreachable function $r
-test/chromeexperiments/starfield.tidy.html:38:1: [definite] Unreachable function $t
-test/chromeexperiments/starfield.tidy.html:39:1: [definite] Unreachable function $c
-test/chromeexperiments/starfield.tidy.html:40:1: [definite] Unreachable function $h
-test/chromeexperiments/starfield.tidy.html:41:1: [definite] Unreachable function _i
-test/chromeexperiments/starfield.tidy.html:42:1: [definite] Unreachable function _h
-test/chromeexperiments/starfield.tidy.html:53:5: [definite] The variable flag is never used
-test/chromeexperiments/starfield.tidy.html:65:5: [definite] The variable star_speed_save is never used
-test/chromeexperiments/starfield.tidy.html:67:5: [definite] The variable color is never used
-test/chromeexperiments/starfield.tidy.html:75:5: [definite] The variable canvas_x is never used
-test/chromeexperiments/starfield.tidy.html:76:5: [definite] The variable canvas_y is never used
-test/chromeexperiments/starfield.tidy.html:77:5: [definite] The variable canvas_w is never used
-test/chromeexperiments/starfield.tidy.html:78:5: [definite] The variable canvas_h is never used
-test/chromeexperiments/starfield.tidy.html:81:5: [definite] The variable key is never used
-test/chromeexperiments/starfield.tidy.html:82:5: [definite] The variable ctrl is never used
-test/chromeexperiments/starfield.tidy.html:84:5: [definite] The variable timeout is never used
-test/chromeexperiments/starfield.tidy.html:89:13: [definite] The variable a is never used
-test/chromeexperiments/starfield.tidy.html:143:1: [definite] Unreachable function move
-test/chromeexperiments/starfield.tidy.html:150:1: [definite] Unreachable function key_manager
-test/chromeexperiments/starfield.tidy.html:179:1: [definite] Unreachable function release
-test/chromeexperiments/starfield.tidy.html:235:2: [definite] The variable event is never used
-test/chromeexperiments/starfield.tidy.html:235:2: [definite] The variable event is never used
-test/chromeexperiments/starfield.tidy.html:235:2: [definite] The variable event is never used
-test/chromeexperiments/starfield.tidy.html:235:2: [definite] The variable event is never used
-test/chromeexperiments/starfield.tidy.html:66:14: [maybe] RangeError, invalid value of array length
-test/chromeexperiments/starfield.tidy.html:93:17: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/starfield.tidy.html:94:17: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/starfield.tidy.html:95:17: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/starfield.tidy.html:96:17: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/starfield.tidy.html:97:17: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/starfield.tidy.html:100:9: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/starfield.tidy.html:100:9: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/starfield.tidy.html:103:17: [maybe] TypeError, call to non-function
-test/chromeexperiments/starfield.tidy.html:108:9: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/starfield.tidy.html:108:9: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/starfield.tidy.html:109:9: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/starfield.tidy.html:110:9: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/starfield.tidy.html:111:9: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/starfield.tidy.html:112:9: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/starfield.tidy.html:119:9: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/starfield.tidy.html:123:29: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/starfield.tidy.html:124:29: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/starfield.tidy.html:125:17: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/starfield.tidy.html:125:44: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/starfield.tidy.html:125:63: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/starfield.tidy.html:125:98: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/starfield.tidy.html:125:118: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/starfield.tidy.html:126:17: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/starfield.tidy.html:126:44: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/starfield.tidy.html:126:63: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/starfield.tidy.html:126:98: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/starfield.tidy.html:126:118: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/starfield.tidy.html:127:17: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/starfield.tidy.html:127:44: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/starfield.tidy.html:127:60: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/starfield.tidy.html:127:92: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/starfield.tidy.html:127:108: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/starfield.tidy.html:128:17: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/starfield.tidy.html:128:31: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/starfield.tidy.html:128:42: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/starfield.tidy.html:129:17: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/starfield.tidy.html:129:31: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/starfield.tidy.html:129:42: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/starfield.tidy.html:132:63: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/starfield.tidy.html:135:40: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/starfield.tidy.html:135:51: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/starfield.tidy.html:235:20: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/starfield.tidy.html:235:20: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/starfield.tidy.html:100:9: [maybe] Reading absent property style
-test/chromeexperiments/starfield.tidy.html:103:17: [maybe] Reading absent property getContext
-test/chromeexperiments/starfield.tidy.html:108:9: [maybe] Reading absent property style
-test/chromeexperiments/starfield.tidy.html:109:9: [maybe] Reading absent property style
-test/chromeexperiments/starfield.tidy.html:110:9: [maybe] Reading absent property style
-test/chromeexperiments/starfield.tidy.html:111:9: [maybe] Reading absent property style
-test/chromeexperiments/starfield.tidy.html:112:9: [maybe] Reading absent property style
-test/chromeexperiments/starfield.tidy.html:197:17: [maybe] Reading absent property detail
-test/chromeexperiments/starfield.tidy.html:199:24: [maybe] Reading absent property detail
-test/chromeexperiments/starfield.tidy.html:32: [maybe] Uncaught exception, constructed at [test/chromeexperiments/starfield.tidy.html:66:14, test/chromeexperiments/starfield.tidy.html:93:17, test/chromeexperiments/starfield.tidy.html:94:17, test/chromeexperiments/starfield.tidy.html:95:17, test/chromeexperiments/starfield.tidy.html:96:17, test/chromeexperiments/starfield.tidy.html:97:17, test/chromeexperiments/starfield.tidy.html:100:9, test/chromeexperiments/starfield.tidy.html:103:17, test/chromeexperiments/starfield.tidy.html:108:9, test/chromeexperiments/starfield.tidy.html:109:9, test/chromeexperiments/starfield.tidy.html:110:9, test/chromeexperiments/starfield.tidy.html:111:9, test/chromeexperiments/starfield.tidy.html:112:9, test/chromeexperiments/starfield.tidy.html:119:9, test/chromeexperiments/starfield.tidy.html:123:29, test/chromeexperiments/starfield.tidy.html:124:29, test/chromeexperiments/starfield.tidy.html:125:17, test/chromeexperiments/starfield.tidy.html:125:44, test/chromeexperiments/starfield.tidy.html:125:63, test/chromeexperiments/starfield.tidy.html:125:98, test/chromeexperiments/starfield.tidy.html:125:118, test/chromeexperiments/starfield.tidy.html:126:17, test/chromeexperiments/starfield.tidy.html:126:44, test/chromeexperiments/starfield.tidy.html:126:63, test/chromeexperiments/starfield.tidy.html:126:98, test/chromeexperiments/starfield.tidy.html:126:118, test/chromeexperiments/starfield.tidy.html:127:17, test/chromeexperiments/starfield.tidy.html:127:44, test/chromeexperiments/starfield.tidy.html:127:60, test/chromeexperiments/starfield.tidy.html:127:92, test/chromeexperiments/starfield.tidy.html:127:108, test/chromeexperiments/starfield.tidy.html:128:17, test/chromeexperiments/starfield.tidy.html:128:31, test/chromeexperiments/starfield.tidy.html:128:42, test/chromeexperiments/starfield.tidy.html:129:17, test/chromeexperiments/starfield.tidy.html:129:31, test/chromeexperiments/starfield.tidy.html:129:42, test/chromeexperiments/starfield.tidy.html:132:63, test/chromeexperiments/starfield.tidy.html:135:40, test/chromeexperiments/starfield.tidy.html:135:51, test/chromeexperiments/starfield.tidy.html:235:20]
-test/chromeexperiments/starfield.tidy.html:55:17: [maybe] Converting primitive string to object
-test/chromeexperiments/starfield.tidy.html:55:40: [maybe] Converting primitive string to object
-test/chromeexperiments/starfield.tidy.html:55:54: [maybe] Converting primitive string to object
-test/chromeexperiments/starfield.tidy.html:55:76: [maybe] Converting primitive string to object
-test/chromeexperiments/starfield.tidy.html:55:76: [maybe] Converting primitive string to object
-test/chromeexperiments/starfield.tidy.html:55:90: [maybe] Converting primitive string to object
-test/chromeexperiments/starfield.tidy.html:55:110: [maybe] Converting primitive string to object
-test/chromeexperiments/starfield.tidy.html:55:141: [maybe] Converting primitive string to object
-test/chromeexperiments/starfield.tidy.html:55:162: [maybe] Converting primitive string to object
-test/chromeexperiments/starfield.tidy.html:55:162: [maybe] Converting primitive string to object
-test/chromeexperiments/starfield.tidy.html:55:176: [maybe] Converting primitive string to object
-test/chromeexperiments/starfield.tidy.html:55:196: [maybe] Converting primitive string to object
-test/chromeexperiments/starfield.tidy.html:55:222: [maybe] Converting primitive string to object
-test/chromeexperiments/starfield.tidy.html:93:17: [maybe] Reading absent property (computed name)
-test/chromeexperiments/starfield.tidy.html:94:17: [maybe] Reading absent property (computed name)
-test/chromeexperiments/starfield.tidy.html:95:17: [maybe] Reading absent property (computed name)
-test/chromeexperiments/starfield.tidy.html:96:17: [maybe] Reading absent property (computed name)
-test/chromeexperiments/starfield.tidy.html:97:17: [maybe] Reading absent property (computed name)
-test/chromeexperiments/starfield.tidy.html:123:29: [maybe] Reading absent property (computed name)
-test/chromeexperiments/starfield.tidy.html:123:29: [maybe] Reading absent property (computed name)
-test/chromeexperiments/starfield.tidy.html:124:29: [maybe] Reading absent property (computed name)
-test/chromeexperiments/starfield.tidy.html:124:29: [maybe] Reading absent property (computed name)
-test/chromeexperiments/starfield.tidy.html:125:17: [maybe] Conversion to number yields NaN
-test/chromeexperiments/starfield.tidy.html:125:17: [maybe] Reading absent property (computed name)
-test/chromeexperiments/starfield.tidy.html:125:17: [maybe] Reading absent property (computed name)
-test/chromeexperiments/starfield.tidy.html:125:44: [maybe] Reading absent property (computed name)
-test/chromeexperiments/starfield.tidy.html:125:44: [maybe] Reading absent property (computed name)
-test/chromeexperiments/starfield.tidy.html:125:63: [maybe] Conversion to number yields NaN
-test/chromeexperiments/starfield.tidy.html:125:63: [maybe] Reading absent property (computed name)
-test/chromeexperiments/starfield.tidy.html:125:63: [maybe] Reading absent property (computed name)
-test/chromeexperiments/starfield.tidy.html:125:98: [maybe] Reading absent property (computed name)
-test/chromeexperiments/starfield.tidy.html:125:98: [maybe] Reading absent property (computed name)
-test/chromeexperiments/starfield.tidy.html:125:118: [maybe] Conversion to number yields NaN
-test/chromeexperiments/starfield.tidy.html:125:118: [maybe] Reading absent property (computed name)
-test/chromeexperiments/starfield.tidy.html:125:118: [maybe] Reading absent property (computed name)
-test/chromeexperiments/starfield.tidy.html:126:17: [maybe] Conversion to number yields NaN
-test/chromeexperiments/starfield.tidy.html:126:17: [maybe] Reading absent property (computed name)
-test/chromeexperiments/starfield.tidy.html:126:17: [maybe] Reading absent property (computed name)
-test/chromeexperiments/starfield.tidy.html:126:44: [maybe] Reading absent property (computed name)
-test/chromeexperiments/starfield.tidy.html:126:44: [maybe] Reading absent property (computed name)
-test/chromeexperiments/starfield.tidy.html:126:63: [maybe] Conversion to number yields NaN
-test/chromeexperiments/starfield.tidy.html:126:63: [maybe] Reading absent property (computed name)
-test/chromeexperiments/starfield.tidy.html:126:63: [maybe] Reading absent property (computed name)
-test/chromeexperiments/starfield.tidy.html:126:98: [maybe] Reading absent property (computed name)
-test/chromeexperiments/starfield.tidy.html:126:98: [maybe] Reading absent property (computed name)
-test/chromeexperiments/starfield.tidy.html:126:118: [maybe] Conversion to number yields NaN
-test/chromeexperiments/starfield.tidy.html:126:118: [maybe] Reading absent property (computed name)
-test/chromeexperiments/starfield.tidy.html:126:118: [maybe] Reading absent property (computed name)
-test/chromeexperiments/starfield.tidy.html:127:17: [maybe] Conversion to number yields NaN
-test/chromeexperiments/starfield.tidy.html:127:17: [maybe] Reading absent property (computed name)
-test/chromeexperiments/starfield.tidy.html:127:17: [maybe] Reading absent property (computed name)
-test/chromeexperiments/starfield.tidy.html:127:44: [maybe] Reading absent property (computed name)
-test/chromeexperiments/starfield.tidy.html:127:44: [maybe] Reading absent property (computed name)
-test/chromeexperiments/starfield.tidy.html:127:60: [maybe] Conversion to number yields NaN
-test/chromeexperiments/starfield.tidy.html:127:60: [maybe] Reading absent property (computed name)
-test/chromeexperiments/starfield.tidy.html:127:60: [maybe] Reading absent property (computed name)
-test/chromeexperiments/starfield.tidy.html:127:92: [maybe] Reading absent property (computed name)
-test/chromeexperiments/starfield.tidy.html:127:92: [maybe] Reading absent property (computed name)
-test/chromeexperiments/starfield.tidy.html:127:108: [maybe] Conversion to number yields NaN
-test/chromeexperiments/starfield.tidy.html:127:108: [maybe] Reading absent property (computed name)
-test/chromeexperiments/starfield.tidy.html:127:108: [maybe] Reading absent property (computed name)
-test/chromeexperiments/starfield.tidy.html:128:17: [maybe] Reading absent property (computed name)
-test/chromeexperiments/starfield.tidy.html:128:31: [maybe] Conversion to number yields NaN
-test/chromeexperiments/starfield.tidy.html:128:31: [maybe] Reading absent property (computed name)
-test/chromeexperiments/starfield.tidy.html:128:31: [maybe] Reading absent property (computed name)
-test/chromeexperiments/starfield.tidy.html:128:42: [maybe] Reading absent property (computed name)
-test/chromeexperiments/starfield.tidy.html:128:42: [maybe] Reading absent property (computed name)
-test/chromeexperiments/starfield.tidy.html:129:17: [maybe] Reading absent property (computed name)
-test/chromeexperiments/starfield.tidy.html:129:31: [maybe] Conversion to number yields NaN
-test/chromeexperiments/starfield.tidy.html:129:31: [maybe] Reading absent property (computed name)
-test/chromeexperiments/starfield.tidy.html:129:31: [maybe] Reading absent property (computed name)
-test/chromeexperiments/starfield.tidy.html:129:42: [maybe] Reading absent property (computed name)
-test/chromeexperiments/starfield.tidy.html:129:42: [maybe] Reading absent property (computed name)
-test/chromeexperiments/starfield.tidy.html:132:46: [maybe] Conversion to number yields NaN
-test/chromeexperiments/starfield.tidy.html:132:63: [maybe] Reading absent property (computed name)
-test/chromeexperiments/starfield.tidy.html:132:63: [maybe] Reading absent property (computed name)
-test/chromeexperiments/starfield.tidy.html:134:25: [maybe] Conversion to number yields NaN
-test/chromeexperiments/starfield.tidy.html:135:25: [maybe] Conversion to number yields NaN
-test/chromeexperiments/starfield.tidy.html:135:40: [maybe] Reading absent property (computed name)
-test/chromeexperiments/starfield.tidy.html:135:40: [maybe] Reading absent property (computed name)
-test/chromeexperiments/starfield.tidy.html:135:51: [maybe] Reading absent property (computed name)
-test/chromeexperiments/starfield.tidy.html:135:51: [maybe] Reading absent property (computed name)
-test/chromeexperiments/starfield.tidy.html:199:23: [maybe] Conversion to number yields NaN
-test/chromeexperiments/starfield.tidy.html:213:21: [maybe] Converting primitive string to object
-test/chromeexperiments/starfield.tidy.html:213:44: [maybe] Converting primitive string to object
-test/chromeexperiments/starfield.tidy.html:213:58: [maybe] Converting primitive string to object
-test/chromeexperiments/starfield.tidy.html:213:80: [maybe] Converting primitive string to object
-test/chromeexperiments/starfield.tidy.html:213:80: [maybe] Converting primitive string to object
-test/chromeexperiments/starfield.tidy.html:213:94: [maybe] Converting primitive string to object
-test/chromeexperiments/starfield.tidy.html:213:114: [maybe] Converting primitive string to object
-test/chromeexperiments/starfield.tidy.html:213:145: [maybe] Converting primitive string to object
-test/chromeexperiments/starfield.tidy.html:213:166: [maybe] Converting primitive string to object
-test/chromeexperiments/starfield.tidy.html:213:166: [maybe] Converting primitive string to object
-test/chromeexperiments/starfield.tidy.html:213:180: [maybe] Converting primitive string to object
-test/chromeexperiments/starfield.tidy.html:213:200: [maybe] Converting primitive string to object
-test/chromeexperiments/starfield.tidy.html:213:226: [maybe] Converting primitive string to object
-test/chromeexperiments/starfield.tidy.html:214:21: [maybe] Converting primitive string to object
-test/chromeexperiments/starfield.tidy.html:214:44: [maybe] Converting primitive string to object
-test/chromeexperiments/starfield.tidy.html:214:58: [maybe] Converting primitive string to object
-test/chromeexperiments/starfield.tidy.html:214:80: [maybe] Converting primitive string to object
-test/chromeexperiments/starfield.tidy.html:214:80: [maybe] Converting primitive string to object
-test/chromeexperiments/starfield.tidy.html:214:94: [maybe] Converting primitive string to object
-test/chromeexperiments/starfield.tidy.html:214:114: [maybe] Converting primitive string to object
-test/chromeexperiments/starfield.tidy.html:214:145: [maybe] Converting primitive string to object
-test/chromeexperiments/starfield.tidy.html:214:166: [maybe] Converting primitive string to object
-test/chromeexperiments/starfield.tidy.html:214:166: [maybe] Converting primitive string to object
-test/chromeexperiments/starfield.tidy.html:214:180: [maybe] Converting primitive string to object
-test/chromeexperiments/starfield.tidy.html:214:200: [maybe] Converting primitive string to object
-test/chromeexperiments/starfield.tidy.html:214:226: [maybe] Converting primitive string to object
+test/chromeexperiments/starfield.html:228:88: [definite] TypeError, accessing property of null/undefined
+test/chromeexperiments/starfield.html:228:144: [definite] TypeError, accessing property of null/undefined
+test/chromeexperiments/starfield.html:188:6: [definite] The conditional expression is always true
+test/chromeexperiments/starfield.html:190:2: [definite] The conditional expression is always false
+test/chromeexperiments/starfield.html:199:2: [definite] The conditional expression is always true
+test/chromeexperiments/starfield.html:224:36: [definite] The conditional expression is always true
+test/chromeexperiments/starfield.html:228:88: [definite] Variable context is null/undefined
+test/chromeexperiments/starfield.html:228:144: [definite] Variable context is null/undefined
+test/chromeexperiments/starfield.html:190:5: [definite] Reading absent property wheelDelta
+TAJS-dynamic-code(test/chromeexperiments/starfield.html:137:10):1:1: [definite] Unreachable function
+test/chromeexperiments/starfield.html:34:1: [definite] Unreachable function $r
+test/chromeexperiments/starfield.html:35:1: [definite] Unreachable function $t
+test/chromeexperiments/starfield.html:36:1: [definite] Unreachable function $c
+test/chromeexperiments/starfield.html:37:1: [definite] Unreachable function $h
+test/chromeexperiments/starfield.html:38:1: [definite] Unreachable function _i
+test/chromeexperiments/starfield.html:39:1: [definite] Unreachable function _h
+test/chromeexperiments/starfield.html:50:5: [definite] The variable flag is never used
+test/chromeexperiments/starfield.html:62:5: [definite] The variable star_speed_save is never used
+test/chromeexperiments/starfield.html:64:5: [definite] The variable color is never used
+test/chromeexperiments/starfield.html:72:5: [definite] The variable canvas_x is never used
+test/chromeexperiments/starfield.html:73:5: [definite] The variable canvas_y is never used
+test/chromeexperiments/starfield.html:74:5: [definite] The variable canvas_w is never used
+test/chromeexperiments/starfield.html:75:5: [definite] The variable canvas_h is never used
+test/chromeexperiments/starfield.html:78:5: [definite] The variable key is never used
+test/chromeexperiments/starfield.html:79:5: [definite] The variable ctrl is never used
+test/chromeexperiments/starfield.html:81:5: [definite] The variable timeout is never used
+test/chromeexperiments/starfield.html:86:6: [definite] The variable a is never used
+test/chromeexperiments/starfield.html:140:1: [definite] Unreachable function move
+test/chromeexperiments/starfield.html:147:1: [definite] Unreachable function key_manager
+test/chromeexperiments/starfield.html:176:1: [definite] Unreachable function release
+test/chromeexperiments/starfield.html:63:10: [maybe] RangeError, invalid value of array length
+test/chromeexperiments/starfield.html:90:3: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/starfield.html:91:3: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/starfield.html:92:3: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/starfield.html:93:3: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/starfield.html:94:3: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/starfield.html:105:2: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/starfield.html:105:2: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/starfield.html:106:2: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/starfield.html:107:2: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/starfield.html:108:2: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/starfield.html:109:2: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/starfield.html:120:15: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/starfield.html:121:15: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/starfield.html:122:3: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/starfield.html:122:30: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/starfield.html:122:49: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/starfield.html:122:84: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/starfield.html:122:104: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/starfield.html:123:3: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/starfield.html:123:30: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/starfield.html:123:49: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/starfield.html:123:84: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/starfield.html:123:104: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/starfield.html:124:3: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/starfield.html:124:30: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/starfield.html:124:46: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/starfield.html:124:78: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/starfield.html:124:94: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/starfield.html:125:3: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/starfield.html:125:17: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/starfield.html:125:28: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/starfield.html:126:3: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/starfield.html:126:17: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/starfield.html:126:28: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/starfield.html:129:42: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/starfield.html:132:19: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/starfield.html:132:30: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/starfield.html:105:2: [maybe] Reading absent property style
+test/chromeexperiments/starfield.html:106:2: [maybe] Reading absent property style
+test/chromeexperiments/starfield.html:107:2: [maybe] Reading absent property style
+test/chromeexperiments/starfield.html:108:2: [maybe] Reading absent property style
+test/chromeexperiments/starfield.html:109:2: [maybe] Reading absent property style
+test/chromeexperiments/starfield.html:194:10: [maybe] Reading absent property detail
+test/chromeexperiments/starfield.html:196:10: [maybe] Reading absent property detail
+test/chromeexperiments/starfield.html:25:32: [maybe] Uncaught exception, constructed at [test/chromeexperiments/starfield.html:63:10]
+test/chromeexperiments/starfield.html:52:17: [maybe] Conversion to number yields NaN
+test/chromeexperiments/starfield.html:52:17: [maybe] Converting object to string
+test/chromeexperiments/starfield.html:52:17: [maybe] Converting primitive string to object
+test/chromeexperiments/starfield.html:52:40: [maybe] Converting object to string
+test/chromeexperiments/starfield.html:52:40: [maybe] Converting primitive string to object
+test/chromeexperiments/starfield.html:52:54: [maybe] Conversion to number yields NaN
+test/chromeexperiments/starfield.html:52:54: [maybe] Converting object to string
+test/chromeexperiments/starfield.html:52:54: [maybe] Converting primitive string to object
+test/chromeexperiments/starfield.html:52:75: [maybe] Conversion to number yields NaN
+test/chromeexperiments/starfield.html:52:75: [maybe] Converting object to string
+test/chromeexperiments/starfield.html:52:75: [maybe] Converting primitive string to object
+test/chromeexperiments/starfield.html:52:76: [maybe] Converting object to string
+test/chromeexperiments/starfield.html:52:76: [maybe] Converting primitive string to object
+test/chromeexperiments/starfield.html:52:90: [maybe] Conversion to number yields NaN
+test/chromeexperiments/starfield.html:52:90: [maybe] Converting object to string
+test/chromeexperiments/starfield.html:52:90: [maybe] Converting primitive string to object
+test/chromeexperiments/starfield.html:52:110: [maybe] Converting primitive string to object
+test/chromeexperiments/starfield.html:52:141: [maybe] Conversion to number yields NaN
+test/chromeexperiments/starfield.html:52:141: [maybe] Converting object to string
+test/chromeexperiments/starfield.html:52:141: [maybe] Converting primitive string to object
+test/chromeexperiments/starfield.html:52:161: [maybe] Conversion to number yields NaN
+test/chromeexperiments/starfield.html:52:161: [maybe] Converting object to string
+test/chromeexperiments/starfield.html:52:161: [maybe] Converting primitive string to object
+test/chromeexperiments/starfield.html:52:162: [maybe] Converting object to string
+test/chromeexperiments/starfield.html:52:162: [maybe] Converting primitive string to object
+test/chromeexperiments/starfield.html:52:176: [maybe] Conversion to number yields NaN
+test/chromeexperiments/starfield.html:52:176: [maybe] Converting object to string
+test/chromeexperiments/starfield.html:52:176: [maybe] Converting primitive string to object
+test/chromeexperiments/starfield.html:52:196: [maybe] Converting primitive string to object
+test/chromeexperiments/starfield.html:52:222: [maybe] Converting primitive string to object
+test/chromeexperiments/starfield.html:90:3: [maybe] Reading absent property (computed name)
+test/chromeexperiments/starfield.html:91:3: [maybe] Reading absent property (computed name)
+test/chromeexperiments/starfield.html:92:3: [maybe] Reading absent property (computed name)
+test/chromeexperiments/starfield.html:93:3: [maybe] Reading absent property (computed name)
+test/chromeexperiments/starfield.html:94:3: [maybe] Reading absent property (computed name)
+test/chromeexperiments/starfield.html:120:15: [maybe] Reading absent property (computed name)
+test/chromeexperiments/starfield.html:120:15: [maybe] Reading absent property (computed name)
+test/chromeexperiments/starfield.html:121:15: [maybe] Reading absent property (computed name)
+test/chromeexperiments/starfield.html:121:15: [maybe] Reading absent property (computed name)
+test/chromeexperiments/starfield.html:122:3: [maybe] Conversion to number yields NaN
+test/chromeexperiments/starfield.html:122:3: [maybe] Reading absent property (computed name)
+test/chromeexperiments/starfield.html:122:3: [maybe] Reading absent property (computed name)
+test/chromeexperiments/starfield.html:122:30: [maybe] Reading absent property (computed name)
+test/chromeexperiments/starfield.html:122:30: [maybe] Reading absent property (computed name)
+test/chromeexperiments/starfield.html:122:49: [maybe] Conversion to number yields NaN
+test/chromeexperiments/starfield.html:122:49: [maybe] Reading absent property (computed name)
+test/chromeexperiments/starfield.html:122:49: [maybe] Reading absent property (computed name)
+test/chromeexperiments/starfield.html:122:84: [maybe] Reading absent property (computed name)
+test/chromeexperiments/starfield.html:122:84: [maybe] Reading absent property (computed name)
+test/chromeexperiments/starfield.html:122:104: [maybe] Conversion to number yields NaN
+test/chromeexperiments/starfield.html:122:104: [maybe] Reading absent property (computed name)
+test/chromeexperiments/starfield.html:122:104: [maybe] Reading absent property (computed name)
+test/chromeexperiments/starfield.html:123:3: [maybe] Conversion to number yields NaN
+test/chromeexperiments/starfield.html:123:3: [maybe] Reading absent property (computed name)
+test/chromeexperiments/starfield.html:123:3: [maybe] Reading absent property (computed name)
+test/chromeexperiments/starfield.html:123:30: [maybe] Reading absent property (computed name)
+test/chromeexperiments/starfield.html:123:30: [maybe] Reading absent property (computed name)
+test/chromeexperiments/starfield.html:123:49: [maybe] Conversion to number yields NaN
+test/chromeexperiments/starfield.html:123:49: [maybe] Reading absent property (computed name)
+test/chromeexperiments/starfield.html:123:49: [maybe] Reading absent property (computed name)
+test/chromeexperiments/starfield.html:123:84: [maybe] Reading absent property (computed name)
+test/chromeexperiments/starfield.html:123:84: [maybe] Reading absent property (computed name)
+test/chromeexperiments/starfield.html:123:104: [maybe] Conversion to number yields NaN
+test/chromeexperiments/starfield.html:123:104: [maybe] Reading absent property (computed name)
+test/chromeexperiments/starfield.html:123:104: [maybe] Reading absent property (computed name)
+test/chromeexperiments/starfield.html:124:3: [maybe] Conversion to number yields NaN
+test/chromeexperiments/starfield.html:124:3: [maybe] Reading absent property (computed name)
+test/chromeexperiments/starfield.html:124:3: [maybe] Reading absent property (computed name)
+test/chromeexperiments/starfield.html:124:30: [maybe] Reading absent property (computed name)
+test/chromeexperiments/starfield.html:124:30: [maybe] Reading absent property (computed name)
+test/chromeexperiments/starfield.html:124:46: [maybe] Conversion to number yields NaN
+test/chromeexperiments/starfield.html:124:46: [maybe] Reading absent property (computed name)
+test/chromeexperiments/starfield.html:124:46: [maybe] Reading absent property (computed name)
+test/chromeexperiments/starfield.html:124:78: [maybe] Reading absent property (computed name)
+test/chromeexperiments/starfield.html:124:78: [maybe] Reading absent property (computed name)
+test/chromeexperiments/starfield.html:124:94: [maybe] Conversion to number yields NaN
+test/chromeexperiments/starfield.html:124:94: [maybe] Reading absent property (computed name)
+test/chromeexperiments/starfield.html:124:94: [maybe] Reading absent property (computed name)
+test/chromeexperiments/starfield.html:125:3: [maybe] Reading absent property (computed name)
+test/chromeexperiments/starfield.html:125:17: [maybe] Conversion to number yields NaN
+test/chromeexperiments/starfield.html:125:17: [maybe] Reading absent property (computed name)
+test/chromeexperiments/starfield.html:125:17: [maybe] Reading absent property (computed name)
+test/chromeexperiments/starfield.html:125:28: [maybe] Reading absent property (computed name)
+test/chromeexperiments/starfield.html:125:28: [maybe] Reading absent property (computed name)
+test/chromeexperiments/starfield.html:126:3: [maybe] Reading absent property (computed name)
+test/chromeexperiments/starfield.html:126:17: [maybe] Conversion to number yields NaN
+test/chromeexperiments/starfield.html:126:17: [maybe] Reading absent property (computed name)
+test/chromeexperiments/starfield.html:126:17: [maybe] Reading absent property (computed name)
+test/chromeexperiments/starfield.html:126:28: [maybe] Reading absent property (computed name)
+test/chromeexperiments/starfield.html:126:28: [maybe] Reading absent property (computed name)
+test/chromeexperiments/starfield.html:129:25: [maybe] Conversion to number yields NaN
+test/chromeexperiments/starfield.html:129:42: [maybe] Reading absent property (computed name)
+test/chromeexperiments/starfield.html:129:42: [maybe] Reading absent property (computed name)
+test/chromeexperiments/starfield.html:131:4: [maybe] Conversion to number yields NaN
+test/chromeexperiments/starfield.html:132:4: [maybe] Conversion to number yields NaN
+test/chromeexperiments/starfield.html:132:19: [maybe] Reading absent property (computed name)
+test/chromeexperiments/starfield.html:132:19: [maybe] Reading absent property (computed name)
+test/chromeexperiments/starfield.html:132:30: [maybe] Reading absent property (computed name)
+test/chromeexperiments/starfield.html:132:30: [maybe] Reading absent property (computed name)
+test/chromeexperiments/starfield.html:196:9: [maybe] Conversion to number yields NaN
+test/chromeexperiments/starfield.html:210:14: [maybe] Conversion to number yields NaN
+test/chromeexperiments/starfield.html:210:14: [maybe] Converting object to string
+test/chromeexperiments/starfield.html:210:14: [maybe] Converting primitive string to object
+test/chromeexperiments/starfield.html:210:37: [maybe] Converting object to string
+test/chromeexperiments/starfield.html:210:37: [maybe] Converting primitive string to object
+test/chromeexperiments/starfield.html:210:51: [maybe] Conversion to number yields NaN
+test/chromeexperiments/starfield.html:210:51: [maybe] Converting object to string
+test/chromeexperiments/starfield.html:210:51: [maybe] Converting primitive string to object
+test/chromeexperiments/starfield.html:210:72: [maybe] Conversion to number yields NaN
+test/chromeexperiments/starfield.html:210:72: [maybe] Converting object to string
+test/chromeexperiments/starfield.html:210:72: [maybe] Converting primitive string to object
+test/chromeexperiments/starfield.html:210:73: [maybe] Converting object to string
+test/chromeexperiments/starfield.html:210:73: [maybe] Converting primitive string to object
+test/chromeexperiments/starfield.html:210:87: [maybe] Conversion to number yields NaN
+test/chromeexperiments/starfield.html:210:87: [maybe] Converting object to string
+test/chromeexperiments/starfield.html:210:87: [maybe] Converting primitive string to object
+test/chromeexperiments/starfield.html:210:107: [maybe] Converting primitive string to object
+test/chromeexperiments/starfield.html:210:138: [maybe] Conversion to number yields NaN
+test/chromeexperiments/starfield.html:210:138: [maybe] Converting object to string
+test/chromeexperiments/starfield.html:210:138: [maybe] Converting primitive string to object
+test/chromeexperiments/starfield.html:210:158: [maybe] Conversion to number yields NaN
+test/chromeexperiments/starfield.html:210:158: [maybe] Converting object to string
+test/chromeexperiments/starfield.html:210:158: [maybe] Converting primitive string to object
+test/chromeexperiments/starfield.html:210:159: [maybe] Converting object to string
+test/chromeexperiments/starfield.html:210:159: [maybe] Converting primitive string to object
+test/chromeexperiments/starfield.html:210:173: [maybe] Conversion to number yields NaN
+test/chromeexperiments/starfield.html:210:173: [maybe] Converting object to string
+test/chromeexperiments/starfield.html:210:173: [maybe] Converting primitive string to object
+test/chromeexperiments/starfield.html:210:193: [maybe] Converting primitive string to object
+test/chromeexperiments/starfield.html:210:219: [maybe] Converting primitive string to object
+test/chromeexperiments/starfield.html:211:14: [maybe] Conversion to number yields NaN
+test/chromeexperiments/starfield.html:211:14: [maybe] Converting object to string
+test/chromeexperiments/starfield.html:211:14: [maybe] Converting primitive string to object
+test/chromeexperiments/starfield.html:211:37: [maybe] Converting object to string
+test/chromeexperiments/starfield.html:211:37: [maybe] Converting primitive string to object
+test/chromeexperiments/starfield.html:211:51: [maybe] Conversion to number yields NaN
+test/chromeexperiments/starfield.html:211:51: [maybe] Converting object to string
+test/chromeexperiments/starfield.html:211:51: [maybe] Converting primitive string to object
+test/chromeexperiments/starfield.html:211:72: [maybe] Conversion to number yields NaN
+test/chromeexperiments/starfield.html:211:72: [maybe] Converting object to string
+test/chromeexperiments/starfield.html:211:72: [maybe] Converting primitive string to object
+test/chromeexperiments/starfield.html:211:73: [maybe] Converting object to string
+test/chromeexperiments/starfield.html:211:73: [maybe] Converting primitive string to object
+test/chromeexperiments/starfield.html:211:87: [maybe] Conversion to number yields NaN
+test/chromeexperiments/starfield.html:211:87: [maybe] Converting object to string
+test/chromeexperiments/starfield.html:211:87: [maybe] Converting primitive string to object
+test/chromeexperiments/starfield.html:211:107: [maybe] Converting primitive string to object
+test/chromeexperiments/starfield.html:211:138: [maybe] Conversion to number yields NaN
+test/chromeexperiments/starfield.html:211:138: [maybe] Converting object to string
+test/chromeexperiments/starfield.html:211:138: [maybe] Converting primitive string to object
+test/chromeexperiments/starfield.html:211:158: [maybe] Conversion to number yields NaN
+test/chromeexperiments/starfield.html:211:158: [maybe] Converting object to string
+test/chromeexperiments/starfield.html:211:158: [maybe] Converting primitive string to object
+test/chromeexperiments/starfield.html:211:159: [maybe] Converting object to string
+test/chromeexperiments/starfield.html:211:159: [maybe] Converting primitive string to object
+test/chromeexperiments/starfield.html:211:173: [maybe] Conversion to number yields NaN
+test/chromeexperiments/starfield.html:211:173: [maybe] Converting object to string
+test/chromeexperiments/starfield.html:211:173: [maybe] Converting primitive string to object
+test/chromeexperiments/starfield.html:211:193: [maybe] Converting primitive string to object
+test/chromeexperiments/starfield.html:211:219: [maybe] Converting primitive string to object

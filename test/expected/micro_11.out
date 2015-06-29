@@ -1,9 +1,7 @@
 test/micro/test11.js:12:41: [definite] Reading absent property (computed name)
-test/micro/test11.js:21:1: [maybe] Assertion fails
 test/micro/test11.js:12:9: [maybe] Conversion to number yields NaN
-test/micro/test11.js:20:11: [maybe] The variable qqq2 has values with different types
-test/micro/test11.js:21:8: [maybe] Conversion from string to number yields NaN
-test/micro/test11.js:21:8: [maybe] The variable qqq2 has values with different types
+test/micro/test11.js:20:16: [maybe] The variable qqq2 has values with different types
+test/micro/test11.js:21:13: [maybe] The variable qqq2 has values with different types
 test/micro/test11.js:16:1: [info] Abstract value: 306.0
 test/micro/test11.js:20:1: [info] Abstract value: 306.0|IdentPartsStr
 test/micro/test11.js:24:1: [info] Abstract value: "x101x102x103"

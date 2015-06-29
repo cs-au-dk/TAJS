@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2013 Aarhus University
+ * Copyright 2009-2015 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,31 +21,32 @@ package dk.brics.tajs.util;
  */
 public class AnalysisException extends RuntimeException {
 
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	/**
-	 * Constructs a new exeption.
-	 */
-	public AnalysisException() {}
+    /**
+     * Constructs a new exception.
+     */
+    public AnalysisException() {
+    }
 
-	/**
-	 * Constructs a new exeption.
-	 */
-	public AnalysisException(String msg) {
-		super(msg);
-	}
+    /**
+     * Constructs a new exception.
+     */
+    public AnalysisException(String msg) {
+        super(msg);
+    }
 
-	/**
-	 * Constructs a new exeption.
-	 */
-	public AnalysisException(Throwable t) {
-		super(t);
-	}
+    /**
+     * Constructs a new exception.
+     */
+    public AnalysisException(Throwable t) {
+        super(t);
+    }
 
-	/**
-	 * Constructs a new exeption.
-	 */
-	public AnalysisException(String msg, Throwable t) {
-		super(msg, t);
-	}
+    /**
+     * Constructs a new exception.
+     */
+    public AnalysisException(String msg, Throwable t) {
+        super(msg, t);
+    }
 }

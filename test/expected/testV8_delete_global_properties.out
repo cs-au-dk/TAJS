@@ -1,5 +1,2 @@
-test/v8tests/delete-global-properties.js:31:1: [definite] ReferenceError, reading absent variable assertFalse
+test/v8tests/delete-global-properties.js:32:21: [definite] Reading 'this' yields the global object
 test/v8tests/delete-global-properties.js:30:5: [definite] The variable tmp is never used
-test/v8tests/delete-global-properties.js:31:13: [definite] Unreachable code
-test/v8tests/delete-global-properties.js:33:1: [definite] Unreachable function f
-test/v8tests/delete-global-properties.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/delete-global-properties.js:31:1]

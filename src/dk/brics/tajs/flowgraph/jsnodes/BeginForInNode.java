@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2013 Aarhus University
+ * Copyright 2009-2015 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,8 +20,10 @@ import dk.brics.tajs.flowgraph.BasicBlock;
 import dk.brics.tajs.flowgraph.SourceLocation;
 import dk.brics.tajs.util.AnalysisException;
 
+import java.util.Collection;
+
 /**
- * Begin for-in node.
+ * Begin-for-in node.
  * <p>
  * for (<i>v</i><sub><i>property</i></sub> in <i>v</i><sub><i>object</i></sub>) { ... }
  * <p>
@@ -29,78 +31,72 @@ import dk.brics.tajs.util.AnalysisException;
  */
 public class BeginForInNode extends Node {
 
-	private int object_reg;
+    private int object_reg;
 
-	private int propertylist_reg;
-	
-	/**
-     * End node for this block.
-     */
-    private EndForInNode end_node;
-
-	/**
-	 * Constructs a new begin for-in node.
-	 */
-	public BeginForInNode(int object_reg, int propertylist_reg, SourceLocation location) {
-		super(location);
-		this.object_reg = object_reg;
-		this.propertylist_reg = propertylist_reg;
-	}
-	
-	/**
-	 * Sets the end node for this block.
-	 */
-	public void setEndNode(EndForInNode end_node) {
-		this.end_node = end_node;
-	}
-	
-	/**
-	 * Returns the end node for this block.
-	 */
-	public EndForInNode getEndNode() {
-		return end_node;
-	}
-
-	/**
-	 * Returns the object register.
-	 */
-	public int getObjectRegister() {
-		return object_reg;
-	}
+    private int propertylist_reg;
 
     /**
-     * Sets the object register.
+     * All end nodes for this block.
+     * Due to ordinary/break/continue/return/throw-flow, multiple paths out may exist.
      */
-    public void setObjectRegister(int object_reg) {
+    private Collection<EndForInNode> end_nodes;
+
+    /**
+     * Constructs a new begin-for-in node.
+     */
+    public BeginForInNode(int object_reg, int propertylist_reg, SourceLocation location) {
+        super(location);
         this.object_reg = object_reg;
+        this.propertylist_reg = propertylist_reg;
     }
-	
-	/**
-	 * Returns the property list register.
-	 */
-	public int getPropertyListRegister() {
-		return propertylist_reg;
-	}
-	
-	@Override
-	public String toString() {
-		return "begin-for-in[v" + object_reg + ",v" + propertylist_reg + "]";
-	}
 
-	@Override
-	public <ArgType> void visitBy(NodeVisitor<ArgType> v, ArgType a) {
-		v.visit(this, a);
-	}
+    /**
+     * Sets the end nodes for this node.
+     */
+    public void setEndNodes(Collection<EndForInNode> endNodes) {
+        end_nodes = endNodes;
+    }
 
-	@Override
-	public boolean canThrowExceptions() {
-		return true;
-	}
+    /**
+     * Returns the end nodes for this node.
+     */
+    public Collection<EndForInNode> getEndNodes() {
+        return end_nodes;
+    }
+
+    /**
+     * Returns the object register.
+     */
+    public int getObjectRegister() {
+        return object_reg;
+    }
+
+    /**
+     * Returns the property list register.
+     */
+    public int getPropertyListRegister() {
+        return propertylist_reg;
+    }
+
+    @Override
+    public String toString() {
+        return "begin-for-in[v" + object_reg + ",v" + propertylist_reg + "]";
+    }
+
+    @Override
+    public <ArgType> void visitBy(NodeVisitor<ArgType> v, ArgType a) {
+        v.visit(this, a);
+    }
+
+    @Override
+    public boolean canThrowExceptions() {
+        return true;
+    }
 
     @Override
     public void check(BasicBlock b) {
         if (b.getSuccessors().size() > 1)
-            throw new AnalysisException("More than one successor for begin-for-in node block: " + b.toString());
+            throw new AnalysisException("More than one successor for begin-for-in node block: " + b);
         if (object_reg == NO_VALUE)
             throw new AnalysisException("Invalid object register: " + toString());
     }

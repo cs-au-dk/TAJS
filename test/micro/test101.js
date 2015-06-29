@@ -5,11 +5,11 @@ if (Math.random()) {
 	x = {b:Date};
 }
 
-dumpValue(x.a);
+TAJS_dumpValue(x.a);
 
 var temp = x.a;
 if (temp != null) {
 	//assumeNonNullUndef("temp");
-	dumpValue(temp); // expected: [REGEXP]  (not Undef!!!!)
+	TAJS_dumpValue(temp); // expected: [REGEXP]  (not Undef!!!!)
 }
 	

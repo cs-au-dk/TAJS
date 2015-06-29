@@ -1,6 +1,0 @@
-test/v8tests/with-parameter-access.js:35:1: [definite] ReferenceError, reading absent variable assertEquals
-test/v8tests/with-parameter-access.js:29:1: [definite] Unreachable function f
-test/v8tests/with-parameter-access.js:35:14: [definite] Unreachable code
-test/v8tests/with-parameter-access.js:38:1: [definite] Unreachable function g
-test/v8tests/with-parameter-access.js:39:3: [definite] Unreachable function h
-test/v8tests/with-parameter-access.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/with-parameter-access.js:35:1]

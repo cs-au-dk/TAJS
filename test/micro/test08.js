@@ -11,5 +11,5 @@ var g = test();
 var t = new person();
 g = t.age;
 
-assert(g == 10);
-assert(glob == 234);
+TAJS_assert(g == 10);
+TAJS_assert(glob == 234);

@@ -7,4 +7,4 @@ var z = {};
 for(var y in x) {
   z[y] = (x[y])();
 }
-dumpObject(z);
+TAJS_dumpObject(z);

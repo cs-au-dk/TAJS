@@ -1,8 +1,20 @@
-test/v8tests/call.js:32:1: [definite] ReferenceError, reading absent variable assertTrue
-test/v8tests/call.js:28:1: [definite] Unreachable function f0
-test/v8tests/call.js:32:12: [definite] Unreachable code
-test/v8tests/call.js:46:5: [definite] The variable x is never used
-test/v8tests/call.js:52:1: [definite] Unreachable function f1
-test/v8tests/call.js:63:1: [definite] Unreachable function f2
-test/v8tests/call.js:77:1: [definite] Unreachable function fn
-test/v8tests/call.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/call.js:32:1]
+test/v8tests/call.js:32:12: [definite] Reading 'this' yields the global object
+test/v8tests/call.js:32:21: [definite] Too few parameters to function Function.prototype.call
+test/v8tests/call.js:34:12: [definite] Reading 'this' yields the global object
+test/v8tests/call.js:34:29: [definite] Reading 'this' yields the global object
+test/v8tests/call.js:35:12: [definite] Reading 'this' yields the global object
+test/v8tests/call.js:35:29: [definite] Reading 'this' yields the global object
+test/v8tests/call.js:36:12: [definite] Reading 'this' yields the global object
+test/v8tests/call.js:36:29: [definite] Reading 'this' yields the global object
+test/v8tests/call.js:38:12: [definite] Reading 'this' yields the global object
+test/v8tests/call.js:39:12: [definite] Reading 'this' yields the global object
+test/v8tests/call.js:40:12: [definite] Reading 'this' yields the global object
+test/v8tests/call.js:42:12: [definite] Reading 'this' yields the global object
+test/v8tests/call.js:43:12: [definite] Reading 'this' yields the global object
+test/v8tests/call.js:44:12: [definite] Reading 'this' yields the global object
+test/v8tests/call.js:81:17: [definite] Too few parameters to function Function.prototype.call
+test/v8tests/call.js:82:25: [definite] Reading 'this' yields the global object
+test/v8tests/call.js:85:25: [definite] Reading 'this' yields the global object
+test/v8tests/call.js:86:25: [definite] Reading 'this' yields the global object
+test/v8tests/call.js:87:25: [definite] Reading 'this' yields the global object
+test/v8tests/call.js:29:10: [maybe] Reading 'this' yields the global object

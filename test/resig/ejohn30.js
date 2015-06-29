@@ -3,8 +3,8 @@ function Ninja(){
 } 
  
 var ninjaA = Ninja(); 
-assert( !ninjaA ); 
+TAJS_assert( !ninjaA ); 
  
 var ninjaB = new Ninja(); 
-assert( ninjaB.name == "Ninja" );
-dumpValue(ninjaB.name);
+TAJS_assert( ninjaB.name == "Ninja" );
+TAJS_dumpValue(ninjaB.name);

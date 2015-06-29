@@ -1,22 +1,21 @@
-test/10k/earth_night_lights.tidy.html:21:29: [definite] The variable mr is never used
-test/10k/earth_night_lights.tidy.html:21:46: [definite] The variable ms is never used
-test/10k/earth_night_lights.tidy.html:22:117: [definite] The variable pdf is never used
-test/10k/earth_night_lights.tidy.html:22:140: [definite] The variable pdfm is never used
-test/10k/earth_night_lights.tidy.html:22:145: [definite] The variable tout is never used
-test/10k/earth_night_lights.tidy.html:22:150: [definite] The variable rate is never used
-test/10k/earth_night_lights.tidy.html:25:55: [definite] The variable ctx is never used
-test/10k/earth_night_lights.tidy.html:28:17: [definite] The variable de is never used
-test/10k/earth_night_lights.tidy.html:29:26: [definite] Unreachable function
-test/10k/earth_night_lights.tidy.html:49:13: [definite] Unreachable function blurdisk
-test/10k/earth_night_lights.tidy.html:60:13: [definite] Unreachable function go
-test/10k/earth_night_lights.tidy.html:61:36: [definite] Unreachable function
-test/10k/earth_night_lights.tidy.html:82:55: [definite] Unreachable function
-test/10k/earth_night_lights.tidy.html:86:9: [definite] Unreachable function randomPos
-test/10k/earth_night_lights.tidy.html:91:9: [definite] Unreachable function sch
-test/10k/earth_night_lights.tidy.html:98:9: [definite] Unreachable function h2r
-test/10k/earth_night_lights.tidy.html:103:17: [definite] Unreachable function h2r
-test/10k/earth_night_lights.tidy.html:120:9: [definite] Unreachable function pto
-test/10k/earth_night_lights.tidy.html:123:9: [definite] Unreachable function uf
-test/10k/earth_night_lights.tidy.html:129:2: [definite] The variable event is never used
-test/10k/earth_night_lights.tidy.html:22:127: [maybe] RangeError, invalid value of array length
-test/10k/earth_night_lights.tidy.html:17: [maybe] Uncaught exception, constructed at [test/10k/earth_night_lights.tidy.html:22:127]
+test/10k/earth_night_lights.html:16:29: [definite] The variable mr is never used
+test/10k/earth_night_lights.html:16:46: [definite] The variable ms is never used
+test/10k/earth_night_lights.html:17:117: [definite] The variable pdf is never used
+test/10k/earth_night_lights.html:17:140: [definite] The variable pdfm is never used
+test/10k/earth_night_lights.html:17:145: [definite] The variable tout is never used
+test/10k/earth_night_lights.html:17:150: [definite] The variable rate is never used
+test/10k/earth_night_lights.html:20:55: [definite] The variable ctx is never used
+test/10k/earth_night_lights.html:23:17: [definite] The variable de is never used
+test/10k/earth_night_lights.html:24:26: [definite] Unreachable function
+test/10k/earth_night_lights.html:44:13: [definite] Unreachable function blurdisk
+test/10k/earth_night_lights.html:55:13: [definite] Unreachable function go
+test/10k/earth_night_lights.html:56:36: [definite] Unreachable function
+test/10k/earth_night_lights.html:77:55: [definite] Unreachable function
+test/10k/earth_night_lights.html:81:9: [definite] Unreachable function randomPos
+test/10k/earth_night_lights.html:86:9: [definite] Unreachable function sch
+test/10k/earth_night_lights.html:93:9: [definite] Unreachable function h2r
+test/10k/earth_night_lights.html:98:17: [definite] Unreachable function h2r
+test/10k/earth_night_lights.html:115:9: [definite] Unreachable function pto
+test/10k/earth_night_lights.html:118:9: [definite] Unreachable function uf
+test/10k/earth_night_lights.html:17:123: [maybe] RangeError, invalid value of array length
+test/10k/earth_night_lights.html:15:13: [maybe] Uncaught exception, constructed at [test/10k/earth_night_lights.html:17:123]

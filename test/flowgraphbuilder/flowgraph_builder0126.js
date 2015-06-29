@@ -1,3 +1,3 @@
 var t2 = Object(null);
 
-dumpObject(t2);
+TAJS_dumpObject(t2);

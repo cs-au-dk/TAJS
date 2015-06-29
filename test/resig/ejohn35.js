@@ -5,5 +5,5 @@ function User(first, last){
 name = "Resig"; 
 var user = User("John", name); 
  
-assert( name == "John Resig" );
-dumpValue(name);
+TAJS_assert( name == "John Resig" );
+TAJS_dumpValue(name);

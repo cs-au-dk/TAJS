@@ -13,15 +13,15 @@ var ns1 = new String();
 
 var zz = "fooooooo";
 
-dumpValue(x0);
-dumpValue(x1);
-dumpValue(x2);
-dumpValue(NaN);
-dumpValue(x5);
-dumpValue(x5str);
-dumpValue(x6);
-dumpValue(x7);
+TAJS_dumpValue(x0);
+TAJS_dumpValue(x1);
+TAJS_dumpValue(x2);
+TAJS_dumpValue(NaN);
+TAJS_dumpValue(x5);
+TAJS_dumpValue(x5str);
+TAJS_dumpValue(x6);
+TAJS_dumpValue(x7);
 
-dumpValue(y1);
+TAJS_dumpValue(y1);
 
-dumpValue(ns1);
+TAJS_dumpValue(ns1);

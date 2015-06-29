@@ -41,8 +41,8 @@ function f1(x) {
 }
 
 // Should be f1
-dumpValue(f1(0));
-dumpValue(f1(1));
+TAJS_dumpValue(f1(0));
+TAJS_dumpValue(f1(1));
 
 function f2(x) {
   var r;
@@ -66,31 +66,31 @@ function f2(x) {
 }
 
 // Should be zero
-dumpValue(f2(0))
+TAJS_dumpValue(f2(0))
 // Should be one
-dumpValue(f2(1))
+TAJS_dumpValue(f2(1))
 // Should be default
-dumpValue(f2(7));
+TAJS_dumpValue(f2(7));
 // Should be default
-dumpValue(f2(-1))
+TAJS_dumpValue(f2(-1))
 // Should be default
-dumpValue(f2(NaN))
+TAJS_dumpValue(f2(NaN))
 
 // Should be default
-dumpValue(f2(Math.pow(2,34)));
+TAJS_dumpValue(f2(Math.pow(2,34)));
 // Should be default
-dumpValue(f2("0"));
+TAJS_dumpValue(f2("0"));
 // Should be default
-dumpValue(f2(false));
+TAJS_dumpValue(f2(false));
 // Should be default
-dumpValue(f2(null));
+TAJS_dumpValue(f2(null));
 // Should be default
-dumpValue(f2(undefined))
+TAJS_dumpValue(f2(undefined))
 // Should be default
-dumpValue(f2(new Number(2)))
+TAJS_dumpValue(f2(new Number(2)))
 // Should be default
 // FIXME: Fix testarray1.js and uncomment the line below.
-// dumpValue(f2({valueOf: function(){return 2; }}))
+// TAJS_dumpValue(f2({valueOf: function(){return 2; }}))
 
 
 function f3(x, c) {
@@ -116,17 +116,17 @@ function f3(x, c) {
 }
 
 // Should be two
-dumpValue(f3(2,0))
+TAJS_dumpValue(f3(2,0))
 // Should be minus
-dumpValue(f3(-5,0))
+TAJS_dumpValue(f3(-5,0))
 // Should be nine
-dumpValue(f3(9,0))
+TAJS_dumpValue(f3(9,0))
 // Should be "value is c = 0"
-dumpValue(f3(0,0))
+TAJS_dumpValue(f3(0,0))
 // Should be "value is c = 2"
-dumpValue(f3(2,2))
+TAJS_dumpValue(f3(2,2))
 // Should be default
-dumpValue(f3(7,0))
+TAJS_dumpValue(f3(7,0))
 
 
 function f4(x) {
@@ -142,11 +142,11 @@ function f4(x) {
 }
 
 // All should be 3
-dumpValue(f4(0))
-dumpValue(f4(1))
-dumpValue(f4(2))
+TAJS_dumpValue(f4(0))
+TAJS_dumpValue(f4(1))
+TAJS_dumpValue(f4(2))
 // Should be 5.
-dumpValue(f4(3))
+TAJS_dumpValue(f4(3))
 
 
 function f5(x) {
@@ -160,15 +160,15 @@ function f5(x) {
 }
 
 // Should be true
-dumpValue(f5(-2))
+TAJS_dumpValue(f5(-2))
 // Should be false
-dumpValue(f5(-1))
+TAJS_dumpValue(f5(-1))
 // Should be true
-dumpValue(f5(0))
+TAJS_dumpValue(f5(0))
 // Should be 42.
-dumpValue(f5(1))
+TAJS_dumpValue(f5(1))
 // Should be false
-dumpValue(f5(2))
+TAJS_dumpValue(f5(2))
 
 function f6(N) {
   // long enough case that code buffer grows during code-generation
@@ -247,12 +247,12 @@ function f6(N) {
 }
 
 // Should be 190
-dumpValue(f6(20))
+TAJS_dumpValue(f6(20))
 // Should be 2016
-dumpValue(f6(64))
+TAJS_dumpValue(f6(64))
 // Should be 4032
-dumpValue(f6(128))
+TAJS_dumpValue(f6(128))
 // Should be 4222
-dumpValue(f6(148))
+TAJS_dumpValue(f6(148))
 
  

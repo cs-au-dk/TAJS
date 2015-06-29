@@ -4,5 +4,5 @@ var C = function(v) {
 
 var x = new C(7);
 
-dumpValue(x.inc());
-dumpState();
+TAJS_dumpValue(x.inc());
+TAJS_dumpState();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2013 Aarhus University
+ * Copyright 2009-2015 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,32 +27,32 @@ import dk.brics.tajs.util.AnalysisException;
  */
 public class NextPropertyNode extends Node {
 
-	private int propertylist_reg;
+    private int propertylist_reg;
 
-	private int property_reg;
+    private int property_reg;
 
-	/**
-	 * Constructs a new next-property node.
-	 */
-	public NextPropertyNode(int propertylist_reg, int property_reg, SourceLocation location) {
-		super(location);
-		this.propertylist_reg = propertylist_reg;
-		this.property_reg = property_reg;
-	}
+    /**
+     * Constructs a new next-property node.
+     */
+    public NextPropertyNode(int propertylist_reg, int property_reg, SourceLocation location) {
+        super(location);
+        this.propertylist_reg = propertylist_reg;
+        this.property_reg = property_reg;
+    }
 
-	/**
-	 * Returns the property queue register.
-	 */
-	public int getPropertyListRegister() {
-		return propertylist_reg;
-	}
-	
-	/**
-	 * Returns the property register.
-	 */
-	public int getPropertyRegister() {
-		return property_reg;
-	}
+    /**
+     * Returns the property queue register.
+     */
+    public int getPropertyListRegister() {
+        return propertylist_reg;
+    }
+
+    /**
+     * Returns the property register.
+     */
+    public int getPropertyRegister() {
+        return property_reg;
+    }
 
     /**
      * Sets the property register.
@@ -61,20 +61,20 @@ public class NextPropertyNode extends Node {
         this.property_reg = property_reg;
     }
 
-	@Override
-	public String toString() {
-		return "next-property[v" + propertylist_reg + ",v" + property_reg + "]";
-	}
+    @Override
+    public String toString() {
+        return "next-property[v" + propertylist_reg + ",v" + property_reg + "]";
+    }
 
-	@Override
-	public <ArgType> void visitBy(NodeVisitor<ArgType> v, ArgType a) {
-		v.visit(this, a);
-	}
+    @Override
+    public <ArgType> void visitBy(NodeVisitor<ArgType> v, ArgType a) {
+        v.visit(this, a);
+    }
 
-	@Override
-	public boolean canThrowExceptions() {
-		return false;
-	}
+    @Override
+    public boolean canThrowExceptions() {
+        return false;
+    }
 
     @Override
     public void check(BasicBlock b) {

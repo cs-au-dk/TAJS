@@ -1,5 +1,5 @@
-test/resig/ejohn25.js:6:18: [definite] Reading 'this' yields the global object
-test/resig/ejohn25.js:8:11: [definite] Reading 'this' yields the global object
+test/resig/ejohn25.js:6:23: [definite] Reading 'this' yields the global object
+test/resig/ejohn25.js:8:16: [definite] Reading 'this' yields the global object
 test/resig/ejohn25.js:3:10: [maybe] Reading 'this' yields the global object
 test/resig/ejohn25.js:7:1: [info] Abstract value: [@<the global object>[native]]
 test/resig/ejohn25.js:8:1: [info] Abstract value: [@<the global object>[native]]

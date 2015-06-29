@@ -3,7 +3,8 @@ function loop(array, fn){
     fn.call( array, array[i], i ); 
 } 
 var num = 0; 
-loop([0, 1, 2], function(value, i){ 
-  assert(value == num++); 
-  assert(this instanceof Array); 
+loop([0, 1, 2], function(value, i){
+  TAJS_assert(value, 'isMaybeNumUInt||isMaybeSingleNum');
+  TAJS_assert(num++, 'isMaybeNumUInt||isMaybeSingleNum');
+  TAJS_assert(this instanceof Array); 
 });

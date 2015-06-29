@@ -2,7 +2,7 @@ function katana(){
   this.isSharp = true; 
 } 
 katana(); 
-assert( isSharp === true ); 
+TAJS_assert( isSharp === true ); 
 	 
 var shuriken = { 
   toss: function(){ 
@@ -10,4 +10,4 @@ var shuriken = {
   } 
 }; 
 shuriken.toss(); 
-assert( shuriken.isSharp === true );
+TAJS_assert( shuriken.isSharp === true );

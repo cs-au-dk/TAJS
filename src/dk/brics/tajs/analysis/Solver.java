@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2013 Aarhus University
+ * Copyright 2009-2015 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,19 +17,20 @@
 package dk.brics.tajs.analysis;
 
 import dk.brics.tajs.lattice.CallEdge;
-import dk.brics.tajs.monitoring.Monitoring;
+import dk.brics.tajs.lattice.SpecialVars;
+import dk.brics.tajs.monitoring.IAnalysisMonitoring;
 import dk.brics.tajs.solver.GenericSolver;
 import dk.brics.tajs.solver.SolverSynchronizer;
 
 /**
  * Fixpoint solver.
  */
-public final class Solver extends GenericSolver<State,Context,CallEdge<State>,Monitoring<State,Context,CallEdge<State>>,Analysis> {
+public final class Solver extends GenericSolver<State, Context, CallEdge<State>, IAnalysisMonitoring<State, Context, CallEdge<State>>, SpecialVars, Analysis> {
 
-	/**
-	 * Constructs a new solver.
-	 */
-	public Solver(Analysis analysis, SolverSynchronizer sync) {
-		super(analysis, sync);
-	}
+    /**
+     * Constructs a new solver.
+     */
+    public Solver(Analysis analysis, SolverSynchronizer sync) {
+        super(analysis, sync);
+    }
 }

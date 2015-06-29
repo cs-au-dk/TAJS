@@ -1,10 +1,10 @@
 var x = {a:1,b:true}
 
-dumpObject(x);
-dumpAttributes(x, "a");
-dumpAttributes(x, "nosuchattribute");
-dumpAttributes(this, "NaN");
-dumpAttributes(Object, "prototype");
+TAJS_dumpObject(x);
+TAJS_dumpAttributes(x, "a");
+TAJS_dumpAttributes(x, "nosuchattribute");
+TAJS_dumpAttributes(this, "NaN");
+TAJS_dumpAttributes(Object, "prototype");
 
-dumpAttributes(this, "Function");
-function f() {} // this line shouldn't affect the last dumpAttributes
+TAJS_dumpAttributes(this, "Function");
+function f() {} // this line shouldn't affect the last TAJS_dumpAttributes

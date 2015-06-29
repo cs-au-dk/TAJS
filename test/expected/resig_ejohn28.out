@@ -1,3 +1,2 @@
 test/resig/ejohn28.js:6:17: [definite] The variable i is never used
-test/resig/ejohn28.js:7:3: [maybe] Assertion fails
 test/resig/ejohn28.js:3:21: [maybe] Reading absent property (computed name)

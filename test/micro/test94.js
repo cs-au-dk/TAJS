@@ -4,4 +4,4 @@ if (Math.random())
 else
 	x = 2;
 
-dumpValue(x);
+TAJS_dumpValue(x);

@@ -1,4 +1,4 @@
-fg2: <main> function()
+fg2: function()
   block 0: [entry]
     node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0107.js:1:1)
     ->[block 1]
@@ -11,7 +11,7 @@ fg2: <main> function()
     node 4: call[v4,'random',v2] (test/flowgraphbuilder/flowgraph_builder0107.js:1:5)
     ->[block 3]
   block 3:
-    node 5: if[v2](true-block:4,false-block:5) (test/flowgraphbuilder/flowgraph_builder0107.js:1:1)
+    node 5: if[v2](true-block:4,false-block:5)* (test/flowgraphbuilder/flowgraph_builder0107.js:1:1)
     ->[block 4,block 5]
   block 4:
     node 6: constant[null,v5] (test/flowgraphbuilder/flowgraph_builder0107.js:2:6)

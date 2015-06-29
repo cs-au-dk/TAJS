@@ -1,88 +1,86 @@
-test/chromeexperiments/deepseastress.tidy.html:476:48: [definite] TypeError, accessing property of null/undefined
-test/chromeexperiments/deepseastress.tidy.html:481:33: [definite] TypeError, accessing property of null/undefined
-test/chromeexperiments/deepseastress.tidy.html:481:53: [definite] The conditional expression is always false
-test/chromeexperiments/deepseastress.tidy.html:15:1: [definite] Dead assignment, property g is never read
-test/chromeexperiments/deepseastress.tidy.html:97:1: [definite] Dead assignment, property l is never read
-test/chromeexperiments/deepseastress.tidy.html:332:1: [definite] Dead assignment, property p is never read
-test/chromeexperiments/deepseastress.tidy.html:404:5: [definite] Dead assignment, property init is never read
-test/chromeexperiments/deepseastress.tidy.html:406:5: [definite] Dead assignment, property setMouseInteraction is never read
-test/chromeexperiments/deepseastress.tidy.html:474:60: [definite] Reading absent property which
-test/chromeexperiments/deepseastress.tidy.html:476:48: [definite] Reading absent property numCreatures
-test/chromeexperiments/deepseastress.tidy.html:481:33: [definite] Reading absent property toggle
-test/chromeexperiments/deepseastress.tidy.html:15:9: [definite] Unreachable function
-test/chromeexperiments/deepseastress.tidy.html:16:5: [definite] Unreachable function s
-test/chromeexperiments/deepseastress.tidy.html:19:5: [definite] Unreachable function C
-test/chromeexperiments/deepseastress.tidy.html:35:5: [definite] Unreachable function x
-test/chromeexperiments/deepseastress.tidy.html:38:5: [definite] Unreachable function u
-test/chromeexperiments/deepseastress.tidy.html:41:5: [definite] Unreachable function F
-test/chromeexperiments/deepseastress.tidy.html:44:5: [definite] Unreachable function v
-test/chromeexperiments/deepseastress.tidy.html:47:5: [definite] Unreachable function w
-test/chromeexperiments/deepseastress.tidy.html:50:5: [definite] Unreachable function q
-test/chromeexperiments/deepseastress.tidy.html:54:5: [definite] Unreachable function D
-test/chromeexperiments/deepseastress.tidy.html:57:5: [definite] Unreachable function y
-test/chromeexperiments/deepseastress.tidy.html:60:5: [definite] Unreachable function E
-test/chromeexperiments/deepseastress.tidy.html:97:9: [definite] Unreachable function
-test/chromeexperiments/deepseastress.tidy.html:98:5: [definite] Unreachable function K
-test/chromeexperiments/deepseastress.tidy.html:107:5: [definite] Unreachable function r
-test/chromeexperiments/deepseastress.tidy.html:113:5: [definite] Unreachable function s
-test/chromeexperiments/deepseastress.tidy.html:133:5: [definite] Unreachable function C
-test/chromeexperiments/deepseastress.tidy.html:136:5: [definite] Unreachable function x
-test/chromeexperiments/deepseastress.tidy.html:165:9: [definite] Unreachable function
-test/chromeexperiments/deepseastress.tidy.html:166:5: [definite] Unreachable function s
-test/chromeexperiments/deepseastress.tidy.html:175:5: [definite] Unreachable function C
-test/chromeexperiments/deepseastress.tidy.html:179:5: [definite] Unreachable function x
-test/chromeexperiments/deepseastress.tidy.html:187:5: [definite] Unreachable function u
-test/chromeexperiments/deepseastress.tidy.html:217:5: [definite] Unreachable function F
-test/chromeexperiments/deepseastress.tidy.html:222:5: [definite] Unreachable function v
-test/chromeexperiments/deepseastress.tidy.html:230:5: [definite] Unreachable function w
-test/chromeexperiments/deepseastress.tidy.html:239:5: [definite] Unreachable function q
-test/chromeexperiments/deepseastress.tidy.html:247:5: [definite] Unreachable function D
-test/chromeexperiments/deepseastress.tidy.html:254:5: [definite] Unreachable function y
-test/chromeexperiments/deepseastress.tidy.html:277:5: [definite] Unreachable function E
-test/chromeexperiments/deepseastress.tidy.html:280:5: [definite] Unreachable function A
-test/chromeexperiments/deepseastress.tidy.html:283:5: [definite] Unreachable function a
-test/chromeexperiments/deepseastress.tidy.html:287:5: [definite] Unreachable function e
-test/chromeexperiments/deepseastress.tidy.html:333:5: [definite] Unreachable function O
-test/chromeexperiments/deepseastress.tidy.html:353:5: [definite] Unreachable function P
-test/chromeexperiments/deepseastress.tidy.html:358:5: [definite] Unreachable function I
-test/chromeexperiments/deepseastress.tidy.html:364:5: [definite] Unreachable function J
-test/chromeexperiments/deepseastress.tidy.html:368:5: [definite] Unreachable function Q
-test/chromeexperiments/deepseastress.tidy.html:377:5: [definite] Unreachable function R
-test/chromeexperiments/deepseastress.tidy.html:395:5: [definite] Unreachable function S
-test/chromeexperiments/deepseastress.tidy.html:398:9: [definite] The variable K is never used
-test/chromeexperiments/deepseastress.tidy.html:399:9: [definite] The variable r is never used
-test/chromeexperiments/deepseastress.tidy.html:399:12: [definite] The variable s is never used
-test/chromeexperiments/deepseastress.tidy.html:400:9: [definite] The variable C is never used
-test/chromeexperiments/deepseastress.tidy.html:400:12: [definite] The variable x is never used
-test/chromeexperiments/deepseastress.tidy.html:400:15: [definite] The variable u is never used
-test/chromeexperiments/deepseastress.tidy.html:400:18: [definite] The variable F is never used
-test/chromeexperiments/deepseastress.tidy.html:401:9: [definite] The variable v is never used
-test/chromeexperiments/deepseastress.tidy.html:402:9: [definite] The variable w is never used
-test/chromeexperiments/deepseastress.tidy.html:403:9: [definite] The variable q is never used
-test/chromeexperiments/deepseastress.tidy.html:403:12: [definite] The variable D is never used
-test/chromeexperiments/deepseastress.tidy.html:403:15: [definite] The variable y is never used
-test/chromeexperiments/deepseastress.tidy.html:403:18: [definite] The variable E is never used
-test/chromeexperiments/deepseastress.tidy.html:403:21: [definite] The variable A is never used
-test/chromeexperiments/deepseastress.tidy.html:448:2: [definite] The variable event is never used
-test/chromeexperiments/deepseastress.tidy.html:476:73: [definite] Unreachable code
-test/chromeexperiments/deepseastress.tidy.html:482:33: [definite] Unreachable code
-test/chromeexperiments/deepseastress.tidy.html:485:41: [definite] Unreachable function
-test/chromeexperiments/deepseastress.tidy.html:476:48: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/deepseastress.tidy.html:481:33: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/deepseastress.tidy.html:421:51: [maybe] Reading absent property form
-test/chromeexperiments/deepseastress.tidy.html:425:51: [maybe] Reading absent property form
-test/chromeexperiments/deepseastress.tidy.html:429:51: [maybe] Reading absent property form
-test/chromeexperiments/deepseastress.tidy.html:433:51: [maybe] Reading absent property form
-test/chromeexperiments/deepseastress.tidy.html:437:51: [maybe] Reading absent property form
-test/chromeexperiments/deepseastress.tidy.html:441:51: [maybe] Reading absent property form
-test/chromeexperiments/deepseastress.tidy.html:445:51: [maybe] Reading absent property form
-test/chromeexperiments/deepseastress.tidy.html:448:54: [maybe] Reading absent property form
-test/chromeexperiments/deepseastress.tidy.html:454: [maybe] Uncaught exception, constructed at [test/chromeexperiments/deepseastress.tidy.html:476:48, test/chromeexperiments/deepseastress.tidy.html:481:33]
-test/chromeexperiments/deepseastress.tidy.html:421:51: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/chromeexperiments/deepseastress.tidy.html:425:51: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/chromeexperiments/deepseastress.tidy.html:429:51: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/chromeexperiments/deepseastress.tidy.html:433:51: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/chromeexperiments/deepseastress.tidy.html:437:51: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/chromeexperiments/deepseastress.tidy.html:441:51: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/chromeexperiments/deepseastress.tidy.html:445:51: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/chromeexperiments/deepseastress.tidy.html:448:54: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/deepseastress.html:454:20: [definite] TypeError, accessing property of null/undefined
+test/chromeexperiments/deepseastress.html:459:5: [definite] TypeError, accessing property of null/undefined
+test/chromeexperiments/deepseastress.html:459:25: [definite] The conditional expression is always false
+test/chromeexperiments/deepseastress.html:13:1: [definite] Dead assignment, property g is never read
+test/chromeexperiments/deepseastress.html:95:1: [definite] Dead assignment, property l is never read
+test/chromeexperiments/deepseastress.html:330:1: [definite] Dead assignment, property p is never read
+test/chromeexperiments/deepseastress.html:402:5: [definite] Dead assignment, property init is never read
+test/chromeexperiments/deepseastress.html:404:5: [definite] Dead assignment, property setMouseInteraction is never read
+test/chromeexperiments/deepseastress.html:452:32: [definite] Reading absent property which
+test/chromeexperiments/deepseastress.html:454:20: [definite] Reading absent property numCreatures
+test/chromeexperiments/deepseastress.html:459:5: [definite] Reading absent property toggle
+test/chromeexperiments/deepseastress.html:13:9: [definite] Unreachable function
+test/chromeexperiments/deepseastress.html:14:5: [definite] Unreachable function s
+test/chromeexperiments/deepseastress.html:17:5: [definite] Unreachable function C
+test/chromeexperiments/deepseastress.html:33:5: [definite] Unreachable function x
+test/chromeexperiments/deepseastress.html:36:5: [definite] Unreachable function u
+test/chromeexperiments/deepseastress.html:39:5: [definite] Unreachable function F
+test/chromeexperiments/deepseastress.html:42:5: [definite] Unreachable function v
+test/chromeexperiments/deepseastress.html:45:5: [definite] Unreachable function w
+test/chromeexperiments/deepseastress.html:48:5: [definite] Unreachable function q
+test/chromeexperiments/deepseastress.html:52:5: [definite] Unreachable function D
+test/chromeexperiments/deepseastress.html:55:5: [definite] Unreachable function y
+test/chromeexperiments/deepseastress.html:58:5: [definite] Unreachable function E
+test/chromeexperiments/deepseastress.html:95:9: [definite] Unreachable function
+test/chromeexperiments/deepseastress.html:96:5: [definite] Unreachable function K
+test/chromeexperiments/deepseastress.html:105:5: [definite] Unreachable function r
+test/chromeexperiments/deepseastress.html:111:5: [definite] Unreachable function s
+test/chromeexperiments/deepseastress.html:131:5: [definite] Unreachable function C
+test/chromeexperiments/deepseastress.html:134:5: [definite] Unreachable function x
+test/chromeexperiments/deepseastress.html:163:9: [definite] Unreachable function
+test/chromeexperiments/deepseastress.html:164:5: [definite] Unreachable function s
+test/chromeexperiments/deepseastress.html:173:5: [definite] Unreachable function C
+test/chromeexperiments/deepseastress.html:177:5: [definite] Unreachable function x
+test/chromeexperiments/deepseastress.html:185:5: [definite] Unreachable function u
+test/chromeexperiments/deepseastress.html:215:5: [definite] Unreachable function F
+test/chromeexperiments/deepseastress.html:220:5: [definite] Unreachable function v
+test/chromeexperiments/deepseastress.html:228:5: [definite] Unreachable function w
+test/chromeexperiments/deepseastress.html:237:5: [definite] Unreachable function q
+test/chromeexperiments/deepseastress.html:245:5: [definite] Unreachable function D
+test/chromeexperiments/deepseastress.html:252:5: [definite] Unreachable function y
+test/chromeexperiments/deepseastress.html:275:5: [definite] Unreachable function E
+test/chromeexperiments/deepseastress.html:278:5: [definite] Unreachable function A
+test/chromeexperiments/deepseastress.html:281:5: [definite] Unreachable function a
+test/chromeexperiments/deepseastress.html:285:5: [definite] Unreachable function e
+test/chromeexperiments/deepseastress.html:331:5: [definite] Unreachable function O
+test/chromeexperiments/deepseastress.html:351:5: [definite] Unreachable function P
+test/chromeexperiments/deepseastress.html:356:5: [definite] Unreachable function I
+test/chromeexperiments/deepseastress.html:362:5: [definite] Unreachable function J
+test/chromeexperiments/deepseastress.html:366:5: [definite] Unreachable function Q
+test/chromeexperiments/deepseastress.html:375:5: [definite] Unreachable function R
+test/chromeexperiments/deepseastress.html:393:5: [definite] Unreachable function S
+test/chromeexperiments/deepseastress.html:396:9: [definite] The variable K is never used
+test/chromeexperiments/deepseastress.html:397:9: [definite] The variable r is never used
+test/chromeexperiments/deepseastress.html:397:12: [definite] The variable s is never used
+test/chromeexperiments/deepseastress.html:398:9: [definite] The variable C is never used
+test/chromeexperiments/deepseastress.html:398:12: [definite] The variable x is never used
+test/chromeexperiments/deepseastress.html:398:15: [definite] The variable u is never used
+test/chromeexperiments/deepseastress.html:398:18: [definite] The variable F is never used
+test/chromeexperiments/deepseastress.html:399:9: [definite] The variable v is never used
+test/chromeexperiments/deepseastress.html:400:9: [definite] The variable w is never used
+test/chromeexperiments/deepseastress.html:401:9: [definite] The variable q is never used
+test/chromeexperiments/deepseastress.html:401:12: [definite] The variable D is never used
+test/chromeexperiments/deepseastress.html:401:15: [definite] The variable y is never used
+test/chromeexperiments/deepseastress.html:401:18: [definite] The variable E is never used
+test/chromeexperiments/deepseastress.html:401:21: [definite] The variable A is never used
+test/chromeexperiments/deepseastress.html:454:45: [definite] Unreachable code
+test/chromeexperiments/deepseastress.html:460:5: [definite] Unreachable code
+test/chromeexperiments/deepseastress.html:463:20: [definite] Unreachable function
+test/chromeexperiments/deepseastress.html:454:20: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/deepseastress.html:459:5: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/deepseastress.html:415:110: [maybe] Reading absent property form
+test/chromeexperiments/deepseastress.html:417:110: [maybe] Reading absent property form
+test/chromeexperiments/deepseastress.html:419:104: [maybe] Reading absent property form
+test/chromeexperiments/deepseastress.html:421:110: [maybe] Reading absent property form
+test/chromeexperiments/deepseastress.html:423:102: [maybe] Reading absent property form
+test/chromeexperiments/deepseastress.html:426:106: [maybe] Reading absent property form
+test/chromeexperiments/deepseastress.html:428:106: [maybe] Reading absent property form
+test/chromeexperiments/deepseastress.html:430:81: [maybe] Reading absent property form
+test/chromeexperiments/deepseastress.html:415:110: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/deepseastress.html:417:110: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/deepseastress.html:419:104: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/deepseastress.html:421:110: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/deepseastress.html:423:102: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/deepseastress.html:426:106: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/deepseastress.html:428:106: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/deepseastress.html:430:81: [info] 'this' refers to multiple abstract objects, which may cause loss of precision

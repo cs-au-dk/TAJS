@@ -1,7 +1,5 @@
-test/v8tests/proto.js:33:1: [definite] ReferenceError, reading absent variable assertTrue
-test/v8tests/proto.js:28:10: [definite] Dead assignment, property x is never read
-test/v8tests/proto.js:30:10: [definite] Dead assignment, property x is never read
-test/v8tests/proto.js:30:10: [definite] Dead assignment, property y is never read
-test/v8tests/proto.js:28:5: [definite] The variable o1 is never used
-test/v8tests/proto.js:33:12: [definite] Unreachable code
-test/v8tests/proto.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/proto.js:33:1]
+test/v8tests/proto.js:28:12: [definite] Dead assignment, property x is never read
+test/v8tests/proto.js:30:12: [definite] Dead assignment, property x is never read
+test/v8tests/proto.js:30:19: [definite] Dead assignment, property y is never read
+test/v8tests/proto.js:33:12: [definite] Reading absent property __proto__
+test/v8tests/proto.js:33:29: [definite] Reading absent property __proto__

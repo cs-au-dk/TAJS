@@ -1,13 +1,13 @@
-fg2: <main> function()
+fg2: function()
   block 0: [entry]
     node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0104.js:1:1)
     ->[block 1]
   block 1:
     node 1: constant[6.0,v4] (test/flowgraphbuilder/flowgraph_builder0104.js:1:6)
-    node 2: read-property[v4,'toString',-] (test/flowgraphbuilder/flowgraph_builder0104.js:1:6)
+    node 2: read-property[v4,'toString',-] (test/flowgraphbuilder/flowgraph_builder0104.js:1:5)
     ->[block 2]
   block 2:
-    node 3: call[v4,'toString',v2] (test/flowgraphbuilder/flowgraph_builder0104.js:1:6)
+    node 3: call[v4,'toString',v2] (test/flowgraphbuilder/flowgraph_builder0104.js:1:5)
     ->[block 3]
   block 3:
     node 4: write-variable[v2,'x']* (test/flowgraphbuilder/flowgraph_builder0104.js:1:1)
@@ -19,4 +19,4 @@ fg2: <main> function()
     node 6: exceptional-return (test/flowgraphbuilder/flowgraph_builder0104.js:1:1)
     ->[]
 
-test/flowgraphbuilder/flowgraph_builder0104.js:1:6: [maybe] Converting primitive number to object
+test/flowgraphbuilder/flowgraph_builder0104.js:1:5: [maybe] Converting primitive number to object

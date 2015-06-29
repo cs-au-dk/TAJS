@@ -1,0 +1,43 @@
+fg2: function()
+  block 0: [entry]
+    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0213.js:1:1)
+    ->[block 1]
+  block 1:
+    node 1: read-variable['f',v3,-] (test/flowgraphbuilder/flowgraph_builder0213.js:1:9)
+    node 2: read-property[v3,'description',v2] (test/flowgraphbuilder/flowgraph_builder0213.js:1:9)
+    node 3: <variable-non-null-undef>['f'] (test/flowgraphbuilder/flowgraph_builder0213.js:1:9)
+    node 4: constant["h-panel",v4] (test/flowgraphbuilder/flowgraph_builder0213.js:2:11)
+    node 5: ===[v2,v4,v5] (test/flowgraphbuilder/flowgraph_builder0213.js:1:1)
+    node 6: if[v5](true-block:2,false-block:5) (test/flowgraphbuilder/flowgraph_builder0213.js:1:1)
+    ->[block 2,block 5]
+  block 2:
+    node 7: read-variable['Array',v7,-] (test/flowgraphbuilder/flowgraph_builder0213.js:3:13)
+    node 8: read-variable['c',v13,-] (test/flowgraphbuilder/flowgraph_builder0213.js:3:15)
+    node 9: constant[0.0,v14] (test/flowgraphbuilder/flowgraph_builder0213.js:3:17)
+    node 10: read-property[v13,v14,v11] (test/flowgraphbuilder/flowgraph_builder0213.js:3:15)
+    node 11: <variable-non-null-undef>['c'] (test/flowgraphbuilder/flowgraph_builder0213.js:3:15)
+    node 12: read-variable['e',v15,-] (test/flowgraphbuilder/flowgraph_builder0213.js:3:22)
+    node 13: constant[0.0,v16] (test/flowgraphbuilder/flowgraph_builder0213.js:3:24)
+    node 14: read-property[v15,v16,v12] (test/flowgraphbuilder/flowgraph_builder0213.js:3:22)
+    node 15: <variable-non-null-undef>['e'] (test/flowgraphbuilder/flowgraph_builder0213.js:3:22)
+    node 16: +[v11,v12,v9] (test/flowgraphbuilder/flowgraph_builder0213.js:3:15)
+    node 17: read-variable['b',v10,-] (test/flowgraphbuilder/flowgraph_builder0213.js:3:30)
+    node 18: *[v9,v10,v8] (test/flowgraphbuilder/flowgraph_builder0213.js:3:14)
+    node 19: constant[0.0,v17] (test/flowgraphbuilder/flowgraph_builder0213.js:3:33)
+    ->[block 3]
+  block 3:
+    node 20: construct[-,v7,v8,v17,v6] (test/flowgraphbuilder/flowgraph_builder0213.js:3:13)
+    ->[block 4]
+  block 4:
+    node 21: write-variable[v6,'a']* (test/flowgraphbuilder/flowgraph_builder0213.js:3:9)
+    ->[block 5]
+  block 5: [exit-ordinary]
+    node 22: return[v1] (test/flowgraphbuilder/flowgraph_builder0213.js:1:1)
+    ->[]
+  block 6: [exit-exceptional]
+    node 23: exceptional-return (test/flowgraphbuilder/flowgraph_builder0213.js:1:1)
+    ->[]
+
+test/flowgraphbuilder/flowgraph_builder0213.js:1:9: [definite] ReferenceError, reading absent variable f
+test/flowgraphbuilder/flowgraph_builder0213.js:1:9: [definite] Unreachable code
+test/flowgraphbuilder/flowgraph_builder0213.js:1:1: [maybe] Uncaught exception, constructed at [test/flowgraphbuilder/flowgraph_builder0213.js:1:9]

@@ -11,5 +11,5 @@ g = function() {
 f();
 a.p = 42;
 g();
-dumpValue(a.p); 
-dumpValue(c); 
+TAJS_dumpValue(a.p); 
+TAJS_dumpValue(c); 

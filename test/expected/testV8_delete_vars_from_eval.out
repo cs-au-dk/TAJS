@@ -1,5 +1,0 @@
-test/v8tests/delete-vars-from-eval.js:32:3: [definite] ReferenceError, reading absent variable assertEquals
-test/v8tests/delete-vars-from-eval.js:31:3: [definite] The variable tmp0 is never used
-test/v8tests/delete-vars-from-eval.js:32:16: [definite] Unreachable code
-test/v8tests/delete-vars-from-eval.js:37:1: [definite] Unreachable code
-test/v8tests/delete-vars-from-eval.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/delete-vars-from-eval.js:32:3]

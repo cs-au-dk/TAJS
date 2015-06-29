@@ -1,11 +1,10 @@
 package dk.brics.tajs.test;
 
+import dk.brics.tajs.options.Options;
 import dk.brics.tajs.util.AnalysisException;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
-
-import dk.brics.tajs.options.Options;
 
 @SuppressWarnings("static-method")
 public class TestFlowgraphBuilder {
@@ -17,7 +16,16 @@ public class TestFlowgraphBuilder {
     @Before
     public void init() {
         Options.reset();
-        Options.enableTestFlowGraphBuiler();
+        Options.get().enableTestFlowGraphBuiler();
+    }
+
+    @Test
+    public void flowgraphbuilder_0000() throws Exception {
+        Misc.init();
+        Misc.captureSystemOutput();
+        String[] args = {"test/flowgraphbuilder/flowgraph_builder0000.js"};
+        Misc.run(args);
+        Misc.checkSystemOutput();
     }
 
     @Test
@@ -371,13 +379,11 @@ public class TestFlowgraphBuilder {
         Misc.checkSystemOutput();
     }
 
-    @Test(expected=AnalysisException.class)
+    @Test(expected = AnalysisException.class /* unnamed function statement */)
     public void flowgraphbuilder_0040() throws Exception {
         Misc.init();
-        Misc.captureSystemOutput();
         String[] args = {"test/flowgraphbuilder/flowgraph_builder0040.js"};
         Misc.run(args);
-        Misc.checkSystemOutput();
     }
 
     @Test
@@ -641,22 +647,18 @@ public class TestFlowgraphBuilder {
         Misc.checkSystemOutput();
     }
 
-    @Test(expected=AnalysisException.class)
+    @Test(expected = AnalysisException.class /* const unsupported */)
     public void flowgraphbuilder_0070() throws Exception {
         Misc.init();
-        Misc.captureSystemOutput();
         String[] args = {"test/flowgraphbuilder/flowgraph_builder0070.js"};
         Misc.run(args);
-        Misc.checkSystemOutput();
     }
 
-    @Test(expected=AnalysisException.class)
+    @Test(expected = AnalysisException.class /* const unsupported */)
     public void flowgraphbuilder_0071() throws Exception {
         Misc.init();
-        Misc.captureSystemOutput();
         String[] args = {"test/flowgraphbuilder/flowgraph_builder0071.js"};
         Misc.run(args);
-        Misc.checkSystemOutput();
     }
 
     @Test
@@ -678,7 +680,7 @@ public class TestFlowgraphBuilder {
     }
 
     @Test
-        public void flowgraphbuilder_0074() throws Exception {
+    public void flowgraphbuilder_0074() throws Exception {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/flowgraphbuilder/flowgraph_builder0074.js"};
@@ -861,10 +863,9 @@ public class TestFlowgraphBuilder {
     public void flowgraphbuilder_0093un() throws Exception {
         Misc.init();
         Misc.captureSystemOutput();
-        Options.enableUnrollOneAndAHalf();
+        Options.get().enableUnrollOneAndAHalf();
         String[] args = {"test/flowgraphbuilder/flowgraph_builder0093.js"};
         Misc.run(args);
-        Options.disableUnrollOneAndAHalf();
         Misc.checkSystemOutput();
     }
 
@@ -1034,10 +1035,9 @@ public class TestFlowgraphBuilder {
     public void flowgraphbuilder_0111un() throws Exception {
         Misc.init();
         Misc.captureSystemOutput();
-        Options.enableUnrollOneAndAHalf();
+        Options.get().enableUnrollOneAndAHalf();
         String[] args = {"test/flowgraphbuilder/flowgraph_builder0111.js"};
         Misc.run(args);
-        Options.disableUnrollOneAndAHalf();
         Misc.checkSystemOutput();
     }
 
@@ -1221,6 +1221,7 @@ public class TestFlowgraphBuilder {
         Misc.checkSystemOutput();
     }
 
+    @Ignore // see https://github.com/cs-au-dk/TAJS-private/issues/112
     @Test
     public void flowgraphbuilder_0132() throws Exception {
         Misc.init();
@@ -1338,31 +1339,25 @@ public class TestFlowgraphBuilder {
         Misc.checkSystemOutput();
     }
 
-    @Test
+    @Test(expected = AnalysisException.class /* switch with default in non-last position */)
     public void flowgraphbuilder_0145() throws Exception {
         Misc.init();
-        Misc.captureSystemOutput();
         String[] args = {"test/flowgraphbuilder/flowgraph_builder0145.js"};
         Misc.run(args);
-        Misc.checkSystemOutput();
     }
 
-    @Test
+    @Test(expected = AnalysisException.class /* switch with default in non-last position */)
     public void flowgraphbuilder_0146() throws Exception {
         Misc.init();
-        Misc.captureSystemOutput();
         String[] args = {"test/flowgraphbuilder/flowgraph_builder0146.js"};
         Misc.run(args);
-        Misc.checkSystemOutput();
     }
 
-    @Test
+    @Test(expected = AnalysisException.class /* switch with default in non-last position */)
     public void flowgraphbuilder_0147() throws Exception {
         Misc.init();
-        Misc.captureSystemOutput();
         String[] args = {"test/flowgraphbuilder/flowgraph_builder0147.js"};
         Misc.run(args);
-        Misc.checkSystemOutput();
     }
 
     @Test
@@ -1388,9 +1383,8 @@ public class TestFlowgraphBuilder {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/flowgraphbuilder/flowgraph_builder0150.js"};
-        Options.enableUnevalizer();
+        Options.get().enableUnevalizer();
         Misc.run(args);
-        Options.disableUnevalizer();
         Misc.checkSystemOutput();
     }
 
@@ -1399,9 +1393,8 @@ public class TestFlowgraphBuilder {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/flowgraphbuilder/flowgraph_builder0151.js"};
-        Options.enableUnevalizer();
+        Options.get().enableUnevalizer();
         Misc.run(args);
-        Options.disableUnevalizer();
         Misc.checkSystemOutput();
     }
 
@@ -1410,9 +1403,8 @@ public class TestFlowgraphBuilder {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/flowgraphbuilder/flowgraph_builder0152.js"};
-        Options.enableUnevalizer();
+        Options.get().enableUnevalizer();
         Misc.run(args);
-        Options.disableUnevalizer();
         Misc.checkSystemOutput();
     }
 
@@ -1421,9 +1413,8 @@ public class TestFlowgraphBuilder {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/flowgraphbuilder/flowgraph_builder0153.js"};
-        Options.enableUnevalizer();
+        Options.get().enableUnevalizer();
         Misc.run(args);
-        Options.disableUnevalizer();
         Misc.checkSystemOutput();
     }
 
@@ -1432,9 +1423,8 @@ public class TestFlowgraphBuilder {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/flowgraphbuilder/flowgraph_builder0154.html"};
-        Options.enableUnevalizer();
+        Options.get().enableUnevalizer();
         Misc.run(args);
-        Options.disableUnevalizer();
         Misc.checkSystemOutput();
     }
 
@@ -1443,21 +1433,42 @@ public class TestFlowgraphBuilder {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/flowgraphbuilder/flowgraph_builder0155.html"};
-        Options.enableUnevalizer();
+        Options.get().enableUnevalizer();
         Misc.run(args);
-        Options.disableUnevalizer();
         Misc.checkSystemOutput();
     }
 
+    @Ignore // FIXME bad lazy recover when using unevalizer.
     // TODO: Conflates this.p to either undef or "left", which gives a false warning about converting undef to string.
     @Test
     public void flowgraphbuilder_0156() throws Exception {
         Misc.init();
+        Options.get().enableUnevalizer();
         Misc.captureSystemOutput();
         String[] args = {"test/flowgraphbuilder/flowgraph_builder0156.html"};
-        Options.enableUnevalizer();
         Misc.run(args);
-        Options.disableUnevalizer();
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void flowgraphbuilder_0156a() throws Exception {
+        Misc.init();
+        Misc.captureSystemOutput();
+        String[] args = {"test/flowgraphbuilder/flowgraph_builder0156a.js"};
+        Options.get().enableUnevalizer();
+        Options.get().enableIncludeDom();
+        Misc.run(args);
+        Misc.checkSystemOutput();
+    }
+
+    @Ignore // FIXME bad lazy recover when using unevalizer.
+    @Test
+    public void flowgraphbuilder_0156b() throws Exception {
+        Misc.init();
+        Misc.captureSystemOutput();
+        String[] args = {"test/flowgraphbuilder/flowgraph_builder0156b.html"};
+        Options.get().enableUnevalizer();
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -1582,10 +1593,9 @@ public class TestFlowgraphBuilder {
     public void flowgraphbuilder_0169un() throws Exception {
         Misc.init();
         Misc.captureSystemOutput();
-        Options.enableUnrollOneAndAHalf();
+        Options.get().enableUnrollOneAndAHalf();
         String[] args = {"test/flowgraphbuilder/flowgraph_builder0169.js"};
         Misc.run(args);
-        Options.disableUnrollOneAndAHalf();
         Misc.checkSystemOutput();
     }
 
@@ -1602,10 +1612,9 @@ public class TestFlowgraphBuilder {
     public void flowgraphbuilder_0171() throws Exception {
         Misc.init();
         Misc.captureSystemOutput();
-        Options.enableUnevalizer();
+        Options.get().enableUnevalizer();
         String[] args = {"test/flowgraphbuilder/flowgraph_builder0171.js"};
         Misc.run(args);
-        Options.disableUnevalizer();
         Misc.checkSystemOutput();
     }
 
@@ -1613,12 +1622,10 @@ public class TestFlowgraphBuilder {
     public void flowgraphbuilder_0171un() throws Exception {
         Misc.init();
         Misc.captureSystemOutput();
-        Options.enableUnevalizer();
-        Options.enableUnrollOneAndAHalf();
+        Options.get().enableUnevalizer();
+        Options.get().enableUnrollOneAndAHalf();
         String[] args = {"test/flowgraphbuilder/flowgraph_builder0171.js"};
         Misc.run(args);
-        Options.disableUnevalizer();
-        Options.disableUnrollOneAndAHalf();
         Misc.checkSystemOutput();
     }
 
@@ -1626,10 +1633,9 @@ public class TestFlowgraphBuilder {
     public void flowgraphbuilder_0172() throws Exception {
         Misc.init();
         Misc.captureSystemOutput();
-        Options.enableUnevalizer();
+        Options.get().enableUnevalizer();
         String[] args = {"test/flowgraphbuilder/flowgraph_builder0172.html"};
         Misc.run(args);
-        Options.disableUnevalizer();
         Misc.checkSystemOutput();
     }
 
@@ -1657,10 +1663,9 @@ public class TestFlowgraphBuilder {
     public void flowgraphbuilder_0175() throws Exception {
         Misc.init();
         Misc.captureSystemOutput();
-        Options.enableUnevalizer();
+        Options.get().enableUnevalizer();
         String[] args = {"test/flowgraphbuilder/flowgraph_builder0175.js"};
         Misc.run(args);
-        Options.disableUnevalizer();
         Misc.checkSystemOutput();
     }
 
@@ -1749,10 +1754,9 @@ public class TestFlowgraphBuilder {
     public void flowgraphbuilder_0184un() throws Exception {
         Misc.init();
         Misc.captureSystemOutput();
-        Options.enableUnrollOneAndAHalf();
+        Options.get().enableUnrollOneAndAHalf();
         String[] args = {"test/flowgraphbuilder/flowgraph_builder0184.js"};
         Misc.run(args);
-        Options.disableUnrollOneAndAHalf();
         Misc.checkSystemOutput();
     }
 
@@ -1776,21 +1780,21 @@ public class TestFlowgraphBuilder {
     }
 
     @Test
-    public void flowgraphbuilder_0187() throws Exception { // FIXME: exceptional flow at for-in
+    public void flowgraphbuilder_0187() throws Exception {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/flowgraphbuilder/flowgraph_builder0187.js"};
         Misc.run(args);
-//        Misc.checkSystemOutput();
+        Misc.checkSystemOutput();
     }
 
     @Test
-    public void flowgraphbuilder_0188() throws Exception { // FIXME: labeled break/continue
+    public void flowgraphbuilder_0188() throws Exception {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/flowgraphbuilder/flowgraph_builder0188.js"};
         Misc.run(args);
-//        Misc.checkSystemOutput();
+        Misc.checkSystemOutput();
     }
 
     @Test
@@ -1801,4 +1805,668 @@ public class TestFlowgraphBuilder {
         Misc.run(args);
         Misc.checkSystemOutput();
     }
+
+    @Test
+    public void flowgraphbuilder_0190() throws Exception {
+        Misc.init();
+        Misc.captureSystemOutput();
+        String[] args = {"test/flowgraphbuilder/flowgraph_builder0190.js"};
+        Misc.run(args);
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void flowgraphbuilder_0191() throws Exception {
+        Misc.init();
+        Misc.captureSystemOutput();
+        String[] args = {"test/flowgraphbuilder/flowgraph_builder0191.js"};
+        Misc.run(args);
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void flowgraphbuilder_0192() throws Exception {
+        Misc.init();
+        Misc.captureSystemOutput();
+        String[] args = {"test/flowgraphbuilder/flowgraph_builder0192.js"};
+        Misc.run(args);
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void flowgraphbuilder_0193() throws Exception {
+        Misc.init();
+        Misc.captureSystemOutput();
+        String[] args = {"test/flowgraphbuilder/flowgraph_builder0193.js"};
+        Misc.run(args);
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void flowgraphbuilder_0194() throws Exception {
+        Misc.init();
+        Misc.captureSystemOutput();
+        String[] args = {"test/flowgraphbuilder/flowgraph_builder0194.js"};
+        Misc.run(args);
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void flowgraphbuilder_0195() throws Exception {
+        Misc.init();
+        Misc.captureSystemOutput();
+        String[] args = {"test/flowgraphbuilder/flowgraph_builder0195.js"};
+        Misc.run(args);
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void flowgraphbuilder_0196() throws Exception {
+        Misc.init();
+        Misc.captureSystemOutput();
+        String[] args = {"test/flowgraphbuilder/flowgraph_builder0196.js"};
+        Misc.run(args);
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void flowgraphbuilder_0196un() throws Exception {
+        Options.get().enableUnrollOneAndAHalf();
+        Misc.init();
+        Misc.captureSystemOutput();
+        String[] args = {"test/flowgraphbuilder/flowgraph_builder0196.js"};
+        Misc.run(args);
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void flowgraphbuilder_0197() throws Exception {
+        Misc.init();
+        Misc.captureSystemOutput();
+        String[] args = {"test/flowgraphbuilder/flowgraph_builder0197.js"};
+        Misc.run(args);
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void flowgraphbuilder_0198() throws Exception {
+        Misc.init();
+        Misc.captureSystemOutput();
+        String[] args = {"test/flowgraphbuilder/flowgraph_builder0198.js"};
+        Misc.run(args);
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void flowgraphbuilder_0199() throws Exception {
+        Misc.init();
+        Misc.captureSystemOutput();
+        String[] args = {"test/flowgraphbuilder/flowgraph_builder0199.js"};
+        Misc.run(args);
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void flowgraphbuilder_0200() throws Exception {
+        Misc.init();
+        Misc.captureSystemOutput();
+        String[] args = {"test/flowgraphbuilder/flowgraph_builder0200.js"};
+        Misc.run(args);
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void flowgraphbuilder_0201() throws Exception {
+        Misc.init();
+        Misc.captureSystemOutput();
+        String[] args = {"test/flowgraphbuilder/flowgraph_builder0201.js"};
+        Misc.run(args);
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void flowgraphbuilder_0201b() throws Exception {
+        Misc.init();
+        Misc.captureSystemOutput();
+        String[] args = {"test/flowgraphbuilder/flowgraph_builder0201b.js"};
+        Misc.run(args);
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void flowgraphbuilder_0201c() throws Exception {
+        Misc.init();
+        Misc.captureSystemOutput();
+        String[] args = {"test/flowgraphbuilder/flowgraph_builder0201c.js"};
+        Misc.run(args);
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void flowgraphbuilder_0201d() throws Exception {
+        Misc.init();
+        Misc.captureSystemOutput();
+        String[] args = {"test/flowgraphbuilder/flowgraph_builder0201d.js"};
+        Misc.run(args);
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void flowgraphbuilder_0201e() throws Exception {
+        Misc.init();
+        Misc.captureSystemOutput();
+        String[] args = {"test/flowgraphbuilder/flowgraph_builder0201e.js"};
+        Misc.run(args);
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void flowgraphbuilder_0202() throws Exception {
+        Misc.init();
+        Misc.captureSystemOutput();
+        String[] args = {"test/flowgraphbuilder/flowgraph_builder0202.js"};
+        Misc.run(args);
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void flowgraphbuilder_0203() throws Exception {
+        Misc.init();
+        Misc.captureSystemOutput();
+        String[] args = {"test/flowgraphbuilder/flowgraph_builder0203.js"};
+        Misc.run(args);
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void flowgraphbuilder_0204() throws Exception {
+        Misc.init();
+        Misc.captureSystemOutput();
+        String[] args = {"test/flowgraphbuilder/flowgraph_builder0204.js"};
+        Misc.run(args);
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void flowgraphbuilder_0205() throws Exception {
+        Misc.init();
+        Misc.captureSystemOutput();
+        String[] args = {"test/flowgraphbuilder/flowgraph_builder0205.js"};
+        Misc.run(args);
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void flowgraphbuilder_0206() throws Exception {
+        Misc.init();
+        Misc.captureSystemOutput();
+        String[] args = {"test/flowgraphbuilder/flowgraph_builder0206.js"};
+        Misc.run(args);
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void flowgraphbuilder_0207() throws Exception {
+        Misc.init();
+        Misc.captureSystemOutput();
+        String[] args = {"test/flowgraphbuilder/flowgraph_builder0207.js"};
+        Misc.run(args);
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void flowgraphbuilder_0208() throws Exception {
+        Misc.init();
+        Misc.captureSystemOutput();
+        String[] args = {"test/flowgraphbuilder/flowgraph_builder0208.js"};
+        Misc.run(args);
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void flowgraphbuilder_0209() throws Exception {
+        Misc.init();
+        // just check non-crashing
+        String[] args = {"test/flowgraphbuilder/flowgraph_builder0209.js"};
+        Misc.run(args);
+    }
+
+    @Test
+    public void flowgraphbuilder_0210() throws Exception {
+        Misc.init();
+        Misc.captureSystemOutput();
+        String[] args = {"test/flowgraphbuilder/flowgraph_builder0210.js"};
+        Misc.run(args);
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void flowgraphbuilder_0210b() throws Exception {
+        Misc.init();
+        Misc.captureSystemOutput();
+        String[] args = {"test/flowgraphbuilder/flowgraph_builder0210b.js"};
+        Misc.run(args);
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void flowgraphbuilder_0210c() throws Exception {
+        Misc.init();
+        Misc.captureSystemOutput();
+        String[] args = {"test/flowgraphbuilder/flowgraph_builder0210c.js"};
+        Misc.run(args);
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void flowgraphbuilder_0210d() throws Exception {
+        Misc.init();
+        Misc.captureSystemOutput();
+        String[] args = {"test/flowgraphbuilder/flowgraph_builder0210d.js"};
+        Misc.run(args);
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void flowgraphbuilder_0210e() throws Exception {
+        Misc.init();
+        Misc.captureSystemOutput();
+        String[] args = {"test/flowgraphbuilder/flowgraph_builder0210e.js"};
+        Misc.run(args);
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void flowgraphbuilder_0211() throws Exception {
+        Misc.init();
+        Misc.captureSystemOutput();
+        String[] args = {"test/flowgraphbuilder/flowgraph_builder0211.js"};
+        Misc.run(args);
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void flowgraphbuilder_0212() throws Exception {
+        Misc.init();
+        Misc.captureSystemOutput();
+        String[] args = {"test/flowgraphbuilder/flowgraph_builder0212.js"};
+        Misc.run(args);
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void flowgraphbuilder_0213() throws Exception {
+        Misc.init();
+        Misc.captureSystemOutput();
+        String[] args = {"test/flowgraphbuilder/flowgraph_builder0213.js"};
+        Misc.run(args);
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void flowgraphbuilder_0214() throws Exception {
+        Misc.init();
+        Misc.captureSystemOutput();
+        String[] args = {"test/flowgraphbuilder/flowgraph_builder0214.js"};
+        Misc.run(args);
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void flowgraphbuilder_jump_0001() throws Exception {
+        Misc.init();
+        Misc.captureSystemOutput();
+        String[] args = {"test/flowgraphbuilder/flowgraph_builder_jump_0001.js"};
+        Misc.run(args);
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void flowgraphbuilder_jump_0002() throws Exception {
+        Misc.init();
+        Misc.captureSystemOutput();
+        String[] args = {"test/flowgraphbuilder/flowgraph_builder_jump_0002.js"};
+        Misc.run(args);
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void flowgraphbuilder_jump_0003() throws Exception {
+        Misc.init();
+        Misc.captureSystemOutput();
+        String[] args = {"test/flowgraphbuilder/flowgraph_builder_jump_0003.js"};
+        Misc.run(args);
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void flowgraphbuilder_jump_0004() throws Exception {
+        Misc.init();
+        Misc.captureSystemOutput();
+        String[] args = {"test/flowgraphbuilder/flowgraph_builder_jump_0004.js"};
+        Misc.run(args);
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void flowgraphbuilder_jump_0005() throws Exception {
+        Misc.init();
+        Misc.captureSystemOutput();
+        String[] args = {"test/flowgraphbuilder/flowgraph_builder_jump_0005.js"};
+        Misc.run(args);
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void flowgraphbuilder_jump_0006() throws Exception {
+        Misc.init();
+        Misc.captureSystemOutput();
+        String[] args = {"test/flowgraphbuilder/flowgraph_builder_jump_0006.js"};
+        Misc.run(args);
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void flowgraphbuilder_jump_0007() throws Exception {
+        Misc.init();
+        Misc.captureSystemOutput();
+        String[] args = {"test/flowgraphbuilder/flowgraph_builder_jump_0007.js"};
+        Misc.run(args);
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void flowgraphbuilder_jump_0008() throws Exception {
+        Misc.init();
+        Misc.captureSystemOutput();
+        String[] args = {"test/flowgraphbuilder/flowgraph_builder_jump_0008.js"};
+        Misc.run(args);
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void flowgraphbuilder_jump_0009() throws Exception {
+        Misc.init();
+        Misc.captureSystemOutput();
+        String[] args = {"test/flowgraphbuilder/flowgraph_builder_jump_0009.js"};
+        Misc.run(args);
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void flowgraphbuilder_jump_0010() throws Exception {
+        Misc.init();
+        Misc.captureSystemOutput();
+        String[] args = {"test/flowgraphbuilder/flowgraph_builder_jump_0010.js"};
+        Misc.run(args);
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void flowgraphbuilder_jump_0011() throws Exception {
+        Misc.init();
+        Misc.captureSystemOutput();
+        String[] args = {"test/flowgraphbuilder/flowgraph_builder_jump_0011.js"};
+        Misc.run(args);
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void flowgraphbuilder_jump_0012() throws Exception {
+        Misc.init();
+        Misc.captureSystemOutput();
+        String[] args = {"test/flowgraphbuilder/flowgraph_builder_jump_0012.js"};
+        Misc.run(args);
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void flowgraphbuilder_jump_0013() throws Exception {
+        Misc.init();
+        Misc.captureSystemOutput();
+        String[] args = {"test/flowgraphbuilder/flowgraph_builder_jump_0013.js"};
+        Misc.run(args);
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void flowgraphbuilder_jump_0014() throws Exception {
+        Misc.init();
+        Misc.captureSystemOutput();
+        String[] args = {"test/flowgraphbuilder/flowgraph_builder_jump_0014.js"};
+        Misc.run(args);
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void flowgraphbuilder_jump_0015() throws Exception {
+        Misc.init();
+        Misc.captureSystemOutput();
+        String[] args = {"test/flowgraphbuilder/flowgraph_builder_jump_0015.js"};
+        Misc.run(args);
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void flowgraphbuilder_jump_return_0001() throws Exception {
+        Misc.init();
+        Misc.captureSystemOutput();
+        String[] args = {"test/flowgraphbuilder/flowgraph_builder_jump_return_0001.js"};
+        Misc.run(args);
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void flowgraphbuilder_jump_return_0002() throws Exception {
+        Misc.init();
+        Misc.captureSystemOutput();
+        String[] args = {"test/flowgraphbuilder/flowgraph_builder_jump_return_0002.js"};
+        Misc.run(args);
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void flowgraphbuilder_jump_return_0003() throws Exception {
+        Misc.init();
+        Misc.captureSystemOutput();
+        String[] args = {"test/flowgraphbuilder/flowgraph_builder_jump_return_0003.js"};
+        Misc.run(args);
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void flowgraphbuilder_jump_return_0004() throws Exception {
+        Misc.init();
+        Misc.captureSystemOutput();
+        String[] args = {"test/flowgraphbuilder/flowgraph_builder_jump_return_0004.js"};
+        Misc.run(args);
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void flowgraphbuilder_jump_return_0005() throws Exception {
+        Misc.init();
+        Misc.captureSystemOutput();
+        String[] args = {"test/flowgraphbuilder/flowgraph_builder_jump_return_0005.js"};
+        Misc.run(args);
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void flowgraphbuilder_jump_return_0006() throws Exception {
+        Misc.init();
+        Misc.captureSystemOutput();
+        String[] args = {"test/flowgraphbuilder/flowgraph_builder_jump_return_0006.js"};
+        Misc.run(args);
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void flowgraphbuilder_jump_return_0007() throws Exception {
+        Misc.init();
+        Misc.captureSystemOutput();
+        String[] args = {"test/flowgraphbuilder/flowgraph_builder_jump_return_0007.js"};
+        Misc.run(args);
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void flowgraphbuilder_jump_return_0008() throws Exception {
+        Misc.init();
+        Misc.captureSystemOutput();
+        String[] args = {"test/flowgraphbuilder/flowgraph_builder_jump_return_0008.js"};
+        Misc.run(args);
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void flowgraphbuilder_jump_return_0009() throws Exception {
+        Misc.init();
+        Misc.captureSystemOutput();
+        String[] args = {"test/flowgraphbuilder/flowgraph_builder_jump_return_0009.js"};
+        Misc.run(args);
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void flowgraphbuilder_jump_return_0010() throws Exception {
+        Misc.init();
+        Misc.captureSystemOutput();
+        String[] args = {"test/flowgraphbuilder/flowgraph_builder_jump_return_0010.js"};
+        Misc.run(args);
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void flowgraphbuilder_jump_return_0011() throws Exception {
+        Misc.init();
+        Misc.captureSystemOutput();
+        String[] args = {"test/flowgraphbuilder/flowgraph_builder_jump_return_0011.js"};
+        Misc.run(args);
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void flowgraphbuilder_jump_return_0012() throws Exception {
+        Misc.init();
+        Misc.captureSystemOutput();
+        String[] args = {"test/flowgraphbuilder/flowgraph_builder_jump_return_0012.js"};
+        Misc.run(args);
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void flowgraphbuilder_jump_return_0013() throws Exception {
+        Misc.init();
+        Misc.captureSystemOutput();
+        String[] args = {"test/flowgraphbuilder/flowgraph_builder_jump_return_0013.js"};
+        Misc.run(args);
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void flowgraphbuilder_jump_return_0014() throws Exception {
+        Misc.init();
+        Misc.captureSystemOutput();
+        String[] args = {"test/flowgraphbuilder/flowgraph_builder_jump_return_0014.js"};
+        Misc.run(args);
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void flowgraphbuilder_jump_return_0015() throws Exception {
+        Misc.init();
+        Misc.captureSystemOutput();
+        String[] args = {"test/flowgraphbuilder/flowgraph_builder_jump_return_0015.js"};
+        Misc.run(args);
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void flowgraphbuilder_forin() throws Exception {
+        Misc.init();
+        Misc.captureSystemOutput();
+        String[] args = {"test/flowgraphbuilder/forin.js"};
+        Misc.run(args);
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void flowgraphbuilder_forin_call() throws Exception {
+        Misc.init();
+        Misc.captureSystemOutput();
+        String[] args = {"test/flowgraphbuilder/forin_call.js"};
+        Misc.run(args);
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void flowgraphbuilder_forin_call2() throws Exception {
+        Misc.init();
+        Misc.captureSystemOutput();
+        String[] args = {"test/flowgraphbuilder/forin_call2.js"};
+        Misc.run(args);
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void flowgraphbuilder_forin_only_continue() throws Exception {
+        Misc.init();
+        Misc.captureSystemOutput();
+        String[] args = {"test/flowgraphbuilder/forin_only_continue.js"};
+        Misc.run(args);
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void flowgraphbuilder_switch_empty() throws Exception {
+        Misc.init();
+        Misc.captureSystemOutput();
+        String[] args = {"test/flowgraphbuilder/switch_empty.js"};
+        Misc.run(args);
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void flowgraphbuilder_directive() throws Exception {
+        Misc.init();
+        Misc.captureSystemOutput();
+        String[] args = {"test/flowgraphbuilder/directive.js"};
+        Misc.run(args);
+        Misc.checkSystemOutput();
+    }
+
+    @Ignore // see https://github.com/cs-au-dk/TAJS-private/issues/112
+    @Test
+    public void flowgraphbuilder_multipleLazyOrs() throws Exception {
+        Misc.init();
+        Misc.captureSystemOutput();
+        String[] args = {"test/flowgraphbuilder/multipleLazyOrs.js"};
+        Misc.run(args);
+        Misc.checkSystemOutput();
+    }
+
+    @Ignore // see GitHub #166
+    @Test
+    public void flowgraphbuilder_switchWithCall() throws Exception {
+        Misc.init();
+        Misc.captureSystemOutput();
+        String[] args = {"test/flowgraphbuilder/switchWithCall.js"};
+        Misc.run(args);
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void flowgraphbuilder_testExpressionStatementResultRegister() throws Exception {
+        // source for this test is weird. But it did expose a bug where expression-statements did not write to the AbstractNode.NO_VALUE register
+        Misc.init();
+        Misc.captureSystemOutput();
+        Options.get().enableIncludeDom();
+        String[] args = {"test/flowgraphbuilder/testExpressionStatementResultRegister.js"};
+        Misc.run(args);
+        Misc.checkSystemOutput();
+    }
+
 }
+
+

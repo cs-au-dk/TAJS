@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2013 Aarhus University
+ * Copyright 2009-2015 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,13 +16,13 @@
 
 package dk.brics.tajs.analysis.dom.style;
 
-import java.util.Collections;
-
 import dk.brics.tajs.analysis.InitialStateBuilder;
 import dk.brics.tajs.analysis.State;
 import dk.brics.tajs.analysis.dom.DOMObjects;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.Value;
+
+import java.util.Collections;
 
 public class CSSStyleDeclaration {
 
@@ -37,5 +37,4 @@ public class CSSStyleDeclaration {
         s.multiplyObject(STYLEDECLARATION);
         STYLEDECLARATION = STYLEDECLARATION.makeSingleton().makeSummary();
     }
-
 }

@@ -6,13 +6,13 @@ var u = Math.random()
 
 function f() {
 	y[87] = x.a;
-//	dumpObject(y)
+//	TAJS_dumpObject(y)
 	z = y[u]
-	dumpValue(z)
+	TAJS_dumpValue(z)
 }
 
 f()
 
-//dumpValue(y.b)
-//dumpValue(z)
+//TAJS_dumpValue(y.b)
+//TAJS_dumpValue(z)
 

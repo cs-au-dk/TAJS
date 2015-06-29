@@ -91,5 +91,5 @@ ret = fastaRandom(5*count*1000, HomoSap);
 
 var _sunSpiderInterval = new Date() - _sunSpiderStartDate;
 
-dumpValue(_sunSpiderInterval);
+TAJS_dumpValue(_sunSpiderInterval);
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2013 Aarhus University
+ * Copyright 2009-2015 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,6 +19,7 @@ package dk.brics.tajs.analysis.dom.ajax;
 import dk.brics.tajs.analysis.State;
 
 public class AjaxBuilder {
+
     public static void build(State s) {
         XmlHttpRequest.build(s);
         ActiveXObject.build(s);

@@ -2,12 +2,12 @@ test/micro/test192.js:8:5: [definite] The variable t is never used
 test/micro/test192.js:9:1: [info] Abstract state:
 Abstract state:
   Execution context: ScopeChain=[[@<the global object>[native]]], VariableObject=[@<the global object>[native]], this=[@<the global object>[native]]
-  Summarized: maybe=[@f#fun1, @Object#node1, @activation#node11, @arguments#node11], definitely=[@f#fun1, @Object#node1, @activation#node11, @arguments#node11]
+  Summarized: maybe=[@f#fun1, @arguments#node11, @activation#node11, @Object#node1], definitely=[@f#fun1, @arguments#node11, @activation#node11, @Object#node1]
   Store (excluding basis and default objects): 
-    @<the global object>[native] (<initial state>): {dumpState:^(@<the global object>[native].dumpState[present]),f:[@f#fun1],t:42.0,[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Prototype]]=?,[[Value]]=?,[[Scope]]=?}
+    @<the global object>[native] (<initial state>): {TAJS_dumpState:^(@<the global object>[native].TAJS_dumpState[present]),f:[@f#fun1],t:42.0,[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Prototype]]=?,[[Value]]=?,[[Scope]]=?}
     @Object#node1 (test/micro/test192.js:1:1): {constructor:[@f#fun1],[[Prototype]]=[@Object.prototype[native]],[[Value]]=NaN}
     @f#fun1 (test/micro/test192.js:1:1): {length:1.0,prototype:[@Object#node1],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@<the global object>[native]]]}
   Registers: 
     v1=Undef
     v6=[@<the global object>[native]]
-    v7=^(@<the global object>[native].dumpState[present])
+    v7=^(@<the global object>[native].TAJS_dumpState[present])

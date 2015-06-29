@@ -2,9 +2,9 @@ var allResults = [ ];
 
 function time() {
   allResults.push(42);
-  dumpObject(allResults);
+  TAJS_dumpObject(allResults);
 }
 
 time();
 
-dumpObject(allResults);
+TAJS_dumpObject(allResults);

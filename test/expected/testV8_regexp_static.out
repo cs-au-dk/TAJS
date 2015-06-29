@@ -1,5 +1,0 @@
-test/v8tests/regexp-static.js:34:1: [definite] ReferenceError, reading absent variable assertEquals
-test/v8tests/regexp-static.js:34:14: [definite] Unreachable code
-test/v8tests/regexp-static.js:49:10: [definite] The variable i is never used
-test/v8tests/regexp-static.js:121:1: [definite] Unreachable function f
-test/v8tests/regexp-static.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/regexp-static.js:34:1]

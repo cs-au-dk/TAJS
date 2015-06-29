@@ -8,4 +8,4 @@ function objectMasquerading () {
 }
 
 var rec1 = objectMasquerading();
-dumpObject(rec1);
+TAJS_dumpObject(rec1);

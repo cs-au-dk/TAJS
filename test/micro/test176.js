@@ -1,7 +1,7 @@
 g = {a: 234, b:23, t:44}
 o = {}
-dumpObject(g)
+TAJS_dumpObject(g)
 for (var x in g) {
     o[x] = g[x]
 }
-dumpObject(o)
+TAJS_dumpObject(o)

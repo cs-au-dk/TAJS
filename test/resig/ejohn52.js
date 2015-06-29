@@ -5,8 +5,8 @@ var timer = setInterval(function(){
     log( "Timer call: ", count ); 
     count++; 
   } else { 
-    assert( count == 5 ); 
-    assert( timer ); 
+    TAJS_assert( count == 5 ); 
+    TAJS_assert( timer ); 
     clearInterval( timer ); 
   } 
 }, 100);

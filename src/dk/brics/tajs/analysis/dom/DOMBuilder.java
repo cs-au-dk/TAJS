@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2013 Aarhus University
+ * Copyright 2009-2015 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,37 +25,44 @@ import dk.brics.tajs.analysis.dom.html.HTMLBuilder;
 import dk.brics.tajs.analysis.dom.html5.HTML5Builder;
 import dk.brics.tajs.analysis.dom.style.StyleBuilder;
 import dk.brics.tajs.analysis.dom.view.ViewBuilder;
+import dk.brics.tajs.lattice.ObjectLabel;
+import dk.brics.tajs.options.Options;
+import net.htmlparser.jericho.Element;
+import net.htmlparser.jericho.Source;
+
+import java.util.Collections;
 
 /**
  * Setup the DOM browser model.
- * <p/>
+ * <p>
  * An overview is available at:
- * <p/>
+ * <p>
  * http://dsmith77.files.wordpress.com/2008/07/the-document-object-model-dom.gif
- * <p/>
+ * <p>
  * DOM Spec:
  * http://www.w3.org/DOM/DOMTR
- * <p/>
+ * <p>
  * DOM LEVEL 1:
  * http://www.w3.org/TR/2000/WD-DOM-Level-1-20000929/ecma-script-language-binding.html
- * <p/>
+ * <p>
  * DOM Level 2 Core:
  * http://www.w3.org/TR/DOM-Level-2-Core/core.html
  * http://www.w3.org/TR/DOM-Level-2-Core/ecma-script-binding.html
- * <p/>
+ * <p>
  * DOM LEVEL 2 HTML:
  * http://www.w3.org/TR/DOM-Level-2-HTML/ecma-script-binding.html
- * <p/>
+ * <p>
  * DOM LEVEL 2: Traversal
  * http://www.w3.org/TR/DOM-Level-2-Traversal-Range/Overview.html
  */
 public class DOMBuilder {
+
     /**
      * Construct the initial DOM objects.
      * Its assumed that WINDOW is added to the state somewhere else before this function is invoked since its the
      * global objects when running in DOM mode.
      */
-    public static void addInitialState(State s) {
+    public static void addInitialState(State s, Source document) {
         // Reset DOM Registry
         DOMRegistry.reset();
 
@@ -83,5 +90,46 @@ public class DOMBuilder {
 
         // Build initial AJAX state
         AjaxBuilder.build(s);
+
+        if (document != null)
+            buildHTML(s, document);
+    }
+
+    /**
+     * Build model of the HTML page.
+     */
+    private static void buildHTML(State s, Source document) { // TODO: (#118) more precise models of the HTML DOM?
+        // Ignore HTML content?
+        if (Options.get().isIgnoreHTMLContent()) {
+            return;
+        }
+
+        for (Element element : document.getAllElements()) {
+
+            // Pick up special properties
+            ObjectLabel label = DOMFunctions.getHTMLObjectLabel(element.getName());
+            if (label != null) {
+                // Special Property: id
+                String id = element.getAttributeValue("id");
+                if (id != null) {
+                    s.getExtras().addToMayMap(DOMRegistry.MayMaps.ELEMENTS_BY_ID.name(), id, Collections.singleton(label));
+
+                    // TODO An element with id FOO is available as FOO
+                    // s.writeProperty(DOMWindow.WINDOW, id, Value.makeObject(label));
+                }
+
+                // Special Property: name
+                String name = element.getAttributeValue("name");
+                if (name != null) {
+                    s.getExtras().addToMayMap(DOMRegistry.MayMaps.ELEMENTS_BY_NAME.name(), name, dk.brics.tajs.util.Collections.singleton(label));
+                }
+
+                // Special Property: tagName
+                String tagname = element.getName();
+                if (tagname != null) {
+                    s.getExtras().addToMayMap(DOMRegistry.MayMaps.ELEMENTS_BY_TAGNAME.name(), tagname, Collections.singleton(label));
+                }
+            }
+        }
     }
 }

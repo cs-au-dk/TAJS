@@ -3,5 +3,4 @@
 /dist
 /out
 /doc
-*.tidy.html
-*.tidy.htm
+.idea/workspace.xml

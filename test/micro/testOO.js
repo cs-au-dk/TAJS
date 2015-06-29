@@ -15,38 +15,38 @@ Person.prototype.slap =
 };
 
 var jimmy = new Person("jimmy");
-dumpValue(jimmy.getName());
-dumpValue(jimmy.say("hello"));
-dumpValue(jimmy.slap());
-dumpValue(jimmy.slap());
-dumpValue(jimmy.slap());
-//dumpValue(jimmy.slap());
+TAJS_dumpValue(jimmy.getName());
+TAJS_dumpValue(jimmy.say("hello"));
+TAJS_dumpValue(jimmy.slap());
+TAJS_dumpValue(jimmy.slap());
+TAJS_dumpValue(jimmy.slap());
+//TAJS_dumpValue(jimmy.slap());
 
 // a subclass
 function Singer(name) {
   Person.call(this,name);
 }
-dumpObject(Singer.prototype);
+TAJS_dumpObject(Singer.prototype);
 Singer.prototype = new Person();
-dumpObject(Singer.prototype);
+TAJS_dumpObject(Singer.prototype);
 Singer.prototype.Super = Person.prototype;
-dumpObject(Singer.prototype);
+TAJS_dumpObject(Singer.prototype);
 Singer.prototype.sing = function(song) { return this.say(song+" tra-la-la"); };
-dumpObject(Singer.prototype);
+TAJS_dumpObject(Singer.prototype);
 
 var jerry = new Singer("jerry");
-dumpObject(jerry); // should have 'name' and 'count'
-dumpObject(Singer);
-dumpObject(Singer.prototype);
-dumpObject(Person);
-dumpObject(Person.prototype);
-dumpValue(jerry.getName()); // should be (approximation of) "jerry"
-dumpValue(jerry.say("hello"));
-dumpValue(jerry.sing("a song"));
-dumpValue(jerry.slap());
-//dumpValue(jerry.slap());
-//dumpValue(jerry.slap());
-//dumpValue(jerry.slap());
+TAJS_dumpObject(jerry); // should have 'name' and 'count'
+TAJS_dumpObject(Singer);
+TAJS_dumpObject(Singer.prototype);
+TAJS_dumpObject(Person);
+TAJS_dumpObject(Person.prototype);
+TAJS_dumpValue(jerry.getName()); // should be (approximation of) "jerry"
+TAJS_dumpValue(jerry.say("hello"));
+TAJS_dumpValue(jerry.sing("a song"));
+TAJS_dumpValue(jerry.slap());
+//TAJS_dumpValue(jerry.slap());
+//TAJS_dumpValue(jerry.slap());
+//TAJS_dumpValue(jerry.slap());
 
 
 // another subclass
@@ -58,10 +58,10 @@ Rockstar.prototype.Super = Singer.prototype;
 Rockstar.prototype.say = function(words) { return this.Super.say("Gee, "+words); };
 
 var marilyn = new Rockstar("marilyn");
-dumpValue(marilyn.getName());
-dumpValue(marilyn.say("I'm bad"));
-dumpValue(marilyn.sing("a hard day's night"));
-dumpValue(marilyn.slap());
-//dumpValue(marilyn.slap());
-//dumpValue(marilyn.slap());
-//dumpValue(marilyn.slap());
+TAJS_dumpValue(marilyn.getName());
+TAJS_dumpValue(marilyn.say("I'm bad"));
+TAJS_dumpValue(marilyn.sing("a hard day's night"));
+TAJS_dumpValue(marilyn.slap());
+//TAJS_dumpValue(marilyn.slap());
+//TAJS_dumpValue(marilyn.slap());
+//TAJS_dumpValue(marilyn.slap());

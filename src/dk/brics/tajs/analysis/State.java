@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2013 Aarhus University
+ * Copyright 2009-2015 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,36 +24,31 @@ import dk.brics.tajs.solver.GenericSolver;
 /**
  * Abstract state.
  */
-public final class State extends BlockState<State,Context,CallEdge<State>> {
+public final class State extends BlockState<State, Context, CallEdge<State>> {
 
-	/**
-	 * Constructs a new abstract state.
-	 */
-	public State(GenericSolver<State,Context,CallEdge<State>,?,?>.SolverInterface c, BasicBlock block) {
-		super(c, block);
-	}
-	
-	private State(State x) {
-		super(x);
-	}
-	
-	@Override
-	public State clone() {
-		return new State(this);
-	}
+    /**
+     * Constructs a new abstract state.
+     */
+    public State(GenericSolver<State, Context, CallEdge<State>, ?, ?, ?>.SolverInterface c, BasicBlock block) {
+        super(c, block);
+    }
 
-	@Override
-	public String diff(State old) {
-		return super.diff((BlockState<State,Context,CallEdge<State>>)old);
-	}
+    private State(State x) {
+        super(x);
+    }
 
-	@Override
-	public void remove(State other) {
-		super.remove((BlockState<State,Context,CallEdge<State>>)other);
-	}
+    @Override
+    public State clone() {
+        return new State(this);
+    }
 
-	@Override
-	public boolean propagate(State s, boolean funentry) {
-		return super.propagate((BlockState<State,Context,CallEdge<State>>)s, funentry);
-	}
+    @Override
+    public String diff(State old) {
+        return diff((BlockState<State, Context, CallEdge<State>>) old);
+    }
+
+    @Override
+    public boolean propagate(State s, boolean funentry) {
+        return propagate((BlockState<State, Context, CallEdge<State>>) s, funentry);
+    }
 }

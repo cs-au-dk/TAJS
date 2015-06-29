@@ -1,1286 +1,888 @@
 package dk.brics.tajs.options;
 
+import dk.brics.tajs.util.Collections;
+import org.apache.log4j.Appender;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
+import org.apache.log4j.PatternLayout;
+import org.kohsuke.args4j.Argument;
+import org.kohsuke.args4j.CmdLineException;
+import org.kohsuke.args4j.CmdLineParser;
+import org.kohsuke.args4j.Option;
+
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Comparator;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
+import java.util.TreeMap;
 
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
-import org.kohsuke.args4j.Argument;
-import org.kohsuke.args4j.CmdLineException;
-import org.kohsuke.args4j.CmdLineParser;
-import org.kohsuke.args4j.Option;
-
-import dk.brics.tajs.util.Collections;
-import dk.brics.tajs.util.Pair;
-
+/**
+ * Option values.
+ * <p>
+ * All options are disabled by default.
+ */
 public class OptionValues {
-	
-	@Option(name = "-context-specialization", usage = "Enable context specialization")
-	private boolean contextSpecialization;
-	
-	@Option(name = "-no-control-sensitivity", usage = "Disable control sensitivity")
-	private boolean noControlSensitivity;
-	
-	@Option(name = "-no-object-sensitivity", usage = "Disable object sensitivity")
-	private boolean noObjectSensitivity;
-	
-	@Option(name = "-no-recency", usage = "Disable recency abstraction")
-	private boolean noRecency;
-	
-	@Option(name = "-no-modified", usage = "Disable modified flags")
-	private boolean noModified;
-	
-	@Option(name = "-no-exceptions", usage = "Disable implicit exception flow")
-	private boolean noExceptions;
-	
-	@Option(name = "-no-gc", usage = "Disable abstract garbage collection")
-	private boolean noGc;
-	
-	@Option(name = "-no-lazy", usage = "Disable lazy propagation")
-	private boolean noLazy;
-	
-//	@Option(name = "-flowgraph-optimization", usage = "Enable flowgraph optimization")
+
+    @Option(name = "-no-control-sensitivity", usage = "Disable control sensitivity")
+    private boolean noControlSensitivity;
+
+    @Option(name = "-no-object-sensitivity", usage = "Disable object sensitivity")
+    private boolean noObjectSensitivity;
+
+    @Option(name = "-no-recency", usage = "Disable recency abstraction")
+    private boolean noRecency;
+
+    @Option(name = "-no-modified", usage = "Disable modified flags")
+    private boolean noModified;
+
+    @Option(name = "-no-exceptions", usage = "Disable implicit exception flow")
+    private boolean noExceptions;
+
+    @Option(name = "-no-gc", usage = "Disable abstract garbage collection")
+    private boolean noGc;
+
+    @Option(name = "-no-lazy", usage = "Disable lazy propagation")
+    private boolean noLazy;
+
+    @Option(name = "-no-copy-on-write", usage = "Disable copy-on-write")
+    private boolean noCopyOnWrite;
+
+    @Option(name = "-no-hybrid-collections", usage = "Disable hybrid collections")
+    private boolean noHybridCollections;
+
+    @Option(name = "-no-charged-calls", usage = "Disable charged calls")
+    private boolean noChargedCalls;
+
+    @Option(name = "-no-concrete", usage = "Disable concrete interpretation for selected native functions")
+    private boolean noConcreteNative;
+
+    @Option(name = "-no-for-in", usage = "Disable for-in specialization")
+    private boolean noForInSpecialization;
+
+//	@Optional(name = "-flowgraph-optimization", usage = "Enable flowgraph optimization")
 //	private boolean flowgraphOptimization;
-	
-	@Option(name = "-no-copy-on-write", usage = "Disable copy-on-write")
-	private boolean noCopyOnWrite;
-	
-	@Option(name = "-no-hybrid-collections", usage = "Disable hybrid collections")
-	private boolean noHybridCollections;
-	
-	@Option(name = "-no-charged-calls", usage = "Disable charged calls")
-	private boolean noChargedCalls;
-	
-	@Option(name = "-low-severity", usage = "Enable low severity messages")
-	private boolean lowSeverity;
-	
-	@Option(name = "-unsound", usage = "Enable unsound assumptions")
-	private boolean unsound;
-	
-	@Option(name = "-flowgraph", usage = "Output flowgraph.dot")
-	private boolean flowgraph;
-	
-	@Option(name = "-callgraph", usage = "Output callgraph.dot")
-	private boolean callgraph;
-	
-	@Option(name = "-debug", usage = "Output debug information")
-	private boolean debug;
-	
-	@Option(name = "-collect-variable-info", usage = "Output type and line information on reachable variables")
-	private boolean collectVariableInfo;
-	
-	@Option(name = "-newflow", usage = "Report summary of new flow at function entries")
-	private boolean newflow;
 
-	@Option(name = "-states", usage = "Output intermediate abstract states")
-	private boolean states;
-	
-	@Option(name = "-test", usage = "Test mode (implies quiet), ensures predictable iteration orders")
-	private boolean test;
-	
-	@Option(name = "-test-flowgraph-builder", usage = "Test flow graph builder (implies test mode)")
-	private boolean testFlowgraphBuilder;
-	
-	@Option(name = "-timing", usage = "Report analysis time")
-	private boolean timing;
-	
-	@Option(name = "-statistics", usage = "Report statistics")
-	private boolean statistics;
+    @Option(name = "-context-specialization", usage = "Enable context specialization")
+    private boolean contextSpecialization;
 
-	@Option(name = "-memory-usage", usage = "Report the memory usage of the analysis")
-	private boolean memoryUsage;
-	
-	@Option(name = "-quiet", usage = "Only output results, not progress")
-	private boolean quiet;
-	
-	@Option(name = "-dom", usage = "Enable Mozilla DOM browser model")
-	private boolean includeDom;
-	
-	@Option(name = "-propagate-dead-flow", usage = "Propagate empty values")
-	private boolean propagateDeadFlow;
+    @Option(name = "-low-severity", usage = "Enable low severity messages")
+    private boolean lowSeverity;
 
-	@Option(name = "-unroll-one-and-a-half", usage = "Enable 1 1/2 loop unrolling")
-	private boolean unrollOneAndAHalf;
-	
-	@Option(name = "-always-canput", usage = "Assume [[CanPut]] always succeeds")
-	private boolean alwaysCanput;
-	
-	@Option(name = "-eval-statistics", usage = "Report uses of eval and innerHTML")
-	private boolean evalStatistics;
-	
-	@Option(name = "-coverage", usage = "Output a view of the source with unreachable lines highlighted")
-	private boolean coverage;
-	
-	@Option(name = "-single-event-handler-loop", usage = "Use a single non-deterministic event loop for events")
-	private boolean singleEventHandlerLoop;
+    @Option(name = "-unsound", usage = "Enable unsound assumptions")
+    private boolean unsound;
 
-	@Option(name = "-no-messages", usage = "Disable analysis messages")
-	private boolean no_messages;
-	
-	@Option(name = "-single-event-handler-type", usage = "Do not distinguish between different types of event handlers")
-	private boolean single_event_handler_type;
-	
-//	@Option(name = "-introduce-error", usage = "Measure precision by randomly introducing syntax errors")
+    @Option(name = "-flowgraph", usage = "Output flowgraph.dot")
+    private boolean flowgraph;
+
+    @Option(name = "-callgraph", usage = "Output callgraph.dot")
+    private boolean callgraph;
+
+    @Option(name = "-debug", usage = "Output debug information")
+    private boolean debug;
+
+    @Option(name = "-collect-variable-info", usage = "Output type and line information on reachable variables")
+    private boolean collectVariableInfo;
+
+    @Option(name = "-newflow", usage = "Report summary of new flow at function entries")
+    private boolean newflow;
+
+    @Option(name = "-states", usage = "Output intermediate abstract states")
+    private boolean states;
+
+    @Option(name = "-test", usage = "Test mode (implies quiet), ensures predictable iteration orders")
+    private boolean test;
+
+    @Option(name = "-test-flowgraph-builder", usage = "Test flow graph builder (implies test mode)")
+    private boolean testFlowgraphBuilder;
+
+    @Option(name = "-timing", usage = "Report analysis time")
+    private boolean timing;
+
+    @Option(name = "-statistics", usage = "Report statistics")
+    private boolean statistics;
+
+    @Option(name = "-memory-usage", usage = "Report the memory usage of the analysis")
+    private boolean memoryUsage;
+
+    @Option(name = "-quiet", usage = "Only output results, not progress")
+    private boolean quiet;
+
+    @Option(name = "-dom", usage = "Enable Mozilla DOM browser model")
+    private boolean includeDom;
+
+    @Option(name = "-propagate-dead-flow", usage = "Propagate empty values")
+    private boolean propagateDeadFlow;
+
+    @Option(name = "-unroll-one-and-a-half", usage = "Enable 1 1/2 loop unrolling")
+    private boolean unrollOneAndAHalf;
+
+    @Option(name = "-always-canput", usage = "Assume [[CanPut]] always succeeds")
+    private boolean alwaysCanput;
+
+    @Option(name = "-eval-statistics", usage = "Report uses of eval and innerHTML")
+    private boolean evalStatistics;
+
+    @Option(name = "-coverage", usage = "Output a view of the source with unreachable lines highlighted")
+    private boolean coverage;
+
+//	@Optional(name = "-introduce-error", usage = "Measure precision by randomly introducing syntax errors")
 //	private boolean introduceError;
-	
-	@Option(name = "-ignore-html-content", usage = "Ignore the content of the HTML page")
-	private boolean ignore_html_content;
-	
-	@Option(name = "-uneval", usage = "Try to remove calls to eval")
-	private boolean unevalizer;
-	
-	@Option(name = "-no-polymorphic", usage = "Disable use of polymorphic objects")
-	private boolean no_polymorphic;
-	
-	@Option(name = "-return-json", usage = "Assume that AJAX calls return JSON")
-	private boolean ajaxReturnsJson;
-	
-	@Option(name = "-help", usage = "Prints this message")
-	private boolean help;
-	
-	@Option(name = "-iteration-bound", usage = "Bounds the number of iterations the solver performs")
-	private String iterationBoundString;
-	private int iterationBound = -1;
-	
-	@Option(name = "-for-in", usage = "Enable for-in specialization")
-	private boolean forInSpecialization;
 
-	@Option(name = "-ignore-libraries", usage = "Ignore unreachable code messages from libraries (the library names must be separated by a single comma!)")
-	private String ignoredLibrariesString;
-	private boolean ignoreLibraries;
-	private Set<String> ignoredLibraries = new LinkedHashSet<>();
+    @Option(name = "-no-messages", usage = "Disable analysis messages")
+    private boolean no_messages;
 
-	@Option(name = "-context-sensitive-heap", usage = "Enable selective context sensitive heap abstract")
-    private boolean contextSensitiveHeapEnabled;
-    
+    @Option(name = "-single-event-handler-type", usage = "Do not distinguish between different types of event handlers")
+    private boolean single_event_handler_type;
+
+    @Option(name = "-ignore-html-content", usage = "Ignore the content of the HTML page")
+    private boolean ignore_html_content;
+
+    @Option(name = "-uneval", usage = "Try to remove calls to eval")
+    private boolean unevalizer;
+
+    @Option(name = "-no-polymorphic", usage = "Disable use of polymorphic objects")
+    private boolean no_polymorphic;
+
+    @Option(name = "-return-json", usage = "Assume that AJAX calls return JSON")
+    private boolean ajaxReturnsJson;
+
+    @Option(name = "-help", usage = "Prints this message")
+    private boolean help;
+
+    @Option(name = "-iteration-bound", usage = "Bounds the number of iterations the solver performs")
+    private String iterationBoundString;
+
+    private int iterationBound = -1;
+
+    @Option(name = "-ignore-libraries", usage = "Ignore unreachable code messages from libraries (library names separated by comma)")
+    private String ignoredLibrariesString;
+
+    private boolean ignoreLibraries;
+
+    private Set<String> ignoredLibraries = new LinkedHashSet<>();
+
+    @Option(name = "-context-sensitive-heap", usage = "Enable selective context sensitive heap abstractions")
+    private boolean contextSensitiveHeap;
+
     @Option(name = "-parameter-sensitivity", usage = "Enabled usage of different contexts for (some) calls based on the argument values")
-    private boolean parameterSensitivityEnabled;
+    private boolean parameterSensitivity;
 
     @Option(name = "-numeric-variable-sensitivity", usage = "Enable numeric variable sensitivity")
-    private boolean numericVariableSensitivityEnabled;
+    private boolean numericVariableSensitivity;
 
-    @Option(name = "-unreachable", usage = "Ignore code parts which has been marked as unreachable")
-    private boolean unreachableEnabled;
+    @Option(name = "-ignore-unreachable", usage = "Ignore code parts which has been marked as unreachable")
+    private boolean ignoreUnreachable;
 
-	@Argument
-	private List<String> arguments = new ArrayList<>();
+    @Argument
+    private List<String> arguments = new ArrayList<>();
 
-	private static void copyFields(OptionValues from, OptionValues to) {
-		for (Field f : OptionValues.class.getDeclaredFields()) {
-			f.setAccessible(true);
-			try {
-				Object value = f.get(from);
-				if (value instanceof Cloneable) {
-					for (Method possibleClone : value.getClass().getDeclaredMethods()) {
-						possibleClone.setAccessible(true);
-						if ("clone".equals(possibleClone.getName()) && possibleClone.getParameterTypes().length == 0) {
-							value = possibleClone.invoke(value);
-						}
-					}
-				}
-				f.set(to, value);
-			} catch (IllegalArgumentException | IllegalAccessException e) {
-				throw new RuntimeException(e);
-			} catch (InvocationTargetException e) {
-				throw new RuntimeException(e);
-			}
-		}
-	}
+    public OptionValues() {
+        this(null, null);
+    }
 
-	public static void parse(OptionValues base, String... args) {
-		CmdLineParser parser = new CmdLineParser(base);
-		try {
-			parser.parseArgument(args);
-			{
-				// special cases which has side effects when enabled
-				// TODO avoid these brittle side effects?
-				if (base.iterationBoundString != null && !base.iterationBoundString.isEmpty()) {
-					base.iterationBound = Integer.parseInt(base.iterationBoundString);
-				}
-				if (base.ignoredLibrariesString != null && !base.ignoredLibrariesString.isEmpty()) {
-					base.ignoreLibraries = true;
-					base.ignoredLibraries = Collections.newSet(Arrays.asList(base.ignoredLibrariesString.split(",")));
-				}
-				if (base.test) {
-					base.enableTest();
-				}
-				if (base.testFlowgraphBuilder) {
-					base.enableTestFlowGraphBuiler();
-				}
-				if (base.debug) {
-					base.enableDebug();
-				}
-			}
-			if (base.help) {
-				base.describe();
-			}
-		} catch (CmdLineException e) {
-			parser.printUsage(System.err);
-			throw new RuntimeException(e);
-		}
-	}
+    public OptionValues(OptionValues base) {
+        this(base, null);
+    }
 
-	public OptionValues() {
-		this(null, null);
-	}
+    public OptionValues(OptionValues base, String[] args) {
+        if (base != null) {
+            // copy values from base
+            for (Field f : OptionValues.class.getDeclaredFields()) {
+                f.setAccessible(true);
+                try {
+                    Object value = f.get(base);
+                    if (value instanceof Cloneable) {
+                        for (Method possibleClone : value.getClass().getDeclaredMethods()) {
+                            possibleClone.setAccessible(true);
+                            if ("clone".equals(possibleClone.getName()) && possibleClone.getParameterTypes().length == 0) {
+                                value = possibleClone.invoke(value);
+                            }
+                        }
+                    }
+                    f.set(this, value);
+                } catch (IllegalArgumentException | IllegalAccessException | InvocationTargetException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        }
+        if (args != null) {
+            // parse args
+            CmdLineParser parser = new CmdLineParser(this);
+            try {
+                parser.parseArgument(args);
+                // handle flags that have side-effects, for example imply other flags
+                if (iterationBoundString != null && !iterationBoundString.isEmpty()) {
+                    iterationBound = Integer.parseInt(iterationBoundString);
+                }
+                if (ignoredLibrariesString != null && !ignoredLibrariesString.isEmpty()) {
+                    ignoreLibraries = true;
+                    ignoredLibraries = Collections.newSet(Arrays.asList(ignoredLibrariesString.split(",")));
+                }
+                if (test) {
+                    enableTest();
+                }
+                if (testFlowgraphBuilder) {
+                    enableTestFlowGraphBuiler();
+                }
+                if (debug) {
+                    enableDebug();
+                }
+                if (help) {
+                    describe();
+                }
+            } catch (CmdLineException e) {
+                parser.printUsage(System.err);
+                throw new RuntimeException(e);
+            }
+        }
+    }
 
-	public OptionValues(OptionValues base) {
-		this(base, null);
-	}
+    public OptionValues(String[] args) {
+        this(null, args);
+    }
 
-	public OptionValues(OptionValues base, String[] args) {
-		if (base != null) {
-			copyFields(base, this);
-		}
-		if (args != null) {
-			parse(this, args);
-		}
-	}
+    @Override
+    protected OptionValues clone() {
+        return new OptionValues(this);
+    }
 
-	public OptionValues(String[] args) {
-		this(null, args);
-	}
+    /**
+     * Prints a description of the available options.
+     */
+    public void describe() {
+        new CmdLineParser(this).printUsage(System.out);
+    }
 
-	@Override
-	protected OptionValues clone() {
-		return new OptionValues(this);
-	}
+    public Map<String, Object> getOptionValues() {
+        try {
+            Map<String, Object> options = new TreeMap<>();
+            for (Field f : OptionValues.class.getDeclaredFields()) {
+                f.setAccessible(true);
+                Option annotation = f.getAnnotation(Option.class);
+                if (annotation != null) {
+                    Object value = f.get(this);
+                    String name = annotation.name();
+                    if (value != null && ((value instanceof Boolean && (Boolean) value) ||
+                            (value instanceof Integer && ((Integer) value) != -1) ||
+                            (value instanceof String && !"".equals(value) && !"-1".equals(value)) ||
+                            (value instanceof Collection && !((Collection<?>) value).isEmpty()))) {
+                        options.put(name, value);
+                    }
+                }
+            }
+            return options;
+        } catch (IllegalArgumentException | IllegalAccessException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
-	/**
-	 * Prints a description of the available options.
-	 */
-	public void describe() {
-		new CmdLineParser(this).printUsage(System.out);
-	}
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        boolean first = true;
+        for (Entry<String, Object> me : getOptionValues().entrySet()) {
+            if (!first) {
+                sb.append(" ");
+            } else {
+                first = false;
+            }
+            sb.append(me.getKey());
+            if (!(me.getValue() instanceof Boolean)) {
+                sb.append(" " + me.getValue());
+            }
+        }
+        for (String argument : arguments) {
+            if (!first) {
+                sb.append(" ");
+            } else {
+                first = false;
+            }
+            sb.append(argument);
+        }
+        return sb.toString();
+    }
 
-	/**
-	 * Assumes that AJAX returns anything.
-	 */
-	public void disableAjaxReturnsJson() {
-		ajaxReturnsJson = false;
-	}
+    public void disableAjaxReturnsJson() {
+        ajaxReturnsJson = false;
+    }
 
-	/**
-	 * Do not assume [[CanPut]] always works.
-	 */
-	public void disableAlwaysCanPut() {
-		alwaysCanput = false;
-	}
+    public void disableAlwaysCanPut() {
+        alwaysCanput = false;
+    }
 
-	/**
-	 * Disable bounded number of iterations
-	 */
-	public void disableBoundedIterations() {
-		iterationBoundString = "-1";
-		iterationBound = -1;
-	}
-	
-	/**
-	 * Disable callgraph dumping.
-	 */
-	public void disableCallgraph() {
-		callgraph = false;
-	}
+    public void disableBoundedIterations() {
+        iterationBoundString = "-1";
+        iterationBound = -1;
+    }
 
-	/**
-	 * Disable variable information collection.
-	 */
-	public void disableCollectVariableInfo() {
-		collectVariableInfo = false;
-	}
+    public void disableCallgraph() {
+        callgraph = false;
+    }
 
-	/**
-	 * Disable context specialization.
-	 */
-	public void disableContextSpecialization() {
-		contextSpecialization = false;
-	}
+    public void disableCollectVariableInfo() {
+        collectVariableInfo = false;
+    }
 
-	/**
-	 * Disable debug mode.
-	 * Also sets log level to Level.INFO.
-	 */
-	public void disableDebug() {
-		debug = false;
-		Logger.getRootLogger().setLevel(Level.INFO);
-	}
+    public void disableContextSensitiveHeap() {
+        contextSensitiveHeap = false;
+    }
 
-	/**
-	 * Disable flowgraph dumping.
-	 */
-	public void disableFlowgraph() {
-		flowgraph = false;
-	}
+    public void disableContextSpecialization() {
+        contextSpecialization = false;
+    }
 
-//	/**
-//	 * Disable flow graph optimization.
-//	 */
+    public void disableControlSensitivity() {
+        noControlSensitivity = true;
+    }
+
+    public void disableDebug() {
+        debug = false;
+        Logger.getRootLogger().setLevel(Level.INFO);
+        Logger.getRootLogger().getAppender("tajs").setLayout(new PatternLayout("%m%n"));
+    }
+
+    public void disableFlowgraph() {
+        flowgraph = false;
+    }
+
 //	public void disableFlowgraphOptimization() {
 //		flowgraphOptimization = false;
 //	}
 
-	/**
-	 * Do not ignore HTML content.
-	 */
-	public void disableIgnoreHTMLContent() {
-		ignore_html_content = false;
-	}
+    public void disableNoForInSpecialization() {
+        noForInSpecialization = false;
+    }
 
-	/**
-	 * Do not ignore libraries.
-	 */
-	public void disableIgnoreLibraries() {
-		ignoreLibraries = false;
-		ignoredLibrariesString = "";
-		ignoredLibraries = new LinkedHashSet<>();
-	}
+    public void disableIgnoreHTMLContent() {
+        ignore_html_content = false;
+    }
 
-	/**
-	 * Disable DOM model.
-	 */
-	public void disableIncludeDom() {
-		includeDom = false;
-	}
+    public void disableIgnoreLibraries() {
+        ignoreLibraries = false;
+        ignoredLibrariesString = "";
+        ignoredLibraries = new LinkedHashSet<>();
+    }
 
-	/**
-	 * Do not print low severity messages.
-	 */
-	public void disableLowSeverity() {
-		lowSeverity = false;
-	}
+    public void disableIncludeDom() {
+        includeDom = false;
+    }
 
-	/**
-	 * Disable memory usage statistics.
-	 */
-	public void disableMemoryUsage() {
-		memoryUsage = false;
-	}
+    public void disableLowSeverity() {
+        lowSeverity = false;
+    }
 
-	/**
-	 * Disable reporting summaries at flow edges.
-	 */
-	public void disableNewflow() {
-		newflow = false;
-	}
+    public void disableMemoryUsage() {
+        memoryUsage = false;
+    }
 
-	/**
-	 * Enable charged calls.
-	 */
-	public void disableNoChargedCalls() {
-		noChargedCalls = false;
-	}
+    public void disableNewflow() {
+        newflow = false;
+    }
 
-	/**
-	 * Enable object sensitivity.
-	 */
-	public void disableNoObjectSensitivity() {
-		noObjectSensitivity = false;
-	}
+    public void disableNoChargedCalls() {
+        noChargedCalls = false;
+    }
 
-	/**
-	 * Enable copy on write.
-	 */
-	public void disableNoCopyOnWrite() {
-		noCopyOnWrite = false;
-	}
+    public void disableNoCopyOnWrite() {
+        noCopyOnWrite = false;
+    }
 
-	/**
-	 * Disable ignoring exceptions.
-	 */
-	public void disableNoExceptions() {
-		noExceptions = false;
-	}
+    public void disableNoExceptions() {
+        noExceptions = false;
+    }
 
-	/**
-	 * Enable abstract garbage collection.
-	 */
-	public void disableNoGc() {
-		noGc = false;
-	}
+    public void disableNoGc() {
+        noGc = false;
+    }
 
-	/**
-	 * Enable hybrid collections.
-	 */
-	public void disableNoHybridCollections() {
-		noHybridCollections = false;
-	}
+    public void disableNoHybridCollections() {
+        noHybridCollections = false;
+    }
 
-	/**
-	 * Enable lazy propagation.
-	 */
-	public void disableNoLazy() {
-		noLazy = false;
-	}
+    public void disableNoLazy() {
+        noLazy = false;
+    }
 
-	/**
-	 * Enable control sensitivity.
-	 */
-	public void enableControlSensitivity() {
-		noControlSensitivity = false;
-	}
+    public void disableNoMessages() {
+        no_messages = false;
+    }
 
-	/**
-	 * Enable analysis messages.
-	 */
-	public void disableNoMessages() {
-		no_messages = false;
-	}
+    public void disableNoModified() {
+        noModified = false;
+    }
 
-	/**
-	 * Enable modified flags.
-	 */
-	public void disableNoModified() {
-		noModified = false;
-	}
+    public void disableNoObjectSensitivity() {
+        noObjectSensitivity = false;
+    }
 
-	/**
-	 * Enable recency abstraction.
-	 */
-	public void disableNoRecency() {
-		noRecency = false;
-	}
+    public void disableNoPolymorphic() {
+        no_polymorphic = false;
+    }
 
-	/**
-	 * Enable polymorphic values.
-	 */
-	public void disableNoPolymorphic() {
-		no_polymorphic = false;
-	}
+    public void disableNoRecency() {
+        noRecency = false;
+    }
 
-	/**
-	 * Disable propagation of dead data flow.
-	 */
-	public void disablePropagateDeadFlow() {
-		propagateDeadFlow = false;
-	}
+    public void disableNumericVariableSensitivity() {
+        numericVariableSensitivity = false;
+    }
 
-	/**
-	 * Disable quiet mode.
-	 */
-	public void disableQuiet() {
-		quiet = false;
-	}
+    public void disableParameterSensitivity() {
+        parameterSensitivity = false;
+    }
 
-	/**
-	 * Disable single event handler loop.
-	 */
-	public void disableSingleEventHandlerLoop() {
-		singleEventHandlerLoop = false;
-	}
+    public void disablePropagateDeadFlow() {
+        propagateDeadFlow = false;
+    }
 
-	/**
-	 * Disable single event handler type.
-	 */
-	public void disableSingleEventHandlerType() {
-		single_event_handler_type = false;
-	}
+    public void disableQuiet() {
+        quiet = false;
+    }
 
-	/**
-	 * Disable output of intermediate states.
-	 */
-	public void disableStates() {
-		states = false;
-	}
+    public void disableSingleEventHandlerType() {
+        single_event_handler_type = false;
+    }
 
-	/**
-	 * Disable variable statistics.
-	 */
-	public void disableStatistics() {
-		statistics = false;
-	}
+    public void disableStates() {
+        states = false;
+    }
 
-	/**
-	 * Disable test mode.
-	 */
-	public void disableTest() {
-		test = false;
-		quiet = false;
-		lowSeverity = false;
-	}
+    public void disableStatistics() {
+        statistics = false;
+    }
 
-	/**
-	 * Disable testing of flow graph builder. Also disable test mode.
-	 */
-	public void disableTestFlowGraphBuilder() {
-		disableTest();
-		testFlowgraphBuilder = false;
-	}
+    public void disableTest() {
+        test = false;
+        quiet = false;
+        lowSeverity = false;
+    }
 
-	/**
-	 * Disable timing of TAJS.
-	 */
-	public void disableTiming() {
-		timing = false;
-	}
+    public void disableTestFlowGraphBuilder() {
+        disableTest();
+        testFlowgraphBuilder = false;
+    }
 
-	/**
-	 * Disable uneval mode.
-	 */
-	public void disableUnevalizer() {
-		unevalizer = false;
-	}
+    public void disableTiming() {
+        timing = false;
+    }
 
-	/**
-	 * Disable 1 1/2 loop unrolling.
-	 */
-	public void disableUnrollOneAndAHalf() {
-		unrollOneAndAHalf = false;
-	}
+    public void disableUnevalizer() {
+        unevalizer = false;
+    }
 
-	/**
-	 * Disable unsound shortcuts.
-	 */
-	public void disableUnsound() {
-		unsound = false;
-	}
+    public void disableUnreachable() {
+        ignoreUnreachable = false;
+    }
 
-	/**
-	 * Assume AJAX returns JSON data.
-	 */
-	public void enableAjaxReturnsJson() {
-		ajaxReturnsJson = true;
-	}
+    public void disableUnrollOneAndAHalf() {
+        unrollOneAndAHalf = false;
+    }
 
-	/**
-	 * Assume [[CanPut]] always works.
-	 */
-	public void enableAlwaysCanPut() {
-		alwaysCanput = true;
-	}
+    public void disableUnsound() {
+        unsound = false;
+    }
 
-	/**
-	 * Enable a bounded number of iterations
-	 */
-	public void enableBoundedIterations(int bound) {
-		iterationBoundString = bound + "";
-		iterationBound = bound;
-	}
-	
-	/**
-	 * Enable callgraph dumping.
-	 */
-	public void enableCallgraph() {
-		callgraph = true;
-	}
+    public void enableAjaxReturnsJson() {
+        ajaxReturnsJson = true;
+    }
 
-	/**
-	 * Enable variable information collection.
-	 */
-	public void enableCollectVariableInfo() {
-		collectVariableInfo = true;
-	}
+    public void enableAlwaysCanPut() {
+        alwaysCanput = true;
+    }
 
-	/**
-	 * Enable context specialization.
-	 */
-	public void enableContextSpecialization() {
-		contextSpecialization = true;
-	}
+    public void enableBoundedIterations(int bound) {
+        iterationBoundString = String.valueOf(bound);
+        iterationBound = bound;
+    }
 
-	/**
-	 * Enable coverage view.
-	 */
-	public void enableCoverage() {
-		coverage = true;
-	}
+    public void enableCallgraph() {
+        callgraph = true;
+    }
 
-	/**
-	 * Enable debug mode.
-	 * Also sets log level to Level.DEBUG.
-	 */
-	public void enableDebug() {
-		debug = true;
-		Logger.getRootLogger().setLevel(Level.DEBUG);
-	}
+    public void enableCollectVariableInfo() {
+        collectVariableInfo = true;
+    }
 
-//	/**
-//	 * Introduce random errors.
-//	 */
 //	public void enableErrorBatchMode() {
 //		introduceError = true;
 //	}
 
-	/**
-	 * Enable eval statistics.
-	 */
-	public void enableEvalStatistics() {
-		evalStatistics = true;
-	}
+    public void enableContextSensitiveHeap() {
+        contextSensitiveHeap = true;
+    }
 
-	/**
-	 * Enable flowgraph dumping.
-	 */
-	public void enableFlowgraph() {
-		flowgraph = true;
-	}
+    public void enableContextSpecialization() {
+        contextSpecialization = true;
+    }
 
-//	/**
-//	 * Enable flow graph optimization.
-//	 */
 //	public void enableFlowgraphOptimization() {
 //		flowgraphOptimization = true;
 //	}
 
-	/**
-	 * Ignore HTML content.
-	 */
-	public void enableIgnoreHTMLContent() {
-		ignore_html_content = true;
-	}
+    public void enableControlSensitivity() {
+        noControlSensitivity = false;
+    }
 
-	/**
-	 * Ignore libraries.
-	 */
-	public void enableIgnoreLibraries() {
-		ignoreLibraries = true;
-	}
+    public void enableCoverage() {
+        coverage = true;
+    }
 
-	/**
-	 * Enable DOM model.
-	 */
-	public void enableIncludeDom() {
-		includeDom = true;
-	}
+    public void enableDebug() {
+        debug = true;
+        Logger.getRootLogger().setLevel(Level.DEBUG);
+        Appender a = Logger.getRootLogger().getAppender("tajs");
+        if (a != null)
+            a.setLayout(new PatternLayout("[%p %C{1}] %m%n"));
+    }
 
-	/**
-	 * Print low severity messages.
-	 */
-	public void enableLowSeverity() {
-		lowSeverity = true;
-	}
+    public void enableEvalStatistics() {
+        evalStatistics = true;
+    }
 
-	/**
-	 * Enable memory usage statistics.
-	 */
-	public void enableMemoryUsage() {
-		memoryUsage = true;
-	}
+    public void enableFlowgraph() {
+        flowgraph = true;
+    }
 
-	/**
-	 * Enable reporting summaries at flow edges.
-	 */
-	public void enableNewflow() {
-		newflow = true;
-	}
+    public void enableNoForInSpecialization() {
+        noForInSpecialization = true;
+    }
 
-	/**
-	 * Disable charged calls.
-	 */
-	public void enableNoChargedCalls() {
-		noChargedCalls = true;
-	}
+    public void enableIgnoreHTMLContent() {
+        ignore_html_content = true;
+    }
 
-	/**
-	 * Disable object sensitivity.
-	 */
-	public void enableNoObjectSensitivity() {
-		noObjectSensitivity = true;
-	}
+    public void enableIgnoreLibraries() {
+        ignoreLibraries = true;
+    }
 
-	/**
-	 * Disable copy on write.
-	 */
-	public void enableNoCopyOnWrite() {
-		noCopyOnWrite = true;
-	}
+    public void enableIncludeDom() {
+        includeDom = true;
+    }
 
-	/**
-	 * Enable ignoring exceptions.
-	 */
-	public void enableNoExceptions() {
-		noExceptions = true;
-	}
+    public void enableLowSeverity() {
+        lowSeverity = true;
+    }
 
-	/**
-	 * Disable abstract garbage collection.
-	 */
-	public void enableNoGc() {
-		noGc = true;
-	}
+    public void enableMemoryUsage() {
+        memoryUsage = true;
+    }
 
-	/**
-	 * Disable hybrid collections.
-	 */
-	public void enableNoHybridCollections() {
-		noHybridCollections = true;
-	}
+    public void enableNewflow() {
+        newflow = true;
+    }
 
-	/**
-	 * Disable lazy propagation.
-	 */
-	public void enableNoLazy() {
-		noLazy = true;
-	}
+    public void enableNoChargedCalls() {
+        noChargedCalls = true;
+    }
 
-	/**
-	 * Disable control sensitivity.
-	 */
-	public void disableControlSensitivity() {
-		noControlSensitivity = true;
-	}
+    public void enableNoCopyOnWrite() {
+        noCopyOnWrite = true;
+    }
 
-	/**
-	 * Disable analysis messages.
-	 */
-	public void enableNoMessages() {
-		no_messages = true;
-	}
+    public void enableNoExceptions() {
+        noExceptions = true;
+    }
 
-	/**
-	 * Disable modified flags.
-	 */
-	public void enableNoModified() {
-		noModified = true;
-	}
+    public void enableNoGc() {
+        noGc = true;
+    }
 
-	/**
-	 * Disable recency abstraction.
-	 */
-	public void enableNoRecency() {
-		noRecency = true;
-	}
+    public void enableNoHybridCollections() {
+        noHybridCollections = true;
+    }
 
-	/**
-	 * Disable polymorphic values.
-	 */
-	public void enableNoPolymorphic() {
-		no_polymorphic = true;
-	}
+    public void enableNoLazy() {
+        noLazy = true;
+    }
 
-	/**
-	 * Enable propagation of dead data flow.
-	 */
-	public void enablePropagateDeadFlow() {
-		propagateDeadFlow = true;
-	}
+    public void enableNoMessages() {
+        no_messages = true;
+    }
 
-	/**
-	 * Enable quiet mode.
-	 */
-	public void enableQuiet() {
-		quiet = true;
-	}
+    public void enableNoModified() {
+        noModified = true;
+    }
 
-	/**
-	 * Enable single event handler loop.
-	 */
-	public void enableSingleEventHandlerLoop() {
-		singleEventHandlerLoop = true;
-	}
+    public void enableNoObjectSensitivity() {
+        noObjectSensitivity = true;
+    }
 
-	/**
-	 * Enable single event handler type.
-	 */
-	public void enableSingleEventHandlerType() {
-		single_event_handler_type = true;
-	}
+    public void enableNoPolymorphic() {
+        no_polymorphic = true;
+    }
 
-	/**
-	 * Enable output of intermediate states.
-	 */
-	public void enableStates() {
-		states = true;
-	}
+    public void enableNoRecency() {
+        noRecency = true;
+    }
 
-	/**
-	 * Enable variable statistics.
-	 */
-	public void enableStatistics() {
-		statistics = true;
-	}
+    public void enableNumericVariableSensitivity() {
+        numericVariableSensitivity = true;
+    }
 
-	/**
-	 * Avoid nondeterministic output.
-	 * Also sets quiet mode and low_severity.
-	 */
-	public void enableTest() {
-		test = true;
-		quiet = true;
-		lowSeverity = true;
-	}
+    public void enableParameterSensitivity() {
+        parameterSensitivity = true;
+    }
 
-	/**
-	 * Enable testing of flow graph builder. Implies test mode.
-	 */
-	public void enableTestFlowGraphBuiler() {
-		enableTest();
-		testFlowgraphBuilder = true;
-	}
+    public void enablePropagateDeadFlow() {
+        propagateDeadFlow = true;
+    }
 
-	/**
-	 * Enable timing of TAJS.
-	 */
-	public void enableTiming() {
-		timing = true;
-	}
+    public void enableQuiet() {
+        quiet = true;
+    }
 
-	/**
-	 * Enable uneval mode.
-	 */
-	public void enableUnevalizer() {
-		unevalizer = true;
-	}
+    public void enableSingleEventHandlerType() {
+        single_event_handler_type = true;
+    }
 
-	/**
-	 * Enable 1 1/2 loop unrolling.
-	 */
-	public void enableUnrollOneAndAHalf() {
-		unrollOneAndAHalf = true;
-	}
+    public void enableStates() {
+        states = true;
+    }
 
-	/**
-	 * Enable unsound shortcuts.
-	 */
-	public void enableUnsound() {
-		unsound = true;
-	}
+    public void enableStatistics() {
+        statistics = true;
+    }
 
-	public List<String> getArguments() {
-		return arguments;
-	}
-	
-	public int getIterationBound() {
-		return iterationBound;
-	}
-	
-	/**
-	 * Get the set of ignored libraries.
-	 */
-	public Set<String> getLibraries() {
-		return ignoredLibraries;
-	}
+    public void enableTest() {
+        test = true;
+        quiet = true;
+        lowSeverity = true;
+    }
 
-	public List<Pair<String, ?>> getOptionValues() {
-		try {
-			List<Pair<String, ?>> options = new ArrayList<>();
-			for (Field f : OptionValues.class.getDeclaredFields()) {
-				f.setAccessible(true);
-				Option annotation = f.getAnnotation(org.kohsuke.args4j.Option.class);
-				if (annotation != null) {
-					Object value = f.get(this);
-					final String name = annotation.name();
-					if (value == null) {
-						// skip
-					} else if (value instanceof Boolean && (Boolean) value) {
-						options.add(Pair.make(name, value));
-					} else if (value instanceof Integer && ((Integer) value) != -1) {
-						options.add(Pair.make(name, value));
-					} else if (value instanceof String && !"".equals(value) && !"-1".equals(value)) {
-						options.add(Pair.make(name, value));
-					} else if (value instanceof Collection && !((Collection<?>) value).isEmpty()) {
-						options.add(Pair.make(name, value));
-					}
-				}
-			}
-			java.util.Collections.sort(options, new Comparator<Pair<String, ?>>() {
-				@Override
-				public int compare(Pair<String, ?> o1, Pair<String, ?> o2) {
-					return o1.getFirst().compareTo(o2.getFirst());
-				}
-			});
-			return options;
-		} catch (IllegalArgumentException | IllegalAccessException e) {
-			throw new RuntimeException(e);
-		}
-	}
+    public void enableTestFlowGraphBuiler() {
+        enableTest();
+        testFlowgraphBuilder = true;
+    }
 
-	public boolean isAlwaysCanPut() {
-		return alwaysCanput;
-	}
+    public void enableTiming() {
+        timing = true;
+    }
 
-	public boolean isBoundedIterationsEnabled() {
-		return iterationBound != -1;
-	}
+    public void enableUnevalizer() {
+        unevalizer = true;
+    }
 
-	/**
-	 * If set, output callgraph.dot.
-	 */
-	public boolean isCallGraphEnabled() {
-		return callgraph;
-	}
+    public void enableUnreachable() {
+        ignoreUnreachable = true;
+    }
 
-	/**
-	 * If set, don't use charged calls.
-	 */
-	public boolean isChargedCallsDisabled() {
+    public void enableUnrollOneAndAHalf() {
+        unrollOneAndAHalf = true;
+    }
 
-		return noChargedCalls;
-	}
+    public void enableUnsound() {
+        unsound = true;
+    }
 
-	/**
-	 * If set, summarize information on reachable variables, e.g. their type and location.
-	 */
-	public boolean isCollectVariableInfoEnabled() {
-		return collectVariableInfo;
-	}
+    public List<String> getArguments() {
+        return arguments;
+    }
 
-	/**
-	 * If set, do not use object sensitivity.
-	 */
-	public boolean isObjectSensitivityDisabled() {
-		return noObjectSensitivity;
-	}
+    public int getIterationBound() {
+        return iterationBound;
+    }
 
-	/**
-	 * If set, use context specialization
-	 */
-	public boolean isContextSpecializationEnabled() {
-		return contextSpecialization;
-	}
+    public Set<String> getLibraries() {
+        return ignoredLibraries;
+    }
 
-	/**
-	 * If set, do not use copy-on-write.
-	 */
-	public boolean isCopyOnWriteDisabled() {
-		return noCopyOnWrite;
-	}
+    public boolean isAlwaysCanPut() {
+        return alwaysCanput;
+    }
 
-	/**
-	 * Is coverage enabled.
-	 */
-	public boolean isCoverageEnabled() {
-		return coverage;
-	}
+    public boolean isBoundedIterationsEnabled() {
+        return iterationBound != -1;
+    }
 
-	/**
-	 * Are we currently in debug mode.
-	 */
-	public boolean isDebugEnabled() {
-		return debug;
-	}
+    public boolean isCallGraphEnabled() {
+        return callgraph;
+    }
 
-	/**
-	 * Are we currently in debug or test mode.
-	 */
-	public boolean isDebugOrTestEnabled() {
-		return debug || test;
-	}
-
-	/**
-	 * If set, the DOM objects and functions are part of the initial state.
-	 */
-	public boolean isDOMEnabled() {
-		return includeDom;
-	}
-
-//	/**
-//	 * Do we introduce random errors.
-//	 */
 //	public boolean isErrorBatchMode() {
 //		return introduceError;
 //	}
 
-	/**
-	 * Eval statistics enabled.
-	 */
-	public boolean isEvalStatistics() {
-		return evalStatistics;
-	}
+    public boolean isChargedCallsDisabled() {
 
-	/**
-	 * If set, exclude implicit exception flow.
-	 */
-	public boolean isExceptionsDisabled() {
-		return noExceptions;
-	}
+        return noChargedCalls;
+    }
 
-	/**
-	 * If set, output flowgraph.dot.
-	 */
-	public boolean isFlowGraphEnabled() {
-		return flowgraph;
-	}
+    public boolean isCollectVariableInfoEnabled() {
+        return collectVariableInfo;
+    }
 
-//	/**
-//	 * If set, do not perform flowgraph optimization.
-//	 */
+    public boolean isContextSensitiveHeapEnabled() {
+        return contextSensitiveHeap;
+    }
+
 //	public boolean isFlowGraphOptimizationEnabled() {
 //		return flowgraphOptimization;
 //	}
 
-	/**
-	 * If set, do not use abstract garbage collection.
-	 */
-	public boolean isGCDisabled() {
-		return noGc;
-	}
+    public boolean isContextSpecializationEnabled() {
+        return contextSpecialization;
+    }
 
-	/**
-	 * If set, do not use {@link dk.brics.tajs.util.HybridArrayHashMap} and {@link dk.brics.tajs.util.HybridArrayHashSet}.
-	 */
-	public boolean isHybridCollectionsDisabled() {
-		return noHybridCollections;
-	}
+    public boolean isControlSensitivityDisabled() {
+        return noControlSensitivity;
+    }
 
-	/**
-	 * Do we ignore HTML content.
-	 */
-	public boolean isIgnoreHTMLContent() {
-		return ignore_html_content;
-	}
+    public boolean isCopyOnWriteDisabled() {
+        return noCopyOnWrite;
+    }
 
-	/**
-	 * If set, ignore unreachable code warnings from libraries.
-	 */
-	public boolean isIgnoreLibrariesEnabled() {
-		return ignoreLibraries;
-	}
+    public boolean isCoverageEnabled() {
+        return coverage;
+    }
 
-	/**
-	 * If set, print intermediate abstract states.
-	 */
-	public boolean isIntermediateStatesEnabled() {
-		return states;
-	}
+    public boolean isDebugEnabled() {
+        return debug;
+    }
 
-	/**
-	 * If set, do not use lazy propagation.
-	 */
-	public boolean isLazyDisabled() {
-		return noLazy;
-	}
+    public boolean isDebugOrTestEnabled() {
+        return debug || test;
+    }
 
-	/**
-	 * If set, do not use control sensitivity.
-	 */
-	public boolean isControlSensitivityDisabled() {
-		return noControlSensitivity;
-	}
+    public boolean isDOMEnabled() {
+        return includeDom;
+    }
 
-	/**
-	 * If set, print low severity messages.
-	 */
-	public boolean isLowSeverityEnabled() {
-		return lowSeverity;
-	}
+    public boolean isEvalStatistics() {
+        return evalStatistics;
+    }
 
-	/**
-	 * If set, measure memory usage.
-	 */
-	public boolean isMemoryMeasurementEnabled() {
-		return memoryUsage;
-	}
+    public boolean isExceptionsDisabled() {
+        return noExceptions;
+    }
 
-	/**
-	 * If set, do not use modified flags.
-	 */
-	public boolean isModifiedDisabled() {
-		return noModified;
-	}
+    public boolean isFlowGraphEnabled() {
+        return flowgraph;
+    }
 
-	/**
-	 * If set, report summary of new flow at function entries.
-	 */
-	public boolean isNewFlowEnabled() {
-		return newflow;
-	}
+    public boolean isForInSpecializationDisabled() {
+        return noForInSpecialization;
+    }
 
-	/**
-	 * If set, don't output analysis messages.
-	 */
-	public boolean isNoMessages() {
-		return no_messages;
-	}
+    public boolean isGCDisabled() {
+        return noGc;
+    }
 
-	/**
-	 * If set, polymorphic abstract values are disabled.
-	 */
-	public boolean isPolymorphicDisabled() {
-		return no_polymorphic;
-	}
+    public boolean isHybridCollectionsDisabled() {
+        return noHybridCollections;
+    }
 
-	/**
-	 * If set, dead data flow is propagated.
-	 */
-	public boolean isPropagateDeadFlow() {
-		return propagateDeadFlow;
-	}
+    public boolean isIgnoreHTMLContent() {
+        return ignore_html_content;
+    }
 
-	/**
-	 * If set, only report results.
-	 */
-	public boolean isQuietEnabled() {
-		return quiet;
-	}
+    public boolean isIgnoreLibrariesEnabled() {
+        return ignoreLibraries;
+    }
 
-	/**
-	 * If set, do not use recency abstraction.
-	 */
-	public boolean isRecencyDisabled() {
-		return noRecency;
-	}
+    public boolean isIntermediateStatesEnabled() {
+        return states;
+    }
 
-	/**
-	 * Assume AJAX returns JSON.
-	 */
-	public boolean isReturnJSON() {
-		return ajaxReturnsJson;
-	}
+    public boolean isLazyDisabled() {
+        return noLazy;
+    }
 
-	/**
-	 * Is there a single event handler loop.
-	 * 
-	 * @return True if there is a single event handler loop.
-	 */
-	public boolean isSingleEventHandlerLoop() {
-		return singleEventHandlerLoop;
-	}
+    public boolean isLowSeverityEnabled() {
+        return lowSeverity;
+    }
 
-	/**
-	 * Are all events treated equally?
-	 */
-	public boolean isSingleEventHandlerType() {
-		return single_event_handler_type;
-	}
+    public boolean isMemoryMeasurementEnabled() {
+        return memoryUsage;
+    }
 
-	/**
-	 * If set, report statistics.
-	 */
-	public boolean isStatisticsEnabled() {
-		return statistics;
-	}
+    public boolean isModifiedDisabled() {
+        return noModified;
+    }
 
-	/**
-	 * If set, avoid nondeterministic output.
-	 */
-	public boolean isTestEnabled() {
-		return test;
-	}
+    public boolean isNewFlowEnabled() {
+        return newflow;
+    }
 
-	/**
-	 * If set, output flow graphs to stdout for testing purposes.
-	 */
-	public boolean isTestFlowGraphBuilderEnabled() {
-		return testFlowgraphBuilder;
-	}
+    public boolean isNoMessages() {
+        return no_messages;
+    }
 
-	/**
-	 * If set, report timings.
-	 */
-	public boolean isTimingEnabled() {
-		return timing;
-	}
+    public boolean isNumericVariableSensitivityEnabled() {
+        return numericVariableSensitivity;
+    }
 
-	/**
-	 * Is uneval mode enabled.
-	 */
-	public boolean isUnevalizerEnabled() { // FIXME: enable unevalizer by default? (affects use of live variables!)
-		return unevalizer;
-	}
+    public boolean isObjectSensitivityDisabled() {
+        return noObjectSensitivity;
+    }
 
-	/**
-	 * Is one and a half loop unrolling enabled.
-	 */
-	public boolean isUnrollOneAndAHalfEnabled() {
-		return unrollOneAndAHalf;
-	}
+    public boolean isParameterSensitivityEnabled() {
+        return parameterSensitivity;
+    }
 
-	/**
-	 * If set, allow certain unsound tricks.
-	 */
-	public boolean isUnsoundEnabled() {
-		return unsound;
-	}
+    public boolean isPolymorphicDisabled() {
+        return no_polymorphic;
+    }
 
-	@Override
-	public String toString() {
-		List<Pair<String, ?>> optionValues = new ArrayList<>(getOptionValues());
-		java.util.Collections.sort(optionValues, new Comparator<Pair<String, ?>>() {
-			@Override
-			public int compare(Pair<String, ?> o1, Pair<String, ?> o2) {
-				return o1.getFirst().compareTo(o2.getFirst());
-			}
-		});
+    public boolean isPropagateDeadFlow() {
+        return propagateDeadFlow;
+    }
 
-		StringBuilder sb = new StringBuilder();
-		boolean first = true;
-		for (Pair<String, ?> value : optionValues) {
-			if (!first) {
-				sb.append(" ");
-			} else {
-				first = false;
-			}
-			sb.append(value.getFirst());
-			if (!(value.getSecond() instanceof Boolean)) {
-				sb.append(" " + value.getSecond().toString());
-			}
-		}
-		for (String argument : arguments) {
-			if (!first) {
-				sb.append(" ");
-			} else {
-				first = false;
-			}
-			sb.append(argument);
-		}
-		return sb.toString();
-	}
+    public boolean isQuietEnabled() {
+        return quiet;
+    }
 
-	public void enableForInSpecialization() {
-		this.forInSpecialization = true;
-	}
+    public boolean isRecencyDisabled() {
+        return noRecency;
+    }
 
-	public void disableForInSpecialization() {
-		this.forInSpecialization = false;
-	}
-	
-	public boolean isForInSpecializationEnabled() {
-		return forInSpecialization;
-	}
+    public boolean isReturnJSON() {
+        return ajaxReturnsJson;
+    }
 
-	public void disableContextSensitiveHeap() {
-		contextSensitiveHeapEnabled = false;
-	}
+    public boolean isSingleEventHandlerType() {
+        return single_event_handler_type;
+    }
 
-	public void enableContextSensitiveHeap() {
-		contextSensitiveHeapEnabled = true;
-	}
+    public boolean isStatisticsEnabled() {
+        return statistics;
+    }
 
-	public boolean isContextSensitiveHeapEnabled() {
-		return contextSensitiveHeapEnabled;
-	}
+    public boolean isTestEnabled() {
+        return test;
+    }
 
-	public void disableParameterSensitivity() {
-		parameterSensitivityEnabled = false;
-	}
+    public boolean isTestFlowGraphBuilderEnabled() {
+        return testFlowgraphBuilder;
+    }
 
-	public void enableParameterSensitivity() {
-		parameterSensitivityEnabled = true;
-	}
+    public boolean isTimingEnabled() {
+        return timing;
+    }
 
-	public boolean isParameterSensitivityEnabled() {
-		return parameterSensitivityEnabled;
-	}
+    public boolean isUnevalizerEnabled() { // TODO: (#9) enable unevalizer by default? (affects use of live variables!)
+        return unevalizer;
+    }
 
-	public void disableNumericVariableSensitivity() {
-		numericVariableSensitivityEnabled = false;
-	}
+    public boolean isIgnoreUnreachableEnabled() {
+        return ignoreUnreachable;
+    }
 
-	public void enableNumericVariableSensitivity() {
-		numericVariableSensitivityEnabled = true;
-	}
+    public boolean isConcreteNativeDisabled() {
+        return noConcreteNative;
+    }
 
-	public boolean isNumericVariableSensitivityEnabled() {
-		return numericVariableSensitivityEnabled;
-	}
+    public boolean isUnrollOneAndAHalfEnabled() {
+        return unrollOneAndAHalf;
+    }
 
-	public void enableUnreachable() {
-		unreachableEnabled = true;
-	}
-
-	public void disableUnreachable() {
-		unreachableEnabled = false;
-	}
-
-	public boolean isUnreachableEnabled() {
-		return unreachableEnabled;
-	}
+    public boolean isUnsoundEnabled() {
+        return unsound;
+    }
 }

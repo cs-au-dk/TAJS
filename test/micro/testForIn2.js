@@ -8,4 +8,4 @@ for (p in x) {
 		break foo;
 }
 
-dumpObject(y);
+TAJS_dumpObject(y);

@@ -1,6 +1,6 @@
 test/wala/try.js:12:5: [definite] The conditional expression is always true
 test/wala/try.js:23:5: [definite] The conditional expression is always true
-test/wala/try.js:34:3: [definite] The conditional expression is always true
+test/wala/try.js:34:10: [definite] The conditional expression is always true
 test/wala/try.js:36:7: [definite] The conditional expression is always true
 test/wala/try.js:48:5: [definite] The conditional expression is always true
 test/wala/try.js:61:5: [definite] The conditional expression is always true

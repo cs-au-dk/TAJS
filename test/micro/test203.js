@@ -3,11 +3,11 @@ var x = "";
 
 function f() {
 	for (var i = 0; i < a.length; i++) {
-		dumpValue(i);
+		TAJS_dumpValue(i);
 		x += a[i];
 	}
 }
 TAJS_addContextSensitivity(f, "i")
 
 f();
-dumpValue(x);
+TAJS_dumpValue(x);

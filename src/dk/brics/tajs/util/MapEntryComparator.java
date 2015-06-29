@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2013 Aarhus University
+ * Copyright 2009-2015 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,13 +24,13 @@ import java.util.Map.Entry;
 /**
  * Comparator for map entries using the natural order of the entry keys.
  */
-public class MapEntryComparator<K extends Comparable<K>,V> implements Comparator<Map.Entry<K,V>>, Serializable {
+public class MapEntryComparator<K extends Comparable<K>, V> implements Comparator<Map.Entry<K, V>>, Serializable {
 
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	@Override
-	public int compare(Entry<K, V> e1, Entry<K, V> e2) {
-		return e1.getKey().compareTo(e2.getKey());
-	}
+    @Override
+    public int compare(Entry<K, V> e1, Entry<K, V> e2) {
+        return e1.getKey().compareTo(e2.getKey());
+    }
 }
 

@@ -1,160 +1,107 @@
-test/10k/canvas_aquarium.tidy.html:41:17: [definite] The conditional expression is always true
-test/10k/canvas_aquarium.tidy.html:201:23: [definite] The conditional expression is always true
-test/10k/canvas_aquarium.tidy.html:274:13: [definite] The conditional expression is always true
-test/10k/canvas_aquarium.tidy.html:292:13: [definite] The conditional expression is always true
-test/10k/canvas_aquarium.tidy.html:301:13: [definite] The conditional expression is always true
-test/10k/canvas_aquarium.tidy.html:307:13: [definite] The conditional expression is always true
-test/10k/canvas_aquarium.tidy.html:377:13: [definite] The conditional expression is always true
-test/10k/canvas_aquarium.tidy.html:178:9: [definite] Dead assignment, property n is never read
-test/10k/canvas_aquarium.tidy.html:204:5: [definite] The variable b is never used
-test/10k/canvas_aquarium.tidy.html:38:9: [maybe] TypeError, accessing property of null/undefined
-test/10k/canvas_aquarium.tidy.html:38:9: [maybe] TypeError, call to non-function
-test/10k/canvas_aquarium.tidy.html:45:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.arc
-test/10k/canvas_aquarium.tidy.html:45:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.arcTo
-test/10k/canvas_aquarium.tidy.html:45:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.beginPath
-test/10k/canvas_aquarium.tidy.html:45:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.bezierCurveTo
-test/10k/canvas_aquarium.tidy.html:45:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.clearRect
-test/10k/canvas_aquarium.tidy.html:45:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.clip
-test/10k/canvas_aquarium.tidy.html:45:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.closePath
-test/10k/canvas_aquarium.tidy.html:45:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.createImageData
-test/10k/canvas_aquarium.tidy.html:45:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.createLinearGradient
-test/10k/canvas_aquarium.tidy.html:45:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.createPattern
-test/10k/canvas_aquarium.tidy.html:45:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.createRadialGradient
-test/10k/canvas_aquarium.tidy.html:45:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.drawFocusRing
-test/10k/canvas_aquarium.tidy.html:45:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.fill
-test/10k/canvas_aquarium.tidy.html:45:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.fillRect
-test/10k/canvas_aquarium.tidy.html:45:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.fillText
-test/10k/canvas_aquarium.tidy.html:45:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.getImageData
-test/10k/canvas_aquarium.tidy.html:45:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.isPointInPath
-test/10k/canvas_aquarium.tidy.html:45:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.lineTo
-test/10k/canvas_aquarium.tidy.html:45:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.measureText
-test/10k/canvas_aquarium.tidy.html:45:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.moveTo
-test/10k/canvas_aquarium.tidy.html:45:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.quadraticCurveTo
-test/10k/canvas_aquarium.tidy.html:45:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.rect
-test/10k/canvas_aquarium.tidy.html:45:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.restore
-test/10k/canvas_aquarium.tidy.html:45:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.rotate
-test/10k/canvas_aquarium.tidy.html:45:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.save
-test/10k/canvas_aquarium.tidy.html:45:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.scale
-test/10k/canvas_aquarium.tidy.html:45:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.setTransform
-test/10k/canvas_aquarium.tidy.html:45:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.stroke
-test/10k/canvas_aquarium.tidy.html:45:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.strokeRect
-test/10k/canvas_aquarium.tidy.html:45:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.strokeText
-test/10k/canvas_aquarium.tidy.html:45:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.transform
-test/10k/canvas_aquarium.tidy.html:45:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.translate
-test/10k/canvas_aquarium.tidy.html:45:20: [maybe] Too many parameters to function Object
-test/10k/canvas_aquarium.tidy.html:45:20: [maybe] Too many parameters to function Object.prototype.hasOwnProperty
-test/10k/canvas_aquarium.tidy.html:45:20: [maybe] Too many parameters to function Object.prototype.isPrototypeOf
-test/10k/canvas_aquarium.tidy.html:45:20: [maybe] Too many parameters to function Object.prototype.propertyIsEnumerable
-test/10k/canvas_aquarium.tidy.html:45:20: [maybe] Too many parameters to function Object.prototype.toLocaleString
-test/10k/canvas_aquarium.tidy.html:45:20: [maybe] Too many parameters to function Object.prototype.toString
-test/10k/canvas_aquarium.tidy.html:45:20: [maybe] Too many parameters to function Object.prototype.valueOf
-test/10k/canvas_aquarium.tidy.html:45:20: [maybe] TypeError, accessing property of null/undefined
-test/10k/canvas_aquarium.tidy.html:45:20: [maybe] TypeError, call to non-function
-test/10k/canvas_aquarium.tidy.html:45:20: [maybe] TypeError, inf or NaN as arguments to CanvasRenderingContext2D.putImageData
-test/10k/canvas_aquarium.tidy.html:45:20: [maybe] TypeError, non-HTMLImageElement or non-HTMLCanvasElement as argument to drawImage
-test/10k/canvas_aquarium.tidy.html:258:9: [maybe] TypeError, accessing property of null/undefined
-test/10k/canvas_aquarium.tidy.html:259:9: [maybe] TypeError, accessing property of null/undefined
-test/10k/canvas_aquarium.tidy.html:260:36: [maybe] TypeError, accessing property of null/undefined
-test/10k/canvas_aquarium.tidy.html:319:30: [maybe] TypeError, accessing property of null/undefined
-test/10k/canvas_aquarium.tidy.html:331:27: [maybe] TypeError, accessing property of null/undefined
-test/10k/canvas_aquarium.tidy.html:348:39: [maybe] TypeError, accessing property of null/undefined
-test/10k/canvas_aquarium.tidy.html:362:9: [maybe] TypeError, non-HTMLImageElement or non-HTMLCanvasElement as argument to drawImage
-test/10k/canvas_aquarium.tidy.html:391:25: [maybe] TypeError, accessing property of null/undefined
-test/10k/canvas_aquarium.tidy.html:392:21: [maybe] TypeError, accessing property of null/undefined
-test/10k/canvas_aquarium.tidy.html:394:29: [maybe] TypeError, accessing property of null/undefined
-test/10k/canvas_aquarium.tidy.html:394:46: [maybe] TypeError, accessing property of null/undefined
-test/10k/canvas_aquarium.tidy.html:38:9: [maybe] Reading absent property addColorStop
-test/10k/canvas_aquarium.tidy.html:45:20: [maybe] Reading absent property apply
-test/10k/canvas_aquarium.tidy.html:26: [maybe] Uncaught exception, constructed at [test/10k/canvas_aquarium.tidy.html:38:9, test/10k/canvas_aquarium.tidy.html:45:20, test/10k/canvas_aquarium.tidy.html:258:9, test/10k/canvas_aquarium.tidy.html:259:9, test/10k/canvas_aquarium.tidy.html:260:36, test/10k/canvas_aquarium.tidy.html:319:30, test/10k/canvas_aquarium.tidy.html:331:27, test/10k/canvas_aquarium.tidy.html:348:39, test/10k/canvas_aquarium.tidy.html:391:25, test/10k/canvas_aquarium.tidy.html:392:21, test/10k/canvas_aquarium.tidy.html:394:29, test/10k/canvas_aquarium.tidy.html:394:46]
-test/10k/canvas_aquarium.tidy.html:38:9: [maybe] Converting primitive boolean to object
-test/10k/canvas_aquarium.tidy.html:38:9: [maybe] Converting primitive string to object
-test/10k/canvas_aquarium.tidy.html:38:9: [maybe] The variable b has values with different types
-test/10k/canvas_aquarium.tidy.html:41:21: [maybe] Reading absent property (computed name)
-test/10k/canvas_aquarium.tidy.html:45:20: [maybe] Conversion to number yields NaN
-test/10k/canvas_aquarium.tidy.html:45:20: [maybe] Converting primitive boolean to object
-test/10k/canvas_aquarium.tidy.html:45:20: [maybe] Converting primitive number to object
-test/10k/canvas_aquarium.tidy.html:45:20: [maybe] Converting primitive number to object
-test/10k/canvas_aquarium.tidy.html:45:20: [maybe] Converting primitive string to object
-test/10k/canvas_aquarium.tidy.html:45:20: [maybe] Converting undefined to string
-test/10k/canvas_aquarium.tidy.html:45:20: [maybe] The variable c has values with different types
-test/10k/canvas_aquarium.tidy.html:245:11: [maybe] The variable b has values with different types
-test/10k/canvas_aquarium.tidy.html:246:11: [maybe] The variable b has values with different types
-test/10k/canvas_aquarium.tidy.html:247:23: [maybe] The variable b has values with different types
-test/10k/canvas_aquarium.tidy.html:258:9: [maybe] Reading absent property (computed name)
-test/10k/canvas_aquarium.tidy.html:259:9: [maybe] Reading absent property (computed name)
-test/10k/canvas_aquarium.tidy.html:260:17: [maybe] Reading absent property (computed name)
-test/10k/canvas_aquarium.tidy.html:268:27: [maybe] Reading absent property (computed name)
-test/10k/canvas_aquarium.tidy.html:297:31: [maybe] Reading absent property (computed name)
-test/10k/canvas_aquarium.tidy.html:311:25: [maybe] Reading absent property (computed name)
-test/10k/canvas_aquarium.tidy.html:330:17: [maybe] Reading absent property (computed name)
-test/10k/canvas_aquarium.tidy.html:338:17: [maybe] Reading absent property (computed name)
-test/10k/canvas_aquarium.tidy.html:341:17: [maybe] Reading absent property (computed name)
-test/10k/canvas_aquarium.tidy.html:391:25: [maybe] Reading absent property (computed name)
-test/10k/canvas_aquarium.tidy.html:392:21: [maybe] Reading absent property (computed name)
-test/10k/canvas_aquarium.tidy.html:394:29: [maybe] Reading absent property (computed name)
-test/10k/canvas_aquarium.tidy.html:394:46: [maybe] Reading absent property (computed name)
-test/10k/canvas_aquarium.tidy.html:41:21: [info] Reading from unknown property that may cause loss of precision
-test/10k/canvas_aquarium.tidy.html:118:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/10k/canvas_aquarium.tidy.html:119:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/10k/canvas_aquarium.tidy.html:119:22: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/10k/canvas_aquarium.tidy.html:119:29: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/10k/canvas_aquarium.tidy.html:120:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/10k/canvas_aquarium.tidy.html:120:18: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/10k/canvas_aquarium.tidy.html:120:27: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/10k/canvas_aquarium.tidy.html:120:40: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/10k/canvas_aquarium.tidy.html:120:50: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/10k/canvas_aquarium.tidy.html:120:59: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/10k/canvas_aquarium.tidy.html:120:77: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/10k/canvas_aquarium.tidy.html:120:86: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/10k/canvas_aquarium.tidy.html:120:95: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/10k/canvas_aquarium.tidy.html:121:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/10k/canvas_aquarium.tidy.html:122:24: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/10k/canvas_aquarium.tidy.html:151:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/10k/canvas_aquarium.tidy.html:152:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/10k/canvas_aquarium.tidy.html:153:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/10k/canvas_aquarium.tidy.html:154:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/10k/canvas_aquarium.tidy.html:156:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/10k/canvas_aquarium.tidy.html:156:26: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/10k/canvas_aquarium.tidy.html:156:38: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/10k/canvas_aquarium.tidy.html:157:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/10k/canvas_aquarium.tidy.html:157:26: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/10k/canvas_aquarium.tidy.html:157:38: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/10k/canvas_aquarium.tidy.html:159:24: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/10k/canvas_aquarium.tidy.html:159:32: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/10k/canvas_aquarium.tidy.html:330:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/10k/canvas_aquarium.tidy.html:331:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/10k/canvas_aquarium.tidy.html:331:42: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/10k/canvas_aquarium.tidy.html:332:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/10k/canvas_aquarium.tidy.html:332:22: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/10k/canvas_aquarium.tidy.html:333:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/10k/canvas_aquarium.tidy.html:334:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/10k/canvas_aquarium.tidy.html:336:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/10k/canvas_aquarium.tidy.html:337:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/10k/canvas_aquarium.tidy.html:338:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/10k/canvas_aquarium.tidy.html:339:20: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/10k/canvas_aquarium.tidy.html:340:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/10k/canvas_aquarium.tidy.html:341:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/10k/canvas_aquarium.tidy.html:344:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/10k/canvas_aquarium.tidy.html:344:22: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/10k/canvas_aquarium.tidy.html:344:37: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/10k/canvas_aquarium.tidy.html:344:67: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/10k/canvas_aquarium.tidy.html:345:30: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/10k/canvas_aquarium.tidy.html:345:41: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/10k/canvas_aquarium.tidy.html:345:53: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/10k/canvas_aquarium.tidy.html:347:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/10k/canvas_aquarium.tidy.html:347:26: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/10k/canvas_aquarium.tidy.html:348:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/10k/canvas_aquarium.tidy.html:348:30: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/10k/canvas_aquarium.tidy.html:349:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/10k/canvas_aquarium.tidy.html:352:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/10k/canvas_aquarium.tidy.html:352:24: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/10k/canvas_aquarium.tidy.html:353:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/10k/canvas_aquarium.tidy.html:353:24: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/10k/canvas_aquarium.tidy.html:354:22: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/10k/canvas_aquarium.tidy.html:354:34: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/10k/canvas_aquarium.tidy.html:354:44: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/10k/canvas_aquarium.tidy.html:355:19: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/10k/canvas_aquarium.tidy.html:355:29: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/10k/canvas_aquarium.tidy.html:357:14: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/10k/canvas_aquarium.tidy.html:362:24: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/10k/canvas_aquarium.tidy.html:362:32: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/canvas_aquarium.html:37:17: [definite] The conditional expression is always true
+test/10k/canvas_aquarium.html:197:23: [definite] The conditional expression is always true
+test/10k/canvas_aquarium.html:270:13: [definite] The conditional expression is always true
+test/10k/canvas_aquarium.html:288:13: [definite] The conditional expression is always true
+test/10k/canvas_aquarium.html:297:13: [definite] The conditional expression is always true
+test/10k/canvas_aquarium.html:303:13: [definite] The conditional expression is always true
+test/10k/canvas_aquarium.html:373:13: [definite] The conditional expression is always true
+test/10k/canvas_aquarium.html:392:9: [definite] The conditional expression is always false
+test/10k/canvas_aquarium.html:393:9: [definite] The conditional expression is always false
+test/10k/canvas_aquarium.html:394:9: [definite] The conditional expression is always false
+test/10k/canvas_aquarium.html:395:9: [definite] The conditional expression is always true
+test/10k/canvas_aquarium.html:166:9: [definite] Dead assignment, property x is never read
+test/10k/canvas_aquarium.html:167:9: [definite] Dead assignment, property y is never read
+test/10k/canvas_aquarium.html:170:9: [definite] Dead assignment, property a is never read
+test/10k/canvas_aquarium.html:171:9: [definite] Dead assignment, property m is never read
+test/10k/canvas_aquarium.html:172:9: [definite] Dead assignment, property h is never read
+test/10k/canvas_aquarium.html:172:18: [definite] Dead assignment, property D is never read
+test/10k/canvas_aquarium.html:174:9: [definite] Dead assignment, property n is never read
+test/10k/canvas_aquarium.html:325:5: [definite] Dead assignment, property g is never read
+test/10k/canvas_aquarium.html:200:5: [definite] The variable b is never used
+test/10k/canvas_aquarium.html:325:21: [definite] Unreachable function
+test/10k/canvas_aquarium.html:34:9: [maybe] TypeError, accessing property of null/undefined
+test/10k/canvas_aquarium.html:34:9: [maybe] TypeError, call to non-function
+test/10k/canvas_aquarium.html:41:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.arc
+test/10k/canvas_aquarium.html:41:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.arcTo
+test/10k/canvas_aquarium.html:41:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.beginPath
+test/10k/canvas_aquarium.html:41:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.bezierCurveTo
+test/10k/canvas_aquarium.html:41:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.clearRect
+test/10k/canvas_aquarium.html:41:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.clip
+test/10k/canvas_aquarium.html:41:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.closePath
+test/10k/canvas_aquarium.html:41:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.createImageData
+test/10k/canvas_aquarium.html:41:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.createLinearGradient
+test/10k/canvas_aquarium.html:41:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.createPattern
+test/10k/canvas_aquarium.html:41:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.createRadialGradient
+test/10k/canvas_aquarium.html:41:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.drawFocusRing
+test/10k/canvas_aquarium.html:41:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.fill
+test/10k/canvas_aquarium.html:41:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.fillRect
+test/10k/canvas_aquarium.html:41:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.fillText
+test/10k/canvas_aquarium.html:41:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.getImageData
+test/10k/canvas_aquarium.html:41:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.isPointInPath
+test/10k/canvas_aquarium.html:41:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.lineTo
+test/10k/canvas_aquarium.html:41:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.measureText
+test/10k/canvas_aquarium.html:41:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.moveTo
+test/10k/canvas_aquarium.html:41:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.quadraticCurveTo
+test/10k/canvas_aquarium.html:41:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.rect
+test/10k/canvas_aquarium.html:41:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.restore
+test/10k/canvas_aquarium.html:41:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.rotate
+test/10k/canvas_aquarium.html:41:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.save
+test/10k/canvas_aquarium.html:41:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.scale
+test/10k/canvas_aquarium.html:41:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.setTransform
+test/10k/canvas_aquarium.html:41:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.stroke
+test/10k/canvas_aquarium.html:41:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.strokeRect
+test/10k/canvas_aquarium.html:41:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.strokeText
+test/10k/canvas_aquarium.html:41:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.transform
+test/10k/canvas_aquarium.html:41:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.translate
+test/10k/canvas_aquarium.html:41:20: [maybe] Too many parameters to function Object
+test/10k/canvas_aquarium.html:41:20: [maybe] Too many parameters to function Object.prototype.hasOwnProperty
+test/10k/canvas_aquarium.html:41:20: [maybe] Too many parameters to function Object.prototype.isPrototypeOf
+test/10k/canvas_aquarium.html:41:20: [maybe] Too many parameters to function Object.prototype.propertyIsEnumerable
+test/10k/canvas_aquarium.html:41:20: [maybe] Too many parameters to function Object.prototype.toLocaleString
+test/10k/canvas_aquarium.html:41:20: [maybe] Too many parameters to function Object.prototype.toString
+test/10k/canvas_aquarium.html:41:20: [maybe] Too many parameters to function Object.prototype.valueOf
+test/10k/canvas_aquarium.html:41:20: [maybe] TypeError, accessing property of null/undefined
+test/10k/canvas_aquarium.html:41:20: [maybe] TypeError, call to non-function
+test/10k/canvas_aquarium.html:41:20: [maybe] TypeError, inf or NaN as arguments to CanvasRenderingContext2D.putImageData
+test/10k/canvas_aquarium.html:41:20: [maybe] TypeError, non-HTMLImageElement or non-HTMLCanvasElement as argument to drawImage
+test/10k/canvas_aquarium.html:254:9: [maybe] TypeError, accessing property of null/undefined
+test/10k/canvas_aquarium.html:255:9: [maybe] TypeError, accessing property of null/undefined
+test/10k/canvas_aquarium.html:256:36: [maybe] TypeError, accessing property of null/undefined
+test/10k/canvas_aquarium.html:315:30: [maybe] TypeError, accessing property of null/undefined
+test/10k/canvas_aquarium.html:388:21: [maybe] TypeError, accessing property of null/undefined
+test/10k/canvas_aquarium.html:34:9: [maybe] Reading absent property addColorStop
+test/10k/canvas_aquarium.html:41:20: [maybe] Reading absent property apply
+test/10k/canvas_aquarium.html:34:9: [maybe] Converting primitive boolean to object
+test/10k/canvas_aquarium.html:34:9: [maybe] Converting primitive string to object
+test/10k/canvas_aquarium.html:34:9: [maybe] The variable b has values with different types
+test/10k/canvas_aquarium.html:37:21: [maybe] Reading absent property (computed name)
+test/10k/canvas_aquarium.html:41:20: [maybe] Conversion to number yields NaN
+test/10k/canvas_aquarium.html:41:20: [maybe] Converting primitive boolean to object
+test/10k/canvas_aquarium.html:41:20: [maybe] Converting primitive number to object
+test/10k/canvas_aquarium.html:41:20: [maybe] Converting primitive number to object
+test/10k/canvas_aquarium.html:41:20: [maybe] Converting primitive string to object
+test/10k/canvas_aquarium.html:41:20: [maybe] Converting undefined to string
+test/10k/canvas_aquarium.html:41:20: [maybe] The variable c has values with different types
+test/10k/canvas_aquarium.html:241:11: [maybe] The variable b has values with different types
+test/10k/canvas_aquarium.html:242:11: [maybe] The variable b has values with different types
+test/10k/canvas_aquarium.html:243:23: [maybe] The variable b has values with different types
+test/10k/canvas_aquarium.html:254:9: [maybe] Reading absent property (computed name)
+test/10k/canvas_aquarium.html:255:9: [maybe] Reading absent property (computed name)
+test/10k/canvas_aquarium.html:256:17: [maybe] Reading absent property (computed name)
+test/10k/canvas_aquarium.html:264:27: [maybe] Reading absent property (computed name)
+test/10k/canvas_aquarium.html:293:31: [maybe] Reading absent property (computed name)
+test/10k/canvas_aquarium.html:307:25: [maybe] Reading absent property (computed name)
+test/10k/canvas_aquarium.html:388:21: [maybe] Reading absent property (computed name)
+test/10k/canvas_aquarium.html:37:21: [info] Reading from unknown property that may cause loss of precision
+test/10k/canvas_aquarium.html:147:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/canvas_aquarium.html:148:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/canvas_aquarium.html:149:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/canvas_aquarium.html:150:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/canvas_aquarium.html:152:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/canvas_aquarium.html:152:26: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/canvas_aquarium.html:152:38: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/canvas_aquarium.html:153:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/canvas_aquarium.html:153:26: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/canvas_aquarium.html:153:38: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/canvas_aquarium.html:155:24: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/canvas_aquarium.html:155:32: [info] 'this' refers to multiple abstract objects, which may cause loss of precision

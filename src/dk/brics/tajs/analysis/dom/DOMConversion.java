@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2013 Aarhus University
+ * Copyright 2009-2015 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,8 +16,6 @@
 
 package dk.brics.tajs.analysis.dom;
 
-import java.util.Set;
-
 import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.analysis.State;
 import dk.brics.tajs.lattice.HostObject;
@@ -26,6 +24,8 @@ import dk.brics.tajs.lattice.UnknownValueResolver;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.solver.Message;
 import dk.brics.tajs.util.Collections;
+
+import java.util.Set;
 
 public class DOMConversion {
 
@@ -64,12 +64,10 @@ public class DOMConversion {
         final String message = "TypeError, non-function event handler";
         Set<ObjectLabel> result = Collections.newSet();
 
-        boolean maybeFunction = false;
         boolean maybeNonFunction = value.isMaybePrimitive();
 
         for (ObjectLabel objectLabel : value.getObjectLabels()) {
             if (objectLabel.getKind() == ObjectLabel.Kind.FUNCTION) {
-                maybeFunction = true;
                 result.add(objectLabel);
             } else {
                 maybeNonFunction = true;
@@ -80,7 +78,6 @@ public class DOMConversion {
             c.getMonitoring().addMessage(c.getCurrentNode(), Message.Severity.HIGH, message);
         }
 
-
         return Value.makeObject(result);
     }
 
@@ -88,14 +85,12 @@ public class DOMConversion {
      * Converts the given value to the given NativeObject (optionally following
      * the prototype chains).
      *
-     * @param nativeObject    target NativeObject
-     * @param value           Value to convert
-     * @param prototype       use the prototype chain?
-     * @param solverInterface
+     * @param nativeObject target NativeObject
+     * @param value        Value to convert
+     * @param prototype    use the prototype chain?
      */
     public static Value toNativeObject(HostObject nativeObject, Value value, boolean prototype, Solver.SolverInterface solverInterface) {
         State state = solverInterface.getCurrentState();
-        boolean good = false;
         boolean bad = false;
         Set<ObjectLabel> matches = Collections.newSet();
 
@@ -118,9 +113,8 @@ public class DOMConversion {
                         if (objectLabel.getHostObject() != null) {
                             objectLabelPrototype = objectLabel.getHostObject().toString();
                         }
-                        
+
                         if (nativeObject == objectLabel.getHostObject() || nativeObjectPrototype.equals(objectLabelPrototype)) {
-                            good = true;
                             matches.add(objectLabel);
                         } else if (prototypeValue.getObjectLabels().isEmpty()) {
                             bad = true;
@@ -131,21 +125,18 @@ public class DOMConversion {
                 }
                 objectLabels = temp;
             }
-
         } else {
             // Make lookup ignoring prototype chains
 
             // TODO: Verify this
             for (ObjectLabel objectLabel : value.getObjectLabels()) {
                 if (objectLabel.getHostObject() == nativeObject
-                        || (objectLabel.getHostObject() != null  && objectLabel.getHostObject().toString().equals(nativeObject.toString() + ".prototype"))) {
-                    good = true;
+                        || (objectLabel.getHostObject() != null && objectLabel.getHostObject().toString().equals(nativeObject + ".prototype"))) {
                     matches.add(objectLabel);
                 } else {
                     bad = true;
                 }
             }
-
         }
 
 //        Message.Status status;
@@ -162,11 +153,10 @@ public class DOMConversion {
 //            throw new AnalysisException("toNativeObject: fell through cases - should not happen.");
 //        }
         if (bad) {
-        	String message = "TypeError, argument is not of expected type: " + nativeObject.toString();
-        	solverInterface.getMonitoring().addMessage(solverInterface.getCurrentNode(), Message.Severity.HIGH, message);
+            String message = "TypeError, argument is not of expected type: " + nativeObject;
+            solverInterface.getMonitoring().addMessage(solverInterface.getCurrentNode(), Message.Severity.HIGH, message);
         }
 
         return Value.makeObject(matches);
     }
-
 }

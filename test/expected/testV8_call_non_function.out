@@ -1,7 +1,5 @@
 test/v8tests/call-non-function.js:31:5: [definite] TypeError, call to non-function
-test/v8tests/call-non-function.js:37:9: [definite] TypeError, call to non-function
-test/v8tests/call-non-function.js:42:3: [definite] ReferenceError, reading absent variable assertTrue
+test/v8tests/call-non-function.js:37:5: [definite] TypeError, call to non-function
 test/v8tests/call-non-function.js:47:9: [definite] Reading 'this' yields the global object
-test/v8tests/call-non-function.js:42:14: [definite] Unreachable code
-test/v8tests/call-non-function.js:48:1: [definite] Unreachable code
-test/v8tests/call-non-function.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/call-non-function.js:42:3]
+test/v8tests/call-non-function.js:31:5: [maybe] The variable x has values with different types
+test/v8tests/call-non-function.js:37:9: [maybe] The variable x has values with different types

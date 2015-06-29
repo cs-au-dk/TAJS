@@ -31,5 +31,5 @@ var rec1 = objectMasquerading();
 
 var rec2 = sharedClassObject();
 
-dumpObject(rec1);
-dumpObject(rec2);
+TAJS_dumpObject(rec1);
+TAJS_dumpObject(rec2);

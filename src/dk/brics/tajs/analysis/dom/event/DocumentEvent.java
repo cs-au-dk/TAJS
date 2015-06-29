@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2013 Aarhus University
+ * Copyright 2009-2015 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,7 +16,6 @@
 
 package dk.brics.tajs.analysis.dom.event;
 
-import static dk.brics.tajs.analysis.dom.DOMFunctions.createDOMFunction;
 import dk.brics.tajs.analysis.Conversion;
 import dk.brics.tajs.analysis.FunctionCalls;
 import dk.brics.tajs.analysis.NativeFunctions;
@@ -27,10 +26,12 @@ import dk.brics.tajs.analysis.dom.core.DOMDocument;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.util.AnalysisException;
 
+import static dk.brics.tajs.analysis.dom.DOMFunctions.createDOMFunction;
+
 /**
  * The DocumentEvent interface provides a mechanism by which the user can create
  * an Event of a type supported by the implementation.
- * <p />
+ * <p>
  * Simply augments the DOMDocument object.
  */
 public class DocumentEvent {
@@ -52,7 +53,8 @@ public class DocumentEvent {
         switch (nativeObject) {
             case DOCUMENT_EVENT_CREATE_EVENT: {
                 NativeFunctions.expectParameters(nativeObject, call, c, 1, 1);
-                /* Value eventType =*/ Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
+                /* Value eventType =*/
+                Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
                 return Value.makeObject(Event.INSTANCES);
             }
             default:

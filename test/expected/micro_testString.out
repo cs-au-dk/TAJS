@@ -1,13 +1,33 @@
-test/micro/testString.js:61:11: [definite] Too few parameters to function String.prototype.localeCompare
+test/micro/testString.js:61:16: [definite] Too few parameters to function String.prototype.localeCompare
 test/micro/testString.js:4:9: [maybe] Converting boolean to string
-test/micro/testString.js:10:11: [maybe] Converting primitive string to object
-test/micro/testString.js:13:13: [maybe] Converting boolean to string
-test/micro/testString.js:21:11: [maybe] Converting object to string
-test/micro/testString.js:30:11: [maybe] Converting object to string
-test/micro/testString.js:31:11: [maybe] Converting object to string
-test/micro/testString.js:33:11: [maybe] Converting object to string
-test/micro/testString.js:34:11: [maybe] Converting object to string
-test/micro/testString.js:37:11: [maybe] Converting object to string
+test/micro/testString.js:10:16: [maybe] Converting primitive string to object
+test/micro/testString.js:13:9: [maybe] Converting boolean to string
+test/micro/testString.js:21:16: [maybe] Converting object to string
+test/micro/testString.js:30:16: [maybe] Converting object to string
+test/micro/testString.js:31:16: [maybe] Converting object to string
+test/micro/testString.js:33:16: [maybe] Converting object to string
+test/micro/testString.js:34:16: [maybe] Converting object to string
+test/micro/testString.js:37:16: [maybe] Converting object to string
+test/micro/testString.js:40:16: [maybe] Conversion from string to number yields NaN
+test/micro/testString.js:40:16: [maybe] Converting object to string
+test/micro/testString.js:42:16: [maybe] Converting object to string
+test/micro/testString.js:45:16: [maybe] Conversion to number yields NaN
+test/micro/testString.js:45:16: [maybe] Converting object to string
+test/micro/testString.js:46:16: [maybe] Converting object to string
+test/micro/testString.js:47:16: [maybe] Converting object to string
+test/micro/testString.js:49:16: [maybe] Conversion to number yields NaN
+test/micro/testString.js:49:16: [maybe] Converting object to string
+test/micro/testString.js:51:16: [maybe] Conversion to number yields NaN
+test/micro/testString.js:51:16: [maybe] Converting object to string
+test/micro/testString.js:52:16: [maybe] Converting object to string
+test/micro/testString.js:53:16: [maybe] Converting object to string
+test/micro/testString.js:55:16: [maybe] Conversion to number yields NaN
+test/micro/testString.js:55:16: [maybe] Converting object to string
+test/micro/testString.js:58:16: [maybe] Converting object to string
+test/micro/testString.js:59:16: [maybe] Converting object to string
+test/micro/testString.js:60:16: [maybe] Converting object to string
+test/micro/testString.js:61:16: [maybe] Converting object to string
+test/micro/testString.js:61:16: [maybe] Converting undefined to string
 test/micro/testString.js:7:1: [info] Abstract value: ""
 test/micro/testString.js:8:1: [info] Abstract value: "true"
 test/micro/testString.js:9:1: [info] Abstract value: "77"
@@ -29,17 +49,17 @@ test/micro/testString.js:31:1: [info] Abstract value: ""
 test/micro/testString.js:33:1: [info] Abstract value: 46.0
 test/micro/testString.js:34:1: [info] Abstract value: NaN
 test/micro/testString.js:37:1: [info] Abstract value: 49.0
-test/micro/testString.js:40:1: [info] Abstract value: Str
-test/micro/testString.js:42:1: [info] Abstract value: Str
-test/micro/testString.js:45:1: [info] Abstract value: UInt|NotUInt
-test/micro/testString.js:46:1: [info] Abstract value: UInt|NotUInt
-test/micro/testString.js:47:1: [info] Abstract value: UInt|NotUInt
-test/micro/testString.js:49:1: [info] Abstract value: UInt|NotUInt
-test/micro/testString.js:51:1: [info] Abstract value: UInt|NotUInt
-test/micro/testString.js:52:1: [info] Abstract value: UInt|NotUInt
-test/micro/testString.js:53:1: [info] Abstract value: UInt|NotUInt
-test/micro/testString.js:55:1: [info] Abstract value: UInt|NotUInt
-test/micro/testString.js:58:1: [info] Abstract value: Num
-test/micro/testString.js:59:1: [info] Abstract value: Num
-test/micro/testString.js:60:1: [info] Abstract value: Num
-test/micro/testString.js:61:1: [info] Abstract value: Num
+test/micro/testString.js:40:1: [info] Abstract value: "77.77falsefinish"
+test/micro/testString.js:42:1: [info] Abstract value: "42.12542.125"
+test/micro/testString.js:45:1: [info] Abstract value: 4.0
+test/micro/testString.js:46:1: [info] Abstract value: 8.0
+test/micro/testString.js:47:1: [info] Abstract value: -1.0
+test/micro/testString.js:49:1: [info] Abstract value: 2.0
+test/micro/testString.js:51:1: [info] Abstract value: 8.0
+test/micro/testString.js:52:1: [info] Abstract value: 4.0
+test/micro/testString.js:53:1: [info] Abstract value: -1.0
+test/micro/testString.js:55:1: [info] Abstract value: 2.0
+test/micro/testString.js:58:1: [info] Abstract value: 0.0
+test/micro/testString.js:59:1: [info] Abstract value: 1.0
+test/micro/testString.js:60:1: [info] Abstract value: -1.0
+test/micro/testString.js:61:1: [info] Abstract value: -1.0

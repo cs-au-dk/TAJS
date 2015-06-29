@@ -18,4 +18,4 @@ for (row = 0; row != len; ++ row) {
         o.rows[row][col] = new Cell();
       }
 }
-dumpValue(o)
+TAJS_dumpValue(o)

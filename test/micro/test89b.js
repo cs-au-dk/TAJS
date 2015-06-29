@@ -8,5 +8,5 @@ function h() {
 
 var x = g(87);
 h();
-dumpValue(x.a);
-//dumpObject(x);
+TAJS_dumpValue(x.a);
+//TAJS_dumpObject(x);

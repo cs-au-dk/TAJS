@@ -11,5 +11,5 @@ function kast(x) {
 var grot = kast(34);
 var flop = grot.message;
 
-dumpValue(flop);
-assert(flop == 34);
+TAJS_dumpValue(flop);
+TAJS_assert(flop == 34);

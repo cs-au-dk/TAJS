@@ -2,8 +2,8 @@ var x = {}
 var y = x instanceof Object;
 var z = x instanceof Function;
 
-dumpValue(y);
-dumpValue(z);
+TAJS_dumpValue(y);
+TAJS_dumpValue(z);
 
-assert(y);
-assert(!z);
+TAJS_assert(y);
+TAJS_assert(!z);

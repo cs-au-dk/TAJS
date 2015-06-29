@@ -22,7 +22,7 @@
 
     // TODO: Added support for Array.forEach
     Array.prototype.forEach = function (callback) {
-        dumpValue(this)
+        TAJS_dumpValue(this)
         for (var i = 0; i < this.length; i++) {
             callback(this[i], i, this);
         }

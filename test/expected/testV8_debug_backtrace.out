@@ -1,7 +1,0 @@
-test/v8tests/debug-backtrace.js:41:9: [definite] ReferenceError, reading absent variable debug
-test/v8tests/debug-backtrace.js:31:1: [definite] Unreachable function f
-test/v8tests/debug-backtrace.js:35:1: [definite] Unreachable function g
-test/v8tests/debug-backtrace.js:41:9: [definite] Unreachable code
-test/v8tests/debug-backtrace.js:46:1: [definite] Unreachable function safeEval
-test/v8tests/debug-backtrace.js:54:1: [definite] Unreachable function listener
-test/v8tests/debug-backtrace.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/debug-backtrace.js:41:9]

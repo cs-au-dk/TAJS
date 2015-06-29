@@ -12,7 +12,7 @@ function getElements( name ) {
 } 
 getElements.cache = {}; 
 	 
-dumpValue( getElements("pre") );
-//dumpValue(getElements.cache.length);
+TAJS_dumpValue( getElements("pre") );
+//TAJS_dumpValue(getElements.cache.length);
 
-dumpValue( getElements("pre") );
+TAJS_dumpValue( getElements("pre") );

@@ -12,5 +12,5 @@ try {
 	scope = x(); // 'x' evaluates to a reference whose base is the dummy scope object (which is not an activation object)
 }
 
-dumpValue(scope); // should be the dummy object
-assert(scope !== this);
+TAJS_dumpValue(scope); // should be the dummy object
+TAJS_assert(scope !== this);

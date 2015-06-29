@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2013 Aarhus University
+ * Copyright 2009-2015 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,8 +16,6 @@
 
 package dk.brics.tajs.analysis.dom.core;
 
-import static dk.brics.tajs.analysis.dom.DOMFunctions.createDOMFunction;
-import static dk.brics.tajs.analysis.dom.DOMFunctions.createDOMProperty;
 import dk.brics.tajs.analysis.Conversion;
 import dk.brics.tajs.analysis.FunctionCalls;
 import dk.brics.tajs.analysis.InitialStateBuilder;
@@ -32,6 +30,9 @@ import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.util.AnalysisException;
 
+import static dk.brics.tajs.analysis.dom.DOMFunctions.createDOMFunction;
+import static dk.brics.tajs.analysis.dom.DOMFunctions.createDOMProperty;
+
 /**
  * The Node interface is the primary datatype for the entire Document Object
  * Model. It represents a single node in the document tree.
@@ -39,7 +40,9 @@ import dk.brics.tajs.util.AnalysisException;
 public class DOMNode {
 
     public static ObjectLabel CONSTRUCTOR;
+
     public static ObjectLabel PROTOTYPE;
+
     public static ObjectLabel INSTANCES;
 
     public static void build(State s) {
@@ -129,7 +132,8 @@ public class DOMNode {
             }
             case NODE_CLONE_NODE: {
                 NativeFunctions.expectParameters(nativeObject, call, c, 1, 1);
-                /* Value deep =*/ Conversion.toBoolean(NativeFunctions.readParameter(call, s, 0));
+                /* Value deep =*/
+                Conversion.toBoolean(NativeFunctions.readParameter(call, s, 0));
                 return Value.makeObject(HTMLBuilder.HTML_OBJECT_LABELS);
             }
             case NODE_HAS_CHILD_NODES: {
@@ -138,25 +142,32 @@ public class DOMNode {
             }
             case NODE_INSERT_BEFORE: {
                 NativeFunctions.expectParameters(nativeObject, call, c, 2, 2);
-                /* Value newChild =*/ DOMConversion.toNode(NativeFunctions.readParameter(call, s, 0), c);
-                /* Value refChild =*/ DOMConversion.toNode(NativeFunctions.readParameter(call, s, 1), c);
+                /* Value newChild =*/
+                DOMConversion.toNode(NativeFunctions.readParameter(call, s, 0), c);
+                /* Value refChild =*/
+                DOMConversion.toNode(NativeFunctions.readParameter(call, s, 1), c);
                 return Value.makeObject(HTMLBuilder.HTML_OBJECT_LABELS);
             }
             case NODE_REMOVE_CHILD: {
                 NativeFunctions.expectParameters(nativeObject, call, c, 1, 1);
-                /*Value oldChild =*/ DOMConversion.toNode(NativeFunctions.readParameter(call, s, 0), c);
+                /*Value oldChild =*/
+                DOMConversion.toNode(NativeFunctions.readParameter(call, s, 0), c);
                 return Value.makeObject(HTMLBuilder.HTML_OBJECT_LABELS);
             }
             case NODE_REPLACE_CHILD: {
                 NativeFunctions.expectParameters(nativeObject, call, c, 2, 2);
-                /* Value newChild =*/ DOMConversion.toNode(NativeFunctions.readParameter(call, s, 0), c);
-                /* Value oldChild =*/ DOMConversion.toNode(NativeFunctions.readParameter(call, s, 1), c);
+                /* Value newChild =*/
+                DOMConversion.toNode(NativeFunctions.readParameter(call, s, 0), c);
+                /* Value oldChild =*/
+                DOMConversion.toNode(NativeFunctions.readParameter(call, s, 1), c);
                 return Value.makeObject(HTMLBuilder.HTML_OBJECT_LABELS);
             }
             case NODE_IS_SUPPORTED: {
                 NativeFunctions.expectParameters(nativeObject, call, c, 2, 2);
-                /* Value feature =*/ Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
-                /* Value version =*/ Conversion.toString(NativeFunctions.readParameter(call, s, 1), c);
+                /* Value feature =*/
+                Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
+                /* Value version =*/
+                Conversion.toString(NativeFunctions.readParameter(call, s, 1), c);
                 return Value.makeAnyBool();
             }
             case NODE_HAS_ATTRIBUTES: {
@@ -168,8 +179,8 @@ public class DOMNode {
                 return Value.makeUndef();
             }
             case NODE_COMPARE_DOCUMENT_POSITION: {
-            	NativeFunctions.expectParameters(nativeObject, call, c, 1, 1);
-            	return Value.makeAnyNumUInt();
+                NativeFunctions.expectParameters(nativeObject, call, c, 1, 1);
+                return Value.makeAnyNumUInt();
             }
             case NODE_CONTAINS: {
                 NativeFunctions.expectParameters(nativeObject, call, c, 1, 1);
@@ -180,5 +191,4 @@ public class DOMNode {
             }
         }
     }
-
 }

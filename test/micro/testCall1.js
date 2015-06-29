@@ -1,11 +1,11 @@
 var x1 = { m: function(x) {
-	dumpValue(this);
-	dumpState();
+	TAJS_dumpValue(this);
+	TAJS_dumpState();
 	return x + 1; 
 } };
 var x2 = { m: function(x) { 
-	dumpValue(this);
-	dumpState();
+	TAJS_dumpValue(this);
+	TAJS_dumpState();
 	return x + "foo"; 
 } };
 
@@ -16,4 +16,4 @@ else
 	x = x2;
 
 var y = x.m(7);
-dumpState();
+TAJS_dumpState();

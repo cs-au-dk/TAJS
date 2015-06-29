@@ -1,3 +1,3 @@
 var x = "Hello World";
-dumpValue(x[0]);
-dumpValue(x[6]);
+TAJS_dumpValue(x[0]);
+TAJS_dumpValue(x[6]);

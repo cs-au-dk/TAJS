@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2013 Aarhus University
+ * Copyright 2009-2015 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,6 +20,8 @@ import dk.brics.tajs.analysis.Context;
 import dk.brics.tajs.analysis.State;
 import dk.brics.tajs.flowgraph.AbstractNode;
 import dk.brics.tajs.flowgraph.BasicBlock;
+import dk.brics.tajs.flowgraph.jsnodes.CallNode;
+import dk.brics.tajs.flowgraph.jsnodes.EventDispatcherNode;
 import dk.brics.tajs.flowgraph.jsnodes.IfNode;
 import dk.brics.tajs.lattice.UnknownValueResolver;
 import dk.brics.tajs.lattice.Value;
@@ -39,30 +41,37 @@ public class EdgeTransfer implements IEdgeTransfer<State, Context> {
 
     @Override
     public Context transfer(BasicBlock src, BasicBlock dst, State state) {
+        AbstractNode n = src.getLastNode();
 
-        if (!Options.isControlSensitivityDisabled()) {
-            AbstractNode n = src.getLastNode();
-            if (n instanceof IfNode) { 
-            	IfNode ifnode = (IfNode) n;
-            	if (ifnode.getSuccTrue() != ifnode.getSuccFalse()) {
-            		Value cond = state.readRegister(ifnode.getConditionRegister());
-            		cond = UnknownValueResolver.getRealValue(cond, state);
-            		// restrict the conditional register
-            		if (ifnode.getSuccTrue() == dst) {
-            			// at true branch, cond must be truthy
-            			cond = cond.restrictToTruthy();
-            		} else {
-            			// at false branch, cond must be falsy
-            			cond = cond.restrictToFalsy();
-            		}
-            		if (cond.isNone()) {
-            			// branch is infeasible, kill flow entirely
-            			return null; 
-            		}
-            		// store the restricted register (may be used later for && or ||)
-            		state.writeRegister(ifnode.getConditionRegister(), cond);
-            	}
+        if (n instanceof CallNode || n instanceof EventDispatcherNode) // these nodes have no ordinary flow along basic block edges
+            return null;
+
+        if (!Options.get().isControlSensitivityDisabled()) {
+            if (n instanceof IfNode) {
+                IfNode ifnode = (IfNode) n;
+                if (ifnode.getSuccTrue() != ifnode.getSuccFalse()) {
+                    Value cond = state.readRegister(ifnode.getConditionRegister());
+                    cond = UnknownValueResolver.getRealValue(cond, state);
+                    // restrict the conditional register
+                    if (ifnode.getSuccTrue() == dst) {
+                        // at true branch, cond must be truthy
+                        cond = cond.restrictToTruthy();
+                    } else {
+                        // at false branch, cond must be falsy
+                        cond = cond.restrictToFalsy();
+                    }
+                    if (cond.isNone()) {
+                        // branch is infeasible, kill flow entirely
+                        return null;
+                    }
+                    // store the restricted register (may be used later for && or ||)
+                    state.writeRegister(ifnode.getConditionRegister(), cond);
+                }
             }
+        }
+
+        if (n instanceof IfNode && n.isRegistersDone()) {
+            state.clearOrdinaryRegisters();
         }
 
         return Context.makeSuccessorContext(state, dst);

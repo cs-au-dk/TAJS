@@ -1,4 +1,1 @@
-test/v8tests/no-branch-elimination.js:35:3: [definite] ReferenceError, reading absent variable assertEquals
 test/v8tests/no-branch-elimination.js:30:1: [definite] The conditional expression is always true
-test/v8tests/no-branch-elimination.js:35:16: [definite] Unreachable code
-test/v8tests/no-branch-elimination.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/no-branch-elimination.js:35:3]

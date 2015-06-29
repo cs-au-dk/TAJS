@@ -2,6 +2,8 @@ package dk.brics.tajs.test;
 
 //import static org.junit.Assert.fail;
 
+import dk.brics.tajs.Main;
+import dk.brics.tajs.util.AnalysisException;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.Ignore;
@@ -19,9 +21,13 @@ public class TestV8 { // TODO: check expected output for TestV8
 	
 	@Before
 	public void init() {
-        Options.reset();
-		Options.enableTest();
-		// Options.enableNoLazy();
+        Main.reset();
+		Options.get().enableTest();
+		Options.get().enableContextSensitiveHeap();
+		Options.get().enableParameterSensitivity();
+		Options.get().enableNumericVariableSensitivity();
+		Options.get().enableUnevalizer();
+		// Options.get().enableNoLazy();
 	}
 
 	@Test
@@ -29,7 +35,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/api-call-after-bypassed-exception.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/api-call-after-bypassed-exception.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -39,7 +45,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/apply.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/apply.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -49,18 +55,18 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/arguments-call-apply.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/arguments-call-apply.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
-//	@Ignore // TODO: 'for-in'
+	@Ignore // see https://github.com/cs-au-dk/TAJS-private/issues/186
 	@Test
 	public void testV8_arguments_enum() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/arguments-enum.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/arguments-enum.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -70,7 +76,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/arguments-indirect.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/arguments-indirect.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -81,17 +87,18 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/arguments-opt.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/arguments-opt.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
+	@Ignore // see https://github.com/cs-au-dk/TAJS-private/issues/183
 	@Test
 	public void testV8_arguments() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/arguments.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/arguments.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -101,7 +108,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/array-concat.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/array-concat.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -111,28 +118,28 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/array-functions-prototype.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/array-functions-prototype.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
+	@Ignore // see https://github.com/cs-au-dk/TAJS-private/issues/188
 	@Test
 	public void testV8_array_indexing() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/array-indexing.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/array-indexing.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
-//	@Ignore // TODO: 'for-in'
 	@Test
 	public void testV8_array_iteration() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/array-iteration.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/array-iteration.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -142,7 +149,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/array-join.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/array-join.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -153,7 +160,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/array-sort.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/array-sort.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -163,7 +170,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/array-splice-webkit.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/array-splice-webkit.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -173,7 +180,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/array-splice.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/array-splice.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -183,18 +190,17 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/array_length.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/array_length.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
-//	@Ignore // TODO: RegExp
 	@Test
 	public void testV8_ascii_regexp_subject() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/ascii-regexp-subject.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/ascii-regexp-subject.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -204,19 +210,18 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/binary-operation-overwrite.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/binary-operation-overwrite.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
-//	@Ignore // TODO: Function(...)
 	@Test
 	public void testV8_body_not_visible() throws Exception
 	{
 		Misc.init();
-		Options.enableUnevalizer();
+		Options.get().enableUnevalizer();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/body-not-visible.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/body-not-visible.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -226,7 +231,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/call-non-function-call.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/call-non-function-call.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -236,7 +241,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/call-non-function.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/call-non-function.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -246,7 +251,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/call.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/call.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -256,18 +261,18 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/char-escape.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/char-escape.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
-//	@Ignore // TODO: 'for-in'
+	@Ignore // Missing model for v8 debug-natives
 	@Test
 	public void testV8_class_of_builtins() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/class-of-builtins.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/class-of-builtins.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -277,40 +282,39 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/closure.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/closure.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
-//	@Ignore // TODO: 'for-in'
 	@Test
 	public void testV8_compare_nan() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/compare-nan.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/compare-nan.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
-//	@Ignore // TODO: 'for-in'
+	@Ignore  // `const` unsupported, see https://github.com/cs-au-dk/TAJS-private/issues/182
 	@Test
 	public void testV8_const_redecl() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/const-redecl.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/const-redecl.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
-	@Ignore // TODO: 'const'
+	@Ignore  // `const` unsupported, see https://github.com/cs-au-dk/TAJS-private/issues/182
 	@Test
 	public void testV8_cons_test() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/const.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/const.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -320,7 +324,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/context-variable-assignments.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/context-variable-assignments.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -330,7 +334,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/cyclic-array-to-string.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/cyclic-array-to-string.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -340,7 +344,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/date-parse.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/date-parse.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -350,309 +354,327 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/date.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/date.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
-	@Ignore // TODO: DEBUGGER
+	@Ignore // Missing model for v8 debug-natives
 	@Test
 	public void testV8_debug_backtrace_text() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/debug-backtrace-text.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/debug-backtrace-text.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
+	@Ignore // Missing model for v8 debug-natives
 	@Test
 	public void testV8_debug_backtrace() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/debug-backtrace.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/debug-backtrace.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
+	@Ignore // Missing model for v8 debug-natives
 	@Test
 	public void testV8_debug_breakpoints() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/debug-breakpoints.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/debug-breakpoints.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
+	@Ignore // Missing model for v8 debug-natives
 	@Test
 	public void testV8_debug_changebreakpoint() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/debug-changebreakpoint.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/debug-changebreakpoint.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
+	@Ignore // Missing model for v8 debug-natives
 	@Test
 	public void testV8_debug_clearbreakpoint() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/debug-clearbreakpoint.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/debug-clearbreakpoint.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
+	@Ignore // Missing model for v8 debug-natives
 	@Test
 	public void testV8_debug_conditional_breakpoints() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/debug-conditional-breakpoints.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/debug-conditional-breakpoints.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
+	@Ignore // Missing model for v8 debug-natives
 	@Test
 	public void testV8_debug_constructed_by() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/debug-constructed-by.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/debug-constructed-by.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
+	@Ignore // Missing model for v8 debug-natives
 	@Test
 	public void testV8_debug_constructor() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/debug-constructor.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/debug-constructor.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
+	@Ignore // Missing model for v8 debug-natives
 	@Test
 	public void testV8_debug_continue() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/debug-continue.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/debug-continue.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
+	@Ignore // Missing model for v8 debug-natives
 	@Test
 	public void testV8_debug_enable_disable_breakpoints() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/debug-enable-disable-breakpoints.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/debug-enable-disable-breakpoints.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
-	@Ignore // TODO: DEBUGGER
+	@Ignore // Missing model for v8 debug-natives
 	@Test
 	public void testV8_debug_evaluate_arguments() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/debug-evaluate-arguments.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/debug-evaluate-arguments.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
-	@Ignore // TODO: DEBUGGER
+	@Ignore // Missing model for v8 debug-natives
 	@Test
 	public void testV8_debug_evaluate_locals() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/debug-evaluate-locals.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/debug-evaluate-locals.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
-	@Ignore // TODO: DEBUGGER
+	@Ignore // Missing model for v8 debug-natives
 	@Test
 	public void testV8_debug_evaluate_recursive() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/debug-evaluate-recursive.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/debug-evaluate-recursive.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
-	@Ignore // TODO: DEBUGGER
+	@Ignore // Missing model for v8 debug-natives
 	@Test
 	public void testV8_debug_evaluate_with() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/debug-evaluate-with.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/debug-evaluate-with.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
+	@Ignore // Missing model for v8 debug-natives
 	@Test
 	public void testV8_debug_evaluate() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/debug-evaluate.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/debug-evaluate.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
+	@Ignore // Missing model for v8 debug-natives
 	@Test
 	public void testV8_debug_event_listener() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/debug-event-listener.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/debug-event-listener.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
+	@Ignore // Missing model for v8 debug-natives
 	@Test
 	public void testV8_debug_ignore_breakpoints() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/debug-ignore-breakpoints.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/debug-ignore-breakpoints.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
+	@Ignore // Missing model for v8 debug-natives
 	@Test
 	public void testV8_debug_multiple_breakpoints() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/debug-multiple-breakpoints.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/debug-multiple-breakpoints.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
+	@Ignore // Missing model for v8 debug-natives
 	@Test
 	public void testV8_debug_referenced_by() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/debug-referenced-by.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/debug-referenced-by.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
+	@Ignore // Missing model for v8 debug-natives
 	@Test
 	public void testV8_debug_script_breakpoints() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/debug-script-breakpoints.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/debug-script-breakpoints.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
-//	@Ignore // TODO: RegExp
+	@Ignore // Missing model for v8 debug-natives
 	@Test
 	public void testV8_debug_script() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/debug-script.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/debug-script.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
-	@Ignore // TODO: DEBUGGER
+	@Ignore // Missing model for v8 debug-natives
 	@Test
 	public void testV8_debug_scripts_request() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/debug-scripts-request.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/debug-scripts-request.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
+	@Ignore // Missing model for v8 debug-natives
 	@Test
 	public void testV8_debug_setbreakpoint() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/debug-setbreakpoint.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/debug-setbreakpoint.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
+	@Ignore // Missing model for v8 debug-natives
 	@Test
 	public void testV8_debug_sourceinfo() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/debug-sourceinfo.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/debug-sourceinfo.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
-	@Ignore // FIXME: Imprecise loop modelling causes the Unevalizer to fail.
+	@Ignore // Missing model for v8 debug-natives
 	@Test
 	public void testV8_debug_sourceslice() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-        Options.enableUnevalizer();
-		String[] args = {"test/v8tests/debug-sourceslice.js"};
+        Options.get().enableUnevalizer();
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/debug-sourceslice.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
-	@Ignore // TODO: DEBUGGER
+	@Ignore // Missing model for v8 debug-natives
 	@Test
 	public void testV8_debug_step_stub_callfunction() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/debug-step-stub-callfunction.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/debug-step-stub-callfunction.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
+	@Ignore // Missing model for v8 debug-natives
 	@Test
 	public void testV8_debug_step() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/debug-step.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/debug-step.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
-	@Ignore // TODO: DEBUGGER
+	@Ignore // Missing model for v8 debug-natives
 	@Test
 	public void testV8_debug_stepin_constructor() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/debug-stepin-constructor.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/debug-stepin-constructor.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
-//	@Ignore // TODO: __proto__
+	@Ignore // see https://github.com/cs-au-dk/TAJS-private/issues/187
 	@Test
 	public void testV8_declare_locally() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/declare-locally.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/declare-locally.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -662,7 +684,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/deep-recursion.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/deep-recursion.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -672,7 +694,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/delay-syntax-error.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/delay-syntax-error.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -682,7 +704,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/delete-global-properties.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/delete-global-properties.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -692,8 +714,8 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-        Options.enableUnevalizer();
-		String[] args = {"test/v8tests/delete-in-eval.js"};
+        Options.get().enableUnevalizer();
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/delete-in-eval.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -704,7 +726,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/delete-in-with.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/delete-in-with.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -715,8 +737,8 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-        Options.enableUnevalizer();
-		String[] args = {"test/v8tests/delete-vars-from-eval.js"};
+        Options.get().enableUnevalizer();
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/delete-vars-from-eval.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -726,7 +748,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/delete.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/delete.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -736,38 +758,39 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/do-not-strip-fc.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/do-not-strip-fc.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
-//	@Ignore // TODO: 'for-in'
 	@Test
 	public void testV8_dont_enum_array_holes() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/dont-enum-array-holes.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/dont-enum-array-holes.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
+	@Ignore // see https://github.com/cs-au-dk/TAJS-private/issues/184
 	@Test
 	public void testV8_dont_reinit_global_var() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/dont-reinit-global-var.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/dont-reinit-global-var.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
+	@Ignore // see https://github.com/cs-au-dk/TAJS-private/issues/188
 	@Test
 	public void testV8_double_equals() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/double-equals.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/double-equals.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -777,7 +800,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/dtoa.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/dtoa.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -787,10 +810,9 @@ public class TestV8 { // TODO: check expected output for TestV8
 	public void testV8_enumeration_order() throws Exception
 	{
 		Misc.init();
-		Options.enableForInSpecialization();
-		Options.enableUnevalizer();
+		Options.get().enableUnevalizer();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/enumeration_order.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/enumeration_order.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -800,7 +822,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/escape.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/escape.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -810,7 +832,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/eval-typeof-non-existing.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/eval-typeof-non-existing.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -820,7 +842,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/execScript-case-insensitive.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/execScript-case-insensitive.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -830,41 +852,39 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/extra-arguments.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/extra-arguments.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
-//	@Ignore // TODO: 'eval'
+	@Ignore // see https://github.com/cs-au-dk/TAJS-private/issues/184
 	@Test
 	public void testV8_extra_commas() throws Exception
 	{
 		Misc.init();
-		Options.enableUnevalizer();
+		Options.get().enableUnevalizer();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/extra-commas.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/extra-commas.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
-//	@Ignore // TODO: 'for-in'
 	@Test
 	public void testV8_for_in_null_or_undefined() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/for-in-null-or-undefined.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/for-in-null-or-undefined.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
-//	@Ignore // TODO: 'for-in'
 	@Test
 	public void testV8_for_in_special_cases() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/for-in-special-cases.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/for-in-special-cases.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -874,9 +894,8 @@ public class TestV8 { // TODO: check expected output for TestV8
 	public void testV8_for_in() throws Exception
 	{
 		Misc.init();
-		Options.enableForInSpecialization();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/for-in.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/for-in.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -887,18 +906,18 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/fun-as-prototype.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/fun-as-prototype.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
-//	@Ignore // TODO: RegExp
+	@Ignore // see https://github.com/cs-au-dk/TAJS-private/issues/184
 	@Test
 	public void testV8_fun_name() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/fun_name.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/fun_name.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -908,7 +927,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/function-arguments-null.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/function-arguments-null.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -918,7 +937,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/function-caller.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/function-caller.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -928,7 +947,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/function-names.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/function-names.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -938,7 +957,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/function-property.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/function-property.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -949,40 +968,40 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/function-prototype.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/function-prototype.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
+	@Ignore // Missing model for v8 debug-natives
 	@Test
 	public void testV8_function_source() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/function-source.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/function-source.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
-//	@Ignore // TODO: Function(..)
+	@Ignore // See GitHub #147
 	@Test
 	public void testV8_function() throws Exception
 	{
 		Misc.init();
-		Options.enableUnevalizer();
+		Options.get().enableUnevalizer();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/function.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/function.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
-//	@Ignore // TODO: RegExp
 	@Test
 	public void testV8_fuzz_accessors() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/fuzz-accessors.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/fuzz-accessors.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -993,28 +1012,30 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/fuzz-natives.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/fuzz-natives.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
+	@Ignore // see https://github.com/cs-au-dk/TAJS-private/issues/3
 	@Test
 	public void testV8_getter_in_value_prototype() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/getter-in-value-prototype.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/getter-in-value-prototype.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
+	@Ignore  // `const` unsupported, see https://github.com/cs-au-dk/TAJS-private/issues/182
 	@Test
 	public void testV8_global_const_var_conflicts() throws Exception
 	{
 		Misc.init();
-		Options.enableUnevalizer();
+		Options.get().enableUnevalizer();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/global-const-var-conflicts.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/global-const-var-conflicts.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -1023,9 +1044,9 @@ public class TestV8 { // TODO: check expected output for TestV8
 	public void testV8_global_vars_eval() throws Exception
 	{
 		Misc.init();
-		Options.enableUnevalizer();
+		Options.get().enableUnevalizer();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/global-vars-eval.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/global-vars-eval.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -1035,7 +1056,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/global-vars-with.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/global-vars-with.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -1045,7 +1066,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/greedy.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/greedy.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -1055,17 +1076,18 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/has-own-property.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/has-own-property.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
+	@Ignore // TODO: HTML comments not handled
 	@Test
 	public void testV8_html_comments() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/html-comments.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/html-comments.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -1074,9 +1096,8 @@ public class TestV8 { // TODO: check expected output for TestV8
 	public void testV8_html_string_funcs() throws Exception
 	{
 		Misc.init();
-		Options.enableForInSpecialization();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/html-string-funcs.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/html-string-funcs.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -1086,7 +1107,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/if-in-undefined.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/if-in-undefined.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -1096,7 +1117,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/in.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/in.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -1107,7 +1128,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/instanceof.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/instanceof.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -1117,7 +1138,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/integer-to-string.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/integer-to-string.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -1127,17 +1148,18 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/invalid-lhs.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/invalid-lhs.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
+	@Ignore // Missing model for v8 debug-natives
 	@Test
 	public void testV8_keyed_ic() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/keyed-ic.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/keyed-ic.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -1147,7 +1169,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/keyed-storage-extend.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/keyed-storage-extend.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -1156,9 +1178,8 @@ public class TestV8 { // TODO: check expected output for TestV8
 	public void testV8_large_object_allocation() throws Exception
 	{
 		Misc.init();
-		Options.enableForInSpecialization();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/large-object-allocation.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/large-object-allocation.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -1168,31 +1189,29 @@ public class TestV8 { // TODO: check expected output for TestV8
 	public void testV8_large_object_literal() throws Exception
 	{
 		Misc.init();
-		Options.enableUnevalizer();
+		Options.get().enableUnevalizer();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/large-object-literal.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/large-object-literal.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
-//	@Ignore // TODO: RegExp
 	@Test
 	public void testV8_lazy_load() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/lazy-load.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/lazy-load.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
-//	@Ignore // TODO: RegExp
 	@Test
 	public void testV8_leakcheck() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/leakcheck.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/leakcheck.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -1202,7 +1221,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/length.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/length.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -1212,7 +1231,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/math-min-max.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/math-min-max.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -1222,130 +1241,139 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/megamorphic-callbacks.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/megamorphic-callbacks.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
-//	@Ignore // TODO: RegExp
+	@Ignore // Missing model for v8 debug-natives
 	@Test
 	public void testV8_mirror_array() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/mirror-array.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/mirror-array.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
+	@Ignore // Missing model for v8 debug-natives
 	@Test
 	public void testV8_mirror_boolean() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/mirror-boolean.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/mirror-boolean.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
+	@Ignore // Missing model for v8 debug-natives
 	@Test
 	public void testV8_mirror_date() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/mirror-date.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/mirror-date.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
+	@Ignore // Missing model for v8 debug-natives
 	@Test
 	public void testV8_mirror_error() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/mirror-error.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/mirror-error.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
+	@Ignore // Missing model for v8 debug-natives
 	@Test
 	public void testV8_mirror_function() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/mirror-function.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/mirror-function.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
+	@Ignore // Missing model for v8 debug-natives
 	@Test
 	public void testV8_mirror_null() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/mirror-null.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/mirror-null.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
+	@Ignore // Missing model for v8 debug-natives
 	@Test
 	public void testV8_mirror_number() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/mirror-number.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/mirror-number.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
-//	@Ignore // TODO: 'for-in'
+	@Ignore // Missing model for v8 debug-natives
 	@Test
 	public void testV8_mirror_object() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/mirror-object.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/mirror-object.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
-//	@Ignore // TODO: 'for-in'
+	@Ignore // Missing model for v8 debug-natives
 	@Test
 	public void testV8_mirror_regexp() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/mirror-regexp.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/mirror-regexp.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
+	@Ignore // Missing model for v8 debug-natives
 	@Test
 	public void testV8_mirror_string() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/mirror-string.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/mirror-string.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
+	@Ignore // Missing model for v8 debug-natives
 	@Test
 	public void testV8_mirror_undefined() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/mirror-undefined.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/mirror-undefined.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
+	@Ignore // Missing model for v8 debug-natives
 	@Test
 	public void testV8_mirror_unresolved_function() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/mirror-unresolved-function.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/mirror-unresolved-function.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -1356,7 +1384,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/mul-exhaustive.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/mul-exhaustive.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -1366,18 +1394,18 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/negate-zero.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/negate-zero.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
-	@Ignore // TODO: 'const'
+	@Ignore  // `const` unsupported, see https://github.com/cs-au-dk/TAJS-private/issues/182
 	@Test
 	public void testV8_negate() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/negate.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/negate.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -1387,7 +1415,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/nested-repetition-count-overflow.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/nested-repetition-count-overflow.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -1397,17 +1425,19 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/new.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/new.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
+
+	@Ignore // see https://github.com/cs-au-dk/TAJS-private/issues/185
 	@Test
 	public void testV8_newline_in_string() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/newline-in-string.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/newline-in-string.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -1417,7 +1447,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/no-branch-elimination.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/no-branch-elimination.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -1427,7 +1457,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/no-octal-constants-above-256.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/no-octal-constants-above-256.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -1437,29 +1467,27 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/no-semicolon.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/no-semicolon.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
-//	@Ignore // TODO: RegExp
 	@Test
 	public void testV8_non_ascii_replace() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/non-ascii-replace.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/non-ascii-replace.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
-//	@Ignore // TODO: 'for-in'
 	@Test
 	public void testV8_nul_characters() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/nul-characters.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/nul-characters.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -1469,18 +1497,18 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/number-limits.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/number-limits.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
-//	@Ignore // TODO: RegExp
+	@Ignore // Missing model for v8 debug-natives
 	@Test
 	public void testV8_number_string_index_call() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/number-string-index-call.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/number-string-index-call.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -1490,7 +1518,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/number-tostring-small.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/number-tostring-small.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -1500,7 +1528,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/number-tostring.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/number-tostring.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -1510,17 +1538,18 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/obj-construct.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/obj-construct.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
+	@Ignore // see https://github.com/cs-au-dk/TAJS-private/issues/184
 	@Test
 	public void testV8_parse_int_float() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/parse-int-float.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/parse-int-float.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -1530,7 +1559,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/property-object-key.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/property-object-key.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -1541,7 +1570,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/proto.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/proto.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -1552,73 +1581,70 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/prototype.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/prototype.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
-//	@Ignore // TODO: RegExp
+
+	@Ignore // see https://github.com/cs-au-dk/TAJS-private/issues/189
 	@Test
 	public void testV8_regexp_indexof() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/regexp-indexof.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/regexp-indexof.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
-//	@Ignore // TODO: RegExp
 	@Test
 	public void testV8_regexp_multiline_stack_trace() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/regexp-multiline-stack-trace.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/regexp-multiline-stack-trace.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
-//	@Ignore // TODO: RegExp
 	@Test
 	public void testV8_regexp_multiline() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/regexp-multiline.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/regexp-multiline.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
-//	@Ignore // TODO: RegExp
 	@Test
 	public void testV8_regexp_standalones() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/regexp-standalones.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/regexp-standalones.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
-//	@Ignore // TODO: RegExp
+	@Ignore // see https://github.com/cs-au-dk/TAJS-private/issues/183
 	@Test
 	public void testV8_regexp_static() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/regexp-static.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/regexp-static.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
-//	@Ignore // TODO: RegExp
 	@Test
 	public void testV8_regexp() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/regexp.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/regexp.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -1628,7 +1654,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/scanner.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/scanner.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -1638,18 +1664,18 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/smi-negative-zero.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/smi-negative-zero.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
-	@Ignore // TODO: 'const'
+	@Ignore  // `const` unsupported, see https://github.com/cs-au-dk/TAJS-private/issues/182
 	@Test
 	public void testV8_smi_ops() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/smi-ops.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/smi-ops.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -1659,7 +1685,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/sparse-array-reverse.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/sparse-array-reverse.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -1669,7 +1695,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/sparse-array.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/sparse-array.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -1679,7 +1705,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/str-to-num.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/str-to-num.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -1689,7 +1715,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/stress-array-push.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/stress-array-push.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -1699,7 +1725,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/strict-equals.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/strict-equals.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -1709,7 +1735,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/string-case.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/string-case.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -1719,7 +1745,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/string-charat.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/string-charat.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -1730,18 +1756,17 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/string-charcodeat.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/string-charcodeat.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
-//	@Ignore // TODO: 'for-in'
 	@Test
 	public void testV8_string_compare_alignment() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/string-compare-alignment.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/string-compare-alignment.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -1751,7 +1776,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/string-flatten.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/string-flatten.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -1761,7 +1786,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/string-index.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/string-index.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -1772,7 +1797,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/string-indexof.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/string-indexof.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -1782,7 +1807,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/string-lastindexof.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/string-lastindexof.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -1792,7 +1817,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/string-localecompare.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/string-localecompare.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -1802,7 +1827,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/string-search.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/string-search.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -1812,7 +1837,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/string-split.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/string-split.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -1822,27 +1847,26 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/substr.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/substr.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
-	@Test
+	@Test(expected = AnalysisException.class /* switch in non-last position */)
 	public void testV8_switch_test() throws Exception
 	{
 		Misc.init();
-		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/switch.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/switch.js"};
 		Misc.run(args);
-		Misc.checkSystemOutput();
 	}
 
+	@Ignore // see https://github.com/cs-au-dk/TAJS-private/issues/183
 	@Test
 	public void testV8_this_in_callbacks() throws Exception
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/this-in-callbacks.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/this-in-callbacks.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -1852,7 +1876,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/this.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/this.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -1862,7 +1886,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/throw-exception-for-null-access.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/throw-exception-for-null-access.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -1872,7 +1896,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/to-precision.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/to-precision.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 		// TODO: Find out why there are "Converting primitive number to object" warnings when running this test,
@@ -1884,7 +1908,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/tobool.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/tobool.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -1894,7 +1918,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/toint32.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/toint32.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -1904,7 +1928,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/touint32.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/touint32.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -1914,7 +1938,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/try-finally-nested.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/try-finally-nested.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -1925,7 +1949,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/try.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/try.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -1935,7 +1959,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/try_catch_scopes.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/try_catch_scopes.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -1945,7 +1969,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/unicode-string-to-number.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/unicode-string-to-number.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -1955,7 +1979,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/unicode-test.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/unicode-test.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -1965,7 +1989,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/unusual-constructor.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/unusual-constructor.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -1975,7 +1999,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/uri.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/uri.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -1985,7 +2009,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/value-callic-prototype-change.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/value-callic-prototype-change.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -1995,7 +2019,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/var.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/var.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -2005,7 +2029,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/with-function-expression.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/with-function-expression.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -2016,7 +2040,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/with-leave.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/with-leave.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -2026,7 +2050,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/with-parameter-access.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/with-parameter-access.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -2036,7 +2060,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 	{
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/with-value.js"};
+		String[] args = {"test/v8tests/prologue.js", "test/v8tests/with-value.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}

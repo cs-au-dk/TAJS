@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2013 Aarhus University
+ * Copyright 2009-2015 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,54 +23,54 @@ import dk.brics.tajs.flowgraph.AbstractNode;
  */
 public final class NodeAndContext<ContextType extends IContext<?>> {
 
-	private AbstractNode n;
-	
-	private ContextType c;
-	
-	/**
-	 * Constructs a new pair.
-	 */
-	public NodeAndContext(AbstractNode n, ContextType c) {
-		this.n = n;
-		this.c = c;
-	}
+    private AbstractNode n;
 
-	/**
-	 * Returns the node.
-	 */
-	public AbstractNode getNode() {
-		return n;
-	}
-	
-	/**
-	 * Returns the context.
-	 */
-	public ContextType getContext() {
-		return c;
-	}
+    private ContextType c;
 
-	/**
-	 * Checks whether this object and the given object are equal.
-	 */
-	@SuppressWarnings("unchecked")
-	@Override
-	public boolean equals(Object obj) {
-		if (!(obj instanceof NodeAndContext))
-			return false;
-		NodeAndContext<ContextType> ncp = (NodeAndContext<ContextType>) obj;
-		return ncp.n == n && ncp.c.equals(c);
-	}
+    /**
+     * Constructs a new pair.
+     */
+    public NodeAndContext(AbstractNode n, ContextType c) {
+        this.n = n;
+        this.c = c;
+    }
 
-	/**
-	 * Computes the hash code for this object.
-	 */
-	@Override
-	public int hashCode() {
-		return n.getIndex() * 13 + c.hashCode() * 3;
-	}
-	
-	@Override
-	public String toString() {
-		return "node " + n.getIndex() + ", context " + c;
-	}
+    /**
+     * Returns the node.
+     */
+    public AbstractNode getNode() {
+        return n;
+    }
+
+    /**
+     * Returns the context.
+     */
+    public ContextType getContext() {
+        return c;
+    }
+
+    /**
+     * Checks whether this object and the given object are equal.
+     */
+    @SuppressWarnings("unchecked")
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof NodeAndContext))
+            return false;
+        NodeAndContext<ContextType> ncp = (NodeAndContext<ContextType>) obj;
+        return ncp.n == n && ncp.c.equals(c);
+    }
+
+    /**
+     * Computes the hash code for this object.
+     */
+    @Override
+    public int hashCode() {
+        return n.getIndex() * 13 + c.hashCode() * 3;
+    }
+
+    @Override
+    public String toString() {
+        return "node " + n.getIndex() + ", context " + c;
+    }
 }

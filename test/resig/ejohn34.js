@@ -3,6 +3,6 @@ function User(first, last){
 } 
  
 var user = User("John", "Resig"); 
-assert( typeof user == "undefined" );
-dumpValue(typeof user);
-dumpValue(user);
+TAJS_assert( typeof user == "undefined" );
+TAJS_dumpValue(typeof user);
+TAJS_dumpValue(user);

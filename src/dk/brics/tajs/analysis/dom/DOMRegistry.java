@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2013 Aarhus University
+ * Copyright 2009-2015 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,10 +17,11 @@
 package dk.brics.tajs.analysis.dom;
 
 import dk.brics.tajs.lattice.ObjectLabel;
+import dk.brics.tajs.util.AnalysisException;
 
 public class DOMRegistry {
 
-    public static enum MaySets {
+    public enum MaySets {
         LOAD_EVENT_HANDLER,
         UNLOAD_EVENT_HANDLERS,
 
@@ -31,20 +32,24 @@ public class DOMRegistry {
         UNKNOWN_EVENT_HANDLERS
     }
 
-    public static enum MustSets {
+    public enum MustSets {
         LOAD_EVENT_HANDLER
     }
 
-    public static enum MayMaps {
+    public enum MayMaps {
         ELEMENTS_BY_ID,
         ELEMENTS_BY_NAME,
         ELEMENTS_BY_TAGNAME
     }
 
     private static ObjectLabel keyboardEvent;
+
     private static ObjectLabel mouseEvent;
+
     private static ObjectLabel ajaxEvent;
+
     private static ObjectLabel mutationEvent;
+
     private static ObjectLabel wheelEvent;
 
     public static void reset() {
@@ -77,37 +82,36 @@ public class DOMRegistry {
 
     public static ObjectLabel getKeyboardEventLabel() {
         if (keyboardEvent == null) {
-            throw new IllegalStateException("No keyboard event object labels registered");
+            throw new AnalysisException("No keyboard event object labels registered");
         }
         return keyboardEvent;
     }
 
     public static ObjectLabel getMouseEventLabel() {
         if (mouseEvent == null) {
-            throw new IllegalStateException("No mouse event object labels registered");
+            throw new AnalysisException("No mouse event object labels registered");
         }
         return mouseEvent;
     }
 
     public static ObjectLabel getAjaxEventLabel() {
         if (ajaxEvent == null) {
-            throw new IllegalStateException("No ajax event object labels registered");
+            throw new AnalysisException("No ajax event object labels registered");
         }
         return ajaxEvent;
     }
 
     public static ObjectLabel getMutationEventLabel() {
         if (mutationEvent == null) {
-            throw new IllegalStateException("No mutation event object labels registered");
+            throw new AnalysisException("No mutation event object labels registered");
         }
         return mutationEvent;
     }
 
     public static ObjectLabel getWheelEventLabel() {
         if (wheelEvent == null) {
-            throw new IllegalStateException("No wheel event object labels registered");
+            throw new AnalysisException("No wheel event object labels registered");
         }
         return wheelEvent;
     }
-
 }

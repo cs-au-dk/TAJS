@@ -1,4 +1,4 @@
 for (i = 0; i < 1; i++) {
-  dumpValue(i)
+  TAJS_dumpValue(i)
 }
-dumpValue(i)
+TAJS_dumpValue(i)

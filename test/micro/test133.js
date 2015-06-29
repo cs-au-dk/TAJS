@@ -9,5 +9,5 @@ function f6() {f7()}
 function f7() {y = x.b; f8()}
 function f8() {}
 f1();
-assert(y == "foo");
+TAJS_assert(y == "foo");
  

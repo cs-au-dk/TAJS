@@ -1,12 +1,12 @@
-test/chromeexperiments/plasma.tidy.html:23:20: [definite] The conditional expression is always false
-test/chromeexperiments/plasma.tidy.html:23:20: [definite] Variable test2504afjd is null/undefined
-test/chromeexperiments/plasma.tidy.html:25:1: [definite] Dead assignment, property MAX_FPS is never read
-test/chromeexperiments/plasma.tidy.html:26:1: [definite] Dead assignment, property Demo is never read
-test/chromeexperiments/plasma.tidy.html:18:17: [definite] Unreachable function
-test/chromeexperiments/plasma.tidy.html:26:21: [definite] Unreachable function
-test/chromeexperiments/plasma.tidy.html:48:5: [definite] Unreachable function init
-test/chromeexperiments/plasma.tidy.html:80:5: [definite] Unreachable function updateValues
-test/chromeexperiments/plasma.tidy.html:95:5: [definite] Unreachable function sin
-test/chromeexperiments/plasma.tidy.html:100:5: [definite] Unreachable function draw
-test/chromeexperiments/plasma.tidy.html:143:5: [definite] Unreachable function tick
-test/chromeexperiments/plasma.tidy.html:195:18: [definite] Unreachable function
+test/chromeexperiments/plasma.html:21:20: [definite] The conditional expression is always false
+test/chromeexperiments/plasma.html:21:20: [definite] Variable test2504afjd is null/undefined
+test/chromeexperiments/plasma.html:23:1: [definite] Dead assignment, property MAX_FPS is never read
+test/chromeexperiments/plasma.html:24:1: [definite] Dead assignment, property Demo is never read
+test/chromeexperiments/plasma.html:16:17: [definite] Unreachable function
+test/chromeexperiments/plasma.html:24:21: [definite] Unreachable function
+test/chromeexperiments/plasma.html:46:5: [definite] Unreachable function init
+test/chromeexperiments/plasma.html:78:5: [definite] Unreachable function updateValues
+test/chromeexperiments/plasma.html:93:5: [definite] Unreachable function sin
+test/chromeexperiments/plasma.html:98:5: [definite] Unreachable function draw
+test/chromeexperiments/plasma.html:141:5: [definite] Unreachable function tick
+test/chromeexperiments/plasma.html:193:18: [definite] Unreachable function

@@ -1,22 +1,90 @@
-test/v8tests/apply.js:36:1: [definite] ReferenceError, reading absent variable assertTrue
-test/v8tests/apply.js:28:1: [definite] Unreachable function f0
-test/v8tests/apply.js:32:1: [definite] Unreachable function f1
-test/v8tests/apply.js:36:12: [definite] Unreachable code
-test/v8tests/apply.js:75:5: [definite] The variable arr is never used
-test/v8tests/apply.js:76:1: [definite] Unreachable function j
-test/v8tests/apply.js:81:5: [definite] The variable expect is never used
-test/v8tests/apply.js:82:10: [definite] The variable i is never used
-test/v8tests/apply.js:90:1: [definite] Unreachable function f
-test/v8tests/apply.js:100:1: [definite] Unreachable function s
-test/v8tests/apply.js:110:1: [definite] Unreachable function al
+test/v8tests/apply.js:174:26: [definite] Too many parameters to function Function.prototype.apply
+test/v8tests/apply.js:175:26: [definite] Too many parameters to function Function.prototype.apply
+test/v8tests/apply.js:176:26: [definite] Too many parameters to function Function.prototype.apply
+test/v8tests/apply.js:177:26: [definite] Too many parameters to function Function.prototype.apply
+test/v8tests/apply.js:77:31: [definite] Variable e is null/undefined
+test/v8tests/apply.js:77:35: [definite] Variable f is null/undefined
+test/v8tests/apply.js:77:39: [definite] Variable g is null/undefined
+test/v8tests/apply.js:77:43: [definite] Variable h is null/undefined
+test/v8tests/apply.js:77:47: [definite] Variable i is null/undefined
+test/v8tests/apply.js:77:51: [definite] Variable j is null/undefined
+test/v8tests/apply.js:77:55: [definite] Variable k is null/undefined
+test/v8tests/apply.js:77:59: [definite] Variable l is null/undefined
+test/v8tests/apply.js:29:10: [definite] Reading 'this' yields the global object
+test/v8tests/apply.js:36:12: [definite] Reading 'this' yields the global object
+test/v8tests/apply.js:38:12: [definite] Reading 'this' yields the global object
+test/v8tests/apply.js:38:30: [definite] Reading 'this' yields the global object
+test/v8tests/apply.js:39:12: [definite] Reading 'this' yields the global object
+test/v8tests/apply.js:39:30: [definite] Reading 'this' yields the global object
+test/v8tests/apply.js:40:12: [definite] Reading 'this' yields the global object
+test/v8tests/apply.js:40:30: [definite] Reading 'this' yields the global object
+test/v8tests/apply.js:41:12: [definite] Reading 'this' yields the global object
+test/v8tests/apply.js:41:30: [definite] Reading 'this' yields the global object
+test/v8tests/apply.js:43:12: [definite] Reading 'this' yields the global object
+test/v8tests/apply.js:44:12: [definite] Reading 'this' yields the global object
+test/v8tests/apply.js:45:12: [definite] Reading 'this' yields the global object
+test/v8tests/apply.js:46:12: [definite] Reading 'this' yields the global object
+test/v8tests/apply.js:46:30: [definite] Reading 'this' yields the global object
+test/v8tests/apply.js:48:12: [definite] Reading 'this' yields the global object
+test/v8tests/apply.js:49:12: [definite] Reading 'this' yields the global object
+test/v8tests/apply.js:50:12: [definite] Reading 'this' yields the global object
+test/v8tests/apply.js:54:32: [definite] Reading 'this' yields the global object
+test/v8tests/apply.js:55:32: [definite] Reading 'this' yields the global object
+test/v8tests/apply.js:56:32: [definite] Reading 'this' yields the global object
+test/v8tests/apply.js:57:32: [definite] Reading 'this' yields the global object
+test/v8tests/apply.js:58:28: [definite] Reading 'this' yields the global object
+test/v8tests/apply.js:59:30: [definite] Reading 'this' yields the global object
+test/v8tests/apply.js:98:40: [definite] Reading 'this' yields the global object
+test/v8tests/apply.js:118:5: [definite] Dead assignment, property is never read
+test/v8tests/apply.js:170:1: [definite] Dead assignment, property 0 is never read
+test/v8tests/apply.js:171:1: [definite] Dead assignment, property 2 is never read
 test/v8tests/apply.js:115:10: [definite] The variable declaration j shadows a function
-test/v8tests/apply.js:115:10: [definite] The variable j is never used
-test/v8tests/apply.js:117:9: [definite] The variable a is never used
 test/v8tests/apply.js:120:5: [definite] Unreachable code
 test/v8tests/apply.js:123:11: [definite] The variable caught is never used
 test/v8tests/apply.js:129:9: [definite] Unreachable code
-test/v8tests/apply.js:139:5: [definite] The variable primes is never used
-test/v8tests/apply.js:141:1: [definite] Unreachable function isPrime
-test/v8tests/apply.js:160:5: [definite] The variable same_primes is never used
-test/v8tests/apply.js:169:5: [definite] The variable holey is never used
-test/v8tests/apply.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/apply.js:36:1]
+test/v8tests/apply.js:182:26: [maybe] Too many parameters to function Function.prototype.apply
+test/v8tests/apply.js:182:26: [maybe] TypeError, invalid arguments to 'apply'
+test/v8tests/apply.js:33:10: [maybe] The variable a has values with different types
+test/v8tests/apply.js:77:10: [maybe] Converting undefined to string
+test/v8tests/apply.js:77:10: [maybe] Converting undefined to string
+test/v8tests/apply.js:77:10: [maybe] Converting undefined to string
+test/v8tests/apply.js:77:10: [maybe] Converting undefined to string
+test/v8tests/apply.js:77:10: [maybe] Converting undefined to string
+test/v8tests/apply.js:77:10: [maybe] Converting undefined to string
+test/v8tests/apply.js:77:10: [maybe] Converting undefined to string
+test/v8tests/apply.js:77:10: [maybe] Converting undefined to string
+test/v8tests/apply.js:93:5: [maybe] Converting undefined to string
+test/v8tests/apply.js:93:12: [maybe] Reading absent property (computed name)
+test/v8tests/apply.js:103:5: [maybe] Converting undefined to string
+test/v8tests/apply.js:103:5: [maybe] The variable doo has values with different types
+test/v8tests/apply.js:103:12: [maybe] Reading absent property (computed name)
+test/v8tests/apply.js:105:10: [maybe] The variable doo has values with different types
+test/v8tests/apply.js:108:35: [maybe] Converting primitive string to object
+test/v8tests/apply.js:112:10: [maybe] Conversion to number yields NaN
+test/v8tests/apply.js:112:29: [maybe] Reading absent property (computed name)
+test/v8tests/apply.js:119:26: [maybe] Converting primitive number to object
+test/v8tests/apply.js:143:13: [maybe] Reading absent property (computed name)
+test/v8tests/apply.js:144:9: [maybe] Conversion to number yields NaN
+test/v8tests/apply.js:146:9: [maybe] Conversion to number yields NaN
+test/v8tests/apply.js:163:16: [maybe] Reading absent property (computed name)
+test/v8tests/apply.js:163:27: [maybe] Reading absent property (computed name)
+test/v8tests/apply.js:173:26: [maybe] Conversion from string to number yields NaN
+test/v8tests/apply.js:173:26: [maybe] Converting object to string
+test/v8tests/apply.js:173:26: [maybe] Converting primitive string to object
+test/v8tests/apply.js:174:26: [maybe] Conversion from string to number yields NaN
+test/v8tests/apply.js:174:26: [maybe] Converting object to string
+test/v8tests/apply.js:174:26: [maybe] Converting primitive string to object
+test/v8tests/apply.js:175:26: [maybe] Conversion from string to number yields NaN
+test/v8tests/apply.js:175:26: [maybe] Converting object to string
+test/v8tests/apply.js:175:26: [maybe] Converting primitive string to object
+test/v8tests/apply.js:176:26: [maybe] Conversion from string to number yields NaN
+test/v8tests/apply.js:176:26: [maybe] Converting object to string
+test/v8tests/apply.js:176:26: [maybe] Converting primitive string to object
+test/v8tests/apply.js:177:26: [maybe] Conversion from string to number yields NaN
+test/v8tests/apply.js:177:26: [maybe] Converting object to string
+test/v8tests/apply.js:177:26: [maybe] Converting primitive string to object
+test/v8tests/apply.js:182:26: [maybe] Conversion to number yields NaN
+test/v8tests/apply.js:182:26: [maybe] Converting object to string
+test/v8tests/apply.js:182:26: [maybe] Converting primitive number to object
+test/v8tests/apply.js:182:26: [maybe] Converting primitive string to object
+test/v8tests/prologue.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/apply.js:182:26]

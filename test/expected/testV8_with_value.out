@@ -1,4 +1,1 @@
-test/v8tests/with-value.js:32:14: [definite] ReferenceError, reading absent variable assertTrue
-test/v8tests/with-value.js:32:25: [definite] Unreachable code
-test/v8tests/with-value.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/with-value.js:32:14]
 test/v8tests/with-value.js:32:3: [maybe] Converting primitive number to object

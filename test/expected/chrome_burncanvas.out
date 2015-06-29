@@ -1,31 +1,16 @@
-test/chromeexperiments/burncanvas.tidy.html:165:19: [definite] Unreachable code
-test/chromeexperiments/burncanvas.tidy.html:141:25: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/burncanvas.tidy.html:143:17: [maybe] TypeError, inf or NaN as arguments to CanvasRenderingContext2D.putImageData
-test/chromeexperiments/burncanvas.tidy.html:14: [maybe] Uncaught exception, constructed at [test/chromeexperiments/burncanvas.tidy.html:141:25]
-test/chromeexperiments/burncanvas.tidy.html:73:49: [maybe] Conversion to number yields NaN
-test/chromeexperiments/burncanvas.tidy.html:73:49: [maybe] Reading absent property (computed name)
-test/chromeexperiments/burncanvas.tidy.html:73:69: [maybe] Conversion to number yields NaN
-test/chromeexperiments/burncanvas.tidy.html:73:69: [maybe] Reading absent property (computed name)
-test/chromeexperiments/burncanvas.tidy.html:73:93: [maybe] Reading absent property (computed name)
-test/chromeexperiments/burncanvas.tidy.html:74:49: [maybe] Conversion to number yields NaN
-test/chromeexperiments/burncanvas.tidy.html:74:49: [maybe] Reading absent property (computed name)
-test/chromeexperiments/burncanvas.tidy.html:74:69: [maybe] Conversion to number yields NaN
-test/chromeexperiments/burncanvas.tidy.html:74:69: [maybe] Reading absent property (computed name)
-test/chromeexperiments/burncanvas.tidy.html:74:93: [maybe] Reading absent property (computed name)
-test/chromeexperiments/burncanvas.tidy.html:75:49: [maybe] Conversion to number yields NaN
-test/chromeexperiments/burncanvas.tidy.html:75:49: [maybe] Reading absent property (computed name)
-test/chromeexperiments/burncanvas.tidy.html:75:69: [maybe] Conversion to number yields NaN
-test/chromeexperiments/burncanvas.tidy.html:75:69: [maybe] Reading absent property (computed name)
-test/chromeexperiments/burncanvas.tidy.html:75:93: [maybe] Reading absent property (computed name)
-test/chromeexperiments/burncanvas.tidy.html:101:45: [maybe] Reading absent property (computed name)
-test/chromeexperiments/burncanvas.tidy.html:102:41: [maybe] Conversion to number yields NaN
-test/chromeexperiments/burncanvas.tidy.html:106:45: [maybe] Reading absent property (computed name)
-test/chromeexperiments/burncanvas.tidy.html:107:41: [maybe] Conversion to number yields NaN
-test/chromeexperiments/burncanvas.tidy.html:111:45: [maybe] Reading absent property (computed name)
-test/chromeexperiments/burncanvas.tidy.html:112:41: [maybe] Conversion to number yields NaN
-test/chromeexperiments/burncanvas.tidy.html:135:26: [maybe] Conversion to number yields NaN
-test/chromeexperiments/burncanvas.tidy.html:135:38: [maybe] Conversion to number yields NaN
-test/chromeexperiments/burncanvas.tidy.html:136:26: [maybe] Conversion to number yields NaN
-test/chromeexperiments/burncanvas.tidy.html:136:38: [maybe] Conversion to number yields NaN
-test/chromeexperiments/burncanvas.tidy.html:141:48: [maybe] Conversion to number yields NaN
-test/chromeexperiments/burncanvas.tidy.html:141:55: [maybe] Conversion to number yields NaN
+test/chromeexperiments/burncanvas.html:23:3: [definite] Dead assignment, property x is never read
+test/chromeexperiments/burncanvas.html:24:3: [definite] Dead assignment, property y is never read
+test/chromeexperiments/burncanvas.html:25:3: [definite] Dead assignment, property pressed is never read
+test/chromeexperiments/burncanvas.html:28:3: [definite] Dead assignment, property x is never read
+test/chromeexperiments/burncanvas.html:29:3: [definite] Dead assignment, property y is never read
+test/chromeexperiments/burncanvas.html:32:3: [definite] Dead assignment, property pressed is never read
+test/chromeexperiments/burncanvas.html:35:3: [definite] Dead assignment, property pressed is never read
+test/chromeexperiments/burncanvas.html:143:3: [definite] Dead assignment, property draw is never read
+test/chromeexperiments/burncanvas.html:44:6: [definite] The variable reach is never used
+test/chromeexperiments/burncanvas.html:45:6: [definite] The variable m is never used
+test/chromeexperiments/burncanvas.html:46:6: [definite] The variable lastmx is never used
+test/chromeexperiments/burncanvas.html:46:18: [definite] The variable lastmy is never used
+test/chromeexperiments/burncanvas.html:59:2: [definite] Unreachable function modify_region
+test/chromeexperiments/burncanvas.html:117:2: [definite] Unreachable function do_draw
+test/chromeexperiments/burncanvas.html:149:2: [definite] Unreachable function step
+test/chromeexperiments/burncanvas.html:162:5: [definite] Unreachable code

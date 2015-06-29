@@ -1,6 +1,6 @@
-test/uneval/uneval20.js:9:11: [definite] ReferenceError, reading absent variable g
+test/uneval/uneval20.js:9:16: [definite] ReferenceError, reading absent variable g
 test/uneval/uneval20.js:9:1: [definite] Unreachable code
-test/uneval/uneval20.js:1:1: [maybe] Uncaught exception, constructed at [test/uneval/uneval20.js:9:11]
+test/uneval/uneval20.js:1:1: [maybe] Uncaught exception, constructed at [test/uneval/uneval20.js:9:16]
 test/uneval/uneval20.js:4:2: [info] Abstract value: 7.0
 test/uneval/uneval20.js:5:2: [info] Abstract value: [@g#fun2]
 test/uneval/uneval20.js:6:2: [info] Abstract value: 8.0

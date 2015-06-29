@@ -1,2 +1,2 @@
-test/resig/ejohn17.js:3:9: [definite] The conditional expression is always true
+test/resig/ejohn17.js:3:17: [definite] The conditional expression is always true
 test/resig/ejohn17.js:2:10: [definite] Unreachable function

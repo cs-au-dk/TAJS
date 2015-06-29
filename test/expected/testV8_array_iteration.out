@@ -1,6 +1,6 @@
-test/v8tests/array-iteration.js:42:3: [definite] ReferenceError, reading absent variable assertArrayEquals
-test/v8tests/array-iteration.js:41:7: [definite] The variable a is never used
-test/v8tests/array-iteration.js:42:21: [definite] Unreachable code
+test/v8tests/array-iteration.js:42:26: [definite] TypeError, call to non-function
+test/v8tests/array-iteration.js:42:26: [definite] Reading absent property filter
+test/v8tests/array-iteration.js:42:3: [definite] Unreachable code
 test/v8tests/array-iteration.js:42:35: [definite] Unreachable function
 test/v8tests/array-iteration.js:46:7: [definite] The variable o is never used
 test/v8tests/array-iteration.js:48:39: [definite] Unreachable function
@@ -39,4 +39,4 @@ test/v8tests/array-iteration.js:206:22: [definite] Unreachable function
 test/v8tests/array-iteration.js:210:21: [definite] Unreachable function
 test/v8tests/array-iteration.js:215:22: [definite] Unreachable function
 test/v8tests/array-iteration.js:224:21: [definite] Unreachable function
-test/v8tests/array-iteration.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/array-iteration.js:42:3]
+test/v8tests/prologue.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/array-iteration.js:42:26]

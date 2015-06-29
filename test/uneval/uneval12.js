@@ -5,17 +5,17 @@ function as() {
 var o = {p: function() {return {}}}
 var y = 3;
 
-dumpExp(1+y+3);
-dumpExp(y)
-dumpExp(4)
-dumpExp(as())
-dumpExp("(" + as() + (y + 2) + ")")
-dumpExp(2+3*y)
-dumpExp((2+y)*y)
-try {throw 4} catch(e) {dumpExp(e)}
-dumpExp(y/(1+y) + as())
-dumpExp(o.p)
-dumpExp(o[4])
-dumpExp(o[as()])
-dumpExp(o.p())
-dumpExp(o.p()[y])
+TAJS_dumpExp(1+y+3);
+TAJS_dumpExp(y)
+TAJS_dumpExp(4)
+TAJS_dumpExp(as())
+TAJS_dumpExp("(" + as() + (y + 2) + ")")
+TAJS_dumpExp(2+3*y)
+TAJS_dumpExp((2+y)*y)
+try {throw 4} catch(e) {TAJS_dumpExp(e)}
+TAJS_dumpExp(y/(1+y) + as())
+TAJS_dumpExp(o.p)
+TAJS_dumpExp(o[4])
+TAJS_dumpExp(o[as()])
+TAJS_dumpExp(o.p())
+TAJS_dumpExp(o.p()[y])

@@ -6,4 +6,4 @@ if (Math.random()) {
   f();
 }
 
-dumpValue(y);
+TAJS_dumpValue(y);

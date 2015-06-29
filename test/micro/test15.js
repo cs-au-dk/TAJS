@@ -1,13 +1,13 @@
 function f(x) {
-	//dumpState();
+	//TAJS_dumpState();
 	return x + 1;
 }
 
 var q = f(7);
 
-assert(q == 8);
-dumpValue(q);
+TAJS_assert(q == 8);
+TAJS_dumpValue(q);
 
 var obj = {aaa:7}
-assert(obj.aaa === 7);
-dumpValue(obj.aaa);
+TAJS_assert(obj.aaa === 7);
+TAJS_dumpValue(obj.aaa);

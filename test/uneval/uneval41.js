@@ -6,4 +6,4 @@ function g(y) {
    return eval("z = " + y)
 }
 
-dumpValue(f(3))
+TAJS_dumpValue(f(3))

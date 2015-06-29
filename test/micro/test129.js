@@ -11,5 +11,5 @@ with (foo) {
 }
 
 
-dumpValue(scope); // should be the foo object
-assert(scope === foo);
+TAJS_dumpValue(scope); // should be the foo object
+TAJS_assert(scope === foo);

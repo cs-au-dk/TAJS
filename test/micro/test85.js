@@ -55,4 +55,4 @@ foo();
 x = {}
 foo();
 
-dumpValue(x);
+TAJS_dumpValue(x);

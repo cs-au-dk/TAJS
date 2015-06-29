@@ -3,11 +3,9 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="test/src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="lib/jtidy.jar"/>
-	<classpathentry kind="lib" path="lib/jdom-1.1.1.jar"/>
-	<classpathentry kind="lib" path="lib/jdom-contrib-1.1.1.jar"/>
 	<classpathentry kind="lib" path="lib/log4j.jar"/>
-	<classpathentry kind="lib" path="lib/compiler.jar"/>
+	<classpathentry kind="lib" path="lib/jericho-html-3.3.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="lib" path="lib/closure-compiler.jar"/>
 	<classpathentry kind="output" path="build"/>
 </classpath>

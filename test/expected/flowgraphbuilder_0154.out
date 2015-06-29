@@ -1,122 +1,122 @@
-fg2: <main> function()
+fg2: function()
   block 0: [entry]
-    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0154.tidy.html:3)
+    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0154.html:2:9)
     ->[block 1]
   block 1:
-    node 1: read-variable['eval',v3,v2] (test/flowgraphbuilder/flowgraph_builder0154.tidy.html:7:9)
-    node 2: constant["function position_CM(o)\{ var p = \{ Left: 0 \}; while (!!o) \{     p.Left += 9; o = o.offsetParent;   \}; return p; \}",v4] (test/flowgraphbuilder/flowgraph_builder0154.tidy.html:7:14)
+    node 1: read-variable['eval',v3,v2] (test/flowgraphbuilder/flowgraph_builder0154.html:3:9)
+    node 2: constant["function position_CM(o)\{ var p = \{ Left: 0 \}; while (!!o) \{     p.Left += 9; o = o.offsetParent;   \}; return p; \}",v4] (test/flowgraphbuilder/flowgraph_builder0154.html:3:14)
     ->[block 2]
   block 2:
-    node 3: call[v2,v3,v4,-]* (test/flowgraphbuilder/flowgraph_builder0154.tidy.html:7:9)
+    node 3: call[v2,v3,v4,-]* (test/flowgraphbuilder/flowgraph_builder0154.html:3:9)
     ->[block 3]
   block 3:
-    node 4: event-entry (test/flowgraphbuilder/flowgraph_builder0154.tidy.html)
+    node 4: nop (test/flowgraphbuilder/flowgraph_builder0154.html:2:9)
     ->[block 4,block 5]
   block 4:
-    node 5: event-dispatcher <LOAD> (test/flowgraphbuilder/flowgraph_builder0154.tidy.html)
+    node 5: event-dispatcher <LOAD> (test/flowgraphbuilder/flowgraph_builder0154.html:2:9)
     ->[block 5]
   block 5:
-    node 6: nop (test/flowgraphbuilder/flowgraph_builder0154.tidy.html)
+    node 6: nop (test/flowgraphbuilder/flowgraph_builder0154.html:2:9)
     ->[block 4,block 6,block 7]
   block 6:
-    node 7: event-dispatcher <OTHER> (test/flowgraphbuilder/flowgraph_builder0154.tidy.html)
+    node 7: event-dispatcher <OTHER> (test/flowgraphbuilder/flowgraph_builder0154.html:2:9)
     ->[block 7]
   block 7:
-    node 8: nop (test/flowgraphbuilder/flowgraph_builder0154.tidy.html)
+    node 8: nop (test/flowgraphbuilder/flowgraph_builder0154.html:2:9)
     ->[block 6,block 8,block 9]
   block 8:
-    node 9: event-dispatcher <UNLOAD> (test/flowgraphbuilder/flowgraph_builder0154.tidy.html)
+    node 9: event-dispatcher <UNLOAD> (test/flowgraphbuilder/flowgraph_builder0154.html:2:9)
     ->[block 9]
   block 9:
-    node 10: nop (test/flowgraphbuilder/flowgraph_builder0154.tidy.html)
+    node 10: nop (test/flowgraphbuilder/flowgraph_builder0154.html:2:9)
     ->[block 8,block 10]
   block 10: [exit-ordinary]
-    node 11: return[v1] (test/flowgraphbuilder/flowgraph_builder0154.tidy.html:3)
+    node 11: return[v1] (test/flowgraphbuilder/flowgraph_builder0154.html:2:9)
     ->[]
   block 11: [exit-exceptional]
-    node 12: exceptional-return (test/flowgraphbuilder/flowgraph_builder0154.tidy.html:3)
+    node 12: exceptional-return (test/flowgraphbuilder/flowgraph_builder0154.html:2:9)
     ->[]
 
 fg2: <main> function()
+  block 12:
+    node 13: constant[undefined,-] (test/flowgraphbuilder/flowgraph_builder0154.html:3:9)
+    node 14: function-decl[function position_CM(o),-] (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0154.html:3:9):1:1)
+    ->[block 3]
   block 0: [entry]
-    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0154.tidy.html:3)
+    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0154.html:2:9)
     ->[block 1]
   block 1:
-    node 1: read-variable['eval',v3,v2] (test/flowgraphbuilder/flowgraph_builder0154.tidy.html:7:9)
-    node 2: constant["function position_CM(o)\{ var p = \{ Left: 0 \}; while (!!o) \{     p.Left += 9; o = o.offsetParent;   \}; return p; \}",v4] (test/flowgraphbuilder/flowgraph_builder0154.tidy.html:7:14)
+    node 1: read-variable['eval',v3,v2] (test/flowgraphbuilder/flowgraph_builder0154.html:3:9)
+    node 2: constant["function position_CM(o)\{ var p = \{ Left: 0 \}; while (!!o) \{     p.Left += 9; o = o.offsetParent;   \}; return p; \}",v4] (test/flowgraphbuilder/flowgraph_builder0154.html:3:14)
     ->[block 2]
   block 2:
-    node 3: call[v2,v3,v4,-]* (test/flowgraphbuilder/flowgraph_builder0154.tidy.html:7:9)
+    node 3: call[v2,v3,v4,-]* (test/flowgraphbuilder/flowgraph_builder0154.html:3:9)
     ->[block 3]
   block 3:
-    node 4: event-entry (test/flowgraphbuilder/flowgraph_builder0154.tidy.html)
+    node 4: nop (test/flowgraphbuilder/flowgraph_builder0154.html:2:9)
     ->[block 4,block 5]
   block 4:
-    node 5: event-dispatcher <LOAD> (test/flowgraphbuilder/flowgraph_builder0154.tidy.html)
+    node 5: event-dispatcher <LOAD> (test/flowgraphbuilder/flowgraph_builder0154.html:2:9)
     ->[block 5]
   block 5:
-    node 6: nop (test/flowgraphbuilder/flowgraph_builder0154.tidy.html)
+    node 6: nop (test/flowgraphbuilder/flowgraph_builder0154.html:2:9)
     ->[block 4,block 6,block 7]
   block 6:
-    node 7: event-dispatcher <OTHER> (test/flowgraphbuilder/flowgraph_builder0154.tidy.html)
+    node 7: event-dispatcher <OTHER> (test/flowgraphbuilder/flowgraph_builder0154.html:2:9)
     ->[block 7]
   block 7:
-    node 8: nop (test/flowgraphbuilder/flowgraph_builder0154.tidy.html)
+    node 8: nop (test/flowgraphbuilder/flowgraph_builder0154.html:2:9)
     ->[block 6,block 8,block 9]
   block 8:
-    node 9: event-dispatcher <UNLOAD> (test/flowgraphbuilder/flowgraph_builder0154.tidy.html)
+    node 9: event-dispatcher <UNLOAD> (test/flowgraphbuilder/flowgraph_builder0154.html:2:9)
     ->[block 9]
   block 9:
-    node 10: nop (test/flowgraphbuilder/flowgraph_builder0154.tidy.html)
+    node 10: nop (test/flowgraphbuilder/flowgraph_builder0154.html:2:9)
     ->[block 8,block 10]
   block 10: [exit-ordinary]
-    node 11: return[v1] (test/flowgraphbuilder/flowgraph_builder0154.tidy.html:3)
+    node 11: return[v1] (test/flowgraphbuilder/flowgraph_builder0154.html:2:9)
     ->[]
   block 11: [exit-exceptional]
-    node 12: exceptional-return (test/flowgraphbuilder/flowgraph_builder0154.tidy.html:3)
+    node 12: exceptional-return (test/flowgraphbuilder/flowgraph_builder0154.html:2:9)
     ->[]
-  block 12:
-    node 13: constant[undefined,v6] (test/flowgraphbuilder/flowgraph_builder0154.tidy.html:3)
-    node 14: function-decl[function position_CM(o),-] (test/flowgraphbuilder/flowgraph_builder0154.tidy.html:7:9)
-    ->[block 3]
 function position_CM(o)
   block 13: [entry]
-    node 15: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0154.tidy.html:7:9)
-    node 16: vardecl['p'] (test/flowgraphbuilder/flowgraph_builder0154.tidy.html:7:9)
+    node 15: constant[undefined,v1] (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0154.html:3:9):1:1)
+    node 16: vardecl['p']* (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0154.html:3:9):1:29)
     ->[block 14]
   block 14:
-    node 17: new[v2] (test/flowgraphbuilder/flowgraph_builder0154.tidy.html:7:9)
-    node 18: constant[0.0,v3] (test/flowgraphbuilder/flowgraph_builder0154.tidy.html:7:9)
-    node 19: write-property[v2,'Left',v3] (test/flowgraphbuilder/flowgraph_builder0154.tidy.html:7:9)
-    node 20: write-variable[v2,'p']* (test/flowgraphbuilder/flowgraph_builder0154.tidy.html:7:9)
+    node 17: new[v2] (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0154.html:3:9):1:31)
+    node 18: constant[0.0,v3] (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0154.html:3:9):1:37)
+    node 19: write-property[v2,'Left',v3] (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0154.html:3:9):1:32)
+    node 20: write-variable[v2,'p']* (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0154.html:3:9):1:31)
     ->[block 15]
   block 15:
-    node 21: read-variable['o',v6,-] (test/flowgraphbuilder/flowgraph_builder0154.tidy.html:7:9)
-    node 22: ![v6,v5] (test/flowgraphbuilder/flowgraph_builder0154.tidy.html:7:9)
-    node 23: ![v5,v4] (test/flowgraphbuilder/flowgraph_builder0154.tidy.html:7:9)
-    node 24: if[v4](true-block:16,false-block:17) (test/flowgraphbuilder/flowgraph_builder0154.tidy.html:7:9)
+    node 21: read-variable['o',v6,-] (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0154.html:3:9):1:48)
+    node 22: ![v6,v5] (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0154.html:3:9):1:47)
+    node 23: ![v5,v4] (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0154.html:3:9):1:46)
+    node 24: if[v4](true-block:16,false-block:17) (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0154.html:3:9):1:46)
     ->[block 16,block 17]
   block 16:
-    node 25: read-variable['p',v9,-] (test/flowgraphbuilder/flowgraph_builder0154.tidy.html:7:9)
-    node 26: read-property[v9,'Left',v8] (test/flowgraphbuilder/flowgraph_builder0154.tidy.html:7:9)
-    node 27: <variable-non-null-undef>['p'] (test/flowgraphbuilder/flowgraph_builder0154.tidy.html:7:9)
-    node 28: constant[9.0,v10] (test/flowgraphbuilder/flowgraph_builder0154.tidy.html:7:9)
-    node 29: +[v8,v10,v7] (test/flowgraphbuilder/flowgraph_builder0154.tidy.html:7:9)
-    node 30: write-property[v9,'Left',v7] (test/flowgraphbuilder/flowgraph_builder0154.tidy.html:7:9)
-    node 31: <variable-non-null-undef>['p']* (test/flowgraphbuilder/flowgraph_builder0154.tidy.html:7:9)
-    node 32: read-variable['o',v12,-] (test/flowgraphbuilder/flowgraph_builder0154.tidy.html:7:9)
-    node 33: read-property[v12,'offsetParent',v11] (test/flowgraphbuilder/flowgraph_builder0154.tidy.html:7:9)
-    node 34: <variable-non-null-undef>['o'] (test/flowgraphbuilder/flowgraph_builder0154.tidy.html:7:9)
-    node 35: write-variable[v11,'o']* (test/flowgraphbuilder/flowgraph_builder0154.tidy.html:7:9)
+    node 25: read-variable['p',v7,-] (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0154.html:3:9):1:51)
+    node 26: read-property[v7,'Left',v8] (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0154.html:3:9):1:51)
+    node 27: <variable-non-null-undef>['p'] (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0154.html:3:9):1:51)
+    node 28: constant[9.0,v9] (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0154.html:3:9):1:59)
+    node 29: +[v8,v9,v10] (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0154.html:3:9):1:51)
+    node 30: write-property[v7,'Left',v10] (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0154.html:3:9):1:51)
+    node 31: <variable-non-null-undef>['p']* (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0154.html:3:9):1:51)
+    node 32: read-variable['o',v12,-] (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0154.html:3:9):1:63)
+    node 33: read-property[v12,'offsetParent',v11] (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0154.html:3:9):1:63)
+    node 34: <variable-non-null-undef>['o'] (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0154.html:3:9):1:63)
+    node 35: write-variable[v11,'o']* (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0154.html:3:9):1:61)
     ->[block 15]
   block 17:
-    node 36: read-variable['p',v1,-] (test/flowgraphbuilder/flowgraph_builder0154.tidy.html:7:9)
+    node 36: read-variable['p',v1,-]* (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0154.html:3:9):1:85)
     ->[block 18]
   block 18: [exit-ordinary]
-    node 37: return[v1] (test/flowgraphbuilder/flowgraph_builder0154.tidy.html:7:9)
+    node 37: return[v1] (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0154.html:3:9):1:86)
     ->[]
   block 19: [exit-exceptional]
-    node 38: exceptional-return (test/flowgraphbuilder/flowgraph_builder0154.tidy.html:7:9)
+    node 38: exceptional-return (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0154.html:3:9):1:86)
     ->[]
 
-test/flowgraphbuilder/flowgraph_builder0154.tidy.html:7:9: [definite] Unreachable function position_CM
+TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0154.html:3:9):1:1: [definite] Unreachable function position_CM

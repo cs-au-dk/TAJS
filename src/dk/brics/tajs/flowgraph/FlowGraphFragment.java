@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2013 Aarhus University
+ * Copyright 2009-2015 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -49,20 +49,20 @@ public class FlowGraphFragment {
     private Collection<BasicBlock> blocks;
 
     /**
-     * The extra nodes that belong to the fragment.
-     */
-    private Collection<AbstractNode> nodes;
-
-    /**
      * Constructs a flow graph fragment.
+     *
+     * @param key        fragment key
+     * @param entryBlock starting block for this fragment
+     * @param entryFun   outermost function block for this fragment (used to keep track of event handlers)
+     * @param functions  functions that belong to this fragment
+     * @param blocks     blocks that belong to this fragment (excluding blocks in the given collection of functions)
      */
-    public FlowGraphFragment(Object key, BasicBlock entryBlock, Function entryFun, Collection<Function> functions, Collection<BasicBlock> blocks, Collection<AbstractNode> nodes) {
+    public FlowGraphFragment(Object key, BasicBlock entryBlock, Function entryFun, Collection<Function> functions, Collection<BasicBlock> blocks) {
         this.key = key;
         this.entryBlock = entryBlock;
         this.entryFun = entryFun;
         this.functions = functions;
         this.blocks = blocks;
-        this.nodes = nodes;
     }
 
     /**
@@ -87,23 +87,16 @@ public class FlowGraphFragment {
     }
 
     /**
-     * Returns the extra functions.
+     * Returns the collection of functions.
      */
     public Collection<Function> getFunction() {
         return functions;
     }
 
     /**
-     * Returns the extra blocks.
+     * Returns the collection of blocks.
      */
     public Collection<BasicBlock> getBlocks() {
         return blocks;
-    }
-
-    /**
-     * Returns the extra nodes.
-     */
-    public Collection<AbstractNode> getNodes() {
-        return nodes;
     }
 }

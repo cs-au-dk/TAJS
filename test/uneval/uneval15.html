@@ -1,8 +1,8 @@
 <script>
-function f() {dumpValue(33)}
+function f() {TAJS_dumpValue(33)}
 if (Math.random() == 0.5)
 	ed = f;
 else
-	ed = "dumpValue(42)"
+	ed = "TAJS_dumpValue(42)"
 window.setTimeout(ed,10);
 </script>

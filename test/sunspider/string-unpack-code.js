@@ -73,5 +73,5 @@ var decompressedPrototype = function(p,a,c,k,e,d){e=function(c){return(c<a?"":e(
 
 var _sunSpiderInterval = new Date() - _sunSpiderStartDate;
 
-dumpValue(_sunSpiderInterval);
+TAJS_dumpValue(_sunSpiderInterval);
 

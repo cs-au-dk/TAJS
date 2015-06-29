@@ -19,8 +19,8 @@ public class TestWala {
 	@Before
 	public void init() {
         Options.reset();
-		Options.enableTest();
-		// Options.enableNoLazy();
+		Options.get().enableTest();
+		// Options.get().enableNoLazy();
 	}
 
 	@Test
@@ -37,10 +37,8 @@ public class TestWala {
 	public void wala_forinct() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
-		Options.enableForInSpecialization();
 		String[] args = {"test/wala/forin.js"}; // TODO: should work with for-in specialization and specialized context sensitivity?
 		Misc.run(args);
-		Options.disableForInSpecialization();
 		Misc.checkSystemOutput();
 	}
 
@@ -75,7 +73,7 @@ public class TestWala {
 	public void wala_newfn() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
-        Options.enableUnevalizer();
+        Options.get().enableUnevalizer();
 		String[] args = {"test/wala/newfn.js"};
 		Misc.run(args);
         Misc.checkSystemOutput();

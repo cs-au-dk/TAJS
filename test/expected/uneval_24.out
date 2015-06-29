@@ -1,3 +1,3 @@
-test/uneval/uneval24.tidy.html:8:17: [definite] The assignment to y has no effect
-test/uneval/uneval24.tidy.html:8:17: [definite] Reading absent property PicFocus_
-test/uneval/uneval24.tidy.html:8:13: [definite] The variable y is never used
+test/uneval/uneval24.html:6:17: [definite] The assignment to y has no effect
+TAJS-dynamic-code(test/uneval/uneval24.html:6:17):1:15: [definite] Reading absent property PicFocus_
+test/uneval/uneval24.html:6:13: [definite] The variable y is never used

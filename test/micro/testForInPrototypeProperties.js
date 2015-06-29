@@ -5,4 +5,4 @@ var name, obj = new S(), x = 0;
 for (name in obj) {
     x = 'a'; // the prototype of obj has properties
 }
-assertSingleStr(x);
+TAJS_assert(x, 'isMaybeSingleStr', true);

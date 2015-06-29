@@ -1,0 +1,70 @@
+fg2: function()
+  block 0: [entry]
+    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder_jump_return_0009.js:1:1)
+    node 1: function-decl[function f(),-] (test/flowgraphbuilder/flowgraph_builder_jump_return_0009.js:1:1)
+    ->[block 1]
+  block 1:
+    node 2: read-variable['f',v3,v2] (test/flowgraphbuilder/flowgraph_builder_jump_return_0009.js:11:1)
+    ->[block 2]
+  block 2:
+    node 3: call[v2,v3,-]* (test/flowgraphbuilder/flowgraph_builder_jump_return_0009.js:11:1)
+    ->[block 3]
+  block 3:
+    node 4: read-variable['TAJS_dumpValue',v5,v4] (test/flowgraphbuilder/flowgraph_builder_jump_return_0009.js:12:1)
+    node 5: constant["OK",v6] (test/flowgraphbuilder/flowgraph_builder_jump_return_0009.js:12:16)
+    ->[block 4]
+  block 4:
+    node 6: call[v4,v5,v6,-]* (test/flowgraphbuilder/flowgraph_builder_jump_return_0009.js:12:1)
+    ->[block 5]
+  block 5: [exit-ordinary]
+    node 7: return[v1] (test/flowgraphbuilder/flowgraph_builder_jump_return_0009.js:1:1)
+    ->[]
+  block 6: [exit-exceptional]
+    node 8: exceptional-return (test/flowgraphbuilder/flowgraph_builder_jump_return_0009.js:1:1)
+    ->[]
+function f()
+  block 7:
+    node 9: catch[v2] (test/flowgraphbuilder/flowgraph_builder_jump_return_0009.js:2:5)
+    ->[block 8]
+  block 8:
+    node 10(~17): read-variable['p',-,-]* (test/flowgraphbuilder/flowgraph_builder_jump_return_0009.js:5:13)
+    ->[block 11] ~>[block 9]
+  block 9:
+    node 11: catch[e,v3] (test/flowgraphbuilder/flowgraph_builder_jump_return_0009.js:6:11)
+    node 12: begin-with[v3]* (test/flowgraphbuilder/flowgraph_builder_jump_return_0009.js:6:11)
+    ->[block 10]
+  block 10:
+    node 13: end-with* (test/flowgraphbuilder/flowgraph_builder_jump_return_0009.js:6:11)
+    ->[block 11] ~>[block 12]
+  block 11:
+    node 14: throw[v2]* (test/flowgraphbuilder/flowgraph_builder_jump_return_0009.js:2:5)
+    ->[block 19]
+  block 12:
+    node 15: end-with* (test/flowgraphbuilder/flowgraph_builder_jump_return_0009.js:6:11)
+    ->[block 19]
+  block 13: [entry]
+    node 16: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder_jump_return_0009.js:1:1)
+    ->[block 14]
+  block 14:
+    node 17: read-variable['p',-,-]* (test/flowgraphbuilder/flowgraph_builder_jump_return_0009.js:5:13)
+    ->[block 18] ~>[block 15]
+  block 15:
+    node 18: catch[e,v5] (test/flowgraphbuilder/flowgraph_builder_jump_return_0009.js:6:11)
+    node 19: begin-with[v5]* (test/flowgraphbuilder/flowgraph_builder_jump_return_0009.js:6:11)
+    ->[block 16]
+  block 16:
+    node 20: end-with* (test/flowgraphbuilder/flowgraph_builder_jump_return_0009.js:6:11)
+    ->[block 18] ~>[block 17]
+  block 17:
+    node 21: end-with* (test/flowgraphbuilder/flowgraph_builder_jump_return_0009.js:6:11)
+    ->[block 19]
+  block 18: [exit-ordinary]
+    node 22: return[v1] (test/flowgraphbuilder/flowgraph_builder_jump_return_0009.js:10:1)
+    ->[]
+  block 19: [exit-exceptional]
+    node 23: exceptional-return (test/flowgraphbuilder/flowgraph_builder_jump_return_0009.js:10:1)
+    ->[]
+
+test/flowgraphbuilder/flowgraph_builder_jump_return_0009.js:5:13: [definite] ReferenceError, reading absent variable p
+test/flowgraphbuilder/flowgraph_builder_jump_return_0009.js:6:11: [definite] Unreachable code
+test/flowgraphbuilder/flowgraph_builder_jump_return_0009.js:12:1: [info] Abstract value: "OK"

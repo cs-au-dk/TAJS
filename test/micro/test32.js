@@ -6,4 +6,4 @@ function foo(x) {
 	return bar()
 }
 var www = foo(12);
-dumpValue(www);
+TAJS_dumpValue(www);

@@ -1,19 +1,19 @@
-fg2: <main> function()
+fg2: function()
   block 0: [entry]
     node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0074.js:1:1)
     ->[block 1]
   block 1:
     node 1: constant[3.0,-]* (test/flowgraphbuilder/flowgraph_builder0074.js:1:7)
-    ->[block 5] ~> [ block 2]
+    ->[block 5] ~>[block 2]
   block 2:
     node 2: catch[e,v2] (test/flowgraphbuilder/flowgraph_builder0074.js:1:11)
-    node 3: begin-with[v2] (test/flowgraphbuilder/flowgraph_builder0074.js:1:11)
+    node 3: begin-with[v2]* (test/flowgraphbuilder/flowgraph_builder0074.js:1:11)
     ->[block 3]
   block 3:
-    node 4: end-with (test/flowgraphbuilder/flowgraph_builder0074.js:1:11)
-    ->[block 5] ~> [ block 4]
+    node 4: end-with* (test/flowgraphbuilder/flowgraph_builder0074.js:1:11)
+    ->[block 5] ~>[block 4]
   block 4:
-    node 5: end-with (test/flowgraphbuilder/flowgraph_builder0074.js:1:11)
+    node 5: end-with* (test/flowgraphbuilder/flowgraph_builder0074.js:1:11)
     ->[block 6]
   block 5: [exit-ordinary]
     node 6: return[v1] (test/flowgraphbuilder/flowgraph_builder0074.js:1:1)

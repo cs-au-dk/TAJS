@@ -1,11 +1,11 @@
-dumpValue(Array.isArray(3))
-dumpValue(Array.isArray([]))
-dumpValue(Array.isArray({}))
-dumpValue(Array.isArray([1,2,3]))
-dumpValue(Array.isArray(true))
-dumpValue(Array.isArray("hi"))
+TAJS_dumpValue(Array.isArray(3))
+TAJS_dumpValue(Array.isArray([]))
+TAJS_dumpValue(Array.isArray({}))
+TAJS_dumpValue(Array.isArray([1,2,3]))
+TAJS_dumpValue(Array.isArray(true))
+TAJS_dumpValue(Array.isArray("hi"))
 if (Math.random())
    x = [1,2,3]
 else
    x = 3
-dumpValue(Array.isArray(x))
+TAJS_dumpValue(Array.isArray(x))

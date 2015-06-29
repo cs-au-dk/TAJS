@@ -4,6 +4,6 @@ try {
 } catch(error) {
   standalone = true;
 }
-assert(standalone);
-dumpValue(standalone);
+TAJS_assert(standalone);
+TAJS_dumpValue(standalone);
 

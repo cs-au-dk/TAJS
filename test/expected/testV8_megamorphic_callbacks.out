@@ -1,11 +1,11 @@
 test/v8tests/megamorphic-callbacks.js:54:1: [definite] TypeError, call to non-function
 test/v8tests/megamorphic-callbacks.js:33:3: [definite] Dead assignment, property y is never read
-test/v8tests/megamorphic-callbacks.js:41:9: [definite] Dead assignment, property z is never read
-test/v8tests/megamorphic-callbacks.js:52:9: [definite] Dead assignment, property z is never read
+test/v8tests/megamorphic-callbacks.js:41:37: [definite] Dead assignment, property z is never read
+test/v8tests/megamorphic-callbacks.js:52:11: [definite] Dead assignment, property z is never read
 test/v8tests/megamorphic-callbacks.js:54:1: [definite] Reading absent property __defineGetter__
 test/v8tests/megamorphic-callbacks.js:54:25: [definite] Unreachable function
 test/v8tests/megamorphic-callbacks.js:55:1: [definite] Unreachable code
 test/v8tests/megamorphic-callbacks.js:55:25: [definite] Unreachable function
 test/v8tests/megamorphic-callbacks.js:56:25: [definite] Unreachable function
 test/v8tests/megamorphic-callbacks.js:56:45: [definite] Unreachable function
-test/v8tests/megamorphic-callbacks.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/megamorphic-callbacks.js:54:1]
+test/v8tests/prologue.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/megamorphic-callbacks.js:54:1]

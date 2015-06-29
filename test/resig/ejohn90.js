@@ -1,7 +1,7 @@
 function addMethod(object, name, fn){ 
-	  dumpValue(name);
-	  dumpValue(object);
-	  dumpValue(fn);
+	  TAJS_dumpValue(name);
+	  TAJS_dumpValue(object);
+	  TAJS_dumpValue(fn);
   // Save a reference to the old method 
   var old = object[ name ]; 
  
@@ -32,9 +32,9 @@ function Ninjas(){
     return ret; 
   }); 
   addMethod(this, "find", function(first, last){ 
-    dumpValue(this);
-	dumpValue(first);
-	dumpValue(last);
+    TAJS_dumpValue(this);
+	TAJS_dumpValue(first);
+	TAJS_dumpValue(last);
     var ret = []; 
     for ( var i = 0; i < ninjas.length; i++ ) 
       if ( ninjas[i] == (first + " " + last) ) 
@@ -44,7 +44,7 @@ function Ninjas(){
 } 
  
 var ninjas = new Ninjas(); 
-assert( ninjas.find().length == 3 ); 
-assert( ninjas.find("Sam").length == 1 ); 
-assert( ninjas.find("Dean", "Edwards").length == 1 ); 
-assert( ninjas.find("Alex", "X", "Russell") == null );
+TAJS_assert( ninjas.find().length, 'isMaybeNumUInt');
+TAJS_assert( ninjas.find("Sam").length, 'isMaybeNumUInt');
+TAJS_assert( ninjas.find("Dean", "Edwards").length, 'isMaybeNumUInt');
+TAJS_assert( ninjas.find("Alex", "X", "Russell"), 'isMaybeUndef||isMaybeObject');

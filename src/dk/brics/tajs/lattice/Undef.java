@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2013 Aarhus University
+ * Copyright 2009-2015 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,33 +21,33 @@ package dk.brics.tajs.lattice;
  */
 public interface Undef {
 
-	/**
-	 * Returns true if this value is maybe undefined.
-	 */
-	public boolean isMaybeUndef(); 
-	
-	/**
-	 * Returns true if this value is definitely not undefined.
-	 */
-	public boolean isNotUndef(); 
-	
-	/**
-	 * Returns true if this value is maybe some other than undefined.
-	 */
-	public boolean isMaybeOtherThanUndef();
-	
-	/**
-	 * Constructs a value as the join of this value and maybe undefined.
-	 */
-	public Value joinUndef();
+    /**
+     * Returns true if this value is maybe undefined.
+     */
+    boolean isMaybeUndef();
 
-	/**
-	 * Constructs a value as a copy of this value but definitely not undefined.
-	 */
-	public Value restrictToNotUndef();
-	
-	/**
-	 * Constructs a value as a copy of this value but only considering its undefined facet.
-	 */
-	public Value restrictToUndef();
+    /**
+     * Returns true if this value is definitely not undefined.
+     */
+    boolean isNotUndef();
+
+    /**
+     * Returns true if this value is maybe some other than undefined.
+     */
+    boolean isMaybeOtherThanUndef();
+
+    /**
+     * Constructs a value as the join of this value and undefined.
+     */
+    Value joinUndef();
+
+    /**
+     * Constructs a value as a copy of this value but definitely not undefined.
+     */
+    Value restrictToNotUndef();
+
+    /**
+     * Constructs a value as a copy of this value but only considering its undefined facet.
+     */
+    Value restrictToUndef();
 }

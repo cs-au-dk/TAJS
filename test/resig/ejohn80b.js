@@ -7,8 +7,8 @@ if (!Array.prototype.forEach2) {
 } 
  
 ["a", "b", "c"].forEach2(function(value, index, array){
-  assert( value );
-  dumpValue( value );
-  dumpValue( index );
-  dumpValue( array.length ); 
+  TAJS_assert( value, 'isMaybeSingleStr||isMaybeStrIdentifierParts||isMaybeUndef' );
+  TAJS_dumpValue( value );
+  TAJS_dumpValue( index );
+  TAJS_dumpValue( array.length ); 
 });

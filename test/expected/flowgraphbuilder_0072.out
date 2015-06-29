@@ -1,4 +1,4 @@
-fg2: <main> function()
+fg2: function()
   block 0: [entry]
     node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0072.js:1:1)
     ->[block 1]
@@ -7,7 +7,7 @@ fg2: <main> function()
     node 2: constant["hi",v4] (test/flowgraphbuilder/flowgraph_builder0072.js:1:23)
     ->[block 2]
   block 2:
-    node 3: construct[-,v3,v4,v2] (test/flowgraphbuilder/flowgraph_builder0072.js:1:11)
+    node 3: construct[-,v3,v4,v2] (test/flowgraphbuilder/flowgraph_builder0072.js:1:7)
     ->[block 3]
   block 3:
     node 4: throw[v2]* (test/flowgraphbuilder/flowgraph_builder0072.js:1:1)
@@ -19,4 +19,4 @@ fg2: <main> function()
     node 6: exceptional-return (test/flowgraphbuilder/flowgraph_builder0072.js:1:1)
     ->[]
 
-test/flowgraphbuilder/flowgraph_builder0072.js:1:1: [maybe] Uncaught exception, constructed at [test/flowgraphbuilder/flowgraph_builder0072.js:1:11]
+test/flowgraphbuilder/flowgraph_builder0072.js:1:1: [maybe] Uncaught exception, constructed at [test/flowgraphbuilder/flowgraph_builder0072.js:1:7]

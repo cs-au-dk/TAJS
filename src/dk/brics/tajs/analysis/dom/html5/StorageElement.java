@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2013 Aarhus University
+ * Copyright 2009-2015 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -38,13 +38,15 @@ import static dk.brics.tajs.analysis.dom.DOMFunctions.createDOMProperty;
  */
 public class StorageElement {
 
-	public static ObjectLabel CONSTRUCTOR;
-	public static ObjectLabel PROTOTYPE;
+    public static ObjectLabel CONSTRUCTOR;
+
+    public static ObjectLabel PROTOTYPE;
+
     public static ObjectLabel INSTANCES;
-	
-	public static void build(State s) {
-		CONSTRUCTOR = new ObjectLabel(DOMObjects.STORAGE_CONSTRUCTOR, ObjectLabel.Kind.FUNCTION);
-		PROTOTYPE = new ObjectLabel(DOMObjects.STORAGE_PROTOTYPE, ObjectLabel.Kind.OBJECT);
+
+    public static void build(State s) {
+        CONSTRUCTOR = new ObjectLabel(DOMObjects.STORAGE_CONSTRUCTOR, ObjectLabel.Kind.FUNCTION);
+        PROTOTYPE = new ObjectLabel(DOMObjects.STORAGE_PROTOTYPE, ObjectLabel.Kind.OBJECT);
         INSTANCES = new ObjectLabel(DOMObjects.STORAGE_INSTANCES, ObjectLabel.Kind.OBJECT);
 
         // Constructor Object
@@ -54,58 +56,62 @@ public class StorageElement {
         s.writeInternalPrototype(CONSTRUCTOR, Value.makeObject(InitialStateBuilder.OBJECT_PROTOTYPE));
         s.writeProperty(DOMWindow.WINDOW, "Storage", Value.makeObject(CONSTRUCTOR));
 
-		// Prototype object
-		s.newObject(PROTOTYPE);
-		s.writeInternalPrototype(PROTOTYPE, Value.makeObject(InitialStateBuilder.OBJECT_PROTOTYPE));
-		
-		// Multiplied object
-		s.newObject(INSTANCES);
-		s.writeInternalPrototype(INSTANCES, Value.makeObject(PROTOTYPE));
-		
-		/*
-		 * Properties.
-		 */
-		createDOMProperty(s, INSTANCES, "length", Value.makeAnyNumUInt().setReadOnly());
-		
-		s.multiplyObject(INSTANCES);
-		INSTANCES = INSTANCES.makeSingleton().makeSummary();
-		
-		/*
-		 * Functions.
-		 */
-		createDOMFunction(s, PROTOTYPE, DOMObjects.STORAGE_KEY, "key", 1);
-		createDOMFunction(s, PROTOTYPE, DOMObjects.STORAGE_GET_ITEM, "getItem", 1);
-		createDOMFunction(s, PROTOTYPE, DOMObjects.STORAGE_SET_ITEM, "setItem", 2);
-		createDOMFunction(s, PROTOTYPE, DOMObjects.STORAGE_REMOVE_ITEM, "removeItem", 1);
-	}
-	
-	 public static Value evaluate(DOMObjects nativeObject, FunctionCalls.CallInfo call, State s, Solver.SolverInterface c) {
-		 switch (nativeObject) {
-		 case STORAGE_KEY: {
-			 NativeFunctions.expectParameters(nativeObject, call, c, 1, 1);
-			 /* Value index =*/ Conversion.toNumber(NativeFunctions.readParameter(call, s, 0), c);
-			 return Value.makeAnyStr();
-		 }
-		 case STORAGE_GET_ITEM: {
-			 NativeFunctions.expectParameters(nativeObject, call, c, 1, 1);
-			 /* Value key =*/ Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
-			 return Value.makeAnyStr().joinNull();
-		 }
-		 case STORAGE_SET_ITEM: {
-			 NativeFunctions.expectParameters(nativeObject, call, c, 2, 2);
-			 /* Value key =*/ Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
-			 /* Value data =*/ Conversion.toString(NativeFunctions.readParameter(call, s, 1), c);
-			 return Value.makeUndef();
-		 }
-		 case STORAGE_REMOVE_ITEM: {
-			 NativeFunctions.expectParameters(nativeObject, call, c, 1, 1);
-			 /* Value key =*/ Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
-			 return Value.makeUndef();
-		 }
-		 default: {
-			 throw new AnalysisException("Unsupported Native Object: " + nativeObject);
-		 }
-		 }
-	 }
-	
+        // Prototype object
+        s.newObject(PROTOTYPE);
+        s.writeInternalPrototype(PROTOTYPE, Value.makeObject(InitialStateBuilder.OBJECT_PROTOTYPE));
+
+        // Multiplied object
+        s.newObject(INSTANCES);
+        s.writeInternalPrototype(INSTANCES, Value.makeObject(PROTOTYPE));
+
+        /*
+         * Properties.
+         */
+        createDOMProperty(s, INSTANCES, "length", Value.makeAnyNumUInt().setReadOnly());
+
+        s.multiplyObject(INSTANCES);
+        INSTANCES = INSTANCES.makeSingleton().makeSummary();
+        
+        /*
+         * Functions.
+         */
+        createDOMFunction(s, PROTOTYPE, DOMObjects.STORAGE_KEY, "key", 1);
+        createDOMFunction(s, PROTOTYPE, DOMObjects.STORAGE_GET_ITEM, "getItem", 1);
+        createDOMFunction(s, PROTOTYPE, DOMObjects.STORAGE_SET_ITEM, "setItem", 2);
+        createDOMFunction(s, PROTOTYPE, DOMObjects.STORAGE_REMOVE_ITEM, "removeItem", 1);
+    }
+
+    public static Value evaluate(DOMObjects nativeObject, FunctionCalls.CallInfo call, State s, Solver.SolverInterface c) {
+        switch (nativeObject) {
+            case STORAGE_KEY: {
+                NativeFunctions.expectParameters(nativeObject, call, c, 1, 1);
+             /* Value index =*/
+                Conversion.toNumber(NativeFunctions.readParameter(call, s, 0), c);
+                return Value.makeAnyStr();
+            }
+            case STORAGE_GET_ITEM: {
+                NativeFunctions.expectParameters(nativeObject, call, c, 1, 1);
+             /* Value key =*/
+                Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
+                return Value.makeAnyStr().joinNull();
+            }
+            case STORAGE_SET_ITEM: {
+                NativeFunctions.expectParameters(nativeObject, call, c, 2, 2);
+             /* Value key =*/
+                Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
+             /* Value data =*/
+                Conversion.toString(NativeFunctions.readParameter(call, s, 1), c);
+                return Value.makeUndef();
+            }
+            case STORAGE_REMOVE_ITEM: {
+                NativeFunctions.expectParameters(nativeObject, call, c, 1, 1);
+             /* Value key =*/
+                Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
+                return Value.makeUndef();
+            }
+            default: {
+                throw new AnalysisException("Unsupported Native Object: " + nativeObject);
+            }
+        }
+    }
 }

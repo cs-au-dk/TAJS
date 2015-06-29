@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2013 Aarhus University
+ * Copyright 2009-2015 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,17 +17,17 @@
 package dk.brics.tajs.solver;
 
 import dk.brics.tajs.flowgraph.BasicBlock;
-import org.jdom.Document;
+import net.htmlparser.jericho.Source;
 
 /**
  * Interface for initial state builder classes.
  */
 public interface IInitialStateBuilder<BlockStateType extends IBlockState<BlockStateType, ContextType, CallEdgeType>,
-                                      ContextType extends IContext<ContextType>,
-                                      CallEdgeType extends ICallEdge<BlockStateType>> {
+        ContextType extends IContext<ContextType>,
+        CallEdgeType extends ICallEdge<BlockStateType>> {
 
-	/**
-	 * Builds the initial state.
-	 */
-	public void addInitialState(BasicBlock global_entry_block, GenericSolver<BlockStateType, ContextType, CallEdgeType, ?, ?>.SolverInterface c, Document document);
+    /**
+     * Builds the initial state.
+     */
+    void addInitialState(BasicBlock global_entry_block, GenericSolver<BlockStateType, ContextType, CallEdgeType, ?, ?, ?>.SolverInterface c, Source document);
 }

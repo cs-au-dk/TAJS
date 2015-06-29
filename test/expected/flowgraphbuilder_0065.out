@@ -1,4 +1,4 @@
-fg2: <main> function()
+fg2: function()
   block 0: [entry]
     node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0065.js:1:1)
     node 1: function-decl[function f(),-] (test/flowgraphbuilder/flowgraph_builder0065.js:1:1)
@@ -28,13 +28,13 @@ function f()
     node 12: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0065.js:1:1)
     ->[block 7]
   block 7:
-    node 13: constant["hi",v1] (test/flowgraphbuilder/flowgraph_builder0065.js:2:11)
+    node 13: constant["hi",v1]* (test/flowgraphbuilder/flowgraph_builder0065.js:2:11)
     ->[block 8]
   block 8: [exit-ordinary]
-    node 14: return[v1] (test/flowgraphbuilder/flowgraph_builder0065.js:2:11)
+    node 14: return[v1] (test/flowgraphbuilder/flowgraph_builder0065.js:3:1)
     ->[]
   block 9: [exit-exceptional]
-    node 15: exceptional-return (test/flowgraphbuilder/flowgraph_builder0065.js:2:11)
+    node 15: exceptional-return (test/flowgraphbuilder/flowgraph_builder0065.js:3:1)
     ->[]
 
 test/flowgraphbuilder/flowgraph_builder0065.js:5:5: [definite] ReferenceError, reading absent variable o

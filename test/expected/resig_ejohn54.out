@@ -1,1 +1,1 @@
-test/resig/ejohn54.js:15:9: [definite] Reading absent property slices
+test/resig/ejohn54.js:15:14: [definite] Reading absent property slices

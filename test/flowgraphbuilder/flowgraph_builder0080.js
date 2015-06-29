@@ -9,4 +9,4 @@ if (fooo())
 else
 	x.bar = 2345;
 
-dumpValue(x.bar);
+TAJS_dumpValue(x.bar);

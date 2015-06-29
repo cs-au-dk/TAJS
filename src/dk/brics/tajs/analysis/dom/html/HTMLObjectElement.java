@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2013 Aarhus University
+ * Copyright 2009-2015 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,7 +28,7 @@ import static dk.brics.tajs.analysis.dom.DOMFunctions.createDOMProperty;
 
 /**
  * Generic embedded object.
- * <p/>
+ * <p>
  * Note: In principle, all properties on the object element are read-write but
  * in some environments some properties may be read-only once the underlying
  * object is instantiated. See the OBJECT element definition in [HTML 4.01].
@@ -36,7 +36,9 @@ import static dk.brics.tajs.analysis.dom.DOMFunctions.createDOMProperty;
 public class HTMLObjectElement {
 
     public static ObjectLabel CONSTRUCTOR;
+
     public static ObjectLabel PROTOTYPE;
+
     public static ObjectLabel INSTANCES;
 
     public static void build(State s) {
@@ -93,5 +95,4 @@ public class HTMLObjectElement {
          */
         // No functions.
     }
-
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2013 Aarhus University
+ * Copyright 2009-2015 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,51 +23,51 @@ import dk.brics.tajs.flowgraph.BasicBlock;
  */
 public final class BlockAndContext<ContextType extends IContext<?>> {
 
-	private BasicBlock b;
-	
-	private ContextType c;
+    private BasicBlock b;
 
-	/**
-	 * Constructs a new pair.
-	 */
-	public BlockAndContext(BasicBlock b, ContextType c) {
-		this.b = b;
-		this.c = c;
-	}
+    private ContextType c;
 
-	/**
-	 * Returns the block.
-	 */
-	public BasicBlock getBlock() {
-		return b;
-	}
-	
-	/**
-	 * Returns the context.
-	 */
-	public ContextType getContext() {
-		return c;
-	}
+    /**
+     * Constructs a new pair.
+     */
+    public BlockAndContext(BasicBlock b, ContextType c) {
+        this.b = b;
+        this.c = c;
+    }
 
-	/**
-	 * Checks whether this object and the given object are equal.
-	 */
-	@SuppressWarnings("unchecked")
-	@Override
-	public boolean equals(Object obj) {
-		if (!(obj instanceof BlockAndContext))
-			return false;
-		BlockAndContext<ContextType> fcp = (BlockAndContext<ContextType>) obj;
-		return fcp.b == b && fcp.c.equals(c);
-	}
+    /**
+     * Returns the block.
+     */
+    public BasicBlock getBlock() {
+        return b;
+    }
 
-	/**
-	 * Computes the hash code for this object.
-	 */
-	@Override
-	public int hashCode() {
-		return b.getIndex() * 13 + c.hashCode() * 3;
-	}
+    /**
+     * Returns the context.
+     */
+    public ContextType getContext() {
+        return c;
+    }
+
+    /**
+     * Checks whether this object and the given object are equal.
+     */
+    @SuppressWarnings("unchecked")
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof BlockAndContext))
+            return false;
+        BlockAndContext<ContextType> fcp = (BlockAndContext<ContextType>) obj;
+        return fcp.b == b && fcp.c.equals(c);
+    }
+
+    /**
+     * Computes the hash code for this object.
+     */
+    @Override
+    public int hashCode() {
+        return b.getIndex() * 13 + c.hashCode() * 3;
+    }
 
     @Override
     public String toString() {

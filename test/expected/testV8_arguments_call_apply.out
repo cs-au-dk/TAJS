@@ -1,4 +1,5 @@
-test/v8tests/arguments-call-apply.js:37:1: [definite] ReferenceError, reading absent variable assertEquals
-test/v8tests/arguments-call-apply.js:28:1: [definite] Unreachable function sum
-test/v8tests/arguments-call-apply.js:37:14: [definite] Unreachable code
-test/v8tests/arguments-call-apply.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/arguments-call-apply.js:37:1]
+test/v8tests/arguments-call-apply.js:37:26: [definite] Reading 'this' yields the global object
+test/v8tests/arguments-call-apply.js:40:26: [definite] Reading 'this' yields the global object
+test/v8tests/arguments-call-apply.js:41:27: [definite] Reading 'this' yields the global object
+test/v8tests/arguments-call-apply.js:31:5: [maybe] Conversion to number yields NaN
+test/v8tests/arguments-call-apply.js:31:15: [maybe] Reading absent property (computed name)

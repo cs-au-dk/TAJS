@@ -1,5 +1,4 @@
-test/google/benchpress.js:281:3: [definite] Dead assignment, property min is never read
-test/google/benchpress.js:282:3: [definite] Dead assignment, property max is never read
+test/google/benchpress.js:192:7: [definite] Dead assignment, property is never read
 test/google/benchpress.js:76:38: [maybe] TypeError, accessing property of null/undefined
 test/google/benchpress.js:85:23: [maybe] TypeError, accessing property of null/undefined
 test/google/benchpress.js:365:10: [maybe] TypeError, accessing property of null/undefined

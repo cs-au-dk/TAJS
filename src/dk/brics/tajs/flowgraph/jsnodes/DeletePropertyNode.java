@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2013 Aarhus University
+ * Copyright 2009-2015 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,115 +32,101 @@ import dk.brics.tajs.util.Strings;
  */
 public class DeletePropertyNode extends LoadNode {
 
-	private int base_reg = NO_VALUE;
+    private int base_reg = NO_VALUE;
 
-	private int property_reg = NO_VALUE;
-	
-	private String property_str;
-	
-	private String varname;
+    private int property_reg = NO_VALUE;
 
-	/**
-	 * Constructs a new delete property node for a reference with variable property name.
-	 */
-	public DeletePropertyNode(int base_reg, int property_reg, int result_reg, SourceLocation location) {
-		super(result_reg, location);
-		this.base_reg = base_reg;
-		this.property_reg = property_reg;
-	}
+    private String property_str;
 
-	/**
-	 * Constructs a new delete property node for a reference with fixed property name.
-	 */
-	public DeletePropertyNode(int base_reg, String property_str, int result_reg, SourceLocation location) { 
-		super(result_reg, location);
-		this.base_reg = base_reg;
-		this.property_str = property_str;
-	}
-
-	/**
-	 * Constructs a new delete property node for a variable.
-	 */
-	public DeletePropertyNode(String varname, int result_reg, SourceLocation location) {
-		super(result_reg, location);
-		this.varname = varname;
-	}
-
-	/**
-	 * Returns the base register, or {@link dk.brics.tajs.flowgraph.AbstractNode#NO_VALUE} if not applicable.
-	 */
-	public int getBaseRegister() {
-		return base_reg;
-	}
+    private String varname;
 
     /**
-     * Sets the base register
+     * Constructs a new delete property node for a reference with variable property name.
      */
-    public void setBaseRegister(int base_reg) {
+    public DeletePropertyNode(int base_reg, int property_reg, int result_reg, SourceLocation location) {
+        super(result_reg, location);
         this.base_reg = base_reg;
-    }
-
-	/**
-	 * Returns the property register, or {@link dk.brics.tajs.flowgraph.AbstractNode#NO_VALUE} if not applicable.
-	 */
-	public int getPropertyRegister() {
-		return property_reg;
-	}
-
-    /**
-     * Sets the property register.
-     */
-    public void setPropertyRegister(int property_reg) {
         this.property_reg = property_reg;
     }
-	
-	/**
-	 * Returns the property string, or null if not fixed or not a reference.
-	 */
-	public String getPropertyString() {
-		return property_str;
-	}
-	
-	/**
-	 * Returns true if the property is a fixed string.
-	 */
-	public boolean isPropertyFixed() {
-		return property_str != null;
-	}
 
-	/**
-	 * Returns the source variable name, or null if not a variable.
-	 */
-	public String getVariableName() {
-		return varname;
-	}
-	
-	/**
-	 * Returns true if the argument is a variable, false if it is an ordinary reference.
-	 */
-	public boolean isVariable() {
-		return varname != null;
-	}
+    /**
+     * Constructs a new delete property node for a reference with fixed property name.
+     */
+    public DeletePropertyNode(int base_reg, String property_str, int result_reg, SourceLocation location) {
+        super(result_reg, location);
+        this.base_reg = base_reg;
+        this.property_str = property_str;
+    }
 
-	@Override
-	public String toString() {
+    /**
+     * Constructs a new delete property node for a variable.
+     */
+    public DeletePropertyNode(String varname, int result_reg, SourceLocation location) {
+        super(result_reg, location);
+        this.varname = varname;
+    }
+
+    /**
+     * Returns the base register, or {@link dk.brics.tajs.flowgraph.AbstractNode#NO_VALUE} if not applicable.
+     */
+    public int getBaseRegister() {
+        return base_reg;
+    }
+
+    /**
+     * Returns the property register, or {@link dk.brics.tajs.flowgraph.AbstractNode#NO_VALUE} if not applicable.
+     */
+    public int getPropertyRegister() {
+        return property_reg;
+    }
+
+    /**
+     * Returns the property string, or null if not fixed or not a reference.
+     */
+    public String getPropertyString() {
+        return property_str;
+    }
+
+    /**
+     * Returns true if the property is a fixed string.
+     */
+    public boolean isPropertyFixed() {
+        return property_str != null;
+    }
+
+    /**
+     * Returns the source variable name, or null if not a variable.
+     */
+    public String getVariableName() {
+        return varname;
+    }
+
+    /**
+     * Returns true if the argument is a variable, false if it is an ordinary reference.
+     */
+    public boolean isVariable() {
+        return varname != null;
+    }
+
+    @Override
+    public String toString() {
         int resultReg = getResultRegister();
         return "delete-property["
                 + (varname != null ? "'" + Strings.escape(varname) + "'" :
                 (base_reg == NO_VALUE ? "-" : ("v" + base_reg))
                         + (property_str != null ? ",'" + property_str + "'" : ",v" + property_reg))
                 + "," + (resultReg == NO_VALUE ? "-" : ("v" + resultReg)) + "]";
-	}
+    }
 
-	@Override
-	public <ArgType> void visitBy(NodeVisitor<ArgType> v, ArgType a) {
-		v.visit(this, a);
-	}
+    @Override
+    public <ArgType> void visitBy(NodeVisitor<ArgType> v, ArgType a) {
+        v.visit(this, a);
+    }
 
-	@Override
-	public boolean canThrowExceptions() {
-		return true;
-	}
+    @Override
+    public boolean canThrowExceptions() {
+        return true;
+    }
 
     @Override
     public void check(BasicBlock b) {

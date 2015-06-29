@@ -1,11 +1,11 @@
-test/micro/test205.js:2:11: [definite] Reading 'this' yields the global object
-test/micro/test205.js:15:11: [definite] Reading 'this' yields the global object
-test/micro/test205.js:23:11: [definite] Reading 'this' yields the global object
-test/micro/test205.js:30:11: [definite] Reading 'this' yields the global object
-test/micro/test205.js:37:11: [definite] Reading 'this' yields the global object
-test/micro/test205.js:44:11: [definite] Reading 'this' yields the global object
-test/micro/test205.js:52:11: [definite] Reading 'this' yields the global object
-test/micro/test205.js:61:11: [definite] Reading 'this' yields the global object
+test/micro/test205.js:2:16: [definite] Reading 'this' yields the global object
+test/micro/test205.js:15:16: [definite] Reading 'this' yields the global object
+test/micro/test205.js:23:16: [definite] Reading 'this' yields the global object
+test/micro/test205.js:30:16: [definite] Reading 'this' yields the global object
+test/micro/test205.js:37:16: [definite] Reading 'this' yields the global object
+test/micro/test205.js:44:16: [definite] Reading 'this' yields the global object
+test/micro/test205.js:52:16: [definite] Reading 'this' yields the global object
+test/micro/test205.js:61:16: [definite] Reading 'this' yields the global object
 test/micro/test205.js:55:7: [definite] The variable z3 is never used
 test/micro/test205.js:55:12: [definite] Unreachable code
 test/micro/test205.js:55:12: [maybe] TypeError, call to non-function

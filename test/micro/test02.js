@@ -4,4 +4,4 @@ var foo = function(x) {
 
 var x = foo(2222);
 
-assert(x == 2264);
+TAJS_assert(x == 2264);

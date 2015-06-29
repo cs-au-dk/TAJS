@@ -10,4 +10,4 @@ try {
 } catch (e) {
 }
 
-dumpValue(glob);
+TAJS_dumpValue(glob);

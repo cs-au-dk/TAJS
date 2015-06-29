@@ -12,7 +12,7 @@
 
 var z =  (function indirect( f ) { return f(2); })( ff );
 
-dumpValue(ff);
-dumpValue(z);
+TAJS_dumpValue(ff);
+TAJS_dumpValue(z);
 
-assert(z === 10002.0);
+TAJS_assert(z === 10002.0);

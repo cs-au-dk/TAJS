@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2013 Aarhus University
+ * Copyright 2009-2015 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,56 +27,56 @@ import dk.brics.tajs.util.AnalysisException;
  */
 public class UnaryOperatorNode extends LoadNode {
 
-	/**
-	 * The different kinds of unary operators.
-	 */
-	public enum Op {
+    /**
+     * The different kinds of unary operators.
+     */
+    public enum Op {
 
-		/**
-		 * ~
-		 */
-		COMPLEMENT,
-		
-		/**
-		 * !
-		 */
-		NOT,
-		
-		/**
-		 * -
-		 */
-		MINUS,
-		
-		/**
-		 * +
-		 */
-		PLUS
-	}
-	
-	private int arg_reg;
-	
-	private Op op;
+        /**
+         * ~
+         */
+        COMPLEMENT,
+
+        /**
+         * !
+         */
+        NOT,
+
+        /**
+         * -
+         */
+        MINUS,
+
+        /**
+         * +
+         */
+        PLUS
+    }
+
+    private int arg_reg;
+
+    private Op op;
 
     /**
      * Constructs a new unary operator node.
      *
-     * @param op The unary operator.
-     * @param arg_reg The register for the argument.
+     * @param op         The unary operator.
+     * @param arg_reg    The register for the argument.
      * @param result_reg The register for the result.
-     * @param location The source location.
+     * @param location   The source location.
      */
-	public UnaryOperatorNode(Op op, int arg_reg, int result_reg, SourceLocation location) {
-		super(result_reg, location);
-		this.arg_reg = arg_reg;
-		this.op = op;
-	}
-	
-	/**
-	 * Returns the argument register.
-	 */
-	public int getArgRegister() {
-		return arg_reg;
-	}
+    public UnaryOperatorNode(Op op, int arg_reg, int result_reg, SourceLocation location) {
+        super(result_reg, location);
+        this.arg_reg = arg_reg;
+        this.op = op;
+    }
+
+    /**
+     * Returns the argument register.
+     */
+    public int getArgRegister() {
+        return arg_reg;
+    }
 
     /**
      * Sets the argument register.
@@ -85,46 +85,46 @@ public class UnaryOperatorNode extends LoadNode {
         this.arg_reg = arg_reg;
     }
 
-	/**
-	 * Returns the operator.
-	 */
-	public Op getOperator() {
-		return op;
-	}
+    /**
+     * Returns the operator.
+     */
+    public Op getOperator() {
+        return op;
+    }
 
     /**
      * Returns the operator in human readable form.
      */
-	private String operatorToString() {
-		switch (op) {
-		case COMPLEMENT:
-			return "~";
-		case NOT:
-			return "!";
-		case MINUS:
-			return "-";
-		case PLUS:
-			return "+";
-		default:
-			throw new AnalysisException("Unexpected operator");
-		}
-	}
+    private String operatorToString() {
+        switch (op) {
+            case COMPLEMENT:
+                return "~";
+            case NOT:
+                return "!";
+            case MINUS:
+                return "-";
+            case PLUS:
+                return "+";
+            default:
+                throw new AnalysisException("Unexpected operator");
+        }
+    }
 
-	@Override
-	public String toString() {
+    @Override
+    public String toString() {
         int resultReg = getResultRegister();
-		return operatorToString() + "[v" + arg_reg + "," + (resultReg == NO_VALUE ? "-" : ("v" + resultReg)) + "]";
-	}
+        return operatorToString() + "[v" + arg_reg + "," + (resultReg == NO_VALUE ? "-" : ("v" + resultReg)) + "]";
+    }
 
-	@Override
-	public <ArgType> void visitBy(NodeVisitor<ArgType> v, ArgType a) {
-		v.visit(this, a);
-	}
+    @Override
+    public <ArgType> void visitBy(NodeVisitor<ArgType> v, ArgType a) {
+        v.visit(this, a);
+    }
 
-	@Override
-	public boolean canThrowExceptions() {
-		return true;
-	}
+    @Override
+    public boolean canThrowExceptions() {
+        return true;
+    }
 
     @Override
     public void check(BasicBlock b) {

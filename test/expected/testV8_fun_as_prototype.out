@@ -1,5 +1,9 @@
-test/v8tests/fun-as-prototype.js:31:1: [definite] ReferenceError, reading absent variable assertEquals
-test/v8tests/fun-as-prototype.js:28:5: [definite] The variable x is never used
+test/v8tests/fun-as-prototype.js:31:17: [definite] Reading absent property length
+test/v8tests/fun-as-prototype.js:32:23: [definite] Reading absent property name
+test/v8tests/fun-as-prototype.js:33:31: [definite] Reading absent property prototype
+test/v8tests/fun-as-prototype.js:36:17: [definite] Reading absent property length
 test/v8tests/fun-as-prototype.js:29:1: [definite] Unreachable function Funky
-test/v8tests/fun-as-prototype.js:31:14: [definite] Unreachable code
-test/v8tests/fun-as-prototype.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/fun-as-prototype.js:31:1]
+test/v8tests/fun-as-prototype.js:31:17: [maybe] Converting primitive number to object
+test/v8tests/fun-as-prototype.js:32:23: [maybe] Converting primitive number to object
+test/v8tests/fun-as-prototype.js:33:31: [maybe] Converting primitive number to object
+test/v8tests/fun-as-prototype.js:36:17: [maybe] Converting primitive number to object

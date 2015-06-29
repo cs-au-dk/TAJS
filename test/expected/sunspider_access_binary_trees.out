@@ -1,7 +1,7 @@
 test/sunspider/access-binary-trees.js:33:5: [definite] The variable ret is never used
 test/sunspider/access-binary-trees.js:17:28: [maybe] TypeError, accessing property of null/undefined
 test/sunspider/access-binary-trees.js:17:52: [maybe] TypeError, accessing property of null/undefined
-test/sunspider/access-binary-trees.js:3:1: [maybe] Uncaught exception, constructed at [test/sunspider/access-binary-trees.js:17:28, test/sunspider/access-binary-trees.js:17:52]
+test/sunspider/access-binary-trees.js:1:1: [maybe] Uncaught exception, constructed at [test/sunspider/access-binary-trees.js:17:28, test/sunspider/access-binary-trees.js:17:52]
 test/sunspider/access-binary-trees.js:59:1: [info] Abstract value: UInt
 test/sunspider/access-binary-trees.js:16:8: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/sunspider/access-binary-trees.js:16:32: [info] 'this' refers to multiple abstract objects, which may cause loss of precision

@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2013 Aarhus University
+ * Copyright 2009-2015 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,5 +24,5 @@ public interface HostObject {
     /**
      * Returns the API descriptor that this host object belongs to.
      */
-    public HostAPI getAPI();
+    HostAPI getAPI();
 }

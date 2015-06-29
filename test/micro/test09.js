@@ -4,8 +4,8 @@ function person(g) {
 var linus = new person(6000);
 var rms = linus.age;
 
-assert(rms == 11678);
-dumpValue(rms);
+TAJS_assert(rms == 11678);
+TAJS_dumpValue(rms);
 
 function foo(x) {
 	x = x +1;
@@ -17,5 +17,5 @@ function foo(x) {
 
 var bar = foo(5678);
 var bar2 = foo(5678);
-dumpValue(bar);
-assert(bar == 6915);
+TAJS_dumpValue(bar);
+TAJS_assert(bar == 6915);

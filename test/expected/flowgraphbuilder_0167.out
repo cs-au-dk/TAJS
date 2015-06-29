@@ -1,4 +1,4 @@
-fg2: <main> function()
+fg2: function()
   block 0: [entry]
     node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0167.js:1:1)
     ->[block 1]
@@ -11,14 +11,14 @@ fg2: <main> function()
     node 4: read-variable['d',v2,-] (test/flowgraphbuilder/flowgraph_builder0167.js:1:21)
     ->[block 3]
   block 3:
-    node 5: if[v2](true-block:5,false-block:4) (test/flowgraphbuilder/flowgraph_builder0167.js:1:6)
+    node 5: if[v2](true-block:5,false-block:4) (test/flowgraphbuilder/flowgraph_builder0167.js:1:5)
     ->[block 4,block 5]
   block 4:
-    node 6: read-variable['this',v3,-] (test/flowgraphbuilder/flowgraph_builder0167.js:1:27)
-    node 7: read-property[v3,'astopl',v2] (test/flowgraphbuilder/flowgraph_builder0167.js:1:27)
+    node 6: read-variable['this',v4,-] (test/flowgraphbuilder/flowgraph_builder0167.js:1:27)
+    node 7: read-property[v4,'astopl',v2] (test/flowgraphbuilder/flowgraph_builder0167.js:1:27)
     ->[block 5]
   block 5:
-    node 8: if[v2](true-block:6,false-block:7) (test/flowgraphbuilder/flowgraph_builder0167.js:1:1)
+    node 8: if[v2](true-block:6,false-block:7)* (test/flowgraphbuilder/flowgraph_builder0167.js:1:1)
     ->[block 6,block 7]
   block 6:
     node 9: constant[3.0,-]* (test/flowgraphbuilder/flowgraph_builder0167.js:1:40)
@@ -31,7 +31,7 @@ fg2: <main> function()
     ->[]
 
 test/flowgraphbuilder/flowgraph_builder0167.js:1:1: [definite] The conditional expression is always false
-test/flowgraphbuilder/flowgraph_builder0167.js:1:6: [definite] The conditional expression is always false
+test/flowgraphbuilder/flowgraph_builder0167.js:1:5: [definite] The conditional expression is always false
 test/flowgraphbuilder/flowgraph_builder0167.js:1:6: [definite] The conditional expression is always false
 test/flowgraphbuilder/flowgraph_builder0167.js:1:6: [definite] Reading 'this' yields the global object
 test/flowgraphbuilder/flowgraph_builder0167.js:1:6: [definite] Reading absent property astopr

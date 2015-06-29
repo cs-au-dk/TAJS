@@ -1,24 +1,26 @@
 var x = {foo: 1, bar: 2};
 
-var y,z;
+var y, z;
 
 for (var p in x) {
-	var t = {a: x[p]};
-	if (p == "foo")
-		y = t;
-	else
-		z = t;
+    if (p == "foo") {
+        var t = {a: x[p]};
+        y = t;
+    } else {
+        var t = {a: x[p]};
+        z = t;
+    }
 }
 
-dumpValue(y);
-dumpValue(z);
-dumpObject(y);
-dumpObject(y);
+TAJS_dumpValue(y);
+TAJS_dumpValue(z);
+TAJS_dumpObject(y);
+TAJS_dumpObject(z);
 
 z.a = "dyt";
 
-dumpValue(y.a);
-dumpValue(z.a);
+TAJS_dumpValue(y.a);
+TAJS_dumpValue(z.a);
 
-assert(y.a === 1);
-assert(z.a === "dyt");
+TAJS_assert(y.a === 1);
+TAJS_assert(z.a, 'isMaybeSingleNum||isMaybeSingleStr');

@@ -1,25 +1,25 @@
-fg2: <main> function()
+fg2: function()
   block 0: [entry]
     node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0168.js:1:1)
     ->[block 1]
   block 1:
     node 1: read-variable['this',v3,-] (test/flowgraphbuilder/flowgraph_builder0168.js:1:5)
     node 2: read-property[v3,'as',v2] (test/flowgraphbuilder/flowgraph_builder0168.js:1:5)
-    node 3: if[v2](true-block:2,false-block:3) (test/flowgraphbuilder/flowgraph_builder0168.js:1:1)
-    ->[block 2,block 3]
+    node 3: if[v2](true-block:2,false-block:4)* (test/flowgraphbuilder/flowgraph_builder0168.js:1:1)
+    ->[block 2,block 4]
   block 2:
     node 4: read-variable['this',v5,-] (test/flowgraphbuilder/flowgraph_builder0168.js:2:13)
     node 5: read-property[v5,'startSlide',-] (test/flowgraphbuilder/flowgraph_builder0168.js:2:13)
     node 6: read-variable['d',v6,-] (test/flowgraphbuilder/flowgraph_builder0168.js:2:29)
     node 7: read-variable['o',v7,-] (test/flowgraphbuilder/flowgraph_builder0168.js:2:32)
-    ->[block 4]
+    ->[block 3]
   block 3:
-    node 8: read-variable['this',v5,-] (test/flowgraphbuilder/flowgraph_builder0168.js:4:3)
-    node 9: constant[false,v4] (test/flowgraphbuilder/flowgraph_builder0168.js:4:13)
-    node 10: write-property[v5,'as',v4]* (test/flowgraphbuilder/flowgraph_builder0168.js:4:3)
+    node 8: call[v5,'startSlide',v6,v7,-]* (test/flowgraphbuilder/flowgraph_builder0168.js:2:13)
     ->[block 5]
   block 4:
-    node 11: call[v5,'startSlide',v6,v7,-]* (test/flowgraphbuilder/flowgraph_builder0168.js:2:13)
+    node 9: read-variable['this',v5,-] (test/flowgraphbuilder/flowgraph_builder0168.js:4:3)
+    node 10: constant[false,v4] (test/flowgraphbuilder/flowgraph_builder0168.js:4:13)
+    node 11: write-property[v5,'as',v4]* (test/flowgraphbuilder/flowgraph_builder0168.js:4:3)
     ->[block 5]
   block 5: [exit-ordinary]
     node 12: return[v1] (test/flowgraphbuilder/flowgraph_builder0168.js:1:1)

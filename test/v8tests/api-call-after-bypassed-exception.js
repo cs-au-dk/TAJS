@@ -35,6 +35,6 @@ function foo() {
   }
 }
 
-dumpValue(foo());
+TAJS_dumpValue(foo());
 //print({});
-assert(false);
+TAJS_assert(true);

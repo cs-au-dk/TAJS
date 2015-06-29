@@ -1,3 +1,3 @@
-test/micro/test55.js:2:11: [definite] Reading absent property xy
-test/micro/test55.js:3:8: [definite] Reading absent property xy
+test/micro/test55.js:2:16: [definite] Reading absent property xy
+test/micro/test55.js:3:13: [definite] Reading absent property xy
 test/micro/test55.js:2:1: [info] Abstract value: Undef

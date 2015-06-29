@@ -28,10 +28,10 @@ function f() {
 
 try {
     var ret = f() // If f throws an exception ret is undef. 
-    dumpValue(ret); //At this point ret should *not* be undef.
+    TAJS_dumpValue(ret); //At this point ret should *not* be undef.
 } catch(e) {
-    dumpValue(e);
+    TAJS_dumpValue(e);
 }
-dumpValue(ret) // ret might be undef here. 
+TAJS_dumpValue(ret) // ret might be undef here. 
 
 

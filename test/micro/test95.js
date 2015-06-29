@@ -4,8 +4,8 @@ function g() {
 
 try{
   g();
-  dumpValue("HERE1"); // should not appear
+  TAJS_dumpValue("HERE1"); // should not appear
 } catch(ex) {
-  dumpValue("HERE2");
+  TAJS_dumpValue("HERE2");
 }
-dumpValue("HERE3");
+TAJS_dumpValue("HERE3");

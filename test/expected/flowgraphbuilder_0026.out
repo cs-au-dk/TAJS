@@ -1,7 +1,7 @@
-fg2: <main> function()
+fg2: function()
   block 0: [entry]
     node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0026.js:1:1)
-    node 1: vardecl['x'] (test/flowgraphbuilder/flowgraph_builder0026.js:1:5)
+    node 1: vardecl['x']* (test/flowgraphbuilder/flowgraph_builder0026.js:1:5)
     ->[block 1]
   block 1: [exit-ordinary]
     node 2: return[v1] (test/flowgraphbuilder/flowgraph_builder0026.js:1:1)

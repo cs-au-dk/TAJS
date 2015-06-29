@@ -1,3 +1,3 @@
 var x = flub(87);
-dumpValue(x);
+TAJS_dumpValue(x);
 

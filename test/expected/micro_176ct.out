@@ -1,5 +1,0 @@
-test/micro/test176.js:5:5: [definite] Dead assignment, property a is never read
-test/micro/test176.js:5:5: [definite] Dead assignment, property b is never read
-test/micro/test176.js:5:5: [definite] Dead assignment, property t is never read
-test/micro/test176.js:3:1: [info] Abstract object: {a:234.0,b:23.0,t:44.0,[[Prototype]]=[@Object.prototype[native]]}
-test/micro/test176.js:7:1: [info] Abstract object: {a:234.0,b:23.0,t:44.0,[[Prototype]]=[@Object.prototype[native]]}

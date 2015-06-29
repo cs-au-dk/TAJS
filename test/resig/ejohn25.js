@@ -3,10 +3,10 @@ function fn(){
   return this; 
 } 
 
-assert( fn() === this );
-dumpValue(fn());
-dumpValue(this); 
+TAJS_assert( fn() === this );
+TAJS_dumpValue(fn());
+TAJS_dumpValue(this); 
 
-assert( fn.call(object) === object );
-dumpValue(fn.call(object));
-dumpValue(object);
+TAJS_assert( fn.call(object) === object );
+TAJS_dumpValue(fn.call(object));
+TAJS_dumpValue(object);

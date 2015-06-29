@@ -5,6 +5,6 @@ if (Math.random())
 else
     f = "g" + "t";
 var y  =  x[f];
-dumpValue(y)
+TAJS_dumpValue(y)
 
 

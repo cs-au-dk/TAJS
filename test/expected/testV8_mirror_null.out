@@ -1,6 +1,0 @@
-test/v8tests/mirror-null.js:32:14: [definite] ReferenceError, reading absent variable debug
-test/v8tests/mirror-null.js:32:5: [definite] The variable mirror is never used
-test/v8tests/mirror-null.js:32:14: [definite] Unreachable code
-test/v8tests/mirror-null.js:33:5: [definite] The variable json is never used
-test/v8tests/mirror-null.js:48:5: [definite] The variable fromJSON is never used
-test/v8tests/mirror-null.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/mirror-null.js:32:14]

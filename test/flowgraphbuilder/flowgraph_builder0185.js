@@ -1,6 +1,6 @@
 i = 0;
 do {
-  dumpValue(i)
+  TAJS_dumpValue(i)
   i++
 } while(i < 1)
-dumpValue(i)
+TAJS_dumpValue(i)

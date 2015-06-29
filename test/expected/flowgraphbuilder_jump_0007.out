@@ -1,0 +1,50 @@
+fg2: function()
+  block 0:
+    node 0: end-with* (test/flowgraphbuilder/flowgraph_builder_jump_0007.js:3:5)
+    ->[block 7]
+  block 1: [entry]
+    node 1: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder_jump_0007.js:1:1)
+    node 2: vardecl['p']* (test/flowgraphbuilder/flowgraph_builder_jump_0007.js:1:5)
+    ->[block 2]
+  block 2:
+    node 3: constant[true,v2] (test/flowgraphbuilder/flowgraph_builder_jump_0007.js:1:9)
+    node 4: write-variable[v2,'p']* (test/flowgraphbuilder/flowgraph_builder_jump_0007.js:1:9)
+    ->[block 3]
+  block 3:
+    node 5: new[v3] (test/flowgraphbuilder/flowgraph_builder_jump_0007.js:3:10)
+    node 6: constant[false,v4] (test/flowgraphbuilder/flowgraph_builder_jump_0007.js:3:14)
+    node 7: write-property[v3,'p',v4] (test/flowgraphbuilder/flowgraph_builder_jump_0007.js:3:11)
+    node 8: begin-with[v3]* (test/flowgraphbuilder/flowgraph_builder_jump_0007.js:3:5)
+    ->[block 4]
+  block 4:
+    node 9: nop(break l1)* (test/flowgraphbuilder/flowgraph_builder_jump_0007.js:4:9)
+    ->[block 6] ~>[block 5]
+  block 5:
+    node 10: end-with* (test/flowgraphbuilder/flowgraph_builder_jump_0007.js:3:5)
+    ->[block 12]
+  block 6:
+    node 11: end-with* (test/flowgraphbuilder/flowgraph_builder_jump_0007.js:3:5)
+    ->[block 7]
+  block 7:
+    node 12: read-variable['TAJS_assert',v7,v6] (test/flowgraphbuilder/flowgraph_builder_jump_0007.js:7:1)
+    node 13: read-variable['p',v8,-] (test/flowgraphbuilder/flowgraph_builder_jump_0007.js:7:13)
+    ->[block 8]
+  block 8:
+    node 14: call[v6,v7,v8,-]* (test/flowgraphbuilder/flowgraph_builder_jump_0007.js:7:1)
+    ->[block 9]
+  block 9:
+    node 15: read-variable['TAJS_dumpValue',v10,v9] (test/flowgraphbuilder/flowgraph_builder_jump_0007.js:9:1)
+    node 16: constant["OK",v11] (test/flowgraphbuilder/flowgraph_builder_jump_0007.js:9:16)
+    ->[block 10]
+  block 10:
+    node 17: call[v9,v10,v11,-]* (test/flowgraphbuilder/flowgraph_builder_jump_0007.js:9:1)
+    ->[block 11]
+  block 11: [exit-ordinary]
+    node 18: return[v1] (test/flowgraphbuilder/flowgraph_builder_jump_0007.js:1:1)
+    ->[]
+  block 12: [exit-exceptional]
+    node 19: exceptional-return (test/flowgraphbuilder/flowgraph_builder_jump_0007.js:1:1)
+    ->[]
+
+test/flowgraphbuilder/flowgraph_builder_jump_0007.js:3:11: [definite] Dead assignment, property p is never read
+test/flowgraphbuilder/flowgraph_builder_jump_0007.js:9:1: [info] Abstract value: "OK"

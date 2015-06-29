@@ -1,5 +1,3 @@
-test/resig/ejohn21.js:20:1: [maybe] Assertion fails
-test/resig/ejohn21.js:21:1: [maybe] Assertion fails
 test/resig/ejohn21.js:2:8: [maybe] Reading absent property (computed name)
 test/resig/ejohn21.js:3:12: [maybe] Reading absent property (computed name)
 test/resig/ejohn21.js:23:1: [info] Abstract value: Undef|Bool

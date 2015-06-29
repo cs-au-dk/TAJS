@@ -4,4 +4,4 @@ function addNum(myNum){
   return num + myNum; 
 } 
  
-assert( addNum(5) == 15 );
+TAJS_assert( addNum(5) == 15 );

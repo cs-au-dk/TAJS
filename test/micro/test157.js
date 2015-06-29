@@ -3,7 +3,7 @@ function recursive(d) {
   if (d) {
     other = "FOO";
     recursive(!d);
-    dumpValue(other);
+    TAJS_dumpValue(other);
   }
 }
 

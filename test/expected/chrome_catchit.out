@@ -1,13 +1,12 @@
-test/chromeexperiments/catchit.tidy.html:145:13: [definite] The conditional expression is always false
-test/chromeexperiments/catchit.tidy.html:62:13: [definite] The variable tries is never used
-test/chromeexperiments/catchit.tidy.html:63:13: [definite] The variable score is never used
-test/chromeexperiments/catchit.tidy.html:64:13: [definite] The variable max_score is never used
-test/chromeexperiments/catchit.tidy.html:72:9: [definite] Unreachable function updateStat
-test/chromeexperiments/catchit.tidy.html:80:9: [definite] Unreachable function Ball
-test/chromeexperiments/catchit.tidy.html:87:25: [definite] Unreachable function
-test/chromeexperiments/catchit.tidy.html:115:9: [definite] Unreachable function createBall
-test/chromeexperiments/catchit.tidy.html:170:28: [definite] Unreachable function
-test/chromeexperiments/catchit.tidy.html:178:32: [definite] Unreachable function
-test/chromeexperiments/catchit.tidy.html:197:2: [definite] The variable event is never used
-test/chromeexperiments/catchit.tidy.html:133:13: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/catchit.tidy.html:43: [maybe] Uncaught exception, constructed at [test/chromeexperiments/catchit.tidy.html:133:13]
+test/chromeexperiments/catchit.html:142:29: [definite] The conditional expression is always false
+test/chromeexperiments/catchit.html:162:13: [definite] The conditional expression is always true
+TAJS-dynamic-code(test/chromeexperiments/catchit.html:164:13):1:1: [definite] Unreachable function
+test/chromeexperiments/catchit.html:59:13: [definite] The variable tries is never used
+test/chromeexperiments/catchit.html:60:13: [definite] The variable score is never used
+test/chromeexperiments/catchit.html:61:13: [definite] The variable max_score is never used
+test/chromeexperiments/catchit.html:69:9: [definite] Unreachable function updateStat
+test/chromeexperiments/catchit.html:77:9: [definite] Unreachable function Ball
+test/chromeexperiments/catchit.html:84:25: [definite] Unreachable function
+test/chromeexperiments/catchit.html:112:9: [definite] Unreachable function createBall
+test/chromeexperiments/catchit.html:167:28: [definite] Unreachable function
+test/chromeexperiments/catchit.html:175:32: [definite] Unreachable function

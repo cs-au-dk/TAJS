@@ -4,5 +4,5 @@ function f() {
 	x = 3; // should be reported as unreachable
 }
 var y = f();
-dumpValue(y);
-dumpValue(x);
+TAJS_dumpValue(y);
+TAJS_dumpValue(x);

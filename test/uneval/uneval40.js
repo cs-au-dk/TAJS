@@ -1,3 +1,3 @@
 id = new Function("x", "return x")
-dumpValue(id(3));
-dumpValue(id(9));
+TAJS_dumpValue(id(3));
+TAJS_dumpValue(id(9));

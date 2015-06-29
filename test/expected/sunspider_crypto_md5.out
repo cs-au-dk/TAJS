@@ -82,7 +82,6 @@ test/sunspider/crypto-md5.js:189:14: [maybe] Conversion to number yields NaN
 test/sunspider/crypto-md5.js:209:22: [maybe] Converting primitive string to object
 test/sunspider/crypto-md5.js:210:5: [maybe] Conversion to number yields NaN
 test/sunspider/crypto-md5.js:210:5: [maybe] Reading absent property (computed name)
-test/sunspider/crypto-md5.js:210:19: [maybe] Conversion from string to number yields NaN
 test/sunspider/crypto-md5.js:210:19: [maybe] Converting object to string
 test/sunspider/crypto-md5.js:210:19: [maybe] Converting primitive string to object
 test/sunspider/crypto-md5.js:235:12: [maybe] Converting object to string

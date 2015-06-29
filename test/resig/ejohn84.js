@@ -16,4 +16,4 @@ elem.onclick = bind(Button, "click");
 document.getElementById("results").appendChild(elem); 
  
 elem.onclick(); 
-assert( Button.clicked );
+TAJS_assert( Button.clicked );

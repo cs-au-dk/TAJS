@@ -10,5 +10,5 @@ function f() {
 }
 f();
 
-dumpValue(scope);
-assert(scope === this);
+TAJS_dumpValue(scope);
+TAJS_assert(scope === this);

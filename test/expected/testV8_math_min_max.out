@@ -1,6 +1,8 @@
-test/v8tests/math-min-max.js:30:1: [definite] ReferenceError, reading absent variable assertEquals
-test/v8tests/math-min-max.js:30:14: [definite] Unreachable code
-test/v8tests/math-min-max.js:38:5: [definite] The variable o is never used
+test/v8tests/math-min-max.js:39:1: [definite] Dead assignment, property valueOf is never read
+test/v8tests/math-min-max.js:63:1: [definite] Dead assignment, property valueOf is never read
 test/v8tests/math-min-max.js:39:13: [definite] Unreachable function
 test/v8tests/math-min-max.js:63:13: [definite] Unreachable function
-test/v8tests/math-min-max.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/math-min-max.js:30:1]
+test/v8tests/math-min-max.js:41:17: [maybe] Implicit call to non-native valueOf method
+test/v8tests/math-min-max.js:65:17: [maybe] Implicit call to non-native valueOf method
+test/v8tests/math-min-max.js:41:17: [maybe] Conversion from string to number yields NaN
+test/v8tests/math-min-max.js:65:17: [maybe] Conversion from string to number yields NaN

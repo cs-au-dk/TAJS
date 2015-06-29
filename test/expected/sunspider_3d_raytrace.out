@@ -1,5 +1,5 @@
 test/sunspider/3d-raytrace.js:235:9: [definite] The conditional expression is always true
-test/sunspider/3d-raytrace.js:251:5: [definite] The conditional expression is always true
+test/sunspider/3d-raytrace.js:251:17: [definite] The conditional expression is always true
 test/sunspider/3d-raytrace.js:34:1: [definite] Unreachable function sqrLengthVector
 test/sunspider/3d-raytrace.js:113:15: [definite] Reading absent property (computed name)
 test/sunspider/3d-raytrace.js:114:15: [definite] Reading absent property (computed name)
@@ -30,7 +30,7 @@ test/sunspider/3d-raytrace.js:221:9: [maybe] Reading absent property reflection
 test/sunspider/3d-raytrace.js:224:13: [maybe] Reading absent property reflection
 test/sunspider/3d-raytrace.js:243:42: [maybe] Reading absent property reflection
 test/sunspider/3d-raytrace.js:243:85: [maybe] Reading absent property reflection
-test/sunspider/3d-raytrace.js:3:1: [maybe] Uncaught exception, constructed at [test/sunspider/3d-raytrace.js:39:22, test/sunspider/3d-raytrace.js:57:5, test/sunspider/3d-raytrace.js:76:22, test/sunspider/3d-raytrace.js:80:22, test/sunspider/3d-raytrace.js:167:13, test/sunspider/3d-raytrace.js:197:17, test/sunspider/3d-raytrace.js:207:18, test/sunspider/3d-raytrace.js:214:18, test/sunspider/3d-raytrace.js:304:13, test/sunspider/3d-raytrace.js:399:13, test/sunspider/3d-raytrace.js:416:24]
+test/sunspider/3d-raytrace.js:1:1: [maybe] Uncaught exception, constructed at [test/sunspider/3d-raytrace.js:39:22, test/sunspider/3d-raytrace.js:57:5, test/sunspider/3d-raytrace.js:76:22, test/sunspider/3d-raytrace.js:80:22, test/sunspider/3d-raytrace.js:167:13, test/sunspider/3d-raytrace.js:197:17, test/sunspider/3d-raytrace.js:207:18, test/sunspider/3d-raytrace.js:214:18, test/sunspider/3d-raytrace.js:304:13, test/sunspider/3d-raytrace.js:399:13, test/sunspider/3d-raytrace.js:416:24]
 test/sunspider/3d-raytrace.js:57:5: [maybe] Conversion to number yields NaN
 test/sunspider/3d-raytrace.js:58:5: [maybe] Conversion to number yields NaN
 test/sunspider/3d-raytrace.js:59:5: [maybe] Conversion to number yields NaN

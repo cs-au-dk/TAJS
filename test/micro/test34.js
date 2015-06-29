@@ -3,6 +3,6 @@ foo = foo;
 function f() {
 	return foo;
 }
-dumpValue(f());
-assert(this.foo == 42);
-dumpValue(this.foo);
+TAJS_dumpValue(f());
+TAJS_assert(this.foo == 42);
+TAJS_dumpValue(this.foo);

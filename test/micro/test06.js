@@ -6,8 +6,8 @@ else
 
 foo = bar + 1234;
 
-dumpValue(foo);
-assert(foo === "jolly1234");
+TAJS_dumpValue(foo);
+TAJS_assert(foo === "jolly1234");
 
 
 if (Math.random() == 33)
@@ -17,6 +17,6 @@ else
 
 foo = bar + 1234;
 
-dumpValue(foo);
-assert(foo === "jolly1234");
+TAJS_dumpValue(foo);
+TAJS_assert(foo === "jolly1234", 'isMaybeAnyBool');
 

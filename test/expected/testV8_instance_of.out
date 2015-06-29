@@ -1,8 +1,8 @@
-test/v8tests/instanceof.js:28:1: [definite] ReferenceError, reading absent variable assertTrue
-test/v8tests/instanceof.js:28:12: [definite] Unreachable code
-test/v8tests/instanceof.js:34:1: [definite] Unreachable function TestChains
+test/v8tests/instanceof.js:38:3: [definite] Dead assignment, property __proto__ is never read
+test/v8tests/instanceof.js:39:3: [definite] Dead assignment, property __proto__ is never read
 test/v8tests/instanceof.js:41:3: [definite] Unreachable function F
-test/v8tests/instanceof.js:61:1: [definite] Unreachable function TestExceptions
-test/v8tests/instanceof.js:62:3: [definite] Unreachable function F
 test/v8tests/instanceof.js:88:3: [definite] Unreachable function G
-test/v8tests/instanceof.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/instanceof.js:28:1]
+test/v8tests/instanceof.js:76:13: [maybe] TypeError, non-function object at 'instanceof'
+test/v8tests/instanceof.js:76:13: [maybe] TypeError, non-object prototype at 'instanceof'
+test/v8tests/instanceof.js:76:13: [maybe] Reading absent property (computed name)
+test/v8tests/instanceof.js:76:33: [maybe] Reading absent property (computed name)

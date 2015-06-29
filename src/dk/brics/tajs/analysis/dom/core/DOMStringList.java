@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2013 Aarhus University
+ * Copyright 2009-2015 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -34,13 +34,15 @@ import static dk.brics.tajs.analysis.dom.DOMFunctions.createDOMProperty;
  * The DOMStringList interface provides the abstraction of an ordered collection
  * of DOMString values, without defining or constraining how this collection is
  * implemented.
- * <p/>
+ * <p>
  * Introduced in DOM Level 3.
  */
 public class DOMStringList {
 
     public static ObjectLabel CONSTRUCTOR;
+
     public static ObjectLabel PROTOTYPE;
+
     public static ObjectLabel INSTANCES;
 
     public static void build(State s) {
@@ -78,21 +80,23 @@ public class DOMStringList {
         // DOM Level 3
         createDOMFunction(s, PROTOTYPE, DOMObjects.STRINGLIST_ITEM, "item", 1);
         createDOMFunction(s, PROTOTYPE, DOMObjects.STRINGLIST_CONTAINS, "contains", 1);
-        
+
         // DOM Level 3
-        createDOMProperty(s, DOMConfiguration.INSTANCES, "parameterNames", Value.makeObject(DOMStringList.PROTOTYPE));
+        createDOMProperty(s, DOMConfiguration.INSTANCES, "parameterNames", Value.makeObject(PROTOTYPE));
     }
 
     public static Value evaluate(DOMObjects nativeObject, FunctionCalls.CallInfo call, State s, Solver.SolverInterface c) {
         switch (nativeObject) {
             case STRINGLIST_ITEM: {
                 NativeFunctions.expectParameters(nativeObject, call, c, 1, 1);
-                /* Value index =*/ Conversion.toInteger(NativeFunctions.readParameter(call, s, 0), c);
+                /* Value index =*/
+                Conversion.toInteger(NativeFunctions.readParameter(call, s, 0), c);
                 return Value.makeAnyStr().joinNull();
             }
             case STRINGLIST_CONTAINS: {
                 NativeFunctions.expectParameters(nativeObject, call, c, 1, 1);
-                /* Value str =*/ Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
+                /* Value str =*/
+                Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
                 return Value.makeAnyBool();
             }
             default: {
@@ -100,5 +104,4 @@ public class DOMStringList {
             }
         }
     }
-
 }

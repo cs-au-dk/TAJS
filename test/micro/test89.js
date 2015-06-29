@@ -8,7 +8,7 @@ function h() {
 
 var x = g(87);
 h();
-dumpValue(x.a);
-assert(x.a === 87);
-dumpValue(x);
-dumpObject(x);
+TAJS_dumpValue(x.a);
+TAJS_assert(x.a === 87);
+TAJS_dumpValue(x);
+TAJS_dumpObject(x);

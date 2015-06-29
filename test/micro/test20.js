@@ -10,13 +10,13 @@ if (Math.random()) {
   foo = 44;
 }
 foo2 = t;
-dumpValue(foo);
-dumpValue(foo2);
+TAJS_dumpValue(foo);
+TAJS_dumpValue(foo2);
 
 bar1 = foo(42,87,123);
 bar2 = this.foo(42,88,123);
 bar3 = foo(42);
-dumpValue(bar1);
-dumpValue(bar2);
-dumpValue(bar3);
-dumpValue(bar4);
+TAJS_dumpValue(bar1);
+TAJS_dumpValue(bar2);
+TAJS_dumpValue(bar3);
+TAJS_dumpValue(bar4);

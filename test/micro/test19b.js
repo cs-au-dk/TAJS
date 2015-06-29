@@ -4,4 +4,4 @@ if (Math.random())
 else
 	t = Boolean;
 var x = new t;
-dumpObject(x);
+TAJS_dumpObject(x);

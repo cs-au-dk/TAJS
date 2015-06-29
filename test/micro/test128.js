@@ -5,7 +5,7 @@
 var scope;
 
 var f = function g(x) {
-	dumpValue(x)
+	TAJS_dumpValue(x)
 	if (x == 0) {
 		return this;
 	}
@@ -16,5 +16,5 @@ var f = function g(x) {
 f(1);
 
 
-dumpValue(scope); // should be the dummy object
-assert(scope !== this);
+TAJS_dumpValue(scope); // should be the dummy object
+TAJS_assert(scope !== this);

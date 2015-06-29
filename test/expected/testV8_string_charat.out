@@ -1,4 +1,52 @@
-test/v8tests/string-charat.js:30:1: [definite] ReferenceError, reading absent variable assertEquals
-test/v8tests/string-charat.js:28:5: [definite] The variable s is never used
-test/v8tests/string-charat.js:30:14: [definite] Unreachable code
-test/v8tests/string-charat.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/string-charat.js:30:1]
+test/v8tests/string-charat.js:30:19: [definite] Too few parameters to function String.prototype.charAt
+test/v8tests/string-charat.js:42:19: [definite] Too few parameters to function String.prototype.charCodeAt
+test/v8tests/string-charat.js:30:19: [maybe] Conversion to number yields NaN
+test/v8tests/string-charat.js:30:19: [maybe] Converting object to string
+test/v8tests/string-charat.js:30:19: [maybe] Converting primitive string to object
+test/v8tests/string-charat.js:31:19: [maybe] Conversion from string to number yields NaN
+test/v8tests/string-charat.js:31:19: [maybe] Converting object to string
+test/v8tests/string-charat.js:31:19: [maybe] Converting primitive string to object
+test/v8tests/string-charat.js:32:19: [maybe] Converting object to string
+test/v8tests/string-charat.js:32:19: [maybe] Converting primitive string to object
+test/v8tests/string-charat.js:33:19: [maybe] Conversion to number yields NaN
+test/v8tests/string-charat.js:33:19: [maybe] Converting object to string
+test/v8tests/string-charat.js:33:19: [maybe] Converting primitive string to object
+test/v8tests/string-charat.js:34:19: [maybe] Converting object to string
+test/v8tests/string-charat.js:34:19: [maybe] Converting primitive string to object
+test/v8tests/string-charat.js:35:19: [maybe] Converting object to string
+test/v8tests/string-charat.js:35:19: [maybe] Converting primitive string to object
+test/v8tests/string-charat.js:36:18: [maybe] Converting object to string
+test/v8tests/string-charat.js:36:18: [maybe] Converting primitive string to object
+test/v8tests/string-charat.js:37:18: [maybe] Converting object to string
+test/v8tests/string-charat.js:37:18: [maybe] Converting primitive string to object
+test/v8tests/string-charat.js:38:19: [maybe] Converting object to string
+test/v8tests/string-charat.js:38:19: [maybe] Converting primitive string to object
+test/v8tests/string-charat.js:39:19: [maybe] Converting object to string
+test/v8tests/string-charat.js:39:19: [maybe] Converting primitive string to object
+test/v8tests/string-charat.js:40:19: [maybe] Converting object to string
+test/v8tests/string-charat.js:40:19: [maybe] Converting primitive string to object
+test/v8tests/string-charat.js:42:19: [maybe] Conversion to number yields NaN
+test/v8tests/string-charat.js:42:19: [maybe] Converting object to string
+test/v8tests/string-charat.js:42:19: [maybe] Converting primitive string to object
+test/v8tests/string-charat.js:43:19: [maybe] Conversion from string to number yields NaN
+test/v8tests/string-charat.js:43:19: [maybe] Converting object to string
+test/v8tests/string-charat.js:43:19: [maybe] Converting primitive string to object
+test/v8tests/string-charat.js:44:19: [maybe] Converting object to string
+test/v8tests/string-charat.js:44:19: [maybe] Converting primitive string to object
+test/v8tests/string-charat.js:45:19: [maybe] Conversion to number yields NaN
+test/v8tests/string-charat.js:45:19: [maybe] Converting object to string
+test/v8tests/string-charat.js:45:19: [maybe] Converting primitive string to object
+test/v8tests/string-charat.js:46:19: [maybe] Converting object to string
+test/v8tests/string-charat.js:46:19: [maybe] Converting primitive string to object
+test/v8tests/string-charat.js:47:19: [maybe] Converting object to string
+test/v8tests/string-charat.js:47:19: [maybe] Converting primitive string to object
+test/v8tests/string-charat.js:48:19: [maybe] Converting object to string
+test/v8tests/string-charat.js:48:19: [maybe] Converting primitive string to object
+test/v8tests/string-charat.js:49:19: [maybe] Converting object to string
+test/v8tests/string-charat.js:49:19: [maybe] Converting primitive string to object
+test/v8tests/string-charat.js:50:19: [maybe] Converting object to string
+test/v8tests/string-charat.js:50:19: [maybe] Converting primitive string to object
+test/v8tests/string-charat.js:51:18: [maybe] Converting object to string
+test/v8tests/string-charat.js:51:18: [maybe] Converting primitive string to object
+test/v8tests/string-charat.js:52:18: [maybe] Converting object to string
+test/v8tests/string-charat.js:52:18: [maybe] Converting primitive string to object

@@ -1,4 +1,4 @@
-fg2: <main> function()
+fg2: function()
   block 0: [entry]
     node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0173.js:1:1)
     node 1: function-decl[function f(),-] (test/flowgraphbuilder/flowgraph_builder0173.js:1:1)
@@ -20,34 +20,34 @@ fg2: <main> function()
     node 7: exceptional-return (test/flowgraphbuilder/flowgraph_builder0173.js:1:1)
     ->[]
 function f()
-  block 6: [entry]
-    node 8: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0173.js:1:1)
-    ->[block 7]
-  block 7:
-    node 9: constant[1.0,v1] (test/flowgraphbuilder/flowgraph_builder0173.js:2:9)
+  block 6:
+    node 8: constant[2.0,v2] (test/flowgraphbuilder/flowgraph_builder0173.js:3:6)
+    node 9: write-variable[v2,'x']* (test/flowgraphbuilder/flowgraph_builder0173.js:3:2)
     ->[block 9]
+  block 7: [entry]
+    node 10: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0173.js:1:1)
+    ->[block 8]
   block 8:
-    node 10: constant[2.0,v2] (test/flowgraphbuilder/flowgraph_builder0173.js:3:6)
-    node 11: write-variable[v2,'x']* (test/flowgraphbuilder/flowgraph_builder0173.js:3:2)
+    node 11: constant[1.0,v1]* (test/flowgraphbuilder/flowgraph_builder0173.js:2:9)
     ->[block 9]
   block 9: [exit-ordinary]
-    node 12: return[v1] (test/flowgraphbuilder/flowgraph_builder0173.js:3:6)
+    node 12: return[v1] (test/flowgraphbuilder/flowgraph_builder0173.js:4:1)
     ->[]
   block 10: [exit-exceptional]
-    node 13: exceptional-return (test/flowgraphbuilder/flowgraph_builder0173.js:3:6)
+    node 13: exceptional-return (test/flowgraphbuilder/flowgraph_builder0173.js:4:1)
     ->[]
 function g()
   block 11: [entry]
     node 14: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0173.js:5:1)
     ->[block 12]
   block 12:
-    node 15: constant[2.0,v1] (test/flowgraphbuilder/flowgraph_builder0173.js:6:16)
+    node 15: constant[2.0,v1]* (test/flowgraphbuilder/flowgraph_builder0173.js:6:16)
     ->[block 13]
   block 13: [exit-ordinary]
-    node 16: return[v1] (test/flowgraphbuilder/flowgraph_builder0173.js:6:16)
+    node 16: return[v1] (test/flowgraphbuilder/flowgraph_builder0173.js:7:1)
     ->[]
   block 14: [exit-exceptional]
-    node 17: exceptional-return (test/flowgraphbuilder/flowgraph_builder0173.js:6:16)
+    node 17: exceptional-return (test/flowgraphbuilder/flowgraph_builder0173.js:7:1)
     ->[]
 
 test/flowgraphbuilder/flowgraph_builder0173.js:3:6: [definite] Unreachable code

@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2013 Aarhus University
+ * Copyright 2009-2015 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,81 +29,82 @@ import dk.brics.tajs.util.AnalysisException;
  */
 public class Exceptions {
 
-	private Exceptions() {}
-	
-	/**
-	 * Models a TypeError exception being thrown at the current node.
-	 * Does not modify the given state.
-	 * Don't forget to set the ordinary state to none if the exception will definitely occur.
-	 */
-	public static void throwTypeError(State state, Solver.SolverInterface c) {
-		if (Options.isExceptionsDisabled())
-			return;
-		state = state.clone();
-		throwException(state, makeException(state, InitialStateBuilder.TYPE_ERROR_PROTOTYPE, c), c, c.getCurrentNode());
-	}
-	
-	/**
-	 * Models a ReferenceError exception being thrown at the current node.
-	 * Does not modify the given state.
-	 * Don't forget to set the ordinary state to none if the exception will definitely occur.
-	 */
-	public static void throwReferenceError(State state, Solver.SolverInterface c) {
-		if (Options.isExceptionsDisabled())
-			return;
-		state = state.clone();
-		throwException(state, makeException(state, InitialStateBuilder.REFERENCE_ERROR_PROTOTYPE, c), c, c.getCurrentNode());
-	}
-	
-	/**
-	 * Models a RangeError exception being thrown at the current node.
-	 * Does not modify the given state.
-	 * Don't forget to set the ordinary state to none if the exception will definitely occur.
-	 */
-	public static void throwRangeError(State state, Solver.SolverInterface c) {
-		if (Options.isExceptionsDisabled())
-			return;
-		state = state.clone();
-		throwException(state, makeException(state, InitialStateBuilder.RANGE_ERROR_PROTOTYPE, c), c, c.getCurrentNode());
-	}
-	
-	/**
-	 * Models a SyntaxError exception being thrown at the current node.
-	 * Does not modify the given state.
-	 * Don't forget to set the ordinary state to none if the exception will definitely occur.
-	 */
-	public static void throwSyntaxError(State state, Solver.SolverInterface c) {
-		if (Options.isExceptionsDisabled())
-			return;
-		state = state.clone();
-		throwException(state, makeException(state, InitialStateBuilder.SYNTAX_ERROR_PROTOTYPE, c), c, c.getCurrentNode());
-	}
-	
-	/**
-	 * Constructs an exception value.
-	 * Does not modify the given state.
-	 */
-	private static Value makeException(State state, ObjectLabel prototype, Solver.SolverInterface c) {
-		ObjectLabel ex = new ObjectLabel(c.getCurrentNode(), Kind.ERROR);
-		state.newObject(ex);
-		state.writeInternalPrototype(ex, Value.makeObject(prototype));
-		state.writeProperty(ex, "message", Value.makeAnyStr());
-		return Value.makeObject(ex);
-	}
-	
-	/**
-	 * Models an exception being thrown at the given node.
-	 * Modifies the given state.
-	 * Don't forget to set the state to none if the exception will definitely occur.
-	 */
-	public static void throwException(State state, Value v, Solver.SolverInterface c, AbstractNode source) {
-		if (!source.canThrowExceptions())
-			throw new AnalysisException("Exception at non-throwing-exception node!?");
-		if (v.isMaybePresent() || Options.isPropagateDeadFlow()) {
-			BasicBlock handlerblock = source.getBlock().getExceptionHandler();
-			state.writeRegister(AbstractNode.EXCEPTION_REG, v);
-			c.propagateToBasicBlock(state, handlerblock, 
-					Context.makeSuccessorContext(state, handlerblock));
-		}
-	}
+    private Exceptions() {
+    }
+
+    /**
+     * Models a TypeError exception being thrown at the current node.
+     * Does not modify the given state.
+     * Don't forget to set the ordinary state to none if the exception will definitely occur.
+     */
+    public static void throwTypeError(State state, Solver.SolverInterface c) {
+        if (Options.get().isExceptionsDisabled())
+            return;
+        state = state.clone();
+        throwException(state, makeException(state, InitialStateBuilder.TYPE_ERROR_PROTOTYPE, c), c, c.getCurrentNode());
+    }
+
+    /**
+     * Models a ReferenceError exception being thrown at the current node.
+     * Does not modify the given state.
+     * Don't forget to set the ordinary state to none if the exception will definitely occur.
+     */
+    public static void throwReferenceError(State state, Solver.SolverInterface c) {
+        if (Options.get().isExceptionsDisabled())
+            return;
+        state = state.clone();
+        throwException(state, makeException(state, InitialStateBuilder.REFERENCE_ERROR_PROTOTYPE, c), c, c.getCurrentNode());
+    }
+
+    /**
+     * Models a RangeError exception being thrown at the current node.
+     * Does not modify the given state.
+     * Don't forget to set the ordinary state to none if the exception will definitely occur.
+     */
+    public static void throwRangeError(State state, Solver.SolverInterface c) {
+        if (Options.get().isExceptionsDisabled())
+            return;
+        state = state.clone();
+        throwException(state, makeException(state, InitialStateBuilder.RANGE_ERROR_PROTOTYPE, c), c, c.getCurrentNode());
+    }
+
+    /**
+     * Models a SyntaxError exception being thrown at the current node.
+     * Does not modify the given state.
+     * Don't forget to set the ordinary state to none if the exception will definitely occur.
+     */
+    public static void throwSyntaxError(State state, Solver.SolverInterface c) {
+        if (Options.get().isExceptionsDisabled())
+            return;
+        state = state.clone();
+        throwException(state, makeException(state, InitialStateBuilder.SYNTAX_ERROR_PROTOTYPE, c), c, c.getCurrentNode());
+    }
+
+    /**
+     * Constructs an exception value.
+     * Does not modify the given state.
+     */
+    private static Value makeException(State state, ObjectLabel prototype, Solver.SolverInterface c) {
+        ObjectLabel ex = new ObjectLabel(c.getCurrentNode(), Kind.ERROR);
+        state.newObject(ex);
+        state.writeInternalPrototype(ex, Value.makeObject(prototype));
+        state.writeProperty(ex, "message", Value.makeAnyStr());
+        return Value.makeObject(ex);
+    }
+
+    /**
+     * Models an exception being thrown at the given node.
+     * Modifies the given state.
+     * Don't forget to set the state to none if the exception will definitely occur.
+     */
+    public static void throwException(State state, Value v, Solver.SolverInterface c, AbstractNode source) {
+        if (!source.canThrowExceptions())
+            throw new AnalysisException("Exception at non-throwing-exception node!?");
+        if (v.isMaybePresent() || Options.get().isPropagateDeadFlow()) {
+            BasicBlock handlerblock = source.getBlock().getExceptionHandler();
+            state.writeRegister(AbstractNode.EXCEPTION_REG, v);
+            c.propagateToBasicBlock(state, handlerblock,
+                    Context.makeSuccessorContext(state, handlerblock));
+        }
+    }
 }

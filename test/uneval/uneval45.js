@@ -3,5 +3,5 @@ function f(y) {
    return eval("z = " + a)
 }
 
-dumpValue(f("3"))
-dumpValue(f("5"))
+TAJS_dumpValue(f("3"))
+TAJS_dumpValue(f("5"))

@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2013 Aarhus University
+ * Copyright 2009-2015 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,6 +24,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.MappedByteBuffer;
+import java.nio.channels.FileChannel;
 import java.nio.charset.Charset;
 
 /**
@@ -31,66 +33,53 @@ import java.nio.charset.Charset;
  */
 public class Loader {
 
-	private Loader() {}
-	
-	/**
-	 * Returns the contents of the given resource (file path or URL) as a string.
-	 * @param u file path or URL
-	 * @param charset character encoding (if null, use system default)
-	 * @return contents
-	 * @throws IOException
-	 */
-	@SuppressWarnings("resource")
-	public static String getString(String u, String charset) throws IOException {
-		InputStream in = null;
-		InputStreamReader sr = null;
-		BufferedReader r = null;
-		if (charset == null)
-			charset = Charset.defaultCharset().name();
-		try {
-			try {
-				in = new URL(u).openStream();
-			} catch (MalformedURLException e) {
-				in = new FileInputStream(u);
-			}
-			sr = new InputStreamReader(in, charset);
-			r = new BufferedReader(sr);
-			StringBuilder b = new StringBuilder();
-			boolean done = false;
-			while (!done) {
-				int c = r.read();
-				if (c == -1)
-					done = true;
-				else
-					b.append((char)c);
-			}
-			return b.toString();
-		} finally {
-			if (r != null)
-				r.close();
-			else if (sr != null)
-				sr.close();
-			else if (in != null)
-				in.close();
-		}
-	}
-	
-	/**
-	 * Resolves relative paths/URLs.
-	 * @param base base path/URL
-	 * @param u path/URL to resolve (relative or absolute)
-	 * @return absolute URL
-	 * @throws MalformedURLException 
-	 */
-	public static String resolveRelative(String base, String u) throws MalformedURLException {
-		String abs;
-		try {
-			abs = new URL(new URL(base), u).toString();
-		} catch (MalformedURLException e) {
-			abs = new URL(new URL(new File(base).toURI().toString()), u).toString();
-		}
-		if (abs.startsWith("file:/"))
-			abs = abs.substring(6);
-		return abs;
-	}
+    private Loader() {
+    }
+
+    /**
+     * Returns the contents of the given resource (file path or URL) as a string.
+     *
+     * @param u       file path or URL
+     * @param charset character encoding (if null, use system default)
+     * @return contents
+     * @throws IOException
+     */
+    public static String getString(String u, String charset) throws IOException {
+        if (charset == null)
+            charset = Charset.defaultCharset().name();
+        try (InputStream in = new URL(u).openStream();
+             InputStreamReader sr = new InputStreamReader(in, charset);
+             BufferedReader r = new BufferedReader(sr)) {
+            StringBuilder b = new StringBuilder();
+            int c;
+            while ((c = r.read()) != -1)
+                b.append((char) c);
+            return b.toString();
+        } catch (MalformedURLException e) {
+            try (FileChannel fc = new FileInputStream(u).getChannel()) {
+                MappedByteBuffer bb = fc.map(FileChannel.MapMode.READ_ONLY, 0, fc.size());
+                return Charset.forName(charset).decode(bb).toString();
+            }
+        }
+    }
+
+    /**
+     * Resolves relative paths/URLs.
+     *
+     * @param base base path/URL
+     * @param u    path/URL to resolve (relative or absolute)
+     * @return absolute URL
+     * @throws MalformedURLException
+     */
+    public static String resolveRelative(String base, String u) throws MalformedURLException {
+        String abs;
+        try {
+            abs = new URL(new URL(base), u).toString();
+        } catch (MalformedURLException e) {
+            abs = new URL(new URL(new File(base).toURI().toString()), u).toString();
+        }
+        if (abs.startsWith("file:"))
+            abs = abs.substring(5);
+        return abs;
+    }
 }

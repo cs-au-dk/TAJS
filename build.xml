@@ -4,7 +4,7 @@
 
     <property name="project" value="tajs" />
     <property name="version" value="0.9" />
-    <property name="release" value="3" />
+    <property name="release" value="4" />
 
     <property name="optimize" value="on" />
     <property name="debug" value="off" />
@@ -29,7 +29,7 @@
         -->
         <mkdir dir="build" />
         <javac srcdir="src" includes="**" destdir="build" optimize="${optimize}" 
-                debug="${debug}" includeantruntime="false" source="1.7">
+                debug="${debug}" includeantruntime="false" source="1.8">
             <classpath refid="classpath" />
             <compilerarg line="-encoding ISO-8859-1" compiler="modern" />
             <!--
@@ -45,10 +45,8 @@
 
     <target name="jar-all" depends="jar">
         <mkdir dir="temp" />
-        <unzip src="lib/jtidy.jar" dest="temp" />
-        <unzip src="lib/jdom-1.1.1.jar" dest="temp" />
-        <unzip src="lib/jdom-contrib-1.1.1.jar" dest="temp" />
-        <unzip src="lib/compiler.jar" dest="temp" />
+        <unzip src="lib/jericho-html-3.3.jar" dest="temp" />
+        <unzip src="lib/closure-compiler.jar" dest="temp" />
         <unzip src="lib/log4j.jar" dest="temp" />
         <unzip src="dist/${project}.jar" dest="temp" />
         <jar jarfile="dist/${project}-all.jar" basedir="temp" includes="**/*.*">
@@ -72,6 +70,7 @@
                                dk.brics.tajs.analysis,
                                dk.brics.tajs.analysis.js,
                                dk.brics.tajs.analysis.nativeobjects,
+                               dk.brics.tajs.analysis.nativeobjects.concrete,
                                dk.brics.tajs.analysis.uneval,
                                dk.brics.tajs.flowgraph,
                                dk.brics.tajs.flowgraph.jsnodes,
@@ -83,19 +82,20 @@
                                dk.brics.tajs.solver,
                                dk.brics.tajs.unevalizer,
                                dk.brics.tajs.util,
-                               dk.brics.tajs.gui" 
-        	    overview="src/overview.html" Package="true" sourcepath="src" destdir="doc" nodeprecated="true" author="true" notree="true" nohelp="true" windowtitle="TAJS">
+                               com.google.javascript.jscomp.parsing" 
+                overview="src/overview.html" Package="true" sourcepath="src" destdir="doc" nodeprecated="true" author="true" notree="true" nohelp="true" windowtitle="TAJS" additionalparam="-Xdoclint:none"> 
+                <!-- for Java 8: additionalparam="-Xdoclint:none" -->
             <doctitle>
                 <![CDATA[Type Analyzer for JavaScript (TAJS) API Specification]]>
             </doctitle>
-            <bottom><![CDATA[<i> Copyright &#169; 2009-2013 Aarhus University </i>]]></bottom>
-            <link href="http://docs.oracle.com/javase/6/docs/api/" />
+            <bottom><![CDATA[<i> Copyright &#169; 2009-2015 Aarhus University </i>]]></bottom>
+            <link href="http://docs.oracle.com/javase/7/docs/api/" />
             <link href="http://www.mozilla.org/rhino/apidocs/" />
             <classpath refid="classpath" />
         </javadoc>
     </target>
 
-    <target name="zip" depends="clean,all">
+    <target name="zip" depends="all">
         <fail message="option 'debug' should be disabled before making zip">
             <condition>
                 <istrue value="${debug}" />
@@ -104,16 +104,19 @@
         <property name="dir" value="${project}-${version}" />
         <mkdir dir="${dir}" />
         <copy todir="${dir}">
-            <fileset dir="." includes="README,COPYING,build.xml" />
+            <fileset dir="." includes="README.md,LICENSE,build.xml" />
         </copy>
         <copy file="dist/${project}.jar" todir="${dir}/dist" />
         <mkdir dir="${dir}/doc" />
         <copy todir="${dir}/doc">
             <fileset dir="doc" />
         </copy>
+        <copy todir="${dir}/lib">
+            <fileset dir="lib" />
+        </copy>
         <mkdir dir="${dir}/src" />
         <copy todir="${dir}/src">
-            <fileset dir="src" includes="dk/**,*.txt" excludes="**/*.class" />
+            <fileset dir="src" excludes="**/*.class" />
         </copy>
         <zip zipfile="dist/${dir}-${release}.zip" basedir="." includes="${dir}/**" />
         <!--
@@ -124,22 +127,33 @@
         <delete dir="${dir}" />
     </target>
 
-    <target name="test">
-        <javac srcdir="test/src" includes="**" destdir="build" optimize="${optimize}" debug="${debug}" 
-                includeantruntime="false" source="1.7">
-            <classpath refid="classpath" />
-            <compilerarg line="-encoding ISO-8859-1" compiler="modern" />
-            <compilerarg line="-Xlint -Xlint:-serial -Xlint:-path" compiler="modern" />
+    <target name="compile-test" depends="compile">
+        <javac srcdir="test/src" includes="**" destdir="build" optimize="${optimize}" debug="${debug}"
+               includeantruntime="false" source="1.8">
+            <classpath refid="classpath"/>
+            <compilerarg line="-encoding ISO-8859-1" compiler="modern"/>
+            <compilerarg line="-Xlint -Xlint:-serial -Xlint:-path" compiler="modern"/>
         </javac>
-        <junit fork="true" printsummary="yes" showoutput="yes" haltonfailure="no" haltonerror="no">
+    </target>
+
+    <target name="test" depends="compile-test">
+        <junit fork="true" printsummary="yes" showoutput="yes" haltonfailure="no" haltonerror="no" maxmemory="2048m">
             <classpath refid="classpath.test" />
             <test name="dk.brics.tajs.test.RunRegression" />
         </junit>
     </target>
 
+    <target name="test-travis" depends="compile-test">
+        <junit fork="true" printsummary="yes" showoutput="yes" haltonfailure="yes" maxmemory="2048m">
+            <classpath refid="classpath.test"/>
+            <formatter type="brief" usefile="false"/>
+            <test name="dk.brics.tajs.test.RunRegression"/>
+        </junit>
+    </target>
+
     <target name="test-all" depends="clean,compile">
         <javac srcdir="test/src" includes="**" destdir="build" optimize="${optimize}" debug="${debug}" 
-                includeantruntime="false" source="1.7">
+                includeantruntime="false" source="1.8">
             <classpath refid="classpath" />
             <compilerarg line="-encoding ISO-8859-1" compiler="modern" />
             <compilerarg line="-Xlint -Xlint:-serial -Xlint:-path" compiler="modern" />
@@ -163,26 +177,22 @@
                 <istrue value="${debug}" />
             </condition>
         </fail>
-        <delete dir="${public}/doc" />
-        <mkdir dir="${public}/doc" />
-        <copy todir="${public}/doc">
+        <property name="doc" value="doc-${version}-${release}" />
+        <property name="dist" value="dist-${version}-${release}" />
+        <delete dir="${public}/${doc}" />
+        <mkdir dir="${public}/${doc}" />
+        <copy todir="${public}/${doc}">
             <fileset dir="doc" />
         </copy>
-        <mkdir dir="${public}/dist" />
-        <copy todir="${public}/dist">
-            <!-- NOTE: excluding zip at publish
-                <fileset dir="dist" includes="*.zip" />
-            -->
+        <mkdir dir="${public}/${dist}" />
+        <copy todir="${public}/${dist}">
             <fileset dir="dist" includes="*.jar" />
         </copy>
-        <copy file="${public}/dist/${project}.jar" tofile="${public}/dist/${project}-${version}-${release}.jar" />
-        <copy file="${public}/dist/${project}-all.jar" tofile="${public}/dist/${project}-${version}-${release}-all.jar" />
-        <mkdir dir="${public}/lib" />
-        <copy todir="${public}/lib">
+        <copy todir="${public}/${dist}">
             <fileset dir="lib" />
         </copy>
-        <chmod dir="${public}" perm="go+r" includes="doc/**,doc,dist/**,dist,lib/**,lib,*.zip" type="both" />
-        <chmod dir="${public}" perm="go+x" includes="dist/**,dist,lib/**,lib" type="dir" />
+        <chmod dir="${public}" perm="go+r" includes="${doc}/**,${doc},${dist}/**,${dist}" type="both" />
+        <chmod dir="${public}" perm="go+x" includes="${doc}/**,${doc},${dist}/**,${dist}" type="dir" />
     </target>
 
     <target name="dotview">

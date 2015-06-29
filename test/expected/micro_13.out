@@ -1,15 +1,15 @@
-test/micro/test13.js:7:21: [definite] Dead assignment, property GlossList is never read
-test/micro/test13.js:7:21: [definite] Dead assignment, property title is never read
-test/micro/test13.js:9:20: [definite] Dead assignment, property GlossEntry is never read
-test/micro/test13.js:10:32: [definite] Dead assignment, property Abbrev is never read
-test/micro/test13.js:10:32: [definite] Dead assignment, property Acronym is never read
-test/micro/test13.js:10:32: [definite] Dead assignment, property GlossDef is never read
-test/micro/test13.js:10:32: [definite] Dead assignment, property GlossSee is never read
-test/micro/test13.js:10:32: [definite] Dead assignment, property GlossTerm is never read
-test/micro/test13.js:10:32: [definite] Dead assignment, property ID is never read
-test/micro/test13.js:10:32: [definite] Dead assignment, property SortAs is never read
-test/micro/test13.js:16:22: [definite] Dead assignment, property GlossSeeAlso is never read
-test/micro/test13.js:16:22: [definite] Dead assignment, property para is never read
+test/micro/test13.js:8:7: [definite] Dead assignment, property title is never read
+test/micro/test13.js:9:7: [definite] Dead assignment, property GlossList is never read
+test/micro/test13.js:10:18: [definite] Dead assignment, property GlossEntry is never read
+test/micro/test13.js:11:10: [definite] Dead assignment, property ID is never read
+test/micro/test13.js:12:10: [definite] Dead assignment, property SortAs is never read
+test/micro/test13.js:13:10: [definite] Dead assignment, property GlossTerm is never read
+test/micro/test13.js:14:10: [definite] Dead assignment, property Acronym is never read
+test/micro/test13.js:15:10: [definite] Dead assignment, property Abbrev is never read
+test/micro/test13.js:16:10: [definite] Dead assignment, property GlossDef is never read
+test/micro/test13.js:17:27: [definite] Dead assignment, property para is never read
+test/micro/test13.js:18:27: [definite] Dead assignment, property GlossSeeAlso is never read
+test/micro/test13.js:20:10: [definite] Dead assignment, property GlossSee is never read
 test/micro/test13.js:30:1: [info] Abstract value: "example glossary"
 test/micro/test13.js:31:1: [info] Abstract value: "example glossaryhat"
 test/micro/test13.js:32:1: [info] Abstract object: {glossary:[@Object#node5],[[Prototype]]=[@Object.prototype[native]]}

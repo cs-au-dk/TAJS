@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2013 Aarhus University
+ * Copyright 2009-2015 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,8 +16,6 @@
 
 package dk.brics.tajs.analysis.dom.html;
 
-import static dk.brics.tajs.analysis.dom.DOMFunctions.createDOMFunction;
-import static dk.brics.tajs.analysis.dom.DOMFunctions.createDOMProperty;
 import dk.brics.tajs.analysis.Conversion;
 import dk.brics.tajs.analysis.FunctionCalls;
 import dk.brics.tajs.analysis.NativeFunctions;
@@ -33,10 +31,15 @@ import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.util.AnalysisException;
 import dk.brics.tajs.util.Collections;
 
+import static dk.brics.tajs.analysis.dom.DOMFunctions.createDOMFunction;
+import static dk.brics.tajs.analysis.dom.DOMFunctions.createDOMProperty;
+
 public class HTMLElement {
 
     public static ObjectLabel ELEMENT;
+
     public static ObjectLabel ELEMENT_PROTOTYPE;
+
     public static ObjectLabel ELEMENT_ATTRIBUTES;
 
     public static void build(State s) {
@@ -94,7 +97,7 @@ public class HTMLElement {
          * Functions.
          */
         createDOMFunction(s, ELEMENT_PROTOTYPE, DOMObjects.HTMLELEMENT_GET_ELEMENTS_BY_CLASS_NAME, "getElementsByClassName", 1);
-        
+
         // semistandard
         // NB: webkit version!
         createDOMFunction(s, ELEMENT_PROTOTYPE, DOMObjects.HTMLELEMENT_MATCHES_SELECTOR, "webkitMatchesSelector", 1);
@@ -107,17 +110,17 @@ public class HTMLElement {
         switch (nativeObject) {
             case HTMLELEMENT_GET_ELEMENTS_BY_CLASS_NAME: {
                 NativeFunctions.expectParameters(nativeObject, call, c, 1, 1);
-                /* Value className =*/ Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
+                /* Value className =*/
+                Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
                 return DOMFunctions.makeAnyHTMLNodeList(s);
             }
-			case HTMLELEMENT_MATCHES_SELECTOR: {
-				NativeFunctions.expectParameters(nativeObject, call, c, 1, 1);
-				return Value.makeAnyBool();
-			}
+            case HTMLELEMENT_MATCHES_SELECTOR: {
+                NativeFunctions.expectParameters(nativeObject, call, c, 1, 1);
+                return Value.makeAnyBool();
+            }
             default: {
                 throw new AnalysisException("Unsupported Native Object: " + nativeObject);
             }
         }
     }
-
 }

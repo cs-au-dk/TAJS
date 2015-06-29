@@ -1,1 +1,1 @@
-test/micro/test01.js:5:9: [definite] Dead assignment, property e is never read
+test/micro/test01.js:5:48: [definite] Dead assignment, property e is never read

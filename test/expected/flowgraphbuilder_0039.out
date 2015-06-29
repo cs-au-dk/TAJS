@@ -1,10 +1,10 @@
-fg2: <main> function()
+fg2: function()
   block 0: [entry]
     node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0039.js:1:1)
     ->[block 1]
   block 1:
     node 1: constant[1.0,v2] (test/flowgraphbuilder/flowgraph_builder0039.js:1:5)
-    node 2: if[v2](true-block:2,false-block:3) (test/flowgraphbuilder/flowgraph_builder0039.js:1:1)
+    node 2: if[v2](true-block:2,false-block:3)* (test/flowgraphbuilder/flowgraph_builder0039.js:1:1)
     ->[block 2,block 3]
   block 2:
     node 3: constant[2.0,-]* (test/flowgraphbuilder/flowgraph_builder0039.js:1:10)

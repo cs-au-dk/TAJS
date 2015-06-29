@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2013 Aarhus University
+ * Copyright 2009-2015 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,24 +29,24 @@ public class NewObjectNode extends LoadNode {
      * New object node.
      *
      * @param result_reg The result register.
-     * @param location The source location.
+     * @param location   The source location.
      */
-	public NewObjectNode(int result_reg, SourceLocation location) {
-		super(result_reg, location);
-	}
+    public NewObjectNode(int result_reg, SourceLocation location) {
+        super(result_reg, location);
+    }
 
     @Override
-	public String toString() {
-		return "new[v" + getResultRegister() + "]";
-	}
+    public String toString() {
+        return "new[v" + getResultRegister() + "]";
+    }
 
-	@Override
-	public <ArgType> void visitBy(NodeVisitor<ArgType> v, ArgType a) {
-		v.visit(this, a);
-	}
+    @Override
+    public <ArgType> void visitBy(NodeVisitor<ArgType> v, ArgType a) {
+        v.visit(this, a);
+    }
 
-	@Override
-	public boolean canThrowExceptions() {
-		return false;
-	}
+    @Override
+    public boolean canThrowExceptions() {
+        return false;
+    }
 }

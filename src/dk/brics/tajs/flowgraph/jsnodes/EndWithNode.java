@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2013 Aarhus University
+ * Copyright 2009-2015 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,30 +25,30 @@ import dk.brics.tajs.flowgraph.SourceLocation;
  */
 public class EndWithNode extends Node {
 
-	/**
-	 * Constructs a new end-with node.
-	 */
-	public EndWithNode(SourceLocation location) {
-		super(location);
-	}
-	
-	@Override
-	public String toString() {
-		return "end-with";
-	}
+    /**
+     * Constructs a new end-with node.
+     */
+    public EndWithNode(SourceLocation location) {
+        super(location);
+    }
 
-	@Override
-	public <ArgType> void visitBy(NodeVisitor<ArgType> v, ArgType a) {
-		v.visit(this, a);
-	}
+    @Override
+    public String toString() {
+        return "end-with";
+    }
+
+    @Override
+    public <ArgType> void visitBy(NodeVisitor<ArgType> v, ArgType a) {
+        v.visit(this, a);
+    }
 
     @Override
     public boolean isArtificial() {
         return true;
     }
 
-	@Override
-	public boolean canThrowExceptions() {
-		return false;
-	}
+    @Override
+    public boolean canThrowExceptions() {
+        return false;
+    }
 }

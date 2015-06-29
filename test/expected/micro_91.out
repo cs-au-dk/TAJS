@@ -1,6 +1,6 @@
 test/micro/test91.js:7:9: [maybe] Reading absent property (computed name)
-test/micro/test91.js:8:1: [info] Abstract value: Undef|[@Object[native], @Object.prototype.toString[native], @Object.prototype.toLocaleString[native], @Object.prototype.valueOf[native], @Object.prototype.hasOwnProperty[native], @Object.prototype.isPrototypeOf[native], @Object.prototype.propertyIsEnumerable[native]]
+test/micro/test91.js:8:1: [info] Abstract value: Undef|[@Object[native], @Object.prototype.valueOf[native], @Object.prototype.toString[native], @Object.prototype.toLocaleString[native], @Object.prototype.propertyIsEnumerable[native], @Object.prototype.isPrototypeOf[native], @Object.prototype.hasOwnProperty[native]]
 test/micro/test91.js:15:1: [info] Abstract value: IdentStr
-test/micro/test91.js:16:1: [info] Abstract value: Undef|[@Object[native], @Object.prototype.toString[native], @Object.prototype.toLocaleString[native], @Object.prototype.valueOf[native], @Object.prototype.hasOwnProperty[native], @Object.prototype.isPrototypeOf[native], @Object.prototype.propertyIsEnumerable[native]]
+test/micro/test91.js:16:1: [info] Abstract value: Undef|[@Object[native], @Object.prototype.valueOf[native], @Object.prototype.toString[native], @Object.prototype.toLocaleString[native], @Object.prototype.propertyIsEnumerable[native], @Object.prototype.isPrototypeOf[native], @Object.prototype.hasOwnProperty[native]]
 test/micro/test91.js:17:1: [info] Abstract value: Bool
 test/micro/test91.js:7:9: [info] Reading from unknown property that may cause loss of precision

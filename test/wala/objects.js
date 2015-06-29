@@ -43,9 +43,9 @@ var foo = strObj.toLowerCase();
 
 var whatnot = [ , , , 7, numObj, arg2, strObj ];
 
-assert( whatnot[ 5 ].otherMethod( 7 ) == 12);
+TAJS_assert(whatnot[5].otherMethod(7), 'isMaybeNumUInt');
 
-dumpObject(whatnot);
-dumpValue(numObj);
-dumpValue(strObj);
-dumpValue(foo);
+TAJS_dumpObject(whatnot);
+TAJS_dumpValue(numObj);
+TAJS_dumpValue(strObj);
+TAJS_dumpValue(foo);

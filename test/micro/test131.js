@@ -10,6 +10,6 @@ try {
 	else
 		y = {};
 } finally {
-	dumpValue(y)
-	dumpObject(y)
+	TAJS_dumpValue(y)
+	TAJS_dumpObject(y)
 }

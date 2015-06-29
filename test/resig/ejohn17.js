@@ -1,3 +1,3 @@
 var obj = {}; 
 var fn = function(){}; 
-assert( obj && fn );
+TAJS_assert(!!( obj && fn ));

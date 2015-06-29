@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2013 Aarhus University
+ * Copyright 2009-2015 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,32 +28,32 @@ import dk.brics.tajs.util.Strings;
  */
 public class WriteVariableNode extends Node {
 
-	private String varname;
-	
-	private int value_reg;
+    private String varname;
 
-	/**
-	 * Constructs a new write variable node.
-	 */
-	public WriteVariableNode(int value_reg, String varname, SourceLocation location) {
-		super(location);
-		this.value_reg = value_reg;
-		this.varname = varname;
-	}
+    private int value_reg;
 
-	/**
-	 * Returns the destination variable name.
-	 */
-	public String getVariableName() {
-		return varname;
-	}
-	
-	/**
-	 * Returns the register.
-	 */
-	public int getValueRegister() {
-		return value_reg;
-	}
+    /**
+     * Constructs a new write variable node.
+     */
+    public WriteVariableNode(int value_reg, String varname, SourceLocation location) {
+        super(location);
+        this.value_reg = value_reg;
+        this.varname = varname;
+    }
+
+    /**
+     * Returns the destination variable name.
+     */
+    public String getVariableName() {
+        return varname;
+    }
+
+    /**
+     * Returns the register.
+     */
+    public int getValueRegister() {
+        return value_reg;
+    }
 
     /**
      * Sets the register.
@@ -61,21 +61,21 @@ public class WriteVariableNode extends Node {
     public void setRegister(int value_reg) {
         this.value_reg = value_reg;
     }
-	
-	@Override
-	public String toString() {
-		return "write-variable[v" + value_reg + ",'" + Strings.escape(varname) + "']";
-	}
 
-	@Override
-	public <ArgType> void visitBy(NodeVisitor<ArgType> v, ArgType a) {
-		v.visit(this, a);
-	}
+    @Override
+    public String toString() {
+        return "write-variable[v" + value_reg + ",'" + Strings.escape(varname) + "']";
+    }
 
-	@Override
-	public boolean canThrowExceptions() {
-		return false;
-	}
+    @Override
+    public <ArgType> void visitBy(NodeVisitor<ArgType> v, ArgType a) {
+        v.visit(this, a);
+    }
+
+    @Override
+    public boolean canThrowExceptions() {
+        return false;
+    }
 
     @Override
     public void check(BasicBlock b) {

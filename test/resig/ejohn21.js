@@ -17,7 +17,7 @@ function isPrime( num ) {
  
 isPrime.cache = {}; 
  
-assert( isPrime(5) ); 
-assert( isPrime.cache[5] );
+TAJS_assert( isPrime(5), 'isMaybeAnyBool' );
+TAJS_assert( isPrime.cache[5], 'isMaybeAnyBool' );
 
-dumpValue (isPrime(5));
+TAJS_dumpValue (isPrime(5));

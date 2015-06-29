@@ -10,6 +10,4 @@ test/wala/more-control-flow.js:48:3: [definite] The conditional expression is al
 test/wala/more-control-flow.js:49:5: [definite] The conditional expression is always false
 test/wala/more-control-flow.js:51:10: [definite] The conditional expression is always false
 test/wala/more-control-flow.js:85:3: [definite] The conditional expression is always true
-test/wala/more-control-flow.js:92:3: [definite] The conditional expression is always true
-test/wala/more-control-flow.js:108:1: [maybe] Assertion fails
-test/wala/more-control-flow.js:110:1: [maybe] Assertion fails
+test/wala/more-control-flow.js:92:10: [definite] The conditional expression is always true

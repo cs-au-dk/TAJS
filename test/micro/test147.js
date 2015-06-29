@@ -13,6 +13,6 @@ bar = function() {
 
 foo();
 
-dumpValue(t.i)
+TAJS_dumpValue(t.i)
     
     

@@ -1,1 +1,1 @@
-conversionToPrimitive(Math,"NUM");
+TAJS_conversionToPrimitive(Math,"NUM");

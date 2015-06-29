@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2013 Aarhus University
+ * Copyright 2009-2015 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,21 +24,21 @@ import dk.brics.tajs.flowgraph.SourceLocation;
  * Abstract base class for all ordinary flow graph nodes.
  */
 public abstract class Node extends AbstractNode {
-	
-	/**
-	 * Constructs a new node.
-	 */
-	public Node(SourceLocation location) {
-		super(location);
-	}
-	
-	/**
-	 * Visits this node with the given visitor.
-	 */
+
+    /**
+     * Constructs a new node.
+     */
+    public Node(SourceLocation location) {
+        super(location);
+    }
+
+    /**
+     * Visits this node with the given visitor.
+     */
     public abstract <ArgType> void visitBy(NodeVisitor<ArgType> v, ArgType a);
 
-	@Override
+    @Override
     public <ArgType> void visitBy(AbstractNodeVisitor<ArgType> v, ArgType a) {
-		v.visit(this, a);
-	}
+        v.visit(this, a);
+    }
 }

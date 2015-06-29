@@ -1,8 +1,0 @@
-test/v8tests/debug-conditional-breakpoints.js:52:1: [definite] ReferenceError, reading absent variable assertEquals
-test/v8tests/debug-conditional-breakpoints.js:32:5: [definite] The variable break_point_hit_count is never used
-test/v8tests/debug-conditional-breakpoints.js:34:1: [definite] Unreachable function listener
-test/v8tests/debug-conditional-breakpoints.js:45:1: [definite] Unreachable function g
-test/v8tests/debug-conditional-breakpoints.js:46:1: [definite] Unreachable function h
-test/v8tests/debug-conditional-breakpoints.js:52:14: [definite] Unreachable code
-test/v8tests/debug-conditional-breakpoints.js:99:10: [definite] The variable i is never used
-test/v8tests/debug-conditional-breakpoints.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/debug-conditional-breakpoints.js:52:1]

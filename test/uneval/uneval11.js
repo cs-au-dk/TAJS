@@ -3,6 +3,6 @@ function f(x) {
 	eval("y = " + x);
 }
 eval("y = 34")
-dumpValue(y)
+TAJS_dumpValue(y)
 f(100)
-dumpValue(y)
+TAJS_dumpValue(y)

@@ -7,6 +7,6 @@ else if (Math.random())
   f = "sdf";
 else
   f = {};
-dumpValue(f);
+TAJS_dumpValue(f);
 var x = f();
-dumpValue(x);
+TAJS_dumpValue(x);

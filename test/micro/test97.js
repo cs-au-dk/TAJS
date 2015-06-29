@@ -6,10 +6,10 @@ function g() {
 }
 
 try{
-	  dumpValue("HERE1");
+	  TAJS_dumpValue("HERE1");
   g();
-  dumpValue("HERE2");
+  TAJS_dumpValue("HERE2");
 } catch(ex) {
-  dumpValue("HERE3");
+  TAJS_dumpValue("HERE3");
 }
-dumpValue(x);
+TAJS_dumpValue(x);

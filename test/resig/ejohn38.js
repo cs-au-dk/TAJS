@@ -8,5 +8,5 @@ function User(first, last){
 var name = "Resig"; 
 var user = User("John", name); 
  
-assert( user ); 
-assert( name == "Resig" );
+TAJS_assert( !! user );
+TAJS_assert( name == "Resig" );

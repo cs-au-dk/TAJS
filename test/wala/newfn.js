@@ -11,9 +11,9 @@ var y = fun2(5, 7, 1);
 
 var z = fun3(3, 5, 2);
 
-assert(x == 16);
-assert(y == 13);
-assert(z == 10);
-dumpValue(x)
-dumpValue(y)
-dumpValue(z)
+TAJS_assert(x == 16);
+TAJS_assert(y == 13);
+TAJS_assert(z == 10);
+TAJS_dumpValue(x)
+TAJS_dumpValue(y)
+TAJS_dumpValue(z)

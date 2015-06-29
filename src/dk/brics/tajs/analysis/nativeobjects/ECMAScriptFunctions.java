@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2013 Aarhus University
+ * Copyright 2009-2015 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,14 +16,6 @@
 
 package dk.brics.tajs.analysis.nativeobjects;
 
-import static dk.brics.tajs.util.Collections.newList;
-import static dk.brics.tajs.util.Collections.singleton;
-
-import java.util.List;
-import java.util.Set;
-
-import org.apache.log4j.Logger;
-
 import dk.brics.tajs.analysis.Conversion;
 import dk.brics.tajs.analysis.Exceptions;
 import dk.brics.tajs.analysis.FunctionCalls.CallInfo;
@@ -36,21 +28,28 @@ import dk.brics.tajs.lattice.UnknownValueResolver;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.solver.Message.Severity;
 import dk.brics.tajs.util.AnalysisException;
+import org.apache.log4j.Logger;
+
+import java.util.List;
+import java.util.Set;
+
+import static dk.brics.tajs.util.Collections.newList;
+import static dk.brics.tajs.util.Collections.singleton;
 
 /**
  * Encapsulation of transfer functions for ECMAScript native functions.
  */
 public class ECMAScriptFunctions {
 
-	private static Logger logger = Logger.getLogger(ECMAScriptFunctions.class); 
+    private static Logger log = Logger.getLogger(ECMAScriptFunctions.class);
 
-	/**
+    /**
      * Evaluates the given native ECMAScript function.
      */
     public static Value evaluate(ECMAScriptObjects nativeobject, CallInfo call, State state, Solver.SolverInterface c) {
-		if (logger.isDebugEnabled()) 
-			logger.debug("native function: " + nativeobject);
-        Value res = null;
+        if (log.isDebugEnabled())
+            log.debug("native function: " + nativeobject);
+        Value res;
         switch (nativeobject) {
 
             case OBJECT:
@@ -235,24 +234,18 @@ public class ECMAScriptFunctions {
             case ALERT:
             case ESCAPE:
             case UNESCAPE:
-            case ASSERT:
-            case DUMPVALUE:
-            case DUMPPROTOTYPE:
-            case DUMPOBJECT:
-            case DUMPSTATE:
-            case DUMPMODIFIEDSTATE:
-            case DUMPATTRIBUTES:
-            case DUMPOBJECTORIGIN:
-            case DUMPEXPRESSION:
-            case DUMPNF:
-            case ASSERT_SINGLE_NUM:
-            case ASSERT_ONE_OBJ:
-            case ASSERT_ABSENT:
-            case ASSERT_MOST_RECENT_OBJ:
-            case ASSERT_SUMMARY_OBJ:
-            case CONVERSION_TO_PRIMITIVE:
+            case TAJS_DUMPVALUE:
+            case TAJS_DUMPPROTOTYPE:
+            case TAJS_DUMPOBJECT:
+            case TAJS_DUMPSTATE:
+            case TAJS_DUMPMODIFIEDSTATE:
+            case TAJS_DUMPATTRIBUTES:
+            case TAJS_DUMPEXPRESSION:
+            case TAJS_DUMPNF:
+            case TAJS_CONVERSION_TO_PRIMITIVE:
             case TAJS_ADD_CONTEXT_SENSITIVITY:
             case TAJS_NEW_OBJECT:
+            case TAJS_ASSERT:
             case TAJS_GET_KEYBOARD_EVENT:
             case TAJS_GET_MOUSE_EVENT:
             case TAJS_GET_UI_EVENT:
@@ -277,192 +270,192 @@ public class ECMAScriptFunctions {
             case SYNTAX_ERROR_PROTOTYPE:
             case TYPE_ERROR_PROTOTYPE:
             case URI_ERROR_PROTOTYPE:
-            	throw new AnalysisException("Native object is not a function: " + nativeobject);
+                throw new AnalysisException("Native object is not a function: " + nativeobject);
 
             default:
-            	throw new AnalysisException("No transfer function for native function " + nativeobject);
+                throw new AnalysisException("No transfer function for native function " + nativeobject);
         }
         return res;
     }
-    
+
     /**
      * toString conversion for built-in objects.
      */
     public static Value internalToString(ObjectLabel thiss, Set<ObjectLabel> objs, Solver.SolverInterface c) {
-    	List<Value> result = newList();
-    	for (ObjectLabel obj : objs)
-    		if (obj.isHostObject())
-    			switch ((HostAPIs) obj.getHostObject().getAPI()) {
-    			case ECMASCRIPT_NATIVE:
-    				switch ((ECMAScriptObjects) obj.getHostObject()) {
-    				case OBJECT_TOSTRING:
-    					// 15.2.4.2 Object.prototype.toString ( )
-    					// When the toString method is called, the following steps are taken:
-    					// 1. Get the [[Class]] property of this object.
-    					// 2. Compute a string value by concatenating the three strings "[object ", Result(1), and "]".
-    					// 3. Return Result(2).
-    					result.add(Value.makeStr("[object "+ thiss.getKind() + "]")); // TODO: warn when this occurs?
-    					break;
-    				case FUNCTION_TOSTRING:
-    					// 15.3.4.2 Function.prototype.toString ( )
-    					// An implementation-dependent representation of the function is returned.
-    					if (thiss.getKind() == Kind.FUNCTION) 
-    						result.add(Value.makeAnyStr());
-    					else
-    						Exceptions.throwTypeError(c.getCurrentState(), c);
-    					break;
-    				case ARRAY_TOSTRING:
-    					// 15.4.4.2 Array.prototype.toString ( )
-    					// The result of calling this function is the same as if the built-in join method were invoked for this object with no
-    					// argument.
-    					if (thiss.getKind() == Kind.ARRAY) 
-    						result.add(Value.makeAnyStr());
-    					else
-    						Exceptions.throwTypeError(c.getCurrentState(), c);
-    					break;
-    				case STRING_TOSTRING:
-    					// 15.5.4.2 String.prototype.toString ( )
-    					// Returns this string value. (Note that, for a String object, the toString method happens to return the same thing as
-    					// the valueOf method.)
-    					if (thiss.getKind() == Kind.STRING) {
-    						Value v = c.getCurrentState().readInternalValue(singleton(thiss));
-    						v = UnknownValueResolver.getRealValue(v, c.getCurrentState());
-    						result.add(v);
-    					} else
-    						Exceptions.throwTypeError(c.getCurrentState(), c);
-    					break;
-    				case BOOLEAN_TOSTRING:
-    					// 15.6.4.2 Boolean.prototype.toString ( )
-    					// If this boolean value is true, then the string "true" is returned. Otherwise, this boolean value must be false, and
-    					// the string "false" is returned.
-    					if (thiss.getKind() == Kind.BOOLEAN) {
-    						Value v = c.getCurrentState().readInternalValue(singleton(thiss));
-    						v = UnknownValueResolver.getRealValue(v, c.getCurrentState());
-    						if (v.isMaybeTrueButNotFalse())
-    							result.add(Value.makeStr("true"));
-    						else if (v.isMaybeFalseButNotTrue())
-    							result.add(Value.makeStr("false"));
-    						else 
-    							result.add(Value.makeAnyStr());
-    					} else
-    						Exceptions.throwTypeError(c.getCurrentState(), c);
-    					break;
-    				case NUMBER_TOSTRING:
-    					// 15.7.4.2 Number.prototype.toString (radix)
-    					// If radix is the number 10 or undefined, then this number value is given as an argument to the ToString operator;
-    					// the resulting string value is returned.
-    					// If radix is an integer from 2 to 36, but not 10, the result is a string, the choice of which is implementation-dependent.
-    					if (thiss.getKind() == Kind.NUMBER) {
-    						Value v = c.getCurrentState().readInternalValue(singleton(thiss));
-    						v = UnknownValueResolver.getRealValue(v, c.getCurrentState());
-    						result.add(Conversion.toString(v, c));
-    					} else
-    						Exceptions.throwTypeError(c.getCurrentState(), c);
-    					break;
-    				case REGEXP_TOSTRING:
-    					// 15.10.6.4 RegExp.prototype.toString()
-    					if (thiss.getKind() == Kind.REGEXP)
-    						result.add(Value.makeAnyStr()); // TODO: correct to throw TypeError if thiss is not a REGEXP? (not mentioned in 15.10.6.4)
-    					else
-    						Exceptions.throwTypeError(c.getCurrentState(), c);
-    					break;
-    				case DATE_TOSTRING:
-    					// 15.9.5.2 Date.prototype.toString ( )
-    					// This function returns a string value.
-    					if (thiss.getKind() == Kind.DATE)
-    						result.add(Value.makeAnyStr());
-    					else
-    						Exceptions.throwTypeError(c.getCurrentState(), c); // not generic according to 15.9.5
-    					break;
-    				case ERROR_TOSTRING:
-    					// 15.11.4.4 Error.prototype.toString ( )
-    					// Returns an implementation defined string.
-    					result.add(Value.makeAnyStr());
-    					break;
-    				default:
-    					c.getMonitoring().addMessage(c.getCurrentNode(), Severity.HIGH, "Implicit call to native non-toString method"); 
-    					result.add(Value.makeAnyStr()); // FIXME: implicit call to native non-toString method
-    					break;
-    				}
-    				break;
-    			default:
-    				c.getMonitoring().addMessage(c.getCurrentNode(), Severity.HIGH, "Implicit call to non-native host object toString method"); // should not happen?
-    				result.add(Value.makeAnyStr()); 
-    				break;
-    			}
-    		else {
-    			c.getMonitoring().addMessage(c.getCurrentNode(), Severity.HIGH, "Implicit call to non-native toString method"); 
-    			result.add(Value.makeAnyStr()); // FIXME: implicit call to non-native toString method (at least, trigger flow to the function?)
-    		}
-    	return Value.join(result);
+        List<Value> result = newList();
+        for (ObjectLabel obj : objs)
+            if (obj.isHostObject())
+                switch ((HostAPIs) obj.getHostObject().getAPI()) {
+                    case ECMASCRIPT_NATIVE:
+                        switch ((ECMAScriptObjects) obj.getHostObject()) {
+                            case OBJECT_TOSTRING:
+                                // 15.2.4.2 Object.prototype.toString ( )
+                                // When the toString method is called, the following steps are taken:
+                                // 1. Get the [[Class]] property of this object.
+                                // 2. Compute a string value by concatenating the three strings "[object ", Result(1), and "]".
+                                // 3. Return Result(2).
+                                result.add(Value.makeStr("[object " + thiss.getKind() + "]")); // TODO: warn when this occurs?
+                                break;
+                            case FUNCTION_TOSTRING:
+                                // 15.3.4.2 Function.prototype.toString ( )
+                                // An implementation-dependent representation of the function is returned.
+                                if (thiss.getKind() == Kind.FUNCTION)
+                                    result.add(Value.makeAnyStr());
+                                else
+                                    Exceptions.throwTypeError(c.getCurrentState(), c);
+                                break;
+                            case ARRAY_TOSTRING:
+                                // 15.4.4.2 Array.prototype.toString ( )
+                                // The result of calling this function is the same as if the built-in join method were invoked for this object with no
+                                // argument.
+                                if (thiss.getKind() == Kind.ARRAY)
+                                    result.add(Value.makeAnyStr());
+                                else
+                                    Exceptions.throwTypeError(c.getCurrentState(), c);
+                                break;
+                            case STRING_TOSTRING:
+                                // 15.5.4.2 String.prototype.toString ( )
+                                // Returns this string value. (Note that, for a String object, the toString method happens to return the same thing as
+                                // the valueOf method.)
+                                if (thiss.getKind() == Kind.STRING) {
+                                    Value v = c.getCurrentState().readInternalValue(singleton(thiss));
+                                    v = UnknownValueResolver.getRealValue(v, c.getCurrentState());
+                                    result.add(v);
+                                } else
+                                    Exceptions.throwTypeError(c.getCurrentState(), c);
+                                break;
+                            case BOOLEAN_TOSTRING:
+                                // 15.6.4.2 Boolean.prototype.toString ( )
+                                // If this boolean value is true, then the string "true" is returned. Otherwise, this boolean value must be false, and
+                                // the string "false" is returned.
+                                if (thiss.getKind() == Kind.BOOLEAN) {
+                                    Value v = c.getCurrentState().readInternalValue(singleton(thiss));
+                                    v = UnknownValueResolver.getRealValue(v, c.getCurrentState());
+                                    if (v.isMaybeTrueButNotFalse())
+                                        result.add(Value.makeStr("true"));
+                                    else if (v.isMaybeFalseButNotTrue())
+                                        result.add(Value.makeStr("false"));
+                                    else
+                                        result.add(Value.makeAnyStr());
+                                } else
+                                    Exceptions.throwTypeError(c.getCurrentState(), c);
+                                break;
+                            case NUMBER_TOSTRING:
+                                // 15.7.4.2 Number.prototype.toString (radix)
+                                // If radix is the number 10 or undefined, then this number value is given as an argument to the ToString operator;
+                                // the resulting string value is returned.
+                                // If radix is an integer from 2 to 36, but not 10, the result is a string, the choice of which is implementation-dependent.
+                                if (thiss.getKind() == Kind.NUMBER) {
+                                    Value v = c.getCurrentState().readInternalValue(singleton(thiss));
+                                    v = UnknownValueResolver.getRealValue(v, c.getCurrentState());
+                                    result.add(Conversion.toString(v, c));
+                                } else
+                                    Exceptions.throwTypeError(c.getCurrentState(), c);
+                                break;
+                            case REGEXP_TOSTRING:
+                                // 15.10.6.4 RegExp.prototype.toString()
+                                if (thiss.getKind() == Kind.REGEXP)
+                                    result.add(Value.makeAnyStr()); // TODO: correct to throw TypeError if thiss is not a REGEXP? (not mentioned in 15.10.6.4)
+                                else
+                                    Exceptions.throwTypeError(c.getCurrentState(), c);
+                                break;
+                            case DATE_TOSTRING:
+                                // 15.9.5.2 Date.prototype.toString ( )
+                                // This function returns a string value.
+                                if (thiss.getKind() == Kind.DATE)
+                                    result.add(Value.makeAnyStr());
+                                else
+                                    Exceptions.throwTypeError(c.getCurrentState(), c); // not generic according to 15.9.5
+                                break;
+                            case ERROR_TOSTRING:
+                                // 15.11.4.4 Error.prototype.toString ( )
+                                // Returns an implementation defined string.
+                                result.add(Value.makeAnyStr());
+                                break;
+                            default:
+                                c.getMonitoring().addMessage(c.getCurrentNode(), Severity.HIGH, "Implicit call to native non-toString method");
+                                result.add(Value.makeAnyStr()); // FIXME: implicit call to native non-toString method
+                                break;
+                        }
+                        break;
+                    default:
+                        c.getMonitoring().addMessage(c.getCurrentNode(), Severity.HIGH, "Implicit call to non-native host object toString method"); // should not happen?
+                        result.add(Value.makeAnyStr());
+                        break;
+                }
+            else {
+                c.getMonitoring().addMessage(c.getCurrentNode(), Severity.HIGH, "Implicit call to non-native toString method");
+                result.add(Value.makeAnyStr()); // FIXME: implicit call to non-native toString method (at least, trigger flow to the function?)
+            }
+        return Value.join(result);
     }
 
     /**
      * valueOf conversion for built-in objects.
      */
     public static Value internalValueOf(ObjectLabel thiss, Set<ObjectLabel> objs, int register, Solver.SolverInterface c) {
-    	List<Value> result = newList();
-    	for (ObjectLabel obj : objs)
-    		if (obj.isHostObject())
-    			switch ((HostAPIs) obj.getHostObject().getAPI()) {
-    			case ECMASCRIPT_NATIVE:
-    				switch ((ECMAScriptObjects) obj.getHostObject()) {
-    				case OBJECT_VALUEOF:
-    					// 15.2.4.4 Object.prototype.valueOf ( )
-    					// The valueOf method returns its this value.
-    					result.add(Value.makeObject(thiss)); // this function is generic, no TypeError
-    					break;
-    				case STRING_VALUEOF:
-    					// 15.5.4.3 String.prototype.valueOf ( )
-    					// Returns this string value.
-    					if (thiss.getKind() == Kind.STRING) {
-    						Value v = c.getCurrentState().readInternalValue(singleton(thiss));
-    						v = UnknownValueResolver.getRealValue(v, c.getCurrentState());
-    						result.add(v);
-    					} else
-    						Exceptions.throwTypeError(c.getCurrentState(), c);
-    					break;
-    				case BOOLEAN_VALUEOF:
-    					// 15.6.4.3 Boolean.prototype.valueOf ( )
-    					// Returns this boolean value.
-    					if (thiss.getKind() == Kind.BOOLEAN) {
-    						Value v = c.getCurrentState().readInternalValue(singleton(thiss));
-    						v = UnknownValueResolver.getRealValue(v, c.getCurrentState());
-    						result.add(v);
-    					} else
-    						Exceptions.throwTypeError(c.getCurrentState(), c);
-    					break;
-    				case NUMBER_VALUEOF:
-    					// 15.7.4.4 Number.prototype.valueOf ( )
-    					// Returns this number value.
-    					if (thiss.getKind() == Kind.NUMBER) {
-    						Value v = c.getCurrentState().readInternalValue(singleton(thiss));
-    						v = UnknownValueResolver.getRealValue(v, c.getCurrentState());
-    						result.add(v);
-    					} else
-    						Exceptions.throwTypeError(c.getCurrentState(), c);
-    					break;
-    				case DATE_VALUEOF:
-    					// 15.9.5.8 Date.prototype.valueOf ( )
-    					// The valueOf function returns a number, which is this time value.
-    					if (thiss.getKind() == Kind.DATE)
-    						result.add(Value.makeAnyNumUInt()); 
-    					else
-    						Exceptions.throwTypeError(c.getCurrentState(), c); // not generic according to 15.9.5
-    					break;
-    				default:
-    					c.getMonitoring().addMessage(c.getCurrentNode(), Severity.HIGH, "Implicit call to native non-valueOf method"); 
-    					result.add(Value.makeAnyStr()); // FIXME: implicit call to native non-toString method
-    					break;
-    				}
-    				break;
-    			default:
-    				c.getMonitoring().addMessage(c.getCurrentNode(), Severity.HIGH, "Implicit call to non-native host object valueOf method"); // should not happen?
-    				result.add(Value.makeAnyStr());
-    				break;
-    			}
-    		else {
-				c.getMonitoring().addMessage(c.getCurrentNode(), Severity.HIGH, "Implicit call to non-native valueOf method");
+        List<Value> result = newList();
+        for (ObjectLabel obj : objs)
+            if (obj.isHostObject())
+                switch ((HostAPIs) obj.getHostObject().getAPI()) {
+                    case ECMASCRIPT_NATIVE:
+                        switch ((ECMAScriptObjects) obj.getHostObject()) {
+                            case OBJECT_VALUEOF:
+                                // 15.2.4.4 Object.prototype.valueOf ( )
+                                // The valueOf method returns its this value.
+                                result.add(Value.makeObject(thiss)); // this function is generic, no TypeError
+                                break;
+                            case STRING_VALUEOF:
+                                // 15.5.4.3 String.prototype.valueOf ( )
+                                // Returns this string value.
+                                if (thiss.getKind() == Kind.STRING) {
+                                    Value v = c.getCurrentState().readInternalValue(singleton(thiss));
+                                    v = UnknownValueResolver.getRealValue(v, c.getCurrentState());
+                                    result.add(v);
+                                } else
+                                    Exceptions.throwTypeError(c.getCurrentState(), c);
+                                break;
+                            case BOOLEAN_VALUEOF:
+                                // 15.6.4.3 Boolean.prototype.valueOf ( )
+                                // Returns this boolean value.
+                                if (thiss.getKind() == Kind.BOOLEAN) {
+                                    Value v = c.getCurrentState().readInternalValue(singleton(thiss));
+                                    v = UnknownValueResolver.getRealValue(v, c.getCurrentState());
+                                    result.add(v);
+                                } else
+                                    Exceptions.throwTypeError(c.getCurrentState(), c);
+                                break;
+                            case NUMBER_VALUEOF:
+                                // 15.7.4.4 Number.prototype.valueOf ( )
+                                // Returns this number value.
+                                if (thiss.getKind() == Kind.NUMBER) {
+                                    Value v = c.getCurrentState().readInternalValue(singleton(thiss));
+                                    v = UnknownValueResolver.getRealValue(v, c.getCurrentState());
+                                    result.add(v);
+                                } else
+                                    Exceptions.throwTypeError(c.getCurrentState(), c);
+                                break;
+                            case DATE_VALUEOF:
+                                // 15.9.5.8 Date.prototype.valueOf ( )
+                                // The valueOf function returns a number, which is this time value.
+                                if (thiss.getKind() == Kind.DATE)
+                                    result.add(Value.makeAnyNumUInt());
+                                else
+                                    Exceptions.throwTypeError(c.getCurrentState(), c); // not generic according to 15.9.5
+                                break;
+                            default:
+                                c.getMonitoring().addMessage(c.getCurrentNode(), Severity.HIGH, "Implicit call to native non-valueOf method");
+                                result.add(Value.makeAnyStr()); // FIXME: implicit call to native non-toString method
+                                break;
+                        }
+                        break;
+                    default:
+                        c.getMonitoring().addMessage(c.getCurrentNode(), Severity.HIGH, "Implicit call to non-native host object valueOf method"); // should not happen?
+                        result.add(Value.makeAnyStr());
+                        break;
+                }
+            else {
+                c.getMonitoring().addMessage(c.getCurrentNode(), Severity.HIGH, "Implicit call to non-native valueOf method");
 //                BasicBlock b = c.getCurrentNode().getBlock();
 //                State entry_state = c.getAnalysisLatticeElement().getState(b, c.getCurrentContext());
 //                if (false || false) {
@@ -471,8 +464,8 @@ public class ECMAScriptFunctions {
 //                    c.getCurrentState().setToNone();
 //                    return Value.makeNone();
 //                }
-				result.add(Value.makeAnyStr()); // FIXME: implicit call to non-native toString method
-    		}
-    	return Value.join(result);
+                result.add(Value.makeAnyStr()); // FIXME: implicit call to non-native toString method
+            }
+        return Value.join(result);
     }
 }

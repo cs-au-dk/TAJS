@@ -18,6 +18,6 @@ function h() {
 try{
   h();
 } catch(ex) {
-  dumpValue("HERE"); // should not appear
+  TAJS_dumpValue("HERE"); // should not appear
 }
-dumpValue(x); // expected: |true
+TAJS_dumpValue(x); // expected: |true

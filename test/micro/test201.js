@@ -12,7 +12,7 @@ for (var name in obj) {
   callback.call(obj[name], obj[name]);
 } 
 
-dumpState();
-dumpObject(jQuery);
-dumpValue(jQuery.get());
-dumpValue(jQuery.post());
+TAJS_dumpState();
+TAJS_dumpObject(jQuery);
+TAJS_dumpValue(jQuery.get());
+TAJS_dumpValue(jQuery.post());

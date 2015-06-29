@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2013 Aarhus University
+ * Copyright 2009-2015 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,26 +22,26 @@ package dk.brics.tajs.solver;
  */
 public interface IContext<ContextType extends IContext<?>> {
 
-	/**
-	 * Checks whether this context is equal to the given object. 
-	 */
-	@Override
-	public boolean equals(Object obj);
-	
-	/**
-	 * Computes a hash code for this context.
-	 */
-	@Override
-	public int hashCode();
-	
-	/**
-	 * Returns a description of this context.
-	 */
-	@Override
-	public String toString();
+    /**
+     * Checks whether this context is equal to the given object.
+     */
+    @Override
+    boolean equals(Object obj);
+
+    /**
+     * Computes a hash code for this context.
+     */
+    @Override
+    int hashCode();
+
+    /**
+     * Returns a description of this context.
+     */
+    @Override
+    String toString();
 
     /**
      * Returns the block and context for the entry of the function or for-in body.
      */
-	public BlockAndContext<ContextType> getEntryBlockAndContext();
+    BlockAndContext<ContextType> getEntryBlockAndContext();
 }

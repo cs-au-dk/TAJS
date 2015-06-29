@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2013 Aarhus University
+ * Copyright 2009-2015 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,8 +16,6 @@
 
 package dk.brics.tajs.analysis.dom.ajax;
 
-import static dk.brics.tajs.analysis.dom.DOMFunctions.createDOMFunction;
-import static dk.brics.tajs.analysis.dom.DOMFunctions.createDOMProperty;
 import dk.brics.tajs.analysis.Conversion;
 import dk.brics.tajs.analysis.FunctionCalls;
 import dk.brics.tajs.analysis.InitialStateBuilder;
@@ -25,16 +23,20 @@ import dk.brics.tajs.analysis.NativeFunctions;
 import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.analysis.State;
 import dk.brics.tajs.analysis.dom.DOMObjects;
-import dk.brics.tajs.analysis.dom.DOMWindow;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.util.AnalysisException;
 
+import static dk.brics.tajs.analysis.dom.DOMFunctions.createDOMFunction;
+import static dk.brics.tajs.analysis.dom.DOMFunctions.createDOMProperty;
+
 public class ActiveXObject {
 
     public static ObjectLabel CONSTRUCTOR;
+
     public static ObjectLabel INSTANCES;
+
     public static ObjectLabel PROTOTYPE;
 
     public static void build(State s) {
@@ -75,7 +77,7 @@ public class ActiveXObject {
         createDOMProperty(s, INSTANCES, "status", Value.makeAnyNumUInt().setReadOnly());
         createDOMProperty(s, INSTANCES, "statusText", Value.makeAnyStr().setReadOnly());
 
-        if (Options.isReturnJSON()) {
+        if (Options.get().isReturnJSON()) {
             createDOMProperty(s, INSTANCES, "responseText", Value.makeJSONStr());
         } else {
             createDOMProperty(s, INSTANCES, "responseText", Value.makeAnyStr());
@@ -104,15 +106,19 @@ public class ActiveXObject {
         switch (nativeObject) {
             case ACTIVE_X_OBJECT_OPEN: {
                 NativeFunctions.expectParameters(nativeObject, call, c, 2, 5);
-                /* Value method =*/ Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
-                /* Value url =*/ Conversion.toString(NativeFunctions.readParameter(call, s, 1), c);
+                /* Value method =*/
+                Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
+                /* Value url =*/
+                Conversion.toString(NativeFunctions.readParameter(call, s, 1), c);
                 return Value.makeUndef();
             }
 
             case ACTIVE_X_OBJECT_SET_REQUEST_HEADER: {
                 NativeFunctions.expectParameters(nativeObject, call, c, 2, 2);
-                /* Value header =*/ Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
-                /* Value value =*/ Conversion.toString(NativeFunctions.readParameter(call, s, 1), c);
+                /* Value header =*/
+                Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
+                /* Value value =*/
+                Conversion.toString(NativeFunctions.readParameter(call, s, 1), c);
                 return Value.makeUndef();
             }
 
@@ -128,7 +134,8 @@ public class ActiveXObject {
 
             case ACTIVE_X_OBJECT_GET_RESPONSE_HEADER: {
                 NativeFunctions.expectParameters(nativeObject, call, c, 1, 1);
-                /* Value header =*/ Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
+                /* Value header =*/
+                Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
                 return Value.makeAnyStr();
             }
 

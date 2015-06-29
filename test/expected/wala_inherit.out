@@ -1,6 +1,5 @@
 test/wala/inherit.js:3:3: [definite] Dead assignment, property edges is never read
 test/wala/inherit.js:4:3: [definite] Dead assignment, property regular is never read
-test/wala/inherit.js:6:3: [definite] Dead assignment, property area is never read
 test/wala/inherit.js:13:5: [definite] The function Polygon is invoked both as constructor and function
 test/wala/inherit.js:15:5: [definite] Dead assignment, property edges is never read
 test/wala/inherit.js:27:5: [definite] Dead assignment, property edges is never read

@@ -9,4 +9,4 @@ function isPrime( num ) {
   return prime; 
 } 
 	 
-assert( isPrime(5) ); 
+TAJS_assert( isPrime(5), 'isMaybeAnyBool' );

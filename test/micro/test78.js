@@ -4,5 +4,5 @@ try {
     else
 	throw 10;
 } catch (e) {
-    dumpValue(e);
+    TAJS_dumpValue(e);
 }

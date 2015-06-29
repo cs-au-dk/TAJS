@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2013 Aarhus University
+ * Copyright 2009-2015 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,7 +16,6 @@
 
 package dk.brics.tajs.analysis.dom.core;
 
-import static dk.brics.tajs.analysis.dom.DOMFunctions.createDOMFunction;
 import dk.brics.tajs.analysis.Conversion;
 import dk.brics.tajs.analysis.FunctionCalls;
 import dk.brics.tajs.analysis.InitialStateBuilder;
@@ -26,19 +25,23 @@ import dk.brics.tajs.analysis.State;
 import dk.brics.tajs.analysis.dom.DOMObjects;
 import dk.brics.tajs.analysis.dom.DOMWindow;
 import dk.brics.tajs.lattice.ObjectLabel;
-import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.lattice.ObjectLabel.Kind;
+import dk.brics.tajs.lattice.Value;
+
+import static dk.brics.tajs.analysis.dom.DOMFunctions.createDOMFunction;
 
 /**
  * The DOMConfiguration interface represents the configuration of a document and
  * maintains a table of recognized parameters.
- * <p/>
+ * <p>
  * Introduced in DOM Level 3.
  */
 public class DOMConfiguration {
 
     public static ObjectLabel INSTANCES;
+
     public static ObjectLabel PROTOTYPE;
+
     public static ObjectLabel CONSTRUCTOR;
 
     public static void build(State s) {
@@ -75,14 +78,14 @@ public class DOMConfiguration {
         createDOMFunction(s, PROTOTYPE, DOMObjects.CONFIGURATION_SET_PARAMETER, "setParameter", 2);
         createDOMFunction(s, PROTOTYPE, DOMObjects.CONFIGURATION_GET_PARAMETER, "getParameter", 1);
         createDOMFunction(s, PROTOTYPE, DOMObjects.CONFIGURATION_CAN_SET_PARAMETER, "canSetParameter", 2);
-
     }
 
     public static Value evaluate(DOMObjects nativeObject, FunctionCalls.CallInfo call, State s, Solver.SolverInterface c) {
         switch (nativeObject) {
             case CONFIGURATION_CAN_SET_PARAMETER: {
                 NativeFunctions.expectParameters(nativeObject, call, c, 2, 2);
-                /* Value name =*/ Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
+                /* Value name =*/
+                Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
                 return Value.makeAnyBool();
             }
             case CONFIGURATION_GET_PARAMETER: {
@@ -90,7 +93,8 @@ public class DOMConfiguration {
             }
             case CONFIGURATION_SET_PARAMETER: {
                 NativeFunctions.expectParameters(nativeObject, call, c, 2, 2);
-                /* Value name =*/ Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
+                /* Value name =*/
+                Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
                 return Value.makeUndef();
             }
             default: {

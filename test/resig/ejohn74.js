@@ -6,6 +6,6 @@ var ninja = (function(){
 // Make another instance of Ninja 
 var ninjaB = new ninja.constructor(); 
  
-assert( ninja.constructor == ninjaB.constructor );
-dumpValue(ninja.constructor);
-dumpValue(ninjaB.constructor);
+TAJS_assert( ninja.constructor == ninjaB.constructor );
+TAJS_dumpValue(ninja.constructor);
+TAJS_dumpValue(ninjaB.constructor);

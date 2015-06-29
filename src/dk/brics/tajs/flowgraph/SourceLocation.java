@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2013 Aarhus University
+ * Copyright 2009-2015 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,94 +21,92 @@ package dk.brics.tajs.flowgraph;
  */
 public class SourceLocation implements Comparable<SourceLocation> {
 
-	private int linenumber;
-    
-    private int columnnumber;
-	
-	private String filename;
-	
-	/**
-	 * Constructs a new source location.
-	 * 0 means "no number".
-	 */
-	public SourceLocation(int linenumber, int columnnumber, String filename) {
-		this.linenumber = linenumber;
-        this.columnnumber = columnnumber;
-		this.filename = filename;
-	}
-	
-	/**
-	 * Returns the source file name.
-	 */
-	public String getFileName() {
-		return filename;
-	}
+    private int linenumber;
 
-	/**
-	 * Returns the source line number.
-	 * 0 means "no number".
-	 */
-	public int getLineNumber() {
-		return linenumber;
-	}
+    private int columnnumber;
+
+    private String filename;
+
+    /**
+     * Constructs a new source location.
+     * 0 means "no number".
+     */
+    public SourceLocation(int linenumber, int columnnumber, String filename) {
+        this.linenumber = linenumber;
+        this.columnnumber = columnnumber;
+        this.filename = filename;
+    }
+
+    /**
+     * Returns the source file name.
+     */
+    public String getFileName() {
+        return filename;
+    }
+
+    /**
+     * Returns the source line number.
+     * 0 means "no number".
+     */
+    public int getLineNumber() {
+        return linenumber;
+    }
 
     /**
      * Returns the source column number.
-	 * 0 means "no number".
+     * 0 means "no number".
      */
     public int getColumnNumber() {
         return columnnumber;
     }
 
-	/**
-	 * Returns a string description of the source information associated with this node.
-	 */
-	@Override
-	public String toString() {
-		return filename + (linenumber > 0 ? ":" + linenumber + (columnnumber > 0 ? ":" + columnnumber : ""): "");
-	}
-	
-	/**
-	 * Returns a hash code for this object.
-	 */
-	@Override
-	public int hashCode() {
-		return filename.hashCode() * 31 + linenumber * 3 + columnnumber * 7;
-	}
+    /**
+     * Returns a string description of the source information associated with this node.
+     */
+    @Override
+    public String toString() {
+        return filename + (linenumber > 0 ? ":" + linenumber + (columnnumber > 0 ? ":" + columnnumber : "") : "");
+    }
 
-	/**
-	 * Checks whether this and the given object represent the same source location.
-	 */
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		final SourceLocation other = (SourceLocation) obj;
-		if (filename == null) {
-			if (other.filename != null)
-				return false;
-		} else if (!filename.equals(other.filename))
-			return false;
-		if (linenumber != other.linenumber || columnnumber != other.columnnumber)
-			return false;
-		return true;
-	}
+    /**
+     * Returns a hash code for this object.
+     */
+    @Override
+    public int hashCode() {
+        return filename.hashCode() * 31 + linenumber * 3 + columnnumber * 7;
+    }
 
-	/**
-	 * Compares source locations first by file name, then by line number, and finally by column number.
-	 */
-	@Override
-	public int compareTo(SourceLocation e) {
-		int c = filename.compareTo(e.filename);
-		if (c != 0)
-			return c;
-		c = linenumber - e.linenumber;
-		if (c != 0)
-			return c;
-		return columnnumber - e.columnnumber;
-	}
+    /**
+     * Checks whether this and the given object represent the same source location.
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        SourceLocation other = (SourceLocation) obj;
+        if (filename == null) {
+            if (other.filename != null)
+                return false;
+        } else if (!filename.equals(other.filename))
+            return false;
+        return !(linenumber != other.linenumber || columnnumber != other.columnnumber);
+    }
+
+    /**
+     * Compares source locations first by file name, then by line number, and finally by column number.
+     */
+    @Override
+    public int compareTo(SourceLocation e) {
+        int c = filename.compareTo(e.filename);
+        if (c != 0)
+            return c;
+        c = linenumber - e.linenumber;
+        if (c != 0)
+            return c;
+        return columnnumber - e.columnnumber;
+    }
 }

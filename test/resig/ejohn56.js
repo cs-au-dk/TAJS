@@ -1,10 +1,10 @@
 var a = 5; 
 function runMe(a){ 
- assert( a == 6 ); 
+ TAJS_assert( a == 6 ); 
  
  function innerRun(){ 
-   assert( b == 7 ); 
-   assert( c == undefined ); 
+   TAJS_assert( b == 7 ); 
+   TAJS_assert( c == undefined ); 
  } 
  
  var b = 7; 
@@ -15,6 +15,6 @@ runMe(6);
  
 for ( var d = 0; d < 3; d++ ) { 
  setTimeout(function(){ 
-   assert( d == 3 ); 
+   TAJS_assert( d == 3 ); 
  }, 100); 
 }

@@ -1,8 +1,8 @@
 var x = 42;
 
 function f(n) {
-//	dumpValue(this);
-//	dumpValue(n);
+//	TAJS_dumpValue(this);
+//	TAJS_dumpValue(n);
 	this.next = n;
 }
 
@@ -12,6 +12,6 @@ function g() {
 
 g();
 g();
-dumpValue(x);
-dumpValue(x.next); 
-dumpValue(x.next.next); 
+TAJS_dumpValue(x);
+TAJS_dumpValue(x.next); 
+TAJS_dumpValue(x.next.next); 

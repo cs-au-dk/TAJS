@@ -1,4 +1,4 @@
-fg2: <main> function()
+fg2: function()
   block 0: [entry]
     node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0091.js:1:1)
     ->[block 1]
@@ -10,13 +10,13 @@ fg2: <main> function()
     node 3: read-variable['x',v4,-] (test/flowgraphbuilder/flowgraph_builder0091.js:2:8)
     node 4: constant[0.0,v5] (test/flowgraphbuilder/flowgraph_builder0091.js:2:12)
     node 5: >[v4,v5,v3] (test/flowgraphbuilder/flowgraph_builder0091.js:2:8)
-    node 6: if[v3](true-block:3,false-block:4) (test/flowgraphbuilder/flowgraph_builder0091.js:2:1)
+    node 6: if[v3](true-block:3,false-block:4) (test/flowgraphbuilder/flowgraph_builder0091.js:2:8)
     ->[block 3,block 4]
   block 3:
-    node 7: constant[1.0,v6] (test/flowgraphbuilder/flowgraph_builder0091.js:3:4)
-    node 8: read-variable['x',v7,-] (test/flowgraphbuilder/flowgraph_builder0091.js:3:4)
-    node 9: +[v7,v8] (test/flowgraphbuilder/flowgraph_builder0091.js:3:4)
-    node 10: -[v8,v6,v9] (test/flowgraphbuilder/flowgraph_builder0091.js:3:4)
+    node 7: read-variable['x',v6,-] (test/flowgraphbuilder/flowgraph_builder0091.js:3:4)
+    node 8: +[v6,v7] (test/flowgraphbuilder/flowgraph_builder0091.js:3:4)
+    node 9: constant[1.0,v8] (test/flowgraphbuilder/flowgraph_builder0091.js:3:4)
+    node 10: -[v7,v8,v9] (test/flowgraphbuilder/flowgraph_builder0091.js:3:4)
     node 11: write-variable[v9,'x']* (test/flowgraphbuilder/flowgraph_builder0091.js:3:4)
     ->[block 2]
   block 4: [exit-ordinary]

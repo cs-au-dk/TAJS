@@ -1,1 +1,1 @@
-test/uneval/uneval06.js:2:2: [info] Abstract value: 3.0
+TAJS-dynamic-code(test/uneval/uneval06.js:2:2):1:1: [info] Abstract value: 3.0

@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2013 Aarhus University
+ * Copyright 2009-2015 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,25 +23,38 @@ import dk.brics.tajs.flowgraph.SourceLocation;
  */
 public class NopNode extends Node {
 
-	/**
-	 * Constructs a new nop node.
-	 */
-	public NopNode(SourceLocation location) {
-		super(location);
-	}
+    private final String text;
 
-	@Override
-	public String toString() {
-		return "nop";
-	}
+    /**
+     * Constructs a new nop node.
+     */
+    public NopNode(SourceLocation location) {
+        this(null, location);
+    }
 
-	@Override
-	public <ArgType> void visitBy(NodeVisitor<ArgType> v, ArgType a) {
-		v.visit(this, a);
-	}
+    /**
+     * Constructs a new nop node, with some descriptive text.
+     */
+    public NopNode(String text, SourceLocation location) {
+        super(location);
+        this.text = text;
+    }
 
-	@Override
-	public boolean canThrowExceptions() {
-		return false;
-	}
+    @Override
+    public String toString() {
+        if (text != null) {
+            return "nop(" + text + ")";
+        }
+        return "nop";
+    }
+
+    @Override
+    public <ArgType> void visitBy(NodeVisitor<ArgType> v, ArgType a) {
+        v.visit(this, a);
+    }
+
+    @Override
+    public boolean canThrowExceptions() {
+        return false;
+    }
 }

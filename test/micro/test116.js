@@ -1,6 +1,6 @@
 var i = 256;
-dumpValue(i);
+TAJS_dumpValue(i);
 while(--i >= 0) {
-    dumpValue(i);
+    TAJS_dumpValue(i);
 }
-dumpValue(i);
+TAJS_dumpValue(i);

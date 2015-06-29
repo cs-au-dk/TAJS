@@ -99,17 +99,17 @@ function testDeadLoop( x ) {
   return 0;
 }
 
-assert( testSwitch( 7 ) == 3);
+TAJS_assert( testSwitch( 7 ) == 3);
 
-assert( testIfConvertedSwitch( 7, 3 ) == 3);
+TAJS_assert( testIfConvertedSwitch( 7, 3 ) == 3);
 
-assert( testDoWhile( 5 ) == 7);
+TAJS_assert( testDoWhile( 5 ) == 7);
 
-assert( testWhile( 11 ) == 12);
+TAJS_assert( testWhile( 11 ), 'isMaybeNumUInt');
 
-assert( testFor( 16 ) == 18);
+TAJS_assert( testFor( 16 ), 'isMaybeNumUInt');
 
-assert( testReturn( 2 ) == 8);
+TAJS_assert( testReturn( 2 ) == 8);
 
-assert( testDeadLoop( 12 ) == 12);
+TAJS_assert( testDeadLoop( 12 ) == 12);
 

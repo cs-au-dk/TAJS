@@ -1175,8 +1175,8 @@ SHA256.prototype = {
     for (var i=0; i<words.length; i++) this.update_word_little_endian(words[i]);
   },
 
-  update_byte:function(byte) {
-    this.bit_buffer ^= (byte & 0xff) << (24 - (this.bits_buffered));
+  update_byte:function(byte_) {
+    this.bit_buffer ^= (byte_ & 0xff) << (24 - (this.bits_buffered));
     this.bits_buffered += 8;
     if (this.bits_buffered == 32) {
       this.bits_buffered = 0; 

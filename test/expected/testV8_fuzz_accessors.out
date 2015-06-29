@@ -1,16 +1,7 @@
-test/v8tests/fuzz-accessors.js:34:6: [definite] TypeError, call to non-function
+test/v8tests/fuzz-accessors.js:34:5: [definite] TypeError, call to non-function
+test/v8tests/fuzz-accessors.js:85:39: [definite] Dead assignment, property is never read
 test/v8tests/fuzz-accessors.js:42:5: [definite] Unreachable function
 test/v8tests/fuzz-accessors.js:54:11: [definite] Unreachable function
-test/v8tests/fuzz-accessors.js:70:15: [maybe] TypeError, accessing property of null/undefined
-test/v8tests/fuzz-accessors.js:71:17: [maybe] TypeError, accessing property of null/undefined
-test/v8tests/fuzz-accessors.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/fuzz-accessors.js:70:15, test/v8tests/fuzz-accessors.js:71:17]
-test/v8tests/fuzz-accessors.js:70:15: [maybe] Reading absent property (computed name)
-test/v8tests/fuzz-accessors.js:71:17: [maybe] Reading absent property (computed name)
-test/v8tests/fuzz-accessors.js:74:21: [maybe] Reading absent property (computed name)
-test/v8tests/fuzz-accessors.js:75:25: [maybe] The variable special has values with different types
-test/v8tests/fuzz-accessors.js:77:28: [maybe] Reading absent property (computed name)
-test/v8tests/fuzz-accessors.js:78:13: [maybe] The variable obj has values with different types
-test/v8tests/fuzz-accessors.js:78:18: [maybe] The variable propertyName has values with different types
 test/v8tests/fuzz-accessors.js:84:39: [maybe] Converting primitive boolean to object
 test/v8tests/fuzz-accessors.js:84:39: [maybe] Converting primitive number to object
 test/v8tests/fuzz-accessors.js:84:39: [maybe] Converting primitive string to object

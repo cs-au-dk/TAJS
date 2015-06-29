@@ -10,4 +10,4 @@ Ninja.prototype.swingSword = function(){
 }; 
  
 var ninja = new Ninja(); 
-assert( ninja.swingSword() );
+TAJS_assert( ninja.swingSword() );

@@ -1,162 +1,89 @@
-test/10k/3d_maker.tidy.html:390:5: [definite] The assignment to REAL_X has no effect
-test/10k/3d_maker.tidy.html:391:5: [definite] The assignment to REAL_Y has no effect
-test/10k/3d_maker.tidy.html:19:9: [definite] Reading 'this' yields the global object
-test/10k/3d_maker.tidy.html:20:9: [definite] Reading 'this' yields the global object
-test/10k/3d_maker.tidy.html:21:9: [definite] Reading 'this' yields the global object
-test/10k/3d_maker.tidy.html:21:19: [definite] Reading 'this' yields the global object
-test/10k/3d_maker.tidy.html:23:12: [definite] Reading 'this' yields the global object
-test/10k/3d_maker.tidy.html:10:5: [definite] The variable REAL_X is never used
-test/10k/3d_maker.tidy.html:11:5: [definite] The variable REAL_Y is never used
-test/10k/3d_maker.tidy.html:12:5: [definite] The variable rotY is never used
-test/10k/3d_maker.tidy.html:13:5: [definite] The variable rotZ is never used
-test/10k/3d_maker.tidy.html:33:1: [definite] Unreachable function Matrix3D
-test/10k/3d_maker.tidy.html:40:18: [definite] Unreachable function
-test/10k/3d_maker.tidy.html:49:19: [definite] Unreachable function
-test/10k/3d_maker.tidy.html:80:18: [definite] Unreachable function
-test/10k/3d_maker.tidy.html:85:21: [definite] Unreachable function
-test/10k/3d_maker.tidy.html:104:17: [definite] Unreachable function
-test/10k/3d_maker.tidy.html:111:1: [definite] Unreachable function x2px
-test/10k/3d_maker.tidy.html:114:1: [definite] Unreachable function y2px
-test/10k/3d_maker.tidy.html:118:1: [definite] Unreachable function px2x
-test/10k/3d_maker.tidy.html:121:1: [definite] Unreachable function px2y
-test/10k/3d_maker.tidy.html:125:1: [definite] Unreachable function drawLine
-test/10k/3d_maker.tidy.html:130:1: [definite] Unreachable function redraw
-test/10k/3d_maker.tidy.html:170:22: [definite] Unreachable function
-test/10k/3d_maker.tidy.html:398:2: [definite] The variable event is never used
-test/10k/3d_maker.tidy.html:275:25: [maybe] TypeError, accessing property of null/undefined
-test/10k/3d_maker.tidy.html:276:25: [maybe] TypeError, accessing property of null/undefined
-test/10k/3d_maker.tidy.html:278:26: [maybe] TypeError, accessing property of null/undefined
-test/10k/3d_maker.tidy.html:280:26: [maybe] TypeError, accessing property of null/undefined
-test/10k/3d_maker.tidy.html:282:12: [maybe] ReferenceError, reading absent variable x
-test/10k/3d_maker.tidy.html:282:14: [maybe] ReferenceError, reading absent variable y
-test/10k/3d_maker.tidy.html:286:5: [maybe] TypeError, accessing property of null/undefined
-test/10k/3d_maker.tidy.html:287:5: [maybe] TypeError, accessing property of null/undefined
-test/10k/3d_maker.tidy.html:288:5: [maybe] TypeError, accessing property of null/undefined
-test/10k/3d_maker.tidy.html:289:5: [maybe] TypeError, accessing property of null/undefined
-test/10k/3d_maker.tidy.html:290:5: [maybe] TypeError, accessing property of null/undefined
-test/10k/3d_maker.tidy.html:291:15: [maybe] TypeError, accessing property of null/undefined
-test/10k/3d_maker.tidy.html:292:16: [maybe] TypeError, accessing property of null/undefined
-test/10k/3d_maker.tidy.html:293:5: [maybe] TypeError, accessing property of null/undefined
-test/10k/3d_maker.tidy.html:295:5: [maybe] TypeError, accessing property of null/undefined
-test/10k/3d_maker.tidy.html:308:5: [maybe] TypeError, accessing property of null/undefined
-test/10k/3d_maker.tidy.html:312:39: [maybe] TypeError, accessing property of null/undefined
-test/10k/3d_maker.tidy.html:317:5: [maybe] TypeError, accessing property of null/undefined
-test/10k/3d_maker.tidy.html:321:25: [maybe] TypeError, accessing property of null/undefined
-test/10k/3d_maker.tidy.html:327:5: [maybe] TypeError, accessing property of null/undefined
-test/10k/3d_maker.tidy.html:328:5: [maybe] TypeError, accessing property of null/undefined
-test/10k/3d_maker.tidy.html:329:5: [maybe] TypeError, accessing property of null/undefined
-test/10k/3d_maker.tidy.html:330:5: [maybe] TypeError, accessing property of null/undefined
-test/10k/3d_maker.tidy.html:331:5: [maybe] TypeError, accessing property of null/undefined
-test/10k/3d_maker.tidy.html:332:5: [maybe] TypeError, accessing property of null/undefined
-test/10k/3d_maker.tidy.html:333:5: [maybe] TypeError, accessing property of null/undefined
-test/10k/3d_maker.tidy.html:334:5: [maybe] TypeError, accessing property of null/undefined
-test/10k/3d_maker.tidy.html:335:5: [maybe] TypeError, accessing property of null/undefined
-test/10k/3d_maker.tidy.html:336:5: [maybe] TypeError, accessing property of null/undefined
-test/10k/3d_maker.tidy.html:338:9: [maybe] TypeError, accessing property of null/undefined
-test/10k/3d_maker.tidy.html:338:23: [maybe] TypeError, accessing property of null/undefined
-test/10k/3d_maker.tidy.html:338:37: [maybe] TypeError, accessing property of null/undefined
-test/10k/3d_maker.tidy.html:339:13: [maybe] TypeError, accessing property of null/undefined
-test/10k/3d_maker.tidy.html:339:32: [maybe] TypeError, accessing property of null/undefined
-test/10k/3d_maker.tidy.html:339:50: [maybe] TypeError, accessing property of null/undefined
-test/10k/3d_maker.tidy.html:339:68: [maybe] TypeError, accessing property of null/undefined
-test/10k/3d_maker.tidy.html:342:9: [maybe] TypeError, accessing property of null/undefined
-test/10k/3d_maker.tidy.html:342:23: [maybe] TypeError, accessing property of null/undefined
-test/10k/3d_maker.tidy.html:342:37: [maybe] TypeError, accessing property of null/undefined
-test/10k/3d_maker.tidy.html:343:13: [maybe] TypeError, accessing property of null/undefined
-test/10k/3d_maker.tidy.html:343:32: [maybe] TypeError, accessing property of null/undefined
-test/10k/3d_maker.tidy.html:343:50: [maybe] TypeError, accessing property of null/undefined
-test/10k/3d_maker.tidy.html:343:68: [maybe] TypeError, accessing property of null/undefined
-test/10k/3d_maker.tidy.html:346:9: [maybe] TypeError, accessing property of null/undefined
-test/10k/3d_maker.tidy.html:346:23: [maybe] TypeError, accessing property of null/undefined
-test/10k/3d_maker.tidy.html:346:41: [maybe] TypeError, accessing property of null/undefined
-test/10k/3d_maker.tidy.html:348:5: [maybe] TypeError, accessing property of null/undefined
-test/10k/3d_maker.tidy.html:350:9: [maybe] TypeError, accessing property of null/undefined
-test/10k/3d_maker.tidy.html:351:9: [maybe] TypeError, accessing property of null/undefined
-test/10k/3d_maker.tidy.html:352:9: [maybe] TypeError, accessing property of null/undefined
-test/10k/3d_maker.tidy.html:352:23: [maybe] TypeError, accessing property of null/undefined
-test/10k/3d_maker.tidy.html:352:37: [maybe] TypeError, accessing property of null/undefined
-test/10k/3d_maker.tidy.html:356:13: [maybe] TypeError, accessing property of null/undefined
-test/10k/3d_maker.tidy.html:358:9: [maybe] TypeError, accessing property of null/undefined
-test/10k/3d_maker.tidy.html:380:68: [maybe] TypeError, accessing property of null/undefined
-test/10k/3d_maker.tidy.html:388:15: [maybe] TypeError, accessing property of null/undefined
-test/10k/3d_maker.tidy.html:389:16: [maybe] TypeError, accessing property of null/undefined
-test/10k/3d_maker.tidy.html:19:9: [maybe] Reading absent property cv
-test/10k/3d_maker.tidy.html:275:25: [maybe] Reading absent property cv
-test/10k/3d_maker.tidy.html:276:25: [maybe] Reading absent property cv
-test/10k/3d_maker.tidy.html:278:26: [maybe] Reading absent property cv
-test/10k/3d_maker.tidy.html:280:26: [maybe] Reading absent property cv
-test/10k/3d_maker.tidy.html:286:5: [maybe] Reading absent property ct
-test/10k/3d_maker.tidy.html:287:5: [maybe] Reading absent property ct
-test/10k/3d_maker.tidy.html:288:5: [maybe] Reading absent property ct
-test/10k/3d_maker.tidy.html:289:5: [maybe] Reading absent property ct
-test/10k/3d_maker.tidy.html:290:5: [maybe] Reading absent property ct
-test/10k/3d_maker.tidy.html:291:15: [maybe] Reading absent property cv
-test/10k/3d_maker.tidy.html:292:16: [maybe] Reading absent property cv
-test/10k/3d_maker.tidy.html:293:5: [maybe] Reading absent property ct
-test/10k/3d_maker.tidy.html:295:5: [maybe] Reading absent property cv
-test/10k/3d_maker.tidy.html:308:5: [maybe] Reading absent property cv
-test/10k/3d_maker.tidy.html:317:5: [maybe] Reading absent property cv
-test/10k/3d_maker.tidy.html:327:5: [maybe] Reading absent property ct
-test/10k/3d_maker.tidy.html:328:5: [maybe] Reading absent property ct
-test/10k/3d_maker.tidy.html:329:5: [maybe] Reading absent property ct
-test/10k/3d_maker.tidy.html:330:5: [maybe] Reading absent property ct
-test/10k/3d_maker.tidy.html:331:5: [maybe] Reading absent property ct
-test/10k/3d_maker.tidy.html:332:5: [maybe] Reading absent property ct
-test/10k/3d_maker.tidy.html:333:5: [maybe] Reading absent property ct
-test/10k/3d_maker.tidy.html:334:5: [maybe] Reading absent property ct
-test/10k/3d_maker.tidy.html:335:5: [maybe] Reading absent property ct
-test/10k/3d_maker.tidy.html:336:5: [maybe] Reading absent property ct
-test/10k/3d_maker.tidy.html:338:9: [maybe] Reading absent property ct
-test/10k/3d_maker.tidy.html:339:32: [maybe] Reading absent property ct
-test/10k/3d_maker.tidy.html:342:9: [maybe] Reading absent property ct
-test/10k/3d_maker.tidy.html:343:32: [maybe] Reading absent property ct
-test/10k/3d_maker.tidy.html:346:9: [maybe] Reading absent property ct
-test/10k/3d_maker.tidy.html:348:5: [maybe] Reading absent property ct
-test/10k/3d_maker.tidy.html:350:9: [maybe] Reading absent property ct
-test/10k/3d_maker.tidy.html:351:9: [maybe] Reading absent property ct
-test/10k/3d_maker.tidy.html:352:9: [maybe] Reading absent property ct
-test/10k/3d_maker.tidy.html:356:13: [maybe] Reading absent property ct
-test/10k/3d_maker.tidy.html:358:9: [maybe] Reading absent property ct
-test/10k/3d_maker.tidy.html:388:15: [maybe] Reading absent property cv
-test/10k/3d_maker.tidy.html:389:16: [maybe] Reading absent property cv
-test/10k/3d_maker.tidy.html:4: [maybe] Uncaught exception, constructed at [test/10k/3d_maker.tidy.html:275:25, test/10k/3d_maker.tidy.html:276:25, test/10k/3d_maker.tidy.html:278:26, test/10k/3d_maker.tidy.html:280:26, test/10k/3d_maker.tidy.html:282:12, test/10k/3d_maker.tidy.html:282:14, test/10k/3d_maker.tidy.html:286:5, test/10k/3d_maker.tidy.html:287:5, test/10k/3d_maker.tidy.html:288:5, test/10k/3d_maker.tidy.html:289:5, test/10k/3d_maker.tidy.html:290:5, test/10k/3d_maker.tidy.html:291:15, test/10k/3d_maker.tidy.html:292:16, test/10k/3d_maker.tidy.html:293:5, test/10k/3d_maker.tidy.html:295:5, test/10k/3d_maker.tidy.html:308:5, test/10k/3d_maker.tidy.html:312:39, test/10k/3d_maker.tidy.html:317:5, test/10k/3d_maker.tidy.html:321:25, test/10k/3d_maker.tidy.html:327:5, test/10k/3d_maker.tidy.html:328:5, test/10k/3d_maker.tidy.html:329:5, test/10k/3d_maker.tidy.html:330:5, test/10k/3d_maker.tidy.html:331:5, test/10k/3d_maker.tidy.html:332:5, test/10k/3d_maker.tidy.html:333:5, test/10k/3d_maker.tidy.html:334:5, test/10k/3d_maker.tidy.html:335:5, test/10k/3d_maker.tidy.html:336:5, test/10k/3d_maker.tidy.html:338:9, test/10k/3d_maker.tidy.html:338:23, test/10k/3d_maker.tidy.html:338:37, test/10k/3d_maker.tidy.html:339:13, test/10k/3d_maker.tidy.html:339:32, test/10k/3d_maker.tidy.html:339:50, test/10k/3d_maker.tidy.html:339:68, test/10k/3d_maker.tidy.html:342:9, test/10k/3d_maker.tidy.html:342:23, test/10k/3d_maker.tidy.html:342:37, test/10k/3d_maker.tidy.html:343:13, test/10k/3d_maker.tidy.html:343:32, test/10k/3d_maker.tidy.html:343:50, test/10k/3d_maker.tidy.html:343:68, test/10k/3d_maker.tidy.html:346:9, test/10k/3d_maker.tidy.html:346:23, test/10k/3d_maker.tidy.html:346:41, test/10k/3d_maker.tidy.html:348:5, test/10k/3d_maker.tidy.html:350:9, test/10k/3d_maker.tidy.html:351:9, test/10k/3d_maker.tidy.html:352:9, test/10k/3d_maker.tidy.html:352:23, test/10k/3d_maker.tidy.html:352:37, test/10k/3d_maker.tidy.html:356:13, test/10k/3d_maker.tidy.html:358:9, test/10k/3d_maker.tidy.html:380:68, test/10k/3d_maker.tidy.html:388:15, test/10k/3d_maker.tidy.html:389:16]
-test/10k/3d_maker.tidy.html:29:18: [maybe] Converting primitive number to object
-test/10k/3d_maker.tidy.html:29:18: [maybe] Reading absent property (computed name)
-test/10k/3d_maker.tidy.html:29:18: [maybe] The variable m has values with different types
-test/10k/3d_maker.tidy.html:29:45: [maybe] Converting primitive number to object
-test/10k/3d_maker.tidy.html:29:45: [maybe] Reading absent property (computed name)
-test/10k/3d_maker.tidy.html:29:45: [maybe] The variable m has values with different types
-test/10k/3d_maker.tidy.html:29:72: [maybe] Converting primitive number to object
-test/10k/3d_maker.tidy.html:29:72: [maybe] Reading absent property (computed name)
-test/10k/3d_maker.tidy.html:29:72: [maybe] The variable m has values with different types
-test/10k/3d_maker.tidy.html:29:99: [maybe] Converting primitive number to object
-test/10k/3d_maker.tidy.html:29:99: [maybe] Reading absent property (computed name)
-test/10k/3d_maker.tidy.html:29:99: [maybe] The variable m has values with different types
-test/10k/3d_maker.tidy.html:312:39: [maybe] Reading absent property (computed name)
-test/10k/3d_maker.tidy.html:321:25: [maybe] Reading absent property (computed name)
-test/10k/3d_maker.tidy.html:338:23: [maybe] Reading absent property (computed name)
-test/10k/3d_maker.tidy.html:338:37: [maybe] Reading absent property (computed name)
-test/10k/3d_maker.tidy.html:339:13: [maybe] Reading absent property (computed name)
-test/10k/3d_maker.tidy.html:339:28: [maybe] The variable m has values with different types
-test/10k/3d_maker.tidy.html:339:50: [maybe] Reading absent property (computed name)
-test/10k/3d_maker.tidy.html:339:68: [maybe] Reading absent property (computed name)
-test/10k/3d_maker.tidy.html:342:23: [maybe] Reading absent property (computed name)
-test/10k/3d_maker.tidy.html:342:37: [maybe] Reading absent property (computed name)
-test/10k/3d_maker.tidy.html:343:13: [maybe] Reading absent property (computed name)
-test/10k/3d_maker.tidy.html:343:28: [maybe] The variable m has values with different types
-test/10k/3d_maker.tidy.html:343:50: [maybe] Reading absent property (computed name)
-test/10k/3d_maker.tidy.html:343:68: [maybe] Reading absent property (computed name)
-test/10k/3d_maker.tidy.html:346:23: [maybe] Reading absent property (computed name)
-test/10k/3d_maker.tidy.html:346:41: [maybe] Reading absent property (computed name)
-test/10k/3d_maker.tidy.html:352:23: [maybe] Reading absent property (computed name)
-test/10k/3d_maker.tidy.html:352:37: [maybe] Reading absent property (computed name)
-test/10k/3d_maker.tidy.html:365:23: [maybe] Conversion to number yields NaN
-test/10k/3d_maker.tidy.html:370:12: [maybe] Conversion to number yields NaN
-test/10k/3d_maker.tidy.html:370:28: [maybe] Conversion to number yields NaN
-test/10k/3d_maker.tidy.html:380:15: [maybe] Conversion to number yields NaN
-test/10k/3d_maker.tidy.html:380:68: [maybe] Reading absent property (computed name)
-test/10k/3d_maker.tidy.html:380:68: [maybe] Reading absent property (computed name)
-test/10k/3d_maker.tidy.html:29:26: [info] 'this' refers to a summary abstract object, which may cause loss of precision
-test/10k/3d_maker.tidy.html:29:53: [info] 'this' refers to a summary abstract object, which may cause loss of precision
-test/10k/3d_maker.tidy.html:29:80: [info] 'this' refers to a summary abstract object, which may cause loss of precision
-test/10k/3d_maker.tidy.html:29:107: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/10k/3d_maker.html:335:5: [definite] The conditional expression is always false
+test/10k/3d_maker.html:339:17: [definite] The conditional expression is always false
+test/10k/3d_maker.html:343:5: [definite] The conditional expression is always false
+test/10k/3d_maker.html:347:5: [definite] The conditional expression is always false
+test/10k/3d_maker.html:388:5: [definite] The assignment to REAL_X has no effect
+test/10k/3d_maker.html:389:5: [definite] The assignment to REAL_Y has no effect
+test/10k/3d_maker.html:17:9: [definite] Reading 'this' yields the global object
+test/10k/3d_maker.html:18:9: [definite] Reading 'this' yields the global object
+test/10k/3d_maker.html:19:9: [definite] Reading 'this' yields the global object
+test/10k/3d_maker.html:19:19: [definite] Reading 'this' yields the global object
+test/10k/3d_maker.html:21:12: [definite] Reading 'this' yields the global object
+test/10k/3d_maker.html:8:5: [definite] The variable REAL_X is never used
+test/10k/3d_maker.html:9:5: [definite] The variable REAL_Y is never used
+test/10k/3d_maker.html:10:5: [definite] The variable rotY is never used
+test/10k/3d_maker.html:11:5: [definite] The variable rotZ is never used
+test/10k/3d_maker.html:13:5: [definite] The variable selDot is never used
+test/10k/3d_maker.html:14:5: [definite] The variable _pos is never used
+test/10k/3d_maker.html:15:5: [definite] The variable _mode is never used
+test/10k/3d_maker.html:24:1: [definite] Unreachable function Point2D
+test/10k/3d_maker.html:26:19: [definite] Unreachable function
+test/10k/3d_maker.html:31:1: [definite] Unreachable function Matrix3D
+test/10k/3d_maker.html:38:18: [definite] Unreachable function
+test/10k/3d_maker.html:47:19: [definite] Unreachable function
+test/10k/3d_maker.html:78:18: [definite] Unreachable function
+test/10k/3d_maker.html:83:21: [definite] Unreachable function
+test/10k/3d_maker.html:102:17: [definite] Unreachable function
+test/10k/3d_maker.html:109:1: [definite] Unreachable function x2px
+test/10k/3d_maker.html:112:1: [definite] Unreachable function y2px
+test/10k/3d_maker.html:116:1: [definite] Unreachable function px2x
+test/10k/3d_maker.html:119:1: [definite] Unreachable function px2y
+test/10k/3d_maker.html:123:1: [definite] Unreachable function drawLine
+test/10k/3d_maker.html:128:1: [definite] Unreachable function redraw
+test/10k/3d_maker.html:168:22: [definite] Unreachable function
+test/10k/3d_maker.html:271:1: [definite] Unreachable function getPos
+test/10k/3d_maker.html:294:13: [definite] Unreachable function
+test/10k/3d_maker.html:307:13: [definite] Unreachable function
+test/10k/3d_maker.html:316:13: [definite] Unreachable function
+test/10k/3d_maker.html:324:1: [definite] The variable m is never used
+test/10k/3d_maker.html:360:1: [definite] Unreachable function factorial
+test/10k/3d_maker.html:367:1: [definite] Unreachable function binomial
+test/10k/3d_maker.html:370:1: [definite] Unreachable function myPow
+test/10k/3d_maker.html:374:1: [definite] Unreachable function b
+test/10k/3d_maker.html:284:5: [maybe] TypeError, accessing property of null/undefined
+test/10k/3d_maker.html:285:5: [maybe] TypeError, accessing property of null/undefined
+test/10k/3d_maker.html:286:5: [maybe] TypeError, accessing property of null/undefined
+test/10k/3d_maker.html:287:5: [maybe] TypeError, accessing property of null/undefined
+test/10k/3d_maker.html:288:5: [maybe] TypeError, accessing property of null/undefined
+test/10k/3d_maker.html:289:15: [maybe] TypeError, accessing property of null/undefined
+test/10k/3d_maker.html:290:16: [maybe] TypeError, accessing property of null/undefined
+test/10k/3d_maker.html:291:5: [maybe] TypeError, accessing property of null/undefined
+test/10k/3d_maker.html:293:5: [maybe] TypeError, accessing property of null/undefined
+test/10k/3d_maker.html:306:5: [maybe] TypeError, accessing property of null/undefined
+test/10k/3d_maker.html:315:5: [maybe] TypeError, accessing property of null/undefined
+test/10k/3d_maker.html:325:5: [maybe] TypeError, accessing property of null/undefined
+test/10k/3d_maker.html:326:5: [maybe] TypeError, accessing property of null/undefined
+test/10k/3d_maker.html:327:5: [maybe] TypeError, accessing property of null/undefined
+test/10k/3d_maker.html:328:5: [maybe] TypeError, accessing property of null/undefined
+test/10k/3d_maker.html:329:5: [maybe] TypeError, accessing property of null/undefined
+test/10k/3d_maker.html:330:5: [maybe] TypeError, accessing property of null/undefined
+test/10k/3d_maker.html:331:5: [maybe] TypeError, accessing property of null/undefined
+test/10k/3d_maker.html:332:5: [maybe] TypeError, accessing property of null/undefined
+test/10k/3d_maker.html:333:5: [maybe] TypeError, accessing property of null/undefined
+test/10k/3d_maker.html:334:5: [maybe] TypeError, accessing property of null/undefined
+test/10k/3d_maker.html:346:5: [maybe] TypeError, accessing property of null/undefined
+test/10k/3d_maker.html:387:16: [maybe] TypeError, accessing property of null/undefined
+test/10k/3d_maker.html:17:9: [maybe] Reading absent property cv
+test/10k/3d_maker.html:284:5: [maybe] Reading absent property ct
+test/10k/3d_maker.html:285:5: [maybe] Reading absent property ct
+test/10k/3d_maker.html:286:5: [maybe] Reading absent property ct
+test/10k/3d_maker.html:287:5: [maybe] Reading absent property ct
+test/10k/3d_maker.html:288:5: [maybe] Reading absent property ct
+test/10k/3d_maker.html:289:15: [maybe] Reading absent property cv
+test/10k/3d_maker.html:290:16: [maybe] Reading absent property cv
+test/10k/3d_maker.html:291:5: [maybe] Reading absent property ct
+test/10k/3d_maker.html:293:5: [maybe] Reading absent property cv
+test/10k/3d_maker.html:306:5: [maybe] Reading absent property cv
+test/10k/3d_maker.html:315:5: [maybe] Reading absent property cv
+test/10k/3d_maker.html:325:5: [maybe] Reading absent property ct
+test/10k/3d_maker.html:326:5: [maybe] Reading absent property ct
+test/10k/3d_maker.html:327:5: [maybe] Reading absent property ct
+test/10k/3d_maker.html:328:5: [maybe] Reading absent property ct
+test/10k/3d_maker.html:329:5: [maybe] Reading absent property ct
+test/10k/3d_maker.html:330:5: [maybe] Reading absent property ct
+test/10k/3d_maker.html:331:5: [maybe] Reading absent property ct
+test/10k/3d_maker.html:332:5: [maybe] Reading absent property ct
+test/10k/3d_maker.html:333:5: [maybe] Reading absent property ct
+test/10k/3d_maker.html:334:5: [maybe] Reading absent property ct
+test/10k/3d_maker.html:346:5: [maybe] Reading absent property ct
+test/10k/3d_maker.html:387:16: [maybe] Reading absent property cv

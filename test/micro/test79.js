@@ -9,13 +9,13 @@ try {
 	    var x = 10;
     } catch (ee) {
 	glob = "42";
-	dumpValue(ee);
+	TAJS_dumpValue(ee);
 	throw "" + ee;
     }
     throw {ex: "yes"};
 } catch (e) {
-    dumpValue(e);
-    dumpObject(e);
+    TAJS_dumpValue(e);
+    TAJS_dumpObject(e);
 }
 
-dumpValue(glob);
+TAJS_dumpValue(glob);

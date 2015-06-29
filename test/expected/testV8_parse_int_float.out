@@ -1,6 +1,0 @@
-test/v8tests/parse-int-float.js:28:1: [definite] ReferenceError, reading absent variable assertEquals
-test/v8tests/parse-int-float.js:28:14: [definite] Unreachable code
-test/v8tests/parse-int-float.js:51:5: [definite] The variable i is never used
-test/v8tests/parse-int-float.js:52:5: [definite] The variable y is never used
-test/v8tests/parse-int-float.js:55:7: [definite] The variable x is never used
-test/v8tests/parse-int-float.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/parse-int-float.js:28:1]

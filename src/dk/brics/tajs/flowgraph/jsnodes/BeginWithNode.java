@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2013 Aarhus University
+ * Copyright 2009-2015 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,44 +27,37 @@ import dk.brics.tajs.util.AnalysisException;
  */
 public class BeginWithNode extends Node {
 
-	private int object_reg;
-
-	/**
-	 * Constructs a new begin-with node.
-	 */
-	public BeginWithNode(int object_reg, SourceLocation location) {
-		super(location);
-		this.object_reg = object_reg;
-	}
-
-	/**
-	 * Returns the object register.
-	 */
-	public int getObjectRegister() {
-		return object_reg;
-	}
+    private int object_reg;
 
     /**
-     * Sets the object register.
+     * Constructs a new begin-with node.
      */
-    public void setObjectRegister(int object_reg) {
+    public BeginWithNode(int object_reg, SourceLocation location) {
+        super(location);
         this.object_reg = object_reg;
     }
-	
-	@Override
-	public String toString() {
-		return "begin-with[v" + object_reg + "]";
-	}
 
-	@Override
-	public <ArgType> void visitBy(NodeVisitor<ArgType> v, ArgType a) {
-		v.visit(this, a);
-	}
+    /**
+     * Returns the object register.
+     */
+    public int getObjectRegister() {
+        return object_reg;
+    }
 
-	@Override
-	public boolean canThrowExceptions() {
-		return true;
-	}
+    @Override
+    public String toString() {
+        return "begin-with[v" + object_reg + "]";
+    }
+
+    @Override
+    public <ArgType> void visitBy(NodeVisitor<ArgType> v, ArgType a) {
+        v.visit(this, a);
+    }
+
+    @Override
+    public boolean canThrowExceptions() {
+        return true;
+    }
 
     @Override
     public void check(BasicBlock b) {

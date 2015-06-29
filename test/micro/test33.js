@@ -6,6 +6,6 @@ bar = bar + 2;
 this.baz = 117; 
 baz = baz + 3;
 
-dumpValue(this.foo);
-dumpValue(this.bar);
-dumpValue(this.baz);
+TAJS_dumpValue(this.foo);
+TAJS_dumpValue(this.bar);
+TAJS_dumpValue(this.baz);

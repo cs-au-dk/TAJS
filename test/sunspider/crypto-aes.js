@@ -428,5 +428,5 @@ var decryptedText = AESDecryptCtr(cipherText, password, 256);
 
 var _sunSpiderInterval = new Date() - _sunSpiderStartDate;
 
-dumpValue(_sunSpiderInterval);
+TAJS_dumpValue(_sunSpiderInterval);
 

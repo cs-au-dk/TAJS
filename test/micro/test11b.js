@@ -3,4 +3,4 @@ function foo4() {
 }
 
 var qqq4 = foo4(1,2);
-dumpValue(qqq4);
+TAJS_dumpValue(qqq4);

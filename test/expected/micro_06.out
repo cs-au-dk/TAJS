@@ -1,8 +1,7 @@
 test/micro/test06.js:2:1: [definite] The conditional expression is always false
 test/micro/test06.js:16:3: [definite] The assignment to bar has no effect
-test/micro/test06.js:21:1: [maybe] Assertion fails
 test/micro/test06.js:18:7: [maybe] The variable bar has values with different types
-test/micro/test06.js:20:11: [maybe] The variable foo has values with different types
-test/micro/test06.js:21:8: [maybe] The variable foo has values with different types
+test/micro/test06.js:20:16: [maybe] The variable foo has values with different types
+test/micro/test06.js:21:13: [maybe] The variable foo has values with different types
 test/micro/test06.js:9:1: [info] Abstract value: "jolly1234"
 test/micro/test06.js:20:1: [info] Abstract value: 2011.0|"jolly1234"

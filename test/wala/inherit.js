@@ -36,11 +36,11 @@ function sharedClassObject() {
 }
 
 var rec1 = objectMasquerading();
-assert(rec1.area() == 15);
-assert(rec1.shape() == "rectangle");
-dumpValue(rec1.area());
-dumpValue(rec1.shape());
+TAJS_assert(rec1.area() == 15);
+TAJS_assert(rec1.shape() == "rectangle");
+TAJS_dumpValue(rec1.area());
+TAJS_dumpValue(rec1.shape());
 var rec2 = sharedClassObject();
-assert(rec2.area() == 21);
-assert(rec2.shape() == "rectangle");
+TAJS_assert(rec2.area() == 21);
+TAJS_assert(rec2.shape() == "rectangle");
 

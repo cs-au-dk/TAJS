@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2013 Aarhus University
+ * Copyright 2009-2015 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,13 +31,15 @@ import static dk.brics.tajs.analysis.dom.DOMFunctions.createDOMProperty;
  * the element they describe, the DOM does not consider them part of the
  * document tree. Thus, the Node attributes parentNode, previousSibling, and
  * nextSibling have a null value for Attr objects.
- * <p/>
+ * <p>
  * http://www.w3.org/TR/DOM-Level-2-Core/core.html#ID-637646024
  */
 public class DOMAttr {
 
     public static ObjectLabel CONSTRUCTOR;
+
     public static ObjectLabel PROTOTYPE;
+
     public static ObjectLabel INSTANCES;
 
     public static void build(State s) {

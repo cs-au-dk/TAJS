@@ -1,19 +1,15 @@
-test/v8tests/date.js:31:1: [definite] ReferenceError, reading absent variable assertEquals
-test/v8tests/date.js:30:5: [definite] The variable date1 is never used
-test/v8tests/date.js:31:14: [definite] Unreachable code
-test/v8tests/date.js:33:5: [definite] The variable date2 is never used
-test/v8tests/date.js:40:5: [definite] The variable date3 is never used
-test/v8tests/date.js:49:5: [definite] The variable a is never used
-test/v8tests/date.js:54:5: [definite] The variable b is never used
-test/v8tests/date.js:60:5: [definite] The variable c is never used
-test/v8tests/date.js:65:5: [definite] The variable d is never used
-test/v8tests/date.js:71:5: [definite] The variable e is never used
-test/v8tests/date.js:76:5: [definite] The variable f is never used
-test/v8tests/date.js:82:5: [definite] The variable g is never used
-test/v8tests/date.js:87:5: [definite] The variable h is never used
-test/v8tests/date.js:105:5: [definite] The variable i is never used
-test/v8tests/date.js:110:5: [definite] The variable j is never used
-test/v8tests/date.js:117:5: [definite] The variable k is never used
-test/v8tests/date.js:122:5: [definite] The variable l is never used
-test/v8tests/date.js:129:1: [definite] Unreachable function testToLocaleTimeString
-test/v8tests/date.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/date.js:31:1]
+test/v8tests/date.js:50:1: [definite] Too few parameters to function Date.prototype.setFullYear
+test/v8tests/date.js:55:1: [definite] Too few parameters to function Date.prototype.setUTCFullYear
+test/v8tests/date.js:61:1: [definite] Too few parameters to function Date.prototype.setMonth
+test/v8tests/date.js:66:1: [definite] Too few parameters to function Date.prototype.setUTCMonth
+test/v8tests/date.js:72:1: [definite] Too few parameters to function Date.prototype.setDate
+test/v8tests/date.js:77:1: [definite] Too few parameters to function Date.prototype.setUTCDate
+test/v8tests/date.js:83:1: [definite] Too few parameters to function Date.prototype.setHours
+test/v8tests/date.js:88:1: [definite] Too few parameters to function Date.prototype.setUTCHours
+test/v8tests/date.js:94:1: [definite] Too few parameters to function Date.prototype.setMinutes
+test/v8tests/date.js:99:1: [definite] Too few parameters to function Date.prototype.setUTCHours
+test/v8tests/date.js:106:1: [definite] Too few parameters to function Date.prototype.setSeconds
+test/v8tests/date.js:111:1: [definite] Too few parameters to function Date.prototype.setUTCSeconds
+test/v8tests/date.js:118:1: [definite] Too few parameters to function Date.prototype.setMilliseconds
+test/v8tests/date.js:123:1: [definite] Too few parameters to function Date.prototype.setUTCMilliseconds
+test/v8tests/date.js:132:19: [maybe] Converting primitive string to object

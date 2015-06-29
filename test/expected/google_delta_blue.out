@@ -1,7 +1,6 @@
 test/google/delta-blue.js:18:3: [definite] ReferenceError, reading absent variable document
 test/google/delta-blue.js:860:3: [definite] The conditional expression is always true
 test/google/delta-blue.js:866:1: [definite] The conditional expression is always true
-test/google/delta-blue.js:78:3: [definite] Dead assignment, property strengthValue is never read
 test/google/delta-blue.js:79:3: [definite] Dead assignment, property name is never read
 test/google/delta-blue.js:520:3: [definite] Dead assignment, property name is never read
 test/google/delta-blue.js:94:22: [definite] Unreachable function

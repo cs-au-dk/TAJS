@@ -1,8 +1,0 @@
-test/v8tests/double-equals.js:34:1: [definite] ReferenceError, reading absent variable assertTrue
-test/v8tests/double-equals.js:34:18: [definite] Unreachable code
-test/v8tests/double-equals.js:68:2: [definite] Unreachable function
-test/v8tests/double-equals.js:74:2: [definite] Unreachable function
-test/v8tests/double-equals.js:80:2: [definite] Unreachable function
-test/v8tests/double-equals.js:111:1: [definite] Unreachable function Wrapper
-test/v8tests/double-equals.js:113:18: [definite] Unreachable function
-test/v8tests/double-equals.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/double-equals.js:34:1]

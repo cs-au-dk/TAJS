@@ -16,8 +16,8 @@ obj.set( function tester2() { return 7; } );
 
 var test2 = ( obj.get() )();
 
-assert(test1 == 3);
-assert(test2 == 7);
-dumpValue(test1);
-dumpValue(test2);
+TAJS_assert(test1 == 3);
+TAJS_assert(test2 == 7);
+TAJS_dumpValue(test1);
+TAJS_dumpValue(test2);
 

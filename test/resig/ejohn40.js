@@ -6,8 +6,8 @@ function merge(root){
 } 
  
 var merged = merge({name: "John"}, {city: "Boston"}); 
-assert( merged.name == "John" ); 
-assert( merged.city == "Boston" );
-dumpValue(merged.name);
-dumpValue(merged.city);
-dumpObject(merged);
+//TAJS_assert( merged.name == "John" );
+//TAJS_assert( merged.city == "Boston" );
+TAJS_dumpValue(merged.name);
+TAJS_dumpValue(merged.city);
+TAJS_dumpObject(merged);

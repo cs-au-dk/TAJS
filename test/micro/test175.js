@@ -1,2 +1,2 @@
-dumpObject([1,2])
-dumpObject((function () { }))
+TAJS_dumpObject([1,2])
+TAJS_dumpObject((function () { }))

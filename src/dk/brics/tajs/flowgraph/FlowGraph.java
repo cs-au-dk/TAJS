@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2013 Aarhus University
+ * Copyright 2009-2015 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,18 +16,20 @@
 
 package dk.brics.tajs.flowgraph;
 
-import static dk.brics.tajs.util.Collections.newList;
-import static dk.brics.tajs.util.Collections.newSet;
+import dk.brics.tajs.options.Options;
+import dk.brics.tajs.util.AnalysisException;
+import dk.brics.tajs.util.Collections;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import dk.brics.tajs.options.Options;
-import dk.brics.tajs.util.Collections;
+import static dk.brics.tajs.util.Collections.newList;
+import static dk.brics.tajs.util.Collections.newSet;
 
 /**
  * Flow graph. A flow graph is divided into functions, one of them representing
@@ -36,9 +38,9 @@ import dk.brics.tajs.util.Collections;
  */
 public class FlowGraph {
 
-	/**
-	 * The functions in this flow graph.
-	 */
+    /**
+     * The functions in this flow graph.
+     */
     private Collection<Function> functions;
 
     /**
@@ -62,9 +64,9 @@ public class FlowGraph {
     private int number_of_functions;
 
     /**
-     * Callbacks of various kinds
+     * Callbacks of various kinds.
      */
-    private Map<CallbackKind, Set<Function>> callbacks = Collections.newMap();
+    private Map<EventHandlerKind, Collection<Function>> event_handlers = Collections.newMap(); // TODO: (#116) reconsider how to represent HTML event handlers in flowgraphs
 
     /**
      * Constructs a new uninitialized flow graph.
@@ -74,18 +76,16 @@ public class FlowGraph {
     }
 
     /**
-     * Adds a block to this flow graph. Also sets the block index and the node
-     * index for each node in the block.
+     * Adds a block to this flow graph. Increases the block and node counts for the flowgraph.
      *
      * @param b The basic block to add.
      */
     public void addBlock(BasicBlock b) {
         if (b == null)
-            throw new NullPointerException("Block is null");
+            throw new NullPointerException();
         b.getFunction().addBlock(b);
-        b.setIndex(number_of_blocks++);
-        for (AbstractNode n : b.getNodes())
-            n.setIndex(number_of_nodes++);
+        number_of_blocks++;
+        number_of_nodes += b.getNodes().size();
     }
 
     /**
@@ -110,41 +110,35 @@ public class FlowGraph {
     }
 
     /**
-     * Adds the given function to the flow graph. The first function added becomes main.
+     * Adds the given function to the flow graph.
      */
     public void addFunction(Function f) {
         if (f == null)
-            throw new NullPointerException("Adding null function to flow graph");
-        if (functions.isEmpty())
-            main = f;
+            throw new NullPointerException();
         functions.add(f);
         f.setIndex(number_of_functions++);
     }
 
     /**
-     * Adds the given callback to the flow graph. The function must already be added to the flow graph.
+     * Adds the given event handler to the flow graph. The function must already be added to the flow graph.
      */
-    public void addCallback(Function f, CallbackKind kind) {
+    public void addEventHandler(Function f, EventHandlerKind kind) {
         if (!functions.contains(f)) {
             throw new IllegalArgumentException("Function not added to flow graph");
         }
-        Set<Function> fs = callbacks.get(kind);
+        Collection<Function> fs = event_handlers.get(kind);
         if (fs == null) {
-            fs = Collections.newSet();
-            callbacks.put(kind, fs);
+            fs = newList();
+            event_handlers.put(kind, fs);
         }
         fs.add(f);
     }
 
     /**
-     * Retrieves the callbacks of the given kind. Always returns a set (and never null).
+     * Retrieves the event handlers.
      */
-    public Set<Function> getCallbacksByKind(CallbackKind kind) {
-        Set<Function> result = callbacks.get(kind);
-        if (result == null) {
-            return Collections.newSet();
-        }
-        return result;
+    public Map<EventHandlerKind, Collection<Function>> getEventHandlers() {
+        return event_handlers;
     }
 
     /**
@@ -155,25 +149,13 @@ public class FlowGraph {
     }
 
     /**
-     * Returns the function with the given name.
+     * Sets the main function. The function must already be added to the flow graph.
      */
-    public Function getFunction(String name) {
-        if (name == null || name.trim().length() == 0) {
-            throw new IllegalArgumentException();
+    public void setMain(Function f) {
+        if (!functions.contains(f)) {
+            throw new IllegalArgumentException("Function not added to flow graph");
         }
-        Set<Function> result = Collections.newSet();
-        for (Function function : functions) {
-            if (name.equals(function.getName())) {
-                result.add(function);
-            }
-        }
-        if (result.size() == 0) {
-            return null;
-        } else if (result.size() == 1) {
-            return result.iterator().next();
-        } else {
-            throw new IllegalStateException();
-        }
+        main = f;
     }
 
     /**
@@ -193,12 +175,11 @@ public class FlowGraph {
     /**
      * Runs complete on all the functions in the flow graph.
      */
-    public FlowGraph complete() {
+    public void complete() {
         for (Function f : functions)
             f.complete();
-        return this;
     }
-    
+
     /**
      * Returns a string description of this flow graph.
      */
@@ -209,45 +190,10 @@ public class FlowGraph {
             if (f == main)
                 b.append("<main> ");
             b.append(f).append('\n');
-            for (BasicBlock k : f.getBlocks()) { // TODO: why not calling k.toString here?
-                b.append("  block ").append(k.getIndex());
-                b.append(':');
-                if (f.getEntry() == k)
-                    b.append(" [entry]");
-                if (f.getOrdinaryExit() == k)
-                    b.append(" [exit-ordinary]");
-                if (f.getExceptionalExit() == k)
-                    b.append(" [exit-exceptional]");
-                b.append('\n');
-                for (AbstractNode n : k.getNodes()) {
-                	b.append("    node ").append(n.getIndex());
-        			AbstractNode d = n.getDuplicateOf();
-        			if (d != null)
-        				b.append("(~").append(d.getIndex()).append(")");
-                	b.append(": ").append(n);
-        			if (n.isRegistersDone())
-        				b.append('*');
-        			if (n.isDead())
-        				b.append('$');
-                	b.append(" (").append(n.getSourceLocation()).append(")\n");
-                }
-                b.append("    ->[");
-                boolean first = true;
-                for (BasicBlock s : k.getSuccessors()) {
-                    if (first)
-                        first = false;
-                    else
-                        b.append(',');
-                    b.append("block ").append(s.getIndex());
-                }
-                b.append("]");
-                BasicBlock exception_handler = k.getExceptionHandler();
-                if (exception_handler != null && exception_handler != f.getExceptionalExit()) {
-                    b.append(" ~> [ ").append("block ");
-                    b.append(k.getExceptionHandler().getIndex());
-                    b.append("]");
-                }
-                b.append("\n");
+            List<BasicBlock> sortedBlocks = newList(f.getBlocks());
+            java.util.Collections.sort(sortedBlocks, (o1, o2) -> o1.getOrder() - o2.getOrder());
+            for (BasicBlock k : sortedBlocks) {
+                b.append("  ").append(k).append("\n");
             }
         }
         return b.toString();
@@ -266,8 +212,9 @@ public class FlowGraph {
 
     /**
      * Produces a Graphviz dot representation of each function in this flow graph.
+     *
      * @param dest_dir destination directory
-     * @param end if set, the name contains "final", otherwise "initial"
+     * @param end      if set, the name contains "final", otherwise "initial"
      * @throws IOException if some file operation fails.
      */
     public void toDot(String dest_dir, boolean end) throws IOException {
@@ -275,12 +222,15 @@ public class FlowGraph {
             String n = function.isMain() ? "Main" : function.getName();
             if (n == null)
                 n = "-";
-            String name = function.getSourceLocation().getFileName().replace('/', '.').replace('\\', '.').replace(':', '.') + 
-            		"." + n + ".line" + function.getSourceLocation().getLineNumber();
+            SourceLocation loc = function.getSourceLocation();
+            if (loc == null) {
+                loc = new SourceLocation(0, 0, "");
+            }
+            String name = loc.getFileName().replace('/', '.').replace('\\', '.').replace(':', '.') + "." + n + ".line" + loc.getLineNumber();
             File file = new File(dest_dir + File.separator + (end ? "final-" : "initial-") + name + ".dot");
             try (PrintWriter writer = new PrintWriter(file)) {
-            	function.toDot(writer, true, function == main);
-            } 
+                function.toDot(writer, true, function == main);
+            }
         }
     }
 
@@ -288,12 +238,14 @@ public class FlowGraph {
      * Perform a consistency check of the flow graph (if in debug or test mode).
      */
     public void check() {
-    	if (!Options.isDebugOrTestEnabled())
-    		return;
-    	Set<Integer> seen_blocks = newSet();
-    	Set<Integer> seen_nodes = newSet();
-    	Set<Integer> seen_functions = newSet();
-    	for (Function f : functions)
-    		f.check(main, seen_functions, seen_blocks, seen_nodes);
+        if (!Options.get().isDebugOrTestEnabled())
+            return;
+        if (main == null)
+            throw new AnalysisException("No main function");
+        Set<Integer> seen_blocks = newSet();
+        Set<Integer> seen_nodes = newSet();
+        Set<Integer> seen_functions = newSet();
+        for (Function f : functions)
+            f.check(main, seen_functions, seen_blocks, seen_nodes);
     }
 }

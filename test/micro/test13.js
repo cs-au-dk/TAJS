@@ -27,9 +27,9 @@ var g = {
 
 var dak = g.glossary.title;
 var qwerty = dak + "hat"
-dumpValue(dak);
-dumpValue(qwerty);
-dumpObject(g);
-dumpObject(g.glossary);
-dumpObject(g["glossary"]);
-dumpObject(g.glossary["GlossDiv"]);
+TAJS_dumpValue(dak);
+TAJS_dumpValue(qwerty);
+TAJS_dumpObject(g);
+TAJS_dumpObject(g.glossary);
+TAJS_dumpObject(g["glossary"]);
+TAJS_dumpObject(g.glossary["GlossDiv"]);

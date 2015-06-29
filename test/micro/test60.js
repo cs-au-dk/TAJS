@@ -4,7 +4,7 @@ function yell(n) {
 
 var x = yell(4);
 
-dumpValue(x);
+TAJS_dumpValue(x);
 
 //assert(x === 60);
 

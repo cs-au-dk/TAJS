@@ -1,4 +1,5 @@
-test/v8tests/string-flatten.js:37:1: [definite] ReferenceError, reading absent variable assertEquals
-test/v8tests/string-flatten.js:37:14: [definite] Unreachable code
-test/v8tests/string-flatten.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/string-flatten.js:37:1]
+test/v8tests/string-flatten.js:34:7: [maybe] Conversion to number yields NaN
+test/v8tests/string-flatten.js:34:7: [maybe] Converting object to string
 test/v8tests/string-flatten.js:34:7: [maybe] Converting primitive string to object
+test/v8tests/string-flatten.js:37:18: [maybe] Converting object to string
+test/v8tests/string-flatten.js:37:18: [maybe] Converting primitive string to object

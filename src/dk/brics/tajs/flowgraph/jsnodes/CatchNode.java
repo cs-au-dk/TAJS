@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2013 Aarhus University
+ * Copyright 2009-2015 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,79 +29,79 @@ import dk.brics.tajs.util.Strings;
  * <p>
  * Must be the first node in its block.
  */
-public class CatchNode extends Node { 
+public class CatchNode extends Node {
 
-	private String varname;
-	
-	private int value_reg = NO_VALUE;
-	
-	private int scopeobj_reg = NO_VALUE;
-	
-	/**
-	 * Constructs a new catch node where the exception is stored in a program variable.
-	 * 
-	 * @param varname The variable name.
-	 * @param scopeobj_reg The object to be added to the scope chain when entering the catch block.
-     * @param location The source location.
-	 */
-	public CatchNode(String varname, int scopeobj_reg, SourceLocation location) { // TODO: javadoc for scopeobj_reg?
-		super(location);
-		this.varname = varname;
-		this.scopeobj_reg = scopeobj_reg;
-	}
-	
-	/**
-	 * Construct a new catch node where the exception is stored in a register.
-	 * (Used for finally blocks.)
-	 * 
-	 * @param value_reg Register with the exception value.
-     * @param location The source location.
-	 */
-	public CatchNode(int value_reg, SourceLocation location) {
-		super(location);
-		this.value_reg = value_reg;
-	} 
+    private String varname;
 
-	/**
-	 * Returns the variable name, or null if not using a program variable.
-	 */
-	public String getVariableName() {
-		return varname;
-	}
+    private int value_reg = NO_VALUE;
 
-	/**
-	 * Returns the object to be added to the scope chain when entering the catch block,
-	 * or {@link AbstractNode#NO_VALUE} if not using a program variable.
-	 */
-	public int getScopeObjRegister() {
-		return scopeobj_reg;
-	}
+    private int scopeobj_reg = NO_VALUE;
 
-	/**
-	 * Returns the result register, 
-	 * or {@link AbstractNode#NO_VALUE} if not using a register.
-	 */
-	public int getValueRegister() {
-		return value_reg;
-	}
+    /**
+     * Constructs a new catch node where the exception is stored in a program variable.
+     *
+     * @param varname      The variable name.
+     * @param scopeobj_reg The object to be added to the scope chain when entering the catch block.
+     * @param location     The source location.
+     */
+    public CatchNode(String varname, int scopeobj_reg, SourceLocation location) {
+        super(location);
+        this.varname = varname;
+        this.scopeobj_reg = scopeobj_reg;
+    }
 
-	@Override
-	public String toString() {
-		if (varname != null)
-			return "catch[" + Strings.escape(varname) + ",v" + scopeobj_reg+"]";
-		else
-			return "catch[v" + value_reg +"]";
-	}
+    /**
+     * Construct a new catch node where the exception is stored in a register.
+     * (Used for finally blocks.)
+     *
+     * @param value_reg Register with the exception value.
+     * @param location  The source location.
+     */
+    public CatchNode(int value_reg, SourceLocation location) {
+        super(location);
+        this.value_reg = value_reg;
+    }
 
-	@Override
-	public <ArgType> void visitBy(NodeVisitor<ArgType> v, ArgType a) {
-		v.visit(this, a);
-	}
+    /**
+     * Returns the variable name, or null if not using a program variable.
+     */
+    public String getVariableName() {
+        return varname;
+    }
 
-	@Override
-	public boolean canThrowExceptions() {
-		return false;
-	}
+    /**
+     * Returns the object to be added to the scope chain when entering the catch block,
+     * or {@link AbstractNode#NO_VALUE} if not using a program variable.
+     */
+    public int getScopeObjRegister() {
+        return scopeobj_reg;
+    }
+
+    /**
+     * Returns the result register,
+     * or {@link AbstractNode#NO_VALUE} if not using a register.
+     */
+    public int getValueRegister() {
+        return value_reg;
+    }
+
+    @Override
+    public String toString() {
+        if (varname != null)
+            return "catch[" + Strings.escape(varname) + ",v" + scopeobj_reg + "]";
+        else
+            return "catch[v" + value_reg + "]";
+    }
+
+    @Override
+    public <ArgType> void visitBy(NodeVisitor<ArgType> v, ArgType a) {
+        v.visit(this, a);
+    }
+
+    @Override
+    public boolean canThrowExceptions() {
+        return false;
+    }
 
     @Override
     public void check(BasicBlock b) {

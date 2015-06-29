@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2013 Aarhus University
+ * Copyright 2009-2015 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,12 +20,12 @@ import dk.brics.tajs.analysis.State;
 
 /**
  * Initial State Builder for DOM Events.
- * <p/>
+ * <p>
  * More information at:
- * <p/>
+ * <p>
  * http://www.w3.org/TR/2000/REC-DOM-Level-2-Events-20001113/
  * http://www.w3.org/TR/2003/NOTE-DOM-Level-3-Events-20031107/
- * <p/>
+ * <p>
  * http://www.w3.org/TR/REC-html40/interact/scripts.html#h-18.2.3
  */
 public class EventBuilder {
@@ -42,5 +42,4 @@ public class EventBuilder {
         MouseEvent.build(s);
         WheelEvent.build(s);
     }
-
 }

@@ -1,0 +1,42 @@
+fg2: function()
+  block 0: [entry]
+    node 0: constant[undefined,v1] (test/flowgraphbuilder/forin_call.js:1:1)
+    ->[block 1]
+  block 1:
+    node 1: read-variable['a',-,-]* (test/flowgraphbuilder/forin_call.js:1:1)
+    node 2: read-variable['c',v2,-] (test/flowgraphbuilder/forin_call.js:2:11)
+    ->[block 2]
+  block 2:
+    node 3: begin-for-in[v2,v3] (test/flowgraphbuilder/forin_call.js:2:1)
+    ->[block 3]
+  block 3:
+    node 4: has-next[v3,v4] (test/flowgraphbuilder/forin_call.js:2:1)
+    node 5: if[v4](true-block:4,false-block:8) (test/flowgraphbuilder/forin_call.js:2:1)
+    ->[block 4,block 8]
+  block 4:
+    node 6: next-property[v3,v5] (test/flowgraphbuilder/forin_call.js:2:6)
+    node 7: write-variable[v5,'b']* (test/flowgraphbuilder/forin_call.js:2:6)
+    node 8: read-variable['d',v7,v6] (test/flowgraphbuilder/forin_call.js:3:5)
+    ->[block 5] ~>[block 7]
+  block 5:
+    node 9: call[v6,v7,-]* (test/flowgraphbuilder/forin_call.js:3:5)
+    ->[block 6] ~>[block 7]
+  block 6:
+    node 10: end-for-in(begin-node:3)* (test/flowgraphbuilder/forin_call.js:4:1)
+    ->[block 2] ~>[block 7]
+  block 7:
+    node 11: end-for-in(begin-node:3)* (test/flowgraphbuilder/forin_call.js:4:1)
+    ->[block 10]
+  block 8:
+    node 12: read-variable['e',-,-]* (test/flowgraphbuilder/forin_call.js:5:1)
+    ->[block 9]
+  block 9: [exit-ordinary]
+    node 13: return[v1] (test/flowgraphbuilder/forin_call.js:1:1)
+    ->[]
+  block 10: [exit-exceptional]
+    node 14: exceptional-return (test/flowgraphbuilder/forin_call.js:1:1)
+    ->[]
+
+test/flowgraphbuilder/forin_call.js:1:1: [definite] ReferenceError, reading absent variable a
+test/flowgraphbuilder/forin_call.js:2:11: [definite] Unreachable code
+test/flowgraphbuilder/forin_call.js:1:1: [maybe] Uncaught exception, constructed at [test/flowgraphbuilder/forin_call.js:1:1]

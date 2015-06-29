@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2013 Aarhus University
+ * Copyright 2009-2015 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,11 +15,6 @@
  */
 
 package dk.brics.tajs.analysis.dom;
-
-import static dk.brics.tajs.analysis.InitialStateBuilder.FUNCTION_PROTOTYPE;
-import static dk.brics.tajs.analysis.InitialStateBuilder.createPrimitiveFunction;
-
-import org.apache.log4j.Logger;
 
 import dk.brics.tajs.analysis.FunctionCalls.CallInfo;
 import dk.brics.tajs.analysis.InitialStateBuilder;
@@ -108,7 +103,6 @@ import dk.brics.tajs.analysis.dom.html5.CanvasRenderingContext2D;
 import dk.brics.tajs.analysis.dom.html5.HTML5Builder;
 import dk.brics.tajs.analysis.dom.html5.HTMLCanvasElement;
 import dk.brics.tajs.analysis.dom.html5.StorageElement;
-import dk.brics.tajs.htmlparser.DOMEventHelpers;
 import dk.brics.tajs.lattice.HostObject;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.Value;
@@ -116,14 +110,18 @@ import dk.brics.tajs.options.Options;
 import dk.brics.tajs.solver.Message.Severity;
 import dk.brics.tajs.util.AnalysisException;
 import dk.brics.tajs.util.Collections;
+import org.apache.log4j.Logger;
+
+import static dk.brics.tajs.analysis.InitialStateBuilder.FUNCTION_PROTOTYPE;
+import static dk.brics.tajs.analysis.InitialStateBuilder.createPrimitiveFunction;
 
 /**
  * Dispatcher and utility functions for the DOM support
  */
 public class DOMFunctions {
 
-	private static Logger logger = Logger.getLogger(DOMFunctions.class); 
-	
+    private static Logger log = Logger.getLogger(DOMFunctions.class);
+
     /*
      * The following properties are magic:
      * 
@@ -155,7 +153,7 @@ public class DOMFunctions {
      * Read Magic Property
      */
     @SuppressWarnings("unused")
-	public static void evaluateGetter(HostObject nativeObject, ObjectLabel label, String property, Solver.SolverInterface c) {
+    public static void evaluateGetter(HostObject nativeObject, ObjectLabel label, String property, Solver.SolverInterface c) {
         throw new AnalysisException("Not Implemented");
     }
 
@@ -170,13 +168,13 @@ public class DOMFunctions {
         if (nativeObject == DOMWindow.WINDOW.getHostObject()) {
             // Load Event Handlers
             if (DOMEventHelpers.isLoadEventAttribute(property)) {
-               	logger.debug("Adding Load Event Handler: " + v);
+                log.debug("Adding Load Event Handler: " + v);
                 DOMEvents.addLoadEventHandler(s, v.getObjectLabels());
             }
 
             // Unload Event Handlers
             if (DOMEventHelpers.isUnloadEventAttribute(property)) {
-               	logger.debug("Adding Unload Event Handler: " + v);
+                log.debug("Adding Unload Event Handler: " + v);
                 s.getExtras().addToMaySet(DOMRegistry.MaySets.UNLOAD_EVENT_HANDLERS.name(), DOMConversion.toEventHandler(v, c).getObjectLabels());
             }
         }
@@ -192,19 +190,19 @@ public class DOMFunctions {
 
         // Keyboard Event Handlers
         if (DOMEventHelpers.isKeyboardEventAttribute(property)) {
-           	logger.debug("Adding Keyboard Event Handler: " + v);
+            log.debug("Adding Keyboard Event Handler: " + v);
             DOMEvents.addKeyboardEventHandler(s, v.getObjectLabels());
         }
 
         // Mouse Event Handlers
         if (DOMEventHelpers.isMouseEventAttribute(property)) {
-           	logger.debug("Adding Mouse Event Handler: " + v);
+            log.debug("Adding Mouse Event Handler: " + v);
             DOMEvents.addMouseEventHandler(s, v.getObjectLabels());
         }
 
         // AJAX Event Handlers
         if (DOMEventHelpers.isAjaxEventProperty(property)) {
-           	logger.debug("Adding AJAX Event Handler: " + v);
+            log.debug("Adding AJAX Event Handler: " + v);
             // TODO: check object-label
             if (label == ActiveXObject.INSTANCES || label == XmlHttpRequest.INSTANCES) {
                 DOMEvents.addAjaxEventHandler(s, v.getObjectLabels());
@@ -213,7 +211,7 @@ public class DOMFunctions {
 
         // Unknown Event Handlers
         if (DOMEventHelpers.isOtherEventAttribute(property)) {
-           	logger.debug("Adding Unknown Event Handler: " + v);
+            log.debug("Adding Unknown Event Handler: " + v);
             DOMEvents.addUnknownEventHandler(s, v.getObjectLabels());
         }
 
@@ -232,8 +230,6 @@ public class DOMFunctions {
                 s.getExtras().addToMayMap(DOMRegistry.MayMaps.ELEMENTS_BY_NAME.name(), v.getStr(), Collections.singleton(label));
             } else {
                 s.getExtras().addToDefaultMayMap(DOMRegistry.MayMaps.ELEMENTS_BY_NAME.name(), Collections.singleton(label));
-                // TODO: What to do if the name is not a single str
-                logger.debug("Writing name property of HTML element with non-singlestr value");
             }
         }
     }
@@ -287,8 +283,7 @@ public class DOMFunctions {
      * Returns a new empty NodeList object.
      */
     public static ObjectLabel makeEmptyNodeList() {
-        ObjectLabel nodeList = DOMNodeList.INSTANCES;
-        return nodeList;
+        return DOMNodeList.INSTANCES;
     }
 
     /**
@@ -411,8 +406,8 @@ public class DOMFunctions {
         else if ("canvas".equalsIgnoreCase(tagname)) {
             return HTMLCanvasElement.INSTANCES;
         }
-        if (Options.isDebugEnabled()) {
-        	logger.warn("unknown tagname: "
+        if (Options.get().isDebugEnabled()) {
+            log.warn("unknown tagname: "
                     + tagname
                     + ". Using default HTMLElement.");
         }
@@ -688,10 +683,9 @@ public class DOMFunctions {
             case ACTIVE_X_OBJECT_CONSTRUCTOR:
                 return ActiveXObject.evaluate(nativeObject, call, s, c);
             default: {
-            	c.getMonitoring().addMessage(call.getSourceNode(), Severity.HIGH, "TypeError, call to non-function (DOM): " + nativeObject);
-            	return Value.makeNone();
+                c.getMonitoring().addMessage(call.getSourceNode(), Severity.HIGH, "TypeError, call to non-function (DOM): " + nativeObject);
+                return Value.makeNone();
             }
         }
     }
-
 }

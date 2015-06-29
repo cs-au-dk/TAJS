@@ -1,0 +1,4 @@
+test/micro/testForIn8.js:1:27: [definite] ReferenceError, reading absent variable c
+test/micro/testForIn8.js:1:10: [definite] The variable a is never used
+test/micro/testForIn8.js:1:29: [definite] Unreachable code
+test/micro/testForIn8.js:1:1: [maybe] Uncaught exception, constructed at [test/micro/testForIn8.js:1:27]

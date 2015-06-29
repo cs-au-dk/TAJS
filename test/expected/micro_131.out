@@ -1,7 +1,7 @@
 test/micro/test131.js:1:1: [maybe] Uncaught exception: "hep"
-test/micro/test131.js:13:12: [maybe] The variable y has values with different types
-test/micro/test131.js:14:13: [maybe] The variable y has values with different types
+test/micro/test131.js:13:17: [maybe] The variable y has values with different types
+test/micro/test131.js:14:18: [maybe] The variable y has values with different types
 test/micro/test131.js:13:2: [info] Abstract value: "5"
-test/micro/test131.js:13:2: [info] Abstract value: 5.0|[@Object#node24]
+test/micro/test131.js:13:2: [info] Abstract value: 5.0|[@Object#node21]
 test/micro/test131.js:14:2: [info] Abstract object: 
 test/micro/test131.js:14:2: [info] Abstract object: {[[Prototype]]=[@Object.prototype[native]]}

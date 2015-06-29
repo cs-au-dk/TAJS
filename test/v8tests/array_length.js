@@ -33,52 +33,52 @@
 var a = [];
 a.length = 2147483648;
 
-dumpValue(typeof a.length);
-dumpValue(a.length);
+TAJS_dumpValue(typeof a.length);
+TAJS_dumpValue(a.length);
 
 // Should be 2147483648 with full precision.
 var b = [];
 b.length = "2147483648";
 
-dumpValue(typeof b.length);
-dumpValue(b.length);
+TAJS_dumpValue(typeof b.length);
+TAJS_dumpValue(b.length);
 
 // Should be 0 with full precision.
 var c = [];
 c.length = null;
 
-dumpValue(typeof c.length);
-dumpValue(c.length);
+TAJS_dumpValue(typeof c.length);
+TAJS_dumpValue(c.length);
 
 // Should be 0 with full precision.
 var d = [];
 d.length = false;
 
-dumpValue(typeof d.length);
-dumpValue(d.length);
+TAJS_dumpValue(typeof d.length);
+TAJS_dumpValue(d.length);
 
 // Should be 1 with full precision.
 var e = [];
 e.length = true;
 
-dumpValue(typeof e.length);
-dumpValue(e.length);
+TAJS_dumpValue(typeof e.length);
+TAJS_dumpValue(e.length);
 
 // FIXME: Uncomment once test/failing/testarray1.js is ok.
 // Should be 42 with full precision.
 // var f = [];
 // f.length = {valueOf : function() { return 42; }};
 
-// dumpValue(typeof f.length);
-// dumpValue(f.length);
+// TAJS_dumpValue(typeof f.length);
+// TAJS_dumpValue(f.length);
 
 // FIXME: Uncomment once test/failing/testarray2.js is ok.
 // Should be 42 with full precision.
 // var g = [];
 // g.length = {toString : function() { return 42; }};
 
-// dumpValue(typeof g.length);
-// dumpValue(g.length);
+// TAJS_dumpValue(typeof g.length);
+// TAJS_dumpValue(g.length);
 
 // Test invalid values
 try {

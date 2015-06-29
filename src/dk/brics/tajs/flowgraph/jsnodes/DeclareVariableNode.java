@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2013 Aarhus University
+ * Copyright 2009-2015 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,38 +27,38 @@ import dk.brics.tajs.util.Strings;
  * var <i>x</i>
  */
 public class DeclareVariableNode extends Node {
-	
-	private String varname;
 
-	/**
-	 * Constructs a new variable declaration node.
-	 */
-	public DeclareVariableNode(String varname, SourceLocation location) {
-		super(location);
-		this.varname = varname;
-	}
+    private String varname;
 
-	/**
-	 * Returns the variable name.
-	 */
-	public String getVariableName() {
-		return varname;
-	}
-	
-	@Override
-	public String toString() {
-		return "vardecl['" + Strings.escape(varname) + "']";
-	}
+    /**
+     * Constructs a new variable declaration node.
+     */
+    public DeclareVariableNode(String varname, SourceLocation location) {
+        super(location);
+        this.varname = varname;
+    }
 
-	@Override
-	public <ArgType> void visitBy(NodeVisitor<ArgType> v, ArgType a) {
-		v.visit(this, a);
-	}
+    /**
+     * Returns the variable name.
+     */
+    public String getVariableName() {
+        return varname;
+    }
 
-	@Override
-	public boolean canThrowExceptions() {
-		return false;
-	}
+    @Override
+    public String toString() {
+        return "vardecl['" + Strings.escape(varname) + "']";
+    }
+
+    @Override
+    public <ArgType> void visitBy(NodeVisitor<ArgType> v, ArgType a) {
+        v.visit(this, a);
+    }
+
+    @Override
+    public boolean canThrowExceptions() {
+        return false;
+    }
 
     @Override
     public void check(BasicBlock b) {

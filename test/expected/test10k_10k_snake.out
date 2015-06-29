@@ -1,0 +1,76 @@
+test/10k/10k_snake.html:132:9: [definite] TypeError, accessing property of null/undefined
+test/10k/10k_snake.html:23:16: [definite] The conditional expression is always true
+test/10k/10k_snake.html:38:16: [definite] The conditional expression is always true
+test/10k/10k_snake.html:92:9: [definite] The conditional expression is always false
+test/10k/10k_snake.html:92:13: [definite] The conditional expression is always false
+test/10k/10k_snake.html:102:18: [definite] The conditional expression is always true
+test/10k/10k_snake.html:103:13: [definite] The conditional expression is always true
+test/10k/10k_snake.html:111:9: [definite] The assignment to paused has no effect
+test/10k/10k_snake.html:112:23: [definite] Variable timer is null/undefined
+test/10k/10k_snake.html:121:9: [definite] The conditional expression is always false
+test/10k/10k_snake.html:121:9: [definite] Variable timer is null/undefined
+test/10k/10k_snake.html:132:9: [definite] Variable food is null/undefined
+test/10k/10k_snake.html:145:9: [definite] The conditional expression is always false
+test/10k/10k_snake.html:146:9: [definite] The conditional expression is always true
+test/10k/10k_snake.html:183:13: [definite] The assignment to digesting has no effect
+test/10k/10k_snake.html:191:9: [definite] The conditional expression is always false
+test/10k/10k_snake.html:67:25: [definite] Dead assignment, property right:down is never read
+test/10k/10k_snake.html:68:10: [definite] Dead assignment, property up:left is never read
+test/10k/10k_snake.html:69:10: [definite] Dead assignment, property right:up is never read
+test/10k/10k_snake.html:70:10: [definite] Dead assignment, property down:left is never read
+test/10k/10k_snake.html:71:10: [definite] Dead assignment, property up:right is never read
+test/10k/10k_snake.html:72:10: [definite] Dead assignment, property left:down is never read
+test/10k/10k_snake.html:73:10: [definite] Dead assignment, property down:right is never read
+test/10k/10k_snake.html:74:10: [definite] Dead assignment, property left:up is never read
+test/10k/10k_snake.html:176:22: [definite] Reading 'this' yields the global object
+test/10k/10k_snake.html:25:29: [definite] Unreachable function
+test/10k/10k_snake.html:31:30: [definite] Unreachable function
+test/10k/10k_snake.html:34:44: [definite] Unreachable function
+test/10k/10k_snake.html:57:14: [definite] The variable count is never used
+test/10k/10k_snake.html:67:14: [definite] The variable corners is never used
+test/10k/10k_snake.html:128:23: [definite] Unreachable function
+test/10k/10k_snake.html:132:29: [definite] Unreachable code
+test/10k/10k_snake.html:155:5: [definite] Unreachable function removeTail
+test/10k/10k_snake.html:159:5: [definite] Unreachable function getup
+test/10k/10k_snake.html:163:5: [definite] Unreachable function getdown
+test/10k/10k_snake.html:171:5: [definite] Unreachable function getleft
+test/10k/10k_snake.html:180:13: [definite] Unreachable code
+test/10k/10k_snake.html:115:20: [maybe] TypeError, accessing property of null/undefined
+test/10k/10k_snake.html:116:9: [maybe] TypeError, accessing property of null/undefined
+test/10k/10k_snake.html:138:16: [maybe] TypeError, accessing property of null/undefined
+test/10k/10k_snake.html:139:13: [maybe] TypeError, accessing property of null/undefined
+test/10k/10k_snake.html:177:27: [maybe] TypeError, accessing property of null/undefined
+test/10k/10k_snake.html:178:13: [maybe] TypeError, accessing property of null/undefined
+test/10k/10k_snake.html:190:9: [maybe] TypeError, accessing property of null/undefined
+test/10k/10k_snake.html:15:32: [maybe] Uncaught exception, constructed at [test/10k/10k_snake.html:115:20, test/10k/10k_snake.html:116:9, test/10k/10k_snake.html:132:9, test/10k/10k_snake.html:138:16, test/10k/10k_snake.html:139:13, test/10k/10k_snake.html:177:27, test/10k/10k_snake.html:178:13, test/10k/10k_snake.html:190:9]
+test/10k/10k_snake.html:20:32: [maybe] Reading absent property (computed name)
+test/10k/10k_snake.html:38:30: [maybe] Conversion to number yields NaN
+test/10k/10k_snake.html:38:30: [maybe] Converting object to string
+test/10k/10k_snake.html:38:30: [maybe] Converting primitive string to object
+test/10k/10k_snake.html:41:16: [maybe] Converting object to string
+test/10k/10k_snake.html:41:16: [maybe] Converting object to string
+test/10k/10k_snake.html:41:16: [maybe] Converting primitive string to object
+test/10k/10k_snake.html:44:16: [maybe] Converting primitive string to object
+test/10k/10k_snake.html:48:30: [maybe] Converting primitive string to object
+test/10k/10k_snake.html:52:26: [maybe] Converting object to string
+test/10k/10k_snake.html:52:26: [maybe] Converting primitive string to object
+test/10k/10k_snake.html:92:26: [maybe] Reading absent property (computed name)
+test/10k/10k_snake.html:93:30: [maybe] Reading absent property (computed name)
+test/10k/10k_snake.html:93:40: [maybe] Reading absent property (computed name)
+test/10k/10k_snake.html:94:37: [maybe] Reading absent property (computed name)
+test/10k/10k_snake.html:112:9: [maybe] Conversion to number yields NaN
+test/10k/10k_snake.html:177:27: [maybe] Reading absent property (computed name)
+test/10k/10k_snake.html:177:27: [maybe] Reading absent property (computed name)
+test/10k/10k_snake.html:189:24: [maybe] Reading absent property (computed name)
+test/10k/10k_snake.html:20:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/10k_snake.html:20:32: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/10k_snake.html:20:47: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/10k_snake.html:44:16: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/10k/10k_snake.html:47:14: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/10k/10k_snake.html:48:13: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/10k/10k_snake.html:48:31: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/10k/10k_snake.html:49:16: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/10k/10k_snake.html:52:9: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/10k/10k_snake.html:52:26: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/10k/10k_snake.html:53:16: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/10k/10k_snake.html:93:30: [info] Reading from unknown property that may cause loss of precision

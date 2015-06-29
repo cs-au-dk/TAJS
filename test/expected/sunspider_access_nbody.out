@@ -5,7 +5,7 @@ test/sunspider/access-nbody.js:107:25: [maybe] TypeError, accessing property of 
 test/sunspider/access-nbody.js:126:7: [maybe] TypeError, accessing property of null/undefined
 test/sunspider/access-nbody.js:140:18: [maybe] TypeError, accessing property of null/undefined
 test/sunspider/access-nbody.js:147:25: [maybe] TypeError, accessing property of null/undefined
-test/sunspider/access-nbody.js:3:1: [maybe] Uncaught exception, constructed at [test/sunspider/access-nbody.js:91:15, test/sunspider/access-nbody.js:107:15, test/sunspider/access-nbody.js:107:25, test/sunspider/access-nbody.js:126:7, test/sunspider/access-nbody.js:140:18, test/sunspider/access-nbody.js:147:25]
+test/sunspider/access-nbody.js:1:1: [maybe] Uncaught exception, constructed at [test/sunspider/access-nbody.js:91:15, test/sunspider/access-nbody.js:107:15, test/sunspider/access-nbody.js:107:25, test/sunspider/access-nbody.js:126:7, test/sunspider/access-nbody.js:140:18, test/sunspider/access-nbody.js:147:25]
 test/sunspider/access-nbody.js:90:15: [maybe] Reading absent property (computed name)
 test/sunspider/access-nbody.js:104:19: [maybe] Reading absent property (computed name)
 test/sunspider/access-nbody.js:106:22: [maybe] Reading absent property (computed name)

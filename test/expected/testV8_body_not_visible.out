@@ -1,6 +1,2 @@
-test/v8tests/body-not-visible.js:33:8: [definite] ReferenceError, reading absent variable body
-test/v8tests/body-not-visible.js:37:3: [definite] ReferenceError, reading absent variable assertTrue
-test/v8tests/body-not-visible.js:31:5: [definite] The variable caught is never used
+TAJS-dynamic-code(test/v8tests/body-not-visible.js:33:4):1:31: [definite] ReferenceError, reading absent variable body
 test/v8tests/body-not-visible.js:34:3: [definite] Unreachable code
-test/v8tests/body-not-visible.js:37:14: [definite] Unreachable code
-test/v8tests/body-not-visible.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/body-not-visible.js:37:3]

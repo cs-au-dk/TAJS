@@ -6,22 +6,23 @@ function f(x) {
 }
 
 var a = f(true) + f(false);
-dumpValue(a);
-assert(a === "ab");
+TAJS_dumpValue(a);
+TAJS_assert(a, 'isMaybeStrPrefixedIdentifierParts');
 
+a = 'ab'
 var x = {};
 x[a] = "hello";
 
-dumpObject(x);
+TAJS_dumpObject(x);
 
-dumpValue(x.dfg);
-dumpValue(x[1]);
-dumpValue(x[2]);
-dumpValue(x.ab);
-assert(x.dfg === undefined);
-assert(x[1] === undefined);
-assert(x[2] === undefined);
-assert(x.ab === "hello");
+TAJS_dumpValue(x.dfg);
+TAJS_dumpValue(x[1]);
+TAJS_dumpValue(x[2]);
+TAJS_dumpValue(x.ab);
+TAJS_assert(x.dfg === undefined);
+TAJS_assert(x[1] === undefined);
+TAJS_assert(x[2] === undefined);
+TAJS_assert(x.ab === "hello");
 
 
 

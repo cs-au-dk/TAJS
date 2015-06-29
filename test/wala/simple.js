@@ -78,7 +78,7 @@ function rubbish(one, two) {
     return rubbish(two, one);
 }
 
-assert( rubbish(strange, weird) == -0.5714285714285714);
+TAJS_assert( rubbish(strange, weird), 'isMaybeAnyNum');
 
 var F;
 if ( bad(2, 3) ) {
@@ -87,11 +87,11 @@ if ( bad(2, 3) ) {
   F = strange; 
 }
 
-assert( trivial(3, 2) == 3);
-dumpValue(F);
+TAJS_assert( trivial(3, 2) == 3);
+TAJS_dumpValue(F);
 
 if ( F(6) != 0 ) {
-  dumpValue(bad(4, 5));
+  TAJS_dumpValue(bad(4, 5));
 } else {
-  dumpValue(weird( silly( "whatever", 7 ) ));
+  TAJS_dumpValue(weird( silly( "whatever", 7 ) ));
 }

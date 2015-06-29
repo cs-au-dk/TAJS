@@ -1,0 +1,4 @@
+test/resig/ejohn81.js:15:16: [definite] Reading absent property keys
+test/resig/ejohn81.js:11:1: [info] Abstract value: UInt
+test/resig/ejohn81.js:13:1: [info] Abstract value: [@<anonymous>#fun1]
+test/resig/ejohn81.js:15:1: [info] Abstract value: Undef

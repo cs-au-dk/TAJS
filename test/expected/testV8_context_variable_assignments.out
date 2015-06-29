@@ -1,5 +1,1 @@
-test/v8tests/context-variable-assignments.js:37:1: [definite] ReferenceError, reading absent variable assertEquals
-test/v8tests/context-variable-assignments.js:28:1: [definite] Unreachable function foo
-test/v8tests/context-variable-assignments.js:30:13: [definite] Unreachable function
-test/v8tests/context-variable-assignments.js:37:14: [definite] Unreachable code
-test/v8tests/context-variable-assignments.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/context-variable-assignments.js:37:1]
+test/v8tests/context-variable-assignments.js:29:10: [definite] The variable b is never used

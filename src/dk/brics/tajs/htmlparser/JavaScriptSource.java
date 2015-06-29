@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2013 Aarhus University
+ * Copyright 2009-2015 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,174 +19,120 @@ package dk.brics.tajs.htmlparser;
 /**
  * JavaScript code snippet with meta-information.
  */
-public interface JavaScriptSource {
+public class JavaScriptSource {
 
-	/**
-	 * JavaScript code embedded in a 'script' element in an HTML file.
-	 */
-	public static class EmbeddedJavaScriptSource implements JavaScriptSource {
+    public enum Kind {
 
-		private final String fileName;
-		
-		private final String javaScript;
-		
-		private final int lineNumberOffset; // TODO: also need column number (for the first line)
+        /**
+         * JavaScript code in a separate file.
+         */
+        FILE,
 
-		/**
-		 * Constructs a new code snippet descriptor.
-		 */
-		public EmbeddedJavaScriptSource(String fileName, String javaScript, int lineNumberOffset) {
-			this.fileName = fileName;
-			this.javaScript = javaScript;
-			this.lineNumberOffset = lineNumberOffset;
-		}
+        /**
+         * JavaScript code embedded in a 'script' tag in an HTML file.
+         */
+        EMBEDDED,
 
-		@Override
-		public <T> T apply(JavaScriptSourceVisitor<T> v) {
-			return v.visit(this);
-		}
+        /**
+         * JavaScript code embedded in an event handler attribute in an HTML file.
+         */
+        EVENTHANDLER
+    }
 
-		@Override
-		public String getFileName() {
-			return fileName;
-		}
+    private final Kind kind;
 
-		@Override
-		public String getJavaScript() {
-			return javaScript;
-		}
+    private final String fileName;
 
-		/**
-		 * Returns the starting line number.
-		 */
-		public int getLineNumberOffset() {
-			return lineNumberOffset;
-		}
+    private final String code;
 
-		@Override
-		public String toString() {
-			return String.format("%s(fileName: %s, lineNumber: %s)", getClass().getSimpleName(), fileName, lineNumberOffset);
-		}
-	}
+    private final int lineOffset;
 
-	/**
-	 * JavaScript code embedded in a "javascript:" event handler attribute in an HTML file.
-	 */
-	public static class EventHandlerJavaScriptSource implements JavaScriptSource {
-		
-		private final String fileName;
+    private final int columnOffset;
 
-		private final String javaScript;
+    private final String eventName;
 
-		private final int lineNumberOffset;
-		
-		private final String eventName;
+    private JavaScriptSource(Kind kind, String eventName, String fileName, String code, int lineOffset, int columnOffset) {
+        this.kind = kind;
+        this.eventName = eventName;
+        this.fileName = fileName;
+        this.code = code;
+        this.lineOffset = lineOffset;
+        this.columnOffset = columnOffset;
+    }
 
-		/**
-		 * Constructs a new code snippet descriptor.
-		 */
-		public EventHandlerJavaScriptSource(String fileName, String javaScript, int lineNumber, String eventName) {
-			this.fileName = fileName;
-			this.javaScript = javaScript;
-			this.lineNumberOffset = lineNumber;
-			this.eventName = eventName;
-		}
+    /**
+     * Constructs a new code snippet descriptor for JavaScript code in a separate file.
+     */
+    public static JavaScriptSource makeFileCode(String fileName, String code) {
+        return new JavaScriptSource(Kind.FILE, null, fileName, code, 0, 0);
+    }
 
-		@Override
-		public <T> T apply(JavaScriptSourceVisitor<T> v) {
-			return v.visit(this);
-		}
+    /**
+     * Constructs a new code snippet descriptor for JavaScript code embedded in a 'script' tag in an HTML file.
+     *
+     * @param fileName     file nam or URL of the code
+     * @param code         the JavaScript code
+     * @param lineOffset   number of lines preceding the code
+     * @param columnOffset number of columns preceding the first line of the code
+     * @return new JavaScriptSource object
+     */
+    public static JavaScriptSource makeEmbeddedCode(String fileName, String code, int lineOffset, int columnOffset) {
+        return new JavaScriptSource(Kind.EMBEDDED, null, fileName, code, lineOffset, columnOffset);
+    }
 
-		/**
-		 * Returns the event name.
-		 */
-		public String getEventName() {
-			return eventName;
-		}
+    /**
+     * Constructs a new code snippet descriptor for JavaScript code embedded in an event handler attribute in an HTML file.
+     *
+     * @param eventName    event kind, e.g. "click" or "submit"
+     * @param fileName     file nam or URL of the code
+     * @param code         the JavaScript code
+     * @param lineOffset   number of lines preceding the code
+     * @param columnOffset number of columns preceding the first line of the code
+     * @return new JavaScriptSource object
+     */
+    public static JavaScriptSource makeEventHandlerCode(String eventName, String fileName, String code, int lineOffset, int columnOffset) {
+        return new JavaScriptSource(Kind.EVENTHANDLER, eventName, fileName, code, lineOffset, columnOffset);
+    }
 
-		@Override
-		public String getFileName() {
-			return fileName;
-		}
+    /**
+     * Returns the kind.
+     */
+    public Kind getKind() {
+        return kind;
+    }
 
-		@Override
-		public String getJavaScript() {
-			return javaScript;
-		}
+    /**
+     * Returns the file name associated with the code.
+     */
+    public String getFileName() {
+        return fileName;
+    }
 
-		/**
-		 * Returns the starting line number.
-		 */
-		public int getLineNumberOffset() {
-			return lineNumberOffset;
-		}
+    /**
+     * Returns the code.
+     */
+    public String getCode() {
+        return code;
+    }
 
-		@Override
-		public String toString() {
-			return String.format("%s(fileName: %s, lineNumber: %s)", getClass().getSimpleName(), fileName, lineNumberOffset);
-		}
-	}
+    /**
+     * Returns the line offset for the first line.
+     */
+    public int getLineOffset() {
+        return lineOffset;
+    }
 
-	/**
-	 * JavaScript code referenced from a 'script' element in an HTML file.
-	 */
-	public static class ExternalJavaScriptSource implements JavaScriptSource {
+    /**
+     * Returns the column offset for the first line.
+     */
+    public int getColumnOffset() {
+        return columnOffset;
+    }
 
-		private final String fileName;
-		
-		private final String javaScript;
-
-		/**
-		 * Constructs a new code snippet descriptor.
-		 */
-		public ExternalJavaScriptSource(String fileName, String javaScript) {
-			this.fileName = fileName;
-			this.javaScript = javaScript;
-		}
-
-		@Override
-		public <T> T apply(JavaScriptSourceVisitor<T> v) {
-			return v.visit(this);
-		}
-
-		@Override
-		public String getFileName() {
-			return fileName;
-		}
-
-		@Override
-		public String getJavaScript() {
-			return javaScript;
-		}
-
-		@Override
-		public String toString() {
-			return String.format("%s(fileName: %s)", getClass().getSimpleName(), fileName);
-		}
-
-	}
-
-	/**
-	 * Visitor interface for the different kinds of JavaScript source code.
-	 */
-	public interface JavaScriptSourceVisitor<T> {
-
-		T visit(EmbeddedJavaScriptSource s);
-
-		T visit(EventHandlerJavaScriptSource s);
-
-		T visit(ExternalJavaScriptSource s);
-	}
-
-	public <T> T apply(JavaScriptSourceVisitor<T> v);
-
-	/**
-	 * Returns the file name associated with the code.
-	 */
-	public String getFileName();
-
-	/**
-	 * Returns the code.
-	 */
-	public String getJavaScript();
+    /**
+     * Returns the event name, or null if not event handler code.
+     */
+    public String getEventName() {
+        return eventName;
+    }
 }

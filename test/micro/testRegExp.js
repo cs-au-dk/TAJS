@@ -1,25 +1,25 @@
 var a = new RegExp("ab*", "ig");
-dumpValue(a);
-dumpValue(a.source);
-dumpValue(a.lastIndex);
-dumpValue(a.ignoreCase);
+TAJS_dumpValue(a);
+TAJS_dumpValue(a.source);
+TAJS_dumpValue(a.lastIndex);
+TAJS_dumpValue(a.ignoreCase);
 var b = RegExp("c|d");
-dumpValue(b);
+TAJS_dumpValue(b);
 var c = RegExp(a);
-dumpValue(c);
+TAJS_dumpValue(c);
 
 var e = a.exec("abbb");
-dumpValue(e);
-dumpValue(e.length);
-dumpValue(e.input);
-dumpValue(e.index);
-dumpValue(e[0]);
-dumpValue(e[1]);
+TAJS_dumpValue(e);
+TAJS_dumpValue(e.length);
+TAJS_dumpValue(e.input);
+TAJS_dumpValue(e.index);
+TAJS_dumpValue(e[0]);
+TAJS_dumpValue(e[1]);
 
-dumpValue(a.toString());
+TAJS_dumpValue(a.toString());
 
 var r = /ab+/ig
-dumpValue(r);
+TAJS_dumpValue(r);
 
 
 var f = new Object();

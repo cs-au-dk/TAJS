@@ -1,2 +1,1 @@
-test/sourcelocations/eventhandlerWithMultiLineEvents.tidy.html:10:2: [definite] The variable event is never used
-test/sourcelocations/eventhandlerWithMultiLineEvents.tidy.html:10:24: [definite] The variable loooooooooooongVarName is never used
+test/sourcelocations/eventhandlerWithMultiLineEvents.html:8:86: [definite] The variable loooooooooooongVarName is never used

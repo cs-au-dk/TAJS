@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2013 Aarhus University
+ * Copyright 2009-2015 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,16 +16,16 @@
 
 package dk.brics.tajs.analysis.dom.html;
 
-import static dk.brics.tajs.analysis.dom.DOMFunctions.createDOMProperty;
-
-import java.util.Set;
-
 import dk.brics.tajs.analysis.State;
 import dk.brics.tajs.analysis.dom.core.DOMDocument;
 import dk.brics.tajs.analysis.dom.core.DOMNode;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.util.Collections;
+
+import java.util.Set;
+
+import static dk.brics.tajs.analysis.dom.DOMFunctions.createDOMProperty;
 
 public class HTMLBuilder {
 
@@ -154,14 +154,12 @@ public class HTMLBuilder {
         createDOMProperty(s, DOMDocument.INSTANCES, "documentElement", Value.makeObject(HTMLHtmlElement.INSTANCES).setReadOnly());
         s.multiplyObject(DOMDocument.INSTANCES);
         DOMDocument.INSTANCES = DOMDocument.INSTANCES.makeSingleton().makeSummary();
-        
+
         // Set the remaining properties on DOMNode, due to circularity
-        createDOMProperty(s, DOMNode.PROTOTYPE, "firstChild", Value.makeObject(HTMLBuilder.HTML_OBJECT_LABELS).joinNull().setReadOnly());
-        createDOMProperty(s, DOMNode.PROTOTYPE, "parentNode", Value.makeObject(HTMLBuilder.HTML_OBJECT_LABELS).joinNull().setReadOnly());
-        createDOMProperty(s, DOMNode.PROTOTYPE, "lastChild", Value.makeObject(HTMLBuilder.HTML_OBJECT_LABELS).setReadOnly());
-        createDOMProperty(s, DOMNode.PROTOTYPE, "previousSibling", Value.makeObject(HTMLBuilder.HTML_OBJECT_LABELS).joinNull().setReadOnly());
-        createDOMProperty(s, DOMNode.PROTOTYPE, "nextSibling", Value.makeObject(HTMLBuilder.HTML_OBJECT_LABELS).joinNull().setReadOnly());
-
+        createDOMProperty(s, DOMNode.PROTOTYPE, "firstChild", Value.makeObject(HTML_OBJECT_LABELS).joinNull().setReadOnly());
+        createDOMProperty(s, DOMNode.PROTOTYPE, "parentNode", Value.makeObject(HTML_OBJECT_LABELS).joinNull().setReadOnly());
+        createDOMProperty(s, DOMNode.PROTOTYPE, "lastChild", Value.makeObject(HTML_OBJECT_LABELS).setReadOnly());
+        createDOMProperty(s, DOMNode.PROTOTYPE, "previousSibling", Value.makeObject(HTML_OBJECT_LABELS).joinNull().setReadOnly());
+        createDOMProperty(s, DOMNode.PROTOTYPE, "nextSibling", Value.makeObject(HTML_OBJECT_LABELS).joinNull().setReadOnly());
     }
-
 }

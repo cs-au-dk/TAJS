@@ -1,55 +1,71 @@
-test/chromeexperiments/core.tidy.html:222:13: [definite] TypeError, accessing property of null/undefined
-test/chromeexperiments/core.tidy.html:229:13: [definite] TypeError, accessing property of null/undefined
-test/chromeexperiments/core.tidy.html:471:9: [definite] The conditional expression is always true
-test/chromeexperiments/core.tidy.html:471:13: [definite] The conditional expression is always true
-test/chromeexperiments/core.tidy.html:503:12: [definite] Variable d is null/undefined
-test/chromeexperiments/core.tidy.html:504:12: [definite] Variable h is null/undefined
-test/chromeexperiments/core.tidy.html:222:13: [definite] Reading absent property touches
-test/chromeexperiments/core.tidy.html:229:13: [definite] Reading absent property touches
-test/chromeexperiments/core.tidy.html:300:13: [definite] Dead assignment, property shield is never read
-test/chromeexperiments/core.tidy.html:300:24: [definite] Dead assignment, property x is never read
-test/chromeexperiments/core.tidy.html:300:24: [definite] Dead assignment, property y is never read
-test/chromeexperiments/core.tidy.html:502:5: [definite] Dead assignment, property position is never read
-test/chromeexperiments/core.tidy.html:512:1: [definite] Dead assignment, property clonePosition is never read
-test/chromeexperiments/core.tidy.html:524:5: [definite] Dead assignment, property length is never read
-test/chromeexperiments/core.tidy.html:536:13: [definite] Dead assignment, property normalTarget is never read
-test/chromeexperiments/core.tidy.html:545:27: [definite] Dead assignment, property x is never read
-test/chromeexperiments/core.tidy.html:545:27: [definite] Dead assignment, property y is never read
-test/chromeexperiments/core.tidy.html:222:33: [definite] Unreachable code
-test/chromeexperiments/core.tidy.html:229:33: [definite] Unreachable code
-test/chromeexperiments/core.tidy.html:512:33: [definite] Unreachable function
-test/chromeexperiments/core.tidy.html:319:17: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/core.tidy.html:322:91: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/core.tidy.html:338:13: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/core.tidy.html:385:13: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/core.tidy.html:559:9: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/core.tidy.html:340:13: [maybe] Reading absent property alpha
-test/chromeexperiments/core.tidy.html:340:29: [maybe] Reading absent property alpha
-test/chromeexperiments/core.tidy.html:341:66: [maybe] Reading absent property alpha
-test/chromeexperiments/core.tidy.html:342:68: [maybe] Reading absent property alpha
-test/chromeexperiments/core.tidy.html:366:17: [maybe] Reading absent property dead
-test/chromeexperiments/core.tidy.html:181: [maybe] Uncaught exception, constructed at [test/chromeexperiments/core.tidy.html:222:13, test/chromeexperiments/core.tidy.html:229:13, test/chromeexperiments/core.tidy.html:319:17, test/chromeexperiments/core.tidy.html:322:91, test/chromeexperiments/core.tidy.html:338:13, test/chromeexperiments/core.tidy.html:385:13, test/chromeexperiments/core.tidy.html:559:9]
-test/chromeexperiments/core.tidy.html:315:20: [maybe] Reading absent property (computed name)
-test/chromeexperiments/core.tidy.html:317:21: [maybe] Reading absent property (computed name)
-test/chromeexperiments/core.tidy.html:318:22: [maybe] Reading absent property (computed name)
-test/chromeexperiments/core.tidy.html:337:17: [maybe] Reading absent property (computed name)
-test/chromeexperiments/core.tidy.html:340:13: [maybe] Conversion to number yields NaN
-test/chromeexperiments/core.tidy.html:340:25: [maybe] Conversion to number yields NaN
-test/chromeexperiments/core.tidy.html:341:44: [maybe] Converting undefined to string
-test/chromeexperiments/core.tidy.html:342:44: [maybe] Converting undefined to string
-test/chromeexperiments/core.tidy.html:384:17: [maybe] Reading absent property (computed name)
-test/chromeexperiments/core.tidy.html:385:13: [maybe] Conversion to number yields NaN
-test/chromeexperiments/core.tidy.html:386:13: [maybe] Conversion to number yields NaN
-test/chromeexperiments/core.tidy.html:389:13: [maybe] Conversion to number yields NaN
-test/chromeexperiments/core.tidy.html:442:13: [maybe] Converting object to string
-test/chromeexperiments/core.tidy.html:442:13: [maybe] Converting primitive string to object
-test/chromeexperiments/core.tidy.html:442:13: [maybe] Converting primitive string to object
-test/chromeexperiments/core.tidy.html:442:75: [maybe] Converting object to string
-test/chromeexperiments/core.tidy.html:442:75: [maybe] Converting primitive string to object
-test/chromeexperiments/core.tidy.html:442:75: [maybe] Converting primitive string to object
-test/chromeexperiments/core.tidy.html:442:136: [maybe] Converting object to string
-test/chromeexperiments/core.tidy.html:442:136: [maybe] Converting primitive string to object
-test/chromeexperiments/core.tidy.html:442:136: [maybe] Converting primitive string to object
-test/chromeexperiments/core.tidy.html:557:13: [maybe] Reading absent property (computed name)
-test/chromeexperiments/core.tidy.html:508:19: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/chromeexperiments/core.tidy.html:509:15: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/core.html:189:13: [definite] TypeError, accessing property of null/undefined
+test/chromeexperiments/core.html:196:13: [definite] TypeError, accessing property of null/undefined
+test/chromeexperiments/core.html:155:9: [definite] The conditional expression is always true
+test/chromeexperiments/core.html:158:13: [definite] The assignment to k has no effect
+test/chromeexperiments/core.html:159:13: [definite] The assignment to t has no effect
+test/chromeexperiments/core.html:160:18: [definite] The assignment to I has no effect
+test/chromeexperiments/core.html:160:22: [definite] The assignment to J has no effect
+test/chromeexperiments/core.html:170:13: [definite] The conditional expression is always true
+test/chromeexperiments/core.html:170:17: [definite] The conditional expression is always true
+test/chromeexperiments/core.html:178:13: [definite] The assignment to u has no effect
+test/chromeexperiments/core.html:257:9: [definite] The conditional expression is always false
+test/chromeexperiments/core.html:295:9: [definite] The conditional expression is always false
+test/chromeexperiments/core.html:295:13: [definite] The conditional expression is always false
+test/chromeexperiments/core.html:303:21: [definite] The conditional expression is always false
+test/chromeexperiments/core.html:345:13: [definite] The conditional expression is always true
+test/chromeexperiments/core.html:349:9: [definite] The conditional expression is always true
+test/chromeexperiments/core.html:350:14: [definite] The assignment to a has no effect
+test/chromeexperiments/core.html:350:21: [definite] The conditional expression is always false
+test/chromeexperiments/core.html:359:9: [definite] The conditional expression is always false
+test/chromeexperiments/core.html:438:9: [definite] The conditional expression is always true
+test/chromeexperiments/core.html:438:13: [definite] The conditional expression is always true
+test/chromeexperiments/core.html:470:12: [definite] Variable d is null/undefined
+test/chromeexperiments/core.html:471:12: [definite] Variable h is null/undefined
+test/chromeexperiments/core.html:189:13: [definite] Reading absent property touches
+test/chromeexperiments/core.html:196:13: [definite] Reading absent property touches
+test/chromeexperiments/core.html:469:5: [definite] Dead assignment, property position is never read
+test/chromeexperiments/core.html:470:9: [definite] Dead assignment, property x is never read
+test/chromeexperiments/core.html:471:9: [definite] Dead assignment, property y is never read
+test/chromeexperiments/core.html:474:1: [definite] Dead assignment, property distanceTo is never read
+test/chromeexperiments/core.html:479:1: [definite] Dead assignment, property clonePosition is never read
+test/chromeexperiments/core.html:491:5: [definite] Dead assignment, property length is never read
+test/chromeexperiments/core.html:493:5: [definite] Dead assignment, property energyRadiusTarget is never read
+test/chromeexperiments/core.html:493:31: [definite] Dead assignment, property energyRadius is never read
+test/chromeexperiments/core.html:494:5: [definite] Dead assignment, property radius is never read
+test/chromeexperiments/core.html:495:5: [definite] Dead assignment, property angle is never read
+test/chromeexperiments/core.html:496:5: [definite] Dead assignment, property coreQuality is never read
+test/chromeexperiments/core.html:497:5: [definite] Dead assignment, property coreNodes is never read
+test/chromeexperiments/core.html:500:1: [definite] Dead assignment, property updateCore is never read
+test/chromeexperiments/core.html:542:5: [definite] Dead assignment, property size is never read
+test/chromeexperiments/core.html:557:5: [definite] Dead assignment, property size is never read
+test/chromeexperiments/core.html:189:33: [definite] Unreachable code
+test/chromeexperiments/core.html:196:33: [definite] Unreachable code
+test/chromeexperiments/core.html:232:5: [definite] Unreachable function L
+test/chromeexperiments/core.html:313:17: [definite] The variable j is never used
+test/chromeexperiments/core.html:412:9: [definite] The variable G is never used
+test/chromeexperiments/core.html:413:9: [definite] The variable H is never used
+test/chromeexperiments/core.html:415:27: [definite] The variable P is never used
+test/chromeexperiments/core.html:417:12: [definite] The variable y is never used
+test/chromeexperiments/core.html:418:9: [definite] The variable z is never used
+test/chromeexperiments/core.html:421:9: [definite] The variable k is never used
+test/chromeexperiments/core.html:422:9: [definite] The variable D is never used
+test/chromeexperiments/core.html:425:9: [definite] The variable J is never used
+test/chromeexperiments/core.html:426:9: [definite] The variable I is never used
+test/chromeexperiments/core.html:474:30: [definite] Unreachable function
+test/chromeexperiments/core.html:479:33: [definite] Unreachable function
+test/chromeexperiments/core.html:500:31: [definite] Unreachable function
+test/chromeexperiments/core.html:409:13: [maybe] Conversion to number yields NaN
+test/chromeexperiments/core.html:409:13: [maybe] Converting object to string
+test/chromeexperiments/core.html:409:13: [maybe] Converting object to string
+test/chromeexperiments/core.html:409:13: [maybe] Converting primitive string to object
+test/chromeexperiments/core.html:409:13: [maybe] Converting primitive string to object
+test/chromeexperiments/core.html:409:75: [maybe] Conversion to number yields NaN
+test/chromeexperiments/core.html:409:75: [maybe] Converting object to string
+test/chromeexperiments/core.html:409:75: [maybe] Converting object to string
+test/chromeexperiments/core.html:409:75: [maybe] Converting primitive string to object
+test/chromeexperiments/core.html:409:75: [maybe] Converting primitive string to object
+test/chromeexperiments/core.html:409:136: [maybe] Conversion to number yields NaN
+test/chromeexperiments/core.html:409:136: [maybe] Converting object to string
+test/chromeexperiments/core.html:409:136: [maybe] Converting object to string
+test/chromeexperiments/core.html:409:136: [maybe] Converting primitive string to object
+test/chromeexperiments/core.html:409:136: [maybe] Converting primitive string to object

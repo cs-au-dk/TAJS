@@ -1,4 +1,4 @@
-test/v8tests/try-finally-nested.js:46:1: [definite] ReferenceError, reading absent variable assertEquals
-test/v8tests/try-finally-nested.js:28:1: [definite] Unreachable function f
-test/v8tests/try-finally-nested.js:46:14: [definite] Unreachable code
-test/v8tests/try-finally-nested.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/try-finally-nested.js:46:1]
+test/v8tests/try-finally-nested.js:33:12: [definite] The conditional expression is always true
+test/v8tests/try-finally-nested.js:37:20: [definite] Unreachable code
+test/v8tests/try-finally-nested.js:39:7: [definite] Unreachable code
+test/v8tests/try-finally-nested.js:43:10: [definite] Unreachable code

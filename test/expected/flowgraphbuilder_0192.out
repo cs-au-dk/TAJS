@@ -1,0 +1,29 @@
+fg2: function()
+  block 0: [entry]
+    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0192.js:1:1)
+    ->[block 1]
+  block 1:
+    node 1: read-variable['o',v5,-] (test/flowgraphbuilder/flowgraph_builder0192.js:1:1)
+    node 2: read-property[v5,'f',-] (test/flowgraphbuilder/flowgraph_builder0192.js:1:1)
+    node 3: <variable-non-null-undef>['o'] (test/flowgraphbuilder/flowgraph_builder0192.js:1:1)
+    node 4: constant["s",v7] (test/flowgraphbuilder/flowgraph_builder0192.js:1:5)
+    node 5: read-variable['v',v8,-] (test/flowgraphbuilder/flowgraph_builder0192.js:1:9)
+    node 6: +[v7,v8,v6] (test/flowgraphbuilder/flowgraph_builder0192.js:1:5)
+    ->[block 2]
+  block 2:
+    node 7: call[v5,'f',v6,v3] (test/flowgraphbuilder/flowgraph_builder0192.js:1:1)
+    ->[block 3]
+  block 3:
+    node 8: constant["t",v2] (test/flowgraphbuilder/flowgraph_builder0192.js:1:14)
+    node 9: write-property[v3,'p',v2]* (test/flowgraphbuilder/flowgraph_builder0192.js:1:1)
+    ->[block 4]
+  block 4: [exit-ordinary]
+    node 10: return[v1] (test/flowgraphbuilder/flowgraph_builder0192.js:1:1)
+    ->[]
+  block 5: [exit-exceptional]
+    node 11: exceptional-return (test/flowgraphbuilder/flowgraph_builder0192.js:1:1)
+    ->[]
+
+test/flowgraphbuilder/flowgraph_builder0192.js:1:1: [definite] ReferenceError, reading absent variable o
+test/flowgraphbuilder/flowgraph_builder0192.js:1:1: [definite] Unreachable code
+test/flowgraphbuilder/flowgraph_builder0192.js:1:1: [maybe] Uncaught exception, constructed at [test/flowgraphbuilder/flowgraph_builder0192.js:1:1]

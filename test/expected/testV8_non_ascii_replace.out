@@ -1,3 +1,4 @@
-test/v8tests/non-ascii-replace.js:29:1: [definite] ReferenceError, reading absent variable assertEquals
-test/v8tests/non-ascii-replace.js:29:14: [definite] Unreachable code
-test/v8tests/non-ascii-replace.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/non-ascii-replace.js:29:1]
+test/v8tests/non-ascii-replace.js:29:14: [maybe] Converting object to string
+test/v8tests/non-ascii-replace.js:29:14: [maybe] Converting primitive string to object
+test/v8tests/non-ascii-replace.js:30:14: [maybe] Converting object to string
+test/v8tests/non-ascii-replace.js:30:14: [maybe] Converting primitive string to object

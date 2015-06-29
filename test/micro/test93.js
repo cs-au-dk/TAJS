@@ -5,5 +5,5 @@ function f(x,y) {
 var a = f(1,2);
 var b = f(1,"2");
 
-dumpValue(a);
-dumpValue(b);
+TAJS_dumpValue(a);
+TAJS_dumpValue(b);

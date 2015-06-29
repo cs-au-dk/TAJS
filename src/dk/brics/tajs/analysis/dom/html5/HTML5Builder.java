@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2013 Aarhus University
+ * Copyright 2009-2015 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,30 +16,29 @@
 
 package dk.brics.tajs.analysis.dom.html5;
 
-import static dk.brics.tajs.analysis.dom.DOMFunctions.createDOMProperty;
-
-import java.util.Set;
-
 import dk.brics.tajs.analysis.State;
 import dk.brics.tajs.analysis.dom.DOMWindow;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.util.Collections;
 
+import java.util.Set;
+
+import static dk.brics.tajs.analysis.dom.DOMFunctions.createDOMProperty;
+
 public class HTML5Builder {
-	
-	public static final Set<ObjectLabel> HTML5_OBJECT_LABELS = Collections.newSet();
+
+    public static final Set<ObjectLabel> HTML5_OBJECT_LABELS = Collections.newSet();
 
     public static void build(State s) {
         CanvasRenderingContext2D.build(s);
         HTMLCanvasElement.build(s);
         StorageElement.build(s);
-        
+
         // HTML5 properties on Window
         createDOMProperty(s, DOMWindow.WINDOW, "localStorage", Value.makeObject(StorageElement.INSTANCES));
         createDOMProperty(s, DOMWindow.WINDOW, "sessionStorage", Value.makeObject(StorageElement.INSTANCES));
 
         HTML5_OBJECT_LABELS.add(HTMLCanvasElement.INSTANCES);
     }
-
 }

@@ -1,4 +1,0 @@
-test/v8tests/regexp-multiline-stack-trace.js:35:1: [definite] ReferenceError, reading absent variable assertTrue
-test/v8tests/regexp-multiline-stack-trace.js:35:12: [definite] Unreachable code
-test/v8tests/regexp-multiline-stack-trace.js:84:1: [definite] Unreachable function check_case
-test/v8tests/regexp-multiline-stack-trace.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/regexp-multiline-stack-trace.js:35:1]

@@ -1,4 +1,4 @@
-fg2: <main> function()
+fg2: function()
   block 0: [entry]
     node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0189.js:1:1)
     ->[block 1]
@@ -77,73 +77,73 @@ fg2: <main> function()
     ->[block 19]
   block 19:
     node 38: read-variable['m',v32,-] (test/flowgraphbuilder/flowgraph_builder0189.js:7:10)
-    node 39: read-property[v32,'f',-] (test/flowgraphbuilder/flowgraph_builder0189.js:7:10)
+    node 39: read-property[v32,'f',-] (test/flowgraphbuilder/flowgraph_builder0189.js:7:9)
     node 40: <variable-non-null-undef>['m'] (test/flowgraphbuilder/flowgraph_builder0189.js:7:10)
     node 41: constant[8.0,v33] (test/flowgraphbuilder/flowgraph_builder0189.js:7:15)
-    ->[block 21] ~> [ block 20]
+    ->[block 20] ~>[block 21]
   block 20:
-    node 42: end-with* (test/flowgraphbuilder/flowgraph_builder0189.js:7:1)
-    ->[block 37]
+    node 42: call[v32,'f',v33,-]* (test/flowgraphbuilder/flowgraph_builder0189.js:7:9)
+    ->[block 22] ~>[block 21]
   block 21:
-    node 43: call[v32,'f',v33,-]* (test/flowgraphbuilder/flowgraph_builder0189.js:7:10)
-    ->[block 22] ~> [ block 20]
+    node 43: end-with* (test/flowgraphbuilder/flowgraph_builder0189.js:7:1)
+    ->[block 37]
   block 22:
     node 44: end-with* (test/flowgraphbuilder/flowgraph_builder0189.js:7:1)
-    node 45: read-variable['x',v31,-] (test/flowgraphbuilder/flowgraph_builder0189.js:8:6)
-    node 46: begin-with[v31]* (test/flowgraphbuilder/flowgraph_builder0189.js:8:1)
+    node 45: read-variable['x',v34,-] (test/flowgraphbuilder/flowgraph_builder0189.js:8:6)
+    node 46: begin-with[v34]* (test/flowgraphbuilder/flowgraph_builder0189.js:8:1)
     ->[block 23]
   block 23:
-    node 47: read-variable['f',v34,v33] (test/flowgraphbuilder/flowgraph_builder0189.js:8:9)
-    node 48: constant[9.0,v35] (test/flowgraphbuilder/flowgraph_builder0189.js:8:11)
-    ->[block 25] ~> [ block 24]
+    node 47: read-variable['f',v37,v36] (test/flowgraphbuilder/flowgraph_builder0189.js:8:9)
+    node 48: constant[9.0,v38] (test/flowgraphbuilder/flowgraph_builder0189.js:8:11)
+    ->[block 24] ~>[block 25]
   block 24:
-    node 49: end-with* (test/flowgraphbuilder/flowgraph_builder0189.js:8:1)
-    ->[block 37]
+    node 49: call[v36,v37,v38,-]* (test/flowgraphbuilder/flowgraph_builder0189.js:8:9)
+    ->[block 26] ~>[block 25]
   block 25:
-    node 50: call[v33,v34,v35,-]* (test/flowgraphbuilder/flowgraph_builder0189.js:8:9)
-    ->[block 26] ~> [ block 24]
+    node 50: end-with* (test/flowgraphbuilder/flowgraph_builder0189.js:8:1)
+    ->[block 37]
   block 26:
     node 51: end-with* (test/flowgraphbuilder/flowgraph_builder0189.js:8:1)
-    node 52: read-variable['x',v33,-] (test/flowgraphbuilder/flowgraph_builder0189.js:9:6)
-    node 53: begin-with[v33]* (test/flowgraphbuilder/flowgraph_builder0189.js:9:1)
+    node 52: read-variable['x',v39,-] (test/flowgraphbuilder/flowgraph_builder0189.js:9:6)
+    node 53: begin-with[v39]* (test/flowgraphbuilder/flowgraph_builder0189.js:9:1)
     ->[block 27]
   block 27:
-    node 54: read-variable['f',v36,v35] (test/flowgraphbuilder/flowgraph_builder0189.js:9:10)
-    node 55: constant[10.0,v37] (test/flowgraphbuilder/flowgraph_builder0189.js:9:13)
-    ->[block 29] ~> [ block 28]
+    node 54: read-variable['f',v41,-] (test/flowgraphbuilder/flowgraph_builder0189.js:9:10)
+    node 55: constant[10.0,v42] (test/flowgraphbuilder/flowgraph_builder0189.js:9:13)
+    ->[block 28] ~>[block 29]
   block 28:
-    node 56: end-with* (test/flowgraphbuilder/flowgraph_builder0189.js:9:1)
-    ->[block 37]
+    node 56: call[-,v41,v42,-]* (test/flowgraphbuilder/flowgraph_builder0189.js:9:9)
+    ->[block 30] ~>[block 29]
   block 29:
-    node 57: call[v35,v36,v37,-]* (test/flowgraphbuilder/flowgraph_builder0189.js:9:10)
-    ->[block 30] ~> [ block 28]
+    node 57: end-with* (test/flowgraphbuilder/flowgraph_builder0189.js:9:1)
+    ->[block 37]
   block 30:
     node 58: end-with* (test/flowgraphbuilder/flowgraph_builder0189.js:9:1)
-    node 59: read-variable['x',v38,-] (test/flowgraphbuilder/flowgraph_builder0189.js:10:2)
-    node 60: read-variable['foo',v37,-] (test/flowgraphbuilder/flowgraph_builder0189.js:10:8)
-    node 61: write-property[v38,'m',v37] (test/flowgraphbuilder/flowgraph_builder0189.js:10:2)
+    node 59: read-variable['x',v46,-] (test/flowgraphbuilder/flowgraph_builder0189.js:10:2)
+    node 60: read-variable['foo',v45,-] (test/flowgraphbuilder/flowgraph_builder0189.js:10:8)
+    node 61: write-property[v46,'m',v45] (test/flowgraphbuilder/flowgraph_builder0189.js:10:2)
     node 62: <variable-non-null-undef>['x'] (test/flowgraphbuilder/flowgraph_builder0189.js:10:2)
-    node 63: constant[11.0,v39] (test/flowgraphbuilder/flowgraph_builder0189.js:10:13)
+    node 63: constant[11.0,v47] (test/flowgraphbuilder/flowgraph_builder0189.js:10:13)
     ->[block 31]
   block 31:
-    node 64: call[-,v37,v39,v36] (test/flowgraphbuilder/flowgraph_builder0189.js:10:2)
+    node 64: call[-,v45,v47,v44] (test/flowgraphbuilder/flowgraph_builder0189.js:10:1)
     ->[block 32]
   block 32:
-    node 65: read-variable['x',v41,-] (test/flowgraphbuilder/flowgraph_builder0189.js:11:2)
-    node 66: read-variable['x',v42,-] (test/flowgraphbuilder/flowgraph_builder0189.js:11:8)
-    node 67: read-property[v42,'m',v40] (test/flowgraphbuilder/flowgraph_builder0189.js:11:8)
+    node 65: read-variable['x',v49,-] (test/flowgraphbuilder/flowgraph_builder0189.js:11:2)
+    node 66: read-variable['x',v50,-] (test/flowgraphbuilder/flowgraph_builder0189.js:11:8)
+    node 67: read-property[v50,'m',v48] (test/flowgraphbuilder/flowgraph_builder0189.js:11:8)
     node 68: <variable-non-null-undef>['x'] (test/flowgraphbuilder/flowgraph_builder0189.js:11:8)
-    node 69: write-property[v41,'m',v40] (test/flowgraphbuilder/flowgraph_builder0189.js:11:2)
+    node 69: write-property[v49,'m',v48] (test/flowgraphbuilder/flowgraph_builder0189.js:11:2)
     node 70: <variable-non-null-undef>['x'] (test/flowgraphbuilder/flowgraph_builder0189.js:11:2)
     ->[block 33]
   block 33:
-    node 71: call[-,v36,v40,v35] (test/flowgraphbuilder/flowgraph_builder0189.js:10:2)
+    node 71: call[-,v44,v48,v43] (test/flowgraphbuilder/flowgraph_builder0189.js:10:1)
     ->[block 34]
   block 34:
-    node 72: constant[11.0,v43] (test/flowgraphbuilder/flowgraph_builder0189.js:11:13)
+    node 72: constant[11.0,v51] (test/flowgraphbuilder/flowgraph_builder0189.js:11:13)
     ->[block 35]
   block 35:
-    node 73: call[-,v35,v43,-]* (test/flowgraphbuilder/flowgraph_builder0189.js:10:2)
+    node 73: call[-,v43,v51,-]* (test/flowgraphbuilder/flowgraph_builder0189.js:10:1)
     ->[block 36]
   block 36: [exit-ordinary]
     node 74: return[v1] (test/flowgraphbuilder/flowgraph_builder0189.js:1:1)

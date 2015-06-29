@@ -9,11 +9,11 @@ if (Math.random()) {
 } else {
 	b = false;
 }
-	
-assert(b);
-dumpValue(b);
 
-dumpValue(q);
-dumpValue(p);
+TAJS_assert(b, 'isMaybeAnyBool');
+TAJS_dumpValue(b);
 
-dumpValue(u);
+TAJS_dumpValue(q);
+TAJS_dumpValue(p);
+
+TAJS_dumpValue(u);

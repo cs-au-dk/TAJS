@@ -1,101 +1,101 @@
-test/10k/minesweeper.tidy.html:47:13: [definite] The conditional expression is always true
-test/10k/minesweeper.tidy.html:87:21: [definite] The conditional expression is always true
-test/10k/minesweeper.tidy.html:95:17: [definite] The conditional expression is always true
-test/10k/minesweeper.tidy.html:168:34: [definite] Dead assignment, property hasFlag is never read
-test/10k/minesweeper.tidy.html:168:34: [definite] Dead assignment, property hasMine is never read
-test/10k/minesweeper.tidy.html:168:34: [definite] Dead assignment, property visible is never read
-test/10k/minesweeper.tidy.html:35:2: [definite] The variable event is never used
-test/10k/minesweeper.tidy.html:36:2: [definite] The variable event is never used
-test/10k/minesweeper.tidy.html:37:2: [definite] The variable event is never used
-test/10k/minesweeper.tidy.html:47:71: [maybe] TypeError, accessing property of null/undefined
-test/10k/minesweeper.tidy.html:56:13: [maybe] TypeError, accessing property of null/undefined
-test/10k/minesweeper.tidy.html:57:13: [maybe] TypeError, accessing property of null/undefined
-test/10k/minesweeper.tidy.html:79:17: [maybe] TypeError, accessing property of null/undefined
-test/10k/minesweeper.tidy.html:80:15: [maybe] TypeError, accessing property of null/undefined
-test/10k/minesweeper.tidy.html:91:124: [maybe] TypeError, accessing property of null/undefined
-test/10k/minesweeper.tidy.html:91:124: [maybe] TypeError, accessing property of null/undefined
-test/10k/minesweeper.tidy.html:102:23: [maybe] TypeError, accessing property of null/undefined
-test/10k/minesweeper.tidy.html:103:33: [maybe] TypeError, accessing property of null/undefined
-test/10k/minesweeper.tidy.html:116:22: [maybe] TypeError, accessing property of null/undefined
-test/10k/minesweeper.tidy.html:117:23: [maybe] TypeError, accessing property of null/undefined
-test/10k/minesweeper.tidy.html:118:9: [maybe] TypeError, accessing property of null/undefined
-test/10k/minesweeper.tidy.html:118:16: [maybe] TypeError, accessing property of null/undefined
-test/10k/minesweeper.tidy.html:174:13: [maybe] TypeError, accessing property of null/undefined
-test/10k/minesweeper.tidy.html:174:13: [maybe] TypeError, accessing property of null/undefined
-test/10k/minesweeper.tidy.html:175:13: [maybe] TypeError, accessing property of null/undefined
-test/10k/minesweeper.tidy.html:175:13: [maybe] TypeError, accessing property of null/undefined
-test/10k/minesweeper.tidy.html:176:123: [maybe] TypeError, accessing property of null/undefined
-test/10k/minesweeper.tidy.html:176:123: [maybe] TypeError, accessing property of null/undefined
-test/10k/minesweeper.tidy.html:57:13: [maybe] Reading absent property b
-test/10k/minesweeper.tidy.html:57:21: [maybe] Reading absent property h
-test/10k/minesweeper.tidy.html:57:29: [maybe] Reading absent property a
-test/10k/minesweeper.tidy.html:61:13: [maybe] Reading absent property h
-test/10k/minesweeper.tidy.html:61:53: [maybe] Reading absent property a
-test/10k/minesweeper.tidy.html:61:88: [maybe] Reading absent property b
-test/10k/minesweeper.tidy.html:80:15: [maybe] Reading absent property b
-test/10k/minesweeper.tidy.html:80:23: [maybe] Reading absent property a
-test/10k/minesweeper.tidy.html:85:21: [maybe] Reading absent property h
-test/10k/minesweeper.tidy.html:91:124: [maybe] Reading absent property b
-test/10k/minesweeper.tidy.html:102:13: [maybe] Reading absent property pageY
-test/10k/minesweeper.tidy.html:102:23: [maybe] Reading absent property offsetTop
-test/10k/minesweeper.tidy.html:102:23: [maybe] Reading absent property target
-test/10k/minesweeper.tidy.html:103:23: [maybe] Reading absent property pageX
-test/10k/minesweeper.tidy.html:103:33: [maybe] Reading absent property offsetLeft
-test/10k/minesweeper.tidy.html:103:33: [maybe] Reading absent property target
-test/10k/minesweeper.tidy.html:117:23: [maybe] Reading absent property a
-test/10k/minesweeper.tidy.html:117:31: [maybe] Reading absent property b
-test/10k/minesweeper.tidy.html:118:16: [maybe] Reading absent property a
-test/10k/minesweeper.tidy.html:119:15: [maybe] Reading absent property a
-test/10k/minesweeper.tidy.html:144:31: [maybe] Reading absent property innerHTML
-test/10k/minesweeper.tidy.html:174:13: [maybe] Reading absent property h
-test/10k/minesweeper.tidy.html:38: [maybe] Uncaught exception, constructed at [test/10k/minesweeper.tidy.html:47:71, test/10k/minesweeper.tidy.html:56:13, test/10k/minesweeper.tidy.html:57:13, test/10k/minesweeper.tidy.html:79:17, test/10k/minesweeper.tidy.html:80:15, test/10k/minesweeper.tidy.html:91:124, test/10k/minesweeper.tidy.html:102:23, test/10k/minesweeper.tidy.html:103:33, test/10k/minesweeper.tidy.html:116:22, test/10k/minesweeper.tidy.html:117:23, test/10k/minesweeper.tidy.html:118:9, test/10k/minesweeper.tidy.html:118:16, test/10k/minesweeper.tidy.html:174:13, test/10k/minesweeper.tidy.html:175:13, test/10k/minesweeper.tidy.html:176:123]
-test/10k/minesweeper.tidy.html:44:7: [maybe] The variable a has values with different types
-test/10k/minesweeper.tidy.html:45:9: [maybe] The variable a has values with different types
-test/10k/minesweeper.tidy.html:46:19: [maybe] The variable a has values with different types
-test/10k/minesweeper.tidy.html:47:71: [maybe] Reading absent property (computed name)
-test/10k/minesweeper.tidy.html:47:71: [maybe] Reading absent property (computed name)
-test/10k/minesweeper.tidy.html:56:13: [maybe] Reading absent property (computed name)
-test/10k/minesweeper.tidy.html:56:13: [maybe] Reading absent property (computed name)
-test/10k/minesweeper.tidy.html:62:27: [maybe] Converting undefined to string
-test/10k/minesweeper.tidy.html:62:33: [maybe] Reading absent property (computed name)
-test/10k/minesweeper.tidy.html:79:17: [maybe] Converting object to string
-test/10k/minesweeper.tidy.html:79:17: [maybe] Reading absent property (computed name)
-test/10k/minesweeper.tidy.html:79:17: [maybe] Reading absent property (computed name)
-test/10k/minesweeper.tidy.html:79:19: [maybe] The variable a has values with different types
-test/10k/minesweeper.tidy.html:88:26: [maybe] The variable a has values with different types
-test/10k/minesweeper.tidy.html:91:26: [maybe] Conversion from string to number yields NaN
-test/10k/minesweeper.tidy.html:91:26: [maybe] The variable a has values with different types
-test/10k/minesweeper.tidy.html:91:33: [maybe] The variable c has values with different types
-test/10k/minesweeper.tidy.html:91:38: [maybe] The variable a has values with different types
-test/10k/minesweeper.tidy.html:91:45: [maybe] Conversion from string to number yields NaN
-test/10k/minesweeper.tidy.html:91:45: [maybe] The variable c has values with different types
-test/10k/minesweeper.tidy.html:91:62: [maybe] Conversion to number yields NaN
-test/10k/minesweeper.tidy.html:91:74: [maybe] Conversion to number yields NaN
-test/10k/minesweeper.tidy.html:91:81: [maybe] Conversion to number yields NaN
-test/10k/minesweeper.tidy.html:91:99: [maybe] The variable c has values with different types
-test/10k/minesweeper.tidy.html:91:118: [maybe] The variable c has values with different types
-test/10k/minesweeper.tidy.html:91:124: [maybe] Converting object to string
-test/10k/minesweeper.tidy.html:91:124: [maybe] Reading absent property (computed name)
-test/10k/minesweeper.tidy.html:91:124: [maybe] Reading absent property (computed name)
-test/10k/minesweeper.tidy.html:91:126: [maybe] The variable c has values with different types
-test/10k/minesweeper.tidy.html:91:139: [maybe] The variable c has values with different types
-test/10k/minesweeper.tidy.html:102:13: [maybe] Conversion to number yields NaN
-test/10k/minesweeper.tidy.html:102:13: [maybe] Converting primitive number to object
-test/10k/minesweeper.tidy.html:102:13: [maybe] The variable a has values with different types
-test/10k/minesweeper.tidy.html:102:23: [maybe] Converting primitive number to object
-test/10k/minesweeper.tidy.html:102:23: [maybe] The variable a has values with different types
-test/10k/minesweeper.tidy.html:103:23: [maybe] Conversion to number yields NaN
-test/10k/minesweeper.tidy.html:103:23: [maybe] Converting primitive number to object
-test/10k/minesweeper.tidy.html:103:23: [maybe] The variable a has values with different types
-test/10k/minesweeper.tidy.html:103:33: [maybe] Converting primitive number to object
-test/10k/minesweeper.tidy.html:103:33: [maybe] The variable a has values with different types
-test/10k/minesweeper.tidy.html:116:22: [maybe] Reading absent property (computed name)
-test/10k/minesweeper.tidy.html:116:22: [maybe] Reading absent property (computed name)
-test/10k/minesweeper.tidy.html:139:33: [maybe] The variable a has values with different types
-test/10k/minesweeper.tidy.html:144:15: [maybe] Converting undefined to string
-test/10k/minesweeper.tidy.html:174:13: [maybe] Reading absent property (computed name)
-test/10k/minesweeper.tidy.html:174:13: [maybe] Reading absent property (computed name)
-test/10k/minesweeper.tidy.html:175:13: [maybe] Reading absent property (computed name)
-test/10k/minesweeper.tidy.html:175:13: [maybe] Reading absent property (computed name)
-test/10k/minesweeper.tidy.html:176:123: [maybe] Reading absent property (computed name)
-test/10k/minesweeper.tidy.html:176:123: [maybe] Reading absent property (computed name)
+test/10k/minesweeper.html:37:13: [definite] The conditional expression is always true
+test/10k/minesweeper.html:77:21: [definite] The conditional expression is always true
+test/10k/minesweeper.html:85:17: [definite] The conditional expression is always true
+test/10k/minesweeper.html:102:5: [definite] The conditional expression is always true
+test/10k/minesweeper.html:107:23: [definite] The conditional expression is always false
+test/10k/minesweeper.html:147:17: [definite] The assignment to B has no effect
+test/10k/minesweeper.html:107:23: [definite] Reading absent property a
+test/10k/minesweeper.html:107:31: [definite] Reading absent property b
+test/10k/minesweeper.html:108:16: [definite] Reading absent property a
+test/10k/minesweeper.html:158:35: [definite] Dead assignment, property hasMine is never read
+test/10k/minesweeper.html:158:45: [definite] Dead assignment, property visible is never read
+test/10k/minesweeper.html:158:55: [definite] Dead assignment, property hasFlag is never read
+test/10k/minesweeper.html:37:71: [maybe] TypeError, accessing property of null/undefined
+test/10k/minesweeper.html:46:13: [maybe] TypeError, accessing property of null/undefined
+test/10k/minesweeper.html:47:13: [maybe] TypeError, accessing property of null/undefined
+test/10k/minesweeper.html:69:17: [maybe] TypeError, accessing property of null/undefined
+test/10k/minesweeper.html:70:15: [maybe] TypeError, accessing property of null/undefined
+test/10k/minesweeper.html:81:124: [maybe] TypeError, accessing property of null/undefined
+test/10k/minesweeper.html:81:124: [maybe] TypeError, accessing property of null/undefined
+test/10k/minesweeper.html:92:23: [maybe] TypeError, accessing property of null/undefined
+test/10k/minesweeper.html:93:33: [maybe] TypeError, accessing property of null/undefined
+test/10k/minesweeper.html:106:22: [maybe] TypeError, accessing property of null/undefined
+test/10k/minesweeper.html:107:23: [maybe] TypeError, accessing property of null/undefined
+test/10k/minesweeper.html:108:9: [maybe] TypeError, accessing property of null/undefined
+test/10k/minesweeper.html:108:16: [maybe] TypeError, accessing property of null/undefined
+test/10k/minesweeper.html:164:13: [maybe] TypeError, accessing property of null/undefined
+test/10k/minesweeper.html:164:13: [maybe] TypeError, accessing property of null/undefined
+test/10k/minesweeper.html:165:13: [maybe] TypeError, accessing property of null/undefined
+test/10k/minesweeper.html:165:13: [maybe] TypeError, accessing property of null/undefined
+test/10k/minesweeper.html:166:123: [maybe] TypeError, accessing property of null/undefined
+test/10k/minesweeper.html:166:123: [maybe] TypeError, accessing property of null/undefined
+test/10k/minesweeper.html:47:13: [maybe] Reading absent property b
+test/10k/minesweeper.html:47:21: [maybe] Reading absent property h
+test/10k/minesweeper.html:47:29: [maybe] Reading absent property a
+test/10k/minesweeper.html:51:13: [maybe] Reading absent property h
+test/10k/minesweeper.html:51:53: [maybe] Reading absent property a
+test/10k/minesweeper.html:51:88: [maybe] Reading absent property b
+test/10k/minesweeper.html:70:15: [maybe] Reading absent property b
+test/10k/minesweeper.html:70:23: [maybe] Reading absent property a
+test/10k/minesweeper.html:75:21: [maybe] Reading absent property h
+test/10k/minesweeper.html:81:124: [maybe] Reading absent property b
+test/10k/minesweeper.html:92:13: [maybe] Reading absent property pageY
+test/10k/minesweeper.html:92:23: [maybe] Reading absent property offsetTop
+test/10k/minesweeper.html:92:23: [maybe] Reading absent property target
+test/10k/minesweeper.html:93:23: [maybe] Reading absent property pageX
+test/10k/minesweeper.html:93:33: [maybe] Reading absent property offsetLeft
+test/10k/minesweeper.html:93:33: [maybe] Reading absent property target
+test/10k/minesweeper.html:109:15: [maybe] Reading absent property a
+test/10k/minesweeper.html:134:31: [maybe] Reading absent property innerHTML
+test/10k/minesweeper.html:164:13: [maybe] Reading absent property h
+test/10k/minesweeper.html:28:35: [maybe] Uncaught exception, constructed at [test/10k/minesweeper.html:46:13, test/10k/minesweeper.html:47:13, test/10k/minesweeper.html:164:13, test/10k/minesweeper.html:165:13, test/10k/minesweeper.html:166:123]
+test/10k/minesweeper.html:34:7: [maybe] The variable a has values with different types
+test/10k/minesweeper.html:35:9: [maybe] The variable a has values with different types
+test/10k/minesweeper.html:36:19: [maybe] The variable a has values with different types
+test/10k/minesweeper.html:37:71: [maybe] Reading absent property (computed name)
+test/10k/minesweeper.html:37:71: [maybe] Reading absent property (computed name)
+test/10k/minesweeper.html:46:13: [maybe] Reading absent property (computed name)
+test/10k/minesweeper.html:46:13: [maybe] Reading absent property (computed name)
+test/10k/minesweeper.html:52:27: [maybe] Converting undefined to string
+test/10k/minesweeper.html:52:33: [maybe] Reading absent property (computed name)
+test/10k/minesweeper.html:69:17: [maybe] Converting object to string
+test/10k/minesweeper.html:69:17: [maybe] Reading absent property (computed name)
+test/10k/minesweeper.html:69:17: [maybe] Reading absent property (computed name)
+test/10k/minesweeper.html:69:19: [maybe] The variable a has values with different types
+test/10k/minesweeper.html:78:26: [maybe] The variable a has values with different types
+test/10k/minesweeper.html:81:26: [maybe] Conversion from string to number yields NaN
+test/10k/minesweeper.html:81:26: [maybe] The variable a has values with different types
+test/10k/minesweeper.html:81:33: [maybe] The variable c has values with different types
+test/10k/minesweeper.html:81:38: [maybe] The variable a has values with different types
+test/10k/minesweeper.html:81:45: [maybe] Conversion from string to number yields NaN
+test/10k/minesweeper.html:81:45: [maybe] The variable c has values with different types
+test/10k/minesweeper.html:81:62: [maybe] Conversion to number yields NaN
+test/10k/minesweeper.html:81:74: [maybe] Conversion to number yields NaN
+test/10k/minesweeper.html:81:81: [maybe] Conversion to number yields NaN
+test/10k/minesweeper.html:81:99: [maybe] The variable c has values with different types
+test/10k/minesweeper.html:81:118: [maybe] The variable c has values with different types
+test/10k/minesweeper.html:81:124: [maybe] Converting object to string
+test/10k/minesweeper.html:81:124: [maybe] Reading absent property (computed name)
+test/10k/minesweeper.html:81:124: [maybe] Reading absent property (computed name)
+test/10k/minesweeper.html:81:126: [maybe] The variable c has values with different types
+test/10k/minesweeper.html:81:139: [maybe] The variable c has values with different types
+test/10k/minesweeper.html:92:13: [maybe] Conversion to number yields NaN
+test/10k/minesweeper.html:92:13: [maybe] Converting primitive number to object
+test/10k/minesweeper.html:92:13: [maybe] The variable a has values with different types
+test/10k/minesweeper.html:92:23: [maybe] Converting primitive number to object
+test/10k/minesweeper.html:92:23: [maybe] The variable a has values with different types
+test/10k/minesweeper.html:93:23: [maybe] Conversion to number yields NaN
+test/10k/minesweeper.html:93:23: [maybe] Converting primitive number to object
+test/10k/minesweeper.html:93:23: [maybe] The variable a has values with different types
+test/10k/minesweeper.html:93:33: [maybe] Converting primitive number to object
+test/10k/minesweeper.html:93:33: [maybe] The variable a has values with different types
+test/10k/minesweeper.html:106:22: [maybe] Reading absent property (computed name)
+test/10k/minesweeper.html:106:22: [maybe] Reading absent property (computed name)
+test/10k/minesweeper.html:129:33: [maybe] The variable a has values with different types
+test/10k/minesweeper.html:134:15: [maybe] Converting undefined to string
+test/10k/minesweeper.html:164:13: [maybe] Reading absent property (computed name)
+test/10k/minesweeper.html:164:13: [maybe] Reading absent property (computed name)
+test/10k/minesweeper.html:165:13: [maybe] Reading absent property (computed name)
+test/10k/minesweeper.html:165:13: [maybe] Reading absent property (computed name)
+test/10k/minesweeper.html:166:123: [maybe] Reading absent property (computed name)
+test/10k/minesweeper.html:166:123: [maybe] Reading absent property (computed name)

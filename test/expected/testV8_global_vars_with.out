@@ -1,6 +1,2 @@
-test/v8tests/global-vars-with.js:30:1: [definite] ReferenceError, reading absent variable assertEquals
 test/v8tests/global-vars-with.js:29:1: [definite] Reading 'this' yields the global object
-test/v8tests/global-vars-with.js:30:14: [definite] Unreachable code
-test/v8tests/global-vars-with.js:31:5: [definite] The variable bar is never used
-test/v8tests/global-vars-with.js:39:7: [definite] The variable baz is never used
-test/v8tests/global-vars-with.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/global-vars-with.js:30:1]
+test/v8tests/global-vars-with.js:37:3: [definite] Reading 'this' yields the global object

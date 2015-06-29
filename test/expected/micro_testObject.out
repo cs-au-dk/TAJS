@@ -1,9 +1,9 @@
 test/micro/testObject.js:4:10: [definite] Too many parameters to function Object
-test/micro/testObject.js:24:14: [definite] Too many parameters to function Object
+test/micro/testObject.js:24:10: [definite] Too many parameters to function Object
 test/micro/testObject.js:4:10: [maybe] Converting primitive number to object
 test/micro/testObject.js:5:10: [maybe] Converting primitive string to object
-test/micro/testObject.js:24:14: [maybe] Converting primitive number to object
-test/micro/testObject.js:25:15: [maybe] Converting primitive string to object
+test/micro/testObject.js:24:10: [maybe] Converting primitive number to object
+test/micro/testObject.js:25:11: [maybe] Converting primitive string to object
 test/micro/testObject.js:7:1: [info] Abstract object: {[[Prototype]]=[@Object.prototype[native]]}
 test/micro/testObject.js:8:1: [info] Abstract object: {[[Prototype]]=[@Object.prototype[native]]}
 test/micro/testObject.js:9:1: [info] Abstract object: {[[Prototype]]=[@Object.prototype[native]]}

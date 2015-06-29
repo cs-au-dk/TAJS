@@ -1,8 +1,8 @@
-fg2: <main> function()
+fg2: function()
   block 0: [entry]
     node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0080.js:1:1)
     node 1: function-decl[function fooo(),-] (test/flowgraphbuilder/flowgraph_builder0080.js:1:1)
-    node 2: vardecl['x'] (test/flowgraphbuilder/flowgraph_builder0080.js:5:5)
+    node 2: vardecl['x']* (test/flowgraphbuilder/flowgraph_builder0080.js:5:5)
     ->[block 1]
   block 1:
     node 3: new[v2] (test/flowgraphbuilder/flowgraph_builder0080.js:5:9)
@@ -13,7 +13,7 @@ fg2: <main> function()
     node 6: call[v4,v5,v3] (test/flowgraphbuilder/flowgraph_builder0080.js:7:5)
     ->[block 3]
   block 3:
-    node 7: if[v3](true-block:4,false-block:5) (test/flowgraphbuilder/flowgraph_builder0080.js:7:1)
+    node 7: if[v3](true-block:4,false-block:5)* (test/flowgraphbuilder/flowgraph_builder0080.js:7:1)
     ->[block 4,block 5]
   block 4:
     node 8: read-variable['x',v7,-] (test/flowgraphbuilder/flowgraph_builder0080.js:8:2)
@@ -28,10 +28,10 @@ fg2: <main> function()
     node 15: <variable-non-null-undef>['x']* (test/flowgraphbuilder/flowgraph_builder0080.js:10:2)
     ->[block 6]
   block 6:
-    node 16: read-variable['dumpValue',v7,v6] (test/flowgraphbuilder/flowgraph_builder0080.js:12:1)
-    node 17: read-variable['x',v9,-] (test/flowgraphbuilder/flowgraph_builder0080.js:12:11)
-    node 18: read-property[v9,'bar',v8] (test/flowgraphbuilder/flowgraph_builder0080.js:12:11)
-    node 19: <variable-non-null-undef>['x'] (test/flowgraphbuilder/flowgraph_builder0080.js:12:11)
+    node 16: read-variable['TAJS_dumpValue',v7,v6] (test/flowgraphbuilder/flowgraph_builder0080.js:12:1)
+    node 17: read-variable['x',v9,-] (test/flowgraphbuilder/flowgraph_builder0080.js:12:16)
+    node 18: read-property[v9,'bar',v8] (test/flowgraphbuilder/flowgraph_builder0080.js:12:16)
+    node 19: <variable-non-null-undef>['x'] (test/flowgraphbuilder/flowgraph_builder0080.js:12:16)
     ->[block 7]
   block 7:
     node 20: call[v6,v7,v8,-]* (test/flowgraphbuilder/flowgraph_builder0080.js:12:1)
@@ -55,10 +55,10 @@ function fooo()
     node 27: call[v3,'random',v1] (test/flowgraphbuilder/flowgraph_builder0080.js:2:9)
     ->[block 13]
   block 13: [exit-ordinary]
-    node 28: return[v1] (test/flowgraphbuilder/flowgraph_builder0080.js:2:9)
+    node 28: return[v1] (test/flowgraphbuilder/flowgraph_builder0080.js:3:1)
     ->[]
   block 14: [exit-exceptional]
-    node 29: exceptional-return (test/flowgraphbuilder/flowgraph_builder0080.js:2:9)
+    node 29: exceptional-return (test/flowgraphbuilder/flowgraph_builder0080.js:3:1)
     ->[]
 
 test/flowgraphbuilder/flowgraph_builder0080.js:12:1: [info] Abstract value: UInt

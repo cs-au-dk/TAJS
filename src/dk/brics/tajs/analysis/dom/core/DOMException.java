@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2013 Aarhus University
+ * Copyright 2009-2015 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,8 +21,8 @@ import dk.brics.tajs.analysis.State;
 import dk.brics.tajs.analysis.dom.DOMObjects;
 import dk.brics.tajs.analysis.dom.DOMWindow;
 import dk.brics.tajs.lattice.ObjectLabel;
-import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.lattice.ObjectLabel.Kind;
+import dk.brics.tajs.lattice.Value;
 
 import static dk.brics.tajs.analysis.dom.DOMFunctions.createDOMProperty;
 
@@ -32,12 +32,13 @@ import static dk.brics.tajs.analysis.dom.DOMFunctions.createDOMProperty;
  * because data is lost, or because the implementation has become unstable). In
  * general, DOM methods return specific error values in ordinary processing
  * situations, such as out-of-bound errors when using NodeList.
- * <p/>
+ * <p>
  * http://www.w3.org/TR/DOM-Level-2-Core/core.html#ID-17189187
  */
 public class DOMException {
 
     public static final ObjectLabel DOMEXCEPTION = new ObjectLabel(DOMObjects.DOMEXCEPTION, Kind.OBJECT);
+
     public static final ObjectLabel DOMEXCEPTION_PROTOTYPE = new ObjectLabel(DOMObjects.DOMEXCEPTION_PROTOTYPE, Kind.OBJECT);
 
     /**
@@ -76,7 +77,5 @@ public class DOMException {
         createDOMProperty(s, DOMEXCEPTION_PROTOTYPE, "INVALID_MODIFICATION_ERR", Value.makeNum(13));
         createDOMProperty(s, DOMEXCEPTION_PROTOTYPE, "NAMESPACE_ERR", Value.makeNum(14));
         createDOMProperty(s, DOMEXCEPTION_PROTOTYPE, "INVALID_ACCESS_ERR", Value.makeNum(15));
-
     }
-
 }

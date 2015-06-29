@@ -1,0 +1,56 @@
+fg2: function()
+  block 0: [entry]
+    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder_jump_return_0007.js:1:1)
+    node 1: function-decl[function f(),-] (test/flowgraphbuilder/flowgraph_builder_jump_return_0007.js:1:1)
+    ->[block 1]
+  block 1:
+    node 2: read-variable['TAJS_assert',v3,v2] (test/flowgraphbuilder/flowgraph_builder_jump_return_0007.js:8:1)
+    node 3: read-variable['f',v6,v5] (test/flowgraphbuilder/flowgraph_builder_jump_return_0007.js:8:13)
+    ->[block 2]
+  block 2:
+    node 4: call[v5,v6,v4] (test/flowgraphbuilder/flowgraph_builder_jump_return_0007.js:8:13)
+    ->[block 3]
+  block 3:
+    node 5: call[v2,v3,v4,-]* (test/flowgraphbuilder/flowgraph_builder_jump_return_0007.js:8:1)
+    ->[block 4]
+  block 4:
+    node 6: read-variable['TAJS_dumpValue',v8,v7] (test/flowgraphbuilder/flowgraph_builder_jump_return_0007.js:10:1)
+    node 7: constant["OK",v9] (test/flowgraphbuilder/flowgraph_builder_jump_return_0007.js:10:16)
+    ->[block 5]
+  block 5:
+    node 8: call[v7,v8,v9,-]* (test/flowgraphbuilder/flowgraph_builder_jump_return_0007.js:10:1)
+    ->[block 6]
+  block 6: [exit-ordinary]
+    node 9: return[v1] (test/flowgraphbuilder/flowgraph_builder_jump_return_0007.js:1:1)
+    ->[]
+  block 7: [exit-exceptional]
+    node 10: exceptional-return (test/flowgraphbuilder/flowgraph_builder_jump_return_0007.js:1:1)
+    ->[]
+function f()
+  block 8:
+    node 11: throw[v2]* (test/flowgraphbuilder/flowgraph_builder_jump_return_0007.js:2:5)
+    ->[block 15]
+  block 9:
+    node 12: constant[true,v1]* (test/flowgraphbuilder/flowgraph_builder_jump_return_0007.js:5:14)
+    ->[block 14]
+  block 10: [entry]
+    node 13: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder_jump_return_0007.js:1:1)
+    ->[block 11]
+  block 11:
+    node 14: constant[false,v1]* (test/flowgraphbuilder/flowgraph_builder_jump_return_0007.js:3:14)
+    ->[block 13] ~>[block 12]
+  block 12:
+    node 15: catch[v2] (test/flowgraphbuilder/flowgraph_builder_jump_return_0007.js:2:5)
+    node 16(~12): constant[true,v1]* (test/flowgraphbuilder/flowgraph_builder_jump_return_0007.js:5:14)
+    ->[block 14]
+  block 13:
+    node 17(~12): constant[true,v1]* (test/flowgraphbuilder/flowgraph_builder_jump_return_0007.js:5:14)
+    ->[block 14]
+  block 14: [exit-ordinary]
+    node 18: return[v1] (test/flowgraphbuilder/flowgraph_builder_jump_return_0007.js:7:1)
+    ->[]
+  block 15: [exit-exceptional]
+    node 19: exceptional-return (test/flowgraphbuilder/flowgraph_builder_jump_return_0007.js:7:1)
+    ->[]
+
+test/flowgraphbuilder/flowgraph_builder_jump_return_0007.js:10:1: [info] Abstract value: "OK"

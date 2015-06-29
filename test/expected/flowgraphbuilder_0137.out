@@ -1,37 +1,37 @@
-fg2: <main> function()
+fg2: function()
   block 0: [entry]
     node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0137.js:1:1)
-    node 1: vardecl['foo'] (test/flowgraphbuilder/flowgraph_builder0137.js:1:5)
+    node 1: vardecl['foo']* (test/flowgraphbuilder/flowgraph_builder0137.js:1:5)
     ->[block 1]
   block 1:
     node 2: new[v2] (test/flowgraphbuilder/flowgraph_builder0137.js:1:11)
     node 3: function-expr[function(),v3] (test/flowgraphbuilder/flowgraph_builder0137.js:1:20)
-    node 4: write-property[v2,'Object',v3] (test/flowgraphbuilder/flowgraph_builder0137.js:1:11)
+    node 4: write-property[v2,'Object',v3] (test/flowgraphbuilder/flowgraph_builder0137.js:1:12)
     node 5: write-variable[v2,'foo']* (test/flowgraphbuilder/flowgraph_builder0137.js:1:11)
     node 6: read-variable['foo',v4,-] (test/flowgraphbuilder/flowgraph_builder0137.js:3:7)
     node 7: begin-with[v4]* (test/flowgraphbuilder/flowgraph_builder0137.js:3:1)
     ->[block 2]
   block 2:
-    node 8: read-variable['dumpValue',v7,v6] (test/flowgraphbuilder/flowgraph_builder0137.js:4:2)
-    node 9: read-variable['Object',v10,v9] (test/flowgraphbuilder/flowgraph_builder0137.js:4:12)
-    node 10: constant[null,v11] (test/flowgraphbuilder/flowgraph_builder0137.js:4:19)
-    ->[block 4] ~> [ block 3]
+    node 8: read-variable['TAJS_dumpValue',v7,v6] (test/flowgraphbuilder/flowgraph_builder0137.js:4:2)
+    node 9: read-variable['Object',v10,v9] (test/flowgraphbuilder/flowgraph_builder0137.js:4:17)
+    node 10: constant[null,v11] (test/flowgraphbuilder/flowgraph_builder0137.js:4:24)
+    ->[block 3] ~>[block 7]
   block 3:
-    node 11: end-with* (test/flowgraphbuilder/flowgraph_builder0137.js:3:1)
-    ->[block 10]
+    node 11: call[v9,v10,v11,v8] (test/flowgraphbuilder/flowgraph_builder0137.js:4:17)
+    ->[block 4] ~>[block 7]
   block 4:
-    node 12: call[v9,v10,v11,v8] (test/flowgraphbuilder/flowgraph_builder0137.js:4:12)
-    ->[block 5] ~> [ block 3]
+    node 12: call[v6,v7,v8,-]* (test/flowgraphbuilder/flowgraph_builder0137.js:4:2)
+    ->[block 5] ~>[block 7]
   block 5:
-    node 13: call[v6,v7,v8,-]* (test/flowgraphbuilder/flowgraph_builder0137.js:4:2)
-    ->[block 6] ~> [ block 3]
+    node 13: read-variable['TAJS_dumpValue',v13,v12] (test/flowgraphbuilder/flowgraph_builder0137.js:5:2)
+    node 14: read-variable['foo',v14,v5] (test/flowgraphbuilder/flowgraph_builder0137.js:5:17)
+    ->[block 6] ~>[block 7]
   block 6:
-    node 14: read-variable['dumpValue',v13,v12] (test/flowgraphbuilder/flowgraph_builder0137.js:5:2)
-    node 15: read-variable['foo',v14,v5] (test/flowgraphbuilder/flowgraph_builder0137.js:5:12)
-    ->[block 7] ~> [ block 3]
+    node 15: call[v12,v13,v14,-]* (test/flowgraphbuilder/flowgraph_builder0137.js:5:2)
+    ->[block 8] ~>[block 7]
   block 7:
-    node 16: call[v12,v13,v14,-]* (test/flowgraphbuilder/flowgraph_builder0137.js:5:2)
-    ->[block 8] ~> [ block 3]
+    node 16: end-with* (test/flowgraphbuilder/flowgraph_builder0137.js:3:1)
+    ->[block 10]
   block 8:
     node 17: end-with* (test/flowgraphbuilder/flowgraph_builder0137.js:3:1)
     ->[block 9]
@@ -46,13 +46,13 @@ function()
     node 20: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0137.js:1:20)
     ->[block 12]
   block 12:
-    node 21: read-variable['this',v1,-] (test/flowgraphbuilder/flowgraph_builder0137.js:1:39)
+    node 21: read-variable['this',v1,-]* (test/flowgraphbuilder/flowgraph_builder0137.js:1:39)
     ->[block 13]
   block 13: [exit-ordinary]
-    node 22: return[v1] (test/flowgraphbuilder/flowgraph_builder0137.js:1:39)
+    node 22: return[v1] (test/flowgraphbuilder/flowgraph_builder0137.js:1:44)
     ->[]
   block 14: [exit-exceptional]
-    node 23: exceptional-return (test/flowgraphbuilder/flowgraph_builder0137.js:1:39)
+    node 23: exceptional-return (test/flowgraphbuilder/flowgraph_builder0137.js:1:44)
     ->[]
 
 test/flowgraphbuilder/flowgraph_builder0137.js:4:2: [info] Abstract value: [@Object#node2]

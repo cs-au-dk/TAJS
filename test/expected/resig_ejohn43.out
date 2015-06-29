@@ -3,6 +3,6 @@ test/resig/ejohn43.js:3:10: [definite] Reading absent property sort
 test/resig/ejohn43.js:1:1: [definite] The variable basex is never used
 test/resig/ejohn43.js:3:10: [definite] Unreachable code
 test/resig/ejohn43.js:3:25: [definite] Unreachable function
-test/resig/ejohn43.js:7:8: [definite] Unreachable code
+test/resig/ejohn43.js:7:13: [definite] Unreachable code
 test/resig/ejohn43.js:1:1: [maybe] Uncaught exception, constructed at [test/resig/ejohn43.js:3:10]
-test/resig/ejohn43.js:2:3: [info] Abstract value: [@arguments#node35]
+test/resig/ejohn43.js:2:3: [info] Abstract value: [@arguments#node29]

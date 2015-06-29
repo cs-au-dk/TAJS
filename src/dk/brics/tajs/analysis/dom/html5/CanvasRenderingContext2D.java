@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2013 Aarhus University
+ * Copyright 2009-2015 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,8 +16,6 @@
 
 package dk.brics.tajs.analysis.dom.html5;
 
-import static dk.brics.tajs.analysis.dom.DOMFunctions.createDOMFunction;
-import static dk.brics.tajs.analysis.dom.DOMFunctions.createDOMProperty;
 import dk.brics.tajs.analysis.Conversion;
 import dk.brics.tajs.analysis.FunctionCalls;
 import dk.brics.tajs.analysis.InitialStateBuilder;
@@ -31,15 +29,23 @@ import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.solver.Message;
 
+import static dk.brics.tajs.analysis.dom.DOMFunctions.createDOMFunction;
+import static dk.brics.tajs.analysis.dom.DOMFunctions.createDOMProperty;
+
 public class CanvasRenderingContext2D {
 
     public static ObjectLabel CONTEXT2D;
+
     public static ObjectLabel CONTEXT2D_PROTOTYPE;
 
     public static ObjectLabel GRADIENT;
+
     public static ObjectLabel PATTERN;
+
     public static ObjectLabel PIXEL_ARRAY;
+
     public static ObjectLabel IMAGE_DATA;
+
     public static ObjectLabel TEXT_METRICS;
 
     public static void build(State s) {
@@ -74,7 +80,7 @@ public class CanvasRenderingContext2D {
         s.writeInternalPrototype(TEXT_METRICS, Value.makeObject(InitialStateBuilder.OBJECT_PROTOTYPE));
         s.writeInternalPrototype(GRADIENT, Value.makeObject(InitialStateBuilder.OBJECT_PROTOTYPE));
 
-        /**
+        /*
          * Properties.
          */
 
@@ -111,7 +117,7 @@ public class CanvasRenderingContext2D {
         // CanvasPixelArray
         createDOMProperty(s, PIXEL_ARRAY, "length", Value.makeAnyNumUInt().setReadOnly());
 
-        /**
+        /*
          * Canvas Functions.
          */
 
@@ -282,8 +288,10 @@ public class CanvasRenderingContext2D {
             case CANVASRENDERINGCONTEXT2D_CREATE_PATTERN: {
                 NativeFunctions.expectParameters(nativeObject, call, c, 2, 2);
                 // TODO: Check the arguments
-                /* Value image = */ NativeFunctions.readParameter(call, s, 0);
-                /* Value repetitionString =*/ Conversion.toString(NativeFunctions.readParameter(call, s, 1), c);
+                /* Value image = */
+                NativeFunctions.readParameter(call, s, 0);
+                /* Value repetitionString =*/
+                Conversion.toString(NativeFunctions.readParameter(call, s, 1), c);
                 return Value.makeObject(PATTERN);
             }
 
@@ -429,8 +437,8 @@ public class CanvasRenderingContext2D {
                     }
                 }
                 if (bad) {
-                	String msg = "TypeError, non-HTMLImageElement or non-HTMLCanvasElement as argument to drawImage";
-                	c.getMonitoring().addMessage(c.getCurrentNode(), Message.Severity.HIGH, msg);
+                    String msg = "TypeError, non-HTMLImageElement or non-HTMLCanvasElement as argument to drawImage";
+                    c.getMonitoring().addMessage(c.getCurrentNode(), Message.Severity.HIGH, msg);
                 }
 
                 Conversion.toNumber(NativeFunctions.readParameter(call, s, 1), c);
@@ -457,8 +465,8 @@ public class CanvasRenderingContext2D {
                 Value dy = Conversion.toNumber(NativeFunctions.readParameter(call, s, 2), c);
 
                 if (dx.isNaN() || dy.isNaN() || dx.isMaybeInf() || dy.isMaybeInf()) {
-                	final String message = "TypeError, inf or NaN as arguments to CanvasRenderingContext2D.putImageData";
-                	c.getMonitoring().addMessage(c.getCurrentNode(), Message.Severity.HIGH, message);
+                    final String message = "TypeError, inf or NaN as arguments to CanvasRenderingContext2D.putImageData";
+                    c.getMonitoring().addMessage(c.getCurrentNode(), Message.Severity.HIGH, message);
                 }
 
                 return Value.makeUndef();
@@ -525,5 +533,4 @@ public class CanvasRenderingContext2D {
             }
         }
     }
-
 }

@@ -4,9 +4,9 @@ if (Math.random())
 else
 	t = Boolean;
 var x = new t;
-dumpValue(t);
-dumpValue(x);
-dumpValue(Object);
-dumpValue(new Object);
+TAJS_dumpValue(t);
+TAJS_dumpValue(x);
+TAJS_dumpValue(Object);
+TAJS_dumpValue(new Object);
 x.foo = 42;
-dumpObject(x);
+TAJS_dumpObject(x);

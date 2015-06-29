@@ -1,3 +1,3 @@
 x = undefined
 undefined = 7
-dumpValue(x == undefined)
+TAJS_dumpValue(x == undefined)

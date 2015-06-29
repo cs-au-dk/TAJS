@@ -1,7 +1,7 @@
-test/uneval/uneval31.tidy.html:16:5: [definite] The conditional expression is always false
-test/uneval/uneval31.tidy.html:16:8: [maybe] Converting undefined to string
-test/uneval/uneval31.tidy.html:16:8: [maybe] Reading absent property (computed name)
-test/uneval/uneval31.tidy.html:16:8: [maybe] Reading absent property (computed name)
-test/uneval/uneval31.tidy.html:16:13: [maybe] Converting undefined to string
-test/uneval/uneval31.tidy.html:16:29: [maybe] Reading absent property (computed name)
-test/uneval/uneval31.tidy.html:16:8: [info] Reading from unknown property that may cause loss of precision
+test/uneval/uneval31.html:13:5: [definite] The conditional expression is always false
+TAJS-dynamic-code(test/uneval/uneval31.html:13:8):1:22: [maybe] Reading absent property (computed name)
+TAJS-dynamic-code(test/uneval/uneval31.html:13:8):1:29: [maybe] Converting undefined to string
+TAJS-dynamic-code(test/uneval/uneval31.html:13:8):1:39: [maybe] Reading absent property (computed name)
+test/uneval/uneval31.html:13:13: [maybe] Converting undefined to string
+test/uneval/uneval31.html:13:29: [maybe] Reading absent property (computed name)
+TAJS-dynamic-code(test/uneval/uneval31.html:13:8):1:22: [info] Reading from unknown property that may cause loss of precision

@@ -1,8 +1,0 @@
-test/v8tests/debug-clearbreakpoint.js:30:9: [definite] ReferenceError, reading absent variable debug
-test/v8tests/debug-clearbreakpoint.js:30:9: [definite] Unreachable code
-test/v8tests/debug-clearbreakpoint.js:36:5: [definite] The variable base_request is never used
-test/v8tests/debug-clearbreakpoint.js:38:1: [definite] Unreachable function safeEval
-test/v8tests/debug-clearbreakpoint.js:47:1: [definite] Unreachable function testArguments
-test/v8tests/debug-clearbreakpoint.js:58:1: [definite] Unreachable function listener
-test/v8tests/debug-clearbreakpoint.js:92:1: [definite] Unreachable function g
-test/v8tests/debug-clearbreakpoint.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/debug-clearbreakpoint.js:30:9]

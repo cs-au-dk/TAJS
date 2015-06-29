@@ -1,103 +1,103 @@
-test/10k/filterrific.tidy.html:406:10: [definite] Dead assignment, property B/C is never read
-test/10k/filterrific.tidy.html:406:10: [definite] Dead assignment, property Blur is never read
-test/10k/filterrific.tidy.html:406:10: [definite] Dead assignment, property Desaturate is never read
-test/10k/filterrific.tidy.html:406:10: [definite] Dead assignment, property Edges is never read
-test/10k/filterrific.tidy.html:406:10: [definite] Dead assignment, property Emboss is never read
-test/10k/filterrific.tidy.html:406:10: [definite] Dead assignment, property Fisheye is never read
-test/10k/filterrific.tidy.html:406:10: [definite] Dead assignment, property FlipH is never read
-test/10k/filterrific.tidy.html:406:10: [definite] Dead assignment, property FlipV is never read
-test/10k/filterrific.tidy.html:406:10: [definite] Dead assignment, property Glow is never read
-test/10k/filterrific.tidy.html:406:10: [definite] Dead assignment, property HSL is never read
-test/10k/filterrific.tidy.html:406:10: [definite] Dead assignment, property Invert is never read
-test/10k/filterrific.tidy.html:406:10: [definite] Dead assignment, property Mosaic is never read
-test/10k/filterrific.tidy.html:406:10: [definite] Dead assignment, property Polar Coords is never read
-test/10k/filterrific.tidy.html:406:10: [definite] Dead assignment, property Posterize is never read
-test/10k/filterrific.tidy.html:406:10: [definite] Dead assignment, property Reset is never read
-test/10k/filterrific.tidy.html:406:10: [definite] Dead assignment, property Sepia is never read
-test/10k/filterrific.tidy.html:406:10: [definite] Dead assignment, property Solarize is never read
-test/10k/filterrific.tidy.html:406:10: [definite] Dead assignment, property Unsharp Mask is never read
-test/10k/filterrific.tidy.html:252:5: [definite] The variable a is never used
-test/10k/filterrific.tidy.html:252:7: [definite] The variable d is never used
-test/10k/filterrific.tidy.html:252:13: [definite] The variable e is never used
-test/10k/filterrific.tidy.html:252:15: [definite] The variable f is never used
-test/10k/filterrific.tidy.html:252:17: [definite] The variable g is never used
-test/10k/filterrific.tidy.html:252:19: [definite] The variable j is never used
-test/10k/filterrific.tidy.html:252:21: [definite] The variable aa is never used
-test/10k/filterrific.tidy.html:252:24: [definite] The variable o is never used
-test/10k/filterrific.tidy.html:252:26: [definite] The variable r is never used
-test/10k/filterrific.tidy.html:252:28: [definite] The variable w is never used
-test/10k/filterrific.tidy.html:252:30: [definite] The variable x is never used
-test/10k/filterrific.tidy.html:252:40: [definite] The variable B is never used
-test/10k/filterrific.tidy.html:252:50: [definite] The variable C is never used
-test/10k/filterrific.tidy.html:252:60: [definite] The variable D is never used
-test/10k/filterrific.tidy.html:252:76: [definite] The variable E is never used
-test/10k/filterrific.tidy.html:252:78: [definite] The variable F is never used
-test/10k/filterrific.tidy.html:252:80: [definite] The variable G is never used
-test/10k/filterrific.tidy.html:252:91: [definite] The variable ba is never used
-test/10k/filterrific.tidy.html:252:105: [definite] The variable ca is never used
-test/10k/filterrific.tidy.html:252:119: [definite] The variable da is never used
-test/10k/filterrific.tidy.html:252:131: [definite] The variable K is never used
-test/10k/filterrific.tidy.html:252:141: [definite] The variable L is never used
-test/10k/filterrific.tidy.html:252:151: [definite] The variable M is never used
-test/10k/filterrific.tidy.html:253:5: [definite] Unreachable function N
-test/10k/filterrific.tidy.html:256:5: [definite] Unreachable function O
-test/10k/filterrific.tidy.html:259:9: [definite] The variable P is never used
-test/10k/filterrific.tidy.html:259:11: [definite] The variable fa is never used
-test/10k/filterrific.tidy.html:259:14: [definite] The variable R is never used
-test/10k/filterrific.tidy.html:259:16: [definite] The variable ga is never used
-test/10k/filterrific.tidy.html:259:19: [definite] The variable ha is never used
-test/10k/filterrific.tidy.html:259:38: [definite] The variable ia is never used
-test/10k/filterrific.tidy.html:259:41: [definite] The variable S is never used
-test/10k/filterrific.tidy.html:260:5: [definite] Unreachable function T
-test/10k/filterrific.tidy.html:263:9: [definite] The variable ja is never used
-test/10k/filterrific.tidy.html:264:5: [definite] Unreachable function U
-test/10k/filterrific.tidy.html:267:5: [definite] Unreachable function ka
-test/10k/filterrific.tidy.html:270:5: [definite] Unreachable function sa
-test/10k/filterrific.tidy.html:273:5: [definite] Unreachable function gm
-test/10k/filterrific.tidy.html:277:5: [definite] Unreachable function la
-test/10k/filterrific.tidy.html:280:5: [definite] Unreachable function V
-test/10k/filterrific.tidy.html:283:17: [definite] Unreachable function
-test/10k/filterrific.tidy.html:284:27: [definite] Unreachable function
-test/10k/filterrific.tidy.html:287:9: [definite] Unreachable function b
-test/10k/filterrific.tidy.html:326:45: [definite] Unreachable function
-test/10k/filterrific.tidy.html:331:25: [definite] Unreachable function
-test/10k/filterrific.tidy.html:337:23: [definite] Unreachable function
-test/10k/filterrific.tidy.html:341:41: [definite] Unreachable function
-test/10k/filterrific.tidy.html:370:21: [definite] Unreachable function
-test/10k/filterrific.tidy.html:371:33: [definite] Unreachable function
-test/10k/filterrific.tidy.html:372:20: [definite] Unreachable function
-test/10k/filterrific.tidy.html:374:24: [definite] Unreachable function
-test/10k/filterrific.tidy.html:386:25: [definite] Unreachable function
-test/10k/filterrific.tidy.html:389:24: [definite] Unreachable function
-test/10k/filterrific.tidy.html:392:63: [definite] Unreachable function
-test/10k/filterrific.tidy.html:396:21: [definite] Unreachable function
-test/10k/filterrific.tidy.html:403:5: [definite] Unreachable function $
-test/10k/filterrific.tidy.html:406:18: [definite] Unreachable function
-test/10k/filterrific.tidy.html:411:18: [definite] Unreachable function
-test/10k/filterrific.tidy.html:417:13: [definite] Unreachable function
-test/10k/filterrific.tidy.html:425:18: [definite] Unreachable function
-test/10k/filterrific.tidy.html:429:17: [definite] Unreachable function
-test/10k/filterrific.tidy.html:431:15: [definite] Unreachable function
-test/10k/filterrific.tidy.html:442:14: [definite] Unreachable function
-test/10k/filterrific.tidy.html:444:13: [definite] Unreachable function
-test/10k/filterrific.tidy.html:446:16: [definite] Unreachable function
-test/10k/filterrific.tidy.html:459:23: [definite] Unreachable function
-test/10k/filterrific.tidy.html:468:13: [definite] Unreachable function
-test/10k/filterrific.tidy.html:472:24: [definite] Unreachable function
-test/10k/filterrific.tidy.html:478:14: [definite] Unreachable function
-test/10k/filterrific.tidy.html:481:13: [definite] Unreachable function
-test/10k/filterrific.tidy.html:485:13: [definite] Unreachable function
-test/10k/filterrific.tidy.html:556:15: [definite] Unreachable function
-test/10k/filterrific.tidy.html:563:15: [definite] Unreachable function
-test/10k/filterrific.tidy.html:569:13: [definite] Unreachable function
-test/10k/filterrific.tidy.html:572:5: [definite] Unreachable function pa
-test/10k/filterrific.tidy.html:582:5: [definite] Unreachable function Y
-test/10k/filterrific.tidy.html:585:5: [definite] Unreachable function X
-test/10k/filterrific.tidy.html:591:5: [definite] Unreachable function oa
-test/10k/filterrific.tidy.html:603:5: [definite] Unreachable function na
-test/10k/filterrific.tidy.html:613:5: [definite] Unreachable function ma
-test/10k/filterrific.tidy.html:627:5: [definite] Unreachable function qa
-test/10k/filterrific.tidy.html:628:9: [definite] Unreachable function h
-test/10k/filterrific.tidy.html:632:29: [definite] Unreachable function
-test/10k/filterrific.tidy.html:651:25: [definite] Unreachable function
-test/10k/filterrific.tidy.html:660:26: [definite] Unreachable function
+test/10k/filterrific.html:398:11: [definite] Dead assignment, property Invert is never read
+test/10k/filterrific.html:403:7: [definite] Dead assignment, property Desaturate is never read
+test/10k/filterrific.html:409:7: [definite] Dead assignment, property Sepia is never read
+test/10k/filterrific.html:417:7: [definite] Dead assignment, property Posterize is never read
+test/10k/filterrific.html:421:8: [definite] Dead assignment, property Solarize is never read
+test/10k/filterrific.html:423:7: [definite] Dead assignment, property Mosaic is never read
+test/10k/filterrific.html:434:8: [definite] Dead assignment, property FlipV is never read
+test/10k/filterrific.html:436:7: [definite] Dead assignment, property FlipH is never read
+test/10k/filterrific.html:438:7: [definite] Dead assignment, property Fisheye is never read
+test/10k/filterrific.html:451:8: [definite] Dead assignment, property Polar Coords is never read
+test/10k/filterrific.html:460:7: [definite] Dead assignment, property Blur is never read
+test/10k/filterrific.html:464:8: [definite] Dead assignment, property Unsharp Mask is never read
+test/10k/filterrific.html:470:8: [definite] Dead assignment, property Edges is never read
+test/10k/filterrific.html:473:7: [definite] Dead assignment, property Glow is never read
+test/10k/filterrific.html:477:8: [definite] Dead assignment, property HSL is never read
+test/10k/filterrific.html:548:8: [definite] Dead assignment, property B/C is never read
+test/10k/filterrific.html:555:8: [definite] Dead assignment, property Emboss is never read
+test/10k/filterrific.html:561:7: [definite] Dead assignment, property Reset is never read
+test/10k/filterrific.html:244:17: [definite] The variable a is never used
+test/10k/filterrific.html:244:19: [definite] The variable d is never used
+test/10k/filterrific.html:244:25: [definite] The variable e is never used
+test/10k/filterrific.html:244:27: [definite] The variable f is never used
+test/10k/filterrific.html:244:29: [definite] The variable g is never used
+test/10k/filterrific.html:244:31: [definite] The variable j is never used
+test/10k/filterrific.html:244:33: [definite] The variable aa is never used
+test/10k/filterrific.html:244:36: [definite] The variable o is never used
+test/10k/filterrific.html:244:38: [definite] The variable r is never used
+test/10k/filterrific.html:244:40: [definite] The variable w is never used
+test/10k/filterrific.html:244:42: [definite] The variable x is never used
+test/10k/filterrific.html:244:52: [definite] The variable B is never used
+test/10k/filterrific.html:244:62: [definite] The variable C is never used
+test/10k/filterrific.html:244:72: [definite] The variable D is never used
+test/10k/filterrific.html:244:88: [definite] The variable E is never used
+test/10k/filterrific.html:244:90: [definite] The variable F is never used
+test/10k/filterrific.html:244:92: [definite] The variable G is never used
+test/10k/filterrific.html:244:103: [definite] The variable ba is never used
+test/10k/filterrific.html:244:117: [definite] The variable ca is never used
+test/10k/filterrific.html:244:131: [definite] The variable da is never used
+test/10k/filterrific.html:244:143: [definite] The variable K is never used
+test/10k/filterrific.html:244:153: [definite] The variable L is never used
+test/10k/filterrific.html:244:163: [definite] The variable M is never used
+test/10k/filterrific.html:245:5: [definite] Unreachable function N
+test/10k/filterrific.html:248:5: [definite] Unreachable function O
+test/10k/filterrific.html:251:9: [definite] The variable P is never used
+test/10k/filterrific.html:251:11: [definite] The variable fa is never used
+test/10k/filterrific.html:251:14: [definite] The variable R is never used
+test/10k/filterrific.html:251:16: [definite] The variable ga is never used
+test/10k/filterrific.html:251:19: [definite] The variable ha is never used
+test/10k/filterrific.html:251:38: [definite] The variable ia is never used
+test/10k/filterrific.html:251:41: [definite] The variable S is never used
+test/10k/filterrific.html:252:5: [definite] Unreachable function T
+test/10k/filterrific.html:255:9: [definite] The variable ja is never used
+test/10k/filterrific.html:256:5: [definite] Unreachable function U
+test/10k/filterrific.html:259:5: [definite] Unreachable function ka
+test/10k/filterrific.html:262:5: [definite] Unreachable function sa
+test/10k/filterrific.html:265:5: [definite] Unreachable function gm
+test/10k/filterrific.html:269:5: [definite] Unreachable function la
+test/10k/filterrific.html:272:5: [definite] Unreachable function V
+test/10k/filterrific.html:275:17: [definite] Unreachable function
+test/10k/filterrific.html:276:27: [definite] Unreachable function
+test/10k/filterrific.html:279:9: [definite] Unreachable function b
+test/10k/filterrific.html:318:45: [definite] Unreachable function
+test/10k/filterrific.html:323:25: [definite] Unreachable function
+test/10k/filterrific.html:329:23: [definite] Unreachable function
+test/10k/filterrific.html:333:41: [definite] Unreachable function
+test/10k/filterrific.html:362:21: [definite] Unreachable function
+test/10k/filterrific.html:363:33: [definite] Unreachable function
+test/10k/filterrific.html:364:20: [definite] Unreachable function
+test/10k/filterrific.html:366:24: [definite] Unreachable function
+test/10k/filterrific.html:378:25: [definite] Unreachable function
+test/10k/filterrific.html:381:24: [definite] Unreachable function
+test/10k/filterrific.html:384:63: [definite] Unreachable function
+test/10k/filterrific.html:388:21: [definite] Unreachable function
+test/10k/filterrific.html:395:5: [definite] Unreachable function $
+test/10k/filterrific.html:398:18: [definite] Unreachable function
+test/10k/filterrific.html:403:18: [definite] Unreachable function
+test/10k/filterrific.html:409:13: [definite] Unreachable function
+test/10k/filterrific.html:417:18: [definite] Unreachable function
+test/10k/filterrific.html:421:17: [definite] Unreachable function
+test/10k/filterrific.html:423:15: [definite] Unreachable function
+test/10k/filterrific.html:434:14: [definite] Unreachable function
+test/10k/filterrific.html:436:13: [definite] Unreachable function
+test/10k/filterrific.html:438:16: [definite] Unreachable function
+test/10k/filterrific.html:451:23: [definite] Unreachable function
+test/10k/filterrific.html:460:13: [definite] Unreachable function
+test/10k/filterrific.html:464:24: [definite] Unreachable function
+test/10k/filterrific.html:470:14: [definite] Unreachable function
+test/10k/filterrific.html:473:13: [definite] Unreachable function
+test/10k/filterrific.html:477:13: [definite] Unreachable function
+test/10k/filterrific.html:548:15: [definite] Unreachable function
+test/10k/filterrific.html:555:15: [definite] Unreachable function
+test/10k/filterrific.html:561:13: [definite] Unreachable function
+test/10k/filterrific.html:564:5: [definite] Unreachable function pa
+test/10k/filterrific.html:574:5: [definite] Unreachable function Y
+test/10k/filterrific.html:577:5: [definite] Unreachable function X
+test/10k/filterrific.html:583:5: [definite] Unreachable function oa
+test/10k/filterrific.html:595:5: [definite] Unreachable function na
+test/10k/filterrific.html:605:5: [definite] Unreachable function ma
+test/10k/filterrific.html:619:5: [definite] Unreachable function qa
+test/10k/filterrific.html:620:9: [definite] Unreachable function h
+test/10k/filterrific.html:624:29: [definite] Unreachable function
+test/10k/filterrific.html:643:25: [definite] Unreachable function
+test/10k/filterrific.html:652:26: [definite] Unreachable function

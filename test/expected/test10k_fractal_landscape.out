@@ -1,33 +1,4 @@
-test/10k/fractal_landscape.tidy.html:54:13: [definite] The conditional expression is always false
-test/10k/fractal_landscape.tidy.html:54:17: [definite] Reading absent property Count
-test/10k/fractal_landscape.tidy.html:112:2: [definite] The variable event is never used
-test/10k/fractal_landscape.tidy.html:162:2: [definite] The variable event is never used
-test/10k/fractal_landscape.tidy.html:42:17: [maybe] ReferenceError, reading absent variable IntervalCounter
-test/10k/fractal_landscape.tidy.html:42:35: [maybe] ReferenceError, reading absent variable detail
-test/10k/fractal_landscape.tidy.html:43:40: [maybe] ReferenceError, reading absent variable theCoords
-test/10k/fractal_landscape.tidy.html:43:51: [maybe] ReferenceError, reading absent variable displacement
-test/10k/fractal_landscape.tidy.html:43:67: [maybe] ReferenceError, reading absent variable extremity
-test/10k/fractal_landscape.tidy.html:45:17: [maybe] ReferenceError, reading absent variable IntervalCounter
-test/10k/fractal_landscape.tidy.html:48:31: [maybe] ReferenceError, reading absent variable animInterval
-test/10k/fractal_landscape.tidy.html:76:13: [maybe] ReferenceError, reading absent variable ctx
-test/10k/fractal_landscape.tidy.html:76:33: [maybe] ReferenceError, reading absent variable xsize
-test/10k/fractal_landscape.tidy.html:76:40: [maybe] ReferenceError, reading absent variable ysize
-test/10k/fractal_landscape.tidy.html:77:29: [maybe] ReferenceError, reading absent variable lineargradient
-test/10k/fractal_landscape.tidy.html:79:27: [maybe] ReferenceError, reading absent variable ysize
-test/10k/fractal_landscape.tidy.html:83:27: [maybe] ReferenceError, reading absent variable xsize
-test/10k/fractal_landscape.tidy.html:85:26: [maybe] ReferenceError, reading absent variable ysize
-test/10k/fractal_landscape.tidy.html:85:50: [maybe] ReferenceError, reading absent variable ysize
-test/10k/fractal_landscape.tidy.html:88:24: [maybe] ReferenceError, reading absent variable xsize
-test/10k/fractal_landscape.tidy.html:88:31: [maybe] ReferenceError, reading absent variable ysize
-test/10k/fractal_landscape.tidy.html:6: [maybe] Uncaught exception, constructed at [test/10k/fractal_landscape.tidy.html:42:17, test/10k/fractal_landscape.tidy.html:42:35, test/10k/fractal_landscape.tidy.html:43:40, test/10k/fractal_landscape.tidy.html:43:51, test/10k/fractal_landscape.tidy.html:43:67, test/10k/fractal_landscape.tidy.html:45:17, test/10k/fractal_landscape.tidy.html:48:31, test/10k/fractal_landscape.tidy.html:76:13, test/10k/fractal_landscape.tidy.html:76:33, test/10k/fractal_landscape.tidy.html:76:40, test/10k/fractal_landscape.tidy.html:77:29, test/10k/fractal_landscape.tidy.html:79:27, test/10k/fractal_landscape.tidy.html:83:27, test/10k/fractal_landscape.tidy.html:85:26, test/10k/fractal_landscape.tidy.html:85:50, test/10k/fractal_landscape.tidy.html:88:24, test/10k/fractal_landscape.tidy.html:88:31]
-test/10k/fractal_landscape.tidy.html:48:17: [maybe] Conversion from string to number yields NaN
-test/10k/fractal_landscape.tidy.html:54:17: [maybe] Conversion to number yields NaN
-test/10k/fractal_landscape.tidy.html:63:39: [maybe] Conversion to number yields NaN
-test/10k/fractal_landscape.tidy.html:63:39: [maybe] Reading absent property (computed name)
-test/10k/fractal_landscape.tidy.html:63:58: [maybe] Reading absent property (computed name)
-test/10k/fractal_landscape.tidy.html:65:33: [maybe] Conversion to number yields NaN
-test/10k/fractal_landscape.tidy.html:65:33: [maybe] Reading absent property (computed name)
-test/10k/fractal_landscape.tidy.html:67:32: [maybe] Reading absent property (computed name)
-test/10k/fractal_landscape.tidy.html:70:28: [maybe] Reading absent property (computed name)
-test/10k/fractal_landscape.tidy.html:85:35: [maybe] Conversion to number yields NaN
-test/10k/fractal_landscape.tidy.html:85:35: [maybe] Reading absent property (computed name)
+TAJS-dynamic-code(test/10k/fractal_landscape.html:35:28):1:1: [definite] Unreachable function
+test/10k/fractal_landscape.html:38:9: [definite] Unreachable function animatedDraw
+test/10k/fractal_landscape.html:49:9: [definite] Unreachable function fractalize
+test/10k/fractal_landscape.html:71:9: [definite] Unreachable function drawLandscape

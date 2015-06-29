@@ -7,7 +7,7 @@ try {
   foo = 42;
 }
 
-assert(standalone);
-assert(foo === 42);
-dumpValue(standalone);
-dumpValue(foo);
+TAJS_assert(standalone);
+TAJS_assert(foo === 42);
+TAJS_dumpValue(standalone);
+TAJS_dumpValue(foo);

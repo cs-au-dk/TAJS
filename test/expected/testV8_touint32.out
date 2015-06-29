@@ -1,4 +1,2 @@
-test/v8tests/touint32.js:32:1: [definite] ReferenceError, reading absent variable assertEquals
-test/v8tests/touint32.js:28:1: [definite] Unreachable function ToUInt32
-test/v8tests/touint32.js:32:14: [definite] Unreachable code
-test/v8tests/touint32.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/touint32.js:32:1]
+test/v8tests/touint32.js:29:10: [maybe] Conversion from string to number yields NaN
+test/v8tests/touint32.js:29:10: [maybe] The variable x has values with different types

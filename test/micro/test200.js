@@ -1,6 +1,6 @@
 function f() {
 	for (var x in arguments) {
-		dumpValue(x + ": " + arguments[x]);
+		TAJS_dumpValue(x + ": " + arguments[x]);
 	}
 }
 

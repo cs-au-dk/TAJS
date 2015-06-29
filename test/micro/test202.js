@@ -27,13 +27,13 @@ for (var name in obj) {
   callback.call(obj[name], name, obj[name]);
 } 
 
-//dumpState()
-//dumpValue(jQuery.fn.ajaxError)
+//TAJS_dumpState()
+//TAJS_dumpValue(jQuery.fn.ajaxError)
 
 var x = new W();
 var t1 = x.ajaxError(function(y) {return y;})
 var t2 = x.ajaxComplete(function(y) {return y;})
 var t3 = x.ajaxSend(function(y) {return y;})
-dumpValue(t1)
-dumpValue(t2)
-dumpValue(t3)
+TAJS_dumpValue(t1)
+TAJS_dumpValue(t2)
+TAJS_dumpValue(t3)

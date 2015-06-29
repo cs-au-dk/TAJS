@@ -16,8 +16,8 @@ public class TestChromeExperiments {
     @Before
     public void init() {
         Options.reset();
-        Options.enableTest();
-        Options.enableIncludeDom();
+        Options.get().enableTest();
+        Options.get().enableIncludeDom();
     }
 
     @Test
@@ -77,7 +77,7 @@ public class TestChromeExperiments {
     @Test
     public void chrome_bomomo() throws Exception {
         Misc.init();
-        Options.enableUnevalizer();
+        Options.get().enableUnevalizer();
         Misc.captureSystemOutput();
         String[] args = { "test/chromeexperiments/bomomo.html" };
         Misc.run(args);
@@ -114,7 +114,7 @@ public class TestChromeExperiments {
     @Test
     public void chrome_catchit() throws Exception {
         Misc.init();
-        Options.enableUnevalizer();
+        Options.get().enableUnevalizer();
         Misc.captureSystemOutput();
         String[] args = { "test/chromeexperiments/catchit.html" };
         Misc.run(args);
@@ -169,7 +169,7 @@ public class TestChromeExperiments {
     @Test
     public void chrome_kaleidoscope() throws Exception {
         Misc.init();
-        Options.enableUnevalizer();
+        Options.get().enableUnevalizer();
         Misc.captureSystemOutput();
         String[] args = { "test/chromeexperiments/kaleidoscope.html" };
         Misc.run(args);
@@ -233,7 +233,7 @@ public class TestChromeExperiments {
     @Test
     public void chrome_raytracer() throws Exception {
         Misc.init();
-        Options.enableUnevalizer();
+        Options.get().enableUnevalizer();
         Misc.captureSystemOutput();
         String[] args = { "test/chromeexperiments/raytracer.html" };
         Misc.run(args);
@@ -252,7 +252,7 @@ public class TestChromeExperiments {
     @Test
     public void chrome_starfield() throws Exception {
         Misc.init();
-        Options.enableUnevalizer();
+        Options.get().enableUnevalizer();
         Misc.captureSystemOutput();
         String[] args = { "test/chromeexperiments/starfield.html" };
         Misc.run(args);
@@ -272,7 +272,7 @@ public class TestChromeExperiments {
     @Test
     public void chrome_tetris() throws Exception { // FIXME: unevalable eval
         Misc.init();
-        Options.enableUnevalizer();
+        Options.get().enableUnevalizer();
         Misc.captureSystemOutput();
         String[] args = { "test/chromeexperiments/tetris.html" };
         Misc.run(args);
@@ -291,7 +291,7 @@ public class TestChromeExperiments {
     @Test
     public void chrome_tunneler() throws Exception {
         Misc.init();
-        Options.enableUnevalizer();
+        Options.get().enableUnevalizer();
         Misc.captureSystemOutput();
         String[] args = { "test/chromeexperiments/tunneler.html" };
         Misc.run(args);

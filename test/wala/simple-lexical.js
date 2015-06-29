@@ -71,4 +71,4 @@ function outer( x ) {
 
 var result = outer( 5 );
 
-assert(result == 27);
+TAJS_assert(result, 'isMaybeNumUInt');

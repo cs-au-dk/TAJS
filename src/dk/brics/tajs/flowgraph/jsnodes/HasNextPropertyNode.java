@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2013 Aarhus University
+ * Copyright 2009-2015 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,38 +27,38 @@ import dk.brics.tajs.util.AnalysisException;
  */
 public class HasNextPropertyNode extends LoadNode {
 
-	private int propertylist_reg;
+    private int propertylist_reg;
 
-	/**
-	 * Constructs a new has-next-property node.
-	 */
-	public HasNextPropertyNode(int propertylist_reg, int result_reg, SourceLocation location) {
-		super(result_reg, location);
-		this.propertylist_reg = propertylist_reg;
-	}
+    /**
+     * Constructs a new has-next-property node.
+     */
+    public HasNextPropertyNode(int propertylist_reg, int result_reg, SourceLocation location) {
+        super(result_reg, location);
+        this.propertylist_reg = propertylist_reg;
+    }
 
-	/**
-	 * Returns the property list register.
-	 */
-	public int getPropertyListRegister() {
-		return propertylist_reg;
-	}
-	
-	@Override
-	public boolean canThrowExceptions() {
-		return false;
-	}
+    /**
+     * Returns the property list register.
+     */
+    public int getPropertyListRegister() {
+        return propertylist_reg;
+    }
 
-	@Override
-	public String toString() {
-		return "has-next[v" + propertylist_reg + ",v" + getResultRegister() + "]";
-	}
+    @Override
+    public boolean canThrowExceptions() {
+        return false;
+    }
 
-	@Override
-	public <ArgType> void visitBy(NodeVisitor<ArgType> v, ArgType a) {
-		v.visit(this, a);
-	}
-    
+    @Override
+    public String toString() {
+        return "has-next[v" + propertylist_reg + ",v" + getResultRegister() + "]";
+    }
+
+    @Override
+    public <ArgType> void visitBy(NodeVisitor<ArgType> v, ArgType a) {
+        v.visit(this, a);
+    }
+
     @Override
     public void check(BasicBlock b) {
         if (propertylist_reg == NO_VALUE)

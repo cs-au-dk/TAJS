@@ -31,5 +31,5 @@ for ( var i = 3; i <= 5; i++ ) {
 
 var _sunSpiderInterval = new Date() - _sunSpiderStartDate;
 
-dumpValue(_sunSpiderInterval);
+TAJS_dumpValue(_sunSpiderInterval);
 

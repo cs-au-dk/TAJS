@@ -1,7 +1,2 @@
-test/v8tests/binary-operation-overwrite.js:33:1: [definite] ReferenceError, reading absent variable assertTrue
-test/v8tests/binary-operation-overwrite.js:29:1: [definite] Unreachable function f1
-test/v8tests/binary-operation-overwrite.js:30:1: [definite] Unreachable function f2
-test/v8tests/binary-operation-overwrite.js:31:1: [definite] Unreachable function f3
-test/v8tests/binary-operation-overwrite.js:32:1: [definite] Unreachable function f4
-test/v8tests/binary-operation-overwrite.js:33:12: [definite] Unreachable code
-test/v8tests/binary-operation-overwrite.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/binary-operation-overwrite.js:33:1]
+test/v8tests/binary-operation-overwrite.js:31:25: [definite] The conditional expression is always true
+test/v8tests/binary-operation-overwrite.js:32:25: [definite] The conditional expression is always true

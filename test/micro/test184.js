@@ -9,4 +9,4 @@
 // testsubstr1.js:1: [info] Abstract value: Str
 
 // Should not give any warnings and result in "asdf".
-dumpValue("asdf".substr())
+TAJS_dumpValue("asdf".substr())

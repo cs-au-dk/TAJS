@@ -1,216 +1,209 @@
-test/chromeexperiments/3ddemo.tidy.html:588:21: [definite] The conditional expression is always false
-test/chromeexperiments/3ddemo.tidy.html:811:17: [definite] The conditional expression is always true
-test/chromeexperiments/3ddemo.tidy.html:827:17: [definite] The conditional expression is always false
-test/chromeexperiments/3ddemo.tidy.html:833:21: [definite] The conditional expression is always true
-test/chromeexperiments/3ddemo.tidy.html:989:17: [definite] The conditional expression is always true
-test/chromeexperiments/3ddemo.tidy.html:1024:29: [definite] The conditional expression is always true
-test/chromeexperiments/3ddemo.tidy.html:1032:25: [definite] The conditional expression is always false
-test/chromeexperiments/3ddemo.tidy.html:1040:46: [definite] Property is null/undefined
-test/chromeexperiments/3ddemo.tidy.html:1040:46: [definite] The conditional expression is always false
-test/chromeexperiments/3ddemo.tidy.html:1040:73: [definite] Property is null/undefined
-test/chromeexperiments/3ddemo.tidy.html:1058:21: [definite] The conditional expression is always true
-test/chromeexperiments/3ddemo.tidy.html:1061:25: [definite] The conditional expression is always false
-test/chromeexperiments/3ddemo.tidy.html:1072:21: [definite] The conditional expression is always true
-test/chromeexperiments/3ddemo.tidy.html:1075:21: [definite] The conditional expression is always true
-test/chromeexperiments/3ddemo.tidy.html:1077:25: [definite] The conditional expression is always true
-test/chromeexperiments/3ddemo.tidy.html:1083:21: [definite] The conditional expression is always true
-test/chromeexperiments/3ddemo.tidy.html:1084:34: [definite] Property is null/undefined
-test/chromeexperiments/3ddemo.tidy.html:1085:25: [definite] The conditional expression is always false
-test/chromeexperiments/3ddemo.tidy.html:1085:29: [definite] Variable aY is null/undefined
-test/chromeexperiments/3ddemo.tidy.html:1092:21: [definite] The conditional expression is always false
-test/chromeexperiments/3ddemo.tidy.html:1096:21: [definite] The conditional expression is always false
-test/chromeexperiments/3ddemo.tidy.html:240:23: [definite] Dead assignment, property x is never read
-test/chromeexperiments/3ddemo.tidy.html:240:23: [definite] Dead assignment, property y is never read
-test/chromeexperiments/3ddemo.tidy.html:240:23: [definite] Dead assignment, property z is never read
-test/chromeexperiments/3ddemo.tidy.html:318:13: [definite] Dead assignment, property rotateZ is never read
-test/chromeexperiments/3ddemo.tidy.html:324:13: [definite] Dead assignment, property translatePre is never read
-test/chromeexperiments/3ddemo.tidy.html:327:13: [definite] Dead assignment, property scale is never read
-test/chromeexperiments/3ddemo.tidy.html:330:13: [definite] Dead assignment, property scalePre is never read
-test/chromeexperiments/3ddemo.tidy.html:333:13: [definite] Dead assignment, property transformPoint is never read
-test/chromeexperiments/3ddemo.tidy.html:341:17: [definite] Dead assignment, property r is never read
-test/chromeexperiments/3ddemo.tidy.html:342:17: [definite] Dead assignment, property g is never read
-test/chromeexperiments/3ddemo.tidy.html:343:17: [definite] Dead assignment, property b is never read
-test/chromeexperiments/3ddemo.tidy.html:344:17: [definite] Dead assignment, property a is never read
-test/chromeexperiments/3ddemo.tidy.html:346:13: [definite] Dead assignment, property setRGB is never read
-test/chromeexperiments/3ddemo.tidy.html:349:13: [definite] Dead assignment, property invert is never read
-test/chromeexperiments/3ddemo.tidy.html:371:17: [definite] Dead assignment, property centroid is never read
-test/chromeexperiments/3ddemo.tidy.html:372:17: [definite] Dead assignment, property normal1 is never read
-test/chromeexperiments/3ddemo.tidy.html:373:17: [definite] Dead assignment, property normal2 is never read
-test/chromeexperiments/3ddemo.tidy.html:374:17: [definite] Dead assignment, property fill_rgba is never read
-test/chromeexperiments/3ddemo.tidy.html:375:17: [definite] Dead assignment, property texture is never read
-test/chromeexperiments/3ddemo.tidy.html:381:13: [definite] Dead assignment, property setQuad is never read
-test/chromeexperiments/3ddemo.tidy.html:387:13: [definite] Dead assignment, property setTriangle is never read
-test/chromeexperiments/3ddemo.tidy.html:408:13: [definite] Dead assignment, property selectAll is never read
-test/chromeexperiments/3ddemo.tidy.html:413:13: [definite] Dead assignment, property selectRandom is never read
-test/chromeexperiments/3ddemo.tidy.html:419:13: [definite] Dead assignment, property distance is never read
-test/chromeexperiments/3ddemo.tidy.html:422:13: [definite] Dead assignment, property set_distance is never read
-test/chromeexperiments/3ddemo.tidy.html:425:13: [definite] Dead assignment, property count is never read
-test/chromeexperiments/3ddemo.tidy.html:428:13: [definite] Dead assignment, property set_count is never read
-test/chromeexperiments/3ddemo.tidy.html:431:13: [definite] Dead assignment, property extrude is never read
-test/chromeexperiments/3ddemo.tidy.html:493:13: [definite] Dead assignment, property averageSmooth is never read
-test/chromeexperiments/3ddemo.tidy.html:535:13: [definite] Dead assignment, property linearSubdivide is never read
-test/chromeexperiments/3ddemo.tidy.html:609:13: [definite] Dead assignment, property forEachFace is never read
-test/chromeexperiments/3ddemo.tidy.html:739:13: [definite] Dead assignment, property isRunning is never read
-test/chromeexperiments/3ddemo.tidy.html:742:13: [definite] Dead assignment, property start is never read
-test/chromeexperiments/3ddemo.tidy.html:753:13: [definite] Dead assignment, property stop is never read
-test/chromeexperiments/3ddemo.tidy.html:760:13: [definite] Dead assignment, property set_t is never read
-test/chromeexperiments/3ddemo.tidy.html:763:13: [definite] Dead assignment, property set_step is never read
-test/chromeexperiments/3ddemo.tidy.html:766:13: [definite] Dead assignment, property reverse_step_direction is never read
-test/chromeexperiments/3ddemo.tidy.html:799:13: [definite] Dead assignment, property projectPointsToCanvas is never read
-test/chromeexperiments/3ddemo.tidy.html:868:30: [definite] Dead assignment, property canvas_x is never read
-test/chromeexperiments/3ddemo.tidy.html:868:30: [definite] Dead assignment, property canvas_y is never read
-test/chromeexperiments/3ddemo.tidy.html:877:26: [definite] Dead assignment, property rotate_z is never read
-test/chromeexperiments/3ddemo.tidy.html:931:13: [definite] Dead assignment, property autoToolbar is never read
-test/chromeexperiments/3ddemo.tidy.html:1037:25: [definite] Dead assignment, property centroid is never read
-test/chromeexperiments/3ddemo.tidy.html:1038:25: [definite] Dead assignment, property normal1 is never read
-test/chromeexperiments/3ddemo.tidy.html:1039:25: [definite] Dead assignment, property normal2 is never read
-test/chromeexperiments/3ddemo.tidy.html:1111:19: [definite] Dead assignment, property Math is never read
-test/chromeexperiments/3ddemo.tidy.html:1111:19: [definite] Dead assignment, property TextureInfo is never read
-test/chromeexperiments/3ddemo.tidy.html:1111:19: [definite] Dead assignment, property Ticker is never read
-test/chromeexperiments/3ddemo.tidy.html:1111:19: [definite] Dead assignment, property Transform is never read
-test/chromeexperiments/3ddemo.tidy.html:1111:86: [definite] Dead assignment, property addPoints2d is never read
-test/chromeexperiments/3ddemo.tidy.html:1111:86: [definite] Dead assignment, property addPoints3d is never read
-test/chromeexperiments/3ddemo.tidy.html:1111:86: [definite] Dead assignment, property crossProduct is never read
-test/chromeexperiments/3ddemo.tidy.html:1111:86: [definite] Dead assignment, property dotProduct2d is never read
-test/chromeexperiments/3ddemo.tidy.html:1111:86: [definite] Dead assignment, property dotProduct3d is never read
-test/chromeexperiments/3ddemo.tidy.html:1111:86: [definite] Dead assignment, property linearInterpolate is never read
-test/chromeexperiments/3ddemo.tidy.html:1111:86: [definite] Dead assignment, property mulPoint2d is never read
-test/chromeexperiments/3ddemo.tidy.html:1111:86: [definite] Dead assignment, property mulPoint3d is never read
-test/chromeexperiments/3ddemo.tidy.html:1111:86: [definite] Dead assignment, property subPoints2d is never read
-test/chromeexperiments/3ddemo.tidy.html:1111:86: [definite] Dead assignment, property subPoints3d is never read
-test/chromeexperiments/3ddemo.tidy.html:1111:86: [definite] Dead assignment, property unitVector2d is never read
-test/chromeexperiments/3ddemo.tidy.html:1111:86: [definite] Dead assignment, property unitVector3d is never read
-test/chromeexperiments/3ddemo.tidy.html:1111:86: [definite] Dead assignment, property vecMag2d is never read
-test/chromeexperiments/3ddemo.tidy.html:1111:86: [definite] Dead assignment, property vecMag3d is never read
-test/chromeexperiments/3ddemo.tidy.html:70:17: [definite] The variable h is never used
-test/chromeexperiments/3ddemo.tidy.html:76:13: [definite] Unreachable function aE
-test/chromeexperiments/3ddemo.tidy.html:98:13: [definite] Unreachable function C
-test/chromeexperiments/3ddemo.tidy.html:105:13: [definite] Unreachable function a
-test/chromeexperiments/3ddemo.tidy.html:109:13: [definite] Unreachable function aD
-test/chromeexperiments/3ddemo.tidy.html:119:13: [definite] Unreachable function ab
-test/chromeexperiments/3ddemo.tidy.html:195:13: [definite] Unreachable function i
-test/chromeexperiments/3ddemo.tidy.html:205:13: [definite] Unreachable function ar
-test/chromeexperiments/3ddemo.tidy.html:249:13: [definite] Unreachable function ag
-test/chromeexperiments/3ddemo.tidy.html:260:13: [definite] Unreachable function ai
-test/chromeexperiments/3ddemo.tidy.html:280:13: [definite] Unreachable function w
-test/chromeexperiments/3ddemo.tidy.html:281:24: [definite] Unreachable function
-test/chromeexperiments/3ddemo.tidy.html:293:13: [definite] Unreachable function V
-test/chromeexperiments/3ddemo.tidy.html:297:13: [definite] Unreachable function ad
-test/chromeexperiments/3ddemo.tidy.html:318:36: [definite] Unreachable function n
-test/chromeexperiments/3ddemo.tidy.html:324:41: [definite] Unreachable function I
-test/chromeexperiments/3ddemo.tidy.html:327:34: [definite] Unreachable function aw
-test/chromeexperiments/3ddemo.tidy.html:330:37: [definite] Unreachable function aF
-test/chromeexperiments/3ddemo.tidy.html:333:43: [definite] Unreachable function aH
-test/chromeexperiments/3ddemo.tidy.html:346:35: [definite] Unreachable function
-test/chromeexperiments/3ddemo.tidy.html:349:35: [definite] Unreachable function
-test/chromeexperiments/3ddemo.tidy.html:354:13: [definite] Unreachable function l
-test/chromeexperiments/3ddemo.tidy.html:381:35: [definite] Unreachable function
-test/chromeexperiments/3ddemo.tidy.html:387:39: [definite] Unreachable function
-test/chromeexperiments/3ddemo.tidy.html:400:33: [definite] Unreachable function af
-test/chromeexperiments/3ddemo.tidy.html:408:53: [definite] Unreachable function an
-test/chromeexperiments/3ddemo.tidy.html:409:34: [definite] Unreachable function
-test/chromeexperiments/3ddemo.tidy.html:413:56: [definite] Unreachable function c
-test/chromeexperiments/3ddemo.tidy.html:415:34: [definite] Unreachable function
-test/chromeexperiments/3ddemo.tidy.html:419:52: [definite] Unreachable function N
-test/chromeexperiments/3ddemo.tidy.html:422:56: [definite] Unreachable function au
-test/chromeexperiments/3ddemo.tidy.html:425:49: [definite] Unreachable function g
-test/chromeexperiments/3ddemo.tidy.html:428:53: [definite] Unreachable function y
-test/chromeexperiments/3ddemo.tidy.html:431:35: [definite] Unreachable function H
-test/chromeexperiments/3ddemo.tidy.html:493:41: [definite] Unreachable function U
-test/chromeexperiments/3ddemo.tidy.html:535:43: [definite] Unreachable function ak
-test/chromeexperiments/3ddemo.tidy.html:556:57: [definite] Unreachable function
-test/chromeexperiments/3ddemo.tidy.html:581:31: [definite] The variable aO is never used
-test/chromeexperiments/3ddemo.tidy.html:609:39: [definite] Unreachable function
-test/chromeexperiments/3ddemo.tidy.html:617:27: [definite] Unreachable function G
-test/chromeexperiments/3ddemo.tidy.html:643:33: [definite] Unreachable function ac
-test/chromeexperiments/3ddemo.tidy.html:683:36: [definite] Unreachable function S
-test/chromeexperiments/3ddemo.tidy.html:696:28: [definite] Unreachable function F
-test/chromeexperiments/3ddemo.tidy.html:731:13: [definite] Unreachable function W
-test/chromeexperiments/3ddemo.tidy.html:739:37: [definite] Unreachable function
-test/chromeexperiments/3ddemo.tidy.html:742:33: [definite] Unreachable function
-test/chromeexperiments/3ddemo.tidy.html:747:53: [definite] Unreachable function
-test/chromeexperiments/3ddemo.tidy.html:753:32: [definite] Unreachable function
-test/chromeexperiments/3ddemo.tidy.html:760:33: [definite] Unreachable function
-test/chromeexperiments/3ddemo.tidy.html:763:36: [definite] Unreachable function
-test/chromeexperiments/3ddemo.tidy.html:766:50: [definite] Unreachable function
-test/chromeexperiments/3ddemo.tidy.html:799:50: [definite] Unreachable function T
-test/chromeexperiments/3ddemo.tidy.html:836:25: [definite] The variable aR is never used
-test/chromeexperiments/3ddemo.tidy.html:837:25: [definite] The variable aP is never used
-test/chromeexperiments/3ddemo.tidy.html:838:25: [definite] The variable aS is never used
-test/chromeexperiments/3ddemo.tidy.html:852:48: [definite] The variable aP is never used
-test/chromeexperiments/3ddemo.tidy.html:855:49: [definite] The variable aP is never used
-test/chromeexperiments/3ddemo.tidy.html:931:40: [definite] Unreachable function s
-test/chromeexperiments/3ddemo.tidy.html:934:42: [definite] Unreachable function
-test/chromeexperiments/3ddemo.tidy.html:938:46: [definite] Unreachable function
-test/chromeexperiments/3ddemo.tidy.html:942:48: [definite] Unreachable function
-test/chromeexperiments/3ddemo.tidy.html:946:52: [definite] Unreachable function
-test/chromeexperiments/3ddemo.tidy.html:950:50: [definite] Unreachable function
-test/chromeexperiments/3ddemo.tidy.html:954:58: [definite] Unreachable function
-test/chromeexperiments/3ddemo.tidy.html:979:13: [definite] Unreachable function ah
-test/chromeexperiments/3ddemo.tidy.html:1007:21: [definite] The variable aR is never used
-test/chromeexperiments/3ddemo.tidy.html:1008:21: [definite] The variable ba is never used
-test/chromeexperiments/3ddemo.tidy.html:1050:21: [definite] The variable aO is never used
-test/chromeexperiments/3ddemo.tidy.html:1051:21: [definite] The variable bc is never used
-test/chromeexperiments/3ddemo.tidy.html:85:26: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/3ddemo.tidy.html:85:33: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/3ddemo.tidy.html:89:26: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/3ddemo.tidy.html:89:33: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/3ddemo.tidy.html:93:17: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/3ddemo.tidy.html:93:24: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/3ddemo.tidy.html:114:17: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/3ddemo.tidy.html:114:24: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/3ddemo.tidy.html:168:34: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/3ddemo.tidy.html:228:29: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/3ddemo.tidy.html:582:33: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/3ddemo.tidy.html:794:48: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/3ddemo.tidy.html:870:25: [maybe] TypeError, call to non-function
-test/chromeexperiments/3ddemo.tidy.html:990:21: [maybe] TypeError, call to non-function
-test/chromeexperiments/3ddemo.tidy.html:997:17: [maybe] TypeError, call to non-function
-test/chromeexperiments/3ddemo.tidy.html:1002:27: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/3ddemo.tidy.html:1011:36: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/3ddemo.tidy.html:1018:40: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/3ddemo.tidy.html:1055:30: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/3ddemo.tidy.html:1069:31: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/3ddemo.tidy.html:1069:40: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/3ddemo.tidy.html:1070:31: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/3ddemo.tidy.html:1070:40: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/3ddemo.tidy.html:1071:31: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/3ddemo.tidy.html:1071:40: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/3ddemo.tidy.html:1073:35: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/3ddemo.tidy.html:1073:44: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/3ddemo.tidy.html:1079:29: [maybe] TypeError, call to non-function
-test/chromeexperiments/3ddemo.tidy.html:1142:21: [maybe] ReferenceError, reading absent variable cur_white
-test/chromeexperiments/3ddemo.tidy.html:1143:21: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/3ddemo.tidy.html:1146:21: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/3ddemo.tidy.html:1149:30: [maybe] ReferenceError, reading absent variable cur_white
-test/chromeexperiments/3ddemo.tidy.html:779:21: [maybe] Reading absent property setStrokeColor
-test/chromeexperiments/3ddemo.tidy.html:785:21: [maybe] Reading absent property setFillColor
-test/chromeexperiments/3ddemo.tidy.html:794:48: [maybe] Reading absent property z
-test/chromeexperiments/3ddemo.tidy.html:990:21: [maybe] Reading absent property setFillColor
-test/chromeexperiments/3ddemo.tidy.html:997:17: [maybe] Reading absent property setStrokeColor
-test/chromeexperiments/3ddemo.tidy.html:1079:29: [maybe] Reading absent property setFillColor
-test/chromeexperiments/3ddemo.tidy.html:1143:21: [maybe] Reading absent property body
-test/chromeexperiments/3ddemo.tidy.html:1146:21: [maybe] Reading absent property body
-test/chromeexperiments/3ddemo.tidy.html:46: [maybe] Uncaught exception, constructed at [test/chromeexperiments/3ddemo.tidy.html:85:26, test/chromeexperiments/3ddemo.tidy.html:85:33, test/chromeexperiments/3ddemo.tidy.html:89:26, test/chromeexperiments/3ddemo.tidy.html:89:33, test/chromeexperiments/3ddemo.tidy.html:93:17, test/chromeexperiments/3ddemo.tidy.html:93:24, test/chromeexperiments/3ddemo.tidy.html:114:17, test/chromeexperiments/3ddemo.tidy.html:114:24, test/chromeexperiments/3ddemo.tidy.html:168:34, test/chromeexperiments/3ddemo.tidy.html:228:29, test/chromeexperiments/3ddemo.tidy.html:582:33, test/chromeexperiments/3ddemo.tidy.html:794:48, test/chromeexperiments/3ddemo.tidy.html:870:25, test/chromeexperiments/3ddemo.tidy.html:990:21, test/chromeexperiments/3ddemo.tidy.html:997:17, test/chromeexperiments/3ddemo.tidy.html:1002:27, test/chromeexperiments/3ddemo.tidy.html:1011:36, test/chromeexperiments/3ddemo.tidy.html:1018:40, test/chromeexperiments/3ddemo.tidy.html:1055:30, test/chromeexperiments/3ddemo.tidy.html:1069:31, test/chromeexperiments/3ddemo.tidy.html:1069:40, test/chromeexperiments/3ddemo.tidy.html:1070:31, test/chromeexperiments/3ddemo.tidy.html:1070:40, test/chromeexperiments/3ddemo.tidy.html:1071:31, test/chromeexperiments/3ddemo.tidy.html:1071:40, test/chromeexperiments/3ddemo.tidy.html:1073:35, test/chromeexperiments/3ddemo.tidy.html:1073:44, test/chromeexperiments/3ddemo.tidy.html:1079:29, test/chromeexperiments/3ddemo.tidy.html:1142:21, test/chromeexperiments/3ddemo.tidy.html:1143:21, test/chromeexperiments/3ddemo.tidy.html:1146:21, test/chromeexperiments/3ddemo.tidy.html:1149:30]
-test/chromeexperiments/3ddemo.tidy.html:219:36: [maybe] Reading absent property (computed name)
-test/chromeexperiments/3ddemo.tidy.html:227:30: [maybe] Reading absent property (computed name)
-test/chromeexperiments/3ddemo.tidy.html:579:30: [maybe] Reading absent property (computed name)
-test/chromeexperiments/3ddemo.tidy.html:582:30: [maybe] Reading absent property (computed name)
-test/chromeexperiments/3ddemo.tidy.html:583:30: [maybe] Reading absent property (computed name)
-test/chromeexperiments/3ddemo.tidy.html:584:30: [maybe] Reading absent property (computed name)
-test/chromeexperiments/3ddemo.tidy.html:592:34: [maybe] Reading absent property (computed name)
-test/chromeexperiments/3ddemo.tidy.html:794:47: [maybe] Conversion to number yields NaN
-test/chromeexperiments/3ddemo.tidy.html:870:25: [maybe] Reading absent property (computed name)
-test/chromeexperiments/3ddemo.tidy.html:906:25: [maybe] The variable aT has values with different types
-test/chromeexperiments/3ddemo.tidy.html:907:38: [maybe] The variable aT has values with different types
-test/chromeexperiments/3ddemo.tidy.html:1002:27: [maybe] Reading absent property (computed name)
-test/chromeexperiments/3ddemo.tidy.html:1010:30: [maybe] Reading absent property (computed name)
-test/chromeexperiments/3ddemo.tidy.html:1017:34: [maybe] Reading absent property (computed name)
-test/chromeexperiments/3ddemo.tidy.html:1035:40: [maybe] Reading absent property (computed name)
-test/chromeexperiments/3ddemo.tidy.html:1035:51: [maybe] Reading absent property (computed name)
-test/chromeexperiments/3ddemo.tidy.html:1035:62: [maybe] Reading absent property (computed name)
-test/chromeexperiments/3ddemo.tidy.html:1035:73: [maybe] Reading absent property (computed name)
-test/chromeexperiments/3ddemo.tidy.html:1054:30: [maybe] Reading absent property (computed name)
-test/chromeexperiments/3ddemo.tidy.html:307:24: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/chromeexperiments/3ddemo.tidy.html:379:24: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test/chromeexperiments/3ddemo.tidy.html:604:24: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/3ddemo.html:587:21: [definite] The conditional expression is always false
+test/chromeexperiments/3ddemo.html:778:17: [definite] The conditional expression is always true
+test/chromeexperiments/3ddemo.html:784:17: [definite] The conditional expression is always true
+test/chromeexperiments/3ddemo.html:810:17: [definite] The conditional expression is always true
+test/chromeexperiments/3ddemo.html:826:17: [definite] The conditional expression is always false
+test/chromeexperiments/3ddemo.html:988:17: [definite] The conditional expression is always true
+test/chromeexperiments/3ddemo.html:1023:29: [definite] The conditional expression is always true
+test/chromeexperiments/3ddemo.html:1031:25: [definite] The conditional expression is always false
+test/chromeexperiments/3ddemo.html:1039:46: [definite] Property is null/undefined
+test/chromeexperiments/3ddemo.html:1039:46: [definite] The conditional expression is always false
+test/chromeexperiments/3ddemo.html:1039:73: [definite] Property is null/undefined
+test/chromeexperiments/3ddemo.html:1057:21: [definite] The conditional expression is always true
+test/chromeexperiments/3ddemo.html:1060:25: [definite] The conditional expression is always false
+test/chromeexperiments/3ddemo.html:1071:21: [definite] The conditional expression is always true
+test/chromeexperiments/3ddemo.html:1074:21: [definite] The conditional expression is always true
+test/chromeexperiments/3ddemo.html:1076:25: [definite] The conditional expression is always true
+test/chromeexperiments/3ddemo.html:1082:21: [definite] The conditional expression is always true
+test/chromeexperiments/3ddemo.html:1083:34: [definite] Property is null/undefined
+test/chromeexperiments/3ddemo.html:1084:25: [definite] The conditional expression is always false
+test/chromeexperiments/3ddemo.html:1084:29: [definite] Variable aY is null/undefined
+test/chromeexperiments/3ddemo.html:1091:21: [definite] The conditional expression is always false
+test/chromeexperiments/3ddemo.html:1095:21: [definite] The conditional expression is always false
+test/chromeexperiments/3ddemo.html:239:24: [definite] Dead assignment, property x is never read
+test/chromeexperiments/3ddemo.html:239:46: [definite] Dead assignment, property y is never read
+test/chromeexperiments/3ddemo.html:239:68: [definite] Dead assignment, property z is never read
+test/chromeexperiments/3ddemo.html:317:13: [definite] Dead assignment, property rotateZ is never read
+test/chromeexperiments/3ddemo.html:323:13: [definite] Dead assignment, property translatePre is never read
+test/chromeexperiments/3ddemo.html:326:13: [definite] Dead assignment, property scale is never read
+test/chromeexperiments/3ddemo.html:329:13: [definite] Dead assignment, property scalePre is never read
+test/chromeexperiments/3ddemo.html:332:13: [definite] Dead assignment, property transformPoint is never read
+test/chromeexperiments/3ddemo.html:345:13: [definite] Dead assignment, property setRGB is never read
+test/chromeexperiments/3ddemo.html:348:13: [definite] Dead assignment, property invert is never read
+test/chromeexperiments/3ddemo.html:380:13: [definite] Dead assignment, property setQuad is never read
+test/chromeexperiments/3ddemo.html:386:13: [definite] Dead assignment, property setTriangle is never read
+test/chromeexperiments/3ddemo.html:407:13: [definite] Dead assignment, property selectAll is never read
+test/chromeexperiments/3ddemo.html:412:13: [definite] Dead assignment, property selectRandom is never read
+test/chromeexperiments/3ddemo.html:418:13: [definite] Dead assignment, property distance is never read
+test/chromeexperiments/3ddemo.html:421:13: [definite] Dead assignment, property set_distance is never read
+test/chromeexperiments/3ddemo.html:424:13: [definite] Dead assignment, property count is never read
+test/chromeexperiments/3ddemo.html:427:13: [definite] Dead assignment, property set_count is never read
+test/chromeexperiments/3ddemo.html:430:13: [definite] Dead assignment, property extrude is never read
+test/chromeexperiments/3ddemo.html:492:13: [definite] Dead assignment, property averageSmooth is never read
+test/chromeexperiments/3ddemo.html:534:13: [definite] Dead assignment, property linearSubdivide is never read
+test/chromeexperiments/3ddemo.html:608:13: [definite] Dead assignment, property forEachFace is never read
+test/chromeexperiments/3ddemo.html:738:13: [definite] Dead assignment, property isRunning is never read
+test/chromeexperiments/3ddemo.html:741:13: [definite] Dead assignment, property start is never read
+test/chromeexperiments/3ddemo.html:752:13: [definite] Dead assignment, property stop is never read
+test/chromeexperiments/3ddemo.html:759:13: [definite] Dead assignment, property set_t is never read
+test/chromeexperiments/3ddemo.html:762:13: [definite] Dead assignment, property set_step is never read
+test/chromeexperiments/3ddemo.html:765:13: [definite] Dead assignment, property reverse_step_direction is never read
+test/chromeexperiments/3ddemo.html:778:21: [definite] Reading absent property setStrokeColor
+test/chromeexperiments/3ddemo.html:784:21: [definite] Reading absent property setFillColor
+test/chromeexperiments/3ddemo.html:798:13: [definite] Dead assignment, property projectPointsToCanvas is never read
+test/chromeexperiments/3ddemo.html:825:27: [definite] Dead assignment, property first_event is never read
+test/chromeexperiments/3ddemo.html:825:44: [definite] Dead assignment, property is_clicking is never read
+test/chromeexperiments/3ddemo.html:825:62: [definite] Dead assignment, property last_x is never read
+test/chromeexperiments/3ddemo.html:825:71: [definite] Dead assignment, property last_y is never read
+test/chromeexperiments/3ddemo.html:876:51: [definite] Dead assignment, property rotate_z is never read
+test/chromeexperiments/3ddemo.html:930:13: [definite] Dead assignment, property autoToolbar is never read
+test/chromeexperiments/3ddemo.html:1036:25: [definite] Dead assignment, property centroid is never read
+test/chromeexperiments/3ddemo.html:1037:25: [definite] Dead assignment, property normal1 is never read
+test/chromeexperiments/3ddemo.html:1038:25: [definite] Dead assignment, property normal2 is never read
+test/chromeexperiments/3ddemo.html:1110:28: [definite] Dead assignment, property TextureInfo is never read
+test/chromeexperiments/3ddemo.html:1110:42: [definite] Dead assignment, property Transform is never read
+test/chromeexperiments/3ddemo.html:1110:55: [definite] Dead assignment, property Ticker is never read
+test/chromeexperiments/3ddemo.html:1110:81: [definite] Dead assignment, property Math is never read
+test/chromeexperiments/3ddemo.html:1110:87: [definite] Dead assignment, property crossProduct is never read
+test/chromeexperiments/3ddemo.html:1110:103: [definite] Dead assignment, property dotProduct2d is never read
+test/chromeexperiments/3ddemo.html:1110:119: [definite] Dead assignment, property dotProduct3d is never read
+test/chromeexperiments/3ddemo.html:1110:135: [definite] Dead assignment, property subPoints2d is never read
+test/chromeexperiments/3ddemo.html:1110:149: [definite] Dead assignment, property subPoints3d is never read
+test/chromeexperiments/3ddemo.html:1110:163: [definite] Dead assignment, property addPoints2d is never read
+test/chromeexperiments/3ddemo.html:1110:177: [definite] Dead assignment, property addPoints3d is never read
+test/chromeexperiments/3ddemo.html:1110:192: [definite] Dead assignment, property mulPoint2d is never read
+test/chromeexperiments/3ddemo.html:1110:206: [definite] Dead assignment, property mulPoint3d is never read
+test/chromeexperiments/3ddemo.html:1110:220: [definite] Dead assignment, property vecMag2d is never read
+test/chromeexperiments/3ddemo.html:1110:232: [definite] Dead assignment, property vecMag3d is never read
+test/chromeexperiments/3ddemo.html:1110:243: [definite] Dead assignment, property unitVector2d is never read
+test/chromeexperiments/3ddemo.html:1110:259: [definite] Dead assignment, property unitVector3d is never read
+test/chromeexperiments/3ddemo.html:1110:274: [definite] Dead assignment, property linearInterpolate is never read
+test/chromeexperiments/3ddemo.html:51:13: [definite] Unreachable function aG
+test/chromeexperiments/3ddemo.html:58:13: [definite] Unreachable function t
+test/chromeexperiments/3ddemo.html:65:13: [definite] Unreachable function ay
+test/chromeexperiments/3ddemo.html:69:17: [definite] The variable h is never used
+test/chromeexperiments/3ddemo.html:75:13: [definite] Unreachable function aE
+test/chromeexperiments/3ddemo.html:97:13: [definite] Unreachable function C
+test/chromeexperiments/3ddemo.html:104:13: [definite] Unreachable function a
+test/chromeexperiments/3ddemo.html:108:13: [definite] Unreachable function aD
+test/chromeexperiments/3ddemo.html:118:13: [definite] Unreachable function ab
+test/chromeexperiments/3ddemo.html:194:13: [definite] Unreachable function i
+test/chromeexperiments/3ddemo.html:204:13: [definite] Unreachable function ar
+test/chromeexperiments/3ddemo.html:248:13: [definite] Unreachable function ag
+test/chromeexperiments/3ddemo.html:259:13: [definite] Unreachable function ai
+test/chromeexperiments/3ddemo.html:279:13: [definite] Unreachable function w
+test/chromeexperiments/3ddemo.html:280:24: [definite] Unreachable function
+test/chromeexperiments/3ddemo.html:292:13: [definite] Unreachable function V
+test/chromeexperiments/3ddemo.html:296:13: [definite] Unreachable function ad
+test/chromeexperiments/3ddemo.html:317:36: [definite] Unreachable function n
+test/chromeexperiments/3ddemo.html:323:41: [definite] Unreachable function I
+test/chromeexperiments/3ddemo.html:326:34: [definite] Unreachable function aw
+test/chromeexperiments/3ddemo.html:329:37: [definite] Unreachable function aF
+test/chromeexperiments/3ddemo.html:332:43: [definite] Unreachable function aH
+test/chromeexperiments/3ddemo.html:345:35: [definite] Unreachable function
+test/chromeexperiments/3ddemo.html:348:35: [definite] Unreachable function
+test/chromeexperiments/3ddemo.html:353:13: [definite] Unreachable function l
+test/chromeexperiments/3ddemo.html:380:35: [definite] Unreachable function
+test/chromeexperiments/3ddemo.html:386:39: [definite] Unreachable function
+test/chromeexperiments/3ddemo.html:399:33: [definite] Unreachable function af
+test/chromeexperiments/3ddemo.html:407:53: [definite] Unreachable function an
+test/chromeexperiments/3ddemo.html:408:34: [definite] Unreachable function
+test/chromeexperiments/3ddemo.html:412:56: [definite] Unreachable function c
+test/chromeexperiments/3ddemo.html:414:34: [definite] Unreachable function
+test/chromeexperiments/3ddemo.html:418:52: [definite] Unreachable function N
+test/chromeexperiments/3ddemo.html:421:56: [definite] Unreachable function au
+test/chromeexperiments/3ddemo.html:424:49: [definite] Unreachable function g
+test/chromeexperiments/3ddemo.html:427:53: [definite] Unreachable function y
+test/chromeexperiments/3ddemo.html:430:35: [definite] Unreachable function H
+test/chromeexperiments/3ddemo.html:492:41: [definite] Unreachable function U
+test/chromeexperiments/3ddemo.html:534:43: [definite] Unreachable function ak
+test/chromeexperiments/3ddemo.html:555:57: [definite] Unreachable function
+test/chromeexperiments/3ddemo.html:580:31: [definite] The variable aO is never used
+test/chromeexperiments/3ddemo.html:608:39: [definite] Unreachable function
+test/chromeexperiments/3ddemo.html:616:27: [definite] Unreachable function G
+test/chromeexperiments/3ddemo.html:642:33: [definite] Unreachable function ac
+test/chromeexperiments/3ddemo.html:682:36: [definite] Unreachable function S
+test/chromeexperiments/3ddemo.html:695:28: [definite] Unreachable function F
+test/chromeexperiments/3ddemo.html:730:13: [definite] Unreachable function W
+test/chromeexperiments/3ddemo.html:738:37: [definite] Unreachable function
+test/chromeexperiments/3ddemo.html:741:33: [definite] Unreachable function
+test/chromeexperiments/3ddemo.html:746:53: [definite] Unreachable function
+test/chromeexperiments/3ddemo.html:752:32: [definite] Unreachable function
+test/chromeexperiments/3ddemo.html:759:33: [definite] Unreachable function
+test/chromeexperiments/3ddemo.html:762:36: [definite] Unreachable function
+test/chromeexperiments/3ddemo.html:765:50: [definite] Unreachable function
+test/chromeexperiments/3ddemo.html:798:50: [definite] Unreachable function T
+test/chromeexperiments/3ddemo.html:825:21: [definite] The variable aO is never used
+test/chromeexperiments/3ddemo.html:831:17: [definite] Unreachable function aL
+test/chromeexperiments/3ddemo.html:845:50: [definite] Unreachable function
+test/chromeexperiments/3ddemo.html:851:48: [definite] Unreachable function
+test/chromeexperiments/3ddemo.html:854:49: [definite] Unreachable function
+test/chromeexperiments/3ddemo.html:857:50: [definite] Unreachable function
+test/chromeexperiments/3ddemo.html:873:39: [definite] The variable aU is never used
+test/chromeexperiments/3ddemo.html:875:21: [definite] The variable aR is never used
+test/chromeexperiments/3ddemo.html:885:21: [definite] The variable aT is never used
+test/chromeexperiments/3ddemo.html:886:44: [definite] Unreachable function
+test/chromeexperiments/3ddemo.html:908:37: [definite] Unreachable function
+test/chromeexperiments/3ddemo.html:930:40: [definite] Unreachable function s
+test/chromeexperiments/3ddemo.html:933:42: [definite] Unreachable function
+test/chromeexperiments/3ddemo.html:937:46: [definite] Unreachable function
+test/chromeexperiments/3ddemo.html:941:48: [definite] Unreachable function
+test/chromeexperiments/3ddemo.html:945:52: [definite] Unreachable function
+test/chromeexperiments/3ddemo.html:949:50: [definite] Unreachable function
+test/chromeexperiments/3ddemo.html:953:58: [definite] Unreachable function
+test/chromeexperiments/3ddemo.html:978:13: [definite] Unreachable function ah
+test/chromeexperiments/3ddemo.html:1006:21: [definite] The variable aR is never used
+test/chromeexperiments/3ddemo.html:1007:21: [definite] The variable ba is never used
+test/chromeexperiments/3ddemo.html:1049:21: [definite] The variable aO is never used
+test/chromeexperiments/3ddemo.html:1050:21: [definite] The variable bc is never used
+test/chromeexperiments/3ddemo.html:1137:50: [definite] Unreachable function
+test/chromeexperiments/3ddemo.html:84:26: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/3ddemo.html:84:33: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/3ddemo.html:88:26: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/3ddemo.html:88:33: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/3ddemo.html:92:17: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/3ddemo.html:92:24: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/3ddemo.html:113:17: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/3ddemo.html:113:24: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/3ddemo.html:167:34: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/3ddemo.html:227:29: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/3ddemo.html:581:33: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/3ddemo.html:793:48: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/3ddemo.html:989:21: [maybe] TypeError, call to non-function
+test/chromeexperiments/3ddemo.html:996:17: [maybe] TypeError, call to non-function
+test/chromeexperiments/3ddemo.html:1001:27: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/3ddemo.html:1010:36: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/3ddemo.html:1017:40: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/3ddemo.html:1054:30: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/3ddemo.html:1068:31: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/3ddemo.html:1068:40: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/3ddemo.html:1069:31: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/3ddemo.html:1069:40: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/3ddemo.html:1070:31: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/3ddemo.html:1070:40: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/3ddemo.html:1072:35: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/3ddemo.html:1072:44: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/3ddemo.html:1078:29: [maybe] TypeError, call to non-function
+test/chromeexperiments/3ddemo.html:793:48: [maybe] Reading absent property z
+test/chromeexperiments/3ddemo.html:989:21: [maybe] Reading absent property setFillColor
+test/chromeexperiments/3ddemo.html:996:17: [maybe] Reading absent property setStrokeColor
+test/chromeexperiments/3ddemo.html:1078:29: [maybe] Reading absent property setFillColor
+test/chromeexperiments/3ddemo.html:218:36: [maybe] Reading absent property (computed name)
+test/chromeexperiments/3ddemo.html:226:30: [maybe] Reading absent property (computed name)
+test/chromeexperiments/3ddemo.html:578:30: [maybe] Reading absent property (computed name)
+test/chromeexperiments/3ddemo.html:581:30: [maybe] Reading absent property (computed name)
+test/chromeexperiments/3ddemo.html:582:30: [maybe] Reading absent property (computed name)
+test/chromeexperiments/3ddemo.html:583:30: [maybe] Reading absent property (computed name)
+test/chromeexperiments/3ddemo.html:591:34: [maybe] Reading absent property (computed name)
+test/chromeexperiments/3ddemo.html:793:47: [maybe] Conversion to number yields NaN
+test/chromeexperiments/3ddemo.html:1001:27: [maybe] Reading absent property (computed name)
+test/chromeexperiments/3ddemo.html:1009:30: [maybe] Reading absent property (computed name)
+test/chromeexperiments/3ddemo.html:1016:34: [maybe] Reading absent property (computed name)
+test/chromeexperiments/3ddemo.html:1034:40: [maybe] Reading absent property (computed name)
+test/chromeexperiments/3ddemo.html:1034:51: [maybe] Reading absent property (computed name)
+test/chromeexperiments/3ddemo.html:1034:62: [maybe] Reading absent property (computed name)
+test/chromeexperiments/3ddemo.html:1034:73: [maybe] Reading absent property (computed name)
+test/chromeexperiments/3ddemo.html:1053:30: [maybe] Reading absent property (computed name)
+test/chromeexperiments/3ddemo.html:306:24: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/3ddemo.html:378:24: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/3ddemo.html:603:24: [info] 'this' refers to multiple abstract objects, which may cause loss of precision

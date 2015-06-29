@@ -7,5 +7,5 @@ if (Math.random()) {
    x = 5
 }
 
-dumpValue(y + x)
+TAJS_dumpValue(y + x)
 

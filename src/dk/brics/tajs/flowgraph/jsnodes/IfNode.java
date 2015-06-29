@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2013 Aarhus University
+ * Copyright 2009-2015 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,11 +16,11 @@
 
 package dk.brics.tajs.flowgraph.jsnodes;
 
-import java.util.Collection;
-
 import dk.brics.tajs.flowgraph.BasicBlock;
 import dk.brics.tajs.flowgraph.SourceLocation;
 import dk.brics.tajs.util.AnalysisException;
+
+import java.util.Collection;
 
 /**
  * If node.
@@ -31,85 +31,78 @@ import dk.brics.tajs.util.AnalysisException;
  */
 public class IfNode extends Node {
 
-	private int condition_reg;
-	
-	private BasicBlock succ_true;
+    private int condition_reg;
 
-	private BasicBlock succ_false;
+    private BasicBlock succ_true;
+
+    private BasicBlock succ_false;
 
     /**
      * Constructs a new if node.
      *
      * @param condition_reg The condition register.
-     * @param location The source location.
+     * @param location      The source location.
      */
-	public IfNode(int condition_reg, SourceLocation location) {
-		super(location);
-		this.condition_reg = condition_reg;
-	}
-	
-	/**
-	 * Sets the true/false successors.
-     *
-     * @param succ_true The basic block if the condition is true.
-     * @param succ_false The basic block if the condition is false.
-	 */
-	public void setSuccessors(BasicBlock succ_true, BasicBlock succ_false) {
-		this.succ_true = succ_true;
-		this.succ_false = succ_false;
-	}
-
-	/**
-	 * Returns the condition register.
-	 */
-	public int getConditionRegister() {
-		return condition_reg;
-	}
-
-    /**
-     * Sets the condition register.
-     */
-    public void setConditionRegister(int condition_reg) {
+    public IfNode(int condition_reg, SourceLocation location) {
+        super(location);
         this.condition_reg = condition_reg;
     }
 
-	/**
-	 * Returns the 'true' successor.
-	 */
-	public BasicBlock getSuccTrue() {
-		return succ_true;
-	}
+    /**
+     * Sets the true/false successors.
+     *
+     * @param succ_true  The basic block if the condition is true.
+     * @param succ_false The basic block if the condition is false.
+     */
+    public void setSuccessors(BasicBlock succ_true, BasicBlock succ_false) {
+        this.succ_true = succ_true;
+        this.succ_false = succ_false;
+    }
 
-	/**
-	 * Returns the 'false' successor.
-	 */
-	public BasicBlock getSuccFalse() {
-		return succ_false;
-	}
+    /**
+     * Returns the condition register.
+     */
+    public int getConditionRegister() {
+        return condition_reg;
+    }
 
-	@Override
-	public String toString() {
-		return "if[v" + condition_reg + "](true-block:" + succ_true.getIndex() + ",false-block:" + succ_false.getIndex() + ")";
-	}
+    /**
+     * Returns the 'true' successor.
+     */
+    public BasicBlock getSuccTrue() {
+        return succ_true;
+    }
 
-	@Override
-	public <ArgType> void visitBy(NodeVisitor<ArgType> v, ArgType a) {
-		v.visit(this, a);
-	}
+    /**
+     * Returns the 'false' successor.
+     */
+    public BasicBlock getSuccFalse() {
+        return succ_false;
+    }
 
-	@Override
-	public boolean canThrowExceptions() {
-		return false;
-	}
+    @Override
+    public String toString() {
+        return "if[v" + condition_reg + "](true-block:" + succ_true.getIndex() + ",false-block:" + succ_false.getIndex() + ")";
+    }
 
-	@Override
-	public void check(BasicBlock b) {
+    @Override
+    public <ArgType> void visitBy(NodeVisitor<ArgType> v, ArgType a) {
+        v.visit(this, a);
+    }
+
+    @Override
+    public boolean canThrowExceptions() {
+        return false;
+    }
+
+    @Override
+    public void check(BasicBlock b) {
         if (condition_reg == NO_VALUE)
             throw new AnalysisException("Invalid condition register: " + toString());
         if (this != b.getLastNode())
-            throw new AnalysisException("If node not at the end of the block: " + b.toString());
+            throw new AnalysisException("If node not at the end of the block: " + b);
         Collection<BasicBlock> successors = b.getSuccessors();
         if (!(successors.contains(succ_false) && successors.contains(succ_true)))
-            throw new AnalysisException("Strange successors for if node: " + b.toString());
-	}
+            throw new AnalysisException("Strange successors for if node: " + b);
+    }
 }

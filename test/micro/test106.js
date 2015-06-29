@@ -17,5 +17,5 @@ var cheese = new prod_dept("feta", 5, "food");
 
 var car = new prod_dept("honda", 5000, "auto");
 
-dumpObject(cheese);
-dumpObject(car);
+TAJS_dumpObject(cheese);
+TAJS_dumpObject(car);
