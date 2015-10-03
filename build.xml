@@ -36,6 +36,9 @@
             <compilerarg line="-Xlint -Xlint:-serial -Xlint:-path" compiler="modern" />
             -->
         </javac>
+        <copy todir="build">
+            <fileset dir="src" includes="**/*.properties"/>
+        </copy>
     </target>
 
     <target name="jar" depends="compile">
