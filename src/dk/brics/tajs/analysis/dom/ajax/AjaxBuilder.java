@@ -16,7 +16,7 @@
 
 package dk.brics.tajs.analysis.dom.ajax;
 
-import dk.brics.tajs.analysis.State;
+import dk.brics.tajs.lattice.State;
 
 public class AjaxBuilder {
 

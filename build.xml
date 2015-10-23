@@ -92,7 +92,7 @@
                 <![CDATA[Type Analyzer for JavaScript (TAJS) API Specification]]>
             </doctitle>
             <bottom><![CDATA[<i> Copyright &#169; 2009-2015 Aarhus University </i>]]></bottom>
-            <link href="http://docs.oracle.com/javase/7/docs/api/" />
+            <link href="http://docs.oracle.com/javase/8/docs/api/"/>
             <link href="http://www.mozilla.org/rhino/apidocs/" />
             <classpath refid="classpath" />
         </javadoc>
@@ -142,7 +142,7 @@
     <target name="test" depends="compile-test">
         <junit fork="true" printsummary="yes" showoutput="yes" haltonfailure="no" haltonerror="no" maxmemory="2048m">
             <classpath refid="classpath.test" />
-            <test name="dk.brics.tajs.test.RunRegression" />
+            <test name="dk.brics.tajs.test.RunFast"/>
         </junit>
     </target>
 
@@ -150,7 +150,7 @@
         <junit fork="true" printsummary="yes" showoutput="yes" haltonfailure="yes" maxmemory="2048m">
             <classpath refid="classpath.test"/>
             <formatter type="brief" usefile="false"/>
-            <test name="dk.brics.tajs.test.RunRegression"/>
+            <test name="dk.brics.tajs.test.RunFast"/>
         </junit>
     </target>
 

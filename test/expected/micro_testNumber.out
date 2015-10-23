@@ -14,8 +14,8 @@ test/micro/testNumber.js:25:1: [info] Abstract value: 0.0
 test/micro/testNumber.js:26:1: [info] Abstract value: 1.7976931348623157E308
 test/micro/testNumber.js:27:1: [info] Abstract value: 4.9E-324
 test/micro/testNumber.js:28:1: [info] Abstract value: NaN
-test/micro/testNumber.js:29:1: [info] Abstract value: -Infinity
-test/micro/testNumber.js:30:1: [info] Abstract value: Infinity
+test/micro/testNumber.js:29:1: [info] Abstract value: Inf
+test/micro/testNumber.js:30:1: [info] Abstract value: Inf
 test/micro/testNumber.js:33:1: [info] Abstract value: "47.11"
 test/micro/testNumber.js:34:1: [info] Abstract value: "42.66"
 test/micro/testNumber.js:35:1: [info] Abstract value: 42.66

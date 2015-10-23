@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="generator" content="HTML Tidy for Java (vers. 2009-12-01), see jtidy.sourceforge.net" />
+<title>Plain Wrapper</title>
+<script type="text/javascript" src="jquery.js">//</script></head>
+<body>
+<!--Inserted snippet: ajax_post.snippet-->
+<script type="text/javascript">
+//<![CDATA[
+$(function()
+{
+        $.post("test_post.php",
+        {
+                name: "John Doe",
+                age: "42"
+        },
+        function(data, textStatus)
+        {
+                alert("Response from server: " + data);
+        });
+});
+//]]>
+</script>
+</body>
+</html>

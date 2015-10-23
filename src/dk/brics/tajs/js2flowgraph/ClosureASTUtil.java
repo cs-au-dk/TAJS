@@ -134,7 +134,7 @@ class ClosureASTUtil {
                     while (++c < length) {
                         v = (v * 2) + binarydigit(value.charAt(c));
                     }
-                    return (double) v;
+                    return v;
                 }
                 case 'o':
                 case 'O': {
@@ -143,7 +143,7 @@ class ClosureASTUtil {
                     while (++c < length) {
                         v = (v * 8) + octaldigit(value.charAt(c));
                     }
-                    return (double) v;
+                    return v;
                 }
                 case 'x':
                 case 'X': {
@@ -152,7 +152,7 @@ class ClosureASTUtil {
                     while (++c < length) {
                         v = (v * 16) + hexdigit(value.charAt(c));
                     }
-                    return (double) v;
+                    return v;
                 }
                 case '0':
                 case '1':
@@ -168,7 +168,7 @@ class ClosureASTUtil {
                         while (++c < length) {
                             v = (v * 8) + octaldigit(value.charAt(c));
                         }
-                        return (double) v;
+                        return v;
                     } else {
                         return Double.valueOf(value);
                     }

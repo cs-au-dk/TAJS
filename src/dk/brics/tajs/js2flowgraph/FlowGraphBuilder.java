@@ -28,11 +28,14 @@ import org.apache.log4j.Logger;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
+import java.util.Stack;
 
 import static dk.brics.tajs.js2flowgraph.FunctionBuilderHelper.makeSourceLocation;
 import static dk.brics.tajs.js2flowgraph.FunctionBuilderHelper.makeSuccessorBasicBlock;
 import static dk.brics.tajs.js2flowgraph.FunctionBuilderHelper.setupFunction;
 import static dk.brics.tajs.util.Collections.newList;
+import static dk.brics.tajs.util.Collections.newSet;
 import static org.apache.log4j.Logger.getLogger;
 
 /**
@@ -61,6 +64,8 @@ public class FlowGraphBuilder {
 
     private TranslationResult processed;
 
+    private ASTInfo astInfo;
+
     /**
      * Constructs a new flow graph builder using a fresh environment.
      */
@@ -85,9 +90,10 @@ public class FlowGraphBuilder {
             env = setupFunction(main, env, fab);
         }
         functionAndBlocksManager = fab;
+        astInfo = new ASTInfo();
         initialEnv = env;
         parser = new JavaScriptParser(mode);
-        functionBuilder = new FunctionBuilder(new ClosureASTUtil(mode), fab);
+        functionBuilder = new FunctionBuilder(new ClosureASTUtil(mode), astInfo, fab);
         processed = TranslationResult.makeAppendBlock(initialEnv.getAppendBlock());
         eventHandlers = newList();
     }
@@ -133,6 +139,7 @@ public class FlowGraphBuilder {
         ParseResult parseResult = parser.parse(sourceName, s.toString());
         reportParseMessages(parseResult);
         patchSourceLocations(sourceName, env.getFunction(), lineOffset, columnOffset);
+        astInfo.updateWith(parseResult.getProgramAST());
         return parseResult.getProgramAST();
     }
 
@@ -287,6 +294,14 @@ public class FlowGraphBuilder {
 
         Pair<List<Function>, List<BasicBlock>> blocksAndFunctions = functionAndBlocksManager.close();
 
+        // TODO check that function bodies are not overly large now: some recursive algorithms will blow the stack...
+        // throw new AnalysisException("Recursive analysis implementation can not handle very large function bodies: " + f.getSourceLocation());
+
+        for (Function f : blocksAndFunctions.getFirst()) {
+            flowGraph.addFunction(f);
+        }
+        flowGraph.getFunctions().forEach(f -> setEntryBlocks(f, functionAndBlocksManager));
+
         // bypass empty basic blocks
         boolean changed;
         do {
@@ -318,10 +333,7 @@ public class FlowGraphBuilder {
             }
         } while (changed);
 
-        // add each function and non-empty basic block to the flow graph
-        for (Function f : blocksAndFunctions.getFirst()) {
-            flowGraph.addFunction(f);
-        }
+        // add each non-empty basic block to the flow graph
         for (BasicBlock b : blocksAndFunctions.getSecond()) {
             if (!b.isEmpty()) {
                 flowGraph.addBlock(b);
@@ -378,6 +390,65 @@ public class FlowGraphBuilder {
     }
 
     /**
+     * Sets the entry block of every block in a function.
+     */
+    private static void setEntryBlocks(Function f, FunctionAndBlockManager functionAndBlocksManager) {
+        Stack<BasicBlock> entryStack = new Stack<>();
+        entryStack.push(f.getEntry());
+        try {
+            setEntryBlocks(null, f.getEntry(), entryStack, newSet(), functionAndBlocksManager);
+        }catch(StackOverflowError e){
+            throw new AnalysisException("Recursive algorithm can not handle large function body");
+        }
+        // needed if the blocks are unreachable
+        f.getOrdinaryExit().setEntryBlock(f.getEntry());
+        f.getExceptionalExit().setEntryBlock(f.getEntry());
+    }
+
+    /**
+     * Recursively sets BasicBlock.entry_block
+     * All blocks between "Begin" and "End" nodes form a region with a changed entry block see {@link BasicBlock#entry_block}
+     */
+    private static void setEntryBlocks(BasicBlock predecessor, BasicBlock target, Stack<BasicBlock> entryStack, Set<BasicBlock> visited, FunctionAndBlockManager functionAndBlocksManager) {
+        visited.add(target);
+        Stack<BasicBlock> successorEntryStack = new Stack<>();
+        successorEntryStack.addAll(entryStack);
+        Stack<BasicBlock> exceptionEntryStack = new Stack<>();
+        exceptionEntryStack.addAll(entryStack);
+
+        target.setEntryBlock(successorEntryStack.peek());
+        if (target == target.getEntryBlock()) {
+            target.setEntryPredecessorBlock(predecessor);
+        }
+
+        if (!target.isEmpty()) {
+            AbstractNode lastNode = target.getLastNode();
+            if (lastNode instanceof BeginForInNode) {
+                successorEntryStack.push(target.getSingleSuccessor());
+            }
+            if (lastNode instanceof EndForInNode) {
+                successorEntryStack.pop();
+                exceptionEntryStack.pop();
+            }
+        }
+
+        if (successorEntryStack.isEmpty()) {
+            throw new AnalysisException("Empty entry_block stack due to " + target);
+        }
+
+        Set<BasicBlock> unvisitedSuccessors = newSet();
+        unvisitedSuccessors.addAll(target.getSuccessors());
+        unvisitedSuccessors.addAll(functionAndBlocksManager.getUnreachableSyntacticSuccessors(target));
+        unvisitedSuccessors.removeAll(visited);
+        unvisitedSuccessors.remove(null);
+        unvisitedSuccessors.forEach(s -> setEntryBlocks(target, s, successorEntryStack, visited, functionAndBlocksManager));
+        BasicBlock exceptionHandler = target.getExceptionHandler();
+        if (exceptionHandler != null && !visited.contains(exceptionHandler)) {
+            setEntryBlocks(target, exceptionHandler, exceptionEntryStack, visited, functionAndBlocksManager);
+        }
+    }
+
+    /**
      * Creates the nodes responsible for execution of registered event-handlers.
      */
     private void addEventDispatchers(SourceLocation location) {
@@ -385,14 +456,16 @@ public class FlowGraphBuilder {
 
         // event entry block (last node may require a single successor)
         BasicBlock entryBB = makeSuccessorBasicBlock(main, processed.getAppendBlock(), functionAndBlocksManager);
-        entryBB.addNode(new NopNode(location)); // blocks cannot be empty
+        NopNode nopEntryNode = new NopNode("eventDispatchers: entry", location);
+        nopEntryNode.setArtificial();
+        entryBB.addNode(nopEntryNode); // blocks cannot be empty
 
         // load event handlers
         BasicBlock loadBB = makeSuccessorBasicBlock(main, entryBB, functionAndBlocksManager);
         loadBB.addNode(new EventDispatcherNode(Type.LOAD, location));
 
         BasicBlock nopPostLoad = makeSuccessorBasicBlock(main, loadBB, functionAndBlocksManager); // loadBB muat have single successor
-        NopNode nopPostNode = new NopNode(location);
+        NopNode nopPostNode = new NopNode("eventDispatchers: postLoad", location);
         nopPostNode.setArtificial();
         nopPostLoad.addNode(nopPostNode); // blocks cannot be empty
         nopPostLoad.addSuccessor(loadBB); // back loop
@@ -402,7 +475,7 @@ public class FlowGraphBuilder {
         otherBB.addNode(new EventDispatcherNode(Type.OTHER, location));
 
         BasicBlock nopPostOther = makeSuccessorBasicBlock(main, otherBB, functionAndBlocksManager); // otherBB must have single successor
-        AbstractNode nopPostOtherNode = new NopNode(location);
+        AbstractNode nopPostOtherNode = new NopNode("eventDispatchers: postOther", location);
         nopPostOtherNode.setArtificial();
         nopPostOther.addNode(nopPostOtherNode); // blocks cannot be empty
         nopPostOther.addSuccessor(otherBB); // back loop
@@ -412,7 +485,7 @@ public class FlowGraphBuilder {
         unloadBB.addNode(new EventDispatcherNode(Type.UNLOAD, location));
 
         BasicBlock nopPostUnload = makeSuccessorBasicBlock(main, unloadBB, functionAndBlocksManager); // unloadBB must have single successor
-        AbstractNode nopPostUnloadNode = new NopNode(location);
+        AbstractNode nopPostUnloadNode = new NopNode("eventDispatchers: postUnload", location);
         nopPostUnloadNode.setArtificial();
         nopPostUnload.addNode(nopPostUnloadNode); // blocks cannot be empty
         nopPostUnload.addSuccessor(unloadBB); // back loop
@@ -422,5 +495,9 @@ public class FlowGraphBuilder {
         nopPostOther.addSuccessor(nopPostUnload); // may skip unload
 
         processed = TranslationResult.makeAppendBlock(nopPostUnload);
+    }
+
+    public ASTInfo getAstInfo() {
+        return astInfo;
     }
 }

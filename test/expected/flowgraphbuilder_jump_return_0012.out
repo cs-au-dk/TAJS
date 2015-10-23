@@ -40,25 +40,25 @@ function f()
     ->[block 12] ~>[block 13]
   block 12:
     node 14(~23): call[v3,v4,-]* (test/flowgraphbuilder/flowgraph_builder_jump_return_0012.js:6:13)
-    ->[block 17] ~>[block 13]
+    ->[block 18] ~>[block 13]
   block 13:
     node 15: catch[e,v5] (test/flowgraphbuilder/flowgraph_builder_jump_return_0012.js:7:11)
     node 16: begin-with[v5]* (test/flowgraphbuilder/flowgraph_builder_jump_return_0012.js:7:11)
     ->[block 14]
   block 14:
     node 17: read-variable['p',v8,v7] (test/flowgraphbuilder/flowgraph_builder_jump_return_0012.js:8:13)
-    ->[block 15] ~>[block 18]
+    ->[block 15] ~>[block 16]
   block 15:
     node 18: call[v7,v8,-]* (test/flowgraphbuilder/flowgraph_builder_jump_return_0012.js:8:13)
-    ->[block 16] ~>[block 18]
+    ->[block 17] ~>[block 16]
   block 16:
     node 19: end-with* (test/flowgraphbuilder/flowgraph_builder_jump_return_0012.js:7:11)
-    ->[block 17] ~>[block 18]
-  block 17:
-    node 20: throw[v2]* (test/flowgraphbuilder/flowgraph_builder_jump_return_0012.js:2:5)
     ->[block 27]
+  block 17:
+    node 20: end-with* (test/flowgraphbuilder/flowgraph_builder_jump_return_0012.js:7:11)
+    ->[block 18]
   block 18:
-    node 21: end-with* (test/flowgraphbuilder/flowgraph_builder_jump_return_0012.js:7:11)
+    node 21: throw[v2]* (test/flowgraphbuilder/flowgraph_builder_jump_return_0012.js:2:5)
     ->[block 27]
   block 19:
     node 22: read-variable['p',v10,v9] (test/flowgraphbuilder/flowgraph_builder_jump_return_0012.js:6:13)
@@ -72,16 +72,16 @@ function f()
     ->[block 22]
   block 22:
     node 26: read-variable['p',v14,v13] (test/flowgraphbuilder/flowgraph_builder_jump_return_0012.js:8:13)
-    ->[block 23] ~>[block 25]
+    ->[block 23] ~>[block 24]
   block 23:
     node 27: call[v13,v14,-]* (test/flowgraphbuilder/flowgraph_builder_jump_return_0012.js:8:13)
-    ->[block 24] ~>[block 25]
+    ->[block 25] ~>[block 24]
   block 24:
     node 28: end-with* (test/flowgraphbuilder/flowgraph_builder_jump_return_0012.js:7:11)
-    ->[block 26] ~>[block 25]
+    ->[block 27]
   block 25:
     node 29: end-with* (test/flowgraphbuilder/flowgraph_builder_jump_return_0012.js:7:11)
-    ->[block 27]
+    ->[block 26]
   block 26: [exit-ordinary]
     node 30: return[v1] (test/flowgraphbuilder/flowgraph_builder_jump_return_0012.js:11:1)
     ->[]

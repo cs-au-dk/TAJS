@@ -25,4 +25,9 @@ public interface HostObject {
      * Returns the API descriptor that this host object belongs to.
      */
     HostAPI getAPI();
+
+    /**
+     * Evaluates a setter for the given host object property, if any.
+     */
+    void evaluateSetter(ObjectLabel objlabel, Str prop, Value value, State state);
 }

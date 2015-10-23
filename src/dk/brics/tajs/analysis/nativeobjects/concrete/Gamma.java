@@ -2,8 +2,8 @@ package dk.brics.tajs.analysis.nativeobjects.concrete;
 
 import dk.brics.tajs.analysis.Conversion;
 import dk.brics.tajs.analysis.Solver;
-import dk.brics.tajs.analysis.State;
 import dk.brics.tajs.lattice.ObjectLabel;
+import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.UnknownValueResolver;
 import dk.brics.tajs.lattice.Value;
 
@@ -31,7 +31,10 @@ public class Gamma {
         if (value.getObjectLabels().size() == 1 && value.getObjectLabels().iterator().next().getKind() == ObjectLabel.Kind.NUMBER) {
             value = Conversion.toNumber(value, c);
         }
-        if (value.isNaN() || value.isInf()) {
+        if (value.isMaybeInf()) {
+            return false; // +/- Infinity
+        }
+        if (value.isNaN()) {
             return true;
         }
         return value.isMaybeSingleNum() && !value.isMaybeOtherThanNum();
@@ -108,7 +111,7 @@ public class Gamma {
         return true;
     }
 
-    private static ConcreteNumber toConcreteNumber(Value value, Solver.SolverInterface c) {
+    public static ConcreteNumber toConcreteNumber(Value value, Solver.SolverInterface c) {
         checkConcrete(isConcreteNumber(value, c));
         value = Conversion.toNumber(value, c);
         return new ConcreteNumber(value.getNum());

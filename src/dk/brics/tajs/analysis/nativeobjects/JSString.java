@@ -21,7 +21,6 @@ import dk.brics.tajs.analysis.FunctionCalls.CallInfo;
 import dk.brics.tajs.analysis.InitialStateBuilder;
 import dk.brics.tajs.analysis.NativeFunctions;
 import dk.brics.tajs.analysis.Solver;
-import dk.brics.tajs.analysis.State;
 import dk.brics.tajs.analysis.nativeobjects.JSRegExp.RegExpExecHandler;
 import dk.brics.tajs.analysis.nativeobjects.concrete.Alpha;
 import dk.brics.tajs.analysis.nativeobjects.concrete.ConcreteArray;
@@ -36,8 +35,10 @@ import dk.brics.tajs.analysis.nativeobjects.concrete.ConcreteValue;
 import dk.brics.tajs.analysis.nativeobjects.concrete.ConcreteValueVisitor;
 import dk.brics.tajs.analysis.nativeobjects.concrete.Gamma;
 import dk.brics.tajs.analysis.nativeobjects.concrete.TAJSConcreteSemantics;
+import dk.brics.tajs.lattice.HeapContext;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.ObjectLabel.Kind;
+import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.solver.Message.Severity;
@@ -196,7 +197,8 @@ public class JSString {
                                         if (Options.get().isUnsoundEnabled()) {
                                             c.getMonitoring().addMessage(call.getSourceNode(), Severity.HIGH, "Ignoring String.replace(..., function(){...})");
                                         } else {
-                                            throw new AnalysisException("Cannot handle String.replace(..., function(){...})");
+                                            // FIXME unsoundly skipping the side effects of the callback
+                                            // throw new AnalysisException("Cannot handle String.replace(..., function(){...})");
                                         }
                                     }
                                 }
@@ -317,8 +319,9 @@ public class JSString {
                     return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
                 }
                 */
+                // NB more escapings for using the regular expression as source code in concrete semantics is done in ConcreteString
                 ConcreteRegularExpression toReplace = new ConcreteRegularExpression(new ConcreteString("[\\-\\[\\]\\/\\{\\}\\(\\)\\*\\+\\?\\.\\\\\\^\\$\\|]"), new ConcreteBoolean(true), new ConcreteBoolean(false), new ConcreteBoolean(false));
-                ConcreteString toReplaceWith = new ConcreteString("\\\\\\\\$&");
+                ConcreteString toReplaceWith = new ConcreteString("\\$&");
                 return ConcreteSemantics.get().apply("String.prototype.replace", v, Arrays.asList(toReplace, toReplaceWith)).apply(new OptionalObjectVisitor<ConcreteValue, ConcreteValue>() {
                     @Override
                     public ConcreteValue visit(None<ConcreteValue> obj) {
@@ -398,7 +401,7 @@ public class JSString {
                     argsMap.put("<base/this>", Value.makeStr(thisStringValue.getStr()));
                     argsMap.put("<arg/separator>", Value.makeStr(separator.getStr()));
                     // we are precise, so allocate a unique array
-                    resultArray = new ObjectLabel(call.getSourceNode(), Kind.ARRAY, null, argsMap, null);
+                    resultArray = new ObjectLabel(call.getSourceNode(), Kind.ARRAY, new HeapContext(null, argsMap));
                     state.newObject(resultArray);
                     state.writeInternalPrototype(resultArray, Value.makeObject(InitialStateBuilder.ARRAY_PROTOTYPE));
                     final List<Value> splitValues = new ArrayList<>();

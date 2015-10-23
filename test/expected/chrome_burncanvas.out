@@ -1,16 +1,31 @@
-test/chromeexperiments/burncanvas.html:23:3: [definite] Dead assignment, property x is never read
-test/chromeexperiments/burncanvas.html:24:3: [definite] Dead assignment, property y is never read
-test/chromeexperiments/burncanvas.html:25:3: [definite] Dead assignment, property pressed is never read
-test/chromeexperiments/burncanvas.html:28:3: [definite] Dead assignment, property x is never read
-test/chromeexperiments/burncanvas.html:29:3: [definite] Dead assignment, property y is never read
-test/chromeexperiments/burncanvas.html:32:3: [definite] Dead assignment, property pressed is never read
-test/chromeexperiments/burncanvas.html:35:3: [definite] Dead assignment, property pressed is never read
-test/chromeexperiments/burncanvas.html:143:3: [definite] Dead assignment, property draw is never read
-test/chromeexperiments/burncanvas.html:44:6: [definite] The variable reach is never used
-test/chromeexperiments/burncanvas.html:45:6: [definite] The variable m is never used
-test/chromeexperiments/burncanvas.html:46:6: [definite] The variable lastmx is never used
-test/chromeexperiments/burncanvas.html:46:18: [definite] The variable lastmy is never used
-test/chromeexperiments/burncanvas.html:59:2: [definite] Unreachable function modify_region
-test/chromeexperiments/burncanvas.html:117:2: [definite] Unreachable function do_draw
-test/chromeexperiments/burncanvas.html:149:2: [definite] Unreachable function step
 test/chromeexperiments/burncanvas.html:162:5: [definite] Unreachable code
+test/chromeexperiments/burncanvas.html:138:11: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/burncanvas.html:140:3: [maybe] TypeError, inf or NaN as arguments to CanvasRenderingContext2D.putImageData
+test/chromeexperiments/burncanvas.html:14:32: [maybe] Uncaught exception, constructed at [test/chromeexperiments/burncanvas.html:138:11]
+test/chromeexperiments/burncanvas.html:70:7: [maybe] Conversion to number yields NaN
+test/chromeexperiments/burncanvas.html:70:7: [maybe] Reading absent property (computed name)
+test/chromeexperiments/burncanvas.html:70:27: [maybe] Conversion to number yields NaN
+test/chromeexperiments/burncanvas.html:70:27: [maybe] Reading absent property (computed name)
+test/chromeexperiments/burncanvas.html:70:51: [maybe] Reading absent property (computed name)
+test/chromeexperiments/burncanvas.html:71:7: [maybe] Conversion to number yields NaN
+test/chromeexperiments/burncanvas.html:71:7: [maybe] Reading absent property (computed name)
+test/chromeexperiments/burncanvas.html:71:27: [maybe] Conversion to number yields NaN
+test/chromeexperiments/burncanvas.html:71:27: [maybe] Reading absent property (computed name)
+test/chromeexperiments/burncanvas.html:71:51: [maybe] Reading absent property (computed name)
+test/chromeexperiments/burncanvas.html:72:7: [maybe] Conversion to number yields NaN
+test/chromeexperiments/burncanvas.html:72:7: [maybe] Reading absent property (computed name)
+test/chromeexperiments/burncanvas.html:72:27: [maybe] Conversion to number yields NaN
+test/chromeexperiments/burncanvas.html:72:27: [maybe] Reading absent property (computed name)
+test/chromeexperiments/burncanvas.html:72:51: [maybe] Reading absent property (computed name)
+test/chromeexperiments/burncanvas.html:98:10: [maybe] Reading absent property (computed name)
+test/chromeexperiments/burncanvas.html:99:6: [maybe] Conversion to number yields NaN
+test/chromeexperiments/burncanvas.html:103:10: [maybe] Reading absent property (computed name)
+test/chromeexperiments/burncanvas.html:104:6: [maybe] Conversion to number yields NaN
+test/chromeexperiments/burncanvas.html:108:10: [maybe] Reading absent property (computed name)
+test/chromeexperiments/burncanvas.html:109:6: [maybe] Conversion to number yields NaN
+test/chromeexperiments/burncanvas.html:132:12: [maybe] Conversion to number yields NaN
+test/chromeexperiments/burncanvas.html:132:24: [maybe] Conversion to number yields NaN
+test/chromeexperiments/burncanvas.html:133:12: [maybe] Conversion to number yields NaN
+test/chromeexperiments/burncanvas.html:133:24: [maybe] Conversion to number yields NaN
+test/chromeexperiments/burncanvas.html:138:34: [maybe] Conversion to number yields NaN
+test/chromeexperiments/burncanvas.html:138:41: [maybe] Conversion to number yields NaN

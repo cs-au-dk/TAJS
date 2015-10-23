@@ -32,10 +32,6 @@ public class DOMRegistry {
         UNKNOWN_EVENT_HANDLERS
     }
 
-    public enum MustSets {
-        LOAD_EVENT_HANDLER
-    }
-
     public enum MayMaps {
         ELEMENTS_BY_ID,
         ELEMENTS_BY_NAME,
@@ -48,6 +44,8 @@ public class DOMRegistry {
 
     private static ObjectLabel ajaxEvent;
 
+    private static ObjectLabel loadEvent;
+
     private static ObjectLabel mutationEvent;
 
     private static ObjectLabel wheelEvent;
@@ -56,6 +54,7 @@ public class DOMRegistry {
         keyboardEvent = null;
         mouseEvent = null;
         ajaxEvent = null;
+        loadEvent = null;
         mutationEvent = null;
         wheelEvent = null;
     }
@@ -70,6 +69,10 @@ public class DOMRegistry {
 
     public static void registerAjaxEventLabel(ObjectLabel l) {
         ajaxEvent = l;
+    }
+
+    public static void registerLoadEventLabel(ObjectLabel l) {
+        loadEvent = l;
     }
 
     public static void registerMutationEventLabel(ObjectLabel l) {
@@ -99,6 +102,13 @@ public class DOMRegistry {
             throw new AnalysisException("No ajax event object labels registered");
         }
         return ajaxEvent;
+    }
+
+    public static ObjectLabel getLoadEventLabel() {
+        if (loadEvent == null) {
+            throw new AnalysisException("No ajax event object labels registered");
+        }
+        return loadEvent;
     }
 
     public static ObjectLabel getMutationEventLabel() {

@@ -24,47 +24,47 @@ fg2: function()
     node 9: exceptional-return (test/flowgraphbuilder/flowgraph_builder_jump_return_0011.js:1:1)
     ->[]
 function f()
-  block 7:
-    node 10(~14): catch[e,v5] (test/flowgraphbuilder/flowgraph_builder_jump_return_0011.js:7:11)
-    node 11(~15): begin-with[v5]* (test/flowgraphbuilder/flowgraph_builder_jump_return_0011.js:7:11)
+  block 7: [entry]
+    node 10: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder_jump_return_0011.js:2:1)
     ->[block 8]
   block 8:
-    node 12: end-with* (test/flowgraphbuilder/flowgraph_builder_jump_return_0011.js:7:11)
+    node 11: constant[undefined,v1]* (test/flowgraphbuilder/flowgraph_builder_jump_return_0011.js:4:9)
     ->[block 20] ~>[block 9]
   block 9:
-    node 13: end-with* (test/flowgraphbuilder/flowgraph_builder_jump_return_0011.js:7:11)
-    ->[block 21]
+    node 12: catch[v2] (test/flowgraphbuilder/flowgraph_builder_jump_return_0011.js:3:5)
+    ->[block 12]
   block 10:
-    node 14: catch[e,v5] (test/flowgraphbuilder/flowgraph_builder_jump_return_0011.js:7:11)
-    node 15: begin-with[v5]* (test/flowgraphbuilder/flowgraph_builder_jump_return_0011.js:7:11)
+    node 13: catch[e,v3] (test/flowgraphbuilder/flowgraph_builder_jump_return_0011.js:7:11)
+    node 14: begin-with[v3]* (test/flowgraphbuilder/flowgraph_builder_jump_return_0011.js:7:11)
     ->[block 11]
   block 11:
-    node 16: end-with* (test/flowgraphbuilder/flowgraph_builder_jump_return_0011.js:7:11)
-    ->[block 20] ~>[block 12]
+    node 15: end-with* (test/flowgraphbuilder/flowgraph_builder_jump_return_0011.js:7:11)
+    ->[block 12]
   block 12:
-    node 17: end-with* (test/flowgraphbuilder/flowgraph_builder_jump_return_0011.js:7:11)
+    node 16: throw[v2]* (test/flowgraphbuilder/flowgraph_builder_jump_return_0011.js:3:5)
     ->[block 21]
   block 13:
-    node 18: catch[e,v3] (test/flowgraphbuilder/flowgraph_builder_jump_return_0011.js:7:11)
-    node 19: begin-with[v3]* (test/flowgraphbuilder/flowgraph_builder_jump_return_0011.js:7:11)
-    ->[block 14]
+    node 17: end-with* (test/flowgraphbuilder/flowgraph_builder_jump_return_0011.js:7:11)
+    ->[block 21]
   block 14:
-    node 20: end-with* (test/flowgraphbuilder/flowgraph_builder_jump_return_0011.js:7:11)
-    ->[block 19] ~>[block 15]
+    node 18: catch[e,v5] (test/flowgraphbuilder/flowgraph_builder_jump_return_0011.js:7:11)
+    node 19: begin-with[v5]* (test/flowgraphbuilder/flowgraph_builder_jump_return_0011.js:7:11)
+    ->[block 15]
   block 15:
+    node 20: end-with* (test/flowgraphbuilder/flowgraph_builder_jump_return_0011.js:7:11)
+    ->[block 20]
+  block 16:
     node 21: end-with* (test/flowgraphbuilder/flowgraph_builder_jump_return_0011.js:7:11)
     ->[block 21]
-  block 16: [entry]
-    node 22: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder_jump_return_0011.js:2:1)
-    ->[block 17]
   block 17:
-    node 23: constant[undefined,v1]* (test/flowgraphbuilder/flowgraph_builder_jump_return_0011.js:4:9)
-    ->[block 20] ~>[block 18]
+    node 22(~18): catch[e,v5] (test/flowgraphbuilder/flowgraph_builder_jump_return_0011.js:7:11)
+    node 23(~19): begin-with[v5]* (test/flowgraphbuilder/flowgraph_builder_jump_return_0011.js:7:11)
+    ->[block 18]
   block 18:
-    node 24: catch[v2] (test/flowgraphbuilder/flowgraph_builder_jump_return_0011.js:3:5)
-    ->[block 19]
+    node 24: end-with* (test/flowgraphbuilder/flowgraph_builder_jump_return_0011.js:7:11)
+    ->[block 20]
   block 19:
-    node 25: throw[v2]* (test/flowgraphbuilder/flowgraph_builder_jump_return_0011.js:3:5)
+    node 25: end-with* (test/flowgraphbuilder/flowgraph_builder_jump_return_0011.js:7:11)
     ->[block 21]
   block 20: [exit-ordinary]
     node 26: return[v1] (test/flowgraphbuilder/flowgraph_builder_jump_return_0011.js:10:1)

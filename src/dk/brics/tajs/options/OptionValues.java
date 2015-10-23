@@ -1,5 +1,6 @@
 package dk.brics.tajs.options;
 
+import dk.brics.tajs.util.AnalysisException;
 import dk.brics.tajs.util.Collections;
 import org.apache.log4j.Appender;
 import org.apache.log4j.Level;
@@ -174,14 +175,131 @@ public class OptionValues {
     @Option(name = "-parameter-sensitivity", usage = "Enabled usage of different contexts for (some) calls based on the argument values")
     private boolean parameterSensitivity;
 
-    @Option(name = "-numeric-variable-sensitivity", usage = "Enable numeric variable sensitivity")
-    private boolean numericVariableSensitivity;
-
     @Option(name = "-ignore-unreachable", usage = "Ignore code parts which has been marked as unreachable")
     private boolean ignoreUnreachable;
 
+    @Option(name = "-loop-unrolling", usage = "Enables unrolling of loops up to [n] times")
+    private int loopUnrollings = -1;
+
     @Argument
     private List<String> arguments = new ArrayList<>();
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        OptionValues that = (OptionValues) o;
+
+        if (noControlSensitivity != that.noControlSensitivity) return false;
+        if (noObjectSensitivity != that.noObjectSensitivity) return false;
+        if (noRecency != that.noRecency) return false;
+        if (noModified != that.noModified) return false;
+        if (noExceptions != that.noExceptions) return false;
+        if (noGc != that.noGc) return false;
+        if (noLazy != that.noLazy) return false;
+        if (noCopyOnWrite != that.noCopyOnWrite) return false;
+        if (noHybridCollections != that.noHybridCollections) return false;
+        if (noChargedCalls != that.noChargedCalls) return false;
+        if (noConcreteNative != that.noConcreteNative) return false;
+        if (noForInSpecialization != that.noForInSpecialization) return false;
+        if (contextSpecialization != that.contextSpecialization) return false;
+        if (lowSeverity != that.lowSeverity) return false;
+        if (unsound != that.unsound) return false;
+        if (flowgraph != that.flowgraph) return false;
+        if (callgraph != that.callgraph) return false;
+        if (debug != that.debug) return false;
+        if (collectVariableInfo != that.collectVariableInfo) return false;
+        if (newflow != that.newflow) return false;
+        if (states != that.states) return false;
+        if (test != that.test) return false;
+        if (testFlowgraphBuilder != that.testFlowgraphBuilder) return false;
+        if (timing != that.timing) return false;
+        if (statistics != that.statistics) return false;
+        if (memoryUsage != that.memoryUsage) return false;
+        if (quiet != that.quiet) return false;
+        if (includeDom != that.includeDom) return false;
+        if (propagateDeadFlow != that.propagateDeadFlow) return false;
+        if (unrollOneAndAHalf != that.unrollOneAndAHalf) return false;
+        if (alwaysCanput != that.alwaysCanput) return false;
+        if (evalStatistics != that.evalStatistics) return false;
+        if (coverage != that.coverage) return false;
+        if (no_messages != that.no_messages) return false;
+        if (single_event_handler_type != that.single_event_handler_type) return false;
+        if (ignore_html_content != that.ignore_html_content) return false;
+        if (unevalizer != that.unevalizer) return false;
+        if (no_polymorphic != that.no_polymorphic) return false;
+        if (ajaxReturnsJson != that.ajaxReturnsJson) return false;
+        if (help != that.help) return false;
+        if (iterationBound != that.iterationBound) return false;
+        if (ignoreLibraries != that.ignoreLibraries) return false;
+        if (contextSensitiveHeap != that.contextSensitiveHeap) return false;
+        if (parameterSensitivity != that.parameterSensitivity) return false;
+        if (ignoreUnreachable != that.ignoreUnreachable) return false;
+        if (loopUnrollings != that.loopUnrollings) return false;
+        if (iterationBoundString != null ? !iterationBoundString.equals(that.iterationBoundString) : that.iterationBoundString != null)
+            return false;
+        if (ignoredLibrariesString != null ? !ignoredLibrariesString.equals(that.ignoredLibrariesString) : that.ignoredLibrariesString != null)
+            return false;
+        if (ignoredLibraries != null ? !ignoredLibraries.equals(that.ignoredLibraries) : that.ignoredLibraries != null)
+            return false;
+        return !(arguments != null ? !arguments.equals(that.arguments) : that.arguments != null);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = (noControlSensitivity ? 1 : 0);
+        result = 31 * result + (noObjectSensitivity ? 1 : 0);
+        result = 31 * result + (noRecency ? 1 : 0);
+        result = 31 * result + (noModified ? 1 : 0);
+        result = 31 * result + (noExceptions ? 1 : 0);
+        result = 31 * result + (noGc ? 1 : 0);
+        result = 31 * result + (noLazy ? 1 : 0);
+        result = 31 * result + (noCopyOnWrite ? 1 : 0);
+        result = 31 * result + (noHybridCollections ? 1 : 0);
+        result = 31 * result + (noChargedCalls ? 1 : 0);
+        result = 31 * result + (noConcreteNative ? 1 : 0);
+        result = 31 * result + (noForInSpecialization ? 1 : 0);
+        result = 31 * result + (contextSpecialization ? 1 : 0);
+        result = 31 * result + (lowSeverity ? 1 : 0);
+        result = 31 * result + (unsound ? 1 : 0);
+        result = 31 * result + (flowgraph ? 1 : 0);
+        result = 31 * result + (callgraph ? 1 : 0);
+        result = 31 * result + (debug ? 1 : 0);
+        result = 31 * result + (collectVariableInfo ? 1 : 0);
+        result = 31 * result + (newflow ? 1 : 0);
+        result = 31 * result + (states ? 1 : 0);
+        result = 31 * result + (test ? 1 : 0);
+        result = 31 * result + (testFlowgraphBuilder ? 1 : 0);
+        result = 31 * result + (timing ? 1 : 0);
+        result = 31 * result + (statistics ? 1 : 0);
+        result = 31 * result + (memoryUsage ? 1 : 0);
+        result = 31 * result + (quiet ? 1 : 0);
+        result = 31 * result + (includeDom ? 1 : 0);
+        result = 31 * result + (propagateDeadFlow ? 1 : 0);
+        result = 31 * result + (unrollOneAndAHalf ? 1 : 0);
+        result = 31 * result + (alwaysCanput ? 1 : 0);
+        result = 31 * result + (evalStatistics ? 1 : 0);
+        result = 31 * result + (coverage ? 1 : 0);
+        result = 31 * result + (no_messages ? 1 : 0);
+        result = 31 * result + (single_event_handler_type ? 1 : 0);
+        result = 31 * result + (ignore_html_content ? 1 : 0);
+        result = 31 * result + (unevalizer ? 1 : 0);
+        result = 31 * result + (no_polymorphic ? 1 : 0);
+        result = 31 * result + (ajaxReturnsJson ? 1 : 0);
+        result = 31 * result + (help ? 1 : 0);
+        result = 31 * result + (iterationBoundString != null ? iterationBoundString.hashCode() : 0);
+        result = 31 * result + iterationBound;
+        result = 31 * result + (ignoredLibrariesString != null ? ignoredLibrariesString.hashCode() : 0);
+        result = 31 * result + (ignoreLibraries ? 1 : 0);
+        result = 31 * result + (ignoredLibraries != null ? ignoredLibraries.hashCode() : 0);
+        result = 31 * result + (contextSensitiveHeap ? 1 : 0);
+        result = 31 * result + (parameterSensitivity ? 1 : 0);
+        result = 31 * result + (ignoreUnreachable ? 1 : 0);
+        result = 31 * result + loopUnrollings;
+        result = 31 * result + (arguments != null ? arguments.hashCode() : 0);
+        return result;
+    }
 
     public OptionValues() {
         this(null, null);
@@ -295,7 +413,7 @@ public class OptionValues {
             }
             sb.append(me.getKey());
             if (!(me.getValue() instanceof Boolean)) {
-                sb.append(" " + me.getValue());
+                sb.append(" ").append(me.getValue());
             }
         }
         for (String argument : arguments) {
@@ -378,6 +496,10 @@ public class OptionValues {
         lowSeverity = false;
     }
 
+    public void disableLoopUnrolling() {
+        this.loopUnrollings = -1;
+    }
+
     public void disableMemoryUsage() {
         memoryUsage = false;
     }
@@ -428,10 +550,6 @@ public class OptionValues {
 
     public void disableNoRecency() {
         noRecency = false;
-    }
-
-    public void disableNumericVariableSensitivity() {
-        numericVariableSensitivity = false;
     }
 
     public void disableParameterSensitivity() {
@@ -570,6 +688,10 @@ public class OptionValues {
         lowSeverity = true;
     }
 
+    public void enableLoopUnrolling(int loopUnrollings) {
+        this.loopUnrollings = loopUnrollings;
+    }
+
     public void enableMemoryUsage() {
         memoryUsage = true;
     }
@@ -620,10 +742,6 @@ public class OptionValues {
 
     public void enableNoRecency() {
         noRecency = true;
-    }
-
-    public void enableNumericVariableSensitivity() {
-        numericVariableSensitivity = true;
     }
 
     public void enableParameterSensitivity() {
@@ -691,6 +809,10 @@ public class OptionValues {
 
     public Set<String> getLibraries() {
         return ignoredLibraries;
+    }
+
+    public int getLoopUnrollings() {
+        return loopUnrollings;
     }
 
     public boolean isAlwaysCanPut() {
@@ -798,6 +920,10 @@ public class OptionValues {
         return lowSeverity;
     }
 
+    public boolean isLoopUnrollingEnabled() {
+        return loopUnrollings != -1;
+    }
+
     public boolean isMemoryMeasurementEnabled() {
         return memoryUsage;
     }
@@ -812,10 +938,6 @@ public class OptionValues {
 
     public boolean isNoMessages() {
         return no_messages;
-    }
-
-    public boolean isNumericVariableSensitivityEnabled() {
-        return numericVariableSensitivity;
     }
 
     public boolean isObjectSensitivityDisabled() {
@@ -884,5 +1006,14 @@ public class OptionValues {
 
     public boolean isUnsoundEnabled() {
         return unsound;
+    }
+
+    public void checkConsistency() {
+        if (isUnrollOneAndAHalfEnabled() && isLoopUnrollingEnabled()) {
+            throw new AnalysisException("Mutual exclusive options: unroll-one-and-a-half and loop-unrolling");
+        }
+        if (arguments == null || arguments.isEmpty()) {
+            throw new AnalysisException("No arguments provided!");
+        }
     }
 }

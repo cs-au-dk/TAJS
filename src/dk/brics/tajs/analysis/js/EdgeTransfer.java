@@ -16,13 +16,13 @@
 
 package dk.brics.tajs.analysis.js;
 
-import dk.brics.tajs.analysis.Context;
-import dk.brics.tajs.analysis.State;
 import dk.brics.tajs.flowgraph.AbstractNode;
 import dk.brics.tajs.flowgraph.BasicBlock;
 import dk.brics.tajs.flowgraph.jsnodes.CallNode;
 import dk.brics.tajs.flowgraph.jsnodes.EventDispatcherNode;
 import dk.brics.tajs.flowgraph.jsnodes.IfNode;
+import dk.brics.tajs.lattice.Context;
+import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.UnknownValueResolver;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.options.Options;
@@ -74,6 +74,6 @@ public class EdgeTransfer implements IEdgeTransfer<State, Context> {
             state.clearOrdinaryRegisters();
         }
 
-        return Context.makeSuccessorContext(state, dst);
+        return state.getContext();
     }
 }

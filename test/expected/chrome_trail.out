@@ -2,10 +2,6 @@ test/chromeexperiments/trail.html:122:6: [definite] TypeError, accessing propert
 test/chromeexperiments/trail.html:131:6: [definite] TypeError, accessing property of null/undefined
 test/chromeexperiments/trail.html:70:3: [definite] The conditional expression is always true
 test/chromeexperiments/trail.html:70:7: [definite] The conditional expression is always true
-test/chromeexperiments/trail.html:118:3: [definite] The assignment to mouseIsDown has no effect
-test/chromeexperiments/trail.html:153:3: [definite] The conditional expression is always false
-test/chromeexperiments/trail.html:159:4: [definite] The assignment to RADIUS_SCALE has no effect
-test/chromeexperiments/trail.html:162:3: [definite] The assignment to RADIUS_SCALE has no effect
 test/chromeexperiments/trail.html:122:6: [definite] Reading absent property touches
 test/chromeexperiments/trail.html:131:6: [definite] Reading absent property touches
 test/chromeexperiments/trail.html:166:29: [definite] Reading absent property width
@@ -15,6 +11,7 @@ test/chromeexperiments/trail.html:117:2: [definite] The variable event is never 
 test/chromeexperiments/trail.html:122:30: [definite] Unreachable code
 test/chromeexperiments/trail.html:131:30: [definite] Unreachable code
 test/chromeexperiments/trail.html:171:18: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/trail.html:36:32: [maybe] Uncaught exception, constructed at [test/chromeexperiments/trail.html:122:6, test/chromeexperiments/trail.html:131:6, test/chromeexperiments/trail.html:171:18]
 test/chromeexperiments/trail.html:100:22: [maybe] Converting primitive number to object
 test/chromeexperiments/trail.html:166:6: [maybe] Conversion to number yields NaN
 test/chromeexperiments/trail.html:169:19: [maybe] Reading absent property (computed name)

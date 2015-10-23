@@ -826,5 +826,216 @@ public class TestForIn {
                 "");
     }
 
+    @Test
+    public void regression_NullPointerException() {
+        Misc.init();
+        Misc.runSource("",
+                "function merge(root){",
+                "  for ( var i = 0; i < arguments.length; i++ )",
+                "    for ( var key in arguments[i] )",
+                "      root[key] = arguments[i][key];",
+                "}",
+                "merge({p: 'p'}, {q: 'q'});");
+    }
+
+    @Test
+    public void iterateUndefined() {
+        Misc.init();
+        // should not crash
+        Misc.runSource("",
+                "for(var key in undefined);",
+                "");
+    }
+
+    @Test
+    public void iterateNull() {
+        Misc.init();
+        // should not crash
+        Misc.runSource("",
+                "for(var key in null);",
+                "");
+    }
+
+    @Test
+    public void iterateNumber() {
+        Misc.init();
+        // should not crash
+        Misc.runSource("",
+                "for(var key in 42);",
+                "");
+    }
+
+    @Test
+    public void iterateTrueEmpty() {
+        Misc.init();
+        // should not crash
+        Misc.runSource("",
+                "for(var key in Object.create(null));",
+                "");
+    }
+
+    @Test
+    public void iterateEmpty() {
+        Misc.init();
+        // should not crash
+        Misc.runSource("",
+                "for(var key in {});",
+                "");
+    }
+
+    @Test
+    public void iterateEmptyArray() {
+        Misc.init();
+        // should not crash
+        Misc.runSource("",
+                "for(var key in []);",
+                "");
+    }
+
+    @Test
+    public void nestedForIn() {
+        // should not crash
+        Misc.init();
+        Misc.runSource(
+                "var o = {x: 'x'};",
+                "for(var p1 in o){",
+                "   for(var p2 in o){}",
+                "}"
+        );
+    }
+
+    @Test
+    public void sequencedForIn() {
+        // should not crash
+        Misc.init();
+        Misc.runSource(
+                "var o = {x: 'x'};",
+                "for(var p1 in o){}",
+                "for(var p2 in o){}"
+        );
+    }
+
+    @Test
+    public void breakingForIn() {
+        // should not crash
+        Misc.init();
+        Misc.runSource("",
+                "for(var p in {a: 'a'}){",
+                "   break;",
+                "}",
+                "");
+    }
+
+
+    @Test
+    public void continuingForIn() {
+        // should not crash
+        Misc.init();
+        Misc.runSource("",
+                "for(var p in {a: 'a'}){",
+                "   continue;",
+                "}",
+                "");
+    }
+
+    @Test
+    public void concatenateIdentifierString() {
+        // should not crash
+        Misc.init();
+        Misc.runSource("",
+                "var s = 'a';",
+                "for(var p in {b: 'b', c: 'c'}){",
+                "   s += p;",
+                "}",
+                "TAJS_assert(s, 'isMaybeStrIdentifierParts');", // optimal precision would give StrIdentifier
+                "");
+    }
+
+    @Test
+    public void concatenateNumberStrings() {
+        // should not crash
+        Misc.init();
+        Misc.runSource("",
+                "var s = '1';",
+                "for(var p in {2: '2', 3: '3'}){",
+                "   s += p;",
+                "}",
+                "TAJS_assert(s, 'isMaybeStrIdentifierParts');", // optimal precision would not allow this case
+                "TAJS_assert(s, 'isMaybeStrUInt');",
+                "");
+    }
+
+    @Test
+    public void unorderedForInImplementation_withLazyPropagation() {
+        Misc.init();
+        Misc.captureSystemOutput();
+        Misc.runSourceWithNamedFile("unorderedForInImplementation_withLazyPropagation.js",
+                "var o1 = {x: 'A', y: 'A'};",
+                "var o2 = {};",
+                "for(var p in o1){",
+                "   o2[p] = o1[p];",
+                "   TAJS_dumpObject(o2);",
+                "}",
+                "TAJS_dumpObject(o2);"
+        );
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void unorderedForInImplementation_withSemiLazyPropagation() {
+        Misc.init();
+        Misc.captureSystemOutput();
+        Misc.runSourceWithNamedFile("unorderedForInImplementation_withSemiLazyPropagation.js",
+                "var o1 = {x: 'A', y: 'A'};",
+                "var o2 = {};",
+                "for(var p in o1){",
+                "   o2[p] = o1[p];",
+                "   o2.x === o2.y",
+                "   TAJS_dumpObject(o2);",
+                "}",
+                "TAJS_dumpObject(o2);"
+        );
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void exceptionInBody() {
+        Misc.init();
+        Misc.runSource(
+                "var v = true;",
+                "for(var p in {'a': 'a'}){",
+                "   v = false;",
+                "   FAIL;",
+                "}",
+                "TAJS_assert(v);"
+        );
+    }
+
+    @Test
+    public void functionWithForInAndLazyPropagationRecovery() {
+        // should not crash
+        Misc.init();
+        Misc.runSource("",
+                "var o1 = {};",
+                "function f(o2) {",
+                "   for (var name in o2) {",
+                "	    o1.p = o2[name]",
+                "   }",
+                "}",
+                "f({a: 'a'});",
+                "");
+    }
+
+    @Test
+    public void allocationInBody() {
+        // should not crash
+        Misc.init();
+        Misc.runSource(
+                "for(var p in {'a': 'a', b: 'b'}){",
+                "   ({});",
+                "}"
+        );
+    }
+
     // TODO optimizations
 }

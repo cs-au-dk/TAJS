@@ -15,21 +15,24 @@ fg2: function()
   block 3:
     node 7: has-next[v5,v6] (test/flowgraphbuilder/flowgraph_builder0108.js:3:1)
     node 8: if[v6](true-block:4,false-block:7) (test/flowgraphbuilder/flowgraph_builder0108.js:3:1)
-    ->[block 4,block 7]
+    ->[block 4,block 7] ~>[block 6]
   block 4:
     node 9: next-property[v5,v7] (test/flowgraphbuilder/flowgraph_builder0108.js:3:6)
     node 10: write-variable[v7,'b']* (test/flowgraphbuilder/flowgraph_builder0108.js:3:6)
     ->[block 5] ~>[block 6]
   block 5:
     node 11: end-for-in(begin-node:6)* (test/flowgraphbuilder/flowgraph_builder0108.js:3:16)
-    ->[block 2] ~>[block 6]
+    ->[block 2]
   block 6:
     node 12: end-for-in(begin-node:6)* (test/flowgraphbuilder/flowgraph_builder0108.js:3:16)
+    ->[block 9]
+  block 7:
+    node 13: end-for-in(begin-node:6)* (test/flowgraphbuilder/flowgraph_builder0108.js:3:16)
     ->[block 8]
-  block 7: [exit-ordinary]
-    node 13: return[v1] (test/flowgraphbuilder/flowgraph_builder0108.js:1:1)
+  block 8: [exit-ordinary]
+    node 14: return[v1] (test/flowgraphbuilder/flowgraph_builder0108.js:1:1)
     ->[]
-  block 8: [exit-exceptional]
-    node 14: exceptional-return (test/flowgraphbuilder/flowgraph_builder0108.js:1:1)
+  block 9: [exit-exceptional]
+    node 15: exceptional-return (test/flowgraphbuilder/flowgraph_builder0108.js:1:1)
     ->[]
 

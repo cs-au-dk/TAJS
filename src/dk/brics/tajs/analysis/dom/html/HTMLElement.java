@@ -20,13 +20,13 @@ import dk.brics.tajs.analysis.Conversion;
 import dk.brics.tajs.analysis.FunctionCalls;
 import dk.brics.tajs.analysis.NativeFunctions;
 import dk.brics.tajs.analysis.Solver;
-import dk.brics.tajs.analysis.State;
 import dk.brics.tajs.analysis.dom.DOMFunctions;
 import dk.brics.tajs.analysis.dom.DOMObjects;
 import dk.brics.tajs.analysis.dom.DOMWindow;
 import dk.brics.tajs.analysis.dom.core.DOMElement;
 import dk.brics.tajs.analysis.dom.style.CSSStyleDeclaration;
 import dk.brics.tajs.lattice.ObjectLabel;
+import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.util.AnalysisException;
 import dk.brics.tajs.util.Collections;
@@ -97,6 +97,9 @@ public class HTMLElement {
          * Functions.
          */
         createDOMFunction(s, ELEMENT_PROTOTYPE, DOMObjects.HTMLELEMENT_GET_ELEMENTS_BY_CLASS_NAME, "getElementsByClassName", 1);
+        createDOMFunction(s, ELEMENT_PROTOTYPE, DOMObjects.HTMLELEMENT_BLUR, "blur", 1);
+        createDOMFunction(s, ELEMENT_PROTOTYPE, DOMObjects.HTMLELEMENT_FOCUS, "focus", 1);
+
 
         // semistandard
         // NB: webkit version!
@@ -117,6 +120,14 @@ public class HTMLElement {
             case HTMLELEMENT_MATCHES_SELECTOR: {
                 NativeFunctions.expectParameters(nativeObject, call, c, 1, 1);
                 return Value.makeAnyBool();
+            }
+            case HTMLELEMENT_BLUR: {
+                NativeFunctions.expectParameters(nativeObject, call, c, 0, 0);
+                return Value.makeUndef();
+            }
+            case HTMLELEMENT_FOCUS: {
+                NativeFunctions.expectParameters(nativeObject, call, c, 0, 0);
+                return Value.makeUndef();
             }
             default: {
                 throw new AnalysisException("Unsupported Native Object: " + nativeObject);

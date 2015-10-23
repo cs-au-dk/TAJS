@@ -4,7 +4,6 @@ import dk.brics.tajs.flowgraph.BasicBlock;
 import dk.brics.tajs.flowgraph.FlowGraph;
 import dk.brics.tajs.flowgraph.FlowGraphFragment;
 import dk.brics.tajs.flowgraph.Function;
-import dk.brics.tajs.flowgraph.SourceLocation;
 import dk.brics.tajs.flowgraph.jsnodes.ConstantNode;
 import dk.brics.tajs.flowgraph.jsnodes.LoadNode;
 import dk.brics.tajs.htmlparser.JavaScriptSource;
@@ -85,11 +84,14 @@ public class FlowGraphMutator {
 
             entryFunction = null; // this variant is not a (pseudo) function but a collection of basic blocks
             entryBlock = env.getAppendBlock();
+            functionAndBlocksManager.registerUnreachableSyntacticSuccessor(extenderBlock, declarationBlock);
         }
 
         // FIXME: (#124) does not include surrounding break/continue targets or finally blocks - so exceptions and jumps are not handled soundly
 
-        flowGraphBuilder.close(existingFlowGraph, extenderSuccessor);
+        FlowGraph closed = flowGraphBuilder.close(existingFlowGraph, extenderSuccessor);
+        closed.check();
+
         Pair<List<Function>, List<BasicBlock>> blocksAndFunctions = functionAndBlocksManager.close();
         return new FlowGraphFragment(sourceCodeIdentifier, entryBlock, entryFunction, blocksAndFunctions.getFirst(), blocksAndFunctions.getSecond());
     }

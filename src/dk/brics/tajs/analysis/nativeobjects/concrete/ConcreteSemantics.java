@@ -92,8 +92,15 @@ public class ConcreteSemantics {
         if (value == null) {
             return new ConcreteNull();
         }
-        if (value instanceof ScriptObjectMirror && ((ScriptObjectMirror) value).isArray()) {
-            return toConcreteArray((ScriptObjectMirror) value);
+        if (value instanceof ScriptObjectMirror) {
+            ScriptObjectMirror mirror = (ScriptObjectMirror) value;
+            if (mirror.isArray()) {
+                return toConcreteArray(mirror);
+            }
+            if ("RegExp".equals(mirror.getClassName())) {
+                return toConcreteRegularExpression(mirror);
+            }
+            throw new IllegalArgumentException("Cannot convert object value to concrete values: " + value + " of inner type " + mirror.getClassName());
         }
         if (value instanceof Number) {
             return new ConcreteNumber(((Number) value).doubleValue());
@@ -104,6 +111,14 @@ public class ConcreteSemantics {
         if (value instanceof Undefined) {
             return new ConcreteUndefined();
         }
-        throw new IllegalArgumentException("Cannot convert value to concrete values: " + value);
+        throw new IllegalArgumentException("Cannot convert value to concrete values: " + value + " of type " + value.getClass());
+    }
+
+    private ConcreteValue toConcreteRegularExpression(ScriptObjectMirror mirror) {
+        ConcreteString source = new ConcreteString((String) mirror.get("source"));
+        ConcreteBoolean global = new ConcreteBoolean((Boolean) mirror.get("global"));
+        ConcreteBoolean ignoreCase = new ConcreteBoolean((Boolean) mirror.get("ignoreCase"));
+        ConcreteBoolean multiline = new ConcreteBoolean((Boolean) mirror.get("multiline"));
+        return new ConcreteRegularExpression(source, global, ignoreCase, multiline);
     }
 }

@@ -1,34 +1,34 @@
 fg2: function()
-  block 0:
-    node 0: end-with* (test/flowgraphbuilder/flowgraph_builder_jump_0015.js:2:1)
-    ->[block 8]
-  block 1: [entry]
-    node 1: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder_jump_0015.js:1:1)
-    node 2: vardecl['p']* (test/flowgraphbuilder/flowgraph_builder_jump_0015.js:1:5)
+  block 0: [entry]
+    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder_jump_0015.js:1:1)
+    node 1: vardecl['p']* (test/flowgraphbuilder/flowgraph_builder_jump_0015.js:1:5)
+    ->[block 1]
+  block 1:
+    node 2: constant[true,v2] (test/flowgraphbuilder/flowgraph_builder_jump_0015.js:1:9)
+    node 3: write-variable[v2,'p']* (test/flowgraphbuilder/flowgraph_builder_jump_0015.js:1:9)
+    node 4: new[v3] (test/flowgraphbuilder/flowgraph_builder_jump_0015.js:2:6)
+    node 5: constant[false,v4] (test/flowgraphbuilder/flowgraph_builder_jump_0015.js:2:10)
+    node 6: write-property[v3,'p',v4] (test/flowgraphbuilder/flowgraph_builder_jump_0015.js:2:7)
+    node 7: begin-with[v3]* (test/flowgraphbuilder/flowgraph_builder_jump_0015.js:2:1)
     ->[block 2]
   block 2:
-    node 3: constant[true,v2] (test/flowgraphbuilder/flowgraph_builder_jump_0015.js:1:9)
-    node 4: write-variable[v2,'p']* (test/flowgraphbuilder/flowgraph_builder_jump_0015.js:1:9)
-    node 5: new[v3] (test/flowgraphbuilder/flowgraph_builder_jump_0015.js:2:6)
-    node 6: constant[false,v4] (test/flowgraphbuilder/flowgraph_builder_jump_0015.js:2:10)
-    node 7: write-property[v3,'p',v4] (test/flowgraphbuilder/flowgraph_builder_jump_0015.js:2:7)
-    node 8: begin-with[v3]* (test/flowgraphbuilder/flowgraph_builder_jump_0015.js:2:1)
+    node 8: end-with* (test/flowgraphbuilder/flowgraph_builder_jump_0015.js:2:1)
+    node 9: read-variable['TAJS_assert',v7,v6] (test/flowgraphbuilder/flowgraph_builder_jump_0015.js:5:1)
+    node 10: read-variable['p',v8,-] (test/flowgraphbuilder/flowgraph_builder_jump_0015.js:5:13)
     ->[block 3]
   block 3:
-    node 9: end-with* (test/flowgraphbuilder/flowgraph_builder_jump_0015.js:2:1)
-    node 10: read-variable['TAJS_assert',v7,v6] (test/flowgraphbuilder/flowgraph_builder_jump_0015.js:5:1)
-    node 11: read-variable['p',v8,-] (test/flowgraphbuilder/flowgraph_builder_jump_0015.js:5:13)
+    node 11: call[v6,v7,v8,-]* (test/flowgraphbuilder/flowgraph_builder_jump_0015.js:5:1)
     ->[block 4]
   block 4:
-    node 12: call[v6,v7,v8,-]* (test/flowgraphbuilder/flowgraph_builder_jump_0015.js:5:1)
+    node 12: read-variable['TAJS_dumpValue',v10,v9] (test/flowgraphbuilder/flowgraph_builder_jump_0015.js:7:1)
+    node 13: constant["OK",v11] (test/flowgraphbuilder/flowgraph_builder_jump_0015.js:7:16)
     ->[block 5]
   block 5:
-    node 13: read-variable['TAJS_dumpValue',v10,v9] (test/flowgraphbuilder/flowgraph_builder_jump_0015.js:7:1)
-    node 14: constant["OK",v11] (test/flowgraphbuilder/flowgraph_builder_jump_0015.js:7:16)
-    ->[block 6]
-  block 6:
-    node 15: call[v9,v10,v11,-]* (test/flowgraphbuilder/flowgraph_builder_jump_0015.js:7:1)
+    node 14: call[v9,v10,v11,-]* (test/flowgraphbuilder/flowgraph_builder_jump_0015.js:7:1)
     ->[block 7]
+  block 6:
+    node 15: end-with* (test/flowgraphbuilder/flowgraph_builder_jump_0015.js:2:1)
+    ->[block 8]
   block 7: [exit-ordinary]
     node 16: return[v1] (test/flowgraphbuilder/flowgraph_builder_jump_0015.js:1:1)
     ->[]

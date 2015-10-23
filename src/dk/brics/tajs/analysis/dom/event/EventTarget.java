@@ -20,15 +20,14 @@ import dk.brics.tajs.analysis.Conversion;
 import dk.brics.tajs.analysis.FunctionCalls;
 import dk.brics.tajs.analysis.NativeFunctions;
 import dk.brics.tajs.analysis.Solver;
-import dk.brics.tajs.analysis.State;
 import dk.brics.tajs.analysis.dom.DOMConversion;
 import dk.brics.tajs.analysis.dom.DOMEvents;
 import dk.brics.tajs.analysis.dom.DOMObjects;
 import dk.brics.tajs.analysis.dom.DOMWindow;
 import dk.brics.tajs.analysis.dom.core.DOMNode;
+import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.solver.Message.Severity;
-import org.apache.log4j.Logger;
 
 import static dk.brics.tajs.analysis.dom.DOMFunctions.createDOMFunction;
 
@@ -69,13 +68,13 @@ public class EventTarget {
          */
             case EVENT_TARGET_ADD_EVENT_LISTENER:
             case WINDOW_ADD_EVENT_LISTENER: {
-                NativeFunctions.expectParameters(nativeObject, call, c, 3, 3);
+                NativeFunctions.expectParameters(nativeObject, call, c, 2, 3);
                 Value type = Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
                 Value function = NativeFunctions.readParameter(call, s, 1);
             /* Value useCapture =*/
                 Conversion.toBoolean(NativeFunctions.readParameter(call, s, 2));
                 if (type.isMaybeSingleStr()) {
-                    DOMEvents.addEventHandler(s, type.getStr(), function);
+                    DOMEvents.addEventHandler(s.readThisObjects(), s, type.getStr(), function, false);
                 } else {
                     DOMEvents.addUnknownEventHandler(s, function.getObjectLabels());
                 }
@@ -83,7 +82,7 @@ public class EventTarget {
             }
             case EVENT_TARGET_REMOVE_EVENT_LISTENER:
             case WINDOW_REMOVE_EVENT_LISTENER: {
-                NativeFunctions.expectParameters(nativeObject, call, c, 3, 3);
+                NativeFunctions.expectParameters(nativeObject, call, c, 2, 3);
                 Value type = Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
                 Value function = DOMConversion.toEventHandler(NativeFunctions.readParameter(call, s, 1), c);
             /* Value useCapture =*/

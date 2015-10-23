@@ -1,0 +1,171 @@
+fg2: function()
+  block 0: [entry]
+    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder_jump_return_0016.js:1:1)
+    node 1: function-decl[function f(),-] (test/flowgraphbuilder/flowgraph_builder_jump_return_0016.js:1:1)
+    ->[block 1]
+  block 1:
+    node 2: read-variable['TAJS_assert',v3,v2] (test/flowgraphbuilder/flowgraph_builder_jump_return_0016.js:12:1)
+    node 3: read-variable['f',v6,v5] (test/flowgraphbuilder/flowgraph_builder_jump_return_0016.js:12:13)
+    ->[block 2]
+  block 2:
+    node 4: call[v5,v6,v4] (test/flowgraphbuilder/flowgraph_builder_jump_return_0016.js:12:13)
+    ->[block 3]
+  block 3:
+    node 5: call[v2,v3,v4,-]* (test/flowgraphbuilder/flowgraph_builder_jump_return_0016.js:12:1)
+    ->[block 4]
+  block 4:
+    node 6: read-variable['TAJS_dumpValue',v8,v7] (test/flowgraphbuilder/flowgraph_builder_jump_return_0016.js:14:1)
+    node 7: constant["OK",v9] (test/flowgraphbuilder/flowgraph_builder_jump_return_0016.js:14:16)
+    ->[block 5]
+  block 5:
+    node 8: call[v7,v8,v9,-]* (test/flowgraphbuilder/flowgraph_builder_jump_return_0016.js:14:1)
+    ->[block 6]
+  block 6: [exit-ordinary]
+    node 9: return[v1] (test/flowgraphbuilder/flowgraph_builder_jump_return_0016.js:1:1)
+    ->[]
+  block 7: [exit-exceptional]
+    node 10: exceptional-return (test/flowgraphbuilder/flowgraph_builder_jump_return_0016.js:1:1)
+    ->[]
+function f()
+  block 8: [entry]
+    node 11: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder_jump_return_0016.js:1:1)
+    ->[block 9]
+  block 9:
+    node 12: read-variable['toString',v13,v12] (test/flowgraphbuilder/flowgraph_builder_jump_return_0016.js:4:20)
+    ->[block 10] ~>[block 13]
+  block 10:
+    node 13: call[v12,v13,v1] (test/flowgraphbuilder/flowgraph_builder_jump_return_0016.js:4:20)
+    ->[block 11] ~>[block 13]
+  block 11:
+    node 14: if[v1](true-block:12,false-block:21) (test/flowgraphbuilder/flowgraph_builder_jump_return_0016.js:4:20)
+    ->[block 12,block 21] ~>[block 13]
+  block 12:
+    node 15: constant[false,v1] (test/flowgraphbuilder/flowgraph_builder_jump_return_0016.js:4:34)
+    ->[block 21] ~>[block 13]
+  block 13:
+    node 16: catch[v7] (test/flowgraphbuilder/flowgraph_builder_jump_return_0016.js:3:9)
+    node 17(~35): read-variable['toString',v9,v8] (test/flowgraphbuilder/flowgraph_builder_jump_return_0016.js:6:20)
+    ->[block 14] ~>[block 35]
+  block 14:
+    node 18(~36): call[v8,v9,v1] (test/flowgraphbuilder/flowgraph_builder_jump_return_0016.js:6:20)
+    ->[block 15] ~>[block 35]
+  block 15:
+    node 19(~37): if[v1](true-block:16,false-block:17) (test/flowgraphbuilder/flowgraph_builder_jump_return_0016.js:6:20)
+    ->[block 16,block 17] ~>[block 35]
+  block 16:
+    node 20(~38): constant[false,v1] (test/flowgraphbuilder/flowgraph_builder_jump_return_0016.js:6:34)
+    ->[block 17] ~>[block 35]
+  block 17:
+    node 21(~44): read-variable['toString',v6,v5] (test/flowgraphbuilder/flowgraph_builder_jump_return_0016.js:9:16)
+    ->[block 18]
+  block 18:
+    node 22(~45): call[v5,v6,v1] (test/flowgraphbuilder/flowgraph_builder_jump_return_0016.js:9:16)
+    ->[block 19]
+  block 19:
+    node 23(~46): if[v1](true-block:20,false-block:51) (test/flowgraphbuilder/flowgraph_builder_jump_return_0016.js:9:16)
+    ->[block 20,block 51]
+  block 20:
+    node 24(~47): constant[true,v1] (test/flowgraphbuilder/flowgraph_builder_jump_return_0016.js:9:30)
+    ->[block 51]
+  block 21:
+    node 25(~35): read-variable['toString',v11,v10] (test/flowgraphbuilder/flowgraph_builder_jump_return_0016.js:6:20)
+    ->[block 22] ~>[block 35]
+  block 22:
+    node 26(~36): call[v10,v11,v1] (test/flowgraphbuilder/flowgraph_builder_jump_return_0016.js:6:20)
+    ->[block 23] ~>[block 35]
+  block 23:
+    node 27(~37): if[v1](true-block:24,false-block:25) (test/flowgraphbuilder/flowgraph_builder_jump_return_0016.js:6:20)
+    ->[block 24,block 25] ~>[block 35]
+  block 24:
+    node 28(~38): constant[false,v1] (test/flowgraphbuilder/flowgraph_builder_jump_return_0016.js:6:34)
+    ->[block 25] ~>[block 35]
+  block 25:
+    node 29(~48): read-variable['toString',v6,v5] (test/flowgraphbuilder/flowgraph_builder_jump_return_0016.js:9:16)
+    ->[block 26]
+  block 26:
+    node 30(~49): call[v5,v6,v1] (test/flowgraphbuilder/flowgraph_builder_jump_return_0016.js:9:16)
+    ->[block 27]
+  block 27:
+    node 31(~50): if[v1](true-block:28,false-block:51) (test/flowgraphbuilder/flowgraph_builder_jump_return_0016.js:9:16)
+    ->[block 28,block 51]
+  block 28:
+    node 32(~51): constant[true,v1] (test/flowgraphbuilder/flowgraph_builder_jump_return_0016.js:9:30)
+    ->[block 51]
+  block 29:
+    node 33: throw[v2]* (test/flowgraphbuilder/flowgraph_builder_jump_return_0016.js:2:5)
+    ->[block 52]
+  block 30:
+    node 34: throw[v7]* (test/flowgraphbuilder/flowgraph_builder_jump_return_0016.js:3:9)
+    ->[block 35] ~>[block 35]
+  block 31:
+    node 35: read-variable['toString',v11,v10] (test/flowgraphbuilder/flowgraph_builder_jump_return_0016.js:6:20)
+    ->[block 32] ~>[block 35]
+  block 32:
+    node 36: call[v10,v11,v1] (test/flowgraphbuilder/flowgraph_builder_jump_return_0016.js:6:20)
+    ->[block 33] ~>[block 35]
+  block 33:
+    node 37: if[v1](true-block:34,false-block:39) (test/flowgraphbuilder/flowgraph_builder_jump_return_0016.js:6:20)
+    ->[block 34,block 39] ~>[block 35]
+  block 34:
+    node 38: constant[false,v1] (test/flowgraphbuilder/flowgraph_builder_jump_return_0016.js:6:34)
+    ->[block 39] ~>[block 35]
+  block 35:
+    node 39: catch[v2] (test/flowgraphbuilder/flowgraph_builder_jump_return_0016.js:2:5)
+    node 40(~48): read-variable['toString',v4,v3] (test/flowgraphbuilder/flowgraph_builder_jump_return_0016.js:9:16)
+    ->[block 36]
+  block 36:
+    node 41(~49): call[v3,v4,v1] (test/flowgraphbuilder/flowgraph_builder_jump_return_0016.js:9:16)
+    ->[block 37]
+  block 37:
+    node 42(~50): if[v1](true-block:38,false-block:51) (test/flowgraphbuilder/flowgraph_builder_jump_return_0016.js:9:16)
+    ->[block 38,block 51]
+  block 38:
+    node 43(~51): constant[true,v1] (test/flowgraphbuilder/flowgraph_builder_jump_return_0016.js:9:30)
+    ->[block 51]
+  block 39:
+    node 44(~48): read-variable['toString',v6,v5] (test/flowgraphbuilder/flowgraph_builder_jump_return_0016.js:9:16)
+    ->[block 40]
+  block 40:
+    node 45(~49): call[v5,v6,v1] (test/flowgraphbuilder/flowgraph_builder_jump_return_0016.js:9:16)
+    ->[block 41]
+  block 41:
+    node 46(~50): if[v1](true-block:42,false-block:51) (test/flowgraphbuilder/flowgraph_builder_jump_return_0016.js:9:16)
+    ->[block 42,block 51]
+  block 42:
+    node 47(~51): constant[true,v1] (test/flowgraphbuilder/flowgraph_builder_jump_return_0016.js:9:30)
+    ->[block 51]
+  block 43:
+    node 48: read-variable['toString',v6,v5] (test/flowgraphbuilder/flowgraph_builder_jump_return_0016.js:9:16)
+    ->[block 44]
+  block 44:
+    node 49: call[v5,v6,v1] (test/flowgraphbuilder/flowgraph_builder_jump_return_0016.js:9:16)
+    ->[block 45]
+  block 45:
+    node 50: if[v1](true-block:46,false-block:51) (test/flowgraphbuilder/flowgraph_builder_jump_return_0016.js:9:16)
+    ->[block 46,block 51]
+  block 46:
+    node 51: constant[true,v1] (test/flowgraphbuilder/flowgraph_builder_jump_return_0016.js:9:30)
+    ->[block 51]
+  block 47:
+    node 52(~48): read-variable['toString',v6,v5] (test/flowgraphbuilder/flowgraph_builder_jump_return_0016.js:9:16)
+    ->[block 48]
+  block 48:
+    node 53(~49): call[v5,v6,v1] (test/flowgraphbuilder/flowgraph_builder_jump_return_0016.js:9:16)
+    ->[block 49]
+  block 49:
+    node 54(~50): if[v1](true-block:50,false-block:51) (test/flowgraphbuilder/flowgraph_builder_jump_return_0016.js:9:16)
+    ->[block 50,block 51]
+  block 50:
+    node 55(~51): constant[true,v1] (test/flowgraphbuilder/flowgraph_builder_jump_return_0016.js:9:30)
+    ->[block 51]
+  block 51: [exit-ordinary]
+    node 56: return[v1] (test/flowgraphbuilder/flowgraph_builder_jump_return_0016.js:11:1)
+    ->[]
+  block 52: [exit-exceptional]
+    node 57: exceptional-return (test/flowgraphbuilder/flowgraph_builder_jump_return_0016.js:11:1)
+    ->[]
+
+test/flowgraphbuilder/flowgraph_builder_jump_return_0016.js:4:20: [definite] The conditional expression is always true
+test/flowgraphbuilder/flowgraph_builder_jump_return_0016.js:6:20: [definite] The conditional expression is always true
+test/flowgraphbuilder/flowgraph_builder_jump_return_0016.js:9:16: [definite] The conditional expression is always true
+test/flowgraphbuilder/flowgraph_builder_jump_return_0016.js:14:1: [info] Abstract value: "OK"

@@ -18,6 +18,12 @@ package dk.brics.tajs.analysis.dom;
 
 import dk.brics.tajs.analysis.HostAPIs;
 import dk.brics.tajs.lattice.HostObject;
+import dk.brics.tajs.lattice.ObjectLabel;
+import dk.brics.tajs.lattice.State;
+import dk.brics.tajs.lattice.Str;
+import dk.brics.tajs.lattice.Value;
+
+import java.util.Collections;
 
 /**
  * Native DOM objects.
@@ -165,6 +171,9 @@ public enum DOMObjects implements HostObject {
     WHEEL_EVENT_INIT_WHEEL_EVENT("WheelEvent.initWheelEvent"),
     WHEEL_EVENT_INIT_WHEEL_EVENT_NS("WheelEvent.initWheelEventNS"),
     WHEEL_EVENT_PROTOTYPE("WheelEvent.prototype"),
+
+    LOAD_EVENT_PROTOTYPE("LoadEvent.prototype"),
+    LOAD_EVENT_INSTANCES("LoadEvent instances"),
 
     // /////////////////////////////////////////////////////////////////////////
     // / VIEWS ///
@@ -345,6 +354,8 @@ public enum DOMObjects implements HostObject {
     HTMLELEMENT("HTMLElement"),
     HTMLELEMENT_PROTOTYPE("HTMLElement.prototype"),
     HTMLELEMENT_GET_ELEMENTS_BY_CLASS_NAME("HTMLElement.prototype.getElementsByClassName"),
+    HTMLELEMENT_FOCUS("HTMLElement.prototype.focus"),
+    HTMLELEMENT_BLUR("HTMLElement.prototype.blur"),
     HTMLELEMENT_MATCHES_SELECTOR("HTMLElement.prototype.(*)MatchesSelector"),
     HTMLFIELDSETELEMENT_CONSTRUCTOR("HTMLFieldsetElement constructor"),
     HTMLFIELDSETELEMENT_PROTOTYPE("HTMLFieldsetElement.prototype"),
@@ -583,6 +594,94 @@ public enum DOMObjects implements HostObject {
     TEXTMETRICS("TextMetrics"),
 
     // /////////////////////////////////////////////////////////////////////////
+    // / HTML5 WebGL ///
+    // /////////////////////////////////////////////////////////////////////////
+    WEBGLRENDERINGCONTEXT_CONSTRCUTOR("WebGLRenderingContext.constructor"),
+    WEBGLRENDERINGCONTEXT_PROTOTYPE("WebGLRenderingContext.prototype"),
+    WEBGLRENDERINGCONTEXT_INSTANCES("WebGLRenderingContext.instances"),
+    WEBGLRENDERINGCONTEXT_TAJS_UNSUPPORTED_FUNCTION("WebGLRenderingContext.prototype.TAJS_UNSUPPORTED_FUNCTION"),
+
+    // /////////////////////////////////////////////////////////////////////////
+    // / HTML5 Media ///
+    // /////////////////////////////////////////////////////////////////////////
+    HTMLMEDIAELEMENT_CONSTRUCTOR("HTMLMediaElement"),
+    HTMLMEDIAELEMENT_PROTOTYPE("HTMLMediaElement.prototype"),
+    HTMLMEDIAELEMENT_INSTANCES("HTMLMediaElement instances"),
+    HTMLMEDIAELEMENT_CAN_PLAY_TYPE("HTMLMediaElement.prototype.canPlayType"),
+    HTMLMEDIAELEMENT_FAST_SEEK("HTMLMediaElement.prototype.fastSeek"),
+    HTMLMEDIAELEMENT_LOAD("HTMLMediaElement.prototype.load"),
+    HTMLMEDIAELEMENT_PLAY("HTMLMediaElement.prototype.play"),
+    HTMLMEDIAELEMENT_PAUSE("HTMLMediaElement.prototype.pause"),
+
+    // /////////////////////////////////////////////////////////////////////////
+    // / HTML5 Audio ///
+    // /////////////////////////////////////////////////////////////////////////
+    HTMLAUDIOELEMENT_CONSTRUCTOR("HTMLAudioElement"),
+    HTMLAUDIOELEMENT_PROTOTYPE("HTMLAudioElement.prototype"),
+    HTMLAUDIOELEMENT_INSTANCES("HTMLAudioElement.instances"),
+
+    // /////////////////////////////////////////////////////////////////////////
+    // / HTML5 AudioContext ///
+    // /////////////////////////////////////////////////////////////////////////
+    AUDIOCONTEXT_CONSTRUCTOR("AudioContext"),
+    AUDIOCONTEXT_PROTOTYPE("AudioContext.prototype"),
+    AUDIOCONTEXT_INSTANCES("AudioContext instances"),
+    AUDIOCONTEXT_CREATE_ANALYSER("AudioContext.createAnalyser"),
+    AUDIOCONTEXT_CREATE_OSCILLATOR("AudioContext.createOscillator"),
+    AUDIOCONTEXT_CREATE_SCRIPT_PROCESSOR("AudioContext.createScriptProcessor"),
+    AUDIOCONTEXT_TAJS_UNSUPPORTED_FUNCTION("AudioContext.prototype.TAJS_UNSUPPORTED_FUNCTION"),
+
+    // /////////////////////////////////////////////////////////////////////////
+    // / HTML5 AudioNode ///
+    // /////////////////////////////////////////////////////////////////////////
+    AUDIONODE_CONSTRUCTOR("AudioNode"),
+    AUDIONODE_PROTOTYPE("AudioNode.prototype"),
+    AUDIONODE_INSTANCES("AudioNode.instances"),
+    AUDIONODE_CONNECT("AudioNode.prototype.connect"),
+    AUDIONODE_DISCONNECT("AudioNode.prototype.disconnect"),
+
+    // /////////////////////////////////////////////////////////////////////////
+    // / HTML5 OscillatorNode ///
+    // /////////////////////////////////////////////////////////////////////////
+    OSCILLATORNODE_CONSTRUCTOR("OscillatorNode"),
+    OSCILLATORNODE_PROTOTYPE("OscillatorNode.prototype"),
+    OSCILLATORNODE_INSTANCES("OscillatorNode instances"),
+    OSCILLATORNODE_START("OscillatorNode.prototype.start"),
+    OSCILLATORNODE_STOP("OscillatorNode.prototype.stop"),
+    OSCILLATORNODE_SET_PERIODIC_WAVE("OscillatorNode.prototype.setPeriodicWave"),
+
+    // /////////////////////////////////////////////////////////////////////////
+    // / HTML5 AudioParam ///
+    // /////////////////////////////////////////////////////////////////////////
+    AUDIOPARAM_CONSTRUCTOR("AudioParam"),
+    AUDIOPARAM_PROTOTYPE("AudioParam.prototype"),
+    AUDIOPARAM_INSTANCES("AudioParam.instances"),
+    AUDIOPARAM_TAJS_UNSUPPORTED_FUNCTION("AudioParam.prototype.TAJS_UNSUPPORTED_FUNCTION"),
+
+    // /////////////////////////////////////////////////////////////////////////
+    // / HTML5 ScriptProcessorNode ///
+    // /////////////////////////////////////////////////////////////////////////
+    SCRIPTPROCESSORNODE_CONSTRUCTOR("ScriptProcessorNode"),
+    SCRIPTPROCESSORNODE_PROTOTYPE("ScriptProcessorNode.prototype"),
+    SCRIPTPROCESSORNODE_INSTANCES("ScriptProcessorNode.instances"),
+
+    // /////////////////////////////////////////////////////////////////////////
+    // / HTML5 AudioDestinationNdoe ///
+    // /////////////////////////////////////////////////////////////////////////
+    AUDIODESTINATIONNODE_CONSTRUCTOR("AudioDestinationNode"),
+    AUDIODESTINATIONNODE_PROTOTYPE("AudioDestinationNode.prototype"),
+    AUDIODESTINATIONNODE_INSTANCES("AudioDestinationNode.instances"),
+
+    // /////////////////////////////////////////////////////////////////////////
+    // / HTML5 TimeRanges (used in Media) ///
+    // /////////////////////////////////////////////////////////////////////////
+    TIMERANGES_CONSTRUCTOR("TimeRanges"),
+    TIMERANGES_PROTOTYPE("TimeRanges.prototype"),
+    TIMERANGES_INSTANCES("TimeRanges instances"),
+    TIMERANGES_START("TimeRanges.prototype.start"),
+    TIMERANGES_END("TimeRanges.prototype.end"),
+
+    // /////////////////////////////////////////////////////////////////////////
     // / HTML5 Storage///
     // /////////////////////////////////////////////////////////////////////////
     STORAGE_CONSTRUCTOR("Storage constructor"),
@@ -637,21 +736,15 @@ public enum DOMObjects implements HostObject {
         return api;
     }
 
-// TODO: getters/setters
-//    @Override
-//    public boolean hasGetter(String p) {
-//        return false;
-//    }
-//
-//    @Override
-//    public boolean hasSetter(String p) {
-//        // TODO: hasSetter, ONLY for HTML elements
-//        if (this == HTMLIMAGEELEMENT_INSTANCES && DOMEventHelpers.isLoadEventAttribute(p)) {
-//            // Hack, to support image onload events.
-//            return true;
-//        }
-//        return DOMEventHelpers.isEventAttribute(p)
-//                || DOMEventHelpers.isAjaxEventProperty(p)
-//                || p.equalsIgnoreCase("id");
-//    }
+    @Override
+    public void evaluateSetter(ObjectLabel objlabel, Str prop, Value value, State state) {
+        evaluateDOMSetter(objlabel, prop, value, state);
+    }
+
+    public static void evaluateDOMSetter(ObjectLabel objlabel, Str prop, Value value, State state) {
+        if (prop.isMaybeSingleStr()) {
+            DOMEvents.addEventHandler(Collections.singleton(objlabel), state, prop.getStr(), value, true);
+            // TODO: other DOM setters to consider?
+        } // FIXME: currently ignoring unknown property assignments in DOM setters
+    }
 }

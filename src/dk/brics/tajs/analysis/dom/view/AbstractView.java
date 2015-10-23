@@ -16,9 +16,9 @@
 
 package dk.brics.tajs.analysis.dom.view;
 
-import dk.brics.tajs.analysis.State;
 import dk.brics.tajs.analysis.dom.DOMWindow;
 import dk.brics.tajs.analysis.dom.html.HTMLDocument;
+import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.Value;
 
 import static dk.brics.tajs.analysis.dom.DOMFunctions.createDOMProperty;

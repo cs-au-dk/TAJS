@@ -1,0 +1,534 @@
+.yt-uix-button-hover-action-menu {
+	background: none; padding: 0px 0px 3px; border: currentColor; border-image: none; height: auto; cursor: pointer; opacity: 0; box-shadow: none;
+}
+.yt-uix-button-hover-action-menu:focus {
+	box-shadow: none;
+}
+.yt-uix-button-hover-action-menu:hover:focus {
+	box-shadow: none;
+}
+.yt-uix-button-icon-hover-action-menu {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat 0px -924px / 72px 1479px; width: 13px; height: 13px;
+}
+.yt-uix-button-active .yt-uix-button-icon-hover-action-menu {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat 0px -924px / 72px 1479px; width: 13px; height: 13px;
+}
+.hover-action-menu-trigger .yt-uix-button-active.yt-uix-button-hover-action-menu {
+	opacity: 0.8;
+}
+.hover-action-menu-trigger:hover .yt-uix-button-hover-action-menu {
+	opacity: 0.8;
+}
+.yt-uix-button-hover-action-menu .yt-uix-button-arrow {
+	display: none;
+}
+.yt-uix-button-dark-overflow-action-menu .yt-uix-button-arrow {
+	display: none;
+}
+.yt-uix-button-icon-dark-overflow-action-menu {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat 0px -610px / 72px 1479px; width: 15px; height: 15px;
+}
+.yt-uix-button-active .yt-uix-button-icon-dark-overflow-action-menu {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat -17px -610px / 72px 1479px; width: 15px; height: 15px;
+}
+.yt-uix-button-icon-dark-overflow-action-menu:hover {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat -17px -610px / 72px 1479px; width: 15px; height: 15px;
+}
+.yt-uix-button-menu-dark-overflow-action-menu {
+	border-color: rgb(204, 204, 204); background-color: rgb(255, 255, 255);
+}
+.yt-uix-button-menu-dark-overflow-action-menu .yt-uix-button-menu-item {
+	color: rgb(51, 51, 51);
+}
+.yt-uix-button-menu-dark-overflow-action-menu .yt-uix-button-menu-item:hover {
+	color: rgb(255, 255, 255); background-color: rgb(51, 51, 51);
+}
+.branded-page #content {
+	width: auto;
+}
+.guide-header p {
+	margin: 10px 0px;
+}
+.guide-header h3 {
+	padding-right: 0px; font-weight: normal;
+}
+.display-name:hover {
+	text-decoration: none;
+}
+.signup-promo {
+	padding: 7px 17px 18px;
+}
+.signup-promo.guide-section {
+	padding: 0px; line-height: 1.3em;
+}
+#guide-subscription-suggestions-section {
+	margin-bottom: 0px;
+}
+.guide-item .guide-my-channel-icon {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat 0px -1002px / 72px 1479px; width: 20px; height: 20px;
+}
+.guide-item:hover .guide-my-channel-icon {
+	background-position: -52px -976px;
+}
+.guide-item-selected.guide-item .guide-my-channel-icon {
+	background-position: -52px -976px;
+}
+.guide-item .guide-history-icon {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat -22px -902px / 72px 1479px; width: 20px; height: 20px;
+}
+.guide-item:hover .guide-history-icon {
+	background-position: 0px -431px;
+}
+.guide-item-selected.guide-item .guide-history-icon {
+	background-position: 0px -431px;
+}
+.guide-item .guide-music-icon {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat -44px -1150px / 72px 1479px; width: 20px; height: 20px;
+}
+.guide-item:hover .guide-music-icon {
+	background-position: -52px -1124px;
+}
+.guide-item-selected.guide-item .guide-music-icon {
+	background-position: -52px -1124px;
+}
+.guide-item .guide-watch-later-icon {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat -52px -888px / 72px 1479px; width: 20px; height: 20px;
+}
+.guide-item:hover .guide-watch-later-icon {
+	background-position: 0px -262px;
+}
+.guide-item-selected.guide-item .guide-watch-later-icon {
+	background-position: 0px -262px;
+}
+.guide-item .guide-purchases-icon {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat 0px -1150px / 72px 1479px; width: 20px; height: 20px;
+}
+.guide-item:hover .guide-purchases-icon {
+	background-position: -51px -240px;
+}
+.guide-item-selected.guide-item .guide-purchases-icon {
+	background-position: -51px -240px;
+}
+.guide-item .guide-what-to-watch-icon {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat -50px -1172px / 72px 1479px; width: 20px; height: 20px;
+}
+.guide-item:hover .guide-what-to-watch-icon {
+	background-position: -48px -1395px;
+}
+.guide-item-selected.guide-item .guide-what-to-watch-icon {
+	background-position: -48px -1395px;
+}
+.guide-item .guide-my-subscriptions-icon {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat -34px -610px / 72px 1479px; width: 20px; height: 20px;
+}
+.guide-item:hover .guide-my-subscriptions-icon {
+	background-position: -52px -1455px;
+}
+.guide-item-selected.guide-item .guide-my-subscriptions-icon {
+	background-position: -52px -1455px;
+}
+.guide-item .guide-playlists-icon {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat 0px -22px / 72px 1479px; width: 20px; height: 20px;
+}
+.guide-item:hover .guide-playlists-icon {
+	background-position: 0px 0px;
+}
+.guide-item-selected.guide-item .guide-playlists-icon {
+	background-position: 0px 0px;
+}
+.guide-item .guide-social-icon {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat -16px -942px / 72px 1479px; width: 20px; height: 20px;
+}
+.guide-item:hover .guide-social-icon {
+	background-position: -22px 0px;
+}
+.guide-item-selected.guide-item .guide-social-icon {
+	background-position: -22px 0px;
+}
+.guide-item .guide-builder-icon {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat -50px -584px / 72px 1479px; width: 20px; height: 20px;
+}
+.guide-item:hover .guide-builder-icon {
+	background-position: -49px 0px;
+}
+.guide-item-selected.guide-item .guide-builder-icon {
+	background-position: -49px 0px;
+}
+.guide-item .guide-subscription-manager-icon {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat -50px -562px / 72px 1479px; width: 20px; height: 20px;
+}
+.guide-item:hover .guide-subscription-manager-icon {
+	background-position: -10px -114px;
+}
+.guide-item-selected.guide-item .guide-subscription-manager-icon {
+	background-position: -10px -114px;
+}
+.guide-item .guide-likes-playlist-icon {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat 0px -62px / 72px 1479px; width: 20px; height: 20px;
+}
+.guide-item:hover .guide-likes-playlist-icon {
+	background-position: -47px -1039px;
+}
+.guide-item-selected.guide-item .guide-likes-playlist-icon {
+	background-position: -47px -1039px;
+}
+.guide-item .guide-mix-icon {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat -42px -323px / 72px 1479px; width: 20px; height: 20px;
+}
+.guide-item:hover .guide-mix-icon {
+	background-position: -20px -1296px;
+}
+.guide-item-selected.guide-item .guide-mix-icon {
+	background-position: -20px -1296px;
+}
+.guide-item .guide-collection-icon {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat 0px -902px / 72px 1479px; width: 20px; height: 20px;
+}
+.on-hover.guide-flyout-trigger .guide-collection-icon {
+	background-position: -26px -1395px;
+}
+.guide-item-selected.guide-item .guide-collection-icon {
+	background-position: -26px -1395px;
+}
+.guide-item {
+	background: none; border: currentColor; border-image: none; display: block; position: relative;
+}
+.guide-view-more {
+	background: none; border: currentColor; border-image: none; display: block; position: relative;
+}
+.guide-item {
+	height: 28px; color: rgb(34, 34, 34); font-size: 12px;
+}
+.guide-view-more {
+	height: 28px; font-size: 12px;
+}
+.has-subtitle.guide-item {
+	height: 36px;
+}
+.guide-item {
+	overflow: hidden; outline-offset: -5px;
+}
+.page-loaded .guide-item {
+	transition:height 0.4s; -moz-transition: height .4s ease; -webkit-transition: height .4s ease;
+}
+.guide-item-collapsed.guide-item {
+	height: 0px;
+}
+.guide-item:hover {
+	text-decoration: none;
+}
+.guide-channels-list .guide-view-all a {
+	width: 160px; text-align: center; color: rgb(153, 153, 153); font-size: 11px; display: inline-block;
+}
+.guide-view-more {
+	text-align: left; color: rgb(173, 173, 173); padding-left: 35px;
+}
+.guide-item-subtitle {
+	width: 140px; color: rgb(173, 173, 173); overflow: hidden; font-size: 11px; margin-left: 35px; white-space: nowrap; -ms-word-wrap: normal; -ms-text-overflow: ellipsis; -o-text-overflow: ellipsis;
+}
+.guide-item .yt-deemphasized-text {
+	color: rgb(173, 173, 173);
+}
+.on-hover.guide-flyout-trigger {
+	background: rgb(68, 68, 68); color: rgb(255, 255, 255);
+}
+.guide-item:hover {
+	background: rgb(68, 68, 68); color: rgb(255, 255, 255);
+}
+.guide-item:hover .yt-deemphasized-text {
+	background: rgb(68, 68, 68); color: rgb(255, 255, 255);
+}
+.guide-collection-item:hover .guide-item {
+	background: rgb(68, 68, 68); color: rgb(255, 255, 255);
+}
+.guide-collapsible-item .yt-uix-expander-head:hover {
+	background: rgb(68, 68, 68); color: rgb(255, 255, 255);
+}
+.guide-item-selected.guide-item {
+	background: rgb(204, 24, 30); color: rgb(255, 255, 255);
+}
+.guide-item-selected.guide-item:hover {
+	background: rgb(204, 24, 30); color: rgb(255, 255, 255);
+}
+.guide-item-selected.guide-item .yt-deemphasized-text {
+	background: rgb(204, 24, 30); color: rgb(255, 255, 255);
+}
+.guide-item-selected.guide-item:hover .yt-deemphasized-text {
+	background: rgb(204, 24, 30); color: rgb(255, 255, 255);
+}
+.guide-collection-item .guide-item-selected.guide-item {
+	background: rgb(204, 24, 30); color: rgb(255, 255, 255);
+}
+#guide-container .guide-item-selected.guide-item {
+	font-weight: bold; text-shadow: -1px -1px 0px rgba(0,0,0,0.25);
+}
+#guide-container .guide-collection.guide-item {
+	font-weight: bold;
+}
+.guide-item .display-name {
+	overflow: hidden; display: inline-block; white-space: nowrap; -ms-word-wrap: normal; -ms-text-overflow: ellipsis; -o-text-overflow: ellipsis;
+}
+.ie .guide-item .display-name span {
+	line-height: 24px;
+}
+.guide-item .display-name {
+	width: 110px; line-height: 20px; margin-left: 6px;
+}
+.guide-item .guide-count {
+	background: none; padding: 0px 4px; height: 100%; right: 6px; position: absolute;
+}
+.guide-badge-live {
+	background: none; padding: 0px 4px; height: 100%; right: 6px; position: absolute;
+}
+.guide-item .guide-count {
+	color: rgb(173, 173, 173); font-size: 11px;
+}
+.guide-item-selected.guide-item .guide-count {
+	color: rgb(255, 255, 255); font-weight: normal;
+}
+.guide-item:hover .guide-count {
+	color: rgb(255, 255, 255);
+}
+.guide-badge-live .yt-valign-container {
+	background: rgb(230, 33, 23); border-radius: 4px; width: 8px; height: 8px;
+}
+.guide-flyout-container {
+	position: relative;
+}
+.guide-flyout {
+	padding: 12px; border: 1px solid rgb(227, 227, 227); border-image: none; box-shadow: 5px 10px 15px 5px rgba(0,0,0,0.1);
+}
+.guide-flyout-visibility {
+	left: 0px; width: 210px; bottom: 0px; visibility: hidden; position: fixed;
+}
+.flyout-shown.guide-flyout-visibility {
+	visibility: visible;
+}
+.guide-flyout-iframe-mask {
+	z-index: 1999999998;
+}
+.guide-flyout-container .guide-channels-list {
+	min-height: 0px;
+}
+.guide-flyout-view-more-icon {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat -24px -863px / 72px 1479px; width: 4px; height: 6.5px; margin-left: 2px;
+}
+.rtl .guide-flyout-view-more-icon {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat -52px -62px / 72px 1479px; width: 4px; height: 6.5px; margin-left: 2px;
+}
+.on-hover.guide-flyout-trigger .guide-flyout-view-more-icon {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat -60px -371px / 72px 1479px; width: 4px; height: 6.5px;
+}
+.guide-item-selected.guide-flyout-trigger .guide-flyout-view-more-icon {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat -60px -371px / 72px 1479px; width: 4px; height: 6.5px;
+}
+.rtl .on-hover.guide-flyout-trigger .guide-flyout-view-more-icon {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat -67px -86px / 72px 1479px; width: 4px; height: 6.5px;
+}
+.rtl .guide-item-selected.guide-flyout-trigger .guide-flyout-view-more-icon {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat -67px -86px / 72px 1479px; width: 4px; height: 6.5px;
+}
+#guide-channels {
+	width: auto;
+}
+.guide-section-separator {
+	margin: 8px 15px 8px 4px; border-bottom-color: rgb(226, 226, 226); border-bottom-width: 1px; border-bottom-style: solid;
+}
+#branded-page-header-container {
+	overflow: visible; border-top-left-radius: 0px; -moz-border-radius-topleft: 0;
+}
+.channels#guide-container {
+	z-index: 2;
+}
+.guide-item .thumb {
+	margin-right: 0px; margin-left: 6px; vertical-align: bottom;
+}
+.guide-item .display-name {
+	vertical-align: bottom;
+}
+.guide-channels-content {
+	position: relative;
+}
+.guide-channels-list {
+	width: 197px; clear: both; position: relative; -ms-overflow-x: hidden; -ms-overflow-y: hidden;
+}
+.guide-channels-list:hover {
+	-ms-overflow-y: auto;
+}
+.guide-channels-list .yt-spinner {
+	font-size: 11px;
+}
+.guide-channels-list .yt-uix-expander.guide-channel {
+	height: auto;
+}
+.guide-channels-list .guide-channel a {
+	width: 175px; position: relative;
+}
+.guide-channels-list .guide-item {
+	width: 184px;
+}
+.guide-channels-list a.guide-item {
+	display: block; white-space: nowrap;
+}
+.guide-item .no-count.display-name {
+	width: 140px;
+}
+.default-promo#guide-subscriptions-promo {
+	padding: 5px; border: 1px solid rgb(204, 204, 204); border-image: none; margin-right: 10px; cursor: pointer; opacity: 0.6; border-top-left-radius: 3px; -moz-border-radius-topleft: 3px;
+}
+.default-promo#guide-subscriptions-promo:hover {
+	opacity: 1;
+}
+.guide-subscriptions-promo-tooltip {
+	background: rgb(104, 152, 201); border-width: 1px; border-style: solid; border-color: rgb(111, 159, 207) rgb(95, 143, 191) rgb(95, 143, 191); margin: 0px; border-image: none; left: 0px; top: 0px; text-align: center; right: 0px; bottom: 0px; color: rgb(255, 255, 255); font-size: 11px; display: none; position: absolute; opacity: 0.97; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; -moz-border-radius-bottomleft: 2px; -moz-border-radius-bottomright: 2px;
+}
+.guide-subscriptions-promo-tooltip p {
+	margin: -30px 15px 0px; top: 50%; font-size: 12px; font-weight: bold; position: absolute; text-shadow: 0px 1px rgba(1,1,1,0.5);
+}
+.filter-match {
+	color: rgb(0, 0, 0); font-weight: bold;
+}
+.guide-item:hover .filter-match {
+	color: rgb(255, 255, 255);
+}
+#guide-subscriptions-section:hover .guide-subscriptions-promo-tooltip {
+	display: block;
+}
+#guide-subscriptions-section:hover #guide-subscriptions-promo .yt-uix-button {
+	border-bottom-right-radius: 0px; border-bottom-left-radius: 0px; -moz-border-radius-bottomleft: 0; -moz-border-radius-bottomright: 0;
+}
+#guide-subscriptions-promo .subscriptions-wrapper {
+	position: relative;
+}
+#guide-subscriptions-promo .yt-uix-button {
+	text-align: center; display: block;
+}
+#guide-subscriptions-section {
+	position: relative;
+}
+li.guide-section h3 {
+	margin: 0px 5px; padding: 1px 0px 8px; width: 155px; color: rgb(204, 24, 30); text-transform: uppercase; line-height: 13px; overflow: hidden; font-size: 11px; font-weight: bold; display: block; white-space: nowrap; -ms-word-wrap: normal; -ms-text-overflow: ellipsis; -o-text-overflow: ellipsis;
+}
+li.guide-section h3 a {
+	width: 155px; color: rgb(204, 24, 30); overflow: hidden; display: block; white-space: nowrap; -ms-word-wrap: normal; -ms-text-overflow: ellipsis; -o-text-overflow: ellipsis;
+}
+li.without-filter.guide-section h3 {
+	width: 135px;
+}
+li.without-filter.guide-section h3 a {
+	width: 135px;
+}
+#guide-manage-section {
+	margin-bottom: 0px;
+}
+.guide-sort-container {
+	margin: 0px; float: right;
+}
+.guide-sort-container .yt-uix-button-menu .yt-uix-button-menu-item {
+	padding-left: 23px;
+}
+.guide-item .system-icon {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat -30px -1848px; width: 18px; height: 18px;
+}
+.guide-header .guide-item a:hover {
+	text-decoration: none;
+}
+.yt-uix-expander.guide-channel {
+	position: relative;
+}
+.suggested-channels-message h3 {
+	font-size: 24px;
+}
+.suggested-channels-message p {
+	margin: 10px 0px; color: rgb(238, 238, 238);
+}
+.suggested-channels-list-v2 {
+	background: rgb(255, 255, 255); margin: 0px 15px 10px 0px; padding: 3px 0px 0px 3px; border-radius: 2px; width: 98px; height: 98px; overflow: hidden; float: left; box-shadow: 2px 2px 2px rgba(0,0,0,0.25);
+}
+.suggested-channels-list-v2 li {
+	margin: 0px 3px 3px 0px; float: left; display: block;
+}
+.collection-name {
+	display: inline-block;
+}
+.collection-name-empty-error {
+	display: inline-block;
+}
+.yt-dialog .collection-name input {
+	margin: 30px 0px 10px; font-size: 2em; display: inline-block;
+}
+.subscription-picker-header {
+	border-bottom-color: rgb(220, 220, 220); border-bottom-width: 1px; border-bottom-style: solid; display: inherit;
+}
+.subscription-picker-header .yt-uix-button-epic-nav-item {
+	margin-right: 7px; margin-left: 7px;
+}
+.subscription-search-container {
+	float: right;
+}
+.subscription-search {
+	vertical-align: middle; display: inline-block;
+}
+.subscription-search-input {
+	width: 150px; font-size: 1em;
+}
+.subscription-search-clear {
+	top: 3px; right: 22px; vertical-align: middle; visibility: hidden; position: relative;
+}
+.subscription-search-clear .clear-icon {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat -52px -1080px / 144px 2958px; width: 14px; height: 13px;
+}
+.yt-dialog .subscription-picker-list-container {
+	width: 650px; height: 300px; position: relative;
+}
+.yt-dialog .selected-channel-list-container {
+	width: 650px; height: 300px; position: relative;
+}
+.yt-dialog .subscription-picker-list {
+	overflow: hidden; max-height: 300px;
+}
+.yt-dialog .subscription-picker-list:hover {
+	-ms-overflow-y: auto;
+}
+.yt-dialog .collection-delete-button {
+	float: left;
+}
+.subscription-list-item {
+	margin: 2px; padding: 5px 5px 40px; border: 1px solid transparent; border-image: none; width: 88px; float: left; cursor: pointer;
+}
+.subscription-list-item:hover {
+	border-color: rgb(206, 206, 206); border-radius: 2px; background-color: rgb(246, 246, 246);
+}
+.subscription-list-item .qualified-channel-title {
+	text-align: center; line-height: 1.2em; font-size: 12px; font-weight: bold; margin-top: 4px;
+}
+.subscription-list-item .thumb-wrapper {
+	position: relative;
+}
+.subscription-list-item .thumb {
+	margin: 0px;
+}
+.subscription-picker-list-container .saved.selected.subscription-list-item {
+	display: none;
+}
+.subscription-list-item .add-badge {
+	padding: 3px 0px; left: 0px; width: 100%; text-align: center; bottom: 0px; color: rgb(255, 255, 255); overflow: hidden; font-weight: bold; display: none; white-space: nowrap; position: absolute; -ms-word-wrap: normal; -ms-text-overflow: ellipsis; opacity: 0.8; background-color: rgb(0, 0, 0); -o-text-overflow: ellipsis;
+}
+.subscription-list-item .added-badge {
+	padding: 3px 0px; left: 0px; width: 100%; text-align: center; bottom: 0px; color: rgb(255, 255, 255); overflow: hidden; font-weight: bold; display: none; white-space: nowrap; position: absolute; -ms-word-wrap: normal; -ms-text-overflow: ellipsis; opacity: 0.8; background-color: rgb(0, 0, 0); -o-text-overflow: ellipsis;
+}
+.subscription-list-item .remove-badge {
+	padding: 3px 0px; left: 0px; width: 100%; text-align: center; bottom: 0px; color: rgb(255, 255, 255); overflow: hidden; font-weight: bold; display: none; white-space: nowrap; position: absolute; -ms-word-wrap: normal; -ms-text-overflow: ellipsis; opacity: 0.8; background-color: rgb(0, 0, 0); -o-text-overflow: ellipsis;
+}
+:not(.selected).subscription-list-item:hover .add-badge {
+	display: inherit;
+}
+.selected.subscription-list-item:hover .remove-badge {
+	display: inherit;
+}
+:not(:hover).selected.subscription-list-item .added-badge {
+	display: inherit;
+}
+.subscription-added-to-collection-icon {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat -36px -2556px / 144px 2958px; width: 12px; height: 10px;
+}

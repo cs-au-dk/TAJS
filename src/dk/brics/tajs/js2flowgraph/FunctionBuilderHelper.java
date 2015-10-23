@@ -15,6 +15,7 @@ import dk.brics.tajs.flowgraph.jsnodes.BinaryOperatorNode;
 import dk.brics.tajs.flowgraph.jsnodes.CallNode;
 import dk.brics.tajs.flowgraph.jsnodes.ConstantNode;
 import dk.brics.tajs.flowgraph.jsnodes.EndForInNode;
+import dk.brics.tajs.flowgraph.jsnodes.EndLoopNode;
 import dk.brics.tajs.flowgraph.jsnodes.EndWithNode;
 import dk.brics.tajs.flowgraph.jsnodes.ExceptionalReturnNode;
 import dk.brics.tajs.flowgraph.jsnodes.IfNode;
@@ -37,7 +38,7 @@ import static dk.brics.tajs.util.Collections.newList;
 /**
  * Miscellaneous helper functions for {@link FunctionBuilder}.
  */
-class FunctionBuilderHelper {
+public class FunctionBuilderHelper {
 
     /**
      * Adds a node to a basic block.
@@ -46,7 +47,7 @@ class FunctionBuilderHelper {
      * @param block the basic block
      * @param env   the current environment
      */
-    static void addNodeToBlock(AbstractNode node, BasicBlock block, AstEnv env) {
+    public static void addNodeToBlock(AbstractNode node, BasicBlock block, AstEnv env) {
         block.addNode(node);
         node.setRegistersDone(env.isStatementLevel());
     }
@@ -56,15 +57,19 @@ class FunctionBuilderHelper {
      * The duplicate reference will be set on the new nodes (unless set already)
      * External successors remain unchanged.
      *
-     * @param origs          the basic blocks to copy
+     * @param origs the basic blocks to copy
      * @return the mapping from original blocks to their clones
      */
-    static IdentityHashMap<BasicBlock, BasicBlock> cloneBlocksAndNodes(Collection<BasicBlock> origs) {
+    public static IdentityHashMap<BasicBlock, BasicBlock> cloneBlocksAndNodes(Collection<BasicBlock> origs, FunctionAndBlockManager functionAndBlockManager) {
         // create new empty basic blocks
         IdentityHashMap<BasicBlock, BasicBlock> translationMap = new IdentityHashMap<>();
         for (BasicBlock orig : origs) {
             BasicBlock clone = new BasicBlock(orig.getFunction());
             translationMap.put(orig, clone);
+            if (functionAndBlockManager.isUnreachable(orig)) {
+                BasicBlock predecessor = functionAndBlockManager.getUnreachableSyntacticSuccessorPredecessor(orig);
+                functionAndBlockManager.registerUnreachableSyntacticSuccessor(predecessor, clone);
+            }
         }
 
         // clone the nodes
@@ -99,7 +104,7 @@ class FunctionBuilderHelper {
     /**
      * Creates node for a directive, or null if the directive is not recognized.
      */
-    static AbstractNode makeDirectiveNode(String text, SourceLocation location) {
+    public static AbstractNode makeDirectiveNode(String text, SourceLocation location) {
         Directive directive = null;
         for (Directive d : Directive.values()) {
             if (text.equals(d.getName())) {
@@ -130,11 +135,11 @@ class FunctionBuilderHelper {
      * @param jumpThroughBlocks as the blocks to operate on
      * @return the first and last block of the produced graph
      */
-    static Pair<BasicBlock, BasicBlock> wireAndRegisterJumpThroughBlocks(List<JumpThroughBlocks> jumpThroughBlocks, FunctionAndBlockManager functionAndBlocksManager) {
+    public static Pair<BasicBlock, BasicBlock> wireAndRegisterJumpThroughBlocks(List<JumpThroughBlocks> jumpThroughBlocks, FunctionAndBlockManager functionAndBlocksManager) {
         assert !jumpThroughBlocks.isEmpty();
         LinkedList<JumpThroughBlocks> linkedJumpThroughBlocks = new LinkedList<>();
         for (JumpThroughBlocks blocks : jumpThroughBlocks) {
-            JumpThroughBlocks copy = blocks.copy();
+            JumpThroughBlocks copy = blocks.copy(functionAndBlocksManager);
             functionAndBlocksManager.add(copy.getAllBlocks()); // the blocks are registered to be used in the flowgraph
             linkedJumpThroughBlocks.add(copy); // copy in case of multiple usages of the blocks
         }
@@ -156,7 +161,7 @@ class FunctionBuilderHelper {
     /**
      * Closure compiler binary operator -&gt; TAJS flow graph operator.
      */
-    static BinaryOperatorNode.Op getFlowGraphBinaryNonAssignmentOp(TokenType type) {
+    public static BinaryOperatorNode.Op getFlowGraphBinaryNonAssignmentOp(TokenType type) {
         switch (type) {
             case SLASH:
                 return BinaryOperatorNode.Op.DIV;
@@ -209,7 +214,7 @@ class FunctionBuilderHelper {
     /**
      * Closure compiler  compound assignments binary operator -&gt; TAJS flow graph operator.
      */
-    static BinaryOperatorNode.Op getFlowGraphBinaryOperationFromCompoundAssignment(BinaryOperatorTree tree) {
+    public static BinaryOperatorNode.Op getFlowGraphBinaryOperationFromCompoundAssignment(BinaryOperatorTree tree) {
         final TokenType newOperation;
         switch (tree.operator.type) {
             case PLUS_EQUAL:
@@ -255,7 +260,7 @@ class FunctionBuilderHelper {
     /**
      * Closure compiler unary operator -&gt; TAJS flow graph operator.
      */
-    static UnaryOperatorNode.Op getFlowGraphUnaryNonAssignmentOp(TokenType type) {
+    public static UnaryOperatorNode.Op getFlowGraphUnaryNonAssignmentOp(TokenType type) {
         switch (type) {
             case BANG:
                 return UnaryOperatorNode.Op.NOT;
@@ -274,7 +279,7 @@ class FunctionBuilderHelper {
     /**
      * Closure compiler prefix/postfix operator -&gt; TAJS flow graph operator.
      */
-    static BinaryOperatorNode.Op getPrefixPostfixOp(TokenType token) {
+    public static BinaryOperatorNode.Op getPrefixPostfixOp(TokenType token) {
         switch (token) {
             case PLUS_PLUS:
                 return BinaryOperatorNode.Op.ADD;
@@ -288,7 +293,7 @@ class FunctionBuilderHelper {
     /**
      * Creates an assume node for the given reference being non-null/undefined.
      */
-    static AssumeNode makeAssumeNonNullUndef(Reference base) {
+    public static AssumeNode makeAssumeNonNullUndef(Reference base) {
         if (base == null)
             return null;
         switch (base.type) {
@@ -315,21 +320,21 @@ class FunctionBuilderHelper {
     /**
      * Creates a TAJS source location from the start position of given AST node.
      */
-    static SourceLocation makeSourceLocation(ParseTree tree) {
+    public static SourceLocation makeSourceLocation(ParseTree tree) {
         return new SourceLocation(tree.location.start.line + 1, tree.location.start.column + 1, tree.location.start.source.name);
     }
 
     /**
      * Creates a TAJS source location from the end position of the given AST node.
      */
-    static SourceLocation makeSourceLocationEnd(ParseTree tree) {
+    public static SourceLocation makeSourceLocationEnd(ParseTree tree) {
         return new SourceLocation(tree.location.end.line + 1, tree.location.end.column, tree.location.end.source.name);
     }
 
     /**
      * Creates a new basic block, for a function with some exception handler.
      */
-    static BasicBlock makeBasicBlock(Function fun, BasicBlock exceptionHandler, FunctionAndBlockManager functionAndBlocksManager) {
+    public static BasicBlock makeBasicBlock(Function fun, BasicBlock exceptionHandler, FunctionAndBlockManager functionAndBlocksManager) {
         BasicBlock newBlock = new BasicBlock(fun);
         functionAndBlocksManager.add(newBlock);
         newBlock.setExceptionHandler(exceptionHandler);
@@ -339,7 +344,7 @@ class FunctionBuilderHelper {
     /**
      * Creates a new basic block that becomes the exception handler for the given basic block.
      */
-    static BasicBlock makeCatchBasicBlock(Function fun, BasicBlock thrower, FunctionAndBlockManager functionAndBlocksManager) {
+    public static BasicBlock makeCatchBasicBlock(Function fun, BasicBlock thrower, FunctionAndBlockManager functionAndBlocksManager) {
         BasicBlock catchBlock = makeBasicBlock(fun, thrower.getExceptionHandler(), functionAndBlocksManager);
         thrower.setExceptionHandler(catchBlock);
         return catchBlock;
@@ -348,7 +353,7 @@ class FunctionBuilderHelper {
     /**
      * Creates a new basic block that joins trueBlock and falseBlock.
      */
-    static BasicBlock makeJoinBasicBlock(AstEnv env, BasicBlock trueBlock, BasicBlock falseBlock, FunctionAndBlockManager functionAndBlocksManager) {
+    public static BasicBlock makeJoinBasicBlock(AstEnv env, BasicBlock trueBlock, BasicBlock falseBlock, FunctionAndBlockManager functionAndBlocksManager) {
         BasicBlock joinBlock = makeBasicBlock(env.getFunction(), trueBlock.getExceptionHandler(), functionAndBlocksManager);
         trueBlock.addSuccessor(joinBlock);
         falseBlock.addSuccessor(joinBlock);
@@ -358,7 +363,7 @@ class FunctionBuilderHelper {
     /**
      * Creates a new basic block as a successor of the given basic block.
      */
-    static BasicBlock makeSuccessorBasicBlock(Function fun, BasicBlock predecessor, FunctionAndBlockManager functionAndBlocksManager) {
+    public static BasicBlock makeSuccessorBasicBlock(Function fun, BasicBlock predecessor, FunctionAndBlockManager functionAndBlocksManager) {
         BasicBlock successor = makeBasicBlock(fun, predecessor.getExceptionHandler(), functionAndBlocksManager);
         predecessor.addSuccessor(successor);
         return successor;
@@ -369,7 +374,7 @@ class FunctionBuilderHelper {
      *
      * @return a pair of the pattern and the flags
      */
-    static Pair<String, String> parseRegExpLiteral(LiteralToken token) {
+    public static Pair<String, String> parseRegExpLiteral(LiteralToken token) {
         String rawRegex = token.value;
         int lastSlash = rawRegex.lastIndexOf('/');
         String pattern = rawRegex.substring(1, lastSlash);
@@ -385,13 +390,14 @@ class FunctionBuilderHelper {
     /**
      * Checks whether the given node is of a kind that requires its own basic block.
      */
-    static boolean requiresOwnBlock(AbstractNode n) {
+    public static boolean requiresOwnBlock(AbstractNode n) {
         return (n instanceof ThrowNode
                 || n instanceof CallNode
                 || n instanceof ExceptionalReturnNode
                 || n instanceof ReturnNode
                 || n instanceof BeginWithNode
                 || n instanceof EndWithNode
+                || n instanceof EndLoopNode
                 || n instanceof EndForInNode);
     }
 
@@ -399,13 +405,13 @@ class FunctionBuilderHelper {
      * Traverses the children of the blocks and marks the duplicates
      * by calling {@link AbstractNode#setDuplicateOf(AbstractNode)}.
      *
-     * @param copyBlocks collection of all the copy blocks
-     * @param seenBlocks blocks already visited in the traversal (initially empty)
+     * @param copyBlocks    collection of all the copy blocks
+     * @param seenBlocks    blocks already visited in the traversal (initially empty)
      * @param nodesToIgnore nodes that should be ignored
-     * @param copyBlock  head of the copy blocks
-     * @param origBlock  head of the original blocks
+     * @param copyBlock     head of the copy blocks
+     * @param origBlock     head of the original blocks
      */
-    static void setDuplicateBlocks(Set<BasicBlock> copyBlocks, Set<BasicBlock> seenBlocks, Set<AbstractNode> nodesToIgnore, BasicBlock copyBlock, BasicBlock origBlock) {
+    public static void setDuplicateBlocks(Set<BasicBlock> copyBlocks, Set<BasicBlock> seenBlocks, Set<AbstractNode> nodesToIgnore, BasicBlock copyBlock, BasicBlock origBlock) {
         if (!copyBlocks.contains(copyBlock) || seenBlocks.contains(copyBlock))
             return;
         setDuplicateNodes(copyBlock, origBlock, nodesToIgnore);
@@ -421,7 +427,7 @@ class FunctionBuilderHelper {
      * Traverses the nodes of the blocks and marks the duplicates.
      * Used by {@link #setDuplicateBlocks(Set, Set, Set, BasicBlock, BasicBlock)}.
      */
-    private static void setDuplicateNodes (BasicBlock copyBlock, BasicBlock origBlock, Set<AbstractNode> nodesToIgnore) {
+    private static void setDuplicateNodes(BasicBlock copyBlock, BasicBlock origBlock, Set<AbstractNode> nodesToIgnore) {
         List<AbstractNode> copyNodes = newList(copyBlock.getNodes());
         copyNodes.removeAll(nodesToIgnore);
         List<AbstractNode> originalNodes = newList(origBlock.getNodes());
@@ -443,7 +449,7 @@ class FunctionBuilderHelper {
     /**
      * Creates the initial basic blocks and nodes for a function.
      */
-    static AstEnv setupFunction(Function fun, AstEnv env, FunctionAndBlockManager functionAndBlocksManager) {
+    public static AstEnv setupFunction(Function fun, AstEnv env, FunctionAndBlockManager functionAndBlocksManager) {
         BasicBlock entry = makeBasicBlock(fun, null, functionAndBlocksManager);
         BasicBlock body = makeSuccessorBasicBlock(fun, entry, functionAndBlocksManager);
         BasicBlock retBB = makeBasicBlock(fun, null, functionAndBlocksManager);
@@ -476,7 +482,7 @@ class FunctionBuilderHelper {
     /**
      * Skips parenthesis expressions.
      */
-    static ParseTree stripParens(ParseTree tree) {
+    public static ParseTree stripParens(ParseTree tree) {
         if (tree.type == ParseTreeType.PAREN_EXPRESSION) {
             return stripParens(tree.asParenExpression().expression);
         }
@@ -487,7 +493,7 @@ class FunctionBuilderHelper {
      * Special TAJS directives.
      * Directives are constant strings that appear as expression statements in the JavaScript code.
      */
-    enum Directive {
+    public enum Directive {
 
         NO_FLOW("dk.brics.tajs.directives.unreachable");
 
@@ -513,15 +519,15 @@ class FunctionBuilderHelper {
     /**
      * Exception for features that are not yet implemented.
      */
-    static class NotImplemented extends AnalysisException {
+    public static class NotImplemented extends AnalysisException {
 
         private static final long serialVersionUID = 1L;
 
         /**
          * Constructs a new exception.
          */
-        NotImplemented() {
-            super("Not implemented yet!");
+        NotImplemented(ParseTree tree, String feature) {
+            super(makeSourceLocation(tree) + ": '" + feature + "'-support not implemented yet!");
         }
     }
 }

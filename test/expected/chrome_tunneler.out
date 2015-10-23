@@ -1,77 +1,263 @@
-test/chromeexperiments/tunneler.html:52:5: [definite] TypeError, accessing property of null/undefined
-test/chromeexperiments/tunneler.html:52:5: [definite] Variable g is null/undefined
-test/chromeexperiments/tunneler.html:76:5: [definite] The assignment to pmouseX has no effect
-test/chromeexperiments/tunneler.html:77:5: [definite] The assignment to pmouseY has no effect
-test/chromeexperiments/tunneler.html:383:18: [definite] The conditional expression is always false
-test/chromeexperiments/tunneler.html:452:15: [definite] The assignment to w has no effect
-test/chromeexperiments/tunneler.html:452:18: [definite] The conditional expression is always false
-test/chromeexperiments/tunneler.html:460:5: [definite] The conditional expression is always false
-test/chromeexperiments/tunneler.html:460:8: [definite] The conditional expression is always false
-test/chromeexperiments/tunneler.html:460:8: [definite] The conditional expression is always true
-test/chromeexperiments/tunneler.html:213:25: [definite] Dead assignment, property generator is never read
-test/chromeexperiments/tunneler.html:213:47: [definite] Dead assignment, property octaves is never read
-test/chromeexperiments/tunneler.html:213:59: [definite] Dead assignment, property fallout is never read
-test/chromeexperiments/tunneler.html:213:73: [definite] Dead assignment, property seed is never read
-test/chromeexperiments/tunneler.html:360:4: [definite] Dead assignment, property 0 is never read
-test/chromeexperiments/tunneler.html:361:4: [definite] Dead assignment, property 1 is never read
-test/chromeexperiments/tunneler.html:362:4: [definite] Dead assignment, property 2 is never read
-test/chromeexperiments/tunneler.html:363:4: [definite] Dead assignment, property 3 is never read
-test/chromeexperiments/tunneler.html:364:4: [definite] Dead assignment, property 4 is never read
-test/chromeexperiments/tunneler.html:365:4: [definite] Dead assignment, property 5 is never read
-test/chromeexperiments/tunneler.html:366:4: [definite] Dead assignment, property 6 is never read
-test/chromeexperiments/tunneler.html:367:4: [definite] Dead assignment, property 7 is never read
-test/chromeexperiments/tunneler.html:368:4: [definite] Dead assignment, property 8 is never read
-test/chromeexperiments/tunneler.html:369:4: [definite] Dead assignment, property 9 is never read
-test/chromeexperiments/tunneler.html:370:4: [definite] Dead assignment, property 10 is never read
-test/chromeexperiments/tunneler.html:371:4: [definite] Dead assignment, property 11 is never read
-test/chromeexperiments/tunneler.html:372:4: [definite] Dead assignment, property 12 is never read
-TAJS-dynamic-code(test/chromeexperiments/tunneler.html:75:5):1:1: [definite] Unreachable function
+test/chromeexperiments/tunneler.html:152:16: [definite] The conditional expression is always false
+test/chromeexperiments/tunneler.html:152:16: [definite] Variable seed is null/undefined
+test/chromeexperiments/tunneler.html:218:46: [definite] Property is null/undefined
+test/chromeexperiments/tunneler.html:230:58: [definite] Variable z is null/undefined
+test/chromeexperiments/tunneler.html:139:6: [definite] Dead assignment, property nextDouble is never read
 test/chromeexperiments/tunneler.html:18:8: [definite] The variable windowHalfX is never used
 test/chromeexperiments/tunneler.html:19:8: [definite] The variable windowHalfY is never used
-test/chromeexperiments/tunneler.html:22:8: [definite] The variable pmouseX is never used
-test/chromeexperiments/tunneler.html:23:8: [definite] The variable pmouseY is never used
-test/chromeexperiments/tunneler.html:28:8: [definite] The variable PI is never used
-test/chromeexperiments/tunneler.html:29:8: [definite] The variable TWO_PI is never used
-test/chromeexperiments/tunneler.html:30:8: [definite] The variable HALF_PI is never used
-test/chromeexperiments/tunneler.html:52:20: [definite] Unreachable code
-test/chromeexperiments/tunneler.html:55:4: [definite] Unreachable function onDocumentMouseMove
-test/chromeexperiments/tunneler.html:60:4: [definite] Unreachable function onDocumentMouseDown
-test/chromeexperiments/tunneler.html:65:4: [definite] Unreachable function onDocumentMouseUp
-test/chromeexperiments/tunneler.html:69:4: [definite] Unreachable function onDocumentKeyDown
+test/chromeexperiments/tunneler.html:60:4: [definite] The variable event is never used
+test/chromeexperiments/tunneler.html:65:4: [definite] The variable event is never used
+test/chromeexperiments/tunneler.html:69:4: [definite] The variable event is never used
 test/chromeexperiments/tunneler.html:85:4: [definite] Unreachable function line
 test/chromeexperiments/tunneler.html:93:4: [definite] Unreachable function fillStrokeCircle
-test/chromeexperiments/tunneler.html:103:4: [definite] Unreachable function fillCircle
 test/chromeexperiments/tunneler.html:112:4: [definite] Unreachable function strokeCircle
 test/chromeexperiments/tunneler.html:120:4: [definite] Unreachable function dist
 test/chromeexperiments/tunneler.html:127:8: [definite] The variable currentRandom is never used
-test/chromeexperiments/tunneler.html:130:4: [definite] Unreachable function Marsaglia
-test/chromeexperiments/tunneler.html:133:20: [definite] Unreachable function
 test/chromeexperiments/tunneler.html:139:24: [definite] Unreachable function
-test/chromeexperiments/tunneler.html:145:33: [definite] Unreachable function
-test/chromeexperiments/tunneler.html:151:4: [definite] Unreachable function PerlinNoise
-test/chromeexperiments/tunneler.html:163:6: [definite] Unreachable function grad3d
-test/chromeexperiments/tunneler.html:170:6: [definite] Unreachable function grad2d
-test/chromeexperiments/tunneler.html:175:6: [definite] Unreachable function grad1d
-test/chromeexperiments/tunneler.html:179:6: [definite] Unreachable function lerp
-test/chromeexperiments/tunneler.html:181:21: [definite] Unreachable function
-test/chromeexperiments/tunneler.html:193:21: [definite] Unreachable function
-test/chromeexperiments/tunneler.html:203:21: [definite] Unreachable function
-test/chromeexperiments/tunneler.html:213:8: [definite] The variable noiseProfile is never used
-test/chromeexperiments/tunneler.html:215:4: [definite] Unreachable function noise
-test/chromeexperiments/tunneler.html:238:4: [definite] Unreachable function Worm
-test/chromeexperiments/tunneler.html:258:19: [definite] Unreachable function
-test/chromeexperiments/tunneler.html:299:17: [definite] Unreachable function
-test/chromeexperiments/tunneler.html:317:4: [definite] Unreachable function Segment
-test/chromeexperiments/tunneler.html:342:26: [definite] Unreachable function
-test/chromeexperiments/tunneler.html:349:16: [definite] Unreachable function
-test/chromeexperiments/tunneler.html:384:10: [definite] The variable worm is never used
-test/chromeexperiments/tunneler.html:393:15: [definite] The variable i is never used
-test/chromeexperiments/tunneler.html:394:12: [definite] The variable segment is never used
-test/chromeexperiments/tunneler.html:410:11: [definite] The variable x is never used
-test/chromeexperiments/tunneler.html:411:11: [definite] The variable y is never used
-test/chromeexperiments/tunneler.html:412:11: [definite] The variable thickness is never used
-test/chromeexperiments/tunneler.html:423:11: [definite] The variable xEnd is never used
-test/chromeexperiments/tunneler.html:424:11: [definite] The variable yEnd is never used
-test/chromeexperiments/tunneler.html:461:10: [definite] The variable direction is never used
-test/chromeexperiments/tunneler.html:462:10: [definite] The variable newWorm is never used
-test/chromeexperiments/tunneler.html:470:4: [definite] Unreachable function mousePressedEvent
+test/chromeexperiments/tunneler.html:52:5: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/tunneler.html:56:33: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/tunneler.html:82:5: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/tunneler.html:226:28: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/tunneler.html:228:28: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/tunneler.html:230:28: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/tunneler.html:292:10: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/tunneler.html:308:7: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/tunneler.html:343:20: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/tunneler.html:343:35: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/tunneler.html:383:20: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/tunneler.html:385:6: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/tunneler.html:386:6: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/tunneler.html:392:16: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/tunneler.html:392:41: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/tunneler.html:395:17: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/tunneler.html:397:16: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/tunneler.html:397:63: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/tunneler.html:400:17: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/tunneler.html:410:15: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/tunneler.html:411:15: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/tunneler.html:412:23: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/tunneler.html:418:30: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/tunneler.html:418:55: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/tunneler.html:423:18: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/tunneler.html:424:18: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/tunneler.html:425:19: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/tunneler.html:431:36: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/tunneler.html:431:82: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/tunneler.html:439:18: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/tunneler.html:439:38: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/tunneler.html:440:19: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/tunneler.html:443:18: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/tunneler.html:443:59: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/tunneler.html:447:19: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/tunneler.html:447:39: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/tunneler.html:454:9: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/tunneler.html:13:34: [maybe] Uncaught exception, constructed at [test/chromeexperiments/tunneler.html:52:5, test/chromeexperiments/tunneler.html:56:33, test/chromeexperiments/tunneler.html:82:5, test/chromeexperiments/tunneler.html:226:28, test/chromeexperiments/tunneler.html:228:28, test/chromeexperiments/tunneler.html:230:28, test/chromeexperiments/tunneler.html:292:10, test/chromeexperiments/tunneler.html:308:7, test/chromeexperiments/tunneler.html:343:20, test/chromeexperiments/tunneler.html:343:35, test/chromeexperiments/tunneler.html:383:20, test/chromeexperiments/tunneler.html:385:6, test/chromeexperiments/tunneler.html:386:6, test/chromeexperiments/tunneler.html:392:16, test/chromeexperiments/tunneler.html:392:41, test/chromeexperiments/tunneler.html:395:17, test/chromeexperiments/tunneler.html:397:16, test/chromeexperiments/tunneler.html:397:63, test/chromeexperiments/tunneler.html:400:17, test/chromeexperiments/tunneler.html:410:15, test/chromeexperiments/tunneler.html:411:15, test/chromeexperiments/tunneler.html:412:23, test/chromeexperiments/tunneler.html:418:30, test/chromeexperiments/tunneler.html:418:55, test/chromeexperiments/tunneler.html:423:18, test/chromeexperiments/tunneler.html:424:18, test/chromeexperiments/tunneler.html:425:19, test/chromeexperiments/tunneler.html:431:36, test/chromeexperiments/tunneler.html:431:82, test/chromeexperiments/tunneler.html:439:18, test/chromeexperiments/tunneler.html:439:38, test/chromeexperiments/tunneler.html:440:19, test/chromeexperiments/tunneler.html:443:18, test/chromeexperiments/tunneler.html:443:59, test/chromeexperiments/tunneler.html:447:19, test/chromeexperiments/tunneler.html:447:39, test/chromeexperiments/tunneler.html:454:9]
+test/chromeexperiments/tunneler.html:159:35: [maybe] Reading absent property (computed name)
+test/chromeexperiments/tunneler.html:159:71: [maybe] Reading absent property (computed name)
+test/chromeexperiments/tunneler.html:161:40: [maybe] Reading absent property (computed name)
+test/chromeexperiments/tunneler.html:164:13: [maybe] Conversion to number yields NaN
+test/chromeexperiments/tunneler.html:171:14: [maybe] Conversion to number yields NaN
+test/chromeexperiments/tunneler.html:172:13: [maybe] Conversion to number yields NaN
+test/chromeexperiments/tunneler.html:176:13: [maybe] Conversion to number yields NaN
+test/chromeexperiments/tunneler.html:185:14: [maybe] Conversion to number yields NaN
+test/chromeexperiments/tunneler.html:185:14: [maybe] Reading absent property (computed name)
+test/chromeexperiments/tunneler.html:185:28: [maybe] Conversion to number yields NaN
+test/chromeexperiments/tunneler.html:185:28: [maybe] Reading absent property (computed name)
+test/chromeexperiments/tunneler.html:185:45: [maybe] Conversion to number yields NaN
+test/chromeexperiments/tunneler.html:185:45: [maybe] Reading absent property (computed name)
+test/chromeexperiments/tunneler.html:185:66: [maybe] Conversion to number yields NaN
+test/chromeexperiments/tunneler.html:185:66: [maybe] Reading absent property (computed name)
+test/chromeexperiments/tunneler.html:185:86: [maybe] Conversion to number yields NaN
+test/chromeexperiments/tunneler.html:185:86: [maybe] Reading absent property (computed name)
+test/chromeexperiments/tunneler.html:185:103: [maybe] Conversion to number yields NaN
+test/chromeexperiments/tunneler.html:185:103: [maybe] Reading absent property (computed name)
+test/chromeexperiments/tunneler.html:187:32: [maybe] Reading absent property (computed name)
+test/chromeexperiments/tunneler.html:187:57: [maybe] Reading absent property (computed name)
+test/chromeexperiments/tunneler.html:188:26: [maybe] Reading absent property (computed name)
+test/chromeexperiments/tunneler.html:188:53: [maybe] Reading absent property (computed name)
+test/chromeexperiments/tunneler.html:189:32: [maybe] Reading absent property (computed name)
+test/chromeexperiments/tunneler.html:189:63: [maybe] Reading absent property (computed name)
+test/chromeexperiments/tunneler.html:190:26: [maybe] Reading absent property (computed name)
+test/chromeexperiments/tunneler.html:190:59: [maybe] Reading absent property (computed name)
+test/chromeexperiments/tunneler.html:197:14: [maybe] Conversion to number yields NaN
+test/chromeexperiments/tunneler.html:197:14: [maybe] Reading absent property (computed name)
+test/chromeexperiments/tunneler.html:197:28: [maybe] Conversion to number yields NaN
+test/chromeexperiments/tunneler.html:197:28: [maybe] Reading absent property (computed name)
+test/chromeexperiments/tunneler.html:199:23: [maybe] Reading absent property (computed name)
+test/chromeexperiments/tunneler.html:199:44: [maybe] Reading absent property (computed name)
+test/chromeexperiments/tunneler.html:200:23: [maybe] Reading absent property (computed name)
+test/chromeexperiments/tunneler.html:200:50: [maybe] Reading absent property (computed name)
+test/chromeexperiments/tunneler.html:207:28: [maybe] Reading absent property (computed name)
+test/chromeexperiments/tunneler.html:207:45: [maybe] Reading absent property (computed name)
+test/chromeexperiments/tunneler.html:228:51: [maybe] Conversion to number yields NaN
+test/chromeexperiments/tunneler.html:230:51: [maybe] Conversion to number yields NaN
+test/chromeexperiments/tunneler.html:230:56: [maybe] Conversion to number yields NaN
+test/chromeexperiments/tunneler.html:252:14: [maybe] Reading absent property (computed name)
+test/chromeexperiments/tunneler.html:291:21: [maybe] Reading absent property (computed name)
+test/chromeexperiments/tunneler.html:308:7: [maybe] Reading absent property (computed name)
+test/chromeexperiments/tunneler.html:308:59: [maybe] Reading absent property (computed name)
+test/chromeexperiments/tunneler.html:384:17: [maybe] Reading absent property (computed name)
+test/chromeexperiments/tunneler.html:392:16: [maybe] Reading absent property (computed name)
+test/chromeexperiments/tunneler.html:392:41: [maybe] Reading absent property (computed name)
+test/chromeexperiments/tunneler.html:394:22: [maybe] Reading absent property (computed name)
+test/chromeexperiments/tunneler.html:397:16: [maybe] Reading absent property (computed name)
+test/chromeexperiments/tunneler.html:397:63: [maybe] Reading absent property (computed name)
+test/chromeexperiments/tunneler.html:399:22: [maybe] Reading absent property (computed name)
+test/chromeexperiments/tunneler.html:410:15: [maybe] Reading absent property (computed name)
+test/chromeexperiments/tunneler.html:411:15: [maybe] Reading absent property (computed name)
+test/chromeexperiments/tunneler.html:412:23: [maybe] Reading absent property (computed name)
+test/chromeexperiments/tunneler.html:418:30: [maybe] Reading absent property (computed name)
+test/chromeexperiments/tunneler.html:418:55: [maybe] Reading absent property (computed name)
+test/chromeexperiments/tunneler.html:423:18: [maybe] Reading absent property (computed name)
+test/chromeexperiments/tunneler.html:424:18: [maybe] Reading absent property (computed name)
+test/chromeexperiments/tunneler.html:425:19: [maybe] Reading absent property (computed name)
+test/chromeexperiments/tunneler.html:431:36: [maybe] Reading absent property (computed name)
+test/chromeexperiments/tunneler.html:431:82: [maybe] Reading absent property (computed name)
+test/chromeexperiments/tunneler.html:439:18: [maybe] Reading absent property (computed name)
+test/chromeexperiments/tunneler.html:439:38: [maybe] Reading absent property (computed name)
+test/chromeexperiments/tunneler.html:440:19: [maybe] Reading absent property (computed name)
+test/chromeexperiments/tunneler.html:443:18: [maybe] Reading absent property (computed name)
+test/chromeexperiments/tunneler.html:443:59: [maybe] Reading absent property (computed name)
+test/chromeexperiments/tunneler.html:447:19: [maybe] Reading absent property (computed name)
+test/chromeexperiments/tunneler.html:447:39: [maybe] Reading absent property (computed name)
+test/chromeexperiments/tunneler.html:453:17: [maybe] Reading absent property (computed name)
+test/chromeexperiments/tunneler.html:259:6: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/tunneler.html:259:6: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/tunneler.html:260:9: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/tunneler.html:260:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/tunneler.html:261:7: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/tunneler.html:261:7: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/tunneler.html:261:26: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/tunneler.html:261:26: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/tunneler.html:261:47: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/tunneler.html:261:47: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/tunneler.html:262:7: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/tunneler.html:262:7: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/tunneler.html:263:10: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/tunneler.html:263:10: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/tunneler.html:263:27: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/tunneler.html:263:27: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/tunneler.html:264:8: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/tunneler.html:264:8: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/tunneler.html:264:25: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/tunneler.html:264:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/tunneler.html:265:7: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/tunneler.html:265:7: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/tunneler.html:265:23: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/tunneler.html:265:23: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/tunneler.html:266:7: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/tunneler.html:266:7: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/tunneler.html:266:29: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/tunneler.html:266:29: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/tunneler.html:267:7: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/tunneler.html:267:7: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/tunneler.html:267:32: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/tunneler.html:267:32: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/tunneler.html:267:45: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/tunneler.html:267:45: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/tunneler.html:267:59: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/tunneler.html:267:59: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/tunneler.html:268:7: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/tunneler.html:268:7: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/tunneler.html:270:23: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/tunneler.html:270:23: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/tunneler.html:270:46: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/tunneler.html:270:46: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/tunneler.html:270:69: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/tunneler.html:270:69: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/tunneler.html:270:102: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/tunneler.html:270:102: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/tunneler.html:270:119: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/tunneler.html:270:119: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/tunneler.html:271:25: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/tunneler.html:271:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/tunneler.html:272:25: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/tunneler.html:272:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/tunneler.html:273:25: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/tunneler.html:273:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/tunneler.html:274:7: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/tunneler.html:274:7: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/tunneler.html:277:10: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/tunneler.html:277:10: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/tunneler.html:278:8: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/tunneler.html:278:8: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/tunneler.html:281:8: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/tunneler.html:281:8: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/tunneler.html:282:8: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/tunneler.html:282:8: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/tunneler.html:283:11: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/tunneler.html:283:11: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/tunneler.html:284:9: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/tunneler.html:284:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/tunneler.html:289:6: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/tunneler.html:289:6: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/tunneler.html:290:21: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/tunneler.html:290:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/tunneler.html:291:21: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/tunneler.html:291:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/tunneler.html:293:8: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/tunneler.html:293:8: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/tunneler.html:300:6: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/tunneler.html:300:6: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/tunneler.html:300:16: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/tunneler.html:300:16: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/tunneler.html:301:6: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/tunneler.html:301:6: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/tunneler.html:301:16: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/tunneler.html:301:16: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/tunneler.html:302:6: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/tunneler.html:302:6: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/tunneler.html:303:6: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/tunneler.html:303:6: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/tunneler.html:304:35: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/tunneler.html:304:35: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/tunneler.html:304:43: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/tunneler.html:304:43: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/tunneler.html:304:51: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/tunneler.html:304:51: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/tunneler.html:304:58: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/tunneler.html:304:58: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/tunneler.html:304:65: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/tunneler.html:304:65: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/tunneler.html:305:6: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/tunneler.html:305:6: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/tunneler.html:307:9: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/tunneler.html:307:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/tunneler.html:308:7: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/tunneler.html:308:7: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/tunneler.html:308:21: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/tunneler.html:308:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/tunneler.html:308:59: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/tunneler.html:308:59: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/tunneler.html:308:73: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/tunneler.html:308:73: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/tunneler.html:310:9: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/tunneler.html:310:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/tunneler.html:310:33: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/tunneler.html:310:33: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/tunneler.html:311:7: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/tunneler.html:311:7: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/tunneler.html:343:6: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/tunneler.html:343:49: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/tunneler.html:344:6: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/tunneler.html:344:49: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/tunneler.html:345:6: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/tunneler.html:345:52: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/tunneler.html:346:6: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/tunneler.html:346:52: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/tunneler.html:350:9: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/tunneler.html:350:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/tunneler.html:350:24: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/tunneler.html:350:24: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/tunneler.html:350:39: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/tunneler.html:350:39: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/tunneler.html:350:58: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/tunneler.html:350:58: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/tunneler.html:351:9: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/tunneler.html:351:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/tunneler.html:351:24: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/tunneler.html:351:24: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/tunneler.html:351:39: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/tunneler.html:351:39: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/tunneler.html:351:58: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/tunneler.html:351:58: [info] 'this' refers to multiple abstract objects, which may cause loss of precision

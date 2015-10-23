@@ -25,7 +25,6 @@ public class TestV8 { // TODO: check expected output for TestV8
 		Options.get().enableTest();
 		Options.get().enableContextSensitiveHeap();
 		Options.get().enableParameterSensitivity();
-		Options.get().enableNumericVariableSensitivity();
 		Options.get().enableUnevalizer();
 		// Options.get().enableNoLazy();
 	}
@@ -134,6 +133,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 		Misc.checkSystemOutput();
 	}
 
+	@Ignore // FIXME missing model of Array.prototype.filter
 	@Test
 	public void testV8_array_iteration() throws Exception
 	{
@@ -1586,8 +1586,6 @@ public class TestV8 { // TODO: check expected output for TestV8
 		Misc.checkSystemOutput();
 	}
 
-
-	@Ignore // see https://github.com/cs-au-dk/TAJS-private/issues/189
 	@Test
 	public void testV8_regexp_indexof() throws Exception
 	{

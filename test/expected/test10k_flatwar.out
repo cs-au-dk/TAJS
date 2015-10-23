@@ -1,5 +1,9 @@
 test/10k/flatwar.html:358:9: [definite] ReferenceError, reading absent variable levelInfo
-test/10k/flatwar.html:104:5: [definite] The conditional expression is always true
+test/10k/flatwar.html:365:9: [definite] ReferenceError, reading absent variable levelInfo
+test/10k/flatwar.html:10:10: [definite] The conditional expression is always true
+test/10k/flatwar.html:11:10: [definite] The conditional expression is always true
+test/10k/flatwar.html:20:11: [definite] The conditional expression is always true
+test/10k/flatwar.html:25:8: [definite] The conditional expression is always true
 test/10k/flatwar.html:104:9: [definite] The conditional expression is always true
 test/10k/flatwar.html:127:25: [definite] The conditional expression is always false
 test/10k/flatwar.html:138:13: [definite] The assignment to bs has no effect
@@ -12,24 +16,9 @@ test/10k/flatwar.html:185:13: [definite] The assignment to cs has no effect
 test/10k/flatwar.html:186:18: [definite] The assignment to i has no effect
 test/10k/flatwar.html:186:25: [definite] The conditional expression is always false
 test/10k/flatwar.html:193:9: [definite] The conditional expression is always false
-test/10k/flatwar.html:194:14: [definite] The conditional expression is always false
-test/10k/flatwar.html:197:9: [definite] The conditional expression is always false
-test/10k/flatwar.html:197:13: [definite] The conditional expression is always false
-test/10k/flatwar.html:198:9: [definite] The conditional expression is always false
-test/10k/flatwar.html:198:13: [definite] The conditional expression is always false
-test/10k/flatwar.html:199:9: [definite] The conditional expression is always false
-test/10k/flatwar.html:199:13: [definite] The conditional expression is always false
-test/10k/flatwar.html:200:9: [definite] The conditional expression is always false
-test/10k/flatwar.html:200:13: [definite] The conditional expression is always false
-test/10k/flatwar.html:201:9: [definite] The assignment to cMR has no effect
-test/10k/flatwar.html:201:15: [definite] The conditional expression is always false
 test/10k/flatwar.html:203:25: [definite] The conditional expression is always false
 test/10k/flatwar.html:209:18: [definite] The assignment to i has no effect
 test/10k/flatwar.html:215:25: [definite] The conditional expression is always false
-test/10k/flatwar.html:221:13: [definite] The assignment to boX has no effect
-test/10k/flatwar.html:222:13: [definite] The assignment to boY has no effect
-test/10k/flatwar.html:226:13: [definite] The assignment to pcX has no effect
-test/10k/flatwar.html:227:13: [definite] The assignment to pcY has no effect
 test/10k/flatwar.html:231:21: [definite] The conditional expression is always false
 test/10k/flatwar.html:256:14: [definite] The assignment to i has no effect
 test/10k/flatwar.html:256:21: [definite] The conditional expression is always false
@@ -38,39 +27,23 @@ test/10k/flatwar.html:264:21: [definite] The conditional expression is always fa
 test/10k/flatwar.html:277:14: [definite] The assignment to i has no effect
 test/10k/flatwar.html:277:21: [definite] The conditional expression is always false
 test/10k/flatwar.html:292:14: [definite] The assignment to i has no effect
-test/10k/flatwar.html:330:9: [definite] The conditional expression is always true
-test/10k/flatwar.html:330:13: [definite] The conditional expression is always true
-test/10k/flatwar.html:342:17: [definite] The conditional expression is always false
-test/10k/flatwar.html:348:17: [definite] The conditional expression is always false
 test/10k/flatwar.html:352:9: [definite] The conditional expression is always false
-test/10k/flatwar.html:9:55: [definite] Unreachable function mouseMove
-test/10k/flatwar.html:13:24: [definite] Unreachable function mouseDown
-test/10k/flatwar.html:16:22: [definite] Unreachable function mouseUp
-test/10k/flatwar.html:19:22: [definite] Unreachable function keyDown
-test/10k/flatwar.html:24:20: [definite] Unreachable function keyUp
-test/10k/flatwar.html:30:1: [definite] Unreachable function aB
+test/10k/flatwar.html:32:5: [definite] Dead assignment, property is never read
+test/10k/flatwar.html:33:5: [definite] Dead assignment, property is never read
+test/10k/flatwar.html:34:5: [definite] Dead assignment, property is never read
+test/10k/flatwar.html:35:5: [definite] Dead assignment, property is never read
+test/10k/flatwar.html:37:5: [definite] Dead assignment, property is never read
+test/10k/flatwar.html:38:5: [definite] Dead assignment, property is never read
+test/10k/flatwar.html:9:55: [definite] The variable e is never used
+test/10k/flatwar.html:13:24: [definite] The variable e is never used
+test/10k/flatwar.html:16:22: [definite] The variable e is never used
+test/10k/flatwar.html:19:22: [definite] The variable e is never used
+test/10k/flatwar.html:24:20: [definite] The variable e is never used
+test/10k/flatwar.html:30:1: [definite] The variable rad is never used
 test/10k/flatwar.html:94:1: [definite] Unreachable function round
-test/10k/flatwar.html:194:15: [definite] Reading absent property (computed name)
-test/10k/flatwar.html:197:13: [definite] Reading absent property (computed name)
-test/10k/flatwar.html:197:23: [definite] Reading absent property (computed name)
-test/10k/flatwar.html:198:13: [definite] Reading absent property (computed name)
-test/10k/flatwar.html:198:23: [definite] Reading absent property (computed name)
-test/10k/flatwar.html:199:13: [definite] Reading absent property (computed name)
-test/10k/flatwar.html:199:23: [definite] Reading absent property (computed name)
-test/10k/flatwar.html:200:13: [definite] Reading absent property (computed name)
-test/10k/flatwar.html:200:23: [definite] Reading absent property (computed name)
-test/10k/flatwar.html:201:16: [definite] Reading absent property (computed name)
-test/10k/flatwar.html:330:14: [definite] Reading absent property (computed name)
-test/10k/flatwar.html:330:25: [definite] Reading absent property (computed name)
 test/10k/flatwar.html:358:31: [definite] Unreachable code
+test/10k/flatwar.html:365:9: [definite] Unreachable code
 test/10k/flatwar.html:384:37: [definite] The variable pcGT is never used
-test/10k/flatwar.html:384:92: [definite] The variable bX is never used
-test/10k/flatwar.html:384:95: [definite] The variable bY is never used
-test/10k/flatwar.html:384:98: [definite] The variable bDX is never used
-test/10k/flatwar.html:384:102: [definite] The variable bDY is never used
-test/10k/flatwar.html:384:106: [definite] The variable bE is never used
-test/10k/flatwar.html:384:109: [definite] The variable bR is never used
-test/10k/flatwar.html:384:112: [definite] The variable bV is never used
 test/10k/flatwar.html:384:118: [definite] The variable cX is never used
 test/10k/flatwar.html:384:121: [definite] The variable cY is never used
 test/10k/flatwar.html:384:124: [definite] The variable cE is never used
@@ -79,13 +52,25 @@ test/10k/flatwar.html:384:130: [definite] The variable cEN is never used
 test/10k/flatwar.html:384:134: [definite] The variable cMR is never used
 test/10k/flatwar.html:384:161: [definite] The variable lKA is never used
 test/10k/flatwar.html:384:177: [definite] The variable uN is never used
-test/10k/flatwar.html:384:180: [definite] The variable tP is never used
-test/10k/flatwar.html:384:203: [definite] The variable dI is never used
 test/10k/flatwar.html:328:28: [maybe] ReferenceError, reading absent variable color
+test/10k/flatwar.html:362:9: [maybe] TypeError, accessing property of null/undefined
+test/10k/flatwar.html:362:9: [maybe] TypeError, accessing property of null/undefined
+test/10k/flatwar.html:363:9: [maybe] TypeError, accessing property of null/undefined
+test/10k/flatwar.html:370:13: [maybe] TypeError, accessing property of null/undefined
+test/10k/flatwar.html:370:13: [maybe] TypeError, accessing property of null/undefined
+test/10k/flatwar.html:371:13: [maybe] TypeError, accessing property of null/undefined
 test/10k/flatwar.html:383:5: [maybe] TypeError, accessing property of null/undefined
 test/10k/flatwar.html:383:5: [maybe] TypeError, call to non-function
+test/10k/flatwar.html:362:9: [maybe] Reading absent property style
+test/10k/flatwar.html:363:9: [maybe] Reading absent property style
+test/10k/flatwar.html:370:13: [maybe] Reading absent property style
+test/10k/flatwar.html:371:13: [maybe] Reading absent property style
 test/10k/flatwar.html:383:5: [maybe] Reading absent property getContext
-test/10k/flatwar.html:4:15: [maybe] Uncaught exception, constructed at [test/10k/flatwar.html:383:5]
+test/10k/flatwar.html:4:15: [maybe] Uncaught exception, constructed at [test/10k/flatwar.html:328:28, test/10k/flatwar.html:358:9, test/10k/flatwar.html:362:9, test/10k/flatwar.html:363:9, test/10k/flatwar.html:365:9, test/10k/flatwar.html:370:13, test/10k/flatwar.html:371:13, test/10k/flatwar.html:383:5]
+test/10k/flatwar.html:37:15: [maybe] Conversion to number yields NaN
+test/10k/flatwar.html:37:15: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:38:15: [maybe] Conversion to number yields NaN
+test/10k/flatwar.html:38:15: [maybe] Reading absent property (computed name)
 test/10k/flatwar.html:53:14: [maybe] Conversion to number yields NaN
 test/10k/flatwar.html:54:22: [maybe] Conversion to number yields NaN
 test/10k/flatwar.html:54:31: [maybe] Conversion to number yields NaN
@@ -111,6 +96,16 @@ test/10k/flatwar.html:166:26: [maybe] Reading absent property (computed name)
 test/10k/flatwar.html:168:26: [maybe] Reading absent property (computed name)
 test/10k/flatwar.html:169:26: [maybe] Reading absent property (computed name)
 test/10k/flatwar.html:170:26: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:194:15: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:197:13: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:197:23: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:198:13: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:198:23: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:199:13: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:199:23: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:200:13: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:200:23: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:201:16: [maybe] Reading absent property (computed name)
 test/10k/flatwar.html:210:21: [maybe] Reading absent property (computed name)
 test/10k/flatwar.html:211:21: [maybe] Conversion to number yields NaN
 test/10k/flatwar.html:211:21: [maybe] Reading absent property (computed name)
@@ -146,6 +141,9 @@ test/10k/flatwar.html:310:28: [maybe] Reading absent property (computed name)
 test/10k/flatwar.html:311:17: [maybe] Conversion to number yields NaN
 test/10k/flatwar.html:311:17: [maybe] Reading absent property (computed name)
 test/10k/flatwar.html:311:28: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:330:14: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:330:25: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:374:13: [maybe] Reading absent property (computed name)
 test/10k/flatwar.html:438:17: [maybe] Conversion to number yields NaN
 test/10k/flatwar.html:438:17: [maybe] Converting object to string
 test/10k/flatwar.html:438:17: [maybe] Converting object to string

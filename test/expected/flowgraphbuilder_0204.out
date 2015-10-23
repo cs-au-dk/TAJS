@@ -1,9 +1,9 @@
 fg2: function()
-  block 0:
-    node 0: nop(continue <DEFAULT>)* (test/flowgraphbuilder/flowgraph_builder0204.js:3:5)
+  block 0: [entry]
+    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0204.js:1:1)
     ->[block 2]
-  block 1: [entry]
-    node 1: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0204.js:1:1)
+  block 1:
+    node 1: nop(continue <DEFAULT>)* (test/flowgraphbuilder/flowgraph_builder0204.js:3:5)
     ->[block 2]
   block 2:
     node 2: read-variable['v',v2,-] (test/flowgraphbuilder/flowgraph_builder0204.js:1:8)

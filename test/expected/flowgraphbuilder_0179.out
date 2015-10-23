@@ -13,7 +13,7 @@ fg2: function()
   block 3:
     node 5: has-next[v4,v5] (test/flowgraphbuilder/flowgraph_builder0179.js:2:1)
     node 6: if[v5](true-block:4,false-block:7) (test/flowgraphbuilder/flowgraph_builder0179.js:2:1)
-    ->[block 4,block 7]
+    ->[block 4,block 7] ~>[block 6]
   block 4:
     node 7: next-property[v4,v6] (test/flowgraphbuilder/flowgraph_builder0179.js:2:6)
     node 8: write-variable[v6,'x']* (test/flowgraphbuilder/flowgraph_builder0179.js:2:6)
@@ -24,50 +24,56 @@ fg2: function()
     ->[block 5] ~>[block 6]
   block 5:
     node 13: end-for-in(begin-node:4)* (test/flowgraphbuilder/flowgraph_builder0179.js:4:1)
-    ->[block 2] ~>[block 6]
+    ->[block 2]
   block 6:
     node 14: end-for-in(begin-node:4)* (test/flowgraphbuilder/flowgraph_builder0179.js:4:1)
-    ->[block 16]
+    ->[block 18]
   block 7:
-    node 15: read-variable['TAJS_dumpValue',v11,v10] (test/flowgraphbuilder/flowgraph_builder0179.js:5:1)
-    node 16: read-variable['gt',v12,-] (test/flowgraphbuilder/flowgraph_builder0179.js:5:16)
+    node 15: end-for-in(begin-node:4)* (test/flowgraphbuilder/flowgraph_builder0179.js:4:1)
     ->[block 8]
   block 8:
-    node 17: call[v10,v11,v12,-]* (test/flowgraphbuilder/flowgraph_builder0179.js:5:1)
+    node 16: read-variable['TAJS_dumpValue',v11,v10] (test/flowgraphbuilder/flowgraph_builder0179.js:5:1)
+    node 17: read-variable['gt',v12,-] (test/flowgraphbuilder/flowgraph_builder0179.js:5:16)
     ->[block 9]
   block 9:
-    node 18: new[v13] (test/flowgraphbuilder/flowgraph_builder0179.js:6:5)
-    node 19: constant[23.0,v14] (test/flowgraphbuilder/flowgraph_builder0179.js:6:8)
-    node 20: write-property[v13,'b',v14] (test/flowgraphbuilder/flowgraph_builder0179.js:6:6)
-    node 21: write-variable[v13,'g']* (test/flowgraphbuilder/flowgraph_builder0179.js:6:1)
-    node 22: new[v15] (test/flowgraphbuilder/flowgraph_builder0179.js:7:11)
+    node 18: call[v10,v11,v12,-]* (test/flowgraphbuilder/flowgraph_builder0179.js:5:1)
     ->[block 10]
   block 10:
-    node 23: begin-for-in[v15,v16] (test/flowgraphbuilder/flowgraph_builder0179.js:7:1)
+    node 19: new[v13] (test/flowgraphbuilder/flowgraph_builder0179.js:6:5)
+    node 20: constant[23.0,v14] (test/flowgraphbuilder/flowgraph_builder0179.js:6:8)
+    node 21: write-property[v13,'b',v14] (test/flowgraphbuilder/flowgraph_builder0179.js:6:6)
+    node 22: write-variable[v13,'g']* (test/flowgraphbuilder/flowgraph_builder0179.js:6:1)
+    node 23: new[v15] (test/flowgraphbuilder/flowgraph_builder0179.js:7:11)
     ->[block 11]
   block 11:
-    node 24: has-next[v16,v17] (test/flowgraphbuilder/flowgraph_builder0179.js:7:1)
-    node 25: if[v17](true-block:12,false-block:15) (test/flowgraphbuilder/flowgraph_builder0179.js:7:1)
-    ->[block 12,block 15]
+    node 24: begin-for-in[v15,v16] (test/flowgraphbuilder/flowgraph_builder0179.js:7:1)
+    ->[block 12]
   block 12:
-    node 26: next-property[v16,v18] (test/flowgraphbuilder/flowgraph_builder0179.js:7:6)
-    node 27: write-variable[v18,'x']* (test/flowgraphbuilder/flowgraph_builder0179.js:7:6)
-    node 28: read-variable['g',v19,-] (test/flowgraphbuilder/flowgraph_builder0179.js:8:5)
-    node 29: read-variable['x',v20,-] (test/flowgraphbuilder/flowgraph_builder0179.js:8:7)
-    node 30: read-property[v19,v20,-] (test/flowgraphbuilder/flowgraph_builder0179.js:8:5)
-    node 31: <variable-non-null-undef>['g']* (test/flowgraphbuilder/flowgraph_builder0179.js:8:5)
-    ->[block 13] ~>[block 14]
+    node 25: has-next[v16,v17] (test/flowgraphbuilder/flowgraph_builder0179.js:7:1)
+    node 26: if[v17](true-block:13,false-block:16) (test/flowgraphbuilder/flowgraph_builder0179.js:7:1)
+    ->[block 13,block 16] ~>[block 15]
   block 13:
-    node 32: end-for-in(begin-node:23)* (test/flowgraphbuilder/flowgraph_builder0179.js:9:1)
-    ->[block 10] ~>[block 14]
+    node 27: next-property[v16,v18] (test/flowgraphbuilder/flowgraph_builder0179.js:7:6)
+    node 28: write-variable[v18,'x']* (test/flowgraphbuilder/flowgraph_builder0179.js:7:6)
+    node 29: read-variable['g',v19,-] (test/flowgraphbuilder/flowgraph_builder0179.js:8:5)
+    node 30: read-variable['x',v20,-] (test/flowgraphbuilder/flowgraph_builder0179.js:8:7)
+    node 31: read-property[v19,v20,-] (test/flowgraphbuilder/flowgraph_builder0179.js:8:5)
+    node 32: <variable-non-null-undef>['g']* (test/flowgraphbuilder/flowgraph_builder0179.js:8:5)
+    ->[block 14] ~>[block 15]
   block 14:
-    node 33: end-for-in(begin-node:23)* (test/flowgraphbuilder/flowgraph_builder0179.js:9:1)
-    ->[block 16]
-  block 15: [exit-ordinary]
-    node 34: return[v1] (test/flowgraphbuilder/flowgraph_builder0179.js:1:1)
+    node 33: end-for-in(begin-node:24)* (test/flowgraphbuilder/flowgraph_builder0179.js:9:1)
+    ->[block 11]
+  block 15:
+    node 34: end-for-in(begin-node:24)* (test/flowgraphbuilder/flowgraph_builder0179.js:9:1)
+    ->[block 18]
+  block 16:
+    node 35: end-for-in(begin-node:24)* (test/flowgraphbuilder/flowgraph_builder0179.js:9:1)
+    ->[block 17]
+  block 17: [exit-ordinary]
+    node 36: return[v1] (test/flowgraphbuilder/flowgraph_builder0179.js:1:1)
     ->[]
-  block 16: [exit-exceptional]
-    node 35: exceptional-return (test/flowgraphbuilder/flowgraph_builder0179.js:1:1)
+  block 18: [exit-exceptional]
+    node 37: exceptional-return (test/flowgraphbuilder/flowgraph_builder0179.js:1:1)
     ->[]
 
 test/flowgraphbuilder/flowgraph_builder0179.js:6:6: [definite] Dead assignment, property b is never read

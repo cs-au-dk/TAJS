@@ -17,10 +17,6 @@ fg2: function()
     ->[]
 
 fg2: <main> function()
-  block 5:
-    node 6: constant[undefined,-] (test/flowgraphbuilder/flowgraph_builder0150.js:1:1)
-    node 7: constant[4.0,-]* (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0150.js:1:1):1:1)
-    ->[block 3]
   block 0: [entry]
     node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0150.js:1:1)
     ->[block 1]
@@ -30,6 +26,10 @@ fg2: <main> function()
     ->[block 2]
   block 2:
     node 3: call[v2,v3,v4,-]* (test/flowgraphbuilder/flowgraph_builder0150.js:1:1)
+    ->[block 3]
+  block 5:
+    node 6: constant[undefined,-] (test/flowgraphbuilder/flowgraph_builder0150.js:1:1)
+    node 7: constant[4.0,-]* (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0150.js:1:1):1:1)
     ->[block 3]
   block 3: [exit-ordinary]
     node 4: return[v1] (test/flowgraphbuilder/flowgraph_builder0150.js:1:1)

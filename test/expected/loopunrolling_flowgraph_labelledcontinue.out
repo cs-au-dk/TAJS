@@ -1,0 +1,140 @@
+<main> function()
+  block 0: [entry]
+    node 0: constant[undefined,v1] (out/temp-sources/loopunrolling_flowgraph_labelledcontinue.js:1:1)
+    node 1: function-decl[function labelled(),-] (out/temp-sources/loopunrolling_flowgraph_labelledcontinue.js:1:1)
+    node 2: function-decl[function unlabelled(),-] (out/temp-sources/loopunrolling_flowgraph_labelledcontinue.js:2:1)
+    ->[block 1]
+  block 1: [exit-ordinary]
+    node 3: return[v1] (out/temp-sources/loopunrolling_flowgraph_labelledcontinue.js:1:1)
+    ->[]
+  block 2: [exit-exceptional]
+    node 4: exceptional-return (out/temp-sources/loopunrolling_flowgraph_labelledcontinue.js:1:1)
+    ->[]
+function labelled()
+  block 3: [entry]
+    node 5: constant[undefined,v1] (out/temp-sources/loopunrolling_flowgraph_labelledcontinue.js:1:1)
+    ->[block 4]
+  block 4:
+    node 6: constant["COND",v2] (out/temp-sources/loopunrolling_flowgraph_labelledcontinue.js:1:34)
+    ->[block 5] ~>[block 9]
+  block 5:
+    node 7: begin-loop[v2] (out/temp-sources/loopunrolling_flowgraph_labelledcontinue.js:1:41)
+    ->[block 6] ~>[block 9]
+  block 6:
+    node 8: if[v2](true-block:8,false-block:7) (out/temp-sources/loopunrolling_flowgraph_labelledcontinue.js:1:34)
+    ->[block 7,block 8] ~>[block 9]
+  block 7:
+    node 9: end-loop[v2]* (out/temp-sources/loopunrolling_flowgraph_labelledcontinue.js:1:28)
+    ->[block 10]
+  block 8:
+    node 10: nop(continue label)* (out/temp-sources/loopunrolling_flowgraph_labelledcontinue.js:1:42)
+    ->[block 4] ~>[block 9]
+  block 9:
+    node 11: end-loop[v2]* (out/temp-sources/loopunrolling_flowgraph_labelledcontinue.js:1:28)
+    ->[block 11]
+  block 10: [exit-ordinary]
+    node 12: return[v1] (out/temp-sources/loopunrolling_flowgraph_labelledcontinue.js:1:58)
+    ->[]
+  block 11: [exit-exceptional]
+    node 13: exceptional-return (out/temp-sources/loopunrolling_flowgraph_labelledcontinue.js:1:58)
+    ->[]
+function unlabelled()
+  block 12: [entry]
+    node 14: constant[undefined,v1] (out/temp-sources/loopunrolling_flowgraph_labelledcontinue.js:2:1)
+    ->[block 13]
+  block 13:
+    node 15: constant["COND",v2] (out/temp-sources/loopunrolling_flowgraph_labelledcontinue.js:2:29)
+    ->[block 14] ~>[block 18]
+  block 14:
+    node 16: begin-loop[v2] (out/temp-sources/loopunrolling_flowgraph_labelledcontinue.js:2:36)
+    ->[block 15] ~>[block 18]
+  block 15:
+    node 17: if[v2](true-block:17,false-block:16) (out/temp-sources/loopunrolling_flowgraph_labelledcontinue.js:2:29)
+    ->[block 16,block 17] ~>[block 18]
+  block 16:
+    node 18: end-loop[v2]* (out/temp-sources/loopunrolling_flowgraph_labelledcontinue.js:2:23)
+    ->[block 19]
+  block 17:
+    node 19: nop(continue <DEFAULT>)* (out/temp-sources/loopunrolling_flowgraph_labelledcontinue.js:2:37)
+    ->[block 13] ~>[block 18]
+  block 18:
+    node 20: end-loop[v2]* (out/temp-sources/loopunrolling_flowgraph_labelledcontinue.js:2:23)
+    ->[block 20]
+  block 19: [exit-ordinary]
+    node 21: return[v1] (out/temp-sources/loopunrolling_flowgraph_labelledcontinue.js:2:47)
+    ->[]
+  block 20: [exit-exceptional]
+    node 22: exceptional-return (out/temp-sources/loopunrolling_flowgraph_labelledcontinue.js:2:47)
+    ->[]
+
+<main> function()
+  block 0: [entry]
+    node 0: constant[undefined,v1] (out/temp-sources/loopunrolling_flowgraph_labelledcontinue.js:1:1)
+    node 1: function-decl[function labelled(),-] (out/temp-sources/loopunrolling_flowgraph_labelledcontinue.js:1:1)
+    node 2: function-decl[function unlabelled(),-] (out/temp-sources/loopunrolling_flowgraph_labelledcontinue.js:2:1)
+    ->[block 1]
+  block 1: [exit-ordinary]
+    node 3: return[v1] (out/temp-sources/loopunrolling_flowgraph_labelledcontinue.js:1:1)
+    ->[]
+  block 2: [exit-exceptional]
+    node 4: exceptional-return (out/temp-sources/loopunrolling_flowgraph_labelledcontinue.js:1:1)
+    ->[]
+function labelled()
+  block 3: [entry]
+    node 5: constant[undefined,v1] (out/temp-sources/loopunrolling_flowgraph_labelledcontinue.js:1:1)
+    ->[block 4]
+  block 4:
+    node 6: constant["COND",v2] (out/temp-sources/loopunrolling_flowgraph_labelledcontinue.js:1:34)
+    ->[block 5] ~>[block 9]
+  block 5:
+    node 7: begin-loop[v2] (out/temp-sources/loopunrolling_flowgraph_labelledcontinue.js:1:41)
+    ->[block 6] ~>[block 9]
+  block 6:
+    node 8: if[v2](true-block:8,false-block:7) (out/temp-sources/loopunrolling_flowgraph_labelledcontinue.js:1:34)
+    ->[block 7,block 8] ~>[block 9]
+  block 7:
+    node 9: end-loop[v2]* (out/temp-sources/loopunrolling_flowgraph_labelledcontinue.js:1:28)
+    ->[block 10]
+  block 8:
+    node 10: nop(continue label)* (out/temp-sources/loopunrolling_flowgraph_labelledcontinue.js:1:42)
+    ->[block 4] ~>[block 9]
+  block 9:
+    node 11: end-loop[v2]* (out/temp-sources/loopunrolling_flowgraph_labelledcontinue.js:1:28)
+    ->[block 11]
+  block 10: [exit-ordinary]
+    node 12: return[v1] (out/temp-sources/loopunrolling_flowgraph_labelledcontinue.js:1:58)
+    ->[]
+  block 11: [exit-exceptional]
+    node 13: exceptional-return (out/temp-sources/loopunrolling_flowgraph_labelledcontinue.js:1:58)
+    ->[]
+function unlabelled()
+  block 12: [entry]
+    node 14: constant[undefined,v1] (out/temp-sources/loopunrolling_flowgraph_labelledcontinue.js:2:1)
+    ->[block 13]
+  block 13:
+    node 15: constant["COND",v2] (out/temp-sources/loopunrolling_flowgraph_labelledcontinue.js:2:29)
+    ->[block 14] ~>[block 18]
+  block 14:
+    node 16: begin-loop[v2] (out/temp-sources/loopunrolling_flowgraph_labelledcontinue.js:2:36)
+    ->[block 15] ~>[block 18]
+  block 15:
+    node 17: if[v2](true-block:17,false-block:16) (out/temp-sources/loopunrolling_flowgraph_labelledcontinue.js:2:29)
+    ->[block 16,block 17] ~>[block 18]
+  block 16:
+    node 18: end-loop[v2]* (out/temp-sources/loopunrolling_flowgraph_labelledcontinue.js:2:23)
+    ->[block 19]
+  block 17:
+    node 19: nop(continue <DEFAULT>)* (out/temp-sources/loopunrolling_flowgraph_labelledcontinue.js:2:37)
+    ->[block 13] ~>[block 18]
+  block 18:
+    node 20: end-loop[v2]* (out/temp-sources/loopunrolling_flowgraph_labelledcontinue.js:2:23)
+    ->[block 20]
+  block 19: [exit-ordinary]
+    node 21: return[v1] (out/temp-sources/loopunrolling_flowgraph_labelledcontinue.js:2:47)
+    ->[]
+  block 20: [exit-exceptional]
+    node 22: exceptional-return (out/temp-sources/loopunrolling_flowgraph_labelledcontinue.js:2:47)
+    ->[]
+
+out/temp-sources/loopunrolling_flowgraph_labelledcontinue.js:1:1: [definite] Unreachable function labelled
+out/temp-sources/loopunrolling_flowgraph_labelledcontinue.js:2:1: [definite] Unreachable function unlabelled

@@ -3,25 +3,12 @@ test/chromeexperiments/keylight.html:176:6: [definite] TypeError, accessing prop
 test/chromeexperiments/keylight.html:399:3: [definite] TypeError, accessing property of null/undefined
 test/chromeexperiments/keylight.html:74:3: [definite] The conditional expression is always true
 test/chromeexperiments/keylight.html:74:7: [definite] The conditional expression is always true
-test/chromeexperiments/keylight.html:158:3: [definite] The assignment to mouseIsDown has no effect
-test/chromeexperiments/keylight.html:186:3: [definite] The assignment to mouseIsDown has no effect
 test/chromeexperiments/keylight.html:256:10: [definite] The conditional expression is always true
 test/chromeexperiments/keylight.html:428:4: [definite] The conditional expression is always false
 test/chromeexperiments/keylight.html:504:4: [definite] The assignment to color has no effect
-test/chromeexperiments/keylight.html:513:4: [definite] The conditional expression is always false
-test/chromeexperiments/keylight.html:576:4: [definite] The conditional expression is always true
-test/chromeexperiments/keylight.html:576:8: [definite] The conditional expression is always true
-test/chromeexperiments/keylight.html:583:52: [definite] The conditional expression is always false
-test/chromeexperiments/keylight.html:592:5: [definite] The assignment to cp has no effect
-test/chromeexperiments/keylight.html:593:5: [definite] The assignment to np has no effect
-test/chromeexperiments/keylight.html:603:10: [definite] The assignment to i has no effect
-test/chromeexperiments/keylight.html:603:17: [definite] The assignment to len has no effect
-test/chromeexperiments/keylight.html:603:52: [definite] The conditional expression is always false
-test/chromeexperiments/keylight.html:714:9: [definite] The conditional expression is always false
 test/chromeexperiments/keylight.html:43:28: [definite] Dead assignment, property width is never read
 test/chromeexperiments/keylight.html:166:6: [definite] Reading absent property touches
 test/chromeexperiments/keylight.html:176:6: [definite] Reading absent property touches
-test/chromeexperiments/keylight.html:540:76: [definite] Dead assignment, property scale is never read
 test/chromeexperiments/keylight.html:625:2: [definite] Dead assignment, property position is never read
 test/chromeexperiments/keylight.html:625:20: [definite] Dead assignment, property x is never read
 test/chromeexperiments/keylight.html:625:26: [definite] Dead assignment, property y is never read
@@ -60,6 +47,7 @@ test/chromeexperiments/keylight.html:341:22: [maybe] TypeError, accessing proper
 test/chromeexperiments/keylight.html:350:4: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/keylight.html:356:4: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/keylight.html:428:8: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/keylight.html:540:21: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/keylight.html:540:50: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/keylight.html:540:83: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/keylight.html:540:104: [maybe] TypeError, accessing property of null/undefined
@@ -69,11 +57,21 @@ test/chromeexperiments/keylight.html:543:40: [maybe] TypeError, accessing proper
 test/chromeexperiments/keylight.html:545:43: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/keylight.html:546:43: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/keylight.html:561:21: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/keylight.html:580:29: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/keylight.html:581:30: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/keylight.html:587:32: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/keylight.html:587:53: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/keylight.html:600:31: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/keylight.html:601:31: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/keylight.html:607:32: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/keylight.html:607:56: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/keylight.html:613:19: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/keylight.html:709:15: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/keylight.html:540:21: [maybe] Reading absent property x
 test/chromeexperiments/keylight.html:540:50: [maybe] Reading absent property y
 test/chromeexperiments/keylight.html:540:104: [maybe] Reading absent property rx
 test/chromeexperiments/keylight.html:540:135: [maybe] Reading absent property ry
-test/chromeexperiments/keylight.html:27:41: [maybe] Uncaught exception, constructed at [test/chromeexperiments/keylight.html:259:8]
+test/chromeexperiments/keylight.html:27:41: [maybe] Uncaught exception, constructed at [test/chromeexperiments/keylight.html:166:6, test/chromeexperiments/keylight.html:176:6, test/chromeexperiments/keylight.html:239:24, test/chromeexperiments/keylight.html:239:86, test/chromeexperiments/keylight.html:259:8, test/chromeexperiments/keylight.html:341:22, test/chromeexperiments/keylight.html:350:4, test/chromeexperiments/keylight.html:356:4, test/chromeexperiments/keylight.html:399:3, test/chromeexperiments/keylight.html:428:8, test/chromeexperiments/keylight.html:540:21, test/chromeexperiments/keylight.html:540:50, test/chromeexperiments/keylight.html:540:83, test/chromeexperiments/keylight.html:540:104, test/chromeexperiments/keylight.html:540:135, test/chromeexperiments/keylight.html:542:40, test/chromeexperiments/keylight.html:543:40, test/chromeexperiments/keylight.html:545:43, test/chromeexperiments/keylight.html:546:43, test/chromeexperiments/keylight.html:561:21, test/chromeexperiments/keylight.html:580:29, test/chromeexperiments/keylight.html:581:30, test/chromeexperiments/keylight.html:587:32, test/chromeexperiments/keylight.html:587:53, test/chromeexperiments/keylight.html:600:31, test/chromeexperiments/keylight.html:601:31, test/chromeexperiments/keylight.html:607:32, test/chromeexperiments/keylight.html:607:56, test/chromeexperiments/keylight.html:613:19, test/chromeexperiments/keylight.html:709:15]
 test/chromeexperiments/keylight.html:39:14: [maybe] Converting object to string
 test/chromeexperiments/keylight.html:39:14: [maybe] Converting primitive string to object
 test/chromeexperiments/keylight.html:40:18: [maybe] Conversion to number yields NaN
@@ -109,6 +107,8 @@ test/chromeexperiments/keylight.html:350:4: [maybe] Reading absent property (com
 test/chromeexperiments/keylight.html:356:4: [maybe] Reading absent property (computed name)
 test/chromeexperiments/keylight.html:425:10: [maybe] Reading absent property (computed name)
 test/chromeexperiments/keylight.html:538:20: [maybe] Reading absent property (computed name)
+test/chromeexperiments/keylight.html:542:4: [maybe] Conversion to number yields NaN
+test/chromeexperiments/keylight.html:542:17: [maybe] Conversion to number yields NaN
 test/chromeexperiments/keylight.html:543:4: [maybe] Conversion to number yields NaN
 test/chromeexperiments/keylight.html:543:17: [maybe] Conversion to number yields NaN
 test/chromeexperiments/keylight.html:545:4: [maybe] Conversion to number yields NaN
@@ -117,6 +117,14 @@ test/chromeexperiments/keylight.html:546:4: [maybe] Conversion to number yields 
 test/chromeexperiments/keylight.html:546:18: [maybe] Conversion to number yields NaN
 test/chromeexperiments/keylight.html:561:21: [maybe] Reading absent property (computed name)
 test/chromeexperiments/keylight.html:567:16: [maybe] Conversion to number yields NaN
+test/chromeexperiments/keylight.html:573:13: [maybe] Reading absent property (computed name)
+test/chromeexperiments/keylight.html:574:13: [maybe] Reading absent property (computed name)
+test/chromeexperiments/keylight.html:584:11: [maybe] Reading absent property (computed name)
+test/chromeexperiments/keylight.html:585:11: [maybe] Reading absent property (computed name)
+test/chromeexperiments/keylight.html:592:10: [maybe] Reading absent property (computed name)
+test/chromeexperiments/keylight.html:593:10: [maybe] Reading absent property (computed name)
+test/chromeexperiments/keylight.html:604:11: [maybe] Reading absent property (computed name)
+test/chromeexperiments/keylight.html:605:11: [maybe] Reading absent property (computed name)
 test/chromeexperiments/keylight.html:721:9: [maybe] Reading absent property (computed name)
 test/chromeexperiments/keylight.html:628:15: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/chromeexperiments/keylight.html:629:15: [info] 'this' refers to multiple abstract objects, which may cause loss of precision

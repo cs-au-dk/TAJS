@@ -23,6 +23,7 @@ import dk.brics.tajs.analysis.nativeobjects.ECMAScriptFunctions;
 import dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects;
 import dk.brics.tajs.lattice.HostAPI;
 import dk.brics.tajs.lattice.HostObject;
+import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.util.AnalysisException;
 

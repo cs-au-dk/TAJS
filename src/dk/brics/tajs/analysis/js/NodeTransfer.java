@@ -16,7 +16,6 @@
 
 package dk.brics.tajs.analysis.js;
 
-import dk.brics.tajs.analysis.Context;
 import dk.brics.tajs.analysis.Conversion;
 import dk.brics.tajs.analysis.Exceptions;
 import dk.brics.tajs.analysis.FunctionCalls;
@@ -24,14 +23,15 @@ import dk.brics.tajs.analysis.FunctionCalls.OrdinaryCallInfo;
 import dk.brics.tajs.analysis.InitialStateBuilder;
 import dk.brics.tajs.analysis.NativeFunctions;
 import dk.brics.tajs.analysis.Solver;
-import dk.brics.tajs.analysis.State;
 import dk.brics.tajs.analysis.dom.DOMEventLoop;
+import dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects;
 import dk.brics.tajs.analysis.nativeobjects.JSGlobal;
 import dk.brics.tajs.flowgraph.AbstractNode;
 import dk.brics.tajs.flowgraph.BasicBlock;
 import dk.brics.tajs.flowgraph.Function;
 import dk.brics.tajs.flowgraph.jsnodes.AssumeNode;
 import dk.brics.tajs.flowgraph.jsnodes.BeginForInNode;
+import dk.brics.tajs.flowgraph.jsnodes.BeginLoopNode;
 import dk.brics.tajs.flowgraph.jsnodes.BeginWithNode;
 import dk.brics.tajs.flowgraph.jsnodes.BinaryOperatorNode;
 import dk.brics.tajs.flowgraph.jsnodes.CallNode;
@@ -41,6 +41,7 @@ import dk.brics.tajs.flowgraph.jsnodes.DeclareFunctionNode;
 import dk.brics.tajs.flowgraph.jsnodes.DeclareVariableNode;
 import dk.brics.tajs.flowgraph.jsnodes.DeletePropertyNode;
 import dk.brics.tajs.flowgraph.jsnodes.EndForInNode;
+import dk.brics.tajs.flowgraph.jsnodes.EndLoopNode;
 import dk.brics.tajs.flowgraph.jsnodes.EndWithNode;
 import dk.brics.tajs.flowgraph.jsnodes.EventDispatcherNode;
 import dk.brics.tajs.flowgraph.jsnodes.ExceptionalReturnNode;
@@ -58,18 +59,21 @@ import dk.brics.tajs.flowgraph.jsnodes.TypeofNode;
 import dk.brics.tajs.flowgraph.jsnodes.UnaryOperatorNode;
 import dk.brics.tajs.flowgraph.jsnodes.WritePropertyNode;
 import dk.brics.tajs.flowgraph.jsnodes.WriteVariableNode;
-import dk.brics.tajs.lattice.BlockState;
-import dk.brics.tajs.lattice.BlockState.Properties;
-import dk.brics.tajs.lattice.CallEdge;
+import dk.brics.tajs.lattice.Context;
+import dk.brics.tajs.lattice.HeapContext;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.ObjectLabel.Kind;
+import dk.brics.tajs.lattice.State;
+import dk.brics.tajs.lattice.State.Properties;
 import dk.brics.tajs.lattice.Str;
 import dk.brics.tajs.lattice.UnknownValueResolver;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.monitoring.IAnalysisMonitoring;
 import dk.brics.tajs.options.Options;
+import dk.brics.tajs.solver.BlockAndContext;
 import dk.brics.tajs.solver.NodeAndContext;
 import dk.brics.tajs.util.AnalysisException;
+import dk.brics.tajs.util.Pair;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -91,7 +95,7 @@ public class NodeTransfer implements NodeVisitor<State> {
 
     private Solver.SolverInterface c;
 
-    private IAnalysisMonitoring<State, Context, CallEdge<State>> m;
+    private IAnalysisMonitoring m;
 
     /**
      * Constructs a new TransferFunctions object.
@@ -188,7 +192,8 @@ public class NodeTransfer implements NodeVisitor<State> {
      */
     @Override
     public void visit(NewObjectNode n, State state) {
-        ObjectLabel objlabel = new ObjectLabel(n, Kind.OBJECT);
+        HeapContext heapContext = c.getAnalysis().getContextSensitivityStrategy().makeObjectLiteralHeapContext(n, state);
+        ObjectLabel objlabel = new ObjectLabel(n, Kind.OBJECT, heapContext);
         state.newObject(objlabel);
         state.writeInternalPrototype(objlabel, Value.makeObject(InitialStateBuilder.OBJECT_PROTOTYPE));
         if (n.getResultRegister() != AbstractNode.NO_VALUE)
@@ -531,7 +536,7 @@ public class NodeTransfer implements NodeVisitor<State> {
                 Value propertyval = state.readRegister(n.getPropertyRegister());
                 propertystr = Conversion.toString(propertyval, n.getPropertyRegister(), c);
             }
-            v = state.deleteProperty(objlabels, propertystr,false);
+            v = state.deleteProperty(objlabels, propertystr, false);
         }
         if (v.isNotPresent() && !Options.get().isPropagateDeadFlow()) {
             state.setToNone();
@@ -581,7 +586,7 @@ public class NodeTransfer implements NodeVisitor<State> {
      */
     @Override
     public void visit(DeclareFunctionNode n, State state) {
-        UserFunctionCalls.declareFunction(n, state);
+        UserFunctionCalls.declareFunction(n, state, c);
     }
 
     /**
@@ -594,7 +599,21 @@ public class NodeTransfer implements NodeVisitor<State> {
 
                 @Override
                 public Value getFunctionValue() {
-                    return state.readRegister(n.getFunctionRegister());
+                    Value functionValue = state.readRegister(n.getFunctionRegister());
+                    if (n.getLiteralConstructorKind() != null) {
+                        // these literal invocations can not be spurious in ES5
+                        switch (n.getLiteralConstructorKind()) {
+                            case ARRAY:
+                                functionValue = Value.makeObject(new ObjectLabel(ECMAScriptObjects.ARRAY, Kind.FUNCTION));
+                                break;
+                            case REGEXP:
+                                functionValue = Value.makeObject(new ObjectLabel(ECMAScriptObjects.REGEXP, Kind.FUNCTION));
+                                break;
+                            default:
+                                throw new AnalysisException("Unhandled literal constructor type: " + n.getLiteralConstructorKind());
+                        }
+                    }
+                    return functionValue;
                 }
 
                 @Override
@@ -812,12 +831,15 @@ public class NodeTransfer implements NodeVisitor<State> {
             state.writeRegister(n.getObjectRegister(), v1.makeExtendedScope()); // preserve the register value
             v1 = UnknownValueResolver.getRealValue(v1, state);
             Set<ObjectLabel> objs = Conversion.toObjectLabels(state, n, v1, c);
-            BlockState.Properties p = state.getEnumProperties(objs);
-            Collection<Value> propertyNameValues = p.toValues();
+            State.Properties p = state.getEnumProperties(objs);
+            Collection<Value> propertyNameValues = newList(p.toValues());
+
+            // Add the no-iteration case
+            propertyNameValues.add(Value.makeNull().makeExtendedScope());
 
             // 2. Make specialized context for each iteration
             int it = n.getPropertyListRegister();
-            List<Context> specialized_contexts = newList();
+//            List<Context> specialized_contexts = newList();
             BasicBlock successor = n.getBlock().getSingleSuccessor();
             for (Value k : propertyNameValues) {
                 m.visitPropertyRead(n, objs, k, state, true);
@@ -825,10 +847,10 @@ public class NodeTransfer implements NodeVisitor<State> {
                     // 2.1 Make specialized context
                     State specialized_state = state.clone();
                     specialized_state.writeRegister(it, k);
-                    Context specialized_context = Context.makeForInEntryContext(state.getContext(), successor, it, k);
-                    specialized_contexts.add(specialized_context);
+                    Context specialized_context = c.getAnalysis().getContextSensitivityStrategy().makeForInEntryContext(state.getContext(), n, k);
+//                    specialized_contexts.add(specialized_context);
                     specialized_state.setContext(specialized_context);
-
+                    specialized_state.setBasicBlock(successor);
                     // 2.2  Propagate specialized context
                     c.propagateToFunctionEntry(n, state.getContext(), specialized_state, specialized_context, successor);
                 }
@@ -843,9 +865,8 @@ public class NodeTransfer implements NodeVisitor<State> {
                 //  }
 
                 // TODO: could kill null flow unless all iterations has reached at least one EndForInNode
-
-                state.writeRegister(it, Value.makeNull().makeExtendedScope());
             }
+            state.setToNone();
         } else { // fall back to simple mode without context specialization
             Value v1 = state.readRegister(n.getObjectRegister());
             state.writeRegister(n.getObjectRegister(), v1.makeExtendedScope()); // preserve the register value
@@ -892,24 +913,65 @@ public class NodeTransfer implements NodeVisitor<State> {
             if (!c.isScanning()) {
                 // 1. Find successor block, context and base-state
                 BasicBlock successor = state.getBasicBlock().getSingleSuccessor();
-                State nonSpecializedMergeState = state.clone();
-                Context nonSpecializedContext = state.getContext().getEnclosingContext();
+                for (Pair<NodeAndContext<Context>, Context> ncc : c.getAnalysisLatticeElement().getCallGraph().getSources(BlockAndContext.makeEntry(n.getBlock(), state.getContext()))) {
+                    State nonSpecializedMergeState = state.clone();
+                    Context nonSpecializedContext = ncc.getFirst().getContext();
 
-                // 2. Use BlockState.mergeFunctionReturn to do the merge
-                State forInBeginState = c.getAnalysisLatticeElement().getState(n.getBeginNode().getBlock(), nonSpecializedContext);
-                State forInEntryState = c.getAnalysisLatticeElement().getState(nonSpecializedContext.getEntryBlockAndContext());
-                Value returnValue = nonSpecializedMergeState.mergeFunctionReturn(forInBeginState, forInBeginState, forInEntryState, nonSpecializedMergeState.getSummarized(), nonSpecializedMergeState.readRegister(AbstractNode.RETURN_REG));
-                nonSpecializedMergeState.setContext(nonSpecializedContext);
-                nonSpecializedMergeState.writeRegister(AbstractNode.RETURN_REG, returnValue);
-                if (state.hasExceptionRegisterValue()) {
-                    nonSpecializedMergeState.writeRegister(AbstractNode.EXCEPTION_REG, state.readRegister(AbstractNode.EXCEPTION_REG));
+                    // 2. Use State.mergeFunctionReturn to do the merge
+                    State forInBeginState = c.getAnalysisLatticeElement().getState(n.getBlock().getEntryBlock().getEntryPredecessorBlock(), nonSpecializedContext);
+                    State forInEntryState = c.getAnalysisLatticeElement().getState(n.getBlock().getEntryBlock(), state.getContext());
+                    Value returnValue = nonSpecializedMergeState.mergeFunctionReturn(forInBeginState, forInBeginState, forInEntryState, nonSpecializedMergeState.getSummarized(), nonSpecializedMergeState.readRegister(AbstractNode.RETURN_REG));
+                    nonSpecializedMergeState.setContext(nonSpecializedContext);
+                    nonSpecializedMergeState.writeRegister(AbstractNode.RETURN_REG, returnValue);
+                    if (state.hasExceptionRegisterValue()) {
+                        nonSpecializedMergeState.writeRegister(AbstractNode.EXCEPTION_REG, state.readRegister(AbstractNode.EXCEPTION_REG));
+                    }
+
+                    // 3. Propagate only to the non-specialized successor
+                    nonSpecializedMergeState.setBasicBlock(n.getBlock().getSingleSuccessor());
+                    c.propagateToBasicBlock(nonSpecializedMergeState, successor, nonSpecializedContext);
                 }
-
-                // 3. Propagate only to the non-specialized successor
-                c.propagateToBasicBlock(nonSpecializedMergeState, successor, Context.makeSuccessorContext(nonSpecializedMergeState, successor));
                 state.setToNone();
             }
         }
+    }
+
+    /**
+     * Beginning of loop.
+     */
+    @Override
+    public void visit(BeginLoopNode n, State state) {
+        // TODO: do nothing if loop unrolling is disabled or in scanning mode
+
+        Value v = state.readRegister(n.getIfNode().getConditionRegister());
+        v = Conversion.toBoolean(UnknownValueResolver.getRealValue(v, state));
+        if (v.isMaybeTrueButNotFalse() || v.isMaybeFalseButNotTrue()) {
+            // branch condition is determinate, switch context and propagate only to specialized successor
+            Context specializedContext = c.getAnalysis().getContextSensitivityStrategy().makeNextLoopUnrollingContext(state.getContext(), n);
+            BasicBlock successor = state.getBasicBlock().getSingleSuccessor();
+            State specializedState = state.clone();
+            specializedState.setContext(specializedContext);
+            specializedState.setBasicBlock(successor);
+            c.propagateToBasicBlock(specializedState, successor, specializedContext);
+            state.setToNone();
+        } // otherwise, just ordinary propagation like no-op
+    }
+
+    /**
+     * End of loop.
+     */
+    @Override
+    public void visit(EndLoopNode n, State state) {
+        // TODO: do nothing if loop unrolling is disabled or in scanning mode
+
+        // branch condition is determinate, switch context and propagate only to generalized successor
+        Context generalizedContext = c.getAnalysis().getContextSensitivityStrategy().makeLoopExitContext(state.getContext(), n);
+        BasicBlock successor = state.getBasicBlock().getSingleSuccessor();
+        State specializedState = state.clone();
+        specializedState.setContext(generalizedContext);
+        specializedState.setBasicBlock(successor);
+        c.propagateToBasicBlock(specializedState, successor, generalizedContext);
+        state.setToNone();
     }
 
     /**
@@ -969,6 +1031,6 @@ public class NodeTransfer implements NodeVisitor<State> {
 
     @Override
     public void visit(EventDispatcherNode n, State state) {
-        DOMEventLoop.multipleNondeterministicEventLoops(n, state, c);
+        DOMEventLoop.get().multipleNondeterministicEventLoops(n, state, c);
     }
 }

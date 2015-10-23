@@ -13,18 +13,18 @@ fg2: function()
     node 6: if[v2](true-block:3,false-block:6) (test/flowgraphbuilder/flowgraph_builder0184.js:1:13)
     ->[block 3,block 6]
   block 3:
-    node 7: read-variable['TAJS_dumpValue',v7,v6] (test/flowgraphbuilder/flowgraph_builder0184.js:2:3)
-    node 8: read-variable['i',v8,-] (test/flowgraphbuilder/flowgraph_builder0184.js:2:18)
+    node 7: read-variable['TAJS_dumpValue',v11,v10] (test/flowgraphbuilder/flowgraph_builder0184.js:2:3)
+    node 8: read-variable['i',v12,-] (test/flowgraphbuilder/flowgraph_builder0184.js:2:18)
     ->[block 4]
   block 4:
-    node 9: call[v6,v7,v8,-]* (test/flowgraphbuilder/flowgraph_builder0184.js:2:3)
+    node 9: call[v10,v11,v12,-]* (test/flowgraphbuilder/flowgraph_builder0184.js:2:3)
     ->[block 5]
   block 5:
-    node 10: read-variable['i',v9,-] (test/flowgraphbuilder/flowgraph_builder0184.js:1:20)
-    node 11: +[v9,v10] (test/flowgraphbuilder/flowgraph_builder0184.js:1:20)
-    node 12: constant[1.0,v11] (test/flowgraphbuilder/flowgraph_builder0184.js:1:20)
-    node 13: +[v10,v11,v12] (test/flowgraphbuilder/flowgraph_builder0184.js:1:20)
-    node 14: write-variable[v12,'i']* (test/flowgraphbuilder/flowgraph_builder0184.js:1:20)
+    node 10: read-variable['i',v6,-] (test/flowgraphbuilder/flowgraph_builder0184.js:1:20)
+    node 11: +[v6,v7] (test/flowgraphbuilder/flowgraph_builder0184.js:1:20)
+    node 12: constant[1.0,v8] (test/flowgraphbuilder/flowgraph_builder0184.js:1:20)
+    node 13: +[v7,v8,v9] (test/flowgraphbuilder/flowgraph_builder0184.js:1:20)
+    node 14: write-variable[v9,'i']* (test/flowgraphbuilder/flowgraph_builder0184.js:1:20)
     ->[block 2]
   block 6:
     node 15: read-variable['TAJS_dumpValue',v14,v13] (test/flowgraphbuilder/flowgraph_builder0184.js:4:1)

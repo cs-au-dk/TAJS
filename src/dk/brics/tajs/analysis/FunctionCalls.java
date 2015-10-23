@@ -16,8 +16,8 @@
 
 package dk.brics.tajs.analysis;
 
+import dk.brics.tajs.analysis.dom.DOMBuilder;
 import dk.brics.tajs.analysis.dom.DOMObjects;
-import dk.brics.tajs.analysis.dom.html.HTMLBuilder;
 import dk.brics.tajs.analysis.js.UserFunctionCalls;
 import dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects;
 import dk.brics.tajs.flowgraph.AbstractNode;
@@ -26,6 +26,7 @@ import dk.brics.tajs.flowgraph.jsnodes.Node;
 import dk.brics.tajs.lattice.ExecutionContext;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.ObjectLabel.Kind;
+import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.UnknownValueResolver;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.options.Options;
@@ -229,8 +230,9 @@ public class FunctionCalls {
 
         @Override
         public Set<ObjectLabel> prepareThis(State caller_state, State callee_state) {
+            // TODO: improve precision for setTimeout/setInterval: will always have the global object as the this-object
             ec = caller_state.getExecutionContext();
-            return HTMLBuilder.HTML_OBJECT_LABELS; // FIXME: setTimeout/setInterval should use the global object instead (uneval48.js)
+            return DOMBuilder.getAllDOMEventTargets();
         }
 
         @Override
@@ -300,8 +302,7 @@ public class FunctionCalls {
                         newstate.setExecutionContext(call.getExecutionContext());
                         if (call.getResultRegister() != AbstractNode.NO_VALUE)
                             newstate.writeRegister(call.getResultRegister(), res);
-                        c.propagateToBasicBlock(newstate, call.getSourceNode().getBlock().getSingleSuccessor(),
-                                Context.makeSuccessorContext(newstate, call.getSourceNode().getBlock().getSingleSuccessor()));
+                        c.propagateToBasicBlock(newstate, call.getSourceNode().getBlock().getSingleSuccessor(), newstate.getContext());
                     }
                     c.setCurrentState(ts);
                 } else { // user-defined function
@@ -315,8 +316,7 @@ public class FunctionCalls {
             State newstate = caller_state.clone();
             if (call.getResultRegister() != AbstractNode.NO_VALUE)
                 newstate.writeRegister(call.getResultRegister(), Value.makeNone());
-            c.propagateToBasicBlock(newstate, call.getSourceNode().getBlock().getSingleSuccessor(),
-                    Context.makeSuccessorContext(newstate, call.getSourceNode().getBlock().getSingleSuccessor()));
+            c.propagateToBasicBlock(newstate, call.getSourceNode().getBlock().getSingleSuccessor(), newstate.getContext());
         }
         c.getMonitoring().visitCall(c.getCurrentNode(), maybe_non_function, maybe_function);
         if (maybe_non_function)

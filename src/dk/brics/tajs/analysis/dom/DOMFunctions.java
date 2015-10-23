@@ -19,7 +19,6 @@ package dk.brics.tajs.analysis.dom;
 import dk.brics.tajs.analysis.FunctionCalls.CallInfo;
 import dk.brics.tajs.analysis.InitialStateBuilder;
 import dk.brics.tajs.analysis.Solver;
-import dk.brics.tajs.analysis.State;
 import dk.brics.tajs.analysis.dom.ajax.ActiveXObject;
 import dk.brics.tajs.analysis.dom.ajax.JSONObject;
 import dk.brics.tajs.analysis.dom.ajax.XmlHttpRequest;
@@ -49,7 +48,6 @@ import dk.brics.tajs.analysis.dom.html.HTMLBRElement;
 import dk.brics.tajs.analysis.dom.html.HTMLBaseElement;
 import dk.brics.tajs.analysis.dom.html.HTMLBaseFontElement;
 import dk.brics.tajs.analysis.dom.html.HTMLBodyElement;
-import dk.brics.tajs.analysis.dom.html.HTMLBuilder;
 import dk.brics.tajs.analysis.dom.html.HTMLButtonElement;
 import dk.brics.tajs.analysis.dom.html.HTMLCollection;
 import dk.brics.tajs.analysis.dom.html.HTMLDListElement;
@@ -99,12 +97,22 @@ import dk.brics.tajs.analysis.dom.html.HTMLTableSectionElement;
 import dk.brics.tajs.analysis.dom.html.HTMLTextAreaElement;
 import dk.brics.tajs.analysis.dom.html.HTMLTitleElement;
 import dk.brics.tajs.analysis.dom.html.HTMLUListElement;
+import dk.brics.tajs.analysis.dom.html5.AudioContext;
+import dk.brics.tajs.analysis.dom.html5.AudioDestinationNode;
+import dk.brics.tajs.analysis.dom.html5.AudioNode;
+import dk.brics.tajs.analysis.dom.html5.AudioParam;
 import dk.brics.tajs.analysis.dom.html5.CanvasRenderingContext2D;
-import dk.brics.tajs.analysis.dom.html5.HTML5Builder;
+import dk.brics.tajs.analysis.dom.html5.HTMLAudioElement;
 import dk.brics.tajs.analysis.dom.html5.HTMLCanvasElement;
+import dk.brics.tajs.analysis.dom.html5.HTMLMediaElement;
+import dk.brics.tajs.analysis.dom.html5.OscillatorNode;
+import dk.brics.tajs.analysis.dom.html5.ScriptProcessorNode;
 import dk.brics.tajs.analysis.dom.html5.StorageElement;
+import dk.brics.tajs.analysis.dom.html5.TimeRanges;
+import dk.brics.tajs.analysis.dom.html5.WebGLRenderingContext;
 import dk.brics.tajs.lattice.HostObject;
 import dk.brics.tajs.lattice.ObjectLabel;
+import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.solver.Message.Severity;
@@ -265,8 +273,7 @@ public class DOMFunctions {
      * Returns a Value representing all possible HTML elements.
      */
     public static Value makeAnyHTMLElement() {
-        return Value.makeObject(HTMLBuilder.HTML_OBJECT_LABELS)
-                .join(Value.makeObject(HTML5Builder.HTML5_OBJECT_LABELS));
+        return Value.makeObject(DOMBuilder.getAllHtmlObjectLabels());
     }
 
     /**
@@ -478,7 +485,7 @@ public class DOMFunctions {
             case DOCUMENT_IMPORT_NODE:
             case DOCUMENT_NORMALIZEDOCUMENT:
             case DOCUMENT_RENAME_NODE:
-                return DOMDocument.evaluate(nativeObject, call, s, c, HTMLBuilder.HTML_OBJECT_LABELS);
+                return DOMDocument.evaluate(nativeObject, call, s, c, DOMBuilder.getAllHtmlObjectLabels());
             case DOMIMPLEMENTATION_HASFEATURE:
             case DOMIMPLEMENTATION_CREATEDOCUMENTTYPE:
             case DOMIMPLEMENTATION_CREATEDOCUMENT:
@@ -549,6 +556,8 @@ public class DOMFunctions {
             case HTMLDOCUMENT_GET_ELEMENTS_BY_CLASS_NAME:
                 return HTMLDocument.evaluate(nativeObject, call, s, c);
             case HTMLELEMENT_GET_ELEMENTS_BY_CLASS_NAME:
+            case HTMLELEMENT_BLUR:
+            case HTMLELEMENT_FOCUS:
             case HTMLELEMENT_MATCHES_SELECTOR:
                 return HTMLElement.evaluate(nativeObject, call, s, c);
             case HTMLIMAGEELEMENT_CONSTRUCTOR:
@@ -559,8 +568,8 @@ public class DOMFunctions {
             case HTMLFORMELEMENT_SUBMIT:
             case HTMLFORMELEMENT_RESET:
                 return HTMLFormElement.evaluate(nativeObject, call, s, c);
-            case HTMLINPUTELEMENT_BLUR:
             case HTMLINPUTELEMENT_CLICK:
+            case HTMLINPUTELEMENT_BLUR:
             case HTMLINPUTELEMENT_FOCUS:
             case HTMLINPUTELEMENT_SELECT:
                 return HTMLInputElement.evaluate(nativeObject, call, s, c);
@@ -584,6 +593,47 @@ public class DOMFunctions {
             case HTMLTABLEROWELEMENT_INSERTCELL:
             case HTMLTABLEROWELEMENT_DELETECELL:
                 return HTMLTableRowElement.evaluate(nativeObject, call, s, c);
+            case HTMLMEDIAELEMENT_CAN_PLAY_TYPE:
+            case HTMLMEDIAELEMENT_FAST_SEEK:
+            case HTMLMEDIAELEMENT_LOAD:
+            case HTMLMEDIAELEMENT_PAUSE:
+            case HTMLMEDIAELEMENT_PLAY:
+                return HTMLMediaElement.evaluate(nativeObject, call, s, c);
+            case HTMLTEXTAREAELEMENT_BLUR:
+            case HTMLTEXTAREAELEMENT_FOCUS:
+            case HTMLTEXTAREAELEMENT_SELECT:
+                return HTMLTextAreaElement.evaluate(nativeObject, call, s, c);
+            case HTMLAUDIOELEMENT_CONSTRUCTOR:
+                return HTMLAudioElement.evaluate(nativeObject, call, s, c);
+            case TIMERANGES_CONSTRUCTOR:
+            case TIMERANGES_END:
+            case TIMERANGES_START:
+                return TimeRanges.evaluate(nativeObject, call, s, c);
+            case WEBGLRENDERINGCONTEXT_CONSTRCUTOR:
+            case WEBGLRENDERINGCONTEXT_TAJS_UNSUPPORTED_FUNCTION:
+                return WebGLRenderingContext.evaluate(nativeObject, call, s, c);
+            case AUDIOCONTEXT_CONSTRUCTOR:
+            case AUDIOCONTEXT_CREATE_ANALYSER:
+            case AUDIOCONTEXT_CREATE_OSCILLATOR:
+            case AUDIOCONTEXT_CREATE_SCRIPT_PROCESSOR:
+            case AUDIOCONTEXT_TAJS_UNSUPPORTED_FUNCTION:
+                return AudioContext.evaluate(nativeObject, call, s, c);
+            case AUDIOPARAM_CONSTRUCTOR:
+            case AUDIOPARAM_TAJS_UNSUPPORTED_FUNCTION:
+                return AudioParam.evaluate(nativeObject, call, s, c);
+            case AUDIONODE_CONSTRUCTOR:
+            case AUDIONODE_CONNECT:
+            case AUDIONODE_DISCONNECT:
+                return AudioNode.evaluate(nativeObject, call, s, c);
+            case AUDIODESTINATIONNODE_CONSTRUCTOR:
+                return AudioDestinationNode.evaluate(nativeObject, call, s, c);
+            case SCRIPTPROCESSORNODE_CONSTRUCTOR:
+                return ScriptProcessorNode.evaluate(nativeObject, call, s, c);
+            case OSCILLATORNODE_CONSTRUCTOR:
+            case OSCILLATORNODE_SET_PERIODIC_WAVE:
+            case OSCILLATORNODE_START:
+            case OSCILLATORNODE_STOP:
+                return OscillatorNode.evaluate(nativeObject, call, s, c);
             case HTMLCANVASELEMENT_GET_CONTEXT:
             case HTMLCANVASELEMENT_TO_DATA_URL:
             case HTMLCANVASELEMENT_CONSTRUCTOR:

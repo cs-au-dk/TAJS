@@ -23,8 +23,6 @@ import dk.brics.tajs.options.OptionValues;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.util.AnalysisException;
 
-import java.util.Map;
-
 /**
  * Label of abstract object.
  * Immutable.
@@ -35,6 +33,8 @@ public final class ObjectLabel implements Comparable<ObjectLabel> { // TODO: (#1
      * Source location used for host functions.
      */
     public static final SourceLocation initial_source = new SourceLocation(0, 0, "<initial state>");
+
+    private static HeapContext emptyHeapContext = new HeapContext(null, null);
 
     /**
      * Object kinds.
@@ -70,57 +70,51 @@ public final class ObjectLabel implements Comparable<ObjectLabel> { // TODO: (#1
      * If set, this abstract object represents a single concrete object.
      * (If not set, it can represent any number of concrete objects.)
      */
-    private boolean singleton;
+    private final boolean singleton;
 
-    private Kind kind; // [[Class]]
+    private final Kind kind; // [[Class]]
 
-    private AbstractNode node; // non-null for user defined non-Function objects
+    private final AbstractNode node; // non-null for user defined non-Function objects
 
-    private HostObject hostobject; // non-null for host objects
+    private final HostObject hostobject; // non-null for host objects
 
-    private Function function; // non-null for user defined functions
+    private final Function function; // non-null for user defined functions
 
-    /**
-     * Values of special variables at function entry in the context where the object was created, or null if none.
-     */
-    private Map<String, Value> specialentryvars;
+    private final HeapContext heapContext; // for context sensitivity
 
     /**
-     * Values of special variables in the context where the object was created, or null if none.
+     * Cached hashcode for immutable instance.
      */
-    private Map<String, Value> specialvars;
+    private final int hashcode;
 
-    /**
-     * Values of special registers in the context where the object was created, or null if none.
-     */
-    private Map<Integer, Value> specialregs;
-
-    private int hashcode;
-
-    private ObjectLabel(HostObject hostobject, AbstractNode node, Function function, Kind kind) {
+    private ObjectLabel(HostObject hostobject, AbstractNode node, Function function, Kind kind, HeapContext heapContext, boolean singleton) {
         this.hostobject = hostobject;
         this.node = node;
         this.function = function;
         this.kind = kind;
-        if (!Options.get().isRecencyDisabled())
-            singleton = true;
-        hashcode = (hostobject != null ? hostobject.toString().hashCode() : 0) +
-                (function != null ? function.hashCode() : 0) +
-                (node != null ? node.getIndex() : 0) +
-                (singleton ? 123 : 0) +
-                (specialentryvars == null ? 0 : specialentryvars.hashCode()) +
-                (specialvars == null ? 0 : specialvars.hashCode()) +
-                (specialregs == null ? 0 : specialregs.hashCode()) +
-                kind.ordinal() * 117; // avoids using enum hashcodes
+        if (Options.get().isRecencyDisabled()) {
+            this.singleton = false;
+        } else {
+            this.singleton = singleton;
+        }
+        if (heapContext == null) {
+            this.heapContext = emptyHeapContext;
+        }else{
+            this.heapContext = heapContext;
+        }
+        this.hashcode = (this.hostobject != null ? this.hostobject.toString().hashCode() : 0) +
+                (this.function != null ? this.function.hashCode() : 0) +
+                (this.node != null ? this.node.getIndex() : 0) +
+                (this.singleton ? 123 : 0) +
+                this.heapContext.hashCode() +
+                this.kind.ordinal() * 117; // avoids using enum hashcodes
     }
 
     /**
      * Constructs a new object label for a user defined non-function object.
-     *
-     * @see ObjectLabel#ObjectLabel(AbstractNode, Kind, Map, Map, Map)
      */
     public ObjectLabel(AbstractNode n, Kind kind) {
-        this(null, n, null, kind);
+        this(null, n, null, kind, null, true);
     }
 
     /**
@@ -128,25 +122,16 @@ public final class ObjectLabel implements Comparable<ObjectLabel> { // TODO: (#1
      * If {@link OptionValues#isRecencyDisabled()} is disabled, the object label
      * represents a single concrete object (otherwise, it may represent any
      * number of concrete objects).
-     *
-     * @param specialvars special variables, or null if none
      */
-    public ObjectLabel(AbstractNode n, Kind kind, Map<String, Value> specialentryvars, Map<String, Value> specialvars, Map<Integer, Value> specialregs) {
-        this(null, n, null, kind);
-        if (Options.get().isContextSensitiveHeapEnabled()) {
-            this.specialentryvars = specialentryvars;
-            this.specialvars = specialvars;
-            this.specialregs = specialregs;
-        }
+    public ObjectLabel(AbstractNode n, Kind kind, HeapContext heapContext) {
+        this(null, n, null, kind, heapContext, true);
     }
 
     /**
      * Constructs a new object label for a user defined function object.
-     *
-     * @see ObjectLabel#ObjectLabel(Function, Map, Map, Map)
      */
     public ObjectLabel(Function f) {
-        this(null, null, f, Kind.FUNCTION);
+        this(null, null, f, Kind.FUNCTION, null, true);
     }
 
     /**
@@ -154,16 +139,9 @@ public final class ObjectLabel implements Comparable<ObjectLabel> { // TODO: (#1
      * If {@link OptionValues#isRecencyDisabled()} is disabled, the object label
      * represents a single concrete object (otherwise, it may represent any
      * number of concrete objects).
-     *
-     * @param specialvars special variables, or null if none
      */
-    public ObjectLabel(Function f, Map<String, Value> specialentryvars, Map<String, Value> specialvars, Map<Integer, Value> specialregs) {
-        this(null, null, f, Kind.FUNCTION);
-        if (Options.get().isContextSensitiveHeapEnabled()) {
-            this.specialentryvars = specialentryvars;
-            this.specialvars = specialvars;
-            this.specialregs = specialregs;
-        }
+    public ObjectLabel(Function f, HeapContext heapContext) {
+        this(null, null, f, Kind.FUNCTION, heapContext, true);
     }
 
     /**
@@ -173,7 +151,7 @@ public final class ObjectLabel implements Comparable<ObjectLabel> { // TODO: (#1
      * number of concrete objects).
      */
     public ObjectLabel(HostObject hostobject, Kind kind) {
-        this(hostobject, null, null, kind);
+        this(hostobject, null, null, kind, null, true);
     }
 
     /**
@@ -236,24 +214,10 @@ public final class ObjectLabel implements Comparable<ObjectLabel> { // TODO: (#1
     }
 
     /**
-     * Returns the values for the special entry variables of this object label, or null if none.
+     * Returns the heap context.
      */
-    public Map<String, Value> getSpecialEntryVars() {
-        return specialentryvars;
-    }
-
-    /**
-     * Returns the values for the special variables of this object label, or null if none.
-     */
-    public Map<String, Value> getSpecialVars() {
-        return specialvars;
-    }
-
-    /**
-     * Returns the values for the special registers of this object label, or null if none.
-     */
-    public Map<Integer, Value> getSpecialRegisters() {
-        return specialregs;
+    public HeapContext getHeapContext() {
+        return heapContext;
     }
 
     /**
@@ -262,12 +226,7 @@ public final class ObjectLabel implements Comparable<ObjectLabel> { // TODO: (#1
     public ObjectLabel makeSummary() {
         if (!singleton && !Options.get().isRecencyDisabled())
             throw new AnalysisException("Attempt to obtain summary of non-singleton");
-        ObjectLabel obj = new ObjectLabel(hostobject, node, function, kind);
-        obj.specialentryvars = specialentryvars;
-        obj.specialvars = specialvars;
-        obj.specialregs = specialregs;
-        obj.singleton = false;
-        return obj;
+        return new ObjectLabel(hostobject, node, function, kind, heapContext, false);
     }
 
     /**
@@ -276,11 +235,7 @@ public final class ObjectLabel implements Comparable<ObjectLabel> { // TODO: (#1
     public ObjectLabel makeSingleton() {
         if (singleton)
             return this;
-        ObjectLabel obj = new ObjectLabel(hostobject, node, function, kind);
-        obj.specialentryvars = specialentryvars;
-        obj.specialvars = specialvars;
-        obj.specialregs = specialregs;
-        return obj;
+        return new ObjectLabel(hostobject, node, function, kind, heapContext, true);
     }
 
     /**
@@ -310,12 +265,8 @@ public final class ObjectLabel implements Comparable<ObjectLabel> { // TODO: (#1
                 descr = kind.toString();
             b.append(descr).append("#node").append(node.getIndex());
         }
-        if (specialentryvars != null)
-            b.append(specialentryvars);
-        if (specialvars != null)
-            b.append(specialvars);
-        if (specialregs != null)
-            b.append(specialregs);
+        if (heapContext != emptyHeapContext)
+            b.append(heapContext);
         return b.toString();
     }
 
@@ -329,19 +280,12 @@ public final class ObjectLabel implements Comparable<ObjectLabel> { // TODO: (#1
         if (!(obj instanceof ObjectLabel))
             return false;
         ObjectLabel x = (ObjectLabel) obj;
+        if (this.hashcode != x.hashcode) {
+            return false;
+        }
         if ((hostobject == null) != (x.hostobject == null))
             return false;
-        if ((specialentryvars == null) != (x.specialentryvars == null))
-            return false;
-        if (specialentryvars != null && !specialentryvars.equals(x.specialentryvars)) // using collection equality
-            return false;
-        if ((specialvars == null) != (x.specialvars == null))
-            return false;
-        if (specialvars != null && !specialvars.equals(x.specialvars)) // using collection equality
-            return false;
-        if ((specialregs == null) != (x.specialregs == null))
-            return false;
-        if (specialregs != null && !specialregs.equals(x.specialregs)) // using collection equality
+        if (!heapContext.equals(x.heapContext)) // using collection equality
             return false;
         return (hostobject == null || hostobject.equals(x.hostobject)) &&
                 function == x.function && node == x.node &&

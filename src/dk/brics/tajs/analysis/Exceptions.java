@@ -20,6 +20,7 @@ import dk.brics.tajs.flowgraph.AbstractNode;
 import dk.brics.tajs.flowgraph.BasicBlock;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.ObjectLabel.Kind;
+import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.util.AnalysisException;
@@ -103,8 +104,7 @@ public class Exceptions {
         if (v.isMaybePresent() || Options.get().isPropagateDeadFlow()) {
             BasicBlock handlerblock = source.getBlock().getExceptionHandler();
             state.writeRegister(AbstractNode.EXCEPTION_REG, v);
-            c.propagateToBasicBlock(state, handlerblock,
-                    Context.makeSuccessorContext(state, handlerblock));
+            c.propagateToBasicBlock(state, handlerblock, state.getContext());
         }
     }
 }

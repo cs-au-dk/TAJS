@@ -17,8 +17,8 @@
 package dk.brics.tajs.monitoring;
 
 import dk.brics.tajs.flowgraph.SourceLocation;
+import dk.brics.tajs.lattice.Context;
 import dk.brics.tajs.lattice.Value;
-import dk.brics.tajs.solver.IContext;
 import org.apache.log4j.Logger;
 
 import java.util.LinkedHashMap;
@@ -42,9 +42,9 @@ public class TypeCollector {
 
         private final SourceLocation source_location;
 
-        private final IContext context;
+        private final Context context;
 
-        public VariableSummary(String variable_name, SourceLocation source_location, IContext context) {
+        public VariableSummary(String variable_name, SourceLocation source_location, Context context) {
             this.variable_name = variable_name;
             this.source_location = source_location;
             this.context = context;
@@ -58,7 +58,7 @@ public class TypeCollector {
             return source_location;
         }
 
-        public IContext getContext() {
+        public Context getContext() {
             return context;
         }
 
@@ -94,7 +94,7 @@ public class TypeCollector {
      * @param source_location the location in the source code
      * @param value           the abstract value of the variable
      */
-    public void record(String variable_name, SourceLocation source_location, Value value, IContext context) { // TODO: do we need to consider unknown or polymorphic values here?
+    public void record(String variable_name, SourceLocation source_location, Value value, Context context) { // TODO: do we need to consider unknown or polymorphic values here?
         VariableSummary new_location = new VariableSummary(variable_name == null ? "null" : variable_name, source_location, context);
         Value existing_value = type_info_map.get(new_location);
         if (existing_value != null) // TODO: return list of values instead of joining them?

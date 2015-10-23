@@ -1,6 +1,5 @@
 test/v8tests/array-splice.js:83:14: [definite] Too many parameters to function Array.prototype.unshift
 test/v8tests/array-splice.js:117:14: [definite] Too many parameters to function Array.prototype.unshift
-test/v8tests/array-splice.js:172:7: [definite] The assignment to join has no effect
 test/v8tests/array-splice.js:275:3: [definite] Dead assignment, property is never read
 test/v8tests/array-splice.js:291:3: [definite] Dead assignment, property is never read
 test/v8tests/array-splice.js:215:9: [definite] The variable nothing is never used

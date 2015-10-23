@@ -3,7 +3,7 @@ test/micro/test113.js:8:10: [definite] Reading 'this' yields the global object
 test/micro/test113.js:14:5: [definite] The variable zz is never used
 test/micro/test113.js:2:10: [maybe] Converting boolean to string
 test/micro/test113.js:2:10: [maybe] Converting boolean to string
-test/micro/test113.js:16:1: [info] Abstract value: Infinity
+test/micro/test113.js:16:1: [info] Abstract value: Inf
 test/micro/test113.js:17:1: [info] Abstract value: "false true"
 test/micro/test113.js:18:1: [info] Abstract value: 2.718281828459045
 test/micro/test113.js:19:1: [info] Abstract value: NaN

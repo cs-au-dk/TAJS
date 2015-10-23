@@ -43,10 +43,6 @@ public class StateExtras {
 
     private boolean writable_may_sets;
 
-    private Map<String, Set<ObjectLabel>> must_sets;
-
-    private boolean writable_must_sets;
-
     private Map<String, Map<String, Set<ObjectLabel>>> may_maps;
 
     private Map<String, Set<ObjectLabel>> may_maps_default;
@@ -60,14 +56,11 @@ public class StateExtras {
     protected StateExtras(StateExtras x) {
         if (Options.get().isCopyOnWriteDisabled()) {
             may_sets = newMapSet(x.may_sets);
-            must_sets = newMapSet(x.must_sets);
             may_maps = newMapMapSet(x.may_maps);
             may_maps_default = newMapSet(x.may_maps_default);
         } else {
             may_sets = x.may_sets;
             writable_may_sets = x.writable_may_sets = false;
-            must_sets = x.must_sets;
-            writable_must_sets = x.writable_must_sets = false;
             may_maps = x.may_maps;
             may_maps_default = x.may_maps_default;
             writable_may_maps = x.writable_may_maps = false;
@@ -83,17 +76,6 @@ public class StateExtras {
         }
         may_sets = newMapSet(may_sets);
         writable_may_sets = true;
-    }
-
-    /**
-     * Makes the must-sets writable.
-     */
-    private void makeMustSetsWritable() {
-        if (writable_must_sets) {
-            return;
-        }
-        must_sets = newMapSet(must_sets);
-        writable_must_sets = true;
     }
 
     /**
@@ -115,16 +97,12 @@ public class StateExtras {
         if (Options.get().isCopyOnWriteDisabled()) {
             may_sets = newMap();
             writable_may_sets = true;
-            must_sets = newMap();
-            writable_must_sets = true;
             may_maps = newMap();
             may_maps_default = newMap();
             writable_may_maps = true;
         } else {
             may_sets = Collections.emptyMap();
             writable_may_sets = false;
-            must_sets = Collections.emptyMap();
-            writable_must_sets = false;
             may_maps = Collections.emptyMap();
             may_maps_default = Collections.emptyMap();
             writable_may_maps = false;
@@ -136,9 +114,6 @@ public class StateExtras {
      */
     public boolean isNone() {
         for (Set<ObjectLabel> s : may_sets.values())
-            if (!s.isEmpty())
-                return false;
-        for (Set<ObjectLabel> s : must_sets.values())
             if (!s.isEmpty())
                 return false;
         for (Set<ObjectLabel> s : may_maps_default.values())
@@ -153,33 +128,25 @@ public class StateExtras {
 
     protected boolean propagate(StateExtras s) {
         makeMaySetsWritable();
-        makeMustSetsWritable();
         makeMayMapsWritable();
         boolean changed = false;
         // MaySets
         for (Entry<String, Set<ObjectLabel>> e : s.may_sets.entrySet()) {
             Set<ObjectLabel> thismayset = may_sets.get(e.getKey());
-            thismayset = (thismayset == null) ? dk.brics.tajs.util.Collections.<ObjectLabel>newSet() : thismayset;
+            thismayset = (thismayset == null) ? newSet() : thismayset;
             may_sets.put(e.getKey(), thismayset);
             changed |= thismayset.addAll(e.getValue());
-        }
-        // MustSets
-        for (Entry<String, Set<ObjectLabel>> e : s.must_sets.entrySet()) {
-            Set<ObjectLabel> thismustset = must_sets.get(e.getKey());
-            thismustset = (thismustset == null) ? dk.brics.tajs.util.Collections.<ObjectLabel>newSet() : thismustset;
-            must_sets.put(e.getKey(), thismustset);
-            changed |= thismustset.retainAll(e.getValue());
         }
         // MayMaps
         for (Entry<String, Map<String, Set<ObjectLabel>>> e : s.may_maps.entrySet()) {
             Map<String, Set<ObjectLabel>> thismaymap = may_maps.get(e.getKey());
             Map<String, Set<ObjectLabel>> thatMayMaps = e.getValue();
-            thismaymap = (thismaymap == null) ? dk.brics.tajs.util.Collections.<String, Set<ObjectLabel>>newMap() : thismaymap;
+            thismaymap = (thismaymap == null) ? newMap() : thismaymap;
             may_maps.put(e.getKey(), thismaymap);
             for (Entry<String, Set<ObjectLabel>> ee : thatMayMaps.entrySet()) {
                 Set<ObjectLabel> thismayset = thismaymap.get(ee.getKey());
                 Set<ObjectLabel> thatMaySet = ee.getValue();
-                thismayset = (thismayset == null) ? dk.brics.tajs.util.Collections.<ObjectLabel>newSet() : thismayset;
+                thismayset = (thismayset == null) ? newSet() : thismayset;
                 thismaymap.put(ee.getKey(), thismayset);
                 changed |= thismayset.addAll(thatMaySet);
             }
@@ -187,7 +154,7 @@ public class StateExtras {
         // MayMapsDefault
         for (Entry<String, Set<ObjectLabel>> e : s.may_maps_default.entrySet()) {
             Set<ObjectLabel> thisDefault = may_maps_default.get(e.getKey());
-            thisDefault = (thisDefault == null) ? dk.brics.tajs.util.Collections.<ObjectLabel>newSet() : thisDefault;
+            thisDefault = (thisDefault == null) ? newSet() : thisDefault;
             may_maps_default.put(e.getKey(), thisDefault);
             changed |= thisDefault.addAll(e.getValue());
         }
@@ -207,10 +174,6 @@ public class StateExtras {
             log.debug("equals(...)=false, maysets differ");
             return false;
         }
-        if (!must_sets.equals(x.must_sets)) {
-            log.debug("equals(...)=false, mustsets differ");
-            return false;
-        }
         if (!may_maps.equals(x.may_maps)) {
             log.debug("equals(...)=false, maymaps differ");
             return false;
@@ -228,7 +191,6 @@ public class StateExtras {
     @Override
     public int hashCode() {
         return may_sets.hashCode() * 61
-                + must_sets.hashCode() * 67
                 + may_maps.hashCode() * 71
                 + may_maps_default.hashCode() * 79;
     }
@@ -241,9 +203,6 @@ public class StateExtras {
         StringBuilder b = new StringBuilder();
         if (!may_sets.isEmpty()) {
             b.append("\n  MaySets: ").append(may_sets);
-        }
-        if (!must_sets.isEmpty()) {
-            b.append("\n  MustSets: ").append(must_sets);
         }
         if (!may_maps.isEmpty()) {
             b.append("\n  MayMaps: ").append(may_maps);
@@ -260,9 +219,6 @@ public class StateExtras {
     public void getAllObjectLabels(Set<ObjectLabel> live) {
         for (Set<ObjectLabel> mayset : may_sets.values()) {
             live.addAll(mayset);
-        }
-        for (Set<ObjectLabel> mustset : must_sets.values()) {
-            live.addAll(mustset);
         }
         for (Map<String, Set<ObjectLabel>> m : may_maps.values()) {
             for (Set<ObjectLabel> s : m.values()) {
@@ -288,26 +244,7 @@ public class StateExtras {
     public Set<ObjectLabel> getFromMaySet(String name) {
         Set<ObjectLabel> labelset = may_sets.get(name);
         if (labelset == null) {
-            return Collections.unmodifiableSet(dk.brics.tajs.util.Collections.<ObjectLabel>newSet());
-        }
-        return Collections.unmodifiableSet(labelset);
-    }
-
-    /**
-     * Adds a collection of object labels to the named must set.
-     */
-    public void addToMustSet(String name, Collection<ObjectLabel> labels) {
-        makeMustSetsWritable();
-        addAllToMapSet(must_sets, name, labels);
-    }
-
-    /**
-     * Returns the set of object labels identified by the given name.
-     */
-    public Set<ObjectLabel> getFromMustSet(String name) {
-        Set<ObjectLabel> labelset = must_sets.get(name);
-        if (labelset == null) {
-            return Collections.unmodifiableSet(dk.brics.tajs.util.Collections.<ObjectLabel>newSet());
+            return Collections.unmodifiableSet(newSet());
         }
         return Collections.unmodifiableSet(labelset);
     }

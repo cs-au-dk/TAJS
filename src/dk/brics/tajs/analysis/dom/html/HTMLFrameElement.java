@@ -17,11 +17,11 @@
 package dk.brics.tajs.analysis.dom.html;
 
 import dk.brics.tajs.analysis.InitialStateBuilder;
-import dk.brics.tajs.analysis.State;
 import dk.brics.tajs.analysis.dom.DOMObjects;
 import dk.brics.tajs.analysis.dom.DOMWindow;
 import dk.brics.tajs.analysis.dom.core.DOMDocument;
 import dk.brics.tajs.lattice.ObjectLabel;
+import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.Value;
 
 import static dk.brics.tajs.analysis.dom.DOMFunctions.createDOMProperty;

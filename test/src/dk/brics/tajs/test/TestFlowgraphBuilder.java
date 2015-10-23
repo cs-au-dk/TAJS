@@ -2383,6 +2383,25 @@ public class TestFlowgraphBuilder {
     }
 
     @Test
+    public void flowgraphbuilder_jump_return_0016() throws Exception {
+        Misc.init();
+        Misc.captureSystemOutput();
+        String[] args = {"test/flowgraphbuilder/flowgraph_builder_jump_return_0016.js"};
+        Misc.run(args);
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void flowgraphbuilder_jump_return_0017() throws Exception {
+        Misc.init();
+        Options.get().enableFlowgraph();
+        Misc.captureSystemOutput();
+        String[] args = {"test/flowgraphbuilder/flowgraph_builder_jump_return_0017.js"};
+        Misc.run(args);
+        Misc.checkSystemOutput();
+    }
+
+    @Test
     public void flowgraphbuilder_forin() throws Exception {
         Misc.init();
         Misc.captureSystemOutput();
@@ -2446,7 +2465,6 @@ public class TestFlowgraphBuilder {
         Misc.checkSystemOutput();
     }
 
-    @Ignore // see GitHub #166
     @Test
     public void flowgraphbuilder_switchWithCall() throws Exception {
         Misc.init();
@@ -2467,6 +2485,183 @@ public class TestFlowgraphBuilder {
         Misc.checkSystemOutput();
     }
 
+
+    @Test
+    public void noopEscapes () {
+        Misc.init();
+        Misc.runSource("test/flowgraphbuilder/noopEscapes.js");
+    }
+
+    @Test
+    public void emptyRegexp () {
+        Misc.init();
+        Misc.runSource(//
+                "TAJS_assert(new RegExp('').source === '(?:)');",
+                "TAJS_assert(/(?:)/.source === '(?:)');"
+        );
+    }
+
+    @Ignore // See GitHub #194
+    @Test
+    public void forwardSlashRegExpConstructor () {
+        Misc.init();
+        Misc.run(new String[]{"test/flowgraphbuilder/forwardSlashRegExpConstructor.js"});
+    }
+
+    @Test
+    public void forwardSlashRegExpLiteral () {
+        Misc.init();
+        Misc.run(new String[]{"test/flowgraphbuilder/forwardSlashRegExpLiteral.js"});
+    }
+
+    @Test(expected = AnalysisException.class)
+    public void forwardSlashRegexp_syntaxError () {
+        Misc.init();
+        Misc.runSource(//
+                "/\\\\//"
+        );
+    }
+
+    @Test
+    public void functionCallPropertyCompoundAssignment() {
+        Misc.init();
+        Options.get().enableFlowgraph();
+        Misc.runSource("f().x += 42;");
+    }
+
+
+    @Test
+    public void emptySwitchCase1 () {
+        Misc.init();
+        Misc.runSource("",
+                "switch (v) {",
+                "   case o.p:",
+                "}",
+                "");
+    }
+
+    @Test
+    public void emptySwitchCase2 () {
+        Misc.init();
+        Misc.runSource("",
+                "switch (o.p) {",
+                "   case o.p:",
+                "}",
+                "");
+    }
+
+    @Test
+    public void exceptionInCatch() {
+        // should not crash
+        Misc.init();
+        Misc.runSource("",
+                "try {",
+                "   NON_EXISTENT_VAR_1;",
+                "} catch (e) {",
+                "   NON_EXISTENT_VAR_2;",
+                "} finally {",
+                "   toString();",
+                "}",
+                "");
+    }
+
+
+    @Test
+    public void forLoopContinue_issue200 () {
+        Misc.init();
+        Options.get().enableUnrollOneAndAHalf();
+        Misc.runSource(//
+                "var first = true;",
+                "for (var i = 0; i === 0; i++) {",
+                "   TAJS_assert(first);",
+                "   TAJS_dumpValue(first);",
+                "   first = false;",
+                "   continue;",
+                "}",
+        "");
+    }
+
+    @Test
+    public void flowgraphbuilder_labelledLabelledStatement () {
+        Misc.init();
+        Misc.captureSystemOutput();
+        Misc.runSourceWithNamedFile("flowgraphbuilder_labelledLabelledStatement",
+                "label1: label2: 42;",
+                "");
+        Misc.checkSystemOutput();
+    }
+
+    @Test(expected = AnalysisException.class)
+    public void labelledLabelledLoop () {
+        Misc.init();
+        Misc.runSource(
+                "label1: label2: while(X){",
+                "   if(Y){continue label1;} ",
+                "   if(Z){continue label2;}",
+                "};",
+                "");
+    }
+
+    @Test
+    public void flowgraphbuilder_labelledContinue () {
+        Misc.init();
+        Misc.captureSystemOutput();
+        Misc.runSourceWithNamedFile("flowgraphbuilder_labelledContinue",
+                "'PRE'",
+                "label: for ('INIT'; 'COND'; 'INC') {",
+                "   'BODY'",
+                "   if('C-COND'){",
+                "       continue label;",
+                "   }",
+                "}",
+                "'POST'",
+                "");
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void labelledContinueSemantics () {
+        Misc.init();
+        Misc.runSourceWithNamedFile("labelledContinueSemantics",
+                "function labelledContinue(){",
+                "   var x = 0;",
+                "   var first = true;",
+                "   label: for (x++; first;) {",
+                "       first = false;",
+                "       continue label;",
+                "   }",
+                "   return x;",
+                "}",
+                "function unlabelledContinue(){",
+                "   var y = 0;",
+                "   var first = true;",
+                "   label: for (y++; first;) {",
+                "       first = false;",
+                "       continue;",
+                "   }",
+                "   return y;",
+                "}",
+                "TAJS_assert(labelledContinue() === 1);",
+                "TAJS_assert(unlabelledContinue() === 1);",
+                "");
+    }
+
+    @Test
+    public void doWhileContinue_issue195 () {
+        Misc.init();
+        Misc.captureSystemOutput();
+        Misc.runSourceWithNamedFile("doWhileContinue_issue195",
+                "'PRE';",
+                "do { ",
+                "   'BODY1';",
+                "   if('BODY-COND1') continue;",
+                "   if('BODY-COND2') break;",
+                "   'BODY2';",
+                "} while ('COND')",
+                "'POST'; "
+                );
+        Misc.checkSystemOutput();
+    }
 }
 
 

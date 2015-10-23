@@ -22,11 +22,12 @@ import dk.brics.tajs.analysis.FunctionCalls.CallInfo;
 import dk.brics.tajs.analysis.InitialStateBuilder;
 import dk.brics.tajs.analysis.NativeFunctions;
 import dk.brics.tajs.analysis.Solver;
-import dk.brics.tajs.analysis.State;
 import dk.brics.tajs.analysis.nativeobjects.concrete.ConcreteString;
+import dk.brics.tajs.analysis.nativeobjects.concrete.Gamma;
 import dk.brics.tajs.analysis.nativeobjects.concrete.TAJSConcreteSemantics;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.ObjectLabel.Kind;
+import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.UnknownValueResolver;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.solver.Message.Severity;
@@ -107,6 +108,19 @@ public class JSNumber {
                 if (definitely_rangeerror)
                     return Value.makeNone();
 
+                if (nativeobject == ECMAScriptObjects.NUMBER_TOFIXED && Gamma.isConcreteNumber(base, c) && Gamma.isConcreteNumber(f, c)) {
+                    boolean fIsZero = Double.valueOf(Gamma.toConcreteNumber(f, c).getNumber()).equals(0.0);
+                    double concreteBaseNumber = Gamma.toConcreteNumber(base, c).getNumber();
+                    boolean baseIsHalfy = Double.valueOf(Math.abs(concreteBaseNumber)).equals(0.5);
+                    boolean triggersConcreteSemanticsBug = baseIsHalfy && fIsZero;
+                    // The Nashorn engine for Concrete semantics has a bug, where it returns 0 on:
+                    // > 0.5.toFixed()
+                    // > -0.5.toFixed()
+                    // it should return 1 and -1 respectively...
+                    if (triggersConcreteSemanticsBug) {
+                        return Value.makeStr(concreteBaseNumber > 0 ? "1" : "-1");
+                    }
+                }
                 return TAJSConcreteSemantics.convertTAJSCall(base, nativeobject.toString(), 1, ConcreteString.class, state, call, c, Value.makeAnyStr());
             }
 

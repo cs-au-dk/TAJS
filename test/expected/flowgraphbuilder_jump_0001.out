@@ -1,16 +1,16 @@
 fg2: function()
-  block 0:
-    node 0: read-variable['TAJS_assert',v3,v2] (test/flowgraphbuilder/flowgraph_builder_jump_0001.js:3:5)
-    node 1: constant[false,v4] (test/flowgraphbuilder/flowgraph_builder_jump_0001.js:3:17)
+  block 0: [entry]
+    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder_jump_0001.js:1:1)
     ->[block 1]
   block 1:
-    node 2: call[v2,v3,v4,-]* (test/flowgraphbuilder/flowgraph_builder_jump_0001.js:3:5)
+    node 1: nop(break l1)* (test/flowgraphbuilder/flowgraph_builder_jump_0001.js:2:5)
     ->[block 4]
-  block 2: [entry]
-    node 3: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder_jump_0001.js:1:1)
+  block 2:
+    node 2: read-variable['TAJS_assert',v3,v2] (test/flowgraphbuilder/flowgraph_builder_jump_0001.js:3:5)
+    node 3: constant[false,v4] (test/flowgraphbuilder/flowgraph_builder_jump_0001.js:3:17)
     ->[block 3]
   block 3:
-    node 4: nop(break l1)* (test/flowgraphbuilder/flowgraph_builder_jump_0001.js:2:5)
+    node 4: call[v2,v3,v4,-]* (test/flowgraphbuilder/flowgraph_builder_jump_0001.js:3:5)
     ->[block 4]
   block 4:
     node 5: read-variable['TAJS_dumpValue',v6,v5] (test/flowgraphbuilder/flowgraph_builder_jump_0001.js:7:1)

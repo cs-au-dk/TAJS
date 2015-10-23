@@ -8,10 +8,21 @@ public class ConcreteString implements PrimitiveConcreteValue {
         this.string = string;
     }
 
+    private String escapeDoubleQuotesAndNewLines(String string) {
+        return string.replace("\"", "\\\"").replaceAll("(\\r|\\n|\\r\\n|\u2028|\u2029)+", "\\\\n");
+    }
+
+    private String escapeBackslashes(String string) {
+        return string.replace("\\", "\\\\");
+    }
+
     @Override
     public String toSourceCode() {
-        // escape quotes and newlines in concrete string, wrap in quotes
-        return String.format("\"%s\"", string.replace("\"", "\\\"").replaceAll("(\\r|\\n|\\r\\n)+", "\\\\n"));
+        return String.format("\"%s\"", escapeDoubleQuotesAndNewLines(escapeBackslashes(string)));
+    }
+
+    public String toRegExpSourceCodeComponent() {
+        return escapeDoubleQuotesAndNewLines(string);
     }
 
     @Override

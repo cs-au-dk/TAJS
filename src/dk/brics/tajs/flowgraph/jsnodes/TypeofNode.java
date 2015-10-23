@@ -46,7 +46,6 @@ public class TypeofNode extends LoadNode {
         super(result_reg, location);
         this.arg_reg = arg_reg;
         this.operandSourceLocation = operandSourceLocation;
-
     }
 
     /**
@@ -110,8 +109,7 @@ public class TypeofNode extends LoadNode {
             throw new AnalysisException("No variable name and no argument register: " + toString());
     }
 
-    public SourceLocation getOperandSourceLocation () {
+    public SourceLocation getOperandSourceLocation() {
         return operandSourceLocation;
     }
-
 }

@@ -1,18 +1,11 @@
 test/chromeexperiments/jstouch_example.html:11:13: [definite] Dead assignment, property texture is never read
-test/chromeexperiments/jstouch_example.html:12:13: [definite] Dead assignment, property g is never read
-test/chromeexperiments/jstouch_example.html:15:9: [definite] Dead assignment, property clear is never read
 test/chromeexperiments/jstouch_example.html:27:13: [definite] Dead assignment, property mTickCount is never read
 test/chromeexperiments/jstouch_example.html:28:13: [definite] Dead assignment, property mLoadCount is never read
-test/chromeexperiments/jstouch_example.html:31:13: [definite] Dead assignment, property g is never read
-test/chromeexperiments/jstouch_example.html:35:13: [definite] Dead assignment, property w is never read
-test/chromeexperiments/jstouch_example.html:36:13: [definite] Dead assignment, property h is never read
 test/chromeexperiments/jstouch_example.html:37:13: [definite] Dead assignment, property ow is never read
 test/chromeexperiments/jstouch_example.html:38:13: [definite] Dead assignment, property oh is never read
-test/chromeexperiments/jstouch_example.html:49:13: [definite] Dead assignment, property start is never read
-test/chromeexperiments/jstouch_example.html:53:13: [definite] Dead assignment, property onInterval is never read
-test/chromeexperiments/jstouch_example.html:15:21: [definite] Unreachable function
-test/chromeexperiments/jstouch_example.html:26:17: [definite] The variable _this is never used
-test/chromeexperiments/jstouch_example.html:41:26: [definite] Unreachable function
-test/chromeexperiments/jstouch_example.html:49:20: [definite] Unreachable function
-test/chromeexperiments/jstouch_example.html:53:25: [definite] Unreachable function
-test/chromeexperiments/jstouch_example.html:58:28: [definite] Unreachable function
+test/chromeexperiments/jstouch_example.html:17:13: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/jstouch_example.html:9:36: [maybe] Uncaught exception, constructed at [test/chromeexperiments/jstouch_example.html:17:13]
+test/chromeexperiments/jstouch_example.html:50:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch_example.html:55:35: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch_example.html:55:53: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch_example.html:57:29: [info] 'this' refers to multiple abstract objects, which may cause loss of precision

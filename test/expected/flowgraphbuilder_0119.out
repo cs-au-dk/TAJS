@@ -31,36 +31,36 @@ fg2: function()
     node 14: read-variable['ee',v10,v7] (test/flowgraphbuilder/flowgraph_builder0119.js:7:13)
     node 15: +[v9,v10,v8] (test/flowgraphbuilder/flowgraph_builder0119.js:7:8)
     node 16: throw[v8]* (test/flowgraphbuilder/flowgraph_builder0119.js:7:2)
-    ->[block 8] ~>[block 9]
+    ->[block 9] ~>[block 8]
   block 8:
     node 17: end-with* (test/flowgraphbuilder/flowgraph_builder0119.js:6:7)
-    ->[block 10] ~>[block 9]
+    ->[block 11]
   block 9:
     node 18: end-with* (test/flowgraphbuilder/flowgraph_builder0119.js:6:7)
-    ->[block 11]
+    ->[block 10] ~>[block 11]
   block 10:
     node 19: new[v11] (test/flowgraphbuilder/flowgraph_builder0119.js:9:11)
     node 20: constant["yes",v12] (test/flowgraphbuilder/flowgraph_builder0119.js:9:16)
     node 21: write-property[v11,'ex',v12] (test/flowgraphbuilder/flowgraph_builder0119.js:9:12)
     node 22: throw[v11]* (test/flowgraphbuilder/flowgraph_builder0119.js:9:5)
-    ->[block 14] ~>[block 11]
+    ->[block 13] ~>[block 11]
   block 11:
     node 23: catch[e,v13] (test/flowgraphbuilder/flowgraph_builder0119.js:10:3)
     node 24: begin-with[v13]* (test/flowgraphbuilder/flowgraph_builder0119.js:10:3)
     ->[block 12]
   block 12:
     node 25: end-with* (test/flowgraphbuilder/flowgraph_builder0119.js:10:3)
-    ->[block 14] ~>[block 13]
+    ->[block 13]
   block 13:
-    node 26: end-with* (test/flowgraphbuilder/flowgraph_builder0119.js:10:3)
-    ->[block 17]
+    node 26: read-variable['TAJS_dumpValue',v16,v15] (test/flowgraphbuilder/flowgraph_builder0119.js:13:1)
+    node 27: read-variable['glob',v17,-] (test/flowgraphbuilder/flowgraph_builder0119.js:13:16)
+    ->[block 14]
   block 14:
-    node 27: read-variable['TAJS_dumpValue',v16,v15] (test/flowgraphbuilder/flowgraph_builder0119.js:13:1)
-    node 28: read-variable['glob',v17,-] (test/flowgraphbuilder/flowgraph_builder0119.js:13:16)
-    ->[block 15]
-  block 15:
-    node 29: call[v15,v16,v17,-]* (test/flowgraphbuilder/flowgraph_builder0119.js:13:1)
+    node 28: call[v15,v16,v17,-]* (test/flowgraphbuilder/flowgraph_builder0119.js:13:1)
     ->[block 16]
+  block 15:
+    node 29: end-with* (test/flowgraphbuilder/flowgraph_builder0119.js:10:3)
+    ->[block 17]
   block 16: [exit-ordinary]
     node 30: return[v1] (test/flowgraphbuilder/flowgraph_builder0119.js:1:1)
     ->[]

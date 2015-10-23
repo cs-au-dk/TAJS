@@ -1,5 +1,4 @@
 test/chromeexperiments/aquarium.html:161:1: [definite] The assignment to onLoad has no effect
-test/chromeexperiments/aquarium.html:148:2: [definite] Unreachable function mmouse
 test/chromeexperiments/aquarium.html:120:12: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/aquarium.html:120:23: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/aquarium.html:121:12: [maybe] TypeError, accessing property of null/undefined
@@ -14,6 +13,7 @@ test/chromeexperiments/aquarium.html:136:4: [maybe] TypeError, accessing propert
 test/chromeexperiments/aquarium.html:137:4: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/aquarium.html:140:3: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/aquarium.html:141:3: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/aquarium.html:26:32: [maybe] Uncaught exception, constructed at [test/chromeexperiments/aquarium.html:120:12, test/chromeexperiments/aquarium.html:120:23, test/chromeexperiments/aquarium.html:121:12, test/chromeexperiments/aquarium.html:121:23, test/chromeexperiments/aquarium.html:124:6, test/chromeexperiments/aquarium.html:125:6, test/chromeexperiments/aquarium.html:127:6, test/chromeexperiments/aquarium.html:128:6, test/chromeexperiments/aquarium.html:132:17, test/chromeexperiments/aquarium.html:133:17, test/chromeexperiments/aquarium.html:136:4, test/chromeexperiments/aquarium.html:137:4, test/chromeexperiments/aquarium.html:140:3, test/chromeexperiments/aquarium.html:141:3]
 test/chromeexperiments/aquarium.html:120:12: [maybe] Reading absent property (computed name)
 test/chromeexperiments/aquarium.html:120:23: [maybe] Reading absent property (computed name)
 test/chromeexperiments/aquarium.html:121:12: [maybe] Reading absent property (computed name)

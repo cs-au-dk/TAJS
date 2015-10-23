@@ -1,103 +1,283 @@
-test/10k/filterrific.html:398:11: [definite] Dead assignment, property Invert is never read
-test/10k/filterrific.html:403:7: [definite] Dead assignment, property Desaturate is never read
-test/10k/filterrific.html:409:7: [definite] Dead assignment, property Sepia is never read
-test/10k/filterrific.html:417:7: [definite] Dead assignment, property Posterize is never read
-test/10k/filterrific.html:421:8: [definite] Dead assignment, property Solarize is never read
-test/10k/filterrific.html:423:7: [definite] Dead assignment, property Mosaic is never read
-test/10k/filterrific.html:434:8: [definite] Dead assignment, property FlipV is never read
-test/10k/filterrific.html:436:7: [definite] Dead assignment, property FlipH is never read
-test/10k/filterrific.html:438:7: [definite] Dead assignment, property Fisheye is never read
-test/10k/filterrific.html:451:8: [definite] Dead assignment, property Polar Coords is never read
-test/10k/filterrific.html:460:7: [definite] Dead assignment, property Blur is never read
-test/10k/filterrific.html:464:8: [definite] Dead assignment, property Unsharp Mask is never read
-test/10k/filterrific.html:470:8: [definite] Dead assignment, property Edges is never read
-test/10k/filterrific.html:473:7: [definite] Dead assignment, property Glow is never read
-test/10k/filterrific.html:477:8: [definite] Dead assignment, property HSL is never read
-test/10k/filterrific.html:548:8: [definite] Dead assignment, property B/C is never read
-test/10k/filterrific.html:555:8: [definite] Dead assignment, property Emboss is never read
-test/10k/filterrific.html:561:7: [definite] Dead assignment, property Reset is never read
-test/10k/filterrific.html:244:17: [definite] The variable a is never used
-test/10k/filterrific.html:244:19: [definite] The variable d is never used
-test/10k/filterrific.html:244:25: [definite] The variable e is never used
-test/10k/filterrific.html:244:27: [definite] The variable f is never used
-test/10k/filterrific.html:244:29: [definite] The variable g is never used
-test/10k/filterrific.html:244:31: [definite] The variable j is never used
-test/10k/filterrific.html:244:33: [definite] The variable aa is never used
-test/10k/filterrific.html:244:36: [definite] The variable o is never used
-test/10k/filterrific.html:244:38: [definite] The variable r is never used
-test/10k/filterrific.html:244:40: [definite] The variable w is never used
-test/10k/filterrific.html:244:42: [definite] The variable x is never used
-test/10k/filterrific.html:244:52: [definite] The variable B is never used
-test/10k/filterrific.html:244:62: [definite] The variable C is never used
-test/10k/filterrific.html:244:72: [definite] The variable D is never used
-test/10k/filterrific.html:244:88: [definite] The variable E is never used
-test/10k/filterrific.html:244:90: [definite] The variable F is never used
-test/10k/filterrific.html:244:92: [definite] The variable G is never used
-test/10k/filterrific.html:244:103: [definite] The variable ba is never used
+test/10k/filterrific.html:616:24: [definite] Too many parameters to function Object.prototype.toLocaleString
+test/10k/filterrific.html:616:24: [definite] Too many parameters to function Object.prototype.toString
+test/10k/filterrific.html:616:24: [definite] Too many parameters to function Object.prototype.valueOf
 test/10k/filterrific.html:244:117: [definite] The variable ca is never used
-test/10k/filterrific.html:244:131: [definite] The variable da is never used
-test/10k/filterrific.html:244:143: [definite] The variable K is never used
-test/10k/filterrific.html:244:153: [definite] The variable L is never used
-test/10k/filterrific.html:244:163: [definite] The variable M is never used
-test/10k/filterrific.html:245:5: [definite] Unreachable function N
-test/10k/filterrific.html:248:5: [definite] Unreachable function O
-test/10k/filterrific.html:251:9: [definite] The variable P is never used
-test/10k/filterrific.html:251:11: [definite] The variable fa is never used
-test/10k/filterrific.html:251:14: [definite] The variable R is never used
-test/10k/filterrific.html:251:16: [definite] The variable ga is never used
-test/10k/filterrific.html:251:19: [definite] The variable ha is never used
-test/10k/filterrific.html:251:38: [definite] The variable ia is never used
-test/10k/filterrific.html:251:41: [definite] The variable S is never used
-test/10k/filterrific.html:252:5: [definite] Unreachable function T
-test/10k/filterrific.html:255:9: [definite] The variable ja is never used
-test/10k/filterrific.html:256:5: [definite] Unreachable function U
-test/10k/filterrific.html:259:5: [definite] Unreachable function ka
-test/10k/filterrific.html:262:5: [definite] Unreachable function sa
-test/10k/filterrific.html:265:5: [definite] Unreachable function gm
-test/10k/filterrific.html:269:5: [definite] Unreachable function la
-test/10k/filterrific.html:272:5: [definite] Unreachable function V
-test/10k/filterrific.html:275:17: [definite] Unreachable function
 test/10k/filterrific.html:276:27: [definite] Unreachable function
-test/10k/filterrific.html:279:9: [definite] Unreachable function b
-test/10k/filterrific.html:318:45: [definite] Unreachable function
-test/10k/filterrific.html:323:25: [definite] Unreachable function
-test/10k/filterrific.html:329:23: [definite] Unreachable function
-test/10k/filterrific.html:333:41: [definite] Unreachable function
-test/10k/filterrific.html:362:21: [definite] Unreachable function
-test/10k/filterrific.html:363:33: [definite] Unreachable function
-test/10k/filterrific.html:364:20: [definite] Unreachable function
-test/10k/filterrific.html:366:24: [definite] Unreachable function
-test/10k/filterrific.html:378:25: [definite] Unreachable function
-test/10k/filterrific.html:381:24: [definite] Unreachable function
-test/10k/filterrific.html:384:63: [definite] Unreachable function
-test/10k/filterrific.html:388:21: [definite] Unreachable function
-test/10k/filterrific.html:395:5: [definite] Unreachable function $
-test/10k/filterrific.html:398:18: [definite] Unreachable function
-test/10k/filterrific.html:403:18: [definite] Unreachable function
-test/10k/filterrific.html:409:13: [definite] Unreachable function
-test/10k/filterrific.html:417:18: [definite] Unreachable function
-test/10k/filterrific.html:421:17: [definite] Unreachable function
-test/10k/filterrific.html:423:15: [definite] Unreachable function
-test/10k/filterrific.html:434:14: [definite] Unreachable function
-test/10k/filterrific.html:436:13: [definite] Unreachable function
-test/10k/filterrific.html:438:16: [definite] Unreachable function
-test/10k/filterrific.html:451:23: [definite] Unreachable function
-test/10k/filterrific.html:460:13: [definite] Unreachable function
-test/10k/filterrific.html:464:24: [definite] Unreachable function
-test/10k/filterrific.html:470:14: [definite] Unreachable function
-test/10k/filterrific.html:473:13: [definite] Unreachable function
-test/10k/filterrific.html:477:13: [definite] Unreachable function
-test/10k/filterrific.html:548:15: [definite] Unreachable function
-test/10k/filterrific.html:555:15: [definite] Unreachable function
-test/10k/filterrific.html:561:13: [definite] Unreachable function
-test/10k/filterrific.html:564:5: [definite] Unreachable function pa
-test/10k/filterrific.html:574:5: [definite] Unreachable function Y
-test/10k/filterrific.html:577:5: [definite] Unreachable function X
-test/10k/filterrific.html:583:5: [definite] Unreachable function oa
-test/10k/filterrific.html:595:5: [definite] Unreachable function na
-test/10k/filterrific.html:605:5: [definite] Unreachable function ma
-test/10k/filterrific.html:619:5: [definite] Unreachable function qa
-test/10k/filterrific.html:620:9: [definite] Unreachable function h
-test/10k/filterrific.html:624:29: [definite] Unreachable function
-test/10k/filterrific.html:643:25: [definite] Unreachable function
-test/10k/filterrific.html:652:26: [definite] Unreachable function
+test/10k/filterrific.html:624:29: [definite] The variable ra is never used
+test/10k/filterrific.html:636:21: [definite] The variable i is never used
+test/10k/filterrific.html:253:16: [maybe] TypeError, accessing property of null/undefined
+test/10k/filterrific.html:253:16: [maybe] TypeError, call to non-function
+test/10k/filterrific.html:257:16: [maybe] TypeError, accessing property of null/undefined
+test/10k/filterrific.html:257:16: [maybe] TypeError, call to non-function
+test/10k/filterrific.html:260:9: [maybe] TypeError, accessing property of null/undefined
+test/10k/filterrific.html:266:13: [maybe] TypeError, accessing property of null/undefined
+test/10k/filterrific.html:266:13: [maybe] TypeError, call to non-function
+test/10k/filterrific.html:270:9: [maybe] TypeError, accessing property of null/undefined
+test/10k/filterrific.html:283:38: [maybe] TypeError, accessing property of null/undefined
+test/10k/filterrific.html:299:9: [maybe] TypeError, accessing property of null/undefined
+test/10k/filterrific.html:299:19: [maybe] TypeError, accessing property of null/undefined
+test/10k/filterrific.html:333:9: [maybe] TypeError, accessing property of null/undefined
+test/10k/filterrific.html:339:13: [maybe] TypeError, accessing property of null/undefined
+test/10k/filterrific.html:339:29: [maybe] TypeError, accessing property of null/undefined
+test/10k/filterrific.html:340:13: [maybe] TypeError, accessing property of null/undefined
+test/10k/filterrific.html:341:13: [maybe] TypeError, accessing property of null/undefined
+test/10k/filterrific.html:358:13: [maybe] TypeError, accessing property of null/undefined
+test/10k/filterrific.html:358:13: [maybe] TypeError, accessing property of null/undefined
+test/10k/filterrific.html:358:13: [maybe] TypeError, call to non-function
+test/10k/filterrific.html:363:29: [maybe] ReferenceError, reading absent variable l
+test/10k/filterrific.html:378:9: [maybe] TypeError, accessing property of null/undefined
+test/10k/filterrific.html:384:9: [maybe] TypeError, call to non-function
+test/10k/filterrific.html:386:13: [maybe] TypeError, accessing property of null/undefined
+test/10k/filterrific.html:396:16: [maybe] TypeError, accessing property of null/undefined
+test/10k/filterrific.html:418:18: [maybe] TypeError, accessing property of null/undefined
+test/10k/filterrific.html:424:13: [maybe] TypeError, accessing property of null/undefined
+test/10k/filterrific.html:442:61: [maybe] TypeError, accessing property of null/undefined
+test/10k/filterrific.html:461:21: [maybe] TypeError, accessing property of null/undefined
+test/10k/filterrific.html:465:23: [maybe] TypeError, accessing property of null/undefined
+test/10k/filterrific.html:474:84: [maybe] TypeError, accessing property of null/undefined
+test/10k/filterrific.html:478:17: [maybe] TypeError, accessing property of null/undefined
+test/10k/filterrific.html:549:21: [maybe] TypeError, accessing property of null/undefined
+test/10k/filterrific.html:575:9: [maybe] TypeError, accessing property of null/undefined
+test/10k/filterrific.html:575:9: [maybe] TypeError, non-HTMLImageElement or non-HTMLCanvasElement as argument to drawImage
+test/10k/filterrific.html:588:13: [maybe] TypeError, accessing property of null/undefined
+test/10k/filterrific.html:608:13: [maybe] TypeError, accessing property of null/undefined
+test/10k/filterrific.html:616:9: [maybe] TypeError, accessing property of null/undefined
+test/10k/filterrific.html:616:9: [maybe] TypeError, argument is not of expected type: ImageData
+test/10k/filterrific.html:616:24: [maybe] TypeError, call to non-function
+test/10k/filterrific.html:631:13: [maybe] TypeError, accessing property of null/undefined
+test/10k/filterrific.html:639:17: [maybe] TypeError, accessing property of null/undefined
+test/10k/filterrific.html:640:34: [maybe] TypeError, accessing property of null/undefined
+test/10k/filterrific.html:646:23: [maybe] TypeError, accessing property of null/undefined
+test/10k/filterrific.html:647:17: [maybe] TypeError, accessing property of null/undefined
+test/10k/filterrific.html:647:17: [maybe] TypeError, accessing property of null/undefined
+test/10k/filterrific.html:648:23: [maybe] RangeError in Number function
+test/10k/filterrific.html:648:23: [maybe] TypeError, call to non-function
+test/10k/filterrific.html:652:9: [maybe] TypeError, accessing property of null/undefined
+test/10k/filterrific.html:253:16: [maybe] Reading absent property getContext
+test/10k/filterrific.html:257:16: [maybe] Reading absent property appendChild
+test/10k/filterrific.html:266:13: [maybe] Reading absent property getBoundingClientRect
+test/10k/filterrific.html:283:38: [maybe] Reading absent property style
+test/10k/filterrific.html:319:20: [maybe] Reading 'this' yields the global object
+test/10k/filterrific.html:319:20: [maybe] Reading absent property innerHTML
+test/10k/filterrific.html:358:13: [maybe] Reading absent property innerHTML
+test/10k/filterrific.html:358:13: [maybe] Reading absent property split
+test/10k/filterrific.html:379:16: [maybe] Reading 'this' yields the global object
+test/10k/filterrific.html:382:16: [maybe] Reading 'this' yields the global object
+test/10k/filterrific.html:384:9: [maybe] Reading absent property addEventListener
+test/10k/filterrific.html:385:29: [maybe] Reading absent property wheelDelta
+test/10k/filterrific.html:385:45: [maybe] Reading absent property detail
+test/10k/filterrific.html:386:13: [maybe] Reading absent property style
+test/10k/filterrific.html:461:18: [maybe] Reading absent property a
+test/10k/filterrific.html:465:20: [maybe] Reading absent property a
+test/10k/filterrific.html:474:20: [maybe] Reading absent property a
+test/10k/filterrific.html:631:13: [maybe] Reading absent property style
+test/10k/filterrific.html:646:23: [maybe] Reading absent property b
+test/10k/filterrific.html:647:17: [maybe] Reading absent property style
+test/10k/filterrific.html:648:23: [maybe] Reading absent property toFixed
+test/10k/filterrific.html:244:13: [maybe] Uncaught exception, constructed at [test/10k/filterrific.html:253:16, test/10k/filterrific.html:257:16, test/10k/filterrific.html:260:9, test/10k/filterrific.html:266:13, test/10k/filterrific.html:270:9, test/10k/filterrific.html:283:38, test/10k/filterrific.html:299:9, test/10k/filterrific.html:299:19, test/10k/filterrific.html:333:9, test/10k/filterrific.html:339:13, test/10k/filterrific.html:339:29, test/10k/filterrific.html:340:13, test/10k/filterrific.html:341:13, test/10k/filterrific.html:358:13, test/10k/filterrific.html:363:29, test/10k/filterrific.html:378:9, test/10k/filterrific.html:384:9, test/10k/filterrific.html:386:13, test/10k/filterrific.html:396:16, test/10k/filterrific.html:418:18, test/10k/filterrific.html:424:13, test/10k/filterrific.html:442:61, test/10k/filterrific.html:461:21, test/10k/filterrific.html:465:23, test/10k/filterrific.html:474:84, test/10k/filterrific.html:478:17, test/10k/filterrific.html:549:21, test/10k/filterrific.html:575:9, test/10k/filterrific.html:588:13, test/10k/filterrific.html:608:13, test/10k/filterrific.html:616:9, test/10k/filterrific.html:616:24, test/10k/filterrific.html:631:13, test/10k/filterrific.html:638:9, test/10k/filterrific.html:639:17, test/10k/filterrific.html:640:34, test/10k/filterrific.html:646:23, test/10k/filterrific.html:647:17, test/10k/filterrific.html:648:23, test/10k/filterrific.html:652:9]
+test/10k/filterrific.html:266:13: [maybe] Converting primitive number to object
+test/10k/filterrific.html:266:13: [maybe] The variable a has values with different types
+test/10k/filterrific.html:270:23: [maybe] The variable c has values with different types
+test/10k/filterrific.html:280:20: [maybe] Converting object to string
+test/10k/filterrific.html:280:20: [maybe] Converting primitive string to object
+test/10k/filterrific.html:338:19: [maybe] The variable b has values with different types
+test/10k/filterrific.html:338:28: [maybe] The variable c has values with different types
+test/10k/filterrific.html:338:37: [maybe] The variable b has values with different types
+test/10k/filterrific.html:338:46: [maybe] The variable c has values with different types
+test/10k/filterrific.html:340:22: [maybe] Conversion from string to number yields NaN
+test/10k/filterrific.html:340:22: [maybe] The variable b has values with different types
+test/10k/filterrific.html:341:21: [maybe] Conversion from string to number yields NaN
+test/10k/filterrific.html:341:21: [maybe] The variable c has values with different types
+test/10k/filterrific.html:344:22: [maybe] Conversion from string to number yields NaN
+test/10k/filterrific.html:344:22: [maybe] Conversion to number yields NaN
+test/10k/filterrific.html:344:22: [maybe] The variable b has values with different types
+test/10k/filterrific.html:344:26: [maybe] The variable v has values with different types
+test/10k/filterrific.html:345:22: [maybe] Conversion from string to number yields NaN
+test/10k/filterrific.html:345:22: [maybe] Conversion to number yields NaN
+test/10k/filterrific.html:345:22: [maybe] The variable c has values with different types
+test/10k/filterrific.html:345:26: [maybe] The variable t has values with different types
+test/10k/filterrific.html:348:17: [maybe] Conversion from string to number yields NaN
+test/10k/filterrific.html:348:17: [maybe] Conversion to number yields NaN
+test/10k/filterrific.html:348:26: [maybe] The variable v has values with different types
+test/10k/filterrific.html:348:29: [maybe] The variable t has values with different types
+test/10k/filterrific.html:349:17: [maybe] Conversion from string to number yields NaN
+test/10k/filterrific.html:349:26: [maybe] The variable b has values with different types
+test/10k/filterrific.html:349:29: [maybe] The variable c has values with different types
+test/10k/filterrific.html:351:21: [maybe] The variable b has values with different types
+test/10k/filterrific.html:352:21: [maybe] The variable c has values with different types
+test/10k/filterrific.html:358:13: [maybe] Converting object to string
+test/10k/filterrific.html:358:13: [maybe] Converting primitive number to object
+test/10k/filterrific.html:358:13: [maybe] Converting primitive string to object
+test/10k/filterrific.html:361:56: [maybe] Reading absent property (computed name)
+test/10k/filterrific.html:365:24: [maybe] Reading absent property (computed name)
+test/10k/filterrific.html:367:28: [maybe] Reading absent property (computed name)
+test/10k/filterrific.html:385:45: [maybe] Conversion to number yields NaN
+test/10k/filterrific.html:400:34: [maybe] Conversion to number yields NaN
+test/10k/filterrific.html:400:38: [maybe] Reading absent property (computed name)
+test/10k/filterrific.html:405:17: [maybe] Conversion to number yields NaN
+test/10k/filterrific.html:405:17: [maybe] Conversion to number yields NaN
+test/10k/filterrific.html:405:17: [maybe] Reading absent property (computed name)
+test/10k/filterrific.html:405:24: [maybe] Reading absent property (computed name)
+test/10k/filterrific.html:405:35: [maybe] Reading absent property (computed name)
+test/10k/filterrific.html:411:18: [maybe] Conversion to number yields NaN
+test/10k/filterrific.html:411:18: [maybe] Conversion to number yields NaN
+test/10k/filterrific.html:411:18: [maybe] Reading absent property (computed name)
+test/10k/filterrific.html:411:25: [maybe] Reading absent property (computed name)
+test/10k/filterrific.html:411:36: [maybe] Reading absent property (computed name)
+test/10k/filterrific.html:418:18: [maybe] Reading absent property (computed name)
+test/10k/filterrific.html:418:63: [maybe] Conversion from string to number yields NaN
+test/10k/filterrific.html:418:63: [maybe] Conversion to number yields NaN
+test/10k/filterrific.html:418:63: [maybe] The variable e has values with different types
+test/10k/filterrific.html:418:73: [maybe] Conversion from string to number yields NaN
+test/10k/filterrific.html:418:73: [maybe] Conversion to number yields NaN
+test/10k/filterrific.html:418:73: [maybe] Conversion to number yields NaN
+test/10k/filterrific.html:418:73: [maybe] Reading absent property (computed name)
+test/10k/filterrific.html:418:84: [maybe] The variable e has values with different types
+test/10k/filterrific.html:422:50: [maybe] Conversion to number yields NaN
+test/10k/filterrific.html:422:54: [maybe] Reading absent property (computed name)
+test/10k/filterrific.html:422:60: [maybe] Reading absent property (computed name)
+test/10k/filterrific.html:424:13: [maybe] Conversion from string to number yields NaN
+test/10k/filterrific.html:424:13: [maybe] Conversion to number yields NaN
+test/10k/filterrific.html:424:13: [maybe] Reading absent property (computed name)
+test/10k/filterrific.html:428:20: [maybe] Reading absent property (computed name)
+test/10k/filterrific.html:429:24: [maybe] Reading absent property (computed name)
+test/10k/filterrific.html:430:24: [maybe] Reading absent property (computed name)
+test/10k/filterrific.html:435:34: [maybe] Reading absent property (computed name)
+test/10k/filterrific.html:437:34: [maybe] Reading absent property (computed name)
+test/10k/filterrific.html:442:21: [maybe] Conversion from string to number yields NaN
+test/10k/filterrific.html:442:21: [maybe] Conversion to number yields NaN
+test/10k/filterrific.html:442:61: [maybe] Reading absent property (computed name)
+test/10k/filterrific.html:444:24: [maybe] Reading absent property (computed name)
+test/10k/filterrific.html:445:28: [maybe] Reading absent property (computed name)
+test/10k/filterrific.html:446:28: [maybe] Reading absent property (computed name)
+test/10k/filterrific.html:456:20: [maybe] Reading absent property (computed name)
+test/10k/filterrific.html:457:24: [maybe] Reading absent property (computed name)
+test/10k/filterrific.html:458:24: [maybe] Reading absent property (computed name)
+test/10k/filterrific.html:461:21: [maybe] Reading absent property (computed name)
+test/10k/filterrific.html:465:23: [maybe] Reading absent property (computed name)
+test/10k/filterrific.html:465:78: [maybe] Conversion to number yields NaN
+test/10k/filterrific.html:465:78: [maybe] Reading absent property (computed name)
+test/10k/filterrific.html:465:85: [maybe] Reading absent property (computed name)
+test/10k/filterrific.html:465:93: [maybe] Reading absent property (computed name)
+test/10k/filterrific.html:465:100: [maybe] Conversion to number yields NaN
+test/10k/filterrific.html:465:100: [maybe] Reading absent property (computed name)
+test/10k/filterrific.html:465:107: [maybe] Conversion from string to number yields NaN
+test/10k/filterrific.html:465:108: [maybe] Conversion to number yields NaN
+test/10k/filterrific.html:465:108: [maybe] Reading absent property (computed name)
+test/10k/filterrific.html:465:115: [maybe] Reading absent property (computed name)
+test/10k/filterrific.html:465:124: [maybe] Conversion to number yields NaN
+test/10k/filterrific.html:465:124: [maybe] Reading absent property (computed name)
+test/10k/filterrific.html:465:136: [maybe] Reading absent property (computed name)
+test/10k/filterrific.html:474:70: [maybe] Conversion to number yields NaN
+test/10k/filterrific.html:474:70: [maybe] Reading absent property (computed name)
+test/10k/filterrific.html:474:77: [maybe] Conversion from string to number yields NaN
+test/10k/filterrific.html:474:77: [maybe] Conversion to number yields NaN
+test/10k/filterrific.html:474:77: [maybe] Reading absent property (computed name)
+test/10k/filterrific.html:474:84: [maybe] Reading absent property (computed name)
+test/10k/filterrific.html:478:17: [maybe] Conversion from string to number yields NaN
+test/10k/filterrific.html:478:17: [maybe] Conversion to number yields NaN
+test/10k/filterrific.html:478:17: [maybe] Reading absent property (computed name)
+test/10k/filterrific.html:478:38: [maybe] Conversion from string to number yields NaN
+test/10k/filterrific.html:478:38: [maybe] Conversion to number yields NaN
+test/10k/filterrific.html:478:38: [maybe] Reading absent property (computed name)
+test/10k/filterrific.html:479:13: [maybe] Conversion from string to number yields NaN
+test/10k/filterrific.html:479:13: [maybe] Conversion to number yields NaN
+test/10k/filterrific.html:479:13: [maybe] Reading absent property (computed name)
+test/10k/filterrific.html:482:21: [maybe] Reading absent property (computed name)
+test/10k/filterrific.html:482:30: [maybe] Reading absent property (computed name)
+test/10k/filterrific.html:482:43: [maybe] Reading absent property (computed name)
+test/10k/filterrific.html:482:56: [maybe] Conversion to number yields NaN
+test/10k/filterrific.html:482:71: [maybe] Conversion to number yields NaN
+test/10k/filterrific.html:485:47: [maybe] Conversion to number yields NaN
+test/10k/filterrific.html:485:63: [maybe] Conversion to number yields NaN
+test/10k/filterrific.html:485:97: [maybe] Conversion to number yields NaN
+test/10k/filterrific.html:485:117: [maybe] Conversion to number yields NaN
+test/10k/filterrific.html:485:142: [maybe] Conversion to number yields NaN
+test/10k/filterrific.html:485:158: [maybe] Conversion to number yields NaN
+test/10k/filterrific.html:529:17: [maybe] Conversion to number yields NaN
+test/10k/filterrific.html:530:17: [maybe] Conversion to number yields NaN
+test/10k/filterrific.html:531:17: [maybe] Conversion to number yields NaN
+test/10k/filterrific.html:535:21: [maybe] Conversion to number yields NaN
+test/10k/filterrific.html:536:21: [maybe] Conversion to number yields NaN
+test/10k/filterrific.html:537:21: [maybe] Conversion to number yields NaN
+test/10k/filterrific.html:549:17: [maybe] Conversion to number yields NaN
+test/10k/filterrific.html:549:21: [maybe] Reading absent property (computed name)
+test/10k/filterrific.html:550:13: [maybe] Conversion from string to number yields NaN
+test/10k/filterrific.html:550:25: [maybe] Conversion from string to number yields NaN
+test/10k/filterrific.html:550:25: [maybe] Conversion to number yields NaN
+test/10k/filterrific.html:550:33: [maybe] Reading absent property (computed name)
+test/10k/filterrific.html:550:49: [maybe] The variable c has values with different types
+test/10k/filterrific.html:551:24: [maybe] Conversion from string to number yields NaN
+test/10k/filterrific.html:551:24: [maybe] The variable c has values with different types
+test/10k/filterrific.html:551:67: [maybe] Conversion to number yields NaN
+test/10k/filterrific.html:551:67: [maybe] Reading absent property (computed name)
+test/10k/filterrific.html:558:49: [maybe] Conversion to number yields NaN
+test/10k/filterrific.html:558:49: [maybe] Conversion to number yields NaN
+test/10k/filterrific.html:558:49: [maybe] Conversion to number yields NaN
+test/10k/filterrific.html:558:49: [maybe] Conversion to number yields NaN
+test/10k/filterrific.html:558:49: [maybe] Conversion to number yields NaN
+test/10k/filterrific.html:558:49: [maybe] Reading absent property (computed name)
+test/10k/filterrific.html:558:56: [maybe] Reading absent property (computed name)
+test/10k/filterrific.html:558:67: [maybe] Reading absent property (computed name)
+test/10k/filterrific.html:558:78: [maybe] Reading absent property (computed name)
+test/10k/filterrific.html:558:85: [maybe] Reading absent property (computed name)
+test/10k/filterrific.html:558:96: [maybe] Reading absent property (computed name)
+test/10k/filterrific.html:570:32: [maybe] Conversion to number yields NaN
+test/10k/filterrific.html:570:32: [maybe] Reading absent property (computed name)
+test/10k/filterrific.html:570:53: [maybe] Conversion to number yields NaN
+test/10k/filterrific.html:570:53: [maybe] Reading absent property (computed name)
+test/10k/filterrific.html:570:64: [maybe] Conversion to number yields NaN
+test/10k/filterrific.html:570:64: [maybe] Reading absent property (computed name)
+test/10k/filterrific.html:570:89: [maybe] Conversion to number yields NaN
+test/10k/filterrific.html:570:89: [maybe] Reading absent property (computed name)
+test/10k/filterrific.html:570:110: [maybe] Conversion to number yields NaN
+test/10k/filterrific.html:570:110: [maybe] Reading absent property (computed name)
+test/10k/filterrific.html:570:121: [maybe] Conversion to number yields NaN
+test/10k/filterrific.html:570:121: [maybe] Reading absent property (computed name)
+test/10k/filterrific.html:570:146: [maybe] Conversion to number yields NaN
+test/10k/filterrific.html:570:146: [maybe] Reading absent property (computed name)
+test/10k/filterrific.html:570:167: [maybe] Conversion to number yields NaN
+test/10k/filterrific.html:570:167: [maybe] Reading absent property (computed name)
+test/10k/filterrific.html:570:178: [maybe] Conversion to number yields NaN
+test/10k/filterrific.html:570:178: [maybe] Reading absent property (computed name)
+test/10k/filterrific.html:579:27: [maybe] The variable c has values with different types
+test/10k/filterrific.html:587:27: [maybe] Conversion from string to number yields NaN
+test/10k/filterrific.html:587:27: [maybe] Conversion to number yields NaN
+test/10k/filterrific.html:587:32: [maybe] The variable b has values with different types
+test/10k/filterrific.html:599:28: [maybe] Conversion to number yields NaN
+test/10k/filterrific.html:599:28: [maybe] Conversion to number yields NaN
+test/10k/filterrific.html:599:28: [maybe] Reading absent property (computed name)
+test/10k/filterrific.html:599:37: [maybe] Reading absent property (computed name)
+test/10k/filterrific.html:599:46: [maybe] Reading absent property (computed name)
+test/10k/filterrific.html:600:13: [maybe] Conversion to number yields NaN
+test/10k/filterrific.html:600:13: [maybe] Reading absent property (computed name)
+test/10k/filterrific.html:603:57: [maybe] Conversion to number yields NaN
+test/10k/filterrific.html:603:61: [maybe] Reading absent property (computed name)
+test/10k/filterrific.html:603:70: [maybe] Conversion to number yields NaN
+test/10k/filterrific.html:603:74: [maybe] Reading absent property (computed name)
+test/10k/filterrific.html:607:13: [maybe] Reading absent property (computed name)
+test/10k/filterrific.html:607:16: [maybe] The variable b has values with different types
+test/10k/filterrific.html:608:13: [maybe] Reading absent property (computed name)
+test/10k/filterrific.html:608:34: [maybe] The variable b has values with different types
+test/10k/filterrific.html:608:37: [maybe] Reading absent property (computed name)
+test/10k/filterrific.html:609:14: [maybe] Reading absent property (computed name)
+test/10k/filterrific.html:616:24: [maybe] Converting object to string
+test/10k/filterrific.html:616:24: [maybe] Converting undefined to string
+test/10k/filterrific.html:639:17: [maybe] Reading absent property (computed name)
+test/10k/filterrific.html:641:38: [maybe] Reading absent property (computed name)
+test/10k/filterrific.html:644:22: [maybe] The variable F has values with different types
+test/10k/filterrific.html:645:38: [maybe] The variable F has values with different types
+test/10k/filterrific.html:646:23: [maybe] Converting primitive number to object
+test/10k/filterrific.html:646:23: [maybe] The variable F has values with different types
+test/10k/filterrific.html:646:30: [maybe] Conversion to number yields NaN
+test/10k/filterrific.html:646:30: [maybe] The variable n has values with different types
+test/10k/filterrific.html:646:43: [maybe] Conversion to number yields NaN
+test/10k/filterrific.html:646:47: [maybe] The variable n has values with different types
+test/10k/filterrific.html:648:23: [maybe] Converting primitive number to object
+test/10k/filterrific.html:648:23: [maybe] Converting primitive string to object
+test/10k/filterrific.html:648:23: [maybe] The variable f has values with different types
+test/10k/filterrific.html:653:16: [maybe] The variable b has values with different types
+test/10k/filterrific.html:319:20: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/filterrific.html:379:16: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/filterrific.html:382:16: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/filterrific.html:607:13: [info] Reading from unknown property that may cause loss of precision

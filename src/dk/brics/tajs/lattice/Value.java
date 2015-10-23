@@ -1118,8 +1118,8 @@ public final class Value implements Undef, Null, Bool, Num, Str {
     /**
      * Returns the source locations of the objects in this value.
      */
-    public List<SourceLocation> getObjectSourceLocations() {
-        List<SourceLocation> res = newList();
+    public Set<SourceLocation> getObjectSourceLocations() {
+        Set<SourceLocation> res = newSet();
         if (object_labels != null)
             for (ObjectLabel objlabel : object_labels)
                 res.add(objlabel.getSourceLocation());
@@ -1772,7 +1772,7 @@ public final class Value implements Undef, Null, Bool, Num, Str {
     }
 
     private static boolean checkUInt32(double v) {
-        return v >= 0 && v < Integer.MAX_VALUE * 2.0 + 1 && (v % 1) == 0;
+        return v >= 0 && v <= Integer.MAX_VALUE * 2.0 + 1 && (v % 1) == 0;
     }
 
     private static boolean isUInt32(double v) {
@@ -1881,6 +1881,8 @@ public final class Value implements Undef, Null, Bool, Num, Str {
     public static Value makeNum(double d) {
         if (Double.isNaN(d))
             return theNumNaN;
+        if (Double.isInfinite(d))
+            return theNumInf;
         Value r = new Value();
         r.num = d;
         return canonicalize(r);

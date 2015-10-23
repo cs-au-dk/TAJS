@@ -23,16 +23,20 @@ import dk.brics.tajs.flowgraph.BasicBlock;
 import dk.brics.tajs.flowgraph.EventHandlerKind;
 import dk.brics.tajs.flowgraph.Function;
 import dk.brics.tajs.lattice.CallEdge;
+import dk.brics.tajs.lattice.Context;
 import dk.brics.tajs.lattice.ExecutionContext;
 import dk.brics.tajs.lattice.HostObject;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.ObjectLabel.Kind;
 import dk.brics.tajs.lattice.ScopeChain;
+import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.Value;
+import dk.brics.tajs.monitoring.IAnalysisMonitoring;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.solver.GenericSolver;
 import dk.brics.tajs.solver.IInitialStateBuilder;
 import dk.brics.tajs.util.AnalysisException;
+import dk.brics.tajs.util.Collections;
 import net.htmlparser.jericho.Source;
 
 import java.util.Collection;
@@ -45,7 +49,7 @@ import static dk.brics.tajs.util.Collections.singleton;
 /**
  * Sets up the initial state (Chapter 15).
  */
-public class InitialStateBuilder implements IInitialStateBuilder<State, Context, CallEdge<State>> { // TODO: to be replaced by the host model system
+public class InitialStateBuilder implements IInitialStateBuilder<State, Context, CallEdge, IAnalysisMonitoring, Analysis> { // TODO: to be replaced by the host model system
 
     /**
      * Object label for the global object.
@@ -141,7 +145,7 @@ public class InitialStateBuilder implements IInitialStateBuilder<State, Context,
      * Sets up the initial state.
      */
     @Override
-    public void addInitialState(BasicBlock global_entry_block, GenericSolver<State, Context, CallEdge<State>, ?, ?, ?>.SolverInterface c, Source document) {
+    public void addInitialState(BasicBlock global_entry_block, GenericSolver<State, Context, CallEdge, IAnalysisMonitoring, Analysis>.SolverInterface c, Source document) {
         State s = new State(c, global_entry_block);
         ObjectLabel global = GLOBAL; // same as DOMBuilder.WINDOW
         s.newObject(global);
@@ -179,6 +183,9 @@ public class InitialStateBuilder implements IInitialStateBuilder<State, Context,
 
         ObjectLabel lMath = new ObjectLabel(ECMAScriptObjects.MATH, Kind.MATH);
         s.newObject(lMath);
+
+        ObjectLabel lJson = new ObjectLabel(ECMAScriptObjects.JSON, Kind.OBJECT);
+        s.newObject(lJson);
 
         ObjectLabel lObjectPrototype = OBJECT_PROTOTYPE;
         s.newObject(lObjectPrototype);
@@ -252,9 +259,26 @@ public class InitialStateBuilder implements IInitialStateBuilder<State, Context,
         createPrimitiveConstructor(s, global, lFunProto, lTypeErrorProto, lTypeError, "TypeError", 1);
         createPrimitiveConstructor(s, global, lFunProto, lURIErrorProto, lURIError, "URIError", 1);
 
+        s.writePropertyWithAttributes(global, "JSON", Value.makeObject(lJson).setAttributes(true, false, false));
+        createPrimitiveFunction(s, lJson, lFunProto, ECMAScriptObjects.JSON_PARSE, "parse", 1);
+        createPrimitiveFunction(s, lJson, lFunProto, ECMAScriptObjects.JSON_STRINGIFY, "stringify", 1);
+        
+        
         // 15.2.3 Properties of the Object Constructor
         createPrimitiveFunction(s, lObject, lFunProto, ECMAScriptObjects.OBJECT_DEFINE_PROPERTY, "defineProperty", 3);
-
+        createPrimitiveFunction(s, lObject, lFunProto, ECMAScriptObjects.OBJECT_CREATE, "create", 1);
+        createPrimitiveFunction(s, lObject, lFunProto, ECMAScriptObjects.OBJECT_DEFINEPPROPERTIES, "defineProperties", 1);
+        createPrimitiveFunction(s, lObject, lFunProto, ECMAScriptObjects.OBJECT_FREEZE, "freeze", 1);
+        createPrimitiveFunction(s, lObject, lFunProto, ECMAScriptObjects.OBJECT_GETOWNPROPERTYDESCRIPTOR, "getOwnPropertyDescriptor", 1);//
+        createPrimitiveFunction(s, lObject, lFunProto, ECMAScriptObjects.OBJECT_GETPROTOTYPEOF, "getPrototypeOf", 1);
+        createPrimitiveFunction(s, lObject, lFunProto, ECMAScriptObjects.OBJECT_ISEXTENSIBLE, "isExtensible", 1);
+        createPrimitiveFunction(s, lObject, lFunProto, ECMAScriptObjects.OBJECT_ISFROZEN, "isFrozen", 1);
+        createPrimitiveFunction(s, lObject, lFunProto, ECMAScriptObjects.OBJECT_ISSEALED, "isSealed", 1);
+        createPrimitiveFunction(s, lObject, lFunProto, ECMAScriptObjects.OBJECT_KEYS, "keys", 1);//
+        createPrimitiveFunction(s, lObject, lFunProto, ECMAScriptObjects.OBJECT_PREVENTEXTENSIONS, "preventExtensions", 1);//
+        createPrimitiveFunction(s, lObject, lFunProto, ECMAScriptObjects.OBJECT_SEAL, "seal", 1);//
+        createPrimitiveFunction(s, lObject, lFunProto, ECMAScriptObjects.OBJECT_GETOWNPROPERTYNAMES, "getOwnPropertyNames", 0);
+        
         // 15.2.4 properties of the Object prototype object
         s.writeInternalPrototype(lObjectPrototype, Value.makeNull());
         s.writePropertyWithAttributes(lObjectPrototype, "constructor", Value.makeObject(lObject).setAttributes(true, false, false));
@@ -264,13 +288,15 @@ public class InitialStateBuilder implements IInitialStateBuilder<State, Context,
         createPrimitiveFunction(s, lObjectPrototype, lFunProto, ECMAScriptObjects.OBJECT_HASOWNPROPERTY, "hasOwnProperty", 1);
         createPrimitiveFunction(s, lObjectPrototype, lFunProto, ECMAScriptObjects.OBJECT_ISPROTOTYPEOF, "isPrototypeOf", 1);
         createPrimitiveFunction(s, lObjectPrototype, lFunProto, ECMAScriptObjects.OBJECT_PROPERTYISENUMERABLE, "propertyIsEnumerable", 1);
-
+        
         // 15.3.4 properties of the Function prototype object
         s.writeInternalPrototype(lFunProto, Value.makeObject(lObjectPrototype));
         s.writePropertyWithAttributes(lFunProto, "constructor", Value.makeObject(lFunction).setAttributes(true, false, false));
         createPrimitiveFunction(s, lFunProto, lFunProto, ECMAScriptObjects.FUNCTION_TOSTRING, "toString", 0);
         createPrimitiveFunction(s, lFunProto, lFunProto, ECMAScriptObjects.FUNCTION_APPLY, "apply", 2);
         createPrimitiveFunction(s, lFunProto, lFunProto, ECMAScriptObjects.FUNCTION_CALL, "call", 1);
+        createPrimitiveFunction(s, lFunProto, lFunProto, ECMAScriptObjects.FUNCTION_BIND, "bind", 1);
+        // TODO s.writePropertyWithAttributes(lFunction, "prototype", Value.makeObject(EMPTY).setAttributes(false, false, false);
 
         // 15.4.3.2 properties of the Array constructor
         createPrimitiveFunction(s, lArray, lFunProto, ECMAScriptObjects.ARRAY_ISARRAY, "isArray", 1);
@@ -294,6 +320,12 @@ public class InitialStateBuilder implements IInitialStateBuilder<State, Context,
         createPrimitiveFunction(s, lArrayProto, lFunProto, ECMAScriptObjects.ARRAY_SPLICE, "splice", 2);
         createPrimitiveFunction(s, lArrayProto, lFunProto, ECMAScriptObjects.ARRAY_UNSHIFT, "unshift", 1);
         createPrimitiveFunction(s, lArrayProto, lFunProto, ECMAScriptObjects.ARRAY_INDEXOF, "indexOf", 1);
+        createPrimitiveFunction(s, lArrayProto, lFunProto, ECMAScriptObjects.ARRAY_EVERY, "every", 1);
+        createPrimitiveFunction(s, lArrayProto, lFunProto, ECMAScriptObjects.ARRAY_FILTER, "filter", 1);
+        createPrimitiveFunction(s, lArrayProto, lFunProto, ECMAScriptObjects.ARRAY_MAP, "map", 1);
+        createPrimitiveFunction(s, lArrayProto, lFunProto, ECMAScriptObjects.ARRAY_REDUCE, "reduce", 1);
+        createPrimitiveFunction(s, lArrayProto, lFunProto, ECMAScriptObjects.ARRAY_REDUCERIGHT, "reduceRight", 1);
+        createPrimitiveFunction(s, lArrayProto, lFunProto, ECMAScriptObjects.ARRAY_LASTINDEXOF, "lastIndexOf", 1);
 
         // 15.5.3 properties of the String constructor
         createPrimitiveFunction(s, lString, lFunProto, ECMAScriptObjects.STRING_FROMCHARCODE, "fromCharCode", 1);
@@ -302,6 +334,7 @@ public class InitialStateBuilder implements IInitialStateBuilder<State, Context,
         s.writeInternalPrototype(lStringProto, Value.makeObject(lObjectPrototype));
         s.writePropertyWithAttributes(lStringProto, "constructor", Value.makeObject(lString).setAttributes(true, false, false));
         s.writeInternalValue(lStringProto, Value.makeStr(""));
+
         createPrimitiveFunction(s, lStringProto, lFunProto, ECMAScriptObjects.STRING_TOSTRING, "toString", 0);
         createPrimitiveFunction(s, lStringProto, lFunProto, ECMAScriptObjects.STRING_VALUEOF, "valueOf", 0);
         createPrimitiveFunction(s, lStringProto, lFunProto, ECMAScriptObjects.STRING_CHARAT, "charAt", 1);
@@ -321,6 +354,8 @@ public class InitialStateBuilder implements IInitialStateBuilder<State, Context,
         createPrimitiveFunction(s, lStringProto, lFunProto, ECMAScriptObjects.STRING_TOUPPERCASE, "toUpperCase", 0);
         createPrimitiveFunction(s, lStringProto, lFunProto, ECMAScriptObjects.STRING_TOLOCALEUPPERCASE, "toLocaleUpperCase", 0);
         createPrimitiveFunction(s, lStringProto, lFunProto, ECMAScriptObjects.STRING_TRIM, "trim", 0);
+        s.writePropertyWithAttributes(lStringProto, "length", Value.makeAnyNum().setAttributes(true, true, true));
+
 
         // 15.6.4 properties of the Boolean prototype object
         s.writeInternalPrototype(lBooleanProto, Value.makeObject(lObjectPrototype));
@@ -380,11 +415,14 @@ public class InitialStateBuilder implements IInitialStateBuilder<State, Context,
         // 15.9.4 properties of Date constructor
         createPrimitiveFunction(s, lDate, lFunProto, ECMAScriptObjects.DATE_PARSE, "parse", 1);
         createPrimitiveFunction(s, lDate, lFunProto, ECMAScriptObjects.DATE_UTC, "UTC", 7);
+        // properties of Date object
+        createPrimitiveFunction(s, lDate, lFunProto, ECMAScriptObjects.DATE_NOW, "now", 0);
 
         // 15.9.5 properties of the Date prototype object
         s.writeInternalPrototype(lDateProto, Value.makeObject(lObjectPrototype));
         s.writePropertyWithAttributes(lDateProto, "constructor", Value.makeObject(lDate).setAttributes(true, false, false));
         s.writeInternalValue(lDateProto, Value.makeNum(Double.NaN));
+        
         createPrimitiveFunction(s, lDateProto, lFunProto, ECMAScriptObjects.DATE_TOSTRING, "toString", 0);
         createPrimitiveFunction(s, lDateProto, lFunProto, ECMAScriptObjects.DATE_TODATESTRING, "toDateString", 0);
         createPrimitiveFunction(s, lDateProto, lFunProto, ECMAScriptObjects.DATE_TOTIMESTRING, "toTimeString", 0);
@@ -425,16 +463,37 @@ public class InitialStateBuilder implements IInitialStateBuilder<State, Context,
         createPrimitiveFunction(s, lDateProto, lFunProto, ECMAScriptObjects.DATE_SETUTCMONTH, "setUTCMonth", 2);
         createPrimitiveFunction(s, lDateProto, lFunProto, ECMAScriptObjects.DATE_SETFULLYEAR, "setFullYear", 3);
         createPrimitiveFunction(s, lDateProto, lFunProto, ECMAScriptObjects.DATE_SETUTCFULLYEAR, "setUTCFullYear", 3);
-        createPrimitiveFunction(s, lDateProto, lFunProto, ECMAScriptObjects.DATE_TOUTCSTRING, "toUTCFullString", 0);
+        createPrimitiveFunction(s, lDateProto, lFunProto, ECMAScriptObjects.DATE_TOISOSTRING, "toISOString", 0);
+        createPrimitiveFunction(s, lDateProto, lFunProto, ECMAScriptObjects.DATE_TOUTCSTRING, "toUTCString", 0);
+        createPrimitiveFunction(s, lDateProto, lFunProto, ECMAScriptObjects.DATE_TOJSON, "toJSON", 0);
+        
+        // properties of RegExp object
+        writePropertyWeakly(s, lRegExp, "lastMatch", Value.makeAnyStr());
+        writePropertyWeakly(s, lRegExp, "$1", Value.makeAnyStr());
+        writePropertyWeakly(s, lRegExp, "$2", Value.makeAnyStr());
+        writePropertyWeakly(s, lRegExp, "$3", Value.makeAnyStr());
+        writePropertyWeakly(s, lRegExp, "$4", Value.makeAnyStr());
+        writePropertyWeakly(s, lRegExp, "$5", Value.makeAnyStr());
+        writePropertyWeakly(s, lRegExp, "$6", Value.makeAnyStr());
+        writePropertyWeakly(s, lRegExp, "$7", Value.makeAnyStr());
+        writePropertyWeakly(s, lRegExp, "$8", Value.makeAnyStr());
+        writePropertyWeakly(s, lRegExp, "$9", Value.makeAnyStr());
 
         // 15.10.6 properties of the RegExp prototype object
         s.writeInternalPrototype(lRegExpProto, Value.makeObject(lObjectPrototype));
         s.writePropertyWithAttributes(lRegExpProto, "valueOf", Value.makeObject(new ObjectLabel(ECMAScriptObjects.OBJECT_VALUEOF, Kind.FUNCTION))
                 .setAttributes(true, false, false));
         s.writePropertyWithAttributes(lRegExpProto, "constructor", Value.makeObject(lRegExp).setAttributes(true, false, false));
+        s.writePropertyWithAttributes(lRegExpProto, "multiline", Value.makeBool(false).setAttributes(true, true, true));
+        s.writePropertyWithAttributes(lRegExpProto, "source", Value.makeStr("(?:)").setAttributes(true, true, true));
+        s.writePropertyWithAttributes(lRegExpProto, "ignoreCase", Value.makeBool(false).setAttributes(true, true, true));
+        s.writePropertyWithAttributes(lRegExpProto, "global", Value.makeBool(false).setAttributes(true, true, true));
+        s.writePropertyWithAttributes(lRegExpProto, "lastIndex", Value.makeNum(0).setAttributes(true, true, true));
+        
         createPrimitiveFunction(s, lRegExpProto, lFunProto, ECMAScriptObjects.REGEXP_EXEC, "exec", 1);
         createPrimitiveFunction(s, lRegExpProto, lFunProto, ECMAScriptObjects.REGEXP_TEST, "test", 1);
         createPrimitiveFunction(s, lRegExpProto, lFunProto, ECMAScriptObjects.REGEXP_TOSTRING, "toString", 0);
+        createPrimitiveFunction(s, lRegExpProto, lFunProto, ECMAScriptObjects.REGEXP_COMPILE, "compile", 1);
 
         // 15.11.4 properties of the Error prototype object
         s.writeInternalPrototype(lErrorProto, Value.makeObject(lObjectPrototype));
@@ -516,8 +575,15 @@ public class InitialStateBuilder implements IInitialStateBuilder<State, Context,
         s.clearEffects();
         s.freezeBasisStore();
 
-        Context context = Context.makeInitialContext(s, global_entry_block);
+        Context context = c.getAnalysis().getContextSensitivityStrategy().makeInitialContext();
         c.propagateToBasicBlock(s, global_entry_block, context);
+    }
+
+    /**
+     * Utility method for maybe writing a (non-standard, but common) property
+     */
+    private void writePropertyWeakly(State state, ObjectLabel objectLabel, String propertyName, Value value) {
+        state.writeProperty(Collections.singleton(objectLabel), Value.makeTemporaryStr(propertyName), value, true, true);
     }
 
     /**
@@ -529,6 +595,13 @@ public class InitialStateBuilder implements IInitialStateBuilder<State, Context,
         s.writePropertyWithAttributes(target, name, Value.makeObject(objlabel).setAttributes(true, false, false));
         s.writePropertyWithAttributes(objlabel, "length", Value.makeNum(arity).setAttributes(true, true, true));
         s.writeInternalPrototype(objlabel, Value.makeObject(internal_proto));
+    }
+
+    public static void createPrimitiveFunctionWeakly(State s, ObjectLabel target, ObjectLabel internal_proto, HostObject primitive, String name, int arity) {
+        ObjectLabel objlabel = new ObjectLabel(primitive, Kind.FUNCTION);
+        s.newObject(objlabel);
+        s.writePropertyWithAttributes(Collections.singleton(target), name, Value.makeObject(objlabel).setAttributes(true, false, false), false, true);
+        s.writePropertyWithAttributes(objlabel, "length", Value.makeNum(arity).setAttributes(true, true, true));
     }
 
     /**

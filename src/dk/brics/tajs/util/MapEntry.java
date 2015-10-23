@@ -16,6 +16,7 @@
 
 package dk.brics.tajs.util;
 
+import java.io.Serializable;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -23,7 +24,7 @@ import java.util.Map.Entry;
  * Map entry.
  * Pair of a key and a value.
  */
-class MapEntry<K, V> implements Map.Entry<K, V> {
+class MapEntry<K, V> implements Map.Entry<K, V>, Serializable {
 
     private K key;
 

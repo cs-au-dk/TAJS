@@ -17,21 +17,21 @@
 package dk.brics.tajs;
 
 import dk.brics.tajs.analysis.Analysis;
-import dk.brics.tajs.analysis.Context;
-import dk.brics.tajs.analysis.State;
+import dk.brics.tajs.analysis.StaticDeterminacyContextSensitivityStrategy;
 import dk.brics.tajs.flowgraph.FlowGraph;
 import dk.brics.tajs.htmlparser.HTMLParser;
 import dk.brics.tajs.htmlparser.JavaScriptSource;
 import dk.brics.tajs.htmlparser.JavaScriptSource.Kind;
 import dk.brics.tajs.js2flowgraph.FlowGraphBuilder;
-import dk.brics.tajs.lattice.BlockState;
-import dk.brics.tajs.lattice.CallEdge;
 import dk.brics.tajs.lattice.Obj;
 import dk.brics.tajs.lattice.ScopeChain;
+import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.Value;
+import dk.brics.tajs.monitoring.AnalysisPhase;
 import dk.brics.tajs.monitoring.IAnalysisMonitoring;
+import dk.brics.tajs.monitoring.Monitoring;
+import dk.brics.tajs.options.ExperimentalOptions;
 import dk.brics.tajs.options.Options;
-import dk.brics.tajs.solver.CallGraph;
 import dk.brics.tajs.solver.SolverSynchronizer;
 import dk.brics.tajs.util.AnalysisException;
 import dk.brics.tajs.util.Loader;
@@ -82,12 +82,21 @@ public class Main {
      * Resets all internal counters and caches.
      */
     public static void reset() {
+        StaticDeterminacyContextSensitivityStrategy.SyntacticHints.reset();
+        ExperimentalOptions.ExperimentalOptionsManager.reset();
         Options.reset();
-        BlockState.reset();
+        State.reset();
         Value.reset();
         Obj.reset();
         Strings.reset();
         ScopeChain.reset();
+    }
+
+    /**
+     * Reads the input and prepares an analysis object, using the default monitoring.
+     */
+    public static Analysis init(String[] args, SolverSynchronizer sync) throws AnalysisException {
+        return init(args, new Monitoring(), sync);
     }
 
     /**
@@ -96,11 +105,12 @@ public class Main {
      * @return analysis object, null if invalid input
      * @throws AnalysisException if internal error
      */
-    public static Analysis init(String[] args, SolverSynchronizer sync) throws AnalysisException {
-        Analysis analysis = new Analysis(sync);
+    public static Analysis init(String[] args, IAnalysisMonitoring monitoring, SolverSynchronizer sync) throws AnalysisException {
+        Analysis analysis = new Analysis(monitoring, sync);
 
         boolean show_usage = false;
         Options.parse(args);
+        Options.get().checkConsistency();
         List<String> files = Options.get().getArguments();
 
         if (files.isEmpty()) {
@@ -117,7 +127,7 @@ public class Main {
         if (Options.get().isDebugEnabled())
             Options.dump();
 
-        enterPhase("Loading files");
+        enterPhase(AnalysisPhase.LOADING_FILES, analysis.getMonitoring());
         Source document = null;
         FlowGraph fg;
         try {
@@ -161,13 +171,16 @@ public class Main {
             log.error("Unable to parse " + e.getMessage());
             return null;
         }
-
+        leavePhase(AnalysisPhase.LOADING_FILES, analysis.getMonitoring());
         if (sync != null)
             sync.setFlowGraph(fg);
         if (Options.get().isFlowGraphEnabled())
             dumpFlowGraph(fg, false);
 
         analysis.getSolver().init(fg, document);
+
+        monitoring.setFlowgraph(analysis.getSolver().getFlowGraph());
+        monitoring.setCallGraph(analysis.getSolver().getAnalysisLatticeElement().getCallGraph());
 
         return analysis;
     }
@@ -190,14 +203,14 @@ public class Main {
      * @throws AnalysisException if internal error
      */
     public static void run(Analysis analysis) throws AnalysisException {
-        IAnalysisMonitoring<State, Context, CallEdge<State>> monitoring = analysis.getMonitoring();
-
-        monitoring.setFlowgraph(analysis.getSolver().getFlowGraph());
+        IAnalysisMonitoring monitoring = analysis.getMonitoring();
 
         long time = System.currentTimeMillis();
 
-        enterPhase("Data flow analysis");
+        enterPhase(AnalysisPhase.DATAFLOW_ANALYSIS, monitoring);
         analysis.getSolver().solve();
+        leavePhase(AnalysisPhase.DATAFLOW_ANALYSIS, monitoring);
+
         long elapsed = System.currentTimeMillis() - time;
         if (Options.get().isTimingEnabled())
             log.info("Analysis finished in " + elapsed + "ms");
@@ -205,44 +218,9 @@ public class Main {
         if (Options.get().isFlowGraphEnabled())
             dumpFlowGraph(analysis.getSolver().getFlowGraph(), true);
 
-        if (!Options.get().isNoMessages()) {
-            enterPhase("Messages");
-            analysis.getSolver().scan();
-        }
-
-        CallGraph<State, Context, CallEdge<State>> call_graph = analysis.getSolver().getAnalysisLatticeElement().getCallGraph();
-        if (Options.get().isStatisticsEnabled()) {
-            enterPhase("Statistics");
-            log.info(monitoring);
-            log.info(call_graph.getCallGraphStatistics());
-            log.info("BlockState: created=" + BlockState.getNumberOfStatesCreated() + ", makeWritableStore=" + BlockState.getNumberOfMakeWritableStoreCalls());
-            log.info("Obj: created=" + Obj.getNumberOfObjsCreated() + ", makeWritableProperties=" + Obj.getNumberOfMakeWritablePropertiesCalls());
-            log.info("Value cache: hits=" + Value.getNumberOfValueCacheHits() + ", misses=" + Value.getNumberOfValueCacheMisses() + ", finalSize=" + Value.getValueCacheSize());
-            log.info("Value object set cache: hits=" + Value.getNumberOfObjectSetCacheHits() + ", misses=" + Value.getNumberOfObjectSetCacheMisses() + ", finalSize=" + Value.getObjectSetCacheSize());
-            log.info("ScopeChain cache: hits=" + ScopeChain.getNumberOfCacheHits() + ", misses=" + ScopeChain.getNumberOfCacheMisses() + ", finalSize=" + ScopeChain.getCacheSize());
-            log.info("Basic blocks: " + analysis.getSolver().getFlowGraph().getNumberOfBlocks());
-        }
-
-        if (Options.get().isCoverageEnabled()) {
-            enterPhase("Coverage summary");
-            monitoring.logUnreachableMap();
-        }
-
-        if (Options.get().isCallGraphEnabled()) {
-            enterPhase("Call graph");
-            log.info(call_graph);
-            File outdir = new File("out");
-            if (!outdir.exists()) {
-                outdir.mkdir();
-            }
-            String filename = "out" + File.separator + "callgraph.dot";
-            try (FileWriter f = new FileWriter(filename)) {
-                log.info("Writing call graph to " + filename);
-                call_graph.toDot(new PrintWriter(f));
-            } catch (IOException e) {
-                log.error("Unable to write " + filename + ": " + e.getMessage());
-            }
-        }
+        enterPhase(AnalysisPhase.SCAN, monitoring);
+        analysis.getSolver().scan();
+        leavePhase(AnalysisPhase.SCAN, monitoring);
     }
 
     /**
@@ -275,8 +253,32 @@ public class Main {
         }
     }
 
-    private static void enterPhase(String phase) {
-        if (!Options.get().isQuietEnabled())
-            log.info("===========  " + phase + " ===========");
+    private static void enterPhase(AnalysisPhase phase, IAnalysisMonitoring monitoring) {
+        String phaseName = prettyPhaseName(phase);
+        showPhaseStart(phaseName);
+        monitoring.beginPhase(phase);
+    }
+
+    private static void showPhaseStart(String phaseName) {
+        if (!Options.get().isQuietEnabled()) {
+            log.info("===========  " + phaseName + " ===========");
+        }
+    }
+
+    private static void leavePhase(AnalysisPhase phase, IAnalysisMonitoring monitoring) {
+        monitoring.endPhase(phase);
+    }
+
+    private static String prettyPhaseName(AnalysisPhase phase) {
+        switch (phase) {
+            case LOADING_FILES:
+                return "Loading files";
+            case DATAFLOW_ANALYSIS:
+                return "Data flow analysis";
+            case SCAN:
+                return "Scan";
+            default:
+                throw new RuntimeException("Unhandled phase enum: " + phase);
+        }
     }
 }

@@ -299,31 +299,25 @@ public final class ScopeChain {
     public static Iterable<Set<ObjectLabel>> iterable(ScopeChain s) {
         if (s == null)
             return java.util.Collections.emptySet();
-        return new Iterable<Set<ObjectLabel>>() {
+        return () -> new Iterator<Set<ObjectLabel>>() {
+
+            private ScopeChain c = s;
 
             @Override
-            public Iterator<Set<ObjectLabel>> iterator() {
-                return new Iterator<Set<ObjectLabel>>() {
+            public boolean hasNext() {
+                return c != null;
+            }
 
-                    private ScopeChain c = s;
+            @Override
+            public Set<ObjectLabel> next() {
+                Set<ObjectLabel> objlabel = c.obj;
+                c = c.next;
+                return objlabel;
+            }
 
-                    @Override
-                    public boolean hasNext() {
-                        return c != null;
-                    }
-
-                    @Override
-                    public Set<ObjectLabel> next() {
-                        Set<ObjectLabel> objlabel = c.obj;
-                        c = c.next;
-                        return objlabel;
-                    }
-
-                    @Override
-                    public void remove() {
-                        throw new UnsupportedOperationException();
-                    }
-                };
+            @Override
+            public void remove() {
+                throw new UnsupportedOperationException();
             }
         };
     }

@@ -11,7 +11,7 @@ Num
 -1.27E34
 NaN
 NaN
-Infinity
+Inf
 Inf
 UInt
 NotUInt
@@ -709,7 +709,7 @@ isReadOnly = false
 isMaybeReadOnly = false
 isMaybeNotReadOnly = false
 isNotReadOnly = false
-****Infinity
+****Inf
 Attributes: 
 isBottom = false
 isNoValue = false
@@ -733,11 +733,11 @@ isMaybeTrue = false
 isMaybeFalse = false
 isNotNum = false
 isNaN = false
-isMaybeInf = false
+isMaybeInf = true
 isMaybeNumUInt = false
 isMaybeNumNotUInt = false
-getNum = Infinity
-isMaybeFuzzyNum = false
+getNum = null
+isMaybeFuzzyNum = true
 isMaybeOtherThanNum = false
 isMaybeOtherThanStr = true
 isNotStr = true

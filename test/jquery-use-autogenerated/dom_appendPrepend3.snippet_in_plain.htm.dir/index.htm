@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="generator" content="HTML Tidy for Java (vers. 2009-12-01), see jtidy.sourceforge.net" />
+<title>Plain Wrapper</title>
+<script type="text/javascript" src="jquery.js">//</script></head>
+<body>
+<!--Inserted snippet: dom_appendPrepend3.snippet-->
+<a href="javascript:void(0);" onclick="PrependItemsToList();">Prepend items</a> 
+<ol id="olTestList3" />
+<script type="text/javascript">
+//<![CDATA[
+function PrependItemsToList()
+{       
+        $("#olTestList3").prepend($("<li></li>").text("prepend() item"));
+        $("<li></li>").text("prependTo() item").prependTo("#olTestList3");
+}
+//]]>
+</script>
+</body>
+</html>

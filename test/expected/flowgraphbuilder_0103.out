@@ -1,22 +1,22 @@
 fg2: function()
-  block 0:
-    node 0: constant[44.0,v8] (test/flowgraphbuilder/flowgraph_builder0103.js:5:7)
-    node 1: write-variable[v8,'b']* (test/flowgraphbuilder/flowgraph_builder0103.js:5:3)
-    ->[block 1] ~>[block 7]
+  block 0: [entry]
+    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0103.js:1:1)
+    node 1: vardecl['x']* (test/flowgraphbuilder/flowgraph_builder0103.js:1:5)
+    node 2: vardecl['b']* (test/flowgraphbuilder/flowgraph_builder0103.js:3:10)
+    ->[block 1]
   block 1:
-    node 2: end-for-in(begin-node:11)* (test/flowgraphbuilder/flowgraph_builder0103.js:6:1)
-    ->[block 4] ~>[block 7]
-  block 2: [entry]
-    node 3: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0103.js:1:1)
-    node 4: vardecl['x']* (test/flowgraphbuilder/flowgraph_builder0103.js:1:5)
-    node 5: vardecl['b']* (test/flowgraphbuilder/flowgraph_builder0103.js:3:10)
-    ->[block 3]
+    node 3: new[v2] (test/flowgraphbuilder/flowgraph_builder0103.js:1:9)
+    node 4: constant[42.0,v3] (test/flowgraphbuilder/flowgraph_builder0103.js:1:12)
+    node 5: write-property[v2,'a',v3] (test/flowgraphbuilder/flowgraph_builder0103.js:1:10)
+    node 6: write-variable[v2,'x']* (test/flowgraphbuilder/flowgraph_builder0103.js:1:9)
+    node 7: read-variable['x',v4,-] (test/flowgraphbuilder/flowgraph_builder0103.js:3:15)
+    ->[block 4]
+  block 2:
+    node 8: constant[44.0,v8] (test/flowgraphbuilder/flowgraph_builder0103.js:5:7)
+    node 9: write-variable[v8,'b']* (test/flowgraphbuilder/flowgraph_builder0103.js:5:3)
+    ->[block 3] ~>[block 8]
   block 3:
-    node 6: new[v2] (test/flowgraphbuilder/flowgraph_builder0103.js:1:9)
-    node 7: constant[42.0,v3] (test/flowgraphbuilder/flowgraph_builder0103.js:1:12)
-    node 8: write-property[v2,'a',v3] (test/flowgraphbuilder/flowgraph_builder0103.js:1:10)
-    node 9: write-variable[v2,'x']* (test/flowgraphbuilder/flowgraph_builder0103.js:1:9)
-    node 10: read-variable['x',v4,-] (test/flowgraphbuilder/flowgraph_builder0103.js:3:15)
+    node 10: end-for-in(begin-node:11)* (test/flowgraphbuilder/flowgraph_builder0103.js:6:1)
     ->[block 4]
   block 4:
     node 11: begin-for-in[v4,v5] (test/flowgraphbuilder/flowgraph_builder0103.js:3:1)
@@ -24,22 +24,25 @@ fg2: function()
   block 5:
     node 12: has-next[v5,v6] (test/flowgraphbuilder/flowgraph_builder0103.js:3:1)
     node 13: if[v6](true-block:6,false-block:9) (test/flowgraphbuilder/flowgraph_builder0103.js:3:1)
-    ->[block 6,block 9]
+    ->[block 6,block 9] ~>[block 8]
   block 6:
     node 14: next-property[v5,v7] (test/flowgraphbuilder/flowgraph_builder0103.js:3:10)
     node 15: write-variable[v7,'b']* (test/flowgraphbuilder/flowgraph_builder0103.js:3:10)
-    ->[block 8] ~>[block 7]
+    ->[block 7] ~>[block 8]
   block 7:
     node 16: end-for-in(begin-node:11)* (test/flowgraphbuilder/flowgraph_builder0103.js:6:1)
-    ->[block 10]
+    ->[block 4]
   block 8:
     node 17: end-for-in(begin-node:11)* (test/flowgraphbuilder/flowgraph_builder0103.js:6:1)
-    ->[block 4]
-  block 9: [exit-ordinary]
-    node 18: return[v1] (test/flowgraphbuilder/flowgraph_builder0103.js:1:1)
+    ->[block 11]
+  block 9:
+    node 18: end-for-in(begin-node:11)* (test/flowgraphbuilder/flowgraph_builder0103.js:6:1)
+    ->[block 10]
+  block 10: [exit-ordinary]
+    node 19: return[v1] (test/flowgraphbuilder/flowgraph_builder0103.js:1:1)
     ->[]
-  block 10: [exit-exceptional]
-    node 19: exceptional-return (test/flowgraphbuilder/flowgraph_builder0103.js:1:1)
+  block 11: [exit-exceptional]
+    node 20: exceptional-return (test/flowgraphbuilder/flowgraph_builder0103.js:1:1)
     ->[]
 
 test/flowgraphbuilder/flowgraph_builder0103.js:3:10: [definite] The variable b is never used

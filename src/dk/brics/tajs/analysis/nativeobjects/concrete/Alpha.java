@@ -1,9 +1,10 @@
 package dk.brics.tajs.analysis.nativeobjects.concrete;
 
 import dk.brics.tajs.analysis.InitialStateBuilder;
-import dk.brics.tajs.analysis.State;
 import dk.brics.tajs.flowgraph.AbstractNode;
+import dk.brics.tajs.lattice.HeapContext;
 import dk.brics.tajs.lattice.ObjectLabel;
+import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.Value;
 
 import java.util.Map;
@@ -18,7 +19,9 @@ import static dk.brics.tajs.util.Collections.singleton;
 public class Alpha {
 
     public static Value createNewArrayValue(ConcreteArray array, State state, AbstractNode sourceNode) {
-        ObjectLabel label = new ObjectLabel(sourceNode, ObjectLabel.Kind.ARRAY, null, makeContextMap(array), null);
+        final Map<String, Value> map = newMap();
+        map.put("<CONCRETE>", Value.makeStr(array.toSourceCode()));
+        ObjectLabel label = new ObjectLabel(sourceNode, ObjectLabel.Kind.ARRAY, new HeapContext(null, map));
         state.newObject(label);
         state.writeInternalPrototype(label, Value.makeObject(InitialStateBuilder.ARRAY_PROTOTYPE));
         Value length = Value.makeNum(array.getLength());
@@ -82,11 +85,5 @@ public class Alpha {
                 return Value.makeBool(v.getBooleanValue());
             }
         });
-    }
-
-    private static Map<String, Value> makeContextMap(ConcreteArray array) {
-        final Map<String, Value> map = newMap();
-        map.put("<CONCRETE>", Value.makeStr(array.toSourceCode()));
-        return map;
     }
 }

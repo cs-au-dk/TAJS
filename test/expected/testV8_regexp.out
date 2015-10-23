@@ -1,53 +1,7 @@
-javax.script.ScriptException: <eval>:1:44 Missing close quote
-String.prototype.match.apply("aA\nbB\ncC\ndD eE fF", [/^./gm]);
-                                            ^ in <eval> at line number 1 at column number 44
-javax.script.ScriptException: <eval>:1:44 Missing close quote
-String.prototype.match.apply("aA\nbB\ncC\ndD eE fF", [/.$/gm]);
-                                            ^ in <eval> at line number 1 at column number 44
-javax.script.ScriptException: <eval>:1:44 Missing close quote
-String.prototype.match.apply("aA\nbB\ncC\ndD eE fF", [/^[^]/gm]);
-                                            ^ in <eval> at line number 1 at column number 44
-javax.script.ScriptException: <eval>:1:44 Missing close quote
-String.prototype.match.apply("aA\nbB\ncC\ndD eE fF", [/[^]$/gm]);
-                                            ^ in <eval> at line number 1 at column number 44
-javax.script.ScriptException: <eval>:1:42 Expected an operand but found eof
-String.prototype.search.apply("A", [//g]);
-                                          ^ in <eval> at line number 1 at column number 42
-javax.script.ScriptException: <eval>:1:42 Expected an operand but found eof
-String.prototype.search.apply("¡", [//g]);
-                                          ^ in <eval> at line number 1 at column number 42
-javax.script.ScriptException: <eval>:1:40 Expected an operand but found eof
-RegExp.prototype.toString.apply(//, []);
-                                        ^ in <eval> at line number 1 at column number 40
-javax.script.ScriptException: <eval>:1:44 Missing close quote
-String.prototype.match.apply("aA\nbB\ncC\ndD eE fF", [/^./gm]);
-                                            ^ in <eval> at line number 1 at column number 44
-javax.script.ScriptException: <eval>:1:44 Missing close quote
-String.prototype.match.apply("aA\nbB\ncC\ndD eE fF", [/.$/gm]);
-                                            ^ in <eval> at line number 1 at column number 44
-javax.script.ScriptException: <eval>:1:44 Missing close quote
-String.prototype.match.apply("aA\nbB\ncC\ndD eE fF", [/^[^]/gm]);
-                                            ^ in <eval> at line number 1 at column number 44
-javax.script.ScriptException: <eval>:1:44 Missing close quote
-String.prototype.match.apply("aA\nbB\ncC\ndD eE fF", [/[^]$/gm]);
-                                            ^ in <eval> at line number 1 at column number 44
-javax.script.ScriptException: <eval>:1:42 Expected an operand but found eof
-String.prototype.search.apply("A", [//g]);
-                                          ^ in <eval> at line number 1 at column number 42
-javax.script.ScriptException: <eval>:1:42 Expected an operand but found eof
-String.prototype.search.apply("¡", [//g]);
-                                          ^ in <eval> at line number 1 at column number 42
-javax.script.ScriptException: <eval>:1:40 Expected an operand but found eof
-RegExp.prototype.toString.apply(//, []);
-                                        ^ in <eval> at line number 1 at column number 40
+test/v8tests/regexp.js:225:3: [definite] The conditional expression is always false
 test/v8tests/regexp.js:211:6: [definite] Too few parameters to function RegExp
-test/v8tests/regexp.js:215:1: [definite] Unreachable code
-test/v8tests/regexp.js:224:1: [definite] Unreachable function lazyLiteral
-test/v8tests/regexp.js:47:14: [maybe] TypeError, accessing property of null/undefined
-test/v8tests/regexp.js:57:14: [maybe] TypeError, accessing property of null/undefined
-test/v8tests/regexp.js:67:14: [maybe] TypeError, accessing property of null/undefined
-test/v8tests/regexp.js:78:14: [maybe] TypeError, accessing property of null/undefined
-test/v8tests/prologue.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/regexp.js:47:14, test/v8tests/regexp.js:57:14, test/v8tests/regexp.js:67:14, test/v8tests/regexp.js:78:14]
+test/v8tests/regexp.js:74:14: [definite] Reading absent property (computed name)
+test/v8tests/regexp.js:85:14: [definite] Reading absent property (computed name)
 test/v8tests/regexp.js:29:31: [maybe] Converting object to string
 test/v8tests/regexp.js:29:31: [maybe] Converting primitive string to object
 test/v8tests/regexp.js:40:14: [maybe] Converting object to string
@@ -56,38 +10,12 @@ test/v8tests/regexp.js:41:14: [maybe] Converting object to string
 test/v8tests/regexp.js:41:14: [maybe] Converting primitive string to object
 test/v8tests/regexp.js:46:14: [maybe] Converting object to string
 test/v8tests/regexp.js:46:14: [maybe] Converting primitive string to object
-test/v8tests/regexp.js:48:14: [maybe] Reading absent property (computed name)
-test/v8tests/regexp.js:49:14: [maybe] Reading absent property (computed name)
-test/v8tests/regexp.js:50:14: [maybe] Reading absent property (computed name)
-test/v8tests/regexp.js:51:14: [maybe] Reading absent property (computed name)
-test/v8tests/regexp.js:52:14: [maybe] Reading absent property (computed name)
-test/v8tests/regexp.js:53:14: [maybe] Reading absent property (computed name)
 test/v8tests/regexp.js:56:10: [maybe] Converting object to string
 test/v8tests/regexp.js:56:10: [maybe] Converting primitive string to object
-test/v8tests/regexp.js:58:14: [maybe] Reading absent property (computed name)
-test/v8tests/regexp.js:59:14: [maybe] Reading absent property (computed name)
-test/v8tests/regexp.js:60:14: [maybe] Reading absent property (computed name)
-test/v8tests/regexp.js:61:14: [maybe] Reading absent property (computed name)
-test/v8tests/regexp.js:62:14: [maybe] Reading absent property (computed name)
-test/v8tests/regexp.js:63:14: [maybe] Reading absent property (computed name)
 test/v8tests/regexp.js:66:10: [maybe] Converting object to string
 test/v8tests/regexp.js:66:10: [maybe] Converting primitive string to object
-test/v8tests/regexp.js:68:14: [maybe] Reading absent property (computed name)
-test/v8tests/regexp.js:69:14: [maybe] Reading absent property (computed name)
-test/v8tests/regexp.js:70:14: [maybe] Reading absent property (computed name)
-test/v8tests/regexp.js:71:14: [maybe] Reading absent property (computed name)
-test/v8tests/regexp.js:72:14: [maybe] Reading absent property (computed name)
-test/v8tests/regexp.js:73:14: [maybe] Reading absent property (computed name)
-test/v8tests/regexp.js:74:14: [maybe] Reading absent property (computed name)
 test/v8tests/regexp.js:77:10: [maybe] Converting object to string
 test/v8tests/regexp.js:77:10: [maybe] Converting primitive string to object
-test/v8tests/regexp.js:79:14: [maybe] Reading absent property (computed name)
-test/v8tests/regexp.js:80:14: [maybe] Reading absent property (computed name)
-test/v8tests/regexp.js:81:14: [maybe] Reading absent property (computed name)
-test/v8tests/regexp.js:82:14: [maybe] Reading absent property (computed name)
-test/v8tests/regexp.js:83:14: [maybe] Reading absent property (computed name)
-test/v8tests/regexp.js:84:14: [maybe] Reading absent property (computed name)
-test/v8tests/regexp.js:85:14: [maybe] Reading absent property (computed name)
 test/v8tests/regexp.js:201:17: [maybe] Converting object to string
 test/v8tests/regexp.js:201:17: [maybe] Converting primitive string to object
 test/v8tests/regexp.js:202:42: [maybe] Converting object to string
@@ -97,3 +25,21 @@ test/v8tests/regexp.js:206:21: [maybe] Converting primitive string to object
 test/v8tests/regexp.js:207:17: [maybe] Converting object to string
 test/v8tests/regexp.js:207:17: [maybe] Converting primitive string to object
 test/v8tests/regexp.js:207:17: [maybe] Converting primitive string to object
+test/v8tests/regexp.js:234:19: [maybe] Converting object to string
+test/v8tests/regexp.js:234:19: [maybe] Converting primitive string to object
+test/v8tests/regexp.js:235:20: [maybe] Converting object to string
+test/v8tests/regexp.js:235:20: [maybe] Converting primitive string to object
+test/v8tests/regexp.js:236:19: [maybe] Converting object to string
+test/v8tests/regexp.js:236:19: [maybe] Converting primitive string to object
+test/v8tests/regexp.js:237:22: [maybe] Converting object to string
+test/v8tests/regexp.js:237:22: [maybe] Converting primitive string to object
+test/v8tests/regexp.js:239:23: [maybe] Converting object to string
+test/v8tests/regexp.js:239:23: [maybe] Converting primitive string to object
+test/v8tests/regexp.js:240:24: [maybe] Converting object to string
+test/v8tests/regexp.js:240:24: [maybe] Converting primitive string to object
+test/v8tests/regexp.js:241:25: [maybe] Converting object to string
+test/v8tests/regexp.js:241:25: [maybe] Converting primitive string to object
+test/v8tests/regexp.js:242:22: [maybe] Converting object to string
+test/v8tests/regexp.js:242:22: [maybe] Converting primitive string to object
+test/v8tests/regexp.js:243:23: [maybe] Converting object to string
+test/v8tests/regexp.js:243:23: [maybe] Converting primitive string to object

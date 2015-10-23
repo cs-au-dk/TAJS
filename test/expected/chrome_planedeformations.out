@@ -1,28 +1,94 @@
 test/chromeexperiments/planedeformations.html:37:4: [definite] The variable SIZE is never used
-test/chromeexperiments/planedeformations.html:39:40: [definite] The variable src_data is never used
-test/chromeexperiments/planedeformations.html:40:40: [definite] The variable dst_data is never used
-test/chromeexperiments/planedeformations.html:42:4: [definite] The variable mouseX is never used
-test/chromeexperiments/planedeformations.html:42:16: [definite] The variable mouseY is never used
-test/chromeexperiments/planedeformations.html:42:28: [definite] The variable count is never used
-test/chromeexperiments/planedeformations.html:110:4: [definite] Unreachable function loop
-test/chromeexperiments/planedeformations.html:138:4: [definite] Unreachable function stereographic
-test/chromeexperiments/planedeformations.html:175:4: [definite] Unreachable function stereographic2
-test/chromeexperiments/planedeformations.html:212:4: [definite] Unreachable function planes
-test/chromeexperiments/planedeformations.html:247:4: [definite] Unreachable function circles
-test/chromeexperiments/planedeformations.html:283:4: [definite] Unreachable function rays
-test/chromeexperiments/planedeformations.html:322:4: [definite] Unreachable function tunnel
-test/chromeexperiments/planedeformations.html:360:4: [definite] Unreachable function tunnel2
-test/chromeexperiments/planedeformations.html:398:4: [definite] Unreachable function tunnel3
-test/chromeexperiments/planedeformations.html:436:4: [definite] Unreachable function tunnel4
-test/chromeexperiments/planedeformations.html:474:4: [definite] Unreachable function vortex
-test/chromeexperiments/planedeformations.html:511:4: [definite] Unreachable function waves
+test/chromeexperiments/planedeformations.html:141:17: [definite] The variable w is never used
+test/chromeexperiments/planedeformations.html:141:26: [definite] The variable pi is never used
+test/chromeexperiments/planedeformations.html:178:17: [definite] The variable w is never used
+test/chromeexperiments/planedeformations.html:178:26: [definite] The variable pi is never used
+test/chromeexperiments/planedeformations.html:215:20: [definite] The variable a is never used
+test/chromeexperiments/planedeformations.html:215:23: [definite] The variable r is never used
+test/chromeexperiments/planedeformations.html:215:26: [definite] The variable pi is never used
+test/chromeexperiments/planedeformations.html:250:17: [definite] The variable w is never used
+test/chromeexperiments/planedeformations.html:250:20: [definite] The variable a is never used
+test/chromeexperiments/planedeformations.html:250:26: [definite] The variable pi is never used
+test/chromeexperiments/planedeformations.html:286:26: [definite] The variable pi is never used
+test/chromeexperiments/planedeformations.html:477:17: [definite] The variable w is never used
 test/chromeexperiments/planedeformations.html:76:6: [maybe] TypeError, non-HTMLImageElement or non-HTMLCanvasElement as argument to drawImage
+test/chromeexperiments/planedeformations.html:165:31: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/planedeformations.html:202:31: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/planedeformations.html:237:31: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/planedeformations.html:273:31: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/planedeformations.html:312:31: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/planedeformations.html:350:31: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/planedeformations.html:388:31: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/planedeformations.html:426:31: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/planedeformations.html:464:31: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/planedeformations.html:501:31: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/planedeformations.html:539:31: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/planedeformations.html:72:25: [maybe] Reading 'this' yields the global object
 test/chromeexperiments/planedeformations.html:72:25: [maybe] Reading absent property width
+test/chromeexperiments/planedeformations.html:73:26: [maybe] Reading 'this' yields the global object
 test/chromeexperiments/planedeformations.html:73:26: [maybe] Reading absent property height
+test/chromeexperiments/planedeformations.html:76:29: [maybe] Reading 'this' yields the global object
+test/chromeexperiments/planedeformations.html:78:50: [maybe] Reading 'this' yields the global object
 test/chromeexperiments/planedeformations.html:78:50: [maybe] Reading absent property width
+test/chromeexperiments/planedeformations.html:78:62: [maybe] Reading 'this' yields the global object
 test/chromeexperiments/planedeformations.html:78:62: [maybe] Reading absent property height
+test/chromeexperiments/planedeformations.html:32:34: [maybe] Uncaught exception, constructed at [test/chromeexperiments/planedeformations.html:165:31, test/chromeexperiments/planedeformations.html:202:31, test/chromeexperiments/planedeformations.html:237:31, test/chromeexperiments/planedeformations.html:273:31, test/chromeexperiments/planedeformations.html:312:31, test/chromeexperiments/planedeformations.html:350:31, test/chromeexperiments/planedeformations.html:388:31, test/chromeexperiments/planedeformations.html:426:31, test/chromeexperiments/planedeformations.html:464:31, test/chromeexperiments/planedeformations.html:501:31, test/chromeexperiments/planedeformations.html:539:31]
 test/chromeexperiments/planedeformations.html:78:18: [maybe] Conversion from string to number yields NaN
 test/chromeexperiments/planedeformations.html:78:18: [maybe] Conversion to number yields NaN
+test/chromeexperiments/planedeformations.html:165:31: [maybe] Reading absent property (computed name)
+test/chromeexperiments/planedeformations.html:166:35: [maybe] Reading absent property (computed name)
+test/chromeexperiments/planedeformations.html:167:35: [maybe] Reading absent property (computed name)
+test/chromeexperiments/planedeformations.html:202:31: [maybe] Reading absent property (computed name)
+test/chromeexperiments/planedeformations.html:203:35: [maybe] Reading absent property (computed name)
+test/chromeexperiments/planedeformations.html:204:35: [maybe] Reading absent property (computed name)
+test/chromeexperiments/planedeformations.html:237:31: [maybe] Conversion to number yields NaN
+test/chromeexperiments/planedeformations.html:237:31: [maybe] Reading absent property (computed name)
+test/chromeexperiments/planedeformations.html:238:35: [maybe] Conversion to number yields NaN
+test/chromeexperiments/planedeformations.html:238:35: [maybe] Reading absent property (computed name)
+test/chromeexperiments/planedeformations.html:239:35: [maybe] Conversion to number yields NaN
+test/chromeexperiments/planedeformations.html:239:35: [maybe] Reading absent property (computed name)
+test/chromeexperiments/planedeformations.html:273:31: [maybe] Reading absent property (computed name)
+test/chromeexperiments/planedeformations.html:274:35: [maybe] Reading absent property (computed name)
+test/chromeexperiments/planedeformations.html:275:35: [maybe] Reading absent property (computed name)
+test/chromeexperiments/planedeformations.html:312:31: [maybe] Conversion to number yields NaN
+test/chromeexperiments/planedeformations.html:312:31: [maybe] Reading absent property (computed name)
+test/chromeexperiments/planedeformations.html:313:35: [maybe] Conversion to number yields NaN
+test/chromeexperiments/planedeformations.html:313:35: [maybe] Reading absent property (computed name)
+test/chromeexperiments/planedeformations.html:314:35: [maybe] Conversion to number yields NaN
+test/chromeexperiments/planedeformations.html:314:35: [maybe] Reading absent property (computed name)
+test/chromeexperiments/planedeformations.html:350:31: [maybe] Conversion to number yields NaN
+test/chromeexperiments/planedeformations.html:350:31: [maybe] Reading absent property (computed name)
+test/chromeexperiments/planedeformations.html:351:35: [maybe] Conversion to number yields NaN
+test/chromeexperiments/planedeformations.html:351:35: [maybe] Reading absent property (computed name)
+test/chromeexperiments/planedeformations.html:352:35: [maybe] Conversion to number yields NaN
+test/chromeexperiments/planedeformations.html:352:35: [maybe] Reading absent property (computed name)
+test/chromeexperiments/planedeformations.html:388:31: [maybe] Conversion to number yields NaN
+test/chromeexperiments/planedeformations.html:388:31: [maybe] Reading absent property (computed name)
+test/chromeexperiments/planedeformations.html:389:35: [maybe] Conversion to number yields NaN
+test/chromeexperiments/planedeformations.html:389:35: [maybe] Reading absent property (computed name)
+test/chromeexperiments/planedeformations.html:390:35: [maybe] Conversion to number yields NaN
+test/chromeexperiments/planedeformations.html:390:35: [maybe] Reading absent property (computed name)
+test/chromeexperiments/planedeformations.html:426:31: [maybe] Conversion to number yields NaN
+test/chromeexperiments/planedeformations.html:426:31: [maybe] Reading absent property (computed name)
+test/chromeexperiments/planedeformations.html:427:35: [maybe] Conversion to number yields NaN
+test/chromeexperiments/planedeformations.html:427:35: [maybe] Reading absent property (computed name)
+test/chromeexperiments/planedeformations.html:428:35: [maybe] Conversion to number yields NaN
+test/chromeexperiments/planedeformations.html:428:35: [maybe] Reading absent property (computed name)
+test/chromeexperiments/planedeformations.html:464:31: [maybe] Conversion to number yields NaN
+test/chromeexperiments/planedeformations.html:464:31: [maybe] Reading absent property (computed name)
+test/chromeexperiments/planedeformations.html:465:35: [maybe] Conversion to number yields NaN
+test/chromeexperiments/planedeformations.html:465:35: [maybe] Reading absent property (computed name)
+test/chromeexperiments/planedeformations.html:466:35: [maybe] Conversion to number yields NaN
+test/chromeexperiments/planedeformations.html:466:35: [maybe] Reading absent property (computed name)
+test/chromeexperiments/planedeformations.html:501:31: [maybe] Reading absent property (computed name)
+test/chromeexperiments/planedeformations.html:502:35: [maybe] Reading absent property (computed name)
+test/chromeexperiments/planedeformations.html:503:35: [maybe] Reading absent property (computed name)
+test/chromeexperiments/planedeformations.html:539:31: [maybe] Conversion to number yields NaN
+test/chromeexperiments/planedeformations.html:539:31: [maybe] Reading absent property (computed name)
+test/chromeexperiments/planedeformations.html:540:35: [maybe] Conversion to number yields NaN
+test/chromeexperiments/planedeformations.html:540:35: [maybe] Reading absent property (computed name)
+test/chromeexperiments/planedeformations.html:541:35: [maybe] Conversion to number yields NaN
+test/chromeexperiments/planedeformations.html:541:35: [maybe] Reading absent property (computed name)
 test/chromeexperiments/planedeformations.html:72:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/chromeexperiments/planedeformations.html:73:26: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/chromeexperiments/planedeformations.html:76:29: [info] 'this' refers to multiple abstract objects, which may cause loss of precision

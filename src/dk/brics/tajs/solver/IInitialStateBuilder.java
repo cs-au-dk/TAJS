@@ -22,12 +22,14 @@ import net.htmlparser.jericho.Source;
 /**
  * Interface for initial state builder classes.
  */
-public interface IInitialStateBuilder<BlockStateType extends IBlockState<BlockStateType, ContextType, CallEdgeType>,
+public interface IInitialStateBuilder<StateType extends IState<StateType, ContextType, CallEdgeType>,
         ContextType extends IContext<ContextType>,
-        CallEdgeType extends ICallEdge<BlockStateType>> {
+        CallEdgeType extends ICallEdge<StateType>,
+        MonitoringType extends ISolverMonitoring<StateType, ContextType>,
+        AnalysisType extends IAnalysis<StateType, ContextType, CallEdgeType, MonitoringType, AnalysisType>> {
 
     /**
      * Builds the initial state.
      */
-    void addInitialState(BasicBlock global_entry_block, GenericSolver<BlockStateType, ContextType, CallEdgeType, ?, ?, ?>.SolverInterface c, Source document);
+    void addInitialState(BasicBlock global_entry_block, GenericSolver<StateType, ContextType, CallEdgeType, MonitoringType, AnalysisType>.SolverInterface c, Source document);
 }

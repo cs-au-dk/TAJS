@@ -8,7 +8,6 @@ test/10k/10k_world.html:431:40: [definite] Reading absent property description
 test/10k/10k_world.html:60:9: [definite] The variable a is never used
 test/10k/10k_world.html:324:32: [definite] Unreachable function
 test/10k/10k_world.html:341:31: [definite] Unreachable function
-test/10k/10k_world.html:416:24: [definite] Unreachable function
 test/10k/10k_world.html:90:46: [maybe] TypeError, accessing property of null/undefined
 test/10k/10k_world.html:90:64: [maybe] TypeError, accessing property of null/undefined
 test/10k/10k_world.html:109:63: [maybe] TypeError, accessing property of null/undefined
@@ -51,7 +50,7 @@ test/10k/10k_world.html:350:36: [maybe] Reading absent property target
 test/10k/10k_world.html:387:57: [maybe] Reading absent property target
 test/10k/10k_world.html:400:30: [maybe] Reading absent property target
 test/10k/10k_world.html:401:30: [maybe] Reading absent property target
-test/10k/10k_world.html:33:22: [maybe] Uncaught exception, constructed at [test/10k/10k_world.html:90:46, test/10k/10k_world.html:90:64, test/10k/10k_world.html:130:29, test/10k/10k_world.html:131:29, test/10k/10k_world.html:146:54, test/10k/10k_world.html:223:52, test/10k/10k_world.html:241:36, test/10k/10k_world.html:245:59, test/10k/10k_world.html:245:74, test/10k/10k_world.html:268:38, test/10k/10k_world.html:269:29, test/10k/10k_world.html:346:45, test/10k/10k_world.html:346:97, test/10k/10k_world.html:347:25, test/10k/10k_world.html:348:25, test/10k/10k_world.html:350:36, test/10k/10k_world.html:351:27, test/10k/10k_world.html:387:57, test/10k/10k_world.html:388:27, test/10k/10k_world.html:400:30, test/10k/10k_world.html:401:30, test/10k/10k_world.html:408:39]
+test/10k/10k_world.html:33:22: [maybe] Uncaught exception, constructed at [test/10k/10k_world.html:90:46, test/10k/10k_world.html:90:64, test/10k/10k_world.html:109:63, test/10k/10k_world.html:112:63, test/10k/10k_world.html:130:29, test/10k/10k_world.html:131:29, test/10k/10k_world.html:146:54, test/10k/10k_world.html:223:52, test/10k/10k_world.html:241:36, test/10k/10k_world.html:245:59, test/10k/10k_world.html:245:74, test/10k/10k_world.html:268:38, test/10k/10k_world.html:269:29, test/10k/10k_world.html:346:45, test/10k/10k_world.html:346:97, test/10k/10k_world.html:347:25, test/10k/10k_world.html:348:25, test/10k/10k_world.html:350:36, test/10k/10k_world.html:351:27, test/10k/10k_world.html:387:57, test/10k/10k_world.html:388:27, test/10k/10k_world.html:400:30, test/10k/10k_world.html:401:30, test/10k/10k_world.html:408:39]
 test/10k/10k_world.html:55:48: [maybe] Conversion to number yields NaN
 test/10k/10k_world.html:55:69: [maybe] Conversion to number yields NaN
 test/10k/10k_world.html:88:330: [maybe] Converting object to string
@@ -108,3 +107,4 @@ test/10k/10k_world.html:373:55: [maybe] Conversion to number yields NaN
 test/10k/10k_world.html:431:23: [maybe] Converting undefined to string
 test/10k/10k_world.html:90:46: [info] Reading from unknown property that may cause loss of precision
 test/10k/10k_world.html:90:64: [info] Reading from unknown property that may cause loss of precision
+test/10k/10k_world.html:118:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision

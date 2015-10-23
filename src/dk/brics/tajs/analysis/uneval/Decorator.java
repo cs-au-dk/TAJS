@@ -140,5 +140,4 @@ public class Decorator { // TODO: needs review
     public Set<BasicBlock> getPredecessorBlocks(BasicBlock basicBlock) {
         return predecessorBlocks.get(basicBlock);
     }
-
 }

@@ -24,7 +24,6 @@ import java.io.PrintWriter;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -98,6 +97,11 @@ public class Function {
     private boolean uses_this;
 
     /**
+     * The variables read by the function that are defined in an outer function.
+     */
+    private Set<String> closureVariableNames;
+
+    /**
      * Constructs a new function.
      * The node set is initially empty, and the entry/exit nodes are not set.
      * The function name is null for anonymous functions.
@@ -115,6 +119,7 @@ public class Function {
         variable_names = newSet();
         uses_this = false;
         blocks = newList();
+        closureVariableNames = newSet();
     }
 
     /**
@@ -308,7 +313,7 @@ public class Function {
             pw.println("fontsize=18;");
         }
         pw.println("rankdir=\"TD\"");
-        Set<BasicBlock> labels = new HashSet<>();
+        Set<BasicBlock> labels = newSet();
         pw.println("BB_entry" + index + "[shape=none,label=\"\"];");
         pw.println("BB_entry" + index + " -> BB" + entry.getIndex()
                 + " [tailport=s, headport=n, headlabel=\"    " + entry.getIndex() + "\"]");
@@ -365,34 +370,75 @@ public class Function {
     }
 
     /**
+     * Marks the function as having a syntactic 'this' in its source code or not.
+     */
+    public void setUsesThis(boolean uses_this) {
+        this.uses_this = uses_this;
+    }
+
+    /**
+     * Returns true if this function has a syntactic 'this' in its source code.
+     */
+    public boolean isUsesThis() {
+        return uses_this;
+    }
+
+    /**
+     * Returns the (mutable) set of variables read by the function that are defined in an outer function.
+     */
+    public Set<String> getClosureVariableNames() {
+        return closureVariableNames;
+    }
+
+    /**
      * Sets the block orders. Call after construction or modification of the function.
      */
     public void complete() {
         // Force the ordinary and exceptional exit to be last, it produces prettier dotfiles without changing anything else
-        Set<BasicBlock> topologicalBlocks = newSet(this.blocks);
+        Set<BasicBlock> topologicalBlocks = newSet(blocks);
         Set<BasicBlock> nonTopologicalBlocks = newSet(Arrays.asList(ordinary_exit, exceptional_exit));
         topologicalBlocks.removeAll(nonTopologicalBlocks);
 
+        // a function can have unreachable blocks, forming more roots of the block-graph than just the entry-block
+        // for pretty printing, the roots are sorted according to their source location
+        Set<BasicBlock> roots = newSet(blocks);
+        blocks.forEach(b -> {
+            roots.removeAll(b.getSuccessors());
+            roots.remove(b.getExceptionHandler());
+        });
+        List<BasicBlock> rootOrder = newList(roots);
+        Collections.sort(rootOrder, (o1, o2) -> o1.getSourceLocation().compareTo(o2.getSourceLocation()));
+
         int i = 0;
-        for (BasicBlock block : produceDependencyOrder(topologicalBlocks, nonTopologicalBlocks)) {
+        for (BasicBlock block : produceDependencyOrder(entry, topologicalBlocks, nonTopologicalBlocks, rootOrder)) {
             block.setOrder(i++);
         }
+
         if (ordinary_exit != null)
             ordinary_exit.setOrder(i++);
         if (exceptional_exit != null)
-            exceptional_exit.setOrder(i++);
+            exceptional_exit.setOrder(i);
     }
 
     /**
      * Produces a topological sorting of blocks with a depth-first search that ignores cycles.
-     * Algorithm: wikipedia on topological sorting with depth-first (Cormen2001/Tarjan1976)
+     * Algorithm: wikipedia on topological sorting with depth-first (Cormen2001/Tarjan1976).
+     * - slightly modified to produce prettier orders
      */
-    private static List<BasicBlock> produceDependencyOrder(Collection<BasicBlock> blocks, Set<BasicBlock> ignored) {
-        final List<BasicBlock> sorted = newList();
+    private static List<BasicBlock> produceDependencyOrder(BasicBlock head, Collection<BasicBlock> blocks, Set<BasicBlock> ignored, List<BasicBlock> rootOrder) { // TODO: parameter 'head' not used?!
+        List<BasicBlock> sorted = newList();
         Set<BasicBlock> notPermanentlyMarked = newSet(blocks);
         Set<BasicBlock> temporarilyMarked = newSet();
-        while (!notPermanentlyMarked.isEmpty()) {
-            visit(notPermanentlyMarked.iterator().next(), temporarilyMarked, notPermanentlyMarked, sorted, ignored);
+
+        // Implementation choice in topological sort: process roots only, and in reverse order
+        List<BasicBlock> reverseRootOrder = newList(rootOrder);
+        Collections.reverse(reverseRootOrder);
+        for (BasicBlock root : reverseRootOrder) {
+            visit(root, temporarilyMarked, notPermanentlyMarked, sorted, ignored);
+        }
+        if (!notPermanentlyMarked.isEmpty()) {
+            // sanity check that it is ok to iterate roots instead of "notPermanentlyMarked"
+            throw new AnalysisException("Bad topological sort implementation");
         }
         Collections.reverse(sorted); // the list has been built backwards...
         return sorted;
@@ -409,10 +455,12 @@ public class Function {
             if (exceptionHandler != null) {
                 successors.add(exceptionHandler);
             }
+
             // Implementation choice in topological sort: process multiple successors in reverse source position order.
             // A benefit of this is that loop back edges receive lower order than the loop successors.
-            successors.removeAll(ignored);
             Collections.sort(successors, (o1, o2) -> -o1.getSourceLocation().compareTo(o2.getSourceLocation()));
+
+            successors.removeAll(ignored);
             for (BasicBlock m : successors) {
                 visit(m, temporarilyMarked, notPermanentlyMarked, sorted, ignored);
             }
@@ -427,7 +475,7 @@ public class Function {
      */
     public void check(Function main, Set<Integer> seen_functions, Set<Integer> seen_blocks, Set<Integer> seen_nodes) {
         if (!seen_functions.add(index))
-            throw new AnalysisException("Duplicate function index: " + toString());
+            throw new AnalysisException("Duplicate function index: " + index + " for " + toString());
         if (index == -1)
             throw new AnalysisException("Function has not been added to flow graph: " + toString());
         if ((this == main) != isMain())
@@ -437,20 +485,6 @@ public class Function {
         if (exceptional_exit == null)
             throw new AnalysisException("Function is missing exceptional exit: " + toString());
         for (BasicBlock bb : blocks)
-            bb.check(ordinary_exit, exceptional_exit, seen_blocks, seen_nodes);
-    }
-
-    /**
-     * Marks the function as having a syntactic 'this' in its source code or not.
-     */
-    public void setUsesThis(boolean uses_this) {
-        this.uses_this = uses_this;
-    }
-
-    /**
-     * Returns true if this function has a syntactic 'this' in its source code.
-     */
-    public boolean isUsesThis() {
-        return uses_this;
+            bb.check(entry, ordinary_exit, exceptional_exit, seen_blocks, seen_nodes);
     }
 }

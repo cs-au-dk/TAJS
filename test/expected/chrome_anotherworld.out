@@ -1,40 +1,31 @@
 test/chromeexperiments/anotherworld.html:327:3: [definite] The conditional expression is always false
 test/chromeexperiments/anotherworld.html:336:3: [definite] The conditional expression is always false
 test/chromeexperiments/anotherworld.html:1122:3: [definite] The conditional expression is always true
-test/chromeexperiments/anotherworld.html:1146:3: [definite] The conditional expression is always true
 test/chromeexperiments/anotherworld.html:1148:4: [definite] The conditional expression is always false
-test/chromeexperiments/anotherworld.html:1209:3: [definite] The conditional expression is always false
 test/chromeexperiments/anotherworld.html:1307:3: [definite] The conditional expression is always true
 test/chromeexperiments/anotherworld.html:250:2: [definite] Dead assignment, property _palette is never read
 test/chromeexperiments/anotherworld.html:264:2: [definite] Dead assignment, property _logger is never read
-test/chromeexperiments/anotherworld.html:1179:7: [definite] Reading absent property _keyMask
-test/chromeexperiments/anotherworld.html:1185:7: [definite] Reading absent property _keyMask
-test/chromeexperiments/anotherworld.html:1191:7: [definite] Reading absent property _keyMask
-test/chromeexperiments/anotherworld.html:1197:7: [definite] Reading absent property _keyMask
-test/chromeexperiments/anotherworld.html:1227:4: [definite] Dead assignment, property _keyMask is never read
-test/chromeexperiments/anotherworld.html:1227:4: [definite] Reading absent property _keyMask
-test/chromeexperiments/anotherworld.html:1233:4: [definite] Dead assignment, property _keyMask is never read
-test/chromeexperiments/anotherworld.html:1233:4: [definite] Reading absent property _keyMask
-test/chromeexperiments/anotherworld.html:1239:4: [definite] Dead assignment, property _keyMask is never read
-test/chromeexperiments/anotherworld.html:1239:4: [definite] Reading absent property _keyMask
-test/chromeexperiments/anotherworld.html:1245:4: [definite] Dead assignment, property _keyMask is never read
-test/chromeexperiments/anotherworld.html:1245:4: [definite] Reading absent property _keyMask
-test/chromeexperiments/anotherworld.html:1270:4: [definite] Dead assignment, property _keyMask is never read
-test/chromeexperiments/anotherworld.html:1270:4: [definite] Reading absent property _keyMask
-test/chromeexperiments/anotherworld.html:1276:4: [definite] Dead assignment, property _keyMask is never read
-test/chromeexperiments/anotherworld.html:1276:4: [definite] Reading absent property _keyMask
-test/chromeexperiments/anotherworld.html:1282:4: [definite] Dead assignment, property _keyMask is never read
-test/chromeexperiments/anotherworld.html:1282:4: [definite] Reading absent property _keyMask
-test/chromeexperiments/anotherworld.html:1288:4: [definite] Dead assignment, property _keyMask is never read
-test/chromeexperiments/anotherworld.html:1288:4: [definite] Reading absent property _keyMask
 test/chromeexperiments/anotherworld.html:325:7: [definite] The variable s is never used
 test/chromeexperiments/anotherworld.html:1177:7: [definite] The variable ud is never used
 test/chromeexperiments/anotherworld.html:571:19: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/anotherworld.html:572:19: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/anotherworld.html:635:8: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/anotherworld.html:637:13: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/anotherworld.html:1179:7: [maybe] Reading absent property _keyMask
+test/chromeexperiments/anotherworld.html:1185:7: [maybe] Reading absent property _keyMask
+test/chromeexperiments/anotherworld.html:1191:7: [maybe] Reading absent property _keyMask
+test/chromeexperiments/anotherworld.html:1197:7: [maybe] Reading absent property _keyMask
 test/chromeexperiments/anotherworld.html:1223:10: [maybe] Reading absent property keyCode
+test/chromeexperiments/anotherworld.html:1227:4: [maybe] Reading absent property _keyMask
+test/chromeexperiments/anotherworld.html:1233:4: [maybe] Reading absent property _keyMask
+test/chromeexperiments/anotherworld.html:1239:4: [maybe] Reading absent property _keyMask
+test/chromeexperiments/anotherworld.html:1245:4: [maybe] Reading absent property _keyMask
 test/chromeexperiments/anotherworld.html:1266:10: [maybe] Reading absent property keyCode
+test/chromeexperiments/anotherworld.html:1270:4: [maybe] Reading absent property _keyMask
+test/chromeexperiments/anotherworld.html:1276:4: [maybe] Reading absent property _keyMask
+test/chromeexperiments/anotherworld.html:1282:4: [maybe] Reading absent property _keyMask
+test/chromeexperiments/anotherworld.html:1288:4: [maybe] Reading absent property _keyMask
+test/chromeexperiments/anotherworld.html:31:36: [maybe] Uncaught exception, constructed at [test/chromeexperiments/anotherworld.html:571:19, test/chromeexperiments/anotherworld.html:572:19, test/chromeexperiments/anotherworld.html:635:8, test/chromeexperiments/anotherworld.html:637:13]
 test/chromeexperiments/anotherworld.html:278:9: [maybe] Conversion to number yields NaN
 test/chromeexperiments/anotherworld.html:278:9: [maybe] Converting object to string
 test/chromeexperiments/anotherworld.html:278:9: [maybe] Converting primitive string to object
@@ -189,6 +180,9 @@ test/chromeexperiments/anotherworld.html:1102:22: [maybe] Reading absent propert
 test/chromeexperiments/anotherworld.html:1104:8: [maybe] Reading absent property (computed name)
 test/chromeexperiments/anotherworld.html:1106:9: [maybe] Reading absent property (computed name)
 test/chromeexperiments/anotherworld.html:1112:25: [maybe] Reading absent property (computed name)
+test/chromeexperiments/anotherworld.html:1127:13: [maybe] Converting undefined to string
+test/chromeexperiments/anotherworld.html:1127:13: [maybe] Converting undefined to string
+test/chromeexperiments/anotherworld.html:1127:13: [maybe] Converting undefined to string
 test/chromeexperiments/anotherworld.html:1179:7: [maybe] Conversion to number yields NaN
 test/chromeexperiments/anotherworld.html:1185:7: [maybe] Conversion to number yields NaN
 test/chromeexperiments/anotherworld.html:1191:7: [maybe] Conversion to number yields NaN

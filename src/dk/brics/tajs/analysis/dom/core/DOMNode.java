@@ -21,12 +21,12 @@ import dk.brics.tajs.analysis.FunctionCalls;
 import dk.brics.tajs.analysis.InitialStateBuilder;
 import dk.brics.tajs.analysis.NativeFunctions;
 import dk.brics.tajs.analysis.Solver;
-import dk.brics.tajs.analysis.State;
+import dk.brics.tajs.analysis.dom.DOMBuilder;
 import dk.brics.tajs.analysis.dom.DOMConversion;
 import dk.brics.tajs.analysis.dom.DOMObjects;
 import dk.brics.tajs.analysis.dom.DOMWindow;
-import dk.brics.tajs.analysis.dom.html.HTMLBuilder;
 import dk.brics.tajs.lattice.ObjectLabel;
+import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.util.AnalysisException;
 
@@ -119,6 +119,8 @@ public class DOMNode {
 
         // DOM LEVEL 4
         createDOMFunction(s, PROTOTYPE, DOMObjects.NODE_CONTAINS, "contains", 1);
+
+        INSTANCES = INSTANCES.makeSingleton().makeSummary();
     }
 
     /**
@@ -134,7 +136,7 @@ public class DOMNode {
                 NativeFunctions.expectParameters(nativeObject, call, c, 1, 1);
                 /* Value deep =*/
                 Conversion.toBoolean(NativeFunctions.readParameter(call, s, 0));
-                return Value.makeObject(HTMLBuilder.HTML_OBJECT_LABELS);
+                return Value.makeObject(DOMBuilder.getAllHtmlObjectLabels());
             }
             case NODE_HAS_CHILD_NODES: {
                 NativeFunctions.expectParameters(nativeObject, call, c, 0, 0);
@@ -146,13 +148,13 @@ public class DOMNode {
                 DOMConversion.toNode(NativeFunctions.readParameter(call, s, 0), c);
                 /* Value refChild =*/
                 DOMConversion.toNode(NativeFunctions.readParameter(call, s, 1), c);
-                return Value.makeObject(HTMLBuilder.HTML_OBJECT_LABELS);
+                return Value.makeObject(DOMBuilder.getAllHtmlObjectLabels());
             }
             case NODE_REMOVE_CHILD: {
                 NativeFunctions.expectParameters(nativeObject, call, c, 1, 1);
                 /*Value oldChild =*/
                 DOMConversion.toNode(NativeFunctions.readParameter(call, s, 0), c);
-                return Value.makeObject(HTMLBuilder.HTML_OBJECT_LABELS);
+                return Value.makeObject(DOMBuilder.getAllHtmlObjectLabels());
             }
             case NODE_REPLACE_CHILD: {
                 NativeFunctions.expectParameters(nativeObject, call, c, 2, 2);
@@ -160,7 +162,7 @@ public class DOMNode {
                 DOMConversion.toNode(NativeFunctions.readParameter(call, s, 0), c);
                 /* Value oldChild =*/
                 DOMConversion.toNode(NativeFunctions.readParameter(call, s, 1), c);
-                return Value.makeObject(HTMLBuilder.HTML_OBJECT_LABELS);
+                return Value.makeObject(DOMBuilder.getAllHtmlObjectLabels());
             }
             case NODE_IS_SUPPORTED: {
                 NativeFunctions.expectParameters(nativeObject, call, c, 2, 2);

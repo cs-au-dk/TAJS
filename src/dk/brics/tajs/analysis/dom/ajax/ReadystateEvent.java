@@ -16,11 +16,11 @@
 
 package dk.brics.tajs.analysis.dom.ajax;
 
-import dk.brics.tajs.analysis.State;
 import dk.brics.tajs.analysis.dom.DOMObjects;
 import dk.brics.tajs.analysis.dom.DOMRegistry;
 import dk.brics.tajs.analysis.dom.event.Event;
 import dk.brics.tajs.lattice.ObjectLabel;
+import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.Value;
 
 import static dk.brics.tajs.analysis.dom.DOMFunctions.createDOMProperty;

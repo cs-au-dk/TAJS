@@ -155,4 +155,14 @@ public interface NodeVisitor<ArgType> {
      * Visits an EndForInNode.
      */
     void visit(EndForInNode n, ArgType a);
+
+    /**
+     * Visits a BeginLoopNode.
+     */
+    void visit(BeginLoopNode n, ArgType a);
+
+    /**
+     * Visits an EndLoopNode.
+     */
+    void visit(EndLoopNode n, ArgType a);
 }

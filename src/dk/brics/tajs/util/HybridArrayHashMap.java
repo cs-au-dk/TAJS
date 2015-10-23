@@ -16,6 +16,7 @@
 
 package dk.brics.tajs.util;
 
+import java.io.Serializable;
 import java.util.AbstractCollection;
 import java.util.AbstractSet;
 import java.util.Arrays;
@@ -32,7 +33,7 @@ import java.util.Set;
  * Moreover, empty maps and singleton maps are represented with just a reference.
  * Keys cannot be null.
  */
-public final class HybridArrayHashMap<K, V> implements Map<K, V> {
+public final class HybridArrayHashMap<K, V> implements Map<K, V>, Serializable {
     // invariant: at most one of singleton_key, array and hashmap is non-null
 
     private static final String NULL_KEY = "HybridArrayHashMap does not permit null keys";

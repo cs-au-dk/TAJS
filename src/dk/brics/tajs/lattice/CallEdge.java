@@ -21,24 +21,24 @@ import dk.brics.tajs.solver.ICallEdge;
 /**
  * Information stored at an edge in a call graph.
  */
-public class CallEdge<BlockStateType extends BlockState<?, ?, ?>> implements ICallEdge<BlockStateType> {
+public class CallEdge implements ICallEdge<State> {
 
-    private BlockStateType state;
+    private State state;
 
     /**
      * Constructs a new edge object.
      */
-    public CallEdge(BlockStateType state) {
+    public CallEdge(State state) {
         this.state = state;
     }
 
     @Override
-    public BlockStateType getState() {
+    public State getState() {
         return state;
     }
 
     @Override
-    public void setState(BlockStateType s) {
+    public void setState(State s) {
         state = s;
     }
 }

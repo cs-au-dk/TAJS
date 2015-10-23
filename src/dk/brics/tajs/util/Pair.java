@@ -16,10 +16,12 @@
 
 package dk.brics.tajs.util;
 
+import java.io.Serializable;
+
 /**
  * Pair of objects.
  */
-public class Pair<F, S> {
+public class Pair<F, S> implements Serializable {
 
     private F first;
 

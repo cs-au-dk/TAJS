@@ -1,70 +1,169 @@
-test/10k/10k_snake.html:132:9: [definite] TypeError, accessing property of null/undefined
-test/10k/10k_snake.html:23:16: [definite] The conditional expression is always true
 test/10k/10k_snake.html:38:16: [definite] The conditional expression is always true
-test/10k/10k_snake.html:92:9: [definite] The conditional expression is always false
-test/10k/10k_snake.html:92:13: [definite] The conditional expression is always false
-test/10k/10k_snake.html:102:18: [definite] The conditional expression is always true
-test/10k/10k_snake.html:103:13: [definite] The conditional expression is always true
-test/10k/10k_snake.html:111:9: [definite] The assignment to paused has no effect
-test/10k/10k_snake.html:112:23: [definite] Variable timer is null/undefined
-test/10k/10k_snake.html:121:9: [definite] The conditional expression is always false
-test/10k/10k_snake.html:121:9: [definite] Variable timer is null/undefined
-test/10k/10k_snake.html:132:9: [definite] Variable food is null/undefined
-test/10k/10k_snake.html:145:9: [definite] The conditional expression is always false
-test/10k/10k_snake.html:146:9: [definite] The conditional expression is always true
-test/10k/10k_snake.html:183:13: [definite] The assignment to digesting has no effect
-test/10k/10k_snake.html:191:9: [definite] The conditional expression is always false
-test/10k/10k_snake.html:67:25: [definite] Dead assignment, property right:down is never read
-test/10k/10k_snake.html:68:10: [definite] Dead assignment, property up:left is never read
-test/10k/10k_snake.html:69:10: [definite] Dead assignment, property right:up is never read
-test/10k/10k_snake.html:70:10: [definite] Dead assignment, property down:left is never read
-test/10k/10k_snake.html:71:10: [definite] Dead assignment, property up:right is never read
-test/10k/10k_snake.html:72:10: [definite] Dead assignment, property left:down is never read
-test/10k/10k_snake.html:73:10: [definite] Dead assignment, property down:right is never read
-test/10k/10k_snake.html:74:10: [definite] Dead assignment, property left:up is never read
-test/10k/10k_snake.html:176:22: [definite] Reading 'this' yields the global object
-test/10k/10k_snake.html:25:29: [definite] Unreachable function
+test/10k/10k_snake.html:176:22: [definite] Too few parameters to function Document.getElementById
+test/10k/10k_snake.html:176:22: [definite] Too few parameters to function Document.getElementsByTagName
+test/10k/10k_snake.html:176:22: [definite] Too few parameters to function Element.getAttribute
+test/10k/10k_snake.html:176:22: [definite] Too few parameters to function Element.getAttributeNS
+test/10k/10k_snake.html:176:22: [definite] Too few parameters to function Element.getAttributeNode
+test/10k/10k_snake.html:176:22: [definite] Too few parameters to function Element.getAttributeNodeNS
+test/10k/10k_snake.html:176:22: [definite] Too few parameters to function Element.getElementsByTagName
+test/10k/10k_snake.html:176:22: [definite] Too few parameters to function Element.getElementsByTagNameNS
+test/10k/10k_snake.html:176:22: [definite] Too few parameters to function HTMLDocument.prototype.getElementsByClassName
+test/10k/10k_snake.html:176:22: [definite] Too few parameters to function HTMLDocument.prototype.getElementsByName
+test/10k/10k_snake.html:176:22: [definite] Too few parameters to function HTMLElement.prototype.getElementsByClassName
+test/10k/10k_snake.html:176:22: [definite] Too few parameters to function Window.getComputedStyle
 test/10k/10k_snake.html:31:30: [definite] Unreachable function
 test/10k/10k_snake.html:34:44: [definite] Unreachable function
 test/10k/10k_snake.html:57:14: [definite] The variable count is never used
-test/10k/10k_snake.html:67:14: [definite] The variable corners is never used
 test/10k/10k_snake.html:128:23: [definite] Unreachable function
-test/10k/10k_snake.html:132:29: [definite] Unreachable code
-test/10k/10k_snake.html:155:5: [definite] Unreachable function removeTail
-test/10k/10k_snake.html:159:5: [definite] Unreachable function getup
-test/10k/10k_snake.html:163:5: [definite] Unreachable function getdown
-test/10k/10k_snake.html:171:5: [definite] Unreachable function getleft
-test/10k/10k_snake.html:180:13: [definite] Unreachable code
+test/10k/10k_snake.html:176:22: [maybe] Unsupported operation: Document.getElementsByTagNameNS
 test/10k/10k_snake.html:115:20: [maybe] TypeError, accessing property of null/undefined
 test/10k/10k_snake.html:116:9: [maybe] TypeError, accessing property of null/undefined
+test/10k/10k_snake.html:132:9: [maybe] TypeError, accessing property of null/undefined
 test/10k/10k_snake.html:138:16: [maybe] TypeError, accessing property of null/undefined
 test/10k/10k_snake.html:139:13: [maybe] TypeError, accessing property of null/undefined
+test/10k/10k_snake.html:148:13: [maybe] TypeError, accessing property of null/undefined
+test/10k/10k_snake.html:148:13: [maybe] TypeError, accessing property of null/undefined
+test/10k/10k_snake.html:156:9: [maybe] TypeError, accessing property of null/undefined
+test/10k/10k_snake.html:156:9: [maybe] TypeError, accessing property of null/undefined
+test/10k/10k_snake.html:161:22: [maybe] TypeError, accessing property of null/undefined
+test/10k/10k_snake.html:165:22: [maybe] TypeError, accessing property of null/undefined
+test/10k/10k_snake.html:169:23: [maybe] TypeError, accessing property of null/undefined
+test/10k/10k_snake.html:173:24: [maybe] TypeError, accessing property of null/undefined
+test/10k/10k_snake.html:176:22: [maybe] TypeError, call to non-function
 test/10k/10k_snake.html:177:27: [maybe] TypeError, accessing property of null/undefined
+test/10k/10k_snake.html:177:32: [maybe] TypeError, accessing property of null/undefined
 test/10k/10k_snake.html:178:13: [maybe] TypeError, accessing property of null/undefined
+test/10k/10k_snake.html:178:13: [maybe] TypeError, accessing property of null/undefined
+test/10k/10k_snake.html:182:13: [maybe] TypeError, accessing property of null/undefined
+test/10k/10k_snake.html:187:9: [maybe] TypeError, accessing property of null/undefined
+test/10k/10k_snake.html:188:9: [maybe] TypeError, accessing property of null/undefined
+test/10k/10k_snake.html:188:9: [maybe] TypeError, accessing property of null/undefined
 test/10k/10k_snake.html:190:9: [maybe] TypeError, accessing property of null/undefined
-test/10k/10k_snake.html:15:32: [maybe] Uncaught exception, constructed at [test/10k/10k_snake.html:115:20, test/10k/10k_snake.html:116:9, test/10k/10k_snake.html:132:9, test/10k/10k_snake.html:138:16, test/10k/10k_snake.html:139:13, test/10k/10k_snake.html:177:27, test/10k/10k_snake.html:178:13, test/10k/10k_snake.html:190:9]
+test/10k/10k_snake.html:190:9: [maybe] TypeError, accessing property of null/undefined
+test/10k/10k_snake.html:193:13: [maybe] TypeError, accessing property of null/undefined
+test/10k/10k_snake.html:193:42: [maybe] ReferenceError, reading absent variable lastDirection
+test/10k/10k_snake.html:148:13: [maybe] Reading absent property el
+test/10k/10k_snake.html:156:9: [maybe] Reading absent property el
+test/10k/10k_snake.html:161:22: [maybe] Reading absent property col
+test/10k/10k_snake.html:161:40: [maybe] Reading absent property row
+test/10k/10k_snake.html:161:68: [maybe] Reading absent property row
+test/10k/10k_snake.html:165:22: [maybe] Reading absent property col
+test/10k/10k_snake.html:165:40: [maybe] Reading absent property row
+test/10k/10k_snake.html:165:68: [maybe] Reading absent property row
+test/10k/10k_snake.html:169:23: [maybe] Reading absent property col
+test/10k/10k_snake.html:169:51: [maybe] Reading absent property col
+test/10k/10k_snake.html:169:72: [maybe] Reading absent property row
+test/10k/10k_snake.html:173:24: [maybe] Reading absent property col
+test/10k/10k_snake.html:173:52: [maybe] Reading absent property col
+test/10k/10k_snake.html:173:73: [maybe] Reading absent property row
+test/10k/10k_snake.html:176:22: [maybe] Reading 'this' yields the global object
+test/10k/10k_snake.html:177:32: [maybe] Reading absent property row
+test/10k/10k_snake.html:177:44: [maybe] Reading absent property col
+test/10k/10k_snake.html:178:13: [maybe] Reading absent property el
+test/10k/10k_snake.html:182:13: [maybe] Reading absent property el
+test/10k/10k_snake.html:187:9: [maybe] Reading absent property el
+test/10k/10k_snake.html:188:9: [maybe] Reading absent property el
+test/10k/10k_snake.html:190:9: [maybe] Reading absent property el
+test/10k/10k_snake.html:193:13: [maybe] Reading absent property el
+test/10k/10k_snake.html:15:32: [maybe] Uncaught exception, constructed at [test/10k/10k_snake.html:115:20, test/10k/10k_snake.html:116:9, test/10k/10k_snake.html:132:9, test/10k/10k_snake.html:138:16, test/10k/10k_snake.html:139:13, test/10k/10k_snake.html:148:13, test/10k/10k_snake.html:156:9, test/10k/10k_snake.html:161:22, test/10k/10k_snake.html:165:22, test/10k/10k_snake.html:169:23, test/10k/10k_snake.html:173:24, test/10k/10k_snake.html:176:22, test/10k/10k_snake.html:177:27, test/10k/10k_snake.html:177:32, test/10k/10k_snake.html:178:13, test/10k/10k_snake.html:182:13, test/10k/10k_snake.html:187:9, test/10k/10k_snake.html:188:9, test/10k/10k_snake.html:190:9, test/10k/10k_snake.html:193:13, test/10k/10k_snake.html:193:42]
 test/10k/10k_snake.html:20:32: [maybe] Reading absent property (computed name)
+test/10k/10k_snake.html:23:32: [maybe] Reading absent property (computed name)
+test/10k/10k_snake.html:27:17: [maybe] Reading absent property (computed name)
+test/10k/10k_snake.html:27:29: [maybe] The variable item has values with different types
 test/10k/10k_snake.html:38:30: [maybe] Conversion to number yields NaN
 test/10k/10k_snake.html:38:30: [maybe] Converting object to string
 test/10k/10k_snake.html:38:30: [maybe] Converting primitive string to object
+test/10k/10k_snake.html:38:69: [maybe] Converting undefined to string
+test/10k/10k_snake.html:38:81: [maybe] The variable string has values with different types
 test/10k/10k_snake.html:41:16: [maybe] Converting object to string
 test/10k/10k_snake.html:41:16: [maybe] Converting object to string
 test/10k/10k_snake.html:41:16: [maybe] Converting primitive string to object
 test/10k/10k_snake.html:44:16: [maybe] Converting primitive string to object
+test/10k/10k_snake.html:44:40: [maybe] The variable className has values with different types
+test/10k/10k_snake.html:47:28: [maybe] The variable className has values with different types
 test/10k/10k_snake.html:48:30: [maybe] Converting primitive string to object
+test/10k/10k_snake.html:48:31: [maybe] Converting undefined to string
+test/10k/10k_snake.html:48:54: [maybe] The variable className has values with different types
 test/10k/10k_snake.html:52:26: [maybe] Converting object to string
 test/10k/10k_snake.html:52:26: [maybe] Converting primitive string to object
 test/10k/10k_snake.html:92:26: [maybe] Reading absent property (computed name)
 test/10k/10k_snake.html:93:30: [maybe] Reading absent property (computed name)
 test/10k/10k_snake.html:93:40: [maybe] Reading absent property (computed name)
 test/10k/10k_snake.html:94:37: [maybe] Reading absent property (computed name)
+test/10k/10k_snake.html:99:25: [maybe] Reading absent property (computed name)
 test/10k/10k_snake.html:112:9: [maybe] Conversion to number yields NaN
+test/10k/10k_snake.html:148:13: [maybe] Converting primitive number to object
+test/10k/10k_snake.html:148:13: [maybe] Reading absent property (computed name)
+test/10k/10k_snake.html:156:9: [maybe] Converting primitive number to object
+test/10k/10k_snake.html:156:9: [maybe] Reading absent property (computed name)
+test/10k/10k_snake.html:157:21: [maybe] Reading absent property (computed name)
+test/10k/10k_snake.html:161:22: [maybe] Converting primitive number to object
+test/10k/10k_snake.html:161:22: [maybe] The variable coords has values with different types
+test/10k/10k_snake.html:161:40: [maybe] Converting primitive number to object
+test/10k/10k_snake.html:161:40: [maybe] The variable coords has values with different types
+test/10k/10k_snake.html:161:68: [maybe] Conversion to number yields NaN
+test/10k/10k_snake.html:161:68: [maybe] Converting primitive number to object
+test/10k/10k_snake.html:161:68: [maybe] The variable coords has values with different types
+test/10k/10k_snake.html:165:22: [maybe] Converting primitive number to object
+test/10k/10k_snake.html:165:22: [maybe] The variable coords has values with different types
+test/10k/10k_snake.html:165:40: [maybe] Converting primitive number to object
+test/10k/10k_snake.html:165:40: [maybe] The variable coords has values with different types
+test/10k/10k_snake.html:165:68: [maybe] Conversion to number yields NaN
+test/10k/10k_snake.html:165:68: [maybe] Converting primitive number to object
+test/10k/10k_snake.html:165:68: [maybe] The variable coords has values with different types
+test/10k/10k_snake.html:169:23: [maybe] Converting primitive number to object
+test/10k/10k_snake.html:169:23: [maybe] The variable coords has values with different types
+test/10k/10k_snake.html:169:51: [maybe] Conversion to number yields NaN
+test/10k/10k_snake.html:169:51: [maybe] Converting primitive number to object
+test/10k/10k_snake.html:169:51: [maybe] The variable coords has values with different types
+test/10k/10k_snake.html:169:72: [maybe] Converting primitive number to object
+test/10k/10k_snake.html:169:72: [maybe] The variable coords has values with different types
+test/10k/10k_snake.html:173:24: [maybe] Converting primitive number to object
+test/10k/10k_snake.html:173:24: [maybe] The variable coords has values with different types
+test/10k/10k_snake.html:173:52: [maybe] Conversion to number yields NaN
+test/10k/10k_snake.html:173:52: [maybe] Converting primitive number to object
+test/10k/10k_snake.html:173:52: [maybe] The variable coords has values with different types
+test/10k/10k_snake.html:173:73: [maybe] Converting primitive number to object
+test/10k/10k_snake.html:173:73: [maybe] The variable coords has values with different types
+test/10k/10k_snake.html:176:22: [maybe] Converting undefined to string
+test/10k/10k_snake.html:176:22: [maybe] Reading absent property (computed name)
+test/10k/10k_snake.html:176:27: [maybe] Converting undefined to string
+test/10k/10k_snake.html:177:27: [maybe] Converting primitive number to object
 test/10k/10k_snake.html:177:27: [maybe] Reading absent property (computed name)
 test/10k/10k_snake.html:177:27: [maybe] Reading absent property (computed name)
+test/10k/10k_snake.html:177:32: [maybe] Converting primitive string to object
+test/10k/10k_snake.html:177:32: [maybe] The variable coords has values with different types
+test/10k/10k_snake.html:177:44: [maybe] Converting primitive string to object
+test/10k/10k_snake.html:177:44: [maybe] The variable coords has values with different types
+test/10k/10k_snake.html:178:13: [maybe] Converting primitive number to object
+test/10k/10k_snake.html:178:13: [maybe] The variable newCell has values with different types
+test/10k/10k_snake.html:182:13: [maybe] Converting primitive number to object
+test/10k/10k_snake.html:182:13: [maybe] The variable newCell has values with different types
+test/10k/10k_snake.html:186:20: [maybe] The variable newCell has values with different types
+test/10k/10k_snake.html:187:9: [maybe] Converting primitive number to object
+test/10k/10k_snake.html:187:9: [maybe] The variable newCell has values with different types
+test/10k/10k_snake.html:187:32: [maybe] Converting undefined to string
+test/10k/10k_snake.html:188:9: [maybe] Converting primitive number to object
+test/10k/10k_snake.html:188:9: [maybe] Reading absent property (computed name)
 test/10k/10k_snake.html:189:24: [maybe] Reading absent property (computed name)
+test/10k/10k_snake.html:189:44: [maybe] The variable newCell has values with different types
+test/10k/10k_snake.html:190:9: [maybe] Converting primitive number to object
+test/10k/10k_snake.html:190:9: [maybe] The variable lastCell has values with different types
+test/10k/10k_snake.html:193:13: [maybe] Converting primitive number to object
+test/10k/10k_snake.html:193:13: [maybe] The variable lastCell has values with different types
+test/10k/10k_snake.html:193:34: [maybe] Reading absent property (computed name)
+test/10k/10k_snake.html:193:42: [maybe] Converting undefined to string
+test/10k/10k_snake.html:193:42: [maybe] Converting undefined to string
 test/10k/10k_snake.html:20:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/10k/10k_snake.html:20:32: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/10k/10k_snake.html:20:47: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/10k_snake.html:23:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/10k_snake.html:23:32: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/10k_snake.html:23:37: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/10k_snake.html:26:22: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/10k_snake.html:27:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/10k_snake.html:27:35: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/10k_snake.html:29:16: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/10k/10k_snake.html:44:16: [info] 'this' refers to a summary abstract object, which may cause loss of precision
 test/10k/10k_snake.html:47:14: [info] 'this' refers to a summary abstract object, which may cause loss of precision
 test/10k/10k_snake.html:48:13: [info] 'this' refers to a summary abstract object, which may cause loss of precision
@@ -74,3 +173,8 @@ test/10k/10k_snake.html:52:9: [info] 'this' refers to a summary abstract object,
 test/10k/10k_snake.html:52:26: [info] 'this' refers to a summary abstract object, which may cause loss of precision
 test/10k/10k_snake.html:53:16: [info] 'this' refers to a summary abstract object, which may cause loss of precision
 test/10k/10k_snake.html:93:30: [info] Reading from unknown property that may cause loss of precision
+test/10k/10k_snake.html:176:22: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/10k_snake.html:176:22: [info] Reading from unknown property that may cause loss of precision
+test/10k/10k_snake.html:177:27: [info] Reading from unknown property that may cause loss of precision
+test/10k/10k_snake.html:177:27: [info] Reading from unknown property that may cause loss of precision
+test/10k/10k_snake.html:193:34: [info] Reading from unknown property that may cause loss of precision

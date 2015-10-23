@@ -16,7 +16,7 @@
 
 package dk.brics.tajs.analysis.dom.core;
 
-import dk.brics.tajs.analysis.State;
+import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.Value;
 
 import static dk.brics.tajs.analysis.dom.DOMFunctions.createDOMProperty;
@@ -46,11 +46,5 @@ public class CoreBuilder {
         // Document
         DOMDocument.build(s);
         DOMImplementation.build(s);
-
-        // Set the remaining properties on DOMNode, due to circularity, and summarize.
-        createDOMProperty(s, DOMNode.INSTANCES, "attributes", Value.makeObject(DOMNamedNodeMap.INSTANCES).setReadOnly());
-        createDOMProperty(s, DOMNode.INSTANCES, "ownerDocument", Value.makeObject(DOMDocument.INSTANCES).joinNull().setReadOnly());
-        s.multiplyObject(DOMNode.INSTANCES);
-        DOMNode.INSTANCES = DOMNode.INSTANCES.makeSingleton().makeSummary();
     }
 }

@@ -17,11 +17,13 @@
 package dk.brics.tajs.flowgraph;
 
 import dk.brics.tajs.flowgraph.jsnodes.ReturnNode;
+import dk.brics.tajs.options.Options;
 import dk.brics.tajs.util.AnalysisException;
 import dk.brics.tajs.util.Strings;
 
 import java.io.PrintWriter;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
@@ -64,6 +66,20 @@ public class BasicBlock {
      * The function containing this block.
      */
     private Function function;
+
+    /**
+     * The first block of a collection of blocks that can have an intra-procedural context
+     * If `this.entry_block == this`, then this block is an entry_block
+     * The entry_block can be thought of as the entry block of a function.
+     * This information is ultimately needed by {@link dk.brics.tajs.lattice.UnknownValueResolver}
+     */
+    private BasicBlock entry_block;
+
+    /**
+     * The predecessor block for an entry block.
+     * Non-null iff this block is an entry block, i.e. `this.entry_block == this`
+     */
+    private BasicBlock entry_predecessor_block;
 
     /**
      * Constructs a new initially empty block of nodes.
@@ -264,7 +280,12 @@ public class BasicBlock {
         }
         s.append("    ->[");
         boolean first = true;
-        for (BasicBlock b : getSuccessors()) {
+        if (Options.get().isDebugOrTestEnabled()) {
+            List<BasicBlock> ss = newList(successors);
+            sort(ss);
+            successors = ss;
+        }
+        for (BasicBlock b : successors) {
             if (first)
                 first = false;
             else
@@ -276,6 +297,10 @@ public class BasicBlock {
             s.append(" ~>[block ").append(getExceptionHandler().getIndex()).append("]");
         }
         return s.toString();
+    }
+
+    private static void sort(List<BasicBlock> blocks) {
+        Collections.sort(blocks, (o1, o2) -> o1.getIndex() - o2.getIndex());
     }
 
     /**
@@ -314,7 +339,7 @@ public class BasicBlock {
     /**
      * Perform a consistency check of the basic block.
      */
-    public void check(BasicBlock ordinary_exit, BasicBlock exceptional_exit, Set<Integer> seen_blocks, Set<Integer> seen_nodes) {
+    public void check(BasicBlock entry, BasicBlock ordinary_exit, BasicBlock exceptional_exit, Set<Integer> seen_blocks, Set<Integer> seen_nodes) {
         if (this != ordinary_exit && this != exceptional_exit && successors.isEmpty())
             throw new AnalysisException("No successor for block: " + toString());
         if (isEmpty())
@@ -325,6 +350,16 @@ public class BasicBlock {
             throw new AnalysisException("Block order has not been set: " + toString());
         if (index == -1)
             throw new AnalysisException("Block has not been added to flow graph: " + toString());
+        if (entry_block == null)
+            throw new AnalysisException("Block does not have an entry_block: " + toString());
+        if (entry_block == this && entry_predecessor_block == null && this != entry) {
+            throw new AnalysisException("Block with self-entry_block does not have an entry_predecessor_block, and it is not the functionEntry-block: " + toString());
+        }
+        if (entry_block != this && entry_predecessor_block != null) {
+            throw new AnalysisException("Block without self-entry_block has an entry_predecessor_block: " + toString());
+        }
+        if ((this == entry || this == ordinary_exit || this == exceptional_exit) && entry != entry_block)
+            throw new AnalysisException("function-entry or function-exit does not have the function-entry as entry_block. entry_block is: " + entry_block);
         if (!seen_blocks.add(index))
             throw new AnalysisException("Duplicate block index: " + toString());
         if (exceptional_exit == null && canThrowExceptions())
@@ -340,5 +375,33 @@ public class BasicBlock {
                 throw new AnalysisException("Negative line number in source information for node: " + node);
             node.check(this);
         }
+    }
+
+    /**
+     * Returns the entry block
+     */
+    public BasicBlock getEntryBlock() {
+        return entry_block;
+    }
+
+    /**
+     * Sets the entry block
+     */
+    public void setEntryBlock(BasicBlock entry_block) {
+        this.entry_block = entry_block;
+    }
+
+    /**
+     * Returns the entry_predecessor_block, or null if not set.
+     */
+    public BasicBlock getEntryPredecessorBlock() {
+        return entry_predecessor_block;
+    }
+
+    /**
+     * Sets the entry_predecessor_block
+     */
+    public void setEntryPredecessorBlock(BasicBlock entry_predecessor_block) {
+        this.entry_predecessor_block = entry_predecessor_block;
     }
 }

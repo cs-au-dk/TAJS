@@ -17,7 +17,6 @@
 package dk.brics.tajs.lattice;
 
 import dk.brics.tajs.options.Options;
-import dk.brics.tajs.solver.IContext;
 import dk.brics.tajs.util.AnalysisException;
 import dk.brics.tajs.util.Strings;
 
@@ -659,8 +658,8 @@ public final class Obj {
         if (scope != null || scope_unknown) {
             if (any)
                 b.append(",");
-            else
-                any = true;
+//            else
+//                any = true;
             b.append("[[Scope]]=");
             if (scope != null)
                 b.append(scope);
@@ -773,10 +772,7 @@ public final class Obj {
     /**
      * Trims this object according to the given existing object.
      */
-    public <BlockStateType extends BlockState<BlockStateType, ContextType, CallEdgeType>,
-            ContextType extends IContext<ContextType>,
-            CallEdgeType extends CallEdge<BlockStateType>>
-    void localize(Obj obj, ObjectLabel objlabel, BlockState<BlockStateType, ContextType, CallEdgeType> s) {
+    public void localize(Obj obj, ObjectLabel objlabel, State s) {
         checkWritable();
         makeWritableProperties();
         // materialize properties before changing the default properties

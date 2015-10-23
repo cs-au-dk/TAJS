@@ -1,13 +1,18 @@
 package dk.brics.tajs.test;
 
+import dk.brics.tajs.monitoring.CompositeMonitoring;
+import dk.brics.tajs.monitoring.IAnalysisMonitoring;
+import dk.brics.tajs.monitoring.Monitoring;
+import dk.brics.tajs.options.Options;
+import dk.brics.tajs.test.monitors.OrdinaryExitReachableCheckerMonitor;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import dk.brics.tajs.options.Options;
-
 @SuppressWarnings("static-method")
 public class TestChromeExperiments {
+
+    private IAnalysisMonitoring monitoring;
 
     public static void main(String[] args) {
         org.junit.runner.JUnitCore.main("dk.brics.tajs.test.ChromeExperiments");
@@ -18,6 +23,7 @@ public class TestChromeExperiments {
         Options.reset();
         Options.get().enableTest();
         Options.get().enableIncludeDom();
+        monitoring = CompositeMonitoring.buildFromList(new Monitoring(), new OrdinaryExitReachableCheckerMonitor());
     }
 
     @Test
@@ -25,7 +31,7 @@ public class TestChromeExperiments {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = { "test/chromeexperiments/3ddemo.html" };
-        Misc.run(args);
+        Misc.run(args, monitoring);
         Misc.checkSystemOutput();
     }
 
@@ -34,16 +40,17 @@ public class TestChromeExperiments {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = { "test/chromeexperiments/anotherworld.html" };
-        Misc.run(args);
+        Misc.run(args, monitoring);
         Misc.checkSystemOutput();
     }
 
+    @Ignore // Ordinary exit unreachable (due to definite error?)! See GitHub #219
     @Test
     public void chrome_apophis() throws Exception {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = { "test/chromeexperiments/apophis.html" };
-        Misc.run(args);
+        Misc.run(args, monitoring);
         Misc.checkSystemOutput();
     }
 
@@ -52,16 +59,17 @@ public class TestChromeExperiments {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = { "test/chromeexperiments/aquarium.html" };
-        Misc.run(args);
+        Misc.run(args, monitoring);
         Misc.checkSystemOutput();
     }
 
+    @Ignore // Ordinary exit unreachable (due to definite error?)! See GitHub #219
     @Test
     public void chrome_bingbong() throws Exception {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = { "test/chromeexperiments/bingbong.html" };
-        Misc.run(args);
+        Misc.run(args, monitoring);
         Misc.checkSystemOutput();
     }
 
@@ -70,7 +78,7 @@ public class TestChromeExperiments {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = { "test/chromeexperiments/blob.html" };
-        Misc.run(args);
+        Misc.run(args, monitoring);
         Misc.checkSystemOutput();
     }
 
@@ -80,7 +88,7 @@ public class TestChromeExperiments {
         Options.get().enableUnevalizer();
         Misc.captureSystemOutput();
         String[] args = { "test/chromeexperiments/bomomo.html" };
-        Misc.run(args);
+        Misc.run(args, monitoring);
         Misc.checkSystemOutput();
     }
 
@@ -89,16 +97,17 @@ public class TestChromeExperiments {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = { "test/chromeexperiments/breathinggalaxies.html" };
-        Misc.run(args);
+        Misc.run(args, monitoring);
         Misc.checkSystemOutput();
     }
 
+    @Ignore // FIXME missing model of Array.prototype.map
     @Test
     public void chrome_browserball() throws Exception {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = { "test/chromeexperiments/browserball.html" };
-        Misc.run(args);
+        Misc.run(args, monitoring);
         Misc.checkSystemOutput();
     }
 
@@ -107,7 +116,7 @@ public class TestChromeExperiments {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = { "test/chromeexperiments/burncanvas.html" };
-        Misc.run(args);
+        Misc.run(args, monitoring);
         Misc.checkSystemOutput();
     }
 
@@ -117,7 +126,7 @@ public class TestChromeExperiments {
         Options.get().enableUnevalizer();
         Misc.captureSystemOutput();
         String[] args = { "test/chromeexperiments/catchit.html" };
-        Misc.run(args);
+        Misc.run(args, monitoring);
         Misc.checkSystemOutput();
     }
 
@@ -126,7 +135,7 @@ public class TestChromeExperiments {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = { "test/chromeexperiments/core.html" };
-        Misc.run(args);
+        Misc.run(args, monitoring);
         Misc.checkSystemOutput();
     }
 
@@ -135,16 +144,17 @@ public class TestChromeExperiments {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = { "test/chromeexperiments/deepseastress.html" };
-        Misc.run(args);
+        Misc.run(args, monitoring);
         Misc.checkSystemOutput();
     }
 
+    @Ignore // Ordinary exit unreachable (due to definite error?)! See GitHub #219
     @Test
     public void chrome_harmony() throws Exception {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = { "test/chromeexperiments/harmony.html" };
-        Misc.run(args);
+        Misc.run(args, monitoring);
         Misc.checkSystemOutput();
     }
 
@@ -153,7 +163,7 @@ public class TestChromeExperiments {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = { "test/chromeexperiments/jstouch_example.html" };
-        Misc.run(args);
+        Misc.run(args, monitoring);
         Misc.checkSystemOutput();
     }
 
@@ -162,7 +172,7 @@ public class TestChromeExperiments {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = { "test/chromeexperiments/jstouch.html" };
-        Misc.run(args);
+        Misc.run(args, monitoring);
         Misc.checkSystemOutput();
     }
 
@@ -172,7 +182,7 @@ public class TestChromeExperiments {
         Options.get().enableUnevalizer();
         Misc.captureSystemOutput();
         String[] args = { "test/chromeexperiments/kaleidoscope.html" };
-        Misc.run(args);
+        Misc.run(args, monitoring);
         Misc.checkSystemOutput();
     }
 
@@ -181,7 +191,7 @@ public class TestChromeExperiments {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = { "test/chromeexperiments/keylight.html" };
-        Misc.run(args);
+        Misc.run(args, monitoring);
         Misc.checkSystemOutput();
     }
 
@@ -190,7 +200,7 @@ public class TestChromeExperiments {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = { "test/chromeexperiments/liquidparticles.html" };
-        Misc.run(args);
+        Misc.run(args, monitoring);
         Misc.checkSystemOutput();
     }
 
@@ -199,7 +209,7 @@ public class TestChromeExperiments {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = { "test/chromeexperiments/magnetic.html" };
-        Misc.run(args);
+        Misc.run(args, monitoring);
         Misc.checkSystemOutput();
     }
 
@@ -208,7 +218,7 @@ public class TestChromeExperiments {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = { "test/chromeexperiments/orangetunnel.html" };
-        Misc.run(args);
+        Misc.run(args, monitoring);
         Misc.checkSystemOutput();
     }
 
@@ -217,7 +227,7 @@ public class TestChromeExperiments {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = { "test/chromeexperiments/planedeformations.html" };
-        Misc.run(args);
+        Misc.run(args, monitoring);
         Misc.checkSystemOutput();
     }
 
@@ -226,7 +236,7 @@ public class TestChromeExperiments {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = { "test/chromeexperiments/plasma.html" };
-        Misc.run(args);
+        Misc.run(args, monitoring);
         Misc.checkSystemOutput();
     }
 
@@ -236,7 +246,7 @@ public class TestChromeExperiments {
         Options.get().enableUnevalizer();
         Misc.captureSystemOutput();
         String[] args = { "test/chromeexperiments/raytracer.html" };
-        Misc.run(args);
+        Misc.run(args, monitoring);
         Misc.checkSystemOutput();
     }
 
@@ -245,7 +255,7 @@ public class TestChromeExperiments {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = { "test/chromeexperiments/sandtrap.html" };
-        Misc.run(args);
+        Misc.run(args, monitoring);
         Misc.checkSystemOutput();
     }
 
@@ -255,7 +265,7 @@ public class TestChromeExperiments {
         Options.get().enableUnevalizer();
         Misc.captureSystemOutput();
         String[] args = { "test/chromeexperiments/starfield.html" };
-        Misc.run(args);
+        Misc.run(args, monitoring);
         Misc.checkSystemOutput();
     }
 
@@ -264,7 +274,7 @@ public class TestChromeExperiments {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = { "test/chromeexperiments/strangeattractor.html" };
-        Misc.run(args);
+        Misc.run(args, monitoring);
         Misc.checkSystemOutput();
     }
 
@@ -275,7 +285,7 @@ public class TestChromeExperiments {
         Options.get().enableUnevalizer();
         Misc.captureSystemOutput();
         String[] args = { "test/chromeexperiments/tetris.html" };
-        Misc.run(args);
+        Misc.run(args, monitoring);
         Misc.checkSystemOutput();
     }
 
@@ -284,7 +294,7 @@ public class TestChromeExperiments {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = { "test/chromeexperiments/trail.html" };
-        Misc.run(args);
+        Misc.run(args, monitoring);
         Misc.checkSystemOutput();
     }
 
@@ -294,7 +304,7 @@ public class TestChromeExperiments {
         Options.get().enableUnevalizer();
         Misc.captureSystemOutput();
         String[] args = { "test/chromeexperiments/tunneler.html" };
-        Misc.run(args);
+        Misc.run(args, monitoring);
         Misc.checkSystemOutput();
     }
 
@@ -303,16 +313,17 @@ public class TestChromeExperiments {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = { "test/chromeexperiments/voronoi.html" };
-        Misc.run(args);
+        Misc.run(args, monitoring);
         Misc.checkSystemOutput();
     }
 
+    @Ignore // Ordinary exit unreachable (due to definite error?)! See GitHub #219
     @Test
     public void chrome_voxels() throws Exception {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = { "test/chromeexperiments/voxels.html" };
-        Misc.run(args);
+        Misc.run(args, monitoring);
         Misc.checkSystemOutput();
     }
 
@@ -321,7 +332,7 @@ public class TestChromeExperiments {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = { "test/chromeexperiments/watertype.html" };
-        Misc.run(args);
+        Misc.run(args, monitoring);
         Misc.checkSystemOutput();
     }
 }

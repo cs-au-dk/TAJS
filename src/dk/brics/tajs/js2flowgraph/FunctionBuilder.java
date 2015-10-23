@@ -68,12 +68,14 @@ import com.google.javascript.jscomp.parsing.parser.trees.WhileStatementTree;
 import com.google.javascript.jscomp.parsing.parser.trees.WithStatementTree;
 import com.google.javascript.jscomp.parsing.parser.trees.YieldExpressionTree;
 import com.google.javascript.jscomp.parsing.parser.util.SourceRange;
+import dk.brics.tajs.analysis.StaticDeterminacyContextSensitivityStrategy;
 import dk.brics.tajs.flowgraph.AbstractNode;
 import dk.brics.tajs.flowgraph.BasicBlock;
 import dk.brics.tajs.flowgraph.Function;
 import dk.brics.tajs.flowgraph.SourceLocation;
 import dk.brics.tajs.flowgraph.jsnodes.AssumeNode;
 import dk.brics.tajs.flowgraph.jsnodes.BeginForInNode;
+import dk.brics.tajs.flowgraph.jsnodes.BeginLoopNode;
 import dk.brics.tajs.flowgraph.jsnodes.BeginWithNode;
 import dk.brics.tajs.flowgraph.jsnodes.BinaryOperatorNode;
 import dk.brics.tajs.flowgraph.jsnodes.CallNode;
@@ -83,6 +85,7 @@ import dk.brics.tajs.flowgraph.jsnodes.DeclareFunctionNode;
 import dk.brics.tajs.flowgraph.jsnodes.DeclareVariableNode;
 import dk.brics.tajs.flowgraph.jsnodes.DeletePropertyNode;
 import dk.brics.tajs.flowgraph.jsnodes.EndForInNode;
+import dk.brics.tajs.flowgraph.jsnodes.EndLoopNode;
 import dk.brics.tajs.flowgraph.jsnodes.EndWithNode;
 import dk.brics.tajs.flowgraph.jsnodes.HasNextPropertyNode;
 import dk.brics.tajs.flowgraph.jsnodes.IfNode;
@@ -96,9 +99,9 @@ import dk.brics.tajs.flowgraph.jsnodes.TypeofNode;
 import dk.brics.tajs.flowgraph.jsnodes.UnaryOperatorNode;
 import dk.brics.tajs.flowgraph.jsnodes.WritePropertyNode;
 import dk.brics.tajs.flowgraph.jsnodes.WriteVariableNode;
+import dk.brics.tajs.options.ExperimentalOptions;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.util.AnalysisException;
-import dk.brics.tajs.util.Collections;
 import dk.brics.tajs.util.Pair;
 
 import java.util.Arrays;
@@ -137,30 +140,30 @@ import static dk.brics.tajs.util.Collections.newSet;
  * and upwards using {@link TranslationResult}.
  * The class is a very large visitor. Utility methods are kept elsewhere, e.g. in {@link FunctionBuilderHelper}.
  */
-class FunctionBuilder extends ParseTreeAuxVisitor<TranslationResult, AstEnv> {
+public class FunctionBuilder extends ParseTreeAuxVisitor<TranslationResult, AstEnv> {
 
     // TODO: enable this to mark lines with `function` or `var` as covered even though they do not have effects.
     private static final boolean USE_REPRESENTATION_NODES = false;
 
     private final ClosureASTUtil closureUtil;
 
+    private final ASTInfo astInfo;
+
     private final FunctionAndBlockManager functionAndBlocksManager;
 
     /**
      * Constructs a new function builder.
      */
-    FunctionBuilder(ClosureASTUtil closureUtil, FunctionAndBlockManager functionAndBlocksManager) {
+    FunctionBuilder(ClosureASTUtil closureUtil, ASTInfo astInfo, FunctionAndBlockManager functionAndBlocksManager) {
         this.closureUtil = closureUtil;
+        this.astInfo = astInfo;
         this.functionAndBlocksManager = functionAndBlocksManager;
     }
 
     /**
      * Registers a value access (read/write), potentially adding relevant assume nodes.
-     *
-     * @see #write(Reference, int, AstEnv)
-     * @see #read(Reference, AstEnv)
      */
-    private static void access(AbstractNode accessNode, Reference target, AstEnv env) {
+    private BasicBlock access(AbstractNode accessNode, Reference target, AstEnv env) {
         // try to make an assume node
         final AssumeNode assumeNode;
         if (target.type == Reference.Type.StaticProperty || target.type == Reference.Type.DynamicProperty) {
@@ -171,11 +174,19 @@ class FunctionBuilder extends ParseTreeAuxVisitor<TranslationResult, AstEnv> {
 
         // add the access
         addNodeToBlock(accessNode, env.getAppendBlock(), assumeNode == null ? env : env.makeStatementLevel(false));
+        BasicBlock appendBlock;
+        if (requiresOwnBlock(accessNode)) {
+            appendBlock = makeSuccessorBasicBlock(env.getFunction(), env.getAppendBlock(), functionAndBlocksManager);
+        } else {
+            appendBlock = env.getAppendBlock();
+        }
 
         // add the assume node
         if (assumeNode != null) {
-            addNodeToBlock(assumeNode, env.getAppendBlock(), env);
+            addNodeToBlock(assumeNode, appendBlock, env);
         }
+
+        return appendBlock;
     }
 
     /**
@@ -216,12 +227,12 @@ class FunctionBuilder extends ParseTreeAuxVisitor<TranslationResult, AstEnv> {
      * Inserts a 'end-scope-type-node'.
      * Useful for {@link EndWithNode} and {@link EndForInNode}
      */
-    private BasicBlock endNodeScopeOrdinarily(AbstractNode endNode, BasicBlock exceptionHandler, AstEnv env) {
+    private BasicBlock endNodeScopeOrdinarily(AbstractNode endNode, BasicBlock scopeExceptionHandler, AstEnv env) {
         BasicBlock appendBlock = env.getAppendBlock();
         AbstractNode lastBodyNode = appendBlock.isEmpty() ? null : appendBlock.getLastNode();
         appendBlock = requiresOwnBlock(lastBodyNode) || requiresOwnBlock(endNode) ? makeSuccessorBasicBlock(env.getFunction(), appendBlock, functionAndBlocksManager) : appendBlock;
         addNodeToBlock(endNode, appendBlock, env);
-        appendBlock.setExceptionHandler(exceptionHandler);
+        appendBlock.setExceptionHandler(scopeExceptionHandler.getSingleSuccessor() /* the first exception handler block is already used for ending the node scope exceptionally */);
         return appendBlock;
     }
 
@@ -321,29 +332,30 @@ class FunctionBuilder extends ParseTreeAuxVisitor<TranslationResult, AstEnv> {
         final Reference targetReference = processedTarget.getResultReference();
 
         int readRegister = updatedValueIsResult ? nextRegister(env) : (getUsableResultRegister(env));
-        AstEnv readEnv = env.makeResultRegister(readRegister).makeStatementLevel(false);
-        read(targetReference, readEnv);
+        AstEnv readEnv = env.makeResultRegister(readRegister).makeStatementLevel(false).makeAppendBlock(processedTarget.getAppendBlock());
+        BasicBlock appendBlock = read(targetReference, readEnv);
 
         // convert to number
         AstEnv coercionEnv;
         if (coerceToNumber) {
             coercionEnv = env.makeResultRegister(nextRegister(env)).makeStatementLevel(false);
-            addNodeToBlock(new UnaryOperatorNode(UnaryOperatorNode.Op.PLUS, readEnv.getResultRegister(), coercionEnv.getResultRegister(), sourceLocation), processedTarget.getAppendBlock(), coercionEnv);
+            addNodeToBlock(new UnaryOperatorNode(UnaryOperatorNode.Op.PLUS, readEnv.getResultRegister(), coercionEnv.getResultRegister(), sourceLocation), appendBlock, coercionEnv);
         } else {
             coercionEnv = env.makeResultRegister(readEnv.getResultRegister());
         }
 
-        AstEnv operandEnv = env.makeResultRegister(nextRegister(env)).makeAppendBlock(processedTarget.getAppendBlock()).makeStatementLevel(false);
+        AstEnv operandEnv = env.makeResultRegister(nextRegister(env)).makeAppendBlock(appendBlock).makeStatementLevel(false);
         TranslationResult processedOperand = process(operand, operandEnv);
+        appendBlock = processedOperand.getAppendBlock();
 
         // apply the operation
         int operationResultRegister = updatedValueIsResult ? getUsableResultRegister(env) : nextRegister(env);
         AstEnv operationEnv = env.makeResultRegister(operationResultRegister).makeStatementLevel(false);
-        addNodeToBlock(new BinaryOperatorNode(op, coercionEnv.getResultRegister(), operandEnv.getResultRegister(), operationEnv.getResultRegister(), sourceLocation), processedOperand.getAppendBlock(), operationEnv);
+        addNodeToBlock(new BinaryOperatorNode(op, coercionEnv.getResultRegister(), operandEnv.getResultRegister(), operationEnv.getResultRegister(), sourceLocation), appendBlock, operationEnv);
 
-        write(targetReference.changeSourceLocation(sourceLocation), operationEnv.getResultRegister(), env.makeAppendBlock(processedOperand.getAppendBlock()));
+        appendBlock = write(targetReference.changeSourceLocation(sourceLocation), operationEnv.getResultRegister(), env.makeAppendBlock(appendBlock));
 
-        return TranslationResult.makeAppendBlock(processedOperand.getAppendBlock());
+        return TranslationResult.makeAppendBlock(appendBlock);
     }
 
     /**
@@ -377,7 +389,7 @@ class FunctionBuilder extends ParseTreeAuxVisitor<TranslationResult, AstEnv> {
                 final AstEnv memberEnv = env.makeResultRegister(nextRegister(env)).makeAppendBlock(processedBase.getAppendBlock()).makeStatementLevel(false);
                 TranslationResult processedMember = process(memberLookupExpression.memberExpression, memberEnv);
                 Reference baseReference = processedBase.getResultReference();
-                Reference reference = new Reference.DynamicProperty(baseReference, baseEnv.getResultRegister(), memberEnv.getResultRegister(), makeSourceLocation(access));
+                Reference reference = new Reference.DynamicProperty(baseReference, baseEnv.getResultRegister(), processedMember.getResultReference(), memberEnv.getResultRegister(), makeSourceLocation(access));
                 return TranslationResult.makeResultReference(reference, processedMember.getAppendBlock());
             default:
                 throw new RuntimeException("Unhandled reference type: " + access.type);
@@ -387,14 +399,14 @@ class FunctionBuilder extends ParseTreeAuxVisitor<TranslationResult, AstEnv> {
     /**
      * Produces a WriteVariableNode or a WritePropertyNode.
      */
-    private static void write(Reference target, int valueRegister, AstEnv env) {
-        writeWithCustomLocation(target, valueRegister, env, target.location);
+    private BasicBlock write(Reference target, int valueRegister, AstEnv env) {
+        return writeWithCustomLocation(target, valueRegister, env, target.location);
     }
 
     /**
      * Produces a WriteVariableNode or a WritePropertyNode, using the given source location.
      */
-    private static void writeWithCustomLocation(Reference target, int valueRegister, AstEnv env, SourceLocation location) {
+    private BasicBlock writeWithCustomLocation(Reference target, int valueRegister, AstEnv env, SourceLocation location) {
         final AbstractNode write;
         switch (target.type) {
             case Variable:
@@ -411,13 +423,13 @@ class FunctionBuilder extends ParseTreeAuxVisitor<TranslationResult, AstEnv> {
             default:
                 throw new RuntimeException("Unhandled write type: " + target.type);
         }
-        access(write, target, env);
+        return access(write, target, env);
     }
 
     /**
      * Produces a ReadVariableNode or a ReadPropertyNode.
      */
-    private static void read(Reference target, AstEnv env) {
+    private BasicBlock read(Reference target, AstEnv env) {
         final AbstractNode read;
         switch (target.type) {
             case Variable:
@@ -434,7 +446,7 @@ class FunctionBuilder extends ParseTreeAuxVisitor<TranslationResult, AstEnv> {
             default:
                 throw new RuntimeException("Unhandled read type: " + target.type);
         }
-        access(read, target, env);
+        return access(read, target, env.makeAppendBlock(env.getAppendBlock()));
     }
 
     /**
@@ -490,7 +502,7 @@ class FunctionBuilder extends ParseTreeAuxVisitor<TranslationResult, AstEnv> {
             switch (resultReference.type) {
                 case Variable:
                     propertyAccessCall = false;
-                    read(resultReference, referenceEnv);
+                    processed = TranslationResult.makeAppendBlock(read(resultReference, referenceEnv));
                     break;
                 case StaticProperty:
                 case DynamicProperty:
@@ -502,7 +514,7 @@ class FunctionBuilder extends ParseTreeAuxVisitor<TranslationResult, AstEnv> {
                         propertyObjectRegister = resultReference.asDynamicProperty().baseRegister;
                         propertyNameRegister = resultReference.asDynamicProperty().propertyRegister;
                     }
-                    read(resultReference, referenceEnv.makeResultRegister(AbstractNode.NO_VALUE)); // the property is resolved twice: once here, and once during the callnode transfer
+                    processed = TranslationResult.makeAppendBlock(read(resultReference, referenceEnv.makeResultRegister(AbstractNode.NO_VALUE) /* the property is resolved twice: once here, and once during the callnode transfer ...*/));
                     break;
                 default:
                     throw new RuntimeException("Unhandled reference type: " + resultReference.type);
@@ -525,7 +537,7 @@ class FunctionBuilder extends ParseTreeAuxVisitor<TranslationResult, AstEnv> {
         if (propertyAccessCall) {
             callNode = new CallNode(constructor, env.getResultRegister(), propertyObjectRegister, propertyNameRegister, propertyNameString, argumentRegisters, location);
         } else {
-            callNode = new CallNode(constructor, false, env.getResultRegister(), baseRegister, funEnv.getResultRegister(), argumentRegisters, location);
+            callNode = new CallNode(constructor, env.getResultRegister(), baseRegister, funEnv.getResultRegister(), argumentRegisters, location);
         }
 
         BasicBlock callBlock = makeSuccessorBasicBlock(env.getFunction(), processed.getAppendBlock(), functionAndBlocksManager);
@@ -593,11 +605,6 @@ class FunctionBuilder extends ParseTreeAuxVisitor<TranslationResult, AstEnv> {
             target = jumpTarget;
         } else {
             Pair<BasicBlock, BasicBlock> jumpThroughPair = wireAndRegisterJumpThroughBlocks(jumpThroughBlocks, functionAndBlocksManager);
-            // if the last jump-through-node is an EndForInNode and we are processing a continue statement, then then lastIteration-field of the node should be 'false'
-            // (would be nice to manage that property elsewhere, but jumpThroughBlocks are created without being specialized for continue/break/throw/return, which simplifies other code)
-            if (!jumpThroughPair.getSecond().isEmpty()) {
-                AbstractNode lastNode = jumpThroughPair.getSecond().getLastNode();
-            }
 
             target = jumpThroughPair.getFirst();
             jumpThroughPair.getSecond().addSuccessor(jumpTarget);
@@ -618,6 +625,7 @@ class FunctionBuilder extends ParseTreeAuxVisitor<TranslationResult, AstEnv> {
         appendBlock.addSuccessor(target);
 
         BasicBlock unreachableBlock = makeBasicBlock(env.getFunction(), appendBlock.getExceptionHandler(), functionAndBlocksManager);
+        functionAndBlocksManager.registerUnreachableSyntacticSuccessor(appendBlock, unreachableBlock);
         return TranslationResult.makeAppendBlock(unreachableBlock);
     }
 
@@ -665,7 +673,8 @@ class FunctionBuilder extends ParseTreeAuxVisitor<TranslationResult, AstEnv> {
     /**
      * Builds a loop of the form ([init];[cond];[inc]){body}.
      */
-    private TranslationResult processLoop(ParseTree initializer, ParseTree condition, ParseTree increment, ParseTree body, boolean defaultConditionIsTrue, SourceLocation conditionLocation /* condition might be null */, AstEnv env) {
+    private TranslationResult processLoop(ParseTree tree, ParseTree initializer, ParseTree condition, ParseTree increment, ParseTree body, boolean defaultConditionIsTrue, SourceLocation conditionLocation /* condition might be null */, AstEnv env) {
+        SourceLocation loopEndLocation = makeSourceLocation(tree); // TODO improve
         int conditionalRegister = nextRegister(env);
 
         // 1. process initializer
@@ -677,52 +686,98 @@ class FunctionBuilder extends ParseTreeAuxVisitor<TranslationResult, AstEnv> {
             processedInitializer = TranslationResult.makeAppendBlock(env.getAppendBlock());
         }
 
+        IfNode ifNode = new IfNode(conditionalRegister, conditionLocation);
+        final BeginLoopNode beginLoopNode;
+        if (Options.get().isLoopUnrollingEnabled()) {
+            beginLoopNode = new BeginLoopNode(ifNode, makeSourceLocation(body));
+        } else {
+            beginLoopNode = null;
+        }
+
         // 2. process condition
-        BasicBlock conditionStartBlock = makeSuccessorBasicBlock(env.getFunction(), processedInitializer.getAppendBlock(), functionAndBlocksManager);
+        BasicBlock firstConditionBlock = makeSuccessorBasicBlock(env.getFunction(), processedInitializer.getAppendBlock(), functionAndBlocksManager);
+
+        if (Options.get().isLoopUnrollingEnabled()) {
+            endNodeScopeExceptionally(new EndLoopNode(beginLoopNode, loopEndLocation), env.makeStatementLevel(true).makeAppendBlock(firstConditionBlock));
+        }
 
         final TranslationResult processedCondition;
         if (defaultConditionIsTrue && condition == null) {
             AbstractNode trueNode = ConstantNode.makeBoolean(true, conditionalRegister, conditionLocation);
             trueNode.setArtificial();
-            addNodeToBlock(trueNode, conditionStartBlock, env.makeStatementLevel(false));
-            processedCondition = TranslationResult.makeAppendBlock(makeSuccessorBasicBlock(env.getFunction(), conditionStartBlock, functionAndBlocksManager));
+            addNodeToBlock(trueNode, firstConditionBlock, env.makeStatementLevel(false));
+            processedCondition = TranslationResult.makeAppendBlock(makeSuccessorBasicBlock(env.getFunction(), firstConditionBlock, functionAndBlocksManager));
         } else {
-            AstEnv conditionEnv = env.makeAppendBlock(conditionStartBlock).makeResultRegister(conditionalRegister).makeStatementLevel(false);
+            AstEnv conditionEnv = env.makeAppendBlock(firstConditionBlock).makeResultRegister(conditionalRegister).makeStatementLevel(false);
             processedCondition = process(condition, conditionEnv);
         }
 
         BasicBlock conditionAppendBlock = processedCondition.getAppendBlock();
 
-        BasicBlock trueBranch = makeSuccessorBasicBlock(env.getFunction(), conditionAppendBlock, functionAndBlocksManager);
-        BasicBlock falseBranch = makeSuccessorBasicBlock(env.getFunction(), conditionAppendBlock, functionAndBlocksManager);
+        if (Options.get().isLoopUnrollingEnabled()) {
+            BasicBlock beginLoopBlock = makeSuccessorBasicBlock(env.getFunction(), conditionAppendBlock, functionAndBlocksManager);
+            addNodeToBlock(beginLoopNode, beginLoopBlock, env.makeStatementLevel(false));
+            conditionAppendBlock = makeSuccessorBasicBlock(env.getFunction(), beginLoopBlock, functionAndBlocksManager);
+        }
 
-        IfNode ifNode = new IfNode(conditionalRegister, conditionLocation);
-        addNodeToBlock(ifNode, conditionAppendBlock, env.makeStatementLevel(false));
-        ifNode.setSuccessors(trueBranch, falseBranch);
+        addNodeToBlock(ifNode, conditionAppendBlock, env.makeStatementLevel(false /* ought to be true! */));
 
-        // 3. process body
-        AstEnv bodyEnv = env.makeUnlabelledContinueAndBreak(conditionStartBlock, falseBranch).makeAppendBlock(trueBranch).makeStatementLevel(true);
-        TranslationResult processedBody = process(body, bodyEnv);
-        BasicBlock trueBlock = processedBody.getAppendBlock();
+        BasicBlock firstBodyBlock = makeSuccessorBasicBlock(env.getFunction(), conditionAppendBlock, functionAndBlocksManager);
+        BasicBlock firstPostLoopBlock = makeSuccessorBasicBlock(env.getFunction(), conditionAppendBlock, functionAndBlocksManager);
+        ifNode.setSuccessors(firstBodyBlock, firstPostLoopBlock);
 
-        // 4. process increment
-        TranslationResult processedIncrement;
+        // 3. process increment (before body, we might need to do a `continue` to the increment)
+        AstEnv bodyEnv = env.makeAppendBlock(firstBodyBlock).makeStatementLevel(true);
+        if (Options.get().isLoopUnrollingEnabled()) {
+            BasicBlock jumpThroughBlock = new BasicBlock(env.getFunction());
+            jumpThroughBlock.setExceptionHandler(env.getAppendBlock().getExceptionHandler());
+            addNodeToBlock(new EndLoopNode(beginLoopNode, loopEndLocation), jumpThroughBlock, env.makeStatementLevel(true));
+
+            bodyEnv = bodyEnv.makeJumpThroughBlock(new JumpThroughBlocks(jumpThroughBlock, functionAndBlocksManager));
+        }
+
+        final BasicBlock firstIncrementBlock;
+        final BasicBlock lastIncrementBlock;
+        final BasicBlock firstContinueBlock;
         if (increment != null) {
-            AstEnv incrementEnv = env.makeAppendBlock(trueBlock).makeStatementLevel(true).makeResultRegister(AbstractNode.NO_VALUE);
-            processedIncrement = process(increment, incrementEnv);
+            firstIncrementBlock = makeBasicBlock(env.getFunction(), firstBodyBlock.getExceptionHandler(), functionAndBlocksManager);
+            AstEnv incrementEnv = bodyEnv.makeAppendBlock(firstIncrementBlock).makeStatementLevel(true).makeResultRegister(AbstractNode.NO_VALUE);
+            lastIncrementBlock = process(increment, incrementEnv).getAppendBlock();
+            firstContinueBlock = firstIncrementBlock;
         } else {
-            processedIncrement = TranslationResult.makeAppendBlock(trueBlock);
+            firstIncrementBlock = null;
+            lastIncrementBlock = null;
+            firstContinueBlock = firstConditionBlock;
         }
 
-        // 5. make back edge
-        trueBlock = processedIncrement.getAppendBlock();
+        // 4. process body
+        bodyEnv = bodyEnv.makeUnlabelledContinueAndBreak(firstContinueBlock, firstPostLoopBlock).makeAppendBlock(firstBodyBlock).makeStatementLevel(true);
+        if (env.hasLoopLabel(tree)) {
+            bodyEnv = bodyEnv.makeLabelledContinue(env.getLoopLabelName(tree), firstContinueBlock);
+        }
+        TranslationResult processedBody = process(body, bodyEnv);
+        BasicBlock lastBodyBlock = processedBody.getAppendBlock();
+
+        // 5. insert increment
+        if (firstIncrementBlock != null) {
+            lastBodyBlock.addSuccessor(firstIncrementBlock);
+            lastBodyBlock = lastIncrementBlock;
+        }
+
+        if (Options.get().isLoopUnrollingEnabled()) {
+            EndLoopNode ordinaryEndLoopNode = new EndLoopNode(beginLoopNode, loopEndLocation);
+            firstPostLoopBlock = endNodeScopeOrdinarily(ordinaryEndLoopNode, conditionAppendBlock.getExceptionHandler(), env.makeAppendBlock(firstPostLoopBlock));
+            firstPostLoopBlock = makeSuccessorBasicBlock(env.getFunction(), firstPostLoopBlock, functionAndBlocksManager);
+        }
+
+        // 6. make back edge
         if (condition != null && Options.get().isUnrollOneAndAHalfEnabled()) {
-            unrollLoopOneAndAHalf(condition, conditionalRegister, conditionStartBlock, trueBlock, trueBranch, falseBranch, conditionLocation, env);
+            unrollLoopOneAndAHalf(condition, conditionalRegister, firstConditionBlock, lastBodyBlock, firstBodyBlock, firstPostLoopBlock, conditionLocation, env);
         } else {
-            trueBlock.addSuccessor(conditionStartBlock);
+            lastBodyBlock.addSuccessor(firstConditionBlock);
         }
 
-        return TranslationResult.makeAppendBlock(falseBranch);
+        return TranslationResult.makeAppendBlock(firstPostLoopBlock);
     }
 
     /**
@@ -792,7 +847,10 @@ class FunctionBuilder extends ParseTreeAuxVisitor<TranslationResult, AstEnv> {
             }
         }
         BasicBlock callBlock = makeSuccessorBasicBlock(env.getFunction(), processed.getAppendBlock(), functionAndBlocksManager);
-        AbstractNode callNode = new CallNode(true, true, env.getResultRegister(), AbstractNode.NO_VALUE, variableEnv.getResultRegister(), elementRegisters, location);
+        AbstractNode callNode = new CallNode(CallNode.LiteralConstructorKinds.ARRAY, env.getResultRegister(), AbstractNode.NO_VALUE, variableEnv.getResultRegister(), elementRegisters, location);
+        if (ExperimentalOptions.ExperimentalOptionsManager.get().isEnabled(StaticDeterminacyContextSensitivityStrategy.StaticDeterminacyOptions.OOPSLA2014)) {
+            StaticDeterminacyContextSensitivityStrategy.SyntacticHints.get().registerLiteral(callNode, new ASTInfo.LiteralTree(tree), astInfo);
+        }
         addNodeToBlock(callNode, callBlock, env);
         BasicBlock postCallBlock = makeSuccessorBasicBlock(env.getFunction(), callBlock, functionAndBlocksManager);
         return TranslationResult.makeAppendBlock(postCallBlock);
@@ -847,7 +905,7 @@ class FunctionBuilder extends ParseTreeAuxVisitor<TranslationResult, AstEnv> {
         EndWithNode envWithNodeJump = new EndWithNode(location);
         envWithNodeJump.setArtificial();
         addNodeToBlock(envWithNodeJump, jumpThroughBlock, env);
-        AstEnv catchBodyEnv = env.makeBaseRegister(childRegister).makeAppendBlock(appendBlock).makeJumpThroughBlock(new JumpThroughBlocks(jumpThroughBlock)).makeStatementLevel(true);
+        AstEnv catchBodyEnv = env.makeBaseRegister(childRegister).makeAppendBlock(appendBlock).makeJumpThroughBlock(new JumpThroughBlocks(jumpThroughBlock, functionAndBlocksManager)).makeStatementLevel(true);
         TranslationResult processedCatchBody = process(tree.catchBody, catchBodyEnv);
 
         // 6. ordinary scope end
@@ -872,37 +930,47 @@ class FunctionBuilder extends ParseTreeAuxVisitor<TranslationResult, AstEnv> {
     TranslationResult process(DoWhileStatementTree tree, AstEnv env) {
         SourceLocation location = makeSourceLocation(tree);
 
-        // 1. make break/continue blocks
-        BasicBlock entryBlock = makeSuccessorBasicBlock(env.getFunction(), env.getAppendBlock(), functionAndBlocksManager);
-        BasicBlock falseBranch = makeBasicBlock(env.getFunction(), env.getAppendBlock().getExceptionHandler(), functionAndBlocksManager);
+        // 1. make blocks for break & continue
+        BasicBlock exceptionHandler = env.getAppendBlock().getExceptionHandler();
+        BasicBlock firstBodyBlock = makeBasicBlock(env.getFunction(), exceptionHandler, functionAndBlocksManager);
+        BasicBlock firstPostLoopBlock = makeBasicBlock(env.getFunction(), exceptionHandler, functionAndBlocksManager);
+        BasicBlock firstConditionBlock = makeBasicBlock(env.getFunction(), exceptionHandler, functionAndBlocksManager);
+
+        env.getAppendBlock().addSuccessor(firstBodyBlock);
 
         // 2. make body
-        AstEnv loopEnv = env.makeUnlabelledContinueAndBreak(entryBlock, falseBranch).makeAppendBlock(entryBlock).makeStatementLevel(true);
+        AstEnv loopEnv = env.makeUnlabelledContinueAndBreak(firstConditionBlock, firstPostLoopBlock).makeAppendBlock(firstBodyBlock).makeStatementLevel(true);
+        if (env.hasLoopLabel(tree)) {
+            loopEnv = loopEnv.makeLabelledContinue(env.getLoopLabelName(tree), firstConditionBlock);
+        }
         TranslationResult processedBody = process(tree.body, loopEnv);
-        BasicBlock trueBlock = processedBody.getAppendBlock();
+        BasicBlock lastBodyBlock = processedBody.getAppendBlock();
 
         // 3. make condition
+        lastBodyBlock.addSuccessor(firstConditionBlock);
         int conditionalRegister = nextRegister(env);
-        BasicBlock postTrueBlock = makeSuccessorBasicBlock(env.getFunction(), trueBlock, functionAndBlocksManager);
-        AstEnv conditionEnv = env.makeResultRegister(conditionalRegister).makeAppendBlock(postTrueBlock).makeStatementLevel(false);
+
+        AstEnv conditionEnv = env.makeResultRegister(conditionalRegister).makeAppendBlock(firstConditionBlock).makeStatementLevel(false);
         TranslationResult processedCondition = process(tree.condition, conditionEnv);
-        BasicBlock condtitionalBlock = processedCondition.getAppendBlock();
+        BasicBlock lastConditionBlock = processedCondition.getAppendBlock();
 
         // 4. make branch
         IfNode ifNode = new IfNode(conditionalRegister, location);
-        ifNode.setSuccessors(entryBlock, falseBranch);
-        addNodeToBlock(ifNode, condtitionalBlock, env.makeStatementLevel(false));
-        condtitionalBlock.addSuccessor(entryBlock);
-        condtitionalBlock.addSuccessor(falseBranch);
+        ifNode.setSuccessors(firstBodyBlock, firstPostLoopBlock);
+        addNodeToBlock(ifNode, lastConditionBlock, env.makeStatementLevel(false));
+        lastConditionBlock.addSuccessor(firstBodyBlock);
+        lastConditionBlock.addSuccessor(firstPostLoopBlock);
 
-        return TranslationResult.makeAppendBlock(falseBranch);
+        return TranslationResult.makeAppendBlock(firstPostLoopBlock);
     }
 
     @Override
     TranslationResult process(MemberLookupExpressionTree tree, AstEnv env) {
-        TranslationResult processedAstInfo = processAccessPartly(tree, env);
-        read(processedAstInfo.getResultReference(), env.makeAppendBlock(processedAstInfo.getAppendBlock()));
-        return processedAstInfo;
+        TranslationResult processed = processAccessPartly(tree, env);
+
+        BasicBlock appendBlock = read(processed.getResultReference(), env.makeAppendBlock(processed.getAppendBlock()));
+        processed = TranslationResult.makeResultReference(processed.getResultReference(), appendBlock);
+        return processed;
     }
 
     @Override
@@ -951,52 +1019,66 @@ class FunctionBuilder extends ParseTreeAuxVisitor<TranslationResult, AstEnv> {
 
         // 4. create conditional (has-next-property) for the loop
         BasicBlock conditionBlock = makeSuccessorBasicBlock(env.getFunction(), appendBlock, functionAndBlocksManager);
+
+        EndForInNode exceptionalEndForIn = new EndForInNode(beginForIn, loopEndLocation);
+        endNodeScopeExceptionally(exceptionalEndForIn, env.makeAppendBlock(conditionBlock).makeStatementLevel(true));
+
         addNodeToBlock(new HasNextPropertyNode(propertyListRegister, conditionRegister, loopStartLocation), conditionBlock, env.makeStatementLevel(false));
 
         BasicBlock trueBranch = makeSuccessorBasicBlock(env.getFunction(), conditionBlock, functionAndBlocksManager);
         BasicBlock falseBranch = makeSuccessorBasicBlock(env.getFunction(), conditionBlock, functionAndBlocksManager);
+
+        // 5. make the end of the loop to account for syntactic BasicBlock.entryBlock computation
+        // (another End is inserted at the end of the loop-body, and the nodetransfer implementation only needs that End node in practice)
+        falseBranch = endNodeScopeOrdinarily(new EndForInNode(beginForIn, loopEndLocation), falseBranch.getExceptionHandler(), env.makeStatementLevel(true).makeAppendBlock(falseBranch));
 
         IfNode ifNode = new IfNode(conditionRegister, loopStartLocation);
         addNodeToBlock(ifNode, conditionBlock, env.makeStatementLevel(false));
         ifNode.setSuccessors(trueBranch, falseBranch);
         ifNode.setArtificial();
 
-        // 5. create iterator (next-property), and procsses the lhs of the 'lhs in rhs'
-        appendBlock = trueBranch;
-        AstEnv loopVariableEnv = env.makeAppendBlock(appendBlock).makeResultRegister(AbstractNode.NO_VALUE).makeStatementLevel(false);
+        falseBranch = makeSuccessorBasicBlock(env.getFunction(), falseBranch, functionAndBlocksManager);
+
+        // 6. create iterator (next-property), and procsses the lhs of the 'lhs in rhs'
+        final AstEnv bodyEnv = env.makeAppendBlock(trueBranch);
+
+        appendBlock = bodyEnv.getAppendBlock();
+
+        AstEnv loopVariableEnv = bodyEnv.makeAppendBlock(appendBlock).makeResultRegister(AbstractNode.NO_VALUE).makeStatementLevel(false);
         TranslationResult processedLoopVariable = processAccessPartly(desugarForInLoopVariable(tree.initializer, loopVariableEnv), loopVariableEnv);
         appendBlock = processedLoopVariable.getAppendBlock();
-        addNodeToBlock(new NextPropertyNode(propertyListRegister, propertyRegister, makeSourceLocation(tree.initializer)), appendBlock, env.makeStatementLevel(false));
-        writeWithCustomLocation(processedLoopVariable.getResultReference(), propertyRegister, env.makeAppendBlock(appendBlock).makeStatementLevel(true), makeSourceLocation(tree.initializer));
+        NextPropertyNode nextPropertyNode = new NextPropertyNode(propertyListRegister, propertyRegister, makeSourceLocation(tree.initializer));
 
-        EndForInNode exceptionalEndForIn = new EndForInNode(beginForIn, loopEndLocation);
-        endNodeScopeExceptionally(exceptionalEndForIn, env.makeAppendBlock(appendBlock).makeStatementLevel(true));
+        addNodeToBlock(nextPropertyNode, appendBlock, bodyEnv.makeStatementLevel(false));
+        writeWithCustomLocation(processedLoopVariable.getResultReference(), propertyRegister, bodyEnv.makeAppendBlock(appendBlock).makeStatementLevel(true), makeSourceLocation(tree.initializer));
 
-        // 6. create body
-        BasicBlock jumpThroughBlock = new BasicBlock(env.getFunction());
+        // 7. create body
+        BasicBlock jumpThroughBlock = new BasicBlock(bodyEnv.getFunction());
         jumpThroughBlock.setExceptionHandler(env.getAppendBlock().getExceptionHandler());
-        addNodeToBlock(new EndForInNode(beginForIn, loopEndLocation), jumpThroughBlock, env.makeStatementLevel(true));
-        AstEnv bodyEnv = env.makeUnlabelledContinueAndBreak(beginForInBlock, falseBranch).makeJumpThroughBlock(new JumpThroughBlocks(jumpThroughBlock)).makeAppendBlock(appendBlock).makeStatementLevel(true);
-        TranslationResult processedBody = process(tree.body, bodyEnv);
+        addNodeToBlock(new EndForInNode(beginForIn, loopEndLocation), jumpThroughBlock, bodyEnv.makeStatementLevel(true));
+        AstEnv syntacticBodyEnv = bodyEnv.makeUnlabelledContinueAndBreak(beginForInBlock, falseBranch).makeJumpThroughBlock(new JumpThroughBlocks(jumpThroughBlock, functionAndBlocksManager)).makeAppendBlock(appendBlock).makeStatementLevel(true);
+        if (env.hasLoopLabel(tree)) {
+            syntacticBodyEnv = syntacticBodyEnv.makeLabelledContinue(env.getLoopLabelName(tree), beginForInBlock);
+        }
+        TranslationResult processedBody = process(tree.body, syntacticBodyEnv);
         BasicBlock endOfBody = processedBody.getAppendBlock();
 
-        // 7. end the for-in
-        EndForInNode endForIn = new EndForInNode(beginForIn, loopEndLocation);
-        BasicBlock backEdge = endNodeScopeOrdinarily(endForIn, endOfBody.getExceptionHandler(), env.makeStatementLevel(true).makeAppendBlock(endOfBody));
+        endOfBody = endNodeScopeOrdinarily(new EndForInNode(beginForIn, loopEndLocation), endOfBody.getExceptionHandler(), env.makeStatementLevel(true).makeAppendBlock(endOfBody));
 
-        // 8. wire blocks together
-        endOfBody.addSuccessor(backEdge);
-        backEdge.addSuccessor(beginForInBlock);
+        endOfBody.addSuccessor(beginForInBlock);
 
-        falseBranch.setExceptionHandler(env.getAppendBlock().getExceptionHandler());
+        // falseBranch.setExceptionHandler(env.getAppendBlock().getExceptionHandler());
 
         return TranslationResult.makeAppendBlock(falseBranch);
     }
 
     @Override
     TranslationResult process(ForStatementTree tree, AstEnv env) {
+        if (ExperimentalOptions.ExperimentalOptionsManager.get().isEnabled(StaticDeterminacyContextSensitivityStrategy.StaticDeterminacyOptions.OOPSLA2014)) {
+            StaticDeterminacyContextSensitivityStrategy.SyntacticHints.get().registerLoop(new ASTInfo.LoopTree(tree), env, astInfo);
+        }
         ParseTree condition = tree.condition.type == ParseTreeType.NULL ? null : tree.condition;
-        return processLoop(tree.initializer, condition, tree.increment, tree.body, true, makeSourceLocation(tree.condition), env);
+        return processLoop(tree, tree.initializer, condition, tree.increment, tree.body, true, makeSourceLocation(tree.condition), env);
     }
 
     @Override
@@ -1007,7 +1089,9 @@ class FunctionBuilder extends ParseTreeAuxVisitor<TranslationResult, AstEnv> {
     @Override
     TranslationResult process(FunctionDeclarationTree tree, AstEnv env) {
         String name = tree.name == null ? null : tree.name.value;
-        processFunctionDeclaration(tree.kind, name, tree.formalParameterList, tree.functionBody, env, makeSourceLocation(tree));
+        Function function = processFunctionDeclaration(tree.kind, name, tree.formalParameterList, tree.functionBody, env, makeSourceLocation(tree));
+        Set<String> closureVariables = astInfo.getFunctionClosureVariables().get(tree);
+        function.getClosureVariableNames().addAll(closureVariables == null ? newSet() : closureVariables);
         return TranslationResult.makeAppendBlock(env.getAppendBlock());
     }
 
@@ -1045,10 +1129,11 @@ class FunctionBuilder extends ParseTreeAuxVisitor<TranslationResult, AstEnv> {
                     rhsEnv = rhsEnv.makeResultRegister(unevalHack.resultRegister);
                 }
 
-                final TranslationResult processed = process(rhs, rhsEnv);
+                TranslationResult processed = process(rhs, rhsEnv);
 
                 if (unevalHack == null) {
-                    write(processedLhs.getResultReference(), rhsEnv.getResultRegister(), env.makeAppendBlock(processed.getAppendBlock()));
+                    BasicBlock writeAppendBlock = write(processedLhs.getResultReference(), rhsEnv.getResultRegister(), env.makeAppendBlock(processed.getAppendBlock()));
+                    processed = TranslationResult.makeAppendBlock(writeAppendBlock);
                 }
 
                 return processed;
@@ -1082,12 +1167,21 @@ class FunctionBuilder extends ParseTreeAuxVisitor<TranslationResult, AstEnv> {
 
     @Override
     TranslationResult process(LabelledStatementTree tree, AstEnv env) {
+        ParseTree statement = tree.statement;
+
         String name = tree.name.value;
-        BasicBlock continueBlock = makeSuccessorBasicBlock(env.getFunction(), env.getAppendBlock(), functionAndBlocksManager);
         BasicBlock breakBlock = makeBasicBlock(env.getFunction(), env.getAppendBlock().getExceptionHandler(), functionAndBlocksManager);
         // note: it is a syntax error to try to continue to a non-iteration-statement label.
-        AstEnv labelledEnv = env.makeAppendBlock(continueBlock).makeLabelledContinueAndBreak(name, continueBlock, breakBlock).makeStatementLevel(true);
-        TranslationResult processed = process(tree.statement, labelledEnv);
+        AstEnv labelledEnv = env.makeLabelledBreak(name, breakBlock).makeStatementLevel(true);
+
+        boolean isLoopStatement = statement instanceof ForStatementTree ||
+                statement instanceof WhileStatementTree ||
+                statement instanceof ForInStatementTree ||
+                statement instanceof DoWhileStatementTree;
+        if (isLoopStatement) {
+            labelledEnv = labelledEnv.makeLoopLabelName(statement, name);
+        }
+        TranslationResult processed = process(statement, labelledEnv);
 
         processed.getAppendBlock().addSuccessor(breakBlock);
         return TranslationResult.makeAppendBlock(breakBlock);
@@ -1095,9 +1189,10 @@ class FunctionBuilder extends ParseTreeAuxVisitor<TranslationResult, AstEnv> {
 
     @Override
     TranslationResult process(IdentifierExpressionTree tree, AstEnv env) {
-        TranslationResult processedAstInfo = processAccessPartly(tree, env);
-        read(processedAstInfo.getResultReference(), env);
-        return processedAstInfo;
+        TranslationResult processed = processAccessPartly(tree, env);
+        BasicBlock append = read(processed.getResultReference(), env);
+        processed = TranslationResult.makeResultReference(processed.getResultReference(), append);
+        return processed;
     }
 
     @Override
@@ -1108,7 +1203,11 @@ class FunctionBuilder extends ParseTreeAuxVisitor<TranslationResult, AstEnv> {
     @Override
     TranslationResult process(ObjectLiteralExpressionTree tree, AstEnv env) {
         final int thisRegister = getUsableResultRegister(env);
-        addNodeToBlock(new NewObjectNode(thisRegister, makeSourceLocation(tree)), env.getAppendBlock(), env);
+        NewObjectNode node = new NewObjectNode(thisRegister, makeSourceLocation(tree));
+        addNodeToBlock(node, env.getAppendBlock(), env);
+        if (ExperimentalOptions.ExperimentalOptionsManager.get().isEnabled(StaticDeterminacyContextSensitivityStrategy.StaticDeterminacyOptions.OOPSLA2014)) {
+            StaticDeterminacyContextSensitivityStrategy.SyntacticHints.get().registerLiteral(node, new ASTInfo.LiteralTree(tree), astInfo);
+        }
         final AstEnv propertyEnv = env.makeThisRegister(thisRegister).makeStatementLevel(false);
         return processList(tree.propertyNameAndValues, propertyEnv);
     }
@@ -1120,9 +1219,10 @@ class FunctionBuilder extends ParseTreeAuxVisitor<TranslationResult, AstEnv> {
 
     @Override
     TranslationResult process(MemberExpressionTree tree, AstEnv env) {
-        TranslationResult processedAstInfo = processAccessPartly(tree, env);
-        read(processedAstInfo.getResultReference(), env.makeAppendBlock(processedAstInfo.getAppendBlock()));
-        return processedAstInfo;
+        TranslationResult processed = processAccessPartly(tree, env);
+        BasicBlock appendBlock = read(processed.getResultReference(), env.makeAppendBlock(processed.getAppendBlock()));
+        processed = TranslationResult.makeResultReference(processed.getResultReference(), appendBlock);
+        return processed;
     }
 
     @Override
@@ -1182,28 +1282,29 @@ class FunctionBuilder extends ParseTreeAuxVisitor<TranslationResult, AstEnv> {
                     throw new AnalysisException("Unhandled child type of switch:" + caseTree.type);
             }
 
-            // 3.2. set up blocks
-            oldTrueBranch = trueBranch;
-
-            trueBranch = makeSuccessorBasicBlock(env.getFunction(), processedSequence.getAppendBlock(), functionAndBlocksManager);
-            falseBranch = makeSuccessorBasicBlock(env.getFunction(), processedSequence.getAppendBlock(), functionAndBlocksManager);
-
-            if (oldTrueBranch != null && !oldTrueBranch.getSuccessors().contains(returnBlock)) {
-                oldTrueBranch.addSuccessor(trueBranch);
-            }
-
-            // 3.3. create comparison
+            // 3.2. create comparison
             processedSequence = process(expression, caseEnv.makeResultRegister(caseRegister).makeAppendBlock(processedSequence.getAppendBlock()).makeStatementLevel(false));
 
             BinaryOperatorNode equalityNode = new BinaryOperatorNode(BinaryOperatorNode.Op.SEQ, operandRegister, caseRegister, comparisonRegister, location);
             addNodeToBlock(equalityNode, processedSequence.getAppendBlock(), caseEnv.makeStatementLevel(false));
 
-            // 3.4. dispatch on comparison result
+            // 3.3. dispatch on comparison result
+            oldTrueBranch = trueBranch;
+
+            BasicBlock equalityCheckAppendBlock = processedSequence.getAppendBlock();
+            trueBranch = makeSuccessorBasicBlock(env.getFunction(), equalityCheckAppendBlock, functionAndBlocksManager);
+            falseBranch = makeSuccessorBasicBlock(env.getFunction(), equalityCheckAppendBlock, functionAndBlocksManager);
+
+            if (oldTrueBranch != null && !oldTrueBranch.getSuccessors().contains(returnBlock)) {
+                oldTrueBranch.addSuccessor(trueBranch);
+            }
+
             IfNode ifNode = new IfNode(comparisonRegister, location);
-            addNodeToBlock(ifNode, processedSequence.getAppendBlock(), caseEnv.makeAppendBlock(processedSequence.getAppendBlock()).makeStatementLevel(false));
+            AstEnv ifEnv = caseEnv.makeAppendBlock(equalityCheckAppendBlock).makeStatementLevel(false);
+            addNodeToBlock(ifNode, ifEnv.getAppendBlock(), ifEnv);
             ifNode.setSuccessors(trueBranch, falseBranch);
 
-            // 3.5. handle body
+            // 3.4. handle body
             TranslationResult processedBody = processList(body, caseEnv.makeAppendBlock(trueBranch));
             trueBranch = processedBody.getAppendBlock();
             processedSequence = TranslationResult.makeAppendBlock(falseBranch);
@@ -1220,7 +1321,7 @@ class FunctionBuilder extends ParseTreeAuxVisitor<TranslationResult, AstEnv> {
             if (!lastCaseIsDefaultCase) {
                 // Actual switch behaviour: if no branches are matched, the default branch is taken - with fallthrough to the succeeding branches!
                 // We consider it a weird programming style, and choose not to make a complex flowgraph to handle that case...
-                throw new AnalysisException("No support for default-case in non-last position");
+                throw new AnalysisException(makeSourceLocation(tree) + ": No support for default-case in non-last position");
             }
             // 5. handle default case
             // 5.1 : propagate from either case
@@ -1320,7 +1421,7 @@ class FunctionBuilder extends ParseTreeAuxVisitor<TranslationResult, AstEnv> {
             // mark the nodes for the exceptional flow as duplicates
             setDuplicateBlocks(newSet(exceptionalFinallyBlocks), newSet(), newSet(Arrays.asList(finallyCatchNode, finallyRethrowNode)), exceptionalStartFinallyBlock, ordinaryFinallyStartBlock);
 
-            finallyJumpThroughBlocks = new JumpThroughBlocks(ordinaryFinallyStartBlock, ordinarilyProcessedFinally.getAppendBlock(), ordinaryFinallyBlocks);
+            finallyJumpThroughBlocks = new JumpThroughBlocks(ordinaryFinallyStartBlock, ordinarilyProcessedFinally.getAppendBlock(), ordinaryFinallyBlocks, functionAndBlocksManager);
         } else {
             finallyJumpThroughBlocks = null;
             ordinarilyProcessedFinally = TranslationResult.makeAppendBlock(ordinaryFinallyStartBlock);
@@ -1348,10 +1449,7 @@ class FunctionBuilder extends ParseTreeAuxVisitor<TranslationResult, AstEnv> {
 
             // the non-exceptional catch is followed by the non-exceptional finallly
             lastCatchBlock.addSuccessor(ordinaryFinallyStartBlock);
-            if (exceptionalStartFinallyBlock != null) {
-                // the exceptional catch is followed by the exceptional finallly
-                lastCatchBlock.getExceptionHandler().addSuccessor(exceptionalStartFinallyBlock);
-            }
+            // (the exceptional catch is followed by the exceptional finallly - but this is handled through the jumpThroughBlocks)
         }
 
         return ordinarilyProcessedFinally;
@@ -1366,15 +1464,15 @@ class FunctionBuilder extends ParseTreeAuxVisitor<TranslationResult, AstEnv> {
             addNodeToBlock(ConstantNode.makeNumber(-1 * number, env.getResultRegister(), makeSourceLocation(tree)), env.getAppendBlock(), env);
             return TranslationResult.makeAppendBlock(env.getAppendBlock());
         }
-        final TranslationResult processedSub;
+        TranslationResult processedSub;
         final AbstractNode node;
         SourceLocation sourceLocation = makeSourceLocation(tree);
         switch (tree.operator.type) {
             case TYPEOF: {
                 // typeof is a special unary operator, with two variants
                 if (operand.type == ParseTreeType.IDENTIFIER_EXPRESSION) {
-                    processedSub = TranslationResult.makeAppendBlock(env.getAppendBlock());
                     node = new TypeofNode(operand.asIdentifierExpression().identifierToken.value, env.getResultRegister(), sourceLocation, makeSourceLocation(operand));
+                    processedSub = TranslationResult.makeAppendBlock(env.getAppendBlock());
                 } else {
                     AstEnv subEnv = env.makeResultRegister(nextRegister(env));
                     processedSub = process(operand, subEnv.makeStatementLevel(false));
@@ -1438,7 +1536,7 @@ class FunctionBuilder extends ParseTreeAuxVisitor<TranslationResult, AstEnv> {
     @Override
     TranslationResult process(VariableDeclarationListTree tree, AstEnv env) {
         if (tree.declarationType != TokenType.VAR) {
-            throw new AnalysisException(makeSourceLocation(tree) + ": Only var declarations supported");
+            throw new AnalysisException(makeSourceLocation(tree) + ": Only var declarations supported, " + tree.declarationType + " is not supported");
         }
         return processList(tree.declarations, env.makeStatementLevel(true));
     }
@@ -1472,7 +1570,10 @@ class FunctionBuilder extends ParseTreeAuxVisitor<TranslationResult, AstEnv> {
 
     @Override
     TranslationResult process(WhileStatementTree tree, AstEnv env) {
-        return processLoop(null, tree.condition, null, tree.body, false, makeSourceLocation(tree.condition), env);
+        if (ExperimentalOptions.ExperimentalOptionsManager.get().isEnabled(StaticDeterminacyContextSensitivityStrategy.StaticDeterminacyOptions.OOPSLA2014)) {
+            StaticDeterminacyContextSensitivityStrategy.SyntacticHints.get().registerLoop(new ASTInfo.LoopTree(tree), env, astInfo);
+        }
+        return processLoop(tree, null, tree.condition, null, tree.body, false, makeSourceLocation(tree.condition), env);
     }
 
     @Override
@@ -1495,11 +1596,11 @@ class FunctionBuilder extends ParseTreeAuxVisitor<TranslationResult, AstEnv> {
         BasicBlock jumpThroughBlock = new BasicBlock(env.getFunction());
         jumpThroughBlock.setExceptionHandler(env.getAppendBlock().getExceptionHandler());
         addNodeToBlock(new EndWithNode(location), jumpThroughBlock, env);
-        AstEnv bodyEnv = env.makeBaseRegister(nextRegister(env)).makeAppendBlock(appendBlock).makeJumpThroughBlock(new JumpThroughBlocks(jumpThroughBlock)).makeStatementLevel(true);
+        AstEnv bodyEnv = env.makeBaseRegister(nextRegister(env)).makeAppendBlock(appendBlock).makeJumpThroughBlock(new JumpThroughBlocks(jumpThroughBlock, functionAndBlocksManager)).makeStatementLevel(true);
         TranslationResult processedBody = process(tree.body, bodyEnv);
         appendBlock = processedBody.getAppendBlock();
 
-        appendBlock = endNodeScopeOrdinarily(new EndWithNode(location), env.getAppendBlock().getExceptionHandler(), env.makeAppendBlock(appendBlock));
+        appendBlock = endNodeScopeOrdinarily(new EndWithNode(location), appendBlock.getExceptionHandler(), env.makeAppendBlock(appendBlock));
 
         return TranslationResult.makeAppendBlock(appendBlock);
     }
@@ -1508,7 +1609,7 @@ class FunctionBuilder extends ParseTreeAuxVisitor<TranslationResult, AstEnv> {
     TranslationResult process(ThisExpressionTree tree, AstEnv env) {
         TranslationResult processedAstInfo = processAccessPartly(tree, env);
         env.getFunction().setUsesThis(true);
-        read(processedAstInfo.getResultReference(), env.makeBaseRegister(AbstractNode.NO_VALUE));
+        processedAstInfo = TranslationResult.makeAppendBlock(read(processedAstInfo.getResultReference(), env.makeBaseRegister(AbstractNode.NO_VALUE)));
         return processedAstInfo;
     }
 
@@ -1602,7 +1703,7 @@ class FunctionBuilder extends ParseTreeAuxVisitor<TranslationResult, AstEnv> {
 
         // 3. call
         BasicBlock callBlock = makeSuccessorBasicBlock(env.getFunction(), env.getAppendBlock(), functionAndBlocksManager);
-        addNodeToBlock(new CallNode(true, false, env.getResultRegister(), AbstractNode.NO_VALUE, variableEnv.getResultRegister(), args, location), callBlock, env);
+        addNodeToBlock(new CallNode(CallNode.LiteralConstructorKinds.REGEXP, env.getResultRegister(), AbstractNode.NO_VALUE, variableEnv.getResultRegister(), args, location), callBlock, env);
         return TranslationResult.makeAppendBlock(makeSuccessorBasicBlock(env.getFunction(), callBlock, functionAndBlocksManager));
     }
 
@@ -1617,111 +1718,111 @@ class FunctionBuilder extends ParseTreeAuxVisitor<TranslationResult, AstEnv> {
 
     @Override
     TranslationResult process(DebuggerStatementTree tree, AstEnv env) {
-        throw new NotImplemented();
+        throw new NotImplemented(tree, tree.type.toString());
     }
 
     @Override
     TranslationResult process(DefaultClauseTree tree, AstEnv env) {
-        throw new NotImplemented();
+        throw new NotImplemented(tree, tree.type.toString());
     }
 
     @Override
     TranslationResult process(GetAccessorTree tree, AstEnv env) {
-        throw new NotImplemented();
+        throw new NotImplemented(tree, tree.type.toString());
     }
 
     @Override
     TranslationResult process(SetAccessorTree tree, AstEnv env) {
-        throw new NotImplemented();
+        throw new NotImplemented(tree, tree.type.toString());
     }
 
     @Override
     TranslationResult process(FormalParameterListTree tree, AstEnv env) {
-        throw new NotImplemented();
+        throw new NotImplemented(tree, tree.type.toString());
     }
 
     @Override
     TranslationResult process(DefaultParameterTree tree, AstEnv env) {
-        throw new NotImplemented();
+        throw new NotImplemented(tree, tree.type.toString());
     }
 
     @Override
     TranslationResult process(RestParameterTree tree, AstEnv env) {
-        throw new NotImplemented();
+        throw new NotImplemented(tree, tree.type.toString());
     }
 
     @Override
     TranslationResult process(SpreadExpressionTree tree, AstEnv env) {
-        throw new NotImplemented();
+        throw new NotImplemented(tree, tree.type.toString());
     }
 
     @Override
     TranslationResult process(ClassDeclarationTree tree, AstEnv env) {
-        throw new NotImplemented();
+        throw new NotImplemented(tree, tree.type.toString());
     }
 
     @Override
     TranslationResult process(SuperExpressionTree tree, AstEnv env) {
-        throw new NotImplemented();
+        throw new NotImplemented(tree, tree.type.toString());
     }
 
     @Override
     TranslationResult process(YieldExpressionTree tree, AstEnv env) {
-        throw new NotImplemented();
+        throw new NotImplemented(tree, tree.type.toString());
     }
 
     @Override
     TranslationResult process(ForOfStatementTree tree, AstEnv env) {
-        throw new NotImplemented();
+        throw new NotImplemented(tree, tree.type.toString());
     }
 
     @Override
     TranslationResult process(ExportDeclarationTree tree, AstEnv env) {
-        throw new NotImplemented();
+        throw new NotImplemented(tree, tree.type.toString());
     }
 
     @Override
     TranslationResult process(ExportSpecifierTree tree, AstEnv env) {
-        throw new NotImplemented();
+        throw new NotImplemented(tree, tree.type.toString());
     }
 
     @Override
     TranslationResult process(ImportDeclarationTree tree, AstEnv env) {
-        throw new NotImplemented();
+        throw new NotImplemented(tree, tree.type.toString());
     }
 
     @Override
     TranslationResult process(ImportSpecifierTree tree, AstEnv env) {
-        throw new NotImplemented();
+        throw new NotImplemented(tree, tree.type.toString());
     }
 
     @Override
     TranslationResult process(ModuleImportTree tree, AstEnv env) {
-        throw new NotImplemented();
+        throw new NotImplemented(tree, tree.type.toString());
     }
 
     @Override
     TranslationResult process(MissingPrimaryExpressionTree tree, AstEnv env) {
-        throw new NotImplemented();
+        throw new NotImplemented(tree, tree.type.toString());
     }
 
     @Override
     TranslationResult processIllegalToken(ParseTree tree, AstEnv env) {
-        throw new NotImplemented();
+        throw new NotImplemented(tree, tree.type.toString());
     }
 
     @Override
     TranslationResult process(ComputedPropertyAssignmentTree tree, AstEnv env) {
-        throw new NotImplemented();
+        throw new NotImplemented(tree, tree.type.toString());
     }
 
     @Override
     TranslationResult processTemplateString(LiteralExpressionTree tree, AstEnv env) {
-        throw new NotImplemented();
+        throw new NotImplemented(tree, tree.type.toString());
     }
 
     @Override
     TranslationResult unsupportedLanguageFeature(ParseTree node, String feature, AstEnv env) {
-        throw new NotImplemented();
+        throw new NotImplemented(node, node.type.toString());
     }
 }

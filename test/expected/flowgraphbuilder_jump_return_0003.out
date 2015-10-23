@@ -30,25 +30,25 @@ fg2: function()
     node 11: exceptional-return (test/flowgraphbuilder/flowgraph_builder_jump_return_0003.js:1:1)
     ->[]
 function f()
-  block 9:
-    node 12: constant[true,v4] (test/flowgraphbuilder/flowgraph_builder_jump_return_0003.js:6:17)
-    node 13: write-variable[v4,'v']* (test/flowgraphbuilder/flowgraph_builder_jump_return_0003.js:6:13)
-    ->[block 14]
-  block 10: [entry]
-    node 14: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder_jump_return_0003.js:1:1)
-    ->[block 11]
+  block 9: [entry]
+    node 12: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder_jump_return_0003.js:1:1)
+    ->[block 10]
+  block 10:
+    node 13: constant[undefined,v1]* (test/flowgraphbuilder/flowgraph_builder_jump_return_0003.js:4:13)
+    ->[block 12] ~>[block 11]
   block 11:
-    node 15: constant[undefined,v1]* (test/flowgraphbuilder/flowgraph_builder_jump_return_0003.js:4:13)
-    ->[block 13] ~>[block 12]
-  block 12:
-    node 16: catch[v2] (test/flowgraphbuilder/flowgraph_builder_jump_return_0003.js:3:9)
-    node 17(~12): constant[true,v3] (test/flowgraphbuilder/flowgraph_builder_jump_return_0003.js:6:17)
-    node 18(~13): write-variable[v3,'v']* (test/flowgraphbuilder/flowgraph_builder_jump_return_0003.js:6:13)
-    node 19: throw[v2]* (test/flowgraphbuilder/flowgraph_builder_jump_return_0003.js:3:9)
+    node 14: catch[v2] (test/flowgraphbuilder/flowgraph_builder_jump_return_0003.js:3:9)
+    node 15(~20): constant[true,v3] (test/flowgraphbuilder/flowgraph_builder_jump_return_0003.js:6:17)
+    node 16(~21): write-variable[v3,'v']* (test/flowgraphbuilder/flowgraph_builder_jump_return_0003.js:6:13)
+    node 17: throw[v2]* (test/flowgraphbuilder/flowgraph_builder_jump_return_0003.js:3:9)
     ->[block 15]
+  block 12:
+    node 18(~20): constant[true,v4] (test/flowgraphbuilder/flowgraph_builder_jump_return_0003.js:6:17)
+    node 19(~21): write-variable[v4,'v']* (test/flowgraphbuilder/flowgraph_builder_jump_return_0003.js:6:13)
+    ->[block 14]
   block 13:
-    node 20(~12): constant[true,v4] (test/flowgraphbuilder/flowgraph_builder_jump_return_0003.js:6:17)
-    node 21(~13): write-variable[v4,'v']* (test/flowgraphbuilder/flowgraph_builder_jump_return_0003.js:6:13)
+    node 20: constant[true,v4] (test/flowgraphbuilder/flowgraph_builder_jump_return_0003.js:6:17)
+    node 21: write-variable[v4,'v']* (test/flowgraphbuilder/flowgraph_builder_jump_return_0003.js:6:13)
     ->[block 14]
   block 14: [exit-ordinary]
     node 22: return[v1] (test/flowgraphbuilder/flowgraph_builder_jump_return_0003.js:11:1)

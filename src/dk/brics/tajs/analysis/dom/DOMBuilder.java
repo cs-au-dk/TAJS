@@ -17,20 +17,38 @@
 package dk.brics.tajs.analysis.dom;
 
 import dk.brics.tajs.analysis.InitialStateBuilder;
-import dk.brics.tajs.analysis.State;
 import dk.brics.tajs.analysis.dom.ajax.AjaxBuilder;
 import dk.brics.tajs.analysis.dom.core.CoreBuilder;
+import dk.brics.tajs.analysis.dom.core.DOMDocument;
+import dk.brics.tajs.analysis.dom.core.DOMNamedNodeMap;
+import dk.brics.tajs.analysis.dom.event.Event;
 import dk.brics.tajs.analysis.dom.event.EventBuilder;
+import dk.brics.tajs.analysis.dom.event.MouseEvent;
 import dk.brics.tajs.analysis.dom.html.HTMLBuilder;
+import dk.brics.tajs.analysis.dom.html.HTMLCollection;
+import dk.brics.tajs.analysis.dom.html5.AudioContext;
+import dk.brics.tajs.analysis.dom.html5.AudioDestinationNode;
 import dk.brics.tajs.analysis.dom.html5.HTML5Builder;
+import dk.brics.tajs.analysis.dom.html5.OscillatorNode;
+import dk.brics.tajs.analysis.dom.html5.ScriptProcessorNode;
+import dk.brics.tajs.analysis.dom.style.CSSStyleDeclaration;
 import dk.brics.tajs.analysis.dom.style.StyleBuilder;
 import dk.brics.tajs.analysis.dom.view.ViewBuilder;
 import dk.brics.tajs.lattice.ObjectLabel;
+import dk.brics.tajs.lattice.State;
+import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.options.Options;
+import dk.brics.tajs.util.AnalysisException;
+import dk.brics.tajs.util.Collections;
 import net.htmlparser.jericho.Element;
 import net.htmlparser.jericho.Source;
 
-import java.util.Collections;
+import java.util.Arrays;
+import java.util.Set;
+
+import static dk.brics.tajs.analysis.dom.DOMFunctions.createDOMProperty;
+import static dk.brics.tajs.util.Collections.newSet;
+import static dk.brics.tajs.util.Collections.singleton;
 
 /**
  * Setup the DOM browser model.
@@ -57,12 +75,17 @@ import java.util.Collections;
  */
 public class DOMBuilder {
 
+    private static final Set<ObjectLabel> ALL_HTML_OBJECT_LABELS = Collections.newSet();
+
+    private static boolean isDoneBuildingHTMLObjectLabels = false;
+
     /**
      * Construct the initial DOM objects.
      * Its assumed that WINDOW is added to the state somewhere else before this function is invoked since its the
      * global objects when running in DOM mode.
      */
     public static void addInitialState(State s, Source document) {
+        isDoneBuildingHTMLObjectLabels = false;
         // Reset DOM Registry
         DOMRegistry.reset();
 
@@ -91,9 +114,63 @@ public class DOMBuilder {
         // Build initial AJAX state
         AjaxBuilder.build(s);
 
-        if (document != null)
+        ALL_HTML_OBJECT_LABELS.addAll(HTML5Builder.HTML5_OBJECT_LABELS);
+        ALL_HTML_OBJECT_LABELS.addAll(HTMLBuilder.HTML4_OBJECT_LABELS);
+
+        isDoneBuildingHTMLObjectLabels = true;
+
+        // Set some shared properties on DOM elements due to circularity, and convenience
+        s.writeProperty(singleton(HTMLCollection.INSTANCES), Value.makeAnyStrUInt(), Value.makeObject(ALL_HTML_OBJECT_LABELS), false, false);
+
+        Value cssProperty = Value.makeObject(CSSStyleDeclaration.STYLEDECLARATION).setReadOnly();
+        Value htmlElementsProperty = Value.makeObject(ALL_HTML_OBJECT_LABELS).joinNull().setReadOnly();
+        Value uintProperty = Value.makeAnyNumUInt().setReadOnly();
+
+        for (ObjectLabel element : ALL_HTML_OBJECT_LABELS) {
+            createDOMProperty(s, element, "clientWidth", uintProperty);
+            createDOMProperty(s, element, "clientHeight", uintProperty);
+            createDOMProperty(s, element, "scrollWidth", uintProperty);
+            createDOMProperty(s, element, "scrollHeight", uintProperty);
+            createDOMProperty(s, element, "style", cssProperty);
+            createDOMProperty(s, element, "firstChild", htmlElementsProperty);
+            createDOMProperty(s, element, "parentNode", htmlElementsProperty);
+            createDOMProperty(s, element, "lastChild", htmlElementsProperty);
+            createDOMProperty(s, element, "previousSibling", htmlElementsProperty);
+            createDOMProperty(s, element, "nextSibling", htmlElementsProperty);
+            createDOMProperty(s, element, "children", Value.makeObject(HTMLCollection.INSTANCES));
+            createDOMProperty(s, element, "attributes", Value.makeObject(DOMNamedNodeMap.INSTANCES));
+            createDOMProperty(s, element, "ownerDocument", Value.makeObject(DOMDocument.INSTANCES).joinNull().setReadOnly());
+        }
+
+        createDOMProperty(s, Event.PROTOTYPE, "target", Value.makeObject(getAllDOMEventTargets()));
+        createDOMProperty(s, Event.PROTOTYPE, "currentTarget", htmlElementsProperty);
+        createDOMProperty(s, MouseEvent.INSTANCES, "relatedTarget", htmlElementsProperty);
+
+        Set<ObjectLabel> htmlElementsAndWindow = newSet(ALL_HTML_OBJECT_LABELS);
+        htmlElementsAndWindow.add(DOMWindow.WINDOW);
+        for (ObjectLabel element : htmlElementsAndWindow) {
+            createDOMProperty(s, element, "onsubmit", Value.makeNull());
+            createDOMProperty(s, element, "onchange", Value.makeNull());
+        }
+
+        createDOMProperty(s, DOMDocument.INSTANCES, "defaultView", Value.makeObject(DOMWindow.WINDOW).joinNull().setReadOnly());
+
+        for (ObjectLabel instance : Arrays.asList(AudioDestinationNode.INSTANCES, ScriptProcessorNode.INSTANCES, OscillatorNode.INSTANCES) /* + other instances of AudioNode ... */) {
+            createDOMProperty(s, instance, "context", Value.makeObject(AudioContext.INSTANCES).setReadOnly());
+            createDOMProperty(s, instance, "numberOfInputs", Value.makeAnyNum().setReadOnly());
+            createDOMProperty(s, instance, "numberOfOutputs", Value.makeAnyNum().setReadOnly());
+            createDOMProperty(s, instance, "channelCount", Value.makeAnyNum());
+            createDOMProperty(s, instance, "channelCountMode", Value.makeAnyStr());
+            createDOMProperty(s, instance, "channelInterpretation", Value.makeAnyStr());
+        }
+
+        if (document != null) {
             buildHTML(s, document);
+        }else{
+            DOMFunctions.makeAnyHTMLNodeList(s);
+        }
     }
+
 
     /**
      * Build model of the HTML page.
@@ -131,5 +208,19 @@ public class DOMBuilder {
                 }
             }
         }
+    }
+
+    public static Set<ObjectLabel> getAllDOMEventTargets() {
+        Set<ObjectLabel> targets = newSet();
+        targets.addAll(getAllHtmlObjectLabels());
+        targets.add(DOMWindow.WINDOW);
+        return targets;
+    }
+
+    public static Set<ObjectLabel> getAllHtmlObjectLabels() {
+        if (!isDoneBuildingHTMLObjectLabels) {
+            throw new AnalysisException("DOM is not done building, can not request object labels yet.");
+        }
+        return ALL_HTML_OBJECT_LABELS;
     }
 }

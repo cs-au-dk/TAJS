@@ -28,10 +28,8 @@ import org.apache.log4j.Logger;
 import java.io.PrintWriter;
 import java.util.AbstractMap;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import static dk.brics.tajs.util.Collections.addToMapSet;
@@ -42,9 +40,9 @@ import static dk.brics.tajs.util.Collections.newSet;
 /**
  * Call graph.
  */
-public class CallGraph<BlockStateType extends IBlockState<BlockStateType, ?, CallEdgeType>,
+public class CallGraph<StateType extends IState<StateType, ?, CallEdgeType>,
         ContextType extends IContext<?>,
-        CallEdgeType extends ICallEdge<BlockStateType>> {
+        CallEdgeType extends ICallEdge<StateType>> {
 
     private static Logger log = Logger.getLogger(CallGraph.class);
 
@@ -81,7 +79,7 @@ public class CallGraph<BlockStateType extends IBlockState<BlockStateType, ?, Cal
      * @return true if the call edge changed as result of this operation
      */
     public boolean addTarget(AbstractNode caller, ContextType caller_context, BasicBlock callee, ContextType edge_context,
-                             BlockStateType edge_state, SolverSynchronizer sync, IAnalysis<BlockStateType, ?, CallEdgeType, ?, ?, ?> analysis) {
+                             StateType edge_state, SolverSynchronizer sync, IAnalysis<StateType, ?, CallEdgeType, ?, ?> analysis) {
         boolean changed;
         NodeAndContext<ContextType> nc = new NodeAndContext<>(caller, caller_context);
         Map<BlockAndContext<ContextType>, CallEdgeType> mb = call_edge_info.get(nc);
@@ -213,20 +211,10 @@ public class CallGraph<BlockStateType extends IBlockState<BlockStateType, ?, Cal
         List<Map.Entry<Function, List<AbstractNode>>> res = newList();
         for (Map.Entry<Function, Set<AbstractNode>> me : s) {
             List<AbstractNode> ns = newList(me.getValue());
-            ns.sort(new Comparator<AbstractNode>() {
-                @Override
-                public int compare(AbstractNode n1, AbstractNode n2) {
-                    return n1.getSourceLocation().compareTo(n2.getSourceLocation());
-                }
-            });
+            ns.sort((n1, n2) -> n1.getSourceLocation().compareTo(n2.getSourceLocation()));
             res.add(new AbstractMap.SimpleEntry<>(me.getKey(), ns));
         }
-        res.sort(new Comparator<Map.Entry<Function, List<AbstractNode>>>() {
-            @Override
-            public int compare(Entry<Function, List<AbstractNode>> o1, Entry<Function, List<AbstractNode>> o2) {
-                return o1.getKey().getSourceLocation().compareTo(o2.getKey().getSourceLocation());
-            }
-        });
+        res.sort((o1, o2) -> o1.getKey().getSourceLocation().compareTo(o2.getKey().getSourceLocation()));
         return res;
     }
 
@@ -276,7 +264,7 @@ public class CallGraph<BlockStateType extends IBlockState<BlockStateType, ?, Cal
         }
         sb.append(')');
         if (show_source_location)
-            sb.append("\\n" + f.getSourceLocation());
+            sb.append("\\n").append(f.getSourceLocation());
         return sb.toString();
     }
 
@@ -320,4 +308,11 @@ public class CallGraph<BlockStateType extends IBlockState<BlockStateType, ?, Cal
         return sb.toString();
     }
 
+    public Map<NodeAndContext<ContextType>, Map<BlockAndContext<ContextType>, CallEdgeType>> getCallEdgeInfo() {
+        return call_edge_info;
+    }
+
+    public Map<BlockAndContext<ContextType>, Set<Pair<NodeAndContext<ContextType>, ContextType>>> getCallSources() {
+        return call_sources;
+    }
 }

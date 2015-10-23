@@ -1,48 +1,17 @@
-test/10k/heatmap.html:67:13: [definite] The conditional expression is always true
-test/10k/heatmap.html:67:18: [definite] Variable dot is null/undefined
-test/10k/heatmap.html:97:13: [definite] The conditional expression is always true
 test/10k/heatmap.html:123:28: [definite] Variable options is null/undefined
 test/10k/heatmap.html:145:27: [definite] The conditional expression is always false
 test/10k/heatmap.html:145:27: [definite] Variable color is null/undefined
 test/10k/heatmap.html:204:13: [definite] The conditional expression is always false
 test/10k/heatmap.html:229:9: [definite] The conditional expression is always false
-test/10k/heatmap.html:234:30: [definite] Variable timer is null/undefined
-test/10k/heatmap.html:239:26: [definite] Variable timer is null/undefined
 test/10k/heatmap.html:130:9: [definite] Dead assignment, property getContext is never read
-test/10k/heatmap.html:148:9: [definite] Dead assignment, property drawImage is never read
-test/10k/heatmap.html:151:9: [definite] Dead assignment, property putImageData is never read
-test/10k/heatmap.html:154:9: [definite] Dead assignment, property getImageData is never read
 test/10k/heatmap.html:204:17: [definite] Reading absent property targetTouches
-test/10k/heatmap.html:54:36: [definite] Unreachable function
-test/10k/heatmap.html:57:39: [definite] Unreachable function
-test/10k/heatmap.html:60:36: [definite] Unreachable function
-test/10k/heatmap.html:66:9: [definite] The variable x is never used
-test/10k/heatmap.html:66:9: [definite] The variable y is never used
-test/10k/heatmap.html:69:17: [definite] The variable dotPix is never used
 test/10k/heatmap.html:70:21: [definite] The variable declaration x shadows a parameter
 test/10k/heatmap.html:71:21: [definite] The variable declaration y shadows a parameter
-test/10k/heatmap.html:72:21: [definite] The variable data is never used
-test/10k/heatmap.html:75:22: [definite] The variable i is never used
-test/10k/heatmap.html:75:29: [definite] The variable n is never used
-test/10k/heatmap.html:76:21: [definite] The variable s is never used
-test/10k/heatmap.html:86:9: [definite] The variable callback is never used
-test/10k/heatmap.html:89:24: [definite] Unreachable function
-test/10k/heatmap.html:96:9: [definite] The variable height is never used
-test/10k/heatmap.html:96:9: [definite] The variable width is never used
-test/10k/heatmap.html:96:9: [definite] The variable x is never used
-test/10k/heatmap.html:96:9: [definite] The variable y is never used
-test/10k/heatmap.html:99:17: [definite] The variable data is never used
-test/10k/heatmap.html:100:21: [definite] The variable pix is never used
-test/10k/heatmap.html:101:21: [definite] The variable s is never used
-test/10k/heatmap.html:102:22: [definite] The variable i is never used
-test/10k/heatmap.html:102:29: [definite] The variable n is never used
-test/10k/heatmap.html:103:21: [definite] The variable value is never used
-test/10k/heatmap.html:103:37: [definite] The variable heatValue is never used
+test/10k/heatmap.html:89:24: [definite] The variable event is never used
 test/10k/heatmap.html:130:21: [definite] Unreachable function
-test/10k/heatmap.html:148:20: [definite] Unreachable function
-test/10k/heatmap.html:151:23: [definite] Unreachable function
-test/10k/heatmap.html:154:23: [definite] Unreachable function
-test/10k/heatmap.html:198:9: [definite] Unreachable function idle
+test/10k/heatmap.html:69:26: [maybe] TypeError, accessing property of null/undefined
+test/10k/heatmap.html:101:25: [maybe] TypeError, accessing property of null/undefined
+test/10k/heatmap.html:152:13: [maybe] TypeError, inf or NaN as arguments to CanvasRenderingContext2D.putImageData
 test/10k/heatmap.html:242:9: [maybe] TypeError, accessing property of null/undefined
 test/10k/heatmap.html:242:9: [maybe] TypeError, call to non-function
 test/10k/heatmap.html:245:9: [maybe] TypeError, accessing property of null/undefined
@@ -53,8 +22,23 @@ test/10k/heatmap.html:242:9: [maybe] Reading absent property addEventListener
 test/10k/heatmap.html:243:39: [maybe] Reading absent property selectedIndex
 test/10k/heatmap.html:245:9: [maybe] Reading absent property addEventListener
 test/10k/heatmap.html:246:25: [maybe] Reading absent property selectedIndex
-test/10k/heatmap.html:49:32: [maybe] Uncaught exception, constructed at [test/10k/heatmap.html:242:9, test/10k/heatmap.html:245:9]
+test/10k/heatmap.html:49:32: [maybe] Uncaught exception, constructed at [test/10k/heatmap.html:69:26, test/10k/heatmap.html:101:25, test/10k/heatmap.html:242:9, test/10k/heatmap.html:245:9]
+test/10k/heatmap.html:76:25: [maybe] Conversion to number yields NaN
+test/10k/heatmap.html:76:25: [maybe] Reading absent property (computed name)
+test/10k/heatmap.html:78:17: [maybe] Conversion to number yields NaN
+test/10k/heatmap.html:78:17: [maybe] Reading absent property (computed name)
+test/10k/heatmap.html:79:17: [maybe] Conversion to number yields NaN
+test/10k/heatmap.html:79:17: [maybe] Reading absent property (computed name)
+test/10k/heatmap.html:80:17: [maybe] Conversion to number yields NaN
+test/10k/heatmap.html:80:17: [maybe] Reading absent property (computed name)
 test/10k/heatmap.html:97:18: [maybe] Reading absent property (computed name)
+test/10k/heatmap.html:101:25: [maybe] Reading absent property (computed name)
+test/10k/heatmap.html:103:29: [maybe] Reading absent property (computed name)
+test/10k/heatmap.html:103:49: [maybe] Conversion to number yields NaN
+test/10k/heatmap.html:104:28: [maybe] Reading absent property (computed name)
+test/10k/heatmap.html:105:30: [maybe] Reading absent property (computed name)
+test/10k/heatmap.html:106:30: [maybe] Reading absent property (computed name)
+test/10k/heatmap.html:107:50: [maybe] Conversion to number yields NaN
 test/10k/heatmap.html:195:13: [maybe] Converting undefined to string
 test/10k/heatmap.html:234:17: [maybe] Conversion to number yields NaN
 test/10k/heatmap.html:239:13: [maybe] Conversion to number yields NaN

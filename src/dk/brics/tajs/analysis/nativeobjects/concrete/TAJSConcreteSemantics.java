@@ -1,17 +1,11 @@
 package dk.brics.tajs.analysis.nativeobjects.concrete;
 
-import dk.brics.tajs.analysis.Analysis;
-import dk.brics.tajs.analysis.Context;
 import dk.brics.tajs.analysis.FunctionCalls;
 import dk.brics.tajs.analysis.NativeFunctions;
 import dk.brics.tajs.analysis.Solver;
-import dk.brics.tajs.analysis.State;
-import dk.brics.tajs.lattice.CallEdge;
-import dk.brics.tajs.lattice.SpecialVars;
+import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.Value;
-import dk.brics.tajs.monitoring.IAnalysisMonitoring;
 import dk.brics.tajs.options.Options;
-import dk.brics.tajs.solver.GenericSolver;
 import dk.brics.tajs.util.None;
 import dk.brics.tajs.util.Optional;
 import dk.brics.tajs.util.OptionalObjectVisitor;
@@ -89,7 +83,7 @@ public class TAJSConcreteSemantics {
         return performCall(vThis, functionName, returnType, c, arguments);
     }
 
-    private static <T extends ConcreteValue> Optional<T> performCall(Value vThis, String functionName, final Class<T> returnType, GenericSolver<State, Context, CallEdge<State>, IAnalysisMonitoring<State, Context, CallEdge<State>>, SpecialVars, Analysis>.SolverInterface c, List<ConcreteValue> arguments) {
+    private static <T extends ConcreteValue> Optional<T> performCall(Value vThis, String functionName, final Class<T> returnType, Solver.SolverInterface c, List<ConcreteValue> arguments) {
         // perform the call with the arguments
         return ConcreteSemantics.get().apply(functionName, Gamma.toConcreteValue(vThis, c), arguments).apply(new OptionalObjectVisitor<Optional<T>, ConcreteValue>() {
             @SuppressWarnings("unchecked")
@@ -116,7 +110,7 @@ public class TAJSConcreteSemantics {
      * @see #convertTAJSCall(Value, String, int, Class, State, FunctionCalls.CallInfo, dk.brics.tajs.solver.GenericSolver.SolverInterface)
      */
     public static <T extends PrimitiveConcreteValue> Value convertTAJSCall(Value vThis, String functionName, int maxArguments, final Class<T> returnType, State state, FunctionCalls.CallInfo call, Solver.SolverInterface c, final Value defaultValue) {
-        Value result = convertTAJSCall(vThis, functionName, maxArguments, returnType, state, call, c).apply(
+        return convertTAJSCall(vThis, functionName, maxArguments, returnType, state, call, c).apply(
                 new OptionalObjectVisitor<Value, T>() {
                     @Override
                     public Value visit(None<T> o) {
@@ -129,14 +123,12 @@ public class TAJSConcreteSemantics {
                     }
                 }
         );
-        return result;
     }
 
-
     /**
-     * A version of {@link dk.brics.tajs.analysis.nativeobjects.concrete.TAJSConcreteSemantics#convertTAJSCall(dk.brics.tajs.lattice.Value, String, int, Class, dk.brics.tajs.analysis.State, dk.brics.tajs.analysis.FunctionCalls.CallInfo, dk.brics.tajs.solver.GenericSolver.SolverInterface)} with an explicit list of arguments.
+     * A version of {@link dk.brics.tajs.analysis.nativeobjects.concrete.TAJSConcreteSemantics#convertTAJSCall(dk.brics.tajs.lattice.Value, String, int, Class, State, dk.brics.tajs.analysis.FunctionCalls.CallInfo, dk.brics.tajs.solver.GenericSolver.SolverInterface)} with an explicit list of arguments.
      */
-    public static <T extends PrimitiveConcreteValue> Optional<T> convertTAJSCallExplicit(Value vThis, String functionName, List<Value> arguments, final Class<T> returnType, Solver.SolverInterface c) {
+    public static <T extends ConcreteValue> Optional<T> convertTAJSCallExplicit(Value vThis, String functionName, List<Value> arguments, final Class<T> returnType, Solver.SolverInterface c) {
         final List<ConcreteValue> concreteArguments = newList();
         for (Value argument : arguments) {
             if (!Gamma.isConcreteValue(vThis, c)) {
@@ -147,5 +139,4 @@ public class TAJSConcreteSemantics {
         }
         return performCall(vThis, functionName, returnType, c, concreteArguments);
     }
-
 }

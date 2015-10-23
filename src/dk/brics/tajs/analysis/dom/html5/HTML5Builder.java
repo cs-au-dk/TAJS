@@ -16,9 +16,9 @@
 
 package dk.brics.tajs.analysis.dom.html5;
 
-import dk.brics.tajs.analysis.State;
 import dk.brics.tajs.analysis.dom.DOMWindow;
 import dk.brics.tajs.lattice.ObjectLabel;
+import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.util.Collections;
 
@@ -33,12 +33,24 @@ public class HTML5Builder {
     public static void build(State s) {
         CanvasRenderingContext2D.build(s);
         HTMLCanvasElement.build(s);
+        TimeRanges.build(s);
+        HTMLMediaElement.build(s);
+        HTMLAudioElement.build(s);
         StorageElement.build(s);
+        WebGLRenderingContext.build(s);
+        AudioParam.build(s);
+        AudioNode.build(s);
+        AudioDestinationNode.build(s);
+        OscillatorNode.build(s);
+        ScriptProcessorNode.build(s);
+        AudioContext.build(s);
 
         // HTML5 properties on Window
         createDOMProperty(s, DOMWindow.WINDOW, "localStorage", Value.makeObject(StorageElement.INSTANCES));
         createDOMProperty(s, DOMWindow.WINDOW, "sessionStorage", Value.makeObject(StorageElement.INSTANCES));
 
         HTML5_OBJECT_LABELS.add(HTMLCanvasElement.INSTANCES);
+        HTML5_OBJECT_LABELS.add(HTMLAudioElement.INSTANCES);
     }
+
 }

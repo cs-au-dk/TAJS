@@ -2,6 +2,10 @@ package dk.brics.tajs.test;
 
 import static org.junit.Assert.fail;
 
+import dk.brics.tajs.monitoring.CompositeMonitoring;
+import dk.brics.tajs.monitoring.IAnalysisMonitoring;
+import dk.brics.tajs.monitoring.Monitoring;
+import dk.brics.tajs.test.monitors.OrdinaryExitReachableCheckerMonitor;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -11,6 +15,8 @@ import dk.brics.tajs.options.Options;
 @SuppressWarnings("static-method")
 public class TestSunspider {
 
+	private IAnalysisMonitoring monitoring;
+
 	public static void main(String[] args) {
 		org.junit.runner.JUnitCore.main("dk.brics.tajs.test.TestSunspider");
 	}
@@ -19,8 +25,7 @@ public class TestSunspider {
 	public void init() {
         Options.reset();
 		Options.get().enableTest();
-		// Options.get().enableNoLazy();
-		// Options.get().enablePolymorphic();
+		monitoring = CompositeMonitoring.buildFromList(new Monitoring(), new OrdinaryExitReachableCheckerMonitor());
 	}
 
 	@Test
@@ -28,7 +33,7 @@ public class TestSunspider {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/sunspider/3d-cube.js"};
-		Misc.run(args);
+		Misc.run(args, monitoring);
 		Misc.checkSystemOutput();
 	}
 
@@ -37,7 +42,7 @@ public class TestSunspider {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/sunspider/3d-morph.js"};
-		Misc.run(args);
+		Misc.run(args, monitoring);
 		Misc.checkSystemOutput();
 	}
 
@@ -46,7 +51,7 @@ public class TestSunspider {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/sunspider/3d-raytrace.js"};
-		Misc.run(args);
+		Misc.run(args, monitoring);
 		Misc.checkSystemOutput();
 	}
 
@@ -55,7 +60,7 @@ public class TestSunspider {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/sunspider/access-binary-trees.js"};
-		Misc.run(args);
+		Misc.run(args, monitoring);
 		Misc.checkSystemOutput();
 	}
 
@@ -64,7 +69,7 @@ public class TestSunspider {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/sunspider/access-fannkuch.js"};
-		Misc.run(args);
+		Misc.run(args, monitoring);
 		Misc.checkSystemOutput();
 	}
 
@@ -73,7 +78,7 @@ public class TestSunspider {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/sunspider/access-nbody.js"};
-		Misc.run(args);
+		Misc.run(args, monitoring);
 		Misc.checkSystemOutput();
 	}
 
@@ -82,7 +87,7 @@ public class TestSunspider {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/sunspider/access-nsieve.js"};
-		Misc.run(args);
+		Misc.run(args, monitoring);
 		Misc.checkSystemOutput();
 	}
 
@@ -91,7 +96,7 @@ public class TestSunspider {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/sunspider/bitops-3bit-bits-in-byte.js"};
-		Misc.run(args);
+		Misc.run(args, monitoring);
 		Misc.checkSystemOutput();
 	}
 
@@ -100,7 +105,7 @@ public class TestSunspider {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/sunspider/bitops-bitwise-and.js"};
-		Misc.run(args);
+		Misc.run(args, monitoring);
 		Misc.checkSystemOutput();
 	}
 
@@ -109,7 +114,7 @@ public class TestSunspider {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/sunspider/bitops-nsieve-bits.js"};
-		Misc.run(args);
+		Misc.run(args, monitoring);
 		Misc.checkSystemOutput();
 	}
 
@@ -118,7 +123,7 @@ public class TestSunspider {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/sunspider/controlflow-recursive.js"};
-		Misc.run(args);
+		Misc.run(args, monitoring);
 		Misc.checkSystemOutput();
 	}
 
@@ -128,7 +133,7 @@ public class TestSunspider {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/sunspider/crypto-aes.js"};
-		Misc.run(args);
+		Misc.run(args, monitoring);
 		fail(); // Misc.checkSystemOutput();
 	}
 
@@ -137,7 +142,7 @@ public class TestSunspider {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/sunspider/crypto-md5.js"};
-		Misc.run(args);
+		Misc.run(args, monitoring);
 		Misc.checkSystemOutput();
 	}
 
@@ -146,7 +151,7 @@ public class TestSunspider {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/sunspider/crypto-sha1.js"};
-		Misc.run(args);
+		Misc.run(args, monitoring);
 		Misc.checkSystemOutput();
 	}
 
@@ -156,7 +161,7 @@ public class TestSunspider {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/sunspider/date-format-tofte.js"};
-		Misc.run(args);
+		Misc.run(args, monitoring);
 		fail("check output"); // TODO Misc.checkSystemOutput();
 	}
 
@@ -166,7 +171,7 @@ public class TestSunspider {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/sunspider/date-format-xparb.js"};
-		Misc.run(args);
+		Misc.run(args, monitoring);
 		fail(); // Misc.checkSystemOutput();
 	}
 
@@ -175,7 +180,7 @@ public class TestSunspider {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/sunspider/math-cordic.js"};
-		Misc.run(args);
+		Misc.run(args, monitoring);
 		Misc.checkSystemOutput();
 	}
 
@@ -184,7 +189,7 @@ public class TestSunspider {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/sunspider/math-partial-sums.js"};
-		Misc.run(args);
+		Misc.run(args, monitoring);
 		Misc.checkSystemOutput();
 	}
 
@@ -193,7 +198,7 @@ public class TestSunspider {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/sunspider/math-spectral-norm.js"};
-		Misc.run(args);
+		Misc.run(args, monitoring);
 		Misc.checkSystemOutput();
 	}
 
@@ -203,7 +208,7 @@ public class TestSunspider {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/sunspider/regexp-dna.js"}; // can't specialize for-in due to r/w conflict (in fact, the output is non-deterministic)
-		Misc.run(args);
+		Misc.run(args, monitoring);
 		fail(); // Misc.checkSystemOutput();
 	}
 
@@ -212,7 +217,7 @@ public class TestSunspider {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/sunspider/string-base64.js"}; // TODO: known to be buggy (according to Google Aarhus)
-		Misc.run(args);
+		Misc.run(args, monitoring);
 		Misc.checkSystemOutput();
 	}
 
@@ -221,7 +226,7 @@ public class TestSunspider {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/sunspider/string-fasta.js"}; // can't specialize for-in due to r/w conflict
-		Misc.run(args);
+		Misc.run(args, monitoring);
 		Misc.checkSystemOutput();
 	}
 
@@ -231,7 +236,7 @@ public class TestSunspider {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/sunspider/string-tagcloud.js"}; // can't specialize for-in due to r/w conflict
-		Misc.run(args);
+		Misc.run(args, monitoring);
 		fail(); // Misc.checkSystemOutput();
 	}
 
@@ -241,7 +246,7 @@ public class TestSunspider {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/sunspider/string-unpack-code.js"};
-		Misc.run(args);
+		Misc.run(args, monitoring);
 		fail(); // Misc.checkSystemOutput();
 	}
 
@@ -251,7 +256,7 @@ public class TestSunspider {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/sunspider/string-validate-input.js"};
-		Misc.run(args);
+		Misc.run(args, monitoring);
 		fail(); // Misc.checkSystemOutput();
 	}
 }

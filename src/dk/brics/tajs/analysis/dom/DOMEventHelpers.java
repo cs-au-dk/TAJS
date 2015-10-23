@@ -43,7 +43,8 @@ public class DOMEventHelpers {
      * Returns true iff the specified attribute is an load event attribute.
      */
     public static boolean isLoadEventAttribute(String attribute) {
-        return attribute.equalsIgnoreCase("load") || attribute.equalsIgnoreCase("onload");
+        return attribute.equalsIgnoreCase("load") || attribute.equalsIgnoreCase("onload") ||
+                attribute.equalsIgnoreCase("DOMContentLoaded") || attribute.equalsIgnoreCase("onDOMContentLoaded");
     }
 
     /**

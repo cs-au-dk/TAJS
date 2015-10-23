@@ -1,5 +1,10 @@
 package dk.brics.tajs.js2flowgraph;
 
+import com.google.javascript.jscomp.parsing.parser.trees.DoWhileStatementTree;
+import com.google.javascript.jscomp.parsing.parser.trees.ForInStatementTree;
+import com.google.javascript.jscomp.parsing.parser.trees.ForStatementTree;
+import com.google.javascript.jscomp.parsing.parser.trees.ParseTree;
+import com.google.javascript.jscomp.parsing.parser.trees.WhileStatementTree;
 import dk.brics.tajs.flowgraph.AbstractNode;
 import dk.brics.tajs.flowgraph.BasicBlock;
 import dk.brics.tajs.flowgraph.Function;
@@ -14,7 +19,7 @@ import static dk.brics.tajs.util.Collections.newList;
  * Miscellaneous immutable information environment for a recursive descent on an AST.
  * Forms an inheritance hierarchy of information about the parents and preceding siblings in the AST.
  */
-class AstEnv {
+public class AstEnv {
 
     /**
      * Parent environment, is queried if a value of interest is null.
@@ -96,6 +101,11 @@ class AstEnv {
      * Only one will be present at a time, so no need to keep searching upwards.
      */
     private UnevalExpressionResult unevalExpressionResult;
+
+    /**
+     * The label-name of a labelled loop statement
+     */
+    private Pair<ParseTree /* loop-statement type */, String> loopLabelName;
 
     /**
      * Constructs an enviromentment with a parent environment.
@@ -400,12 +410,20 @@ class AstEnv {
     }
 
     /**
-     * Creates a new environment with the given labeled 'continue' and 'break' blocks.
+     * Creates a new environment with the given labeled 'break' block.
      */
-    public AstEnv makeLabelledContinueAndBreak(String labelName, BasicBlock continueBlock, BasicBlock breakBlock) {
+    public AstEnv makeLabelledBreak(String labelName, BasicBlock breakBlock) {
+        AstEnv newEnv = new AstEnv(this);
+        newEnv.labelledBreak = Pair.make(labelName, breakBlock);
+        return newEnv;
+    }
+
+    /**
+     * Creates a new environment with the given labeled 'continue' block.
+     */
+    public AstEnv makeLabelledContinue(String labelName, BasicBlock continueBlock) {
         AstEnv newEnv = new AstEnv(this);
         newEnv.labelledContinue = Pair.make(labelName, continueBlock);
-        newEnv.labelledBreak = Pair.make(labelName, breakBlock);
         return newEnv;
     }
 
@@ -485,5 +503,36 @@ class AstEnv {
         newEnv.unlabelledContinue = defaultContinue;
         newEnv.unlabelledBreak = defaultBreak;
         return newEnv;
+    }
+
+    public AstEnv makeLoopLabelName(ParseTree loopStatement, String name) {
+        assert (loopStatement != null && name != null);
+        assert (loopStatement instanceof ForStatementTree ||
+                loopStatement instanceof WhileStatementTree ||
+                loopStatement instanceof ForInStatementTree ||
+                loopStatement instanceof DoWhileStatementTree);
+        AstEnv newEnv = new AstEnv(this);
+        newEnv.loopLabelName = Pair.make(loopStatement, name);
+        return newEnv;
+    }
+
+    public boolean hasLoopLabel(ParseTree loopStatement) {
+        if (loopLabelName != null && loopLabelName.getFirst() == loopStatement) {
+            return true;
+        }
+        if (parentEnv != null) {
+            return parentEnv.hasLoopLabel(loopStatement);
+        }
+        return false;
+    }
+
+    public String getLoopLabelName(ParseTree loopStatement) {
+        if (loopLabelName != null && loopLabelName.getFirst() == loopStatement) {
+            return loopLabelName.getSecond();
+        }
+        if (parentEnv != null) {
+            return parentEnv.getLoopLabelName(loopStatement);
+        }
+        throw new AnalysisException("No loop label name present (query with hasLoopLabel first)");
     }
 }

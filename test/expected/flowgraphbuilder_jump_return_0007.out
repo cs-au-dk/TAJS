@@ -27,24 +27,24 @@ fg2: function()
     node 10: exceptional-return (test/flowgraphbuilder/flowgraph_builder_jump_return_0007.js:1:1)
     ->[]
 function f()
-  block 8:
-    node 11: throw[v2]* (test/flowgraphbuilder/flowgraph_builder_jump_return_0007.js:2:5)
-    ->[block 15]
+  block 8: [entry]
+    node 11: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder_jump_return_0007.js:1:1)
+    ->[block 9]
   block 9:
-    node 12: constant[true,v1]* (test/flowgraphbuilder/flowgraph_builder_jump_return_0007.js:5:14)
+    node 12: constant[false,v1]* (test/flowgraphbuilder/flowgraph_builder_jump_return_0007.js:3:14)
+    ->[block 11] ~>[block 10]
+  block 10:
+    node 13: catch[v2] (test/flowgraphbuilder/flowgraph_builder_jump_return_0007.js:2:5)
+    node 14(~17): constant[true,v1]* (test/flowgraphbuilder/flowgraph_builder_jump_return_0007.js:5:14)
     ->[block 14]
-  block 10: [entry]
-    node 13: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder_jump_return_0007.js:1:1)
-    ->[block 11]
   block 11:
-    node 14: constant[false,v1]* (test/flowgraphbuilder/flowgraph_builder_jump_return_0007.js:3:14)
-    ->[block 13] ~>[block 12]
-  block 12:
-    node 15: catch[v2] (test/flowgraphbuilder/flowgraph_builder_jump_return_0007.js:2:5)
-    node 16(~12): constant[true,v1]* (test/flowgraphbuilder/flowgraph_builder_jump_return_0007.js:5:14)
+    node 15(~17): constant[true,v1]* (test/flowgraphbuilder/flowgraph_builder_jump_return_0007.js:5:14)
     ->[block 14]
+  block 12:
+    node 16: throw[v2]* (test/flowgraphbuilder/flowgraph_builder_jump_return_0007.js:2:5)
+    ->[block 15]
   block 13:
-    node 17(~12): constant[true,v1]* (test/flowgraphbuilder/flowgraph_builder_jump_return_0007.js:5:14)
+    node 17: constant[true,v1]* (test/flowgraphbuilder/flowgraph_builder_jump_return_0007.js:5:14)
     ->[block 14]
   block 14: [exit-ordinary]
     node 18: return[v1] (test/flowgraphbuilder/flowgraph_builder_jump_return_0007.js:7:1)

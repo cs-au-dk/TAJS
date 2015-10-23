@@ -17,7 +17,8 @@
 package dk.brics.tajs.analysis;
 
 import dk.brics.tajs.lattice.CallEdge;
-import dk.brics.tajs.lattice.SpecialVars;
+import dk.brics.tajs.lattice.Context;
+import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.monitoring.IAnalysisMonitoring;
 import dk.brics.tajs.solver.GenericSolver;
 import dk.brics.tajs.solver.SolverSynchronizer;
@@ -25,7 +26,7 @@ import dk.brics.tajs.solver.SolverSynchronizer;
 /**
  * Fixpoint solver.
  */
-public final class Solver extends GenericSolver<State, Context, CallEdge<State>, IAnalysisMonitoring<State, Context, CallEdge<State>>, SpecialVars, Analysis> {
+public final class Solver extends GenericSolver<State, Context, CallEdge, IAnalysisMonitoring, Analysis> {
 
     /**
      * Constructs a new solver.

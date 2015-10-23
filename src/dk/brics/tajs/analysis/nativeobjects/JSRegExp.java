@@ -22,7 +22,6 @@ import dk.brics.tajs.analysis.FunctionCalls.CallInfo;
 import dk.brics.tajs.analysis.InitialStateBuilder;
 import dk.brics.tajs.analysis.NativeFunctions;
 import dk.brics.tajs.analysis.Solver;
-import dk.brics.tajs.analysis.State;
 import dk.brics.tajs.analysis.nativeobjects.concrete.Alpha;
 import dk.brics.tajs.analysis.nativeobjects.concrete.ConcreteArray;
 import dk.brics.tajs.analysis.nativeobjects.concrete.ConcreteBoolean;
@@ -36,8 +35,10 @@ import dk.brics.tajs.analysis.nativeobjects.concrete.ConcreteValue;
 import dk.brics.tajs.analysis.nativeobjects.concrete.ConcreteValueVisitor;
 import dk.brics.tajs.analysis.nativeobjects.concrete.Gamma;
 import dk.brics.tajs.analysis.nativeobjects.concrete.TAJSConcreteSemantics;
+import dk.brics.tajs.flowgraph.jsnodes.CallNode;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.ObjectLabel.Kind;
+import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.UnknownValueResolver;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.solver.Message.Severity;
@@ -47,6 +48,7 @@ import dk.brics.tajs.util.OptionalObjectVisitor;
 import dk.brics.tajs.util.Some;
 
 import java.util.Collections;
+import java.util.Set;
 
 /**
  * 15.10 native RegExp functions.
@@ -103,52 +105,33 @@ public class JSRegExp { // TODO see https://dev.opera.com/articles/javascript-fo
                     c.getMonitoring().addMessage(c.getCurrentNode(), Severity.HIGH, "TypeError, internal RegExp property with flags not undefined");
                 }
                 if (!arg.isNotPresent()) {
-                    final Value pGlobal;
-                    final Value pIgnoreCase;
-                    final Value pMultiline;
-                    if (!flags.isMaybeUndef()) {
-                        Value sflags = Conversion.toString(flags, c);
-                        if (sflags.isMaybeSingleStr()) {
-                            // flags are known
-                            String strflags = sflags.getStr();
-                            pGlobal = Value.makeBool(strflags.contains("g"));
-                            pIgnoreCase = Value.makeBool(strflags.contains("i"));
-                            pMultiline = Value.makeBool(strflags.contains("m"));
-                            strflags = strflags.replaceFirst("g", "").replaceFirst("i", "").replaceFirst("m", "");
-                            if ((!strflags.isEmpty())) {
-                                Exceptions.throwSyntaxError(state, c);
-                                c.getMonitoring().addMessage(c.getCurrentNode(), Severity.HIGH, "SyntaxError, invalid flags at RegExp constructor");
-                                return Value.makeNone();
-                            }
-                        } else {
-                            // flags are unknown
-                            pGlobal = Value.makeAnyBool();
-                            pIgnoreCase = Value.makeAnyBool();
-                            pMultiline = Value.makeAnyBool();
-                        }
-                    } else {
-                        // flags are undefined
-                        pGlobal = Value.makeBool(false);
-                        pIgnoreCase = Value.makeBool(false);
-                        pMultiline = Value.makeBool(false);
+                    ObjectLabel no = new ObjectLabel(call.getSourceNode(), Kind.REGEXP);
+                    state.newObject(no);
+                    state.writeInternalPrototype(no, Value.makeObject(InitialStateBuilder.REGEXP_PROTOTYPE));
+
+                    boolean threwException = mutateRegExp(Collections.singleton(no), arg, flags, call.getSourceNode() instanceof CallNode && ((CallNode) call.getSourceNode()).getLiteralConstructorKind() == CallNode.LiteralConstructorKinds.REGEXP, state, c);
+                    if(threwException){
+                        return Value.makeNone();
                     }
-                    if (!arg.isNotStr()) {
-                        ObjectLabel no = new ObjectLabel(call.getSourceNode(), Kind.REGEXP);
-                        state.newObject(no);
-                        state.writeInternalPrototype(no, Value.makeObject(InitialStateBuilder.REGEXP_PROTOTYPE));
-                        Value p = UnknownValueResolver.join(Conversion.toString(arg.restrictToStr(), c), state.readInternalValue(arg.restrictToStr().getObjectLabels()), state);
-                        state.writeInternalValue(no, p);
-                        state.writePropertyWithAttributes(no, "source", p.setAttributes(true, true, true));
-                        state.writePropertyWithAttributes(no, "lastIndex", Value.makeNum(0).setAttributes(true, true, false));
-                        state.writePropertyWithAttributes(no, "global", pGlobal.setAttributes(true, true, true));
-                        state.writePropertyWithAttributes(no, "ignoreCase", pIgnoreCase.setAttributes(true, true, true));
-                        state.writePropertyWithAttributes(no, "multiline", pMultiline.setAttributes(true, true, true));
-                        result = result.joinObject(no);
-                    }
+                    result = result.joinObject(no);
                 }
                 return result;
             }
-
+            case REGEXP_COMPILE: {
+                NativeFunctions.expectParameters(nativeobject, call, c, 0, 2);
+                Value pattern = call.getNumberOfArgs() > 0 ? NativeFunctions.readParameter(call, state, 0) : Value.makeStr(""); // TODO: handle unknown number of args
+                Value flags = call.getNumberOfArgs() > 1 ? NativeFunctions.readParameter(call, state, 1) : Value.makeUndef();
+                pattern = UnknownValueResolver.getRealValue(pattern, state);
+                if(pattern.isMaybeObject()){
+                    // TODO proper support for regexp argument (currently unsound: missing flags transfer & checking for no double declaration of flags)
+                    pattern = pattern.restrictToNotObject().join(UnknownValueResolver.getRealValue(state.readPropertyValue(pattern.getObjectLabels(), "source"), state));
+                }
+                boolean threwException = mutateRegExp(state.readThisObjects(), pattern, flags, false, state, c);
+                if(threwException){
+                    return Value.makeNone();
+                }
+                return Value.makeUndef();
+            }
             case REGEXP_EXEC: { // 15.10.6.2 (see STRING_MATCH)
                 NativeFunctions.expectParameters(nativeobject, call, c, 1, 1);
                 Conversion.toString(NativeFunctions.readParameter(call, state, 0), c);
@@ -182,6 +165,83 @@ public class JSRegExp { // TODO see https://dev.opera.com/articles/javascript-fo
             default:
                 return null;
         }
+    }
+
+    /**
+     * Some shared functionality between the RegExp constructor and RegExp.compile.
+     * Will return 'true' if a definite exception has occured.
+     */
+    private static boolean mutateRegExp(Set<ObjectLabel> regexp, Value pattern, Value flags, boolean isRegExpLiteral, State state, Solver.SolverInterface c) {
+        final Value pGlobal;
+        final Value pIgnoreCase;
+        final Value pMultiline;
+        if (!flags.isMaybeUndef()) {
+            Value sflags = Conversion.toString(flags, c);
+            if (sflags.isMaybeSingleStr()) {
+                // flags are known
+                String strflags = sflags.getStr();
+                pGlobal = Value.makeBool(strflags.contains("g"));
+                pIgnoreCase = Value.makeBool(strflags.contains("i"));
+                pMultiline = Value.makeBool(strflags.contains("m"));
+                strflags = strflags.replaceFirst("g", "").replaceFirst("i", "").replaceFirst("m", "");
+                if ((!strflags.isEmpty())) {
+                    Exceptions.throwSyntaxError(state, c);
+                    c.getMonitoring().addMessage(c.getCurrentNode(), Severity.HIGH, "SyntaxError, invalid flags at RegExp constructor");
+                    return true;
+                }
+            } else {
+                // flags are unknown
+                pGlobal = Value.makeAnyBool();
+                pIgnoreCase = Value.makeAnyBool();
+                pMultiline = Value.makeAnyBool();
+            }
+        } else {
+            // flags are undefined
+            pGlobal = Value.makeBool(false);
+            pIgnoreCase = Value.makeBool(false);
+            pMultiline = Value.makeBool(false);
+        }
+        if (!pattern.isNotStr()) {
+
+            Value p = UnknownValueResolver.join(Conversion.toString(pattern.restrictToStr(), c), state.readInternalValue(pattern.restrictToStr().getObjectLabels()), state);
+            final Value origP = p;
+            if (!isRegExpLiteral && Gamma.isConcreteString(p, c) && (p.getStr().isEmpty() || p.getStr().contains("/"))) {
+                // 15.10.4.1:
+                // The characters / occurring in the pattern shall be escaped in S as necessary to ensure
+                // that the String value formed by concatenating the Strings "/", S, "/", and F can be
+                // parsed (in an appropriate lexical context) as a RegularExpressionLiteral that behaves
+                // identically to the constructed regular expression ...
+                // ... If P is the empty String, this specification can be met by letting S be "(?:)".
+
+                // let the concrete semantic handle this mess...
+                if (origP.getStr().contains("/")) {
+                    // Nashorn does not do the *first* part of 15.10.4.1.
+                    // TODO remove this branch once Nashorn has improved (create bug report?) (see GitHub #194)
+                    // Proper escaping is done in firefox, but not in Chrome: https://code.google.com/p/chromium/issues/detail?id=515897
+                    p = Value.makeAnyStr();
+                } else {
+                    p = TAJSConcreteSemantics.convertTAJSCallExplicit(Value.makeUndef(), "RegExp", Collections.singletonList(origP), ConcreteRegularExpression.class, c).apply(new OptionalObjectVisitor<Value, ConcreteRegularExpression>() {
+                        @Override
+                        public Value visit(None<ConcreteRegularExpression> obj) {
+                            throw new AnalysisException("Could not do proper special casing of concrete string argument to RegExp(" + origP + ")");
+                        }
+
+                        @Override
+                        public Value visit(Some<ConcreteRegularExpression> obj) {
+                            Value source = Alpha.toValue(obj.get().getSource());
+                            return source;
+                        }
+                    });
+                }
+            }
+            state.writeInternalValue(regexp, p);
+            state.writePropertyWithAttributes(regexp, "source", p.setAttributes(true, true, true));
+            state.writePropertyWithAttributes(regexp, "lastIndex", Value.makeNum(0).setAttributes(true, true, false));
+            state.writePropertyWithAttributes(regexp, "global", pGlobal.setAttributes(true, true, true));
+            state.writePropertyWithAttributes(regexp, "ignoreCase", pIgnoreCase.setAttributes(true, true, true));
+            state.writePropertyWithAttributes(regexp, "multiline", pMultiline.setAttributes(true, true, true));
+        }
+        return false;
     }
 
     private static void updateRegExpLastIndex(State state, Value value) {

@@ -21,13 +21,14 @@ import dk.brics.tajs.analysis.FunctionCalls;
 import dk.brics.tajs.analysis.InitialStateBuilder;
 import dk.brics.tajs.analysis.NativeFunctions;
 import dk.brics.tajs.analysis.Solver;
-import dk.brics.tajs.analysis.State;
 import dk.brics.tajs.analysis.dom.DOMConversion;
 import dk.brics.tajs.analysis.dom.DOMObjects;
 import dk.brics.tajs.analysis.dom.DOMWindow;
 import dk.brics.tajs.lattice.ObjectLabel;
+import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.solver.Message;
+import dk.brics.tajs.util.Collections;
 
 import static dk.brics.tajs.analysis.dom.DOMFunctions.createDOMFunction;
 import static dk.brics.tajs.analysis.dom.DOMFunctions.createDOMProperty;
@@ -116,6 +117,7 @@ public class CanvasRenderingContext2D {
 
         // CanvasPixelArray
         createDOMProperty(s, PIXEL_ARRAY, "length", Value.makeAnyNumUInt().setReadOnly());
+        s.writeProperty(Collections.singleton(PIXEL_ARRAY), Value.makeAnyStrUInt(), Value.makeAnyNumUInt(), false, false);
 
         /*
          * Canvas Functions.
@@ -426,13 +428,9 @@ public class CanvasRenderingContext2D {
             case CANVASRENDERINGCONTEXT2D_DRAW_IMAGE: {
                 NativeFunctions.expectParameters(nativeObject, call, c, 3, -1);
 
-                boolean good = false;
                 boolean bad = NativeFunctions.readParameter(call, s, 0).isMaybePrimitive();
                 for (ObjectLabel l : NativeFunctions.readParameter(call, s, 0).getObjectLabels()) {
-                    if (l.isHostObject()
-                            && (l.getHostObject() == DOMObjects.HTMLIMAGEELEMENT_INSTANCES || l.getHostObject() == DOMObjects.HTMLCANVASELEMENT_INSTANCES)) {
-                        good = true;
-                    } else {
+                    if (!l.isHostObject() || (l.getHostObject() != DOMObjects.HTMLIMAGEELEMENT_INSTANCES && l.getHostObject() != DOMObjects.HTMLCANVASELEMENT_INSTANCES)) {
                         bad = true;
                     }
                 }

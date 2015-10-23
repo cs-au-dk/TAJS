@@ -16,19 +16,27 @@
 
 package dk.brics.tajs.analysis.dom.html5;
 
+import dk.brics.tajs.analysis.Conversion;
 import dk.brics.tajs.analysis.FunctionCalls;
 import dk.brics.tajs.analysis.InitialStateBuilder;
+import dk.brics.tajs.analysis.NativeFunctions;
 import dk.brics.tajs.analysis.Solver;
-import dk.brics.tajs.analysis.State;
 import dk.brics.tajs.analysis.dom.DOMObjects;
 import dk.brics.tajs.analysis.dom.DOMWindow;
 import dk.brics.tajs.analysis.dom.html.HTMLElement;
 import dk.brics.tajs.lattice.ObjectLabel;
+import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.util.AnalysisException;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.Set;
+
 import static dk.brics.tajs.analysis.dom.DOMFunctions.createDOMFunction;
 import static dk.brics.tajs.analysis.dom.DOMFunctions.createDOMProperty;
+import static dk.brics.tajs.util.Collections.newList;
+import static dk.brics.tajs.util.Collections.newSet;
 
 public class HTMLCanvasElement {
 
@@ -52,9 +60,9 @@ public class HTMLCanvasElement {
 
         // Prototype Object
         s.newObject(PROTOTYPE);
-        createDOMFunction(s, PROTOTYPE, DOMObjects.HTMLCANVASELEMENT_GET_CONTEXT, "getContext", 1);
+        createDOMFunction(s, PROTOTYPE, DOMObjects.HTMLCANVASELEMENT_GET_CONTEXT, "getContext", 2);
         createDOMFunction(s, PROTOTYPE, DOMObjects.HTMLCANVASELEMENT_TO_DATA_URL, "toDataURL", 1);
-        createDOMProperty(s, CanvasRenderingContext2D.CONTEXT2D_PROTOTYPE, "canvas", Value.makeObject(CONSTRUCTOR));
+        createDOMProperty(s, CanvasRenderingContext2D.CONTEXT2D_PROTOTYPE, "canvas", Value.makeObject(HTMLCanvasElement.CONSTRUCTOR));
         s.writeInternalPrototype(PROTOTYPE, Value.makeObject(HTMLElement.ELEMENT_PROTOTYPE));
 
         // Instances Object
@@ -66,33 +74,40 @@ public class HTMLCanvasElement {
         INSTANCES = INSTANCES.makeSingleton().makeSummary();
     }
 
-    /*
-
-    public static void build2(State s) {
-        CONSTRUCTOR = new ObjectLabel(DOMObjects.HTMLCANVASELEMENT, ObjectLabel.Kind.FUNCTION);
-        PROTOTYPE = new ObjectLabel(DOMObjects.HTMLCANVASELEMENT_PROTOTYPE, ObjectLabel.Kind.OBJECT);
-        INSTANCES = new ObjectLabel(DOMObjects.HTMLCANVASELEMENT_INSTANCES, ObjectLabel.Kind.OBJECT);
-
-        ObjectBuilder ob = ObjectBuilder.newInstance().
-                constructor(CONSTRUCTOR).
-                prototype(PROTOTYPE).
-                prototypePrototype(HTMLElement.PROTOTYPE).
-                instances(INSTANCES);
-
-        ob.addInstanceProperty("height", Value.makeAnyNumUInt(), DOMSpec.HTML5);
-        ob.addInstanceProperty("width", Value.makeAnyNumUInt(), DOMSpec.HTML5);
-
-        ob.addPrototypeFunction(DOMObjects.HTMLCANVASELEMENT_GET_CONTEXT, "getContext", 1, DOMSpec.HTML5);
-
-        ob.build(s);
-        INSTANCES = ob.getInstances();
-    }
-     */
-
-    public static Value evaluate(DOMObjects nativeObject, FunctionCalls.CallInfo call, State s, Solver.SolverInterface c) {
+    public static Value evaluate (DOMObjects nativeObject, FunctionCalls.CallInfo call, State s, Solver.SolverInterface c) {
         switch (nativeObject) {
             case HTMLCANVASELEMENT_GET_CONTEXT: {
-                return Value.makeObject(CanvasRenderingContext2D.CONTEXT2D);
+                NativeFunctions.expectParameters(nativeObject, call, c, 0, 2);
+
+                Value arg;
+                if (call.isUnknownNumberOfArgs()) {
+                    arg = NativeFunctions.readUnknownParameter(call);
+                } else {
+                    arg = NativeFunctions.readParameter(call, s, 0);
+                    /* unused for now */
+                    NativeFunctions.readParameter(call, s, 1);
+                }
+
+                List<Value> results = newList();
+
+                arg = Conversion.toString(arg, c);
+
+                Set<String> contextNames = newSet(Arrays.asList("2d", "webgl", "experimental-webgl"));
+                if (arg.isMaybeStr("2d")) {
+                    results.add(Value.makeObject(CanvasRenderingContext2D.CONTEXT2D));
+                }
+
+                if (arg.isMaybeStr("webgl") || arg.isMaybeStr("experimental-webgl")) {
+                    results.add(Value.makeObject(WebGLRenderingContext.INSTANCES));
+                    // not always supported
+                    results.add(Value.makeNull());
+                }
+
+                if(!arg.isMaybeSingleStr() || !contextNames.contains(arg.getStr())){
+                    results.add(Value.makeNull());
+                }
+
+                return Value.join(results);
             }
             case HTMLCANVASELEMENT_TO_DATA_URL: {
                 return Value.makeAnyStr();

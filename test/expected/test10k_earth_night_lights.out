@@ -1,21 +1,10 @@
+test/10k/earth_night_lights.html:95:13: [definite] The conditional expression is always false
 test/10k/earth_night_lights.html:16:29: [definite] The variable mr is never used
-test/10k/earth_night_lights.html:16:46: [definite] The variable ms is never used
-test/10k/earth_night_lights.html:17:117: [definite] The variable pdf is never used
-test/10k/earth_night_lights.html:17:140: [definite] The variable pdfm is never used
 test/10k/earth_night_lights.html:17:145: [definite] The variable tout is never used
-test/10k/earth_night_lights.html:17:150: [definite] The variable rate is never used
-test/10k/earth_night_lights.html:20:55: [definite] The variable ctx is never used
-test/10k/earth_night_lights.html:23:17: [definite] The variable de is never used
-test/10k/earth_night_lights.html:24:26: [definite] Unreachable function
-test/10k/earth_night_lights.html:44:13: [definite] Unreachable function blurdisk
-test/10k/earth_night_lights.html:55:13: [definite] Unreachable function go
-test/10k/earth_night_lights.html:56:36: [definite] Unreachable function
-test/10k/earth_night_lights.html:77:55: [definite] Unreachable function
-test/10k/earth_night_lights.html:81:9: [definite] Unreachable function randomPos
-test/10k/earth_night_lights.html:86:9: [definite] Unreachable function sch
-test/10k/earth_night_lights.html:93:9: [definite] Unreachable function h2r
-test/10k/earth_night_lights.html:98:17: [definite] Unreachable function h2r
-test/10k/earth_night_lights.html:115:9: [definite] Unreachable function pto
-test/10k/earth_night_lights.html:118:9: [definite] Unreachable function uf
 test/10k/earth_night_lights.html:17:123: [maybe] RangeError, invalid value of array length
 test/10k/earth_night_lights.html:15:13: [maybe] Uncaught exception, constructed at [test/10k/earth_night_lights.html:17:123]
+test/10k/earth_night_lights.html:35:35: [maybe] Reading absent property (computed name)
+test/10k/earth_night_lights.html:36:25: [maybe] Conversion to number yields NaN
+test/10k/earth_night_lights.html:39:24: [maybe] Reading absent property (computed name)
+test/10k/earth_night_lights.html:82:24: [maybe] Conversion to number yields NaN
+test/10k/earth_night_lights.html:89:21: [maybe] Reading absent property (computed name)

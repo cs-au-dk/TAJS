@@ -10,13 +10,13 @@ fg2: function()
     node 3: exceptional-return (test/flowgraphbuilder/flowgraph_builder0195.js:1:1)
     ->[]
 function f()
-  block 3:
-    node 4: read-variable['x',v4,-] (test/flowgraphbuilder/flowgraph_builder0195.js:4:13)
-    node 5: if[v4](true-block:5,false-block:7) (test/flowgraphbuilder/flowgraph_builder0195.js:2:5)
-    ->[block 5,block 7]
-  block 4: [entry]
-    node 6: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0195.js:1:1)
+  block 3: [entry]
+    node 4: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0195.js:1:1)
     ->[block 5]
+  block 4:
+    node 5: read-variable['x',v4,-] (test/flowgraphbuilder/flowgraph_builder0195.js:4:13)
+    node 6: if[v4](true-block:5,false-block:7) (test/flowgraphbuilder/flowgraph_builder0195.js:2:5)
+    ->[block 5,block 7]
   block 5:
     node 7: read-variable['f',v3,v2] (test/flowgraphbuilder/flowgraph_builder0195.js:3:16)
     ->[block 6]

@@ -18,12 +18,28 @@ public class ConcreteRegularExpression implements ConcreteValue {
     }
 
     @Override
-    public String toSourceCode() {
-        return String.format("/%s/%s%s%s", source.getString(), global.getBooleanValue() ? "g" : "", ignoreCase.getBooleanValue() ? "i" : "", multiline.getBooleanValue() ? "m" : "");
+    public <T> T accept(ConcreteValueVisitor<T> v) {
+        return v.visit(this);
+    }
+
+    public ConcreteBoolean getGlobal() {
+        return global;
+    }
+
+    public ConcreteBoolean getIgnoreCase() {
+        return ignoreCase;
+    }
+
+    public ConcreteBoolean getMultiline() {
+        return multiline;
+    }
+
+    public ConcreteString getSource() {
+        return source;
     }
 
     @Override
-    public <T> T accept(ConcreteValueVisitor<T> v) {
-        return v.visit(this);
+    public String toSourceCode() {
+        return String.format("/%s/%s%s%s", source.toRegExpSourceCodeComponent(), global.getBooleanValue() ? "g" : "", ignoreCase.getBooleanValue() ? "i" : "", multiline.getBooleanValue() ? "m" : "");
     }
 }

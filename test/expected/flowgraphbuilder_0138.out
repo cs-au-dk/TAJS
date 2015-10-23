@@ -1,11 +1,11 @@
 fg2: function()
-  block 0:
-    node 0: constant[true,v2] (test/flowgraphbuilder/flowgraph_builder0138.js:3:10)
-    node 1: if[v2](true-block:2,false-block:3) (test/flowgraphbuilder/flowgraph_builder0138.js:1:1)
-    ->[block 2,block 3]
-  block 1: [entry]
-    node 2: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0138.js:1:1)
+  block 0: [entry]
+    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0138.js:1:1)
     ->[block 2]
+  block 1:
+    node 1: constant[true,v2] (test/flowgraphbuilder/flowgraph_builder0138.js:3:10)
+    node 2: if[v2](true-block:2,false-block:3) (test/flowgraphbuilder/flowgraph_builder0138.js:1:1)
+    ->[block 2,block 3]
   block 2:
     node 3: nop(break <DEFAULT>)* (test/flowgraphbuilder/flowgraph_builder0138.js:2:5)
     ->[block 3]

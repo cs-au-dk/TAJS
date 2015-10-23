@@ -16,7 +16,6 @@
 
 package dk.brics.tajs.analysis.nativeobjects;
 
-import dk.brics.tajs.analysis.Context;
 import dk.brics.tajs.analysis.Conversion;
 import dk.brics.tajs.analysis.EvalCache;
 import dk.brics.tajs.analysis.Exceptions;
@@ -25,7 +24,6 @@ import dk.brics.tajs.analysis.FunctionCalls.CallInfo;
 import dk.brics.tajs.analysis.InitialStateBuilder;
 import dk.brics.tajs.analysis.NativeFunctions;
 import dk.brics.tajs.analysis.Solver;
-import dk.brics.tajs.analysis.State;
 import dk.brics.tajs.analysis.uneval.NormalForm;
 import dk.brics.tajs.analysis.uneval.UnevalTools;
 import dk.brics.tajs.flowgraph.AbstractNode;
@@ -34,15 +32,18 @@ import dk.brics.tajs.flowgraph.FlowGraphFragment;
 import dk.brics.tajs.flowgraph.jsnodes.CallNode;
 import dk.brics.tajs.flowgraph.jsnodes.Node;
 import dk.brics.tajs.js2flowgraph.FlowGraphMutator;
+import dk.brics.tajs.lattice.Context;
 import dk.brics.tajs.lattice.ExecutionContext;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.ObjectLabel.Kind;
+import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.UnknownValueResolver;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.solver.Message.Severity;
 import dk.brics.tajs.solver.NodeAndContext;
 import dk.brics.tajs.unevalizer.Unevalizer;
+import dk.brics.tajs.unevalizer.UnevalizerLimitations;
 import dk.brics.tajs.util.AnalysisException;
 import dk.brics.tajs.util.Strings;
 import org.apache.log4j.Logger;
@@ -80,8 +81,9 @@ public class JSFunction {
                     FlowGraph currentFg = c.getFlowGraph();
 
                     //First parse the argument string
-                    if (call.isUnknownNumberOfArgs())
-                        throw new AnalysisException("Unable to handle unknown args to Function"); // FIXME: uneval, unknown arguments
+                    if (call.isUnknownNumberOfArgs()) {
+                        return UnevalizerLimitations.handle("Unable to handle unknown args to Function", call.getSourceNode(), c);
+                    }
 
                     CallNode callNode = (CallNode) call.getSourceNode();
 
@@ -95,7 +97,7 @@ public class JSFunction {
                             }
                             Value v = Conversion.toString(call.getArg(i), c);
                             if (v.getStr() == null)
-                                throw new AnalysisException("Unable to handle unknown arguments to Function"); // FIXME: uneval, unknown arguments
+                                return UnevalizerLimitations.handle("Unable to handle unknown arguments to Function", call.getSourceNode(), c); // FIXME: uneval, unknown arguments
                             stringArgs += v.getStr();
                         }
                     }
@@ -109,20 +111,20 @@ public class JSFunction {
 
                     String body = Strings.escapeSource(vBody.getStr());
                     if (body == null)
-                        throw new AnalysisException("Unable to handle non-constant code in Function at " + callNode.getBlock().getSourceLocation()); // FIXME: uneval, unknown arguments
+                        return UnevalizerLimitations.handle("Unable to handle non-constant code in Function", call.getSourceNode(), c); // FIXME: uneval, unknown arguments
 
                     String var = callNode.getResultRegister() == AbstractNode.NO_VALUE ? null : UnevalTools.gensym();
                     String complete_function = (var == null ? "\"" : "\"" + var + " = ") + "(function (" + stringArgs + ") {" + body + "})\"";
                     if (nrArgs == 0) {
                         // UnevalTools.rebuildNormalForm will crash due to missing argument-register ...
-                        throw new AnalysisException("Unevalizer can not handle `new Function()` at " + callNode.getBlock().getSourceLocation() + "..."); // See GitHub #147
+                        return UnevalizerLimitations.handle("Unevalizer can not handle `new Function()`", call.getSourceNode(), c); // See GitHub #147
                     }
                     NormalForm input = UnevalTools.rebuildNormalForm(currentFg, callNode, state, c);
                     String unevaled = new Unevalizer().uneval(UnevalTools.unevalizerCallback(currentFg, state, callNode, input), complete_function, false, null);
                     String unevaledSubst = var == null ? unevaled : unevaled.replace(var, UnevalTools.VAR_PLACEHOLDER); // to avoid the random string in the cache
 
                     if (unevaled == null)
-                        throw new AnalysisException("Unevalable eval: " + UnevalTools.rebuildFullExpression(currentFg, callNode, callNode.getArgRegister(0)));
+                        return UnevalizerLimitations.handle("Unevalable eval: " + UnevalTools.rebuildFullExpression(currentFg, callNode, callNode.getArgRegister(0)), call.getSourceNode(), c);
                     if (log.isDebugEnabled())
                         log.debug("Unevalized: " + unevaled);
 

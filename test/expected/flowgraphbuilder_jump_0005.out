@@ -1,28 +1,28 @@
 fg2: function()
-  block 0:
-    node 0: throw[v2]* (test/flowgraphbuilder/flowgraph_builder_jump_0005.js:3:9)
-    ->[block 11]
+  block 0: [entry]
+    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder_jump_0005.js:1:1)
+    ->[block 1]
   block 1:
-    node 1: nop(break l2)* (test/flowgraphbuilder/flowgraph_builder_jump_0005.js:6:13)
-    ->[block 8]
+    node 1: nop(break l1)* (test/flowgraphbuilder/flowgraph_builder_jump_0005.js:4:13)
+    ->[block 3] ~>[block 2]
   block 2:
-    node 2: read-variable['TAJS_assert',v4,v3] (test/flowgraphbuilder/flowgraph_builder_jump_0005.js:9:5)
-    node 3: constant[false,v5] (test/flowgraphbuilder/flowgraph_builder_jump_0005.js:9:17)
-    ->[block 3]
+    node 2: catch[v2]* (test/flowgraphbuilder/flowgraph_builder_jump_0005.js:3:9)
+    ->[block 8]
   block 3:
-    node 4: call[v3,v4,v5,-]* (test/flowgraphbuilder/flowgraph_builder_jump_0005.js:9:5)
+    node 3(~5): nop(break l2)* (test/flowgraphbuilder/flowgraph_builder_jump_0005.js:6:13)
     ->[block 8]
-  block 4: [entry]
-    node 5: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder_jump_0005.js:1:1)
-    ->[block 5]
+  block 4:
+    node 4: throw[v2]* (test/flowgraphbuilder/flowgraph_builder_jump_0005.js:3:9)
+    ->[block 11]
   block 5:
-    node 6: nop(break l1)* (test/flowgraphbuilder/flowgraph_builder_jump_0005.js:4:13)
-    ->[block 7] ~>[block 6]
-  block 6:
-    node 7: catch[v2]* (test/flowgraphbuilder/flowgraph_builder_jump_0005.js:3:9)
+    node 5: nop(break l2)* (test/flowgraphbuilder/flowgraph_builder_jump_0005.js:6:13)
     ->[block 8]
+  block 6:
+    node 6: read-variable['TAJS_assert',v4,v3] (test/flowgraphbuilder/flowgraph_builder_jump_0005.js:9:5)
+    node 7: constant[false,v5] (test/flowgraphbuilder/flowgraph_builder_jump_0005.js:9:17)
+    ->[block 7]
   block 7:
-    node 8(~1): nop(break l2)* (test/flowgraphbuilder/flowgraph_builder_jump_0005.js:6:13)
+    node 8: call[v3,v4,v5,-]* (test/flowgraphbuilder/flowgraph_builder_jump_0005.js:9:5)
     ->[block 8]
   block 8:
     node 9: read-variable['TAJS_dumpValue',v7,v6] (test/flowgraphbuilder/flowgraph_builder_jump_0005.js:13:1)

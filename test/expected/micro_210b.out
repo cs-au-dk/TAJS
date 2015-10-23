@@ -1,0 +1,2 @@
+test/micro/test210b.js:10:5: [definite] Unreachable code
+test/micro/test210b.js:6:16: [maybe] TypeError, accessing property of null/undefined

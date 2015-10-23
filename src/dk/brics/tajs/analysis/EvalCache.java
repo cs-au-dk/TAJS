@@ -17,6 +17,7 @@
 package dk.brics.tajs.analysis;
 
 import dk.brics.tajs.flowgraph.FlowGraphFragment;
+import dk.brics.tajs.lattice.Context;
 import dk.brics.tajs.solver.NodeAndContext;
 
 import java.util.Map;

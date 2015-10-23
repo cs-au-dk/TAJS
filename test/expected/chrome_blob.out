@@ -1,61 +1,14 @@
 test/chromeexperiments/blob.html:62:13: [definite] TypeError, accessing property of null/undefined
 test/chromeexperiments/blob.html:72:13: [definite] TypeError, accessing property of null/undefined
-test/chromeexperiments/blob.html:55:9: [definite] The assignment to y has no effect
-test/chromeexperiments/blob.html:56:9: [definite] The conditional expression is always false
-test/chromeexperiments/blob.html:56:13: [definite] Variable q is null/undefined
-test/chromeexperiments/blob.html:79:9: [definite] The assignment to y has no effect
-test/chromeexperiments/blob.html:80:9: [definite] The conditional expression is always false
-test/chromeexperiments/blob.html:80:13: [definite] Variable q is null/undefined
-test/chromeexperiments/blob.html:186:9: [definite] The conditional expression is always false
-test/chromeexperiments/blob.html:186:13: [definite] The conditional expression is always false
-test/chromeexperiments/blob.html:198:9: [definite] The conditional expression is always false
-test/chromeexperiments/blob.html:198:13: [definite] Variable q is null/undefined
-test/chromeexperiments/blob.html:251:13: [definite] The conditional expression is always false
-test/chromeexperiments/blob.html:277:17: [definite] The conditional expression is always false
-test/chromeexperiments/blob.html:277:21: [definite] The conditional expression is always false
-test/chromeexperiments/blob.html:288:13: [definite] The conditional expression is always true
-test/chromeexperiments/blob.html:301:17: [definite] The conditional expression is always false
 test/chromeexperiments/blob.html:395:9: [definite] The conditional expression is always true
 test/chromeexperiments/blob.html:395:13: [definite] The conditional expression is always true
-test/chromeexperiments/blob.html:513:9: [definite] The conditional expression is always false
 test/chromeexperiments/blob.html:62:13: [definite] Reading absent property touches
 test/chromeexperiments/blob.html:72:13: [definite] Reading absent property touches
-test/chromeexperiments/blob.html:215:21: [definite] Dead assignment, property blobB is never read
-test/chromeexperiments/blob.html:342:13: [definite] Dead assignment, property blobB is never read
-test/chromeexperiments/blob.html:353:13: [definite] Dead assignment, property fillStyle is never read
-test/chromeexperiments/blob.html:354:13: [definite] Dead assignment, property strokeStyle is never read
-test/chromeexperiments/blob.html:355:13: [definite] Dead assignment, property lineWidth is never read
-test/chromeexperiments/blob.html:357:13: [definite] Dead assignment, property debug is never read
-test/chromeexperiments/blob.html:360:13: [definite] Dead assignment, property fillStyle is never read
-test/chromeexperiments/blob.html:361:13: [definite] Dead assignment, property strokeStyle is never read
-test/chromeexperiments/blob.html:362:13: [definite] Dead assignment, property lineWidth is never read
-test/chromeexperiments/blob.html:364:13: [definite] Dead assignment, property debug is never read
-test/chromeexperiments/blob.html:367:13: [definite] Dead assignment, property fillStyle is never read
-test/chromeexperiments/blob.html:368:13: [definite] Dead assignment, property strokeStyle is never read
-test/chromeexperiments/blob.html:369:13: [definite] Dead assignment, property lineWidth is never read
-test/chromeexperiments/blob.html:371:13: [definite] Dead assignment, property debug is never read
-test/chromeexperiments/blob.html:374:13: [definite] Dead assignment, property fillStyle is never read
-test/chromeexperiments/blob.html:375:13: [definite] Dead assignment, property strokeStyle is never read
-test/chromeexperiments/blob.html:376:13: [definite] Dead assignment, property lineWidth is never read
-test/chromeexperiments/blob.html:378:13: [definite] Dead assignment, property debug is never read
-test/chromeexperiments/blob.html:381:13: [definite] Dead assignment, property fillStyle is never read
-test/chromeexperiments/blob.html:382:13: [definite] Dead assignment, property strokeStyle is never read
-test/chromeexperiments/blob.html:383:13: [definite] Dead assignment, property lineWidth is never read
-test/chromeexperiments/blob.html:385:13: [definite] Dead assignment, property debug is never read
-test/chromeexperiments/blob.html:388:13: [definite] Dead assignment, property fillStyle is never read
-test/chromeexperiments/blob.html:389:13: [definite] Dead assignment, property strokeStyle is never read
-test/chromeexperiments/blob.html:390:13: [definite] Dead assignment, property lineWidth is never read
-test/chromeexperiments/blob.html:392:13: [definite] Dead assignment, property debug is never read
-test/chromeexperiments/blob.html:457:9: [definite] Dead assignment, property current is never read
-test/chromeexperiments/blob.html:461:5: [definite] Dead assignment, property lastSplitTime is never read
-test/chromeexperiments/blob.html:552:5: [definite] Dead assignment, property lastSplitTime is never read
-test/chromeexperiments/blob.html:556:1: [definite] Dead assignment, property merge is never read
 test/chromeexperiments/blob.html:62:33: [definite] Unreachable code
 test/chromeexperiments/blob.html:72:33: [definite] Unreachable code
-test/chromeexperiments/blob.html:251:17: [definite] Reading absent property (computed name)
-test/chromeexperiments/blob.html:334:9: [definite] The variable y is never used
 test/chromeexperiments/blob.html:335:9: [definite] The variable F is never used
-test/chromeexperiments/blob.html:556:24: [definite] Unreachable function
+test/chromeexperiments/blob.html:57:13: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/blob.html:81:13: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/blob.html:93:9: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/blob.html:93:29: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/blob.html:104:25: [maybe] TypeError, accessing property of null/undefined
@@ -64,6 +17,10 @@ test/chromeexperiments/blob.html:142:47: [maybe] TypeError, accessing property o
 test/chromeexperiments/blob.html:147:21: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/blob.html:156:33: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/blob.html:183:25: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/blob.html:190:39: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/blob.html:190:71: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/blob.html:191:17: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/blob.html:199:13: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/blob.html:208:24: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/blob.html:211:24: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/blob.html:218:13: [maybe] TypeError, accessing property of null/undefined
@@ -76,8 +33,15 @@ test/chromeexperiments/blob.html:267:29: [maybe] TypeError, accessing property o
 test/chromeexperiments/blob.html:267:59: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/blob.html:268:36: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/blob.html:268:66: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/blob.html:288:18: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/blob.html:296:22: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/blob.html:296:38: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/blob.html:305:37: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/blob.html:305:37: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/blob.html:306:29: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/blob.html:308:34: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/blob.html:308:34: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/blob.html:308:53: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/blob.html:315:43: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/blob.html:315:87: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/blob.html:496:9: [maybe] TypeError, accessing property of null/undefined
@@ -90,27 +54,41 @@ test/chromeexperiments/blob.html:505:13: [maybe] TypeError, accessing property o
 test/chromeexperiments/blob.html:517:9: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/blob.html:536:50: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/blob.html:537:47: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/blob.html:559:24: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/blob.html:142:9: [maybe] Reading absent property body
 test/chromeexperiments/blob.html:265:33: [maybe] Reading absent property joints
 test/chromeexperiments/blob.html:266:25: [maybe] Reading absent property joints
+test/chromeexperiments/blob.html:305:37: [maybe] Reading absent property joints
+test/chromeexperiments/blob.html:306:29: [maybe] Reading absent property joints
 test/chromeexperiments/blob.html:497:9: [maybe] Reading absent property joints
 test/chromeexperiments/blob.html:498:9: [maybe] Reading absent property joints
 test/chromeexperiments/blob.html:500:13: [maybe] Reading absent property joints
 test/chromeexperiments/blob.html:501:13: [maybe] Reading absent property joints
 test/chromeexperiments/blob.html:504:13: [maybe] Reading absent property joints
 test/chromeexperiments/blob.html:505:13: [maybe] Reading absent property joints
-test/chromeexperiments/blob.html:34:41: [maybe] Uncaught exception, constructed at [test/chromeexperiments/blob.html:496:9, test/chromeexperiments/blob.html:497:9, test/chromeexperiments/blob.html:498:9, test/chromeexperiments/blob.html:500:13, test/chromeexperiments/blob.html:501:13, test/chromeexperiments/blob.html:504:13, test/chromeexperiments/blob.html:505:13, test/chromeexperiments/blob.html:517:9]
+test/chromeexperiments/blob.html:34:41: [maybe] Uncaught exception, constructed at [test/chromeexperiments/blob.html:57:13, test/chromeexperiments/blob.html:62:13, test/chromeexperiments/blob.html:72:13, test/chromeexperiments/blob.html:81:13, test/chromeexperiments/blob.html:93:9, test/chromeexperiments/blob.html:93:29, test/chromeexperiments/blob.html:104:25, test/chromeexperiments/blob.html:142:9, test/chromeexperiments/blob.html:142:47, test/chromeexperiments/blob.html:147:21, test/chromeexperiments/blob.html:156:33, test/chromeexperiments/blob.html:183:25, test/chromeexperiments/blob.html:190:39, test/chromeexperiments/blob.html:190:71, test/chromeexperiments/blob.html:191:17, test/chromeexperiments/blob.html:199:13, test/chromeexperiments/blob.html:208:24, test/chromeexperiments/blob.html:211:24, test/chromeexperiments/blob.html:218:13, test/chromeexperiments/blob.html:248:17, test/chromeexperiments/blob.html:259:17, test/chromeexperiments/blob.html:265:33, test/chromeexperiments/blob.html:266:25, test/chromeexperiments/blob.html:267:29, test/chromeexperiments/blob.html:267:59, test/chromeexperiments/blob.html:268:36, test/chromeexperiments/blob.html:268:66, test/chromeexperiments/blob.html:288:18, test/chromeexperiments/blob.html:296:22, test/chromeexperiments/blob.html:296:38, test/chromeexperiments/blob.html:305:37, test/chromeexperiments/blob.html:306:29, test/chromeexperiments/blob.html:308:34, test/chromeexperiments/blob.html:308:53, test/chromeexperiments/blob.html:315:43, test/chromeexperiments/blob.html:315:87, test/chromeexperiments/blob.html:496:9, test/chromeexperiments/blob.html:497:9, test/chromeexperiments/blob.html:498:9, test/chromeexperiments/blob.html:500:13, test/chromeexperiments/blob.html:501:13, test/chromeexperiments/blob.html:504:13, test/chromeexperiments/blob.html:505:13, test/chromeexperiments/blob.html:517:9, test/chromeexperiments/blob.html:536:50, test/chromeexperiments/blob.html:537:47, test/chromeexperiments/blob.html:559:24]
 test/chromeexperiments/blob.html:89:13: [maybe] Reading absent property (computed name)
 test/chromeexperiments/blob.html:103:17: [maybe] Reading absent property (computed name)
 test/chromeexperiments/blob.html:142:47: [maybe] Reading absent property (computed name)
 test/chromeexperiments/blob.html:146:20: [maybe] Reading absent property (computed name)
 test/chromeexperiments/blob.html:156:33: [maybe] Reading absent property (computed name)
+test/chromeexperiments/blob.html:178:17: [maybe] Reading absent property (computed name)
 test/chromeexperiments/blob.html:182:17: [maybe] Reading absent property (computed name)
+test/chromeexperiments/blob.html:190:17: [maybe] Reading absent property (computed name)
+test/chromeexperiments/blob.html:190:25: [maybe] Reading absent property (computed name)
+test/chromeexperiments/blob.html:190:39: [maybe] Reading absent property (computed name)
+test/chromeexperiments/blob.html:190:71: [maybe] Reading absent property (computed name)
+test/chromeexperiments/blob.html:191:17: [maybe] Reading absent property (computed name)
+test/chromeexperiments/blob.html:191:28: [maybe] Reading absent property (computed name)
+test/chromeexperiments/blob.html:192:26: [maybe] Reading absent property (computed name)
+test/chromeexperiments/blob.html:192:41: [maybe] Reading absent property (computed name)
 test/chromeexperiments/blob.html:204:17: [maybe] Reading absent property (computed name)
 test/chromeexperiments/blob.html:206:25: [maybe] Reading absent property (computed name)
 test/chromeexperiments/blob.html:247:21: [maybe] Reading absent property (computed name)
+test/chromeexperiments/blob.html:251:17: [maybe] Reading absent property (computed name)
 test/chromeexperiments/blob.html:258:21: [maybe] Reading absent property (computed name)
 test/chromeexperiments/blob.html:266:25: [maybe] Reading absent property (computed name)
+test/chromeexperiments/blob.html:306:29: [maybe] Reading absent property (computed name)
 test/chromeexperiments/blob.html:495:17: [maybe] Reading absent property (computed name)
 test/chromeexperiments/blob.html:512:13: [maybe] Reading absent property (computed name)
 test/chromeexperiments/blob.html:536:50: [maybe] Reading absent property (computed name)
@@ -142,6 +120,8 @@ test/chromeexperiments/blob.html:505:61: [info] 'this' refers to multiple abstra
 test/chromeexperiments/blob.html:511:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/chromeexperiments/blob.html:512:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/chromeexperiments/blob.html:513:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/blob.html:514:32: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/blob.html:515:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/chromeexperiments/blob.html:517:23: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/chromeexperiments/blob.html:517:52: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/chromeexperiments/blob.html:518:48: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
@@ -163,3 +143,15 @@ test/chromeexperiments/blob.html:546:5: [info] 'this' refers to multiple abstrac
 test/chromeexperiments/blob.html:547:5: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/chromeexperiments/blob.html:548:5: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/chromeexperiments/blob.html:553:5: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/blob.html:557:5: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/blob.html:558:5: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/blob.html:559:5: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/blob.html:560:10: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/blob.html:560:66: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/blob.html:561:5: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/blob.html:561:20: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/blob.html:562:5: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/blob.html:563:5: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/blob.html:563:68: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/blob.html:564:5: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/blob.html:565:5: [info] 'this' refers to multiple abstract objects, which may cause loss of precision

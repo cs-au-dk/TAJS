@@ -6,21 +6,21 @@ import dk.brics.tajs.util.AnalysisException;
 /**
  * Reference-type.
  */
-abstract class Reference {
+public abstract class Reference {
 
-    enum Type {
+    public enum Type {
         Variable, StaticProperty, DynamicProperty
     }
 
     /**
      * The type of the reference.
      */
-    final Type type;
+    public final Type type;
 
     /**
      * The source location of the reference.
      */
-    final SourceLocation location;
+    public final SourceLocation location;
 
     private Reference(Type type, SourceLocation location) {
         this.type = type;
@@ -30,28 +30,28 @@ abstract class Reference {
     /**
      * Casts this reference to a dynamic property reference.
      */
-    DynamicProperty asDynamicProperty() {
+    public DynamicProperty asDynamicProperty() {
         return (DynamicProperty) this;
     }
 
     /**
      * Casts this reference to a static property reference.
      */
-    StaticProperty asStaticProperty() {
+    public StaticProperty asStaticProperty() {
         return (StaticProperty) this;
     }
 
     /**
      * Casts this reference to a property reference.
      */
-    Property asProperty() {
+    public Property asProperty() {
         return (Property) this;
     }
 
     /**
      * Casts this reference to a variable reference.
      */
-    Variable asVariable() {
+    public Variable asVariable() {
         return (Variable) this;
     }
 
@@ -68,7 +68,7 @@ abstract class Reference {
                 return new StaticProperty(staticProperty.base, staticProperty.baseRegister, staticProperty.propertyName, sourceLocation);
             case DynamicProperty:
                 DynamicProperty dynamicProperty = asDynamicProperty();
-                return new DynamicProperty(dynamicProperty.base, dynamicProperty.baseRegister, dynamicProperty.propertyRegister, sourceLocation);
+                return new DynamicProperty(dynamicProperty.base, dynamicProperty.baseRegister, dynamicProperty.property, dynamicProperty.propertyRegister, sourceLocation);
             default:
                 throw new AnalysisException("Unexpected reference type");
         }
@@ -77,12 +77,12 @@ abstract class Reference {
     /**
      * A reference to a variable.
      */
-    static class Variable extends Reference {
+    public static class Variable extends Reference {
 
         /**
          * The name of the variable.
          */
-        final String name;
+        public final String name;
 
         /**
          * Constructs a new variable reference.
@@ -96,17 +96,17 @@ abstract class Reference {
     /**
      * Abstract super-class for property references.
      */
-    abstract static class Property extends Reference {
+    public abstract static class Property extends Reference {
 
         /**
          * The base value reference.
          */
-        final Reference base;
+        public final Reference base;
 
         /**
          * The register where the base value is stored.
          */
-        final int baseRegister;
+        public final int baseRegister;
 
         private Property(Type type, Reference base, int baseRegister, SourceLocation location) {
             super(type, location);
@@ -118,31 +118,34 @@ abstract class Reference {
     /**
      * A dynamic property reference.
      */
-    static class DynamicProperty extends Property {
+    public static class DynamicProperty extends Property {
 
         /**
          * The register where the property value is stored.
          */
-        final int propertyRegister;
+        public final int propertyRegister;
+
+        public final Reference property;
 
         /**
          * Constructs a new dynamic property reference.
          */
-        DynamicProperty(Reference base, int baseRegister, int propertyRegister, SourceLocation location) {
+        DynamicProperty(Reference base, int baseRegister, Reference property, int propertyRegister, SourceLocation location) {
             super(Type.DynamicProperty, base, baseRegister, location);
             this.propertyRegister = propertyRegister;
+            this.property = property;
         }
     }
 
     /**
      * A static property reference.
      */
-    static class StaticProperty extends Property {
+    public static class StaticProperty extends Property {
 
         /**
          * The property name.
          */
-        final String propertyName;
+        public final String propertyName;
 
         /**
          * Constructs a new static property reference.

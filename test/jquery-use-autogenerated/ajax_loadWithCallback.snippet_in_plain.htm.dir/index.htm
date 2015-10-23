@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="generator" content="HTML Tidy for Java (vers. 2009-12-01), see jtidy.sourceforge.net" />
+<title>Plain Wrapper</title>
+<script type="text/javascript" src="jquery.js">//</script></head>
+<body>
+<!--Inserted snippet: ajax_loadWithCallback.snippet-->
+<div id="divTestArea3" />
+<script type="text/javascript">
+//<![CDATA[
+$(function()
+{
+        $("#divTestArea3").load("no-content.html", function(responseText, statusText, xhr)
+        {
+                if(statusText == "success")
+                        alert("Successfully loaded the content!");
+                if(statusText == "error")
+                        alert("An error occurred: " + xhr.status + " - " + xhr.statusText);
+        });
+});
+//]]>
+</script>
+</body>
+</html>

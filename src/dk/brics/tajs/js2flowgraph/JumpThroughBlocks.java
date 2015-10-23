@@ -25,21 +25,21 @@ class JumpThroughBlocks {
     /**
      * Convenience constructor for singleton jump-throughs.
      */
-    JumpThroughBlocks(BasicBlock singleBlock) {
-        this(singleBlock, singleBlock, Collections.singletonList(singleBlock));
+    JumpThroughBlocks(BasicBlock singleBlock, FunctionAndBlockManager functionAndBlockManager) {
+        this(singleBlock, singleBlock, Collections.singletonList(singleBlock), functionAndBlockManager);
     }
 
     /**
      * Constructs jump-through blocks as cloned of the given basic blocks.
      */
-    JumpThroughBlocks(BasicBlock entry, BasicBlock exit, List<BasicBlock> allBlocks) {
+    JumpThroughBlocks(BasicBlock entry, BasicBlock exit, List<BasicBlock> allBlocks, FunctionAndBlockManager functionAndBlockManager) {
         assert entry != null;
         assert exit != null;
         assert allBlocks != null;
         assert allBlocks.contains(entry);
         assert allBlocks.contains(exit);
 
-        Pair<Pair<BasicBlock, BasicBlock>, List<BasicBlock>> clones = cloneBlocks(entry, exit, allBlocks);
+        Pair<Pair<BasicBlock, BasicBlock>, List<BasicBlock>> clones = cloneBlocks(entry, exit, allBlocks, functionAndBlockManager);
         this.entry = clones.getFirst().getFirst();
         this.exit = clones.getFirst().getSecond();
         this.allBlocks = clones.getSecond();
@@ -50,8 +50,8 @@ class JumpThroughBlocks {
      *
      * @return a tuple ((cloned-entry, cloned-exit), cloned-all)
      */
-    private static Pair<Pair<BasicBlock, BasicBlock>, List<BasicBlock>> cloneBlocks(BasicBlock entry, BasicBlock exit, List<BasicBlock> all) {
-        IdentityHashMap<BasicBlock, BasicBlock> old2new = FunctionBuilderHelper.cloneBlocksAndNodes(all);
+    private static Pair<Pair<BasicBlock, BasicBlock>, List<BasicBlock>> cloneBlocks(BasicBlock entry, BasicBlock exit, List<BasicBlock> all, FunctionAndBlockManager functionAndBlockManager) {
+        IdentityHashMap<BasicBlock, BasicBlock> old2new = FunctionBuilderHelper.cloneBlocksAndNodes(all, functionAndBlockManager);
         final List<BasicBlock> cloned = newList();
         for (BasicBlock orig : all) {
             cloned.add(old2new.get(orig));
@@ -62,8 +62,8 @@ class JumpThroughBlocks {
     /**
      * Returns a shallow clone of this object.
      */
-    JumpThroughBlocks copy() {
-        return new JumpThroughBlocks(entry, exit, allBlocks);
+    JumpThroughBlocks copy(FunctionAndBlockManager functionAndBlockManager) {
+        return new JumpThroughBlocks(entry, exit, allBlocks, functionAndBlockManager);
     }
 
     /**

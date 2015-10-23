@@ -17,7 +17,7 @@ fg2: function()
   block 3:
     node 9: has-next[v3,v4] (test/flowgraphbuilder/forin_call2.js:4:1)
     node 10: if[v4](true-block:4,false-block:8) (test/flowgraphbuilder/forin_call2.js:4:1)
-    ->[block 4,block 8]
+    ->[block 4,block 8] ~>[block 7]
   block 4:
     node 11: next-property[v3,v5] (test/flowgraphbuilder/forin_call2.js:4:10)
     node 12: write-variable[v5,'i']* (test/flowgraphbuilder/forin_call2.js:4:10)
@@ -30,25 +30,28 @@ fg2: function()
     ->[block 6] ~>[block 7]
   block 6:
     node 17: end-for-in(begin-node:8)* (test/flowgraphbuilder/forin_call2.js:6:1)
-    ->[block 2] ~>[block 7]
+    ->[block 2]
   block 7:
     node 18: end-for-in(begin-node:8)* (test/flowgraphbuilder/forin_call2.js:6:1)
+    ->[block 10]
+  block 8:
+    node 19: end-for-in(begin-node:8)* (test/flowgraphbuilder/forin_call2.js:6:1)
     ->[block 9]
-  block 8: [exit-ordinary]
-    node 19: return[v1] (test/flowgraphbuilder/forin_call2.js:1:1)
+  block 9: [exit-ordinary]
+    node 20: return[v1] (test/flowgraphbuilder/forin_call2.js:1:1)
     ->[]
-  block 9: [exit-exceptional]
-    node 20: exceptional-return (test/flowgraphbuilder/forin_call2.js:1:1)
+  block 10: [exit-exceptional]
+    node 21: exceptional-return (test/flowgraphbuilder/forin_call2.js:1:1)
     ->[]
 function f()
-  block 10: [entry]
-    node 21: constant[undefined,v1] (test/flowgraphbuilder/forin_call2.js:1:1)
-    ->[block 11]
-  block 11: [exit-ordinary]
-    node 22: return[v1] (test/flowgraphbuilder/forin_call2.js:2:1)
+  block 11: [entry]
+    node 22: constant[undefined,v1] (test/flowgraphbuilder/forin_call2.js:1:1)
+    ->[block 12]
+  block 12: [exit-ordinary]
+    node 23: return[v1] (test/flowgraphbuilder/forin_call2.js:2:1)
     ->[]
-  block 12: [exit-exceptional]
-    node 23: exceptional-return (test/flowgraphbuilder/forin_call2.js:2:1)
+  block 13: [exit-exceptional]
+    node 24: exceptional-return (test/flowgraphbuilder/forin_call2.js:2:1)
     ->[]
 
 test/flowgraphbuilder/forin_call2.js:5:5: [definite] Too few parameters to function Object.prototype.hasOwnProperty

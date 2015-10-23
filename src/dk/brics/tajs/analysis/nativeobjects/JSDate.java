@@ -20,10 +20,10 @@ import dk.brics.tajs.analysis.FunctionCalls.CallInfo;
 import dk.brics.tajs.analysis.InitialStateBuilder;
 import dk.brics.tajs.analysis.NativeFunctions;
 import dk.brics.tajs.analysis.Solver;
-import dk.brics.tajs.analysis.State;
 import dk.brics.tajs.flowgraph.AbstractNode;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.ObjectLabel.Kind;
+import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.Value;
 
 /**
@@ -148,6 +148,11 @@ public class JSDate {
             }
 
             case DATE_VALUEOF: { // 15.9.5.8
+                NativeFunctions.expectParameters(nativeobject, call, c, 0, 0);
+                return Value.makeAnyNum();
+            }
+
+            case DATE_NOW: { // 15.9.4.4
                 NativeFunctions.expectParameters(nativeobject, call, c, 0, 0);
                 return Value.makeAnyNum();
             }

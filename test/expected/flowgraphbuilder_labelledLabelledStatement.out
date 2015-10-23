@@ -1,0 +1,14 @@
+fg2: function()
+  block 0: [entry]
+    node 0: constant[undefined,v1] (out/temp-sources/flowgraphbuilder_labelledLabelledStatement:1:1)
+    ->[block 1]
+  block 1:
+    node 1: constant[42.0,-]* (out/temp-sources/flowgraphbuilder_labelledLabelledStatement:1:17)
+    ->[block 2]
+  block 2: [exit-ordinary]
+    node 2: return[v1] (out/temp-sources/flowgraphbuilder_labelledLabelledStatement:1:1)
+    ->[]
+  block 3: [exit-exceptional]
+    node 3: exceptional-return (out/temp-sources/flowgraphbuilder_labelledLabelledStatement:1:1)
+    ->[]
+

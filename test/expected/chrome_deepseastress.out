@@ -1,5 +1,6 @@
 test/chromeexperiments/deepseastress.html:454:20: [definite] TypeError, accessing property of null/undefined
 test/chromeexperiments/deepseastress.html:459:5: [definite] TypeError, accessing property of null/undefined
+test/chromeexperiments/deepseastress.html:465:5: [definite] TypeError, accessing property of null/undefined
 test/chromeexperiments/deepseastress.html:459:25: [definite] The conditional expression is always false
 test/chromeexperiments/deepseastress.html:13:1: [definite] Dead assignment, property g is never read
 test/chromeexperiments/deepseastress.html:95:1: [definite] Dead assignment, property l is never read
@@ -9,6 +10,7 @@ test/chromeexperiments/deepseastress.html:404:5: [definite] Dead assignment, pro
 test/chromeexperiments/deepseastress.html:452:32: [definite] Reading absent property which
 test/chromeexperiments/deepseastress.html:454:20: [definite] Reading absent property numCreatures
 test/chromeexperiments/deepseastress.html:459:5: [definite] Reading absent property toggle
+test/chromeexperiments/deepseastress.html:465:5: [definite] Reading absent property numCreatures
 test/chromeexperiments/deepseastress.html:13:9: [definite] Unreachable function
 test/chromeexperiments/deepseastress.html:14:5: [definite] Unreachable function s
 test/chromeexperiments/deepseastress.html:17:5: [definite] Unreachable function C
@@ -65,17 +67,26 @@ test/chromeexperiments/deepseastress.html:401:18: [definite] The variable E is n
 test/chromeexperiments/deepseastress.html:401:21: [definite] The variable A is never used
 test/chromeexperiments/deepseastress.html:454:45: [definite] Unreachable code
 test/chromeexperiments/deepseastress.html:460:5: [definite] Unreachable code
-test/chromeexperiments/deepseastress.html:463:20: [definite] Unreachable function
+test/chromeexperiments/deepseastress.html:466:5: [definite] Unreachable code
 test/chromeexperiments/deepseastress.html:454:20: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/deepseastress.html:459:5: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/deepseastress.html:415:110: [maybe] Reading 'this' yields the global object
 test/chromeexperiments/deepseastress.html:415:110: [maybe] Reading absent property form
+test/chromeexperiments/deepseastress.html:417:110: [maybe] Reading 'this' yields the global object
 test/chromeexperiments/deepseastress.html:417:110: [maybe] Reading absent property form
+test/chromeexperiments/deepseastress.html:419:104: [maybe] Reading 'this' yields the global object
 test/chromeexperiments/deepseastress.html:419:104: [maybe] Reading absent property form
+test/chromeexperiments/deepseastress.html:421:110: [maybe] Reading 'this' yields the global object
 test/chromeexperiments/deepseastress.html:421:110: [maybe] Reading absent property form
+test/chromeexperiments/deepseastress.html:423:102: [maybe] Reading 'this' yields the global object
 test/chromeexperiments/deepseastress.html:423:102: [maybe] Reading absent property form
+test/chromeexperiments/deepseastress.html:426:106: [maybe] Reading 'this' yields the global object
 test/chromeexperiments/deepseastress.html:426:106: [maybe] Reading absent property form
+test/chromeexperiments/deepseastress.html:428:106: [maybe] Reading 'this' yields the global object
 test/chromeexperiments/deepseastress.html:428:106: [maybe] Reading absent property form
+test/chromeexperiments/deepseastress.html:430:81: [maybe] Reading 'this' yields the global object
 test/chromeexperiments/deepseastress.html:430:81: [maybe] Reading absent property form
+test/chromeexperiments/deepseastress.html:7:34: [maybe] Uncaught exception, constructed at [test/chromeexperiments/deepseastress.html:454:20, test/chromeexperiments/deepseastress.html:459:5, test/chromeexperiments/deepseastress.html:465:5]
 test/chromeexperiments/deepseastress.html:415:110: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/chromeexperiments/deepseastress.html:417:110: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/chromeexperiments/deepseastress.html:419:104: [info] 'this' refers to multiple abstract objects, which may cause loss of precision

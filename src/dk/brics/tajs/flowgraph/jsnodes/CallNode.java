@@ -36,9 +36,20 @@ import java.util.List;
  */
 public class CallNode extends LoadNode {
 
-    private boolean constructor;
+    /**
+     * This information is syntactic and allows us to:
+     * 1) distinguish between [4] and Array(4) for the case where Array gets precisely one numeric argument.
+     * 2) treat /\// and RegExp('/') equivalently through proper escaping (15.10.4.1)
+     * It can also increase precision, since ES5 does not permit redefining literal constructors
+     */
+    public enum LiteralConstructorKinds {
+        // technically, OBJECT and FUNCTION should be here too, but TAJS instantiates them without call nodes
+        ARRAY, REGEXP
+    }
 
-    private boolean arraylit;
+    private LiteralConstructorKinds literalConstructorKind = null;
+
+    private boolean constructor;
 
     private int base_reg; // NO_VALUE if absent (i.e. implicitly the global object, used for arraylits and regular expressions)
 
@@ -54,17 +65,36 @@ public class CallNode extends LoadNode {
      * Constructs a new call/construct node.
      *
      * @param constructor  Is this a constructor.
-     * @param arraylit     Does this call node come from an array literal
      * @param result_reg   The register for the result.
      * @param base_reg     The base object register.
      * @param function_reg The function register.
      * @param arg_regs     The argument registers as a list.
      * @param location     The source location.
      */
-    public CallNode(boolean constructor, boolean arraylit, int result_reg, int base_reg, int function_reg, List<Integer> arg_regs, SourceLocation location) {
+    public CallNode(boolean constructor, int result_reg, int base_reg, int function_reg, List<Integer> arg_regs, SourceLocation location) {
         super(result_reg, location);
         this.constructor = constructor;
-        this.arraylit = arraylit;
+        this.base_reg = base_reg;
+        this.function_reg = function_reg;
+        this.arg_regs = new int[arg_regs.size()];
+        for (int i = 0; i < this.arg_regs.length; i++)
+            this.arg_regs[i] = arg_regs.get(i);
+    }
+
+    /**
+     * Constructs a new construct call node for a literal object.
+     *
+     * @param literalConstructorKind the kind of literal constructor being invoked.
+     * @param result_reg             The register for the result.
+     * @param base_reg               The base object register.
+     * @param function_reg           The function register.
+     * @param arg_regs               The argument registers as a list.
+     * @param location               The source location.
+     */
+    public CallNode(LiteralConstructorKinds literalConstructorKind, int result_reg, int base_reg, int function_reg, List<Integer> arg_regs, SourceLocation location) {
+        super(result_reg, location);
+        this.literalConstructorKind = literalConstructorKind;
+        this.constructor = true;
         this.base_reg = base_reg;
         this.function_reg = function_reg;
         this.arg_regs = new int[arg_regs.size()];
@@ -99,14 +129,6 @@ public class CallNode extends LoadNode {
      */
     public boolean isConstructorCall() {
         return constructor;
-    }
-
-    /**
-     * Returns true if this call node comes from an array literal.
-     * This allows us to distinguish between [4] and Array(4) for the case where Array gets precisely one numeric argument.
-     */
-    public boolean isArrayLiteral() {
-        return arraylit;
     }
 
     /**
@@ -163,7 +185,7 @@ public class CallNode extends LoadNode {
     @Override
     public String toString() {
         StringBuilder b = new StringBuilder();
-        if (constructor)
+        if (constructor || literalConstructorKind != null)
             b.append("construct");
         else
             b.append("call");
@@ -206,5 +228,9 @@ public class CallNode extends LoadNode {
             throw new AnalysisException("Node should have its own basic block: " + toString());
         if (b.getSuccessors().size() > 1)
             throw new AnalysisException("More than one successor for call node block: " + b);
+    }
+
+    public LiteralConstructorKinds getLiteralConstructorKind() {
+        return literalConstructorKind;
     }
 }

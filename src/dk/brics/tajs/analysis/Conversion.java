@@ -23,6 +23,7 @@ import dk.brics.tajs.flowgraph.AbstractNode;
 import dk.brics.tajs.lattice.Bool;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.ObjectLabel.Kind;
+import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.Str;
 import dk.brics.tajs.lattice.UnknownValueResolver;
 import dk.brics.tajs.lattice.Value;
@@ -393,29 +394,28 @@ public class Conversion {
             // 9.8.1 ToString Applied to the Number Type
             if (v.isMaybeSingleNum()) {
                 // single number to string
-				String s;
-				double dbl = v.getNum();
-				if (Double.isInfinite(dbl))
-					s = Double.toString(dbl);
-				else if (Math.floor(dbl) == dbl) {
-					if(dbl > Integer.MAX_VALUE || dbl < Integer.MIN_VALUE) {
-						// funnky float approximations begin happening in JavaScript around here
-						s = specialNumberToString(dbl, c);
-					} else {
-						// common case, is not dispatched to concrete semantics for efficiency reasons
-						s = Long.toString((long) dbl);
-					}
-				}
-				else {
-					// s = Double.toString(dbl); - not used as the formatting varies between Java and JavaScript!!
-					s = specialNumberToString(dbl, c);
-				}
-				if(s == null){
-					// concrete semantic failed for some reason
-					result = result.joinAnyStr();
-				}else {
-					result = result.joinStr(s);
-				}
+                String s;
+                double dbl = v.getNum();
+                if (Double.isInfinite(dbl))
+                    s = Double.toString(dbl);
+                else if (Math.floor(dbl) == dbl) {
+                    if (dbl > Integer.MAX_VALUE || dbl < Integer.MIN_VALUE) {
+                        // funnky float approximations begin happening in JavaScript around here
+                        s = specialNumberToString(dbl, c);
+                    } else {
+                        // common case, is not dispatched to concrete semantics for efficiency reasons
+                        s = Long.toString((long) dbl);
+                    }
+                } else {
+                    // s = Double.toString(dbl); - not used as the formatting varies between Java and JavaScript!!
+                    s = specialNumberToString(dbl, c);
+                }
+                if (s == null) {
+                    // concrete semantic failed for some reason
+                    result = result.joinAnyStr();
+                } else {
+                    result = result.joinStr(s);
+                }
             } else {
                 // NaN to string
                 if (v.isMaybeNaN())
@@ -426,7 +426,7 @@ public class Conversion {
                 if (v.isMaybeNumOther())
                     result = result.joinAnyStrOtherNum();
                 if (v.isMaybeInf())
-                    result = result.joinAnyStrOther();
+                    result = result.joinAnyStrOtherNum();
             }
             // TODO: warn about number-to-string conversion? (presumably rarely indicating a bug)
             // c.getMonitoring().addMessage(c.getCurrentNode(), Severity.LOW, "Converting number to string");
@@ -446,23 +446,23 @@ public class Conversion {
         return result;
     }
 
-	/**
-	 * Conversion of numbers to strings according to a concrete JavaScript semantics. Is only required for the special cases, such as formatting of very large or small numbers.
-	 */
-	private static String specialNumberToString(double dbl, Solver.SolverInterface c) {
-		final List<Value> noArgs = newList();
-		return TAJSConcreteSemantics.convertTAJSCallExplicit(Value.makeNum(dbl), "Number.prototype.toString", noArgs, ConcreteString.class, c).apply(new OptionalObjectVisitor<String, ConcreteString>() {
-			@Override
-			public String visit(None<ConcreteString> obj) {
-				return null;
-			}
+    /**
+     * Conversion of numbers to strings according to a concrete JavaScript semantics. Is only required for the special cases, such as formatting of very large or small numbers.
+     */
+    private static String specialNumberToString(double dbl, Solver.SolverInterface c) {
+        final List<Value> noArgs = newList();
+        return TAJSConcreteSemantics.convertTAJSCallExplicit(Value.makeNum(dbl), "Number.prototype.toString", noArgs, ConcreteString.class, c).apply(new OptionalObjectVisitor<String, ConcreteString>() {
+            @Override
+            public String visit(None<ConcreteString> obj) {
+                return null;
+            }
 
-			@Override
-			public String visit(Some<ConcreteString> obj) {
-				return obj.get().getString();
-			}
-		});
-	}
+            @Override
+            public String visit(Some<ConcreteString> obj) {
+                return obj.get().getString();
+            }
+        });
+    }
 
     /**
      * 9.9 ToObject, returning a Value.

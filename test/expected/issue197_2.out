@@ -1,0 +1,3 @@
+test/micro/issue197_2.html:6:11: [maybe] Reading absent property ownerDocument
+test/micro/issue197_2.html:5:3: [info] Abstract value: [*HTMLDivElement instances[dom]]
+test/micro/issue197_2.html:7:3: [info] Abstract value: Undef|Null|[*Document instances[dom]]

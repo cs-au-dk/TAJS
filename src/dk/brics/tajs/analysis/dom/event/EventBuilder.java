@@ -16,7 +16,7 @@
 
 package dk.brics.tajs.analysis.dom.event;
 
-import dk.brics.tajs.analysis.State;
+import dk.brics.tajs.lattice.State;
 
 /**
  * Initial State Builder for DOM Events.
@@ -41,5 +41,6 @@ public class EventBuilder {
         KeyboardEvent.build(s);
         MouseEvent.build(s);
         WheelEvent.build(s);
+        LoadEvent.build(s);
     }
 }

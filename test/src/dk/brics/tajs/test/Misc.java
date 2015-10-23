@@ -2,13 +2,23 @@ package dk.brics.tajs.test;
 
 import dk.brics.tajs.Main;
 import dk.brics.tajs.analysis.Analysis;
+import dk.brics.tajs.monitoring.IAnalysisMonitoring;
+import dk.brics.tajs.monitoring.Monitoring;
 import dk.brics.tajs.util.AnalysisException;
 import org.apache.log4j.Appender;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PatternLayout;
 import org.apache.log4j.WriterAppender;
 
-import java.io.*;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.PrintStream;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
@@ -22,7 +32,7 @@ public class Misc {
 	static PrintStream ps;
 
 	static String method_name;
-	
+
 	public static void init() {
         Main.initLogging(); // TODO: different log4j configuration for tests?
 		StackTraceElement[] s = Thread.currentThread().getStackTrace();
@@ -31,8 +41,12 @@ public class Misc {
 	}
 
 	public static void run(String[] args) throws AnalysisException {
+  		run(args, new Monitoring());
+	}
+
+	public static void run(String[] args, IAnalysisMonitoring monitoring) throws AnalysisException {
 		try {
-			Analysis a = Main.init(args, null);
+			Analysis a = Main.init(args, monitoring, null);
 			if (a == null)
 				throw new AnalysisException("Error during initialization");
 			Main.run(a);
@@ -73,13 +87,13 @@ public class Misc {
 			}
 		} catch (Exception e) {
 			fail(e.getMessage());
-		}				
+		}
 	}
 
 	public static String fix(String s) {
 		return s.replaceAll("\r\n", "\n");
 	}
-	
+
 	public static void captureSystemOutput() {
 		os = new ByteArrayOutputStream();
 		try {
@@ -95,7 +109,7 @@ public class Misc {
 		a.setName("test");
 		rootlogger.addAppender(a);
 	}
-	
+
 	public static void checkSystemOutput() {
 		ps.close();
 		try {
@@ -104,25 +118,43 @@ public class Misc {
 			throw new AnalysisException(e);
 		}
 	}
-	
+
+	public static void runSourceWithNamedFile(String name, String... src) {
+		File dir = new File("out/temp-sources/");
+		if(!dir.exists()){
+			dir.mkdirs();
+		}
+		runSourceWithFile(new File(dir, name), src, null);
+	}
+
 	public static void runSource(String... src) {
+        runSource(src, null);
+	}
+
+	private static void runSourceWithFile(File file, String[] src, IAnalysisMonitoring monitoring) {
 		StringBuilder sb = new StringBuilder();
 		for (int i = 0; i < src.length; i++) {
 			sb.append(src[i] + "\n");
-		}
-		final File file;
-		try {
-			file = File.createTempFile("temp-source-file", ".js");
-		} catch (IOException e) {
-			throw new RuntimeException(e);
 		}
 		try (PrintWriter writer = new PrintWriter(file)) {
 			writer.write(sb.toString());
 		} catch (FileNotFoundException e) {
 			throw new RuntimeException(e);
 		}
-		String[] args = new String[] { file.getPath() };
-		Misc.run(args);
-		file.deleteOnExit();
+		String[] args = new String[]{file.getPath()};
+        if (monitoring == null) {
+            Misc.run(args);
+        } else {
+            Misc.run(args, monitoring);
+        }
+        file.deleteOnExit();
 	}
+
+    public static void runSource(String[] source, IAnalysisMonitoring monitoring) {
+        try {
+            runSourceWithFile(File.createTempFile("temp-source-file", ".js"), source, monitoring);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

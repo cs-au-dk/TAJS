@@ -20,10 +20,10 @@ import dk.brics.tajs.analysis.FunctionCalls;
 import dk.brics.tajs.analysis.InitialStateBuilder;
 import dk.brics.tajs.analysis.NativeFunctions;
 import dk.brics.tajs.analysis.Solver;
-import dk.brics.tajs.analysis.State;
 import dk.brics.tajs.analysis.dom.DOMObjects;
 import dk.brics.tajs.analysis.dom.DOMWindow;
 import dk.brics.tajs.lattice.ObjectLabel;
+import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.util.AnalysisException;
 
@@ -86,5 +86,28 @@ public class HTMLTextAreaElement {
         createDOMFunction(s, PROTOTYPE, DOMObjects.HTMLTEXTAREAELEMENT_BLUR, "blur", 0);
         createDOMFunction(s, PROTOTYPE, DOMObjects.HTMLTEXTAREAELEMENT_FOCUS, "focus", 0);
         createDOMFunction(s, PROTOTYPE, DOMObjects.HTMLTEXTAREAELEMENT_SELECT, "select", 0);
+    }
+
+    /**
+     * Transfer functions
+     */
+    public static Value evaluate(DOMObjects nativeObject, FunctionCalls.CallInfo call, State s, Solver.SolverInterface c) {
+        switch (nativeObject) {
+            case HTMLTEXTAREAELEMENT_SELECT: {
+                NativeFunctions.expectParameters(nativeObject, call, c, 0, 0);
+                return Value.makeUndef();
+            }
+            case HTMLTEXTAREAELEMENT_BLUR: {
+                NativeFunctions.expectParameters(nativeObject, call, c, 0, 0);
+                return Value.makeUndef();
+            }
+            case HTMLTEXTAREAELEMENT_FOCUS: {
+                NativeFunctions.expectParameters(nativeObject, call, c, 0, 0);
+                return Value.makeUndef();
+            }
+            default: {
+                throw new AnalysisException("Unsupported Native Object: " + nativeObject);
+            }
+        }
     }
 }

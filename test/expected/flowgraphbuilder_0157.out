@@ -4,25 +4,25 @@ fg2: function()
     node 1: function-decl[function(),-] (test/flowgraphbuilder/flowgraph_builder0157.html:3:17)
     ->[block 1]
   block 1:
-    node 2: nop (test/flowgraphbuilder/flowgraph_builder0157.html:3:17)
+    node 2: nop(eventDispatchers: entry) (test/flowgraphbuilder/flowgraph_builder0157.html:3:17)
     ->[block 2,block 3]
   block 2:
     node 3: event-dispatcher <LOAD> (test/flowgraphbuilder/flowgraph_builder0157.html:3:17)
     ->[block 3]
   block 3:
-    node 4: nop (test/flowgraphbuilder/flowgraph_builder0157.html:3:17)
+    node 4: nop(eventDispatchers: postLoad) (test/flowgraphbuilder/flowgraph_builder0157.html:3:17)
     ->[block 2,block 4,block 5]
   block 4:
     node 5: event-dispatcher <OTHER> (test/flowgraphbuilder/flowgraph_builder0157.html:3:17)
     ->[block 5]
   block 5:
-    node 6: nop (test/flowgraphbuilder/flowgraph_builder0157.html:3:17)
+    node 6: nop(eventDispatchers: postOther) (test/flowgraphbuilder/flowgraph_builder0157.html:3:17)
     ->[block 4,block 6,block 7]
   block 6:
     node 7: event-dispatcher <UNLOAD> (test/flowgraphbuilder/flowgraph_builder0157.html:3:17)
     ->[block 7]
   block 7:
-    node 8: nop (test/flowgraphbuilder/flowgraph_builder0157.html:3:17)
+    node 8: nop(eventDispatchers: postUnload) (test/flowgraphbuilder/flowgraph_builder0157.html:3:17)
     ->[block 6,block 8]
   block 8: [exit-ordinary]
     node 9: return[v1] (test/flowgraphbuilder/flowgraph_builder0157.html:3:17)

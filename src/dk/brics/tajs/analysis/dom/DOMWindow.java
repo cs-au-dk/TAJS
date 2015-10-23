@@ -16,14 +16,12 @@
 
 package dk.brics.tajs.analysis.dom;
 
-import dk.brics.tajs.analysis.Context;
 import dk.brics.tajs.analysis.Conversion;
 import dk.brics.tajs.analysis.EvalCache;
 import dk.brics.tajs.analysis.FunctionCalls.CallInfo;
 import dk.brics.tajs.analysis.InitialStateBuilder;
 import dk.brics.tajs.analysis.NativeFunctions;
 import dk.brics.tajs.analysis.Solver;
-import dk.brics.tajs.analysis.State;
 import dk.brics.tajs.analysis.dom.style.CSSStyleDeclaration;
 import dk.brics.tajs.analysis.uneval.NormalForm;
 import dk.brics.tajs.analysis.uneval.UnevalTools;
@@ -31,13 +29,15 @@ import dk.brics.tajs.flowgraph.FlowGraph;
 import dk.brics.tajs.flowgraph.FlowGraphFragment;
 import dk.brics.tajs.flowgraph.jsnodes.CallNode;
 import dk.brics.tajs.js2flowgraph.FlowGraphMutator;
+import dk.brics.tajs.lattice.Context;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.ObjectLabel.Kind;
+import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.options.Options;
-import dk.brics.tajs.solver.Message;
 import dk.brics.tajs.solver.NodeAndContext;
 import dk.brics.tajs.unevalizer.Unevalizer;
+import dk.brics.tajs.unevalizer.UnevalizerLimitations;
 import dk.brics.tajs.util.AnalysisException;
 import dk.brics.tajs.util.Strings;
 import org.apache.log4j.Logger;
@@ -431,12 +431,7 @@ public class DOMWindow {
                             String uneval_input = callbackSourceCode.getStr() != null ? "\"" + Strings.escapeSource(callbackSourceCode.getStr()) + "\"" : nf.getNormalForm();
                             String unevaled = new Unevalizer().uneval(UnevalTools.unevalizerCallback(currFg, s, callNode, nf), uneval_input, false, null);
                             if (unevaled == null) {
-                                String msg = "Could not uneval setTimeout/setInterval string (you should use higher-order functions instead): " + uneval_input;
-                                if (Options.get().isUnsoundEnabled()) {
-                                    c.getMonitoring().addMessage(call.getSourceNode(), Message.Severity.TAJS_ERROR, msg);
-                                    return Value.makeAnyNumUInt();
-                                }
-                                throw new AnalysisException(msg);
+                                return UnevalizerLimitations.handle("Could not uneval setTimeout/setInterval string (you should use higher-order functions instead): " + uneval_input, call.getSourceNode(), Value.makeAnyNumUInt(), c);
                             }
                             log.debug("Unevalized:" + unevaled);
 

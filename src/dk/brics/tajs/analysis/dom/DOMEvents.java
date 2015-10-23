@@ -16,15 +16,19 @@
 
 package dk.brics.tajs.analysis.dom;
 
-import dk.brics.tajs.analysis.State;
 import dk.brics.tajs.lattice.ObjectLabel;
+import dk.brics.tajs.lattice.State;
+import dk.brics.tajs.lattice.UnknownValueResolver;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.util.Collections;
+import org.apache.log4j.Logger;
 
 import java.util.Collection;
 import java.util.Set;
 
 public class DOMEvents {
+
+    private static final Logger log = Logger.getLogger(DOMEvents.class);
 
     /**
      * Create generic Keyboard Event.
@@ -48,6 +52,13 @@ public class DOMEvents {
     }
 
     /**
+     * Creates a generic load Event
+     */
+    public static Value createAnyLoadEvent() {
+        return Value.makeObject(DOMRegistry.getLoadEventLabel());
+    }
+
+    /**
      * Create a generic non-mouse, non-keyboard Event.
      */
     public static Value createAnyEvent() {
@@ -62,7 +73,8 @@ public class DOMEvents {
     /**
      * Add Event Handler. (NOT Timeout Event Handlers.)
      */
-    public static void addEventHandler(State s, String property, Value v) {
+    public static void addEventHandler(Set<ObjectLabel> targets, State s, String property, Value v, boolean asSetter) {
+        v = UnknownValueResolver.getRealValue(v, s);
         if (DOMEventHelpers.isKeyboardEventAttribute(property) || DOMEventHelpers.isKeyboardEventProperty(property)) {
             addKeyboardEventHandler(s, v.getObjectLabels());
         } else if (DOMEventHelpers.isMouseEventAttribute(property) || DOMEventHelpers.isMouseEventProperty(property)) {
@@ -72,7 +84,17 @@ public class DOMEvents {
         } else if (DOMEventHelpers.isUnloadEventAttribute(property)) {
             addUnloadEventHandler(s, v.getObjectLabels());
         } else {
-            addUnknownEventHandler(s, v.getObjectLabels());
+            if (asSetter) {
+                // ignore eventhandler registration through setters for event names we are not aware of:
+                // it is likely a regular property that is being written
+                // (esp. properties on window as it is the global object!)
+                // This is unsound, see #235
+                if (log.isDebugEnabled()) {
+                    log.debug("Ignoring eventhandler registration through setter for event type: " + property);
+                }
+            } else {
+                addUnknownEventHandler(s, v.getObjectLabels());
+            }
         }
     }
 
@@ -116,7 +138,6 @@ public class DOMEvents {
      */
     public static void addLoadEventHandler(State s, Collection<ObjectLabel> labels) {
         s.getExtras().addToMaySet(DOMRegistry.MaySets.LOAD_EVENT_HANDLER.name(), labels);
-        s.getExtras().addToMustSet(DOMRegistry.MustSets.LOAD_EVENT_HANDLER.name(), labels);
     }
 
     /**

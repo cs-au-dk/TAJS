@@ -16,9 +16,9 @@
 
 package dk.brics.tajs.analysis.dom.ajax;
 
-import dk.brics.tajs.analysis.State;
 import dk.brics.tajs.analysis.dom.DOMObjects;
 import dk.brics.tajs.lattice.ObjectLabel;
+import dk.brics.tajs.lattice.State;
 
 public class JSONObject {
 

@@ -23,23 +23,23 @@ fg2: function()
     node 12: if[v6](true-block:5,false-block:8) (test/flowgraphbuilder/flowgraph_builder0171.js:2:13)
     ->[block 5,block 8]
   block 5:
-    node 13: read-variable['eval',v12,v11] (test/flowgraphbuilder/flowgraph_builder0171.js:3:5)
-    node 14: read-variable['wt_va',v16,-] (test/flowgraphbuilder/flowgraph_builder0171.js:3:10)
-    node 15: read-variable['i',v17,-] (test/flowgraphbuilder/flowgraph_builder0171.js:3:16)
-    node 16: read-property[v16,v17,v14] (test/flowgraphbuilder/flowgraph_builder0171.js:3:10)
+    node 13: read-variable['eval',v16,v15] (test/flowgraphbuilder/flowgraph_builder0171.js:3:5)
+    node 14: read-variable['wt_va',v20,-] (test/flowgraphbuilder/flowgraph_builder0171.js:3:10)
+    node 15: read-variable['i',v21,-] (test/flowgraphbuilder/flowgraph_builder0171.js:3:16)
+    node 16: read-property[v20,v21,v18] (test/flowgraphbuilder/flowgraph_builder0171.js:3:10)
     node 17: <variable-non-null-undef>['wt_va'] (test/flowgraphbuilder/flowgraph_builder0171.js:3:10)
-    node 18: constant["='';",v15] (test/flowgraphbuilder/flowgraph_builder0171.js:3:21)
-    node 19: +[v14,v15,v13] (test/flowgraphbuilder/flowgraph_builder0171.js:3:10)
+    node 18: constant["='';",v19] (test/flowgraphbuilder/flowgraph_builder0171.js:3:21)
+    node 19: +[v18,v19,v17] (test/flowgraphbuilder/flowgraph_builder0171.js:3:10)
     ->[block 6]
   block 6:
-    node 20: call[v11,v12,v13,-]* (test/flowgraphbuilder/flowgraph_builder0171.js:3:5)
+    node 20: call[v15,v16,v17,-]* (test/flowgraphbuilder/flowgraph_builder0171.js:3:5)
     ->[block 7]
   block 7:
-    node 21: read-variable['i',v18,-] (test/flowgraphbuilder/flowgraph_builder0171.js:2:31)
-    node 22: +[v18,v19] (test/flowgraphbuilder/flowgraph_builder0171.js:2:31)
-    node 23: constant[1.0,v20] (test/flowgraphbuilder/flowgraph_builder0171.js:2:31)
-    node 24: +[v19,v20,v21] (test/flowgraphbuilder/flowgraph_builder0171.js:2:31)
-    node 25: write-variable[v21,'i']* (test/flowgraphbuilder/flowgraph_builder0171.js:2:31)
+    node 21: read-variable['i',v11,-] (test/flowgraphbuilder/flowgraph_builder0171.js:2:31)
+    node 22: +[v11,v12] (test/flowgraphbuilder/flowgraph_builder0171.js:2:31)
+    node 23: constant[1.0,v13] (test/flowgraphbuilder/flowgraph_builder0171.js:2:31)
+    node 24: +[v12,v13,v14] (test/flowgraphbuilder/flowgraph_builder0171.js:2:31)
+    node 25: write-variable[v14,'i']* (test/flowgraphbuilder/flowgraph_builder0171.js:2:31)
     ->[block 4]
   block 8: [exit-ordinary]
     node 26: return[v1] (test/flowgraphbuilder/flowgraph_builder0171.js:1:1)
@@ -49,11 +49,6 @@ fg2: function()
     ->[]
 
 fg2: <main> function()
-  block 10:
-    node 28: constant[undefined,-] (test/flowgraphbuilder/flowgraph_builder0171.js:3:5)
-    node 29: constant["",v1] (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0171.js:3:5):1:16)
-    node 30: write-variable[v1,'wt_1stPartySet']* (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0171.js:3:5):1:1)
-    ->[block 7]
   block 0: [entry]
     node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0171.js:1:1)
     ->[block 1]
@@ -69,6 +64,18 @@ fg2: <main> function()
     node 5: constant[0.0,v7] (test/flowgraphbuilder/flowgraph_builder0171.js:2:10)
     node 6: write-variable[v7,'i']* (test/flowgraphbuilder/flowgraph_builder0171.js:2:6)
     ->[block 4]
+  block 10:
+    node 28: constant[undefined,-] (test/flowgraphbuilder/flowgraph_builder0171.js:3:5)
+    node 29: constant["",v1] (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0171.js:3:5):1:16)
+    node 30: write-variable[v1,'wt_1stPartySet']* (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0171.js:3:5):1:1)
+    ->[block 7]
+  block 7:
+    node 21: read-variable['i',v11,-] (test/flowgraphbuilder/flowgraph_builder0171.js:2:31)
+    node 22: +[v11,v12] (test/flowgraphbuilder/flowgraph_builder0171.js:2:31)
+    node 23: constant[1.0,v13] (test/flowgraphbuilder/flowgraph_builder0171.js:2:31)
+    node 24: +[v12,v13,v14] (test/flowgraphbuilder/flowgraph_builder0171.js:2:31)
+    node 25: write-variable[v14,'i']* (test/flowgraphbuilder/flowgraph_builder0171.js:2:31)
+    ->[block 4]
   block 4:
     node 7: read-variable['i',v8,-] (test/flowgraphbuilder/flowgraph_builder0171.js:2:13)
     node 8: read-variable['wt_va',v10,-] (test/flowgraphbuilder/flowgraph_builder0171.js:2:17)
@@ -78,24 +85,17 @@ fg2: <main> function()
     node 12: if[v6](true-block:5,false-block:8) (test/flowgraphbuilder/flowgraph_builder0171.js:2:13)
     ->[block 5,block 8]
   block 5:
-    node 13: read-variable['eval',v12,v11] (test/flowgraphbuilder/flowgraph_builder0171.js:3:5)
-    node 14: read-variable['wt_va',v16,-] (test/flowgraphbuilder/flowgraph_builder0171.js:3:10)
-    node 15: read-variable['i',v17,-] (test/flowgraphbuilder/flowgraph_builder0171.js:3:16)
-    node 16: read-property[v16,v17,v14] (test/flowgraphbuilder/flowgraph_builder0171.js:3:10)
+    node 13: read-variable['eval',v16,v15] (test/flowgraphbuilder/flowgraph_builder0171.js:3:5)
+    node 14: read-variable['wt_va',v20,-] (test/flowgraphbuilder/flowgraph_builder0171.js:3:10)
+    node 15: read-variable['i',v21,-] (test/flowgraphbuilder/flowgraph_builder0171.js:3:16)
+    node 16: read-property[v20,v21,v18] (test/flowgraphbuilder/flowgraph_builder0171.js:3:10)
     node 17: <variable-non-null-undef>['wt_va'] (test/flowgraphbuilder/flowgraph_builder0171.js:3:10)
-    node 18: constant["='';",v15] (test/flowgraphbuilder/flowgraph_builder0171.js:3:21)
-    node 19: +[v14,v15,v13] (test/flowgraphbuilder/flowgraph_builder0171.js:3:10)
+    node 18: constant["='';",v19] (test/flowgraphbuilder/flowgraph_builder0171.js:3:21)
+    node 19: +[v18,v19,v17] (test/flowgraphbuilder/flowgraph_builder0171.js:3:10)
     ->[block 6]
   block 6:
-    node 20: call[v11,v12,v13,-]* (test/flowgraphbuilder/flowgraph_builder0171.js:3:5)
+    node 20: call[v15,v16,v17,-]* (test/flowgraphbuilder/flowgraph_builder0171.js:3:5)
     ->[block 7]
-  block 7:
-    node 21: read-variable['i',v18,-] (test/flowgraphbuilder/flowgraph_builder0171.js:2:31)
-    node 22: +[v18,v19] (test/flowgraphbuilder/flowgraph_builder0171.js:2:31)
-    node 23: constant[1.0,v20] (test/flowgraphbuilder/flowgraph_builder0171.js:2:31)
-    node 24: +[v19,v20,v21] (test/flowgraphbuilder/flowgraph_builder0171.js:2:31)
-    node 25: write-variable[v21,'i']* (test/flowgraphbuilder/flowgraph_builder0171.js:2:31)
-    ->[block 4]
   block 8: [exit-ordinary]
     node 26: return[v1] (test/flowgraphbuilder/flowgraph_builder0171.js:1:1)
     ->[]
@@ -104,6 +104,21 @@ fg2: <main> function()
     ->[]
 
 fg2: <main> function()
+  block 0: [entry]
+    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0171.js:1:1)
+    ->[block 1]
+  block 1:
+    node 1: read-variable['Array',v4,v3] (test/flowgraphbuilder/flowgraph_builder0171.js:1:9)
+    node 2: constant["wt_1stPartySet",v5] (test/flowgraphbuilder/flowgraph_builder0171.js:1:15)
+    ->[block 2]
+  block 2:
+    node 3: call[v3,v4,v5,v2] (test/flowgraphbuilder/flowgraph_builder0171.js:1:9)
+    ->[block 3]
+  block 3:
+    node 4: write-variable[v2,'wt_va']* (test/flowgraphbuilder/flowgraph_builder0171.js:1:1)
+    node 5: constant[0.0,v7] (test/flowgraphbuilder/flowgraph_builder0171.js:2:10)
+    node 6: write-variable[v7,'i']* (test/flowgraphbuilder/flowgraph_builder0171.js:2:6)
+    ->[block 4]
   block 11:
     node 31: constant[undefined,-] (test/flowgraphbuilder/flowgraph_builder0171.js:3:5)
     node 32: read-variable['window',v2,-] (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0171.js:3:5):1:1)
@@ -115,20 +130,12 @@ fg2: <main> function()
     node 38: write-property[v2,v3,v1] (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0171.js:3:5):1:1)
     node 39: <variable-non-null-undef>['window']* (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0171.js:3:5):1:1)
     ->[block 7]
-  block 0: [entry]
-    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0171.js:1:1)
-    ->[block 1]
-  block 1:
-    node 1: read-variable['Array',v4,v3] (test/flowgraphbuilder/flowgraph_builder0171.js:1:9)
-    node 2: constant["wt_1stPartySet",v5] (test/flowgraphbuilder/flowgraph_builder0171.js:1:15)
-    ->[block 2]
-  block 2:
-    node 3: call[v3,v4,v5,v2] (test/flowgraphbuilder/flowgraph_builder0171.js:1:9)
-    ->[block 3]
-  block 3:
-    node 4: write-variable[v2,'wt_va']* (test/flowgraphbuilder/flowgraph_builder0171.js:1:1)
-    node 5: constant[0.0,v7] (test/flowgraphbuilder/flowgraph_builder0171.js:2:10)
-    node 6: write-variable[v7,'i']* (test/flowgraphbuilder/flowgraph_builder0171.js:2:6)
+  block 7:
+    node 21: read-variable['i',v11,-] (test/flowgraphbuilder/flowgraph_builder0171.js:2:31)
+    node 22: +[v11,v12] (test/flowgraphbuilder/flowgraph_builder0171.js:2:31)
+    node 23: constant[1.0,v13] (test/flowgraphbuilder/flowgraph_builder0171.js:2:31)
+    node 24: +[v12,v13,v14] (test/flowgraphbuilder/flowgraph_builder0171.js:2:31)
+    node 25: write-variable[v14,'i']* (test/flowgraphbuilder/flowgraph_builder0171.js:2:31)
     ->[block 4]
   block 4:
     node 7: read-variable['i',v8,-] (test/flowgraphbuilder/flowgraph_builder0171.js:2:13)
@@ -139,24 +146,17 @@ fg2: <main> function()
     node 12: if[v6](true-block:5,false-block:8) (test/flowgraphbuilder/flowgraph_builder0171.js:2:13)
     ->[block 5,block 8]
   block 5:
-    node 13: read-variable['eval',v12,v11] (test/flowgraphbuilder/flowgraph_builder0171.js:3:5)
-    node 14: read-variable['wt_va',v16,-] (test/flowgraphbuilder/flowgraph_builder0171.js:3:10)
-    node 15: read-variable['i',v17,-] (test/flowgraphbuilder/flowgraph_builder0171.js:3:16)
-    node 16: read-property[v16,v17,v14] (test/flowgraphbuilder/flowgraph_builder0171.js:3:10)
+    node 13: read-variable['eval',v16,v15] (test/flowgraphbuilder/flowgraph_builder0171.js:3:5)
+    node 14: read-variable['wt_va',v20,-] (test/flowgraphbuilder/flowgraph_builder0171.js:3:10)
+    node 15: read-variable['i',v21,-] (test/flowgraphbuilder/flowgraph_builder0171.js:3:16)
+    node 16: read-property[v20,v21,v18] (test/flowgraphbuilder/flowgraph_builder0171.js:3:10)
     node 17: <variable-non-null-undef>['wt_va'] (test/flowgraphbuilder/flowgraph_builder0171.js:3:10)
-    node 18: constant["='';",v15] (test/flowgraphbuilder/flowgraph_builder0171.js:3:21)
-    node 19: +[v14,v15,v13] (test/flowgraphbuilder/flowgraph_builder0171.js:3:10)
+    node 18: constant["='';",v19] (test/flowgraphbuilder/flowgraph_builder0171.js:3:21)
+    node 19: +[v18,v19,v17] (test/flowgraphbuilder/flowgraph_builder0171.js:3:10)
     ->[block 6]
   block 6:
-    node 20: call[v11,v12,v13,-]* (test/flowgraphbuilder/flowgraph_builder0171.js:3:5)
+    node 20: call[v15,v16,v17,-]* (test/flowgraphbuilder/flowgraph_builder0171.js:3:5)
     ->[block 7]
-  block 7:
-    node 21: read-variable['i',v18,-] (test/flowgraphbuilder/flowgraph_builder0171.js:2:31)
-    node 22: +[v18,v19] (test/flowgraphbuilder/flowgraph_builder0171.js:2:31)
-    node 23: constant[1.0,v20] (test/flowgraphbuilder/flowgraph_builder0171.js:2:31)
-    node 24: +[v19,v20,v21] (test/flowgraphbuilder/flowgraph_builder0171.js:2:31)
-    node 25: write-variable[v21,'i']* (test/flowgraphbuilder/flowgraph_builder0171.js:2:31)
-    ->[block 4]
   block 8: [exit-ordinary]
     node 26: return[v1] (test/flowgraphbuilder/flowgraph_builder0171.js:1:1)
     ->[]

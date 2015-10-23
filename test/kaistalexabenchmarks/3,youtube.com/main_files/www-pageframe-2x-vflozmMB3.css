@@ -1,0 +1,1653 @@
+.yt-help-icon {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat -64px -588px / 144px 2958px; width: 15px; height: 16px; cursor: pointer; opacity: 0.5;
+}
+.yt-help-icon:hover {
+	opacity: 1;
+}
+.active.yt-help-icon {
+	opacity: 1;
+}
+.yt-uix-helpcard-active .yt-help-icon {
+	opacity: 1;
+}
+.add-to-widget .lightweight-message {
+	padding: 0px 10px;
+}
+.yt-uix-clickcard-card-content.add-to-widget {
+	padding: 0px; width: auto;
+}
+.add-to-widget .menu-panel {
+	display: none;
+}
+.add-to-widget .active-panel.menu-panel {
+	display: block;
+}
+.add-to-widget .playlists {
+	width: 230px; padding-bottom: 10px; border-bottom-color: rgb(204, 204, 204); border-bottom-width: 1px; border-bottom-style: solid; -ms-overflow-x: hidden; -ms-overflow-y: auto; max-height: 245px;
+}
+.add-to-widget .addto-playlist-item {
+	padding: 0px 10px; color: rgb(51, 51, 51); line-height: 25px; display: block; white-space: nowrap; position: relative; cursor: pointer;
+}
+.add-to-widget .addto-playlist-item-subtitle {
+	width: 160px; color: rgb(173, 173, 173); overflow: hidden; font-size: 11px; margin-left: 25px; white-space: nowrap; -ms-word-wrap: normal; -ms-text-overflow: ellipsis; -o-text-overflow: ellipsis;
+}
+.add-to-widget .create-playlist-item {
+	margin: 10px 0px; padding: 5px 0px 5px 16px; height: 15px; color: rgb(51, 51, 51); line-height: 15px; display: none; white-space: nowrap; position: relative; cursor: pointer;
+}
+.icon-hidden.addto-playlist-item {
+	padding-left: 16px;
+}
+.add-to-widget .hid.addto-playlist-item {
+	display: none;
+}
+.add-to-widget .addto-playlist-item:hover {
+	background-color: rgb(238, 238, 238);
+}
+.add-to-widget .create-playlist-item:hover {
+	background-color: rgb(238, 238, 238);
+}
+.add-to-widget .pending-change-actions.addto-playlist-item:hover {
+	background-color: transparent;
+}
+.add-to-widget .playlist-name {
+	line-height: 21px; overflow: hidden; vertical-align: middle; display: inline-block; white-space: nowrap; -ms-word-wrap: normal; -ms-text-overflow: ellipsis; max-width: 160px; -o-text-overflow: ellipsis;
+}
+.add-to-widget .playlist-status {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat -72px -2208px / 144px 2958px; width: 21px; height: 21px; margin-right: 3px; vertical-align: middle;
+}
+.add-to-widget .to-be-removed.contains-all-selected-videos .playlist-status {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat -72px -2208px / 144px 2958px; width: 21px; height: 21px; margin-right: 3px; vertical-align: middle;
+}
+.add-to-widget .to-be-removed.contains-some-selected-videos .playlist-status {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat -72px -2208px / 144px 2958px; width: 21px; height: 21px; margin-right: 3px; vertical-align: middle;
+}
+.add-to-widget .contains-all-selected-videos .playlist-status {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat -104px -2834px / 144px 2958px; width: 24px; height: 21px; margin-right: 0px; vertical-align: middle;
+}
+.add-to-widget .to-be-added .playlist-status {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat -104px -2834px / 144px 2958px; width: 24px; height: 21px; margin-right: 0px; vertical-align: middle;
+}
+.add-to-widget .contains-some-selected-videos .playlist-status {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat -72px -172px / 144px 2958px; width: 21px; height: 21px;
+}
+.add-to-widget .loading .playlist-status {
+	background: url("//s.ytimg.com/yts/img/loader-vflff1Mjj.gif") no-repeat left; width: 21px; height: 21px; margin-right: 3px; vertical-align: middle;
+}
+.add-to-widget .loading.to-be-removed .playlist-status {
+	background: url("//s.ytimg.com/yts/img/loader-vflff1Mjj.gif") no-repeat left; width: 21px; height: 21px; margin-right: 3px; vertical-align: middle;
+}
+.add-to-widget .loading.to-be-added .playlist-status {
+	background: url("//s.ytimg.com/yts/img/loader-vflff1Mjj.gif") no-repeat left; width: 21px; height: 21px; margin-right: 3px; vertical-align: middle;
+}
+.add-to-widget .private-icon {
+	top: 7px; right: 15px; position: absolute; opacity: 0.3;
+}
+.add-to-widget .unlisted-icon {
+	top: 7px; right: 15px; position: absolute; opacity: 0.3;
+}
+.add-to-widget .private-icon {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat -44px -720px / 72px 1479px; width: 10px; height: 10px;
+}
+.add-to-widget .unlisted-icon {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat -37px -1018px / 72px 1479px; width: 10px; height: 10px;
+}
+.add-to-widget .pending-change-actions .playlist-status {
+	visibility: hidden;
+}
+.add-to-widget .pending-change-actions .yt-uix-button {
+	margin-right: 10px;
+}
+.add-to-widget .create-playlist-widget-form {
+	position: relative;
+}
+.add-to-widget .create-playlist-widget-form .cancel-button {
+	background: url("//s.ytimg.com/yts/imgbin/www-channels-c4-editor-2x-vflBP4pZi.png") no-repeat 0px 0px / 164px 16px; top: 21px; width: 15px; height: 15px; right: 20px; position: absolute;
+}
+.add-to-widget .create-playlist-widget-form .cancel-button:hover {
+	cursor: pointer;
+}
+.add-to-widget .create-playlist-widget-form {
+	width: 230px;
+}
+.add-to-widget .addto-create-playlist-section {
+	padding: 15px;
+}
+.add-to-widget .addto-create-playlist-bottom-section.addto-create-playlist-section {
+	padding-top: 0px; position: relative;
+}
+.add-to-widget .addto-create-playlist-widget-form .yt-uix-form-label {
+	margin: 10px 0px; overflow: hidden; white-space: nowrap; -ms-word-wrap: normal; -ms-text-overflow: ellipsis; -o-text-overflow: ellipsis;
+}
+.add-to-widget .create-playlist-widget-form .privacy-button:hover .yt-uix-button-icon-privacy-public {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat -22px -1002px / 72px 1479px; width: 13px; height: 13px;
+}
+.add-to-widget .create-playlist-widget-form .yt-uix-button-icon-privacy-public {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat -26px -1039px / 72px 1479px; width: 13px; height: 13px;
+}
+.add-to-widget .create-playlist-widget-form .privacy-button:hover .yt-uix-button-icon-privacy-unlisted {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat -18px -453px / 72px 1479px; width: 10px; height: 10px;
+}
+.add-to-widget .create-playlist-widget-form .yt-uix-button-icon-privacy-unlisted {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat -37px -1018px / 72px 1479px; width: 10px; height: 10px;
+}
+.add-to-widget .create-playlist-widget-form .privacy-button:hover .yt-uix-button-icon-privacy-private {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat -47px -540px / 72px 1479px; width: 10px; height: 10px;
+}
+.add-to-widget .create-playlist-widget-form .yt-uix-button-icon-privacy-private {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat -44px -720px / 72px 1479px; width: 10px; height: 10px;
+}
+.create-playlist-widget {
+	position: relative;
+}
+.create-playlist-widget-button .yt-uix-button-arrow {
+	display: none;
+}
+.create-playlist-widget-dialog {
+	padding: 0px; width: auto;
+}
+.create-playlist-widget-form {
+	width: 360px;
+}
+.create-playlist-widget-form .create-playlist-section {
+	padding: 15px;
+}
+.create-playlist-widget-form .create-playlist-bottom-section {
+	min-width: 250px; background-color: rgb(246, 246, 246);
+}
+.create-playlist-widget-form .yt-uix-form-label {
+	margin: 10px 0px; overflow: hidden; white-space: nowrap; -ms-word-wrap: normal; -ms-text-overflow: ellipsis; -o-text-overflow: ellipsis;
+}
+.create-playlist-widget-form .create-playlist-buttons {
+	float: right;
+}
+.create-playlist-widget-form .create-playlist-buttons .yt-uix-button {
+	margin-left: 10px;
+}
+.create-playlist-widget-form .privacy-button:hover .yt-uix-button-icon-privacy-public {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat -22px -1002px / 72px 1479px; width: 13px; height: 13px;
+}
+.create-playlist-widget-form .yt-uix-button-icon-privacy-public {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat -26px -1039px / 72px 1479px; width: 13px; height: 13px;
+}
+.create-playlist-widget-form .privacy-button:hover .yt-uix-button-icon-privacy-unlisted {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat -18px -453px / 72px 1479px; width: 10px; height: 10px;
+}
+.create-playlist-widget-form .yt-uix-button-icon-privacy-unlisted {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat -37px -1018px / 72px 1479px; width: 10px; height: 10px;
+}
+.create-playlist-widget-form .privacy-button:hover .yt-uix-button-icon-privacy-private {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat -47px -540px / 72px 1479px; width: 10px; height: 10px;
+}
+.create-playlist-widget-form .yt-uix-button-icon-privacy-private {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat -44px -720px / 72px 1479px; width: 10px; height: 10px;
+}
+#yt-uix-videoactionmenu-menu {
+	padding: 0px; z-index: 1999999997;
+}
+.yt-uix-videoactionmenu-mask.yt-uix-menu-mask {
+	z-index: 1999999996;
+}
+#yt-uix-videoactionmenu-menu h3 {
+	padding: 15px 15px 5px; color: rgb(51, 51, 51); font-size: 13px; font-weight: bold;
+}
+#yt-uix-videoactionmenu-menu .add-to-widget .addto-playlist-panel {
+	padding: 0px;
+}
+.addto-watch-later-button {
+	padding: 0px; border-radius: 2px; width: 22px; height: 22px;
+}
+.addto-watch-later-button-sign-in {
+	padding: 0px; border-radius: 2px; width: 22px; height: 22px;
+}
+.addto-watch-later-button-loading {
+	padding: 0px; border-radius: 2px; width: 22px; height: 22px;
+}
+.addto-watch-later-button-error {
+	padding: 0px; border-radius: 2px; width: 22px; height: 22px;
+}
+.addto-watch-later-button-success {
+	padding: 0px; border-radius: 2px; width: 22px; height: 22px;
+}
+.addto-watch-later-button-remove {
+	padding: 0px; border-radius: 2px; width: 22px; height: 22px;
+}
+.addto-watch-later-button-error {
+	border: currentColor; border-image: none;
+}
+.addto-watch-later-button-success {
+	border: currentColor; border-image: none;
+}
+.addto-watch-later-button-remove {
+	border: currentColor; border-image: none;
+}
+.addto-watch-later-button .yt-uix-button-icon-addto {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat -100px -2388px; width: 13px; height: 13px;
+}
+.addto-watch-later-button-sign-in .yt-uix-button-icon-addto {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat -100px -2388px; width: 13px; height: 13px;
+}
+.addto-watch-later-button-sign-in .yt-uix-button-arrow {
+	display: none;
+}
+.addto-watch-later-button-loading .yt-uix-button-icon-addto {
+	background: url("//s.ytimg.com/yts/img/loader-vflff1Mjj.gif") no-repeat; width: 19px; height: 20px;
+}
+.addto-watch-later-button-success.yt-uix-button {
+	background-image: linear-gradient(rgb(116, 164, 70) 0px, rgb(77, 119, 48) 100%);
+}
+.addto-watch-later-button-success .yt-uix-button-icon-addto {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat -116px -2528px / 144px 2958px; width: 20px; height: 20px;
+}
+.addto-watch-later-button-remove.yt-uix-button {
+	background-image: linear-gradient(rgb(201, 81, 69) 0px, rgb(145, 61, 55) 100%);
+}
+.addto-watch-later-button-error.yt-uix-button {
+	background-image: linear-gradient(rgb(201, 81, 69) 0px, rgb(145, 61, 55) 100%);
+}
+.addto-watch-later-button-remove .yt-uix-button-icon-addto {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat -106px -1556px; width: 22px; height: 22px;
+}
+.addto-watch-later-button-error .yt-uix-button-icon-addto {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat -106px -1556px; width: 22px; height: 22px;
+}
+#shared-addto-watch-later-login {
+	padding: 7px;
+}
+.addto-watch-queue-button {
+	padding: 0px; border-radius: 2px; width: 22px; height: 22px;
+}
+.addto-watch-queue-button-loading {
+	padding: 0px; border-radius: 2px; width: 22px; height: 22px;
+}
+.addto-watch-queue-button-success {
+	padding: 0px; border-radius: 2px; width: 22px; height: 22px;
+}
+.addto-watch-queue-button-error {
+	padding: 0px; border-radius: 2px; width: 22px; height: 22px;
+}
+.addto-tv-queue-button {
+	padding: 0px; border-radius: 2px; width: 22px; height: 22px;
+}
+.addto-watch-queue-button .yt-uix-button-icon-addto {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat -22px -1150px / 72px 1479px; width: 20px; height: 20px;
+}
+.addto-tv-queue-button .yt-uix-button-icon-addto {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat -22px -1150px / 72px 1479px; width: 20px; height: 20px;
+}
+.addto-watch-queue-button-loading.yt-uix-button .yt-uix-button-icon-addto {
+	background: url("//s.ytimg.com/yts/img/loader-vflff1Mjj.gif") no-repeat; height: 20px;
+}
+.addto-watch-queue-button-success.yt-uix-button {
+	border: currentColor; border-image: none; color: rgb(255, 255, 255);
+}
+.addto-watch-queue-button-error.yt-uix-button {
+	border: currentColor; border-image: none; color: rgb(255, 255, 255);
+}
+.addto-watch-queue-button-success.yt-uix-button {
+	background: rgb(22, 122, 198);
+}
+.addto-watch-queue-button-success .yt-uix-button-icon-addto {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat -116px -2528px / 144px 2958px; width: 20px; height: 20px;
+}
+.addto-watch-queue-button-error.yt-uix-button {
+	background-image: linear-gradient(rgb(201, 81, 69) 0px, rgb(145, 61, 55) 100%);
+}
+.addto-watch-queue-button-error .yt-uix-button-icon-addto {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat -106px -1556px / 144px 2958px; width: 22px; height: 22px;
+}
+.addto-tv-queue-button {
+	display: none;
+}
+.remote-connected .addto-watch-queue-button {
+	display: none;
+}
+.remote-connected .addto-tv-queue-button {
+	display: inline-block;
+}
+.remote-connected .addto-watch-later-button {
+	display: none;
+}
+.remote-connected .addto-watch-later-button-sign-in {
+	display: none;
+}
+.dark-overflow-action-menu.thumb-menu {
+	top: 2px; right: 0px; display: none; position: absolute;
+}
+.remote-connected .dark-overflow-action-menu.thumb-menu {
+	display: block;
+}
+.watch-queue-thumb-menu {
+	list-style-type: none;
+}
+.watch-queue-thumb-menu .yt-uix-button-icon-wrapper {
+	float: left;
+}
+.yt-uix-button-menu.watch-queue-thumb-menu .yt-uix-button-menu-item {
+	padding-left: 10px;
+}
+.thumb-menu .yt-uix-button-dark-overflow-action-menu {
+	border: currentColor; border-image: none; box-shadow: none;
+}
+.thumb-menu .yt-uix-button-dark-overflow-action-menu:focus {
+	border: currentColor; border-image: none; box-shadow: none;
+}
+.thumb-menu .yt-uix-button-dark-overflow-action-menu:hover:focus {
+	border: currentColor; border-image: none; box-shadow: none;
+}
+.dark-overflow-action-menu.thumb-menu .yt-uix-button {
+	padding: 0px 5px 0px 10px;
+}
+.addto-watch-queue-play-next-icon {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat -56px -610px / 72px 1479px; width: 16px; height: 16px;
+}
+.addto-watch-queue-play-now-icon {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat -23px -202px / 72px 1479px; width: 16px; height: 16px;
+}
+.addto-watch-queue-menu-choice:hover .addto-watch-queue-play-next-icon {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat 0px -86px / 72px 1479px; width: 16px; height: 16px;
+}
+.addto-watch-queue-menu-choice:hover .addto-watch-queue-play-now-icon {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat 0px -1278px / 72px 1479px; width: 16px; height: 16px;
+}
+#masthead-positioner {
+	left: 0px; top: 0px; right: 0px; position: fixed; z-index: 1999999999; transform: translateZ(0px); -moz-transform: translateZ(0); -webkit-transform: translateZ(0);
+}
+#masthead-positioner-height-offset {
+	height: 90px;
+}
+.appbar-hidden #masthead-positioner-height-offset {
+	height: 50px;
+}
+.sitewide-ticker-visible #masthead-positioner-height-offset {
+	height: 119px;
+}
+.appbar-hidden.sitewide-ticker-visible #masthead-positioner-height-offset {
+	height: 79px;
+}
+#masthead-ie-mask {
+	left: 0px; top: 0px; width: 100%; height: 100%; position: absolute; z-index: -1;
+}
+#masthead-appbar-container {
+	overflow: hidden;
+}
+.appbar-hidden #masthead-appbar {
+	margin-top: -41px;
+}
+.page-loaded #masthead-appbar {
+	transition:margin-top 0.3s; -moz-transition: margin-top .3s ease; -webkit-transition: margin-top .3s ease;
+}
+#masthead-appbar {
+	height: 40px; line-height: 40px; border-bottom-color: rgb(232, 232, 232); border-bottom-width: 1px; border-bottom-style: solid; position: relative; background-color: rgb(255, 255, 255);
+}
+#appbar-content {
+	left: 0px; height: 40px; right: 0px; overflow: hidden; position: absolute;
+}
+#appbar-settings-button {
+	padding: 0px 6px;
+}
+#appbar-settings-button .yt-uix-button-arrow {
+	border-width: 3px 3px 0px; margin-top: 0px; margin-left: 3px; border-top-color: rgb(102, 102, 102);
+}
+.yt-uix-button-menu.appbar-menu {
+	margin-left: 2px; position: fixed;
+}
+#appbar-guide-menu {
+	width: 230px; height: auto; max-height: 100%;
+}
+.exp-scrollable-guide #appbar-guide-menu {
+	overflow: hidden;
+}
+.exp-scrollable-guide #appbar-guide-menu:hover {
+	-ms-overflow-y: auto;
+}
+.appbar-guide-menu-layout {
+	margin-top: 50px;
+}
+#appbar-guide-menu {
+	background: rgb(255, 255, 255); z-index: 1999999999; box-sizing: border-box; -moz-box-sizing: border-box;
+}
+.guide-flyout {
+	background: rgb(255, 255, 255); z-index: 1999999999; box-sizing: border-box; -moz-box-sizing: border-box;
+}
+.sitewide-ticker-visible #appbar-guide-menu {
+	margin-top: 79px;
+}
+#appbar-guide-iframe-mask {
+	top: 0px; z-index: 1999999998;
+}
+.appbar-guide-menu-layout {
+	transition:opacity 0.1s, visibility 0s 0.1s; left: -230px; top: 0px; width: 230px; visibility: hidden; position: fixed; opacity: 0; -moz-transition: opacity .1s, visibility 0s .1s; -webkit-transition: opacity .1s, visibility 0s .1s;
+}
+.show-guide .appbar-guide-menu-layout {
+	transition:opacity 0.1s; left: 0px; visibility: visible; opacity: 1; -moz-transition: opacity .1s; -webkit-transition: opacity .1s;
+}
+.show-guide #appbar-guide-menu {
+	box-shadow: 5px 10px 15px 5px rgba(0,0,0,0.1);
+}
+.guide-pinned .guide-pinning-enabled .appbar-guide-menu-layout {
+	height: 100%; bottom: 0px;
+}
+.guide-pinned .guide-pinning-enabled #appbar-guide-menu {
+	border-right-color: rgb(232, 232, 232); border-right-width: 1px; border-right-style: solid; box-shadow: none;
+}
+#appbar-onebar-upload-group #upload-btn {
+	padding: 0px 13px;
+}
+#appbar-onebar-upload-group #upload-btn .yt-uix-button-content {
+	vertical-align: middle;
+}
+.yt-uix-button-icon-appbar-settings {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat -8px -471px / 72px 1479px; width: 12px; height: 12px;
+}
+#masthead-positioner:hover #appbar-guide-button {
+	background: rgb(248, 248, 248); border-color: rgb(211, 211, 211);
+}
+#appbar-guide-button .yt-uix-button-arrow {
+	margin-top: 0px;
+}
+#appbar-guide-button-container {
+	display: inline-block; position: relative;
+}
+#guide-container {
+	padding: 13px 22px; width: 230px; box-sizing: border-box; -moz-box-sizing: border-box;
+}
+.yt-uix-button-icon-appbar-guide {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat -8px -1455px / 72px 1479px; width: 16px; height: 16px;
+}
+#appbar-guide-button .yt-uix-button-arrow {
+	border-width: 3px 3px 0px; margin-left: 2px; border-top-color: rgb(184, 184, 184);
+}
+#masthead-positioner:hover .yt-uix-button-icon-appbar-guide {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat -22px -471px / 72px 1479px; width: 16px; height: 16px;
+}
+#masthead-positioner:hover #appbar-guide-button .yt-uix-button-arrow {
+	border-top-color: rgb(102, 102, 102);
+}
+.show-guide .yt-uix-button-icon-appbar-guide {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat -35px -778px / 72px 1479px; width: 16px; height: 16px;
+}
+.show-guide #masthead-positioner:hover .yt-uix-button-icon-appbar-guide {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat -35px -778px / 72px 1479px; width: 16px; height: 16px;
+}
+.show-guide #appbar-guide-button .yt-uix-button-arrow {
+	border-top-color: rgb(230, 49, 39);
+}
+.show-guide #masthead-positioner:hover #appbar-guide-button .yt-uix-button-arrow {
+	border-top-color: rgb(230, 49, 39);
+}
+#appbar-guide-menu .guide-section-separator {
+	margin: 8px 0px;
+}
+#appbar-guide-menu .default-promo#guide-subscriptions-promo {
+	margin-right: 0px;
+}
+#appbar-primary-container {
+	float: left;
+}
+#appbar-secondary-container {
+	float: right;
+}
+#appbar-primary-container #appbar-guide-button {
+	margin-top: -4px;
+}
+#appbar-nav {
+	transition:margin-top 0.1s; text-align: center; min-width: 500px; -moz-transition: margin-top .1s; -webkit-transition: margin-top .1s;
+}
+#appbar-nav .appbar-nav-avatar {
+	margin-right: 15px; vertical-align: middle;
+}
+#appbar-nav .appbar-nav-menu {
+	overflow: hidden; vertical-align: top; display: inline-block;
+}
+.appbar-nav-menu li {
+	margin-left: 30px; display: inline-block;
+}
+.appbar-nav-menu li:first-child {
+	margin-left: 0px;
+}
+#appbar-nav .epic-nav-item-heading {
+	padding: 0px; height: 40px; line-height: 40px; box-sizing: border-box; -moz-box-sizing: border-box;
+}
+#appbar-nav .yt-uix-button-epic-nav-item.yt-uix-button {
+	padding: 0px; height: 40px; color: rgb(102, 102, 102); line-height: 40px; font-weight: normal; box-sizing: border-box; -moz-box-sizing: border-box;
+}
+.yt-uix-button-appbar.yt-uix-button {
+	background: rgb(255, 255, 255); border-color: rgb(211, 211, 211); height: 26px; color: rgb(102, 102, 102); font-size: 12px;
+}
+.yt-uix-button-appbar.yt-uix-button:hover {
+	background: rgb(240, 240, 240); border-color: rgb(198, 198, 198); color: rgb(51, 51, 51); box-shadow: 0px 1px 0px rgba(0,0,0,0.1);
+}
+.yt-uix-button-appbar.yt-uix-button:active {
+	background: rgb(233, 233, 233); border-color: rgb(198, 198, 198); box-shadow: inset 0px 1px 0px #ddd;
+}
+.yt-uix-button-toggled.yt-uix-button-appbar.yt-uix-button {
+	background: rgb(233, 233, 233); border-color: rgb(198, 198, 198); box-shadow: inset 0px 1px 0px #ddd;
+}
+.yt-uix-button-active.yt-uix-button-appbar.yt-uix-button {
+	background: rgb(233, 233, 233); border-color: rgb(198, 198, 198); box-shadow: inset 0px 1px 0px #ddd;
+}
+.yt-uix-button-active.yt-uix-button-appbar.yt-uix-button:focus {
+	background: rgb(233, 233, 233); border-color: rgb(198, 198, 198); box-shadow: inset 0px 1px 0px #ddd;
+}
+.yt-uix-button-toggled.yt-uix-button-appbar.yt-uix-button:hover {
+	background: rgb(229, 229, 229); border-color: rgb(185, 185, 185); box-shadow: inset 0px 1px 0px #ddd;
+}
+#appbar-guide-button-notification-check {
+	transition:opacity 0.3s, visibility 0s 0.3s; top: 0px; width: 30px; height: 25px; text-align: center; right: 10px; visibility: hidden; position: absolute; opacity: 0; -moz-transition: opacity .3s, visibility 0 .3s; -webkit-transition: opacity .3s, visibility 0 .3s;
+}
+.show-guide-button-notification #appbar-guide-button-notification-check {
+	transition:opacity 0.3s; visibility: visible; opacity: 1; -moz-transition: opacity .3s; -webkit-transition: opacity .3s;
+}
+.show-guide-button-notification #appbar-guide-button {
+	transition:opacity 0.3s; opacity: 0; -moz-transition: opacity .3s; -webkit-transition: opacity .3s;
+}
+#appbar-guide-button-notification-check {
+	background: rgb(22, 122, 198); color: rgb(255, 255, 255); overflow: hidden; font-weight: bold; white-space: nowrap; -ms-word-wrap: normal; -ms-text-overflow: ellipsis; -o-text-overflow: ellipsis;
+}
+.appbar-guide-notification {
+	background: rgb(22, 122, 198); color: rgb(255, 255, 255); overflow: hidden; font-weight: bold; white-space: nowrap; -ms-word-wrap: normal; -ms-text-overflow: ellipsis; -o-text-overflow: ellipsis;
+}
+.appbar-guide-notification-icon {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat -36px -2556px / 144px 2958px; width: 12px; height: 10px;
+}
+.appbar-guide-notification .appbar-guide-notification-icon {
+	margin-right: 10px;
+}
+#appbar-main-guide-notification-container {
+	left: 0px; top: 41px; position: absolute; z-index: 1;
+}
+#appbar-main-guide-notification-container .appbar-guide-notification {
+	transition:height 0.3s linear 0.1s; overflow: hidden; vertical-align: top; -moz-transition: height .3s linear .1s; -webkit-transition: height .3s linear .1s;
+}
+#appbar-main-guide-notification-container .appbar-guide-notification-content-wrapper {
+	height: 30px; display: block;
+}
+#appbar-main-guide-notification-container .appbar-guide-notification {
+	padding: 0px 10px; display: inline-block;
+}
+.show-guide-button-notification #appbar-main-guide-notification-container .appbar-guide-notification {
+	height: 30px;
+}
+#appbar-main-guide-notification-container .appbar-guide-notification {
+	height: 0px;
+}
+.show-guide #appbar-main-guide-notification-container .appbar-guide-notification {
+	height: 0px;
+}
+.show-guide .show-guide-button-notification #appbar-main-guide-notification-container .appbar-guide-notification {
+	height: 0px;
+}
+.guide-notification-item {
+	overflow: hidden; position: relative; max-height: 40px;
+}
+.guide-notification-item .appbar-guide-notification {
+	padding: 0px 10px; left: 0px; top: 0px; right: 0px; bottom: 0px; position: absolute;
+}
+.show-insertion-notification.guide-notification-item {
+	animation:guide-item-fadein 2s; -moz-animation: guide-item-fadein 2s; -webkit-animation: guide-item-fadein 2s;
+}
+.show-insertion-notification.guide-notification-item .guide-item-insertion-notification {
+	animation:guide-notification-fadeout 2s; max-height: 0px; opacity: 0; -moz-animation: guide-notification-fadeout 2s; -webkit-animation: guide-notification-fadeout 2s;
+}
+.removing-guide-item.guide-notification-item {
+	transition:max-height 0.3s 1s; max-height: 0px; -moz-transition: max-height .3s 1s; -webkit-transition: max-height .3s 1s;
+}
+.guide-notification-item .guide-item-update-notification {
+	transition:opacity 0.3s; max-height: 0px; opacity: 0; -moz-transition: opacity .3s; -webkit-transition: opacity .3s;
+}
+.guide-notification-item .guide-item-removal-notification {
+	transition:opacity 0.3s; max-height: 0px; opacity: 0; -moz-transition: opacity .3s; -webkit-transition: opacity .3s;
+}
+.showing-update-notification.guide-notification-item .guide-item-update-notification {
+	max-height: 30px; opacity: 1;
+}
+.removing-guide-item.guide-notification-item .guide-item-removal-notification {
+	max-height: 30px; opacity: 1;
+}
+body #footer-container {
+	margin-top: -141px; border-top-color: rgb(226, 226, 226); border-top-width: 1px; border-top-style: solid; background-color: rgb(255, 255, 255);
+}
+#footer {
+	margin: 0px auto; padding: 15px 0px;
+}
+#footer-logo {
+	display: inline-block;
+}
+#footer .pickers {
+	display: inline-block;
+}
+#footer .pickers li {
+	display: inline-block;
+}
+#footer #google-help {
+	display: inline-block;
+}
+#footer #google-help .yt-uix-button-content {
+	vertical-align: middle;
+}
+#footer .yt-uix-button-group .yt-uix-button {
+	border-radius: 2px;
+}
+#footer-logo {
+	margin-left: 4px;
+}
+#footer-logo .footer-logo-icon {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat 0px -688px / 72px 1479px; width: 72px; height: 30px; vertical-align: middle;
+}
+#footer-main {
+	padding-bottom: 15px; padding-left: 4px; margin-right: 45px; border-bottom-color: rgb(226, 226, 226); border-bottom-width: 1px; border-bottom-style: solid;
+}
+#footer-logo {
+	margin-right: 14px;
+}
+#footer .pickers li {
+	margin-right: 14px;
+}
+#footer .yt-picker-button-label {
+	font-weight: normal;
+}
+#footer .yt-picker {
+	margin: 10px 0px;
+}
+#footer-links {
+	padding: 15px 0px 15px 8px;
+}
+#footer-links li {
+	margin-right: 15px; display: inline;
+}
+#footer-links-primary {
+	font-weight: bold; margin-bottom: 8px;
+}
+#footer-links-primary a {
+	color: rgb(51, 51, 51);
+}
+#footer-links-primary a:hover {
+	color: rgb(22, 122, 198);
+}
+#footer-links-secondary a {
+	color: rgb(102, 102, 102); font-size: 11px;
+}
+#footer-links-secondary .copyright {
+	color: rgb(102, 102, 102); font-size: 11px;
+}
+#footer-links-secondary a {
+	font-weight: bold;
+}
+#footer-links-secondary a:hover {
+	color: rgb(22, 122, 198);
+}
+#footer .yt-picker {
+	padding: 20px; border-radius: 0px; box-shadow: none;
+}
+#footer .yt-uix-button-icon-footer-language {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat -16px -2886px / 144px 2958px; width: 25px; height: 15px;
+}
+#footer .yt-uix-button:hover .yt-uix-button-icon-footer-language {
+	background-position: 0px -2706px;
+}
+.yt-uix-button-icon-questionmark {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat -64px -588px / 144px 2958px; width: 15px; height: 16px; opacity: 0.75;
+}
+#footer .yt-uix-button:hover .questionmark {
+	opacity: 1;
+}
+.yt-content-owner-color-0.yt-content-owner-icon {
+	background-color: rgb(68, 51, 147);
+}
+.yt-content-owner-color-1.yt-content-owner-icon {
+	background-color: rgb(178, 31, 112);
+}
+.yt-content-owner-color-2.yt-content-owner-icon {
+	background-color: rgb(229, 122, 39);
+}
+.yt-content-owner-color-3.yt-content-owner-icon {
+	background-color: rgb(229, 188, 36);
+}
+.yt-content-owner-color-4.yt-content-owner-icon {
+	background-color: rgb(14, 145, 81);
+}
+.yt-content-owner-color-5.yt-content-owner-icon {
+	background-color: rgb(40, 126, 194);
+}
+.yt-content-owner-color-0 .agent-mode-sidebar {
+	border-color: rgb(68, 51, 147);
+}
+.yt-content-owner-color-1 .agent-mode-sidebar {
+	border-color: rgb(178, 31, 112);
+}
+.yt-content-owner-color-2 .agent-mode-sidebar {
+	border-color: rgb(229, 122, 39);
+}
+.yt-content-owner-color-3 .agent-mode-sidebar {
+	border-color: rgb(229, 188, 36);
+}
+.yt-content-owner-color-4 .agent-mode-sidebar {
+	border-color: rgb(14, 145, 81);
+}
+.yt-content-owner-color-5 .agent-mode-sidebar {
+	border-color: rgb(40, 126, 194);
+}
+#yt-masthead {
+	margin: 0px auto;
+}
+#yt-masthead-container {
+	background: rgb(255, 255, 255); padding-top: 7px; padding-bottom: 8px; border-bottom-color: rgb(232, 232, 232); border-bottom-width: 1px; border-bottom-style: solid; min-width: 800px;
+}
+#yt-masthead-content {
+	overflow: hidden;
+}
+#masthead {
+	width: 970px;
+}
+#masthead-subnav {
+	width: 970px;
+}
+#masthead-subnav ul {
+	margin: 0px;
+}
+#masthead {
+	margin: 0px auto; padding: 10px 0px; height: 40px; overflow: hidden; font-size: 13px; position: relative;
+}
+#masthead .selected {
+	color: rgb(0, 0, 0); font-weight: bold; text-decoration: none; cursor: default;
+}
+#signin-passive {
+	display: none;
+}
+#flash-upgrade {
+	margin-top: 15px;
+}
+#logo-container:focus {
+	background: none; border-color: transparent;
+}
+#masthead-nav a:focus {
+	background: none; border-color: transparent;
+}
+#masthead-user-wrapper:focus {
+	background: none; border-color: transparent;
+}
+#masthead-gaia-user-wrapper:focus {
+	background: none; border-color: transparent;
+}
+#masthead-gaia-photo-wrapper:focus {
+	background: none; border-color: transparent;
+}
+#yt-masthead .yt-masthead-logo-container {
+	width: 200px; margin-top: 2px; float: left; position: relative;
+}
+#yt-masthead .yt-masthead-logo-container #logo-container {
+	vertical-align: middle; display: inline-block;
+}
+#yt-masthead #logo-container:hover {
+	text-decoration: none;
+}
+#yt-masthead #logo {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat 0px -688px / 72px 1479px; width: 72px; height: 30px;
+}
+#yt-masthead .doodle#yt-masthead-logo-container {
+	margin-right: 61px;
+}
+#yt-masthead .doodle#logo-container img {
+	background: none; width: 110px;
+}
+#yt-masthead #logo-container span.content-region {
+	left: 2px; top: -19px; color: rgb(153, 153, 153); font-size: 11px; font-weight: normal; text-decoration: none; position: relative;
+}
+#ticker {
+	padding: 0px; height: 29px; color: rgb(255, 255, 255); font-size: 13px; text-decoration: none; min-width: 0px; box-shadow: 0px 1px 2px rgba(0,0,0,0.5); text-shadow: 0px 0px 2px rgba(0,0,0,0.3); background-image: linear-gradient(rgb(132, 159, 194) 0px, rgb(102, 131, 179) 100%); background-color: rgb(102, 131, 179);
+}
+#ticker a {
+	color: rgb(255, 255, 255); text-decoration: none;
+}
+#ticker a:hover {
+	text-decoration: underline;
+}
+#ticker .ticker-icon {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat -86px -88px / 144px 2958px; margin: 4px 10px 0px 0px; width: 19px; height: 19px; float: left;
+}
+#ticker .ticker-content {
+	line-height: 29px;
+}
+#ticker button {
+	float: right; opacity: 0.6;
+}
+#ticker button:hover {
+	cursor: pointer; opacity: 1;
+}
+#ticker button .close-ticker-icon {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat -106px -1556px / 144px 2958px; border-radius: 3px; top: 3px; width: 22px; height: 22px; position: relative;
+}
+#ticker button:hover .close-ticker-icon {
+	background-color: rgba(0, 0, 0, 0.2);
+}
+.cookie-alert#ticker button {
+	height: 22px; line-height: 20px; margin-bottom: 2px; float: none; opacity: 1;
+}
+.cookie-alert#ticker button:hover {
+	background-color: rgb(63, 134, 196);
+}
+.cookie-alert#ticker button {
+	margin-left: 10px;
+}
+.cookie-alert#ticker a {
+	margin-left: 10px;
+}
+#ticker .ticker-arrow-down {
+	background: url("//s.ytimg.com/yts/imgbin/www-gplusoptin-2x-vfl0AdH9V.png") no-repeat -1134px -48px / 1474px 136px; width: 20px; height: 21px; margin-left: 10px; vertical-align: middle;
+}
+#ticker .ticker-righthand-content {
+	float: right;
+}
+.lw-announce#ticker button {
+	top: 4px; width: 22px; height: 22px; margin-top: -4px; position: relative; opacity: 1;
+}
+#masthead-search {
+	padding: 0px; overflow: hidden; margin-top: 3px; position: relative; max-width: 650px;
+}
+#masthead-search label {
+	padding: 0px; border: currentColor; border-image: none; height: 100%; line-height: 30px; overflow: hidden;
+}
+#masthead-search-terms {
+	margin: 0px 0px 2px; transition:border-color 0.2s; height: 29px; line-height: 30px; overflow: hidden; font-size: 14px; position: relative; box-sizing: border-box; background-color: rgb(255, 255, 255); -moz-box-sizing: border-box; -moz-transition: border-color .2s ease; -webkit-transition: border-color .2s ease; _padding-left: 5px; _padding-right: 5px;
+}
+#masthead-search .search-btn-component {
+	height: 29px;
+}
+.consolidated-form#masthead-search #masthead-search-terms label {
+	height: 100%;
+}
+.masthead-search-terms-border {
+	border: 1px solid rgb(204, 204, 204); border-image: none; box-shadow: inset 0px 1px 2px #eee;
+}
+#masthead-search-terms label {
+	display: block; _margin-top: 5px;
+}
+#masthead-search-terms input {
+	background: none; margin: 0px; padding: 2px 6px; border: 0px currentColor; border-image: none; width: 100%; font-size: 16px; display: inline-block; -ms-zoom: 1; box-sizing: border-box; -moz-box-sizing: border-box; _position: absolute; _left: 0; _width: 100%;
+}
+.search-term {
+	width: 100%;
+}
+.consolidated-form#masthead-search input {
+	height: 100%;
+}
+#ie .consolidated-form#masthead-search input {
+	height: auto; _height: auto; _padding: 0;
+}
+.consolidated-form#masthead-search input:focus {
+	border-color: rgb(255, 255, 255);
+}
+#masthead-search-term:focus {
+	border-color: rgb(255, 255, 255);
+}
+#yt-masthead #search-btn {
+	padding: 0px;
+}
+#yt-masthead #search-btn:focus {
+	box-shadow: inset 0px 0px 0px 2px rgba(27,127,204,0.4);
+}
+#yt-masthead #search-btn .yt-uix-button-content {
+	margin: 0px 25px;
+}
+#masthead-search .search-btn-component {
+	padding: 0px 0.91em; float: right; filter: none; opacity: 1; _margin-left: -3px;
+}
+#masthead-search .yt-uix-button-group.search-btn-component {
+	padding: 0px;
+}
+#masthead-search .search-btn-component button {
+	vertical-align: top;
+}
+#masthead-search .search-btn-component .yt-uix-button-content {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat -72px -2190px / 144px 2958px; padding: 0px; border: currentColor; border-image: none; width: 14px; height: 14px; text-indent: -10000px; display: block; opacity: 0.6; box-shadow: none;
+}
+#masthead-search .search-btn-component:hover .yt-uix-button-content {
+	opacity: 1;
+}
+#masthead-search .search-btn-component:focus .yt-uix-button-content {
+	opacity: 1;
+}
+#masthead-search .search-btn-component {
+	border-left-color: currentColor; border-left-width: 0px; border-left-style: none; border-top-left-radius: 0px; border-bottom-left-radius: 0px; -moz-border-radius-topleft: 0; -moz-border-radius-bottomleft: 0;
+}
+#masthead-search .search-btn-component .start {
+	border-left-color: currentColor; border-left-width: 0px; border-left-style: none; border-top-left-radius: 0px; border-bottom-left-radius: 0px; -moz-border-radius-topleft: 0; -moz-border-radius-bottomleft: 0;
+}
+#upload-button-menu .upload-menu-item {
+	width: 100%; text-align: left; padding-left: 30px; position: relative; box-sizing: border-box; -moz-box-sizing: border-box;
+}
+#appbar-settings-menu .upload-menu-item {
+	width: 100%; text-align: left; padding-left: 30px; position: relative; box-sizing: border-box; -moz-box-sizing: border-box;
+}
+#upload-button-menu .upload-menu-item .icon-container {
+	left: 10px; top: 0px; bottom: 0px; position: absolute;
+}
+#appbar-settings-menu .upload-menu-item .icon-container {
+	left: 10px; top: 0px; bottom: 0px; font-size: 0px; position: absolute;
+}
+#upload-button-menu .yt-uix-button-google-help {
+	border-radius: 0px; border: currentColor; border-image: none; font-weight: normal; box-shadow: none;
+}
+#appbar-settings-menu .yt-uix-button-google-help {
+	border-radius: 0px; border: currentColor; border-image: none; font-weight: normal; box-shadow: none;
+}
+.upload-menu-vm-icon {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat 0px -2420px / 144px 2958px; width: 10px; height: 11px;
+}
+.upload-menu-item:hover .upload-menu-vm-icon {
+	background-position: -128px -978px;
+}
+.upload-menu-dashboard-icon {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat -132px -208px / 144px 2958px; width: 11px; height: 10px;
+}
+.upload-menu-item:hover .upload-menu-dashboard-icon {
+	background-position: 0px -2886px;
+}
+.upload-menu-analytics-icon {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat -116px -2488px / 144px 2958px; width: 11px; height: 11px;
+}
+.upload-menu-item:hover .upload-menu-analytics-icon {
+	background-position: -16px -1884px;
+}
+.upload-menu-account-settings-icon {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat -44px -2034px / 144px 2958px; width: 11px; height: 11px;
+}
+.upload-menu-item:hover .upload-menu-account-settings-icon {
+	background-position: 0px -1898px;
+}
+#yt-masthead-signin {
+	margin-top: 3px; margin-left: 25px; float: right;
+}
+#yt-masthead-user {
+	color: rgb(85, 85, 85); margin-top: 3px; margin-left: 50px; float: right;
+}
+#appbar-onebar-upload-group {
+	margin-right: 15px;
+}
+#yt-masthead-user .yt-masthead-user-icon {
+	padding: 0px; cursor: pointer;
+}
+#yt-masthead-user #sb-button-notify {
+	background: none; margin: 0px 10px 0px 5px; border: currentColor; border-image: none; width: 32px; text-align: center; position: relative; box-shadow: none;
+}
+#yt-masthead-user #sb-button-notify:focus {
+	box-shadow: 0px 0px 0px 2px rgba(27,127,204,0.4);
+}
+#yt-masthead-user .sb-notif-on .yt-uix-button-icon-bell {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat 0px -294px / 72px 1479px; width: 30px; height: 30px;
+}
+#yt-masthead-user .yt-uix-button-icon-bell:hover {
+	opacity: 0.85;
+}
+#yt-masthead-user .yt-uix-button-icon-bell {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat -40px -262px / 72px 1479px; left: 0px; top: -2px; width: 30px; height: 30px; position: absolute; opacity: 0.55;
+}
+#yt-masthead-user .sb-notif-off .yt-uix-button-content {
+	display: none;
+}
+#yt-masthead-user .sb-notif-on .yt-uix-button-content {
+	background: rgb(203, 68, 55); border-radius: 2px; left: 14px; top: -2px; text-align: center; color: rgb(255, 255, 255); line-height: 15px; border-bottom-color: rgb(255, 255, 255); border-left-color: rgb(255, 255, 255); border-bottom-width: 1px; border-left-width: 1px; border-bottom-style: solid; border-left-style: solid; position: absolute; z-index: 100; min-width: 15px; opacity: 1;
+}
+#sb-wrapper {
+	margin: 0px auto; width: 100%; position: relative;
+}
+#sb-onepick-target {
+	border: 1px solid rgb(190, 190, 190); border-image: none; left: 35px; width: 900px; height: 650px; overflow: hidden; visibility: visible; position: absolute; box-shadow: 0px 4px 16px rgba(0,0,0,0.199219); background-color: rgb(246, 245, 246);
+}
+#sb-onepick-target iframe {
+	height: 100%; overflow: hidden;
+}
+.sb-card {
+	top: 60px; right: 13px; position: absolute;
+}
+.sb-card-arrow {
+	background: 0px 0px; border: 12px solid transparent; border-image: none; left: auto; top: -22px; width: 0px; height: 0px; right: 68px; bottom: auto; vertical-align: top; position: absolute;
+}
+.sb-card-body-arrow {
+	background: 0px 0px; border: 12px solid transparent; border-image: none; left: auto; top: -22px; width: 0px; height: 0px; right: 68px; bottom: auto; vertical-align: top; position: absolute;
+}
+.sb-card-arrow {
+	margin-top: -1px; margin-bottom: -1px; border-bottom-color: rgb(187, 187, 187);
+}
+.sb-card-body-arrow {
+	border-bottom-color: rgb(229, 229, 229);
+}
+.sb-card-border {
+	background: 0px 0px rgb(255, 255, 255); border: 1px solid rgb(187, 187, 187); border-image: none; float: left; box-shadow: 0px 0px 5px #bbb;
+}
+.sb-card-content {
+	width: 440px;
+}
+.sb-on {
+	background: rgb(255, 255, 255); float: left; display: block; z-index: 1100010; box-shadow: 0px 2px 1px #aaa;
+}
+.sb-off {
+	background: none; display: none; box-shadow: none;
+}
+.yt-masthead-user-icon {
+	box-shadow: none;
+}
+.yt-masthead-user-icon:focus {
+	box-shadow: none;
+}
+.yt-masthead-user-icon:hover {
+	box-shadow: none;
+}
+.yt-masthead-user-icon:hover:focus {
+	box-shadow: none;
+}
+.yt-uix-clickcard-card-content.yt-masthead-account-picker {
+	padding: 0px; width: auto; color: rgb(0, 0, 0); overflow: hidden; font-size: 13px; min-width: 270px;
+}
+.yt-masthead-account-notification {
+	padding: 10px 15px; color: rgb(0, 0, 0); font-size: 11px; background-color: rgb(254, 249, 219);
+}
+.yt-masthead-account-notification a {
+	color: rgb(51, 102, 204); display: block;
+}
+.yt-masthead-picker-header {
+	padding: 10px 15px; border-bottom-color: rgba(0, 0, 0, 0.2); border-bottom-width: 1px; border-bottom-style: solid;
+}
+.yt-masthead-multilogin-users {
+	-ms-overflow-y: auto; max-height: 215px;
+}
+.yt-masthead-multilogin.yt-uix-clickcard-card .yt-masthead-picker-header {
+	padding: 5px 15px; color: rgb(255, 255, 255); text-transform: uppercase; font-size: 11px; font-weight: bold; border-bottom-color: currentColor; border-bottom-width: medium; border-bottom-style: none; background-color: rgb(153, 153, 153);
+}
+.yt-masthead-multilogin.yt-uix-clickcard-card .yt-masthead-multilogin-users-header {
+	padding: 5px 15px; color: rgb(255, 255, 255); text-transform: uppercase; font-size: 11px; font-weight: bold; border-bottom-color: currentColor; border-bottom-width: medium; border-bottom-style: none; background-color: rgb(153, 153, 153);
+}
+a.yt-masthead-picker-active-account {
+	color: inherit; text-decoration: none; display: block; white-space: nowrap;
+}
+a.yt-masthead-account-picker-option {
+	text-decoration: none; display: block; white-space: nowrap;
+}
+a.yt-masthead-picker-active-account:hover {
+	text-decoration: underline;
+}
+.yt-masthead-picker-body {
+	margin: 15px; white-space: nowrap;
+}
+.yt-masthead-content-owner-icon {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat -42px -294px / 72px 1479px; width: 27px; height: 27px;
+}
+.yt-masthead-picker-content-owner-icon {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat 0px -1172px / 72px 1479px; width: 36px; height: 36px;
+}
+.yt-masthead-picker-content-owner-active-icon {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat 0px -136px / 72px 1479px; width: 64px; height: 64px;
+}
+.yt-masthead-picker-photo-wrapper {
+	margin-right: 10px; vertical-align: top; display: inline-block; position: relative;
+}
+.yt-masthead-picker-info {
+	vertical-align: top; display: inline-block;
+}
+.yt-masthead-picker-photo-change {
+	padding: 5px 0px; left: 0px; width: 64px; text-align: center; bottom: 0px; color: rgb(255, 255, 255); line-height: 9px; font-size: 9px; font-weight: bold; position: absolute; background-color: rgba(0, 0, 0, 0.4);
+}
+.yt-masthead-picker-name {
+	font-weight: bold; margin-bottom: 1px;
+}
+.yt-masthead-picker-content-owner-name {
+	padding: 6px 0px;
+}
+.yt-masthead-picker-account-subtitle {
+	color: rgb(153, 153, 153); margin-bottom: 7px;
+}
+.yt-masthead-picker-button {
+	height: 24px;
+}
+.yt-masthead-picker-button-primary {
+	margin-right: 5px;
+}
+.yt-masthead-picker-settings-button {
+	padding: 0px 4px;
+}
+.yt-uix-button-icon-icon-account-settings {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat 0px -510px / 72px 1479px; width: 20px; height: 20px;
+}
+.yt-masthead-account-picker-option {
+	background: rgb(245, 245, 245); padding: 10px 15px; border-top-color: rgba(0, 0, 0, 0.1); border-top-width: 1px; border-top-style: solid;
+}
+.yt-masthead-picker-footer {
+	background: rgb(245, 245, 245); padding: 10px 15px; overflow: hidden; border-top-color: rgba(0, 0, 0, 0.1); border-top-width: 1px; border-top-style: solid;
+}
+.yt-masthead-account-picker-option:hover {
+	background: rgb(238, 238, 238); text-decoration: none;
+}
+.yt-masthead-account-picker-option .yt-masthead-picker-photo-wrapper {
+	margin-right: 6px;
+}
+.yt-masthead-account-picker-option .yt-masthead-picker-info {
+	vertical-align: middle;
+}
+.yt-masthead-account-picker-option .yt-masthead-picker-name {
+	color: rgb(0, 0, 0); font-weight: normal;
+}
+.yt-masthead-picker-footer .yt-masthead-picker-button {
+	height: 28px; float: left;
+}
+.yt-masthead-picker-footer :last-child.yt-masthead-picker-button {
+	float: right;
+}
+.yt-masthead-multilogin.yt-uix-clickcard-card .yt-uix-card-body-arrow {
+	border-bottom-color: rgb(153, 153, 153);
+}
+.yt-masthead-domain-notification.yt-uix-clickcard-card .yt-uix-card-body-arrow {
+	border-bottom-color: rgb(254, 249, 219);
+}
+.yt-uix-button-hover-action-menu {
+	background: none; padding: 0px 0px 3px; border: currentColor; border-image: none; height: auto; cursor: pointer; opacity: 0; box-shadow: none;
+}
+.yt-uix-button-hover-action-menu:focus {
+	box-shadow: none;
+}
+.yt-uix-button-hover-action-menu:hover:focus {
+	box-shadow: none;
+}
+.yt-uix-button-icon-hover-action-menu {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat 0px -924px / 72px 1479px; width: 13px; height: 13px;
+}
+.yt-uix-button-active .yt-uix-button-icon-hover-action-menu {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat 0px -924px / 72px 1479px; width: 13px; height: 13px;
+}
+.hover-action-menu-trigger .yt-uix-button-active.yt-uix-button-hover-action-menu {
+	opacity: 0.8;
+}
+.hover-action-menu-trigger:hover .yt-uix-button-hover-action-menu {
+	opacity: 0.8;
+}
+.yt-uix-button-hover-action-menu .yt-uix-button-arrow {
+	display: none;
+}
+.yt-uix-button-dark-overflow-action-menu .yt-uix-button-arrow {
+	display: none;
+}
+.yt-uix-button-icon-dark-overflow-action-menu {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat 0px -610px / 72px 1479px; width: 15px; height: 15px;
+}
+.yt-uix-button-active .yt-uix-button-icon-dark-overflow-action-menu {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat -17px -610px / 72px 1479px; width: 15px; height: 15px;
+}
+.yt-uix-button-icon-dark-overflow-action-menu:hover {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat -17px -610px / 72px 1479px; width: 15px; height: 15px;
+}
+.yt-uix-button-menu-dark-overflow-action-menu {
+	border-color: rgb(204, 204, 204); background-color: rgb(255, 255, 255);
+}
+.yt-uix-button-menu-dark-overflow-action-menu .yt-uix-button-menu-item {
+	color: rgb(51, 51, 51);
+}
+.yt-uix-button-menu-dark-overflow-action-menu .yt-uix-button-menu-item:hover {
+	color: rgb(255, 255, 255); background-color: rgb(51, 51, 51);
+}
+.off-screen#player .video-mole#player-mole-container {
+	right: 60px; bottom: 0px; position: fixed; z-index: 1999999995; box-shadow: 0px 0px 17px 3px rgba(0,0,0,0.17);
+}
+#player .watch-mole#player-mole-container {
+	right: 60px; bottom: 0px; position: fixed; z-index: 1999999995; box-shadow: 0px 0px 17px 3px rgba(0,0,0,0.17);
+}
+.video-mole#watch-queue-mole {
+	width: 363px; right: 60px; bottom: 0px; position: fixed; z-index: 1999999995; box-shadow: 0px 0px 17px 3px rgba(0,0,0,0.17);
+}
+.video-mole#watch-timeline-mole-container {
+	width: 363px; right: 60px; bottom: 0px; position: fixed; z-index: 1999999995; box-shadow: 0px 0px 17px 3px rgba(0,0,0,0.17);
+}
+.off-screen#player .video-mole#player-mole-container .video-mole#watch-queue-mole {
+	position: static;
+}
+#player .watch-mole#player-mole-container .video-mole#watch-queue-mole {
+	position: static;
+}
+.off-screen#player .video-mole#player-mole-container .video-mole#watch-timeline-mole-container {
+	position: static;
+}
+#player .watch-mole#player-mole-container .video-mole#watch-timeline-mole-container {
+	position: static;
+}
+.off-screen#player .video-mole#player-mole-container {
+	width: 363px; min-width: 363px;
+}
+.off-screen#player .video-mole#player-mole-container .player-width {
+	width: 363px; min-width: 363px;
+}
+#player .watch-mole#player-mole-container {
+	width: 363px; min-width: 363px;
+}
+#player .watch-mole#player-mole-container .player-width {
+	width: 363px; min-width: 363px;
+}
+.off-screen#player .video-mole#player-mole-container #player-api {
+	float: none !important;
+}
+#player .watch-mole#player-mole-container #player-api {
+	float: none !important;
+}
+.off-screen#player .video-mole#player-mole-container .player-height {
+	height: 205px;
+}
+#player .watch-mole#player-mole-container .player-height {
+	height: 205px;
+}
+#watch-queue {
+	-ms-user-select: none; -moz-user-select: none; -webkit-user-select: none;
+}
+.watch-queue-info {
+	display: none;
+}
+#watch-queue-mole .watch-timeline-info {
+	display: none;
+}
+.video-mole .watch-playlist {
+	margin-bottom: 0px !important; margin-left: 0px !important;
+}
+#watch7-sidebar .watch-queue-info {
+	padding: 15px 5px 8px; height: 37px; line-height: 1.5; font-size: 11px; display: block;
+}
+.watch-queue-info .watch-queue-info-icon {
+	margin-top: 10px; margin-right: 10px; float: left; opacity: 0.55;
+}
+.watch-timeline-info .watch-timeline-info-icon {
+	margin-top: 10px; margin-right: 10px; float: left; opacity: 0.55;
+}
+.watch-queue-info .tv-queue-list-icon {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat -22px -62px / 72px 1479px; width: 28px; height: 22px;
+}
+.watch-queue-info .tv-queue-details {
+	color: rgb(153, 153, 153); font-size: 11px;
+}
+#watch-queue .watch-queue-header {
+	background: rgb(26, 26, 26); padding: 0px 10px;
+}
+.watch-timeline-header {
+	background: rgb(26, 26, 26); padding: 0px 10px;
+}
+#watch-queue .watch-queue-control-bar {
+	border-width: 1px 0px 0px; border-style: solid none none; border-color: rgb(58, 58, 58) currentColor currentColor; padding: 7px 5px 8px; border-image: none; height: 24px; color: rgb(255, 255, 255); font-size: 11px; font-weight: bold; display: block; white-space: nowrap; cursor: pointer; -ms-word-wrap: normal;
+}
+.watch-timeline-control-bar {
+	border-width: 1px 0px 0px; border-style: solid none none; border-color: rgb(58, 58, 58) currentColor currentColor; padding: 7px 5px 8px; border-image: none; height: 24px; color: rgb(255, 255, 255); font-size: 11px; font-weight: bold; display: block; white-space: nowrap; cursor: pointer; -ms-word-wrap: normal;
+}
+#watch-queue-mole #watch-queue .watch-queue-control-bar {
+	padding-right: 0px;
+}
+#watch-queue-mole .watch-timeline-control-bar {
+	padding-right: 0px;
+}
+.watch-queue-mole-info {
+	float: left;
+}
+.watch-timeline-control-bar-info {
+	float: left;
+}
+#watch7-sidebar #watch-queue .watch-queue-mole-info {
+	display: none;
+}
+#watch-timeline-sidebar-container .watch-timeline-control-bar-info {
+	display: none;
+}
+.watch-queue-mole-info .watch-queue-control-bar-icon {
+	margin-right: 10px; float: left;
+}
+.watch-timeline-control-bar-info .watch-timeline-control-bar-icon {
+	margin-right: 10px; float: left;
+}
+#watch-queue .watch-queue-control-bar .watch-queue-icon {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat 0px -976px / 72px 1479px; width: 24px; height: 24px; opacity: 0.4;
+}
+.watch-timeline-control-bar .watch-queue-icon {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat 0px -976px / 72px 1479px; width: 24px; height: 24px; opacity: 0.4;
+}
+#watch-queue .watch-queue-header:hover .watch-queue-control-bar .watch-queue-icon {
+	opacity: 0.85;
+}
+.mole-expanded #watch-queue .watch-queue-control-bar .watch-queue-icon {
+	opacity: 0.85;
+}
+.mole-expanded .watch-timeline-control-bar .watch-queue-icon {
+	opacity: 0.85;
+}
+#watch-queue .watch-queue-control-bar .watch-queue-title-container {
+	height: 24px; line-height: 24px; overflow: hidden; display: table; -ms-text-overflow: ellipsis;
+}
+.watch-timeline-control-bar .watch-timeline-title-container {
+	height: 24px; line-height: 24px; overflow: hidden; display: table; -ms-text-overflow: ellipsis;
+}
+#watch-queue .watch-queue-control-bar .watch-queue-title {
+	overflow: hidden; display: block; -ms-text-overflow: ellipsis;
+}
+#watch-queue .watch-queue-control-bar .tv-queue-title {
+	overflow: hidden; display: block; -ms-text-overflow: ellipsis;
+}
+#watch-queue .watch-queue-control-bar .watch-queue-count {
+	overflow: hidden; display: block; -ms-text-overflow: ellipsis;
+}
+.watch-timeline-control-bar .watch-timeline-title {
+	overflow: hidden; display: block; -ms-text-overflow: ellipsis;
+}
+.watch-timeline-control-bar .watch-timeline-count {
+	overflow: hidden; display: block; -ms-text-overflow: ellipsis;
+}
+#watch-queue .watch-queue-control-bar .watch-queue-title {
+	padding-bottom: 2px; font-size: 15px; font-weight: normal; max-width: 150px;
+}
+#watch-queue .watch-queue-control-bar .tv-queue-title {
+	padding-bottom: 2px; font-size: 15px; font-weight: normal; max-width: 150px;
+}
+.watch-timeline-control-bar .watch-timeline-title {
+	padding-bottom: 2px; font-size: 15px; font-weight: normal; max-width: 150px;
+}
+#watch-queue .watch-queue-info .watch-queue-title {
+	color: rgb(255, 255, 255); overflow: hidden; font-size: 15px; font-weight: normal; white-space: nowrap; -ms-word-wrap: normal; -ms-text-overflow: ellipsis; -o-text-overflow: ellipsis;
+}
+#watch-queue .watch-queue-info .tv-queue-title {
+	color: rgb(255, 255, 255); overflow: hidden; font-size: 15px; font-weight: normal; white-space: nowrap; -ms-word-wrap: normal; -ms-text-overflow: ellipsis; -o-text-overflow: ellipsis;
+}
+.watch-timeline-info .watch-timeline-title {
+	color: rgb(255, 255, 255); overflow: hidden; font-size: 15px; font-weight: normal; white-space: nowrap; -ms-word-wrap: normal; -ms-text-overflow: ellipsis; -o-text-overflow: ellipsis;
+}
+#watch-queue .watch-queue-control-bar .tv-queue-title {
+	display: none;
+}
+#watch-queue .watch-queue-info .tv-queue-title {
+	display: none;
+}
+.remote-connected #watch-queue .watch-queue-control-bar .tv-queue-title {
+	display: block;
+}
+.remote-connected #watch-queue .watch-queue-info .tv-queue-title {
+	display: block;
+}
+.remote-connected #watch-queue .watch-queue-control-bar .watch-queue-title {
+	display: none;
+}
+.remote-connected #watch-queue .watch-queue-info .watch-queue-title {
+	display: none;
+}
+.watch-queue-control-bar .watch-queue-count {
+	color: rgb(153, 153, 153); font-size: 11px; margin-left: 10px; float: right;
+}
+.watch-timeline-control-bar .watch-timeline-count {
+	color: rgb(153, 153, 153); font-size: 11px; margin-left: 10px; float: right;
+}
+.watch-queue-control-bar .yt-uix-button {
+	padding: 0px;
+}
+.watch-timeline-control-bar .yt-uix-button {
+	padding: 0px;
+}
+#watch-queue-mole .watch-queue-controls {
+	text-align: right;
+}
+#watch-queue-mole .watch-timeline-controls {
+	text-align: right;
+}
+#watch-queue-mole .watch-queue-controls :last-child.yt-uix-button {
+	margin-right: 5px;
+}
+#watch-queue-mole .watch-timeline-controls :last-child.yt-uix-button {
+	margin-right: 5px;
+}
+#watch-queue .watch-queue-controls .yt-uix-button {
+	margin-left: 10px;
+}
+.watch-timeline-controls .yt-uix-button {
+	margin-left: 10px;
+}
+#watch-queue .watch-queue-controls :first-child.yt-uix-button {
+	margin-left: 0px;
+}
+.watch-timeline-controls :first-child.yt-uix-button {
+	margin-left: 0px;
+}
+.watch-queue-controls .yt-uix-button-icon-watch-queue-prev {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat -26px -876px / 72px 1479px; width: 24px; height: 24px;
+}
+.watch-timeline-controls .yt-uix-button-icon-watch-timeline-prev {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat -26px -876px / 72px 1479px; width: 24px; height: 24px;
+}
+.watch-queue-controls .yt-uix-button-icon-watch-queue-next {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat -34px -1061px / 72px 1479px; width: 24px; height: 24px;
+}
+.watch-timeline-controls .yt-uix-button-icon-watch-timeline-next {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat -34px -1061px / 72px 1479px; width: 24px; height: 24px;
+}
+.watch-queue-controls .yt-uix-button-icon-watch-queue-play {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat -70px -1080px / 144px 2958px; width: 20px; height: 20px;
+}
+.watch-queue-controls .yt-uix-button-icon-watch-queue-pause {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat -118px -1752px / 144px 2958px; width: 20px; height: 20px;
+}
+.watch-queue-item-actions .yt-uix-button-icon-watch-queue-expand-video {
+	background: url("//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflpSTsqg.png") no-repeat -27px -720px / 72px 1479px; width: 15px; height: 15px;
+}
+#watch-queue-save-as-playlist-widget {
+	width: 0px; overflow: hidden; float: left;
+}
+#watch-queue-mole #watch-queue-save-as-playlist-widget {
+	margin-top: -100px;
+}
+.watch-queue-control-bar .dark-overflow-action-menu {
+	float: right;
+}
+.watch-timeline-control-bar .dark-overflow-action-menu {
+	float: right;
+}
+.watch-queue-control-bar .dark-overflow-action-menu > .yt-uix-button {
+	padding: 0px 1px;
+}
+.watch-timeline-control-bar .dark-overflow-action-menu > .yt-uix-button {
+	padding: 0px 1px;
+}
+.watch-timeline-sections {
+	overflow: hidden; background-color: rgb(26, 26, 26);
+}
+.watch-timeline .watch-timeline-sections {
+	transition:max-height 0.3s ease-out; position: relative; -moz-transition: max-height .3s ease-out; -webkit-transition: max-height .3s ease-out;
+}
+#watch-queue .watch-queue-items-list {
+	transition:max-height 0.3s ease-out; overflow: hidden; position: relative; counter-reset: watch-queue-video-section; background-color: rgb(34, 34, 34); -moz-transition: max-height .3s ease-out; -webkit-transition: max-height .3s ease-out;
+}
+.mole-notification.mole-collapsed #watch-queue .watch-queue-items-list {
+	max-height: 15px;
+}
+#watch-queue-mole .watch-queue-items-list {
+	max-height: 0px;
+}
+#watch-timeline-mole-container .watch-timeline .watch-timeline-sections {
+	max-height: 0px;
+}
+.mole-expanded#watch-queue-mole .watch-queue-items-list {
+	max-height: 318px;
+}
+#watch-timeline-mole-container .mole-expanded.watch-timeline .watch-timeline-sections {
+	max-height: 318px;
+}
+#watch-queue .watch-queue-items-list:hover {
+	overflow: auto;
+}
+.watch-timeline-sections:hover {
+	overflow: auto;
+}
+#watch-queue .watch-queue-items-list .yt-spinner {
+	color: rgb(255, 255, 255); margin-top: 100px;
+}
+.watch-queue-sections .yt-spinner {
+	color: rgb(255, 255, 255); margin-top: 100px;
+}
+.watch-queue-items-list > li {
+	padding: 10px 10px 10px 0px; transition:max-height 0.5s ease-out; color: rgb(255, 255, 255); overflow: hidden; max-height: 100px; background-color: rgb(34, 34, 34); -moz-transition: max-height .5s ease-out; -webkit-transition: max-height .5s ease-out;
+}
+.watch-timeline-items .watch-timeline-item {
+	padding: 10px 10px 10px 0px; transition:max-height 0.5s ease-out; color: rgb(255, 255, 255); overflow: hidden; max-height: 100px; background-color: rgb(34, 34, 34); -moz-transition: max-height .5s ease-out; -webkit-transition: max-height .5s ease-out;
+}
+.watch-queue-items-list > li.fade-out {
+	max-height: 0px;
+}
+.watch-queue-items-list > li.fade-in {
+	padding: 0px; transition:none; max-height: 0px; -moz-transition: none; -webkit-transition: none;
+}
+.watch-queue-items-list > li::before {
+	margin: 0px 2px; width: 24px; text-align: center; color: rgb(153, 153, 153); line-height: 41px; font-size: 10px; float: left; content: counter(watch-queue-video-section); counter-increment: watch-queue-video-section;
+}
+.watch-queue-items-list > li.currently-playing {
+	background-color: rgb(58, 58, 58);
+}
+.watch-timeline-items li.currently-playing {
+	background-color: rgb(58, 58, 58);
+}
+.watch-queue-items-list > li:hover {
+	background-color: rgb(82, 82, 82);
+}
+.watch-timeline-items li:hover {
+	background-color: rgb(82, 82, 82);
+}
+.watch-timeline-items li:hover h4 {
+	background-color: transparent;
+}
+.watch-queue-items-list > li.currently-playing::before {
+	color: rgb(192, 54, 54); line-height: 40px; content: "\0025b6";
+}
+.watch-queue-items-list .link-watch-queue-button {
+	display: none;
+}
+.watch-queue-items-list .watch-queue-video {
+	height: 41px; display: block; position: relative; cursor: pointer;
+}
+.watch-timeline-items .watch-timeline-video {
+	height: 41px; display: block; position: relative; cursor: pointer;
+}
+.watch-queue-items-list .yt-uix-button {
+	border-radius: 0px; border: 0px currentColor; border-image: none;
+}
+.watch-queue-sections .yt-uix-button {
+	border-radius: 0px; border: 0px currentColor; border-image: none;
+}
+.watch-queue-video .video-thumb {
+	margin-right: 8px; margin-left: 0px; float: left;
+}
+.watch-timeline-video .video-thumb {
+	margin-right: 8px; margin-left: 0px; float: left;
+}
+.watch-queue-items-list .currently-playing .watch-queue-video .video-thumb {
+	border: 2px solid rgb(192, 54, 54); border-image: none; margin-left: 0px; box-sizing: border-box; -moz-box-sizing: border-box;
+}
+.watch-queue-items-list .watch-queue-video-description {
+	top: -2px; overflow: hidden; position: relative;
+}
+.watch-timeline-items-list .watch-timeline-video-description {
+	top: -2px; overflow: hidden; position: relative;
+}
+.watch-queue-items-list .watch-queue-video h4 {
+	color: rgb(202, 202, 202); line-height: 1.1em; font-size: 13px; font-weight: normal; background-color: transparent;
+}
+.watch-timeline-item .watch-timeline-video h4 {
+	color: rgb(202, 202, 202); line-height: 1.1em; font-size: 13px; font-weight: normal; background-color: transparent;
+}
+.watch-queue-items-list .video-uploader-byline {
+	color: rgb(153, 153, 153); font-size: 11px;
+}
+.watch-timeline-sections .video-uploader-byline {
+	color: rgb(153, 153, 153); font-size: 11px;
+}
+.watch-queue-items-list .watch-queue-video:hover {
+	text-decoration: none;
+}
+.watch-timeline-items-list .watch-timeline-video:hover {
+	text-decoration: none;
+}
+.watch-queue-item .dark-overflow-action-menu .yt-uix-button-menu-dark-overflow-action-menu {
+	display: block;
+}
+.watch-timeline-item .dark-overflow-action-menu .yt-uix-button-menu-dark-overflow-action-menu {
+	display: block;
+}
+.watch-queue-item .watch-queue-item-actions {
+	margin-top: -5px; float: right; position: relative; z-index: 1;
+}
+.watch-queue-item .dark-overflow-action-menu {
+	display: none;
+}
+.watch-queue-item .remove-item-watch-queue-button {
+	display: none;
+}
+.watch-queue-item .expand-video-watch-queue-button {
+	display: none;
+}
+.yt-uix-button-menu-dark-overflow-action-menu .disabled.yt-uix-button-menu-item {
+	color: rgb(102, 102, 102); cursor: default;
+}
+.yt-uix-button-menu-dark-overflow-action-menu .disabled.yt-uix-button-menu-item:hover {
+	color: rgb(102, 102, 102); cursor: default;
+}
+.watch-queue-item:hover .dark-overflow-action-menu {
+	
+}
+.watch-queue-item.currently-playing:hover .expand-video-watch-queue-button {
+	
+}
+:not(.currently-playing).watch-queue-item:hover .remove-item-watch-queue-button {
+	
+}
+.watch-queue-item .dark-overflow-action-menu {
+	top: 0px; right: 3px;
+}
+.watch-timeline-item .dark-overflow-action-menu {
+	top: 0px; right: 3px;
+}
+.watch-queue-item .expand-video-watch-queue-button {
+	padding: 0px 1px 0px 5px; top: 0px; margin-top: 2px;
+}
+.watch-queue-item .remove-item-watch-queue-button {
+	padding: 0px 1px 0px 5px; top: 0px; margin-top: 2px;
+}
+.watch-timeline-item .remove-item-watch-timeline-button {
+	padding: 0px 1px 0px 5px; top: 0px; margin-top: 2px;
+}
+:not(.currently-playing).watch-timeline-item:hover .dark-overflow-action-menu {
+	display: inline-block;
+}
+:not(.currently-playing).watch-timeline-item:hover .remove-item-watch-timeline-button {
+	display: inline-block;
+}
+.watch-queue-item .yt-uix-button-dark-overflow-action-menu {
+	padding: 0px;
+}
+.watch-timeline-item .yt-uix-button-dark-overflow-action-menu {
+	padding: 0px;
+}
+#watch7-sidebar #watch-timeline-mole {
+	position: static;
+}
+.watch-timeline-section-title {
+	padding: 4px; color: rgb(255, 255, 255); text-transform: uppercase; overflow: hidden; font-size: 12px; font-weight: normal; white-space: nowrap; -ms-word-wrap: normal; -ms-text-overflow: ellipsis; -o-text-overflow: ellipsis;
+}
+.watch-timeline-section {
+	padding: 5px;
+}
+.watch-timeline-items > li::before {
+	float: left;
+}
+.watch-timeline-item .it-core-thumb {
+	padding-right: 10px; float: left;
+}
+.watch-timeline-item a:hover {
+	text-decoration: none;
+}
+.watch-timeline-items .watch-queue-item h4 {
+	background-color: rgb(34, 34, 34);
+}
+.watch-timeline-item {
+	padding: 10px; position: relative;
+}
+.watch-timeline-info {
+	padding: 15px 5px 8px; height: 37px; line-height: 1.5; font-size: 11px;
+}
+.watch-timeline-video-link {
+	display: block;
+}
+#watch-timeline-mole-container .watch-timeline-info {
+	display: none;
+}

@@ -136,7 +136,7 @@ class CallDependencies<ContextType extends IContext<ContextType>> {
             return;
         Edge e = new Edge(caller, caller_context, edge_context, callee, callee_context);
         if (charged_call_edges.add(e)) {
-            BlockAndContext<ContextType> caller_entry = caller_context.getEntryBlockAndContext();
+            BlockAndContext<ContextType> caller_entry = BlockAndContext.makeEntry(caller, caller_context);
             addToMapSet(charged_call_edges_map, caller_entry, e);
             if (log.isDebugEnabled())
                 log.debug("charging call edge " + e);
@@ -152,7 +152,7 @@ class CallDependencies<ContextType extends IContext<ContextType>> {
             return;
         Edge e = new Edge(caller, caller_context, edge_context, callee.getBlock(), callee.getContext());
         if (charged_call_edges.remove(e)) {
-            BlockAndContext<ContextType> caller_entry = caller_context.getEntryBlockAndContext();
+            BlockAndContext<ContextType> caller_entry = BlockAndContext.makeEntry(caller, caller_context);
             Set<Edge> s = charged_call_edges_map.get(caller_entry);
             if (s == null)
                 throw new AnalysisException("unexpected null set");

@@ -173,6 +173,7 @@ public class BinaryOperatorNode extends LoadNode {
     public int getArg2Register() {
         return arg2_reg;
     }
+
     /**
      * Returns the operator.
      */

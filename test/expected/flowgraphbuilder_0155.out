@@ -24,25 +24,25 @@ fg2: function()
     node 11: <variable-non-null-undef>['cs1']* (test/flowgraphbuilder/flowgraph_builder0155.html:5:1)
     ->[block 6]
   block 6:
-    node 12: nop (test/flowgraphbuilder/flowgraph_builder0155.html:2:9)
+    node 12: nop(eventDispatchers: entry) (test/flowgraphbuilder/flowgraph_builder0155.html:2:9)
     ->[block 7,block 8]
   block 7:
     node 13: event-dispatcher <LOAD> (test/flowgraphbuilder/flowgraph_builder0155.html:2:9)
     ->[block 8]
   block 8:
-    node 14: nop (test/flowgraphbuilder/flowgraph_builder0155.html:2:9)
+    node 14: nop(eventDispatchers: postLoad) (test/flowgraphbuilder/flowgraph_builder0155.html:2:9)
     ->[block 7,block 9,block 10]
   block 9:
     node 15: event-dispatcher <OTHER> (test/flowgraphbuilder/flowgraph_builder0155.html:2:9)
     ->[block 10]
   block 10:
-    node 16: nop (test/flowgraphbuilder/flowgraph_builder0155.html:2:9)
+    node 16: nop(eventDispatchers: postOther) (test/flowgraphbuilder/flowgraph_builder0155.html:2:9)
     ->[block 9,block 11,block 12]
   block 11:
     node 17: event-dispatcher <UNLOAD> (test/flowgraphbuilder/flowgraph_builder0155.html:2:9)
     ->[block 12]
   block 12:
-    node 18: nop (test/flowgraphbuilder/flowgraph_builder0155.html:2:9)
+    node 18: nop(eventDispatchers: postUnload) (test/flowgraphbuilder/flowgraph_builder0155.html:2:9)
     ->[block 11,block 13]
   block 13: [exit-ordinary]
     node 19: return[v1] (test/flowgraphbuilder/flowgraph_builder0155.html:2:9)
@@ -95,25 +95,25 @@ fg2: <main> function()
     node 11: <variable-non-null-undef>['cs1']* (test/flowgraphbuilder/flowgraph_builder0155.html:5:1)
     ->[block 6]
   block 6:
-    node 12: nop (test/flowgraphbuilder/flowgraph_builder0155.html:2:9)
+    node 12: nop(eventDispatchers: entry) (test/flowgraphbuilder/flowgraph_builder0155.html:2:9)
     ->[block 7,block 8]
   block 7:
     node 13: event-dispatcher <LOAD> (test/flowgraphbuilder/flowgraph_builder0155.html:2:9)
     ->[block 8]
   block 8:
-    node 14: nop (test/flowgraphbuilder/flowgraph_builder0155.html:2:9)
+    node 14: nop(eventDispatchers: postLoad) (test/flowgraphbuilder/flowgraph_builder0155.html:2:9)
     ->[block 7,block 9,block 10]
   block 9:
     node 15: event-dispatcher <OTHER> (test/flowgraphbuilder/flowgraph_builder0155.html:2:9)
     ->[block 10]
   block 10:
-    node 16: nop (test/flowgraphbuilder/flowgraph_builder0155.html:2:9)
+    node 16: nop(eventDispatchers: postOther) (test/flowgraphbuilder/flowgraph_builder0155.html:2:9)
     ->[block 9,block 11,block 12]
   block 11:
     node 17: event-dispatcher <UNLOAD> (test/flowgraphbuilder/flowgraph_builder0155.html:2:9)
     ->[block 12]
   block 12:
-    node 18: nop (test/flowgraphbuilder/flowgraph_builder0155.html:2:9)
+    node 18: nop(eventDispatchers: postUnload) (test/flowgraphbuilder/flowgraph_builder0155.html:2:9)
     ->[block 11,block 13]
   block 13: [exit-ordinary]
     node 19: return[v1] (test/flowgraphbuilder/flowgraph_builder0155.html:2:9)
@@ -160,3 +160,4 @@ TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0155.html:5:16):1:1: [d
 test/flowgraphbuilder/flowgraph_builder0155.html:3:23: [definite] Dead assignment, property c is never read
 test/flowgraphbuilder/flowgraph_builder0155.html:5:1: [definite] Dead assignment, property autointrvl is never read
 test/flowgraphbuilder/flowgraph_builder0155.html:3:1: [definite] The variable c is never used
+test/flowgraphbuilder/flowgraph_builder0155.html:2:9: [maybe] Uncaught exception, constructed at [TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0155.html:5:16):1:1]

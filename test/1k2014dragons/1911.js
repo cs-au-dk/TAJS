@@ -1,0 +1,21 @@
+a.style.cursor='none';
+X=Y=G=(H=a.height)/2;
+d=r=(M=Math).PI/2;R=M.random;
+(g=(z=a.cloneNode()).getContext('2d')).translate(Q=o=(W=a.width)/4,e=u=n=0);
+A=[0];B=[];
+for(t=i=3e3;i--;l=A.push(B[i]=i%2?(R()*2|0)*W-o:R()*(W+o)-o));
+C=A.slice();
+function F()
+{
+	U=u%2;
+	requestAnimationFrame(F);
+	for(i=Q?U?1:3:U?n+1:9;i--;(Q=n?n<t?Q:0:(u=0,1))?A[++n]=(A[n-2]||0)+M[n%2?'sin':'cos'](n%6?d:d+=n&-n&n/2?r:-r)*7:A[--n]=C[n]);
+	Q?(q=e,e=g[s='fillStyle']='#'+(100+R()*900|0)):0;
+	n%5?0:(g.save(),g.rotate(r/2),Q?0:g[s]='#fff',g[f](-W,n%2?0:-W,W*3,W),g.restore());
+	for(i=l;N=i--;(g[f='fillRect'](x=B[i],y=B[N],7,7),g.strokeRect(x,y,7,7)))
+		g[s]=i%2?q:(B[i]+=((U&Q?R()*H-G:u%4?A[i]|0:A[N]|0)+(i>n?0:X-B[i]))/(j=Q?M.pow(i,.3):i)||0,B[N]+=((U&Q?R()*H-G:u%4?A[N]|0:A[i]|0)+(i>n?0:Y-B[N]))/j||0,e);
+	c.drawImage(z,0,0);
+}
+onmousemove=function(e){X=e.pageX-o;Y=e.pageY};
+onclick=function(){++u};
+F();

@@ -66,13 +66,23 @@ TAJS recognizes a few special built-in functions (defined as properties of the g
 Running regression tests
 ------------------------
 
-The directory `test` contains a collection of tests that can be executed by running `dk.brics.tajs.test.RunRegression` with JUnit from Eclipse or with `ant test` from the command-line. 
+The directory `test` contains a collection of tests that can be executed by running `dk.brics.tajs.test.RunFast` with JUnit from Eclipse/IntelliJ or with `ant test` from the command-line. 
+(A more thorough but slower test is located in `dk.brics.tajs.test.RunAll`.)
+
+Package dependencies
+--------------------
+
+This diagram shows the main package dependencies:
+
+![package dependencies](misc/package-dependencies.png)
+
+Modifications of the source code should avoid introducing upwards dependencies in this diagram.
 
 Authors
 -------
 
 The following people have contributed to the source code:
-- Anders Møller
+- Anders MÃ¸ller
 - Simon Holm Jensen
 - Peter Thiemann
 - Magnus Madsen

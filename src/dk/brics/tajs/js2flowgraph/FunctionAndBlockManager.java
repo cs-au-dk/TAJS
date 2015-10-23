@@ -2,6 +2,8 @@ package dk.brics.tajs.js2flowgraph;
 
 import dk.brics.tajs.flowgraph.BasicBlock;
 import dk.brics.tajs.flowgraph.Function;
+import dk.brics.tajs.util.AnalysisException;
+import dk.brics.tajs.util.Collections;
 import dk.brics.tajs.util.Pair;
 
 import java.util.Arrays;
@@ -17,7 +19,7 @@ import static dk.brics.tajs.util.Collections.newSet;
 /**
  * Registers creation of functions and blocks.
  */
-class FunctionAndBlockManager {
+public class FunctionAndBlockManager {
 
     private final Map<SessionKey, Collection<BasicBlock>> sessionMap;
 
@@ -30,12 +32,25 @@ class FunctionAndBlockManager {
     private boolean closed;
 
     /**
+     * Some blocks are not reachable after flowgraph construction due to (weird) source code.
+     * But throwing the blocks away as an optimization would make error reporting (and dynamic code) harder.
+     * Unfortunately, these unreachable blocks still need to be processed by various flowgraph post-processings, as if they were reachable.
+     * These maps can be used to make BasicBlock#getSuccessors() return some extra blocks.
+     */
+    // TODO it would be safer to put this information in the blocks, such that it is maintained automatically on cloning
+    private final Map<BasicBlock, Set<BasicBlock>> unreachableSyntacticSuccessors;
+
+    private final Map<BasicBlock, BasicBlock> unreachableSyntacticSuccessorPredecessors;
+
+    /**
      * Constructs a new function/block manager.
      */
     FunctionAndBlockManager() {
         closed = false;
         blocks = newList();
         functions = newList();
+        unreachableSyntacticSuccessors = newMap();
+        unreachableSyntacticSuccessorPredecessors = newMap();
         sessionMap = newMap();
         activeSessions = newSet();
     }
@@ -112,6 +127,32 @@ class FunctionAndBlockManager {
             throw new IllegalArgumentException("Session still in progress: end it before querying");
         }
         return sessionMap.get(key);
+    }
+
+    public void registerUnreachableSyntacticSuccessor(BasicBlock predecessor, BasicBlock unreachableBlock) {
+        if (unreachableSyntacticSuccessorPredecessors.containsKey(unreachableBlock)) {
+            throw new AnalysisException("Registering unreachable block twice. That should not really be needed");
+        }
+        Collections.addToMapSet(unreachableSyntacticSuccessors, predecessor, unreachableBlock);
+        unreachableSyntacticSuccessorPredecessors.put(unreachableBlock, predecessor);
+    }
+
+    public Set<BasicBlock> getUnreachableSyntacticSuccessors(BasicBlock predecessor) {
+        if (!unreachableSyntacticSuccessors.containsKey(predecessor)) {
+            return newSet();
+        }
+        return unreachableSyntacticSuccessors.get(predecessor);
+    }
+
+    public boolean isUnreachable(BasicBlock block) {
+        return unreachableSyntacticSuccessorPredecessors.containsKey(block);
+    }
+
+    public BasicBlock getUnreachableSyntacticSuccessorPredecessor(BasicBlock unreachable) {
+        if (!unreachableSyntacticSuccessorPredecessors.containsKey(unreachable)) {
+            throw new AnalysisException("Block is not unreachable: " + unreachable);
+        }
+        return unreachableSyntacticSuccessorPredecessors.get(unreachable);
     }
 
     /**

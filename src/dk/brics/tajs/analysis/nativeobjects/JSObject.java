@@ -17,14 +17,15 @@
 package dk.brics.tajs.analysis.nativeobjects;
 
 import dk.brics.tajs.analysis.Conversion;
+import dk.brics.tajs.analysis.Exceptions;
 import dk.brics.tajs.analysis.FunctionCalls.CallInfo;
 import dk.brics.tajs.analysis.InitialStateBuilder;
 import dk.brics.tajs.analysis.NativeFunctions;
 import dk.brics.tajs.analysis.Solver;
-import dk.brics.tajs.analysis.State;
 import dk.brics.tajs.lattice.Obj;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.ObjectLabel.Kind;
+import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.UnknownValueResolver;
 import dk.brics.tajs.lattice.Value;
 
@@ -68,6 +69,21 @@ public class JSObject {
                 }
                 return res;
             }
+            case OBJECT_CREATE: {
+                // FIXME: support second argument of Object.create
+                NativeFunctions.expectParameters(nativeobject, call, c, 1, 2);
+                ObjectLabel obj = new ObjectLabel(call.getSourceNode(), Kind.OBJECT);
+                state.newObject(obj);
+                Value prototype = UnknownValueResolver.getRealValue(NativeFunctions.readParameter(call, state, 0), state);
+                if(prototype.restrictToNotNull().isMaybeOtherThanObject()) {
+                    Exceptions.throwTypeError(state, c);
+                }
+                if(prototype.restrictToObject().isNone() && prototype.restrictToNull().isNone()){
+                    return Value.makeNone();
+                }
+                state.writeInternalPrototype(obj, prototype);
+                return Value.makeObject(obj);
+            }
             case OBJECT_DEFINE_PROPERTY: { // 15.2.3.6
                 NativeFunctions.expectParameters(nativeobject, call, c, 3, 3);
                 Value o = NativeFunctions.readParameter(call, state, 0);
@@ -82,7 +98,7 @@ public class JSObject {
                 NativeFunctions.expectParameters(nativeobject, call, c, 0, 0);
                 Set<ObjectLabel> thisobj = state.readThisObjects();
                 List<Value> kinds = thisobj.stream()
-                        .map(o -> o.getKind())
+                        .map(ObjectLabel::getKind)
                         .collect(Collectors.toSet()).stream()
                         .map(kind -> Value.makeStr("[object " + kind + "]"))
                         .collect(Collectors.toList());

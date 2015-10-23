@@ -16,7 +16,7 @@
 
 package dk.brics.tajs.analysis.dom.style;
 
-import dk.brics.tajs.analysis.State;
+import dk.brics.tajs.lattice.State;
 
 public class StyleBuilder {
 

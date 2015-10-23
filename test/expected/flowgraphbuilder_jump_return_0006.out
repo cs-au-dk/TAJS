@@ -41,26 +41,26 @@ fg2: function()
     node 18: exceptional-return (test/flowgraphbuilder/flowgraph_builder_jump_return_0006.js:1:1)
     ->[]
 function f()
-  block 11:
-    node 19: end-with* (test/flowgraphbuilder/flowgraph_builder_jump_return_0006.js:2:5)
-    ->[block 17]
-  block 12: [entry]
-    node 20: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder_jump_return_0006.js:1:1)
+  block 11: [entry]
+    node 19: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder_jump_return_0006.js:1:1)
+    ->[block 12]
+  block 12:
+    node 20: new[v2] (test/flowgraphbuilder/flowgraph_builder_jump_return_0006.js:2:10)
+    node 21: constant[false,v3] (test/flowgraphbuilder/flowgraph_builder_jump_return_0006.js:2:14)
+    node 22: write-property[v2,'p',v3] (test/flowgraphbuilder/flowgraph_builder_jump_return_0006.js:2:11)
+    node 23: begin-with[v2]* (test/flowgraphbuilder/flowgraph_builder_jump_return_0006.js:2:5)
     ->[block 13]
   block 13:
-    node 21: new[v2] (test/flowgraphbuilder/flowgraph_builder_jump_return_0006.js:2:10)
-    node 22: constant[false,v3] (test/flowgraphbuilder/flowgraph_builder_jump_return_0006.js:2:14)
-    node 23: write-property[v2,'p',v3] (test/flowgraphbuilder/flowgraph_builder_jump_return_0006.js:2:11)
-    node 24: begin-with[v2]* (test/flowgraphbuilder/flowgraph_builder_jump_return_0006.js:2:5)
-    ->[block 14]
+    node 24: read-variable['p',v5,v4] (test/flowgraphbuilder/flowgraph_builder_jump_return_0006.js:3:13)
+    node 25: write-variable[v5,'v']* (test/flowgraphbuilder/flowgraph_builder_jump_return_0006.js:3:9)
+    node 26: constant[undefined,v1]* (test/flowgraphbuilder/flowgraph_builder_jump_return_0006.js:4:9)
+    ->[block 15] ~>[block 14]
   block 14:
-    node 25: read-variable['p',v5,v4] (test/flowgraphbuilder/flowgraph_builder_jump_return_0006.js:3:13)
-    node 26: write-variable[v5,'v']* (test/flowgraphbuilder/flowgraph_builder_jump_return_0006.js:3:9)
-    node 27: constant[undefined,v1]* (test/flowgraphbuilder/flowgraph_builder_jump_return_0006.js:4:9)
-    ->[block 16] ~>[block 15]
+    node 27: end-with* (test/flowgraphbuilder/flowgraph_builder_jump_return_0006.js:2:5)
+    ->[block 18]
   block 15:
     node 28: end-with* (test/flowgraphbuilder/flowgraph_builder_jump_return_0006.js:2:5)
-    ->[block 18]
+    ->[block 17]
   block 16:
     node 29: end-with* (test/flowgraphbuilder/flowgraph_builder_jump_return_0006.js:2:5)
     ->[block 17]

@@ -1,140 +1,371 @@
+test/chromeexperiments/jstouch.html:634:2: [definite] The conditional expression is always false
 test/chromeexperiments/jstouch.html:826:2: [definite] The conditional expression is always false
 test/chromeexperiments/jstouch.html:826:6: [definite] Variable cpy is null/undefined
 test/chromeexperiments/jstouch.html:1103:13: [definite] The assignment to tex has no effect
-test/chromeexperiments/jstouch.html:11:1: [definite] Dead assignment, property poss is never read
-test/chromeexperiments/jstouch.html:76:1: [definite] Dead assignment, property face_groups is never read
-test/chromeexperiments/jstouch.html:202:1: [definite] Dead assignment, property poss is never read
-test/chromeexperiments/jstouch.html:295:1: [definite] Dead assignment, property texcoords is never read
-test/chromeexperiments/jstouch.html:384:1: [definite] Dead assignment, property face_groups is never read
-test/chromeexperiments/jstouch.html:490:2: [definite] Dead assignment, property texture is never read
-test/chromeexperiments/jstouch.html:491:2: [definite] Dead assignment, property g is never read
-test/chromeexperiments/jstouch.html:494:1: [definite] Dead assignment, property clear is never read
-test/chromeexperiments/jstouch.html:502:1: [definite] Dead assignment, property num_cmp is never read
 test/chromeexperiments/jstouch.html:504:1: [definite] Dead assignment, property drawTriangle is never read
 test/chromeexperiments/jstouch.html:579:1: [definite] Dead assignment, property drawTestByIndexBuffer is never read
-test/chromeexperiments/jstouch.html:623:1: [definite] Dead assignment, property drawByIndexBuffer is never read
-test/chromeexperiments/jstouch.html:750:2: [definite] Dead assignment, property x is never read
-test/chromeexperiments/jstouch.html:751:2: [definite] Dead assignment, property y is never read
-test/chromeexperiments/jstouch.html:752:2: [definite] Dead assignment, property z is never read
 test/chromeexperiments/jstouch.html:756:2: [definite] Dead assignment, property zero is never read
-test/chromeexperiments/jstouch.html:760:2: [definite] Dead assignment, property sub is never read
-test/chromeexperiments/jstouch.html:768:2: [definite] Dead assignment, property add is never read
-test/chromeexperiments/jstouch.html:776:2: [definite] Dead assignment, property copyFrom is never read
 test/chromeexperiments/jstouch.html:784:2: [definite] Dead assignment, property norm is never read
-test/chromeexperiments/jstouch.html:788:2: [definite] Dead assignment, property normalize is never read
-test/chromeexperiments/jstouch.html:799:2: [definite] Dead assignment, property smul is never read
-test/chromeexperiments/jstouch.html:807:2: [definite] Dead assignment, property dpWith is never read
-test/chromeexperiments/jstouch.html:811:2: [definite] Dead assignment, property cp is never read
 test/chromeexperiments/jstouch.html:819:2: [definite] Dead assignment, property toString is never read
-test/chromeexperiments/jstouch.html:835:6: [definite] Dead assignment, property _12 is never read
-test/chromeexperiments/jstouch.html:835:17: [definite] Dead assignment, property _13 is never read
-test/chromeexperiments/jstouch.html:835:28: [definite] Dead assignment, property _14 is never read
-test/chromeexperiments/jstouch.html:836:3: [definite] Dead assignment, property _21 is never read
-test/chromeexperiments/jstouch.html:836:20: [definite] Dead assignment, property _23 is never read
-test/chromeexperiments/jstouch.html:836:31: [definite] Dead assignment, property _24 is never read
-test/chromeexperiments/jstouch.html:837:3: [definite] Dead assignment, property _31 is never read
-test/chromeexperiments/jstouch.html:837:14: [definite] Dead assignment, property _32 is never read
-test/chromeexperiments/jstouch.html:837:31: [definite] Dead assignment, property _34 is never read
-test/chromeexperiments/jstouch.html:838:3: [definite] Dead assignment, property _41 is never read
-test/chromeexperiments/jstouch.html:838:14: [definite] Dead assignment, property _42 is never read
-test/chromeexperiments/jstouch.html:838:25: [definite] Dead assignment, property _43 is never read
-test/chromeexperiments/jstouch.html:840:3: [definite] Dead assignment, property _11 is never read
-test/chromeexperiments/jstouch.html:840:14: [definite] Dead assignment, property _22 is never read
-test/chromeexperiments/jstouch.html:840:25: [definite] Dead assignment, property _33 is never read
-test/chromeexperiments/jstouch.html:840:36: [definite] Dead assignment, property _44 is never read
-test/chromeexperiments/jstouch.html:845:2: [definite] Dead assignment, property copyFrom is never read
-test/chromeexperiments/jstouch.html:869:2: [definite] Dead assignment, property transVec3 is never read
 test/chromeexperiments/jstouch.html:876:2: [definite] Dead assignment, property transVec3Rot is never read
-test/chromeexperiments/jstouch.html:882:2: [definite] Dead assignment, property perspectiveLH is never read
-test/chromeexperiments/jstouch.html:906:2: [definite] Dead assignment, property lookAtLH is never read
-test/chromeexperiments/jstouch.html:928:2: [definite] Dead assignment, property mul is never read
 test/chromeexperiments/jstouch.html:952:2: [definite] Dead assignment, property translate is never read
-test/chromeexperiments/jstouch.html:961:2: [definite] Dead assignment, property transpose33 is never read
-test/chromeexperiments/jstouch.html:980:2: [definite] Dead assignment, property glRotate is never read
-test/chromeexperiments/jstouch.html:1050:1: [definite] Dead assignment, property getInvert is never read
-test/chromeexperiments/jstouch.html:1073:13: [definite] Dead assignment, property mTickCount is never read
-test/chromeexperiments/jstouch.html:1074:13: [definite] Dead assignment, property mLoadCount is never read
-test/chromeexperiments/jstouch.html:1077:13: [definite] Dead assignment, property g is never read
-test/chromeexperiments/jstouch.html:1079:13: [definite] Dead assignment, property vUP is never read
-test/chromeexperiments/jstouch.html:1080:13: [definite] Dead assignment, property vAT is never read
-test/chromeexperiments/jstouch.html:1081:13: [definite] Dead assignment, property mEye is never read
-test/chromeexperiments/jstouch.html:1082:13: [definite] Dead assignment, property mEyeA is never read
-test/chromeexperiments/jstouch.html:1085:13: [definite] Dead assignment, property w is never read
-test/chromeexperiments/jstouch.html:1086:13: [definite] Dead assignment, property h is never read
-test/chromeexperiments/jstouch.html:1087:13: [definite] Dead assignment, property ow is never read
-test/chromeexperiments/jstouch.html:1088:13: [definite] Dead assignment, property oh is never read
-test/chromeexperiments/jstouch.html:1090:13: [definite] Dead assignment, property mProjMat is never read
-test/chromeexperiments/jstouch.html:1091:13: [definite] Dead assignment, property mWorldMat is never read
-test/chromeexperiments/jstouch.html:1092:13: [definite] Dead assignment, property mViewMat is never read
-test/chromeexperiments/jstouch.html:1093:13: [definite] Dead assignment, property mAllMat is never read
-test/chromeexperiments/jstouch.html:1099:13: [definite] Dead assignment, property texture is never read
-test/chromeexperiments/jstouch.html:1104:13: [definite] Dead assignment, property texture2 is never read
-test/chromeexperiments/jstouch.html:1110:13: [definite] Dead assignment, property start is never read
-test/chromeexperiments/jstouch.html:1117:13: [definite] Dead assignment, property onInterval is never read
-test/chromeexperiments/jstouch.html:1141:13: [definite] Dead assignment, property updateViewTrans is never read
-test/chromeexperiments/jstouch.html:1145:13: [definite] Dead assignment, property onMouseMove is never read
-test/chromeexperiments/jstouch.html:1149:13: [definite] Dead assignment, property setEyePosTarget is never read
-test/chromeexperiments/jstouch.html:1160:13: [definite] Dead assignment, property setupTransform is never read
-test/chromeexperiments/jstouch.html:1166:13: [definite] Dead assignment, property calcAllTransforms is never read
-test/chromeexperiments/jstouch.html:1172:13: [definite] Dead assignment, property transformVertices is never read
-test/chromeexperiments/jstouch.html:1215:13: [definite] Dead assignment, property drawFloor is never read
-test/chromeexperiments/jstouch.html:1223:13: [definite] Dead assignment, property texture is never read
-test/chromeexperiments/jstouch.html:1224:13: [definite] Dead assignment, property mesh is never read
-test/chromeexperiments/jstouch.html:1226:13: [definite] Dead assignment, property sphmap_uvbuf is never read
-test/chromeexperiments/jstouch.html:1228:13: [definite] Dead assignment, property 112 is never read
-test/chromeexperiments/jstouch.html:1229:13: [definite] Dead assignment, property 113 is never read
-test/chromeexperiments/jstouch.html:1231:13: [definite] Dead assignment, property 114 is never read
-test/chromeexperiments/jstouch.html:1232:13: [definite] Dead assignment, property 115 is never read
-test/chromeexperiments/jstouch.html:1234:13: [definite] Dead assignment, property 116 is never read
-test/chromeexperiments/jstouch.html:1235:13: [definite] Dead assignment, property 117 is never read
-test/chromeexperiments/jstouch.html:1237:13: [definite] Dead assignment, property 118 is never read
-test/chromeexperiments/jstouch.html:1238:13: [definite] Dead assignment, property 119 is never read
-test/chromeexperiments/jstouch.html:1240:13: [definite] Dead assignment, property 120 is never read
-test/chromeexperiments/jstouch.html:1241:13: [definite] Dead assignment, property 121 is never read
-test/chromeexperiments/jstouch.html:1243:13: [definite] Dead assignment, property 122 is never read
-test/chromeexperiments/jstouch.html:1244:13: [definite] Dead assignment, property 123 is never read
-test/chromeexperiments/jstouch.html:1248:13: [definite] Dead assignment, property render is never read
-test/chromeexperiments/jstouch.html:1266:13: [definite] Dead assignment, property setSphereMapUVs is never read
-test/chromeexperiments/jstouch.html:201:5: [definite] The variable MESH_floor is never used
-test/chromeexperiments/jstouch.html:494:13: [definite] Unreachable function
 test/chromeexperiments/jstouch.html:502:15: [definite] Unreachable function
 test/chromeexperiments/jstouch.html:504:20: [definite] Unreachable function
 test/chromeexperiments/jstouch.html:579:29: [definite] Unreachable function
-test/chromeexperiments/jstouch.html:623:25: [definite] Unreachable function
 test/chromeexperiments/jstouch.html:756:8: [definite] Unreachable function
-test/chromeexperiments/jstouch.html:760:7: [definite] Unreachable function
-test/chromeexperiments/jstouch.html:768:7: [definite] Unreachable function
-test/chromeexperiments/jstouch.html:776:12: [definite] Unreachable function
 test/chromeexperiments/jstouch.html:784:7: [definite] Unreachable function
-test/chromeexperiments/jstouch.html:788:13: [definite] Unreachable function
-test/chromeexperiments/jstouch.html:799:8: [definite] Unreachable function
-test/chromeexperiments/jstouch.html:807:10: [definite] Unreachable function
-test/chromeexperiments/jstouch.html:811:6: [definite] Unreachable function
 test/chromeexperiments/jstouch.html:819:12: [definite] Unreachable function
-test/chromeexperiments/jstouch.html:845:12: [definite] Unreachable function
-test/chromeexperiments/jstouch.html:869:13: [definite] Unreachable function
 test/chromeexperiments/jstouch.html:876:16: [definite] Unreachable function
-test/chromeexperiments/jstouch.html:882:17: [definite] Unreachable function
-test/chromeexperiments/jstouch.html:906:12: [definite] Unreachable function
-test/chromeexperiments/jstouch.html:928:7: [definite] Unreachable function
 test/chromeexperiments/jstouch.html:952:13: [definite] Unreachable function
-test/chromeexperiments/jstouch.html:961:15: [definite] Unreachable function
-test/chromeexperiments/jstouch.html:980:12: [definite] Unreachable function
-test/chromeexperiments/jstouch.html:1042:1: [definite] Unreachable function M22
-test/chromeexperiments/jstouch.html:1050:27: [definite] Unreachable function
-test/chromeexperiments/jstouch.html:1072:17: [definite] The variable _this is never used
-test/chromeexperiments/jstouch.html:1096:55: [definite] Unreachable function
-test/chromeexperiments/jstouch.html:1100:26: [definite] Unreachable function
-test/chromeexperiments/jstouch.html:1105:26: [definite] Unreachable function
-test/chromeexperiments/jstouch.html:1110:20: [definite] Unreachable function
-test/chromeexperiments/jstouch.html:1117:25: [definite] Unreachable function
-test/chromeexperiments/jstouch.html:1138:28: [definite] Unreachable function
-test/chromeexperiments/jstouch.html:1141:30: [definite] Unreachable function
-test/chromeexperiments/jstouch.html:1145:26: [definite] Unreachable function
-test/chromeexperiments/jstouch.html:1149:30: [definite] Unreachable function
-test/chromeexperiments/jstouch.html:1160:29: [definite] Unreachable function
-test/chromeexperiments/jstouch.html:1166:32: [definite] Unreachable function
-test/chromeexperiments/jstouch.html:1172:32: [definite] Unreachable function
-test/chromeexperiments/jstouch.html:1215:24: [definite] Unreachable function
-test/chromeexperiments/jstouch.html:1248:21: [definite] Unreachable function
-test/chromeexperiments/jstouch.html:1266:30: [definite] Unreachable function
+test/chromeexperiments/jstouch.html:1141:30: [definite] The variable ry is never used
+test/chromeexperiments/jstouch.html:496:2: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/jstouch.html:627:7: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/jstouch.html:647:15: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/jstouch.html:673:4: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/jstouch.html:700:11: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/jstouch.html:711:3: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/jstouch.html:735:3: [maybe] TypeError, non-HTMLImageElement or non-HTMLCanvasElement as argument to drawImage
+test/chromeexperiments/jstouch.html:929:14: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/jstouch.html:1168:17: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/jstouch.html:1185:36: [maybe] RangeError, invalid value of array length
+test/chromeexperiments/jstouch.html:1208:21: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/jstouch.html:1298:25: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/jstouch.html:1299:25: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/jstouch.html:1300:25: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/jstouch.html:1304:25: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/jstouch.html:1327:27: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/jstouch.html:1328:46: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/jstouch.html:1167:22: [maybe] Reading absent property _mTmpMat
+test/chromeexperiments/jstouch.html:1168:17: [maybe] Reading absent property _mTmpMat
+test/chromeexperiments/jstouch.html:1169:34: [maybe] Reading absent property _mTmpMat
+test/chromeexperiments/jstouch.html:1184:22: [maybe] Reading absent property tl_poss
+test/chromeexperiments/jstouch.html:1187:31: [maybe] Reading absent property tl_poss
+test/chromeexperiments/jstouch.html:1218:39: [maybe] Reading absent property tl_poss
+test/chromeexperiments/jstouch.html:1250:39: [maybe] Reading absent property tl_poss
+test/chromeexperiments/jstouch.html:1253:39: [maybe] Reading absent property tl_poss
+test/chromeexperiments/jstouch.html:1263:39: [maybe] Reading absent property tl_poss
+test/chromeexperiments/jstouch.html:1273:22: [maybe] Reading absent property N_list
+test/chromeexperiments/jstouch.html:1327:27: [maybe] Reading absent property N_list
+test/chromeexperiments/jstouch.html:9:34: [maybe] Uncaught exception, constructed at [test/chromeexperiments/jstouch.html:496:2, test/chromeexperiments/jstouch.html:627:7, test/chromeexperiments/jstouch.html:647:15, test/chromeexperiments/jstouch.html:673:4, test/chromeexperiments/jstouch.html:700:11, test/chromeexperiments/jstouch.html:711:3, test/chromeexperiments/jstouch.html:929:14, test/chromeexperiments/jstouch.html:1168:17, test/chromeexperiments/jstouch.html:1185:36, test/chromeexperiments/jstouch.html:1208:21, test/chromeexperiments/jstouch.html:1298:25, test/chromeexperiments/jstouch.html:1299:25, test/chromeexperiments/jstouch.html:1300:25, test/chromeexperiments/jstouch.html:1304:25, test/chromeexperiments/jstouch.html:1327:27, test/chromeexperiments/jstouch.html:1328:46]
+test/chromeexperiments/jstouch.html:645:11: [maybe] Conversion to number yields NaN
+test/chromeexperiments/jstouch.html:645:11: [maybe] Reading absent property (computed name)
+test/chromeexperiments/jstouch.html:647:15: [maybe] Reading absent property (computed name)
+test/chromeexperiments/jstouch.html:647:41: [maybe] Reading absent property (computed name)
+test/chromeexperiments/jstouch.html:648:15: [maybe] Reading absent property (computed name)
+test/chromeexperiments/jstouch.html:648:41: [maybe] Reading absent property (computed name)
+test/chromeexperiments/jstouch.html:649:18: [maybe] Reading absent property (computed name)
+test/chromeexperiments/jstouch.html:649:40: [maybe] Reading absent property (computed name)
+test/chromeexperiments/jstouch.html:651:11: [maybe] Conversion to number yields NaN
+test/chromeexperiments/jstouch.html:651:11: [maybe] Reading absent property (computed name)
+test/chromeexperiments/jstouch.html:653:15: [maybe] Reading absent property (computed name)
+test/chromeexperiments/jstouch.html:653:41: [maybe] Reading absent property (computed name)
+test/chromeexperiments/jstouch.html:654:15: [maybe] Reading absent property (computed name)
+test/chromeexperiments/jstouch.html:654:41: [maybe] Reading absent property (computed name)
+test/chromeexperiments/jstouch.html:655:18: [maybe] Reading absent property (computed name)
+test/chromeexperiments/jstouch.html:655:40: [maybe] Reading absent property (computed name)
+test/chromeexperiments/jstouch.html:657:11: [maybe] Conversion to number yields NaN
+test/chromeexperiments/jstouch.html:657:11: [maybe] Reading absent property (computed name)
+test/chromeexperiments/jstouch.html:659:15: [maybe] Reading absent property (computed name)
+test/chromeexperiments/jstouch.html:659:41: [maybe] Reading absent property (computed name)
+test/chromeexperiments/jstouch.html:660:15: [maybe] Reading absent property (computed name)
+test/chromeexperiments/jstouch.html:660:41: [maybe] Reading absent property (computed name)
+test/chromeexperiments/jstouch.html:661:18: [maybe] Reading absent property (computed name)
+test/chromeexperiments/jstouch.html:661:40: [maybe] Reading absent property (computed name)
+test/chromeexperiments/jstouch.html:663:15: [maybe] Conversion to number yields NaN
+test/chromeexperiments/jstouch.html:663:39: [maybe] Conversion to number yields NaN
+test/chromeexperiments/jstouch.html:664:15: [maybe] Conversion to number yields NaN
+test/chromeexperiments/jstouch.html:664:39: [maybe] Conversion to number yields NaN
+test/chromeexperiments/jstouch.html:666:15: [maybe] Conversion to number yields NaN
+test/chromeexperiments/jstouch.html:666:39: [maybe] Conversion to number yields NaN
+test/chromeexperiments/jstouch.html:673:18: [maybe] The variable uv_0u has values with different types
+test/chromeexperiments/jstouch.html:676:4: [maybe] Conversion to number yields NaN
+test/chromeexperiments/jstouch.html:677:4: [maybe] Conversion to number yields NaN
+test/chromeexperiments/jstouch.html:678:4: [maybe] Conversion to number yields NaN
+test/chromeexperiments/jstouch.html:683:14: [maybe] Conversion from string to number yields NaN
+test/chromeexperiments/jstouch.html:683:14: [maybe] Conversion to number yields NaN
+test/chromeexperiments/jstouch.html:683:14: [maybe] The variable uv_1u has values with different types
+test/chromeexperiments/jstouch.html:683:22: [maybe] The variable uv_0u has values with different types
+test/chromeexperiments/jstouch.html:683:30: [maybe] Conversion from string to number yields NaN
+test/chromeexperiments/jstouch.html:683:30: [maybe] Conversion to number yields NaN
+test/chromeexperiments/jstouch.html:683:30: [maybe] The variable uv_1v has values with different types
+test/chromeexperiments/jstouch.html:683:38: [maybe] The variable uv_0v has values with different types
+test/chromeexperiments/jstouch.html:684:14: [maybe] Conversion from string to number yields NaN
+test/chromeexperiments/jstouch.html:684:14: [maybe] Conversion to number yields NaN
+test/chromeexperiments/jstouch.html:684:14: [maybe] The variable uv_2u has values with different types
+test/chromeexperiments/jstouch.html:684:22: [maybe] The variable uv_0u has values with different types
+test/chromeexperiments/jstouch.html:684:30: [maybe] Conversion from string to number yields NaN
+test/chromeexperiments/jstouch.html:684:30: [maybe] Conversion to number yields NaN
+test/chromeexperiments/jstouch.html:684:30: [maybe] The variable uv_2v has values with different types
+test/chromeexperiments/jstouch.html:684:38: [maybe] The variable uv_0v has values with different types
+test/chromeexperiments/jstouch.html:686:3: [maybe] Conversion to number yields NaN
+test/chromeexperiments/jstouch.html:687:3: [maybe] Conversion to number yields NaN
+test/chromeexperiments/jstouch.html:689:3: [maybe] Conversion to number yields NaN
+test/chromeexperiments/jstouch.html:690:3: [maybe] Conversion to number yields NaN
+test/chromeexperiments/jstouch.html:706:12: [maybe] Conversion from string to number yields NaN
+test/chromeexperiments/jstouch.html:706:12: [maybe] Conversion to number yields NaN
+test/chromeexperiments/jstouch.html:706:12: [maybe] The variable uv_0u has values with different types
+test/chromeexperiments/jstouch.html:707:12: [maybe] Conversion from string to number yields NaN
+test/chromeexperiments/jstouch.html:707:12: [maybe] Conversion to number yields NaN
+test/chromeexperiments/jstouch.html:707:12: [maybe] The variable uv_0v has values with different types
+test/chromeexperiments/jstouch.html:714:3: [maybe] Conversion to number yields NaN
+test/chromeexperiments/jstouch.html:715:3: [maybe] Conversion to number yields NaN
+test/chromeexperiments/jstouch.html:716:3: [maybe] Conversion to number yields NaN
+test/chromeexperiments/jstouch.html:718:27: [maybe] Conversion to number yields NaN
+test/chromeexperiments/jstouch.html:718:43: [maybe] Conversion to number yields NaN
+test/chromeexperiments/jstouch.html:727:12: [maybe] Conversion to number yields NaN
+test/chromeexperiments/jstouch.html:728:12: [maybe] Conversion to number yields NaN
+test/chromeexperiments/jstouch.html:730:8: [maybe] Conversion to number yields NaN
+test/chromeexperiments/jstouch.html:730:22: [maybe] Conversion to number yields NaN
+test/chromeexperiments/jstouch.html:731:8: [maybe] Conversion to number yields NaN
+test/chromeexperiments/jstouch.html:731:22: [maybe] Conversion to number yields NaN
+test/chromeexperiments/jstouch.html:732:20: [maybe] Conversion to number yields NaN
+test/chromeexperiments/jstouch.html:733:20: [maybe] Conversion to number yields NaN
+test/chromeexperiments/jstouch.html:735:3: [maybe] Conversion to number yields NaN
+test/chromeexperiments/jstouch.html:870:12: [maybe] Conversion to number yields NaN
+test/chromeexperiments/jstouch.html:870:27: [maybe] Conversion to number yields NaN
+test/chromeexperiments/jstouch.html:870:42: [maybe] Conversion to number yields NaN
+test/chromeexperiments/jstouch.html:871:12: [maybe] Conversion to number yields NaN
+test/chromeexperiments/jstouch.html:871:27: [maybe] Conversion to number yields NaN
+test/chromeexperiments/jstouch.html:871:42: [maybe] Conversion to number yields NaN
+test/chromeexperiments/jstouch.html:872:12: [maybe] Conversion to number yields NaN
+test/chromeexperiments/jstouch.html:872:27: [maybe] Conversion to number yields NaN
+test/chromeexperiments/jstouch.html:872:42: [maybe] Conversion to number yields NaN
+test/chromeexperiments/jstouch.html:873:12: [maybe] Conversion to number yields NaN
+test/chromeexperiments/jstouch.html:873:27: [maybe] Conversion to number yields NaN
+test/chromeexperiments/jstouch.html:873:42: [maybe] Conversion to number yields NaN
+test/chromeexperiments/jstouch.html:1191:27: [maybe] Reading absent property (computed name)
+test/chromeexperiments/jstouch.html:1192:27: [maybe] Reading absent property (computed name)
+test/chromeexperiments/jstouch.html:1193:27: [maybe] Reading absent property (computed name)
+test/chromeexperiments/jstouch.html:1259:26: [maybe] Reading absent property (computed name)
+test/chromeexperiments/jstouch.html:1260:32: [maybe] Conversion to number yields NaN
+test/chromeexperiments/jstouch.html:1284:30: [maybe] Reading absent property (computed name)
+test/chromeexperiments/jstouch.html:1285:30: [maybe] Reading absent property (computed name)
+test/chromeexperiments/jstouch.html:1286:30: [maybe] Reading absent property (computed name)
+test/chromeexperiments/jstouch.html:1288:32: [maybe] Conversion to number yields NaN
+test/chromeexperiments/jstouch.html:1288:32: [maybe] Reading absent property (computed name)
+test/chromeexperiments/jstouch.html:1288:37: [maybe] Conversion to number yields NaN
+test/chromeexperiments/jstouch.html:1288:47: [maybe] Reading absent property (computed name)
+test/chromeexperiments/jstouch.html:1288:52: [maybe] Conversion to number yields NaN
+test/chromeexperiments/jstouch.html:1289:32: [maybe] Conversion to number yields NaN
+test/chromeexperiments/jstouch.html:1289:32: [maybe] Reading absent property (computed name)
+test/chromeexperiments/jstouch.html:1289:37: [maybe] Conversion to number yields NaN
+test/chromeexperiments/jstouch.html:1289:47: [maybe] Reading absent property (computed name)
+test/chromeexperiments/jstouch.html:1289:52: [maybe] Conversion to number yields NaN
+test/chromeexperiments/jstouch.html:1290:32: [maybe] Conversion to number yields NaN
+test/chromeexperiments/jstouch.html:1290:32: [maybe] Reading absent property (computed name)
+test/chromeexperiments/jstouch.html:1290:37: [maybe] Conversion to number yields NaN
+test/chromeexperiments/jstouch.html:1290:47: [maybe] Reading absent property (computed name)
+test/chromeexperiments/jstouch.html:1290:52: [maybe] Conversion to number yields NaN
+test/chromeexperiments/jstouch.html:1292:32: [maybe] Conversion to number yields NaN
+test/chromeexperiments/jstouch.html:1292:32: [maybe] Reading absent property (computed name)
+test/chromeexperiments/jstouch.html:1292:37: [maybe] Conversion to number yields NaN
+test/chromeexperiments/jstouch.html:1292:47: [maybe] Reading absent property (computed name)
+test/chromeexperiments/jstouch.html:1292:52: [maybe] Conversion to number yields NaN
+test/chromeexperiments/jstouch.html:1293:32: [maybe] Conversion to number yields NaN
+test/chromeexperiments/jstouch.html:1293:32: [maybe] Reading absent property (computed name)
+test/chromeexperiments/jstouch.html:1293:37: [maybe] Conversion to number yields NaN
+test/chromeexperiments/jstouch.html:1293:47: [maybe] Reading absent property (computed name)
+test/chromeexperiments/jstouch.html:1293:52: [maybe] Conversion to number yields NaN
+test/chromeexperiments/jstouch.html:1294:32: [maybe] Conversion to number yields NaN
+test/chromeexperiments/jstouch.html:1294:32: [maybe] Reading absent property (computed name)
+test/chromeexperiments/jstouch.html:1294:37: [maybe] Conversion to number yields NaN
+test/chromeexperiments/jstouch.html:1294:47: [maybe] Reading absent property (computed name)
+test/chromeexperiments/jstouch.html:1294:52: [maybe] Conversion to number yields NaN
+test/chromeexperiments/jstouch.html:1298:25: [maybe] Reading absent property (computed name)
+test/chromeexperiments/jstouch.html:1299:25: [maybe] Reading absent property (computed name)
+test/chromeexperiments/jstouch.html:1300:25: [maybe] Reading absent property (computed name)
+test/chromeexperiments/jstouch.html:1304:25: [maybe] Reading absent property (computed name)
+test/chromeexperiments/jstouch.html:1327:27: [maybe] Reading absent property (computed name)
+test/chromeexperiments/jstouch.html:769:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:770:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:771:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:773:10: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:789:23: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:789:30: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:789:39: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:789:46: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:789:55: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:789:62: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:792:4: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:793:4: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:794:4: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:796:10: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:800:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:801:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:802:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:804:10: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:808:10: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:808:23: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:808:36: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:835:6: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:835:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:835:28: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:836:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:836:20: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:836:31: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:837:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:837:14: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:837:31: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:838:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:838:14: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:838:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:840:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:840:14: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:840:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:840:36: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:842:10: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:870:16: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:870:31: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:870:46: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:870:57: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:871:16: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:871:31: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:871:46: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:871:57: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:872:16: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:872:31: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:872:46: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:872:57: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:873:16: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:873:31: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:873:46: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:873:57: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:883:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:884:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:885:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:886:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:888:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:889:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:890:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:891:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:893:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:894:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:895:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:896:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:898:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:899:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:900:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:901:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:903:10: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:916:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:916:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:916:39: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:916:57: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:917:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:917:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:917:39: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:917:57: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:918:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:918:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:918:39: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:918:57: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:920:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:921:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:922:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:923:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:925:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:929:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:930:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:931:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:932:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:934:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:935:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:936:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:937:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:939:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:940:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:941:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:942:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:944:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:945:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:946:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:947:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:949:10: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:1016:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:1017:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:1018:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:1019:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:1021:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:1022:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:1023:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:1024:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:1026:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:1027:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:1028:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:1029:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:1031:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:1032:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:1033:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:1034:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:1036:10: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:1111:23: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:1113:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:1114:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:1118:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:1119:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:1119:32: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:1120:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:1120:32: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:1121:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:1121:32: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:1122:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:1124:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:1125:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:1126:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:1128:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:1129:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:1130:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:1130:40: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:1132:35: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:1132:53: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:1133:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:1134:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:1134:34: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:1136:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:1137:29: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:1142:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:1142:40: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:1142:50: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:1142:61: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:1161:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:1162:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:1163:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:1167:22: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:1167:37: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:1168:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:1168:35: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:1168:51: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:1169:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:1169:34: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:1169:49: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:1174:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:1175:26: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:1176:26: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:1203:32: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:1204:33: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:1216:31: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:1249:31: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:1250:39: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:1250:58: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:1250:84: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:1252:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:1253:39: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:1253:58: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:1253:84: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:1256:34: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:1260:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:1263:39: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:1263:58: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:1263:84: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:1267:29: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:1268:29: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:1273:22: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:1277:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:1280:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:1298:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:1299:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:1300:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:1304:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:1327:27: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:1341:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/jstouch.html:1342:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision

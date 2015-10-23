@@ -1,11 +1,18 @@
 StartTag at (r1126,c7,p167246) missing required end tag
 StartTag at (r1127,c7,p167301) missing required end tag
+test/chromeexperiments/sandtrap.html:65:9: [definite] TypeError, accessing property of null/undefined
+test/chromeexperiments/sandtrap.html:71:9: [definite] TypeError, accessing property of null/undefined
 test/chromeexperiments/sandtrap.html:87:9: [definite] TypeError, accessing property of null/undefined
 test/chromeexperiments/sandtrap.html:378:17: [definite] TypeError, accessing property of null/undefined
 test/chromeexperiments/sandtrap.html:1089:9: [definite] TypeError, call to non-function
 test/chromeexperiments/sandtrap.html:1109:13: [definite] TypeError, accessing property of null/undefined
+test/chromeexperiments/sandtrap.html:1114:13: [definite] TypeError, accessing property of null/undefined
+test/chromeexperiments/sandtrap.html:59:13: [definite] The conditional expression is always true
+test/chromeexperiments/sandtrap.html:65:9: [definite] Variable box is null/undefined
+test/chromeexperiments/sandtrap.html:71:9: [definite] Variable box is null/undefined
+test/chromeexperiments/sandtrap.html:76:13: [definite] The conditional expression is always true
 test/chromeexperiments/sandtrap.html:81:5: [definite] The conditional expression is always false
-test/chromeexperiments/sandtrap.html:82:5: [definite] The conditional expression is always false
+test/chromeexperiments/sandtrap.html:82:23: [definite] The conditional expression is always false
 test/chromeexperiments/sandtrap.html:87:9: [definite] Variable box is null/undefined
 test/chromeexperiments/sandtrap.html:91:1: [definite] The conditional expression is always true
 test/chromeexperiments/sandtrap.html:314:13: [definite] The conditional expression is always true
@@ -13,10 +20,10 @@ test/chromeexperiments/sandtrap.html:314:18: [definite] Variable e is null/undef
 test/chromeexperiments/sandtrap.html:378:17: [definite] Variable box is null/undefined
 test/chromeexperiments/sandtrap.html:407:5: [definite] The conditional expression is always true
 test/chromeexperiments/sandtrap.html:1083:5: [definite] The conditional expression is always true
-test/chromeexperiments/sandtrap.html:1107:9: [definite] The conditional expression is always true
 test/chromeexperiments/sandtrap.html:1109:13: [definite] Variable song is null/undefined
+test/chromeexperiments/sandtrap.html:1114:13: [definite] Variable song is null/undefined
 test/chromeexperiments/sandtrap.html:1138:33: [definite] The conditional expression is always true
-test/chromeexperiments/sandtrap.html:82:9: [definite] Reading absent property wheelDelta
+test/chromeexperiments/sandtrap.html:82:27: [definite] Reading absent property opera
 test/chromeexperiments/sandtrap.html:1089:9: [definite] Reading absent property load
 test/chromeexperiments/sandtrap.html:15:5: [definite] The variable WIDTH is never used
 test/chromeexperiments/sandtrap.html:17:5: [definite] The variable DEGREE is never used
@@ -27,8 +34,9 @@ test/chromeexperiments/sandtrap.html:21:5: [definite] The variable ROTATIONAL_FR
 test/chromeexperiments/sandtrap.html:22:5: [definite] The variable WALL_SIZE is never used
 test/chromeexperiments/sandtrap.html:23:5: [definite] The variable TILE_COLORS is never used
 test/chromeexperiments/sandtrap.html:24:5: [definite] The variable SHADOW is never used
-test/chromeexperiments/sandtrap.html:58:22: [definite] Unreachable function
-test/chromeexperiments/sandtrap.html:75:20: [definite] Unreachable function
+test/chromeexperiments/sandtrap.html:65:21: [definite] Unreachable code
+test/chromeexperiments/sandtrap.html:71:21: [definite] Unreachable code
+test/chromeexperiments/sandtrap.html:76:9: [definite] The variable b is never used
 test/chromeexperiments/sandtrap.html:87:20: [definite] Unreachable code
 test/chromeexperiments/sandtrap.html:93:5: [definite] The variable mouseIsDown is never used
 test/chromeexperiments/sandtrap.html:94:5: [definite] The variable mouseClicked is never used
@@ -115,8 +123,13 @@ test/chromeexperiments/sandtrap.html:1094:40: [definite] Unreachable function
 test/chromeexperiments/sandtrap.html:1104:9: [definite] The variable b is never used
 test/chromeexperiments/sandtrap.html:1105:9: [definite] The variable a is never used
 test/chromeexperiments/sandtrap.html:1109:13: [definite] Unreachable code
+test/chromeexperiments/sandtrap.html:1114:13: [definite] Unreachable code
+test/chromeexperiments/sandtrap.html:82:9: [maybe] Reading absent property wheelDelta
+test/chromeexperiments/sandtrap.html:83:19: [maybe] Reading absent property wheelDelta
 test/chromeexperiments/sandtrap.html:84:14: [maybe] Reading absent property detail
 test/chromeexperiments/sandtrap.html:84:33: [maybe] Reading absent property detail
+test/chromeexperiments/sandtrap.html:14:13: [maybe] Uncaught exception, constructed at [test/chromeexperiments/sandtrap.html:65:9, test/chromeexperiments/sandtrap.html:71:9, test/chromeexperiments/sandtrap.html:87:9, test/chromeexperiments/sandtrap.html:378:17, test/chromeexperiments/sandtrap.html:1089:9]
+test/chromeexperiments/sandtrap.html:83:19: [maybe] Conversion to number yields NaN
 test/chromeexperiments/sandtrap.html:84:24: [maybe] Conversion to number yields NaN
 test/chromeexperiments/sandtrap.html:202:16: [maybe] Conversion from string to number yields NaN
 test/chromeexperiments/sandtrap.html:419:6: [maybe] The variable mapResolution has values with different types

@@ -20,12 +20,12 @@ import dk.brics.tajs.analysis.Conversion;
 import dk.brics.tajs.analysis.FunctionCalls;
 import dk.brics.tajs.analysis.NativeFunctions;
 import dk.brics.tajs.analysis.Solver;
-import dk.brics.tajs.analysis.State;
 import dk.brics.tajs.analysis.dom.DOMConversion;
 import dk.brics.tajs.analysis.dom.DOMFunctions;
 import dk.brics.tajs.analysis.dom.DOMObjects;
 import dk.brics.tajs.analysis.dom.DOMRegistry;
 import dk.brics.tajs.lattice.ObjectLabel;
+import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.Value;
 
 import static dk.brics.tajs.analysis.dom.DOMFunctions.createDOMFunction;
@@ -65,7 +65,6 @@ public class MouseEvent {
         createDOMProperty(s, INSTANCES, "altKey", Value.makeAnyBool().setReadOnly());
         createDOMProperty(s, INSTANCES, "metaKey", Value.makeAnyBool().setReadOnly());
         createDOMProperty(s, INSTANCES, "button", Value.makeAnyNumUInt().setReadOnly());
-        createDOMProperty(s, INSTANCES, "relatedTarget", DOMFunctions.makeAnyHTMLElement().setReadOnly());
 
         // DOM Level 0
         createDOMProperty(s, INSTANCES, "offsetX", Value.makeAnyNum().setReadOnly());

@@ -1,0 +1,438 @@
+.type_masthead_default .hood {
+	left: 0px; width: 100%; bottom: -16px; position: absolute; z-index: 1;
+}
+.ua-ie6 .type_masthead_default .hood {
+	top: 2.75em;
+}
+.type_masthead_default .open {
+	top: 27px; bottom: 0px;
+}
+.type_masthead_default .sasb .open {
+	width: auto; right: 96px;
+}
+.type_masthead_default .btn120 .open {
+	width: auto; right: 125px;
+}
+.type_masthead_default .btn130 .open {
+	right: 135px;
+}
+.type_masthead_default .btn140 .open {
+	right: 145px;
+}
+.bkt287 .type_masthead_default .btn120 .open {
+	width: auto; right: 119px;
+}
+.bkt227 .type_masthead_default .btn120 .open {
+	width: auto; right: 119px;
+}
+.bkt226 .type_masthead_default .btn120 .open {
+	width: auto; right: 119px;
+}
+.type_masthead_default .hood .sa-drawer-help-text {
+	border-width: 0px 1px 1px; border-style: none solid solid; border-color: currentColor rgb(211, 211, 211) rgb(211, 211, 211); padding: 8px 5px 8px 0.5em; border-image: none; color: rgb(119, 119, 119); font-size: 14px; font-weight: 400; display: none; background-color: white;
+}
+.type_masthead_default .sasb-center.btn120 .open {
+	top: 26px;
+}
+.type_masthead_default .hood .sa-window {
+	display: none;
+}
+.type_masthead_default .open .sa-window {
+	background-position: left -846px; overflow: hidden; border-right-width: 1px; border-left-width: 1px; border-right-style: solid; border-left-style: solid; display: block; position: relative; max-height: 7.9em; background-color: rgb(29, 37, 50);
+}
+.ua-op .sa-window {
+	max-height: 8.2em;
+}
+.search-overlay .type_masthead_default .open.hood .sa-drawer-help-text {
+	display: block;
+}
+.type_masthead_default .hood .sa-drawer-container {
+	background-position: -100px 0px; margin: 0px 1px;
+}
+.ua-ie7 .type_masthead_default .hood .sa-drawer-container {
+	-ms-zoom: 1;
+}
+.jsenabled .type_masthead_default .hood a.sa-drawer {
+	background-position: left -145px; top: -6px; width: 33px; height: 17px; overflow: hidden; margin-left: 2em; display: block; position: relative; background-repeat: no-repeat;
+}
+.type_masthead_default .hood a.sa-drawer {
+	display: none;
+}
+.jsenabled .ua-ie6 .type_masthead_default .open a.sa-drawer {
+	top: 16px;
+}
+.ua-ie7 .type_masthead_default .hood .sa-drawer-container {
+	position: relative;
+}
+.jsenabled .type_masthead_default .open a.sa-drawer {
+	background-position: left -210px; top: -1px; margin-left: 2.5em;
+}
+.type_masthead_default .hood .rc-bl {
+	display: none;
+}
+.type_masthead_default .hood .rc-br {
+	display: none;
+}
+.type_masthead_default .sa-holder ul {
+	padding: 0px 0px 0px 0.25em; width: 28em; color: rgb(255, 255, 255); line-height: 1.5em; position: relative;
+}
+.type_masthead_default .us .sa-holder ul {
+	width: 28em;
+}
+.type_masthead_default .sasb .sa-holder ul {
+	width: 43em; padding-left: 0px;
+}
+.ua-ie6 .type_masthead_default .sasb .sa-holder ul {
+	_width: 38.3em;
+}
+.ua-ie6 .type_masthead_default .sasb-center .sa-holder ul {
+	width: 36.7em;
+}
+.type_masthead_default .sa-holder .hints {
+	padding: 0.3em 0px 0.5em 0.8em;
+}
+.type_masthead_default .sa-holder .sa-results a {
+	padding: 0.1em 0.4em 0px 0.5em; width: 95%; height: 1.5em; color: rgb(255, 255, 255); overflow: hidden; text-decoration: none; float: left; display: block;
+}
+.type_masthead_default .sasb .sa-holder .sa-results a {
+	padding: 0px 0.4em 0px 0.5em; font-size: 17px;
+}
+.bkt348 .type_masthead_default .sa-holder .sa-results a {
+	width: 215px;
+}
+.type_masthead_default .sa-holder .sa-results a.app-available {
+	background-position: 218px -1014px;
+}
+.ua-ff2 .type_masthead_default .sa-holder .sa-results li {
+	clear: both;
+}
+.type_masthead_default .sa-holder .sa-results li.selected a.hide {
+	display: none;
+}
+.type_masthead_default .sa-holder .sa-results .added-notice {
+	border-width: 0px 1px; border-style: solid; border-color: rgb(82, 182, 51); color: rgb(255, 255, 255); line-height: 1; font-weight: bold; margin-top: 0.3em; margin-left: 0.5em; float: left; display: none; background-color: rgb(82, 182, 51);
+}
+.type_masthead_default .sa-holder .sa-results .show {
+	display: block;
+}
+.type_masthead_default .sa-holder .sa-results .added-notice em {
+	border-width: 1px 0px; border-style: solid; border-color: rgb(82, 182, 51); margin: -1px 0px; padding: 1px 4px 0px; line-height: 1; display: block;
+}
+.type_masthead_default .sa-holder .sa-results li.selected a:hover {
+	opacity: 1;
+}
+.ua-ie6 .type_masthead_default .sa-holder .sa-results li.selected a:hover {
+	
+}
+.ua-ie7 .type_masthead_default .sa-holder .sa-results li.selected a:hover {
+	
+}
+.ua-ie7 .type_masthead_default .sa-holder .sa-results a {
+	white-space: nowrap; -ms-text-overflow: ellipsis;
+}
+.ua-wk .type_masthead_default .sa-holder .sa-results a {
+	white-space: nowrap; -ms-text-overflow: ellipsis;
+}
+.ua-op .type_masthead_default .sa-holder .sa-results a {
+	white-space: nowrap; -o-text-overflow: ellipsis;
+}
+.type_masthead_default .sa-results a {
+	font-weight: bold;
+}
+.ua-ie6 .type_masthead_default .sa-results a {
+	-ms-zoom: 1;
+}
+.type_masthead_default .sa-results a:focus {
+	outline: 0px;
+}
+.type_masthead_default .sa-results a strong {
+	color: rgb(146, 158, 184); font-weight: normal;
+}
+.type_masthead_default .sasb .sa-results a strong {
+	font-weight: 200;
+}
+.type_masthead_default .asia .sa-results a strong {
+	color: rgb(0, 0, 0);
+}
+.type_masthead_default .asia .open .sa-window {
+	border-right-width: 1px; border-left-width: 1px; border-right-style: solid; border-left-style: solid; background-color: rgb(247, 248, 250);
+}
+.type_masthead_default .asia .sa-holder ul {
+	width: auto; color: rgb(0, 0, 0);
+}
+.type_masthead_default .asia .sa-holder .sa-results a {
+	width: auto; color: rgb(203, 50, 52); float: none;
+}
+.type_masthead_default .asia .sa-results a.selected {
+	background-color: rgb(229, 232, 247);
+}
+.type_masthead_default .asia .sa-holder .sa-results li.selected a:hover {
+	background-color: rgb(229, 232, 247);
+}
+.type_masthead_default .lightbg .open .sa-window {
+	border: 1px solid rgb(168, 170, 173); border-image: none; margin-top: 12px; background-color: rgb(255, 255, 255);
+}
+.type_masthead_default .lightbg .sasb .open .sa-window {
+	margin-top: 7px;
+}
+.ua-ie6 .type_masthead_default .lightbg .open .sa-window {
+	margin-top: 15px;
+}
+.ua-ie6 .type_masthead_default .lightbg .sasb-center .open .sa-window {
+	width: 475px;
+}
+.type_masthead_default .lightbg .sa-holder ul {
+	color: rgb(35, 31, 32);
+}
+.type_masthead_default .lightbg .sa-results a strong {
+	color: rgb(35, 31, 32);
+}
+.type_masthead_default .lightbg .sa-holder .sa-results a {
+	color: rgb(35, 31, 32);
+}
+.type_masthead_default .lightbg .sa-options span {
+	color: rgb(35, 31, 32);
+}
+.type_masthead_default .lightbg .sa-options .sa-info {
+	color: rgb(35, 31, 32);
+}
+.type_masthead_default .lightbg .sa-results a.selected {
+	background-color: rgb(198, 215, 255);
+}
+.type_masthead_default .lightbg .sa-holder .sa-results li.selected a:hover {
+	background-color: rgb(198, 215, 255);
+}
+.type_masthead_default .lightbg .sa-options .on {
+	border-right-color: rgb(176, 176, 176); border-right-width: 1px; border-right-style: solid;
+}
+.type_masthead_default .lightbg .sa-options a.active {
+	color: rgb(176, 176, 176);
+}
+.type_masthead_default .sa-results a.selected {
+	background-color: rgb(64, 78, 103);
+}
+.type_masthead_default .sa-holder .bottom1 {
+	bottom: 1.5em;
+}
+.type_masthead_default .sa-holder .bottom2 {
+	bottom: 3em;
+}
+.type_masthead_default .sa-holder .bottom3 {
+	bottom: 4.5em;
+}
+.type_masthead_default .sa-holder .bottom4 {
+	bottom: 6em;
+}
+.type_masthead_default .sa-holder .bottom5 {
+	bottom: 7.5em;
+}
+.type_masthead_default .sa-holder .bottom6 {
+	bottom: 9em;
+}
+.type_masthead_default .sa-holder .bottom7 {
+	bottom: 10.5em;
+}
+.type_masthead_default .sa-options {
+	top: 0.45em; right: 1em; position: absolute; z-index: 1;
+}
+.type_masthead_default .sa-options .sa-info {
+	margin-right: 0.3em;
+}
+.type_masthead_default .sa-options span {
+	color: rgb(146, 158, 184);
+}
+.type_masthead_default .sa-options .sa-info {
+	color: rgb(146, 158, 184);
+}
+.type_masthead_default .sa-holder .hswitch {
+	color: rgb(146, 158, 184);
+}
+.type_masthead_default .sa-options a.active {
+	color: rgb(255, 255, 255);
+}
+.type_masthead_default .sa-options .on {
+	padding-right: 0.4em; border-right-color: rgb(161, 173, 185); border-right-width: 1px; border-right-style: solid;
+}
+.type_masthead_default .sa-options .off {
+	margin-left: 0.6em;
+}
+.type_masthead_default .sa-arrows {
+	top: 8.8em; right: 0.83em; position: absolute;
+}
+.type_masthead_default .us .sa-arrows {
+	left: 55%;
+}
+.type_masthead_default .sa-holder .center {
+	left: 50%;
+}
+.type_masthead_default .sa-arrows a {
+	padding: 0px; width: 10px; height: 10px; font-size: 0px; margin-bottom: 3px; display: block; cursor: default;
+}
+.type_masthead_default .sa-arrows .up {
+	background-position: left -325px; background-repeat: no-repeat;
+}
+.type_masthead_default .sa-arrows .down {
+	background-position: left -435px; background-repeat: no-repeat;
+}
+.type_masthead_default .sa-arrows .uenabled {
+	background-position: left -270px; cursor: pointer;
+}
+.type_masthead_default .sa-arrows .denabled {
+	background-position: left -380px; cursor: pointer;
+}
+.type_masthead_default .sa-arrows a:hover {
+	background-color: transparent;
+}
+.type_masthead_default .error-ctr {
+	padding: 0.5em 0px; border: 1px solid rgb(255, 204, 51); border-image: none; left: 2em; top: 0.5em; width: 18em; position: absolute; background-color: rgb(252, 239, 199);
+}
+.type_masthead_default .error-ctr .error-icon {
+	background-position: left -2367px; margin: 0px 0.5em 0.5em; width: 23px; height: 22px; float: left;
+}
+.type_masthead_default .error-ctr .error-msg {
+	margin: 0px 0.5em 0px 0px; width: 12em; float: left;
+}
+.ua-ie6 .type_masthead_default .error-ctr .error-msg {
+	margin-left: 0px; float: left;
+}
+.type_masthead_default .error-ctr .close-btn {
+	background-position: 2px -3082px; margin: -0.4em 0.1em 0px 0px; border: 1px solid rgb(255, 204, 51); border-image: none; width: 12px; height: 12px; float: right;
+}
+.ua-ie6 .type_masthead_default .error-ctr .close-btn {
+	line-height: 2px;
+}
+.jsenabled .type_masthead_default .hide-completely {
+	display: none;
+}
+.jsenabled .type_masthead_default .hood a.hide-completely {
+	display: none;
+}
+.jsenabled .ua-ie6 .type_masthead_default .hood a.hide-completely {
+	display: block; visibility: hidden;
+}
+.type_masthead_default .search-promo {
+	top: 2.5em; width: 89px; height: 28px; right: 3.25em; position: absolute; z-index: 6;
+}
+.type_masthead_default .us .search-promo {
+	right: 1.6em;
+}
+.type_masthead_default .sg .search-promo {
+	right: 2em;
+}
+.type_masthead_default .ph .search-promo {
+	right: 2em;
+}
+.type_masthead_default .id .search-promo {
+	right: 2em;
+}
+.ua-ie6 .type_masthead_default .search-promo {
+	left: 40em; top: 2.5em;
+}
+.ua-ie7 .type_masthead_default .search-promo {
+	left: 40em; top: 2.5em;
+}
+.type_masthead_default .axis-promo {
+	border: 0px currentColor; border-image: none; height: 27px; margin-top: -4px; margin-left: -4px; position: absolute; box-shadow: 0px 2px 0px #bababa, 0px 3px 0px #efefef; -moz-box-shadow: 0 2px 0 #bababa, 0 3px 0 #efefef;
+}
+.ua-ie6 .type_masthead_default .axis-promo {
+	left: 0px; bottom: -23px;
+}
+.type_masthead_default .axis-promo a {
+	text-decoration: none; display: inline-block;
+}
+.type_masthead_default .axis-promo div {
+	height: 27px; float: left;
+}
+.type_masthead_default .axis-promo-left {
+	background: url("http://l4.yimg.com/cv/ip/ww/met/sprite_axis_3.png") no-repeat left 0px; width: 4px; color: rgb(255, 255, 255);
+}
+.type_masthead_default .axis-promo-mid {
+	background: url("http://l4.yimg.com/cv/ip/ww/met/sprite_axis_3.png") left -54px;
+}
+.type_masthead_default .axis-promo-mid .axis-promo-mid1 {
+	text-shadow: 0px -1px 0px rgba(0,0,0,0.3);
+}
+.type_masthead_default .axis-promo-mid .axis-promo-mid2 {
+	padding-left: 5px; text-shadow: 1px 1px 1px rgba(35,169,255,0.8);
+}
+.type_masthead_default .axis-promo-mid p {
+	padding-top: 8px; padding-left: 5px;
+}
+.type_masthead_default .axis-promo-right {
+	background: url("http://l4.yimg.com/cv/ip/ww/met/sprite_axis_3.png") no-repeat left -108px; width: 21px;
+}
+.type_masthead_default .invisible {
+	visibility: hidden;
+}
+.ua-ie6 .type_masthead_default .xa .searchwrapper-border {
+	float: none;
+}
+.ua-ie7 .type_masthead_default .xa .searchwrapper-border {
+	float: none;
+}
+.ua-ie .type_masthead_default .ime-enabled {
+	-ms-ime-mode: active;
+}
+.ua-ie .type_masthead_default .ime-disabled {
+	-ms-ime-mode: auto;
+}
+.type_masthead_default .promo {
+	top: 4em; right: 2.5em; position: absolute;
+}
+.ua-ie6 .type_masthead_default .promo {
+	right: 0px; line-height: 1.6em;
+}
+.ua-ie7 .type_masthead_default .promo {
+	right: 0px; line-height: 1.6em;
+}
+.ua-ie6 .type_masthead_default .promo {
+	top: 3.5em;
+}
+.type_masthead_default .super {
+	font-weight: normal; vertical-align: super;
+}
+.type_masthead_default .y-wave3-theme-black .stabs .wave3 {
+	color: rgb(255, 255, 255);
+}
+.type_masthead_default .y-wave3-theme-black .intlswitch .y-hdr-txt-black {
+	color: rgb(255, 255, 255);
+}
+.type_masthead_default .y-wave3-theme-black .stabs .y-bg-3 .wave3 {
+	color: rgb(51, 51, 51);
+}
+#y-blackheader-container .type_navbar .y-bg-3 span.black {
+	color: rgb(51, 51, 51);
+}
+#y-blackheader-container .type_navbar .last-active .pageoptions-link {
+	color: rgb(51, 51, 51);
+}
+.type_masthead_default .y-wave3-theme-black .searchwrapper-border {
+	border-radius: 2px; -moz-border-radius: 2px; -webkit-border-radius: 2px;
+}
+.type_masthead_default .y-wave3-theme-black .rc-tl {
+	background: rgb(0, 0, 0);
+}
+.type_masthead_default .y-wave3-theme-black .rc-tr {
+	background: rgb(0, 0, 0);
+}
+.type_masthead_default .y-wave3-theme-black .rc-bl {
+	background: rgb(0, 0, 0);
+}
+.type_masthead_default .y-wave3-theme-black .rc-br {
+	background: rgb(0, 0, 0);
+}
+.type_masthead_default .y-wave3-theme-black .open .rc-bl {
+	background: rgb(255, 255, 255);
+}
+.type_masthead_default .y-wave3-theme-black .open .rc-br {
+	background: rgb(255, 255, 255);
+}
+.bkt451 .type_masthead_default .searchsubmit {
+	min-width: 8em;
+}
+.tn-miniassist {
+	margin-top: 10px;
+}
+.ad-promo-hack {
+	left: 125px; top: 433px; position: absolute; z-index: 2;
+}

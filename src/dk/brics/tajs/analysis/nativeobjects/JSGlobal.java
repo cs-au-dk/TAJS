@@ -16,7 +16,6 @@
 
 package dk.brics.tajs.analysis.nativeobjects;
 
-import dk.brics.tajs.analysis.Context;
 import dk.brics.tajs.analysis.Conversion;
 import dk.brics.tajs.analysis.Conversion.Hint;
 import dk.brics.tajs.analysis.EvalCache;
@@ -24,7 +23,6 @@ import dk.brics.tajs.analysis.FunctionCalls.CallInfo;
 import dk.brics.tajs.analysis.InitialStateBuilder;
 import dk.brics.tajs.analysis.NativeFunctions;
 import dk.brics.tajs.analysis.Solver;
-import dk.brics.tajs.analysis.State;
 import dk.brics.tajs.analysis.dom.DOMFunctions;
 import dk.brics.tajs.analysis.dom.ajax.ReadystateEvent;
 import dk.brics.tajs.analysis.dom.event.EventListener;
@@ -44,8 +42,11 @@ import dk.brics.tajs.flowgraph.Function;
 import dk.brics.tajs.flowgraph.SourceLocation;
 import dk.brics.tajs.flowgraph.jsnodes.CallNode;
 import dk.brics.tajs.js2flowgraph.FlowGraphMutator;
+import dk.brics.tajs.lattice.Context;
+import dk.brics.tajs.lattice.HeapContext;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.ObjectLabel.Kind;
+import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.UnknownValueResolver;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.options.Options;
@@ -54,6 +55,7 @@ import dk.brics.tajs.solver.CallGraph;
 import dk.brics.tajs.solver.Message.Severity;
 import dk.brics.tajs.solver.NodeAndContext;
 import dk.brics.tajs.unevalizer.Unevalizer;
+import dk.brics.tajs.unevalizer.UnevalizerLimitations;
 import dk.brics.tajs.util.AnalysisException;
 import dk.brics.tajs.util.Pair;
 import org.apache.log4j.Logger;
@@ -64,8 +66,8 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import static dk.brics.tajs.util.Collections.newSet;
 
@@ -76,7 +78,7 @@ public class JSGlobal {
 
     private static Logger log = Logger.getLogger(JSGlobal.class);
 
-    private static final Set<ECMAScriptObjects> TAJS_HOOK_FUNCTIONS = new HashSet<>();
+    private static final Set<ECMAScriptObjects> TAJS_HOOK_FUNCTIONS = newSet();
 
     static {
         TAJS_HOOK_FUNCTIONS.addAll(Arrays.asList(ECMAScriptObjects.TAJS_DUMPVALUE, ECMAScriptObjects.TAJS_DUMPPROTOTYPE, ECMAScriptObjects.TAJS_DUMPOBJECT, ECMAScriptObjects.TAJS_DUMPSTATE, ECMAScriptObjects.TAJS_DUMPMODIFIEDSTATE, ECMAScriptObjects.TAJS_DUMPATTRIBUTES, ECMAScriptObjects.TAJS_DUMPEXPRESSION, ECMAScriptObjects.TAJS_DUMPNF, ECMAScriptObjects.TAJS_ASSERT, ECMAScriptObjects.TAJS_CONVERSION_TO_PRIMITIVE, ECMAScriptObjects.TAJS_ADD_CONTEXT_SENSITIVITY, ECMAScriptObjects.TAJS_NEW_OBJECT));
@@ -112,7 +114,7 @@ public class JSGlobal {
                 Value evalValue = NativeFunctions.readParameter(call, state, 0);
                 if (evalValue.isMaybeOtherThanStr()) {
                     if (!evalValue.isNotStr())
-                        throw new AnalysisException("Parameter to eval is maybe a string and maybe a non-string, we currently can't handle that, sorry"); // TODO: improve?
+                        return UnevalizerLimitations.handle("Parameter to eval is maybe a string and maybe a non-string, we currently can't handle that, sorry", call.getSourceNode(), c); // TODO: improve?
                     // TODO: issue warning if calling eval with non-string value
                     return evalValue;
                 }
@@ -130,7 +132,10 @@ public class JSGlobal {
                     NormalForm input = UnevalTools.rebuildNormalForm(currentFg, evalCall, state, c);
 
                     // Collect special args that should be analyzed context sensitively
-                    addContextSensitivity(evalCall.getBlock().getFunction(), input.getArgumentsInUse(), state, c);
+
+                    Function f = evalCall.getBlock().getFunction();
+                    Set<String> importantParameters = input.getArgumentsInUse().stream().filter(arg -> f.getParameterNames().contains(arg)).collect(Collectors.toSet());
+                    addContextSensitivity(f, importantParameters, state, c);
 
                     // What we should use as key for the eval cache is the entire tuple from the Uneval paper. Since that
                     // might contain infinite sets and other large things we just call the Unevalizer and compare the output
@@ -140,7 +145,7 @@ public class JSGlobal {
                     String unevaled = new Unevalizer().uneval(UnevalTools.unevalizerCallback(currentFg, state, evalCall, input), input.getNormalForm(), aliased_call, var);
 
                     if (unevaled == null)
-                        throw new AnalysisException("Unevalable eval: " + UnevalTools.rebuildFullExpression(currentFg, evalCall, evalCall.getArgRegister(0)));
+                        return UnevalizerLimitations.handle("Unevalable eval: " + UnevalTools.rebuildFullExpression(currentFg, evalCall, evalCall.getArgRegister(0)), call.getSourceNode(), c);
                     if (log.isDebugEnabled())
                         log.debug("Unevalized: " + unevaled);
 
@@ -368,20 +373,19 @@ public class JSGlobal {
                     if (param.isMaybeOtherThanNumUInt())
                         throw new AnalysisException("Calling TAJS_addContextSensitivity with non-fixed-index argument: " + param);
                     var = function.getParameterNames().get(param.getNum().intValue());
-                } else
+                } else {
                     throw new AnalysisException("Calling TAJS_addContextSensitivity with unexpected argument: " + param);
-                c.getAnalysisLatticeElement().getSpecialVars().addToSpecialVars(function, var);
+                }
+                if (!function.getParameterNames().contains(var)) {
+                    throw new AnalysisException("Bad use of manual TAJS_addContextSensitivity. No such parameter name: " + var);
+                }
+                c.getAnalysis().getContextSensitivityStrategy().requestContextSensitiveParameter(function, var);
                 return Value.makeUndef();
             }
 
             case TAJS_NEW_OBJECT: {
-                ObjectLabel objlabel;
-                if (Options.get().isContextSensitiveHeapEnabled()) {
-                    objlabel = new ObjectLabel(call.getSourceNode(), Kind.OBJECT,
-                            state.getContext().getSpecialEntryVars(), state.getContext().getSpecialVars(), state.getContext().getSpecialRegisters());
-                } else {
-                    objlabel = new ObjectLabel(call.getSourceNode(), Kind.OBJECT);
-                }
+                ObjectLabel objlabel = new ObjectLabel(call.getSourceNode(), Kind.OBJECT,
+                        new HeapContext(state.getContext().getFunArgs(), null));
                 state.newObject(objlabel);
                 state.writeInternalPrototype(objlabel, Value.makeObject(InitialStateBuilder.OBJECT_PROTOTYPE));
                 return Value.makeObject(objlabel);
@@ -446,24 +450,25 @@ public class JSGlobal {
      * </ul>
      */
     private static Value tajsValueAssert(ECMAScriptObjects nativeobject, CallInfo call, final State state, Solver.SolverInterface c) {
-        NativeFunctions.expectParameters(nativeobject, call, c, 1, 3);
-        Value value = NativeFunctions.readParameter(call, state, 0);
-        final Value predicate;
-        if (call.getNumberOfArgs() < 2) {
-            predicate = Value.makeStr("isMaybeTrueButNotFalse");
-        } else {
-            predicate = NativeFunctions.readParameter(call, state, 1);
-        }
-        final Value expectedResult;
-        if (call.getNumberOfArgs() < 3) {
-            expectedResult = Value.makeBool(true);
-        } else {
-            expectedResult = NativeFunctions.readParameter(call, state, 2);
-        }
-        SourceLocation sourceLocation = call.getSourceNode().getSourceLocation();
+        if (c.isScanning()) {
+            NativeFunctions.expectParameters(nativeobject, call, c, 1, 3);
+            Value value = NativeFunctions.readParameter(call, state, 0);
+            final Value predicate;
+            if (call.getNumberOfArgs() < 2) {
+                predicate = Value.makeStr("isMaybeTrueButNotFalse");
+            } else {
+                predicate = NativeFunctions.readParameter(call, state, 1);
+            }
+            final Value expectedResult;
+            if (call.getNumberOfArgs() < 3) {
+                expectedResult = Value.makeBool(true);
+            } else {
+                expectedResult = NativeFunctions.readParameter(call, state, 2);
+            }
+            SourceLocation sourceLocation = call.getSourceNode().getSourceLocation();
 
-        reflectiveAssert(value, predicate, expectedResult, sourceLocation);
-
+            reflectiveAssert(value, predicate, expectedResult, sourceLocation);
+        }
         return Value.makeUndef();
     }
 
@@ -502,7 +507,7 @@ public class JSGlobal {
         boolean added = false;
         for (String param : f.getParameterNames()) {
             if (args.contains(param)) {
-                c.getAnalysisLatticeElement().getSpecialVars().addToSpecialVars(f, param);
+                c.getAnalysis().getContextSensitivityStrategy().requestContextSensitiveParameter(f, param);
                 added = true;
             }
         }
@@ -513,6 +518,8 @@ public class JSGlobal {
                 NormalForm nf = UnevalTools.rebuildNormalForm(c.getFlowGraph(), (CallNode) caller.getFirst().getNode(), s, c);
                 addContextSensitivity(caller.getFirst().getNode().getBlock().getFunction(), nf.getArgumentsInUse(), s, c);
             }
+        } else {
+            throw new AnalysisException("Bad use of addContextSensitivity. No such parameter names: " + args);
         }
     }
 }

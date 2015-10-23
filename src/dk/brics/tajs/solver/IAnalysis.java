@@ -21,32 +21,31 @@ import dk.brics.tajs.flowgraph.FlowGraph;
 /**
  * Interface for analyses on flow graphs.
  */
-public interface IAnalysis<BlockStateType extends IBlockState<BlockStateType, ContextType, CallEdgeType>,
+public interface IAnalysis<StateType extends IState<StateType, ContextType, CallEdgeType>,
         ContextType extends IContext<ContextType>,
-        CallEdgeType extends ICallEdge<BlockStateType>,
-        MonitoringType extends IMonitoring<BlockStateType, ContextType>,
-        SpecialVarsType,
-        AnalysisType extends IAnalysis<BlockStateType, ContextType, CallEdgeType, MonitoringType, SpecialVarsType, AnalysisType>> {
+        CallEdgeType extends ICallEdge<StateType>,
+        MonitoringType extends ISolverMonitoring<StateType, ContextType>,
+        AnalysisType extends IAnalysis<StateType, ContextType, CallEdgeType, MonitoringType, AnalysisType>> {
 
     /**
      * Returns a new global analysis lattice element.
      */
-    IAnalysisLatticeElement<BlockStateType, ContextType, CallEdgeType, SpecialVarsType> makeAnalysisLattice(FlowGraph fg);
+    IAnalysisLatticeElement<StateType, ContextType, CallEdgeType> makeAnalysisLattice(FlowGraph fg);
 
     /**
      * Returns the initial state builder.
      */
-    IInitialStateBuilder<BlockStateType, ContextType, CallEdgeType> getInitialStateBuilder();
+    IInitialStateBuilder<StateType, ContextType, CallEdgeType, MonitoringType, AnalysisType> getInitialStateBuilder();
 
     /**
      * Returns the node transfer functions.
      */
-    INodeTransfer<BlockStateType, ContextType> getNodeTransferFunctions();
+    INodeTransfer<StateType, ContextType> getNodeTransferFunctions();
 
     /**
      * Returns the edge transfer functions.
      */
-    IEdgeTransfer<BlockStateType, ContextType> getEdgeTransferFunctions();
+    IEdgeTransfer<StateType, ContextType> getEdgeTransferFunctions();
 
     /**
      * Returns the work list strategy.
@@ -61,15 +60,11 @@ public interface IAnalysis<BlockStateType extends IBlockState<BlockStateType, Co
     /**
      * Sets the current solver interface.
      */
-    void setSolverInterface(GenericSolver<BlockStateType, ContextType, CallEdgeType, MonitoringType, SpecialVarsType, AnalysisType>.SolverInterface c);
+    void setSolverInterface(GenericSolver<StateType, ContextType, CallEdgeType, MonitoringType, AnalysisType>.SolverInterface c);
 
     /**
      * Constructs a new call edge for the given abstract state.
      */
-    CallEdgeType makeCallEdge(BlockStateType edge_state);
+    CallEdgeType makeCallEdge(StateType edge_state);
 
-    /**
-     * Called before each fixpoint iteration, returns false if iteration should be aborted.
-     */
-    boolean allowNextIteration();
 }

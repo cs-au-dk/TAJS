@@ -16,6 +16,7 @@
 
 package dk.brics.tajs.util;
 
+import java.io.Serializable;
 import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.Collection;
@@ -31,7 +32,7 @@ import java.util.Set;
  * Elements cannot be null.
  */
 @SuppressWarnings("SuspiciousArrayCast")
-public final class HybridArrayHashSet<V> implements Set<V> {
+public final class HybridArrayHashSet<V> implements Set<V>, Serializable {
 
     // invariant: at most one of singleton, array and hashset is non-null
 
@@ -82,8 +83,19 @@ public final class HybridArrayHashSet<V> implements Set<V> {
         } else if (m_size <= ARRAY_SIZE) {
             array = (V[]) new Object[ARRAY_SIZE];
             number_of_used_array_entries = 0;
-            for (V v : m)
+            boolean m_is_set = m instanceof Set;
+            outer: for (V v : m) {
+                if (v == null)
+                    throw new NullPointerException(NULL_KEY);
+                if (!m_is_set) { // avoid duplicates
+                    for (int i = 0; i < number_of_used_array_entries; i++) {
+                        if (array[i].equals(v)) {
+                            continue outer;
+                        }
+                    }
+                }
                 array[number_of_used_array_entries++] = v;
+            }
         } else {
             for (V v : m)
                 if (v == null)

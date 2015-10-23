@@ -20,11 +20,11 @@ import dk.brics.tajs.analysis.Conversion;
 import dk.brics.tajs.analysis.Conversion.Hint;
 import dk.brics.tajs.analysis.Exceptions;
 import dk.brics.tajs.analysis.Solver;
-import dk.brics.tajs.analysis.State;
 import dk.brics.tajs.lattice.Bool;
 import dk.brics.tajs.lattice.Num;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.ObjectLabel.Kind;
+import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.Str;
 import dk.brics.tajs.lattice.UnknownValueResolver;
 import dk.brics.tajs.lattice.Value;
@@ -316,7 +316,9 @@ public class Operators {
                         && (s2.isMaybeStrUInt() || s2.isMaybeStrIdentifier() || s2.isMaybeStrIdentifierParts() || (s2.isMaybeStrPrefixedIdentifierParts() && Strings.isIdentifierParts(s2.getPrefix())))
                         && !(s2.isMaybeStrOtherNum() || s2.isMaybeStrOther()))
                     r = r.joinPrefixedIdentifierParts(s1.getPrefix());
-                else if ((s1.isMaybeStrUInt() || s1.isMaybeStrIdentifier() || s1.isMaybeStrIdentifierParts() || (s1.isMaybeStrPrefixedIdentifierParts() && Strings.isIdentifierParts(s1.getPrefix())))
+                else if (s1.isMaybeStrUInt() && !s1.isMaybeStrSomeNonUInt() && s2.isMaybeStrUInt() && !s2.isMaybeStrSomeNonUInt()) {
+                    r = r.joinAnyStrOtherNum();
+                } else if ((s1.isMaybeStrUInt() || s1.isMaybeStrIdentifier() || s1.isMaybeStrIdentifierParts() || (s1.isMaybeStrPrefixedIdentifierParts() && Strings.isIdentifierParts(s1.getPrefix())))
                         && !(s1.isMaybeStrOtherNum() || s1.isMaybeStrOther())
                         && (s2.isMaybeStrUInt() || s2.isMaybeStrIdentifier() || s2.isMaybeStrIdentifierParts() || (s2.isMaybeStrPrefixedIdentifierParts() && Strings.isIdentifierParts(s2.getPrefix())))
                         && !(s2.isMaybeStrOtherNum() || s2.isMaybeStrOther()))
@@ -569,8 +571,7 @@ public class Operators {
             }
             if (!v2.isNotNum()) {
                 Num n1 = Conversion.fromBooltoNum(v1);
-                Num n2 = v2;
-                r = abstractNumberEquality(r, n1, n2);
+                r = abstractNumberEquality(r, n1, v2);
             }
             if (!v2.isNotStr()) {
                 Num n1 = Conversion.fromBooltoNum(v1);
@@ -589,19 +590,15 @@ public class Operators {
             if (v2.isMaybeNull())
                 r = r.joinBool(false);
             if (!v2.isNotBool()) {
-                Num n1 = v1;
                 Num n2 = Conversion.fromBooltoNum(v2);
-                r = abstractNumberEquality(r, n1, n2);
+                r = abstractNumberEquality(r, v1, n2);
             }
             if (!v2.isNotNum()) {
-                Num n1 = v1;
-                Num n2 = v2;
-                r = abstractNumberEquality(r, n1, n2);
+                r = abstractNumberEquality(r, v1, v2);
             }
             if (!v2.isNotStr()) {
-                Num n1 = v1;
                 Num n2 = Conversion.fromStrtoNum(v2, c);
-                r = abstractNumberEquality(r, n1, n2);
+                r = abstractNumberEquality(r, v1, n2);
             }
             if (v2.isMaybeObject()) {
                 Value arg1 = v1.restrictToNum();
@@ -621,8 +618,7 @@ public class Operators {
             }
             if (!v2.isNotNum()) {
                 Num n1 = Conversion.fromStrtoNum(v1, c);
-                Num n2 = v2;
-                r = abstractNumberEquality(r, n1, n2);
+                r = abstractNumberEquality(r, n1, v2);
             }
             if (!v2.isNotStr()) {
                 if (v1.isMaybeFuzzyStr() || v2.isMaybeFuzzyStr())
@@ -696,7 +692,7 @@ public class Operators {
         if (n1.isMaybeSingleNum() && n2.isMaybeSingleNum()) {
             double d1 = n1.getNum();
             double d2 = n2.getNum();
-            if (d1 == d2 || d1 == 0.0 && d2 == -0.0 || d1 == -0.0 && d2 == 0.0)
+            if (d1 == d2 || d1 == 0.0 && d2 == -0.0 || d1 == -0.0 && d2 == 0.0) // FIXME: comparisons with 0.0 or -0.0 always false?!
                 // absolute weirdness, but required by standard 11.9.3 points 8 and 9
                 return r.joinBool(true);
             else

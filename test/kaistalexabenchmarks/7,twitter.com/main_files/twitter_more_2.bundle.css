@@ -1,0 +1,3030 @@
+.BlockGrid-item {
+	margin: 0px; padding: 0px; border-radius: 10px; border: 5px solid transparent; border-image: none; overflow: hidden; float: left; position: relative; min-height: 50px; box-sizing: border-box; -moz-box-sizing: border-box;
+}
+.BlockGrid-item img {
+	width: 100%; height: 100%; display: block;
+}
+.BlockGrid-item--size1 {
+	width: 50%;
+}
+.BlockGrid-item--size4 {
+	width: 100%;
+}
+.BlockGrid-itemTitle {
+	background: rgba(0, 0, 0, 0.8); padding: 10px 8px; width: 100%; bottom: 0px; color: rgb(255, 255, 255); text-transform: uppercase; font-size: 14px; font-weight: 500; position: absolute; box-sizing: border-box; -moz-box-sizing: border-box;
+}
+.ImportFriendsCallout p {
+	margin: 15px 0px 30px; color: rgb(136, 153, 166); line-height: 32px; font-size: 28px; font-weight: 300;
+}
+.ImportFriendsCallout-title {
+	text-transform: uppercase; line-height: 20px; font-size: 16px; font-weight: 500;
+}
+.ImportFriendsCallout-photo {
+	width: 420px; margin-top: 16px;
+}
+.ImportFriendsCallout-smallImageContainer {
+	width: 132px; height: 132px; float: left;
+}
+.ImportFriendsCallout-smallFriendImage {
+	border-radius: 4px; width: 100%; display: block;
+}
+.ImportFriendsCallout-smallFriendImage + .ImportFriendsCallout-smallFriendImage {
+	margin-top: 10px;
+}
+.ImportFriendsCallout-largeFriendImage {
+	border-radius: 4px; width: 273px; height: 273px; margin-left: 10px;
+}
+.ImportFriendsCallout-primaryBtn {
+	padding: 16px; width: auto; box-sizing: border-box; -moz-box-sizing: border-box;
+}
+.ImportFriendsCallout-primaryBtn--big {
+	padding: 16px 24px; min-width: 312px;
+}
+.ImportFriendsCallout-btn {
+	padding: 12px 16px; width: 100%; box-sizing: border-box; -moz-box-sizing: border-box;
+}
+.ImportFriendsCallout-emailIcon {
+	margin-right: 5px; vertical-align: middle;
+}
+.ImportFriendsCallout-disclaimer {
+	color: rgb(136, 153, 166); font-size: 12px; margin-top: 5px;
+}
+.ImportFriendsCallout-list {
+	counter-reset: ImportFriendsListCounter;
+}
+.ImportFriendsCallout-list li {
+	margin: 20px 0px; color: rgb(136, 153, 166); line-height: 22px; padding-left: 50px; font-size: 20px; font-weight: 300; position: relative; min-height: 50px; counter-increment: ImportFriendsListCounter;
+}
+.ImportFriendsCallout-list li::before {
+	padding: 4px; border-radius: 50%; left: 2px; top: 0px; width: 22px; height: 22px; text-align: center; color: rgb(102, 117, 127); font-size: 16px; font-weight: bold; display: block; position: absolute; content: counter(ImportFriendsListCounter); background-color: rgb(204, 214, 221);
+}
+.ImportFriendsCallout-tooltip {
+	transition:0.5s; color: rgb(59, 148, 217); cursor: default; text-shadow: 0px 0px 0px transparent;
+}
+.ImportFriendsCallout-tooltip:hover {
+	color: rgb(28, 99, 153); text-shadow: 0px 0px 5px rgba(136,201,249,0.6);
+}
+.HomeNavPopover {
+	padding: 15px; border-radius: 5px; border: 1px solid rgb(225, 232, 237); border-image: none; left: 10px; top: -50px; position: fixed; max-width: 250px; opacity: 0; background-color: rgb(255, 255, 255);
+}
+.HomeNavPopover h2 {
+	color: rgb(41, 47, 51); font-size: 14px; font-weight: 500; margin-bottom: 10px;
+}
+.HomeNavPopover-content p + p {
+	margin-top: 15px;
+}
+.fadingOut.HomeNavPopover {
+	transition:opacity 0.7s;
+}
+.HomeNavPopover-arrow {
+	left: 17px; top: -8px; width: 15px; height: 15px; border-top-color: rgb(225, 232, 237); border-left-color: rgb(225, 232, 237); border-top-width: 1px; border-left-width: 1px; border-top-style: solid; border-left-style: solid; position: absolute; transform: rotate(45deg); background-color: rgb(255, 255, 255); -webkit-transform: rotate(45deg);
+}
+.StartFollowContext {
+	top: -2px; vertical-align: top; display: inline-block; position: relative;
+}
+.StartFollowContext-item {
+	border-radius: 4px; border: 1px dashed rgb(225, 232, 237); border-image: none; width: 24px; height: 24px; overflow: hidden; margin-right: 7px; float: left; box-sizing: border-box; -moz-box-sizing: border-box;
+}
+:last-child.StartFollowContext-item {
+	margin-right: 0px;
+}
+.is-active.StartFollowContext-item {
+	border: 0px currentColor; border-image: none;
+}
+.StartFollowContext-item img {
+	width: 100%; height: 100%;
+}
+.StartHeader {
+	margin-bottom: 30px; min-height: 80px;
+}
+.StartHeader p {
+	color: rgb(102, 117, 127); line-height: 24px; padding-right: 40px; font-size: 20px; font-weight: 300; margin-top: 15px;
+}
+.StartHeader h3 {
+	margin-top: 3px; margin-bottom: 15px !important;
+}
+.StartHeader-follow {
+	width: 80%;
+}
+.StartHeader-actions {
+	width: 80%;
+}
+.StartHeader-follow .btn {
+	padding: 15px 20px; width: 100%; margin-bottom: 10px;
+}
+.StartHeader-actions .btn {
+	padding: 15px 20px; width: 100%; margin-bottom: 10px;
+}
+.StartHeader-tooltip {
+	transition:0.5s; color: rgb(59, 148, 217); cursor: default; text-shadow: 0px 0px 0px transparent;
+}
+.StartHeader-tooltip:hover {
+	color: rgb(28, 99, 153); text-shadow: 0px 0px 5px rgba(136,201,249,0.6);
+}
+.StartCongratulations-bodyText {
+	color: rgb(102, 117, 127); line-height: 1.2; font-size: 22px; margin-bottom: 1em;
+}
+.StartCongratulations-heading1 {
+	color: rgb(41, 47, 51); font-weight: 300; margin-bottom: 1em;
+}
+.StartCongratulations-heading2 {
+	color: rgb(41, 47, 51); font-weight: 300; margin-bottom: 1em;
+}
+.StartCongratulations-heading1 {
+	line-height: 1.2em; font-size: 30px; margin-bottom: 50px;
+}
+.StartCongratulations-leftCol {
+	padding-top: 40px;
+}
+.StartCongratulations-buttons {
+	margin-top: 40px;
+}
+.StartCongratulations-button {
+	padding: 16px 24px; text-align: center;
+}
+.StartCongratulations-image {
+	border-radius: 5px; margin-bottom: 10px; display: block; animation-name: StartCongratulationsFadeIn; animation-duration: 1s; animation-fill-mode: backwards; -webkit-animation-name: StartCongratulationsFadeIn; -webkit-animation-duration: 1s; -webkit-animation-fill-mode: backwards;
+}
+:nth-child(1).StartCongratulations-image {
+	animation-delay: 0.6s; -webkit-animation-delay: .6s;
+}
+:nth-child(2).StartCongratulations-image {
+	animation-delay: 0.8s; -webkit-animation-delay: .8s;
+}
+:nth-child(3).StartCongratulations-image {
+	animation-delay: 1s; -webkit-animation-delay: 1.0s;
+}
+:nth-child(4).StartCongratulations-image {
+	animation-delay: 1.2s; -webkit-animation-delay: 1.2s;
+}
+.StartSearchBox-inputWrapper {
+	position: relative;
+}
+.StartSearchBox-inputWrapper .Icon--search {
+	top: 27px; right: 20px; color: rgb(204, 214, 221); font-size: 22px; position: absolute;
+}
+.StartSearchBox-typeaheadInput {
+	padding: 15px 50px 15px 15px; width: 100%; height: 55px; font-size: 20px; font-weight: 300; margin-top: 10px; box-sizing: border-box; -moz-box-sizing: border-box;
+}
+.StartSearchBox-smallTitle {
+	text-transform: uppercase; line-height: 20px; font-size: 16px; font-weight: 500;
+}
+.StartNavigation {
+	background: rgb(85, 172, 238); left: 0px; top: 0px; height: 55px; right: 0px; border-bottom-color: rgba(0, 0, 0, 0.15); border-bottom-width: 1px; border-bottom-style: solid; position: fixed; z-index: 1000;
+}
+.StartNavigation-items {
+	margin: 0px auto; padding: 0px; left: 0px; width: 970px; font-size: 0px; white-space: nowrap; position: relative; box-sizing: border-box; -moz-box-sizing: border-box;
+}
+.StartNavigation-progress {
+	padding: 17px 30px 0px 0px; color: rgb(255, 255, 255); font-size: 15px; font-weight: 300; float: right;
+}
+.StartNavigationItem {
+	padding: 17px 20px 17px 30px; height: 55px; color: rgb(255, 255, 255); vertical-align: top; display: inline-block; white-space: normal; position: relative; box-sizing: border-box; background-color: rgb(85, 172, 238); -moz-box-sizing: border-box;
+}
+.StartNavigationItem .Icon--large {
+	top: -3px; margin-right: 8px; float: left; position: relative;
+}
+.StartNavigationItem-title {
+	font-size: 15px; font-weight: 300; margin-right: 5px; display: inline-block; max-width: 155px;
+}
+.StartPage {
+	background: rgb(225, 232, 237) !important;
+}
+.StartPage .wrapper.wrapper-welcome {
+	width: 970px; padding-top: 55px; margin-bottom: 30px;
+}
+.StartPage h3 {
+	color: rgb(41, 47, 51); line-height: 30px; font-size: 32px; margin-bottom: 20px;
+}
+.StartPage .StartPage-notice + h3 {
+	margin-top: 40px;
+}
+.StartPage h4 {
+	text-align: center; padding-top: 80px; padding-bottom: 10px; font-size: 50px; font-weight: 300;
+}
+.StartPage .wrapper .content-main {
+	margin: 0px; padding: 0px; border-radius: 0px; width: 100%; float: none;
+}
+.StartPage-import .wrapper .content-main {
+	background-color: transparent;
+}
+.StartPage .content-main > .StartPage-module {
+	margin: 0px; padding: 40px 30px 20px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px; background-color: rgb(255, 255, 255);
+}
+.StartPage-interest .content-main > .StartPage-module {
+	padding: 0px;
+}
+.StartPage-interestGrid .content-main > .StartPage-module {
+	margin: 0px;
+}
+.StartPage .content-main > .StartPage-module + .StartPage-module {
+	margin-top: 20px; border-top-left-radius: 5px; border-top-right-radius: 5px;
+}
+.StartPage-interestGrid .StartPage-module .Grid {
+	margin: 30px 0px 20px;
+}
+.StartPage .tweet {
+	cursor: auto;
+}
+.StartPage .tweet:hover {
+	background-color: transparent;
+}
+.StartPage .listview-find-friends-result .contact-select-box {
+	right: 0px;
+}
+.StartPage-import .StartHeader {
+	margin-bottom: 0px;
+}
+.StartPage-notice {
+	color: rgb(136, 153, 166); font-size: 18px; max-width: 600px;
+}
+.StartPage-next {
+	text-align: center; font-size: 14px; display: block;
+}
+.StartPage-next--below {
+	font-size: 12px; margin-top: 10px;
+}
+.StartPage-next--faint {
+	color: rgb(170, 184, 194);
+}
+.StartPage-next--faint:hover {
+	color: rgb(170, 184, 194); text-decoration: none;
+}
+.StartPage-next--faint:focus {
+	color: rgb(170, 184, 194); text-decoration: none;
+}
+.StartPage-wcOptIn {
+	background-position: 60% top !important; -ms-overflow-y: hidden; background-image: url("../../img/t1/start/world-cup-bg.jpg") !important; background-repeat: no-repeat !important; background-size: cover !important;
+}
+.StartPage-wcOptIn .StandaloneQuestionModule {
+	margin-top: 180px;
+}
+.StartPage-disclaimer {
+	width: 60%; color: rgb(136, 153, 166); line-height: 1.3em; font-size: 12px; margin-top: 10px;
+}
+.StartPage-error {
+	padding: 100px 0px;
+}
+.StartPage-error p {
+	margin: 20px auto;
+}
+.StartPage-errorButton {
+	padding: 20px 40px; font-size: 16px; margin-bottom: 10px; display: inline-block;
+}
+.StartPage .stream-item {
+	border-right-color: transparent; border-left-color: transparent;
+}
+.StartPage .stream-end-item {
+	border: 0px currentColor; border-image: none;
+}
+.StartPage .stream-end {
+	border: 0px currentColor; border-image: none;
+}
+.StartPage .stream-loading {
+	border: 0px currentColor; border-image: none;
+}
+.StartPage .stream-placeholder {
+	border: 0px currentColor; border-image: none;
+}
+.StartPage .global-nav .people {
+	display: none;
+}
+.StartPage .global-nav .notifications {
+	display: none;
+}
+.StartPage .global-nav .topics {
+	display: none;
+}
+.StartPage .global-nav #global-nav-search {
+	display: none;
+}
+.StartPage .global-nav .dm-nav {
+	display: none;
+}
+.StartPage-previewTimeline .wrapper .content-main {
+	padding: 30px;
+}
+.StartPage .modal-footer .btn-link {
+	margin-right: 5px; margin-left: 5px;
+}
+.StartPreviewTimelineBtn {
+	margin: 8px 0px 8px 40px; max-width: 182px;
+}
+.StartPreviewTimelineBtn-timeline {
+	color: rgb(59, 148, 217);
+}
+.is-completed.StartPreviewTimelineBtn .StartPreviewTimelineBtn-preview {
+	display: none;
+}
+.StartPreviewTimelineBtn-timeline {
+	display: none;
+}
+.is-completed.StartPreviewTimelineBtn .StartPreviewTimelineBtn-timeline {
+	display: inline-block;
+}
+.StartFindFriends-timelineHeader {
+	background: rgb(255, 255, 255); padding: 20px 0px; transition:top 0.15s ease-out; font-size: 14px; border-bottom-color: rgb(225, 232, 237); border-bottom-width: 1px; border-bottom-style: solid;
+}
+.StartFindFriends-timelineHeader h5 {
+	color: rgb(102, 117, 127); line-height: 22px; font-size: 20px; font-weight: 300;
+}
+.StartFindFriends-timelineHeader label {
+	color: rgb(43, 123, 185); margin-bottom: 0px; display: inline-block;
+}
+.StartFindFriends-timelineHeader .Checkbox {
+	margin-left: 5px;
+}
+.StartFindFriends-loadMore {
+	margin: 20px 0px; font-size: 14px; font-weight: 300; display: block;
+}
+.StartFindFriends .ContactImportButtons {
+	width: 50%;
+}
+.StartInterestsHeader {
+	padding: 20px 0px 10px; left: -10px; border-bottom-color: rgb(225, 232, 237); border-bottom-width: 1px; border-bottom-style: solid; position: relative;
+}
+.StartInterestsHeader p {
+	color: rgb(102, 117, 127); line-height: 28px; font-size: 24px; font-weight: 300; margin-top: 20px;
+}
+.StartInterestsHeader h3 {
+	margin-top: 20px;
+}
+.StartInterestsHeader .StartSearchBox {
+	padding: 20px 40px; margin-top: 20px; border-top-color: rgb(225, 232, 237); border-top-width: 1px; border-top-style: solid;
+}
+.StartInterestNav {
+	margin-top: -80px; margin-left: -10px;
+}
+.StartInterestNav-item {
+	padding-bottom: 25px;
+}
+.StartInterestNav-itemWrapper {
+	padding: 10px;
+}
+.StartInterestNav-text {
+	padding: 10px; color: rgb(255, 255, 255); font-size: 15px; font-weight: 500; text-decoration: none; white-space: pre; cursor: pointer; box-shadow: 0px 0px 1px #e1e8ed; background-color: rgb(136, 201, 249);
+}
+.is-active.StartInterestNav-text {
+	color: rgb(255, 255, 255); text-decoration: none; background-color: rgb(34, 102, 153);
+}
+.StartInterestNav-text:hover {
+	color: rgb(255, 255, 255); text-decoration: none; background-color: rgb(34, 102, 153);
+}
+.StartInterestNav-text:focus {
+	color: rgb(255, 255, 255); text-decoration: none; background-color: rgb(34, 102, 153);
+}
+.StartInterestNav-text:active {
+	color: rgb(255, 255, 255); text-decoration: none; background-color: rgb(34, 102, 153);
+}
+.StartInterestFooter {
+	padding: 40px 0px; color: rgb(255, 255, 255); background-color: rgb(80, 170, 240);
+}
+.StartInterestFooter-label {
+	color: rgb(255, 255, 255); font-weight: 300;
+}
+.StartInterestFooter-label a.is-active {
+	color: rgb(255, 255, 255);
+}
+.StartInterestFooter-label a:hover {
+	color: rgb(255, 255, 255);
+}
+.StartInterestFooter-label a:focus {
+	color: rgb(255, 255, 255);
+}
+.StartInterestFooter-label a:active {
+	color: rgb(255, 255, 255);
+}
+.StartInterestFooter-label span {
+	font-weight: bold;
+}
+.StartInterestFooter-userList {
+	padding: 15px 0px;
+}
+.StartInterestFooter-user {
+	padding-right: 5px; display: inline-block;
+}
+.StartInterestFooter-user img {
+	border-radius: 4px;
+}
+.StartWCFlag {
+	background-position: 144px 104px; border-radius: 3px; width: 144px; height: 104px; display: block; box-shadow: 0px 0px 3px rgba(0,0,0,0.33); background-image: url("../../img/t1/start/world-cup-flags.png"); background-repeat: no-repeat;
+}
+.StartWCFlag--ALG {
+	background-position: 0px 0px;
+}
+.StartWCFlag--ARG {
+	background-position: 0px -104px;
+}
+.StartWCFlag--AUS {
+	background-position: 0px -208px;
+}
+.StartWCFlag--BEL {
+	background-position: 0px -312px;
+}
+.StartWCFlag--BIH {
+	background-position: 0px -416px;
+}
+.StartWCFlag--BRA {
+	background-position: 0px -520px;
+}
+.StartWCFlag--CMR {
+	background-position: 0px -624px;
+}
+.StartWCFlag--CHI {
+	background-position: 0px -728px;
+}
+.StartWCFlag--COL {
+	background-position: 0px -832px;
+}
+.StartWCFlag--CRC {
+	background-position: 0px -936px;
+}
+.StartWCFlag--CRO {
+	background-position: 0px -1040px;
+}
+.StartWCFlag--ECU {
+	background-position: 0px -1144px;
+}
+.StartWCFlag--ENG {
+	background-position: 0px -1248px;
+}
+.StartWCFlag--FRA {
+	background-position: 0px -1352px;
+}
+.StartWCFlag--GER {
+	background-position: 0px -1456px;
+}
+.StartWCFlag--GHA {
+	background-position: 0px -1560px;
+}
+.StartWCFlag--GRE {
+	background-position: 0px -1664px;
+}
+.StartWCFlag--HON {
+	background-position: 0px -1768px;
+}
+.StartWCFlag--IRN {
+	background-position: 0px -1872px;
+}
+.StartWCFlag--ITA {
+	background-position: 0px -1976px;
+}
+.StartWCFlag--CIV {
+	background-position: 0px -2080px;
+}
+.StartWCFlag--JPN {
+	background-position: 0px -2184px;
+}
+.StartWCFlag--MEX {
+	background-position: 0px -2288px;
+}
+.StartWCFlag--NED {
+	background-position: 0px -2392px;
+}
+.StartWCFlag--NGA {
+	background-position: 0px -2496px;
+}
+.StartWCFlag--POR {
+	background-position: 0px -2600px;
+}
+.StartWCFlag--RUS {
+	background-position: 0px -2704px;
+}
+.StartWCFlag--KOR {
+	background-position: 0px -2808px;
+}
+.StartWCFlag--ESP {
+	background-position: 0px -2912px;
+}
+.StartWCFlag--SUI {
+	background-position: 0px -3016px;
+}
+.StartWCFlag--URU {
+	background-position: 0px -3120px;
+}
+.StartWCFlag--USA {
+	background-position: 0px -3224px;
+}
+@media not all
+{
+.StartWCFlag {
+	background-size: 144px;
+}
+.StartWCFlag--ALG {
+	background-position: 0px -1664px;
+}
+.StartWCFlag--ARG {
+	background-position: 0px -1768px;
+}
+.StartWCFlag--AUS {
+	background-position: 0px -1872px;
+}
+.StartWCFlag--BEL {
+	background-position: 0px -1976px;
+}
+.StartWCFlag--BIH {
+	background-position: 0px -2080px;
+}
+.StartWCFlag--BRA {
+	background-position: 0px -2184px;
+}
+.StartWCFlag--CMR {
+	background-position: 0px -2288px;
+}
+.StartWCFlag--CHI {
+	background-position: 0px -2392px;
+}
+.StartWCFlag--COL {
+	background-position: 0px -2496px;
+}
+.StartWCFlag--CRC {
+	background-position: 0px -2600px;
+}
+.StartWCFlag--CRO {
+	background-position: 0px -2704px;
+}
+.StartWCFlag--ECU {
+	background-position: 0px -2808px;
+}
+.StartWCFlag--ENG {
+	background-position: 0px -2912px;
+}
+.StartWCFlag--FRA {
+	background-position: 0px -3016px;
+}
+.StartWCFlag--GER {
+	background-position: 0px -3120px;
+}
+.StartWCFlag--GHA {
+	background-position: 0px -3224px;
+}
+.StartWCFlag--GRE {
+	background-position: 0px -3328px;
+}
+.StartWCFlag--HON {
+	background-position: 0px -3432px;
+}
+.StartWCFlag--IRN {
+	background-position: 0px -3536px;
+}
+.StartWCFlag--ITA {
+	background-position: 0px -3640px;
+}
+.StartWCFlag--CIV {
+	background-position: 0px -3744px;
+}
+.StartWCFlag--JPN {
+	background-position: 0px -3848px;
+}
+.StartWCFlag--MEX {
+	background-position: 0px -3952px;
+}
+.StartWCFlag--NED {
+	background-position: 0px -4056px;
+}
+.StartWCFlag--NGA {
+	background-position: 0px -4160px;
+}
+.StartWCFlag--POR {
+	background-position: 0px -4264px;
+}
+.StartWCFlag--RUS {
+	background-position: 0px -4368px;
+}
+.StartWCFlag--KOR {
+	background-position: 0px -4472px;
+}
+.StartWCFlag--ESP {
+	background-position: 0px -4576px;
+}
+.StartWCFlag--SUI {
+	background-position: 0px -4680px;
+}
+.StartWCFlag--URU {
+	background-position: 0px -4784px;
+}
+.StartWCFlag--USA {
+	background-position: 0px -4888px;
+}
+}
+.StartWCSelectTeam-team {
+	margin: 3px; width: 144px; height: 158px; vertical-align: top; display: inline-block;
+}
+.StartWCSelectTeam-team label {
+	display: block; position: relative;
+}
+.StartWCSelectTeam-team input[type='radio'] {
+	width: 0px; height: 0px; position: absolute; opacity: 0;
+}
+.StartWCSelectTeam-team--disabled label {
+	cursor: default;
+}
+.StartWCSelectTeam-checkmark {
+	border-radius: 50%; transition:0.15s; top: -9px; width: 40px; height: 40px; text-align: center; right: -3px; color: rgb(255, 255, 255); padding-top: 8px; font-size: 20px; display: block; position: absolute; z-index: 1; box-sizing: border-box; box-shadow: 0px 0px 5px rgba(0,0,0,0.5); background-color: rgb(85, 172, 238); -moz-box-sizing: border-box;
+}
+.StartWCSelectTeam-checkmark {
+	opacity: 0; transform: scale(0.6); -webkit-transform: scale(0.6);
+}
+.StartWCSelectTeam-team label:hover .StartWCSelectTeam-checkmark {
+	opacity: 1; transform: scale(0.75); -webkit-transform: scale(0.75);
+}
+.StartWCSelectTeam-team input[type='radio']:focus ~ .StartWCSelectTeam-checkmark {
+	opacity: 1; transform: scale(0.75); -webkit-transform: scale(0.75);
+}
+.StartWCSelectTeam-team--disabled label:hover .StartWCSelectTeam-checkmark {
+	opacity: 0;
+}
+.StartWCSelectTeam-team--disabled input[type='radio']:focus ~ .StartWCSelectTeam-checkmark {
+	opacity: 0;
+}
+.StartWCSelectTeam-team input[type='radio'].StartWCSelectTeam-checked ~ .StartWCSelectTeam-checkmark {
+	opacity: 1; transform: scale(1); transition-duration: 0.2s; -webkit-transform: scale(1);
+}
+.StartWCSelectTeam-team input[type='radio']:checked ~ .StartWCSelectTeam-checkmark {
+	opacity: 1; transform: scale(1); transition-duration: 0.2s; -webkit-transform: scale(1);
+}
+.StartWCSelectTeam-team .StartWCFlag {
+	transition:opacity 0.2s; opacity: 0.5;
+}
+.StartWCSelectTeam-team label:hover .StartWCFlag {
+	opacity: 0.9;
+}
+.StartWCSelectTeam-team input[type='radio']:focus ~ .StartWCFlag {
+	opacity: 0.9;
+}
+.StartWCSelectTeam-team--disabled label .StartWCFlag {
+	opacity: 0.05;
+}
+.StartWCSelectTeam-team--disabled label:hover .StartWCFlag {
+	opacity: 0.05;
+}
+.StartWCSelectTeam-team--disabled input[type='radio']:focus ~ .StartWCFlag {
+	opacity: 0.05;
+}
+.StartWCSelectTeam-team input[type='radio'].StartWCSelectTeam-checked ~ .StartWCFlag {
+	opacity: 1;
+}
+.StartWCSelectTeam-team input[type='radio']:checked ~ .StartWCFlag {
+	opacity: 1;
+}
+.StartWCSelectTeam-team--disabled input[type='radio'].StartWCSelectTeam-checked ~ .StartWCFlag {
+	opacity: 0.5;
+}
+.StartWCSelectTeam-team--disabled input[type='radio']:checked ~ .StartWCFlag {
+	opacity: 0.5;
+}
+.StartWCSelectTeam-team .StartWCSelectTeam-label {
+	color: rgb(136, 153, 166); font-size: 16px; font-weight: 200; margin-top: 6px; display: block;
+}
+.StartWCSelectTeam-team--disabled .StartWCSelectTeam-label {
+	opacity: 0.5;
+}
+.FollowPopover {
+	padding: 15px; border-radius: 5px; border: 1px solid rgb(225, 232, 237); border-image: none; top: -50px; display: none; position: absolute; max-width: 160px; background-color: rgb(255, 255, 255);
+}
+.FollowPopover-content {
+	color: rgb(41, 47, 51); font-size: 14px; font-weight: 500; margin-bottom: 10px;
+}
+.FollowPopover-arrow {
+	display: none;
+}
+body:not(.ie8) .FollowPopover-arrow {
+	border-width: 1px 0px 0px 1px; border-style: solid; border-color: rgb(225, 232, 237); left: -8px; top: 15px; width: 15px; height: 15px; display: block; position: absolute; transform: rotate(315deg); background-color: rgb(255, 255, 255); -webkit-transform: rotate(315deg);
+}
+.FollowPopover-footer {
+	color: rgb(136, 153, 166); line-height: 15px; padding-top: 15px; font-size: 12px; font-weight: 300;
+}
+.StartPreviewErrors-title {
+	padding-top: 10px; font-size: 25px; font-weight: 300;
+}
+.StartPreviewErrors-errorTitle {
+	line-height: 20px; font-size: 18px; font-weight: 500; margin-bottom: 10px;
+}
+.StartPreviewErrors-errorText {
+	font-size: 16px; font-weight: 300;
+}
+.StartPreviewErrors-errors {
+	padding: 20px; border-radius: 5px; background-color: rgb(225, 232, 237);
+}
+.StartPreviewErrors-button {
+	margin: 40px 0px; padding: 16px;
+}
+.StartPreviewErrors-serviceList .StartPreviewErrors-emailService {
+	padding: 5px;
+}
+.StartPreviewErrors-emailService button {
+	padding: 16px; width: 100%;
+}
+.StartPreviewErrors-emailService button:focus {
+	
+}
+.StartPreviewErrors-emailIcon {
+	margin-top: -3px; margin-right: 5px; vertical-align: middle;
+}
+.StartPreviewTimeline {
+	margin: 0px !important; padding: 48px 30px; width: 100%; box-sizing: border-box; background-color: rgb(255, 255, 255); -moz-box-sizing: border-box;
+}
+.is-ready.StartPreviewTimeline {
+	padding: 100px;
+}
+.StartPreviewTimeline h3.StartPreviewTimeline-headerTitle {
+	color: rgb(41, 47, 51); font-weight: 300;
+}
+.StartPreviewTimeline-previewTitle {
+	color: rgb(136, 153, 166); padding-bottom: 20px; font-size: 25px; font-weight: 300; margin-bottom: 20px; border-bottom-color: rgb(225, 232, 237); border-bottom-width: 1px; border-bottom-style: solid;
+}
+.StartPreviewTimeline .StartPreviewErrors {
+	margin: 36px 0px;
+}
+.StartPreviewTimeline .StartPreviewLinks {
+	margin-bottom: 60px;
+}
+.StartPreviewLinks-link {
+	font-size: 14px;
+}
+.StartPreviewLinks > div + div {
+	margin-top: 20px;
+}
+.StartPreviewLinks-serviceList .StartPreviewLinks-emailService {
+	padding: 5px;
+}
+.StartPreviewLinks-button {
+	padding: 16px; width: 100%; box-sizing: border-box; -moz-box-sizing: border-box;
+}
+.StartPreviewLinks-emailService .StartPreviewLinks-button:focus {
+	
+}
+.StartPreviewLinks-emailIcon {
+	margin-top: -3px; margin-right: 5px; vertical-align: middle;
+}
+.StartExitConfirm h3 {
+	font-size: 20px; font-weight: bold; margin-top: 20px; margin-bottom: 10px;
+}
+.StartExitConfirm p {
+	font-size: 16px; margin-right: 40px;
+}
+.ProfileThumbnailPicker .StartWCSelectTeam-team {
+	width: auto; height: auto; position: relative;
+}
+.ProfileThumbnailPicker .StartWCFlag {
+	margin: 4px; width: 60px; height: 60px;
+}
+.ProfileThumbnailPicker p {
+	color: rgb(102, 117, 127); line-height: 24px; padding-left: 5px; font-size: 20px; font-weight: 300; margin-top: 40px; margin-bottom: 12px;
+}
+.ProfileThumbnailPicker-manual {
+	margin: 4px; border-radius: 3px; width: 60px; height: 60px; color: rgb(255, 255, 255); box-shadow: 0px 0px 3px rgba(0,0,0,0.166); transition-duration: 0.3s; background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)); background-color: rgb(136, 201, 249);
+}
+.ProfileThumbnailPicker-manual:focus {
+	box-shadow: 0px 0px 3px rgba(0,0,0,0.33); background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.15)); background-color: rgb(85, 172, 238);
+}
+.ProfileThumbnailPicker-manual:hover {
+	box-shadow: 0px 0px 3px rgba(0,0,0,0.33); background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.15)); background-color: rgb(85, 172, 238);
+}
+.ProfileThumbnailPicker-manual .Icon {
+	margin: 10px 0px 0px;
+}
+.ProfileThumbnailPicker-manual .Icon--large.Icon--camera {
+	margin-top: 6px;
+}
+.ProfileThumbnailPicker .photo-file-name {
+	display: none;
+}
+.ProfileThumbnailPicker .DashboardProfileCard-avatarLink {
+	margin: -60px 0px 0px 15px;
+}
+.ProfileThumbnailPicker .DashboardProfileCard-avatarImage {
+	width: 120px; height: 120px;
+}
+.ProfileThumbnailPicker .DashboardProfileCard-userFields {
+	margin: 0px 6px 3px 0px; left: 152px;
+}
+.ProfileThumbnailPicker .DashboardProfileCard-screennameLink {
+	font-size: 16px; font-weight: 400; margin-top: 3px;
+}
+.ProfileThumbnailPicker .DashboardProfileCard-name {
+	line-height: 25px; font-size: 22px;
+}
+.StandaloneQuestionModule {
+	background: rgb(255, 255, 255); margin: 0px auto; padding: 10px 30px; border-radius: 5px; border: 1px solid rgb(225, 232, 237); border-image: none; width: 350px;
+}
+.StandaloneQuestionModule-question {
+	margin: 10px auto 20px; font-size: 16px; font-weight: bold;
+}
+.StandaloneQuestionModule p {
+	margin-bottom: 20px;
+}
+.StandaloneQuestionModule .btn {
+	padding: 15px; font-size: 16px; margin-bottom: 10px;
+}
+.StartFirstTweet-userDetails {
+	padding: 16px 14px; border: 1px solid rgb(175, 202, 223); border-image: none; background-color: rgb(234, 241, 246);
+}
+.StartFirstTweet .tweet-form .tweet-content {
+	padding: 16px 14px; border: 1px solid rgb(175, 202, 223); border-image: none; background-color: rgb(234, 241, 246);
+}
+.StartFirstTweet-userDetails {
+	padding-bottom: 6px; border-bottom-color: currentColor; border-bottom-width: 0px; border-bottom-style: none; border-top-left-radius: 4px; border-top-right-radius: 4px;
+}
+.StartFirstTweet .tweet-form .tweet-content {
+	padding-top: 6px; margin-bottom: 20px; border-top-color: currentColor; border-top-width: 0px; border-top-style: none; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px;
+}
+.StartFirstTweet-avatar img {
+	border-radius: 5px;
+}
+.StartFirstTweet-userNames {
+	font-size: 16px; margin-left: 5px; vertical-align: top;
+}
+.StartFirstTweet-name {
+	margin: 3px 0px 2px; font-weight: bold;
+}
+.StartFirstTweet-handle {
+	color: rgb(136, 153, 166);
+}
+.StartFirstTweet-avatar {
+	display: inline-block;
+}
+.StartFirstTweet-userNames {
+	display: inline-block;
+}
+.StartFirstTweet .tweet-box {
+	border-color: rgba(0, 132, 180, 0); line-height: 33px; padding-top: 15px; padding-bottom: 15px; font-size: 25px; min-height: 80px;
+}
+.StartFirstTweet .tweet-btn {
+	padding: 10px 20px; margin-bottom: 10px; min-width: 228px;
+}
+.StartFirstTweet .tweet-btn .button-text {
+	font-size: 16px; font-weight: normal;
+}
+.StartFirstTweet .tweet-btn .Icon--tweet {
+	left: -5px;
+}
+.StartFirstTweet .tweet-btn .Icon {
+	height: 25px; font-size: 24px;
+}
+.StartFirstTweet .tweet-form .tweet-counter {
+	top: 19px; font-size: 18px;
+}
+.StartFirstTweet .tweet-btn {
+	background-color: rgb(85, 172, 238);
+}
+.StartFirstTweet .tweet-btn:hover {
+	background-color: rgb(85, 172, 238);
+}
+.StartFirstTweet-skip {
+	display: inline-block; min-width: 228px;
+}
+.StartFirstTweet-skip::before {
+	padding: 0px 30px 0px 47px; height: 0px; overflow: hidden; font-size: 20px; display: block; content: " ";
+}
+.StartCheckboxList-item {
+	padding-bottom: 18px;
+}
+.StartCheckboxList-label {
+	line-height: 20px; font-size: 24px; margin-left: 10px; vertical-align: middle;
+}
+.ContactImportButtons {
+	position: relative;
+}
+.ContactImportButtons-btn {
+	padding: 12px 16px; width: 100%; box-sizing: border-box; -moz-box-sizing: border-box;
+}
+.ContactImportButtons-primaryBtn {
+	padding: 12px 20px;
+}
+.ContactImportButtons-emailIcon {
+	margin-right: 5px; vertical-align: middle;
+}
+.ContactImportButtons-toggle {
+	cursor: pointer;
+}
+.ContactImportButtons-cell {
+	margin-bottom: 17px;
+}
+.ContactImportButtons--showSingleService.ContactImportButtons--transition .ContactImportButtons-singleService {
+	animation-name: ContactImportButtonsTransitionIn; animation-duration: 0.5s; -webkit-animation-name: ContactImportButtonsTransitionIn; -webkit-animation-duration: .5s;
+}
+.ContactImportButtons--showMultipleServices.ContactImportButtons--transition .ContactImportButtons-multipleServices {
+	animation-name: ContactImportButtonsTransitionIn; animation-duration: 0.5s; -webkit-animation-name: ContactImportButtonsTransitionIn; -webkit-animation-duration: .5s;
+}
+.ContactImportButtons--showSingleService .ContactImportButtons-multipleServices {
+	top: 0px; visibility: hidden; position: absolute;
+}
+.ContactImportButtons--showMultipleServices .ContactImportButtons-singleService {
+	top: 0px; visibility: hidden; position: absolute;
+}
+.ContactImportButtons--showSingleService.ContactImportButtons--transition .ContactImportButtons-multipleServices {
+	animation-name: ContactImportButtonsTransitionOut; animation-duration: 0.5s; -webkit-animation-name: ContactImportButtonsTransitionOut; -webkit-animation-duration: .5s;
+}
+.ContactImportButtons--showMultipleServices.ContactImportButtons--transition .ContactImportButtons-singleService {
+	animation-name: ContactImportButtonsTransitionOut; animation-duration: 0.5s; -webkit-animation-name: ContactImportButtonsTransitionOut; -webkit-animation-duration: .5s;
+}
+.Avatar {
+	border-radius: 3px; display: block; -moz-force-broken-image-icon: 1;
+}
+.Avatar--size48 {
+	width: 48px; height: 48px;
+}
+.FollowStatus {
+	color: rgb(136, 153, 166); text-transform: uppercase; font-size: 11px; font-weight: 400; margin-left: 3px;
+}
+.GridTimeline {
+	margin-bottom: 50px; position: relative;
+}
+.GridTimeline-emptyText {
+	margin: 35px 0px 35px 15px; color: rgb(102, 117, 127); font-size: 22px; font-weight: 300;
+}
+.GridTimeline .has-items .GridTimeline-emptyText {
+	display: none;
+}
+.GridTimeline .ProfileTweet {
+	margin-bottom: -1px;
+}
+.GridTimeline-failure {
+	padding: 25px 0px 20px; text-align: center; color: rgb(102, 117, 127); font-size: 16px; border-top-color: rgb(225, 232, 237); border-top-width: 1px; border-top-style: solid;
+}
+.GridTimeline-retry {
+	margin: 20px 0px;
+}
+.GridTimeline-footer {
+	text-align: center; margin-top: 20px; position: relative;
+}
+.GridTimeline-footer::before {
+	background: rgb(225, 232, 237); left: 0px; top: 45%; height: 1px; right: 0px; position: absolute; z-index: -1; content: "";
+}
+.GridTimeline-footerIcon {
+	padding: 0px 15px; color: rgb(204, 214, 221); display: inline-block; background-color: rgb(245, 248, 250);
+}
+.GridTimeline .has-more-items .spinner {
+	background: url("../../img/t1/spinner-rosetta-gray-26x26.gif") no-repeat 0px 0px; display: block;
+}
+.GridTimeline .spinner {
+	display: none;
+}
+.GridTimeline .has-more-items .Icon {
+	display: none;
+}
+.GridTimeline .has-items-error .spinner {
+	display: none;
+}
+.ListCreationModule-title {
+	margin: 25px 0px 15px; color: rgb(102, 117, 127); line-height: 18px; font-size: 18px; font-weight: 300;
+}
+.ListCreationModule-description {
+	color: rgb(102, 117, 127); margin-bottom: 10px;
+}
+.ListCreationModule-moreInfoLink {
+	font-size: 12px; font-weight: bold;
+}
+.ListCreationModule-action .btn {
+	font-size: 14px;
+}
+.PhotoRail {
+	display: none;
+}
+.PhotoRail-heading {
+	color: rgb(136, 153, 166); line-height: 1; font-size: 14px; margin-bottom: 10px;
+}
+.PhotoRail-heading .Icon {
+	min-width: 18px;
+}
+.PhotoRail-mediaBox {
+	margin: -5px 0px 0px -5px; overflow: hidden; max-height: 176px;
+}
+.PhotoRail-mediaBox .media-thumbnail {
+	margin: 5px 0px 0px 5px; border-radius: 4px; width: 83px; height: 83px; overflow: hidden; float: left; position: relative; cursor: pointer; background-color: rgb(102, 117, 127);
+}
+.PhotoRail-mediaBox .grid-tweet-actions-container {
+	display: none;
+}
+.ProfileAvatar {
+	background: rgb(255, 255, 255); border-radius: 12px; border: 5px solid rgb(255, 255, 255); border-image: none; width: 200px; height: 200px; position: relative; box-shadow: 0px 1px 1px rgba(136,153,166,0.15);
+}
+.ProfileAvatar-image {
+	border-radius: 8px; left: 0px; top: 0px; width: 100%; height: 100%; position: absolute; -moz-force-broken-image-icon: 1;
+}
+.ProfileAvatar-placeholderImage {
+	border-radius: 8px; left: 0px; top: 0px; width: 100%; height: 100%; position: absolute; -moz-force-broken-image-icon: 1;
+}
+.ProfileCanopy {
+	position: relative;
+}
+.ProfileCanopy {
+	transition:height 0.3s; height: 175px;
+}
+.ProfileCanopy-header {
+	transition:height 0.3s; height: 175px;
+}
+.ProfileCanopy-header::before {
+	width: 100%; height: 100%; display: block; position: absolute; z-index: 1; content: ""; box-shadow: inset 0px 0px 1px 1px rgba(0,0,0,0.2);
+}
+.ProfileCanopy--withNav {
+	padding-bottom: 60px;
+}
+.ProfileCanopy--large {
+	height: 280px;
+}
+.ProfileCanopy--large .ProfileCanopy-header {
+	height: 280px;
+}
+.ProfileCanopy-inner {
+	width: 100%; position: relative; z-index: 4;
+}
+.ProfileCanopy-header {
+	position: relative; z-index: 3; max-width: 2560px; background-color: rgb(99, 174, 238);
+}
+.ProfileCanopy-headerBg {
+	left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; position: absolute;
+}
+.ProfileCanopy-headerBg img {
+	margin: auto 0px; left: 0px; top: -9999px; width: 100%; right: 0px; bottom: -9999px; position: absolute;
+}
+.ProfileCanopy-header .AppContainer {
+	height: 100%; position: relative;
+}
+.ProfileCanopy-addHeaderCallout {
+	transition:opacity 0.25s ease-in-out; width: 100%; height: 100%; text-align: center; opacity: 0;
+}
+.ProfileCanopy-addHeaderCallout:focus {
+	outline: 0px;
+}
+.ProfileCanopy-addHeaderCallout:hover {
+	opacity: 1;
+}
+.ProfileCanopy-addHeaderCalloutText {
+	left: 0px; width: 100%; bottom: 25px; color: rgb(255, 255, 255); font-size: 22px; font-weight: bold; position: absolute;
+}
+.ProfileCanopy-avatar {
+	transition:bottom 0.3s; left: 10px; bottom: -87px; position: absolute; z-index: 3;
+}
+.ProfileCanopy-navBar {
+	height: 60px; border-bottom-color: rgb(225, 232, 237); border-bottom-width: 1px; border-bottom-style: solid; box-sizing: border-box; background-color: rgb(255, 255, 255); -moz-box-sizing: border-box;
+}
+.ProfileCanopy-card {
+	transition:padding-top 0.3s; height: 60px; overflow: hidden; padding-top: 60px; margin-right: -10px; max-width: 100%; box-sizing: border-box; -moz-box-sizing: border-box;
+}
+.ProfileCanopy-nav .ProfileNav {
+	margin-bottom: -1px;
+}
+.is-locked.ProfileCanopy .ProfileCanopy-inner {
+	top: 0px; width: 100%; position: fixed; transform: translateZ(0px); -webkit-transform: translateZ(0);
+}
+.is-locked.ProfileCanopy .ProfileCanopy-header {
+	cursor: pointer;
+}
+.is-locked.ProfileCanopy .ProfileCanopy-avatar {
+	bottom: 100px;
+}
+.is-locked.ProfileCanopy .ProfileCanopy-card {
+	padding-top: 0px;
+}
+@media all and (min-width:1100px)
+{
+.ProfileCanopy--large {
+	height: 300px;
+}
+.ProfileCanopy--large .ProfileCanopy-header {
+	height: 300px;
+}
+.ProfileCanopy-header .EventCanopy-addHeaderCalloutContainer--large {
+	bottom: 110px;
+}
+}
+@media all and (min-width:1200px)
+{
+.ProfileCanopy--large {
+	height: 320px;
+}
+.ProfileCanopy--large .ProfileCanopy-header {
+	height: 320px;
+}
+.ProfileCanopy-header .EventCanopy-addHeaderCalloutContainer--large {
+	bottom: 125px;
+}
+}
+@media all and (min-width:1370px)
+{
+.ProfileCanopy--large {
+	height: 360px;
+}
+.ProfileCanopy--large .ProfileCanopy-header {
+	height: 360px;
+}
+.ProfileCanopy-header .EventCanopy-addHeaderCalloutContainer--large {
+	bottom: 145px;
+}
+}
+@media all and (min-width:1450px)
+{
+.ProfileCanopy--large {
+	height: 380px;
+}
+.ProfileCanopy--large .ProfileCanopy-header {
+	height: 380px;
+}
+.ProfileCanopy-header .EventCanopy-addHeaderCalloutContainer--large {
+	bottom: 150px;
+}
+}
+@media all and (min-width:1510px)
+{
+.ProfileCanopy--large {
+	height: 420px;
+}
+.ProfileCanopy--large .ProfileCanopy-header {
+	height: 420px;
+}
+.ProfileCanopy-header .EventCanopy-addHeaderCalloutContainer--large {
+	bottom: 170px;
+}
+}
+@media all and (min-width:1670px)
+{
+.ProfileCanopy--large {
+	height: 460px;
+}
+.ProfileCanopy--large .ProfileCanopy-header {
+	height: 460px;
+}
+.ProfileCanopy-header .EventCanopy-addHeaderCalloutContainer--large {
+	bottom: 195px;
+}
+}
+@media all and (min-width:1820px)
+{
+.ProfileCanopy--large {
+	height: 500px;
+}
+.ProfileCanopy--large .ProfileCanopy-header {
+	height: 500px;
+}
+}
+@media all and (min-width:1990px)
+{
+.ProfileCanopy--large {
+	height: 540px;
+}
+.ProfileCanopy--large .ProfileCanopy-header {
+	height: 540px;
+}
+}
+@media all and (min-width:2150px)
+{
+.ProfileCanopy--large {
+	height: 580px;
+}
+.ProfileCanopy--large .ProfileCanopy-header {
+	height: 580px;
+}
+}
+@media all and (min-width:2300px)
+{
+.ProfileCanopy--large {
+	height: 600px;
+}
+.ProfileCanopy--large .ProfileCanopy-header {
+	height: 600px;
+}
+}
+.ProfileCard {
+	border-radius: 5px; border: 1px solid rgb(225, 232, 237); border-image: none; text-align: left; box-sizing: border-box; background-color: rgb(255, 255, 255); -moz-box-sizing: border-box;
+}
+.ProfileCard .pretty-link s {
+	color: inherit;
+}
+.ProfileCard .pretty-link:hover s {
+	color: inherit;
+}
+.ProfileCard .pretty-link:focus s {
+	color: inherit;
+}
+.ProfileCard .pretty-link:active s {
+	color: inherit;
+}
+.ProfileCard .pretty-link b {
+	color: inherit;
+}
+.ProfileCard .pretty-link:hover b {
+	color: inherit;
+}
+.ProfileCard .pretty-link:focus b {
+	color: inherit;
+}
+.ProfileCard .pretty-link:active b {
+	color: inherit;
+}
+.ProfileCard a {
+	color: rgb(0, 132, 180);
+}
+.ProfileCard a:hover {
+	color: rgb(0, 132, 180);
+}
+.ProfileCard a:focus {
+	color: rgb(0, 132, 180);
+}
+.ProfileCard a:active {
+	color: rgb(0, 132, 180);
+}
+.ProfileCard .pretty-link {
+	color: rgb(0, 132, 180);
+}
+.ProfileCard .pretty-link:hover {
+	color: rgb(0, 132, 180);
+}
+.ProfileCard .pretty-link:focus {
+	color: rgb(0, 132, 180);
+}
+.ProfileCard .pretty-link:active {
+	color: rgb(0, 132, 180);
+}
+.ProfileCard-bg {
+	background-position: 0px 50%; border-radius: 4px 4px 0px 0px; height: 95px; border-bottom-color: rgb(225, 232, 237); border-bottom-width: 1px; border-bottom-style: solid; display: block; background-size: 100%;
+}
+.ProfileCard-avatarLink {
+	margin: -45px 2px 0px -3px; padding: 3px; border-radius: 6px; vertical-align: bottom; display: inline-block; position: relative; z-index: 1; background-color: rgb(255, 255, 255);
+}
+.ProfileCard-avatarImage {
+	border-radius: 5px; width: 70px; height: 70px; display: block;
+}
+.ProfileCard-actions {
+	margin: 0px 0px -4px; height: 35px; right: 0px; vertical-align: bottom; display: inline-block; position: absolute;
+}
+.ProfileCard-actions .small.edit-button .button-text {
+	color: rgb(41, 47, 51); padding-top: 3px; display: block; max-height: 19px;
+}
+.ProfileCard-actions .AcceptDeclineActions-buttonText {
+	color: rgb(41, 47, 51); padding-top: 3px; display: block; max-height: 19px;
+}
+.is-hidden.ProfileCard-userActions {
+	display: none;
+}
+.ProfileCard-content {
+	margin: 13px 15px; position: relative;
+}
+.ProfileCard-userFields {
+	color: rgb(41, 47, 51); margin-top: 5px;
+}
+.ProfileCard-screenname {
+	height: 14px; margin-bottom: 10px;
+}
+.ProfileCard-screenname > * {
+	vertical-align: text-top;
+}
+.ProfileCard .ProfileCard-screennameLink {
+	color: rgb(102, 117, 127); line-height: 1; font-size: 13px; font-weight: 400;
+}
+.ProfileCard .ProfileCard-screennameLink:hover {
+	color: rgb(102, 117, 127); line-height: 1; font-size: 13px; font-weight: 400;
+}
+.ProfileCard .ProfileCard-screennameLink:focus {
+	color: rgb(102, 117, 127); line-height: 1; font-size: 13px; font-weight: 400;
+}
+.ProfileCard-bio {
+	height: 5.5em; color: rgb(102, 117, 127); line-height: 1.37em; overflow: hidden; font-size: 14px; font-weight: 400; -ms-word-wrap: break-word;
+}
+.ProfileCard-bio a .invisible {
+	line-height: 0; font-size: 0px;
+}
+.ProfileCard-promoted {
+	color: rgb(136, 153, 166); line-height: 1; font-size: 13px; margin-left: 4px;
+}
+.ProfileCard-promotedIcon {
+	top: 1px; font-size: 13px; margin-right: 2px; position: relative;
+}
+.ProfileCard-promotedText {
+	color: rgb(136, 153, 166); font-size: 13px;
+}
+.ProfileCard-footer {
+	left: 0px; right: 0px; bottom: 0px; position: absolute;
+}
+.ProfileCard--withheld .ProfileCard-bg {
+	background-color: rgb(245, 248, 250);
+}
+.ProfileCard--withheld .ProfileCard-avatarImage {
+	background-color: rgb(245, 248, 250);
+}
+.ProfileCard-userActions .following.user-actions:hover .UserActions-moreActions {
+	opacity: 0;
+}
+.ProfileCard-userActions .following.user-actions:hover .UserActions-moreActions:hover {
+	opacity: 100;
+}
+@media all and (max-width:1200px)
+{
+.ProfileCard .favorite-user-button {
+	display: none;
+}
+.ProfileCard .unmute-button {
+	display: none;
+}
+.ProfileCard .mute-button {
+	display: none;
+}
+}
+.ProfileCard .unmute-button {
+	padding: 0px;
+}
+.ProfileCard .mute-button {
+	padding: 0px;
+}
+.ProfileCardMini {
+	padding: 12px 15px; height: 60px; text-align: left; box-sizing: border-box; -moz-box-sizing: border-box;
+}
+.ProfileCardMini-avatar {
+	width: 36px; height: 36px; margin-right: 10px; float: left;
+}
+.ProfileCardMini-avatarImage {
+	border-radius: 4px; width: 36px; height: 36px; max-width: 100%;
+}
+.ProfileCardMini-details {
+	height: 36px; margin-left: 46px;
+}
+.ProfileCardMini-screenname {
+	height: 14px;
+}
+.ProfileCardMini-screenname > * {
+	vertical-align: text-top;
+}
+.ProfileCardMini-screennameLink {
+	color: rgb(102, 117, 127); line-height: 1; font-size: 13px; font-weight: 400;
+}
+.ProfileCardMini-screennameLink:hover {
+	color: rgb(102, 117, 127); line-height: 1; font-size: 13px; font-weight: 400;
+}
+.ProfileClusterFollow {
+	padding: 20px 0px; border-bottom-color: rgb(225, 232, 238); border-bottom-width: 1px; border-bottom-style: solid; background-color: rgb(245, 248, 250);
+}
+.ProfileClusterFollow-header {
+	line-height: 1; margin-bottom: 20px;
+}
+.ProfileClusterFollow-title {
+	color: rgb(136, 153, 166); font-size: 22px; font-weight: 300; margin-left: 2px;
+}
+.ProfileClusterFollow-closeButtonText {
+	color: rgb(59, 136, 195); font-size: 13px;
+}
+.ProfileClusterFollow-closeButtonIcon {
+	color: rgb(136, 153, 166); font-size: 11px; margin-left: 4px;
+}
+.ProfileCustomTimelineItem {
+	margin: 0px 15px; padding: 10px 0px; border-top-color: rgb(225, 232, 237); border-top-width: 1px; border-top-style: solid;
+}
+.ProfileCustomTimelineItem-avatar {
+	border-radius: 5px; width: 60px; height: 60px; display: block;
+}
+.ProfileCustomTimelineItem-name {
+	line-height: 1; font-weight: bold;
+}
+.ProfileCustomTimelineItem-ownerName {
+	color: rgb(136, 153, 166);
+}
+.ProfileCustomTimelineItem-byLine {
+	color: rgb(136, 153, 166); font-size: 12px;
+}
+.ProfileCustomTimelineItem-bio {
+	line-height: 1; margin-top: 12px;
+}
+.ProfileCustomTimelineItem-memberCount {
+	color: rgb(136, 153, 166); line-height: 1; font-size: 13px; margin-top: 12px;
+}
+.ProfileEmptyTimeline-prefilledTweetsHeading {
+	color: rgb(102, 117, 127); padding-right: 20px; padding-left: 15px; font-size: 14px; font-weight: 300; margin-bottom: 20px;
+}
+.ProfileEmptyTimeline .ProfileHeading-title {
+	padding-right: 20px; padding-left: 15px; font-size: 22px;
+}
+.ProfileEmptyTimeline .ProfilePrefilledTweet {
+	color: rgb(102, 117, 127); margin-top: 20px;
+}
+.ProfileEmptyTimeline-tweetBoxHeading {
+	color: rgb(102, 117, 127); font-size: 14px; font-weight: 300; margin-top: 30px; margin-bottom: 15px;
+}
+.ProfileEmptyTimeline-tweetBox {
+	margin-bottom: 20px;
+}
+.ProfileFeatureBox {
+	width: 250px; text-align: center; margin-left: 65px; float: left;
+}
+:first-child.ProfileFeatureBox {
+	margin-left: 0px;
+}
+.ProfileFeatureBox-img {
+	width: 122px; margin-bottom: 25px;
+}
+.ProfileFeatureBox-heading {
+	line-height: 25px; font-size: 15px; font-weight: 600; margin-bottom: 3px;
+}
+.ProfileFeatureBox-description {
+	line-height: 20px; font-size: 13px;
+}
+.ProfileHeaderCard {
+	margin-top: 37px;
+}
+.ProfileHeaderCard-name {
+	line-height: 1;
+}
+.ProfileHeaderCard-nameLink {
+	line-height: 1; font-size: 22px; font-weight: 700; -ms-word-wrap: break-word;
+}
+.ProfileHeaderCard-screenname {
+	color: rgb(136, 153, 166); line-height: 1; font-size: 14px; font-weight: 400; margin-bottom: 10px;
+}
+.ProfileHeaderCard-screennameLink {
+	color: rgb(136, 153, 166);
+}
+.ProfileHeaderCard-screennameLink:hover {
+	color: rgb(136, 153, 166);
+}
+.ProfileHeaderCard-bio {
+	line-height: 20px; font-size: 14px; font-weight: 400; margin-bottom: 10px; -ms-word-wrap: break-word;
+}
+.ProfileHeaderCard-location {
+	color: rgb(136, 153, 166); line-height: 1; font-size: 14px; margin-top: 6px;
+}
+.ProfileHeaderCard-url {
+	color: rgb(136, 153, 166); line-height: 1; font-size: 14px; margin-top: 6px;
+}
+.ProfileHeaderCard-joinDate {
+	color: rgb(136, 153, 166); line-height: 1; font-size: 14px; margin-top: 6px;
+}
+.ProfileHeaderCard-locationText {
+	color: rgb(41, 47, 51);
+}
+.ProfileHeaderCard-joinDateText {
+	color: rgb(41, 47, 51);
+}
+.ProfileHeaderCard-location .Icon {
+	min-width: 18px;
+}
+.ProfileHeaderCard-url .Icon {
+	min-width: 18px;
+}
+.ProfileHeaderCard-joinDate .Icon {
+	min-width: 18px;
+}
+.ProfileHeaderCard-location > * {
+	vertical-align: middle; display: inline-block;
+}
+.ProfileHeaderCard-url > * {
+	vertical-align: middle; display: inline-block;
+}
+.ProfileHeaderCard-joinDate > * {
+	vertical-align: middle; display: inline-block;
+}
+.ProfileHeaderCard-joinDateText {
+	margin-top: 3px;
+}
+.ProfileHeaderCard-bio a .invisible {
+	line-height: 0; font-size: 0px;
+}
+.ProfileHeaderCard-more {
+	line-height: 22px; margin-bottom: 16px;
+}
+.ProfileHeaderCard-userActions {
+	margin: 14px 12px 0px 0px;
+}
+.ProfileHeaderCard-nameWithBadges--1 {
+	padding-right: 23px;
+}
+.ProfileHeaderCard-nameWithBadges--2 {
+	padding-right: 46px;
+}
+.ProfileHeaderCard-badges {
+	font-size: 18px;
+}
+.ProfileHeaderCard-badges .Icon {
+	margin-left: 5px;
+}
+.ProfileHeaderCard-badges--1 {
+	margin-left: -23px;
+}
+.ProfileHeaderCard-badges--2 {
+	margin-left: -46px;
+}
+.ProfileHeaderCard .ProfileMessagingActions {
+	margin-top: 15px;
+}
+.ProfileHeading {
+	position: relative; z-index: 1;
+}
+.ProfileHeading-spacer {
+	margin-top: 10px;
+}
+.ProfileHeading-content {
+	border-radius: 5px 5px 0px 0px; border: 1px solid rgb(225, 232, 237); border-image: none; margin-bottom: -1px; background-color: rgb(255, 255, 255);
+}
+.ProfileHeading-content--noFill {
+	border: 0px currentColor; border-image: none; margin-bottom: 5px; background-color: transparent;
+}
+.ProfileHeading-title {
+	padding: 15px 15px 12px; color: rgb(102, 117, 127); line-height: 1; font-size: 18px; font-weight: 300; display: block;
+}
+.ProfileHeading-toggleItem {
+	padding: 15px 15px 12px; color: rgb(204, 214, 221); line-height: 1; font-size: 18px; font-weight: 300; display: inline-block;
+}
+.is-active.ProfileHeading-toggleItem {
+	color: rgb(41, 47, 51); font-weight: 500; text-decoration: none; cursor: default;
+}
+.is-active.ProfileHeading-toggleItem:hover {
+	color: rgb(41, 47, 51); font-weight: 500; text-decoration: none; cursor: default;
+}
+.is-active.ProfileHeading-toggleItem:focus {
+	color: rgb(41, 47, 51); font-weight: 500; text-decoration: none; cursor: default;
+}
+.ProfileHelpPrompt {
+	border-radius: 6px; width: 305px; text-align: center; color: white; position: absolute; z-index: 300; box-shadow: 0px 0px 8px #292f33; background-color: rgb(85, 172, 238);
+}
+.ProfileHelpPrompt-content {
+	padding: 14px 20px 20px;
+}
+.ProfileHelpPrompt-header {
+	padding-bottom: 3px; font-size: 18px; font-weight: 700;
+}
+.ProfileHelpPrompt-body {
+	padding-bottom: 15px; font-size: 16px; font-weight: 300;
+}
+.ProfileHelpPrompt-hint {
+	color: rgb(205, 230, 248); padding-bottom: 20px; font-size: 13px;
+}
+.ProfileHelpPrompt-nextButton {
+	background: white; color: rgb(132, 137, 141); padding-right: 28px; padding-left: 28px; font-weight: bold;
+}
+.ProfileHelpPrompt-caret {
+	border: 12px solid rgb(85, 172, 238); border-image: none; width: 0px; height: 0px; position: absolute;
+}
+.ProfileHelpPrompt--onLeft .ProfileHelpPrompt-caret {
+	left: 100%; top: 102px; border-top-color: transparent; border-right-color: transparent; border-bottom-color: transparent;
+}
+.ProfileHelpPrompt--addAvatar .ProfileHelpPrompt-caret {
+	top: 66%; margin-top: -12px;
+}
+.ProfileHelpPrompt--addHeader .ProfileHelpPrompt-caret {
+	top: 50%; margin-top: -12px;
+}
+.ProfileHelpPrompt--pinTweet .ProfileHelpPrompt-caret {
+	top: auto; bottom: 30px; margin-top: -12px;
+}
+.ProfileHelpPrompt--onRight .ProfileHelpPrompt-caret {
+	right: 100%; border-top-color: transparent; border-bottom-color: transparent; border-left-color: transparent;
+}
+.ProfileHelpPrompt--onTop .ProfileHelpPrompt-caret {
+	top: 100%; border-right-color: transparent; border-bottom-color: transparent; border-left-color: transparent;
+}
+.ProfileHelpPrompt--onBottom .ProfileHelpPrompt-caret {
+	bottom: 100%; border-top-color: transparent; border-right-color: transparent; border-left-color: transparent;
+}
+.ProfileHelpPrompt--addAvatar {
+	left: 100%; margin-top: -60px; margin-left: 20px;
+}
+.ProfileHelpPrompt--addHeader {
+	left: 100%; top: 115px; margin-left: -320px;
+}
+.ProfileHelpPrompt--pinTweet {
+	bottom: 0px; margin-top: 31px; margin-bottom: -85px; margin-left: -115px; position: absolute;
+}
+.ProfileLifelineInfo {
+	line-height: 18px; font-size: 14px;
+}
+.ProfileLifelineInfo .Icon {
+	margin-right: 10px;
+}
+.ProfileLifelineInfo-text {
+	color: rgb(136, 153, 166);
+}
+.ProfileListItem {
+	margin: 0px 15px; padding: 10px 0px; border-top-color: rgb(225, 232, 237); border-top-width: 1px; border-top-style: solid;
+}
+.ProfileListItem-avatar {
+	border-radius: 5px; width: 60px; height: 60px; display: block;
+}
+.ProfileListItem-name {
+	line-height: 1; font-weight: bold;
+}
+.ProfileListItem-ownerName {
+	color: rgb(136, 153, 166);
+}
+.ProfileListItem-byLine {
+	color: rgb(136, 153, 166); font-size: 12px;
+}
+.ProfileListItem-bio {
+	line-height: 1; margin-top: 12px;
+}
+.ProfileListItem-memberCount {
+	display: inline-block;
+}
+.ProfileListItem-listActions {
+	display: inline-block;
+}
+.ProfileListItem-listAction {
+	display: inline-block;
+}
+.ProfileListItem-memberCount {
+	color: rgb(136, 153, 166); line-height: 1; font-size: 13px; margin-top: 12px;
+}
+.ProfileListItem-linkDivider {
+	padding: 0px 1px;
+}
+.ProfileListItem-listActions {
+	color: rgb(204, 214, 221); line-height: 1; font-size: 13px;
+}
+.ProfileListItem:hover .ProfileListItem-listAction {
+	color: rgb(136, 153, 166);
+}
+.ProfileListItem-listAction button:hover {
+	text-decoration: underline;
+}
+.is-featured.ProfileListItem-listActionButton .ProfileListItem-featureListText {
+	display: none;
+}
+.is-unfeatured.ProfileListItem-listActionButton .ProfileListItem-unfeatureListText {
+	display: none;
+}
+.ProfileMessagingActions-actionsContainer {
+	margin: 0px 0px -5px -5px;
+}
+.ProfileMessagingActions-buttonWrapper {
+	padding: 0px 0px 5px 5px; width: 50%; vertical-align: top; display: inline-block; box-sizing: border-box; -moz-box-sizing: border-box;
+}
+@media all and (max-width:1200px)
+{
+.ProfileMessagingActions .NewTweetButton-text {
+	display: none;
+}
+.ProfileMessagingActions .DMButton-text {
+	display: none;
+}
+.u-sizeFull.ProfileMessagingActions-buttonWrapper .NewTweetButton-text {
+	display: inline-block;
+}
+.u-sizeFull.ProfileMessagingActions-buttonWrapper .DMButton-text {
+	display: inline-block;
+}
+}
+.ProfileNameTruncated {
+	height: 22px; line-height: 1;
+}
+.ProfileNameTruncated-link {
+	color: rgb(41, 47, 51); font-size: 18px; font-weight: 700;
+}
+.ProfileNameTruncated-withBadges {
+	position: relative; box-sizing: border-box; -moz-box-sizing: border-box;
+}
+.ProfileNameTruncated-withBadges--1 {
+	padding-right: 21px;
+}
+.ProfileNameTruncated-withBadges--2 {
+	padding-right: 42px;
+}
+.ProfileNameTruncated-badges {
+	right: 0px; bottom: 0px; font-size: 16px; position: absolute;
+}
+.ProfileNameTruncated-badges .Icon {
+	margin-left: 5px;
+}
+.ProfileNav {
+	height: 60px; position: relative;
+}
+.ProfileNav-item {
+	display: inline-block;
+}
+.ProfileNav .is-hidden {
+	display: none;
+}
+.ProfileNav-item--userActions {
+	padding: 12px 0px 0px 2px; top: 0px; height: 59px; right: 0px; position: absolute; box-sizing: border-box; background-color: rgb(255, 255, 255); -moz-box-sizing: border-box;
+}
+.ProfileNav-stat {
+	padding: 14px 15px 7px; transition:0.15s ease-in-out; height: 60px; line-height: 1; border-bottom-color: currentColor; border-bottom-width: 0px; border-bottom-style: solid; display: block; box-sizing: border-box; -moz-box-sizing: border-box;
+}
+.ProfileNav-stat--link:hover {
+	text-decoration: none;
+}
+.ProfileNav-stat--link:focus {
+	text-decoration: none;
+}
+.ProfileNav-label {
+	display: block;
+}
+.ProfileNav-value {
+	display: block;
+}
+.ProfileNav-label {
+	transition:color 0.15s ease-in-out; color: rgb(102, 117, 127); text-transform: uppercase; letter-spacing: 0.02em; font-size: 11px;
+}
+.ProfileNav-value {
+	transition:color 0.15s ease-in-out; padding-top: 3px; font-size: 18px; font-weight: 500;
+}
+.is-active.ProfileNav-item {
+	border-color: rgb(102, 117, 127); color: rgb(102, 117, 127); cursor: default;
+}
+.is-active.ProfileNav-item:hover {
+	border-color: rgb(102, 117, 127); color: rgb(102, 117, 127); cursor: default;
+}
+.is-active.ProfileNav-item .ProfileNav-label {
+	color: rgb(102, 117, 127);
+}
+.is-active.ProfileNav-item:hover .ProfileNav-label {
+	color: rgb(102, 117, 127);
+}
+.is-active.ProfileNav-item .ProfileNav-value {
+	color: rgb(41, 47, 51);
+}
+.is-active.ProfileNav-item:hover .ProfileNav-value {
+	color: rgb(41, 47, 51);
+}
+.is-active.ProfileNav-item .ProfileNav-stat {
+	border-bottom-width: 4px;
+}
+.ProfileNav-stat:hover {
+	border-bottom-width: 4px;
+}
+.ProfileNav-stat:focus {
+	border-bottom-width: 4px;
+}
+.ProfileNav-stat--moreLink:hover {
+	border-bottom-width: 0px;
+}
+.ProfileNav-stat--moreLink:focus {
+	border-bottom-width: 0px;
+}
+.ProfileNav-stat:hover .ProfileNav-label {
+	color: inherit;
+}
+.ProfileNav-stat:focus .ProfileNav-label {
+	color: inherit;
+}
+.ProfileNav-stat:hover .ProfileNav-value {
+	color: inherit;
+}
+.ProfileNav-stat:focus .ProfileNav-value {
+	color: inherit;
+}
+.ProfileNav-dropdownCaret {
+	color: rgb(136, 153, 166); line-height: 1; font-size: 12px;
+}
+.open.ProfileNav-item--more .ProfileNav-dropdownCaret {
+	color: inherit;
+}
+.ProfileNav-item--more:hover .ProfileNav-dropdownCaret {
+	color: inherit;
+}
+.ProfileNav-item--more .dropdown-menu {
+	margin-top: -1px;
+}
+.ProfileNav-dropdownItem {
+	font-size: 14px !important;
+}
+.ProfileOptInBanner {
+	padding: 13px; border-radius: 6px; border: 1px solid rgba(0, 0, 0, 0.1); border-image: none; width: 552px; margin-bottom: 10px; margin-left: 125px; background-color: rgb(230, 243, 252);
+}
+.ProfileOptInBanner-img {
+	width: 56px; margin-right: 20px; margin-left: 10px;
+}
+.ProfileOptInBanner-header {
+	color: rgb(59, 136, 195); padding-top: 6px; font-size: 21px; font-weight: bold;
+}
+.ProfileOptInBanner-actions {
+	margin-right: 15px;
+}
+.ProfileOptInBanner-optOutButton {
+	color: rgb(59, 136, 195); padding-right: 5px; font-size: 11px;
+}
+.ProfileOptInBanner-optOutButton:hover {
+	color: rgb(59, 136, 195);
+}
+.ProfileOptInBanner-optOutButton:focus {
+	color: rgb(59, 136, 195);
+}
+.ProfileOptInBanner-optOutButton:active {
+	color: rgb(59, 136, 195);
+}
+.ProfilePage {
+	line-height: 1.375; min-width: 936px; background-image: none !important; background-color: rgb(245, 248, 250) !important;
+}
+.ProfilePage .content-main {
+	border-radius: 0px; width: auto; float: none; position: relative;
+}
+.ProfilePage .AppContent {
+	padding: 46px 0px 0px;
+}
+.ProfilePage .withheld-message {
+	margin: 10px 0px;
+}
+.ProfilePage-editingButtons {
+	display: none;
+}
+.ProfilePage-editingOverlay {
+	display: none;
+}
+.ProfilePage .ProfileHeaderCardEditing {
+	display: none;
+}
+.ProfilePage .ProfileAvatarEditing {
+	display: none;
+}
+.ProfilePage .ProfileHeaderEditing {
+	display: none;
+}
+.ProfilePage-testForEditingCss {
+	display: none;
+}
+.ProfilePopupContainer .modal {
+	width: 520px; overflow: visible; min-height: 200px;
+}
+.ProfilePopupContainer .modal-content {
+	overflow: visible;
+}
+.ProfilePopupContainer .modal-body {
+	padding: 0px;
+}
+.ProfilePopupContainer .follow-status {
+	display: inline;
+}
+.ProfilePopupContainer .stats a {
+	padding-right: 15px; padding-left: 15px;
+}
+.ProfilePopupContainer .recent-tweets {
+	margin-bottom: 0px;
+}
+.ProfilePopupContainer .recent-tweets p {
+	margin: 0px; font-size: 100%;
+}
+.ProfilePopupContainer .draggable .profile-modal-header {
+	cursor: default;
+}
+.ProfilePopupContainer .profile-popup-rounded-bottom {
+	border-radius: 0px 0px 6px 6px;
+}
+.ProfilePopupContainer .profile-modal-header-inner .fullname a {
+	overflow: hidden; vertical-align: top; display: inline-block; white-space: nowrap; -ms-text-overflow: ellipsis; max-width: 290px;
+}
+.ProfilePopupContainer .profile-header .profile-header-inner {
+	border-radius: 0px;
+}
+.ProfilePopupContainer .profile-header .profile-banner-footer {
+	border-radius: 0px;
+}
+.ProfilePopupContainer .profile-header .profile-social-proof {
+	border-radius: 0px;
+}
+.ProfilePopupContainer .profile-header .simple-profile.profile-banner-footer {
+	border-bottom-right-radius: 5px; border-bottom-left-radius: 5px;
+}
+.ProfilePopupContainer .user-actions {
+	float: right;
+}
+.ProfilePopupContainer .profile-header {
+	border: 0px currentColor; border-image: none; margin-bottom: 0px; float: none;
+}
+.ProfilePopupContainer .profile-header.profile-card {
+	width: 520px;
+}
+.ProfilePopupContainer .go-to-profile {
+	border-top-color: rgb(225, 232, 237); border-top-width: 1px; border-top-style: solid;
+}
+.ProfilePopupContainer .go-to-profile .view-profile {
+	padding: 14px 12px 14px 56px; font-size: 13px; display: inline-block;
+}
+.ProfilePopupContainer .social-proof {
+	height: 32px; border-bottom-color: rgb(225, 232, 237); border-bottom-width: 1px; border-bottom-style: solid;
+}
+.ProfilePopupContainer .QuoteTweet {
+	cursor: default;
+}
+.ProfilePopupContainer--bellbird .modal {
+	width: 590px;
+}
+.ProfilePopupContainer--bellbird .ProfileHeader a {
+	color: rgb(59, 136, 195);
+}
+.ProfilePopupContainer--bellbird .ProfileHeader a b {
+	color: rgb(59, 136, 195);
+}
+.ProfilePopupContainer--bellbird .ProfileHeader a strong {
+	color: rgb(59, 136, 195);
+}
+.ProfilePopupContainer--bellbird .ProfileHeader a s {
+	color: rgb(59, 136, 195);
+}
+.ProfilePopupContainer--bellbird .tweet-text a {
+	color: rgb(59, 136, 195);
+}
+.ProfilePopupContainer--bellbird .tweet-text a b {
+	color: rgb(59, 136, 195);
+}
+.ProfilePopupContainer--bellbird .tweet-text a s {
+	color: rgb(59, 136, 195);
+}
+.ProfilePopupContainer--bellbird .tweet-text a:hover {
+	color: rgb(59, 136, 195);
+}
+.ProfilePopupContainer--bellbird .tweet-text a:hover b {
+	color: rgb(59, 136, 195);
+}
+.ProfilePopupContainer--bellbird .tweet-text a:hover s {
+	color: rgb(59, 136, 195);
+}
+.ProfilePopupContainer--bellbird .simple-tweet:hover .details b .simple-details-link {
+	color: rgb(59, 136, 195);
+}
+.ProfilePopupContainer--bellbird .ProfileHeader .user-dropdown:hover {
+	color: rgb(59, 136, 195);
+}
+.ProfilePopupContainer--bellbird .account-group:hover .fullname {
+	color: rgb(59, 136, 195);
+}
+.ProfilePopupContainer--bellbird a.details:hover b {
+	color: rgb(59, 136, 195);
+}
+.ProfilePopupContainer--bellbird a.view-profile {
+	color: rgb(59, 136, 195);
+}
+.ProfilePopupContainer--bellbird .modal-body {
+	padding: 0px;
+}
+.ProfilePopupContainer--bellbird .follow-status {
+	top: 0px;
+}
+.ProfilePopupContainer--bellbird .ProfileHeader-userActions {
+	right: 0px; position: absolute;
+}
+.ProfilePopupContainer--bellbird .ProfileHeader .profile-header-inner {
+	background-position: center; border-radius: 0px; height: 194px; border-bottom-color: rgb(225, 232, 237); border-bottom-width: 1px; border-bottom-style: solid; background-size: cover;
+}
+.ProfilePopupContainer--bellbird .ProfileHeader .no-image.profile-header-inner {
+	height: 85px;
+}
+.ProfilePopupContainer--bellbird .profile-social-proof {
+	border-radius: 0px; border-top-color: rgb(225, 232, 237); border-bottom-color: rgb(225, 232, 237); border-top-width: 1px; border-bottom-width: 1px; border-top-style: solid; border-bottom-style: solid; background-color: rgb(245, 248, 250);
+}
+.ProfilePopupContainer--bellbird .ProfileHeader .profile-picture {
+	background: white; margin: -70px 10px 0px; border-radius: 9px; border: 4px solid rgb(255, 255, 255); border-image: none; width: 120px; height: 120px; box-sizing: border-box; -moz-box-sizing: border-box;
+}
+.ProfilePopupContainer--bellbird .ProfileHeader .profile-picture .avatar {
+	border-radius: 6px; width: 100%; height: 100%;
+}
+.ProfilePopupContainer--bellbird .stats {
+	margin-top: 1px;
+}
+.ProfilePopupContainer--bellbird .stats th {
+	text-align: left; color: rgb(102, 117, 127); text-transform: uppercase; line-height: 16px; padding-top: 7px; font-size: 10px; font-weight: normal;
+}
+.ProfilePopupContainer--bellbird .stats td {
+	padding-bottom: 0px;
+}
+.ProfilePopupContainer--bellbird .stats th {
+	padding-left: 25px;
+}
+.ProfilePopupContainer--bellbird .stats td {
+	padding-left: 25px;
+}
+.ProfilePopupContainer--bellbird .stats th:first-child {
+	padding-left: 0px;
+}
+.ProfilePopupContainer--bellbird .stats td:first-child {
+	padding-left: 0px;
+}
+.ProfilePopupContainer--bellbird .stats a {
+	padding: 0px;
+}
+.ProfilePopupContainer--bellbird .stats a strong {
+	color: rgb(59, 148, 217); font-size: 18px; font-weight: 500;
+}
+.ProfilePopupContainer--bellbird .stats li + li a {
+	padding-right: 0px; padding-left: 30px;
+}
+.ProfilePopupContainer--bellbird .user-actions {
+	margin-right: 15px;
+}
+.ProfilePopupContainer--bellbird .user-actions > .dropdown + button {
+	margin-left: 5px;
+}
+.ProfilePopupContainer--bellbird .profile-details {
+	margin: 5px 15px 0px; text-align: left;
+}
+.ProfilePopupContainer--bellbird .profile-details .fullname {
+	text-align: left; margin-bottom: 5px;
+}
+.ProfilePopupContainer--bellbird .profile-details .fullname a {
+	color: rgb(41, 47, 51); font-size: 22px; font-weight: 700;
+}
+.ProfilePopupContainer--bellbird .profile-details .screen-name {
+	color: rgb(102, 117, 127); font-size: 14px; font-weight: 400;
+}
+.ProfilePopupContainer--bellbird .profile-details .screen-name s {
+	color: rgb(102, 117, 127);
+}
+.ProfilePopupContainer--bellbird .bio-container {
+	margin: 9px 0px;
+}
+.ProfilePopupContainer--bellbird .bio-container p {
+	color: rgb(41, 47, 51);
+}
+.ProfilePopupContainer--bellbird .divider {
+	color: rgb(41, 47, 51);
+}
+.ProfilePopupContainer--bellbird .go-to-profile {
+	border-top-color: rgb(225, 232, 237); border-top-width: 1px; border-top-style: solid;
+}
+.ProfilePopupContainer--bellbird .go-to-profile .view-profile {
+	padding: 14px 12px 14px 15px; font-size: 14px; font-weight: bold; display: inline-block;
+}
+.ProfilePopupContainer--bellbird .badges {
+	margin-left: 5px;
+}
+.ProfilePopupContainer--bellbird .badges .Icon {
+	font-size: 18px;
+}
+.ProfilePopupContainer--bellbird .facepile a {
+	margin-right: 5px; float: left;
+}
+.ProfilePopupContainer--bellbird .social-proof {
+	padding-left: 15px;
+}
+.ProfilePopupContainer--bellbird .recent-tweets {
+	margin-bottom: 0px;
+}
+.ProfilePopupContainer--bellbird .recent-tweets .tweet {
+	border-color: rgb(225, 232, 237);
+}
+.ProfilePopupContainer--bellbird .recent-tweets .content {
+	margin-left: 61px;
+}
+.ProfilePopupContainer--bellbird .recent-tweets .avatar {
+	border-radius: 5px; width: 48px; height: 48px; margin-left: -60px;
+}
+.ProfilePrefilledTweet .ProfileTweet {
+	border-radius: 5px;
+}
+.ProfilePrefilledTweet-tweetBtn {
+	padding-right: 15px; padding-left: 20px; position: relative; min-width: 100px;
+}
+.ProfilePrefilledTweet-tweetBtn .btn {
+	display: inline-block;
+}
+.is-sending.ProfilePrefilledTweet .ProfilePrefilledTweet-spinner {
+	display: inline-block;
+}
+.is-sending.ProfilePrefilledTweet .ProfilePrefilledTweet-spinner {
+	top: 50%; right: 0px; margin-top: -7px; position: absolute;
+}
+.ProfileSidebar .ProfileHeaderCard {
+	padding-right: 15px; padding-left: 15px;
+}
+.ProfileSidebar .ProfileTweetbox {
+	padding-right: 15px; padding-left: 15px;
+}
+.ProfileSidebar .SignupCallOut {
+	padding-right: 15px; padding-left: 15px;
+}
+.ProfileSidebar .ProfileLifelineInfo {
+	padding-right: 15px; padding-left: 15px;
+}
+.ProfileSidebar .ProfileUserList {
+	padding-right: 15px; padding-left: 15px;
+}
+.ProfileSidebar .PhotoRail {
+	padding-right: 15px; padding-left: 15px;
+}
+.ProfileSidebar .WhoToFollow {
+	padding-right: 15px; padding-left: 15px;
+}
+.ProfileSidebar .Trends {
+	padding-right: 15px; padding-left: 15px;
+}
+.ProfileSidebar .Footer {
+	padding-right: 15px; padding-left: 15px;
+}
+.ProfileSidebar .ProfileTweetbox {
+	margin-top: 20px;
+}
+.ProfileSidebar .SignupCallOut {
+	margin-top: 20px;
+}
+.ProfileSidebar .ProfileLifelineInfo {
+	margin-top: 20px;
+}
+.ProfileSidebar .ProfileUserList {
+	margin-top: 20px;
+}
+.ProfileSidebar .PhotoRail {
+	margin-top: 20px;
+}
+.ProfileSidebar .WhoToFollow {
+	margin-top: 20px;
+}
+.ProfileSidebar .Trends {
+	margin-top: 20px;
+}
+.ProfileSidebar .Footer {
+	margin-top: 20px;
+}
+.ProfileSidebar .ProfileHeaderCard {
+	margin-bottom: 25px;
+}
+.ProfileSidebar .ProfileUserList {
+	margin-bottom: 25px;
+}
+.ProfileSidebar .PhotoRail {
+	margin-bottom: 25px;
+}
+.ProfileSidebar .SignupCallOut {
+	padding: 15px; border-radius: 5px; border: 1px solid rgb(225, 232, 237); border-image: none; margin-top: 10px; background-color: rgb(255, 255, 255);
+}
+.ProfileSidebar .ProfileLifelineInfo {
+	padding: 15px; border-radius: 5px; border: 1px solid rgb(225, 232, 237); border-image: none; margin-top: 10px; background-color: rgb(255, 255, 255);
+}
+.ProfileSidebar .WhoToFollow {
+	padding: 15px; border-radius: 5px; border: 1px solid rgb(225, 232, 237); border-image: none; margin-top: 10px; background-color: rgb(255, 255, 255);
+}
+.ProfileSidebar .Trends {
+	padding: 15px; border-radius: 5px; border: 1px solid rgb(225, 232, 237); border-image: none; margin-top: 10px; background-color: rgb(255, 255, 255);
+}
+.ProfileSidebar .ProfileEventMatches {
+	margin-top: 10px;
+}
+.ProfileSidebar .ProfileEventMatches .CurrentMatches-heading {
+	padding-top: 14px;
+}
+.ProfileSidebar .ProfileEventMatches .CurrentMatches-headingText {
+	color: rgb(102, 117, 127); font-size: 18px;
+}
+.ProfileSidebar .ProfileEventMatches .MatchItem-teamName {
+	padding: 9px 0px;
+}
+.ProfileSidebar .trends-inner .flex-module {
+	border: 0px currentColor; border-image: none;
+}
+.ProfileSidebar .flex-module-header h3 {
+	color: rgb(41, 47, 51); font-size: 18px; font-weight: inherit;
+}
+.ProfileSidebar .flex-module-header {
+	margin-bottom: 15px;
+}
+.ProfileSidebar .Footer {
+	border-radius: 0px; border: 0px currentColor; border-image: none;
+}
+.ProfileSidebar .Footer .flex-module {
+	background: 0px; padding: 0px; border: 0px currentColor; border-image: none; text-align: left; line-height: 1;
+}
+.ProfileSidebar .Footer-item {
+	color: rgb(204, 214, 221);
+}
+.ProfileSidebar .Footer-link {
+	color: rgb(204, 214, 221);
+}
+.ProfileSidebar .Footer:hover .Footer-link {
+	color: rgb(59, 136, 200);
+}
+.ProfileSidebar .Footer ul {
+	line-height: 1;
+}
+.ProfileSidebar .Footer-item {
+	line-height: 1;
+}
+.ProfileSidebar--permalinkSidebar .Footer {
+	padding-top: 20px; border-top-color: rgb(225, 232, 237); border-top-width: 1px; border-top-style: solid;
+}
+.ProfileTweet {
+	padding: 13px 15px 15px; border: 1px solid rgb(225, 232, 237); border-image: none; line-height: 1.37em; position: relative; box-sizing: border-box; background-color: rgb(255, 255, 255); -moz-box-sizing: border-box;
+}
+.is-actionable.ProfileTweet {
+	cursor: pointer;
+}
+.ProfileTweet-header {
+	margin: 0px; transition:color 0.15s; color: rgb(136, 153, 166);
+}
+.ProfileTweet-context {
+	font-size: 12px; margin-top: -3px; margin-left: 10px;
+}
+.ProfileTweet-context .Icon {
+	top: 2px; font-size: 14px; margin-right: 3px; position: relative;
+}
+.ProfileTweet-context--events {
+	margin-bottom: 5px;
+}
+.ProfileTweet-timestamp {
+	transition:color 0.15s; color: rgb(136, 153, 166); font-size: 13px; display: inline-block; white-space: nowrap;
+}
+.ProfileTweet-authorDetails {
+	line-height: 14px; padding-top: 2px;
+}
+.ProfileTweet-originalAuthor {
+	max-width: 60%;
+}
+.ProfileTweet-avatar {
+	margin: 0px 6px 0px 0px; border-radius: 4px; width: 24px; height: 24px; float: left;
+}
+.ProfileTweet-fullname {
+	color: rgb(41, 47, 51); font-size: 14px; font-weight: bold;
+}
+.ProfileTweet-screenname {
+	color: rgb(136, 153, 166); font-size: 13px;
+}
+.ProfileTweet-contents {
+	margin-top: -5px; margin-left: 30px;
+}
+.ProfileTweet-text {
+	color: rgb(41, 47, 51); line-height: 22px; font-size: 16px; font-weight: 400; margin-bottom: 5px; white-space: pre-wrap;
+}
+.ProfileTweet--low .ProfileTweet-text {
+	line-height: 22px; font-size: 16px; font-weight: 400;
+}
+.ProfileTweet--medium .ProfileTweet-text {
+	line-height: 28px; font-size: 22px; font-weight: 300;
+}
+.ProfileTweet--high .ProfileTweet-text {
+	line-height: 32px; font-size: 26px; font-weight: 300;
+}
+.ProfileTweet .twitter-hashtag b {
+	font-weight: 300;
+}
+.ProfileTweet .twitter-atreply b {
+	font-weight: 300;
+}
+.ProfileTweet--low .twitter-hashtag b {
+	font-weight: 400;
+}
+.ProfileTweet--low .twitter-atreply b {
+	font-weight: 400;
+}
+.ProfileTweet a .invisible {
+	line-height: 0; font-size: 0px;
+}
+.ProfileTweet a.twitter-timeline-link {
+	-ms-word-wrap: break-word;
+}
+.ProfileTweet .TwitterPhoto {
+	margin: 10px 0px;
+}
+.ProfileTweet .TwitterMultiPhoto {
+	margin: 10px 0px;
+}
+.ProfileTweet .media-tagging-block .Icon {
+	vertical-align: baseline;
+}
+.ProfileTweet--withTags .ProfileTweet-text {
+	margin-bottom: 5px;
+}
+.ProfileTweet .media-tagging-block {
+	margin-bottom: 0px;
+}
+.ProfileTweet .tweet-details-fixer {
+	margin-bottom: 15px;
+}
+.ProfileTweet .card2 {
+	padding-bottom: 0px; margin-top: 10px; margin-bottom: 0px; border-bottom-color: currentColor; border-bottom-width: 0px; border-bottom-style: none; position: relative;
+}
+.ProfileTweet .is-preview {
+	vertical-align: top; position: relative; cursor: pointer;
+}
+.ProfileTweet .is-preview img {
+	display: block; max-width: 100%;
+}
+.ProfileTweet .card2 .media-preview .play-large {
+	border-radius: 4px; left: 50%; top: 50%; margin-top: -24px; margin-left: -24px; position: absolute; z-index: 1; opacity: 0.7;
+}
+.ProfileTweet-contextualLink {
+	text-align: right; font-size: 13px; margin-top: 2px; float: right; position: relative;
+}
+.ProfileTweet-actionList {
+	margin-top: 5px;
+}
+.ProfileTweet-action {
+	margin-right: 31px; float: left;
+}
+.ProfileTweet .ProfileTweet-actionButton {
+	padding: 0px 2px; top: 4px; color: rgb(204, 214, 221); line-height: 1; font-size: 16px; display: inline-block; position: relative;
+}
+.ProfileTweet .ProfileTweet-actionButtonUndo {
+	padding: 0px 2px; top: 4px; color: rgb(204, 214, 221); line-height: 1; font-size: 16px; display: inline-block; position: relative;
+}
+.ProfileTweet .is-disabled.ProfileTweet-actionButton {
+	color: rgb(225, 232, 237); cursor: default !important;
+}
+.ProfileTweet .is-disabled.ProfileTweet-actionButton:hover {
+	color: rgb(225, 232, 237); cursor: default !important;
+}
+.ProfileTweet .is-disabled.ProfileTweet-actionButton:focus {
+	color: rgb(225, 232, 237); cursor: default !important;
+}
+.ProfileTweet .ProfileTweet-actionCount {
+	padding: 0px 4px; transition:padding 0.5s ease-out; top: 2px; color: rgb(136, 153, 166); font-size: 12px; font-weight: bold; display: inline-block; position: relative;
+}
+.ProfileTweet-actionCount:focus {
+	text-decoration: none;
+}
+.ProfileTweet-actionCount:hover {
+	text-decoration: none;
+}
+.ProfileTweet .ProfileTweet-actionCount--isZero {
+	padding: 0px;
+}
+.ProfileTweet .ProfileTweet-action--retweet .ProfileTweet-actionButtonUndo {
+	display: none;
+}
+.is-retweeted.ProfileTweet .ProfileTweet-action--retweet .ProfileTweet-actionButton {
+	display: none;
+}
+.is-retweeted.ProfileTweet .ProfileTweet-action--retweet .ProfileTweet-actionButtonUndo {
+	color: rgb(92, 145, 59); display: inline-block;
+}
+.retweeted.ProfileTweet .ProfileTweet-action--retweet .ProfileTweet-actionCount {
+	color: rgb(92, 145, 59); display: inline-block;
+}
+.is-retweeted.ProfileTweet .ProfileTweet-action--retweet .ProfileTweet-actionCount {
+	color: rgb(92, 145, 59); display: inline-block;
+}
+.ProfileTweet-action--retweet .ProfileTweet-actionButton:hover {
+	color: rgb(92, 145, 59);
+}
+.ProfileTweet-action--retweet .ProfileTweet-actionButton:focus {
+	color: rgb(92, 145, 59);
+}
+.ProfileTweet-action--retweet .ProfileTweet-actionCount:hover {
+	color: rgb(92, 145, 59);
+}
+.ProfileTweet-action--retweet .ProfileTweet-actionCount:focus {
+	color: rgb(92, 145, 59);
+}
+.ProfileTweet-action--retweet .is-disabled.ProfileTweet-actionButton:hover {
+	color: rgb(225, 232, 237);
+}
+.is-hoverStateCancelled.ProfileTweet-action--retweet .ProfileTweet-actionButton:hover {
+	color: rgb(204, 214, 221);
+}
+.is-hoverStateCancelled.ProfileTweet-action--retweet .ProfileTweet-actionButton:focus {
+	color: rgb(204, 214, 221);
+}
+.ProfileTweet .ProfileTweet-action--favorite .ProfileTweet-actionButtonUndo {
+	display: none;
+}
+.is-favorited.ProfileTweet .ProfileTweet-action--favorite .ProfileTweet-actionButton {
+	display: none;
+}
+.is-favorited.ProfileTweet .ProfileTweet-action--favorite .ProfileTweet-actionButtonUndo {
+	color: rgb(255, 172, 51); display: inline-block;
+}
+.favorited.ProfileTweet .ProfileTweet-action--favorite .ProfileTweet-actionCount {
+	color: rgb(255, 172, 51); display: inline-block;
+}
+.is-favorited.ProfileTweet .ProfileTweet-action--favorite .ProfileTweet-actionCount {
+	color: rgb(255, 172, 51); display: inline-block;
+}
+.ProfileTweet-action--favorite .ProfileTweet-actionButton:hover {
+	color: rgb(255, 172, 51);
+}
+.ProfileTweet-action--favorite .ProfileTweet-actionButton:focus {
+	color: rgb(255, 172, 51);
+}
+.ProfileTweet-action--favorite .ProfileTweet-actionCount:hover {
+	color: rgb(255, 172, 51);
+}
+.ProfileTweet-action--favorite .ProfileTweet-actionCount:focus {
+	color: rgb(255, 172, 51);
+}
+.ProfileTweet-action--favorite .is-disabled.ProfileTweet-actionButton:hover {
+	color: rgb(225, 232, 237);
+}
+.is-hoverStateCancelled.ProfileTweet-action--favorite .ProfileTweet-actionButton:hover {
+	color: rgb(204, 214, 221);
+}
+.is-hoverStateCancelled.ProfileTweet-action--favorite .ProfileTweet-actionButton:focus {
+	color: rgb(204, 214, 221);
+}
+.ProfileTweet .ProfileTweet-actionButton:focus {
+	outline: rgb(0, 0, 0) dotted 1px;
+}
+.ProfileTweet .ProfileTweet-actionButtonUndo:focus {
+	outline: rgb(0, 0, 0) dotted 1px;
+}
+.ProfileTweet .ProfileTweet-actionCount:focus {
+	outline: rgb(0, 0, 0) dotted 1px;
+}
+.ProfileTweet .is-animating.ProfileTweet-action--favorite {
+	animation-name: pulse; animation-duration: 0.5s; animation-fill-mode: both; -webkit-animation-name: pulse; -webkit-animation-duration: .5s; -webkit-animation-fill-mode: both;
+}
+.is-pinned.ProfileTweet .user-pin-tweet {
+	display: none;
+}
+.ProfileTweet .user-unpin-tweet {
+	display: none;
+}
+.is-pinned.ProfileTweet .user-unpin-tweet {
+	display: block;
+}
+.ProfileTweet .user-pin-tweet {
+	display: block;
+}
+.ProfileTweet .ProfileTweet-context--pinned {
+	display: none;
+}
+.is-pinned.ProfileTweet .ProfileTweet-context--pinned {
+	display: block;
+}
+.ProfileTweet .dropdown-menu {
+	margin: 6px 0px 0px -11px;
+}
+.ProfileTweet-geo {
+	margin: -3px -1px 0px 5px;
+}
+.ProfileTweet-translation {
+	margin: -2px -1px 0px 0px;
+}
+.ProfileTweet-translation .ProfileTweet-actionButton {
+	font-size: 15px;
+}
+.ProfileTweet-translation .Icon--translator {
+	color: inherit;
+}
+.ProfileTweet .QuoteTweet .multi-photos {
+	width: 506px; height: 252px;
+}
+.ProfileTweet .QuoteTweet .with-text .multi-photos {
+	width: 102px; height: 102px;
+}
+.ProfileTweet .QuoteTweet .multi-photo {
+	width: 250px;
+}
+.ProfileTweetbox {
+	border-width: 1px; border-style: solid; padding: 15px; border-radius: 5px;
+}
+.ProfileTweetbox .tweet-box {
+	padding: 11px; color: rgb(136, 153, 166); font-size: 14px;
+}
+.ProfileTweetbox .Icon--geo {
+	margin: 0px;
+}
+.ProfileTweetbox .photo-selector .text {
+	display: none;
+}
+.ProfileTweetbox .condensed .tweet-box {
+	padding-right: 30px;
+}
+.ProfileTweetbox .tweet-action {
+	text-shadow: none; background-image: none;
+}
+.ProfileUserList-heading {
+	color: rgb(136, 153, 166); margin-bottom: 13px;
+}
+.ProfileUserList-title {
+	line-height: 1; font-size: 14px;
+}
+.ProfileUserList-name .Icon {
+	min-width: 18px;
+}
+.ProfileUserList-description {
+	line-height: 16px; font-size: 12px; margin-top: 6px;
+}
+.ProfileUserList-details {
+	font-size: 12px; margin-top: 5px;
+}
+.ProfileUserList-actions button:hover {
+	text-decoration: underline;
+}
+.ProfileUserList-linkDivider {
+	padding: 0px 1px;
+}
+.is-subscribed.ProfileUserList-subscribeAction .ProfileUserList-subscribeText {
+	display: none;
+}
+.is-unsubscribed.ProfileUserList-subscribeAction .ProfileUserList-removeText {
+	display: none;
+}
+.ProfileUserList-facepile {
+	margin: -5px -5px 0px;
+}
+.ProfileUserList-facepileItem {
+	margin: 5px 0px 0px 5px; float: left;
+}
+.ProfileUserList-footer {
+	font-size: 12px; margin-top: 5px;
+}
+.ProfileUserList .Avatar {
+	border-radius: 4px;
+}
+.ProtectedTimeline {
+	margin: 35px 0px 35px 15px;
+}
+.ProtectedTimeline-heading {
+	color: rgb(102, 117, 127); font-size: 22px; font-weight: 300; margin-bottom: 15px;
+}
+.ProtectedTimeline-explanation {
+	color: rgb(102, 117, 127);
+}
+.ScrollBump {
+	margin: 30px 0px;
+}
+.ScrollBump-header {
+	margin-bottom: 10px; margin-left: 16px;
+}
+.ScrollBump-title {
+	color: rgb(102, 117, 127); padding-left: 22px; font-size: 13px; position: relative;
+}
+.ScrollBump-title a {
+	color: rgb(0, 132, 180);
+}
+.ScrollBump-title a:hover {
+	color: rgb(0, 132, 180);
+}
+.ScrollBump-title a:focus {
+	color: rgb(0, 132, 180);
+}
+.ScrollBump-title a:active {
+	color: rgb(0, 132, 180);
+}
+.ScrollBump-title .Icon {
+	left: 0px; top: -1px; position: absolute;
+}
+.ScrollBumpDialog .modal-body {
+	padding: 0px; -ms-overflow-y: scroll; border-bottom-right-radius: 6px; border-bottom-left-radius: 6px;
+}
+.ScrollBumpDialog-usersList {
+	list-style: none; margin-left: 0px;
+}
+.ScrollBumpDialog :last-child.stream-item .account {
+	border-bottom-color: currentColor; border-bottom-width: 0px; border-bottom-style: none;
+}
+.StreamItem {
+	position: relative;
+}
+.StreamToggler-item {
+	display: inline-block;
+}
+.StreamToggler-link {
+	padding: 15px 15px 12px; color: rgb(204, 214, 221); line-height: 1; font-size: 18px; font-weight: 400; display: block;
+}
+.is-active.StreamToggler-link {
+	color: rgb(41, 47, 51); font-weight: 500; text-decoration: none; cursor: default;
+}
+.is-active.StreamToggler-link:hover {
+	color: rgb(41, 47, 51); font-weight: 500; text-decoration: none; cursor: default;
+}
+.is-active.StreamToggler-link:focus {
+	color: rgb(41, 47, 51); font-weight: 500; text-decoration: none; cursor: default;
+}
+.Trends {
+	border-radius: 0px; border: 0px currentColor; border-image: none; line-height: inherit; margin-bottom: 0px; position: inherit; text-shadow: none; background-clip: inherit;
+}
+.Trends .flex-module {
+	padding: 0px; line-height: inherit; background-color: inherit;
+}
+.Trends .trend-location {
+	color: rgb(102, 117, 127); font-weight: 300;
+}
+.Trends .trend-item {
+	line-height: 22px; font-size: 14px; font-weight: 400;
+}
+.Trends--wide {
+	border: 0px currentColor; border-image: none; margin-bottom: 10px;
+}
+.Trends--wide .flex-module {
+	padding: 15px 40px; background-color: rgb(255, 255, 255);
+}
+.Trends--wide .flex-module-header h3 {
+	display: block;
+}
+.Trends--wide .flex-module-header small {
+	display: none;
+}
+.Trends--wide li {
+	padding-right: 15px; display: inline; white-space: normal;
+}
+.Trends--wide .trend-item {
+	font-size: 12px;
+}
+.Trends--wide .promoted .with-icn {
+	display: inline;
+}
+.TwitterMultiPhoto-image {
+	overflow: hidden; position: absolute; cursor: pointer;
+}
+.TwitterMultiPhoto-image img {
+	position: absolute;
+}
+.TwitterMultiPhoto-collection {
+	border-radius: 5px; overflow: hidden;
+}
+.TwitterMultiPhoto-collection--count1 .TwitterMultiPhoto-image--1 {
+	left: 0px; top: 0px; right: 0px; bottom: 0px;
+}
+.TwitterMultiPhoto-collection--count2 .TwitterMultiPhoto-image--1 {
+	left: 0px; top: 0px; right: 50.5%; bottom: 0px;
+}
+.TwitterMultiPhoto-collection--count2 .TwitterMultiPhoto-image--2 {
+	left: 50.5%; top: 0px; right: 0px; bottom: 0px;
+}
+.TwitterMultiPhoto-collection--count3 .TwitterMultiPhoto-image--1 {
+	left: 0px; top: 0px; right: 50.5%; bottom: 0px;
+}
+.TwitterMultiPhoto-collection--count3 .TwitterMultiPhoto-image--2 {
+	left: 50.5%; top: 0px; right: 0px; bottom: 51%;
+}
+.TwitterMultiPhoto-collection--count3 .TwitterMultiPhoto-image--3 {
+	left: 50.5%; top: 51%; right: 0px; bottom: 0px;
+}
+.TwitterMultiPhoto-collection--count4 .TwitterMultiPhoto-image--1 {
+	left: 0px; top: 0px; right: 50.5%; bottom: 51%;
+}
+.TwitterMultiPhoto-collection--count4 .TwitterMultiPhoto-image--2 {
+	left: 50.5%; top: 0px; right: 0px; bottom: 51%;
+}
+.TwitterMultiPhoto-collection--count4 .TwitterMultiPhoto-image--3 {
+	left: 0px; top: 51%; right: 50.5%; bottom: 0px;
+}
+.TwitterMultiPhoto-collection--count4 .TwitterMultiPhoto-image--4 {
+	left: 50.5%; top: 51%; right: 0px; bottom: 0px;
+}
+.TwitterPhoto-container {
+	text-align: center; vertical-align: top; display: block; max-width: 100%;
+}
+.TwitterPhoto-media {
+	border-radius: 5px; border: 1px solid rgb(225, 232, 237); border-image: none; overflow: hidden; max-height: 262px; box-sizing: border-box; background-color: rgb(255, 255, 255); -moz-box-sizing: border-box;
+}
+.TwitterPhoto-gif {
+	width: 100%; overflow: hidden; max-height: 262px;
+}
+.is-playing.TwitterPhoto-gif {
+	max-height: none;
+}
+.is-playing.TwitterPhoto-gif .Icon--mediaplay {
+	display: none;
+}
+.is-playing.TwitterPhoto-gif .animated-gif-thumbnail {
+	display: none;
+}
+.TwitterPhoto-gif .animated-gif {
+	display: none;
+}
+.is-playing.TwitterPhoto-gif .animated-gif {
+	display: block;
+}
+.TwitterPhoto-gif .animated-gif-thumbnail {
+	width: 100%;
+}
+.TwitterPhoto-gif .animated-gif {
+	width: 100%;
+}
+.TwitterPhoto-link {
+	font-size: 0px; cursor: pointer; max-width: 100%;
+}
+.TwitterPhoto-link::before {
+	height: 100%; vertical-align: middle; display: inline-block; content: "";
+}
+.TwitterPhoto-link .smart-crop-debug {
+	top: 0px; width: 100%; height: 100%; position: absolute; z-index: 100;
+}
+.TwitterPhoto-link .smart-crop-debug .smart-crop-rect {
+	border: 1px solid red; border-image: none; position: absolute;
+}
+.TwitterPhoto-mediaSource {
+	margin: 0px auto; vertical-align: middle; display: inline-block; max-width: 100%;
+}
+.is-inTransition.TwitterPhoto-link .TwitterPhoto-mediaSource {
+	transition:margin-top 0.3s;
+}
+.TwitterPhoto-source {
+	margin-top: 15px;
+}
+.UserActions .user-actions .dropdown-menu {
+	right: -6px; margin-top: 4px;
+}
+.UserActions .user-actions .open.dropdown button {
+	border-color: transparent;
+}
+.UserActions-moreActions {
+	padding-right: 4px; min-height: 29px;
+}
+.UserActions-moreActions > * {
+	vertical-align: baseline;
+}
+.UserActions-editButton {
+	padding-top: 9px; padding-bottom: 9px;
+}
+.UserActions .user-dropdown {
+	color: rgb(136, 153, 166); padding-top: 2px;
+}
+.UserActions--small .user-dropdown {
+	padding-top: 0px;
+}
+.UserActions--withheld .user-actions {
+	display: none;
+}
+.UserActions--withheld .following.user-actions {
+	display: block;
+}
+.UserActions--withheld .pending.user-actions {
+	display: block;
+}
+.WhoToFollow {
+	font-size: 12px; display: none;
+}
+.is-visible.WhoToFollow {
+	display: block;
+}
+.WhoToFollow-header {
+	margin-bottom: 15px;
+}
+.WhoToFollow-title {
+	color: rgb(102, 117, 127); line-height: 1; font-size: 18px; font-weight: 300; display: inline-block;
+}
+.WhoToFollow-users > .account-summary {
+	margin-bottom: 15px;
+}
+.WhoToFollow-users .fullname {
+	color: rgb(41, 47, 51); font-size: 13px;
+}
+.WhoToFollow-users .username {
+	color: rgb(136, 153, 166);
+}
+.EventCanopy-addHeaderCalloutContainer {
+	width: 100%; text-align: center; position: absolute;
+}
+.EventCanopy-addHeaderCalloutContainer--large {
+	bottom: 105px;
+}
+.EventCanopy-addHeaderCalloutContainer--small {
+	bottom: 50px;
+}
+.EventCanopy-addHeaderCallout {
+	background: none; color: rgb(255, 255, 255); font-size: 52px; font-weight: 700; display: inline-block; text-shadow: 0px 1px 2px #000;
+}
+.EventCanopy-cardHeader {
+	color: rgb(41, 47, 51); padding-top: 18px; padding-left: 15px; font-size: 18px; font-weight: 700;
+}
+.EventCanopy-scoreboard {
+	padding-top: 15px;
+}
+.EventCanopy-scoreboardLogo {
+	border-radius: 3px; top: 2px; height: 24px; position: relative;
+}
+.EventCanopy-scoreboardVs {
+	color: rgb(102, 117, 127); font-size: 18px; font-weight: 500;
+}
+.EventCanopy-scoreboardDash {
+	color: rgb(102, 117, 127); font-size: 18px; font-weight: 500;
+}
+.EventCanopy-scoreboardVs {
+	padding: 0px 15px;
+}
+.EventCanopy-scoreboardScore {
+	padding: 0px 10px; white-space: nowrap;
+}
+.EventCanopy-scoreboardStatus {
+	color: rgb(102, 117, 127); padding-left: 15px;
+}
+.EventPage {
+	line-height: 1.375; min-width: 936px; background-image: none !important; background-color: rgb(245, 248, 250) !important;
+}
+.EventPage .AppContent {
+	padding: 46px 0px 0px;
+}
+.EventPage .ProfileCanopy-navBar .NewTweetButton {
+	margin-top: 11px; margin-right: 15px; float: right;
+}
+.EventPage .new-tweets-bar {
+	top: 0px; border-bottom-color: currentColor; border-bottom-width: 0px; border-bottom-style: none; background-color: rgb(255, 255, 255);
+}
+.EventPage .new-tweets-bar:hover {
+	background-color: rgb(245, 248, 250);
+}
+.EventPage .ProfileTweet-context .Icon {
+	color: rgb(136, 153, 166);
+}
+.de.EventPage .EventCanopy-scoreboardStatus--isFinal {
+	display: none;
+}
+.ru.EventPage .EventCanopy-scoreboardStatus--isFinal {
+	display: none;
+}
+@media all and (max-width:1110px)
+{
+.EventPage .EventCanopy-scoreboardStatus {
+	display: none;
+}
+.ru.EventPage .NewTweetButton {
+	font-size: 12px;
+}
+}
+.EventNav-label {
+	color: rgb(41, 47, 51); font-size: 18px; font-weight: 500;
+}
+.EventNav-stat {
+	padding: 21px 15px 7px; transition:0.15s ease-in-out; height: 60px; line-height: 1; border-bottom-color: currentColor; border-bottom-width: 0px; border-bottom-style: solid; display: block; box-sizing: border-box; -moz-box-sizing: border-box;
+}
+.EventPeopleModule-heading {
+	margin: 20px 0px 5px 15px; line-height: 1; font-size: 14px;
+}
+.EventPeopleModule-heading .Icon {
+	color: rgb(136, 153, 166);
+}
+.EventPeopleModule-memberList {
+	margin: 0px 0px 4px 15px;
+}
+.EventPeopleModule-member {
+	margin: 5px 5px 0px 0px; float: left;
+}
+.SearchOneBox-bannerContainer {
+	border-radius: 5px; height: 190px; overflow: hidden;
+}
+.SearchOneBox-headline {
+	font-weight: bold; margin-bottom: 10px;
+}
+.SearchOneBox-description {
+	margin-top: 12px;
+}
+.SearchOneBox-cta {
+	margin-left: 10px; white-space: nowrap;
+}
+.CurrentMatches--withBackground {
+	border-radius: 5px; border: 1px solid rgb(225, 232, 237); border-image: none; background-color: rgb(255, 255, 255);
+}
+.CurrentMatches--withBackground .CurrentMatches-heading {
+	margin: 0px; padding: 13px 15px; border-bottom-color: rgb(225, 232, 237); border-bottom-width: 1px; border-bottom-style: solid;
+}
+.CurrentMatches--withBackground .CurrentMatches-headingText {
+	font-size: 20px; font-weight: 300;
+}
+.CurrentMatches--withBackground .CurrentMatches-undismiss {
+	margin: 0px; padding: 10px 15px; border-top-color: currentColor; border-top-width: 0px; border-top-style: none;
+}
+.CurrentMatches--withBackground :last-child.MatchItem {
+	border-bottom-color: currentColor; border-bottom-width: 0px; border-bottom-style: none;
+}
+.CurrentMatches--withBackground .CurrentMatches-footer {
+	margin: 0px; padding: 12px 15px 15px;
+}
+.CurrentMatches--withBackground .MatchItem-viewMatch:hover {
+	text-decoration: none;
+}
+.CurrentMatches--withBackground .MatchItem-viewMatch {
+	color: rgb(41, 47, 51); padding-top: 8px; font-weight: bold; margin-top: 10px;
+}
+.CurrentMatches-heading {
+	margin: 0px 15px; padding: 24px 0px 0px;
+}
+.CurrentMatches-headingText {
+	color: rgb(41, 47, 51); line-height: 1; font-size: 22px; font-weight: 700;
+}
+.CurrentMatches-footer {
+	margin: 0px 15px; padding: 12px 0px 15px; border-radius: 0px 0px 5px 5px; color: rgb(102, 117, 127); line-height: 16px; font-size: 14px; border-top-color: rgb(225, 232, 237); border-top-width: 1px; border-top-style: solid; background-color: rgb(245, 248, 250);
+}
+.CurrentMatches-footer a {
+	margin-top: 3px; display: inline-block;
+}
+.CurrentMatches-footer .btn {
+	padding: 4px 12px; font-size: 13px; font-weight: 500; margin-top: 10px;
+}
+.CurrentMatches-dismiss {
+	top: 2px; color: rgb(204, 214, 221); float: right; position: relative;
+}
+.CurrentMatches-dismiss:hover {
+	color: rgb(102, 117, 127);
+}
+.CurrentMatches-undismiss {
+	border-width: 1px 0px; border-style: solid; border-color: rgb(225, 232, 237); margin: 15px 15px 0px; padding: 10px 0px; border-image: none; display: none;
+}
+.CurrentMatches-undismissIcon {
+	color: rgb(102, 117, 127); padding-right: 10px;
+}
+.CurrentMatches-undismissText {
+	top: 1px; position: relative;
+}
+.CurrentMatches-leagueLinkText {
+	top: 1px; position: relative;
+}
+.CurrentMatches-leagueLink {
+	margin: 0px 15px; padding: 10px 0px; border-bottom-color: rgb(225, 232, 237); border-bottom-width: 1px; border-bottom-style: solid;
+}
+.CurrentMatches-leagueLinkIcon {
+	color: rgb(136, 153, 166); padding-right: 5px;
+}
+.CurrentMatches .MatchItem {
+	margin: 0px 15px; padding-bottom: 15px;
+}
+.CurrentMatches--withBackground .MatchItem {
+	margin: 0px; padding: 0px 15px 15px;
+}
+.MatchItem {
+	border-bottom-color: rgb(225, 232, 237); border-bottom-width: 1px; border-bottom-style: solid;
+}
+.MatchItem:hover {
+	background-color: rgb(245, 248, 250);
+}
+.MatchItem-time {
+	padding: 15px 0px 6px; color: rgb(102, 117, 127); font-size: 14px; font-weight: 400;
+}
+.MatchItem-live {
+	padding: 1px 4px; border-radius: 3px; color: rgb(255, 255, 255); text-transform: uppercase; font-size: 11px; margin-right: 7px; background-color: rgb(221, 46, 68);
+}
+.MatchItem-status {
+	vertical-align: middle;
+}
+.MatchItem-teams {
+	width: 100%;
+}
+.MatchItem-logoContainer {
+	width: 56px;
+}
+.MatchItem-logoImg {
+	border-radius: 3px; height: 24px;
+}
+.MatchItem-teamName {
+	padding: 6px 0px; width: 124px; color: rgb(41, 47, 51); font-size: 18px; font-weight: 700;
+}
+.MatchItem-teamName--withLongName {
+	line-height: 18px; font-size: 16px;
+}
+.MatchItem-scoreContainer {
+	width: 80px; white-space: nowrap;
+}
+.MatchItem-score {
+	margin: 0px 15px; color: rgb(102, 117, 127); font-size: 18px; font-weight: 500;
+}
+.MatchItem-viewMatch {
+	padding-top: 6px; font-size: 13px; font-weight: 400;
+}
+.MatchItem-viewMatch:hover {
+	text-decoration: underline;
+}
+.ExplorePage-landingHeader {
+	margin: -14px -14px 0px -56px; padding: 20px 95px; position: relative; background-color: rgb(237, 246, 254);
+}
+.ExplorePage-landingHeader h1 {
+	padding-bottom: 15px; font-size: 36px; font-weight: 300; margin-bottom: 10px; border-bottom-color: rgb(225, 232, 237); border-bottom-width: 1px; border-bottom-style: solid;
+}
+.ExplorePage-landingHeader li {
+	padding-right: 20px; margin-bottom: 6px; float: left;
+}
+.ExplorePage-landingHeader li a {
+	color: rgb(102, 117, 128); font-size: 18px; font-weight: 300;
+}
+.ExplorePage-header h1 a {
+	color: rgb(136, 153, 166);
+}
+.ExplorePage-filters :not(.active) a {
+	color: rgb(136, 153, 166);
+}
+.ExplorePage-header + .ExplorePage-subTopics li a {
+	color: rgb(136, 153, 166);
+}
+.ExplorePage-header h1 a:hover {
+	color: rgb(136, 153, 166); text-decoration: none;
+}
+.ExplorePage-filters a:hover {
+	color: rgb(136, 153, 166); text-decoration: none;
+}
+.ExplorePage-subTopics a:hover {
+	color: rgb(136, 153, 166); text-decoration: none;
+}
+.ExplorePage-header h1 a:focus {
+	color: rgb(136, 153, 166); text-decoration: none;
+}
+.ExplorePage-filters a:focus {
+	color: rgb(136, 153, 166); text-decoration: none;
+}
+.ExplorePage-subTopics a:focus {
+	color: rgb(136, 153, 166); text-decoration: none;
+}
+.ExplorePage-header {
+	padding: 10px 0px; border-bottom-color: rgb(225, 232, 237); border-bottom-width: 1px; border-bottom-style: solid;
+}
+.ExplorePage-header + .ExplorePage-subTopics {
+	padding: 10px 0px; border-bottom-color: rgb(225, 232, 237); border-bottom-width: 1px; border-bottom-style: solid;
+}
+.ExplorePage-header h1 {
+	font-weight: 400; margin-right: 10px;
+}
+.ExplorePage-filters .filter {
+	margin: 0px 10px; color: rgb(136, 153, 166);
+}
+.ExplorePage-subTopics li {
+	padding: 0px 10px; float: left;
+}
+.ExplorePage .content-main {
+	width: 100%; float: none;
+}
+.ExplorePage .explore-stream .stream-item {
+	border-right-color: currentColor; border-left-color: currentColor; border-right-width: 0px; border-left-width: medium; border-right-style: none; border-left-style: none;
+}
+.explore-stream .card2 {
+	border: 0px currentColor; border-image: none;
+}
+.content-main .explore-stream .stream-item .expansion-container > li .tweet {
+	border: 0px currentColor; border-image: none;
+}
+.explore-stream .separation-module {
+	border-radius: 0px; border-top-color: currentColor; border-bottom-color: rgb(225, 232, 237); border-top-width: 0px; border-bottom-width: 1px; border-top-style: none; border-bottom-style: solid;
+}
+.StreamTweetGallery {
+	margin-bottom: 20px;
+}
+.StreamTweetGallery-label {
+	margin: 20px 0px 15px; width: 100%; text-align: left; color: rgb(204, 214, 221); line-height: 0.1em; font-size: 14px; font-weight: 500; border-bottom-color: rgb(225, 232, 237); border-bottom-width: 2px; border-bottom-style: solid;
+}
+.StreamTweetGallery-label span {
+	background: rgb(255, 255, 255); padding-right: 10px;
+}
+.StreamTweetGallery-more {
+	margin: 10px 0px; font-size: 13px; display: block;
+}

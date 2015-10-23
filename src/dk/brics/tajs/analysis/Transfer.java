@@ -23,6 +23,8 @@ import dk.brics.tajs.flowgraph.BasicBlock;
 import dk.brics.tajs.flowgraph.jsnodes.CallNode;
 import dk.brics.tajs.flowgraph.jsnodes.IfNode;
 import dk.brics.tajs.flowgraph.jsnodes.Node;
+import dk.brics.tajs.lattice.Context;
+import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.solver.IEdgeTransfer;
 import dk.brics.tajs.solver.INodeTransfer;
 import org.apache.log4j.Logger;

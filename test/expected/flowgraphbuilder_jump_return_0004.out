@@ -43,54 +43,57 @@ fg2: function()
     node 18: exceptional-return (test/flowgraphbuilder/flowgraph_builder_jump_return_0004.js:1:1)
     ->[]
 function f()
-  block 12:
-    node 19: end-for-in(begin-node:24)* (test/flowgraphbuilder/flowgraph_builder_jump_return_0004.js:6:13)
-    ->[block 15] ~>[block 18]
-  block 13: [entry]
-    node 20: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder_jump_return_0004.js:1:1)
-    ->[block 14]
+  block 12: [entry]
+    node 19: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder_jump_return_0004.js:1:1)
+    ->[block 13]
+  block 13:
+    node 20: new[v5] (test/flowgraphbuilder/flowgraph_builder_jump_return_0004.js:4:22)
+    node 21: constant[true,v9] (test/flowgraphbuilder/flowgraph_builder_jump_return_0004.js:4:26)
+    node 22: write-property[v5,'p',v9] (test/flowgraphbuilder/flowgraph_builder_jump_return_0004.js:4:23)
+    ->[block 15] ~>[block 22]
   block 14:
-    node 21: new[v5] (test/flowgraphbuilder/flowgraph_builder_jump_return_0004.js:4:22)
-    node 22: constant[true,v9] (test/flowgraphbuilder/flowgraph_builder_jump_return_0004.js:4:26)
-    node 23: write-property[v5,'p',v9] (test/flowgraphbuilder/flowgraph_builder_jump_return_0004.js:4:23)
-    ->[block 15] ~>[block 20]
+    node 23: end-for-in(begin-node:24)* (test/flowgraphbuilder/flowgraph_builder_jump_return_0004.js:6:13)
+    ->[block 15] ~>[block 22]
   block 15:
     node 24: begin-for-in[v5,v6] (test/flowgraphbuilder/flowgraph_builder_jump_return_0004.js:4:13)
-    ->[block 16] ~>[block 20]
+    ->[block 16] ~>[block 22]
   block 16:
     node 25: has-next[v6,v7] (test/flowgraphbuilder/flowgraph_builder_jump_return_0004.js:4:13)
-    node 26: if[v7](true-block:17,false-block:22) (test/flowgraphbuilder/flowgraph_builder_jump_return_0004.js:4:13)
-    ->[block 17,block 22] ~>[block 20]
+    node 26: if[v7](true-block:17,false-block:21) (test/flowgraphbuilder/flowgraph_builder_jump_return_0004.js:4:13)
+    ->[block 17,block 21] ~>[block 20]
   block 17:
     node 27: next-property[v6,v8] (test/flowgraphbuilder/flowgraph_builder_jump_return_0004.js:4:17)
     node 28: write-variable[v8,'x']* (test/flowgraphbuilder/flowgraph_builder_jump_return_0004.js:4:17)
     node 29: constant[true,v1]* (test/flowgraphbuilder/flowgraph_builder_jump_return_0004.js:5:24)
-    ->[block 19] ~>[block 18]
+    ->[block 18] ~>[block 20]
   block 18:
     node 30: end-for-in(begin-node:24)* (test/flowgraphbuilder/flowgraph_builder_jump_return_0004.js:6:13)
-    ->[block 20]
+    ->[block 19] ~>[block 22]
   block 19:
-    node 31: end-for-in(begin-node:24)* (test/flowgraphbuilder/flowgraph_builder_jump_return_0004.js:6:13)
-    ->[block 21] ~>[block 20]
-  block 20:
-    node 32: catch[v2] (test/flowgraphbuilder/flowgraph_builder_jump_return_0004.js:2:5)
-    node 33(~38): constant[true,v3] (test/flowgraphbuilder/flowgraph_builder_jump_return_0004.js:11:13)
-    node 34(~39): write-variable[v3,'v']* (test/flowgraphbuilder/flowgraph_builder_jump_return_0004.js:11:9)
-    node 35: throw[v2]* (test/flowgraphbuilder/flowgraph_builder_jump_return_0004.js:2:5)
+    node 31(~39): constant[true,v4] (test/flowgraphbuilder/flowgraph_builder_jump_return_0004.js:11:13)
+    node 32(~40): write-variable[v4,'v']* (test/flowgraphbuilder/flowgraph_builder_jump_return_0004.js:11:9)
     ->[block 24]
+  block 20:
+    node 33: end-for-in(begin-node:24)* (test/flowgraphbuilder/flowgraph_builder_jump_return_0004.js:6:13)
+    ->[block 22]
   block 21:
-    node 36(~38): constant[true,v4] (test/flowgraphbuilder/flowgraph_builder_jump_return_0004.js:11:13)
-    node 37(~39): write-variable[v4,'v']* (test/flowgraphbuilder/flowgraph_builder_jump_return_0004.js:11:9)
-    ->[block 23]
+    node 34: end-for-in(begin-node:24)* (test/flowgraphbuilder/flowgraph_builder_jump_return_0004.js:6:13)
+    ->[block 23] ~>[block 22]
   block 22:
-    node 38: constant[true,v4] (test/flowgraphbuilder/flowgraph_builder_jump_return_0004.js:11:13)
-    node 39: write-variable[v4,'v']* (test/flowgraphbuilder/flowgraph_builder_jump_return_0004.js:11:9)
-    ->[block 23]
-  block 23: [exit-ordinary]
-    node 40: return[v1] (test/flowgraphbuilder/flowgraph_builder_jump_return_0004.js:13:1)
+    node 35: catch[v2] (test/flowgraphbuilder/flowgraph_builder_jump_return_0004.js:2:5)
+    node 36(~39): constant[true,v3] (test/flowgraphbuilder/flowgraph_builder_jump_return_0004.js:11:13)
+    node 37(~40): write-variable[v3,'v']* (test/flowgraphbuilder/flowgraph_builder_jump_return_0004.js:11:9)
+    node 38: throw[v2]* (test/flowgraphbuilder/flowgraph_builder_jump_return_0004.js:2:5)
+    ->[block 25]
+  block 23:
+    node 39: constant[true,v4] (test/flowgraphbuilder/flowgraph_builder_jump_return_0004.js:11:13)
+    node 40: write-variable[v4,'v']* (test/flowgraphbuilder/flowgraph_builder_jump_return_0004.js:11:9)
+    ->[block 24]
+  block 24: [exit-ordinary]
+    node 41: return[v1] (test/flowgraphbuilder/flowgraph_builder_jump_return_0004.js:13:1)
     ->[]
-  block 24: [exit-exceptional]
-    node 41: exceptional-return (test/flowgraphbuilder/flowgraph_builder_jump_return_0004.js:13:1)
+  block 25: [exit-exceptional]
+    node 42: exceptional-return (test/flowgraphbuilder/flowgraph_builder_jump_return_0004.js:13:1)
     ->[]
 
 test/flowgraphbuilder/flowgraph_builder_jump_return_0004.js:16:13: [maybe] ReferenceError, reading absent variable x

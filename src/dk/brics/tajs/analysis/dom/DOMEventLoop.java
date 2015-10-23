@@ -18,147 +18,99 @@ package dk.brics.tajs.analysis.dom;
 
 import dk.brics.tajs.analysis.FunctionCalls;
 import dk.brics.tajs.analysis.Solver;
-import dk.brics.tajs.analysis.State;
 import dk.brics.tajs.flowgraph.jsnodes.EventDispatcherNode;
 import dk.brics.tajs.lattice.ObjectLabel;
+import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.options.Options;
 import org.apache.log4j.Logger;
 
 import java.util.Set;
 
-import static dk.brics.tajs.util.Collections.newSet;
-
 public class DOMEventLoop {
 
     private static Logger log = Logger.getLogger(DOMEventLoop.class);
 
-    public static void multipleNondeterministicEventLoops(EventDispatcherNode n, State state, Solver.SolverInterface c) {
+    private static DOMEventLoop instance;
 
-        // Load Event Handlers
+    private final Value loadEvent;
+
+    private final Value keyboardEvent;
+
+    private final Value mouseEvent;
+
+    private final Value ajaxEvent;
+
+    private final Value anyEvent;
+
+    private DOMEventLoop() {
+        anyEvent = DOMEvents.createAnyEvent();
+
+        loadEvent = DOMEvents.createAnyLoadEvent();
+
+        if (Options.get().isSingleEventHandlerType()) {
+            keyboardEvent = anyEvent;
+        } else {
+            keyboardEvent = DOMEvents.createAnyKeyboardEvent();
+        }
+
+        if (Options.get().isSingleEventHandlerType()) {
+            mouseEvent = anyEvent;
+        } else {
+            mouseEvent = DOMEvents.createAnyMouseEvent();
+        }
+
+        if (Options.get().isSingleEventHandlerType()) {
+            ajaxEvent = anyEvent;
+        } else {
+            ajaxEvent = DOMEvents.createAnyAjaxEvent();
+        }
+    }
+
+    public static DOMEventLoop get() {
+
+        if (instance == null) {
+            instance = new DOMEventLoop();
+        }
+        return instance;
+    }
+
+    private static void triggerEventHandler(EventDispatcherNode currentNode, State currentState, DOMRegistry.MaySets eventhandlerKind, Value event, boolean requiresStateCloning, Solver.SolverInterface c) {
+        Set<ObjectLabel> handlers = currentState.getExtras().getFromMaySet(eventhandlerKind.name());
+        if (handlers.isEmpty()) {
+            return;
+        }
+        State callState = requiresStateCloning ? currentState.clone() : currentState;
+        for (ObjectLabel l : handlers) {
+            log.debug("Triggering eventHandlers <" + eventhandlerKind + ">: " + l);
+        }
+
+        if (event != null) {
+            callState.writeProperty(DOMWindow.WINDOW, "event", event);
+        }
+
+        c.setCurrentState(callState);
+        FunctionCalls.callFunction(
+                new FunctionCalls.EventHandlerCall(currentNode, Value.makeObject(handlers), event),
+                callState, c);
+        c.setCurrentState(currentState);
+    }
+
+    public void multipleNondeterministicEventLoops(EventDispatcherNode n, State state, Solver.SolverInterface c) {
         if (n.getType() == EventDispatcherNode.Type.LOAD) {
-            // Debugging
-
-            Set<ObjectLabel> labels = newSet();
-            labels.addAll(state.getExtras().getFromMaySet(DOMRegistry.MaySets.LOAD_EVENT_HANDLER.name()));
-            labels.addAll(state.getExtras().getFromMustSet(DOMRegistry.MustSets.LOAD_EVENT_HANDLER.name())); // TODO: must-information currently unused (#116)
-
-            if (Options.get().isDebugEnabled()) {
-                for (ObjectLabel l : labels) {
-                    log.debug("LoadEventHandler: " + l);
-                }
-            }
-
-            FunctionCalls.callFunction(
-                    new FunctionCalls.EventHandlerCall(n, Value.makeObject(labels), null),
-                    state, c);
+            triggerEventHandler(n, state, DOMRegistry.MaySets.LOAD_EVENT_HANDLER, loadEvent, false, c);
         }
 
-        // Unload Event Handlers
         if (n.getType() == EventDispatcherNode.Type.UNLOAD) {
-            // Debugging
-            if (Options.get().isDebugEnabled()) {
-                for (ObjectLabel l : state.getExtras().getFromMaySet(DOMRegistry.MaySets.UNLOAD_EVENT_HANDLERS.name())) {
-                    log.debug("UnloadEventHandler: " + l);
-                }
-            }
-
-            FunctionCalls.callFunction(
-                    new FunctionCalls.EventHandlerCall(n, Value.makeObject(state.getExtras().getFromMaySet(DOMRegistry.MaySets.UNLOAD_EVENT_HANDLERS.name())), null),
-                    state, c);
+            triggerEventHandler(n, state, DOMRegistry.MaySets.UNLOAD_EVENT_HANDLERS, null, false, c);
         }
 
-        // Other Event Handlers
         if (n.getType() == EventDispatcherNode.Type.OTHER) {
-            // Debugging
-            if (Options.get().isDebugEnabled()) {
-                for (ObjectLabel l : state.getExtras().getFromMaySet(DOMRegistry.MaySets.KEYBOARD_EVENT_HANDLER.name())) {
-                    log.debug("KeyboardEventHandler: " + l);
-                }
-                for (ObjectLabel l : state.getExtras().getFromMaySet(DOMRegistry.MaySets.MOUSE_EVENT_HANDLER.name())) {
-                    log.debug("MouseEventHandler: " + l);
-                }
-                for (ObjectLabel l : state.getExtras().getFromMaySet(DOMRegistry.MaySets.AJAX_EVENT_HANDLER.name())) {
-                    log.debug("AjaxEventHandlers: " + l);
-                }
-                for (ObjectLabel l : state.getExtras().getFromMaySet(DOMRegistry.MaySets.UNKNOWN_EVENT_HANDLERS.name())) {
-                    log.debug("UnknownEventHandler: " + l);
-                }
-                for (ObjectLabel l : state.getExtras().getFromMaySet(DOMRegistry.MaySets.TIMEOUT_EVENT_HANDLERS.name())) {
-                    log.debug("TimeoutEventHandler: " + l);
-                }
-            }
-
-            // States
-            final State keyboardState = state.clone();
-            final State mouseState = state.clone();
-            final State ajaxState = state.clone();
-            final State unknownState = state.clone();
-            final State timeoutState = state.clone(); // TODO: cloning states is expensive - only do it if the states are actually needed (similar for the other state manipulation below) - see also singleNondeterministicEventLoop
-
-            // Keyboard Events
-            Value keyboardEvent;
-            if (Options.get().isSingleEventHandlerType()) {
-                keyboardEvent = DOMEvents.createAnyEvent();
-            } else {
-                keyboardEvent = DOMEvents.createAnyKeyboardEvent();
-            }
-            keyboardState.writeProperty(DOMWindow.WINDOW, "event", keyboardEvent);
-            c.setCurrentState(keyboardState);
-            FunctionCalls.callFunction(
-                    new FunctionCalls.EventHandlerCall(n, Value.makeObject(keyboardState.getExtras().getFromMaySet(DOMRegistry.MaySets.KEYBOARD_EVENT_HANDLER.name())), keyboardEvent),
-                    keyboardState, c);
-
-            // Mouse Events
-            Value mouseEvent;
-            if (Options.get().isSingleEventHandlerType()) {
-                mouseEvent = DOMEvents.createAnyEvent();
-            } else {
-                mouseEvent = DOMEvents.createAnyMouseEvent();
-            }
-            mouseState.writeProperty(DOMWindow.WINDOW, "event", mouseEvent);
-            c.setCurrentState(mouseState);
-            FunctionCalls.callFunction(
-                    new FunctionCalls.EventHandlerCall(n, Value.makeObject(mouseState.getExtras().getFromMaySet(DOMRegistry.MaySets.MOUSE_EVENT_HANDLER.name())), mouseEvent),
-                    mouseState, c);
-
-            // AJAX Events
-            Value ajaxEvent;
-            if (Options.get().isSingleEventHandlerType()) {
-                ajaxEvent = DOMEvents.createAnyEvent();
-            } else {
-                ajaxEvent = DOMEvents.createAnyAjaxEvent();
-            }
-            ajaxState.writeProperty(DOMWindow.WINDOW, "event", ajaxEvent);
-            c.setCurrentState(ajaxState);
-            FunctionCalls.callFunction(
-                    new FunctionCalls.EventHandlerCall(n, Value.makeObject(ajaxState.getExtras().getFromMaySet(DOMRegistry.MaySets.AJAX_EVENT_HANDLER.name())), ajaxEvent),
-                    ajaxState, c);
-
-            // Unknown Event Handlers
-            Value anyEvent = DOMEvents.createAnyEvent();
-            unknownState.writeProperty(DOMWindow.WINDOW, "event", anyEvent);
-            c.setCurrentState(unknownState);
-            FunctionCalls.callFunction(
-                    new FunctionCalls.EventHandlerCall(n, Value.makeObject(unknownState.getExtras().getFromMaySet(DOMRegistry.MaySets.UNKNOWN_EVENT_HANDLERS.name())), anyEvent),
-                    unknownState, c);
-
-            // Timeout
-            c.setCurrentState(timeoutState);
-            FunctionCalls.callFunction(
-                    new FunctionCalls.EventHandlerCall(n, Value.makeObject(timeoutState.getExtras().getFromMaySet(DOMRegistry.MaySets.TIMEOUT_EVENT_HANDLERS.name())), null),
-                    timeoutState, c);
-
-            // Return state to its original
-            c.setCurrentState(state);
-
-            // Join states
-// TODO: why join the states into 'state'? (commented out - also in singleNondeterministicEventLoop)
-//            state.propagate(keyboardState);
-//            state.propagate(mouseState);
-//            state.propagate(ajaxState);
-//            state.propagate(unknownState);
-//            state.propagate(timeoutState);
+            triggerEventHandler(n, state, DOMRegistry.MaySets.KEYBOARD_EVENT_HANDLER, keyboardEvent, true, c);
+            triggerEventHandler(n, state, DOMRegistry.MaySets.MOUSE_EVENT_HANDLER, mouseEvent, true, c);
+            triggerEventHandler(n, state, DOMRegistry.MaySets.AJAX_EVENT_HANDLER, ajaxEvent, true, c);
+            triggerEventHandler(n, state, DOMRegistry.MaySets.UNKNOWN_EVENT_HANDLERS, anyEvent, true, c);
+            triggerEventHandler(n, state, DOMRegistry.MaySets.TIMEOUT_EVENT_HANDLERS, null, true, c);
         }
     }
 }

@@ -21,7 +21,6 @@ public class TestMicro {
 		Options.get().enableTest();
 		Options.get().enableContextSensitiveHeap();
 		Options.get().enableParameterSensitivity();
-		Options.get().enableNumericVariableSensitivity();
 		//Options.get().enableForInSpecialization();
 		//Options.get().enableNoPolymorphic();
 		//Options.get().enableNoModified();
@@ -1156,6 +1155,43 @@ public class TestMicro {
 		Misc.checkSystemOutput();
 	}
 
+	@Ignore // See https://github.com/cs-au-dk/TAJS-private/issues/191
+	@Test
+	public void micro_125() throws Exception {
+		Misc.init();
+		String[] args = {"test/micro/test125.js"};
+		Misc.run(args);
+	}
+
+	@Test
+	public void micro_125a() throws Exception {
+		Misc.init();
+		String[] args = {"test/micro/test125a.js"};
+		Misc.run(args);
+	}
+
+	@Test
+	public void micro_125b() throws Exception {
+		Misc.init();
+		String[] args = {"test/micro/test125b.js"};
+		Misc.run(args);
+	}
+
+	@Test
+	public void micro_125c () throws Exception {
+		Misc.init();
+		String[] args = {"test/micro/test125c.js"};
+		Misc.run(args);
+	}
+
+	@Ignore // See https://github.com/cs-au-dk/TAJS-private/issues/191
+	@Test
+	public void micro_125d () throws Exception {
+		Misc.init();
+		String[] args = {"test/micro/test125d.js"};
+		Misc.run(args);
+	}
+
 	@Test
 	public void micro_126() throws Exception {
 		Misc.init();
@@ -1346,7 +1382,7 @@ public class TestMicro {
 		Misc.checkSystemOutput();
 	}
 
-	@Ignore // FIXME: BlockState (readPropertyRaw?) currently doesn't model ES5-style string index properties
+	@Ignore // FIXME: State (readPropertyRaw?) currently doesn't model ES5-style string index properties
 	@Test
 	public void micro_146() throws Exception {
 		Misc.init();
@@ -1831,6 +1867,7 @@ public class TestMicro {
 		Misc.checkSystemOutput();
 	}
 
+	@Ignore // TODO enable once loop unrolling has been implemented
 	@Test
 	public void micro_203() throws Exception {
 		Misc.init();
@@ -1840,6 +1877,7 @@ public class TestMicro {
 		Misc.checkSystemOutput();
 	}
 
+	@Ignore // TODO enable once loop unrolling has been implemented
 	@Test
 	public void micro_204() throws Exception {
 		Misc.init();
@@ -1849,6 +1887,7 @@ public class TestMicro {
 		Misc.checkSystemOutput();
 	}
 
+	@Ignore // TODO enable once loop unrolling has been implemented
 	@Test
 	public void micro_205() throws Exception {
 		Misc.init();
@@ -1858,6 +1897,7 @@ public class TestMicro {
 		Misc.checkSystemOutput();
 	}
 
+	@Ignore // TODO enable once loop unrolling has been implemented
 	@Test
 	public void micro_206() throws Exception {
 		Misc.init();
@@ -1903,6 +1943,15 @@ public class TestMicro {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test210.js"};
+		Misc.run(args);
+		Misc.checkSystemOutput();
+	}
+
+	@Test
+	public void micro_210b() throws Exception {
+		Misc.init();
+		Misc.captureSystemOutput();
+		String[] args = {"test/micro/test210b.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -2357,7 +2406,7 @@ public class TestMicro {
 				"TAJS_assert(Object.prototype.toString.call(U? {}: []), 'isMaybeStrOther');"
 		);
 	}
-	
+
 	@Test
 	public void micro_testAbstractGCPrecision() throws Exception {
 			Misc.init();
@@ -2528,6 +2577,318 @@ public class TestMicro {
 				"TAJS_assert(v[0], 'isMaybeStrIdentifier');",
 				"TAJS_assert(a[0], 'isMaybeStrIdentifier');",
 				"");
+	}
+
+	@Ignore // TODO enable and fail graciously
+	@Test
+	public void testLargeFunctionBody_1944_calls() throws Exception {
+		Misc.init();
+		// should not crash
+		String[] args = {"test/micro/largeFunctionBody_1944_calls.js"};
+		Misc.run(args);
+	}
+
+	@Ignore // TODO enable and fail graciously
+	@Test
+	public void testLargeFunctionBody_3888_calls() throws Exception {
+		Misc.init();
+		// should not crash
+		String[] args = {"test/micro/largeFunctionBody_3888_calls.js"};
+		Misc.run(args);
+	}
+
+	@Test
+	public void infinityToStringOtherNum(){
+		Misc.init();
+		Misc.runSource("",
+				"TAJS_assert((1/0).toString(), 'isMaybeStrOtherNum');",
+				"");
+	}
+
+	@Test
+	public void halfValue_toFixed(){
+		Misc.init();
+		Misc.runSource("",
+				// NB: Nashorn produces 0 in both cases!
+				"TAJS_assert((-0.5).toFixed() === '-1');",
+				"TAJS_assert((0.5).toFixed() === '1');",
+				"");
+	}
+
+	@Test
+	public void concatNumUInts(){
+		Misc.init();
+		Misc.runSource("",
+				"var uint = Math.random()? '0': '1';",
+				"var sequenceOfDigits = uint + uint;",
+				"TAJS_assert(sequenceOfDigits, 'isMaybeStrOtherNum');",
+				"TAJS_assert(sequenceOfDigits + sequenceOfDigits, 'isMaybeStrIdentifierParts');",
+				"");
+	}
+
+	@Test
+	public void undefinedRegisterCompoundPropertyAssignmentWithCall_orig(){
+		// should not crash
+		Misc.init();
+		Misc.runSource("",
+				"var UINT = Math.random()? 0: 1",
+				"var rp = [UINT];",
+				"function x(i){return i;};",
+				"var i = UINT;",
+				"var p = [UINT]",
+				"var n = UINT",
+				"rp[x(i)] &= ~p[n]",
+				"");
+	}
+
+	@Test
+	public void undefinedRegisterCompoundPropertyAssignmentWithCall(){
+		// should not crash
+		Misc.init();
+		Misc.runSource("",
+				"var o = {};",
+				"function f(){}",
+				"o[f()] += 42",
+				"");
+	}
+
+
+	@Test
+	public void redefinedArrayLiteralConstructor(){
+		// should not crash
+		Misc.init();
+		Misc.runSource("",
+				"function Array(x, y, z){};",
+		        "[,,,,]",
+				"");
+	}
+
+	@Test
+	public void arrayJoinFuzzySeparator(){
+		// should not crash
+		Misc.init();
+		Misc.runSource("",
+				"var sep = Math.random()? 'x': 'y';",
+				"[1, 2, 3].join(sep);",
+				"");
+	}
+
+	@Test
+	public void issue197_1(){
+		Misc.init();
+		Misc.captureSystemOutput();
+		String[] args = {"test/micro/issue197_1.js"};
+		Misc.run(args);
+		Misc.checkSystemOutput();
+	}
+
+	@Test
+	public void issue197_2(){
+		Misc.init();
+		Misc.captureSystemOutput();
+		String[] args = {"test/micro/issue197_2.html"};
+		Misc.run(args);
+		Misc.checkSystemOutput();
+	}
+
+	@Test
+	public void stringEscapingForRegExp(){
+		Misc.init();
+		Misc.runSource(
+				"var replaced = '['.replace('[', 'x');",
+				"TAJS_assert(replaced === 'x');");
+	}
+
+	@Test
+	public void eventListenerRegistrationVariants() {
+		Misc.init();
+		Options.get().enableIncludeDom();
+		Misc.captureSystemOutput();
+		Misc.runSourceWithNamedFile("eventListenerRegistrationVariants.js",
+				"var element = document.getElementById('ELEMENT');",
+
+				"window.addEventListener('click', function(){ TAJS_dumpValue('window.addEventListener(\\'click\\', ...)'); });",
+				"element.addEventListener('click', function(){ TAJS_dumpValue('element.addEventListener(\\'click\\', ...)'); });",
+
+				"window.click = function(){ TAJS_dumpValue('window.click = ...'); };",
+				"element.click = function(){ TAJS_dumpValue('element.click = ...'); };",
+
+				"window.addEventListener('onclick', function(){ TAJS_dumpValue('window.addEventListener(\\'onclick\\', ...)'); });",
+				"element.addEventListener('onclick', function(){ TAJS_dumpValue('element.addEventListener(\\'onclick\\', ...)'); });",
+
+				"window.onclick = function(){ TAJS_dumpValue('window.onclick = ...'); };",
+				"element.onclick = function(){ TAJS_dumpValue('element.onclick = ...'); };",
+
+				"window.addEventListener('mousedown', function(){ TAJS_dumpValue('window.addEventListener(\\'mousedown\\', ...)'); });",
+				"element.addEventListener('mousedown', function(){ TAJS_dumpValue('element.addEventListener(\\'mousedown\\', ...)'); });",
+
+				"window.mousedown = function(){ TAJS_dumpValue('window.mousedown = ...'); };",
+				"element.mousedown = function(){ TAJS_dumpValue('element.mousedown = ...'); };",
+
+				"window.addEventListener('onmousedown', function(){ TAJS_dumpValue('window.addEventListener(\\'onmousedown\\', ...)'); });",
+				"element.addEventListener('onmousedown', function(){ TAJS_dumpValue('element.addEventListener(\\'onmousedown\\', ...)'); });",
+
+				"window.onmousedown = function(){ TAJS_dumpValue('window.onmousedown = ...'); };",
+				"element.onmousedown = function(){ TAJS_dumpValue('element.onmousedown = ...'); };",
+				"");
+		Misc.checkSystemOutput();
+	}
+
+	@Test
+	public void eventListenerRegistrationInEventHandlerVariants() {
+		Misc.init();
+		Options.get().enableIncludeDom();
+		Misc.captureSystemOutput();
+		Misc.runSourceWithNamedFile("eventListenerRegistrationInEventHandlerVariants.js",
+				"function direct_click_click_registration(){",
+				"	TAJS_dumpValue('direct_click_click_registration invoked');",
+				"	function indirect_click_click_registration(){ TAJS_dumpValue('indirect_click_click_registration invoked');}",
+				"	window.addEventListener('click', indirect_click_click_registration);",
+				"}",
+				"window.addEventListener('click', direct_click_click_registration);",
+				"",
+				"function direct_load_load_registration(){",
+				"	TAJS_dumpValue('direct_load_load_registration invoked');",
+				"	function indirect_load_load_registration(){ TAJS_dumpValue('indirect_load_load_registration invoked');}",
+				"	window.addEventListener('load', indirect_load_load_registration);",
+				"}",
+				"window.addEventListener('load', direct_load_load_registration);",
+				"",
+				"function direct_load_click_registration(){",
+				"	TAJS_dumpValue('direct_load_click_registration invoked');",
+				"	function indirect_load_click_registration(){ TAJS_dumpValue('indirect_load_click_registration invoked');}",
+				"	window.addEventListener('click', indirect_load_click_registration);",
+				"}",
+				"window.addEventListener('load', direct_load_click_registration);",
+				"",
+				"function direct_click_load_registration(){",
+				"	TAJS_dumpValue('direct_click_load_registration invoked');",
+				"	function indirect_click_load_registration(){ TAJS_dumpValue('indirect_click_load_registration invoked');}",
+				"	window.addEventListener('load', indirect_click_load_registration);", // should not trigger: load can not fire after click
+				"}",
+				"window.addEventListener('click', direct_click_load_registration);",
+				"");
+		Misc.checkSystemOutput();
+
+	}
+
+
+	@Test
+	public void eventListenerRegistrationInEventHandler_sameKind() {
+		Misc.init();
+		Options.get().enableIncludeDom();
+		Misc.captureSystemOutput();
+		Misc.runSourceWithNamedFile("eventListenerRegistrationInEventHandler_sameKind.js",
+				"function mousedownHandler(){",
+				"	TAJS_dumpValue('mousedownHandler triggered');",
+				"	addEventListener('mouseup', mouseupHandler);",
+				"}",
+				"function mouseupHandler(){",
+				"	TAJS_dumpValue('mouseupHandler triggered');",
+				"}",
+				"addEventListener('mousedown', mousedownHandler);"
+		);
+		Misc.checkSystemOutput();
+
+	}
+
+	@Test
+	public void eventListenerRegistrationInEventHandler_differentKind() {
+		Misc.init();
+		Options.get().enableIncludeDom();
+		Misc.captureSystemOutput();
+		Misc.runSourceWithNamedFile("eventListenerRegistrationInEventHandler_differentKind.js",
+				"function mousedownHandler(){",
+				"	TAJS_dumpValue('mousedownHandler triggered');",
+				"	addEventListener('mouseup', keydownHandler);",
+				"}",
+				"function keydownHandler(){",
+				"	TAJS_dumpValue('keydownHandler triggered');",
+				"}",
+				"addEventListener('mousedown', mousedownHandler);"
+		);
+		Misc.checkSystemOutput();
+
+	}
+
+	@Test
+	public void DOM_unknownTagName(){
+		Misc.init();
+		Misc.captureSystemOutput();
+		String[] args = {"test/micro/unknownTagName.html"};
+		Misc.run(args);
+		Misc.checkSystemOutput();
+	}
+
+	@Test(expected = AnalysisException.class)
+	public void incompatibleOptions_loopUnrolling(){
+		Misc.init();
+		Options.get().enableLoopUnrolling(1);
+		Options.get().enableUnrollOneAndAHalf();
+		Misc.run(new String[]{""});
+	}
+
+	@Test(expected = AnalysisException.class)
+	public void incompatibleOptions_missingArguments(){
+		Misc.init();
+		Misc.run(new String[]{});
+	}
+
+	@Test
+	public void regexp_compile(){
+		Misc.init();
+		Misc.runSource(
+				"var r = /x/;",
+				"TAJS_assert(r.source === 'x');",
+				"r.compile('y');",
+				"TAJS_assert(r.source === 'y');",
+				"r.compile('y', 'i');",
+				"TAJS_assert(r.ignoreCase);",
+				"r.compile(/z/);",
+				"TAJS_assert(r.source === 'z');",
+				""
+		);
+	}
+
+	@Test
+	public void object_create() {
+		Misc.init();
+		Misc.captureSystemOutput();
+		Misc.runSourceWithNamedFile("object_create.js",
+				"var U = !!Math.random();",
+				"if(U){",
+				"	var o1 = Object.create();",
+				"	TAJS_assert(false);",
+				"}",
+				"if(U){",
+				"	var o2 = Object.create(null);",
+				"	TAJS_dumpObject(o2);",
+				"}",
+				"if(U){",
+				"	var o3 = Object.create(Array);",
+				"	TAJS_dumpObject(o3);",
+				"}",
+				""
+		);
+		Misc.checkSystemOutput();
+	}
+
+	@Test
+	public void unicodeCharAtTest(){
+		Misc.init();
+		Misc.runSource("",
+				"var a = '\400'.charAt(1)",
+				"TAJS_dumpValue('\400')",
+				"TAJS_assert(a === '0')",
+				"");
+	}
+
+	@Ignore // see GitHub issue #223
+	@Test
+	public void unicodeCharAtTest_file(){
+		Misc.init();
+		String[] args = {"test/micro/unicodeCharAtTest.js"};
+		Misc.run(args);
 	}
 
 }

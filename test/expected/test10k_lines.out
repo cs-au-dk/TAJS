@@ -1,49 +1,495 @@
+test/10k/lines.html:180:13: [definite] The assignment to c has no effect
+test/10k/lines.html:293:25: [definite] The conditional expression is always true
 test/10k/lines.html:437:36: [definite] Too few parameters to function String.prototype.charAt
-test/10k/lines.html:57:13: [definite] The variable m is never used
-test/10k/lines.html:57:20: [definite] The variable t is never used
-test/10k/lines.html:57:27: [definite] The variable n is never used
-test/10k/lines.html:57:34: [definite] The variable r is never used
-test/10k/lines.html:57:43: [definite] The variable I is never used
-test/10k/lines.html:57:52: [definite] The variable i is never used
-test/10k/lines.html:57:58: [definite] The variable o is never used
-test/10k/lines.html:57:64: [definite] The variable x is never used
-test/10k/lines.html:57:73: [definite] The variable y is never used
-test/10k/lines.html:57:79: [definite] The variable k is never used
-test/10k/lines.html:57:86: [definite] The variable z is never used
-test/10k/lines.html:57:101: [definite] The variable A is never used
-test/10k/lines.html:57:122: [definite] The variable B is never used
-test/10k/lines.html:57:140: [definite] The variable C is never used
-test/10k/lines.html:57:173: [definite] The variable D is never used
-test/10k/lines.html:57:189: [definite] The variable E is never used
-test/10k/lines.html:57:206: [definite] The variable w is never used
-test/10k/lines.html:57:221: [definite] The variable X is never used
-test/10k/lines.html:57:241: [definite] The variable G is never used
-test/10k/lines.html:57:262: [definite] The variable s is never used
-test/10k/lines.html:57:271: [definite] The variable u is never used
-test/10k/lines.html:57:283: [definite] The variable F is never used
-test/10k/lines.html:57:285: [definite] The variable M is never used
-test/10k/lines.html:57:293: [definite] The variable N is never used
-test/10k/lines.html:59:9: [definite] Unreachable function J
-test/10k/lines.html:74:9: [definite] Unreachable function U
-test/10k/lines.html:87:25: [definite] Unreachable function
-test/10k/lines.html:153:24: [definite] Unreachable function
-test/10k/lines.html:159:22: [definite] Unreachable function
-test/10k/lines.html:164:9: [definite] Unreachable function O
-test/10k/lines.html:187:9: [definite] Unreachable function aa
-test/10k/lines.html:197:9: [definite] Unreachable function H
-test/10k/lines.html:201:9: [definite] Unreachable function Z
-test/10k/lines.html:222:9: [definite] Unreachable function $
-test/10k/lines.html:261:9: [definite] Unreachable function L
-test/10k/lines.html:286:9: [definite] Unreachable function ba
-test/10k/lines.html:337:9: [definite] Unreachable function ea
-test/10k/lines.html:348:9: [definite] Unreachable function V
-test/10k/lines.html:360:9: [definite] Unreachable function da
-test/10k/lines.html:368:9: [definite] Unreachable function K
-test/10k/lines.html:380:9: [definite] Unreachable function fa
-test/10k/lines.html:398:9: [definite] Unreachable function W
-test/10k/lines.html:427:9: [definite] Unreachable function ca
+test/10k/lines.html:60:13: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:76:17: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:106:21: [maybe] TypeError, call to non-function
+test/10k/lines.html:120:21: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:121:21: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:162:13: [maybe] TypeError, call to non-function
+test/10k/lines.html:167:13: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:181:35: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:182:35: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:189:13: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:191:31: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:198:13: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:204:17: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:204:17: [maybe] TypeError, call to non-function
+test/10k/lines.html:206:28: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:208:34: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:211:28: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:211:28: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:216:21: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:216:21: [maybe] TypeError, call to non-function
+test/10k/lines.html:225:25: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:225:34: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:225:36: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:225:36: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:225:43: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:226:19: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:231:21: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:235:29: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:237:25: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:237:27: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:237:35: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:238:25: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:240:25: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:240:27: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:240:35: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:241:25: [maybe] TypeError, call to non-function
+test/10k/lines.html:241:35: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:241:44: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:262:13: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:263:13: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:264:21: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:266:17: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:270:21: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:273:30: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:278:30: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:279:21: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:279:31: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:280:21: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:289:44: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:289:54: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:291:13: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:300:21: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:300:33: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:302:21: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:304:33: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:306:21: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:308:33: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:310:21: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:312:33: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:314:21: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:320:31: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:321:64: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:324:36: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:327:36: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:330:36: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:343:17: [maybe] TypeError, call to non-function
+test/10k/lines.html:351:19: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:352:19: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:353:17: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:353:17: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:354:17: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:354:17: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:355:19: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:356:17: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:361:47: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:361:62: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:362:17: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:363:17: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:371:17: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:371:19: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:371:27: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:371:37: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:373:17: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:373:17: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:373:19: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:373:27: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:373:43: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:374:19: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:374:27: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:390:21: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:391:21: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:391:21: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:392:23: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:392:23: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:399:97: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:403:53: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:404:39: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:405:52: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:406:52: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:407:38: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:408:52: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:409:39: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:410:38: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:419:56: [maybe] TypeError, call to non-function
+test/10k/lines.html:420:56: [maybe] TypeError, call to non-function
+test/10k/lines.html:421:56: [maybe] TypeError, call to non-function
+test/10k/lines.html:422:56: [maybe] TypeError, call to non-function
 test/10k/lines.html:437:36: [maybe] TypeError, accessing property of null/undefined
-test/10k/lines.html:55:32: [maybe] Uncaught exception, constructed at [test/10k/lines.html:437:36]
+test/10k/lines.html:162:13: [maybe] Reading absent property hide
+test/10k/lines.html:202:31: [maybe] Reading 'this' yields the global object
+test/10k/lines.html:202:31: [maybe] Reading absent property dirty
+test/10k/lines.html:203:21: [maybe] Reading 'this' yields the global object
+test/10k/lines.html:204:17: [maybe] Reading absent property jumpTo
+test/10k/lines.html:204:26: [maybe] Reading 'this' yields the global object
+test/10k/lines.html:204:26: [maybe] Reading absent property x
+test/10k/lines.html:204:34: [maybe] Reading 'this' yields the global object
+test/10k/lines.html:204:34: [maybe] Reading absent property y
+test/10k/lines.html:206:28: [maybe] Reading absent property x
+test/10k/lines.html:206:33: [maybe] Reading absent property y
+test/10k/lines.html:206:38: [maybe] Reading 'this' yields the global object
+test/10k/lines.html:206:38: [maybe] Reading absent property x
+test/10k/lines.html:206:46: [maybe] Reading 'this' yields the global object
+test/10k/lines.html:206:46: [maybe] Reading absent property y
+test/10k/lines.html:208:43: [maybe] Reading absent property x
+test/10k/lines.html:208:51: [maybe] Reading absent property y
+test/10k/lines.html:211:28: [maybe] Reading absent property ctx
+test/10k/lines.html:211:41: [maybe] Reading absent property dirty
+test/10k/lines.html:215:28: [maybe] Reading absent property x
+test/10k/lines.html:215:34: [maybe] Reading absent property y
+test/10k/lines.html:216:21: [maybe] Reading absent property hide
+test/10k/lines.html:226:19: [maybe] Reading absent property ctx
+test/10k/lines.html:226:26: [maybe] Reading absent property dirty
+test/10k/lines.html:229:30: [maybe] Reading absent property move
+test/10k/lines.html:230:21: [maybe] Reading absent property style
+test/10k/lines.html:233:25: [maybe] Reading absent property move
+test/10k/lines.html:233:95: [maybe] Reading absent property x
+test/10k/lines.html:233:100: [maybe] Reading absent property y
+test/10k/lines.html:233:175: [maybe] Reading absent property x
+test/10k/lines.html:233:181: [maybe] Reading absent property y
+test/10k/lines.html:233:257: [maybe] Reading absent property x
+test/10k/lines.html:233:266: [maybe] Reading absent property y
+test/10k/lines.html:233:338: [maybe] Reading absent property x
+test/10k/lines.html:233:347: [maybe] Reading absent property y
+test/10k/lines.html:235:29: [maybe] Reading absent property path
+test/10k/lines.html:238:25: [maybe] Reading absent property removing
+test/10k/lines.html:238:55: [maybe] Reading absent property removing
+test/10k/lines.html:245:27: [maybe] Reading absent property ctx
+test/10k/lines.html:262:13: [maybe] Reading absent property style
+test/10k/lines.html:263:13: [maybe] Reading absent property style
+test/10k/lines.html:266:27: [maybe] Reading absent property dirty
+test/10k/lines.html:268:19: [maybe] Reading absent property ctx
+test/10k/lines.html:269:19: [maybe] Reading absent property ctx
+test/10k/lines.html:269:26: [maybe] Reading absent property dirty
+test/10k/lines.html:270:21: [maybe] Reading absent property path
+test/10k/lines.html:271:30: [maybe] Reading absent property path
+test/10k/lines.html:273:30: [maybe] Reading absent property path
+test/10k/lines.html:351:19: [maybe] Reading absent property ctx
+test/10k/lines.html:352:19: [maybe] Reading absent property ctx
+test/10k/lines.html:353:17: [maybe] Reading absent property ctx
+test/10k/lines.html:354:17: [maybe] Reading absent property ctx
+test/10k/lines.html:355:19: [maybe] Reading absent property ctx
+test/10k/lines.html:371:37: [maybe] Reading absent property num
+test/10k/lines.html:373:43: [maybe] Reading absent property num
+test/10k/lines.html:392:23: [maybe] Reading absent property ctx
+test/10k/lines.html:419:56: [maybe] Reading absent property push
+test/10k/lines.html:420:56: [maybe] Reading absent property push
+test/10k/lines.html:421:56: [maybe] Reading absent property push
+test/10k/lines.html:422:56: [maybe] Reading absent property push
+test/10k/lines.html:55:32: [maybe] Uncaught exception, constructed at [test/10k/lines.html:60:13, test/10k/lines.html:76:17, test/10k/lines.html:106:21, test/10k/lines.html:120:21, test/10k/lines.html:121:21, test/10k/lines.html:162:13, test/10k/lines.html:167:13, test/10k/lines.html:181:35, test/10k/lines.html:182:35, test/10k/lines.html:189:13, test/10k/lines.html:191:31, test/10k/lines.html:198:13, test/10k/lines.html:204:17, test/10k/lines.html:206:28, test/10k/lines.html:208:34, test/10k/lines.html:211:28, test/10k/lines.html:216:21, test/10k/lines.html:225:25, test/10k/lines.html:225:34, test/10k/lines.html:225:36, test/10k/lines.html:225:43, test/10k/lines.html:226:19, test/10k/lines.html:231:21, test/10k/lines.html:235:29, test/10k/lines.html:237:25, test/10k/lines.html:237:27, test/10k/lines.html:237:35, test/10k/lines.html:238:25, test/10k/lines.html:240:25, test/10k/lines.html:240:27, test/10k/lines.html:240:35, test/10k/lines.html:241:25, test/10k/lines.html:241:35, test/10k/lines.html:241:44, test/10k/lines.html:262:13, test/10k/lines.html:263:13, test/10k/lines.html:264:21, test/10k/lines.html:266:17, test/10k/lines.html:270:21, test/10k/lines.html:273:30, test/10k/lines.html:278:30, test/10k/lines.html:279:21, test/10k/lines.html:279:31, test/10k/lines.html:280:21, test/10k/lines.html:289:44, test/10k/lines.html:289:54, test/10k/lines.html:291:13, test/10k/lines.html:300:21, test/10k/lines.html:300:33, test/10k/lines.html:302:21, test/10k/lines.html:304:33, test/10k/lines.html:306:21, test/10k/lines.html:308:33, test/10k/lines.html:310:21, test/10k/lines.html:312:33, test/10k/lines.html:314:21, test/10k/lines.html:320:31, test/10k/lines.html:321:64, test/10k/lines.html:324:36, test/10k/lines.html:327:36, test/10k/lines.html:330:36, test/10k/lines.html:343:17, test/10k/lines.html:351:19, test/10k/lines.html:352:19, test/10k/lines.html:353:17, test/10k/lines.html:354:17, test/10k/lines.html:355:19, test/10k/lines.html:356:17, test/10k/lines.html:361:47, test/10k/lines.html:361:62, test/10k/lines.html:362:17, test/10k/lines.html:363:17, test/10k/lines.html:371:17, test/10k/lines.html:371:19, test/10k/lines.html:371:27, test/10k/lines.html:371:37, test/10k/lines.html:373:17, test/10k/lines.html:373:19, test/10k/lines.html:373:27, test/10k/lines.html:373:43, test/10k/lines.html:374:19, test/10k/lines.html:374:27, test/10k/lines.html:390:21, test/10k/lines.html:391:21, test/10k/lines.html:392:23, test/10k/lines.html:399:97, test/10k/lines.html:403:53, test/10k/lines.html:404:39, test/10k/lines.html:405:52, test/10k/lines.html:406:52, test/10k/lines.html:407:38, test/10k/lines.html:408:52, test/10k/lines.html:409:39, test/10k/lines.html:410:38, test/10k/lines.html:419:56, test/10k/lines.html:420:56, test/10k/lines.html:421:56, test/10k/lines.html:422:56, test/10k/lines.html:437:36]
+test/10k/lines.html:70:27: [maybe] The variable l has values with different types
+test/10k/lines.html:80:47: [maybe] Conversion to number yields NaN
+test/10k/lines.html:80:47: [maybe] Reading absent property (computed name)
+test/10k/lines.html:81:47: [maybe] Conversion to number yields NaN
+test/10k/lines.html:81:47: [maybe] Reading absent property (computed name)
+test/10k/lines.html:82:47: [maybe] Conversion to number yields NaN
+test/10k/lines.html:82:47: [maybe] Reading absent property (computed name)
+test/10k/lines.html:120:21: [maybe] Reading absent property (computed name)
+test/10k/lines.html:121:21: [maybe] Reading absent property (computed name)
+test/10k/lines.html:139:40: [maybe] The variable G has values with different types
+test/10k/lines.html:155:25: [maybe] Conversion to number yields NaN
+test/10k/lines.html:156:26: [maybe] Conversion to number yields NaN
+test/10k/lines.html:181:31: [maybe] Converting undefined to string
+test/10k/lines.html:181:35: [maybe] Converting primitive number to object
+test/10k/lines.html:181:35: [maybe] Reading absent property (computed name)
+test/10k/lines.html:181:35: [maybe] Reading absent property (computed name)
+test/10k/lines.html:182:31: [maybe] Converting undefined to string
+test/10k/lines.html:182:35: [maybe] Converting primitive number to object
+test/10k/lines.html:182:35: [maybe] Reading absent property (computed name)
+test/10k/lines.html:182:35: [maybe] Reading absent property (computed name)
+test/10k/lines.html:191:27: [maybe] Converting undefined to string
+test/10k/lines.html:191:31: [maybe] Converting primitive number to object
+test/10k/lines.html:191:31: [maybe] Reading absent property (computed name)
+test/10k/lines.html:191:31: [maybe] Reading absent property (computed name)
+test/10k/lines.html:202:19: [maybe] The variable i has values with different types
+test/10k/lines.html:202:24: [maybe] The variable o has values with different types
+test/10k/lines.html:209:33: [maybe] Reading absent property (computed name)
+test/10k/lines.html:209:49: [maybe] Conversion to number yields NaN
+test/10k/lines.html:209:68: [maybe] Conversion to number yields NaN
+test/10k/lines.html:209:87: [maybe] Conversion to number yields NaN
+test/10k/lines.html:209:106: [maybe] Conversion to number yields NaN
+test/10k/lines.html:211:28: [maybe] Reading absent property (computed name)
+test/10k/lines.html:211:28: [maybe] Reading absent property (computed name)
+test/10k/lines.html:224:20: [maybe] The variable i has values with different types
+test/10k/lines.html:224:26: [maybe] The variable o has values with different types
+test/10k/lines.html:224:32: [maybe] The variable F has values with different types
+test/10k/lines.html:224:39: [maybe] The variable F has values with different types
+test/10k/lines.html:225:25: [maybe] Converting primitive number to object
+test/10k/lines.html:225:25: [maybe] Reading absent property (computed name)
+test/10k/lines.html:225:25: [maybe] The variable F has values with different types
+test/10k/lines.html:225:34: [maybe] Reading absent property (computed name)
+test/10k/lines.html:225:34: [maybe] Reading absent property (computed name)
+test/10k/lines.html:229:24: [maybe] The variable i has values with different types
+test/10k/lines.html:229:30: [maybe] Converting primitive boolean to object
+test/10k/lines.html:229:30: [maybe] Converting primitive number to object
+test/10k/lines.html:229:30: [maybe] The variable i has values with different types
+test/10k/lines.html:230:21: [maybe] Converting primitive boolean to object
+test/10k/lines.html:230:21: [maybe] Converting primitive number to object
+test/10k/lines.html:230:21: [maybe] The variable i has values with different types
+test/10k/lines.html:231:21: [maybe] Reading absent property (computed name)
+test/10k/lines.html:232:25: [maybe] Reading absent property (computed name)
+test/10k/lines.html:233:25: [maybe] Converting primitive boolean to object
+test/10k/lines.html:233:25: [maybe] Converting primitive number to object
+test/10k/lines.html:233:25: [maybe] The variable i has values with different types
+test/10k/lines.html:233:51: [maybe] The variable c has values with different types
+test/10k/lines.html:233:59: [maybe] Converting undefined to string
+test/10k/lines.html:233:61: [maybe] The variable c has values with different types
+test/10k/lines.html:233:75: [maybe] Converting undefined to string
+test/10k/lines.html:233:77: [maybe] Reading absent property (computed name)
+test/10k/lines.html:233:95: [maybe] Converting primitive boolean to object
+test/10k/lines.html:233:95: [maybe] Converting primitive number to object
+test/10k/lines.html:233:95: [maybe] The variable i has values with different types
+test/10k/lines.html:233:100: [maybe] Conversion to number yields NaN
+test/10k/lines.html:233:100: [maybe] Converting primitive boolean to object
+test/10k/lines.html:233:100: [maybe] Converting primitive number to object
+test/10k/lines.html:233:100: [maybe] The variable i has values with different types
+test/10k/lines.html:233:132: [maybe] The variable c has values with different types
+test/10k/lines.html:233:140: [maybe] Converting undefined to string
+test/10k/lines.html:233:142: [maybe] The variable c has values with different types
+test/10k/lines.html:233:156: [maybe] Converting undefined to string
+test/10k/lines.html:233:158: [maybe] Reading absent property (computed name)
+test/10k/lines.html:233:175: [maybe] Converting primitive boolean to object
+test/10k/lines.html:233:175: [maybe] Converting primitive number to object
+test/10k/lines.html:233:175: [maybe] The variable i has values with different types
+test/10k/lines.html:233:180: [maybe] Conversion to number yields NaN
+test/10k/lines.html:233:181: [maybe] Converting primitive boolean to object
+test/10k/lines.html:233:181: [maybe] Converting primitive number to object
+test/10k/lines.html:233:181: [maybe] The variable i has values with different types
+test/10k/lines.html:233:213: [maybe] The variable f has values with different types
+test/10k/lines.html:233:221: [maybe] Converting undefined to string
+test/10k/lines.html:233:223: [maybe] The variable f has values with different types
+test/10k/lines.html:233:237: [maybe] Converting undefined to string
+test/10k/lines.html:233:239: [maybe] Reading absent property (computed name)
+test/10k/lines.html:233:257: [maybe] Conversion to number yields NaN
+test/10k/lines.html:233:257: [maybe] Converting primitive boolean to object
+test/10k/lines.html:233:257: [maybe] Converting primitive number to object
+test/10k/lines.html:233:257: [maybe] The variable i has values with different types
+test/10k/lines.html:233:266: [maybe] Converting primitive boolean to object
+test/10k/lines.html:233:266: [maybe] Converting primitive number to object
+test/10k/lines.html:233:266: [maybe] The variable i has values with different types
+test/10k/lines.html:233:294: [maybe] The variable f has values with different types
+test/10k/lines.html:233:302: [maybe] Converting undefined to string
+test/10k/lines.html:233:304: [maybe] The variable f has values with different types
+test/10k/lines.html:233:318: [maybe] Converting undefined to string
+test/10k/lines.html:233:320: [maybe] Reading absent property (computed name)
+test/10k/lines.html:233:337: [maybe] Conversion to number yields NaN
+test/10k/lines.html:233:338: [maybe] Converting primitive boolean to object
+test/10k/lines.html:233:338: [maybe] Converting primitive number to object
+test/10k/lines.html:233:338: [maybe] The variable i has values with different types
+test/10k/lines.html:233:347: [maybe] Converting primitive boolean to object
+test/10k/lines.html:233:347: [maybe] Converting primitive number to object
+test/10k/lines.html:233:347: [maybe] The variable i has values with different types
+test/10k/lines.html:235:20: [maybe] Converting primitive boolean to object
+test/10k/lines.html:235:20: [maybe] Converting primitive number to object
+test/10k/lines.html:235:20: [maybe] The variable i has values with different types
+test/10k/lines.html:235:29: [maybe] Converting primitive boolean to object
+test/10k/lines.html:235:29: [maybe] Converting primitive number to object
+test/10k/lines.html:235:29: [maybe] The variable i has values with different types
+test/10k/lines.html:236:37: [maybe] Converting primitive number to object
+test/10k/lines.html:236:37: [maybe] Reading absent property (computed name)
+test/10k/lines.html:236:37: [maybe] The variable o has values with different types
+test/10k/lines.html:237:25: [maybe] Reading absent property (computed name)
+test/10k/lines.html:237:25: [maybe] Reading absent property (computed name)
+test/10k/lines.html:237:27: [maybe] Converting primitive number to object
+test/10k/lines.html:237:27: [maybe] Reading absent property (computed name)
+test/10k/lines.html:237:27: [maybe] The variable o has values with different types
+test/10k/lines.html:237:35: [maybe] Converting primitive number to object
+test/10k/lines.html:237:35: [maybe] Reading absent property (computed name)
+test/10k/lines.html:237:35: [maybe] The variable o has values with different types
+test/10k/lines.html:238:55: [maybe] Conversion to number yields NaN
+test/10k/lines.html:240:25: [maybe] Reading absent property (computed name)
+test/10k/lines.html:240:27: [maybe] Converting primitive number to object
+test/10k/lines.html:240:27: [maybe] Reading absent property (computed name)
+test/10k/lines.html:240:27: [maybe] The variable o has values with different types
+test/10k/lines.html:240:35: [maybe] Converting primitive number to object
+test/10k/lines.html:240:35: [maybe] Reading absent property (computed name)
+test/10k/lines.html:240:35: [maybe] The variable o has values with different types
+test/10k/lines.html:241:35: [maybe] Converting primitive number to object
+test/10k/lines.html:241:35: [maybe] Reading absent property (computed name)
+test/10k/lines.html:241:35: [maybe] The variable o has values with different types
+test/10k/lines.html:241:44: [maybe] Converting primitive number to object
+test/10k/lines.html:241:44: [maybe] Reading absent property (computed name)
+test/10k/lines.html:241:44: [maybe] The variable o has values with different types
+test/10k/lines.html:249:36: [maybe] Conversion to number yields NaN
+test/10k/lines.html:249:36: [maybe] Converting primitive number to object
+test/10k/lines.html:249:36: [maybe] Reading absent property (computed name)
+test/10k/lines.html:249:36: [maybe] The variable o has values with different types
+test/10k/lines.html:251:29: [maybe] The variable G has values with different types
+test/10k/lines.html:262:13: [maybe] Converting primitive boolean to object
+test/10k/lines.html:262:13: [maybe] Converting primitive number to object
+test/10k/lines.html:262:13: [maybe] The variable i has values with different types
+test/10k/lines.html:263:13: [maybe] Converting primitive boolean to object
+test/10k/lines.html:263:13: [maybe] Converting primitive number to object
+test/10k/lines.html:263:13: [maybe] The variable i has values with different types
+test/10k/lines.html:264:21: [maybe] Reading absent property (computed name)
+test/10k/lines.html:264:21: [maybe] Reading absent property (computed name)
+test/10k/lines.html:266:27: [maybe] Converting primitive boolean to object
+test/10k/lines.html:266:27: [maybe] Converting primitive number to object
+test/10k/lines.html:266:27: [maybe] The variable i has values with different types
+test/10k/lines.html:267:17: [maybe] Converting primitive boolean to object
+test/10k/lines.html:267:17: [maybe] Converting primitive number to object
+test/10k/lines.html:267:17: [maybe] The variable i has values with different types
+test/10k/lines.html:268:19: [maybe] Converting primitive boolean to object
+test/10k/lines.html:268:19: [maybe] Converting primitive number to object
+test/10k/lines.html:268:19: [maybe] The variable i has values with different types
+test/10k/lines.html:270:21: [maybe] Converting primitive boolean to object
+test/10k/lines.html:270:21: [maybe] Converting primitive number to object
+test/10k/lines.html:270:21: [maybe] The variable i has values with different types
+test/10k/lines.html:271:30: [maybe] Converting primitive boolean to object
+test/10k/lines.html:271:30: [maybe] Converting primitive number to object
+test/10k/lines.html:271:30: [maybe] The variable i has values with different types
+test/10k/lines.html:272:21: [maybe] Converting primitive boolean to object
+test/10k/lines.html:272:21: [maybe] Converting primitive number to object
+test/10k/lines.html:272:21: [maybe] The variable i has values with different types
+test/10k/lines.html:272:30: [maybe] Converting primitive boolean to object
+test/10k/lines.html:272:30: [maybe] Converting primitive number to object
+test/10k/lines.html:272:30: [maybe] The variable i has values with different types
+test/10k/lines.html:276:21: [maybe] Converting primitive boolean to object
+test/10k/lines.html:276:21: [maybe] Converting primitive number to object
+test/10k/lines.html:276:21: [maybe] The variable i has values with different types
+test/10k/lines.html:276:30: [maybe] Converting primitive boolean to object
+test/10k/lines.html:276:30: [maybe] Converting primitive number to object
+test/10k/lines.html:276:30: [maybe] The variable i has values with different types
+test/10k/lines.html:279:21: [maybe] Reading absent property (computed name)
+test/10k/lines.html:279:31: [maybe] Reading absent property (computed name)
+test/10k/lines.html:279:31: [maybe] Reading absent property (computed name)
+test/10k/lines.html:280:21: [maybe] Reading absent property (computed name)
+test/10k/lines.html:289:44: [maybe] Reading absent property (computed name)
+test/10k/lines.html:289:54: [maybe] Reading absent property (computed name)
+test/10k/lines.html:289:54: [maybe] Reading absent property (computed name)
+test/10k/lines.html:291:13: [maybe] Reading absent property (computed name)
+test/10k/lines.html:300:33: [maybe] Reading absent property (computed name)
+test/10k/lines.html:300:33: [maybe] Reading absent property (computed name)
+test/10k/lines.html:300:40: [maybe] Conversion to number yields NaN
+test/10k/lines.html:301:37: [maybe] Conversion to number yields NaN
+test/10k/lines.html:302:21: [maybe] Reading absent property (computed name)
+test/10k/lines.html:302:28: [maybe] Conversion to number yields NaN
+test/10k/lines.html:304:33: [maybe] Reading absent property (computed name)
+test/10k/lines.html:304:33: [maybe] Reading absent property (computed name)
+test/10k/lines.html:304:40: [maybe] Conversion to number yields NaN
+test/10k/lines.html:305:37: [maybe] Conversion to number yields NaN
+test/10k/lines.html:306:21: [maybe] Reading absent property (computed name)
+test/10k/lines.html:306:28: [maybe] Conversion to number yields NaN
+test/10k/lines.html:308:33: [maybe] Reading absent property (computed name)
+test/10k/lines.html:308:33: [maybe] Reading absent property (computed name)
+test/10k/lines.html:308:35: [maybe] Conversion to number yields NaN
+test/10k/lines.html:309:31: [maybe] Conversion to number yields NaN
+test/10k/lines.html:310:21: [maybe] Reading absent property (computed name)
+test/10k/lines.html:310:23: [maybe] Conversion to number yields NaN
+test/10k/lines.html:312:33: [maybe] Reading absent property (computed name)
+test/10k/lines.html:312:33: [maybe] Reading absent property (computed name)
+test/10k/lines.html:312:35: [maybe] Conversion to number yields NaN
+test/10k/lines.html:313:31: [maybe] Conversion to number yields NaN
+test/10k/lines.html:314:21: [maybe] Reading absent property (computed name)
+test/10k/lines.html:314:23: [maybe] Conversion to number yields NaN
+test/10k/lines.html:316:33: [maybe] Conversion to number yields NaN
+test/10k/lines.html:316:61: [maybe] Conversion to number yields NaN
+test/10k/lines.html:316:77: [maybe] Conversion to number yields NaN
+test/10k/lines.html:316:105: [maybe] Conversion to number yields NaN
+test/10k/lines.html:321:64: [maybe] Reading absent property (computed name)
+test/10k/lines.html:321:64: [maybe] Reading absent property (computed name)
+test/10k/lines.html:321:71: [maybe] Conversion to number yields NaN
+test/10k/lines.html:322:30: [maybe] Conversion to number yields NaN
+test/10k/lines.html:324:36: [maybe] Reading absent property (computed name)
+test/10k/lines.html:324:36: [maybe] Reading absent property (computed name)
+test/10k/lines.html:324:43: [maybe] Conversion to number yields NaN
+test/10k/lines.html:325:30: [maybe] Conversion to number yields NaN
+test/10k/lines.html:327:36: [maybe] Reading absent property (computed name)
+test/10k/lines.html:327:36: [maybe] Reading absent property (computed name)
+test/10k/lines.html:327:38: [maybe] Conversion to number yields NaN
+test/10k/lines.html:328:24: [maybe] Conversion to number yields NaN
+test/10k/lines.html:330:36: [maybe] Reading absent property (computed name)
+test/10k/lines.html:330:36: [maybe] Reading absent property (computed name)
+test/10k/lines.html:330:38: [maybe] Conversion to number yields NaN
+test/10k/lines.html:331:24: [maybe] Conversion to number yields NaN
+test/10k/lines.html:341:24: [maybe] Reading absent property (computed name)
+test/10k/lines.html:342:54: [maybe] Reading absent property (computed name)
+test/10k/lines.html:351:19: [maybe] Reading absent property (computed name)
+test/10k/lines.html:352:19: [maybe] Reading absent property (computed name)
+test/10k/lines.html:353:17: [maybe] Reading absent property (computed name)
+test/10k/lines.html:354:17: [maybe] Reading absent property (computed name)
+test/10k/lines.html:355:19: [maybe] Reading absent property (computed name)
+test/10k/lines.html:356:17: [maybe] Reading absent property (computed name)
+test/10k/lines.html:361:47: [maybe] Reading absent property (computed name)
+test/10k/lines.html:361:62: [maybe] Reading absent property (computed name)
+test/10k/lines.html:362:17: [maybe] Reading absent property (computed name)
+test/10k/lines.html:363:17: [maybe] Reading absent property (computed name)
+test/10k/lines.html:371:17: [maybe] Reading absent property (computed name)
+test/10k/lines.html:371:19: [maybe] Reading absent property (computed name)
+test/10k/lines.html:371:27: [maybe] Reading absent property (computed name)
+test/10k/lines.html:371:37: [maybe] Reading absent property (computed name)
+test/10k/lines.html:372:27: [maybe] Reading absent property (computed name)
+test/10k/lines.html:373:17: [maybe] Reading absent property (computed name)
+test/10k/lines.html:373:17: [maybe] Reading absent property (computed name)
+test/10k/lines.html:373:19: [maybe] Reading absent property (computed name)
+test/10k/lines.html:373:27: [maybe] Reading absent property (computed name)
+test/10k/lines.html:373:43: [maybe] Reading absent property (computed name)
+test/10k/lines.html:374:19: [maybe] Reading absent property (computed name)
+test/10k/lines.html:374:27: [maybe] Reading absent property (computed name)
+test/10k/lines.html:390:21: [maybe] Reading absent property (computed name)
+test/10k/lines.html:391:21: [maybe] Reading absent property (computed name)
+test/10k/lines.html:391:21: [maybe] Reading absent property (computed name)
+test/10k/lines.html:392:23: [maybe] Reading absent property (computed name)
+test/10k/lines.html:392:23: [maybe] Reading absent property (computed name)
+test/10k/lines.html:399:97: [maybe] Reading absent property (computed name)
+test/10k/lines.html:399:97: [maybe] Reading absent property (computed name)
+test/10k/lines.html:403:25: [maybe] Conversion to number yields NaN
+test/10k/lines.html:403:39: [maybe] Conversion to number yields NaN
+test/10k/lines.html:403:53: [maybe] Reading absent property (computed name)
+test/10k/lines.html:403:53: [maybe] Reading absent property (computed name)
+test/10k/lines.html:403:55: [maybe] Conversion to number yields NaN
+test/10k/lines.html:403:62: [maybe] Conversion to number yields NaN
+test/10k/lines.html:403:89: [maybe] Conversion to number yields NaN
+test/10k/lines.html:403:97: [maybe] Conversion to number yields NaN
+test/10k/lines.html:404:25: [maybe] Conversion to number yields NaN
+test/10k/lines.html:404:39: [maybe] Reading absent property (computed name)
+test/10k/lines.html:404:39: [maybe] Reading absent property (computed name)
+test/10k/lines.html:404:44: [maybe] Conversion to number yields NaN
+test/10k/lines.html:404:75: [maybe] Conversion to number yields NaN
+test/10k/lines.html:405:25: [maybe] Conversion to number yields NaN
+test/10k/lines.html:405:38: [maybe] Conversion to number yields NaN
+test/10k/lines.html:405:52: [maybe] Reading absent property (computed name)
+test/10k/lines.html:405:52: [maybe] Reading absent property (computed name)
+test/10k/lines.html:405:54: [maybe] Conversion to number yields NaN
+test/10k/lines.html:405:61: [maybe] Conversion to number yields NaN
+test/10k/lines.html:405:88: [maybe] Conversion to number yields NaN
+test/10k/lines.html:405:96: [maybe] Conversion to number yields NaN
+test/10k/lines.html:406:25: [maybe] Conversion to number yields NaN
+test/10k/lines.html:406:39: [maybe] Conversion to number yields NaN
+test/10k/lines.html:406:52: [maybe] Reading absent property (computed name)
+test/10k/lines.html:406:52: [maybe] Reading absent property (computed name)
+test/10k/lines.html:406:54: [maybe] Conversion to number yields NaN
+test/10k/lines.html:406:61: [maybe] Conversion to number yields NaN
+test/10k/lines.html:406:88: [maybe] Conversion to number yields NaN
+test/10k/lines.html:406:96: [maybe] Conversion to number yields NaN
+test/10k/lines.html:407:25: [maybe] Conversion to number yields NaN
+test/10k/lines.html:407:38: [maybe] Reading absent property (computed name)
+test/10k/lines.html:407:38: [maybe] Reading absent property (computed name)
+test/10k/lines.html:407:43: [maybe] Conversion to number yields NaN
+test/10k/lines.html:407:74: [maybe] Conversion to number yields NaN
+test/10k/lines.html:408:25: [maybe] Conversion to number yields NaN
+test/10k/lines.html:408:38: [maybe] Conversion to number yields NaN
+test/10k/lines.html:408:52: [maybe] Reading absent property (computed name)
+test/10k/lines.html:408:52: [maybe] Reading absent property (computed name)
+test/10k/lines.html:408:54: [maybe] Conversion to number yields NaN
+test/10k/lines.html:408:61: [maybe] Conversion to number yields NaN
+test/10k/lines.html:408:88: [maybe] Conversion to number yields NaN
+test/10k/lines.html:408:96: [maybe] Conversion to number yields NaN
+test/10k/lines.html:409:25: [maybe] Conversion to number yields NaN
+test/10k/lines.html:409:39: [maybe] Reading absent property (computed name)
+test/10k/lines.html:409:39: [maybe] Reading absent property (computed name)
+test/10k/lines.html:409:41: [maybe] Conversion to number yields NaN
+test/10k/lines.html:409:71: [maybe] Conversion to number yields NaN
+test/10k/lines.html:410:25: [maybe] Conversion to number yields NaN
+test/10k/lines.html:410:38: [maybe] Reading absent property (computed name)
+test/10k/lines.html:410:38: [maybe] Reading absent property (computed name)
+test/10k/lines.html:410:40: [maybe] Conversion to number yields NaN
+test/10k/lines.html:410:70: [maybe] Conversion to number yields NaN
+test/10k/lines.html:419:56: [maybe] Converting primitive number to object
+test/10k/lines.html:419:56: [maybe] The variable o has values with different types
+test/10k/lines.html:419:63: [maybe] Reading absent property (computed name)
+test/10k/lines.html:420:56: [maybe] Converting primitive number to object
+test/10k/lines.html:420:56: [maybe] The variable o has values with different types
+test/10k/lines.html:420:63: [maybe] Reading absent property (computed name)
+test/10k/lines.html:421:56: [maybe] Converting primitive number to object
+test/10k/lines.html:421:56: [maybe] The variable o has values with different types
+test/10k/lines.html:421:63: [maybe] Reading absent property (computed name)
+test/10k/lines.html:422:56: [maybe] Converting primitive number to object
+test/10k/lines.html:422:56: [maybe] The variable o has values with different types
+test/10k/lines.html:422:63: [maybe] Reading absent property (computed name)
 test/10k/lines.html:436:26: [maybe] Converting object to string
 test/10k/lines.html:436:26: [maybe] Converting primitive string to object
 test/10k/lines.html:437:30: [maybe] Reading absent property (computed name)
@@ -60,3 +506,11 @@ test/10k/lines.html:438:42: [maybe] Converting object to string
 test/10k/lines.html:438:42: [maybe] Converting primitive string to object
 test/10k/lines.html:438:54: [maybe] Converting primitive string to object
 test/10k/lines.html:438:60: [maybe] Converting primitive string to object
+test/10k/lines.html:154:25: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/10k/lines.html:160:17: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/10k/lines.html:202:31: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/lines.html:203:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/lines.html:204:26: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/lines.html:204:34: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/lines.html:206:38: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/lines.html:206:46: [info] 'this' refers to multiple abstract objects, which may cause loss of precision

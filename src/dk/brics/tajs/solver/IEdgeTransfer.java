@@ -21,11 +21,11 @@ import dk.brics.tajs.flowgraph.BasicBlock;
 /**
  * Interface for edge transfer function classes.
  */
-public interface IEdgeTransfer<BlockStateType extends IBlockState<BlockStateType, ?, ?>,
+public interface IEdgeTransfer<StateType extends IState<StateType, ?, ?>,
         ContextType extends IContext<?>> {
 
     /**
      * Returns non-null context if flow should occur on the given edge and state.
      */
-    ContextType transfer(BasicBlock src, BasicBlock dst, BlockStateType state);
+    ContextType transfer(BasicBlock src, BasicBlock dst, StateType state);
 }

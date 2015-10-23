@@ -19,9 +19,10 @@ package dk.brics.tajs.analysis;
 import dk.brics.tajs.flowgraph.FlowGraph;
 import dk.brics.tajs.lattice.AnalysisLatticeElement;
 import dk.brics.tajs.lattice.CallEdge;
-import dk.brics.tajs.lattice.SpecialVars;
+import dk.brics.tajs.lattice.Context;
+import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.monitoring.IAnalysisMonitoring;
-import dk.brics.tajs.monitoring.Monitoring;
+import dk.brics.tajs.options.ExperimentalOptions;
 import dk.brics.tajs.solver.IAnalysis;
 import dk.brics.tajs.solver.IEdgeTransfer;
 import dk.brics.tajs.solver.IWorkListStrategy;
@@ -30,9 +31,9 @@ import dk.brics.tajs.solver.SolverSynchronizer;
 /**
  * Encapsulation of the analysis using {@link State}, {@link Context},
  * {@link Solver}, {@link InitialStateBuilder}, {@link Transfer},
- * {@link WorkListStrategy}, {@link SpecialVars}, and {@link Monitoring}.
+ * {@link WorkListStrategy}, {@link IContextSensitivityStrategy}, and {@link IAnalysisMonitoring}.
  */
-public final class Analysis implements IAnalysis<State, Context, CallEdge<State>, IAnalysisMonitoring<State, Context, CallEdge<State>>, SpecialVars, Analysis> {
+public final class Analysis implements IAnalysis<State, Context, CallEdge, IAnalysisMonitoring, Analysis> {
 
     private Solver solver;
 
@@ -42,24 +43,32 @@ public final class Analysis implements IAnalysis<State, Context, CallEdge<State>
 
     private WorkListStrategy worklist_strategy;
 
-    private IAnalysisMonitoring<State, Context, CallEdge<State>> monitoring;
+    private IAnalysisMonitoring monitoring;
 
     private EvalCache eval_cache;
+
+    private IContextSensitivityStrategy context_sensitivity_strategy;
 
     /**
      * Constructs a new analysis object.
      */
-    public Analysis(SolverSynchronizer sync) {
+    public Analysis(IAnalysisMonitoring monitoring, SolverSynchronizer sync) {
+        this.monitoring = monitoring;
         initial_state_builder = new InitialStateBuilder();
         transfer = new Transfer();
         worklist_strategy = new WorkListStrategy();
         eval_cache = new EvalCache();
+        if (ExperimentalOptions.ExperimentalOptionsManager.get().isEnabled(StaticDeterminacyContextSensitivityStrategy.StaticDeterminacyOptions.OOPSLA2014)) {
+            context_sensitivity_strategy = new StaticDeterminacyContextSensitivityStrategy(StaticDeterminacyContextSensitivityStrategy.SyntacticHints.get());
+        } else {
+            context_sensitivity_strategy = new BasicContextSensitivityStrategy();
+        }
         solver = new Solver(this, sync);
     }
 
     @Override
-    public AnalysisLatticeElement<State, Context, CallEdge<State>> makeAnalysisLattice(FlowGraph fg) {
-        return new AnalysisLatticeElement<>(fg);
+    public AnalysisLatticeElement makeAnalysisLattice(FlowGraph fg) {
+        return new AnalysisLatticeElement(fg);
     }
 
     @Override
@@ -83,9 +92,7 @@ public final class Analysis implements IAnalysis<State, Context, CallEdge<State>
     }
 
     @Override
-    public IAnalysisMonitoring<State, Context, CallEdge<State>> getMonitoring() {
-        if (monitoring == null)
-            monitoring = new Monitoring<>();
+    public IAnalysisMonitoring getMonitoring() {
         return monitoring;
     }
 
@@ -110,12 +117,14 @@ public final class Analysis implements IAnalysis<State, Context, CallEdge<State>
     }
 
     @Override
-    public CallEdge<State> makeCallEdge(State edge_state) {
-        return new CallEdge<>(edge_state);
+    public CallEdge makeCallEdge(State edge_state) {
+        return new CallEdge(edge_state);
     }
 
-    @Override
-    public boolean allowNextIteration() {
-        return true;
+    /**
+     * Returns the context sensitivity strategy.
+     */
+    public IContextSensitivityStrategy getContextSensitivityStrategy() {
+        return context_sensitivity_strategy;
     }
 }

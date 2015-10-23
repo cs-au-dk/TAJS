@@ -30,11 +30,12 @@ public class SourceLocation implements Comparable<SourceLocation> {
     /**
      * Constructs a new source location.
      * 0 means "no number".
+     * Each occurrence of '\' is replaced by '/'.
      */
     public SourceLocation(int linenumber, int columnnumber, String filename) {
         this.linenumber = linenumber;
         this.columnnumber = columnnumber;
-        this.filename = filename;
+        this.filename = filename.replace('\\', '/');
     }
 
     /**

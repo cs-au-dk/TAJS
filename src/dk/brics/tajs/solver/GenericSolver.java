@@ -34,12 +34,11 @@ import java.util.Map.Entry;
 /**
  * Generic fixpoint solver for flow graphs.
  */
-public class GenericSolver<BlockStateType extends IBlockState<BlockStateType, ContextType, CallEdgeType>,
+public class GenericSolver<StateType extends IState<StateType, ContextType, CallEdgeType>,
         ContextType extends IContext<ContextType>,
-        CallEdgeType extends ICallEdge<BlockStateType>,
-        MonitoringType extends IMonitoring<BlockStateType, ContextType>,
-        SpecialVarsType,
-        AnalysisType extends IAnalysis<BlockStateType, ContextType, CallEdgeType, MonitoringType, SpecialVarsType, AnalysisType>> {
+        CallEdgeType extends ICallEdge<StateType>,
+        MonitoringType extends ISolverMonitoring<StateType, ContextType>,
+        AnalysisType extends IAnalysis<StateType, ContextType, CallEdgeType, MonitoringType, AnalysisType>> {
 
     private static Logger log = Logger.getLogger(GenericSolver.class);
 
@@ -51,7 +50,7 @@ public class GenericSolver<BlockStateType extends IBlockState<BlockStateType, Co
 
     private BasicBlock global_entry_block;
 
-    private IAnalysisLatticeElement<BlockStateType, ContextType, CallEdgeType, SpecialVarsType> the_analysis_lattice_element;
+    private IAnalysisLatticeElement<StateType, ContextType, CallEdgeType> the_analysis_lattice_element;
 
     private WorkList<ContextType> worklist;
 
@@ -59,7 +58,7 @@ public class GenericSolver<BlockStateType extends IBlockState<BlockStateType, Co
 
     private AbstractNode current_node;
 
-    private BlockStateType current_state;
+    private StateType current_state;
 
     /**
      * Messages are disabled during fixpoint iteration and enabled in the subsequent scan phase.
@@ -89,7 +88,7 @@ public class GenericSolver<BlockStateType extends IBlockState<BlockStateType, Co
         /**
          * Returns the current abstract state.
          */
-        public BlockStateType getCurrentState() {
+        public StateType getCurrentState() {
             if (current_state == null)
                 throw new AnalysisException("Unexpected call to getCurrentState");
             return current_state;
@@ -98,7 +97,7 @@ public class GenericSolver<BlockStateType extends IBlockState<BlockStateType, Co
         /**
          * Sets the current abstract state.
          */
-        public void setCurrentState(BlockStateType state) {
+        public void setCurrentState(StateType state) {
             current_state = state;
         }
 
@@ -119,7 +118,7 @@ public class GenericSolver<BlockStateType extends IBlockState<BlockStateType, Co
         /**
          * Returns the analysis lattice element.
          */
-        public IAnalysisLatticeElement<BlockStateType, ContextType, CallEdgeType, SpecialVarsType> getAnalysisLatticeElement() {
+        public IAnalysisLatticeElement<StateType, ContextType, CallEdgeType> getAnalysisLatticeElement() {
             return the_analysis_lattice_element;
         }
 
@@ -143,7 +142,7 @@ public class GenericSolver<BlockStateType extends IBlockState<BlockStateType, Co
          * The given state may be modified by this operation.
          * Ignored if in scan phase.
          */
-        public void propagateToBasicBlock(BlockStateType state, BasicBlock block, ContextType context) {
+        public void propagateToBasicBlock(StateType state, BasicBlock block, ContextType context) {
             if (messages_enabled)
                 return;
             propagate(state, block, context, false);
@@ -152,7 +151,7 @@ public class GenericSolver<BlockStateType extends IBlockState<BlockStateType, Co
         /**
          * Propagates dataflow.
          */
-        private void propagate(BlockStateType state, BasicBlock block, ContextType context, boolean localize) {
+        private void propagate(StateType state, BasicBlock block, ContextType context, boolean localize) {
             MergeResult res = the_analysis_lattice_element.propagate(state, block, context, localize);
             the_analysis_lattice_element.getCallGraph().registerBlockContext(block, context);
             if (res != null) {
@@ -172,7 +171,7 @@ public class GenericSolver<BlockStateType extends IBlockState<BlockStateType, Co
          */
         public void addToWorklist(BasicBlock block, ContextType context) {
             if (worklist.add(worklist.new Entry(block, context)))
-                deps.incrementFunctionActivityLevel(context.getEntryBlockAndContext());
+                deps.incrementFunctionActivityLevel(BlockAndContext.makeEntry(block, context));
         }
 
         /**
@@ -181,11 +180,11 @@ public class GenericSolver<BlockStateType extends IBlockState<BlockStateType, Co
          * The given state may be modified by this operation.
          * Ignored if in scan phase.
          */
-        public void propagateToFunctionEntry(AbstractNode call_node, ContextType caller_context, BlockStateType edge_state,
+        public void propagateToFunctionEntry(AbstractNode call_node, ContextType caller_context, StateType edge_state,
                                              ContextType edge_context, BasicBlock callee_entry) {
             if (messages_enabled)
                 return;
-            CallGraph<BlockStateType, ContextType, CallEdgeType> cg = the_analysis_lattice_element.getCallGraph();
+            CallGraph<StateType, ContextType, CallEdgeType> cg = the_analysis_lattice_element.getCallGraph();
             // add to existing call edge
             if (cg.addTarget(call_node, caller_context, callee_entry, edge_context, edge_state, sync, analysis)) {
                 // new flow at call edge, transform it relative to the function entry states and contexts
@@ -197,7 +196,7 @@ public class GenericSolver<BlockStateType extends IBlockState<BlockStateType, Co
                 // charge the call edge  
                 deps.chargeCallEdge(call_node.getBlock(), caller_context, edge_context, callee_entry, callee_context);
                 // process existing ordinary/exceptional return flow
-                BlockStateType stored_state = current_state;
+                StateType stored_state = current_state;
                 AbstractNode stored_node = current_node;
                 current_state = null;
                 current_node = null;
@@ -210,7 +209,7 @@ public class GenericSolver<BlockStateType extends IBlockState<BlockStateType, Co
         /**
          * Transforms the given state inversely according to the call edge.
          */
-        public void returnFromFunctionExit(BlockStateType return_state, AbstractNode call_node, ContextType caller_context,
+        public void returnFromFunctionExit(StateType return_state, AbstractNode call_node, ContextType caller_context,
                                            BasicBlock callee_entry, ContextType edge_context) {
             CallEdgeType edge = the_analysis_lattice_element.getCallGraph().getCallEdge(call_node, caller_context, callee_entry, edge_context);
             if (return_state.transformInverse(edge, callee_entry, return_state.getContext())) {
@@ -267,7 +266,7 @@ public class GenericSolver<BlockStateType extends IBlockState<BlockStateType, Co
         // iterate until fixpoint
         block_loop:
         while (!worklist.isEmpty()) {
-            if (!analysis.allowNextIteration()) {
+            if (!analysis.getMonitoring().allowNextIteration()) {
                 log.warn("Terminating fixpoint solver early and unsoundly");
                 terminatedEarly = true;
                 break;
@@ -286,8 +285,8 @@ public class GenericSolver<BlockStateType extends IBlockState<BlockStateType, Co
             ContextType context = p.getContext();
             if (sync != null)
                 sync.markActiveBlock(block);
-            deps.decrementFunctionActivityLevel(context.getEntryBlockAndContext());
-            BlockStateType state = the_analysis_lattice_element.getState(block, p.getContext());
+            deps.decrementFunctionActivityLevel(BlockAndContext.makeEntry(block, context));
+            StateType state = the_analysis_lattice_element.getState(block, p.getContext());
             if (state == null)
                 throw new AnalysisException();
             if (log.isDebugEnabled()) {
@@ -313,7 +312,7 @@ public class GenericSolver<BlockStateType extends IBlockState<BlockStateType, Co
                                 ")");
             }
             // basic block transfer
-            analysis.getMonitoring().visitBlockTransfer(block, context);
+            analysis.getMonitoring().visitBlockTransfer(block, state);
             current_state = state.clone();
             if (global_entry_block == block)
                 current_state.localize(null); // use *localized* initial state
@@ -336,19 +335,20 @@ public class GenericSolver<BlockStateType extends IBlockState<BlockStateType, Co
                     if (log.isDebugEnabled())
                         log.debug("After node transfer: " + current_state.toStringBrief());
             }
+            analysis.getMonitoring().visitPostBlockTransfer(block, current_state);
             // edge transfer
             for (Iterator<BasicBlock> i = block.getSuccessors().iterator(); i.hasNext(); ) {
                 BasicBlock succ = i.next();
-                BlockStateType s = i.hasNext() ? current_state.clone() : current_state;
+                StateType s = i.hasNext() ? current_state.clone() : current_state;
                 ContextType new_context = analysis.getEdgeTransferFunctions().transfer(block, succ, s);
                 if (new_context != null) {
                     c.propagateToBasicBlock(s, succ, new_context);
                 }
             }
-            if (!deps.isFunctionActive(context.getEntryBlockAndContext()))
-                for (Pair<NodeAndContext<ContextType>, ContextType> nc : the_analysis_lattice_element.getCallGraph().getSources(context.getEntryBlockAndContext())) {
+            if (!deps.isFunctionActive(BlockAndContext.makeEntry(block, context)))
+                for (Pair<NodeAndContext<ContextType>, ContextType> nc : the_analysis_lattice_element.getCallGraph().getSources(BlockAndContext.makeEntry(block, context))) {
                     // callee has become inactive, so discharge the call edge
-                    deps.dischargeCallEdge(nc.getFirst().getNode().getBlock(), nc.getFirst().getContext(), nc.getSecond(), context.getEntryBlockAndContext());
+                    deps.dischargeCallEdge(nc.getFirst().getNode().getBlock(), nc.getFirst().getContext(), nc.getSecond(), BlockAndContext.makeEntry(block, context));
                 }
         }
         if (!terminatedEarly)
@@ -363,7 +363,6 @@ public class GenericSolver<BlockStateType extends IBlockState<BlockStateType, Co
     public void scan() {
         if (the_analysis_lattice_element == null)
             throw new IllegalStateException("scan() called before solve()");
-        analysis.getMonitoring().visitBeginScanPhase();
         // visit each block
         for (Function function : flowgraph.getFunctions()) {
             if (log.isDebugEnabled())
@@ -373,7 +372,7 @@ public class GenericSolver<BlockStateType extends IBlockState<BlockStateType, Co
                 if (log.isDebugEnabled())
                     log.debug("Scanning " + block + " at " + block.getSourceLocation());
                 block_loop:
-                for (Entry<ContextType, BlockStateType> me : the_analysis_lattice_element.getStates(block).entrySet()) {
+                for (Entry<ContextType, StateType> me : the_analysis_lattice_element.getStates(block).entrySet()) {
                     current_state = me.getValue().clone();
                     ContextType context = me.getKey();
                     if (global_entry_block == block)
@@ -392,17 +391,17 @@ public class GenericSolver<BlockStateType extends IBlockState<BlockStateType, Co
                         analysis.getMonitoring().visitReachableNode(node);
                         analysis.getNodeTransferFunctions().transfer(node, current_state);
                     }
+                    analysis.getMonitoring().visitPostBlockTransfer(block, current_state);
                 }
             }
         }
-        analysis.getMonitoring().visitEndScanPhase();
     }
 
     /**
      * Returns the analysis lattice element.
      * {@link #solve()} must be called first.
      */
-    public IAnalysisLatticeElement<BlockStateType, ContextType, CallEdgeType, SpecialVarsType> getAnalysisLatticeElement() {
+    public IAnalysisLatticeElement<StateType, ContextType, CallEdgeType> getAnalysisLatticeElement() {
         if (the_analysis_lattice_element == null)
             throw new IllegalStateException("getAnalysisLatticeElement() called before solve()");
         return the_analysis_lattice_element;

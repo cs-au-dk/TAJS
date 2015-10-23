@@ -19,16 +19,15 @@ package dk.brics.tajs.solver;
 /**
  * Interface for call edges.
  */
-public interface ICallEdge<BlockStateType extends IBlockState<?, ?, ?>> {
+public interface ICallEdge<StateType extends IState<?, ?, ?>> {
 
     /**
      * Returns the state at this edge.
      */
-    BlockStateType getState();
+    StateType getState();
 
     /**
      * Sets the state at this edge.
      */
-    void setState(BlockStateType s);
-
+    void setState(StateType s);
 }

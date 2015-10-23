@@ -1,12 +1,75 @@
-test/chromeexperiments/catchit.html:142:29: [definite] The conditional expression is always false
-test/chromeexperiments/catchit.html:162:13: [definite] The conditional expression is always true
-TAJS-dynamic-code(test/chromeexperiments/catchit.html:164:13):1:1: [definite] Unreachable function
-test/chromeexperiments/catchit.html:59:13: [definite] The variable tries is never used
-test/chromeexperiments/catchit.html:60:13: [definite] The variable score is never used
-test/chromeexperiments/catchit.html:61:13: [definite] The variable max_score is never used
-test/chromeexperiments/catchit.html:69:9: [definite] Unreachable function updateStat
-test/chromeexperiments/catchit.html:77:9: [definite] Unreachable function Ball
-test/chromeexperiments/catchit.html:84:25: [definite] Unreachable function
-test/chromeexperiments/catchit.html:112:9: [definite] Unreachable function createBall
-test/chromeexperiments/catchit.html:167:28: [definite] Unreachable function
-test/chromeexperiments/catchit.html:175:32: [definite] Unreachable function
+test/chromeexperiments/catchit.html:71:13: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/catchit.html:72:13: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/catchit.html:74:13: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/catchit.html:130:13: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/catchit.html:143:17: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/catchit.html:146:25: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/catchit.html:146:66: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/catchit.html:147:25: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/catchit.html:147:66: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/catchit.html:148:37: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/catchit.html:148:62: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/catchit.html:148:87: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/catchit.html:148:112: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/catchit.html:170:17: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/catchit.html:170:34: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/catchit.html:171:17: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/catchit.html:171:34: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/catchit.html:43:36: [maybe] Uncaught exception, constructed at [test/chromeexperiments/catchit.html:71:13, test/chromeexperiments/catchit.html:72:13, test/chromeexperiments/catchit.html:74:13, test/chromeexperiments/catchit.html:130:13, test/chromeexperiments/catchit.html:143:17, test/chromeexperiments/catchit.html:146:25, test/chromeexperiments/catchit.html:146:66, test/chromeexperiments/catchit.html:147:25, test/chromeexperiments/catchit.html:147:66, test/chromeexperiments/catchit.html:148:37, test/chromeexperiments/catchit.html:148:62, test/chromeexperiments/catchit.html:148:87, test/chromeexperiments/catchit.html:148:112, test/chromeexperiments/catchit.html:170:17, test/chromeexperiments/catchit.html:170:34, test/chromeexperiments/catchit.html:171:17, test/chromeexperiments/catchit.html:171:34]
+test/chromeexperiments/catchit.html:143:17: [maybe] Reading absent property (computed name)
+test/chromeexperiments/catchit.html:146:25: [maybe] Reading absent property (computed name)
+test/chromeexperiments/catchit.html:146:66: [maybe] Reading absent property (computed name)
+test/chromeexperiments/catchit.html:147:25: [maybe] Reading absent property (computed name)
+test/chromeexperiments/catchit.html:147:66: [maybe] Reading absent property (computed name)
+test/chromeexperiments/catchit.html:148:37: [maybe] Reading absent property (computed name)
+test/chromeexperiments/catchit.html:148:62: [maybe] Reading absent property (computed name)
+test/chromeexperiments/catchit.html:148:87: [maybe] Reading absent property (computed name)
+test/chromeexperiments/catchit.html:148:112: [maybe] Reading absent property (computed name)
+test/chromeexperiments/catchit.html:170:17: [maybe] Reading absent property (computed name)
+test/chromeexperiments/catchit.html:170:34: [maybe] Reading absent property (computed name)
+test/chromeexperiments/catchit.html:171:17: [maybe] Reading absent property (computed name)
+test/chromeexperiments/catchit.html:171:34: [maybe] Reading absent property (computed name)
+test/chromeexperiments/catchit.html:86:21: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/catchit.html:86:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/catchit.html:87:21: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/catchit.html:87:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/catchit.html:88:21: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/catchit.html:88:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/catchit.html:88:34: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/catchit.html:88:34: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/catchit.html:89:28: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/catchit.html:89:28: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/catchit.html:90:21: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/catchit.html:90:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/catchit.html:91:21: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/catchit.html:91:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/catchit.html:91:34: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/catchit.html:91:34: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/catchit.html:94:21: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/catchit.html:94:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/catchit.html:95:21: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/catchit.html:95:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/catchit.html:96:21: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/catchit.html:96:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/catchit.html:96:34: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/catchit.html:96:34: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/catchit.html:97:28: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/catchit.html:97:28: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/catchit.html:98:21: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/catchit.html:98:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/catchit.html:99:21: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/catchit.html:99:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/catchit.html:99:34: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/catchit.html:99:34: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/catchit.html:102:17: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/catchit.html:102:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/catchit.html:102:27: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/catchit.html:102:27: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/catchit.html:103:17: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/catchit.html:103:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/catchit.html:103:27: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/catchit.html:103:27: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/catchit.html:106:25: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/catchit.html:106:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/catchit.html:106:33: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/catchit.html:106:33: [info] 'this' refers to multiple abstract objects, which may cause loss of precision

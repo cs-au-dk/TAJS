@@ -17,13 +17,13 @@
 package dk.brics.tajs.monitoring;
 
 import dk.brics.tajs.flowgraph.AbstractNode;
-import dk.brics.tajs.flowgraph.AbstractNodeVisitor;
 import dk.brics.tajs.flowgraph.BasicBlock;
 import dk.brics.tajs.flowgraph.FlowGraph;
 import dk.brics.tajs.flowgraph.Function;
 import dk.brics.tajs.flowgraph.SourceLocation;
 import dk.brics.tajs.flowgraph.jsnodes.AssumeNode;
 import dk.brics.tajs.flowgraph.jsnodes.BeginForInNode;
+import dk.brics.tajs.flowgraph.jsnodes.BeginLoopNode;
 import dk.brics.tajs.flowgraph.jsnodes.BeginWithNode;
 import dk.brics.tajs.flowgraph.jsnodes.BinaryOperatorNode;
 import dk.brics.tajs.flowgraph.jsnodes.CallNode;
@@ -33,6 +33,7 @@ import dk.brics.tajs.flowgraph.jsnodes.DeclareFunctionNode;
 import dk.brics.tajs.flowgraph.jsnodes.DeclareVariableNode;
 import dk.brics.tajs.flowgraph.jsnodes.DeletePropertyNode;
 import dk.brics.tajs.flowgraph.jsnodes.EndForInNode;
+import dk.brics.tajs.flowgraph.jsnodes.EndLoopNode;
 import dk.brics.tajs.flowgraph.jsnodes.EndWithNode;
 import dk.brics.tajs.flowgraph.jsnodes.EventDispatcherNode;
 import dk.brics.tajs.flowgraph.jsnodes.ExceptionalReturnNode;
@@ -51,19 +52,21 @@ import dk.brics.tajs.flowgraph.jsnodes.TypeofNode;
 import dk.brics.tajs.flowgraph.jsnodes.UnaryOperatorNode;
 import dk.brics.tajs.flowgraph.jsnodes.WritePropertyNode;
 import dk.brics.tajs.flowgraph.jsnodes.WriteVariableNode;
-import dk.brics.tajs.lattice.BlockState;
 import dk.brics.tajs.lattice.CallEdge;
+import dk.brics.tajs.lattice.Context;
 import dk.brics.tajs.lattice.HostObject;
+import dk.brics.tajs.lattice.Obj;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.ObjectLabel.Kind;
+import dk.brics.tajs.lattice.ScopeChain;
+import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.Str;
 import dk.brics.tajs.lattice.UnknownValueResolver;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.monitoring.ObjReadsWrites.R_Status;
 import dk.brics.tajs.monitoring.ObjReadsWrites.W_Status;
 import dk.brics.tajs.options.Options;
-import dk.brics.tajs.solver.IBlockState;
-import dk.brics.tajs.solver.IContext;
+import dk.brics.tajs.solver.CallGraph;
 import dk.brics.tajs.solver.Message;
 import dk.brics.tajs.solver.Message.Severity;
 import dk.brics.tajs.solver.Message.Status;
@@ -74,8 +77,11 @@ import dk.brics.tajs.util.Strings;
 import org.apache.log4j.Logger;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.NumberFormat;
 import java.util.Collection;
 import java.util.Collections;
@@ -94,12 +100,9 @@ import static dk.brics.tajs.util.Collections.newMap;
 import static dk.brics.tajs.util.Collections.newSet;
 
 /**
- * Records various information during the scan phase of an analysis.
+ * Records various information during analysis.
  */
-public class Monitoring<
-        BlockStateType extends BlockState<BlockStateType, ContextType, CallEdgeType>,
-        ContextType extends IContext<ContextType>,
-        CallEdgeType extends CallEdge<BlockStateType>> implements IAnalysisMonitoring<BlockStateType, ContextType, CallEdgeType> {
+public class Monitoring implements IAnalysisMonitoring {
 
     private static Logger log = Logger.getLogger(Monitoring.class);
 
@@ -196,7 +199,7 @@ public class Monitoring<
     /**
      * Store information about values read during analysis.
      */
-    private Map<NodeAndContext<IContext<?>>, Value> value_reads;
+    private Map<NodeAndContext<Context>, Value> value_reads;
 
     /**
      * Values passed to eval.
@@ -211,7 +214,7 @@ public class Monitoring<
     /**
      * Descriptions of new dataflow at function entry blocks.
      */
-    private Map<BasicBlock, Map<IContext<?>, List<String>>> newflows;
+    private Map<BasicBlock, Map<Context, List<String>>> newflows;
 
     /**
      * Maximum memory usage measured.
@@ -248,7 +251,7 @@ public class Monitoring<
     private TypeCollector type_collector;
 
 //    /**
-//     * Counter for {@link #visitNewFlow(BasicBlock, IContext, IBlockState, String, String)}.
+//     * Counter for {@link #visitNewFlow(BasicBlock, IContext, IState, String, String)}.
 //     */
 //    private int next_newflow_file;
 
@@ -267,6 +270,11 @@ public class Monitoring<
      * The current flowgraph
      */
     private FlowGraph flowgraph;
+
+    /**
+     * The current callgraph
+     */
+    private CallGraph<State, Context, CallEdge> callgraph;
 
     /**
      * Constructs a new monitoring object.
@@ -461,155 +469,189 @@ public class Monitoring<
         }
     }
 
-    @Override
-    public void visitBeginScanPhase() {
+    private void visitBeginScanPhase() {
         messages = newMap();
         scan_phase = true;
         for (Function f : flowgraph.getFunctions())
             for (BasicBlock b : f.getBlocks())
                 for (AbstractNode n : b.getNodes())
-                    n.visitBy(new AbstractNodeVisitor<Void>() {
+                    n.visitBy((n1, a) -> n1.visitBy(new NodeVisitor<Void>() {
 
                         @Override
-                        public void visit(Node n, Void a) {
-                            n.visitBy(new NodeVisitor<Void>() {
-
-                                @Override
-                                public void visit(NopNode n, Void a) {
-                                }
-
-                                @Override
-                                public void visit(DeclareVariableNode n, Void a) {
-                                }
-
-                                @Override
-                                public void visit(ConstantNode n, Void a) {
-                                }
-
-                                @Override
-                                public void visit(NewObjectNode n, Void a) {
-                                }
-
-                                @Override
-                                public void visit(UnaryOperatorNode n, Void a) {
-                                }
-
-                                @Override
-                                public void visit(BinaryOperatorNode n, Void a) {
-                                }
-
-                                @Override
-                                public void visit(ReadVariableNode n, Void a) {
-                                    if (!n.getVariableName().equals("this")) {
-                                        read_variable_nodes++;
-                                    }
-                                }
-
-                                @Override
-                                public void visit(WriteVariableNode n, Void a) {
-                                }
-
-                                @Override
-                                public void visit(ReadPropertyNode n, Void a) {
-                                    property_access_nodes++;
-                                    if (n.isPropertyFixed()) {
-                                        read_fixed_property_nodes++;
-                                    }
-                                }
-
-                                @Override
-                                public void visit(WritePropertyNode n, Void a) {
-                                    property_access_nodes++;
-                                }
-
-                                @Override
-                                public void visit(DeletePropertyNode n, Void a) {
-                                    if (!n.isVariable()) {
-                                        property_access_nodes++;
-                                    }
-                                }
-
-                                @Override
-                                public void visit(TypeofNode n, Void a) {
-                                }
-
-                                @Override
-                                public void visit(IfNode n, Void a) {
-                                }
-
-                                @Override
-                                public void visit(DeclareFunctionNode n, Void a) {
-                                }
-
-                                @Override
-                                public void visit(CallNode n, Void a) {
-                                    call_nodes++;
-                                }
-
-                                @Override
-                                public void visit(ReturnNode n, Void a) {
-                                }
-
-                                @Override
-                                public void visit(ExceptionalReturnNode n, Void a) {
-                                }
-
-                                @Override
-                                public void visit(ThrowNode n, Void a) {
-                                }
-
-                                @Override
-                                public void visit(CatchNode n, Void a) {
-                                }
-
-                                @Override
-                                public void visit(BeginWithNode n, Void a) {
-                                }
-
-                                @Override
-                                public void visit(EndWithNode n, Void a) {
-                                }
-
-                                @Override
-                                public void visit(BeginForInNode n, Void a) {
-                                }
-
-                                @Override
-                                public void visit(NextPropertyNode n, Void a) {
-                                }
-
-                                @Override
-                                public void visit(HasNextPropertyNode n, Void a) {
-                                }
-
-                                @Override
-                                public void visit(AssumeNode n, Void a) {
-                                }
-
-                                @Override
-                                public void visit(EventDispatcherNode n, Void a) {
-                                }
-
-                                @Override
-                                public void visit(EndForInNode n, Void a) {
-                                }
-                            }, null);
+                        public void visit(NopNode n, Void a) {
                         }
-                    }, null);
+
+                        @Override
+                        public void visit(DeclareVariableNode n, Void a) {
+                        }
+
+                        @Override
+                        public void visit(ConstantNode n, Void a) {
+                        }
+
+                        @Override
+                        public void visit(NewObjectNode n, Void a) {
+                        }
+
+                        @Override
+                        public void visit(UnaryOperatorNode n, Void a) {
+                        }
+
+                        @Override
+                        public void visit(BinaryOperatorNode n, Void a) {
+                        }
+
+                        @Override
+                        public void visit(ReadVariableNode n, Void a) {
+                            if (!n.getVariableName().equals("this")) {
+                                read_variable_nodes++;
+                            }
+                        }
+
+                        @Override
+                        public void visit(WriteVariableNode n, Void a) {
+                        }
+
+                        @Override
+                        public void visit(ReadPropertyNode n, Void a) {
+                            property_access_nodes++;
+                            if (n.isPropertyFixed()) {
+                                read_fixed_property_nodes++;
+                            }
+                        }
+
+                        @Override
+                        public void visit(WritePropertyNode n, Void a) {
+                            property_access_nodes++;
+                        }
+
+                        @Override
+                        public void visit(DeletePropertyNode n, Void a) {
+                            if (!n.isVariable()) {
+                                property_access_nodes++;
+                            }
+                        }
+
+                        @Override
+                        public void visit(TypeofNode n, Void a) {
+                        }
+
+                        @Override
+                        public void visit(IfNode n, Void a) {
+                        }
+
+                        @Override
+                        public void visit(DeclareFunctionNode n, Void a) {
+                        }
+
+                        @Override
+                        public void visit(CallNode n, Void a) {
+                            call_nodes++;
+                        }
+
+                        @Override
+                        public void visit(ReturnNode n, Void a) {
+                        }
+
+                        @Override
+                        public void visit(ExceptionalReturnNode n, Void a) {
+                        }
+
+                        @Override
+                        public void visit(ThrowNode n, Void a) {
+                        }
+
+                        @Override
+                        public void visit(CatchNode n, Void a) {
+                        }
+
+                        @Override
+                        public void visit(BeginWithNode n, Void a) {
+                        }
+
+                        @Override
+                        public void visit(EndWithNode n, Void a) {
+                        }
+
+                        @Override
+                        public void visit(BeginForInNode n, Void a) {
+                        }
+
+                        @Override
+                        public void visit(NextPropertyNode n, Void a) {
+                        }
+
+                        @Override
+                        public void visit(HasNextPropertyNode n, Void a) {
+                        }
+
+                        @Override
+                        public void visit(AssumeNode n, Void a) {
+                        }
+
+                        @Override
+                        public void visit(EventDispatcherNode n, Void a) {
+                        }
+
+                        @Override
+                        public void visit(EndForInNode n, Void a) {
+                        }
+
+                        @Override
+                        public void visit(BeginLoopNode n, Void a) {
+
+                        }
+
+                        @Override
+                        public void visit(EndLoopNode n, Void a) {
+
+                        }
+                    }, null), null);
     }
 
-    @Override
-    public void visitEndScanPhase() {
-        reportUnreachableFunctions();
-        reportUnreachableCode(flowgraph);
-        reportUnusedVariableOrParameter(flowgraph);
-        reportDeadAssignments();
-        reportShadowing(flowgraph);
-        if (Options.get().isCollectVariableInfoEnabled()) {
-            type_collector.logTypeInformation();
+    private void visitEndScanPhase() {
+        if (!Options.get().isNoMessages()) {
+            reportUnreachableFunctions();
+            reportUnreachableCode(flowgraph);
+            reportUnusedVariableOrParameter(flowgraph);
+            reportDeadAssignments();
+            reportShadowing(flowgraph);
+            if (Options.get().isCollectVariableInfoEnabled()) {
+                type_collector.logTypeInformation();
+            }
+            for (Message message : getSortedMessages()) {
+                message.emit();
+            }
         }
-        for (Message message : getSortedMessages()) {
-            message.emit();
+
+        if (Options.get().isStatisticsEnabled()) {
+            log.info(this.toString());
+            log.info(callgraph.getCallGraphStatistics());
+            log.info("BlockState: created=" + State.getNumberOfStatesCreated() + ", makeWritableStore=" + State.getNumberOfMakeWritableStoreCalls());
+            log.info("Obj: created=" + Obj.getNumberOfObjsCreated() + ", makeWritableProperties=" + Obj.getNumberOfMakeWritablePropertiesCalls());
+            log.info("Value cache: hits=" + Value.getNumberOfValueCacheHits() + ", misses=" + Value.getNumberOfValueCacheMisses() + ", finalSize=" + Value.getValueCacheSize());
+            log.info("Value object set cache: hits=" + Value.getNumberOfObjectSetCacheHits() + ", misses=" + Value.getNumberOfObjectSetCacheMisses() + ", finalSize=" + Value.getObjectSetCacheSize());
+            log.info("ScopeChain cache: hits=" + ScopeChain.getNumberOfCacheHits() + ", misses=" + ScopeChain.getNumberOfCacheMisses() + ", finalSize=" + ScopeChain.getCacheSize());
+            log.info("Basic blocks: " + flowgraph.getNumberOfBlocks());
+        }
+
+        if (Options.get().isCoverageEnabled()) {
+            logUnreachableMap();
+        }
+
+        if (Options.get().isCallGraphEnabled()) {
+            log.info(callgraph.toString());
+            File outdir = new File("out");
+            if (!outdir.exists()) {
+                outdir.mkdir();
+            }
+            String filename = "out" + File.separator + "callgraph.dot";
+            try (FileWriter f = new FileWriter(filename)) {
+                log.info("Writing call graph to " + filename);
+                callgraph.toDot(new PrintWriter(f));
+            } catch (IOException e) {
+                log.error("Unable to write " + filename + ": " + e.getMessage());
+            }
         }
     }
 
@@ -623,7 +665,7 @@ public class Monitoring<
      * Also measures memory usage if enabled.
      */
     @Override
-    public void visitBlockTransfer(BasicBlock block, ContextType context) {
+    public void visitBlockTransfer(BasicBlock block, State state) {
         block_transfers++;
         if (Options.get().isMemoryMeasurementEnabled()) {
             System.gc();
@@ -655,10 +697,10 @@ public class Monitoring<
     }
 
     @Override
-    public void visitNewFlow(BasicBlock b, IContext<?> c, IBlockState<?, ?, ?> s, String diff, String info) {
+    public void visitNewFlow(BasicBlock b, Context c, State s, String diff, String info) {
         if (Options.get().isNewFlowEnabled() && b.isEntry()) {
             if (diff != null) {
-                Map<IContext<?>, List<String>> m = newflows.get(b);
+                Map<Context, List<String>> m = newflows.get(b);
                 if (m == null) {
                     m = newMap();
                     newflows.put(b, m);
@@ -696,9 +738,9 @@ public class Monitoring<
      * Registers the function and checks whether it is unreachable.
      */
     @Override
-    public void visitFunction(Function f, Collection<BlockStateType> entry_states) {
+    public void visitFunction(Function f, Collection<State> entry_states) {
         functions.add(f);
-        for (BlockStateType s : entry_states) {
+        for (State s : entry_states) {
             if (!s.isNone()) {
                 reachable_functions.add(f); // see also "Unreachable code" and "The conditional expression is always true/false"
                 break;
@@ -746,7 +788,7 @@ public class Monitoring<
      * @param v the value being read
      */
     @Override
-    public void visitReadThis(ReadVariableNode n, Value v, BlockStateType state, ObjectLabel global_obj) {
+    public void visitReadThis(ReadVariableNode n, Value v, State state, ObjectLabel global_obj) {
         if (!scan_phase) {
             return;
         }
@@ -783,7 +825,7 @@ public class Monitoring<
      * @param v the value being read
      */
     @Override
-    public void visitReadVariable(ReadVariableNode n, Value v, BlockStateType state) {
+    public void visitReadVariable(ReadVariableNode n, Value v, State state) {
         if (!scan_phase) {
             return;
         }
@@ -811,7 +853,7 @@ public class Monitoring<
      * @param state current abstract state
      */
     @Override
-    public void visitWriteVariable(WriteVariableNode n, Value v, BlockStateType state) {
+    public void visitWriteVariable(WriteVariableNode n, Value v, State state) {
         if (!scan_phase) {
             return;
         }
@@ -979,7 +1021,7 @@ public class Monitoring<
      * @param state       current abstract state
      */
     @Override
-    public void visitReadProperty(ReadPropertyNode n, Set<ObjectLabel> objlabels, Str propertystr, boolean maybe, BlockStateType state) {
+    public void visitReadProperty(ReadPropertyNode n, Set<ObjectLabel> objlabels, Str propertystr, boolean maybe, State state) {
         if (!scan_phase) {
             return;
         }
@@ -1023,7 +1065,7 @@ public class Monitoring<
      * @param check_unknown if set, warn about reads from unknown properties
      */
     @Override
-    public void visitPropertyRead(Node n, Set<ObjectLabel> objs, Str propertystr, BlockStateType state, boolean check_unknown) {
+    public void visitPropertyRead(Node n, Set<ObjectLabel> objs, Str propertystr, State state, boolean check_unknown) {
         if (!scan_phase) {
             return;
         }
@@ -1160,7 +1202,7 @@ public class Monitoring<
      * Registers the name, location, and value of a variable being read or written.
      */
     @Override
-    public void visitVariableOrProperty(String var, SourceLocation loc, Value value, IContext<ContextType> context, BlockStateType state) {
+    public void visitVariableOrProperty(String var, SourceLocation loc, Value value, Context context, State state) {
         if (scan_phase && Options.get().isCollectVariableInfoEnabled()) {
             type_collector.record(var, loc, UnknownValueResolver.getRealValue(value, state), context);
         }
@@ -1273,7 +1315,7 @@ public class Monitoring<
      * Record type information about a var/prop read.
      */
     @Override
-    public void visitRead(Node n, Value v, BlockStateType state) {
+    public void visitRead(Node n, Value v, State state) {
         if (!scan_phase) {
             return;
         }
@@ -1288,7 +1330,7 @@ public class Monitoring<
      * @param v value being read
      */
     @Override
-    public void visitVariableAsRead(ReadVariableNode n, Value v, BlockStateType state) {
+    public void visitVariableAsRead(ReadVariableNode n, Value v, State state) {
         if (!scan_phase) {
             return;
         }
@@ -1346,10 +1388,10 @@ public class Monitoring<
         if (Options.get().isNewFlowEnabled()) {
             TreeMap<Integer, String> sorted = new TreeMap<>();
             b.append("\nNew flow at each function for each context:");
-            for (Entry<BasicBlock, Map<IContext<?>, List<String>>> me1 : newflows.entrySet()) {
+            for (Entry<BasicBlock, Map<Context, List<String>>> me1 : newflows.entrySet()) {
                 Function f = me1.getKey().getFunction();
                 b.append("\n").append(f).append(" at ").append(f.getSourceLocation()).append(":");
-                for (Entry<IContext<?>, List<String>> me2 : me1.getValue().entrySet()) {
+                for (Entry<Context, List<String>> me2 : me1.getValue().entrySet()) {
                     b.append("\n  ").append(me2.getKey()).append(" state diffs: ").append(me2.getValue().size());
                     for (String diff : me2.getValue()) {
                         if (diff != null) {
@@ -1361,58 +1403,52 @@ public class Monitoring<
             }
             b.append("\nSorted new flow:");
             for (Entry<Integer, String> me : sorted.entrySet())
-                b.append("\n" + me.getKey() + " new flows at " + me.getValue());
+                b.append("\n").append(me.getKey()).append(" new flows at ").append(me.getValue());
         }
 
-        b.append("\n\nCall/construct nodes with potential call to non-function:                     " + call_to_non_function.size());
-        b.append("\nTotal number of call/construct nodes:                                         " + call_nodes);
-        b.append("\n==> Call/construct nodes that are certain to never call non-functions:        " +
-                (call_nodes > 0 ? ((call_nodes - call_to_non_function.size()) * 1000 / call_nodes) / 10f + "%" : "-"));
+        b.append("\n\nCall/construct nodes with potential call to non-function:                     ").append(call_to_non_function.size());
+        b.append("\nTotal number of call/construct nodes:                                         ").append(call_nodes);
+        b.append("\n==> Call/construct nodes that are certain to never call non-functions:        ").append(call_nodes > 0 ? ((call_nodes - call_to_non_function.size()) * 1000 / call_nodes) / 10f + "%" : "-");
 
-        b.append("\n\nRead variable nodes with potential absent variable:                           " + absent_variable_read.size());
-        b.append("\nTotal number of (non-this) read variable nodes:                               " + read_variable_nodes);
-        b.append("\n==> Read variable nodes that are certain to never read absent variables:      " +
-                (read_variable_nodes > 0 ? ((read_variable_nodes - absent_variable_read.size()) * 1000 / read_variable_nodes) / 10f + "%" : "-"));
+        b.append("\n\nRead variable nodes with potential absent variable:                           ").append(absent_variable_read.size());
+        b.append("\nTotal number of (non-this) read variable nodes:                               ").append(read_variable_nodes);
+        b.append("\n==> Read variable nodes that are certain to never read absent variables:      ").append(read_variable_nodes > 0 ? ((read_variable_nodes - absent_variable_read.size()) * 1000 / read_variable_nodes) / 10f + "%" : "-");
 
-        b.append("\n\nProperty access nodes with potential null/undef base:                         " + null_undef_base.size());
-        b.append("\nTotal number of property access nodes:                                        " + property_access_nodes);
-        b.append("\n==> Property access nodes that are certain to never have null/undef base:     " +
-                (property_access_nodes > 0 ? ((property_access_nodes - null_undef_base.size()) * 1000 / property_access_nodes) / 10f + "%" : "-"));
+        b.append("\n\nProperty access nodes with potential null/undef base:                         ").append(null_undef_base.size());
+        b.append("\nTotal number of property access nodes:                                        ").append(property_access_nodes);
+        b.append("\n==> Property access nodes that are certain to never have null/undef base:     ").append(property_access_nodes > 0 ? ((property_access_nodes - null_undef_base.size()) * 1000 / property_access_nodes) / 10f + "%" : "-");
 
-        b.append("\n\nProperty reads resulting in singleton types:                                  " + getSingletonPropertyReads());
-        b.append("\nVariable reads resulting in singleton types:                                  " + getSingletonVariableReads());
+        b.append("\n\nProperty reads resulting in singleton types:                                  ").append(getSingletonPropertyReads());
+        b.append("\nVariable reads resulting in singleton types:                                  ").append(getSingletonVariableReads());
         // FIXME: only compare with reads with typeSize>0 ? (typeSize is 0 for polymorphic values...)
         float p_var = getVarReadsSize() > 0 ? (float) getSingletonVariableReads() * 100 / getVarReadsSize() : -1;
         float p_prop = getPropReadsSize() > 0 ? (float) getSingletonPropertyReads() * 100 / getPropReadsSize() : -1;
         float p_all = !value_reads.isEmpty() ? (float) (getSingletonPropertyReads() + getSingletonVariableReads()) * 100 / value_reads.size() : -1;
-        b.append("\n==> Variable reads with singleton results:                                    " + (p_var == -1 ? "-" : p_var + "%"));
-        b.append("\n==> Property reads with singleton results:                                    " + (p_prop == -1 ? "-" : p_prop + "%"));
-        b.append("\n==> Reads with singleton results:                                             " + (p_all == -1 ? "-" : p_all + "%"));
+        b.append("\n==> Variable reads with singleton results:                                    ").append(p_var == -1 ? "-" : p_var + "%");
+        b.append("\n==> Property reads with singleton results:                                    ").append(p_prop == -1 ? "-" : p_prop + "%");
+        b.append("\n==> Reads with singleton results:                                             ").append(p_all == -1 ? "-" : p_all + "%");
 
-        b.append("\n==> Average type size in property reads:                                      " + formatter.format(getAveragePropertyTypeSize()));
-        b.append("\n==> Average type size in variable reads:                                      " + formatter.format(getAverageVariableTypeSize()));
-        b.append("\n==> Average type size in all reads:                                           " + formatter.format(geTotalAverageTypeSize()));
-        b.append("\n==> Reads with at most one type:                                              " + formatter.format(getReadsWithAtMostOneType()));
-        b.append("\n==> Reads with at least two types:                                            " + formatter.format(getReadsWithAtleastTwoTypes()));
+        b.append("\n==> Average type size in property reads:                                      ").append(formatter.format(getAveragePropertyTypeSize()));
+        b.append("\n==> Average type size in variable reads:                                      ").append(formatter.format(getAverageVariableTypeSize()));
+        b.append("\n==> Average type size in all reads:                                           ").append(formatter.format(geTotalAverageTypeSize()));
+        b.append("\n==> Reads with at most one type:                                              ").append(formatter.format(getReadsWithAtMostOneType()));
+        b.append("\n==> Reads with at least two types:                                            ").append(formatter.format(getReadsWithAtleastTwoTypes()));
 
-        b.append("\n\nFixed-property read nodes with potential absent property:                     " + absent_fixed_property_read.size());
-        b.append("\nTotal number of fixed-property read nodes:                                    " + read_fixed_property_nodes);
-        b.append("\n==> Fixed-property read nodes that are certain to never have absent property: " +
-                (read_fixed_property_nodes > 0 ? ((read_fixed_property_nodes - absent_fixed_property_read.size()) * 1000 / read_fixed_property_nodes) / 10f + "%" : "-"));
+        b.append("\n\nFixed-property read nodes with potential absent property:                     ").append(absent_fixed_property_read.size());
+        b.append("\nTotal number of fixed-property read nodes:                                    ").append(read_fixed_property_nodes);
+        b.append("\n==> Fixed-property read nodes that are certain to never have absent property: ").append(read_fixed_property_nodes > 0 ? ((read_fixed_property_nodes - absent_fixed_property_read.size()) * 1000 / read_fixed_property_nodes) / 10f + "%" : "-");
 
-        b.append("\n\nTotal number of functions:                                                    " + functions.size());
-        b.append("\nNumber of unreachable functions:                                              " + (functions.size() - reachable_functions.size()));
+        b.append("\n\nTotal number of functions:                                                    ").append(functions.size());
+        b.append("\nNumber of unreachable functions:                                              ").append(functions.size() - reachable_functions.size());
 
-        b.append("\n\nNode transfers: " + node_transfers);
-        b.append("\nBlock transfers: " + block_transfers);
-        b.append("\nUnknown-value recoveries: \n" +
-                " analysis: partial=" + unknown_value_resolve_analyzing_partial + ", full=" + unknown_value_resolve_analyzing_full + "\n" +
-                " scanning: partial=" + unknown_value_resolve_scanning_partial + ", full=" + unknown_value_resolve_scanning_full);
-        b.append("\nState joins: " + joins + "\n");
+        b.append("\n\nNode transfers: ").append(node_transfers);
+        b.append("\nBlock transfers: ").append(block_transfers);
+        b.append("\nUnknown-value recoveries: \n" + " analysis: partial=").append(unknown_value_resolve_analyzing_partial).append(", full=").append(unknown_value_resolve_analyzing_full).append("\n").append(" scanning: partial=").append(unknown_value_resolve_scanning_partial).append(", full=").append(unknown_value_resolve_scanning_full);
+        b.append("\nState joins: ").append(joins).append("\n");
 
         if (Options.get().isMemoryMeasurementEnabled()) {
             formatter.setMaximumFractionDigits(2);
-            b.append(" Max memory used: " + formatter.format((max_memory / (1024L * 1024L)))).append("M\n");
+            b.append(" Max memory used: ").append(formatter.format((max_memory / (1024L * 1024L)))).append("M\n");
         }
         if (Options.get().isEvalStatistics()) {
             //TODO: extend eval statistics, e.g. to include Identifer and prefix information
@@ -1441,13 +1477,13 @@ public class Monitoring<
             }
             b.append("\n");
         }
-        b.append("Recovery graph sizes: " + recovery_graph_sizes + "\n");
+        b.append("Recovery graph sizes: ").append(recovery_graph_sizes).append("\n");
         return b.toString();
     }
 
     private int getVarReadsSize() {
         int res = 0;
-        for (NodeAndContext<IContext<?>> n : value_reads.keySet()) {
+        for (NodeAndContext<Context> n : value_reads.keySet()) {
             if (n.getNode() instanceof ReadVariableNode) {
                 res++;
             }
@@ -1457,7 +1493,7 @@ public class Monitoring<
 
     private int getPropReadsSize() {
         int res = 0;
-        for (NodeAndContext<IContext<?>> n : value_reads.keySet()) {
+        for (NodeAndContext<Context> n : value_reads.keySet()) {
             if (n.getNode() instanceof ReadPropertyNode) {
                 res++;
             }
@@ -1468,7 +1504,7 @@ public class Monitoring<
     private double getAverageVariableTypeSize() {
         double res = 0;
         int div = 0;
-        for (NodeAndContext<IContext<?>> n : value_reads.keySet()) {
+        for (NodeAndContext<Context> n : value_reads.keySet()) {
             if (n.getNode() instanceof ReadVariableNode) {
                 res += value_reads.get(n).typeSize();
                 div++;
@@ -1484,7 +1520,7 @@ public class Monitoring<
     private double getAveragePropertyTypeSize() {
         double res = 0;
         int div = 0;
-        for (NodeAndContext<IContext<?>> n : value_reads.keySet()) {
+        for (NodeAndContext<Context> n : value_reads.keySet()) {
             if (n.getNode() instanceof ReadPropertyNode) {
                 res += value_reads.get(n).typeSize();
                 div++;
@@ -1499,7 +1535,7 @@ public class Monitoring<
 
     private double geTotalAverageTypeSize() {
         double res = 0;
-        for (NodeAndContext<IContext<?>> n : value_reads.keySet()) {
+        for (NodeAndContext<Context> n : value_reads.keySet()) {
             res += value_reads.get(n).typeSize();
         }
         res = (1000 * res) / value_reads.size();
@@ -1508,7 +1544,7 @@ public class Monitoring<
 
     private int getReadsWithAtMostOneType() {
         int res = 0;
-        for (NodeAndContext<IContext<?>> n : value_reads.keySet()) {
+        for (NodeAndContext<Context> n : value_reads.keySet()) {
             if (value_reads.get(n).typeSize() <= 1) {
                 res++;
             }
@@ -1518,7 +1554,7 @@ public class Monitoring<
 
     private int getReadsWithAtleastTwoTypes() {
         int res = 0;
-        for (NodeAndContext<IContext<?>> n : value_reads.keySet()) {
+        for (NodeAndContext<Context> n : value_reads.keySet()) {
             if (value_reads.get(n).typeSize() > 1) {
                 res++;
             }
@@ -1528,7 +1564,7 @@ public class Monitoring<
 
     private int getSingletonPropertyReads() {
         int res = 0;
-        for (NodeAndContext<IContext<?>> n : value_reads.keySet()) {
+        for (NodeAndContext<Context> n : value_reads.keySet()) {
             if (n.getNode() instanceof ReadPropertyNode) {
                 if (value_reads.get(n).typeSize() == 1)
                     res++;
@@ -1539,7 +1575,7 @@ public class Monitoring<
 
     private int getSingletonVariableReads() {
         int res = 0;
-        for (NodeAndContext<IContext<?>> n : value_reads.keySet()) {
+        for (NodeAndContext<Context> n : value_reads.keySet()) {
             if (n.getNode() instanceof ReadVariableNode) {
                 if (value_reads.get(n).typeSize() == 1)
                     res++;
@@ -1563,8 +1599,10 @@ public class Monitoring<
         }
     }
 
-    @Override
-    public void logUnreachableMap() {
+    /**
+     * Produces output showing the parts of the code that is determined unreachable by the analysis.
+     */
+    private void logUnreachableMap() {
         for (String fs : unreachable_lines.keySet()) {
             log.info("== unreachable info for " + fs + " ==");
             try (BufferedReader r = new BufferedReader(new FileReader(fs))) {
@@ -1686,5 +1724,34 @@ public class Monitoring<
     @Override
     public Map<TypeCollector.VariableSummary, Value> getTypeInformation() {
         return type_collector.getTypeInformation();
+    }
+
+    @Override
+    public boolean allowNextIteration() {
+        return true;
+    }
+
+    @Override
+    public void beginPhase(AnalysisPhase phase) {
+        if (phase == AnalysisPhase.SCAN) {
+            visitBeginScanPhase();
+        }
+    }
+
+    @Override
+    public void endPhase(AnalysisPhase phase) {
+        if (phase == AnalysisPhase.SCAN) {
+            visitEndScanPhase();
+        }
+    }
+
+    @Override
+    public void setCallGraph(CallGraph<State, Context, CallEdge> callgraph) {
+        this.callgraph = callgraph;
+    }
+
+    @Override
+    public void visitPostBlockTransfer(BasicBlock b, State state) {
+        // ignore
     }
 }

@@ -1,26 +1,58 @@
-test/10k/snowpar.html:22:38: [definite] The assignment to pause has no effect
-test/10k/snowpar.html:35:57: [definite] The conditional expression is always false
 test/10k/snowpar.html:144:5: [definite] The assignment to padding has no effect
-test/10k/snowpar.html:239:17: [definite] The conditional expression is always false
-test/10k/snowpar.html:321:5: [definite] The conditional expression is always false
-test/10k/snowpar.html:322:5: [definite] The conditional expression is always false
-test/10k/snowpar.html:323:5: [definite] The conditional expression is always false
-test/10k/snowpar.html:324:5: [definite] The conditional expression is always true
-test/10k/snowpar.html:325:5: [definite] The conditional expression is always false
-test/10k/snowpar.html:334:5: [definite] The conditional expression is always true
-test/10k/snowpar.html:164:22: [definite] Unreachable function mouseMove
+test/10k/snowpar.html:170:5: [definite] The conditional expression is always false
+test/10k/snowpar.html:193:11: [definite] The conditional expression is always true
+test/10k/snowpar.html:276:5: [definite] The assignment to padding has no effect
+test/10k/snowpar.html:176:28: [definite] Reading absent property scrollLeft
+test/10k/snowpar.html:176:55: [definite] Reading absent property scrollLeft
+test/10k/snowpar.html:177:28: [definite] Reading absent property scrollTop
+test/10k/snowpar.html:177:54: [definite] Reading absent property scrollTop
 test/10k/snowpar.html:170:17: [definite] The variable declaration e shadows a parameter
-test/10k/snowpar.html:192:22: [definite] Unreachable function keyDown
-test/10k/snowpar.html:269:1: [definite] Unreachable function drawSnow
-test/10k/snowpar.html:275:1: [definite] Unreachable function drawGraph
-test/10k/snowpar.html:293:1: [definite] Unreachable function drawOLines
-test/10k/snowpar.html:313:1: [definite] Unreachable function drawRects
+test/10k/snowpar.html:192:22: [definite] The variable e is never used
+test/10k/snowpar.html:138:9: [maybe] TypeError, accessing property of null/undefined
+test/10k/snowpar.html:138:9: [maybe] TypeError, accessing property of null/undefined
+test/10k/snowpar.html:139:9: [maybe] TypeError, accessing property of null/undefined
+test/10k/snowpar.html:139:9: [maybe] TypeError, accessing property of null/undefined
+test/10k/snowpar.html:176:28: [maybe] TypeError, accessing property of null/undefined
+test/10k/snowpar.html:177:28: [maybe] TypeError, accessing property of null/undefined
+test/10k/snowpar.html:201:9: [maybe] TypeError, accessing property of null/undefined
+test/10k/snowpar.html:201:30: [maybe] TypeError, accessing property of null/undefined
+test/10k/snowpar.html:206:9: [maybe] TypeError, accessing property of null/undefined
+test/10k/snowpar.html:206:35: [maybe] TypeError, accessing property of null/undefined
+test/10k/snowpar.html:210:9: [maybe] TypeError, accessing property of null/undefined
+test/10k/snowpar.html:210:37: [maybe] TypeError, accessing property of null/undefined
+test/10k/snowpar.html:214:9: [maybe] TypeError, accessing property of null/undefined
+test/10k/snowpar.html:214:36: [maybe] TypeError, accessing property of null/undefined
+test/10k/snowpar.html:218:9: [maybe] TypeError, accessing property of null/undefined
+test/10k/snowpar.html:218:36: [maybe] TypeError, accessing property of null/undefined
+test/10k/snowpar.html:222:9: [maybe] TypeError, accessing property of null/undefined
+test/10k/snowpar.html:222:37: [maybe] TypeError, accessing property of null/undefined
+test/10k/snowpar.html:230:9: [maybe] TypeError, accessing property of null/undefined
+test/10k/snowpar.html:230:31: [maybe] TypeError, accessing property of null/undefined
+test/10k/snowpar.html:43:37: [maybe] Reading 'this' yields the global object
 test/10k/snowpar.html:43:37: [maybe] Reading absent property value
+test/10k/snowpar.html:43:65: [maybe] Reading 'this' yields the global object
 test/10k/snowpar.html:43:65: [maybe] Reading absent property value
+test/10k/snowpar.html:138:9: [maybe] Reading absent property style
+test/10k/snowpar.html:139:9: [maybe] Reading absent property style
+test/10k/snowpar.html:176:28: [maybe] Reading absent property body
+test/10k/snowpar.html:177:28: [maybe] Reading absent property body
+test/10k/snowpar.html:201:30: [maybe] Reading absent property checked
+test/10k/snowpar.html:206:35: [maybe] Reading absent property checked
+test/10k/snowpar.html:210:37: [maybe] Reading absent property checked
+test/10k/snowpar.html:214:36: [maybe] Reading absent property checked
+test/10k/snowpar.html:218:36: [maybe] Reading absent property checked
+test/10k/snowpar.html:222:37: [maybe] Reading absent property checked
+test/10k/snowpar.html:230:31: [maybe] Reading absent property checked
+test/10k/snowpar.html:22:15: [maybe] Uncaught exception, constructed at [test/10k/snowpar.html:138:9, test/10k/snowpar.html:139:9, test/10k/snowpar.html:176:28, test/10k/snowpar.html:177:28, test/10k/snowpar.html:201:9, test/10k/snowpar.html:201:30, test/10k/snowpar.html:206:9, test/10k/snowpar.html:206:35, test/10k/snowpar.html:210:9, test/10k/snowpar.html:210:37, test/10k/snowpar.html:214:9, test/10k/snowpar.html:214:36, test/10k/snowpar.html:218:9, test/10k/snowpar.html:218:36, test/10k/snowpar.html:222:9, test/10k/snowpar.html:222:37, test/10k/snowpar.html:230:9, test/10k/snowpar.html:230:31]
 test/10k/snowpar.html:58:31: [maybe] Conversion to number yields NaN
 test/10k/snowpar.html:59:35: [maybe] Conversion to number yields NaN
+test/10k/snowpar.html:107:5: [maybe] Conversion to number yields NaN
+test/10k/snowpar.html:110:5: [maybe] Conversion to number yields NaN
 test/10k/snowpar.html:117:19: [maybe] Conversion to number yields NaN
 test/10k/snowpar.html:118:19: [maybe] Conversion to number yields NaN
+test/10k/snowpar.html:123:29: [maybe] Conversion from string to number yields NaN
+test/10k/snowpar.html:123:29: [maybe] Conversion to number yields NaN
+test/10k/snowpar.html:123:29: [maybe] The variable max has values with different types
 test/10k/snowpar.html:134:53: [maybe] Conversion from string to number yields NaN
 test/10k/snowpar.html:134:53: [maybe] Conversion to number yields NaN
 test/10k/snowpar.html:135:53: [maybe] Conversion from string to number yields NaN
@@ -29,6 +61,16 @@ test/10k/snowpar.html:138:56: [maybe] Conversion from string to number yields Na
 test/10k/snowpar.html:138:56: [maybe] Conversion to number yields NaN
 test/10k/snowpar.html:139:56: [maybe] Conversion from string to number yields NaN
 test/10k/snowpar.html:139:56: [maybe] Conversion to number yields NaN
+test/10k/snowpar.html:148:31: [maybe] Conversion to number yields NaN
+test/10k/snowpar.html:149:35: [maybe] Conversion to number yields NaN
+test/10k/snowpar.html:176:16: [maybe] Conversion to number yields NaN
+test/10k/snowpar.html:176:16: [maybe] Conversion to number yields NaN
+test/10k/snowpar.html:177:16: [maybe] Conversion to number yields NaN
+test/10k/snowpar.html:177:16: [maybe] Conversion to number yields NaN
+test/10k/snowpar.html:183:16: [maybe] Conversion from string to number yields NaN
+test/10k/snowpar.html:183:16: [maybe] Conversion to number yields NaN
+test/10k/snowpar.html:184:16: [maybe] Conversion from string to number yields NaN
+test/10k/snowpar.html:184:16: [maybe] Conversion to number yields NaN
 test/10k/snowpar.html:237:30: [maybe] Reading absent property (computed name)
 test/10k/snowpar.html:237:40: [maybe] Reading absent property (computed name)
 test/10k/snowpar.html:238:28: [maybe] Reading absent property (computed name)
@@ -53,9 +95,41 @@ test/10k/snowpar.html:263:30: [maybe] Reading absent property (computed name)
 test/10k/snowpar.html:264:9: [maybe] Conversion to number yields NaN
 test/10k/snowpar.html:264:9: [maybe] Reading absent property (computed name)
 test/10k/snowpar.html:264:30: [maybe] Reading absent property (computed name)
+test/10k/snowpar.html:271:16: [maybe] Reading absent property (computed name)
+test/10k/snowpar.html:271:26: [maybe] Reading absent property (computed name)
+test/10k/snowpar.html:279:30: [maybe] Conversion from string to number yields NaN
+test/10k/snowpar.html:279:30: [maybe] Conversion to number yields NaN
+test/10k/snowpar.html:281:9: [maybe] Conversion to number yields NaN
+test/10k/snowpar.html:281:20: [maybe] Reading absent property (computed name)
+test/10k/snowpar.html:281:36: [maybe] Reading absent property (computed name)
+test/10k/snowpar.html:283:34: [maybe] Conversion from string to number yields NaN
+test/10k/snowpar.html:283:34: [maybe] Conversion to number yields NaN
+test/10k/snowpar.html:284:13: [maybe] Conversion to number yields NaN
+test/10k/snowpar.html:284:24: [maybe] Reading absent property (computed name)
+test/10k/snowpar.html:284:40: [maybe] Reading absent property (computed name)
+test/10k/snowpar.html:295:18: [maybe] Reading absent property (computed name)
+test/10k/snowpar.html:295:28: [maybe] Reading absent property (computed name)
+test/10k/snowpar.html:295:38: [maybe] Reading absent property (computed name)
+test/10k/snowpar.html:295:49: [maybe] Reading absent property (computed name)
+test/10k/snowpar.html:296:28: [maybe] Conversion to number yields NaN
+test/10k/snowpar.html:296:28: [maybe] Reading absent property (computed name)
+test/10k/snowpar.html:296:45: [maybe] Conversion to number yields NaN
+test/10k/snowpar.html:296:45: [maybe] Reading absent property (computed name)
+test/10k/snowpar.html:300:13: [maybe] Conversion to number yields NaN
+test/10k/snowpar.html:300:24: [maybe] Reading absent property (computed name)
+test/10k/snowpar.html:300:35: [maybe] Reading absent property (computed name)
+test/10k/snowpar.html:301:13: [maybe] Conversion to number yields NaN
+test/10k/snowpar.html:301:24: [maybe] Reading absent property (computed name)
+test/10k/snowpar.html:301:34: [maybe] Reading absent property (computed name)
 test/10k/snowpar.html:310:51: [maybe] Conversion to number yields NaN
 test/10k/snowpar.html:310:51: [maybe] Reading absent property (computed name)
 test/10k/snowpar.html:310:65: [maybe] Conversion to number yields NaN
 test/10k/snowpar.html:310:65: [maybe] Reading absent property (computed name)
+test/10k/snowpar.html:314:53: [maybe] Conversion to number yields NaN
+test/10k/snowpar.html:314:53: [maybe] Reading absent property (computed name)
+test/10k/snowpar.html:314:76: [maybe] Conversion to number yields NaN
+test/10k/snowpar.html:314:76: [maybe] Reading absent property (computed name)
+test/10k/snowpar.html:318:5: [maybe] Conversion from string to number yields NaN
+test/10k/snowpar.html:318:5: [maybe] Conversion to number yields NaN
 test/10k/snowpar.html:43:37: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/10k/snowpar.html:43:65: [info] 'this' refers to multiple abstract objects, which may cause loss of precision

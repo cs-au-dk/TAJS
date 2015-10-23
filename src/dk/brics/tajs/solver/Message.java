@@ -92,6 +92,11 @@ public class Message implements Comparable<Message> {
          * Probably not an error if this situation occurs.
          */
         LOW,
+
+        /**
+         * Information about TAJS internal behavior.
+         */
+        TAJS_META
     }
 
     private AbstractNode node;

@@ -23,6 +23,11 @@ package dk.brics.tajs.solver;
 public interface IContext<ContextType extends IContext<?>> {
 
     /**
+     * Reconstructs the context at function or for-in entry.
+     */
+    ContextType makeEntryContext();
+
+    /**
      * Checks whether this context is equal to the given object.
      */
     @Override
@@ -39,9 +44,4 @@ public interface IContext<ContextType extends IContext<?>> {
      */
     @Override
     String toString();
-
-    /**
-     * Returns the block and context for the entry of the function or for-in body.
-     */
-    BlockAndContext<ContextType> getEntryBlockAndContext();
 }

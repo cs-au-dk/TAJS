@@ -20,11 +20,11 @@ import dk.brics.tajs.analysis.Conversion;
 import dk.brics.tajs.analysis.FunctionCalls;
 import dk.brics.tajs.analysis.NativeFunctions;
 import dk.brics.tajs.analysis.Solver;
-import dk.brics.tajs.analysis.State;
 import dk.brics.tajs.analysis.dom.DOMConversion;
 import dk.brics.tajs.analysis.dom.DOMObjects;
 import dk.brics.tajs.analysis.dom.DOMRegistry;
 import dk.brics.tajs.lattice.ObjectLabel;
+import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.Value;
 
 import static dk.brics.tajs.analysis.dom.DOMFunctions.createDOMFunction;
@@ -73,13 +73,20 @@ public class WheelEvent {
         s.multiplyObject(INSTANCES);
         INSTANCES = INSTANCES.makeSingleton().makeSummary();
 
+        // non-standard properties
+        createDOMProperty(s, INSTANCES, "wheelDelta", Value.makeAnyNum().setReadOnly());
+        createDOMProperty(s, INSTANCES, "wheelDeltaX", Value.makeAnyNum().setReadOnly());
+        createDOMProperty(s, INSTANCES, "wheelDeltaY", Value.makeAnyNum().setReadOnly());
+
         // DOM Registry
         DOMRegistry.registerWheelEventLabel(INSTANCES);
     }
 
     public static Value evaluate(DOMObjects nativeObject, FunctionCalls.CallInfo call, State s, Solver.SolverInterface c) {
         switch (nativeObject) {
-            case WHEEL_EVENT_INIT_WHEEL_EVENT: {
+            // TODO check if it correct to handle the _NS version in the same way as the non _NS one
+            case WHEEL_EVENT_INIT_WHEEL_EVENT:
+            case WHEEL_EVENT_INIT_WHEEL_EVENT_NS:{
                 NativeFunctions.expectParameters(nativeObject, call, c, 16, 16);
                 /* Value typeArg =*/
                 Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="generator" content="HTML Tidy for Java (vers. 2009-12-01), see jtidy.sourceforge.net" />
+<title>Plain Wrapper</title>
+<script type="text/javascript" src="jquery.js">//</script></head>
+<body>
+<!--Inserted snippet: dom_beforeAfter3.snippet-->
+<a href="javascript:void(0);" onclick="InsertElementsBefore();">Insert elemenets</a> <br />
+<br />
+<span id="spnTest3">Hello world?</span> <script type="text/javascript">
+//<![CDATA[
+function InsertElementsBefore()
+{       
+        $("#spnTest3").before($("<i></i>").text("before() "));
+        $("<b></b>").text("insertBefore() ").insertBefore("#spnTest3");
+}
+//]]>
+</script>
+</body>
+</html>

@@ -1,0 +1,5 @@
+out/temp-sources/unorderedForInImplementation_withSemiLazyPropagation.js:5:4: [maybe] Reading absent property x
+out/temp-sources/unorderedForInImplementation_withSemiLazyPropagation.js:5:13: [maybe] Reading absent property y
+out/temp-sources/unorderedForInImplementation_withSemiLazyPropagation.js:6:4: [info] Abstract object: {x:"A",y:^(@Object#node10.y[absent|present]),[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Prototype]]=[@Object.prototype[native]],[[Value]]=?,[[Scope]]=?}
+out/temp-sources/unorderedForInImplementation_withSemiLazyPropagation.js:6:4: [info] Abstract object: {x:^(@Object#node10.x[absent|present]),y:"A",[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Prototype]]=[@Object.prototype[native]],[[Value]]=?,[[Scope]]=?}
+out/temp-sources/unorderedForInImplementation_withSemiLazyPropagation.js:8:1: [info] Abstract object: {x:"A"|absent,y:"A"|absent,[[Prototype]]=[@Object.prototype[native]]}

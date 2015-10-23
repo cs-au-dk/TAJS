@@ -1,59 +1,42 @@
 test/10k/defend_yourself.html:202:1: [definite] The conditional expression is always true
-test/10k/defend_yourself.html:250:5: [definite] The assignment to mouseIsDown has no effect
-test/10k/defend_yourself.html:263:5: [definite] The assignment to spacebarDown has no effect
-test/10k/defend_yourself.html:223:19: [definite] Dead assignment, property draw is never read
-test/10k/defend_yourself.html:230:3: [definite] Dead assignment, property move is never read
-test/10k/defend_yourself.html:233:3: [definite] Dead assignment, property wind is never read
-test/10k/defend_yourself.html:162:1: [definite] Unreachable function randInt
-test/10k/defend_yourself.html:165:45: [definite] Unreachable function
-test/10k/defend_yourself.html:174:5: [definite] The variable balls is never used
-test/10k/defend_yourself.html:175:5: [definite] The variable bullets is never used
-test/10k/defend_yourself.html:176:5: [definite] The variable fms is never used
-test/10k/defend_yourself.html:177:5: [definite] The variable nextBallInterval is never used
-test/10k/defend_yourself.html:178:5: [definite] The variable nextBallAt is never used
-test/10k/defend_yourself.html:179:5: [definite] The variable nextBulletInterval is never used
-test/10k/defend_yourself.html:180:5: [definite] The variable nextBulletIntervalEmpty is never used
-test/10k/defend_yourself.html:181:5: [definite] The variable nextBulletAt is never used
-test/10k/defend_yourself.html:182:5: [definite] The variable mouseIsDown is never used
-test/10k/defend_yourself.html:183:5: [definite] The variable spacebarDown is never used
-test/10k/defend_yourself.html:186:5: [definite] The variable bufferZone is never used
-test/10k/defend_yourself.html:187:5: [definite] The variable originX is never used
-test/10k/defend_yourself.html:188:5: [definite] The variable originY is never used
-test/10k/defend_yourself.html:189:5: [definite] The variable targetX is never used
-test/10k/defend_yourself.html:190:5: [definite] The variable targetY is never used
-test/10k/defend_yourself.html:192:5: [definite] The variable ammoUnit is never used
-test/10k/defend_yourself.html:193:5: [definite] The variable windSpeed is never used
-test/10k/defend_yourself.html:194:5: [definite] The variable ballFill is never used
-test/10k/defend_yourself.html:195:5: [definite] The variable ballStroke is never used
-test/10k/defend_yourself.html:196:5: [definite] The variable bulletFill is never used
-test/10k/defend_yourself.html:197:5: [definite] The variable bulletStroke is never used
-test/10k/defend_yourself.html:199:5: [definite] The variable timeStart is never used
-test/10k/defend_yourself.html:200:5: [definite] The variable totalBalls is never used
-test/10k/defend_yourself.html:201:5: [definite] The variable totalBullets is never used
-test/10k/defend_yourself.html:214:12: [definite] Unreachable function
-test/10k/defend_yourself.html:223:24: [definite] Unreachable function
-test/10k/defend_yourself.html:230:8: [definite] Unreachable function
-test/10k/defend_yourself.html:233:8: [definite] Unreachable function
+test/10k/defend_yourself.html:457:5: [definite] The conditional expression is always true
+test/10k/defend_yourself.html:514:5: [definite] The assignment to nextBulletInterval has no effect
+test/10k/defend_yourself.html:515:5: [definite] The assignment to nextBulletIntervalEmpty has no effect
 test/10k/defend_yourself.html:246:1: [definite] The variable e is never used
 test/10k/defend_yourself.html:249:1: [definite] The variable e is never used
 test/10k/defend_yourself.html:262:1: [definite] The variable e is never used
-test/10k/defend_yourself.html:275:1: [definite] Unreachable function addBall
-test/10k/defend_yourself.html:289:1: [definite] Unreachable function addBullet
-test/10k/defend_yourself.html:331:1: [definite] Unreachable function drawBalls
-test/10k/defend_yourself.html:364:1: [definite] Unreachable function drawBullets
-test/10k/defend_yourself.html:378:1: [definite] Unreachable function drawScore
-test/10k/defend_yourself.html:384:1: [definite] Unreachable function outOfBounds
-test/10k/defend_yourself.html:397:1: [definite] Unreachable function collide
-test/10k/defend_yourself.html:418:1: [definite] Unreachable function testEndGame
-test/10k/defend_yourself.html:455:1: [definite] Unreachable function saveHighScore
-test/10k/defend_yourself.html:462:1: [definite] Unreachable function endGame
-test/10k/defend_yourself.html:473:1: [definite] Unreachable function main
-test/10k/defend_yourself.html:504:22: [definite] Unreachable function
-test/10k/defend_yourself.html:508:24: [definite] Unreachable function
 test/10k/defend_yourself.html:206:14: [maybe] TypeError, accessing property of null/undefined
 test/10k/defend_yourself.html:268:1: [maybe] TypeError, accessing property of null/undefined
 test/10k/defend_yourself.html:269:1: [maybe] TypeError, accessing property of null/undefined
 test/10k/defend_yourself.html:270:1: [maybe] TypeError, accessing property of null/undefined
+test/10k/defend_yourself.html:333:9: [maybe] TypeError, accessing property of null/undefined
+test/10k/defend_yourself.html:334:9: [maybe] TypeError, accessing property of null/undefined
+test/10k/defend_yourself.html:335:9: [maybe] TypeError, accessing property of null/undefined
+test/10k/defend_yourself.html:366:9: [maybe] TypeError, accessing property of null/undefined
+test/10k/defend_yourself.html:367:9: [maybe] TypeError, accessing property of null/undefined
+test/10k/defend_yourself.html:368:9: [maybe] TypeError, accessing property of null/undefined
+test/10k/defend_yourself.html:386:13: [maybe] TypeError, accessing property of null/undefined
+test/10k/defend_yourself.html:386:26: [maybe] TypeError, accessing property of null/undefined
+test/10k/defend_yourself.html:386:45: [maybe] TypeError, accessing property of null/undefined
+test/10k/defend_yourself.html:386:58: [maybe] TypeError, accessing property of null/undefined
+test/10k/defend_yourself.html:386:85: [maybe] TypeError, accessing property of null/undefined
+test/10k/defend_yourself.html:386:98: [maybe] TypeError, accessing property of null/undefined
+test/10k/defend_yourself.html:386:127: [maybe] TypeError, accessing property of null/undefined
+test/10k/defend_yourself.html:386:140: [maybe] TypeError, accessing property of null/undefined
+test/10k/defend_yourself.html:392:13: [maybe] TypeError, accessing property of null/undefined
+test/10k/defend_yourself.html:392:28: [maybe] TypeError, accessing property of null/undefined
+test/10k/defend_yourself.html:392:49: [maybe] TypeError, accessing property of null/undefined
+test/10k/defend_yourself.html:392:64: [maybe] TypeError, accessing property of null/undefined
+test/10k/defend_yourself.html:392:93: [maybe] TypeError, accessing property of null/undefined
+test/10k/defend_yourself.html:392:108: [maybe] TypeError, accessing property of null/undefined
+test/10k/defend_yourself.html:392:129: [maybe] TypeError, accessing property of null/undefined
+test/10k/defend_yourself.html:392:144: [maybe] TypeError, accessing property of null/undefined
+test/10k/defend_yourself.html:399:9: [maybe] TypeError, accessing property of null/undefined
+test/10k/defend_yourself.html:402:13: [maybe] TypeError, accessing property of null/undefined
+test/10k/defend_yourself.html:423:17: [maybe] TypeError, accessing property of null/undefined
+test/10k/defend_yourself.html:424:17: [maybe] TypeError, accessing property of null/undefined
+test/10k/defend_yourself.html:425:17: [maybe] TypeError, accessing property of null/undefined
+test/10k/defend_yourself.html:426:13: [maybe] TypeError, accessing property of null/undefined
 test/10k/defend_yourself.html:439:9: [maybe] TypeError, accessing property of null/undefined
 test/10k/defend_yourself.html:439:9: [maybe] TypeError, call to non-function
 test/10k/defend_yourself.html:440:16: [maybe] TypeError, accessing property of null/undefined
@@ -61,10 +44,20 @@ test/10k/defend_yourself.html:441:13: [maybe] TypeError, argument is not of expe
 test/10k/defend_yourself.html:441:13: [maybe] TypeError, call to non-function
 test/10k/defend_yourself.html:447:9: [maybe] TypeError, call to non-function
 test/10k/defend_yourself.html:452:9: [maybe] TypeError, call to non-function
+test/10k/defend_yourself.html:463:5: [maybe] TypeError, accessing property of null/undefined
+test/10k/defend_yourself.html:463:5: [maybe] TypeError, accessing property of null/undefined
+test/10k/defend_yourself.html:465:5: [maybe] TypeError, accessing property of null/undefined
+test/10k/defend_yourself.html:466:5: [maybe] TypeError, accessing property of null/undefined
+test/10k/defend_yourself.html:467:5: [maybe] TypeError, accessing property of null/undefined
+test/10k/defend_yourself.html:470:5: [maybe] TypeError, accessing property of null/undefined
 test/10k/defend_yourself.html:503:1: [maybe] TypeError, accessing property of null/undefined
 test/10k/defend_yourself.html:503:1: [maybe] TypeError, accessing property of null/undefined
 test/10k/defend_yourself.html:504:1: [maybe] TypeError, accessing property of null/undefined
+test/10k/defend_yourself.html:505:5: [maybe] TypeError, accessing property of null/undefined
+test/10k/defend_yourself.html:505:5: [maybe] TypeError, accessing property of null/undefined
 test/10k/defend_yourself.html:508:1: [maybe] TypeError, accessing property of null/undefined
+test/10k/defend_yourself.html:521:5: [maybe] TypeError, accessing property of null/undefined
+test/10k/defend_yourself.html:521:5: [maybe] TypeError, accessing property of null/undefined
 test/10k/defend_yourself.html:268:1: [maybe] Reading absent property body
 test/10k/defend_yourself.html:269:1: [maybe] Reading absent property body
 test/10k/defend_yourself.html:270:1: [maybe] Reading absent property body
@@ -74,8 +67,11 @@ test/10k/defend_yourself.html:441:13: [maybe] Reading absent property removeChil
 test/10k/defend_yourself.html:441:27: [maybe] Reading absent property firstChild
 test/10k/defend_yourself.html:447:9: [maybe] Reading absent property appendChild
 test/10k/defend_yourself.html:452:9: [maybe] Reading absent property appendChild
+test/10k/defend_yourself.html:463:5: [maybe] Reading absent property style
 test/10k/defend_yourself.html:503:1: [maybe] Reading absent property style
-test/10k/defend_yourself.html:149:32: [maybe] Uncaught exception, constructed at [test/10k/defend_yourself.html:206:14, test/10k/defend_yourself.html:268:1, test/10k/defend_yourself.html:269:1, test/10k/defend_yourself.html:270:1, test/10k/defend_yourself.html:439:9, test/10k/defend_yourself.html:440:16, test/10k/defend_yourself.html:441:13, test/10k/defend_yourself.html:447:9, test/10k/defend_yourself.html:452:9, test/10k/defend_yourself.html:503:1, test/10k/defend_yourself.html:504:1, test/10k/defend_yourself.html:508:1]
+test/10k/defend_yourself.html:505:5: [maybe] Reading absent property style
+test/10k/defend_yourself.html:521:5: [maybe] Reading absent property style
+test/10k/defend_yourself.html:149:32: [maybe] Uncaught exception, constructed at [test/10k/defend_yourself.html:206:14, test/10k/defend_yourself.html:268:1, test/10k/defend_yourself.html:269:1, test/10k/defend_yourself.html:270:1, test/10k/defend_yourself.html:333:9, test/10k/defend_yourself.html:334:9, test/10k/defend_yourself.html:335:9, test/10k/defend_yourself.html:366:9, test/10k/defend_yourself.html:367:9, test/10k/defend_yourself.html:368:9, test/10k/defend_yourself.html:386:13, test/10k/defend_yourself.html:386:26, test/10k/defend_yourself.html:386:45, test/10k/defend_yourself.html:386:58, test/10k/defend_yourself.html:386:85, test/10k/defend_yourself.html:386:98, test/10k/defend_yourself.html:386:127, test/10k/defend_yourself.html:386:140, test/10k/defend_yourself.html:392:13, test/10k/defend_yourself.html:392:28, test/10k/defend_yourself.html:392:49, test/10k/defend_yourself.html:392:64, test/10k/defend_yourself.html:392:93, test/10k/defend_yourself.html:392:108, test/10k/defend_yourself.html:392:129, test/10k/defend_yourself.html:392:144, test/10k/defend_yourself.html:399:9, test/10k/defend_yourself.html:402:13, test/10k/defend_yourself.html:423:17, test/10k/defend_yourself.html:424:17, test/10k/defend_yourself.html:425:17, test/10k/defend_yourself.html:426:13, test/10k/defend_yourself.html:439:9, test/10k/defend_yourself.html:440:16, test/10k/defend_yourself.html:441:13, test/10k/defend_yourself.html:447:9, test/10k/defend_yourself.html:452:9, test/10k/defend_yourself.html:463:5, test/10k/defend_yourself.html:465:5, test/10k/defend_yourself.html:466:5, test/10k/defend_yourself.html:467:5, test/10k/defend_yourself.html:470:5, test/10k/defend_yourself.html:503:1, test/10k/defend_yourself.html:504:1, test/10k/defend_yourself.html:505:5, test/10k/defend_yourself.html:508:1, test/10k/defend_yourself.html:521:5]
 test/10k/defend_yourself.html:154:18: [maybe] Reading absent property (computed name)
 test/10k/defend_yourself.html:154:31: [maybe] Reading absent property (computed name)
 test/10k/defend_yourself.html:205:9: [maybe] The variable hS has values with different types
@@ -84,9 +80,56 @@ test/10k/defend_yourself.html:206:14: [maybe] Converting primitive string to obj
 test/10k/defend_yourself.html:206:14: [maybe] The variable hS has values with different types
 test/10k/defend_yourself.html:208:29: [maybe] Converting undefined to string
 test/10k/defend_yourself.html:208:38: [maybe] Reading absent property (computed name)
+test/10k/defend_yourself.html:292:14: [maybe] The variable nextBulletAt has values with different types
+test/10k/defend_yourself.html:292:37: [maybe] The variable nextBulletAt has values with different types
+test/10k/defend_yourself.html:293:21: [maybe] Conversion to number yields NaN
+test/10k/defend_yourself.html:294:21: [maybe] Conversion to number yields NaN
+test/10k/defend_yourself.html:333:9: [maybe] Reading absent property (computed name)
+test/10k/defend_yourself.html:334:9: [maybe] Reading absent property (computed name)
+test/10k/defend_yourself.html:335:9: [maybe] Reading absent property (computed name)
+test/10k/defend_yourself.html:366:9: [maybe] Reading absent property (computed name)
+test/10k/defend_yourself.html:367:9: [maybe] Reading absent property (computed name)
+test/10k/defend_yourself.html:368:9: [maybe] Reading absent property (computed name)
+test/10k/defend_yourself.html:386:13: [maybe] Reading absent property (computed name)
+test/10k/defend_yourself.html:386:26: [maybe] Reading absent property (computed name)
+test/10k/defend_yourself.html:386:45: [maybe] Reading absent property (computed name)
+test/10k/defend_yourself.html:386:58: [maybe] Reading absent property (computed name)
+test/10k/defend_yourself.html:386:85: [maybe] Reading absent property (computed name)
+test/10k/defend_yourself.html:386:98: [maybe] Reading absent property (computed name)
+test/10k/defend_yourself.html:386:127: [maybe] Reading absent property (computed name)
+test/10k/defend_yourself.html:386:140: [maybe] Reading absent property (computed name)
+test/10k/defend_yourself.html:392:13: [maybe] Reading absent property (computed name)
+test/10k/defend_yourself.html:392:28: [maybe] Reading absent property (computed name)
+test/10k/defend_yourself.html:392:49: [maybe] Reading absent property (computed name)
+test/10k/defend_yourself.html:392:64: [maybe] Reading absent property (computed name)
+test/10k/defend_yourself.html:392:93: [maybe] Reading absent property (computed name)
+test/10k/defend_yourself.html:392:108: [maybe] Reading absent property (computed name)
+test/10k/defend_yourself.html:392:129: [maybe] Reading absent property (computed name)
+test/10k/defend_yourself.html:392:144: [maybe] Reading absent property (computed name)
+test/10k/defend_yourself.html:423:17: [maybe] Reading absent property (computed name)
+test/10k/defend_yourself.html:424:17: [maybe] Reading absent property (computed name)
+test/10k/defend_yourself.html:425:17: [maybe] Reading absent property (computed name)
+test/10k/defend_yourself.html:426:13: [maybe] Reading absent property (computed name)
 test/10k/defend_yourself.html:436:16: [maybe] Conversion to number yields NaN
 test/10k/defend_yourself.html:446:23: [maybe] Reading absent property (computed name)
+test/10k/defend_yourself.html:488:21: [maybe] Reading absent property (computed name)
+test/10k/defend_yourself.html:488:31: [maybe] Reading absent property (computed name)
 test/10k/defend_yourself.html:153:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/10k/defend_yourself.html:154:18: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/10k/defend_yourself.html:154:31: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/10k/defend_yourself.html:156:12: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/defend_yourself.html:166:5: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/10k/defend_yourself.html:167:5: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/10k/defend_yourself.html:168:5: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/10k/defend_yourself.html:169:5: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/10k/defend_yourself.html:170:5: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/10k/defend_yourself.html:225:19: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/defend_yourself.html:226:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/defend_yourself.html:228:14: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/defend_yourself.html:228:22: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/defend_yourself.html:228:30: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/defend_yourself.html:231:5: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/defend_yourself.html:231:15: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/defend_yourself.html:232:5: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/defend_yourself.html:232:15: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/defend_yourself.html:242:5: [info] 'this' refers to multiple abstract objects, which may cause loss of precision

@@ -1,0 +1,225 @@
+.ap_popover {
+	outline: 0px; position: absolute;
+}
+.ap_body {
+	margin: 0px 17px; height: 100%; position: relative; min-height: 36px; background-color: rgb(255, 255, 255);
+}
+.ap_popover_sprited .ap_body .ap_left-arrow {
+	left: -17px; top: 0px; width: 17px; height: 100%; position: absolute; background-attachment: scroll; background-repeat: repeat-y;
+}
+.ap_body .ap_left {
+	left: -17px; top: 0px; width: 17px; height: 100%; position: absolute; background-attachment: scroll; background-repeat: repeat-y;
+}
+.ap_popover_sprited .ap_body .ap_left {
+	background-position: 0px top;
+}
+.ap_popover_sprited .ap_body .ap_right-arrow {
+	top: 0px; width: 17px; height: 100%; right: -17px; position: absolute; background-attachment: scroll; background-repeat: repeat-y;
+}
+.ap_body .ap_right {
+	top: 0px; width: 17px; height: 100%; right: -17px; position: absolute; background-attachment: scroll; background-repeat: repeat-y;
+}
+.ap_popover_sprited .ap_body .ap_right {
+	background-position: -51px top;
+}
+.ap_header {
+	width: 100%; position: relative;
+}
+.ap_footer {
+	width: 100%; position: relative;
+}
+.ap_header * {
+	height: 26px;
+}
+.ap_footer * {
+	height: 26px;
+}
+.ap_header .ap_left {
+	left: 0px; top: 0px; width: 34px; position: absolute; background-attachment: scroll; background-repeat: no-repeat;
+}
+.ap_popover_sprited .ap_header .ap_left {
+	background-position: left -2px;
+}
+.ap_header .ap_right {
+	top: 0px; width: 34px; right: 0px; position: absolute; background-attachment: scroll; background-repeat: no-repeat;
+}
+.ap_popover_sprited .ap_header .ap_right {
+	background-position: right -2px;
+}
+.ap_header .ap_middle {
+	margin: 0px 34px; background-attachment: scroll; background-repeat: repeat-x;
+}
+.ap_popover_sprited .ap_header .ap_middle {
+	background-position: 0px -70px;
+}
+.ap_footer .ap_left {
+	left: 0px; top: 0px; width: 34px; position: absolute; background-attachment: scroll; background-repeat: no-repeat;
+}
+.ap_popover_sprited .ap_footer .ap_left {
+	background-position: left -40px;
+}
+.ap_footer .ap_right {
+	top: 0px; width: 34px; right: 0px; position: absolute; background-attachment: scroll; background-repeat: no-repeat;
+}
+.ap_popover_sprited .ap_footer .ap_right {
+	background-position: right -40px;
+}
+.ap_footer .ap_middle {
+	margin: 0px 34px; background-attachment: scroll; background-repeat: repeat-x;
+}
+.ap_popover_sprited .ap_footer .ap_middle {
+	background-position: 0px -108px;
+}
+.ap_popover .ap_titlebar {
+	margin: 8px 18px; left: 0px; top: 0px; overflow: hidden; font-size: 14px; font-weight: bold; border-bottom-color: rgb(194, 221, 242); border-bottom-width: 1px; border-bottom-style: solid; display: none; white-space: nowrap; position: absolute; background-color: rgb(234, 243, 254);
+}
+.ap_popover .multiline.ap_titlebar {
+	overflow: visible; white-space: normal;
+}
+.ap_popover .ap_titlebar .ap_title {
+	padding: 4px 0px; overflow: hidden; margin-left: 10px;
+}
+#ap_overlay {
+	left: 0px; top: 0px; width: 100%; position: absolute; z-index: 99; background-color: rgb(63, 76, 88);
+}
+#ap_overlay div {
+	left: 0px; top: 0px; width: 100%; position: absolute; z-index: 99; background-color: rgb(63, 76, 88);
+}
+.ap_popover .ap_close {
+	top: 13px; right: 18px; position: absolute;
+}
+.ap_popover .ap_close a {
+	padding: 5px; outline: 0px; text-decoration: none;
+}
+.ap_popover .ap_close .ap_closetext {
+	line-height: 1em; margin-right: 5px; display: none;
+}
+.ap_popover .ap_closebutton {
+	background-position: 0px -136px; width: 15px; height: 15px; overflow: hidden; vertical-align: top; display: inline-block; position: relative; background-repeat: no-repeat;
+}
+.ap_popover .ap_closebutton span {
+	top: -9999px; position: absolute;
+}
+.ap_popover .ap_close img {
+	vertical-align: top;
+}
+.ap_classic {
+	border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(47, 47, 29) rgb(47, 47, 29) rgb(204, 204, 204); padding: 3px; background-color: rgb(239, 237, 212);
+}
+.ap_classic .ap_titlebar {
+	padding: 0px 0px 3px; color: rgb(134, 135, 93); line-height: 1em; font-size: 12px;
+}
+.ap_classic .ap_close {
+	float: right;
+}
+.ap_classic .ap_content {
+	padding: 8px; border: 1px solid rgb(172, 169, 118); border-image: none; clear: both; font-size: 11px; background-color: white;
+}
+.shoveler {
+	width: 100%; position: relative;
+}
+.shoveler .shoveler-content {
+	margin: 0px 45px;
+}
+.shoveler ul {
+	padding: 0px; height: 150px; overflow: hidden;
+}
+* html .shoveler li {
+	display: inline;
+}
+.shoveler li {
+	list-style: none; margin: 0px; padding: 10px 0px 0px; width: 180px; height: 100%; float: left;
+}
+.shoveler li.shoveler-progress {
+	background: url("http://g-ecx.images-amazon.com/images/G/01/ui/loadIndicators/loading-small._V192238939_.gif") no-repeat center;
+}
+.shoveler div.button {
+	top: 55px; width: 25px; height: 50px; position: absolute; cursor: pointer;
+}
+.shoveler div.disabled.button {
+	cursor: default; opacity: 0.5; -moz-opacity: .5;
+}
+.shoveler div.depressed.button {
+	background-position: 0px -50px;
+}
+.shoveler div.depressed.disabled.button {
+	background-position: 0px 0px;
+}
+.shoveler div.prev-button {
+	background: url("http://g-ecx.images-amazon.com/images/G/01/x-locale/personalization/shoveler/left-arrow-semi-rd._V17361814_.gif") no-repeat; left: 10px;
+}
+.shoveler div.next-button {
+	background: url("http://g-ecx.images-amazon.com/images/G/01/x-locale/personalization/shoveler/right-arrow-semi-rd._V17361809_.gif") no-repeat; right: 10px;
+}
+.shoveler a.back-button {
+	top: 75px; width: 25px; height: 50px; position: absolute;
+}
+.shoveler a.next-button {
+	top: 75px; width: 25px; height: 50px; position: absolute;
+}
+.shoveler a.back-button {
+	left: 1px;
+}
+.shoveler a.next-button {
+	right: 1px;
+}
+.shoveler .depressed .s_shvlBack {
+	background-position: -30px -130px;
+}
+.shoveler .depressed .s_shvlNext {
+	background-position: -60px -130px;
+}
+.shoveler .shoveler-pagination {
+	padding: 10px; top: 0px; right: 0px; position: absolute;
+}
+.shoveler .start-over {
+	font-size: 80%;
+}
+.shoveler .start-over a.start-over-link {
+	color: rgb(0, 75, 145); text-decoration: none;
+}
+.default-style.shoveler .shoveler-header {
+	background: url("http://g-ecx.images-amazon.com/images/G/01/x-locale/personalization/yourstore/box/sliced_box_fill/sliced-box-tbevel._V47082452_.gif") repeat-x left bottom rgb(239, 245, 249); border-width: 1px 1px 0px; border-style: solid; border-color: rgb(157, 196, 216); border-image: none;
+}
+.default-style.shoveler .shoveler-title {
+	padding: 5px 7px;
+}
+.default-style.shoveler .shoveler-main {
+	border-width: 1px 1px 0px; border-style: solid; border-color: rgb(157, 196, 216); border-image: none; position: relative;
+}
+.default-style.shoveler .shoveler-footer {
+	border-width: 0px 1px 1px; border-style: solid; border-color: rgb(157, 196, 216); border-image: none;
+}
+.default-style.shoveler .shoveler-footer-content {
+	height: 16px; line-height: 16px;
+}
+.default-style.shoveler .shoveler-upper-left {
+	width: 17px; height: 17px; position: absolute;
+}
+.default-style.shoveler .shoveler-upper-right {
+	width: 17px; height: 17px; position: absolute;
+}
+.default-style.shoveler .shoveler-bottom-left {
+	width: 17px; height: 17px; position: absolute;
+}
+.default-style.shoveler .shoveler-bottom-right {
+	width: 17px; height: 17px; position: absolute;
+}
+.default-style.shoveler .shoveler-upper-right {
+	float: right; position: relative;
+}
+.default-style.shoveler .shoveler-bottom-right {
+	float: right; position: relative;
+}
+.default-style.shoveler div.shoveler-upper-left {
+	background: url("http://g-ecx.images-amazon.com/images/G/01/x-locale/personalization/yourstore/box/sliced_box_fill/sliced-box-tl._V6007502_.gif") no-repeat left top;
+}
+.default-style.shoveler div.shoveler-upper-right {
+	background: url("http://g-ecx.images-amazon.com/images/G/01/x-locale/personalization/yourstore/box/sliced_box_fill/sliced-box-tr._V6007499_.gif") no-repeat right top;
+}
+.default-style.shoveler div.shoveler-bottom-left {
+	background: url("http://g-ecx.images-amazon.com/images/G/01/x-locale/personalization/yourstore/box/sliced-box-bl._V47082482_.gif") no-repeat left bottom;
+}
+.default-style.shoveler div.shoveler-bottom-right {
+	background: url("http://g-ecx.images-amazon.com/images/G/01/x-locale/personalization/yourstore/box/sliced-box-br._V47062575_.gif") no-repeat right bottom;
+}

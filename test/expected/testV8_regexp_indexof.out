@@ -1,0 +1,29 @@
+test/v8tests/regexp-indexof.js:40:39: [definite] Reading absent property leftContext
+test/v8tests/regexp-indexof.js:41:45: [definite] Reading absent property rightContext
+test/v8tests/regexp-indexof.js:32:34: [maybe] TypeError, accessing property of null/undefined
+test/v8tests/regexp-indexof.js:34:18: [maybe] TypeError, accessing property of null/undefined
+test/v8tests/regexp-indexof.js:35:20: [maybe] TypeError, accessing property of null/undefined
+test/v8tests/regexp-indexof.js:39:28: [maybe] Reading absent property lastMatch
+test/v8tests/prologue.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/regexp-indexof.js:32:34, test/v8tests/regexp-indexof.js:34:18, test/v8tests/regexp-indexof.js:35:20]
+test/v8tests/regexp-indexof.js:30:16: [maybe] Converting object to string
+test/v8tests/regexp-indexof.js:30:16: [maybe] Converting primitive string to object
+test/v8tests/regexp-indexof.js:34:18: [maybe] Reading absent property (computed name)
+test/v8tests/regexp-indexof.js:35:20: [maybe] Reading absent property (computed name)
+test/v8tests/regexp-indexof.js:36:22: [maybe] Converting object to string
+test/v8tests/regexp-indexof.js:36:22: [maybe] Converting primitive string to object
+test/v8tests/regexp-indexof.js:37:30: [maybe] Reading absent property (computed name)
+test/v8tests/regexp-indexof.js:40:18: [maybe] Conversion to number yields NaN
+test/v8tests/regexp-indexof.js:40:18: [maybe] Converting object to string
+test/v8tests/regexp-indexof.js:40:18: [maybe] Converting primitive string to object
+test/v8tests/regexp-indexof.js:41:18: [maybe] Conversion to number yields NaN
+test/v8tests/regexp-indexof.js:41:18: [maybe] Converting object to string
+test/v8tests/regexp-indexof.js:41:18: [maybe] Converting primitive string to object
+test/v8tests/regexp-indexof.js:41:29: [maybe] Conversion to number yields NaN
+test/v8tests/regexp-indexof.js:57:33: [maybe] Converting object to string
+test/v8tests/regexp-indexof.js:57:33: [maybe] Converting primitive string to object
+test/v8tests/regexp-indexof.js:58:30: [maybe] Converting object to string
+test/v8tests/regexp-indexof.js:58:30: [maybe] Converting primitive string to object
+test/v8tests/regexp-indexof.js:59:23: [maybe] Converting object to string
+test/v8tests/regexp-indexof.js:59:23: [maybe] Converting primitive string to object
+test/v8tests/regexp-indexof.js:60:31: [maybe] Converting object to string
+test/v8tests/regexp-indexof.js:60:31: [maybe] Converting primitive string to object

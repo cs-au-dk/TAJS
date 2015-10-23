@@ -1,12 +1,28 @@
 test/chromeexperiments/plasma.html:21:20: [definite] The conditional expression is always false
 test/chromeexperiments/plasma.html:21:20: [definite] Variable test2504afjd is null/undefined
-test/chromeexperiments/plasma.html:23:1: [definite] Dead assignment, property MAX_FPS is never read
-test/chromeexperiments/plasma.html:24:1: [definite] Dead assignment, property Demo is never read
-test/chromeexperiments/plasma.html:16:17: [definite] Unreachable function
-test/chromeexperiments/plasma.html:24:21: [definite] Unreachable function
-test/chromeexperiments/plasma.html:46:5: [definite] Unreachable function init
-test/chromeexperiments/plasma.html:78:5: [definite] Unreachable function updateValues
-test/chromeexperiments/plasma.html:93:5: [definite] Unreachable function sin
-test/chromeexperiments/plasma.html:98:5: [definite] Unreachable function draw
-test/chromeexperiments/plasma.html:141:5: [definite] Unreachable function tick
-test/chromeexperiments/plasma.html:193:18: [definite] Unreachable function
+test/chromeexperiments/plasma.html:50:11: [definite] The conditional expression is always true
+test/chromeexperiments/plasma.html:51:8: [definite] The conditional expression is always true
+test/chromeexperiments/plasma.html:53:2: [definite] The conditional expression is always true
+test/chromeexperiments/plasma.html:53:6: [definite] The conditional expression is always true
+test/chromeexperiments/plasma.html:58:6: [definite] The conditional expression is always true
+test/chromeexperiments/plasma.html:101:2: [definite] The conditional expression is always false
+test/chromeexperiments/plasma.html:195:2: [definite] The conditional expression is always true
+test/chromeexperiments/plasma.html:30:9: [definite] The variable xscale is never used
+test/chromeexperiments/plasma.html:30:21: [definite] The variable yscale is never used
+test/chromeexperiments/plasma.html:108:14: [definite] The variable pixel is never used
+test/chromeexperiments/plasma.html:17:5: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/plasma.html:9:13: [maybe] Uncaught exception, constructed at [test/chromeexperiments/plasma.html:17:5]
+test/chromeexperiments/plasma.html:17:5: [maybe] Reading absent property (computed name)
+test/chromeexperiments/plasma.html:82:11: [maybe] Conversion to number yields NaN
+test/chromeexperiments/plasma.html:83:11: [maybe] Conversion to number yields NaN
+test/chromeexperiments/plasma.html:84:11: [maybe] Conversion to number yields NaN
+test/chromeexperiments/plasma.html:95:9: [maybe] Reading absent property (computed name)
+test/chromeexperiments/plasma.html:131:21: [maybe] Conversion to number yields NaN
+test/chromeexperiments/plasma.html:131:22: [maybe] Conversion to number yields NaN
+test/chromeexperiments/plasma.html:131:22: [maybe] Reading absent property (computed name)
+test/chromeexperiments/plasma.html:132:21: [maybe] Conversion to number yields NaN
+test/chromeexperiments/plasma.html:132:22: [maybe] Conversion to number yields NaN
+test/chromeexperiments/plasma.html:132:22: [maybe] Reading absent property (computed name)
+test/chromeexperiments/plasma.html:133:21: [maybe] Conversion to number yields NaN
+test/chromeexperiments/plasma.html:133:22: [maybe] Conversion to number yields NaN
+test/chromeexperiments/plasma.html:133:22: [maybe] Reading absent property (computed name)

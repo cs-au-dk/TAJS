@@ -1,0 +1,312 @@
+body {
+	font: 13px/1.5 sans-serif; margin: 0.3em 0px; font-size-adjust: none; font-stretch: normal; background-color: white;
+}
+a {
+	outline: 0px; color: rgb(6, 69, 173); text-decoration: none; white-space: nowrap; unicode-bidi: embed;
+}
+a:active {
+	outline: 0px; color: rgb(6, 69, 173); text-decoration: none; white-space: nowrap; unicode-bidi: embed;
+}
+a:focus {
+	outline: 0px; color: rgb(6, 69, 173); text-decoration: none; white-space: nowrap; unicode-bidi: embed;
+}
+a:hover {
+	text-decoration: underline;
+}
+img {
+	border: currentColor; border-image: none; vertical-align: middle;
+}
+.nowrap {
+	white-space: nowrap;
+}
+#content {
+	margin: 0px auto; width: 80%;
+}
+div#footer {
+	margin: 10px auto; width: 70%; text-align: center; border-top-color: rgb(170, 170, 170); border-top-width: 1px; border-top-style: solid;
+}
+div#footer ul {
+	margin: 0px 10px; padding: 0px; display: inline;
+}
+div#footer ul li {
+	margin: 0px 10px; padding: 0px; display: inline;
+}
+hr {
+	margin: 0.2em 0px; border: 0px currentColor; border-image: none; height: 1px; color: rgb(170, 170, 170); background-color: rgb(170, 170, 170);
+}
+table#content th {
+	padding: 0.5em 1em; text-align: center; vertical-align: middle;
+}
+table#content td {
+	padding: 0.5em 1em; text-align: center; vertical-align: middle;
+}
+table#content div#intro {
+	margin: 0px auto; width: 90%; text-align: justify; font-size: 150%; vertical-align: top;
+}
+table#content td#footer {
+	text-align: center; border-top-color: rgb(170, 170, 170); border-top-width: 1px; border-top-style: solid;
+}
+a.extiw {
+	color: rgb(51, 102, 187);
+}
+a.extiw:active {
+	color: rgb(51, 102, 187);
+}
+a.extiw:visited {
+	color: rgb(51, 102, 187);
+}
+a.extiw:active {
+	color: rgb(51, 102, 187);
+}
+a.external {
+	color: rgb(51, 102, 187);
+}
+a.external:visited {
+	color: rgb(51, 102, 187);
+}
+a.external:active {
+	color: rgb(51, 102, 187);
+}
+.central-textlogo {
+	margin: 1em 0px 0.3em; padding: 10px 0px; text-align: center; line-height: 110%; font-family: "Linux Libertine","Hoefler Text",Georgia,"Times New Roman",Times,serif; font-size: 30px; font-weight: normal; font-feature-settings: "ss05" 1; -moz-font-feature-settings: "ss05"; -webkit-font-feature-settings: "ss05";
+}
+.central-featured {
+	margin: 0px auto; width: 42em; height: 26em; text-align: center; vertical-align: middle; position: relative; max-width: 100%;
+}
+.central-featured-logo {
+	left: 50%; top: 50%; width: 0px; height: 0px; position: absolute;
+}
+.central-featured-logo-inner {
+	left: -100px; top: -115px; width: 200px; height: 200px; position: relative;
+}
+.central-featured-lang {
+	width: 12em; position: absolute;
+}
+.central-featured-lang .link-box {
+	padding: 0px; text-decoration: none; display: block;
+}
+.central-featured-lang .link-box:hover strong {
+	text-decoration: underline;
+}
+.central-featured-lang .link-box em {
+	color: black; text-decoration: none;
+}
+.central-featured-lang .link-box small {
+	color: black; text-decoration: none;
+}
+.central-featured-lang strong {
+	font-size: larger;
+}
+.central-featured-lang em {
+	font-style: italic;
+}
+.central-featured-lang em.emNonItalicLang {
+	font-style: normal;
+}
+.lang1 {
+	top: 0%; right: 60%;
+}
+.lang2 {
+	left: 60%; top: 0%;
+}
+.lang3 {
+	top: 20%; right: 70%;
+}
+.lang4 {
+	left: 70%; top: 20%;
+}
+.lang5 {
+	top: 40%; right: 72%;
+}
+.lang6 {
+	left: 72%; top: 40%;
+}
+.lang7 {
+	top: 60%; right: 70%;
+}
+.lang8 {
+	left: 70%; top: 60%;
+}
+.lang9 {
+	top: 80%; right: 60%;
+}
+.lang10 {
+	left: 60%; top: 80%;
+}
+.search-container {
+	margin: 1em auto 1.5em; padding: 0.3em; width: 540px; text-align: center; vertical-align: middle; float: none; max-width: 95%;
+}
+.search-container h5 {
+	white-space: normal;
+}
+.search-container label span {
+	white-space: nowrap;
+}
+.search-form fieldset {
+	padding: 0.7em; border: 1px solid rgb(170, 170, 170); border-image: none; width: auto; margin-top: 0.5em; background-color: rgb(249, 249, 249);
+}
+.search-form #searchInput {
+	margin: 0px; padding: 0px; font-size: 1.2em; vertical-align: top;
+}
+.search-form select {
+	margin: 0px 0.4em; padding: 0px; vertical-align: middle;
+}
+.search-form .searchButton {
+	margin: 0px; padding: 0px; font-size: 1.2em; vertical-align: middle;
+}
+.bookshelf-container {
+	margin: 2em 0px 0.5em; width: 100%; overflow: hidden;
+}
+.bookshelf-container-small {
+	margin: 0.5em 0px;
+}
+.bookshelf {
+	left: -100%; width: 300%; text-align: center; overflow: hidden; white-space: nowrap; position: relative;
+}
+.langlist {
+	margin: 0.5em 3em 2.5em; text-align: center;
+}
+.langlist-large {
+	font-size: larger;
+}
+.langlist-tiny {
+	margin: 0.5em 3em 3em;
+}
+.langlist-others {
+	margin: 0px 3em 2em; font-weight: bold;
+}
+.otherprojects {
+	margin: 1.5em 0px; width: 100%; text-align: center; font-weight: bold; vertical-align: middle; float: left;
+}
+.otherprojects-item {
+	width: 33%; height: 60px; float: left; min-width: 12em;
+}
+.wm-site-info {
+	margin: 2.5em 0px 2em; text-align: center; clear: both;
+}
+@media print
+{
+body {
+	background-color: transparent;
+}
+a {
+	background: none !important; padding: 0px !important; color: black !important;
+}
+a:link {
+	background: none; color: rgb(85, 34, 0);
+}
+a:visited {
+	background: none; color: rgb(85, 34, 0);
+}
+img {
+	border: currentColor; border-image: none;
+}
+}
+@media all and (max-width:480px)
+{
+.central-textlogo {
+	margin: 0px; padding: 0px 0px 0px 84px; height: 70px; text-align: left; line-height: normal; position: relative;
+}
+.central-textlogo img {
+	width: auto; height: 35px; margin-top: 22.5px;
+}
+.central-featured {
+	width: auto; height: auto; text-align: left; padding-top: 2em; font-size: 0.8em; margin-top: 4em;
+}
+.central-featured-logo {
+	left: 0.8em; top: -70px; right: 0px; margin-top: -4em;
+}
+.central-featured-logo-inner {
+	left: auto; top: auto;
+}
+.central-featured-logo {
+	width: 70px; height: 70px;
+}
+.central-featured-logo-inner img {
+	width: 70px; height: 70px;
+}
+.central-featured-logo-inner {
+	width: 70px; height: 70px;
+}
+.central-featured-lang {
+	left: auto; top: auto; width: 40%; height: 5em; text-align: left; right: auto; margin-left: 1em; float: left; display: block; position: relative;
+}
+.search-container {
+	padding: 0px; left: 0px; top: 5em; width: auto; height: 6em; text-align: left; right: 0px; margin-top: 0px; position: absolute; max-width: 100%;
+}
+.search-container label {
+	display: none;
+}
+.search-form #searchInput {
+	max-width: 40%;
+}
+.search-form #searchLanguage {
+	vertical-align: middle; max-width: 25%;
+}
+.search-form .formBtn {
+	vertical-align: middle; max-width: 25%;
+}
+form fieldset {
+	margin: 0px; border-right-color: currentColor; border-left-color: currentColor; border-right-width: medium; border-left-width: medium; border-right-style: none; border-left-style: none;
+}
+.search-form #searchInput {
+	vertical-align: middle;
+}
+.language-search {
+	display: none;
+}
+.bookshelf {
+	left: auto; width: auto; text-align: left; overflow: hidden;
+}
+.bookshelf img {
+	display: none;
+}
+.bookshelf img:first-child {
+	display: inline-block;
+}
+.langlist a {
+	white-space: normal; -ms-word-wrap: break-word;
+}
+.langlist {
+	font-size: 0.7em;
+}
+.otherprojects-item {
+	width: 50%; text-align: left;
+}
+.bookshelf-container {
+	margin: 1em 1em 0em; width: auto; text-align: left;
+}
+.langlist {
+	margin: 1em 1em 0em; width: auto; text-align: left;
+}
+.divider {
+	padding: 0.5em 1em 0px !important; clear: both;
+}
+}
+@media all and (max-width:240px)
+{
+.central-featured-lang {
+	width: 100%;
+}
+.otherprojects-item {
+	width: 100%;
+}
+.central-textlogo img {
+	width: 100px; height: auto;
+}
+}
+@media not all, not all, all and (min-resolution:192dpi)
+{
+div#footer {
+	border-width: 0.5px;
+}
+table#content td#footer {
+	border-width: 0.5px;
+}
+.search-form fieldset {
+	border-width: 0.5px;
+}
+hr {
+	height: 0.5px;
+}
+}

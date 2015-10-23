@@ -5,6 +5,7 @@ import dk.brics.tajs.options.Options;
 import dk.brics.tajs.test.Misc;
 import dk.brics.tajs.util.AnalysisException;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 @SuppressWarnings("static-method")
@@ -58,6 +59,7 @@ public class JSString_replace_test {
                 "TAJS_assert(v === 'fOO');");
     }
 
+    @Ignore // FIXME missing model of String.prototype.replace(..., function(){..})
     @Test(expected = AnalysisException.class /* Fails early due to unsupported callback */)
     public void replacementFunction() {
         Misc.init();

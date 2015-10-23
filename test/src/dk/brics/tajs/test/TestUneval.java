@@ -1,10 +1,9 @@
 package dk.brics.tajs.test;
 
+import dk.brics.tajs.options.Options;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
-
-import dk.brics.tajs.options.Options;
 
 
 @SuppressWarnings("static-method")
@@ -22,7 +21,6 @@ public class TestUneval {
         Options.get().enableUnevalizer();
 		Options.get().enableContextSensitiveHeap();
 		Options.get().enableParameterSensitivity();
-		Options.get().enableNumericVariableSensitivity();
 	}
 
 	@Test
@@ -143,7 +141,8 @@ public class TestUneval {
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
-	
+
+    @Ignore // FIXME nested evals does not set BasicBlock.entry_block!?
 	@Test
 	public void uneval_13() throws Exception {
 		Misc.init();

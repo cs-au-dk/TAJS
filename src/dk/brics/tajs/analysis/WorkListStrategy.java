@@ -18,6 +18,9 @@ package dk.brics.tajs.analysis;
 
 import dk.brics.tajs.flowgraph.BasicBlock;
 import dk.brics.tajs.lattice.CallEdge;
+import dk.brics.tajs.lattice.Context;
+import dk.brics.tajs.lattice.State;
+import dk.brics.tajs.solver.BlockAndContext;
 import dk.brics.tajs.solver.CallGraph;
 import dk.brics.tajs.solver.IWorkListStrategy;
 
@@ -26,7 +29,7 @@ import dk.brics.tajs.solver.IWorkListStrategy;
  */
 public class WorkListStrategy implements IWorkListStrategy<Context> {
 
-    private CallGraph<State, Context, CallEdge<State>> call_graph;
+    private CallGraph<State, Context, CallEdge> call_graph;
 
     /**
      * Constructs a new WorkListStrategy object.
@@ -37,7 +40,7 @@ public class WorkListStrategy implements IWorkListStrategy<Context> {
     /**
      * Sets the call graph.
      */
-    public void setCallGraph(CallGraph<State, Context, CallEdge<State>> call_graph) {
+    public void setCallGraph(CallGraph<State, Context, CallEdge> call_graph) {
         this.call_graph = call_graph;
     }
 
@@ -62,8 +65,8 @@ public class WorkListStrategy implements IWorkListStrategy<Context> {
                 return E2_FIRST;
         }
 
-        int function_context_order1 = call_graph.getBlockContextOrder(e1.getContext().getEntryBlockAndContext());
-        int function_context_order2 = call_graph.getBlockContextOrder(e2.getContext().getEntryBlockAndContext());
+        int function_context_order1 = call_graph.getBlockContextOrder(BlockAndContext.makeEntry(e1.getBlock(), e1.getContext()));
+        int function_context_order2 = call_graph.getBlockContextOrder(BlockAndContext.makeEntry(e2.getBlock(), e2.getContext()));
 
         // different function/context: order by occurrence number
         if (function_context_order1 < function_context_order2)

@@ -23,7 +23,7 @@ fg2: function()
     ->[block 6] ~>[block 8]
   block 6:
     node 10: end-with* (test/flowgraphbuilder/flowgraph_builder0120.js:5:7)
-    ->[block 11] ~>[block 7]
+    ->[block 11] ~>[block 8]
   block 7:
     node 11: end-with* (test/flowgraphbuilder/flowgraph_builder0120.js:5:7)
     ->[block 8]
@@ -33,7 +33,7 @@ fg2: function()
     ->[block 9]
   block 9:
     node 14: end-with* (test/flowgraphbuilder/flowgraph_builder0120.js:8:3)
-    ->[block 11] ~>[block 10]
+    ->[block 11]
   block 10:
     node 15: end-with* (test/flowgraphbuilder/flowgraph_builder0120.js:8:3)
     ->[block 12]

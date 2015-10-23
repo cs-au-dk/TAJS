@@ -27,9 +27,12 @@ import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 
 import static dk.brics.tajs.util.Collections.newList;
+import static dk.brics.tajs.util.Collections.newSet;
 
 /**
  * HTML parser based on Jericho.
@@ -47,6 +50,13 @@ public class HTMLParser {
      * @throws IOException if unable to read the file
      */
     public HTMLParser(String filename) throws IOException {
+
+        Set<String> standardJavaScriptScriptTypeNames = newSet(Arrays.asList("text/javascript", "text/ecmascript", "application/javascript", "application/ecmascript"));
+        Set<String> allJavaScriptScriptTypeNames = newSet();
+        allJavaScriptScriptTypeNames.addAll(standardJavaScriptScriptTypeNames);
+        // add some extra names to cater for a common typo
+        allJavaScriptScriptTypeNames.addAll(Arrays.asList("javascript", "ecmascript", ""));
+
         try {
             doc = new Source(new URL(filename));
         } catch (MalformedURLException e) {
@@ -55,7 +65,7 @@ public class HTMLParser {
         code = newList();
         for (Element e : doc.getAllElements()) {
             String name = e.getName();
-            if (name.equals("script")) {
+            if (name.equals("script") && (e.getAttributeValue("type") == null || allJavaScriptScriptTypeNames.contains(e.getAttributeValue("type")))) {
                 String src = e.getAttributeValue("src");
                 if (src != null) {
                     // external script

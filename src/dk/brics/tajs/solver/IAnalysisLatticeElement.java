@@ -23,13 +23,12 @@ import java.util.Map;
 /**
  * Interface for global analysis lattice elements.
  */
-public interface IAnalysisLatticeElement<BlockStateType extends IBlockState<BlockStateType, ?, CallEdgeType>,
+public interface IAnalysisLatticeElement<StateType extends IState<StateType, ?, CallEdgeType>,
         ContextType extends IContext<?>,
-        CallEdgeType extends ICallEdge<BlockStateType>,
-        SpecialVarsType> {
+        CallEdgeType extends ICallEdge<StateType>> {
 
     /**
-     * Result from {@link IAnalysisLatticeElement#propagate(IBlockState, BasicBlock, IContext, boolean)}.
+     * Result from {@link IAnalysisLatticeElement#propagate(IState, BasicBlock, IContext, boolean)}.
      */
     class MergeResult {
 
@@ -55,28 +54,23 @@ public interface IAnalysisLatticeElement<BlockStateType extends IBlockState<Bloc
      * Returns the abstract state for entry of the given basic block and context,
      * where null represents none.
      */
-    BlockStateType getState(BasicBlock block, ContextType context);
+    StateType getState(BasicBlock block, ContextType context);
 
     /**
      * Returns the abstract state for entry of the given basic block and context,
      * where null represents none.
      */
-    BlockStateType getState(BlockAndContext<ContextType> bc);
+    StateType getState(BlockAndContext<ContextType> bc);
 
     /**
      * Returns the contexts and abstract states for the entry of the given basic block.
      */
-    Map<ContextType, BlockStateType> getStates(BasicBlock block);
+    Map<ContextType, StateType> getStates(BasicBlock block);
 
     /**
      * Returns the call graph.
      */
-    CallGraph<BlockStateType, ContextType, CallEdgeType> getCallGraph();
-
-    /**
-     * Returns the special variables info.
-     */
-    SpecialVarsType getSpecialVars();
+    CallGraph<StateType, ContextType, CallEdgeType> getCallGraph();
 
     /**
      * Propagates s into the entry state of b in context c.
@@ -85,5 +79,5 @@ public interface IAnalysisLatticeElement<BlockStateType extends IBlockState<Bloc
      * @param localize if set, localize the state while joining
      * @return a merge result, or null if no new flow added.
      */
-    MergeResult propagate(BlockStateType s, BasicBlock b, ContextType c, boolean localize);
+    MergeResult propagate(StateType s, BasicBlock b, ContextType c, boolean localize);
 }

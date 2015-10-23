@@ -21,11 +21,12 @@ import dk.brics.tajs.analysis.Exceptions;
 import dk.brics.tajs.analysis.FunctionCalls.CallInfo;
 import dk.brics.tajs.analysis.HostAPIs;
 import dk.brics.tajs.analysis.Solver;
-import dk.brics.tajs.analysis.State;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.ObjectLabel.Kind;
+import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.UnknownValueResolver;
 import dk.brics.tajs.lattice.Value;
+import dk.brics.tajs.options.Options;
 import dk.brics.tajs.solver.Message.Severity;
 import dk.brics.tajs.util.AnalysisException;
 import org.apache.log4j.Logger;
@@ -60,6 +61,7 @@ public class ECMAScriptFunctions {
             case OBJECT_ISPROTOTYPEOF:
             case OBJECT_PROPERTYISENUMERABLE:
             case OBJECT_DEFINE_PROPERTY:
+            case OBJECT_CREATE:
                 res = JSObject.evaluate(nativeobject, call, state, c);
                 break;
 
@@ -113,6 +115,7 @@ public class ECMAScriptFunctions {
                 break;
 
             case REGEXP:
+            case REGEXP_COMPILE:
             case REGEXP_EXEC:
             case REGEXP_TEST:
             case REGEXP_TOSTRING:
@@ -166,6 +169,7 @@ public class ECMAScriptFunctions {
             case DATE_GETYEAR:
             case DATE_SETYEAR:
             case DATE_TOGMTSTRING:
+            case DATE_NOW:
                 res = JSDate.evaluate(nativeobject, call, state, c);
                 break;
 
@@ -273,7 +277,12 @@ public class ECMAScriptFunctions {
                 throw new AnalysisException("Native object is not a function: " + nativeobject);
 
             default:
-                throw new AnalysisException("No transfer function for native function " + nativeobject);
+                String msg = call.getSourceNode().getSourceLocation() + ": No transfer function for native function " + nativeobject;
+                if (Options.get().isUnsoundEnabled()) {
+                    log.error(msg);
+                    return Value.makeUndef();
+                }
+                throw new AnalysisException(msg);
         }
         return res;
     }

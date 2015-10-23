@@ -17,7 +17,13 @@
 package dk.brics.tajs.analysis.nativeobjects;
 
 import dk.brics.tajs.analysis.HostAPIs;
+import dk.brics.tajs.analysis.dom.DOMObjects;
 import dk.brics.tajs.lattice.HostObject;
+import dk.brics.tajs.lattice.ObjectLabel;
+import dk.brics.tajs.lattice.State;
+import dk.brics.tajs.lattice.Str;
+import dk.brics.tajs.lattice.Value;
+import dk.brics.tajs.options.Options;
 
 /**
  * Native ECMAScript object descriptors.
@@ -41,6 +47,7 @@ public enum ECMAScriptObjects implements HostObject {
     FUNCTION_TOSTRING("Function.prototype.toString"),
     FUNCTION_APPLY("Function.prototype.apply"),
     FUNCTION_CALL("Function.prototype.call"),
+    FUNCTION_BIND("Function.prototype.bind"),
 
     ARRAY("Array"),
     ARRAY_ISARRAY("Array.isArray"),
@@ -60,6 +67,12 @@ public enum ECMAScriptObjects implements HostObject {
     ARRAY_SPLICE("Array.prototype.splice"),
     ARRAY_UNSHIFT("Array.prototype.unshift"),
     ARRAY_INDEXOF("Array.prototype.indexOf"),
+    ARRAY_EVERY("Array.prototype.every"),
+    ARRAY_FILTER("Array.prototype.filter"),
+    ARRAY_MAP("Array.prototype.map"),
+    ARRAY_REDUCE("Array.prototype.reduce"),
+    ARRAY_REDUCERIGHT("Array.prototype.reduceRight"),
+    ARRAY_LASTINDEXOF("Array.prototype.lastIndexOf"),
 
     STRING("String"),
     STRING_PROTOTYPE("String.prototype"),
@@ -112,7 +125,7 @@ public enum ECMAScriptObjects implements HostObject {
     MATH_ACOS("Math.acos"),
     MATH_ASIN("Math.asin"),
     MATH_ATAN("Math.atan"),
-    MATH_ATAN2("Math.atanz"),
+    MATH_ATAN2("Math.atan2"),
     MATH_CEIL("Math.ceil"),
     MATH_COS("Math.cos"),
     MATH_EXP("Math.exp"),
@@ -148,6 +161,7 @@ public enum ECMAScriptObjects implements HostObject {
     DATE_GETMILLISECONDS("Date.prototype.getMilliseconds"),
     DATE_GETUTCMILLISECONDS("Date.prototype.getUTCMilliseconds"),
     DATE_GETTIMEZONEOFFSET("Date.prototype.getTimezoneOffset"),
+    DATE_NOW("Date.now"),
     DATE_SETTIME("Date.prototype.setTime"),
     DATE_SETMILLISECONDS("Date.prototype.setMilliseconds"),
     DATE_SETUTCMILLISECONDS("Date.prototype.setUTCMilliseconds"),
@@ -163,6 +177,8 @@ public enum ECMAScriptObjects implements HostObject {
     DATE_SETUTCMONTH("Date.prototype.setUTCMonth"),
     DATE_SETFULLYEAR("Date.prototype.setFullYear"),
     DATE_SETUTCFULLYEAR("Date.prototype.setUTCFullYear"),
+    DATE_TOISOSTRING("Date.prototype.toISOString"),
+    DATE_TOJSON("Date.prototype.toJSON"),
     DATE_TOUTCSTRING("Date.prototype.toUTCString"),
     DATE_GETYEAR("Date.prototype.getYear"),
     DATE_SETYEAR("Date.prototype.setYear"),
@@ -170,7 +186,9 @@ public enum ECMAScriptObjects implements HostObject {
 
     REGEXP("RegExp"),
     REGEXP_PROTOTYPE("RegExp.prototype"),
+    REGEXP_COMPILE("RegExp.prototype.compile"),
     REGEXP_EXEC("RegExp.prototype.exec"),
+    REGEXP_LASTINDEX("RegExp.prototype.lastIndex"),
     REGEXP_TEST("RegExp.prototype.test"),
     REGEXP_TOSTRING("RegExp.prototype.toString"),
 
@@ -189,6 +207,23 @@ public enum ECMAScriptObjects implements HostObject {
     TYPE_ERROR_PROTOTYPE("TypeError.prototype"),
     URI_ERROR("URIError"),
     URI_ERROR_PROTOTYPE("URIError.prototype"),
+
+    JSON("JSON"),
+    JSON_PARSE("JSON.parse"),
+    JSON_STRINGIFY("JSON.stringify"),
+
+    OBJECT_CREATE("Object.create"),
+    OBJECT_DEFINEPPROPERTIES("Object.defineProperties"),
+    OBJECT_FREEZE("Object.freeze"),
+    OBJECT_GETOWNPROPERTYDESCRIPTOR("Object.getOwnPropertyDescriptor"),
+    OBJECT_GETOWNPROPERTYNAMES("Object.getOwnPropertyNames"),
+    OBJECT_GETPROTOTYPEOF("Object.getPrototypeOf"),
+    OBJECT_ISEXTENSIBLE("Object.isExtensible"),
+    OBJECT_ISFROZEN("Object.isFrozen"),
+    OBJECT_ISSEALED("Object.isSealed"),
+    OBJECT_KEYS("Object.keys"),
+    OBJECT_PREVENTEXTENSIONS("Object.preventExtensions"),
+    OBJECT_SEAL("Object.seal"),
 
     EVAL("eval"),
     PARSEINT("parseInt"),
@@ -241,5 +276,13 @@ public enum ECMAScriptObjects implements HostObject {
     @Override
     public HostAPIs getAPI() {
         return api;
+    }
+
+    @Override
+    public void evaluateSetter(ObjectLabel objlabel, Str prop, Value value, State state) {
+        if (this == GLOBAL && Options.get().isDOMEnabled()) { // GLOBAL == window, when DOM mode is enabled
+            DOMObjects.evaluateDOMSetter(objlabel, prop, value, state);
+        }
+        // not applicable for any other of these host objects
     }
 }
