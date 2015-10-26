@@ -1,16 +1,12 @@
 package dk.brics.tajs.test;
 
 import dk.brics.tajs.Main;
-import dk.brics.tajs.analysis.StaticDeterminacyContextSensitivityStrategy;
 import dk.brics.tajs.monitoring.AnalysisTimeLimiter;
 import dk.brics.tajs.monitoring.CompositeMonitoring;
 import dk.brics.tajs.monitoring.IAnalysisMonitoring;
 import dk.brics.tajs.monitoring.Monitoring;
-import dk.brics.tajs.options.ExperimentalOptions;
-import dk.brics.tajs.options.OptionValues;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.util.AnalysisLimitationException;
-import dk.brics.tajs.util.Pair;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -255,9 +251,10 @@ public class TestJQueryUse_unanalyzable {
 
     private void test(String testCase) {
         Main.reset();
-        Pair<OptionValues, ExperimentalOptions> options = StaticDeterminacyContextSensitivityStrategy.createOptions(true);
-        Options.set(options.getFirst());
-        ExperimentalOptions.ExperimentalOptionsManager.set(options.getSecond());
+        Options.get().enableDeterminacy();
+        Options.get().enableIncludeDom();
+        Options.get().enableUnevalizer();
+        Options.get().enableTest();
 
         // Successfull tests runs in less than 1 minute on `Intel(R) Core(TM) i7-3520M CPU @ 2.90GHz`
         AnalysisTimeLimiter analysisLimiter = new AnalysisTimeLimiter(90);

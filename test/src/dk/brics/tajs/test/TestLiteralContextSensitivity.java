@@ -1,7 +1,6 @@
 package dk.brics.tajs.test;
 
 import dk.brics.tajs.Main;
-import dk.brics.tajs.analysis.StaticDeterminacyContextSensitivityStrategy;
 import dk.brics.tajs.flowgraph.BasicBlock;
 import dk.brics.tajs.lattice.ContextArguments;
 import dk.brics.tajs.lattice.HeapContext;
@@ -11,7 +10,6 @@ import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.monitoring.CompositeMonitoring;
 import dk.brics.tajs.monitoring.DefaultAnalysisMonitoring;
 import dk.brics.tajs.monitoring.Monitoring;
-import dk.brics.tajs.options.ExperimentalOptions;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.test.monitors.OrdinaryExitReachableCheckerMonitor;
 import dk.brics.tajs.util.Collections;
@@ -34,9 +32,7 @@ public class TestLiteralContextSensitivity {
         Main.initLogging();
         Main.reset();
         Options.get().enableTest();
-        Options.get().enableContextSensitiveHeap();
-
-        ExperimentalOptions.ExperimentalOptionsManager.set(new ExperimentalOptions(StaticDeterminacyContextSensitivityStrategy.StaticDeterminacyOptions.OOPSLA2014));
+        Options.get().enableDeterminacy();
     }
 
     @Test

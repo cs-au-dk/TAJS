@@ -99,7 +99,6 @@ import dk.brics.tajs.flowgraph.jsnodes.TypeofNode;
 import dk.brics.tajs.flowgraph.jsnodes.UnaryOperatorNode;
 import dk.brics.tajs.flowgraph.jsnodes.WritePropertyNode;
 import dk.brics.tajs.flowgraph.jsnodes.WriteVariableNode;
-import dk.brics.tajs.options.ExperimentalOptions;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.util.AnalysisException;
 import dk.brics.tajs.util.Pair;
@@ -848,7 +847,7 @@ public class FunctionBuilder extends ParseTreeAuxVisitor<TranslationResult, AstE
         }
         BasicBlock callBlock = makeSuccessorBasicBlock(env.getFunction(), processed.getAppendBlock(), functionAndBlocksManager);
         AbstractNode callNode = new CallNode(CallNode.LiteralConstructorKinds.ARRAY, env.getResultRegister(), AbstractNode.NO_VALUE, variableEnv.getResultRegister(), elementRegisters, location);
-        if (ExperimentalOptions.ExperimentalOptionsManager.get().isEnabled(StaticDeterminacyContextSensitivityStrategy.StaticDeterminacyOptions.OOPSLA2014)) {
+        if (Options.get().isDeterminacyEnabled()) {
             StaticDeterminacyContextSensitivityStrategy.SyntacticHints.get().registerLiteral(callNode, new ASTInfo.LiteralTree(tree), astInfo);
         }
         addNodeToBlock(callNode, callBlock, env);
@@ -1074,7 +1073,7 @@ public class FunctionBuilder extends ParseTreeAuxVisitor<TranslationResult, AstE
 
     @Override
     TranslationResult process(ForStatementTree tree, AstEnv env) {
-        if (ExperimentalOptions.ExperimentalOptionsManager.get().isEnabled(StaticDeterminacyContextSensitivityStrategy.StaticDeterminacyOptions.OOPSLA2014)) {
+        if (Options.get().isDeterminacyEnabled()) {
             StaticDeterminacyContextSensitivityStrategy.SyntacticHints.get().registerLoop(new ASTInfo.LoopTree(tree), env, astInfo);
         }
         ParseTree condition = tree.condition.type == ParseTreeType.NULL ? null : tree.condition;
@@ -1205,7 +1204,7 @@ public class FunctionBuilder extends ParseTreeAuxVisitor<TranslationResult, AstE
         final int thisRegister = getUsableResultRegister(env);
         NewObjectNode node = new NewObjectNode(thisRegister, makeSourceLocation(tree));
         addNodeToBlock(node, env.getAppendBlock(), env);
-        if (ExperimentalOptions.ExperimentalOptionsManager.get().isEnabled(StaticDeterminacyContextSensitivityStrategy.StaticDeterminacyOptions.OOPSLA2014)) {
+        if (Options.get().isDeterminacyEnabled()) {
             StaticDeterminacyContextSensitivityStrategy.SyntacticHints.get().registerLiteral(node, new ASTInfo.LiteralTree(tree), astInfo);
         }
         final AstEnv propertyEnv = env.makeThisRegister(thisRegister).makeStatementLevel(false);
@@ -1570,7 +1569,7 @@ public class FunctionBuilder extends ParseTreeAuxVisitor<TranslationResult, AstE
 
     @Override
     TranslationResult process(WhileStatementTree tree, AstEnv env) {
-        if (ExperimentalOptions.ExperimentalOptionsManager.get().isEnabled(StaticDeterminacyContextSensitivityStrategy.StaticDeterminacyOptions.OOPSLA2014)) {
+        if (Options.get().isDeterminacyEnabled()) {
             StaticDeterminacyContextSensitivityStrategy.SyntacticHints.get().registerLoop(new ASTInfo.LoopTree(tree), env, astInfo);
         }
         return processLoop(tree, null, tree.condition, null, tree.body, false, makeSourceLocation(tree.condition), env);

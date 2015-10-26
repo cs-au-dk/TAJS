@@ -16,10 +16,7 @@ import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.UnknownValueResolver;
 import dk.brics.tajs.lattice.Value;
-import dk.brics.tajs.options.ExperimentalOptions;
-import dk.brics.tajs.options.OptionValues;
 import dk.brics.tajs.options.Options;
-import dk.brics.tajs.util.Pair;
 
 import java.util.Collections;
 import java.util.List;
@@ -88,41 +85,6 @@ public class StaticDeterminacyContextSensitivityStrategy implements IContextSens
             }
         }
         return isPrecise;
-    }
-
-    /**
-     * Creates the options configuration required for reproducing the (successful) OOPSLA 2014 benchmarks.
-     *
-     * @param test if test-mode should be enabled in {@link OptionValues}
-     */
-    public static Pair<OptionValues, ExperimentalOptions> createOptions(boolean test) {
-        ExperimentalOptions experimental = new ExperimentalOptions(StaticDeterminacyOptions.OOPSLA2014);
-        OptionValues options = new OptionValues();
-
-        if (test) {
-            options.enableTest();
-        } else {
-            options.enableQuiet();
-        }
-        options.enableIncludeDom();
-        options.enableUnevalizer();
-        options.enableContextSensitiveHeap();
-        options.enableParameterSensitivity();
-        /**
-         * From OOPSLA 2014 page 8:
-         * <p>
-         * When a context (. . . , b) is created, we select those local
-         * variables for inclusion in b whose abstract value is a concrete
-         * integer (as represented in the Num lattice) in the current
-         * abstract state.
-         * <p>
-         * NB: The OOPSLA2014-independent implementation of loop-unrolling
-         * behaves slightly different than this.
-         * The OOPSLA2014 implementation does not depend programatically on this other implementation.
-         */
-        options.enableLoopUnrolling(50);
-
-        return Pair.make(options, experimental);
     }
 
     /**
@@ -299,10 +261,6 @@ public class StaticDeterminacyContextSensitivityStrategy implements IContextSens
         HeapContext heapContext = new HeapContext(new ContextArguments(null, map), null);
         closureVariableValuesAtAllocation.put(heapContext, map);
         return heapContext;
-    }
-
-    public enum StaticDeterminacyOptions implements ExperimentalOptions.ExperimentalOption {
-        OOPSLA2014 // just this one extra option
     }
 
     /**

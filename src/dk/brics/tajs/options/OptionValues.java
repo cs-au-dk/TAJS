@@ -181,6 +181,9 @@ public class OptionValues {
     @Option(name = "-loop-unrolling", usage = "Enables unrolling of loops up to [n] times")
     private int loopUnrollings = -1;
 
+    @Option(name = "-determinacy", usage = "Enables all of the techniques described in 'Determinacy in Static Analysis of jQuery', OOPSLA 2014")
+    private boolean determinacy;
+
     @Argument
     private List<String> arguments = new ArrayList<>();
 
@@ -237,6 +240,7 @@ public class OptionValues {
         if (parameterSensitivity != that.parameterSensitivity) return false;
         if (ignoreUnreachable != that.ignoreUnreachable) return false;
         if (loopUnrollings != that.loopUnrollings) return false;
+        if (determinacy != that.determinacy) return false;
         if (iterationBoundString != null ? !iterationBoundString.equals(that.iterationBoundString) : that.iterationBoundString != null)
             return false;
         if (ignoredLibrariesString != null ? !ignoredLibrariesString.equals(that.ignoredLibrariesString) : that.ignoredLibrariesString != null)
@@ -297,6 +301,7 @@ public class OptionValues {
         result = 31 * result + (parameterSensitivity ? 1 : 0);
         result = 31 * result + (ignoreUnreachable ? 1 : 0);
         result = 31 * result + loopUnrollings;
+        result = 31 * result + (determinacy ? 1 : 0);
         result = 31 * result + (arguments != null ? arguments.hashCode() : 0);
         return result;
     }
@@ -342,6 +347,9 @@ public class OptionValues {
                 if (ignoredLibrariesString != null && !ignoredLibrariesString.isEmpty()) {
                     ignoreLibraries = true;
                     ignoredLibraries = Collections.newSet(Arrays.asList(ignoredLibrariesString.split(",")));
+                }
+                if (determinacy) {
+                    enableDeterminacy();
                 }
                 if (test) {
                     enableTest();
@@ -552,6 +560,10 @@ public class OptionValues {
         noRecency = false;
     }
 
+    public void disableDeterminacy() {
+        determinacy = false;
+    }
+
     public void disableParameterSensitivity() {
         parameterSensitivity = false;
     }
@@ -742,6 +754,13 @@ public class OptionValues {
 
     public void enableNoRecency() {
         noRecency = true;
+    }
+
+    public void enableDeterminacy() {
+        determinacy = true;
+        enableContextSensitiveHeap();
+        enableParameterSensitivity();
+        enableLoopUnrolling(50);
     }
 
     public void enableParameterSensitivity() {
@@ -942,6 +961,10 @@ public class OptionValues {
 
     public boolean isObjectSensitivityDisabled() {
         return noObjectSensitivity;
+    }
+
+    public boolean isDeterminacyEnabled() {
+        return determinacy;
     }
 
     public boolean isParameterSensitivityEnabled() {

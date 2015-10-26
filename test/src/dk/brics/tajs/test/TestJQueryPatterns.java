@@ -1,11 +1,9 @@
 package dk.brics.tajs.test;
 
 import dk.brics.tajs.Main;
-import dk.brics.tajs.analysis.StaticDeterminacyContextSensitivityStrategy;
 import dk.brics.tajs.monitoring.CompositeMonitoring;
 import dk.brics.tajs.monitoring.IAnalysisMonitoring;
 import dk.brics.tajs.monitoring.Monitoring;
-import dk.brics.tajs.options.ExperimentalOptions;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.test.monitors.OrdinaryExitReachableCheckerMonitor;
 import org.junit.Before;
@@ -23,12 +21,7 @@ public class TestJQueryPatterns {
         Main.reset();
         Options.get().enableTest();
         Options.get().enableIncludeDom();
-        Options.get().enableContextSensitiveHeap();
-        Options.get().enableParameterSensitivity();
-
-        ExperimentalOptions.ExperimentalOptionsManager.set(new ExperimentalOptions(StaticDeterminacyContextSensitivityStrategy.StaticDeterminacyOptions.OOPSLA2014));
-
-        Options.get().enableLoopUnrolling(100);
+        Options.get().enableDeterminacy();
 
         monitor = CompositeMonitoring.buildFromList(new Monitoring(), new OrdinaryExitReachableCheckerMonitor());
     }

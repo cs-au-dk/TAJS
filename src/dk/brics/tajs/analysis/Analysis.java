@@ -22,7 +22,7 @@ import dk.brics.tajs.lattice.CallEdge;
 import dk.brics.tajs.lattice.Context;
 import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.monitoring.IAnalysisMonitoring;
-import dk.brics.tajs.options.ExperimentalOptions;
+import dk.brics.tajs.options.Options;
 import dk.brics.tajs.solver.IAnalysis;
 import dk.brics.tajs.solver.IEdgeTransfer;
 import dk.brics.tajs.solver.IWorkListStrategy;
@@ -58,7 +58,7 @@ public final class Analysis implements IAnalysis<State, Context, CallEdge, IAnal
         transfer = new Transfer();
         worklist_strategy = new WorkListStrategy();
         eval_cache = new EvalCache();
-        if (ExperimentalOptions.ExperimentalOptionsManager.get().isEnabled(StaticDeterminacyContextSensitivityStrategy.StaticDeterminacyOptions.OOPSLA2014)) {
+        if (Options.get().isDeterminacyEnabled()) {
             context_sensitivity_strategy = new StaticDeterminacyContextSensitivityStrategy(StaticDeterminacyContextSensitivityStrategy.SyntacticHints.get());
         } else {
             context_sensitivity_strategy = new BasicContextSensitivityStrategy();
