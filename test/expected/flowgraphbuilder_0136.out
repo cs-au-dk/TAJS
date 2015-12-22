@@ -1,6 +1,6 @@
-fg2: function()
+fg2: <main> function()
   block 0: [entry]
-    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0136.js:1:1)
+    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0136.js)
     node 1: vardecl['scope']* (test/flowgraphbuilder/flowgraph_builder0136.js:5:5)
     node 2: vardecl['f']* (test/flowgraphbuilder/flowgraph_builder0136.js:7:5)
     ->[block 1]
@@ -21,10 +21,10 @@ fg2: function()
     node 10: call[v6,v7,v8,-]* (test/flowgraphbuilder/flowgraph_builder0136.js:19:1)
     ->[block 5]
   block 5: [exit-ordinary]
-    node 11: return[v1] (test/flowgraphbuilder/flowgraph_builder0136.js:1:1)
+    node 11: return[v1] (test/flowgraphbuilder/flowgraph_builder0136.js)
     ->[]
   block 6: [exit-exceptional]
-    node 12: exceptional-return (test/flowgraphbuilder/flowgraph_builder0136.js:1:1)
+    node 12: exceptional-return (test/flowgraphbuilder/flowgraph_builder0136.js)
     ->[]
 function g(x)
   block 7: [entry]
@@ -57,10 +57,10 @@ function g(x)
     node 25: write-variable[v9,'scope']* (test/flowgraphbuilder/flowgraph_builder0136.js:13:3)
     ->[block 15]
   block 15: [exit-ordinary]
-    node 26: return[v1] (test/flowgraphbuilder/flowgraph_builder0136.js:15:1)
+    node 26: return[v1] (test/flowgraphbuilder/flowgraph_builder0136.js:7:9)
     ->[]
   block 16: [exit-exceptional]
-    node 27: exceptional-return (test/flowgraphbuilder/flowgraph_builder0136.js:15:1)
+    node 27: exceptional-return (test/flowgraphbuilder/flowgraph_builder0136.js:7:9)
     ->[]
 
 test/flowgraphbuilder/flowgraph_builder0136.js:8:2: [info] Abstract value: 0.0

@@ -1,0 +1,35 @@
+test/1k2013spring/1557.js:2:22: [definite] Too few parameters to function Node.cloneNode
+test/1k2013spring/1557.js:6:20: [definite] Too few parameters to function Node.cloneNode
+test/1k2013spring/1557.js:78:10: [definite] The variable b is never used
+test/1k2013spring/1557.js:78:10: [definite] The variable c is never used
+test/1k2013spring/1557.js:156:13: [definite] The variable a is never used
+test/1k2013spring/1557.js:156:13: [definite] The variable b is never used
+test/1k2013spring/1557.js:2:22: [maybe] TypeError, call to non-function
+test/1k2013spring/1557.js:3:23: [maybe] TypeError, call to non-function
+test/1k2013spring/1557.js:6:20: [maybe] TypeError, call to non-function
+test/1k2013spring/1557.js:7:21: [maybe] TypeError, call to non-function
+test/1k2013spring/1557.js:39:3: [maybe] TypeError, non-HTMLImageElement or non-HTMLCanvasElement as argument to drawImage
+test/1k2013spring/1557.js:66:3: [maybe] TypeError, non-HTMLImageElement or non-HTMLCanvasElement as argument to drawImage
+test/1k2013spring/1557.js:132:3: [maybe] TypeError, non-HTMLImageElement or non-HTMLCanvasElement as argument to drawImage
+test/1k2013spring/1557.js:156:1: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/shim.js:8:9: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/shim.js:8:9: [maybe] TypeError, call to non-function
+test/1k2013spring/shim.js:9:1: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1557.js:2:22: [maybe] Reading absent property cloneNode
+test/1k2013spring/1557.js:3:23: [maybe] Reading absent property getContext
+test/1k2013spring/1557.js:6:20: [maybe] Reading absent property cloneNode
+test/1k2013spring/1557.js:7:21: [maybe] Reading absent property getContext
+test/1k2013spring/shim.js:6:9: [maybe] Reading absent property body
+test/1k2013spring/shim.js:8:9: [maybe] Reading absent property getContext
+test/1k2013spring/shim.js:9:1: [maybe] Reading absent property body
+test/1k2013spring/1557.js:88:7: [maybe] Conversion to number yields NaN
+test/1k2013spring/1557.js:89:7: [maybe] Conversion to number yields NaN
+test/1k2013spring/1557.js:90:7: [maybe] Conversion to number yields NaN
+test/1k2013spring/1557.js:90:7: [maybe] Conversion to number yields NaN
+test/1k2013spring/1557.js:90:7: [maybe] Conversion to number yields NaN
+test/1k2013spring/1557.js:90:7: [maybe] Reading absent property (computed name)
+test/1k2013spring/1557.js:90:18: [maybe] Reading absent property (computed name)
+test/1k2013spring/1557.js:90:29: [maybe] Reading absent property (computed name)
+test/1k2013spring/1557.js:90:40: [maybe] Reading absent property (computed name)
+test/1k2013spring/shim.js:7:9: [maybe] Reading absent property (computed name)
+test/1k2013spring/shim.js,test/1k2013spring/1557.js: [maybe] Uncaught exception, constructed at [test/1k2013spring/1557.js:2:22, test/1k2013spring/1557.js:3:23, test/1k2013spring/1557.js:6:20, test/1k2013spring/1557.js:7:21, test/1k2013spring/1557.js:156:1, test/1k2013spring/shim.js:8:9, test/1k2013spring/shim.js:9:1]

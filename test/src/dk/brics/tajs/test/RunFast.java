@@ -3,39 +3,28 @@ package dk.brics.tajs.test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
+/**
+ * Fast test suite for testing essential TAJS behavior.
+ * It is probably sufficient to run this test suite after minor implementation changes.
+ * Except for TestMicro, each class in the suite should run in less than a second.
+ */
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-        TestCollections.class,
-        TestMicro.class,
-        TestFlowgraphBuilder.class,
-        TestNoFlowNodeInsertion.class,
-        TestAssumeNonNullUndef.class,
-        TestAddContextSensitivity.class,
-        TestSourceLocations.class,
-        TestSyntacticObjectSensitivity.class,
-        TestAssumeNonNullUndef.class,
+        // specific tests
         TestValue.class,
-        TestAnderson.class,
-        TestJSNativeFunctions.class,
-        TestResig.class,
-        TestForIn.class,
-        TestUnrollingUnknownValueRecovery.class,
-        TestUnrollingTermination.class,
-        TestUnrolling.class,
-        TestBoundedUnrolling.class,
-        TestWala.class,
-        TestUneval.class,
-        TestSunspider.class,
-        TestV8.class,
-        TestGoogle.class,
-        Test10K.class,
-        TestChromeExperiments.class,
         TestHeap.class,
-        Test1K2012Love.class,
-        Test1K2013Spring.class,
-        Test1K2014Dragons.class,
-        TestKaistAlexaBenchmarksFlowgraph.class,
-        TestMicroStringEscaping.class
+        TestForIn.class,
+        TestUnrolling.class,
+        TestAssumeNonNullUndef.class,
+
+        // misc. tests
+        TestMicro.class,
+
+        // application tests
+        TestAnderson.class,
+        TestJQueryEach.class,
+        TestWala.class,
+        TestResig.class,
 })
 public class RunFast {
 

@@ -1,6 +1,6 @@
-fg2: function()
+fg2: <main> function()
   block 0: [entry]
-    node 0: constant[undefined,v1] (out/temp-sources/doWhileContinue_issue195:1:1)
+    node 0: constant[undefined,v1] (out/temp-sources/doWhileContinue_issue195)
     ->[block 1]
   block 1:
     node 1: constant["PRE",-]* (out/temp-sources/doWhileContinue_issue195:1:1)
@@ -31,10 +31,10 @@ fg2: function()
     node 12: constant["POST",-]* (out/temp-sources/doWhileContinue_issue195:8:1)
     ->[block 9]
   block 9: [exit-ordinary]
-    node 13: return[v1] (out/temp-sources/doWhileContinue_issue195:1:1)
+    node 13: return[v1] (out/temp-sources/doWhileContinue_issue195)
     ->[]
   block 10: [exit-exceptional]
-    node 14: exceptional-return (out/temp-sources/doWhileContinue_issue195:1:1)
+    node 14: exceptional-return (out/temp-sources/doWhileContinue_issue195)
     ->[]
 
 out/temp-sources/doWhileContinue_issue195:2:1: [definite] The conditional expression is always true

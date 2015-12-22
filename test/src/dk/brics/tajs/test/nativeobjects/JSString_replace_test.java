@@ -3,9 +3,7 @@ package dk.brics.tajs.test.nativeobjects;
 import dk.brics.tajs.Main;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.test.Misc;
-import dk.brics.tajs.util.AnalysisException;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 @SuppressWarnings("static-method")
@@ -59,19 +57,35 @@ public class JSString_replace_test {
                 "TAJS_assert(v === 'fOO');");
     }
 
-    @Ignore // FIXME missing model of String.prototype.replace(..., function(){..})
-    @Test(expected = AnalysisException.class /* Fails early due to unsupported callback */)
-    public void replacementFunction() {
+    @Test
+    public void replacementFunctionOneMatch() {
         Misc.init();
-        Misc.runSource("var v = 'foo'.replace('oo', function(){});");
+        Misc.runSource("var x = false; var v = 'foo'.replace('oo', function(){ x = true; }); TAJS_assert(v, 'isMaybeAnyStr'); TAJS_assert(x, 'isMaybeTrueButNotFalse', false); TAJS_assert(x, 'isMaybeFalseButNotTrue', false);");
+    }
+
+    @Test
+    public void replacementFunctionTwoMatchest() {
+        Misc.init();
+        Misc.runSource("var x = false; var v = 'foo'.replace('o', function(){ x = true; }); TAJS_assert(v, 'isMaybeAnyStr'); TAJS_assert(x, 'isMaybeTrueButNotFalse', false); TAJS_assert(x, 'isMaybeFalseButNotTrue', false);");
     }
 
     @Test
     public void replacementFunctionNoMatches() {
         Misc.init();
-        Misc.runSource("var v = 'foo'.replace('xx', function(){});",
-                "TAJS_assert(v === 'foo');");
+        Misc.runSource("var x = false; var v = 'bar'.replace('oo', function(){ x = true; }); TAJS_assert(v === 'bar'); TAJS_assert(x === false);");
 
+    }
+
+    @Test
+    public void replacementFunctionMaybeMatch() {
+        Misc.init();
+        Misc.runSource("var x = false; var v = (Math.random()?'foo':'bar').replace('oo', function(){ x = true; }); TAJS_assert(v, 'isMaybeAnyStr'); TAJS_assert(x, 'isMaybeTrueButNotFalse', false); TAJS_assert(x, 'isMaybeFalseButNotTrue', false);");
+    }
+
+    @Test
+    public void replacementFunctionArgumeunts() {
+        Misc.init();
+        Misc.runSource("var x = false; var v = 'foo'.replace('oo', function(p1, p2){ TAJS_dumpValue(p1); TAJS_dumpValue(p2); }); ");
     }
 
     @Test

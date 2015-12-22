@@ -1,8 +1,0 @@
-public = /web/amoeller/public_html/TAJS
-# public = C:/Users/Anders/public_html/TAJS
-
-dot = /usr/bin/dot
-# dot = C:/Program Files/ATT/Graphviz/bin/dot.exe
-
-imgviewer = /usr/bin/gthumb
-# imgviewer = C:/Program Files/Google/Picasa3/PicasaPhotoViewer.exe

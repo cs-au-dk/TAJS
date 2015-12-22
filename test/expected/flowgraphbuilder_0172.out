@@ -1,35 +1,35 @@
-fg2: function()
+fg2: <main> function()
   block 0: [entry]
-    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0172.html:3:15)
+    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0172.html)
     node 1: function-decl[function(),-] (test/flowgraphbuilder/flowgraph_builder0172.html:3:15)
     node 2: function-decl[function(),-] (test/flowgraphbuilder/flowgraph_builder0172.html:4:15)
     ->[block 1]
   block 1:
-    node 3: nop(eventDispatchers: entry) (test/flowgraphbuilder/flowgraph_builder0172.html:3:15)
+    node 3: nop(eventDispatchers: entry) (test/flowgraphbuilder/flowgraph_builder0172.html)
     ->[block 2,block 3]
   block 2:
-    node 4: event-dispatcher <LOAD> (test/flowgraphbuilder/flowgraph_builder0172.html:3:15)
+    node 4: event-dispatcher <LOAD> (test/flowgraphbuilder/flowgraph_builder0172.html)
     ->[block 3]
   block 3:
-    node 5: nop(eventDispatchers: postLoad) (test/flowgraphbuilder/flowgraph_builder0172.html:3:15)
+    node 5: nop(eventDispatchers: postLoad) (test/flowgraphbuilder/flowgraph_builder0172.html)
     ->[block 2,block 4,block 5]
   block 4:
-    node 6: event-dispatcher <OTHER> (test/flowgraphbuilder/flowgraph_builder0172.html:3:15)
+    node 6: event-dispatcher <OTHER> (test/flowgraphbuilder/flowgraph_builder0172.html)
     ->[block 5]
   block 5:
-    node 7: nop(eventDispatchers: postOther) (test/flowgraphbuilder/flowgraph_builder0172.html:3:15)
+    node 7: nop(eventDispatchers: postOther) (test/flowgraphbuilder/flowgraph_builder0172.html)
     ->[block 4,block 6,block 7]
   block 6:
-    node 8: event-dispatcher <UNLOAD> (test/flowgraphbuilder/flowgraph_builder0172.html:3:15)
+    node 8: event-dispatcher <UNLOAD> (test/flowgraphbuilder/flowgraph_builder0172.html)
     ->[block 7]
   block 7:
-    node 9: nop(eventDispatchers: postUnload) (test/flowgraphbuilder/flowgraph_builder0172.html:3:15)
+    node 9: nop(eventDispatchers: postUnload) (test/flowgraphbuilder/flowgraph_builder0172.html)
     ->[block 6,block 8]
   block 8: [exit-ordinary]
-    node 10: return[v1] (test/flowgraphbuilder/flowgraph_builder0172.html:3:15)
+    node 10: return[v1] (test/flowgraphbuilder/flowgraph_builder0172.html)
     ->[]
   block 9: [exit-exceptional]
-    node 11: exceptional-return (test/flowgraphbuilder/flowgraph_builder0172.html:3:15)
+    node 11: exceptional-return (test/flowgraphbuilder/flowgraph_builder0172.html)
     ->[]
 function()
   block 10: [entry]
@@ -57,44 +57,44 @@ function()
     node 20: call[v2,v3,v4,v5,-]* (test/flowgraphbuilder/flowgraph_builder0172.html:4:15)
     ->[block 17]
   block 17: [exit-ordinary]
-    node 21: return[v1] (test/flowgraphbuilder/flowgraph_builder0172.html:4:49)
+    node 21: return[v1] (test/flowgraphbuilder/flowgraph_builder0172.html:4:15)
     ->[]
   block 18: [exit-exceptional]
-    node 22: exceptional-return (test/flowgraphbuilder/flowgraph_builder0172.html:4:49)
+    node 22: exceptional-return (test/flowgraphbuilder/flowgraph_builder0172.html:4:15)
     ->[]
 
 fg2: <main> function()
   block 0: [entry]
-    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0172.html:3:15)
+    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0172.html)
     node 1: function-decl[function(),-] (test/flowgraphbuilder/flowgraph_builder0172.html:3:15)
     node 2: function-decl[function(),-] (test/flowgraphbuilder/flowgraph_builder0172.html:4:15)
     ->[block 1]
   block 1:
-    node 3: nop(eventDispatchers: entry) (test/flowgraphbuilder/flowgraph_builder0172.html:3:15)
+    node 3: nop(eventDispatchers: entry) (test/flowgraphbuilder/flowgraph_builder0172.html)
     ->[block 2,block 3]
   block 2:
-    node 4: event-dispatcher <LOAD> (test/flowgraphbuilder/flowgraph_builder0172.html:3:15)
+    node 4: event-dispatcher <LOAD> (test/flowgraphbuilder/flowgraph_builder0172.html)
     ->[block 3]
   block 3:
-    node 5: nop(eventDispatchers: postLoad) (test/flowgraphbuilder/flowgraph_builder0172.html:3:15)
+    node 5: nop(eventDispatchers: postLoad) (test/flowgraphbuilder/flowgraph_builder0172.html)
     ->[block 2,block 4,block 5]
   block 4:
-    node 6: event-dispatcher <OTHER> (test/flowgraphbuilder/flowgraph_builder0172.html:3:15)
+    node 6: event-dispatcher <OTHER> (test/flowgraphbuilder/flowgraph_builder0172.html)
     ->[block 5]
   block 5:
-    node 7: nop(eventDispatchers: postOther) (test/flowgraphbuilder/flowgraph_builder0172.html:3:15)
+    node 7: nop(eventDispatchers: postOther) (test/flowgraphbuilder/flowgraph_builder0172.html)
     ->[block 4,block 6,block 7]
   block 6:
-    node 8: event-dispatcher <UNLOAD> (test/flowgraphbuilder/flowgraph_builder0172.html:3:15)
+    node 8: event-dispatcher <UNLOAD> (test/flowgraphbuilder/flowgraph_builder0172.html)
     ->[block 7]
   block 7:
-    node 9: nop(eventDispatchers: postUnload) (test/flowgraphbuilder/flowgraph_builder0172.html:3:15)
+    node 9: nop(eventDispatchers: postUnload) (test/flowgraphbuilder/flowgraph_builder0172.html)
     ->[block 6,block 8]
   block 8: [exit-ordinary]
-    node 10: return[v1] (test/flowgraphbuilder/flowgraph_builder0172.html:3:15)
+    node 10: return[v1] (test/flowgraphbuilder/flowgraph_builder0172.html)
     ->[]
   block 9: [exit-exceptional]
-    node 11: exceptional-return (test/flowgraphbuilder/flowgraph_builder0172.html:3:15)
+    node 11: exceptional-return (test/flowgraphbuilder/flowgraph_builder0172.html)
     ->[]
 function()
   block 10: [entry]
@@ -125,10 +125,10 @@ function()
     node 23: function-decl[function(),-] (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0172.html:4:15):1:1)
     ->[block 17]
   block 17: [exit-ordinary]
-    node 21: return[v1] (test/flowgraphbuilder/flowgraph_builder0172.html:4:49)
+    node 21: return[v1] (test/flowgraphbuilder/flowgraph_builder0172.html:4:15)
     ->[]
   block 18: [exit-exceptional]
-    node 22: exceptional-return (test/flowgraphbuilder/flowgraph_builder0172.html:4:49)
+    node 22: exceptional-return (test/flowgraphbuilder/flowgraph_builder0172.html:4:15)
     ->[]
 function()
   block 20: [entry]
@@ -149,12 +149,12 @@ function()
     node 30: end-with* (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0172.html:4:15):1:1)
     ->[block 25]
   block 25: [exit-ordinary]
-    node 31: return[v1] (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0172.html:4:15):1:16)
+    node 31: return[v1] (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0172.html:4:15):1:1)
     ->[]
   block 26: [exit-exceptional]
-    node 32: exceptional-return (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0172.html:4:15):1:16)
+    node 32: exceptional-return (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0172.html:4:15):1:1)
     ->[]
 
 TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0172.html:4:15):1:6: [definite] ReferenceError, reading absent variable x
 TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0172.html:4:15):1:1: [definite] Unreachable code
-test/flowgraphbuilder/flowgraph_builder0172.html:3:15: [maybe] Uncaught exception, constructed at [TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0172.html:4:15):1:6]
+test/flowgraphbuilder/flowgraph_builder0172.html: [maybe] Uncaught exception, constructed at [TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0172.html:4:15):1:6]

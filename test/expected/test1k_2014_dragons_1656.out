@@ -1,0 +1,71 @@
+test/1k2014dragons/1656.js:4:6: [definite] The assignment to c has no effect
+test/1k2014dragons/shims.js:19:5: [definite] The assignment to AudioContext has no effect
+test/1k2014dragons/shims.js:19:5: [definite] The conditional expression is always true
+test/1k2014dragons/shims.js:22:5: [definite] Property is null/undefined
+test/1k2014dragons/shims.js:22:5: [definite] The conditional expression is always false
+test/1k2014dragons/shims.js:22:5: [definite] The conditional expression is always false
+test/1k2014dragons/shims.js:22:5: [definite] The conditional expression is always false
+test/1k2014dragons/shims.js:22:5: [definite] The conditional expression is always false
+test/1k2014dragons/shims.js:23:5: [definite] Reading absent property mozRequestAnimationFrame
+test/1k2014dragons/shims.js:24:5: [definite] Reading absent property webkitRequestAnimationFrame
+test/1k2014dragons/shims.js:25:5: [definite] Reading absent property msRequestAnimationFrame
+test/1k2014dragons/shims.js:41:19: [definite] Dead assignment, property antialias is never read
+test/1k2014dragons/shims.js:41:36: [definite] Dead assignment, property stencil is never read
+test/1k2014dragons/1656.js:20:2: [definite] The variable z is never used
+test/1k2014dragons/shims.js:10:5: [definite] The variable b is never used
+test/1k2014dragons/shims.js:18:5: [definite] The variable AudioContext is never used
+test/1k2014dragons/1656.js:41:1: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/shims.js:13:9: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/shims.js:13:9: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/shims.js:13:9: [maybe] TypeError, argument is not of expected type: Node.prototype
+test/1k2014dragons/shims.js:13:9: [maybe] TypeError, call to non-function
+test/1k2014dragons/shims.js:31:1: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/shims.js:34:1: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/shims.js:34:1: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/shims.js:35:1: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/shims.js:37:9: [maybe] TypeError, call to non-function
+test/1k2014dragons/shims.js:42:18: [maybe] TypeError, call to non-function
+test/1k2014dragons/shims.js:42:46: [maybe] TypeError, call to non-function
+test/1k2014dragons/shims.js:55:9: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1656.js:41:1: [maybe] Reading absent property body
+test/1k2014dragons/shims.js:10:9: [maybe] Reading absent property body
+test/1k2014dragons/shims.js:13:9: [maybe] Reading absent property parentNode
+test/1k2014dragons/shims.js:13:9: [maybe] Reading absent property removeChild
+test/1k2014dragons/shims.js:31:1: [maybe] Reading absent property body
+test/1k2014dragons/shims.js:34:1: [maybe] Reading absent property style
+test/1k2014dragons/shims.js:35:1: [maybe] Reading absent property style
+test/1k2014dragons/shims.js:37:9: [maybe] Reading absent property getContext
+test/1k2014dragons/shims.js:42:18: [maybe] Reading absent property getContext
+test/1k2014dragons/shims.js:42:46: [maybe] Reading absent property getContext
+test/1k2014dragons/shims.js:55:9: [maybe] Reading absent property body
+test/1k2014dragons/1656.js:34:2: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1656.js:49:17: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1656.js:67:6: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1656.js:74:5: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1656.js:74:12: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1656.js:74:23: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1656.js:74:23: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1656.js:74:38: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1656.js:74:38: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1656.js:74:52: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1656.js:74:52: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1656.js:74:63: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1656.js:74:63: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1656.js:76:10: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1656.js:76:10: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1656.js:88:5: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1656.js:88:10: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1656.js:88:10: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1656.js:93:15: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1656.js:93:32: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1656.js:93:32: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1656.js:93:45: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1656.js:94:3: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1656.js:94:18: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1656.js:94:56: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1656.js:95:10: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1656.js:95:15: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1656.js:95:29: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1656.js:95:34: [maybe] Reading absent property (computed name)
+test/1k2014dragons/shims.js:9:9: [maybe] Reading absent property (computed name)
+test/1k2014dragons/shims.js,test/1k2014dragons/1656.js: [maybe] Uncaught exception, constructed at [test/1k2014dragons/1656.js:41:1, test/1k2014dragons/shims.js:13:9, test/1k2014dragons/shims.js:31:1, test/1k2014dragons/shims.js:34:1, test/1k2014dragons/shims.js:35:1, test/1k2014dragons/shims.js:37:9, test/1k2014dragons/shims.js:42:18, test/1k2014dragons/shims.js:42:46, test/1k2014dragons/shims.js:55:9]

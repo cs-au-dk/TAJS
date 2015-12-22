@@ -1,6 +1,6 @@
-fg2: function()
+fg2: <main> function()
   block 0: [entry]
-    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0025.js:1:1)
+    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0025.js)
     ->[block 1]
   block 1:
     node 1: constant[true,v2] (test/flowgraphbuilder/flowgraph_builder0025.js:1:1)
@@ -10,10 +10,10 @@ fg2: function()
     node 3: constant[false,-] (test/flowgraphbuilder/flowgraph_builder0025.js:1:9)
     ->[block 3]
   block 3: [exit-ordinary]
-    node 4: return[v1] (test/flowgraphbuilder/flowgraph_builder0025.js:1:1)
+    node 4: return[v1] (test/flowgraphbuilder/flowgraph_builder0025.js)
     ->[]
   block 4: [exit-exceptional]
-    node 5: exceptional-return (test/flowgraphbuilder/flowgraph_builder0025.js:1:1)
+    node 5: exceptional-return (test/flowgraphbuilder/flowgraph_builder0025.js)
     ->[]
 
 test/flowgraphbuilder/flowgraph_builder0025.js:1:1: [definite] The conditional expression is always true

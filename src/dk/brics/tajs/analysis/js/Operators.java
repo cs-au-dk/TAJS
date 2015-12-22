@@ -89,15 +89,15 @@ public class Operators {
     /**
      * 11.4.6 <code>+</code> (unary)
      */
-    public static Value uplus(Value v, int register, Solver.SolverInterface c) {
-        return Conversion.toNumber(v, register, c);
+    public static Value uplus(Value v, Solver.SolverInterface c) {
+        return Conversion.toNumber(v, c);
     }
 
     /**
      * 11.4.7 <code>-</code> (unary)
      */
-    public static Value uminus(Value v, int register, Solver.SolverInterface c) {
-        Value nm = Conversion.toNumber(v, register, c);
+    public static Value uminus(Value v, Solver.SolverInterface c) {
+        Value nm = Conversion.toNumber(v, c);
         if (nm.isNotNum())
             return Value.makeNone();
         else if (nm.isMaybeSingleNum())
@@ -109,8 +109,8 @@ public class Operators {
     /**
      * 11.4.8 <code>~</code> (bitwise not)
      */
-    public static Value complement(Value v, int register, Solver.SolverInterface c) {
-        Value nm = Conversion.toNumber(v, register, c);
+    public static Value complement(Value v, Solver.SolverInterface c) {
+        Value nm = Conversion.toNumber(v, c);
         if (nm.isNotNum())
             return Value.makeNone();
         else if (nm.isMaybeSingleNum())
@@ -136,32 +136,32 @@ public class Operators {
     /**
      * 11.5.1 <code>*</code>
      */
-    public static Value mul(Value v1, int register1, Value v2, int register2, Solver.SolverInterface c) {
-        return numeric(NumericOp.MUL, v1, register1, v2, register2, c);
+    public static Value mul(Value v1, Value v2, Solver.SolverInterface c) {
+        return numeric(NumericOp.MUL, v1, v2, c);
     }
 
     /**
      * 11.5.2 <code>/</code>
      */
-    public static Value div(Value v1, int register1, Value v2, int register2, Solver.SolverInterface c) {
-        return numeric(NumericOp.DIV, v1, register1, v2, register2, c);
+    public static Value div(Value v1, Value v2, Solver.SolverInterface c) {
+        return numeric(NumericOp.DIV, v1, v2, c);
     }
 
     /**
      * 11.5.3 <code>%</code>
      */
-    public static Value rem(Value v1, int register1, Value v2, int register2, Solver.SolverInterface c) {
-        return numeric(NumericOp.MOD, v1, register1, v2, register2, c);
+    public static Value rem(Value v1, Value v2, Solver.SolverInterface c) {
+        return numeric(NumericOp.MOD, v1, v2, c);
     }
 
     /**
      * 11.5 Multiplicative operators and 11.6.3 Applying the Additive operators to numbers
      */
-    private static Value numeric(NumericOp op, Value v1, int register1, Value v2, int register2, Solver.SolverInterface c) {
+    private static Value numeric(NumericOp op, Value v1, Value v2, Solver.SolverInterface c) {
         if (v1.isNotPresent() || v2.isNotPresent())
             return Value.makeNone();
-        Value arg1 = Conversion.toNumber(v1, register1, c);
-        Value arg2 = Conversion.toNumber(v2, register2, c);
+        Value arg1 = Conversion.toNumber(v1, c);
+        Value arg2 = Conversion.toNumber(v2, c);
         if (arg1.isMaybeSingleNum() && arg2.isMaybeSingleNum()) {
             Double d1 = arg1.getNum();
             Double d2 = arg2.getNum();
@@ -202,7 +202,7 @@ public class Operators {
                     r = r.joinNumInf();
                 if (((arg1.isMaybeNumUInt() && !arg1.restrictToNotNaN().isMaybeOtherThanNumUInt()) || arg1.isMaybeSingleNumUInt()) &&
                         ((arg2.isMaybeNumUInt() && !arg2.restrictToNotNaN().isMaybeOtherThanNumUInt()) || arg2.isMaybeSingleNumUInt())) {
-                    // FIXME: this rule ignores overflows from UInt (use Options.get().isUnsound())
+                    // FIXME: this rule ignores overflows from UInt (use Options.get().isUnsound()) - see github #193
                     // FIXME: this rule assumes Uint - Uint => Uint (use Options.get().isUnsound()) ((a fix will break TestMicro#micro_testUintSub)))
 
                     // NB: Number.MAX_VALUE + Number.MAX_VALUE == Infinity, but Number.MAX_VALUE + (Number.MAX_VALUE / 100000000000000000) == Number.MAX_VALUE
@@ -252,29 +252,29 @@ public class Operators {
     /**
      * Numeric addition.
      */
-    private static Value addNumbers(Value v1, int register1, Value v2, int register2, Solver.SolverInterface c) {
-        return numeric(NumericOp.ADD, v1, register1, v2, register2, c);
+    private static Value addNumbers(Value v1, Value v2, Solver.SolverInterface c) {
+        return numeric(NumericOp.ADD, v1, v2, c);
     }
 
     /**
      * 11.6.1 <code>+</code> (binary)
      */
-    public static Value add(Value v1, int register1, Value v2, int register2, Solver.SolverInterface c) {
-        Value p1 = Conversion.toPrimitive(v1, register1, Hint.NONE, c);
-        Value p2 = Conversion.toPrimitive(v2, register2, Hint.NONE, c);
+    public static Value add(Value v1, Value v2, Solver.SolverInterface c) {
+        Value p1 = Conversion.toPrimitive(v1, Hint.NONE, c);
+        Value p2 = Conversion.toPrimitive(v2, Hint.NONE, c);
         Value r1 = p1.restrictToNotStr();
         Value r2 = p2.restrictToNotStr();
         // handle string parts of p1 + string parts of p2
         Value r = addStrings(p1, p2, Value.makeNone());
         // handle string parts of p1 + non-string parts of p2
         if (!p1.isNotStr() && p2.isMaybeOtherThanStr())
-            r = addStrings(p1, Conversion.toString(r2, register2, c), r);
+            r = addStrings(p1, Conversion.toString(r2, c), r);
         // handle non-string parts of p1 + string parts of p2
         if (!p2.isNotStr() && p1.isMaybeOtherThanStr())
-            r = addStrings(Conversion.toString(r1, register1, c), p2, r);
+            r = addStrings(Conversion.toString(r1, c), p2, r);
         // handle non-string parts of p1 + non-string parts of p2
         if (r1.isMaybePresent() && r2.isMaybePresent())
-            r = r.join(addNumbers(r1, register1, r2, register2, c));
+            r = r.join(addNumbers(r1, r2, c));
         return r;
     }
 
@@ -335,18 +335,18 @@ public class Operators {
     /**
      * 11.6.2 <code>-</code> (binary)
      */
-    public static Value sub(Value v1, int register1, Value v2, int register2, Solver.SolverInterface c) {
-        return numeric(NumericOp.SUB, v1, register1, v2, register2, c);
+    public static Value sub(Value v1, Value v2, Solver.SolverInterface c) {
+        return numeric(NumericOp.SUB, v1, v2, c);
     }
 
     /**
      * 11.7 Bitwise Shift Operators
      */
-    private static Value shiftop(ShiftOp op, Value v1, int register1, Value v2, int register2, Solver.SolverInterface c) {
+    private static Value shiftop(ShiftOp op, Value v1, Value v2, Solver.SolverInterface c) {
         if (v1.isNotPresent() || v2.isNotPresent())
             return Value.makeNone();
-        Value arg1 = Conversion.toNumber(v1, register1, c);
-        Value arg2 = Conversion.toNumber(v2, register2, c);
+        Value arg1 = Conversion.toNumber(v1, c);
+        Value arg2 = Conversion.toNumber(v2, c);
         if (arg1.isMaybeSingleNum() && arg2.isMaybeSingleNum()) {
             Double d1 = arg1.getNum();
             Double d2 = arg2.getNum();
@@ -370,65 +370,65 @@ public class Operators {
     /**
      * 11.7.1 <code>&lt;&lt;</code> (left shift)
      */
-    public static Value shl(Value v1, int register1, Value v2, int register2, Solver.SolverInterface c) {
-        return shiftop(ShiftOp.LEFTSHIFT, v1, register1, v2, register2, c);
+    public static Value shl(Value v1, Value v2, Solver.SolverInterface c) {
+        return shiftop(ShiftOp.LEFTSHIFT, v1, v2, c);
     }
 
     /**
      * 11.7.2 <code>&gt;&gt;</code> (signed right shift)
      */
-    public static Value shr(Value v1, int register1, Value v2, int register2, Solver.SolverInterface c) {
-        return shiftop(ShiftOp.SIGNEDRIGHTSHIFT, v1, register1, v2, register2, c);
+    public static Value shr(Value v1, Value v2, Solver.SolverInterface c) {
+        return shiftop(ShiftOp.SIGNEDRIGHTSHIFT, v1, v2, c);
     }
 
     /**
      * 11.7.3 <code>&gt;&gt;&gt;</code> (unsigned right shift)
      */
-    public static Value ushr(Value v1, int register1, Value v2, int register2, Solver.SolverInterface c) {
-        return shiftop(ShiftOp.UNSIGNEDRIGHTSHIFT, v1, register1, v2, register2, c);
+    public static Value ushr(Value v1, Value v2, Solver.SolverInterface c) {
+        return shiftop(ShiftOp.UNSIGNEDRIGHTSHIFT, v1, v2, c);
     }
 
     /**
      * 11.8.1 <code>&lt;</code>
      */
-    public static Value lt(Value v1, int register1, Value v2, int register2, Solver.SolverInterface c) {
-        return abstractRelationalComparison(v1, register1, v2, register2, c);
+    public static Value lt(Value v1, Value v2, Solver.SolverInterface c) {
+        return abstractRelationalComparison(v1, v2, c);
     }
 
     /**
      * 11.8.2 <code>&gt;</code>
      */
-    public static Value gt(Value v1, int register1, Value v2, int register2, Solver.SolverInterface c) {
-        return abstractRelationalComparison(v2, register1, v1, register2, c);
+    public static Value gt(Value v1, Value v2, Solver.SolverInterface c) {
+        return abstractRelationalComparison(v2, v1, c);
     }
 
     /**
      * 11.8.3 <code>&lt;=</code>
      */
-    public static Value le(Value v1, int register1, Value v2, int register2, Solver.SolverInterface c) {
-        return not(abstractRelationalComparison(v2, register1, v1, register2, c), c);
+    public static Value le(Value v1, Value v2, Solver.SolverInterface c) {
+        return not(abstractRelationalComparison(v2, v1, c), c);
     }
 
     /**
      * 11.8.4 <code>&gt;=</code>
      */
-    public static Value ge(Value v1, int register1, Value v2, int register2, Solver.SolverInterface c) {
-        return not(abstractRelationalComparison(v1, register1, v2, register2, c), c);
+    public static Value ge(Value v1, Value v2, Solver.SolverInterface c) {
+        return not(abstractRelationalComparison(v1, v2, c), c);
     }
 
     /**
      * 11.8.5 The Abstract Relational Comparison Algorithm.
      */
-    private static Value abstractRelationalComparison(Value v1, int register1, Value v2, int register2, Solver.SolverInterface c) {
-        Value p1 = Conversion.toPrimitive(v1, register1, Hint.NUM, c);
-        Value p2 = Conversion.toPrimitive(v2, register2, Hint.NUM, c);
+    private static Value abstractRelationalComparison(Value v1, Value v2, Solver.SolverInterface c) {
+        Value p1 = Conversion.toPrimitive(v1, Hint.NUM, c);
+        Value p2 = Conversion.toPrimitive(v2, Hint.NUM, c);
         if (p1.isMaybeFuzzyStr() || p2.isMaybeFuzzyStr()
                 || p1.isMaybeAnyBool() || p2.isMaybeAnyBool()
                 || p1.isMaybeFuzzyNum() || p2.isMaybeFuzzyNum())
             return Value.makeAnyBool();  // may be undefined according to items 6 and 7, but changed to false in 11.8.1-4
         else if (p1.isNotStr() || p2.isNotStr()) {
             // at most one argument is a string: perform numeric comparison
-            return numericComparison(p1, register1, p2, register2, c);
+            return numericComparison(p1, p2, c);
         } else {
             // (at least) two defined string arguments: perform a string comparison
             Value r;
@@ -442,7 +442,7 @@ public class Operators {
             } else
                 r = Value.makeNone();
             if (p1.isMaybeOtherThanStr() || p2.isMaybeOtherThanStr())
-                r = r.join(numericComparison(p1, register1, p2, register2, c));
+                r = r.join(numericComparison(p1, p2, c));
             return r;
         }
     }
@@ -450,11 +450,11 @@ public class Operators {
     /**
      * Numeric comparison, used by abstractRelationalComparison.
      */
-    private static Value numericComparison(Value p1, int register1, Value p2, int register2, Solver.SolverInterface c) {
+    private static Value numericComparison(Value p1, Value p2, Solver.SolverInterface c) {
         if (p1.isNotPresent() || p2.isNotPresent())
             return Value.makeNone();
-        Value n1 = Conversion.toNumber(p1, register1, c);
-        Value n2 = Conversion.toNumber(p2, register2, c);
+        Value n1 = Conversion.toNumber(p1, c);
+        Value n2 = Conversion.toNumber(p2, c);
         if (n1.isMaybeSingleNum() && n2.isMaybeSingleNum())
             return Value.makeBool(n1.getNum() < n2.getNum());
         if (n1.isNaN() || n2.isNaN())
@@ -465,7 +465,7 @@ public class Operators {
     /**
      * 11.8.6 <code>instanceof</code>
      */
-    public static Value instof(State state, Value v1, Value v2, Solver.SolverInterface c) {
+    public static Value instof(Value v1, Value v2, Solver.SolverInterface c) {
         //  11.8.6 step 5-6
         boolean maybe_v2_non_function = v2.isMaybePrimitive();
         boolean maybe_v2_function = false;
@@ -476,38 +476,38 @@ public class Operators {
             else
                 maybe_v2_non_function = true;
         //  15.3.5.3 step 1-4
-        Value v2_prototype = state.readPropertyValue(v2_objlabels, "prototype");
-        v2_prototype = UnknownValueResolver.getRealValue(v2_prototype, state);
+        Value v2_prototype = c.getState().readPropertyValue(v2_objlabels, "prototype");
+        v2_prototype = UnknownValueResolver.getRealValue(v2_prototype, c.getState());
         boolean maybe_v2_prototype_primitive = v2_prototype.isMaybePrimitive();
         boolean maybe_v2_prototype_nonprimitive = v2_prototype.isMaybeObject();
-        c.getMonitoring().visitInstanceof(c.getCurrentNode(), maybe_v2_non_function, maybe_v2_function,
+        c.getMonitoring().visitInstanceof(c.getNode(), maybe_v2_non_function, maybe_v2_function,
                 maybe_v2_prototype_primitive, maybe_v2_prototype_nonprimitive);
         if (maybe_v2_non_function || maybe_v2_prototype_primitive) {
-            Exceptions.throwTypeError(state, c);
+            Exceptions.throwTypeError(c.getState(), c);
             if ((maybe_v2_non_function && !maybe_v2_function)
                     || (maybe_v2_prototype_nonprimitive && !maybe_v2_prototype_primitive))
                 return Value.makeNone();
         }
-        return state.hasInstance(v2_prototype.getObjectLabels(), v1);
+        return c.getState().hasInstance(v2_prototype.getObjectLabels(), v1);
     }
 
     /**
      * 11.8.7 <code>in</code>
      */
-    public static Value in(State state, Value v1, int register1, Value v2, Solver.SolverInterface c) {
+    public static Value in(Value v1, Value v2, Solver.SolverInterface c) {
         // 11.8.7 step 5
         boolean maybe_v2_object = v2.isMaybeObject();
         boolean maybe_v2_nonobject = v2.isMaybePrimitive();
-        c.getMonitoring().visitIn(c.getCurrentNode(), maybe_v2_object, maybe_v2_nonobject);
+        c.getMonitoring().visitIn(c.getNode(), maybe_v2_object, maybe_v2_nonobject);
         if (maybe_v2_nonobject) {
-            Exceptions.throwTypeError(state, c);
+            Exceptions.throwTypeError(c.getState(), c);
             if (!maybe_v2_object)
                 return Value.makeNone();
         }
         // 11.8.7 step 6-8
-        Value v1_str = Conversion.toString(v1, register1, c);
+        Value v1_str = Conversion.toString(v1, c);
         if (v1_str.isMaybeSingleStr())
-            return Value.makeBool(state.hasProperty(v2.getObjectLabels(), v1_str.getStr()));
+            return Value.makeBool(c.getState().hasProperty(v2.getObjectLabels(), v1_str.getStr()));
         else // TODO: could return false if all objects in v2 are empty
             return Value.makeAnyBool();
     }
@@ -515,21 +515,21 @@ public class Operators {
     /**
      * 11.9.1 <code>==</code>
      */
-    public static Value eq(Value v1, int register1, Value v2, int register2, Solver.SolverInterface c) {
-        return abstractEqualityComparison(v1, register1, v2, register2, c);
+    public static Value eq(Value v1, Value v2, Solver.SolverInterface c) {
+        return abstractEqualityComparison(v1, v2, c);
     }
 
     /**
      * 11.9.2 <code>&#33;=</code>
      */
-    public static Value neq(Value v1, int register1, Value v2, int register2, Solver.SolverInterface c) {
-        return not(abstractEqualityComparison(v1, register1, v2, register2, c), c);
+    public static Value neq(Value v1, Value v2, Solver.SolverInterface c) {
+        return not(abstractEqualityComparison(v1, v2, c), c);
     }
 
     /**
      * 11.9.3 The Abstract Equality Comparison Algorithm.
      */
-    private static Value abstractEqualityComparison(Value v1, int register1, Value v2, int register2, Solver.SolverInterface c) {
+    private static Value abstractEqualityComparison(Value v1, Value v2, Solver.SolverInterface c) {
         Value r = Value.makeNone();
         if (v1.isMaybeUndef()) {
             if (v2.isMaybeUndef())
@@ -580,7 +580,7 @@ public class Operators {
             }
             if (v2.isMaybeObject()) {
                 Num n1 = Conversion.fromBooltoNum(v1);
-                Num n2 = Conversion.toNumber(Conversion.toPrimitive(Value.makeObject(v2.getObjectLabels()), register2, Hint.NUM, c), register2, c);
+                Num n2 = Conversion.toNumber(weakToPrimitive(Value.makeObject(v2.getObjectLabels()), Hint.NUM, r, c), c);
                 r = abstractNumberEquality(r, n1, n2);
             }
         }
@@ -602,8 +602,8 @@ public class Operators {
             }
             if (v2.isMaybeObject()) {
                 Value arg1 = v1.restrictToNum();
-                Value arg2 = Conversion.toPrimitive(Value.makeObject(v2.getObjectLabels()), register2, Hint.NONE, c);
-                r = r.join(abstractEqualityComparison(arg1, register1, arg2, register2, c));
+                Value arg2 = weakToPrimitive(Value.makeObject(v2.getObjectLabels()), Hint.NONE, r, c);
+                r = r.join(abstractEqualityComparison(arg1, arg2, c));
             }
         }
         if (!v1.isNotStr()) {
@@ -633,8 +633,8 @@ public class Operators {
             }
             if (v2.isMaybeObject()) {
                 Value arg1 = v1.restrictToStr();
-                Value arg2 = Conversion.toPrimitive(Value.makeObject(v2.getObjectLabels()), register2, Hint.NONE, c);
-                r = r.join(abstractEqualityComparison(arg1, register1, arg2, register2, c));
+                Value arg2 = weakToPrimitive(Value.makeObject(v2.getObjectLabels()), Hint.NONE, r, c);
+                r = r.join(abstractEqualityComparison(arg1, arg2, c));
             }
         }
         if (v1.isMaybeObject()) {
@@ -642,25 +642,37 @@ public class Operators {
             if (v2.isMaybeNull()) r = r.joinBool(false);
             Value vv1 = Value.makeObject(v1.getObjectLabels());
             if (!v2.isNotBool()) {
-                Num n1 = Conversion.toNumber(Conversion.toPrimitive(vv1, register1, Hint.NUM, c), register1, c);
+                Num n1 = Conversion.toNumber(weakToPrimitive(vv1, Hint.NUM, r, c), c);
                 Num n2 = Conversion.fromBooltoNum(v2);
                 r = abstractNumberEquality(r, n1, n2);
             }
             if (!v2.isNotNum()) {
-                Value arg1 = Conversion.toPrimitive(vv1, register1, Hint.NONE, c);
+                Value arg1 = weakToPrimitive(vv1, Hint.NONE, r, c);
                 Value arg2 = v2.restrictToNum();
-                r = r.join(abstractEqualityComparison(arg1, register1, arg2, register2, c));
+                r = r.join(abstractEqualityComparison(arg1, arg2, c));
             }
             if (!v2.isNotStr()) {
-                Value arg1 = Conversion.toPrimitive(vv1, register1, Hint.NONE, c);
+                Value arg1 = weakToPrimitive(vv1, Hint.NONE, r, c);
                 Value arg2 = v2.restrictToStr();
-                r = r.join(abstractEqualityComparison(arg1, register1, arg2, register2, c));
+                r = r.join(abstractEqualityComparison(arg1, arg2, c));
             }
             if (v2.isMaybeObject()) {
                 r = eqObject(r, v1.getObjectLabels(), v2.getObjectLabels());
             }
         }
         return r;
+    }
+
+    private static Value weakToPrimitive(Value v, Hint hint, Value r, Solver.SolverInterface c) {
+        State s = c.getState();
+        if (!r.isNone()) {
+            c.setState(s.clone());
+        }
+        v = Conversion.toPrimitive(v, hint, c);
+        if (!r.isNone()) {
+            c.getState().propagate(s, false); // weak update of side-effects of toPrimitive, but only if we already have a partial result
+        }
+        return v;
     }
 
     /**
@@ -682,7 +694,7 @@ public class Operators {
      * Part of 11.9.3 The Abstract Equality Comparison Algorithm and 11.9.6 The Strict Equality Comparison Algorithm.
      */
     private static Value abstractNumberEquality(Value r, Num n1, Num n2) {
-        if (r.isMaybeAnyBool())
+        if (r.isMaybeAnyBool() || n1.isNotNum() || n2.isNotNum())
             return r;
         if (n1.isMaybeNaN() || n2.isMaybeNaN()) {
             r = r.joinBool(false);
@@ -824,9 +836,9 @@ public class Operators {
     /**
      * 11.10 Binary Bitwise Operators
      */
-    private static Value bitwise(BitwiseOp op, Value arg1, int register1, Value arg2, int register2, Solver.SolverInterface c) {
-        arg1 = Conversion.toNumber(arg1, register1, c);
-        arg2 = Conversion.toNumber(arg2, register2, c);
+    private static Value bitwise(BitwiseOp op, Value arg1, Value arg2, Solver.SolverInterface c) {
+        arg1 = Conversion.toNumber(arg1, c);
+        arg2 = Conversion.toNumber(arg2, c);
         if (arg1.isNotPresent() || arg2.isNotPresent())
             return Value.makeNone();
         else if (arg1.isMaybeSingleNum() && arg2.isMaybeSingleNum()) {
@@ -852,22 +864,22 @@ public class Operators {
     /**
      * 11.10<code>&amp;</code>
      */
-    public static Value and(Value arg1, int register1, Value arg2, int register2, Solver.SolverInterface c) {
-        return bitwise(BitwiseOp.AND, arg1, register1, arg2, register2, c);
+    public static Value and(Value arg1, Value arg2, Solver.SolverInterface c) {
+        return bitwise(BitwiseOp.AND, arg1, arg2, c);
     }
 
     /**
      * 11.10 <code>|</code>
      */
-    public static Value or(Value arg1, int register1, Value arg2, int register2, Solver.SolverInterface c) {
-        return bitwise(BitwiseOp.OR, arg1, register1, arg2, register2, c);
+    public static Value or(Value arg1, Value arg2, Solver.SolverInterface c) {
+        return bitwise(BitwiseOp.OR, arg1, arg2, c);
     }
 
     /**
      * 11.10 <code>^</code>
      */
-    public static Value xor(Value arg1, int register1, Value arg2, int register2, Solver.SolverInterface c) {
-        return bitwise(BitwiseOp.XOR, arg1, register1, arg2, register2, c);
+    public static Value xor(Value arg1, Value arg2, Solver.SolverInterface c) {
+        return bitwise(BitwiseOp.XOR, arg1, arg2, c);
     }
 
     private enum NumericOp {ADD, SUB, MUL, DIV, MOD}

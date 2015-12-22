@@ -102,7 +102,7 @@ public class JSRegExp { // TODO see https://dev.opera.com/articles/javascript-fo
                         arg = arg.joinObject(ol);
                 if (ctor && !flags.isMaybeUndef() && !result.getObjectLabels().isEmpty()) {
                     // TODO: Throw a TypeError exception as per 15.10.4.1 if we are certain?
-                    c.getMonitoring().addMessage(c.getCurrentNode(), Severity.HIGH, "TypeError, internal RegExp property with flags not undefined");
+                    c.getMonitoring().addMessage(c.getNode(), Severity.HIGH, "TypeError, internal RegExp property with flags not undefined");
                 }
                 if (!arg.isNotPresent()) {
                     ObjectLabel no = new ObjectLabel(call.getSourceNode(), Kind.REGEXP);
@@ -186,7 +186,7 @@ public class JSRegExp { // TODO see https://dev.opera.com/articles/javascript-fo
                 strflags = strflags.replaceFirst("g", "").replaceFirst("i", "").replaceFirst("m", "");
                 if ((!strflags.isEmpty())) {
                     Exceptions.throwSyntaxError(state, c);
-                    c.getMonitoring().addMessage(c.getCurrentNode(), Severity.HIGH, "SyntaxError, invalid flags at RegExp constructor");
+                    c.getMonitoring().addMessage(c.getNode(), Severity.HIGH, "SyntaxError, invalid flags at RegExp constructor");
                     return true;
                 }
             } else {

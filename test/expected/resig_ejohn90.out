@@ -3,7 +3,7 @@ test/resig/ejohn90.js:30:12: [maybe] TypeError, accessing property of null/undef
 test/resig/ejohn90.js:47:14: [maybe] TypeError, accessing property of null/undefined
 test/resig/ejohn90.js:48:14: [maybe] TypeError, accessing property of null/undefined
 test/resig/ejohn90.js:49:14: [maybe] TypeError, accessing property of null/undefined
-test/resig/ejohn90.js:1:1: [maybe] Uncaught exception, constructed at [test/resig/ejohn90.js:18:14, test/resig/ejohn90.js:30:12, test/resig/ejohn90.js:47:14, test/resig/ejohn90.js:48:14, test/resig/ejohn90.js:49:14]
+test/resig/ejohn90.js: [maybe] Uncaught exception, constructed at [test/resig/ejohn90.js:18:14, test/resig/ejohn90.js:30:12, test/resig/ejohn90.js:47:14, test/resig/ejohn90.js:48:14, test/resig/ejohn90.js:49:14]
 test/resig/ejohn90.js:6:13: [maybe] Reading absent property (computed name)
 test/resig/ejohn90.js:30:12: [maybe] Conversion to number yields NaN
 test/resig/ejohn90.js:30:12: [maybe] Converting object to string

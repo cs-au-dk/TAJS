@@ -4,4 +4,4 @@ test/micro/test104.js:15:5: [definite] The variable ta is never used
 test/micro/test104.js:16:5: [definite] The variable tb is never used
 test/micro/test104.js:17:5: [definite] The variable tc is never used
 test/micro/test104.js:17:10: [definite] Unreachable code
-test/micro/test104.js:1:1: [maybe] Uncaught exception, constructed at [test/micro/test104.js:12:24]
+test/micro/test104.js: [maybe] Uncaught exception, constructed at [test/micro/test104.js:12:24]

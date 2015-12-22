@@ -1,0 +1,114 @@
+test/1k2013spring/1319.js:118:17: [definite] The assignment to i has no effect
+test/1k2013spring/1319.js:138:13: [definite] The assignment to i has no effect
+test/1k2013spring/1319.js:158:4: [definite] The assignment to i has no effect
+test/1k2013spring/1319.js:86:9: [definite] Too few parameters to function CanvasRenderingContext2D.prototype.arc
+test/1k2013spring/1319.js:92:9: [definite] Too few parameters to function CanvasRenderingContext2D.prototype.arc
+test/1k2013spring/1319.js:163:13: [definite] Too few parameters to function CanvasRenderingContext2D.prototype.arc
+test/1k2013spring/1319.js:21:5: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1319.js:52:29: [maybe] ReferenceError, reading absent variable m
+test/1k2013spring/1319.js:52:32: [maybe] ReferenceError, reading absent variable terrainm
+test/1k2013spring/1319.js:76:40: [maybe] ReferenceError, reading absent variable exply
+test/1k2013spring/1319.js:106:17: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1319.js:119:33: [maybe] TypeError, inf or NaN as arguments to CanvasRenderingContext2D.putImageData
+test/1k2013spring/1319.js:135:24: [maybe] ReferenceError, reading absent variable bulletsx
+test/1k2013spring/1319.js:136:13: [maybe] ReferenceError, reading absent variable bullety
+test/1k2013spring/1319.js:136:24: [maybe] ReferenceError, reading absent variable bulletsy
+test/1k2013spring/1319.js:137:13: [maybe] ReferenceError, reading absent variable bulletsy
+test/1k2013spring/1319.js:148:17: [maybe] TypeError, inf or NaN as arguments to CanvasRenderingContext2D.putImageData
+test/1k2013spring/1319.js:159:20: [maybe] TypeError, inf or NaN as arguments to CanvasRenderingContext2D.putImageData
+test/1k2013spring/1319.js:163:26: [maybe] ReferenceError, reading absent variable exply
+test/1k2013spring/shim.js:8:9: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/shim.js:8:9: [maybe] TypeError, call to non-function
+test/1k2013spring/shim.js:9:1: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/shim.js:6:9: [maybe] Reading absent property body
+test/1k2013spring/shim.js:8:9: [maybe] Reading absent property getContext
+test/1k2013spring/shim.js:9:1: [maybe] Reading absent property body
+test/1k2013spring/1319.js:32:21: [maybe] Reading absent property (computed name)
+test/1k2013spring/1319.js:76:17: [maybe] Conversion from string to number yields NaN
+test/1k2013spring/1319.js:76:17: [maybe] Conversion to number yields NaN
+test/1k2013spring/1319.js:76:17: [maybe] The variable x has values with different types
+test/1k2013spring/1319.js:76:19: [maybe] The variable explx has values with different types
+test/1k2013spring/1319.js:76:38: [maybe] Conversion from string to number yields NaN
+test/1k2013spring/1319.js:76:38: [maybe] Conversion to number yields NaN
+test/1k2013spring/1319.js:76:38: [maybe] The variable y has values with different types
+test/1k2013spring/1319.js:76:40: [maybe] The variable exply has values with different types
+test/1k2013spring/1319.js:78:25: [maybe] The variable f has values with different types
+test/1k2013spring/1319.js:79:13: [maybe] Conversion from string to number yields NaN
+test/1k2013spring/1319.js:79:13: [maybe] Conversion to number yields NaN
+test/1k2013spring/1319.js:79:37: [maybe] The variable x has values with different types
+test/1k2013spring/1319.js:79:40: [maybe] Conversion from string to number yields NaN
+test/1k2013spring/1319.js:79:40: [maybe] Conversion to number yields NaN
+test/1k2013spring/1319.js:79:40: [maybe] The variable y has values with different types
+test/1k2013spring/1319.js:86:9: [maybe] Conversion from string to number yields NaN
+test/1k2013spring/1319.js:86:9: [maybe] Conversion to number yields NaN
+test/1k2013spring/1319.js:86:15: [maybe] The variable x has values with different types
+test/1k2013spring/1319.js:86:18: [maybe] The variable y has values with different types
+test/1k2013spring/1319.js:91:39: [maybe] The variable f has values with different types
+test/1k2013spring/1319.js:92:9: [maybe] Conversion from string to number yields NaN
+test/1k2013spring/1319.js:92:9: [maybe] Conversion to number yields NaN
+test/1k2013spring/1319.js:92:15: [maybe] The variable x has values with different types
+test/1k2013spring/1319.js:92:18: [maybe] The variable y has values with different types
+test/1k2013spring/1319.js:94:9: [maybe] Conversion from string to number yields NaN
+test/1k2013spring/1319.js:94:9: [maybe] Conversion to number yields NaN
+test/1k2013spring/1319.js:94:18: [maybe] The variable x has values with different types
+test/1k2013spring/1319.js:94:20: [maybe] The variable y has values with different types
+test/1k2013spring/1319.js:95:9: [maybe] Conversion from string to number yields NaN
+test/1k2013spring/1319.js:95:18: [maybe] Conversion to number yields NaN
+test/1k2013spring/1319.js:95:18: [maybe] The variable x has values with different types
+test/1k2013spring/1319.js:95:22: [maybe] Conversion from string to number yields NaN
+test/1k2013spring/1319.js:95:22: [maybe] Conversion to number yields NaN
+test/1k2013spring/1319.js:95:26: [maybe] The variable d has values with different types
+test/1k2013spring/1319.js:95:35: [maybe] Conversion from string to number yields NaN
+test/1k2013spring/1319.js:95:35: [maybe] Conversion to number yields NaN
+test/1k2013spring/1319.js:95:35: [maybe] The variable y has values with different types
+test/1k2013spring/1319.js:95:39: [maybe] Conversion from string to number yields NaN
+test/1k2013spring/1319.js:95:39: [maybe] Conversion to number yields NaN
+test/1k2013spring/1319.js:95:43: [maybe] The variable d has values with different types
+test/1k2013spring/1319.js:108:27: [maybe] Conversion to number yields NaN
+test/1k2013spring/1319.js:108:27: [maybe] Reading absent property (computed name)
+test/1k2013spring/1319.js:110:32: [maybe] Conversion from string to number yields NaN
+test/1k2013spring/1319.js:110:32: [maybe] Conversion to number yields NaN
+test/1k2013spring/1319.js:110:36: [maybe] Reading absent property (computed name)
+test/1k2013spring/1319.js:112:27: [maybe] Conversion to number yields NaN
+test/1k2013spring/1319.js:112:27: [maybe] Reading absent property (computed name)
+test/1k2013spring/1319.js:113:33: [maybe] Conversion from string to number yields NaN
+test/1k2013spring/1319.js:113:33: [maybe] Conversion to number yields NaN
+test/1k2013spring/1319.js:113:37: [maybe] Reading absent property (computed name)
+test/1k2013spring/1319.js:119:33: [maybe] Conversion from string to number yields NaN
+test/1k2013spring/1319.js:119:33: [maybe] Conversion to number yields NaN
+test/1k2013spring/1319.js:119:33: [maybe] Converting object to number
+test/1k2013spring/1319.js:119:52: [maybe] Conversion from string to number yields NaN
+test/1k2013spring/1319.js:119:56: [maybe] Reading absent property (computed name)
+test/1k2013spring/1319.js:125:18: [maybe] Conversion to number yields NaN
+test/1k2013spring/1319.js:125:18: [maybe] Reading absent property (computed name)
+test/1k2013spring/1319.js:134:13: [maybe] The variable bulletx has values with different types
+test/1k2013spring/1319.js:135:13: [maybe] The variable bulletx has values with different types
+test/1k2013spring/1319.js:136:13: [maybe] The variable bullety has values with different types
+test/1k2013spring/1319.js:138:17: [maybe] Conversion from string to number yields NaN
+test/1k2013spring/1319.js:138:32: [maybe] The variable bulletx has values with different types
+test/1k2013spring/1319.js:138:41: [maybe] The variable bullety has values with different types
+test/1k2013spring/1319.js:139:17: [maybe] Reading absent property (computed name)
+test/1k2013spring/1319.js:139:33: [maybe] Reading absent property (computed name)
+test/1k2013spring/1319.js:140:25: [maybe] The variable bulletx has values with different types
+test/1k2013spring/1319.js:141:25: [maybe] The variable bullety has values with different types
+test/1k2013spring/1319.js:148:17: [maybe] Conversion from string to number yields NaN
+test/1k2013spring/1319.js:148:35: [maybe] The variable bulletx has values with different types
+test/1k2013spring/1319.js:148:50: [maybe] The variable bulletx has values with different types
+test/1k2013spring/1319.js:148:60: [maybe] Conversion from string to number yields NaN
+test/1k2013spring/1319.js:148:61: [maybe] The variable bullety has values with different types
+test/1k2013spring/1319.js:155:13: [maybe] The variable explx has values with different types
+test/1k2013spring/1319.js:159:20: [maybe] Conversion from string to number yields NaN
+test/1k2013spring/1319.js:159:20: [maybe] Conversion to number yields NaN
+test/1k2013spring/1319.js:159:20: [maybe] Converting object to number
+test/1k2013spring/1319.js:159:39: [maybe] Conversion from string to number yields NaN
+test/1k2013spring/1319.js:159:43: [maybe] Reading absent property (computed name)
+test/1k2013spring/1319.js:163:13: [maybe] Conversion from string to number yields NaN
+test/1k2013spring/1319.js:163:19: [maybe] The variable explx has values with different types
+test/1k2013spring/1319.js:163:26: [maybe] The variable exply has values with different types
+test/1k2013spring/shim.js:7:9: [maybe] Reading absent property (computed name)
+test/1k2013spring/shim.js,test/1k2013spring/1319.js: [maybe] Uncaught exception, constructed at [test/1k2013spring/1319.js:21:5, test/1k2013spring/1319.js:52:29, test/1k2013spring/1319.js:52:32, test/1k2013spring/1319.js:76:40, test/1k2013spring/1319.js:106:17, test/1k2013spring/1319.js:135:24, test/1k2013spring/1319.js:136:13, test/1k2013spring/1319.js:136:24, test/1k2013spring/1319.js:137:13, test/1k2013spring/1319.js:163:26, test/1k2013spring/shim.js:8:9, test/1k2013spring/shim.js:9:1]
+test/1k2013spring/1319.js:148:44: [info] Writing to unknown property that may cause loss of precision
+test/1k2013spring/1319.js:119:17: [info] Reading from unknown property that may cause loss of precision
+test/1k2013spring/1319.js:119:56: [info] Reading from unknown property that may cause loss of precision
+test/1k2013spring/1319.js:159:4: [info] Reading from unknown property that may cause loss of precision
+test/1k2013spring/1319.js:159:43: [info] Reading from unknown property that may cause loss of precision

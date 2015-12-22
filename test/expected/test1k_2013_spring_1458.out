@@ -1,0 +1,61 @@
+test/1k2013spring/1458.js:84:7: [definite] The conditional expression is always false
+test/1k2013spring/1458.js:88:7: [definite] The conditional expression is always false
+test/1k2013spring/1458.js:89:3: [definite] The assignment to R has no effect
+test/1k2013spring/1458.js:89:7: [definite] The conditional expression is always true
+test/1k2013spring/1458.js:116:33: [definite] The conditional expression is always false
+test/1k2013spring/1458.js:185:5: [definite] The conditional expression is always false
+test/1k2013spring/1458.js:84:12: [definite] Reading absent property which
+test/1k2013spring/1458.js:88:7: [definite] Reading absent property which
+test/1k2013spring/1458.js:89:13: [definite] Reading absent property which
+test/1k2013spring/1458.js:89:31: [definite] Reading absent property which
+test/1k2013spring/1458.js:120:5: [definite] Too few parameters to function CanvasRenderingContext2D.prototype.arc
+test/1k2013spring/1458.js:64:1: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1458.js:64:14: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1458.js:64:27: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1458.js:69:3: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1458.js:70:3: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1458.js:76:3: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1458.js:77:3: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1458.js:83:1: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1458.js:105:7: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1458.js:105:26: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1458.js:120:11: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1458.js:130:16: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1458.js:145:7: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1458.js:156:15: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1458.js:191:9: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1458.js:192:9: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/shim.js:8:9: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/shim.js:8:9: [maybe] TypeError, call to non-function
+test/1k2013spring/shim.js:9:1: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1458.js:201:16: [maybe] Reading absent property width
+test/1k2013spring/1458.js:202:16: [maybe] Reading absent property height
+test/1k2013spring/shim.js:6:9: [maybe] Reading absent property body
+test/1k2013spring/shim.js:8:9: [maybe] Reading absent property getContext
+test/1k2013spring/shim.js:9:1: [maybe] Reading absent property body
+test/1k2013spring/1458.js:64:1: [maybe] Reading absent property (computed name)
+test/1k2013spring/1458.js:64:14: [maybe] Reading absent property (computed name)
+test/1k2013spring/1458.js:64:27: [maybe] Reading absent property (computed name)
+test/1k2013spring/1458.js:69:3: [maybe] Reading absent property (computed name)
+test/1k2013spring/1458.js:70:3: [maybe] Reading absent property (computed name)
+test/1k2013spring/1458.js:76:3: [maybe] Reading absent property (computed name)
+test/1k2013spring/1458.js:77:3: [maybe] Reading absent property (computed name)
+test/1k2013spring/1458.js:84:7: [maybe] The variable S has values with different types
+test/1k2013spring/1458.js:88:27: [maybe] The variable S has values with different types
+test/1k2013spring/1458.js:102:9: [maybe] Reading absent property (computed name)
+test/1k2013spring/1458.js:116:33: [maybe] The variable S has values with different types
+test/1k2013spring/1458.js:126:11: [maybe] Reading absent property (computed name)
+test/1k2013spring/1458.js:144:11: [maybe] Reading absent property (computed name)
+test/1k2013spring/1458.js:152:18: [maybe] The variable S has values with different types
+test/1k2013spring/1458.js:152:23: [maybe] Reading absent property (computed name)
+test/1k2013spring/1458.js:155:15: [maybe] Reading absent property (computed name)
+test/1k2013spring/1458.js:161:18: [maybe] Reading absent property (computed name)
+test/1k2013spring/1458.js:185:9: [maybe] The variable S has values with different types
+test/1k2013spring/1458.js:191:9: [maybe] Reading absent property (computed name)
+test/1k2013spring/1458.js:192:9: [maybe] Reading absent property (computed name)
+test/1k2013spring/1458.js:201:8: [maybe] Conversion from string to number yields NaN
+test/1k2013spring/1458.js:201:8: [maybe] Conversion to number yields NaN
+test/1k2013spring/1458.js:202:8: [maybe] Conversion from string to number yields NaN
+test/1k2013spring/1458.js:202:8: [maybe] Conversion to number yields NaN
+test/1k2013spring/shim.js:7:9: [maybe] Reading absent property (computed name)
+test/1k2013spring/shim.js,test/1k2013spring/1458.js: [maybe] Uncaught exception, constructed at [test/1k2013spring/1458.js:64:1, test/1k2013spring/1458.js:64:14, test/1k2013spring/1458.js:64:27, test/1k2013spring/1458.js:69:3, test/1k2013spring/1458.js:70:3, test/1k2013spring/1458.js:76:3, test/1k2013spring/1458.js:77:3, test/1k2013spring/1458.js:83:1, test/1k2013spring/1458.js:105:7, test/1k2013spring/1458.js:105:26, test/1k2013spring/1458.js:120:11, test/1k2013spring/1458.js:130:16, test/1k2013spring/1458.js:145:7, test/1k2013spring/1458.js:156:15, test/1k2013spring/1458.js:191:9, test/1k2013spring/1458.js:192:9, test/1k2013spring/shim.js:8:9, test/1k2013spring/shim.js:9:1]

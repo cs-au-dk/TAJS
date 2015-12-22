@@ -8,4 +8,4 @@
 // testtoint322.js:2: [info] Abstract value: UInt
 
 // Should be 0.
-TAJS_dumpValue(NaN | 0);
+TAJS_assert((NaN | 0) === 0);

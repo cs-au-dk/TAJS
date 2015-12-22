@@ -30,7 +30,6 @@ import dk.brics.tajs.flowgraph.AbstractNode;
 import dk.brics.tajs.flowgraph.FlowGraph;
 import dk.brics.tajs.flowgraph.FlowGraphFragment;
 import dk.brics.tajs.flowgraph.jsnodes.CallNode;
-import dk.brics.tajs.flowgraph.jsnodes.Node;
 import dk.brics.tajs.js2flowgraph.FlowGraphMutator;
 import dk.brics.tajs.lattice.Context;
 import dk.brics.tajs.lattice.ExecutionContext;
@@ -85,60 +84,63 @@ public class JSFunction {
                         return UnevalizerLimitations.handle("Unable to handle unknown args to Function", call.getSourceNode(), c);
                     }
 
-                    CallNode callNode = (CallNode) call.getSourceNode();
+                    if (call.getSourceNode() instanceof CallNode) {
+                        CallNode callNode = (CallNode) call.getSourceNode();
 
-                    int nrArgs = call.getNumberOfArgs();
+                        int nrArgs = call.getNumberOfArgs();
 
-                    String stringArgs = "";
-                    if (nrArgs > 1) { // if only one arg: no parameters!
-                        for (int i = 0; i < nrArgs - 1; i++) {
-                            if (!stringArgs.isEmpty()) {
-                                stringArgs += ",";
+                        String stringArgs = "";
+                        if (nrArgs > 1) { // if only one arg: no parameters!
+                            for (int i = 0; i < nrArgs - 1; i++) {
+                                if (!stringArgs.isEmpty()) {
+                                    stringArgs += ",";
+                                }
+                                Value v = Conversion.toString(call.getArg(i), c);
+                                if (v.getStr() == null)
+                                    return UnevalizerLimitations.handle("Unable to handle unknown arguments to Function", call.getSourceNode(), c);
+                                stringArgs += v.getStr();
                             }
-                            Value v = Conversion.toString(call.getArg(i), c);
-                            if (v.getStr() == null)
-                                return UnevalizerLimitations.handle("Unable to handle unknown arguments to Function", call.getSourceNode(), c); // FIXME: uneval, unknown arguments
-                            stringArgs += v.getStr();
                         }
-                    }
 
-                    final Value vBody;
-                    if (nrArgs > 0) {
-                        vBody = Conversion.toString(call.getArg(nrArgs - 1), c);
-                    } else {
-                        vBody = Value.makeStr("");
-                    }
+                        final Value vBody;
+                        if (nrArgs > 0) {
+                            vBody = Conversion.toString(call.getArg(nrArgs - 1), c);
+                        } else {
+                            vBody = Value.makeStr("");
+                        }
 
-                    String body = Strings.escapeSource(vBody.getStr());
-                    if (body == null)
-                        return UnevalizerLimitations.handle("Unable to handle non-constant code in Function", call.getSourceNode(), c); // FIXME: uneval, unknown arguments
+                        String body = Strings.escapeSource(vBody.getStr());
+                        if (body == null)
+                            return UnevalizerLimitations.handle("Unable to handle non-constant code in Function", call.getSourceNode(), c);
 
-                    String var = callNode.getResultRegister() == AbstractNode.NO_VALUE ? null : UnevalTools.gensym();
-                    String complete_function = (var == null ? "\"" : "\"" + var + " = ") + "(function (" + stringArgs + ") {" + body + "})\"";
-                    if (nrArgs == 0) {
-                        // UnevalTools.rebuildNormalForm will crash due to missing argument-register ...
-                        return UnevalizerLimitations.handle("Unevalizer can not handle `new Function()`", call.getSourceNode(), c); // See GitHub #147
-                    }
+                        String var = call.getResultRegister() == AbstractNode.NO_VALUE ? null : UnevalTools.gensym();
+                        String complete_function = (var == null ? "\"" : "\"" + var + " = ") + "(function (" + stringArgs + ") {" + body + "})\"";
+                        if (nrArgs == 0) {
+                            // UnevalTools.rebuildNormalForm will crash due to missing argument-register ...
+                            return UnevalizerLimitations.handle("Unevalizer can not handle `new Function()`", call.getSourceNode(), c); // See GitHub #147
+                        }
                     NormalForm input = UnevalTools.rebuildNormalForm(currentFg, callNode, state, c);
-                    String unevaled = new Unevalizer().uneval(UnevalTools.unevalizerCallback(currentFg, state, callNode, input), complete_function, false, null);
-                    String unevaledSubst = var == null ? unevaled : unevaled.replace(var, UnevalTools.VAR_PLACEHOLDER); // to avoid the random string in the cache
+                        String unevaled = new Unevalizer().uneval(UnevalTools.unevalizerCallback(currentFg, state, callNode, input), complete_function, false, null);
+                        String unevaledSubst = var == null ? unevaled : unevaled.replace(var, UnevalTools.VAR_PLACEHOLDER); // to avoid the random string in the cache
 
-                    if (unevaled == null)
-                        return UnevalizerLimitations.handle("Unevalable eval: " + UnevalTools.rebuildFullExpression(currentFg, callNode, callNode.getArgRegister(0)), call.getSourceNode(), c);
-                    if (log.isDebugEnabled())
-                        log.debug("Unevalized: " + unevaled);
+                        if (unevaled == null)
+                            return UnevalizerLimitations.handle("Unevalable eval: " + UnevalTools.rebuildFullExpression(currentFg, callNode, callNode.getArgRegister(0)), call.getSourceNode(), c);
+                        if (log.isDebugEnabled())
+                            log.debug("Unevalized: " + unevaled);
 
-                    EvalCache evalCache = c.getAnalysis().getEvalCache();
-                    NodeAndContext<Context> cc = new NodeAndContext<>(callNode, state.getContext());
-                    FlowGraphFragment e = evalCache.getCode(cc);
+                        EvalCache evalCache = c.getAnalysis().getEvalCache();
+                        NodeAndContext<Context> cc = new NodeAndContext<>(call.getSourceNode(), state.getContext());
+                        FlowGraphFragment e = evalCache.getCode(cc);
 
-                    if (e == null || !e.getKey().equals(unevaledSubst)) {
+                        if (e == null || !e.getKey().equals(unevaledSubst)) {
                         e = FlowGraphMutator.extendFlowGraph(currentFg, unevaled, unevaledSubst, e, callNode, false, var);
-                    }
+                        }
 
-                    evalCache.setCode(cc, e);
-                    c.propagateToBasicBlock(state.clone(), e.getEntryBlock(), state.getContext());
-                    return Value.makeNone();
+                        evalCache.setCode(cc, e);
+                        c.propagateToBasicBlock(state.clone(), e.getEntryBlock(), state.getContext());
+                        return Value.makeNone();
+                    } else
+                        throw new AnalysisException("Invoking Function from non-CallNode - unevalizer can't handle that"); // TODO: generalize unevalizer to handle calls from EventDispatcherNode and implicit calls?
                 }
                 throw new AnalysisException("Don't know how to handle call to 'Function' - unevalizer isn't enabled");
             }
@@ -185,7 +187,7 @@ public class JSFunction {
                         maybe_typeerror = true;
                 if (maybe_typeerror) {
                     Exceptions.throwTypeError(state, c);
-                    c.getMonitoring().addMessage(c.getCurrentNode(),
+                    c.getMonitoring().addMessage(c.getNode(),
                             Severity.HIGH, "TypeError, invalid arguments to 'apply'");
                 }
                 if (!maybe_ok)
@@ -200,7 +202,7 @@ public class JSFunction {
                     }
 
                     @Override
-                    public Node getJSSourceNode() {
+                    public AbstractNode getJSSourceNode() {
                         return call.getJSSourceNode();
                     }
 
@@ -259,7 +261,7 @@ public class JSFunction {
                     public ExecutionContext getExecutionContext() {
                         return call.getExecutionContext();
                     }
-                }, state, c);
+                }, c);
                 return Value.makeNone();
             }
 
@@ -273,7 +275,7 @@ public class JSFunction {
                     }
 
                     @Override
-                    public Node getJSSourceNode() {
+                    public AbstractNode getJSSourceNode() {
                         return call.getJSSourceNode();
                     }
 
@@ -322,7 +324,7 @@ public class JSFunction {
                     public ExecutionContext getExecutionContext() {
                         return call.getExecutionContext();
                     }
-                }, state, c);
+                }, c);
                 return Value.makeNone(); // no direct flow to the successor
             }
 
@@ -336,7 +338,10 @@ public class JSFunction {
         // 15.3.4.3/4
         boolean maybe_null_or_undef = thisval.isMaybeNull() || thisval.isMaybeUndef();
         thisval = thisval.restrictToNotNullNotUndef();
-        Set<ObjectLabel> this_objs = newSet(Conversion.toObjectLabels(callee_state, call.getSourceNode(), thisval, c)); // TODO: disable messages? (but not side-effects!)
+        State ts = c.getState();
+        c.setState(callee_state);
+        Set<ObjectLabel> this_objs = newSet(Conversion.toObjectLabels(call.getSourceNode(), thisval, c)); // TODO: disable messages? (but not side-effects!)
+        c.setState(ts);
         if (maybe_null_or_undef)
             this_objs.add(InitialStateBuilder.GLOBAL);
         return this_objs;

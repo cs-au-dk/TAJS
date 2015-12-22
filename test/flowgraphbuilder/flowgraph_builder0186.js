@@ -1,4 +1,7 @@
-var obj = {valueOf : function () { return true}}; 
+var obj = {
+    valueOf: function () {
+        return false
+    }
+};
 
-TAJS_dumpValue(obj == false);
-TAJS_dumpValue(obj == true);
+TAJS_assert(obj == false);

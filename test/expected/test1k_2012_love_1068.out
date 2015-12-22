@@ -1,0 +1,35 @@
+test/1k2012love/1068.js:13:52: [definite] Dead assignment, property z is never read
+test/1k2012love/shim.js:6:5: [definite] The variable b is never used
+test/1k2012love/1068.js:50:10: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1068.js:50:17: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1068.js:50:41: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1068.js:51:8: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1068.js:51:17: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1068.js:51:43: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1068.js:52:8: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1068.js:52:17: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1068.js:52:44: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1068.js:53:8: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1068.js:53:15: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1068.js:53:39: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/shim.js:8:9: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/shim.js:8:9: [maybe] TypeError, call to non-function
+test/1k2012love/shim.js:9:1: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/shim.js:6:9: [maybe] Reading absent property body
+test/1k2012love/shim.js:8:9: [maybe] Reading absent property getContext
+test/1k2012love/shim.js:9:1: [maybe] Reading absent property body
+test/1k2012love/1068.js:47:6: [maybe] Reading absent property (computed name)
+test/1k2012love/1068.js:50:10: [maybe] Reading absent property (computed name)
+test/1k2012love/1068.js:50:17: [maybe] Reading absent property (computed name)
+test/1k2012love/1068.js:50:41: [maybe] Reading absent property (computed name)
+test/1k2012love/1068.js:51:8: [maybe] Reading absent property (computed name)
+test/1k2012love/1068.js:51:17: [maybe] Reading absent property (computed name)
+test/1k2012love/1068.js:51:43: [maybe] Reading absent property (computed name)
+test/1k2012love/1068.js:52:8: [maybe] Reading absent property (computed name)
+test/1k2012love/1068.js:52:17: [maybe] Reading absent property (computed name)
+test/1k2012love/1068.js:52:44: [maybe] Reading absent property (computed name)
+test/1k2012love/1068.js:53:8: [maybe] Reading absent property (computed name)
+test/1k2012love/1068.js:53:15: [maybe] Reading absent property (computed name)
+test/1k2012love/1068.js:53:39: [maybe] Reading absent property (computed name)
+test/1k2012love/shim.js:7:9: [maybe] Reading absent property (computed name)
+test/1k2012love/shim.js,test/1k2012love/1068.js: [maybe] Uncaught exception, constructed at [test/1k2012love/1068.js:50:10, test/1k2012love/1068.js:50:17, test/1k2012love/1068.js:50:41, test/1k2012love/1068.js:51:8, test/1k2012love/1068.js:51:17, test/1k2012love/1068.js:51:43, test/1k2012love/1068.js:52:8, test/1k2012love/1068.js:52:17, test/1k2012love/1068.js:52:44, test/1k2012love/1068.js:53:8, test/1k2012love/1068.js:53:15, test/1k2012love/1068.js:53:39, test/1k2012love/shim.js:8:9, test/1k2012love/shim.js:9:1]

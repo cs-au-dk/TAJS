@@ -1,0 +1,28 @@
+test/1k2012love/1154.js:27:7: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1154.js:32:7: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1154.js:68:17: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1154.js:91:19: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/shim.js:8:9: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/shim.js:8:9: [maybe] TypeError, call to non-function
+test/1k2012love/shim.js:9:1: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/shim.js:6:9: [maybe] Reading absent property body
+test/1k2012love/shim.js:8:9: [maybe] Reading absent property getContext
+test/1k2012love/shim.js:9:1: [maybe] Reading absent property body
+test/1k2012love/1154.js:32:7: [maybe] Reading absent property (computed name)
+test/1k2012love/1154.js:41:24: [maybe] Reading absent property (computed name)
+test/1k2012love/1154.js:53:25: [maybe] Conversion to number yields NaN
+test/1k2012love/1154.js:53:30: [maybe] Reading absent property (computed name)
+test/1k2012love/1154.js:57:25: [maybe] Conversion to number yields NaN
+test/1k2012love/1154.js:57:33: [maybe] Reading absent property (computed name)
+test/1k2012love/1154.js:68:17: [maybe] Reading absent property (computed name)
+test/1k2012love/1154.js:91:19: [maybe] Reading absent property (computed name)
+test/1k2012love/1154.js:91:24: [maybe] Converting undefined to string
+test/1k2012love/1154.js:91:24: [maybe] Reading absent property (computed name)
+test/1k2012love/1154.js:103:33: [maybe] Reading absent property (computed name)
+test/1k2012love/1154.js:112:29: [maybe] Conversion to number yields NaN
+test/1k2012love/1154.js:113:29: [maybe] Conversion to number yields NaN
+test/1k2012love/1154.js:114:35: [maybe] Conversion to number yields NaN
+test/1k2012love/1154.js:115:35: [maybe] Conversion to number yields NaN
+test/1k2012love/shim.js:7:9: [maybe] Reading absent property (computed name)
+test/1k2012love/shim.js,test/1k2012love/1154.js: [maybe] Uncaught exception, constructed at [test/1k2012love/1154.js:27:7, test/1k2012love/1154.js:32:7, test/1k2012love/1154.js:68:17, test/1k2012love/1154.js:91:19, test/1k2012love/shim.js:8:9, test/1k2012love/shim.js:9:1]
+test/1k2012love/1154.js:91:19: [info] Writing to unknown property that may cause loss of precision

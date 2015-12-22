@@ -55,7 +55,6 @@ public enum ECMAScriptObjects implements HostObject {
     ARRAY_TOSTRING("Array.prototype.toString"),
     ARRAY_TOLOCALESTRING("Array.prototype.toLocaleString"),
     ARRAY_CONCAT("Array.prototype.concat"),
-    ARRAY_FOREACH("Array.prototype.forEach"), // TODO: Array.prototype.forEach non-standard
     ARRAY_JOIN("Array.prototype.join"),
     ARRAY_POP("Array.prototype.pop"),
     ARRAY_PUSH("Array.prototype.push"),
@@ -67,12 +66,6 @@ public enum ECMAScriptObjects implements HostObject {
     ARRAY_SPLICE("Array.prototype.splice"),
     ARRAY_UNSHIFT("Array.prototype.unshift"),
     ARRAY_INDEXOF("Array.prototype.indexOf"),
-    ARRAY_EVERY("Array.prototype.every"),
-    ARRAY_FILTER("Array.prototype.filter"),
-    ARRAY_MAP("Array.prototype.map"),
-    ARRAY_REDUCE("Array.prototype.reduce"),
-    ARRAY_REDUCERIGHT("Array.prototype.reduceRight"),
-    ARRAY_LASTINDEXOF("Array.prototype.lastIndexOf"),
 
     STRING("String"),
     STRING_PROTOTYPE("String.prototype"),

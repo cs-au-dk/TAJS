@@ -1,0 +1,20 @@
+test/1k2012love/1061.js:3:4: [definite] Dead assignment, property x is never read
+test/1k2012love/1061.js:4:4: [definite] Dead assignment, property y is never read
+test/1k2012love/1061.js:75:4: [definite] Dead assignment, property x is never read
+test/1k2012love/1061.js:76:4: [definite] Dead assignment, property y is never read
+test/1k2012love/1061.js:7:3: [definite] The variable t is never used
+test/1k2012love/1061.js:20:3: [definite] The variable s_fs is never used
+test/1k2012love/shim.js:6:5: [definite] The variable b is never used
+test/1k2012love/1061.js:63:12: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1061.js:63:29: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/shim.js:8:9: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/shim.js:8:9: [maybe] TypeError, call to non-function
+test/1k2012love/shim.js:9:1: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/shim.js:6:9: [maybe] Reading absent property body
+test/1k2012love/shim.js:8:9: [maybe] Reading absent property getContext
+test/1k2012love/shim.js:9:1: [maybe] Reading absent property body
+test/1k2012love/1061.js:62:7: [maybe] Reading absent property (computed name)
+test/1k2012love/1061.js:63:12: [maybe] Reading absent property (computed name)
+test/1k2012love/1061.js:63:29: [maybe] Reading absent property (computed name)
+test/1k2012love/shim.js:7:9: [maybe] Reading absent property (computed name)
+test/1k2012love/shim.js,test/1k2012love/1061.js: [maybe] Uncaught exception, constructed at [test/1k2012love/1061.js:63:12, test/1k2012love/1061.js:63:29, test/1k2012love/shim.js:8:9, test/1k2012love/shim.js:9:1]

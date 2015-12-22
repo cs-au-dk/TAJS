@@ -1,4 +1,4 @@
 test/v8tests/leakcheck.js:45:3: [definite] The conditional expression is always false
 test/v8tests/leakcheck.js:44:16: [maybe] Converting object to string
 test/v8tests/leakcheck.js:44:16: [maybe] Converting primitive string to object
-test/v8tests/prologue.js:1:1: [maybe] Uncaught exception: "Error"
+test/v8tests/prologue.js,test/v8tests/leakcheck.js: [maybe] Uncaught exception: "Error"

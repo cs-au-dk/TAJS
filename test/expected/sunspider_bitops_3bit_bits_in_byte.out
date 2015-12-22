@@ -1,1 +1,2 @@
+test/sunspider/bitops-3bit-bits-in-byte.js:39:26: [maybe] Converting object to number
 test/sunspider/bitops-3bit-bits-in-byte.js:41:1: [info] Abstract value: UInt

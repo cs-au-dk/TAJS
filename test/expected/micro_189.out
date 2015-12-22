@@ -2,7 +2,7 @@ test/micro/test189.js:1:10: [definite] Unreachable function
 test/micro/test189.js:14:11: [definite] Unreachable function
 test/micro/test189.js:19:16: [maybe] Reading absent property browser
 test/micro/test189.js:20:16: [maybe] Reading absent property each
-test/micro/test189.js:6:6: [info] Abstract object: {[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Prototype]]=?,[[Value]]=?,[[Scope]]=?}
+test/micro/test189.js:6:6: [info] Abstract object: {browser:^(@Object#node10.browser[present]),each:^(@Object#node10.each[present]),[[Prototype]]=[@Object.prototype[native]],[[Value]]=?,[[Scope]]=?}
 test/micro/test189.js:18:1: [info] Abstract object: {browser:[@Object#node13]|absent,each:[@<anonymous>#fun3]|absent,extend:[@<anonymous>#fun2],length:0.0,prototype:[@Object#node1],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@<the global object>[native]]]}
 test/micro/test189.js:19:1: [info] Abstract value: Undef|[@Object#node13]
 test/micro/test189.js:20:1: [info] Abstract value: Undef|[@<anonymous>#fun3]

@@ -23,8 +23,8 @@ import java.util.Map;
 /**
  * Interface for global analysis lattice elements.
  */
-public interface IAnalysisLatticeElement<StateType extends IState<StateType, ?, CallEdgeType>,
-        ContextType extends IContext<?>,
+public interface IAnalysisLatticeElement<StateType extends IState<StateType, ContextType, CallEdgeType>,
+        ContextType extends IContext<ContextType>,
         CallEdgeType extends ICallEdge<StateType>> {
 
     /**

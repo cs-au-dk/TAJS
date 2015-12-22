@@ -1,0 +1,19 @@
+test/1k2012love/shim.js:6:5: [definite] The variable b is never used
+test/1k2012love/1071.js:71:7: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1071.js:72:10: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1071.js:73:13: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1071.js:105:4: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1071.js:105:18: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/shim.js:8:9: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/shim.js:8:9: [maybe] TypeError, call to non-function
+test/1k2012love/shim.js:9:1: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/shim.js:6:9: [maybe] Reading absent property body
+test/1k2012love/shim.js:8:9: [maybe] Reading absent property getContext
+test/1k2012love/shim.js:9:1: [maybe] Reading absent property body
+test/1k2012love/1071.js:70:7: [maybe] Reading absent property (computed name)
+test/1k2012love/1071.js:71:7: [maybe] Reading absent property (computed name)
+test/1k2012love/1071.js:72:7: [maybe] Reading absent property (computed name)
+test/1k2012love/1071.js:102:8: [maybe] Reading absent property (computed name)
+test/1k2012love/1071.js:103:8: [maybe] Reading absent property (computed name)
+test/1k2012love/shim.js:7:9: [maybe] Reading absent property (computed name)
+test/1k2012love/shim.js,test/1k2012love/1071.js: [maybe] Uncaught exception, constructed at [test/1k2012love/1071.js:71:7, test/1k2012love/1071.js:72:10, test/1k2012love/1071.js:73:13, test/1k2012love/1071.js:105:4, test/1k2012love/1071.js:105:18, test/1k2012love/shim.js:8:9, test/1k2012love/shim.js:9:1]

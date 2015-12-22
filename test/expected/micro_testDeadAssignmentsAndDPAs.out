@@ -8,7 +8,7 @@ test/micro/testDeadAssignmentsAndDPAs.js:52:1: [maybe] TypeError, accessing prop
 test/micro/testDeadAssignmentsAndDPAs.js:53:1: [maybe] TypeError, accessing property of null/undefined
 test/micro/testDeadAssignmentsAndDPAs.js:57:1: [maybe] TypeError, accessing property of null/undefined
 test/micro/testDeadAssignmentsAndDPAs.js:34:1: [maybe] Reading absent property p5
-test/micro/testDeadAssignmentsAndDPAs.js:1:1: [maybe] Uncaught exception, constructed at [test/micro/testDeadAssignmentsAndDPAs.js:52:1, test/micro/testDeadAssignmentsAndDPAs.js:53:1, test/micro/testDeadAssignmentsAndDPAs.js:57:1]
+test/micro/testDeadAssignmentsAndDPAs.js: [maybe] Uncaught exception, constructed at [test/micro/testDeadAssignmentsAndDPAs.js:52:1, test/micro/testDeadAssignmentsAndDPAs.js:53:1, test/micro/testDeadAssignmentsAndDPAs.js:57:1]
 test/micro/testDeadAssignmentsAndDPAs.js:20:1: [maybe] Reading absent property (computed name)
 test/micro/testDeadAssignmentsAndDPAs.js:21:1: [maybe] Reading absent property (computed name)
 test/micro/testDeadAssignmentsAndDPAs.js:35:1: [maybe] Reading absent property (computed name)

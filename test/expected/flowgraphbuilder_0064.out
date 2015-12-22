@@ -1,6 +1,6 @@
-fg2: function()
+fg2: <main> function()
   block 0: [entry]
-    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0064.js:1:1)
+    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0064.js)
     node 1: function-decl[function f(),-] (test/flowgraphbuilder/flowgraph_builder0064.js:1:1)
     ->[block 1]
   block 1:
@@ -17,10 +17,10 @@ fg2: function()
     node 8: *[v2,v3,-]* (test/flowgraphbuilder/flowgraph_builder0064.js:5:1)
     ->[block 4]
   block 4: [exit-ordinary]
-    node 9: return[v1] (test/flowgraphbuilder/flowgraph_builder0064.js:1:1)
+    node 9: return[v1] (test/flowgraphbuilder/flowgraph_builder0064.js)
     ->[]
   block 5: [exit-exceptional]
-    node 10: exceptional-return (test/flowgraphbuilder/flowgraph_builder0064.js:1:1)
+    node 10: exceptional-return (test/flowgraphbuilder/flowgraph_builder0064.js)
     ->[]
 function f()
   block 6: [entry]
@@ -30,13 +30,13 @@ function f()
     node 12: constant["hi",v1]* (test/flowgraphbuilder/flowgraph_builder0064.js:2:11)
     ->[block 8]
   block 8: [exit-ordinary]
-    node 13: return[v1] (test/flowgraphbuilder/flowgraph_builder0064.js:3:1)
+    node 13: return[v1] (test/flowgraphbuilder/flowgraph_builder0064.js:1:1)
     ->[]
   block 9: [exit-exceptional]
-    node 14: exceptional-return (test/flowgraphbuilder/flowgraph_builder0064.js:3:1)
+    node 14: exceptional-return (test/flowgraphbuilder/flowgraph_builder0064.js:1:1)
     ->[]
 
 test/flowgraphbuilder/flowgraph_builder0064.js:5:1: [definite] ReferenceError, reading absent variable o
 test/flowgraphbuilder/flowgraph_builder0064.js:1:1: [definite] Unreachable function f
 test/flowgraphbuilder/flowgraph_builder0064.js:5:3: [definite] Unreachable code
-test/flowgraphbuilder/flowgraph_builder0064.js:1:1: [maybe] Uncaught exception, constructed at [test/flowgraphbuilder/flowgraph_builder0064.js:5:1]
+test/flowgraphbuilder/flowgraph_builder0064.js: [maybe] Uncaught exception, constructed at [test/flowgraphbuilder/flowgraph_builder0064.js:5:1]

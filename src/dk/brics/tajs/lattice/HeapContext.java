@@ -24,6 +24,8 @@ import java.util.Map;
  */
 public final class HeapContext {
 
+    private static HeapContext emptyHeapContext = new HeapContext(null, null);
+
     /**
      * Values of special variables at function entry in the context where the object was created, or null if none.
      */
@@ -42,13 +44,24 @@ public final class HeapContext {
     /**
      * Constructs a new heap context object.
      */
-    public HeapContext(ContextArguments funargs, Map<String, Value> concreteSemanticValueQualifiers) {
+    private HeapContext(ContextArguments funargs, Map<String, Value> concreteSemanticValueQualifiers) {
         this.funargs = funargs;
         this.concreteSemanticValueQualifiers = concreteSemanticValueQualifiers;
         int hashcode = 1;
         hashcode = 31 * hashcode + (funargs != null ? funargs.hashCode() : 0);
         hashcode = 31 * hashcode + (concreteSemanticValueQualifiers != null ? concreteSemanticValueQualifiers.hashCode() : 0);
         this.hashcode = hashcode;
+    }
+
+    /**
+     * Constructs a new heap context object.
+     */
+    public static HeapContext make(ContextArguments funargs, Map<String, Value> concreteSemanticValueQualifiers) {
+        if (funargs == null && concreteSemanticValueQualifiers == null) {
+            return emptyHeapContext;
+        } else {
+            return new HeapContext(funargs, concreteSemanticValueQualifiers);
+        }
     }
 
     /**

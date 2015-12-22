@@ -171,7 +171,7 @@ public class PhaseMonitoring implements IAnalysisMonitoring {
     }
 
     @Override
-    public void visitPropertyRead(Node n, Set<ObjectLabel> objs, Str propertystr, State state, boolean check_unknown) {
+    public void visitPropertyRead(AbstractNode n, Set<ObjectLabel> objs, Str propertystr, State state, boolean check_unknown) {
         activeMonitor.visitPropertyRead(n, objs, propertystr, state, check_unknown);
     }
 

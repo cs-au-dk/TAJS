@@ -40,15 +40,26 @@ public class BasicContextSensitivityStrategy implements IContextSensitivityStrat
 
     @Override
     public HeapContext makeFunctionHeapContext(Function fun, State state, Solver.SolverInterface c) {
-        return new HeapContext(state.getContext().getFunArgs(), null);
+        return makeHeapContext(state.getContext().getFunArgs());
     }
 
     @Override
     public HeapContext makeActivationAndArgumentsHeapContext(State state, ObjectLabel function, FunctionCalls.CallInfo callInfo, Solver.SolverInterface c) {
-        return new HeapContext(makeContextArgumentsForCall(function, state, callInfo), null);
+        return makeHeapContext(makeContextArgumentsForCall(function, state, callInfo));
+    }
+
+    private HeapContext makeHeapContext(ContextArguments funargs) {
+        if (!Options.get().isContextSensitiveHeapEnabled()) {
+            return null;
+        }
+        return HeapContext.make(funargs, null);
     }
 
     private ContextArguments makeContextArgumentsForCall(ObjectLabel obj_f, State edge_state, FunctionCalls.CallInfo callInfo) {
+        ContextArguments funArgs = null;
+        if (!Options.get().isParameterSensitivityEnabled()) {
+            return null;
+        }
         int num_actuals = callInfo.getNumberOfArgs();
         boolean num_actuals_unknown = callInfo.isUnknownNumberOfArgs();
         Value unknown_arg = null;
@@ -59,35 +70,31 @@ public class BasicContextSensitivityStrategy implements IContextSensitivityStrat
             for (int i = 0; i < num_actuals; i++)
                 actuals.add(callInfo.getArg(i));
         }
-
-        ContextArguments funArgs = null;
-        if (Options.get().isParameterSensitivityEnabled()) {
-            Function f = obj_f.getFunction();
-            Set<String> contextSensitiveParameterNames = this.contextSensitiveParameters.get(f);
-            if (contextSensitiveParameterNames != null) {
-                // apply the parameter sensitivity on the chosen special vars
-                if (!contextSensitiveParameterNames.isEmpty() && num_actuals_unknown) {
-                    // sensitive in an unknown argument value
-                    funArgs = new ContextArguments(unknown_arg, null);
-                } else {
-                    // sensitive in specific argument values
-                    List<Value> contextSensitiveArguments = newList();
-                    for (String parameterName : f.getParameterNames()) {
-                        Value v;
-                        int i = f.getParameterNames().indexOf(parameterName);  // by construction: never -1!
-                        if (contextSensitiveParameterNames.contains(parameterName)) {
-                            if (i < num_actuals) {
-                                v = UnknownValueResolver.getRealValue(actuals.get(i), edge_state);
-                            } else {
-                                v = Value.makeUndef();
-                            }
+        Function f = obj_f.getFunction();
+        Set<String> contextSensitiveParameterNames = this.contextSensitiveParameters.get(f);
+        if (contextSensitiveParameterNames != null) {
+            // apply the parameter sensitivity on the chosen special vars
+            if (!contextSensitiveParameterNames.isEmpty() && num_actuals_unknown) {
+                // sensitive in an unknown argument value
+                funArgs = new ContextArguments(unknown_arg, null);
+            } else {
+                // sensitive in specific argument values
+                List<Value> contextSensitiveArguments = newList();
+                for (String parameterName : f.getParameterNames()) {
+                    Value v;
+                    int i = f.getParameterNames().indexOf(parameterName);  // by construction: never -1!
+                    if (contextSensitiveParameterNames.contains(parameterName)) {
+                        if (i < num_actuals) {
+                            v = UnknownValueResolver.getRealValue(actuals.get(i), edge_state);
                         } else {
-                            v = null;
+                            v = Value.makeUndef();
                         }
-                        contextSensitiveArguments.add(v);
+                    } else {
+                        v = null;
                     }
-                    funArgs = new ContextArguments(f.getParameterNames(), contextSensitiveArguments, null);
+                    contextSensitiveArguments.add(v);
                 }
+                funArgs = new ContextArguments(f.getParameterNames(), contextSensitiveArguments, null);
             }
         }
         return funArgs;
@@ -95,7 +102,7 @@ public class BasicContextSensitivityStrategy implements IContextSensitivityStrat
 
     @Override
     public HeapContext makeObjectLiteralHeapContext(AbstractNode node, State state) {
-        return null;
+        return makeHeapContext(null);
     }
 
     @Override
@@ -155,32 +162,6 @@ public class BasicContextSensitivityStrategy implements IContextSensitivityStrat
         return c;
     }
 
-//    /**
-//     * Constructs a new context for leaving a for-in body.
-//     */
-//    public static Context makeForInExitContext(Context currentContext, EndForInNode n) { // TODO: currently unused...
-//        // inherit properties from currentContext
-//        Context c = new Context();
-//        c.thisval = currentContext.thisval;
-//        c.funArgs = currentContext.funArgs;
-//        c.specialVars = currentContext.specialVars;
-//        c.loopUnrolling = currentContext.loopUnrolling;
-//        c.loopUnrollingsAtEntry = currentContext.loopUnrollingsAtEntry;
-//
-//        // remove the the given register from specialRegs
-//        if (currentContext.specialRegs != null) {
-//            c.specialRegs = newMap(currentContext.specialRegs);
-//            c.specialRegs.remove(n.getBeginNode().getPropertyListRegister()); // note: this will kill unrollings in recursive calls
-//            if (c.specialRegs.isEmpty()) {
-//                c.specialRegs = null;
-//            }
-//        }
-//
-//        if (log.isDebugEnabled())
-//            log.debug("creating for-in exit context " + c);
-//        return c;
-//    }
-
     @Override
     public Context makeNextLoopUnrollingContext(Context currentContext, BeginLoopNode node) {
         // update loopUnrolling
@@ -211,6 +192,32 @@ public class BasicContextSensitivityStrategy implements IContextSensitivityStrat
             log.debug("creating loop unrolling context " + c);
         return c;
     }
+
+//    /**
+//     * Constructs a new context for leaving a for-in body.
+//     */
+//    public static Context makeForInExitContext(Context currentContext, EndForInNode n) { // TODO: currently unused...
+//        // inherit properties from currentContext
+//        Context c = new Context();
+//        c.thisval = currentContext.thisval;
+//        c.funArgs = currentContext.funArgs;
+//        c.specialVars = currentContext.specialVars;
+//        c.loopUnrolling = currentContext.loopUnrolling;
+//        c.loopUnrollingsAtEntry = currentContext.loopUnrollingsAtEntry;
+//
+//        // remove the the given register from specialRegs
+//        if (currentContext.specialRegs != null) {
+//            c.specialRegs = newMap(currentContext.specialRegs);
+//            c.specialRegs.remove(n.getBeginNode().getPropertyListRegister()); // note: this will kill unrollings in recursive calls
+//            if (c.specialRegs.isEmpty()) {
+//                c.specialRegs = null;
+//            }
+//        }
+//
+//        if (log.isDebugEnabled())
+//            log.debug("creating for-in exit context " + c);
+//        return c;
+//    }
 
     @Override
     public Context makeLoopExitContext(Context currentContext, EndLoopNode node) {

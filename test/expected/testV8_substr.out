@@ -1,15 +1,3 @@
-test/v8tests/substr.js:36:28: [definite] Dead assignment, property valueOf is never read
-test/v8tests/substr.js:37:28: [definite] Dead assignment, property toString is never read
-test/v8tests/substr.js:44:29: [definite] Dead assignment, property valueOf is never read
-test/v8tests/substr.js:45:29: [definite] Dead assignment, property toString is never read
-test/v8tests/substr.js:36:37: [definite] Unreachable function
-test/v8tests/substr.js:37:38: [definite] Unreachable function
-test/v8tests/substr.js:44:38: [definite] Unreachable function
-test/v8tests/substr.js:45:39: [definite] Unreachable function
-test/v8tests/substr.js:36:17: [maybe] Implicit call to non-native valueOf method
-test/v8tests/substr.js:37:17: [maybe] Implicit call to non-native toString method
-test/v8tests/substr.js:44:18: [maybe] Implicit call to non-native valueOf method
-test/v8tests/substr.js:45:18: [maybe] Implicit call to non-native toString method
 test/v8tests/substr.js:29:17: [maybe] Conversion to number yields NaN
 test/v8tests/substr.js:29:17: [maybe] Converting object to string
 test/v8tests/substr.js:29:17: [maybe] Converting primitive string to object
@@ -31,12 +19,12 @@ test/v8tests/substr.js:34:17: [maybe] Converting primitive string to object
 test/v8tests/substr.js:35:17: [maybe] Conversion to number yields NaN
 test/v8tests/substr.js:35:17: [maybe] Converting object to string
 test/v8tests/substr.js:35:17: [maybe] Converting primitive string to object
-test/v8tests/substr.js:36:17: [maybe] Conversion from string to number yields NaN
 test/v8tests/substr.js:36:17: [maybe] Conversion to number yields NaN
+test/v8tests/substr.js:36:17: [maybe] Converting object to number
 test/v8tests/substr.js:36:17: [maybe] Converting object to string
 test/v8tests/substr.js:36:17: [maybe] Converting primitive string to object
-test/v8tests/substr.js:37:17: [maybe] Conversion from string to number yields NaN
 test/v8tests/substr.js:37:17: [maybe] Conversion to number yields NaN
+test/v8tests/substr.js:37:17: [maybe] Converting object to number
 test/v8tests/substr.js:37:17: [maybe] Converting object to string
 test/v8tests/substr.js:37:17: [maybe] Converting primitive string to object
 test/v8tests/substr.js:39:10: [maybe] Conversion to number yields NaN
@@ -54,12 +42,12 @@ test/v8tests/substr.js:42:18: [maybe] Converting primitive string to object
 test/v8tests/substr.js:43:18: [maybe] Conversion to number yields NaN
 test/v8tests/substr.js:43:18: [maybe] Converting object to string
 test/v8tests/substr.js:43:18: [maybe] Converting primitive string to object
-test/v8tests/substr.js:44:18: [maybe] Conversion from string to number yields NaN
 test/v8tests/substr.js:44:18: [maybe] Conversion to number yields NaN
+test/v8tests/substr.js:44:18: [maybe] Converting object to number
 test/v8tests/substr.js:44:18: [maybe] Converting object to string
 test/v8tests/substr.js:44:18: [maybe] Converting primitive string to object
-test/v8tests/substr.js:45:18: [maybe] Conversion from string to number yields NaN
 test/v8tests/substr.js:45:18: [maybe] Conversion to number yields NaN
+test/v8tests/substr.js:45:18: [maybe] Converting object to number
 test/v8tests/substr.js:45:18: [maybe] Converting object to string
 test/v8tests/substr.js:45:18: [maybe] Converting primitive string to object
 test/v8tests/substr.js:47:21: [maybe] Converting primitive string to object

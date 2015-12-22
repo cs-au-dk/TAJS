@@ -1,4 +1,4 @@
 test/micro/test14.js:31:16: [maybe] ReferenceError, reading absent variable xxx
 test/micro/test14.js:32:13: [maybe] ReferenceError, reading absent variable xxx
-test/micro/test14.js:1:1: [maybe] Uncaught exception, constructed at [test/micro/test14.js:31:16, test/micro/test14.js:32:13]
+test/micro/test14.js: [maybe] Uncaught exception, constructed at [test/micro/test14.js:31:16, test/micro/test14.js:32:13]
 test/micro/test14.js:31:1: [info] Abstract value: "fail"

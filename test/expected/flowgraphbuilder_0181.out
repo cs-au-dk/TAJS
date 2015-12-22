@@ -1,13 +1,13 @@
-fg2: function()
+fg2: <main> function()
   block 0: [entry]
-    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0181.js:1:1)
+    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0181.js)
     node 1: function-decl[function tryFinallyLoop(x,targetTwo),-] (test/flowgraphbuilder/flowgraph_builder0181.js:1:1)
     ->[block 1]
   block 1: [exit-ordinary]
-    node 2: return[v1] (test/flowgraphbuilder/flowgraph_builder0181.js:1:1)
+    node 2: return[v1] (test/flowgraphbuilder/flowgraph_builder0181.js)
     ->[]
   block 2: [exit-exceptional]
-    node 3: exceptional-return (test/flowgraphbuilder/flowgraph_builder0181.js:1:1)
+    node 3: exceptional-return (test/flowgraphbuilder/flowgraph_builder0181.js)
     ->[]
 function tryFinallyLoop(x,targetTwo)
   block 3: [entry]
@@ -61,10 +61,10 @@ function tryFinallyLoop(x,targetTwo)
     node 31: throw[v6]* (test/flowgraphbuilder/flowgraph_builder0181.js:3:5)
     ->[block 15]
   block 14: [exit-ordinary]
-    node 32: return[v1] (test/flowgraphbuilder/flowgraph_builder0181.js:10:1)
+    node 32: return[v1] (test/flowgraphbuilder/flowgraph_builder0181.js:1:1)
     ->[]
   block 15: [exit-exceptional]
-    node 33: exceptional-return (test/flowgraphbuilder/flowgraph_builder0181.js:10:1)
+    node 33: exceptional-return (test/flowgraphbuilder/flowgraph_builder0181.js:1:1)
     ->[]
 
 test/flowgraphbuilder/flowgraph_builder0181.js:1:1: [definite] Unreachable function tryFinallyLoop

@@ -6,7 +6,7 @@ test/micro/test20.js:22:1: [definite] Unreachable code
 test/micro/test20.js:16:8: [maybe] TypeError, call to non-function
 test/micro/test20.js:17:8: [maybe] TypeError, call to non-function
 test/micro/test20.js:18:8: [maybe] TypeError, call to non-function
-test/micro/test20.js:1:1: [maybe] Uncaught exception, constructed at [test/micro/test20.js:16:8, test/micro/test20.js:17:8, test/micro/test20.js:18:8, test/micro/test20.js:22:16]
+test/micro/test20.js: [maybe] Uncaught exception, constructed at [test/micro/test20.js:16:8, test/micro/test20.js:17:8, test/micro/test20.js:18:8, test/micro/test20.js:22:16]
 test/micro/test20.js:3:9: [maybe] Conversion to number yields NaN
 test/micro/test20.js:13:16: [maybe] The variable foo has values with different types
 test/micro/test20.js:16:8: [maybe] The variable foo has values with different types

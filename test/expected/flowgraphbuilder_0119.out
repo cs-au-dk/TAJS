@@ -1,6 +1,6 @@
-fg2: function()
+fg2: <main> function()
   block 0: [entry]
-    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0119.js:1:1)
+    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0119.js)
     node 1: vardecl['glob']* (test/flowgraphbuilder/flowgraph_builder0119.js:1:5)
     ->[block 1]
   block 1:
@@ -62,10 +62,10 @@ fg2: function()
     node 29: end-with* (test/flowgraphbuilder/flowgraph_builder0119.js:10:3)
     ->[block 17]
   block 16: [exit-ordinary]
-    node 30: return[v1] (test/flowgraphbuilder/flowgraph_builder0119.js:1:1)
+    node 30: return[v1] (test/flowgraphbuilder/flowgraph_builder0119.js)
     ->[]
   block 17: [exit-exceptional]
-    node 31: exceptional-return (test/flowgraphbuilder/flowgraph_builder0119.js:1:1)
+    node 31: exceptional-return (test/flowgraphbuilder/flowgraph_builder0119.js)
     ->[]
 
 test/flowgraphbuilder/flowgraph_builder0119.js:9:12: [definite] Dead assignment, property ex is never read

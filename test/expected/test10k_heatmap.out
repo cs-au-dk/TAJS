@@ -22,7 +22,7 @@ test/10k/heatmap.html:242:9: [maybe] Reading absent property addEventListener
 test/10k/heatmap.html:243:39: [maybe] Reading absent property selectedIndex
 test/10k/heatmap.html:245:9: [maybe] Reading absent property addEventListener
 test/10k/heatmap.html:246:25: [maybe] Reading absent property selectedIndex
-test/10k/heatmap.html:49:32: [maybe] Uncaught exception, constructed at [test/10k/heatmap.html:69:26, test/10k/heatmap.html:101:25, test/10k/heatmap.html:242:9, test/10k/heatmap.html:245:9]
+test/10k/heatmap.html: [maybe] Uncaught exception, constructed at [test/10k/heatmap.html:69:26, test/10k/heatmap.html:101:25, test/10k/heatmap.html:242:9, test/10k/heatmap.html:245:9]
 test/10k/heatmap.html:76:25: [maybe] Conversion to number yields NaN
 test/10k/heatmap.html:76:25: [maybe] Reading absent property (computed name)
 test/10k/heatmap.html:78:17: [maybe] Conversion to number yields NaN

@@ -1,6 +1,6 @@
-fg2: function()
+fg2: <main> function()
   block 0: [entry]
-    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0153.js:1:1)
+    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0153.js)
     ->[block 1]
   block 1:
     node 1: read-variable['eval',v3,v2] (test/flowgraphbuilder/flowgraph_builder0153.js:1:1)
@@ -10,15 +10,15 @@ fg2: function()
     node 3: call[v2,v3,v4,-]* (test/flowgraphbuilder/flowgraph_builder0153.js:1:1)
     ->[block 3]
   block 3: [exit-ordinary]
-    node 4: return[v1] (test/flowgraphbuilder/flowgraph_builder0153.js:1:1)
+    node 4: return[v1] (test/flowgraphbuilder/flowgraph_builder0153.js)
     ->[]
   block 4: [exit-exceptional]
-    node 5: exceptional-return (test/flowgraphbuilder/flowgraph_builder0153.js:1:1)
+    node 5: exceptional-return (test/flowgraphbuilder/flowgraph_builder0153.js)
     ->[]
 
 fg2: <main> function()
   block 0: [entry]
-    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0153.js:1:1)
+    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0153.js)
     ->[block 1]
   block 1:
     node 1: read-variable['eval',v3,v2] (test/flowgraphbuilder/flowgraph_builder0153.js:1:1)
@@ -36,10 +36,10 @@ fg2: <main> function()
     node 9: call[v1,v2,-]* (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0153.js:1:1):1:38)
     ->[block 3]
   block 3: [exit-ordinary]
-    node 4: return[v1] (test/flowgraphbuilder/flowgraph_builder0153.js:1:1)
+    node 4: return[v1] (test/flowgraphbuilder/flowgraph_builder0153.js)
     ->[]
   block 4: [exit-exceptional]
-    node 5: exceptional-return (test/flowgraphbuilder/flowgraph_builder0153.js:1:1)
+    node 5: exceptional-return (test/flowgraphbuilder/flowgraph_builder0153.js)
     ->[]
 function f()
   block 7: [entry]
@@ -61,9 +61,9 @@ function f()
     node 23: <variable-non-null-undef>['p']* (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0153.js:1:1):1:29)
     ->[block 9]
   block 9: [exit-ordinary]
-    node 24: return[v1] (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0153.js:1:1):1:37)
+    node 24: return[v1] (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0153.js:1:1):1:1)
     ->[]
   block 10: [exit-exceptional]
-    node 25: exceptional-return (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0153.js:1:1):1:37)
+    node 25: exceptional-return (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0153.js:1:1):1:1)
     ->[]
 

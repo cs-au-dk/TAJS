@@ -5,7 +5,7 @@ test/micro/test118.js:16:16: [maybe] Reading absent property b
 test/micro/test118.js:17:10: [maybe] Reading absent property b
 test/micro/test118.js:18:10: [maybe] Reading absent property b
 test/micro/test118.js:21:16: [maybe] Reading absent property b
-test/micro/test118.js:1:1: [maybe] Uncaught exception, constructed at [test/micro/test118.js:10:10, test/micro/test118.js:17:10, test/micro/test118.js:18:10]
+test/micro/test118.js: [maybe] Uncaught exception, constructed at [test/micro/test118.js:10:10, test/micro/test118.js:17:10, test/micro/test118.js:18:10]
 test/micro/test118.js:9:1: [info] Abstract value: Null|[@Object#node22, @Object#node18]
 test/micro/test118.js:12:1: [info] Abstract value: 42.0
 test/micro/test118.js:13:1: [info] Abstract value: 42.0

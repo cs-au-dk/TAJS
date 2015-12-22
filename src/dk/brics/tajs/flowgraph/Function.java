@@ -112,6 +112,7 @@ public class Function {
      * @param location        source location
      */
     public Function(String name, List<String> parameter_names, Function outer_function, SourceLocation location) {
+        assert (location != null);
         this.name = name;
         this.location = location;
         this.parameter_names = parameter_names == null ? Collections.<String>emptyList() : parameter_names;
@@ -241,13 +242,6 @@ public class Function {
     }
 
     /**
-     * Sets the source location.
-     */
-    public void setSourceLocation(SourceLocation location) {
-        this.location = location;
-    }
-
-    /**
      * Returns a source location for this function.
      */
     public SourceLocation getSourceLocation() {
@@ -307,8 +301,8 @@ public class Function {
             pw.println("digraph {");
         } else {
             pw.println("subgraph " + "cluster" + index + " {");
-            pw.println("label=\"" + (main ? "<main> " : "") + toString() + "\\n" + location
-                    + (outer_function != null ? "\\nouter: " + (outer_function.getName() == null ? "<main>" : outer_function.getName()) : "") + "\";");
+            String outerFunction = outer_function == null ? "" : "\\nouter: " + (outer_function.isMain() ? "<main>" : (outer_function.getName() == null ? "<anonymous>" : outer_function.getName()));
+            pw.println("label=\"" + (main ? "<main> " : "") + toString() + "\\n" + location + outerFunction + "\";");
             pw.println("labelloc=\"t\";");
             pw.println("fontsize=18;");
         }
@@ -410,7 +404,7 @@ public class Function {
         Collections.sort(rootOrder, (o1, o2) -> o1.getSourceLocation().compareTo(o2.getSourceLocation()));
 
         int i = 0;
-        for (BasicBlock block : produceDependencyOrder(entry, topologicalBlocks, nonTopologicalBlocks, rootOrder)) {
+        for (BasicBlock block : produceDependencyOrder(topologicalBlocks, nonTopologicalBlocks, rootOrder)) {
             block.setOrder(i++);
         }
 
@@ -425,7 +419,7 @@ public class Function {
      * Algorithm: wikipedia on topological sorting with depth-first (Cormen2001/Tarjan1976).
      * - slightly modified to produce prettier orders
      */
-    private static List<BasicBlock> produceDependencyOrder(BasicBlock head, Collection<BasicBlock> blocks, Set<BasicBlock> ignored, List<BasicBlock> rootOrder) { // TODO: parameter 'head' not used?!
+    private static List<BasicBlock> produceDependencyOrder(Collection<BasicBlock> blocks, Set<BasicBlock> ignored, List<BasicBlock> rootOrder) {
         List<BasicBlock> sorted = newList();
         Set<BasicBlock> notPermanentlyMarked = newSet(blocks);
         Set<BasicBlock> temporarilyMarked = newSet();

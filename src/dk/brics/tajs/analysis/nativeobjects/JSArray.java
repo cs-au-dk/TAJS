@@ -18,11 +18,14 @@ package dk.brics.tajs.analysis.nativeobjects;
 
 import dk.brics.tajs.analysis.Conversion;
 import dk.brics.tajs.analysis.Exceptions;
+import dk.brics.tajs.analysis.FunctionCalls;
 import dk.brics.tajs.analysis.FunctionCalls.CallInfo;
 import dk.brics.tajs.analysis.InitialStateBuilder;
 import dk.brics.tajs.analysis.NativeFunctions;
 import dk.brics.tajs.analysis.Solver;
+import dk.brics.tajs.analysis.js.UserFunctionCalls;
 import dk.brics.tajs.flowgraph.AbstractNode;
+import dk.brics.tajs.flowgraph.BasicBlock;
 import dk.brics.tajs.flowgraph.jsnodes.CallNode;
 import dk.brics.tajs.lattice.Bool;
 import dk.brics.tajs.lattice.ObjectLabel;
@@ -30,8 +33,10 @@ import dk.brics.tajs.lattice.ObjectLabel.Kind;
 import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.UnknownValueResolver;
 import dk.brics.tajs.lattice.Value;
+import dk.brics.tajs.solver.Message;
 import dk.brics.tajs.solver.Message.Severity;
 import dk.brics.tajs.solver.Message.Status;
+import dk.brics.tajs.util.AnalysisException;
 import dk.brics.tajs.util.Pair;
 
 import java.util.Collections;
@@ -70,7 +75,7 @@ public class JSArray {
 
                 Value length = Value.makeAnyNumUInt();
                 int numArgs = call.getNumberOfArgs();
-                boolean isArrayLiteral = ((CallNode) call.getSourceNode()).getLiteralConstructorKind() == CallNode.LiteralConstructorKinds.ARRAY;
+                boolean isArrayLiteral = call.getSourceNode() instanceof CallNode && ((CallNode) call.getSourceNode()).getLiteralConstructorKind() == CallNode.LiteralConstructorKinds.ARRAY;
                 if (call.isUnknownNumberOfArgs())
                     state.writeProperty(Collections.singleton(objlabel), Value.makeAnyStrUInt(), call.getUnknownArg(), true, false);
                 else if (numArgs == 1 && !isArrayLiteral) { // 15.4.2.2, paragraph 2.
@@ -270,14 +275,6 @@ public class JSArray {
                     writeLength(state, resultLabel, Value.makeAnyNumUInt().setAttributes(true, true, false));
                 }
                 return resultArray;
-            }
-
-            case ARRAY_FOREACH: {
-                NativeFunctions.expectParameters(nativeobject, call, c, 1, 2);
-                c.getMonitoring().visitPropertyRead(call.getJSSourceNode(), state.readThisObjects(), Value.makeAnyStrUInt(), state, false);
-                @SuppressWarnings("unused") Value callbackfn = NativeFunctions.readParameter(call, state, 0);
-                @SuppressWarnings("unused") Value this_arg = call.getNumberOfArgs() >= 1 ? NativeFunctions.readParameter(call, state, 1) : Value.makeNone();
-                return Value.makeUndef();
             }
 
             case ARRAY_POP: { // 15.4.4.6
@@ -514,10 +511,64 @@ public class JSArray {
             case ARRAY_SORT: {
                 NativeFunctions.expectParameters(nativeobject, call, c, 0, 1);
                 c.getMonitoring().visitPropertyRead(call.getJSSourceNode(), state.readThisObjects(), Value.makeAnyStrUInt(), state, false);
-                @SuppressWarnings("unused") Value comparefn = call.getNumberOfArgs() >= 1 ? NativeFunctions.readParameter(call, state, 0) : Value.makeNone();
+                Value comparefn = NativeFunctions.readParameter(call, state, 0);
                 Set<ObjectLabel> thisobj = state.readThisObjects();
-                state.writeProperty(thisobj, Value.makeAnyStrUInt(), state.readPropertyValue(thisobj, Value.makeAnyStrUInt()), true, false);
-                return Value.makeObject(thisobj); // TODO: improve precision?
+
+                for (int i = 0; i < 2; i++) { // 2 enough, we just need the feedback loop
+                    if (!comparefn.isNone()) {
+                        if (Conversion.isMaybeNonCallable(comparefn.restrictToNotUndef())) {
+                            Exceptions.throwTypeError(state, c);
+                            c.getMonitoring().addMessage(call.getSourceNode(), Severity.HIGH,
+                                    "TypeError, invalid argument to Array.prototype.sort");
+                        }
+                        List<Value> result = newList();
+                        boolean anyUserFunctions = false, anyHostFunctions = false;
+                        if (comparefn.isMaybeUndef()) {
+                            anyHostFunctions = true; // 'undefined' is like a special comparefn
+                            result.add(Value.makeAnyNum()); // the actual value doesn't matter here
+                        }
+                        BasicBlock implicitAfterCall = null;
+                        for (ObjectLabel obj : comparefn.getObjectLabels()) {
+                            if (obj.getKind() == Kind.FUNCTION) {
+                                if (obj.isHostObject()) { // weird, but possible
+                                    anyHostFunctions = true;
+                                    // TODO: comparefn is a host object, should invoke it (but unlikely worthwhile to implement...), see test/micro/arraysort2.js
+                                    c.getMonitoring().addMessage(c.getNode(), Message.Severity.HIGH, "Ignoring host object comparefn in Array.prototype.sort");
+                                } else {
+                                    anyUserFunctions = true;
+                                    implicitAfterCall = UserFunctionCalls.implicitUserFunctionCall(obj, new FunctionCalls.DefaultImplicitCallInfo(c) {
+                                        @Override
+                                        public Value getArg(int i) {
+                                            return c.getState().readPropertyValue(thisobj, Value.makeAnyStrUInt());
+                                        }
+
+                                        @Override
+                                        public int getNumberOfArgs() {
+                                            return 2;
+                                        }
+
+                                        @Override
+                                        public Value getUnknownArg() {
+                                            throw new AnalysisException("Should not be called. Arguments are not unknown.");
+                                        }
+
+                                        @Override
+                                        public boolean isUnknownNumberOfArgs() {
+                                            return false;
+                                        }
+                                    }, c);
+                                }
+                            }
+                        }
+                        if (UserFunctionCalls.implicitUserFunctionReturn(result, anyUserFunctions, anyHostFunctions, implicitAfterCall, c).isNone())
+                            return Value.makeNone();
+                    }
+                    c.getState().writeProperty(thisobj, Value.makeAnyStrUInt(), c.getState().readPropertyValue(thisobj, Value.makeAnyStrUInt()), true, false);
+                    if (comparefn.isNone()) {
+                        break;
+                    }
+                }
+                return Value.makeObject(thisobj);
             }
 
             case ARRAY_SPLICE: {

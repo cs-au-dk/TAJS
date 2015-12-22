@@ -66,7 +66,7 @@ test/10k/flatwar.html:363:9: [maybe] Reading absent property style
 test/10k/flatwar.html:370:13: [maybe] Reading absent property style
 test/10k/flatwar.html:371:13: [maybe] Reading absent property style
 test/10k/flatwar.html:383:5: [maybe] Reading absent property getContext
-test/10k/flatwar.html:4:15: [maybe] Uncaught exception, constructed at [test/10k/flatwar.html:328:28, test/10k/flatwar.html:358:9, test/10k/flatwar.html:362:9, test/10k/flatwar.html:363:9, test/10k/flatwar.html:365:9, test/10k/flatwar.html:370:13, test/10k/flatwar.html:371:13, test/10k/flatwar.html:383:5]
+test/10k/flatwar.html: [maybe] Uncaught exception, constructed at [test/10k/flatwar.html:328:28, test/10k/flatwar.html:358:9, test/10k/flatwar.html:362:9, test/10k/flatwar.html:363:9, test/10k/flatwar.html:365:9, test/10k/flatwar.html:370:13, test/10k/flatwar.html:371:13, test/10k/flatwar.html:383:5]
 test/10k/flatwar.html:37:15: [maybe] Conversion to number yields NaN
 test/10k/flatwar.html:37:15: [maybe] Reading absent property (computed name)
 test/10k/flatwar.html:38:15: [maybe] Conversion to number yields NaN

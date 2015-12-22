@@ -9,7 +9,7 @@
     <property name="optimize" value="on" />
     <property name="debug" value="off" />
 
-    <property file="local.properties" />
+    <property file="resources/local-development.properties" />
 
     <path id="classpath">
         <fileset dir="." includes="lib/**/*.jar" />
@@ -17,7 +17,7 @@
 
     <path id="classpath.test">
         <fileset dir="." includes="lib/**/*.jar" />
-        <pathelement location="build" />
+        <pathelement location="antbuild"/>
     </path>
 
     <target name="all" depends="clean,jar-all,doc" />
@@ -27,8 +27,8 @@
         <property name="cp" refid="classpath"/>
         <echo message="Classpath is ${cp}"/>
         -->
-        <mkdir dir="build" />
-        <javac srcdir="src" includes="**" destdir="build" optimize="${optimize}" 
+        <mkdir dir="antbuild"/>
+        <javac srcdir="src" includes="**" destdir="antbuild" optimize="${optimize}"
                 debug="${debug}" includeantruntime="false" source="1.8">
             <classpath refid="classpath" />
             <compilerarg line="-encoding ISO-8859-1" compiler="modern" />
@@ -36,14 +36,14 @@
             <compilerarg line="-Xlint -Xlint:-serial -Xlint:-path" compiler="modern" />
             -->
         </javac>
-        <copy todir="build">
-            <fileset dir="src" includes="**/*.properties"/>
+        <copy todir="antbuild">
+            <fileset dir="resources" excludes="local-development*.properties,**/*.md"/>
         </copy>
     </target>
 
     <target name="jar" depends="compile">
         <mkdir dir="dist" />
-        <jar jarfile="dist/${project}.jar" basedir="build" includes="**" />
+        <jar jarfile="dist/${project}.jar" basedir="antbuild" includes="**"/>
     </target>
 
     <target name="jar-all" depends="jar">
@@ -61,10 +61,9 @@
     </target>
 
     <target name="clean">
-        <delete dir="build" />
+        <delete dir="antbuild"/>
         <delete dir="doc" />
         <delete dir="flowgraphs" />
-        <delete file="javascript.js" />
     </target>
 
     <target name="doc" depends="jar">
@@ -131,7 +130,7 @@
     </target>
 
     <target name="compile-test" depends="compile">
-        <javac srcdir="test/src" includes="**" destdir="build" optimize="${optimize}" debug="${debug}"
+        <javac srcdir="test/src" includes="**" destdir="antbuild" optimize="${optimize}" debug="${debug}"
                includeantruntime="false" source="1.8">
             <classpath refid="classpath"/>
             <compilerarg line="-encoding ISO-8859-1" compiler="modern"/>
@@ -155,8 +154,8 @@
     </target>
 
     <target name="test-all" depends="clean,compile">
-        <javac srcdir="test/src" includes="**" destdir="build" optimize="${optimize}" debug="${debug}" 
-                includeantruntime="false" source="1.8">
+        <javac srcdir="test/src" includes="**" destdir="antbuild" optimize="${optimize}" debug="${debug}"
+               includeantruntime="false" source="1.8">
             <classpath refid="classpath" />
             <compilerarg line="-encoding ISO-8859-1" compiler="modern" />
             <compilerarg line="-Xlint -Xlint:-serial -Xlint:-path" compiler="modern" />
@@ -168,7 +167,7 @@
     </target>
 
     <target name="publish" depends="all">
-        <fail message="property 'public' should be set in local.properties">
+        <fail message="property 'public' should be set in resources/local-development.properties">
             <condition>
                 <not>
                     <isset property="public" />
@@ -206,14 +205,14 @@
                 </not>
             </condition>
         </fail>
-        <fail message="property 'dot' should be set in local.properties">
+        <fail message="property 'dot' should be set in resources/local-development.properties">
             <condition>
                 <not>
                     <isset property="dot" />
                 </not>
             </condition>
         </fail>
-        <fail message="property 'imgviewer' should be set in local.properties">
+        <fail message="property 'imgviewer' should be set in resources/local-development.properties">
             <condition>
                 <not>
                     <isset property="imgviewer" />
@@ -258,7 +257,7 @@
                 </not>
             </condition>
         </fail>
-        <fail message="property 'dot' should be set in local.properties">
+        <fail message="property 'dot' should be set in resources/local-development.properties">
             <condition>
                 <not>
                     <isset property="dot" />

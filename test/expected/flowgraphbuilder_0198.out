@@ -1,14 +1,14 @@
-fg2: function()
+fg2: <main> function()
   block 0: [entry]
-    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0198.js:1:1)
+    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0198.js)
     node 1: function-decl[function h(),-] (test/flowgraphbuilder/flowgraph_builder0198.js:1:1)
     node 2: function-decl[function g(),-] (test/flowgraphbuilder/flowgraph_builder0198.js:4:1)
     ->[block 1]
   block 1: [exit-ordinary]
-    node 3: return[v1] (test/flowgraphbuilder/flowgraph_builder0198.js:1:1)
+    node 3: return[v1] (test/flowgraphbuilder/flowgraph_builder0198.js)
     ->[]
   block 2: [exit-exceptional]
-    node 4: exceptional-return (test/flowgraphbuilder/flowgraph_builder0198.js:1:1)
+    node 4: exceptional-return (test/flowgraphbuilder/flowgraph_builder0198.js)
     ->[]
 function h()
   block 3: [entry]
@@ -23,10 +23,10 @@ function h()
     node 11: write-variable[v2,'v']* (test/flowgraphbuilder/flowgraph_builder0198.js:2:5)
     ->[block 5]
   block 5: [exit-ordinary]
-    node 12: return[v1] (test/flowgraphbuilder/flowgraph_builder0198.js:3:1)
+    node 12: return[v1] (test/flowgraphbuilder/flowgraph_builder0198.js:1:1)
     ->[]
   block 6: [exit-exceptional]
-    node 13: exceptional-return (test/flowgraphbuilder/flowgraph_builder0198.js:3:1)
+    node 13: exceptional-return (test/flowgraphbuilder/flowgraph_builder0198.js:1:1)
     ->[]
 function g()
   block 7: [entry]
@@ -41,10 +41,10 @@ function g()
     node 20: write-variable[v2,'v']* (test/flowgraphbuilder/flowgraph_builder0198.js:5:5)
     ->[block 9]
   block 9: [exit-ordinary]
-    node 21: return[v1] (test/flowgraphbuilder/flowgraph_builder0198.js:6:1)
+    node 21: return[v1] (test/flowgraphbuilder/flowgraph_builder0198.js:4:1)
     ->[]
   block 10: [exit-exceptional]
-    node 22: exceptional-return (test/flowgraphbuilder/flowgraph_builder0198.js:6:1)
+    node 22: exceptional-return (test/flowgraphbuilder/flowgraph_builder0198.js:4:1)
     ->[]
 
 test/flowgraphbuilder/flowgraph_builder0198.js:1:1: [definite] Unreachable function h

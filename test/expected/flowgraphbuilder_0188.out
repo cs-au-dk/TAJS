@@ -1,6 +1,6 @@
-fg2: function()
+fg2: <main> function()
   block 0: [entry]
-    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0188.js:1:1)
+    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0188.js)
     node 1: vardecl['x']* (test/flowgraphbuilder/flowgraph_builder0188.js:1:5)
     node 2: vardecl['y']* (test/flowgraphbuilder/flowgraph_builder0188.js:1:7)
     node 3: vardecl['z']* (test/flowgraphbuilder/flowgraph_builder0188.js:1:9)
@@ -143,10 +143,10 @@ fg2: function()
     node 84: write-variable[v25,'z']* (test/flowgraphbuilder/flowgraph_builder0188.js:4:27)
     ->[block 6]
   block 29: [exit-ordinary]
-    node 85: return[v1] (test/flowgraphbuilder/flowgraph_builder0188.js:1:1)
+    node 85: return[v1] (test/flowgraphbuilder/flowgraph_builder0188.js)
     ->[]
   block 30: [exit-exceptional]
-    node 86: exceptional-return (test/flowgraphbuilder/flowgraph_builder0188.js:1:1)
+    node 86: exceptional-return (test/flowgraphbuilder/flowgraph_builder0188.js)
     ->[]
 
 test/flowgraphbuilder/flowgraph_builder0188.js:5:9: [definite] The variable r is never used

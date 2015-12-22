@@ -25,7 +25,7 @@ test/10k/sinuous.html:254:29: [maybe] TypeError, accessing property of null/unde
 test/10k/sinuous.html:281:17: [maybe] TypeError, accessing property of null/undefined
 test/10k/sinuous.html:109:17: [maybe] Reading absent property clientX
 test/10k/sinuous.html:110:17: [maybe] Reading absent property clientY
-test/10k/sinuous.html:30:32: [maybe] Uncaught exception, constructed at [test/10k/sinuous.html:122:17, test/10k/sinuous.html:131:17, test/10k/sinuous.html:203:30, test/10k/sinuous.html:224:40, test/10k/sinuous.html:225:27, test/10k/sinuous.html:231:29, test/10k/sinuous.html:239:23, test/10k/sinuous.html:250:21, test/10k/sinuous.html:254:29, test/10k/sinuous.html:281:17]
+test/10k/sinuous.html: [maybe] Uncaught exception, constructed at [test/10k/sinuous.html:122:17, test/10k/sinuous.html:131:17, test/10k/sinuous.html:203:30, test/10k/sinuous.html:224:40, test/10k/sinuous.html:225:27, test/10k/sinuous.html:231:29, test/10k/sinuous.html:239:23, test/10k/sinuous.html:250:21, test/10k/sinuous.html:254:29, test/10k/sinuous.html:281:17]
 test/10k/sinuous.html:32:17: [maybe] Converting object to string
 test/10k/sinuous.html:32:17: [maybe] Converting primitive string to object
 test/10k/sinuous.html:33:18: [maybe] Conversion to number yields NaN

@@ -101,7 +101,6 @@ var extend = function(ARG1,ARG2,ARG3) {
 TAJS_addContextSensitivity(extend, 0);
 TAJS_addContextSensitivity(extend, 1);
 TAJS_addContextSensitivity(extend, 2);
-TAJS_addContextSensitivity(extend, "i");
 
 var ajaxSettings = {accepts:{}};
 

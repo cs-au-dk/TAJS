@@ -1,6 +1,6 @@
-fg2: function()
+fg2: <main> function()
   block 0: [entry]
-    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0197.js:1:1)
+    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0197.js)
     node 1: vardecl['K']* (test/flowgraphbuilder/flowgraph_builder0197.js:1:5)
     node 2: vardecl['k']* (test/flowgraphbuilder/flowgraph_builder0197.js:2:5)
     node 3: vardecl['K_bug']* (test/flowgraphbuilder/flowgraph_builder0197.js:5:5)
@@ -43,10 +43,10 @@ fg2: function()
     node 24: call[v12,v13,v14,-]* (test/flowgraphbuilder/flowgraph_builder0197.js:7:1)
     ->[block 9]
   block 9: [exit-ordinary]
-    node 25: return[v1] (test/flowgraphbuilder/flowgraph_builder0197.js:1:1)
+    node 25: return[v1] (test/flowgraphbuilder/flowgraph_builder0197.js)
     ->[]
   block 10: [exit-exceptional]
-    node 26: exceptional-return (test/flowgraphbuilder/flowgraph_builder0197.js:1:1)
+    node 26: exceptional-return (test/flowgraphbuilder/flowgraph_builder0197.js)
     ->[]
 function()
   block 11: [entry]
@@ -58,10 +58,10 @@ function()
     node 30: write-property[v4,'p',v3]* (test/flowgraphbuilder/flowgraph_builder0197.js:1:23)
     ->[block 13]
   block 13: [exit-ordinary]
-    node 31: return[v1] (test/flowgraphbuilder/flowgraph_builder0197.js:1:35)
+    node 31: return[v1] (test/flowgraphbuilder/flowgraph_builder0197.js:1:9)
     ->[]
   block 14: [exit-exceptional]
-    node 32: exceptional-return (test/flowgraphbuilder/flowgraph_builder0197.js:1:35)
+    node 32: exceptional-return (test/flowgraphbuilder/flowgraph_builder0197.js:1:9)
     ->[]
 function()
   block 15: [entry]
@@ -73,10 +73,10 @@ function()
     node 36: write-property[v4,'p',v3]* (test/flowgraphbuilder/flowgraph_builder0197.js:5:28)
     ->[block 17]
   block 17: [exit-ordinary]
-    node 37: return[v1] (test/flowgraphbuilder/flowgraph_builder0197.js:5:40)
+    node 37: return[v1] (test/flowgraphbuilder/flowgraph_builder0197.js:5:14)
     ->[]
   block 18: [exit-exceptional]
-    node 38: exceptional-return (test/flowgraphbuilder/flowgraph_builder0197.js:5:40)
+    node 38: exceptional-return (test/flowgraphbuilder/flowgraph_builder0197.js:5:14)
     ->[]
 
 test/flowgraphbuilder/flowgraph_builder0197.js:3:1: [info] Abstract value: 42.0

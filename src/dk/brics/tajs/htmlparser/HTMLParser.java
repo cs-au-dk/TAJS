@@ -16,6 +16,7 @@
 
 package dk.brics.tajs.htmlparser;
 
+import dk.brics.tajs.flowgraph.JavaScriptSource;
 import dk.brics.tajs.util.Loader;
 import net.htmlparser.jericho.Attribute;
 import net.htmlparser.jericho.Attributes;

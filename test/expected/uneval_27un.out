@@ -6,7 +6,7 @@ TAJS-dynamic-code(test/uneval/uneval27.html:12:13):1:15: [maybe] Reading absent 
 TAJS-dynamic-code(test/uneval/uneval27.html:12:60):1:15: [maybe] Converting primitive number to object
 TAJS-dynamic-code(test/uneval/uneval27.html:12:60):1:15: [maybe] Converting primitive string to object
 TAJS-dynamic-code(test/uneval/uneval27.html:12:60):1:15: [maybe] Reading absent property (computed name)
-test/uneval/uneval27.html:4:31: [maybe] Uncaught exception, constructed at [TAJS-dynamic-code(test/uneval/uneval27.html:12:60):1:15, test/uneval/uneval27.html:13:41]
+test/uneval/uneval27.html: [maybe] Uncaught exception, constructed at [TAJS-dynamic-code(test/uneval/uneval27.html:12:60):1:15, test/uneval/uneval27.html:13:41]
 test/uneval/uneval27.html:10:24: [maybe] Reading absent property (computed name)
 test/uneval/uneval27.html:12:18: [maybe] Converting undefined to string
 test/uneval/uneval27.html:12:65: [maybe] Converting undefined to string

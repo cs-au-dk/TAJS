@@ -1,0 +1,16 @@
+test/1k2013spring/1524.js:52:3: [definite] The conditional expression is always false
+test/1k2013spring/1524.js:52:3: [definite] The conditional expression is always false
+test/1k2013spring/1524.js:52:3: [definite] The conditional expression is always false
+test/1k2013spring/1524.js:52:3: [definite] Reading absent property requestAnimationFrame
+test/1k2013spring/1524.js:53:3: [definite] Reading absent property webkitRequestAnimationFrame
+test/1k2013spring/1524.js:54:3: [definite] Reading absent property mozRequestAnimationFrame
+test/1k2013spring/1524.js:103:3: [definite] Too few parameters to function CanvasRenderingContext2D.prototype.arc
+test/1k2013spring/1524.js:20:19: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/shim.js:8:9: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/shim.js:8:9: [maybe] TypeError, call to non-function
+test/1k2013spring/shim.js:9:1: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/shim.js:6:9: [maybe] Reading absent property body
+test/1k2013spring/shim.js:8:9: [maybe] Reading absent property getContext
+test/1k2013spring/shim.js:9:1: [maybe] Reading absent property body
+test/1k2013spring/shim.js:7:9: [maybe] Reading absent property (computed name)
+test/1k2013spring/shim.js,test/1k2013spring/1524.js: [maybe] Uncaught exception, constructed at [test/1k2013spring/1524.js:20:19, test/1k2013spring/shim.js:8:9, test/1k2013spring/shim.js:9:1]

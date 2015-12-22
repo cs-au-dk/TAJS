@@ -1,0 +1,17 @@
+test/1k2012love/1115.js:36:25: [definite] The assignment to U has no effect
+test/1k2012love/1115.js:37:35: [definite] Variable U is null/undefined
+test/1k2012love/1115.js:37:46: [definite] Variable U is null/undefined
+test/1k2012love/1115.js:37:48: [definite] Variable U is null/undefined
+test/1k2012love/shim.js:6:5: [definite] The variable b is never used
+test/1k2012love/shim.js:8:9: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/shim.js:8:9: [maybe] TypeError, call to non-function
+test/1k2012love/shim.js:9:1: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/shim.js:6:9: [maybe] Reading absent property body
+test/1k2012love/shim.js:8:9: [maybe] Reading absent property getContext
+test/1k2012love/shim.js:9:1: [maybe] Reading absent property body
+test/1k2012love/1115.js:36:25: [maybe] Converting primitive string to object
+test/1k2012love/1115.js:36:25: [maybe] Reading absent property (computed name)
+test/1k2012love/1115.js:37:31: [maybe] Converting undefined to string
+test/1k2012love/1115.js:37:46: [maybe] Conversion to number yields NaN
+test/1k2012love/shim.js:7:9: [maybe] Reading absent property (computed name)
+test/1k2012love/shim.js,test/1k2012love/1115.js: [maybe] Uncaught exception, constructed at [test/1k2012love/shim.js:8:9, test/1k2012love/shim.js:9:1]

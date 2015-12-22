@@ -1,6 +1,6 @@
-fg2: function()
+fg2: <main> function()
   block 0: [entry]
-    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0031.js:1:1)
+    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0031.js)
     node 1: vardecl['x']* (test/flowgraphbuilder/flowgraph_builder0031.js:1:5)
     node 2: vardecl['y']* (test/flowgraphbuilder/flowgraph_builder0031.js:1:12)
     node 3: vardecl['z']* (test/flowgraphbuilder/flowgraph_builder0031.js:1:32)
@@ -25,10 +25,10 @@ fg2: function()
     node 14: write-variable[v7,'z']* (test/flowgraphbuilder/flowgraph_builder0031.js:1:36)
     ->[block 5]
   block 5: [exit-ordinary]
-    node 15: return[v1] (test/flowgraphbuilder/flowgraph_builder0031.js:1:1)
+    node 15: return[v1] (test/flowgraphbuilder/flowgraph_builder0031.js)
     ->[]
   block 6: [exit-exceptional]
-    node 16: exceptional-return (test/flowgraphbuilder/flowgraph_builder0031.js:1:1)
+    node 16: exceptional-return (test/flowgraphbuilder/flowgraph_builder0031.js)
     ->[]
 
 test/flowgraphbuilder/flowgraph_builder0031.js:1:16: [definite] The conditional expression is always true

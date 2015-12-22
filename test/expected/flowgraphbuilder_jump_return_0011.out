@@ -1,6 +1,6 @@
-fg2: function()
+fg2: <main> function()
   block 0: [entry]
-    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder_jump_return_0011.js:1:1)
+    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder_jump_return_0011.js)
     node 1: vardecl['v']* (test/flowgraphbuilder/flowgraph_builder_jump_return_0011.js:1:5)
     node 2: function-decl[function f(),-] (test/flowgraphbuilder/flowgraph_builder_jump_return_0011.js:2:1)
     ->[block 1]
@@ -18,10 +18,10 @@ fg2: function()
     node 7: call[v4,v5,v6,-]* (test/flowgraphbuilder/flowgraph_builder_jump_return_0011.js:12:1)
     ->[block 5]
   block 5: [exit-ordinary]
-    node 8: return[v1] (test/flowgraphbuilder/flowgraph_builder_jump_return_0011.js:1:1)
+    node 8: return[v1] (test/flowgraphbuilder/flowgraph_builder_jump_return_0011.js)
     ->[]
   block 6: [exit-exceptional]
-    node 9: exceptional-return (test/flowgraphbuilder/flowgraph_builder_jump_return_0011.js:1:1)
+    node 9: exceptional-return (test/flowgraphbuilder/flowgraph_builder_jump_return_0011.js)
     ->[]
 function f()
   block 7: [entry]
@@ -67,10 +67,10 @@ function f()
     node 25: end-with* (test/flowgraphbuilder/flowgraph_builder_jump_return_0011.js:7:11)
     ->[block 21]
   block 20: [exit-ordinary]
-    node 26: return[v1] (test/flowgraphbuilder/flowgraph_builder_jump_return_0011.js:10:1)
+    node 26: return[v1] (test/flowgraphbuilder/flowgraph_builder_jump_return_0011.js:2:1)
     ->[]
   block 21: [exit-exceptional]
-    node 27: exceptional-return (test/flowgraphbuilder/flowgraph_builder_jump_return_0011.js:10:1)
+    node 27: exceptional-return (test/flowgraphbuilder/flowgraph_builder_jump_return_0011.js:2:1)
     ->[]
 
 test/flowgraphbuilder/flowgraph_builder_jump_return_0011.js:1:5: [definite] The variable v is never used

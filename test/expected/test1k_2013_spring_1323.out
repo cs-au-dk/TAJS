@@ -1,0 +1,50 @@
+test/1k2013spring/1323.js:7:2: [definite] The assignment to a has no effect
+test/1k2013spring/1323.js:58:45: [definite] Dead assignment, property r is never read
+test/1k2013spring/shim.js:6:5: [definite] The variable b is never used
+test/1k2013spring/1323.js:7:6: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1323.js:7:6: [maybe] TypeError, call to non-function
+test/1k2013spring/1323.js:13:14: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1323.js:14:11: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1323.js:17:11: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1323.js:17:25: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1323.js:18:11: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1323.js:18:25: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1323.js:23:5: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1323.js:23:19: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1323.js:24:5: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1323.js:24:19: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1323.js:26:5: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1323.js:26:19: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1323.js:27:5: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1323.js:27:19: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1323.js:31:4: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1323.js:39:18: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1323.js:40:15: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1323.js:40:28: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/shim.js:8:9: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/shim.js:8:9: [maybe] TypeError, call to non-function
+test/1k2013spring/shim.js:9:1: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1323.js:7:6: [maybe] Reading absent property getContext
+test/1k2013spring/shim.js:6:9: [maybe] Reading absent property body
+test/1k2013spring/shim.js:8:9: [maybe] Reading absent property getContext
+test/1k2013spring/shim.js:9:1: [maybe] Reading absent property body
+test/1k2013spring/1323.js:13:14: [maybe] Reading absent property (computed name)
+test/1k2013spring/1323.js:14:11: [maybe] Reading absent property (computed name)
+test/1k2013spring/1323.js:17:11: [maybe] Reading absent property (computed name)
+test/1k2013spring/1323.js:17:25: [maybe] Reading absent property (computed name)
+test/1k2013spring/1323.js:18:11: [maybe] Reading absent property (computed name)
+test/1k2013spring/1323.js:18:25: [maybe] Reading absent property (computed name)
+test/1k2013spring/1323.js:23:5: [maybe] Reading absent property (computed name)
+test/1k2013spring/1323.js:23:19: [maybe] Reading absent property (computed name)
+test/1k2013spring/1323.js:24:5: [maybe] Reading absent property (computed name)
+test/1k2013spring/1323.js:24:19: [maybe] Reading absent property (computed name)
+test/1k2013spring/1323.js:26:5: [maybe] Reading absent property (computed name)
+test/1k2013spring/1323.js:26:19: [maybe] Reading absent property (computed name)
+test/1k2013spring/1323.js:27:5: [maybe] Reading absent property (computed name)
+test/1k2013spring/1323.js:27:19: [maybe] Reading absent property (computed name)
+test/1k2013spring/1323.js:31:4: [maybe] Reading absent property (computed name)
+test/1k2013spring/1323.js:39:18: [maybe] Reading absent property (computed name)
+test/1k2013spring/1323.js:40:15: [maybe] Reading absent property (computed name)
+test/1k2013spring/1323.js:40:28: [maybe] Reading absent property (computed name)
+test/1k2013spring/shim.js:7:9: [maybe] Reading absent property (computed name)
+test/1k2013spring/shim.js,test/1k2013spring/1323.js: [maybe] Uncaught exception, constructed at [test/1k2013spring/1323.js:7:6, test/1k2013spring/1323.js:13:14, test/1k2013spring/1323.js:14:11, test/1k2013spring/1323.js:17:11, test/1k2013spring/1323.js:17:25, test/1k2013spring/1323.js:18:11, test/1k2013spring/1323.js:18:25, test/1k2013spring/1323.js:23:5, test/1k2013spring/1323.js:23:19, test/1k2013spring/1323.js:24:5, test/1k2013spring/1323.js:24:19, test/1k2013spring/1323.js:26:5, test/1k2013spring/1323.js:26:19, test/1k2013spring/1323.js:27:5, test/1k2013spring/1323.js:27:19, test/1k2013spring/1323.js:31:4, test/1k2013spring/1323.js:39:18, test/1k2013spring/1323.js:40:15, test/1k2013spring/1323.js:40:28, test/1k2013spring/shim.js:8:9, test/1k2013spring/shim.js:9:1]

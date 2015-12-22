@@ -2,6 +2,7 @@ package dk.brics.tajs.test;
 
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.util.AnalysisException;
+import dk.brics.tajs.util.ParseError;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -379,7 +380,7 @@ public class TestFlowgraphBuilder {
         Misc.checkSystemOutput();
     }
 
-    @Test(expected = AnalysisException.class /* unnamed function statement */)
+    @Test(expected = ParseError.class /* unnamed function statement */)
     public void flowgraphbuilder_0040() throws Exception {
         Misc.init();
         String[] args = {"test/flowgraphbuilder/flowgraph_builder0040.js"};
@@ -1438,8 +1439,7 @@ public class TestFlowgraphBuilder {
         Misc.checkSystemOutput();
     }
 
-    @Ignore // FIXME bad lazy recover when using unevalizer.
-    // TODO: Conflates this.p to either undef or "left", which gives a false warning about converting undef to string.
+    @Ignore // inspect output
     @Test
     public void flowgraphbuilder_0156() throws Exception {
         Misc.init();
@@ -1461,7 +1461,6 @@ public class TestFlowgraphBuilder {
         Misc.checkSystemOutput();
     }
 
-    @Ignore // FIXME bad lazy recover when using unevalizer.
     @Test
     public void flowgraphbuilder_0156b() throws Exception {
         Misc.init();
@@ -1648,7 +1647,6 @@ public class TestFlowgraphBuilder {
         Misc.checkSystemOutput();
     }
 
-    @Ignore // TODO: Insert more assume nodes
     @Test
     public void flowgraphbuilder_0174() throws Exception {
         Misc.init();
@@ -1658,8 +1656,7 @@ public class TestFlowgraphBuilder {
         Misc.checkSystemOutput();
     }
 
-    @Ignore // TODO: The unevalizer needs to return undefined for this.
-    @Test
+    @Test(expected = AssertionError.class /* GitHub #146 */)
     public void flowgraphbuilder_0175() throws Exception {
         Misc.init();
         Misc.captureSystemOutput();
@@ -1769,7 +1766,6 @@ public class TestFlowgraphBuilder {
         Misc.checkSystemOutput();
     }
 
-    @Ignore // TODO: valueOf.
     @Test
     public void flowgraphbuilder_0186() throws Exception {
         Misc.init();
@@ -2501,8 +2497,7 @@ public class TestFlowgraphBuilder {
         );
     }
 
-    @Ignore // See GitHub #194
-    @Test
+    @Test(expected = AssertionError.class /* GitHub #194 */)
     public void forwardSlashRegExpConstructor () {
         Misc.init();
         Misc.run(new String[]{"test/flowgraphbuilder/forwardSlashRegExpConstructor.js"});
@@ -2514,7 +2509,7 @@ public class TestFlowgraphBuilder {
         Misc.run(new String[]{"test/flowgraphbuilder/forwardSlashRegExpLiteral.js"});
     }
 
-    @Test(expected = AnalysisException.class)
+    @Test(expected = ParseError.class)
     public void forwardSlashRegexp_syntaxError () {
         Misc.init();
         Misc.runSource(//
@@ -2591,7 +2586,7 @@ public class TestFlowgraphBuilder {
         Misc.checkSystemOutput();
     }
 
-    @Test(expected = AnalysisException.class)
+    @Test(expected = ParseError.class)
     public void labelledLabelledLoop () {
         Misc.init();
         Misc.runSource(
@@ -2659,7 +2654,27 @@ public class TestFlowgraphBuilder {
                 "   'BODY2';",
                 "} while ('COND')",
                 "'POST'; "
-                );
+        );
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void flowgraphbuilder_hostFunctionSources1() {
+        Misc.init();
+        Misc.captureSystemOutput();
+        Misc.runSourceWithNamedFile("flowgraphbuilder_hostFunctionSources1",
+                "'BODY'"
+        );
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void flowgraphbuilder_hostFunctionSources2() {
+        Misc.init();
+        Misc.captureSystemOutput();
+        Misc.runSourceWithNamedFile("flowgraphbuilder_hostFunctionSources2",
+                "function f(){'BODY'}"
+        );
         Misc.checkSystemOutput();
     }
 }

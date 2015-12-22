@@ -9,7 +9,6 @@ import org.junit.Test;
 @SuppressWarnings("static-method")
 public class JSString_indexof_lastindexof_Test {
 
-	// TODO add more tests. Current tests almost only tests the java.lang.String.indexOf-implementation.
 	@Before
 	public void before() {
 		Main.reset();

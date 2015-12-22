@@ -1,9 +1,9 @@
 package dk.brics.tajs.test.js2flowgraph;
 
 import com.google.javascript.jscomp.parsing.parser.trees.FunctionDeclarationTree;
-import dk.brics.tajs.htmlparser.JavaScriptSource;
 import dk.brics.tajs.js2flowgraph.ASTInfo;
 import dk.brics.tajs.js2flowgraph.FlowGraphBuilder;
+import dk.brics.tajs.flowgraph.JavaScriptSource;
 import dk.brics.tajs.util.Collections;
 import org.junit.Test;
 
@@ -255,7 +255,7 @@ public class TestASTInfo {
     }
 
     private ASTInfo makeInfo(String source) {
-        FlowGraphBuilder builder = new FlowGraphBuilder();
+        FlowGraphBuilder builder = new FlowGraphBuilder("dummy.js");
         builder.transformStandAloneCode(JavaScriptSource.makeFileCode("dummy.js", source));
         builder.close();
         return builder.getAstInfo();

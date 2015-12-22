@@ -1,0 +1,40 @@
+test/1k2012love/1113.js:1:320: [definite] Too few parameters to function CanvasRenderingContext2D.prototype.arc
+test/1k2012love/1113.js:1:342: [definite] Too few parameters to function CanvasRenderingContext2D.prototype.arc
+test/1k2012love/1113.js:1:1021: [definite] Too few parameters to function CanvasRenderingContext2D.prototype.fillRect
+test/1k2012love/shim.js,test/1k2012love/1113.js: [definite] Too few parameters to function CanvasRenderingContext2D.prototype.fillRect
+test/1k2012love/shim.js:6:5: [definite] The variable b is never used
+test/1k2012love/1113.js:1:420: [maybe] ReferenceError, reading absent variable F
+test/1k2012love/1113.js:1:431: [maybe] ReferenceError, reading absent variable T
+test/1k2012love/1113.js:1:566: [maybe] TypeError, call to non-function
+test/1k2012love/1113.js:1:580: [maybe] TypeError, call to non-function
+test/1k2012love/1113.js:1:591: [maybe] TypeError, call to non-function
+test/1k2012love/1113.js:1:620: [maybe] ReferenceError, reading absent variable F
+test/1k2012love/1113.js:1:673: [maybe] ReferenceError, reading absent variable F
+test/1k2012love/1113.js:1:694: [maybe] ReferenceError, reading absent variable F
+test/1k2012love/1113.js:1:812: [maybe] ReferenceError, reading absent variable T
+test/1k2012love/1113.js:1:1014: [maybe] ReferenceError, reading absent variable F
+test/1k2012love/1113.js:1:1021: [maybe] ReferenceError, reading absent variable F
+test/1k2012love/shim.js:8:9: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/shim.js:8:9: [maybe] TypeError, call to non-function
+test/1k2012love/shim.js:9:1: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1113.js:1:566: [maybe] Reading absent property s
+test/1k2012love/1113.js:1:580: [maybe] Reading absent property s
+test/1k2012love/1113.js:1:591: [maybe] Reading absent property s
+test/1k2012love/shim.js:6:9: [maybe] Reading absent property body
+test/1k2012love/shim.js:8:9: [maybe] Reading absent property getContext
+test/1k2012love/shim.js:9:1: [maybe] Reading absent property body
+test/1k2012love/1113.js:1:210: [maybe] The variable a has values with different types
+test/1k2012love/1113.js:1:254: [maybe] The variable b has values with different types
+test/1k2012love/1113.js:1:758: [maybe] Reading absent property (computed name)
+test/1k2012love/1113.js:1:777: [maybe] Converting primitive number to object
+test/1k2012love/1113.js:1:805: [maybe] Conversion to number yields NaN
+test/1k2012love/1113.js:1:839: [maybe] Conversion to number yields NaN
+test/1k2012love/1113.js:1:861: [maybe] Conversion to number yields NaN
+test/1k2012love/1113.js:1:880: [maybe] Conversion to number yields NaN
+test/1k2012love/1113.js:1:882: [maybe] Reading absent property (computed name)
+test/1k2012love/1113.js:1:923: [maybe] Conversion to number yields NaN
+test/1k2012love/1113.js:1:925: [maybe] Reading absent property (computed name)
+test/1k2012love/1113.js:1:1021: [maybe] Conversion to number yields NaN
+test/1k2012love/shim.js:7:9: [maybe] Reading absent property (computed name)
+test/1k2012love/shim.js,test/1k2012love/1113.js: [maybe] Conversion to number yields NaN
+test/1k2012love/shim.js,test/1k2012love/1113.js: [maybe] Uncaught exception, constructed at [test/1k2012love/1113.js:1:420, test/1k2012love/1113.js:1:431, test/1k2012love/1113.js:1:566, test/1k2012love/1113.js:1:580, test/1k2012love/1113.js:1:591, test/1k2012love/1113.js:1:620, test/1k2012love/1113.js:1:673, test/1k2012love/1113.js:1:694, test/1k2012love/1113.js:1:812, test/1k2012love/1113.js:1:1014, test/1k2012love/1113.js:1:1021, test/1k2012love/shim.js:8:9, test/1k2012love/shim.js:9:1]

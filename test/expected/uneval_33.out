@@ -4,4 +4,4 @@ test/uneval/uneval33.html:2:1: [definite] The variable x is never used
 test/uneval/uneval33.html:2:1: [definite] The variable y is never used
 test/uneval/uneval33.html:3:28: [definite] Unreachable code
 test/uneval/uneval33.html:11:1: [definite] Unreachable code
-test/uneval/uneval33.html:1:15: [maybe] Uncaught exception, constructed at [test/uneval/uneval33.html:3:12]
+test/uneval/uneval33.html: [maybe] Uncaught exception, constructed at [test/uneval/uneval33.html:3:12]

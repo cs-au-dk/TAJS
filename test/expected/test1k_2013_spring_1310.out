@@ -1,0 +1,22 @@
+test/1k2013spring/1310.js:21:17: [definite] The assignment to _t has no effect
+test/1k2013spring/1310.js:51:18: [definite] The assignment to y has no effect
+test/1k2013spring/1310.js:80:18: [definite] The assignment to y has no effect
+test/1k2013spring/1310.js:10:18: [definite] Dead assignment, property z is never read
+test/1k2013spring/1310.js:35:36: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1310.js:53:24: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1310.js:82:21: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1310.js:83:25: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1310.js:83:39: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/shim.js:8:9: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/shim.js:8:9: [maybe] TypeError, call to non-function
+test/1k2013spring/shim.js:9:1: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/shim.js:6:9: [maybe] Reading absent property body
+test/1k2013spring/shim.js:8:9: [maybe] Reading absent property getContext
+test/1k2013spring/shim.js:9:1: [maybe] Reading absent property body
+test/1k2013spring/1310.js:53:24: [maybe] Reading absent property (computed name)
+test/1k2013spring/1310.js:53:24: [maybe] Reading absent property (computed name)
+test/1k2013spring/1310.js:82:21: [maybe] Reading absent property (computed name)
+test/1k2013spring/1310.js:82:21: [maybe] Reading absent property (computed name)
+test/1k2013spring/1310.js:83:25: [maybe] Reading absent property (computed name)
+test/1k2013spring/shim.js:7:9: [maybe] Reading absent property (computed name)
+test/1k2013spring/shim.js,test/1k2013spring/1310.js: [maybe] Uncaught exception, constructed at [test/1k2013spring/1310.js:35:36, test/1k2013spring/1310.js:53:24, test/1k2013spring/1310.js:82:21, test/1k2013spring/1310.js:83:25, test/1k2013spring/1310.js:83:39, test/1k2013spring/shim.js:8:9, test/1k2013spring/shim.js:9:1]

@@ -1,0 +1,49 @@
+test/1k2012love/1251.js:179:12: [definite] The conditional expression is always false
+test/1k2012love/1251.js:179:12: [definite] The conditional expression is always false
+test/1k2012love/1251.js:179:12: [definite] The conditional expression is always false
+test/1k2012love/1251.js:179:12: [definite] The conditional expression is always false
+test/1k2012love/1251.js:179:12: [definite] The conditional expression is always false
+test/1k2012love/1251.js:179:12: [definite] Reading absent property requestAnimationFrame
+test/1k2012love/1251.js:180:5: [definite] Reading absent property webkitRequestAnimationFrame
+test/1k2012love/1251.js:181:5: [definite] Reading absent property mozRequestAnimationFrame
+test/1k2012love/1251.js:182:5: [definite] Reading absent property oRequestAnimationFrame
+test/1k2012love/1251.js:183:5: [definite] Reading absent property msRequestAnimationFrame
+test/1k2012love/1251.js:75:9: [definite] The variable hourHandHeight is never used
+test/1k2012love/1251.js:97:9: [definite] The variable minuteHandHeight is never used
+test/1k2012love/1251.js:119:9: [definite] The variable secondHandHeight is never used
+test/1k2012love/1251.js:178:28: [definite] The variable callback is never used
+test/1k2012love/shim.js:6:5: [definite] The variable b is never used
+test/1k2012love/shim.js:8:5: [definite] The variable a is never used
+test/1k2012love/1251.js:3:14: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1251.js:3:14: [maybe] TypeError, call to non-function
+test/1k2012love/1251.js:145:14: [maybe] TypeError, call to non-function
+test/1k2012love/shim.js:8:9: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/shim.js:8:9: [maybe] TypeError, call to non-function
+test/1k2012love/shim.js:9:1: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1251.js:3:14: [maybe] Reading absent property getContext
+test/1k2012love/1251.js:6:12: [maybe] Reading absent property width
+test/1k2012love/1251.js:7:13: [maybe] Reading absent property height
+test/1k2012love/1251.js:145:14: [maybe] Reading absent property getContext
+test/1k2012love/1251.js:147:12: [maybe] Reading absent property width
+test/1k2012love/1251.js:148:13: [maybe] Reading absent property height
+test/1k2012love/shim.js:6:9: [maybe] Reading absent property body
+test/1k2012love/shim.js:8:9: [maybe] Reading absent property getContext
+test/1k2012love/shim.js:9:1: [maybe] Reading absent property body
+test/1k2012love/1251.js:8:14: [maybe] Conversion from string to number yields NaN
+test/1k2012love/1251.js:8:14: [maybe] Conversion to number yields NaN
+test/1k2012love/1251.js:8:14: [maybe] The variable width has values with different types
+test/1k2012love/1251.js:9:14: [maybe] Conversion from string to number yields NaN
+test/1k2012love/1251.js:9:14: [maybe] Conversion to number yields NaN
+test/1k2012love/1251.js:9:14: [maybe] The variable height has values with different types
+test/1k2012love/1251.js:19:2: [maybe] Conversion from string to number yields NaN
+test/1k2012love/1251.js:19:2: [maybe] Conversion to number yields NaN
+test/1k2012love/1251.js:19:24: [maybe] The variable width has values with different types
+test/1k2012love/1251.js:19:30: [maybe] The variable height has values with different types
+test/1k2012love/1251.js:149:14: [maybe] Conversion from string to number yields NaN
+test/1k2012love/1251.js:149:14: [maybe] Conversion to number yields NaN
+test/1k2012love/1251.js:149:14: [maybe] The variable width has values with different types
+test/1k2012love/1251.js:150:14: [maybe] Conversion from string to number yields NaN
+test/1k2012love/1251.js:150:14: [maybe] Conversion to number yields NaN
+test/1k2012love/1251.js:150:14: [maybe] The variable height has values with different types
+test/1k2012love/shim.js:7:9: [maybe] Reading absent property (computed name)
+test/1k2012love/shim.js,test/1k2012love/1251.js: [maybe] Uncaught exception, constructed at [test/1k2012love/1251.js:3:14, test/1k2012love/1251.js:145:14, test/1k2012love/shim.js:8:9, test/1k2012love/shim.js:9:1]

@@ -1,0 +1,17 @@
+test/1k2013spring/1511.js:127:3: [definite] Too many parameters to function Window.setTimeout
+test/1k2013spring/1511.js:128:16: [definite] Variable O is null/undefined
+test/1k2013spring/1511.js:70:4: [definite] Too few parameters to function CanvasRenderingContext2D.prototype.arc
+test/1k2013spring/1511.js:42:1: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1511.js:49:2: [maybe] TypeError, call to non-function
+test/1k2013spring/shim.js:8:9: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/shim.js:8:9: [maybe] TypeError, call to non-function
+test/1k2013spring/shim.js:9:1: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1511.js:49:2: [maybe] Reading absent property focus
+test/1k2013spring/shim.js:6:9: [maybe] Reading absent property body
+test/1k2013spring/shim.js:8:9: [maybe] Reading absent property getContext
+test/1k2013spring/shim.js:9:1: [maybe] Reading absent property body
+test/1k2013spring/1511.js:66:36: [maybe] Converting primitive number to object
+test/1k2013spring/1511.js:72:8: [maybe] The variable f has values with different types
+test/1k2013spring/1511.js:96:7: [maybe] The variable f has values with different types
+test/1k2013spring/shim.js:7:9: [maybe] Reading absent property (computed name)
+test/1k2013spring/shim.js,test/1k2013spring/1511.js: [maybe] Uncaught exception, constructed at [test/1k2013spring/1511.js:42:1, test/1k2013spring/1511.js:49:2, test/1k2013spring/shim.js:8:9, test/1k2013spring/shim.js:9:1]

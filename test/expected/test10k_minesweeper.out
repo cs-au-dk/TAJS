@@ -45,7 +45,7 @@ test/10k/minesweeper.html:108:16: [maybe] Reading absent property a
 test/10k/minesweeper.html:109:15: [maybe] Reading absent property a
 test/10k/minesweeper.html:134:31: [maybe] Reading absent property innerHTML
 test/10k/minesweeper.html:164:13: [maybe] Reading absent property h
-test/10k/minesweeper.html:28:35: [maybe] Uncaught exception, constructed at [test/10k/minesweeper.html:37:71, test/10k/minesweeper.html:46:13, test/10k/minesweeper.html:47:13, test/10k/minesweeper.html:69:17, test/10k/minesweeper.html:70:15, test/10k/minesweeper.html:81:124, test/10k/minesweeper.html:92:23, test/10k/minesweeper.html:93:33, test/10k/minesweeper.html:106:22, test/10k/minesweeper.html:107:23, test/10k/minesweeper.html:108:9, test/10k/minesweeper.html:108:16, test/10k/minesweeper.html:164:13, test/10k/minesweeper.html:165:13, test/10k/minesweeper.html:166:123]
+test/10k/minesweeper.html: [maybe] Uncaught exception, constructed at [test/10k/minesweeper.html:37:71, test/10k/minesweeper.html:46:13, test/10k/minesweeper.html:47:13, test/10k/minesweeper.html:69:17, test/10k/minesweeper.html:70:15, test/10k/minesweeper.html:81:124, test/10k/minesweeper.html:92:23, test/10k/minesweeper.html:93:33, test/10k/minesweeper.html:106:22, test/10k/minesweeper.html:107:23, test/10k/minesweeper.html:108:9, test/10k/minesweeper.html:108:16, test/10k/minesweeper.html:164:13, test/10k/minesweeper.html:165:13, test/10k/minesweeper.html:166:123]
 test/10k/minesweeper.html:34:7: [maybe] The variable a has values with different types
 test/10k/minesweeper.html:35:9: [maybe] The variable a has values with different types
 test/10k/minesweeper.html:36:19: [maybe] The variable a has values with different types
@@ -61,10 +61,12 @@ test/10k/minesweeper.html:69:17: [maybe] Reading absent property (computed name)
 test/10k/minesweeper.html:69:19: [maybe] The variable a has values with different types
 test/10k/minesweeper.html:78:26: [maybe] The variable a has values with different types
 test/10k/minesweeper.html:81:26: [maybe] Conversion from string to number yields NaN
+test/10k/minesweeper.html:81:26: [maybe] Converting object to number
 test/10k/minesweeper.html:81:26: [maybe] The variable a has values with different types
 test/10k/minesweeper.html:81:33: [maybe] The variable c has values with different types
 test/10k/minesweeper.html:81:38: [maybe] The variable a has values with different types
 test/10k/minesweeper.html:81:45: [maybe] Conversion from string to number yields NaN
+test/10k/minesweeper.html:81:45: [maybe] Converting object to number
 test/10k/minesweeper.html:81:45: [maybe] The variable c has values with different types
 test/10k/minesweeper.html:81:62: [maybe] Conversion to number yields NaN
 test/10k/minesweeper.html:81:74: [maybe] Conversion to number yields NaN

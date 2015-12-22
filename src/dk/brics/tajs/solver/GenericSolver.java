@@ -23,7 +23,6 @@ import dk.brics.tajs.flowgraph.Function;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.solver.IAnalysisLatticeElement.MergeResult;
 import dk.brics.tajs.util.AnalysisException;
-import dk.brics.tajs.util.Pair;
 import net.htmlparser.jericho.Source;
 import org.apache.log4j.Logger;
 
@@ -79,25 +78,25 @@ public class GenericSolver<StateType extends IState<StateType, ContextType, Call
         /**
          * Returns the node currently being visited.
          */
-        public AbstractNode getCurrentNode() {
+        public AbstractNode getNode() {
             if (current_node == null)
-                throw new AnalysisException("Unexpected call to getCurrentNode");
+                throw new AnalysisException("Unexpected call to getNode");
             return current_node;
         }
 
         /**
          * Returns the current abstract state.
          */
-        public StateType getCurrentState() {
+        public StateType getState() {
             if (current_state == null)
-                throw new AnalysisException("Unexpected call to getCurrentState");
+                throw new AnalysisException("Unexpected call to getState");
             return current_state;
         }
 
         /**
          * Sets the current abstract state.
          */
-        public void setCurrentState(StateType state) {
+        public void setState(StateType state) {
             current_state = state;
         }
 
@@ -181,7 +180,7 @@ public class GenericSolver<StateType extends IState<StateType, ContextType, Call
          * Ignored if in scan phase.
          */
         public void propagateToFunctionEntry(AbstractNode call_node, ContextType caller_context, StateType edge_state,
-                                             ContextType edge_context, BasicBlock callee_entry) {
+                                             ContextType edge_context, BasicBlock callee_entry, boolean implicit) {
             if (messages_enabled)
                 return;
             CallGraph<StateType, ContextType, CallEdgeType> cg = the_analysis_lattice_element.getCallGraph();
@@ -190,7 +189,7 @@ public class GenericSolver<StateType extends IState<StateType, ContextType, Call
                 // new flow at call edge, transform it relative to the function entry states and contexts
                 ContextType callee_context = edge_state.transform(cg.getCallEdge(call_node, caller_context, callee_entry, edge_context),
                         edge_context, the_analysis_lattice_element.getStates(callee_entry), callee_entry);
-                cg.addSource(call_node, caller_context, callee_entry, callee_context, edge_context);
+                cg.addSource(call_node, caller_context, callee_entry, callee_context, edge_context, implicit);
                 // propagate transformed state into function entry
                 propagate(edge_state, callee_entry, callee_context, true);
                 // charge the call edge  
@@ -200,7 +199,7 @@ public class GenericSolver<StateType extends IState<StateType, ContextType, Call
                 AbstractNode stored_node = current_node;
                 current_state = null;
                 current_node = null;
-                analysis.getNodeTransferFunctions().transferReturn(call_node, callee_entry, caller_context, callee_context, edge_context);
+                analysis.getNodeTransferFunctions().transferReturn(call_node, callee_entry, caller_context, callee_context, edge_context, implicit);
                 current_state = stored_state;
                 current_node = stored_node;
             }
@@ -210,11 +209,11 @@ public class GenericSolver<StateType extends IState<StateType, ContextType, Call
          * Transforms the given state inversely according to the call edge.
          */
         public void returnFromFunctionExit(StateType return_state, AbstractNode call_node, ContextType caller_context,
-                                           BasicBlock callee_entry, ContextType edge_context) {
+                                           BasicBlock callee_entry, ContextType edge_context, boolean implicit) {
             CallEdgeType edge = the_analysis_lattice_element.getCallGraph().getCallEdge(call_node, caller_context, callee_entry, edge_context);
             if (return_state.transformInverse(edge, callee_entry, return_state.getContext())) {
                 // need to re-process the incoming flow at function entry
-                propagateToFunctionEntry(call_node, caller_context, edge.getState(), edge_context, callee_entry);
+                propagateToFunctionEntry(call_node, caller_context, edge.getState(), edge_context, callee_entry, implicit);
             }
         }
 
@@ -325,7 +324,7 @@ public class GenericSolver<StateType extends IState<StateType, ContextType, Call
                 if (log.isDebugEnabled())
                     log.debug("Visiting node " + current_node.getIndex() + ": "
                             + current_node + " at " + current_node.getSourceLocation());
-                analysis.getNodeTransferFunctions().transfer(current_node, current_state);
+                analysis.getNodeTransferFunctions().transfer(current_node);
                 analysis.getMonitoring().visitNodeTransfer(current_node);
                 if (current_state.isNone()) {
                     log.debug("No non-exceptional flow");
@@ -346,9 +345,9 @@ public class GenericSolver<StateType extends IState<StateType, ContextType, Call
                 }
             }
             if (!deps.isFunctionActive(BlockAndContext.makeEntry(block, context)))
-                for (Pair<NodeAndContext<ContextType>, ContextType> nc : the_analysis_lattice_element.getCallGraph().getSources(BlockAndContext.makeEntry(block, context))) {
+                for (CallGraph.ReverseEdge<ContextType> re : the_analysis_lattice_element.getCallGraph().getSources(BlockAndContext.makeEntry(block, context))) {
                     // callee has become inactive, so discharge the call edge
-                    deps.dischargeCallEdge(nc.getFirst().getNode().getBlock(), nc.getFirst().getContext(), nc.getSecond(), BlockAndContext.makeEntry(block, context));
+                    deps.dischargeCallEdge(re.getCallNode().getBlock(), re.getCallerContext(), re.getEdgeContext(), BlockAndContext.makeEntry(block, context));
                 }
         }
         if (!terminatedEarly)
@@ -389,7 +388,7 @@ public class GenericSolver<StateType extends IState<StateType, ContextType, Call
                         if (current_state.isNone())
                             continue block_loop; // unreachable, so skip the rest of the block
                         analysis.getMonitoring().visitReachableNode(node);
-                        analysis.getNodeTransferFunctions().transfer(node, current_state);
+                        analysis.getNodeTransferFunctions().transfer(node);
                     }
                     analysis.getMonitoring().visitPostBlockTransfer(block, current_state);
                 }

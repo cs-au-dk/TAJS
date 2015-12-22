@@ -42,7 +42,7 @@ public class Exceptions {
         if (Options.get().isExceptionsDisabled())
             return;
         state = state.clone();
-        throwException(state, makeException(state, InitialStateBuilder.TYPE_ERROR_PROTOTYPE, c), c, c.getCurrentNode());
+        throwException(state, makeException(state, InitialStateBuilder.TYPE_ERROR_PROTOTYPE, c), c, c.getNode());
     }
 
     /**
@@ -54,7 +54,7 @@ public class Exceptions {
         if (Options.get().isExceptionsDisabled())
             return;
         state = state.clone();
-        throwException(state, makeException(state, InitialStateBuilder.REFERENCE_ERROR_PROTOTYPE, c), c, c.getCurrentNode());
+        throwException(state, makeException(state, InitialStateBuilder.REFERENCE_ERROR_PROTOTYPE, c), c, c.getNode());
     }
 
     /**
@@ -66,7 +66,7 @@ public class Exceptions {
         if (Options.get().isExceptionsDisabled())
             return;
         state = state.clone();
-        throwException(state, makeException(state, InitialStateBuilder.RANGE_ERROR_PROTOTYPE, c), c, c.getCurrentNode());
+        throwException(state, makeException(state, InitialStateBuilder.RANGE_ERROR_PROTOTYPE, c), c, c.getNode());
     }
 
     /**
@@ -78,7 +78,7 @@ public class Exceptions {
         if (Options.get().isExceptionsDisabled())
             return;
         state = state.clone();
-        throwException(state, makeException(state, InitialStateBuilder.SYNTAX_ERROR_PROTOTYPE, c), c, c.getCurrentNode());
+        throwException(state, makeException(state, InitialStateBuilder.SYNTAX_ERROR_PROTOTYPE, c), c, c.getNode());
     }
 
     /**
@@ -86,7 +86,7 @@ public class Exceptions {
      * Does not modify the given state.
      */
     private static Value makeException(State state, ObjectLabel prototype, Solver.SolverInterface c) {
-        ObjectLabel ex = new ObjectLabel(c.getCurrentNode(), Kind.ERROR);
+        ObjectLabel ex = new ObjectLabel(c.getNode(), Kind.ERROR);
         state.newObject(ex);
         state.writeInternalPrototype(ex, Value.makeObject(prototype));
         state.writeProperty(ex, "message", Value.makeAnyStr());

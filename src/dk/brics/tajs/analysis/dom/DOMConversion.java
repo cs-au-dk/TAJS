@@ -75,7 +75,7 @@ public class DOMConversion {
         }
 
         if (maybeNonFunction) {
-            c.getMonitoring().addMessage(c.getCurrentNode(), Message.Severity.HIGH, message);
+            c.getMonitoring().addMessage(c.getNode(), Message.Severity.HIGH, message);
         }
 
         return Value.makeObject(result);
@@ -90,7 +90,7 @@ public class DOMConversion {
      * @param prototype    use the prototype chain?
      */
     public static Value toNativeObject(HostObject nativeObject, Value value, boolean prototype, Solver.SolverInterface solverInterface) {
-        State state = solverInterface.getCurrentState();
+        State state = solverInterface.getState();
         boolean bad = false;
         Set<ObjectLabel> matches = Collections.newSet();
 
@@ -154,7 +154,7 @@ public class DOMConversion {
 //        }
         if (bad) {
             String message = "TypeError, argument is not of expected type: " + nativeObject;
-            solverInterface.getMonitoring().addMessage(solverInterface.getCurrentNode(), Message.Severity.HIGH, message);
+            solverInterface.getMonitoring().addMessage(solverInterface.getNode(), Message.Severity.HIGH, message);
         }
 
         return Value.makeObject(matches);

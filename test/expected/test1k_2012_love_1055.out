@@ -1,0 +1,19 @@
+test/1k2012love/shim.js:6:5: [definite] The variable b is never used
+test/1k2012love/1055.js:3:1: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1055.js:46:15: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1055.js:46:23: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1055.js:58:2: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1055.js:84:8: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/shim.js:8:9: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/shim.js:8:9: [maybe] TypeError, call to non-function
+test/1k2012love/shim.js:9:1: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1055.js:3:1: [maybe] Reading absent property style
+test/1k2012love/shim.js:6:9: [maybe] Reading absent property body
+test/1k2012love/shim.js:8:9: [maybe] Reading absent property getContext
+test/1k2012love/shim.js:9:1: [maybe] Reading absent property body
+test/1k2012love/1055.js:18:15: [maybe] Converting primitive number to object
+test/1k2012love/1055.js:41:10: [maybe] Reading absent property (computed name)
+test/1k2012love/1055.js:45:9: [maybe] Reading absent property (computed name)
+test/1k2012love/1055.js:82:8: [maybe] Reading absent property (computed name)
+test/1k2012love/shim.js:7:9: [maybe] Reading absent property (computed name)
+test/1k2012love/shim.js,test/1k2012love/1055.js: [maybe] Uncaught exception, constructed at [test/1k2012love/1055.js:3:1, test/1k2012love/1055.js:46:15, test/1k2012love/1055.js:46:23, test/1k2012love/1055.js:58:2, test/1k2012love/1055.js:84:8, test/1k2012love/shim.js:8:9, test/1k2012love/shim.js:9:1]

@@ -1,0 +1,25 @@
+test/1k2012love/1107.js:63:7: [definite] Too many parameters to function CanvasRenderingContext2D.prototype.beginPath
+test/1k2012love/1107.js:67:7: [definite] Too many parameters to function CanvasRenderingContext2D.prototype.stroke
+test/1k2012love/1107.js:67:14: [definite] Too many parameters to function CanvasRenderingContext2D.prototype.fill
+test/1k2012love/1107.js:67:19: [definite] Too many parameters to function CanvasRenderingContext2D.prototype.closePath
+test/1k2012love/1107.js:65:7: [definite] Too few parameters to function CanvasRenderingContext2D.prototype.arc
+test/1k2012love/1107.js:67:29: [definite] Too few parameters to function CanvasRenderingContext2D.prototype.arc
+test/1k2012love/shim.js:6:5: [definite] The variable b is never used
+test/1k2012love/1107.js:55:21: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1107.js:73:10: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/shim.js:8:9: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/shim.js:8:9: [maybe] TypeError, call to non-function
+test/1k2012love/shim.js:9:1: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/shim.js:6:9: [maybe] Reading absent property body
+test/1k2012love/shim.js:8:9: [maybe] Reading absent property getContext
+test/1k2012love/shim.js:9:1: [maybe] Reading absent property body
+test/1k2012love/1107.js:17:5: [maybe] Converting object to string
+test/1k2012love/1107.js:17:5: [maybe] Converting primitive string to object
+test/1k2012love/1107.js:47:10: [maybe] Reading absent property (computed name)
+test/1k2012love/1107.js:55:11: [maybe] Reading absent property (computed name)
+test/1k2012love/1107.js:71:9: [maybe] Reading absent property (computed name)
+test/1k2012love/1107.js:76:16: [maybe] Converting undefined to string
+test/1k2012love/1107.js:76:17: [maybe] Reading absent property (computed name)
+test/1k2012love/1107.js:76:86: [maybe] Reading absent property (computed name)
+test/1k2012love/shim.js:7:9: [maybe] Reading absent property (computed name)
+test/1k2012love/shim.js,test/1k2012love/1107.js: [maybe] Uncaught exception, constructed at [test/1k2012love/1107.js:55:21, test/1k2012love/1107.js:73:10, test/1k2012love/shim.js:8:9, test/1k2012love/shim.js:9:1]

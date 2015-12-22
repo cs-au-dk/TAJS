@@ -1,6 +1,6 @@
-fg2: function()
+fg2: <main> function()
   block 0: [entry]
-    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0149a.js:1:1)
+    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0149a.js,test/flowgraphbuilder/flowgraph_builder0149b.js)
     node 1: function-decl[function f(),-] (test/flowgraphbuilder/flowgraph_builder0149b.js:1:1)
     ->[block 1]
   block 1:
@@ -14,10 +14,10 @@ fg2: function()
     node 5: call[v2,v3,v4,-]* (test/flowgraphbuilder/flowgraph_builder0149a.js:1:1)
     ->[block 4]
   block 4: [exit-ordinary]
-    node 6: return[v1] (test/flowgraphbuilder/flowgraph_builder0149a.js:1:1)
+    node 6: return[v1] (test/flowgraphbuilder/flowgraph_builder0149a.js,test/flowgraphbuilder/flowgraph_builder0149b.js)
     ->[]
   block 5: [exit-exceptional]
-    node 7: exceptional-return (test/flowgraphbuilder/flowgraph_builder0149a.js:1:1)
+    node 7: exceptional-return (test/flowgraphbuilder/flowgraph_builder0149a.js,test/flowgraphbuilder/flowgraph_builder0149b.js)
     ->[]
 function f()
   block 6: [entry]
@@ -27,10 +27,10 @@ function f()
     node 9: constant[3.0,v1]* (test/flowgraphbuilder/flowgraph_builder0149b.js:1:23)
     ->[block 8]
   block 8: [exit-ordinary]
-    node 10: return[v1] (test/flowgraphbuilder/flowgraph_builder0149b.js:1:26)
+    node 10: return[v1] (test/flowgraphbuilder/flowgraph_builder0149b.js:1:1)
     ->[]
   block 9: [exit-exceptional]
-    node 11: exceptional-return (test/flowgraphbuilder/flowgraph_builder0149b.js:1:26)
+    node 11: exceptional-return (test/flowgraphbuilder/flowgraph_builder0149b.js:1:1)
     ->[]
 
 test/flowgraphbuilder/flowgraph_builder0149a.js:1:1: [info] Abstract value: 3.0

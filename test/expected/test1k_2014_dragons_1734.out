@@ -1,0 +1,72 @@
+test/1k2014dragons/1734.js:78:4: [definite] Too many parameters to function CanvasRenderingContext2D.prototype.createLinearGradient
+test/1k2014dragons/1734.js:26:11: [definite] Variable nl is null/undefined
+test/1k2014dragons/1734.js:33:25: [definite] Variable nl is null/undefined
+test/1k2014dragons/shims.js:19:5: [definite] The assignment to AudioContext has no effect
+test/1k2014dragons/shims.js:19:5: [definite] The conditional expression is always true
+test/1k2014dragons/shims.js:22:5: [definite] Property is null/undefined
+test/1k2014dragons/shims.js:22:5: [definite] The conditional expression is always false
+test/1k2014dragons/shims.js:22:5: [definite] The conditional expression is always false
+test/1k2014dragons/shims.js:22:5: [definite] The conditional expression is always false
+test/1k2014dragons/shims.js:22:5: [definite] The conditional expression is always false
+test/1k2014dragons/1734.js:13:2: [definite] Too few parameters to function CanvasRenderingContext2D.prototype.arc
+test/1k2014dragons/shims.js:23:5: [definite] Reading absent property mozRequestAnimationFrame
+test/1k2014dragons/shims.js:24:5: [definite] Reading absent property webkitRequestAnimationFrame
+test/1k2014dragons/shims.js:25:5: [definite] Reading absent property msRequestAnimationFrame
+test/1k2014dragons/shims.js:41:19: [definite] Dead assignment, property antialias is never read
+test/1k2014dragons/shims.js:41:36: [definite] Dead assignment, property stencil is never read
+test/1k2014dragons/shims.js:10:5: [definite] The variable b is never used
+test/1k2014dragons/shims.js:11:9: [definite] The variable e is never used
+test/1k2014dragons/shims.js:12:12: [definite] Unreachable function
+test/1k2014dragons/shims.js:18:5: [definite] The variable AudioContext is never used
+test/1k2014dragons/shims.js:21:5: [definite] The variable requestAnimationFrame is never used
+test/1k2014dragons/shims.js:26:5: [definite] Unreachable function
+test/1k2014dragons/shims.js:39:5: [definite] The variable g is never used
+test/1k2014dragons/1734.js:27:9: [maybe] ReferenceError, reading absent variable sp
+test/1k2014dragons/1734.js:28:8: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1734.js:36:22: [maybe] ReferenceError, reading absent variable sp
+test/1k2014dragons/shims.js:31:1: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/shims.js:34:1: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/shims.js:34:1: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/shims.js:35:1: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/shims.js:37:9: [maybe] TypeError, call to non-function
+test/1k2014dragons/shims.js:42:18: [maybe] TypeError, call to non-function
+test/1k2014dragons/shims.js:42:46: [maybe] TypeError, call to non-function
+test/1k2014dragons/shims.js:55:9: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1734.js:73:4: [maybe] Reading absent property width
+test/1k2014dragons/1734.js:74:4: [maybe] Reading absent property height
+test/1k2014dragons/shims.js:10:9: [maybe] Reading absent property body
+test/1k2014dragons/shims.js:31:1: [maybe] Reading absent property body
+test/1k2014dragons/shims.js:34:1: [maybe] Reading absent property style
+test/1k2014dragons/shims.js:35:1: [maybe] Reading absent property style
+test/1k2014dragons/shims.js:37:9: [maybe] Reading absent property getContext
+test/1k2014dragons/shims.js:42:18: [maybe] Reading absent property getContext
+test/1k2014dragons/shims.js:42:46: [maybe] Reading absent property getContext
+test/1k2014dragons/shims.js:55:9: [maybe] Reading absent property body
+test/1k2014dragons/1734.js:3:16: [maybe] The variable x has values with different types
+test/1k2014dragons/1734.js:4:14: [maybe] The variable y has values with different types
+test/1k2014dragons/1734.js:12:5: [maybe] The variable i has values with different types
+test/1k2014dragons/1734.js:12:7: [maybe] The variable j has values with different types
+test/1k2014dragons/1734.js:20:2: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1734.js:20:2: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1734.js:20:17: [maybe] The variable wd has values with different types
+test/1k2014dragons/1734.js:20:20: [maybe] The variable ht has values with different types
+test/1k2014dragons/1734.js:22:18: [maybe] The variable cl has values with different types
+test/1k2014dragons/1734.js:22:21: [maybe] The variable cl has values with different types
+test/1k2014dragons/1734.js:25:7: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1734.js:63:33: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1734.js:63:33: [maybe] Converting object to number
+test/1k2014dragons/1734.js:63:37: [maybe] The variable d has values with different types
+test/1k2014dragons/1734.js:75:4: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1734.js:75:4: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1734.js:75:4: [maybe] The variable wd has values with different types
+test/1k2014dragons/1734.js:76:4: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1734.js:76:4: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1734.js:76:4: [maybe] The variable ht has values with different types
+test/1k2014dragons/1734.js:77:4: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1734.js:77:4: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1734.js:77:10: [maybe] The variable wd has values with different types
+test/1k2014dragons/1734.js:77:13: [maybe] The variable ht has values with different types
+test/1k2014dragons/1734.js:79:17: [maybe] Converting undefined to string
+test/1k2014dragons/1734.js:79:35: [maybe] Reading absent property (computed name)
+test/1k2014dragons/shims.js:9:9: [maybe] Reading absent property (computed name)
+test/1k2014dragons/shims.js,test/1k2014dragons/1734.js: [maybe] Uncaught exception, constructed at [test/1k2014dragons/1734.js:27:9, test/1k2014dragons/1734.js:28:8, test/1k2014dragons/1734.js:36:22, test/1k2014dragons/shims.js:31:1, test/1k2014dragons/shims.js:34:1, test/1k2014dragons/shims.js:35:1, test/1k2014dragons/shims.js:37:9, test/1k2014dragons/shims.js:42:18, test/1k2014dragons/shims.js:42:46, test/1k2014dragons/shims.js:55:9]

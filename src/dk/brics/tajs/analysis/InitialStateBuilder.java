@@ -44,12 +44,10 @@ import java.util.Map.Entry;
 
 import static dk.brics.tajs.util.Collections.singleton;
 
-// TODO: split this into nativeobjects, dom, and dsl
-
 /**
  * Sets up the initial state (Chapter 15).
  */
-public class InitialStateBuilder implements IInitialStateBuilder<State, Context, CallEdge, IAnalysisMonitoring, Analysis> { // TODO: to be replaced by the host model system
+public class InitialStateBuilder implements IInitialStateBuilder<State, Context, CallEdge, IAnalysisMonitoring, Analysis> {
 
     /**
      * Object label for the global object.
@@ -292,6 +290,7 @@ public class InitialStateBuilder implements IInitialStateBuilder<State, Context,
         // 15.3.4 properties of the Function prototype object
         s.writeInternalPrototype(lFunProto, Value.makeObject(lObjectPrototype));
         s.writePropertyWithAttributes(lFunProto, "constructor", Value.makeObject(lFunction).setAttributes(true, false, false));
+        s.writePropertyWithAttributes(lFunProto, "length", Value.makeNum(0).setAttributes(true, true, true));
         createPrimitiveFunction(s, lFunProto, lFunProto, ECMAScriptObjects.FUNCTION_TOSTRING, "toString", 0);
         createPrimitiveFunction(s, lFunProto, lFunProto, ECMAScriptObjects.FUNCTION_APPLY, "apply", 2);
         createPrimitiveFunction(s, lFunProto, lFunProto, ECMAScriptObjects.FUNCTION_CALL, "call", 1);
@@ -308,7 +307,6 @@ public class InitialStateBuilder implements IInitialStateBuilder<State, Context,
         createPrimitiveFunction(s, lArrayProto, lFunProto, ECMAScriptObjects.ARRAY_TOSTRING, "toString", 0);
         createPrimitiveFunction(s, lArrayProto, lFunProto, ECMAScriptObjects.ARRAY_TOLOCALESTRING, "toLocaleString", 0);
         createPrimitiveFunction(s, lArrayProto, lFunProto, ECMAScriptObjects.ARRAY_CONCAT, "concat", 1);
-        createPrimitiveFunction(s, lArrayProto, lFunProto, ECMAScriptObjects.ARRAY_FOREACH, "forEach", 1);
         createPrimitiveFunction(s, lArrayProto, lFunProto, ECMAScriptObjects.ARRAY_JOIN, "join", 1);
         createPrimitiveFunction(s, lArrayProto, lFunProto, ECMAScriptObjects.ARRAY_POP, "pop", 0);
         createPrimitiveFunction(s, lArrayProto, lFunProto, ECMAScriptObjects.ARRAY_PUSH, "push", 1);
@@ -320,12 +318,6 @@ public class InitialStateBuilder implements IInitialStateBuilder<State, Context,
         createPrimitiveFunction(s, lArrayProto, lFunProto, ECMAScriptObjects.ARRAY_SPLICE, "splice", 2);
         createPrimitiveFunction(s, lArrayProto, lFunProto, ECMAScriptObjects.ARRAY_UNSHIFT, "unshift", 1);
         createPrimitiveFunction(s, lArrayProto, lFunProto, ECMAScriptObjects.ARRAY_INDEXOF, "indexOf", 1);
-        createPrimitiveFunction(s, lArrayProto, lFunProto, ECMAScriptObjects.ARRAY_EVERY, "every", 1);
-        createPrimitiveFunction(s, lArrayProto, lFunProto, ECMAScriptObjects.ARRAY_FILTER, "filter", 1);
-        createPrimitiveFunction(s, lArrayProto, lFunProto, ECMAScriptObjects.ARRAY_MAP, "map", 1);
-        createPrimitiveFunction(s, lArrayProto, lFunProto, ECMAScriptObjects.ARRAY_REDUCE, "reduce", 1);
-        createPrimitiveFunction(s, lArrayProto, lFunProto, ECMAScriptObjects.ARRAY_REDUCERIGHT, "reduceRight", 1);
-        createPrimitiveFunction(s, lArrayProto, lFunProto, ECMAScriptObjects.ARRAY_LASTINDEXOF, "lastIndexOf", 1);
 
         // 15.5.3 properties of the String constructor
         createPrimitiveFunction(s, lString, lFunProto, ECMAScriptObjects.STRING_FROMCHARCODE, "fromCharCode", 1);

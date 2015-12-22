@@ -1,0 +1,51 @@
+test/1k2013spring/1507.js:3:1118: [definite] The variable f is never used
+test/1k2013spring/1507.js:3:1145: [definite] The variable f is never used
+test/1k2013spring/1507.js:3:1243: [definite] Unreachable function
+test/1k2013spring/1507.js:3:122: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1507.js:3:156: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1507.js:3:203: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1507.js:3:225: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/shim.js:8:9: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/shim.js:8:9: [maybe] TypeError, call to non-function
+test/1k2013spring/shim.js:9:1: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/shim.js:6:9: [maybe] Reading absent property body
+test/1k2013spring/shim.js:8:9: [maybe] Reading absent property getContext
+test/1k2013spring/shim.js:9:1: [maybe] Reading absent property body
+test/1k2013spring/1507.js:3:122: [maybe] Reading absent property (computed name)
+test/1k2013spring/1507.js:3:122: [maybe] Reading absent property (computed name)
+test/1k2013spring/1507.js:3:156: [maybe] Reading absent property (computed name)
+test/1k2013spring/1507.js:3:169: [maybe] Conversion to number yields NaN
+test/1k2013spring/1507.js:3:179: [maybe] Conversion to number yields NaN
+test/1k2013spring/1507.js:3:179: [maybe] Conversion to number yields NaN
+test/1k2013spring/1507.js:3:179: [maybe] Conversion to number yields NaN
+test/1k2013spring/1507.js:3:183: [maybe] Reading absent property (computed name)
+test/1k2013spring/1507.js:3:190: [maybe] Reading absent property (computed name)
+test/1k2013spring/1507.js:3:201: [maybe] Conversion to number yields NaN
+test/1k2013spring/1507.js:3:203: [maybe] Reading absent property (computed name)
+test/1k2013spring/1507.js:3:203: [maybe] Reading absent property (computed name)
+test/1k2013spring/1507.js:3:223: [maybe] Conversion to number yields NaN
+test/1k2013spring/1507.js:3:225: [maybe] Reading absent property (computed name)
+test/1k2013spring/1507.js:3:225: [maybe] Reading absent property (computed name)
+test/1k2013spring/1507.js:3:270: [maybe] Reading absent property (computed name)
+test/1k2013spring/1507.js:3:277: [maybe] Reading absent property (computed name)
+test/1k2013spring/1507.js:3:647: [maybe] Conversion to number yields NaN
+test/1k2013spring/1507.js:3:647: [maybe] Reading absent property (computed name)
+test/1k2013spring/1507.js:3:659: [maybe] Conversion to number yields NaN
+test/1k2013spring/1507.js:3:659: [maybe] Reading absent property (computed name)
+test/1k2013spring/1507.js:3:664: [maybe] Reading absent property (computed name)
+test/1k2013spring/1507.js:3:687: [maybe] Conversion to number yields NaN
+test/1k2013spring/1507.js:3:687: [maybe] Reading absent property (computed name)
+test/1k2013spring/1507.js:3:696: [maybe] Reading absent property (computed name)
+test/1k2013spring/1507.js:3:800: [maybe] Reading absent property (computed name)
+test/1k2013spring/1507.js:3:824: [maybe] Reading absent property (computed name)
+test/1k2013spring/1507.js:3:841: [maybe] Conversion to number yields NaN
+test/1k2013spring/1507.js:3:843: [maybe] Conversion to number yields NaN
+test/1k2013spring/1507.js:3:845: [maybe] Reading absent property (computed name)
+test/1k2013spring/1507.js:3:850: [maybe] Conversion to number yields NaN
+test/1k2013spring/1507.js:3:856: [maybe] Reading absent property (computed name)
+test/1k2013spring/1507.js:3:896: [maybe] Conversion to number yields NaN
+test/1k2013spring/1507.js:3:901: [maybe] Conversion to number yields NaN
+test/1k2013spring/1507.js:3:918: [maybe] Conversion to number yields NaN
+test/1k2013spring/1507.js:3:965: [maybe] Conversion to number yields NaN
+test/1k2013spring/shim.js:7:9: [maybe] Reading absent property (computed name)
+test/1k2013spring/shim.js,test/1k2013spring/1507.js: [maybe] Uncaught exception, constructed at [test/1k2013spring/1507.js:3:122, test/1k2013spring/1507.js:3:156, test/1k2013spring/1507.js:3:203, test/1k2013spring/1507.js:3:225, test/1k2013spring/shim.js:8:9, test/1k2013spring/shim.js:9:1]

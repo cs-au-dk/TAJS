@@ -1,6 +1,6 @@
-fg2: function()
+fg2: <main> function()
   block 0: [entry]
-    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder_jump_return_0004.js:1:1)
+    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder_jump_return_0004.js)
     node 1: function-decl[function f(),-] (test/flowgraphbuilder/flowgraph_builder_jump_return_0004.js:1:1)
     ->[block 1]
   block 1:
@@ -37,10 +37,10 @@ fg2: function()
     node 16: call[v15,v16,v17,-]* (test/flowgraphbuilder/flowgraph_builder_jump_return_0004.js:18:1)
     ->[block 10]
   block 10: [exit-ordinary]
-    node 17: return[v1] (test/flowgraphbuilder/flowgraph_builder_jump_return_0004.js:1:1)
+    node 17: return[v1] (test/flowgraphbuilder/flowgraph_builder_jump_return_0004.js)
     ->[]
   block 11: [exit-exceptional]
-    node 18: exceptional-return (test/flowgraphbuilder/flowgraph_builder_jump_return_0004.js:1:1)
+    node 18: exceptional-return (test/flowgraphbuilder/flowgraph_builder_jump_return_0004.js)
     ->[]
 function f()
   block 12: [entry]
@@ -90,12 +90,12 @@ function f()
     node 40: write-variable[v4,'v']* (test/flowgraphbuilder/flowgraph_builder_jump_return_0004.js:11:9)
     ->[block 24]
   block 24: [exit-ordinary]
-    node 41: return[v1] (test/flowgraphbuilder/flowgraph_builder_jump_return_0004.js:13:1)
+    node 41: return[v1] (test/flowgraphbuilder/flowgraph_builder_jump_return_0004.js:1:1)
     ->[]
   block 25: [exit-exceptional]
-    node 42: exceptional-return (test/flowgraphbuilder/flowgraph_builder_jump_return_0004.js:13:1)
+    node 42: exceptional-return (test/flowgraphbuilder/flowgraph_builder_jump_return_0004.js:1:1)
     ->[]
 
 test/flowgraphbuilder/flowgraph_builder_jump_return_0004.js:16:13: [maybe] ReferenceError, reading absent variable x
-test/flowgraphbuilder/flowgraph_builder_jump_return_0004.js:1:1: [maybe] Uncaught exception, constructed at [test/flowgraphbuilder/flowgraph_builder_jump_return_0004.js:16:13]
+test/flowgraphbuilder/flowgraph_builder_jump_return_0004.js: [maybe] Uncaught exception, constructed at [test/flowgraphbuilder/flowgraph_builder_jump_return_0004.js:16:13]
 test/flowgraphbuilder/flowgraph_builder_jump_return_0004.js:18:1: [info] Abstract value: "OK"

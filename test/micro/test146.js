@@ -1,3 +1,4 @@
 var x = "Hello World";
-TAJS_dumpValue(x[0]);
-TAJS_dumpValue(x[6]);
+TAJS_assert(x[0] === 'H');
+TAJS_assert(x[6] === 'W');
+TAJS_assert(x[100] === undefined);

@@ -1,6 +1,6 @@
-fg2: function()
+fg2: <main> function()
   block 0: [entry]
-    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0171.js:1:1)
+    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0171.js)
     ->[block 1]
   block 1:
     node 1: read-variable['Array',v4,v3] (test/flowgraphbuilder/flowgraph_builder0171.js:1:9)
@@ -42,15 +42,15 @@ fg2: function()
     node 25: write-variable[v14,'i']* (test/flowgraphbuilder/flowgraph_builder0171.js:2:31)
     ->[block 4]
   block 8: [exit-ordinary]
-    node 26: return[v1] (test/flowgraphbuilder/flowgraph_builder0171.js:1:1)
+    node 26: return[v1] (test/flowgraphbuilder/flowgraph_builder0171.js)
     ->[]
   block 9: [exit-exceptional]
-    node 27: exceptional-return (test/flowgraphbuilder/flowgraph_builder0171.js:1:1)
+    node 27: exceptional-return (test/flowgraphbuilder/flowgraph_builder0171.js)
     ->[]
 
 fg2: <main> function()
   block 0: [entry]
-    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0171.js:1:1)
+    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0171.js)
     ->[block 1]
   block 1:
     node 1: read-variable['Array',v4,v3] (test/flowgraphbuilder/flowgraph_builder0171.js:1:9)
@@ -97,15 +97,15 @@ fg2: <main> function()
     node 20: call[v15,v16,v17,-]* (test/flowgraphbuilder/flowgraph_builder0171.js:3:5)
     ->[block 7]
   block 8: [exit-ordinary]
-    node 26: return[v1] (test/flowgraphbuilder/flowgraph_builder0171.js:1:1)
+    node 26: return[v1] (test/flowgraphbuilder/flowgraph_builder0171.js)
     ->[]
   block 9: [exit-exceptional]
-    node 27: exceptional-return (test/flowgraphbuilder/flowgraph_builder0171.js:1:1)
+    node 27: exceptional-return (test/flowgraphbuilder/flowgraph_builder0171.js)
     ->[]
 
 fg2: <main> function()
   block 0: [entry]
-    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0171.js:1:1)
+    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0171.js)
     ->[block 1]
   block 1:
     node 1: read-variable['Array',v4,v3] (test/flowgraphbuilder/flowgraph_builder0171.js:1:9)
@@ -158,14 +158,14 @@ fg2: <main> function()
     node 20: call[v15,v16,v17,-]* (test/flowgraphbuilder/flowgraph_builder0171.js:3:5)
     ->[block 7]
   block 8: [exit-ordinary]
-    node 26: return[v1] (test/flowgraphbuilder/flowgraph_builder0171.js:1:1)
+    node 26: return[v1] (test/flowgraphbuilder/flowgraph_builder0171.js)
     ->[]
   block 9: [exit-exceptional]
-    node 27: exceptional-return (test/flowgraphbuilder/flowgraph_builder0171.js:1:1)
+    node 27: exceptional-return (test/flowgraphbuilder/flowgraph_builder0171.js)
     ->[]
 
 TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0171.js:3:5):1:1: [definite] ReferenceError, reading absent variable window
 TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0171.js:3:5):1:10: [definite] Unreachable code
-test/flowgraphbuilder/flowgraph_builder0171.js:1:1: [maybe] Uncaught exception, constructed at [TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0171.js:3:5):1:1]
+test/flowgraphbuilder/flowgraph_builder0171.js: [maybe] Uncaught exception, constructed at [TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0171.js:3:5):1:1]
 test/flowgraphbuilder/flowgraph_builder0171.js:3:10: [maybe] Converting undefined to string
 test/flowgraphbuilder/flowgraph_builder0171.js:3:10: [maybe] Reading absent property (computed name)

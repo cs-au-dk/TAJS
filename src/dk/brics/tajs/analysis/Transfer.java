@@ -58,21 +58,21 @@ public class Transfer implements
     }
 
     @Override
-    public void transfer(AbstractNode n, State state) {
-        n.visitBy(this, state);
+    public void transfer(AbstractNode n) {
+        n.visitBy(this);
     }
 
     @Override
     public void transferReturn(AbstractNode call_node, BasicBlock callee_entry,
-                               Context caller_context, Context callee_context, Context edge_context) {
-        js_node_transfer.transferReturn(call_node, callee_entry, caller_context, callee_context, edge_context);
+                               Context caller_context, Context callee_context, Context edge_context, boolean implicit) {
+        js_node_transfer.transferReturn(call_node, callee_entry, caller_context, callee_context, edge_context, implicit);
     }
 
     @Override
-    public void visit(Node n, State s) {
-        n.visitBy(js_node_transfer, s);
+    public void visit(Node n) {
+        n.visitBy(js_node_transfer);
         if (!(n instanceof CallNode) && !(n instanceof IfNode) && n.isRegistersDone()) // call and if nodes are treated elsewhere
-            s.clearOrdinaryRegisters();
+            js_node_transfer.getSolverInterface().getState().clearOrdinaryRegisters();
     }
 
     @Override

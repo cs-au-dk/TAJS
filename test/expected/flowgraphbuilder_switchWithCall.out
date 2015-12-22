@@ -1,6 +1,6 @@
-fg2: function()
+fg2: <main> function()
   block 0: [entry]
-    node 0: constant[undefined,v1] (test/flowgraphbuilder/switchWithCall.js:1:1)
+    node 0: constant[undefined,v1] (test/flowgraphbuilder/switchWithCall.js)
     node 1: function-decl[function f(),-] (test/flowgraphbuilder/switchWithCall.js:1:1)
     ->[block 1]
   block 1:
@@ -15,20 +15,20 @@ fg2: function()
     node 6: if[v4](true-block:4,false-block:4) (test/flowgraphbuilder/switchWithCall.js:2:1)
     ->[block 4]
   block 4: [exit-ordinary]
-    node 7: return[v1] (test/flowgraphbuilder/switchWithCall.js:1:1)
+    node 7: return[v1] (test/flowgraphbuilder/switchWithCall.js)
     ->[]
   block 5: [exit-exceptional]
-    node 8: exceptional-return (test/flowgraphbuilder/switchWithCall.js:1:1)
+    node 8: exceptional-return (test/flowgraphbuilder/switchWithCall.js)
     ->[]
 function f()
   block 6: [entry]
     node 9: constant[undefined,v1] (test/flowgraphbuilder/switchWithCall.js:1:1)
     ->[block 7]
   block 7: [exit-ordinary]
-    node 10: return[v1] (test/flowgraphbuilder/switchWithCall.js:1:14)
+    node 10: return[v1] (test/flowgraphbuilder/switchWithCall.js:1:1)
     ->[]
   block 8: [exit-exceptional]
-    node 11: exceptional-return (test/flowgraphbuilder/switchWithCall.js:1:14)
+    node 11: exceptional-return (test/flowgraphbuilder/switchWithCall.js:1:1)
     ->[]
 
 test/flowgraphbuilder/switchWithCall.js:2:1: [definite] The conditional expression is always false

@@ -1036,6 +1036,4 @@ public class TestForIn {
                 "}"
         );
     }
-
-    // TODO optimizations
 }

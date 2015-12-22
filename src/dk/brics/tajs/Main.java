@@ -19,9 +19,10 @@ package dk.brics.tajs;
 import dk.brics.tajs.analysis.Analysis;
 import dk.brics.tajs.analysis.StaticDeterminacyContextSensitivityStrategy;
 import dk.brics.tajs.flowgraph.FlowGraph;
+import dk.brics.tajs.flowgraph.HostEnvSources;
+import dk.brics.tajs.flowgraph.JavaScriptSource;
+import dk.brics.tajs.flowgraph.JavaScriptSource.Kind;
 import dk.brics.tajs.htmlparser.HTMLParser;
-import dk.brics.tajs.htmlparser.JavaScriptSource;
-import dk.brics.tajs.htmlparser.JavaScriptSource.Kind;
 import dk.brics.tajs.js2flowgraph.FlowGraphBuilder;
 import dk.brics.tajs.lattice.Obj;
 import dk.brics.tajs.lattice.ScopeChain;
@@ -143,7 +144,8 @@ public class Main {
                 } else
                     js_files.add(fn);
             }
-            FlowGraphBuilder builder = new FlowGraphBuilder();
+            FlowGraphBuilder builder = new FlowGraphBuilder(String.join(",", files));
+            builder.transformHostFunctionSources(HostEnvSources.get());
             if (!js_files.isEmpty()) {
                 if (html_file != null)
                     throw new AnalysisException("Cannot analyze a HTML file and JavaScript files at the same time.");

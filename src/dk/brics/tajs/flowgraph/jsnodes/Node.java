@@ -35,10 +35,10 @@ public abstract class Node extends AbstractNode {
     /**
      * Visits this node with the given visitor.
      */
-    public abstract <ArgType> void visitBy(NodeVisitor<ArgType> v, ArgType a);
+    public abstract void visitBy(NodeVisitor v);
 
     @Override
-    public <ArgType> void visitBy(AbstractNodeVisitor<ArgType> v, ArgType a) {
-        v.visit(this, a);
+    public void visitBy(AbstractNodeVisitor v) {
+        v.visit(this);
     }
 }

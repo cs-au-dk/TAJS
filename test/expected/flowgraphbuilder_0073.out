@@ -1,6 +1,6 @@
-fg2: function()
+fg2: <main> function()
   block 0: [entry]
-    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0073.js:1:1)
+    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0073.js)
     ->[block 1]
   block 1:
     node 1: read-variable['y',v4,-] (test/flowgraphbuilder/flowgraph_builder0073.js:1:12)
@@ -27,12 +27,12 @@ fg2: function()
     node 10: throw[v2]* (test/flowgraphbuilder/flowgraph_builder0073.js:1:1)
     ->[block 8]
   block 8: [exit-ordinary]
-    node 11: return[v1] (test/flowgraphbuilder/flowgraph_builder0073.js:1:1)
+    node 11: return[v1] (test/flowgraphbuilder/flowgraph_builder0073.js)
     ->[]
   block 9: [exit-exceptional]
-    node 12: exceptional-return (test/flowgraphbuilder/flowgraph_builder0073.js:1:1)
+    node 12: exceptional-return (test/flowgraphbuilder/flowgraph_builder0073.js)
     ->[]
 
 test/flowgraphbuilder/flowgraph_builder0073.js:1:12: [definite] ReferenceError, reading absent variable y
 test/flowgraphbuilder/flowgraph_builder0073.js:1:12: [definite] Unreachable code
-test/flowgraphbuilder/flowgraph_builder0073.js:1:1: [maybe] Uncaught exception, constructed at [test/flowgraphbuilder/flowgraph_builder0073.js:1:12]
+test/flowgraphbuilder/flowgraph_builder0073.js: [maybe] Uncaught exception, constructed at [test/flowgraphbuilder/flowgraph_builder0073.js:1:12]

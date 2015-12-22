@@ -3,11 +3,13 @@
  
   var timer = setInterval(function(){ 
     if ( count < 5 ) { 
-      log( "Timer call: ", count ); 
+      TAJS_dumpValue( count );
       count++; 
     } else { 
-      TAJS_assert( count == 5 ); 
-      TAJS_assert( timer ); 
+      TAJS_dumpValue( count );
+//      TAJS_assert( count == 5 );
+      TAJS_dumpValue( timer );
+//      TAJS_assert( timer );
       clearInterval( timer ); 
     } 
   }, 100); 

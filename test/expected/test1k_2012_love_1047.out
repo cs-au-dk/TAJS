@@ -1,0 +1,27 @@
+test/1k2012love/shim.js:6:5: [definite] The variable b is never used
+test/1k2012love/1047.js:4:1: [maybe] TypeError, call to non-function
+test/1k2012love/1047.js:49:5: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1047.js:49:14: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1047.js:49:23: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1047.js:49:32: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1047.js:50:3: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/shim.js:8:9: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/shim.js:8:9: [maybe] TypeError, call to non-function
+test/1k2012love/shim.js:9:1: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1047.js:4:1: [maybe] Reading absent property addEventListener
+test/1k2012love/1047.js:30:22: [maybe] Reading absent property offsetLeft
+test/1k2012love/1047.js:31:22: [maybe] Reading absent property offsetTop
+test/1k2012love/shim.js:6:9: [maybe] Reading absent property body
+test/1k2012love/shim.js:8:9: [maybe] Reading absent property getContext
+test/1k2012love/shim.js:9:1: [maybe] Reading absent property body
+test/1k2012love/1047.js:30:9: [maybe] Conversion to number yields NaN
+test/1k2012love/1047.js:31:9: [maybe] Conversion to number yields NaN
+test/1k2012love/1047.js:33:8: [maybe] Reading absent property (computed name)
+test/1k2012love/1047.js:33:21: [maybe] Reading absent property (computed name)
+test/1k2012love/1047.js:49:5: [maybe] Reading absent property (computed name)
+test/1k2012love/1047.js:49:14: [maybe] Reading absent property (computed name)
+test/1k2012love/1047.js:49:23: [maybe] Reading absent property (computed name)
+test/1k2012love/1047.js:49:32: [maybe] Reading absent property (computed name)
+test/1k2012love/1047.js:50:3: [maybe] Reading absent property (computed name)
+test/1k2012love/shim.js:7:9: [maybe] Reading absent property (computed name)
+test/1k2012love/shim.js,test/1k2012love/1047.js: [maybe] Uncaught exception, constructed at [test/1k2012love/1047.js:4:1, test/1k2012love/1047.js:49:5, test/1k2012love/1047.js:49:14, test/1k2012love/1047.js:49:23, test/1k2012love/1047.js:49:32, test/1k2012love/1047.js:50:3, test/1k2012love/shim.js:8:9, test/1k2012love/shim.js:9:1]

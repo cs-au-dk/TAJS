@@ -1,0 +1,1461 @@
+./main.js:7:11: [definite] TypeError, accessing property of null/undefined
+./main.js:336:9: [definite] TypeError, accessing property of null/undefined
+./main.js:6:11: [definite] The assignment to argv has no effect
+./main.js:235:2: [definite] The conditional expression is always true
+./main.js:256:3: [definite] The conditional expression is always false
+./main.js:269:3: [definite] The conditional expression is always true
+./main.js:298:7: [definite] The conditional expression is always false
+./main.js:300:7: [definite] The conditional expression is always false
+./main.js:305:2: [definite] The conditional expression is always true
+./main.js:307:2: [definite] The conditional expression is always true
+./main.js:332:2: [definite] The conditional expression is always false
+./main.js:6:11: [definite] Reading absent property arguments
+./main.js:7:11: [definite] Reading absent property arguments
+./main.js:71:67: [definite] Dead assignment, property pos is never read
+./main.js:256:6: [definite] Reading absent property id
+./main.js:298:10: [definite] Reading absent property x
+./main.js:300:10: [definite] Reading absent property y
+./main.js:336:10: [definite] Reading absent property id
+./header.js:1:5: [definite] The variable header_slider is never used
+./header.js:2:5: [definite] The variable header_x is never used
+./header.js:3:5: [definite] The variable header_dx is never used
+./header.js:4:5: [definite] The variable header_w is never used
+./header.js:5:5: [definite] The variable header_dw is never used
+./header.js:6:5: [definite] The variable header_moving is never used
+./header.js:7:5: [definite] The variable header_def_el is never used
+./header.js:9:1: [definite] Unreachable function header_m_light
+./header.js:23:1: [definite] Unreachable function header_move_slider
+./main.js:5:1: [definite] The variable name is never used
+./main.js:5:1: [definite] The variable value is never used
+./main.js:6:6: [definite] The variable argv is never used
+./main.js:7:6: [definite] The variable argc is never used
+./main.js:7:11: [definite] Unreachable code
+./main.js:8:6: [definite] The variable expires is never used
+./main.js:9:6: [definite] The variable path is never used
+./main.js:10:6: [definite] The variable domain is never used
+./main.js:11:6: [definite] The variable secure is never used
+./main.js:18:1: [definite] Unreachable function getCookieVal
+./main.js:24:1: [definite] Unreachable function GetCookie
+./main.js:183:1: [definite] The variable el is never used
+./main.js:336:6: [definite] The variable id is never used
+./main.js:336:24: [definite] Unreachable code
+./main.js:45:50: [maybe] TypeError, accessing property of null/undefined
+./main.js:45:72: [maybe] TypeError, accessing property of null/undefined
+./main.js:45:72: [maybe] TypeError, accessing property of null/undefined
+./main.js:49:3: [maybe] TypeError, accessing property of null/undefined
+./main.js:59:9: [maybe] TypeError, accessing property of null/undefined
+./main.js:64:17: [maybe] TypeError, accessing property of null/undefined
+./main.js:64:17: [maybe] TypeError, accessing property of null/undefined
+./main.js:67:18: [maybe] TypeError, accessing property of null/undefined
+./main.js:67:18: [maybe] TypeError, accessing property of null/undefined
+./main.js:68:5: [maybe] TypeError, accessing property of null/undefined
+./main.js:68:5: [maybe] TypeError, accessing property of null/undefined
+./main.js:68:19: [maybe] TypeError, accessing property of null/undefined
+./main.js:68:19: [maybe] TypeError, accessing property of null/undefined
+./main.js:69:5: [maybe] TypeError, accessing property of null/undefined
+./main.js:69:5: [maybe] TypeError, accessing property of null/undefined
+./main.js:69:20: [maybe] TypeError, accessing property of null/undefined
+./main.js:69:20: [maybe] TypeError, accessing property of null/undefined
+./main.js:70:5: [maybe] TypeError, accessing property of null/undefined
+./main.js:70:5: [maybe] TypeError, accessing property of null/undefined
+./main.js:71:18: [maybe] TypeError, accessing property of null/undefined
+./main.js:71:18: [maybe] TypeError, accessing property of null/undefined
+./main.js:90:7: [maybe] TypeError, accessing property of null/undefined
+./main.js:95:5: [maybe] TypeError, accessing property of null/undefined
+./main.js:95:5: [maybe] TypeError, accessing property of null/undefined
+./main.js:111:17: [maybe] TypeError, accessing property of null/undefined
+./main.js:114:18: [maybe] TypeError, accessing property of null/undefined
+./main.js:115:31: [maybe] TypeError, accessing property of null/undefined
+./main.js:115:31: [maybe] TypeError, accessing property of null/undefined
+./main.js:116:6: [maybe] TypeError, accessing property of null/undefined
+./main.js:116:6: [maybe] TypeError, accessing property of null/undefined
+./main.js:116:21: [maybe] TypeError, accessing property of null/undefined
+./main.js:116:21: [maybe] TypeError, accessing property of null/undefined
+./main.js:117:6: [maybe] TypeError, accessing property of null/undefined
+./main.js:117:6: [maybe] TypeError, accessing property of null/undefined
+./main.js:117:20: [maybe] TypeError, accessing property of null/undefined
+./main.js:117:20: [maybe] TypeError, accessing property of null/undefined
+./main.js:118:6: [maybe] TypeError, accessing property of null/undefined
+./main.js:118:6: [maybe] TypeError, accessing property of null/undefined
+./main.js:119:19: [maybe] TypeError, accessing property of null/undefined
+./main.js:119:19: [maybe] TypeError, accessing property of null/undefined
+./main.js:133:6: [maybe] TypeError, accessing property of null/undefined
+./main.js:138:4: [maybe] TypeError, accessing property of null/undefined
+./main.js:138:4: [maybe] TypeError, accessing property of null/undefined
+./main.js:162:8: [maybe] TypeError, accessing property of null/undefined
+./main.js:162:8: [maybe] TypeError, accessing property of null/undefined
+./main.js:162:39: [maybe] TypeError, accessing property of null/undefined
+./main.js:162:39: [maybe] TypeError, accessing property of null/undefined
+./main.js:162:54: [maybe] TypeError, accessing property of null/undefined
+./main.js:162:54: [maybe] TypeError, accessing property of null/undefined
+./main.js:162:82: [maybe] TypeError, accessing property of null/undefined
+./main.js:162:82: [maybe] TypeError, accessing property of null/undefined
+./main.js:162:97: [maybe] TypeError, accessing property of null/undefined
+./main.js:162:97: [maybe] TypeError, accessing property of null/undefined
+./main.js:171:4: [maybe] TypeError, accessing property of null/undefined
+./main.js:176:28: [maybe] TypeError, accessing property of null/undefined
+./main.js:176:28: [maybe] TypeError, accessing property of null/undefined
+./main.js:177:28: [maybe] TypeError, accessing property of null/undefined
+./main.js:179:8: [maybe] TypeError, accessing property of null/undefined
+./main.js:179:8: [maybe] TypeError, accessing property of null/undefined
+./main.js:195:4: [maybe] TypeError, accessing property of null/undefined
+./main.js:195:4: [maybe] TypeError, accessing property of null/undefined
+./main.js:195:10: [maybe] TypeError, accessing property of null/undefined
+./main.js:195:22: [maybe] TypeError, accessing property of null/undefined
+./main.js:196:11: [maybe] TypeError, accessing property of null/undefined
+./main.js:196:11: [maybe] TypeError, accessing property of null/undefined
+./main.js:196:17: [maybe] TypeError, accessing property of null/undefined
+./main.js:196:29: [maybe] TypeError, accessing property of null/undefined
+./main.js:197:4: [maybe] TypeError, accessing property of null/undefined
+./main.js:197:4: [maybe] TypeError, accessing property of null/undefined
+./main.js:214:8: [maybe] TypeError, accessing property of null/undefined
+./main.js:214:14: [maybe] TypeError, accessing property of null/undefined
+./main.js:214:26: [maybe] TypeError, accessing property of null/undefined
+./main.js:218:8: [maybe] TypeError, accessing property of null/undefined
+./main.js:219:20: [maybe] ReferenceError, reading absent variable light
+./main.js:219:26: [maybe] ReferenceError, reading absent variable ne
+./main.js:226:8: [maybe] TypeError, accessing property of null/undefined
+./main.js:226:14: [maybe] TypeError, accessing property of null/undefined
+./main.js:226:26: [maybe] TypeError, accessing property of null/undefined
+./main.js:230:8: [maybe] TypeError, accessing property of null/undefined
+./main.js:231:20: [maybe] ReferenceError, reading absent variable dark
+./main.js:231:25: [maybe] ReferenceError, reading absent variable ne
+./main.js:256:6: [maybe] TypeError, accessing property of null/undefined
+./main.js:256:13: [maybe] TypeError, accessing property of null/undefined
+./main.js:256:13: [maybe] TypeError, accessing property of null/undefined
+./main.js:256:19: [maybe] TypeError, accessing property of null/undefined
+./main.js:256:31: [maybe] TypeError, accessing property of null/undefined
+./main.js:90:7: [maybe] Reading absent property cy
+./main.js:90:14: [maybe] Reading absent property dy
+./main.js:91:26: [maybe] Reading absent property dy
+./main.js:91:33: [maybe] Reading absent property cy
+./main.js:94:5: [maybe] Reading absent property cy
+./main.js:95:5: [maybe] Reading absent property style
+./main.js:95:47: [maybe] Reading absent property cy
+./main.js:97:7: [maybe] Reading absent property cy
+./main.js:97:17: [maybe] Reading absent property dy
+./main.js:133:6: [maybe] Reading absent property cx
+./main.js:133:13: [maybe] Reading absent property dx
+./main.js:134:25: [maybe] Reading absent property dx
+./main.js:134:32: [maybe] Reading absent property cx
+./main.js:137:4: [maybe] Reading absent property cx
+./main.js:138:4: [maybe] Reading absent property style
+./main.js:138:47: [maybe] Reading absent property cx
+./main.js:140:6: [maybe] Reading absent property cx
+./main.js:140:16: [maybe] Reading absent property dx
+./main.js:176:28: [maybe] Reading absent property left
+./main.js:176:28: [maybe] Reading absent property style
+./main.js:177:28: [maybe] Reading absent property style
+./main.js:177:28: [maybe] Reading absent property top
+./main.js:197:4: [maybe] Reading absent property style
+./main.js:218:8: [maybe] Reading absent property style
+./main.js:230:8: [maybe] Reading absent property style
+./main.js:314:5: [maybe] Reading absent property innerHTML
+./main.js:322:5: [maybe] Reading absent property display
+test/apps/samegame/index.html:85:52: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:86:52: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:87:52: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:88:52: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:89:52: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:90:52: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:93:133: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:93:159: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:93:308: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:93:334: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:93:500: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:93:526: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:93:708: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:93:734: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:93:916: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:93:942: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:93:1109: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:93:1135: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:93:1274: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:93:1300: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:93:1439: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:93:1465: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:93:1604: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:93:1630: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:93:1797: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:93:1823: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:93:1991: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:93:2017: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:93:2157: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:93:2183: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:93:2323: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:93:2349: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:93:2489: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:93:2515: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:93:2655: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:93:2681: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:94:135: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:94:161: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:94:329: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:94:355: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:94:506: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:94:532: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:94:716: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:94:742: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:94:926: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:94:952: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:94:1121: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:94:1147: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:94:1288: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:94:1314: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:94:1455: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:94:1481: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:94:1622: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:94:1648: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:94:1789: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:94:1815: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:94:1956: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:94:1982: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:94:2123: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:94:2149: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:94:2290: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:94:2316: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:94:2457: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:94:2483: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:94:2624: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:94:2650: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:95:135: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:95:161: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:95:329: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:95:355: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:95:539: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:95:565: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:95:733: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:95:759: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:95:927: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:95:953: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:95:1122: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:95:1148: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:95:1289: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:95:1315: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:95:1456: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:95:1482: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:95:1623: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:95:1649: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:95:1790: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:95:1816: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:95:1985: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:95:2011: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:95:2180: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:95:2206: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:95:2347: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:95:2373: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:95:2514: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:95:2540: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:95:2681: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:95:2707: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:96:135: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:96:161: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:96:329: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:96:355: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:96:539: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:96:565: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:96:749: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:96:775: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:96:943: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:96:969: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:96:1138: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:96:1164: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:96:1305: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:96:1331: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:96:1472: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:96:1498: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:96:1639: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:96:1665: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:96:1806: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:96:1832: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:96:2001: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:96:2027: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:96:2168: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:96:2194: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:96:2335: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:96:2361: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:96:2502: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:96:2528: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:96:2669: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:96:2695: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:97:135: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:97:161: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:97:345: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:97:371: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:97:555: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:97:581: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:97:749: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:97:775: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:97:915: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:97:941: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:97:1082: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:97:1108: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:97:1249: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:97:1275: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:97:1416: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:97:1442: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:97:1583: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:97:1609: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:97:1750: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:97:1776: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:97:1917: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:97:1943: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:97:2084: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:97:2110: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:97:2251: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:97:2277: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:97:2418: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:97:2444: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:97:2585: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:97:2611: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:98:119: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:98:145: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:98:330: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:98:356: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:98:525: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:98:551: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:98:720: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:98:746: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:98:915: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:98:941: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:98:1083: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:98:1109: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:98:1251: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:98:1277: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:98:1419: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:98:1445: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:98:1587: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:98:1613: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:98:1755: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:98:1781: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:98:1923: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:98:1949: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:98:2091: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:98:2117: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:98:2259: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:98:2285: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:98:2427: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:98:2453: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:98:2595: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:98:2621: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:99:119: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:99:145: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:99:314: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:99:340: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:99:509: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:99:535: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:99:720: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:99:746: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:99:915: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:99:941: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:99:1083: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:99:1109: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:99:1251: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:99:1277: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:99:1419: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:99:1445: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:99:1587: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:99:1613: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:99:1755: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:99:1781: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:99:1924: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:99:1950: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:99:2093: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:99:2119: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:99:2262: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:99:2288: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:99:2431: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:99:2457: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:99:2600: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:99:2626: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:100:120: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:100:146: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:100:299: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:100:325: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:100:479: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:100:505: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:100:691: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:100:717: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:100:903: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:100:929: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:100:1116: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:100:1142: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:100:1285: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:100:1311: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:100:1454: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:100:1480: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:100:1623: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:100:1649: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:100:1792: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:100:1818: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:100:1961: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:100:1987: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:100:2130: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:100:2156: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:100:2299: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:100:2325: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:100:2468: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:100:2494: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:100:2637: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:100:2663: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:101:120: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:101:146: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:101:299: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:101:325: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:101:495: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:101:521: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:101:674: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:101:700: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:101:886: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:101:912: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:101:1055: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:101:1081: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:101:1224: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:101:1250: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:101:1393: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:101:1419: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:101:1562: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:101:1588: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:101:1731: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:101:1757: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:101:1900: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:101:1926: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:101:2069: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:101:2095: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:101:2238: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:101:2264: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:101:2407: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:101:2433: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:101:2576: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:101:2602: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:102:120: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:102:146: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:102:299: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:102:325: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:102:511: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:102:537: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:102:723: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:102:749: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:102:935: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:102:961: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:102:1104: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:102:1130: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:102:1273: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:102:1299: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:102:1442: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:102:1468: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:102:1611: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:102:1637: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:102:1780: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:102:1806: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:102:1949: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:102:1975: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:102:2118: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:102:2144: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:102:2287: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:102:2313: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:102:2456: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:102:2482: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:102:2625: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:102:2651: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:103:108: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:103:134: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:103:276: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:103:302: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:103:472: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:103:498: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:103:640: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:103:666: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:103:808: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:103:834: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:103:977: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:103:1003: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:103:1146: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:103:1172: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:103:1315: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:103:1341: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:103:1484: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:103:1510: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:103:1653: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:103:1679: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:103:1822: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:103:1848: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:103:1991: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:103:2017: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:103:2189: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:103:2215: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:103:2358: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:103:2384: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:103:2527: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:103:2553: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:104:108: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:104:134: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:104:304: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:104:330: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:104:472: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:104:498: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:104:668: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:104:694: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:104:836: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:104:862: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:104:1005: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:104:1031: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:104:1202: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:104:1228: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:104:1371: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:104:1397: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:104:1540: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:104:1566: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:104:1709: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:104:1735: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:104:1878: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:104:1904: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:104:2047: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:104:2073: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:104:2245: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:104:2271: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:104:2443: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:104:2469: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:104:2612: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:104:2638: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:105:108: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:105:134: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:105:276: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:105:302: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:105:444: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:105:470: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:105:640: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:105:666: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:105:808: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:105:834: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:105:977: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:105:1003: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:105:1174: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:105:1200: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:105:1371: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:105:1397: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:105:1540: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:105:1566: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:105:1709: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:105:1735: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:105:1878: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:105:1904: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:105:2047: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:105:2073: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:105:2216: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:105:2242: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:105:2385: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:105:2411: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:105:2554: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:105:2580: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:106:108: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:106:134: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:106:276: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:106:302: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:106:444: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:106:470: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:106:640: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:106:666: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:106:836: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:106:862: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:106:1033: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:106:1059: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:106:1230: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:106:1256: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:106:1427: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:106:1453: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:106:1596: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:106:1622: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:106:1765: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:106:1791: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:106:1934: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:106:1960: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:106:2103: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:106:2129: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:106:2272: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:106:2298: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:106:2441: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:106:2467: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:106:2610: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:106:2636: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:107:108: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:107:134: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:107:276: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:107:302: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:107:472: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:107:498: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:107:668: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:107:694: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:107:864: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:107:890: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:107:1061: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:107:1087: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:107:1258: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:107:1284: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:107:1427: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:107:1453: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:107:1596: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:107:1622: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:107:1765: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:107:1791: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:107:1934: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:107:1960: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:107:2103: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:107:2129: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:107:2272: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:107:2298: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:107:2441: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:107:2467: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:107:2610: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:107:2636: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:108:108: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:108:134: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:108:276: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:108:302: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:108:444: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:108:470: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:108:640: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:108:666: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:108:836: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:108:862: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:108:1005: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:108:1031: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:108:1202: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:108:1228: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:108:1371: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:108:1397: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:108:1540: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:108:1566: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:108:1709: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:108:1735: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:108:1878: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:108:1904: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:108:2047: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:108:2073: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:108:2216: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:108:2242: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:108:2385: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:108:2411: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:108:2554: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:108:2580: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:109:108: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:109:134: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:109:276: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:109:302: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:109:444: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:109:470: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:109:612: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:109:638: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:109:808: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:109:834: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:109:1005: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:109:1031: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:109:1202: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:109:1228: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:109:1371: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:109:1397: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:109:1540: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:109:1566: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:109:1709: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:109:1735: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:109:1878: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:109:1904: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:109:2047: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:109:2073: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:109:2216: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:109:2242: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:109:2385: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:109:2411: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:109:2554: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:109:2580: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:110:108: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:110:134: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:110:276: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:110:302: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:110:444: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:110:470: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:110:612: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:110:638: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:110:780: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:110:806: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:110:977: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:110:1003: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:110:1174: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:110:1200: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:110:1343: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:110:1369: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:110:1540: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:110:1566: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:110:1737: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:110:1763: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:110:1906: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:110:1932: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:110:2075: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:110:2101: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:110:2244: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:110:2270: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:110:2413: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:110:2439: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:110:2582: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:110:2608: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:111:108: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:111:134: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:111:276: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:111:302: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:111:444: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:111:470: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:111:640: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:111:666: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:111:808: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:111:834: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:111:977: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:111:1003: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:111:1174: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:111:1200: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:111:1343: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:111:1369: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:111:1540: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:111:1566: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:111:1709: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:111:1735: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:111:1878: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:111:1904: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:111:2047: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:111:2073: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:111:2216: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:111:2242: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:111:2385: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:111:2411: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:111:2554: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:111:2580: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:112:108: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:112:134: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:112:276: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:112:302: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:112:444: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:112:470: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:112:612: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:112:638: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:112:780: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:112:806: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:112:977: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:112:1003: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:112:1174: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:112:1200: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:112:1371: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:112:1397: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:112:1568: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:112:1594: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:112:1737: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:112:1763: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:112:1906: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:112:1932: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:112:2075: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:112:2101: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:112:2244: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:112:2270: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:112:2413: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:112:2439: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:112:2582: [maybe] Reading 'this' yields the global object
+test/apps/samegame/index.html:112:2608: [maybe] Reading 'this' yields the global object
+./main.js:45:50: [maybe] Reading absent property (computed name)
+./main.js:45:50: [maybe] Reading absent property (computed name)
+./main.js:45:72: [maybe] Reading absent property (computed name)
+./main.js:45:72: [maybe] Reading absent property (computed name)
+./main.js:49:3: [maybe] Reading absent property (computed name)
+./main.js:59:9: [maybe] Reading absent property (computed name)
+./main.js:60:6: [maybe] Reading absent property (computed name)
+./main.js:64:17: [maybe] Reading absent property (computed name)
+./main.js:64:17: [maybe] Reading absent property (computed name)
+./main.js:67:18: [maybe] Reading absent property (computed name)
+./main.js:67:18: [maybe] Reading absent property (computed name)
+./main.js:68:5: [maybe] Reading absent property (computed name)
+./main.js:68:5: [maybe] Reading absent property (computed name)
+./main.js:68:19: [maybe] Reading absent property (computed name)
+./main.js:68:19: [maybe] Reading absent property (computed name)
+./main.js:69:5: [maybe] Reading absent property (computed name)
+./main.js:69:5: [maybe] Reading absent property (computed name)
+./main.js:69:20: [maybe] Reading absent property (computed name)
+./main.js:69:20: [maybe] Reading absent property (computed name)
+./main.js:70:5: [maybe] Reading absent property (computed name)
+./main.js:70:5: [maybe] Reading absent property (computed name)
+./main.js:71:18: [maybe] Reading absent property (computed name)
+./main.js:71:18: [maybe] Reading absent property (computed name)
+./main.js:85:11: [maybe] Reading absent property (computed name)
+./main.js:91:26: [maybe] Conversion to number yields NaN
+./main.js:94:5: [maybe] Conversion to number yields NaN
+./main.js:95:47: [maybe] Converting undefined to string
+./main.js:98:15: [maybe] Reading absent property (computed name)
+./main.js:111:17: [maybe] Reading absent property (computed name)
+./main.js:114:18: [maybe] Reading absent property (computed name)
+./main.js:115:31: [maybe] Reading absent property (computed name)
+./main.js:115:31: [maybe] Reading absent property (computed name)
+./main.js:116:6: [maybe] Reading absent property (computed name)
+./main.js:116:6: [maybe] Reading absent property (computed name)
+./main.js:116:21: [maybe] Reading absent property (computed name)
+./main.js:116:21: [maybe] Reading absent property (computed name)
+./main.js:117:6: [maybe] Reading absent property (computed name)
+./main.js:117:6: [maybe] Reading absent property (computed name)
+./main.js:117:20: [maybe] Reading absent property (computed name)
+./main.js:117:20: [maybe] Reading absent property (computed name)
+./main.js:118:6: [maybe] Reading absent property (computed name)
+./main.js:118:6: [maybe] Reading absent property (computed name)
+./main.js:119:19: [maybe] Reading absent property (computed name)
+./main.js:119:19: [maybe] Reading absent property (computed name)
+./main.js:132:11: [maybe] Reading absent property (computed name)
+./main.js:134:25: [maybe] Conversion to number yields NaN
+./main.js:137:4: [maybe] Conversion to number yields NaN
+./main.js:138:47: [maybe] Converting undefined to string
+./main.js:141:14: [maybe] Reading absent property (computed name)
+./main.js:162:8: [maybe] Reading absent property (computed name)
+./main.js:162:8: [maybe] Reading absent property (computed name)
+./main.js:162:39: [maybe] Reading absent property (computed name)
+./main.js:162:39: [maybe] Reading absent property (computed name)
+./main.js:162:54: [maybe] Reading absent property (computed name)
+./main.js:162:54: [maybe] Reading absent property (computed name)
+./main.js:162:82: [maybe] Reading absent property (computed name)
+./main.js:162:82: [maybe] Reading absent property (computed name)
+./main.js:162:97: [maybe] Reading absent property (computed name)
+./main.js:162:97: [maybe] Reading absent property (computed name)
+./main.js:171:4: [maybe] Reading absent property (computed name)
+./main.js:176:19: [maybe] Converting undefined to string
+./main.js:177:19: [maybe] Converting undefined to string
+./main.js:179:8: [maybe] Reading absent property (computed name)
+./main.js:179:8: [maybe] Reading absent property (computed name)
+./main.js:195:4: [maybe] Reading absent property (computed name)
+./main.js:195:4: [maybe] Reading absent property (computed name)
+./main.js:195:10: [maybe] Reading absent property (computed name)
+./main.js:195:22: [maybe] Reading absent property (computed name)
+./main.js:196:11: [maybe] Reading absent property (computed name)
+./main.js:196:11: [maybe] Reading absent property (computed name)
+./main.js:196:17: [maybe] Reading absent property (computed name)
+./main.js:196:29: [maybe] Reading absent property (computed name)
+./main.js:214:8: [maybe] Reading absent property (computed name)
+./main.js:214:8: [maybe] Reading absent property (computed name)
+./main.js:214:14: [maybe] Reading absent property (computed name)
+./main.js:214:26: [maybe] Reading absent property (computed name)
+./main.js:219:20: [maybe] Converting primitive string to object
+./main.js:219:20: [maybe] Reading absent property (computed name)
+./main.js:219:20: [maybe] The variable light has values with different types
+./main.js:219:26: [maybe] Conversion from string to number yields NaN
+./main.js:219:26: [maybe] The variable ne has values with different types
+./main.js:226:8: [maybe] Reading absent property (computed name)
+./main.js:226:8: [maybe] Reading absent property (computed name)
+./main.js:226:14: [maybe] Reading absent property (computed name)
+./main.js:226:26: [maybe] Reading absent property (computed name)
+./main.js:231:20: [maybe] Converting primitive string to object
+./main.js:231:20: [maybe] Reading absent property (computed name)
+./main.js:231:20: [maybe] The variable dark has values with different types
+./main.js:231:25: [maybe] Conversion from string to number yields NaN
+./main.js:231:25: [maybe] The variable ne has values with different types
+./main.js:256:13: [maybe] Reading absent property (computed name)
+./main.js:256:13: [maybe] Reading absent property (computed name)
+./main.js:256:19: [maybe] Reading absent property (computed name)
+./main.js:256:31: [maybe] Reading absent property (computed name)
+test/apps/samegame/index.html: [maybe] Uncaught exception, constructed at [./main.js:7:11, ./main.js:45:50, ./main.js:45:72, ./main.js:49:3, ./main.js:59:9, ./main.js:64:17, ./main.js:67:18, ./main.js:68:5, ./main.js:68:19, ./main.js:69:5, ./main.js:69:20, ./main.js:70:5, ./main.js:71:18, ./main.js:90:7, ./main.js:95:5, ./main.js:111:17, ./main.js:114:18, ./main.js:115:31, ./main.js:116:6, ./main.js:116:21, ./main.js:117:6, ./main.js:117:20, ./main.js:118:6, ./main.js:119:19, ./main.js:133:6, ./main.js:138:4, ./main.js:162:8, ./main.js:162:39, ./main.js:162:54, ./main.js:162:82, ./main.js:162:97, ./main.js:171:4, ./main.js:176:28, ./main.js:177:28, ./main.js:179:8, ./main.js:195:4, ./main.js:195:10, ./main.js:195:22, ./main.js:196:11, ./main.js:196:17, ./main.js:196:29, ./main.js:197:4, ./main.js:214:3, ./main.js:214:8, ./main.js:214:14, ./main.js:214:26, ./main.js:218:3, ./main.js:218:8, ./main.js:219:20, ./main.js:219:26, ./main.js:226:3, ./main.js:226:8, ./main.js:226:14, ./main.js:226:26, ./main.js:230:3, ./main.js:230:8, ./main.js:231:20, ./main.js:231:25, ./main.js:256:6, ./main.js:256:13, ./main.js:256:19, ./main.js:256:31, ./main.js:336:9]
+test/apps/samegame/index.html:85:52: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:86:52: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:87:52: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:88:52: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:89:52: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:90:52: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:93:133: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:93:159: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:93:308: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:93:334: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:93:500: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:93:526: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:93:708: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:93:734: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:93:916: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:93:942: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:93:1109: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:93:1135: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:93:1274: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:93:1300: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:93:1439: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:93:1465: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:93:1604: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:93:1630: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:93:1797: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:93:1823: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:93:1991: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:93:2017: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:93:2157: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:93:2183: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:93:2323: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:93:2349: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:93:2489: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:93:2515: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:93:2655: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:93:2681: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:94:135: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:94:161: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:94:329: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:94:355: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:94:506: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:94:532: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:94:716: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:94:742: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:94:926: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:94:952: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:94:1121: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:94:1147: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:94:1288: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:94:1314: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:94:1455: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:94:1481: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:94:1622: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:94:1648: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:94:1789: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:94:1815: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:94:1956: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:94:1982: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:94:2123: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:94:2149: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:94:2290: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:94:2316: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:94:2457: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:94:2483: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:94:2624: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:94:2650: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:95:135: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:95:161: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:95:329: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:95:355: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:95:539: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:95:565: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:95:733: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:95:759: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:95:927: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:95:953: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:95:1122: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:95:1148: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:95:1289: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:95:1315: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:95:1456: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:95:1482: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:95:1623: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:95:1649: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:95:1790: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:95:1816: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:95:1985: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:95:2011: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:95:2180: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:95:2206: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:95:2347: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:95:2373: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:95:2514: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:95:2540: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:95:2681: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:95:2707: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:96:135: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:96:161: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:96:329: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:96:355: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:96:539: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:96:565: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:96:749: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:96:775: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:96:943: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:96:969: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:96:1138: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:96:1164: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:96:1305: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:96:1331: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:96:1472: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:96:1498: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:96:1639: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:96:1665: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:96:1806: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:96:1832: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:96:2001: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:96:2027: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:96:2168: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:96:2194: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:96:2335: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:96:2361: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:96:2502: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:96:2528: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:96:2669: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:96:2695: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:97:135: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:97:161: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:97:345: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:97:371: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:97:555: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:97:581: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:97:749: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:97:775: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:97:915: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:97:941: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:97:1082: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:97:1108: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:97:1249: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:97:1275: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:97:1416: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:97:1442: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:97:1583: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:97:1609: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:97:1750: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:97:1776: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:97:1917: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:97:1943: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:97:2084: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:97:2110: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:97:2251: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:97:2277: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:97:2418: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:97:2444: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:97:2585: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:97:2611: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:98:119: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:98:145: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:98:330: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:98:356: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:98:525: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:98:551: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:98:720: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:98:746: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:98:915: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:98:941: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:98:1083: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:98:1109: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:98:1251: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:98:1277: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:98:1419: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:98:1445: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:98:1587: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:98:1613: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:98:1755: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:98:1781: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:98:1923: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:98:1949: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:98:2091: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:98:2117: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:98:2259: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:98:2285: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:98:2427: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:98:2453: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:98:2595: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:98:2621: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:99:119: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:99:145: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:99:314: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:99:340: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:99:509: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:99:535: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:99:720: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:99:746: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:99:915: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:99:941: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:99:1083: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:99:1109: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:99:1251: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:99:1277: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:99:1419: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:99:1445: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:99:1587: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:99:1613: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:99:1755: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:99:1781: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:99:1924: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:99:1950: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:99:2093: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:99:2119: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:99:2262: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:99:2288: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:99:2431: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:99:2457: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:99:2600: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:99:2626: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:100:120: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:100:146: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:100:299: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:100:325: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:100:479: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:100:505: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:100:691: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:100:717: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:100:903: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:100:929: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:100:1116: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:100:1142: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:100:1285: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:100:1311: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:100:1454: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:100:1480: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:100:1623: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:100:1649: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:100:1792: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:100:1818: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:100:1961: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:100:1987: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:100:2130: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:100:2156: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:100:2299: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:100:2325: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:100:2468: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:100:2494: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:100:2637: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:100:2663: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:101:120: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:101:146: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:101:299: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:101:325: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:101:495: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:101:521: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:101:674: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:101:700: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:101:886: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:101:912: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:101:1055: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:101:1081: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:101:1224: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:101:1250: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:101:1393: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:101:1419: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:101:1562: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:101:1588: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:101:1731: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:101:1757: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:101:1900: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:101:1926: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:101:2069: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:101:2095: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:101:2238: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:101:2264: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:101:2407: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:101:2433: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:101:2576: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:101:2602: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:102:120: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:102:146: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:102:299: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:102:325: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:102:511: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:102:537: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:102:723: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:102:749: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:102:935: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:102:961: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:102:1104: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:102:1130: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:102:1273: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:102:1299: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:102:1442: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:102:1468: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:102:1611: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:102:1637: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:102:1780: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:102:1806: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:102:1949: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:102:1975: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:102:2118: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:102:2144: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:102:2287: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:102:2313: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:102:2456: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:102:2482: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:102:2625: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:102:2651: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:103:108: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:103:134: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:103:276: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:103:302: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:103:472: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:103:498: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:103:640: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:103:666: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:103:808: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:103:834: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:103:977: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:103:1003: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:103:1146: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:103:1172: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:103:1315: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:103:1341: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:103:1484: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:103:1510: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:103:1653: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:103:1679: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:103:1822: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:103:1848: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:103:1991: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:103:2017: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:103:2189: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:103:2215: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:103:2358: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:103:2384: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:103:2527: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:103:2553: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:104:108: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:104:134: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:104:304: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:104:330: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:104:472: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:104:498: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:104:668: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:104:694: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:104:836: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:104:862: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:104:1005: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:104:1031: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:104:1202: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:104:1228: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:104:1371: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:104:1397: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:104:1540: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:104:1566: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:104:1709: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:104:1735: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:104:1878: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:104:1904: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:104:2047: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:104:2073: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:104:2245: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:104:2271: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:104:2443: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:104:2469: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:104:2612: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:104:2638: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:105:108: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:105:134: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:105:276: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:105:302: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:105:444: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:105:470: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:105:640: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:105:666: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:105:808: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:105:834: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:105:977: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:105:1003: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:105:1174: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:105:1200: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:105:1371: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:105:1397: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:105:1540: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:105:1566: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:105:1709: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:105:1735: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:105:1878: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:105:1904: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:105:2047: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:105:2073: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:105:2216: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:105:2242: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:105:2385: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:105:2411: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:105:2554: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:105:2580: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:106:108: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:106:134: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:106:276: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:106:302: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:106:444: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:106:470: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:106:640: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:106:666: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:106:836: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:106:862: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:106:1033: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:106:1059: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:106:1230: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:106:1256: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:106:1427: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:106:1453: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:106:1596: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:106:1622: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:106:1765: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:106:1791: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:106:1934: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:106:1960: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:106:2103: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:106:2129: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:106:2272: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:106:2298: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:106:2441: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:106:2467: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:106:2610: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:106:2636: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:107:108: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:107:134: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:107:276: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:107:302: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:107:472: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:107:498: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:107:668: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:107:694: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:107:864: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:107:890: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:107:1061: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:107:1087: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:107:1258: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:107:1284: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:107:1427: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:107:1453: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:107:1596: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:107:1622: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:107:1765: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:107:1791: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:107:1934: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:107:1960: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:107:2103: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:107:2129: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:107:2272: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:107:2298: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:107:2441: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:107:2467: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:107:2610: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:107:2636: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:108:108: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:108:134: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:108:276: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:108:302: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:108:444: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:108:470: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:108:640: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:108:666: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:108:836: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:108:862: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:108:1005: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:108:1031: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:108:1202: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:108:1228: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:108:1371: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:108:1397: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:108:1540: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:108:1566: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:108:1709: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:108:1735: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:108:1878: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:108:1904: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:108:2047: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:108:2073: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:108:2216: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:108:2242: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:108:2385: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:108:2411: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:108:2554: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:108:2580: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:109:108: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:109:134: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:109:276: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:109:302: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:109:444: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:109:470: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:109:612: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:109:638: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:109:808: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:109:834: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:109:1005: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:109:1031: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:109:1202: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:109:1228: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:109:1371: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:109:1397: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:109:1540: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:109:1566: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:109:1709: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:109:1735: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:109:1878: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:109:1904: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:109:2047: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:109:2073: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:109:2216: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:109:2242: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:109:2385: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:109:2411: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:109:2554: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:109:2580: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:110:108: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:110:134: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:110:276: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:110:302: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:110:444: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:110:470: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:110:612: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:110:638: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:110:780: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:110:806: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:110:977: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:110:1003: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:110:1174: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:110:1200: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:110:1343: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:110:1369: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:110:1540: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:110:1566: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:110:1737: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:110:1763: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:110:1906: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:110:1932: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:110:2075: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:110:2101: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:110:2244: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:110:2270: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:110:2413: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:110:2439: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:110:2582: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:110:2608: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:111:108: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:111:134: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:111:276: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:111:302: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:111:444: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:111:470: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:111:640: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:111:666: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:111:808: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:111:834: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:111:977: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:111:1003: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:111:1174: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:111:1200: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:111:1343: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:111:1369: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:111:1540: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:111:1566: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:111:1709: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:111:1735: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:111:1878: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:111:1904: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:111:2047: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:111:2073: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:111:2216: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:111:2242: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:111:2385: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:111:2411: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:111:2554: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:111:2580: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:112:108: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:112:134: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:112:276: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:112:302: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:112:444: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:112:470: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:112:612: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:112:638: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:112:780: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:112:806: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:112:977: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:112:1003: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:112:1174: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:112:1200: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:112:1371: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:112:1397: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:112:1568: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:112:1594: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:112:1737: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:112:1763: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:112:1906: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:112:1932: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:112:2075: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:112:2101: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:112:2244: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:112:2270: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:112:2413: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:112:2439: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:112:2582: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/samegame/index.html:112:2608: [info] 'this' refers to multiple abstract objects, which may cause loss of precision

@@ -27,7 +27,7 @@ test/chromeexperiments/core.html:307:29: [maybe] Reading absent property alpha
 test/chromeexperiments/core.html:308:66: [maybe] Reading absent property alpha
 test/chromeexperiments/core.html:309:68: [maybe] Reading absent property alpha
 test/chromeexperiments/core.html:333:17: [maybe] Reading absent property dead
-test/chromeexperiments/core.html:151:32: [maybe] Uncaught exception, constructed at [test/chromeexperiments/core.html:189:13, test/chromeexperiments/core.html:196:13, test/chromeexperiments/core.html:286:17, test/chromeexperiments/core.html:289:91, test/chromeexperiments/core.html:305:13, test/chromeexperiments/core.html:352:13, test/chromeexperiments/core.html:526:9]
+test/chromeexperiments/core.html: [maybe] Uncaught exception, constructed at [test/chromeexperiments/core.html:189:13, test/chromeexperiments/core.html:196:13, test/chromeexperiments/core.html:286:17, test/chromeexperiments/core.html:289:91, test/chromeexperiments/core.html:305:13, test/chromeexperiments/core.html:352:13, test/chromeexperiments/core.html:526:9]
 test/chromeexperiments/core.html:282:20: [maybe] Reading absent property (computed name)
 test/chromeexperiments/core.html:284:21: [maybe] Reading absent property (computed name)
 test/chromeexperiments/core.html:285:22: [maybe] Reading absent property (computed name)

@@ -1,0 +1,90 @@
+test/apps/solitaire/spider.html:215:21: [definite] TypeError, accessing property of null/undefined
+test/apps/solitaire/spider.html:433:21: [definite] TypeError, accessing property of null/undefined
+test/apps/solitaire/spider.html:512:109: [definite] TypeError, call to non-function
+test/apps/solitaire/spider.html:559:13: [definite] Too many parameters to function HTMLDocument.prototype.open
+test/apps/solitaire/spider.html:621:13: [definite] TypeError, accessing property of null/undefined
+test/apps/solitaire/spider.html:30:24: [definite] The conditional expression is always true
+test/apps/solitaire/spider.html:33:17: [definite] The conditional expression is always true
+test/apps/solitaire/spider.html:39:17: [definite] The conditional expression is always false
+test/apps/solitaire/spider.html:39:21: [definite] Variable NeedToRemove is null/undefined
+test/apps/solitaire/spider.html:226:21: [definite] The conditional expression is always true
+test/apps/solitaire/spider.html:226:25: [definite] The conditional expression is always true
+test/apps/solitaire/spider.html:432:34: [definite] The conditional expression is always true
+test/apps/solitaire/spider.html:521:13: [definite] The conditional expression is always false
+test/apps/solitaire/spider.html:28:13: [definite] Dead assignment, property is never read
+test/apps/solitaire/spider.html:215:21: [definite] Reading absent property layers
+test/apps/solitaire/spider.html:433:21: [definite] Reading absent property layers
+test/apps/solitaire/spider.html:512:109: [definite] Reading absent property captureEvents
+test/apps/solitaire/spider.html:512:132: [definite] Reading absent property MOUSEDOWN
+test/apps/solitaire/spider.html:521:17: [definite] Reading absent property event
+test/apps/solitaire/spider.html:621:13: [definite] Reading absent property ButtonsForm
+TAJS-dynamic-code(test/apps/solitaire/spider.html:620:13):1:1: [definite] Unreachable function
+test/apps/solitaire/spider.html:13:23: [definite] The variable I_Sel is never used
+test/apps/solitaire/spider.html:13:30: [definite] The variable J_Sel is never used
+test/apps/solitaire/spider.html:13:37: [definite] The variable IsNetscape is never used
+test/apps/solitaire/spider.html:15:17: [definite] The variable StartTime is never used
+test/apps/solitaire/spider.html:15:28: [definite] The variable EndTime is never used
+test/apps/solitaire/spider.html:16:17: [definite] The variable MoveCount is never used
+test/apps/solitaire/spider.html:16:28: [definite] The variable MaxMoveCount is never used
+test/apps/solitaire/spider.html:17:31: [definite] The variable N_Deals is never used
+test/apps/solitaire/spider.html:38:36: [definite] The variable jj2 is never used
+test/apps/solitaire/spider.html:86:13: [definite] Unreachable function Resize
+test/apps/solitaire/spider.html:90:13: [definite] Unreachable function DealCards
+test/apps/solitaire/spider.html:117:13: [definite] Unreachable function Back
+test/apps/solitaire/spider.html:130:13: [definite] Unreachable function Replay
+test/apps/solitaire/spider.html:143:13: [definite] Unreachable function GetPile
+test/apps/solitaire/spider.html:150:13: [definite] Unreachable function MouseDown
+test/apps/solitaire/spider.html:215:56: [definite] Unreachable code
+test/apps/solitaire/spider.html:236:13: [definite] Unreachable function CanAutoRemove
+test/apps/solitaire/spider.html:263:13: [definite] Unreachable function AutoRemove
+test/apps/solitaire/spider.html:286:13: [definite] Unreachable function Timer
+test/apps/solitaire/spider.html:290:13: [definite] Unreachable function MakeMove
+test/apps/solitaire/spider.html:312:13: [definite] Unreachable function Move
+test/apps/solitaire/spider.html:336:13: [definite] Unreachable function RefreshCol
+test/apps/solitaire/spider.html:433:60: [definite] Unreachable code
+test/apps/solitaire/spider.html:504:13: [definite] Unreachable function ShowHelp
+test/apps/solitaire/spider.html:515:13: [definite] Unreachable function NetscapeMouseDown
+test/apps/solitaire/spider.html:525:37: [definite] Unreachable function
+test/apps/solitaire/spider.html:531:103: [definite] Unreachable function
+test/apps/solitaire/spider.html:534:103: [definite] Unreachable function
+test/apps/solitaire/spider.html:540:55: [definite] Unreachable function
+test/apps/solitaire/spider.html:546:55: [definite] Unreachable function
+test/apps/solitaire/spider.html:552:55: [definite] Unreachable function
+test/apps/solitaire/spider.html:621:54: [definite] Unreachable code
+test/apps/solitaire/spider.html:225:46: [maybe] ReferenceError, reading absent variable style
+test/apps/solitaire/spider.html:475:33: [maybe] ReferenceError, reading absent variable style
+test/apps/solitaire/spider.html:476:33: [maybe] ReferenceError, reading absent variable style
+test/apps/solitaire/spider.html:477:33: [maybe] ReferenceError, reading absent variable style
+test/apps/solitaire/spider.html:478:33: [maybe] ReferenceError, reading absent variable style
+test/apps/solitaire/spider.html:482:37: [maybe] ReferenceError, reading absent variable style
+test/apps/solitaire/spider.html:483:37: [maybe] ReferenceError, reading absent variable style
+test/apps/solitaire/spider.html:484:37: [maybe] ReferenceError, reading absent variable style
+test/apps/solitaire/spider.html:485:37: [maybe] ReferenceError, reading absent variable style
+test/apps/solitaire/spider.html:494:29: [maybe] ReferenceError, reading absent variable style
+test/apps/solitaire/spider.html:495:29: [maybe] ReferenceError, reading absent variable style
+test/apps/solitaire/spider.html:496:29: [maybe] ReferenceError, reading absent variable style
+test/apps/solitaire/spider.html:497:29: [maybe] ReferenceError, reading absent variable style
+test/apps/solitaire/spider.html: [maybe] Uncaught exception, constructed at [test/apps/solitaire/spider.html:215:21, test/apps/solitaire/spider.html:225:21, test/apps/solitaire/spider.html:225:46, test/apps/solitaire/spider.html:433:21, test/apps/solitaire/spider.html:474:29, test/apps/solitaire/spider.html:475:33, test/apps/solitaire/spider.html:476:33, test/apps/solitaire/spider.html:477:33, test/apps/solitaire/spider.html:478:33, test/apps/solitaire/spider.html:481:33, test/apps/solitaire/spider.html:482:37, test/apps/solitaire/spider.html:483:37, test/apps/solitaire/spider.html:484:37, test/apps/solitaire/spider.html:485:37, test/apps/solitaire/spider.html:493:25, test/apps/solitaire/spider.html:494:29, test/apps/solitaire/spider.html:495:29, test/apps/solitaire/spider.html:496:29, test/apps/solitaire/spider.html:497:29, test/apps/solitaire/spider.html:512:109, test/apps/solitaire/spider.html:621:13]
+test/apps/solitaire/spider.html:57:26: [maybe] Reading absent property (computed name)
+test/apps/solitaire/spider.html:58:36: [maybe] Reading absent property (computed name)
+test/apps/solitaire/spider.html:68:25: [maybe] Conversion to number yields NaN
+test/apps/solitaire/spider.html:68:25: [maybe] Reading absent property (computed name)
+test/apps/solitaire/spider.html:75:29: [maybe] Reading absent property (computed name)
+test/apps/solitaire/spider.html:470:43: [maybe] Reading absent property (computed name)
+test/apps/solitaire/spider.html:471:34: [maybe] Conversion to number yields NaN
+test/apps/solitaire/spider.html:471:34: [maybe] Reading absent property (computed name)
+test/apps/solitaire/spider.html:472:35: [maybe] Conversion to number yields NaN
+test/apps/solitaire/spider.html:472:35: [maybe] Reading absent property (computed name)
+test/apps/solitaire/spider.html:475:45: [maybe] Conversion to number yields NaN
+test/apps/solitaire/spider.html:475:45: [maybe] Reading absent property (computed name)
+test/apps/solitaire/spider.html:475:54: [maybe] Conversion to number yields NaN
+test/apps/solitaire/spider.html:475:59: [maybe] Reading absent property (computed name)
+test/apps/solitaire/spider.html:476:46: [maybe] Reading absent property (computed name)
+test/apps/solitaire/spider.html:480:33: [maybe] Reading absent property (computed name)
+test/apps/solitaire/spider.html:482:49: [maybe] Conversion to number yields NaN
+test/apps/solitaire/spider.html:482:49: [maybe] Reading absent property (computed name)
+test/apps/solitaire/spider.html:482:58: [maybe] Conversion to number yields NaN
+test/apps/solitaire/spider.html:482:63: [maybe] Reading absent property (computed name)
+test/apps/solitaire/spider.html:483:50: [maybe] Reading absent property (computed name)
+test/apps/solitaire/spider.html:494:41: [maybe] Reading absent property (computed name)
+test/apps/solitaire/spider.html:495:42: [maybe] Reading absent property (computed name)

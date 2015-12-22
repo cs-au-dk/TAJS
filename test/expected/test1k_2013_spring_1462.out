@@ -1,0 +1,51 @@
+test/1k2013spring/1462.js:90:5: [definite] Too many parameters to function CanvasRenderingContext2D.prototype.fill
+test/1k2013spring/1462.js:92:7: [definite] Too many parameters to function CanvasRenderingContext2D.prototype.beginPath
+test/1k2013spring/1462.js:104:5: [definite] Too many parameters to function CanvasRenderingContext2D.prototype.fillRect
+test/1k2013spring/1462.js:119:7: [definite] Too many parameters to function CanvasRenderingContext2D.prototype.fill
+test/1k2013spring/1462.js:121:9: [definite] Too many parameters to function CanvasRenderingContext2D.prototype.beginPath
+test/1k2013spring/1462.js:147:3: [definite] Too many parameters to function Window.setInterval
+test/1k2013spring/1462.js:161:11: [definite] Too many parameters to function CanvasRenderingContext2D.prototype.fill
+test/1k2013spring/1462.js:162:13: [definite] Too many parameters to function CanvasRenderingContext2D.prototype.beginPath
+test/1k2013spring/1462.js:176:13: [definite] Too many parameters to function CanvasRenderingContext2D.prototype.fill
+test/1k2013spring/1462.js:177:15: [definite] Too many parameters to function CanvasRenderingContext2D.prototype.beginPath
+test/1k2013spring/1462.js:185:15: [definite] Too many parameters to function CanvasRenderingContext2D.prototype.fill
+test/1k2013spring/1462.js:186:17: [definite] Too many parameters to function CanvasRenderingContext2D.prototype.beginPath
+test/1k2013spring/1462.js:45:21: [definite] Too few parameters to function Node.cloneNode
+test/1k2013spring/1462.js:96:7: [definite] Too few parameters to function CanvasRenderingContext2D.prototype.arc
+test/1k2013spring/1462.js:165:13: [definite] Too few parameters to function CanvasRenderingContext2D.prototype.arc
+test/1k2013spring/1462.js:180:15: [definite] Too few parameters to function CanvasRenderingContext2D.prototype.arc
+test/1k2013spring/1462.js:38:5: [definite] The variable e is never used
+test/1k2013spring/1462.js:43:5: [definite] The variable d is never used
+test/1k2013spring/1462.js:43:5: [definite] The variable e is never used
+test/1k2013spring/1462.js:29:1: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1462.js:35:1: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1462.js:45:21: [maybe] TypeError, call to non-function
+test/1k2013spring/1462.js:47:9: [maybe] TypeError, call to non-function
+test/1k2013spring/1462.js:94:9: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1462.js:98:58: [maybe] ReferenceError, reading absent variable R
+test/1k2013spring/1462.js:108:7: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1462.js:163:15: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1462.js:165:17: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1462.js:165:33: [maybe] ReferenceError, reading absent variable R
+test/1k2013spring/1462.js:178:17: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1462.js:181:79: [maybe] ReferenceError, reading absent variable R
+test/1k2013spring/1462.js:206:18: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1462.js:207:32: [maybe] ReferenceError, reading absent variable P
+test/1k2013spring/shim.js:8:9: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/shim.js:8:9: [maybe] TypeError, call to non-function
+test/1k2013spring/shim.js:9:1: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1462.js:35:1: [maybe] Reading absent property style
+test/1k2013spring/1462.js:45:21: [maybe] Reading absent property cloneNode
+test/1k2013spring/1462.js:47:9: [maybe] Reading absent property getContext
+test/1k2013spring/1462.js:65:11: [maybe] Reading absent property G
+test/1k2013spring/1462.js:150:17: [maybe] Reading absent property G
+test/1k2013spring/1462.js:169:21: [maybe] Reading absent property G
+test/1k2013spring/1462.js:198:11: [maybe] Reading absent property t
+test/1k2013spring/shim.js:6:9: [maybe] Reading absent property body
+test/1k2013spring/shim.js:8:9: [maybe] Reading absent property getContext
+test/1k2013spring/shim.js:9:1: [maybe] Reading absent property body
+test/1k2013spring/1462.js:157:25: [maybe] Reading absent property (computed name)
+test/1k2013spring/1462.js:198:11: [maybe] Conversion to number yields NaN
+test/1k2013spring/1462.js:205:23: [maybe] Reading absent property (computed name)
+test/1k2013spring/shim.js:7:9: [maybe] Reading absent property (computed name)
+test/1k2013spring/shim.js,test/1k2013spring/1462.js: [maybe] Uncaught exception, constructed at [test/1k2013spring/1462.js:29:1, test/1k2013spring/1462.js:35:1, test/1k2013spring/1462.js:45:21, test/1k2013spring/1462.js:47:9, test/1k2013spring/1462.js:65:1, test/1k2013spring/1462.js:94:9, test/1k2013spring/1462.js:98:58, test/1k2013spring/1462.js:108:7, test/1k2013spring/1462.js:150:7, test/1k2013spring/1462.js:163:15, test/1k2013spring/1462.js:165:17, test/1k2013spring/1462.js:165:33, test/1k2013spring/1462.js:169:11, test/1k2013spring/1462.js:178:17, test/1k2013spring/1462.js:181:79, test/1k2013spring/1462.js:206:18, test/1k2013spring/1462.js:207:32, test/1k2013spring/shim.js:8:9, test/1k2013spring/shim.js:9:1]

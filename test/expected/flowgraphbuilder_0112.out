@@ -1,6 +1,6 @@
-fg2: function()
+fg2: <main> function()
   block 0: [entry]
-    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0112.js:1:1)
+    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0112.js)
     node 1: vardecl['b']* (test/flowgraphbuilder/flowgraph_builder0112.js:3:10)
     ->[block 1]
   block 1:
@@ -31,10 +31,10 @@ fg2: function()
     node 14: end-for-in(begin-node:7)* (test/flowgraphbuilder/flowgraph_builder0112.js:3:20)
     ->[block 8]
   block 8: [exit-ordinary]
-    node 15: return[v1] (test/flowgraphbuilder/flowgraph_builder0112.js:1:1)
+    node 15: return[v1] (test/flowgraphbuilder/flowgraph_builder0112.js)
     ->[]
   block 9: [exit-exceptional]
-    node 16: exceptional-return (test/flowgraphbuilder/flowgraph_builder0112.js:1:1)
+    node 16: exceptional-return (test/flowgraphbuilder/flowgraph_builder0112.js)
     ->[]
 
 test/flowgraphbuilder/flowgraph_builder0112.js:3:10: [definite] The variable b is never used

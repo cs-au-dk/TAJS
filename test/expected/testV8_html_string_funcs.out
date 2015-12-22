@@ -26,5 +26,5 @@ test/v8tests/html-string-funcs.js:32:16: [maybe] Converting primitive string to 
 test/v8tests/html-string-funcs.js:32:16: [maybe] Converting undefined to string
 test/v8tests/html-string-funcs.js:32:16: [maybe] Reading absent property (computed name)
 test/v8tests/html-string-funcs.js:42:16: [maybe] Converting primitive string to object
-test/v8tests/prologue.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/html-string-funcs.js:32:16, test/v8tests/html-string-funcs.js:42:16]
+test/v8tests/prologue.js,test/v8tests/html-string-funcs.js: [maybe] Uncaught exception, constructed at [test/v8tests/html-string-funcs.js:32:16, test/v8tests/html-string-funcs.js:42:16]
 test/v8tests/html-string-funcs.js:32:16: [info] Reading from unknown property that may cause loss of precision

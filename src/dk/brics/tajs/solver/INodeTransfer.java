@@ -24,16 +24,16 @@ import dk.brics.tajs.flowgraph.BasicBlock;
  * Interface for node transfer function classes.
  */
 public interface INodeTransfer<StateType extends IState<StateType, ?, ?>,
-        ContextType extends IContext<?>> extends AbstractNodeVisitor<StateType> {
+        ContextType extends IContext<?>> extends AbstractNodeVisitor {
 
     /**
-     * Applies the transfer function on the given node and input state.
+     * Applies the transfer function on the given node.
      */
-    void transfer(AbstractNode n, StateType in);
+    void transfer(AbstractNode n);
 
     /**
      * Processes ordinary and exceptional return flow when a new call edge has been added.
      */
     void transferReturn(AbstractNode call_node, BasicBlock callee_entry, ContextType caller_context,
-                        ContextType callee_context, ContextType edge_context);
+                        ContextType callee_context, ContextType edge_context, boolean implicit);
 }

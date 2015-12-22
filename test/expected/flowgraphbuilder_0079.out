@@ -1,6 +1,6 @@
-fg2: function()
+fg2: <main> function()
   block 0: [entry]
-    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0079.js:1:1)
+    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0079.js)
     ->[block 1]
   block 1:
     node 1: read-variable['Array',v3,-] (test/flowgraphbuilder/flowgraph_builder0079.js:1:7)
@@ -17,9 +17,9 @@ fg2: function()
     node 8: delete-property[v7,v8,-]* (test/flowgraphbuilder/flowgraph_builder0079.js:2:1)
     ->[block 4]
   block 4: [exit-ordinary]
-    node 9: return[v1] (test/flowgraphbuilder/flowgraph_builder0079.js:1:1)
+    node 9: return[v1] (test/flowgraphbuilder/flowgraph_builder0079.js)
     ->[]
   block 5: [exit-exceptional]
-    node 10: exceptional-return (test/flowgraphbuilder/flowgraph_builder0079.js:1:1)
+    node 10: exceptional-return (test/flowgraphbuilder/flowgraph_builder0079.js)
     ->[]
 

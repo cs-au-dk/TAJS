@@ -1,6 +1,6 @@
-fg2: function()
+fg2: <main> function()
   block 0: [entry]
-    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0137.js:1:1)
+    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0137.js)
     node 1: vardecl['foo']* (test/flowgraphbuilder/flowgraph_builder0137.js:1:5)
     ->[block 1]
   block 1:
@@ -36,10 +36,10 @@ fg2: function()
     node 17: end-with* (test/flowgraphbuilder/flowgraph_builder0137.js:3:1)
     ->[block 9]
   block 9: [exit-ordinary]
-    node 18: return[v1] (test/flowgraphbuilder/flowgraph_builder0137.js:1:1)
+    node 18: return[v1] (test/flowgraphbuilder/flowgraph_builder0137.js)
     ->[]
   block 10: [exit-exceptional]
-    node 19: exceptional-return (test/flowgraphbuilder/flowgraph_builder0137.js:1:1)
+    node 19: exceptional-return (test/flowgraphbuilder/flowgraph_builder0137.js)
     ->[]
 function()
   block 11: [entry]
@@ -49,10 +49,10 @@ function()
     node 21: read-variable['this',v1,-]* (test/flowgraphbuilder/flowgraph_builder0137.js:1:39)
     ->[block 13]
   block 13: [exit-ordinary]
-    node 22: return[v1] (test/flowgraphbuilder/flowgraph_builder0137.js:1:44)
+    node 22: return[v1] (test/flowgraphbuilder/flowgraph_builder0137.js:1:20)
     ->[]
   block 14: [exit-exceptional]
-    node 23: exceptional-return (test/flowgraphbuilder/flowgraph_builder0137.js:1:44)
+    node 23: exceptional-return (test/flowgraphbuilder/flowgraph_builder0137.js:1:20)
     ->[]
 
 test/flowgraphbuilder/flowgraph_builder0137.js:4:2: [info] Abstract value: [@Object#node2]

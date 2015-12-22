@@ -9,7 +9,6 @@ TAJS_dumpValue(x.a);
 
 var temp = x.a;
 if (temp != null) {
-	//assumeNonNullUndef("temp");
-	TAJS_dumpValue(temp); // expected: [REGEXP]  (not Undef!!!!)
+	TAJS_assert(temp !== undefined);
 }
 	

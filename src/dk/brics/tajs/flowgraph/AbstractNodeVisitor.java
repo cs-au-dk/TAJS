@@ -21,10 +21,10 @@ import dk.brics.tajs.flowgraph.jsnodes.Node;
 /**
  * Visitor for flowgraph nodes.
  */
-public interface AbstractNodeVisitor<ArgType> {
+public interface AbstractNodeVisitor {
 
     /**
      * Visits a flowgraph node.
      */
-    void visit(Node n, ArgType a);
+    void visit(Node n);
 }

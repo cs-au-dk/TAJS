@@ -62,7 +62,7 @@ public class Gamma {
 
     private static ConcreteValue toConcreteReqExp(Value value, Solver.SolverInterface c) {
         checkConcrete(isConcreteRegExp(value, c));
-        State state = c.getCurrentState();
+        State state = c.getState();
         Value source = UnknownValueResolver.getRealValue(state.readPropertyValue(value.getObjectLabels(), "source"), state);
         Value global = UnknownValueResolver.getRealValue(state.readPropertyValue(value.getObjectLabels(), "global"), state);
         Value ignoreCase = UnknownValueResolver.getRealValue(state.readPropertyValue(value.getObjectLabels(), "ignoreCase"), state);
@@ -92,7 +92,7 @@ public class Gamma {
                 return false;
             }
         }
-        State state = c.getCurrentState();
+        State state = c.getState();
         Value source = UnknownValueResolver.getRealValue(state.readPropertyValue(value.getObjectLabels(), "source"), state);
         Value lastIndex = UnknownValueResolver.getRealValue(state.readPropertyValue(value.getObjectLabels(), "lastIndex"), state);
         Value global = UnknownValueResolver.getRealValue(state.readPropertyValue(value.getObjectLabels(), "global"), state);

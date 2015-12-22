@@ -187,15 +187,6 @@ public class BasicBlock {
     }
 
     /**
-     * Returns the single node in the basic block.
-     */
-    public AbstractNode getSingleNode() {
-        if (nodes.size() != 1)
-            throw new AnalysisException("Basic block does not contain exactly one node: " + toString());
-        return nodes.get(0);
-    }
-
-    /**
      * Returns the first node.
      */
     public AbstractNode getFirstNode() {
@@ -227,7 +218,7 @@ public class BasicBlock {
      * Returns the source location for the first node in the basic block.
      */
     public SourceLocation getSourceLocation() {
-        return getFirstNode().getSourceLocation();
+        return nodes.isEmpty() ? null : getFirstNode().getSourceLocation();
     }
 
     /**

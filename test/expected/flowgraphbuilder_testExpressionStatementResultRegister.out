@@ -1,6 +1,6 @@
-fg2: function()
+fg2: <main> function()
   block 0: [entry]
-    node 0: constant[undefined,v1] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:1:1)
+    node 0: constant[undefined,v1] (test/flowgraphbuilder/testExpressionStatementResultRegister.js)
     ->[block 1]
   block 1:
     node 1: function-expr[function(),v2] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:1:5)
@@ -37,31 +37,31 @@ fg2: function()
     node 30: construct[-,v16,-]* (test/flowgraphbuilder/testExpressionStatementResultRegister.js:30:1)
     ->[block 3]
   block 3:
-    node 31: nop(eventDispatchers: entry) (test/flowgraphbuilder/testExpressionStatementResultRegister.js:1:1)
+    node 31: nop(eventDispatchers: entry) (test/flowgraphbuilder/testExpressionStatementResultRegister.js)
     ->[block 4,block 5]
   block 4:
-    node 32: event-dispatcher <LOAD> (test/flowgraphbuilder/testExpressionStatementResultRegister.js:1:1)
+    node 32: event-dispatcher <LOAD> (test/flowgraphbuilder/testExpressionStatementResultRegister.js)
     ->[block 5]
   block 5:
-    node 33: nop(eventDispatchers: postLoad) (test/flowgraphbuilder/testExpressionStatementResultRegister.js:1:1)
+    node 33: nop(eventDispatchers: postLoad) (test/flowgraphbuilder/testExpressionStatementResultRegister.js)
     ->[block 4,block 6,block 7]
   block 6:
-    node 34: event-dispatcher <OTHER> (test/flowgraphbuilder/testExpressionStatementResultRegister.js:1:1)
+    node 34: event-dispatcher <OTHER> (test/flowgraphbuilder/testExpressionStatementResultRegister.js)
     ->[block 7]
   block 7:
-    node 35: nop(eventDispatchers: postOther) (test/flowgraphbuilder/testExpressionStatementResultRegister.js:1:1)
+    node 35: nop(eventDispatchers: postOther) (test/flowgraphbuilder/testExpressionStatementResultRegister.js)
     ->[block 6,block 8,block 9]
   block 8:
-    node 36: event-dispatcher <UNLOAD> (test/flowgraphbuilder/testExpressionStatementResultRegister.js:1:1)
+    node 36: event-dispatcher <UNLOAD> (test/flowgraphbuilder/testExpressionStatementResultRegister.js)
     ->[block 9]
   block 9:
-    node 37: nop(eventDispatchers: postUnload) (test/flowgraphbuilder/testExpressionStatementResultRegister.js:1:1)
+    node 37: nop(eventDispatchers: postUnload) (test/flowgraphbuilder/testExpressionStatementResultRegister.js)
     ->[block 8,block 10]
   block 10: [exit-ordinary]
-    node 38: return[v1] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:1:1)
+    node 38: return[v1] (test/flowgraphbuilder/testExpressionStatementResultRegister.js)
     ->[]
   block 11: [exit-exceptional]
-    node 39: exceptional-return (test/flowgraphbuilder/testExpressionStatementResultRegister.js:1:1)
+    node 39: exceptional-return (test/flowgraphbuilder/testExpressionStatementResultRegister.js)
     ->[]
 function()
   block 12: [entry]
@@ -97,10 +97,10 @@ function()
     node 61: call[v11,v12,v13,-]* (test/flowgraphbuilder/testExpressionStatementResultRegister.js:6:5)
     ->[block 17]
   block 17: [exit-ordinary]
-    node 62: return[v1] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:7:1)
+    node 62: return[v1] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:1:5)
     ->[]
   block 18: [exit-exceptional]
-    node 63: exceptional-return (test/flowgraphbuilder/testExpressionStatementResultRegister.js:7:1)
+    node 63: exceptional-return (test/flowgraphbuilder/testExpressionStatementResultRegister.js:1:5)
     ->[]
 function(o)
   block 19: [entry]
@@ -150,10 +150,10 @@ function(o)
     node 95: <variable-non-null-undef>['o']* (test/flowgraphbuilder/testExpressionStatementResultRegister.js:27:9)
     ->[block 26]
   block 26: [exit-ordinary]
-    node 96: return[v1] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:28:5)
+    node 96: return[v1] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:20:8)
     ->[]
   block 27: [exit-exceptional]
-    node 97: exceptional-return (test/flowgraphbuilder/testExpressionStatementResultRegister.js:28:5)
+    node 97: exceptional-return (test/flowgraphbuilder/testExpressionStatementResultRegister.js:20:8)
     ->[]
 
 test/flowgraphbuilder/testExpressionStatementResultRegister.js:5:16: [definite] Property is null/undefined

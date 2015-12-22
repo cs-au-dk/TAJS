@@ -1,0 +1,18 @@
+test/1k2013spring/1427.js:98:4: [definite] Too few parameters to function CanvasRenderingContext2D.prototype.arc
+test/1k2013spring/1427.js:14:1: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1427.js:45:7: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1427.js:57:10: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1427.js:79:5: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1427.js:96:16: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/shim.js:8:9: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/shim.js:8:9: [maybe] TypeError, call to non-function
+test/1k2013spring/shim.js:9:1: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/shim.js:6:9: [maybe] Reading absent property body
+test/1k2013spring/shim.js:8:9: [maybe] Reading absent property getContext
+test/1k2013spring/shim.js:9:1: [maybe] Reading absent property body
+test/1k2013spring/1427.js:44:7: [maybe] Reading absent property (computed name)
+test/1k2013spring/1427.js:56:8: [maybe] Reading absent property (computed name)
+test/1k2013spring/1427.js:78:7: [maybe] Reading absent property (computed name)
+test/1k2013spring/1427.js:95:6: [maybe] Reading absent property (computed name)
+test/1k2013spring/shim.js:7:9: [maybe] Reading absent property (computed name)
+test/1k2013spring/shim.js,test/1k2013spring/1427.js: [maybe] Uncaught exception, constructed at [test/1k2013spring/1427.js:14:1, test/1k2013spring/1427.js:45:7, test/1k2013spring/1427.js:57:10, test/1k2013spring/1427.js:79:5, test/1k2013spring/1427.js:96:16, test/1k2013spring/shim.js:8:9, test/1k2013spring/shim.js:9:1]

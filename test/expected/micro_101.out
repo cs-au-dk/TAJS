@@ -1,5 +1,0 @@
-test/micro/test101.js:5:7: [definite] Dead assignment, property b is never read
-test/micro/test101.js:8:16: [maybe] Reading absent property a
-test/micro/test101.js:10:12: [maybe] Reading absent property a
-test/micro/test101.js:8:1: [info] Abstract value: Undef|[@RegExp[native]]
-test/micro/test101.js:13:2: [info] Abstract value: Undef|[@RegExp[native]]

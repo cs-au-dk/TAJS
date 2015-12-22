@@ -1,4 +1,2 @@
-test/v8tests/date-parse.js:34:1: [definite] Unreachable function testDateParse
-test/v8tests/date-parse.js:42:1: [definite] Unreachable function testDateParseLocalTime
-test/v8tests/date-parse.js:48:1: [definite] Unreachable function testDateParseMisc
-test/v8tests/date-parse.js:265:27: [definite] Unreachable function
+test/v8tests/date-parse.js:49:14: [maybe] TypeError, accessing property of null/undefined
+test/v8tests/prologue.js,test/v8tests/date-parse.js: [maybe] Uncaught exception, constructed at [test/v8tests/date-parse.js:49:14]

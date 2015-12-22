@@ -7,7 +7,6 @@ function f() {
 		x += a[i];
 	}
 }
-TAJS_addContextSensitivity(f, "i")
 
 f();
 TAJS_dumpValue(x);

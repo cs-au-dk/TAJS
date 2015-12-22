@@ -64,21 +64,19 @@ e.length = true;
 TAJS_dumpValue(typeof e.length);
 TAJS_dumpValue(e.length);
 
-// FIXME: Uncomment once test/failing/testarray1.js is ok.
 // Should be 42 with full precision.
-// var f = [];
-// f.length = {valueOf : function() { return 42; }};
+var f = [];
+f.length = {valueOf : function() { return 42; }};
 
-// TAJS_dumpValue(typeof f.length);
-// TAJS_dumpValue(f.length);
+TAJS_dumpValue(typeof f.length);
+TAJS_dumpValue(f.length);
 
-// FIXME: Uncomment once test/failing/testarray2.js is ok.
 // Should be 42 with full precision.
-// var g = [];
-// g.length = {toString : function() { return 42; }};
+var g = [];
+g.length = {toString : function() { return 42; }};
 
-// TAJS_dumpValue(typeof g.length);
-// TAJS_dumpValue(g.length);
+TAJS_dumpValue(typeof g.length);
+TAJS_dumpValue(g.length);
 
 // Test invalid values
 try {
@@ -101,9 +99,8 @@ try {
   k.length = -1;
 } catch (e) {}
 
-// FIXME: Uncomment once test/failing/testarray1.js is ok.
-// try {
-//   var l = [];
-//   l.length = {valueOf: function() { throw new Error(); }};
-// } catch (e) {}
+try {
+  var l = [];
+  l.length = {valueOf: function() { throw new Error(); }};
+} catch (e) {}
 

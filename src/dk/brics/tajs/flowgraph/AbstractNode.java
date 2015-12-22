@@ -73,6 +73,11 @@ public abstract class AbstractNode implements Cloneable {
     private boolean registers_done;
 
     /**
+     * Basic block used for implicit calls.
+     */
+    private BasicBlock implicitAfterCall;
+
+    /**
      * Constructs a new node.
      */
     protected AbstractNode(SourceLocation location) {
@@ -166,7 +171,7 @@ public abstract class AbstractNode implements Cloneable {
     /**
      * Visits this node with the given visitor.
      */
-    abstract public <ArgType> void visitBy(AbstractNodeVisitor<ArgType> v, ArgType a);
+    abstract public void visitBy(AbstractNodeVisitor v);
 
     /**
      * Perform a consistency check of this node.
@@ -208,5 +213,19 @@ public abstract class AbstractNode implements Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    /**
+     * Returns the implicit after-call block for this node, or null if none.
+     */
+    public BasicBlock getImplicitAfterCall() {
+        return implicitAfterCall;
+    }
+
+    /**
+     * Sets the implicit after-call block.
+     */
+    public void setImplicitAfterCall(BasicBlock implicitAfterCall) {
+        this.implicitAfterCall = implicitAfterCall;
     }
 }

@@ -128,7 +128,7 @@ test/chromeexperiments/sandtrap.html:82:9: [maybe] Reading absent property wheel
 test/chromeexperiments/sandtrap.html:83:19: [maybe] Reading absent property wheelDelta
 test/chromeexperiments/sandtrap.html:84:14: [maybe] Reading absent property detail
 test/chromeexperiments/sandtrap.html:84:33: [maybe] Reading absent property detail
-test/chromeexperiments/sandtrap.html:14:13: [maybe] Uncaught exception, constructed at [test/chromeexperiments/sandtrap.html:65:9, test/chromeexperiments/sandtrap.html:71:9, test/chromeexperiments/sandtrap.html:87:9, test/chromeexperiments/sandtrap.html:378:17, test/chromeexperiments/sandtrap.html:1089:9]
+test/chromeexperiments/sandtrap.html: [maybe] Uncaught exception, constructed at [test/chromeexperiments/sandtrap.html:65:9, test/chromeexperiments/sandtrap.html:71:9, test/chromeexperiments/sandtrap.html:87:9, test/chromeexperiments/sandtrap.html:378:17, test/chromeexperiments/sandtrap.html:1089:9]
 test/chromeexperiments/sandtrap.html:83:19: [maybe] Conversion to number yields NaN
 test/chromeexperiments/sandtrap.html:84:24: [maybe] Conversion to number yields NaN
 test/chromeexperiments/sandtrap.html:202:16: [maybe] Conversion from string to number yields NaN

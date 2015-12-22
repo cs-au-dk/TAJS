@@ -1,5 +1,5 @@
 test/micro/test180.js:21:18: [maybe] TypeError, accessing property of null/undefined
-test/micro/test180.js:1:1: [maybe] Uncaught exception, constructed at [test/micro/test180.js:21:18]
+test/micro/test180.js: [maybe] Uncaught exception, constructed at [test/micro/test180.js:21:18]
 test/micro/test180.js:10:13: [maybe] Reading absent property (computed name)
 test/micro/test180.js:19:13: [maybe] Reading absent property (computed name)
 test/micro/test180.js:8:3: [info] Abstract value: UInt

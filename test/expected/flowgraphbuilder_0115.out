@@ -1,6 +1,6 @@
-fg2: function()
+fg2: <main> function()
   block 0: [entry]
-    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0115.js:1:1)
+    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0115.js)
     node 1: function-decl[function f(x),-] (test/flowgraphbuilder/flowgraph_builder0115.js:1:1)
     ->[block 1]
   block 1:
@@ -11,10 +11,10 @@ fg2: function()
     node 4: call[v2,v3,v4,-]* (test/flowgraphbuilder/flowgraph_builder0115.js:5:1)
     ->[block 3]
   block 3: [exit-ordinary]
-    node 5: return[v1] (test/flowgraphbuilder/flowgraph_builder0115.js:1:1)
+    node 5: return[v1] (test/flowgraphbuilder/flowgraph_builder0115.js)
     ->[]
   block 4: [exit-exceptional]
-    node 6: exceptional-return (test/flowgraphbuilder/flowgraph_builder0115.js:1:1)
+    node 6: exceptional-return (test/flowgraphbuilder/flowgraph_builder0115.js)
     ->[]
 function f(x)
   block 5: [entry]
@@ -28,10 +28,10 @@ function f(x)
     node 10: call[v2,v3,v1] (test/flowgraphbuilder/flowgraph_builder0115.js:2:9)
     ->[block 8]
   block 8: [exit-ordinary]
-    node 11: return[v1] (test/flowgraphbuilder/flowgraph_builder0115.js:4:1)
+    node 11: return[v1] (test/flowgraphbuilder/flowgraph_builder0115.js:1:1)
     ->[]
   block 9: [exit-exceptional]
-    node 12: exceptional-return (test/flowgraphbuilder/flowgraph_builder0115.js:4:1)
+    node 12: exceptional-return (test/flowgraphbuilder/flowgraph_builder0115.js:1:1)
     ->[]
 function g()
   block 10: [entry]
@@ -41,9 +41,9 @@ function g()
     node 14: read-variable['x',v1,-]* (test/flowgraphbuilder/flowgraph_builder0115.js:3:24)
     ->[block 12]
   block 12: [exit-ordinary]
-    node 15: return[v1] (test/flowgraphbuilder/flowgraph_builder0115.js:3:25)
+    node 15: return[v1] (test/flowgraphbuilder/flowgraph_builder0115.js:3:2)
     ->[]
   block 13: [exit-exceptional]
-    node 16: exceptional-return (test/flowgraphbuilder/flowgraph_builder0115.js:3:25)
+    node 16: exceptional-return (test/flowgraphbuilder/flowgraph_builder0115.js:3:2)
     ->[]
 

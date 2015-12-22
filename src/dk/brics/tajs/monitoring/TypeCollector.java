@@ -97,7 +97,7 @@ public class TypeCollector {
     public void record(String variable_name, SourceLocation source_location, Value value, Context context) { // TODO: do we need to consider unknown or polymorphic values here?
         VariableSummary new_location = new VariableSummary(variable_name == null ? "null" : variable_name, source_location, context);
         Value existing_value = type_info_map.get(new_location);
-        if (existing_value != null) // TODO: return list of values instead of joining them?
+        if (existing_value != null)
             value = Value.join(existing_value, value); // joining values to accommodate for multiple contexts or imprecise location information
         type_info_map.put(new_location, value);
     }
@@ -112,7 +112,7 @@ public class TypeCollector {
     /**
      * Presents the collected type information in the format varname: location -&gt; type.
      */
-    public void logTypeInformation() { // TODO: present object type information in some better way?
+    public void logTypeInformation() {
         for (Entry<VariableSummary, Value> entry : type_info_map.entrySet()) {
             log.info(entry.getKey().getVariableName() + ":\t" + entry.getKey().getVariableLocation() + "\t->\t" + entry.getValue());
         }

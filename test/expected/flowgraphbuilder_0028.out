@@ -1,6 +1,6 @@
-fg2: function()
+fg2: <main> function()
   block 0: [entry]
-    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0028.js:1:1)
+    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0028.js)
     node 1: vardecl['x']* (test/flowgraphbuilder/flowgraph_builder0028.js:1:5)
     node 2: vardecl['y']* (test/flowgraphbuilder/flowgraph_builder0028.js:1:12)
     node 3: vardecl['z']* (test/flowgraphbuilder/flowgraph_builder0028.js:1:19)
@@ -14,10 +14,10 @@ fg2: function()
     node 9: write-variable[v4,'z']* (test/flowgraphbuilder/flowgraph_builder0028.js:1:23)
     ->[block 2]
   block 2: [exit-ordinary]
-    node 10: return[v1] (test/flowgraphbuilder/flowgraph_builder0028.js:1:1)
+    node 10: return[v1] (test/flowgraphbuilder/flowgraph_builder0028.js)
     ->[]
   block 3: [exit-exceptional]
-    node 11: exceptional-return (test/flowgraphbuilder/flowgraph_builder0028.js:1:1)
+    node 11: exceptional-return (test/flowgraphbuilder/flowgraph_builder0028.js)
     ->[]
 
 test/flowgraphbuilder/flowgraph_builder0028.js:1:5: [definite] The variable x is never used

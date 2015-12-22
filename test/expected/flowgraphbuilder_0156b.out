@@ -1,0 +1,197 @@
+fg2: <main> function()
+  block 0: [entry]
+    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0156b.html)
+    node 1: function-decl[function A(),-] (test/flowgraphbuilder/flowgraph_builder0156b.html:3:1)
+    node 2: function-decl[function(),-] (test/flowgraphbuilder/flowgraph_builder0156b.html:9:15)
+    ->[block 1]
+  block 1:
+    node 3: nop(eventDispatchers: entry) (test/flowgraphbuilder/flowgraph_builder0156b.html)
+    ->[block 2,block 3]
+  block 2:
+    node 4: event-dispatcher <LOAD> (test/flowgraphbuilder/flowgraph_builder0156b.html)
+    ->[block 3]
+  block 3:
+    node 5: nop(eventDispatchers: postLoad) (test/flowgraphbuilder/flowgraph_builder0156b.html)
+    ->[block 2,block 4,block 5]
+  block 4:
+    node 6: event-dispatcher <OTHER> (test/flowgraphbuilder/flowgraph_builder0156b.html)
+    ->[block 5]
+  block 5:
+    node 7: nop(eventDispatchers: postOther) (test/flowgraphbuilder/flowgraph_builder0156b.html)
+    ->[block 4,block 6,block 7]
+  block 6:
+    node 8: event-dispatcher <UNLOAD> (test/flowgraphbuilder/flowgraph_builder0156b.html)
+    ->[block 7]
+  block 7:
+    node 9: nop(eventDispatchers: postUnload) (test/flowgraphbuilder/flowgraph_builder0156b.html)
+    ->[block 6,block 8]
+  block 8: [exit-ordinary]
+    node 10: return[v1] (test/flowgraphbuilder/flowgraph_builder0156b.html)
+    ->[]
+  block 9: [exit-exceptional]
+    node 11: exceptional-return (test/flowgraphbuilder/flowgraph_builder0156b.html)
+    ->[]
+function A()
+  block 10: [entry]
+    node 12: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0156b.html:3:1)
+    ->[block 11]
+  block 11:
+    node 13: read-variable['this',v3,-] (test/flowgraphbuilder/flowgraph_builder0156b.html:4:5)
+    node 14: function-expr[function(),v2] (test/flowgraphbuilder/flowgraph_builder0156b.html:4:14)
+    node 15: write-property[v3,'f',v2]* (test/flowgraphbuilder/flowgraph_builder0156b.html:4:5)
+    ->[block 12]
+  block 12: [exit-ordinary]
+    node 16: return[v1] (test/flowgraphbuilder/flowgraph_builder0156b.html:3:1)
+    ->[]
+  block 13: [exit-exceptional]
+    node 17: exceptional-return (test/flowgraphbuilder/flowgraph_builder0156b.html:3:1)
+    ->[]
+function()
+  block 14: [entry]
+    node 18: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0156b.html:4:14)
+    ->[block 15]
+  block 15:
+    node 19: read-variable['setInterval',v5,v4] (test/flowgraphbuilder/flowgraph_builder0156b.html:5:13)
+    node 20: constant["",v6] (test/flowgraphbuilder/flowgraph_builder0156b.html:5:25)
+    ->[block 16]
+  block 16:
+    node 21: call[v4,v5,v6,v3] (test/flowgraphbuilder/flowgraph_builder0156b.html:5:13)
+    ->[block 17]
+  block 17:
+    node 22: write-variable[v3,'p']* (test/flowgraphbuilder/flowgraph_builder0156b.html:5:9)
+    ->[block 18]
+  block 18: [exit-ordinary]
+    node 23: return[v1] (test/flowgraphbuilder/flowgraph_builder0156b.html:4:14)
+    ->[]
+  block 19: [exit-exceptional]
+    node 24: exceptional-return (test/flowgraphbuilder/flowgraph_builder0156b.html:4:14)
+    ->[]
+function()
+  block 20: [entry]
+    node 25: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0156b.html:9:15)
+    ->[block 21]
+  block 21:
+    node 26: read-variable['A',v4,-] (test/flowgraphbuilder/flowgraph_builder0156b.html:9:19)
+    ->[block 22]
+  block 22:
+    node 27: construct[-,v4,v3] (test/flowgraphbuilder/flowgraph_builder0156b.html:9:15)
+    ->[block 23]
+  block 23:
+    node 28: read-property[v3,'f',-] (test/flowgraphbuilder/flowgraph_builder0156b.html:9:15)
+    ->[block 24]
+  block 24:
+    node 29: call[v3,'f',-]* (test/flowgraphbuilder/flowgraph_builder0156b.html:9:15)
+    ->[block 25]
+  block 25: [exit-ordinary]
+    node 30: return[v1] (test/flowgraphbuilder/flowgraph_builder0156b.html:9:15)
+    ->[]
+  block 26: [exit-exceptional]
+    node 31: exceptional-return (test/flowgraphbuilder/flowgraph_builder0156b.html:9:15)
+    ->[]
+
+fg2: <main> function()
+  block 0: [entry]
+    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0156b.html)
+    node 1: function-decl[function A(),-] (test/flowgraphbuilder/flowgraph_builder0156b.html:3:1)
+    node 2: function-decl[function(),-] (test/flowgraphbuilder/flowgraph_builder0156b.html:9:15)
+    ->[block 1]
+  block 1:
+    node 3: nop(eventDispatchers: entry) (test/flowgraphbuilder/flowgraph_builder0156b.html)
+    ->[block 2,block 3]
+  block 2:
+    node 4: event-dispatcher <LOAD> (test/flowgraphbuilder/flowgraph_builder0156b.html)
+    ->[block 3]
+  block 3:
+    node 5: nop(eventDispatchers: postLoad) (test/flowgraphbuilder/flowgraph_builder0156b.html)
+    ->[block 2,block 4,block 5]
+  block 4:
+    node 6: event-dispatcher <OTHER> (test/flowgraphbuilder/flowgraph_builder0156b.html)
+    ->[block 5]
+  block 5:
+    node 7: nop(eventDispatchers: postOther) (test/flowgraphbuilder/flowgraph_builder0156b.html)
+    ->[block 4,block 6,block 7]
+  block 6:
+    node 8: event-dispatcher <UNLOAD> (test/flowgraphbuilder/flowgraph_builder0156b.html)
+    ->[block 7]
+  block 7:
+    node 9: nop(eventDispatchers: postUnload) (test/flowgraphbuilder/flowgraph_builder0156b.html)
+    ->[block 6,block 8]
+  block 8: [exit-ordinary]
+    node 10: return[v1] (test/flowgraphbuilder/flowgraph_builder0156b.html)
+    ->[]
+  block 9: [exit-exceptional]
+    node 11: exceptional-return (test/flowgraphbuilder/flowgraph_builder0156b.html)
+    ->[]
+function A()
+  block 10: [entry]
+    node 12: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0156b.html:3:1)
+    ->[block 11]
+  block 11:
+    node 13: read-variable['this',v3,-] (test/flowgraphbuilder/flowgraph_builder0156b.html:4:5)
+    node 14: function-expr[function(),v2] (test/flowgraphbuilder/flowgraph_builder0156b.html:4:14)
+    node 15: write-property[v3,'f',v2]* (test/flowgraphbuilder/flowgraph_builder0156b.html:4:5)
+    ->[block 12]
+  block 12: [exit-ordinary]
+    node 16: return[v1] (test/flowgraphbuilder/flowgraph_builder0156b.html:3:1)
+    ->[]
+  block 13: [exit-exceptional]
+    node 17: exceptional-return (test/flowgraphbuilder/flowgraph_builder0156b.html:3:1)
+    ->[]
+function()
+  block 14: [entry]
+    node 18: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0156b.html:4:14)
+    ->[block 15]
+  block 15:
+    node 19: read-variable['setInterval',v5,v4] (test/flowgraphbuilder/flowgraph_builder0156b.html:5:13)
+    node 20: constant["",v6] (test/flowgraphbuilder/flowgraph_builder0156b.html:5:25)
+    ->[block 16]
+  block 16:
+    node 21: call[v4,v5,v6,v3] (test/flowgraphbuilder/flowgraph_builder0156b.html:5:13)
+    ->[block 27]
+  block 27:
+    node 32: function-decl[function(),-] (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0156b.html:5:13):1:1)
+    ->[block 17]
+  block 17:
+    node 22: write-variable[v3,'p']* (test/flowgraphbuilder/flowgraph_builder0156b.html:5:9)
+    ->[block 18]
+  block 18: [exit-ordinary]
+    node 23: return[v1] (test/flowgraphbuilder/flowgraph_builder0156b.html:4:14)
+    ->[]
+  block 19: [exit-exceptional]
+    node 24: exceptional-return (test/flowgraphbuilder/flowgraph_builder0156b.html:4:14)
+    ->[]
+function()
+  block 20: [entry]
+    node 25: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0156b.html:9:15)
+    ->[block 21]
+  block 21:
+    node 26: read-variable['A',v4,-] (test/flowgraphbuilder/flowgraph_builder0156b.html:9:19)
+    ->[block 22]
+  block 22:
+    node 27: construct[-,v4,v3] (test/flowgraphbuilder/flowgraph_builder0156b.html:9:15)
+    ->[block 23]
+  block 23:
+    node 28: read-property[v3,'f',-] (test/flowgraphbuilder/flowgraph_builder0156b.html:9:15)
+    ->[block 24]
+  block 24:
+    node 29: call[v3,'f',-]* (test/flowgraphbuilder/flowgraph_builder0156b.html:9:15)
+    ->[block 25]
+  block 25: [exit-ordinary]
+    node 30: return[v1] (test/flowgraphbuilder/flowgraph_builder0156b.html:9:15)
+    ->[]
+  block 26: [exit-exceptional]
+    node 31: exceptional-return (test/flowgraphbuilder/flowgraph_builder0156b.html:9:15)
+    ->[]
+function()
+  block 28: [entry]
+    node 33: constant[undefined,v1] (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0156b.html:5:13):1:1)
+    ->[block 29]
+  block 29: [exit-ordinary]
+    node 34: return[v1] (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0156b.html:5:13):1:1)
+    ->[]
+  block 30: [exit-exceptional]
+    node 35: exceptional-return (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0156b.html:5:13):1:1)
+    ->[]
+
+test/flowgraphbuilder/flowgraph_builder0156b.html:5:13: [definite] Too few parameters to function Window.setInterval
+test/flowgraphbuilder/flowgraph_builder0156b.html:5:13: [maybe] Conversion to number yields NaN

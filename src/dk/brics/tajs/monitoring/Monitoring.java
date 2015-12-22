@@ -20,6 +20,7 @@ import dk.brics.tajs.flowgraph.AbstractNode;
 import dk.brics.tajs.flowgraph.BasicBlock;
 import dk.brics.tajs.flowgraph.FlowGraph;
 import dk.brics.tajs.flowgraph.Function;
+import dk.brics.tajs.flowgraph.HostEnvSources;
 import dk.brics.tajs.flowgraph.SourceLocation;
 import dk.brics.tajs.flowgraph.jsnodes.AssumeNode;
 import dk.brics.tajs.flowgraph.jsnodes.BeginForInNode;
@@ -475,45 +476,45 @@ public class Monitoring implements IAnalysisMonitoring {
         for (Function f : flowgraph.getFunctions())
             for (BasicBlock b : f.getBlocks())
                 for (AbstractNode n : b.getNodes())
-                    n.visitBy((n1, a) -> n1.visitBy(new NodeVisitor<Void>() {
+                    n.visitBy((n1) -> n1.visitBy(new NodeVisitor() {
 
                         @Override
-                        public void visit(NopNode n, Void a) {
+                        public void visit(NopNode n) {
                         }
 
                         @Override
-                        public void visit(DeclareVariableNode n, Void a) {
+                        public void visit(DeclareVariableNode n) {
                         }
 
                         @Override
-                        public void visit(ConstantNode n, Void a) {
+                        public void visit(ConstantNode n) {
                         }
 
                         @Override
-                        public void visit(NewObjectNode n, Void a) {
+                        public void visit(NewObjectNode n) {
                         }
 
                         @Override
-                        public void visit(UnaryOperatorNode n, Void a) {
+                        public void visit(UnaryOperatorNode n) {
                         }
 
                         @Override
-                        public void visit(BinaryOperatorNode n, Void a) {
+                        public void visit(BinaryOperatorNode n) {
                         }
 
                         @Override
-                        public void visit(ReadVariableNode n, Void a) {
+                        public void visit(ReadVariableNode n) {
                             if (!n.getVariableName().equals("this")) {
                                 read_variable_nodes++;
                             }
                         }
 
                         @Override
-                        public void visit(WriteVariableNode n, Void a) {
+                        public void visit(WriteVariableNode n) {
                         }
 
                         @Override
-                        public void visit(ReadPropertyNode n, Void a) {
+                        public void visit(ReadPropertyNode n) {
                             property_access_nodes++;
                             if (n.isPropertyFixed()) {
                                 read_fixed_property_nodes++;
@@ -521,92 +522,92 @@ public class Monitoring implements IAnalysisMonitoring {
                         }
 
                         @Override
-                        public void visit(WritePropertyNode n, Void a) {
+                        public void visit(WritePropertyNode n) {
                             property_access_nodes++;
                         }
 
                         @Override
-                        public void visit(DeletePropertyNode n, Void a) {
+                        public void visit(DeletePropertyNode n) {
                             if (!n.isVariable()) {
                                 property_access_nodes++;
                             }
                         }
 
                         @Override
-                        public void visit(TypeofNode n, Void a) {
+                        public void visit(TypeofNode n) {
                         }
 
                         @Override
-                        public void visit(IfNode n, Void a) {
+                        public void visit(IfNode n) {
                         }
 
                         @Override
-                        public void visit(DeclareFunctionNode n, Void a) {
+                        public void visit(DeclareFunctionNode n) {
                         }
 
                         @Override
-                        public void visit(CallNode n, Void a) {
+                        public void visit(CallNode n) {
                             call_nodes++;
                         }
 
                         @Override
-                        public void visit(ReturnNode n, Void a) {
+                        public void visit(ReturnNode n) {
                         }
 
                         @Override
-                        public void visit(ExceptionalReturnNode n, Void a) {
+                        public void visit(ExceptionalReturnNode n) {
                         }
 
                         @Override
-                        public void visit(ThrowNode n, Void a) {
+                        public void visit(ThrowNode n) {
                         }
 
                         @Override
-                        public void visit(CatchNode n, Void a) {
+                        public void visit(CatchNode n) {
                         }
 
                         @Override
-                        public void visit(BeginWithNode n, Void a) {
+                        public void visit(BeginWithNode n) {
                         }
 
                         @Override
-                        public void visit(EndWithNode n, Void a) {
+                        public void visit(EndWithNode n) {
                         }
 
                         @Override
-                        public void visit(BeginForInNode n, Void a) {
+                        public void visit(BeginForInNode n) {
                         }
 
                         @Override
-                        public void visit(NextPropertyNode n, Void a) {
+                        public void visit(NextPropertyNode n) {
                         }
 
                         @Override
-                        public void visit(HasNextPropertyNode n, Void a) {
+                        public void visit(HasNextPropertyNode n) {
                         }
 
                         @Override
-                        public void visit(AssumeNode n, Void a) {
+                        public void visit(AssumeNode n) {
                         }
 
                         @Override
-                        public void visit(EventDispatcherNode n, Void a) {
+                        public void visit(EventDispatcherNode n) {
                         }
 
                         @Override
-                        public void visit(EndForInNode n, Void a) {
+                        public void visit(EndForInNode n) {
                         }
 
                         @Override
-                        public void visit(BeginLoopNode n, Void a) {
+                        public void visit(BeginLoopNode n) {
 
                         }
 
                         @Override
-                        public void visit(EndLoopNode n, Void a) {
+                        public void visit(EndLoopNode n) {
 
                         }
-                    }, null), null);
+                    }));
     }
 
     private void visitEndScanPhase() {
@@ -620,6 +621,9 @@ public class Monitoring implements IAnalysisMonitoring {
                 type_collector.logTypeInformation();
             }
             for (Message message : getSortedMessages()) {
+                if (HostEnvSources.isHostEnvSource(message.getNode().getSourceLocation())) {
+                    continue;
+                }
                 message.emit();
             }
         }
@@ -1065,7 +1069,7 @@ public class Monitoring implements IAnalysisMonitoring {
      * @param check_unknown if set, warn about reads from unknown properties
      */
     @Override
-    public void visitPropertyRead(Node n, Set<ObjectLabel> objs, Str propertystr, State state, boolean check_unknown) {
+    public void visitPropertyRead(AbstractNode n, Set<ObjectLabel> objs, Str propertystr, State state, boolean check_unknown) {
         if (!scan_phase) {
             return;
         }
@@ -1319,7 +1323,7 @@ public class Monitoring implements IAnalysisMonitoring {
         if (!scan_phase) {
             return;
         }
-        v = UnknownValueResolver.getRealValue(v, state); // TODO: does this ruin the benefits of polymorphic values?
+        v = UnknownValueResolver.getRealValue(v, state); // it is not important to preserve polymorphic values during the scan phase
         value_reads.put(new NodeAndContext<>(n, state.getContext()), v);
     }
 
@@ -1451,7 +1455,6 @@ public class Monitoring implements IAnalysisMonitoring {
             b.append(" Max memory used: ").append(formatter.format((max_memory / (1024L * 1024L)))).append("M\n");
         }
         if (Options.get().isEvalStatistics()) {
-            //TODO: extend eval statistics, e.g. to include Identifer and prefix information
             Set<String> eval_const_use = newSet();
             Set<String> inner_const_use = newSet();
             Map<AbstractNode, String> eval_anystr_use = newMap();

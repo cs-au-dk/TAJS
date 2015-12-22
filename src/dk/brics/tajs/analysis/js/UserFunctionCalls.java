@@ -16,17 +16,20 @@
 
 package dk.brics.tajs.analysis.js;
 
+import dk.brics.tajs.analysis.Analysis;
 import dk.brics.tajs.analysis.Conversion;
 import dk.brics.tajs.analysis.Exceptions;
 import dk.brics.tajs.analysis.FunctionCalls.CallInfo;
 import dk.brics.tajs.analysis.InitialStateBuilder;
 import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.flowgraph.AbstractNode;
+import dk.brics.tajs.flowgraph.BasicBlock;
 import dk.brics.tajs.flowgraph.Function;
 import dk.brics.tajs.flowgraph.SourceLocation;
 import dk.brics.tajs.flowgraph.jsnodes.CallNode;
 import dk.brics.tajs.flowgraph.jsnodes.DeclareFunctionNode;
 import dk.brics.tajs.flowgraph.jsnodes.EventDispatcherNode;
+import dk.brics.tajs.flowgraph.jsnodes.NopNode;
 import dk.brics.tajs.lattice.CallEdge;
 import dk.brics.tajs.lattice.Context;
 import dk.brics.tajs.lattice.ExecutionContext;
@@ -38,12 +41,14 @@ import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.Summarized;
 import dk.brics.tajs.lattice.UnknownValueResolver;
 import dk.brics.tajs.lattice.Value;
+import dk.brics.tajs.monitoring.IAnalysisMonitoring;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.solver.BlockAndContext;
 import dk.brics.tajs.solver.CallGraph;
+import dk.brics.tajs.solver.GenericSolver;
 import dk.brics.tajs.solver.Message.Severity;
 import dk.brics.tajs.solver.NodeAndContext;
-import dk.brics.tajs.util.Pair;
+import dk.brics.tajs.util.AnalysisException;
 import org.apache.log4j.Logger;
 
 import java.util.ArrayList;
@@ -121,7 +126,7 @@ public class UserFunctionCalls {
     /**
      * Enters a user-defined function.
      */
-    public static void enterUserFunction(ObjectLabel obj_f, CallInfo call, State caller_state, Solver.SolverInterface c) {
+    public static void enterUserFunction(ObjectLabel obj_f, CallInfo call, State caller_state, boolean implicit, Solver.SolverInterface c) {
         ScopeChain obj_f_sc = caller_state.readObjectScope(obj_f);
         Value prototype = caller_state.readPropertyDirect(Collections.singleton(obj_f), "prototype");
         if (obj_f_sc == null || prototype.isNone())
@@ -131,17 +136,18 @@ public class UserFunctionCalls {
         AbstractNode n = call.getSourceNode();
 
         if (log.isDebugEnabled())
-            log.debug("enterUserFunction from call node " + n.getIndex() + " at " + n.getSourceLocation()
+            log.debug("enterUserFunction " + (implicit ? "(implicit)" : "") + "from node " + n.getIndex() + " at " + n.getSourceLocation()
                     + " to " + f + " at " + f.getSourceLocation());
 
         State edge_state = caller_state.clone();
+        HeapContext heapContext = c.getAnalysis().getContextSensitivityStrategy().makeActivationAndArgumentsHeapContext(edge_state, obj_f, call, c);
 
         Set<ObjectLabel> this_objs;
         Summarized extra_summarized = new Summarized();
         if (call.isConstructorCall()) {
             // 13.2.2.1-2 create new object
             this_objs = newSet();
-            ObjectLabel new_obj = new ObjectLabel(n, Kind.OBJECT);
+            ObjectLabel new_obj = new ObjectLabel(n, Kind.OBJECT, heapContext);
             edge_state.newObject(new_obj);
             extra_summarized.addDefinitelySummarized(new_obj);
             this_objs.add(new_obj);
@@ -167,7 +173,6 @@ public class UserFunctionCalls {
         }
 
         // 10.2.3 enter new execution context, 13.2.1 transfer parameters, 10.1.6/8 provide 'arguments' object
-        HeapContext heapContext = c.getAnalysis().getContextSensitivityStrategy().makeActivationAndArgumentsHeapContext(edge_state, obj_f, call, c);
         ObjectLabel varobj = new ObjectLabel(f.getEntry().getFirstNode(), Kind.ACTIVATION, heapContext); // better to use entry than invoke here
         edge_state.newObject(varobj);
         extra_summarized.addDefinitelySummarized(varobj);
@@ -195,7 +200,7 @@ public class UserFunctionCalls {
             if (i < num_formals)
                 edge_state.declareAndWriteVariable(f.getParameterNames().get(i), v, true); // 10.1.3
         }
-        // FIXME: properties of 'arguments' should be shared with the formal parameters (see 10.1.8 item 4) - easy solution that does not require Reference types?
+        // FIXME: properties of 'arguments' should be shared with the formal parameters (see 10.1.8 item 4) - easy solution that does not require Reference types? - github #21
         // (see comment at NodeTransfer/WriteVariable... - also needs the other way around...)
 
         if (c.isScanning())
@@ -212,19 +217,19 @@ public class UserFunctionCalls {
                 ObjectLabel this_obj = it.next();
                 State next_edge_state = it.hasNext() ? edge_state.clone() : edge_state;
                 next_edge_state.getExecutionContext().setThisObject(singleton(this_obj)); // (execution context should be writable here)
-                propagateToFunctionEntry(next_edge_state, n, obj_f, call, c);
+                propagateToFunctionEntry(next_edge_state, n, obj_f, call, implicit, c);
             }
         } else
-            propagateToFunctionEntry(edge_state, n, obj_f, call, c);
+            propagateToFunctionEntry(edge_state, n, obj_f, call, implicit, c);
     }
 
-    private static void propagateToFunctionEntry(State edge_state, AbstractNode n, ObjectLabel obj_f, CallInfo callInfo, Solver.SolverInterface c) {
+    private static void propagateToFunctionEntry(State edge_state, AbstractNode n, ObjectLabel obj_f, CallInfo callInfo, boolean implicit, Solver.SolverInterface c) {
         Function f = obj_f.getFunction();
         Context caller_context = edge_state.getContext();
 
         Context edge_context = c.getAnalysis().getContextSensitivityStrategy().makeFunctionEntryContext(edge_state, obj_f, callInfo, c);
 
-        c.propagateToFunctionEntry(n, caller_context, edge_state, edge_context, f.getEntry());
+        c.propagateToFunctionEntry(n, caller_context, edge_state, edge_context, f.getEntry(), implicit);
     }
 
     /**
@@ -240,7 +245,10 @@ public class UserFunctionCalls {
             this_obj.add(InitialStateBuilder.GLOBAL);
         } else {
             // FIXME: see 10.2.3, 11.2.3 and 11.2.1.5 - is following call to toObjectLabels correct?
-            Set<ObjectLabel> t = Conversion.toObjectLabels(callee_state, n, caller_state.readRegister(base_reg), c); // TODO: likely loss of precision if multiple object labels (or a summary object) as 'this' value
+            State ts = c.getState();
+            c.setState(callee_state);
+            Set<ObjectLabel> t = Conversion.toObjectLabels(n, caller_state.readRegister(base_reg), c); // TODO: likely loss of precision if multiple object labels (or a summary object) as 'this' value
+            c.setState(ts);
             // TODO: disable conversion warnings for this call to Conversion.toObjectLabels? (test/micro/test163.js)
             // 11.2.3 and 10.1.6: replace activation objects by the global object
             for (ObjectLabel objlabel : t)
@@ -256,7 +264,7 @@ public class UserFunctionCalls {
      * Leaves a user-defined function.
      */
     public static void leaveUserFunction(Value returnval, boolean exceptional, Function f, State state, Solver.SolverInterface c,
-                                         NodeAndContext<Context> specific_caller, Context specific_edge_context) {
+                                         NodeAndContext<Context> specific_caller, Context specific_edge_context, boolean implicit) {
 
         if (f.isMain()) { // TODO: also report uncaught exceptions and return immediately for event handlers
             final String msgkey = "Uncaught exception";
@@ -284,38 +292,36 @@ public class UserFunctionCalls {
         state.clearRegisters();
 
         if (specific_caller != null)
-            returnToCaller(specific_caller, specific_edge_context, returnval, exceptional, f, state, c);
+            returnToCaller(specific_caller.getNode(), specific_caller.getContext(), specific_edge_context, implicit, returnval, exceptional, f, state, c);
         else {
             // try each call node that calls f with the current callee context
             CallGraph<State, Context, CallEdge> cg = c.getAnalysisLatticeElement().getCallGraph();
-            Set<Pair<NodeAndContext<Context>, Context>> es = cg.getSources(BlockAndContext.makeEntry(state.getBasicBlock(), state.getContext()));
-            for (Iterator<Pair<NodeAndContext<Context>, Context>> i = es.iterator(); i.hasNext(); ) {
-                Pair<NodeAndContext<Context>, Context> p = i.next();
-                NodeAndContext<Context> caller = p.getFirst();
-                Context edge_context = p.getSecond();
-                if (c.isCallEdgeCharged(caller.getNode().getBlock(), caller.getContext(), edge_context, BlockAndContext.makeEntry(state.getBasicBlock(), state.getContext())))
-                    returnToCaller(caller, edge_context, returnval, exceptional, f, i.hasNext() ? state.clone() : state, c);
+            for (Iterator<CallGraph.ReverseEdge<Context>> i = cg.getSources(BlockAndContext.makeEntry(state.getBasicBlock(), state.getContext())).iterator(); i.hasNext(); ) {
+                CallGraph.ReverseEdge<Context> re = i.next();
+                if (c.isCallEdgeCharged(re.getCallNode().getBlock(), re.getCallerContext(), re.getEdgeContext(), BlockAndContext.makeEntry(state.getBasicBlock(), state.getContext())))
+                    returnToCaller(re.getCallNode(), re.getCallerContext(), re.getEdgeContext(), re.isImplicit(), returnval, exceptional, f, i.hasNext() ? state.clone() : state, c);
                 else if (log.isDebugEnabled())
-                    log.debug("skipping call edge from " + caller + ", edge context " + edge_context);
+                    log.debug("skipping call edge from " + re.getCallNode() + ", call context " + re.getCallerContext() + ", edge context " + re.getEdgeContext());
+
             }
         }
     }
 
-    private static void returnToCaller(NodeAndContext<Context> caller, Context edge_context, Value returnval, boolean exceptional, Function f, State state, Solver.SolverInterface c) {
-        AbstractNode node = caller.getNode();
-        Context caller_context = caller.getContext();
+    public static State returnToCaller(AbstractNode node, Context caller_context, Context edge_context, boolean implicit, Value returnval, boolean exceptional, Function f, State state, Solver.SolverInterface c) {
         final boolean is_constructor;
         final int result_reg;
-        if (node instanceof CallNode) {
+        if (implicit) { // implicit function call, e.g. valueOf/toString
+            is_constructor = false;
+            result_reg = AbstractNode.RETURN_REG;
+        } else if (node instanceof CallNode) {
             CallNode callnode = (CallNode) node;
             is_constructor = callnode.isConstructorCall();
             result_reg = callnode.getResultRegister();
-        } else if(node instanceof EventDispatcherNode) {
+        } else if (node instanceof EventDispatcherNode) {
             is_constructor = false;
             result_reg = AbstractNode.NO_VALUE;
-        }else {
-            return; // FIXME: implicit function call to valueOf/toString (node may then not be first in its block!), how do we handle such return flow? by additional call nodes?
-        }
+        } else
+            throw new AnalysisException();
 
         if (log.isDebugEnabled())
             log.debug("trying call node " + node.getIndex() + ": " + node
@@ -324,11 +330,11 @@ public class UserFunctionCalls {
 
         // apply inverse transform
         state.writeRegister(0, returnval); // TODO: pass returnval explicitly through returnFromFunctionExit instead of using a register
-        c.returnFromFunctionExit(state, node, caller_context, f.getEntry(), edge_context);
+        c.returnFromFunctionExit(state, node, caller_context, f.getEntry(), edge_context, implicit);
         returnval = state.readRegister(0);
         state.clearRegisters();
         if (state.isNone())
-            return; // flow was cancelled, probably something needs to be recomputed
+            return state; // flow was cancelled, probably something needs to be recomputed
 
         // merge newstate with caller state and call edge state
         Summarized callee_summarized = new Summarized(state.getSummarized());
@@ -339,7 +345,7 @@ public class UserFunctionCalls {
         ObjectLabel arguments_obj = new ObjectLabel(f.getEntry().getFirstNode(), Kind.ARGUMENTS, heapContext);
         callee_summarized.addDefinitelySummarized(arguments_obj);
         if (is_constructor) {
-            ObjectLabel this_obj = new ObjectLabel(node, Kind.OBJECT);
+            ObjectLabel this_obj = new ObjectLabel(node, Kind.OBJECT, heapContext);
             callee_summarized.addDefinitelySummarized(this_obj);
         } // FIXME: determineThis may create additional objects (wrapped primitives in toObjectLabels conversion) that should be included in callee_summarized!
         State calledge_state = c.getAnalysisLatticeElement().getCallGraph().getCallEdge(node, caller_context, f.getEntry(), edge_context).getState();
@@ -347,9 +353,16 @@ public class UserFunctionCalls {
                 calledge_state,
                 c.getAnalysisLatticeElement().getState(BlockAndContext.makeEntry(node.getBlock(), caller_context)),
                 callee_summarized,
-                returnval); // TODO: not obvious why this part is in dk.brics.tajs.analysis and the renaming and localization is done via dk.brics.tajs.solver...
+                returnval, null); // TODO: not obvious why this part is in dk.brics.tajs.analysis and the renaming and localization is done via dk.brics.tajs.solver...
         if (node.isRegistersDone())
             state.clearOrdinaryRegisters();
+        if (implicit) {
+            state.setBasicBlock(node.getImplicitAfterCall());
+            state.setContext(caller_context);
+        } else {
+            state.setBasicBlock(node.getBlock().getSingleSuccessor());
+            state.setContext(caller_context);
+        }
 
         if (exceptional) {
             // collect garbage
@@ -366,16 +379,76 @@ public class UserFunctionCalls {
                     returnval = returnval.restrictToObject().join(Value.makeObject(calledge_state.getExecutionContext().getThisObject()));
                 }
 
-                // collect garbage
-                state.reduce(returnval);
+                if (!implicit) {
+                    // collect garbage (but not if implicit, because some objects may only be reachable via registers which we don't have here)
+                    state.reduce(returnval);
+                }
 
                 // transfer ordinary return value to caller
                 if (result_reg != AbstractNode.NO_VALUE)
                     state.writeRegister(result_reg, returnval);
 
-                // flow to next basic block after call_node
-                c.propagateToBasicBlock(state, node.getBlock().getSingleSuccessor(), caller.getContext());
+                if (implicit) { // implicit call, trigger re-processing of the basic block containing the caller
+                    c.getAnalysisLatticeElement().propagate(state, node.getImplicitAfterCall(), caller_context, false);
+                    c.addToWorklist(node.getBlock(), caller_context);
+                } else { // ordinary call, flow to next basic block after call node
+                    c.propagateToBasicBlock(state, node.getBlock().getSingleSuccessor(), caller_context);
+                }
             }
         }
+        return state;
+    }
+
+    /**
+     * Implicit call to a user function.
+     *
+     * @param obj_f the function to call
+     * @param callinfo information about the call
+     * @return new or exising implicit-after-call block
+     */
+    public static BasicBlock implicitUserFunctionCall(ObjectLabel obj_f, CallInfo callinfo, GenericSolver<State, Context, CallEdge, IAnalysisMonitoring, Analysis>.SolverInterface c) {
+        // create implicit after-call block if not already there
+        BasicBlock implicitAfterCall = c.getNode().getImplicitAfterCall();
+        if (implicitAfterCall == null) {
+            implicitAfterCall = new BasicBlock(c.getNode().getBlock().getFunction());
+            AbstractNode dummyNode = new NopNode(c.getNode().getSourceLocation());
+            dummyNode.setArtificial();
+            implicitAfterCall.addNode(dummyNode);
+            implicitAfterCall.setEntryBlock(c.getNode().getBlock().getEntryBlock());
+            c.getNode().setImplicitAfterCall(implicitAfterCall);
+        }
+        // call the function
+        enterUserFunction(obj_f, callinfo, c.getState(), true, c);
+        return implicitAfterCall;
+    }
+
+    /**
+     * Extract return flow from implicit call to a user function.
+     *
+     * @param result            list of values containing results (may be extended by this call)
+     * @param anyUserFunctions  if set, at least one user function has been called
+     * @param anyHostFunctions  if set, at least one host function has been called (so keep current state)
+     * @param implicitAfterCall the implicit-after-call block
+     * @return return value, none if no ordinary return flow
+     */
+    public static Value implicitUserFunctionReturn(List<Value> result, boolean anyUserFunctions, boolean anyHostFunctions, BasicBlock implicitAfterCall, GenericSolver<State, Context, CallEdge, IAnalysisMonitoring, Analysis>.SolverInterface c) {
+        List<Value> registers = dk.brics.tajs.util.Collections.newList(c.getState().getRegisters());
+        if (!anyHostFunctions) {
+            c.getState().setToNone();
+        }
+        if (anyUserFunctions) {
+            State s = c.getAnalysisLatticeElement().getState(implicitAfterCall, c.getState().getContext());
+            if (s != null) {
+                result.add(s.readRegister(AbstractNode.RETURN_REG));
+                c.getState().propagate(s, false);
+                c.getState().setRegisters(registers);
+            }
+        }
+        if (c.getState().isNone())
+            return Value.makeNone();
+        if (result.isEmpty()) {
+            c.getState().setToNone();
+        }
+        return Value.join(result);
     }
 }

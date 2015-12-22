@@ -64,7 +64,7 @@ test/10k/canvas_aquarium.html:390:29: [maybe] TypeError, accessing property of n
 test/10k/canvas_aquarium.html:390:46: [maybe] TypeError, accessing property of null/undefined
 test/10k/canvas_aquarium.html:34:9: [maybe] Reading absent property addColorStop
 test/10k/canvas_aquarium.html:41:20: [maybe] Reading absent property apply
-test/10k/canvas_aquarium.html:25:32: [maybe] Uncaught exception, constructed at [test/10k/canvas_aquarium.html:34:9, test/10k/canvas_aquarium.html:41:20, test/10k/canvas_aquarium.html:254:9, test/10k/canvas_aquarium.html:255:9, test/10k/canvas_aquarium.html:256:36, test/10k/canvas_aquarium.html:315:30, test/10k/canvas_aquarium.html:327:27, test/10k/canvas_aquarium.html:344:39, test/10k/canvas_aquarium.html:388:21, test/10k/canvas_aquarium.html:390:29, test/10k/canvas_aquarium.html:390:46]
+test/10k/canvas_aquarium.html: [maybe] Uncaught exception, constructed at [test/10k/canvas_aquarium.html:34:9, test/10k/canvas_aquarium.html:41:20, test/10k/canvas_aquarium.html:254:9, test/10k/canvas_aquarium.html:255:9, test/10k/canvas_aquarium.html:256:36, test/10k/canvas_aquarium.html:315:30, test/10k/canvas_aquarium.html:327:27, test/10k/canvas_aquarium.html:344:39, test/10k/canvas_aquarium.html:388:21, test/10k/canvas_aquarium.html:390:29, test/10k/canvas_aquarium.html:390:46]
 test/10k/canvas_aquarium.html:34:9: [maybe] Converting primitive boolean to object
 test/10k/canvas_aquarium.html:34:9: [maybe] Converting primitive string to object
 test/10k/canvas_aquarium.html:34:9: [maybe] The variable b has values with different types

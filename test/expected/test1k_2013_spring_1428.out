@@ -1,0 +1,35 @@
+test/1k2013spring/shim.js:6:5: [definite] The variable b is never used
+test/1k2013spring/1428.js:22:3: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1428.js:41:9: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1428.js:55:3: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1428.js:72:16: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1428.js:73:20: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1428.js:74:20: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/shim.js:8:9: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/shim.js:8:9: [maybe] TypeError, call to non-function
+test/1k2013spring/shim.js:9:1: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1428.js:5:18: [maybe] Reading absent property width
+test/1k2013spring/1428.js:5:27: [maybe] Reading absent property height
+test/1k2013spring/shim.js:6:9: [maybe] Reading absent property body
+test/1k2013spring/shim.js:8:9: [maybe] Reading absent property getContext
+test/1k2013spring/shim.js:9:1: [maybe] Reading absent property body
+test/1k2013spring/1428.js:5:1: [maybe] Conversion from string to number yields NaN
+test/1k2013spring/1428.js:5:1: [maybe] Conversion to number yields NaN
+test/1k2013spring/1428.js:21:11: [maybe] Reading absent property (computed name)
+test/1k2013spring/1428.js:37:7: [maybe] Reading absent property (computed name)
+test/1k2013spring/1428.js:41:9: [maybe] Reading absent property (computed name)
+test/1k2013spring/1428.js:41:9: [maybe] Reading absent property (computed name)
+test/1k2013spring/1428.js:53:8: [maybe] Reading absent property (computed name)
+test/1k2013spring/1428.js:55:3: [maybe] Reading absent property (computed name)
+test/1k2013spring/1428.js:57:7: [maybe] Reading absent property (computed name)
+test/1k2013spring/1428.js:72:16: [maybe] Converting primitive number to object
+test/1k2013spring/1428.js:72:16: [maybe] Reading absent property (computed name)
+test/1k2013spring/1428.js:72:16: [maybe] The variable c has values with different types
+test/1k2013spring/1428.js:73:20: [maybe] Converting primitive number to object
+test/1k2013spring/1428.js:73:20: [maybe] Reading absent property (computed name)
+test/1k2013spring/1428.js:73:20: [maybe] The variable c has values with different types
+test/1k2013spring/1428.js:74:20: [maybe] Converting primitive number to object
+test/1k2013spring/1428.js:74:20: [maybe] Reading absent property (computed name)
+test/1k2013spring/1428.js:74:20: [maybe] The variable c has values with different types
+test/1k2013spring/shim.js:7:9: [maybe] Reading absent property (computed name)
+test/1k2013spring/shim.js,test/1k2013spring/1428.js: [maybe] Uncaught exception, constructed at [test/1k2013spring/1428.js:22:3, test/1k2013spring/1428.js:41:9, test/1k2013spring/1428.js:55:3, test/1k2013spring/1428.js:72:16, test/1k2013spring/1428.js:73:20, test/1k2013spring/1428.js:74:20, test/1k2013spring/shim.js:8:9, test/1k2013spring/shim.js:9:1]

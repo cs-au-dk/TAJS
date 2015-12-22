@@ -43,7 +43,7 @@ test/10k/snowpar.html:214:36: [maybe] Reading absent property checked
 test/10k/snowpar.html:218:36: [maybe] Reading absent property checked
 test/10k/snowpar.html:222:37: [maybe] Reading absent property checked
 test/10k/snowpar.html:230:31: [maybe] Reading absent property checked
-test/10k/snowpar.html:22:15: [maybe] Uncaught exception, constructed at [test/10k/snowpar.html:138:9, test/10k/snowpar.html:139:9, test/10k/snowpar.html:176:28, test/10k/snowpar.html:177:28, test/10k/snowpar.html:201:9, test/10k/snowpar.html:201:30, test/10k/snowpar.html:206:9, test/10k/snowpar.html:206:35, test/10k/snowpar.html:210:9, test/10k/snowpar.html:210:37, test/10k/snowpar.html:214:9, test/10k/snowpar.html:214:36, test/10k/snowpar.html:218:9, test/10k/snowpar.html:218:36, test/10k/snowpar.html:222:9, test/10k/snowpar.html:222:37, test/10k/snowpar.html:230:9, test/10k/snowpar.html:230:31]
+test/10k/snowpar.html: [maybe] Uncaught exception, constructed at [test/10k/snowpar.html:138:9, test/10k/snowpar.html:139:9, test/10k/snowpar.html:176:28, test/10k/snowpar.html:177:28, test/10k/snowpar.html:201:9, test/10k/snowpar.html:201:30, test/10k/snowpar.html:206:9, test/10k/snowpar.html:206:35, test/10k/snowpar.html:210:9, test/10k/snowpar.html:210:37, test/10k/snowpar.html:214:9, test/10k/snowpar.html:214:36, test/10k/snowpar.html:218:9, test/10k/snowpar.html:218:36, test/10k/snowpar.html:222:9, test/10k/snowpar.html:222:37, test/10k/snowpar.html:230:9, test/10k/snowpar.html:230:31]
 test/10k/snowpar.html:58:31: [maybe] Conversion to number yields NaN
 test/10k/snowpar.html:59:35: [maybe] Conversion to number yields NaN
 test/10k/snowpar.html:107:5: [maybe] Conversion to number yields NaN

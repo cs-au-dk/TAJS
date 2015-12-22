@@ -94,8 +94,8 @@ public class CatchNode extends Node {
     }
 
     @Override
-    public <ArgType> void visitBy(NodeVisitor<ArgType> v, ArgType a) {
-        v.visit(this, a);
+    public void visitBy(NodeVisitor v) {
+        v.visit(this);
     }
 
     @Override

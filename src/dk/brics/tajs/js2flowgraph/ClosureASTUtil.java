@@ -100,8 +100,6 @@ class ClosureASTUtil {
                     cur += 4;
                     break;
                 default:
-                    // TODO(tbreisacher): Add a warning because the user probably
-                    // intended to type an escape sequence.
                     result.append(c);
                     break;
             }
@@ -123,7 +121,6 @@ class ClosureASTUtil {
         if (value.charAt(0) == '.') {
             return Double.valueOf('0' + value);
         } else if (value.charAt(0) == '0' && length > 1) {
-            // TODO(johnlenz): accept octal numbers in es3 etc.
             switch (value.charAt(1)) {
                 case '.':
                     return Double.valueOf(value);
@@ -181,8 +178,6 @@ class ClosureASTUtil {
     }
 
     private boolean inStrictContext() {
-        // TODO(johnlenz): in ECMASCRIPT5/6 is a "mixed" mode and we should track the context
-        // that we are in, if we want to support it.
         return convertModeType(mode) == Config.LanguageMode.ECMASCRIPT5_STRICT
                 || convertModeType(mode) == Config.LanguageMode.ECMASCRIPT6_STRICT;
     }

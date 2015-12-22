@@ -1,6 +1,6 @@
-fg2: function()
+fg2: <main> function()
   block 0: [entry]
-    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0123.js:1:1)
+    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0123.js)
     node 1: vardecl['scope']* (test/flowgraphbuilder/flowgraph_builder0123.js:5:5)
     ->[block 1]
   block 1:
@@ -43,10 +43,10 @@ fg2: function()
     node 18: call[v11,v12,v13,-]* (test/flowgraphbuilder/flowgraph_builder0123.js:16:1)
     ->[block 12]
   block 12: [exit-ordinary]
-    node 19: return[v1] (test/flowgraphbuilder/flowgraph_builder0123.js:1:1)
+    node 19: return[v1] (test/flowgraphbuilder/flowgraph_builder0123.js)
     ->[]
   block 13: [exit-exceptional]
-    node 20: exceptional-return (test/flowgraphbuilder/flowgraph_builder0123.js:1:1)
+    node 20: exceptional-return (test/flowgraphbuilder/flowgraph_builder0123.js)
     ->[]
 function()
   block 14: [entry]
@@ -56,10 +56,10 @@ function()
     node 22: read-variable['this',v1,-]* (test/flowgraphbuilder/flowgraph_builder0123.js:9:10)
     ->[block 16]
   block 16: [exit-ordinary]
-    node 23: return[v1] (test/flowgraphbuilder/flowgraph_builder0123.js:10:2)
+    node 23: return[v1] (test/flowgraphbuilder/flowgraph_builder0123.js:8:9)
     ->[]
   block 17: [exit-exceptional]
-    node 24: exceptional-return (test/flowgraphbuilder/flowgraph_builder0123.js:10:2)
+    node 24: exceptional-return (test/flowgraphbuilder/flowgraph_builder0123.js:8:9)
     ->[]
 
 test/flowgraphbuilder/flowgraph_builder0123.js:16:23: [definite] Reading 'this' yields the global object

@@ -11,7 +11,7 @@ test/chromeexperiments/plasma.html:30:9: [definite] The variable xscale is never
 test/chromeexperiments/plasma.html:30:21: [definite] The variable yscale is never used
 test/chromeexperiments/plasma.html:108:14: [definite] The variable pixel is never used
 test/chromeexperiments/plasma.html:17:5: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/plasma.html:9:13: [maybe] Uncaught exception, constructed at [test/chromeexperiments/plasma.html:17:5]
+test/chromeexperiments/plasma.html: [maybe] Uncaught exception, constructed at [test/chromeexperiments/plasma.html:17:5]
 test/chromeexperiments/plasma.html:17:5: [maybe] Reading absent property (computed name)
 test/chromeexperiments/plasma.html:82:11: [maybe] Conversion to number yields NaN
 test/chromeexperiments/plasma.html:83:11: [maybe] Conversion to number yields NaN

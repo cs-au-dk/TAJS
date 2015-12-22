@@ -1,7 +1,6 @@
 package dk.brics.tajs.options;
 
 import dk.brics.tajs.util.AnalysisException;
-import dk.brics.tajs.util.Collections;
 import org.apache.log4j.Appender;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
@@ -23,6 +22,8 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 import java.util.TreeMap;
+
+import static dk.brics.tajs.util.Collections.newSet;
 
 /**
  * Option values.
@@ -157,15 +158,8 @@ public class OptionValues {
     @Option(name = "-help", usage = "Prints this message")
     private boolean help;
 
-    @Option(name = "-iteration-bound", usage = "Bounds the number of iterations the solver performs")
-    private String iterationBoundString;
-
-    private int iterationBound = -1;
-
     @Option(name = "-ignore-libraries", usage = "Ignore unreachable code messages from libraries (library names separated by comma)")
     private String ignoredLibrariesString;
-
-    private boolean ignoreLibraries;
 
     private Set<String> ignoredLibraries = new LinkedHashSet<>();
 
@@ -183,6 +177,12 @@ public class OptionValues {
 
     @Option(name = "-determinacy", usage = "Enables all of the techniques described in 'Determinacy in Static Analysis of jQuery', OOPSLA 2014")
     private boolean determinacy;
+
+    @Option(name = "-polyfill-mdn", usage = "Enables use of polyfills from the Mozilla Developer Network web pages")
+    private boolean polyfillMDN;
+
+    @Option(name = "-polyfill-es6-collections", usage = "Enables use of polyfills for ES6 collections")
+    private boolean polyfillES6Collections;
 
     @Argument
     private List<String> arguments = new ArrayList<>();
@@ -234,20 +234,18 @@ public class OptionValues {
         if (no_polymorphic != that.no_polymorphic) return false;
         if (ajaxReturnsJson != that.ajaxReturnsJson) return false;
         if (help != that.help) return false;
-        if (iterationBound != that.iterationBound) return false;
-        if (ignoreLibraries != that.ignoreLibraries) return false;
         if (contextSensitiveHeap != that.contextSensitiveHeap) return false;
         if (parameterSensitivity != that.parameterSensitivity) return false;
         if (ignoreUnreachable != that.ignoreUnreachable) return false;
         if (loopUnrollings != that.loopUnrollings) return false;
         if (determinacy != that.determinacy) return false;
-        if (iterationBoundString != null ? !iterationBoundString.equals(that.iterationBoundString) : that.iterationBoundString != null)
-            return false;
+        if (polyfillMDN != that.polyfillMDN) return false;
+        if (polyfillES6Collections != that.polyfillES6Collections) return false;
         if (ignoredLibrariesString != null ? !ignoredLibrariesString.equals(that.ignoredLibrariesString) : that.ignoredLibrariesString != null)
             return false;
         if (ignoredLibraries != null ? !ignoredLibraries.equals(that.ignoredLibraries) : that.ignoredLibraries != null)
             return false;
-        return !(arguments != null ? !arguments.equals(that.arguments) : that.arguments != null);
+        return arguments != null ? arguments.equals(that.arguments) : that.arguments == null;
     }
 
     @Override
@@ -292,16 +290,15 @@ public class OptionValues {
         result = 31 * result + (no_polymorphic ? 1 : 0);
         result = 31 * result + (ajaxReturnsJson ? 1 : 0);
         result = 31 * result + (help ? 1 : 0);
-        result = 31 * result + (iterationBoundString != null ? iterationBoundString.hashCode() : 0);
-        result = 31 * result + iterationBound;
         result = 31 * result + (ignoredLibrariesString != null ? ignoredLibrariesString.hashCode() : 0);
-        result = 31 * result + (ignoreLibraries ? 1 : 0);
         result = 31 * result + (ignoredLibraries != null ? ignoredLibraries.hashCode() : 0);
         result = 31 * result + (contextSensitiveHeap ? 1 : 0);
         result = 31 * result + (parameterSensitivity ? 1 : 0);
         result = 31 * result + (ignoreUnreachable ? 1 : 0);
         result = 31 * result + loopUnrollings;
         result = 31 * result + (determinacy ? 1 : 0);
+        result = 31 * result + (polyfillMDN ? 1 : 0);
+        result = 31 * result + (polyfillES6Collections ? 1 : 0);
         result = 31 * result + (arguments != null ? arguments.hashCode() : 0);
         return result;
     }
@@ -341,12 +338,8 @@ public class OptionValues {
             try {
                 parser.parseArgument(args);
                 // handle flags that have side-effects, for example imply other flags
-                if (iterationBoundString != null && !iterationBoundString.isEmpty()) {
-                    iterationBound = Integer.parseInt(iterationBoundString);
-                }
                 if (ignoredLibrariesString != null && !ignoredLibrariesString.isEmpty()) {
-                    ignoreLibraries = true;
-                    ignoredLibraries = Collections.newSet(Arrays.asList(ignoredLibrariesString.split(",")));
+                    ignoredLibraries = newSet(Arrays.asList(ignoredLibrariesString.split(",")));
                 }
                 if (determinacy) {
                     enableDeterminacy();
@@ -443,11 +436,6 @@ public class OptionValues {
         alwaysCanput = false;
     }
 
-    public void disableBoundedIterations() {
-        iterationBoundString = "-1";
-        iterationBound = -1;
-    }
-
     public void disableCallgraph() {
         callgraph = false;
     }
@@ -491,9 +479,8 @@ public class OptionValues {
     }
 
     public void disableIgnoreLibraries() {
-        ignoreLibraries = false;
         ignoredLibrariesString = "";
-        ignoredLibraries = new LinkedHashSet<>();
+        ignoredLibraries = newSet();
     }
 
     public void disableIncludeDom() {
@@ -627,11 +614,6 @@ public class OptionValues {
         alwaysCanput = true;
     }
 
-    public void enableBoundedIterations(int bound) {
-        iterationBoundString = String.valueOf(bound);
-        iterationBound = bound;
-    }
-
     public void enableCallgraph() {
         callgraph = true;
     }
@@ -686,10 +668,6 @@ public class OptionValues {
 
     public void enableIgnoreHTMLContent() {
         ignore_html_content = true;
-    }
-
-    public void enableIgnoreLibraries() {
-        ignoreLibraries = true;
     }
 
     public void enableIncludeDom() {
@@ -822,10 +800,6 @@ public class OptionValues {
         return arguments;
     }
 
-    public int getIterationBound() {
-        return iterationBound;
-    }
-
     public Set<String> getLibraries() {
         return ignoredLibraries;
     }
@@ -836,10 +810,6 @@ public class OptionValues {
 
     public boolean isAlwaysCanPut() {
         return alwaysCanput;
-    }
-
-    public boolean isBoundedIterationsEnabled() {
-        return iterationBound != -1;
     }
 
     public boolean isCallGraphEnabled() {
@@ -924,7 +894,7 @@ public class OptionValues {
     }
 
     public boolean isIgnoreLibrariesEnabled() {
-        return ignoreLibraries;
+        return !ignoredLibraries.isEmpty();
     }
 
     public boolean isIntermediateStatesEnabled() {
@@ -1038,5 +1008,21 @@ public class OptionValues {
         if (arguments == null || arguments.isEmpty()) {
             throw new AnalysisException("No arguments provided!");
         }
+    }
+
+    public void enablePolyfillMDN() {
+        polyfillMDN = true;
+    }
+
+    public void enablePolyfillES6Collections() {
+        polyfillES6Collections = true;
+    }
+
+    public boolean isPolyfillMDNEnabled() {
+        return polyfillMDN;
+    }
+
+    public boolean isPolyfillES6CollectionsEnabled() {
+        return polyfillES6Collections;
     }
 }

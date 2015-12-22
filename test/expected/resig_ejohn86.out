@@ -1,0 +1,8 @@
+test/resig/ejohn86.js:18:1: [maybe] TypeError, accessing property of null/undefined
+test/resig/ejohn86.js:18:1: [maybe] TypeError, call to non-function
+test/resig/ejohn86.js:20:1: [maybe] TypeError, call to non-function
+test/resig/ejohn86.js:18:1: [maybe] Reading absent property appendChild
+test/resig/ejohn86.js:20:1: [maybe] Reading absent property onclick
+test/resig/ejohn86.js: [maybe] Uncaught exception, constructed at [test/resig/ejohn86.js:18:1, test/resig/ejohn86.js:20:1]
+test/resig/ejohn86.js:11:20: [maybe] The variable value has values with different types
+test/resig/ejohn86.js:21:1: [info] Abstract value: true

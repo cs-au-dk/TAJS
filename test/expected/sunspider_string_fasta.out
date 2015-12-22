@@ -15,5 +15,6 @@ test/sunspider/string-fasta.js:57:23: [maybe] Converting primitive string to obj
 test/sunspider/string-fasta.js:58:17: [maybe] Converting object to string
 test/sunspider/string-fasta.js:58:17: [maybe] Converting primitive string to object
 test/sunspider/string-fasta.js:72:17: [maybe] Reading absent property (computed name)
+test/sunspider/string-fasta.js:92:26: [maybe] Converting object to number
 test/sunspider/string-fasta.js:94:1: [info] Abstract value: UInt
 test/sunspider/string-fasta.js:43:27: [info] Reading from unknown property that may cause loss of precision

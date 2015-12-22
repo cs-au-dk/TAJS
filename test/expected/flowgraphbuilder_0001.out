@@ -1,14 +1,14 @@
-fg2: function()
+fg2: <main> function()
   block 0: [entry]
-    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0001.js:1:1)
+    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0001.js)
     ->[block 1]
   block 1:
     node 1: constant[0.0,-]* (test/flowgraphbuilder/flowgraph_builder0001.js:1:1)
     ->[block 2]
   block 2: [exit-ordinary]
-    node 2: return[v1] (test/flowgraphbuilder/flowgraph_builder0001.js:1:1)
+    node 2: return[v1] (test/flowgraphbuilder/flowgraph_builder0001.js)
     ->[]
   block 3: [exit-exceptional]
-    node 3: exceptional-return (test/flowgraphbuilder/flowgraph_builder0001.js:1:1)
+    node 3: exceptional-return (test/flowgraphbuilder/flowgraph_builder0001.js)
     ->[]
 

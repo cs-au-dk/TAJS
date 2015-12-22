@@ -1,6 +1,6 @@
-fg2: function()
+fg2: <main> function()
   block 0: [entry]
-    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0120.js:1:1)
+    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0120.js)
     ->[block 1]
   block 1:
     node 1: read-variable['Math',v4,-] (test/flowgraphbuilder/flowgraph_builder0120.js:3:13)
@@ -38,10 +38,10 @@ fg2: function()
     node 15: end-with* (test/flowgraphbuilder/flowgraph_builder0120.js:8:3)
     ->[block 12]
   block 11: [exit-ordinary]
-    node 16: return[v1] (test/flowgraphbuilder/flowgraph_builder0120.js:1:1)
+    node 16: return[v1] (test/flowgraphbuilder/flowgraph_builder0120.js)
     ->[]
   block 12: [exit-exceptional]
-    node 17: exceptional-return (test/flowgraphbuilder/flowgraph_builder0120.js:1:1)
+    node 17: exceptional-return (test/flowgraphbuilder/flowgraph_builder0120.js)
     ->[]
 
 test/flowgraphbuilder/flowgraph_builder0120.js:8:3: [definite] Unreachable code

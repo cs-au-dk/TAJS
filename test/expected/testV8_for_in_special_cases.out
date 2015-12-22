@@ -4,4 +4,4 @@ test/v8tests/for-in-special-cases.js:32:14: [definite] The variable x is never u
 test/v8tests/for-in-special-cases.js:41:1: [definite] Unreachable function for_in_undefined
 test/v8tests/for-in-special-cases.js:54:3: [definite] Unreachable code
 test/v8tests/for-in-special-cases.js:57:10: [definite] The variable j is never used
-test/v8tests/prologue.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/for-in-special-cases.js:54:3]
+test/v8tests/prologue.js,test/v8tests/for-in-special-cases.js: [maybe] Uncaught exception, constructed at [test/v8tests/for-in-special-cases.js:54:3]

@@ -1,6 +1,6 @@
 test/micro/testForIn5.js:20:1: [maybe] TypeError, accessing property of null/undefined
 test/micro/testForIn5.js:22:16: [maybe] TypeError, accessing property of null/undefined
-test/micro/testForIn5.js:1:1: [maybe] Uncaught exception, constructed at [test/micro/testForIn5.js:20:1, test/micro/testForIn5.js:22:16]
+test/micro/testForIn5.js: [maybe] Uncaught exception, constructed at [test/micro/testForIn5.js:20:1, test/micro/testForIn5.js:22:16]
 test/micro/testForIn5.js:15:1: [info] Abstract value: Undef|[@Object#node22]
 test/micro/testForIn5.js:16:1: [info] Abstract value: Undef|[@Object#node31]
 test/micro/testForIn5.js:17:1: [info] Abstract object: {a:1.0,[[Prototype]]=[@Object.prototype[native]]}

@@ -1,6 +1,6 @@
-fg2: function()
+fg2: <main> function()
   block 0: [entry]
-    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0126.js:1:1)
+    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0126.js)
     node 1: vardecl['t2']* (test/flowgraphbuilder/flowgraph_builder0126.js:1:5)
     ->[block 1]
   block 1:
@@ -19,10 +19,10 @@ fg2: function()
     node 8: call[v6,v7,v8,-]* (test/flowgraphbuilder/flowgraph_builder0126.js:3:1)
     ->[block 5]
   block 5: [exit-ordinary]
-    node 9: return[v1] (test/flowgraphbuilder/flowgraph_builder0126.js:1:1)
+    node 9: return[v1] (test/flowgraphbuilder/flowgraph_builder0126.js)
     ->[]
   block 6: [exit-exceptional]
-    node 10: exceptional-return (test/flowgraphbuilder/flowgraph_builder0126.js:1:1)
+    node 10: exceptional-return (test/flowgraphbuilder/flowgraph_builder0126.js)
     ->[]
 
 test/flowgraphbuilder/flowgraph_builder0126.js:3:1: [info] Abstract object: {[[Prototype]]=[@Object.prototype[native]]}

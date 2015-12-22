@@ -127,7 +127,6 @@ public class State implements IState<State, Context, CallEdge> {
         summarized = new Summarized();
         extras = new StateExtras();
         setToNone();
-        store_default = Obj.makeNone();
         number_of_states_created++;
     }
 
@@ -201,10 +200,17 @@ public class State implements IState<State, Context, CallEdge> {
     }
 
     /**
+     * Checks whether the return register has a value.
+     */
+    public boolean hasReturnRegisterValue() {
+        return AbstractNode.RETURN_REG < registers.size() && registers.get(AbstractNode.RETURN_REG) != null;
+    }
+
+    /**
      * Checks whether the exception register has a value.
      */
     public boolean hasExceptionRegisterValue() {
-        return registers.get(AbstractNode.EXCEPTION_REG) != null;
+        return AbstractNode.EXCEPTION_REG < registers.size() && registers.get(AbstractNode.EXCEPTION_REG) != null;
     }
 
     /**
@@ -402,7 +408,13 @@ public class State implements IState<State, Context, CallEdge> {
 //        if (Options.get().isCopyOnWriteDisabled()) {
         store = newMap();
         writable_store = true;
-        registers = new ArrayList<>();
+        if (registers == null) {
+            registers = new ArrayList<>();
+        } else {
+            for (int i = 0; i < registers.size(); i++) {
+                registers.set(i, Value.makeNone());
+            }
+        }
         writable_registers = true;
         stacked_objlabels = newSet();
         writable_stacked_objlabels = true;
@@ -416,6 +428,7 @@ public class State implements IState<State, Context, CallEdge> {
 //        }
         execution_context = new ExecutionContext();
         writable_execution_context = true;
+        store_default = Obj.makeNone();
     }
 
 //    /**
@@ -432,8 +445,8 @@ public class State implements IState<State, Context, CallEdge> {
 //    }
 
     @Override
-    public boolean isNone() { // FIXME: more precise check for store and registers? (may contain <none> values?)
-        return execution_context.isEmpty() && store.isEmpty() && basis_store == null && registers.isEmpty() && extras.isNone() && stacked_objlabels.isEmpty();
+    public boolean isNone() {
+        return execution_context.isEmpty();
     }
 
     /**
@@ -446,7 +459,7 @@ public class State implements IState<State, Context, CallEdge> {
                                      State calledge_state,
                                      State caller_entry_state,
                                      Summarized callee_summarized,
-                                     Value returnval) {
+                                     Value returnval, Value exval) {
         makeWritableStore();
         store_default = caller_state.store_default.freeze();
         if (basis_store != caller_state.basis_store || basis_store != calledge_state.basis_store)
@@ -473,7 +486,7 @@ public class State implements IState<State, Context, CallEdge> {
                 if (log.isDebugEnabled())
                     log.debug("removing object equal to the default: " + me.getKey());
                 it.remove();
-            } else if (caller_entry_state.store_default.isSomeNone() && store_default.isUnknown() && me.getValue().isSomeNone()) {
+            } else if (caller_entry_state.store_default.isAllNone() && store_default.isUnknown() && me.getValue().isSomeNone()) {
                 if (log.isDebugEnabled())
                     log.debug("removing none object: " + me.getKey());
                 it.remove();
@@ -491,21 +504,16 @@ public class State implements IState<State, Context, CallEdge> {
         // merge summarized sets
         summarized.add(calledge_state.summarized);
         Value res = returnval == null ? null : replacePolymorphicValue(returnval, calledge_state, caller_entry_state, callee_summarized);
-        // finally, move to the successor of the caller block
-        block = caller_state.block.getSingleSuccessor();
-        context = caller_state.context;
+        if (exval != null) {
+            writeRegister(AbstractNode.EXCEPTION_REG, replacePolymorphicValue(exval, calledge_state, caller_entry_state, callee_summarized));
+        }
         log.debug("mergeFunctionReturn(...) done");
         return res;
     }
 
-//    public boolean mergeForInSpecialization(State other,
-//                                            State reads,
-//                                            State reads_other,
-//    private static boolean checkReadWriteConflict(State writes, State reads) { // (currently unused)
-//    private Value mergeForInSpecializationValue(Value this_val, Value other_val, State other, boolean mergeWritesWeakly, boolean overrideWrites) { // (currently unused)
     /**
      * Replaces the polymorphic properties of the given object.
-     * Used by {@link #mergeFunctionReturn(State, State, State, Summarized, Value)}.
+     * Used by {@link #mergeFunctionReturn(State, State, State, Summarized, Value, Value)}.
      */
     private static void replacePolymorphicValues(Obj obj,
                                                  State calledge_state,
@@ -579,7 +587,7 @@ public class State implements IState<State, Context, CallEdge> {
 
     /**
      * Summarizes the store according to the given summarization.
-     * Used by {@link #mergeFunctionReturn(State, State, State, Summarized, Value)}.
+     * Used by {@link #mergeFunctionReturn(State, State, State, Summarized, Value, Value)}.
      */
     private void summarizeStore(Summarized s) {
         makeWritableStore();
@@ -607,12 +615,16 @@ public class State implements IState<State, Context, CallEdge> {
      */
     @Override
     public boolean propagate(State s, boolean funentry) {
-        if (Options.get().isDebugOrTestEnabled() && !store_default.equals(s.store_default))
+        if (Options.get().isDebugOrTestEnabled() && !store_default.isAllNone() && !s.store_default.isAllNone() && !store_default.equals(s.store_default))
             throw new AnalysisException("Expected store default objects to be equal");
         if (log.isDebugEnabled() && Options.get().isIntermediateStatesEnabled()) {
             log.debug("join this state: " + this);
             log.debug("join other state: " + s);
         }
+        if (s.isNone()) {
+            return false;
+        }
+        boolean thisIsNone = isNone();
         makeWritableStore();
         makeWritableExecutionContext();
         makeWritableRegisters();
@@ -639,7 +651,22 @@ public class State implements IState<State, Context, CallEdge> {
                     changed = true;
                 }
             }
-            changed |= summarized.join(s.summarized);
+            if (thisIsNone) {
+                summarized = new Summarized(s.summarized); // naively joining definitely_summarized with bottom would lose precision
+                changed = true;
+            } else {
+                changed |= summarized.join(s.summarized);
+            }
+        }
+        if (store_default.isAllNone() && !s.store_default.isAllNone()) {
+            for (ObjectLabel lab : s.store.keySet()) { // materialize before changing default
+                if (!store.containsKey(lab)) {
+                    store.put(lab, store_default);
+                }
+            }
+            store_default = s.store_default;
+            store_default.freeze();
+            changed = true;
         }
         if (log.isDebugEnabled()) {
             if (Options.get().isIntermediateStatesEnabled())
@@ -660,14 +687,21 @@ public class State implements IState<State, Context, CallEdge> {
      */
     private boolean propagateObj(ObjectLabel objlabel_to, State state_from, ObjectLabel objlabel_from, boolean modified) {
         Obj obj_from = state_from.getObject(objlabel_from, false);
-        if (obj_from.isAllNone()) {
-            // obj_from object is none, so nothing to do
-            return false;
-        }
         Obj obj_to = getObject(objlabel_to, false);
         if (obj_from == obj_to) {
             // identical objects, so nothing to do
             return false;
+        }
+        if (obj_from.isAllNone()) { // may be a call edge or function entry state where not all properties have been propagated, so don't use isSomeNone here
+            // obj_from object is none, so nothing to do
+            return false;
+        }
+        if (obj_to.isAllNone()) { // may be a call edge or function entry state where not all properties have been propagated, so don't use isSomeNone here
+            // obj_to is none, so just copy from obj_from
+            makeWritableStore();
+            obj_to = new Obj(obj_from);
+            store.put(objlabel_to, obj_to);
+            return true;
         }
         // join all properties from obj_from into obj_to
         boolean changed = false;
@@ -1520,6 +1554,8 @@ public class State implements IState<State, Context, CallEdge> {
         }
         if (value.equals(oldvalue))
             return; // don't request writable obj if the value doesn't change anyway
+        if (objlabel.getKind() == Kind.ARRAY && propertyname.equals("length") && put)
+            return; // (hopefully) already taken care of by NativeFunctions.updateArrayLength
         getObject(objlabel, true).setProperty(propertyname, value);
     }
 
@@ -1820,7 +1856,6 @@ public class State implements IState<State, Context, CallEdge> {
             log.debug("setExecutionContext(" + e + ")");
     }
 
-//    protected void remove(State other) { // (currently unused)
     /**
      * Returns a string description of the differences between this state and the given one.
      */
@@ -2221,7 +2256,7 @@ public class State implements IState<State, Context, CallEdge> {
      * Returns true if the given register is defined.
      */
     public boolean isRegisterDefined(int reg) {
-        return reg < registers.size() && registers.get(reg) != null;
+        return reg >= 0 && reg < registers.size() && registers.get(reg) != null;
     }
 
     /**
@@ -2238,6 +2273,20 @@ public class State implements IState<State, Context, CallEdge> {
         if (log.isDebugEnabled())
             log.debug("readRegister(v" + reg + ") = " + res);
         return res;
+    }
+
+    /**
+     * Returns the list of registers.
+     */
+    public List<Value> getRegisters() {
+        return registers;
+    }
+
+    /**
+     * Sets the list of registers.
+     */
+    public void setRegisters(List<Value> registers) {
+        this.registers = registers;
     }
 
     /**

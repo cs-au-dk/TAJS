@@ -1,6 +1,6 @@
 out/temp-sources/object_create.js:3:11: [definite] Too few parameters to function Object.create
 out/temp-sources/object_create.js:3:6: [definite] The variable o1 is never used
 out/temp-sources/object_create.js:3:11: [definite] Unreachable code
-out/temp-sources/object_create.js:1:1: [maybe] Uncaught exception, constructed at [out/temp-sources/object_create.js:3:11]
+out/temp-sources/object_create.js: [maybe] Uncaught exception, constructed at [out/temp-sources/object_create.js:3:11]
 out/temp-sources/object_create.js:8:2: [info] Abstract object: {[[Prototype]]=Null}
 out/temp-sources/object_create.js:12:2: [info] Abstract object: {[[Prototype]]=[@Array[native]]}

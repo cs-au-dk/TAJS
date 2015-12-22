@@ -1,0 +1,44 @@
+test/1k2013spring/shim.js:6:5: [definite] The variable b is never used
+test/1k2013spring/shim.js:8:5: [definite] The variable a is never used
+test/1k2013spring/1398.js:2:9: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1398.js:2:9: [maybe] TypeError, call to non-function
+test/1k2013spring/1398.js:19:21: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1398.js:22:14: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1398.js:24:21: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1398.js:24:48: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1398.js:24:78: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1398.js:55:1: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1398.js:56:1: [maybe] ReferenceError, reading absent variable o
+test/1k2013spring/1398.js:89:18: [maybe] ReferenceError, reading absent variable o
+test/1k2013spring/1398.js:90:18: [maybe] ReferenceError, reading absent variable o
+test/1k2013spring/shim.js:8:9: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/shim.js:8:9: [maybe] TypeError, call to non-function
+test/1k2013spring/shim.js:9:1: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1398.js:2:9: [maybe] Reading absent property getContext
+test/1k2013spring/shim.js:6:9: [maybe] Reading absent property body
+test/1k2013spring/shim.js:8:9: [maybe] Reading absent property getContext
+test/1k2013spring/shim.js:9:1: [maybe] Reading absent property body
+test/1k2013spring/1398.js:19:21: [maybe] Reading absent property (computed name)
+test/1k2013spring/1398.js:22:14: [maybe] Reading absent property (computed name)
+test/1k2013spring/1398.js:24:21: [maybe] Reading absent property (computed name)
+test/1k2013spring/1398.js:24:48: [maybe] Reading absent property (computed name)
+test/1k2013spring/1398.js:24:78: [maybe] Reading absent property (computed name)
+test/1k2013spring/1398.js:55:1: [maybe] Reading absent property (computed name)
+test/1k2013spring/1398.js:61:3: [maybe] Conversion to number yields NaN
+test/1k2013spring/1398.js:65:3: [maybe] Conversion to number yields NaN
+test/1k2013spring/1398.js:69:3: [maybe] Conversion to number yields NaN
+test/1k2013spring/1398.js:73:3: [maybe] Conversion to number yields NaN
+test/1k2013spring/1398.js:77:3: [maybe] Conversion to number yields NaN
+test/1k2013spring/1398.js:91:14: [maybe] Conversion to number yields NaN
+test/1k2013spring/shim.js:7:9: [maybe] Reading absent property (computed name)
+test/1k2013spring/shim.js,test/1k2013spring/1398.js: [maybe] Uncaught exception, constructed at [test/1k2013spring/1398.js:2:9, test/1k2013spring/1398.js:19:21, test/1k2013spring/1398.js:22:14, test/1k2013spring/1398.js:24:21, test/1k2013spring/1398.js:24:48, test/1k2013spring/1398.js:24:78, test/1k2013spring/1398.js:55:1, test/1k2013spring/1398.js:56:1, test/1k2013spring/1398.js:89:18, test/1k2013spring/1398.js:90:18, test/1k2013spring/shim.js:8:9, test/1k2013spring/shim.js:9:1]
+test/1k2013spring/1398.js:36:1: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/1k2013spring/1398.js:36:1: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/1k2013spring/1398.js:37:5: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/1k2013spring/1398.js:37:5: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/1k2013spring/1398.js:40:14: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/1k2013spring/1398.js:40:14: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/1k2013spring/1398.js:42:12: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/1k2013spring/1398.js:42:12: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/1k2013spring/1398.js:42:22: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/1k2013spring/1398.js:42:22: [info] 'this' refers to multiple abstract objects, which may cause loss of precision

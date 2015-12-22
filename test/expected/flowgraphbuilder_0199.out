@@ -1,6 +1,6 @@
-fg2: function()
+fg2: <main> function()
   block 0: [entry]
-    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0199.js:1:1)
+    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0199.js)
     node 1: vardecl['x']* (test/flowgraphbuilder/flowgraph_builder0199.js:1:5)
     node 2: vardecl['z']* (test/flowgraphbuilder/flowgraph_builder0199.js:3:5)
     node 3: vardecl['a']* (test/flowgraphbuilder/flowgraph_builder0199.js:4:10)
@@ -87,10 +87,10 @@ fg2: function()
     node 52: call[v23,v24,v25,-]* (test/flowgraphbuilder/flowgraph_builder0199.js:14:1)
     ->[block 17]
   block 17: [exit-ordinary]
-    node 53: return[v1] (test/flowgraphbuilder/flowgraph_builder0199.js:1:1)
+    node 53: return[v1] (test/flowgraphbuilder/flowgraph_builder0199.js)
     ->[]
   block 18: [exit-exceptional]
-    node 54: exceptional-return (test/flowgraphbuilder/flowgraph_builder0199.js:1:1)
+    node 54: exceptional-return (test/flowgraphbuilder/flowgraph_builder0199.js)
     ->[]
 
 test/flowgraphbuilder/flowgraph_builder0199.js:5:3: [maybe] Conversion to number yields NaN

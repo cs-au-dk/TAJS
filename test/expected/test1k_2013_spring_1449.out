@@ -1,0 +1,17 @@
+test/1k2013spring/1449.js:83:5: [definite] Too few parameters to function Window.clearInterval
+test/1k2013spring/shim.js:6:5: [definite] The variable b is never used
+test/1k2013spring/1449.js:102:9: [maybe] ReferenceError, reading absent variable pixels_table
+test/1k2013spring/shim.js:8:9: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/shim.js:8:9: [maybe] TypeError, call to non-function
+test/1k2013spring/shim.js:9:1: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/shim.js:6:9: [maybe] Reading absent property body
+test/1k2013spring/shim.js:8:9: [maybe] Reading absent property getContext
+test/1k2013spring/shim.js:9:1: [maybe] Reading absent property body
+test/1k2013spring/1449.js:49:8: [maybe] Converting primitive number to object
+test/1k2013spring/1449.js:54:8: [maybe] Converting primitive number to object
+test/1k2013spring/1449.js:59:8: [maybe] Converting primitive number to object
+test/1k2013spring/1449.js:60:8: [maybe] Converting primitive number to object
+test/1k2013spring/1449.js:83:5: [maybe] Conversion to number yields NaN
+test/1k2013spring/1449.js:102:9: [maybe] Reading absent property (computed name)
+test/1k2013spring/shim.js:7:9: [maybe] Reading absent property (computed name)
+test/1k2013spring/shim.js,test/1k2013spring/1449.js: [maybe] Uncaught exception, constructed at [test/1k2013spring/1449.js:102:9, test/1k2013spring/shim.js:8:9, test/1k2013spring/shim.js:9:1]

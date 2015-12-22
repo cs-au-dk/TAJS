@@ -1,6 +1,6 @@
 <main> function()
   block 0: [entry]
-    node 0: constant[undefined,v1] (out/temp-sources/loopunrolling_flowgraph_continue2.js:1:1)
+    node 0: constant[undefined,v1] (out/temp-sources/loopunrolling_flowgraph_continue2.js)
     ->[block 1]
   block 1:
     node 1: constant["COND1",v2] (out/temp-sources/loopunrolling_flowgraph_continue2.js:1:15)
@@ -36,15 +36,15 @@
     node 11: end-loop[v2]* (out/temp-sources/loopunrolling_flowgraph_continue2.js:1:9)
     ->[block 13]
   block 12: [exit-ordinary]
-    node 12: return[v1] (out/temp-sources/loopunrolling_flowgraph_continue2.js:1:1)
+    node 12: return[v1] (out/temp-sources/loopunrolling_flowgraph_continue2.js)
     ->[]
   block 13: [exit-exceptional]
-    node 13: exceptional-return (out/temp-sources/loopunrolling_flowgraph_continue2.js:1:1)
+    node 13: exceptional-return (out/temp-sources/loopunrolling_flowgraph_continue2.js)
     ->[]
 
 <main> function()
   block 0: [entry]
-    node 0: constant[undefined,v1] (out/temp-sources/loopunrolling_flowgraph_continue2.js:1:1)
+    node 0: constant[undefined,v1] (out/temp-sources/loopunrolling_flowgraph_continue2.js)
     ->[block 1]
   block 1:
     node 1: constant["COND1",v2] (out/temp-sources/loopunrolling_flowgraph_continue2.js:1:15)
@@ -80,10 +80,10 @@
     node 11: end-loop[v2]* (out/temp-sources/loopunrolling_flowgraph_continue2.js:1:9)
     ->[block 13]
   block 12: [exit-ordinary]
-    node 12: return[v1] (out/temp-sources/loopunrolling_flowgraph_continue2.js:1:1)
+    node 12: return[v1] (out/temp-sources/loopunrolling_flowgraph_continue2.js)
     ->[]
   block 13: [exit-exceptional]
-    node 13: exceptional-return (out/temp-sources/loopunrolling_flowgraph_continue2.js:1:1)
+    node 13: exceptional-return (out/temp-sources/loopunrolling_flowgraph_continue2.js)
     ->[]
 
 out/temp-sources/loopunrolling_flowgraph_continue2.js:1:15: [definite] The conditional expression is always true

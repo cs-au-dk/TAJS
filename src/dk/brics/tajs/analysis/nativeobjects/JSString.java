@@ -17,10 +17,12 @@
 package dk.brics.tajs.analysis.nativeobjects;
 
 import dk.brics.tajs.analysis.Conversion;
+import dk.brics.tajs.analysis.FunctionCalls;
 import dk.brics.tajs.analysis.FunctionCalls.CallInfo;
 import dk.brics.tajs.analysis.InitialStateBuilder;
 import dk.brics.tajs.analysis.NativeFunctions;
 import dk.brics.tajs.analysis.Solver;
+import dk.brics.tajs.analysis.js.UserFunctionCalls;
 import dk.brics.tajs.analysis.nativeobjects.JSRegExp.RegExpExecHandler;
 import dk.brics.tajs.analysis.nativeobjects.concrete.Alpha;
 import dk.brics.tajs.analysis.nativeobjects.concrete.ConcreteArray;
@@ -35,13 +37,14 @@ import dk.brics.tajs.analysis.nativeobjects.concrete.ConcreteValue;
 import dk.brics.tajs.analysis.nativeobjects.concrete.ConcreteValueVisitor;
 import dk.brics.tajs.analysis.nativeobjects.concrete.Gamma;
 import dk.brics.tajs.analysis.nativeobjects.concrete.TAJSConcreteSemantics;
+import dk.brics.tajs.flowgraph.BasicBlock;
 import dk.brics.tajs.lattice.HeapContext;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.ObjectLabel.Kind;
 import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.options.Options;
-import dk.brics.tajs.solver.Message.Severity;
+import dk.brics.tajs.solver.Message;
 import dk.brics.tajs.util.AnalysisException;
 import dk.brics.tajs.util.None;
 import dk.brics.tajs.util.OptionalObjectVisitor;
@@ -54,6 +57,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import static dk.brics.tajs.util.Collections.newList;
 import static dk.brics.tajs.util.Collections.newMap;
 
 /**
@@ -187,27 +191,32 @@ public class JSString {
                     toReplace = NativeFunctions.readParameter(call, state, 0);
                     toReplaceWith = NativeFunctions.readParameter(call, state, 1);
                 }
+
                 if (Gamma.isConcreteValue(state.readThis(), c) && Gamma.isConcreteValue(toReplace, c)) {
                     // sound "optimization": if a function is given as second argument, then it is only a problem if it could be invoked..
                     return ConcreteSemantics.get().<ConcreteNumber>apply("String.prototype.search", Gamma.toConcreteValue(state.readThis(), c), Collections.singletonList(escapeAnyStringForRegExp(Gamma.toConcreteValue(toReplace, c)))).apply(new OptionalObjectVisitor<Value, ConcreteNumber>() {
-                        private void checkFunction() {
+                        private boolean handleFunctionCallbacks() {
+                            boolean anyCallbacks = false;
                             if (toReplaceWith.isMaybeObject()) {
                                 for (ObjectLabel objectLabel : toReplaceWith.getObjectLabels()) {
                                     if (objectLabel.getKind() == Kind.FUNCTION) {
                                         if (Options.get().isUnsoundEnabled()) {
-                                            c.getMonitoring().addMessage(call.getSourceNode(), Severity.HIGH, "Ignoring String.replace(..., function(){...})");
+                                            c.getMonitoring().addMessage(call.getSourceNode(), Message.Severity.HIGH, "Ignoring String.replace(..., function(){...})");
                                         } else {
-                                            // FIXME unsoundly skipping the side effects of the callback
-                                            // throw new AnalysisException("Cannot handle String.replace(..., function(){...})");
+                                            anyCallbacks = true;
                                         }
                                     }
                                 }
                             }
+                            if (anyCallbacks) {
+                                invokeCallback(toReplaceWith, c);
+                            }
+                            return anyCallbacks;
                         }
 
                         @Override
                         public Value visit(None<ConcreteNumber> o) {
-                            checkFunction();
+                            handleFunctionCallbacks();
                             return Value.makeAnyStr();
                         }
 
@@ -215,12 +224,17 @@ public class JSString {
                         public Value visit(Some<ConcreteNumber> o) {
                             boolean hasAnyMatches = (int) o.get().getNumber() != -1;
                             if (hasAnyMatches) {
-                                checkFunction();
+                                boolean anyCallbacks = handleFunctionCallbacks();
+                                if(anyCallbacks){
+                                    return Value.makeAnyStr();
+                                }
                             }
                             return TAJSConcreteSemantics.convertTAJSCall(state.readThis(), "String.prototype.replace", hasAnyMatches ? 2 : 1, ConcreteString.class, state, call, c, Value.makeAnyStr());
                         }
                     });
                 }
+
+                invokeCallback(toReplaceWith, c);
                 return Value.makeAnyStr();
             }
 
@@ -298,6 +312,46 @@ public class JSString {
 
             default:
                 return null;
+        }
+    }
+
+    private static void invokeCallback(Value callback, Solver.SolverInterface c) {
+        for (int i = 0; i < 2; i++) { // 2 enough, we just need the feedback loop
+            List<Value> result = newList();
+            boolean anyUserFunctions = false;
+            BasicBlock implicitAfterCall = null;
+            for (ObjectLabel obj : callback.getObjectLabels()) {
+                if (obj.getKind() == Kind.FUNCTION) {
+                    if (obj.isHostObject()) { // weird, but possible
+                        // TODO: callback is a host object, should invoke it (but unlikely worthwhile to implement...)
+                        c.getMonitoring().addMessage(c.getNode(), Message.Severity.HIGH, "Ignoring host object callback in String.prototype.replace");
+                    } else {
+                        anyUserFunctions = true;
+                        implicitAfterCall = UserFunctionCalls.implicitUserFunctionCall(obj, new FunctionCalls.DefaultImplicitCallInfo(c) {
+                            @Override
+                            public Value getArg(int i1) {
+                                throw new AnalysisException("Should not be called. Arguments are unknown.");
+                            }
+
+                            @Override
+                            public int getNumberOfArgs() {
+                                return 0;
+                            }
+
+                            @Override
+                            public Value getUnknownArg() {
+                                return Value.makeAnyStr().joinAnyNumUInt();
+                            }
+
+                            @Override
+                            public boolean isUnknownNumberOfArgs() {
+                                return true;
+                            }
+                        }, c);
+                    }
+                }
+                UserFunctionCalls.implicitUserFunctionReturn(result, anyUserFunctions, true, implicitAfterCall, c);
+            }
         }
     }
 
@@ -401,7 +455,7 @@ public class JSString {
                     argsMap.put("<base/this>", Value.makeStr(thisStringValue.getStr()));
                     argsMap.put("<arg/separator>", Value.makeStr(separator.getStr()));
                     // we are precise, so allocate a unique array
-                    resultArray = new ObjectLabel(call.getSourceNode(), Kind.ARRAY, new HeapContext(null, argsMap));
+                    resultArray = new ObjectLabel(call.getSourceNode(), Kind.ARRAY, HeapContext.make(null, argsMap));
                     state.newObject(resultArray);
                     state.writeInternalPrototype(resultArray, Value.makeObject(InitialStateBuilder.ARRAY_PROTOTYPE));
                     final List<Value> splitValues = new ArrayList<>();

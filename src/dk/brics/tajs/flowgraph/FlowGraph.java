@@ -41,12 +41,12 @@ public class FlowGraph {
     /**
      * The functions in this flow graph.
      */
-    private Collection<Function> functions;
+    private Set<Function> functions;
 
     /**
      * The top-level function.
      */
-    private Function main;
+    private final Function main;
 
     /**
      * Total number of basic blocks.
@@ -71,8 +71,9 @@ public class FlowGraph {
     /**
      * Constructs a new uninitialized flow graph.
      */
-    public FlowGraph() {
-        functions = newList();
+    public FlowGraph(Function main) {
+        this.main = main;
+        this.functions = newSet();
     }
 
     /**
@@ -149,16 +150,6 @@ public class FlowGraph {
     }
 
     /**
-     * Sets the main function. The function must already be added to the flow graph.
-     */
-    public void setMain(Function f) {
-        if (!functions.contains(f)) {
-            throw new IllegalArgumentException("Function not added to flow graph");
-        }
-        main = f;
-    }
-
-    /**
      * Returns the main code.
      */
     public Function getMain() {
@@ -187,6 +178,9 @@ public class FlowGraph {
     public String toString() {
         StringBuilder b = new StringBuilder();
         for (Function f : functions) {
+            if (HostEnvSources.isHostEnvSource(f.getSourceLocation())) {
+                continue;
+            }
             if (f == main)
                 b.append("<main> ");
             b.append(f).append('\n');
@@ -205,8 +199,12 @@ public class FlowGraph {
     public void toDot(PrintWriter pw) {
         pw.println("digraph {");
         pw.println("compound=true");
-        for (Function f : functions)
+        for (Function f : functions) {
+            if (HostEnvSources.isHostEnvSource(f.getSourceLocation())) {
+                continue;
+            }
             f.toDot(pw, false, f == main);
+        }
         pw.println("}");
     }
 
@@ -242,6 +240,9 @@ public class FlowGraph {
             return;
         if (main == null)
             throw new AnalysisException("No main function");
+        if (!functions.contains(main)) {
+            throw new AnalysisException("main function not among functions?!");
+        }
         Set<Integer> seen_blocks = newSet();
         Set<Integer> seen_nodes = newSet();
         Set<Integer> seen_functions = newSet();

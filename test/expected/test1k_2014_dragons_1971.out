@@ -1,0 +1,188 @@
+test/1k2014dragons/1971.js:37:2: [definite] Too many parameters to function CanvasRenderingContext2D.prototype.beginPath
+test/1k2014dragons/1971.js:37:2: [definite] Too many parameters to function CanvasRenderingContext2D.prototype.clip
+test/1k2014dragons/1971.js:37:2: [definite] Too many parameters to function CanvasRenderingContext2D.prototype.closePath
+test/1k2014dragons/1971.js:37:2: [definite] Too many parameters to function CanvasRenderingContext2D.prototype.createImageData
+test/1k2014dragons/1971.js:37:2: [definite] Too many parameters to function CanvasRenderingContext2D.prototype.createPattern
+test/1k2014dragons/1971.js:37:2: [definite] Too many parameters to function CanvasRenderingContext2D.prototype.fill
+test/1k2014dragons/1971.js:37:2: [definite] Too many parameters to function CanvasRenderingContext2D.prototype.isPointInPath
+test/1k2014dragons/1971.js:37:2: [definite] Too many parameters to function CanvasRenderingContext2D.prototype.lineTo
+test/1k2014dragons/1971.js:37:2: [definite] Too many parameters to function CanvasRenderingContext2D.prototype.measureText
+test/1k2014dragons/1971.js:37:2: [definite] Too many parameters to function CanvasRenderingContext2D.prototype.moveTo
+test/1k2014dragons/1971.js:37:2: [definite] Too many parameters to function CanvasRenderingContext2D.prototype.restore
+test/1k2014dragons/1971.js:37:2: [definite] Too many parameters to function CanvasRenderingContext2D.prototype.rotate
+test/1k2014dragons/1971.js:37:2: [definite] Too many parameters to function CanvasRenderingContext2D.prototype.save
+test/1k2014dragons/1971.js:37:2: [definite] Too many parameters to function CanvasRenderingContext2D.prototype.scale
+test/1k2014dragons/1971.js:37:2: [definite] Too many parameters to function CanvasRenderingContext2D.prototype.stroke
+test/1k2014dragons/1971.js:37:2: [definite] Too many parameters to function CanvasRenderingContext2D.prototype.translate
+test/1k2014dragons/1971.js:37:2: [definite] Too many parameters to function Object
+test/1k2014dragons/1971.js:37:2: [definite] Too many parameters to function Object.prototype.hasOwnProperty
+test/1k2014dragons/1971.js:37:2: [definite] Too many parameters to function Object.prototype.isPrototypeOf
+test/1k2014dragons/1971.js:37:2: [definite] Too many parameters to function Object.prototype.propertyIsEnumerable
+test/1k2014dragons/1971.js:37:2: [definite] Too many parameters to function Object.prototype.toLocaleString
+test/1k2014dragons/1971.js:37:2: [definite] Too many parameters to function Object.prototype.toString
+test/1k2014dragons/1971.js:37:2: [definite] Too many parameters to function Object.prototype.valueOf
+test/1k2014dragons/shims.js:19:5: [definite] The assignment to AudioContext has no effect
+test/1k2014dragons/shims.js:19:5: [definite] The conditional expression is always true
+test/1k2014dragons/shims.js:22:5: [definite] Property is null/undefined
+test/1k2014dragons/shims.js:22:5: [definite] The conditional expression is always false
+test/1k2014dragons/shims.js:22:5: [definite] The conditional expression is always false
+test/1k2014dragons/shims.js:22:5: [definite] The conditional expression is always false
+test/1k2014dragons/shims.js:22:5: [definite] The conditional expression is always false
+test/1k2014dragons/1971.js:30:2: [definite] Too few parameters to function CanvasRenderingContext2D.prototype.arc
+test/1k2014dragons/1971.js:37:2: [definite] Too few parameters to function CanvasRenderingContext2D.prototype.arc
+test/1k2014dragons/1971.js:37:2: [definite] Too few parameters to function CanvasRenderingContext2D.prototype.arcTo
+test/1k2014dragons/1971.js:37:2: [definite] Too few parameters to function CanvasRenderingContext2D.prototype.bezierCurveTo
+test/1k2014dragons/1971.js:37:2: [definite] Too few parameters to function CanvasRenderingContext2D.prototype.createRadialGradient
+test/1k2014dragons/1971.js:37:2: [definite] Too few parameters to function CanvasRenderingContext2D.prototype.setTransform
+test/1k2014dragons/1971.js:37:2: [definite] Too few parameters to function CanvasRenderingContext2D.prototype.transform
+test/1k2014dragons/1971.js:137:13: [definite] Too few parameters to function Window.setTimeout
+test/1k2014dragons/shims.js:23:5: [definite] Reading absent property mozRequestAnimationFrame
+test/1k2014dragons/shims.js:24:5: [definite] Reading absent property webkitRequestAnimationFrame
+test/1k2014dragons/shims.js:25:5: [definite] Reading absent property msRequestAnimationFrame
+test/1k2014dragons/shims.js:41:19: [definite] Dead assignment, property antialias is never read
+test/1k2014dragons/shims.js:41:36: [definite] Dead assignment, property stencil is never read
+test/1k2014dragons/1971.js:11:7: [definite] The variable B is never used
+test/1k2014dragons/1971.js:11:7: [definite] The variable C is never used
+test/1k2014dragons/1971.js:11:7: [definite] The variable D is never used
+test/1k2014dragons/1971.js:11:7: [definite] The variable E is never used
+test/1k2014dragons/1971.js:23:5: [definite] The variable B is never used
+test/1k2014dragons/1971.js:23:5: [definite] The variable C is never used
+test/1k2014dragons/1971.js:23:5: [definite] The variable D is never used
+test/1k2014dragons/1971.js:23:5: [definite] The variable E is never used
+test/1k2014dragons/1971.js:28:5: [definite] The variable D is never used
+test/1k2014dragons/1971.js:28:5: [definite] The variable E is never used
+test/1k2014dragons/1971.js:40:5: [definite] The variable A is never used
+test/1k2014dragons/1971.js:40:5: [definite] The variable B is never used
+test/1k2014dragons/1971.js:40:5: [definite] The variable C is never used
+test/1k2014dragons/1971.js:40:5: [definite] The variable D is never used
+test/1k2014dragons/1971.js:40:5: [definite] The variable E is never used
+test/1k2014dragons/1971.js:96:5: [definite] The variable C is never used
+test/1k2014dragons/1971.js:96:5: [definite] The variable D is never used
+test/1k2014dragons/1971.js:96:5: [definite] The variable E is never used
+test/1k2014dragons/1971.js:126:17: [definite] The variable B is never used
+test/1k2014dragons/1971.js:126:17: [definite] The variable C is never used
+test/1k2014dragons/1971.js:126:17: [definite] The variable D is never used
+test/1k2014dragons/1971.js:126:17: [definite] The variable E is never used
+test/1k2014dragons/1971.js:135:17: [definite] The variable A is never used
+test/1k2014dragons/1971.js:135:17: [definite] The variable B is never used
+test/1k2014dragons/1971.js:135:17: [definite] The variable C is never used
+test/1k2014dragons/1971.js:135:17: [definite] The variable D is never used
+test/1k2014dragons/1971.js:135:17: [definite] The variable E is never used
+test/1k2014dragons/1971.js:137:16: [definite] The variable A is never used
+test/1k2014dragons/1971.js:137:16: [definite] The variable B is never used
+test/1k2014dragons/1971.js:137:16: [definite] The variable C is never used
+test/1k2014dragons/1971.js:137:16: [definite] The variable D is never used
+test/1k2014dragons/1971.js:137:16: [definite] The variable E is never used
+test/1k2014dragons/1971.js:142:15: [definite] The variable B is never used
+test/1k2014dragons/1971.js:142:15: [definite] The variable C is never used
+test/1k2014dragons/1971.js:142:15: [definite] The variable D is never used
+test/1k2014dragons/1971.js:142:15: [definite] The variable E is never used
+test/1k2014dragons/1971.js:161:5: [definite] The variable A is never used
+test/1k2014dragons/1971.js:161:5: [definite] The variable B is never used
+test/1k2014dragons/1971.js:161:5: [definite] The variable C is never used
+test/1k2014dragons/1971.js:161:5: [definite] The variable D is never used
+test/1k2014dragons/1971.js:161:5: [definite] The variable E is never used
+test/1k2014dragons/shims.js:11:9: [definite] The variable e is never used
+test/1k2014dragons/shims.js:12:12: [definite] Unreachable function
+test/1k2014dragons/shims.js:18:5: [definite] The variable AudioContext is never used
+test/1k2014dragons/1971.js:37:2: [maybe] TypeError, call to non-function
+test/1k2014dragons/1971.js:37:2: [maybe] TypeError, inf or NaN as arguments to CanvasRenderingContext2D.putImageData
+test/1k2014dragons/1971.js:37:2: [maybe] TypeError, non-HTMLImageElement or non-HTMLCanvasElement as argument to drawImage
+test/1k2014dragons/1971.js:86:7: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1971.js:98:7: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1971.js:126:1: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1971.js:195:1: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1971.js:236:9: [maybe] TypeError, inf or NaN as arguments to CanvasRenderingContext2D.putImageData
+test/1k2014dragons/1971.js:236:21: [maybe] ReferenceError, reading absent variable \u03b2
+test/1k2014dragons/1971.js:236:24: [maybe] ReferenceError, reading absent variable X
+test/1k2014dragons/1971.js:236:31: [maybe] ReferenceError, reading absent variable Y
+test/1k2014dragons/1971.js:238:8: [maybe] ReferenceError, reading absent variable xp
+test/1k2014dragons/1971.js:238:14: [maybe] ReferenceError, reading absent variable \u00d6
+test/1k2014dragons/1971.js:238:14: [maybe] TypeError when computing default value for object
+test/1k2014dragons/1971.js:239:8: [maybe] ReferenceError, reading absent variable yp
+test/1k2014dragons/1971.js:239:13: [maybe] ReferenceError, reading absent variable \u00cb
+test/1k2014dragons/1971.js:239:17: [maybe] TypeError when computing default value for object
+test/1k2014dragons/1971.js:239:22: [maybe] TypeError when computing default value for object
+test/1k2014dragons/1971.js:239:22: [maybe] TypeError when computing default value for object
+test/1k2014dragons/1971.js:252:4: [maybe] TypeError when computing default value for object
+test/1k2014dragons/1971.js:262:10: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1971.js:263:10: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1971.js:278:7: [maybe] ReferenceError, reading absent variable ex
+test/1k2014dragons/1971.js:278:11: [maybe] ReferenceError, reading absent variable ey
+test/1k2014dragons/1971.js:278:15: [maybe] ReferenceError, reading absent variable \u00c9
+test/1k2014dragons/1971.js:278:19: [maybe] ReferenceError, reading absent variable \u00cd
+test/1k2014dragons/1971.js:281:7: [maybe] ReferenceError, reading absent variable ex
+test/1k2014dragons/1971.js:281:11: [maybe] ReferenceError, reading absent variable ey
+test/1k2014dragons/1971.js:281:15: [maybe] ReferenceError, reading absent variable er
+test/1k2014dragons/1971.js:282:4: [maybe] ReferenceError, reading absent variable er
+test/1k2014dragons/1971.js:282:10: [maybe] ReferenceError, reading absent variable \u00cd
+test/1k2014dragons/1971.js:287:10: [maybe] ReferenceError, reading absent variable s
+test/1k2014dragons/1971.js:289:11: [maybe] ReferenceError, reading absent variable s
+test/1k2014dragons/1971.js:293:12: [maybe] ReferenceError, reading absent variable s
+test/1k2014dragons/1971.js:293:15: [maybe] ReferenceError, reading absent variable I
+test/1k2014dragons/1971.js:294:17: [maybe] ReferenceError, reading absent variable I
+test/1k2014dragons/1971.js:300:7: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1971.js:301:7: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/shims.js:31:1: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/shims.js:34:1: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/shims.js:34:1: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/shims.js:35:1: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/shims.js:37:9: [maybe] TypeError, call to non-function
+test/1k2014dragons/shims.js:42:18: [maybe] TypeError, call to non-function
+test/1k2014dragons/shims.js:42:46: [maybe] TypeError, call to non-function
+test/1k2014dragons/shims.js:55:9: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1971.js:127:20: [maybe] Reading absent property offsetLeft
+test/1k2014dragons/1971.js:128:19: [maybe] Reading absent property offsetTop
+test/1k2014dragons/shims.js:10:9: [maybe] Reading absent property body
+test/1k2014dragons/shims.js:31:1: [maybe] Reading absent property body
+test/1k2014dragons/shims.js:34:1: [maybe] Reading absent property style
+test/1k2014dragons/shims.js:35:1: [maybe] Reading absent property style
+test/1k2014dragons/shims.js:37:9: [maybe] Reading absent property getContext
+test/1k2014dragons/shims.js:42:18: [maybe] Reading absent property getContext
+test/1k2014dragons/shims.js:42:46: [maybe] Reading absent property getContext
+test/1k2014dragons/shims.js:55:9: [maybe] Reading absent property body
+test/1k2014dragons/1971.js:24:32: [maybe] Converting undefined to string
+test/1k2014dragons/1971.js:24:38: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1971.js:37:2: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1971.js:37:2: [maybe] Converting primitive number to object
+test/1k2014dragons/1971.js:37:2: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1971.js:82:7: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1971.js:97:10: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1971.js:127:8: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1971.js:128:7: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1971.js:137:13: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1971.js:138:3: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1971.js:143:7: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1971.js:147:7: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1971.js:149:7: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1971.js:149:26: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1971.js:150:7: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1971.js:194:5: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1971.js:236:4: [maybe] The variable t has values with different types
+test/1k2014dragons/1971.js:238:14: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1971.js:238:14: [maybe] Converting object to number
+test/1k2014dragons/1971.js:238:18: [maybe] The variable t has values with different types
+test/1k2014dragons/1971.js:239:17: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1971.js:239:17: [maybe] Converting object to number
+test/1k2014dragons/1971.js:239:18: [maybe] The variable t has values with different types
+test/1k2014dragons/1971.js:239:22: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1971.js:239:22: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1971.js:239:22: [maybe] Converting object to number
+test/1k2014dragons/1971.js:239:22: [maybe] Converting object to number
+test/1k2014dragons/1971.js:239:28: [maybe] The variable t has values with different types
+test/1k2014dragons/1971.js:239:32: [maybe] The variable t has values with different types
+test/1k2014dragons/1971.js:242:13: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1971.js:252:4: [maybe] The variable t has values with different types
+test/1k2014dragons/1971.js:254:9: [maybe] The variable L has values with different types
+test/1k2014dragons/1971.js:260:10: [maybe] The variable L has values with different types
+test/1k2014dragons/1971.js:262:10: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1971.js:263:10: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1971.js:289:6: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1971.js:289:6: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1971.js:300:7: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1971.js:301:7: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1971.js:306:5: [maybe] Converting undefined to string
+test/1k2014dragons/1971.js:306:34: [maybe] Converting undefined to string
+test/1k2014dragons/shims.js:9:9: [maybe] Reading absent property (computed name)
+test/1k2014dragons/shims.js,test/1k2014dragons/1971.js: [maybe] Uncaught exception, constructed at [test/1k2014dragons/1971.js:37:2, test/1k2014dragons/1971.js:86:7, test/1k2014dragons/1971.js:98:7, test/1k2014dragons/1971.js:126:1, test/1k2014dragons/1971.js:195:1, test/1k2014dragons/1971.js:236:21, test/1k2014dragons/1971.js:236:24, test/1k2014dragons/1971.js:236:31, test/1k2014dragons/1971.js:238:8, test/1k2014dragons/1971.js:238:14, test/1k2014dragons/1971.js:239:8, test/1k2014dragons/1971.js:239:13, test/1k2014dragons/1971.js:239:17, test/1k2014dragons/1971.js:239:22, test/1k2014dragons/1971.js:252:4, test/1k2014dragons/1971.js:262:10, test/1k2014dragons/1971.js:263:10, test/1k2014dragons/1971.js:278:7, test/1k2014dragons/1971.js:278:11, test/1k2014dragons/1971.js:278:15, test/1k2014dragons/1971.js:278:19, test/1k2014dragons/1971.js:281:7, test/1k2014dragons/1971.js:281:11, test/1k2014dragons/1971.js:281:15, test/1k2014dragons/1971.js:282:4, test/1k2014dragons/1971.js:282:10, test/1k2014dragons/1971.js:287:10, test/1k2014dragons/1971.js:289:11, test/1k2014dragons/1971.js:293:12, test/1k2014dragons/1971.js:293:15, test/1k2014dragons/1971.js:294:17, test/1k2014dragons/1971.js:300:7, test/1k2014dragons/1971.js:301:7, test/1k2014dragons/shims.js:31:1, test/1k2014dragons/shims.js:34:1, test/1k2014dragons/shims.js:35:1, test/1k2014dragons/shims.js:37:9, test/1k2014dragons/shims.js:42:18, test/1k2014dragons/shims.js:42:46, test/1k2014dragons/shims.js:55:9]
+test/1k2014dragons/1971.js:37:2: [info] Reading from unknown property that may cause loss of precision

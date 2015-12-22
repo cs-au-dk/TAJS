@@ -5,6 +5,6 @@ test/micro/test190.js:5:6: [maybe] TypeError, call to non-function
 test/micro/test190.js:7:10: [maybe] TypeError, call to non-function
 test/micro/test190.js:3:11: [maybe] Reading absent property random
 test/micro/test190.js:4:13: [maybe] Reading absent property random
-test/micro/test190.js:1:1: [maybe] Uncaught exception, constructed at [test/micro/test190.js:3:11, test/micro/test190.js:4:13, test/micro/test190.js:5:6, test/micro/test190.js:7:10]
+test/micro/test190.js: [maybe] Uncaught exception, constructed at [test/micro/test190.js:3:11, test/micro/test190.js:4:13, test/micro/test190.js:5:6, test/micro/test190.js:7:10]
 test/micro/test190.js:5:6: [info] Abstract value: 0.0
 test/micro/test190.js:3:5: [info] Writing to unknown property that may cause loss of precision

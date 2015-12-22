@@ -1,0 +1,28 @@
+test/1k2013spring/shim.js:6:5: [definite] The variable b is never used
+test/1k2013spring/1475.js:37:9: [maybe] TypeError, call to non-function
+test/1k2013spring/1475.js:88:13: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1475.js:91:17: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1475.js:92:25: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1475.js:93:25: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1475.js:93:47: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1475.js:126:23: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1475.js:126:32: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/shim.js:8:9: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/shim.js:8:9: [maybe] TypeError, call to non-function
+test/1k2013spring/shim.js:9:1: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1475.js:37:9: [maybe] Reading absent property t
+test/1k2013spring/1475.js:76:5: [maybe] Reading 'this' yields the global object
+test/1k2013spring/shim.js:6:9: [maybe] Reading absent property body
+test/1k2013spring/shim.js:8:9: [maybe] Reading absent property getContext
+test/1k2013spring/shim.js:9:1: [maybe] Reading absent property body
+test/1k2013spring/1475.js:88:13: [maybe] Reading absent property (computed name)
+test/1k2013spring/1475.js:91:17: [maybe] Reading absent property (computed name)
+test/1k2013spring/1475.js:92:25: [maybe] Reading absent property (computed name)
+test/1k2013spring/1475.js:93:25: [maybe] Reading absent property (computed name)
+test/1k2013spring/1475.js:93:47: [maybe] Reading absent property (computed name)
+test/1k2013spring/1475.js:126:23: [maybe] Reading absent property (computed name)
+test/1k2013spring/1475.js:126:32: [maybe] Reading absent property (computed name)
+test/1k2013spring/1475.js:145:13: [maybe] Conversion to number yields NaN
+test/1k2013spring/shim.js:7:9: [maybe] Reading absent property (computed name)
+test/1k2013spring/shim.js,test/1k2013spring/1475.js: [maybe] Uncaught exception, constructed at [test/1k2013spring/1475.js:37:9, test/1k2013spring/1475.js:88:13, test/1k2013spring/1475.js:91:17, test/1k2013spring/1475.js:92:25, test/1k2013spring/1475.js:93:25, test/1k2013spring/1475.js:93:47, test/1k2013spring/1475.js:126:23, test/1k2013spring/1475.js:126:32, test/1k2013spring/shim.js:8:9, test/1k2013spring/shim.js:9:1]
+test/1k2013spring/1475.js:76:5: [info] 'this' refers to multiple abstract objects, which may cause loss of precision

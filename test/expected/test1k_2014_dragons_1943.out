@@ -1,0 +1,330 @@
+test/1k2014dragons/1943.js:121:2: [definite] The conditional expression is always false
+test/1k2014dragons/1943.js:124:2: [definite] The conditional expression is always false
+test/1k2014dragons/1943.js:127:2: [definite] The conditional expression is always false
+test/1k2014dragons/1943.js:132:2: [definite] The conditional expression is always false
+test/1k2014dragons/1943.js:132:5: [definite] The conditional expression is always false
+test/1k2014dragons/shims.js:19:5: [definite] The assignment to AudioContext has no effect
+test/1k2014dragons/shims.js:19:5: [definite] The conditional expression is always true
+test/1k2014dragons/shims.js:22:5: [definite] Property is null/undefined
+test/1k2014dragons/shims.js:22:5: [definite] The conditional expression is always false
+test/1k2014dragons/shims.js:22:5: [definite] The conditional expression is always false
+test/1k2014dragons/shims.js:22:5: [definite] The conditional expression is always false
+test/1k2014dragons/shims.js:22:5: [definite] The conditional expression is always false
+test/1k2014dragons/1943.js:105:5: [definite] Reading absent property which
+test/1k2014dragons/1943.js:105:25: [definite] Reading absent property which
+test/1k2014dragons/1943.js:106:7: [definite] Reading absent property which
+test/1k2014dragons/1943.js:121:5: [definite] Reading absent property which
+test/1k2014dragons/1943.js:124:5: [definite] Reading absent property which
+test/1k2014dragons/1943.js:127:5: [definite] Reading absent property which
+test/1k2014dragons/shims.js:23:5: [definite] Reading absent property mozRequestAnimationFrame
+test/1k2014dragons/shims.js:24:5: [definite] Reading absent property webkitRequestAnimationFrame
+test/1k2014dragons/shims.js:25:5: [definite] Reading absent property msRequestAnimationFrame
+test/1k2014dragons/shims.js:41:19: [definite] Dead assignment, property antialias is never read
+test/1k2014dragons/shims.js:41:36: [definite] Dead assignment, property stencil is never read
+test/1k2014dragons/1943.js:18:5: [definite] The variable e is never used
+test/1k2014dragons/1943.js:52:17: [definite] The variable e is never used
+test/1k2014dragons/1943.js:52:17: [definite] The variable p is never used
+test/1k2014dragons/1943.js:94:11: [definite] The variable e is never used
+test/1k2014dragons/shims.js:10:5: [definite] The variable b is never used
+test/1k2014dragons/shims.js:11:9: [definite] The variable e is never used
+test/1k2014dragons/shims.js:12:12: [definite] Unreachable function
+test/1k2014dragons/shims.js:18:5: [definite] The variable AudioContext is never used
+test/1k2014dragons/shims.js:21:5: [definite] The variable requestAnimationFrame is never used
+test/1k2014dragons/shims.js:26:5: [definite] Unreachable function
+test/1k2014dragons/shims.js:39:5: [definite] The variable g is never used
+test/1k2014dragons/1943.js:12:25: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1943.js:14:2: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1943.js:22:8: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1943.js:25:8: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1943.js:48:3: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1943.js:61:6: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1943.js:61:27: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1943.js:61:44: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1943.js:62:6: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1943.js:62:27: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1943.js:62:44: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1943.js:68:16: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1943.js:68:25: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1943.js:68:25: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1943.js:68:27: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1943.js:68:35: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1943.js:68:57: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1943.js:68:66: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1943.js:68:66: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1943.js:68:68: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1943.js:68:76: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1943.js:68:98: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1943.js:68:107: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1943.js:68:107: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1943.js:68:109: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1943.js:68:117: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1943.js:69:18: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1943.js:69:27: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1943.js:69:27: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1943.js:69:29: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1943.js:69:37: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1943.js:69:59: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1943.js:69:68: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1943.js:69:68: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1943.js:69:70: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1943.js:69:78: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1943.js:69:100: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1943.js:69:109: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1943.js:69:109: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1943.js:69:111: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1943.js:69:119: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1943.js:84:8: [maybe] TypeError, call to non-function
+test/1k2014dragons/1943.js:112:8: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1943.js:113:22: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/shims.js:31:1: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/shims.js:34:1: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/shims.js:34:1: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/shims.js:35:1: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/shims.js:37:9: [maybe] TypeError, call to non-function
+test/1k2014dragons/shims.js:42:18: [maybe] TypeError, call to non-function
+test/1k2014dragons/shims.js:42:46: [maybe] TypeError, call to non-function
+test/1k2014dragons/shims.js:55:9: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1943.js:12:25: [maybe] Reading absent property r
+test/1k2014dragons/1943.js:12:37: [maybe] Reading absent property g
+test/1k2014dragons/1943.js:12:49: [maybe] Reading absent property b
+test/1k2014dragons/1943.js:13:13: [maybe] Reading absent property x
+test/1k2014dragons/1943.js:13:34: [maybe] Reading absent property width
+test/1k2014dragons/1943.js:13:58: [maybe] Reading absent property y
+test/1k2014dragons/1943.js:13:79: [maybe] Reading absent property height
+test/1k2014dragons/1943.js:14:4: [maybe] Reading absent property x
+test/1k2014dragons/1943.js:14:9: [maybe] Reading absent property y
+test/1k2014dragons/1943.js:14:20: [maybe] Reading absent property r
+test/1k2014dragons/1943.js:14:28: [maybe] Reading absent property g
+test/1k2014dragons/1943.js:14:36: [maybe] Reading absent property b
+test/1k2014dragons/1943.js:22:8: [maybe] Reading absent property x
+test/1k2014dragons/1943.js:22:19: [maybe] Reading absent property width
+test/1k2014dragons/1943.js:22:30: [maybe] Reading absent property y
+test/1k2014dragons/1943.js:22:41: [maybe] Reading absent property height
+test/1k2014dragons/1943.js:22:53: [maybe] Reading absent property x
+test/1k2014dragons/1943.js:22:68: [maybe] Reading absent property y
+test/1k2014dragons/1943.js:25:10: [maybe] Reading absent property x
+test/1k2014dragons/1943.js:25:19: [maybe] Reading absent property y
+test/1k2014dragons/1943.js:26:16: [maybe] Reading absent property x
+test/1k2014dragons/1943.js:26:28: [maybe] Reading absent property y
+test/1k2014dragons/1943.js:45:16: [maybe] Reading absent property width
+test/1k2014dragons/1943.js:47:17: [maybe] Reading absent property height
+test/1k2014dragons/1943.js:61:6: [maybe] Reading absent property x
+test/1k2014dragons/1943.js:61:20: [maybe] Reading absent property x
+test/1k2014dragons/1943.js:61:27: [maybe] Reading absent property x
+test/1k2014dragons/1943.js:61:37: [maybe] Reading absent property x
+test/1k2014dragons/1943.js:61:44: [maybe] Reading absent property x
+test/1k2014dragons/1943.js:61:58: [maybe] Reading absent property x
+test/1k2014dragons/1943.js:62:6: [maybe] Reading absent property y
+test/1k2014dragons/1943.js:62:20: [maybe] Reading absent property y
+test/1k2014dragons/1943.js:62:27: [maybe] Reading absent property y
+test/1k2014dragons/1943.js:62:37: [maybe] Reading absent property y
+test/1k2014dragons/1943.js:62:44: [maybe] Reading absent property y
+test/1k2014dragons/1943.js:62:58: [maybe] Reading absent property y
+test/1k2014dragons/1943.js:68:25: [maybe] Reading absent property r
+test/1k2014dragons/1943.js:68:27: [maybe] Reading absent property x
+test/1k2014dragons/1943.js:68:35: [maybe] Reading absent property y
+test/1k2014dragons/1943.js:68:66: [maybe] Reading absent property g
+test/1k2014dragons/1943.js:68:68: [maybe] Reading absent property x
+test/1k2014dragons/1943.js:68:76: [maybe] Reading absent property y
+test/1k2014dragons/1943.js:68:107: [maybe] Reading absent property b
+test/1k2014dragons/1943.js:68:109: [maybe] Reading absent property x
+test/1k2014dragons/1943.js:68:117: [maybe] Reading absent property y
+test/1k2014dragons/1943.js:69:27: [maybe] Reading absent property r
+test/1k2014dragons/1943.js:69:29: [maybe] Reading absent property x
+test/1k2014dragons/1943.js:69:37: [maybe] Reading absent property y
+test/1k2014dragons/1943.js:69:68: [maybe] Reading absent property g
+test/1k2014dragons/1943.js:69:70: [maybe] Reading absent property x
+test/1k2014dragons/1943.js:69:78: [maybe] Reading absent property y
+test/1k2014dragons/1943.js:69:109: [maybe] Reading absent property b
+test/1k2014dragons/1943.js:69:111: [maybe] Reading absent property x
+test/1k2014dragons/1943.js:69:119: [maybe] Reading absent property y
+test/1k2014dragons/1943.js:75:27: [maybe] Reading absent property width
+test/1k2014dragons/1943.js:75:55: [maybe] Reading absent property height
+test/1k2014dragons/1943.js:96:17: [maybe] Reading absent property width
+test/1k2014dragons/1943.js:96:45: [maybe] Reading absent property width
+test/1k2014dragons/1943.js:97:17: [maybe] Reading absent property height
+test/1k2014dragons/1943.js:97:46: [maybe] Reading absent property height
+test/1k2014dragons/1943.js:108:3: [maybe] Reading absent property width
+test/1k2014dragons/1943.js:110:18: [maybe] Reading absent property width
+test/1k2014dragons/1943.js:111:19: [maybe] Reading absent property height
+test/1k2014dragons/shims.js:10:9: [maybe] Reading absent property body
+test/1k2014dragons/shims.js:31:1: [maybe] Reading absent property body
+test/1k2014dragons/shims.js:34:1: [maybe] Reading absent property style
+test/1k2014dragons/shims.js:35:1: [maybe] Reading absent property style
+test/1k2014dragons/shims.js:37:9: [maybe] Reading absent property getContext
+test/1k2014dragons/shims.js:42:18: [maybe] Reading absent property getContext
+test/1k2014dragons/shims.js:42:46: [maybe] Reading absent property getContext
+test/1k2014dragons/shims.js:55:9: [maybe] Reading absent property body
+test/1k2014dragons/1943.js:12:16: [maybe] Converting undefined to string
+test/1k2014dragons/1943.js:12:16: [maybe] Converting undefined to string
+test/1k2014dragons/1943.js:12:16: [maybe] Converting undefined to string
+test/1k2014dragons/1943.js:12:25: [maybe] Converting primitive number to object
+test/1k2014dragons/1943.js:12:25: [maybe] The variable e has values with different types
+test/1k2014dragons/1943.js:12:37: [maybe] Converting primitive number to object
+test/1k2014dragons/1943.js:12:37: [maybe] The variable e has values with different types
+test/1k2014dragons/1943.js:12:49: [maybe] Converting primitive number to object
+test/1k2014dragons/1943.js:12:49: [maybe] The variable e has values with different types
+test/1k2014dragons/1943.js:13:13: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1943.js:13:13: [maybe] Converting primitive number to object
+test/1k2014dragons/1943.js:13:13: [maybe] The variable p has values with different types
+test/1k2014dragons/1943.js:13:34: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1943.js:13:34: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1943.js:13:58: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1943.js:13:58: [maybe] Converting primitive number to object
+test/1k2014dragons/1943.js:13:58: [maybe] The variable p has values with different types
+test/1k2014dragons/1943.js:13:79: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1943.js:13:79: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1943.js:14:2: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1943.js:14:4: [maybe] Converting primitive number to object
+test/1k2014dragons/1943.js:14:4: [maybe] The variable p has values with different types
+test/1k2014dragons/1943.js:14:9: [maybe] Converting primitive number to object
+test/1k2014dragons/1943.js:14:9: [maybe] The variable p has values with different types
+test/1k2014dragons/1943.js:14:20: [maybe] Converting primitive number to object
+test/1k2014dragons/1943.js:14:20: [maybe] The variable e has values with different types
+test/1k2014dragons/1943.js:14:28: [maybe] Converting primitive number to object
+test/1k2014dragons/1943.js:14:28: [maybe] The variable e has values with different types
+test/1k2014dragons/1943.js:14:36: [maybe] Converting primitive number to object
+test/1k2014dragons/1943.js:14:36: [maybe] The variable e has values with different types
+test/1k2014dragons/1943.js:22:8: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1943.js:22:8: [maybe] Converting primitive number to object
+test/1k2014dragons/1943.js:22:8: [maybe] The variable p has values with different types
+test/1k2014dragons/1943.js:22:30: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1943.js:22:30: [maybe] Converting primitive number to object
+test/1k2014dragons/1943.js:22:30: [maybe] The variable p has values with different types
+test/1k2014dragons/1943.js:22:53: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1943.js:22:53: [maybe] Converting primitive number to object
+test/1k2014dragons/1943.js:22:53: [maybe] The variable p has values with different types
+test/1k2014dragons/1943.js:22:68: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1943.js:22:68: [maybe] Converting primitive number to object
+test/1k2014dragons/1943.js:22:68: [maybe] The variable p has values with different types
+test/1k2014dragons/1943.js:25:8: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1943.js:25:8: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1943.js:25:10: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1943.js:25:10: [maybe] Converting primitive number to object
+test/1k2014dragons/1943.js:25:10: [maybe] The variable p has values with different types
+test/1k2014dragons/1943.js:25:19: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1943.js:25:19: [maybe] Converting primitive number to object
+test/1k2014dragons/1943.js:25:19: [maybe] The variable p has values with different types
+test/1k2014dragons/1943.js:26:16: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1943.js:26:16: [maybe] Converting primitive number to object
+test/1k2014dragons/1943.js:26:16: [maybe] The variable p has values with different types
+test/1k2014dragons/1943.js:26:28: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1943.js:26:28: [maybe] Converting primitive number to object
+test/1k2014dragons/1943.js:26:28: [maybe] The variable p has values with different types
+test/1k2014dragons/1943.js:41:61: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1943.js:41:76: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1943.js:48:3: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1943.js:53:5: [maybe] The variable o has values with different types
+test/1k2014dragons/1943.js:60:8: [maybe] The variable l has values with different types
+test/1k2014dragons/1943.js:61:6: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1943.js:61:6: [maybe] Converting primitive number to object
+test/1k2014dragons/1943.js:61:6: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1943.js:61:20: [maybe] Converting primitive number to object
+test/1k2014dragons/1943.js:61:20: [maybe] The variable l has values with different types
+test/1k2014dragons/1943.js:61:27: [maybe] Converting primitive number to object
+test/1k2014dragons/1943.js:61:27: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1943.js:61:37: [maybe] Converting primitive number to object
+test/1k2014dragons/1943.js:61:37: [maybe] The variable l has values with different types
+test/1k2014dragons/1943.js:61:44: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1943.js:61:44: [maybe] Converting primitive number to object
+test/1k2014dragons/1943.js:61:44: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1943.js:61:58: [maybe] Converting primitive number to object
+test/1k2014dragons/1943.js:61:58: [maybe] The variable l has values with different types
+test/1k2014dragons/1943.js:62:6: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1943.js:62:6: [maybe] Converting primitive number to object
+test/1k2014dragons/1943.js:62:6: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1943.js:62:20: [maybe] Converting primitive number to object
+test/1k2014dragons/1943.js:62:20: [maybe] The variable l has values with different types
+test/1k2014dragons/1943.js:62:27: [maybe] Converting primitive number to object
+test/1k2014dragons/1943.js:62:27: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1943.js:62:37: [maybe] Converting primitive number to object
+test/1k2014dragons/1943.js:62:37: [maybe] The variable l has values with different types
+test/1k2014dragons/1943.js:62:44: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1943.js:62:44: [maybe] Converting primitive number to object
+test/1k2014dragons/1943.js:62:44: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1943.js:62:58: [maybe] Converting primitive number to object
+test/1k2014dragons/1943.js:62:58: [maybe] The variable l has values with different types
+test/1k2014dragons/1943.js:63:8: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1943.js:68:16: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1943.js:68:16: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1943.js:68:25: [maybe] Converting primitive number to object
+test/1k2014dragons/1943.js:68:25: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1943.js:68:25: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1943.js:68:27: [maybe] Converting primitive number to object
+test/1k2014dragons/1943.js:68:27: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1943.js:68:35: [maybe] Converting primitive number to object
+test/1k2014dragons/1943.js:68:35: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1943.js:68:57: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1943.js:68:57: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1943.js:68:66: [maybe] Converting primitive number to object
+test/1k2014dragons/1943.js:68:66: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1943.js:68:66: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1943.js:68:68: [maybe] Converting primitive number to object
+test/1k2014dragons/1943.js:68:68: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1943.js:68:76: [maybe] Converting primitive number to object
+test/1k2014dragons/1943.js:68:76: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1943.js:68:98: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1943.js:68:98: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1943.js:68:107: [maybe] Converting primitive number to object
+test/1k2014dragons/1943.js:68:107: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1943.js:68:107: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1943.js:68:109: [maybe] Converting primitive number to object
+test/1k2014dragons/1943.js:68:109: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1943.js:68:117: [maybe] Converting primitive number to object
+test/1k2014dragons/1943.js:68:117: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1943.js:69:18: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1943.js:69:18: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1943.js:69:27: [maybe] Converting primitive number to object
+test/1k2014dragons/1943.js:69:27: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1943.js:69:27: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1943.js:69:29: [maybe] Converting primitive number to object
+test/1k2014dragons/1943.js:69:29: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1943.js:69:37: [maybe] Converting primitive number to object
+test/1k2014dragons/1943.js:69:37: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1943.js:69:59: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1943.js:69:59: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1943.js:69:68: [maybe] Converting primitive number to object
+test/1k2014dragons/1943.js:69:68: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1943.js:69:68: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1943.js:69:70: [maybe] Converting primitive number to object
+test/1k2014dragons/1943.js:69:70: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1943.js:69:78: [maybe] Converting primitive number to object
+test/1k2014dragons/1943.js:69:78: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1943.js:69:100: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1943.js:69:100: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1943.js:69:109: [maybe] Converting primitive number to object
+test/1k2014dragons/1943.js:69:109: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1943.js:69:109: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1943.js:69:111: [maybe] Converting primitive number to object
+test/1k2014dragons/1943.js:69:111: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1943.js:69:119: [maybe] Converting primitive number to object
+test/1k2014dragons/1943.js:69:119: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1943.js:70:11: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1943.js:75:7: [maybe] The variable v has values with different types
+test/1k2014dragons/1943.js:75:27: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1943.js:75:27: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1943.js:75:55: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1943.js:75:55: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1943.js:78:6: [maybe] The variable q has values with different types
+test/1k2014dragons/1943.js:79:8: [maybe] The variable q has values with different types
+test/1k2014dragons/1943.js:84:5: [maybe] The variable v has values with different types
+test/1k2014dragons/1943.js:85:10: [maybe] The variable v has values with different types
+test/1k2014dragons/1943.js:86:7: [maybe] The variable v has values with different types
+test/1k2014dragons/1943.js:96:17: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1943.js:96:17: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1943.js:96:45: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1943.js:96:45: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1943.js:97:17: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1943.js:97:17: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1943.js:97:46: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1943.js:97:46: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1943.js:105:5: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1943.js:105:25: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1943.js:106:7: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1943.js:108:3: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1943.js:112:8: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1943.js:112:8: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1943.js:113:22: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1943.js:113:22: [maybe] Reading absent property (computed name)
+test/1k2014dragons/shims.js:9:9: [maybe] Reading absent property (computed name)
+test/1k2014dragons/shims.js,test/1k2014dragons/1943.js: [maybe] Uncaught exception, constructed at [test/1k2014dragons/1943.js:12:25, test/1k2014dragons/1943.js:14:2, test/1k2014dragons/1943.js:22:8, test/1k2014dragons/1943.js:25:8, test/1k2014dragons/1943.js:48:3, test/1k2014dragons/1943.js:61:6, test/1k2014dragons/1943.js:61:27, test/1k2014dragons/1943.js:61:44, test/1k2014dragons/1943.js:62:6, test/1k2014dragons/1943.js:62:27, test/1k2014dragons/1943.js:62:44, test/1k2014dragons/1943.js:68:16, test/1k2014dragons/1943.js:68:25, test/1k2014dragons/1943.js:68:27, test/1k2014dragons/1943.js:68:35, test/1k2014dragons/1943.js:68:57, test/1k2014dragons/1943.js:68:66, test/1k2014dragons/1943.js:68:68, test/1k2014dragons/1943.js:68:76, test/1k2014dragons/1943.js:68:98, test/1k2014dragons/1943.js:68:107, test/1k2014dragons/1943.js:68:109, test/1k2014dragons/1943.js:68:117, test/1k2014dragons/1943.js:69:18, test/1k2014dragons/1943.js:69:27, test/1k2014dragons/1943.js:69:29, test/1k2014dragons/1943.js:69:37, test/1k2014dragons/1943.js:69:59, test/1k2014dragons/1943.js:69:68, test/1k2014dragons/1943.js:69:70, test/1k2014dragons/1943.js:69:78, test/1k2014dragons/1943.js:69:100, test/1k2014dragons/1943.js:69:109, test/1k2014dragons/1943.js:69:111, test/1k2014dragons/1943.js:69:119, test/1k2014dragons/1943.js:84:8, test/1k2014dragons/1943.js:112:8, test/1k2014dragons/1943.js:113:22, test/1k2014dragons/shims.js:31:1, test/1k2014dragons/shims.js:34:1, test/1k2014dragons/shims.js:35:1, test/1k2014dragons/shims.js:37:9, test/1k2014dragons/shims.js:42:18, test/1k2014dragons/shims.js:42:46, test/1k2014dragons/shims.js:55:9]

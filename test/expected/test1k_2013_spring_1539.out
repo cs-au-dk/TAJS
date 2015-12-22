@@ -1,0 +1,42 @@
+test/1k2013spring/1539.js:62:7: [definite] ReferenceError, reading absent variable console
+test/1k2013spring/1539.js:23:5: [definite] The variable start is never used
+test/1k2013spring/1539.js:62:7: [definite] Unreachable code
+test/1k2013spring/shim.js:6:5: [definite] The variable b is never used
+test/1k2013spring/shim.js:8:5: [definite] The variable a is never used
+test/1k2013spring/1539.js:13:11: [maybe] ReferenceError, reading absent variable getContext
+test/1k2013spring/1539.js:29:3: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1539.js:29:16: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1539.js:41:11: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1539.js:41:33: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/shim.js:8:9: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/shim.js:8:9: [maybe] TypeError, call to non-function
+test/1k2013spring/shim.js:9:1: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1539.js:29:16: [maybe] Reading absent property width
+test/1k2013spring/1539.js:31:26: [maybe] Reading absent property width
+test/1k2013spring/1539.js:31:40: [maybe] Reading absent property height
+test/1k2013spring/1539.js:67:14: [maybe] Reading absent property width
+test/1k2013spring/1539.js:68:14: [maybe] Reading absent property height
+test/1k2013spring/1539.js:70:24: [maybe] Reading absent property width
+test/1k2013spring/shim.js:6:9: [maybe] Reading absent property body
+test/1k2013spring/shim.js:8:9: [maybe] Reading absent property getContext
+test/1k2013spring/shim.js:9:1: [maybe] Reading absent property body
+test/1k2013spring/1539.js:31:3: [maybe] Conversion from string to number yields NaN
+test/1k2013spring/1539.js:31:3: [maybe] Conversion to number yields NaN
+test/1k2013spring/1539.js:41:11: [maybe] Reading absent property (computed name)
+test/1k2013spring/1539.js:41:33: [maybe] Reading absent property (computed name)
+test/1k2013spring/1539.js:50:5: [maybe] Converting undefined to string
+test/1k2013spring/1539.js:50:20: [maybe] Reading absent property (computed name)
+test/1k2013spring/1539.js:51:20: [maybe] Reading absent property (computed name)
+test/1k2013spring/1539.js:67:14: [maybe] Conversion from string to number yields NaN
+test/1k2013spring/1539.js:67:14: [maybe] Conversion to number yields NaN
+test/1k2013spring/1539.js:68:14: [maybe] Conversion from string to number yields NaN
+test/1k2013spring/1539.js:68:14: [maybe] Conversion to number yields NaN
+test/1k2013spring/1539.js:70:24: [maybe] Conversion from string to number yields NaN
+test/1k2013spring/1539.js:70:24: [maybe] Conversion to number yields NaN
+test/1k2013spring/1539.js:79:18: [maybe] Converting object to number
+test/1k2013spring/1539.js:124:23: [maybe] Reading absent property (computed name)
+test/1k2013spring/shim.js:7:9: [maybe] Reading absent property (computed name)
+test/1k2013spring/shim.js,test/1k2013spring/1539.js: [maybe] Uncaught exception, constructed at [test/1k2013spring/1539.js:10:1, test/1k2013spring/1539.js:13:11, test/1k2013spring/1539.js:29:3, test/1k2013spring/1539.js:29:16, test/1k2013spring/1539.js:41:11, test/1k2013spring/1539.js:41:33, test/1k2013spring/1539.js:62:7, test/1k2013spring/shim.js:8:9, test/1k2013spring/shim.js:9:1]
+test/1k2013spring/1539.js:79:31: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/1k2013spring/1539.js:84:12: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/1k2013spring/1539.js:101:42: [info] 'this' refers to multiple abstract objects, which may cause loss of precision

@@ -436,7 +436,7 @@ public class CanvasRenderingContext2D {
                 }
                 if (bad) {
                     String msg = "TypeError, non-HTMLImageElement or non-HTMLCanvasElement as argument to drawImage";
-                    c.getMonitoring().addMessage(c.getCurrentNode(), Message.Severity.HIGH, msg);
+                    c.getMonitoring().addMessage(c.getNode(), Message.Severity.HIGH, msg);
                 }
 
                 Conversion.toNumber(NativeFunctions.readParameter(call, s, 1), c);
@@ -464,7 +464,7 @@ public class CanvasRenderingContext2D {
 
                 if (dx.isNaN() || dy.isNaN() || dx.isMaybeInf() || dy.isMaybeInf()) {
                     final String message = "TypeError, inf or NaN as arguments to CanvasRenderingContext2D.putImageData";
-                    c.getMonitoring().addMessage(c.getCurrentNode(), Message.Severity.HIGH, message);
+                    c.getMonitoring().addMessage(c.getNode(), Message.Severity.HIGH, message);
                 }
 
                 return Value.makeUndef();

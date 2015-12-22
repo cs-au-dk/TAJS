@@ -170,7 +170,7 @@ public class DOMFunctions {
      */
     public static void evaluateSetter(HostObject nativeObject, ObjectLabel label, String property, Value v, Solver.SolverInterface c) {
         // State
-        State s = c.getCurrentState();
+        State s = c.getState();
 
         // The window.onload / window.onunload properties
         if (nativeObject == DOMWindow.WINDOW.getHostObject()) {

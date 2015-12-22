@@ -1,6 +1,6 @@
-fg2: function()
+fg2: <main> function()
   block 0: [entry]
-    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0171.js:1:1)
+    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0171.js)
     ->[block 1]
   block 1:
     node 1: read-variable['Array',v4,v3] (test/flowgraphbuilder/flowgraph_builder0171.js:1:9)
@@ -50,15 +50,15 @@ fg2: function()
     node 31(~12): if[v6](true-block:5,false-block:9) (test/flowgraphbuilder/flowgraph_builder0171.js:2:13)
     ->[block 5,block 9]
   block 9: [exit-ordinary]
-    node 32: return[v1] (test/flowgraphbuilder/flowgraph_builder0171.js:1:1)
+    node 32: return[v1] (test/flowgraphbuilder/flowgraph_builder0171.js)
     ->[]
   block 10: [exit-exceptional]
-    node 33: exceptional-return (test/flowgraphbuilder/flowgraph_builder0171.js:1:1)
+    node 33: exceptional-return (test/flowgraphbuilder/flowgraph_builder0171.js)
     ->[]
 
 fg2: <main> function()
   block 0: [entry]
-    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0171.js:1:1)
+    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0171.js)
     ->[block 1]
   block 1:
     node 1: read-variable['Array',v4,v3] (test/flowgraphbuilder/flowgraph_builder0171.js:1:9)
@@ -113,9 +113,9 @@ fg2: <main> function()
     node 20: call[v15,v16,v17,-]* (test/flowgraphbuilder/flowgraph_builder0171.js:3:5)
     ->[block 7]
   block 9: [exit-ordinary]
-    node 32: return[v1] (test/flowgraphbuilder/flowgraph_builder0171.js:1:1)
+    node 32: return[v1] (test/flowgraphbuilder/flowgraph_builder0171.js)
     ->[]
   block 10: [exit-exceptional]
-    node 33: exceptional-return (test/flowgraphbuilder/flowgraph_builder0171.js:1:1)
+    node 33: exceptional-return (test/flowgraphbuilder/flowgraph_builder0171.js)
     ->[]
 

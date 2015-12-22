@@ -1,6 +1,7 @@
 package dk.brics.tajs.test;
 
 import dk.brics.tajs.options.Options;
+import dk.brics.tajs.util.AnalysisLimitationException;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -16,6 +17,7 @@ public class TestApps {
     public void init() {
         Options.reset();
         Options.get().enableTest();
+        Options.get().enableUnevalizer();
     }
 
     @Test
@@ -36,7 +38,7 @@ public class TestApps {
         Misc.checkSystemOutput();
     }
 
-    @Test
+    @Test(expected = AnalysisLimitationException.class /* GitHub #191 */)
     public void apps_mceditor_simple() throws Exception {
         Misc.init();
         Misc.captureSystemOutput();
@@ -45,7 +47,7 @@ public class TestApps {
         Misc.checkSystemOutput();
     }
 
-    @Test
+    @Test(expected = AnalysisLimitationException.class /* GitHub #191 */)
     public void apps_mceditor_full() throws Exception {
         Misc.init();
         Misc.captureSystemOutput();
@@ -63,7 +65,7 @@ public class TestApps {
         Misc.checkSystemOutput();
     }
 
-    @Test
+    @Test(expected = StackOverflowError.class /* GitHub #146 */)
     public void apps_paint() throws Exception {
         Misc.init();
         Misc.captureSystemOutput();

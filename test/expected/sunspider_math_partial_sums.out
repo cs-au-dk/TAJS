@@ -1,1 +1,2 @@
+test/sunspider/math-partial-sums.js:40:26: [maybe] Converting object to number
 test/sunspider/math-partial-sums.js:42:1: [info] Abstract value: UInt

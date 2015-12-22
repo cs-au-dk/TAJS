@@ -1,0 +1,14 @@
+test/1k2013spring/shim.js:6:5: [definite] The variable b is never used
+test/1k2013spring/shim.js:8:5: [definite] The variable a is never used
+test/1k2013spring/1307.js:2:11: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1307.js:2:11: [maybe] TypeError, call to non-function
+test/1k2013spring/shim.js:8:9: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/shim.js:8:9: [maybe] TypeError, call to non-function
+test/1k2013spring/shim.js:9:1: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1307.js:2:11: [maybe] Reading absent property getContext
+test/1k2013spring/shim.js:6:9: [maybe] Reading absent property body
+test/1k2013spring/shim.js:8:9: [maybe] Reading absent property getContext
+test/1k2013spring/shim.js:9:1: [maybe] Reading absent property body
+test/1k2013spring/1307.js:1:14: [maybe] Reading absent property (computed name)
+test/1k2013spring/shim.js:7:9: [maybe] Reading absent property (computed name)
+test/1k2013spring/shim.js,test/1k2013spring/1307.js: [maybe] Uncaught exception, constructed at [test/1k2013spring/1307.js:2:11, test/1k2013spring/shim.js:8:9, test/1k2013spring/shim.js:9:1]

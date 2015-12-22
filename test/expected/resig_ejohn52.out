@@ -1,0 +1,3 @@
+test/resig/ejohn52.js:5:5: [info] Abstract value: UInt
+test/resig/ejohn52.js:8:5: [info] Abstract value: UInt
+test/resig/ejohn52.js:9:5: [info] Abstract value: UInt

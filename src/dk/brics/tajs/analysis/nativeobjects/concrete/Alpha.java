@@ -21,7 +21,7 @@ public class Alpha {
     public static Value createNewArrayValue(ConcreteArray array, State state, AbstractNode sourceNode) {
         final Map<String, Value> map = newMap();
         map.put("<CONCRETE>", Value.makeStr(array.toSourceCode()));
-        ObjectLabel label = new ObjectLabel(sourceNode, ObjectLabel.Kind.ARRAY, new HeapContext(null, map));
+        ObjectLabel label = new ObjectLabel(sourceNode, ObjectLabel.Kind.ARRAY, HeapContext.make(null, map));
         state.newObject(label);
         state.writeInternalPrototype(label, Value.makeObject(InitialStateBuilder.ARRAY_PROTOTYPE));
         Value length = Value.makeNum(array.getLength());

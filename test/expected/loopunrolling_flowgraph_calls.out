@@ -1,6 +1,6 @@
 <main> function()
   block 0: [entry]
-    node 0: constant[undefined,v1] (out/temp-sources/loopunrolling_flowgraph_calls:1:1)
+    node 0: constant[undefined,v1] (out/temp-sources/loopunrolling_flowgraph_calls)
     ->[block 1]
   block 1:
     node 1: read-variable['PRE',v3,v2] (out/temp-sources/loopunrolling_flowgraph_calls:1:1)
@@ -51,15 +51,15 @@
     node 16: end-loop[v4]* (out/temp-sources/loopunrolling_flowgraph_calls:1:8)
     ->[block 18]
   block 17: [exit-ordinary]
-    node 17: return[v1] (out/temp-sources/loopunrolling_flowgraph_calls:1:1)
+    node 17: return[v1] (out/temp-sources/loopunrolling_flowgraph_calls)
     ->[]
   block 18: [exit-exceptional]
-    node 18: exceptional-return (out/temp-sources/loopunrolling_flowgraph_calls:1:1)
+    node 18: exceptional-return (out/temp-sources/loopunrolling_flowgraph_calls)
     ->[]
 
 <main> function()
   block 0: [entry]
-    node 0: constant[undefined,v1] (out/temp-sources/loopunrolling_flowgraph_calls:1:1)
+    node 0: constant[undefined,v1] (out/temp-sources/loopunrolling_flowgraph_calls)
     ->[block 1]
   block 1:
     node 1: read-variable['PRE',v3,v2] (out/temp-sources/loopunrolling_flowgraph_calls:1:1)
@@ -110,12 +110,12 @@
     node 16: end-loop[v4]* (out/temp-sources/loopunrolling_flowgraph_calls:1:8)
     ->[block 18]
   block 17: [exit-ordinary]
-    node 17: return[v1] (out/temp-sources/loopunrolling_flowgraph_calls:1:1)
+    node 17: return[v1] (out/temp-sources/loopunrolling_flowgraph_calls)
     ->[]
   block 18: [exit-exceptional]
-    node 18: exceptional-return (out/temp-sources/loopunrolling_flowgraph_calls:1:1)
+    node 18: exceptional-return (out/temp-sources/loopunrolling_flowgraph_calls)
     ->[]
 
 out/temp-sources/loopunrolling_flowgraph_calls:1:1: [definite] ReferenceError, reading absent variable PRE
 out/temp-sources/loopunrolling_flowgraph_calls:1:1: [definite] Unreachable code
-out/temp-sources/loopunrolling_flowgraph_calls:1:1: [maybe] Uncaught exception, constructed at [out/temp-sources/loopunrolling_flowgraph_calls:1:1]
+out/temp-sources/loopunrolling_flowgraph_calls: [maybe] Uncaught exception, constructed at [out/temp-sources/loopunrolling_flowgraph_calls:1:1]

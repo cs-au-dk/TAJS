@@ -1,0 +1,4 @@
+test/micro/arraysort1.js:4:52: [maybe] Conversion to number yields NaN
+test/micro/arraysort1.js:5:1: [info] Abstract object: {0:Undef|UInt,1:Undef|UInt,2:Undef|UInt,length:3.0,[[DefaultArray]]=Undef|UInt|absent,[[Prototype]]=[@Array.prototype[native]]}
+test/micro/arraysort1.js:6:1: [info] Abstract value: UInt
+test/micro/arraysort1.js:7:1: [info] Abstract value: UInt

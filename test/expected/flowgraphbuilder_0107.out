@@ -1,6 +1,6 @@
-fg2: function()
+fg2: <main> function()
   block 0: [entry]
-    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0107.js:1:1)
+    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0107.js)
     ->[block 1]
   block 1:
     node 1: read-variable['Math',v4,-] (test/flowgraphbuilder/flowgraph_builder0107.js:1:5)
@@ -27,12 +27,12 @@ fg2: function()
     node 12: <variable-non-null-undef>['y']* (test/flowgraphbuilder/flowgraph_builder0107.js:6:1)
     ->[block 7]
   block 7: [exit-ordinary]
-    node 13: return[v1] (test/flowgraphbuilder/flowgraph_builder0107.js:1:1)
+    node 13: return[v1] (test/flowgraphbuilder/flowgraph_builder0107.js)
     ->[]
   block 8: [exit-exceptional]
-    node 14: exceptional-return (test/flowgraphbuilder/flowgraph_builder0107.js:1:1)
+    node 14: exceptional-return (test/flowgraphbuilder/flowgraph_builder0107.js)
     ->[]
 
 test/flowgraphbuilder/flowgraph_builder0107.js:6:1: [definite] Reading absent property a
 test/flowgraphbuilder/flowgraph_builder0107.js:6:1: [maybe] TypeError, accessing property of null/undefined
-test/flowgraphbuilder/flowgraph_builder0107.js:1:1: [maybe] Uncaught exception, constructed at [test/flowgraphbuilder/flowgraph_builder0107.js:6:1]
+test/flowgraphbuilder/flowgraph_builder0107.js: [maybe] Uncaught exception, constructed at [test/flowgraphbuilder/flowgraph_builder0107.js:6:1]

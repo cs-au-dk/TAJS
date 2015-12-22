@@ -1,0 +1,14 @@
+test/micro/toString3.js:20:5: [definite] The variable q is never used
+test/micro/toString3.js:9:16: [maybe] Reading absent property dyt
+test/micro/toString3.js:17:16: [maybe] Reading absent property foo
+test/micro/toString3.js:5:3: [maybe] Converting object to string
+test/micro/toString3.js:16:1: [maybe] Converting object to string
+test/micro/toString3.js:18:16: [maybe] Reading absent property (computed name)
+test/micro/toString3.js:20:9: [maybe] Converting object to string
+test/micro/toString3.js:20:9: [maybe] Reading absent property (computed name)
+test/micro/toString3.js:7:3: [info] Abstract value: 42.0
+test/micro/toString3.js:9:1: [info] Abstract value: Undef|"foo"
+test/micro/toString3.js:17:1: [info] Abstract value: Undef|true
+test/micro/toString3.js:18:1: [info] Abstract value: Undef|true
+test/micro/toString3.js:16:1: [info] Writing to unknown property that may cause loss of precision
+test/micro/toString3.js:20:9: [info] Reading from unknown property that may cause loss of precision

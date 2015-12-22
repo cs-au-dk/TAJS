@@ -110,17 +110,16 @@ public class TestValue {
 		Misc.init();
 		Misc.captureSystemOutput();
 
-		FlowGraph fg = new FlowGraph();
 		SourceLocation loc = new SourceLocation(117, -1, "foo.js");
 		List<String> args = Collections.emptyList();
 		Function f = new Function("foo", args, null, loc);
+		FlowGraph fg = new FlowGraph(f);
 		BasicBlock b = new BasicBlock(f);
 		AbstractNode n = new NopNode(loc);
 		b.addNode(n);
 		fg.addBlock(b);
 		f.complete();
 		fg.addFunction(f);
-		fg.setMain(f);
 		f.setMaxRegister(1000); // Ok for testing purposes
 
 		Value vBottom = Value.makeNone();

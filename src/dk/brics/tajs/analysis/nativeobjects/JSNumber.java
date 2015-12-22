@@ -90,7 +90,7 @@ public class JSNumber {
                 }
 
                 Value base = state.readInternalValue(state.readThisObjects());
-                base = UnknownValueResolver.getRealValue(base, c.getCurrentState());
+                base = UnknownValueResolver.getRealValue(base, c.getState());
 
                 boolean definitely_rangeerror = false;
                 boolean maybe_rangeerror = false;

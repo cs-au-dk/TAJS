@@ -2,7 +2,7 @@ test/10k/earth_night_lights.html:95:13: [definite] The conditional expression is
 test/10k/earth_night_lights.html:16:29: [definite] The variable mr is never used
 test/10k/earth_night_lights.html:17:145: [definite] The variable tout is never used
 test/10k/earth_night_lights.html:17:123: [maybe] RangeError, invalid value of array length
-test/10k/earth_night_lights.html:15:13: [maybe] Uncaught exception, constructed at [test/10k/earth_night_lights.html:17:123]
+test/10k/earth_night_lights.html: [maybe] Uncaught exception, constructed at [test/10k/earth_night_lights.html:17:123]
 test/10k/earth_night_lights.html:35:35: [maybe] Reading absent property (computed name)
 test/10k/earth_night_lights.html:36:25: [maybe] Conversion to number yields NaN
 test/10k/earth_night_lights.html:39:24: [maybe] Reading absent property (computed name)

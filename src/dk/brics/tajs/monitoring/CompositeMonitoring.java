@@ -224,7 +224,7 @@ public class CompositeMonitoring implements IAnalysisMonitoring {
     }
 
     @Override
-    public void visitPropertyRead(Node n, Set<ObjectLabel> objs, Str propertystr, State state, boolean check_unknown) {
+    public void visitPropertyRead(AbstractNode n, Set<ObjectLabel> objs, Str propertystr, State state, boolean check_unknown) {
         m1.visitPropertyRead(n, objs, propertystr, state, check_unknown);
         m2.visitPropertyRead(n, objs, propertystr, state, check_unknown);
     }

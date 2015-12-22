@@ -1,6 +1,6 @@
-fg2: function()
+fg2: <main> function()
   block 0: [entry]
-    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder_jump_return_0005.js:1:1)
+    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder_jump_return_0005.js)
     node 1: function-decl[function f(),-] (test/flowgraphbuilder/flowgraph_builder_jump_return_0005.js:1:1)
     ->[block 1]
   block 1:
@@ -31,10 +31,10 @@ fg2: function()
     node 12: call[v10,v11,v12,-]* (test/flowgraphbuilder/flowgraph_builder_jump_return_0005.js:20:1)
     ->[block 9]
   block 9: [exit-ordinary]
-    node 13: return[v1] (test/flowgraphbuilder/flowgraph_builder_jump_return_0005.js:1:1)
+    node 13: return[v1] (test/flowgraphbuilder/flowgraph_builder_jump_return_0005.js)
     ->[]
   block 10: [exit-exceptional]
-    node 14: exceptional-return (test/flowgraphbuilder/flowgraph_builder_jump_return_0005.js:1:1)
+    node 14: exceptional-return (test/flowgraphbuilder/flowgraph_builder_jump_return_0005.js)
     ->[]
 function f()
   block 11: [entry]
@@ -134,10 +134,10 @@ function f()
     node 60: end-with* (test/flowgraphbuilder/flowgraph_builder_jump_return_0005.js:11:11)
     ->[block 36]
   block 36: [exit-ordinary]
-    node 61: return[v1] (test/flowgraphbuilder/flowgraph_builder_jump_return_0005.js:15:1)
+    node 61: return[v1] (test/flowgraphbuilder/flowgraph_builder_jump_return_0005.js:1:1)
     ->[]
   block 37: [exit-exceptional]
-    node 62: exceptional-return (test/flowgraphbuilder/flowgraph_builder_jump_return_0005.js:15:1)
+    node 62: exceptional-return (test/flowgraphbuilder/flowgraph_builder_jump_return_0005.js:1:1)
     ->[]
 
 test/flowgraphbuilder/flowgraph_builder_jump_return_0005.js:10:13: [definite] ReferenceError, reading absent variable p

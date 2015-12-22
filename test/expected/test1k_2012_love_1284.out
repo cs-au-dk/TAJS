@@ -1,0 +1,58 @@
+test/1k2012love/1284.js:100:5: [definite] Too many parameters to function CanvasRenderingContext2D.prototype.beginPath
+test/1k2012love/1284.js:8:13: [definite] The variable c is never used
+test/1k2012love/1284.js:8:13: [definite] The variable d is never used
+test/1k2012love/1284.js:8:13: [definite] The variable e is never used
+test/1k2012love/1284.js:14:3: [definite] The variable e is never used
+test/1k2012love/1284.js:95:10: [definite] The variable d is never used
+test/1k2012love/1284.js:95:10: [definite] The variable e is never used
+test/1k2012love/shim.js:6:5: [definite] The variable b is never used
+test/1k2012love/1284.js:20:5: [maybe] TypeError, call to non-function
+test/1k2012love/1284.js:76:7: [maybe] ReferenceError, reading absent variable t
+test/1k2012love/1284.js:78:7: [maybe] ReferenceError, reading absent variable t
+test/1k2012love/1284.js:83:11: [maybe] ReferenceError, reading absent variable t
+test/1k2012love/1284.js:84:11: [maybe] ReferenceError, reading absent variable t
+test/1k2012love/1284.js:95:35: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1284.js:95:40: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1284.js:98:7: [maybe] ReferenceError, reading absent variable t
+test/1k2012love/1284.js:98:16: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1284.js:112:5: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.moveTo
+test/1k2012love/1284.js:113:5: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.lineTo
+test/1k2012love/1284.js:114:5: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.lineTo
+test/1k2012love/1284.js:115:5: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.lineTo
+test/1k2012love/shim.js:8:9: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/shim.js:8:9: [maybe] TypeError, call to non-function
+test/1k2012love/shim.js:9:1: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/shim.js:6:9: [maybe] Reading absent property body
+test/1k2012love/shim.js:8:9: [maybe] Reading absent property getContext
+test/1k2012love/shim.js:9:1: [maybe] Reading absent property body
+test/1k2012love/1284.js:15:10: [maybe] Reading absent property (computed name)
+test/1k2012love/1284.js:23:7: [maybe] Conversion to number yields NaN
+test/1k2012love/1284.js:23:7: [maybe] Reading absent property (computed name)
+test/1k2012love/1284.js:23:18: [maybe] Conversion to number yields NaN
+test/1k2012love/1284.js:23:25: [maybe] Conversion to number yields NaN
+test/1k2012love/1284.js:23:25: [maybe] Conversion to number yields NaN
+test/1k2012love/1284.js:23:25: [maybe] Conversion to number yields NaN
+test/1k2012love/1284.js:23:25: [maybe] Conversion to number yields NaN
+test/1k2012love/1284.js:23:25: [maybe] Conversion to number yields NaN
+test/1k2012love/1284.js:23:28: [maybe] Reading absent property (computed name)
+test/1k2012love/1284.js:23:84: [maybe] Reading absent property (computed name)
+test/1k2012love/1284.js:86:19: [maybe] Conversion to number yields NaN
+test/1k2012love/1284.js:86:32: [maybe] Conversion to number yields NaN
+test/1k2012love/1284.js:100:19: [maybe] Conversion to number yields NaN
+test/1k2012love/1284.js:100:19: [maybe] Reading absent property (computed name)
+test/1k2012love/1284.js:100:24: [maybe] Reading absent property (computed name)
+test/1k2012love/1284.js:101:19: [maybe] Conversion to number yields NaN
+test/1k2012love/1284.js:101:19: [maybe] Reading absent property (computed name)
+test/1k2012love/1284.js:101:24: [maybe] Reading absent property (computed name)
+test/1k2012love/1284.js:106:42: [maybe] Conversion to number yields NaN
+test/1k2012love/1284.js:106:46: [maybe] Reading absent property (computed name)
+test/1k2012love/1284.js:112:5: [maybe] Conversion to number yields NaN
+test/1k2012love/1284.js:112:22: [maybe] Reading absent property (computed name)
+test/1k2012love/1284.js:113:5: [maybe] Conversion to number yields NaN
+test/1k2012love/1284.js:113:22: [maybe] Reading absent property (computed name)
+test/1k2012love/1284.js:114:5: [maybe] Conversion to number yields NaN
+test/1k2012love/1284.js:114:22: [maybe] Reading absent property (computed name)
+test/1k2012love/1284.js:115:5: [maybe] Conversion to number yields NaN
+test/1k2012love/1284.js:115:22: [maybe] Reading absent property (computed name)
+test/1k2012love/shim.js:7:9: [maybe] Reading absent property (computed name)
+test/1k2012love/shim.js,test/1k2012love/1284.js: [maybe] Uncaught exception, constructed at [test/1k2012love/1284.js:20:5, test/1k2012love/1284.js:76:7, test/1k2012love/1284.js:78:7, test/1k2012love/1284.js:83:11, test/1k2012love/1284.js:84:11, test/1k2012love/1284.js:95:35, test/1k2012love/1284.js:95:40, test/1k2012love/1284.js:98:7, test/1k2012love/1284.js:98:16, test/1k2012love/shim.js:8:9, test/1k2012love/shim.js:9:1]

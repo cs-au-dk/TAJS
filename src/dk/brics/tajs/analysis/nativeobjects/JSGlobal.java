@@ -57,7 +57,6 @@ import dk.brics.tajs.solver.NodeAndContext;
 import dk.brics.tajs.unevalizer.Unevalizer;
 import dk.brics.tajs.unevalizer.UnevalizerLimitations;
 import dk.brics.tajs.util.AnalysisException;
-import dk.brics.tajs.util.Pair;
 import org.apache.log4j.Logger;
 
 import java.io.File;
@@ -125,7 +124,7 @@ public class JSGlobal {
                 if (evalValue.isStrJSON()) {
                     return DOMFunctions.makeAnyJSONObject(state).join(evalValue.restrictToNotStr());
                 } else if (Options.get().isUnevalizerEnabled()) {
-                    CallNode evalCall = (CallNode) call.getSourceNode();
+                    CallNode evalCall = (CallNode) call.getSourceNode(); // FIXME: may not be CallNode?
                     FlowGraph currentFg = c.getFlowGraph();
                     boolean ignoreResult = evalCall.getResultRegister() == AbstractNode.NO_VALUE;
                     String var = ignoreResult ? null : UnevalTools.gensym(); // Do we need the value of the eval call after?
@@ -233,7 +232,7 @@ public class JSGlobal {
             case TAJS_DUMPVALUE: {
                 NativeFunctions.expectParameters(nativeobject, call, c, 1, 1);
                 Value x = NativeFunctions.readParameter(call, state, 0); // to avoid recover: call.getArg(0);
-                c.getMonitoring().addMessageInfo(c.getCurrentNode(), Severity.HIGH, "Abstract value: " + x.restrictToNotModified() /*+ " (context: " + c.getCurrentContext() + ")"*/);
+                c.getMonitoring().addMessageInfo(c.getNode(), Severity.HIGH, "Abstract value: " + x.restrictToNotModified() /*+ " (context: " + c.getCurrentContext() + ")"*/);
                 return Value.makeUndef();
             }
 
@@ -253,20 +252,20 @@ public class JSGlobal {
                     }
                 }
 
-                c.getMonitoring().addMessageInfo(c.getCurrentNode(), Severity.HIGH, "Prototype: " + sb);
+                c.getMonitoring().addMessageInfo(c.getNode(), Severity.HIGH, "Prototype: " + sb);
                 return Value.makeUndef();
             }
 
             case TAJS_DUMPOBJECT: {
                 NativeFunctions.expectParameters(nativeobject, call, c, 1, 1);
                 Value x = NativeFunctions.readParameter(call, state, 0);
-                c.getMonitoring().addMessageInfo(c.getCurrentNode(), Severity.HIGH, "Abstract object: " + state.printObject(x) /*+ " (context: " + c.getCurrentContext() + ")"*/);
+                c.getMonitoring().addMessageInfo(c.getNode(), Severity.HIGH, "Abstract object: " + state.printObject(x) /*+ " (context: " + c.getCurrentContext() + ")"*/);
                 return Value.makeUndef();
             }
 
             case TAJS_DUMPSTATE: {
                 NativeFunctions.expectParameters(nativeobject, call, c, 0, 0);
-                c.getMonitoring().addMessageInfo(c.getCurrentNode(), Severity.HIGH, "Abstract state:\n" + state /*+ " (context: " + c.getCurrentContext() + ")"*/);
+                c.getMonitoring().addMessageInfo(c.getNode(), Severity.HIGH, "Abstract state:\n" + state /*+ " (context: " + c.getCurrentContext() + ")"*/);
             /*
             try {
                 File outdir = new File("out");
@@ -285,7 +284,7 @@ public class JSGlobal {
 
             case TAJS_DUMPMODIFIEDSTATE: {
                 NativeFunctions.expectParameters(nativeobject, call, c, 0, 0);
-                c.getMonitoring().addMessageInfo(c.getCurrentNode(), Severity.HIGH, "Abstract state (modified parts):" /*+ " (context: " + c.getCurrentContext() + ")"*/ + state.toStringModified());
+                c.getMonitoring().addMessageInfo(c.getNode(), Severity.HIGH, "Abstract state (modified parts):" /*+ " (context: " + c.getCurrentContext() + ")"*/ + state.toStringModified());
                 return Value.makeUndef();
             }
 
@@ -294,28 +293,28 @@ public class JSGlobal {
                 Value x = NativeFunctions.readParameter(call, state, 0);
                 Value p = Conversion.toString(NativeFunctions.readParameter(call, state, 1), c);
                 if (!p.isMaybeSingleStr())
-                    c.getMonitoring().addMessageInfo(c.getCurrentNode(), Severity.HIGH, "Calling dumpAttributes with non-constant property name");
+                    c.getMonitoring().addMessageInfo(c.getNode(), Severity.HIGH, "Calling dumpAttributes with non-constant property name");
                 else {
                     String propertyname = p.getStr();
                     Value v = state.readPropertyDirect(x.getObjectLabels(), propertyname);
-                    c.getMonitoring().addMessageInfo(c.getCurrentNode(), Severity.HIGH, "Property attributes: " + v.printAttributes() /*+ " (context: " + c.getCurrentContext() + ")"*/);
+                    c.getMonitoring().addMessageInfo(c.getNode(), Severity.HIGH, "Property attributes: " + v.printAttributes() /*+ " (context: " + c.getCurrentContext() + ")"*/);
                 }
                 return Value.makeUndef();
             }
 
             case TAJS_DUMPEXPRESSION: {
                 NativeFunctions.expectParameters(nativeobject, call, c, 1, 1);
-                CallNode cn = (CallNode) call.getSourceNode();
+                CallNode cn = (CallNode) call.getSourceNode(); // TODO: may not be CallNode?
                 String s = UnevalTools.rebuildFullExpression(c.getFlowGraph(), call.getSourceNode(), cn.getArgRegister(0));
-                c.getMonitoring().addMessageInfo(c.getCurrentNode(), Severity.HIGH, "Exp: " + s);
+                c.getMonitoring().addMessageInfo(c.getNode(), Severity.HIGH, "Exp: " + s);
                 return Value.makeUndef();
             }
 
             case TAJS_DUMPNF: {
                 NativeFunctions.expectParameters(nativeobject, call, c, 1, 1);
-                CallNode cn = (CallNode) call.getSourceNode();
+                CallNode cn = (CallNode) call.getSourceNode(); // TODO: may not be CallNode?
                 NormalForm s = UnevalTools.rebuildNormalForm(c.getFlowGraph(), cn, state, c);
-                c.getMonitoring().addMessageInfo(c.getCurrentNode(), Severity.HIGH, "NF: " + s);
+                c.getMonitoring().addMessageInfo(c.getNode(), Severity.HIGH, "NF: " + s);
                 return Value.makeUndef();
             }
 
@@ -329,7 +328,7 @@ public class JSGlobal {
                     vhint = call.getNumberOfArgs() >= 2 ? NativeFunctions.readParameter(call, state, 1) : Value.makeStr("NONE");
 
                 if (!vhint.isMaybeSingleStr()) {
-                    c.getMonitoring().addMessageInfo(c.getCurrentNode(), Severity.HIGH, "Calling conversionToPrimitive with non-constant hint string");
+                    c.getMonitoring().addMessageInfo(c.getNode(), Severity.HIGH, "Calling conversionToPrimitive with non-constant hint string");
                     return Value.makeUndef();
                 } else {
                     String shint = vhint.getStr();
@@ -385,7 +384,7 @@ public class JSGlobal {
 
             case TAJS_NEW_OBJECT: {
                 ObjectLabel objlabel = new ObjectLabel(call.getSourceNode(), Kind.OBJECT,
-                        new HeapContext(state.getContext().getFunArgs(), null));
+                        HeapContext.make(state.getContext().getFunArgs(), null));
                 state.newObject(objlabel);
                 state.writeInternalPrototype(objlabel, Value.makeObject(InitialStateBuilder.OBJECT_PROTOTYPE));
                 return Value.makeObject(objlabel);
@@ -513,10 +512,10 @@ public class JSGlobal {
         }
         if (added) { // TODO: explain the interaction with the unevalizer... (#167)
             CallGraph<?, Context, ?> cg = c.getAnalysisLatticeElement().getCallGraph();
-            Set<Pair<NodeAndContext<Context>, Context>> callers = cg.getSources(new BlockAndContext<>(f.getEntry(), s.getContext())); // TODO: use getEntryBlockAndContext? (#167)
-            for (Pair<NodeAndContext<Context>, Context> caller : callers) { // propagate recursively backward through the call graph
-                NormalForm nf = UnevalTools.rebuildNormalForm(c.getFlowGraph(), (CallNode) caller.getFirst().getNode(), s, c);
-                addContextSensitivity(caller.getFirst().getNode().getBlock().getFunction(), nf.getArgumentsInUse(), s, c);
+            Set<CallGraph.ReverseEdge<Context>> callers = cg.getSources(new BlockAndContext<>(f.getEntry(), s.getContext())); // TODO: use getEntryBlockAndContext? (#167)
+            for (CallGraph.ReverseEdge<Context> caller : callers) { // propagate recursively backward through the call graph
+                NormalForm nf = UnevalTools.rebuildNormalForm(c.getFlowGraph(), (CallNode) caller.getCallNode(), s, c); // FIXME: may not be CallNode?
+                addContextSensitivity(caller.getCallNode().getBlock().getFunction(), nf.getArgumentsInUse(), s, c);
             }
         } else {
             throw new AnalysisException("Bad use of addContextSensitivity. No such parameter names: " + args);

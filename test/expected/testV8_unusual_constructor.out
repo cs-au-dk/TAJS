@@ -4,4 +4,4 @@ test/v8tests/unusual-constructor.js:28:5: [definite] The variable obj is never u
 test/v8tests/unusual-constructor.js:28:11: [definite] Unreachable code
 test/v8tests/unusual-constructor.js:31:5: [definite] The variable threw is never used
 test/v8tests/unusual-constructor.js:34:3: [definite] Unreachable code
-test/v8tests/prologue.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/unusual-constructor.js:28:11]
+test/v8tests/prologue.js,test/v8tests/unusual-constructor.js: [maybe] Uncaught exception, constructed at [test/v8tests/unusual-constructor.js:28:11]

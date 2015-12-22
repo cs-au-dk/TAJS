@@ -37,4 +37,5 @@ test/sunspider/crypto-sha1.js:182:12: [maybe] Converting object to string
 test/sunspider/crypto-sha1.js:182:12: [maybe] Converting primitive string to object
 test/sunspider/crypto-sha1.js:182:28: [maybe] Conversion to number yields NaN
 test/sunspider/crypto-sha1.js:182:28: [maybe] Reading absent property (computed name)
+test/sunspider/crypto-sha1.js:231:26: [maybe] Converting object to number
 test/sunspider/crypto-sha1.js:233:1: [info] Abstract value: UInt

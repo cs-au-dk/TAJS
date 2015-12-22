@@ -2,5 +2,5 @@ test/micro/test126.js:12:20: [definite] ReferenceError, reading absent variable 
 test/micro/test126.js:4:23: [definite] Dead assignment, property b is never read
 test/micro/test126.js:4:30: [definite] Dead assignment, property c is never read
 test/micro/test126.js:12:5: [definite] Unreachable code
-test/micro/test126.js:1:1: [maybe] Uncaught exception, constructed at [test/micro/test126.js:12:20]
+test/micro/test126.js: [maybe] Uncaught exception, constructed at [test/micro/test126.js:12:20]
 test/micro/test126.js:11:5: [info] Abstract value: "funny"

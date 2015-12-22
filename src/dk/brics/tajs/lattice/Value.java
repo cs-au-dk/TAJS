@@ -24,12 +24,10 @@ import dk.brics.tajs.util.Strings;
 
 import java.lang.ref.WeakReference;
 import java.util.Collections;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.WeakHashMap;
 
-import static dk.brics.tajs.util.Collections.newList;
 import static dk.brics.tajs.util.Collections.newSet;
 
 /**
@@ -328,7 +326,7 @@ public final class Value implements Undef, Null, Bool, Num, Str {
      * Put the object label set into canonical form.
      * The resulting set is immutable.
      */
-    public static Set<ObjectLabel> canonicalize(Set<ObjectLabel> objlabels) { // TODO: use this method for all immutable object label sets (but only for those that are immutable!)
+    private static Set<ObjectLabel> canonicalize(Set<ObjectLabel> objlabels) { // TODO: use this method for all immutable object label sets (but only for those that are immutable!)
         Set<ObjectLabel> res;
         WeakReference<Set<ObjectLabel>> ref1 = objset_cache.get(objlabels);
         Set<ObjectLabel> so = ref1 != null ? ref1.get() : null;
@@ -340,7 +338,9 @@ public final class Value implements Undef, Null, Bool, Num, Str {
             res = so;
             objset_cache_hits++;
         }
-        return Collections.unmodifiableSet(res);
+        if (Options.get().isDebugOrTestEnabled())
+            return Collections.unmodifiableSet(res);
+        return res;
     }
 
     /**
@@ -2620,7 +2620,9 @@ public final class Value implements Undef, Null, Bool, Num, Str {
     public Set<ObjectLabel> getObjectLabels() {
         if (object_labels == null)
             return Collections.emptySet();
-        return Collections.unmodifiableSet(object_labels);
+        if (Options.get().isDebugOrTestEnabled())
+            return Collections.unmodifiableSet(object_labels);
+        return object_labels;
     }
 
     /**
@@ -2774,16 +2776,25 @@ public final class Value implements Undef, Null, Bool, Num, Str {
         return canonicalize(r);
     }
 
+    /**
+     * Returns true is this value contains exactly one object label.
+     */
     public boolean isMaybeSingleObjectLabel() {
         checkNotPolymorphicOrUnknown();
         return object_labels != null && object_labels.size() == 1;
     }
 
+    /**
+     * Returns true is this value contains exactly one object source location.
+     */
     public boolean isMaybeSingleAllocationSite() {
         checkNotPolymorphicOrUnknown();
         return object_labels != null && newSet(getObjectSourceLocations()).size() == 1;
     }
 
+    /**
+     * Returns true if this value does not contain a summarized object label.
+     */
     public boolean isNotASummarizedObject() {
         checkNotPolymorphicOrUnknown();
         if (object_labels == null) {
@@ -2797,6 +2808,9 @@ public final class Value implements Undef, Null, Bool, Num, Str {
         return true;
     }
 
+    /**
+     * Returns true if this value does not contain a singleton object label.
+     */
     public boolean isNotASingletonObject() {
         checkNotPolymorphicOrUnknown();
         if (object_labels == null) {
@@ -2808,5 +2822,14 @@ public final class Value implements Undef, Null, Bool, Num, Str {
             }
         }
         return true;
+    }
+
+    /**
+     * Returns true if this value contains the given object label.
+     */
+    public boolean containsObjectLabel(ObjectLabel objlabel) {
+        if (object_labels == null)
+            return false;
+        return object_labels.contains(objlabel);
     }
 }

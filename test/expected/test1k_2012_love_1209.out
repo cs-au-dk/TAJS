@@ -1,0 +1,38 @@
+test/1k2012love/1209.js:40:17: [definite] Dead assignment, property 1 is never read
+test/1k2012love/1209.js:40:23: [definite] Dead assignment, property 4 is never read
+test/1k2012love/1209.js:40:29: [definite] Dead assignment, property 6 is never read
+test/1k2012love/1209.js:40:35: [definite] Dead assignment, property 9 is never read
+test/1k2012love/1209.js:40:41: [definite] Dead assignment, property 11 is never read
+test/1k2012love/1209.js:41:14: [definite] Dead assignment, property 4 is never read
+test/1k2012love/1209.js:41:20: [definite] Dead assignment, property 9 is never read
+test/1k2012love/1209.js:41:26: [definite] Dead assignment, property 16 is never read
+test/1k2012love/1209.js:41:33: [definite] Dead assignment, property 21 is never read
+test/1k2012love/1209.js:41:40: [definite] Dead assignment, property 28 is never read
+test/1k2012love/1209.js:41:47: [definite] Dead assignment, property 33 is never read
+test/1k2012love/1209.js:29:3: [definite] The variable xPos is never used
+test/1k2012love/1209.js:60:2: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1209.js:95:11: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1209.js:130:3: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/shim.js:8:9: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/shim.js:8:9: [maybe] TypeError, call to non-function
+test/1k2012love/shim.js:9:1: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/shim.js:6:9: [maybe] Reading absent property body
+test/1k2012love/shim.js:8:9: [maybe] Reading absent property getContext
+test/1k2012love/shim.js:9:1: [maybe] Reading absent property body
+test/1k2012love/1209.js:56:3: [maybe] Conversion to number yields NaN
+test/1k2012love/1209.js:73:4: [maybe] Reading absent property (computed name)
+test/1k2012love/1209.js:86:15: [maybe] Conversion to number yields NaN
+test/1k2012love/1209.js:86:15: [maybe] Converting object to string
+test/1k2012love/1209.js:86:15: [maybe] Converting primitive string to object
+test/1k2012love/1209.js:87:33: [maybe] Reading absent property (computed name)
+test/1k2012love/1209.js:87:77: [maybe] Reading absent property (computed name)
+test/1k2012love/1209.js:92:4: [maybe] Conversion to number yields NaN
+test/1k2012love/1209.js:101:76: [maybe] Reading absent property (computed name)
+test/1k2012love/1209.js:102:20: [maybe] Reading absent property (computed name)
+test/1k2012love/1209.js:106:18: [maybe] Reading absent property (computed name)
+test/1k2012love/1209.js:114:8: [maybe] Reading absent property (computed name)
+test/1k2012love/1209.js:121:35: [maybe] Conversion to number yields NaN
+test/1k2012love/1209.js:130:3: [maybe] Reading absent property (computed name)
+test/1k2012love/1209.js:136:13: [maybe] Conversion to number yields NaN
+test/1k2012love/shim.js:7:9: [maybe] Reading absent property (computed name)
+test/1k2012love/shim.js,test/1k2012love/1209.js: [maybe] Uncaught exception, constructed at [test/1k2012love/1209.js:60:2, test/1k2012love/1209.js:95:11, test/1k2012love/1209.js:130:3, test/1k2012love/shim.js:8:9, test/1k2012love/shim.js:9:1]

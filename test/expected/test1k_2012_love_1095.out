@@ -1,0 +1,31 @@
+TAJS-dynamic-code(test/1k2012love/1095.js:89:107):1:16: [definite] The assignment to x has no effect
+TAJS-dynamic-code(test/1k2012love/1095.js:89:107):1:22: [definite] The assignment to y has no effect
+test/1k2012love/1095.js:13:5: [definite] The conditional expression is always false
+test/1k2012love/1095.js:13:5: [definite] The conditional expression is always false
+test/1k2012love/1095.js:13:5: [definite] The conditional expression is always false
+test/1k2012love/1095.js:13:5: [definite] The conditional expression is always false
+test/1k2012love/1095.js:13:5: [definite] The conditional expression is always false
+test/1k2012love/1095.js:89:5: [definite] The conditional expression is always false
+test/1k2012love/1095.js:89:5: [definite] The conditional expression is always false
+test/1k2012love/1095.js:89:5: [definite] The conditional expression is always false
+test/1k2012love/1095.js:89:5: [definite] The conditional expression is always false
+test/1k2012love/1095.js:93:67: [definite] The conditional expression is always true
+test/1k2012love/1095.js:93:67: [definite] The conditional expression is always true
+test/1k2012love/1095.js:13:13: [definite] Reading absent property which
+test/1k2012love/shim.js:6:5: [definite] The variable b is never used
+TAJS-dynamic-code(test/1k2012love/1095.js:93:22):1:16: [maybe] TypeError, accessing property of null/undefined
+TAJS-dynamic-code(test/1k2012love/1095.js:93:22):1:23: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1095.js:93:72: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1095.js:93:87: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/shim.js:8:9: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/shim.js:8:9: [maybe] TypeError, call to non-function
+test/1k2012love/shim.js:9:1: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/shim.js:6:9: [maybe] Reading absent property body
+test/1k2012love/shim.js:8:9: [maybe] Reading absent property getContext
+test/1k2012love/shim.js:9:1: [maybe] Reading absent property body
+TAJS-dynamic-code(test/1k2012love/1095.js:93:22):1:16: [maybe] Reading absent property (computed name)
+TAJS-dynamic-code(test/1k2012love/1095.js:93:22):1:23: [maybe] Reading absent property (computed name)
+test/1k2012love/1095.js:93:72: [maybe] Reading absent property (computed name)
+test/1k2012love/1095.js:93:87: [maybe] Reading absent property (computed name)
+test/1k2012love/shim.js:7:9: [maybe] Reading absent property (computed name)
+test/1k2012love/shim.js,test/1k2012love/1095.js: [maybe] Uncaught exception, constructed at [TAJS-dynamic-code(test/1k2012love/1095.js:93:22):1:16, TAJS-dynamic-code(test/1k2012love/1095.js:93:22):1:23, test/1k2012love/1095.js:93:72, test/1k2012love/1095.js:93:87, test/1k2012love/shim.js:8:9, test/1k2012love/shim.js:9:1]

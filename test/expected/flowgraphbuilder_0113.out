@@ -1,6 +1,6 @@
-fg2: function()
+fg2: <main> function()
   block 0: [entry]
-    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0113.js:1:1)
+    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0113.js)
     node 1: function-decl[function f(x,y),-] (test/flowgraphbuilder/flowgraph_builder0113.js:1:1)
     ->[block 1]
   block 1:
@@ -10,10 +10,10 @@ fg2: function()
     node 5: write-variable[v2,'a']* (test/flowgraphbuilder/flowgraph_builder0113.js:5:1)
     ->[block 2]
   block 2: [exit-ordinary]
-    node 6: return[v1] (test/flowgraphbuilder/flowgraph_builder0113.js:1:1)
+    node 6: return[v1] (test/flowgraphbuilder/flowgraph_builder0113.js)
     ->[]
   block 3: [exit-exceptional]
-    node 7: exceptional-return (test/flowgraphbuilder/flowgraph_builder0113.js:1:1)
+    node 7: exceptional-return (test/flowgraphbuilder/flowgraph_builder0113.js)
     ->[]
 function f(x,y)
   block 4: [entry]
@@ -29,10 +29,10 @@ function f(x,y)
     node 13: call[v3,'g',v4,v1] (test/flowgraphbuilder/flowgraph_builder0113.js:2:9)
     ->[block 7]
   block 7: [exit-ordinary]
-    node 14: return[v1] (test/flowgraphbuilder/flowgraph_builder0113.js:3:1)
+    node 14: return[v1] (test/flowgraphbuilder/flowgraph_builder0113.js:1:1)
     ->[]
   block 8: [exit-exceptional]
-    node 15: exceptional-return (test/flowgraphbuilder/flowgraph_builder0113.js:3:1)
+    node 15: exceptional-return (test/flowgraphbuilder/flowgraph_builder0113.js:1:1)
     ->[]
 function(x)
   block 9: [entry]
@@ -42,10 +42,10 @@ function(x)
     node 17: read-variable['x',v1,v2]* (test/flowgraphbuilder/flowgraph_builder0113.js:5:31)
     ->[block 11]
   block 11: [exit-ordinary]
-    node 18: return[v1] (test/flowgraphbuilder/flowgraph_builder0113.js:5:34)
+    node 18: return[v1] (test/flowgraphbuilder/flowgraph_builder0113.js:5:10)
     ->[]
   block 12: [exit-exceptional]
-    node 19: exceptional-return (test/flowgraphbuilder/flowgraph_builder0113.js:5:34)
+    node 19: exceptional-return (test/flowgraphbuilder/flowgraph_builder0113.js:5:10)
     ->[]
 
 test/flowgraphbuilder/flowgraph_builder0113.js:5:7: [definite] Dead assignment, property g is never read

@@ -1,6 +1,6 @@
-fg2: function()
+fg2: <main> function()
   block 0: [entry]
-    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0080.js:1:1)
+    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0080.js)
     node 1: function-decl[function fooo(),-] (test/flowgraphbuilder/flowgraph_builder0080.js:1:1)
     node 2: vardecl['x']* (test/flowgraphbuilder/flowgraph_builder0080.js:5:5)
     ->[block 1]
@@ -37,10 +37,10 @@ fg2: function()
     node 20: call[v6,v7,v8,-]* (test/flowgraphbuilder/flowgraph_builder0080.js:12:1)
     ->[block 8]
   block 8: [exit-ordinary]
-    node 21: return[v1] (test/flowgraphbuilder/flowgraph_builder0080.js:1:1)
+    node 21: return[v1] (test/flowgraphbuilder/flowgraph_builder0080.js)
     ->[]
   block 9: [exit-exceptional]
-    node 22: exceptional-return (test/flowgraphbuilder/flowgraph_builder0080.js:1:1)
+    node 22: exceptional-return (test/flowgraphbuilder/flowgraph_builder0080.js)
     ->[]
 function fooo()
   block 10: [entry]
@@ -55,10 +55,10 @@ function fooo()
     node 27: call[v3,'random',v1] (test/flowgraphbuilder/flowgraph_builder0080.js:2:9)
     ->[block 13]
   block 13: [exit-ordinary]
-    node 28: return[v1] (test/flowgraphbuilder/flowgraph_builder0080.js:3:1)
+    node 28: return[v1] (test/flowgraphbuilder/flowgraph_builder0080.js:1:1)
     ->[]
   block 14: [exit-exceptional]
-    node 29: exceptional-return (test/flowgraphbuilder/flowgraph_builder0080.js:3:1)
+    node 29: exceptional-return (test/flowgraphbuilder/flowgraph_builder0080.js:1:1)
     ->[]
 
 test/flowgraphbuilder/flowgraph_builder0080.js:12:1: [info] Abstract value: UInt

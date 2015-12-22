@@ -1,0 +1,37 @@
+test/1k2013spring/1443.js:146:4: [definite] Too few parameters to function CanvasRenderingContext2D.prototype.arc
+test/1k2013spring/1443.js:150:4: [definite] Too few parameters to function CanvasRenderingContext2D.prototype.arc
+test/1k2013spring/1443.js:154:4: [definite] Too few parameters to function CanvasRenderingContext2D.prototype.arc
+test/1k2013spring/1443.js:158:4: [definite] Too few parameters to function CanvasRenderingContext2D.prototype.arc
+test/1k2013spring/1443.js:34:5: [definite] The variable aVectorData is never used
+test/1k2013spring/1443.js:39:5: [definite] The variable TYPE_GRASS is never used
+test/1k2013spring/1443.js:40:5: [definite] The variable TYPE_FLOWER is never used
+test/1k2013spring/shim.js:6:5: [definite] The variable b is never used
+test/1k2013spring/1443.js:68:3: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1443.js:69:3: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1443.js:118:12: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1443.js:118:19: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1443.js:122:7: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1443.js:124:7: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1443.js:125:7: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1443.js:126:7: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1443.js:128:6: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1443.js:129:6: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/shim.js:8:9: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/shim.js:8:9: [maybe] TypeError, call to non-function
+test/1k2013spring/shim.js:9:1: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1443.js:68:3: [maybe] Reading absent property style
+test/1k2013spring/1443.js:69:3: [maybe] Reading absent property style
+test/1k2013spring/shim.js:6:9: [maybe] Reading absent property body
+test/1k2013spring/shim.js:8:9: [maybe] Reading absent property getContext
+test/1k2013spring/shim.js:9:1: [maybe] Reading absent property body
+test/1k2013spring/1443.js:82:13: [maybe] Converting primitive number to object
+test/1k2013spring/1443.js:96:19: [maybe] Converting undefined to string
+test/1k2013spring/1443.js:96:25: [maybe] Reading absent property (computed name)
+test/1k2013spring/1443.js:122:7: [maybe] Reading absent property (computed name)
+test/1k2013spring/1443.js:124:7: [maybe] Reading absent property (computed name)
+test/1k2013spring/1443.js:125:7: [maybe] Reading absent property (computed name)
+test/1k2013spring/1443.js:126:7: [maybe] Reading absent property (computed name)
+test/1k2013spring/1443.js:128:6: [maybe] Reading absent property (computed name)
+test/1k2013spring/1443.js:129:6: [maybe] Reading absent property (computed name)
+test/1k2013spring/shim.js:7:9: [maybe] Reading absent property (computed name)
+test/1k2013spring/shim.js,test/1k2013spring/1443.js: [maybe] Uncaught exception, constructed at [test/1k2013spring/1443.js:68:3, test/1k2013spring/1443.js:69:3, test/1k2013spring/1443.js:118:12, test/1k2013spring/1443.js:118:19, test/1k2013spring/1443.js:122:7, test/1k2013spring/1443.js:124:7, test/1k2013spring/1443.js:125:7, test/1k2013spring/1443.js:126:7, test/1k2013spring/1443.js:128:6, test/1k2013spring/1443.js:129:6, test/1k2013spring/shim.js:8:9, test/1k2013spring/shim.js:9:1]

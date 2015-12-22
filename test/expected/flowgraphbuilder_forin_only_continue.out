@@ -1,6 +1,6 @@
-fg2: function()
+fg2: <main> function()
   block 0: [entry]
-    node 0: constant[undefined,v1] (test/flowgraphbuilder/forin_only_continue.js:1:1)
+    node 0: constant[undefined,v1] (test/flowgraphbuilder/forin_only_continue.js)
     node 1: vardecl['p']* (test/flowgraphbuilder/forin_only_continue.js:1:10)
     ->[block 1]
   block 1:
@@ -32,10 +32,10 @@ fg2: function()
     node 13: end-for-in(begin-node:6)* (test/flowgraphbuilder/forin_only_continue.js:3:1)
     ->[block 9]
   block 9: [exit-ordinary]
-    node 14: return[v1] (test/flowgraphbuilder/forin_only_continue.js:1:1)
+    node 14: return[v1] (test/flowgraphbuilder/forin_only_continue.js)
     ->[]
   block 10: [exit-exceptional]
-    node 15: exceptional-return (test/flowgraphbuilder/forin_only_continue.js:1:1)
+    node 15: exceptional-return (test/flowgraphbuilder/forin_only_continue.js)
     ->[]
 
 test/flowgraphbuilder/forin_only_continue.js:1:10: [definite] The variable p is never used

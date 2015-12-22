@@ -189,7 +189,7 @@ public interface IAnalysisMonitoring extends ISolverMonitoring<State, Context> {
      * @param propertystr   description of the property name
      * @param check_unknown if set, warn about reads from unknown properties
      */
-    void visitPropertyRead(Node n, Set<ObjectLabel> objs, Str propertystr, State state, boolean check_unknown);
+    void visitPropertyRead(AbstractNode n, Set<ObjectLabel> objs, Str propertystr, State state, boolean check_unknown);
 
     /**
      * Warns about writes to unknown properties;

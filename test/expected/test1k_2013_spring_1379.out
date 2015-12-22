@@ -1,0 +1,24 @@
+test/1k2013spring/1379.js:2:12: [definite] The conditional expression is always false
+test/1k2013spring/1379.js:2:12: [definite] The conditional expression is always false
+test/1k2013spring/1379.js:2:12: [definite] The conditional expression is always false
+test/1k2013spring/1379.js:2:12: [definite] The conditional expression is always false
+test/1k2013spring/1379.js:2:12: [definite] The conditional expression is always false
+test/1k2013spring/1379.js:2:12: [definite] Reading absent property requestAnimationFrame
+test/1k2013spring/1379.js:3:6: [definite] Reading absent property webkitRequestAnimationFrame
+test/1k2013spring/1379.js:4:6: [definite] Reading absent property mozRequestAnimationFrame
+test/1k2013spring/1379.js:5:6: [definite] Reading absent property oRequestAnimationFrame
+test/1k2013spring/1379.js:6:6: [definite] Reading absent property msRequestAnimationFrame
+test/1k2013spring/shim.js:6:5: [definite] The variable b is never used
+test/1k2013spring/shim.js:8:9: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/shim.js:8:9: [maybe] TypeError, call to non-function
+test/1k2013spring/shim.js:9:1: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1379.js:51:22: [maybe] Reading absent property width
+test/1k2013spring/1379.js:51:31: [maybe] Reading absent property height
+test/1k2013spring/shim.js:6:9: [maybe] Reading absent property body
+test/1k2013spring/shim.js:8:9: [maybe] Reading absent property getContext
+test/1k2013spring/shim.js:9:1: [maybe] Reading absent property body
+test/1k2013spring/1379.js:27:12: [maybe] Reading absent property (computed name)
+test/1k2013spring/1379.js:51:5: [maybe] Conversion from string to number yields NaN
+test/1k2013spring/1379.js:51:5: [maybe] Conversion to number yields NaN
+test/1k2013spring/shim.js:7:9: [maybe] Reading absent property (computed name)
+test/1k2013spring/shim.js,test/1k2013spring/1379.js: [maybe] Uncaught exception, constructed at [test/1k2013spring/shim.js:8:9, test/1k2013spring/shim.js:9:1]

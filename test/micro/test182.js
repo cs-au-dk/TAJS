@@ -14,4 +14,4 @@
 a = []
 a.length = { toString : function () { return 42; }}
 
-a.length
+TAJS_assert(a.length === 42);

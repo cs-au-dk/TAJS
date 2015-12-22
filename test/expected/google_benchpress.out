@@ -12,7 +12,8 @@ test/google/benchpress.js:426:26: [maybe] TypeError, accessing property of null/
 test/google/benchpress.js:427:26: [maybe] TypeError, accessing property of null/undefined
 test/google/benchpress.js:428:26: [maybe] TypeError, accessing property of null/undefined
 test/google/benchpress.js:436:7: [maybe] TypeError, accessing property of null/undefined
-test/google/benchpress.js:1:1: [maybe] Uncaught exception, constructed at [test/google/benchpress.js:76:38, test/google/benchpress.js:85:23, test/google/benchpress.js:365:10, test/google/benchpress.js:368:10, test/google/benchpress.js:374:32, test/google/benchpress.js:375:32, test/google/benchpress.js:375:57, test/google/benchpress.js:418:13, test/google/benchpress.js:419:13, test/google/benchpress.js:426:26, test/google/benchpress.js:427:26, test/google/benchpress.js:428:26, test/google/benchpress.js:436:7]
+test/google/benchpress.js: [maybe] Uncaught exception, constructed at [test/google/benchpress.js:76:38, test/google/benchpress.js:85:23, test/google/benchpress.js:365:10, test/google/benchpress.js:368:10, test/google/benchpress.js:374:32, test/google/benchpress.js:375:32, test/google/benchpress.js:375:57, test/google/benchpress.js:418:13, test/google/benchpress.js:419:13, test/google/benchpress.js:426:26, test/google/benchpress.js:427:26, test/google/benchpress.js:428:26, test/google/benchpress.js:436:7]
+test/google/benchpress.js:20:15: [maybe] Converting object to number
 test/google/benchpress.js:75:13: [maybe] Reading absent property (computed name)
 test/google/benchpress.js:83:13: [maybe] Reading absent property (computed name)
 test/google/benchpress.js:131:9: [maybe] Reading absent property (computed name)

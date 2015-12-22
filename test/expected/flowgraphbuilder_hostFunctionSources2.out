@@ -1,0 +1,26 @@
+fg2: <main> function()
+  block 0: [entry]
+    node 0: constant[undefined,v1] (out/temp-sources/flowgraphbuilder_hostFunctionSources2)
+    node 1: function-decl[function f(),-] (out/temp-sources/flowgraphbuilder_hostFunctionSources2:1:1)
+    ->[block 1]
+  block 1: [exit-ordinary]
+    node 2: return[v1] (out/temp-sources/flowgraphbuilder_hostFunctionSources2)
+    ->[]
+  block 2: [exit-exceptional]
+    node 3: exceptional-return (out/temp-sources/flowgraphbuilder_hostFunctionSources2)
+    ->[]
+function f()
+  block 3: [entry]
+    node 4: constant[undefined,v1] (out/temp-sources/flowgraphbuilder_hostFunctionSources2:1:1)
+    ->[block 4]
+  block 4:
+    node 5: constant["BODY",-]* (out/temp-sources/flowgraphbuilder_hostFunctionSources2:1:14)
+    ->[block 5]
+  block 5: [exit-ordinary]
+    node 6: return[v1] (out/temp-sources/flowgraphbuilder_hostFunctionSources2:1:1)
+    ->[]
+  block 6: [exit-exceptional]
+    node 7: exceptional-return (out/temp-sources/flowgraphbuilder_hostFunctionSources2:1:1)
+    ->[]
+
+out/temp-sources/flowgraphbuilder_hostFunctionSources2:1:1: [definite] Unreachable function f

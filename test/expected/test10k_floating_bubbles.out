@@ -1,0 +1,321 @@
+test/10k/floating_bubbles.html:38:13: [definite] The conditional expression is always true
+test/10k/floating_bubbles.html:82:13: [definite] Reading absent property snappedPoint
+test/10k/floating_bubbles.html:330:9: [definite] Dead assignment, property divideBy is never read
+test/10k/floating_bubbles.html:62:9: [definite] Unreachable function u
+test/10k/floating_bubbles.html:330:32: [definite] Unreachable function
+test/10k/floating_bubbles.html:70:17: [maybe] TypeError, accessing property of null/undefined
+test/10k/floating_bubbles.html:93:25: [maybe] TypeError, accessing property of null/undefined
+test/10k/floating_bubbles.html:96:25: [maybe] TypeError, accessing property of null/undefined
+test/10k/floating_bubbles.html:99:25: [maybe] TypeError, accessing property of null/undefined
+test/10k/floating_bubbles.html:101:17: [maybe] TypeError, accessing property of null/undefined
+test/10k/floating_bubbles.html:102:17: [maybe] TypeError, accessing property of null/undefined
+test/10k/floating_bubbles.html:103:17: [maybe] TypeError, accessing property of null/undefined
+test/10k/floating_bubbles.html:108:29: [maybe] TypeError, accessing property of null/undefined
+test/10k/floating_bubbles.html:112:25: [maybe] TypeError, accessing property of null/undefined
+test/10k/floating_bubbles.html:115:21: [maybe] TypeError, accessing property of null/undefined
+test/10k/floating_bubbles.html:116:21: [maybe] TypeError, accessing property of null/undefined
+test/10k/floating_bubbles.html:116:49: [maybe] TypeError, accessing property of null/undefined
+test/10k/floating_bubbles.html:118:25: [maybe] TypeError, accessing property of null/undefined
+test/10k/floating_bubbles.html:119:25: [maybe] TypeError, accessing property of null/undefined
+test/10k/floating_bubbles.html:119:72: [maybe] TypeError, accessing property of null/undefined
+test/10k/floating_bubbles.html:122:21: [maybe] TypeError, accessing property of null/undefined
+test/10k/floating_bubbles.html:123:21: [maybe] TypeError, accessing property of null/undefined
+test/10k/floating_bubbles.html:123:49: [maybe] TypeError, accessing property of null/undefined
+test/10k/floating_bubbles.html:125:25: [maybe] TypeError, accessing property of null/undefined
+test/10k/floating_bubbles.html:126:25: [maybe] TypeError, accessing property of null/undefined
+test/10k/floating_bubbles.html:126:73: [maybe] TypeError, accessing property of null/undefined
+test/10k/floating_bubbles.html:130:21: [maybe] TypeError, accessing property of null/undefined
+test/10k/floating_bubbles.html:131:21: [maybe] TypeError, accessing property of null/undefined
+test/10k/floating_bubbles.html:137:25: [maybe] TypeError, accessing property of null/undefined
+test/10k/floating_bubbles.html:144:25: [maybe] TypeError, accessing property of null/undefined
+test/10k/floating_bubbles.html:145:25: [maybe] TypeError, accessing property of null/undefined
+test/10k/floating_bubbles.html:147:21: [maybe] TypeError, accessing property of null/undefined
+test/10k/floating_bubbles.html:149:40: [maybe] TypeError, accessing property of null/undefined
+test/10k/floating_bubbles.html:149:70: [maybe] TypeError, accessing property of null/undefined
+test/10k/floating_bubbles.html:149:107: [maybe] TypeError, accessing property of null/undefined
+test/10k/floating_bubbles.html:149:137: [maybe] TypeError, accessing property of null/undefined
+test/10k/floating_bubbles.html:150:21: [maybe] TypeError, accessing property of null/undefined
+test/10k/floating_bubbles.html:152:17: [maybe] TypeError, accessing property of null/undefined
+test/10k/floating_bubbles.html:152:36: [maybe] TypeError, accessing property of null/undefined
+test/10k/floating_bubbles.html:153:17: [maybe] TypeError, accessing property of null/undefined
+test/10k/floating_bubbles.html:154:17: [maybe] TypeError, accessing property of null/undefined
+test/10k/floating_bubbles.html:155:17: [maybe] TypeError, accessing property of null/undefined
+test/10k/floating_bubbles.html:156:17: [maybe] TypeError, accessing property of null/undefined
+test/10k/floating_bubbles.html:157:17: [maybe] TypeError, accessing property of null/undefined
+test/10k/floating_bubbles.html:198:25: [maybe] TypeError, accessing property of null/undefined
+test/10k/floating_bubbles.html:203:29: [maybe] TypeError, accessing property of null/undefined
+test/10k/floating_bubbles.html:209:25: [maybe] TypeError, accessing property of null/undefined
+test/10k/floating_bubbles.html:219:21: [maybe] TypeError, accessing property of null/undefined
+test/10k/floating_bubbles.html:219:46: [maybe] TypeError, accessing property of null/undefined
+test/10k/floating_bubbles.html:234:29: [maybe] TypeError, accessing property of null/undefined
+test/10k/floating_bubbles.html:234:47: [maybe] TypeError, accessing property of null/undefined
+test/10k/floating_bubbles.html:236:40: [maybe] TypeError, accessing property of null/undefined
+test/10k/floating_bubbles.html:236:62: [maybe] TypeError, accessing property of null/undefined
+test/10k/floating_bubbles.html:236:84: [maybe] TypeError, accessing property of null/undefined
+test/10k/floating_bubbles.html:236:120: [maybe] TypeError, accessing property of null/undefined
+test/10k/floating_bubbles.html:236:156: [maybe] TypeError, accessing property of null/undefined
+test/10k/floating_bubbles.html:236:188: [maybe] TypeError, accessing property of null/undefined
+test/10k/floating_bubbles.html:287:31: [maybe] TypeError, accessing property of null/undefined
+test/10k/floating_bubbles.html:310:35: [maybe] TypeError, accessing property of null/undefined
+test/10k/floating_bubbles.html:316:23: [maybe] TypeError, accessing property of null/undefined
+test/10k/floating_bubbles.html:321:23: [maybe] TypeError, accessing property of null/undefined
+test/10k/floating_bubbles.html:374:13: [maybe] TypeError, accessing property of null/undefined
+test/10k/floating_bubbles.html:374:13: [maybe] TypeError, accessing property of null/undefined
+test/10k/floating_bubbles.html:374:13: [maybe] TypeError, argument is not of expected type: Node.prototype
+test/10k/floating_bubbles.html:374:13: [maybe] TypeError, call to non-function
+test/10k/floating_bubbles.html:133:44: [maybe] Reading absent property snappedPoint
+test/10k/floating_bubbles.html:198:37: [maybe] Reading absent property snappedPoint
+test/10k/floating_bubbles.html:203:41: [maybe] Reading absent property snappedPoint
+test/10k/floating_bubbles.html:209:37: [maybe] Reading absent property snappedPoint
+test/10k/floating_bubbles.html:219:58: [maybe] Reading absent property snappedPoint
+test/10k/floating_bubbles.html:270:100: [maybe] Reading absent property snappedPoint
+test/10k/floating_bubbles.html:270:142: [maybe] Reading absent property snappedPoint
+test/10k/floating_bubbles.html:270:228: [maybe] Reading absent property snappedPoint
+test/10k/floating_bubbles.html:270:270: [maybe] Reading absent property snappedPoint
+test/10k/floating_bubbles.html:374:13: [maybe] Reading absent property parentNode
+test/10k/floating_bubbles.html:374:13: [maybe] Reading absent property removeChild
+test/10k/floating_bubbles.html: [maybe] Uncaught exception, constructed at [test/10k/floating_bubbles.html:70:17, test/10k/floating_bubbles.html:93:25, test/10k/floating_bubbles.html:96:25, test/10k/floating_bubbles.html:99:25, test/10k/floating_bubbles.html:101:17, test/10k/floating_bubbles.html:102:17, test/10k/floating_bubbles.html:103:17, test/10k/floating_bubbles.html:108:29, test/10k/floating_bubbles.html:112:25, test/10k/floating_bubbles.html:115:21, test/10k/floating_bubbles.html:116:21, test/10k/floating_bubbles.html:116:49, test/10k/floating_bubbles.html:118:25, test/10k/floating_bubbles.html:119:25, test/10k/floating_bubbles.html:119:72, test/10k/floating_bubbles.html:122:21, test/10k/floating_bubbles.html:123:21, test/10k/floating_bubbles.html:123:49, test/10k/floating_bubbles.html:125:25, test/10k/floating_bubbles.html:126:25, test/10k/floating_bubbles.html:126:73, test/10k/floating_bubbles.html:130:21, test/10k/floating_bubbles.html:131:21, test/10k/floating_bubbles.html:137:25, test/10k/floating_bubbles.html:144:25, test/10k/floating_bubbles.html:145:25, test/10k/floating_bubbles.html:147:21, test/10k/floating_bubbles.html:149:40, test/10k/floating_bubbles.html:149:70, test/10k/floating_bubbles.html:149:107, test/10k/floating_bubbles.html:149:137, test/10k/floating_bubbles.html:150:21, test/10k/floating_bubbles.html:152:17, test/10k/floating_bubbles.html:152:36, test/10k/floating_bubbles.html:153:17, test/10k/floating_bubbles.html:154:17, test/10k/floating_bubbles.html:155:17, test/10k/floating_bubbles.html:156:17, test/10k/floating_bubbles.html:157:17, test/10k/floating_bubbles.html:198:25, test/10k/floating_bubbles.html:203:29, test/10k/floating_bubbles.html:209:25, test/10k/floating_bubbles.html:219:21, test/10k/floating_bubbles.html:219:46, test/10k/floating_bubbles.html:234:29, test/10k/floating_bubbles.html:234:47, test/10k/floating_bubbles.html:236:40, test/10k/floating_bubbles.html:236:62, test/10k/floating_bubbles.html:236:84, test/10k/floating_bubbles.html:236:120, test/10k/floating_bubbles.html:236:156, test/10k/floating_bubbles.html:236:188, test/10k/floating_bubbles.html:287:31, test/10k/floating_bubbles.html:310:35, test/10k/floating_bubbles.html:316:23, test/10k/floating_bubbles.html:321:23, test/10k/floating_bubbles.html:374:13]
+test/10k/floating_bubbles.html:70:17: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.html:93:25: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.html:93:49: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.html:96:25: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.html:96:49: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.html:99:25: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.html:99:63: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.html:101:17: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.html:102:17: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.html:103:17: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.html:108:29: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.html:108:61: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.html:112:25: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.html:115:21: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.html:116:21: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.html:116:49: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.html:118:25: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.html:119:25: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.html:119:72: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.html:122:21: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.html:123:21: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.html:123:49: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.html:125:25: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.html:126:25: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.html:126:73: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.html:130:21: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.html:131:21: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.html:134:40: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.html:137:25: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.html:144:25: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.html:145:25: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.html:147:21: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.html:149:40: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.html:149:70: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.html:149:107: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.html:149:137: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.html:150:21: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.html:152:17: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.html:152:36: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.html:153:17: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.html:154:17: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.html:155:17: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.html:155:40: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.html:156:17: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.html:156:40: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.html:157:17: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.html:157:55: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.html:198:25: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.html:203:29: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.html:209:25: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.html:219:21: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.html:219:46: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.html:234:29: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.html:234:47: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.html:236:40: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.html:236:62: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.html:236:84: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.html:236:120: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.html:236:156: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.html:236:188: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.html:254:21: [maybe] Conversion to number yields NaN
+test/10k/floating_bubbles.html:255:21: [maybe] Conversion to number yields NaN
+test/10k/floating_bubbles.html:278:21: [maybe] Conversion to number yields NaN
+test/10k/floating_bubbles.html:287:31: [maybe] Reading absent property (computed name)
+test/10k/floating_bubbles.html:92:33: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:93:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:93:49: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:93:61: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:96:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:96:49: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:96:61: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:99:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:99:37: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:99:63: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:99:75: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:101:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:102:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:103:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:104:37: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:105:40: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:105:63: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:108:29: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:108:61: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:112:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:115:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:116:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:116:49: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:118:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:118:44: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:119:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:119:52: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:119:72: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:122:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:123:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:123:49: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:125:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:125:44: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:126:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:126:52: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:126:73: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:129:22: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:130:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:131:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:133:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:133:44: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:134:40: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:135:29: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:137:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:138:29: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:139:29: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:141:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:141:42: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:142:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:144:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:145:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:147:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:149:40: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:149:70: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:149:107: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:149:137: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:150:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:152:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:152:36: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:153:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:154:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:155:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:155:40: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:156:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:156:40: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:157:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:157:55: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:161:29: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:165:24: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:170:22: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:176:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:177:38: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:177:76: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:178:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:180:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:181:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:184:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:186:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:191:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:193:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:196:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:197:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:198:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:198:37: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:198:78: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:199:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:200:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:201:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:203:29: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:203:41: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:203:82: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:204:29: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:205:29: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:209:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:209:37: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:209:78: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:210:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:211:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:217:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:218:29: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:219:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:219:46: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:219:58: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:220:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:223:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:226:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:227:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:230:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:230:38: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:230:57: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:233:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:234:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:234:29: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:234:47: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:235:33: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:236:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:236:40: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:236:62: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:236:84: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:236:96: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:236:120: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:236:132: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:236:156: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:236:168: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:236:188: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:236:200: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:238:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:241:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:242:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:243:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:244:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:257:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:257:39: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:259:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:260:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:260:43: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:262:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:263:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:263:47: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:266:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:267:20: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:270:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:270:53: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:270:82: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:270:100: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:270:121: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:270:142: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:270:181: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:270:210: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:270:228: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:270:249: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:270:270: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:270:304: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:270:335: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:278:36: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:280:22: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:285:27: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:286:33: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:287:31: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:300:26: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/10k/floating_bubbles.html:300:26: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:300:34: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/10k/floating_bubbles.html:300:34: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:303:30: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:303:39: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:303:48: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:303:57: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:310:26: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:310:40: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:316:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:317:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:318:20: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:321:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:322:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:323:20: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:348:27: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:348:35: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:349:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:350:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/10k/floating_bubbles.html:353:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision

@@ -23,18 +23,23 @@ import dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects;
 import dk.brics.tajs.flowgraph.AbstractNode;
 import dk.brics.tajs.flowgraph.jsnodes.CallNode;
 import dk.brics.tajs.flowgraph.jsnodes.Node;
+import dk.brics.tajs.lattice.CallEdge;
+import dk.brics.tajs.lattice.Context;
 import dk.brics.tajs.lattice.ExecutionContext;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.ObjectLabel.Kind;
 import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.UnknownValueResolver;
 import dk.brics.tajs.lattice.Value;
+import dk.brics.tajs.monitoring.IAnalysisMonitoring;
 import dk.brics.tajs.options.Options;
+import dk.brics.tajs.solver.GenericSolver;
 import dk.brics.tajs.util.AnalysisException;
 
 import java.util.Set;
 
 import static dk.brics.tajs.util.Collections.newSet;
+import static dk.brics.tajs.util.Collections.singleton;
 
 /**
  * Models function calls.
@@ -59,7 +64,7 @@ public class FunctionCalls {
          * Returns the node in the JavaScript code where this call originates from.
          * This is different from the ordinary source node for calls inside host functions.
          */
-        Node getJSSourceNode();
+        AbstractNode getJSSourceNode();
 
         /**
          * Checks whether this is a constructor call or an ordinary call.
@@ -200,12 +205,13 @@ public class FunctionCalls {
 
         private Value arg1;
 
-        private ExecutionContext ec;
+        private State state;
 
-        public EventHandlerCall(Node sourceNode, Value function, Value arg1) {
+        public EventHandlerCall(Node sourceNode, Value function, Value arg1, State state) {
             this.sourceNode = sourceNode;
             this.function = function;
             this.arg1 = arg1;
+            this.state = state;
         }
 
         @Override
@@ -231,7 +237,6 @@ public class FunctionCalls {
         @Override
         public Set<ObjectLabel> prepareThis(State caller_state, State callee_state) {
             // TODO: improve precision for setTimeout/setInterval: will always have the global object as the this-object
-            ec = caller_state.getExecutionContext();
             return DOMBuilder.getAllDOMEventTargets();
         }
 
@@ -268,14 +273,63 @@ public class FunctionCalls {
 
         @Override
         public ExecutionContext getExecutionContext() {
-            return ec;
+            return state.getExecutionContext();
+        }
+    }
+
+    /**
+     * Convenience class for creating the CallInfo for an implicit call.
+     */
+    public static abstract class DefaultImplicitCallInfo implements CallInfo {
+
+        private final Solver.SolverInterface c;
+
+        public DefaultImplicitCallInfo(GenericSolver<State, Context, CallEdge, IAnalysisMonitoring, Analysis>.SolverInterface c) {
+            this.c = c;
+        }
+
+        @Override
+        public AbstractNode getSourceNode() {
+            return c.getNode();
+        }
+
+        @Override
+        public AbstractNode getJSSourceNode() {
+            return c.getNode();
+        }
+
+        @Override
+        public boolean isConstructorCall() {
+            return false;
+        }
+
+        @Override
+        public Value getFunctionValue() {
+            // NB: could easily be supported, but we do not need it currently
+            throw new AnalysisException("Unexpected usage of getFunctionValue");
+        }
+
+        @Override
+        public Set<ObjectLabel> prepareThis(State caller_state, State callee_state) {
+            return singleton(InitialStateBuilder.GLOBAL);
+        }
+
+        @Override
+        public int getResultRegister() {
+            return AbstractNode.NO_VALUE;
+        }
+
+        @Override
+        public ExecutionContext getExecutionContext() {
+            return c.getState().getExecutionContext();
         }
     }
 
     /**
      * Enters a function described by a CallInfo.
      */
-    public static void callFunction(CallInfo call, State caller_state, Solver.SolverInterface c) {
+    public static void callFunction(CallInfo call, Solver.SolverInterface c) {
+        State caller_state = c.getState();
         Value funval = call.getFunctionValue();
         funval = UnknownValueResolver.getRealValue(funval, caller_state);
         boolean maybe_non_function = funval.isMaybePrimitive();
@@ -285,6 +339,8 @@ public class FunctionCalls {
                 maybe_function = true;
                 if (objlabel.isHostObject()) { // host function
                     State newstate = caller_state.clone();
+                    State ts = c.getState();
+                    c.setState(newstate); // note that the calling context is not affected, even though e.g. 'this' may get a different value
                     if (!call.isConstructorCall() &&
                             !objlabel.getHostObject().equals(ECMAScriptObjects.EVAL) &&
                             !objlabel.getHostObject().equals(ECMAScriptObjects.FUNCTION) &&
@@ -293,9 +349,8 @@ public class FunctionCalls {
                         ExecutionContext old_ec = newstate.getExecutionContext();
                         newstate.setExecutionContext(new ExecutionContext(old_ec.getScopeChain(), newSet(old_ec.getVariableObject()), newSet(call.prepareThis(caller_state, newstate))));
                     }
-                    State ts = c.getCurrentState();
-                    c.setCurrentState(newstate); // note that the calling context is not affected, even though e.g. 'this' may get a different value
                     Value res = HostAPIs.evaluate(objlabel.getHostObject(), call, newstate, c);
+                    newstate = c.getState();
                     if (call.getSourceNode().isRegistersDone())
                         newstate.clearOrdinaryRegisters();
                     if ((!res.isNone() && !newstate.isNone()) || Options.get().isPropagateDeadFlow()) {
@@ -304,9 +359,9 @@ public class FunctionCalls {
                             newstate.writeRegister(call.getResultRegister(), res);
                         c.propagateToBasicBlock(newstate, call.getSourceNode().getBlock().getSingleSuccessor(), newstate.getContext());
                     }
-                    c.setCurrentState(ts);
+                    c.setState(ts);
                 } else { // user-defined function
-                    UserFunctionCalls.enterUserFunction(objlabel, call, caller_state, c);
+                    UserFunctionCalls.enterUserFunction(objlabel, call, caller_state, false, c);
                     c.getMonitoring().visitUserFunctionCall(objlabel.getFunction(), call.getSourceNode(), call.isConstructorCall());
                 }
             } else
@@ -318,7 +373,7 @@ public class FunctionCalls {
                 newstate.writeRegister(call.getResultRegister(), Value.makeNone());
             c.propagateToBasicBlock(newstate, call.getSourceNode().getBlock().getSingleSuccessor(), newstate.getContext());
         }
-        c.getMonitoring().visitCall(c.getCurrentNode(), maybe_non_function, maybe_function);
+        c.getMonitoring().visitCall(c.getNode(), maybe_non_function, maybe_function);
         if (maybe_non_function)
             Exceptions.throwTypeError(caller_state, c);
     }

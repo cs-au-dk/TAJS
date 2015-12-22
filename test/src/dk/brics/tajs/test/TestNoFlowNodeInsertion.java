@@ -6,8 +6,8 @@ import dk.brics.tajs.flowgraph.BasicBlock;
 import dk.brics.tajs.flowgraph.FlowGraph;
 import dk.brics.tajs.flowgraph.jsnodes.AssumeNode;
 import dk.brics.tajs.flowgraph.jsnodes.ConstantNode;
-import dk.brics.tajs.htmlparser.JavaScriptSource;
 import dk.brics.tajs.js2flowgraph.FlowGraphBuilder;
+import dk.brics.tajs.flowgraph.JavaScriptSource;
 import dk.brics.tajs.options.Options;
 import org.junit.Before;
 import org.junit.Test;
@@ -33,7 +33,7 @@ public class TestNoFlowNodeInsertion {
             sb.append(src[i] + "\n");
         }
 
-        FlowGraphBuilder flowGraphBuilder = new FlowGraphBuilder();
+        FlowGraphBuilder flowGraphBuilder = new FlowGraphBuilder("dummy");
         flowGraphBuilder.transformStandAloneCode(JavaScriptSource.makeEmbeddedCode("-", sb.toString(), 0, 0));
         return flowGraphBuilder.close();
     }

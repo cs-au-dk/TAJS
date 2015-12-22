@@ -12,7 +12,7 @@ test/v8tests/sparse-array-reverse.js:113:40: [maybe] Reading absent property joi
 test/v8tests/sparse-array-reverse.js:114:5: [maybe] Reading absent property reverse
 test/v8tests/sparse-array-reverse.js:117:17: [maybe] Reading absent property pop
 test/v8tests/sparse-array-reverse.js:121:58: [maybe] Reading absent property join
-test/v8tests/prologue.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/sparse-array-reverse.js:86:9, test/v8tests/sparse-array-reverse.js:90:9, test/v8tests/sparse-array-reverse.js:93:9, test/v8tests/sparse-array-reverse.js:109:9, test/v8tests/sparse-array-reverse.js:113:40, test/v8tests/sparse-array-reverse.js:114:5, test/v8tests/sparse-array-reverse.js:117:17, test/v8tests/sparse-array-reverse.js:121:58]
+test/v8tests/prologue.js,test/v8tests/sparse-array-reverse.js: [maybe] Uncaught exception, constructed at [test/v8tests/sparse-array-reverse.js:86:9, test/v8tests/sparse-array-reverse.js:90:9, test/v8tests/sparse-array-reverse.js:93:9, test/v8tests/sparse-array-reverse.js:109:9, test/v8tests/sparse-array-reverse.js:113:40, test/v8tests/sparse-array-reverse.js:114:5, test/v8tests/sparse-array-reverse.js:117:17, test/v8tests/sparse-array-reverse.js:121:58]
 test/v8tests/sparse-array-reverse.js:73:16: [maybe] Reading absent property (computed name)
 test/v8tests/sparse-array-reverse.js:77:23: [maybe] The variable size has values with different types
 test/v8tests/sparse-array-reverse.js:83:17: [maybe] Reading absent property (computed name)

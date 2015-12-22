@@ -114,9 +114,10 @@ public final class Context implements IContext<Context> {
      */
     @Override
     public Context makeEntryContext() {
-        // TODO: reuse currentContext if possible
-
         // reconstruct loopUnrolling from loopUnrollingsAtEntry (all other properties are unchanged within a function or for-in body)
+        if (loopUnrollingsAtEntry != null && loopUnrollingsAtEntry.equals(loopUnrolling)) {
+            return this;
+        }
         return new Context(thisval, funArgs, specialRegs, loopUnrollingsAtEntry, loopUnrollingsAtEntry);
     }
 

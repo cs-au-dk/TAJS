@@ -11,4 +11,4 @@ document.getElementById("results").appendChild(elem);
 TAJS_dumpValue(document.getElementById("results"))
  
 elem.onclick(); 
-TAJS_assert( elem.clicked );
+TAJS_dumpValue( elem.clicked );

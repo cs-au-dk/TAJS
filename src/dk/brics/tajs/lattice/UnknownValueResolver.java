@@ -16,10 +16,11 @@
 
 package dk.brics.tajs.lattice;
 
-import dk.brics.tajs.flowgraph.BasicBlock;
+import dk.brics.tajs.flowgraph.AbstractNode;
 import dk.brics.tajs.lattice.PropertyReference.Kind;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.solver.BlockAndContext;
+import dk.brics.tajs.solver.CallGraph;
 import dk.brics.tajs.solver.GenericSolver;
 import dk.brics.tajs.solver.NodeAndContext;
 import dk.brics.tajs.util.AnalysisException;
@@ -56,31 +57,31 @@ public final class UnknownValueResolver {
     } // set to Level.DEBUG to force debug output or Level.INFO to disable
 
     /**
-     * A recovery graph node is a triple of a basic block, a context, and a property reference.
-     * The basic block and the context identify a location in the program.
-     * The property reference denotes the desired property <i>at the function entry</i> relative to the basic block and context location.
+     * A recovery graph node is a triple of a flow graph node, a context, and a property reference.
+     * The flow graph node and the context identify a location in the program.
+     * The property reference denotes the desired property <i>at the function entry</i> relative to the node and context location.
      * (Note that "function entries" may be for-in body entries.)
      */
-    private static class Node {
+    private static class RGNode {
 
-        private BasicBlock b;
+        private AbstractNode n;
 
         private Context c;
 
         private PropertyReference p;
 
-        public Node(BasicBlock b, Context c, PropertyReference p) {
-            this.b = b;
+        public RGNode(AbstractNode n, Context c, PropertyReference p) {
+            this.n = n;
             this.c = c;
             this.p = p;
         }
 
-        public Node(BlockAndContext<Context> bc, PropertyReference p) {
-            this(bc.getBlock(), bc.getContext(), p);
+        public RGNode(NodeAndContext<Context> nc, PropertyReference p) {
+            this(nc.getNode(), nc.getContext(), p);
         }
 
-        public BasicBlock getBlock() {
-            return b;
+        public AbstractNode getNode() {
+            return n;
         }
 
         public Context getContext() {
@@ -94,20 +95,20 @@ public final class UnknownValueResolver {
         @SuppressWarnings("unchecked")
         @Override
         public boolean equals(Object obj) {
-            if (!(obj instanceof Node))
+            if (!(obj instanceof RGNode))
                 return false;
-            Node ncp = (Node) obj;
-            return ncp.b == b && ncp.c.equals(c) && ncp.p.equals(p);
+            RGNode ncp = (RGNode) obj;
+            return ncp.n == n && ncp.c.equals(c) && ncp.p.equals(p);
         }
 
         @Override
         public int hashCode() {
-            return b.getIndex() * 13 + c.hashCode() * 3 + p.hashCode() * 5;
+            return n.getIndex() * 13 + c.hashCode() * 3 + p.hashCode() * 5;
         }
 
         @Override
         public String toString() {
-            return "{b=" + b.getIndex() + ", c=" + c + ", p=" + p + '}';
+            return "{n=" + n.getIndex() + ", c=" + c + ", p=" + p + '}';
         }
     }
 
@@ -123,15 +124,15 @@ public final class UnknownValueResolver {
         /**
          * The internal representation groups the callee nodes with same function entry.
          */
-        private Map<Node, // target or call node
-                Map<Pair<Context, Node>, // edge context and callee function entry (groups callee nodes with same function entry)
-                        Set<Node>>> graph; // callee node
+        private Map<RGNode, // target or call node
+                Map<Pair<Context, RGNode>, // edge context and callee function entry (groups callee nodes with same function entry)
+                        Set<RGNode>>> graph; // callee node
 
-        private Set<Node> roots;
+        private Set<RGNode> roots;
 
-        private LinkedList<Node> pending;
+        private LinkedList<RGNode> pending;
 
-        private Map<Node, Value> original_polymorphic_value;
+        private Map<RGNode, Value> original_polymorphic_value;
 
         /**
          * Constructs a new empty recovery graph.
@@ -151,7 +152,7 @@ public final class UnknownValueResolver {
         /**
          * Marks the given node as a root.
          */
-        public void addRoot(Node n) {
+        public void addRoot(RGNode n) {
             if (roots.add(n))
                 if (log.isDebugEnabled())
                     log.debug("adding root " + n);
@@ -161,16 +162,16 @@ public final class UnknownValueResolver {
          * Returns the roots.
          * (Modifications of the returned set will affect subsequent calls to the method.)
          */
-        public Set<Node> getRoots() {
-            return roots != null ? roots : java.util.Collections.<Node>emptySet();
+        public Set<RGNode> getRoots() {
+            return roots != null ? roots : java.util.Collections.<RGNode>emptySet();
         }
 
         /**
          * Adds a node (caller) and updates the pending list accordingly.
          */
-        public void addNode(Node n) {
+        public void addNode(RGNode n) {
             prepare();
-            graph.put(n, dk.brics.tajs.util.Collections.<Pair<Context, Node>, Set<Node>>newMap());
+            graph.put(n, dk.brics.tajs.util.Collections.<Pair<Context, RGNode>, Set<RGNode>>newMap());
             pending.add(n);
             if (log.isDebugEnabled())
                 log.debug("adding node " + n);
@@ -186,15 +187,15 @@ public final class UnknownValueResolver {
         /**
          * Removes and returns the next pending node.
          */
-        public Node getNextPending() {
+        public RGNode getNextPending() {
             return pending.remove();
         }
 
         /**
          * Returns the set of nodes.
          */
-        public Set<Node> getNodes() {
-            return graph != null ? graph.keySet() : java.util.Collections.<Node>emptySet();
+        public Set<RGNode> getNodes() {
+            return graph != null ? graph.keySet() : java.util.Collections.<RGNode>emptySet();
         }
 
         /**
@@ -208,14 +209,14 @@ public final class UnknownValueResolver {
          * Adds a node (caller) and an edge (from caller to callee) and updates the pending list accordingly.
          */
         public void addNodeAndEdge(
-                NodeAndContext<Context> caller,
+                AbstractNode call_node,
+                Context caller_context,
                 PropertyReference caller_prop,
                 Context edge_context,
-                Node callee) {
+                RGNode callee) {
             prepare();
-            Node caller_n =
-                    new Node(caller.getNode().getBlock(), caller.getContext(), caller_prop);
-            Map<Pair<Context, Node>, Set<Node>> t2 = graph.get(caller_n);
+            RGNode caller_n = new RGNode(call_node, caller_context, caller_prop);
+            Map<Pair<Context, RGNode>, Set<RGNode>> t2 = graph.get(caller_n);
             if (t2 == null) {
                 t2 = newMap();
                 graph.put(caller_n, t2);
@@ -223,8 +224,8 @@ public final class UnknownValueResolver {
                 if (log.isDebugEnabled())
                     log.debug("adding caller node " + caller_n);
             }
-            Node callee_functionentry_n =
-                    new Node(BlockAndContext.makeEntry(callee.getBlock(), callee.getContext()), callee.getPropertyReference());
+            BlockAndContext<Context> ce = BlockAndContext.makeEntry(callee.getNode().getBlock(), callee.getContext());
+            RGNode callee_functionentry_n = new RGNode(ce.getBlock().getFirstNode(), ce.getContext(), callee.getPropertyReference());
             Collections.addToMapSet(t2, Pair.make(edge_context, callee_functionentry_n), callee);
             if (log.isDebugEnabled())
                 log.debug("adding edge from node " + caller_n + " to node " + callee);
@@ -233,9 +234,9 @@ public final class UnknownValueResolver {
         /**
          * Returns the callees, grouped by function entry location.
          */
-        public Set<Entry<Pair<Context, Node>, Set<Node>>> getCallees(Node n) {
+        public Set<Entry<Pair<Context, RGNode>, Set<RGNode>>> getCallees(RGNode n) {
             return graph != null ? graph.get(n).entrySet() :
-                    java.util.Collections.<Entry<Pair<Context, Node>, Set<Node>>>emptySet();
+                    java.util.Collections.<Entry<Pair<Context, RGNode>, Set<RGNode>>>emptySet();
         }
 
         /**
@@ -243,20 +244,20 @@ public final class UnknownValueResolver {
          */
         public void setPolymorphic(BlockAndContext<Context> bc, PropertyReference p, Value v) {
             if (v != null && v.isPolymorphic())
-                original_polymorphic_value.put(new Node(bc, p), v);
+                original_polymorphic_value.put(new RGNode(bc.getBlock().getFirstNode(), bc.getContext(), p), v);
         }
 
         /**
          * Returns the original value for the given location, or null if not polymorphic.
          */
-        public Value getPolymorphic(BlockAndContext<Context> bc, PropertyReference p) {
-            return getPolymorphic(new Node(bc, p));
+        public Value getPolymorphic(AbstractNode n, Context c, PropertyReference p) {
+            return getPolymorphic(new RGNode(n, c, p));
         }
 
         /**
          * Returns the original value for the given location, or null if not polymorphic.
          */
-        public Value getPolymorphic(Node n) {
+        public Value getPolymorphic(RGNode n) {
             return original_polymorphic_value.get(n);
         }
     }
@@ -298,27 +299,25 @@ public final class UnknownValueResolver {
         RecoveryGraph g = new RecoveryGraph();
         State entry_state = getEntryState(s);
         if (entry_prop.prop1 != null && !isOK(entry_state, entry_prop.prop1, partial))
-            g.addNode(new Node(s.getBasicBlock(), s.getContext(), entry_prop.prop1));
+            g.addNode(new RGNode(s.getBasicBlock().getFirstNode(), s.getContext(), entry_prop.prop1));
         if (entry_prop.prop2 != null && !isOK(entry_state, entry_prop.prop2, partial))
-            g.addNode(new Node(s.getBasicBlock(), s.getContext(), entry_prop.prop2));
+            g.addNode(new RGNode(s.getBasicBlock().getFirstNode(), s.getContext(), entry_prop.prop2));
         while (!g.pendingIsEmpty()) {
-            Node n = g.getNextPending();
-            BlockAndContext<Context> n_entry = BlockAndContext.makeEntry(n.getBlock(), n.getContext());
+            RGNode n = g.getNextPending();
+            BlockAndContext<Context> n_entry = BlockAndContext.makeEntry(n.getNode().getBlock(), n.getContext());
             // remember whether the value is polymorphic at the entry location
-            State callee_functionentry_state = getEntryState(c, n.getContext(), n.getBlock());
+            State callee_functionentry_state = getEntryState(c, n.getContext(), n.getNode());
             if (!partial)
                 g.setPolymorphic(n_entry, n.getPropertyReference(), getValue(callee_functionentry_state, n.getPropertyReference()));
             // iterate through incoming call edges
-            for (Pair<NodeAndContext<Context>, Context> cs : c.getAnalysisLatticeElement().getCallGraph().getSources(n_entry)) {
-                NodeAndContext<Context> caller = cs.getFirst();
-                Context edge_context = cs.getSecond();
-                CallEdge call_edge = c.getAnalysisLatticeElement().getCallGraph().getCallEdge(caller.getNode(), caller.getContext(), n_entry.getBlock(), edge_context);
+            for (CallGraph.ReverseEdge<Context> cs : c.getAnalysisLatticeElement().getCallGraph().getSources(n_entry)) {
+                CallEdge call_edge = c.getAnalysisLatticeElement().getCallGraph().getCallEdge(cs.getCallNode(), cs.getCallerContext(), n_entry.getBlock(), cs.getEdgeContext());
                 State call_edge_state = call_edge.getState();
                 PropertyReference call_edge_prop = n.getPropertyReference();
                 if (isOK(call_edge_state, call_edge_prop, partial)) // value is available at the call edge
                     g.addRoot(n);
                 else { // need to go to the function entry of the caller
-                    State caller_functionentry_state = getEntryState(c, caller.getContext(), caller.getNode().getBlock());
+                    State caller_functionentry_state = getEntryState(c, cs.getCallerContext(), cs.getCallNode());
                     PropertyReferencePair caller_functionentry_prop = toEntry(call_edge_state, call_edge_prop);
                     if (partial && caller_functionentry_prop.prop1 != null && caller_functionentry_prop.prop2 != null) {
                         if (log.isDebugEnabled())
@@ -326,30 +325,28 @@ public final class UnknownValueResolver {
                         return recover(s, prop, false);
                     }
                     if (caller_functionentry_prop.prop1 != null)
-                        addRootOrPredecessors(n, caller, edge_context, caller_functionentry_state, caller_functionentry_prop.prop1, g, partial);
+                        addRootOrPredecessors(n, cs.getCallNode(), cs.getCallerContext(), cs.getEdgeContext(), caller_functionentry_state, caller_functionentry_prop.prop1, g, partial);
                     if (caller_functionentry_prop.prop2 != null)
-                        addRootOrPredecessors(n, caller, edge_context, caller_functionentry_state, caller_functionentry_prop.prop2, g, partial);
+                        addRootOrPredecessors(n, cs.getCallNode(), cs.getCallerContext(), cs.getEdgeContext(), caller_functionentry_state, caller_functionentry_prop.prop2, g, partial);
                 }
             }
         }
         if (Options.get().isStatisticsEnabled())
             c.getMonitoring().visitRecoveryGraph(g.getNumberOfNodes());
         // recover at roots
-        for (Node n : g.getRoots()) { // TODO: recover at roots as soon as we mark them as roots instead of having a separate phase?
-            State callee_functionentry_state = getEntryState(c, n.getContext(), n.getBlock());
+        for (RGNode n : g.getRoots()) { // TODO: recover at roots as soon as we mark them as roots instead of having a separate phase?
+            State callee_functionentry_state = getEntryState(c, n.getContext(), n.getNode());
             boolean changed = false;
-            BlockAndContext<Context> n_entry = BlockAndContext.makeEntry(n.getBlock(), n.getContext());
-            for (Pair<NodeAndContext<Context>, Context> cs : c.getAnalysisLatticeElement().getCallGraph().getSources(n_entry)) {
-                NodeAndContext<Context> caller = cs.getFirst();
-                Context edge_context = cs.getSecond();
-                CallEdge call_edge = c.getAnalysisLatticeElement().getCallGraph().getCallEdge(caller.getNode(), caller.getContext(), n_entry.getBlock(), edge_context);
+            BlockAndContext<Context> n_entry = BlockAndContext.makeEntry(n.getNode().getBlock(), n.getContext());
+            for (CallGraph.ReverseEdge<Context> cs : c.getAnalysisLatticeElement().getCallGraph().getSources(n_entry)) {
+                CallEdge call_edge = c.getAnalysisLatticeElement().getCallGraph().getCallEdge(cs.getCallNode(), cs.getCallerContext(), n_entry.getBlock(), cs.getEdgeContext());
                 State call_edge_state = call_edge.getState();
                 PropertyReference call_edge_prop = n.getPropertyReference();
                 if (isOK(call_edge_state, call_edge_prop, partial)) { // recover from call edge
-                    Value poly_at_n_entry = partial ? null : g.getPolymorphic(n_entry, n.getPropertyReference());
+                    Value poly_at_n_entry = partial ? null : g.getPolymorphic(n_entry.getBlock().getFirstNode(), n_entry.getContext(), n.getPropertyReference());
                     changed |= propagate(call_edge_state, call_edge_prop, callee_functionentry_state, n.getPropertyReference(), null, partial, true, poly_at_n_entry); // no summarization
                 } else { // recover from the function entry of the caller
-                    State caller_functionentry_state = getEntryState(c, caller.getContext(), caller.getNode().getBlock());
+                    State caller_functionentry_state = getEntryState(c, cs.getCallerContext(), cs.getCallNode());
                     PropertyReferencePair caller_functionentry_prop = toEntry(call_edge_state, call_edge_prop);
                     if (caller_functionentry_prop.prop1 != null)
                         changed |= recoverAtRootFromCallerFunctionEntry(n, caller_functionentry_state, caller_functionentry_prop.prop1, call_edge_state, call_edge_prop, callee_functionentry_state, partial, g);
@@ -364,41 +361,41 @@ public final class UnknownValueResolver {
             }
         }
         // propagate throughout the graph
-        Set<Node> pending2 = g.getRoots();
-        LinkedList<Node> pending_list2 = new LinkedList<>(pending2);
+        Set<RGNode> pending2 = g.getRoots();
+        LinkedList<RGNode> pending_list2 = new LinkedList<>(pending2);
         while (!pending2.isEmpty()) {
-            Node n = pending_list2.remove();
+            RGNode n = pending_list2.remove();
             pending2.remove(n);
-            State n_functionentry_state = getEntryState(c, n.getContext(), n.getBlock());
-            for (Entry<Pair<Context, Node>,
-                    Set<Node>> me : g.getCallees(n)) {
-                Node callee_functionentry_n = me.getKey().getSecond();
+            State n_functionentry_state = getEntryState(c, n.getContext(), n.getNode());
+            for (Entry<Pair<Context, RGNode>,
+                    Set<RGNode>> me : g.getCallees(n)) {
+                RGNode callee_functionentry_n = me.getKey().getSecond();
                 Context edge_context = me.getKey().getFirst();
-                CallEdge call_edge = c.getAnalysisLatticeElement().getCallGraph().getCallEdge(n.getBlock().getSingleNode(), n.getContext(),
-                        callee_functionentry_n.getBlock(), edge_context);
+                CallEdge call_edge = c.getAnalysisLatticeElement().getCallGraph().getCallEdge(n.getNode(), n.getContext(),
+                        callee_functionentry_n.getNode().getBlock(), edge_context);
                 State call_edge_state = call_edge.getState();
-                State callee_functionentry_state = c.getAnalysisLatticeElement().getState(callee_functionentry_n.getBlock(), callee_functionentry_n.getContext());
+                State callee_functionentry_state = c.getAnalysisLatticeElement().getState(callee_functionentry_n.getNode().getBlock(), callee_functionentry_n.getContext());
                 PropertyReference call_edge_prop = callee_functionentry_n.getPropertyReference();
                 Value value_at_call_edge = partial ? null : getValue(call_edge_state, call_edge_prop);
                 propagate(n_functionentry_state, n.getPropertyReference(), call_edge_state, call_edge_prop, call_edge_state.getSummarized(), partial, false, value_at_call_edge);
                 Value poly_at_callee_functionentry = partial ? null : g.getPolymorphic(callee_functionentry_n);
                 boolean changed = propagate(call_edge_state, call_edge_prop, callee_functionentry_state, callee_functionentry_n.getPropertyReference(), null, partial, true, poly_at_callee_functionentry);
                 if (changed) {
-                    for (Node callee_n : me.getValue()) {
+                    for (RGNode callee_n : me.getValue()) {
                         if (!pending2.contains(callee_n)) { // propagate further if changed
                             pending2.add(callee_n);
                             pending_list2.add(callee_n);
                         }
                     }
-                    s.getSolverInterface().getMonitoring().visitNewFlow(callee_functionentry_n.getBlock(), callee_functionentry_n.getContext(), callee_functionentry_state, null, "recover");
+                    s.getSolverInterface().getMonitoring().visitNewFlow(callee_functionentry_n.getNode().getBlock(), callee_functionentry_n.getContext(), callee_functionentry_state, null, "recover");
                     if (log.isDebugEnabled())
                         log.debug("recovered value at node " + n);
                 }
             }
         }
         if (Options.get().isDebugOrTestEnabled()) {
-            for (Node n : g.getNodes()) {
-                State n_entry_state = getEntryState(c, n.getContext(), n.getBlock());
+            for (RGNode n : g.getNodes()) {
+                State n_entry_state = getEntryState(c, n.getContext(), n.getNode());
                 if (!isOK(n_entry_state, n.getPropertyReference(), partial))
                     throw new AnalysisException("Unexpected value at " + n.getPropertyReference() + ", should have been recovered!?");
             }
@@ -415,13 +412,15 @@ public final class UnknownValueResolver {
      * Adds n as root to the recovery graph or proceeds backward through the call graph to add more nodes and edges.
      *
      * @param n                          recovery graph node being visited
-     * @param caller                     an incoming function call
+     * @param call_node                  an incoming function call
+     * @param caller_context             the context at the call node
      * @param edge_context               the context at the edge
      * @param caller_functionentry_state abstract state at the function entry of the caller
      * @param caller_functionentry_prop  the relevant property at the function entry of the caller
      */
-    private static void addRootOrPredecessors(Node n,
-                                              NodeAndContext<Context> caller,
+    private static void addRootOrPredecessors(RGNode n,
+                                              AbstractNode call_node,
+                                              Context caller_context,
                                               Context edge_context,
                                               State caller_functionentry_state,
                                               PropertyReference caller_functionentry_prop,
@@ -430,7 +429,7 @@ public final class UnknownValueResolver {
         if (isOK(caller_functionentry_state, caller_functionentry_prop, partial)) // value is available at the function entry of the caller
             g.addRoot(n);
         else
-            g.addNodeAndEdge(caller, caller_functionentry_prop, edge_context, n); // proceed backward through call graph
+            g.addNodeAndEdge(call_node, caller_context, caller_functionentry_prop, edge_context, n); // proceed backward through call graph
     }
 
     /**
@@ -439,7 +438,7 @@ public final class UnknownValueResolver {
      * @param n the recovery graph node
      * @return true if the value changed at n
      */
-    private static boolean recoverAtRootFromCallerFunctionEntry(Node n,
+    private static boolean recoverAtRootFromCallerFunctionEntry(RGNode n,
                                                                 State caller_functionentry_state,
                                                                 PropertyReference caller_functionentry_prop,
                                                                 State call_edge_state,
@@ -450,7 +449,8 @@ public final class UnknownValueResolver {
         if (isOK(caller_functionentry_state, caller_functionentry_prop, partial)) { // recover from entry of caller function
             Value value_at_call_edge = partial ? null : getValue(call_edge_state, call_edge_prop);
             propagate(caller_functionentry_state, caller_functionentry_prop, call_edge_state, call_edge_prop, call_edge_state.getSummarized(), partial, false, value_at_call_edge);
-            Value poly_at_callee_functionentry = partial ? null : g.getPolymorphic(BlockAndContext.makeEntry(n.getBlock(), n.getContext()), n.getPropertyReference());
+            BlockAndContext<Context> ce = BlockAndContext.makeEntry(n.getNode().getBlock(), n.getContext());
+            Value poly_at_callee_functionentry = partial ? null : g.getPolymorphic(ce.getBlock().getFirstNode(), ce.getContext(), n.getPropertyReference());
             return propagate(call_edge_state, call_edge_prop, callee_functionentry_state, n.getPropertyReference(), null, partial, true, poly_at_callee_functionentry);
         }
         return false;
@@ -620,14 +620,14 @@ public final class UnknownValueResolver {
      * The enclosing entry is the nearest for-in body entry or function entry.
      */
     private static State getEntryState(State s) {
-        return getEntryState(s.getSolverInterface(), s.getContext(), s.getBasicBlock());
+        return s.getSolverInterface().getAnalysisLatticeElement().getState(BlockAndContext.makeEntry(s.getBasicBlock(), s.getContext()));
     }
 
     /**
-     * Returns the enclosing entry state for the given block and context.
+     * Returns the enclosing entry state for the given node and context.
      */
-    private static State getEntryState(GenericSolver<State, Context, ?, ?, ?>.SolverInterface c, Context context, BasicBlock block) {
-        return c.getAnalysisLatticeElement().getState(BlockAndContext.makeEntry(block, context));
+    private static State getEntryState(GenericSolver<State, Context, CallEdge, ?, ?>.SolverInterface c, Context context, AbstractNode node) {
+        return c.getAnalysisLatticeElement().getState(BlockAndContext.makeEntry(node.getBlock(), context));
     }
 
     /**

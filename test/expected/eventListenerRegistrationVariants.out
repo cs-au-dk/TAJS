@@ -7,7 +7,7 @@ out/temp-sources/eventListenerRegistrationVariants.js:3:1: [maybe] Reading absen
 out/temp-sources/eventListenerRegistrationVariants.js:7:1: [maybe] Reading absent property addEventListener
 out/temp-sources/eventListenerRegistrationVariants.js:11:1: [maybe] Reading absent property addEventListener
 out/temp-sources/eventListenerRegistrationVariants.js:15:1: [maybe] Reading absent property addEventListener
-out/temp-sources/eventListenerRegistrationVariants.js:1:1: [maybe] Uncaught exception, constructed at [out/temp-sources/eventListenerRegistrationVariants.js:3:1, out/temp-sources/eventListenerRegistrationVariants.js:7:1, out/temp-sources/eventListenerRegistrationVariants.js:11:1, out/temp-sources/eventListenerRegistrationVariants.js:15:1]
+out/temp-sources/eventListenerRegistrationVariants.js: [maybe] Uncaught exception, constructed at [out/temp-sources/eventListenerRegistrationVariants.js:3:1, out/temp-sources/eventListenerRegistrationVariants.js:7:1, out/temp-sources/eventListenerRegistrationVariants.js:11:1, out/temp-sources/eventListenerRegistrationVariants.js:15:1]
 out/temp-sources/eventListenerRegistrationVariants.js:2:46: [info] Abstract value: "window.addEventListener('click', ...)"
 out/temp-sources/eventListenerRegistrationVariants.js:3:47: [info] Abstract value: "element.addEventListener('click', ...)"
 out/temp-sources/eventListenerRegistrationVariants.js:4:28: [info] Abstract value: "window.click = ..."

@@ -115,12 +115,32 @@ public final class Obj {
     /**
      * Sets all properties to none and scope to empty.
      */
-    private void setToNone() {
+    public void setToNone() {
         checkWritable();
         default_nonarray_property = default_array_property = internal_prototype = internal_value = Value.makeNone();
         properties = Collections.emptyMap();
+        scope = null;
         scope_unknown = false;
         writable_properties = false;
+    }
+
+    /**
+     * Copies all properties from the given object.
+     */
+    public void setTo(Obj x) {
+        checkWritable();
+        default_nonarray_property = x.default_nonarray_property;
+        default_array_property = x.default_array_property;
+        internal_prototype = x.internal_prototype;
+        internal_value = x.internal_value;
+        scope = x.scope;
+        scope_unknown = x.scope_unknown;
+        if (Options.get().isCopyOnWriteDisabled()) {
+            properties = newMap(x.properties);
+        } else {
+            properties = x.properties;
+            x.writable_properties = writable_properties = false;
+        }
     }
 
     /**
@@ -216,6 +236,7 @@ public final class Obj {
 
     /**
      * Checks whether some property has the none value.
+     * The internal scope property is ignored.
      */
     public boolean isSomeNone() {
         for (Value v : properties.values())
@@ -712,14 +733,16 @@ public final class Obj {
      * Checks whether this object contains the given object label.
      */
     public boolean containsObjectLabel(ObjectLabel objlabel) {
+        if (default_array_property.containsObjectLabel(objlabel) ||
+                default_nonarray_property.containsObjectLabel(objlabel) ||
+                internal_prototype.containsObjectLabel(objlabel) ||
+                internal_value.containsObjectLabel(objlabel)) {
+            return true;
+        }
         for (Value v : properties.values())
-            if (v.getObjectLabels().contains(objlabel))
+            if (v.containsObjectLabel(objlabel))
                 return true;
-        return default_array_property.getObjectLabels().contains(objlabel) ||
-                default_nonarray_property.getObjectLabels().contains(objlabel) ||
-                internal_prototype.getObjectLabels().contains(objlabel) ||
-                internal_value.getObjectLabels().contains(objlabel) ||
-                ScopeChain.containsObjectLabels(scope, objlabel);
+        return ScopeChain.containsObjectLabels(scope, objlabel);
     }
 
     /**

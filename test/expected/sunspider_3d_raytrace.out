@@ -32,7 +32,7 @@ test/sunspider/3d-raytrace.js:224:13: [maybe] Reading absent property reflection
 test/sunspider/3d-raytrace.js:239:32: [maybe] Reading absent property colour
 test/sunspider/3d-raytrace.js:243:42: [maybe] Reading absent property reflection
 test/sunspider/3d-raytrace.js:243:85: [maybe] Reading absent property reflection
-test/sunspider/3d-raytrace.js:1:1: [maybe] Uncaught exception, constructed at [test/sunspider/3d-raytrace.js:39:22, test/sunspider/3d-raytrace.js:43:5, test/sunspider/3d-raytrace.js:57:5, test/sunspider/3d-raytrace.js:76:22, test/sunspider/3d-raytrace.js:80:22, test/sunspider/3d-raytrace.js:84:20, test/sunspider/3d-raytrace.js:88:13, test/sunspider/3d-raytrace.js:167:13, test/sunspider/3d-raytrace.js:197:17, test/sunspider/3d-raytrace.js:207:18, test/sunspider/3d-raytrace.js:214:18, test/sunspider/3d-raytrace.js:239:32, test/sunspider/3d-raytrace.js:253:17, test/sunspider/3d-raytrace.js:304:13, test/sunspider/3d-raytrace.js:399:13, test/sunspider/3d-raytrace.js:416:24]
+test/sunspider/3d-raytrace.js: [maybe] Uncaught exception, constructed at [test/sunspider/3d-raytrace.js:39:22, test/sunspider/3d-raytrace.js:43:5, test/sunspider/3d-raytrace.js:57:5, test/sunspider/3d-raytrace.js:76:22, test/sunspider/3d-raytrace.js:80:22, test/sunspider/3d-raytrace.js:84:20, test/sunspider/3d-raytrace.js:88:13, test/sunspider/3d-raytrace.js:167:13, test/sunspider/3d-raytrace.js:197:17, test/sunspider/3d-raytrace.js:207:18, test/sunspider/3d-raytrace.js:214:18, test/sunspider/3d-raytrace.js:239:32, test/sunspider/3d-raytrace.js:253:17, test/sunspider/3d-raytrace.js:304:13, test/sunspider/3d-raytrace.js:399:13, test/sunspider/3d-raytrace.js:416:24]
 test/sunspider/3d-raytrace.js:57:5: [maybe] Conversion to number yields NaN
 test/sunspider/3d-raytrace.js:58:5: [maybe] Conversion to number yields NaN
 test/sunspider/3d-raytrace.js:59:5: [maybe] Conversion to number yields NaN
@@ -132,6 +132,7 @@ test/sunspider/3d-raytrace.js:416:18: [maybe] Converting null to string
 test/sunspider/3d-raytrace.js:416:18: [maybe] Converting undefined to string
 test/sunspider/3d-raytrace.js:416:24: [maybe] Reading absent property (computed name)
 test/sunspider/3d-raytrace.js:416:24: [maybe] Reading absent property (computed name)
+test/sunspider/3d-raytrace.js:448:26: [maybe] Converting object to number
 test/sunspider/3d-raytrace.js:450:1: [info] Abstract value: UInt
 test/sunspider/3d-raytrace.js:165:14: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/sunspider/3d-raytrace.js:166:14: [info] 'this' refers to multiple abstract objects, which may cause loss of precision

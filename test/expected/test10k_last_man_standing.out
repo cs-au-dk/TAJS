@@ -15,7 +15,7 @@ test/10k/last_man_standing.html:231:18: [maybe] TypeError, accessing property of
 test/10k/last_man_standing.html:232:17: [maybe] TypeError, inf or NaN as arguments to CanvasRenderingContext2D.putImageData
 test/10k/last_man_standing.html:240:18: [maybe] TypeError, accessing property of null/undefined
 test/10k/last_man_standing.html:261:13: [maybe] TypeError, inf or NaN as arguments to CanvasRenderingContext2D.putImageData
-test/10k/last_man_standing.html:30:32: [maybe] Uncaught exception, constructed at [test/10k/last_man_standing.html:40:29, test/10k/last_man_standing.html:40:50, test/10k/last_man_standing.html:42:13, test/10k/last_man_standing.html:43:13, test/10k/last_man_standing.html:44:13, test/10k/last_man_standing.html:206:18, test/10k/last_man_standing.html:215:13, test/10k/last_man_standing.html:219:21, test/10k/last_man_standing.html:231:18, test/10k/last_man_standing.html:240:18]
+test/10k/last_man_standing.html: [maybe] Uncaught exception, constructed at [test/10k/last_man_standing.html:40:29, test/10k/last_man_standing.html:40:50, test/10k/last_man_standing.html:42:13, test/10k/last_man_standing.html:43:13, test/10k/last_man_standing.html:44:13, test/10k/last_man_standing.html:206:18, test/10k/last_man_standing.html:215:13, test/10k/last_man_standing.html:219:21, test/10k/last_man_standing.html:231:18, test/10k/last_man_standing.html:240:18]
 test/10k/last_man_standing.html:40:29: [maybe] Reading absent property (computed name)
 test/10k/last_man_standing.html:40:50: [maybe] Reading absent property (computed name)
 test/10k/last_man_standing.html:40:50: [maybe] Reading absent property (computed name)

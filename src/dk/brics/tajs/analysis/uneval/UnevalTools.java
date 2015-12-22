@@ -93,7 +93,7 @@ public class UnevalTools {
             AbstractNode n = ns.get(idx);
 
             if (!effects_only && n instanceof LoadNode && ((LoadNode) n).getResultRegister() == var) {
-                String varStr = s.isRegisterDefined(var) ? Conversion.toString(UnknownValueResolver.getRealValue(s.readRegister(var), s), var, c).getStr() : null;
+                String varStr = s.isRegisterDefined(var) ? Conversion.toString(UnknownValueResolver.getRealValue(s.readRegister(var), s), c).getStr() : null;
 
                 if (varStr != null) {
                     // We know the value of the register but we still need to traverse the rest of the flow graph to get

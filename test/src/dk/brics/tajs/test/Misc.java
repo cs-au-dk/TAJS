@@ -120,11 +120,15 @@ public class Misc {
 	}
 
 	public static void runSourceWithNamedFile(String name, String... src) {
+		runSourceWithNamedFile(name, src, null);
+	}
+
+	public static void runSourceWithNamedFile(String name, String[] src, IAnalysisMonitoring monitoring) {
 		File dir = new File("out/temp-sources/");
-		if(!dir.exists()){
+		if (!dir.exists()) {
 			dir.mkdirs();
 		}
-		runSourceWithFile(new File(dir, name), src, null);
+		runSourceWithFile(new File(dir, name), src, monitoring);
 	}
 
 	public static void runSource(String... src) {

@@ -1,0 +1,42 @@
+test/1k2012love/1258.js:44:4: [definite] The assignment to I has no effect
+test/1k2012love/1258.js:44:6: [definite] The assignment to J has no effect
+test/1k2012love/1258.js:46:4: [definite] The conditional expression is always false
+test/1k2012love/1258.js:46:7: [definite] Variable W is null/undefined
+test/1k2012love/1258.js:48:4: [definite] The conditional expression is always false
+test/1k2012love/1258.js:48:7: [definite] Variable W is null/undefined
+test/1k2012love/1258.js:50:4: [definite] The conditional expression is always false
+test/1k2012love/1258.js:50:7: [definite] Variable W is null/undefined
+test/1k2012love/1258.js:52:4: [definite] The conditional expression is always false
+test/1k2012love/1258.js:52:7: [definite] Variable W is null/undefined
+test/1k2012love/1258.js:64:5: [definite] The assignment to X has no effect
+test/1k2012love/1258.js:65:5: [definite] The assignment to Y has no effect
+test/1k2012love/1258.js:45:6: [definite] Reading absent property which
+test/1k2012love/shim.js:6:5: [definite] The variable b is never used
+test/1k2012love/1258.js:2:29: [maybe] ReferenceError, reading absent variable innerHeight
+test/1k2012love/1258.js:3:3: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1258.js:11:5: [maybe] TypeError, call to non-function
+test/1k2012love/1258.js:12:5: [maybe] TypeError, call to non-function
+test/1k2012love/1258.js:31:5: [maybe] TypeError, call to non-function
+test/1k2012love/1258.js:35:5: [maybe] TypeError, call to non-function
+test/1k2012love/1258.js:63:5: [maybe] TypeError, call to non-function
+test/1k2012love/1258.js:66:5: [maybe] TypeError, call to non-function
+test/1k2012love/shim.js:8:9: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/shim.js:8:9: [maybe] TypeError, call to non-function
+test/1k2012love/shim.js:9:1: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1258.js:2:8: [maybe] Reading absent property style
+test/1k2012love/1258.js:3:3: [maybe] Reading absent property body
+test/1k2012love/1258.js:11:5: [maybe] Reading absent property F
+test/1k2012love/1258.js:12:5: [maybe] Reading absent property F
+test/1k2012love/1258.js:31:5: [maybe] Reading absent property C
+test/1k2012love/1258.js:35:5: [maybe] Reading absent property C
+test/1k2012love/1258.js:63:5: [maybe] Reading absent property C
+test/1k2012love/1258.js:66:5: [maybe] Reading absent property F
+test/1k2012love/shim.js:6:9: [maybe] Reading absent property body
+test/1k2012love/shim.js:8:9: [maybe] Reading absent property getContext
+test/1k2012love/shim.js:9:1: [maybe] Reading absent property body
+test/1k2012love/1258.js:2:29: [maybe] Conversion from string to number yields NaN
+test/1k2012love/1258.js:2:29: [maybe] The variable innerHeight has values with different types
+test/1k2012love/1258.js:58:7: [maybe] Reading absent property (computed name)
+test/1k2012love/1258.js:62:8: [maybe] Reading absent property (computed name)
+test/1k2012love/shim.js:7:9: [maybe] Reading absent property (computed name)
+test/1k2012love/shim.js,test/1k2012love/1258.js: [maybe] Uncaught exception, constructed at [test/1k2012love/1258.js:2:3, test/1k2012love/1258.js:2:29, test/1k2012love/1258.js:3:3, test/1k2012love/1258.js:11:5, test/1k2012love/1258.js:12:5, test/1k2012love/1258.js:31:5, test/1k2012love/1258.js:35:5, test/1k2012love/1258.js:63:5, test/1k2012love/1258.js:66:5, test/1k2012love/shim.js:8:9, test/1k2012love/shim.js:9:1]

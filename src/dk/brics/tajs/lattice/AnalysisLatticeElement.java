@@ -135,7 +135,6 @@ public class AnalysisLatticeElement implements
             if (Options.get().isNewFlowEnabled()) {
                 state_old = state_current.clone();
             }
-            state_current.checkOwner(b, c);
 //			if (Options.get().isIntermediateStatesEnabled() && localize) {
 //				if (log.isDebugEnabled())
 //                log.debug("before localization: " + s.toString());

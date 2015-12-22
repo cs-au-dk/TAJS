@@ -63,7 +63,7 @@ public class JSBoolean {
                 if (NativeFunctions.throwTypeErrorIfWrongKindOfThis(nativeobject, call, state, c, Kind.BOOLEAN))
                     return Value.makeNone();
                 Value val = state.readInternalValue(state.readThisObjects());
-                val = UnknownValueResolver.getRealValue(val, c.getCurrentState());
+                val = UnknownValueResolver.getRealValue(val, c.getState());
 
                 Value result = Value.makeNone();
                 if (val.isMaybeTrue()) {

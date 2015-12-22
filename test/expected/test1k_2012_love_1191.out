@@ -1,0 +1,36 @@
+test/1k2012love/1191.js:54:10: [definite] The conditional expression is always false
+test/1k2012love/1191.js:56:7: [definite] The assignment to i has no effect
+test/1k2012love/1191.js:61:7: [definite] The assignment to i has no effect
+test/1k2012love/1191.js:54:10: [definite] Reading absent property which
+test/1k2012love/shim.js:6:5: [definite] The variable b is never used
+test/1k2012love/1191.js:7:1: [maybe] TypeError, call to non-function
+test/1k2012love/1191.js:28:18: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1191.js:28:26: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1191.js:35:22: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1191.js:41:3: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1191.js:48:2: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1191.js:49:2: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1191.js:57:4: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1191.js:57:22: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1191.js:66:43: [maybe] TypeError, call to non-function
+test/1k2012love/shim.js:8:9: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/shim.js:8:9: [maybe] TypeError, call to non-function
+test/1k2012love/shim.js:9:1: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1191.js:7:1: [maybe] Reading absent property setAttribute
+test/1k2012love/1191.js:54:26: [maybe] Reading absent property button
+test/1k2012love/1191.js:66:43: [maybe] Reading absent property onmousemove
+test/1k2012love/shim.js:6:9: [maybe] Reading absent property body
+test/1k2012love/shim.js:8:9: [maybe] Reading absent property getContext
+test/1k2012love/shim.js:9:1: [maybe] Reading absent property body
+test/1k2012love/1191.js:22:20: [maybe] Converting primitive number to object
+test/1k2012love/1191.js:28:18: [maybe] Reading absent property (computed name)
+test/1k2012love/1191.js:28:26: [maybe] Reading absent property (computed name)
+test/1k2012love/1191.js:35:22: [maybe] Converting primitive number to object
+test/1k2012love/1191.js:35:22: [maybe] Reading absent property (computed name)
+test/1k2012love/1191.js:40:7: [maybe] Reading absent property (computed name)
+test/1k2012love/1191.js:48:2: [maybe] Reading absent property (computed name)
+test/1k2012love/1191.js:49:2: [maybe] Reading absent property (computed name)
+test/1k2012love/1191.js:57:4: [maybe] Reading absent property (computed name)
+test/1k2012love/1191.js:57:22: [maybe] Reading absent property (computed name)
+test/1k2012love/shim.js:7:9: [maybe] Reading absent property (computed name)
+test/1k2012love/shim.js,test/1k2012love/1191.js: [maybe] Uncaught exception, constructed at [test/1k2012love/1191.js:7:1, test/1k2012love/1191.js:28:18, test/1k2012love/1191.js:28:26, test/1k2012love/1191.js:35:22, test/1k2012love/1191.js:41:3, test/1k2012love/1191.js:48:2, test/1k2012love/1191.js:49:2, test/1k2012love/1191.js:57:4, test/1k2012love/1191.js:57:22, test/1k2012love/1191.js:66:43, test/1k2012love/shim.js:8:9, test/1k2012love/shim.js:9:1]

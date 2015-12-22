@@ -36,5 +36,5 @@ test/uneval/uneval23.html:7:28: [maybe] Reading absent property offsetWidth
 TAJS-dynamic-code(test/uneval/uneval23.html:68:16):1:24: [maybe] Converting object to string
 TAJS-dynamic-code(test/uneval/uneval23.html:68:16):1:24: [maybe] Converting primitive string to object
 TAJS-dynamic-code(test/uneval/uneval23.html:68:16):1:54: [maybe] Converting primitive string to object
-test/uneval/uneval23.html:2:9: [maybe] Uncaught exception, constructed at [TAJS-dynamic-code(test/uneval/uneval23.html:68:16):1:24, TAJS-dynamic-code(test/uneval/uneval23.html:68:16):1:54, test/uneval/uneval23.html:7:28, test/uneval/uneval23.html:73:9]
+test/uneval/uneval23.html: [maybe] Uncaught exception, constructed at [TAJS-dynamic-code(test/uneval/uneval23.html:68:16):1:24, TAJS-dynamic-code(test/uneval/uneval23.html:68:16):1:54, test/uneval/uneval23.html:7:28, test/uneval/uneval23.html:73:9]
 test/uneval/uneval23.html:62:37: [maybe] Conversion to number yields NaN

@@ -1,7 +1,8 @@
 /build
-/local.properties
+/antbuild
 /dist
 /out
 /doc
 .idea/workspace.xml
 **/*.iml
+/resources/local-development.properties

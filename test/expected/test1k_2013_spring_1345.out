@@ -1,0 +1,20 @@
+test/1k2013spring/shim.js:6:5: [definite] The variable b is never used
+test/1k2013spring/1345.js:74:41: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1345.js:76:41: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1345.js:77:40: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/shim.js:8:9: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/shim.js:8:9: [maybe] TypeError, call to non-function
+test/1k2013spring/shim.js:9:1: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/shim.js:6:9: [maybe] Reading absent property body
+test/1k2013spring/shim.js:8:9: [maybe] Reading absent property getContext
+test/1k2013spring/shim.js:9:1: [maybe] Reading absent property body
+test/1k2013spring/1345.js:47:33: [maybe] Converting undefined to string
+test/1k2013spring/1345.js:47:39: [maybe] Reading absent property (computed name)
+test/1k2013spring/1345.js:52:27: [maybe] Reading absent property (computed name)
+test/1k2013spring/1345.js:76:41: [maybe] Reading absent property (computed name)
+test/1k2013spring/1345.js:77:40: [maybe] Reading absent property (computed name)
+test/1k2013spring/1345.js:87:36: [maybe] Reading absent property (computed name)
+test/1k2013spring/1345.js:112:45: [maybe] Converting undefined to string
+test/1k2013spring/1345.js:112:51: [maybe] Reading absent property (computed name)
+test/1k2013spring/shim.js:7:9: [maybe] Reading absent property (computed name)
+test/1k2013spring/shim.js,test/1k2013spring/1345.js: [maybe] Uncaught exception, constructed at [test/1k2013spring/1345.js:52:21, test/1k2013spring/1345.js:74:41, test/1k2013spring/1345.js:76:41, test/1k2013spring/1345.js:77:40, test/1k2013spring/shim.js:8:9, test/1k2013spring/shim.js:9:1]

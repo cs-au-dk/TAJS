@@ -1,0 +1,226 @@
+test/1k2014dragons/shims.js:19:5: [definite] The assignment to AudioContext has no effect
+test/1k2014dragons/shims.js:19:5: [definite] The conditional expression is always true
+test/1k2014dragons/shims.js:22:5: [definite] Property is null/undefined
+test/1k2014dragons/shims.js:22:5: [definite] The conditional expression is always false
+test/1k2014dragons/shims.js:22:5: [definite] The conditional expression is always false
+test/1k2014dragons/shims.js:22:5: [definite] The conditional expression is always false
+test/1k2014dragons/shims.js:22:5: [definite] The conditional expression is always false
+test/1k2014dragons/shims.js:23:5: [definite] Reading absent property mozRequestAnimationFrame
+test/1k2014dragons/shims.js:24:5: [definite] Reading absent property webkitRequestAnimationFrame
+test/1k2014dragons/shims.js:25:5: [definite] Reading absent property msRequestAnimationFrame
+test/1k2014dragons/shims.js:41:19: [definite] Dead assignment, property antialias is never read
+test/1k2014dragons/shims.js:41:36: [definite] Dead assignment, property stencil is never read
+test/1k2014dragons/1824.js:64:23: [definite] Reading absent property (computed name)
+test/1k2014dragons/1824.js:65:22: [definite] Reading absent property (computed name)
+test/1k2014dragons/1824.js:129:8: [definite] The variable pos is never used
+test/1k2014dragons/1824.js:155:6: [definite] The variable x is never used
+test/1k2014dragons/1824.js:155:6: [definite] The variable y is never used
+test/1k2014dragons/1824.js:175:8: [definite] The variable x is never used
+test/1k2014dragons/1824.js:175:8: [definite] The variable y is never used
+test/1k2014dragons/1824.js:206:15: [definite] The variable pos is never used
+test/1k2014dragons/1824.js:245:8: [definite] The variable pos is never used
+test/1k2014dragons/1824.js:245:8: [definite] The variable x is never used
+test/1k2014dragons/1824.js:245:8: [definite] The variable y is never used
+test/1k2014dragons/shims.js:18:5: [definite] The variable AudioContext is never used
+test/1k2014dragons/shims.js:21:5: [definite] The variable requestAnimationFrame is never used
+test/1k2014dragons/shims.js:26:5: [definite] Unreachable function
+test/1k2014dragons/shims.js:37:5: [definite] The variable c is never used
+test/1k2014dragons/shims.js:39:5: [definite] The variable g is never used
+test/1k2014dragons/1824.js:60:3: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1824.js:64:3: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1824.js:64:23: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1824.js:121:14: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1824.js:124:7: [maybe] ReferenceError, reading absent variable W
+test/1k2014dragons/1824.js:133:30: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1824.js:133:52: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1824.js:133:65: [maybe] ReferenceError, reading absent variable W
+test/1k2014dragons/1824.js:138:30: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1824.js:138:52: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1824.js:138:65: [maybe] ReferenceError, reading absent variable W
+test/1k2014dragons/1824.js:143:30: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1824.js:143:52: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1824.js:143:65: [maybe] ReferenceError, reading absent variable W
+test/1k2014dragons/1824.js:148:30: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1824.js:148:52: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1824.js:148:65: [maybe] ReferenceError, reading absent variable W
+test/1k2014dragons/1824.js:151:8: [maybe] ReferenceError, reading absent variable W
+test/1k2014dragons/1824.js:176:5: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1824.js:176:5: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1824.js:179:11: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1824.js:180:9: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1824.js:181:15: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1824.js:183:11: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1824.js:183:11: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1824.js:183:65: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1824.js:183:94: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1824.js:187:7: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1824.js:188:11: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1824.js:190:11: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1824.js:190:11: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1824.js:190:65: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1824.js:190:94: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1824.js:191:11: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1824.js:191:11: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1824.js:194:9: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1824.js:198:5: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1824.js:215:31: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1824.js:217:23: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1824.js:217:37: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1824.js:219:25: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1824.js:221:9: [maybe] ReferenceError, reading absent variable W
+test/1k2014dragons/1824.js:222:7: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1824.js:222:21: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1824.js:228:9: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1824.js:228:25: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1824.js:246:10: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1824.js:246:22: [maybe] ReferenceError, reading absent variable R
+test/1k2014dragons/1824.js:251:7: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1824.js:252:7: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1824.js:253:7: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1824.js:256:9: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1824.js:256:9: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/shims.js:13:9: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/shims.js:13:9: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/shims.js:13:9: [maybe] TypeError, argument is not of expected type: Node.prototype
+test/1k2014dragons/shims.js:13:9: [maybe] TypeError, call to non-function
+test/1k2014dragons/shims.js:31:1: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/shims.js:34:1: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/shims.js:34:1: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/shims.js:35:1: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/shims.js:37:9: [maybe] TypeError, call to non-function
+test/1k2014dragons/shims.js:42:18: [maybe] TypeError, call to non-function
+test/1k2014dragons/shims.js:42:46: [maybe] TypeError, call to non-function
+test/1k2014dragons/shims.js:55:9: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1824.js:133:30: [maybe] Reading absent property value
+test/1k2014dragons/1824.js:133:41: [maybe] Reading absent property value
+test/1k2014dragons/1824.js:133:52: [maybe] Reading absent property value
+test/1k2014dragons/1824.js:138:30: [maybe] Reading absent property value
+test/1k2014dragons/1824.js:138:41: [maybe] Reading absent property value
+test/1k2014dragons/1824.js:138:52: [maybe] Reading absent property value
+test/1k2014dragons/1824.js:143:30: [maybe] Reading absent property value
+test/1k2014dragons/1824.js:143:41: [maybe] Reading absent property value
+test/1k2014dragons/1824.js:143:52: [maybe] Reading absent property value
+test/1k2014dragons/1824.js:148:30: [maybe] Reading absent property value
+test/1k2014dragons/1824.js:148:41: [maybe] Reading absent property value
+test/1k2014dragons/1824.js:148:52: [maybe] Reading absent property value
+test/1k2014dragons/1824.js:176:5: [maybe] Reading absent property el
+test/1k2014dragons/1824.js:178:9: [maybe] Reading absent property value
+test/1k2014dragons/1824.js:179:11: [maybe] Reading absent property el
+test/1k2014dragons/1824.js:179:11: [maybe] Reading absent property merge
+test/1k2014dragons/1824.js:180:9: [maybe] Reading absent property el
+test/1k2014dragons/1824.js:181:15: [maybe] Reading absent property el
+test/1k2014dragons/1824.js:181:15: [maybe] Reading absent property merge
+test/1k2014dragons/1824.js:183:11: [maybe] Reading absent property el
+test/1k2014dragons/1824.js:183:65: [maybe] Reading absent property value
+test/1k2014dragons/1824.js:183:94: [maybe] Reading absent property value
+test/1k2014dragons/1824.js:187:7: [maybe] Reading absent property el
+test/1k2014dragons/1824.js:188:11: [maybe] Reading absent property el
+test/1k2014dragons/1824.js:188:11: [maybe] Reading absent property merge
+test/1k2014dragons/1824.js:190:11: [maybe] Reading absent property el
+test/1k2014dragons/1824.js:190:65: [maybe] Reading absent property value
+test/1k2014dragons/1824.js:190:94: [maybe] Reading absent property value
+test/1k2014dragons/1824.js:191:11: [maybe] Reading absent property el
+test/1k2014dragons/1824.js:194:9: [maybe] Reading absent property el
+test/1k2014dragons/1824.js:194:63: [maybe] Reading absent property value
+test/1k2014dragons/1824.js:194:92: [maybe] Reading absent property value
+test/1k2014dragons/1824.js:197:12: [maybe] Reading absent property el
+test/1k2014dragons/1824.js:198:5: [maybe] Reading absent property el
+test/1k2014dragons/1824.js:215:31: [maybe] Reading absent property value
+test/1k2014dragons/1824.js:217:23: [maybe] Reading absent property value
+test/1k2014dragons/1824.js:217:37: [maybe] Reading absent property value
+test/1k2014dragons/1824.js:219:25: [maybe] Reading absent property value
+test/1k2014dragons/1824.js:222:7: [maybe] Reading absent property value
+test/1k2014dragons/1824.js:222:21: [maybe] Reading absent property value
+test/1k2014dragons/1824.js:225:23: [maybe] Reading absent property value
+test/1k2014dragons/1824.js:226:14: [maybe] Reading absent property value
+test/1k2014dragons/1824.js:227:13: [maybe] Reading absent property value
+test/1k2014dragons/1824.js:228:9: [maybe] Reading absent property el
+test/1k2014dragons/1824.js:228:25: [maybe] Reading absent property el
+test/1k2014dragons/1824.js:231:13: [maybe] Reading absent property el
+test/1k2014dragons/1824.js:232:17: [maybe] Reading absent property el
+test/1k2014dragons/1824.js:246:10: [maybe] Reading absent property value
+test/1k2014dragons/1824.js:252:7: [maybe] Reading absent property el
+test/1k2014dragons/1824.js:252:61: [maybe] Reading absent property value
+test/1k2014dragons/1824.js:252:90: [maybe] Reading absent property value
+test/1k2014dragons/1824.js:253:7: [maybe] Reading absent property el
+test/1k2014dragons/1824.js:254:14: [maybe] Reading absent property el
+test/1k2014dragons/1824.js:254:23: [maybe] Reading absent property pos
+test/1k2014dragons/1824.js:256:9: [maybe] Reading absent property el
+test/1k2014dragons/shims.js:10:9: [maybe] Reading absent property body
+test/1k2014dragons/shims.js:13:9: [maybe] Reading absent property parentNode
+test/1k2014dragons/shims.js:13:9: [maybe] Reading absent property removeChild
+test/1k2014dragons/shims.js:31:1: [maybe] Reading absent property body
+test/1k2014dragons/shims.js:34:1: [maybe] Reading absent property style
+test/1k2014dragons/shims.js:35:1: [maybe] Reading absent property style
+test/1k2014dragons/shims.js:37:9: [maybe] Reading absent property getContext
+test/1k2014dragons/shims.js:42:18: [maybe] Reading absent property getContext
+test/1k2014dragons/shims.js:42:46: [maybe] Reading absent property getContext
+test/1k2014dragons/shims.js:55:9: [maybe] Reading absent property body
+test/1k2014dragons/1824.js:64:23: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1824.js:64:23: [maybe] Converting primitive number to object
+test/1k2014dragons/1824.js:64:23: [maybe] Converting primitive string to object
+test/1k2014dragons/1824.js:64:23: [maybe] The variable pos has values with different types
+test/1k2014dragons/1824.js:65:22: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1824.js:65:22: [maybe] Converting primitive number to object
+test/1k2014dragons/1824.js:65:22: [maybe] Converting primitive string to object
+test/1k2014dragons/1824.js:65:22: [maybe] The variable pos has values with different types
+test/1k2014dragons/1824.js:70:17: [maybe] Converting object to string
+test/1k2014dragons/1824.js:70:17: [maybe] Converting object to string
+test/1k2014dragons/1824.js:70:17: [maybe] Converting primitive string to object
+test/1k2014dragons/1824.js:70:17: [maybe] Converting primitive string to object
+test/1k2014dragons/1824.js:100:62: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1824.js:100:83: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1824.js:101:56: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1824.js:101:77: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1824.js:115:13: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1824.js:133:14: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1824.js:138:14: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1824.js:143:14: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1824.js:148:14: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1824.js:183:31: [maybe] Converting undefined to string
+test/1k2014dragons/1824.js:183:56: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1824.js:190:31: [maybe] Converting undefined to string
+test/1k2014dragons/1824.js:190:56: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1824.js:194:29: [maybe] Converting undefined to string
+test/1k2014dragons/1824.js:194:54: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1824.js:197:21: [maybe] The variable pos has values with different types
+test/1k2014dragons/1824.js:206:5: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1824.js:206:5: [maybe] Converting object to number
+test/1k2014dragons/1824.js:206:5: [maybe] The variable opts has values with different types
+test/1k2014dragons/1824.js:209:9: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1824.js:209:9: [maybe] Converting object to number
+test/1k2014dragons/1824.js:209:9: [maybe] The variable opts has values with different types
+test/1k2014dragons/1824.js:210:12: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1824.js:210:12: [maybe] Converting object to number
+test/1k2014dragons/1824.js:210:12: [maybe] The variable opts has values with different types
+test/1k2014dragons/1824.js:212:12: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1824.js:212:12: [maybe] Converting object to number
+test/1k2014dragons/1824.js:212:12: [maybe] The variable opts has values with different types
+test/1k2014dragons/1824.js:215:17: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1824.js:217:11: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1824.js:217:11: [maybe] Converting object to number
+test/1k2014dragons/1824.js:217:11: [maybe] The variable opts has values with different types
+test/1k2014dragons/1824.js:219:12: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1824.js:219:12: [maybe] Converting object to number
+test/1k2014dragons/1824.js:219:12: [maybe] The variable opts has values with different types
+test/1k2014dragons/1824.js:222:7: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1824.js:225:11: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1824.js:225:11: [maybe] Converting object to number
+test/1k2014dragons/1824.js:225:11: [maybe] The variable opts has values with different types
+test/1k2014dragons/1824.js:226:9: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1824.js:235:16: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1824.js:235:16: [maybe] Converting object to number
+test/1k2014dragons/1824.js:235:16: [maybe] The variable opts has values with different types
+test/1k2014dragons/1824.js:250:14: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1824.js:252:27: [maybe] Converting undefined to string
+test/1k2014dragons/1824.js:252:52: [maybe] Conversion to number yields NaN
+test/1k2014dragons/shims.js:9:9: [maybe] Reading absent property (computed name)
+test/1k2014dragons/shims.js,test/1k2014dragons/1824.js: [maybe] Uncaught exception, constructed at [test/1k2014dragons/1824.js:60:3, test/1k2014dragons/1824.js:64:3, test/1k2014dragons/1824.js:64:23, test/1k2014dragons/1824.js:121:14, test/1k2014dragons/1824.js:124:7, test/1k2014dragons/1824.js:133:30, test/1k2014dragons/1824.js:133:52, test/1k2014dragons/1824.js:133:65, test/1k2014dragons/1824.js:138:30, test/1k2014dragons/1824.js:138:52, test/1k2014dragons/1824.js:138:65, test/1k2014dragons/1824.js:143:30, test/1k2014dragons/1824.js:143:52, test/1k2014dragons/1824.js:143:65, test/1k2014dragons/1824.js:148:30, test/1k2014dragons/1824.js:148:52, test/1k2014dragons/1824.js:148:65, test/1k2014dragons/1824.js:151:8, test/1k2014dragons/1824.js:176:5, test/1k2014dragons/1824.js:179:11, test/1k2014dragons/1824.js:180:9, test/1k2014dragons/1824.js:181:15, test/1k2014dragons/1824.js:183:11, test/1k2014dragons/1824.js:183:65, test/1k2014dragons/1824.js:183:94, test/1k2014dragons/1824.js:187:7, test/1k2014dragons/1824.js:188:11, test/1k2014dragons/1824.js:190:11, test/1k2014dragons/1824.js:190:65, test/1k2014dragons/1824.js:190:94, test/1k2014dragons/1824.js:191:11, test/1k2014dragons/1824.js:194:9, test/1k2014dragons/1824.js:198:5, test/1k2014dragons/1824.js:215:31, test/1k2014dragons/1824.js:217:23, test/1k2014dragons/1824.js:217:37, test/1k2014dragons/1824.js:219:25, test/1k2014dragons/1824.js:221:9, test/1k2014dragons/1824.js:222:7, test/1k2014dragons/1824.js:222:21, test/1k2014dragons/1824.js:228:9, test/1k2014dragons/1824.js:228:25, test/1k2014dragons/1824.js:246:10, test/1k2014dragons/1824.js:246:22, test/1k2014dragons/1824.js:251:7, test/1k2014dragons/1824.js:252:7, test/1k2014dragons/1824.js:253:7, test/1k2014dragons/1824.js:256:9, test/1k2014dragons/shims.js:13:9, test/1k2014dragons/shims.js:31:1, test/1k2014dragons/shims.js:34:1, test/1k2014dragons/shims.js:35:1, test/1k2014dragons/shims.js:37:9, test/1k2014dragons/shims.js:42:18, test/1k2014dragons/shims.js:42:46, test/1k2014dragons/shims.js:55:9]
+test/1k2014dragons/1824.js:171:3: [info] Writing to unknown property that may cause loss of precision
+test/1k2014dragons/1824.js:100:83: [info] Reading from unknown property that may cause loss of precision
+test/1k2014dragons/1824.js:101:77: [info] Reading from unknown property that may cause loss of precision
+test/1k2014dragons/1824.js:133:14: [info] Reading from unknown property that may cause loss of precision
+test/1k2014dragons/1824.js:138:14: [info] Reading from unknown property that may cause loss of precision
+test/1k2014dragons/1824.js:143:14: [info] Reading from unknown property that may cause loss of precision
+test/1k2014dragons/1824.js:148:14: [info] Reading from unknown property that may cause loss of precision
+test/1k2014dragons/1824.js:215:17: [info] Reading from unknown property that may cause loss of precision

@@ -1,6 +1,6 @@
-fg2: function()
+fg2: <main> function()
   block 0: [entry]
-    node 0: constant[undefined,v1] (test/flowgraphbuilder/switch_empty.js:1:1)
+    node 0: constant[undefined,v1] (test/flowgraphbuilder/switch_empty.js)
     node 1: function-decl[function f(),-] (test/flowgraphbuilder/switch_empty.js:1:1)
     ->[block 1]
   block 1:
@@ -17,22 +17,22 @@ fg2: function()
     node 6: read-variable['y',-,-]* (test/flowgraphbuilder/switch_empty.js:4:1)
     ->[block 5]
   block 5: [exit-ordinary]
-    node 7: return[v1] (test/flowgraphbuilder/switch_empty.js:1:1)
+    node 7: return[v1] (test/flowgraphbuilder/switch_empty.js)
     ->[]
   block 6: [exit-exceptional]
-    node 8: exceptional-return (test/flowgraphbuilder/switch_empty.js:1:1)
+    node 8: exceptional-return (test/flowgraphbuilder/switch_empty.js)
     ->[]
 function f()
   block 7: [entry]
     node 9: constant[undefined,v1] (test/flowgraphbuilder/switch_empty.js:1:1)
     ->[block 8]
   block 8: [exit-ordinary]
-    node 10: return[v1] (test/flowgraphbuilder/switch_empty.js:1:15)
+    node 10: return[v1] (test/flowgraphbuilder/switch_empty.js:1:1)
     ->[]
   block 9: [exit-exceptional]
-    node 11: exceptional-return (test/flowgraphbuilder/switch_empty.js:1:15)
+    node 11: exceptional-return (test/flowgraphbuilder/switch_empty.js:1:1)
     ->[]
 
 test/flowgraphbuilder/switch_empty.js:4:1: [definite] ReferenceError, reading absent variable y
 test/flowgraphbuilder/switch_empty.js:3:9: [definite] Variable op is null/undefined
-test/flowgraphbuilder/switch_empty.js:1:1: [maybe] Uncaught exception, constructed at [test/flowgraphbuilder/switch_empty.js:4:1]
+test/flowgraphbuilder/switch_empty.js: [maybe] Uncaught exception, constructed at [test/flowgraphbuilder/switch_empty.js:4:1]

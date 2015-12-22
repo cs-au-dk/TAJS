@@ -1,6 +1,6 @@
-fg2: function()
+fg2: <main> function()
   block 0: [entry]
-    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0156a.js:1:1)
+    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0156a.js)
     node 1: function-decl[function CSlider(c,t,n),-] (test/flowgraphbuilder/flowgraph_builder0156a.js:1:1)
     node 2: vardecl['cs1']* (test/flowgraphbuilder/flowgraph_builder0156a.js:13:5)
     ->[block 1]
@@ -31,31 +31,31 @@ fg2: function()
     node 18: <variable-non-null-undef>['cs1']* (test/flowgraphbuilder/flowgraph_builder0156a.js:15:1)
     ->[block 6]
   block 6:
-    node 19: nop(eventDispatchers: entry) (test/flowgraphbuilder/flowgraph_builder0156a.js:1:1)
+    node 19: nop(eventDispatchers: entry) (test/flowgraphbuilder/flowgraph_builder0156a.js)
     ->[block 7,block 8]
   block 7:
-    node 20: event-dispatcher <LOAD> (test/flowgraphbuilder/flowgraph_builder0156a.js:1:1)
+    node 20: event-dispatcher <LOAD> (test/flowgraphbuilder/flowgraph_builder0156a.js)
     ->[block 8]
   block 8:
-    node 21: nop(eventDispatchers: postLoad) (test/flowgraphbuilder/flowgraph_builder0156a.js:1:1)
+    node 21: nop(eventDispatchers: postLoad) (test/flowgraphbuilder/flowgraph_builder0156a.js)
     ->[block 7,block 9,block 10]
   block 9:
-    node 22: event-dispatcher <OTHER> (test/flowgraphbuilder/flowgraph_builder0156a.js:1:1)
+    node 22: event-dispatcher <OTHER> (test/flowgraphbuilder/flowgraph_builder0156a.js)
     ->[block 10]
   block 10:
-    node 23: nop(eventDispatchers: postOther) (test/flowgraphbuilder/flowgraph_builder0156a.js:1:1)
+    node 23: nop(eventDispatchers: postOther) (test/flowgraphbuilder/flowgraph_builder0156a.js)
     ->[block 9,block 11,block 12]
   block 11:
-    node 24: event-dispatcher <UNLOAD> (test/flowgraphbuilder/flowgraph_builder0156a.js:1:1)
+    node 24: event-dispatcher <UNLOAD> (test/flowgraphbuilder/flowgraph_builder0156a.js)
     ->[block 12]
   block 12:
-    node 25: nop(eventDispatchers: postUnload) (test/flowgraphbuilder/flowgraph_builder0156a.js:1:1)
+    node 25: nop(eventDispatchers: postUnload) (test/flowgraphbuilder/flowgraph_builder0156a.js)
     ->[block 11,block 13]
   block 13: [exit-ordinary]
-    node 26: return[v1] (test/flowgraphbuilder/flowgraph_builder0156a.js:1:1)
+    node 26: return[v1] (test/flowgraphbuilder/flowgraph_builder0156a.js)
     ->[]
   block 14: [exit-exceptional]
-    node 27: exceptional-return (test/flowgraphbuilder/flowgraph_builder0156a.js:1:1)
+    node 27: exceptional-return (test/flowgraphbuilder/flowgraph_builder0156a.js)
     ->[]
 function CSlider(c,t,n)
   block 15: [entry]
@@ -84,10 +84,10 @@ function CSlider(c,t,n)
     node 42: write-property[v10,'getCP',v9]* (test/flowgraphbuilder/flowgraph_builder0156a.js:7:5)
     ->[block 20]
   block 20: [exit-ordinary]
-    node 43: return[v1] (test/flowgraphbuilder/flowgraph_builder0156a.js:11:1)
+    node 43: return[v1] (test/flowgraphbuilder/flowgraph_builder0156a.js:1:1)
     ->[]
   block 21: [exit-exceptional]
-    node 44: exceptional-return (test/flowgraphbuilder/flowgraph_builder0156a.js:11:1)
+    node 44: exceptional-return (test/flowgraphbuilder/flowgraph_builder0156a.js:1:1)
     ->[]
 function(d,o)
   block 22: [entry]
@@ -123,10 +123,10 @@ function(d,o)
     node 64: write-property[v18,'np',v17]* (test/flowgraphbuilder/flowgraph_builder0156a.js:5:9)
     ->[block 28]
   block 28: [exit-ordinary]
-    node 65: return[v1] (test/flowgraphbuilder/flowgraph_builder0156a.js:6:5)
+    node 65: return[v1] (test/flowgraphbuilder/flowgraph_builder0156a.js:3:23)
     ->[]
   block 29: [exit-exceptional]
-    node 66: exceptional-return (test/flowgraphbuilder/flowgraph_builder0156a.js:6:5)
+    node 66: exceptional-return (test/flowgraphbuilder/flowgraph_builder0156a.js:3:23)
     ->[]
 function(d)
   block 30: [entry]
@@ -150,15 +150,15 @@ function(d)
     node 80: call[v3,v4,v5,v1] (test/flowgraphbuilder/flowgraph_builder0156a.js:8:16)
     ->[block 33]
   block 33: [exit-ordinary]
-    node 81: return[v1] (test/flowgraphbuilder/flowgraph_builder0156a.js:9:5)
+    node 81: return[v1] (test/flowgraphbuilder/flowgraph_builder0156a.js:7:18)
     ->[]
   block 34: [exit-exceptional]
-    node 82: exceptional-return (test/flowgraphbuilder/flowgraph_builder0156a.js:9:5)
+    node 82: exceptional-return (test/flowgraphbuilder/flowgraph_builder0156a.js:7:18)
     ->[]
 
 fg2: <main> function()
   block 0: [entry]
-    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0156a.js:1:1)
+    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0156a.js)
     node 1: function-decl[function CSlider(c,t,n),-] (test/flowgraphbuilder/flowgraph_builder0156a.js:1:1)
     node 2: vardecl['cs1']* (test/flowgraphbuilder/flowgraph_builder0156a.js:13:5)
     ->[block 1]
@@ -189,31 +189,31 @@ fg2: <main> function()
     node 18: <variable-non-null-undef>['cs1']* (test/flowgraphbuilder/flowgraph_builder0156a.js:15:1)
     ->[block 6]
   block 6:
-    node 19: nop(eventDispatchers: entry) (test/flowgraphbuilder/flowgraph_builder0156a.js:1:1)
+    node 19: nop(eventDispatchers: entry) (test/flowgraphbuilder/flowgraph_builder0156a.js)
     ->[block 7,block 8]
   block 7:
-    node 20: event-dispatcher <LOAD> (test/flowgraphbuilder/flowgraph_builder0156a.js:1:1)
+    node 20: event-dispatcher <LOAD> (test/flowgraphbuilder/flowgraph_builder0156a.js)
     ->[block 8]
   block 8:
-    node 21: nop(eventDispatchers: postLoad) (test/flowgraphbuilder/flowgraph_builder0156a.js:1:1)
+    node 21: nop(eventDispatchers: postLoad) (test/flowgraphbuilder/flowgraph_builder0156a.js)
     ->[block 7,block 9,block 10]
   block 9:
-    node 22: event-dispatcher <OTHER> (test/flowgraphbuilder/flowgraph_builder0156a.js:1:1)
+    node 22: event-dispatcher <OTHER> (test/flowgraphbuilder/flowgraph_builder0156a.js)
     ->[block 10]
   block 10:
-    node 23: nop(eventDispatchers: postOther) (test/flowgraphbuilder/flowgraph_builder0156a.js:1:1)
+    node 23: nop(eventDispatchers: postOther) (test/flowgraphbuilder/flowgraph_builder0156a.js)
     ->[block 9,block 11,block 12]
   block 11:
-    node 24: event-dispatcher <UNLOAD> (test/flowgraphbuilder/flowgraph_builder0156a.js:1:1)
+    node 24: event-dispatcher <UNLOAD> (test/flowgraphbuilder/flowgraph_builder0156a.js)
     ->[block 12]
   block 12:
-    node 25: nop(eventDispatchers: postUnload) (test/flowgraphbuilder/flowgraph_builder0156a.js:1:1)
+    node 25: nop(eventDispatchers: postUnload) (test/flowgraphbuilder/flowgraph_builder0156a.js)
     ->[block 11,block 13]
   block 13: [exit-ordinary]
-    node 26: return[v1] (test/flowgraphbuilder/flowgraph_builder0156a.js:1:1)
+    node 26: return[v1] (test/flowgraphbuilder/flowgraph_builder0156a.js)
     ->[]
   block 14: [exit-exceptional]
-    node 27: exceptional-return (test/flowgraphbuilder/flowgraph_builder0156a.js:1:1)
+    node 27: exceptional-return (test/flowgraphbuilder/flowgraph_builder0156a.js)
     ->[]
 function CSlider(c,t,n)
   block 15: [entry]
@@ -242,10 +242,10 @@ function CSlider(c,t,n)
     node 42: write-property[v10,'getCP',v9]* (test/flowgraphbuilder/flowgraph_builder0156a.js:7:5)
     ->[block 20]
   block 20: [exit-ordinary]
-    node 43: return[v1] (test/flowgraphbuilder/flowgraph_builder0156a.js:11:1)
+    node 43: return[v1] (test/flowgraphbuilder/flowgraph_builder0156a.js:1:1)
     ->[]
   block 21: [exit-exceptional]
-    node 44: exceptional-return (test/flowgraphbuilder/flowgraph_builder0156a.js:11:1)
+    node 44: exceptional-return (test/flowgraphbuilder/flowgraph_builder0156a.js:1:1)
     ->[]
 function(d,o)
   block 22: [entry]
@@ -284,10 +284,10 @@ function(d,o)
     node 64: write-property[v18,'np',v17]* (test/flowgraphbuilder/flowgraph_builder0156a.js:5:9)
     ->[block 28]
   block 28: [exit-ordinary]
-    node 65: return[v1] (test/flowgraphbuilder/flowgraph_builder0156a.js:6:5)
+    node 65: return[v1] (test/flowgraphbuilder/flowgraph_builder0156a.js:3:23)
     ->[]
   block 29: [exit-exceptional]
-    node 66: exceptional-return (test/flowgraphbuilder/flowgraph_builder0156a.js:6:5)
+    node 66: exceptional-return (test/flowgraphbuilder/flowgraph_builder0156a.js:3:23)
     ->[]
 function(d)
   block 30: [entry]
@@ -311,10 +311,10 @@ function(d)
     node 80: call[v3,v4,v5,v1] (test/flowgraphbuilder/flowgraph_builder0156a.js:8:16)
     ->[block 33]
   block 33: [exit-ordinary]
-    node 81: return[v1] (test/flowgraphbuilder/flowgraph_builder0156a.js:9:5)
+    node 81: return[v1] (test/flowgraphbuilder/flowgraph_builder0156a.js:7:18)
     ->[]
   block 34: [exit-exceptional]
-    node 82: exceptional-return (test/flowgraphbuilder/flowgraph_builder0156a.js:9:5)
+    node 82: exceptional-return (test/flowgraphbuilder/flowgraph_builder0156a.js:7:18)
     ->[]
 function()
   block 36: [entry]
@@ -330,15 +330,15 @@ function()
     node 89: call[v3,'move',v4,-]* (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0156a.js:4:23):1:1)
     ->[block 39]
   block 39: [exit-ordinary]
-    node 90: return[v1] (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0156a.js:4:23):1:14)
+    node 90: return[v1] (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0156a.js:4:23):1:1)
     ->[]
   block 40: [exit-exceptional]
-    node 91: exceptional-return (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0156a.js:4:23):1:14)
+    node 91: exceptional-return (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0156a.js:4:23):1:1)
     ->[]
 
 fg2: <main> function()
   block 0: [entry]
-    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0156a.js:1:1)
+    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0156a.js)
     node 1: function-decl[function CSlider(c,t,n),-] (test/flowgraphbuilder/flowgraph_builder0156a.js:1:1)
     node 2: vardecl['cs1']* (test/flowgraphbuilder/flowgraph_builder0156a.js:13:5)
     ->[block 1]
@@ -369,31 +369,31 @@ fg2: <main> function()
     node 18: <variable-non-null-undef>['cs1']* (test/flowgraphbuilder/flowgraph_builder0156a.js:15:1)
     ->[block 6]
   block 6:
-    node 19: nop(eventDispatchers: entry) (test/flowgraphbuilder/flowgraph_builder0156a.js:1:1)
+    node 19: nop(eventDispatchers: entry) (test/flowgraphbuilder/flowgraph_builder0156a.js)
     ->[block 7,block 8]
   block 7:
-    node 20: event-dispatcher <LOAD> (test/flowgraphbuilder/flowgraph_builder0156a.js:1:1)
+    node 20: event-dispatcher <LOAD> (test/flowgraphbuilder/flowgraph_builder0156a.js)
     ->[block 8]
   block 8:
-    node 21: nop(eventDispatchers: postLoad) (test/flowgraphbuilder/flowgraph_builder0156a.js:1:1)
+    node 21: nop(eventDispatchers: postLoad) (test/flowgraphbuilder/flowgraph_builder0156a.js)
     ->[block 7,block 9,block 10]
   block 9:
-    node 22: event-dispatcher <OTHER> (test/flowgraphbuilder/flowgraph_builder0156a.js:1:1)
+    node 22: event-dispatcher <OTHER> (test/flowgraphbuilder/flowgraph_builder0156a.js)
     ->[block 10]
   block 10:
-    node 23: nop(eventDispatchers: postOther) (test/flowgraphbuilder/flowgraph_builder0156a.js:1:1)
+    node 23: nop(eventDispatchers: postOther) (test/flowgraphbuilder/flowgraph_builder0156a.js)
     ->[block 9,block 11,block 12]
   block 11:
-    node 24: event-dispatcher <UNLOAD> (test/flowgraphbuilder/flowgraph_builder0156a.js:1:1)
+    node 24: event-dispatcher <UNLOAD> (test/flowgraphbuilder/flowgraph_builder0156a.js)
     ->[block 12]
   block 12:
-    node 25: nop(eventDispatchers: postUnload) (test/flowgraphbuilder/flowgraph_builder0156a.js:1:1)
+    node 25: nop(eventDispatchers: postUnload) (test/flowgraphbuilder/flowgraph_builder0156a.js)
     ->[block 11,block 13]
   block 13: [exit-ordinary]
-    node 26: return[v1] (test/flowgraphbuilder/flowgraph_builder0156a.js:1:1)
+    node 26: return[v1] (test/flowgraphbuilder/flowgraph_builder0156a.js)
     ->[]
   block 14: [exit-exceptional]
-    node 27: exceptional-return (test/flowgraphbuilder/flowgraph_builder0156a.js:1:1)
+    node 27: exceptional-return (test/flowgraphbuilder/flowgraph_builder0156a.js)
     ->[]
 function CSlider(c,t,n)
   block 15: [entry]
@@ -422,10 +422,10 @@ function CSlider(c,t,n)
     node 42: write-property[v10,'getCP',v9]* (test/flowgraphbuilder/flowgraph_builder0156a.js:7:5)
     ->[block 20]
   block 20: [exit-ordinary]
-    node 43: return[v1] (test/flowgraphbuilder/flowgraph_builder0156a.js:11:1)
+    node 43: return[v1] (test/flowgraphbuilder/flowgraph_builder0156a.js:1:1)
     ->[]
   block 21: [exit-exceptional]
-    node 44: exceptional-return (test/flowgraphbuilder/flowgraph_builder0156a.js:11:1)
+    node 44: exceptional-return (test/flowgraphbuilder/flowgraph_builder0156a.js:1:1)
     ->[]
 function(d,o)
   block 22: [entry]
@@ -464,10 +464,10 @@ function(d,o)
     node 64: write-property[v18,'np',v17]* (test/flowgraphbuilder/flowgraph_builder0156a.js:5:9)
     ->[block 28]
   block 28: [exit-ordinary]
-    node 65: return[v1] (test/flowgraphbuilder/flowgraph_builder0156a.js:6:5)
+    node 65: return[v1] (test/flowgraphbuilder/flowgraph_builder0156a.js:3:23)
     ->[]
   block 29: [exit-exceptional]
-    node 66: exceptional-return (test/flowgraphbuilder/flowgraph_builder0156a.js:6:5)
+    node 66: exceptional-return (test/flowgraphbuilder/flowgraph_builder0156a.js:3:23)
     ->[]
 function(d)
   block 30: [entry]
@@ -520,10 +520,10 @@ function(d)
     node 114: call[v18,v19,v20,v1] (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0156a.js:8:16):1:15)
     ->[block 33]
   block 33: [exit-ordinary]
-    node 81: return[v1] (test/flowgraphbuilder/flowgraph_builder0156a.js:9:5)
+    node 81: return[v1] (test/flowgraphbuilder/flowgraph_builder0156a.js:7:18)
     ->[]
   block 34: [exit-exceptional]
-    node 82: exceptional-return (test/flowgraphbuilder/flowgraph_builder0156a.js:9:5)
+    node 82: exceptional-return (test/flowgraphbuilder/flowgraph_builder0156a.js:7:18)
     ->[]
 function()
   block 36: [entry]
@@ -539,10 +539,10 @@ function()
     node 89: call[v3,'move',v4,-]* (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0156a.js:4:23):1:1)
     ->[block 39]
   block 39: [exit-ordinary]
-    node 90: return[v1] (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0156a.js:4:23):1:14)
+    node 90: return[v1] (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0156a.js:4:23):1:1)
     ->[]
   block 40: [exit-exceptional]
-    node 91: exceptional-return (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0156a.js:4:23):1:14)
+    node 91: exceptional-return (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0156a.js:4:23):1:1)
     ->[]
 
 TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0156a.js:8:16):1:24: [definite] TypeError, accessing property of null/undefined
@@ -556,4 +556,4 @@ test/flowgraphbuilder/flowgraph_builder0156a.js:1:1: [definite] The variable n i
 test/flowgraphbuilder/flowgraph_builder0156a.js:5:9: [definite] Unreachable code
 test/flowgraphbuilder/flowgraph_builder0156a.js:7:18: [definite] The variable d is never used
 test/flowgraphbuilder/flowgraph_builder0156a.js:15:1: [definite] Unreachable code
-test/flowgraphbuilder/flowgraph_builder0156a.js:1:1: [maybe] Uncaught exception, constructed at [TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0156a.js:8:16):1:24]
+test/flowgraphbuilder/flowgraph_builder0156a.js: [maybe] Uncaught exception, constructed at [TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0156a.js:8:16):1:24]

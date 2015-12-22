@@ -1,6 +1,5 @@
 test/10k/attractor.html:134:5: [definite] The conditional expression is always false
 test/10k/attractor.html:134:9: [definite] The conditional expression is always false
-test/10k/attractor.html:82:29: [definite] Dead assignment, property is never read
 test/10k/attractor.html:124:13: [definite] Dead assignment, property is never read
 test/10k/attractor.html:208:29: [definite] Dead assignment, property is never read
 test/10k/attractor.html:110:1: [definite] The variable h is never used
@@ -45,7 +44,7 @@ test/10k/attractor.html:338:23: [maybe] Reading absent property substr
 test/10k/attractor.html:338:59: [maybe] Reading absent property substr
 test/10k/attractor.html:338:95: [maybe] Reading absent property substr
 test/10k/attractor.html:421:23: [maybe] Reading absent property toDataURL
-test/10k/attractor.html:79:32: [maybe] Uncaught exception, constructed at [test/10k/attractor.html:88:12, test/10k/attractor.html:130:45, test/10k/attractor.html:136:25, test/10k/attractor.html:160:43, test/10k/attractor.html:181:47, test/10k/attractor.html:200:51, test/10k/attractor.html:206:16, test/10k/attractor.html:262:34, test/10k/attractor.html:323:27, test/10k/attractor.html:329:20, test/10k/attractor.html:338:23, test/10k/attractor.html:338:59, test/10k/attractor.html:338:95, test/10k/attractor.html:363:31, test/10k/attractor.html:364:31, test/10k/attractor.html:400:5, test/10k/attractor.html:410:5, test/10k/attractor.html:417:5, test/10k/attractor.html:420:5, test/10k/attractor.html:421:9, test/10k/attractor.html:421:23]
+test/10k/attractor.html: [maybe] Uncaught exception, constructed at [test/10k/attractor.html:88:12, test/10k/attractor.html:130:45, test/10k/attractor.html:136:25, test/10k/attractor.html:160:43, test/10k/attractor.html:181:47, test/10k/attractor.html:200:51, test/10k/attractor.html:206:16, test/10k/attractor.html:262:34, test/10k/attractor.html:323:27, test/10k/attractor.html:329:20, test/10k/attractor.html:338:23, test/10k/attractor.html:338:59, test/10k/attractor.html:338:95, test/10k/attractor.html:363:31, test/10k/attractor.html:364:31, test/10k/attractor.html:400:5, test/10k/attractor.html:410:5, test/10k/attractor.html:417:5, test/10k/attractor.html:420:5, test/10k/attractor.html:421:9, test/10k/attractor.html:421:23]
 test/10k/attractor.html:81:83: [maybe] Converting primitive string to object
 test/10k/attractor.html:82:37: [maybe] Converting primitive string to object
 test/10k/attractor.html:82:37: [maybe] Reading absent property (computed name)

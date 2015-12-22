@@ -1,6 +1,6 @@
-fg2: function()
+fg2: <main> function()
   block 0: [entry]
-    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0105.js:1:1)
+    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0105.js)
     ->[block 1]
   block 1:
     node 1: new[v2] (test/flowgraphbuilder/flowgraph_builder0105.js:1:5)
@@ -22,9 +22,9 @@ fg2: function()
     node 17: <property-non-null-undef>[v7,'b']* (test/flowgraphbuilder/flowgraph_builder0105.js:3:1)
     ->[block 2]
   block 2: [exit-ordinary]
-    node 18: return[v1] (test/flowgraphbuilder/flowgraph_builder0105.js:1:1)
+    node 18: return[v1] (test/flowgraphbuilder/flowgraph_builder0105.js)
     ->[]
   block 3: [exit-exceptional]
-    node 19: exceptional-return (test/flowgraphbuilder/flowgraph_builder0105.js:1:1)
+    node 19: exceptional-return (test/flowgraphbuilder/flowgraph_builder0105.js)
     ->[]
 

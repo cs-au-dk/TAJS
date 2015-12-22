@@ -1,0 +1,43 @@
+test/1k2013spring/1486.js:31:10: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1486.js:70:36: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1486.js:74:36: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1486.js:88:2: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1486.js:98:31: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1486.js:101:31: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1486.js:104:31: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1486.js:107:31: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1486.js:121:4: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1486.js:131:4: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1486.js:144:8: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1486.js:177:1: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/shim.js:8:9: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/shim.js:8:9: [maybe] TypeError, call to non-function
+test/1k2013spring/shim.js:9:1: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/shim.js:6:9: [maybe] Reading absent property body
+test/1k2013spring/shim.js:8:9: [maybe] Reading absent property getContext
+test/1k2013spring/shim.js:9:1: [maybe] Reading absent property body
+test/1k2013spring/1486.js:19:12: [maybe] Converting object to string
+test/1k2013spring/1486.js:19:12: [maybe] Converting primitive string to object
+test/1k2013spring/1486.js:31:10: [maybe] Reading absent property (computed name)
+test/1k2013spring/1486.js:31:10: [maybe] Reading absent property (computed name)
+test/1k2013spring/1486.js:70:21: [maybe] Reading absent property (computed name)
+test/1k2013spring/1486.js:70:36: [maybe] Reading absent property (computed name)
+test/1k2013spring/1486.js:70:36: [maybe] Reading absent property (computed name)
+test/1k2013spring/1486.js:74:21: [maybe] Reading absent property (computed name)
+test/1k2013spring/1486.js:74:36: [maybe] Reading absent property (computed name)
+test/1k2013spring/1486.js:74:36: [maybe] Reading absent property (computed name)
+test/1k2013spring/1486.js:88:2: [maybe] Reading absent property (computed name)
+test/1k2013spring/1486.js:98:31: [maybe] Reading absent property (computed name)
+test/1k2013spring/1486.js:98:31: [maybe] Reading absent property (computed name)
+test/1k2013spring/1486.js:101:31: [maybe] Reading absent property (computed name)
+test/1k2013spring/1486.js:101:31: [maybe] Reading absent property (computed name)
+test/1k2013spring/1486.js:104:31: [maybe] Reading absent property (computed name)
+test/1k2013spring/1486.js:104:31: [maybe] Reading absent property (computed name)
+test/1k2013spring/1486.js:107:31: [maybe] Reading absent property (computed name)
+test/1k2013spring/1486.js:107:31: [maybe] Reading absent property (computed name)
+test/1k2013spring/1486.js:121:4: [maybe] Reading absent property (computed name)
+test/1k2013spring/1486.js:131:4: [maybe] Reading absent property (computed name)
+test/1k2013spring/1486.js:144:8: [maybe] Reading absent property (computed name)
+test/1k2013spring/1486.js:144:8: [maybe] Reading absent property (computed name)
+test/1k2013spring/shim.js:7:9: [maybe] Reading absent property (computed name)
+test/1k2013spring/shim.js,test/1k2013spring/1486.js: [maybe] Uncaught exception, constructed at [test/1k2013spring/1486.js:31:10, test/1k2013spring/1486.js:70:36, test/1k2013spring/1486.js:74:36, test/1k2013spring/1486.js:88:2, test/1k2013spring/1486.js:98:31, test/1k2013spring/1486.js:101:31, test/1k2013spring/1486.js:104:31, test/1k2013spring/1486.js:107:31, test/1k2013spring/1486.js:121:4, test/1k2013spring/1486.js:131:4, test/1k2013spring/1486.js:144:8, test/1k2013spring/1486.js:177:1, test/1k2013spring/shim.js:8:9, test/1k2013spring/shim.js:9:1]

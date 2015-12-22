@@ -12,7 +12,7 @@ TAJS-dynamic-code(test/uneval/uneval30.html:29:12):1:15: [maybe] Reading absent 
 TAJS-dynamic-code(test/uneval/uneval30.html:29:12):1:15: [maybe] Reading absent property (computed name)
 TAJS-dynamic-code(test/uneval/uneval30.html:31:77):1:15: [maybe] Reading absent property (computed name)
 TAJS-dynamic-code(test/uneval/uneval30.html:33:93):1:15: [maybe] Reading absent property (computed name)
-test/uneval/uneval30.html:2:9: [maybe] Uncaught exception, constructed at [test/uneval/uneval30.html:29:12, test/uneval/uneval30.html:31:77, test/uneval/uneval30.html:33:93]
+test/uneval/uneval30.html: [maybe] Uncaught exception, constructed at [test/uneval/uneval30.html:29:12, test/uneval/uneval30.html:31:77, test/uneval/uneval30.html:33:93]
 test/uneval/uneval30.html:22:17: [maybe] Converting undefined to string
 test/uneval/uneval30.html:22:471: [maybe] Reading absent property (computed name)
 test/uneval/uneval30.html:26:17: [maybe] Converting undefined to string

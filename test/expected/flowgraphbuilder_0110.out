@@ -1,6 +1,6 @@
-fg2: function()
+fg2: <main> function()
   block 0: [entry]
-    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0110.js:1:1)
+    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0110.js)
     node 1: vardecl['x']* (test/flowgraphbuilder/flowgraph_builder0110.js:1:5)
     node 2: vardecl['y']* (test/flowgraphbuilder/flowgraph_builder0110.js:2:5)
     ->[block 1]
@@ -43,10 +43,10 @@ fg2: function()
     node 22: end-for-in(begin-node:15)* (test/flowgraphbuilder/flowgraph_builder0110.js:4:25)
     ->[block 10]
   block 10: [exit-ordinary]
-    node 23: return[v1] (test/flowgraphbuilder/flowgraph_builder0110.js:1:1)
+    node 23: return[v1] (test/flowgraphbuilder/flowgraph_builder0110.js)
     ->[]
   block 11: [exit-exceptional]
-    node 24: exceptional-return (test/flowgraphbuilder/flowgraph_builder0110.js:1:1)
+    node 24: exceptional-return (test/flowgraphbuilder/flowgraph_builder0110.js)
     ->[]
 
 test/flowgraphbuilder/flowgraph_builder0110.js:4:12: [definite] ReferenceError, reading absent variable z
@@ -55,4 +55,4 @@ test/flowgraphbuilder/flowgraph_builder0110.js:2:10: [definite] Dead assignment,
 test/flowgraphbuilder/flowgraph_builder0110.js:1:5: [definite] The variable x is never used
 test/flowgraphbuilder/flowgraph_builder0110.js:2:5: [definite] The variable y is never used
 test/flowgraphbuilder/flowgraph_builder0110.js:4:12: [definite] Unreachable code
-test/flowgraphbuilder/flowgraph_builder0110.js:1:1: [maybe] Uncaught exception, constructed at [test/flowgraphbuilder/flowgraph_builder0110.js:4:12]
+test/flowgraphbuilder/flowgraph_builder0110.js: [maybe] Uncaught exception, constructed at [test/flowgraphbuilder/flowgraph_builder0110.js:4:12]

@@ -89,11 +89,9 @@ public class DOMEventLoop {
             callState.writeProperty(DOMWindow.WINDOW, "event", event);
         }
 
-        c.setCurrentState(callState);
-        FunctionCalls.callFunction(
-                new FunctionCalls.EventHandlerCall(currentNode, Value.makeObject(handlers), event),
-                callState, c);
-        c.setCurrentState(currentState);
+        c.setState(callState);
+        FunctionCalls.callFunction(new FunctionCalls.EventHandlerCall(currentNode, Value.makeObject(handlers), event, callState), c);
+        c.setState(currentState);
     }
 
     public void multipleNondeterministicEventLoops(EventDispatcherNode n, State state, Solver.SolverInterface c) {

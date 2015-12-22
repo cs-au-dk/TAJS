@@ -1,0 +1,71 @@
+test/1k2013spring/1533.js:14:1: [definite] The assignment to P has no effect
+test/1k2013spring/1533.js:14:3: [definite] The assignment to J has no effect
+test/1k2013spring/1533.js:14:5: [definite] The assignment to I has no effect
+test/1k2013spring/1533.js:15:11: [definite] The variable t is never used
+test/1k2013spring/1533.js:19:1: [definite] The variable i is never used
+test/1k2013spring/1533.js:19:1: [definite] The variable j is never used
+test/1k2013spring/1533.js:50:15: [definite] The variable e is never used
+test/1k2013spring/1533.js:4:1: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1533.js:28:2: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1533.js:28:2: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1533.js:78:4: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1533.js:78:4: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1533.js:78:18: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1533.js:78:18: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1533.js:78:30: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1533.js:78:30: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1533.js:78:42: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1533.js:78:42: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1533.js:78:54: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1533.js:78:54: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1533.js:78:69: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1533.js:78:69: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1533.js:86:4: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1533.js:86:4: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1533.js:86:17: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1533.js:86:17: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1533.js:87:4: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1533.js:87:4: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1533.js:103:44: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1533.js:103:44: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1533.js:105:32: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1533.js:105:32: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1533.js:114:30: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1533.js:114:30: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1533.js:127:9: [maybe] RangeError, invalid value of array length
+test/1k2013spring/1533.js:130:3: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/shim.js:8:9: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/shim.js:8:9: [maybe] TypeError, call to non-function
+test/1k2013spring/shim.js:9:1: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/shim.js:6:9: [maybe] Reading absent property body
+test/1k2013spring/shim.js:8:9: [maybe] Reading absent property getContext
+test/1k2013spring/shim.js:9:1: [maybe] Reading absent property body
+test/1k2013spring/1533.js:28:2: [maybe] Reading absent property (computed name)
+test/1k2013spring/1533.js:28:2: [maybe] Reading absent property (computed name)
+test/1k2013spring/1533.js:78:4: [maybe] Reading absent property (computed name)
+test/1k2013spring/1533.js:78:4: [maybe] Reading absent property (computed name)
+test/1k2013spring/1533.js:78:18: [maybe] Reading absent property (computed name)
+test/1k2013spring/1533.js:78:18: [maybe] Reading absent property (computed name)
+test/1k2013spring/1533.js:78:30: [maybe] Reading absent property (computed name)
+test/1k2013spring/1533.js:78:30: [maybe] Reading absent property (computed name)
+test/1k2013spring/1533.js:78:42: [maybe] Reading absent property (computed name)
+test/1k2013spring/1533.js:78:42: [maybe] Reading absent property (computed name)
+test/1k2013spring/1533.js:78:54: [maybe] Reading absent property (computed name)
+test/1k2013spring/1533.js:78:54: [maybe] Reading absent property (computed name)
+test/1k2013spring/1533.js:78:69: [maybe] Reading absent property (computed name)
+test/1k2013spring/1533.js:78:69: [maybe] Reading absent property (computed name)
+test/1k2013spring/1533.js:86:4: [maybe] Reading absent property (computed name)
+test/1k2013spring/1533.js:86:4: [maybe] Reading absent property (computed name)
+test/1k2013spring/1533.js:86:17: [maybe] Reading absent property (computed name)
+test/1k2013spring/1533.js:86:17: [maybe] Reading absent property (computed name)
+test/1k2013spring/1533.js:87:4: [maybe] Reading absent property (computed name)
+test/1k2013spring/1533.js:87:4: [maybe] Reading absent property (computed name)
+test/1k2013spring/1533.js:103:44: [maybe] Reading absent property (computed name)
+test/1k2013spring/1533.js:103:44: [maybe] Reading absent property (computed name)
+test/1k2013spring/1533.js:105:32: [maybe] Reading absent property (computed name)
+test/1k2013spring/1533.js:105:32: [maybe] Reading absent property (computed name)
+test/1k2013spring/1533.js:114:30: [maybe] Reading absent property (computed name)
+test/1k2013spring/1533.js:114:30: [maybe] Reading absent property (computed name)
+test/1k2013spring/1533.js:130:3: [maybe] Reading absent property (computed name)
+test/1k2013spring/shim.js:7:9: [maybe] Reading absent property (computed name)
+test/1k2013spring/shim.js,test/1k2013spring/1533.js: [maybe] Uncaught exception, constructed at [test/1k2013spring/1533.js:4:1, test/1k2013spring/1533.js:28:2, test/1k2013spring/1533.js:78:4, test/1k2013spring/1533.js:78:18, test/1k2013spring/1533.js:78:30, test/1k2013spring/1533.js:78:42, test/1k2013spring/1533.js:78:54, test/1k2013spring/1533.js:78:69, test/1k2013spring/1533.js:86:4, test/1k2013spring/1533.js:86:17, test/1k2013spring/1533.js:87:4, test/1k2013spring/1533.js:103:44, test/1k2013spring/1533.js:105:32, test/1k2013spring/1533.js:114:30, test/1k2013spring/1533.js:127:9, test/1k2013spring/1533.js:130:3, test/1k2013spring/shim.js:8:9, test/1k2013spring/shim.js:9:1]

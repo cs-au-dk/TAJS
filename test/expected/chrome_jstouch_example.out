@@ -4,7 +4,7 @@ test/chromeexperiments/jstouch_example.html:28:13: [definite] Dead assignment, p
 test/chromeexperiments/jstouch_example.html:37:13: [definite] Dead assignment, property ow is never read
 test/chromeexperiments/jstouch_example.html:38:13: [definite] Dead assignment, property oh is never read
 test/chromeexperiments/jstouch_example.html:17:13: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/jstouch_example.html:9:36: [maybe] Uncaught exception, constructed at [test/chromeexperiments/jstouch_example.html:17:13]
+test/chromeexperiments/jstouch_example.html: [maybe] Uncaught exception, constructed at [test/chromeexperiments/jstouch_example.html:17:13]
 test/chromeexperiments/jstouch_example.html:50:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/chromeexperiments/jstouch_example.html:55:35: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/chromeexperiments/jstouch_example.html:55:53: [info] 'this' refers to multiple abstract objects, which may cause loss of precision

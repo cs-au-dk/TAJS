@@ -4,9 +4,9 @@ import dk.brics.tajs.flowgraph.BasicBlock;
 import dk.brics.tajs.flowgraph.FlowGraph;
 import dk.brics.tajs.flowgraph.FlowGraphFragment;
 import dk.brics.tajs.flowgraph.Function;
+import dk.brics.tajs.flowgraph.JavaScriptSource;
 import dk.brics.tajs.flowgraph.jsnodes.ConstantNode;
 import dk.brics.tajs.flowgraph.jsnodes.LoadNode;
-import dk.brics.tajs.htmlparser.JavaScriptSource;
 import dk.brics.tajs.util.Pair;
 
 import java.util.List;
@@ -57,7 +57,7 @@ public class FlowGraphMutator {
 
         // (a bit hacky way to indicate this, but it supports nested dynamic code, and simplifies the SourceLocation type)
         String fileName = String.format("TAJS-dynamic-code(%s)", extenderNode.getSourceLocation().toString());
-        FlowGraphBuilder flowGraphBuilder = new FlowGraphBuilder(env, functionAndBlocksManager);
+        FlowGraphBuilder flowGraphBuilder = new FlowGraphBuilder(env, functionAndBlocksManager, fileName);
         Function entryFunction;
         BasicBlock entryBlock;
         if (asTimeOutEvent) {

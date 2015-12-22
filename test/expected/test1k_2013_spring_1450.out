@@ -1,0 +1,26 @@
+test/1k2013spring/1450.js:167:2: [definite] ReferenceError, reading absent variable debug
+test/1k2013spring/1450.js:154:2: [definite] The assignment to yaw has no effect
+test/1k2013spring/1450.js:19:7: [definite] The variable w is never used
+test/1k2013spring/1450.js:63:33: [definite] The variable pitch is never used
+test/1k2013spring/1450.js:164:6: [definite] The variable vx is never used
+test/1k2013spring/1450.js:164:31: [definite] The variable vy is never used
+test/1k2013spring/1450.js:166:6: [definite] The variable frameRate is never used
+test/1k2013spring/1450.js:167:18: [definite] Unreachable code
+test/1k2013spring/shim.js:6:5: [definite] The variable b is never used
+test/1k2013spring/shim.js:8:9: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/shim.js:8:9: [maybe] TypeError, call to non-function
+test/1k2013spring/shim.js:9:1: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/shim.js:6:9: [maybe] Reading absent property body
+test/1k2013spring/shim.js:8:9: [maybe] Reading absent property getContext
+test/1k2013spring/shim.js:9:1: [maybe] Reading absent property body
+test/1k2013spring/1450.js:17:3: [maybe] Conversion to number yields NaN
+test/1k2013spring/1450.js:17:6: [maybe] Reading absent property (computed name)
+test/1k2013spring/1450.js:18:3: [maybe] Conversion to number yields NaN
+test/1k2013spring/1450.js:18:6: [maybe] Reading absent property (computed name)
+test/1k2013spring/1450.js:21:4: [maybe] Conversion to number yields NaN
+test/1k2013spring/1450.js:21:4: [maybe] Reading absent property (computed name)
+test/1k2013spring/1450.js:34:30: [maybe] Conversion to number yields NaN
+test/1k2013spring/1450.js:34:41: [maybe] Reading absent property (computed name)
+test/1k2013spring/1450.js:166:31: [maybe] Converting object to number
+test/1k2013spring/shim.js:7:9: [maybe] Reading absent property (computed name)
+test/1k2013spring/shim.js,test/1k2013spring/1450.js: [maybe] Uncaught exception, constructed at [test/1k2013spring/1450.js:167:2, test/1k2013spring/shim.js:8:9, test/1k2013spring/shim.js:9:1]

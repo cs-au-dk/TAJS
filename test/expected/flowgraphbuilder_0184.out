@@ -1,6 +1,6 @@
-fg2: function()
+fg2: <main> function()
   block 0: [entry]
-    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0184.js:1:1)
+    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0184.js)
     ->[block 1]
   block 1:
     node 1: constant[0.0,v3] (test/flowgraphbuilder/flowgraph_builder0184.js:1:10)
@@ -34,10 +34,10 @@ fg2: function()
     node 17: call[v13,v14,v15,-]* (test/flowgraphbuilder/flowgraph_builder0184.js:4:1)
     ->[block 8]
   block 8: [exit-ordinary]
-    node 18: return[v1] (test/flowgraphbuilder/flowgraph_builder0184.js:1:1)
+    node 18: return[v1] (test/flowgraphbuilder/flowgraph_builder0184.js)
     ->[]
   block 9: [exit-exceptional]
-    node 19: exceptional-return (test/flowgraphbuilder/flowgraph_builder0184.js:1:1)
+    node 19: exceptional-return (test/flowgraphbuilder/flowgraph_builder0184.js)
     ->[]
 
 test/flowgraphbuilder/flowgraph_builder0184.js:2:3: [info] Abstract value: UInt

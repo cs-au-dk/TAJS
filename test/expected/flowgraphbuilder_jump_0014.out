@@ -1,6 +1,6 @@
-fg2: function()
+fg2: <main> function()
   block 0: [entry]
-    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder_jump_0014.js:1:1)
+    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder_jump_0014.js)
     node 1: vardecl['p']* (test/flowgraphbuilder/flowgraph_builder_jump_0014.js:1:5)
     ->[block 1]
   block 1:
@@ -68,10 +68,10 @@ fg2: function()
     node 29: call[v17,v18,v19,-]* (test/flowgraphbuilder/flowgraph_builder_jump_0014.js:16:1)
     ->[block 19]
   block 19: [exit-ordinary]
-    node 30: return[v1] (test/flowgraphbuilder/flowgraph_builder_jump_0014.js:1:1)
+    node 30: return[v1] (test/flowgraphbuilder/flowgraph_builder_jump_0014.js)
     ->[]
   block 20: [exit-exceptional]
-    node 31: exceptional-return (test/flowgraphbuilder/flowgraph_builder_jump_0014.js:1:1)
+    node 31: exceptional-return (test/flowgraphbuilder/flowgraph_builder_jump_0014.js)
     ->[]
 
 test/flowgraphbuilder/flowgraph_builder_jump_0014.js:4:15: [definite] Dead assignment, property p is never read

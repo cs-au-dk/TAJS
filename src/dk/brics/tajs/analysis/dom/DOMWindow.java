@@ -424,7 +424,7 @@ public class DOMWindow {
                 if (!c.isScanning()) {
                     if (!callbackSourceCode.isNotStr()) {
                         if (Options.get().isUnevalizerEnabled()) {
-                            CallNode callNode = (CallNode) call.getSourceNode();
+                            CallNode callNode = (CallNode) call.getSourceNode(); // FIXME: may not be CallNode?
                             FlowGraph currFg = c.getFlowGraph();
                             NormalForm nf = UnevalTools.rebuildNormalForm(currFg, callNode, s, c);
 

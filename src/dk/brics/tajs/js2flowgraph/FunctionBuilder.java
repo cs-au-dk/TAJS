@@ -818,12 +818,6 @@ public class FunctionBuilder extends ParseTreeAuxVisitor<TranslationResult, AstE
 
         function.setMaxRegister(functionEnv.getRegisterManager().getRegister()); // assumes monotonically increasing register implementation
 
-        // patch source locations
-        SourceLocation functionEnd = makeSourceLocationEnd(body);
-        function.setSourceLocation(location);
-        function.getOrdinaryExit().getFirstNode().setSourceLocation(functionEnd);
-        function.getExceptionalExit().getFirstNode().setSourceLocation(functionEnd);
-
         return function;
     }
 

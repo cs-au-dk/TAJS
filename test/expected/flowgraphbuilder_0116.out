@@ -1,6 +1,6 @@
-fg2: function()
+fg2: <main> function()
   block 0: [entry]
-    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0116.js:1:1)
+    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0116.js)
     node 1: function-decl[function f(x),-] (test/flowgraphbuilder/flowgraph_builder0116.js:1:1)
     ->[block 1]
   block 1:
@@ -14,10 +14,10 @@ fg2: function()
     node 5: write-variable[v2,'a']* (test/flowgraphbuilder/flowgraph_builder0116.js:7:1)
     ->[block 4]
   block 4: [exit-ordinary]
-    node 6: return[v1] (test/flowgraphbuilder/flowgraph_builder0116.js:1:1)
+    node 6: return[v1] (test/flowgraphbuilder/flowgraph_builder0116.js)
     ->[]
   block 5: [exit-exceptional]
-    node 7: exceptional-return (test/flowgraphbuilder/flowgraph_builder0116.js:1:1)
+    node 7: exceptional-return (test/flowgraphbuilder/flowgraph_builder0116.js)
     ->[]
 function f(x)
   block 6: [entry]
@@ -28,10 +28,10 @@ function f(x)
     node 10: write-variable[v2,'g']* (test/flowgraphbuilder/flowgraph_builder0116.js:2:2)
     ->[block 8]
   block 8: [exit-ordinary]
-    node 11: return[v1] (test/flowgraphbuilder/flowgraph_builder0116.js:5:1)
+    node 11: return[v1] (test/flowgraphbuilder/flowgraph_builder0116.js:1:1)
     ->[]
   block 9: [exit-exceptional]
-    node 12: exceptional-return (test/flowgraphbuilder/flowgraph_builder0116.js:5:1)
+    node 12: exceptional-return (test/flowgraphbuilder/flowgraph_builder0116.js:1:1)
     ->[]
 function gg()
   block 10: [entry]
@@ -41,10 +41,10 @@ function gg()
     node 14: read-variable['x',v1,v2]* (test/flowgraphbuilder/flowgraph_builder0116.js:3:10)
     ->[block 12]
   block 12: [exit-ordinary]
-    node 15: return[v1] (test/flowgraphbuilder/flowgraph_builder0116.js:4:2)
+    node 15: return[v1] (test/flowgraphbuilder/flowgraph_builder0116.js:2:6)
     ->[]
   block 13: [exit-exceptional]
-    node 16: exceptional-return (test/flowgraphbuilder/flowgraph_builder0116.js:4:2)
+    node 16: exceptional-return (test/flowgraphbuilder/flowgraph_builder0116.js:2:6)
     ->[]
 
 test/flowgraphbuilder/flowgraph_builder0116.js:1:1: [definite] The variable x is never used

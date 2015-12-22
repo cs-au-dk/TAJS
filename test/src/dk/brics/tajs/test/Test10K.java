@@ -7,8 +7,8 @@ import dk.brics.tajs.monitoring.IAnalysisMonitoring;
 import dk.brics.tajs.monitoring.Monitoring;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.test.monitors.OrdinaryExitReachableCheckerMonitor;
+import dk.brics.tajs.util.AnalysisLimitationException;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 @SuppressWarnings("static-method")
@@ -30,6 +30,7 @@ public class Test10K {
 
     @Test
     public void test10k_10k_snake() throws Exception {
+        Options.get().enablePolyfillMDN();
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = { "test/10k/10k_snake.html" };
@@ -110,9 +111,9 @@ public class Test10K {
         Misc.checkSystemOutput();
     }
 
-    @Ignore // FIXME missing model of Array.prototype.filter
     @Test
     public void test10k_floating_bubbles() throws Exception {
+        Options.get().enablePolyfillMDN();
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = { "test/10k/floating_bubbles.html" };
@@ -175,8 +176,7 @@ public class Test10K {
         Misc.checkSystemOutput();
     }
 
-    @Ignore // See GitHub #147
-    @Test
+    @Test(expected = AnalysisLimitationException.class /* GitHub #147 */)
     public void test10k_nbody() throws Exception {
         Misc.init();
         Options.get().enableUnevalizer();

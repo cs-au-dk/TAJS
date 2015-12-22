@@ -1,9 +1,8 @@
-test/resig/ejohn80.js:1:1: [definite] The conditional expression is always false
-test/resig/ejohn80.js:17:1: [definite] The conditional expression is always true
-test/resig/ejohn80.js:17:6: [definite] Reading absent property forEach2
-test/resig/ejohn80.js:2:29: [definite] Unreachable function
-test/resig/ejohn80.js:9:25: [definite] Unreachable function
-test/resig/ejohn80.js:20:12: [maybe] Reading absent property (computed name)
-test/resig/ejohn80.js:27:3: [info] Abstract value: Undef|IdentStr
-test/resig/ejohn80.js:28:3: [info] Abstract value: UInt
-test/resig/ejohn80.js:29:3: [info] Abstract value: 3.0
+test/resig/ejohn80.js:3:8: [maybe] Reading absent property (computed name)
+test/resig/ejohn80.js:17:8: [maybe] Reading absent property (computed name)
+test/resig/ejohn80.js:9:3: [info] Abstract value: Undef|IdentStr
+test/resig/ejohn80.js:10:3: [info] Abstract value: UInt
+test/resig/ejohn80.js:11:3: [info] Abstract value: 3.0
+test/resig/ejohn80.js:23:3: [info] Abstract value: Undef|IdentStr
+test/resig/ejohn80.js:24:3: [info] Abstract value: UInt
+test/resig/ejohn80.js:25:3: [info] Abstract value: 3.0

@@ -14,4 +14,4 @@
 a = []
 a.length = { valueOf : function () { return 42; }}
 
-a.length
+TAJS_assert(a.length === 42);

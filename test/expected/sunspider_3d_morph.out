@@ -1,3 +1,4 @@
 test/sunspider/3d-morph.js:57:5: [maybe] Conversion to number yields NaN
 test/sunspider/3d-morph.js:57:19: [maybe] Reading absent property (computed name)
+test/sunspider/3d-morph.js:61:26: [maybe] Converting object to number
 test/sunspider/3d-morph.js:63:1: [info] Abstract value: UInt

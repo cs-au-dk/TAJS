@@ -1,2 +1,1 @@
-d = eval("function funfun(x) { funfun(x); }");
-d(3)
+TAJS_assert(eval("function f(){}") === undefined);

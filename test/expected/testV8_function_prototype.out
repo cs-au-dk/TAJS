@@ -1,12 +1,13 @@
+test/v8tests/function-prototype.js:36:34: [definite] Reading absent property __proto__
 test/v8tests/function-prototype.js:47:14: [definite] Reading absent property __proto__
 test/v8tests/function-prototype.js:50:32: [definite] Reading absent property __proto__
 test/v8tests/function-prototype.js:55:14: [definite] Reading absent property __proto__
 TAJS-dynamic-code(test/v8tests/function-prototype.js:94:11):1:13: [definite] Unreachable function
-test/v8tests/function-prototype.js:31:1: [definite] Unreachable function TestNonObjectPrototype
-test/v8tests/function-prototype.js:32:3: [definite] Unreachable function F
 test/v8tests/function-prototype.js:73:1: [definite] Unreachable function NoPrototypeYet
 test/v8tests/function-prototype.js:77:1: [definite] Unreachable function NonObjectPrototype
 test/v8tests/function-prototype.js:81:1: [definite] Unreachable function NoInitialMap
 test/v8tests/function-prototype.js:63:10: [maybe] Reading absent property prototype
+test/v8tests/function-prototype.js:33:17: [maybe] The variable value has values with different types
+test/v8tests/function-prototype.js:35:16: [maybe] The variable value has values with different types
 test/v8tests/function-prototype.js:63:10: [maybe] Converting primitive number to object
 test/v8tests/function-prototype.js:63:10: [maybe] The variable f has values with different types

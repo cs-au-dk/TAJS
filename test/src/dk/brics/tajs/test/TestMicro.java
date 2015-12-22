@@ -1,9 +1,11 @@
 package dk.brics.tajs.test;
 
+import dk.brics.tajs.Main;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.util.AnalysisException;
+import dk.brics.tajs.util.AnalysisLimitationException;
+import dk.brics.tajs.util.ParseError;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.junit.Assert.fail;
@@ -948,13 +950,11 @@ public class TestMicro {
 		Misc.checkSystemOutput();
 	}
 
-	@Test
-	public void micro_101() throws Exception { // TODO: should insert assume node automatically
+	@Test(expected = AssertionError.class /* GitHub #36 */)
+	public void micro_101() throws Exception {
 		Misc.init();
-		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test101.js"};
 		Misc.run(args);
-		Misc.checkSystemOutput();
 	}
 
 	@Test
@@ -1065,7 +1065,7 @@ public class TestMicro {
 		Misc.checkSystemOutput();
 	}
 
-	@Test(expected = AnalysisException.class)
+	@Test(expected = ParseError.class)
 	public void micro_114() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
@@ -1155,8 +1155,7 @@ public class TestMicro {
 		Misc.checkSystemOutput();
 	}
 
-	@Ignore // See https://github.com/cs-au-dk/TAJS-private/issues/191
-	@Test
+	@Test(expected = AssertionError.class /* GitHub #191 */)
 	public void micro_125() throws Exception {
 		Misc.init();
 		String[] args = {"test/micro/test125.js"};
@@ -1184,8 +1183,7 @@ public class TestMicro {
 		Misc.run(args);
 	}
 
-	@Ignore // See https://github.com/cs-au-dk/TAJS-private/issues/191
-	@Test
+	@Test(expected = AssertionError.class /* GitHub #191 */)
 	public void micro_125d () throws Exception {
 		Misc.init();
 		String[] args = {"test/micro/test125d.js"};
@@ -1351,8 +1349,7 @@ public class TestMicro {
 		Misc.checkSystemOutput();
 	}
 
-	@Ignore // TODO: getters/setters
-	@Test
+	@Test(expected = AssertionError.class /* GitHub #3 */)
 	public void micro_143() throws Exception {
 		fail("Add support for getters/setters");
 		Misc.init();
@@ -1362,8 +1359,7 @@ public class TestMicro {
 		Misc.checkSystemOutput();
 	}
 
-	@Ignore // TODO: getters/setters
-	@Test
+	@Test(expected = AssertionError.class /* GitHub #3 */)
 	public void micro_144() throws Exception {
 		fail("Add support for getters/setters");
 		Misc.init();
@@ -1382,8 +1378,7 @@ public class TestMicro {
 		Misc.checkSystemOutput();
 	}
 
-	@Ignore // FIXME: State (readPropertyRaw?) currently doesn't model ES5-style string index properties
-	@Test
+	@Test(expected = AssertionError.class /* GitHub #191 */)
 	public void micro_146() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
@@ -1681,7 +1676,7 @@ public class TestMicro {
 	}
 
 	@Test
-	public void micro_178() throws Exception { // FIXME: don't report "Reading absent property" when the read is used as a branch condition (see Monitoring.visitReadProperty)
+	public void micro_178() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test178.js"};
@@ -1689,8 +1684,7 @@ public class TestMicro {
 		Misc.checkSystemOutput();
 	}
 
-	@Ignore // FIXME: for-in, iterating over the chars of a string
-	@Test
+	@Test(expected = AssertionError.class /* GitHub #191 */)
 	public void micro_179() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
@@ -1717,24 +1711,22 @@ public class TestMicro {
 		Misc.checkSystemOutput();
 	}
 
-	@Ignore // FIXME: toString
 	@Test
 	public void micro_182() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test182.js"};
 		Misc.run(args);
-		fail(); // Misc.checkSystemOutput();
+		Misc.checkSystemOutput();
 	}
 
-	@Ignore // FIXME: valueOf
 	@Test
 	public void micro_183() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test183.js"};
 		Misc.run(args);
-		fail(); // Misc.checkSystemOutput();
+		Misc.checkSystemOutput();
 	}
 
 	@Test
@@ -1746,18 +1738,15 @@ public class TestMicro {
 		Misc.checkSystemOutput();
 	}
 
-	@Ignore // FIXME: Rounding error.
-	@Test
+	@Test(expected = AssertionError.class /* GitHub #243 */)
 	public void micro_185() throws Exception {
 		Misc.init();
-		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test185.js"};
 		Misc.run(args);
-		Misc.checkSystemOutput();
 	}
 
-	@Test
-	public void micro_186() throws Exception { // TODO: Improve precision, should give 0.
+	@Test(expected = AssertionError.class /* GitHub #244 */)
+	public void micro_186() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test186.js"};
@@ -1867,40 +1856,37 @@ public class TestMicro {
 		Misc.checkSystemOutput();
 	}
 
-	@Ignore // TODO enable once loop unrolling has been implemented
 	@Test
 	public void micro_203() throws Exception {
 		Misc.init();
+		Options.get().enableLoopUnrolling(100);
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test203.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
-	@Ignore // TODO enable once loop unrolling has been implemented
 	@Test
 	public void micro_204() throws Exception {
 		Misc.init();
+		Options.get().enableLoopUnrolling(100);
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test204.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
-	@Ignore // TODO enable once loop unrolling has been implemented
 	@Test
 	public void micro_205() throws Exception {
 		Misc.init();
-		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test205.js"};
 		Misc.run(args);
-		Misc.checkSystemOutput();
 	}
 
-	@Ignore // TODO enable once loop unrolling has been implemented
 	@Test
 	public void micro_206() throws Exception {
 		Misc.init();
+		Options.get().enableLoopUnrolling(100);
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test206.js"};
 		Misc.run(args);
@@ -1979,7 +1965,7 @@ public class TestMicro {
 		Misc.init();
 		Misc.captureSystemOutput();
 		Options.get().enableUnevalizer();
-		String[] args = {"test/micro/testEval.js"}; // TODO: unevalable eval
+		String[] args = {"test/micro/testEval.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -2057,13 +2043,11 @@ public class TestMicro {
 		Misc.checkSystemOutput();
 	}
 
-	@Test // TODO: Check output; Handle valueOf/toString correctly. testToPrimitive.js
-	public void micro_testToPrimitive() throws Exception { // TODO: testToPrimitive.js:19:1: [info] Abstract value: Str => could be "xy*"
+	@Test
+	public void micro_testToPrimitive() throws Exception {
 		Misc.init();
-		Misc.captureSystemOutput();
 		String[] args = {"test/micro/testToPrimitive.js"};
 		Misc.run(args);
-		Misc.checkSystemOutput();
 	}
 
 	@Test
@@ -2210,16 +2194,6 @@ public class TestMicro {
 		Misc.checkSystemOutput();
 	}
 
-    @Ignore // see https://github.com/cs-au-dk/TAJS-private/issues/112 - expected output has been handcrafted to succeed on new implementation
-    @Test
-    public void micro_testLazyAndOrLinearization() throws Exception {
-        Misc.init();
-        Misc.captureSystemOutput();
-        String[] args = {"test/micro/testLazyAndOrLinearization.js"};
-        Misc.run(args);
-        Misc.checkSystemOutput();
-    }
-
 	@Test
 	public void micro_testDeadAssignmentsAndDPAs() throws Exception {
 		Misc.init();
@@ -2305,13 +2279,20 @@ public class TestMicro {
 		Misc.init();
 		Options.get().enableUnevalizer();
 		Misc.runSource(
-				// See GitHub #147
-				// "TAJS_assert((typeof new Function()) === 'function');",
-				// "TAJS_assert(new Function()() === undefined);",
 				"TAJS_assert((typeof new Function('')) === 'function');",
 				"TAJS_assert(new Function('')() === undefined);",
 				"TAJS_assert((typeof new Function('', '')) === 'function');",
 				"TAJS_assert(new Function('', '')() === undefined);"
+		);
+	}
+
+	@Test(expected = AnalysisLimitationException.class /* GitHub #147 */)
+	public void micro_testEmtyFunctionConstructor() throws Exception {
+		Misc.init();
+		Options.get().enableUnevalizer();
+		Misc.runSource(
+				"TAJS_assert((typeof new Function()) === 'function');",
+				"TAJS_assert(new Function()() === undefined);"
 		);
 	}
 
@@ -2579,8 +2560,7 @@ public class TestMicro {
 				"");
 	}
 
-	@Ignore // TODO enable and fail graciously
-	@Test
+	@Test(expected = AnalysisException.class)
 	public void testLargeFunctionBody_1944_calls() throws Exception {
 		Misc.init();
 		// should not crash
@@ -2588,8 +2568,7 @@ public class TestMicro {
 		Misc.run(args);
 	}
 
-	@Ignore // TODO enable and fail graciously
-	@Test
+	@Test(expected = AnalysisException.class)
 	public void testLargeFunctionBody_3888_calls() throws Exception {
 		Misc.init();
 		// should not crash
@@ -2883,12 +2862,157 @@ public class TestMicro {
 				"");
 	}
 
-	@Ignore // see GitHub issue #223
-	@Test
+	@Test(expected = AssertionError.class /* GitHub #223 */)
 	public void unicodeCharAtTest_file(){
 		Misc.init();
 		String[] args = {"test/micro/unicodeCharAtTest.js"};
 		Misc.run(args);
+	}
+
+	@Test // Regression for GitHub issue #236
+	public void absentPresentRecovery_regression() {
+		Main.reset();
+		Options.get().enableTest();
+		Options.get().enableContextSensitiveHeap();
+		Options.get().enableParameterSensitivity();
+		Options.get().enableLoopUnrolling(1);
+
+		Misc.init();
+		String[] args = {"test/micro/absent-present.js"};
+		Misc.run(args);
+	}
+
+	@Test
+	public void testToString1() {
+		Misc.init();
+		Misc.captureSystemOutput();
+		String[] args = {"test/micro/toString1.js"};
+		Misc.run(args);
+		Misc.checkSystemOutput();
+	}
+
+	@Test
+	public void testToString2() {
+		Misc.init();
+		Misc.captureSystemOutput();
+		String[] args = {"test/micro/toString2.js"};
+		Misc.run(args);
+		Misc.checkSystemOutput();
+	}
+
+	@Test
+	public void testToString3() {
+		Misc.init();
+		Misc.captureSystemOutput();
+		String[] args = {"test/micro/toString3.js"};
+		Misc.run(args);
+		Misc.checkSystemOutput();
+	}
+
+	@Test
+	public void testToString4() {
+		Misc.init();
+		Misc.captureSystemOutput();
+		String[] args = {"test/micro/toString4.js"};
+		Misc.run(args);
+		Misc.checkSystemOutput();
+	}
+
+	@Test
+	public void testToString5() {
+		Misc.init();
+		Misc.captureSystemOutput();
+		String[] args = {"test/micro/toString5.js"};
+		Misc.run(args);
+		Misc.checkSystemOutput();
+	}
+
+	@Test
+	public void arrayLengthNaN() {
+		Misc.init();
+		Misc.runSource("",
+				"var arr = [];",
+				"arr.length = Math.random()? 42: undefined;",
+				"TAJS_assert(arr.length, 'isMaybeNumUInt');",
+				"");
+	}
+
+	@Test(expected = AssertionError.class /* current implementation only throws a maybe-error */)
+	public void invalidArrayLengthThrows() {
+		Misc.init();
+		Misc.runSource("",
+				"var arr = [];",
+				"arr.length = undefined;", // should throw a definite exception
+				"TAJS_assert(false);",
+				"");
+	}
+
+	@Test
+	public void arraysort1() throws Exception {
+		Misc.init();
+		Misc.captureSystemOutput();
+		String[] args = {"test/micro/arraysort1.js"};
+		Misc.run(args);
+		Misc.checkSystemOutput();
+	}
+
+	@Test
+	public void arraysort2() throws Exception {
+		Misc.init();
+		Misc.captureSystemOutput();
+		String[] args = {"test/micro/arraysort2.js"};
+		Misc.run(args);
+		Misc.checkSystemOutput();
+	}
+
+	@Test
+	public void typeofNative1() {
+		Misc.init();
+		Misc.runSource("",
+				"TAJS_assert(typeof Number === 'function');",
+				"");
+	}
+
+	@Test
+	public void typeofNative2() {
+		Misc.init();
+		Misc.runSource("",
+				"TAJS_assert(typeof Date === 'function');",
+				"");
+	}
+
+	@Test
+	public void emptyblock() {
+		Misc.init();
+		Options.get().enableFlowgraph();
+		Misc.runSource("",
+				"function f () {",
+				"}",
+				"function g () {",
+				"}",
+				"function h() {",
+				"  while (true){",
+				"    f[f] = function () { g(); };",
+				"  }",
+				"}",
+				"h();",
+				"");
+	}
+
+	@Test(expected = AnalysisException.class /* github #257 */)
+	public void castbug() {
+		Misc.init();
+		Options.get().enableUnevalizer();
+		Options.get().enableIncludeDom();
+		Misc.runSource("setTimeout(Function,0);");
+	}
+
+	@Test
+	public void indirecteval() {
+		Misc.init();
+//		Options.get().enableUnevalizer();
+		Options.get().enableIncludeDom();
+		Misc.runSource("document.addEventListener(\"DOMContentLoaded\", eval);");
 	}
 
 }

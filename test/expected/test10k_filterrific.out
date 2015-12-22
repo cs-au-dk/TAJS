@@ -74,7 +74,7 @@ test/10k/filterrific.html:631:13: [maybe] Reading absent property style
 test/10k/filterrific.html:646:23: [maybe] Reading absent property b
 test/10k/filterrific.html:647:17: [maybe] Reading absent property style
 test/10k/filterrific.html:648:23: [maybe] Reading absent property toFixed
-test/10k/filterrific.html:244:13: [maybe] Uncaught exception, constructed at [test/10k/filterrific.html:253:16, test/10k/filterrific.html:257:16, test/10k/filterrific.html:260:9, test/10k/filterrific.html:266:13, test/10k/filterrific.html:270:9, test/10k/filterrific.html:283:38, test/10k/filterrific.html:299:9, test/10k/filterrific.html:299:19, test/10k/filterrific.html:333:9, test/10k/filterrific.html:339:13, test/10k/filterrific.html:339:29, test/10k/filterrific.html:340:13, test/10k/filterrific.html:341:13, test/10k/filterrific.html:358:13, test/10k/filterrific.html:363:29, test/10k/filterrific.html:378:9, test/10k/filterrific.html:384:9, test/10k/filterrific.html:386:13, test/10k/filterrific.html:396:16, test/10k/filterrific.html:418:18, test/10k/filterrific.html:424:13, test/10k/filterrific.html:442:61, test/10k/filterrific.html:461:21, test/10k/filterrific.html:465:23, test/10k/filterrific.html:474:84, test/10k/filterrific.html:478:17, test/10k/filterrific.html:549:21, test/10k/filterrific.html:575:9, test/10k/filterrific.html:588:13, test/10k/filterrific.html:608:13, test/10k/filterrific.html:616:9, test/10k/filterrific.html:616:24, test/10k/filterrific.html:631:13, test/10k/filterrific.html:638:9, test/10k/filterrific.html:639:17, test/10k/filterrific.html:640:34, test/10k/filterrific.html:646:23, test/10k/filterrific.html:647:17, test/10k/filterrific.html:648:23, test/10k/filterrific.html:652:9]
+test/10k/filterrific.html: [maybe] Uncaught exception, constructed at [test/10k/filterrific.html:253:16, test/10k/filterrific.html:257:16, test/10k/filterrific.html:260:9, test/10k/filterrific.html:266:13, test/10k/filterrific.html:270:9, test/10k/filterrific.html:283:38, test/10k/filterrific.html:299:9, test/10k/filterrific.html:299:19, test/10k/filterrific.html:333:9, test/10k/filterrific.html:339:13, test/10k/filterrific.html:339:29, test/10k/filterrific.html:340:13, test/10k/filterrific.html:341:13, test/10k/filterrific.html:358:13, test/10k/filterrific.html:363:29, test/10k/filterrific.html:378:9, test/10k/filterrific.html:384:9, test/10k/filterrific.html:386:13, test/10k/filterrific.html:396:16, test/10k/filterrific.html:418:18, test/10k/filterrific.html:424:13, test/10k/filterrific.html:442:61, test/10k/filterrific.html:461:21, test/10k/filterrific.html:465:23, test/10k/filterrific.html:474:84, test/10k/filterrific.html:478:17, test/10k/filterrific.html:549:21, test/10k/filterrific.html:575:9, test/10k/filterrific.html:588:13, test/10k/filterrific.html:608:13, test/10k/filterrific.html:616:9, test/10k/filterrific.html:616:24, test/10k/filterrific.html:631:13, test/10k/filterrific.html:638:9, test/10k/filterrific.html:639:17, test/10k/filterrific.html:640:34, test/10k/filterrific.html:646:23, test/10k/filterrific.html:647:17, test/10k/filterrific.html:648:23, test/10k/filterrific.html:652:9]
 test/10k/filterrific.html:266:13: [maybe] Converting primitive number to object
 test/10k/filterrific.html:266:13: [maybe] The variable a has values with different types
 test/10k/filterrific.html:270:23: [maybe] The variable c has values with different types
@@ -85,22 +85,28 @@ test/10k/filterrific.html:338:28: [maybe] The variable c has values with differe
 test/10k/filterrific.html:338:37: [maybe] The variable b has values with different types
 test/10k/filterrific.html:338:46: [maybe] The variable c has values with different types
 test/10k/filterrific.html:340:22: [maybe] Conversion from string to number yields NaN
+test/10k/filterrific.html:340:22: [maybe] Converting object to number
 test/10k/filterrific.html:340:22: [maybe] The variable b has values with different types
 test/10k/filterrific.html:341:21: [maybe] Conversion from string to number yields NaN
+test/10k/filterrific.html:341:21: [maybe] Converting object to number
 test/10k/filterrific.html:341:21: [maybe] The variable c has values with different types
 test/10k/filterrific.html:344:22: [maybe] Conversion from string to number yields NaN
 test/10k/filterrific.html:344:22: [maybe] Conversion to number yields NaN
+test/10k/filterrific.html:344:22: [maybe] Converting object to number
 test/10k/filterrific.html:344:22: [maybe] The variable b has values with different types
 test/10k/filterrific.html:344:26: [maybe] The variable v has values with different types
 test/10k/filterrific.html:345:22: [maybe] Conversion from string to number yields NaN
 test/10k/filterrific.html:345:22: [maybe] Conversion to number yields NaN
+test/10k/filterrific.html:345:22: [maybe] Converting object to number
 test/10k/filterrific.html:345:22: [maybe] The variable c has values with different types
 test/10k/filterrific.html:345:26: [maybe] The variable t has values with different types
 test/10k/filterrific.html:348:17: [maybe] Conversion from string to number yields NaN
 test/10k/filterrific.html:348:17: [maybe] Conversion to number yields NaN
+test/10k/filterrific.html:348:17: [maybe] Converting object to number
 test/10k/filterrific.html:348:26: [maybe] The variable v has values with different types
 test/10k/filterrific.html:348:29: [maybe] The variable t has values with different types
 test/10k/filterrific.html:349:17: [maybe] Conversion from string to number yields NaN
+test/10k/filterrific.html:349:17: [maybe] Converting object to number
 test/10k/filterrific.html:349:26: [maybe] The variable b has values with different types
 test/10k/filterrific.html:349:29: [maybe] The variable c has values with different types
 test/10k/filterrific.html:351:21: [maybe] The variable b has values with different types

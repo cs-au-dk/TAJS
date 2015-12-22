@@ -1,16 +1,12 @@
 package dk.brics.tajs.test;
 
-import static org.junit.Assert.fail;
-
 import dk.brics.tajs.monitoring.CompositeMonitoring;
 import dk.brics.tajs.monitoring.IAnalysisMonitoring;
 import dk.brics.tajs.monitoring.Monitoring;
+import dk.brics.tajs.options.Options;
 import dk.brics.tajs.test.monitors.OrdinaryExitReachableCheckerMonitor;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
-
-import dk.brics.tajs.options.Options;
 
 @SuppressWarnings("static-method")
 public class TestResig {
@@ -254,9 +250,8 @@ public class TestResig {
 		Misc.checkSystemOutput();
 	}
 
-    @Ignore // TODO
 	@Test
-	public void resig_ejohn45() throws Exception { // TODO: shouldn't report unreachable code (from Array sort)
+	public void resig_ejohn45() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/resig/ejohn45.js"};
@@ -291,34 +286,34 @@ public class TestResig {
 		Misc.checkSystemOutput();
 	}
 
-	@Ignore // TODO: jQuery
-	@Test
-	public void resig_ejohn51() throws Exception {
-		Misc.init();
-		Misc.captureSystemOutput();
-		String[] args = {"test/resig/ejohn51.js"};
-		Misc.run(args, monitoring);
-		fail(); // Misc.checkSystemOutput();
-	}
+//	@Ignore // uses jQuery...
+//	@Test
+//	public void resig_ejohn51() throws Exception {
+//		Misc.init();
+//		Misc.captureSystemOutput();
+//		String[] args = {"test/resig/ejohn51.js"};
+//		Misc.run(args, monitoring);
+//		fail(); // Misc.checkSystemOutput();
+//	}
 
-	@Ignore // TODO: HTML DOM
 	@Test
 	public void resig_ejohn52() throws Exception { 
 		Misc.init();
+		Options.get().enableIncludeDom();
 		Misc.captureSystemOutput();
 		String[] args = {"test/resig/ejohn52.js"};
 		Misc.run(args, monitoring);
-		fail(); // Misc.checkSystemOutput();
+		Misc.checkSystemOutput();
 	}
 
-	@Ignore // TODO: HTML DOM
 	@Test
 	public void resig_ejohn53() throws Exception { 
 		Misc.init();
+		Options.get().enableIncludeDom();
 		Misc.captureSystemOutput();
 		String[] args = {"test/resig/ejohn53.js"};
 		Misc.run(args, monitoring);
-		fail(); // Misc.checkSystemOutput();
+		Misc.checkSystemOutput();
 	}
 
 	@Test
@@ -330,44 +325,44 @@ public class TestResig {
 		Misc.checkSystemOutput();
 	}
 
-	@Ignore // TODO: HTML DOM
 	@Test
 	public void resig_ejohn56() throws Exception { 
 		Misc.init();
+		Options.get().enableIncludeDom();
 		Misc.captureSystemOutput();
 		String[] args = {"test/resig/ejohn56.js"};
 		Misc.run(args, monitoring);
-		fail(); // Misc.checkSystemOutput();
+		Misc.checkSystemOutput();
 	}
 
-	@Ignore // TODO: HTML DOM
 	@Test
 	public void resig_ejohn58() throws Exception { 
 		Misc.init();
+		Options.get().enableIncludeDom();
 		Misc.captureSystemOutput();
 		String[] args = {"test/resig/ejohn58.js"};
 		Misc.run(args, monitoring);
-		fail(); // Misc.checkSystemOutput();
+		Misc.checkSystemOutput();
 	}
 
-	@Ignore // TODO: HTML DOM
 	@Test
 	public void resig_ejohn59() throws Exception { 
 		Misc.init();
+		Options.get().enableIncludeDom();
 		Misc.captureSystemOutput();
 		String[] args = {"test/resig/ejohn59.js"};
 		Misc.run(args, monitoring);
-		fail(); // Misc.checkSystemOutput();
+		Misc.checkSystemOutput();
 	}
 
-	@Ignore // TODO: HTML DOM
 	@Test
 	public void resig_ejohn63() throws Exception { 
 		Misc.init();
+		Options.get().enableIncludeDom();
 		Misc.captureSystemOutput();
 		String[] args = {"test/resig/ejohn63.js"};
 		Misc.run(args, monitoring);
-		fail(); // Misc.checkSystemOutput();
+		Misc.checkSystemOutput();
 	}
 
 	@Test
@@ -478,48 +473,44 @@ public class TestResig {
 		Misc.checkSystemOutput();
 	}
 
-    @Ignore
 	@Test
-	public void resig_ejohn83() throws Exception { // TODO: check output
-        Options.get().enableIncludeDom();
+	public void resig_ejohn83() throws Exception {
+		Options.get().enableIncludeDom();
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/resig/ejohn83.js"};
 		Misc.run(args, monitoring);
-		fail(); // Misc.checkSystemOutput();
+		Misc.checkSystemOutput();
 	}
 
-    @Ignore
 	@Test
-	public void resig_ejohn84() throws Exception {  // TODO: check output
-        Options.get().enableIncludeDom();
+	public void resig_ejohn84() throws Exception {
+		Options.get().enableIncludeDom();
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/resig/ejohn84.js"};
 		Misc.run(args, monitoring);
-		fail(); // Misc.checkSystemOutput();
+		Misc.checkSystemOutput();
 	}
 
-    @Ignore
 	@Test
-	public void resig_ejohn85() throws Exception {  // TODO: check output
-        Options.get().enableIncludeDom();
+	public void resig_ejohn85() throws Exception {
+		Options.get().enableIncludeDom();
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/resig/ejohn85.js"};
 		Misc.run(args, monitoring);
-		fail(); // Misc.checkSystemOutput();
+		Misc.checkSystemOutput();
 	}
 
-    @Ignore
 	@Test
-	public void resig_ejohn86() throws Exception { // TODO: check output
-        Options.get().enableIncludeDom();
+	public void resig_ejohn86() throws Exception {
+		Options.get().enableIncludeDom();
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/resig/ejohn86.js"};
 		Misc.run(args, monitoring);
-		fail(); // Misc.checkSystemOutput();
+		Misc.checkSystemOutput();
 	}
 
 	@Test

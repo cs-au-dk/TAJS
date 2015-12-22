@@ -2,15 +2,16 @@ test/micro/test201.js:17:16: [maybe] TypeError, call to non-function
 test/micro/test201.js:18:16: [maybe] TypeError, call to non-function
 test/micro/test201.js:17:16: [maybe] Reading absent property get
 test/micro/test201.js:18:16: [maybe] Reading absent property post
-test/micro/test201.js:1:1: [maybe] Uncaught exception, constructed at [test/micro/test201.js:17:16, test/micro/test201.js:18:16]
+test/micro/test201.js: [maybe] Uncaught exception, constructed at [test/micro/test201.js:17:16, test/micro/test201.js:18:16]
 test/micro/test201.js:12:3: [maybe] Converting primitive string to object
 test/micro/test201.js:15:1: [info] Abstract state:
 Abstract state:
   Execution context: ScopeChain=[[@<the global object>[native]]], VariableObject=[@<the global object>[native]], this=[@<the global object>[native]]
-  Summarized: maybe=[@callback#fun1, @arguments#node57{method="post"}, @arguments#node57{method="get"}, @activation#node57{method="post"}, @activation#node57{method="get"}, @String#node34, @Object#node60, @Object#node5, @Object#node2, @Object#node11, @<anonymous>#fun2{method="post"}, @<anonymous>#fun2{method="get"}], definitely=[@callback#fun1, @Object#node5, @Object#node2, @Object#node11]
+  Summarized: maybe=[@callback#fun1, @Object#node5, @Object#node2, @Object#node11], definitely=[@callback#fun1, @Object#node5, @Object#node2, @Object#node11]
   Store (excluding basis and default objects): 
     @<the global object>[native] (<initial state>): {TAJS_addContextSensitivity:^(@<the global object>[native].TAJS_addContextSensitivity[present]),TAJS_dumpState:^(@<the global object>[native].TAJS_dumpState[present]),callback:[@callback#fun1],jQuery:[@Object#node5],name:Undef|UIntStr,obj:[@Object#node11],[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Prototype]]=?,[[Value]]=?,[[Scope]]=?}
-    @Object.prototype[native] (<initial state>): {0:^(@Object.prototype[native].0[absent]),1:^(@Object.prototype[native].1[absent]),[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Prototype]]=Null,[[Value]]=?,[[Scope]]=?}
+    @Function.prototype[native] (<initial state>): {call:[@Function.prototype.call[native]],[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Prototype]]=?,[[Value]]=?,[[Scope]]=?}
+    @Object.prototype[native] (<initial state>): {0:^(@Object.prototype[native].0[absent]),1:^(@Object.prototype[native].1[absent]),constructor:^(@Object.prototype[native].constructor[present]),hasOwnProperty:^(@Object.prototype[native].hasOwnProperty[present]),isPrototypeOf:^(@Object.prototype[native].isPrototypeOf[present]),propertyIsEnumerable:^(@Object.prototype[native].propertyIsEnumerable[present]),toLocaleString:^(@Object.prototype[native].toLocaleString[present]),toString:^(@Object.prototype[native].toString[present]),valueOf:^(@Object.prototype[native].valueOf[present]),[[Prototype]]=Null,[[Value]]=?,[[Scope]]=?}
     @Object#node5 (test/micro/test201.js:1:14): {get:[@<anonymous>#fun2{method="get"}]|absent,post:[@<anonymous>#fun2{method="post"}]|absent,[[Prototype]]=[@Object.prototype[native]]}
     *activation#node57{method="get"} (test/micro/test201.js:3:1): {arguments:[*arguments#node57{method="get"}],method:"get"}
     *activation#node57{method="post"} (test/micro/test201.js:3:1): {arguments:[*arguments#node57{method="post"}],method:"post"}

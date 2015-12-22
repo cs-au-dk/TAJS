@@ -34,8 +34,6 @@ public final class ObjectLabel implements Comparable<ObjectLabel> { // TODO: (#1
      */
     public static final SourceLocation initial_source = new SourceLocation(0, 0, "<initial state>");
 
-    private static HeapContext emptyHeapContext = new HeapContext(null, null);
-
     /**
      * Object kinds.
      */
@@ -98,8 +96,8 @@ public final class ObjectLabel implements Comparable<ObjectLabel> { // TODO: (#1
             this.singleton = singleton;
         }
         if (heapContext == null) {
-            this.heapContext = emptyHeapContext;
-        }else{
+            this.heapContext = HeapContext.make(null, null);
+        } else {
             this.heapContext = heapContext;
         }
         this.hashcode = (this.hostobject != null ? this.hostobject.toString().hashCode() : 0) +
@@ -265,8 +263,7 @@ public final class ObjectLabel implements Comparable<ObjectLabel> { // TODO: (#1
                 descr = kind.toString();
             b.append(descr).append("#node").append(node.getIndex());
         }
-        if (heapContext != emptyHeapContext)
-            b.append(heapContext);
+        b.append(heapContext);
         return b.toString();
     }
 

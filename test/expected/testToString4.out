@@ -1,0 +1,35 @@
+test/micro/toString4.js:3:11: [definite] Dead assignment, property valueOf is never read
+test/micro/toString4.js:5:3: [definite] Dead assignment, property [object Object] is never read
+test/micro/toString4.js:6:3: [definite] Unreachable code
+test/micro/toString4.js:24:3: [definite] Unreachable code
+test/micro/toString4.js:31:3: [definite] Unreachable code
+test/micro/toString4.js:13:3: [maybe] TypeError when computing default value for object
+test/micro/toString4.js:31:18: [maybe] TypeError when computing default value for object
+test/micro/toString4.js:5:3: [maybe] Converting object to string
+test/micro/toString4.js:13:3: [maybe] Converting object to string
+test/micro/toString4.js:22:18: [maybe] Conversion from string to number yields NaN
+test/micro/toString4.js:22:18: [maybe] Converting object to number
+test/micro/toString4.js:31:18: [maybe] Converting object to number
+test/micro/toString4.js:9:1: [info] Abstract object: {[object Object]:true,[[Prototype]]=[@Object.prototype[native]]}
+test/micro/toString4.js:14:3: [info] Abstract state:
+Abstract state:
+  Execution context: ScopeChain=[[@<the global object>[native]]], VariableObject=[@<the global object>[native]], this=[@<the global object>[native]]
+  Summarized: maybe=[@Object#node9, @Object#node8, @Object#node6, @Object#node28, @Object#node27], definitely=[@Object#node9, @Object#node8, @Object#node6, @Object#node28, @Object#node27]
+  Store (excluding basis and default objects): 
+    @<the global object>[native] (<initial state>): {TAJS_dumpObject:^(@<the global object>[native].TAJS_dumpObject[present]),TAJS_dumpState:^(@<the global object>[native].TAJS_dumpState[present]),t:[@Object#node6],x1:[@Object#node8],x2:[@Object#node27],x3:Undef,x4:Undef,[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Prototype]]=?,[[Value]]=?,[[Scope]]=?}
+    @Object.prototype[native] (<initial state>): {[object Object]:^(@Object.prototype[native].[object Object][absent]),toString:^(@Object.prototype[native].toString[present]),valueOf:^(@Object.prototype[native].valueOf[present]),[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Prototype]]=Null,[[Value]]=?,[[Scope]]=?}
+    @Object#node6 (test/micro/toString4.js:1:9): {[object Object]:true,[[Prototype]]=[@Object.prototype[native]]}
+    @Object#node8 (test/micro/toString4.js:3:10): {valueOf:[@Object#node9],[[Prototype]]=[@Object.prototype[native]]}
+    @Object#node9 (test/micro/toString4.js:3:20): {[[Prototype]]=[@Object.prototype[native]]}
+    @Object#node27 (test/micro/toString4.js:11:10): {toString:[@Object#node28],[[Prototype]]=[@Object.prototype[native]]}
+    @Object#node28 (test/micro/toString4.js:11:21): {[[Prototype]]=[@Object.prototype[native]]}
+  Registers: 
+    v1=Undef
+    v21=[@<the global object>[native]]
+    v22=^(@<the global object>[native].TAJS_dumpState[present])
+test/micro/toString4.js:16:3: [info] Abstract object: {[object Object]:true,[[Prototype]]=[@Object.prototype[native]]}
+test/micro/toString4.js:18:1: [info] Abstract object: {[object Object]:true,[[Prototype]]=[@Object.prototype[native]]}
+test/micro/toString4.js:22:3: [info] Abstract value: NaN
+test/micro/toString4.js:27:1: [info] Abstract value: "reached"
+test/micro/toString4.js:34:3: [info] Abstract value: "type error"
+test/micro/toString4.js:36:1: [info] Abstract value: "reached"

@@ -9,7 +9,6 @@ test/chromeexperiments/jstouch.html:784:2: [definite] Dead assignment, property 
 test/chromeexperiments/jstouch.html:819:2: [definite] Dead assignment, property toString is never read
 test/chromeexperiments/jstouch.html:876:2: [definite] Dead assignment, property transVec3Rot is never read
 test/chromeexperiments/jstouch.html:952:2: [definite] Dead assignment, property translate is never read
-test/chromeexperiments/jstouch.html:502:15: [definite] Unreachable function
 test/chromeexperiments/jstouch.html:504:20: [definite] Unreachable function
 test/chromeexperiments/jstouch.html:579:29: [definite] Unreachable function
 test/chromeexperiments/jstouch.html:756:8: [definite] Unreachable function
@@ -46,7 +45,8 @@ test/chromeexperiments/jstouch.html:1253:39: [maybe] Reading absent property tl_
 test/chromeexperiments/jstouch.html:1263:39: [maybe] Reading absent property tl_poss
 test/chromeexperiments/jstouch.html:1273:22: [maybe] Reading absent property N_list
 test/chromeexperiments/jstouch.html:1327:27: [maybe] Reading absent property N_list
-test/chromeexperiments/jstouch.html:9:34: [maybe] Uncaught exception, constructed at [test/chromeexperiments/jstouch.html:496:2, test/chromeexperiments/jstouch.html:627:7, test/chromeexperiments/jstouch.html:647:15, test/chromeexperiments/jstouch.html:673:4, test/chromeexperiments/jstouch.html:700:11, test/chromeexperiments/jstouch.html:711:3, test/chromeexperiments/jstouch.html:929:14, test/chromeexperiments/jstouch.html:1168:17, test/chromeexperiments/jstouch.html:1185:36, test/chromeexperiments/jstouch.html:1208:21, test/chromeexperiments/jstouch.html:1298:25, test/chromeexperiments/jstouch.html:1299:25, test/chromeexperiments/jstouch.html:1300:25, test/chromeexperiments/jstouch.html:1304:25, test/chromeexperiments/jstouch.html:1327:27, test/chromeexperiments/jstouch.html:1328:46]
+test/chromeexperiments/jstouch.html: [maybe] Uncaught exception, constructed at [test/chromeexperiments/jstouch.html:496:2, test/chromeexperiments/jstouch.html:627:7, test/chromeexperiments/jstouch.html:647:15, test/chromeexperiments/jstouch.html:673:4, test/chromeexperiments/jstouch.html:700:11, test/chromeexperiments/jstouch.html:711:3, test/chromeexperiments/jstouch.html:929:14, test/chromeexperiments/jstouch.html:1168:17, test/chromeexperiments/jstouch.html:1185:36, test/chromeexperiments/jstouch.html:1208:21, test/chromeexperiments/jstouch.html:1298:25, test/chromeexperiments/jstouch.html:1299:25, test/chromeexperiments/jstouch.html:1300:25, test/chromeexperiments/jstouch.html:1304:25, test/chromeexperiments/jstouch.html:1327:27, test/chromeexperiments/jstouch.html:1328:46]
+test/chromeexperiments/jstouch.html:502:36: [maybe] Conversion to number yields NaN
 test/chromeexperiments/jstouch.html:645:11: [maybe] Conversion to number yields NaN
 test/chromeexperiments/jstouch.html:645:11: [maybe] Reading absent property (computed name)
 test/chromeexperiments/jstouch.html:647:15: [maybe] Reading absent property (computed name)

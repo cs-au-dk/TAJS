@@ -7,21 +7,26 @@ test/micro/testString.js:30:16: [maybe] Converting object to string
 test/micro/testString.js:31:16: [maybe] Converting object to string
 test/micro/testString.js:33:16: [maybe] Converting object to string
 test/micro/testString.js:34:16: [maybe] Converting object to string
+test/micro/testString.js:37:16: [maybe] Converting object to number
 test/micro/testString.js:37:16: [maybe] Converting object to string
 test/micro/testString.js:40:16: [maybe] Conversion from string to number yields NaN
+test/micro/testString.js:40:16: [maybe] Converting object to number
 test/micro/testString.js:40:16: [maybe] Converting object to string
+test/micro/testString.js:42:16: [maybe] Converting object to number
 test/micro/testString.js:42:16: [maybe] Converting object to string
 test/micro/testString.js:45:16: [maybe] Conversion to number yields NaN
 test/micro/testString.js:45:16: [maybe] Converting object to string
 test/micro/testString.js:46:16: [maybe] Converting object to string
 test/micro/testString.js:47:16: [maybe] Converting object to string
 test/micro/testString.js:49:16: [maybe] Conversion to number yields NaN
+test/micro/testString.js:49:16: [maybe] Converting object to number
 test/micro/testString.js:49:16: [maybe] Converting object to string
 test/micro/testString.js:51:16: [maybe] Conversion to number yields NaN
 test/micro/testString.js:51:16: [maybe] Converting object to string
 test/micro/testString.js:52:16: [maybe] Converting object to string
 test/micro/testString.js:53:16: [maybe] Converting object to string
 test/micro/testString.js:55:16: [maybe] Conversion to number yields NaN
+test/micro/testString.js:55:16: [maybe] Converting object to number
 test/micro/testString.js:55:16: [maybe] Converting object to string
 test/micro/testString.js:58:16: [maybe] Converting object to string
 test/micro/testString.js:59:16: [maybe] Converting object to string

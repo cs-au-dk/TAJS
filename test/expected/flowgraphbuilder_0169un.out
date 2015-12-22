@@ -1,6 +1,6 @@
-fg2: function()
+fg2: <main> function()
   block 0: [entry]
-    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0169.js:1:1)
+    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0169.js)
     node 1: function-decl[function Board(),-] (test/flowgraphbuilder/flowgraph_builder0169.js:7:1)
     ->[block 1]
   block 1:
@@ -36,10 +36,10 @@ fg2: function()
     node 21: call[v12,'create',v14,v15,v16,-]* (test/flowgraphbuilder/flowgraph_builder0169.js:4:1)
     ->[block 7]
   block 7: [exit-ordinary]
-    node 22: return[v1] (test/flowgraphbuilder/flowgraph_builder0169.js:1:1)
+    node 22: return[v1] (test/flowgraphbuilder/flowgraph_builder0169.js)
     ->[]
   block 8: [exit-exceptional]
-    node 23: exceptional-return (test/flowgraphbuilder/flowgraph_builder0169.js:1:1)
+    node 23: exceptional-return (test/flowgraphbuilder/flowgraph_builder0169.js)
     ->[]
 function Board()
   block 9: [entry]
@@ -51,10 +51,10 @@ function Board()
     node 27: write-property[v3,'create',v2]* (test/flowgraphbuilder/flowgraph_builder0169.js:8:3)
     ->[block 11]
   block 11: [exit-ordinary]
-    node 28: return[v1] (test/flowgraphbuilder/flowgraph_builder0169.js:18:1)
+    node 28: return[v1] (test/flowgraphbuilder/flowgraph_builder0169.js:7:1)
     ->[]
   block 12: [exit-exceptional]
-    node 29: exceptional-return (test/flowgraphbuilder/flowgraph_builder0169.js:18:1)
+    node 29: exceptional-return (test/flowgraphbuilder/flowgraph_builder0169.js:7:1)
     ->[]
 function(rows,cols)
   block 13: [entry]
@@ -118,10 +118,10 @@ function(rows,cols)
     node 69(~39): if[v5](true-block:16,false-block:23) (test/flowgraphbuilder/flowgraph_builder0169.js:10:20)
     ->[block 16,block 23]
   block 23: [exit-ordinary]
-    node 70: return[v1] (test/flowgraphbuilder/flowgraph_builder0169.js:15:3)
+    node 70: return[v1] (test/flowgraphbuilder/flowgraph_builder0169.js:8:17)
     ->[]
   block 24: [exit-exceptional]
-    node 71: exceptional-return (test/flowgraphbuilder/flowgraph_builder0169.js:15:3)
+    node 71: exceptional-return (test/flowgraphbuilder/flowgraph_builder0169.js:8:17)
     ->[]
 
 test/flowgraphbuilder/flowgraph_builder0169.js:1:3: [definite] Reading 'this' yields the global object

@@ -3,12 +3,11 @@ package dk.brics.tajs.test;
 //import static org.junit.Assert.fail;
 
 import dk.brics.tajs.Main;
+import dk.brics.tajs.options.Options;
 import dk.brics.tajs.util.AnalysisException;
 import org.junit.Before;
-import org.junit.Test;
 import org.junit.Ignore;
-
-import dk.brics.tajs.options.Options;
+import org.junit.Test;
 
 // TODO: assertEquals, assertTrue, assertFalse, assertThrows
 
@@ -342,6 +341,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 	@Test
 	public void testV8_date_parse() throws Exception
 	{
+		Options.get().enablePolyfillMDN();
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/v8tests/prologue.js", "test/v8tests/date-parse.js"};
@@ -966,6 +966,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 	@Test
 	public void testV8_function_prototype() throws Exception
 	{
+		Options.get().enablePolyfillMDN();
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/v8tests/prologue.js", "test/v8tests/function-prototype.js"};

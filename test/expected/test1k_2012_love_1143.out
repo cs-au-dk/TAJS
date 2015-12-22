@@ -1,0 +1,31 @@
+test/1k2012love/1143.js:31:5: [definite] Dead assignment, property to is never read
+test/1k2012love/shim.js:6:5: [definite] The variable b is never used
+test/1k2012love/1143.js:31:17: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1143.js:53:3: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1143.js:92:34: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1143.js:92:50: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1143.js:94:34: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1143.js:94:50: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/shim.js:8:9: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/shim.js:8:9: [maybe] TypeError, call to non-function
+test/1k2012love/shim.js:9:1: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1143.js:37:11: [maybe] Reading absent property x
+test/1k2012love/1143.js:38:23: [maybe] Reading absent property z
+test/1k2012love/1143.js:39:24: [maybe] Reading absent property z
+test/1k2012love/1143.js:47:13: [maybe] Reading absent property y
+test/1k2012love/1143.js:59:15: [maybe] Reading absent property c
+test/1k2012love/shim.js:6:9: [maybe] Reading absent property body
+test/1k2012love/shim.js:8:9: [maybe] Reading absent property getContext
+test/1k2012love/shim.js:9:1: [maybe] Reading absent property body
+test/1k2012love/1143.js:38:7: [maybe] Conversion to number yields NaN
+test/1k2012love/1143.js:38:17: [maybe] Conversion to number yields NaN
+test/1k2012love/1143.js:39:7: [maybe] Conversion to number yields NaN
+test/1k2012love/1143.js:39:18: [maybe] Conversion to number yields NaN
+test/1k2012love/1143.js:47:13: [maybe] Conversion to number yields NaN
+test/1k2012love/1143.js:92:34: [maybe] Reading absent property (computed name)
+test/1k2012love/1143.js:92:50: [maybe] Reading absent property (computed name)
+test/1k2012love/1143.js:94:34: [maybe] Reading absent property (computed name)
+test/1k2012love/1143.js:94:50: [maybe] Reading absent property (computed name)
+test/1k2012love/1143.js:97:14: [maybe] Reading absent property (computed name)
+test/1k2012love/shim.js:7:9: [maybe] Reading absent property (computed name)
+test/1k2012love/shim.js,test/1k2012love/1143.js: [maybe] Uncaught exception, constructed at [test/1k2012love/1143.js:30:3, test/1k2012love/1143.js:31:17, test/1k2012love/1143.js:53:3, test/1k2012love/1143.js:92:34, test/1k2012love/1143.js:92:50, test/1k2012love/1143.js:94:34, test/1k2012love/1143.js:94:50, test/1k2012love/shim.js:8:9, test/1k2012love/shim.js:9:1]

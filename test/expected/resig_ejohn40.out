@@ -1,6 +1,6 @@
 test/resig/ejohn40.js:4:19: [maybe] TypeError, accessing property of null/undefined
 test/resig/ejohn40.js:12:16: [maybe] Reading absent property city
-test/resig/ejohn40.js:1:1: [maybe] Uncaught exception, constructed at [test/resig/ejohn40.js:3:5, test/resig/ejohn40.js:4:19]
+test/resig/ejohn40.js: [maybe] Uncaught exception, constructed at [test/resig/ejohn40.js:3:5, test/resig/ejohn40.js:4:19]
 test/resig/ejohn40.js:3:22: [maybe] Reading absent property (computed name)
 test/resig/ejohn40.js:4:19: [maybe] Reading absent property (computed name)
 test/resig/ejohn40.js:4:19: [maybe] Reading absent property (computed name)

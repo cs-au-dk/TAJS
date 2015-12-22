@@ -1,6 +1,6 @@
 <main> function()
   block 0: [entry]
-    node 0: constant[undefined,v1] (test/micro/test73simple.js:1:1)
+    node 0: constant[undefined,v1] (test/micro/test73simple.js)
     node 1: function-decl[function foo(),-] (test/micro/test73simple.js:1:1)
     ->[block 1]
   block 1:
@@ -16,10 +16,10 @@
     node 5: construct[-,v3,-]* (test/micro/test73simple.js:6:1)
     ->[block 5]
   block 5: [exit-ordinary]
-    node 6: return[v1] (test/micro/test73simple.js:1:1)
+    node 6: return[v1] (test/micro/test73simple.js)
     ->[]
   block 6: [exit-exceptional]
-    node 7: exceptional-return (test/micro/test73simple.js:1:1)
+    node 7: exceptional-return (test/micro/test73simple.js)
     ->[]
 function foo()
   block 7: [entry]
@@ -33,15 +33,15 @@ function foo()
     node 11: call[v2,v3,v4,-]* (test/micro/test73simple.js:2:5)
     ->[block 10]
   block 10: [exit-ordinary]
-    node 12: return[v1] (test/micro/test73simple.js:3:1)
+    node 12: return[v1] (test/micro/test73simple.js:1:1)
     ->[]
   block 11: [exit-exceptional]
-    node 13: exceptional-return (test/micro/test73simple.js:3:1)
+    node 13: exceptional-return (test/micro/test73simple.js:1:1)
     ->[]
 
 <main> function()
   block 0: [entry]
-    node 0: constant[undefined,v1] (test/micro/test73simple.js:1:1)
+    node 0: constant[undefined,v1] (test/micro/test73simple.js)
     node 1: function-decl[function foo(),-] (test/micro/test73simple.js:1:1)
     ->[block 1]
   block 1:
@@ -57,10 +57,10 @@ function foo()
     node 5: construct[-,v3,-]* (test/micro/test73simple.js:6:1)
     ->[block 5]
   block 5: [exit-ordinary]
-    node 6: return[v1] (test/micro/test73simple.js:1:1)
+    node 6: return[v1] (test/micro/test73simple.js)
     ->[]
   block 6: [exit-exceptional]
-    node 7: exceptional-return (test/micro/test73simple.js:1:1)
+    node 7: exceptional-return (test/micro/test73simple.js)
     ->[]
 function foo()
   block 7: [entry]
@@ -74,10 +74,10 @@ function foo()
     node 11: call[v2,v3,v4,-]* (test/micro/test73simple.js:2:5)
     ->[block 10]
   block 10: [exit-ordinary]
-    node 12: return[v1] (test/micro/test73simple.js:3:1)
+    node 12: return[v1] (test/micro/test73simple.js:1:1)
     ->[]
   block 11: [exit-exceptional]
-    node 13: exceptional-return (test/micro/test73simple.js:3:1)
+    node 13: exceptional-return (test/micro/test73simple.js:1:1)
     ->[]
 
 test/micro/test73simple.js:2:5: [info] Abstract value: [@Object#node3]

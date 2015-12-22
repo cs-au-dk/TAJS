@@ -1,0 +1,33 @@
+test/1k2013spring/1536.js:55:3: [definite] Too few parameters to function CanvasRenderingContext2D.prototype.arc
+test/1k2013spring/1536.js:6:5: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1536.js:54:3: [maybe] TypeError, call to non-function
+test/1k2013spring/1536.js:57:3: [maybe] TypeError, call to non-function
+test/1k2013spring/1536.js:82:7: [maybe] TypeError, call to non-function
+test/1k2013spring/1536.js:86:5: [maybe] TypeError, call to non-function
+test/1k2013spring/shim.js:8:9: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/shim.js:8:9: [maybe] TypeError, call to non-function
+test/1k2013spring/shim.js:9:1: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1536.js:54:3: [maybe] Reading absent property b
+test/1k2013spring/1536.js:57:3: [maybe] Reading absent property f
+test/1k2013spring/1536.js:82:7: [maybe] Reading absent property b
+test/1k2013spring/1536.js:86:5: [maybe] Reading absent property f
+test/1k2013spring/shim.js:6:9: [maybe] Reading absent property body
+test/1k2013spring/shim.js:8:9: [maybe] Reading absent property getContext
+test/1k2013spring/shim.js:9:1: [maybe] Reading absent property body
+test/1k2013spring/1536.js:23:16: [maybe] Conversion to number yields NaN
+test/1k2013spring/1536.js:26:19: [maybe] Conversion to number yields NaN
+test/1k2013spring/1536.js:83:14: [maybe] Conversion to number yields NaN
+test/1k2013spring/1536.js:83:24: [maybe] Conversion to number yields NaN
+test/1k2013spring/1536.js:89:3: [maybe] Conversion to number yields NaN
+test/1k2013spring/1536.js:89:12: [maybe] Conversion to number yields NaN
+test/1k2013spring/1536.js:94:21: [maybe] Conversion to number yields NaN
+test/1k2013spring/1536.js:96:29: [maybe] Conversion to number yields NaN
+test/1k2013spring/1536.js:96:39: [maybe] Conversion to number yields NaN
+test/1k2013spring/1536.js:96:49: [maybe] Conversion to number yields NaN
+test/1k2013spring/1536.js:96:59: [maybe] Conversion to number yields NaN
+test/1k2013spring/1536.js:97:5: [maybe] Conversion to number yields NaN
+test/1k2013spring/1536.js:97:11: [maybe] Conversion to number yields NaN
+test/1k2013spring/1536.js:98:5: [maybe] Conversion to number yields NaN
+test/1k2013spring/1536.js:98:11: [maybe] Conversion to number yields NaN
+test/1k2013spring/shim.js:7:9: [maybe] Reading absent property (computed name)
+test/1k2013spring/shim.js,test/1k2013spring/1536.js: [maybe] Uncaught exception, constructed at [test/1k2013spring/1536.js:6:5, test/1k2013spring/1536.js:54:3, test/1k2013spring/1536.js:57:3, test/1k2013spring/1536.js:82:7, test/1k2013spring/1536.js:86:5, test/1k2013spring/shim.js:8:9, test/1k2013spring/shim.js:9:1]

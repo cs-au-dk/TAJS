@@ -8,4 +8,4 @@ test/v8tests/megamorphic-callbacks.js:55:1: [definite] Unreachable code
 test/v8tests/megamorphic-callbacks.js:55:25: [definite] Unreachable function
 test/v8tests/megamorphic-callbacks.js:56:25: [definite] Unreachable function
 test/v8tests/megamorphic-callbacks.js:56:45: [definite] Unreachable function
-test/v8tests/prologue.js:1:1: [maybe] Uncaught exception, constructed at [test/v8tests/megamorphic-callbacks.js:54:1]
+test/v8tests/prologue.js,test/v8tests/megamorphic-callbacks.js: [maybe] Uncaught exception, constructed at [test/v8tests/megamorphic-callbacks.js:54:1]

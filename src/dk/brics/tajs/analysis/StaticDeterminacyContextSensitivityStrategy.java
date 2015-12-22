@@ -103,7 +103,7 @@ public class StaticDeterminacyContextSensitivityStrategy implements IContextSens
         if (!shouldLiteralBeHeapSensitive(node, funArgs)) {
             return null;
         }
-        return new HeapContext(funArgs, null);
+        return HeapContext.make(funArgs, null);
     }
 
     @Override
@@ -147,7 +147,7 @@ public class StaticDeterminacyContextSensitivityStrategy implements IContextSens
     public HeapContext makeActivationAndArgumentsHeapContext(State state, ObjectLabel function, FunctionCalls.CallInfo callInfo, Solver.SolverInterface c) {
         // Due to implementation details, the callee context is created *after* the activation and argument objects.
         // So the callee-context is computed here (using the same algorithm) as well
-        return new HeapContext(decideCallContextArguments(function, callInfo, state, c), null);
+        return HeapContext.make(decideCallContextArguments(function, callInfo, state, c), null);
     }
 
     /**
@@ -258,7 +258,7 @@ public class StaticDeterminacyContextSensitivityStrategy implements IContextSens
                 }
             }
         }
-        HeapContext heapContext = new HeapContext(new ContextArguments(null, map), null);
+        HeapContext heapContext = HeapContext.make(new ContextArguments(null, map), null);
         closureVariableValuesAtAllocation.put(heapContext, map);
         return heapContext;
     }

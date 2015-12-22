@@ -2,11 +2,11 @@ var count = 0;
  
 var timer = setInterval(function(){ 
   if ( count < 5 ) { 
-    log( "Timer call: ", count ); 
+    TAJS_dumpValue( count );
     count++; 
   } else { 
-    TAJS_assert( count == 5 ); 
-    TAJS_assert( timer ); 
+    TAJS_dumpValue( count );
+    TAJS_dumpValue( timer );
     clearInterval( timer ); 
   } 
 }, 100);

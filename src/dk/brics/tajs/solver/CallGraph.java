@@ -21,7 +21,6 @@ import dk.brics.tajs.flowgraph.BasicBlock;
 import dk.brics.tajs.flowgraph.Function;
 import dk.brics.tajs.flowgraph.jsnodes.CallNode;
 import dk.brics.tajs.util.AnalysisException;
-import dk.brics.tajs.util.Pair;
 import dk.brics.tajs.util.Strings;
 import org.apache.log4j.Logger;
 
@@ -40,8 +39,8 @@ import static dk.brics.tajs.util.Collections.newSet;
 /**
  * Call graph.
  */
-public class CallGraph<StateType extends IState<StateType, ?, CallEdgeType>,
-        ContextType extends IContext<?>,
+public class CallGraph<StateType extends IState<StateType, ContextType, CallEdgeType>,
+        ContextType extends IContext<ContextType>,
         CallEdgeType extends ICallEdge<StateType>> {
 
     private static Logger log = Logger.getLogger(CallGraph.class);
@@ -49,7 +48,7 @@ public class CallGraph<StateType extends IState<StateType, ?, CallEdgeType>,
     /**
      * Map from (callee entry, callee context) to set of ((caller node, caller context), edge context).
      */
-    private Map<BlockAndContext<ContextType>, Set<Pair<NodeAndContext<ContextType>, ContextType>>> call_sources; // default is empty maps
+    private Map<BlockAndContext<ContextType>, Set<ReverseEdge<ContextType>>> call_sources; // default is empty maps
 
     /**
      * Map from (caller node, caller context) to (callee entry, edge context) to call edge info.
@@ -63,6 +62,40 @@ public class CallGraph<StateType extends IState<StateType, ?, CallEdgeType>,
     private Map<BlockAndContext<ContextType>, Integer> block_context_order;
 
     private int next_block_context_order;
+
+    public static class ReverseEdge<ContextType extends IContext<?>> {
+
+        AbstractNode call_node;
+
+        ContextType caller_context;
+
+        ContextType edge_context;
+
+        boolean implicit;
+
+        public ReverseEdge(AbstractNode call_node, ContextType caller_context, ContextType edge_context, boolean implicit) {
+            this.call_node = call_node;
+            this.caller_context = caller_context;
+            this.edge_context = edge_context;
+            this.implicit = implicit;
+        }
+
+        public AbstractNode getCallNode() {
+            return call_node;
+        }
+
+        public ContextType getCallerContext() {
+            return caller_context;
+        }
+
+        public ContextType getEdgeContext() {
+            return edge_context;
+        }
+
+        public boolean isImplicit() {
+            return implicit;
+        }
+    }
 
     /**
      * Constructs a new initially empty call graph.
@@ -79,7 +112,7 @@ public class CallGraph<StateType extends IState<StateType, ?, CallEdgeType>,
      * @return true if the call edge changed as result of this operation
      */
     public boolean addTarget(AbstractNode caller, ContextType caller_context, BasicBlock callee, ContextType edge_context,
-                             StateType edge_state, SolverSynchronizer sync, IAnalysis<StateType, ?, CallEdgeType, ?, ?> analysis) {
+                             StateType edge_state, SolverSynchronizer sync, IAnalysis<StateType, ContextType, CallEdgeType, ?, ?> analysis) {
         boolean changed;
         NodeAndContext<ContextType> nc = new NodeAndContext<>(caller, caller_context);
         Map<BlockAndContext<ContextType>, CallEdgeType> mb = call_edge_info.get(nc);
@@ -109,10 +142,8 @@ public class CallGraph<StateType extends IState<StateType, ?, CallEdgeType>,
      * Adds a reverse edge.
      */
     public void addSource(AbstractNode caller, ContextType caller_context, BasicBlock callee, ContextType callee_context,
-                          ContextType edge_context) {
-        NodeAndContext<ContextType> nc = new NodeAndContext<>(caller, caller_context);
-        BlockAndContext<ContextType> fc = new BlockAndContext<>(callee, callee_context);
-        addToMapSet(call_sources, fc, Pair.make(nc, edge_context));
+                          ContextType edge_context, boolean implicit) {
+        addToMapSet(call_sources, new BlockAndContext<>(callee, callee_context), new ReverseEdge<>(caller, caller_context, edge_context, implicit));
     }
 
     /**
@@ -142,13 +173,13 @@ public class CallGraph<StateType extends IState<StateType, ?, CallEdgeType>,
     }
 
     /**
-     * Returns the call nodes, caller contexts, and edge contexts that have the given basic block as target for a given callee context.
+     * Returns the call nodes, caller contexts, edge contexts, and implicit flags that have the given basic block as target for a given callee context.
      */
-    public Set<Pair<NodeAndContext<ContextType>, ContextType>> getSources(BlockAndContext<ContextType> bc) {
-        Set<Pair<NodeAndContext<ContextType>, ContextType>> s = call_sources.get(bc);
-        if (s == null)
-            return Collections.emptySet();
-        return s;
+    public Set<ReverseEdge<ContextType>> getSources(BlockAndContext<ContextType> bc) {
+        Set<ReverseEdge<ContextType>> res = call_sources.get(bc);
+        if (res == null)
+            res = Collections.emptySet();
+        return res;
     }
 
     /**
@@ -191,7 +222,7 @@ public class CallGraph<StateType extends IState<StateType, ?, CallEdgeType>,
 
     private Map<Function, Set<AbstractNode>> getReverseEdgesIgnoreContexts() {
         Map<Function, Set<AbstractNode>> m = newMap();
-        for (Map.Entry<BlockAndContext<ContextType>, Set<Pair<NodeAndContext<ContextType>, ContextType>>> me : call_sources.entrySet()) {
+        for (Map.Entry<BlockAndContext<ContextType>, Set<ReverseEdge<ContextType>>> me : call_sources.entrySet()) {
             BasicBlock b = me.getKey().getBlock();
             if (isOrdinaryCallEdge(b)) {
                 Function f = b.getFunction();
@@ -200,8 +231,8 @@ public class CallGraph<StateType extends IState<StateType, ?, CallEdgeType>,
                     s = newSet();
                     m.put(f, s);
                 }
-                for (Pair<NodeAndContext<ContextType>, ContextType> nc : me.getValue())
-                    s.add(nc.getFirst().getNode());
+                for (ReverseEdge<ContextType> re : me.getValue())
+                    s.add(re.getCallNode());
             }
         }
         return m;
@@ -308,11 +339,20 @@ public class CallGraph<StateType extends IState<StateType, ?, CallEdgeType>,
         return sb.toString();
     }
 
-    public Map<NodeAndContext<ContextType>, Map<BlockAndContext<ContextType>, CallEdgeType>> getCallEdgeInfo() {
-        return call_edge_info;
-    }
+//    /**
+//     * Visits all edges by the given visitor.
+//     */
+//    public void visitAllEdges(ICallEdge.Visitor<CallEdgeType> visitor) { // (currently unused)
+//        for (Map.Entry<NodeAndContext<ContextType>, Map<BlockAndContext<ContextType>, CallEdgeType>> me1 : call_edge_info.entrySet())
+//            for (Map.Entry<BlockAndContext<ContextType>, CallEdgeType> me2 : me1.getValue().entrySet())
+//                visitor.visit(me1.getKey(), me2.getValue(), me2.getKey());
+//    }
 
-    public Map<BlockAndContext<ContextType>, Set<Pair<NodeAndContext<ContextType>, ContextType>>> getCallSources() {
-        return call_sources;
-    }
+//    public Map<NodeAndContext<ContextType>, Map<BlockAndContext<ContextType>, CallEdgeType>> getCallEdgeInfo() { // (currently unused)
+//        return call_edge_info;
+//    }
+
+//    public Map<BlockAndContext<ContextType>, Set<ReverseEdge<ContextType>>> getCallSources() { // (currently unused)
+//        return call_sources;
+//    }
 }
