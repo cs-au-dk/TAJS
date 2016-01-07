@@ -1,5 +1,6 @@
 package dk.brics.tajs.test;
 
+import dk.brics.tajs.Main;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.util.AnalysisException;
 import dk.brics.tajs.util.ParseError;
@@ -16,7 +17,7 @@ public class TestFlowgraphBuilder {
 
     @Before
     public void init() {
-        Options.reset();
+        Main.reset();
         Options.get().enableTestFlowGraphBuiler();
     }
 
@@ -648,14 +649,14 @@ public class TestFlowgraphBuilder {
         Misc.checkSystemOutput();
     }
 
-    @Test(expected = AnalysisException.class /* const unsupported */)
+    @Test
     public void flowgraphbuilder_0070() throws Exception {
         Misc.init();
         String[] args = {"test/flowgraphbuilder/flowgraph_builder0070.js"};
         Misc.run(args);
     }
 
-    @Test(expected = AnalysisException.class /* const unsupported */)
+    @Test
     public void flowgraphbuilder_0071() throws Exception {
         Misc.init();
         String[] args = {"test/flowgraphbuilder/flowgraph_builder0071.js"};
@@ -861,16 +862,6 @@ public class TestFlowgraphBuilder {
     }
 
     @Test
-    public void flowgraphbuilder_0093un() throws Exception {
-        Misc.init();
-        Misc.captureSystemOutput();
-        Options.get().enableUnrollOneAndAHalf();
-        String[] args = {"test/flowgraphbuilder/flowgraph_builder0093.js"};
-        Misc.run(args);
-        Misc.checkSystemOutput();
-    }
-
-    @Test
     public void flowgraphbuilder_0094() throws Exception {
         Misc.init();
         Misc.captureSystemOutput();
@@ -1027,16 +1018,6 @@ public class TestFlowgraphBuilder {
     public void flowgraphbuilder_0111() throws Exception {
         Misc.init();
         Misc.captureSystemOutput();
-        String[] args = {"test/flowgraphbuilder/flowgraph_builder0111.js"};
-        Misc.run(args);
-        Misc.checkSystemOutput();
-    }
-
-    @Test
-    public void flowgraphbuilder_0111un() throws Exception {
-        Misc.init();
-        Misc.captureSystemOutput();
-        Options.get().enableUnrollOneAndAHalf();
         String[] args = {"test/flowgraphbuilder/flowgraph_builder0111.js"};
         Misc.run(args);
         Misc.checkSystemOutput();
@@ -1589,16 +1570,6 @@ public class TestFlowgraphBuilder {
     }
 
     @Test
-    public void flowgraphbuilder_0169un() throws Exception {
-        Misc.init();
-        Misc.captureSystemOutput();
-        Options.get().enableUnrollOneAndAHalf();
-        String[] args = {"test/flowgraphbuilder/flowgraph_builder0169.js"};
-        Misc.run(args);
-        Misc.checkSystemOutput();
-    }
-
-    @Test
     public void flowgraphbuilder_0170() throws Exception {
         Misc.init();
         Misc.captureSystemOutput();
@@ -1612,17 +1583,6 @@ public class TestFlowgraphBuilder {
         Misc.init();
         Misc.captureSystemOutput();
         Options.get().enableUnevalizer();
-        String[] args = {"test/flowgraphbuilder/flowgraph_builder0171.js"};
-        Misc.run(args);
-        Misc.checkSystemOutput();
-    }
-
-    @Test
-    public void flowgraphbuilder_0171un() throws Exception {
-        Misc.init();
-        Misc.captureSystemOutput();
-        Options.get().enableUnevalizer();
-        Options.get().enableUnrollOneAndAHalf();
         String[] args = {"test/flowgraphbuilder/flowgraph_builder0171.js"};
         Misc.run(args);
         Misc.checkSystemOutput();
@@ -1748,16 +1708,6 @@ public class TestFlowgraphBuilder {
     }
 
     @Test
-    public void flowgraphbuilder_0184un() throws Exception {
-        Misc.init();
-        Misc.captureSystemOutput();
-        Options.get().enableUnrollOneAndAHalf();
-        String[] args = {"test/flowgraphbuilder/flowgraph_builder0184.js"};
-        Misc.run(args);
-        Misc.checkSystemOutput();
-    }
-
-    @Test
     public void flowgraphbuilder_0185() throws Exception {
         Misc.init();
         Misc.captureSystemOutput();
@@ -1858,16 +1808,6 @@ public class TestFlowgraphBuilder {
 
     @Test
     public void flowgraphbuilder_0196() throws Exception {
-        Misc.init();
-        Misc.captureSystemOutput();
-        String[] args = {"test/flowgraphbuilder/flowgraph_builder0196.js"};
-        Misc.run(args);
-        Misc.checkSystemOutput();
-    }
-
-    @Test
-    public void flowgraphbuilder_0196un() throws Exception {
-        Options.get().enableUnrollOneAndAHalf();
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/flowgraphbuilder/flowgraph_builder0196.js"};
@@ -2564,7 +2504,7 @@ public class TestFlowgraphBuilder {
     @Test
     public void forLoopContinue_issue200 () {
         Misc.init();
-        Options.get().enableUnrollOneAndAHalf();
+        Options.get().enableLoopUnrolling(1);
         Misc.runSource(//
                 "var first = true;",
                 "for (var i = 0; i === 0; i++) {",
@@ -2676,6 +2616,36 @@ public class TestFlowgraphBuilder {
                 "function f(){'BODY'}"
         );
         Misc.checkSystemOutput();
+    }
+
+    @Test(expected = ParseError.class)
+    public void constNoInitialization() {
+        Misc.init();
+        Misc.runSource("const x;");
+    }
+
+    @Test/*(expected = ParseError.class) GitHub #182*/
+    public void constConstDoubleDeclaration() {
+        Misc.init();
+        Misc.runSource("const x = 42; const x = 42;");
+    }
+
+    @Test
+    public void constVarDoubleDeclaration() {
+        Misc.init();
+        Misc.runSource("const x = 42; var x = 42;");
+    }
+
+    @Test/*(expected = ParseError.class) GitHub #182*/
+    public void varConstDoubleDeclaration() {
+        Misc.init();
+        Misc.runSource("var x = 42; const x = 42;");
+    }
+
+    @Test/*(expected = ParseError.class) GitHub #182*/
+    public void constConstDoubleDeclaration_singleStatement() {
+        Misc.init();
+        Misc.runSource("const x = 42, x = 42;");
     }
 }
 

@@ -2,7 +2,6 @@ test/1k2014dragons/1911.js:12:69: [definite] Too many parameters to function Mat
 test/1k2014dragons/1911.js:12:69: [definite] Too many parameters to function Object.prototype.toLocaleString
 test/1k2014dragons/1911.js:12:69: [definite] Too many parameters to function Object.prototype.toString
 test/1k2014dragons/1911.js:12:69: [definite] Too many parameters to function Object.prototype.valueOf
-test/1k2014dragons/shims.js:19:5: [definite] The assignment to AudioContext has no effect
 test/1k2014dragons/shims.js:19:5: [definite] The conditional expression is always true
 test/1k2014dragons/shims.js:22:5: [definite] Property is null/undefined
 test/1k2014dragons/shims.js:22:5: [definite] The conditional expression is always false
@@ -23,7 +22,6 @@ test/1k2014dragons/shims.js:12:12: [definite] Unreachable function
 test/1k2014dragons/shims.js:18:5: [definite] The variable AudioContext is never used
 test/1k2014dragons/1911.js:1:1: [maybe] TypeError, accessing property of null/undefined
 test/1k2014dragons/1911.js:4:4: [maybe] TypeError, call to non-function
-test/1k2014dragons/1911.js:4:7: [maybe] TypeError, call to non-function
 test/1k2014dragons/1911.js:12:69: [maybe] TypeError, call to non-function
 test/1k2014dragons/1911.js:14:38: [maybe] ReferenceError, reading absent variable s
 test/1k2014dragons/1911.js:14:50: [maybe] ReferenceError, reading absent variable f
@@ -42,7 +40,6 @@ test/1k2014dragons/shims.js:55:9: [maybe] TypeError, accessing property of null/
 test/1k2014dragons/1911.js:1:1: [maybe] Reading absent property style
 test/1k2014dragons/1911.js:2:10: [maybe] Reading absent property height
 test/1k2014dragons/1911.js:4:4: [maybe] Reading absent property getContext
-test/1k2014dragons/1911.js:4:7: [maybe] Reading absent property cloneNode
 test/1k2014dragons/1911.js:4:57: [maybe] Reading absent property width
 test/1k2014dragons/shims.js:10:9: [maybe] Reading absent property body
 test/1k2014dragons/shims.js:31:1: [maybe] Reading absent property body
@@ -111,5 +108,5 @@ test/1k2014dragons/1911.js:16:139: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1911.js:16:141: [maybe] Reading absent property (computed name)
 test/1k2014dragons/1911.js:16:153: [maybe] The variable e has values with different types
 test/1k2014dragons/shims.js:9:9: [maybe] Reading absent property (computed name)
-test/1k2014dragons/shims.js,test/1k2014dragons/1911.js: [maybe] Uncaught exception, constructed at [test/1k2014dragons/1911.js:1:1, test/1k2014dragons/1911.js:4:4, test/1k2014dragons/1911.js:4:7, test/1k2014dragons/1911.js:12:69, test/1k2014dragons/1911.js:14:38, test/1k2014dragons/1911.js:14:50, test/1k2014dragons/1911.js:15:8, test/1k2014dragons/1911.js:16:5, test/1k2014dragons/1911.js:16:12, test/1k2014dragons/shims.js:31:1, test/1k2014dragons/shims.js:34:1, test/1k2014dragons/shims.js:35:1, test/1k2014dragons/shims.js:37:9, test/1k2014dragons/shims.js:42:18, test/1k2014dragons/shims.js:42:46, test/1k2014dragons/shims.js:55:9]
+test/1k2014dragons/shims.js,test/1k2014dragons/1911.js: [maybe] Uncaught exception, constructed at [test/1k2014dragons/1911.js:1:1, test/1k2014dragons/1911.js:4:4, test/1k2014dragons/1911.js:12:69, test/1k2014dragons/1911.js:14:38, test/1k2014dragons/1911.js:14:50, test/1k2014dragons/1911.js:15:8, test/1k2014dragons/1911.js:16:5, test/1k2014dragons/1911.js:16:12, test/1k2014dragons/shims.js:31:1, test/1k2014dragons/shims.js:34:1, test/1k2014dragons/shims.js:35:1, test/1k2014dragons/shims.js:37:9, test/1k2014dragons/shims.js:42:18, test/1k2014dragons/shims.js:42:46, test/1k2014dragons/shims.js:55:9]
 test/1k2014dragons/1911.js:12:69: [info] Reading from unknown property that may cause loss of precision

@@ -1,6 +1,2 @@
-test/resig/ejohn56.js:9:20: [definite] Variable c is null/undefined
+test/resig/ejohn56.js:10:17: [definite] Variable c is null/undefined
 test/resig/ejohn56.js:1:5: [definite] The variable a is never used
-test/resig/ejohn56.js:3:2: [info] Abstract value: 6.0
-test/resig/ejohn56.js:7:4: [info] Abstract value: 7.0
-test/resig/ejohn56.js:9:4: [info] Abstract value: Undef
-test/resig/ejohn56.js:21:4: [info] Abstract value: UInt

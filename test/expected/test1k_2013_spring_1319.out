@@ -1,6 +1,3 @@
-test/1k2013spring/1319.js:118:17: [definite] The assignment to i has no effect
-test/1k2013spring/1319.js:138:13: [definite] The assignment to i has no effect
-test/1k2013spring/1319.js:158:4: [definite] The assignment to i has no effect
 test/1k2013spring/1319.js:86:9: [definite] Too few parameters to function CanvasRenderingContext2D.prototype.arc
 test/1k2013spring/1319.js:92:9: [definite] Too few parameters to function CanvasRenderingContext2D.prototype.arc
 test/1k2013spring/1319.js:163:13: [definite] Too few parameters to function CanvasRenderingContext2D.prototype.arc

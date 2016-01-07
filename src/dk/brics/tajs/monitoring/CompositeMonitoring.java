@@ -9,7 +9,6 @@ import dk.brics.tajs.flowgraph.jsnodes.IfNode;
 import dk.brics.tajs.flowgraph.jsnodes.Node;
 import dk.brics.tajs.flowgraph.jsnodes.ReadPropertyNode;
 import dk.brics.tajs.flowgraph.jsnodes.ReadVariableNode;
-import dk.brics.tajs.flowgraph.jsnodes.WriteVariableNode;
 import dk.brics.tajs.lattice.CallEdge;
 import dk.brics.tajs.lattice.Context;
 import dk.brics.tajs.lattice.HostObject;
@@ -254,9 +253,9 @@ public class CompositeMonitoring implements IAnalysisMonitoring {
     }
 
     @Override
-    public void visitReadProperty(ReadPropertyNode n, Set<ObjectLabel> objlabels, Str propertystr, boolean maybe, State state) {
-        m1.visitReadProperty(n, objlabels, propertystr, maybe, state);
-        m2.visitReadProperty(n, objlabels, propertystr, maybe, state);
+    public void visitReadProperty(ReadPropertyNode n, Set<ObjectLabel> objlabels, Str propertystr, boolean maybe, State state, Value v) {
+        m1.visitReadProperty(n, objlabels, propertystr, maybe, state, v);
+        m2.visitReadProperty(n, objlabels, propertystr, maybe, state, v);
     }
 
     @Override
@@ -299,12 +298,6 @@ public class CompositeMonitoring implements IAnalysisMonitoring {
     public void visitVariableOrProperty(String var, SourceLocation loc, Value value, Context context, State state) {
         m1.visitVariableOrProperty(var, loc, value, context, state);
         m2.visitVariableOrProperty(var, loc, value, context, state);
-    }
-
-    @Override
-    public void visitWriteVariable(WriteVariableNode n, Value v, State state) {
-        m1.visitWriteVariable(n, v, state);
-        m2.visitWriteVariable(n, v, state);
     }
 
     protected interface Factory<T> {

@@ -2,6 +2,7 @@ package dk.brics.tajs.analysis.dom.html5;
 
 import dk.brics.tajs.analysis.FunctionCalls;
 import dk.brics.tajs.analysis.InitialStateBuilder;
+import dk.brics.tajs.analysis.PropVarOperations;
 import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.analysis.dom.DOMObjects;
 import dk.brics.tajs.analysis.dom.DOMWindow;
@@ -21,34 +22,36 @@ public class TimeRanges {
 
     public static ObjectLabel INSTANCES;
 
-    public static void build(State s) {
+    public static void build(Solver.SolverInterface c) {
+        State s = c.getState();
+        PropVarOperations pv = c.getAnalysis().getPropVarOperations();
         CONSTRUCTOR = new ObjectLabel(DOMObjects.TIMERANGES_CONSTRUCTOR, ObjectLabel.Kind.FUNCTION);
         PROTOTYPE = new ObjectLabel(DOMObjects.TIMERANGES_PROTOTYPE, ObjectLabel.Kind.OBJECT);
         INSTANCES = new ObjectLabel(DOMObjects.TIMERANGES_INSTANCES, ObjectLabel.Kind.OBJECT);
 
         // Constructor Object
         s.newObject(CONSTRUCTOR);
-        s.writePropertyWithAttributes(CONSTRUCTOR, "length", Value.makeNum(0).setAttributes(true, true, true));
-        s.writePropertyWithAttributes(CONSTRUCTOR, "prototype", Value.makeObject(PROTOTYPE).setAttributes(true, true, true));
+        pv.writePropertyWithAttributes(CONSTRUCTOR, "length", Value.makeNum(0).setAttributes(true, true, true));
+        pv.writePropertyWithAttributes(CONSTRUCTOR, "prototype", Value.makeObject(PROTOTYPE).setAttributes(true, true, true));
         s.writeInternalPrototype(CONSTRUCTOR, Value.makeObject(InitialStateBuilder.OBJECT_PROTOTYPE));
-        s.writeProperty(DOMWindow.WINDOW, "TimeRanges", Value.makeObject(CONSTRUCTOR));
+        pv.writeProperty(DOMWindow.WINDOW, "TimeRanges", Value.makeObject(CONSTRUCTOR));
 
         // Prototype Object
         s.newObject(PROTOTYPE);
         s.writeInternalPrototype(PROTOTYPE, Value.makeObject(InitialStateBuilder.OBJECT_PROTOTYPE));
-        createDOMFunction(s, PROTOTYPE, DOMObjects.TIMERANGES_START, "start", 1);
-        createDOMFunction(s, PROTOTYPE, DOMObjects.TIMERANGES_END, "end", 1);
+        createDOMFunction(PROTOTYPE, DOMObjects.TIMERANGES_START, "start", 1, c);
+        createDOMFunction(PROTOTYPE, DOMObjects.TIMERANGES_END, "end", 1, c);
 
         // Instances Object
         s.newObject(INSTANCES);
-        createDOMProperty(s, INSTANCES, "length", Value.makeAnyNumUInt());
+        createDOMProperty(INSTANCES, "length", Value.makeAnyNumUInt(), c);
 
         s.writeInternalPrototype(INSTANCES, Value.makeObject(PROTOTYPE));
         s.multiplyObject(INSTANCES);
         INSTANCES = INSTANCES.makeSingleton().makeSummary();
     }
 
-    public static Value evaluate(DOMObjects nativeObject, FunctionCalls.CallInfo call, State s, Solver.SolverInterface c) {
+    public static Value evaluate(DOMObjects nativeObject, FunctionCalls.CallInfo call, Solver.SolverInterface c) {
         switch (nativeObject) {
             case TIMERANGES_CONSTRUCTOR: {
                 return Value.makeObject(INSTANCES);

@@ -45,6 +45,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.Properties;
 
@@ -107,12 +108,12 @@ public class Main {
      * @throws AnalysisException if internal error
      */
     public static Analysis init(String[] args, IAnalysisMonitoring monitoring, SolverSynchronizer sync) throws AnalysisException {
-        Analysis analysis = new Analysis(monitoring, sync);
-
         boolean show_usage = false;
         Options.parse(args);
         Options.get().checkConsistency();
         List<String> files = Options.get().getArguments();
+
+        Analysis analysis = new Analysis(monitoring, sync);
 
         if (files.isEmpty()) {
             System.out.println("No source files");
@@ -160,7 +161,7 @@ public class Main {
                 Options.get().enableIncludeDom(); // always enable DOM if any HTML files are involved
                 if (!Options.get().isQuietEnabled())
                     log.info("Loading " + html_file);
-                HTMLParser p = new HTMLParser(html_file);
+                HTMLParser p = new HTMLParser(Paths.get(html_file));
                 document = p.getHTML();
                 for (JavaScriptSource js : p.getJavaScript()) {
                     if (!Options.get().isQuietEnabled() && js.getKind() == Kind.FILE)

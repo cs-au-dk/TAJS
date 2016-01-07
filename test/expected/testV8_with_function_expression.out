@@ -1,4 +1,3 @@
-test/v8tests/with-function-expression.js:36:11: [definite] The assignment to res has no effect
 test/v8tests/with-function-expression.js:36:5: [definite] The variable res is never used
 test/v8tests/with-function-expression.js:36:22: [maybe] Converting object to string
 test/v8tests/with-function-expression.js:36:22: [maybe] Converting primitive string to object

@@ -17,6 +17,8 @@
 package dk.brics.tajs.analysis.dom.html;
 
 import dk.brics.tajs.analysis.InitialStateBuilder;
+import dk.brics.tajs.analysis.PropVarOperations;
+import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.analysis.dom.DOMObjects;
 import dk.brics.tajs.analysis.dom.DOMWindow;
 import dk.brics.tajs.lattice.ObjectLabel;
@@ -33,17 +35,19 @@ public class HTMLMetaElement {
 
     public static ObjectLabel INSTANCES;
 
-    public static void build(State s) {
+    public static void build(Solver.SolverInterface c) {
+        State s = c.getState();
+        PropVarOperations pv = c.getAnalysis().getPropVarOperations();
         CONSTRUCTOR = new ObjectLabel(DOMObjects.HTMLMETAELEMENT_CONSTRUCTOR, ObjectLabel.Kind.FUNCTION);
         PROTOTYPE = new ObjectLabel(DOMObjects.HTMLMETAELEMENT_PROTOTYPE, ObjectLabel.Kind.OBJECT);
         INSTANCES = new ObjectLabel(DOMObjects.HTMLMETAELEMENT_INSTANCES, ObjectLabel.Kind.OBJECT);
 
         // Constructor Object
         s.newObject(CONSTRUCTOR);
-        s.writePropertyWithAttributes(CONSTRUCTOR, "length", Value.makeNum(0).setAttributes(true, true, true));
-        s.writePropertyWithAttributes(CONSTRUCTOR, "prototype", Value.makeObject(PROTOTYPE).setAttributes(true, true, true));
+        pv.writePropertyWithAttributes(CONSTRUCTOR, "length", Value.makeNum(0).setAttributes(true, true, true));
+        pv.writePropertyWithAttributes(CONSTRUCTOR, "prototype", Value.makeObject(PROTOTYPE).setAttributes(true, true, true));
         s.writeInternalPrototype(CONSTRUCTOR, Value.makeObject(InitialStateBuilder.FUNCTION_PROTOTYPE));
-        s.writeProperty(DOMWindow.WINDOW, "HTMLMetaElement", Value.makeObject(CONSTRUCTOR));
+        pv.writeProperty(DOMWindow.WINDOW, "HTMLMetaElement", Value.makeObject(CONSTRUCTOR));
 
         // Prototype Object
         s.newObject(PROTOTYPE);
@@ -57,10 +61,10 @@ public class HTMLMetaElement {
          * Properties.
          */
         // DOM Level 1
-        createDOMProperty(s, INSTANCES, "content", Value.makeAnyStr());
-        createDOMProperty(s, INSTANCES, "httpEquiv", Value.makeAnyStr());
-        createDOMProperty(s, INSTANCES, "name", Value.makeAnyStr());
-        createDOMProperty(s, INSTANCES, "scheme", Value.makeAnyStr());
+        createDOMProperty(INSTANCES, "content", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "httpEquiv", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "name", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "scheme", Value.makeAnyStr(), c);
 
         s.multiplyObject(INSTANCES);
         INSTANCES = INSTANCES.makeSingleton().makeSummary();

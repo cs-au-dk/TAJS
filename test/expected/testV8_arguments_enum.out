@@ -1,0 +1,2 @@
+test/v8tests/arguments-enum.js:30:12: [definite] The variable prop is never used
+test/v8tests/arguments-enum.js:39:12: [definite] The variable prop is never used

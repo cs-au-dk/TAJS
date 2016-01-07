@@ -146,6 +146,8 @@ public final class Summarized {
      * May return the given set unchanged rather than a new set.
      */
     public Set<ObjectLabel> summarize(Set<ObjectLabel> objlabels) {
+        if (objlabels == null)
+            return null;
         boolean changed = false;
         for (ObjectLabel ol : objlabels)
             if (ol.isSingleton() && isMaybeSummarized(ol)) {

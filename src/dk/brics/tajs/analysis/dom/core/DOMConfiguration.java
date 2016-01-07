@@ -20,6 +20,7 @@ import dk.brics.tajs.analysis.Conversion;
 import dk.brics.tajs.analysis.FunctionCalls;
 import dk.brics.tajs.analysis.InitialStateBuilder;
 import dk.brics.tajs.analysis.NativeFunctions;
+import dk.brics.tajs.analysis.PropVarOperations;
 import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.analysis.dom.DOMObjects;
 import dk.brics.tajs.analysis.dom.DOMWindow;
@@ -44,17 +45,19 @@ public class DOMConfiguration {
 
     public static ObjectLabel CONSTRUCTOR;
 
-    public static void build(State s) {
+    public static void build(Solver.SolverInterface c) {
+        State s = c.getState();
+        PropVarOperations pv = c.getAnalysis().getPropVarOperations();
         CONSTRUCTOR = new ObjectLabel(DOMObjects.CONFIGURATION_CONSTRUCTOR, Kind.FUNCTION);
         PROTOTYPE = new ObjectLabel(DOMObjects.CONFIGURATION_PROTOTYPE, Kind.OBJECT);
         INSTANCES = new ObjectLabel(DOMObjects.CONFIGURATION_INSTANCES, Kind.OBJECT);
 
         // Constructor Object
         s.newObject(CONSTRUCTOR);
-        s.writePropertyWithAttributes(CONSTRUCTOR, "length", Value.makeNum(0).setAttributes(true, true, true));
-        s.writePropertyWithAttributes(CONSTRUCTOR, "prototype", Value.makeObject(PROTOTYPE).setAttributes(true, true, true));
+        pv.writePropertyWithAttributes(CONSTRUCTOR, "length", Value.makeNum(0).setAttributes(true, true, true));
+        pv.writePropertyWithAttributes(CONSTRUCTOR, "prototype", Value.makeObject(PROTOTYPE).setAttributes(true, true, true));
         s.writeInternalPrototype(CONSTRUCTOR, Value.makeObject(InitialStateBuilder.OBJECT_PROTOTYPE));
-        s.writeProperty(DOMWindow.WINDOW, "Configuration", Value.makeObject(CONSTRUCTOR));
+        pv.writeProperty(DOMWindow.WINDOW, "Configuration", Value.makeObject(CONSTRUCTOR));
 
         // Prototype object.
         s.newObject(PROTOTYPE);
@@ -75,12 +78,13 @@ public class DOMConfiguration {
          * Functions.
          */
         // DOM Level 3
-        createDOMFunction(s, PROTOTYPE, DOMObjects.CONFIGURATION_SET_PARAMETER, "setParameter", 2);
-        createDOMFunction(s, PROTOTYPE, DOMObjects.CONFIGURATION_GET_PARAMETER, "getParameter", 1);
-        createDOMFunction(s, PROTOTYPE, DOMObjects.CONFIGURATION_CAN_SET_PARAMETER, "canSetParameter", 2);
+        createDOMFunction(PROTOTYPE, DOMObjects.CONFIGURATION_SET_PARAMETER, "setParameter", 2, c);
+        createDOMFunction(PROTOTYPE, DOMObjects.CONFIGURATION_GET_PARAMETER, "getParameter", 1, c);
+        createDOMFunction(PROTOTYPE, DOMObjects.CONFIGURATION_CAN_SET_PARAMETER, "canSetParameter", 2, c);
     }
 
-    public static Value evaluate(DOMObjects nativeObject, FunctionCalls.CallInfo call, State s, Solver.SolverInterface c) {
+    public static Value evaluate(DOMObjects nativeObject, FunctionCalls.CallInfo call, Solver.SolverInterface c) {
+        State s = c.getState();
         switch (nativeObject) {
             case CONFIGURATION_CAN_SET_PARAMETER: {
                 NativeFunctions.expectParameters(nativeObject, call, c, 2, 2);

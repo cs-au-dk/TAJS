@@ -26,6 +26,8 @@ import com.google.javascript.jscomp.JSError;
 import com.google.javascript.jscomp.SourceFile;
 import com.google.javascript.rhino.Node;
 import com.google.javascript.rhino.Token;
+import dk.brics.tajs.analysis.Solver;
+import dk.brics.tajs.flowgraph.AbstractNode;
 import org.apache.log4j.Logger;
 
 import java.util.Set;
@@ -40,7 +42,7 @@ public class Unevalizer {
     /**
      * Unevalizes the given code.
      */
-    public String uneval(AnalyzerCallback callback, String source, boolean aliasedEval, String resVar) { // TODO: javadoc
+    public String uneval(AnalyzerCallback callback, String source, boolean aliasedEval, String resVar, AbstractNode sourceNode, Solver.SolverInterface c) { // TODO: javadoc
         log.debug("Starting on: " + source);
 
         // TODO: Immediately fail on aliased calls. Not hard to handle, but no real use cases yet.
@@ -98,8 +100,10 @@ public class Unevalizer {
                 code = code.substring(1, code.length() - 1);
 
             comp = parseString(code);
-            if (comp.getErrorCount() > 0)
-                throw new IllegalArgumentException("Invalid abstract expression");
+            if (comp.getErrorCount() > 0) {
+                UnevalizerLimitations.handle("Invalid abstract expression: " + code, sourceNode, c);
+                return null;
+            }
 
             // Uneval the input by undoing the constant folding in a clever way.
             return contractEval(callback, comp, holeNames, resVar);

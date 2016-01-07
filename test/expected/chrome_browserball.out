@@ -3,9 +3,7 @@ test/chromeexperiments/browserball.html:212:21: [definite] The conditional expre
 test/chromeexperiments/browserball.html:363:25: [definite] The conditional expression is always true
 test/chromeexperiments/browserball.html:364:17: [definite] The conditional expression is always false
 test/chromeexperiments/browserball.html:364:21: [definite] The conditional expression is always false
-test/chromeexperiments/browserball.html:378:17: [definite] The assignment to v has no effect
 test/chromeexperiments/browserball.html:384:17: [definite] The conditional expression is always false
-test/chromeexperiments/browserball.html:401:17: [definite] The assignment to v has no effect
 test/chromeexperiments/browserball.html:7:21: [definite] Reading 'this' yields the global object
 test/chromeexperiments/browserball.html:45:15: [definite] Dead assignment, property remove is never read
 test/chromeexperiments/browserball.html:280:42: [definite] Dead assignment, property x is never read

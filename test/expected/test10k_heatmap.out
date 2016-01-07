@@ -13,14 +13,10 @@ test/10k/heatmap.html:69:26: [maybe] TypeError, accessing property of null/undef
 test/10k/heatmap.html:101:25: [maybe] TypeError, accessing property of null/undefined
 test/10k/heatmap.html:152:13: [maybe] TypeError, inf or NaN as arguments to CanvasRenderingContext2D.putImageData
 test/10k/heatmap.html:242:9: [maybe] TypeError, accessing property of null/undefined
-test/10k/heatmap.html:242:9: [maybe] TypeError, call to non-function
 test/10k/heatmap.html:245:9: [maybe] TypeError, accessing property of null/undefined
-test/10k/heatmap.html:245:9: [maybe] TypeError, call to non-function
 test/10k/heatmap.html:160:31: [maybe] Reading absent property element
 test/10k/heatmap.html:195:13: [maybe] Reading absent property innerHTML
-test/10k/heatmap.html:242:9: [maybe] Reading absent property addEventListener
 test/10k/heatmap.html:243:39: [maybe] Reading absent property selectedIndex
-test/10k/heatmap.html:245:9: [maybe] Reading absent property addEventListener
 test/10k/heatmap.html:246:25: [maybe] Reading absent property selectedIndex
 test/10k/heatmap.html: [maybe] Uncaught exception, constructed at [test/10k/heatmap.html:69:26, test/10k/heatmap.html:101:25, test/10k/heatmap.html:242:9, test/10k/heatmap.html:245:9]
 test/10k/heatmap.html:76:25: [maybe] Conversion to number yields NaN

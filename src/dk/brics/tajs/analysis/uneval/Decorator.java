@@ -48,7 +48,20 @@ public class Decorator { // TODO: needs review
             }
             for (BasicBlock predecessor : function.getBlocks()) {
                 for (BasicBlock successor : predecessor.getSuccessors()) {
+                    /* OLD IMPLEMENTATION, by ???:
                     predecessorBlocks.get(successor).add(predecessor);
+                     */
+                    /* NEW IMPLEMENTATION, by @esbena:
+                        @esbena: the unevalizer is treated as a black box due to its code quality,
+                        This fix makes some sense, but I am not sure exactly why it is needed.
+                         (the fix prevents a StackOverflowError)
+                     */
+                    // the flowgraph block order forms a topological ordering: loop back edges can be identified easily
+                    boolean isLoopBackEdge = predecessor.getOrder() > successor.getOrder();
+                    // the unevalizer mechanisms does not need to consider loop back edges
+                    if (!isLoopBackEdge) {
+                        predecessorBlocks.get(successor).add(predecessor);
+                    }
                 }
             }
         }

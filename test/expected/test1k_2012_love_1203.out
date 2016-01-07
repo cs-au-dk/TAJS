@@ -1,13 +1,11 @@
 test/1k2012love/1203.js:147:3: [definite] Too few parameters to function CanvasRenderingContext2D.prototype.arc
 test/1k2012love/1203.js:51:2: [maybe] TypeError, accessing property of null/undefined
-test/1k2012love/1203.js:61:12: [maybe] TypeError, call to non-function
 test/1k2012love/1203.js:63:13: [maybe] TypeError, call to non-function
 test/1k2012love/1203.js:67:2: [maybe] TypeError, accessing property of null/undefined
 test/1k2012love/1203.js:201:42: [maybe] TypeError, accessing property of null/undefined
 test/1k2012love/shim.js:8:9: [maybe] TypeError, accessing property of null/undefined
 test/1k2012love/shim.js:8:9: [maybe] TypeError, call to non-function
 test/1k2012love/shim.js:9:1: [maybe] TypeError, accessing property of null/undefined
-test/1k2012love/1203.js:61:12: [maybe] Reading absent property cloneNode
 test/1k2012love/1203.js:63:13: [maybe] Reading absent property getContext
 test/1k2012love/1203.js:65:10: [maybe] Reading absent property style
 test/1k2012love/shim.js:6:9: [maybe] Reading absent property body
@@ -15,4 +13,4 @@ test/1k2012love/shim.js:8:9: [maybe] Reading absent property getContext
 test/1k2012love/shim.js:9:1: [maybe] Reading absent property body
 test/1k2012love/1203.js:199:45: [maybe] Conversion from string to number yields NaN
 test/1k2012love/shim.js:7:9: [maybe] Reading absent property (computed name)
-test/1k2012love/shim.js,test/1k2012love/1203.js: [maybe] Uncaught exception, constructed at [test/1k2012love/1203.js:51:2, test/1k2012love/1203.js:61:12, test/1k2012love/1203.js:63:13, test/1k2012love/1203.js:67:2, test/1k2012love/1203.js:201:42, test/1k2012love/shim.js:8:9, test/1k2012love/shim.js:9:1]
+test/1k2012love/shim.js,test/1k2012love/1203.js: [maybe] Uncaught exception, constructed at [test/1k2012love/1203.js:51:2, test/1k2012love/1203.js:63:13, test/1k2012love/1203.js:67:2, test/1k2012love/1203.js:201:42, test/1k2012love/shim.js:8:9, test/1k2012love/shim.js:9:1]

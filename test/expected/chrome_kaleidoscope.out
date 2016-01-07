@@ -6,7 +6,6 @@ test/chromeexperiments/kaleidoscope.html:115:8: [definite] Too many parameters t
 test/chromeexperiments/kaleidoscope.html:70:21: [definite] The conditional expression is always true
 test/chromeexperiments/kaleidoscope.html:71:22: [definite] The conditional expression is always true
 test/chromeexperiments/kaleidoscope.html:223:33: [definite] The conditional expression is always true
-test/chromeexperiments/kaleidoscope.html:229:2: [definite] The assignment to evt has no effect
 test/chromeexperiments/kaleidoscope.html:229:6: [definite] The conditional expression is always true
 test/chromeexperiments/kaleidoscope.html:230:10: [definite] The conditional expression is always false
 test/chromeexperiments/kaleidoscope.html:98:2: [definite] Dead assignment, property width is never read

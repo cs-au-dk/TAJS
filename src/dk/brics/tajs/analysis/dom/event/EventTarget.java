@@ -40,7 +40,7 @@ import static dk.brics.tajs.analysis.dom.DOMFunctions.createDOMFunction;
  */
 public class EventTarget {
 
-    public static void build(State s) {
+    public static void build(Solver.SolverInterface c) {
         // Event target has no native object... see class comment.
 
         /*
@@ -51,16 +51,17 @@ public class EventTarget {
         /*
          * Functions.
          */
-        createDOMFunction(s, DOMNode.PROTOTYPE, DOMObjects.EVENT_TARGET_ADD_EVENT_LISTENER, "addEventListener", 3);
-        createDOMFunction(s, DOMNode.PROTOTYPE, DOMObjects.EVENT_TARGET_REMOVE_EVENT_LISTENER, "removeEventListener", 3);
-        createDOMFunction(s, DOMNode.PROTOTYPE, DOMObjects.EVENT_TARGET_DISPATCH_EVENT, "dispatchEvent", 1);
+        createDOMFunction(DOMNode.PROTOTYPE, DOMObjects.EVENT_TARGET_ADD_EVENT_LISTENER, "addEventListener", 3, c);
+        createDOMFunction(DOMNode.PROTOTYPE, DOMObjects.EVENT_TARGET_REMOVE_EVENT_LISTENER, "removeEventListener", 3, c);
+        createDOMFunction(DOMNode.PROTOTYPE, DOMObjects.EVENT_TARGET_DISPATCH_EVENT, "dispatchEvent", 1, c);
 
         // DOM LEVEL 0
-        createDOMFunction(s, DOMWindow.WINDOW, DOMObjects.WINDOW_ADD_EVENT_LISTENER, "addEventListener", 3);
-        createDOMFunction(s, DOMWindow.WINDOW, DOMObjects.WINDOW_REMOVE_EVENT_LISTENER, "removeEventListener", 3);
+        createDOMFunction(DOMWindow.WINDOW, DOMObjects.WINDOW_ADD_EVENT_LISTENER, "addEventListener", 3, c);
+        createDOMFunction(DOMWindow.WINDOW, DOMObjects.WINDOW_REMOVE_EVENT_LISTENER, "removeEventListener", 3, c);
     }
 
-    public static Value evaluate(DOMObjects nativeObject, FunctionCalls.CallInfo call, State s, Solver.SolverInterface c) {
+    public static Value evaluate(DOMObjects nativeObject, FunctionCalls.CallInfo call, Solver.SolverInterface c) {
+        State s = c.getState();
         switch (nativeObject) {
         /*
          * Events added with useCapture = true must be removed

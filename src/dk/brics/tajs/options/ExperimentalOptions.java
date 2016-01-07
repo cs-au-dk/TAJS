@@ -88,7 +88,7 @@ public class ExperimentalOptions implements Serializable {
             if (sb.length() != 0) {
                 sb.append(" ");
             }
-            sb.append(option.toString());
+            sb.append(option);
         }
         return sb.toString();
     }

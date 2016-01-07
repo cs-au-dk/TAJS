@@ -20,8 +20,8 @@ import dk.brics.tajs.analysis.Conversion;
 import dk.brics.tajs.analysis.FunctionCalls;
 import dk.brics.tajs.analysis.InitialStateBuilder;
 import dk.brics.tajs.analysis.NativeFunctions;
+import dk.brics.tajs.analysis.PropVarOperations;
 import dk.brics.tajs.analysis.Solver;
-import dk.brics.tajs.analysis.dom.DOMFunctions;
 import dk.brics.tajs.analysis.dom.DOMObjects;
 import dk.brics.tajs.analysis.dom.DOMWindow;
 import dk.brics.tajs.lattice.ObjectLabel;
@@ -49,17 +49,19 @@ public class Event {
 
     public static ObjectLabel INSTANCES;
 
-    public static void build(State s) {
+    public static void build(Solver.SolverInterface c) {
+        State s = c.getState();
+        PropVarOperations pv = c.getAnalysis().getPropVarOperations();
         CONSTRUCTOR = new ObjectLabel(DOMObjects.EVENT_CONSTRUCTOR, ObjectLabel.Kind.FUNCTION);
         PROTOTYPE = new ObjectLabel(DOMObjects.EVENT_PROTOTYPE, ObjectLabel.Kind.OBJECT);
         INSTANCES = new ObjectLabel(DOMObjects.EVENT_INSTANCES, ObjectLabel.Kind.OBJECT);
 
         // Constructor Object
         s.newObject(CONSTRUCTOR);
-        s.writePropertyWithAttributes(CONSTRUCTOR, "length", Value.makeNum(0).setAttributes(true, true, true));
-        s.writePropertyWithAttributes(CONSTRUCTOR, "prototype", Value.makeObject(PROTOTYPE).setAttributes(true, true, true));
+        pv.writePropertyWithAttributes(CONSTRUCTOR, "length", Value.makeNum(0).setAttributes(true, true, true));
+        pv.writePropertyWithAttributes(CONSTRUCTOR, "prototype", Value.makeObject(PROTOTYPE).setAttributes(true, true, true));
         s.writeInternalPrototype(CONSTRUCTOR, Value.makeObject(InitialStateBuilder.OBJECT_PROTOTYPE));
-        s.writeProperty(DOMWindow.WINDOW, "Event", Value.makeObject(CONSTRUCTOR));
+        pv.writeProperty(DOMWindow.WINDOW, "Event", Value.makeObject(CONSTRUCTOR));
 
         // Prototype object
         s.newObject(PROTOTYPE);
@@ -72,15 +74,15 @@ public class Event {
         /*
          * Properties.
          */
-        createDOMProperty(s, PROTOTYPE, "type", Value.makeAnyStr().setReadOnly());
-        createDOMProperty(s, PROTOTYPE, "eventPhase", Value.makeAnyNumUInt().setReadOnly());
-        createDOMProperty(s, PROTOTYPE, "bubbles", Value.makeAnyBool().setReadOnly());
-        createDOMProperty(s, PROTOTYPE, "cancelable", Value.makeAnyBool().setReadOnly());
-        createDOMProperty(s, PROTOTYPE, "timeStamp", Value.makeAnyNumUInt().setReadOnly());
+        createDOMProperty(PROTOTYPE, "type", Value.makeAnyStr().setReadOnly(), c);
+        createDOMProperty(PROTOTYPE, "eventPhase", Value.makeAnyNumUInt().setReadOnly(), c);
+        createDOMProperty(PROTOTYPE, "bubbles", Value.makeAnyBool().setReadOnly(), c);
+        createDOMProperty(PROTOTYPE, "cancelable", Value.makeAnyBool().setReadOnly(), c);
+        createDOMProperty(PROTOTYPE, "timeStamp", Value.makeAnyNumUInt().setReadOnly(), c);
 
         // DOM LEVEL 0
-        createDOMProperty(s, PROTOTYPE, "pageX", Value.makeAnyNumUInt());
-        createDOMProperty(s, PROTOTYPE, "pageY", Value.makeAnyNumUInt());
+        createDOMProperty(PROTOTYPE, "pageX", Value.makeAnyNumUInt(), c);
+        createDOMProperty(PROTOTYPE, "pageY", Value.makeAnyNumUInt(), c);
 
         s.multiplyObject(INSTANCES);
         INSTANCES = INSTANCES.makeSingleton().makeSummary();
@@ -88,23 +90,24 @@ public class Event {
         /*
          * Constants (PhaseType).
          */
-        createDOMProperty(s, PROTOTYPE, "CAPTURING_PHASE", Value.makeNum(1));
-        createDOMProperty(s, PROTOTYPE, "AT_TARGET", Value.makeNum(2));
-        createDOMProperty(s, PROTOTYPE, "BUBBLING_PHASE", Value.makeNum(3));
+        createDOMProperty(PROTOTYPE, "CAPTURING_PHASE", Value.makeNum(1), c);
+        createDOMProperty(PROTOTYPE, "AT_TARGET", Value.makeNum(2), c);
+        createDOMProperty(PROTOTYPE, "BUBBLING_PHASE", Value.makeNum(3), c);
 
         /*
          * Functions.
          */
-        createDOMFunction(s, PROTOTYPE, DOMObjects.EVENT_STOP_PROPAGATION, "stopPropagation", 0);
-        createDOMFunction(s, PROTOTYPE, DOMObjects.EVENT_PREVENT_DEFAULT, "preventDefault", 0);
-        createDOMFunction(s, PROTOTYPE, DOMObjects.EVENT_INIT_EVENT, "initEvent", 3);
+        createDOMFunction(PROTOTYPE, DOMObjects.EVENT_STOP_PROPAGATION, "stopPropagation", 0, c);
+        createDOMFunction(PROTOTYPE, DOMObjects.EVENT_PREVENT_DEFAULT, "preventDefault", 0, c);
+        createDOMFunction(PROTOTYPE, DOMObjects.EVENT_INIT_EVENT, "initEvent", 3, c);
     }
 
     /*
      * Transfer function.
      */
 
-    public static Value evaluate(DOMObjects nativeObject, FunctionCalls.CallInfo call, State s, Solver.SolverInterface c) {
+    public static Value evaluate(DOMObjects nativeObject, FunctionCalls.CallInfo call, Solver.SolverInterface c) {
+        State s = c.getState();
         switch (nativeObject) {
             case EVENT_INIT_EVENT: {
                 NativeFunctions.expectParameters(nativeObject, call, c, 3, 3);

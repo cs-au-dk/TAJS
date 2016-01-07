@@ -17,6 +17,8 @@
 package dk.brics.tajs.analysis.dom.html;
 
 import dk.brics.tajs.analysis.InitialStateBuilder;
+import dk.brics.tajs.analysis.PropVarOperations;
+import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.analysis.dom.DOMObjects;
 import dk.brics.tajs.analysis.dom.DOMWindow;
 import dk.brics.tajs.lattice.ObjectLabel;
@@ -36,17 +38,19 @@ public class HTMLButtonElement {
 
     public static ObjectLabel INSTANCES;
 
-    public static void build(State s) {
+    public static void build(Solver.SolverInterface c) {
+        State s = c.getState();
+        PropVarOperations pv = c.getAnalysis().getPropVarOperations();
         CONSTRUCTOR = new ObjectLabel(DOMObjects.HTMLBUTTONELEMENT_CONSTRUCTOR, ObjectLabel.Kind.FUNCTION);
         PROTOTYPE = new ObjectLabel(DOMObjects.HTMLBUTTONELEMENT_PROTOTYPE, ObjectLabel.Kind.OBJECT);
         INSTANCES = new ObjectLabel(DOMObjects.HTMLBUTTONELEMENT_INSTANCES, ObjectLabel.Kind.OBJECT);
 
         // Constructor Object
         s.newObject(CONSTRUCTOR);
-        s.writePropertyWithAttributes(CONSTRUCTOR, "length", Value.makeNum(0).setAttributes(true, true, true));
-        s.writePropertyWithAttributes(CONSTRUCTOR, "prototype", Value.makeObject(PROTOTYPE).setAttributes(true, true, true));
+        pv.writePropertyWithAttributes(CONSTRUCTOR, "length", Value.makeNum(0).setAttributes(true, true, true));
+        pv.writePropertyWithAttributes(CONSTRUCTOR, "prototype", Value.makeObject(PROTOTYPE).setAttributes(true, true, true));
         s.writeInternalPrototype(CONSTRUCTOR, Value.makeObject(InitialStateBuilder.FUNCTION_PROTOTYPE));
-        s.writeProperty(DOMWindow.WINDOW, "HTMLButtonElement", Value.makeObject(CONSTRUCTOR));
+        pv.writeProperty(DOMWindow.WINDOW, "HTMLButtonElement", Value.makeObject(CONSTRUCTOR));
 
         // Prototype Object
         s.newObject(PROTOTYPE);
@@ -60,13 +64,13 @@ public class HTMLButtonElement {
          * Properties.
          */
         // DOM LEVEL 1
-        createDOMProperty(s, INSTANCES, "form", Value.makeObject(HTMLFormElement.INSTANCES).setReadOnly());
-        createDOMProperty(s, INSTANCES, "accessKey", Value.makeAnyStr());
-        createDOMProperty(s, INSTANCES, "disabled", Value.makeAnyBool());
-        createDOMProperty(s, INSTANCES, "name", Value.makeAnyStr());
-        createDOMProperty(s, INSTANCES, "tabIndex", Value.makeAnyNum());
-        createDOMProperty(s, INSTANCES, "type", Value.makeAnyStr().setReadOnly());
-        createDOMProperty(s, INSTANCES, "value", Value.makeAnyStr());
+        createDOMProperty(INSTANCES, "form", Value.makeObject(HTMLFormElement.INSTANCES).setReadOnly(), c);
+        createDOMProperty(INSTANCES, "accessKey", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "disabled", Value.makeAnyBool(), c);
+        createDOMProperty(INSTANCES, "name", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "tabIndex", Value.makeAnyNum(), c);
+        createDOMProperty(INSTANCES, "type", Value.makeAnyStr().setReadOnly(), c);
+        createDOMProperty(INSTANCES, "value", Value.makeAnyStr(), c);
 
         s.multiplyObject(INSTANCES);
         INSTANCES = INSTANCES.makeSingleton().makeSummary();

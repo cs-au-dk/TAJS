@@ -16,12 +16,12 @@
 
 package dk.brics.tajs.analysis.dom.style;
 
-import dk.brics.tajs.lattice.State;
+import dk.brics.tajs.analysis.Solver;
 
 public class StyleBuilder {
 
-    public static void build(State s) {
-        CSSStyleDeclaration.build(s);
-        ClientBoundingRect.build(s);
+    public static void build(Solver.SolverInterface c) {
+        CSSStyleDeclaration.build(c);
+        ClientBoundingRect.build(c);
     }
 }

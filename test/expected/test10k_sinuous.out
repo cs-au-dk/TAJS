@@ -1,20 +1,24 @@
-test/10k/sinuous.html:122:17: [definite] TypeError, accessing property of null/undefined
-test/10k/sinuous.html:131:17: [definite] TypeError, accessing property of null/undefined
+test/10k/sinuous.html:124:21: [definite] TypeError, accessing property of null/undefined
+test/10k/sinuous.html:133:21: [definite] TypeError, accessing property of null/undefined
 test/10k/sinuous.html:60:13: [definite] The conditional expression is always true
 test/10k/sinuous.html:60:17: [definite] The conditional expression is always true
-test/10k/sinuous.html:122:17: [definite] Reading absent property touches
-test/10k/sinuous.html:131:17: [definite] Reading absent property touches
 test/10k/sinuous.html:342:9: [definite] Dead assignment, property f is never read
 test/10k/sinuous.html:343:9: [definite] Dead assignment, property color is never read
 test/10k/sinuous.html:48:13: [definite] The variable J is never used
 test/10k/sinuous.html:85:9: [definite] The variable L is never used
 test/10k/sinuous.html:113:9: [definite] The variable L is never used
 test/10k/sinuous.html:117:9: [definite] The variable L is never used
-test/10k/sinuous.html:122:37: [definite] Unreachable code
-test/10k/sinuous.html:131:37: [definite] Unreachable code
+test/10k/sinuous.html:124:21: [definite] Reading absent property (computed name)
+test/10k/sinuous.html:124:43: [definite] Unreachable code
+test/10k/sinuous.html:133:21: [definite] Reading absent property (computed name)
+test/10k/sinuous.html:133:43: [definite] Unreachable code
 test/10k/sinuous.html:138:9: [definite] The variable L is never used
 test/10k/sinuous.html:165:9: [definite] The variable L is never used
 test/10k/sinuous.html:180:23: [definite] The variable L is never used
+test/10k/sinuous.html:122:17: [maybe] TypeError, accessing property of null/undefined
+test/10k/sinuous.html:124:21: [maybe] TypeError, accessing property of null/undefined
+test/10k/sinuous.html:131:17: [maybe] TypeError, accessing property of null/undefined
+test/10k/sinuous.html:133:21: [maybe] TypeError, accessing property of null/undefined
 test/10k/sinuous.html:203:30: [maybe] TypeError, accessing property of null/undefined
 test/10k/sinuous.html:224:40: [maybe] TypeError, accessing property of null/undefined
 test/10k/sinuous.html:225:27: [maybe] TypeError, accessing property of null/undefined
@@ -25,7 +29,11 @@ test/10k/sinuous.html:254:29: [maybe] TypeError, accessing property of null/unde
 test/10k/sinuous.html:281:17: [maybe] TypeError, accessing property of null/undefined
 test/10k/sinuous.html:109:17: [maybe] Reading absent property clientX
 test/10k/sinuous.html:110:17: [maybe] Reading absent property clientY
-test/10k/sinuous.html: [maybe] Uncaught exception, constructed at [test/10k/sinuous.html:122:17, test/10k/sinuous.html:131:17, test/10k/sinuous.html:203:30, test/10k/sinuous.html:224:40, test/10k/sinuous.html:225:27, test/10k/sinuous.html:231:29, test/10k/sinuous.html:239:23, test/10k/sinuous.html:250:21, test/10k/sinuous.html:254:29, test/10k/sinuous.html:281:17]
+test/10k/sinuous.html:122:17: [maybe] Reading absent property touches
+test/10k/sinuous.html:124:21: [maybe] Reading absent property touches
+test/10k/sinuous.html:131:17: [maybe] Reading absent property touches
+test/10k/sinuous.html:133:21: [maybe] Reading absent property touches
+test/10k/sinuous.html: [maybe] Uncaught exception, constructed at [test/10k/sinuous.html:122:17, test/10k/sinuous.html:124:21, test/10k/sinuous.html:131:17, test/10k/sinuous.html:133:21, test/10k/sinuous.html:203:30, test/10k/sinuous.html:224:40, test/10k/sinuous.html:225:27, test/10k/sinuous.html:231:29, test/10k/sinuous.html:239:23, test/10k/sinuous.html:250:21, test/10k/sinuous.html:254:29, test/10k/sinuous.html:281:17]
 test/10k/sinuous.html:32:17: [maybe] Converting object to string
 test/10k/sinuous.html:32:17: [maybe] Converting primitive string to object
 test/10k/sinuous.html:33:18: [maybe] Conversion to number yields NaN

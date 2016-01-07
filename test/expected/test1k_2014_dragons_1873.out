@@ -1,4 +1,3 @@
-test/1k2014dragons/shims.js:19:5: [definite] The assignment to AudioContext has no effect
 test/1k2014dragons/shims.js:19:5: [definite] The conditional expression is always true
 test/1k2014dragons/shims.js:22:5: [definite] Property is null/undefined
 test/1k2014dragons/shims.js:22:5: [definite] The conditional expression is always false
@@ -48,8 +47,13 @@ test/1k2014dragons/1873.js:58:24: [maybe] The variable width has values with dif
 test/1k2014dragons/1873.js:58:31: [maybe] The variable height has values with different types
 test/1k2014dragons/1873.js:65:32: [maybe] Conversion from string to number yields NaN
 test/1k2014dragons/1873.js:65:32: [maybe] The variable width has values with different types
+test/1k2014dragons/1873.js:65:45: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1873.js:65:45: [maybe] Converting object to number
 test/1k2014dragons/1873.js:65:68: [maybe] Conversion from string to number yields NaN
 test/1k2014dragons/1873.js:65:68: [maybe] The variable height has values with different types
+test/1k2014dragons/1873.js:65:82: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1873.js:65:86: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1873.js:65:100: [maybe] Conversion from string to number yields NaN
 test/1k2014dragons/1873.js:70:9: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1873.js:73:17: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1873.js:73:42: [maybe] Conversion to number yields NaN

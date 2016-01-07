@@ -1,2 +1,6 @@
-eval("if(") //invalid syntax
-TAJS_dumpValue("HEP") //unreachble code
+try {
+    eval("if(") //invalid syntax
+    TAJS_assert(false); //unreachble code
+} catch (e) {
+
+}

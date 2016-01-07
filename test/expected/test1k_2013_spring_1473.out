@@ -2,12 +2,10 @@ test/1k2013spring/1473.js:19:16: [definite] TypeError, call to non-function
 test/1k2013spring/1473.js:2:20: [definite] The conditional expression is always false
 test/1k2013spring/1473.js:16:2: [definite] The conditional expression is always true
 test/1k2013spring/1473.js:19:4: [definite] The conditional expression is always false
-test/1k2013spring/1473.js:105:35: [definite] The assignment to d has no effect
 test/1k2013spring/1473.js:105:37: [definite] The conditional expression is always false
 test/1k2013spring/1473.js:105:37: [definite] Variable k is null/undefined
 test/1k2013spring/1473.js:105:49: [definite] The conditional expression is always false
 test/1k2013spring/1473.js:105:49: [definite] Variable k is null/undefined
-test/1k2013spring/1473.js:106:22: [definite] The assignment to d has no effect
 test/1k2013spring/1473.js:19:16: [definite] Reading absent property fc
 test/1k2013spring/1473.js:105:27: [definite] Reading absent property which
 test/1k2013spring/1473.js:2:14: [definite] Reading absent property (computed name)

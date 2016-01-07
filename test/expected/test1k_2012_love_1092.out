@@ -53,6 +53,7 @@ test/1k2012love/1092.js:97:35: [maybe] Conversion to number yields NaN
 test/1k2012love/1092.js:97:35: [maybe] Converting object to number
 test/1k2012love/1092.js:97:35: [maybe] Reading absent property (computed name)
 test/1k2012love/1092.js:97:35: [maybe] Reading absent property (computed name)
+test/1k2012love/1092.js:97:66: [maybe] Conversion from string to number yields NaN
 test/1k2012love/1092.js:97:70: [maybe] Conversion from string to number yields NaN
 test/1k2012love/shim.js:7:9: [maybe] Reading absent property (computed name)
 test/1k2012love/shim.js,test/1k2012love/1092.js: [maybe] Uncaught exception, constructed at [test/1k2012love/1092.js:30:7, test/1k2012love/1092.js:31:2, test/1k2012love/1092.js:50:14, test/1k2012love/1092.js:51:4, test/1k2012love/1092.js:56:45, test/1k2012love/1092.js:64:23, test/1k2012love/1092.js:66:24, test/1k2012love/1092.js:68:16, test/1k2012love/1092.js:69:9, test/1k2012love/1092.js:71:6, test/1k2012love/1092.js:95:16, test/1k2012love/1092.js:97:35, test/1k2012love/shim.js:8:9, test/1k2012love/shim.js:9:1]

@@ -245,27 +245,28 @@ public class DOMFunctions {
     /**
      * Create a new DOM property with the given name and value on the specified objectlabel.
      */
-    public static void createDOMProperty(State s, ObjectLabel label, String property, Value v) {
-        s.writePropertyWithAttributes(label, property, v.setAttributes(v.isDontEnum(), v.isDontDelete(), v.isReadOnly()));
+    public static void createDOMProperty(ObjectLabel label, String property, Value v, Solver.SolverInterface c) {
+        c.getAnalysis().getPropVarOperations().writePropertyWithAttributes(label, property, v.setAttributes(v.isDontEnum(), v.isDontDelete(), v.isReadOnly()));
     }
 
     /**
      * Create a new DOM function with the given name and number of arguments on
      * the specified objectlabel.
      */
-    public static void createDOMFunction(State s, ObjectLabel label, HostObject nativeObject, String name, int args) {
-        createPrimitiveFunction(s, label, FUNCTION_PROTOTYPE, nativeObject, name, args);
+    public static void createDOMFunction(ObjectLabel label, HostObject nativeObject, String name, int args, Solver.SolverInterface c) {
+        createPrimitiveFunction(label, FUNCTION_PROTOTYPE, nativeObject, name, args, c);
     }
 
     /**
      * Returns a Value representing all possible JSON objects.
      */
-    public static Value makeAnyJSONObject(State s) {
+    public static Value makeAnyJSONObject(Solver.SolverInterface c) {
+        State s = c.getState();
         ObjectLabel label = JSONObject.JSON_OBJECT;
         s.newObject(label);
         s.writeInternalPrototype(label, Value.makeObject(InitialStateBuilder.OBJECT_PROTOTYPE));
         Value v = Value.makeObject(label).joinAnyStr().joinAnyNum().joinAnyBool();
-        s.writeProperty(Collections.singleton(label), Value.makeAnyStr(), v, true, false);
+        c.getAnalysis().getPropVarOperations().writeProperty(Collections.singleton(label), Value.makeAnyStr(), v, true, false);
         return v;
     }
 
@@ -280,9 +281,9 @@ public class DOMFunctions {
      * Returns a Value representing a NodeList containg all possible HTML
      * elements.
      */
-    public static Value makeAnyHTMLNodeList(State s) {
+    public static Value makeAnyHTMLNodeList(Solver.SolverInterface c) {
         ObjectLabel nodeList = makeEmptyNodeList();
-        s.writeProperty(java.util.Collections.singleton(nodeList), Value.makeAnyStrUInt(), makeAnyHTMLElement(), true, false);
+        c.getAnalysis().getPropVarOperations().writeProperty(java.util.Collections.singleton(nodeList), Value.makeAnyStrUInt(), makeAnyHTMLElement(), true, false);
         return Value.makeObject(nodeList);
     }
 
@@ -424,7 +425,7 @@ public class DOMFunctions {
     /**
      * Evaluate the native function
      */
-    public static Value evaluate(DOMObjects nativeObject, CallInfo call, State s, Solver.SolverInterface c) {
+    public static Value evaluate(DOMObjects nativeObject, CallInfo call, Solver.SolverInterface c) {
         switch (nativeObject) {
             case WINDOW_ALERT:
             case WINDOW_ATOB:
@@ -466,7 +467,7 @@ public class DOMFunctions {
             case WINDOW_STOP:
             case WINDOW_UNESCAPE:
             case WINDOW_GET_COMPUTED_STYLE:
-                return DOMWindow.evaluate(nativeObject, call, s, c);
+                return DOMWindow.evaluate(nativeObject, call, c);
             case DOCUMENT_ADOPT_NODE:
             case DOCUMENT_CREATE_ATTRIBUTE:
             case DOCUMENT_CREATE_ATTRIBUTE_NS:
@@ -485,13 +486,13 @@ public class DOMFunctions {
             case DOCUMENT_IMPORT_NODE:
             case DOCUMENT_NORMALIZEDOCUMENT:
             case DOCUMENT_RENAME_NODE:
-                return DOMDocument.evaluate(nativeObject, call, s, c, DOMBuilder.getAllHtmlObjectLabels());
+                return DOMDocument.evaluate(nativeObject, call, c, DOMBuilder.getAllHtmlObjectLabels());
             case DOMIMPLEMENTATION_HASFEATURE:
             case DOMIMPLEMENTATION_CREATEDOCUMENTTYPE:
             case DOMIMPLEMENTATION_CREATEDOCUMENT:
-                return DOMImplementation.evaluate(nativeObject, call, s, c);
+                return DOMImplementation.evaluate(nativeObject, call, c);
             case NODELIST_ITEM:
-                return DOMNodeList.evaluate(nativeObject, call, s, c);
+                return DOMNodeList.evaluate(nativeObject, call, c);
             case ELEMENT_GET_ATTRIBUTE:
             case ELEMENT_GET_ATTRIBUTE_NS:
             case ELEMENT_GET_ATTRIBUTE_NODE:
@@ -512,13 +513,13 @@ public class DOMFunctions {
             case ELEMENT_SET_ID_ATTRIBUTE:
             case ELEMENT_SET_ID_ATTRIBUTE_NS:
             case ELEMENT_SET_ID_ATTRIBUTE_NODE:
-                return DOMElement.evaluate(nativeObject, call, s, c);
+                return DOMElement.evaluate(nativeObject, call, c);
             case CHARACTERDATA_SUBSTRINGDATA:
             case CHARACTERDATA_APPENDDATA:
             case CHARACTERDATA_INSERTDATA:
             case CHARACTERDATA_DELETEDATA:
             case CHARACTERDATA_REPLACEDATA:
-                return DOMCharacterData.evaluate(nativeObject, call, s, c);
+                return DOMCharacterData.evaluate(nativeObject, call, c);
             case NAMEDNODEMAP_PROTOTYPE_GETNAMEDITEM:
             case NAMEDNODEMAP_PROTOTYPE_SETNAMEDITEM:
             case NAMEDNODEMAP_PROTOTYPE_REMOVENAMEDITEM:
@@ -526,7 +527,7 @@ public class DOMFunctions {
             case NAMEDNODEMAP_PROTOTYPE_GETNAMEDITEMNS:
             case NAMEDNODEMAP_PROTOTYPE_SETNAMEDITEMNS:
             case NAMEDNODEMAP_PROTOTYPE_REMOVEDNAMEDITEMNS:
-                return DOMNamedNodeMap.evaluate(nativeObject, call, s, c);
+                return DOMNamedNodeMap.evaluate(nativeObject, call, c);
             case NODE_APPEND_CHILD:
             case NODE_CLONE_NODE:
             case NODE_HAS_CHILD_NODES:
@@ -537,50 +538,50 @@ public class DOMFunctions {
             case NODE_HAS_ATTRIBUTES:
             case NODE_NORMALIZE:
             case NODE_COMPARE_DOCUMENT_POSITION:
-                return DOMNode.evaluate(nativeObject, call, s, c);
+                return DOMNode.evaluate(nativeObject, call, c);
             case TEXT_SPLIT_TEXT:
             case TEXT_REPLACE_WHOLE_TEXT:
-                return DOMText.evaluate(nativeObject, call, s, c);
+                return DOMText.evaluate(nativeObject, call, c);
             // HTML
             case HTMLANCHORELEMENT_BLUR:
             case HTMLANCHORELEMENT_FOCUS:
                 return HTMLAnchorElement.evaluate(nativeObject, call, c);
             case HTMLCOLLECTION_ITEM:
             case HTMLCOLLECTION_NAMEDITEM:
-                return HTMLCollection.evaluate(nativeObject, call, s, c);
+                return HTMLCollection.evaluate(nativeObject, call, c);
             case HTMLDOCUMENT_OPEN:
             case HTMLDOCUMENT_CLOSE:
             case HTMLDOCUMENT_WRITE:
             case HTMLDOCUMENT_WRITELN:
             case HTMLDOCUMENT_GET_ELEMENTS_BY_NAME:
             case HTMLDOCUMENT_GET_ELEMENTS_BY_CLASS_NAME:
-                return HTMLDocument.evaluate(nativeObject, call, s, c);
+                return HTMLDocument.evaluate(nativeObject, call, c);
             case HTMLELEMENT_GET_ELEMENTS_BY_CLASS_NAME:
             case HTMLELEMENT_BLUR:
             case HTMLELEMENT_FOCUS:
             case HTMLELEMENT_MATCHES_SELECTOR:
-                return HTMLElement.evaluate(nativeObject, call, s, c);
+                return HTMLElement.evaluate(nativeObject, call, c);
             case HTMLIMAGEELEMENT_CONSTRUCTOR:
-                return HTMLImageElement.evaluate(nativeObject, call, s, c);
+                return HTMLImageElement.evaluate(nativeObject, call, c);
             case HTMLOPTIONSCOLLECTION_ITEM:
             case HTMLOPTIONSCOLLECTION_NAMEDITEM:
-                return HTMLOptionsCollection.evaluate(nativeObject, call, s, c);
+                return HTMLOptionsCollection.evaluate(nativeObject, call, c);
             case HTMLFORMELEMENT_SUBMIT:
             case HTMLFORMELEMENT_RESET:
-                return HTMLFormElement.evaluate(nativeObject, call, s, c);
+                return HTMLFormElement.evaluate(nativeObject, call, c);
             case HTMLINPUTELEMENT_CLICK:
             case HTMLINPUTELEMENT_BLUR:
             case HTMLINPUTELEMENT_FOCUS:
             case HTMLINPUTELEMENT_SELECT:
-                return HTMLInputElement.evaluate(nativeObject, call, s, c);
+                return HTMLInputElement.evaluate(nativeObject, call, c);
             case HTMLSELECTELEMENT_ADD:
-            case HTMLSELECTELEMENT_BLUR:
-            case HTMLSELECTELEMENT_FOCUS:
             case HTMLSELECTELEMENT_REMOVE:
-                return HTMLSelectElement.evaluate(nativeObject, call, s, c);
+            case HTMLSELECTELEMENT_FOCUS:
+            case HTMLSELECTELEMENT_BLUR:
+                return HTMLSelectElement.evaluate(nativeObject, call, c);
             case HTMLTABLESECTIONELEMENT_DELETEROW:
             case HTMLTABLESECTIONELEMENT_INSERTROW:
-                return HTMLTableSectionElement.evaluate(nativeObject, call, s, c);
+                return HTMLTableSectionElement.evaluate(nativeObject, call, c);
             case HTMLTABLEELEMENT_CREATECAPTION:
             case HTMLTABLEELEMENT_CREATETFOOT:
             case HTMLTABLEELEMENT_CREATETHEAD:
@@ -589,55 +590,55 @@ public class DOMFunctions {
             case HTMLTABLEELEMENT_DELETETHEAD:
             case HTMLTABLEELEMENT_INSERTROW:
             case HTMLTABLEELEMENT_DELETEROW:
-                return HTMLTableElement.evaluate(nativeObject, call, s, c);
+                return HTMLTableElement.evaluate(nativeObject, call, c);
             case HTMLTABLEROWELEMENT_INSERTCELL:
             case HTMLTABLEROWELEMENT_DELETECELL:
-                return HTMLTableRowElement.evaluate(nativeObject, call, s, c);
+                return HTMLTableRowElement.evaluate(nativeObject, call, c);
             case HTMLMEDIAELEMENT_CAN_PLAY_TYPE:
             case HTMLMEDIAELEMENT_FAST_SEEK:
             case HTMLMEDIAELEMENT_LOAD:
             case HTMLMEDIAELEMENT_PAUSE:
             case HTMLMEDIAELEMENT_PLAY:
-                return HTMLMediaElement.evaluate(nativeObject, call, s, c);
+                return HTMLMediaElement.evaluate(nativeObject, call, c);
             case HTMLTEXTAREAELEMENT_BLUR:
             case HTMLTEXTAREAELEMENT_FOCUS:
             case HTMLTEXTAREAELEMENT_SELECT:
-                return HTMLTextAreaElement.evaluate(nativeObject, call, s, c);
+                return HTMLTextAreaElement.evaluate(nativeObject, call, c);
             case HTMLAUDIOELEMENT_CONSTRUCTOR:
-                return HTMLAudioElement.evaluate(nativeObject, call, s, c);
+                return HTMLAudioElement.evaluate(nativeObject, call, c);
             case TIMERANGES_CONSTRUCTOR:
             case TIMERANGES_END:
             case TIMERANGES_START:
-                return TimeRanges.evaluate(nativeObject, call, s, c);
+                return TimeRanges.evaluate(nativeObject, call, c);
             case WEBGLRENDERINGCONTEXT_CONSTRCUTOR:
             case WEBGLRENDERINGCONTEXT_TAJS_UNSUPPORTED_FUNCTION:
-                return WebGLRenderingContext.evaluate(nativeObject, call, s, c);
+                return WebGLRenderingContext.evaluate(nativeObject, call, c);
             case AUDIOCONTEXT_CONSTRUCTOR:
             case AUDIOCONTEXT_CREATE_ANALYSER:
             case AUDIOCONTEXT_CREATE_OSCILLATOR:
             case AUDIOCONTEXT_CREATE_SCRIPT_PROCESSOR:
             case AUDIOCONTEXT_TAJS_UNSUPPORTED_FUNCTION:
-                return AudioContext.evaluate(nativeObject, call, s, c);
+                return AudioContext.evaluate(nativeObject, call, c);
             case AUDIOPARAM_CONSTRUCTOR:
             case AUDIOPARAM_TAJS_UNSUPPORTED_FUNCTION:
-                return AudioParam.evaluate(nativeObject, call, s, c);
+                return AudioParam.evaluate(nativeObject, call, c);
             case AUDIONODE_CONSTRUCTOR:
             case AUDIONODE_CONNECT:
             case AUDIONODE_DISCONNECT:
-                return AudioNode.evaluate(nativeObject, call, s, c);
+                return AudioNode.evaluate(nativeObject, call, c);
             case AUDIODESTINATIONNODE_CONSTRUCTOR:
-                return AudioDestinationNode.evaluate(nativeObject, call, s, c);
+                return AudioDestinationNode.evaluate(nativeObject, call, c);
             case SCRIPTPROCESSORNODE_CONSTRUCTOR:
-                return ScriptProcessorNode.evaluate(nativeObject, call, s, c);
+                return ScriptProcessorNode.evaluate(nativeObject, call, c);
             case OSCILLATORNODE_CONSTRUCTOR:
             case OSCILLATORNODE_SET_PERIODIC_WAVE:
             case OSCILLATORNODE_START:
             case OSCILLATORNODE_STOP:
-                return OscillatorNode.evaluate(nativeObject, call, s, c);
+                return OscillatorNode.evaluate(nativeObject, call, c);
             case HTMLCANVASELEMENT_GET_CONTEXT:
             case HTMLCANVASELEMENT_TO_DATA_URL:
             case HTMLCANVASELEMENT_CONSTRUCTOR:
-                return HTMLCanvasElement.evaluate(nativeObject, call, s, c);
+                return HTMLCanvasElement.evaluate(nativeObject, call, c);
             case CANVASRENDERINGCONTEXT2D_BEGIN_PATH:
             case CANVASRENDERINGCONTEXT2D_CLOSE_PATH:
             case CANVASRENDERINGCONTEXT2D_MOVE_TO:
@@ -673,49 +674,49 @@ public class DOMFunctions {
             case CANVASRENDERINGCONTEXT2D_GET_IMAGE_DATA:
             case CANVASRENDERINGCONTEXT2D_PUT_IMAGE_DATA:
             case CANVASGRADIENT_ADD_COLOR_STOP:
-                return CanvasRenderingContext2D.evaluate(nativeObject, call, s, c);
+                return CanvasRenderingContext2D.evaluate(nativeObject, call, c);
             case STORAGE_GET_ITEM:
             case STORAGE_KEY:
             case STORAGE_SET_ITEM:
             case STORAGE_REMOVE_ITEM:
-                return StorageElement.evaluate(nativeObject, call, s, c);
+                return StorageElement.evaluate(nativeObject, call, c);
             case STRINGLIST_CONTAINS:
             case STRINGLIST_ITEM:
-                return DOMStringList.evaluate(nativeObject, call, s, c);
+                return DOMStringList.evaluate(nativeObject, call, c);
             case CONFIGURATION_CAN_SET_PARAMETER:
             case CONFIGURATION_SET_PARAMETER:
             case CONFIGURATION_GET_PARAMETER:
             case CONFIGURATION_CONSTRUCTOR:
             case CONFIGURATION_INSTANCES:
             case CONFIGURATION_PROTOTYPE:
-                return DOMConfiguration.evaluate(nativeObject, call, s, c);
+                return DOMConfiguration.evaluate(nativeObject, call, c);
             case EVENT_INIT_EVENT:
             case EVENT_PREVENT_DEFAULT:
             case EVENT_STOP_PROPAGATION:
-                return Event.evaluate(nativeObject, call, s, c);
+                return Event.evaluate(nativeObject, call, c);
             case EVENT_TARGET_ADD_EVENT_LISTENER:
             case WINDOW_ADD_EVENT_LISTENER:
             case EVENT_TARGET_REMOVE_EVENT_LISTENER:
             case WINDOW_REMOVE_EVENT_LISTENER:
             case EVENT_TARGET_DISPATCH_EVENT:
-                return EventTarget.evaluate(nativeObject, call, s, c);
+                return EventTarget.evaluate(nativeObject, call, c);
             case EVENT_LISTENER_HANDLE_EVENT:
-                return EventListener.evaluate(nativeObject, call, s, c);
+                return EventListener.evaluate(nativeObject, call, c);
             case DOCUMENT_EVENT_CREATE_EVENT:
-                return DocumentEvent.evaluate(nativeObject, call, s, c);
+                return DocumentEvent.evaluate(nativeObject, call, c);
             case MUTATION_EVENT_INIT_MUTATION_EVENT:
-                return MutationEvent.evaluate(nativeObject, call, s, c);
+                return MutationEvent.evaluate(nativeObject, call, c);
             case UI_EVENT_INIT_UI_EVENT:
-                return UIEvent.evaluate(nativeObject, call, s, c);
+                return UIEvent.evaluate(nativeObject, call, c);
             case MOUSE_EVENT_INIT_MOUSE_EVENT:
-                return MouseEvent.evaluate(nativeObject, call, s, c);
+                return MouseEvent.evaluate(nativeObject, call, c);
             case KEYBOARD_EVENT_GET_MODIFIER_STATE:
             case KEYBOARD_EVENT_INIT_KEYBOARD_EVENT:
             case KEYBOARD_EVENT_INIT_KEYBOARD_EVENT_NS:
-                return KeyboardEvent.evaluate(nativeObject, call, s, c);
+                return KeyboardEvent.evaluate(nativeObject, call, c);
             case WHEEL_EVENT_INIT_WHEEL_EVENT:
             case WHEEL_EVENT_INIT_WHEEL_EVENT_NS:
-                return WheelEvent.evaluate(nativeObject, call, s, c);
+                return WheelEvent.evaluate(nativeObject, call, c);
             case XML_HTTP_REQUEST_OPEN:
             case XML_HTTP_REQUEST_SEND:
             case XML_HTTP_REQUEST_ABORT:
@@ -723,7 +724,7 @@ public class DOMFunctions {
             case XML_HTTP_REQUEST_GET_RESPONSE_HEADER:
             case XML_HTTP_REQUEST_GET_ALL_RESPONSE_HEADERS:
             case XML_HTTP_REQUEST_CONSTRUCTOR:
-                return XmlHttpRequest.evaluate(nativeObject, call, s, c);
+                return XmlHttpRequest.evaluate(nativeObject, call, c);
             case ACTIVE_X_OBJECT_OPEN:
             case ACTIVE_X_OBJECT_SEND:
             case ACTIVE_X_OBJECT_ABORT:
@@ -731,7 +732,7 @@ public class DOMFunctions {
             case ACTIVE_X_OBJECT_GET_RESPONSE_HEADER:
             case ACTIVE_X_OBJECT_GET_ALL_RESPONSE_HEADERS:
             case ACTIVE_X_OBJECT_CONSTRUCTOR:
-                return ActiveXObject.evaluate(nativeObject, call, s, c);
+                return ActiveXObject.evaluate(nativeObject, call, c);
             default: {
                 c.getMonitoring().addMessage(call.getSourceNode(), Severity.HIGH, "TypeError, call to non-function (DOM): " + nativeObject);
                 return Value.makeNone();

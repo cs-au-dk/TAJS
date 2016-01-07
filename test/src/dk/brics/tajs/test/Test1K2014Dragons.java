@@ -6,6 +6,7 @@ import dk.brics.tajs.monitoring.IAnalysisMonitoring;
 import dk.brics.tajs.monitoring.Monitoring;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.test.monitors.OrdinaryExitReachableCheckerMonitor;
+import dk.brics.tajs.util.AnalysisLimitationException;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -24,6 +25,7 @@ public class Test1K2014Dragons {
         Options.get().enableTest();
         Options.get().enableIncludeDom();
         Options.get().enableUnevalizer();
+        Options.get().enablePolyfillMDN();
         monitoring = CompositeMonitoring.buildFromList(new Monitoring(), new OrdinaryExitReachableCheckerMonitor());
     }
 
@@ -48,7 +50,6 @@ public class Test1K2014Dragons {
         Misc.checkSystemOutput();
     }
 
-    @Ignore // FIXME TAJS model of Array.filter
     @Test
     public void test1k_2014_dragons_1641() {
         Misc.init();
@@ -94,7 +95,6 @@ public class Test1K2014Dragons {
         Misc.checkSystemOutput();
     }
 
-    @Ignore // Ordinary exit unreachable (due to definite error?)! See GitHub #219
     @Test
     public void test1k_2014_dragons_1670() {
         Misc.init();
@@ -114,7 +114,6 @@ public class Test1K2014Dragons {
         Misc.checkSystemOutput();
     }
 
-    @Ignore // FIXME TAJS model of Array.filter
     @Test
     public void test1k_2014_dragons_1673() {
         Misc.init();
@@ -182,7 +181,6 @@ public class Test1K2014Dragons {
         Misc.checkSystemOutput();
     }
 
-    @Ignore// FIXME TAJS bug with missing event handler triggering for `window.onclick = fun`
     @Test
     public void test1k_2014_dragons_1706() {
         Misc.init();
@@ -201,7 +199,7 @@ public class Test1K2014Dragons {
         Misc.checkSystemOutput();
     }
 
-    @Ignore // FIXME TAJS model of Array.map
+    @Ignore // FIXME TAJS model of document.styleSheets
     @Test
     public void test1k_2014_dragons_1720() {
         Misc.init();
@@ -211,8 +209,7 @@ public class Test1K2014Dragons {
         Misc.checkSystemOutput();
     }
 
-    @Ignore // FIXME TAJS model of Function.bind
-    @Test
+    @Test(expected = AnalysisLimitationException.class /* Function.bind not modeled */)
     public void test1k_2014_dragons_1722() {
         Misc.init();
         Misc.captureSystemOutput();
@@ -249,7 +246,7 @@ public class Test1K2014Dragons {
         Misc.checkSystemOutput();
     }
 
-    @Ignore // FIXME TAJS model of Array.map
+    @Ignore // FIXME TAJS model of document.styleSheets
     @Test
     public void test1k_2014_dragons_1751() {
         Misc.init();
@@ -259,7 +256,6 @@ public class Test1K2014Dragons {
         Misc.checkSystemOutput();
     }
 
-    @Ignore // Ordinary exit unreachable (due to definite error?)! See GitHub #219
     @Test
     public void test1k_2014_dragons_1753() {
         Misc.init();
@@ -287,7 +283,6 @@ public class Test1K2014Dragons {
         Misc.checkSystemOutput();
     }
 
-    @Ignore // FIXME TAJS model of Array.forEach
     @Test
     public void test1k_2014_dragons_1765() {
         Misc.init();
@@ -297,7 +292,6 @@ public class Test1K2014Dragons {
         Misc.checkSystemOutput();
     }
 
-    @Ignore // TODO Fix testcase-bug: dead fallback code due to shims.js
     @Test
     public void test1k_2014_dragons_1766() {
         Misc.init();
@@ -366,7 +360,6 @@ public class Test1K2014Dragons {
         Misc.checkSystemOutput();
     }
 
-    @Ignore // FIXME TAJS model of touch-events
     @Test
     public void test1k_2014_dragons_1787() {
         Misc.init();
@@ -396,7 +389,6 @@ public class Test1K2014Dragons {
         Misc.checkSystemOutput();
     }
 
-    @Ignore // Ordinary exit unreachable (due to definite error?)! See GitHub #219
     @Test
     public void test1k_2014_dragons_1799() {
         Misc.init();
@@ -474,7 +466,6 @@ public class Test1K2014Dragons {
         Misc.checkSystemOutput();
     }
 
-    @Ignore // FIXME TAJS model of Array.forEach
     @Test
     public void test1k_2014_dragons_1822() {
         Misc.init();
@@ -512,7 +503,6 @@ public class Test1K2014Dragons {
         Misc.checkSystemOutput();
     }
 
-    @Ignore // FIXME TAJS model of Array.sort
     @Test
     public void test1k_2014_dragons_1836() {
         Misc.init();
@@ -522,7 +512,6 @@ public class Test1K2014Dragons {
         Misc.checkSystemOutput();
     }
 
-    @Ignore // FIXME TAJS model of Array.map
     @Test
     public void test1k_2014_dragons_1837() {
         Misc.init();
@@ -598,7 +587,6 @@ public class Test1K2014Dragons {
         Misc.checkSystemOutput();
     }
 
-    @Ignore // FIXME TAJS model of Array.map
     @Test
     public void test1k_2014_dragons_1898() {
         Misc.init();
@@ -608,7 +596,6 @@ public class Test1K2014Dragons {
         Misc.checkSystemOutput();
     }
 
-    @Ignore // FIXME TAJS model of Array.forEach
     @Test
     public void test1k_2014_dragons_1900() {
         Misc.init();
@@ -618,7 +605,7 @@ public class Test1K2014Dragons {
         Misc.checkSystemOutput();
     }
 
-    @Ignore // FIXME TAJS model of touch-events
+    @Ignore // TODO Fix testcase-bug: referencing absent variable: '_'
     @Test
     public void test1k_2014_dragons_1903() {
         Misc.init();
@@ -675,7 +662,6 @@ public class Test1K2014Dragons {
         Misc.checkSystemOutput();
     }
 
-    @Ignore // FIXME TAJS model of touch-events
     @Test
     public void test1k_2014_dragons_1919() {
         Misc.init();
@@ -695,7 +681,6 @@ public class Test1K2014Dragons {
         Misc.checkSystemOutput();
     }
 
-    @Ignore // Ordinary exit unreachable (due to definite error?)! See GitHub #219
     @Test
     public void test1k_2014_dragons_1931() {
         Misc.init();
@@ -761,8 +746,7 @@ public class Test1K2014Dragons {
         Misc.checkSystemOutput();
     }
 
-    @Ignore // FIXME TAJS precision for eval
-    @Test
+    @Test(expected = AnalysisLimitationException.class /* eval precision */)
     public void test1k_2014_dragons_1964() {
         Misc.init();
         Misc.captureSystemOutput();

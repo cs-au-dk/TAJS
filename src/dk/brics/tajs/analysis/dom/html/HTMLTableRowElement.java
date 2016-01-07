@@ -20,6 +20,7 @@ import dk.brics.tajs.analysis.Conversion;
 import dk.brics.tajs.analysis.FunctionCalls;
 import dk.brics.tajs.analysis.InitialStateBuilder;
 import dk.brics.tajs.analysis.NativeFunctions;
+import dk.brics.tajs.analysis.PropVarOperations;
 import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.analysis.dom.DOMObjects;
 import dk.brics.tajs.analysis.dom.DOMWindow;
@@ -42,17 +43,19 @@ public class HTMLTableRowElement {
 
     public static ObjectLabel INSTANCES;
 
-    public static void build(State s) {
+    public static void build(Solver.SolverInterface c) {
+        State s = c.getState();
+        PropVarOperations pv = c.getAnalysis().getPropVarOperations();
         CONSTRUCTOR = new ObjectLabel(DOMObjects.HTMLTABLEROWELEMENT_CONSTRUCTOR, ObjectLabel.Kind.FUNCTION);
         PROTOTYPE = new ObjectLabel(DOMObjects.HTMLTABLEROWELEMENT_PROTOTYPE, ObjectLabel.Kind.OBJECT);
         INSTANCES = new ObjectLabel(DOMObjects.HTMLTABLEROWELEMENT_INSTANCES, ObjectLabel.Kind.OBJECT);
 
         // Constructor Object
         s.newObject(CONSTRUCTOR);
-        s.writePropertyWithAttributes(CONSTRUCTOR, "length", Value.makeNum(0).setAttributes(true, true, true));
-        s.writePropertyWithAttributes(CONSTRUCTOR, "prototype", Value.makeObject(PROTOTYPE).setAttributes(true, true, true));
+        pv.writePropertyWithAttributes(CONSTRUCTOR, "length", Value.makeNum(0).setAttributes(true, true, true));
+        pv.writePropertyWithAttributes(CONSTRUCTOR, "prototype", Value.makeObject(PROTOTYPE).setAttributes(true, true, true));
         s.writeInternalPrototype(CONSTRUCTOR, Value.makeObject(InitialStateBuilder.FUNCTION_PROTOTYPE));
-        s.writeProperty(DOMWindow.WINDOW, "HTMLTableRowElement", Value.makeObject(CONSTRUCTOR));
+        pv.writeProperty(DOMWindow.WINDOW, "HTMLTableRowElement", Value.makeObject(CONSTRUCTOR));
 
         // Prototype Object
         s.newObject(PROTOTYPE);
@@ -66,16 +69,16 @@ public class HTMLTableRowElement {
          * Properties.
          */
         // DOM Level 1
-        createDOMProperty(s, INSTANCES, "align", Value.makeAnyStr());
-        createDOMProperty(s, INSTANCES, "bgColor", Value.makeAnyStr());
-        createDOMProperty(s, INSTANCES, "ch", Value.makeAnyStr());
-        createDOMProperty(s, INSTANCES, "chOff", Value.makeAnyStr());
-        createDOMProperty(s, INSTANCES, "vAlign", Value.makeAnyStr());
+        createDOMProperty(INSTANCES, "align", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "bgColor", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "ch", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "chOff", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "vAlign", Value.makeAnyStr(), c);
 
         // DOM Level 2
-        createDOMProperty(s, INSTANCES, "rowIndex", Value.makeAnyNum().setReadOnly());
-        createDOMProperty(s, INSTANCES, "sectionRowIndex", Value.makeAnyNum().setReadOnly());
-        createDOMProperty(s, INSTANCES, "cells", Value.makeObject(HTMLCollection.INSTANCES).setReadOnly());
+        createDOMProperty(INSTANCES, "rowIndex", Value.makeAnyNum().setReadOnly(), c);
+        createDOMProperty(INSTANCES, "sectionRowIndex", Value.makeAnyNum().setReadOnly(), c);
+        createDOMProperty(INSTANCES, "cells", Value.makeObject(HTMLCollection.INSTANCES).setReadOnly(), c);
 
         s.multiplyObject(INSTANCES);
         INSTANCES = INSTANCES.makeSingleton().makeSummary();
@@ -84,11 +87,12 @@ public class HTMLTableRowElement {
          * Functions.
          */
         // DOM Level 2
-        createDOMFunction(s, PROTOTYPE, DOMObjects.HTMLTABLEROWELEMENT_INSERTCELL, "insertCell", 1);
-        createDOMFunction(s, PROTOTYPE, DOMObjects.HTMLTABLEROWELEMENT_DELETECELL, "deleteCell", 1);
+        createDOMFunction(PROTOTYPE, DOMObjects.HTMLTABLEROWELEMENT_INSERTCELL, "insertCell", 1, c);
+        createDOMFunction(PROTOTYPE, DOMObjects.HTMLTABLEROWELEMENT_DELETECELL, "deleteCell", 1, c);
     }
 
-    public static Value evaluate(DOMObjects nativeObject, FunctionCalls.CallInfo call, State s, Solver.SolverInterface c) {
+    public static Value evaluate(DOMObjects nativeObject, FunctionCalls.CallInfo call, Solver.SolverInterface c) {
+        State s = c.getState();
         switch (nativeObject) {
             case HTMLTABLEROWELEMENT_INSERTCELL: {
                 NativeFunctions.expectParameters(nativeObject, call, c, 1, 1);

@@ -21,6 +21,7 @@ import dk.brics.tajs.analysis.FunctionCalls;
 import dk.brics.tajs.analysis.FunctionCalls.CallInfo;
 import dk.brics.tajs.analysis.InitialStateBuilder;
 import dk.brics.tajs.analysis.NativeFunctions;
+import dk.brics.tajs.analysis.PropVarOperations;
 import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.analysis.js.UserFunctionCalls;
 import dk.brics.tajs.analysis.nativeobjects.JSRegExp.RegExpExecHandler;
@@ -71,11 +72,12 @@ public class JSString {
     /**
      * Evaluates the given native function.
      */
-    public static Value evaluate(ECMAScriptObjects nativeobject, final CallInfo call, final State state, final Solver.SolverInterface c) {
+    public static Value evaluate(ECMAScriptObjects nativeobject, final CallInfo call, final Solver.SolverInterface c) {
         if (nativeobject != ECMAScriptObjects.STRING)
-            if (NativeFunctions.throwTypeErrorIfConstructor(call, state, c))
+            if (NativeFunctions.throwTypeErrorIfConstructor(call, c))
                 return Value.makeNone();
 
+        State state = c.getState();
         switch (nativeobject) {
 
             case STRING: { // 15.5.1/2
@@ -91,7 +93,7 @@ public class JSString {
                     state.writeInternalValue(objlabel, s);
                     state.writeInternalPrototype(objlabel, Value.makeObject(InitialStateBuilder.STRING_PROTOTYPE));
                     Value len = s.isMaybeSingleStr() ? Value.makeNum(s.getStr().length()) : Value.makeAnyNumUInt();
-                    state.writePropertyWithAttributes(objlabel, "length", len.setAttributes(true, true, true));
+                    c.getAnalysis().getPropVarOperations().writePropertyWithAttributes(objlabel, "length", len.setAttributes(true, true, true));
                     return Value.makeObject(objlabel);
                 } else // 15.5.1
                     return s;
@@ -172,7 +174,7 @@ public class JSString {
                 Value receiver = Value.makeObject(state.readThisObjects());
                 Conversion.toString(receiver, c);
                 // NB: a argument string might be coerced to a regular expression...
-                return TAJSConcreteSemantics.convertTAJSCall(state.readThis(), "String.prototype.match", 1, ConcreteValue.class, state, call, c).apply(new RegExpExecHandler(call, state));
+                return TAJSConcreteSemantics.convertTAJSCall(state.readThis(), "String.prototype.match", 1, ConcreteValue.class, state, call, c).apply(new RegExpExecHandler(call, c));
             }
 
             case STRING_REPLACE: { // 15.5.4.11
@@ -194,7 +196,7 @@ public class JSString {
 
                 if (Gamma.isConcreteValue(state.readThis(), c) && Gamma.isConcreteValue(toReplace, c)) {
                     // sound "optimization": if a function is given as second argument, then it is only a problem if it could be invoked..
-                    return ConcreteSemantics.get().<ConcreteNumber>apply("String.prototype.search", Gamma.toConcreteValue(state.readThis(), c), Collections.singletonList(escapeAnyStringForRegExp(Gamma.toConcreteValue(toReplace, c)))).apply(new OptionalObjectVisitor<Value, ConcreteNumber>() {
+                    return ConcreteSemantics.get().apply("String.prototype.search", Gamma.toConcreteValue(state.readThis(), c), Collections.singletonList(escapeAnyStringForRegExp(Gamma.toConcreteValue(toReplace, c)))).apply(new OptionalObjectVisitor<Value, ConcreteValue>() {
                         private boolean handleFunctionCallbacks() {
                             boolean anyCallbacks = false;
                             if (toReplaceWith.isMaybeObject()) {
@@ -215,14 +217,18 @@ public class JSString {
                         }
 
                         @Override
-                        public Value visit(None<ConcreteNumber> o) {
+                        public Value visit(None<ConcreteValue> o) {
                             handleFunctionCallbacks();
                             return Value.makeAnyStr();
                         }
 
                         @Override
-                        public Value visit(Some<ConcreteNumber> o) {
-                            boolean hasAnyMatches = (int) o.get().getNumber() != -1;
+                        public Value visit(Some<ConcreteValue> o) {
+                            ConcreteValue concreteValue = o.get();
+                            if (!(concreteValue instanceof ConcreteNumber)) {
+                                return visit(None.make());
+                            }
+                            boolean hasAnyMatches = (int) ((ConcreteNumber)concreteValue).getNumber() != -1;
                             if (hasAnyMatches) {
                                 boolean anyCallbacks = handleFunctionCallbacks();
                                 if(anyCallbacks){
@@ -275,7 +281,7 @@ public class JSString {
             }
 
             case STRING_SPLIT: { // 15.5.4.14
-                return splitString(nativeobject, call, state, c);
+                return splitString(nativeobject, call, c);
             }
 
             case STRING_TOLOWERCASE: { // 15.5.4.16
@@ -416,12 +422,13 @@ public class JSString {
         });
     }
 
-    private static Value splitString(ECMAScriptObjects nativeobject, final CallInfo call, final State state, final Solver.SolverInterface c) {
+    private static Value splitString(ECMAScriptObjects nativeobject, final CallInfo call, final Solver.SolverInterface c) {
+        State state = c.getState();
         NativeFunctions.expectParameters(nativeobject, call, c, 0, 2);
         return TAJSConcreteSemantics.convertTAJSCall(state.readThis(), "String.prototype.split", 2, ConcreteArray.class, state, call, c).apply(new OptionalObjectVisitor<Value, ConcreteArray>() {
             @Override
             public Value visit(Some<ConcreteArray> o) {
-                return Alpha.createNewArrayValue(o.get(), state, call.getSourceNode());
+                return Alpha.createNewArrayValue(o.get(), call.getSourceNode(), c);
             }
 
             @Override
@@ -436,16 +443,17 @@ public class JSString {
                 state.newObject(resultArray);
                 state.writeInternalPrototype(resultArray, Value.makeObject(InitialStateBuilder.ARRAY_PROTOTYPE));
                 final Value thisStringValue = Conversion.toString(state.readThis(), c);
+                PropVarOperations pv = c.getAnalysis().getPropVarOperations();
                 if (limit.equals(Value.makeNum(0))) {
                     // CASE: a definite limit of zero
-                    state.writePropertyWithAttributes(resultArray, "length", limit.setAttributes(true, true, false));
+                    pv.writePropertyWithAttributes(resultArray, "length", limit.setAttributes(true, true, false));
                     return Value.makeObject(resultArray);
                 }
 
                 if (separator.isMaybeUndef()) {
                     // CASE: undefined separator
-                    state.writeProperty(Collections.singleton(resultArray), Value.makeStr("0"), thisStringValue, true, false);
-                    state.writePropertyWithAttributes(resultArray, "length", Value.makeNum(1).setAttributes(true, true, false));
+                    pv.writeProperty(Collections.singleton(resultArray), Value.makeStr("0"), thisStringValue, true, false);
+                    pv.writePropertyWithAttributes(resultArray, "length", Value.makeNum(1).setAttributes(true, true, false));
                     return Value.makeObject(resultArray);
                 }
 
@@ -484,18 +492,18 @@ public class JSString {
                         }
                         resultArrayLength = Value.makeAnyNumUInt();
                     }
-                    state.writePropertyWithAttributes(resultArray, "length", resultArrayLength.setAttributes(true, true, false));
+                    pv.writePropertyWithAttributes(resultArray, "length", resultArrayLength.setAttributes(true, true, false));
                     Set<ObjectLabel> toWrite = Collections.singleton(resultArray);
                     for (int i = 0; i < splitValues.size(); i++) {
                         final Value index = Value.makeStr(String.valueOf(i));
                         final Value value = splitValues.get(i);
-                        state.writeProperty(toWrite, index, value, true, false);
+                        pv.writeProperty(toWrite, index, value, true, false);
                     }
                     return Value.makeObject(resultArray);
                 } else {
                     // CASE imprecise string information
-                    state.writeProperty(Collections.singleton(resultArray), Value.makeAnyStrUInt(), Value.makeAnyStr(), true, true);
-                    state.writePropertyWithAttributes(resultArray, "length", Value.makeAnyNumUInt().setAttributes(true, true, false));
+                    pv.writeProperty(Collections.singleton(resultArray), Value.makeAnyStrUInt(), Value.makeAnyStr(), true, true);
+                    pv.writePropertyWithAttributes(resultArray, "length", Value.makeAnyNumUInt().setAttributes(true, true, false));
                     return Value.makeObject(resultArray);
                 }
             }

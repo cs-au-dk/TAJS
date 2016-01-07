@@ -17,6 +17,8 @@
 package dk.brics.tajs.analysis.dom.html;
 
 import dk.brics.tajs.analysis.InitialStateBuilder;
+import dk.brics.tajs.analysis.PropVarOperations;
+import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.analysis.dom.DOMObjects;
 import dk.brics.tajs.analysis.dom.DOMWindow;
 import dk.brics.tajs.analysis.dom.core.DOMDocument;
@@ -37,17 +39,19 @@ public class HTMLFrameElement {
 
     public static ObjectLabel INSTANCES;
 
-    public static void build(State s) {
+    public static void build(Solver.SolverInterface c) {
+        State s = c.getState();
+        PropVarOperations pv = c.getAnalysis().getPropVarOperations();
         CONSTRUCTOR = new ObjectLabel(DOMObjects.HTMLFRAMEELEMENT_CONSTRUCTOR, ObjectLabel.Kind.FUNCTION);
         PROTOTYPE = new ObjectLabel(DOMObjects.HTMLFRAMEELEMENT_PROTOTYPE, ObjectLabel.Kind.OBJECT);
         INSTANCES = new ObjectLabel(DOMObjects.HTMLFRAMEELEMENT_INSTANCES, ObjectLabel.Kind.OBJECT);
 
         // Constructor Object
         s.newObject(CONSTRUCTOR);
-        s.writePropertyWithAttributes(CONSTRUCTOR, "length", Value.makeNum(0).setAttributes(true, true, true));
-        s.writePropertyWithAttributes(CONSTRUCTOR, "prototype", Value.makeObject(PROTOTYPE).setAttributes(true, true, true));
+        pv.writePropertyWithAttributes(CONSTRUCTOR, "length", Value.makeNum(0).setAttributes(true, true, true));
+        pv.writePropertyWithAttributes(CONSTRUCTOR, "prototype", Value.makeObject(PROTOTYPE).setAttributes(true, true, true));
         s.writeInternalPrototype(CONSTRUCTOR, Value.makeObject(InitialStateBuilder.FUNCTION_PROTOTYPE));
-        s.writeProperty(DOMWindow.WINDOW, "HTMLFrameElement", Value.makeObject(CONSTRUCTOR));
+        pv.writeProperty(DOMWindow.WINDOW, "HTMLFrameElement", Value.makeObject(CONSTRUCTOR));
 
         // Prototype Object
         s.newObject(PROTOTYPE);
@@ -61,17 +65,17 @@ public class HTMLFrameElement {
          * Properties.
          */
         // DOM Level 1
-        createDOMProperty(s, INSTANCES, "frameBorder", Value.makeAnyStr());
-        createDOMProperty(s, INSTANCES, "longDesc", Value.makeAnyStr());
-        createDOMProperty(s, INSTANCES, "marginHeight", Value.makeAnyStr());
-        createDOMProperty(s, INSTANCES, "marginWidth", Value.makeAnyStr());
-        createDOMProperty(s, INSTANCES, "name", Value.makeAnyStr());
-        createDOMProperty(s, INSTANCES, "noResize", Value.makeAnyBool());
-        createDOMProperty(s, INSTANCES, "scrolling", Value.makeAnyStr());
-        createDOMProperty(s, INSTANCES, "src", Value.makeAnyStr());
+        createDOMProperty(INSTANCES, "frameBorder", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "longDesc", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "marginHeight", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "marginWidth", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "name", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "noResize", Value.makeAnyBool(), c);
+        createDOMProperty(INSTANCES, "scrolling", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "src", Value.makeAnyStr(), c);
 
         // DOM Level 2
-        createDOMProperty(s, INSTANCES, "contentDocument", Value.makeObject(DOMDocument.INSTANCES).setReadOnly());
+        createDOMProperty(INSTANCES, "contentDocument", Value.makeObject(DOMDocument.INSTANCES).setReadOnly(), c);
 
         s.multiplyObject(INSTANCES);
         INSTANCES = INSTANCES.makeSingleton().makeSummary();

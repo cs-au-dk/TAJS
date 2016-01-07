@@ -46,8 +46,13 @@ test/1k2013spring/1442.js:35:55: [maybe] Conversion to number yields NaN
 test/1k2013spring/1442.js:53:4: [maybe] Reading absent property (computed name)
 test/1k2013spring/1442.js:68:9: [maybe] Conversion to number yields NaN
 test/1k2013spring/1442.js:68:49: [maybe] Conversion to number yields NaN
+test/1k2013spring/1442.js:80:17: [maybe] Conversion from string to number yields NaN
 test/1k2013spring/1442.js:80:17: [maybe] Conversion to number yields NaN
+test/1k2013spring/1442.js:80:17: [maybe] Converting object to number
+test/1k2013spring/1442.js:80:19: [maybe] The variable x has values with different types
+test/1k2013spring/1442.js:102:19: [maybe] Conversion from string to number yields NaN
 test/1k2013spring/1442.js:102:19: [maybe] Conversion to number yields NaN
+test/1k2013spring/1442.js:102:19: [maybe] Converting object to number
 test/1k2013spring/1442.js:102:19: [maybe] Reading absent property (computed name)
 test/1k2013spring/1442.js:103:3: [maybe] Reading absent property (computed name)
 test/1k2013spring/1442.js:112:39: [maybe] Conversion to number yields NaN
@@ -78,6 +83,7 @@ test/1k2013spring/1442.js:128:45: [maybe] Reading absent property (computed name
 test/1k2013spring/1442.js:132:4: [maybe] Conversion to number yields NaN
 test/1k2013spring/1442.js:132:18: [maybe] Reading absent property (computed name)
 test/1k2013spring/1442.js:132:18: [maybe] Reading absent property (computed name)
+test/1k2013spring/1442.js:134:4: [maybe] Conversion from string to number yields NaN
 test/1k2013spring/1442.js:137:3: [maybe] Conversion to number yields NaN
 test/1k2013spring/1442.js:137:12: [maybe] Reading absent property (computed name)
 test/1k2013spring/1442.js:137:12: [maybe] Reading absent property (computed name)

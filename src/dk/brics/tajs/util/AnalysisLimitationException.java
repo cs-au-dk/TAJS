@@ -21,4 +21,13 @@ public class AnalysisLimitationException extends RuntimeException {
     public AnalysisLimitationException(AbstractNode node, String msg) {
         super(String.format("%s (%s): %s", node.getSourceLocation(), node.toString(), msg));
     }
+
+    /**
+     * Constructs a new exception.
+     *
+     * @param msg as the description of the limitation
+     */
+    public AnalysisLimitationException(String msg) {
+        super(msg);
+    }
 }

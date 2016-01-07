@@ -20,6 +20,7 @@ import dk.brics.tajs.analysis.Conversion;
 import dk.brics.tajs.analysis.FunctionCalls;
 import dk.brics.tajs.analysis.InitialStateBuilder;
 import dk.brics.tajs.analysis.NativeFunctions;
+import dk.brics.tajs.analysis.PropVarOperations;
 import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.analysis.dom.DOMBuilder;
 import dk.brics.tajs.analysis.dom.DOMConversion;
@@ -45,17 +46,19 @@ public class DOMNode {
 
     public static ObjectLabel INSTANCES;
 
-    public static void build(State s) {
+    public static void build(Solver.SolverInterface c) {
+        State s = c.getState();
+        PropVarOperations pv = c.getAnalysis().getPropVarOperations();
         CONSTRUCTOR = new ObjectLabel(DOMObjects.NODE_CONSTRUCTOR, ObjectLabel.Kind.FUNCTION);
         PROTOTYPE = new ObjectLabel(DOMObjects.NODE_PROTOTYPE, ObjectLabel.Kind.OBJECT);
         INSTANCES = new ObjectLabel(DOMObjects.NODE_INSTANCES, ObjectLabel.Kind.OBJECT);
 
         // Constructor Object
         s.newObject(CONSTRUCTOR);
-        s.writePropertyWithAttributes(CONSTRUCTOR, "length", Value.makeNum(0).setAttributes(true, true, true));
-        s.writePropertyWithAttributes(CONSTRUCTOR, "prototype", Value.makeObject(PROTOTYPE).setAttributes(true, true, true));
+        pv.writePropertyWithAttributes(CONSTRUCTOR, "length", Value.makeNum(0).setAttributes(true, true, true));
+        pv.writePropertyWithAttributes(CONSTRUCTOR, "prototype", Value.makeObject(PROTOTYPE).setAttributes(true, true, true));
         s.writeInternalPrototype(CONSTRUCTOR, Value.makeObject(InitialStateBuilder.OBJECT_PROTOTYPE));
-        s.writeProperty(DOMWindow.WINDOW, "Node", Value.makeObject(CONSTRUCTOR));
+        pv.writeProperty(DOMWindow.WINDOW, "Node", Value.makeObject(CONSTRUCTOR));
 
         // Prototype object.
         s.newObject(PROTOTYPE);
@@ -68,33 +71,33 @@ public class DOMNode {
         /*
          * Constants.
          */
-        createDOMProperty(s, PROTOTYPE, "ELEMENT_NODE", Value.makeNum(1).setReadOnly());
-        createDOMProperty(s, PROTOTYPE, "ATTRIBUTE_NODE", Value.makeNum(2).setReadOnly());
-        createDOMProperty(s, PROTOTYPE, "TEXT_NODE", Value.makeNum(3).setReadOnly());
-        createDOMProperty(s, PROTOTYPE, "CDATA_SECTION_NODE", Value.makeNum(4).setReadOnly());
-        createDOMProperty(s, PROTOTYPE, "ENTITY_REFERENCE_NODE", Value.makeNum(5).setReadOnly());
-        createDOMProperty(s, PROTOTYPE, "ENTITY_NODE", Value.makeNum(6).setReadOnly());
-        createDOMProperty(s, PROTOTYPE, "PROCESSING_INSTRUCTION_NODE", Value.makeNum(7).setReadOnly());
-        createDOMProperty(s, PROTOTYPE, "COMMENT_NODE", Value.makeNum(8).setReadOnly());
-        createDOMProperty(s, PROTOTYPE, "DOCUMENT_NODE", Value.makeNum(9).setReadOnly());
-        createDOMProperty(s, PROTOTYPE, "DOCUMENT_TYPE_NODE", Value.makeNum(10).setReadOnly());
-        createDOMProperty(s, PROTOTYPE, "DOCUMENT_FRAGMENT_NODE", Value.makeNum(11).setReadOnly());
-        createDOMProperty(s, PROTOTYPE, "NOTATION_NODE", Value.makeNum(12).setReadOnly());
+        createDOMProperty(PROTOTYPE, "ELEMENT_NODE", Value.makeNum(1).setReadOnly(), c);
+        createDOMProperty(PROTOTYPE, "ATTRIBUTE_NODE", Value.makeNum(2).setReadOnly(), c);
+        createDOMProperty(PROTOTYPE, "TEXT_NODE", Value.makeNum(3).setReadOnly(), c);
+        createDOMProperty(PROTOTYPE, "CDATA_SECTION_NODE", Value.makeNum(4).setReadOnly(), c);
+        createDOMProperty(PROTOTYPE, "ENTITY_REFERENCE_NODE", Value.makeNum(5).setReadOnly(), c);
+        createDOMProperty(PROTOTYPE, "ENTITY_NODE", Value.makeNum(6).setReadOnly(), c);
+        createDOMProperty(PROTOTYPE, "PROCESSING_INSTRUCTION_NODE", Value.makeNum(7).setReadOnly(), c);
+        createDOMProperty(PROTOTYPE, "COMMENT_NODE", Value.makeNum(8).setReadOnly(), c);
+        createDOMProperty(PROTOTYPE, "DOCUMENT_NODE", Value.makeNum(9).setReadOnly(), c);
+        createDOMProperty(PROTOTYPE, "DOCUMENT_TYPE_NODE", Value.makeNum(10).setReadOnly(), c);
+        createDOMProperty(PROTOTYPE, "DOCUMENT_FRAGMENT_NODE", Value.makeNum(11).setReadOnly(), c);
+        createDOMProperty(PROTOTYPE, "NOTATION_NODE", Value.makeNum(12).setReadOnly(), c);
 
         /*
          * Properties.
          */
         // DOM LEVEL 1
-        createDOMProperty(s, PROTOTYPE, "nodeName", Value.makeAnyStr().setReadOnly());
-        createDOMProperty(s, PROTOTYPE, "nodeValue", Value.makeAnyStr().setReadOnly());
-        createDOMProperty(s, PROTOTYPE, "nodeType", Value.makeAnyNum().setReadOnly());
-        createDOMProperty(s, PROTOTYPE, "childNodes", Value.makeObject(DOMNodeList.INSTANCES).setReadOnly());
+        createDOMProperty(PROTOTYPE, "nodeName", Value.makeAnyStr().setReadOnly(), c);
+        createDOMProperty(PROTOTYPE, "nodeValue", Value.makeAnyStr().setReadOnly(), c);
+        createDOMProperty(PROTOTYPE, "nodeType", Value.makeAnyNum().setReadOnly(), c);
+        createDOMProperty(PROTOTYPE, "childNodes", Value.makeObject(DOMNodeList.INSTANCES).setReadOnly(), c);
         // NB: 'attributes' and 'ownerDocument' are set in CoreBuilder due to circularity
 
         // DOM LEVEL 2
-        createDOMProperty(s, PROTOTYPE, "prefix", Value.makeAnyStr());
-        createDOMProperty(s, PROTOTYPE, "localName", Value.makeAnyStr());
-        createDOMProperty(s, PROTOTYPE, "namespaceURI", Value.makeAnyStr());
+        createDOMProperty(PROTOTYPE, "prefix", Value.makeAnyStr(), c);
+        createDOMProperty(PROTOTYPE, "localName", Value.makeAnyStr(), c);
+        createDOMProperty(PROTOTYPE, "namespaceURI", Value.makeAnyStr(), c);
 
 
 
@@ -102,23 +105,23 @@ public class DOMNode {
          * Functions.
          */
         // DOM LEVEL 1
-        createDOMFunction(s, PROTOTYPE, DOMObjects.NODE_APPEND_CHILD, "appendChild", 1);
-        createDOMFunction(s, PROTOTYPE, DOMObjects.NODE_CLONE_NODE, "cloneNode", 1);
-        createDOMFunction(s, PROTOTYPE, DOMObjects.NODE_HAS_CHILD_NODES, "hasChildNodes", 0);
-        createDOMFunction(s, PROTOTYPE, DOMObjects.NODE_INSERT_BEFORE, "insertBefore", 2);
-        createDOMFunction(s, PROTOTYPE, DOMObjects.NODE_REMOVE_CHILD, "removeChild", 1);
-        createDOMFunction(s, PROTOTYPE, DOMObjects.NODE_REPLACE_CHILD, "replaceChild", 2);
+        createDOMFunction(PROTOTYPE, DOMObjects.NODE_APPEND_CHILD, "appendChild", 1, c);
+        createDOMFunction(PROTOTYPE, DOMObjects.NODE_CLONE_NODE, "cloneNode", 1, c);
+        createDOMFunction(PROTOTYPE, DOMObjects.NODE_HAS_CHILD_NODES, "hasChildNodes", 0, c);
+        createDOMFunction(PROTOTYPE, DOMObjects.NODE_INSERT_BEFORE, "insertBefore", 2, c);
+        createDOMFunction(PROTOTYPE, DOMObjects.NODE_REMOVE_CHILD, "removeChild", 1, c);
+        createDOMFunction(PROTOTYPE, DOMObjects.NODE_REPLACE_CHILD, "replaceChild", 2, c);
 
         // DOM LEVEL 2
-        createDOMFunction(s, PROTOTYPE, DOMObjects.NODE_IS_SUPPORTED, "isSupported", 2);
-        createDOMFunction(s, PROTOTYPE, DOMObjects.NODE_HAS_ATTRIBUTES, "hasAttributes", 0);
-        createDOMFunction(s, PROTOTYPE, DOMObjects.NODE_NORMALIZE, "normalize", 0);
+        createDOMFunction(PROTOTYPE, DOMObjects.NODE_IS_SUPPORTED, "isSupported", 2, c);
+        createDOMFunction(PROTOTYPE, DOMObjects.NODE_HAS_ATTRIBUTES, "hasAttributes", 0, c);
+        createDOMFunction(PROTOTYPE, DOMObjects.NODE_NORMALIZE, "normalize", 0, c);
 
         // DOM LEVEL 3
-        createDOMFunction(s, PROTOTYPE, DOMObjects.NODE_COMPARE_DOCUMENT_POSITION, "compareDocumentPosition", 1);
+        createDOMFunction(PROTOTYPE, DOMObjects.NODE_COMPARE_DOCUMENT_POSITION, "compareDocumentPosition", 1, c);
 
         // DOM LEVEL 4
-        createDOMFunction(s, PROTOTYPE, DOMObjects.NODE_CONTAINS, "contains", 1);
+        createDOMFunction(PROTOTYPE, DOMObjects.NODE_CONTAINS, "contains", 1, c);
 
         INSTANCES = INSTANCES.makeSingleton().makeSummary();
     }
@@ -126,7 +129,8 @@ public class DOMNode {
     /**
      * Transfer Functions.
      */
-    public static Value evaluate(DOMObjects nativeObject, FunctionCalls.CallInfo call, State s, Solver.SolverInterface c) {
+    public static Value evaluate(DOMObjects nativeObject, FunctionCalls.CallInfo call, Solver.SolverInterface c) {
+        State s = c.getState();
         switch (nativeObject) {
             case NODE_APPEND_CHILD: {
                 NativeFunctions.expectParameters(nativeObject, call, c, 1, 1);

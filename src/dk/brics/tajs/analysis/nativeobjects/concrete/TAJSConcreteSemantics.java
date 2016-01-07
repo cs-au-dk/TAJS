@@ -3,6 +3,7 @@ package dk.brics.tajs.analysis.nativeobjects.concrete;
 import dk.brics.tajs.analysis.FunctionCalls;
 import dk.brics.tajs.analysis.NativeFunctions;
 import dk.brics.tajs.analysis.Solver;
+import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.options.Options;
@@ -13,8 +14,10 @@ import dk.brics.tajs.util.Some;
 import org.apache.log4j.Logger;
 
 import java.util.List;
+import java.util.Set;
 
 import static dk.brics.tajs.util.Collections.newList;
+import static dk.brics.tajs.util.Collections.newSet;
 
 /**
  * A bridge between TAJS and concrete semantics.
@@ -138,5 +141,51 @@ public class TAJSConcreteSemantics {
             }
         }
         return performCall(vThis, functionName, returnType, c, concreteArguments);
+    }
+
+    public static Value convertFunctionToString(Set<ObjectLabel> functionLabels) {
+        Value defaultValue = Value.makeAnyStr();
+        Set<Value> toStrings = newSet();
+        for (ObjectLabel functionLabel : functionLabels) {
+            if (functionLabel.getKind() == ObjectLabel.Kind.FUNCTION && functionLabel.isHostObject()) {
+                String functionName = functionLabel.getHostObject().toString() /* abusing convention of host objects names pointing to their definition */;
+                Optional<ConcreteValue> toStringed = ConcreteSemantics.get().eval(String.format("(%s).toString()", functionName));
+                toStrings.add(toStringed.apply(new OptionalObjectVisitor<Value, ConcreteValue>() {
+                    @Override
+                    public Value visit(None<ConcreteValue> obj) {
+                        return defaultValue;
+                    }
+
+                    @Override
+                    public Value visit(Some<ConcreteValue> obj) {
+                        return Alpha.toValue((ConcreteString) obj.get());
+                    }
+                }));
+            } else if (functionLabel.getKind() == ObjectLabel.Kind.FUNCTION && functionLabel.getFunction().getSource() != null) {
+                String source = functionLabel.getFunction().getSource();
+                // In google chrome, the toString of a function is ignoring inline comments in certain places:
+                // ```
+                // $ (function /**/foo/**/(/**/bar/**/)/**/{/**/baz;/**/}).toString()
+                // > "function foo(/**/bar/**/)/**/{/**/baz;/**/}"
+                // ```
+                // So we can not simply return the source of the function object
+                // (but nashorn does return the entire source of the function declaration, so the call to concrete semantics is actually moot currently)
+                Optional<ConcreteValue> toStringed = ConcreteSemantics.get().eval(String.format("(%s).toString()", source));
+                toStrings.add(toStringed.apply(new OptionalObjectVisitor<Value, ConcreteValue>() {
+                    @Override
+                    public Value visit(None<ConcreteValue> obj) {
+                        return defaultValue;
+                    }
+
+                    @Override
+                    public Value visit(Some<ConcreteValue> obj) {
+                        return Alpha.toValue((ConcreteString) obj.get());
+                    }
+                }));
+            } else {
+                return defaultValue;
+            }
+        }
+        return Value.join(toStrings);
     }
 }

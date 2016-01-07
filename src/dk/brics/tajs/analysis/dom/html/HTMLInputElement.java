@@ -19,6 +19,7 @@ package dk.brics.tajs.analysis.dom.html;
 import dk.brics.tajs.analysis.FunctionCalls;
 import dk.brics.tajs.analysis.InitialStateBuilder;
 import dk.brics.tajs.analysis.NativeFunctions;
+import dk.brics.tajs.analysis.PropVarOperations;
 import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.analysis.dom.DOMObjects;
 import dk.brics.tajs.analysis.dom.DOMWindow;
@@ -38,17 +39,19 @@ public class HTMLInputElement {
 
     public static ObjectLabel INSTANCES;
 
-    public static void build(State s) {
+    public static void build(Solver.SolverInterface c) {
+        State s = c.getState();
+        PropVarOperations pv = c.getAnalysis().getPropVarOperations();
         CONSTRUCTOR = new ObjectLabel(DOMObjects.HTMLINPUTELEMENT_CONSTRUCTOR, ObjectLabel.Kind.FUNCTION);
         PROTOTYPE = new ObjectLabel(DOMObjects.HTMLINPUTELEMENT_PROTOTYPE, ObjectLabel.Kind.OBJECT);
         INSTANCES = new ObjectLabel(DOMObjects.HTMLINPUTELEMENT_INSTANCES, ObjectLabel.Kind.OBJECT);
 
         // Constructor Object
         s.newObject(CONSTRUCTOR);
-        s.writePropertyWithAttributes(CONSTRUCTOR, "length", Value.makeNum(0).setAttributes(true, true, true));
-        s.writePropertyWithAttributes(CONSTRUCTOR, "prototype", Value.makeObject(PROTOTYPE).setAttributes(true, true, true));
+        pv.writePropertyWithAttributes(CONSTRUCTOR, "length", Value.makeNum(0).setAttributes(true, true, true));
+        pv.writePropertyWithAttributes(CONSTRUCTOR, "prototype", Value.makeObject(PROTOTYPE).setAttributes(true, true, true));
         s.writeInternalPrototype(CONSTRUCTOR, Value.makeObject(InitialStateBuilder.FUNCTION_PROTOTYPE));
-        s.writeProperty(DOMWindow.WINDOW, "HTMLInputElement", Value.makeObject(CONSTRUCTOR));
+        pv.writeProperty(DOMWindow.WINDOW, "HTMLInputElement", Value.makeObject(CONSTRUCTOR));
 
         // Prototype Object
         s.newObject(PROTOTYPE);
@@ -62,26 +65,26 @@ public class HTMLInputElement {
          * Properties.
          */
         // DOM Level 1
-        createDOMProperty(s, INSTANCES, "defaultValue", Value.makeAnyStr());
-        createDOMProperty(s, INSTANCES, "defaultChecked", Value.makeAnyBool());
-        createDOMProperty(s, INSTANCES, "form", Value.makeObject(HTMLFormElement.INSTANCES).setReadOnly());
-        createDOMProperty(s, INSTANCES, "accept", Value.makeAnyStr());
-        createDOMProperty(s, INSTANCES, "accessKey", Value.makeAnyStr());
-        createDOMProperty(s, INSTANCES, "align", Value.makeAnyStr());
-        createDOMProperty(s, INSTANCES, "alt", Value.makeAnyStr());
-        createDOMProperty(s, INSTANCES, "checked", Value.makeAnyBool());
-        createDOMProperty(s, INSTANCES, "disabled", Value.makeAnyBool());
-        createDOMProperty(s, INSTANCES, "maxLength", Value.makeAnyNum());
-        createDOMProperty(s, INSTANCES, "name", Value.makeAnyStr());
-        createDOMProperty(s, INSTANCES, "readOnly", Value.makeAnyBool());
-        createDOMProperty(s, INSTANCES, "src", Value.makeAnyStr());
-        createDOMProperty(s, INSTANCES, "tabIndex", Value.makeAnyNum());
-        createDOMProperty(s, INSTANCES, "useMap", Value.makeAnyStr());
-        createDOMProperty(s, INSTANCES, "value", Value.makeAnyStr());
+        createDOMProperty(INSTANCES, "defaultValue", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "defaultChecked", Value.makeAnyBool(), c);
+        createDOMProperty(INSTANCES, "form", Value.makeObject(HTMLFormElement.INSTANCES).setReadOnly(), c);
+        createDOMProperty(INSTANCES, "accept", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "accessKey", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "align", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "alt", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "checked", Value.makeAnyBool(), c);
+        createDOMProperty(INSTANCES, "disabled", Value.makeAnyBool(), c);
+        createDOMProperty(INSTANCES, "maxLength", Value.makeAnyNum(), c);
+        createDOMProperty(INSTANCES, "name", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "readOnly", Value.makeAnyBool(), c);
+        createDOMProperty(INSTANCES, "src", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "tabIndex", Value.makeAnyNum(), c);
+        createDOMProperty(INSTANCES, "useMap", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "value", Value.makeAnyStr(), c);
 
         // DOM Level 2
-        createDOMProperty(s, INSTANCES, "size", Value.makeAnyNum());
-        createDOMProperty(s, INSTANCES, "type", Value.makeAnyStr());
+        createDOMProperty(INSTANCES, "size", Value.makeAnyNum(), c);
+        createDOMProperty(INSTANCES, "type", Value.makeAnyStr(), c);
 
         s.multiplyObject(INSTANCES);
         INSTANCES = INSTANCES.makeSingleton().makeSummary();
@@ -90,16 +93,16 @@ public class HTMLInputElement {
          * Functions.
          */
         // DOM Level 1
-        createDOMFunction(s, PROTOTYPE, DOMObjects.HTMLINPUTELEMENT_BLUR, "blur", 0);
-        createDOMFunction(s, PROTOTYPE, DOMObjects.HTMLINPUTELEMENT_FOCUS, "focus", 0);
-        createDOMFunction(s, PROTOTYPE, DOMObjects.HTMLINPUTELEMENT_SELECT, "select", 0);
-        createDOMFunction(s, PROTOTYPE, DOMObjects.HTMLINPUTELEMENT_CLICK, "click", 0);
+        createDOMFunction(PROTOTYPE, DOMObjects.HTMLINPUTELEMENT_BLUR, "blur", 0, c);
+        createDOMFunction(PROTOTYPE, DOMObjects.HTMLINPUTELEMENT_FOCUS, "focus", 0, c);
+        createDOMFunction(PROTOTYPE, DOMObjects.HTMLINPUTELEMENT_SELECT, "select", 0, c);
+        createDOMFunction(PROTOTYPE, DOMObjects.HTMLINPUTELEMENT_CLICK, "click", 0, c);
     }
 
     /**
      * Transfer Functions.
      */
-    public static Value evaluate(DOMObjects nativeObject, FunctionCalls.CallInfo call, State s, Solver.SolverInterface c) {
+    public static Value evaluate(DOMObjects nativeObject, FunctionCalls.CallInfo call, Solver.SolverInterface c) {
         switch (nativeObject) {
             case HTMLINPUTELEMENT_BLUR: {
                 NativeFunctions.expectParameters(nativeObject, call, c, 0, 0);

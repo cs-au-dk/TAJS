@@ -66,6 +66,8 @@ fg2: <main> function()
     ->[block 4]
   block 10:
     node 28: constant[undefined,-] (test/flowgraphbuilder/flowgraph_builder0171.js:3:5)
+    ->[block 11]
+  block 11:
     node 29: constant["",v1] (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0171.js:3:5):1:16)
     node 30: write-variable[v1,'wt_1stPartySet']* (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0171.js:3:5):1:1)
     ->[block 7]
@@ -119,8 +121,10 @@ fg2: <main> function()
     node 5: constant[0.0,v7] (test/flowgraphbuilder/flowgraph_builder0171.js:2:10)
     node 6: write-variable[v7,'i']* (test/flowgraphbuilder/flowgraph_builder0171.js:2:6)
     ->[block 4]
-  block 11:
+  block 12:
     node 31: constant[undefined,-] (test/flowgraphbuilder/flowgraph_builder0171.js:3:5)
+    ->[block 13]
+  block 13:
     node 32: read-variable['window',v2,-] (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0171.js:3:5):1:1)
     node 33: read-variable['wt_va',v4,-] (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0171.js:3:5):1:10)
     node 34: read-variable['i',v5,-] (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0171.js:3:5):1:18)

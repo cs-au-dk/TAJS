@@ -1,5 +1,4 @@
 test/micro/test20.js:22:16: [definite] ReferenceError, reading absent variable bar4
-test/micro/test20.js:8:3: [definite] The assignment to foo has no effect
 test/micro/test20.js:2:2: [definite] Reading 'this' yields the global object
 test/micro/test20.js:17:8: [definite] Reading 'this' yields the global object
 test/micro/test20.js:22:1: [definite] Unreachable code

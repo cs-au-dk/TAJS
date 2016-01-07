@@ -16,6 +16,7 @@
 
 package dk.brics.tajs.analysis.dom.ajax;
 
+import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.analysis.dom.DOMObjects;
 import dk.brics.tajs.analysis.dom.DOMRegistry;
 import dk.brics.tajs.analysis.dom.event.Event;
@@ -35,7 +36,8 @@ public class ReadystateEvent {
 
     public static ObjectLabel INSTANCES;
 
-    public static void build(State s) {
+    public static void build(Solver.SolverInterface c) {
+        State s = c.getState();
         PROTOTYPE = new ObjectLabel(DOMObjects.READY_STATE_EVENT_PROTOTYPE, ObjectLabel.Kind.OBJECT);
         INSTANCES = new ObjectLabel(DOMObjects.READY_STATE_EVENT_INSTANCES, ObjectLabel.Kind.OBJECT);
 
@@ -50,14 +52,14 @@ public class ReadystateEvent {
         /*
          * Properties.
          */
-        createDOMProperty(s, INSTANCES, "cancelable", Value.makeBool(false).setReadOnly());
-        createDOMProperty(s, INSTANCES, "bubbles", Value.makeBool(false).setReadOnly());
-        createDOMProperty(s, INSTANCES, "target", Value.makeObject(XmlHttpRequest.INSTANCES).setReadOnly()); // TODO: bound to a specific XMLHttpRequest object...
+        createDOMProperty(INSTANCES, "cancelable", Value.makeBool(false).setReadOnly(), c);
+        createDOMProperty(INSTANCES, "bubbles", Value.makeBool(false).setReadOnly(), c);
+        createDOMProperty(INSTANCES, "target", Value.makeObject(XmlHttpRequest.INSTANCES).setReadOnly(), c); // TODO: bound to a specific XMLHttpRequest object...
 
         /*
          *  ResponseText + ResponseXML (TODO)
          */
-//TODO:        createDOMProperty(s, INSTANCES, "responseText", Value.makeJSONStr(), DOMSpec.LEVEL_0);
+//TODO:        createDOMProperty(INSTANCES, "responseText", Value.makeJSONStr(), DOMSpec.LEVEL_0);
 
         // DOM Registry
         DOMRegistry.registerAjaxEventLabel(INSTANCES);

@@ -2,6 +2,7 @@ test/1k2013spring/1547.js:39:7: [definite] Dead assignment, property width is ne
 test/1k2013spring/1547.js:87:16: [maybe] TypeError, accessing property of null/undefined
 test/1k2013spring/1547.js:87:25: [maybe] TypeError, accessing property of null/undefined
 test/1k2013spring/1547.js:98:9: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1547.js:98:9: [maybe] TypeError, call to non-function
 test/1k2013spring/shim.js:8:9: [maybe] TypeError, accessing property of null/undefined
 test/1k2013spring/shim.js:8:9: [maybe] TypeError, call to non-function
 test/1k2013spring/shim.js:9:1: [maybe] TypeError, accessing property of null/undefined
@@ -10,13 +11,19 @@ test/1k2013spring/1547.js:10:42: [maybe] Reading absent property height
 test/1k2013spring/1547.js:53:12: [maybe] Reading absent property _x
 test/1k2013spring/1547.js:63:20: [maybe] Reading absent property _x
 test/1k2013spring/1547.js:63:28: [maybe] Reading absent property _y
+test/1k2013spring/1547.js:98:9: [maybe] Reading absent property grow
 test/1k2013spring/shim.js:6:9: [maybe] Reading absent property body
 test/1k2013spring/shim.js:8:9: [maybe] Reading absent property getContext
 test/1k2013spring/shim.js:9:1: [maybe] Reading absent property body
 test/1k2013spring/1547.js:10:15: [maybe] Conversion from string to number yields NaN
 test/1k2013spring/1547.js:10:15: [maybe] Conversion to number yields NaN
+test/1k2013spring/1547.js:48:9: [maybe] Conversion to number yields NaN
+test/1k2013spring/1547.js:49:9: [maybe] Conversion to number yields NaN
 test/1k2013spring/1547.js:63:11: [maybe] Conversion to number yields NaN
+test/1k2013spring/1547.js:64:11: [maybe] Conversion to number yields NaN
 test/1k2013spring/1547.js:87:16: [maybe] Reading absent property (computed name)
+test/1k2013spring/1547.js:87:16: [maybe] Reading absent property (computed name)
+test/1k2013spring/1547.js:87:25: [maybe] Reading absent property (computed name)
 test/1k2013spring/1547.js:87:25: [maybe] Reading absent property (computed name)
 test/1k2013spring/1547.js:98:9: [maybe] Reading absent property (computed name)
 test/1k2013spring/1547.js:107:13: [maybe] Reading absent property (computed name)

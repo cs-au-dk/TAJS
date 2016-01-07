@@ -1,5 +1,6 @@
 package dk.brics.tajs.test;
 
+import dk.brics.tajs.Main;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.util.AnalysisLimitationException;
 import org.junit.Before;
@@ -15,7 +16,7 @@ public class TestApps {
 
     @Before
     public void init() {
-        Options.reset();
+        Main.reset();
         Options.get().enableTest();
         Options.get().enableUnevalizer();
     }
@@ -65,7 +66,7 @@ public class TestApps {
         Misc.checkSystemOutput();
     }
 
-    @Test(expected = StackOverflowError.class /* GitHub #146 */)
+    @Test
     public void apps_paint() throws Exception {
         Misc.init();
         Misc.captureSystemOutput();

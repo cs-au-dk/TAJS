@@ -2,8 +2,6 @@ test/10k/sudoku.html:124:5: [maybe] TypeError, accessing property of null/undefi
 test/10k/sudoku.html:124:23: [maybe] RangeError, invalid value of array length
 test/10k/sudoku.html:125:5: [maybe] TypeError, accessing property of null/undefined
 test/10k/sudoku.html:125:24: [maybe] RangeError, invalid value of array length
-test/10k/sudoku.html:127:13: [maybe] TypeError, call to non-function
-test/10k/sudoku.html:128:15: [maybe] TypeError, call to non-function
 test/10k/sudoku.html:129:5: [maybe] TypeError, accessing property of null/undefined
 test/10k/sudoku.html:130:5: [maybe] TypeError, accessing property of null/undefined
 test/10k/sudoku.html:132:5: [maybe] TypeError, accessing property of null/undefined
@@ -35,8 +33,6 @@ test/10k/sudoku.html:254:9: [maybe] TypeError, accessing property of null/undefi
 test/10k/sudoku.html:255:9: [maybe] TypeError, accessing property of null/undefined
 test/10k/sudoku.html:260:9: [maybe] TypeError, accessing property of null/undefined
 test/10k/sudoku.html:261:9: [maybe] TypeError, accessing property of null/undefined
-test/10k/sudoku.html:127:13: [maybe] Reading absent property getElementsByTagName
-test/10k/sudoku.html:128:15: [maybe] Reading absent property getElementsByTagName
 test/10k/sudoku.html:129:5: [maybe] Reading absent property style
 test/10k/sudoku.html:130:5: [maybe] Reading absent property style
 test/10k/sudoku.html:149:32: [maybe] Reading 'this' yields the global object
@@ -62,7 +58,7 @@ test/10k/sudoku.html:170:32: [maybe] Reading 'this' yields the global object
 test/10k/sudoku.html:170:32: [maybe] Reading absent property n
 test/10k/sudoku.html:187:39: [maybe] Reading absent property checked
 test/10k/sudoku.html:268:17: [maybe] Reading absent property value
-test/10k/sudoku.html: [maybe] Uncaught exception, constructed at [test/10k/sudoku.html:124:5, test/10k/sudoku.html:124:23, test/10k/sudoku.html:125:5, test/10k/sudoku.html:125:24, test/10k/sudoku.html:127:13, test/10k/sudoku.html:128:15, test/10k/sudoku.html:129:5, test/10k/sudoku.html:130:5, test/10k/sudoku.html:132:5, test/10k/sudoku.html:133:5, test/10k/sudoku.html:134:5, test/10k/sudoku.html:135:5, test/10k/sudoku.html:136:5, test/10k/sudoku.html:140:5, test/10k/sudoku.html:141:14, test/10k/sudoku.html:146:9, test/10k/sudoku.html:147:9, test/10k/sudoku.html:148:9, test/10k/sudoku.html:156:21, test/10k/sudoku.html:157:21, test/10k/sudoku.html:158:41, test/10k/sudoku.html:159:25, test/10k/sudoku.html:159:50, test/10k/sudoku.html:166:9, test/10k/sudoku.html:167:9, test/10k/sudoku.html:168:9, test/10k/sudoku.html:173:21, test/10k/sudoku.html:182:9, test/10k/sudoku.html:185:13, test/10k/sudoku.html:186:13, test/10k/sudoku.html:239:24, test/10k/sudoku.html:242:25, test/10k/sudoku.html:254:9, test/10k/sudoku.html:255:9, test/10k/sudoku.html:260:9, test/10k/sudoku.html:261:9]
+test/10k/sudoku.html: [maybe] Uncaught exception, constructed at [test/10k/sudoku.html:124:5, test/10k/sudoku.html:124:23, test/10k/sudoku.html:125:5, test/10k/sudoku.html:125:24, test/10k/sudoku.html:129:5, test/10k/sudoku.html:130:5, test/10k/sudoku.html:132:5, test/10k/sudoku.html:133:5, test/10k/sudoku.html:134:5, test/10k/sudoku.html:135:5, test/10k/sudoku.html:136:5, test/10k/sudoku.html:140:5, test/10k/sudoku.html:141:14, test/10k/sudoku.html:146:9, test/10k/sudoku.html:147:9, test/10k/sudoku.html:148:9, test/10k/sudoku.html:156:21, test/10k/sudoku.html:157:21, test/10k/sudoku.html:158:41, test/10k/sudoku.html:159:25, test/10k/sudoku.html:159:50, test/10k/sudoku.html:166:9, test/10k/sudoku.html:167:9, test/10k/sudoku.html:168:9, test/10k/sudoku.html:173:21, test/10k/sudoku.html:182:9, test/10k/sudoku.html:185:13, test/10k/sudoku.html:186:13, test/10k/sudoku.html:239:24, test/10k/sudoku.html:242:25, test/10k/sudoku.html:254:9, test/10k/sudoku.html:255:9, test/10k/sudoku.html:260:9, test/10k/sudoku.html:261:9]
 test/10k/sudoku.html:12:29: [maybe] Conversion to number yields NaN
 test/10k/sudoku.html:12:29: [maybe] Converting object to string
 test/10k/sudoku.html:12:29: [maybe] Converting primitive string to object

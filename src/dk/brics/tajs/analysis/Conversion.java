@@ -24,8 +24,6 @@ import dk.brics.tajs.analysis.nativeobjects.concrete.TAJSConcreteSemantics;
 import dk.brics.tajs.flowgraph.AbstractNode;
 import dk.brics.tajs.flowgraph.BasicBlock;
 import dk.brics.tajs.lattice.Bool;
-import dk.brics.tajs.lattice.CallEdge;
-import dk.brics.tajs.lattice.Context;
 import dk.brics.tajs.lattice.ExecutionContext;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.ObjectLabel.Kind;
@@ -33,8 +31,6 @@ import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.Str;
 import dk.brics.tajs.lattice.UnknownValueResolver;
 import dk.brics.tajs.lattice.Value;
-import dk.brics.tajs.monitoring.IAnalysisMonitoring;
-import dk.brics.tajs.solver.GenericSolver;
 import dk.brics.tajs.solver.Message.Severity;
 import dk.brics.tajs.util.AnalysisException;
 import dk.brics.tajs.util.None;
@@ -91,6 +87,7 @@ public class Conversion {
         if (hint == Hint.NONE)
             hint = obj.getKind() == Kind.DATE ? Hint.STR : Hint.NUM;
         State s = c.getState();
+        PropVarOperations pv = c.getAnalysis().getPropVarOperations();
         Value result;
         boolean maybe_typeerror = false;
         if (hint == Hint.STR) {
@@ -104,7 +101,7 @@ public class Conversion {
             // 7. Call the [[Call]] method of Result(5), with O as the this value and an empty argument list.
             // 8. If Result(7) is a primitive value, return Result(7).
             // 9. Throw a TypeError exception.
-            Value tostring = s.readPropertyWithAttributes(Collections.singleton(obj), "toString");
+            Value tostring = pv.readPropertyWithAttributes(Collections.singleton(obj), "toString");
             visitPropertyRead(obj, "toString", s, c);
             tostring = UnknownValueResolver.getRealValue(tostring, s);
             State tostringState = s.clone(); // TODO: no need to clone if certain that convertToStringOrValueOf will not call any user-defined functions
@@ -117,7 +114,7 @@ public class Conversion {
             }
             s.propagate(tostringState, false);
             if (isMaybeNonCallable(tostring) || result.isMaybeObject()) {
-                Value valueof = s.readPropertyWithAttributes(Collections.singleton(obj), "valueOf");
+                Value valueof = pv.readPropertyWithAttributes(Collections.singleton(obj), "valueOf");
                 visitPropertyRead(obj, "valueOf", s, c);
                 valueof = UnknownValueResolver.getRealValue(valueof, s);
                 State valueOfState = s.clone(); // TODO: no need to clone if certain that convertToStringOrValueOf will not call any user-defined functions
@@ -144,7 +141,7 @@ public class Conversion {
             // 7. Call the [[Call]] method of Result(5), with O as the this value and an empty argument list.
             // 8. If Result(7) is a primitive value, return Result(7).
             // 9. Throw a TypeError exception.
-            Value valueof = s.readPropertyWithAttributes(Collections.singleton(obj), "valueOf");
+            Value valueof = pv.readPropertyWithAttributes(Collections.singleton(obj), "valueOf");
             visitPropertyRead(obj, "valueOf", s, c);
             valueof = UnknownValueResolver.getRealValue(valueof, s);
             State valueofState = s.clone(); // TODO: no need to clone if certain that convertToStringOrValueOf will not call any user-defined functions
@@ -157,7 +154,7 @@ public class Conversion {
             }
             s.propagate(valueofState, false);
             if (isMaybeNonCallable(valueof) || result.isMaybeObject()) {
-                Value tostring = s.readPropertyWithAttributes(Collections.singleton(obj), "toString");
+                Value tostring = pv.readPropertyWithAttributes(Collections.singleton(obj), "toString");
                 visitPropertyRead(obj, "toString", s, c);
                 tostring = UnknownValueResolver.getRealValue(tostring, s);
                 State toStringState = s.clone(); // TODO: no need to clone if certain that convertToStringOrValueOf will not call any user-defined functions
@@ -177,7 +174,7 @@ public class Conversion {
             throw new AnalysisException();
         if (maybe_typeerror) {
             c.getMonitoring().addMessage(c.getNode(), Severity.HIGH, "TypeError when computing default value for object");
-            Exceptions.throwTypeError(s, c); // no ordinary flow (may be called in a loop, so don't set s to none)
+            Exceptions.throwTypeError(c); // no ordinary flow (may be called in a loop, so don't set s to none)
         }
         return result.restrictToNotObject();
     }
@@ -191,7 +188,7 @@ public class Conversion {
         return false;
     }
 
-    private static void visitPropertyRead(ObjectLabel obj, String prop, State s, GenericSolver<State, Context, CallEdge, IAnalysisMonitoring, Analysis>.SolverInterface c) {
+    private static void visitPropertyRead(ObjectLabel obj, String prop, State s, Solver.SolverInterface c) {
         c.getMonitoring().visitPropertyRead(c.getNode(), Collections.singleton(obj), Value.makeTemporaryStr(prop), s, true);
     }
 
@@ -607,7 +604,7 @@ public class Conversion {
      * Note that this may have side-effects on the current state!
      * However, if the solver interface is null, no side-effects or messages are produced (but all object labels are still returned).
      */
-    public static Value toObject(State state, AbstractNode node, Value v, Solver.SolverInterface c) {
+    public static Value toObject(AbstractNode node, Value v, Solver.SolverInterface c) {
         return Value.makeObject(toObjectLabels(node, v, c));
     }
 
@@ -655,7 +652,7 @@ public class Conversion {
                 state.newObject(lString);
                 state.writeInternalPrototype(lString, Value.makeObject(InitialStateBuilder.STRING_PROTOTYPE));
                 state.writeInternalValue(lString, vstring);
-                state.writePropertyWithAttributes(lString, "length", vlength.setAttributes(true, true, true));
+                c.getAnalysis().getPropVarOperations().writePropertyWithAttributes(lString, "length", vlength.setAttributes(true, true, true));
                 c.getMonitoring().addMessage(c.getNode(), Severity.LOW, "Converting primitive string to object");
             }
             result.add(lString);
@@ -664,7 +661,7 @@ public class Conversion {
         if (!v.isNotNull()) {
             // Throw a TypeError exception.
             if (c != null) {
-                Exceptions.throwTypeError(state, c);
+                Exceptions.throwTypeError(c);
                 // TODO: warn about null-to-object conversion? (we already have Monitoring.visitPropertyAccess)
                 // c.getMonitoring().addMessage(c.getNode(), Severity.HIGH, "TypeError, attempt to convert null to object");
             }
@@ -673,7 +670,7 @@ public class Conversion {
         if (!v.isNotUndef()) {
             // Throw a TypeError exception.
             if (c != null) {
-                Exceptions.throwTypeError(state, c);
+                Exceptions.throwTypeError(c);
                 // TODO: warn about undefined-to-object conversion? (we already have Monitoring.visitPropertyAccess)
                 // c.getMonitoring().addMessage(c.getNode(), Severity.HIGH, "TypeError, attempt to convert undefined to object");
             }

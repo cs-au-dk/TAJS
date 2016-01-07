@@ -17,6 +17,8 @@
 package dk.brics.tajs.analysis.dom.core;
 
 import dk.brics.tajs.analysis.InitialStateBuilder;
+import dk.brics.tajs.analysis.PropVarOperations;
+import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.analysis.dom.DOMObjects;
 import dk.brics.tajs.analysis.dom.DOMWindow;
 import dk.brics.tajs.lattice.ObjectLabel;
@@ -40,17 +42,19 @@ public class DOMDocumentType {
 
     public static ObjectLabel INSTANCES;
 
-    public static void build(State s) {
+    public static void build(Solver.SolverInterface c) {
+        State s = c.getState();
+        PropVarOperations pv = c.getAnalysis().getPropVarOperations();
         CONSTRUCTOR = new ObjectLabel(DOMObjects.DOCUMENTTYPE_CONSTRUCTOR, ObjectLabel.Kind.FUNCTION);
         PROTOTYPE = new ObjectLabel(DOMObjects.DOCUMENTTYPE_PROTOTYPE, ObjectLabel.Kind.OBJECT);
         INSTANCES = new ObjectLabel(DOMObjects.DOCUMENTTYPE_INSTANCES, ObjectLabel.Kind.OBJECT);
 
         // Constructor Object
         s.newObject(CONSTRUCTOR);
-        s.writePropertyWithAttributes(CONSTRUCTOR, "length", Value.makeNum(0).setAttributes(true, true, true));
-        s.writePropertyWithAttributes(CONSTRUCTOR, "prototype", Value.makeObject(PROTOTYPE).setAttributes(true, true, true));
+        pv.writePropertyWithAttributes(CONSTRUCTOR, "length", Value.makeNum(0).setAttributes(true, true, true));
+        pv.writePropertyWithAttributes(CONSTRUCTOR, "prototype", Value.makeObject(PROTOTYPE).setAttributes(true, true, true));
         s.writeInternalPrototype(CONSTRUCTOR, Value.makeObject(InitialStateBuilder.OBJECT_PROTOTYPE));
-        s.writeProperty(DOMWindow.WINDOW, "DocumentType", Value.makeObject(CONSTRUCTOR));
+        pv.writeProperty(DOMWindow.WINDOW, "DocumentType", Value.makeObject(CONSTRUCTOR));
 
         // Prototype object.
         s.newObject(PROTOTYPE);
@@ -64,14 +68,14 @@ public class DOMDocumentType {
          * Properties.
          */
         // DOM Level 1
-        createDOMProperty(s, INSTANCES, "name", Value.makeAnyStr().setReadOnly());
-        createDOMProperty(s, INSTANCES, "entities", Value.makeObject(DOMNamedNodeMap.INSTANCES).setReadOnly());
-        createDOMProperty(s, INSTANCES, "notations", Value.makeObject(DOMNamedNodeMap.INSTANCES).setReadOnly());
+        createDOMProperty(INSTANCES, "name", Value.makeAnyStr().setReadOnly(), c);
+        createDOMProperty(INSTANCES, "entities", Value.makeObject(DOMNamedNodeMap.INSTANCES).setReadOnly(), c);
+        createDOMProperty(INSTANCES, "notations", Value.makeObject(DOMNamedNodeMap.INSTANCES).setReadOnly(), c);
 
         // DOM Level 2
-        createDOMProperty(s, INSTANCES, "publicId", Value.makeAnyStr().setReadOnly());
-        createDOMProperty(s, INSTANCES, "systemId", Value.makeAnyStr().setReadOnly());
-        createDOMProperty(s, INSTANCES, "internalSubset", Value.makeAnyStr().setReadOnly());
+        createDOMProperty(INSTANCES, "publicId", Value.makeAnyStr().setReadOnly(), c);
+        createDOMProperty(INSTANCES, "systemId", Value.makeAnyStr().setReadOnly(), c);
+        createDOMProperty(INSTANCES, "internalSubset", Value.makeAnyStr().setReadOnly(), c);
 
         s.multiplyObject(INSTANCES);
         INSTANCES = INSTANCES.makeSingleton().makeSummary();

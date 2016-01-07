@@ -492,6 +492,8 @@ function(d)
     ->[block 33]
   block 41:
     node 92: constant[undefined,-] (test/flowgraphbuilder/flowgraph_builder0156a.js:8:16)
+    ->[block 42]
+  block 42:
     node 93: read-variable['parseInt',v19,v18] (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0156a.js:8:16):1:15)
     node 94: read-variable['this',v25,-] (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0156a.js:8:16):1:24)
     node 95: read-property[v25,'c',v24] (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0156a.js:8:16):1:24)
@@ -512,11 +514,11 @@ function(d)
     node 110: <property-non-null-undef>[v31,'left'] (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0156a.js:8:16):1:54)
     node 111: constant[2.0,v29] (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0156a.js:8:16):1:79)
     node 112: -[v28,v29,v27] (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0156a.js:8:16):1:54)
-    ->[block 42]
-  block 42:
-    node 113: call[v22,'substring',v26,v27,v20] (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0156a.js:8:16):1:24)
     ->[block 43]
   block 43:
+    node 113: call[v22,'substring',v26,v27,v20] (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0156a.js:8:16):1:24)
+    ->[block 44]
+  block 44:
     node 114: call[v18,v19,v20,v1] (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0156a.js:8:16):1:15)
     ->[block 33]
   block 33: [exit-ordinary]

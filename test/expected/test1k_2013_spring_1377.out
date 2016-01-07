@@ -1,5 +1,4 @@
 test/1k2013spring/1377.js:164:13: [definite] TypeError, call to non-function
-test/1k2013spring/1377.js:34:17: [definite] The assignment to w has no effect
 test/1k2013spring/1377.js:35:9: [definite] The conditional expression is always false
 test/1k2013spring/1377.js:35:13: [definite] Variable w is null/undefined
 test/1k2013spring/1377.js:37:16: [definite] The conditional expression is always false

@@ -1,5 +1,4 @@
 test/v8tests/extra-arguments.js:35:23: [definite] TypeError, accessing property of null/undefined
-test/v8tests/extra-arguments.js:34:15: [definite] The assignment to array has no effect
 test/v8tests/extra-arguments.js:35:23: [definite] Variable array is null/undefined
 test/v8tests/extra-arguments.js:44:17: [definite] The conditional expression is always true
 test/v8tests/extra-arguments.js:47:19: [definite] The conditional expression is always false

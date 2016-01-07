@@ -68,6 +68,13 @@ test/chromeexperiments/deepseastress.html:401:21: [definite] The variable A is n
 test/chromeexperiments/deepseastress.html:454:45: [definite] Unreachable code
 test/chromeexperiments/deepseastress.html:460:5: [definite] Unreachable code
 test/chromeexperiments/deepseastress.html:466:5: [definite] Unreachable code
+test/chromeexperiments/deepseastress.html:415:103: [maybe] ReferenceError, reading absent variable event
+test/chromeexperiments/deepseastress.html:417:103: [maybe] ReferenceError, reading absent variable event
+test/chromeexperiments/deepseastress.html:419:97: [maybe] ReferenceError, reading absent variable event
+test/chromeexperiments/deepseastress.html:421:103: [maybe] ReferenceError, reading absent variable event
+test/chromeexperiments/deepseastress.html:423:95: [maybe] ReferenceError, reading absent variable event
+test/chromeexperiments/deepseastress.html:426:99: [maybe] ReferenceError, reading absent variable event
+test/chromeexperiments/deepseastress.html:428:99: [maybe] ReferenceError, reading absent variable event
 test/chromeexperiments/deepseastress.html:454:20: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/deepseastress.html:459:5: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/deepseastress.html:415:110: [maybe] Reading 'this' yields the global object
@@ -86,7 +93,7 @@ test/chromeexperiments/deepseastress.html:428:106: [maybe] Reading 'this' yields
 test/chromeexperiments/deepseastress.html:428:106: [maybe] Reading absent property form
 test/chromeexperiments/deepseastress.html:430:81: [maybe] Reading 'this' yields the global object
 test/chromeexperiments/deepseastress.html:430:81: [maybe] Reading absent property form
-test/chromeexperiments/deepseastress.html: [maybe] Uncaught exception, constructed at [test/chromeexperiments/deepseastress.html:454:20, test/chromeexperiments/deepseastress.html:459:5, test/chromeexperiments/deepseastress.html:465:5]
+test/chromeexperiments/deepseastress.html: [maybe] Uncaught exception, constructed at [test/chromeexperiments/deepseastress.html:415:103, test/chromeexperiments/deepseastress.html:417:103, test/chromeexperiments/deepseastress.html:419:97, test/chromeexperiments/deepseastress.html:421:103, test/chromeexperiments/deepseastress.html:423:95, test/chromeexperiments/deepseastress.html:426:99, test/chromeexperiments/deepseastress.html:428:99, test/chromeexperiments/deepseastress.html:454:20, test/chromeexperiments/deepseastress.html:459:5, test/chromeexperiments/deepseastress.html:465:5]
 test/chromeexperiments/deepseastress.html:415:110: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/chromeexperiments/deepseastress.html:417:110: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/chromeexperiments/deepseastress.html:419:104: [info] 'this' refers to multiple abstract objects, which may cause loss of precision

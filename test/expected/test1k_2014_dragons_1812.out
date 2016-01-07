@@ -1,5 +1,3 @@
-test/1k2014dragons/1812.js:4:9: [definite] The assignment to c has no effect
-test/1k2014dragons/shims.js:19:5: [definite] The assignment to AudioContext has no effect
 test/1k2014dragons/shims.js:19:5: [definite] The conditional expression is always true
 test/1k2014dragons/shims.js:22:5: [definite] Property is null/undefined
 test/1k2014dragons/shims.js:22:5: [definite] The conditional expression is always false

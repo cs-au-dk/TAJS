@@ -3,7 +3,6 @@ test/1k2014dragons/1615.js:35:24: [definite] Too many parameters to function Can
 test/1k2014dragons/1615.js:64:6: [definite] The conditional expression is always false
 test/1k2014dragons/1615.js:67:2: [definite] The conditional expression is always false
 test/1k2014dragons/1615.js:73:6: [definite] The conditional expression is always false
-test/1k2014dragons/shims.js:19:5: [definite] The assignment to AudioContext has no effect
 test/1k2014dragons/shims.js:19:5: [definite] The conditional expression is always true
 test/1k2014dragons/shims.js:22:5: [definite] Property is null/undefined
 test/1k2014dragons/shims.js:22:5: [definite] The conditional expression is always false

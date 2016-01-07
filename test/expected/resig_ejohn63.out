@@ -1,2 +1,1 @@
-test/resig/ejohn63.js:4:7: [info] Abstract value: UInt
-test/resig/ejohn63.js:5:7: [info] Abstract value: UInt
+test/resig/ejohn63.js:1:5: [definite] The variable count is never used

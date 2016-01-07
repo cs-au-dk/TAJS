@@ -10,13 +10,27 @@ test/1k2012love/1107.js:73:10: [maybe] TypeError, accessing property of null/und
 test/1k2012love/shim.js:8:9: [maybe] TypeError, accessing property of null/undefined
 test/1k2012love/shim.js:8:9: [maybe] TypeError, call to non-function
 test/1k2012love/shim.js:9:1: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1107.js:55:21: [maybe] Reading absent property z
+test/1k2012love/1107.js:57:13: [maybe] Reading absent property x
+test/1k2012love/1107.js:57:22: [maybe] Reading absent property y
+test/1k2012love/1107.js:58:13: [maybe] Reading absent property x
+test/1k2012love/1107.js:58:22: [maybe] Reading absent property y
+test/1k2012love/1107.js:59:13: [maybe] Reading absent property x
+test/1k2012love/1107.js:59:22: [maybe] Reading absent property y
 test/1k2012love/shim.js:6:9: [maybe] Reading absent property body
 test/1k2012love/shim.js:8:9: [maybe] Reading absent property getContext
 test/1k2012love/shim.js:9:1: [maybe] Reading absent property body
 test/1k2012love/1107.js:17:5: [maybe] Converting object to string
 test/1k2012love/1107.js:17:5: [maybe] Converting primitive string to object
+test/1k2012love/1107.js:29:16: [maybe] Conversion to number yields NaN
 test/1k2012love/1107.js:47:10: [maybe] Reading absent property (computed name)
 test/1k2012love/1107.js:55:11: [maybe] Reading absent property (computed name)
+test/1k2012love/1107.js:55:21: [maybe] Conversion to number yields NaN
+test/1k2012love/1107.js:57:13: [maybe] Conversion to number yields NaN
+test/1k2012love/1107.js:57:22: [maybe] Conversion to number yields NaN
+test/1k2012love/1107.js:58:22: [maybe] Conversion to number yields NaN
+test/1k2012love/1107.js:59:13: [maybe] Conversion to number yields NaN
+test/1k2012love/1107.js:59:22: [maybe] Conversion to number yields NaN
 test/1k2012love/1107.js:71:9: [maybe] Reading absent property (computed name)
 test/1k2012love/1107.js:76:16: [maybe] Converting undefined to string
 test/1k2012love/1107.js:76:17: [maybe] Reading absent property (computed name)

@@ -18,6 +18,7 @@ package dk.brics.tajs.analysis.dom;
 
 import dk.brics.tajs.analysis.Conversion;
 import dk.brics.tajs.analysis.EvalCache;
+import dk.brics.tajs.analysis.Exceptions;
 import dk.brics.tajs.analysis.FunctionCalls.CallInfo;
 import dk.brics.tajs.analysis.InitialStateBuilder;
 import dk.brics.tajs.analysis.NativeFunctions;
@@ -69,7 +70,8 @@ public class DOMWindow {
 
     public static ObjectLabel JSON;
 
-    public static void build(final State s) {
+    public static void build(Solver.SolverInterface c) {
+        State s = c.getState();
         HISTORY = new ObjectLabel(DOMObjects.WINDOW_HISTORY, Kind.OBJECT);
         LOCATION = new ObjectLabel(DOMObjects.WINDOW_LOCATION, Kind.OBJECT);
         NAVIGATOR = new ObjectLabel(DOMObjects.WINDOW_NAVIGATOR, Kind.OBJECT);
@@ -82,64 +84,64 @@ public class DOMWindow {
          * Properties.
          */
         // DOM LEVEL 0
-        createDOMProperty(s, WINDOW, "innerHeight", Value.makeAnyNumUInt());
-        createDOMProperty(s, WINDOW, "innerWidth", Value.makeAnyNumUInt());
-        createDOMProperty(s, WINDOW, "length", Value.makeAnyNumUInt());
-        createDOMProperty(s, WINDOW, "name", Value.makeAnyStr());
-        createDOMProperty(s, WINDOW, "outerHeight", Value.makeAnyNumUInt());
-        createDOMProperty(s, WINDOW, "outerWidth", Value.makeAnyNumUInt());
-        createDOMProperty(s, WINDOW, "pageXOffset", Value.makeAnyNumUInt());
-        createDOMProperty(s, WINDOW, "pageYOffset", Value.makeAnyNumUInt());
-        createDOMProperty(s, WINDOW, "parent", Value.makeObject(WINDOW));
-        createDOMProperty(s, WINDOW, "self", Value.makeObject(WINDOW));
-        createDOMProperty(s, WINDOW, "scrollMaxX", Value.makeAnyNumUInt());
-        createDOMProperty(s, WINDOW, "scrollMaxY", Value.makeAnyNumUInt());
-        createDOMProperty(s, WINDOW, "scrollX", Value.makeAnyNumUInt());
-        createDOMProperty(s, WINDOW, "scrollY", Value.makeAnyNumUInt());
-        createDOMProperty(s, WINDOW, "screenX", Value.makeAnyNumUInt());
-        createDOMProperty(s, WINDOW, "screenY", Value.makeAnyNumUInt());
-        createDOMProperty(s, WINDOW, "status", Value.makeAnyStr());
-        createDOMProperty(s, WINDOW, "top", Value.makeObject(WINDOW));
-        createDOMProperty(s, WINDOW, "window", Value.makeObject(WINDOW));
+        createDOMProperty(WINDOW, "innerHeight", Value.makeAnyNumUInt(), c);
+        createDOMProperty(WINDOW, "innerWidth", Value.makeAnyNumUInt(), c);
+        createDOMProperty(WINDOW, "length", Value.makeAnyNumUInt(), c);
+        createDOMProperty(WINDOW, "name", Value.makeAnyStr(), c);
+        createDOMProperty(WINDOW, "outerHeight", Value.makeAnyNumUInt(), c);
+        createDOMProperty(WINDOW, "outerWidth", Value.makeAnyNumUInt(), c);
+        createDOMProperty(WINDOW, "pageXOffset", Value.makeAnyNumUInt(), c);
+        createDOMProperty(WINDOW, "pageYOffset", Value.makeAnyNumUInt(), c);
+        createDOMProperty(WINDOW, "parent", Value.makeObject(WINDOW), c);
+        createDOMProperty(WINDOW, "self", Value.makeObject(WINDOW), c);
+        createDOMProperty(WINDOW, "scrollMaxX", Value.makeAnyNumUInt(), c);
+        createDOMProperty(WINDOW, "scrollMaxY", Value.makeAnyNumUInt(), c);
+        createDOMProperty(WINDOW, "scrollX", Value.makeAnyNumUInt(), c);
+        createDOMProperty(WINDOW, "scrollY", Value.makeAnyNumUInt(), c);
+        createDOMProperty(WINDOW, "screenX", Value.makeAnyNumUInt(), c);
+        createDOMProperty(WINDOW, "screenY", Value.makeAnyNumUInt(), c);
+        createDOMProperty(WINDOW, "status", Value.makeAnyStr(), c);
+        createDOMProperty(WINDOW, "top", Value.makeObject(WINDOW), c);
+        createDOMProperty(WINDOW, "window", Value.makeObject(WINDOW), c);
 
         /*
          * Functions.
          */
         // DOM LEVEL 0
-        createDOMFunction(s, WINDOW, DOMObjects.WINDOW_ALERT, "alert", 1);
-        createDOMFunction(s, WINDOW, DOMObjects.WINDOW_ATOB, "atob", 1);
-        createDOMFunction(s, WINDOW, DOMObjects.WINDOW_BACK, "back", 0);
-        createDOMFunction(s, WINDOW, DOMObjects.WINDOW_BLUR, "blur", 0);
-        createDOMFunction(s, WINDOW, DOMObjects.WINDOW_BTOA, "btoa", 1);
-        createDOMFunction(s, WINDOW, DOMObjects.WINDOW_CLEAR_INTERVAL, "clearInterval", 0);
-        createDOMFunction(s, WINDOW, DOMObjects.WINDOW_CLEAR_TIMEOUT, "clearTimeout", 0);
-        createDOMFunction(s, WINDOW, DOMObjects.WINDOW_CLOSE, "close", 0);
-        createDOMFunction(s, WINDOW, DOMObjects.WINDOW_CONFIRM, "confirm", 1);
-        createDOMFunction(s, WINDOW, DOMObjects.WINDOW_ESCAPE, "escape", 1);
-        createDOMFunction(s, WINDOW, DOMObjects.WINDOW_FOCUS, "focus", 0);
-        createDOMFunction(s, WINDOW, DOMObjects.WINDOW_FORWARD, "forward", 0);
-        createDOMFunction(s, WINDOW, DOMObjects.WINDOW_HOME, "home", 0);
-        createDOMFunction(s, WINDOW, DOMObjects.WINDOW_MAXIMIZE, "maximize", 0);
-        createDOMFunction(s, WINDOW, DOMObjects.WINDOW_MINIMIZE, "minimize", 0);
-        createDOMFunction(s, WINDOW, DOMObjects.WINDOW_MOVEBY, "moveBy", 2);
-        createDOMFunction(s, WINDOW, DOMObjects.WINDOW_MOVETO, "moveTo", 2);
-        createDOMFunction(s, WINDOW, DOMObjects.WINDOW_OPEN, "open", 1);
-        createDOMFunction(s, WINDOW, DOMObjects.WINDOW_PRINT, "print", 0);
-        createDOMFunction(s, WINDOW, DOMObjects.WINDOW_PROMPT, "prompt", 1);
-        createDOMFunction(s, WINDOW, DOMObjects.WINDOW_RESIZEBY, "resizeBy", 2);
-        createDOMFunction(s, WINDOW, DOMObjects.WINDOW_RESIZETO, "resizeTo", 2);
-        createDOMFunction(s, WINDOW, DOMObjects.WINDOW_SCROLL, "scroll", 2);
-        createDOMFunction(s, WINDOW, DOMObjects.WINDOW_SCROLLBY, "scrollBy", 2);
-        createDOMFunction(s, WINDOW, DOMObjects.WINDOW_SCROLLBYLINES, "scrollByLines", 1);
-        createDOMFunction(s, WINDOW, DOMObjects.WINDOW_SCROLLBYPAGES, "scrollByPages", 1);
-        createDOMFunction(s, WINDOW, DOMObjects.WINDOW_SCROLLTO, "scrollTo", 2);
-        createDOMFunction(s, WINDOW, DOMObjects.WINDOW_SET_INTERVAL, "setInterval", 2);
-        createDOMFunction(s, WINDOW, DOMObjects.WINDOW_SET_TIMEOUT, "setTimeout", 2);
-        createDOMFunction(s, WINDOW, DOMObjects.WINDOW_STOP, "stop", 0);
-        createDOMFunction(s, WINDOW, DOMObjects.WINDOW_UNESCAPE, "unescape", 1);
+        createDOMFunction(WINDOW, DOMObjects.WINDOW_ALERT, "alert", 1, c);
+        createDOMFunction(WINDOW, DOMObjects.WINDOW_ATOB, "atob", 1, c);
+        createDOMFunction(WINDOW, DOMObjects.WINDOW_BACK, "back", 0, c);
+        createDOMFunction(WINDOW, DOMObjects.WINDOW_BLUR, "blur", 0, c);
+        createDOMFunction(WINDOW, DOMObjects.WINDOW_BTOA, "btoa", 1, c);
+        createDOMFunction(WINDOW, DOMObjects.WINDOW_CLEAR_INTERVAL, "clearInterval", 0, c);
+        createDOMFunction(WINDOW, DOMObjects.WINDOW_CLEAR_TIMEOUT, "clearTimeout", 0, c);
+        createDOMFunction(WINDOW, DOMObjects.WINDOW_CLOSE, "close", 0, c);
+        createDOMFunction(WINDOW, DOMObjects.WINDOW_CONFIRM, "confirm", 1, c);
+        createDOMFunction(WINDOW, DOMObjects.WINDOW_ESCAPE, "escape", 1, c);
+        createDOMFunction(WINDOW, DOMObjects.WINDOW_FOCUS, "focus", 0, c);
+        createDOMFunction(WINDOW, DOMObjects.WINDOW_FORWARD, "forward", 0, c);
+        createDOMFunction(WINDOW, DOMObjects.WINDOW_HOME, "home", 0, c);
+        createDOMFunction(WINDOW, DOMObjects.WINDOW_MAXIMIZE, "maximize", 0, c);
+        createDOMFunction(WINDOW, DOMObjects.WINDOW_MINIMIZE, "minimize", 0, c);
+        createDOMFunction(WINDOW, DOMObjects.WINDOW_MOVEBY, "moveBy", 2, c);
+        createDOMFunction(WINDOW, DOMObjects.WINDOW_MOVETO, "moveTo", 2, c);
+        createDOMFunction(WINDOW, DOMObjects.WINDOW_OPEN, "open", 1, c);
+        createDOMFunction(WINDOW, DOMObjects.WINDOW_PRINT, "print", 0, c);
+        createDOMFunction(WINDOW, DOMObjects.WINDOW_PROMPT, "prompt", 1, c);
+        createDOMFunction(WINDOW, DOMObjects.WINDOW_RESIZEBY, "resizeBy", 2, c);
+        createDOMFunction(WINDOW, DOMObjects.WINDOW_RESIZETO, "resizeTo", 2, c);
+        createDOMFunction(WINDOW, DOMObjects.WINDOW_SCROLL, "scroll", 2, c);
+        createDOMFunction(WINDOW, DOMObjects.WINDOW_SCROLLBY, "scrollBy", 2, c);
+        createDOMFunction(WINDOW, DOMObjects.WINDOW_SCROLLBYLINES, "scrollByLines", 1, c);
+        createDOMFunction(WINDOW, DOMObjects.WINDOW_SCROLLBYPAGES, "scrollByPages", 1, c);
+        createDOMFunction(WINDOW, DOMObjects.WINDOW_SCROLLTO, "scrollTo", 2, c);
+        createDOMFunction(WINDOW, DOMObjects.WINDOW_SET_INTERVAL, "setInterval", 2, c);
+        createDOMFunction(WINDOW, DOMObjects.WINDOW_SET_TIMEOUT, "setTimeout", 2, c);
+        createDOMFunction(WINDOW, DOMObjects.WINDOW_STOP, "stop", 0, c);
+        createDOMFunction(WINDOW, DOMObjects.WINDOW_UNESCAPE, "unescape", 1, c);
 
         // DOM LEVEL 2
-        createDOMFunction(s, WINDOW, DOMObjects.WINDOW_GET_COMPUTED_STYLE, "getComputedStyle", 0);
+        createDOMFunction(WINDOW, DOMObjects.WINDOW_GET_COMPUTED_STYLE, "getComputedStyle", 0, c);
 
         /*
          * WINDOW HISTORY object
@@ -147,76 +149,77 @@ public class DOMWindow {
         s.newObject(HISTORY);
         s.writeInternalPrototype(HISTORY, Value.makeObject(InitialStateBuilder.OBJECT_PROTOTYPE));
         // Properties.
-        createDOMProperty(s, HISTORY, "length", Value.makeAnyNumUInt());
-        createDOMProperty(s, WINDOW, "history", Value.makeObject(HISTORY));
+        createDOMProperty(HISTORY, "length", Value.makeAnyNumUInt(), c);
+        createDOMProperty(WINDOW, "history", Value.makeObject(HISTORY), c);
         // Functions.
-        createDOMFunction(s, HISTORY, DOMObjects.WINDOW_HISTORY_BACK, "back", 0);
-        createDOMFunction(s, HISTORY, DOMObjects.WINDOW_HISTORY_FORWARD, "forward", 0);
-        createDOMFunction(s, HISTORY, DOMObjects.WINDOW_HISTORY_GO, "go", 1);
+        createDOMFunction(HISTORY, DOMObjects.WINDOW_HISTORY_BACK, "back", 0, c);
+        createDOMFunction(HISTORY, DOMObjects.WINDOW_HISTORY_FORWARD, "forward", 0, c);
+        createDOMFunction(HISTORY, DOMObjects.WINDOW_HISTORY_GO, "go", 1, c);
 
         /*
          * WINDOW LOCATION object
          */
         s.newObject(LOCATION);
         s.writeInternalPrototype(LOCATION, Value.makeObject(InitialStateBuilder.OBJECT_PROTOTYPE));
-        createDOMProperty(s, WINDOW, "location", Value.makeObject(LOCATION));
+        createDOMProperty(WINDOW, "location", Value.makeObject(LOCATION), c);
 
         // Properties.
-        createDOMProperty(s, LOCATION, "hash", Value.makeAnyStr());
-        createDOMProperty(s, LOCATION, "host", Value.makeAnyStr());
-        createDOMProperty(s, LOCATION, "hostname", Value.makeAnyStr());
-        createDOMProperty(s, LOCATION, "href", Value.makeAnyStr());
-        createDOMProperty(s, LOCATION, "pathname", Value.makeAnyStr());
-        createDOMProperty(s, LOCATION, "port", Value.makeAnyStr());
-        createDOMProperty(s, LOCATION, "protocol", Value.makeAnyStr());
-        createDOMProperty(s, LOCATION, "search", Value.makeAnyStr());
-        createDOMProperty(s, LOCATION, "hash", Value.makeAnyStr());
+        createDOMProperty(LOCATION, "hash", Value.makeAnyStr(), c);
+        createDOMProperty(LOCATION, "host", Value.makeAnyStr(), c);
+        createDOMProperty(LOCATION, "hostname", Value.makeAnyStr(), c);
+        createDOMProperty(LOCATION, "href", Value.makeAnyStr(), c);
+        createDOMProperty(LOCATION, "pathname", Value.makeAnyStr(), c);
+        createDOMProperty(LOCATION, "port", Value.makeAnyStr(), c);
+        createDOMProperty(LOCATION, "protocol", Value.makeAnyStr(), c);
+        createDOMProperty(LOCATION, "search", Value.makeAnyStr(), c);
+        createDOMProperty(LOCATION, "hash", Value.makeAnyStr(), c);
         // Functions.
-        createDOMFunction(s, LOCATION, DOMObjects.WINDOW_LOCATION_ASSIGN, "assign", 1);
-        createDOMFunction(s, LOCATION, DOMObjects.WINDOW_LOCATION_RELOAD, "reload", 1);
-        createDOMFunction(s, LOCATION, DOMObjects.WINDOW_LOCATION_REPLACE, "replace", 1);
-        createDOMFunction(s, LOCATION, DOMObjects.WINDOW_LOCATION_TOSTRING, "toString", 0);
+        createDOMFunction(LOCATION, DOMObjects.WINDOW_LOCATION_ASSIGN, "assign", 1, c);
+        createDOMFunction(LOCATION, DOMObjects.WINDOW_LOCATION_RELOAD, "reload", 1, c);
+        createDOMFunction(LOCATION, DOMObjects.WINDOW_LOCATION_REPLACE, "replace", 1, c);
+        createDOMFunction(LOCATION, DOMObjects.WINDOW_LOCATION_TOSTRING, "toString", 0, c);
 
         /*
          * WINDOW NAVIGATOR object
          */
         s.newObject(NAVIGATOR);
         s.writeInternalPrototype(NAVIGATOR, Value.makeObject(InitialStateBuilder.OBJECT_PROTOTYPE));
-        createDOMProperty(s, WINDOW, "navigator", Value.makeObject(NAVIGATOR));
+        createDOMProperty(WINDOW, "navigator", Value.makeObject(NAVIGATOR), c);
         // Properties.
-        createDOMProperty(s, NAVIGATOR, "product", Value.makeAnyStr());
-        createDOMProperty(s, NAVIGATOR, "appName", Value.makeAnyStr());
-        createDOMProperty(s, NAVIGATOR, "appVersion", Value.makeAnyStr());
-        createDOMProperty(s, NAVIGATOR, "userAgent", Value.makeAnyStr());
+        createDOMProperty(NAVIGATOR, "product", Value.makeAnyStr(), c);
+        createDOMProperty(NAVIGATOR, "appName", Value.makeAnyStr(), c);
+        createDOMProperty(NAVIGATOR, "appVersion", Value.makeAnyStr(), c);
+        createDOMProperty(NAVIGATOR, "userAgent", Value.makeAnyStr(), c);
 
         /*
          * WINDOW SCREEN object
          */
         s.newObject(SCREEN);
         s.writeInternalPrototype(SCREEN, Value.makeObject(InitialStateBuilder.OBJECT_PROTOTYPE));
-        createDOMProperty(s, WINDOW, "screen", Value.makeObject(SCREEN));
+        createDOMProperty(WINDOW, "screen", Value.makeObject(SCREEN), c);
         // Properties.
-        createDOMProperty(s, SCREEN, "availTop", Value.makeAnyNumUInt());
-        createDOMProperty(s, SCREEN, "availLeft", Value.makeAnyNumUInt());
-        createDOMProperty(s, SCREEN, "availHeight", Value.makeAnyNumUInt());
-        createDOMProperty(s, SCREEN, "availWidth", Value.makeAnyNumUInt());
-        createDOMProperty(s, SCREEN, "colorDepth", Value.makeAnyNumUInt());
-        createDOMProperty(s, SCREEN, "height", Value.makeAnyNumUInt());
-        createDOMProperty(s, SCREEN, "left", Value.makeAnyNumUInt());
-        createDOMProperty(s, SCREEN, "pixelDepth", Value.makeAnyNumUInt());
-        createDOMProperty(s, SCREEN, "top", Value.makeAnyNumUInt());
-        createDOMProperty(s, SCREEN, "width", Value.makeAnyNumUInt());
+        createDOMProperty(SCREEN, "availTop", Value.makeAnyNumUInt(), c);
+        createDOMProperty(SCREEN, "availLeft", Value.makeAnyNumUInt(), c);
+        createDOMProperty(SCREEN, "availHeight", Value.makeAnyNumUInt(), c);
+        createDOMProperty(SCREEN, "availWidth", Value.makeAnyNumUInt(), c);
+        createDOMProperty(SCREEN, "colorDepth", Value.makeAnyNumUInt(), c);
+        createDOMProperty(SCREEN, "height", Value.makeAnyNumUInt(), c);
+        createDOMProperty(SCREEN, "left", Value.makeAnyNumUInt(), c);
+        createDOMProperty(SCREEN, "pixelDepth", Value.makeAnyNumUInt(), c);
+        createDOMProperty(SCREEN, "top", Value.makeAnyNumUInt(), c);
+        createDOMProperty(SCREEN, "width", Value.makeAnyNumUInt(), c);
 
         /*
          * WINDOW JSON object
          */
         s.newObject(JSON);
         s.writeInternalPrototype(JSON, Value.makeObject(InitialStateBuilder.OBJECT_PROTOTYPE));
-        createDOMProperty(s, WINDOW, "JSON", Value.makeObject(JSON)); // TODO: DOMSpec.LEVEL_0?
-        createDOMFunction(s, JSON, DOMObjects.WINDOW_JSON_PARSE, "parse", 1); // TODO: DOMSpec.LEVEL_0?
+        createDOMProperty(WINDOW, "JSON", Value.makeObject(JSON), c); // TODO: DOMSpec.LEVEL_0?
+        createDOMFunction(JSON, DOMObjects.WINDOW_JSON_PARSE, "parse", 1, c); // TODO: DOMSpec.LEVEL_0?
     }
 
-    public static Value evaluate(DOMObjects nativeObject, final CallInfo call, final State s, Solver.SolverInterface c) {
+    public static Value evaluate(DOMObjects nativeObject, final CallInfo call, Solver.SolverInterface c) {
+        State s = c.getState();
         // TODO: check that parameters are numbers? (same for many other DOM functions...)
         switch (nativeObject) {
             case WINDOW_ALERT: {
@@ -304,7 +307,7 @@ public class DOMWindow {
                 NativeFunctions.expectParameters(nativeObject, call, c, 1, 1);
             /* Value data =*/
                 NativeFunctions.readParameter(call, s, 0);
-                return DOMFunctions.makeAnyJSONObject(s);
+                return DOMFunctions.makeAnyJSONObject(c);
             }
             case WINDOW_LOCATION_RELOAD: {
                 NativeFunctions.expectParameters(nativeObject, call, c, 1, 1);
@@ -418,7 +421,10 @@ public class DOMWindow {
                         functionLabels.add(objectLabel);
                     }
                 }
-                Value callbackSourceCode = Conversion.toString(callbackParameter.removeObjects(functionLabels), c);
+                if (callbackParameter.isMaybeUndef() || callbackParameter.isMaybeNull()) {
+                    Exceptions.throwTypeError(c);
+                }
+                Value callbackSourceCode = Conversion.toString(callbackParameter.removeObjects(functionLabels).restrictToNotNullNotUndef(), c);
                 Value allCallbacks = Value.makeObject(functionLabels);
 
                 if (!c.isScanning()) {
@@ -429,7 +435,7 @@ public class DOMWindow {
                             NormalForm nf = UnevalTools.rebuildNormalForm(currFg, callNode, s, c);
 
                             String uneval_input = callbackSourceCode.getStr() != null ? "\"" + Strings.escapeSource(callbackSourceCode.getStr()) + "\"" : nf.getNormalForm();
-                            String unevaled = new Unevalizer().uneval(UnevalTools.unevalizerCallback(currFg, s, callNode, nf), uneval_input, false, null);
+                            String unevaled = new Unevalizer().uneval(UnevalTools.unevalizerCallback(currFg, c, callNode, nf), uneval_input, false, null, call.getSourceNode(), c);
                             if (unevaled == null) {
                                 return UnevalizerLimitations.handle("Could not uneval setTimeout/setInterval string (you should use higher-order functions instead): " + uneval_input, call.getSourceNode(), Value.makeAnyNumUInt(), c);
                             }

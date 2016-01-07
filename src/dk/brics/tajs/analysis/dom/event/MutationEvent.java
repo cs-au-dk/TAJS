@@ -19,6 +19,7 @@ package dk.brics.tajs.analysis.dom.event;
 import dk.brics.tajs.analysis.Conversion;
 import dk.brics.tajs.analysis.FunctionCalls;
 import dk.brics.tajs.analysis.NativeFunctions;
+import dk.brics.tajs.analysis.PropVarOperations;
 import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.analysis.dom.DOMConversion;
 import dk.brics.tajs.analysis.dom.DOMObjects;
@@ -42,7 +43,9 @@ public class MutationEvent {
 
     public static ObjectLabel INSTANCES;
 
-    public static void build(State s) {
+    public static void build(Solver.SolverInterface c) {
+        State s = c.getState();
+        PropVarOperations pv = c.getAnalysis().getPropVarOperations();
         PROTOTYPE = new ObjectLabel(DOMObjects.MUTATION_EVENT_PROTOTYPE, ObjectLabel.Kind.OBJECT);
         INSTANCES = new ObjectLabel(DOMObjects.MUTATION_EVENT_INSTANCES, ObjectLabel.Kind.OBJECT);
 
@@ -53,28 +56,28 @@ public class MutationEvent {
         // Multiplied object.
         s.newObject(INSTANCES);
         s.writeInternalPrototype(INSTANCES, Value.makeObject(PROTOTYPE));
-        s.writeProperty(DOMWindow.WINDOW, "MutationEvent", Value.makeObject(INSTANCES));
+        pv.writeProperty(DOMWindow.WINDOW, "MutationEvent", Value.makeObject(INSTANCES));
 
         /*
          * Properties.
          */
-        createDOMProperty(s, INSTANCES, "relatedNode", Value.makeAnyStr().setReadOnly());
-        createDOMProperty(s, INSTANCES, "prevValue", Value.makeAnyStr().setReadOnly());
-        createDOMProperty(s, INSTANCES, "newValue", Value.makeAnyStr().setReadOnly());
-        createDOMProperty(s, INSTANCES, "attrName", Value.makeAnyStr().setReadOnly());
-        createDOMProperty(s, INSTANCES, "attrChange", Value.makeAnyNumUInt().setReadOnly());
+        createDOMProperty(INSTANCES, "relatedNode", Value.makeAnyStr().setReadOnly(), c);
+        createDOMProperty(INSTANCES, "prevValue", Value.makeAnyStr().setReadOnly(), c);
+        createDOMProperty(INSTANCES, "newValue", Value.makeAnyStr().setReadOnly(), c);
+        createDOMProperty(INSTANCES, "attrName", Value.makeAnyStr().setReadOnly(), c);
+        createDOMProperty(INSTANCES, "attrChange", Value.makeAnyNumUInt().setReadOnly(), c);
 
         /*
          * Constants (attrChangeType).
          */
-        createDOMProperty(s, PROTOTYPE, "MODIFICATION", Value.makeNum(1));
-        createDOMProperty(s, PROTOTYPE, "ADDITION", Value.makeNum(2));
-        createDOMProperty(s, PROTOTYPE, "REMOVAL", Value.makeNum(3));
+        createDOMProperty(PROTOTYPE, "MODIFICATION", Value.makeNum(1), c);
+        createDOMProperty(PROTOTYPE, "ADDITION", Value.makeNum(2), c);
+        createDOMProperty(PROTOTYPE, "REMOVAL", Value.makeNum(3), c);
 
         /*
          * Functions.
          */
-        createDOMFunction(s, PROTOTYPE, DOMObjects.MUTATION_EVENT_INIT_MUTATION_EVENT, "initMutationEvent", 8);
+        createDOMFunction(PROTOTYPE, DOMObjects.MUTATION_EVENT_INIT_MUTATION_EVENT, "initMutationEvent", 8, c);
 
         // Multiply Object
         s.multiplyObject(INSTANCES);
@@ -84,7 +87,8 @@ public class MutationEvent {
         DOMRegistry.registerMutationEventLabel(INSTANCES);
     }
 
-    public static Value evaluate(DOMObjects nativeObject, FunctionCalls.CallInfo call, State s, Solver.SolverInterface c) {
+    public static Value evaluate(DOMObjects nativeObject, FunctionCalls.CallInfo call, Solver.SolverInterface c) {
+        State s = c.getState();
         switch (nativeObject) {
             case MUTATION_EVENT_INIT_MUTATION_EVENT: {
                 NativeFunctions.expectParameters(nativeObject, call, c, 8, 8);

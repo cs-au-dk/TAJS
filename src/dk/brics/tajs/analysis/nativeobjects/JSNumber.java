@@ -43,11 +43,12 @@ public class JSNumber {
     /**
      * Evaluates the given native function.
      */
-    public static Value evaluate(ECMAScriptObjects nativeobject, CallInfo call, State state, Solver.SolverInterface c) {
+    public static Value evaluate(ECMAScriptObjects nativeobject, CallInfo call, Solver.SolverInterface c) {
         if (nativeobject != ECMAScriptObjects.NUMBER)
-            if (NativeFunctions.throwTypeErrorIfConstructor(call, state, c))
+            if (NativeFunctions.throwTypeErrorIfConstructor(call, c))
                 return Value.makeNone();
 
+        State state = c.getState();
         switch (nativeobject) {
 
             case NUMBER: {
@@ -102,7 +103,7 @@ public class JSNumber {
                     maybe_rangeerror = true;
                 }
                 if (maybe_rangeerror || definitely_rangeerror) {
-                    Exceptions.throwRangeError(state, c);
+                    Exceptions.throwRangeError(c);
                     c.getMonitoring().addMessage(call.getSourceNode(), Severity.HIGH, "RangeError in Number function");
                 }
                 if (definitely_rangeerror)

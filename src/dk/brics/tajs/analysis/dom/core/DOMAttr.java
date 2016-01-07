@@ -17,6 +17,8 @@
 package dk.brics.tajs.analysis.dom.core;
 
 import dk.brics.tajs.analysis.InitialStateBuilder;
+import dk.brics.tajs.analysis.PropVarOperations;
+import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.analysis.dom.DOMObjects;
 import dk.brics.tajs.analysis.dom.DOMWindow;
 import dk.brics.tajs.lattice.ObjectLabel;
@@ -42,17 +44,19 @@ public class DOMAttr {
 
     public static ObjectLabel INSTANCES;
 
-    public static void build(State s) {
+    public static void build(Solver.SolverInterface c) {
+        State s = c.getState();
+        PropVarOperations pv = c.getAnalysis().getPropVarOperations();
         CONSTRUCTOR = new ObjectLabel(DOMObjects.ATTR_CONSTRUCTOR, ObjectLabel.Kind.FUNCTION);
         PROTOTYPE = new ObjectLabel(DOMObjects.ATTR_PROTOTYPE, ObjectLabel.Kind.OBJECT);
         INSTANCES = new ObjectLabel(DOMObjects.ATTR_INSTANCES, ObjectLabel.Kind.OBJECT);
 
         // Constructor Object
         s.newObject(CONSTRUCTOR);
-        s.writePropertyWithAttributes(CONSTRUCTOR, "length", Value.makeNum(0).setAttributes(true, true, true));
-        s.writePropertyWithAttributes(CONSTRUCTOR, "prototype", Value.makeObject(PROTOTYPE).setAttributes(true, true, true));
+        pv.writePropertyWithAttributes(CONSTRUCTOR, "length", Value.makeNum(0).setAttributes(true, true, true));
+        pv.writePropertyWithAttributes(CONSTRUCTOR, "prototype", Value.makeObject(PROTOTYPE).setAttributes(true, true, true));
         s.writeInternalPrototype(CONSTRUCTOR, Value.makeObject(InitialStateBuilder.OBJECT_PROTOTYPE));
-        s.writeProperty(DOMWindow.WINDOW, "Attr", Value.makeObject(CONSTRUCTOR));
+        pv.writeProperty(DOMWindow.WINDOW, "Attr", Value.makeObject(CONSTRUCTOR));
 
         // Prototype object.
         s.newObject(PROTOTYPE);
@@ -66,12 +70,12 @@ public class DOMAttr {
          * Properties.
          */
         // DOM Level 1
-        createDOMProperty(s, INSTANCES, "name", Value.makeAnyStr().setReadOnly());
-        createDOMProperty(s, INSTANCES, "specified", Value.makeAnyBool().setReadOnly());
-        createDOMProperty(s, INSTANCES, "value", Value.makeAnyStr().setReadOnly());
+        createDOMProperty(INSTANCES, "name", Value.makeAnyStr().setReadOnly(), c);
+        createDOMProperty(INSTANCES, "specified", Value.makeAnyBool().setReadOnly(), c);
+        createDOMProperty(INSTANCES, "value", Value.makeAnyStr().setReadOnly(), c);
 
         // DOM Level 3
-        createDOMProperty(s, INSTANCES, "isId", Value.makeAnyBool());
+        createDOMProperty(INSTANCES, "isId", Value.makeAnyBool(), c);
 
         s.multiplyObject(INSTANCES);
         INSTANCES = INSTANCES.makeSingleton().makeSummary();

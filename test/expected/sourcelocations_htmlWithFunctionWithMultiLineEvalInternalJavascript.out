@@ -1,3 +1,2 @@
-test/sourcelocations/htmlWithFunctionWithMultiLineEvalInternalJavascript.html:13:22: [definite] The assignment to functionResult has no effect
 TAJS-dynamic-code(test/sourcelocations/htmlWithFunctionWithMultiLineEvalInternalJavascript.html:11:1):1:5: [definite] The variable x is never used
 test/sourcelocations/htmlWithFunctionWithMultiLineEvalInternalJavascript.html:13:5: [definite] The variable functionResult is never used

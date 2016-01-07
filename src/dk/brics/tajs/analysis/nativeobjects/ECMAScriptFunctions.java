@@ -48,7 +48,7 @@ public class ECMAScriptFunctions {
     /**
      * Evaluates the given native ECMAScript function.
      */
-    public static Value evaluate(ECMAScriptObjects nativeobject, CallInfo call, State state, Solver.SolverInterface c) {
+    public static Value evaluate(ECMAScriptObjects nativeobject, CallInfo call, Solver.SolverInterface c) {
         if (log.isDebugEnabled())
             log.debug("native function: " + nativeobject);
         Value res;
@@ -63,7 +63,9 @@ public class ECMAScriptFunctions {
             case OBJECT_PROPERTYISENUMERABLE:
             case OBJECT_DEFINE_PROPERTY:
             case OBJECT_CREATE:
-                res = JSObject.evaluate(nativeobject, call, state, c);
+            case OBJECT_FREEZE:
+            case OBJECT_KEYS:
+                res = JSObject.evaluate(nativeobject, call, c);
                 break;
 
             case FUNCTION:
@@ -71,7 +73,7 @@ public class ECMAScriptFunctions {
             case FUNCTION_APPLY:
             case FUNCTION_CALL:
             case FUNCTION_PROTOTYPE:
-                res = JSFunction.evaluate(nativeobject, call, state, c);
+                res = JSFunction.evaluate(nativeobject, call, c);
                 break;
 
             case ARRAY:
@@ -90,7 +92,7 @@ public class ECMAScriptFunctions {
             case ARRAY_UNSHIFT:
             case ARRAY_INDEXOF:
             case ARRAY_ISARRAY:
-                res = JSArray.evaluate(nativeobject, call, state, c);
+                res = JSArray.evaluate(nativeobject, call, c);
                 break;
 
             case NUMBER:
@@ -100,7 +102,7 @@ public class ECMAScriptFunctions {
             case NUMBER_TOLOCALESTRING:
             case NUMBER_TOSTRING:
             case NUMBER_VALUEOF:
-                res = JSNumber.evaluate(nativeobject, call, state, c);
+                res = JSNumber.evaluate(nativeobject, call, c);
                 break;
 
             case EVAL_ERROR:
@@ -111,7 +113,7 @@ public class ECMAScriptFunctions {
             case URI_ERROR:
             case ERROR:
             case ERROR_TOSTRING:
-                res = JSError.evaluate(nativeobject, call, state, c);
+                res = JSError.evaluate(nativeobject, call, c);
                 break;
 
             case REGEXP:
@@ -119,7 +121,7 @@ public class ECMAScriptFunctions {
             case REGEXP_EXEC:
             case REGEXP_TEST:
             case REGEXP_TOSTRING:
-                res = JSRegExp.evaluate(nativeobject, call, state, c);
+                res = JSRegExp.evaluate(nativeobject, call, c);
                 break;
 
             case DATE:
@@ -170,7 +172,7 @@ public class ECMAScriptFunctions {
             case DATE_SETYEAR:
             case DATE_TOGMTSTRING:
             case DATE_NOW:
-                res = JSDate.evaluate(nativeobject, call, state, c);
+                res = JSDate.evaluate(nativeobject, call, c);
                 break;
 
             case STRING:
@@ -195,13 +197,13 @@ public class ECMAScriptFunctions {
             case STRING_CHARCODEAT:
             case STRING_CHARAT:
             case STRING_TRIM:
-                res = JSString.evaluate(nativeobject, call, state, c);
+                res = JSString.evaluate(nativeobject, call, c);
                 break;
 
             case BOOLEAN:
             case BOOLEAN_TOSTRING:
             case BOOLEAN_VALUEOF:
-                res = JSBoolean.evaluate(nativeobject, call, state, c);
+                res = JSBoolean.evaluate(nativeobject, call, c);
                 break;
 
             case MATH_ABS:
@@ -222,7 +224,7 @@ public class ECMAScriptFunctions {
             case MATH_MAX:
             case MATH_MIN:
             case MATH_RANDOM:
-                res = JSMath.evaluate(nativeobject, call, state, c);
+                res = JSMath.evaluate(nativeobject, call, c);
                 break;
 
             case EVAL:
@@ -255,7 +257,7 @@ public class ECMAScriptFunctions {
             case TAJS_GET_UI_EVENT:
             case TAJS_GET_EVENT_LISTENER:
             case TAJS_GET_WHEEL_EVENT:
-                res = JSGlobal.evaluate(nativeobject, call, state, c);
+                res = JSGlobal.evaluate(nativeobject, call, c);
                 break;
 
             case ARRAY_PROTOTYPE:
@@ -307,7 +309,7 @@ public class ECMAScriptFunctions {
                 if (thiss.getKind() == Kind.FUNCTION)
                     result = Value.makeAnyStr();
                 else
-                    Exceptions.throwTypeError(c.getState(), c);
+                    Exceptions.throwTypeError(c);
                 break;
             case ARRAY_TOSTRING:
                 // 15.4.4.2 Array.prototype.toString ( )
@@ -316,7 +318,7 @@ public class ECMAScriptFunctions {
                 if (thiss.getKind() == Kind.ARRAY)
                     result = Value.makeAnyStr();
                 else
-                    Exceptions.throwTypeError(c.getState(), c);
+                    Exceptions.throwTypeError(c);
                 break;
             case STRING_TOSTRING:
                 // 15.5.4.2 String.prototype.toString ( )
@@ -327,7 +329,7 @@ public class ECMAScriptFunctions {
                     v = UnknownValueResolver.getRealValue(v, c.getState());
                     result = v;
                 } else
-                    Exceptions.throwTypeError(c.getState(), c);
+                    Exceptions.throwTypeError(c);
                 break;
             case BOOLEAN_TOSTRING:
                 // 15.6.4.2 Boolean.prototype.toString ( )
@@ -343,7 +345,7 @@ public class ECMAScriptFunctions {
                     else
                         result = Value.makeAnyStr();
                 } else
-                    Exceptions.throwTypeError(c.getState(), c);
+                    Exceptions.throwTypeError(c);
                 break;
             case NUMBER_TOSTRING:
                 // 15.7.4.2 Number.prototype.toString (radix)
@@ -355,14 +357,14 @@ public class ECMAScriptFunctions {
                     v = UnknownValueResolver.getRealValue(v, c.getState());
                     result = Conversion.toString(v, c);
                 } else
-                    Exceptions.throwTypeError(c.getState(), c);
+                    Exceptions.throwTypeError(c);
                 break;
             case REGEXP_TOSTRING:
                 // 15.10.6.4 RegExp.prototype.toString()
                 if (thiss.getKind() == Kind.REGEXP)
                     result = Value.makeAnyStr(); // TODO: correct to throw TypeError if thiss is not a REGEXP? (not mentioned in 15.10.6.4)
                 else
-                    Exceptions.throwTypeError(c.getState(), c);
+                    Exceptions.throwTypeError(c);
                 break;
             case DATE_TOSTRING:
                 // 15.9.5.2 Date.prototype.toString ( )
@@ -370,7 +372,7 @@ public class ECMAScriptFunctions {
                 if (thiss.getKind() == Kind.DATE)
                     result = Value.makeAnyStr();
                 else
-                    Exceptions.throwTypeError(c.getState(), c); // not generic according to 15.9.5
+                    Exceptions.throwTypeError(c); // not generic according to 15.9.5
                 break;
             case ERROR_TOSTRING:
                 // 15.11.4.4 Error.prototype.toString ( )
@@ -404,7 +406,7 @@ public class ECMAScriptFunctions {
                     v = UnknownValueResolver.getRealValue(v, c.getState());
                     result = v;
                 } else
-                    Exceptions.throwTypeError(c.getState(), c);
+                    Exceptions.throwTypeError(c);
                 break;
             case BOOLEAN_VALUEOF:
                 // 15.6.4.3 Boolean.prototype.valueOf ( )
@@ -414,7 +416,7 @@ public class ECMAScriptFunctions {
                     v = UnknownValueResolver.getRealValue(v, c.getState());
                     result = v;
                 } else
-                    Exceptions.throwTypeError(c.getState(), c);
+                    Exceptions.throwTypeError(c);
                 break;
             case NUMBER_VALUEOF:
                 // 15.7.4.4 Number.prototype.valueOf ( )
@@ -424,7 +426,7 @@ public class ECMAScriptFunctions {
                     v = UnknownValueResolver.getRealValue(v, c.getState());
                     result = v;
                 } else
-                    Exceptions.throwTypeError(c.getState(), c);
+                    Exceptions.throwTypeError(c);
                 break;
             case DATE_VALUEOF:
                 // 15.9.5.8 Date.prototype.valueOf ( )
@@ -432,7 +434,7 @@ public class ECMAScriptFunctions {
                 if (thiss.getKind() == Kind.DATE)
                     result = Value.makeAnyNumUInt();
                 else
-                    Exceptions.throwTypeError(c.getState(), c); // not generic according to 15.9.5
+                    Exceptions.throwTypeError(c); // not generic according to 15.9.5
                 break;
             default:
                 c.getMonitoring().addMessage(c.getNode(), Severity.HIGH, "Implicit call to native non-valueOf method");

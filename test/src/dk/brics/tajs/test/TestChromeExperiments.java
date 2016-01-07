@@ -1,5 +1,6 @@
 package dk.brics.tajs.test;
 
+import dk.brics.tajs.Main;
 import dk.brics.tajs.monitoring.CompositeMonitoring;
 import dk.brics.tajs.monitoring.IAnalysisMonitoring;
 import dk.brics.tajs.monitoring.Monitoring;
@@ -7,7 +8,6 @@ import dk.brics.tajs.options.Options;
 import dk.brics.tajs.test.monitors.OrdinaryExitReachableCheckerMonitor;
 import dk.brics.tajs.util.AnalysisLimitationException;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 @SuppressWarnings("static-method")
@@ -21,7 +21,7 @@ public class TestChromeExperiments {
 
     @Before
     public void init() {
-        Options.reset();
+        Main.reset();
         Options.get().enableTest();
         Options.get().enableIncludeDom();
         monitoring = CompositeMonitoring.buildFromList(new Monitoring(), new OrdinaryExitReachableCheckerMonitor());
@@ -45,8 +45,7 @@ public class TestChromeExperiments {
         Misc.checkSystemOutput();
     }
 
-    @Ignore // Ordinary exit unreachable (due to definite error?)! See GitHub #219
-    @Test
+    @Test(expected = AssertionError.class /* GitHub #219 */)
     public void chrome_apophis() throws Exception {
         Misc.init();
         Misc.captureSystemOutput();
@@ -64,8 +63,7 @@ public class TestChromeExperiments {
         Misc.checkSystemOutput();
     }
 
-    @Ignore // Ordinary exit unreachable (due to definite error?)! See GitHub #219
-    @Test
+    @Test(expected = AssertionError.class /* GitHub #219 */)
     public void chrome_bingbong() throws Exception {
         Misc.init();
         Misc.captureSystemOutput();
@@ -149,8 +147,7 @@ public class TestChromeExperiments {
         Misc.checkSystemOutput();
     }
 
-    @Ignore // Ordinary exit unreachable (due to definite error?)! See GitHub #219
-    @Test
+    @Test(expected = AssertionError.class /* GitHub #219 */)
     public void chrome_harmony() throws Exception {
         Misc.init();
         Misc.captureSystemOutput();
@@ -279,7 +276,7 @@ public class TestChromeExperiments {
         Misc.checkSystemOutput();
     }
 
-    @Test(expected = AnalysisLimitationException.class /* GitHub #146 */)
+    @Test(expected = AnalysisLimitationException.class /* impossible eval from url content */)
     public void chrome_tetris() throws Exception {
         Misc.init();
         Options.get().enableUnevalizer();
@@ -317,8 +314,7 @@ public class TestChromeExperiments {
         Misc.checkSystemOutput();
     }
 
-    @Ignore // Ordinary exit unreachable (due to definite error?)! See GitHub #219
-    @Test
+    @Test(expected = AssertionError.class /* GitHub #219 */)
     public void chrome_voxels() throws Exception {
         Misc.init();
         Misc.captureSystemOutput();

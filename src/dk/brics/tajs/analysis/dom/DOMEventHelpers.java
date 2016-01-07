@@ -116,7 +116,11 @@ public class DOMEventHelpers {
                 || attribute.equalsIgnoreCase("onselect")
                 || attribute.equalsIgnoreCase("onchange")
                 || attribute.equalsIgnoreCase("onresize")
-                || attribute.equalsIgnoreCase("onselectstart");
+                || attribute.equalsIgnoreCase("onselectstart")
+                || attribute.equalsIgnoreCase("ontouchstart")
+                || attribute.equalsIgnoreCase("ontouchend")
+                || attribute.equalsIgnoreCase("ontouchmove")
+                || attribute.equalsIgnoreCase("ontouchcancel");
     }
 
     /**
@@ -129,6 +133,10 @@ public class DOMEventHelpers {
                 || property.equalsIgnoreCase("reset")
                 || property.equalsIgnoreCase("select")
                 || property.equalsIgnoreCase("change")
-                || property.equalsIgnoreCase("resize");
+                || property.equalsIgnoreCase("resize")
+                || property.equalsIgnoreCase("touchstart")
+                || property.equalsIgnoreCase("touchend")
+                || property.equalsIgnoreCase("touchmove")
+                || property.equalsIgnoreCase("touchcancel");
     }
 }

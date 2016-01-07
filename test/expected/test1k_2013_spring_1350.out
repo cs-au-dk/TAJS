@@ -1,4 +1,3 @@
-test/1k2013spring/1350.js:39:1: [definite] The assignment to g has no effect
 test/1k2013spring/1350.js:34:1: [definite] Too few parameters to function CanvasRenderingContext2D.prototype.arc
 test/1k2013spring/1350.js:2:1: [maybe] TypeError, accessing property of null/undefined
 test/1k2013spring/shim.js:8:9: [maybe] TypeError, accessing property of null/undefined

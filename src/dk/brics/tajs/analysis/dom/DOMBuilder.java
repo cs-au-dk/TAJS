@@ -17,13 +17,17 @@
 package dk.brics.tajs.analysis.dom;
 
 import dk.brics.tajs.analysis.InitialStateBuilder;
+import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.analysis.dom.ajax.AjaxBuilder;
 import dk.brics.tajs.analysis.dom.core.CoreBuilder;
 import dk.brics.tajs.analysis.dom.core.DOMDocument;
 import dk.brics.tajs.analysis.dom.core.DOMNamedNodeMap;
+import dk.brics.tajs.analysis.dom.core.DOMTouch;
+import dk.brics.tajs.analysis.dom.core.DOMTouchList;
 import dk.brics.tajs.analysis.dom.event.Event;
 import dk.brics.tajs.analysis.dom.event.EventBuilder;
 import dk.brics.tajs.analysis.dom.event.MouseEvent;
+import dk.brics.tajs.analysis.dom.event.TouchEvent;
 import dk.brics.tajs.analysis.dom.html.HTMLBuilder;
 import dk.brics.tajs.analysis.dom.html.HTMLCollection;
 import dk.brics.tajs.analysis.dom.html5.AudioContext;
@@ -84,35 +88,35 @@ public class DOMBuilder {
      * Its assumed that WINDOW is added to the state somewhere else before this function is invoked since its the
      * global objects when running in DOM mode.
      */
-    public static void addInitialState(State s, Source document) {
+    public static void addInitialState(Source document, Solver.SolverInterface c) {
         isDoneBuildingHTMLObjectLabels = false;
         // Reset DOM Registry
         DOMRegistry.reset();
 
         // Build window object
         DOMWindow.WINDOW = InitialStateBuilder.GLOBAL;
-        DOMWindow.build(s);
+        DOMWindow.build(c);
 
         // Build initial core dom state
-        CoreBuilder.build(s);
+        CoreBuilder.build(c);
 
         // Build initial style state
-        StyleBuilder.build(s);
+        StyleBuilder.build(c);
 
         // Build initial html state
-        HTMLBuilder.build(s);
+        HTMLBuilder.build(c);
 
         // Build initial html5 state
-        HTML5Builder.build(s);
+        HTML5Builder.build(c);
 
         // Build initial event state
-        EventBuilder.build(s);
+        EventBuilder.build(c);
 
         // Build initial views state
-        ViewBuilder.build(s);
+        ViewBuilder.build(c);
 
         // Build initial AJAX state
-        AjaxBuilder.build(s);
+        AjaxBuilder.build(c);
 
         ALL_HTML_OBJECT_LABELS.addAll(HTML5Builder.HTML5_OBJECT_LABELS);
         ALL_HTML_OBJECT_LABELS.addAll(HTMLBuilder.HTML4_OBJECT_LABELS);
@@ -120,54 +124,61 @@ public class DOMBuilder {
         isDoneBuildingHTMLObjectLabels = true;
 
         // Set some shared properties on DOM elements due to circularity, and convenience
-        s.writeProperty(singleton(HTMLCollection.INSTANCES), Value.makeAnyStrUInt(), Value.makeObject(ALL_HTML_OBJECT_LABELS), false, false);
+        c.getAnalysis().getPropVarOperations().writeProperty(singleton(HTMLCollection.INSTANCES), Value.makeAnyStrUInt(), Value.makeObject(ALL_HTML_OBJECT_LABELS), false, false);
 
         Value cssProperty = Value.makeObject(CSSStyleDeclaration.STYLEDECLARATION).setReadOnly();
         Value htmlElementsProperty = Value.makeObject(ALL_HTML_OBJECT_LABELS).joinNull().setReadOnly();
         Value uintProperty = Value.makeAnyNumUInt().setReadOnly();
 
+
+        createDOMProperty(TouchEvent.INSTANCES, "changedTouches", Value.makeObject(DOMTouchList.INSTANCES).setReadOnly(), c);
+        createDOMProperty(TouchEvent.INSTANCES, "targetTouches", Value.makeObject(DOMTouchList.INSTANCES).setReadOnly(), c);
+        createDOMProperty(TouchEvent.INSTANCES, "touches", Value.makeObject(DOMTouchList.INSTANCES).setReadOnly(), c);
+        createDOMProperty(DOMTouch.PROTOTYPE, "target", DOMFunctions.makeAnyHTMLElement().setReadOnly(), c);
+
         for (ObjectLabel element : ALL_HTML_OBJECT_LABELS) {
-            createDOMProperty(s, element, "clientWidth", uintProperty);
-            createDOMProperty(s, element, "clientHeight", uintProperty);
-            createDOMProperty(s, element, "scrollWidth", uintProperty);
-            createDOMProperty(s, element, "scrollHeight", uintProperty);
-            createDOMProperty(s, element, "style", cssProperty);
-            createDOMProperty(s, element, "firstChild", htmlElementsProperty);
-            createDOMProperty(s, element, "parentNode", htmlElementsProperty);
-            createDOMProperty(s, element, "lastChild", htmlElementsProperty);
-            createDOMProperty(s, element, "previousSibling", htmlElementsProperty);
-            createDOMProperty(s, element, "nextSibling", htmlElementsProperty);
-            createDOMProperty(s, element, "children", Value.makeObject(HTMLCollection.INSTANCES));
-            createDOMProperty(s, element, "attributes", Value.makeObject(DOMNamedNodeMap.INSTANCES));
-            createDOMProperty(s, element, "ownerDocument", Value.makeObject(DOMDocument.INSTANCES).joinNull().setReadOnly());
+            createDOMProperty(element, "clientWidth", uintProperty, c);
+            createDOMProperty(element, "clientHeight", uintProperty, c);
+            createDOMProperty(element, "scrollWidth", uintProperty, c);
+            createDOMProperty(element, "scrollHeight", uintProperty, c);
+            createDOMProperty(element, "style", cssProperty, c);
+            createDOMProperty(element, "firstChild", htmlElementsProperty, c);
+            createDOMProperty(element, "parentNode", htmlElementsProperty, c);
+            createDOMProperty(element, "lastChild", htmlElementsProperty, c);
+            createDOMProperty(element, "previousSibling", htmlElementsProperty, c);
+            createDOMProperty(element, "nextSibling", htmlElementsProperty, c);
+            createDOMProperty(element, "children", Value.makeObject(HTMLCollection.INSTANCES), c);
+            createDOMProperty(element, "attributes", Value.makeObject(DOMNamedNodeMap.INSTANCES), c);
+            createDOMProperty(element, "ownerDocument", Value.makeObject(DOMDocument.INSTANCES).joinNull().setReadOnly(), c);
+            createDOMProperty(element, "offsetParent", htmlElementsProperty, c);
         }
 
-        createDOMProperty(s, Event.PROTOTYPE, "target", Value.makeObject(getAllDOMEventTargets()));
-        createDOMProperty(s, Event.PROTOTYPE, "currentTarget", htmlElementsProperty);
-        createDOMProperty(s, MouseEvent.INSTANCES, "relatedTarget", htmlElementsProperty);
+        createDOMProperty(Event.PROTOTYPE, "target", Value.makeObject(getAllDOMEventTargets()), c);
+        createDOMProperty(Event.PROTOTYPE, "currentTarget", htmlElementsProperty, c);
+        createDOMProperty(MouseEvent.INSTANCES, "relatedTarget", htmlElementsProperty, c);
 
         Set<ObjectLabel> htmlElementsAndWindow = newSet(ALL_HTML_OBJECT_LABELS);
         htmlElementsAndWindow.add(DOMWindow.WINDOW);
         for (ObjectLabel element : htmlElementsAndWindow) {
-            createDOMProperty(s, element, "onsubmit", Value.makeNull());
-            createDOMProperty(s, element, "onchange", Value.makeNull());
+            createDOMProperty(element, "onsubmit", Value.makeNull(), c);
+            createDOMProperty(element, "onchange", Value.makeNull(), c);
         }
 
-        createDOMProperty(s, DOMDocument.INSTANCES, "defaultView", Value.makeObject(DOMWindow.WINDOW).joinNull().setReadOnly());
+        createDOMProperty(DOMDocument.INSTANCES, "defaultView", Value.makeObject(DOMWindow.WINDOW).joinNull().setReadOnly(), c);
 
         for (ObjectLabel instance : Arrays.asList(AudioDestinationNode.INSTANCES, ScriptProcessorNode.INSTANCES, OscillatorNode.INSTANCES) /* + other instances of AudioNode ... */) {
-            createDOMProperty(s, instance, "context", Value.makeObject(AudioContext.INSTANCES).setReadOnly());
-            createDOMProperty(s, instance, "numberOfInputs", Value.makeAnyNum().setReadOnly());
-            createDOMProperty(s, instance, "numberOfOutputs", Value.makeAnyNum().setReadOnly());
-            createDOMProperty(s, instance, "channelCount", Value.makeAnyNum());
-            createDOMProperty(s, instance, "channelCountMode", Value.makeAnyStr());
-            createDOMProperty(s, instance, "channelInterpretation", Value.makeAnyStr());
+            createDOMProperty(instance, "context", Value.makeObject(AudioContext.INSTANCES).setReadOnly(), c);
+            createDOMProperty(instance, "numberOfInputs", Value.makeAnyNum().setReadOnly(), c);
+            createDOMProperty(instance, "numberOfOutputs", Value.makeAnyNum().setReadOnly(), c);
+            createDOMProperty(instance, "channelCount", Value.makeAnyNum(), c);
+            createDOMProperty(instance, "channelCountMode", Value.makeAnyStr(), c);
+            createDOMProperty(instance, "channelInterpretation", Value.makeAnyStr(), c);
         }
 
         if (document != null) {
-            buildHTML(s, document);
-        }else{
-            DOMFunctions.makeAnyHTMLNodeList(s);
+            buildHTML(document, c);
+        } else {
+            DOMFunctions.makeAnyHTMLNodeList(c);
         }
     }
 
@@ -175,7 +186,8 @@ public class DOMBuilder {
     /**
      * Build model of the HTML page.
      */
-    private static void buildHTML(State s, Source document) { // TODO: (#118) more precise models of the HTML DOM?
+    private static void buildHTML(Source document, Solver.SolverInterface c) { // TODO: (#118) more precise models of the HTML DOM?
+        State s = c.getState();
         // Ignore HTML content?
         if (Options.get().isIgnoreHTMLContent()) {
             return;
@@ -192,7 +204,7 @@ public class DOMBuilder {
                     s.getExtras().addToMayMap(DOMRegistry.MayMaps.ELEMENTS_BY_ID.name(), id, Collections.singleton(label));
 
                     // TODO An element with id FOO is available as FOO
-                    // s.writeProperty(DOMWindow.WINDOW, id, Value.makeObject(label));
+                    // pv.writeProperty(DOMWindow.WINDOW, id, Value.makeObject(label));
                 }
 
                 // Special Property: name

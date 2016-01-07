@@ -72,7 +72,7 @@ public class UnevalTools {
      * Returns the normal form expression used to create the first argument to the CallNode.
      */
     public static NormalForm rebuildNormalForm(FlowGraph fg, CallNode n, State s, Solver.SolverInterface c) {
-        int register = n.getArgRegister(0);
+        int register = n.getNumberOfArgs() == 0? AbstractNode.NO_VALUE: n.getArgRegister(0);
         Decorator dr = new Decorator(fg); //TODO Cache the decorator.
 
         Map<String, Integer> mapping = Collections.newMap();
@@ -146,7 +146,7 @@ public class UnevalTools {
             } else if (n instanceof LoadNode && ((LoadNode) n).getResultRegister() == var) {
                 if (n instanceof ReadVariableNode) {
                     String varname = ((ReadVariableNode) n).getVariableName();
-                    if (!arguments.contains(varname)) {
+                    if (!arguments.contains(varname) && !"this".equals(varname)) {
                         arguments.add(varname);
                         if (idx > 0)
                             p_build_nf(var, ns.get(idx - 1), dr, mapping, arguments, seen_blocks, s, c, true);
@@ -313,7 +313,9 @@ public class UnevalTools {
      * p: TODO: Not implemented.
      * n: TODO: Not implemented.
      */
-    public static AnalyzerCallback unevalizerCallback(final FlowGraph fg, final State state, final AbstractNode evalCall, final NormalForm input) {
+    public static AnalyzerCallback unevalizerCallback(final FlowGraph fg, final Solver.SolverInterface c, final AbstractNode evalCall, final NormalForm input) {
+        final State state = c.getState();
+
         return new AnalyzerCallback() {
 
             /**
@@ -322,7 +324,7 @@ public class UnevalTools {
             @Override
             public boolean anyDeclared(Set<String> vars) {
                 for (String ss : vars) {
-                    if (state.readVariable(ss, null).isMaybePresent())
+                    if (c.getAnalysis().getPropVarOperations().readVariable(ss, null).isMaybePresent())
                         return true;
                 }
                 return false;

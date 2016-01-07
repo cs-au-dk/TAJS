@@ -122,7 +122,7 @@ public class Operators {
     /**
      * 11.4.9 <code>&#33;</code> (logical not)
      */
-    public static Value not(Value v, @SuppressWarnings("unused") Solver.SolverInterface c) {
+    public static Value not(Value v) {
         Bool bv = Conversion.toBoolean(v);
         if (bv.isNotBool())
             return Value.makeNone();
@@ -406,14 +406,14 @@ public class Operators {
      * 11.8.3 <code>&lt;=</code>
      */
     public static Value le(Value v1, Value v2, Solver.SolverInterface c) {
-        return not(abstractRelationalComparison(v2, v1, c), c);
+        return not(abstractRelationalComparison(v2, v1, c));
     }
 
     /**
      * 11.8.4 <code>&gt;=</code>
      */
     public static Value ge(Value v1, Value v2, Solver.SolverInterface c) {
-        return not(abstractRelationalComparison(v1, v2, c), c);
+        return not(abstractRelationalComparison(v1, v2, c));
     }
 
     /**
@@ -476,14 +476,14 @@ public class Operators {
             else
                 maybe_v2_non_function = true;
         //  15.3.5.3 step 1-4
-        Value v2_prototype = c.getState().readPropertyValue(v2_objlabels, "prototype");
+        Value v2_prototype = c.getAnalysis().getPropVarOperations().readPropertyValue(v2_objlabels, "prototype");
         v2_prototype = UnknownValueResolver.getRealValue(v2_prototype, c.getState());
         boolean maybe_v2_prototype_primitive = v2_prototype.isMaybePrimitive();
         boolean maybe_v2_prototype_nonprimitive = v2_prototype.isMaybeObject();
         c.getMonitoring().visitInstanceof(c.getNode(), maybe_v2_non_function, maybe_v2_function,
                 maybe_v2_prototype_primitive, maybe_v2_prototype_nonprimitive);
         if (maybe_v2_non_function || maybe_v2_prototype_primitive) {
-            Exceptions.throwTypeError(c.getState(), c);
+            Exceptions.throwTypeError(c);
             if ((maybe_v2_non_function && !maybe_v2_function)
                     || (maybe_v2_prototype_nonprimitive && !maybe_v2_prototype_primitive))
                 return Value.makeNone();
@@ -500,14 +500,14 @@ public class Operators {
         boolean maybe_v2_nonobject = v2.isMaybePrimitive();
         c.getMonitoring().visitIn(c.getNode(), maybe_v2_object, maybe_v2_nonobject);
         if (maybe_v2_nonobject) {
-            Exceptions.throwTypeError(c.getState(), c);
+            Exceptions.throwTypeError(c);
             if (!maybe_v2_object)
                 return Value.makeNone();
         }
         // 11.8.7 step 6-8
         Value v1_str = Conversion.toString(v1, c);
         if (v1_str.isMaybeSingleStr())
-            return Value.makeBool(c.getState().hasProperty(v2.getObjectLabels(), v1_str.getStr()));
+            return Value.makeBool(c.getAnalysis().getPropVarOperations().hasProperty(v2.getObjectLabels(), v1_str.getStr()));
         else // TODO: could return false if all objects in v2 are empty
             return Value.makeAnyBool();
     }
@@ -523,7 +523,7 @@ public class Operators {
      * 11.9.2 <code>&#33;=</code>
      */
     public static Value neq(Value v1, Value v2, Solver.SolverInterface c) {
-        return not(abstractEqualityComparison(v1, v2, c), c);
+        return not(abstractEqualityComparison(v1, v2, c));
     }
 
     /**
@@ -716,15 +716,15 @@ public class Operators {
     /**
      * 11.9.4 <code>===</code>
      */
-    public static Value stricteq(Value v1, Value v2, @SuppressWarnings("unused") Solver.SolverInterface c) {
+    public static Value stricteq(Value v1, Value v2) {
         return strictEqualityComparison(v1, v2);
     }
 
     /**
      * 11.9.5 <code>&#33;==</code>
      */
-    public static Value strictneq(Value v1, Value v2, Solver.SolverInterface c) {
-        return not(strictEqualityComparison(v1, v2), c);
+    public static Value strictneq(Value v1, Value v2) {
+        return not(strictEqualityComparison(v1, v2));
     }
 
     /**

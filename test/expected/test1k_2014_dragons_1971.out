@@ -21,7 +21,6 @@ test/1k2014dragons/1971.js:37:2: [definite] Too many parameters to function Obje
 test/1k2014dragons/1971.js:37:2: [definite] Too many parameters to function Object.prototype.toLocaleString
 test/1k2014dragons/1971.js:37:2: [definite] Too many parameters to function Object.prototype.toString
 test/1k2014dragons/1971.js:37:2: [definite] Too many parameters to function Object.prototype.valueOf
-test/1k2014dragons/shims.js:19:5: [definite] The assignment to AudioContext has no effect
 test/1k2014dragons/shims.js:19:5: [definite] The conditional expression is always true
 test/1k2014dragons/shims.js:22:5: [definite] Property is null/undefined
 test/1k2014dragons/shims.js:22:5: [definite] The conditional expression is always false

@@ -1,29 +1,19 @@
-test/uneval/uneval23.html:73:9: [definite] ReferenceError, reading absent variable showTab
 test/uneval/uneval23.html:5:5: [definite] The conditional expression is always true
-test/uneval/uneval23.html:5:20: [definite] The assignment to t has no effect
 test/uneval/uneval23.html:7:14: [definite] The conditional expression is always true
 test/uneval/uneval23.html:9:14: [definite] The conditional expression is always true
 test/uneval/uneval23.html:26:9: [definite] The conditional expression is always false
 test/uneval/uneval23.html:61:9: [definite] The conditional expression is always true
-test/uneval/uneval23.html:72:9: [definite] The conditional expression is always false
 test/uneval/uneval23.html:11:5: [definite] Dead assignment, property np is never read
 test/uneval/uneval23.html:13:5: [definite] Dead assignment, property intrvl is never read
-test/uneval/uneval23.html:14:5: [definite] Dead assignment, property as is never read
 test/uneval/uneval23.html:15:5: [definite] Dead assignment, property stct is never read
 test/uneval/uneval23.html:16:5: [definite] Dead assignment, property astopl is never read
 test/uneval/uneval23.html:17:5: [definite] Dead assignment, property astopr is never read
-test/uneval/uneval23.html:19:5: [definite] Dead assignment, property autointrvl is never read
 test/uneval/uneval23.html:56:9: [definite] Dead assignment, property intrvl is never read
 test/uneval/uneval23.html:57:9: [definite] Dead assignment, property np is never read
-test/uneval/uneval23.html:85:1: [definite] Dead assignment, property autointrvl is never read
-test/uneval/uneval23.html:91:76: [definite] Dead assignment, property as is never read
 test/uneval/uneval23.html:32:21: [definite] The variable tmpvl1 is never used
 test/uneval/uneval23.html:34:21: [definite] The variable tmpvl2 is never used
 test/uneval/uneval23.html:59:17: [definite] The variable d is never used
 test/uneval/uneval23.html:67:18: [definite] The variable d is never used
-test/uneval/uneval23.html:70:22: [definite] The variable d is never used
-test/uneval/uneval23.html:70:22: [definite] The variable o is never used
-test/uneval/uneval23.html:73:17: [definite] Unreachable code
 TAJS-dynamic-code(test/uneval/uneval23.html:68:16):1:24: [maybe] TypeError, accessing property of null/undefined
 TAJS-dynamic-code(test/uneval/uneval23.html:68:16):1:54: [maybe] TypeError, accessing property of null/undefined
 test/uneval/uneval23.html:7:28: [maybe] TypeError, accessing property of null/undefined
@@ -36,5 +26,5 @@ test/uneval/uneval23.html:7:28: [maybe] Reading absent property offsetWidth
 TAJS-dynamic-code(test/uneval/uneval23.html:68:16):1:24: [maybe] Converting object to string
 TAJS-dynamic-code(test/uneval/uneval23.html:68:16):1:24: [maybe] Converting primitive string to object
 TAJS-dynamic-code(test/uneval/uneval23.html:68:16):1:54: [maybe] Converting primitive string to object
-test/uneval/uneval23.html: [maybe] Uncaught exception, constructed at [TAJS-dynamic-code(test/uneval/uneval23.html:68:16):1:24, TAJS-dynamic-code(test/uneval/uneval23.html:68:16):1:54, test/uneval/uneval23.html:7:28, test/uneval/uneval23.html:73:9]
+test/uneval/uneval23.html: [maybe] Uncaught exception, constructed at [TAJS-dynamic-code(test/uneval/uneval23.html:68:16):1:24, TAJS-dynamic-code(test/uneval/uneval23.html:68:16):1:54, test/uneval/uneval23.html:7:28]
 test/uneval/uneval23.html:62:37: [maybe] Conversion to number yields NaN

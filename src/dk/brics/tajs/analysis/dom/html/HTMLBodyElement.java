@@ -17,6 +17,8 @@
 package dk.brics.tajs.analysis.dom.html;
 
 import dk.brics.tajs.analysis.InitialStateBuilder;
+import dk.brics.tajs.analysis.PropVarOperations;
+import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.analysis.dom.DOMObjects;
 import dk.brics.tajs.analysis.dom.DOMWindow;
 import dk.brics.tajs.lattice.ObjectLabel;
@@ -38,17 +40,19 @@ public class HTMLBodyElement {
 
     public static ObjectLabel INSTANCES;
 
-    public static void build(State s) {
+    public static void build(Solver.SolverInterface c) {
+        State s = c.getState();
+        PropVarOperations pv = c.getAnalysis().getPropVarOperations();
         CONSTRUCTOR = new ObjectLabel(DOMObjects.HTMLBODYELEMENT_CONSTRUCTOR, ObjectLabel.Kind.FUNCTION);
         PROTOTYPE = new ObjectLabel(DOMObjects.HTMLBODYELEMENT_PROTOTYPE, ObjectLabel.Kind.OBJECT);
         INSTANCES = new ObjectLabel(DOMObjects.HTMLBODYELEMENT_INSTANCES, ObjectLabel.Kind.OBJECT);
 
         // Constructor Object
         s.newObject(CONSTRUCTOR);
-        s.writePropertyWithAttributes(CONSTRUCTOR, "length", Value.makeNum(0).setAttributes(true, true, true));
-        s.writePropertyWithAttributes(CONSTRUCTOR, "prototype", Value.makeObject(PROTOTYPE).setAttributes(true, true, true));
+        pv.writePropertyWithAttributes(CONSTRUCTOR, "length", Value.makeNum(0).setAttributes(true, true, true));
+        pv.writePropertyWithAttributes(CONSTRUCTOR, "prototype", Value.makeObject(PROTOTYPE).setAttributes(true, true, true));
         s.writeInternalPrototype(CONSTRUCTOR, Value.makeObject(InitialStateBuilder.FUNCTION_PROTOTYPE));
-        s.writeProperty(DOMWindow.WINDOW, "HTMLBodyElement", Value.makeObject(CONSTRUCTOR));
+        pv.writeProperty(DOMWindow.WINDOW, "HTMLBodyElement", Value.makeObject(CONSTRUCTOR));
 
         // Prototype Object
         s.newObject(PROTOTYPE);
@@ -62,12 +66,12 @@ public class HTMLBodyElement {
          * Properties.
          */
         // DOM LEVEL 1
-        createDOMProperty(s, INSTANCES, "aLink", Value.makeAnyStr());
-        createDOMProperty(s, INSTANCES, "background", Value.makeAnyStr());
-        createDOMProperty(s, INSTANCES, "bgColor", Value.makeAnyStr());
-        createDOMProperty(s, INSTANCES, "link", Value.makeAnyStr());
-        createDOMProperty(s, INSTANCES, "text", Value.makeAnyStr());
-        createDOMProperty(s, INSTANCES, "vLink", Value.makeAnyStr());
+        createDOMProperty(INSTANCES, "aLink", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "background", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "bgColor", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "link", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "text", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "vLink", Value.makeAnyStr(), c);
 
         s.multiplyObject(INSTANCES);
         INSTANCES = INSTANCES.makeSingleton().makeSummary();
@@ -77,6 +81,6 @@ public class HTMLBodyElement {
          */
         // No functions.
 
-        createDOMProperty(s, HTMLDocument.INSTANCES, "body", Value.makeObject(INSTANCES));
+        createDOMProperty(HTMLDocument.INSTANCES, "body", Value.makeObject(INSTANCES), c);
     }
 }

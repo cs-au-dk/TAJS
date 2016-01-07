@@ -67,33 +67,37 @@ public class DOMEvents {
         labels.add(DOMRegistry.getMouseEventLabel());
         labels.add(DOMRegistry.getMutationEventLabel());
         labels.add(DOMRegistry.getWheelEventLabel());
+        labels.add(DOMRegistry.getTouchEventLabel());
         return Value.makeObject(labels);
     }
 
     /**
      * Add Event Handler. (NOT Timeout Event Handlers.)
      */
-    public static void addEventHandler(Set<ObjectLabel> targets, State s, String property, Value v, boolean asSetter) {
-        v = UnknownValueResolver.getRealValue(v, s);
+    public static void addEventHandler(Set<ObjectLabel> targets, State s, String property, Value handler, boolean asSetter) {
+        handler = UnknownValueResolver.getRealValue(handler, s);
+        Set<ObjectLabel> handlers = handler.getObjectLabels();
         if (DOMEventHelpers.isKeyboardEventAttribute(property) || DOMEventHelpers.isKeyboardEventProperty(property)) {
-            addKeyboardEventHandler(s, v.getObjectLabels());
+            addKeyboardEventHandler(s, handlers);
         } else if (DOMEventHelpers.isMouseEventAttribute(property) || DOMEventHelpers.isMouseEventProperty(property)) {
-            addMouseEventHandler(s, v.getObjectLabels());
+            addMouseEventHandler(s, handlers);
         } else if (DOMEventHelpers.isLoadEventAttribute(property)) {
-            addLoadEventHandler(s, v.getObjectLabels());
+            addLoadEventHandler(s, handlers);
         } else if (DOMEventHelpers.isUnloadEventAttribute(property)) {
-            addUnloadEventHandler(s, v.getObjectLabels());
+            addUnloadEventHandler(s, handlers);
+        } else if (DOMEventHelpers.isOtherEventAttribute(property)) {
+            addUnknownEventHandler(s, handlers);
         } else {
             if (asSetter) {
                 // ignore eventhandler registration through setters for event names we are not aware of:
                 // it is likely a regular property that is being written
                 // (esp. properties on window as it is the global object!)
                 // This is unsound, see #235
-                if (log.isDebugEnabled()) {
+                if(log.isDebugEnabled()) {
                     log.debug("Ignoring eventhandler registration through setter for event type: " + property);
                 }
-            } else {
-                addUnknownEventHandler(s, v.getObjectLabels());
+            }else {
+                addUnknownEventHandler(s, handlers);
             }
         }
     }

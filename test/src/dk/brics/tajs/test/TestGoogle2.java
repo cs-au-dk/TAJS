@@ -1,5 +1,6 @@
 package dk.brics.tajs.test;
 
+import dk.brics.tajs.Main;
 import dk.brics.tajs.monitoring.CompositeMonitoring;
 import dk.brics.tajs.monitoring.IAnalysisMonitoring;
 import dk.brics.tajs.monitoring.Monitoring;
@@ -20,7 +21,7 @@ public class TestGoogle2 {
 	
 	@Before
 	public void init() {
-        Options.reset();
+		Main.reset();
 		Options.get().enableTest();
 		monitoring = CompositeMonitoring.buildFromList(new Monitoring(), new OrdinaryExitReachableCheckerMonitor());
 	}

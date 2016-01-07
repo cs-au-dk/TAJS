@@ -6,8 +6,8 @@ import dk.brics.tajs.monitoring.IAnalysisMonitoring;
 import dk.brics.tajs.monitoring.Monitoring;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.test.monitors.OrdinaryExitReachableCheckerMonitor;
+import dk.brics.tajs.util.AnalysisLimitationException;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -24,6 +24,7 @@ public class Test1K2013Spring {
         Options.get().enableTest();
         Options.get().enableIncludeDom();
         Options.get().enableUnevalizer();
+        Options.get().enablePolyfillMDN();
         monitoring = CompositeMonitoring.buildFromList(new Monitoring(), new OrdinaryExitReachableCheckerMonitor());
     }
 
@@ -225,8 +226,7 @@ public class Test1K2013Spring {
         Misc.checkSystemOutput();
     }
 
-    @Ignore // Ordinary exit unreachable (due to definite error?)! See GitHub #219
-    @Test
+    @Test(expected = AssertionError.class /* GitHub #219 */)
     public void test1k_2013_spring_1392() {
         Misc.init();
         Misc.captureSystemOutput();
@@ -280,7 +280,6 @@ public class Test1K2013Spring {
         Misc.checkSystemOutput();
     }
 
-    @Ignore // unevalizer stackoverflow. GitHub #143
     @Test
     public void test1k_2013_spring_1417() {
         Misc.init();
@@ -308,8 +307,7 @@ public class Test1K2013Spring {
         Misc.checkSystemOutput();
     }
 
-    @Ignore // FIXME TAJS precision for eval
-    @Test
+    @Test(expected = AnalysisLimitationException.class /* eval precision */)
     public void test1k_2013_spring_1423() {
         Misc.init();
         Misc.captureSystemOutput();
@@ -318,8 +316,7 @@ public class Test1K2013Spring {
         Misc.checkSystemOutput();
     }
 
-    @Ignore // Ordinary exit unreachable (due to definite error?)! See GitHub #219
-    @Test
+    @Test(expected = AssertionError.class /* GitHub #219 */)
     public void test1k_2013_spring_1425() {
         Misc.init();
         Misc.captureSystemOutput();
@@ -328,8 +325,7 @@ public class Test1K2013Spring {
         Misc.checkSystemOutput();
     }
 
-    @Ignore // FIXME TAJS precision for eval
-    @Test
+    @Test(expected = AnalysisLimitationException.class /* eval precision */)
     public void test1k_2013_spring_1426() {
         Misc.init();
         Misc.captureSystemOutput();
@@ -374,7 +370,6 @@ public class Test1K2013Spring {
         Misc.checkSystemOutput();
     }
 
-    @Ignore // FIXME TAJS model of Array.map
     @Test
     public void test1k_2013_spring_1436() {
         Misc.init();
@@ -384,7 +379,6 @@ public class Test1K2013Spring {
         Misc.checkSystemOutput();
     }
 
-    @Ignore // FIXME TAJS model of Array.forEach
     @Test
     public void test1k_2013_spring_1437() {
         Misc.init();
@@ -475,8 +469,7 @@ public class Test1K2013Spring {
         Misc.checkSystemOutput();
     }
 
-    @Ignore // Ordinary exit unreachable (due to definite error?)! See GitHub #219
-    @Test
+    @Test(expected = AnalysisLimitationException.class /* Function.bind not modeled */)
     public void test1k_2013_spring_1470() {
         Misc.init();
         Misc.captureSystemOutput();
@@ -485,7 +478,6 @@ public class Test1K2013Spring {
         Misc.checkSystemOutput();
     }
 
-    @Ignore // FIXME TAJS model of Array.forEach
     @Test
     public void test1k_2013_spring_1472() {
         Misc.init();
@@ -576,8 +568,7 @@ public class Test1K2013Spring {
         Misc.checkSystemOutput();
     }
 
-    @Ignore // Ordinary exit unreachable (due to definite error?)! See GitHub #219
-    @Test
+    @Test(expected = AssertionError.class /* GitHub #219 */)
     public void test1k_2013_spring_1506() {
         Misc.init();
         Misc.captureSystemOutput();
@@ -640,8 +631,7 @@ public class Test1K2013Spring {
         Misc.checkSystemOutput();
     }
 
-    @Ignore // Ordinary exit unreachable (due to definite error?)! See GitHub #219
-    @Test
+    @Test(expected = AssertionError.class /* GitHub #219 */)
     public void test1k_2013_spring_1526() {
         Misc.init();
         Misc.captureSystemOutput();
@@ -650,8 +640,7 @@ public class Test1K2013Spring {
         Misc.checkSystemOutput();
     }
 
-    @Ignore // Ordinary exit unreachable (due to definite error?)! See GitHub #219
-    @Test
+    @Test(expected = AssertionError.class /* GitHub #219 */)
     public void test1k_2013_spring_1528() {
         Misc.init();
         Misc.captureSystemOutput();
@@ -714,8 +703,7 @@ public class Test1K2013Spring {
         Misc.checkSystemOutput();
     }
 
-    @Ignore // Ordinary exit unreachable (due to definite error?)! See GitHub #219
-    @Test
+    @Test(expected = AnalysisLimitationException.class /* Function.bind not modeled */)
     public void test1k_2013_spring_1541() {
         Misc.init();
         Misc.captureSystemOutput();
@@ -724,8 +712,7 @@ public class Test1K2013Spring {
         Misc.checkSystemOutput();
     }
 
-    @Ignore // Ordinary exit unreachable (due to definite error?)! See GitHub #219
-    @Test
+    @Test(expected = AssertionError.class /* GitHub #219 */)
     public void test1k_2013_spring_1542() {
         Misc.init();
         Misc.captureSystemOutput();
@@ -734,8 +721,7 @@ public class Test1K2013Spring {
         Misc.checkSystemOutput();
     }
 
-    @Ignore // FIXME TAJS precision for eval
-    @Test
+    @Test(expected = AnalysisLimitationException.class /* eval precision */)
     public void test1k_2013_spring_1544() {
         Misc.init();
         Misc.captureSystemOutput();

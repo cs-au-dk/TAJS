@@ -1,5 +1,6 @@
 package dk.brics.tajs.analysis.dom.event;
 
+import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.analysis.dom.DOMObjects;
 import dk.brics.tajs.analysis.dom.DOMRegistry;
 import dk.brics.tajs.analysis.dom.DOMWindow;
@@ -15,7 +16,8 @@ public class LoadEvent {
 
     public static ObjectLabel INSTANCES;
 
-    public static void build(State s) {
+    public static void build(Solver.SolverInterface c) {
+        State s = c.getState();
         PROTOTYPE = new ObjectLabel(DOMObjects.LOAD_EVENT_PROTOTYPE, ObjectLabel.Kind.OBJECT);
         INSTANCES = new ObjectLabel(DOMObjects.LOAD_EVENT_INSTANCES, ObjectLabel.Kind.OBJECT);
 
@@ -30,11 +32,11 @@ public class LoadEvent {
         /*
          * Properties.
          */
-        createDOMProperty(s, INSTANCES, "type", Value.makeAnyStr().setReadOnly());
-        createDOMProperty(s, INSTANCES, "bubbles", Value.makeAnyBool().setReadOnly());
-        createDOMProperty(s, INSTANCES, "cancelable", Value.makeAnyBool().setReadOnly());
-        createDOMProperty(s, INSTANCES, "detail", Value.makeAnyNum().setReadOnly());
-        createDOMProperty(s, INSTANCES, "view", Value.makeObject(DOMWindow.WINDOW).setReadOnly());
+        createDOMProperty(INSTANCES, "type", Value.makeAnyStr().setReadOnly(), c);
+        createDOMProperty(INSTANCES, "bubbles", Value.makeAnyBool().setReadOnly(), c);
+        createDOMProperty(INSTANCES, "cancelable", Value.makeAnyBool().setReadOnly(), c);
+        createDOMProperty(INSTANCES, "detail", Value.makeAnyNum().setReadOnly(), c);
+        createDOMProperty(INSTANCES, "view", Value.makeObject(DOMWindow.WINDOW).setReadOnly(), c);
 
         // DOM Registry
         DOMRegistry.registerLoadEventLabel(INSTANCES);

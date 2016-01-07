@@ -35,19 +35,21 @@ import dk.brics.tajs.solver.SolverSynchronizer;
  */
 public final class Analysis implements IAnalysis<State, Context, CallEdge, IAnalysisMonitoring, Analysis> {
 
-    private Solver solver;
+    private final Solver solver;
 
-    private InitialStateBuilder initial_state_builder;
+    private final InitialStateBuilder initial_state_builder;
 
-    private Transfer transfer;
+    private final Transfer transfer;
 
-    private WorkListStrategy worklist_strategy;
+    private final WorkListStrategy worklist_strategy;
 
-    private IAnalysisMonitoring monitoring;
+    private final IAnalysisMonitoring monitoring;
 
-    private EvalCache eval_cache;
+    private final EvalCache eval_cache;
 
-    private IContextSensitivityStrategy context_sensitivity_strategy;
+    private final IContextSensitivityStrategy context_sensitivity_strategy;
+
+    private final PropVarOperations state_util;
 
     /**
      * Constructs a new analysis object.
@@ -64,6 +66,7 @@ public final class Analysis implements IAnalysis<State, Context, CallEdge, IAnal
             context_sensitivity_strategy = new BasicContextSensitivityStrategy();
         }
         solver = new Solver(this, sync);
+        state_util = new PropVarOperations();
     }
 
     @Override
@@ -99,6 +102,7 @@ public final class Analysis implements IAnalysis<State, Context, CallEdge, IAnal
     @Override
     public void setSolverInterface(Solver.SolverInterface c) {
         transfer.setSolverInterface(c);
+        state_util.setSolverInterface(c);
         worklist_strategy.setCallGraph(c.getAnalysisLatticeElement().getCallGraph());
     }
 
@@ -126,5 +130,12 @@ public final class Analysis implements IAnalysis<State, Context, CallEdge, IAnal
      */
     public IContextSensitivityStrategy getContextSensitivityStrategy() {
         return context_sensitivity_strategy;
+    }
+
+    /**
+     * Returns the properties/variables operations object.
+     */
+    public PropVarOperations getPropVarOperations() {
+        return state_util;
     }
 }

@@ -17,6 +17,8 @@
 package dk.brics.tajs.analysis.dom.html;
 
 import dk.brics.tajs.analysis.InitialStateBuilder;
+import dk.brics.tajs.analysis.PropVarOperations;
+import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.analysis.dom.DOMObjects;
 import dk.brics.tajs.analysis.dom.DOMWindow;
 import dk.brics.tajs.lattice.ObjectLabel;
@@ -33,17 +35,19 @@ public class HTMLOptionElement {
 
     public static ObjectLabel INSTANCES;
 
-    public static void build(State s) {
+    public static void build(Solver.SolverInterface c) {
+        State s = c.getState();
+        PropVarOperations pv = c.getAnalysis().getPropVarOperations();
         CONSTRUCTOR = new ObjectLabel(DOMObjects.HTMLOPTIONELEMENT_CONSTRUCTOR, ObjectLabel.Kind.FUNCTION);
         PROTOTYPE = new ObjectLabel(DOMObjects.HTMLOPTIONELEMENT_PROTOTYPE, ObjectLabel.Kind.OBJECT);
         INSTANCES = new ObjectLabel(DOMObjects.HTMLOPTIONELEMENT_INSTANCES, ObjectLabel.Kind.OBJECT);
 
         // Constructor Object
         s.newObject(CONSTRUCTOR);
-        s.writePropertyWithAttributes(CONSTRUCTOR, "length", Value.makeNum(0).setAttributes(true, true, true));
-        s.writePropertyWithAttributes(CONSTRUCTOR, "prototype", Value.makeObject(PROTOTYPE).setAttributes(true, true, true));
+        pv.writePropertyWithAttributes(CONSTRUCTOR, "length", Value.makeNum(0).setAttributes(true, true, true));
+        pv.writePropertyWithAttributes(CONSTRUCTOR, "prototype", Value.makeObject(PROTOTYPE).setAttributes(true, true, true));
         s.writeInternalPrototype(CONSTRUCTOR, Value.makeObject(InitialStateBuilder.FUNCTION_PROTOTYPE));
-        s.writeProperty(DOMWindow.WINDOW, "HTMLOptionElement", Value.makeObject(CONSTRUCTOR));
+        pv.writeProperty(DOMWindow.WINDOW, "HTMLOptionElement", Value.makeObject(CONSTRUCTOR));
 
         // Prototype Object
         s.newObject(PROTOTYPE);
@@ -57,16 +61,16 @@ public class HTMLOptionElement {
          * Properties.
          */
         // DOM Level 1
-        createDOMProperty(s, INSTANCES, "form", Value.makeObject(HTMLFormElement.INSTANCES).setReadOnly());
-        createDOMProperty(s, INSTANCES, "text", Value.makeAnyStr().setReadOnly());
-        createDOMProperty(s, INSTANCES, "disabled", Value.makeAnyBool());
-        createDOMProperty(s, INSTANCES, "label", Value.makeAnyStr());
-        createDOMProperty(s, INSTANCES, "selected", Value.makeAnyBool());
-        createDOMProperty(s, INSTANCES, "value", Value.makeAnyStr());
+        createDOMProperty(INSTANCES, "form", Value.makeObject(HTMLFormElement.INSTANCES).setReadOnly(), c);
+        createDOMProperty(INSTANCES, "text", Value.makeAnyStr().setReadOnly(), c);
+        createDOMProperty(INSTANCES, "disabled", Value.makeAnyBool(), c);
+        createDOMProperty(INSTANCES, "label", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "selected", Value.makeAnyBool(), c);
+        createDOMProperty(INSTANCES, "value", Value.makeAnyStr(), c);
 
         // DOM Level 2
-        createDOMProperty(s, INSTANCES, "defaultSelected", Value.makeAnyBool());
-        createDOMProperty(s, INSTANCES, "index", Value.makeAnyNum().setReadOnly());
+        createDOMProperty(INSTANCES, "defaultSelected", Value.makeAnyBool(), c);
+        createDOMProperty(INSTANCES, "index", Value.makeAnyNum().setReadOnly(), c);
 
         s.multiplyObject(INSTANCES);
         INSTANCES = INSTANCES.makeSingleton().makeSummary();

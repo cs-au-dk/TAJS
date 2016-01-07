@@ -9,7 +9,7 @@
     <property name="optimize" value="on" />
     <property name="debug" value="off" />
 
-    <property file="resources/local-development.properties" />
+    <property file="local-development.properties"/>
 
     <path id="classpath">
         <fileset dir="." includes="lib/**/*.jar" />
@@ -36,6 +36,9 @@
             <compilerarg line="-Xlint -Xlint:-serial -Xlint:-path" compiler="modern" />
             -->
         </javac>
+        <copy todir="antbuild">
+            <fileset dir="src" includes="**/*.properties"/>
+        </copy>
         <copy todir="antbuild">
             <fileset dir="resources" excludes="local-development*.properties,**/*.md"/>
         </copy>

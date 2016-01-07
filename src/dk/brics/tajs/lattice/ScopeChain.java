@@ -156,24 +156,24 @@ public final class ScopeChain {
         return c;
     }
 
-    /**
-     * Replaces all object labels according to the given map.
-     */
-    public static ScopeChain replaceObjectLabels(ScopeChain sc, Map<ObjectLabel, ObjectLabel> m, Map<ScopeChain, ScopeChain> replace_cache) {
-        if (sc == null)
-            return null;
-        ScopeChain c = replace_cache.get(sc);
-        if (c == null) {
-            Set<ObjectLabel> newobj = Renaming.apply(m, sc.obj);
-            ScopeChain n = replaceObjectLabels(sc.next, m, replace_cache);
-            if (newobj != sc.obj || n != sc.next)
-                c = make(newobj, n);
-            else
-                c = sc;
-            replace_cache.put(sc, c);
-        }
-        return c;
-    }
+//    /**
+//     * Replaces all object labels according to the given map.
+//     */
+//    public static ScopeChain replaceObjectLabels(ScopeChain sc, Map<ObjectLabel, ObjectLabel> m, Map<ScopeChain, ScopeChain> replace_cache) {
+//        if (sc == null)
+//            return null;
+//        ScopeChain c = replace_cache.get(sc);
+//        if (c == null) {
+//            Set<ObjectLabel> newobj = Renaming.apply(m, sc.obj);
+//            ScopeChain n = replaceObjectLabels(sc.next, m, replace_cache);
+//            if (newobj != sc.obj || n != sc.next)
+//                c = make(newobj, n);
+//            else
+//                c = sc;
+//            replace_cache.put(sc, c);
+//        }
+//        return c;
+//    }
 
     /**
      * Constructs a scope chain as a copy of the given one but with object labels summarized.

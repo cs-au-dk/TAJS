@@ -171,6 +171,8 @@ public enum DOMObjects implements HostObject {
     WHEEL_EVENT_INIT_WHEEL_EVENT("WheelEvent.initWheelEvent"),
     WHEEL_EVENT_INIT_WHEEL_EVENT_NS("WheelEvent.initWheelEventNS"),
     WHEEL_EVENT_PROTOTYPE("WheelEvent.prototype"),
+    TOUCH_EVENT_INSTANCES("TouchEvent"),
+    TOUCH_EVENT_PROTOTYPE("TouchEvent.prototype"),
 
     LOAD_EVENT_PROTOTYPE("LoadEvent.prototype"),
     LOAD_EVENT_INSTANCES("LoadEvent instances"),
@@ -298,6 +300,15 @@ public enum DOMObjects implements HostObject {
     STRINGLIST_INSTANCES("StringList instances"),
     STRINGLIST_CONTAINS("StringList.contains"),
     STRINGLIST_ITEM("StringList.item"),
+
+    TOUCHLIST_CONSTRUCTOR("TouchList constructor"),
+    TOUCHLIST_PROTOTYPE("TouchList.prototype"),
+    TOUCHLIST_INSTANCES("TouchList instances"),
+    TOUCHLIST_ITEM("TouchList.item"),
+
+    TOUCH_CONSTRUCTOR("Touch constructor"),
+    TOUCH_PROTOTYPE("Touch.prototype"),
+    TOUCH_INSTANCES("Touch instances"),
 
     // /////////////////////////////////////////////////////////////////////////
     // / HTML OBJECTS ///

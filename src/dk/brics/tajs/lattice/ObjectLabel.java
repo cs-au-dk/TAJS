@@ -32,7 +32,7 @@ public final class ObjectLabel implements Comparable<ObjectLabel> { // TODO: (#1
     /**
      * Source location used for host functions.
      */
-    public static final SourceLocation initial_source = new SourceLocation(0, 0, "<initial state>");
+    private static final SourceLocation initial_source = new SourceLocation(0, 0, "<initial state>");
 
     /**
      * Object kinds.
@@ -254,14 +254,7 @@ public final class ObjectLabel implements Comparable<ObjectLabel> { // TODO: (#1
         } else if (hostobject != null)
             b.append(hostobject).append('[').append(hostobject.getAPI().getShortName()).append(']');
         else {
-            String descr;
-            if (hostobject != null)
-                descr = "Primitive";
-            else if (function != null)
-                descr = "Function";
-            else
-                descr = kind.toString();
-            b.append(descr).append("#node").append(node.getIndex());
+            b.append(kind).append("#node").append(node.getIndex());
         }
         b.append(heapContext);
         return b.toString();

@@ -20,6 +20,7 @@ import dk.brics.tajs.analysis.Conversion;
 import dk.brics.tajs.analysis.FunctionCalls;
 import dk.brics.tajs.analysis.InitialStateBuilder;
 import dk.brics.tajs.analysis.NativeFunctions;
+import dk.brics.tajs.analysis.PropVarOperations;
 import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.analysis.dom.DOMObjects;
 import dk.brics.tajs.analysis.dom.DOMWindow;
@@ -46,17 +47,19 @@ public class DOMCharacterData {
 
     public static ObjectLabel INSTANCES;
 
-    public static void build(State s) {
+    public static void build(Solver.SolverInterface c) {
+        State s = c.getState();
+        PropVarOperations pv = c.getAnalysis().getPropVarOperations();
         CONSTRUCTOR = new ObjectLabel(DOMObjects.CHARACTERDATA_CONSTRUCTOR, ObjectLabel.Kind.FUNCTION);
         PROTOTYPE = new ObjectLabel(DOMObjects.CHARACTERDATA_PROTOTYPE, ObjectLabel.Kind.OBJECT);
         INSTANCES = new ObjectLabel(DOMObjects.CHARACTERDATA_INSTANCES, ObjectLabel.Kind.OBJECT);
 
         // Constructor Object
         s.newObject(CONSTRUCTOR);
-        s.writePropertyWithAttributes(CONSTRUCTOR, "length", Value.makeNum(0).setAttributes(true, true, true));
-        s.writePropertyWithAttributes(CONSTRUCTOR, "prototype", Value.makeObject(PROTOTYPE).setAttributes(true, true, true));
+        pv.writePropertyWithAttributes(CONSTRUCTOR, "length", Value.makeNum(0).setAttributes(true, true, true));
+        pv.writePropertyWithAttributes(CONSTRUCTOR, "prototype", Value.makeObject(PROTOTYPE).setAttributes(true, true, true));
         s.writeInternalPrototype(CONSTRUCTOR, Value.makeObject(InitialStateBuilder.OBJECT_PROTOTYPE));
-        s.writeProperty(DOMWindow.WINDOW, "CharacterData", Value.makeObject(CONSTRUCTOR));
+        pv.writeProperty(DOMWindow.WINDOW, "CharacterData", Value.makeObject(CONSTRUCTOR));
 
         // Prototype object.
         s.newObject(PROTOTYPE);
@@ -70,8 +73,8 @@ public class DOMCharacterData {
          * Properties.
          */
         // DOM Level 1
-        createDOMProperty(s, INSTANCES, "data", Value.makeAnyStr());
-        createDOMProperty(s, INSTANCES, "length", Value.makeAnyNumUInt());
+        createDOMProperty(INSTANCES, "data", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "length", Value.makeAnyNumUInt(), c);
 
         s.multiplyObject(INSTANCES);
         INSTANCES = INSTANCES.makeSingleton().makeSummary();
@@ -80,14 +83,15 @@ public class DOMCharacterData {
          * Functions.
          */
         // DOM Level 1
-        createDOMFunction(s, PROTOTYPE, DOMObjects.CHARACTERDATA_SUBSTRINGDATA, "substringData", 2);
-        createDOMFunction(s, PROTOTYPE, DOMObjects.CHARACTERDATA_APPENDDATA, "appendData", 1);
-        createDOMFunction(s, PROTOTYPE, DOMObjects.CHARACTERDATA_INSERTDATA, "insertData", 2);
-        createDOMFunction(s, PROTOTYPE, DOMObjects.CHARACTERDATA_DELETEDATA, "deleteData", 2);
-        createDOMFunction(s, PROTOTYPE, DOMObjects.CHARACTERDATA_REPLACEDATA, "replaceData", 3);
+        createDOMFunction(PROTOTYPE, DOMObjects.CHARACTERDATA_SUBSTRINGDATA, "substringData", 2, c);
+        createDOMFunction(PROTOTYPE, DOMObjects.CHARACTERDATA_APPENDDATA, "appendData", 1, c);
+        createDOMFunction(PROTOTYPE, DOMObjects.CHARACTERDATA_INSERTDATA, "insertData", 2, c);
+        createDOMFunction(PROTOTYPE, DOMObjects.CHARACTERDATA_DELETEDATA, "deleteData", 2, c);
+        createDOMFunction(PROTOTYPE, DOMObjects.CHARACTERDATA_REPLACEDATA, "replaceData", 3, c);
     }
 
-    public static Value evaluate(DOMObjects nativeobject, FunctionCalls.CallInfo call, State s, Solver.SolverInterface c) {
+    public static Value evaluate(DOMObjects nativeobject, FunctionCalls.CallInfo call, Solver.SolverInterface c) {
+        State s = c.getState();
         switch (nativeobject) {
             case CHARACTERDATA_APPENDDATA: {
                 NativeFunctions.expectParameters(nativeobject, call, c, 1, 1);

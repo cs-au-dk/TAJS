@@ -39,7 +39,8 @@ public class UIEvent {
 
     public static ObjectLabel INSTANCES;
 
-    public static void build(State s) {
+    public static void build(Solver.SolverInterface c) {
+        State s = c.getState();
         PROTOTYPE = new ObjectLabel(DOMObjects.UI_EVENT_PROTOTYPE, ObjectLabel.Kind.OBJECT);
         INSTANCES = new ObjectLabel(DOMObjects.UI_EVENT_INSTANCES, ObjectLabel.Kind.OBJECT);
 
@@ -54,16 +55,17 @@ public class UIEvent {
         /*
          * Properties.
          */
-        createDOMProperty(s, PROTOTYPE, "detail", Value.makeAnyNum().setReadOnly());
-        createDOMProperty(s, PROTOTYPE, "view", Value.makeObject(DOMWindow.WINDOW).setReadOnly());
+        createDOMProperty(PROTOTYPE, "detail", Value.makeAnyNum().setReadOnly(), c);
+        createDOMProperty(PROTOTYPE, "view", Value.makeObject(DOMWindow.WINDOW).setReadOnly(), c);
 
         /*
          * Functions.
          */
-        createDOMFunction(s, PROTOTYPE, DOMObjects.UI_EVENT_INIT_UI_EVENT, "initUIEvent", 5);
+        createDOMFunction(PROTOTYPE, DOMObjects.UI_EVENT_INIT_UI_EVENT, "initUIEvent", 5, c);
     }
 
-    public static Value evaluate(DOMObjects nativeObject, FunctionCalls.CallInfo call, State s, Solver.SolverInterface c) {
+    public static Value evaluate(DOMObjects nativeObject, FunctionCalls.CallInfo call, Solver.SolverInterface c) {
+        State s = c.getState();
         switch (nativeObject) {
             case UI_EVENT_INIT_UI_EVENT: {
                 NativeFunctions.expectParameters(nativeObject, call, c, 5, 5);

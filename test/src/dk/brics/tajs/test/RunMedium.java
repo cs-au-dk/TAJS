@@ -3,6 +3,7 @@ package dk.brics.tajs.test;
 import dk.brics.tajs.test.js2flowgraph.TestASTInfo;
 import dk.brics.tajs.test.nativeobjects.TestHostFunctionSources_ArrayPrototype;
 import dk.brics.tajs.test.nativeobjects.TestHostFunctionSources_ES6Collections;
+import dk.brics.tajs.test.nativeobjects.TestHostFunctionSources_TypedArrays;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
@@ -29,6 +30,7 @@ import org.junit.runners.Suite;
         TestJSNativeFunctions.class,
         TestHostFunctionSources_ArrayPrototype.class,
         TestHostFunctionSources_ES6Collections.class,
+        TestHostFunctionSources_TypedArrays.class,
 
         // application tests
         TestSunspider.class,

@@ -35,61 +35,73 @@ public class Exceptions {
 
     /**
      * Models a TypeError exception being thrown at the current node.
-     * Does not modify the given state.
+     * Does not modify the current state.
      * Don't forget to set the ordinary state to none if the exception will definitely occur.
      */
-    public static void throwTypeError(State state, Solver.SolverInterface c) {
+    public static void throwTypeError(Solver.SolverInterface c) {
         if (Options.get().isExceptionsDisabled())
             return;
-        state = state.clone();
-        throwException(state, makeException(state, InitialStateBuilder.TYPE_ERROR_PROTOTYPE, c), c, c.getNode());
+        State newstate = c.getState().clone();
+        State oldstate = c.getState();
+        c.setState(newstate);
+        throwException(newstate, makeException(InitialStateBuilder.TYPE_ERROR_PROTOTYPE, c), c, c.getNode());
+        c.setState(oldstate);
     }
 
     /**
      * Models a ReferenceError exception being thrown at the current node.
-     * Does not modify the given state.
+     * Does not modify the current state.
      * Don't forget to set the ordinary state to none if the exception will definitely occur.
      */
-    public static void throwReferenceError(State state, Solver.SolverInterface c) {
+    public static void throwReferenceError(Solver.SolverInterface c) {
         if (Options.get().isExceptionsDisabled())
             return;
-        state = state.clone();
-        throwException(state, makeException(state, InitialStateBuilder.REFERENCE_ERROR_PROTOTYPE, c), c, c.getNode());
+        State newstate = c.getState().clone();
+        State oldstate = c.getState();
+        c.setState(newstate);
+        throwException(newstate, makeException(InitialStateBuilder.REFERENCE_ERROR_PROTOTYPE, c), c, c.getNode());
+        c.setState(oldstate);
     }
 
     /**
      * Models a RangeError exception being thrown at the current node.
-     * Does not modify the given state.
+     * Does not modify the current state.
      * Don't forget to set the ordinary state to none if the exception will definitely occur.
      */
-    public static void throwRangeError(State state, Solver.SolverInterface c) {
+    public static void throwRangeError(Solver.SolverInterface c) {
         if (Options.get().isExceptionsDisabled())
             return;
-        state = state.clone();
-        throwException(state, makeException(state, InitialStateBuilder.RANGE_ERROR_PROTOTYPE, c), c, c.getNode());
+        State newstate = c.getState().clone();
+        State oldstate = c.getState();
+        c.setState(newstate);
+        throwException(newstate, makeException(InitialStateBuilder.RANGE_ERROR_PROTOTYPE, c), c, c.getNode());
+        c.setState(oldstate);
     }
 
     /**
      * Models a SyntaxError exception being thrown at the current node.
-     * Does not modify the given state.
+     * Does not modify the current state.
      * Don't forget to set the ordinary state to none if the exception will definitely occur.
      */
-    public static void throwSyntaxError(State state, Solver.SolverInterface c) {
+    public static void throwSyntaxError(Solver.SolverInterface c) {
         if (Options.get().isExceptionsDisabled())
             return;
-        state = state.clone();
-        throwException(state, makeException(state, InitialStateBuilder.SYNTAX_ERROR_PROTOTYPE, c), c, c.getNode());
+        State newstate = c.getState().clone();
+        State oldstate = c.getState();
+        c.setState(newstate);
+        throwException(newstate, makeException(InitialStateBuilder.SYNTAX_ERROR_PROTOTYPE, c), c, c.getNode());
+        c.setState(oldstate);
     }
 
     /**
      * Constructs an exception value.
      * Does not modify the given state.
      */
-    private static Value makeException(State state, ObjectLabel prototype, Solver.SolverInterface c) {
+    private static Value makeException(ObjectLabel prototype, Solver.SolverInterface c) {
         ObjectLabel ex = new ObjectLabel(c.getNode(), Kind.ERROR);
-        state.newObject(ex);
-        state.writeInternalPrototype(ex, Value.makeObject(prototype));
-        state.writeProperty(ex, "message", Value.makeAnyStr());
+        c.getState().newObject(ex);
+        c.getState().writeInternalPrototype(ex, Value.makeObject(prototype));
+        c.getAnalysis().getPropVarOperations().writeProperty(ex, "message", Value.makeAnyStr());
         return Value.makeObject(ex);
     }
 

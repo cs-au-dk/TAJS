@@ -113,6 +113,7 @@ import static dk.brics.tajs.js2flowgraph.FunctionBuilderHelper.getFlowGraphBinar
 import static dk.brics.tajs.js2flowgraph.FunctionBuilderHelper.getFlowGraphBinaryOperationFromCompoundAssignment;
 import static dk.brics.tajs.js2flowgraph.FunctionBuilderHelper.getFlowGraphUnaryNonAssignmentOp;
 import static dk.brics.tajs.js2flowgraph.FunctionBuilderHelper.getPrefixPostfixOp;
+import static dk.brics.tajs.js2flowgraph.FunctionBuilderHelper.getSource;
 import static dk.brics.tajs.js2flowgraph.FunctionBuilderHelper.makeAssumeNonNullUndef;
 import static dk.brics.tajs.js2flowgraph.FunctionBuilderHelper.makeBasicBlock;
 import static dk.brics.tajs.js2flowgraph.FunctionBuilderHelper.makeCatchBasicBlock;
@@ -449,33 +450,6 @@ public class FunctionBuilder extends ParseTreeAuxVisitor<TranslationResult, AstE
     }
 
     /**
-     * Unrolls a loop one-and-a-half times by copying the condition to the end of the loop body.
-     */
-    private void unrollLoopOneAndAHalf(ParseTree condition, int conditionalRegister, BasicBlock conditionStartBlock, BasicBlock trueBlock, BasicBlock trueBranch, BasicBlock falseBranch, SourceLocation conditionLocation, AstEnv env) {
-        BasicBlock unrollStartBlock = makeSuccessorBasicBlock(env.getFunction(), trueBlock, functionAndBlocksManager);
-
-        AstEnv conditionEnv = env.makeAppendBlock(unrollStartBlock).makeResultRegister(conditionalRegister).makeStatementLevel(false);
-        FunctionAndBlockManager.SessionKey blocksKey = functionAndBlocksManager.startSession();
-        TranslationResult unrollProcessedCondition = process(condition, conditionEnv);
-        functionAndBlocksManager.endSession(blocksKey);
-
-        Set<BasicBlock> unrolledBlocks = newSet();
-        unrolledBlocks.add(unrollStartBlock);
-        unrolledBlocks.addAll(functionAndBlocksManager.getSessionBlocks(blocksKey));
-
-        trueBlock = unrollProcessedCondition.getAppendBlock();
-
-        IfNode ifNode = new IfNode(conditionalRegister, conditionLocation);
-        ifNode.setSuccessors(trueBranch, falseBranch);
-
-        addNodeToBlock(ifNode, trueBlock, env.makeStatementLevel(false));
-        trueBlock.addSuccessor(trueBranch);
-        trueBlock.addSuccessor(falseBranch);
-
-        setDuplicateBlocks(unrolledBlocks, newSet(), newSet(), unrollStartBlock, conditionStartBlock);
-    }
-
-    /**
      * Processes a function or constructor invocation.
      */
     private TranslationResult processInvocation(ParseTree operand, ArgumentListTree arguments, boolean constructor, SourceLocation location, AstEnv env) {
@@ -770,11 +744,7 @@ public class FunctionBuilder extends ParseTreeAuxVisitor<TranslationResult, AstE
         }
 
         // 6. make back edge
-        if (condition != null && Options.get().isUnrollOneAndAHalfEnabled()) {
-            unrollLoopOneAndAHalf(condition, conditionalRegister, firstConditionBlock, lastBodyBlock, firstBodyBlock, firstPostLoopBlock, conditionLocation, env);
-        } else {
-            lastBodyBlock.addSuccessor(firstConditionBlock);
-        }
+        lastBodyBlock.addSuccessor(firstConditionBlock);
 
         return TranslationResult.makeAppendBlock(firstPostLoopBlock);
     }
@@ -782,7 +752,7 @@ public class FunctionBuilder extends ParseTreeAuxVisitor<TranslationResult, AstE
     /**
      * Processes a function declaration.
      */
-    Function processFunctionDeclaration(FunctionDeclarationTree.Kind kind, String name, FormalParameterListTree parameters, ParseTree body, AstEnv env, SourceLocation location) {
+    Function processFunctionDeclaration(FunctionDeclarationTree.Kind kind, String name, FormalParameterListTree parameters, ParseTree body, AstEnv env, SourceLocation location, String source) {
         // 1. prepare function object
         List<String> parameterNames = newList();
         if (parameters.hasRestParameter()) {
@@ -792,7 +762,7 @@ public class FunctionBuilder extends ParseTreeAuxVisitor<TranslationResult, AstE
             parameterNames.add(parameter.asIdentifierExpression().identifierToken.value);
         }
 
-        Function function = new Function(name, parameterNames, env.getFunction(), location);
+        Function function = new Function(name, parameterNames, env.getFunction(), location, source);
 
         AstEnv freshRegistersAndScopeEnv = env.makeRegisterManager(new RegisterManager(AbstractNode.FIRST_ORDINARY_REG));
         boolean expressionContext = kind == FunctionDeclarationTree.Kind.EXPRESSION || (env.getUnevalExpressionResult() != null && env.getUnevalExpressionResult().resultRegister == env.getResultRegister());
@@ -1082,7 +1052,7 @@ public class FunctionBuilder extends ParseTreeAuxVisitor<TranslationResult, AstE
     @Override
     TranslationResult process(FunctionDeclarationTree tree, AstEnv env) {
         String name = tree.name == null ? null : tree.name.value;
-        Function function = processFunctionDeclaration(tree.kind, name, tree.formalParameterList, tree.functionBody, env, makeSourceLocation(tree));
+        Function function = processFunctionDeclaration(tree.kind, name, tree.formalParameterList, tree.functionBody, env, makeSourceLocation(tree), getSource(tree));
         Set<String> closureVariables = astInfo.getFunctionClosureVariables().get(tree);
         function.getClosureVariableNames().addAll(closureVariables == null ? newSet() : closureVariables);
         return TranslationResult.makeAppendBlock(env.getAppendBlock());
@@ -1528,8 +1498,8 @@ public class FunctionBuilder extends ParseTreeAuxVisitor<TranslationResult, AstE
 
     @Override
     TranslationResult process(VariableDeclarationListTree tree, AstEnv env) {
-        if (tree.declarationType != TokenType.VAR) {
-            throw new AnalysisException(makeSourceLocation(tree) + ": Only var declarations supported, " + tree.declarationType + " is not supported");
+        if (tree.declarationType != TokenType.VAR && tree.declarationType != TokenType.CONST /* unsound to treat as var, but unlikely to be an issue in practice (GitHub #182) */) {
+            throw new AnalysisException(makeSourceLocation(tree) + ": Only var & const declarations supported, " + tree.declarationType + " is not supported");
         }
         return processList(tree.declarations, env.makeStatementLevel(true));
     }

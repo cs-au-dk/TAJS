@@ -102,10 +102,11 @@ public class JSGlobal {
     /**
      * Evaluates the given native function.
      */
-    public static Value evaluate(ECMAScriptObjects nativeobject, CallInfo call, final State state, Solver.SolverInterface c) {
-        if (NativeFunctions.throwTypeErrorIfConstructor(call, state, c))
+    public static Value evaluate(ECMAScriptObjects nativeobject, CallInfo call, Solver.SolverInterface c) {
+        if (NativeFunctions.throwTypeErrorIfConstructor(call, c))
             return Value.makeNone();
 
+        State state = c.getState();
         switch (nativeobject) {
 
             case EVAL: { // 15.1.2.1
@@ -122,7 +123,7 @@ public class JSGlobal {
                 if (c.isScanning())
                     return Value.makeNone();
                 if (evalValue.isStrJSON()) {
-                    return DOMFunctions.makeAnyJSONObject(state).join(evalValue.restrictToNotStr());
+                    return DOMFunctions.makeAnyJSONObject(c).join(evalValue.restrictToNotStr());
                 } else if (Options.get().isUnevalizerEnabled()) {
                     CallNode evalCall = (CallNode) call.getSourceNode(); // FIXME: may not be CallNode?
                     FlowGraph currentFg = c.getFlowGraph();
@@ -141,7 +142,7 @@ public class JSGlobal {
                     // of the Unevalizer to the key in the cache. This makes us Uneval more things, but we save the work
                     // of re-extending the flow graph every time.
                     boolean aliased_call = !"eval".equals(UnevalTools.get_call_name(currentFg, evalCall)); // TODO: aliased_call should also affect the execution context?
-                    String unevaled = new Unevalizer().uneval(UnevalTools.unevalizerCallback(currentFg, state, evalCall, input), input.getNormalForm(), aliased_call, var);
+                    String unevaled = new Unevalizer().uneval(UnevalTools.unevalizerCallback(currentFg, c, evalCall, input), input.getNormalForm(), aliased_call, var, call.getSourceNode(), c);
 
                     if (unevaled == null)
                         return UnevalizerLimitations.handle("Unevalable eval: " + UnevalTools.rebuildFullExpression(currentFg, evalCall, evalCall.getArgRegister(0)), call.getSourceNode(), c);
@@ -296,7 +297,7 @@ public class JSGlobal {
                     c.getMonitoring().addMessageInfo(c.getNode(), Severity.HIGH, "Calling dumpAttributes with non-constant property name");
                 else {
                     String propertyname = p.getStr();
-                    Value v = state.readPropertyDirect(x.getObjectLabels(), propertyname);
+                    Value v = c.getAnalysis().getPropVarOperations().readPropertyDirect(x.getObjectLabels(), propertyname);
                     c.getMonitoring().addMessageInfo(c.getNode(), Severity.HIGH, "Property attributes: " + v.printAttributes() /*+ " (context: " + c.getCurrentContext() + ")"*/);
                 }
                 return Value.makeUndef();

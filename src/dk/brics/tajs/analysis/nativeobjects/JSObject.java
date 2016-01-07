@@ -21,6 +21,7 @@ import dk.brics.tajs.analysis.Exceptions;
 import dk.brics.tajs.analysis.FunctionCalls.CallInfo;
 import dk.brics.tajs.analysis.InitialStateBuilder;
 import dk.brics.tajs.analysis.NativeFunctions;
+import dk.brics.tajs.analysis.PropVarOperations;
 import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.lattice.Obj;
 import dk.brics.tajs.lattice.ObjectLabel;
@@ -28,10 +29,15 @@ import dk.brics.tajs.lattice.ObjectLabel.Kind;
 import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.UnknownValueResolver;
 import dk.brics.tajs.lattice.Value;
+import dk.brics.tajs.options.Options;
+import dk.brics.tajs.solver.Message;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
+
+import static dk.brics.tajs.util.Collections.newList;
 
 /**
  * 15.2 native Object functions.
@@ -44,11 +50,13 @@ public class JSObject {
     /**
      * Evaluates the given native function.
      */
-    public static Value evaluate(ECMAScriptObjects nativeobject, CallInfo call, State state, Solver.SolverInterface c) {
+    public static Value evaluate(ECMAScriptObjects nativeobject, CallInfo call, Solver.SolverInterface c) {
         if (nativeobject != ECMAScriptObjects.OBJECT)
-            if (NativeFunctions.throwTypeErrorIfConstructor(call, state, c))
+            if (NativeFunctions.throwTypeErrorIfConstructor(call, c))
                 return Value.makeNone();
 
+        State state = c.getState();
+        PropVarOperations pv = c.getAnalysis().getPropVarOperations();
         switch (nativeobject) {
 
             case OBJECT: { // 15.2.1 and 15.2.2
@@ -59,7 +67,7 @@ public class JSObject {
                 // 15.2.1.1 step 2 for objects and 15.2.2.1 step 3 in one swoop. Slightly cheating, but toObject(Obj) = Obj.
                 Value res = arg.restrictToObject();
                 // 15.2.1.1 step 2 for non-objects and 15.2.2.1 step 5-7.
-                res = arg_maybe_other ? res.join(Conversion.toObject(state, call.getSourceNode(), arg2.restrictToStrBoolNum(), c)) : res;
+                res = arg_maybe_other ? res.join(Conversion.toObject(call.getSourceNode(), arg2.restrictToStrBoolNum(), c)) : res;
                 if (arg.isMaybeNull() || arg.isMaybeUndef()) {
                     // 15.2.1.1 step 1 and 15.2.2.1 step 8
                     ObjectLabel obj = new ObjectLabel(call.getSourceNode(), Kind.OBJECT);
@@ -76,7 +84,7 @@ public class JSObject {
                 state.newObject(obj);
                 Value prototype = UnknownValueResolver.getRealValue(NativeFunctions.readParameter(call, state, 0), state);
                 if(prototype.restrictToNotNull().isMaybeOtherThanObject()) {
-                    Exceptions.throwTypeError(state, c);
+                    Exceptions.throwTypeError(c);
                 }
                 if(prototype.restrictToObject().isNone() && prototype.restrictToNull().isNone()){
                     return Value.makeNone();
@@ -88,7 +96,7 @@ public class JSObject {
                 NativeFunctions.expectParameters(nativeobject, call, c, 3, 3);
                 Value o = NativeFunctions.readParameter(call, state, 0);
                 Value nameString = Conversion.toString(NativeFunctions.readParameter(call, state, 1), c);
-                state.writeProperty(o.getObjectLabels(), nameString, Value.makeUndef(), true, false); // FIXME: unsound
+                pv.writeProperty(o.getObjectLabels(), nameString, Value.makeUndef(), true, false); // FIXME: unsound
                 return NativeFunctions.readParameter(call, state, 0);
             }
 
@@ -122,7 +130,7 @@ public class JSObject {
                     return Value.makeNone();
                 else if (propval.isMaybeSingleStr()) {
                     String propname = propval.getStr();
-                    Value val = state.readPropertyDirect(thisobj, propname);
+                    Value val = pv.readPropertyDirect(thisobj, propname);
                     Value res = Value.makeNone();
                     if (val.isMaybeAbsent() || val.isNotPresent())
                         res = res.joinBool(false);
@@ -158,7 +166,7 @@ public class JSObject {
                     return Value.makeNone();
                 else if (propval.isMaybeSingleStr()) {
                     String propname = propval.getStr();
-                    Value val = state.readPropertyDirect(thisobj, propname);
+                    Value val = pv.readPropertyDirect(thisobj, propname);
                     Value res = Value.makeNone();
                     if (val.isMaybeAbsent() || val.isMaybeDontEnum() || val.isNotPresent())
                         res = res.joinBool(false);
@@ -178,7 +186,40 @@ public class JSObject {
                 }
                 return Value.makeBool(false);
             }
-
+            case OBJECT_KEYS:
+                NativeFunctions.expectParameters(nativeobject, call, c, 1, 1);
+                Value objectArg = UnknownValueResolver.getRealValue(NativeFunctions.readParameter(call, state, 0), state).restrictToObject();
+                if (objectArg.isNone()) {
+                    Exceptions.throwTypeError(c);
+                    return Value.makeNone();
+                }
+                ObjectLabel array = JSArray.makeArray(call.getSourceNode(), c);
+                State.Properties properties = state.getEnumProperties(objectArg.getObjectLabels());
+                if (!properties.getMaybe().isEmpty()) {
+                    if ((properties.getMaybe().size() < 2 || Options.get().isUnsoundEnabled()) && properties.isDefinite()) {
+                        // we know the *order* of property names
+                        List<String> sortedNames = newList(properties.getDefinitely());
+                        Collections.sort(sortedNames);
+                        JSArray.setEntries(array, sortedNames.stream().map(Value::makeStr).collect(Collectors.toList()), c);
+                    } else {
+                        // Order of properties is the same as for-in: unspecified.
+                        List<Value> propertyNames = properties.getMaybe().stream().map(Value::makeStr).collect(Collectors.toList());
+                        Value joinedPropertyNames = Value.join(propertyNames);
+                        if (properties.isDefinite()) {
+                            // we know the *number* of property names
+                            List<Value> joinedPropertyNamesArray = propertyNames.stream().map(x -> joinedPropertyNames).collect(Collectors.toList());
+                            JSArray.setEntries(array, joinedPropertyNamesArray, c);
+                        } else {
+                            // we know nothing
+                            JSArray.setUnknownEntries(array, joinedPropertyNames, c);
+                        }
+                    }
+                }
+                return Value.makeObject(array);
+            case OBJECT_FREEZE: /* GitHub #249 */
+                NativeFunctions.expectParameters(nativeobject, call, c, 1, 1);
+                c.getMonitoring().addMessage(call.getJSSourceNode(), Message.Severity.TAJS_ERROR, "Warning: Calling Object.freeze, but no side-effects have been implemented for it...");
+                return NativeFunctions.readParameter(call, state, 0);
             default:
                 return null;
         }

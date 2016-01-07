@@ -1,14 +1,9 @@
-test/chromeexperiments/keylight.html:166:6: [definite] TypeError, accessing property of null/undefined
-test/chromeexperiments/keylight.html:176:6: [definite] TypeError, accessing property of null/undefined
 test/chromeexperiments/keylight.html:399:3: [definite] TypeError, accessing property of null/undefined
 test/chromeexperiments/keylight.html:74:3: [definite] The conditional expression is always true
 test/chromeexperiments/keylight.html:74:7: [definite] The conditional expression is always true
 test/chromeexperiments/keylight.html:256:10: [definite] The conditional expression is always true
 test/chromeexperiments/keylight.html:428:4: [definite] The conditional expression is always false
-test/chromeexperiments/keylight.html:504:4: [definite] The assignment to color has no effect
 test/chromeexperiments/keylight.html:43:28: [definite] Dead assignment, property width is never read
-test/chromeexperiments/keylight.html:166:6: [definite] Reading absent property touches
-test/chromeexperiments/keylight.html:176:6: [definite] Reading absent property touches
 test/chromeexperiments/keylight.html:625:2: [definite] Dead assignment, property position is never read
 test/chromeexperiments/keylight.html:625:20: [definite] Dead assignment, property x is never read
 test/chromeexperiments/keylight.html:625:26: [definite] Dead assignment, property y is never read
@@ -28,8 +23,6 @@ test/chromeexperiments/keylight.html:704:35: [definite] Dead assignment, propert
 test/chromeexperiments/keylight.html:40:6: [definite] The variable isMobile is never used
 test/chromeexperiments/keylight.html:63:6: [definite] The variable mouseIsDown is never used
 test/chromeexperiments/keylight.html:157:2: [definite] The variable event is never used
-test/chromeexperiments/keylight.html:166:30: [definite] Unreachable code
-test/chromeexperiments/keylight.html:176:30: [definite] Unreachable code
 test/chromeexperiments/keylight.html:185:2: [definite] The variable event is never used
 test/chromeexperiments/keylight.html:390:2: [definite] The variable y is never used
 test/chromeexperiments/keylight.html:398:2: [definite] The variable index is never used
@@ -40,6 +33,8 @@ test/chromeexperiments/keylight.html:421:38: [definite] The variable j is never 
 test/chromeexperiments/keylight.html:421:41: [definite] The variable jlen is never used
 test/chromeexperiments/keylight.html:442:11: [definite] The variable x is never used
 test/chromeexperiments/keylight.html:443:11: [definite] The variable y is never used
+test/chromeexperiments/keylight.html:166:6: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/keylight.html:176:6: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/keylight.html:239:24: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/keylight.html:239:86: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/keylight.html:259:8: [maybe] TypeError, accessing property of null/undefined
@@ -67,6 +62,10 @@ test/chromeexperiments/keylight.html:607:32: [maybe] TypeError, accessing proper
 test/chromeexperiments/keylight.html:607:56: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/keylight.html:613:19: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/keylight.html:709:15: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/keylight.html:166:6: [maybe] Reading absent property touches
+test/chromeexperiments/keylight.html:176:6: [maybe] Reading absent property touches
+test/chromeexperiments/keylight.html:224:12: [maybe] Reading absent property clientX
+test/chromeexperiments/keylight.html:225:12: [maybe] Reading absent property clientY
 test/chromeexperiments/keylight.html:540:21: [maybe] Reading absent property x
 test/chromeexperiments/keylight.html:540:50: [maybe] Reading absent property y
 test/chromeexperiments/keylight.html:540:104: [maybe] Reading absent property rx
@@ -80,6 +79,8 @@ test/chromeexperiments/keylight.html:40:18: [maybe] Converting primitive string 
 test/chromeexperiments/keylight.html:40:54: [maybe] Conversion to number yields NaN
 test/chromeexperiments/keylight.html:40:54: [maybe] Converting object to string
 test/chromeexperiments/keylight.html:40:54: [maybe] Converting primitive string to object
+test/chromeexperiments/keylight.html:224:12: [maybe] Conversion to number yields NaN
+test/chromeexperiments/keylight.html:225:12: [maybe] Conversion to number yields NaN
 test/chromeexperiments/keylight.html:239:24: [maybe] Reading absent property (computed name)
 test/chromeexperiments/keylight.html:239:86: [maybe] Reading absent property (computed name)
 test/chromeexperiments/keylight.html:244:16: [maybe] Converting primitive number to object

@@ -1,4 +1,3 @@
-test/1k2012love/1270.js:1:1: [definite] The assignment to a has no effect
 test/1k2012love/1270.js:10:14: [maybe] TypeError, accessing property of null/undefined
 test/1k2012love/1270.js:13:21: [maybe] TypeError, accessing property of null/undefined
 test/1k2012love/1270.js:18:15: [maybe] TypeError, accessing property of null/undefined

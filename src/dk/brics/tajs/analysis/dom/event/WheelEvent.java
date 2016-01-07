@@ -36,7 +36,8 @@ public class WheelEvent {
 
     public static ObjectLabel INSTANCES;
 
-    public static void build(State s) {
+    public static void build(Solver.SolverInterface c) {
+        State s = c.getState();
         PROTOTYPE = new ObjectLabel(DOMObjects.WHEEL_EVENT_PROTOTYPE, ObjectLabel.Kind.OBJECT);
         INSTANCES = new ObjectLabel(DOMObjects.WHEEL_EVENT_INSTANCES, ObjectLabel.Kind.OBJECT);
 
@@ -51,38 +52,39 @@ public class WheelEvent {
         /*
          * Constants.
          */
-        createDOMProperty(s, PROTOTYPE, "DOM_DELTA_PIXEL", Value.makeNum(0));
-        createDOMProperty(s, PROTOTYPE, "DOM_DELTA_LINE", Value.makeNum(1));
-        createDOMProperty(s, PROTOTYPE, "DOM_DELTA_PAGE", Value.makeNum(2));
+        createDOMProperty(PROTOTYPE, "DOM_DELTA_PIXEL", Value.makeNum(0), c);
+        createDOMProperty(PROTOTYPE, "DOM_DELTA_LINE", Value.makeNum(1), c);
+        createDOMProperty(PROTOTYPE, "DOM_DELTA_PAGE", Value.makeNum(2), c);
 
         /*
          * Properties.
          */
-        createDOMProperty(s, INSTANCES, "deltaX", Value.makeAnyNum().setReadOnly());
-        createDOMProperty(s, INSTANCES, "deltaY", Value.makeAnyNum().setReadOnly());
-        createDOMProperty(s, INSTANCES, "deltaZ", Value.makeAnyNum().setReadOnly());
-        createDOMProperty(s, INSTANCES, "deltaMode", Value.makeAnyNumUInt().setReadOnly());
+        createDOMProperty(INSTANCES, "deltaX", Value.makeAnyNum().setReadOnly(), c);
+        createDOMProperty(INSTANCES, "deltaY", Value.makeAnyNum().setReadOnly(), c);
+        createDOMProperty(INSTANCES, "deltaZ", Value.makeAnyNum().setReadOnly(), c);
+        createDOMProperty(INSTANCES, "deltaMode", Value.makeAnyNumUInt().setReadOnly(), c);
 
         /*
          * Functions.
          */
-        createDOMFunction(s, PROTOTYPE, DOMObjects.WHEEL_EVENT_INIT_WHEEL_EVENT, "initWheelEvent", 16);
-        createDOMFunction(s, PROTOTYPE, DOMObjects.WHEEL_EVENT_INIT_WHEEL_EVENT_NS, "initWheelEventNS", 17);
+        createDOMFunction(PROTOTYPE, DOMObjects.WHEEL_EVENT_INIT_WHEEL_EVENT, "initWheelEvent", 16, c);
+        createDOMFunction(PROTOTYPE, DOMObjects.WHEEL_EVENT_INIT_WHEEL_EVENT_NS, "initWheelEventNS", 17, c);
 
         // Multiplied object
         s.multiplyObject(INSTANCES);
         INSTANCES = INSTANCES.makeSingleton().makeSummary();
 
         // non-standard properties
-        createDOMProperty(s, INSTANCES, "wheelDelta", Value.makeAnyNum().setReadOnly());
-        createDOMProperty(s, INSTANCES, "wheelDeltaX", Value.makeAnyNum().setReadOnly());
-        createDOMProperty(s, INSTANCES, "wheelDeltaY", Value.makeAnyNum().setReadOnly());
+        createDOMProperty(INSTANCES, "wheelDelta", Value.makeAnyNum().setReadOnly(), c);
+        createDOMProperty(INSTANCES, "wheelDeltaX", Value.makeAnyNum().setReadOnly(), c);
+        createDOMProperty(INSTANCES, "wheelDeltaY", Value.makeAnyNum().setReadOnly(), c);
 
         // DOM Registry
         DOMRegistry.registerWheelEventLabel(INSTANCES);
     }
 
-    public static Value evaluate(DOMObjects nativeObject, FunctionCalls.CallInfo call, State s, Solver.SolverInterface c) {
+    public static Value evaluate(DOMObjects nativeObject, FunctionCalls.CallInfo call, Solver.SolverInterface c) {
+        State s = c.getState();
         switch (nativeObject) {
             // TODO check if it correct to handle the _NS version in the same way as the non _NS one
             case WHEEL_EVENT_INIT_WHEEL_EVENT:

@@ -1,6 +1,5 @@
 ./main.js:7:11: [definite] TypeError, accessing property of null/undefined
 ./main.js:336:9: [definite] TypeError, accessing property of null/undefined
-./main.js:6:11: [definite] The assignment to argv has no effect
 ./main.js:235:2: [definite] The conditional expression is always true
 ./main.js:256:3: [definite] The conditional expression is always false
 ./main.js:269:3: [definite] The conditional expression is always true

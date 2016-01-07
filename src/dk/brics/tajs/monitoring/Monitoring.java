@@ -850,63 +850,6 @@ public class Monitoring implements IAnalysisMonitoring {
     }
 
     /**
-     * Checks whether the assignment has no effect.
-     *
-     * @param n     write variable operation
-     * @param v     value being written
-     * @param state current abstract state
-     */
-    @Override
-    public void visitWriteVariable(WriteVariableNode n, Value v, State state) {
-        if (!scan_phase) {
-            return;
-        }
-        Value current_value = state.readVariable(n.getVariableName(), null);
-        boolean same_value;
-        if (current_value.isMaybeAbsent()) {
-            same_value = false;
-        } else {
-            current_value = UnknownValueResolver.getRealValue(current_value, state);
-            if (current_value.isMaybeFuzzyNum() || current_value.isMaybeFuzzyStr() || current_value.getObjectLabels().size() > 1) {
-                same_value = false;
-            } else {
-                int values = 0;
-                if (current_value.isMaybeNull()) {
-                    values++;
-                }
-                if (current_value.isMaybeUndef()) {
-                    values++;
-                }
-                if (values <= 1 && current_value.isMaybeSingleStr()) {
-                    values++;
-                }
-                if (values <= 1 && current_value.isMaybeSingleNum()) {
-                    values++;
-                }
-                if (values <= 1 && current_value.isMaybeTrue()) {
-                    values++;
-                }
-                if (values <= 1 && current_value.isMaybeFalse()) {
-                    values++;
-                }
-                if (values <= 1 && current_value.getObjectLabels().size() == 1) {
-                    values++;
-                }
-                if (values > 1) {
-                    same_value = false;
-                } else {
-                    v = UnknownValueResolver.getRealValue(v, state);
-                    same_value = current_value == v;
-                }
-            }
-        }
-        addMessage(n,
-                same_value ? Status.CERTAIN : Status.MAYBE,
-                Severity.MEDIUM_IF_CERTAIN_NONE_OTHERWISE,
-                "The assignment to " + Strings.escape(n.getVariableName()) + " has no effect");
-    }
-
-    /**
      * Checks whether the branch condition is always true or always false.
      *
      * @param n if node
@@ -1023,13 +966,13 @@ public class Monitoring implements IAnalysisMonitoring {
      * @param propertystr description of the property name
      * @param maybe       if there may be more than one value
      * @param state       current abstract state
+     * @param v           property value with attributes
      */
     @Override
-    public void visitReadProperty(ReadPropertyNode n, Set<ObjectLabel> objlabels, Str propertystr, boolean maybe, State state) {
+    public void visitReadProperty(ReadPropertyNode n, Set<ObjectLabel> objlabels, Str propertystr, boolean maybe, State state, Value v) {
         if (!scan_phase) {
-            return;
+            throw new AnalysisException("Should only be invoked in scan phase");
         }
-        Value v = state.readPropertyWithAttributes(objlabels, propertystr);
         Status s;
         if (!maybe && v.isMaybeAbsent() && !v.isMaybePresent()) {
             s = Status.CERTAIN;

@@ -1,6 +1,3 @@
-test/1k2013spring/1310.js:21:17: [definite] The assignment to _t has no effect
-test/1k2013spring/1310.js:51:18: [definite] The assignment to y has no effect
-test/1k2013spring/1310.js:80:18: [definite] The assignment to y has no effect
 test/1k2013spring/1310.js:10:18: [definite] Dead assignment, property z is never read
 test/1k2013spring/1310.js:35:36: [maybe] TypeError, accessing property of null/undefined
 test/1k2013spring/1310.js:53:24: [maybe] TypeError, accessing property of null/undefined

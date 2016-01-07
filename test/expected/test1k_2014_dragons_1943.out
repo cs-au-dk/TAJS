@@ -3,7 +3,6 @@ test/1k2014dragons/1943.js:124:2: [definite] The conditional expression is alway
 test/1k2014dragons/1943.js:127:2: [definite] The conditional expression is always false
 test/1k2014dragons/1943.js:132:2: [definite] The conditional expression is always false
 test/1k2014dragons/1943.js:132:5: [definite] The conditional expression is always false
-test/1k2014dragons/shims.js:19:5: [definite] The assignment to AudioContext has no effect
 test/1k2014dragons/shims.js:19:5: [definite] The conditional expression is always true
 test/1k2014dragons/shims.js:22:5: [definite] Property is null/undefined
 test/1k2014dragons/shims.js:22:5: [definite] The conditional expression is always false

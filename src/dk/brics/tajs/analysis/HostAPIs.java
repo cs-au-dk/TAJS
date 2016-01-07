@@ -23,7 +23,6 @@ import dk.brics.tajs.analysis.nativeobjects.ECMAScriptFunctions;
 import dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects;
 import dk.brics.tajs.lattice.HostAPI;
 import dk.brics.tajs.lattice.HostObject;
-import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.util.AnalysisException;
 
@@ -44,12 +43,12 @@ public enum HostAPIs implements HostAPI {
         this.short_name = short_name;
     }
 
-    public static Value evaluate(HostObject hostobject, CallInfo call, State state, Solver.SolverInterface c) {
+    public static Value evaluate(HostObject hostobject, CallInfo call, Solver.SolverInterface c) {
         switch ((HostAPIs) hostobject.getAPI()) {
             case ECMASCRIPT_NATIVE:
-                return ECMAScriptFunctions.evaluate((ECMAScriptObjects) hostobject, call, state, c);
+                return ECMAScriptFunctions.evaluate((ECMAScriptObjects) hostobject, call, c);
             case DOCUMENT_OBJECT_MODEL:
-                return DOMFunctions.evaluate((DOMObjects) hostobject, call, state, c);
+                return DOMFunctions.evaluate((DOMObjects) hostobject, call, c);
             default:
                 throw new AnalysisException("Unexpected host API");
         }

@@ -18,6 +18,7 @@ package dk.brics.tajs.analysis.dom.core;
 
 import dk.brics.tajs.analysis.FunctionCalls.CallInfo;
 import dk.brics.tajs.analysis.InitialStateBuilder;
+import dk.brics.tajs.analysis.PropVarOperations;
 import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.analysis.dom.DOMFunctions;
 import dk.brics.tajs.analysis.dom.DOMObjects;
@@ -48,17 +49,19 @@ public class DOMNodeList {
 
     public static ObjectLabel INSTANCES;
 
-    public static void build(State s) {
+    public static void build(Solver.SolverInterface c) {
+        State s = c.getState();
+        PropVarOperations pv = c.getAnalysis().getPropVarOperations();
         CONSTRUCTOR = new ObjectLabel(DOMObjects.NODELIST_CONSTRUCTOR, ObjectLabel.Kind.FUNCTION);
         PROTOTYPE = new ObjectLabel(DOMObjects.NODELIST_PROTOTYPE, ObjectLabel.Kind.OBJECT);
         INSTANCES = new ObjectLabel(DOMObjects.NODELIST_INSTANCES, ObjectLabel.Kind.OBJECT);
 
         // Constructor Object
         s.newObject(CONSTRUCTOR);
-        s.writePropertyWithAttributes(CONSTRUCTOR, "length", Value.makeNum(0).setAttributes(true, true, true));
-        s.writePropertyWithAttributes(CONSTRUCTOR, "prototype", Value.makeObject(PROTOTYPE).setAttributes(true, true, true));
+        pv.writePropertyWithAttributes(CONSTRUCTOR, "length", Value.makeNum(0).setAttributes(true, true, true));
+        pv.writePropertyWithAttributes(CONSTRUCTOR, "prototype", Value.makeObject(PROTOTYPE).setAttributes(true, true, true));
         s.writeInternalPrototype(CONSTRUCTOR, Value.makeObject(InitialStateBuilder.OBJECT_PROTOTYPE));
-        s.writeProperty(DOMWindow.WINDOW, "NodeList", Value.makeObject(CONSTRUCTOR));
+        pv.writeProperty(DOMWindow.WINDOW, "NodeList", Value.makeObject(CONSTRUCTOR));
 
         // Prototype object
         s.newObject(PROTOTYPE);
@@ -71,7 +74,7 @@ public class DOMNodeList {
         /*
          * Properties.
          */
-        createDOMProperty(s, INSTANCES, "length", Value.makeAnyNumUInt().setReadOnly());
+        createDOMProperty(INSTANCES, "length", Value.makeAnyNumUInt().setReadOnly(), c);
 
         s.multiplyObject(INSTANCES);
         INSTANCES = INSTANCES.makeSingleton().makeSummary();
@@ -79,13 +82,13 @@ public class DOMNodeList {
         /*
          * Functions.
          */
-        createDOMFunction(s, PROTOTYPE, DOMObjects.NODELIST_ITEM, "item", 1);
+        createDOMFunction(PROTOTYPE, DOMObjects.NODELIST_ITEM, "item", 1, c);
     }
 
     /**
      * Transfer Functions.
      */
-    public static Value evaluate(DOMObjects nativeobject, @SuppressWarnings("unused") CallInfo call, @SuppressWarnings("unused") State s, @SuppressWarnings("unused") Solver.SolverInterface c) {
+    public static Value evaluate(DOMObjects nativeobject, @SuppressWarnings("unused") CallInfo call, @SuppressWarnings("unused") Solver.SolverInterface c) {
         switch (nativeobject) {
             case NODELIST_ITEM: {
                 return DOMFunctions.makeAnyHTMLElement();

@@ -37,13 +37,14 @@ public class JSDate {
     /**
      * Evaluates the given native function.
      */
-    public static Value evaluate(ECMAScriptObjects nativeobject, CallInfo call, State state, Solver.SolverInterface c) {
+    public static Value evaluate(ECMAScriptObjects nativeobject, CallInfo call, Solver.SolverInterface c) {
         if (nativeobject != ECMAScriptObjects.DATE)
-            if (NativeFunctions.throwTypeErrorIfConstructor(call, state, c))
+            if (NativeFunctions.throwTypeErrorIfConstructor(call, c))
                 return Value.makeNone();
 
         // TODO: warn about year 2000 problem for getYear/setYear?
 
+        State state = c.getState();
         switch (nativeobject) {
 
             case DATE: { // 15.9.3

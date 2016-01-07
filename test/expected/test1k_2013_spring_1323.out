@@ -1,4 +1,3 @@
-test/1k2013spring/1323.js:7:2: [definite] The assignment to a has no effect
 test/1k2013spring/1323.js:58:45: [definite] Dead assignment, property r is never read
 test/1k2013spring/shim.js:6:5: [definite] The variable b is never used
 test/1k2013spring/1323.js:7:6: [maybe] TypeError, accessing property of null/undefined
@@ -25,22 +24,40 @@ test/1k2013spring/shim.js:8:9: [maybe] TypeError, accessing property of null/und
 test/1k2013spring/shim.js:8:9: [maybe] TypeError, call to non-function
 test/1k2013spring/shim.js:9:1: [maybe] TypeError, accessing property of null/undefined
 test/1k2013spring/1323.js:7:6: [maybe] Reading absent property getContext
+test/1k2013spring/1323.js:13:14: [maybe] Reading absent property x
+test/1k2013spring/1323.js:14:11: [maybe] Reading absent property y
+test/1k2013spring/1323.js:17:11: [maybe] Reading absent property x
+test/1k2013spring/1323.js:17:25: [maybe] Reading absent property origX
+test/1k2013spring/1323.js:18:11: [maybe] Reading absent property y
+test/1k2013spring/1323.js:18:25: [maybe] Reading absent property origY
+test/1k2013spring/1323.js:23:19: [maybe] Reading absent property x
+test/1k2013spring/1323.js:24:19: [maybe] Reading absent property y
+test/1k2013spring/1323.js:26:19: [maybe] Reading absent property x
+test/1k2013spring/1323.js:27:19: [maybe] Reading absent property y
 test/1k2013spring/shim.js:6:9: [maybe] Reading absent property body
 test/1k2013spring/shim.js:8:9: [maybe] Reading absent property getContext
 test/1k2013spring/shim.js:9:1: [maybe] Reading absent property body
+test/1k2013spring/1323.js:13:14: [maybe] Conversion to number yields NaN
 test/1k2013spring/1323.js:13:14: [maybe] Reading absent property (computed name)
+test/1k2013spring/1323.js:14:11: [maybe] Conversion to number yields NaN
 test/1k2013spring/1323.js:14:11: [maybe] Reading absent property (computed name)
+test/1k2013spring/1323.js:17:11: [maybe] Conversion to number yields NaN
 test/1k2013spring/1323.js:17:11: [maybe] Reading absent property (computed name)
 test/1k2013spring/1323.js:17:25: [maybe] Reading absent property (computed name)
+test/1k2013spring/1323.js:18:11: [maybe] Conversion to number yields NaN
 test/1k2013spring/1323.js:18:11: [maybe] Reading absent property (computed name)
 test/1k2013spring/1323.js:18:25: [maybe] Reading absent property (computed name)
 test/1k2013spring/1323.js:23:5: [maybe] Reading absent property (computed name)
+test/1k2013spring/1323.js:23:19: [maybe] Conversion to number yields NaN
 test/1k2013spring/1323.js:23:19: [maybe] Reading absent property (computed name)
 test/1k2013spring/1323.js:24:5: [maybe] Reading absent property (computed name)
+test/1k2013spring/1323.js:24:19: [maybe] Conversion to number yields NaN
 test/1k2013spring/1323.js:24:19: [maybe] Reading absent property (computed name)
 test/1k2013spring/1323.js:26:5: [maybe] Reading absent property (computed name)
+test/1k2013spring/1323.js:26:19: [maybe] Conversion to number yields NaN
 test/1k2013spring/1323.js:26:19: [maybe] Reading absent property (computed name)
 test/1k2013spring/1323.js:27:5: [maybe] Reading absent property (computed name)
+test/1k2013spring/1323.js:27:19: [maybe] Conversion to number yields NaN
 test/1k2013spring/1323.js:27:19: [maybe] Reading absent property (computed name)
 test/1k2013spring/1323.js:31:4: [maybe] Reading absent property (computed name)
 test/1k2013spring/1323.js:39:18: [maybe] Reading absent property (computed name)

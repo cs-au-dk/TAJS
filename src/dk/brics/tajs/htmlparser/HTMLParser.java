@@ -17,6 +17,7 @@
 package dk.brics.tajs.htmlparser;
 
 import dk.brics.tajs.flowgraph.JavaScriptSource;
+import dk.brics.tajs.util.AnalysisLimitationException;
 import dk.brics.tajs.util.Loader;
 import net.htmlparser.jericho.Attribute;
 import net.htmlparser.jericho.Attributes;
@@ -24,10 +25,10 @@ import net.htmlparser.jericho.Element;
 import net.htmlparser.jericho.RowColumnVector;
 import net.htmlparser.jericho.Source;
 
-import java.io.File;
 import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.nio.file.Path;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
@@ -45,12 +46,10 @@ public class HTMLParser {
     private List<JavaScriptSource> code;
 
     /**
-     * Parses the given file.
-     *
-     * @param filename file name or URL
-     * @throws IOException if unable to read the file
+     * Parses the given HTML file.
      */
-    public HTMLParser(String filename) throws IOException {
+    public HTMLParser(Path htmlFile) throws IOException {
+        Path root = htmlFile.getParent(); // XXX assumes that the directory of the htmlFile is the root for non-relative paths in the htmlFile
 
         Set<String> standardJavaScriptScriptTypeNames = newSet(Arrays.asList("text/javascript", "text/ecmascript", "application/javascript", "application/ecmascript"));
         Set<String> allJavaScriptScriptTypeNames = newSet();
@@ -58,11 +57,7 @@ public class HTMLParser {
         // add some extra names to cater for a common typo
         allJavaScriptScriptTypeNames.addAll(Arrays.asList("javascript", "ecmascript", ""));
 
-        try {
-            doc = new Source(new URL(filename));
-        } catch (MalformedURLException e) {
-            doc = new Source(new File(filename));
-        }
+        doc = new Source(htmlFile.toFile());
         code = newList();
         for (Element e : doc.getAllElements()) {
             String name = e.getName();
@@ -70,11 +65,11 @@ public class HTMLParser {
                 String src = e.getAttributeValue("src");
                 if (src != null) {
                     // external script
-                    code.add(JavaScriptSource.makeFileCode(src, Loader.getString(Loader.resolveRelative(filename, src), "UTF-8")));
+                    code.add(JavaScriptSource.makeFileCode(src, Loader.getString(resolveSrcReference(root, htmlFile, src).toString(), "UTF-8")));
                 } else {
                     // embedded script
                     RowColumnVector pos = doc.getRowColumnVector(e.getStartTag().getEnd());
-                    code.add(JavaScriptSource.makeEmbeddedCode(filename, e.getContent().toString(), pos.getRow() - 1, pos.getColumn() - 1));
+                    code.add(JavaScriptSource.makeEmbeddedCode(htmlFile.toString(), e.getContent().toString(), pos.getRow() - 1, pos.getColumn() - 1));
                 }
             } else if (name.equals("a") || name.equals("form")) {
                 Attributes as = e.getAttributes();
@@ -88,7 +83,7 @@ public class HTMLParser {
                                 // embedded 'javascript:' event handler
                                 String js = val.substring(JAVASCRIPT.length());
                                 RowColumnVector pos = doc.getRowColumnVector(a.getValueSegment().getBegin() + JAVASCRIPT.length());
-                                code.add(JavaScriptSource.makeEventHandlerCode(name.equals("a") ? "click" : "submit", filename, js, pos.getRow() - 1, pos.getColumn() - 1));
+                                code.add(JavaScriptSource.makeEventHandlerCode(name.equals("a") ? "click" : "submit", htmlFile.toString(), js, pos.getRow() - 1, pos.getColumn() - 1));
                             }
                         }
                     }
@@ -104,7 +99,7 @@ public class HTMLParser {
                         if (val != null) {
                             // embedded 'on...' event handler
                             RowColumnVector pos = doc.getRowColumnVector(a.getValueSegment().getBegin());
-                            code.add(JavaScriptSource.makeEventHandlerCode(aname.substring(ON.length()), filename, val, pos.getRow() - 1, pos.getColumn() - 1));
+                            code.add(JavaScriptSource.makeEventHandlerCode(aname.substring(ON.length()), htmlFile.toString(), val, pos.getRow() - 1, pos.getColumn() - 1));
                         }
                     }
                 }
@@ -125,5 +120,33 @@ public class HTMLParser {
      */
     public List<JavaScriptSource> getJavaScript() {
         return code;
+    }
+
+    /**
+     * Resolves a reference to a file.
+     *
+     * The reference can be resolved relatively to a root or the file containing the reference.
+     */
+    private Path resolveSrcReference(Path root, Path fileWithReferenceIn, String reference) {
+        try {
+            URI uri = new URI(reference);
+            String scheme = uri.getScheme();
+            if (scheme != null) {
+                // TODO support http, https, file, ...
+                throw new AnalysisLimitationException("Explicit schemes are not supported. Bad reference: " + reference);
+            }
+        } catch (URISyntaxException e) {
+            throw new RuntimeException(e);
+        }
+        if (reference.startsWith("//")) {
+            throw new AnalysisLimitationException("Implicit schemes are not supported. Bad reference: " + reference);
+        }
+
+        // TODO normalize paths to avoid treating `dir/../test.js` and `test.js` as different files!
+        if (reference.startsWith(".")) {
+            return fileWithReferenceIn.getParent().resolve(reference);
+        }
+
+        return root.resolve(reference);
     }
 }

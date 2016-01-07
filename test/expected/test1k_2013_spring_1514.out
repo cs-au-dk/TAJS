@@ -1,5 +1,4 @@
 test/1k2013spring/1514.js:110:8: [definite] TypeError, call to non-function
-test/1k2013spring/1514.js:14:14: [definite] The assignment to stringify has no effect
 test/1k2013spring/1514.js:110:8: [definite] Variable stringify is null/undefined
 test/1k2013spring/1514.js:14:14: [definite] Reading absent property stringify
 test/1k2013spring/1514.js:7:2: [definite] The variable sqrs is never used

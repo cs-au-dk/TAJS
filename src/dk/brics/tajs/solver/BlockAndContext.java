@@ -23,9 +23,9 @@ import dk.brics.tajs.flowgraph.BasicBlock;
  */
 public final class BlockAndContext<ContextType extends IContext<?>> {
 
-    private BasicBlock b;
+    private final BasicBlock b;
 
-    private ContextType c;
+    private final ContextType c;
 
     /**
      * Constructs a new pair.

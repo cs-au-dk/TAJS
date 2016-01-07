@@ -81,8 +81,10 @@ public class NativeFunctions {
      * Updates the length property of any arrays among the given objects in accordance with 15.4.5.1. Also models truncation of the array if the
      * 'length' property is being set. Sets the state to none if an exception is definitely thrown.
      */
-    public static void updateArrayLength(AbstractNode node, State state, Set<ObjectLabel> objlabels, Str propertystr, Value value,
+    public static void updateArrayLength(AbstractNode node, Set<ObjectLabel> objlabels, Str propertystr, Value value,
                                          Solver.SolverInterface c) {
+        State state = c.getState();
+        PropVarOperations pv = c.getAnalysis().getPropVarOperations();
         Set<ObjectLabel> arrays = newSet();
         for (ObjectLabel ol : objlabels)
             if (ol.getKind() == Kind.ARRAY)
@@ -93,7 +95,7 @@ public class NativeFunctions {
         boolean definitely_length = propertystr.isMaybeSingleStr() && propertystr.getStr().equals("length");
         boolean maybe_length = propertystr.isMaybeStrIdentifier() || propertystr.isMaybeStrIdentifierParts() || propertystr.isMaybeStrJSON()
                 || (propertystr.isMaybeStrPrefixedIdentifierParts() && "length".startsWith(propertystr.getPrefix()));
-        Double old_length = UnknownValueResolver.getRealValue(state.readPropertyValue(arrays, "length"), state).getNum();
+        Double old_length = UnknownValueResolver.getRealValue(pv.readPropertyValue(arrays, "length"), state).getNum();
         if (definitely_length || maybe_length) {
             value = UnknownValueResolver.getRealValue(value, state);
             Value numvalue = Conversion.toNumber(value, c);
@@ -110,19 +112,19 @@ public class NativeFunctions {
                     numvalue = Value.makeAnyNumUInt();
                 }
                 if (invalid) {
-                    Exceptions.throwRangeError(state, c);
+                    Exceptions.throwRangeError(c);
                     c.getMonitoring().addMessage(node, Severity.HIGH, "RangeError, assigning invalid value to array 'length' property");
                 }
                 // truncate
                 Double num = numvalue.getNum();
                 if (definitely_length && num != null && old_length != null && old_length - num < 25) { // note: bound to avoid too many iterations
                     for (int i = num.intValue(); i < old_length.intValue(); i++) {
-                        state.deleteProperty(arrays, Value.makeStr(Integer.toString(i)), false);
+                        pv.deleteProperty(arrays, Value.makeStr(Integer.toString(i)), false);
                     }
                 } else
-                    state.deleteProperty(arrays, Value.makeAnyStrUInt(), false);
+                    pv.deleteProperty(arrays, Value.makeAnyStrUInt(), false);
                 // write 'length' property
-                state.writePropertyWithAttributes(arrays, "length", numvalue.setAttributes(true, true, false), true, objlabels.size() > 1);
+                pv.writePropertyWithAttributes(arrays, "length", numvalue.setAttributes(true, true, false), true, objlabels.size() > 1);
             }
         }
         // step 9-10 assignment to array index, need to magically update 'length'
@@ -134,7 +136,7 @@ public class NativeFunctions {
                 v = Value.makeNum(Math.max(old_length, Double.valueOf(propertystr.getStr()) + 1));
             else
                 v = Value.makeAnyNumUInt();
-            state.writePropertyWithAttributes(arrays, "length", v.setAttributes(true, true, false));
+            pv.writePropertyWithAttributes(arrays, "length", v.setAttributes(true, true, false));
         }
     }
 
@@ -144,9 +146,9 @@ public class NativeFunctions {
      *
      * @return true if the exception is definitely thrown
      */
-    public static boolean throwTypeErrorIfConstructor(CallInfo call, State state, Solver.SolverInterface c) {
+    public static boolean throwTypeErrorIfConstructor(CallInfo call, Solver.SolverInterface c) {
         if (call.isConstructorCall()) {
-            Exceptions.throwTypeError(state, c);
+            Exceptions.throwTypeError(c);
             c.getMonitoring().addMessage(call.getSourceNode(), Severity.HIGH,
                     "TypeError, constructor call to object that cannot be used as constructor");
             return true;
@@ -171,7 +173,7 @@ public class NativeFunctions {
             else
                 some_good = true;
         if (some_bad) {
-            Exceptions.throwTypeError(state, c);
+            Exceptions.throwTypeError(c);
             c.getMonitoring().addMessage(call.getSourceNode(), Severity.HIGH,
                     "TypeError, native function " + nativeobject + " called on invalid object kind, expected " + kind);
         }

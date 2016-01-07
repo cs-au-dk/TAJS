@@ -16,24 +16,19 @@
 
 package dk.brics.tajs.analysis;
 
-import dk.brics.tajs.analysis.dom.DOMBuilder;
 import dk.brics.tajs.analysis.dom.DOMObjects;
 import dk.brics.tajs.analysis.js.UserFunctionCalls;
 import dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects;
 import dk.brics.tajs.flowgraph.AbstractNode;
 import dk.brics.tajs.flowgraph.jsnodes.CallNode;
 import dk.brics.tajs.flowgraph.jsnodes.Node;
-import dk.brics.tajs.lattice.CallEdge;
-import dk.brics.tajs.lattice.Context;
 import dk.brics.tajs.lattice.ExecutionContext;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.ObjectLabel.Kind;
 import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.UnknownValueResolver;
 import dk.brics.tajs.lattice.Value;
-import dk.brics.tajs.monitoring.IAnalysisMonitoring;
 import dk.brics.tajs.options.Options;
-import dk.brics.tajs.solver.GenericSolver;
 import dk.brics.tajs.util.AnalysisException;
 
 import java.util.Set;
@@ -206,12 +201,17 @@ public class FunctionCalls {
         private Value arg1;
 
         private State state;
+        /**
+         * The this-objects during the call of the event-handler
+         */
+        private final Set<ObjectLabel> thisTargets;
 
-        public EventHandlerCall(Node sourceNode, Value function, Value arg1, State state) {
+        public EventHandlerCall(Node sourceNode, Value function, Value arg1, Set<ObjectLabel> thisTargets, State state) {
             this.sourceNode = sourceNode;
             this.function = function;
             this.arg1 = arg1;
             this.state = state;
+            this.thisTargets = thisTargets;
         }
 
         @Override
@@ -236,8 +236,7 @@ public class FunctionCalls {
 
         @Override
         public Set<ObjectLabel> prepareThis(State caller_state, State callee_state) {
-            // TODO: improve precision for setTimeout/setInterval: will always have the global object as the this-object
-            return DOMBuilder.getAllDOMEventTargets();
+            return thisTargets;
         }
 
         @Override
@@ -284,7 +283,7 @@ public class FunctionCalls {
 
         private final Solver.SolverInterface c;
 
-        public DefaultImplicitCallInfo(GenericSolver<State, Context, CallEdge, IAnalysisMonitoring, Analysis>.SolverInterface c) {
+        public DefaultImplicitCallInfo(Solver.SolverInterface c) {
             this.c = c;
         }
 
@@ -349,7 +348,7 @@ public class FunctionCalls {
                         ExecutionContext old_ec = newstate.getExecutionContext();
                         newstate.setExecutionContext(new ExecutionContext(old_ec.getScopeChain(), newSet(old_ec.getVariableObject()), newSet(call.prepareThis(caller_state, newstate))));
                     }
-                    Value res = HostAPIs.evaluate(objlabel.getHostObject(), call, newstate, c);
+                    Value res = HostAPIs.evaluate(objlabel.getHostObject(), call, c);
                     newstate = c.getState();
                     if (call.getSourceNode().isRegistersDone())
                         newstate.clearOrdinaryRegisters();
@@ -361,7 +360,7 @@ public class FunctionCalls {
                     }
                     c.setState(ts);
                 } else { // user-defined function
-                    UserFunctionCalls.enterUserFunction(objlabel, call, caller_state, false, c);
+                    UserFunctionCalls.enterUserFunction(objlabel, call, false, c);
                     c.getMonitoring().visitUserFunctionCall(objlabel.getFunction(), call.getSourceNode(), call.isConstructorCall());
                 }
             } else
@@ -375,6 +374,6 @@ public class FunctionCalls {
         }
         c.getMonitoring().visitCall(c.getNode(), maybe_non_function, maybe_function);
         if (maybe_non_function)
-            Exceptions.throwTypeError(caller_state, c);
+            Exceptions.throwTypeError(c);
     }
 }

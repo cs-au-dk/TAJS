@@ -37,39 +37,39 @@ public class JSError {
     /**
      * Evaluates the given native function.
      */
-    public static Value evaluate(ECMAScriptObjects nativeobject, CallInfo call, State state, Solver.SolverInterface c) {
+    public static Value evaluate(ECMAScriptObjects nativeobject, CallInfo call, Solver.SolverInterface c) {
         if (nativeobject == ECMAScriptObjects.ERROR_TOSTRING)
-            if (NativeFunctions.throwTypeErrorIfConstructor(call, state, c))
+            if (NativeFunctions.throwTypeErrorIfConstructor(call, c))
                 return Value.makeNone();
 
         switch (nativeobject) {
 
             case ERROR: { // 15.11.1 / 15.11.2 (function calls act like constructors here, also below)
-                return createErrorObject(InitialStateBuilder.ERROR_PROTOTYPE, nativeobject, call, state, c);
+                return createErrorObject(InitialStateBuilder.ERROR_PROTOTYPE, nativeobject, call, c);
             }
 
             case EVAL_ERROR: { // 15.11.6.1
-                return createErrorObject(InitialStateBuilder.EVAL_ERROR_PROTOTYPE, nativeobject, call, state, c);
+                return createErrorObject(InitialStateBuilder.EVAL_ERROR_PROTOTYPE, nativeobject, call, c);
             }
 
             case RANGE_ERROR: { // 15.11.6.2
-                return createErrorObject(InitialStateBuilder.RANGE_ERROR_PROTOTYPE, nativeobject, call, state, c);
+                return createErrorObject(InitialStateBuilder.RANGE_ERROR_PROTOTYPE, nativeobject, call, c);
             }
 
             case REFERENCE_ERROR: { // 15.11.6.3
-                return createErrorObject(InitialStateBuilder.REFERENCE_ERROR_PROTOTYPE, nativeobject, call, state, c);
+                return createErrorObject(InitialStateBuilder.REFERENCE_ERROR_PROTOTYPE, nativeobject, call, c);
             }
 
             case SYNTAX_ERROR: { // 15.11.6.4
-                return createErrorObject(InitialStateBuilder.SYNTAX_ERROR_PROTOTYPE, nativeobject, call, state, c);
+                return createErrorObject(InitialStateBuilder.SYNTAX_ERROR_PROTOTYPE, nativeobject, call, c);
             }
 
             case TYPE_ERROR: { // 15.11.6.5
-                return createErrorObject(InitialStateBuilder.TYPE_ERROR_PROTOTYPE, nativeobject, call, state, c);
+                return createErrorObject(InitialStateBuilder.TYPE_ERROR_PROTOTYPE, nativeobject, call, c);
             }
 
             case URI_ERROR: { // 15.11.6.6
-                return createErrorObject(InitialStateBuilder.URI_ERROR_PROTOTYPE, nativeobject, call, state, c);
+                return createErrorObject(InitialStateBuilder.URI_ERROR_PROTOTYPE, nativeobject, call, c);
             }
 
             case ERROR_TOSTRING: { // 15.11.4.4
@@ -85,15 +85,15 @@ public class JSError {
     /**
      * Creates a new error object according to 15.11.1.1 / 15.11.2.1 / 15.11.7.2 / 15.11.7.4.
      */
-    private static Value createErrorObject(ObjectLabel proto, ECMAScriptObjects nativeobject, CallInfo call,
-                                           State state, Solver.SolverInterface c) {
+    private static Value createErrorObject(ObjectLabel proto, ECMAScriptObjects nativeobject, CallInfo call, Solver.SolverInterface c) {
+        State state = c.getState();
         NativeFunctions.expectParameters(nativeobject, call, c, 0, 1);
         ObjectLabel obj = new ObjectLabel(call.getSourceNode(), Kind.ERROR);
         state.newObject(obj);
         state.writeInternalPrototype(obj, Value.makeObject(proto));
         Value message = NativeFunctions.readParameter(call, state, 0);
         if (message.isMaybeOtherThanUndef())
-            state.writeProperty(obj, "message", Conversion.toString(message.restrictToNotUndef(), c).removeAttributes());
+            c.getAnalysis().getPropVarOperations().writeProperty(obj, "message", Conversion.toString(message.restrictToNotUndef(), c).removeAttributes());
         return Value.makeObject(obj);
     }
 }

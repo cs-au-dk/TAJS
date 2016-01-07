@@ -2,13 +2,11 @@ test/10k/filterrific.html:616:24: [definite] Too many parameters to function Obj
 test/10k/filterrific.html:616:24: [definite] Too many parameters to function Object.prototype.toString
 test/10k/filterrific.html:616:24: [definite] Too many parameters to function Object.prototype.valueOf
 test/10k/filterrific.html:244:117: [definite] The variable ca is never used
-test/10k/filterrific.html:276:27: [definite] Unreachable function
 test/10k/filterrific.html:624:29: [definite] The variable ra is never used
 test/10k/filterrific.html:636:21: [definite] The variable i is never used
 test/10k/filterrific.html:253:16: [maybe] TypeError, accessing property of null/undefined
 test/10k/filterrific.html:253:16: [maybe] TypeError, call to non-function
 test/10k/filterrific.html:257:16: [maybe] TypeError, accessing property of null/undefined
-test/10k/filterrific.html:257:16: [maybe] TypeError, call to non-function
 test/10k/filterrific.html:260:9: [maybe] TypeError, accessing property of null/undefined
 test/10k/filterrific.html:266:13: [maybe] TypeError, accessing property of null/undefined
 test/10k/filterrific.html:266:13: [maybe] TypeError, call to non-function
@@ -26,7 +24,6 @@ test/10k/filterrific.html:358:13: [maybe] TypeError, accessing property of null/
 test/10k/filterrific.html:358:13: [maybe] TypeError, call to non-function
 test/10k/filterrific.html:363:29: [maybe] ReferenceError, reading absent variable l
 test/10k/filterrific.html:378:9: [maybe] TypeError, accessing property of null/undefined
-test/10k/filterrific.html:384:9: [maybe] TypeError, call to non-function
 test/10k/filterrific.html:386:13: [maybe] TypeError, accessing property of null/undefined
 test/10k/filterrific.html:396:16: [maybe] TypeError, accessing property of null/undefined
 test/10k/filterrific.html:418:18: [maybe] TypeError, accessing property of null/undefined
@@ -54,7 +51,6 @@ test/10k/filterrific.html:648:23: [maybe] RangeError in Number function
 test/10k/filterrific.html:648:23: [maybe] TypeError, call to non-function
 test/10k/filterrific.html:652:9: [maybe] TypeError, accessing property of null/undefined
 test/10k/filterrific.html:253:16: [maybe] Reading absent property getContext
-test/10k/filterrific.html:257:16: [maybe] Reading absent property appendChild
 test/10k/filterrific.html:266:13: [maybe] Reading absent property getBoundingClientRect
 test/10k/filterrific.html:283:38: [maybe] Reading absent property style
 test/10k/filterrific.html:319:20: [maybe] Reading 'this' yields the global object
@@ -63,7 +59,6 @@ test/10k/filterrific.html:358:13: [maybe] Reading absent property innerHTML
 test/10k/filterrific.html:358:13: [maybe] Reading absent property split
 test/10k/filterrific.html:379:16: [maybe] Reading 'this' yields the global object
 test/10k/filterrific.html:382:16: [maybe] Reading 'this' yields the global object
-test/10k/filterrific.html:384:9: [maybe] Reading absent property addEventListener
 test/10k/filterrific.html:385:29: [maybe] Reading absent property wheelDelta
 test/10k/filterrific.html:385:45: [maybe] Reading absent property detail
 test/10k/filterrific.html:386:13: [maybe] Reading absent property style
@@ -74,7 +69,7 @@ test/10k/filterrific.html:631:13: [maybe] Reading absent property style
 test/10k/filterrific.html:646:23: [maybe] Reading absent property b
 test/10k/filterrific.html:647:17: [maybe] Reading absent property style
 test/10k/filterrific.html:648:23: [maybe] Reading absent property toFixed
-test/10k/filterrific.html: [maybe] Uncaught exception, constructed at [test/10k/filterrific.html:253:16, test/10k/filterrific.html:257:16, test/10k/filterrific.html:260:9, test/10k/filterrific.html:266:13, test/10k/filterrific.html:270:9, test/10k/filterrific.html:283:38, test/10k/filterrific.html:299:9, test/10k/filterrific.html:299:19, test/10k/filterrific.html:333:9, test/10k/filterrific.html:339:13, test/10k/filterrific.html:339:29, test/10k/filterrific.html:340:13, test/10k/filterrific.html:341:13, test/10k/filterrific.html:358:13, test/10k/filterrific.html:363:29, test/10k/filterrific.html:378:9, test/10k/filterrific.html:384:9, test/10k/filterrific.html:386:13, test/10k/filterrific.html:396:16, test/10k/filterrific.html:418:18, test/10k/filterrific.html:424:13, test/10k/filterrific.html:442:61, test/10k/filterrific.html:461:21, test/10k/filterrific.html:465:23, test/10k/filterrific.html:474:84, test/10k/filterrific.html:478:17, test/10k/filterrific.html:549:21, test/10k/filterrific.html:575:9, test/10k/filterrific.html:588:13, test/10k/filterrific.html:608:13, test/10k/filterrific.html:616:9, test/10k/filterrific.html:616:24, test/10k/filterrific.html:631:13, test/10k/filterrific.html:638:9, test/10k/filterrific.html:639:17, test/10k/filterrific.html:640:34, test/10k/filterrific.html:646:23, test/10k/filterrific.html:647:17, test/10k/filterrific.html:648:23, test/10k/filterrific.html:652:9]
+test/10k/filterrific.html: [maybe] Uncaught exception, constructed at [test/10k/filterrific.html:253:16, test/10k/filterrific.html:257:16, test/10k/filterrific.html:260:9, test/10k/filterrific.html:266:13, test/10k/filterrific.html:270:9, test/10k/filterrific.html:283:38, test/10k/filterrific.html:299:9, test/10k/filterrific.html:299:19, test/10k/filterrific.html:333:9, test/10k/filterrific.html:339:13, test/10k/filterrific.html:339:29, test/10k/filterrific.html:340:13, test/10k/filterrific.html:341:13, test/10k/filterrific.html:358:13, test/10k/filterrific.html:363:29, test/10k/filterrific.html:378:9, test/10k/filterrific.html:386:13, test/10k/filterrific.html:396:16, test/10k/filterrific.html:418:18, test/10k/filterrific.html:424:13, test/10k/filterrific.html:442:61, test/10k/filterrific.html:461:21, test/10k/filterrific.html:465:23, test/10k/filterrific.html:474:84, test/10k/filterrific.html:478:17, test/10k/filterrific.html:549:21, test/10k/filterrific.html:575:9, test/10k/filterrific.html:588:13, test/10k/filterrific.html:608:13, test/10k/filterrific.html:616:9, test/10k/filterrific.html:616:24, test/10k/filterrific.html:631:13, test/10k/filterrific.html:638:9, test/10k/filterrific.html:639:17, test/10k/filterrific.html:640:34, test/10k/filterrific.html:646:23, test/10k/filterrific.html:647:17, test/10k/filterrific.html:648:23, test/10k/filterrific.html:652:9]
 test/10k/filterrific.html:266:13: [maybe] Converting primitive number to object
 test/10k/filterrific.html:266:13: [maybe] The variable a has values with different types
 test/10k/filterrific.html:270:23: [maybe] The variable c has values with different types

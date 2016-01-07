@@ -1,4 +1,3 @@
-test/1k2014dragons/shims.js:19:5: [definite] The assignment to AudioContext has no effect
 test/1k2014dragons/shims.js:19:5: [definite] The conditional expression is always true
 test/1k2014dragons/shims.js:22:5: [definite] Property is null/undefined
 test/1k2014dragons/shims.js:22:5: [definite] The conditional expression is always false
@@ -81,8 +80,6 @@ test/1k2014dragons/1824.js:256:9: [maybe] TypeError, accessing property of null/
 test/1k2014dragons/1824.js:256:9: [maybe] TypeError, accessing property of null/undefined
 test/1k2014dragons/shims.js:13:9: [maybe] TypeError, accessing property of null/undefined
 test/1k2014dragons/shims.js:13:9: [maybe] TypeError, accessing property of null/undefined
-test/1k2014dragons/shims.js:13:9: [maybe] TypeError, argument is not of expected type: Node.prototype
-test/1k2014dragons/shims.js:13:9: [maybe] TypeError, call to non-function
 test/1k2014dragons/shims.js:31:1: [maybe] TypeError, accessing property of null/undefined
 test/1k2014dragons/shims.js:34:1: [maybe] TypeError, accessing property of null/undefined
 test/1k2014dragons/shims.js:34:1: [maybe] TypeError, accessing property of null/undefined
@@ -148,7 +145,6 @@ test/1k2014dragons/1824.js:254:23: [maybe] Reading absent property pos
 test/1k2014dragons/1824.js:256:9: [maybe] Reading absent property el
 test/1k2014dragons/shims.js:10:9: [maybe] Reading absent property body
 test/1k2014dragons/shims.js:13:9: [maybe] Reading absent property parentNode
-test/1k2014dragons/shims.js:13:9: [maybe] Reading absent property removeChild
 test/1k2014dragons/shims.js:31:1: [maybe] Reading absent property body
 test/1k2014dragons/shims.js:34:1: [maybe] Reading absent property style
 test/1k2014dragons/shims.js:35:1: [maybe] Reading absent property style

@@ -20,6 +20,7 @@ import dk.brics.tajs.analysis.Conversion;
 import dk.brics.tajs.analysis.FunctionCalls;
 import dk.brics.tajs.analysis.InitialStateBuilder;
 import dk.brics.tajs.analysis.NativeFunctions;
+import dk.brics.tajs.analysis.PropVarOperations;
 import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.analysis.dom.DOMConversion;
 import dk.brics.tajs.analysis.dom.DOMObjects;
@@ -49,7 +50,9 @@ public class CanvasRenderingContext2D {
 
     public static ObjectLabel TEXT_METRICS;
 
-    public static void build(State s) {
+    public static void build(Solver.SolverInterface c) {
+        State s = c.getState();
+        PropVarOperations pv = c.getAnalysis().getPropVarOperations();
         CONTEXT2D = new ObjectLabel(DOMObjects.CANVASRENDERINGCONTEXT2D, ObjectLabel.Kind.OBJECT);
         CONTEXT2D_PROTOTYPE = new ObjectLabel(DOMObjects.CANVASRENDERINGCONTEXT2D_PROTOTYPE, ObjectLabel.Kind.OBJECT);
 
@@ -66,8 +69,8 @@ public class CanvasRenderingContext2D {
         // Canvas Context Object
         s.newObject(CONTEXT2D);
         s.writeInternalPrototype(CONTEXT2D, Value.makeObject(CONTEXT2D_PROTOTYPE));
-        s.writeProperty(CONTEXT2D, "prototype", Value.makeObject(CONTEXT2D_PROTOTYPE));   // TODO: Verify
-        s.writeProperty(DOMWindow.WINDOW, "CanvasRenderingContext2D", Value.makeObject(CONTEXT2D));
+        pv.writeProperty(CONTEXT2D, "prototype", Value.makeObject(CONTEXT2D_PROTOTYPE));   // TODO: Verify
+        pv.writeProperty(DOMWindow.WINDOW, "CanvasRenderingContext2D", Value.makeObject(CONTEXT2D));
 
         // Misc Objects
         s.newObject(PATTERN);
@@ -86,99 +89,99 @@ public class CanvasRenderingContext2D {
          */
 
         // compositing
-        createDOMProperty(s, CONTEXT2D_PROTOTYPE, "globalAlpha", Value.makeNum(1.0));
-        createDOMProperty(s, CONTEXT2D_PROTOTYPE, "globalCompositeOperation", Value.makeStr("source-over"));
+        createDOMProperty(CONTEXT2D_PROTOTYPE, "globalAlpha", Value.makeNum(1.0), c);
+        createDOMProperty(CONTEXT2D_PROTOTYPE, "globalCompositeOperation", Value.makeStr("source-over"), c);
 
         // colours and styles
-        createDOMProperty(s, CONTEXT2D, "strokeStyle", Value.makeAnyBool().join(Value.makeAnyNum()).join(Value.makeAnyStr()));
-        createDOMProperty(s, CONTEXT2D, "fillStyle", Value.makeAnyBool().join(Value.makeAnyNum()).join(Value.makeAnyStr()));
+        createDOMProperty(CONTEXT2D, "strokeStyle", Value.makeAnyBool().join(Value.makeAnyNum()).join(Value.makeAnyStr()), c);
+        createDOMProperty(CONTEXT2D, "fillStyle", Value.makeAnyBool().join(Value.makeAnyNum()).join(Value.makeAnyStr()), c);
 
         // line caps/joins
-        createDOMProperty(s, CONTEXT2D, "lineWidth", Value.makeNum(1));
-        createDOMProperty(s, CONTEXT2D, "lineCap", Value.makeStr("butt"));
-        createDOMProperty(s, CONTEXT2D, "lineJoin", Value.makeStr("miter"));
-        createDOMProperty(s, CONTEXT2D, "miterLimit", Value.makeNum(10));
+        createDOMProperty(CONTEXT2D, "lineWidth", Value.makeNum(1), c);
+        createDOMProperty(CONTEXT2D, "lineCap", Value.makeStr("butt"), c);
+        createDOMProperty(CONTEXT2D, "lineJoin", Value.makeStr("miter"), c);
+        createDOMProperty(CONTEXT2D, "miterLimit", Value.makeNum(10), c);
 
         // shadows
-        createDOMProperty(s, CONTEXT2D, "shadowOffsetX", Value.makeNum(0));
-        createDOMProperty(s, CONTEXT2D, "shadowOffsetY", Value.makeNum(0));
-        createDOMProperty(s, CONTEXT2D, "shadowBlur", Value.makeNum(0));
-        createDOMProperty(s, CONTEXT2D, "shadowColor", Value.makeStr("transparent black"));
+        createDOMProperty(CONTEXT2D, "shadowOffsetX", Value.makeNum(0), c);
+        createDOMProperty(CONTEXT2D, "shadowOffsetY", Value.makeNum(0), c);
+        createDOMProperty(CONTEXT2D, "shadowBlur", Value.makeNum(0), c);
+        createDOMProperty(CONTEXT2D, "shadowColor", Value.makeStr("transparent black"), c);
 
         // text
-        createDOMProperty(s, CONTEXT2D, "font", Value.makeStr("10px sans-serif"));
-        createDOMProperty(s, CONTEXT2D, "textAlign", Value.makeStr("start"));
-        createDOMProperty(s, CONTEXT2D, "textBaseline", Value.makeStr("alphabetic"));
+        createDOMProperty(CONTEXT2D, "font", Value.makeStr("10px sans-serif"), c);
+        createDOMProperty(CONTEXT2D, "textAlign", Value.makeStr("start"), c);
+        createDOMProperty(CONTEXT2D, "textBaseline", Value.makeStr("alphabetic"), c);
 
         // ImageData
-        createDOMProperty(s, IMAGE_DATA, "data", Value.makeObject(PIXEL_ARRAY).setReadOnly());
-        createDOMProperty(s, IMAGE_DATA, "height", Value.makeAnyNumUInt().setReadOnly());
-        createDOMProperty(s, IMAGE_DATA, "width", Value.makeAnyNumUInt().setReadOnly());
+        createDOMProperty(IMAGE_DATA, "data", Value.makeObject(PIXEL_ARRAY).setReadOnly(), c);
+        createDOMProperty(IMAGE_DATA, "height", Value.makeAnyNumUInt().setReadOnly(), c);
+        createDOMProperty(IMAGE_DATA, "width", Value.makeAnyNumUInt().setReadOnly(), c);
 
         // CanvasPixelArray
-        createDOMProperty(s, PIXEL_ARRAY, "length", Value.makeAnyNumUInt().setReadOnly());
-        s.writeProperty(Collections.singleton(PIXEL_ARRAY), Value.makeAnyStrUInt(), Value.makeAnyNumUInt(), false, false);
+        createDOMProperty(PIXEL_ARRAY, "length", Value.makeAnyNumUInt().setReadOnly(), c);
+        pv.writeProperty(Collections.singleton(PIXEL_ARRAY), Value.makeAnyStrUInt(), Value.makeAnyNumUInt(), false, false);
 
         /*
          * Canvas Functions.
          */
 
         // State
-        createDOMFunction(s, CONTEXT2D_PROTOTYPE, DOMObjects.CANVASRENDERINGCONTEXT2D_SAVE, "save", 0);
-        createDOMFunction(s, CONTEXT2D_PROTOTYPE, DOMObjects.CANVASRENDERINGCONTEXT2D_RESTORE, "restore", 0);
+        createDOMFunction(CONTEXT2D_PROTOTYPE, DOMObjects.CANVASRENDERINGCONTEXT2D_SAVE, "save", 0, c);
+        createDOMFunction(CONTEXT2D_PROTOTYPE, DOMObjects.CANVASRENDERINGCONTEXT2D_RESTORE, "restore", 0, c);
 
         // Transformations
-        createDOMFunction(s, CONTEXT2D_PROTOTYPE, DOMObjects.CANVASRENDERINGCONTEXT2D_SCALE, "scale", 2);
-        createDOMFunction(s, CONTEXT2D_PROTOTYPE, DOMObjects.CANVASRENDERINGCONTEXT2D_ROTATE, "rotate", 1);
-        createDOMFunction(s, CONTEXT2D_PROTOTYPE, DOMObjects.CANVASRENDERINGCONTEXT2D_TRANSLATE, "translate", 2);
-        createDOMFunction(s, CONTEXT2D_PROTOTYPE, DOMObjects.CANVASRENDERINGCONTEXT2D_TRANSFORM, "transform", 6);
-        createDOMFunction(s, CONTEXT2D_PROTOTYPE, DOMObjects.CANVASRENDERINGCONTEXT2D_SETTRANSFORM, "setTransform", 6);
+        createDOMFunction(CONTEXT2D_PROTOTYPE, DOMObjects.CANVASRENDERINGCONTEXT2D_SCALE, "scale", 2, c);
+        createDOMFunction(CONTEXT2D_PROTOTYPE, DOMObjects.CANVASRENDERINGCONTEXT2D_ROTATE, "rotate", 1, c);
+        createDOMFunction(CONTEXT2D_PROTOTYPE, DOMObjects.CANVASRENDERINGCONTEXT2D_TRANSLATE, "translate", 2, c);
+        createDOMFunction(CONTEXT2D_PROTOTYPE, DOMObjects.CANVASRENDERINGCONTEXT2D_TRANSFORM, "transform", 6, c);
+        createDOMFunction(CONTEXT2D_PROTOTYPE, DOMObjects.CANVASRENDERINGCONTEXT2D_SETTRANSFORM, "setTransform", 6, c);
 
         // Colors & Style
-        createDOMFunction(s, CONTEXT2D_PROTOTYPE, DOMObjects.CANVASRENDERINGCONTEXT2D_CREATE_LINEAR_GRADIENT, "createLinearGradient", 4);
-        createDOMFunction(s, CONTEXT2D_PROTOTYPE, DOMObjects.CANVASRENDERINGCONTEXT2D_CREATE_RADIAL_GRADIENT, "createRadialGradient", 6);
-        createDOMFunction(s, CONTEXT2D_PROTOTYPE, DOMObjects.CANVASRENDERINGCONTEXT2D_CREATE_PATTERN, "createPattern", 2);
+        createDOMFunction(CONTEXT2D_PROTOTYPE, DOMObjects.CANVASRENDERINGCONTEXT2D_CREATE_LINEAR_GRADIENT, "createLinearGradient", 4, c);
+        createDOMFunction(CONTEXT2D_PROTOTYPE, DOMObjects.CANVASRENDERINGCONTEXT2D_CREATE_RADIAL_GRADIENT, "createRadialGradient", 6, c);
+        createDOMFunction(CONTEXT2D_PROTOTYPE, DOMObjects.CANVASRENDERINGCONTEXT2D_CREATE_PATTERN, "createPattern", 2, c);
 
         // Rects
-        createDOMFunction(s, CONTEXT2D_PROTOTYPE, DOMObjects.CANVASRENDERINGCONTEXT2D_CLEAR_RECT, "clearRect", 4);
-        createDOMFunction(s, CONTEXT2D_PROTOTYPE, DOMObjects.CANVASRENDERINGCONTEXT2D_FILL_RECT, "fillRect", 4);
-        createDOMFunction(s, CONTEXT2D_PROTOTYPE, DOMObjects.CANVASRENDERINGCONTEXT2D_STROKE_RECT, "strokeRect", 4);
+        createDOMFunction(CONTEXT2D_PROTOTYPE, DOMObjects.CANVASRENDERINGCONTEXT2D_CLEAR_RECT, "clearRect", 4, c);
+        createDOMFunction(CONTEXT2D_PROTOTYPE, DOMObjects.CANVASRENDERINGCONTEXT2D_FILL_RECT, "fillRect", 4, c);
+        createDOMFunction(CONTEXT2D_PROTOTYPE, DOMObjects.CANVASRENDERINGCONTEXT2D_STROKE_RECT, "strokeRect", 4, c);
 
         // Paths
-        createDOMFunction(s, CONTEXT2D_PROTOTYPE, DOMObjects.CANVASRENDERINGCONTEXT2D_BEGIN_PATH, "beginPath", 0);
-        createDOMFunction(s, CONTEXT2D_PROTOTYPE, DOMObjects.CANVASRENDERINGCONTEXT2D_CLOSE_PATH, "closePath", 0);
-        createDOMFunction(s, CONTEXT2D_PROTOTYPE, DOMObjects.CANVASRENDERINGCONTEXT2D_MOVE_TO, "moveTo", 2);
-        createDOMFunction(s, CONTEXT2D_PROTOTYPE, DOMObjects.CANVASRENDERINGCONTEXT2D_LINE_TO, "lineTo", 2);
-        createDOMFunction(s, CONTEXT2D_PROTOTYPE, DOMObjects.CANVASRENDERINGCONTEXT2D_QUADRATIC_CURVE_TO, "quadraticCurveTo", 4);
-        createDOMFunction(s, CONTEXT2D_PROTOTYPE, DOMObjects.CANVASRENDERINGCONTEXT2D_BEZIER_CURVE_TO, "bezierCurveTo", 6);
-        createDOMFunction(s, CONTEXT2D_PROTOTYPE, DOMObjects.CANVASRENDERINGCONTEXT2D_ARC_TO, "arcTo", 5);
-        createDOMFunction(s, CONTEXT2D_PROTOTYPE, DOMObjects.CANVASRENDERINGCONTEXT2D_RECT, "rect", 4);
-        createDOMFunction(s, CONTEXT2D_PROTOTYPE, DOMObjects.CANVASRENDERINGCONTEXT2D_ARC, "arc", 5);
-        createDOMFunction(s, CONTEXT2D_PROTOTYPE, DOMObjects.CANVASRENDERINGCONTEXT2D_FILL, "fill", 0);
-        createDOMFunction(s, CONTEXT2D_PROTOTYPE, DOMObjects.CANVASRENDERINGCONTEXT2D_STROKE, "stroke", 0);
-        createDOMFunction(s, CONTEXT2D_PROTOTYPE, DOMObjects.CANVASRENDERINGCONTEXT2D_CLIP, "clip", 0);
-        createDOMFunction(s, CONTEXT2D_PROTOTYPE, DOMObjects.CANVASRENDERINGCONTEXT2D_IS_POINT_IN_PATH, "isPointInPath", 2);
+        createDOMFunction(CONTEXT2D_PROTOTYPE, DOMObjects.CANVASRENDERINGCONTEXT2D_BEGIN_PATH, "beginPath", 0, c);
+        createDOMFunction(CONTEXT2D_PROTOTYPE, DOMObjects.CANVASRENDERINGCONTEXT2D_CLOSE_PATH, "closePath", 0, c);
+        createDOMFunction(CONTEXT2D_PROTOTYPE, DOMObjects.CANVASRENDERINGCONTEXT2D_MOVE_TO, "moveTo", 2, c);
+        createDOMFunction(CONTEXT2D_PROTOTYPE, DOMObjects.CANVASRENDERINGCONTEXT2D_LINE_TO, "lineTo", 2, c);
+        createDOMFunction(CONTEXT2D_PROTOTYPE, DOMObjects.CANVASRENDERINGCONTEXT2D_QUADRATIC_CURVE_TO, "quadraticCurveTo", 4, c);
+        createDOMFunction(CONTEXT2D_PROTOTYPE, DOMObjects.CANVASRENDERINGCONTEXT2D_BEZIER_CURVE_TO, "bezierCurveTo", 6, c);
+        createDOMFunction(CONTEXT2D_PROTOTYPE, DOMObjects.CANVASRENDERINGCONTEXT2D_ARC_TO, "arcTo", 5, c);
+        createDOMFunction(CONTEXT2D_PROTOTYPE, DOMObjects.CANVASRENDERINGCONTEXT2D_RECT, "rect", 4, c);
+        createDOMFunction(CONTEXT2D_PROTOTYPE, DOMObjects.CANVASRENDERINGCONTEXT2D_ARC, "arc", 5, c);
+        createDOMFunction(CONTEXT2D_PROTOTYPE, DOMObjects.CANVASRENDERINGCONTEXT2D_FILL, "fill", 0, c);
+        createDOMFunction(CONTEXT2D_PROTOTYPE, DOMObjects.CANVASRENDERINGCONTEXT2D_STROKE, "stroke", 0, c);
+        createDOMFunction(CONTEXT2D_PROTOTYPE, DOMObjects.CANVASRENDERINGCONTEXT2D_CLIP, "clip", 0, c);
+        createDOMFunction(CONTEXT2D_PROTOTYPE, DOMObjects.CANVASRENDERINGCONTEXT2D_IS_POINT_IN_PATH, "isPointInPath", 2, c);
 
         // Focus Management
-        createDOMFunction(s, CONTEXT2D_PROTOTYPE, DOMObjects.CANVASRENDERINGCONTEXT2D_DRAW_FOCUS_RING, "drawFocusRing", 4);
+        createDOMFunction(CONTEXT2D_PROTOTYPE, DOMObjects.CANVASRENDERINGCONTEXT2D_DRAW_FOCUS_RING, "drawFocusRing", 4, c);
 
         // Text
-        createDOMFunction(s, CONTEXT2D_PROTOTYPE, DOMObjects.CANVASRENDERINGCONTEXT2D_FILL_TEXT, "fillText", 4);
-        createDOMFunction(s, CONTEXT2D_PROTOTYPE, DOMObjects.CANVASRENDERINGCONTEXT2D_STROKE_TEXT, "strokeText", 4);
-        createDOMFunction(s, CONTEXT2D_PROTOTYPE, DOMObjects.CANVASRENDERINGCONTEXT2D_MEASURE_TEXT, "measureText", 1);
+        createDOMFunction(CONTEXT2D_PROTOTYPE, DOMObjects.CANVASRENDERINGCONTEXT2D_FILL_TEXT, "fillText", 4, c);
+        createDOMFunction(CONTEXT2D_PROTOTYPE, DOMObjects.CANVASRENDERINGCONTEXT2D_STROKE_TEXT, "strokeText", 4, c);
+        createDOMFunction(CONTEXT2D_PROTOTYPE, DOMObjects.CANVASRENDERINGCONTEXT2D_MEASURE_TEXT, "measureText", 1, c);
 
         // Drawing Images
-        createDOMFunction(s, CONTEXT2D_PROTOTYPE, DOMObjects.CANVASRENDERINGCONTEXT2D_DRAW_IMAGE, "drawImage", 9);
+        createDOMFunction(CONTEXT2D_PROTOTYPE, DOMObjects.CANVASRENDERINGCONTEXT2D_DRAW_IMAGE, "drawImage", 9, c);
 
         // Pixel Manipulation
-        createDOMFunction(s, CONTEXT2D_PROTOTYPE, DOMObjects.CANVASRENDERINGCONTEXT2D_CREATE_IMAGE_DATA, "createImageData", 2);
-        createDOMFunction(s, CONTEXT2D_PROTOTYPE, DOMObjects.CANVASRENDERINGCONTEXT2D_GET_IMAGE_DATA, "getImageData", 4);
-        createDOMFunction(s, CONTEXT2D_PROTOTYPE, DOMObjects.CANVASRENDERINGCONTEXT2D_PUT_IMAGE_DATA, "putImageData", 7);
+        createDOMFunction(CONTEXT2D_PROTOTYPE, DOMObjects.CANVASRENDERINGCONTEXT2D_CREATE_IMAGE_DATA, "createImageData", 2, c);
+        createDOMFunction(CONTEXT2D_PROTOTYPE, DOMObjects.CANVASRENDERINGCONTEXT2D_GET_IMAGE_DATA, "getImageData", 4, c);
+        createDOMFunction(CONTEXT2D_PROTOTYPE, DOMObjects.CANVASRENDERINGCONTEXT2D_PUT_IMAGE_DATA, "putImageData", 7, c);
 
         /*
          * Gradient Functions
          */
-        createDOMFunction(s, GRADIENT, DOMObjects.CANVASGRADIENT_ADD_COLOR_STOP, "addColorStop", 2);
+        createDOMFunction(GRADIENT, DOMObjects.CANVASGRADIENT_ADD_COLOR_STOP, "addColorStop", 2, c);
 
         /*
          * Multiply objects
@@ -208,7 +211,8 @@ public class CanvasRenderingContext2D {
         TEXT_METRICS = TEXT_METRICS.makeSingleton().makeSummary();
     }
 
-    public static Value evaluate(DOMObjects nativeObject, FunctionCalls.CallInfo call, State s, Solver.SolverInterface c) {
+    public static Value evaluate(DOMObjects nativeObject, FunctionCalls.CallInfo call, Solver.SolverInterface c) {
+        State s = c.getState();
         switch (nativeObject) {
             // State
             case CANVASRENDERINGCONTEXT2D_SAVE:

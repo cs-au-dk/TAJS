@@ -19,7 +19,7 @@ public interface IContextSensitivityStrategy {
     /**
      * Constructs a heap context for a function object.
      */
-    HeapContext makeFunctionHeapContext(Function fun, State state, Solver.SolverInterface c);
+    HeapContext makeFunctionHeapContext(Function fun, Solver.SolverInterface c);
 
     /**
      * Constructs a heap context for objects related to a call.

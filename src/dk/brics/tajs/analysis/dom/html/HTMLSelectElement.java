@@ -20,6 +20,7 @@ import dk.brics.tajs.analysis.Conversion;
 import dk.brics.tajs.analysis.FunctionCalls;
 import dk.brics.tajs.analysis.InitialStateBuilder;
 import dk.brics.tajs.analysis.NativeFunctions;
+import dk.brics.tajs.analysis.PropVarOperations;
 import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.analysis.dom.DOMConversion;
 import dk.brics.tajs.analysis.dom.DOMObjects;
@@ -40,17 +41,19 @@ public class HTMLSelectElement {
 
     public static ObjectLabel INSTANCES;
 
-    public static void build(State s) {
+    public static void build(Solver.SolverInterface c) {
+        State s = c.getState();
+        PropVarOperations pv = c.getAnalysis().getPropVarOperations();
         CONSTRUCTOR = new ObjectLabel(DOMObjects.HTMLSELECTELEMENT_CONSTRUCTOR, ObjectLabel.Kind.FUNCTION);
         PROTOTYPE = new ObjectLabel(DOMObjects.HTMLSELECTELEMENT_PROTOTYPE, ObjectLabel.Kind.OBJECT);
         INSTANCES = new ObjectLabel(DOMObjects.HTMLSELECTELEMENT_INSTANCES, ObjectLabel.Kind.OBJECT);
 
         // Constructor Object
         s.newObject(CONSTRUCTOR);
-        s.writePropertyWithAttributes(CONSTRUCTOR, "length", Value.makeNum(0).setAttributes(true, true, true));
-        s.writePropertyWithAttributes(CONSTRUCTOR, "prototype", Value.makeObject(PROTOTYPE).setAttributes(true, true, true));
+        pv.writePropertyWithAttributes(CONSTRUCTOR, "length", Value.makeNum(0).setAttributes(true, true, true));
+        pv.writePropertyWithAttributes(CONSTRUCTOR, "prototype", Value.makeObject(PROTOTYPE).setAttributes(true, true, true));
         s.writeInternalPrototype(CONSTRUCTOR, Value.makeObject(InitialStateBuilder.FUNCTION_PROTOTYPE));
-        s.writeProperty(DOMWindow.WINDOW, "HTMLSelectElement", Value.makeObject(CONSTRUCTOR));
+        pv.writeProperty(DOMWindow.WINDOW, "HTMLSelectElement", Value.makeObject(CONSTRUCTOR));
 
         // Prototype Object
         s.newObject(PROTOTYPE);
@@ -64,19 +67,19 @@ public class HTMLSelectElement {
          * Properties.
          */
         // DOM Level 1
-        createDOMProperty(s, INSTANCES, "type", Value.makeAnyStr().setReadOnly());
-        createDOMProperty(s, INSTANCES, "selectedIndex", Value.makeAnyNum());
-        createDOMProperty(s, INSTANCES, "value", Value.makeAnyStr());
-        createDOMProperty(s, INSTANCES, "form", Value.makeObject(HTMLFormElement.INSTANCES).setReadOnly());
-        createDOMProperty(s, INSTANCES, "disabled", Value.makeAnyBool());
-        createDOMProperty(s, INSTANCES, "multiple", Value.makeAnyBool());
-        createDOMProperty(s, INSTANCES, "name", Value.makeAnyStr());
-        createDOMProperty(s, INSTANCES, "size", Value.makeAnyNum());
-        createDOMProperty(s, INSTANCES, "tabIndex", Value.makeAnyNum());
+        createDOMProperty(INSTANCES, "type", Value.makeAnyStr().setReadOnly(), c);
+        createDOMProperty(INSTANCES, "selectedIndex", Value.makeAnyNum(), c);
+        createDOMProperty(INSTANCES, "value", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "form", Value.makeObject(HTMLFormElement.INSTANCES).setReadOnly(), c);
+        createDOMProperty(INSTANCES, "disabled", Value.makeAnyBool(), c);
+        createDOMProperty(INSTANCES, "multiple", Value.makeAnyBool(), c);
+        createDOMProperty(INSTANCES, "name", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "size", Value.makeAnyNum(), c);
+        createDOMProperty(INSTANCES, "tabIndex", Value.makeAnyNum(), c);
 
         // DOM Level 2
-        createDOMProperty(s, INSTANCES, "length", Value.makeAnyNum());
-        createDOMProperty(s, INSTANCES, "options", Value.makeObject(HTMLOptionsCollection.INSTANCES).setReadOnly());
+        createDOMProperty(INSTANCES, "length", Value.makeAnyNum(), c);
+        createDOMProperty(INSTANCES, "options", Value.makeObject(HTMLOptionsCollection.INSTANCES).setReadOnly(), c);
 
         s.multiplyObject(INSTANCES);
         INSTANCES = INSTANCES.makeSingleton().makeSummary();
@@ -85,16 +88,17 @@ public class HTMLSelectElement {
          * Functions.
          */
         // DOM Level 1
-        createDOMFunction(s, PROTOTYPE, DOMObjects.HTMLSELECTELEMENT_ADD, "add", 2);
-        createDOMFunction(s, PROTOTYPE, DOMObjects.HTMLSELECTELEMENT_REMOVE, "remove", 1);
-        createDOMFunction(s, PROTOTYPE, DOMObjects.HTMLSELECTELEMENT_BLUR, "blur", 0);
-        createDOMFunction(s, PROTOTYPE, DOMObjects.HTMLSELECTELEMENT_FOCUS, "focus", 0);
+        createDOMFunction(PROTOTYPE, DOMObjects.HTMLSELECTELEMENT_ADD, "add", 2, c);
+        createDOMFunction(PROTOTYPE, DOMObjects.HTMLSELECTELEMENT_REMOVE, "remove", 1, c);
+        createDOMFunction(PROTOTYPE, DOMObjects.HTMLSELECTELEMENT_BLUR, "blur", 0, c);
+        createDOMFunction(PROTOTYPE, DOMObjects.HTMLSELECTELEMENT_FOCUS, "focus", 0, c);
     }
 
     /**
      * Transfer Functions.
      */
-    public static Value evaluate(DOMObjects nativeObject, FunctionCalls.CallInfo call, State s, Solver.SolverInterface c) {
+    public static Value evaluate(DOMObjects nativeObject, FunctionCalls.CallInfo call, Solver.SolverInterface c) {
+        State s = c.getState();
         switch (nativeObject) {
             case HTMLSELECTELEMENT_ADD: {
                 NativeFunctions.expectParameters(nativeObject, call, c, 2, 2);

@@ -31,6 +31,7 @@ test/1k2013spring/1344.js:97:44: [maybe] TypeError, accessing property of null/u
 test/1k2013spring/1344.js:97:44: [maybe] TypeError, accessing property of null/undefined
 test/1k2013spring/1344.js:103:22: [maybe] TypeError, accessing property of null/undefined
 test/1k2013spring/1344.js:103:22: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1344.js:103:22: [maybe] TypeError, accessing property of null/undefined
 test/1k2013spring/1344.js:103:43: [maybe] TypeError, accessing property of null/undefined
 test/1k2013spring/1344.js:103:43: [maybe] TypeError, accessing property of null/undefined
 test/1k2013spring/1344.js:126:10: [maybe] ReferenceError, reading absent variable W
@@ -63,6 +64,7 @@ test/1k2013spring/1344.js:76:13: [maybe] Converting primitive string to object
 test/1k2013spring/1344.js:83:27: [maybe] Reading absent property (computed name)
 test/1k2013spring/1344.js:84:25: [maybe] Reading absent property (computed name)
 test/1k2013spring/1344.js:84:25: [maybe] Reading absent property (computed name)
+test/1k2013spring/1344.js:84:25: [maybe] Reading absent property (computed name)
 test/1k2013spring/1344.js:86:21: [maybe] Reading absent property (computed name)
 test/1k2013spring/1344.js:86:21: [maybe] Reading absent property (computed name)
 test/1k2013spring/1344.js:89:8: [maybe] Reading absent property (computed name)
@@ -79,6 +81,7 @@ test/1k2013spring/1344.js:97:26: [maybe] Reading absent property (computed name)
 test/1k2013spring/1344.js:97:26: [maybe] Reading absent property (computed name)
 test/1k2013spring/1344.js:97:44: [maybe] Reading absent property (computed name)
 test/1k2013spring/1344.js:97:44: [maybe] Reading absent property (computed name)
+test/1k2013spring/1344.js:103:22: [maybe] Reading absent property (computed name)
 test/1k2013spring/1344.js:103:22: [maybe] Reading absent property (computed name)
 test/1k2013spring/1344.js:103:22: [maybe] Reading absent property (computed name)
 test/1k2013spring/1344.js:103:43: [maybe] Reading absent property (computed name)

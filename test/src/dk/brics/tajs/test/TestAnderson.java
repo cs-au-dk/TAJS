@@ -1,9 +1,9 @@
 package dk.brics.tajs.test;
 
+import dk.brics.tajs.Main;
+import dk.brics.tajs.options.Options;
 import org.junit.Before;
 import org.junit.Test;
-
-import dk.brics.tajs.options.Options;
 
 @SuppressWarnings("static-method")
 public class TestAnderson {
@@ -14,7 +14,7 @@ public class TestAnderson {
 	
 	@Before
 	public void init() {
-        Options.reset();
+		Main.reset();
 		Options.get().enableTest();
 	}
 

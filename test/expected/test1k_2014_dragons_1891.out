@@ -1,4 +1,3 @@
-test/1k2014dragons/shims.js:19:5: [definite] The assignment to AudioContext has no effect
 test/1k2014dragons/shims.js:19:5: [definite] The conditional expression is always true
 test/1k2014dragons/shims.js:22:5: [definite] Property is null/undefined
 test/1k2014dragons/shims.js:22:5: [definite] The conditional expression is always false
@@ -20,6 +19,7 @@ test/1k2014dragons/1891.js:50:23: [maybe] TypeError, accessing property of null/
 test/1k2014dragons/1891.js:83:15: [maybe] TypeError, accessing property of null/undefined
 test/1k2014dragons/1891.js:84:18: [maybe] TypeError, accessing property of null/undefined
 test/1k2014dragons/1891.js:100:9: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1891.js:100:9: [maybe] TypeError, call to non-function
 test/1k2014dragons/1891.js:107:1: [maybe] TypeError, accessing property of null/undefined
 test/1k2014dragons/shims.js:31:1: [maybe] TypeError, accessing property of null/undefined
 test/1k2014dragons/shims.js:34:1: [maybe] TypeError, accessing property of null/undefined
@@ -35,6 +35,7 @@ test/1k2014dragons/1891.js:44:20: [maybe] Reading absent property k
 test/1k2014dragons/1891.js:45:20: [maybe] Reading absent property k
 test/1k2014dragons/1891.js:46:20: [maybe] Reading absent property k
 test/1k2014dragons/1891.js:47:20: [maybe] Reading absent property k
+test/1k2014dragons/1891.js:100:9: [maybe] Reading absent property d
 test/1k2014dragons/shims.js:10:9: [maybe] Reading absent property body
 test/1k2014dragons/shims.js:31:1: [maybe] Reading absent property body
 test/1k2014dragons/shims.js:34:1: [maybe] Reading absent property style

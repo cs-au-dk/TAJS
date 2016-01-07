@@ -16,11 +16,11 @@
 
 package dk.brics.tajs.analysis.js;
 
-import dk.brics.tajs.analysis.Analysis;
 import dk.brics.tajs.analysis.Conversion;
 import dk.brics.tajs.analysis.Exceptions;
 import dk.brics.tajs.analysis.FunctionCalls.CallInfo;
 import dk.brics.tajs.analysis.InitialStateBuilder;
+import dk.brics.tajs.analysis.PropVarOperations;
 import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.flowgraph.AbstractNode;
 import dk.brics.tajs.flowgraph.BasicBlock;
@@ -34,30 +34,34 @@ import dk.brics.tajs.lattice.CallEdge;
 import dk.brics.tajs.lattice.Context;
 import dk.brics.tajs.lattice.ExecutionContext;
 import dk.brics.tajs.lattice.HeapContext;
+import dk.brics.tajs.lattice.Obj;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.ObjectLabel.Kind;
+import dk.brics.tajs.lattice.PropertyReference;
 import dk.brics.tajs.lattice.ScopeChain;
 import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.Summarized;
 import dk.brics.tajs.lattice.UnknownValueResolver;
 import dk.brics.tajs.lattice.Value;
-import dk.brics.tajs.monitoring.IAnalysisMonitoring;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.solver.BlockAndContext;
 import dk.brics.tajs.solver.CallGraph;
-import dk.brics.tajs.solver.GenericSolver;
 import dk.brics.tajs.solver.Message.Severity;
 import dk.brics.tajs.solver.NodeAndContext;
 import dk.brics.tajs.util.AnalysisException;
 import org.apache.log4j.Logger;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
 
+import static dk.brics.tajs.util.Collections.newList;
+import static dk.brics.tajs.util.Collections.newMap;
 import static dk.brics.tajs.util.Collections.newSet;
 import static dk.brics.tajs.util.Collections.singleton;
 
@@ -74,12 +78,14 @@ public class UserFunctionCalls {
     /**
      * Declares a function.
      */
-    public static void declareFunction(DeclareFunctionNode n, State state, Solver.SolverInterface c) {
+    public static void declareFunction(DeclareFunctionNode n, Solver.SolverInterface c) {
+        State state = c.getState();
+        PropVarOperations pv = c.getAnalysis().getPropVarOperations();
         Function fun = n.getFunction();
         boolean is_expression = n.isExpression();
         int result_reg = n.getResultRegister();
         // TODO: join function objects (p.72)? (if same n and same scope)
-        HeapContext functionHeapContext = c.getAnalysis().getContextSensitivityStrategy().makeFunctionHeapContext(fun, state, c);
+        HeapContext functionHeapContext = c.getAnalysis().getContextSensitivityStrategy().makeFunctionHeapContext(fun, c);
         ObjectLabel fn = new ObjectLabel(fun, functionHeapContext);
         // 13.2 step 2 and 3
         state.newObject(fn);
@@ -93,7 +99,7 @@ public class UserFunctionCalls {
             ObjectLabel front = new ObjectLabel(fun.getEntry().getFirstNode(), Kind.OBJECT);
             state.newObject(front);
             scope = ScopeChain.make(Collections.singleton(front), scope);
-            state.writePropertyWithAttributes(front, fun.getName(), f.setAttributes(false, true, true));
+            pv.writePropertyWithAttributes(front, fun.getName(), f.setAttributes(false, true, true));
             /* From ES5, Annex D:
              In Edition 3, the algorithm for the production FunctionExpression with an Identifier adds an object 
              created as if by new Object() to the scope chain to serve as a scope for looking up the name of the 
@@ -105,19 +111,19 @@ public class UserFunctionCalls {
              */ // TODO: use ES5 semantics of function expressions with identifier?
         } else if (!is_expression && fun.getName() != null) {
             // p.79 (function declaration)
-            state.declareAndWriteVariable(fun.getName(), f, true);
+            pv.declareAndWriteVariable(fun.getName(), f, true);
         }
         state.writeObjectScope(fn, scope);
         // 13.2 step 8
-        state.writePropertyWithAttributes(fn, "length", Value.makeNum(fun.getParameterNames().size()).setAttributes(true, true, true));
+        pv.writePropertyWithAttributes(fn, "length", Value.makeNum(fun.getParameterNames().size()).setAttributes(true, true, true));
         // 13.2 step 9 
         ObjectLabel prototype = new ObjectLabel(n, Kind.OBJECT);
         state.newObject(prototype);
         state.writeInternalPrototype(prototype, Value.makeObject(InitialStateBuilder.OBJECT_PROTOTYPE));
         // 13.2 step 10
-        state.writePropertyWithAttributes(prototype, "constructor", Value.makeObject(fn).setAttributes(true, false, false));
+        pv.writePropertyWithAttributes(prototype, "constructor", Value.makeObject(fn).setAttributes(true, false, false));
         // 13.2 step 11
-        state.writePropertyWithAttributes(fn, "prototype", Value.makeObject(prototype).setAttributes(false, true, false));
+        pv.writePropertyWithAttributes(fn, "prototype", Value.makeObject(prototype).setAttributes(false, true, false));
         state.writeInternalValue(prototype, Value.makeNum(Double.NaN)); // TODO: as in Rhino (?)
         if (result_reg != AbstractNode.NO_VALUE)
             state.writeRegister(result_reg, f);
@@ -126,9 +132,11 @@ public class UserFunctionCalls {
     /**
      * Enters a user-defined function.
      */
-    public static void enterUserFunction(ObjectLabel obj_f, CallInfo call, State caller_state, boolean implicit, Solver.SolverInterface c) {
+    public static void enterUserFunction(ObjectLabel obj_f, CallInfo call, boolean implicit, Solver.SolverInterface c) {
+        State caller_state = c.getState();
+        PropVarOperations pv = c.getAnalysis().getPropVarOperations();
         ScopeChain obj_f_sc = caller_state.readObjectScope(obj_f);
-        Value prototype = caller_state.readPropertyDirect(Collections.singleton(obj_f), "prototype");
+        Value prototype = pv.readPropertyDirect(Collections.singleton(obj_f), "prototype");
         if (obj_f_sc == null || prototype.isNone())
             return; // must be spurious dataflow
 
@@ -140,6 +148,7 @@ public class UserFunctionCalls {
                     + " to " + f + " at " + f.getSourceLocation());
 
         State edge_state = caller_state.clone();
+        c.setState(edge_state);
         HeapContext heapContext = c.getAnalysis().getContextSensitivityStrategy().makeActivationAndArgumentsHeapContext(edge_state, obj_f, call, c);
 
         Set<ObjectLabel> this_objs;
@@ -182,11 +191,11 @@ public class UserFunctionCalls {
         ScopeChain sc = ScopeChain.make(Collections.singleton(varobj), obj_f_sc);
 
         edge_state.setExecutionContext(new ExecutionContext(sc, singleton(varobj), newSet(this_objs)));
-        edge_state.declareAndWriteVariable("arguments", Value.makeObject(argobj), true);
+        pv.declareAndWriteVariable("arguments", Value.makeObject(argobj), true);
         edge_state.writeInternalPrototype(argobj, Value.makeObject(InitialStateBuilder.OBJECT_PROTOTYPE));
-        edge_state.writePropertyWithAttributes(argobj, "callee", Value.makeObject(obj_f).setAttributes(true, false, false));
+        pv.writePropertyWithAttributes(argobj, "callee", Value.makeObject(obj_f).setAttributes(true, false, false));
         int num_formals = f.getParameterNames().size();
-        edge_state.writePropertyWithAttributes(argobj, "length",
+        pv.writePropertyWithAttributes(argobj, "length",
                 (num_actuals_unknown ? Value.makeAnyNumUInt() : Value.makeNum(num_actuals)).setAttributes(true, false, false));
         for (int i = 0; i < num_formals || (!num_actuals_unknown && i < num_actuals); i++) {
             Value v;
@@ -194,11 +203,11 @@ public class UserFunctionCalls {
                 v = unknown_arg.summarize(extra_summarized);
             else if (i < num_actuals) {
                 v = actuals.get(i).summarize(extra_summarized);
-                edge_state.writePropertyWithAttributes(argobj, Integer.toString(i), v.setAttributes(false, false, false)); // from ES5 Annex E: "In Edition 5 the array indexed properties of argument objects that correspond to actual formal parameters are enumerable. In Edition 3, such properties were not enumerable."
+                pv.writePropertyWithAttributes(argobj, Integer.toString(i), v.setAttributes(false, false, false)); // from ES5 Annex E: "In Edition 5 the array indexed properties of argument objects that correspond to actual formal parameters are enumerable. In Edition 3, such properties were not enumerable."
             } else
                 v = Value.makeUndef(); // 10.1.3
             if (i < num_formals)
-                edge_state.declareAndWriteVariable(f.getParameterNames().get(i), v, true); // 10.1.3
+                pv.declareAndWriteVariable(f.getParameterNames().get(i), v, true); // 10.1.3
         }
         // FIXME: properties of 'arguments' should be shared with the formal parameters (see 10.1.8 item 4) - easy solution that does not require Reference types? - github #21
         // (see comment at NodeTransfer/WriteVariable... - also needs the other way around...)
@@ -221,15 +230,13 @@ public class UserFunctionCalls {
             }
         } else
             propagateToFunctionEntry(edge_state, n, obj_f, call, implicit, c);
+
+        c.setState(caller_state);
     }
 
     private static void propagateToFunctionEntry(State edge_state, AbstractNode n, ObjectLabel obj_f, CallInfo callInfo, boolean implicit, Solver.SolverInterface c) {
-        Function f = obj_f.getFunction();
-        Context caller_context = edge_state.getContext();
-
         Context edge_context = c.getAnalysis().getContextSensitivityStrategy().makeFunctionEntryContext(edge_state, obj_f, callInfo, c);
-
-        c.propagateToFunctionEntry(n, caller_context, edge_state, edge_context, f.getEntry(), implicit);
+        c.propagateToFunctionEntry(n, edge_state.getContext(), edge_state, edge_context, obj_f.getFunction().getEntry(), implicit);
     }
 
     /**
@@ -349,7 +356,7 @@ public class UserFunctionCalls {
             callee_summarized.addDefinitelySummarized(this_obj);
         } // FIXME: determineThis may create additional objects (wrapped primitives in toObjectLabels conversion) that should be included in callee_summarized!
         State calledge_state = c.getAnalysisLatticeElement().getCallGraph().getCallEdge(node, caller_context, f.getEntry(), edge_context).getState();
-        returnval = state.mergeFunctionReturn(c.getAnalysisLatticeElement().getStates(node.getBlock()).get(caller_context),
+        returnval = mergeFunctionReturn(state, c.getAnalysisLatticeElement().getStates(node.getBlock()).get(caller_context),
                 calledge_state,
                 c.getAnalysisLatticeElement().getState(BlockAndContext.makeEntry(node.getBlock(), caller_context)),
                 callee_summarized,
@@ -400,13 +407,165 @@ public class UserFunctionCalls {
     }
 
     /**
+     * Replaces all definitely non-modified parts of the return state by the corresponding parts of the given states.
+     * The store is restored from the call edge state; the stack is restored from the caller state.
+     * The caller_entry_state is used for resolving polymorphic values.
+     * Returns the updated returnval if non-null.
+     */
+    public static Value mergeFunctionReturn(State return_state, State caller_state, State calledge_state, State caller_entry_state,
+                                            Summarized callee_summarized, Value returnval, Value exval) {
+        return_state.makeWritableStore();
+        return_state.setStoreDefault(caller_state.getStoreDefault().freeze());
+        // strengthen each object and replace polymorphic values
+        State summarized_calledge = calledge_state.clone();
+        summarizeStore(summarized_calledge, return_state.getSummarized());
+        for (ObjectLabel objlabel : return_state.getStore().keySet()) {
+            Obj obj = return_state.getObject(objlabel, true); // always preparing for object updates, even if no changes are made
+            replacePolymorphicValues(obj, calledge_state, caller_entry_state, callee_summarized);
+            Obj calledge_obj = summarized_calledge.getObject(objlabel, false);
+            if (log.isDebugEnabled())
+                log.debug("strengthenNonModifiedParts on " + objlabel);
+            obj.replaceNonModifiedParts(calledge_obj);
+        }
+        // restore objects that were not used by the callee (i.e. either 'unknown' or never retrieved from basis_store to store)
+        for (Map.Entry<ObjectLabel, Obj> me : summarized_calledge.getStore().entrySet())
+            if (!return_state.getStore().containsKey(me.getKey()))
+                return_state.putObject(me.getKey(), me.getValue()); // obj is freshly created at summarizeStore, so freeze() unnecessary
+        // remove objects that are equal to the default object
+        return_state.removeObjectsEqualToDefault(caller_entry_state.getStoreDefault().isAllNone());
+        // restore execution_context and stacked_objlabels from caller
+        return_state.setExecutionContext(caller_state.getExecutionContext().clone());
+        return_state.getExecutionContext().summarize(callee_summarized);
+        return_state.setRegisters(summarize(caller_state.getRegisters(), callee_summarized));
+        if (Options.get().isLazyDisabled()) {
+            return_state.setStackedObjects(newSet(callee_summarized.summarize(caller_state.getStackedObjects())));
+        }
+        // merge summarized sets
+        return_state.getSummarized().add(calledge_state.getSummarized());
+        Value res = returnval == null ? null : replacePolymorphicValue(returnval, calledge_state, caller_entry_state, callee_summarized);
+        if (exval != null) {
+            return_state.writeRegister(AbstractNode.EXCEPTION_REG, replacePolymorphicValue(exval, calledge_state, caller_entry_state, callee_summarized));
+        }
+        log.debug("mergeFunctionReturn(...) done");
+        return res;
+    }
+
+    /**
+     * Replaces the polymorphic properties of the given object.
+     * Used by {@link #mergeFunctionReturn(State, State, State, State, Summarized, Value, Value)}.
+     */
+    private static void replacePolymorphicValues(Obj obj,
+                                                 State calledge_state,
+                                                 State caller_entry_state,
+                                                 Summarized callee_summarized) {
+        Map<String, Value> newproperties = newMap();
+        for (Map.Entry<String, Value> me : obj.getProperties().entrySet()) {
+            Value v = me.getValue();
+            v = replacePolymorphicValue(v, calledge_state, caller_entry_state, callee_summarized);
+            newproperties.put(me.getKey(), v);
+        }
+        obj.setProperties(newproperties);
+        obj.setDefaultArrayProperty(replacePolymorphicValue(obj.getDefaultArrayProperty(), calledge_state, caller_entry_state, callee_summarized));
+        obj.setDefaultNonArrayProperty(replacePolymorphicValue(obj.getDefaultNonArrayProperty(), calledge_state, caller_entry_state, callee_summarized));
+        obj.setInternalPrototype(replacePolymorphicValue(obj.getInternalPrototype(), calledge_state, caller_entry_state, callee_summarized));
+        obj.setInternalValue(replacePolymorphicValue(obj.getInternalValue(), calledge_state, caller_entry_state, callee_summarized));
+        // TODO: scope chain polymorphic?
+    }
+
+    /**
+     * Replaces the value if polymorphic.
+     * Used by {@link #replacePolymorphicValues(Obj, State, State, Summarized)}.
+     */
+    private static Value replacePolymorphicValue(Value v,
+                                                 State calledge_state,
+                                                 State caller_entry_state,
+                                                 Summarized callee_summarized) {
+        if (!v.isPolymorphic())
+            return v;
+        PropertyReference p = v.getPropertyReference();
+        ObjectLabel edge_objlabel = p.getObjectLabel();
+        Obj calledge_obj = calledge_state.getObject(edge_objlabel, false);
+        Value res;
+        switch (p.getKind()) {
+            case ORDINARY:
+                res = calledge_obj.getProperty(p.getPropertyName());
+                break;
+            case INTERNAL_VALUE:
+                res = calledge_obj.getInternalValue();
+                break;
+            case INTERNAL_PROTOTYPE:
+                res = calledge_obj.getInternalPrototype();
+                break;
+            case INTERNAL_SCOPE:
+            default:
+                throw new AnalysisException("Unexpected value variable");
+        }
+        if (res.isUnknown()) {
+            Obj caller_entry_obj = caller_entry_state.getObject(edge_objlabel, false);
+            switch (p.getKind()) {
+                case ORDINARY:
+                    res = caller_entry_obj.getProperty(p.getPropertyName());
+                    break;
+                case INTERNAL_VALUE:
+                    res = caller_entry_obj.getInternalValue();
+                    break;
+                case INTERNAL_PROTOTYPE:
+                    res = caller_entry_obj.getInternalPrototype();
+                    break;
+                case INTERNAL_SCOPE:
+                default:
+                    throw new AnalysisException("Unexpected value variable");
+            }
+            if (res.isUnknown())
+                throw new AnalysisException("Unexpected value (property reference: " + p + ", edge object label: " + edge_objlabel + ")");
+            res = res.summarize(calledge_state.getSummarized());
+        }
+        res = res.summarize(callee_summarized);
+        return v.replaceValue(res);
+    }
+
+    /**
+     * Summarizes the specified list of values.
+     * Always returns a new list.
+     */
+    private static List<Value> summarize(List<Value> vs, Summarized s) {
+        List<Value> res = newList();
+        for (int i = 0; i < vs.size(); i++) {
+            Value v = vs.get(i);
+            res.add(i, v != null ? v.summarize(s) : null);
+        }
+        return res;
+    }
+
+    /**
+     * Summarizes the store according to the given summarization.
+     * Used by {@link #mergeFunctionReturn(State, State, State, State, Summarized, Value, Value)}.
+     */
+    private static void summarizeStore(State state, Summarized s) {
+        state.makeWritableStore();
+        for (ObjectLabel objlabel : newList(state.getStore().keySet())) {
+            // summarize the object property values
+            Obj obj = state.getObject(objlabel, false);
+            Obj summarized_obj = obj.summarize(s);
+            if (!summarized_obj.equals(obj))
+                state.putObject(objlabel, summarized_obj);
+            if (objlabel.isSingleton()) {
+                if (s.isMaybeSummarized(objlabel))
+                    state.propagateObj(objlabel.makeSummary(), state, objlabel, true);
+                if (s.isDefinitelySummarized(objlabel))
+                    state.removeObject(objlabel);
+            }
+        }
+    }
+
+    /**
      * Implicit call to a user function.
      *
      * @param obj_f the function to call
      * @param callinfo information about the call
      * @return new or exising implicit-after-call block
      */
-    public static BasicBlock implicitUserFunctionCall(ObjectLabel obj_f, CallInfo callinfo, GenericSolver<State, Context, CallEdge, IAnalysisMonitoring, Analysis>.SolverInterface c) {
+    public static BasicBlock implicitUserFunctionCall(ObjectLabel obj_f, CallInfo callinfo, Solver.SolverInterface c) {
         // create implicit after-call block if not already there
         BasicBlock implicitAfterCall = c.getNode().getImplicitAfterCall();
         if (implicitAfterCall == null) {
@@ -418,7 +577,7 @@ public class UserFunctionCalls {
             c.getNode().setImplicitAfterCall(implicitAfterCall);
         }
         // call the function
-        enterUserFunction(obj_f, callinfo, c.getState(), true, c);
+        enterUserFunction(obj_f, callinfo, true, c);
         return implicitAfterCall;
     }
 
@@ -427,13 +586,13 @@ public class UserFunctionCalls {
      *
      * @param result            list of values containing results (may be extended by this call)
      * @param anyUserFunctions  if set, at least one user function has been called
-     * @param anyHostFunctions  if set, at least one host function has been called (so keep current state)
+     * @param weak              if set, keep current state
      * @param implicitAfterCall the implicit-after-call block
      * @return return value, none if no ordinary return flow
      */
-    public static Value implicitUserFunctionReturn(List<Value> result, boolean anyUserFunctions, boolean anyHostFunctions, BasicBlock implicitAfterCall, GenericSolver<State, Context, CallEdge, IAnalysisMonitoring, Analysis>.SolverInterface c) {
+    public static Value implicitUserFunctionReturn(Collection<Value> result, boolean anyUserFunctions, boolean weak, BasicBlock implicitAfterCall, Solver.SolverInterface c) {
         List<Value> registers = dk.brics.tajs.util.Collections.newList(c.getState().getRegisters());
-        if (!anyHostFunctions) {
+        if (!weak) {
             c.getState().setToNone();
         }
         if (anyUserFunctions) {
@@ -444,7 +603,7 @@ public class UserFunctionCalls {
                 c.getState().setRegisters(registers);
             }
         }
-        if (c.getState().isNone())
+        if (c.getState().isNone() && !weak)
             return Value.makeNone();
         if (result.isEmpty()) {
             c.getState().setToNone();

@@ -20,6 +20,7 @@ import dk.brics.tajs.analysis.Conversion;
 import dk.brics.tajs.analysis.FunctionCalls;
 import dk.brics.tajs.analysis.InitialStateBuilder;
 import dk.brics.tajs.analysis.NativeFunctions;
+import dk.brics.tajs.analysis.PropVarOperations;
 import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.analysis.dom.DOMObjects;
 import dk.brics.tajs.analysis.dom.DOMWindow;
@@ -45,17 +46,19 @@ public class DOMStringList {
 
     public static ObjectLabel INSTANCES;
 
-    public static void build(State s) {
+    public static void build(Solver.SolverInterface c) {
+        State s = c.getState();
+        PropVarOperations pv = c.getAnalysis().getPropVarOperations();
         CONSTRUCTOR = new ObjectLabel(DOMObjects.STRINGLIST_CONSTRUCTOR, ObjectLabel.Kind.FUNCTION);
         PROTOTYPE = new ObjectLabel(DOMObjects.STRINGLIST_PROTOTYPE, ObjectLabel.Kind.OBJECT);
         INSTANCES = new ObjectLabel(DOMObjects.STRINGLIST_INSTANCES, ObjectLabel.Kind.OBJECT);
 
         // Constructor Object
         s.newObject(CONSTRUCTOR);
-        s.writePropertyWithAttributes(CONSTRUCTOR, "length", Value.makeNum(0).setAttributes(true, true, true));
-        s.writePropertyWithAttributes(CONSTRUCTOR, "prototype", Value.makeObject(PROTOTYPE).setAttributes(true, true, true));
+        pv.writePropertyWithAttributes(CONSTRUCTOR, "length", Value.makeNum(0).setAttributes(true, true, true));
+        pv.writePropertyWithAttributes(CONSTRUCTOR, "prototype", Value.makeObject(PROTOTYPE).setAttributes(true, true, true));
         s.writeInternalPrototype(CONSTRUCTOR, Value.makeObject(InitialStateBuilder.OBJECT_PROTOTYPE));
-        s.writeProperty(DOMWindow.WINDOW, "StringList", Value.makeObject(CONSTRUCTOR));
+        pv.writeProperty(DOMWindow.WINDOW, "StringList", Value.makeObject(CONSTRUCTOR));
 
         // Prototype object.
         s.newObject(PROTOTYPE);
@@ -69,7 +72,7 @@ public class DOMStringList {
          * Properties.
          */
         // DOM Level 3
-        createDOMProperty(s, INSTANCES, "length", Value.makeAnyNumUInt().setReadOnly());
+        createDOMProperty(INSTANCES, "length", Value.makeAnyNumUInt().setReadOnly(), c);
 
         s.multiplyObject(INSTANCES);
         INSTANCES = INSTANCES.makeSingleton().makeSummary();
@@ -78,14 +81,15 @@ public class DOMStringList {
          * Functions.
          */
         // DOM Level 3
-        createDOMFunction(s, PROTOTYPE, DOMObjects.STRINGLIST_ITEM, "item", 1);
-        createDOMFunction(s, PROTOTYPE, DOMObjects.STRINGLIST_CONTAINS, "contains", 1);
+        createDOMFunction(PROTOTYPE, DOMObjects.STRINGLIST_ITEM, "item", 1, c);
+        createDOMFunction(PROTOTYPE, DOMObjects.STRINGLIST_CONTAINS, "contains", 1, c);
 
         // DOM Level 3
-        createDOMProperty(s, DOMConfiguration.INSTANCES, "parameterNames", Value.makeObject(PROTOTYPE));
+        createDOMProperty(DOMConfiguration.INSTANCES, "parameterNames", Value.makeObject(PROTOTYPE), c);
     }
 
-    public static Value evaluate(DOMObjects nativeObject, FunctionCalls.CallInfo call, State s, Solver.SolverInterface c) {
+    public static Value evaluate(DOMObjects nativeObject, FunctionCalls.CallInfo call, Solver.SolverInterface c) {
+        State s = c.getState();
         switch (nativeObject) {
             case STRINGLIST_ITEM: {
                 NativeFunctions.expectParameters(nativeObject, call, c, 1, 1);

@@ -9,7 +9,6 @@ import dk.brics.tajs.flowgraph.jsnodes.IfNode;
 import dk.brics.tajs.flowgraph.jsnodes.Node;
 import dk.brics.tajs.flowgraph.jsnodes.ReadPropertyNode;
 import dk.brics.tajs.flowgraph.jsnodes.ReadVariableNode;
-import dk.brics.tajs.flowgraph.jsnodes.WriteVariableNode;
 import dk.brics.tajs.lattice.CallEdge;
 import dk.brics.tajs.lattice.Context;
 import dk.brics.tajs.lattice.HostObject;
@@ -196,8 +195,8 @@ public class PhaseMonitoring implements IAnalysisMonitoring {
     }
 
     @Override
-    public void visitReadProperty(ReadPropertyNode n, Set<ObjectLabel> objlabels, Str propertystr, boolean maybe, State state) {
-        activeMonitor.visitReadProperty(n, objlabels, propertystr, maybe, state);
+    public void visitReadProperty(ReadPropertyNode n, Set<ObjectLabel> objlabels, Str propertystr, boolean maybe, State state, Value v) {
+        activeMonitor.visitReadProperty(n, objlabels, propertystr, maybe, state, v);
     }
 
     @Override
@@ -235,8 +234,4 @@ public class PhaseMonitoring implements IAnalysisMonitoring {
         activeMonitor.visitVariableOrProperty(var, loc, value, context, state);
     }
 
-    @Override
-    public void visitWriteVariable(WriteVariableNode n, Value v, State state) {
-        activeMonitor.visitWriteVariable(n, v, state);
-    }
 }

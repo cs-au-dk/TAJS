@@ -1,5 +1,6 @@
 package dk.brics.tajs.js2flowgraph;
 
+import dk.brics.tajs.flowgraph.AbstractNode;
 import dk.brics.tajs.flowgraph.BasicBlock;
 import dk.brics.tajs.flowgraph.FlowGraph;
 import dk.brics.tajs.flowgraph.FlowGraphFragment;
@@ -49,7 +50,9 @@ public class FlowGraphMutator {
         env = env.makeRegisterManager(new RegisterManager(env.getFunction().getMaxRegister() + 1));    // start allocating registers one more than the previous max
         BasicBlock declarationBlock = makeBasicBlock(env.getFunction(), extenderBlock.getExceptionHandler(), functionAndBlocksManager);
         env = env.makeDeclarationBlock(declarationBlock);
-        env = env.makeAppendBlock(declarationBlock);
+        BasicBlock firstBodyBlock = makeBasicBlock(env.getFunction(), extenderBlock.getExceptionHandler(), functionAndBlocksManager);
+        declarationBlock.addSuccessor(firstBodyBlock);
+        env = env.makeAppendBlock(firstBodyBlock);
 
         if (resultVariableName != null) {
             env = env.makeUnevalExpressionResult(new UnevalExpressionResult(resultVariableName, extenderNode.getResultRegister()));
@@ -67,23 +70,25 @@ public class FlowGraphMutator {
 
             // insert the new code right after the extendedNode (to model function reachability and preserve the number of successors of extendedNode)
             extenderBlock.getSuccessors().clear();
-            extenderBlock.addSuccessor(env.getAppendBlock()); // the edge to the successor of extendedNode is set via close(..) below
+            extenderBlock.addSuccessor(declarationBlock); // the edge to the successor of extendedNode is set via close(..) below
 
             // extract the created callback
             entryFunction = flowGraphBuilder.getEventHandlers().get(flowGraphBuilder.getEventHandlers().size() - 1).getFirst(); // TODO: (#129) a bit hacky to depend on the list order...
             entryBlock = null; // this variant is a (pseudo) function, not just a collection of basic blocks
         } else {
-            // insert a dummy node to prevent empty basic blocks
-            final ConstantNode undef = ConstantNode.makeUndefined(env.getResultRegister(), extenderNode.getSourceLocation()); // use a constant node to get uniform treatment with other "functions"
-            undef.setArtificial();
-            env.getDeclarationBlock().addNode(undef);
-
             // transform the code as embedded code
             JavaScriptSource script = JavaScriptSource.makeEmbeddedCode(fileName, newSourceCode, 0, 0);
             flowGraphBuilder.transformCode(script, 0, 0);
 
+            if (declarationBlock.getNodes().isEmpty()) {
+                // insert a dummy node to prevent empty basic blocks
+                final ConstantNode undef = ConstantNode.makeUndefined(AbstractNode.NO_VALUE, extenderNode.getSourceLocation());
+                undef.setArtificial();
+                declarationBlock.addNode(undef);
+            }
+
             entryFunction = null; // this variant is not a (pseudo) function but a collection of basic blocks
-            entryBlock = env.getAppendBlock();
+            entryBlock = declarationBlock;
             functionAndBlocksManager.registerUnreachableSyntacticSuccessor(extenderBlock, declarationBlock);
         }
 

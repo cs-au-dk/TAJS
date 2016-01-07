@@ -5,4 +5,4 @@
 /doc
 .idea/workspace.xml
 **/*.iml
-/resources/local-development.properties
+/local-development.properties

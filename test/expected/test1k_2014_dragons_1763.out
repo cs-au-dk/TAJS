@@ -1,4 +1,3 @@
-test/1k2014dragons/shims.js:19:5: [definite] The assignment to AudioContext has no effect
 test/1k2014dragons/shims.js:19:5: [definite] The conditional expression is always true
 test/1k2014dragons/shims.js:22:5: [definite] Property is null/undefined
 test/1k2014dragons/shims.js:22:5: [definite] The conditional expression is always false
@@ -17,11 +16,7 @@ test/1k2014dragons/1763.js:16:5: [maybe] RangeError, invalid value of array leng
 test/1k2014dragons/1763.js:18:12: [maybe] RangeError, invalid value of array length
 test/1k2014dragons/1763.js:20:5: [maybe] TypeError, accessing property of null/undefined
 test/1k2014dragons/1763.js:31:1: [maybe] TypeError, accessing property of null/undefined
-test/1k2014dragons/1763.js:33:1: [maybe] TypeError, call to non-function
-test/1k2014dragons/1763.js:37:1: [maybe] TypeError, call to non-function
 test/1k2014dragons/1763.js:40:9: [maybe] TypeError, accessing property of null/undefined
-test/1k2014dragons/1763.js:45:1: [maybe] TypeError, call to non-function
-test/1k2014dragons/1763.js:46:1: [maybe] TypeError, call to non-function
 test/1k2014dragons/1763.js:74:14: [maybe] TypeError, accessing property of null/undefined
 test/1k2014dragons/1763.js:95:22: [maybe] TypeError, accessing property of null/undefined
 test/1k2014dragons/1763.js:95:28: [maybe] TypeError, accessing property of null/undefined
@@ -36,7 +31,6 @@ test/1k2014dragons/shims.js:42:46: [maybe] TypeError, call to non-function
 test/1k2014dragons/shims.js:55:9: [maybe] TypeError, accessing property of null/undefined
 test/1k2014dragons/1763.js:5:9: [maybe] Reading absent property width
 test/1k2014dragons/1763.js:6:9: [maybe] Reading absent property height
-test/1k2014dragons/1763.js:9:5: [maybe] Reading absent property addEventListener
 test/1k2014dragons/1763.js:49:11: [maybe] Reading absent property wheelDelta
 test/1k2014dragons/1763.js:49:28: [maybe] Reading absent property detail
 test/1k2014dragons/shims.js:10:9: [maybe] Reading absent property body
@@ -61,4 +55,4 @@ test/1k2014dragons/1763.js:95:17: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1763.js:95:22: [maybe] Reading absent property (computed name)
 test/1k2014dragons/1763.js:95:22: [maybe] Reading absent property (computed name)
 test/1k2014dragons/shims.js:9:9: [maybe] Reading absent property (computed name)
-test/1k2014dragons/shims.js,test/1k2014dragons/1763.js: [maybe] Uncaught exception, constructed at [test/1k2014dragons/1763.js:16:5, test/1k2014dragons/1763.js:18:12, test/1k2014dragons/1763.js:20:5, test/1k2014dragons/1763.js:31:1, test/1k2014dragons/1763.js:33:1, test/1k2014dragons/1763.js:37:1, test/1k2014dragons/1763.js:40:9, test/1k2014dragons/1763.js:45:1, test/1k2014dragons/1763.js:46:1, test/1k2014dragons/1763.js:74:14, test/1k2014dragons/1763.js:95:22, test/1k2014dragons/1763.js:95:28, test/1k2014dragons/shims.js:31:1, test/1k2014dragons/shims.js:34:1, test/1k2014dragons/shims.js:35:1, test/1k2014dragons/shims.js:37:9, test/1k2014dragons/shims.js:42:18, test/1k2014dragons/shims.js:42:46, test/1k2014dragons/shims.js:55:9]
+test/1k2014dragons/shims.js,test/1k2014dragons/1763.js: [maybe] Uncaught exception, constructed at [test/1k2014dragons/1763.js:16:5, test/1k2014dragons/1763.js:18:12, test/1k2014dragons/1763.js:20:5, test/1k2014dragons/1763.js:31:1, test/1k2014dragons/1763.js:40:9, test/1k2014dragons/1763.js:74:14, test/1k2014dragons/1763.js:95:22, test/1k2014dragons/1763.js:95:28, test/1k2014dragons/shims.js:31:1, test/1k2014dragons/shims.js:34:1, test/1k2014dragons/shims.js:35:1, test/1k2014dragons/shims.js:37:9, test/1k2014dragons/shims.js:42:18, test/1k2014dragons/shims.js:42:46, test/1k2014dragons/shims.js:55:9]

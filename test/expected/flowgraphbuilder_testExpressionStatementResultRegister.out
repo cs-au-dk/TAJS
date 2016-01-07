@@ -158,7 +158,6 @@ function(o)
 
 test/flowgraphbuilder/testExpressionStatementResultRegister.js:5:16: [definite] Property is null/undefined
 test/flowgraphbuilder/testExpressionStatementResultRegister.js:6:17: [definite] Variable var0 is null/undefined
-test/flowgraphbuilder/testExpressionStatementResultRegister.js:22:20: [definite] The assignment to var2 has no effect
 test/flowgraphbuilder/testExpressionStatementResultRegister.js:25:9: [definite] The conditional expression is always false
 test/flowgraphbuilder/testExpressionStatementResultRegister.js:25:13: [definite] Variable var2 is null/undefined
 test/flowgraphbuilder/testExpressionStatementResultRegister.js:10:5: [definite] Dead assignment, property xxx14 is never read

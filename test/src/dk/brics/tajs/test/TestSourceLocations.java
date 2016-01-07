@@ -1,16 +1,16 @@
 package dk.brics.tajs.test;
 
+import dk.brics.tajs.Main;
+import dk.brics.tajs.util.AnalysisLimitationException;
 import org.junit.Before;
 import org.junit.Test;
-
-import dk.brics.tajs.options.Options;
 
 @SuppressWarnings("static-method")
 public class TestSourceLocations {
 	
 	@Before
 	public void before() {
-		Options.reset();
+		Main.reset();
 	}
 
 	@Test
@@ -41,6 +41,27 @@ public class TestSourceLocations {
 		String[] args = { "-quiet", "-test", "test/sourcelocations/htmlWithExternalJavascript.html" };
 		Misc.run(args);
 		Misc.checkSystemOutput();
+	}
+
+	@Test(expected = AnalysisLimitationException.class)
+	public void sourcelocations_htmlWithExternalJavascriptUsingFileProtocol() {
+		Misc.init();
+		String[] args = {"-quiet", "-test", "test/sourcelocations/htmlWithExternalJavascriptUsingFileProtocol.html"};
+		Misc.run(args);
+	}
+
+	@Test(expected = AnalysisLimitationException.class)
+	public void sourcelocations_htmlWithExternalJavascriptUsingHTTPProtocol() {
+		Misc.init();
+		String[] args = {"-quiet", "-test", "test/sourcelocations/htmlWithExternalJavascriptUsingHTTPProtocol.html"};
+		Misc.run(args);
+	}
+
+	@Test(expected = AnalysisLimitationException.class)
+	public void sourcelocations_htmlWithExternalJavascriptUsingAgnosticProtocol() {
+		Misc.init();
+		String[] args = {"-quiet", "-test", "test/sourcelocations/htmlWithExternalJavascriptUsingAgnosticProtocol.html"};
+		Misc.run(args);
 	}
 
 	@Test

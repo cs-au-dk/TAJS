@@ -6,6 +6,7 @@ import dk.brics.tajs.monitoring.IAnalysisMonitoring;
 import dk.brics.tajs.monitoring.Monitoring;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.test.monitors.OrdinaryExitReachableCheckerMonitor;
+import dk.brics.tajs.util.AnalysisLimitationException;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -24,6 +25,7 @@ public class Test1K2012Love {
         Options.get().enableTest();
         Options.get().enableIncludeDom();
         Options.get().enableUnevalizer();
+        Options.get().enablePolyfillMDN();
         monitoring = CompositeMonitoring.buildFromList(new Monitoring(), new OrdinaryExitReachableCheckerMonitor());
     }
 
@@ -81,7 +83,6 @@ public class Test1K2012Love {
         Misc.checkSystemOutput();
     }
 
-    @Ignore // FIXME TAJS model of Array.some
     @Test
     public void test1k_2012_love_1019() {
         Misc.init();
@@ -157,7 +158,6 @@ public class Test1K2012Love {
         Misc.checkSystemOutput();
     }
 
-    @Ignore // FIXME TAJS model of Array.forEach
     @Test
     public void test1k_2012_love_1044() {
         Misc.init();
@@ -185,7 +185,6 @@ public class Test1K2012Love {
         Misc.checkSystemOutput();
     }
 
-    @Ignore // FIXME TAJS model of Array.forEach
     @Test
     public void test1k_2012_love_1048() {
         Misc.init();
@@ -204,7 +203,6 @@ public class Test1K2012Love {
         Misc.checkSystemOutput();
     }
 
-    @Ignore // FIXME TAJS model of Array.forEach
     @Test
     public void test1k_2012_love_1053() {
         Misc.init();
@@ -259,8 +257,7 @@ public class Test1K2012Love {
         Misc.checkSystemOutput();
     }
 
-    @Ignore // FIXME TAJS precision for eval
-    @Test
+    @Test(expected = AnalysisLimitationException.class /* eval of crazy string: (("({" + (((((((d).getElementById)(("l"))).value).trim)()).replace)(((RegExp)(("\n"),("g"))),(","))) + "})")*/)
     public void test1k_2012_love_1066() {
         Misc.init();
         Misc.captureSystemOutput();
@@ -342,7 +339,6 @@ public class Test1K2012Love {
         Misc.checkSystemOutput();
     }
 
-    @Ignore // FIXME TAJS BUG! typecast error, see dk.brics.tajs.test.TestMicro.classCastExceptionBug()
     @Test
     public void test1k_2012_love_1102() {
         Misc.init();
@@ -462,7 +458,6 @@ public class Test1K2012Love {
         Misc.checkSystemOutput();
     }
 
-    @Ignore // FIXME TAJS BUG! uneval nullpointer, see dk.brics.tajs.test.TestMicro.unevalNullPointerExceptionBug()
     @Test
     public void test1k_2012_love_1156() {
         Misc.init();
@@ -500,7 +495,6 @@ public class Test1K2012Love {
         Misc.checkSystemOutput();
     }
 
-    @Ignore // FIXME TAJS model of Array.forEach
     @Test
     public void test1k_2012_love_1166() {
         Misc.init();
@@ -510,9 +504,7 @@ public class Test1K2012Love {
         Misc.checkSystemOutput();
     }
 
-    @Ignore
-    // FIXME TAJS BUG! parse error, see dk.brics.tajs.test.TestFlowgraphBuilder.flowgraphbuilder_StringIndexOUtOfBoundsException_bug()
-    @Test
+    @Test(expected = StringIndexOutOfBoundsException.class /* Bug in the JavaScript parser... */)
     public void test1k_2012_love_1168() {
         Misc.init();
         Misc.captureSystemOutput();
@@ -651,7 +643,6 @@ public class Test1K2012Love {
         Misc.checkSystemOutput();
     }
 
-    @Ignore // FIXME TAJS model of Array.map
     @Test
     public void test1k_2012_love_1201() {
         Misc.init();
@@ -679,7 +670,6 @@ public class Test1K2012Love {
         Misc.checkSystemOutput();
     }
 
-    @Ignore // FIXME TAJS model of Array.filter
     @Test
     public void test1k_2012_love_1218() {
         Misc.init();
@@ -771,7 +761,6 @@ public class Test1K2012Love {
         Misc.checkSystemOutput();
     }
 
-    @Ignore // FIXME TAJS model of Array.filter
     @Test
     public void test1k_2012_love_1246() {
         Misc.init();
@@ -817,7 +806,6 @@ public class Test1K2012Love {
         Misc.checkSystemOutput();
     }
 
-    @Ignore // FIXME TAJS model of Array.forEach
     @Test
     public void test1k_2012_love_1252() {
         Misc.init();

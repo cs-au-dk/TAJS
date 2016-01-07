@@ -3,6 +3,7 @@ package dk.brics.tajs.analysis.dom.html5;
 import dk.brics.tajs.analysis.Exceptions;
 import dk.brics.tajs.analysis.FunctionCalls;
 import dk.brics.tajs.analysis.InitialStateBuilder;
+import dk.brics.tajs.analysis.PropVarOperations;
 import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.analysis.dom.DOMObjects;
 import dk.brics.tajs.analysis.dom.DOMWindow;
@@ -20,7 +21,9 @@ public class ScriptProcessorNode {
 
     public static ObjectLabel INSTANCES;
 
-    public static void build(State s) {
+    public static void build(Solver.SolverInterface c) {
+        State s = c.getState();
+        PropVarOperations pv = c.getAnalysis().getPropVarOperations();
 
         CONSTRUCTOR = new ObjectLabel(DOMObjects.SCRIPTPROCESSORNODE_CONSTRUCTOR, ObjectLabel.Kind.FUNCTION);
         PROTOTYPE = new ObjectLabel(DOMObjects.SCRIPTPROCESSORNODE_PROTOTYPE, ObjectLabel.Kind.OBJECT);
@@ -28,10 +31,10 @@ public class ScriptProcessorNode {
 
         // Constructor Object
         s.newObject(CONSTRUCTOR);
-        s.writePropertyWithAttributes(CONSTRUCTOR, "length", Value.makeNum(0).setAttributes(true, true, true));
-        s.writePropertyWithAttributes(CONSTRUCTOR, "prototype", Value.makeObject(PROTOTYPE).setAttributes(true, true, true));
+        pv.writePropertyWithAttributes(CONSTRUCTOR, "length", Value.makeNum(0).setAttributes(true, true, true));
+        pv.writePropertyWithAttributes(CONSTRUCTOR, "prototype", Value.makeObject(PROTOTYPE).setAttributes(true, true, true));
         s.writeInternalPrototype(CONSTRUCTOR, Value.makeObject(InitialStateBuilder.FUNCTION_PROTOTYPE));
-        s.writeProperty(DOMWindow.WINDOW, "ScriptProcessorNode", Value.makeObject(CONSTRUCTOR));
+        pv.writeProperty(DOMWindow.WINDOW, "ScriptProcessorNode", Value.makeObject(CONSTRUCTOR));
 
         // Prototype Object
         s.newObject(PROTOTYPE);
@@ -44,7 +47,7 @@ public class ScriptProcessorNode {
         /*
          * Properties.
          */
-        createDOMProperty(s, INSTANCES, "bufferSize", Value.makeAnyNumUInt().setReadOnly());
+        createDOMProperty(INSTANCES, "bufferSize", Value.makeAnyNumUInt().setReadOnly(), c);
 
         s.multiplyObject(INSTANCES);
         INSTANCES = INSTANCES.makeSingleton().makeSummary();
@@ -54,10 +57,11 @@ public class ScriptProcessorNode {
          */
     }
 
-    public static Value evaluate(DOMObjects nativeObject, FunctionCalls.CallInfo call, State s, Solver.SolverInterface c) {
+    public static Value evaluate(DOMObjects nativeObject, FunctionCalls.CallInfo call, Solver.SolverInterface c) {
+        State s = c.getState();
         switch (nativeObject) {
             case SCRIPTPROCESSORNODE_CONSTRUCTOR:
-                Exceptions.throwTypeError(s, c);
+                Exceptions.throwTypeError(c);
                 s.setToNone();
             default: {
                 throw new UnsupportedOperationException("Unsupported Native Object: " + nativeObject);

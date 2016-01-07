@@ -36,7 +36,7 @@ import static dk.brics.tajs.analysis.dom.DOMFunctions.createDOMFunction;
  */
 public class DocumentEvent {
 
-    public static void build(State s) {
+    public static void build(Solver.SolverInterface c) {
 
         /*
          * Properties.
@@ -46,10 +46,11 @@ public class DocumentEvent {
         /*
          * Functions.
          */
-        createDOMFunction(s, DOMDocument.PROTOTYPE, DOMObjects.DOCUMENT_EVENT_CREATE_EVENT, "createEvent", 1);
+        createDOMFunction(DOMDocument.PROTOTYPE, DOMObjects.DOCUMENT_EVENT_CREATE_EVENT, "createEvent", 1, c);
     }
 
-    public static Value evaluate(DOMObjects nativeObject, FunctionCalls.CallInfo call, State s, Solver.SolverInterface c) {
+    public static Value evaluate(DOMObjects nativeObject, FunctionCalls.CallInfo call, Solver.SolverInterface c) {
+        State s = c.getState();
         switch (nativeObject) {
             case DOCUMENT_EVENT_CREATE_EVENT: {
                 NativeFunctions.expectParameters(nativeObject, call, c, 1, 1);

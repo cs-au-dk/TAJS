@@ -1,4 +1,3 @@
-test/10k/lines.html:180:13: [definite] The assignment to c has no effect
 test/10k/lines.html:293:25: [definite] The conditional expression is always true
 test/10k/lines.html:437:36: [definite] Too few parameters to function String.prototype.charAt
 test/10k/lines.html:60:13: [maybe] TypeError, accessing property of null/undefined

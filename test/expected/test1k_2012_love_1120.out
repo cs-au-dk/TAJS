@@ -1,8 +1,7 @@
 TAJS-dynamic-code(test/1k2012love/1120.js:22:7):1:36: [definite] The conditional expression is always false
 TAJS-dynamic-code(test/1k2012love/1120.js:22:7):1:47: [definite] The conditional expression is always false
-TAJS-dynamic-code(test/1k2012love/1120.js:32:14):1:13: [definite] Unreachable function
+TAJS-dynamic-code(test/1k2012love/1120.js:32:14):1:38: [definite] The conditional expression is always false
 TAJS-dynamic-code(test/1k2012love/1120.js:2:5):1:53: [maybe] TypeError, accessing property of null/undefined
-TAJS-dynamic-code(test/1k2012love/1120.js:2:5):1:53: [maybe] TypeError, argument is not of expected type: Node.prototype
 TAJS-dynamic-code(test/1k2012love/1120.js:38:24):1:122: [maybe] ReferenceError, reading absent variable g
 TAJS-dynamic-code(test/1k2012love/1120.js:38:24):1:122: [maybe] TypeError, accessing property of null/undefined
 TAJS-dynamic-code(test/1k2012love/1120.js:38:24):1:138: [maybe] ReferenceError, reading absent variable g
@@ -31,6 +30,7 @@ test/1k2012love/1120.js:37:131: [maybe] TypeError, accessing property of null/un
 test/1k2012love/shim.js:8:9: [maybe] TypeError, accessing property of null/undefined
 test/1k2012love/shim.js:8:9: [maybe] TypeError, call to non-function
 test/1k2012love/shim.js:9:1: [maybe] TypeError, accessing property of null/undefined
+TAJS-dynamic-code(test/1k2012love/1120.js:32:14):1:26: [maybe] Reading absent property value
 TAJS-dynamic-code(test/1k2012love/1120.js:38:24):1:31: [maybe] Reading absent property pageY
 TAJS-dynamic-code(test/1k2012love/1120.js:38:24):1:39: [maybe] Reading absent property offsetTop
 TAJS-dynamic-code(test/1k2012love/1120.js:38:24):1:61: [maybe] Reading absent property pageX
@@ -40,6 +40,7 @@ test/1k2012love/shim.js:6:9: [maybe] Reading absent property body
 test/1k2012love/shim.js:8:9: [maybe] Reading absent property getContext
 test/1k2012love/shim.js:9:1: [maybe] Reading absent property body
 TAJS-dynamic-code(test/1k2012love/1120.js:22:7):1:27: [maybe] The variable E has values with different types
+TAJS-dynamic-code(test/1k2012love/1120.js:32:14):1:34: [maybe] The variable E has values with different types
 TAJS-dynamic-code(test/1k2012love/1120.js:38:24):1:31: [maybe] Conversion to number yields NaN
 TAJS-dynamic-code(test/1k2012love/1120.js:38:24):1:31: [maybe] Converting primitive number to object
 TAJS-dynamic-code(test/1k2012love/1120.js:38:24):1:31: [maybe] The variable H has values with different types
@@ -64,6 +65,9 @@ TAJS-dynamic-code(test/1k2012love/1120.js:5:5):1:140: [maybe] Reading absent pro
 TAJS-dynamic-code(test/1k2012love/1120.js:5:5):1:140: [maybe] Reading absent property (computed name)
 TAJS-dynamic-code(test/1k2012love/1120.js:5:5):1:159: [maybe] Reading absent property (computed name)
 TAJS-dynamic-code(test/1k2012love/1120.js:5:5):1:177: [maybe] Reading absent property (computed name)
+TAJS-dynamic-code(test/1k2012love/1120.js:7:5):1:26: [maybe] Conversion from string to number yields NaN
+TAJS-dynamic-code(test/1k2012love/1120.js:7:5):1:26: [maybe] Conversion to number yields NaN
+TAJS-dynamic-code(test/1k2012love/1120.js:7:5):1:40: [maybe] The variable O has values with different types
 TAJS-dynamic-code(test/1k2012love/1120.js:8:5):1:24: [maybe] Reading absent property (computed name)
 test/1k2012love/1120.js:37:1: [maybe] Reading absent property (computed name)
 test/1k2012love/1120.js:37:13: [maybe] Reading absent property (computed name)

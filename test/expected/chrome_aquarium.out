@@ -1,4 +1,3 @@
-test/chromeexperiments/aquarium.html:161:1: [definite] The assignment to onLoad has no effect
 test/chromeexperiments/aquarium.html:120:12: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/aquarium.html:120:23: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/aquarium.html:121:12: [maybe] TypeError, accessing property of null/undefined

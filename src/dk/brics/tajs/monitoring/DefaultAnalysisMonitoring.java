@@ -25,7 +25,6 @@ import dk.brics.tajs.flowgraph.jsnodes.IfNode;
 import dk.brics.tajs.flowgraph.jsnodes.Node;
 import dk.brics.tajs.flowgraph.jsnodes.ReadPropertyNode;
 import dk.brics.tajs.flowgraph.jsnodes.ReadVariableNode;
-import dk.brics.tajs.flowgraph.jsnodes.WriteVariableNode;
 import dk.brics.tajs.lattice.CallEdge;
 import dk.brics.tajs.lattice.Context;
 import dk.brics.tajs.lattice.HostObject;
@@ -169,7 +168,7 @@ public class DefaultAnalysisMonitoring implements IAnalysisMonitoring {
     }
 
     @Override
-    public void visitReadProperty(ReadPropertyNode n, Set<ObjectLabel> objlabels, Str propertystr, boolean maybe, State state) {
+    public void visitReadProperty(ReadPropertyNode n, Set<ObjectLabel> objlabels, Str propertystr, boolean maybe, State state, Value v) {
     }
 
     @Override
@@ -200,7 +199,4 @@ public class DefaultAnalysisMonitoring implements IAnalysisMonitoring {
     public void visitVariableOrProperty(String var, SourceLocation loc, Value value, Context context, State state) {
     }
 
-    @Override
-    public void visitWriteVariable(WriteVariableNode n, Value v, State state) {
-    }
 }

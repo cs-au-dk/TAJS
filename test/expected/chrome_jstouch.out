@@ -1,7 +1,6 @@
 test/chromeexperiments/jstouch.html:634:2: [definite] The conditional expression is always false
 test/chromeexperiments/jstouch.html:826:2: [definite] The conditional expression is always false
 test/chromeexperiments/jstouch.html:826:6: [definite] Variable cpy is null/undefined
-test/chromeexperiments/jstouch.html:1103:13: [definite] The assignment to tex has no effect
 test/chromeexperiments/jstouch.html:504:1: [definite] Dead assignment, property drawTriangle is never read
 test/chromeexperiments/jstouch.html:579:1: [definite] Dead assignment, property drawTestByIndexBuffer is never read
 test/chromeexperiments/jstouch.html:756:2: [definite] Dead assignment, property zero is never read

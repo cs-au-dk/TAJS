@@ -16,6 +16,7 @@
 
 package dk.brics.tajs.analysis.dom.event;
 
+import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.lattice.State;
 
 /**
@@ -30,17 +31,18 @@ import dk.brics.tajs.lattice.State;
  */
 public class EventBuilder {
 
-    public static void build(State s) {
-        Event.build(s);
-        EventTarget.build(s);
-        EventListener.build(s);
-        EventException.build(s);
-        DocumentEvent.build(s);
-        MutationEvent.build(s);
-        UIEvent.build(s);
-        KeyboardEvent.build(s);
-        MouseEvent.build(s);
-        WheelEvent.build(s);
-        LoadEvent.build(s);
+    public static void build(Solver.SolverInterface c) {
+        Event.build(c);
+        EventTarget.build(c);
+        EventListener.build(c);
+        EventException.build(c);
+        DocumentEvent.build(c);
+        MutationEvent.build(c);
+        UIEvent.build(c);
+        KeyboardEvent.build(c);
+        MouseEvent.build(c);
+        WheelEvent.build(c);
+        LoadEvent.build(c);
+        TouchEvent.build(c);
     }
 }

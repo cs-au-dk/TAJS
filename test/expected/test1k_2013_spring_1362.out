@@ -1,4 +1,3 @@
-test/1k2013spring/1362.js:2:6: [definite] The assignment to a has no effect
 test/1k2013spring/1362.js:9:3: [definite] The variable palette is never used
 test/1k2013spring/shim.js:6:5: [definite] The variable b is never used
 test/1k2013spring/1362.js:2:6: [maybe] TypeError, accessing property of null/undefined

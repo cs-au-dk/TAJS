@@ -1,5 +1,6 @@
 package dk.brics.tajs.test;
 
+import dk.brics.tajs.Main;
 import dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects;
 import dk.brics.tajs.flowgraph.AbstractNode;
 import dk.brics.tajs.flowgraph.BasicBlock;
@@ -32,7 +33,7 @@ public class TestValue {
 
 	@Before
 	public void init() {
-		Options.reset();
+		Main.reset();
 		Options.get().enableTest();
 		Options.get().enableDebug();
 	}

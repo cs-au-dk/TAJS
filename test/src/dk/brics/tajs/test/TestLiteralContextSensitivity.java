@@ -14,7 +14,6 @@ import dk.brics.tajs.options.Options;
 import dk.brics.tajs.test.monitors.OrdinaryExitReachableCheckerMonitor;
 import dk.brics.tajs.util.Collections;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.Set;
@@ -70,26 +69,22 @@ public class TestLiteralContextSensitivity {
         test("o", none, "var o ; function f(p1, p2){o = ['A'];}; f();");
     }
 
-    @Ignore // no longer allocating arrays precisely...
-    @Test
+    @Test(expected = AssertionError.class /* no longer allocating arrays precisely... */)
     public void oneDep_array() {
         test("o", set("x"), "var o ; function f(p1, p2){o = [p1];}; f('x');");
     }
 
-    @Ignore // no longer allocating arrays precisely...
-    @Test
+    @Test(expected = AssertionError.class /* no longer allocating arrays precisely... */)
     public void twoDep_array() {
         test("o", set("x", "y"), "var o ; function f(p1, p2){o = [p1, p2];}; f('x', 'y');");
     }
 
-    @Ignore // no longer allocating arrays precisely...
-    @Test
+    @Test(expected = AssertionError.class /* no longer allocating arrays precisely... */)
     public void dependOnOneGetAll_array() {
         test("o", set("x", "y"), "var o ; function f(p1, p2){o = [p1];}; f('x', 'y');");
     }
 
-    @Ignore // no longer allocating arrays precisely...
-    @Test
+    @Test(expected = AssertionError.class /* no longer allocating arrays precisely... */)
     public void dependOnTwoGetOne_array() {
         test("o", set("x"), "var o ; function f(p1, p2){o = [p1, p2];}; var y = Math.random()? 'y1': 'y2'; f('x', y);");
     }
@@ -107,7 +102,7 @@ public class TestLiteralContextSensitivity {
         TestMonitor testMonitor = new TestMonitor();
         CompositeMonitoring.buildFromList(testMonitor, new Monitoring());
         Misc.runSource(sourceLines, CompositeMonitoring.buildFromList(testMonitor, new OrdinaryExitReachableCheckerMonitor()));
-        Set<ObjectLabel> objectLabels = testMonitor.state.readVariable(objectVariable, null).getObjectLabels();
+        Set<ObjectLabel> objectLabels = testMonitor.state.readVariableDirect(objectVariable).getObjectLabels();
         Set<Value> values = newSet();
         for (ObjectLabel objectLabel : objectLabels) {
             HeapContext heapContext = objectLabel.getHeapContext();

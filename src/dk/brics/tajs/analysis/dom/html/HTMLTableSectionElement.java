@@ -20,6 +20,7 @@ import dk.brics.tajs.analysis.Conversion;
 import dk.brics.tajs.analysis.FunctionCalls;
 import dk.brics.tajs.analysis.InitialStateBuilder;
 import dk.brics.tajs.analysis.NativeFunctions;
+import dk.brics.tajs.analysis.PropVarOperations;
 import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.analysis.dom.DOMObjects;
 import dk.brics.tajs.analysis.dom.DOMWindow;
@@ -42,17 +43,19 @@ public class HTMLTableSectionElement {
 
     public static ObjectLabel INSTANCES;
 
-    public static void build(State s) {
+    public static void build(Solver.SolverInterface c) {
+        State s = c.getState();
+        PropVarOperations pv = c.getAnalysis().getPropVarOperations();
         CONSTRUCTOR = new ObjectLabel(DOMObjects.HTMLTABLESECTIONELEMENT_CONSTRUCTOR, ObjectLabel.Kind.FUNCTION);
         PROTOTYPE = new ObjectLabel(DOMObjects.HTMLTABLESECTIONELEMENT_PROTOTYPE, ObjectLabel.Kind.OBJECT);
         INSTANCES = new ObjectLabel(DOMObjects.HTMLTABLESECTIONELEMENT_INSTANCES, ObjectLabel.Kind.OBJECT);
 
         // Constructor Object
         s.newObject(CONSTRUCTOR);
-        s.writePropertyWithAttributes(CONSTRUCTOR, "length", Value.makeNum(0).setAttributes(true, true, true));
-        s.writePropertyWithAttributes(CONSTRUCTOR, "prototype", Value.makeObject(PROTOTYPE).setAttributes(true, true, true));
+        pv.writePropertyWithAttributes(CONSTRUCTOR, "length", Value.makeNum(0).setAttributes(true, true, true));
+        pv.writePropertyWithAttributes(CONSTRUCTOR, "prototype", Value.makeObject(PROTOTYPE).setAttributes(true, true, true));
         s.writeInternalPrototype(CONSTRUCTOR, Value.makeObject(InitialStateBuilder.OBJECT_PROTOTYPE));
-        s.writeProperty(DOMWindow.WINDOW, "HTMLTableSectionElement", Value.makeObject(CONSTRUCTOR));
+        pv.writeProperty(DOMWindow.WINDOW, "HTMLTableSectionElement", Value.makeObject(CONSTRUCTOR));
 
         // Prototype Object
         s.newObject(PROTOTYPE);
@@ -66,11 +69,11 @@ public class HTMLTableSectionElement {
          * Properties.
          */
         // DOM Level 1
-        createDOMProperty(s, INSTANCES, "align", Value.makeAnyStr());
-        createDOMProperty(s, INSTANCES, "ch", Value.makeAnyStr());
-        createDOMProperty(s, INSTANCES, "chOff", Value.makeAnyStr());
-        createDOMProperty(s, INSTANCES, "vAlign", Value.makeAnyStr());
-        createDOMProperty(s, INSTANCES, "rows", Value.makeObject(HTMLCollection.INSTANCES).setReadOnly());
+        createDOMProperty(INSTANCES, "align", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "ch", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "chOff", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "vAlign", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "rows", Value.makeObject(HTMLCollection.INSTANCES).setReadOnly(), c);
 
         s.multiplyObject(INSTANCES);
         INSTANCES = INSTANCES.makeSingleton().makeSummary();
@@ -79,11 +82,12 @@ public class HTMLTableSectionElement {
          * Functions.
          */
         // DOM Level 2
-        createDOMFunction(s, PROTOTYPE, DOMObjects.HTMLTABLESECTIONELEMENT_INSERTROW, "insertRow", 1);
-        createDOMFunction(s, PROTOTYPE, DOMObjects.HTMLTABLESECTIONELEMENT_DELETEROW, "deleteRow", 1);
+        createDOMFunction(PROTOTYPE, DOMObjects.HTMLTABLESECTIONELEMENT_INSERTROW, "insertRow", 1, c);
+        createDOMFunction(PROTOTYPE, DOMObjects.HTMLTABLESECTIONELEMENT_DELETEROW, "deleteRow", 1, c);
     }
 
-    public static Value evaluate(DOMObjects nativeObject, FunctionCalls.CallInfo call, State s, Solver.SolverInterface c) {
+    public static Value evaluate(DOMObjects nativeObject, FunctionCalls.CallInfo call, Solver.SolverInterface c) {
+        State s = c.getState();
         switch (nativeObject) {
             case HTMLTABLESECTIONELEMENT_INSERTROW: {
                 NativeFunctions.expectParameters(nativeObject, call, c, 1, 1);

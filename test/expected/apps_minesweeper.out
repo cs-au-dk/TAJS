@@ -30,7 +30,6 @@ test/apps/minesweeper/minesweeper.html:341:5: [maybe] TypeError, accessing prope
 test/apps/minesweeper/minesweeper.html:341:5: [maybe] TypeError, accessing property of null/undefined
 test/apps/minesweeper/minesweeper.html:347:14: [maybe] TypeError, accessing property of null/undefined
 test/apps/minesweeper/minesweeper.html:347:14: [maybe] TypeError, accessing property of null/undefined
-test/apps/minesweeper/minesweeper.html:376:5: [maybe] TypeError, argument is not of expected type: Node.prototype
 test/apps/minesweeper/minesweeper.html:420:5: [maybe] TypeError, accessing property of null/undefined
 test/apps/minesweeper/minesweeper.html:421:5: [maybe] TypeError, accessing property of null/undefined
 test/apps/minesweeper/minesweeper.html:421:5: [maybe] TypeError, accessing property of null/undefined

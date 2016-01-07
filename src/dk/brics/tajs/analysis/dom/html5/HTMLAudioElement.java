@@ -2,6 +2,7 @@ package dk.brics.tajs.analysis.dom.html5;
 
 import dk.brics.tajs.analysis.FunctionCalls;
 import dk.brics.tajs.analysis.InitialStateBuilder;
+import dk.brics.tajs.analysis.PropVarOperations;
 import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.analysis.dom.DOMObjects;
 import dk.brics.tajs.analysis.dom.DOMWindow;
@@ -20,17 +21,19 @@ public class HTMLAudioElement {
 
     public static ObjectLabel INSTANCES;
 
-    public static void build(State s) {
+    public static void build(Solver.SolverInterface c) {
+        State s = c.getState();
+        PropVarOperations pv = c.getAnalysis().getPropVarOperations();
         CONSTRUCTOR = new ObjectLabel(DOMObjects.HTMLAUDIOELEMENT_CONSTRUCTOR, ObjectLabel.Kind.FUNCTION);
         PROTOTYPE = new ObjectLabel(DOMObjects.HTMLAUDIOELEMENT_PROTOTYPE, ObjectLabel.Kind.OBJECT);
         INSTANCES = new ObjectLabel(DOMObjects.HTMLAUDIOELEMENT_INSTANCES, ObjectLabel.Kind.OBJECT);
 
         // Constructor Object
         s.newObject(CONSTRUCTOR);
-        s.writePropertyWithAttributes(CONSTRUCTOR, "length", Value.makeNum(0).setAttributes(true, true, true));
-        s.writePropertyWithAttributes(CONSTRUCTOR, "prototype", Value.makeObject(PROTOTYPE).setAttributes(true, true, true));
+        pv.writePropertyWithAttributes(CONSTRUCTOR, "length", Value.makeNum(0).setAttributes(true, true, true));
+        pv.writePropertyWithAttributes(CONSTRUCTOR, "prototype", Value.makeObject(PROTOTYPE).setAttributes(true, true, true));
         s.writeInternalPrototype(CONSTRUCTOR, Value.makeObject(InitialStateBuilder.FUNCTION_PROTOTYPE));
-        s.writeProperty(DOMWindow.WINDOW, "Audio", Value.makeObject(CONSTRUCTOR));
+        pv.writeProperty(DOMWindow.WINDOW, "Audio", Value.makeObject(CONSTRUCTOR));
 
         // Prototype Object
         s.newObject(PROTOTYPE);
@@ -38,24 +41,24 @@ public class HTMLAudioElement {
 
         // Instances Object
         s.newObject(INSTANCES);
-        createDOMProperty(s, INSTANCES, "autoplay", Value.makeAnyBool());
-        createDOMProperty(s, INSTANCES, "autobuffer", Value.makeAnyBool());
-        createDOMProperty(s, INSTANCES, "buffered", Value.makeObject(TimeRanges.INSTANCES));
-        createDOMProperty(s, INSTANCES, "controls", Value.makeAnyBool());
-        createDOMProperty(s, INSTANCES, "loop", Value.makeAnyBool());
-        createDOMProperty(s, INSTANCES, "mozCurrentSampleOffset", Value.makeAnyNum());
-        createDOMProperty(s, INSTANCES, "muted", Value.makeAnyBool());
-        createDOMProperty(s, INSTANCES, "played", Value.makeObject(TimeRanges.INSTANCES));
-        createDOMProperty(s, INSTANCES, "preload", Value.makeAnyStrNotUInt());
-        createDOMProperty(s, INSTANCES, "src", Value.makeAnyStr());
-        createDOMProperty(s, INSTANCES, "volume", Value.makeAnyNum());
+        createDOMProperty(INSTANCES, "autoplay", Value.makeAnyBool(), c);
+        createDOMProperty(INSTANCES, "autobuffer", Value.makeAnyBool(), c);
+        createDOMProperty(INSTANCES, "buffered", Value.makeObject(TimeRanges.INSTANCES), c);
+        createDOMProperty(INSTANCES, "controls", Value.makeAnyBool(), c);
+        createDOMProperty(INSTANCES, "loop", Value.makeAnyBool(), c);
+        createDOMProperty(INSTANCES, "mozCurrentSampleOffset", Value.makeAnyNum(), c);
+        createDOMProperty(INSTANCES, "muted", Value.makeAnyBool(), c);
+        createDOMProperty(INSTANCES, "played", Value.makeObject(TimeRanges.INSTANCES), c);
+        createDOMProperty(INSTANCES, "preload", Value.makeAnyStrNotUInt(), c);
+        createDOMProperty(INSTANCES, "src", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "volume", Value.makeAnyNum(), c);
 
         s.writeInternalPrototype(INSTANCES, Value.makeObject(PROTOTYPE));
         s.multiplyObject(INSTANCES);
         INSTANCES = INSTANCES.makeSingleton().makeSummary();
     }
 
-    public static Value evaluate(DOMObjects nativeObject, FunctionCalls.CallInfo call, State s, Solver.SolverInterface c) {
+    public static Value evaluate(DOMObjects nativeObject, FunctionCalls.CallInfo call, Solver.SolverInterface c) {
         switch (nativeObject) {
             case HTMLAUDIOELEMENT_CONSTRUCTOR: {
                 return Value.makeObject(INSTANCES);

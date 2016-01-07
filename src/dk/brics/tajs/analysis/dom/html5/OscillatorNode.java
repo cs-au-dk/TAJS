@@ -3,6 +3,7 @@ package dk.brics.tajs.analysis.dom.html5;
 import dk.brics.tajs.analysis.Exceptions;
 import dk.brics.tajs.analysis.FunctionCalls;
 import dk.brics.tajs.analysis.InitialStateBuilder;
+import dk.brics.tajs.analysis.PropVarOperations;
 import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.analysis.dom.DOMObjects;
 import dk.brics.tajs.analysis.dom.DOMWindow;
@@ -22,7 +23,9 @@ public class OscillatorNode {
 
     public static ObjectLabel INSTANCES;
 
-    public static void build(State s) {
+    public static void build(Solver.SolverInterface c) {
+        State s = c.getState();
+        PropVarOperations pv = c.getAnalysis().getPropVarOperations();
 
         CONSTRUCTOR = new ObjectLabel(DOMObjects.OSCILLATORNODE_CONSTRUCTOR, ObjectLabel.Kind.FUNCTION);
         PROTOTYPE = new ObjectLabel(DOMObjects.OSCILLATORNODE_PROTOTYPE, ObjectLabel.Kind.OBJECT);
@@ -30,10 +33,10 @@ public class OscillatorNode {
 
         // Constructor Object
         s.newObject(CONSTRUCTOR);
-        s.writePropertyWithAttributes(CONSTRUCTOR, "length", Value.makeNum(0).setAttributes(true, true, true));
-        s.writePropertyWithAttributes(CONSTRUCTOR, "prototype", Value.makeObject(PROTOTYPE).setAttributes(true, true, true));
+        pv.writePropertyWithAttributes(CONSTRUCTOR, "length", Value.makeNum(0).setAttributes(true, true, true));
+        pv.writePropertyWithAttributes(CONSTRUCTOR, "prototype", Value.makeObject(PROTOTYPE).setAttributes(true, true, true));
         s.writeInternalPrototype(CONSTRUCTOR, Value.makeObject(InitialStateBuilder.FUNCTION_PROTOTYPE));
-        s.writeProperty(DOMWindow.WINDOW, "OscillatorNode", Value.makeObject(CONSTRUCTOR));
+        pv.writeProperty(DOMWindow.WINDOW, "OscillatorNode", Value.makeObject(CONSTRUCTOR));
 
         // Prototype Object
         s.newObject(PROTOTYPE);
@@ -46,9 +49,9 @@ public class OscillatorNode {
         /*
          * Properties.
          */
-        createDOMProperty(s, INSTANCES, "frequency", Value.makeObject(AudioParam.INSTANCES));
-        createDOMProperty(s, INSTANCES, "detune", Value.makeObject(AudioParam.INSTANCES));
-        createDOMProperty(s, INSTANCES, "type", Value.makeAnyStr(/* sine, square, sawtooth, triangle, custom */));
+        createDOMProperty(INSTANCES, "frequency", Value.makeObject(AudioParam.INSTANCES), c);
+        createDOMProperty(INSTANCES, "detune", Value.makeObject(AudioParam.INSTANCES), c);
+        createDOMProperty(INSTANCES, "type", Value.makeAnyStr(/* sine, square, sawtooth, triangle, custom */), c);
 
         s.multiplyObject(INSTANCES);
         INSTANCES = INSTANCES.makeSingleton().makeSummary();
@@ -56,15 +59,16 @@ public class OscillatorNode {
         /*
          * Functions.
          */
-        createDOMFunction(s, PROTOTYPE, DOMObjects.OSCILLATORNODE_START, "start", 0);
-        createDOMFunction(s, PROTOTYPE, DOMObjects.OSCILLATORNODE_STOP, "stop", 0);
-        createDOMFunction(s, PROTOTYPE, DOMObjects.OSCILLATORNODE_SET_PERIODIC_WAVE, "setPeriodicWave", 1);
+        createDOMFunction(PROTOTYPE, DOMObjects.OSCILLATORNODE_START, "start", 0, c);
+        createDOMFunction(PROTOTYPE, DOMObjects.OSCILLATORNODE_STOP, "stop", 0, c);
+        createDOMFunction(PROTOTYPE, DOMObjects.OSCILLATORNODE_SET_PERIODIC_WAVE, "setPeriodicWave", 1, c);
     }
 
-    public static Value evaluate(DOMObjects nativeObject, FunctionCalls.CallInfo call, State s, Solver.SolverInterface c) {
+    public static Value evaluate(DOMObjects nativeObject, FunctionCalls.CallInfo call, Solver.SolverInterface c) {
+        State s = c.getState();
         switch (nativeObject) {
             case OSCILLATORNODE_CONSTRUCTOR:
-                Exceptions.throwTypeError(s, c);
+                Exceptions.throwTypeError(c);
                 s.setToNone();
             case OSCILLATORNODE_START:
             case OSCILLATORNODE_STOP:

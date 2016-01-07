@@ -41,7 +41,8 @@ public class KeyboardEvent {
 
     public static ObjectLabel INSTANCES;
 
-    public static void build(State s) {
+    public static void build(Solver.SolverInterface c) {
+        State s = c.getState();
         PROTOTYPE = new ObjectLabel(DOMObjects.KEYBOARD_EVENT_PROTOTYPE, ObjectLabel.Kind.OBJECT);
         INSTANCES = new ObjectLabel(DOMObjects.KEYBOARD_EVENT_INSTANCES, ObjectLabel.Kind.OBJECT);
 
@@ -56,37 +57,37 @@ public class KeyboardEvent {
         /*
          * Constants (KeyLocation code)
          */
-        createDOMProperty(s, PROTOTYPE, "DOM_KEY_LOCATION_STANDARD", Value.makeNum(0));
-        createDOMProperty(s, PROTOTYPE, "DOM_KEY_LOCATION_LEFT", Value.makeNum(1));
-        createDOMProperty(s, PROTOTYPE, "DOM_KEY_LOCATION_RIGHT", Value.makeNum(2));
-        createDOMProperty(s, PROTOTYPE, "DOM_KEY_LOCATION_NUMPAD", Value.makeNum(3));
-        createDOMProperty(s, PROTOTYPE, "DOM_KEY_LOCATION_MOBILE", Value.makeNum(4));
-        createDOMProperty(s, PROTOTYPE, "DOM_KEY_LOCATION_JOYSTICK", Value.makeNum(5));
+        createDOMProperty(PROTOTYPE, "DOM_KEY_LOCATION_STANDARD", Value.makeNum(0), c);
+        createDOMProperty(PROTOTYPE, "DOM_KEY_LOCATION_LEFT", Value.makeNum(1), c);
+        createDOMProperty(PROTOTYPE, "DOM_KEY_LOCATION_RIGHT", Value.makeNum(2), c);
+        createDOMProperty(PROTOTYPE, "DOM_KEY_LOCATION_NUMPAD", Value.makeNum(3), c);
+        createDOMProperty(PROTOTYPE, "DOM_KEY_LOCATION_MOBILE", Value.makeNum(4), c);
+        createDOMProperty(PROTOTYPE, "DOM_KEY_LOCATION_JOYSTICK", Value.makeNum(5), c);
 
         /*
          * Properties
          */
-        createDOMProperty(s, INSTANCES, "keyIdentifier", Value.makeAnyStr().setReadOnly());
-        createDOMProperty(s, INSTANCES, "keyLocation", Value.makeAnyNumUInt().setReadOnly());
-        createDOMProperty(s, INSTANCES, "ctrlKey", Value.makeAnyBool().setReadOnly());
-        createDOMProperty(s, INSTANCES, "shiftKey", Value.makeAnyBool().setReadOnly());
-        createDOMProperty(s, INSTANCES, "altKey", Value.makeAnyBool().setReadOnly());
-        createDOMProperty(s, INSTANCES, "metaKey", Value.makeAnyBool().setReadOnly());
-        createDOMProperty(s, INSTANCES, "repeat", Value.makeAnyBool().setReadOnly());
+        createDOMProperty(INSTANCES, "keyIdentifier", Value.makeAnyStr().setReadOnly(), c);
+        createDOMProperty(INSTANCES, "keyLocation", Value.makeAnyNumUInt().setReadOnly(), c);
+        createDOMProperty(INSTANCES, "ctrlKey", Value.makeAnyBool().setReadOnly(), c);
+        createDOMProperty(INSTANCES, "shiftKey", Value.makeAnyBool().setReadOnly(), c);
+        createDOMProperty(INSTANCES, "altKey", Value.makeAnyBool().setReadOnly(), c);
+        createDOMProperty(INSTANCES, "metaKey", Value.makeAnyBool().setReadOnly(), c);
+        createDOMProperty(INSTANCES, "repeat", Value.makeAnyBool().setReadOnly(), c);
 
         // DOM LEVEL 0:
-        createDOMProperty(s, PROTOTYPE, "charCode", Value.makeAnyNumUInt());
-        createDOMProperty(s, PROTOTYPE, "key", Value.makeAnyNumUInt());
-        createDOMProperty(s, PROTOTYPE, "keyCode", Value.makeAnyNumUInt());
+        createDOMProperty(PROTOTYPE, "charCode", Value.makeAnyNumUInt(), c);
+        createDOMProperty(PROTOTYPE, "key", Value.makeAnyNumUInt(), c);
+        createDOMProperty(PROTOTYPE, "keyCode", Value.makeAnyNumUInt(), c);
 
         /*
          * Functions
          */
 
         // DOM Level 3:
-        createDOMFunction(s, PROTOTYPE, DOMObjects.KEYBOARD_EVENT_GET_MODIFIER_STATE, "getModifierState", 1);
-        createDOMFunction(s, PROTOTYPE, DOMObjects.KEYBOARD_EVENT_INIT_KEYBOARD_EVENT, "initKeyboardEvent", 7);
-        createDOMFunction(s, PROTOTYPE, DOMObjects.KEYBOARD_EVENT_INIT_KEYBOARD_EVENT_NS, "initKeyboardEventNS", 8);
+        createDOMFunction(PROTOTYPE, DOMObjects.KEYBOARD_EVENT_GET_MODIFIER_STATE, "getModifierState", 1, c);
+        createDOMFunction(PROTOTYPE, DOMObjects.KEYBOARD_EVENT_INIT_KEYBOARD_EVENT, "initKeyboardEvent", 7, c);
+        createDOMFunction(PROTOTYPE, DOMObjects.KEYBOARD_EVENT_INIT_KEYBOARD_EVENT_NS, "initKeyboardEventNS", 8, c);
 
         // Multiplied object
         s.multiplyObject(INSTANCES);
@@ -100,7 +101,8 @@ public class KeyboardEvent {
      * Transfer functions
      */
 
-    public static Value evaluate(DOMObjects nativeObject, FunctionCalls.CallInfo call, State s, Solver.SolverInterface c) {
+    public static Value evaluate(DOMObjects nativeObject, FunctionCalls.CallInfo call, Solver.SolverInterface c) {
+        State s = c.getState();
         switch (nativeObject) {
             case KEYBOARD_EVENT_GET_MODIFIER_STATE: {
                 NativeFunctions.expectParameters(nativeObject, call, c, 1, 1);

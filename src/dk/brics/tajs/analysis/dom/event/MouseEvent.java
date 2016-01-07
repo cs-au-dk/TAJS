@@ -21,7 +21,6 @@ import dk.brics.tajs.analysis.FunctionCalls;
 import dk.brics.tajs.analysis.NativeFunctions;
 import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.analysis.dom.DOMConversion;
-import dk.brics.tajs.analysis.dom.DOMFunctions;
 import dk.brics.tajs.analysis.dom.DOMObjects;
 import dk.brics.tajs.analysis.dom.DOMRegistry;
 import dk.brics.tajs.lattice.ObjectLabel;
@@ -41,7 +40,8 @@ public class MouseEvent {
 
     public static ObjectLabel INSTANCES;
 
-    public static void build(State s) {
+    public static void build(Solver.SolverInterface c) {
+        State s = c.getState();
         PROTOTYPE = new ObjectLabel(DOMObjects.MOUSE_EVENT_PROTOTYPE, ObjectLabel.Kind.OBJECT);
         INSTANCES = new ObjectLabel(DOMObjects.MOUSE_EVENT_INSTANCES, ObjectLabel.Kind.OBJECT);
 
@@ -56,26 +56,26 @@ public class MouseEvent {
         /*
          * Properties.
          */
-        createDOMProperty(s, INSTANCES, "screenX", Value.makeAnyNum().setReadOnly());
-        createDOMProperty(s, INSTANCES, "screenY", Value.makeAnyNum().setReadOnly());
-        createDOMProperty(s, INSTANCES, "clientX", Value.makeAnyNum().setReadOnly());
-        createDOMProperty(s, INSTANCES, "clientY", Value.makeAnyNum().setReadOnly());
-        createDOMProperty(s, INSTANCES, "ctrlKey", Value.makeAnyBool().setReadOnly());
-        createDOMProperty(s, INSTANCES, "shiftKey", Value.makeAnyBool().setReadOnly());
-        createDOMProperty(s, INSTANCES, "altKey", Value.makeAnyBool().setReadOnly());
-        createDOMProperty(s, INSTANCES, "metaKey", Value.makeAnyBool().setReadOnly());
-        createDOMProperty(s, INSTANCES, "button", Value.makeAnyNumUInt().setReadOnly());
+        createDOMProperty(INSTANCES, "screenX", Value.makeAnyNum().setReadOnly(), c);
+        createDOMProperty(INSTANCES, "screenY", Value.makeAnyNum().setReadOnly(), c);
+        createDOMProperty(INSTANCES, "clientX", Value.makeAnyNum().setReadOnly(), c);
+        createDOMProperty(INSTANCES, "clientY", Value.makeAnyNum().setReadOnly(), c);
+        createDOMProperty(INSTANCES, "ctrlKey", Value.makeAnyBool().setReadOnly(), c);
+        createDOMProperty(INSTANCES, "shiftKey", Value.makeAnyBool().setReadOnly(), c);
+        createDOMProperty(INSTANCES, "altKey", Value.makeAnyBool().setReadOnly(), c);
+        createDOMProperty(INSTANCES, "metaKey", Value.makeAnyBool().setReadOnly(), c);
+        createDOMProperty(INSTANCES, "button", Value.makeAnyNumUInt().setReadOnly(), c);
 
         // DOM Level 0
-        createDOMProperty(s, INSTANCES, "offsetX", Value.makeAnyNum().setReadOnly());
-        createDOMProperty(s, INSTANCES, "offsetY", Value.makeAnyNum().setReadOnly());
-        createDOMProperty(s, INSTANCES, "layerX", Value.makeAnyNum().setReadOnly());
-        createDOMProperty(s, INSTANCES, "layerY", Value.makeAnyNum().setReadOnly());
+        createDOMProperty(INSTANCES, "offsetX", Value.makeAnyNum().setReadOnly(), c);
+        createDOMProperty(INSTANCES, "offsetY", Value.makeAnyNum().setReadOnly(), c);
+        createDOMProperty(INSTANCES, "layerX", Value.makeAnyNum().setReadOnly(), c);
+        createDOMProperty(INSTANCES, "layerY", Value.makeAnyNum().setReadOnly(), c);
 
         /*
         * Functions.
         */
-        createDOMFunction(s, PROTOTYPE, DOMObjects.MOUSE_EVENT_INIT_MOUSE_EVENT, "initMouseEvent", 15);
+        createDOMFunction(PROTOTYPE, DOMObjects.MOUSE_EVENT_INIT_MOUSE_EVENT, "initMouseEvent", 15, c);
 
         // Multiplied Object
         s.multiplyObject(INSTANCES);
@@ -85,7 +85,8 @@ public class MouseEvent {
         DOMRegistry.registerMouseEventLabel(INSTANCES);
     }
 
-    public static Value evaluate(DOMObjects nativeObject, FunctionCalls.CallInfo call, State s, Solver.SolverInterface c) {
+    public static Value evaluate(DOMObjects nativeObject, FunctionCalls.CallInfo call, Solver.SolverInterface c) {
+        State s = c.getState();
         switch (nativeObject) {
             case MOUSE_EVENT_INIT_MOUSE_EVENT: {
                 NativeFunctions.expectParameters(nativeObject, call, c, 15, 15);

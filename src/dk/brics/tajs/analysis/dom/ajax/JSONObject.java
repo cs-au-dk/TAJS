@@ -16,15 +16,15 @@
 
 package dk.brics.tajs.analysis.dom.ajax;
 
+import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.analysis.dom.DOMObjects;
 import dk.brics.tajs.lattice.ObjectLabel;
-import dk.brics.tajs.lattice.State;
 
 public class JSONObject {
 
     public static ObjectLabel JSON_OBJECT;
 
-    public static void build(State s) {
+    public static void build(Solver.SolverInterface c) {
         JSON_OBJECT = new ObjectLabel(DOMObjects.JSON_OBJECT, ObjectLabel.Kind.OBJECT);
     }
 }

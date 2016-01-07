@@ -38,6 +38,9 @@ fg2: <main> function()
     ->[]
 
 fg2: <main> function()
+  block 12:
+    node 13: function-decl[function position_CM(o),-] (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0154.html:3:9):1:1)
+    ->[block 3]
   block 0: [entry]
     node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0154.html)
     ->[block 1]
@@ -47,10 +50,6 @@ fg2: <main> function()
     ->[block 2]
   block 2:
     node 3: call[v2,v3,v4,-]* (test/flowgraphbuilder/flowgraph_builder0154.html:3:9)
-    ->[block 3]
-  block 12:
-    node 13: constant[undefined,-] (test/flowgraphbuilder/flowgraph_builder0154.html:3:9)
-    node 14: function-decl[function position_CM(o),-] (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0154.html:3:9):1:1)
     ->[block 3]
   block 3:
     node 4: nop(eventDispatchers: entry) (test/flowgraphbuilder/flowgraph_builder0154.html)
@@ -81,42 +80,42 @@ fg2: <main> function()
     ->[]
 function position_CM(o)
   block 13: [entry]
-    node 15: constant[undefined,v1] (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0154.html:3:9):1:1)
-    node 16: vardecl['p']* (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0154.html:3:9):1:29)
+    node 14: constant[undefined,v1] (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0154.html:3:9):1:1)
+    node 15: vardecl['p']* (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0154.html:3:9):1:29)
     ->[block 14]
   block 14:
-    node 17: new[v2] (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0154.html:3:9):1:31)
-    node 18: constant[0.0,v3] (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0154.html:3:9):1:37)
-    node 19: write-property[v2,'Left',v3] (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0154.html:3:9):1:32)
-    node 20: write-variable[v2,'p']* (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0154.html:3:9):1:31)
+    node 16: new[v2] (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0154.html:3:9):1:31)
+    node 17: constant[0.0,v3] (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0154.html:3:9):1:37)
+    node 18: write-property[v2,'Left',v3] (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0154.html:3:9):1:32)
+    node 19: write-variable[v2,'p']* (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0154.html:3:9):1:31)
     ->[block 15]
   block 15:
-    node 21: read-variable['o',v6,-] (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0154.html:3:9):1:48)
-    node 22: ![v6,v5] (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0154.html:3:9):1:47)
-    node 23: ![v5,v4] (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0154.html:3:9):1:46)
-    node 24: if[v4](true-block:16,false-block:17) (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0154.html:3:9):1:46)
+    node 20: read-variable['o',v6,-] (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0154.html:3:9):1:48)
+    node 21: ![v6,v5] (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0154.html:3:9):1:47)
+    node 22: ![v5,v4] (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0154.html:3:9):1:46)
+    node 23: if[v4](true-block:16,false-block:17) (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0154.html:3:9):1:46)
     ->[block 16,block 17]
   block 16:
-    node 25: read-variable['p',v7,-] (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0154.html:3:9):1:51)
-    node 26: read-property[v7,'Left',v8] (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0154.html:3:9):1:51)
-    node 27: <variable-non-null-undef>['p'] (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0154.html:3:9):1:51)
-    node 28: constant[9.0,v9] (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0154.html:3:9):1:59)
-    node 29: +[v8,v9,v10] (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0154.html:3:9):1:51)
-    node 30: write-property[v7,'Left',v10] (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0154.html:3:9):1:51)
-    node 31: <variable-non-null-undef>['p']* (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0154.html:3:9):1:51)
-    node 32: read-variable['o',v12,-] (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0154.html:3:9):1:63)
-    node 33: read-property[v12,'offsetParent',v11] (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0154.html:3:9):1:63)
-    node 34: <variable-non-null-undef>['o'] (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0154.html:3:9):1:63)
-    node 35: write-variable[v11,'o']* (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0154.html:3:9):1:61)
+    node 24: read-variable['p',v7,-] (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0154.html:3:9):1:51)
+    node 25: read-property[v7,'Left',v8] (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0154.html:3:9):1:51)
+    node 26: <variable-non-null-undef>['p'] (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0154.html:3:9):1:51)
+    node 27: constant[9.0,v9] (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0154.html:3:9):1:59)
+    node 28: +[v8,v9,v10] (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0154.html:3:9):1:51)
+    node 29: write-property[v7,'Left',v10] (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0154.html:3:9):1:51)
+    node 30: <variable-non-null-undef>['p']* (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0154.html:3:9):1:51)
+    node 31: read-variable['o',v12,-] (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0154.html:3:9):1:63)
+    node 32: read-property[v12,'offsetParent',v11] (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0154.html:3:9):1:63)
+    node 33: <variable-non-null-undef>['o'] (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0154.html:3:9):1:63)
+    node 34: write-variable[v11,'o']* (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0154.html:3:9):1:61)
     ->[block 15]
   block 17:
-    node 36: read-variable['p',v1,-]* (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0154.html:3:9):1:85)
+    node 35: read-variable['p',v1,-]* (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0154.html:3:9):1:85)
     ->[block 18]
   block 18: [exit-ordinary]
-    node 37: return[v1] (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0154.html:3:9):1:1)
+    node 36: return[v1] (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0154.html:3:9):1:1)
     ->[]
   block 19: [exit-exceptional]
-    node 38: exceptional-return (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0154.html:3:9):1:1)
+    node 37: exceptional-return (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0154.html:3:9):1:1)
     ->[]
 
 TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0154.html:3:9):1:1: [definite] Unreachable function position_CM

@@ -21,6 +21,7 @@ import dk.brics.tajs.analysis.Exceptions;
 import dk.brics.tajs.analysis.FunctionCalls.CallInfo;
 import dk.brics.tajs.analysis.InitialStateBuilder;
 import dk.brics.tajs.analysis.NativeFunctions;
+import dk.brics.tajs.analysis.PropVarOperations;
 import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.analysis.nativeobjects.concrete.Alpha;
 import dk.brics.tajs.analysis.nativeobjects.concrete.ConcreteArray;
@@ -61,11 +62,12 @@ public class JSRegExp { // TODO see https://dev.opera.com/articles/javascript-fo
     /**
      * Evaluates the given native function.
      */
-    public static Value evaluate(ECMAScriptObjects nativeobject, final CallInfo call, final State state, Solver.SolverInterface c) {
+    public static Value evaluate(ECMAScriptObjects nativeobject, final CallInfo call, Solver.SolverInterface c) {
         if (nativeobject != ECMAScriptObjects.REGEXP)
-            if (NativeFunctions.throwTypeErrorIfConstructor(call, state, c))
+            if (NativeFunctions.throwTypeErrorIfConstructor(call, c))
                 return Value.makeNone();
 
+        State state = c.getState();
         switch (nativeobject) {
 
             case REGEXP: {
@@ -124,7 +126,7 @@ public class JSRegExp { // TODO see https://dev.opera.com/articles/javascript-fo
                 pattern = UnknownValueResolver.getRealValue(pattern, state);
                 if(pattern.isMaybeObject()){
                     // TODO proper support for regexp argument (currently unsound: missing flags transfer & checking for no double declaration of flags)
-                    pattern = pattern.restrictToNotObject().join(UnknownValueResolver.getRealValue(state.readPropertyValue(pattern.getObjectLabels(), "source"), state));
+                    pattern = pattern.restrictToNotObject().join(UnknownValueResolver.getRealValue(c.getAnalysis().getPropVarOperations().readPropertyValue(pattern.getObjectLabels(), "source"), state));
                 }
                 boolean threwException = mutateRegExp(state.readThisObjects(), pattern, flags, false, state, c);
                 if(threwException){
@@ -135,9 +137,9 @@ public class JSRegExp { // TODO see https://dev.opera.com/articles/javascript-fo
             case REGEXP_EXEC: { // 15.10.6.2 (see STRING_MATCH)
                 NativeFunctions.expectParameters(nativeobject, call, c, 1, 1);
                 Conversion.toString(NativeFunctions.readParameter(call, state, 0), c);
-                Value result = TAJSConcreteSemantics.convertTAJSCall(state.readThis(), "RegExp.prototype.exec", 1, ConcreteValue.class, state, call, c).apply(new RegExpExecHandler(call, state));
+                Value result = TAJSConcreteSemantics.convertTAJSCall(state.readThis(), "RegExp.prototype.exec", 1, ConcreteValue.class, state, call, c).apply(new RegExpExecHandler(call, c));
                 if (result.isMaybeObject()) {
-                    updateRegExpLastIndex(state, state.readThis());
+                    updateRegExpLastIndex(state.readThis(), c);
                 }
                 return result;
             }
@@ -148,9 +150,9 @@ public class JSRegExp { // TODO see https://dev.opera.com/articles/javascript-fo
                 final Value vArg = Conversion.toString(NativeFunctions.readParameter(call, state, 0), c);
 
                 if (Gamma.isConcreteValues(c, vThis, vArg)) {
-                    Value execCallResult = ConcreteSemantics.get().apply("RegExp.prototype.exec", Gamma.toConcreteValue(state.readThis(), c), Collections.singletonList(Gamma.toConcreteValue(vArg, c))).apply(new RegExpExecHandler(call, state));
+                    Value execCallResult = ConcreteSemantics.get().apply("RegExp.prototype.exec", Gamma.toConcreteValue(state.readThis(), c), Collections.singletonList(Gamma.toConcreteValue(vArg, c))).apply(new RegExpExecHandler(call, c));
                     if (execCallResult.isMaybeObject()) {
-                        updateRegExpLastIndex(state, state.readThis());
+                        updateRegExpLastIndex(state.readThis(), c);
                     }
                     return Value.makeBool(execCallResult.isMaybeObject() /* spec: true if not null, and concrete semantics guarantees a single value */);
                 }
@@ -185,7 +187,7 @@ public class JSRegExp { // TODO see https://dev.opera.com/articles/javascript-fo
                 pMultiline = Value.makeBool(strflags.contains("m"));
                 strflags = strflags.replaceFirst("g", "").replaceFirst("i", "").replaceFirst("m", "");
                 if ((!strflags.isEmpty())) {
-                    Exceptions.throwSyntaxError(state, c);
+                    Exceptions.throwSyntaxError(c);
                     c.getMonitoring().addMessage(c.getNode(), Severity.HIGH, "SyntaxError, invalid flags at RegExp constructor");
                     return true;
                 }
@@ -235,18 +237,20 @@ public class JSRegExp { // TODO see https://dev.opera.com/articles/javascript-fo
                 }
             }
             state.writeInternalValue(regexp, p);
-            state.writePropertyWithAttributes(regexp, "source", p.setAttributes(true, true, true));
-            state.writePropertyWithAttributes(regexp, "lastIndex", Value.makeNum(0).setAttributes(true, true, false));
-            state.writePropertyWithAttributes(regexp, "global", pGlobal.setAttributes(true, true, true));
-            state.writePropertyWithAttributes(regexp, "ignoreCase", pIgnoreCase.setAttributes(true, true, true));
-            state.writePropertyWithAttributes(regexp, "multiline", pMultiline.setAttributes(true, true, true));
+            PropVarOperations pv = c.getAnalysis().getPropVarOperations();
+            pv.writePropertyWithAttributes(regexp, "source", p.setAttributes(true, true, true));
+            pv.writePropertyWithAttributes(regexp, "lastIndex", Value.makeNum(0).setAttributes(true, true, false));
+            pv.writePropertyWithAttributes(regexp, "global", pGlobal.setAttributes(true, true, true));
+            pv.writePropertyWithAttributes(regexp, "ignoreCase", pIgnoreCase.setAttributes(true, true, true));
+            pv.writePropertyWithAttributes(regexp, "multiline", pMultiline.setAttributes(true, true, true));
         }
         return false;
     }
 
-    private static void updateRegExpLastIndex(State state, Value value) {
-        if (UnknownValueResolver.getRealValue(state.readPropertyValue(value.getObjectLabels(), "global"), state).isMaybeTrue()) {
-            state.writeProperty(value.getObjectLabels(), Value.makeTemporaryStr("lastIndex"), Value.makeAnyNumUInt(), true, false);
+    private static void updateRegExpLastIndex(Value value, Solver.SolverInterface c) {
+        PropVarOperations pv = c.getAnalysis().getPropVarOperations();
+        if (UnknownValueResolver.getRealValue(pv.readPropertyValue(value.getObjectLabels(), "global"), c.getState()).isMaybeTrue()) {
+            pv.writeProperty(value.getObjectLabels(), Value.makeTemporaryStr("lastIndex"), Value.makeAnyNumUInt(), true, false);
         }
     }
 
@@ -257,23 +261,22 @@ public class JSRegExp { // TODO see https://dev.opera.com/articles/javascript-fo
 
         private final CallInfo call;
 
-        private final State state;
+        private final Solver.SolverInterface c;
 
-        public RegExpExecHandler(CallInfo call, State state) {
+        public RegExpExecHandler(CallInfo call, Solver.SolverInterface c) {
             this.call = call;
-            this.state = state;
+            this.c = c;
         }
 
         @Override
         public Value visit(None<ConcreteValue> o) {
-            ObjectLabel objlabel = new ObjectLabel(call.getSourceNode(), Kind.ARRAY);
-            state.newObject(objlabel);
+            ObjectLabel objlabel = JSArray.makeArray(call.getSourceNode(), c);
+            PropVarOperations pv = c.getAnalysis().getPropVarOperations();
             Value res = Value.makeObject(objlabel);
-            state.writeInternalPrototype(objlabel, Value.makeObject(InitialStateBuilder.ARRAY_PROTOTYPE));
-            state.writeProperty(Collections.singleton(objlabel), Value.makeAnyStrUInt(), Value.makeAnyStr().joinAbsent(), true, false);
-            state.writePropertyWithAttributes(objlabel, "length", Value.makeAnyNumUInt().setAttributes(true, true, false));
-            state.writeProperty(objlabel, "index", Value.makeAnyNumUInt());
-            state.writeProperty(objlabel, "input", state.readThis());
+            pv.writeProperty(Collections.singleton(objlabel), Value.makeAnyStrUInt(), Value.makeAnyStr().joinAbsent(), true, false);
+            pv.writePropertyWithAttributes(objlabel, "length", Value.makeAnyNumUInt().setAttributes(true, true, false));
+            pv.writeProperty(objlabel, "index", Value.makeAnyNumUInt());
+            pv.writeProperty(objlabel, "input", c.getState().readThis());
             return res.joinNull();
         }
 
@@ -296,7 +299,7 @@ public class JSRegExp { // TODO see https://dev.opera.com/articles/javascript-fo
 
                 @Override
                 public Value visit(ConcreteArray v) {
-                    return Alpha.createNewArrayValue(v, state, call.getSourceNode());
+                    return Alpha.createNewArrayValue(v, call.getSourceNode(), c);
                 }
 
                 @Override

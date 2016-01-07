@@ -1,4 +1,3 @@
-test/micro/testEval.js:1:9: [definite] The assignment to a has no effect
 test/micro/testEval.js:2:16: [definite] Variable a is null/undefined
 test/micro/testEval.js:1:9: [definite] Too few parameters to function eval
 test/micro/testEval.js:10:5: [definite] The variable f is never used

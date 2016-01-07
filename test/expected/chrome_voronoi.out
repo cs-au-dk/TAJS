@@ -7,8 +7,6 @@ test/chromeexperiments/voronoi.html:206:7: [definite] The conditional expression
 test/chromeexperiments/voronoi.html:247:12: [definite] The conditional expression is always true
 test/chromeexperiments/voronoi.html:268:3: [definite] The conditional expression is always false
 test/chromeexperiments/voronoi.html:269:3: [definite] The conditional expression is always false
-test/chromeexperiments/voronoi.html:270:3: [definite] The assignment to delaunay_switch has no effect
-test/chromeexperiments/voronoi.html:272:3: [definite] The assignment to crust_skeleton_switch has no effect
 test/chromeexperiments/voronoi.html:431:10: [definite] The conditional expression is always true
 test/chromeexperiments/voronoi.html:496:10: [definite] The conditional expression is always true
 test/chromeexperiments/voronoi.html:266:29: [definite] Reading absent property which

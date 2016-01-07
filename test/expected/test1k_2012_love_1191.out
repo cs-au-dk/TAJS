@@ -1,6 +1,4 @@
 test/1k2012love/1191.js:54:10: [definite] The conditional expression is always false
-test/1k2012love/1191.js:56:7: [definite] The assignment to i has no effect
-test/1k2012love/1191.js:61:7: [definite] The assignment to i has no effect
 test/1k2012love/1191.js:54:10: [definite] Reading absent property which
 test/1k2012love/shim.js:6:5: [definite] The variable b is never used
 test/1k2012love/1191.js:7:1: [maybe] TypeError, call to non-function

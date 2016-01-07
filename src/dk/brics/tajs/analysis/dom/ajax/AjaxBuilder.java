@@ -16,14 +16,14 @@
 
 package dk.brics.tajs.analysis.dom.ajax;
 
-import dk.brics.tajs.lattice.State;
+import dk.brics.tajs.analysis.Solver;
 
 public class AjaxBuilder {
 
-    public static void build(State s) {
-        XmlHttpRequest.build(s);
-        ActiveXObject.build(s);
-        ReadystateEvent.build(s);
-        JSONObject.build(s);
+    public static void build(Solver.SolverInterface c) {
+        XmlHttpRequest.build(c);
+        ActiveXObject.build(c);
+        ReadystateEvent.build(c);
+        JSONObject.build(c);
     }
 }

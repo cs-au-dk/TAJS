@@ -17,6 +17,8 @@
 package dk.brics.tajs.analysis.dom.style;
 
 import dk.brics.tajs.analysis.InitialStateBuilder;
+import dk.brics.tajs.analysis.PropVarOperations;
+import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.analysis.dom.DOMObjects;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.State;
@@ -28,12 +30,14 @@ public class CSSStyleDeclaration {
 
     public static ObjectLabel STYLEDECLARATION;
 
-    public static void build(State s) {
+    public static void build(Solver.SolverInterface c) {
+        State s = c.getState();
+        PropVarOperations pv = c.getAnalysis().getPropVarOperations();
         STYLEDECLARATION = new ObjectLabel(DOMObjects.CSSSTYLEDECLARATION, ObjectLabel.Kind.OBJECT);
 
         s.newObject(STYLEDECLARATION);
         s.writeInternalPrototype(STYLEDECLARATION, Value.makeObject(InitialStateBuilder.OBJECT_PROTOTYPE));
-        s.writeProperty(Collections.singleton(STYLEDECLARATION), Value.makeAnyStrNotUInt(), Value.makeAnyStr(), true, false);
+        pv.writeProperty(Collections.singleton(STYLEDECLARATION), Value.makeAnyStrNotUInt(), Value.makeAnyStr(), true, false);
         s.multiplyObject(STYLEDECLARATION);
         STYLEDECLARATION = STYLEDECLARATION.makeSingleton().makeSummary();
     }

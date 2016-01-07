@@ -92,14 +92,14 @@ public class WorkList<ContextType extends IContext<?>> {
         return pending_set.size();
     }
 
-    /**
-     * Removes the given entry.
-     */
-    public void remove(Entry e) {
-        if (pending_set.remove(e))
-            if (log.isDebugEnabled())
-                log.debug("Removing entry " + e);
-    }
+//    /**
+//     * Removes the given entry.
+//     */
+//    public void remove(Entry e) {
+//        if (pending_set.remove(e))
+//            if (log.isDebugEnabled())
+//                log.debug("Removing entry " + e);
+//    }
 
     /**
      * Returns a string description of this work list.

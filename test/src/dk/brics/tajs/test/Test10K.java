@@ -2,6 +2,7 @@ package dk.brics.tajs.test;
 
 // import static org.junit.Assert.fail;
 
+import dk.brics.tajs.Main;
 import dk.brics.tajs.monitoring.CompositeMonitoring;
 import dk.brics.tajs.monitoring.IAnalysisMonitoring;
 import dk.brics.tajs.monitoring.Monitoring;
@@ -22,8 +23,8 @@ public class Test10K {
 	
 	@Before
 	public void init() {
-        Options.reset();
-		Options.get().enableTest();
+        Main.reset();
+        Options.get().enableTest();
         Options.get().enableIncludeDom();
         monitoring = CompositeMonitoring.buildFromList(new Monitoring(), new OrdinaryExitReachableCheckerMonitor());
 	}

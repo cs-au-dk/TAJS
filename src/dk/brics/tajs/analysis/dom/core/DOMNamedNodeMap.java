@@ -20,6 +20,7 @@ import dk.brics.tajs.analysis.Conversion;
 import dk.brics.tajs.analysis.FunctionCalls;
 import dk.brics.tajs.analysis.InitialStateBuilder;
 import dk.brics.tajs.analysis.NativeFunctions;
+import dk.brics.tajs.analysis.PropVarOperations;
 import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.analysis.dom.DOMConversion;
 import dk.brics.tajs.analysis.dom.DOMObjects;
@@ -49,17 +50,19 @@ public class DOMNamedNodeMap {
 
     public static ObjectLabel INSTANCES;
 
-    public static void build(State s) {
+    public static void build(Solver.SolverInterface c) {
+        State s = c.getState();
+        PropVarOperations pv = c.getAnalysis().getPropVarOperations();
         CONSTRUCTOR = new ObjectLabel(DOMObjects.NAMEDNODEMAP_CONSTRUCTOR, ObjectLabel.Kind.FUNCTION);
         PROTOTYPE = new ObjectLabel(DOMObjects.NAMEDNODEMAP_PROTOTYPE, ObjectLabel.Kind.OBJECT);
         INSTANCES = new ObjectLabel(DOMObjects.NAMEDNODEMAP_INSTANCES, ObjectLabel.Kind.OBJECT);
 
         // Constructor Object
         s.newObject(CONSTRUCTOR);
-        s.writePropertyWithAttributes(CONSTRUCTOR, "length", Value.makeNum(0).setAttributes(true, true, true));
-        s.writePropertyWithAttributes(CONSTRUCTOR, "prototype", Value.makeObject(PROTOTYPE).setAttributes(true, true, true));
+        pv.writePropertyWithAttributes(CONSTRUCTOR, "length", Value.makeNum(0).setAttributes(true, true, true));
+        pv.writePropertyWithAttributes(CONSTRUCTOR, "prototype", Value.makeObject(PROTOTYPE).setAttributes(true, true, true));
         s.writeInternalPrototype(CONSTRUCTOR, Value.makeObject(InitialStateBuilder.OBJECT_PROTOTYPE));
-        s.writeProperty(DOMWindow.WINDOW, "NamedNodeMap", Value.makeObject(CONSTRUCTOR));
+        pv.writeProperty(DOMWindow.WINDOW, "NamedNodeMap", Value.makeObject(CONSTRUCTOR));
 
         // Prototype object.
         s.newObject(PROTOTYPE);
@@ -72,7 +75,7 @@ public class DOMNamedNodeMap {
         /*
          * Properties.
          */
-        createDOMProperty(s, INSTANCES, "length", Value.makeNum(0).setReadOnly());
+        createDOMProperty(INSTANCES, "length", Value.makeNum(0).setReadOnly(), c);
 
         s.multiplyObject(INSTANCES);
         INSTANCES = INSTANCES.makeSingleton().makeSummary();
@@ -81,21 +84,22 @@ public class DOMNamedNodeMap {
          * Functions.
          */
         // DOM Level 1
-        createDOMFunction(s, PROTOTYPE, DOMObjects.NAMEDNODEMAP_PROTOTYPE_GETNAMEDITEM, "getNamedItem", 1);
-        createDOMFunction(s, PROTOTYPE, DOMObjects.NAMEDNODEMAP_PROTOTYPE_SETNAMEDITEM, "setNamedItem", 1);
-        createDOMFunction(s, PROTOTYPE, DOMObjects.NAMEDNODEMAP_PROTOTYPE_REMOVENAMEDITEM, "removeNamedItem", 1);
-        createDOMFunction(s, PROTOTYPE, DOMObjects.NAMEDNODEMAP_PROTOTYPE_ITEM, "item", 1);
+        createDOMFunction(PROTOTYPE, DOMObjects.NAMEDNODEMAP_PROTOTYPE_GETNAMEDITEM, "getNamedItem", 1, c);
+        createDOMFunction(PROTOTYPE, DOMObjects.NAMEDNODEMAP_PROTOTYPE_SETNAMEDITEM, "setNamedItem", 1, c);
+        createDOMFunction(PROTOTYPE, DOMObjects.NAMEDNODEMAP_PROTOTYPE_REMOVENAMEDITEM, "removeNamedItem", 1, c);
+        createDOMFunction(PROTOTYPE, DOMObjects.NAMEDNODEMAP_PROTOTYPE_ITEM, "item", 1, c);
 
-        createDOMFunction(s, PROTOTYPE, DOMObjects.NAMEDNODEMAP_PROTOTYPE_GETNAMEDITEMNS, "getNamedItemNS", 2);
-        createDOMFunction(s, PROTOTYPE, DOMObjects.NAMEDNODEMAP_PROTOTYPE_SETNAMEDITEMNS, "setNamedItemNS", 2);
-        createDOMFunction(s, PROTOTYPE, DOMObjects.NAMEDNODEMAP_PROTOTYPE_REMOVEDNAMEDITEMNS, "removeNamedItemNS", 2);
+        createDOMFunction(PROTOTYPE, DOMObjects.NAMEDNODEMAP_PROTOTYPE_GETNAMEDITEMNS, "getNamedItemNS", 2, c);
+        createDOMFunction(PROTOTYPE, DOMObjects.NAMEDNODEMAP_PROTOTYPE_SETNAMEDITEMNS, "setNamedItemNS", 2, c);
+        createDOMFunction(PROTOTYPE, DOMObjects.NAMEDNODEMAP_PROTOTYPE_REMOVEDNAMEDITEMNS, "removeNamedItemNS", 2, c);
     }
 
     /**
      * Transfer Functions.
      */
     // TODO: Figure out how to modely this correctly
-    public static Value evaluate(DOMObjects nativeobject, FunctionCalls.CallInfo call, State s, Solver.SolverInterface c) {
+    public static Value evaluate(DOMObjects nativeobject, FunctionCalls.CallInfo call, Solver.SolverInterface c) {
+        State s = c.getState();
         switch (nativeobject) {
             case NAMEDNODEMAP_PROTOTYPE_GETNAMEDITEM: {
                 NativeFunctions.expectParameters(nativeobject, call, c, 1, 1);

@@ -19,6 +19,7 @@ package dk.brics.tajs.analysis.dom.html;
 import dk.brics.tajs.analysis.FunctionCalls;
 import dk.brics.tajs.analysis.InitialStateBuilder;
 import dk.brics.tajs.analysis.NativeFunctions;
+import dk.brics.tajs.analysis.PropVarOperations;
 import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.analysis.dom.DOMObjects;
 import dk.brics.tajs.analysis.dom.DOMWindow;
@@ -37,17 +38,19 @@ public class HTMLImageElement {
 
     public static ObjectLabel CONSTRUCTOR;
 
-    public static void build(State s) {
+    public static void build(Solver.SolverInterface c) {
+        State s = c.getState();
+        PropVarOperations pv = c.getAnalysis().getPropVarOperations();
         CONSTRUCTOR = new ObjectLabel(DOMObjects.HTMLIMAGEELEMENT_CONSTRUCTOR, ObjectLabel.Kind.FUNCTION);
         INSTANCES = new ObjectLabel(DOMObjects.HTMLIMAGEELEMENT_INSTANCES, ObjectLabel.Kind.OBJECT);
         PROTOTYPE = new ObjectLabel(DOMObjects.HTMLIMAGEELEMENT_PROTOTYPE, ObjectLabel.Kind.OBJECT);
 
         // Constructor Object
         s.newObject(CONSTRUCTOR);
-        s.writePropertyWithAttributes(CONSTRUCTOR, "length", Value.makeNum(0).setAttributes(true, true, true));
-        s.writePropertyWithAttributes(CONSTRUCTOR, "prototype", Value.makeObject(PROTOTYPE).setAttributes(true, true, true));
+        pv.writePropertyWithAttributes(CONSTRUCTOR, "length", Value.makeNum(0).setAttributes(true, true, true));
+        pv.writePropertyWithAttributes(CONSTRUCTOR, "prototype", Value.makeObject(PROTOTYPE).setAttributes(true, true, true));
         s.writeInternalPrototype(CONSTRUCTOR, Value.makeObject(InitialStateBuilder.FUNCTION_PROTOTYPE));
-        s.writeProperty(DOMWindow.WINDOW, "HTMLImageElement", Value.makeObject(CONSTRUCTOR));
+        pv.writeProperty(DOMWindow.WINDOW, "HTMLImageElement", Value.makeObject(CONSTRUCTOR));
 
         // Prototype Object
         s.newObject(PROTOTYPE);
@@ -61,34 +64,34 @@ public class HTMLImageElement {
          * Properties.
          */
         // DOM LEVEL 0
-        createDOMProperty(s, INSTANCES, "complete", Value.makeAnyBool());
+        createDOMProperty(INSTANCES, "complete", Value.makeAnyBool(), c);
 
         // DOM Level 1
-        createDOMProperty(s, INSTANCES, "lowSrc", Value.makeAnyStr());
-        createDOMProperty(s, INSTANCES, "name", Value.makeAnyStr());
-        createDOMProperty(s, INSTANCES, "align", Value.makeAnyStr());
-        createDOMProperty(s, INSTANCES, "alt", Value.makeAnyStr());
-        createDOMProperty(s, INSTANCES, "border", Value.makeAnyStr());
-        createDOMProperty(s, INSTANCES, "isMap", Value.makeAnyBool());
-        createDOMProperty(s, INSTANCES, "longDesc", Value.makeAnyStr());
-        createDOMProperty(s, INSTANCES, "src", Value.makeAnyStr());
-        createDOMProperty(s, INSTANCES, "useMap", Value.makeAnyStr());
+        createDOMProperty(INSTANCES, "lowSrc", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "name", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "align", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "alt", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "border", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "isMap", Value.makeAnyBool(), c);
+        createDOMProperty(INSTANCES, "longDesc", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "src", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "useMap", Value.makeAnyStr(), c);
 
         // DOM Level 2
-        createDOMProperty(s, INSTANCES, "height", Value.makeAnyNum());
-        createDOMProperty(s, INSTANCES, "hspace", Value.makeAnyNum());
-        createDOMProperty(s, INSTANCES, "vspace", Value.makeAnyNum());
-        createDOMProperty(s, INSTANCES, "width", Value.makeAnyNum());
+        createDOMProperty(INSTANCES, "height", Value.makeAnyNum(), c);
+        createDOMProperty(INSTANCES, "hspace", Value.makeAnyNum(), c);
+        createDOMProperty(INSTANCES, "vspace", Value.makeAnyNum(), c);
+        createDOMProperty(INSTANCES, "width", Value.makeAnyNum(), c);
 
         // HTML5
-        createDOMProperty(s, INSTANCES, "naturalWidth", Value.makeAnyNumUInt().setReadOnly());
-        createDOMProperty(s, INSTANCES, "naturalHeight", Value.makeAnyNumUInt().setReadOnly());
+        createDOMProperty(INSTANCES, "naturalWidth", Value.makeAnyNumUInt().setReadOnly(), c);
+        createDOMProperty(INSTANCES, "naturalHeight", Value.makeAnyNumUInt().setReadOnly(), c);
 
         s.multiplyObject(INSTANCES);
         INSTANCES = INSTANCES.makeSingleton().makeSummary();
 
         // DOM LEVEL 0
-        createDOMProperty(s, DOMWindow.WINDOW, "Image", Value.makeObject(CONSTRUCTOR));
+        createDOMProperty(DOMWindow.WINDOW, "Image", Value.makeObject(CONSTRUCTOR), c);
 
         /*
          * Functions.
@@ -99,7 +102,7 @@ public class HTMLImageElement {
     /**
      * Transfer Functions.
      */
-    public static Value evaluate(DOMObjects nativeObject, FunctionCalls.CallInfo call, State s, Solver.SolverInterface c) {
+    public static Value evaluate(DOMObjects nativeObject, FunctionCalls.CallInfo call, Solver.SolverInterface c) {
         switch (nativeObject) {
             case HTMLIMAGEELEMENT_CONSTRUCTOR: {
                 NativeFunctions.expectParameters(nativeObject, call, c, 0, 0);

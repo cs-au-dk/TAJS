@@ -17,6 +17,8 @@
 package dk.brics.tajs.analysis.dom.html;
 
 import dk.brics.tajs.analysis.InitialStateBuilder;
+import dk.brics.tajs.analysis.PropVarOperations;
+import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.analysis.dom.DOMObjects;
 import dk.brics.tajs.analysis.dom.DOMWindow;
 import dk.brics.tajs.lattice.ObjectLabel;
@@ -36,17 +38,19 @@ public class HTMLScriptElement {
 
     public static ObjectLabel INSTANCES;
 
-    public static void build(State s) {
+    public static void build(Solver.SolverInterface c) {
+        State s = c.getState();
+        PropVarOperations pv = c.getAnalysis().getPropVarOperations();
         CONSTRUCTOR = new ObjectLabel(DOMObjects.HTMLSCRIPTELEMENT_CONSTRUCTOR, ObjectLabel.Kind.FUNCTION);
         PROTOTYPE = new ObjectLabel(DOMObjects.HTMLSCRIPTELEMENT_PROTOTYPE, ObjectLabel.Kind.OBJECT);
         INSTANCES = new ObjectLabel(DOMObjects.HTMLSCRIPTELEMENT_INSTANCES, ObjectLabel.Kind.OBJECT);
 
         // Constructor Object
         s.newObject(CONSTRUCTOR);
-        s.writePropertyWithAttributes(CONSTRUCTOR, "length", Value.makeNum(0).setAttributes(true, true, true));
-        s.writePropertyWithAttributes(CONSTRUCTOR, "prototype", Value.makeObject(PROTOTYPE).setAttributes(true, true, true));
+        pv.writePropertyWithAttributes(CONSTRUCTOR, "length", Value.makeNum(0).setAttributes(true, true, true));
+        pv.writePropertyWithAttributes(CONSTRUCTOR, "prototype", Value.makeObject(PROTOTYPE).setAttributes(true, true, true));
         s.writeInternalPrototype(CONSTRUCTOR, Value.makeObject(InitialStateBuilder.FUNCTION_PROTOTYPE));
-        s.writeProperty(DOMWindow.WINDOW, "HTMLScriptElement", Value.makeObject(CONSTRUCTOR));
+        pv.writeProperty(DOMWindow.WINDOW, "HTMLScriptElement", Value.makeObject(CONSTRUCTOR));
 
         // Prototype Object
         s.newObject(PROTOTYPE);
@@ -60,13 +64,13 @@ public class HTMLScriptElement {
          * Properties.
          */
         // DOM Level 1
-        createDOMProperty(s, INSTANCES, "text", Value.makeAnyStr());
-        createDOMProperty(s, INSTANCES, "htmlFor", Value.makeAnyStr());
-        createDOMProperty(s, INSTANCES, "event", Value.makeAnyStr());
-        createDOMProperty(s, INSTANCES, "charset", Value.makeAnyStr());
-        createDOMProperty(s, INSTANCES, "defer", Value.makeAnyBool());
-        createDOMProperty(s, INSTANCES, "src", Value.makeAnyStr());
-        createDOMProperty(s, INSTANCES, "type", Value.makeAnyStr());
+        createDOMProperty(INSTANCES, "text", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "htmlFor", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "event", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "charset", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "defer", Value.makeAnyBool(), c);
+        createDOMProperty(INSTANCES, "src", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "type", Value.makeAnyStr(), c);
 
         s.multiplyObject(INSTANCES);
         INSTANCES = INSTANCES.makeSingleton().makeSummary();

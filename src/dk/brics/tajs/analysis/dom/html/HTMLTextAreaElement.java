@@ -19,6 +19,7 @@ package dk.brics.tajs.analysis.dom.html;
 import dk.brics.tajs.analysis.FunctionCalls;
 import dk.brics.tajs.analysis.InitialStateBuilder;
 import dk.brics.tajs.analysis.NativeFunctions;
+import dk.brics.tajs.analysis.PropVarOperations;
 import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.analysis.dom.DOMObjects;
 import dk.brics.tajs.analysis.dom.DOMWindow;
@@ -38,17 +39,19 @@ public class HTMLTextAreaElement {
 
     public static ObjectLabel INSTANCES;
 
-    public static void build(State s) {
+    public static void build(Solver.SolverInterface c) {
+        State s = c.getState();
+        PropVarOperations pv = c.getAnalysis().getPropVarOperations();
         CONSTRUCTOR = new ObjectLabel(DOMObjects.HTMLTEXTAREAELEMENT_CONSTRUCTOR, ObjectLabel.Kind.FUNCTION);
         PROTOTYPE = new ObjectLabel(DOMObjects.HTMLTEXTAREAELEMENT_PROTOTYPE, ObjectLabel.Kind.OBJECT);
         INSTANCES = new ObjectLabel(DOMObjects.HTMLTEXTAREAELEMENT_INSTANCES, ObjectLabel.Kind.OBJECT);
 
         // Constructor Object
         s.newObject(CONSTRUCTOR);
-        s.writePropertyWithAttributes(CONSTRUCTOR, "length", Value.makeNum(0).setAttributes(true, true, true));
-        s.writePropertyWithAttributes(CONSTRUCTOR, "prototype", Value.makeObject(PROTOTYPE).setAttributes(true, true, true));
+        pv.writePropertyWithAttributes(CONSTRUCTOR, "length", Value.makeNum(0).setAttributes(true, true, true));
+        pv.writePropertyWithAttributes(CONSTRUCTOR, "prototype", Value.makeObject(PROTOTYPE).setAttributes(true, true, true));
         s.writeInternalPrototype(CONSTRUCTOR, Value.makeObject(InitialStateBuilder.FUNCTION_PROTOTYPE));
-        s.writeProperty(DOMWindow.WINDOW, "HTMLTextAreaElement", Value.makeObject(CONSTRUCTOR));
+        pv.writeProperty(DOMWindow.WINDOW, "HTMLTextAreaElement", Value.makeObject(CONSTRUCTOR));
 
         // Prototype Object
         s.newObject(PROTOTYPE);
@@ -62,19 +65,19 @@ public class HTMLTextAreaElement {
          * Properties.
          */
         // DOM Level 1
-        createDOMProperty(s, INSTANCES, "form", Value.makeObject(HTMLFormElement.INSTANCES).setReadOnly());
-        createDOMProperty(s, INSTANCES, "accessKey", Value.makeAnyStr());
-        createDOMProperty(s, INSTANCES, "cols", Value.makeAnyNum());
-        createDOMProperty(s, INSTANCES, "disabled", Value.makeAnyBool());
-        createDOMProperty(s, INSTANCES, "name", Value.makeAnyStr());
-        createDOMProperty(s, INSTANCES, "readOnly", Value.makeAnyBool());
-        createDOMProperty(s, INSTANCES, "rows", Value.makeAnyNum());
-        createDOMProperty(s, INSTANCES, "tabIndex", Value.makeAnyNum());
-        createDOMProperty(s, INSTANCES, "type", Value.makeAnyStr().setReadOnly());
-        createDOMProperty(s, INSTANCES, "value", Value.makeAnyStr());
+        createDOMProperty(INSTANCES, "form", Value.makeObject(HTMLFormElement.INSTANCES).setReadOnly(), c);
+        createDOMProperty(INSTANCES, "accessKey", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "cols", Value.makeAnyNum(), c);
+        createDOMProperty(INSTANCES, "disabled", Value.makeAnyBool(), c);
+        createDOMProperty(INSTANCES, "name", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "readOnly", Value.makeAnyBool(), c);
+        createDOMProperty(INSTANCES, "rows", Value.makeAnyNum(), c);
+        createDOMProperty(INSTANCES, "tabIndex", Value.makeAnyNum(), c);
+        createDOMProperty(INSTANCES, "type", Value.makeAnyStr().setReadOnly(), c);
+        createDOMProperty(INSTANCES, "value", Value.makeAnyStr(), c);
 
         // DOM Level 2
-        createDOMProperty(s, INSTANCES, "defaultValue", Value.makeAnyStr());
+        createDOMProperty(INSTANCES, "defaultValue", Value.makeAnyStr(), c);
 
         s.multiplyObject(INSTANCES);
         INSTANCES = INSTANCES.makeSingleton().makeSummary();
@@ -83,15 +86,15 @@ public class HTMLTextAreaElement {
          * Functions.
          */
         // DOM Level 1
-        createDOMFunction(s, PROTOTYPE, DOMObjects.HTMLTEXTAREAELEMENT_BLUR, "blur", 0);
-        createDOMFunction(s, PROTOTYPE, DOMObjects.HTMLTEXTAREAELEMENT_FOCUS, "focus", 0);
-        createDOMFunction(s, PROTOTYPE, DOMObjects.HTMLTEXTAREAELEMENT_SELECT, "select", 0);
+        createDOMFunction(PROTOTYPE, DOMObjects.HTMLTEXTAREAELEMENT_BLUR, "blur", 0, c);
+        createDOMFunction(PROTOTYPE, DOMObjects.HTMLTEXTAREAELEMENT_FOCUS, "focus", 0, c);
+        createDOMFunction(PROTOTYPE, DOMObjects.HTMLTEXTAREAELEMENT_SELECT, "select", 0, c);
     }
 
     /**
      * Transfer functions
      */
-    public static Value evaluate(DOMObjects nativeObject, FunctionCalls.CallInfo call, State s, Solver.SolverInterface c) {
+    public static Value evaluate(DOMObjects nativeObject, FunctionCalls.CallInfo call, Solver.SolverInterface c) {
         switch (nativeObject) {
             case HTMLTEXTAREAELEMENT_SELECT: {
                 NativeFunctions.expectParameters(nativeObject, call, c, 0, 0);

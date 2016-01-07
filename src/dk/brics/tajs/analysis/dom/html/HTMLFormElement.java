@@ -19,6 +19,7 @@ package dk.brics.tajs.analysis.dom.html;
 import dk.brics.tajs.analysis.FunctionCalls;
 import dk.brics.tajs.analysis.InitialStateBuilder;
 import dk.brics.tajs.analysis.NativeFunctions;
+import dk.brics.tajs.analysis.PropVarOperations;
 import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.analysis.dom.DOMObjects;
 import dk.brics.tajs.analysis.dom.DOMWindow;
@@ -38,17 +39,19 @@ public class HTMLFormElement {
 
     public static ObjectLabel INSTANCES;
 
-    public static void build(State s) {
+    public static void build(Solver.SolverInterface c) {
+        State s = c.getState();
+        PropVarOperations pv = c.getAnalysis().getPropVarOperations();
         CONSTRUCTOR = new ObjectLabel(DOMObjects.HTMLFORMELEMENT_CONSTRUCTOR, ObjectLabel.Kind.FUNCTION);
         PROTOTYPE = new ObjectLabel(DOMObjects.HTMLFORMELEMENT_PROTOTYPE, ObjectLabel.Kind.OBJECT);
         INSTANCES = new ObjectLabel(DOMObjects.HTMLFORMELEMENT_INSTANCES, ObjectLabel.Kind.OBJECT);
 
         // Constructor Object
         s.newObject(CONSTRUCTOR);
-        s.writePropertyWithAttributes(CONSTRUCTOR, "length", Value.makeNum(0).setAttributes(true, true, true));
-        s.writePropertyWithAttributes(CONSTRUCTOR, "prototype", Value.makeObject(PROTOTYPE).setAttributes(true, true, true));
+        pv.writePropertyWithAttributes(CONSTRUCTOR, "length", Value.makeNum(0).setAttributes(true, true, true));
+        pv.writePropertyWithAttributes(CONSTRUCTOR, "prototype", Value.makeObject(PROTOTYPE).setAttributes(true, true, true));
         s.writeInternalPrototype(CONSTRUCTOR, Value.makeObject(InitialStateBuilder.FUNCTION_PROTOTYPE));
-        s.writeProperty(DOMWindow.WINDOW, "HTMLFormElement", Value.makeObject(CONSTRUCTOR));
+        pv.writeProperty(DOMWindow.WINDOW, "HTMLFormElement", Value.makeObject(CONSTRUCTOR));
 
         // Prototype Object
         s.newObject(PROTOTYPE);
@@ -62,14 +65,14 @@ public class HTMLFormElement {
          * Properties.
          */
         // DOM Level 1
-        createDOMProperty(s, INSTANCES, "elements", Value.makeObject(HTMLCollection.INSTANCES).setReadOnly());
-        createDOMProperty(s, INSTANCES, "length", Value.makeNum(0).setReadOnly());
-        createDOMProperty(s, INSTANCES, "name", Value.makeAnyStr());
-        createDOMProperty(s, INSTANCES, "acceptCharset", Value.makeAnyStr());
-        createDOMProperty(s, INSTANCES, "action", Value.makeAnyStr());
-        createDOMProperty(s, INSTANCES, "enctype", Value.makeAnyStr());
-        createDOMProperty(s, INSTANCES, "method", Value.makeAnyStr());
-        createDOMProperty(s, INSTANCES, "target", Value.makeAnyStr());
+        createDOMProperty(INSTANCES, "elements", Value.makeObject(HTMLCollection.INSTANCES).setReadOnly(), c);
+        createDOMProperty(INSTANCES, "length", Value.makeNum(0).setReadOnly(), c);
+        createDOMProperty(INSTANCES, "name", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "acceptCharset", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "action", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "enctype", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "method", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "target", Value.makeAnyStr(), c);
 
         s.multiplyObject(INSTANCES);
         INSTANCES = INSTANCES.makeSingleton().makeSummary();
@@ -78,11 +81,11 @@ public class HTMLFormElement {
          * Functions.
          */
         // DOM Level 1
-        createDOMFunction(s, PROTOTYPE, DOMObjects.HTMLFORMELEMENT_SUBMIT, "submit", 0);
-        createDOMFunction(s, PROTOTYPE, DOMObjects.HTMLFORMELEMENT_RESET, "reset", 0);
+        createDOMFunction(PROTOTYPE, DOMObjects.HTMLFORMELEMENT_SUBMIT, "submit", 0, c);
+        createDOMFunction(PROTOTYPE, DOMObjects.HTMLFORMELEMENT_RESET, "reset", 0, c);
     }
 
-    public static Value evaluate(DOMObjects nativeObject, FunctionCalls.CallInfo call, State s, Solver.SolverInterface c) {
+    public static Value evaluate(DOMObjects nativeObject, FunctionCalls.CallInfo call, Solver.SolverInterface c) {
         switch (nativeObject) {
             case HTMLFORMELEMENT_SUBMIT:
                 NativeFunctions.expectParameters(nativeObject, call, c, 0, 0);

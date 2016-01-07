@@ -49,6 +49,8 @@ public class DOMRegistry {
     private static ObjectLabel mutationEvent;
 
     private static ObjectLabel wheelEvent;
+    
+    private static ObjectLabel touchEvent;
 
     public static void reset() {
         keyboardEvent = null;
@@ -57,6 +59,7 @@ public class DOMRegistry {
         loadEvent = null;
         mutationEvent = null;
         wheelEvent = null;
+        touchEvent = null;
     }
 
     public static void registerKeyboardEventLabel(ObjectLabel l) {
@@ -82,6 +85,10 @@ public class DOMRegistry {
     public static void registerWheelEventLabel(ObjectLabel l) {
         wheelEvent = l;
     }
+    
+    public static void registerTouchEventLabel(ObjectLabel l) {
+		touchEvent = l;
+	}
 
     public static ObjectLabel getKeyboardEventLabel() {
         if (keyboardEvent == null) {
@@ -124,4 +131,12 @@ public class DOMRegistry {
         }
         return wheelEvent;
     }
+    
+    public static ObjectLabel getTouchEventLabel() {
+    	if (touchEvent == null) {
+    		throw new AnalysisException("No touch event object labels registered");
+    	}
+    	return touchEvent;
+    }
+
 }

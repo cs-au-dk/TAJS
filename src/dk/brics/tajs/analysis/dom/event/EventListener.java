@@ -39,7 +39,8 @@ public class EventListener {
 
     public static ObjectLabel INSTANCES;
 
-    public static void build(State s) {
+    public static void build(Solver.SolverInterface c) {
+        State s = c.getState();
         PROTOTYPE = new ObjectLabel(DOMObjects.EVENT_LISTENER_PROTOTYPE, ObjectLabel.Kind.OBJECT);
         INSTANCES = new ObjectLabel(DOMObjects.EVENT_LISTENER_INSTANCES, ObjectLabel.Kind.OBJECT);
 
@@ -61,10 +62,10 @@ public class EventListener {
         /*
          * Functions.
          */
-        createDOMFunction(s, PROTOTYPE, DOMObjects.EVENT_LISTENER_HANDLE_EVENT, "handleEvent", 1);
+        createDOMFunction(PROTOTYPE, DOMObjects.EVENT_LISTENER_HANDLE_EVENT, "handleEvent", 1, c);
     }
 
-    public static Value evaluate(DOMObjects nativeObject, FunctionCalls.CallInfo call, State s, Solver.SolverInterface c) {
+    public static Value evaluate(DOMObjects nativeObject, FunctionCalls.CallInfo call, Solver.SolverInterface c) {
         switch (nativeObject) {
             case EVENT_LISTENER_HANDLE_EVENT: {
                 NativeFunctions.expectParameters(nativeObject, call, c, 1, 1);

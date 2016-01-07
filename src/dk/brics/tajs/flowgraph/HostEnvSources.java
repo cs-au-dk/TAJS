@@ -1,58 +1,56 @@
 package dk.brics.tajs.flowgraph;
 
 import dk.brics.tajs.options.Options;
+import dk.brics.tajs.util.AnalysisException;
 import dk.brics.tajs.util.Loader;
 
 import java.io.IOException;
-import java.net.URISyntaxException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.io.InputStream;
 import java.util.List;
-import java.util.Set;
 
 import static dk.brics.tajs.util.Collections.newList;
-import static dk.brics.tajs.util.Collections.newSet;
 
 /**
  * JavaScript sources for models of host environments.
  */
 public class HostEnvSources {
 
-    private final static SourceLocation loaderDummySourceLocation = new SourceLocation(0, 0, "hostenv-sources-loader");
+    private final static String filenNamePrefix = "TAJS-host-environment-sources";
+
+    private final static SourceLocation loaderDummySourceLocation = new SourceLocation(0, 0, formatFileName("loader"));
 
     private static final boolean DEBUG = false;
 
-    private static Set<Path> paths = newSet();
-
     public static List<JavaScriptSource> get() {
-        final Path dir;
-        try {
-            dir = Paths.get(HostEnvSources.class.getResource("/hostenv").toURI());
-            assert (Files.exists(dir));
-        } catch (URISyntaxException e) {
-            throw new RuntimeException(e);
-        }
-
-        List<Path> paths = newList();
+        // NB: not using java.nio.Path since windows-hosts will use \ instead of /
+        List<String> sourcePaths = newList();
 
         if (Options.get().isPolyfillMDNEnabled()) {
-            paths.add(dir.resolve("mdn-polyfills.js"));
+            sourcePaths.add("mdn-polyfills.js");
         }
         if (Options.get().isPolyfillES6CollectionsEnabled()) {
-            paths.add(dir.resolve("es6-collections.js"));
+            sourcePaths.add("es6-collections.js");
+        }
+        if (Options.get().isPolyfillTypedArraysEnabled()) {
+            sourcePaths.add("typed-arrays.js");
         }
 
         if (Options.get().isDOMEnabled()) {
             // add extra paths...
         }
 
-        HostEnvSources.paths.addAll(paths);
+        String root = "/hostenv";
         List<JavaScriptSource> sources = newList();
-        for (Path path : paths) {
+        for (String sourcePath : sourcePaths) {
             try {
-                assert (Files.exists(path));
-                sources.add(JavaScriptSource.makeFileCode(path.toString(), Loader.getString(path.toString(), "UTF-8")));
+                String fileName = formatFileName(sourcePath);
+                String fullSourcePath = root + "/" + sourcePath;
+                InputStream sourceStream = HostEnvSources.class.getResourceAsStream(fullSourcePath);
+                if (sourceStream == null) {
+                    throw new AnalysisException("Can't find resource " + fullSourcePath);
+                }
+                String code = Loader.getStringFromStream(sourceStream, "UTF-8");
+                sources.add(JavaScriptSource.makeFileCode(fileName, code));
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -60,17 +58,15 @@ public class HostEnvSources {
         return sources;
     }
 
+    public static String formatFileName(String fileName) {
+        return String.format("%s(%s)", filenNamePrefix, fileName);
+    }
+
     public static boolean isHostEnvSource(SourceLocation sourceLocation) {
         if (DEBUG) {
             return false;
         }
-        Path sourcePath;
-        try {
-            sourcePath = Paths.get(sourceLocation.getFileName());
-        } catch (Exception e/* if the path is invalid (Windows) */) {
-            return false;
-        }
-        return sourceLocation == loaderDummySourceLocation || paths.contains(sourcePath);
+        return sourceLocation.getFileName().startsWith(filenNamePrefix);
     }
 
     public static SourceLocation getLoaderDummySourceLocation() {

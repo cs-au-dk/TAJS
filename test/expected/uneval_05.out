@@ -1,2 +1,1 @@
-test/uneval/uneval05.js:2:1: [definite] Unreachable code
-test/uneval/uneval05.js: [maybe] Uncaught exception, constructed at [TAJS-dynamic-code(test/uneval/uneval05.js:1:1):1:7]
+test/uneval/uneval05.js:3:5: [definite] Unreachable code

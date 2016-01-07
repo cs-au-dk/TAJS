@@ -20,6 +20,7 @@ import dk.brics.tajs.analysis.Conversion;
 import dk.brics.tajs.analysis.FunctionCalls;
 import dk.brics.tajs.analysis.InitialStateBuilder;
 import dk.brics.tajs.analysis.NativeFunctions;
+import dk.brics.tajs.analysis.PropVarOperations;
 import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.analysis.dom.DOMObjects;
 import dk.brics.tajs.analysis.dom.DOMWindow;
@@ -47,17 +48,19 @@ public class HTMLTableElement {
 
     public static ObjectLabel INSTANCES;
 
-    public static void build(State s) {
+    public static void build(Solver.SolverInterface c) {
+        State s = c.getState();
+        PropVarOperations pv = c.getAnalysis().getPropVarOperations();
         CONSTRUCTOR = new ObjectLabel(DOMObjects.HTMLTABLEELEMENT_CONSTRUCTOR, ObjectLabel.Kind.FUNCTION);
         PROTOTYPE = new ObjectLabel(DOMObjects.HTMLTABLEELEMENT_PROTOTYPE, ObjectLabel.Kind.OBJECT);
         INSTANCES = new ObjectLabel(DOMObjects.HTMLTABLEELEMENT_INSTANCES, ObjectLabel.Kind.OBJECT);
 
         // Constructor Object
         s.newObject(CONSTRUCTOR);
-        s.writePropertyWithAttributes(CONSTRUCTOR, "length", Value.makeNum(0).setAttributes(true, true, true));
-        s.writePropertyWithAttributes(CONSTRUCTOR, "prototype", Value.makeObject(PROTOTYPE).setAttributes(true, true, true));
+        pv.writePropertyWithAttributes(CONSTRUCTOR, "length", Value.makeNum(0).setAttributes(true, true, true));
+        pv.writePropertyWithAttributes(CONSTRUCTOR, "prototype", Value.makeObject(PROTOTYPE).setAttributes(true, true, true));
         s.writeInternalPrototype(CONSTRUCTOR, Value.makeObject(InitialStateBuilder.FUNCTION_PROTOTYPE));
-        s.writeProperty(DOMWindow.WINDOW, "HTMLTableElement", Value.makeObject(CONSTRUCTOR));
+        pv.writeProperty(DOMWindow.WINDOW, "HTMLTableElement", Value.makeObject(CONSTRUCTOR));
 
         // Prototype Object
         s.newObject(PROTOTYPE);
@@ -71,22 +74,22 @@ public class HTMLTableElement {
          * Properties.
          */
         // DOM Level 1
-        createDOMProperty(s, INSTANCES, "rows", Value.makeObject(HTMLCollection.INSTANCES).setReadOnly());
-        createDOMProperty(s, INSTANCES, "tBodies", Value.makeObject(HTMLCollection.INSTANCES).setReadOnly());
-        createDOMProperty(s, INSTANCES, "align", Value.makeAnyStr());
-        createDOMProperty(s, INSTANCES, "bgColor", Value.makeAnyStr());
-        createDOMProperty(s, INSTANCES, "border", Value.makeAnyStr());
-        createDOMProperty(s, INSTANCES, "cellPadding", Value.makeAnyStr());
-        createDOMProperty(s, INSTANCES, "cellSpacing", Value.makeAnyStr());
-        createDOMProperty(s, INSTANCES, "frame", Value.makeAnyStr());
-        createDOMProperty(s, INSTANCES, "rules", Value.makeAnyStr());
-        createDOMProperty(s, INSTANCES, "summary", Value.makeAnyStr());
-        createDOMProperty(s, INSTANCES, "width", Value.makeAnyStr());
+        createDOMProperty(INSTANCES, "rows", Value.makeObject(HTMLCollection.INSTANCES).setReadOnly(), c);
+        createDOMProperty(INSTANCES, "tBodies", Value.makeObject(HTMLCollection.INSTANCES).setReadOnly(), c);
+        createDOMProperty(INSTANCES, "align", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "bgColor", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "border", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "cellPadding", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "cellSpacing", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "frame", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "rules", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "summary", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "width", Value.makeAnyStr(), c);
 
         // DOM Level 2
-        createDOMProperty(s, INSTANCES, "caption", Value.makeObject(HTMLTableCaptionElement.INSTANCES));
-        createDOMProperty(s, INSTANCES, "tHead", Value.makeObject(HTMLTableSectionElement.INSTANCES));
-        createDOMProperty(s, INSTANCES, "tFoot", Value.makeObject(HTMLTableSectionElement.INSTANCES));
+        createDOMProperty(INSTANCES, "caption", Value.makeObject(HTMLTableCaptionElement.INSTANCES), c);
+        createDOMProperty(INSTANCES, "tHead", Value.makeObject(HTMLTableSectionElement.INSTANCES), c);
+        createDOMProperty(INSTANCES, "tFoot", Value.makeObject(HTMLTableSectionElement.INSTANCES), c);
 
         s.multiplyObject(INSTANCES);
         INSTANCES = INSTANCES.makeSingleton().makeSummary();
@@ -95,19 +98,20 @@ public class HTMLTableElement {
          * Functions.
          */
         // DOM Level 1
-        createDOMFunction(s, PROTOTYPE, DOMObjects.HTMLTABLEELEMENT_CREATETHEAD, "createTHead", 0);
-        createDOMFunction(s, PROTOTYPE, DOMObjects.HTMLTABLEELEMENT_DELETETHEAD, "deleteTHead", 0);
-        createDOMFunction(s, PROTOTYPE, DOMObjects.HTMLTABLEELEMENT_CREATETFOOT, "createTFoot", 0);
-        createDOMFunction(s, PROTOTYPE, DOMObjects.HTMLTABLEELEMENT_DELETETFOOT, "deleteTFoot", 0);
-        createDOMFunction(s, PROTOTYPE, DOMObjects.HTMLTABLEELEMENT_CREATECAPTION, "createCaption", 0);
-        createDOMFunction(s, PROTOTYPE, DOMObjects.HTMLTABLEELEMENT_DELETECAPTION, "deleteCaption", 0);
+        createDOMFunction(PROTOTYPE, DOMObjects.HTMLTABLEELEMENT_CREATETHEAD, "createTHead", 0, c);
+        createDOMFunction(PROTOTYPE, DOMObjects.HTMLTABLEELEMENT_DELETETHEAD, "deleteTHead", 0, c);
+        createDOMFunction(PROTOTYPE, DOMObjects.HTMLTABLEELEMENT_CREATETFOOT, "createTFoot", 0, c);
+        createDOMFunction(PROTOTYPE, DOMObjects.HTMLTABLEELEMENT_DELETETFOOT, "deleteTFoot", 0, c);
+        createDOMFunction(PROTOTYPE, DOMObjects.HTMLTABLEELEMENT_CREATECAPTION, "createCaption", 0, c);
+        createDOMFunction(PROTOTYPE, DOMObjects.HTMLTABLEELEMENT_DELETECAPTION, "deleteCaption", 0, c);
 
         // DOM Level 2
-        createDOMFunction(s, PROTOTYPE, DOMObjects.HTMLTABLEELEMENT_INSERTROW, "insertRow", 1);
-        createDOMFunction(s, PROTOTYPE, DOMObjects.HTMLTABLEELEMENT_DELETEROW, "deleteRow", 1);
+        createDOMFunction(PROTOTYPE, DOMObjects.HTMLTABLEELEMENT_INSERTROW, "insertRow", 1, c);
+        createDOMFunction(PROTOTYPE, DOMObjects.HTMLTABLEELEMENT_DELETEROW, "deleteRow", 1, c);
     }
 
-    public static Value evaluate(DOMObjects nativeObject, FunctionCalls.CallInfo call, State s, Solver.SolverInterface c) {
+    public static Value evaluate(DOMObjects nativeObject, FunctionCalls.CallInfo call, Solver.SolverInterface c) {
+        State s = c.getState();
         switch (nativeObject) {
             case HTMLTABLEELEMENT_CREATETHEAD:
             case HTMLTABLEELEMENT_CREATETFOOT:

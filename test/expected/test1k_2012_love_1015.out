@@ -1,4 +1,3 @@
-test/1k2012love/1015.js:65:9: [definite] The assignment to d has no effect
 test/1k2012love/shim.js:6:5: [definite] The variable b is never used
 test/1k2012love/1015.js:58:1: [maybe] TypeError, call to non-function
 test/1k2012love/1015.js:94:3: [maybe] TypeError, call to non-function

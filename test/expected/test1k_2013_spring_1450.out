@@ -1,5 +1,4 @@
 test/1k2013spring/1450.js:167:2: [definite] ReferenceError, reading absent variable debug
-test/1k2013spring/1450.js:154:2: [definite] The assignment to yaw has no effect
 test/1k2013spring/1450.js:19:7: [definite] The variable w is never used
 test/1k2013spring/1450.js:63:33: [definite] The variable pitch is never used
 test/1k2013spring/1450.js:164:6: [definite] The variable vx is never used

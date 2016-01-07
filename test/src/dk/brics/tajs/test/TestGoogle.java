@@ -1,13 +1,13 @@
 package dk.brics.tajs.test;
 
+import dk.brics.tajs.Main;
 import dk.brics.tajs.monitoring.CompositeMonitoring;
 import dk.brics.tajs.monitoring.IAnalysisMonitoring;
 import dk.brics.tajs.monitoring.Monitoring;
+import dk.brics.tajs.options.Options;
 import dk.brics.tajs.test.monitors.OrdinaryExitReachableCheckerMonitor;
 import org.junit.Before;
 import org.junit.Test;
-
-import dk.brics.tajs.options.Options;
 
 @SuppressWarnings("static-method")
 public class TestGoogle {
@@ -20,7 +20,7 @@ public class TestGoogle {
 	
 	@Before
 	public void init() {
-        Options.reset();
+		Main.reset();
 		Options.get().enableTest();
 		monitoring = CompositeMonitoring.buildFromList(new Monitoring(), new OrdinaryExitReachableCheckerMonitor());
 	}

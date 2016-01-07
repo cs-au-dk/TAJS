@@ -2,6 +2,7 @@ package dk.brics.tajs.analysis.dom.html5;
 
 import dk.brics.tajs.analysis.FunctionCalls;
 import dk.brics.tajs.analysis.InitialStateBuilder;
+import dk.brics.tajs.analysis.PropVarOperations;
 import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.analysis.dom.DOMObjects;
 import dk.brics.tajs.analysis.dom.DOMWindow;
@@ -21,28 +22,30 @@ public class HTMLMediaElement {
 
     public static ObjectLabel INSTANCES;
 
-    public static void build(State s) {
+    public static void build(Solver.SolverInterface c) {
+        State s = c.getState();
+        PropVarOperations pv = c.getAnalysis().getPropVarOperations();
         CONSTRUCTOR = new ObjectLabel(DOMObjects.HTMLMEDIAELEMENT_CONSTRUCTOR, ObjectLabel.Kind.FUNCTION);
         PROTOTYPE = new ObjectLabel(DOMObjects.HTMLMEDIAELEMENT_PROTOTYPE, ObjectLabel.Kind.OBJECT);
         INSTANCES = new ObjectLabel(DOMObjects.HTMLMEDIAELEMENT_INSTANCES, ObjectLabel.Kind.OBJECT);
 
         // Constructor Object
         s.newObject(CONSTRUCTOR);
-        s.writePropertyWithAttributes(CONSTRUCTOR, "length", Value.makeNum(0).setAttributes(true, true, true));
-        s.writePropertyWithAttributes(CONSTRUCTOR, "prototype", Value.makeObject(PROTOTYPE).setAttributes(true, true, true));
+        pv.writePropertyWithAttributes(CONSTRUCTOR, "length", Value.makeNum(0).setAttributes(true, true, true));
+        pv.writePropertyWithAttributes(CONSTRUCTOR, "prototype", Value.makeObject(PROTOTYPE).setAttributes(true, true, true));
         s.writeInternalPrototype(CONSTRUCTOR, Value.makeObject(InitialStateBuilder.OBJECT_PROTOTYPE));
-        s.writeProperty(DOMWindow.WINDOW, "HTMLMediaElement", Value.makeObject(CONSTRUCTOR));
+        pv.writeProperty(DOMWindow.WINDOW, "HTMLMediaElement", Value.makeObject(CONSTRUCTOR));
 
         // FIXME: not all media element prototype properties implemented
 
         // Prototype Object
         s.newObject(PROTOTYPE);
         s.writeInternalPrototype(PROTOTYPE, Value.makeObject(HTMLElement.ELEMENT_PROTOTYPE));
-        createDOMFunction(s, PROTOTYPE, DOMObjects.HTMLMEDIAELEMENT_CAN_PLAY_TYPE, "canPlayType", 1);
-        createDOMFunction(s, PROTOTYPE, DOMObjects.HTMLMEDIAELEMENT_FAST_SEEK, "fastSeek", 1);
-        createDOMFunction(s, PROTOTYPE, DOMObjects.HTMLMEDIAELEMENT_LOAD, "load", 0);
-        createDOMFunction(s, PROTOTYPE, DOMObjects.HTMLMEDIAELEMENT_PAUSE, "pause", 0);
-        createDOMFunction(s, PROTOTYPE, DOMObjects.HTMLMEDIAELEMENT_PLAY, "play", 0);
+        createDOMFunction(PROTOTYPE, DOMObjects.HTMLMEDIAELEMENT_CAN_PLAY_TYPE, "canPlayType", 1, c);
+        createDOMFunction(PROTOTYPE, DOMObjects.HTMLMEDIAELEMENT_FAST_SEEK, "fastSeek", 1, c);
+        createDOMFunction(PROTOTYPE, DOMObjects.HTMLMEDIAELEMENT_LOAD, "load", 0, c);
+        createDOMFunction(PROTOTYPE, DOMObjects.HTMLMEDIAELEMENT_PAUSE, "pause", 0, c);
+        createDOMFunction(PROTOTYPE, DOMObjects.HTMLMEDIAELEMENT_PLAY, "play", 0, c);
 
         // Instances Object
         s.newObject(INSTANCES);
@@ -52,7 +55,7 @@ public class HTMLMediaElement {
         INSTANCES = INSTANCES.makeSingleton().makeSummary();
     }
 
-    public static Value evaluate(DOMObjects nativeObject, FunctionCalls.CallInfo call, State s, Solver.SolverInterface c) {
+    public static Value evaluate(DOMObjects nativeObject, FunctionCalls.CallInfo call, Solver.SolverInterface c) {
         switch (nativeObject) {
             case HTMLMEDIAELEMENT_CONSTRUCTOR: {
                 return Value.makeObject(INSTANCES);

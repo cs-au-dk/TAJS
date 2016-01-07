@@ -1,19 +1,16 @@
-test/10k/snowpar.html:144:5: [definite] The assignment to padding has no effect
 test/10k/snowpar.html:170:5: [definite] The conditional expression is always false
-test/10k/snowpar.html:193:11: [definite] The conditional expression is always true
-test/10k/snowpar.html:276:5: [definite] The assignment to padding has no effect
 test/10k/snowpar.html:176:28: [definite] Reading absent property scrollLeft
 test/10k/snowpar.html:176:55: [definite] Reading absent property scrollLeft
 test/10k/snowpar.html:177:28: [definite] Reading absent property scrollTop
 test/10k/snowpar.html:177:54: [definite] Reading absent property scrollTop
 test/10k/snowpar.html:170:17: [definite] The variable declaration e shadows a parameter
-test/10k/snowpar.html:192:22: [definite] The variable e is never used
 test/10k/snowpar.html:138:9: [maybe] TypeError, accessing property of null/undefined
 test/10k/snowpar.html:138:9: [maybe] TypeError, accessing property of null/undefined
 test/10k/snowpar.html:139:9: [maybe] TypeError, accessing property of null/undefined
 test/10k/snowpar.html:139:9: [maybe] TypeError, accessing property of null/undefined
 test/10k/snowpar.html:176:28: [maybe] TypeError, accessing property of null/undefined
 test/10k/snowpar.html:177:28: [maybe] TypeError, accessing property of null/undefined
+test/10k/snowpar.html:193:28: [maybe] ReferenceError, reading absent variable event
 test/10k/snowpar.html:201:9: [maybe] TypeError, accessing property of null/undefined
 test/10k/snowpar.html:201:30: [maybe] TypeError, accessing property of null/undefined
 test/10k/snowpar.html:206:9: [maybe] TypeError, accessing property of null/undefined
@@ -36,6 +33,7 @@ test/10k/snowpar.html:138:9: [maybe] Reading absent property style
 test/10k/snowpar.html:139:9: [maybe] Reading absent property style
 test/10k/snowpar.html:176:28: [maybe] Reading absent property body
 test/10k/snowpar.html:177:28: [maybe] Reading absent property body
+test/10k/snowpar.html:193:12: [maybe] Reading absent property event
 test/10k/snowpar.html:201:30: [maybe] Reading absent property checked
 test/10k/snowpar.html:206:35: [maybe] Reading absent property checked
 test/10k/snowpar.html:210:37: [maybe] Reading absent property checked
@@ -43,7 +41,7 @@ test/10k/snowpar.html:214:36: [maybe] Reading absent property checked
 test/10k/snowpar.html:218:36: [maybe] Reading absent property checked
 test/10k/snowpar.html:222:37: [maybe] Reading absent property checked
 test/10k/snowpar.html:230:31: [maybe] Reading absent property checked
-test/10k/snowpar.html: [maybe] Uncaught exception, constructed at [test/10k/snowpar.html:138:9, test/10k/snowpar.html:139:9, test/10k/snowpar.html:176:28, test/10k/snowpar.html:177:28, test/10k/snowpar.html:201:9, test/10k/snowpar.html:201:30, test/10k/snowpar.html:206:9, test/10k/snowpar.html:206:35, test/10k/snowpar.html:210:9, test/10k/snowpar.html:210:37, test/10k/snowpar.html:214:9, test/10k/snowpar.html:214:36, test/10k/snowpar.html:218:9, test/10k/snowpar.html:218:36, test/10k/snowpar.html:222:9, test/10k/snowpar.html:222:37, test/10k/snowpar.html:230:9, test/10k/snowpar.html:230:31]
+test/10k/snowpar.html: [maybe] Uncaught exception, constructed at [test/10k/snowpar.html:138:9, test/10k/snowpar.html:139:9, test/10k/snowpar.html:176:28, test/10k/snowpar.html:177:28, test/10k/snowpar.html:193:28, test/10k/snowpar.html:201:9, test/10k/snowpar.html:201:30, test/10k/snowpar.html:206:9, test/10k/snowpar.html:206:35, test/10k/snowpar.html:210:9, test/10k/snowpar.html:210:37, test/10k/snowpar.html:214:9, test/10k/snowpar.html:214:36, test/10k/snowpar.html:218:9, test/10k/snowpar.html:218:36, test/10k/snowpar.html:222:9, test/10k/snowpar.html:222:37, test/10k/snowpar.html:230:9, test/10k/snowpar.html:230:31]
 test/10k/snowpar.html:58:31: [maybe] Conversion to number yields NaN
 test/10k/snowpar.html:59:35: [maybe] Conversion to number yields NaN
 test/10k/snowpar.html:107:5: [maybe] Conversion to number yields NaN

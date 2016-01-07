@@ -20,6 +20,7 @@ import dk.brics.tajs.analysis.Conversion;
 import dk.brics.tajs.analysis.FunctionCalls;
 import dk.brics.tajs.analysis.InitialStateBuilder;
 import dk.brics.tajs.analysis.NativeFunctions;
+import dk.brics.tajs.analysis.PropVarOperations;
 import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.analysis.dom.DOMObjects;
 import dk.brics.tajs.analysis.dom.DOMWindow;
@@ -43,17 +44,19 @@ public class XmlHttpRequest {
 
     public static ObjectLabel INSTANCES;
 
-    public static void build(State s) {
+    public static void build(Solver.SolverInterface c) {
+        State s = c.getState();
+        PropVarOperations pv = c.getAnalysis().getPropVarOperations();
         CONSTRUCTOR = new ObjectLabel(DOMObjects.XML_HTTP_REQUEST_CONSTRUCTOR, ObjectLabel.Kind.FUNCTION);
         PROTOTYPE = new ObjectLabel(DOMObjects.XML_HTTP_REQUEST_PROTOTYPE, ObjectLabel.Kind.OBJECT);
         INSTANCES = new ObjectLabel(DOMObjects.XML_HTTP_REQUEST_INSTANCES, ObjectLabel.Kind.OBJECT);
 
         // Constructor Object
         s.newObject(CONSTRUCTOR);
-        s.writePropertyWithAttributes(CONSTRUCTOR, "length", Value.makeNum(0).setAttributes(true, true, true));
-        s.writePropertyWithAttributes(CONSTRUCTOR, "prototype", Value.makeObject(PROTOTYPE).setAttributes(true, true, true));
+        pv.writePropertyWithAttributes(CONSTRUCTOR, "length", Value.makeNum(0).setAttributes(true, true, true));
+        pv.writePropertyWithAttributes(CONSTRUCTOR, "prototype", Value.makeObject(PROTOTYPE).setAttributes(true, true, true));
         s.writeInternalPrototype(CONSTRUCTOR, Value.makeObject(InitialStateBuilder.OBJECT_PROTOTYPE));
-        s.writeProperty(DOMWindow.WINDOW, "XMLHttpRequest", Value.makeObject(CONSTRUCTOR));
+        pv.writeProperty(DOMWindow.WINDOW, "XMLHttpRequest", Value.makeObject(CONSTRUCTOR));
 
         // Prototype object
         s.newObject(PROTOTYPE);
@@ -66,35 +69,35 @@ public class XmlHttpRequest {
         /*
          * Constants.
          */
-        createDOMProperty(s, PROTOTYPE, "UNSENT", Value.makeNum(0));
-        createDOMProperty(s, PROTOTYPE, "OPENED", Value.makeNum(1));
-        createDOMProperty(s, PROTOTYPE, "HEADERS_RECEIVED", Value.makeNum(2));
-        createDOMProperty(s, PROTOTYPE, "LOADING", Value.makeNum(3));
-        createDOMProperty(s, PROTOTYPE, "DONE", Value.makeNum(4));
+        createDOMProperty(PROTOTYPE, "UNSENT", Value.makeNum(0), c);
+        createDOMProperty(PROTOTYPE, "OPENED", Value.makeNum(1), c);
+        createDOMProperty(PROTOTYPE, "HEADERS_RECEIVED", Value.makeNum(2), c);
+        createDOMProperty(PROTOTYPE, "LOADING", Value.makeNum(3), c);
+        createDOMProperty(PROTOTYPE, "DONE", Value.makeNum(4), c);
 
         /*
          * Properties.
          */
-        createDOMProperty(s, INSTANCES, "readyState", Value.makeAnyNumUInt().setReadOnly());
-        createDOMProperty(s, INSTANCES, "status", Value.makeAnyNumUInt().setReadOnly());
-        createDOMProperty(s, INSTANCES, "statusText", Value.makeAnyStr().setReadOnly());
+        createDOMProperty(INSTANCES, "readyState", Value.makeAnyNumUInt().setReadOnly(), c);
+        createDOMProperty(INSTANCES, "status", Value.makeAnyNumUInt().setReadOnly(), c);
+        createDOMProperty(INSTANCES, "statusText", Value.makeAnyStr().setReadOnly(), c);
 
         if (Options.get().isReturnJSON()) {
-            createDOMProperty(s, INSTANCES, "responseText", Value.makeJSONStr());
+            createDOMProperty(INSTANCES, "responseText", Value.makeJSONStr(), c);
         } else {
-            createDOMProperty(s, INSTANCES, "responseText", Value.makeAnyStr());
+            createDOMProperty(INSTANCES, "responseText", Value.makeAnyStr(), c);
         }
-        //TODO createDOMProperty(s, INSTANCES, "responseXML", Value.makeObject(DOMDocument.DOCUMENT).setReadOnly(), DOMSpec.LEVEL_0);
+        //TODO createDOMProperty(INSTANCES, "responseXML", Value.makeObject(DOMDocument.DOCUMENT).setReadOnly(), DOMSpec.LEVEL_0);
 
         /*
          * Functions.
          */
-        createDOMFunction(s, PROTOTYPE, DOMObjects.XML_HTTP_REQUEST_OPEN, "open", 5);
-        createDOMFunction(s, PROTOTYPE, DOMObjects.XML_HTTP_REQUEST_SEND, "send", 1);
-        createDOMFunction(s, PROTOTYPE, DOMObjects.XML_HTTP_REQUEST_SET_REQUEST_HEADER, "setRequestHeader", 2);
-        createDOMFunction(s, PROTOTYPE, DOMObjects.XML_HTTP_REQUEST_ABORT, "abort", 0);
-        createDOMFunction(s, PROTOTYPE, DOMObjects.XML_HTTP_REQUEST_GET_RESPONSE_HEADER, "getResponseHeader", 1);
-        createDOMFunction(s, PROTOTYPE, DOMObjects.XML_HTTP_REQUEST_GET_ALL_RESPONSE_HEADERS, "getAllResponseHeaders", 0);
+        createDOMFunction(PROTOTYPE, DOMObjects.XML_HTTP_REQUEST_OPEN, "open", 5, c);
+        createDOMFunction(PROTOTYPE, DOMObjects.XML_HTTP_REQUEST_SEND, "send", 1, c);
+        createDOMFunction(PROTOTYPE, DOMObjects.XML_HTTP_REQUEST_SET_REQUEST_HEADER, "setRequestHeader", 2, c);
+        createDOMFunction(PROTOTYPE, DOMObjects.XML_HTTP_REQUEST_ABORT, "abort", 0, c);
+        createDOMFunction(PROTOTYPE, DOMObjects.XML_HTTP_REQUEST_GET_RESPONSE_HEADER, "getResponseHeader", 1, c);
+        createDOMFunction(PROTOTYPE, DOMObjects.XML_HTTP_REQUEST_GET_ALL_RESPONSE_HEADERS, "getAllResponseHeaders", 0, c);
 
         // Multiply object
         s.multiplyObject(INSTANCES);
@@ -105,7 +108,8 @@ public class XmlHttpRequest {
      * Transfer functions
      */
 
-    public static Value evaluate(DOMObjects nativeObject, FunctionCalls.CallInfo call, State s, Solver.SolverInterface c) {
+    public static Value evaluate(DOMObjects nativeObject, FunctionCalls.CallInfo call, Solver.SolverInterface c) {
+        State s = c.getState();
         switch (nativeObject) {
             case XML_HTTP_REQUEST_OPEN: {
                 NativeFunctions.expectParameters(nativeObject, call, c, 2, 5);

@@ -16,35 +16,35 @@
 
 package dk.brics.tajs.analysis.dom.core;
 
+import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.lattice.State;
-import dk.brics.tajs.lattice.Value;
-
-import static dk.brics.tajs.analysis.dom.DOMFunctions.createDOMProperty;
 
 public class CoreBuilder {
 
-    public static void build(State s) {
-        DOMNodeList.build(s);
-        DOMNode.build(s);
-        DOMAttr.build(s);
-        DOMNamedNodeMap.build(s);
-        DOMDocumentType.build(s);
-        DOMException.build(s);
-        DOMElement.build(s);
-        DOMCharacterData.build(s);
-        DOMText.build(s);
-        DOMConfiguration.build(s);
-        DOMNotation.build(s);
-        DOMCDataSection.build(s);
-        DOMComment.build(s);
-        DOMEntity.build(s);
-        DOMEntityReference.build(s);
-        DOMProcessingInstruction.build(s);
-        DOMStringList.build(s);
-        DOMDocumentFragment.build(s);
-
+    public static void build(Solver.SolverInterface c) {
+        DOMNodeList.build(c);
+        DOMNode.build(c);
+        DOMAttr.build(c);
+        DOMNamedNodeMap.build(c);
+        DOMDocumentType.build(c);
+        DOMException.build(c);
+        DOMElement.build(c);
+        DOMCharacterData.build(c);
+        DOMText.build(c);
+        DOMConfiguration.build(c);
+        DOMNotation.build(c);
+        DOMCDataSection.build(c);
+        DOMComment.build(c);
+        DOMEntity.build(c);
+        DOMEntityReference.build(c);
+        DOMProcessingInstruction.build(c);
+        DOMStringList.build(c);
+        DOMDocumentFragment.build(c);
         // Document
-        DOMDocument.build(s);
-        DOMImplementation.build(s);
+        DOMDocument.build(c);
+        DOMImplementation.build(c);
+        //Touch
+        DOMTouchList.build(c);
+        DOMTouch.build(c);
     }
 }

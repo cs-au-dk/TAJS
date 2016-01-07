@@ -43,16 +43,19 @@ public class ConcreteSemantics {
 //        System.out.println(get().toConcreteValue((get().makeEngine().eval("[null, undefined]"))));
 //    }
 
-    @SuppressWarnings("unchecked")
-    public <T extends ConcreteValue> Optional<T> apply(String functionName, ConcreteValue base, List<ConcreteValue> arguments) {
-        ScriptEngine engine = makeEngine();
+    public Optional<ConcreteValue> apply(String functionName, ConcreteValue base, List<ConcreteValue> arguments) {
         String script = String.format("%s.apply(%s, [%s]);", functionName, base.toSourceCode(), makeList(arguments));
+        return eval(script);
+    }
+
+    public Optional<ConcreteValue> eval(String script) {
+        ScriptEngine engine = makeEngine();
         // System.out.println(script);
         try {
-            Object result = engine.eval(script);
+            Object resultObject = engine.eval(script);
             // System.out.println("   ==> " + result);
             //System.out.println(scripts.getResults().size());
-            return (Optional<T>) Some.make(toConcreteValue(result));
+            return Some.make(toConcreteValue(resultObject));
         } catch (Throwable t) {
             log.error(t);
             return None.make();

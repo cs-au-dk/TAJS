@@ -1,4 +1,3 @@
-test/1k2014dragons/shims.js:19:5: [definite] The assignment to AudioContext has no effect
 test/1k2014dragons/shims.js:19:5: [definite] The conditional expression is always true
 test/1k2014dragons/shims.js:22:5: [definite] Property is null/undefined
 test/1k2014dragons/shims.js:22:5: [definite] The conditional expression is always false
@@ -19,7 +18,6 @@ test/1k2014dragons/shims.js:21:5: [definite] The variable requestAnimationFrame 
 test/1k2014dragons/shims.js:26:5: [definite] Unreachable function
 test/1k2014dragons/shims.js:39:5: [definite] The variable g is never used
 test/1k2014dragons/1648.js:9:1: [maybe] TypeError, accessing property of null/undefined
-test/1k2014dragons/1648.js:12:16: [maybe] TypeError, call to non-function
 test/1k2014dragons/1648.js:14:1: [maybe] TypeError, accessing property of null/undefined
 test/1k2014dragons/1648.js:16:23: [maybe] TypeError, call to non-function
 test/1k2014dragons/shims.js:31:1: [maybe] TypeError, accessing property of null/undefined
@@ -31,7 +29,6 @@ test/1k2014dragons/shims.js:42:18: [maybe] TypeError, call to non-function
 test/1k2014dragons/shims.js:42:46: [maybe] TypeError, call to non-function
 test/1k2014dragons/shims.js:55:9: [maybe] TypeError, accessing property of null/undefined
 test/1k2014dragons/1648.js:9:1: [maybe] Reading absent property style
-test/1k2014dragons/1648.js:12:16: [maybe] Reading absent property cloneNode
 test/1k2014dragons/1648.js:16:23: [maybe] Reading absent property getContext
 test/1k2014dragons/1648.js:31:34: [maybe] Reading absent property width
 test/1k2014dragons/1648.js:31:43: [maybe] Reading absent property height
@@ -81,5 +78,5 @@ test/1k2014dragons/1648.js:107:28: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1648.js:107:51: [maybe] Conversion from string to number yields NaN
 test/1k2014dragons/1648.js:107:51: [maybe] Conversion to number yields NaN
 test/1k2014dragons/shims.js:9:9: [maybe] Reading absent property (computed name)
-test/1k2014dragons/shims.js,test/1k2014dragons/1648.js: [maybe] Uncaught exception, constructed at [test/1k2014dragons/1648.js:9:1, test/1k2014dragons/1648.js:12:16, test/1k2014dragons/1648.js:14:1, test/1k2014dragons/1648.js:16:23, test/1k2014dragons/shims.js:31:1, test/1k2014dragons/shims.js:34:1, test/1k2014dragons/shims.js:35:1, test/1k2014dragons/shims.js:37:9, test/1k2014dragons/shims.js:42:18, test/1k2014dragons/shims.js:42:46, test/1k2014dragons/shims.js:55:9]
+test/1k2014dragons/shims.js,test/1k2014dragons/1648.js: [maybe] Uncaught exception, constructed at [test/1k2014dragons/1648.js:9:1, test/1k2014dragons/1648.js:14:1, test/1k2014dragons/1648.js:16:23, test/1k2014dragons/shims.js:31:1, test/1k2014dragons/shims.js:34:1, test/1k2014dragons/shims.js:35:1, test/1k2014dragons/shims.js:37:9, test/1k2014dragons/shims.js:42:18, test/1k2014dragons/shims.js:42:46, test/1k2014dragons/shims.js:55:9]
 test/1k2014dragons/1648.js:62:5: [info] Reading from unknown property that may cause loss of precision

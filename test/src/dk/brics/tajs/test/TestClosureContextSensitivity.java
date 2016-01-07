@@ -169,7 +169,7 @@ public class TestClosureContextSensitivity {
         TestMonitor testMonitor = new TestMonitor();
         IAnalysisMonitoring monitor = CompositeMonitoring.buildFromList(testMonitor, new Monitoring(), new OrdinaryExitReachableCheckerMonitor());
         Misc.runSource(sourceLines, monitor);
-        assertEquals(expected.toString(), testMonitor.state.readVariable("RESULT", null).toString());
+        assertEquals(expected.toString(), testMonitor.state.readVariableDirect("RESULT").toString());
     }
 
     private class TestMonitor extends DefaultAnalysisMonitoring {

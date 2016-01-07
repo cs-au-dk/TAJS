@@ -39,8 +39,8 @@ public class BasicContextSensitivityStrategy implements IContextSensitivityStrat
     private final Map<Function, Set<String>> contextSensitiveParameters = newMap();
 
     @Override
-    public HeapContext makeFunctionHeapContext(Function fun, State state, Solver.SolverInterface c) {
-        return makeHeapContext(state.getContext().getFunArgs());
+    public HeapContext makeFunctionHeapContext(Function fun, Solver.SolverInterface c) {
+        return makeHeapContext(c.getState().getContext().getFunArgs());
     }
 
     @Override
@@ -122,11 +122,6 @@ public class BasicContextSensitivityStrategy implements IContextSensitivityStrat
             if (function.getFunction().isUsesThis()) {
                 thisval = newSet(state.readThisObjects());
             }
-        }
-        List<Value> actuals = new ArrayList<>();
-        if (!callInfo.isUnknownNumberOfArgs()) {
-            for (int i = 0; i < callInfo.getNumberOfArgs(); i++)
-                actuals.add(callInfo.getArg(i));
         }
         ContextArguments contextArguments = makeContextArgumentsForCall(function, state, callInfo);
 

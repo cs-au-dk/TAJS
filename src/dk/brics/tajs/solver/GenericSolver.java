@@ -88,8 +88,6 @@ public class GenericSolver<StateType extends IState<StateType, ContextType, Call
          * Returns the current abstract state.
          */
         public StateType getState() {
-            if (current_state == null)
-                throw new AnalysisException("Unexpected call to getState");
             return current_state;
         }
 
@@ -266,7 +264,9 @@ public class GenericSolver<StateType extends IState<StateType, ContextType, Call
         block_loop:
         while (!worklist.isEmpty()) {
             if (!analysis.getMonitoring().allowNextIteration()) {
-                log.warn("Terminating fixpoint solver early and unsoundly");
+                if (!Options.get().isQuietEnabled()) {
+                    log.warn("Terminating fixpoint solver early and unsoundly");
+                }
                 terminatedEarly = true;
                 break;
             }

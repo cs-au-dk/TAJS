@@ -16,12 +16,12 @@
 
 package dk.brics.tajs.analysis.dom.view;
 
-import dk.brics.tajs.lattice.State;
+import dk.brics.tajs.analysis.Solver;
 
 public class ViewBuilder {
 
-    public static void build(State s) {
-        AbstractView.build(s);
-        DocumentView.build(s);
+    public static void build(Solver.SolverInterface c) {
+        AbstractView.build(c);
+        DocumentView.build(c);
     }
 }

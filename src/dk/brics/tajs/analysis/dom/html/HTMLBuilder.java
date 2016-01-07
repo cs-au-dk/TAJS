@@ -16,6 +16,7 @@
 
 package dk.brics.tajs.analysis.dom.html;
 
+import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.analysis.dom.core.DOMDocument;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.State;
@@ -33,64 +34,65 @@ public class HTMLBuilder {
     /**
      * Build HTML objects
      */
-    public static void build(State s) {
-        HTMLCollection.build(s);
-        HTMLOptionsCollection.build(s);
-        HTMLDocument.build(s);
-        HTMLElement.build(s);
-        HTMLFormElement.build(s);
+    public static void build(Solver.SolverInterface c) {
+        State s = c.getState();
+        HTMLCollection.build(c);
+        HTMLOptionsCollection.build(c);
+        HTMLDocument.build(c);
+        HTMLElement.build(c);
+        HTMLFormElement.build(c);
 
-        HTMLAnchorElement.build(s);
-        HTMLAppletElement.build(s);
-        HTMLAreaElement.build(s);
-        HTMLBaseElement.build(s);
-        HTMLBaseFontElement.build(s);
-        HTMLBodyElement.build(s);
-        HTMLBRElement.build(s);
-        HTMLButtonElement.build(s);
-        HTMLDirectoryElement.build(s);
-        HTMLDivElement.build(s);
-        HTMLDListElement.build(s);
-        HTMLFieldSetElement.build(s);
-        HTMLFontElement.build(s);
-        HTMLFrameElement.build(s);
-        HTMLFrameSetElement.build(s);
-        HTMLHeadElement.build(s);
-        HTMLHeadingElement.build(s);
-        HTMLHRElement.build(s);
-        HTMLHtmlElement.build(s);
-        HTMLIFrameElement.build(s);
-        HTMLImageElement.build(s);
-        HTMLInputElement.build(s);
-        HTMLIsIndexElement.build(s);
-        HTMLLabelElement.build(s);
-        HTMLLegendElement.build(s);
-        HTMLLIElement.build(s);
-        HTMLLinkElement.build(s);
-        HTMLMapElement.build(s);
-        HTMLMenuElement.build(s);
-        HTMLMetaElement.build(s);
-        HTMLModElement.build(s);
-        HTMLObjectElement.build(s);
-        HTMLOListElement.build(s);
-        HTMLOptGroupElement.build(s);
-        HTMLOptionElement.build(s);
-        HTMLParagraphElement.build(s);
-        HTMLParamElement.build(s);
-        HTMLPreElement.build(s);
-        HTMLQuoteElement.build(s);
-        HTMLScriptElement.build(s);
-        HTMLSelectElement.build(s);
-        HTMLStyleElement.build(s);
-        HTMLTableCaptionElement.build(s);
-        HTMLTableCellElement.build(s);
-        HTMLTableColElement.build(s);
-        HTMLTableRowElement.build(s);
-        HTMLTableSectionElement.build(s);
-        HTMLTableElement.build(s);
-        HTMLTextAreaElement.build(s);
-        HTMLTitleElement.build(s);
-        HTMLUListElement.build(s);
+        HTMLAnchorElement.build(c);
+        HTMLAppletElement.build(c);
+        HTMLAreaElement.build(c);
+        HTMLBaseElement.build(c);
+        HTMLBaseFontElement.build(c);
+        HTMLBodyElement.build(c);
+        HTMLBRElement.build(c);
+        HTMLButtonElement.build(c);
+        HTMLDirectoryElement.build(c);
+        HTMLDivElement.build(c);
+        HTMLDListElement.build(c);
+        HTMLFieldSetElement.build(c);
+        HTMLFontElement.build(c);
+        HTMLFrameElement.build(c);
+        HTMLFrameSetElement.build(c);
+        HTMLHeadElement.build(c);
+        HTMLHeadingElement.build(c);
+        HTMLHRElement.build(c);
+        HTMLHtmlElement.build(c);
+        HTMLIFrameElement.build(c);
+        HTMLImageElement.build(c);
+        HTMLInputElement.build(c);
+        HTMLIsIndexElement.build(c);
+        HTMLLabelElement.build(c);
+        HTMLLegendElement.build(c);
+        HTMLLIElement.build(c);
+        HTMLLinkElement.build(c);
+        HTMLMapElement.build(c);
+        HTMLMenuElement.build(c);
+        HTMLMetaElement.build(c);
+        HTMLModElement.build(c);
+        HTMLObjectElement.build(c);
+        HTMLOListElement.build(c);
+        HTMLOptGroupElement.build(c);
+        HTMLOptionElement.build(c);
+        HTMLParagraphElement.build(c);
+        HTMLParamElement.build(c);
+        HTMLPreElement.build(c);
+        HTMLQuoteElement.build(c);
+        HTMLScriptElement.build(c);
+        HTMLSelectElement.build(c);
+        HTMLStyleElement.build(c);
+        HTMLTableCaptionElement.build(c);
+        HTMLTableCellElement.build(c);
+        HTMLTableColElement.build(c);
+        HTMLTableRowElement.build(c);
+        HTMLTableSectionElement.build(c);
+        HTMLTableElement.build(c);
+        HTMLTextAreaElement.build(c);
+        HTMLTitleElement.build(c);
+        HTMLUListElement.build(c);
 
         HTML4_OBJECT_LABELS.add(HTMLAnchorElement.INSTANCES);
         HTML4_OBJECT_LABELS.add(HTMLAppletElement.INSTANCES);
@@ -100,7 +102,6 @@ public class HTMLBuilder {
         HTML4_OBJECT_LABELS.add(HTMLBodyElement.INSTANCES);
         HTML4_OBJECT_LABELS.add(HTMLBRElement.INSTANCES);
         HTML4_OBJECT_LABELS.add(HTMLButtonElement.INSTANCES);
-        HTML4_OBJECT_LABELS.add(HTMLCollection.INSTANCES);
         HTML4_OBJECT_LABELS.add(HTMLDirectoryElement.INSTANCES);
         HTML4_OBJECT_LABELS.add(HTMLDivElement.INSTANCES);
         HTML4_OBJECT_LABELS.add(HTMLDListElement.INSTANCES);
@@ -131,7 +132,6 @@ public class HTMLBuilder {
         HTML4_OBJECT_LABELS.add(HTMLOListElement.INSTANCES);
         HTML4_OBJECT_LABELS.add(HTMLOptGroupElement.INSTANCES);
         HTML4_OBJECT_LABELS.add(HTMLOptionElement.INSTANCES);
-        HTML4_OBJECT_LABELS.add(HTMLOptionsCollection.INSTANCES);
         HTML4_OBJECT_LABELS.add(HTMLParagraphElement.INSTANCES);
         HTML4_OBJECT_LABELS.add(HTMLParamElement.INSTANCES);
         HTML4_OBJECT_LABELS.add(HTMLPreElement.INSTANCES);
@@ -150,7 +150,7 @@ public class HTMLBuilder {
         HTML4_OBJECT_LABELS.add(HTMLUListElement.INSTANCES);
 
         // Write documentElement (due to cyclic dependency) and summarize DOMDocument.
-        createDOMProperty(s, DOMDocument.INSTANCES, "documentElement", Value.makeObject(HTMLHtmlElement.INSTANCES).setReadOnly());
+        createDOMProperty(DOMDocument.INSTANCES, "documentElement", Value.makeObject(HTMLHtmlElement.INSTANCES).setReadOnly(), c);
         s.multiplyObject(DOMDocument.INSTANCES);
         DOMDocument.INSTANCES = DOMDocument.INSTANCES.makeSingleton().makeSummary();
     }

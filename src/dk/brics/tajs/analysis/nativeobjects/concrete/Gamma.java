@@ -1,6 +1,7 @@
 package dk.brics.tajs.analysis.nativeobjects.concrete;
 
 import dk.brics.tajs.analysis.Conversion;
+import dk.brics.tajs.analysis.PropVarOperations;
 import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.State;
@@ -63,10 +64,11 @@ public class Gamma {
     private static ConcreteValue toConcreteReqExp(Value value, Solver.SolverInterface c) {
         checkConcrete(isConcreteRegExp(value, c));
         State state = c.getState();
-        Value source = UnknownValueResolver.getRealValue(state.readPropertyValue(value.getObjectLabels(), "source"), state);
-        Value global = UnknownValueResolver.getRealValue(state.readPropertyValue(value.getObjectLabels(), "global"), state);
-        Value ignoreCase = UnknownValueResolver.getRealValue(state.readPropertyValue(value.getObjectLabels(), "ignoreCase"), state);
-        Value multiline = UnknownValueResolver.getRealValue(state.readPropertyValue(value.getObjectLabels(), "multiline"), state);
+        PropVarOperations pv = c.getAnalysis().getPropVarOperations();
+        Value source = UnknownValueResolver.getRealValue(pv.readPropertyValue(value.getObjectLabels(), "source"), state);
+        Value global = UnknownValueResolver.getRealValue(pv.readPropertyValue(value.getObjectLabels(), "global"), state);
+        Value ignoreCase = UnknownValueResolver.getRealValue(pv.readPropertyValue(value.getObjectLabels(), "ignoreCase"), state);
+        Value multiline = UnknownValueResolver.getRealValue(pv.readPropertyValue(value.getObjectLabels(), "multiline"), state);
         return new ConcreteRegularExpression(toConcreteString(source, c), toConcreteBoolean(global), toConcreteBoolean(ignoreCase), toConcreteBoolean(multiline));
     }
 
@@ -93,11 +95,12 @@ public class Gamma {
             }
         }
         State state = c.getState();
-        Value source = UnknownValueResolver.getRealValue(state.readPropertyValue(value.getObjectLabels(), "source"), state);
-        Value lastIndex = UnknownValueResolver.getRealValue(state.readPropertyValue(value.getObjectLabels(), "lastIndex"), state);
-        Value global = UnknownValueResolver.getRealValue(state.readPropertyValue(value.getObjectLabels(), "global"), state);
-        Value ignoreCase = UnknownValueResolver.getRealValue(state.readPropertyValue(value.getObjectLabels(), "ignoreCase"), state);
-        Value multiline = UnknownValueResolver.getRealValue(state.readPropertyValue(value.getObjectLabels(), "multiline"), state);
+        PropVarOperations pv = c.getAnalysis().getPropVarOperations();
+        Value source = UnknownValueResolver.getRealValue(pv.readPropertyValue(value.getObjectLabels(), "source"), state);
+        Value lastIndex = UnknownValueResolver.getRealValue(pv.readPropertyValue(value.getObjectLabels(), "lastIndex"), state);
+        Value global = UnknownValueResolver.getRealValue(pv.readPropertyValue(value.getObjectLabels(), "global"), state);
+        Value ignoreCase = UnknownValueResolver.getRealValue(pv.readPropertyValue(value.getObjectLabels(), "ignoreCase"), state);
+        Value multiline = UnknownValueResolver.getRealValue(pv.readPropertyValue(value.getObjectLabels(), "multiline"), state);
         boolean concreteValues = isConcreteValues(c, source, lastIndex, global, ignoreCase, multiline);
         return concreteValues && lastIndex.getNum().intValue() == 0; // syntactic limitation: can not construct regexep expression with lastIndex equal to anything but 0!
     }

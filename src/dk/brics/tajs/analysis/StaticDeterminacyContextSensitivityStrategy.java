@@ -33,7 +33,7 @@ import static dk.brics.tajs.util.Collections.newSet;
  */
 public class StaticDeterminacyContextSensitivityStrategy implements IContextSensitivityStrategy {
 
-    public final SyntacticHints syntacticHints;
+    private final SyntacticHints syntacticHints;
 
     private final PreciseInterestingValuePredicate determinateInterestingValue = new PreciseInterestingValuePredicate(1);
 
@@ -61,7 +61,7 @@ public class StaticDeterminacyContextSensitivityStrategy implements IContextSens
         boolean DEBUG = false;
 
         boolean isPrecise;
-        Value jQuery = UnknownValueResolver.getRealValue(state.readVariable("jQuery", null), state);
+        Value jQuery = UnknownValueResolver.getRealValue(c.getAnalysis().getPropVarOperations().readVariable("jQuery", null), state);
         boolean isJQueryExtend = false;
         boolean isJQueryIsPlainObject = false;
         if (jQuery.getObjectLabels().size() == 1) {
@@ -243,13 +243,13 @@ public class StaticDeterminacyContextSensitivityStrategy implements IContextSens
      * But it turns out that the values caught in this way keeps functions separate regardless.
      */
     @Override
-    public HeapContext makeFunctionHeapContext(Function function, State state, Solver.SolverInterface c) {
+    public HeapContext makeFunctionHeapContext(Function function, Solver.SolverInterface c) {
         final Map<String, Value> map = newMap();
 
         Set<String> closureVariableNames = function.getClosureVariableNames();
         if (closureVariableNames != null) {
             for (String closureVariableName : closureVariableNames) {
-                Value value = UnknownValueResolver.getRealValue(state.readVariable(closureVariableName, null), state);
+                Value value = UnknownValueResolver.getRealValue(c.getAnalysis().getPropVarOperations().readVariable(closureVariableName, null), c.getState());
                 boolean isLoopVariable = syntacticHints.isLoopVariable(function.getOuterFunction(), closureVariableName)
                         && value.isMaybeSingleNum();
                 boolean isValidClosureVariables = isLoopVariable || determinateInterestingValue.isPrecise(value, c);

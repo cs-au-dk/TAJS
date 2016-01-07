@@ -70,12 +70,12 @@ class ObjReadsWrites {
     /**
      * Indicates if a read from an unknown property has been done.
      */
-    boolean unknown_read = false;
+    private boolean unknown_read = false;
 
     /**
      * Indicates if a write to an unknown property has been done.
      */
-    boolean unknown_written = false;
+    private boolean unknown_written = false;
 
     @Override
     public String toString() {

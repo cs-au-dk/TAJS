@@ -1,19 +1,7 @@
-test/chromeexperiments/raytracer.html:123:48: [definite] The assignment to ux has no effect
-test/chromeexperiments/raytracer.html:123:55: [definite] The assignment to uy has no effect
-test/chromeexperiments/raytracer.html:123:62: [definite] The assignment to uz has no effect
-test/chromeexperiments/raytracer.html:124:14: [definite] The assignment to l has no effect
-test/chromeexperiments/raytracer.html:124:48: [definite] The assignment to vx has no effect
-test/chromeexperiments/raytracer.html:124:55: [definite] The assignment to vy has no effect
-test/chromeexperiments/raytracer.html:124:62: [definite] The assignment to vz has no effect
-test/chromeexperiments/raytracer.html:290:55: [definite] The assignment to uy has no effect
-test/chromeexperiments/raytracer.html:290:62: [definite] The assignment to uz has no effect
-test/chromeexperiments/raytracer.html:291:48: [definite] The assignment to vx has no effect
-test/chromeexperiments/raytracer.html:291:62: [definite] The assignment to vz has no effect
 test/chromeexperiments/raytracer.html:803:17: [definite] The conditional expression is always true
 test/chromeexperiments/raytracer.html:804:18: [definite] The conditional expression is always true
 test/chromeexperiments/raytracer.html:952:4: [definite] The conditional expression is always true
 test/chromeexperiments/raytracer.html:1139:3: [definite] The conditional expression is always false
-test/chromeexperiments/raytracer.html:1140:3: [definite] The assignment to curline has no effect
 test/chromeexperiments/raytracer.html:1237:4: [definite] The conditional expression is always false
 test/chromeexperiments/raytracer.html:114:5: [definite] Dead assignment, property obj is never read
 test/chromeexperiments/raytracer.html:114:28: [definite] Dead assignment, property parent is never read

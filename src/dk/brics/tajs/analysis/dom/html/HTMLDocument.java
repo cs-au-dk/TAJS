@@ -20,6 +20,7 @@ import dk.brics.tajs.analysis.Conversion;
 import dk.brics.tajs.analysis.FunctionCalls;
 import dk.brics.tajs.analysis.InitialStateBuilder;
 import dk.brics.tajs.analysis.NativeFunctions;
+import dk.brics.tajs.analysis.PropVarOperations;
 import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.analysis.dom.DOMFunctions;
 import dk.brics.tajs.analysis.dom.DOMObjects;
@@ -51,17 +52,19 @@ public class HTMLDocument {
 
     public static ObjectLabel INSTANCES;
 
-    public static void build(State s) {
+    public static void build(Solver.SolverInterface c) {
+        State s = c.getState();
+        PropVarOperations pv = c.getAnalysis().getPropVarOperations();
         CONSTRUCTOR = new ObjectLabel(DOMObjects.HTMLDOCUMENT_CONSTRUCTOR, ObjectLabel.Kind.FUNCTION);
         PROTOTYPE = new ObjectLabel(DOMObjects.HTMLDOCUMENT_PROTOTYPE, ObjectLabel.Kind.OBJECT);
         INSTANCES = new ObjectLabel(DOMObjects.HTMLDOCUMENT_INSTANCES, ObjectLabel.Kind.OBJECT);
 
         // Constructor Object
         s.newObject(CONSTRUCTOR);
-        s.writePropertyWithAttributes(CONSTRUCTOR, "length", Value.makeNum(0).setAttributes(true, true, true));
-        s.writePropertyWithAttributes(CONSTRUCTOR, "prototype", Value.makeObject(PROTOTYPE).setAttributes(true, true, true));
+        pv.writePropertyWithAttributes(CONSTRUCTOR, "length", Value.makeNum(0).setAttributes(true, true, true));
+        pv.writePropertyWithAttributes(CONSTRUCTOR, "prototype", Value.makeObject(PROTOTYPE).setAttributes(true, true, true));
         s.writeInternalPrototype(CONSTRUCTOR, Value.makeObject(InitialStateBuilder.OBJECT_PROTOTYPE));
-        s.writeProperty(DOMWindow.WINDOW, "HTMLDocument", Value.makeObject(CONSTRUCTOR));
+        pv.writeProperty(DOMWindow.WINDOW, "HTMLDocument", Value.makeObject(CONSTRUCTOR));
 
         // Prototype Object
         s.newObject(PROTOTYPE);
@@ -75,25 +78,25 @@ public class HTMLDocument {
          * Properties.
          */
         // DOM Level 1
-        createDOMProperty(s, INSTANCES, "title", Value.makeAnyStr());
-        createDOMProperty(s, INSTANCES, "referrer", Value.makeAnyStr().setReadOnly());
-        createDOMProperty(s, INSTANCES, "domain", Value.makeAnyStr().setReadOnly());
-        createDOMProperty(s, INSTANCES, "URL", Value.makeAnyStr().setReadOnly());
-        createDOMProperty(s, INSTANCES, "images", Value.makeObject(HTMLCollection.INSTANCES).setReadOnly());
-        createDOMProperty(s, INSTANCES, "applets", Value.makeObject(HTMLCollection.INSTANCES).setReadOnly());
-        createDOMProperty(s, INSTANCES, "links", Value.makeObject(HTMLCollection.INSTANCES).setReadOnly());
-        createDOMProperty(s, INSTANCES, "forms", Value.makeObject(HTMLCollection.INSTANCES).setReadOnly());
-        createDOMProperty(s, INSTANCES, "anchors", Value.makeObject(HTMLCollection.INSTANCES).setReadOnly());
-        createDOMProperty(s, INSTANCES, "cookie", Value.makeAnyStr());
+        createDOMProperty(INSTANCES, "title", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "referrer", Value.makeAnyStr().setReadOnly(), c);
+        createDOMProperty(INSTANCES, "domain", Value.makeAnyStr().setReadOnly(), c);
+        createDOMProperty(INSTANCES, "URL", Value.makeAnyStr().setReadOnly(), c);
+        createDOMProperty(INSTANCES, "images", Value.makeObject(HTMLCollection.INSTANCES).setReadOnly(), c);
+        createDOMProperty(INSTANCES, "applets", Value.makeObject(HTMLCollection.INSTANCES).setReadOnly(), c);
+        createDOMProperty(INSTANCES, "links", Value.makeObject(HTMLCollection.INSTANCES).setReadOnly(), c);
+        createDOMProperty(INSTANCES, "forms", Value.makeObject(HTMLCollection.INSTANCES).setReadOnly(), c);
+        createDOMProperty(INSTANCES, "anchors", Value.makeObject(HTMLCollection.INSTANCES).setReadOnly(), c);
+        createDOMProperty(INSTANCES, "cookie", Value.makeAnyStr(), c);
 
         // DOM LEVEL 0 / UNKNOWN
-        createDOMProperty(s, INSTANCES, "width", Value.makeAnyNumUInt());
-        createDOMProperty(s, INSTANCES, "height", Value.makeAnyNumUInt());
+        createDOMProperty(INSTANCES, "width", Value.makeAnyNumUInt(), c);
+        createDOMProperty(INSTANCES, "height", Value.makeAnyNumUInt(), c);
 
         // various properties from the NODE Interface:
-        createDOMProperty(s, INSTANCES, "nodeName", Value.makeStr("#document").setReadOnly());
-        createDOMProperty(s, INSTANCES, "nodeValue", Value.makeNull().setReadOnly());
-        createDOMProperty(s, INSTANCES, "nodeType", Value.makeNum(9).setReadOnly());
+        createDOMProperty(INSTANCES, "nodeName", Value.makeStr("#document").setReadOnly(), c);
+        createDOMProperty(INSTANCES, "nodeValue", Value.makeNull().setReadOnly(), c);
+        createDOMProperty(INSTANCES, "nodeType", Value.makeNum(9).setReadOnly(), c);
 
         s.multiplyObject(INSTANCES);
         INSTANCES = INSTANCES.makeSingleton().makeSummary();
@@ -102,20 +105,21 @@ public class HTMLDocument {
          * Functions.
          */
         // DOM Level 1
-        createDOMFunction(s, PROTOTYPE, DOMObjects.HTMLDOCUMENT_OPEN, "open", 0);
-        createDOMFunction(s, PROTOTYPE, DOMObjects.HTMLDOCUMENT_CLOSE, "close", 0);
-        createDOMFunction(s, PROTOTYPE, DOMObjects.HTMLDOCUMENT_WRITE, "write", 1);
-        createDOMFunction(s, PROTOTYPE, DOMObjects.HTMLDOCUMENT_WRITELN, "writeln", 1);
-        createDOMFunction(s, PROTOTYPE, DOMObjects.HTMLDOCUMENT_GET_ELEMENTS_BY_NAME, "getElementsByName", 1);
-        createDOMFunction(s, PROTOTYPE, DOMObjects.HTMLDOCUMENT_GET_ELEMENTS_BY_CLASS_NAME, "getElementsByClassName", 1);
+        createDOMFunction(PROTOTYPE, DOMObjects.HTMLDOCUMENT_OPEN, "open", 0, c);
+        createDOMFunction(PROTOTYPE, DOMObjects.HTMLDOCUMENT_CLOSE, "close", 0, c);
+        createDOMFunction(PROTOTYPE, DOMObjects.HTMLDOCUMENT_WRITE, "write", 1, c);
+        createDOMFunction(PROTOTYPE, DOMObjects.HTMLDOCUMENT_WRITELN, "writeln", 1, c);
+        createDOMFunction(PROTOTYPE, DOMObjects.HTMLDOCUMENT_GET_ELEMENTS_BY_NAME, "getElementsByName", 1, c);
+        createDOMFunction(PROTOTYPE, DOMObjects.HTMLDOCUMENT_GET_ELEMENTS_BY_CLASS_NAME, "getElementsByClassName", 1, c);
 
-        createDOMProperty(s, DOMWindow.WINDOW, "document", Value.makeObject(INSTANCES));
+        createDOMProperty(DOMWindow.WINDOW, "document", Value.makeObject(INSTANCES), c);
     }
 
     /**
      * Transfer Functions.
      */
-    public static Value evaluate(DOMObjects nativeObject, FunctionCalls.CallInfo call, State s, Solver.SolverInterface c) {
+    public static Value evaluate(DOMObjects nativeObject, FunctionCalls.CallInfo call, Solver.SolverInterface c) {
+        State s = c.getState();
         switch (nativeObject) {
             case HTMLDOCUMENT_OPEN: {
                 NativeFunctions.expectParameters(nativeObject, call, c, 0, 0);
@@ -143,17 +147,17 @@ public class HTMLDocument {
                     Value v = Value.makeObject(labels);
                     ObjectLabel nodeList = DOMFunctions.makeEmptyNodeList();
                     if (!labels.isEmpty()) {
-                        s.writeProperty(Collections.singleton(nodeList), Value.makeAnyStrUInt(), v, true, false);
+                        c.getAnalysis().getPropVarOperations().writeProperty(Collections.singleton(nodeList), Value.makeAnyStrUInt(), v, true, false);
                     }
                     return Value.makeObject(nodeList);
                 }
-                return DOMFunctions.makeAnyHTMLNodeList(s);
+                return DOMFunctions.makeAnyHTMLNodeList(c);
             }
             case HTMLDOCUMENT_GET_ELEMENTS_BY_CLASS_NAME: {
                 NativeFunctions.expectParameters(nativeObject, call, c, 1, 1);
                 /* Value className =*/
                 Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
-                return DOMFunctions.makeAnyHTMLNodeList(s);
+                return DOMFunctions.makeAnyHTMLNodeList(c);
             }
             default: {
                 throw new AnalysisException("Unsupported Native Object: " + nativeObject);

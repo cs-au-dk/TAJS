@@ -1,7 +1,5 @@
 test/10k/defend_yourself.html:202:1: [definite] The conditional expression is always true
 test/10k/defend_yourself.html:457:5: [definite] The conditional expression is always true
-test/10k/defend_yourself.html:514:5: [definite] The assignment to nextBulletInterval has no effect
-test/10k/defend_yourself.html:515:5: [definite] The assignment to nextBulletIntervalEmpty has no effect
 test/10k/defend_yourself.html:246:1: [definite] The variable e is never used
 test/10k/defend_yourself.html:249:1: [definite] The variable e is never used
 test/10k/defend_yourself.html:262:1: [definite] The variable e is never used
@@ -38,12 +36,6 @@ test/10k/defend_yourself.html:424:17: [maybe] TypeError, accessing property of n
 test/10k/defend_yourself.html:425:17: [maybe] TypeError, accessing property of null/undefined
 test/10k/defend_yourself.html:426:13: [maybe] TypeError, accessing property of null/undefined
 test/10k/defend_yourself.html:439:9: [maybe] TypeError, accessing property of null/undefined
-test/10k/defend_yourself.html:439:9: [maybe] TypeError, call to non-function
-test/10k/defend_yourself.html:440:16: [maybe] TypeError, accessing property of null/undefined
-test/10k/defend_yourself.html:441:13: [maybe] TypeError, argument is not of expected type: Node.prototype
-test/10k/defend_yourself.html:441:13: [maybe] TypeError, call to non-function
-test/10k/defend_yourself.html:447:9: [maybe] TypeError, call to non-function
-test/10k/defend_yourself.html:452:9: [maybe] TypeError, call to non-function
 test/10k/defend_yourself.html:463:5: [maybe] TypeError, accessing property of null/undefined
 test/10k/defend_yourself.html:463:5: [maybe] TypeError, accessing property of null/undefined
 test/10k/defend_yourself.html:465:5: [maybe] TypeError, accessing property of null/undefined
@@ -61,17 +53,12 @@ test/10k/defend_yourself.html:521:5: [maybe] TypeError, accessing property of nu
 test/10k/defend_yourself.html:268:1: [maybe] Reading absent property body
 test/10k/defend_yourself.html:269:1: [maybe] Reading absent property body
 test/10k/defend_yourself.html:270:1: [maybe] Reading absent property body
-test/10k/defend_yourself.html:439:9: [maybe] Reading absent property hasChildNodes
-test/10k/defend_yourself.html:440:16: [maybe] Reading absent property childNodes
-test/10k/defend_yourself.html:441:13: [maybe] Reading absent property removeChild
 test/10k/defend_yourself.html:441:27: [maybe] Reading absent property firstChild
-test/10k/defend_yourself.html:447:9: [maybe] Reading absent property appendChild
-test/10k/defend_yourself.html:452:9: [maybe] Reading absent property appendChild
 test/10k/defend_yourself.html:463:5: [maybe] Reading absent property style
 test/10k/defend_yourself.html:503:1: [maybe] Reading absent property style
 test/10k/defend_yourself.html:505:5: [maybe] Reading absent property style
 test/10k/defend_yourself.html:521:5: [maybe] Reading absent property style
-test/10k/defend_yourself.html: [maybe] Uncaught exception, constructed at [test/10k/defend_yourself.html:206:14, test/10k/defend_yourself.html:268:1, test/10k/defend_yourself.html:269:1, test/10k/defend_yourself.html:270:1, test/10k/defend_yourself.html:333:9, test/10k/defend_yourself.html:334:9, test/10k/defend_yourself.html:335:9, test/10k/defend_yourself.html:366:9, test/10k/defend_yourself.html:367:9, test/10k/defend_yourself.html:368:9, test/10k/defend_yourself.html:386:13, test/10k/defend_yourself.html:386:26, test/10k/defend_yourself.html:386:45, test/10k/defend_yourself.html:386:58, test/10k/defend_yourself.html:386:85, test/10k/defend_yourself.html:386:98, test/10k/defend_yourself.html:386:127, test/10k/defend_yourself.html:386:140, test/10k/defend_yourself.html:392:13, test/10k/defend_yourself.html:392:28, test/10k/defend_yourself.html:392:49, test/10k/defend_yourself.html:392:64, test/10k/defend_yourself.html:392:93, test/10k/defend_yourself.html:392:108, test/10k/defend_yourself.html:392:129, test/10k/defend_yourself.html:392:144, test/10k/defend_yourself.html:399:9, test/10k/defend_yourself.html:402:13, test/10k/defend_yourself.html:423:17, test/10k/defend_yourself.html:424:17, test/10k/defend_yourself.html:425:17, test/10k/defend_yourself.html:426:13, test/10k/defend_yourself.html:439:9, test/10k/defend_yourself.html:440:16, test/10k/defend_yourself.html:441:13, test/10k/defend_yourself.html:447:9, test/10k/defend_yourself.html:452:9, test/10k/defend_yourself.html:463:5, test/10k/defend_yourself.html:465:5, test/10k/defend_yourself.html:466:5, test/10k/defend_yourself.html:467:5, test/10k/defend_yourself.html:470:5, test/10k/defend_yourself.html:503:1, test/10k/defend_yourself.html:504:1, test/10k/defend_yourself.html:505:5, test/10k/defend_yourself.html:508:1, test/10k/defend_yourself.html:521:5]
+test/10k/defend_yourself.html: [maybe] Uncaught exception, constructed at [test/10k/defend_yourself.html:206:14, test/10k/defend_yourself.html:268:1, test/10k/defend_yourself.html:269:1, test/10k/defend_yourself.html:270:1, test/10k/defend_yourself.html:333:9, test/10k/defend_yourself.html:334:9, test/10k/defend_yourself.html:335:9, test/10k/defend_yourself.html:366:9, test/10k/defend_yourself.html:367:9, test/10k/defend_yourself.html:368:9, test/10k/defend_yourself.html:386:13, test/10k/defend_yourself.html:386:26, test/10k/defend_yourself.html:386:45, test/10k/defend_yourself.html:386:58, test/10k/defend_yourself.html:386:85, test/10k/defend_yourself.html:386:98, test/10k/defend_yourself.html:386:127, test/10k/defend_yourself.html:386:140, test/10k/defend_yourself.html:392:13, test/10k/defend_yourself.html:392:28, test/10k/defend_yourself.html:392:49, test/10k/defend_yourself.html:392:64, test/10k/defend_yourself.html:392:93, test/10k/defend_yourself.html:392:108, test/10k/defend_yourself.html:392:129, test/10k/defend_yourself.html:392:144, test/10k/defend_yourself.html:399:9, test/10k/defend_yourself.html:402:13, test/10k/defend_yourself.html:423:17, test/10k/defend_yourself.html:424:17, test/10k/defend_yourself.html:425:17, test/10k/defend_yourself.html:426:13, test/10k/defend_yourself.html:439:9, test/10k/defend_yourself.html:463:5, test/10k/defend_yourself.html:465:5, test/10k/defend_yourself.html:466:5, test/10k/defend_yourself.html:467:5, test/10k/defend_yourself.html:470:5, test/10k/defend_yourself.html:503:1, test/10k/defend_yourself.html:504:1, test/10k/defend_yourself.html:505:5, test/10k/defend_yourself.html:508:1, test/10k/defend_yourself.html:521:5]
 test/10k/defend_yourself.html:154:18: [maybe] Reading absent property (computed name)
 test/10k/defend_yourself.html:154:31: [maybe] Reading absent property (computed name)
 test/10k/defend_yourself.html:205:9: [maybe] The variable hS has values with different types

@@ -102,6 +102,11 @@ public class Function {
     private Set<String> closureVariableNames;
 
     /**
+     * The source code of the function, null if full source code is not available (e.g. eventhandlers in html)
+     */
+    private final String source;
+
+    /**
      * Constructs a new function.
      * The node set is initially empty, and the entry/exit nodes are not set.
      * The function name is null for anonymous functions.
@@ -110,17 +115,26 @@ public class Function {
      * @param parameter_names list of parameter names, null can be used in place of an empty list
      * @param outer_function  the outer function, null if none
      * @param location        source location
+     * @param source          full source code of function, null if not available
      */
-    public Function(String name, List<String> parameter_names, Function outer_function, SourceLocation location) {
+    public Function(String name, List<String> parameter_names, Function outer_function, SourceLocation location, String source) {
         assert (location != null);
         this.name = name;
         this.location = location;
         this.parameter_names = parameter_names == null ? Collections.<String>emptyList() : parameter_names;
         this.outer_function = outer_function;
+        this.source = source;
         variable_names = newSet();
         uses_this = false;
         blocks = newList();
         closureVariableNames = newSet();
+    }
+
+    /**
+     * @see #Function(String, List, Function, SourceLocation, String)
+     */
+    public Function(String name, List<String> parameter_names, Function outer_function, SourceLocation location) {
+        this(name, parameter_names, outer_function, location, null);
     }
 
     /**
@@ -480,5 +494,9 @@ public class Function {
             throw new AnalysisException("Function is missing exceptional exit: " + toString());
         for (BasicBlock bb : blocks)
             bb.check(entry, ordinary_exit, exceptional_exit, seen_blocks, seen_nodes);
+    }
+
+    public String getSource() {
+        return source;
     }
 }

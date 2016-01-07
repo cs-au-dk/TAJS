@@ -1,7 +1,6 @@
 test/1k2013spring/1430.js:35:3: [definite] TypeError, call to non-function
 test/1k2013spring/1430.js:22:16: [definite] The conditional expression is always false
 test/1k2013spring/1430.js:25:17: [definite] The conditional expression is always false
-test/1k2013spring/1430.js:27:5: [definite] The assignment to i has no effect
 test/1k2013spring/1430.js:16:6: [definite] Too few parameters to function Node.cloneNode
 test/1k2013spring/1430.js:28:3: [definite] Dead assignment, property is never read
 test/1k2013spring/1430.js:31:8: [definite] Dead assignment, property x is never read
@@ -30,12 +29,10 @@ test/1k2013spring/1430.js:39:9: [definite] The variable b is never used
 test/1k2013spring/1430.js:49:11: [definite] The variable f is never used
 test/1k2013spring/1430.js:51:13: [definite] The variable d is never used
 test/1k2013spring/shim.js:6:5: [definite] The variable b is never used
-test/1k2013spring/1430.js:16:6: [maybe] TypeError, call to non-function
 test/1k2013spring/1430.js:17:6: [maybe] TypeError, call to non-function
 test/1k2013spring/shim.js:8:9: [maybe] TypeError, accessing property of null/undefined
 test/1k2013spring/shim.js:8:9: [maybe] TypeError, call to non-function
 test/1k2013spring/shim.js:9:1: [maybe] TypeError, accessing property of null/undefined
-test/1k2013spring/1430.js:16:6: [maybe] Reading absent property cloneNode
 test/1k2013spring/1430.js:17:6: [maybe] Reading absent property getContext
 test/1k2013spring/shim.js:6:9: [maybe] Reading absent property body
 test/1k2013spring/shim.js:8:9: [maybe] Reading absent property getContext
@@ -49,4 +46,4 @@ test/1k2013spring/1430.js:25:6: [maybe] Converting undefined to string
 test/1k2013spring/1430.js:25:17: [maybe] Converting primitive string to object
 test/1k2013spring/1430.js:25:35: [maybe] Reading absent property (computed name)
 test/1k2013spring/shim.js:7:9: [maybe] Reading absent property (computed name)
-test/1k2013spring/shim.js,test/1k2013spring/1430.js: [maybe] Uncaught exception, constructed at [test/1k2013spring/1430.js:16:6, test/1k2013spring/1430.js:17:6, test/1k2013spring/1430.js:35:3, test/1k2013spring/shim.js:8:9, test/1k2013spring/shim.js:9:1]
+test/1k2013spring/shim.js,test/1k2013spring/1430.js: [maybe] Uncaught exception, constructed at [test/1k2013spring/1430.js:17:6, test/1k2013spring/1430.js:35:3, test/1k2013spring/shim.js:8:9, test/1k2013spring/shim.js:9:1]

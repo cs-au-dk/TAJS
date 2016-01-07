@@ -17,6 +17,8 @@
 package dk.brics.tajs.analysis.dom.core;
 
 import dk.brics.tajs.analysis.InitialStateBuilder;
+import dk.brics.tajs.analysis.PropVarOperations;
+import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.analysis.dom.DOMObjects;
 import dk.brics.tajs.analysis.dom.DOMWindow;
 import dk.brics.tajs.lattice.ObjectLabel;
@@ -44,38 +46,42 @@ public class DOMException {
     /**
      * Creates a DOMException.
      */
-    public static Value newDOMException(State s, int code) {
+    public static Value newDOMException(int code, Solver.SolverInterface c) {
+        State s = c.getState();
+        PropVarOperations pv = c.getAnalysis().getPropVarOperations();
         s.newObject(DOMEXCEPTION);
         s.writeInternalPrototype(DOMEXCEPTION, Value.makeObject(DOMEXCEPTION_PROTOTYPE));
-        s.writeProperty(DOMEXCEPTION, "code", Value.makeNum(code));
+        pv.writeProperty(DOMEXCEPTION, "code", Value.makeNum(code));
         return Value.makeObject(DOMEXCEPTION);
     }
 
-    public static void build(State s) {
+    public static void build(Solver.SolverInterface c) {
+        State s = c.getState();
+        PropVarOperations pv = c.getAnalysis().getPropVarOperations();
         s.newObject(DOMEXCEPTION_PROTOTYPE);
         s.writeInternalPrototype(DOMEXCEPTION_PROTOTYPE, Value.makeObject(InitialStateBuilder.OBJECT_PROTOTYPE));
-        s.writeProperty(DOMWindow.WINDOW, "DOMException", Value.makeObject(DOMEXCEPTION_PROTOTYPE));
+        pv.writeProperty(DOMWindow.WINDOW, "DOMException", Value.makeObject(DOMEXCEPTION_PROTOTYPE));
 
         /*
          * Properties.
          */
         // DOM Level 1
-        createDOMProperty(s, DOMEXCEPTION_PROTOTYPE, "INDEX_SIZE_ERR", Value.makeNum(1));
-        createDOMProperty(s, DOMEXCEPTION_PROTOTYPE, "DOMSTRING_SIZE_ERR", Value.makeNum(2));
-        createDOMProperty(s, DOMEXCEPTION_PROTOTYPE, "HIERARCHY_REQUEST_ERR", Value.makeNum(3));
-        createDOMProperty(s, DOMEXCEPTION_PROTOTYPE, "WRONG_DOCUMENT_ERR", Value.makeNum(4));
-        createDOMProperty(s, DOMEXCEPTION_PROTOTYPE, "INVALID_CHARACTER_ERR", Value.makeNum(5));
-        createDOMProperty(s, DOMEXCEPTION_PROTOTYPE, "NO_DATA_ALLOWED_ERR", Value.makeNum(6));
-        createDOMProperty(s, DOMEXCEPTION_PROTOTYPE, "NO_MODIFICATION_ALLOWED_ERR", Value.makeNum(7));
-        createDOMProperty(s, DOMEXCEPTION_PROTOTYPE, "NOT_FOUND_ERR", Value.makeNum(8));
-        createDOMProperty(s, DOMEXCEPTION_PROTOTYPE, "NOT_SUPPORTED_ERR", Value.makeNum(9));
-        createDOMProperty(s, DOMEXCEPTION_PROTOTYPE, "INUSE_ATTRIBUTE_ERR", Value.makeNum(10));
+        createDOMProperty(DOMEXCEPTION_PROTOTYPE, "INDEX_SIZE_ERR", Value.makeNum(1), c);
+        createDOMProperty(DOMEXCEPTION_PROTOTYPE, "DOMSTRING_SIZE_ERR", Value.makeNum(2), c);
+        createDOMProperty(DOMEXCEPTION_PROTOTYPE, "HIERARCHY_REQUEST_ERR", Value.makeNum(3), c);
+        createDOMProperty(DOMEXCEPTION_PROTOTYPE, "WRONG_DOCUMENT_ERR", Value.makeNum(4), c);
+        createDOMProperty(DOMEXCEPTION_PROTOTYPE, "INVALID_CHARACTER_ERR", Value.makeNum(5), c);
+        createDOMProperty(DOMEXCEPTION_PROTOTYPE, "NO_DATA_ALLOWED_ERR", Value.makeNum(6), c);
+        createDOMProperty(DOMEXCEPTION_PROTOTYPE, "NO_MODIFICATION_ALLOWED_ERR", Value.makeNum(7), c);
+        createDOMProperty(DOMEXCEPTION_PROTOTYPE, "NOT_FOUND_ERR", Value.makeNum(8), c);
+        createDOMProperty(DOMEXCEPTION_PROTOTYPE, "NOT_SUPPORTED_ERR", Value.makeNum(9), c);
+        createDOMProperty(DOMEXCEPTION_PROTOTYPE, "INUSE_ATTRIBUTE_ERR", Value.makeNum(10), c);
 
         // DOM Level 2
-        createDOMProperty(s, DOMEXCEPTION_PROTOTYPE, "INVALID_STATE_ERR", Value.makeNum(11));
-        createDOMProperty(s, DOMEXCEPTION_PROTOTYPE, "SYNTAX_ERR", Value.makeNum(12));
-        createDOMProperty(s, DOMEXCEPTION_PROTOTYPE, "INVALID_MODIFICATION_ERR", Value.makeNum(13));
-        createDOMProperty(s, DOMEXCEPTION_PROTOTYPE, "NAMESPACE_ERR", Value.makeNum(14));
-        createDOMProperty(s, DOMEXCEPTION_PROTOTYPE, "INVALID_ACCESS_ERR", Value.makeNum(15));
+        createDOMProperty(DOMEXCEPTION_PROTOTYPE, "INVALID_STATE_ERR", Value.makeNum(11), c);
+        createDOMProperty(DOMEXCEPTION_PROTOTYPE, "SYNTAX_ERR", Value.makeNum(12), c);
+        createDOMProperty(DOMEXCEPTION_PROTOTYPE, "INVALID_MODIFICATION_ERR", Value.makeNum(13), c);
+        createDOMProperty(DOMEXCEPTION_PROTOTYPE, "NAMESPACE_ERR", Value.makeNum(14), c);
+        createDOMProperty(DOMEXCEPTION_PROTOTYPE, "INVALID_ACCESS_ERR", Value.makeNum(15), c);
     }
 }

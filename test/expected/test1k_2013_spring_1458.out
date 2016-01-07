@@ -1,6 +1,5 @@
 test/1k2013spring/1458.js:84:7: [definite] The conditional expression is always false
 test/1k2013spring/1458.js:88:7: [definite] The conditional expression is always false
-test/1k2013spring/1458.js:89:3: [definite] The assignment to R has no effect
 test/1k2013spring/1458.js:89:7: [definite] The conditional expression is always true
 test/1k2013spring/1458.js:116:33: [definite] The conditional expression is always false
 test/1k2013spring/1458.js:185:5: [definite] The conditional expression is always false

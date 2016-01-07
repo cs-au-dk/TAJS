@@ -122,9 +122,6 @@ public class OptionValues {
     @Option(name = "-propagate-dead-flow", usage = "Propagate empty values")
     private boolean propagateDeadFlow;
 
-    @Option(name = "-unroll-one-and-a-half", usage = "Enable 1 1/2 loop unrolling")
-    private boolean unrollOneAndAHalf;
-
     @Option(name = "-always-canput", usage = "Assume [[CanPut]] always succeeds")
     private boolean alwaysCanput;
 
@@ -184,8 +181,8 @@ public class OptionValues {
     @Option(name = "-polyfill-es6-collections", usage = "Enables use of polyfills for ES6 collections")
     private boolean polyfillES6Collections;
 
-    @Argument
-    private List<String> arguments = new ArrayList<>();
+    @Option(name = "-polyfill-typed-arrays", usage = "Enables use of polyfills for typed arrays (Int8Array, Float64Array ...)")
+    private boolean polyfillTypedArrays;
 
     @Override
     public boolean equals(Object o) {
@@ -223,7 +220,6 @@ public class OptionValues {
         if (quiet != that.quiet) return false;
         if (includeDom != that.includeDom) return false;
         if (propagateDeadFlow != that.propagateDeadFlow) return false;
-        if (unrollOneAndAHalf != that.unrollOneAndAHalf) return false;
         if (alwaysCanput != that.alwaysCanput) return false;
         if (evalStatistics != that.evalStatistics) return false;
         if (coverage != that.coverage) return false;
@@ -241,6 +237,8 @@ public class OptionValues {
         if (determinacy != that.determinacy) return false;
         if (polyfillMDN != that.polyfillMDN) return false;
         if (polyfillES6Collections != that.polyfillES6Collections) return false;
+        if (polyfillTypedArrays != that.polyfillTypedArrays) return false;
+        if (noImplicitGlobalVarDeclarations != that.noImplicitGlobalVarDeclarations) return false;
         if (ignoredLibrariesString != null ? !ignoredLibrariesString.equals(that.ignoredLibrariesString) : that.ignoredLibrariesString != null)
             return false;
         if (ignoredLibraries != null ? !ignoredLibraries.equals(that.ignoredLibraries) : that.ignoredLibraries != null)
@@ -279,7 +277,6 @@ public class OptionValues {
         result = 31 * result + (quiet ? 1 : 0);
         result = 31 * result + (includeDom ? 1 : 0);
         result = 31 * result + (propagateDeadFlow ? 1 : 0);
-        result = 31 * result + (unrollOneAndAHalf ? 1 : 0);
         result = 31 * result + (alwaysCanput ? 1 : 0);
         result = 31 * result + (evalStatistics ? 1 : 0);
         result = 31 * result + (coverage ? 1 : 0);
@@ -299,9 +296,17 @@ public class OptionValues {
         result = 31 * result + (determinacy ? 1 : 0);
         result = 31 * result + (polyfillMDN ? 1 : 0);
         result = 31 * result + (polyfillES6Collections ? 1 : 0);
+        result = 31 * result + (polyfillTypedArrays ? 1 : 0);
+        result = 31 * result + (noImplicitGlobalVarDeclarations ? 1 : 0);
         result = 31 * result + (arguments != null ? arguments.hashCode() : 0);
         return result;
     }
+
+    @Option(name = "-no-implicit-global-var-declarations", usage = "Enables avoiding creation of global variables outside variable declarations (unsound)")
+    private boolean noImplicitGlobalVarDeclarations;
+
+    @Argument
+    private List<String> arguments = new ArrayList<>();
 
     public OptionValues() {
         this(null, null);
@@ -598,10 +603,6 @@ public class OptionValues {
         ignoreUnreachable = false;
     }
 
-    public void disableUnrollOneAndAHalf() {
-        unrollOneAndAHalf = false;
-    }
-
     public void disableUnsound() {
         unsound = false;
     }
@@ -786,10 +787,6 @@ public class OptionValues {
 
     public void enableUnreachable() {
         ignoreUnreachable = true;
-    }
-
-    public void enableUnrollOneAndAHalf() {
-        unrollOneAndAHalf = true;
     }
 
     public void enableUnsound() {
@@ -993,18 +990,11 @@ public class OptionValues {
         return noConcreteNative;
     }
 
-    public boolean isUnrollOneAndAHalfEnabled() {
-        return unrollOneAndAHalf;
-    }
-
     public boolean isUnsoundEnabled() {
         return unsound;
     }
 
     public void checkConsistency() {
-        if (isUnrollOneAndAHalfEnabled() && isLoopUnrollingEnabled()) {
-            throw new AnalysisException("Mutual exclusive options: unroll-one-and-a-half and loop-unrolling");
-        }
         if (arguments == null || arguments.isEmpty()) {
             throw new AnalysisException("No arguments provided!");
         }
@@ -1018,11 +1008,27 @@ public class OptionValues {
         polyfillES6Collections = true;
     }
 
+    public void enablePolyfillTypedArrays() {
+        polyfillTypedArrays = true;
+    }
+
     public boolean isPolyfillMDNEnabled() {
         return polyfillMDN;
     }
 
     public boolean isPolyfillES6CollectionsEnabled() {
         return polyfillES6Collections;
+    }
+
+    public boolean isPolyfillTypedArraysEnabled() {
+        return polyfillTypedArrays;
+    }
+
+    public void enableNoImplicitGlobalVarDeclarations() {
+        noImplicitGlobalVarDeclarations = true;
+    }
+
+    public boolean isNoImplicitGlobalVarDeclarationsEnabled() {
+        return noImplicitGlobalVarDeclarations;
     }
 }

@@ -20,6 +20,7 @@ import dk.brics.tajs.analysis.Conversion;
 import dk.brics.tajs.analysis.FunctionCalls;
 import dk.brics.tajs.analysis.InitialStateBuilder;
 import dk.brics.tajs.analysis.NativeFunctions;
+import dk.brics.tajs.analysis.PropVarOperations;
 import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.analysis.dom.DOMObjects;
 import dk.brics.tajs.analysis.dom.DOMWindow;
@@ -47,17 +48,19 @@ public class DOMText {
 
     public static ObjectLabel INSTANCES;
 
-    public static void build(State s) {
+    public static void build(Solver.SolverInterface c) {
+        State s = c.getState();
+        PropVarOperations pv = c.getAnalysis().getPropVarOperations();
         CONSTRUCTOR = new ObjectLabel(DOMObjects.TEXT_CONSTRUCTOR, ObjectLabel.Kind.FUNCTION);
         PROTOTYPE = new ObjectLabel(DOMObjects.TEXT_PROTOTYPE, ObjectLabel.Kind.OBJECT);
         INSTANCES = new ObjectLabel(DOMObjects.TEXT_INSTANCES, ObjectLabel.Kind.OBJECT);
 
         // Constructor Object
         s.newObject(CONSTRUCTOR);
-        s.writePropertyWithAttributes(CONSTRUCTOR, "length", Value.makeNum(0).setAttributes(true, true, true));
-        s.writePropertyWithAttributes(CONSTRUCTOR, "prototype", Value.makeObject(PROTOTYPE).setAttributes(true, true, true));
+        pv.writePropertyWithAttributes(CONSTRUCTOR, "length", Value.makeNum(0).setAttributes(true, true, true));
+        pv.writePropertyWithAttributes(CONSTRUCTOR, "prototype", Value.makeObject(PROTOTYPE).setAttributes(true, true, true));
         s.writeInternalPrototype(CONSTRUCTOR, Value.makeObject(InitialStateBuilder.OBJECT_PROTOTYPE));
-        s.writeProperty(DOMWindow.WINDOW, "Text", Value.makeObject(CONSTRUCTOR));
+        pv.writeProperty(DOMWindow.WINDOW, "Text", Value.makeObject(CONSTRUCTOR));
 
         // Prototype Object
         s.newObject(PROTOTYPE);
@@ -70,8 +73,8 @@ public class DOMText {
         /*
          * Properties.
          */
-        createDOMProperty(s, INSTANCES, "isElementContentWhitespace", Value.makeAnyBool().setReadOnly());
-        createDOMProperty(s, INSTANCES, "wholeText", Value.makeAnyStr().setReadOnly());
+        createDOMProperty(INSTANCES, "isElementContentWhitespace", Value.makeAnyBool().setReadOnly(), c);
+        createDOMProperty(INSTANCES, "wholeText", Value.makeAnyStr().setReadOnly(), c);
 
         s.multiplyObject(INSTANCES);
         INSTANCES = INSTANCES.makeSingleton().makeSummary();
@@ -79,14 +82,15 @@ public class DOMText {
         /*
          * Functions.
          */
-        createDOMFunction(s, PROTOTYPE, DOMObjects.TEXT_SPLIT_TEXT, "splitText", 1);
-        createDOMFunction(s, PROTOTYPE, DOMObjects.TEXT_REPLACE_WHOLE_TEXT, "replaceWholeText", 1);
+        createDOMFunction(PROTOTYPE, DOMObjects.TEXT_SPLIT_TEXT, "splitText", 1, c);
+        createDOMFunction(PROTOTYPE, DOMObjects.TEXT_REPLACE_WHOLE_TEXT, "replaceWholeText", 1, c);
     }
 
     /**
      * Transfer Functions.
      */
-    public static Value evaluate(DOMObjects nativeObjects, FunctionCalls.CallInfo call, State s, Solver.SolverInterface c) {
+    public static Value evaluate(DOMObjects nativeObjects, FunctionCalls.CallInfo call, Solver.SolverInterface c) {
+        State s = c.getState();
         switch (nativeObjects) {
             case TEXT_SPLIT_TEXT: {
                 NativeFunctions.expectParameters(nativeObjects, call, c, 1, 1);

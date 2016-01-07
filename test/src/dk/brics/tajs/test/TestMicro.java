@@ -19,7 +19,7 @@ public class TestMicro {
 
 	@Before
 	public void init() {
-		Options.reset();
+		Main.reset();
 		Options.get().enableTest();
 		Options.get().enableContextSensitiveHeap();
 		Options.get().enableParameterSensitivity();
@@ -1773,30 +1773,9 @@ public class TestMicro {
 	}
 
 	@Test
-	public void micro_188un() throws Exception {
-		Misc.init();
-		Misc.captureSystemOutput();
-		Options.get().enableUnrollOneAndAHalf();
-		String[] args = {"test/micro/test188.js"};
-		Misc.run(args);
-		Options.get().enableUnrollOneAndAHalf();
-		Misc.checkSystemOutput();
-	}
-
-	@Test
 	public void micro_189() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/micro/test189.js"};
-		Misc.run(args);
-		Misc.checkSystemOutput();
-	}
-
-	@Test
-	public void micro_189un() throws Exception {
-		Misc.init();
-		Misc.captureSystemOutput();
-		Options.get().enableUnrollOneAndAHalf();
 		String[] args = {"test/micro/test189.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
@@ -2286,8 +2265,8 @@ public class TestMicro {
 		);
 	}
 
-	@Test(expected = AnalysisLimitationException.class /* GitHub #147 */)
-	public void micro_testEmtyFunctionConstructor() throws Exception {
+	@Test
+	public void micro_testEmptyFunctionConstructor() throws Exception {
 		Misc.init();
 		Options.get().enableUnevalizer();
 		Misc.runSource(
@@ -2800,14 +2779,6 @@ public class TestMicro {
 	}
 
 	@Test(expected = AnalysisException.class)
-	public void incompatibleOptions_loopUnrolling(){
-		Misc.init();
-		Options.get().enableLoopUnrolling(1);
-		Options.get().enableUnrollOneAndAHalf();
-		Misc.run(new String[]{""});
-	}
-
-	@Test(expected = AnalysisException.class)
 	public void incompatibleOptions_missingArguments(){
 		Misc.init();
 		Misc.run(new String[]{});
@@ -2999,7 +2970,7 @@ public class TestMicro {
 				"");
 	}
 
-	@Test(expected = AnalysisException.class /* github #257 */)
+	@Test(expected = AnalysisLimitationException.class /* github #257 */)
 	public void castbug() {
 		Misc.init();
 		Options.get().enableUnevalizer();
@@ -3015,4 +2986,197 @@ public class TestMicro {
 		Misc.runSource("document.addEventListener(\"DOMContentLoaded\", eval);");
 	}
 
+
+	@Test
+	public void thisObjectForSetTimeoutAndSetInterval() {
+		Options.get().enableIncludeDom();
+		Misc.init();
+		Misc.runSource(
+				"setInterval(function(){TAJS_assert(window === this);}, 0);",
+				"setTimeout(function(){TAJS_assert(window === this);}, 0);",
+				"");
+	}
+
+	@Test
+	public void constInitialization() {
+		Misc.init();
+		Misc.runSource(
+				"const x = 42;",
+				"TAJS_assert(x === 42);",
+				"");
+	}
+
+	@Test(expected = AssertionError.class /* GitHub #182*/)
+	public void constReassignment() {
+		Misc.init();
+		Misc.runSource(
+				"const x = 42;",
+				"x = 87;",
+				"TAJS_assert(x === 42);",
+				"");
+	}
+
+	@Test
+	public void objectFreeze_return() {
+		Misc.init();
+		Misc.runSource(
+				"var o = {};",
+				"TAJS_assert(Object.freeze(o) === o);",
+				"");
+	}
+
+	@Test(expected = AssertionError.class /* GitHub #249 */)
+	public void objectFreeze_immutable() {
+		Misc.init();
+		Misc.runSource(
+				"var o = {p: 'foo'};",
+				"Object.freeze(o)",
+				"o.p = 42;",
+				"o.q = true;",
+				"TAJS_assert(o.p === 'foo');",
+				"TAJS_assert(o.q === undefined);",
+				"");
+	}
+
+	@Test(expected = AssertionError.class /* GitHub #249 */)
+	public void objectFreeze_strict() {
+		Misc.init();
+		Misc.runSource(
+				"'use strict';",
+				"var o = {};",
+				"Object.freeze(o)",
+				"o.p = 42;",
+				"TAJS_assert(false);",
+				"");
+	}
+
+	@Test
+	public void objectKeys_typeError() {
+		Misc.init();
+		Misc.runSource(
+				"Object.keys(undefined);",
+				"TAJS_assert(false);"
+		);
+	}
+
+	@Test
+	public void objectKeys_sound() {
+		Misc.init();
+		Misc.runSource(
+				"var o0 = {};",
+				"TAJS_assert(Object.keys(o0).length === 0);",
+
+				"var o1 = {p: 42};",
+				"TAJS_assert(Object.keys(o1).length === 1);",
+				"TAJS_assert(Object.keys(o1)[0] === 'p');",
+
+				"var o2 = {p: 42, q: 87};",
+				"TAJS_assert(Object.keys(o2).length === 2);",
+				"TAJS_assert(Object.keys(o2)[0], 'isStrIdentifier');",
+				"TAJS_assert(Object.keys(o2)[1], 'isStrIdentifier');",
+
+				"var oMaybe1 = {};",
+				"if(Math.random()){oMaybe1.p = 42;}",
+				"TAJS_assert(Object.keys(oMaybe1).length, 'isMaybeNumUInt');",
+				"TAJS_assert(Object.keys(oMaybe1)[0], 'isMaybeSingleStr||isMaybeUndef');"
+		);
+	}
+
+	@Test
+	public void objectKeys_unsound() {
+		Options.get().enableUnsound();
+		Misc.init();
+		Misc.runSource(
+				"var o0 = {};",
+				"TAJS_assert(Object.keys(o0).length === 0);",
+
+				"var o1 = {p: 42};",
+				"TAJS_assert(Object.keys(o1).length === 1);",
+				"TAJS_assert(Object.keys(o1)[0] === 'p');",
+
+				"var o2 = {p: 42, q: 87};",
+				"TAJS_assert(Object.keys(o2).length === 2);",
+				"TAJS_assert(Object.keys(o2)[0] === 'p');",
+				"TAJS_assert(Object.keys(o2)[1] === 'q');",
+
+				"var oMaybe1 = {};",
+				"if(Math.random()){oMaybe1.p = 42;}",
+				"TAJS_assert(Object.keys(oMaybe1).length, 'isMaybeNumUInt');",
+				"TAJS_assert(Object.keys(oMaybe1)[0], 'isMaybeSingleStr||isMaybeUndef');"
+		);
+	}
+
+	@Test
+	public void functionToString_unsound() {
+		Options.get().enableUnsound();
+		Misc.init();
+		Misc.runSource(
+				// plain content
+				"TAJS_assert((function foo(bar){baz;}).toString() === 'function foo(bar){baz;}');",
+				// whitespace
+				"TAJS_assert((function foo ( bar ){ baz ; }).toString() === 'function foo ( bar ){ baz ; }');",
+				// removed parts (nb: nashorn-semantics, google-chrome removes some of the comments)
+				"TAJS_assert((function /**/foo/**/(/**/bar/**/)/**/{/**/baz;/**/}).toString() === 'function /**/foo/**/(/**/bar/**/)/**/{/**/baz;/**/}');",
+				// newlines
+				"TAJS_assert((function foo(bar){\nbaz;\n}).toString() === 'function foo(bar){\\nbaz;\\n}');",
+				// identical functions
+				"var f = !!Math.random()? function f(){}: function f(){};",
+				"TAJS_assert(f.toString() === 'function f(){}');",
+				// different functions
+				"var fg = !!Math.random()? function f(){}: function g(){};",
+				"TAJS_assert(fg.toString(), 'isMaybeStrOther');",
+				// natives (nb: nashorn-semantics, google-chrome has space before the parameter list)
+				"TAJS_assert(toString.toString() === 'function toString() { [native code] }');",
+				"TAJS_assert(Array.prototype.push.toString() === 'function push() { [native code] }');"
+		);
+	}
+
+	@Test
+	public void functionToString_sound() {
+		Misc.init();
+		Misc.runSource(
+				"TAJS_assert(toString.toString(), 'isMaybeAnyStr');",
+				"TAJS_assert((function f(){}).toString(), 'isMaybeAnyStr');"
+		);
+	}
+
+	@Test
+	public void functionToString_prototypejsExample() {
+		Options.get().enableUnsound();
+		Misc.init();
+		Misc.runSource(
+				// prototype.js depends on Function.prototype.toString for extracting argument names
+				"function f(a, b, c){foo;}",
+				"var args = f.toString().match(/^[\\s\\(]*function[^(]*\\((.*?)\\)/)[1].split(',');",
+				"TAJS_assert(args.length === 3);",
+				"TAJS_assert(args[0] === 'a');",
+				"TAJS_assert(args[2] === ' c');" /* this is before a call to strip! */
+		);
+	}
+
+	@Test
+	public void testNoImplicitGlobalVarDeclarations() {
+		Misc.init();
+		Options.get().enableNoImplicitGlobalVarDeclarations();
+		Misc.runSource(
+				"var v1 = 42;",
+				"TAJS_assert(v1 === 42);",
+				"v2 = 42;",
+				"TAJS_assert(typeof v2 === 'undefined');"
+		);
+	}
+
+	@Test
+	public void recursiveSetTimeoutWithNulls() {
+		Misc.init();
+		Options.get().enableIncludeDom();
+		Misc.captureSystemOutput();
+		Misc.runSourceWithNamedFile("recursiveSetTimeoutWithNulls.js",
+				"function r(f){",
+				"	setTimeout(f, 0);",
+				"}",
+				"r(function f1(){r(function f2(){r(function f3(){r(null)})})});"
+		);
+		Misc.checkSystemOutput();
+	}
 }

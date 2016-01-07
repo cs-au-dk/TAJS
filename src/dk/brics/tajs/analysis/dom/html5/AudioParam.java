@@ -3,6 +3,7 @@ package dk.brics.tajs.analysis.dom.html5;
 import dk.brics.tajs.analysis.Exceptions;
 import dk.brics.tajs.analysis.FunctionCalls;
 import dk.brics.tajs.analysis.InitialStateBuilder;
+import dk.brics.tajs.analysis.PropVarOperations;
 import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.analysis.dom.DOMObjects;
 import dk.brics.tajs.analysis.dom.DOMWindow;
@@ -25,7 +26,9 @@ public class AudioParam {
 
     public static ObjectLabel INSTANCES;
 
-    public static void build(State s) {
+    public static void build(Solver.SolverInterface c) {
+        State s = c.getState();
+        PropVarOperations pv = c.getAnalysis().getPropVarOperations();
 
         // Scraped from google chrome:
         Set<String> scrapedFunctionPropertyNames = newSet(Arrays.asList("setValueAtTime", "linearRampToValueAtTime", "exponentialRampToValueAtTime", "setTargetAtTime", "setValueCurveAtTime", "cancelScheduledValues"));
@@ -36,10 +39,10 @@ public class AudioParam {
 
         // Constructor Object
         s.newObject(CONSTRUCTOR);
-        s.writePropertyWithAttributes(CONSTRUCTOR, "length", Value.makeNum(0).setAttributes(true, true, true));
-        s.writePropertyWithAttributes(CONSTRUCTOR, "prototype", Value.makeObject(PROTOTYPE).setAttributes(true, true, true));
+        pv.writePropertyWithAttributes(CONSTRUCTOR, "length", Value.makeNum(0).setAttributes(true, true, true));
+        pv.writePropertyWithAttributes(CONSTRUCTOR, "prototype", Value.makeObject(PROTOTYPE).setAttributes(true, true, true));
         s.writeInternalPrototype(CONSTRUCTOR, Value.makeObject(InitialStateBuilder.FUNCTION_PROTOTYPE));
-        s.writeProperty(DOMWindow.WINDOW, "AudioParam", Value.makeObject(CONSTRUCTOR));
+        pv.writeProperty(DOMWindow.WINDOW, "AudioParam", Value.makeObject(CONSTRUCTOR));
 
         // Prototype Object
         s.newObject(PROTOTYPE);
@@ -52,8 +55,8 @@ public class AudioParam {
         /*
          * Properties.
          */
-        createDOMProperty(s, INSTANCES, "value", Value.makeAnyNum());
-        createDOMProperty(s, INSTANCES, "defaultValue", Value.makeAnyNumUInt().setReadOnly());
+        createDOMProperty(INSTANCES, "value", Value.makeAnyNum(), c);
+        createDOMProperty(INSTANCES, "defaultValue", Value.makeAnyNumUInt().setReadOnly(), c);
 
         s.multiplyObject(INSTANCES);
         // FIXME AudioParam is an interface, GainNode is an example of an (yet unmodelled) instance
@@ -65,18 +68,19 @@ public class AudioParam {
 
         ObjectLabel dummyFunction = new ObjectLabel(DOMObjects.AUDIOPARAM_TAJS_UNSUPPORTED_FUNCTION, ObjectLabel.Kind.FUNCTION);
         for (String propertyName : scrapedFunctionPropertyNames) {
-            // explicit implementation of: createDOMFunction(s, PROTOTYPE, DOMObjects.WEBGLRENDERINGCONTEXT_SOME_FUNCTION, propertyName, ***Value.makeAnyNum()***);
+            // explicit implementation of: createDOMFunction(PROTOTYPE, DOMObjects.WEBGLRENDERINGCONTEXT_SOME_FUNCTION, propertyName, ***Value.makeAnyNum()***);
             s.newObject(dummyFunction);
-            s.writePropertyWithAttributes(PROTOTYPE, propertyName, Value.makeObject(dummyFunction).setAttributes(true, false, false));
-            s.writePropertyWithAttributes(dummyFunction, "length", Value.makeAnyNum().setAttributes(true, true, true));
+            pv.writePropertyWithAttributes(PROTOTYPE, propertyName, Value.makeObject(dummyFunction).setAttributes(true, false, false));
+            pv.writePropertyWithAttributes(dummyFunction, "length", Value.makeAnyNum().setAttributes(true, true, true));
             s.writeInternalPrototype(dummyFunction, Value.makeObject(InitialStateBuilder.FUNCTION_PROTOTYPE));
         }
     }
 
-    public static Value evaluate(DOMObjects nativeObject, FunctionCalls.CallInfo call, State s, Solver.SolverInterface c) {
+    public static Value evaluate(DOMObjects nativeObject, FunctionCalls.CallInfo call, Solver.SolverInterface c) {
+        State s = c.getState();
         switch (nativeObject) {
             case AUDIOPARAM_CONSTRUCTOR:
-                Exceptions.throwTypeError(s, c);
+                Exceptions.throwTypeError(c);
                 s.setToNone();
             case AUDIOPARAM_TAJS_UNSUPPORTED_FUNCTION:
                 throw new AnalysisException("This function from AudioParam is not yet supported: " + call.getJSSourceNode().getSourceLocation());

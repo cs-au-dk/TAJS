@@ -75,7 +75,6 @@ public class FlowGraphBuilder {
 
     /**
      * Constructs a new flow graph builder using a fresh environment.
-     * @param descriptiveRootSourceName
      */
     public FlowGraphBuilder(String descriptiveRootSourceName) {
         this(null, null, descriptiveRootSourceName);
@@ -85,7 +84,6 @@ public class FlowGraphBuilder {
      * Constructs a new flow graph builder.
      *  @param env traversal environment, or null if fresh
      * @param fab function/block manager, or null if fresh
-     * @param descriptiveRootSourceName
      */
     public FlowGraphBuilder(AstEnv env, FunctionAndBlockManager fab, String descriptiveRootSourceName) {
         if (fab == null) {
@@ -232,7 +230,7 @@ public class FlowGraphBuilder {
     private Function transformFunctionBody(String sourceName, String sourceContent, int lineOffset, int columnOffset, AstEnv env) {
         ProgramTree tree = makeAST(sourceName, sourceContent, lineOffset, columnOffset);
         FormalParameterListTree params = new FormalParameterListTree(tree.location, ImmutableList.of());
-        return functionBuilder.processFunctionDeclaration(Kind.DECLARATION, null, params, tree, env, makeSourceLocation(tree));
+        return functionBuilder.processFunctionDeclaration(Kind.DECLARATION, null, params, tree, env, makeSourceLocation(tree), null);
     }
 
     /**
@@ -523,7 +521,7 @@ public class FlowGraphBuilder {
             int register = mainEnv.getRegisterManager().nextRegister();
             AstEnv declarationEnv = mainEnv.makeResultRegister(register).makeStatementLevel(false).makeAppendBlock(lastLoaderBlockBox[0]);
             SourceLocation location = new SourceLocation(0, 0, source.getFileName());
-            functionBuilder.processFunctionDeclaration(Kind.EXPRESSION, "load:" + Paths.get(source.getFileName()).getFileName().toString(), params, tree, declarationEnv, location);
+            functionBuilder.processFunctionDeclaration(Kind.EXPRESSION, "load:" + Paths.get(source.getFileName()).getFileName(), params, tree, declarationEnv, location, null);
             return register;
         }).collect(Collectors.toList() /* order of block side effects is important. sync here */).
                 forEach(functionRegister -> {

@@ -17,6 +17,8 @@
 package dk.brics.tajs.analysis.dom.html;
 
 import dk.brics.tajs.analysis.InitialStateBuilder;
+import dk.brics.tajs.analysis.PropVarOperations;
+import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.analysis.dom.DOMObjects;
 import dk.brics.tajs.analysis.dom.DOMWindow;
 import dk.brics.tajs.analysis.dom.core.DOMDocument;
@@ -41,17 +43,19 @@ public class HTMLObjectElement {
 
     public static ObjectLabel INSTANCES;
 
-    public static void build(State s) {
+    public static void build(Solver.SolverInterface c) {
+        State s = c.getState();
+        PropVarOperations pv = c.getAnalysis().getPropVarOperations();
         CONSTRUCTOR = new ObjectLabel(DOMObjects.HTMLOBJECTELEMENT_CONSTRUCTOR, ObjectLabel.Kind.FUNCTION);
         PROTOTYPE = new ObjectLabel(DOMObjects.HTMLOBJECTELEMENT_PROTOTYPE, ObjectLabel.Kind.OBJECT);
         INSTANCES = new ObjectLabel(DOMObjects.HTMLOBJECTELEMENT_INSTANCES, ObjectLabel.Kind.OBJECT);
 
         // Constructor Object
         s.newObject(CONSTRUCTOR);
-        s.writePropertyWithAttributes(CONSTRUCTOR, "length", Value.makeNum(0).setAttributes(true, true, true));
-        s.writePropertyWithAttributes(CONSTRUCTOR, "prototype", Value.makeObject(PROTOTYPE).setAttributes(true, true, true));
+        pv.writePropertyWithAttributes(CONSTRUCTOR, "length", Value.makeNum(0).setAttributes(true, true, true));
+        pv.writePropertyWithAttributes(CONSTRUCTOR, "prototype", Value.makeObject(PROTOTYPE).setAttributes(true, true, true));
         s.writeInternalPrototype(CONSTRUCTOR, Value.makeObject(InitialStateBuilder.FUNCTION_PROTOTYPE));
-        s.writeProperty(DOMWindow.WINDOW, "HTMLObjectElement", Value.makeObject(CONSTRUCTOR));
+        pv.writeProperty(DOMWindow.WINDOW, "HTMLObjectElement", Value.makeObject(CONSTRUCTOR));
 
         // Prototype Object
         s.newObject(PROTOTYPE);
@@ -65,27 +69,27 @@ public class HTMLObjectElement {
          * Properties.
          */
         // DOM Level 1
-        createDOMProperty(s, INSTANCES, "form", Value.makeObject(HTMLFormElement.INSTANCES).setReadOnly());
-        createDOMProperty(s, INSTANCES, "code", Value.makeAnyStr());
-        createDOMProperty(s, INSTANCES, "align", Value.makeAnyStr());
-        createDOMProperty(s, INSTANCES, "archive", Value.makeAnyStr());
-        createDOMProperty(s, INSTANCES, "border", Value.makeAnyStr());
-        createDOMProperty(s, INSTANCES, "codeBase", Value.makeAnyStr());
-        createDOMProperty(s, INSTANCES, "codeType", Value.makeAnyStr());
-        createDOMProperty(s, INSTANCES, "data", Value.makeAnyStr());
-        createDOMProperty(s, INSTANCES, "declare", Value.makeAnyBool());
-        createDOMProperty(s, INSTANCES, "height", Value.makeAnyStr());
-        createDOMProperty(s, INSTANCES, "hspace", Value.makeAnyNum());
-        createDOMProperty(s, INSTANCES, "name", Value.makeAnyStr());
-        createDOMProperty(s, INSTANCES, "standby", Value.makeAnyStr());
-        createDOMProperty(s, INSTANCES, "tabIndex", Value.makeAnyNum());
-        createDOMProperty(s, INSTANCES, "type", Value.makeAnyStr());
-        createDOMProperty(s, INSTANCES, "useMap", Value.makeAnyStr());
-        createDOMProperty(s, INSTANCES, "vspace", Value.makeAnyNum());
-        createDOMProperty(s, INSTANCES, "width", Value.makeAnyStr());
+        createDOMProperty(INSTANCES, "form", Value.makeObject(HTMLFormElement.INSTANCES).setReadOnly(), c);
+        createDOMProperty(INSTANCES, "code", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "align", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "archive", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "border", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "codeBase", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "codeType", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "data", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "declare", Value.makeAnyBool(), c);
+        createDOMProperty(INSTANCES, "height", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "hspace", Value.makeAnyNum(), c);
+        createDOMProperty(INSTANCES, "name", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "standby", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "tabIndex", Value.makeAnyNum(), c);
+        createDOMProperty(INSTANCES, "type", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "useMap", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "vspace", Value.makeAnyNum(), c);
+        createDOMProperty(INSTANCES, "width", Value.makeAnyStr(), c);
 
         // DOM Level 2
-        createDOMProperty(s, INSTANCES, "contentDocument", Value.makeObject(DOMDocument.INSTANCES).setReadOnly());
+        createDOMProperty(INSTANCES, "contentDocument", Value.makeObject(DOMDocument.INSTANCES).setReadOnly(), c);
 
         s.multiplyObject(INSTANCES);
         INSTANCES = INSTANCES.makeSingleton().makeSummary();

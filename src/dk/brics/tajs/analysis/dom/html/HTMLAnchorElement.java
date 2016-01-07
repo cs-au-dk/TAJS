@@ -19,6 +19,7 @@ package dk.brics.tajs.analysis.dom.html;
 import dk.brics.tajs.analysis.FunctionCalls;
 import dk.brics.tajs.analysis.InitialStateBuilder;
 import dk.brics.tajs.analysis.NativeFunctions;
+import dk.brics.tajs.analysis.PropVarOperations;
 import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.analysis.dom.DOMObjects;
 import dk.brics.tajs.analysis.dom.DOMWindow;
@@ -41,17 +42,19 @@ public class HTMLAnchorElement {
 
     public static ObjectLabel INSTANCES;
 
-    public static void build(State s) {
+    public static void build(Solver.SolverInterface c) {
+        State s = c.getState();
+        PropVarOperations pv = c.getAnalysis().getPropVarOperations();
         CONSTRUCTOR = new ObjectLabel(DOMObjects.HTMLANCHORELEMENT_CONSTRUCTOR, ObjectLabel.Kind.FUNCTION);
         INSTANCES = new ObjectLabel(DOMObjects.HTMLANCHORELEMENT_INSTANCES, ObjectLabel.Kind.OBJECT);
         PROTOTYPE = new ObjectLabel(DOMObjects.HTMLANCHORELEMENT_PROTOTYPE, ObjectLabel.Kind.OBJECT);
 
         // Constructor Object
         s.newObject(CONSTRUCTOR);
-        s.writePropertyWithAttributes(CONSTRUCTOR, "length", Value.makeNum(0).setAttributes(true, true, true));
-        s.writePropertyWithAttributes(CONSTRUCTOR, "prototype", Value.makeObject(PROTOTYPE).setAttributes(true, true, true));
+        pv.writePropertyWithAttributes(CONSTRUCTOR, "length", Value.makeNum(0).setAttributes(true, true, true));
+        pv.writePropertyWithAttributes(CONSTRUCTOR, "prototype", Value.makeObject(PROTOTYPE).setAttributes(true, true, true));
         s.writeInternalPrototype(CONSTRUCTOR, Value.makeObject(InitialStateBuilder.FUNCTION_PROTOTYPE));
-        s.writeProperty(DOMWindow.WINDOW, "HTMLAnchorElement", Value.makeObject(CONSTRUCTOR));
+        pv.writeProperty(DOMWindow.WINDOW, "HTMLAnchorElement", Value.makeObject(CONSTRUCTOR));
 
         // Prototype Object
         s.newObject(PROTOTYPE);
@@ -65,18 +68,18 @@ public class HTMLAnchorElement {
          * Properties.
          */
         // DOM LEVEL 1
-        createDOMProperty(s, INSTANCES, "accessKey", Value.makeAnyStr());
-        createDOMProperty(s, INSTANCES, "charset", Value.makeAnyStr());
-        createDOMProperty(s, INSTANCES, "coords", Value.makeAnyStr());
-        createDOMProperty(s, INSTANCES, "href", Value.makeAnyStr());
-        createDOMProperty(s, INSTANCES, "hreflang", Value.makeAnyStr());
-        createDOMProperty(s, INSTANCES, "name", Value.makeAnyStr());
-        createDOMProperty(s, INSTANCES, "rel", Value.makeAnyStr());
-        createDOMProperty(s, INSTANCES, "rev", Value.makeAnyStr());
-        createDOMProperty(s, INSTANCES, "shape", Value.makeAnyStr());
-        createDOMProperty(s, INSTANCES, "tabIndex", Value.makeAnyNum());
-        createDOMProperty(s, INSTANCES, "target", Value.makeAnyStr());
-        createDOMProperty(s, INSTANCES, "type", Value.makeAnyStr());
+        createDOMProperty(INSTANCES, "accessKey", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "charset", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "coords", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "href", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "hreflang", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "name", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "rel", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "rev", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "shape", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "tabIndex", Value.makeAnyNum(), c);
+        createDOMProperty(INSTANCES, "target", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "type", Value.makeAnyStr(), c);
 
         s.multiplyObject(INSTANCES);
         INSTANCES = INSTANCES.makeSingleton().makeSummary();
@@ -86,8 +89,8 @@ public class HTMLAnchorElement {
          */
         // DOM LEVEL 1
         // TODO: Remove, not present on this object, but on HTMLElement
-        createDOMFunction(s, PROTOTYPE, DOMObjects.HTMLANCHORELEMENT_BLUR, "blur", 0);
-        createDOMFunction(s, PROTOTYPE, DOMObjects.HTMLANCHORELEMENT_FOCUS, "focus", 0);
+        createDOMFunction(PROTOTYPE, DOMObjects.HTMLANCHORELEMENT_BLUR, "blur", 0, c);
+        createDOMFunction(PROTOTYPE, DOMObjects.HTMLANCHORELEMENT_FOCUS, "focus", 0, c);
     }
 
     /**

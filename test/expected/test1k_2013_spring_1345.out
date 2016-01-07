@@ -1,4 +1,6 @@
 test/1k2013spring/shim.js:6:5: [definite] The variable b is never used
+test/1k2013spring/1345.js:53:25: [maybe] ReferenceError, reading absent variable dir
+test/1k2013spring/1345.js:54:29: [maybe] ReferenceError, reading absent variable x
 test/1k2013spring/1345.js:74:41: [maybe] TypeError, accessing property of null/undefined
 test/1k2013spring/1345.js:76:41: [maybe] TypeError, accessing property of null/undefined
 test/1k2013spring/1345.js:77:40: [maybe] TypeError, accessing property of null/undefined
@@ -17,4 +19,4 @@ test/1k2013spring/1345.js:87:36: [maybe] Reading absent property (computed name)
 test/1k2013spring/1345.js:112:45: [maybe] Converting undefined to string
 test/1k2013spring/1345.js:112:51: [maybe] Reading absent property (computed name)
 test/1k2013spring/shim.js:7:9: [maybe] Reading absent property (computed name)
-test/1k2013spring/shim.js,test/1k2013spring/1345.js: [maybe] Uncaught exception, constructed at [test/1k2013spring/1345.js:52:21, test/1k2013spring/1345.js:74:41, test/1k2013spring/1345.js:76:41, test/1k2013spring/1345.js:77:40, test/1k2013spring/shim.js:8:9, test/1k2013spring/shim.js:9:1]
+test/1k2013spring/shim.js,test/1k2013spring/1345.js: [maybe] Uncaught exception, constructed at [test/1k2013spring/1345.js:52:21, test/1k2013spring/1345.js:53:25, test/1k2013spring/1345.js:54:29, test/1k2013spring/1345.js:74:41, test/1k2013spring/1345.js:76:41, test/1k2013spring/1345.js:77:40, test/1k2013spring/shim.js:8:9, test/1k2013spring/shim.js:9:1]

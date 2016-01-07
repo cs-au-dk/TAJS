@@ -23,6 +23,7 @@ import dk.brics.tajs.options.Options;
 import dk.brics.tajs.solver.BlockAndContext;
 import dk.brics.tajs.solver.CallGraph;
 import dk.brics.tajs.solver.IAnalysisLatticeElement;
+import dk.brics.tajs.util.AnalysisException;
 import org.apache.log4j.Logger;
 
 import java.util.Map;
@@ -35,19 +36,19 @@ import static dk.brics.tajs.util.Collections.newMap;
 public class AnalysisLatticeElement implements
         IAnalysisLatticeElement<State, Context, CallEdge> {
 
-    private static Logger log = Logger.getLogger(AnalysisLatticeElement.class);
+    private static final Logger log = Logger.getLogger(AnalysisLatticeElement.class);
 
     /**
      * Abstract block states.
      * Stores an abstract state for each basic block entry and context.
      * Default is none.
      */
-    private Map<BasicBlock, Map<Context, State>> block_entry_states;
+    private final Map<BasicBlock, Map<Context, State>> block_entry_states;
 
     /**
      * Call graph.
      */
-    private CallGraph<State, Context, CallEdge> call_graph;
+    private final CallGraph<State, Context, CallEdge> call_graph;
 
     /**
      * Constructs a new global analysis lattice element.
@@ -80,7 +81,8 @@ public class AnalysisLatticeElement implements
             b = bs.get(context);
         }
         if (b != null) {
-            b.checkOwner(block, context);
+            if (!b.getBasicBlock().equals(block) || !b.getContext().equals(context))
+                throw new AnalysisException("State owner block/context mismatch!");
         }
         return b;
     }

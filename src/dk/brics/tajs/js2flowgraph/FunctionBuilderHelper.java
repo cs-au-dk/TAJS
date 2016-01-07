@@ -1,10 +1,12 @@
 package dk.brics.tajs.js2flowgraph;
 
 import com.google.javascript.jscomp.parsing.parser.LiteralToken;
+import com.google.javascript.jscomp.parsing.parser.SourceFile;
 import com.google.javascript.jscomp.parsing.parser.TokenType;
 import com.google.javascript.jscomp.parsing.parser.trees.BinaryOperatorTree;
 import com.google.javascript.jscomp.parsing.parser.trees.ParseTree;
 import com.google.javascript.jscomp.parsing.parser.trees.ParseTreeType;
+import com.google.javascript.jscomp.parsing.parser.util.SourcePosition;
 import dk.brics.tajs.flowgraph.AbstractNode;
 import dk.brics.tajs.flowgraph.BasicBlock;
 import dk.brics.tajs.flowgraph.Function;
@@ -322,6 +324,16 @@ public class FunctionBuilderHelper {
      */
     public static SourceLocation makeSourceLocation(ParseTree tree) {
         return new SourceLocation(tree.location.start.line + 1, tree.location.start.column + 1, tree.location.start.source.name);
+    }
+
+    /**
+     * Finds the source code of a tree.
+     */
+    public static String getSource(ParseTree tree) {
+        SourcePosition start = tree.location.start;
+        SourcePosition end = tree.location.end;
+        SourceFile sourceFile = start.source;
+        return sourceFile.contents.substring(start.offset, end.offset);
     }
 
     /**

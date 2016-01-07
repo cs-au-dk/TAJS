@@ -1,6 +1,8 @@
 package dk.brics.tajs.analysis.nativeobjects.concrete;
 
-import dk.brics.tajs.analysis.InitialStateBuilder;
+import dk.brics.tajs.analysis.PropVarOperations;
+import dk.brics.tajs.analysis.Solver;
+import dk.brics.tajs.analysis.nativeobjects.JSArray;
 import dk.brics.tajs.flowgraph.AbstractNode;
 import dk.brics.tajs.lattice.HeapContext;
 import dk.brics.tajs.lattice.ObjectLabel;
@@ -18,21 +20,21 @@ import static dk.brics.tajs.util.Collections.singleton;
  */
 public class Alpha {
 
-    public static Value createNewArrayValue(ConcreteArray array, State state, AbstractNode sourceNode) {
+    public static Value createNewArrayValue(ConcreteArray array, AbstractNode sourceNode, Solver.SolverInterface c) {
+        State state = c.getState();
+        PropVarOperations pv = c.getAnalysis().getPropVarOperations();
         final Map<String, Value> map = newMap();
         map.put("<CONCRETE>", Value.makeStr(array.toSourceCode()));
-        ObjectLabel label = new ObjectLabel(sourceNode, ObjectLabel.Kind.ARRAY, HeapContext.make(null, map));
-        state.newObject(label);
-        state.writeInternalPrototype(label, Value.makeObject(InitialStateBuilder.ARRAY_PROTOTYPE));
+        ObjectLabel label = JSArray.makeArray(sourceNode, HeapContext.make(null, map), c);
         Value length = Value.makeNum(array.getLength());
         Set<ObjectLabel> labels = singleton(label);
-        state.writePropertyWithAttributes(labels, "length", length.setAttributes(true, true, false));
-        array.getExtraProperties().forEach((String k, ConcreteValue v) -> state.writeProperty(labels, Value.makeTemporaryStr(k), toValue(v), true, false));
+        pv.writePropertyWithAttributes(labels, "length", length.setAttributes(true, true, false));
+        array.getExtraProperties().forEach((String k, ConcreteValue v) -> pv.writeProperty(labels, Value.makeTemporaryStr(k), toValue(v), true, false));
         for (int i = 0; i < array.getLength(); i++) {
             final Value index = Value.makeStr(String.valueOf(i));
             ConcreteValue concreteValue = array.get(i);
             final Value value = toValue(concreteValue);
-            state.writeProperty(labels, index, value, true, false);
+            pv.writeProperty(labels, index, value, true, false);
         }
         return Value.makeObject(label);
     }

@@ -16,9 +16,9 @@
 
 package dk.brics.tajs.analysis.dom.view;
 
+import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.analysis.dom.DOMWindow;
 import dk.brics.tajs.analysis.dom.html.HTMLDocument;
-import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.Value;
 
 import static dk.brics.tajs.analysis.dom.DOMFunctions.createDOMProperty;
@@ -28,12 +28,12 @@ import static dk.brics.tajs.analysis.dom.DOMFunctions.createDOMProperty;
  */
 public class AbstractView {
 
-    public static void build(State s) {
+    public static void build(Solver.SolverInterface c) {
         // AbstractView has no native object.
 
         /*
          * Properties.
          */
-        createDOMProperty(s, DOMWindow.WINDOW, "document", Value.makeObject(HTMLDocument.INSTANCES).setReadOnly());
+        createDOMProperty(DOMWindow.WINDOW, "document", Value.makeObject(HTMLDocument.INSTANCES).setReadOnly(), c);
     }
 }

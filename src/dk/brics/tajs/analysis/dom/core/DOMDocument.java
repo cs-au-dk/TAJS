@@ -20,6 +20,7 @@ import dk.brics.tajs.analysis.Conversion;
 import dk.brics.tajs.analysis.FunctionCalls.CallInfo;
 import dk.brics.tajs.analysis.InitialStateBuilder;
 import dk.brics.tajs.analysis.NativeFunctions;
+import dk.brics.tajs.analysis.PropVarOperations;
 import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.analysis.dom.DOMFunctions;
 import dk.brics.tajs.analysis.dom.DOMObjects;
@@ -50,17 +51,19 @@ public class DOMDocument {
 
     public static ObjectLabel INSTANCES;
 
-    public static void build(State s) {
+    public static void build(Solver.SolverInterface c) {
+        State s = c.getState();
+        PropVarOperations pv = c.getAnalysis().getPropVarOperations();
         CONSTRUCTOR = new ObjectLabel(DOMObjects.DOCUMENT_CONSTRUCTOR, Kind.FUNCTION);
         PROTOTYPE = new ObjectLabel(DOMObjects.DOCUMENT_PROTOTYPE, Kind.OBJECT);
         INSTANCES = new ObjectLabel(DOMObjects.DOCUMENT_INSTANCES, Kind.OBJECT);
 
         // Constructor Object
         s.newObject(CONSTRUCTOR);
-        s.writePropertyWithAttributes(CONSTRUCTOR, "length", Value.makeNum(0).setAttributes(true, true, true));
-        s.writePropertyWithAttributes(CONSTRUCTOR, "prototype", Value.makeObject(PROTOTYPE).setAttributes(true, true, true));
+        pv.writePropertyWithAttributes(CONSTRUCTOR, "length", Value.makeNum(0).setAttributes(true, true, true));
+        pv.writePropertyWithAttributes(CONSTRUCTOR, "prototype", Value.makeObject(PROTOTYPE).setAttributes(true, true, true));
         s.writeInternalPrototype(CONSTRUCTOR, Value.makeObject(InitialStateBuilder.OBJECT_PROTOTYPE));
-        s.writeProperty(DOMWindow.WINDOW, "Document", Value.makeObject(CONSTRUCTOR));
+        pv.writeProperty(DOMWindow.WINDOW, "Document", Value.makeObject(CONSTRUCTOR));
 
         // Prototype object.
         s.newObject(PROTOTYPE);
@@ -74,23 +77,23 @@ public class DOMDocument {
          * Properties.
          */
         // DOM LEVEL 1
-        createDOMProperty(s, INSTANCES, "doctype", Value.makeObject(DOMDocumentType.INSTANCES));
+        createDOMProperty(INSTANCES, "doctype", Value.makeObject(DOMDocumentType.INSTANCES), c);
         // NB: The documentElement property is written by HTMLBuilder (due to cyclic dependency).
 
         // DOM LEVEL 2
         // various properties from the NODE Interface:
-        createDOMProperty(s, INSTANCES, "nodeName", Value.makeStr("#document").setReadOnly());
-        createDOMProperty(s, INSTANCES, "nodeValue", Value.makeNull().setReadOnly());
-        createDOMProperty(s, INSTANCES, "nodeType", Value.makeNum(9).setReadOnly());
+        createDOMProperty(INSTANCES, "nodeName", Value.makeStr("#document").setReadOnly(), c);
+        createDOMProperty(INSTANCES, "nodeValue", Value.makeNull().setReadOnly(), c);
+        createDOMProperty(INSTANCES, "nodeType", Value.makeNum(9).setReadOnly(), c);
 
         // DOM LEVEL 3
-        createDOMProperty(s, INSTANCES, "inputEncoding", Value.makeAnyStr().setReadOnly());
-        createDOMProperty(s, INSTANCES, "xmlEncoding", Value.makeAnyStr().setReadOnly());
-        createDOMProperty(s, INSTANCES, "xmlStandalone", Value.makeAnyBool());
-        createDOMProperty(s, INSTANCES, "xmlVersion", Value.makeAnyStr());
-        createDOMProperty(s, INSTANCES, "strictErrorChecking", Value.makeAnyBool());
-        createDOMProperty(s, INSTANCES, "documentURI", Value.makeAnyStr());
-        createDOMProperty(s, INSTANCES, "domConfig", Value.makeObject(DOMConfiguration.INSTANCES));
+        createDOMProperty(INSTANCES, "inputEncoding", Value.makeAnyStr().setReadOnly(), c);
+        createDOMProperty(INSTANCES, "xmlEncoding", Value.makeAnyStr().setReadOnly(), c);
+        createDOMProperty(INSTANCES, "xmlStandalone", Value.makeAnyBool(), c);
+        createDOMProperty(INSTANCES, "xmlVersion", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "strictErrorChecking", Value.makeAnyBool(), c);
+        createDOMProperty(INSTANCES, "documentURI", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "domConfig", Value.makeObject(DOMConfiguration.INSTANCES), c);
 
         // Summarize:
         // NB: The objectlabel is summarized in HTMLBuilder, because a property is added to it there.
@@ -98,43 +101,44 @@ public class DOMDocument {
         /*
          * Properties from DOMWindow
          */
-        createDOMProperty(s, INSTANCES, "location", Value.makeObject(DOMWindow.LOCATION));
-        createDOMProperty(s, INSTANCES, "readyState", Value.makeAnyStrNotUInt().setReadOnly());
+        createDOMProperty(INSTANCES, "location", Value.makeObject(DOMWindow.LOCATION), c);
+        createDOMProperty(INSTANCES, "readyState", Value.makeAnyStrNotUInt().setReadOnly(), c);
 
         /*
          * Functions.
          */
         // DOM LEVEL 1
-        createDOMFunction(s, PROTOTYPE, DOMObjects.DOCUMENT_CREATE_ELEMENT, "createElement", 1);
-        createDOMFunction(s, PROTOTYPE, DOMObjects.DOCUMENT_CREATE_DOCUMENTFRAGMENT, "createDocumentFragment", 0);
-        createDOMFunction(s, PROTOTYPE, DOMObjects.DOCUMENT_CREATE_TEXTNODE, "createTextNode", 1);
-        createDOMFunction(s, PROTOTYPE, DOMObjects.DOCUMENT_CREATE_COMMENT, "createComment", 1);
-        createDOMFunction(s, PROTOTYPE, DOMObjects.DOCUMENT_CREATE_CDATASECTION, "createCDATASection", 1);
-        createDOMFunction(s, PROTOTYPE, DOMObjects.DOCUMENT_CREATEPROCESSINGINSTRUCTION, "createProcessingInstruction", 2);
-        createDOMFunction(s, PROTOTYPE, DOMObjects.DOCUMENT_CREATE_ATTRIBUTE, "createAttribute", 1);
-        createDOMFunction(s, PROTOTYPE, DOMObjects.DOCUMENT_CREATE_ENTITYREFERENCE, "createEntityReference", 0);
-        createDOMFunction(s, PROTOTYPE, DOMObjects.DOCUMENT_GET_ELEMENTS_BY_TAGNAME, "getElementsByTagName", 1);
+        createDOMFunction(PROTOTYPE, DOMObjects.DOCUMENT_CREATE_ELEMENT, "createElement", 1, c);
+        createDOMFunction(PROTOTYPE, DOMObjects.DOCUMENT_CREATE_DOCUMENTFRAGMENT, "createDocumentFragment", 0, c);
+        createDOMFunction(PROTOTYPE, DOMObjects.DOCUMENT_CREATE_TEXTNODE, "createTextNode", 1, c);
+        createDOMFunction(PROTOTYPE, DOMObjects.DOCUMENT_CREATE_COMMENT, "createComment", 1, c);
+        createDOMFunction(PROTOTYPE, DOMObjects.DOCUMENT_CREATE_CDATASECTION, "createCDATASection", 1, c);
+        createDOMFunction(PROTOTYPE, DOMObjects.DOCUMENT_CREATEPROCESSINGINSTRUCTION, "createProcessingInstruction", 2, c);
+        createDOMFunction(PROTOTYPE, DOMObjects.DOCUMENT_CREATE_ATTRIBUTE, "createAttribute", 1, c);
+        createDOMFunction(PROTOTYPE, DOMObjects.DOCUMENT_CREATE_ENTITYREFERENCE, "createEntityReference", 0, c);
+        createDOMFunction(PROTOTYPE, DOMObjects.DOCUMENT_GET_ELEMENTS_BY_TAGNAME, "getElementsByTagName", 1, c);
 
         // DOM LEVEL 2
-        createDOMFunction(s, PROTOTYPE, DOMObjects.DOCUMENT_IMPORT_NODE, "importNode", 2);
-        createDOMFunction(s, PROTOTYPE, DOMObjects.DOCUMENT_CREATE_ELEMENT_NS, "createElementNS", 2);
-        createDOMFunction(s, PROTOTYPE, DOMObjects.DOCUMENT_CREATE_ATTRIBUTE_NS, "createAttributeNS", 2);
-        createDOMFunction(s, PROTOTYPE, DOMObjects.DOCUMENT_GET_ELEMENTS_BY_TAGNAME_NS, "getElementsByTagNameNS", 2);
-        createDOMFunction(s, PROTOTYPE, DOMObjects.DOCUMENT_GET_ELEMENT_BY_ID, "getElementById", 1);
+        createDOMFunction(PROTOTYPE, DOMObjects.DOCUMENT_IMPORT_NODE, "importNode", 2, c);
+        createDOMFunction(PROTOTYPE, DOMObjects.DOCUMENT_CREATE_ELEMENT_NS, "createElementNS", 2, c);
+        createDOMFunction(PROTOTYPE, DOMObjects.DOCUMENT_CREATE_ATTRIBUTE_NS, "createAttributeNS", 2, c);
+        createDOMFunction(PROTOTYPE, DOMObjects.DOCUMENT_GET_ELEMENTS_BY_TAGNAME_NS, "getElementsByTagNameNS", 2, c);
+        createDOMFunction(PROTOTYPE, DOMObjects.DOCUMENT_GET_ELEMENT_BY_ID, "getElementById", 1, c);
 
         // DOM LEVEL 3
-        createDOMFunction(s, PROTOTYPE, DOMObjects.DOCUMENT_ADOPT_NODE, "adoptNode", 1);
-        createDOMFunction(s, PROTOTYPE, DOMObjects.DOCUMENT_NORMALIZEDOCUMENT, "normalizeDocument", 0);
-        createDOMFunction(s, PROTOTYPE, DOMObjects.DOCUMENT_RENAME_NODE, "renameNode", 3);
+        createDOMFunction(PROTOTYPE, DOMObjects.DOCUMENT_ADOPT_NODE, "adoptNode", 1, c);
+        createDOMFunction(PROTOTYPE, DOMObjects.DOCUMENT_NORMALIZEDOCUMENT, "normalizeDocument", 0, c);
+        createDOMFunction(PROTOTYPE, DOMObjects.DOCUMENT_RENAME_NODE, "renameNode", 3, c);
 
         // semistandard
-        createDOMFunction(s, PROTOTYPE, DOMObjects.DOCUMENT_QUERY_SELECTOR_ALL, "querySelectorAll", 1);
+        createDOMFunction(PROTOTYPE, DOMObjects.DOCUMENT_QUERY_SELECTOR_ALL, "querySelectorAll", 1, c);
     }
 
     /**
      * Transfer Functions.
      */
-    public static Value evaluate(DOMObjects nativeobject, CallInfo call, State s, Solver.SolverInterface c, Set<ObjectLabel> html_object_labels) {
+    public static Value evaluate(DOMObjects nativeobject, CallInfo call, Solver.SolverInterface c, Set<ObjectLabel> html_object_labels) {
+        State s = c.getState();
         switch (nativeobject) {
             case DOCUMENT_ADOPT_NODE: {
                 NativeFunctions.expectParameters(nativeobject, call, c, 1, 1);
@@ -229,11 +233,11 @@ public class DOMDocument {
                     Value v = Value.makeObject(labels);
                     ObjectLabel nodeList = DOMFunctions.makeEmptyNodeList();
                     if (!labels.isEmpty()) {
-                        s.writeProperty(Collections.singleton(nodeList), Value.makeAnyStrUInt(), v, true, false);
+                        c.getAnalysis().getPropVarOperations().writeProperty(Collections.singleton(nodeList), Value.makeAnyStrUInt(), v, true, false);
                     }
                     return Value.makeObject(nodeList);
                 }
-                return DOMFunctions.makeAnyHTMLNodeList(s);
+                return DOMFunctions.makeAnyHTMLNodeList(c);
             }
             case DOCUMENT_RENAME_NODE: {
                 NativeFunctions.expectParameters(nativeobject, call, c, 1, 3);

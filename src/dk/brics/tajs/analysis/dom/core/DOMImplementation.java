@@ -20,6 +20,7 @@ import dk.brics.tajs.analysis.Conversion;
 import dk.brics.tajs.analysis.FunctionCalls;
 import dk.brics.tajs.analysis.InitialStateBuilder;
 import dk.brics.tajs.analysis.NativeFunctions;
+import dk.brics.tajs.analysis.PropVarOperations;
 import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.analysis.dom.DOMObjects;
 import dk.brics.tajs.analysis.dom.DOMWindow;
@@ -45,17 +46,19 @@ public class DOMImplementation {
 
     public static ObjectLabel INSTANCES;
 
-    public static void build(State s) {
+    public static void build(Solver.SolverInterface c) {
+        State s = c.getState();
+        PropVarOperations pv = c.getAnalysis().getPropVarOperations();
         CONSTRUCTOR = new ObjectLabel(DOMObjects.DOMIMPLEMENTATION_CONSTRUCTOR, Kind.FUNCTION);
         PROTOTYPE = new ObjectLabel(DOMObjects.DOMIMPLEMENTATION_PROTOTYPE, Kind.OBJECT);
         INSTANCES = new ObjectLabel(DOMObjects.DOMIMPLEMENTATION_INSTANCES, Kind.OBJECT);
 
         // Constructor Object
         s.newObject(CONSTRUCTOR);
-        s.writePropertyWithAttributes(CONSTRUCTOR, "length", Value.makeNum(0).setAttributes(true, true, true));
-        s.writePropertyWithAttributes(CONSTRUCTOR, "prototype", Value.makeObject(PROTOTYPE).setAttributes(true, true, true));
+        pv.writePropertyWithAttributes(CONSTRUCTOR, "length", Value.makeNum(0).setAttributes(true, true, true));
+        pv.writePropertyWithAttributes(CONSTRUCTOR, "prototype", Value.makeObject(PROTOTYPE).setAttributes(true, true, true));
         s.writeInternalPrototype(CONSTRUCTOR, Value.makeObject(InitialStateBuilder.OBJECT_PROTOTYPE));
-        s.writeProperty(DOMWindow.WINDOW, "DOMImplementation", Value.makeObject(CONSTRUCTOR));
+        pv.writeProperty(DOMWindow.WINDOW, "DOMImplementation", Value.makeObject(CONSTRUCTOR));
 
         // Prototype object.
         s.newObject(PROTOTYPE);
@@ -77,19 +80,20 @@ public class DOMImplementation {
          * Functions.
          */
         // DOM Level 1
-        createDOMFunction(s, PROTOTYPE, DOMObjects.DOMIMPLEMENTATION_HASFEATURE, "hasFeature", 2);
+        createDOMFunction(PROTOTYPE, DOMObjects.DOMIMPLEMENTATION_HASFEATURE, "hasFeature", 2, c);
 
         // DOM Level 2
-        createDOMFunction(s, PROTOTYPE, DOMObjects.DOMIMPLEMENTATION_CREATEDOCUMENTTYPE, "createDocumentType", 3);
-        createDOMFunction(s, PROTOTYPE, DOMObjects.DOMIMPLEMENTATION_CREATEDOCUMENT, "createDocument", 3);
+        createDOMFunction(PROTOTYPE, DOMObjects.DOMIMPLEMENTATION_CREATEDOCUMENTTYPE, "createDocumentType", 3, c);
+        createDOMFunction(PROTOTYPE, DOMObjects.DOMIMPLEMENTATION_CREATEDOCUMENT, "createDocument", 3, c);
 
-        createDOMProperty(s, DOMDocument.INSTANCES, "implementation", Value.makeObject(INSTANCES));
+        createDOMProperty(DOMDocument.INSTANCES, "implementation", Value.makeObject(INSTANCES), c);
     }
 
     /**
      * Transfer Functions.
      */
-    public static Value evaluate(DOMObjects nativeobject, FunctionCalls.CallInfo call, State s, Solver.SolverInterface c) {
+    public static Value evaluate(DOMObjects nativeobject, FunctionCalls.CallInfo call, Solver.SolverInterface c) {
+        State s = c.getState();
         switch (nativeobject) {
             case DOMIMPLEMENTATION_HASFEATURE: {
                 NativeFunctions.expectParameters(nativeobject, call, c, 2, 2);

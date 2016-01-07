@@ -20,6 +20,7 @@ import dk.brics.tajs.analysis.Conversion;
 import dk.brics.tajs.analysis.FunctionCalls;
 import dk.brics.tajs.analysis.InitialStateBuilder;
 import dk.brics.tajs.analysis.NativeFunctions;
+import dk.brics.tajs.analysis.PropVarOperations;
 import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.analysis.dom.DOMObjects;
 import dk.brics.tajs.lattice.ObjectLabel;
@@ -39,19 +40,21 @@ public class ActiveXObject {
 
     public static ObjectLabel PROTOTYPE;
 
-    public static void build(State s) {
+    public static void build(Solver.SolverInterface c) {
+        State s = c.getState();
+        PropVarOperations pv = c.getAnalysis().getPropVarOperations();
         CONSTRUCTOR = new ObjectLabel(DOMObjects.ACTIVE_X_OBJECT_CONSTRUCTOR, ObjectLabel.Kind.FUNCTION);
         PROTOTYPE = new ObjectLabel(DOMObjects.ACTIVE_X_OBJECT_PROTOTYPE, ObjectLabel.Kind.OBJECT);
         INSTANCES = new ObjectLabel(DOMObjects.ACTIVE_X_OBJECT_INSTANCES, ObjectLabel.Kind.OBJECT);
 
         // Constructor Object
         s.newObject(CONSTRUCTOR);
-        s.writePropertyWithAttributes(CONSTRUCTOR, "length", Value.makeNum(0).setAttributes(true, true, true));
-        s.writePropertyWithAttributes(CONSTRUCTOR, "prototype", Value.makeObject(PROTOTYPE).setAttributes(true, true, true));
+        pv.writePropertyWithAttributes(CONSTRUCTOR, "length", Value.makeNum(0).setAttributes(true, true, true));
+        pv.writePropertyWithAttributes(CONSTRUCTOR, "prototype", Value.makeObject(PROTOTYPE).setAttributes(true, true, true));
         s.writeInternalPrototype(CONSTRUCTOR, Value.makeObject(InitialStateBuilder.OBJECT_PROTOTYPE));
 
         // TODO modelling choice: ActiveXObject is IE only..
-        // s.writeProperty(DOMWindow.WINDOW, "ActiveXObject", Value.makeObject(CONSTRUCTOR)); 
+        // pv.writeProperty(DOMWindow.WINDOW, "ActiveXObject", Value.makeObject(CONSTRUCTOR));
 
         // Prototype object
         s.newObject(PROTOTYPE);
@@ -64,35 +67,35 @@ public class ActiveXObject {
         /*
          * Constants.
          */
-        createDOMProperty(s, PROTOTYPE, "UNSENT", Value.makeNum(0));
-        createDOMProperty(s, PROTOTYPE, "OPENED", Value.makeNum(1));
-        createDOMProperty(s, PROTOTYPE, "HEADERS_RECEIVED", Value.makeNum(2));
-        createDOMProperty(s, PROTOTYPE, "LOADING", Value.makeNum(3));
-        createDOMProperty(s, PROTOTYPE, "DONE", Value.makeNum(4));
+        createDOMProperty(PROTOTYPE, "UNSENT", Value.makeNum(0), c);
+        createDOMProperty(PROTOTYPE, "OPENED", Value.makeNum(1), c);
+        createDOMProperty(PROTOTYPE, "HEADERS_RECEIVED", Value.makeNum(2), c);
+        createDOMProperty(PROTOTYPE, "LOADING", Value.makeNum(3), c);
+        createDOMProperty(PROTOTYPE, "DONE", Value.makeNum(4), c);
 
         /*
          * Properties.
          */
-        createDOMProperty(s, INSTANCES, "readyState", Value.makeAnyNumUInt().setReadOnly());
-        createDOMProperty(s, INSTANCES, "status", Value.makeAnyNumUInt().setReadOnly());
-        createDOMProperty(s, INSTANCES, "statusText", Value.makeAnyStr().setReadOnly());
+        createDOMProperty(INSTANCES, "readyState", Value.makeAnyNumUInt().setReadOnly(), c);
+        createDOMProperty(INSTANCES, "status", Value.makeAnyNumUInt().setReadOnly(), c);
+        createDOMProperty(INSTANCES, "statusText", Value.makeAnyStr().setReadOnly(), c);
 
         if (Options.get().isReturnJSON()) {
-            createDOMProperty(s, INSTANCES, "responseText", Value.makeJSONStr());
+            createDOMProperty(INSTANCES, "responseText", Value.makeJSONStr(), c);
         } else {
-            createDOMProperty(s, INSTANCES, "responseText", Value.makeAnyStr());
+            createDOMProperty(INSTANCES, "responseText", Value.makeAnyStr(), c);
         }
-        // TODO createDOMProperty(s, INSTANCES, "responseXML", Value.makeObject(DOMDocument.DOCUMENT).setReadOnly(), DOMSpec.LEVEL_2);
+        // TODO createDOMProperty(INSTANCES, "responseXML", Value.makeObject(DOMDocument.DOCUMENT).setReadOnly(), DOMSpec.LEVEL_2);
 
         /*
          * Functions.
          */
-        createDOMFunction(s, PROTOTYPE, DOMObjects.ACTIVE_X_OBJECT_OPEN, "open", 5);
-        createDOMFunction(s, PROTOTYPE, DOMObjects.ACTIVE_X_OBJECT_SEND, "send", 1);
-        createDOMFunction(s, PROTOTYPE, DOMObjects.ACTIVE_X_OBJECT_SET_REQUEST_HEADER, "setRequestHeader", 2);
-        createDOMFunction(s, PROTOTYPE, DOMObjects.ACTIVE_X_OBJECT_ABORT, "abort", 0);
-        createDOMFunction(s, PROTOTYPE, DOMObjects.ACTIVE_X_OBJECT_GET_RESPONSE_HEADER, "getResponseHeader", 1);
-        createDOMFunction(s, PROTOTYPE, DOMObjects.ACTIVE_X_OBJECT_GET_ALL_RESPONSE_HEADERS, "getAllResponseHeaders", 0);
+        createDOMFunction(PROTOTYPE, DOMObjects.ACTIVE_X_OBJECT_OPEN, "open", 5, c);
+        createDOMFunction(PROTOTYPE, DOMObjects.ACTIVE_X_OBJECT_SEND, "send", 1, c);
+        createDOMFunction(PROTOTYPE, DOMObjects.ACTIVE_X_OBJECT_SET_REQUEST_HEADER, "setRequestHeader", 2, c);
+        createDOMFunction(PROTOTYPE, DOMObjects.ACTIVE_X_OBJECT_ABORT, "abort", 0, c);
+        createDOMFunction(PROTOTYPE, DOMObjects.ACTIVE_X_OBJECT_GET_RESPONSE_HEADER, "getResponseHeader", 1, c);
+        createDOMFunction(PROTOTYPE, DOMObjects.ACTIVE_X_OBJECT_GET_ALL_RESPONSE_HEADERS, "getAllResponseHeaders", 0, c);
 
         // Multiply object
         s.multiplyObject(INSTANCES);
@@ -102,7 +105,8 @@ public class ActiveXObject {
     /*
      * Transfer functions
      */
-    public static Value evaluate(DOMObjects nativeObject, FunctionCalls.CallInfo call, State s, Solver.SolverInterface c) {
+    public static Value evaluate(DOMObjects nativeObject, FunctionCalls.CallInfo call, Solver.SolverInterface c) {
+        State s = c.getState();
         switch (nativeObject) {
             case ACTIVE_X_OBJECT_OPEN: {
                 NativeFunctions.expectParameters(nativeObject, call, c, 2, 5);

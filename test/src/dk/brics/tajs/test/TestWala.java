@@ -2,12 +2,11 @@ package dk.brics.tajs.test;
 
 // import static org.junit.Assert.fail;
 
+import dk.brics.tajs.Main;
+import dk.brics.tajs.options.Options;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.Ignore;
-
-import dk.brics.tajs.options.Options;
-// import dk.brics.tajs.util.AnalysisException;
 
 @SuppressWarnings("static-method")
 public class TestWala {
@@ -18,7 +17,7 @@ public class TestWala {
 	
 	@Before
 	public void init() {
-        Options.reset();
+		Main.reset();
 		Options.get().enableTest();
 		// Options.get().enableNoLazy();
 	}
@@ -32,12 +31,11 @@ public class TestWala {
 		Misc.checkSystemOutput();
 	}
 
-	@Ignore
 	@Test
 	public void wala_forinct() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
-		String[] args = {"test/wala/forin.js"}; // TODO: should work with for-in specialization and specialized context sensitivity?
+		String[] args = {"test/wala/forin.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
@@ -88,14 +86,12 @@ public class TestWala {
 		Misc.checkSystemOutput();
 	}
 
-	@Ignore // FIXME: assignment to innerHTML
-	@Test // TODO: HTML DOM
+	@Test(expected = AssertionError.class /* bizarre use of DOM */)
 	public void wala_portal_example_simple() throws Exception {
 		Misc.init();
-		Misc.captureSystemOutput();
 		String[] args = {"test/wala/portal-example-simple.html"};
 		Misc.run(args);
-		Misc.checkSystemOutput();
+		Assert.fail();
 	}
 
 	@Test

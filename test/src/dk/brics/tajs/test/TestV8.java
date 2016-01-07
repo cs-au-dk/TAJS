@@ -58,7 +58,6 @@ public class TestV8 { // TODO: check expected output for TestV8
 		Misc.checkSystemOutput();
 	}
 
-	@Ignore // see https://github.com/cs-au-dk/TAJS-private/issues/186
 	@Test
 	public void testV8_arguments_enum() throws Exception
 	{

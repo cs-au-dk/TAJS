@@ -1,5 +1,6 @@
 package dk.brics.tajs.test;
 
+import dk.brics.tajs.Main;
 import dk.brics.tajs.monitoring.CompositeMonitoring;
 import dk.brics.tajs.monitoring.IAnalysisMonitoring;
 import dk.brics.tajs.monitoring.Monitoring;
@@ -19,7 +20,7 @@ public class TestResig {
 	
 	@Before
 	public void init() {
-        Options.reset();
+		Main.reset();
 		Options.get().enableTest();
 		monitoring = CompositeMonitoring.buildFromList(new Monitoring(), new OrdinaryExitReachableCheckerMonitor());
 	}
@@ -286,15 +287,14 @@ public class TestResig {
 		Misc.checkSystemOutput();
 	}
 
-//	@Ignore // uses jQuery...
-//	@Test
-//	public void resig_ejohn51() throws Exception {
-//		Misc.init();
-//		Misc.captureSystemOutput();
-//		String[] args = {"test/resig/ejohn51.js"};
-//		Misc.run(args, monitoring);
-//		fail(); // Misc.checkSystemOutput();
-//	}
+	@Test(expected = AssertionError.class /* referring to jQuery, which is not included ... */)
+	public void resig_ejohn51() throws Exception {
+		Misc.init();
+		Misc.captureSystemOutput();
+		String[] args = {"test/resig/ejohn51.js"};
+		Misc.run(args, monitoring);
+		Misc.checkSystemOutput();
+	}
 
 	@Test
 	public void resig_ejohn52() throws Exception { 
@@ -329,6 +329,7 @@ public class TestResig {
 	public void resig_ejohn56() throws Exception { 
 		Misc.init();
 		Options.get().enableIncludeDom();
+		Options.get().enableLoopUnrolling(5);
 		Misc.captureSystemOutput();
 		String[] args = {"test/resig/ejohn56.js"};
 		Misc.run(args, monitoring);

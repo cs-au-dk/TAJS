@@ -1,6 +1,4 @@
-test/chromeexperiments/starfield.html:142:2: [definite] The assignment to evt has no effect
 test/chromeexperiments/starfield.html:142:6: [definite] The conditional expression is always true
-test/chromeexperiments/starfield.html:149:2: [definite] The assignment to evt has no effect
 test/chromeexperiments/starfield.html:149:6: [definite] The conditional expression is always true
 test/chromeexperiments/starfield.html:150:6: [definite] The conditional expression is always false
 test/chromeexperiments/starfield.html:188:6: [definite] The conditional expression is always true

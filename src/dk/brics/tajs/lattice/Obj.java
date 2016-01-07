@@ -115,7 +115,7 @@ public final class Obj {
     /**
      * Sets all properties to none and scope to empty.
      */
-    public void setToNone() {
+    private void setToNone() {
         checkWritable();
         default_nonarray_property = default_array_property = internal_prototype = internal_value = Value.makeNone();
         properties = Collections.emptyMap();
@@ -124,24 +124,24 @@ public final class Obj {
         writable_properties = false;
     }
 
-    /**
-     * Copies all properties from the given object.
-     */
-    public void setTo(Obj x) {
-        checkWritable();
-        default_nonarray_property = x.default_nonarray_property;
-        default_array_property = x.default_array_property;
-        internal_prototype = x.internal_prototype;
-        internal_value = x.internal_value;
-        scope = x.scope;
-        scope_unknown = x.scope_unknown;
-        if (Options.get().isCopyOnWriteDisabled()) {
-            properties = newMap(x.properties);
-        } else {
-            properties = x.properties;
-            x.writable_properties = writable_properties = false;
-        }
-    }
+//    /**
+//     * Copies all properties from the given object.
+//     */
+//    public void setTo(Obj x) {
+//        checkWritable();
+//        default_nonarray_property = x.default_nonarray_property;
+//        default_array_property = x.default_array_property;
+//        internal_prototype = x.internal_prototype;
+//        internal_value = x.internal_value;
+//        scope = x.scope;
+//        scope_unknown = x.scope_unknown;
+//        if (Options.get().isCopyOnWriteDisabled()) {
+//            properties = newMap(x.properties);
+//        } else {
+//            properties = x.properties;
+//            x.writable_properties = writable_properties = false;
+//        }
+//    }
 
     /**
      * Constructs an abstract object where all properties are absent (but modified) and scope is set to empty.
@@ -312,7 +312,7 @@ public final class Obj {
             internal_value = other.internal_value;
         if (scope_unknown && !other.scope_unknown) {
             scope = other.scope;
-            scope_unknown = other.scope_unknown;
+            scope_unknown = false;
         }
         if (isSomeNone())
             setToNone();

@@ -17,15 +17,20 @@
 package dk.brics.tajs.analysis.dom;
 
 import dk.brics.tajs.analysis.FunctionCalls;
+import dk.brics.tajs.analysis.InitialStateBuilder;
+import dk.brics.tajs.analysis.PropVarOperations;
 import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.flowgraph.jsnodes.EventDispatcherNode;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.options.Options;
+import dk.brics.tajs.util.Collections;
 import org.apache.log4j.Logger;
 
 import java.util.Set;
+
+import static dk.brics.tajs.util.Collections.singleton;
 
 public class DOMEventLoop {
 
@@ -81,16 +86,28 @@ public class DOMEventLoop {
             return;
         }
         State callState = requiresStateCloning ? currentState.clone() : currentState;
+        c.setState(callState);
         for (ObjectLabel l : handlers) {
             log.debug("Triggering eventHandlers <" + eventhandlerKind + ">: " + l);
         }
 
         if (event != null) {
-            callState.writeProperty(DOMWindow.WINDOW, "event", event);
+            // Support the unofficial window.event property that is set by the browser
+            PropVarOperations pv = c.getAnalysis().getPropVarOperations();
+            pv.writeProperty(DOMWindow.WINDOW, "event", event); // strong write to override old value
+            pv.deleteProperty(Collections.singleton(DOMWindow.WINDOW), Value.makeTemporaryStr("event"), true); // weak delete to emulate unofficial
         }
 
-        c.setState(callState);
-        FunctionCalls.callFunction(new FunctionCalls.EventHandlerCall(currentNode, Value.makeObject(handlers), event, callState), c);
+        Set<ObjectLabel> thisTargets;
+        if (eventhandlerKind == DOMRegistry.MaySets.TIMEOUT_EVENT_HANDLERS) {
+            thisTargets = singleton(InitialStateBuilder.GLOBAL);
+        } else {
+            thisTargets = DOMBuilder.getAllDOMEventTargets();
+        }
+        //FunctionCalls.callFunction(new FunctionCalls.EventHandlerCall(currentNode, Value.makeObject(handlers), event), c);
+        FunctionCalls.callFunction(
+                new FunctionCalls.EventHandlerCall(currentNode, Value.makeObject(handlers), event, thisTargets, callState),
+                c);
         c.setState(currentState);
     }
 
@@ -107,6 +124,7 @@ public class DOMEventLoop {
             triggerEventHandler(n, state, DOMRegistry.MaySets.KEYBOARD_EVENT_HANDLER, keyboardEvent, true, c);
             triggerEventHandler(n, state, DOMRegistry.MaySets.MOUSE_EVENT_HANDLER, mouseEvent, true, c);
             triggerEventHandler(n, state, DOMRegistry.MaySets.AJAX_EVENT_HANDLER, ajaxEvent, true, c);
+            // not adding precise support for touch events, they are represented in the anyEvent
             triggerEventHandler(n, state, DOMRegistry.MaySets.UNKNOWN_EVENT_HANDLERS, anyEvent, true, c);
             triggerEventHandler(n, state, DOMRegistry.MaySets.TIMEOUT_EVENT_HANDLERS, null, true, c);
         }

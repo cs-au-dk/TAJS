@@ -23,7 +23,9 @@ import dk.brics.tajs.analysis.FunctionCalls;
 import dk.brics.tajs.analysis.FunctionCalls.CallInfo;
 import dk.brics.tajs.analysis.InitialStateBuilder;
 import dk.brics.tajs.analysis.NativeFunctions;
+import dk.brics.tajs.analysis.PropVarOperations;
 import dk.brics.tajs.analysis.Solver;
+import dk.brics.tajs.analysis.nativeobjects.concrete.TAJSConcreteSemantics;
 import dk.brics.tajs.analysis.uneval.NormalForm;
 import dk.brics.tajs.analysis.uneval.UnevalTools;
 import dk.brics.tajs.flowgraph.AbstractNode;
@@ -43,7 +45,7 @@ import dk.brics.tajs.solver.Message.Severity;
 import dk.brics.tajs.solver.NodeAndContext;
 import dk.brics.tajs.unevalizer.Unevalizer;
 import dk.brics.tajs.unevalizer.UnevalizerLimitations;
-import dk.brics.tajs.util.AnalysisException;
+import dk.brics.tajs.util.AnalysisLimitationException;
 import dk.brics.tajs.util.Strings;
 import org.apache.log4j.Logger;
 
@@ -65,11 +67,12 @@ public class JSFunction {
     /**
      * Evaluates the given native function.
      */
-    public static Value evaluate(ECMAScriptObjects nativeobject, final CallInfo call, final State state, final Solver.SolverInterface c) {
+    public static Value evaluate(ECMAScriptObjects nativeobject, final CallInfo call, final Solver.SolverInterface c) {
         if (nativeobject != ECMAScriptObjects.FUNCTION && nativeobject != ECMAScriptObjects.FUNCTION_PROTOTYPE)
-            if (NativeFunctions.throwTypeErrorIfConstructor(call, state, c))
+            if (NativeFunctions.throwTypeErrorIfConstructor(call, c))
                 return Value.makeNone();
 
+        State state = c.getState();
         switch (nativeobject) {
 
             case FUNCTION: { // 15.3.1 / 15.3.2 (no difference between function and constructor)
@@ -115,12 +118,9 @@ public class JSFunction {
 
                         String var = call.getResultRegister() == AbstractNode.NO_VALUE ? null : UnevalTools.gensym();
                         String complete_function = (var == null ? "\"" : "\"" + var + " = ") + "(function (" + stringArgs + ") {" + body + "})\"";
-                        if (nrArgs == 0) {
-                            // UnevalTools.rebuildNormalForm will crash due to missing argument-register ...
-                            return UnevalizerLimitations.handle("Unevalizer can not handle `new Function()`", call.getSourceNode(), c); // See GitHub #147
-                        }
-                    NormalForm input = UnevalTools.rebuildNormalForm(currentFg, callNode, state, c);
-                        String unevaled = new Unevalizer().uneval(UnevalTools.unevalizerCallback(currentFg, state, callNode, input), complete_function, false, null);
+
+                        NormalForm input = UnevalTools.rebuildNormalForm(currentFg, callNode, state, c);
+                        String unevaled = new Unevalizer().uneval(UnevalTools.unevalizerCallback(currentFg, c, callNode, input), complete_function, false, null, call.getSourceNode(), c);
                         String unevaledSubst = var == null ? unevaled : unevaled.replace(var, UnevalTools.VAR_PLACEHOLDER); // to avoid the random string in the cache
 
                         if (unevaled == null)
@@ -140,9 +140,9 @@ public class JSFunction {
                         c.propagateToBasicBlock(state.clone(), e.getEntryBlock(), state.getContext());
                         return Value.makeNone();
                     } else
-                        throw new AnalysisException("Invoking Function from non-CallNode - unevalizer can't handle that"); // TODO: generalize unevalizer to handle calls from EventDispatcherNode and implicit calls?
+                        throw new AnalysisLimitationException(call.getSourceNode(), "Invoking Function from non-CallNode - unevalizer can't handle that"); // TODO: generalize unevalizer to handle calls from EventDispatcherNode and implicit calls?
                 }
-                throw new AnalysisException("Don't know how to handle call to 'Function' - unevalizer isn't enabled");
+                throw new AnalysisLimitationException(call.getJSSourceNode(),"Don't know how to handle call to 'Function' - unevalizer isn't enabled");
             }
 
             case FUNCTION_PROTOTYPE: { // 15.3.4
@@ -153,6 +153,9 @@ public class JSFunction {
                 NativeFunctions.expectParameters(nativeobject, call, c, 0, 0);
                 if (NativeFunctions.throwTypeErrorIfWrongKindOfThis(nativeobject, call, state, c, Kind.FUNCTION))
                     return Value.makeNone();
+                if (Options.get().isUnsoundEnabled() /* undefined behaviour */) {
+                    return TAJSConcreteSemantics.convertFunctionToString(state.readThisObjects());
+                }
                 return Value.makeAnyStr();
             }
 
@@ -169,10 +172,11 @@ public class JSFunction {
                     maybe_ok = true;
                 }
                 final Set<ObjectLabel> argarrays = newSet();
+                final PropVarOperations pv = c.getAnalysis().getPropVarOperations();
                 for (ObjectLabel objlabel : argarray.getObjectLabels())
                     if (objlabel.getKind() == Kind.ARRAY || objlabel.getKind() == Kind.ARGUMENTS) {
                         argarrays.add(objlabel);
-                        Value lengthval = state.readPropertyValue(Collections.singleton(objlabel), "length");
+                        Value lengthval = pv.readPropertyValue(Collections.singleton(objlabel), "length");
                         lengthval = UnknownValueResolver.getRealValue(lengthval, state);
                         if (lengthval.isMaybeSingleNum()) {
                             int len = lengthval.getNum().intValue();
@@ -186,7 +190,7 @@ public class JSFunction {
                     } else
                         maybe_typeerror = true;
                 if (maybe_typeerror) {
-                    Exceptions.throwTypeError(state, c);
+                    Exceptions.throwTypeError(c);
                     c.getMonitoring().addMessage(c.getNode(),
                             Severity.HIGH, "TypeError, invalid arguments to 'apply'");
                 }
@@ -226,7 +230,7 @@ public class JSFunction {
                         if (unknown_length__final)
                             return getUnknownArg();
                         else if (i < fixed_length__final) {
-                            Value v = state.readPropertyValue(argarrays, Integer.toString(i));
+                            Value v = pv.readPropertyValue(argarrays, Integer.toString(i));
                             if (maybe_empty)
                                 v = v.joinUndef();
                             return v;
@@ -244,7 +248,7 @@ public class JSFunction {
 
                     @Override
                     public Value getUnknownArg() {
-                        return state.readPropertyValue(argarrays, Value.makeAnyStrUInt());
+                        return pv.readPropertyValue(argarrays, Value.makeAnyStrUInt());
                     }
 
                     @Override

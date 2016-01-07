@@ -1,6 +1,4 @@
-test/10k/stairs_to_heaven.html:31:13: [definite] The assignment to q has no effect
 test/10k/stairs_to_heaven.html:154:17: [definite] The conditional expression is always true
-test/10k/stairs_to_heaven.html:207:17: [definite] The assignment to i has no effect
 test/10k/stairs_to_heaven.html:31:9: [definite] The variable q is never used
 test/10k/stairs_to_heaven.html:148:19: [definite] Unreachable code
 test/10k/stairs_to_heaven.html:49:21: [maybe] TypeError, accessing property of null/undefined

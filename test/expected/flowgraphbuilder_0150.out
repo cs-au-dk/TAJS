@@ -29,6 +29,8 @@ fg2: <main> function()
     ->[block 3]
   block 5:
     node 6: constant[undefined,-] (test/flowgraphbuilder/flowgraph_builder0150.js:1:1)
+    ->[block 6]
+  block 6:
     node 7: constant[4.0,-]* (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0150.js:1:1):1:1)
     ->[block 3]
   block 3: [exit-ordinary]

@@ -24,7 +24,6 @@ import dk.brics.tajs.flowgraph.jsnodes.IfNode;
 import dk.brics.tajs.flowgraph.jsnodes.Node;
 import dk.brics.tajs.flowgraph.jsnodes.ReadPropertyNode;
 import dk.brics.tajs.flowgraph.jsnodes.ReadVariableNode;
-import dk.brics.tajs.flowgraph.jsnodes.WriteVariableNode;
 import dk.brics.tajs.lattice.CallEdge;
 import dk.brics.tajs.lattice.Context;
 import dk.brics.tajs.lattice.HostObject;
@@ -224,8 +223,9 @@ public interface IAnalysisMonitoring extends ISolverMonitoring<State, Context> {
      * @param propertystr description of the property name
      * @param maybe       if there may be more than one value
      * @param state       current abstract state
+     * @param v           property value with attributes
      */
-    void visitReadProperty(ReadPropertyNode n, Set<ObjectLabel> objlabels, Str propertystr, boolean maybe, State state);
+    void visitReadProperty(ReadPropertyNode n, Set<ObjectLabel> objlabels, Str propertystr, boolean maybe, State state, Value v);
 
     /**
      * Checks whether the read of 'this' yields the global object.
@@ -266,13 +266,4 @@ public interface IAnalysisMonitoring extends ISolverMonitoring<State, Context> {
      * Registers the name, location, and value of a variable being read or written.
      */
     void visitVariableOrProperty(String var, SourceLocation loc, Value value, Context context, State state);
-
-    /**
-     * Checks whether the assignment has no effect.
-     *
-     * @param n     write variable operation
-     * @param v     value being written
-     * @param state current abstract state
-     */
-    void visitWriteVariable(WriteVariableNode n, Value v, State state);
 }
