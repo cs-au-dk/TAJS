@@ -7,6 +7,7 @@ test/1k2012love/1188.js:49:14: [definite] The conditional expression is always f
 test/1k2012love/1188.js:49:40: [definite] The conditional expression is always false
 test/1k2012love/1188.js:21:9: [definite] Reading absent property which
 test/1k2012love/shim.js:6:5: [definite] The variable b is never used
+test/1k2012love/1188.js:24:22: [maybe] ReferenceError, reading absent variable keyup
 test/1k2012love/1188.js:55:13: [maybe] ReferenceError, reading absent variable x
 test/1k2012love/1188.js:63:21: [maybe] TypeError, accessing property of null/undefined
 test/1k2012love/1188.js:84:44: [maybe] ReferenceError, reading absent variable x
@@ -36,4 +37,4 @@ test/1k2012love/1188.js:54:14: [maybe] Reading absent property (computed name)
 test/1k2012love/1188.js:61:21: [maybe] Reading absent property (computed name)
 test/1k2012love/1188.js:84:14: [maybe] Reading absent property (computed name)
 test/1k2012love/shim.js:7:9: [maybe] Reading absent property (computed name)
-test/1k2012love/shim.js,test/1k2012love/1188.js: [maybe] Uncaught exception, constructed at [test/1k2012love/1188.js:54:9, test/1k2012love/1188.js:55:13, test/1k2012love/1188.js:63:21, test/1k2012love/1188.js:84:9, test/1k2012love/1188.js:84:44, test/1k2012love/shim.js:8:9, test/1k2012love/shim.js:9:1]
+test/1k2012love/shim.js,test/1k2012love/1188.js: [maybe] Uncaught exception, constructed at [test/1k2012love/1188.js:24:22, test/1k2012love/1188.js:54:9, test/1k2012love/1188.js:55:13, test/1k2012love/1188.js:63:21, test/1k2012love/1188.js:84:9, test/1k2012love/1188.js:84:44, test/1k2012love/shim.js:8:9, test/1k2012love/shim.js:9:1]

@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2015 Aarhus University
+ * Copyright 2009-2016 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -148,6 +148,7 @@ public class InitialStateBuilder implements IInitialStateBuilder<State, Context,
         PropVarOperations pv = c.getAnalysis().getPropVarOperations();
         ObjectLabel global = GLOBAL; // same as DOMBuilder.WINDOW
         s.newObject(global);
+        s.setExecutionContext(new ExecutionContext(ScopeChain.make(global), singleton(global), singleton(global)));
 
         ObjectLabel lObject = new ObjectLabel(ECMAScriptObjects.OBJECT, Kind.FUNCTION);
         s.newObject(lObject);
@@ -287,6 +288,8 @@ public class InitialStateBuilder implements IInitialStateBuilder<State, Context,
         createPrimitiveFunction(lObjectPrototype, lFunProto, ECMAScriptObjects.OBJECT_HASOWNPROPERTY, "hasOwnProperty", 1, c);
         createPrimitiveFunction(lObjectPrototype, lFunProto, ECMAScriptObjects.OBJECT_ISPROTOTYPEOF, "isPrototypeOf", 1, c);
         createPrimitiveFunction(lObjectPrototype, lFunProto, ECMAScriptObjects.OBJECT_PROPERTYISENUMERABLE, "propertyIsEnumerable", 1, c);
+        createPrimitiveFunction(lObjectPrototype, lFunProto, ECMAScriptObjects.OBJECT_DEFINEGETTER, "__defineGetter__", 2, c);
+        createPrimitiveFunction(lObjectPrototype, lFunProto, ECMAScriptObjects.OBJECT_DEFINESETTER, "__defineSetter__", 2, c);
         
         // 15.3.4 properties of the Function prototype object
         s.writeInternalPrototype(lFunProto, Value.makeObject(lObjectPrototype));
@@ -543,6 +546,7 @@ public class InitialStateBuilder implements IInitialStateBuilder<State, Context,
         createPrimitiveFunction(global, lFunProto, ECMAScriptObjects.TAJS_ADD_CONTEXT_SENSITIVITY, ECMAScriptObjects.TAJS_ADD_CONTEXT_SENSITIVITY.toString(), 1, c);
         createPrimitiveFunction(global, lFunProto, ECMAScriptObjects.TAJS_ASSERT, ECMAScriptObjects.TAJS_ASSERT.toString(), 3, c);
         createPrimitiveFunction(global, lFunProto, ECMAScriptObjects.TAJS_NEW_OBJECT, ECMAScriptObjects.TAJS_NEW_OBJECT.toString(), 0, c);
+        createPrimitiveFunction(global, lFunProto, ECMAScriptObjects.TAJS_ASYNC_LISTEN, ECMAScriptObjects.TAJS_ASYNC_LISTEN.toString(), 0, c);
 
         if (Options.get().isDOMEnabled()) {
             // build initial DOM state
@@ -564,7 +568,6 @@ public class InitialStateBuilder implements IInitialStateBuilder<State, Context,
             }
         }
 
-        s.setExecutionContext(new ExecutionContext(ScopeChain.make(global), singleton(global), singleton(global)));
         s.clearEffects();
         s.freezeBasisStore();
 
@@ -598,7 +601,7 @@ public class InitialStateBuilder implements IInitialStateBuilder<State, Context,
         PropVarOperations pv = c.getAnalysis().getPropVarOperations();
         ObjectLabel objlabel = new ObjectLabel(primitive, Kind.FUNCTION);
         s.newObject(objlabel);
-        pv.writePropertyWithAttributes(Collections.singleton(target), name, Value.makeObject(objlabel).setAttributes(true, false, false), false, true);
+        pv.writePropertyWithAttributes(Collections.singleton(target), name, Value.makeObject(objlabel).setAttributes(true, false, false), false, true, true);
         pv.writePropertyWithAttributes(objlabel, "length", Value.makeNum(arity).setAttributes(true, true, true));
     }
 

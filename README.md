@@ -1,10 +1,11 @@
 TAJS - Type Analyzer for JavaScript
 ===================================
 
-Copyright 2009-2015 Aarhus University
+Copyright 2009-2016 Aarhus University
 
 TAJS is a dataflow analysis for JavaScript that infers type information and call graphs.
-The current version of the analysis contains a model of ECMAScript 3rd edition, including the standard library, and a partial model of the HTML DOM and browser API.
+The current version of the analysis contains a model of ECMAScript 3rd edition, including the standard library, and partial models of the ECMAScript 5 and its standard library, the HTML DOM, and the browser API.
+Later version of ECMAScript are partially supported via [Babel](http://babeljs.io/).
 
 For research publications and other information about this tool see <http://www.brics.dk/TAJS>.
 
@@ -62,14 +63,20 @@ TAJS recognizes a few special built-in functions (defined as properties of the g
 
 - `TAJS_assert(value)` - tests that `value` is `true`, failure will result in an AssertionError. 
 
-- `TAJS_assert(value, predicate, expectedResult)` - a generalized version of the single-argument TAJS_assert, supports disjunctions of the predicate methods in Value.java. E.g. to check that a value is either a single concrete string or some unsigned integer: 
-  - `TAJS_assert(myValue, 'isMaybeSingleStr || isMaybeNumUInt', true)`
+- `TAJS_assert(value, predicate)` - a generalized version of the single-argument TAJS_assert, supports disjunctions of the predicate methods in Value.java. E.g. to check that a value is either a single concrete string or some unsigned integer: 
+  - `TAJS_assert(myValue, 'isMaybeSingleStr || isMaybeNumUInt')`
 
 Running regression tests
 ------------------------
 
 The directory `test` contains a collection of tests that can be executed by running `dk.brics.tajs.test.RunFast` with JUnit from Eclipse/IntelliJ or with `ant test` from the command-line. 
 (A more thorough but slower test is located in `dk.brics.tajs.test.RunAll`.)
+
+Soundiness
+----------
+
+The analysis models of the HTML DOM, the browser API, and the ECMAScript native library are not complete. 
+For a list of other known sources of unsoundness, see <https://github.com/cs-au-dk/TAJS/issues?q=is%3Aopen+is%3Aissue+label%3Asoundiness>.
 
 Package dependencies
 --------------------
@@ -85,12 +92,12 @@ Authors
 
 The following people have contributed to the source code:
 - Anders Møller
+- Esben Andreasen
 - Simon Holm Jensen
 - Peter Thiemann
 - Magnus Madsen
 - Matthias Diehn Ingesman
 - Peter Jonsson
-- Esben Andreasen
 
 This software includes components from:
 - Google Closure Compiler (<http://code.google.com/p/closure-compiler/>)

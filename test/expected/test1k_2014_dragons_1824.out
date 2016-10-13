@@ -169,6 +169,9 @@ test/1k2014dragons/1824.js:100:83: [maybe] Reading absent property (computed nam
 test/1k2014dragons/1824.js:101:56: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1824.js:101:77: [maybe] Reading absent property (computed name)
 test/1k2014dragons/1824.js:115:13: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1824.js:121:14: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1824.js:122:14: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1824.js:123:14: [maybe] Reading absent property (computed name)
 test/1k2014dragons/1824.js:133:14: [maybe] Reading absent property (computed name)
 test/1k2014dragons/1824.js:138:14: [maybe] Reading absent property (computed name)
 test/1k2014dragons/1824.js:143:14: [maybe] Reading absent property (computed name)
@@ -181,30 +184,38 @@ test/1k2014dragons/1824.js:194:29: [maybe] Converting undefined to string
 test/1k2014dragons/1824.js:194:54: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1824.js:197:21: [maybe] The variable pos has values with different types
 test/1k2014dragons/1824.js:206:5: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1824.js:206:5: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1824.js:206:5: [maybe] Converting object to number
 test/1k2014dragons/1824.js:206:5: [maybe] The variable opts has values with different types
 test/1k2014dragons/1824.js:209:9: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1824.js:209:9: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1824.js:209:9: [maybe] Converting object to number
 test/1k2014dragons/1824.js:209:9: [maybe] The variable opts has values with different types
 test/1k2014dragons/1824.js:210:12: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1824.js:210:12: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1824.js:210:12: [maybe] Converting object to number
 test/1k2014dragons/1824.js:210:12: [maybe] The variable opts has values with different types
 test/1k2014dragons/1824.js:212:12: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1824.js:212:12: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1824.js:212:12: [maybe] Converting object to number
 test/1k2014dragons/1824.js:212:12: [maybe] The variable opts has values with different types
 test/1k2014dragons/1824.js:215:17: [maybe] Reading absent property (computed name)
 test/1k2014dragons/1824.js:217:11: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1824.js:217:11: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1824.js:217:11: [maybe] Converting object to number
 test/1k2014dragons/1824.js:217:11: [maybe] The variable opts has values with different types
 test/1k2014dragons/1824.js:219:12: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1824.js:219:12: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1824.js:219:12: [maybe] Converting object to number
 test/1k2014dragons/1824.js:219:12: [maybe] The variable opts has values with different types
 test/1k2014dragons/1824.js:222:7: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1824.js:225:11: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1824.js:225:11: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1824.js:225:11: [maybe] Converting object to number
 test/1k2014dragons/1824.js:225:11: [maybe] The variable opts has values with different types
 test/1k2014dragons/1824.js:226:9: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1824.js:235:16: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1824.js:235:16: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1824.js:235:16: [maybe] Converting object to number
 test/1k2014dragons/1824.js:235:16: [maybe] The variable opts has values with different types
 test/1k2014dragons/1824.js:250:14: [maybe] Reading absent property (computed name)

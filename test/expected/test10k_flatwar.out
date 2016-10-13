@@ -13,6 +13,8 @@ test/10k/flatwar.html:256:21: [definite] The conditional expression is always fa
 test/10k/flatwar.html:264:21: [definite] The conditional expression is always false
 test/10k/flatwar.html:277:21: [definite] The conditional expression is always false
 test/10k/flatwar.html:352:9: [definite] The conditional expression is always false
+test/10k/flatwar.html:361:21: [definite] The conditional expression is always false
+test/10k/flatwar.html:375:25: [definite] The conditional expression is always false
 test/10k/flatwar.html:32:5: [definite] Dead assignment, property is never read
 test/10k/flatwar.html:33:5: [definite] Dead assignment, property is never read
 test/10k/flatwar.html:34:5: [definite] Dead assignment, property is never read

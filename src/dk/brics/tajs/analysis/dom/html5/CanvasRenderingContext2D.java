@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2015 Aarhus University
+ * Copyright 2009-2016 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -120,7 +120,7 @@ public class CanvasRenderingContext2D {
 
         // CanvasPixelArray
         createDOMProperty(PIXEL_ARRAY, "length", Value.makeAnyNumUInt().setReadOnly(), c);
-        pv.writeProperty(Collections.singleton(PIXEL_ARRAY), Value.makeAnyStrUInt(), Value.makeAnyNumUInt(), false, false);
+        pv.writeProperty(Collections.singleton(PIXEL_ARRAY), Value.makeAnyStrUInt(), Value.makeAnyNumUInt(), false, true);
 
         /*
          * Canvas Functions.

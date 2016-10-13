@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2015 Aarhus University
+ * Copyright 2009-2016 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -147,7 +147,7 @@ public class HTMLDocument {
                     Value v = Value.makeObject(labels);
                     ObjectLabel nodeList = DOMFunctions.makeEmptyNodeList();
                     if (!labels.isEmpty()) {
-                        c.getAnalysis().getPropVarOperations().writeProperty(Collections.singleton(nodeList), Value.makeAnyStrUInt(), v, true, false);
+                        c.getAnalysis().getPropVarOperations().writeProperty(Collections.singleton(nodeList), Value.makeAnyStrUInt(), v, false, true);
                     }
                     return Value.makeObject(nodeList);
                 }

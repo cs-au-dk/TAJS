@@ -55,7 +55,7 @@ public class FlowGraphBuilder {
 
     private static final boolean showParserWarnings = false;
 
-    private final Mode mode = Mode.ES3; // TODO: (#3) currently ES3 mode
+    private final Mode mode = Mode.ES5; // TODO: (#3) currently ES5 mode
 
     private final JavaScriptParser parser;
 
@@ -177,7 +177,7 @@ public class FlowGraphBuilder {
             case FILE: { // TODO: (#119) processing order of external JavaScript files (sync/async loading...)
                 // TODO: (#119) should be added as a load event, but that does not work currently...
                 // Function function = processFunctionBody(Collections.<String>newList(), s.getFileName(), s.getJavaScript(), 0, initialEnv);
-                // eventHandlers.add(Pair.make(function, EventHandlerKind.LOAD));
+                // eventHandlers.add(Pair.make(function, EventHandlerKind.DOM_LOAD));
                 transformStandAloneCode(s);
                 break;
             }
@@ -266,7 +266,7 @@ public class FlowGraphBuilder {
     public FlowGraph close(FlowGraph flowGraph, BasicBlock exitBlock) {
         closed = true;
 
-        if (Options.get().isDOMEnabled() && flowGraph == null) {
+        if (flowGraph == null) {
             // assume old flowgraph already has these.
 
             // TODO: (#129) but this means that there could be added a path to the main-exit that does not go through the event handlers.
@@ -451,49 +451,44 @@ public class FlowGraphBuilder {
      * Creates the nodes responsible for execution of registered event-handlers.
      */
     private void addEventDispatchers(SourceLocation location) {
-        Function main = initialEnv.getFunction();
+        BasicBlock appendBlock = processed.getAppendBlock();
 
-        // event entry block (last node may require a single successor)
-        BasicBlock entryBB = makeSuccessorBasicBlock(main, processed.getAppendBlock(), functionAndBlocksManager);
-        NopNode nopEntryNode = new NopNode("eventDispatchers: entry", location);
-        nopEntryNode.setArtificial();
-        entryBB.addNode(nopEntryNode); // blocks cannot be empty
+        boolean needsEventLoop = Options.get().isDOMEnabled() || Options.get().isAsyncEventsEnabled();
+        if (needsEventLoop) {
+            appendBlock = makeSuccessorBasicBlock(initialEnv.getFunction(), processed.getAppendBlock(), functionAndBlocksManager);
+            NopNode nopEntryNode = new NopNode("eventDispatchers: entry", location);
+            nopEntryNode.setArtificial();
+            appendBlock.addNode(nopEntryNode);
 
-        // load event handlers
-        BasicBlock loadBB = makeSuccessorBasicBlock(main, entryBB, functionAndBlocksManager);
-        loadBB.addNode(new EventDispatcherNode(Type.LOAD, location));
+            if (Options.get().isDOMEnabled()) {
+                BasicBlock lastLoadEventLoopBlock = addEventHandlerLoop(appendBlock, Type.DOM_LOAD, "Load", location);
+                BasicBlock lastOtherEventLoopBlock = addEventHandlerLoop(lastLoadEventLoopBlock, Type.DOM_OTHER, "Other", location);
+                BasicBlock lastUnloadEventLoopBlock = addEventHandlerLoop(lastOtherEventLoopBlock, Type.DOM_UNLOAD, "Unload", location);
+                appendBlock = lastUnloadEventLoopBlock;
+            } else if (Options.get().isAsyncEventsEnabled()) {
+                appendBlock = addEventHandlerLoop(appendBlock, Type.ASYNC, "Async", location);
+            }
+        }
+        processed = TranslationResult.makeAppendBlock(appendBlock);
+    }
 
-        BasicBlock nopPostLoad = makeSuccessorBasicBlock(main, loadBB, functionAndBlocksManager); // loadBB muat have single successor
-        NopNode nopPostNode = new NopNode("eventDispatchers: postLoad", location);
+    /**
+     * Creates a zero-or-more loop in the flowgraph.
+     * The loop contains an event dispatcher for the chosen event type.
+     */
+    private BasicBlock addEventHandlerLoop(BasicBlock appendBlock, Type eventType, String prettyEventName, SourceLocation location) {
+        BasicBlock firstEventLoopBlock = makeSuccessorBasicBlock(initialEnv.getFunction(), appendBlock, functionAndBlocksManager);
+        EventDispatcherNode eventDispatcherNode = new EventDispatcherNode(eventType, location);
+        firstEventLoopBlock.addNode(eventDispatcherNode);
+
+        BasicBlock lastEventLoopBlock = makeSuccessorBasicBlock(initialEnv.getFunction(), firstEventLoopBlock, functionAndBlocksManager);
+        NopNode nopPostNode = new NopNode("eventDispatchers: post" + prettyEventName, location);
         nopPostNode.setArtificial();
-        nopPostLoad.addNode(nopPostNode); // blocks cannot be empty
-        nopPostLoad.addSuccessor(loadBB); // back loop
+        lastEventLoopBlock.addNode(nopPostNode);
 
-        // other event handlers
-        BasicBlock otherBB = makeSuccessorBasicBlock(main, nopPostLoad, functionAndBlocksManager);
-        otherBB.addNode(new EventDispatcherNode(Type.OTHER, location));
-
-        BasicBlock nopPostOther = makeSuccessorBasicBlock(main, otherBB, functionAndBlocksManager); // otherBB must have single successor
-        AbstractNode nopPostOtherNode = new NopNode("eventDispatchers: postOther", location);
-        nopPostOtherNode.setArtificial();
-        nopPostOther.addNode(nopPostOtherNode); // blocks cannot be empty
-        nopPostOther.addSuccessor(otherBB); // back loop
-
-        // unload event handlers
-        BasicBlock unloadBB = makeSuccessorBasicBlock(main, nopPostOther, functionAndBlocksManager);
-        unloadBB.addNode(new EventDispatcherNode(Type.UNLOAD, location));
-
-        BasicBlock nopPostUnload = makeSuccessorBasicBlock(main, unloadBB, functionAndBlocksManager); // unloadBB must have single successor
-        AbstractNode nopPostUnloadNode = new NopNode("eventDispatchers: postUnload", location);
-        nopPostUnloadNode.setArtificial();
-        nopPostUnload.addNode(nopPostUnloadNode); // blocks cannot be empty
-        nopPostUnload.addSuccessor(unloadBB); // back loop
-
-        entryBB.addSuccessor(nopPostLoad); // may skip load
-        nopPostLoad.addSuccessor(nopPostOther); // may skip other
-        nopPostOther.addSuccessor(nopPostUnload); // may skip unload
-
-        processed = TranslationResult.makeAppendBlock(nopPostUnload);
+        appendBlock.addSuccessor(lastEventLoopBlock); // may skip loop entirely
+        lastEventLoopBlock.addSuccessor(firstEventLoopBlock); // back loop
+        return lastEventLoopBlock;
     }
 
     public ASTInfo getAstInfo() {

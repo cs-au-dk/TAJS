@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2015 Aarhus University
+ * Copyright 2009-2016 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,6 +29,7 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
@@ -143,10 +144,12 @@ public class HTMLParser {
         }
 
         // TODO normalize paths to avoid treating `dir/../test.js` and `test.js` as different files!
+        Path parent;
         if (reference.startsWith(".")) {
-            return fileWithReferenceIn.getParent().resolve(reference);
+            parent = fileWithReferenceIn.getParent();
+        } else {
+            parent = root;
         }
-
-        return root.resolve(reference);
+        return parent == null? Paths.get(reference): parent.resolve(reference);
     }
 }

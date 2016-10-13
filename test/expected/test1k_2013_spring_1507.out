@@ -48,4 +48,4 @@ test/1k2013spring/1507.js:3:901: [maybe] Conversion to number yields NaN
 test/1k2013spring/1507.js:3:918: [maybe] Conversion to number yields NaN
 test/1k2013spring/1507.js:3:965: [maybe] Conversion to number yields NaN
 test/1k2013spring/shim.js:7:9: [maybe] Reading absent property (computed name)
-test/1k2013spring/shim.js,test/1k2013spring/1507.js: [maybe] Uncaught exception, constructed at [test/1k2013spring/1507.js:3:122, test/1k2013spring/1507.js:3:156, test/1k2013spring/1507.js:3:203, test/1k2013spring/1507.js:3:225, test/1k2013spring/shim.js:8:9, test/1k2013spring/shim.js:9:1]
+test/1k2013spring/shim.js,test/1k2013spring/1507.js: [maybe] Uncaught exception, constructed at [test/1k2013spring/1507.js:3:122, test/1k2013spring/1507.js:3:156, test/1k2013spring/1507.js:3:164, test/1k2013spring/1507.js:3:203, test/1k2013spring/1507.js:3:225, test/1k2013spring/1507.js:3:263, test/1k2013spring/1507.js:3:815, test/1k2013spring/shim.js:8:9, test/1k2013spring/shim.js:9:1]

@@ -58,7 +58,7 @@ public class Test10K {
         Misc.checkSystemOutput();
     }
 
-    @Test
+    @Test(expected = AssertionError.class) // definite errors are correct
     public void test10k_attractor() throws Exception {
         Misc.init();
         Misc.captureSystemOutput();

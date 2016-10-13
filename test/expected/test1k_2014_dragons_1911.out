@@ -11,6 +11,8 @@ test/1k2014dragons/shims.js:22:5: [definite] The conditional expression is alway
 test/1k2014dragons/1911.js:4:7: [definite] Too few parameters to function Node.cloneNode
 test/1k2014dragons/1911.js:12:69: [definite] Too few parameters to function Math.atan2
 test/1k2014dragons/1911.js:12:69: [definite] Too few parameters to function Math.pow
+test/1k2014dragons/1911.js:12:69: [definite] Too few parameters to function Object.prototype.__defineGetter__
+test/1k2014dragons/1911.js:12:69: [definite] Too few parameters to function Object.prototype.__defineSetter__
 test/1k2014dragons/shims.js:23:5: [definite] Reading absent property mozRequestAnimationFrame
 test/1k2014dragons/shims.js:24:5: [definite] Reading absent property webkitRequestAnimationFrame
 test/1k2014dragons/shims.js:25:5: [definite] Reading absent property msRequestAnimationFrame
@@ -22,6 +24,7 @@ test/1k2014dragons/shims.js:12:12: [definite] Unreachable function
 test/1k2014dragons/shims.js:18:5: [definite] The variable AudioContext is never used
 test/1k2014dragons/1911.js:1:1: [maybe] TypeError, accessing property of null/undefined
 test/1k2014dragons/1911.js:4:4: [maybe] TypeError, call to non-function
+test/1k2014dragons/1911.js:12:69: [maybe] TypeError when computing default value for object
 test/1k2014dragons/1911.js:12:69: [maybe] TypeError, call to non-function
 test/1k2014dragons/1911.js:14:38: [maybe] ReferenceError, reading absent variable s
 test/1k2014dragons/1911.js:14:50: [maybe] ReferenceError, reading absent variable f
@@ -61,6 +64,7 @@ test/1k2014dragons/1911.js:6:54: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1911.js:6:54: [maybe] The variable W has values with different types
 test/1k2014dragons/1911.js:12:58: [maybe] Reading absent property (computed name)
 test/1k2014dragons/1911.js:12:69: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1911.js:12:69: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1911.js:12:69: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1911.js:12:69: [maybe] Converting object to number
 test/1k2014dragons/1911.js:12:69: [maybe] Converting primitive number to object

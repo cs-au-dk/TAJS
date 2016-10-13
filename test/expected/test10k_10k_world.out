@@ -1,58 +1,72 @@
+test/10k/10k_world.html:109:29: [definite] The conditional expression is always false
+test/10k/10k_world.html:112:29: [definite] The conditional expression is always false
 test/10k/10k_world.html:115:17: [definite] The conditional expression is always false
 test/10k/10k_world.html:116:17: [definite] The conditional expression is always false
-test/10k/10k_world.html:389:94: [definite] The conditional expression is always true
+test/10k/10k_world.html:141:33: [definite] The conditional expression is always false
+test/10k/10k_world.html:146:28: [definite] The conditional expression is always false
+test/10k/10k_world.html:105:13: [definite] Dead assignment, property GetThing is never read
+test/10k/10k_world.html:124:13: [definite] Dead assignment, property DelThing is never read
 test/10k/10k_world.html:151:45: [definite] Dead assignment, property angle is never read
+test/10k/10k_world.html:155:21: [definite] Dead assignment, property is never read
+test/10k/10k_world.html:161:34: [definite] Dead assignment, property _root is never read
+test/10k/10k_world.html:166:17: [definite] Dead assignment, property _root is never read
+test/10k/10k_world.html:292:22: [definite] Dead assignment, property type is never read
+test/10k/10k_world.html:298:13: [definite] Dead assignment, property Alive is never read
+test/10k/10k_world.html:301:13: [definite] Dead assignment, property Infected is never read
+test/10k/10k_world.html:304:13: [definite] Dead assignment, property Infect is never read
+test/10k/10k_world.html:307:13: [definite] Dead assignment, property Kill is never read
+test/10k/10k_world.html:310:13: [definite] Dead assignment, property Nip is never read
 test/10k/10k_world.html:324:13: [definite] Dead assignment, property SetAttitude is never read
+test/10k/10k_world.html:327:13: [definite] Dead assignment, property GetPos is never read
+test/10k/10k_world.html:330:13: [definite] Dead assignment, property Draw is never read
+test/10k/10k_world.html:339:17: [definite] Dead assignment, property is never read
 test/10k/10k_world.html:341:13: [definite] Dead assignment, property PushAction is never read
-test/10k/10k_world.html:431:40: [definite] Reading absent property description
-test/10k/10k_world.html:60:9: [definite] The variable a is never used
+test/10k/10k_world.html:344:13: [definite] Dead assignment, property Logic is never read
+test/10k/10k_world.html:53:29: [definite] The variable todeg is never used
+test/10k/10k_world.html:53:51: [definite] The variable torad is never used
+test/10k/10k_world.html:54:9: [definite] Unreachable function d
+test/10k/10k_world.html:60:9: [definite] Unreachable function isObject
+test/10k/10k_world.html:105:29: [definite] Unreachable function
+test/10k/10k_world.html:124:29: [definite] Unreachable function
+test/10k/10k_world.html:172:13: [definite] Unreachable function a
+test/10k/10k_world.html:190:13: [definite] Unreachable function e
+test/10k/10k_world.html:207:13: [definite] Unreachable function h
+test/10k/10k_world.html:212:13: [definite] Unreachable function q
+test/10k/10k_world.html:216:13: [definite] Unreachable function B
+test/10k/10k_world.html:264:13: [definite] Unreachable function f
+test/10k/10k_world.html:280:23: [definite] The variable C is never used
+test/10k/10k_world.html:280:29: [definite] The variable L is never used
+test/10k/10k_world.html:280:35: [definite] The variable N is never used
+test/10k/10k_world.html:280:45: [definite] The variable u is never used
+test/10k/10k_world.html:280:47: [definite] The variable v is never used
+test/10k/10k_world.html:280:49: [definite] The variable x is never used
+test/10k/10k_world.html:280:51: [definite] The variable O is never used
+test/10k/10k_world.html:280:53: [definite] The variable j is never used
+test/10k/10k_world.html:280:55: [definite] The variable D is never used
+test/10k/10k_world.html:280:57: [definite] The variable M is never used
+test/10k/10k_world.html:280:59: [definite] The variable o is never used
+test/10k/10k_world.html:280:61: [definite] The variable I is never used
+test/10k/10k_world.html:280:63: [definite] The variable H is never used
+test/10k/10k_world.html:280:65: [definite] The variable J is never used
+test/10k/10k_world.html:280:67: [definite] The variable E is never used
+test/10k/10k_world.html:280:69: [definite] The variable n is never used
+test/10k/10k_world.html:280:71: [definite] The variable F is never used
+test/10k/10k_world.html:298:26: [definite] Unreachable function
+test/10k/10k_world.html:301:29: [definite] Unreachable function
+test/10k/10k_world.html:304:27: [definite] Unreachable function
+test/10k/10k_world.html:307:25: [definite] Unreachable function
+test/10k/10k_world.html:310:24: [definite] Unreachable function
 test/10k/10k_world.html:324:32: [definite] Unreachable function
+test/10k/10k_world.html:327:27: [definite] Unreachable function
+test/10k/10k_world.html:330:25: [definite] Unreachable function
 test/10k/10k_world.html:341:31: [definite] Unreachable function
+test/10k/10k_world.html:344:26: [definite] Unreachable function
+test/10k/10k_world.html:430:15: [definite] Unreachable code
 test/10k/10k_world.html:90:46: [maybe] TypeError, accessing property of null/undefined
 test/10k/10k_world.html:90:64: [maybe] TypeError, accessing property of null/undefined
-test/10k/10k_world.html:109:63: [maybe] TypeError, accessing property of null/undefined
-test/10k/10k_world.html:112:63: [maybe] TypeError, accessing property of null/undefined
 test/10k/10k_world.html:130:29: [maybe] TypeError, accessing property of null/undefined
 test/10k/10k_world.html:131:29: [maybe] TypeError, accessing property of null/undefined
-test/10k/10k_world.html:141:67: [maybe] TypeError, accessing property of null/undefined
-test/10k/10k_world.html:146:54: [maybe] TypeError, accessing property of null/undefined
-test/10k/10k_world.html:179:72: [maybe] TypeError, accessing property of null/undefined
-test/10k/10k_world.html:179:72: [maybe] TypeError, accessing property of null/undefined
-test/10k/10k_world.html:202:19: [maybe] TypeError, accessing property of null/undefined
-test/10k/10k_world.html:202:19: [maybe] TypeError, accessing property of null/undefined
-test/10k/10k_world.html:223:52: [maybe] TypeError, accessing property of null/undefined
-test/10k/10k_world.html:241:36: [maybe] TypeError, accessing property of null/undefined
-test/10k/10k_world.html:245:59: [maybe] TypeError, accessing property of null/undefined
-test/10k/10k_world.html:245:74: [maybe] TypeError, accessing property of null/undefined
-test/10k/10k_world.html:268:38: [maybe] TypeError, accessing property of null/undefined
-test/10k/10k_world.html:269:29: [maybe] TypeError, accessing property of null/undefined
-test/10k/10k_world.html:346:45: [maybe] TypeError, accessing property of null/undefined
-test/10k/10k_world.html:346:97: [maybe] TypeError, accessing property of null/undefined
-test/10k/10k_world.html:347:25: [maybe] TypeError, accessing property of null/undefined
-test/10k/10k_world.html:347:25: [maybe] TypeError, accessing property of null/undefined
-test/10k/10k_world.html:348:25: [maybe] TypeError, accessing property of null/undefined
-test/10k/10k_world.html:348:25: [maybe] TypeError, accessing property of null/undefined
-test/10k/10k_world.html:350:36: [maybe] TypeError, accessing property of null/undefined
-test/10k/10k_world.html:351:27: [maybe] TypeError, accessing property of null/undefined
-test/10k/10k_world.html:387:57: [maybe] TypeError, accessing property of null/undefined
-test/10k/10k_world.html:388:27: [maybe] TypeError, accessing property of null/undefined
-test/10k/10k_world.html:400:30: [maybe] TypeError, accessing property of null/undefined
-test/10k/10k_world.html:401:30: [maybe] TypeError, accessing property of null/undefined
-test/10k/10k_world.html:408:39: [maybe] TypeError, accessing property of null/undefined
-test/10k/10k_world.html:179:72: [maybe] Reading absent property childs
-test/10k/10k_world.html:202:19: [maybe] Reading absent property childs
-test/10k/10k_world.html:346:97: [maybe] Reading absent property target
-test/10k/10k_world.html:347:25: [maybe] Reading absent property target
-test/10k/10k_world.html:347:25: [maybe] Reading absent property x
-test/10k/10k_world.html:348:25: [maybe] Reading absent property target
-test/10k/10k_world.html:348:25: [maybe] Reading absent property y
-test/10k/10k_world.html:350:36: [maybe] Reading absent property target
-test/10k/10k_world.html:387:57: [maybe] Reading absent property target
-test/10k/10k_world.html:400:30: [maybe] Reading absent property target
-test/10k/10k_world.html:401:30: [maybe] Reading absent property target
-test/10k/10k_world.html: [maybe] Uncaught exception, constructed at [test/10k/10k_world.html:90:46, test/10k/10k_world.html:90:64, test/10k/10k_world.html:109:63, test/10k/10k_world.html:112:63, test/10k/10k_world.html:130:29, test/10k/10k_world.html:131:29, test/10k/10k_world.html:146:54, test/10k/10k_world.html:223:52, test/10k/10k_world.html:241:36, test/10k/10k_world.html:245:59, test/10k/10k_world.html:245:74, test/10k/10k_world.html:268:38, test/10k/10k_world.html:269:29, test/10k/10k_world.html:346:45, test/10k/10k_world.html:346:97, test/10k/10k_world.html:347:25, test/10k/10k_world.html:348:25, test/10k/10k_world.html:350:36, test/10k/10k_world.html:351:27, test/10k/10k_world.html:387:57, test/10k/10k_world.html:388:27, test/10k/10k_world.html:400:30, test/10k/10k_world.html:401:30, test/10k/10k_world.html:408:39]
-test/10k/10k_world.html:55:48: [maybe] Conversion to number yields NaN
-test/10k/10k_world.html:55:69: [maybe] Conversion to number yields NaN
+test/10k/10k_world.html: [maybe] Uncaught exception, constructed at [test/10k/10k_world.html:90:46, test/10k/10k_world.html:90:64, test/10k/10k_world.html:130:29, test/10k/10k_world.html:131:29]
 test/10k/10k_world.html:88:330: [maybe] Converting object to string
 test/10k/10k_world.html:88:330: [maybe] Converting primitive string to object
 test/10k/10k_world.html:89:21: [maybe] Converting object to string
@@ -72,39 +86,10 @@ test/10k/10k_world.html:93:20: [maybe] Converting primitive string to object
 test/10k/10k_world.html:93:48: [maybe] Conversion to number yields NaN
 test/10k/10k_world.html:93:48: [maybe] Converting object to string
 test/10k/10k_world.html:93:48: [maybe] Converting primitive string to object
-test/10k/10k_world.html:106:24: [maybe] Converting object to string
-test/10k/10k_world.html:106:24: [maybe] Reading absent property (computed name)
-test/10k/10k_world.html:106:26: [maybe] The variable f has values with different types
-test/10k/10k_world.html:109:47: [maybe] Reading absent property (computed name)
-test/10k/10k_world.html:109:63: [maybe] Reading absent property (computed name)
-test/10k/10k_world.html:112:47: [maybe] Reading absent property (computed name)
-test/10k/10k_world.html:112:63: [maybe] Reading absent property (computed name)
 test/10k/10k_world.html:130:21: [maybe] Reading absent property (computed name)
 test/10k/10k_world.html:130:29: [maybe] Reading absent property (computed name)
 test/10k/10k_world.html:131:21: [maybe] Reading absent property (computed name)
 test/10k/10k_world.html:131:29: [maybe] Reading absent property (computed name)
-test/10k/10k_world.html:141:51: [maybe] Reading absent property (computed name)
-test/10k/10k_world.html:141:67: [maybe] Reading absent property (computed name)
-test/10k/10k_world.html:146:46: [maybe] Reading absent property (computed name)
-test/10k/10k_world.html:146:54: [maybe] Reading absent property (computed name)
-test/10k/10k_world.html:179:72: [maybe] Conversion from string to number yields NaN
-test/10k/10k_world.html:179:72: [maybe] Converting primitive number to object
-test/10k/10k_world.html:179:72: [maybe] Reading absent property (computed name)
-test/10k/10k_world.html:179:72: [maybe] The variable b has values with different types
-test/10k/10k_world.html:181:23: [maybe] The variable b has values with different types
-test/10k/10k_world.html:184:23: [maybe] The variable b has values with different types
-test/10k/10k_world.html:202:19: [maybe] Converting primitive number to object
-test/10k/10k_world.html:202:19: [maybe] Reading absent property (computed name)
-test/10k/10k_world.html:202:19: [maybe] The variable b has values with different types
-test/10k/10k_world.html:213:39: [maybe] The variable c has values with different types
-test/10k/10k_world.html:266:61: [maybe] Reading absent property (computed name)
-test/10k/10k_world.html:315:21: [maybe] Conversion to number yields NaN
-test/10k/10k_world.html:315:21: [maybe] Reading absent property (computed name)
-test/10k/10k_world.html:347:25: [maybe] Converting primitive number to object
-test/10k/10k_world.html:348:25: [maybe] Converting primitive number to object
-test/10k/10k_world.html:373:37: [maybe] Conversion to number yields NaN
-test/10k/10k_world.html:373:55: [maybe] Conversion to number yields NaN
-test/10k/10k_world.html:431:23: [maybe] Converting undefined to string
 test/10k/10k_world.html:90:46: [info] Reading from unknown property that may cause loss of precision
 test/10k/10k_world.html:90:64: [info] Reading from unknown property that may cause loss of precision
 test/10k/10k_world.html:118:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision

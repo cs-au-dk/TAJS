@@ -1,0 +1,46 @@
+test/1k2012love/1218.js:52:1: [definite] The conditional expression is always true
+test/1k2012love/1218.js:53:1: [definite] The conditional expression is always true
+test/1k2012love/1218.js:23:2: [definite] Too few parameters to function Array.prototype.splice
+test/1k2012love/1218.js:52:5: [definite] Reading absent property s
+test/1k2012love/1218.js:53:5: [definite] Reading absent property a
+test/1k2012love/1218.js:13:3: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1218.js:23:2: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1218.js:24:15: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1218.js:26:95: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1218.js:47:7: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/shim.js:8:9: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/shim.js:8:9: [maybe] TypeError, call to non-function
+test/1k2012love/shim.js:9:1: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1218.js:22:14: [maybe] Reading absent property x
+test/1k2012love/1218.js:22:22: [maybe] Reading absent property a
+test/1k2012love/1218.js:23:2: [maybe] Reading absent property s
+test/1k2012love/1218.js:26:3: [maybe] Reading absent property innerHTML
+test/1k2012love/1218.js:38:2: [maybe] Reading absent property s
+test/1k2012love/1218.js:40:17: [maybe] Reading absent property a
+test/1k2012love/1218.js:47:7: [maybe] Reading absent property s
+test/1k2012love/shim.js:6:9: [maybe] Reading absent property body
+test/1k2012love/shim.js:8:9: [maybe] Reading absent property getContext
+test/1k2012love/shim.js:9:1: [maybe] Reading absent property body
+test/1k2012love/1218.js:21:4: [maybe] Converting object to string
+test/1k2012love/1218.js:21:4: [maybe] Converting primitive string to object
+test/1k2012love/1218.js:22:14: [maybe] Converting undefined to string
+test/1k2012love/1218.js:22:14: [maybe] Converting undefined to string
+test/1k2012love/1218.js:23:2: [maybe] Converting object to string
+test/1k2012love/1218.js:23:2: [maybe] Converting primitive string to object
+test/1k2012love/1218.js:24:15: [maybe] Converting object to string
+test/1k2012love/1218.js:24:15: [maybe] Converting primitive string to object
+test/1k2012love/1218.js:26:3: [maybe] Converting undefined to string
+test/1k2012love/1218.js:26:16: [maybe] Converting undefined to string
+test/1k2012love/1218.js:26:95: [maybe] Converting object to string
+test/1k2012love/1218.js:26:95: [maybe] Converting primitive string to object
+test/1k2012love/1218.js:38:2: [maybe] Converting undefined to string
+test/1k2012love/1218.js:38:11: [maybe] Converting object to string
+test/1k2012love/1218.js:38:11: [maybe] Converting object to string
+test/1k2012love/1218.js:38:11: [maybe] Converting primitive string to object
+test/1k2012love/1218.js:38:11: [maybe] Converting primitive string to object
+test/1k2012love/1218.js:40:17: [maybe] Conversion to number yields NaN
+test/1k2012love/1218.js:47:7: [maybe] Converting object to string
+test/1k2012love/1218.js:47:7: [maybe] Converting primitive string to object
+test/1k2012love/shim.js:7:9: [maybe] Reading absent property (computed name)
+test/1k2012love/shim.js,test/1k2012love/1218.js: [maybe] Uncaught exception, constructed at [test/1k2012love/1218.js:13:3, test/1k2012love/1218.js:23:2, test/1k2012love/1218.js:24:15, test/1k2012love/1218.js:26:95, test/1k2012love/1218.js:47:7, test/1k2012love/shim.js:8:9, test/1k2012love/shim.js:9:1]
+test/1k2012love/1218.js:7:2: [info] 'this' refers to a summary abstract object, which may cause loss of precision

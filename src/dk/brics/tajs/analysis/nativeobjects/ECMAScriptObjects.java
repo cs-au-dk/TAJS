@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2015 Aarhus University
+ * Copyright 2009-2016 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -41,6 +41,8 @@ public enum ECMAScriptObjects implements HostObject {
     OBJECT_ISPROTOTYPEOF("Object.prototype.isPrototypeOf"),
     OBJECT_PROPERTYISENUMERABLE("Object.prototype.propertyIsEnumerable"),
     OBJECT_DEFINE_PROPERTY("Object.defineProperty"),
+    OBJECT_DEFINEGETTER("Object.prototype.__defineGetter__"),
+    OBJECT_DEFINESETTER("Object.prototype.__defineSetter__"),
 
     FUNCTION("Function"),
     FUNCTION_PROTOTYPE("Function.prototype"),
@@ -250,7 +252,9 @@ public enum ECMAScriptObjects implements HostObject {
     TAJS_GET_AJAX_EVENT("TAJS_getAjaxEvent"), // nonstandard
     TAJS_ADD_CONTEXT_SENSITIVITY("TAJS_addContextSensitivity"), // nonstandard
     TAJS_ASSERT("TAJS_assert"), //nonstandard
-    TAJS_NEW_OBJECT("TAJS_newObject"); // nonstandard
+    TAJS_NEW_OBJECT("TAJS_newObject"),  // nonstandard
+    TAJS_ASYNC_LISTEN("TAJS_asyncListen") // nonstandard
+    ;
 
     private HostAPIs api;
 
@@ -273,9 +277,9 @@ public enum ECMAScriptObjects implements HostObject {
 
     @Override
     public void evaluateSetter(ObjectLabel objlabel, Str prop, Value value, State state) {
-        if (this == GLOBAL && Options.get().isDOMEnabled()) { // GLOBAL == window, when DOM mode is enabled
+        if (this == GLOBAL && Options.get().isDOMEnabled()) { // GLOBAL == window, when DOM mode is enabled, so redirect to the DOM setter model
             DOMObjects.evaluateDOMSetter(objlabel, prop, value, state);
-        }
-        // not applicable for any other of these host objects
+        } else // not applicable for any other of these host objects
+            state.setToNone();
     }
 }

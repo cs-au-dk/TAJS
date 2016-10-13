@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2015 Aarhus University
+ * Copyright 2009-2016 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -37,7 +37,7 @@ public class CSSStyleDeclaration {
 
         s.newObject(STYLEDECLARATION);
         s.writeInternalPrototype(STYLEDECLARATION, Value.makeObject(InitialStateBuilder.OBJECT_PROTOTYPE));
-        pv.writeProperty(Collections.singleton(STYLEDECLARATION), Value.makeAnyStrNotUInt(), Value.makeAnyStr(), true, false);
+        pv.writeProperty(Collections.singleton(STYLEDECLARATION), Value.makeAnyStrNotUInt(), Value.makeAnyStr(), false, true);
         s.multiplyObject(STYLEDECLARATION);
         STYLEDECLARATION = STYLEDECLARATION.makeSingleton().makeSummary();
     }

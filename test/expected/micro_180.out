@@ -12,4 +12,4 @@ test/micro/test180.js:35:3: [info] Abstract value: UInt
 test/micro/test180.js:36:3: [info] Abstract value: UInt
 test/micro/test180.js:41:5: [info] Abstract value: UInt
 test/micro/test180.js:58:1: [info] Abstract value: UInt
-test/micro/test180.js:61:1: [info] Abstract object: {0:Undef|Null|[@Object#node171, *Object#node171],1:Undef|Null|[@Object#node171, *Object#node171],2:Undef|Null|[@Object#node171, *Object#node171],length:UInt,[[DefaultArray]]=Undef|Null|[@Object#node171, *Object#node171]|absent,[[Prototype]]=[@Array.prototype[native]]}
+test/micro/test180.js:61:1: [info] Abstract object: {0:Undef|Null|[@Object#node171, *Object#node171],1:Undef|Null|[@Object#node171, *Object#node171],2:Undef|Null|[@Object#node171, *Object#node171],length:3.0,[[DefaultArray]]=Undef|Null|[@Object#node171, *Object#node171]|absent,[[Prototype]]=[@Array.prototype[native]]}

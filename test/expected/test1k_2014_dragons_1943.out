@@ -32,9 +32,11 @@ test/1k2014dragons/shims.js:21:5: [definite] The variable requestAnimationFrame 
 test/1k2014dragons/shims.js:26:5: [definite] Unreachable function
 test/1k2014dragons/shims.js:39:5: [definite] The variable g is never used
 test/1k2014dragons/1943.js:12:25: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1943.js:14:2: [maybe] RangeError, assigning invalid value to array 'length' property
 test/1k2014dragons/1943.js:14:2: [maybe] TypeError, accessing property of null/undefined
 test/1k2014dragons/1943.js:22:8: [maybe] TypeError, accessing property of null/undefined
 test/1k2014dragons/1943.js:25:8: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1943.js:41:82: [maybe] RangeError, assigning invalid value to array 'length' property
 test/1k2014dragons/1943.js:48:3: [maybe] TypeError, accessing property of null/undefined
 test/1k2014dragons/1943.js:61:6: [maybe] TypeError, accessing property of null/undefined
 test/1k2014dragons/1943.js:61:27: [maybe] TypeError, accessing property of null/undefined
@@ -72,7 +74,6 @@ test/1k2014dragons/1943.js:69:109: [maybe] TypeError, accessing property of null
 test/1k2014dragons/1943.js:69:109: [maybe] TypeError, accessing property of null/undefined
 test/1k2014dragons/1943.js:69:111: [maybe] TypeError, accessing property of null/undefined
 test/1k2014dragons/1943.js:69:119: [maybe] TypeError, accessing property of null/undefined
-test/1k2014dragons/1943.js:84:8: [maybe] TypeError, call to non-function
 test/1k2014dragons/1943.js:112:8: [maybe] TypeError, accessing property of null/undefined
 test/1k2014dragons/1943.js:113:22: [maybe] TypeError, accessing property of null/undefined
 test/1k2014dragons/shims.js:31:1: [maybe] TypeError, accessing property of null/undefined
@@ -173,6 +174,8 @@ test/1k2014dragons/1943.js:13:58: [maybe] Converting primitive number to object
 test/1k2014dragons/1943.js:13:58: [maybe] The variable p has values with different types
 test/1k2014dragons/1943.js:13:79: [maybe] Conversion from string to number yields NaN
 test/1k2014dragons/1943.js:13:79: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1943.js:14:2: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1943.js:14:2: [maybe] Converting object to number
 test/1k2014dragons/1943.js:14:2: [maybe] Reading absent property (computed name)
 test/1k2014dragons/1943.js:14:4: [maybe] Converting primitive number to object
 test/1k2014dragons/1943.js:14:4: [maybe] The variable p has values with different types
@@ -212,6 +215,9 @@ test/1k2014dragons/1943.js:26:28: [maybe] Converting primitive number to object
 test/1k2014dragons/1943.js:26:28: [maybe] The variable p has values with different types
 test/1k2014dragons/1943.js:41:61: [maybe] Reading absent property (computed name)
 test/1k2014dragons/1943.js:41:76: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1943.js:41:82: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1943.js:41:82: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1943.js:41:82: [maybe] Converting object to number
 test/1k2014dragons/1943.js:48:3: [maybe] Reading absent property (computed name)
 test/1k2014dragons/1943.js:53:5: [maybe] The variable o has values with different types
 test/1k2014dragons/1943.js:60:8: [maybe] The variable l has values with different types
@@ -326,4 +332,4 @@ test/1k2014dragons/1943.js:112:8: [maybe] Reading absent property (computed name
 test/1k2014dragons/1943.js:113:22: [maybe] Reading absent property (computed name)
 test/1k2014dragons/1943.js:113:22: [maybe] Reading absent property (computed name)
 test/1k2014dragons/shims.js:9:9: [maybe] Reading absent property (computed name)
-test/1k2014dragons/shims.js,test/1k2014dragons/1943.js: [maybe] Uncaught exception, constructed at [test/1k2014dragons/1943.js:12:25, test/1k2014dragons/1943.js:14:2, test/1k2014dragons/1943.js:22:8, test/1k2014dragons/1943.js:25:8, test/1k2014dragons/1943.js:48:3, test/1k2014dragons/1943.js:61:6, test/1k2014dragons/1943.js:61:27, test/1k2014dragons/1943.js:61:44, test/1k2014dragons/1943.js:62:6, test/1k2014dragons/1943.js:62:27, test/1k2014dragons/1943.js:62:44, test/1k2014dragons/1943.js:68:16, test/1k2014dragons/1943.js:68:25, test/1k2014dragons/1943.js:68:27, test/1k2014dragons/1943.js:68:35, test/1k2014dragons/1943.js:68:57, test/1k2014dragons/1943.js:68:66, test/1k2014dragons/1943.js:68:68, test/1k2014dragons/1943.js:68:76, test/1k2014dragons/1943.js:68:98, test/1k2014dragons/1943.js:68:107, test/1k2014dragons/1943.js:68:109, test/1k2014dragons/1943.js:68:117, test/1k2014dragons/1943.js:69:18, test/1k2014dragons/1943.js:69:27, test/1k2014dragons/1943.js:69:29, test/1k2014dragons/1943.js:69:37, test/1k2014dragons/1943.js:69:59, test/1k2014dragons/1943.js:69:68, test/1k2014dragons/1943.js:69:70, test/1k2014dragons/1943.js:69:78, test/1k2014dragons/1943.js:69:100, test/1k2014dragons/1943.js:69:109, test/1k2014dragons/1943.js:69:111, test/1k2014dragons/1943.js:69:119, test/1k2014dragons/1943.js:84:8, test/1k2014dragons/1943.js:112:8, test/1k2014dragons/1943.js:113:22, test/1k2014dragons/shims.js:31:1, test/1k2014dragons/shims.js:34:1, test/1k2014dragons/shims.js:35:1, test/1k2014dragons/shims.js:37:9, test/1k2014dragons/shims.js:42:18, test/1k2014dragons/shims.js:42:46, test/1k2014dragons/shims.js:55:9]
+test/1k2014dragons/shims.js,test/1k2014dragons/1943.js: [maybe] Uncaught exception, constructed at [test/1k2014dragons/1943.js:12:25, test/1k2014dragons/1943.js:14:2, test/1k2014dragons/1943.js:22:8, test/1k2014dragons/1943.js:25:8, test/1k2014dragons/1943.js:41:82, test/1k2014dragons/1943.js:48:3, test/1k2014dragons/1943.js:61:6, test/1k2014dragons/1943.js:61:27, test/1k2014dragons/1943.js:61:44, test/1k2014dragons/1943.js:62:6, test/1k2014dragons/1943.js:62:27, test/1k2014dragons/1943.js:62:44, test/1k2014dragons/1943.js:68:16, test/1k2014dragons/1943.js:68:25, test/1k2014dragons/1943.js:68:27, test/1k2014dragons/1943.js:68:35, test/1k2014dragons/1943.js:68:57, test/1k2014dragons/1943.js:68:66, test/1k2014dragons/1943.js:68:68, test/1k2014dragons/1943.js:68:76, test/1k2014dragons/1943.js:68:98, test/1k2014dragons/1943.js:68:107, test/1k2014dragons/1943.js:68:109, test/1k2014dragons/1943.js:68:117, test/1k2014dragons/1943.js:69:18, test/1k2014dragons/1943.js:69:27, test/1k2014dragons/1943.js:69:29, test/1k2014dragons/1943.js:69:37, test/1k2014dragons/1943.js:69:59, test/1k2014dragons/1943.js:69:68, test/1k2014dragons/1943.js:69:70, test/1k2014dragons/1943.js:69:78, test/1k2014dragons/1943.js:69:100, test/1k2014dragons/1943.js:69:109, test/1k2014dragons/1943.js:69:111, test/1k2014dragons/1943.js:69:119, test/1k2014dragons/1943.js:112:8, test/1k2014dragons/1943.js:113:22, test/1k2014dragons/shims.js:31:1, test/1k2014dragons/shims.js:34:1, test/1k2014dragons/shims.js:35:1, test/1k2014dragons/shims.js:37:9, test/1k2014dragons/shims.js:42:18, test/1k2014dragons/shims.js:42:46, test/1k2014dragons/shims.js:55:9]

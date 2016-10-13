@@ -1,0 +1,2 @@
+test/micro/domEventHandlerSetter.js:1:67: [info] Abstract value: "from_addEventListener invoked"
+test/micro/domEventHandlerSetter.js:2:42: [info] Abstract value: "from_onclick invoked"

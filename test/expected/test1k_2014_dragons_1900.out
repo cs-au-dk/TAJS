@@ -1,0 +1,64 @@
+test/1k2014dragons/1900.js:112:10: [definite] The conditional expression is always false
+test/1k2014dragons/shims.js:19:5: [definite] The conditional expression is always true
+test/1k2014dragons/shims.js:22:5: [definite] Property is null/undefined
+test/1k2014dragons/shims.js:22:5: [definite] The conditional expression is always false
+test/1k2014dragons/shims.js:22:5: [definite] The conditional expression is always false
+test/1k2014dragons/shims.js:22:5: [definite] The conditional expression is always false
+test/1k2014dragons/shims.js:22:5: [definite] The conditional expression is always false
+test/1k2014dragons/shims.js:23:5: [definite] Reading absent property mozRequestAnimationFrame
+test/1k2014dragons/shims.js:24:5: [definite] Reading absent property webkitRequestAnimationFrame
+test/1k2014dragons/shims.js:25:5: [definite] Reading absent property msRequestAnimationFrame
+test/1k2014dragons/shims.js:41:19: [definite] Dead assignment, property antialias is never read
+test/1k2014dragons/shims.js:41:36: [definite] Dead assignment, property stencil is never read
+test/1k2014dragons/1900.js:111:6: [definite] The variable o2 is never used
+test/1k2014dragons/shims.js:10:5: [definite] The variable b is never used
+test/1k2014dragons/shims.js:11:5: [definite] The variable d is never used
+test/1k2014dragons/shims.js:11:9: [definite] The variable e is never used
+test/1k2014dragons/shims.js:12:12: [definite] Unreachable function
+test/1k2014dragons/shims.js:18:5: [definite] The variable AudioContext is never used
+test/1k2014dragons/shims.js:39:5: [definite] The variable g is never used
+test/1k2014dragons/1900.js:136:29: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/shims.js:31:1: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/shims.js:34:1: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/shims.js:34:1: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/shims.js:35:1: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/shims.js:37:9: [maybe] TypeError, call to non-function
+test/1k2014dragons/shims.js:42:18: [maybe] TypeError, call to non-function
+test/1k2014dragons/shims.js:42:46: [maybe] TypeError, call to non-function
+test/1k2014dragons/shims.js:55:9: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1900.js:24:6: [maybe] Reading absent property width
+test/1k2014dragons/1900.js:25:6: [maybe] Reading absent property height
+test/1k2014dragons/shims.js:10:9: [maybe] Reading absent property body
+test/1k2014dragons/shims.js:31:1: [maybe] Reading absent property body
+test/1k2014dragons/shims.js:34:1: [maybe] Reading absent property style
+test/1k2014dragons/shims.js:35:1: [maybe] Reading absent property style
+test/1k2014dragons/shims.js:37:9: [maybe] Reading absent property getContext
+test/1k2014dragons/shims.js:42:18: [maybe] Reading absent property getContext
+test/1k2014dragons/shims.js:42:46: [maybe] Reading absent property getContext
+test/1k2014dragons/shims.js:55:9: [maybe] Reading absent property body
+test/1k2014dragons/1900.js:71:20: [maybe] The variable w has values with different types
+test/1k2014dragons/1900.js:75:20: [maybe] The variable h has values with different types
+test/1k2014dragons/1900.js:83:29: [maybe] The variable w has values with different types
+test/1k2014dragons/1900.js:83:55: [maybe] The variable h has values with different types
+test/1k2014dragons/1900.js:84:15: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1900.js:84:15: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1900.js:84:22: [maybe] The variable w has values with different types
+test/1k2014dragons/1900.js:85:15: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1900.js:85:15: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1900.js:85:22: [maybe] The variable h has values with different types
+test/1k2014dragons/1900.js:123:22: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1900.js:123:22: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1900.js:123:29: [maybe] The variable w has values with different types
+test/1k2014dragons/1900.js:123:36: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1900.js:123:36: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1900.js:123:43: [maybe] The variable h has values with different types
+test/1k2014dragons/1900.js:130:2: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1900.js:130:2: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1900.js:130:19: [maybe] The variable w has values with different types
+test/1k2014dragons/1900.js:130:22: [maybe] The variable h has values with different types
+test/1k2014dragons/1900.js:133:3: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1900.js:133:3: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1900.js:133:20: [maybe] The variable w has values with different types
+test/1k2014dragons/1900.js:133:23: [maybe] The variable h has values with different types
+test/1k2014dragons/shims.js:9:9: [maybe] Reading absent property (computed name)
+test/1k2014dragons/shims.js,test/1k2014dragons/1900.js: [maybe] Uncaught exception, constructed at [test/1k2014dragons/1900.js:136:29, test/1k2014dragons/shims.js:31:1, test/1k2014dragons/shims.js:34:1, test/1k2014dragons/shims.js:35:1, test/1k2014dragons/shims.js:37:9, test/1k2014dragons/shims.js:42:18, test/1k2014dragons/shims.js:42:46, test/1k2014dragons/shims.js:55:9]

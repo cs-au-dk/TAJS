@@ -223,6 +223,9 @@ public class BasicContextSensitivityStrategy implements IContextSensitivityStrat
         // remove the begin-loop node from loopUnrolling
         Map<BeginLoopNode, Integer> loopUnrolling = newMap(currentContext.getLoopUnrolling());
         loopUnrolling.remove(node.getBeginNode()); // note: this will kill unrollings in recursive calls
+        if (loopUnrolling.isEmpty()) {
+            loopUnrolling = null;
+        }
 
         Context c = new Context(currentContext.getThisVal(), currentContext.getFunArgs(), currentContext.getSpecialRegisters(),
                 loopUnrolling, currentContext.getLoopUnrollingsAtEntry());

@@ -16,6 +16,7 @@ import org.junit.runners.Suite;
         TestForIn.class,
         TestUnrolling.class,
         TestAssumeNonNullUndef.class,
+        TestGettersSetters.class,
 
         // misc. tests
         TestMicro.class,

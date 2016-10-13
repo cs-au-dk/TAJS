@@ -3,6 +3,7 @@ package dk.brics.tajs.js2flowgraph;
 import com.google.common.collect.ImmutableList;
 import com.google.javascript.jscomp.parsing.parser.IdentifierToken;
 import com.google.javascript.jscomp.parsing.parser.LiteralToken;
+import com.google.javascript.jscomp.parsing.parser.Token;
 import com.google.javascript.jscomp.parsing.parser.TokenType;
 import com.google.javascript.jscomp.parsing.parser.trees.ArgumentListTree;
 import com.google.javascript.jscomp.parsing.parser.trees.ArrayLiteralExpressionTree;
@@ -414,11 +415,11 @@ public class FunctionBuilder extends ParseTreeAuxVisitor<TranslationResult, AstE
                 break;
             case StaticProperty:
                 Reference.StaticProperty staticProperty = target.asStaticProperty();
-                write = new WritePropertyNode(staticProperty.baseRegister, staticProperty.propertyName, valueRegister, location);
+                write = new WritePropertyNode(staticProperty.baseRegister, staticProperty.propertyName, valueRegister, WritePropertyNode.Kind.ORDINARY, false, location);
                 break;
             case DynamicProperty:
                 Reference.DynamicProperty dynamicProperty = target.asDynamicProperty();
-                write = new WritePropertyNode(dynamicProperty.baseRegister, dynamicProperty.propertyRegister, valueRegister, location);
+                write = new WritePropertyNode(dynamicProperty.baseRegister, dynamicProperty.propertyRegister, valueRegister, false, location);
                 break;
             default:
                 throw new RuntimeException("Unhandled write type: " + target.type);
@@ -1600,25 +1601,27 @@ public class FunctionBuilder extends ParseTreeAuxVisitor<TranslationResult, AstE
     TranslationResult process(PropertyNameAssignmentTree tree, AstEnv env) {
         AstEnv rhsEnv = env.makeResultRegister(nextRegister(env)).makeStatementLevel(false);
         TranslationResult processedRhs = process(tree.value, rhsEnv);
-        final WritePropertyNode node;
-        switch (tree.name.type) {
+        Integer base = env.getThisRegister();
+        int value = rhsEnv.getResultRegister();
+        WritePropertyNode write = makeWriteFixedPropertyNode(base, tree.name, value, WritePropertyNode.Kind.ORDINARY, makeSourceLocation(tree));
+        addNodeToBlock(write, processedRhs.getAppendBlock(), env);
+        return processedRhs;
+    }
+
+    WritePropertyNode makeWriteFixedPropertyNode(int baseRegister, Token propertyName, int rhsRegister, WritePropertyNode.Kind propertyKind, SourceLocation location) {
+        switch (propertyName.type) {
             case IDENTIFIER: {
-                node = new WritePropertyNode(env.getThisRegister(), tree.name.asIdentifier().value, rhsEnv.getResultRegister(), makeSourceLocation(tree));
-                break;
+                return new WritePropertyNode(baseRegister, propertyName.asIdentifier().value, rhsRegister, propertyKind, true, location);
             }
             case STRING: {
-                node = new WritePropertyNode(env.getThisRegister(), ClosureASTUtil.normalizeString(tree.name.asLiteral()), rhsEnv.getResultRegister(), makeSourceLocation(tree));
-                break;
+                return new WritePropertyNode(baseRegister, ClosureASTUtil.normalizeString(propertyName.asLiteral()), rhsRegister, propertyKind, true, location);
             }
             case NUMBER: {
-                node = new WritePropertyNode(env.getThisRegister(), tree.name.asLiteral().value, rhsEnv.getResultRegister(), makeSourceLocation(tree));
-                break;
+                return new WritePropertyNode(baseRegister, propertyName.asLiteral().value, rhsRegister, propertyKind, true, location);
             }
             default:
-                throw new RuntimeException("Unhandled property name type: " + tree.name.type);
+                throw new RuntimeException("Unhandled property name type: " + propertyName.type);
         }
-        addNodeToBlock(node, processedRhs.getAppendBlock(), env);
-        return processedRhs;
     }
 
     @Override
@@ -1691,12 +1694,26 @@ public class FunctionBuilder extends ParseTreeAuxVisitor<TranslationResult, AstE
 
     @Override
     TranslationResult process(GetAccessorTree tree, AstEnv env) {
-        throw new NotImplemented(tree, tree.type.toString());
+        FormalParameterListTree parameters = new FormalParameterListTree(tree.location, ImmutableList.of());
+        String source = String.format("function %s()%s", tree.propertyName.asIdentifier().value, getSource(tree.body));
+        return processAccessor(tree.propertyName, parameters, tree.body, WritePropertyNode.Kind.GETTER, env, makeSourceLocation(tree), source);
     }
 
     @Override
     TranslationResult process(SetAccessorTree tree, AstEnv env) {
-        throw new NotImplemented(tree, tree.type.toString());
+        IdentifierExpressionTree parameterName = new IdentifierExpressionTree(tree.parameter.location, tree.parameter);
+        FormalParameterListTree parameters = new FormalParameterListTree(tree.location, ImmutableList.of(parameterName));
+        String source = String.format("function %s(%s)%s", tree.propertyName.asIdentifier().value,  tree.getParameterName(), getSource(tree.body));
+        return processAccessor(tree.propertyName, parameters, tree.body, WritePropertyNode.Kind.SETTER, env, makeSourceLocation(tree), source);
+    }
+
+    private TranslationResult processAccessor(Token propertyName, FormalParameterListTree parameters, ParseTree body, WritePropertyNode.Kind propertyKind, AstEnv env, SourceLocation location, String prettySource) {
+        int functionRegister = env.getRegisterManager().nextRegister();
+        processFunctionDeclaration(FunctionDeclarationTree.Kind.EXPRESSION, null, parameters, body, env.makeResultRegister(functionRegister), location, prettySource);
+        Integer base = env.getThisRegister();
+        WritePropertyNode write = makeWriteFixedPropertyNode(base, propertyName, functionRegister, propertyKind, location);
+        addNodeToBlock(write, env.getAppendBlock(), env);
+        return TranslationResult.makeAppendBlock(env.getAppendBlock());
     }
 
     @Override

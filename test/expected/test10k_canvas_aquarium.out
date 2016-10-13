@@ -42,6 +42,8 @@ test/10k/canvas_aquarium.html:41:20: [maybe] Too many parameters to function Can
 test/10k/canvas_aquarium.html:41:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.transform
 test/10k/canvas_aquarium.html:41:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.translate
 test/10k/canvas_aquarium.html:41:20: [maybe] Too many parameters to function Object
+test/10k/canvas_aquarium.html:41:20: [maybe] Too many parameters to function Object.prototype.__defineGetter__
+test/10k/canvas_aquarium.html:41:20: [maybe] Too many parameters to function Object.prototype.__defineSetter__
 test/10k/canvas_aquarium.html:41:20: [maybe] Too many parameters to function Object.prototype.hasOwnProperty
 test/10k/canvas_aquarium.html:41:20: [maybe] Too many parameters to function Object.prototype.isPrototypeOf
 test/10k/canvas_aquarium.html:41:20: [maybe] Too many parameters to function Object.prototype.propertyIsEnumerable

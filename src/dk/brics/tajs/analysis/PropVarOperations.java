@@ -1,16 +1,24 @@
 package dk.brics.tajs.analysis;
 
+import dk.brics.tajs.analysis.js.UserFunctionCalls;
+import dk.brics.tajs.flowgraph.AbstractNode;
+import dk.brics.tajs.flowgraph.BasicBlock;
 import dk.brics.tajs.lattice.Bool;
+import dk.brics.tajs.lattice.ExecutionContext;
 import dk.brics.tajs.lattice.Obj;
 import dk.brics.tajs.lattice.ObjectLabel;
-import dk.brics.tajs.lattice.PropertyReference;
+import dk.brics.tajs.lattice.ObjectProperty;
+import dk.brics.tajs.lattice.ParallelTransfer;
+import dk.brics.tajs.lattice.Property;
 import dk.brics.tajs.lattice.ScopeChain;
 import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.Str;
 import dk.brics.tajs.lattice.UnknownValueResolver;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.options.Options;
+import dk.brics.tajs.solver.Message;
 import dk.brics.tajs.util.AnalysisException;
+import dk.brics.tajs.util.Strings;
 import org.apache.log4j.Logger;
 
 import java.util.Collection;
@@ -20,6 +28,7 @@ import java.util.Set;
 
 import static dk.brics.tajs.util.Collections.newList;
 import static dk.brics.tajs.util.Collections.newSet;
+import static dk.brics.tajs.util.Collections.singleton;
 
 /**
  * Operations for accessing object properties and variables in abstract states.
@@ -60,7 +69,7 @@ public class PropVarOperations {
      * Absent is converted to undefined. Attributes are set to bottom.
      */
     public Value readPropertyValue(Collection<ObjectLabel> objlabels, Str propertystr) {
-        Value v = readPropertyRaw(objlabels, propertystr, false);
+        Value v = readPropertyRaw(objlabels, propertystr, false, false);
         if (v.isMaybeAbsent())
             v = v.restrictToNotAbsent().joinUndef();
         v = v.setBottomPropertyData();
@@ -72,6 +81,7 @@ public class PropVarOperations {
     /**
      * Returns the value of the given property in the given objects.
      * The internal prototype chains are used.
+     * Getters are not called.
      */
     public Value readPropertyWithAttributes(Collection<ObjectLabel> objlabels, String propertyname) {
         return readPropertyWithAttributes(objlabels, Value.makeTemporaryStr(propertyname));
@@ -80,9 +90,10 @@ public class PropVarOperations {
     /**
      * Returns the value of the given property in the given objects.
      * The internal prototype chains are used.
+     * Getters are not called.
      */
     public Value readPropertyWithAttributes(Collection<ObjectLabel> objlabels, Str propertystr) {
-        Value v = readPropertyRaw(objlabels, propertystr, false);
+        Value v = readPropertyRaw(objlabels, propertystr, false, true);
         if (log.isDebugEnabled())
             log.debug("readPropertyWithAttributes(" + objlabels + "," + propertystr + ") = " + v);
         return v;
@@ -93,18 +104,21 @@ public class PropVarOperations {
      * The internal prototype chains are used.
      *
      * @param only_attributes if set, only attributes (incl. pseudo-attributes) are considered
+     * @param no_call_getters if set, do not call getters
      */
-    private Value readPropertyRaw(Collection<ObjectLabel> objlabels, Str propertystr, boolean only_attributes) {
+    private Value readPropertyRaw(Collection<ObjectLabel> objlabels, Str propertystr, boolean only_attributes, boolean no_call_getters) {
         Collection<Value> values = newList();
-        Collection<ObjectLabel> ol = objlabels;
         Set<ObjectLabel> visited = newSet();
-        while (!ol.isEmpty()) {
-            Set<ObjectLabel> ol2 = newSet();
-            for (ObjectLabel l : ol)
-                if (!visited.contains(l)) {
-                    visited.add(l);
-                    Value v = readPropertyDirect(l, propertystr);
-                    // String objects have their own [[GetOwnProperty]], see 15.5.5.2 in the ECMAScript 5 standard.
+        BasicBlock implicitAfterCall = null;
+        for (ObjectLabel base : objlabels) {
+            Collection<ObjectLabel> ol = singleton(base);
+            while (!ol.isEmpty()) {
+                Set<ObjectLabel> ol2 = newSet();
+                for (ObjectLabel l : ol)
+                    if (!visited.contains(l)) {
+                        visited.add(l);
+                        Value v = readPropertyDirect(l, propertystr);
+                        // String objects have their own [[GetOwnProperty]], see 15.5.5.2 in the ECMAScript 5 standard.
 /*                    if (v.isMaybeAbsent() && l.getKind() == Kind.STRING && (propertystr.isMaybeStrOnlyUInt() || (propertystr.getStr() != null && Strings.isArrayIndex(propertystr.getStr())))) { // TODO: review (note that this is new in ES5)
                         Value tmp = null;
                         Value internal_value = UnknownValueResolver.getInternalValue(l, this, true);
@@ -119,23 +133,99 @@ public class PropVarOperations {
                         if (tmp != null)
                             v = v.isNotPresent() ? tmp : v.join(tmp);
                 }*/
-                    Value v2 = v.restrictToNotAbsent();
-                    if (!v2.isNone()) {
-                        if (only_attributes)
-                            v2 = v2.restrictToAttributes();
-                        values.add(v2);
-                    }
-                    if (v.isMaybeAbsent() || v.isNotPresent()) {
-                        Value proto = UnknownValueResolver.getInternalPrototype(l, c.getState(), false);
-                        ol2.addAll(proto.getObjectLabels());
-                        if (proto.isMaybeAbsent() || proto.isMaybeNull()) {
-                            values.add(Value.makeAbsent());
+
+                        if (!no_call_getters) {
+                            if (v.isMaybePresentAccessor())
+                                v = UnknownValueResolver.getRealValue(v, c.getState());
+                            for (ObjectLabel obj : v.getGetters()) {
+                                if (obj == ObjectLabel.absent_accessor_function) {
+                                    values.add(Value.makeUndef()); // TODO: warn about call to dummy getter?
+                                } else {
+                                    implicitAfterCall = UserFunctionCalls.implicitUserFunctionCall(obj, new FunctionCalls.CallInfo() {
+                                        @Override
+                                        public AbstractNode getSourceNode() {
+                                            return c.getNode();
+                                        }
+
+                                        @Override
+                                        public AbstractNode getJSSourceNode() {
+                                            return c.getNode();
+                                        }
+
+                                        @Override
+                                        public boolean isConstructorCall() {
+                                            return false;
+                                        }
+
+                                        @Override
+                                        public Value getFunctionValue() {
+                                            throw new AnalysisException("Unexpected usage of getFunctionValue");
+                                        }
+
+                                        @Override
+                                        public Set<ObjectLabel> prepareThis(State caller_state, State callee_state) {
+                                            return singleton(base);
+                                        }
+
+                                        @Override
+                                        public int getResultRegister() {
+                                            return AbstractNode.NO_VALUE;
+                                        }
+
+                                        @Override
+                                        public ExecutionContext getExecutionContext() {
+                                            return c.getState().getExecutionContext();
+                                        }
+
+                                        @Override
+                                        public Value getArg(int i) {
+                                            return Value.makeUndef();
+                                        }
+
+                                        @Override
+                                        public int getNumberOfArgs() {
+                                            return 0;
+                                        }
+
+                                        @Override
+                                        public Value getUnknownArg() {
+                                            throw new AnalysisException("Should not be called. Arguments are not unknown.");
+                                        }
+
+                                        @Override
+                                        public boolean isUnknownNumberOfArgs() {
+                                            return false;
+                                        }
+                                    }, c);
+                                }
+                            }
+                        }
+
+                        // add data values
+                        Value v2 = v.restrictToNotAbsent();
+                        if (v2.isMaybePresent()) {
+                            if (only_attributes)
+                                v2 = v2.restrictToAttributes();
+                            if (!no_call_getters)
+                                v2 = v2.restrictToNotGetterSetter();
+                            if (v2.isMaybePresent()) {
+                                values.add(v2);
+                            }
+                        }
+                        // if maybe absent, proceed along prototype chain
+                        if (v.isMaybeAbsent()) {
+                            Value proto = UnknownValueResolver.getInternalPrototype(l, c.getState(), false);
+                            ol2.addAll(proto.getObjectLabels());
+                            if (proto.isMaybeAbsent() || proto.isMaybeNull()) {
+                                // reached end of prototype chain, add 'absent'
+                                values.add(Value.makeAbsent());
+                            }
                         }
                     }
-                }
-            ol = ol2;
+                ol = ol2;
+            }
         }
-        return UnknownValueResolver.join(values, c.getState());
+        return UserFunctionCalls.implicitUserFunctionReturn(values, !values.isEmpty() || no_call_getters, implicitAfterCall, c);
     }
 
     /**
@@ -157,7 +247,7 @@ public class PropVarOperations {
      * Returns the join of the values of the given properties of an object.
      * The internal prototype chains and scope chains are <em>not</em> used.
      */
-    private Value readPropertyDirect(ObjectLabel objlabel, Str propertystr) {
+    public Value readPropertyDirect(ObjectLabel objlabel, Str propertystr) {
         State state = c.getState();
         if (propertystr.isMaybeSingleStr())
             return UnknownValueResolver.getProperty(objlabel, propertystr.getStr(), state, true);
@@ -178,7 +268,7 @@ public class PropVarOperations {
      * The internal prototype chains are used.
      */
     private Bool hasPropertyRaw(Collection<ObjectLabel> objlabels, String propertyname) {
-        Value v = readPropertyRaw(objlabels, Value.makeTemporaryStr(propertyname), true);
+        Value v = readPropertyRaw(objlabels, Value.makeTemporaryStr(propertyname), true, true);
         boolean maybe_present = v.isMaybePresent();
         boolean maybe_absent = v.isMaybeAbsent();
         return maybe_present ? (maybe_absent ? Value.makeAnyBool() : Value.makeBool(true)) : (maybe_absent ? Value.makeBool(false) : Value.makeNone());
@@ -198,10 +288,8 @@ public class PropVarOperations {
     /**
      * 8.6.2.3 [[CanPut]] Checks whether the given property can be assigned in the given object.
      * The internal prototype chains are used.
-     *
-     * @param propertystr description of the property names to consider (assumed not to be a single string)
      */
-    private Bool canPut(ObjectLabel objlabel, Str propertystr) {
+    private Bool canPut(ObjectProperty objprop) {
         /*
         ReadOnly properties:
         - the function name in scope object of a function expression
@@ -213,7 +301,7 @@ public class PropVarOperations {
         */
         if (Options.get().isAlwaysCanPut())
             return Value.makeBool(true);
-        Value v = readPropertyRaw(Collections.singleton(objlabel), propertystr, true); // TODO: possible to optimize modeling of [[CanPut]]? i.e. in some cases omit this call to readPropertyRaw?
+        Value v = readPropertyRaw(Collections.singleton(objprop.getObjectLabel()), objprop.getProperty().toStr(), true, true); // TODO: possible to optimize modeling of [[CanPut]]? i.e. in some cases omit this call to readPropertyRaw?
         Bool b;
         if (v.isNotPresent() || v.isNotReadOnly())
             b = Value.makeBool(true);
@@ -222,108 +310,313 @@ public class PropVarOperations {
         else
             b = Value.makeAnyBool();
         if (log.isDebugEnabled())
-            log.debug("canPut(" + objlabel + ") = " + b);
+            log.debug("canPut(" + objprop + ") = " + b);
         return b;
+    }
+
+    /**
+     * Same as {@link #writeProperty(Collection, Str, Value, boolean, boolean, boolean, boolean)},
+     * with process_attributes set to true and value_has_attributes set to false.
+     */
+    public void writeProperty(Collection<ObjectLabel> objlabels, Str propertystr, Value value, boolean force_weak, boolean not_invoke_setters) {
+        writeProperty(objlabels, propertystr, value, true, false, force_weak, not_invoke_setters);
     }
 
     /**
      * 8.6.2.2 [[Put]]
      * Assigns the given value to the given property of the given objects.
-     * Modified is set on all values being written (not considering the put flag).
+     * Modified is set on all values being written (irrespective of process_attributes and value_has_attributes).
      *
-     * @param put        if set, attributes are cleared or copied from the old value according to 8.6.2.2
+     * @param process_attributes if set, attempts to overwrite ReadOnly properties are ignored, and attributes are cleared or copied from the old value according to 8.6.2.2 (false for function declarations)
+     * @param value_has_attributes if set, value has attributes that should be used instead of default (cleared)
      * @param force_weak if set, force weak update disregarding objlabels
+     * @param not_invoke_setters if set, do not invoke setter (e.g. for property declarations in literals)
      */
-    public void writeProperty(Collection<ObjectLabel> objlabels, Str propertystr, Value value, boolean put, boolean force_weak) {
-        State state = c.getState();
-        // 8.6.2.2 [[Put]]
-        // 1. Call the [[CanPut]] method of O with name P.
-        // 2. If Result(1) is false, return.
-        // 3. If O doesn't have a property with name P, go to step 6.
-        // 4. Set the value of the property to V. The attributes of the property are not changed.
-        // 5. Return.
-        // 6. Create a property with name P, set its value to V and give it empty attributes.
+    public void writeProperty(Collection<ObjectLabel> objlabels, Str propertystr, Value value, boolean process_attributes, boolean value_has_attributes, boolean force_weak, boolean not_invoke_setters) {
         value.assertNonEmpty();
-        if (propertystr.isMaybeSingleStr()) {
-            writePropertyRaw(objlabels, propertystr.getStr(), value, put, true, true, force_weak);
-        } else {
-            for (ObjectLabel objlabel : objlabels) {
+        ParallelTransfer pt = new ParallelTransfer(c);
+        for (ObjectLabel objlabel : objlabels) {
+            if (propertystr.isMaybeSingleStr()) {
+                pt.add(() -> writeProperty(ObjectProperty.makeOrdinary(objlabel, propertystr.getStr()), value, process_attributes, value_has_attributes, true, true, force_weak || objlabels.size() != 1, not_invoke_setters));
+            } else if (propertystr.isMaybeFuzzyStr()) {
+                State state = c.getState();
                 if (propertystr.isMaybeStrSomeUInt()) {
-                    Value v = value;
-                    if (!put || canPut(objlabel, Value.makeAnyStrUInt()).isMaybeTrue()) { // we can ignore isMaybeFalse since we only do weak update anyway
-                        if (put)
-                            v = v.removeAttributes(); // 8.6.2.2 item 6
-                        Value oldval = UnknownValueResolver.getDefaultArrayProperty(objlabel, state);
-                        if (!oldval.isNone()) {
-                            Value newval = UnknownValueResolver.join(oldval, v, state);
-                            state.getObject(objlabel, true).setDefaultArrayProperty(newval.joinModified());
-                        } // otherwise, the abstract object represents zero concrete objects (due to restoring of unmodified properties), so ignore
-                    }
-                    // TODO: generate warning if [[CanPut]] gives false?
+                    UnknownValueResolver.getDefaultArrayProperty(objlabel, state);
+                    pt.add(() -> writeProperty(ObjectProperty.makeDefaultArray(objlabel), value, process_attributes, value_has_attributes, true, true, true, not_invoke_setters));
                 }
                 if (propertystr.isMaybeStrSomeNonUInt()) {
-                    Value v = value;
-                    if (!put || canPut(objlabel, Value.makeAnyStrNotUInt()).isMaybeTrue()) { // we can ignore isMaybeFalse since we only do weak update anyway
-                        if (put)
-                            v = v.removeAttributes(); // 8.6.2.2 item 6
-                        Value oldval = UnknownValueResolver.getDefaultNonArrayProperty(objlabel, state);
-                        if (!oldval.isNone()) {
-                            Value newval = UnknownValueResolver.join(oldval, v, state);
-                            state.getObject(objlabel, true).setDefaultNonArrayProperty(newval.joinModified());
-                        } // otherwise, the abstract object represents zero concrete objects (due to restoring of unmodified properties), so ignore
-                    }
-                    // TODO: generate warning if [[CanPut]] gives false?
+                    UnknownValueResolver.getDefaultNonArrayProperty(objlabel, state);
+                    pt.add(() -> writeProperty(ObjectProperty.makeDefaultNonArray(objlabel), value, process_attributes, value_has_attributes, true, true, true, not_invoke_setters));
                 }
-                for (String propertyname : newSet(state.getObject(objlabel, false).getPropertyNames())) // calls to UnknownValueResolver above have materialized all relevant properties
-                    if (propertystr.isMaybeStr(propertyname))
-                        writePropertyIfCanPut(objlabel, propertyname, value, put, true, true, true);
+                for (String propertyname : newSet(state.getObject(objlabel, false).getPropertyNames())) { // calls to UnknownValueResolver above have materialized all relevant properties
+                    if (propertystr.isMaybeStr(propertyname)) {
+                        pt.add(() -> writeProperty(ObjectProperty.makeOrdinary(objlabel, propertyname), value, process_attributes, value_has_attributes, true, true, true, not_invoke_setters));
+                    }
+                }
             }
         }
+        pt.complete();
         if (log.isDebugEnabled())
             log.debug("writeProperty(" + objlabels + "," + propertystr + "," + value + ")");
     }
 
     /**
-     * Assigns the given value to the given object property if [[CanPut]] is true.
-     * Takes ReadOnly into account.
+     * Assigns the given value to the given object property.
      *
-     * @param put             if set, attributes are cleared or copied from the old value according to 8.6.2.2
-     * @param real            if set, the modified flag is set on written values
-     * @param allow_overwrite if set, allow overwriting of existing values (if not set, do nothing if the property already exists)
+     * @param process_attributes if set, attempts to overwrite ReadOnly properties are ignored, and attributes are cleared or copied from the old value according to 8.6.2.2 (false for function declarations)
+     * @param value_has_attributes if set, value has attributes that should be used instead of default (cleared)
+     * @param set_modified    if set, the modified flag is set on written values
+     * @param allow_overwrite if set, allow overwriting of existing properties (if not set, do nothing if the property already exists), false for variable declarations
      * @param force_weak      if set, force weak update
+     * @param not_invoke_setters if set, do not invoke setter (e.g. for property declarations in literals)
      */
-    private void writePropertyIfCanPut(ObjectLabel objlabel, String propertyname, Value value,
-                                       boolean put, boolean real, boolean allow_overwrite, boolean force_weak) {
-        // 8.6.2.2 [[Put]]
-        // 1. Call the [[CanPut]] method of O with name P.
-        // 2. If Result(1) is false, return.
-        // 3. If O doesn't have a property with name P, go to step 6.
-        // 4. Set the value of the property to V. The attributes of the property are not changed.
-        // 5. Return.
-        // 6. Create a property with name P, set its value to V and give it empty attributes.
-        Bool canput = put ? canPut(objlabel, Value.makeTemporaryStr(propertyname)) : Value.makeBool(true);
-        if (canput.isMaybeTrue())
-            writeProperty(objlabel, propertyname, value, put, real, allow_overwrite, force_weak || canput.isMaybeFalse());
-        // TODO: generate warning if [[CanPut]] gives false?
+    private void writeProperty(ObjectProperty objprop, Value value,
+                               boolean process_attributes, boolean value_has_attributes, boolean set_modified, boolean allow_overwrite, boolean force_weak, boolean not_invoke_setters) {
+        State state = c.getState();
+        Value oldvalue = UnknownValueResolver.getValue(objprop, state, true);
+        if (!allow_overwrite && oldvalue.isNotAbsent()) // not allowed to overwrite and definitely present already, so just return
+            return; // TODO: warn that the operation definitely has no effect? (double declaration of variable)
+        Value prototypevalue = Value.makeNone();
+        if (!not_invoke_setters && oldvalue.isMaybeAbsent()) { // if old value (maybe) absent, we also need the setters from the prototype chain
+            Value proto = UnknownValueResolver.getInternalPrototype(objprop.getObjectLabel(), state, false);
+            prototypevalue = readPropertyRaw(proto.getObjectLabels(), objprop.getProperty().toStr(), false, true);
+        }
+        boolean maybeDefiningGetter = !value.isPolymorphic() && value.isMaybeGetter();
+        boolean maybeDefiningSetter = !value.isPolymorphic() && value.isMaybeSetter();
+        boolean maybeOrdinaryWrite = not_invoke_setters || oldvalue.isMaybePresentData() || (oldvalue.isMaybeAbsent() && (prototypevalue.isMaybeAbsent() || prototypevalue.isMaybePresentData() || !prototypevalue.isMaybePresentAccessor()));
+        boolean maybeSetterCall = !not_invoke_setters && (oldvalue.isMaybePresentAccessor() || prototypevalue.isMaybePresentAccessor());
+        if (process_attributes) {
+            if (oldvalue.isNotPresent()) { // definitely not present already
+                if (!value_has_attributes)
+                    value = value.removeAttributes(); // 8.6.2.2 item 6
+            } else if (oldvalue.isNotAbsent()) // definitely present already
+                value = value.setAttributes(oldvalue); // 8.6.2.2 item 4
+            else {// maybe present already
+                if (value_has_attributes)
+                    value = value.setAttributes(oldvalue).join(value);
+                else
+                    value = value.setAttributes(oldvalue).join(value.removeAttributes());
+            }
+        }
+        Bool writeable = (process_attributes && maybeOrdinaryWrite) ? canPut(objprop) : Value.makeBool(true); // TODO: generate warning if [[CanPut]] gives false?
+        if (maybeSetterCall)
+            writeable = writeable.joinBool(true);
+        if (writeable.isMaybeTrue()) {
+            if (force_weak || writeable.isMaybeFalse() || !objprop.getObjectLabel().isSingleton() || objprop.getProperty().isFuzzy() || (!allow_overwrite && oldvalue.isMaybePresent())) { // weak update
+                // TODO: if !allow_overwrite && oldvalue.isMaybePresent(): warn that the operation maybe has no effect? (double declaration of variable)
+                value = UnknownValueResolver.join(value, oldvalue, state);
+                if (!value.isPolymorphicOrUnknown()) {
+                    if (maybeDefiningGetter && !maybeDefiningSetter) {
+                        value = value.join(Value.makeObject(ObjectLabel.absent_accessor_function).makeSetter()); // add dummy setter
+                    } else if (maybeDefiningSetter && !maybeDefiningGetter) {
+                        value = value.join(Value.makeObject(ObjectLabel.absent_accessor_function).makeGetter()); // add dummy getter
+                    }
+                }
+            } else { // strong update
+                if (!value.isPolymorphicOrUnknown()) {
+                    if (maybeDefiningGetter || maybeDefiningSetter)
+                        oldvalue = UnknownValueResolver.getRealValue(oldvalue, state);
+                    if (maybeDefiningGetter && !maybeDefiningSetter) { // strong update of getter, but keep setter if present and else add dummy setter
+                        Value oldsetter = oldvalue.restrictToSetter();
+                        if (oldsetter.isNone())
+                            oldsetter = Value.makeObject(ObjectLabel.absent_accessor_function).makeSetter();
+                        value = UnknownValueResolver.join(value, oldsetter, state);
+                    } else if (maybeDefiningSetter && !maybeDefiningGetter) { // strong update of setter, but keep getter if present and else add dummy getter
+                        Value oldgetter = oldvalue.restrictToGetter();
+                        if (oldgetter.isNone())
+                            oldgetter = Value.makeObject(ObjectLabel.absent_accessor_function).makeGetter();
+                        value = UnknownValueResolver.join(value, oldgetter, state);
+                    }
+                }
+            }
+            if (set_modified || oldvalue.isMaybeModified())
+                value = value.joinModified();
+            checkProperty(value);
+            final Value theValue = value;
+            ParallelTransfer pt = new ParallelTransfer(c);
+            boolean hasDummySetter = false;
+            if (maybeSetterCall) {
+                c.getMonitoring().visitPropertyRead(c.getNode(), Collections.singleton(objprop.getObjectLabel()), objprop.getProperty().toStr(), state, false);
+                BasicBlock implicitAfterCall = null;
+                Set<ObjectLabel> setters = newSet();
+                setters.addAll(UnknownValueResolver.getRealValue(oldvalue, state).getSetters());
+                setters.addAll(UnknownValueResolver.getRealValue(prototypevalue, state).getSetters());
+                for (ObjectLabel obj : setters) {
+                    if (obj == ObjectLabel.absent_accessor_function) {
+                        hasDummySetter = true; // TODO: warn about call to dummy setter?
+                    } else {
+                        implicitAfterCall = UserFunctionCalls.implicitUserFunctionCall(obj, new FunctionCalls.CallInfo() {
+                            @Override
+                            public AbstractNode getSourceNode() {
+                                return c.getNode();
+                            }
+
+                            @Override
+                            public AbstractNode getJSSourceNode() {
+                                return c.getNode();
+                            }
+
+                            @Override
+                            public boolean isConstructorCall() {
+                                return false;
+                            }
+
+                            @Override
+                            public Value getFunctionValue() {
+                                throw new AnalysisException("Unexpected usage of getFunctionValue");
+                            }
+
+                            @Override
+                            public Set<ObjectLabel> prepareThis(State caller_state, State callee_state) {
+                                return singleton(objprop.getObjectLabel());
+                            }
+
+                            @Override
+                            public int getResultRegister() {
+                                return AbstractNode.NO_VALUE;
+                            }
+
+                            @Override
+                            public ExecutionContext getExecutionContext() {
+                                return c.getState().getExecutionContext();
+                            }
+
+                            @Override
+                            public Value getArg(int i) {
+                                if (i == 0) {
+                                    return theValue;
+                                } else {
+                                    return Value.makeUndef(); // FIXME: else case necessary?
+                                }
+                            }
+
+                            @Override
+                            public int getNumberOfArgs() {
+                                return 1;
+                            }
+
+                            @Override
+                            public Value getUnknownArg() {
+                                throw new AnalysisException("Should not be called. Arguments are not unknown.");
+                            }
+
+                            @Override
+                            public boolean isUnknownNumberOfArgs() {
+                                return false;
+                            }
+                        }, c);
+                    }
+                }
+                BasicBlock finalImplicitAfterCall = implicitAfterCall;
+                boolean finalHasDummySetter = hasDummySetter;
+                pt.add(() -> UserFunctionCalls.implicitUserFunctionReturn(null, finalHasDummySetter, finalImplicitAfterCall, c));
+            }
+            if (maybeOrdinaryWrite) {
+                if (!value.equals(oldvalue)) { // don't request writable obj if the value doesn't change anyway
+                    Value finalValue = value;
+                    pt.add(() -> {
+                        Value value2 = finalValue;
+                        if (!not_invoke_setters) {
+                            value2 = updateArrayLength(objprop, value2, c);
+                        }
+                        c.getState().getObject(objprop.getObjectLabel(), true).setValue(objprop, value2);
+                    });
+                } else {
+                    pt.add(() -> {}); // nop transfer
+                }
+            }
+            if (!not_invoke_setters && objprop.getObjectLabel().isHostObject()) {
+                pt.add(() -> objprop.getObjectLabel().getHostObject().evaluateSetter(objprop.getObjectLabel(), objprop.getProperty().toStr(), theValue, c.getState()));
+            }
+            pt.complete();
+        }
     }
 
     /**
-     * Assigns the given value to the given property of the given objects, with attributes.
-     *
-     * @param put             if set, attributes are cleared or copied from the old value according to 8.6.2.2
-     * @param real            if set, the modified flag is set on written values
-     * @param allow_overwrite if set, allow overwriting of existing values (if not set, do nothing if the property already exists)
-     * @param force_weak      if set, force weak update disregarding objlabels
+     * Updates the length property of arrays in accordance with 15.4.5.1. Also models truncation of the array if the 'length' property is being set.
      */
-    private void writePropertyRaw(Collection<ObjectLabel> objlabels, String propertyname, Value value,
-                                  boolean put, boolean real, boolean allow_overwrite, boolean force_weak) {
-        for (ObjectLabel objlabel : objlabels)
-            writePropertyIfCanPut(objlabel, propertyname, value, put, real, allow_overwrite, force_weak || objlabels.size() != 1);
+    private Value updateArrayLength(ObjectProperty objprop, Value value, Solver.SolverInterface c) {
+        if (objprop.getObjectLabel().getKind() != ObjectLabel.Kind.ARRAY)
+            return value;
+        Str propertystr = objprop.getProperty().toStr();
+        boolean maybe_length = propertystr.isMaybeStr("length");
+        boolean maybe_index = propertystr.isMaybeStrSomeUInt();
+        if (maybe_length || maybe_index) {
+            Double old_length = UnknownValueResolver.getRealValue(readPropertyValue(Collections.singleton(objprop.getObjectLabel()), "length"), c.getState()).getNum();
+            // step 12-15 assignment to 'length', need to check for RangeError exceptions and array truncation
+            if (maybe_length) {
+                value = UnknownValueResolver.getRealValue(value, c.getState());
+                Value numvalue = Conversion.toNumber(value, c);
+                if (!numvalue.isNone()) {
+                    // throw RangeError exception if illegal value
+                    boolean invalid = false;
+                    Double n = numvalue.getNum();
+                    if (numvalue.isMaybeSingleNum() && n != null) {
+                        long uintvalue = Conversion.toUInt32(n);
+                        if (uintvalue != n)
+                            invalid = true;
+                        numvalue = Value.makeNum(uintvalue);
+                    } else if (numvalue.isMaybeOtherThanNumUInt()) {
+                        invalid = true;
+                        numvalue = Value.makeAnyNumUInt();
+                    }
+                    if (invalid) {
+                        Exceptions.throwRangeError(c);
+                        c.getMonitoring().addMessage(c.getNode(), Message.Severity.HIGH, "RangeError, assigning invalid value to array 'length' property");
+                    }
+                    // truncate
+                    Double num = numvalue.getNum();
+                    boolean definitely_length = propertystr.isMaybeSingleStr() && propertystr.getStr().equals("length");
+                    if (definitely_length && num != null && old_length != null && old_length - num < 25) { // note: bound to avoid too many iterations
+                        for (int i = num.intValue(); i < old_length.intValue(); i++) {
+                            deleteProperty(Collections.singleton(objprop.getObjectLabel()), Value.makeStr(Integer.toString(i)), false);
+                        }
+                    } else {
+                        deleteProperty(Collections.singleton(objprop.getObjectLabel()), Value.makeAnyStrUInt(), false);
+                    }
+                    // write 'length' property
+                    numvalue = numvalue.setAttributes(true, true, false);
+                    c.getState().getObject(objprop.getObjectLabel(), true).setProperty("length", numvalue);
+                    if (definitely_length) {
+                        value = numvalue;
+                    } else {
+                        value = value.join(numvalue);
+                    }
+                    value = value.joinModified();
+                }
+            }
+            // step 9-10 assignment to array index, need to magically update 'length'
+            if (maybe_index) {
+                Value v;
+                boolean definitely_index = propertystr.isMaybeSingleStr() && Strings.isArrayIndex(propertystr.getStr());
+                if ((definitely_index && old_length != null))
+                    v = Value.makeNum(Math.max(old_length, Double.valueOf(propertystr.getStr()) + 1));
+                else
+                    v = Value.makeAnyNumUInt();
+                c.getState().getObject(objprop.getObjectLabel(), true).setProperty("length", v.setAttributes(true, true, false));
+            }
+        }
+        return value;
+    }
+
+    /**
+     * Assigns the given value to the given property of the given objects.
+     *
+     * @param process_attributes if set, attempts to overwrite ReadOnly properties are ignored, and attributes are cleared or copied from the old value according to 8.6.2.2 (false for function declarations)
+     * @param value_has_attributes if set, value has attributes that should be used instead of default (cleared)
+     * @param set_modified    if set, the modified flag is set on written values
+     * @param allow_overwrite if set, allow overwriting of existing properties (if not set, do nothing if the property already exists), false for variable declarations
+     * @param force_weak      if set, force weak update disregarding objlabels
+     * @param not_invoke_setter if set, do not invoke setter (e.g. for property declarations in literals)
+     */
+    private void writeProperty(Collection<ObjectLabel> objlabels, Property property, Value value,
+                               boolean process_attributes, boolean value_has_attributes, boolean set_modified, boolean allow_overwrite, boolean force_weak, boolean not_invoke_setter) {
+        ParallelTransfer.process(objlabels, (objlabel) -> writeProperty(new ObjectProperty(objlabel, property), value, process_attributes, value_has_attributes, set_modified, allow_overwrite, force_weak || objlabels.size() != 1, not_invoke_setter), c);
     }
 
     /**
      * Assigns the given value to the given property of the given object.
-     * Attributes are taken from the given value.
+     * Attributes are taken from the given value. Setters are not invoked.
      * Modified is set on all values being written.
      */
     public void writeProperty(ObjectLabel objlabel, String propertyname, Value value) {
@@ -334,20 +627,22 @@ public class PropVarOperations {
      * Assigns the given value to the given property of the given objects, with attributes.
      * Attributes are taken from the given value.
      *
-     * @param real if set, the modified flag is set on written values
+     * @param set_modified if set, the modified flag is set on written values
+     * @param decl if set, do not invoke setter (e.g. for property declarations in literals)
      */
-    public void writePropertyWithAttributes(Collection<ObjectLabel> objlabels, String propertyname, Value value, boolean real) {
-        writePropertyWithAttributes(objlabels, propertyname, value, real, false);
+    public void writePropertyWithAttributes(Collection<ObjectLabel> objlabels, String propertyname, Value value, boolean set_modified, boolean decl) {
+        writePropertyWithAttributes(objlabels, propertyname, value, set_modified, false, decl);
     }
 
     /**
      * Assigns the given value to the given property of the given objects, with attributes.
      * Attributes are taken from the given value.
      *
-     * @param real if set, the modified flag is set on written values
+     * @param set_modified if set, the modified flag is set on written values
+     * @param decl if set, do not invoke setter (e.g. for property declarations in literals)
      */
-    public void writePropertyWithAttributes(Collection<ObjectLabel> objlabels, String propertyname, Value value, boolean real, boolean force_weak) {
-        writePropertyRaw(objlabels, propertyname, value, false, real, true, force_weak);
+    public void writePropertyWithAttributes(Collection<ObjectLabel> objlabels, String propertyname, Value value, boolean set_modified, boolean force_weak, boolean decl) {
+        writeProperty(objlabels, Property.makeOrdinaryProperty(propertyname), value, false, true, set_modified, true, force_weak, decl);
         if (log.isDebugEnabled())
             log.debug("writePropertyWithAttributes(" + objlabels + "," + propertyname + "," + value + "," + value.printAttributes() + ")");
     }
@@ -358,7 +653,7 @@ public class PropVarOperations {
      * Modified is set on all values being written.
      */
     public void writePropertyWithAttributes(Collection<ObjectLabel> objlabels, String propertyname, Value value) {
-        writePropertyWithAttributes(objlabels, propertyname, value, true);
+        writePropertyWithAttributes(objlabels, propertyname, value, true, true);
     }
 
     /**
@@ -367,58 +662,7 @@ public class PropVarOperations {
      * Modified is set on all values being written.
      */
     public void writePropertyWithAttributes(ObjectLabel objlabel, String propertyname, Value value) {
-        writePropertyWithAttributes(Collections.singleton(objlabel), propertyname, value, true);
-    }
-
-    /**
-     * Assigns the given value to the given property of an object.
-     *
-     * @param put             if set, attributes are cleared or copied from the old value according to 8.6.2.2
-     * @param real            if set, the modified flag is set on written values
-     * @param allow_overwrite if set, allow overwriting of existing values (if not set, do nothing if the property already exists)
-     * @param force_weak      if set, force weak update
-     */
-    private void writeProperty(ObjectLabel objlabel, String propertyname, Value value,
-                               boolean put, boolean real, boolean allow_overwrite, boolean force_weak) {
-        State state = c.getState();
-        Value oldvalue = UnknownValueResolver.getProperty(objlabel, propertyname, state, true);
-        if (!allow_overwrite && oldvalue.isNotAbsent()) // not allowed to overwrite and definitely present already, so just return
-            return; // TODO: warn that the operation has no effect? (double declaration of variable)
-        if (put) {
-            if (oldvalue.isNotPresent()) // definitely not present already
-                value = value.removeAttributes(); // 8.6.2.2 item 6
-            else if (oldvalue.isNotAbsent()) // definitely present already
-                value = value.setAttributes(oldvalue); // 8.6.2.2 item 4
-            else // maybe present already
-                value = value.setAttributes(oldvalue).join(value.removeAttributes());
-        }
-        boolean valueMaybeGetterOrSetter = false;// XXX: value.isMaybeGetterOrSetter();
-// see ECMAScript 2015: "12.2.6.1: In ECMAScript 2015, it is no longer an early error to have duplicate property names in Object Initializers."
-//        boolean oldvalueMaybeGetterOrSetter = oldvalue.isMaybeGetterOrSetter();
-//        boolean maybeSyntaxError = ...;
-//        boolean maybeNotSyntaxError = ...;
-// FIXME: throw SyntaxError if:
-//        1) oldvalue is ordinary property and value is getter/setter,
-//        2) oldvalue is getter and value is ordinary or getter,
-//        3) oldvalue is setter ans value is ordinary or setter, or
-//        4) strict mode and oldvalue is ordinary property and value is ordinary property
-// FIXME: cancel ordinary flow if definite SyntaxError
-        if (force_weak || !objlabel.isSingleton() || (!allow_overwrite && oldvalue.isMaybePresent())) // weak update
-            value = UnknownValueResolver.join(value, oldvalue, state);
-        else if (valueMaybeGetterOrSetter) { // strong update, write getter/setter
-            value = UnknownValueResolver.join(value, oldvalue.restrictToNotAbsent(), state);
-        }
-        if (real || oldvalue.isMaybeModified())
-            value = value.joinModified();
-        checkProperty(value);
-        if (put && real && objlabel.isHostObject() && !state.getExecutionContext().isEmpty()) { // FIXME: also call evaluateSetter on dynamic property writes with unknown property
-            objlabel.getHostObject().evaluateSetter(objlabel, Value.makeTemporaryStr(propertyname), value, state);
-        }
-        if (value.equals(oldvalue))
-            return; // don't request writable obj if the value doesn't change anyway
-        if (objlabel.getKind() == ObjectLabel.Kind.ARRAY && propertyname.equals("length") && put)
-            return; // (hopefully) already taken care of by NativeFunctions.updateArrayLength
-        state.getObject(objlabel, true).setProperty(propertyname, value);
+        writePropertyWithAttributes(Collections.singleton(objlabel), propertyname, value, true, true);
     }
 
     /**
@@ -434,10 +678,10 @@ public class PropVarOperations {
      *
      * @param varname the variable name
      * @param value   the new value
-     * @param real    if set, the modified flag is set on written values
+     * @param set_modified if set, the modified flag is set on written values (false for 'assume' operations)
      * @return the set of objects where the variable may be stored (i.e. the base objects)
      */
-    public Set<ObjectLabel> writeVariable(String varname, Value value, boolean real) {
+    public Set<ObjectLabel> writeVariable(String varname, Value value, boolean set_modified) {
         State state = c.getState();
         value.assertNonEmpty();
         // 10.1.4 Identifier Resolution
@@ -446,6 +690,7 @@ public class PropVarOperations {
         // 3. If Result(2) is true, return a value of type Reference whose base object is Result(1) and whose property name is the Identifier.
         // 4. Go to step 1.
         // 5. Return a value of type Reference whose base object is null and whose property name is the Identifier.
+        ParallelTransfer pf = new ParallelTransfer(c);
         Set<ObjectLabel> objlabels = newSet();
         boolean definitely_found;
         for (Iterator<Set<ObjectLabel>> it = ScopeChain.iterable(state.getExecutionContext().getScopeChain()).iterator(); it.hasNext(); ) {
@@ -453,23 +698,24 @@ public class PropVarOperations {
             definitely_found = true;
             for (ObjectLabel objlabel : sc) {
                 Bool h = hasPropertyRaw(Collections.singleton(objlabel), varname);
-                if (h.isMaybeTrue() || !it.hasNext() && !Options.get().isNoImplicitGlobalVarDeclarationsEnabled())
+                if (h.isMaybeTrue() || !it.hasNext() && !Options.get().isNoImplicitGlobalVarDeclarationsEnabled()) {
+                    // 8.6.2.2 [[Put]]
+                    // 1. Call the [[CanPut]] method of O with name P.
+                    // 2. If Result(1) is false, return.
+                    // 3. If O doesn't have a property with name P, go to step 6.
+                    // 4. Set the value of the property to V. The attributes of the property are not changed.
+                    // 5. Return.
+                    // 6. Create a property with name P, set its value to V and give it empty attributes.
+                    pf.add(() -> writeProperty(ObjectProperty.makeOrdinary(objlabel, varname), value, true, false, set_modified, true, false, false));
                     objlabels.add(objlabel);
+                }
                 if (h.isMaybeFalse())
                     definitely_found = false;
             }
             if (definitely_found)
                 break;
         }
-        // 8.6.2.2 [[Put]]
-        // 1. Call the [[CanPut]] method of O with name P.
-        // 2. If Result(1) is false, return.
-        // 3. If O doesn't have a property with name P, go to step 6.
-        // 4. Set the value of the property to V. The attributes of the property are not changed.
-        // 5. Return.
-        // 6. Create a property with name P, set its value to V and give it empty attributes.
-        for (ObjectLabel objlabel : objlabels)
-            writePropertyIfCanPut(objlabel, varname, value, true, real, true, objlabels.size() != 1);
+        pf.complete();
         if (log.isDebugEnabled())
             log.debug("writeVariable(" + varname + "," + value + ")");
         return objlabels;
@@ -477,6 +723,7 @@ public class PropVarOperations {
 
     /**
      * Declares the given variable (or function) and assigns the given value to it.
+     * @param allow_overwrite if set, allow overwriting of existing properties (if not set, do nothing if the property already exists), false for variable declarations
      */
     public void declareAndWriteVariable(String varname, Value value, boolean allow_overwrite) {
         State state = c.getState();
@@ -492,7 +739,7 @@ public class PropVarOperations {
         // variable object and using property attributes { DontDelete }.
         // TODO: variable instantiation (excluding the activation object arguments property) in eval code should use empty attributes, i.e. without DontDelete (10.2.2)
         value.assertNonEmpty();
-        writePropertyRaw(state.getExecutionContext().getVariableObject(), varname, value.restrictToNotAbsent().setAttributes(false, true, false), false, true, allow_overwrite, false);
+        writeProperty(state.getExecutionContext().getVariableObject(), Property.makeOrdinaryProperty(varname), value.restrictToNotAbsent().setAttributes(false, true, false), false, false, true, allow_overwrite, false, false);
         if (log.isDebugEnabled())
             log.debug("declareAndWriteVariable(" + varname + "," + value + ")");
     }
@@ -510,7 +757,7 @@ public class PropVarOperations {
         for (Set<ObjectLabel> sc : ScopeChain.iterable(state.getExecutionContext().getScopeChain())) {
             definitely_found = true;
             for (ObjectLabel objlabel : sc) {
-                Value v = readPropertyRaw(Collections.singleton(objlabel), Value.makeTemporaryStr(varname), false);
+                Value v = readPropertyRaw(Collections.singleton(objlabel), Value.makeTemporaryStr(varname), false, false);
                 if (v.isMaybePresent()) { // found one (maybe)
                     values.add(v.setBottomPropertyData());
                     if (base_objs != null)
@@ -632,21 +879,21 @@ public class PropVarOperations {
         // 4. Return true.
         Value res = Value.makeNone();
         if (propertystr.isMaybeSingleStr())
-            res = res.joinBool(weakDeleteProperty(PropertyReference.makeOrdinaryPropertyReference(objlabel, propertystr.getStr())));
+            res = res.joinBool(weakDeleteProperty(ObjectProperty.makeOrdinary(objlabel, propertystr.getStr())));
         else {
             if (propertystr.isMaybeStrSomeUInt())
-                res = res.joinBool(weakDeleteProperty(PropertyReference.makeDefaultArrayPropertyReference(objlabel)));
+                res = res.joinBool(weakDeleteProperty(ObjectProperty.makeDefaultArray(objlabel)));
             if (propertystr.isMaybeStrSomeNonUInt())
-                res = res.joinBool(weakDeleteProperty(PropertyReference.makeDefaultNonArrayPropertyReference(objlabel)));
-            // the calls to UnknownValueResolver above have materialized all relevant properties
+                res = res.joinBool(weakDeleteProperty(ObjectProperty.makeDefaultNonArray(objlabel)));
+            // the calls to readProperty above via weakDeleteProperty have materialized all relevant properties
             for (String propertyname : newSet(c.getState().getObject(objlabel, false).getPropertyNames()))
                 if (propertystr.isMaybeStr(propertyname))
-                    res = res.joinBool(weakDeleteProperty(PropertyReference.makeOrdinaryPropertyReference(objlabel, propertyname)));
+                    res = res.joinBool(weakDeleteProperty(ObjectProperty.makeOrdinary(objlabel, propertyname)));
         }
         return res;
     }
 
-    private Value weakDeleteProperty(PropertyReference p) {
+    private Value weakDeleteProperty(ObjectProperty p) {
         Value res;
         Value v = c.getState().readProperty(p, true);
         if (!v.isMaybePresent()) // property is definitely absent already

@@ -1,0 +1,19 @@
+test/1k2012love/1166.js:34:3: [definite] Too many parameters to function CanvasRenderingContext2D.prototype.fill
+test/1k2012love/1166.js:11:2: [definite] Dead assignment, property x is never read
+test/1k2012love/1166.js:12:2: [definite] Dead assignment, property y is never read
+test/1k2012love/1166.js:13:2: [definite] Dead assignment, property s is never read
+test/1k2012love/shim.js:6:5: [definite] The variable b is never used
+test/1k2012love/1166.js:32:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.bezierCurveTo
+test/1k2012love/1166.js:47:5: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/shim.js:8:9: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/shim.js:8:9: [maybe] TypeError, call to non-function
+test/1k2012love/shim.js:9:1: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1166.js:36:5: [maybe] Reading absent property width
+test/1k2012love/1166.js:43:11: [maybe] Reading absent property width
+test/1k2012love/shim.js:6:9: [maybe] Reading absent property body
+test/1k2012love/shim.js:8:9: [maybe] Reading absent property getContext
+test/1k2012love/shim.js:9:1: [maybe] Reading absent property body
+test/1k2012love/1166.js:20:157: [maybe] Conversion to number yields NaN
+test/1k2012love/1166.js:32:20: [maybe] Conversion to number yields NaN
+test/1k2012love/shim.js:7:9: [maybe] Reading absent property (computed name)
+test/1k2012love/shim.js,test/1k2012love/1166.js: [maybe] Uncaught exception, constructed at [test/1k2012love/1166.js:47:5, test/1k2012love/shim.js:8:9, test/1k2012love/shim.js:9:1]

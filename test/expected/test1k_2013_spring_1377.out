@@ -23,6 +23,7 @@ test/1k2013spring/shim.js:8:5: [definite] The variable a is never used
 test/1k2013spring/1377.js:25:25: [maybe] RangeError, invalid value of array length
 test/1k2013spring/1377.js:26:22: [maybe] RangeError, invalid value of array length
 test/1k2013spring/1377.js:56:17: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1377.js:69:21: [maybe] RangeError, assigning invalid value to array 'length' property
 test/1k2013spring/1377.js:99:9: [maybe] RangeError, assigning invalid value to array 'length' property
 test/1k2013spring/1377.js:100:9: [maybe] TypeError, call to non-function
 test/1k2013spring/shim.js:8:9: [maybe] TypeError, accessing property of null/undefined
@@ -57,4 +58,4 @@ test/1k2013spring/1377.js:159:49: [maybe] Reading absent property (computed name
 test/1k2013spring/1377.js:163:13: [maybe] Converting object to string
 test/1k2013spring/1377.js:163:13: [maybe] Converting primitive string to object
 test/1k2013spring/shim.js:7:9: [maybe] Reading absent property (computed name)
-test/1k2013spring/shim.js,test/1k2013spring/1377.js: [maybe] Uncaught exception, constructed at [test/1k2013spring/1377.js:25:25, test/1k2013spring/1377.js:26:22, test/1k2013spring/1377.js:56:17, test/1k2013spring/1377.js:99:9, test/1k2013spring/1377.js:100:9, test/1k2013spring/1377.js:164:13, test/1k2013spring/shim.js:8:9, test/1k2013spring/shim.js:9:1]
+test/1k2013spring/shim.js,test/1k2013spring/1377.js: [maybe] Uncaught exception, constructed at [test/1k2013spring/1377.js:25:25, test/1k2013spring/1377.js:26:22, test/1k2013spring/1377.js:56:17, test/1k2013spring/1377.js:69:21, test/1k2013spring/1377.js:99:9, test/1k2013spring/1377.js:100:9, test/1k2013spring/1377.js:164:13, test/1k2013spring/shim.js:8:9, test/1k2013spring/shim.js:9:1]

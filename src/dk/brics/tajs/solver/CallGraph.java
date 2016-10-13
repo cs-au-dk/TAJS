@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2015 Aarhus University
+ * Copyright 2009-2016 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -348,11 +348,13 @@ public class CallGraph<StateType extends IState<StateType, ContextType, CallEdge
 //                visitor.visit(me1.getKey(), me2.getValue(), me2.getKey());
 //    }
 
-//    public Map<NodeAndContext<ContextType>, Map<BlockAndContext<ContextType>, CallEdgeType>> getCallEdgeInfo() { // (currently unused)
-//        return call_edge_info;
-//    }
+    @SuppressWarnings("unused" /* used by TAJS-meta */)
+    public Map<NodeAndContext<ContextType>, Map<BlockAndContext<ContextType>, CallEdgeType>> getCallEdgeInfo() {
+        return call_edge_info;
+    }
 
-//    public Map<BlockAndContext<ContextType>, Set<ReverseEdge<ContextType>>> getCallSources() { // (currently unused)
-//        return call_sources;
-//    }
+    @SuppressWarnings("unused" /* used by TAJS-meta */)
+    public Map<BlockAndContext<ContextType>, Set<ReverseEdge<ContextType>>> getCallSources() {
+        return call_sources;
+    }
 }

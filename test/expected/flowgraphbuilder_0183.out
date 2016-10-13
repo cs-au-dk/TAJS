@@ -82,4 +82,3 @@ function bnpDAddOffset(w)
 
 test/flowgraphbuilder/flowgraph_builder0183.js:9:14: [definite] Variable w is null/undefined
 test/flowgraphbuilder/flowgraph_builder0183.js:9:3: [maybe] Conversion to number yields NaN
-test/flowgraphbuilder/flowgraph_builder0183.js:9:3: [maybe] Reading absent property (computed name)

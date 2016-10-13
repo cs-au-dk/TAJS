@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2015 Aarhus University
+ * Copyright 2009-2016 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -37,7 +37,7 @@ import dk.brics.tajs.lattice.HeapContext;
 import dk.brics.tajs.lattice.Obj;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.ObjectLabel.Kind;
-import dk.brics.tajs.lattice.PropertyReference;
+import dk.brics.tajs.lattice.ObjectProperty;
 import dk.brics.tajs.lattice.ScopeChain;
 import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.Summarized;
@@ -418,7 +418,7 @@ public class UserFunctionCalls {
         return_state.setStoreDefault(caller_state.getStoreDefault().freeze());
         // strengthen each object and replace polymorphic values
         State summarized_calledge = calledge_state.clone();
-        summarizeStore(summarized_calledge, return_state.getSummarized());
+        summarizeStoreAndRegisters(summarized_calledge, return_state.getSummarized());
         for (ObjectLabel objlabel : return_state.getStore().keySet()) {
             Obj obj = return_state.getObject(objlabel, true); // always preparing for object updates, even if no changes are made
             replacePolymorphicValues(obj, calledge_state, caller_entry_state, callee_summarized);
@@ -430,7 +430,7 @@ public class UserFunctionCalls {
         // restore objects that were not used by the callee (i.e. either 'unknown' or never retrieved from basis_store to store)
         for (Map.Entry<ObjectLabel, Obj> me : summarized_calledge.getStore().entrySet())
             if (!return_state.getStore().containsKey(me.getKey()))
-                return_state.putObject(me.getKey(), me.getValue()); // obj is freshly created at summarizeStore, so freeze() unnecessary
+                return_state.putObject(me.getKey(), me.getValue()); // obj is freshly created at summarizeStoreAndRegisters, so freeze() unnecessary
         // remove objects that are equal to the default object
         return_state.removeObjectsEqualToDefault(caller_entry_state.getStoreDefault().isAllNone());
         // restore execution_context and stacked_objlabels from caller
@@ -482,7 +482,7 @@ public class UserFunctionCalls {
                                                  Summarized callee_summarized) {
         if (!v.isPolymorphic())
             return v;
-        PropertyReference p = v.getPropertyReference();
+        ObjectProperty p = v.getObjectProperty();
         ObjectLabel edge_objlabel = p.getObjectLabel();
         Obj calledge_obj = calledge_state.getObject(edge_objlabel, false);
         Value res;
@@ -538,10 +538,10 @@ public class UserFunctionCalls {
     }
 
     /**
-     * Summarizes the store according to the given summarization.
+     * Summarizes the store and registers according to the given summarization.
      * Used by {@link #mergeFunctionReturn(State, State, State, State, Summarized, Value, Value)}.
      */
-    private static void summarizeStore(State state, Summarized s) {
+    private static void summarizeStoreAndRegisters(State state, Summarized s) {
         state.makeWritableStore();
         for (ObjectLabel objlabel : newList(state.getStore().keySet())) {
             // summarize the object property values
@@ -556,6 +556,10 @@ public class UserFunctionCalls {
                     state.removeObject(objlabel);
             }
         }
+        List<Value> registers = state.getRegisters();
+        for (int i = 0; i < registers.size(); i++)
+            if (registers.get(i) != null)
+                registers.set(i, registers.get(i).summarize(s));
     }
 
     /**
@@ -584,30 +588,29 @@ public class UserFunctionCalls {
     /**
      * Extract return flow from implicit call to a user function.
      *
-     * @param result            list of values containing results (may be extended by this call)
-     * @param anyUserFunctions  if set, at least one user function has been called
+     * @param result            list of values containing results (may be extended by this call), or null if n/a
      * @param weak              if set, keep current state
-     * @param implicitAfterCall the implicit-after-call block
-     * @return return value, none if no ordinary return flow
+     * @param implicitAfterCall the implicit-after-call block, or null if n/a
+     * @return return value, none if no ordinary return flow, or null if result parameter is null
      */
-    public static Value implicitUserFunctionReturn(Collection<Value> result, boolean anyUserFunctions, boolean weak, BasicBlock implicitAfterCall, Solver.SolverInterface c) {
-        List<Value> registers = dk.brics.tajs.util.Collections.newList(c.getState().getRegisters());
-        if (!weak) {
-            c.getState().setToNone();
-        }
-        if (anyUserFunctions) {
+    public static Value implicitUserFunctionReturn(Collection<Value> result, boolean weak, BasicBlock implicitAfterCall, Solver.SolverInterface c) {
+        if (implicitAfterCall != null) {
+            List<Value> registers = dk.brics.tajs.util.Collections.newList(c.getState().getRegisters());
+            if (!weak) {
+                c.getState().setToNone();
+            }
             State s = c.getAnalysisLatticeElement().getState(implicitAfterCall, c.getState().getContext());
             if (s != null) {
-                result.add(s.readRegister(AbstractNode.RETURN_REG));
+                if (result != null) {
+                    result.add(s.readRegister(AbstractNode.RETURN_REG));
+                }
                 c.getState().propagate(s, false);
                 c.getState().setRegisters(registers);
-            }
+            } // otherwise, treat as bottom (but don't kill flow - there may be no ordinary return flow)
         }
-        if (c.getState().isNone() && !weak)
-            return Value.makeNone();
-        if (result.isEmpty()) {
-            c.getState().setToNone();
-        }
-        return Value.join(result);
+        if (result != null)
+            return UnknownValueResolver.join(result, c.getState());
+        else
+            return null;
     }
 }

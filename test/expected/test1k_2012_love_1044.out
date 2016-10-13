@@ -1,0 +1,10 @@
+test/1k2012love/shim.js:6:5: [definite] The variable b is never used
+test/1k2012love/1044.js:6:4: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/shim.js:8:9: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/shim.js:8:9: [maybe] TypeError, call to non-function
+test/1k2012love/shim.js:9:1: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/shim.js:6:9: [maybe] Reading absent property body
+test/1k2012love/shim.js:8:9: [maybe] Reading absent property getContext
+test/1k2012love/shim.js:9:1: [maybe] Reading absent property body
+test/1k2012love/shim.js:7:9: [maybe] Reading absent property (computed name)
+test/1k2012love/shim.js,test/1k2012love/1044.js: [maybe] Uncaught exception, constructed at [test/1k2012love/1044.js:6:4, test/1k2012love/shim.js:8:9, test/1k2012love/shim.js:9:1]

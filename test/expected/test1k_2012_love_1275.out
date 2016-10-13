@@ -3,6 +3,7 @@ test/1k2012love/1275.js:16:26: [definite] Variable u is null/undefined
 test/1k2012love/1275.js:16:17: [maybe] TypeError, accessing property of null/undefined
 test/1k2012love/1275.js:16:29: [maybe] TypeError, accessing property of null/undefined
 test/1k2012love/1275.js:18:7: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1275.js:44:6: [maybe] RangeError, assigning invalid value to array 'length' property
 test/1k2012love/1275.js:44:6: [maybe] TypeError, accessing property of null/undefined
 test/1k2012love/1275.js:66:15: [maybe] TypeError, accessing property of null/undefined
 test/1k2012love/1275.js:70:10: [maybe] TypeError, accessing property of null/undefined

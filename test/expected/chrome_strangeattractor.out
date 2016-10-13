@@ -146,6 +146,8 @@ test/chromeexperiments/strangeattractor.html:567:19: [maybe] TypeError, accessin
 test/chromeexperiments/strangeattractor.html:571:17: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/strangeattractor.html:574:37: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/strangeattractor.html:574:49: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/strangeattractor.html:885:9: [maybe] RangeError, assigning invalid value to array 'length' property
+test/chromeexperiments/strangeattractor.html:886:9: [maybe] RangeError, assigning invalid value to array 'length' property
 test/chromeexperiments/strangeattractor.html:900:9: [maybe] TypeError, call to non-function
 test/chromeexperiments/strangeattractor.html:902:9: [maybe] TypeError, call to non-function
 test/chromeexperiments/strangeattractor.html:914:21: [maybe] TypeError, accessing property of null/undefined
@@ -157,7 +159,7 @@ test/chromeexperiments/strangeattractor.html:902:9: [maybe] Reading absent prope
 test/chromeexperiments/strangeattractor.html:922:5: [maybe] Reading absent property body
 test/chromeexperiments/strangeattractor.html:922:35: [maybe] Reading absent property body
 test/chromeexperiments/strangeattractor.html:922:35: [maybe] Reading absent property firstChild
-test/chromeexperiments/strangeattractor.html: [maybe] Uncaught exception, constructed at [test/chromeexperiments/strangeattractor.html:159:25, test/chromeexperiments/strangeattractor.html:399:45, test/chromeexperiments/strangeattractor.html:567:19, test/chromeexperiments/strangeattractor.html:571:17, test/chromeexperiments/strangeattractor.html:574:37, test/chromeexperiments/strangeattractor.html:574:49, test/chromeexperiments/strangeattractor.html:900:9, test/chromeexperiments/strangeattractor.html:902:9, test/chromeexperiments/strangeattractor.html:914:21, test/chromeexperiments/strangeattractor.html:919:47, test/chromeexperiments/strangeattractor.html:922:5, test/chromeexperiments/strangeattractor.html:922:35]
+test/chromeexperiments/strangeattractor.html: [maybe] Uncaught exception, constructed at [test/chromeexperiments/strangeattractor.html:159:25, test/chromeexperiments/strangeattractor.html:399:45, test/chromeexperiments/strangeattractor.html:567:19, test/chromeexperiments/strangeattractor.html:571:17, test/chromeexperiments/strangeattractor.html:574:37, test/chromeexperiments/strangeattractor.html:574:49, test/chromeexperiments/strangeattractor.html:885:9, test/chromeexperiments/strangeattractor.html:886:9, test/chromeexperiments/strangeattractor.html:900:9, test/chromeexperiments/strangeattractor.html:902:9, test/chromeexperiments/strangeattractor.html:914:21, test/chromeexperiments/strangeattractor.html:919:47, test/chromeexperiments/strangeattractor.html:922:5, test/chromeexperiments/strangeattractor.html:922:35]
 test/chromeexperiments/strangeattractor.html:210:26: [maybe] Reading absent property (computed name)
 test/chromeexperiments/strangeattractor.html:408:46: [maybe] Reading absent property (computed name)
 test/chromeexperiments/strangeattractor.html:565:98: [maybe] Reading absent property (computed name)
@@ -166,6 +168,10 @@ test/chromeexperiments/strangeattractor.html:572:26: [maybe] Reading absent prop
 test/chromeexperiments/strangeattractor.html:573:26: [maybe] Reading absent property (computed name)
 test/chromeexperiments/strangeattractor.html:766:17: [maybe] The variable p has values with different types
 test/chromeexperiments/strangeattractor.html:767:30: [maybe] The variable p has values with different types
+test/chromeexperiments/strangeattractor.html:885:9: [maybe] Conversion from string to number yields NaN
+test/chromeexperiments/strangeattractor.html:885:9: [maybe] Converting object to number
+test/chromeexperiments/strangeattractor.html:886:9: [maybe] Conversion from string to number yields NaN
+test/chromeexperiments/strangeattractor.html:886:9: [maybe] Converting object to number
 test/chromeexperiments/strangeattractor.html:909:17: [maybe] Reading absent property (computed name)
 test/chromeexperiments/strangeattractor.html:328:16: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/chromeexperiments/strangeattractor.html:384:17: [info] 'this' refers to a summary abstract object, which may cause loss of precision

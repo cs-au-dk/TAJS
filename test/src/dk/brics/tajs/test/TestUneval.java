@@ -589,6 +589,16 @@ public class TestUneval {
                 monitoring);
     }
 
+    @Test
+    public void uneval_newFunction_call() throws Exception {
+        Misc.init();
+        Misc.runSource(
+                new String[]{"var f = new Function();",
+                        "TAJS_assert(f() === undefined);"
+                },
+                monitoring);
+    }
+
     @Test(expected = AnalysisLimitationException.class /* attempting to parse 'TAJS_TEMPORARY_11;}'*/)
     public void uneval_syntaxParts() throws Exception {
         Misc.init();

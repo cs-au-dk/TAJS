@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2015 Aarhus University
+ * Copyright 2009-2016 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -83,7 +83,7 @@ public class HTMLElement {
 
         // DOM LEVEL 0
         s.newObject(ELEMENT_ATTRIBUTES);
-        pv.writeProperty(Collections.singleton(ELEMENT_ATTRIBUTES), Value.makeAnyStr(), Value.makeAnyStr(), true, false);
+        pv.writeProperty(Collections.singleton(ELEMENT_ATTRIBUTES), Value.makeAnyStr(), Value.makeAnyStr(), false, true);
         s.writeInternalPrototype(ELEMENT_ATTRIBUTES, Value.makeNull()); // FIXME: null, really?
         s.multiplyObject(ELEMENT_ATTRIBUTES);
         ELEMENT_ATTRIBUTES = ELEMENT_ATTRIBUTES.makeSingleton().makeSummary();

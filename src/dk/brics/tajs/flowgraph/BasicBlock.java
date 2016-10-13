@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2015 Aarhus University
+ * Copyright 2009-2016 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -267,6 +267,8 @@ public class BasicBlock {
             s.append(": ").append(n);
             if (n.isRegistersDone())
                 s.append('*');
+            if (n.getImplicitAfterCall() != null)
+                s.append(" [implicitAfterCall]");
             s.append(" (").append(n.getSourceLocation()).append(")\n");
         }
         s.append("    ->[");

@@ -2,7 +2,6 @@ test/uneval/uneval12.js:18:14: [definite] Reading absent property (computed name
 test/uneval/uneval12.js:21:14: [definite] Reading absent property (computed name)
 test/uneval/uneval12.js:12:14: [maybe] Converting undefined to string
 test/uneval/uneval12.js:16:14: [maybe] Conversion to number yields NaN
-test/uneval/uneval12.js:19:14: [maybe] Reading absent property (computed name)
 test/uneval/uneval12.js:8:1: [info] Exp: ((1.0 + y) + 3.0)
 test/uneval/uneval12.js:9:1: [info] Exp: y
 test/uneval/uneval12.js:10:1: [info] Exp: 4.0

@@ -1,0 +1,82 @@
+test/1k2012love/1246.js:41:8: [definite] ReferenceError, reading absent variable start
+test/1k2012love/1246.js:119:67: [definite] ReferenceError, reading absent variable start
+test/1k2012love/1246.js:154:69: [definite] ReferenceError, reading absent variable start
+test/1k2012love/1246.js:66:3: [definite] The conditional expression is always true
+test/1k2012love/1246.js:119:19: [definite] The conditional expression is always true
+test/1k2012love/1246.js:36:9: [definite] Dead assignment, property is never read
+test/1k2012love/1246.js:36:23: [definite] Dead assignment, property x is never read
+test/1k2012love/1246.js:36:29: [definite] Dead assignment, property y is never read
+test/1k2012love/1246.js:79:32: [definite] Dead assignment, property x is never read
+test/1k2012love/1246.js:79:36: [definite] Dead assignment, property y is never read
+test/1k2012love/1246.js:154:63: [definite] Dead assignment, property x is never read
+test/1k2012love/1246.js:40:27: [definite] Unreachable function
+test/1k2012love/1246.js:41:6: [definite] Unreachable code
+test/1k2012love/1246.js:45:9: [definite] The variable e is never used
+test/1k2012love/1246.js:45:9: [definite] The variable i is never used
+test/1k2012love/1246.js:45:9: [definite] The variable x is never used
+test/1k2012love/1246.js:45:9: [definite] The variable y is never used
+test/1k2012love/1246.js:64:11: [definite] The variable i is never used
+test/1k2012love/1246.js:96:13: [definite] The variable e is never used
+test/1k2012love/1246.js:96:13: [definite] The variable x is never used
+test/1k2012love/1246.js:96:13: [definite] The variable y is never used
+test/1k2012love/1246.js:119:14: [definite] Reading absent property (computed name)
+test/1k2012love/1246.js:119:73: [definite] Unreachable code
+test/1k2012love/1246.js:124:28: [definite] Unreachable function
+test/1k2012love/1246.js:135:18: [definite] Unreachable function
+test/1k2012love/1246.js:143:35: [definite] Unreachable function
+test/1k2012love/1246.js:146:21: [definite] Unreachable function
+test/1k2012love/1246.js:154:67: [definite] Unreachable code
+test/1k2012love/shim.js:6:5: [definite] The variable b is never used
+test/1k2012love/1246.js:31:11: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1246.js:36:9: [maybe] RangeError, assigning invalid value to array 'length' property
+test/1k2012love/1246.js:74:18: [maybe] RangeError, assigning invalid value to array 'length' property
+test/1k2012love/1246.js:76:11: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1246.js:76:39: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1246.js:76:69: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1246.js:79:16: [maybe] RangeError, assigning invalid value to array 'length' property
+test/1k2012love/1246.js:135:5: [maybe] TypeError, call to non-function
+test/1k2012love/shim.js:8:9: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/shim.js:8:9: [maybe] TypeError, call to non-function
+test/1k2012love/shim.js:9:1: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1246.js:76:11: [maybe] Reading absent property e
+test/1k2012love/1246.js:76:39: [maybe] Reading absent property e
+test/1k2012love/1246.js:76:69: [maybe] Reading absent property e
+test/1k2012love/shim.js:6:9: [maybe] Reading absent property body
+test/1k2012love/shim.js:8:9: [maybe] Reading absent property getContext
+test/1k2012love/shim.js:9:1: [maybe] Reading absent property body
+test/1k2012love/1246.js:34:25: [maybe] Reading absent property (computed name)
+test/1k2012love/1246.js:36:9: [maybe] Conversion from string to number yields NaN
+test/1k2012love/1246.js:36:9: [maybe] Converting object to number
+test/1k2012love/1246.js:38:9: [maybe] Reading absent property (computed name)
+test/1k2012love/1246.js:41:18: [maybe] Reading absent property (computed name)
+test/1k2012love/1246.js:70:15: [maybe] The variable paused has values with different types
+test/1k2012love/1246.js:70:34: [maybe] The variable paused has values with different types
+test/1k2012love/1246.js:71:7: [maybe] Reading absent property (computed name)
+test/1k2012love/1246.js:74:18: [maybe] Conversion from string to number yields NaN
+test/1k2012love/1246.js:74:18: [maybe] Converting object to number
+test/1k2012love/1246.js:76:11: [maybe] Conversion to number yields NaN
+test/1k2012love/1246.js:76:11: [maybe] Converting primitive number to object
+test/1k2012love/1246.js:76:11: [maybe] Reading absent property (computed name)
+test/1k2012love/1246.js:76:39: [maybe] Converting primitive number to object
+test/1k2012love/1246.js:76:39: [maybe] Reading absent property (computed name)
+test/1k2012love/1246.js:76:67: [maybe] Conversion to number yields NaN
+test/1k2012love/1246.js:76:69: [maybe] Converting primitive number to object
+test/1k2012love/1246.js:76:69: [maybe] Reading absent property (computed name)
+test/1k2012love/1246.js:79:16: [maybe] Conversion from string to number yields NaN
+test/1k2012love/1246.js:79:16: [maybe] Converting object to number
+test/1k2012love/1246.js:92:3: [maybe] Converting undefined to string
+test/1k2012love/1246.js:99:16: [maybe] Conversion from string to number yields NaN
+test/1k2012love/1246.js:99:16: [maybe] Converting object to number
+test/1k2012love/1246.js:99:16: [maybe] The variable step has values with different types
+test/1k2012love/1246.js:106:5: [maybe] The variable paused has values with different types
+test/1k2012love/1246.js:119:14: [maybe] Converting primitive string to object
+test/1k2012love/1246.js:154:15: [maybe] Conversion from string to number yields NaN
+test/1k2012love/1246.js:154:15: [maybe] Conversion from string to number yields NaN
+test/1k2012love/1246.js:154:15: [maybe] Converting object to number
+test/1k2012love/1246.js:154:15: [maybe] Converting object to number
+test/1k2012love/1246.js:154:15: [maybe] The variable step has values with different types
+test/1k2012love/1246.js:154:28: [maybe] Conversion from string to number yields NaN
+test/1k2012love/1246.js:154:28: [maybe] Converting object to number
+test/1k2012love/1246.js:154:28: [maybe] The variable step has values with different types
+test/1k2012love/shim.js:7:9: [maybe] Reading absent property (computed name)
+test/1k2012love/shim.js,test/1k2012love/1246.js: [maybe] Uncaught exception, constructed at [test/1k2012love/1246.js:31:11, test/1k2012love/1246.js:36:9, test/1k2012love/1246.js:41:8, test/1k2012love/1246.js:74:18, test/1k2012love/1246.js:76:11, test/1k2012love/1246.js:76:39, test/1k2012love/1246.js:76:69, test/1k2012love/1246.js:79:16, test/1k2012love/1246.js:119:67, test/1k2012love/1246.js:135:5, test/1k2012love/1246.js:154:69, test/1k2012love/shim.js:8:9, test/1k2012love/shim.js:9:1]

@@ -4,7 +4,7 @@
 
     <property name="project" value="tajs" />
     <property name="version" value="0.9" />
-    <property name="release" value="4" />
+    <property name="release" value="8" />
 
     <property name="optimize" value="on" />
     <property name="debug" value="off" />
@@ -50,23 +50,20 @@
     </target>
 
     <target name="jar-all" depends="jar">
-        <mkdir dir="temp" />
-        <unzip src="lib/jericho-html-3.3.jar" dest="temp" />
-        <unzip src="lib/closure-compiler.jar" dest="temp" />
-        <unzip src="lib/log4j.jar" dest="temp" />
-        <unzip src="dist/${project}.jar" dest="temp" />
-        <jar jarfile="dist/${project}-all.jar" basedir="temp" includes="**/*.*">
+        <jar jarfile="dist/${project}-all.jar" basedir="lib" includes="**/*.*">
+            <zipgroupfileset dir="lib" includes="*.jar"/>
+            <zipfileset src="dist/${project}.jar"/>
             <manifest>
                 <attribute name="Main-Class" value="dk.brics.tajs.Main" />
             </manifest>
         </jar>
-        <delete dir="temp" />
     </target>
 
     <target name="clean">
         <delete dir="antbuild"/>
         <delete dir="doc" />
         <delete dir="flowgraphs" />
+        <delete dir="dist" />
     </target>
 
     <target name="doc" depends="jar">
@@ -93,7 +90,7 @@
             <doctitle>
                 <![CDATA[Type Analyzer for JavaScript (TAJS) API Specification]]>
             </doctitle>
-            <bottom><![CDATA[<i> Copyright &#169; 2009-2015 Aarhus University </i>]]></bottom>
+            <bottom><![CDATA[<i> Copyright &#169; 2009-2016 Aarhus University </i>]]></bottom>
             <link href="http://docs.oracle.com/javase/8/docs/api/"/>
             <link href="http://www.mozilla.org/rhino/apidocs/" />
             <classpath refid="classpath" />

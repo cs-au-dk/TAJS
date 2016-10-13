@@ -1,0 +1,26 @@
+test/1k2012love/1201.js:49:1: [definite] The variable a is never used
+test/1k2012love/1201.js:49:1: [definite] The variable i is never used
+test/1k2012love/1201.js:38:19: [maybe] ReferenceError, reading absent variable y
+test/1k2012love/1201.js:50:9: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1201.js:53:13: [maybe] ReferenceError, reading absent variable x
+test/1k2012love/1201.js:57:5: [maybe] ReferenceError, reading absent variable y
+test/1k2012love/1201.js:73:6: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1201.js:95:6: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1201.js:113:4: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1201.js:113:32: [maybe] ReferenceError, reading absent variable f
+test/1k2012love/1201.js:113:57: [maybe] ReferenceError, reading absent variable g
+test/1k2012love/1201.js:116:1: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1201.js:130:20: [maybe] ReferenceError, reading absent variable k
+test/1k2012love/shim.js:8:9: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/shim.js:8:9: [maybe] TypeError, call to non-function
+test/1k2012love/shim.js:9:1: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/shim.js:6:9: [maybe] Reading absent property body
+test/1k2012love/shim.js:8:9: [maybe] Reading absent property getContext
+test/1k2012love/shim.js:9:1: [maybe] Reading absent property body
+test/1k2012love/1201.js:20:18: [maybe] Converting primitive number to object
+test/1k2012love/1201.js:80:4: [maybe] Reading absent property (computed name)
+test/1k2012love/1201.js:95:6: [maybe] Reading absent property (computed name)
+test/1k2012love/1201.js:128:5: [maybe] Reading absent property (computed name)
+test/1k2012love/1201.js:128:24: [maybe] Reading absent property (computed name)
+test/1k2012love/shim.js:7:9: [maybe] Reading absent property (computed name)
+test/1k2012love/shim.js,test/1k2012love/1201.js: [maybe] Uncaught exception, constructed at [test/1k2012love/1201.js:38:19, test/1k2012love/1201.js:50:9, test/1k2012love/1201.js:53:13, test/1k2012love/1201.js:57:5, test/1k2012love/1201.js:73:6, test/1k2012love/1201.js:95:6, test/1k2012love/1201.js:113:4, test/1k2012love/1201.js:113:32, test/1k2012love/1201.js:113:57, test/1k2012love/1201.js:116:1, test/1k2012love/1201.js:130:20, test/1k2012love/shim.js:8:9, test/1k2012love/shim.js:9:1]

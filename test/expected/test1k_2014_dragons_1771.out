@@ -16,8 +16,13 @@ test/1k2014dragons/shims.js:11:9: [definite] The variable e is never used
 test/1k2014dragons/shims.js:12:12: [definite] Unreachable function
 test/1k2014dragons/shims.js:18:5: [definite] The variable AudioContext is never used
 test/1k2014dragons/1771.js:52:17: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1771.js:52:17: [maybe] TypeError, accessing property of null/undefined
 test/1k2014dragons/1771.js:52:41: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1771.js:52:41: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1771.js:76:13: [maybe] RangeError, assigning invalid value to array 'length' property
 test/1k2014dragons/1771.js:80:13: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1771.js:83:13: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1771.js:93:13: [maybe] TypeError, accessing property of null/undefined
 test/1k2014dragons/1771.js:103:26: [maybe] TypeError, accessing property of null/undefined
 test/1k2014dragons/1771.js:132:53: [maybe] TypeError, accessing property of null/undefined
 test/1k2014dragons/shims.js:31:1: [maybe] TypeError, accessing property of null/undefined
@@ -28,6 +33,15 @@ test/1k2014dragons/shims.js:37:9: [maybe] TypeError, call to non-function
 test/1k2014dragons/shims.js:42:18: [maybe] TypeError, call to non-function
 test/1k2014dragons/shims.js:42:46: [maybe] TypeError, call to non-function
 test/1k2014dragons/shims.js:55:9: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1771.js:52:17: [maybe] Reading absent property s
+test/1k2014dragons/1771.js:52:41: [maybe] Reading absent property d
+test/1k2014dragons/1771.js:80:13: [maybe] Reading absent property s
+test/1k2014dragons/1771.js:91:21: [maybe] Reading absent property x
+test/1k2014dragons/1771.js:91:26: [maybe] Reading absent property y
+test/1k2014dragons/1771.js:93:13: [maybe] Reading absent property d
+test/1k2014dragons/1771.js:103:26: [maybe] Reading absent property x
+test/1k2014dragons/1771.js:103:38: [maybe] Reading absent property y
+test/1k2014dragons/1771.js:132:53: [maybe] Reading absent property r
 test/1k2014dragons/shims.js:10:9: [maybe] Reading absent property body
 test/1k2014dragons/shims.js:31:1: [maybe] Reading absent property body
 test/1k2014dragons/shims.js:34:1: [maybe] Reading absent property style
@@ -40,14 +54,23 @@ test/1k2014dragons/1771.js:24:14: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1771.js:24:14: [maybe] Reading absent property (computed name)
 test/1k2014dragons/1771.js:24:31: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1771.js:24:31: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1771.js:33:17: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1771.js:33:57: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1771.js:33:67: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1771.js:46:17: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1771.js:46:17: [maybe] Reading absent property (computed name)
 test/1k2014dragons/1771.js:47:17: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1771.js:47:17: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1771.js:52:17: [maybe] Converting primitive number to object
 test/1k2014dragons/1771.js:52:17: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1771.js:52:41: [maybe] Converting primitive number to object
 test/1k2014dragons/1771.js:52:41: [maybe] Reading absent property (computed name)
 test/1k2014dragons/1771.js:52:41: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1771.js:76:13: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1771.js:76:13: [maybe] Converting object to number
 test/1k2014dragons/1771.js:78:13: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1771.js:80:13: [maybe] Converting primitive number to object
+test/1k2014dragons/1771.js:80:13: [maybe] The variable M has values with different types
 test/1k2014dragons/1771.js:83:13: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1771.js:83:13: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1771.js:83:13: [maybe] Reading absent property (computed name)
@@ -64,6 +87,10 @@ test/1k2014dragons/1771.js:85:13: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1771.js:85:21: [maybe] Reading absent property (computed name)
 test/1k2014dragons/1771.js:85:28: [maybe] Reading absent property (computed name)
 test/1k2014dragons/1771.js:85:35: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1771.js:86:9: [maybe] Converting primitive number to object
+test/1k2014dragons/1771.js:86:9: [maybe] The variable M has values with different types
+test/1k2014dragons/1771.js:87:9: [maybe] Converting primitive number to object
+test/1k2014dragons/1771.js:87:9: [maybe] The variable M has values with different types
 test/1k2014dragons/1771.js:87:16: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1771.js:87:16: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1771.js:87:16: [maybe] Conversion to number yields NaN
@@ -75,12 +102,30 @@ test/1k2014dragons/1771.js:87:30: [maybe] Reading absent property (computed name
 test/1k2014dragons/1771.js:87:37: [maybe] Reading absent property (computed name)
 test/1k2014dragons/1771.js:87:44: [maybe] Reading absent property (computed name)
 test/1k2014dragons/1771.js:87:51: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1771.js:89:9: [maybe] Converting primitive number to object
+test/1k2014dragons/1771.js:89:9: [maybe] The variable M has values with different types
+test/1k2014dragons/1771.js:91:21: [maybe] Converting primitive number to object
+test/1k2014dragons/1771.js:91:21: [maybe] The variable M has values with different types
+test/1k2014dragons/1771.js:91:26: [maybe] Converting primitive number to object
+test/1k2014dragons/1771.js:91:26: [maybe] The variable M has values with different types
+test/1k2014dragons/1771.js:93:13: [maybe] Converting primitive number to object
+test/1k2014dragons/1771.js:93:13: [maybe] The variable M has values with different types
 test/1k2014dragons/1771.js:93:22: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1771.js:93:22: [maybe] Reading absent property (computed name)
 test/1k2014dragons/1771.js:93:35: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1771.js:93:35: [maybe] Reading absent property (computed name)
 test/1k2014dragons/1771.js:93:43: [maybe] Reading absent property (computed name)
 test/1k2014dragons/1771.js:98:17: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1771.js:103:24: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1771.js:103:26: [maybe] Converting primitive number to object
+test/1k2014dragons/1771.js:103:26: [maybe] The variable q has values with different types
+test/1k2014dragons/1771.js:103:36: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1771.js:103:38: [maybe] Converting primitive number to object
+test/1k2014dragons/1771.js:103:38: [maybe] The variable q has values with different types
 test/1k2014dragons/1771.js:127:17: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1771.js:132:53: [maybe] Converting primitive number to object
+test/1k2014dragons/1771.js:132:53: [maybe] The variable J has values with different types
+test/1k2014dragons/1771.js:133:13: [maybe] Converting primitive number to object
+test/1k2014dragons/1771.js:133:13: [maybe] The variable J has values with different types
 test/1k2014dragons/shims.js:9:9: [maybe] Reading absent property (computed name)
-test/1k2014dragons/shims.js,test/1k2014dragons/1771.js: [maybe] Uncaught exception, constructed at [test/1k2014dragons/1771.js:52:17, test/1k2014dragons/1771.js:52:41, test/1k2014dragons/1771.js:80:13, test/1k2014dragons/1771.js:103:26, test/1k2014dragons/1771.js:132:53, test/1k2014dragons/shims.js:31:1, test/1k2014dragons/shims.js:34:1, test/1k2014dragons/shims.js:35:1, test/1k2014dragons/shims.js:37:9, test/1k2014dragons/shims.js:42:18, test/1k2014dragons/shims.js:42:46, test/1k2014dragons/shims.js:55:9]
+test/1k2014dragons/shims.js,test/1k2014dragons/1771.js: [maybe] Uncaught exception, constructed at [test/1k2014dragons/1771.js:52:17, test/1k2014dragons/1771.js:52:41, test/1k2014dragons/1771.js:76:13, test/1k2014dragons/1771.js:80:13, test/1k2014dragons/1771.js:83:13, test/1k2014dragons/1771.js:93:13, test/1k2014dragons/1771.js:103:26, test/1k2014dragons/1771.js:132:53, test/1k2014dragons/shims.js:31:1, test/1k2014dragons/shims.js:34:1, test/1k2014dragons/shims.js:35:1, test/1k2014dragons/shims.js:37:9, test/1k2014dragons/shims.js:42:18, test/1k2014dragons/shims.js:42:46, test/1k2014dragons/shims.js:55:9]

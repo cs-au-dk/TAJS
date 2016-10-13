@@ -22,4 +22,4 @@ test/1k2013spring/1450.js:34:30: [maybe] Conversion to number yields NaN
 test/1k2013spring/1450.js:34:41: [maybe] Reading absent property (computed name)
 test/1k2013spring/1450.js:166:31: [maybe] Converting object to number
 test/1k2013spring/shim.js:7:9: [maybe] Reading absent property (computed name)
-test/1k2013spring/shim.js,test/1k2013spring/1450.js: [maybe] Uncaught exception, constructed at [test/1k2013spring/1450.js:167:2, test/1k2013spring/shim.js:8:9, test/1k2013spring/shim.js:9:1]
+test/1k2013spring/shim.js,test/1k2013spring/1450.js: [maybe] Uncaught exception, constructed at [test/1k2013spring/1450.js:13:3, test/1k2013spring/1450.js:167:2, test/1k2013spring/shim.js:8:9, test/1k2013spring/shim.js:9:1]

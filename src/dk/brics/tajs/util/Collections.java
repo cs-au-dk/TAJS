@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2015 Aarhus University
+ * Copyright 2009-2016 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,6 +29,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 /**
  * Miscellaneous collection construction methods.
@@ -146,6 +148,16 @@ public class Collections {
     }
 
     /**
+     * Constructs a new mutable singleton list containing the given element.
+     * Note that the set is mutable (created by {@link #newList()}), unlike java.util.Collections.singletonList.
+     */
+    public static <T> List<T> singletonList(T t) {
+        List<T> set = newList();
+        set.add(t);
+        return set;
+    }
+
+    /**
      * Constructs a new empty set.
      */
     public static <T> Set<T> newSet() {
@@ -243,5 +255,12 @@ public class Collections {
             sorted.sort((o1, o2) -> o2.toString().compareTo(o1.toString()));
             return sorted.toString();
         }
+    }
+
+    /**
+     * Applies f to each element in the collection, producing a new collection.
+     */
+    public static <C,T> Collection<T> map(Collection<C> ts, Function<C,T> f) {
+        return ts.stream().map(f).collect(Collectors.toList());
     }
 }

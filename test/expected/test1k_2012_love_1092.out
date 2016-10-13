@@ -2,6 +2,7 @@ test/1k2012love/1092.js:79:14: [definite] The variable e is never used
 test/1k2012love/1092.js:30:7: [maybe] TypeError, accessing property of null/undefined
 test/1k2012love/1092.js:31:2: [maybe] TypeError, accessing property of null/undefined
 test/1k2012love/1092.js:50:14: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1092.js:51:4: [maybe] RangeError, assigning invalid value to array 'length' property
 test/1k2012love/1092.js:51:4: [maybe] TypeError, accessing property of null/undefined
 test/1k2012love/1092.js:56:45: [maybe] TypeError, accessing property of null/undefined
 test/1k2012love/1092.js:64:23: [maybe] TypeError, accessing property of null/undefined

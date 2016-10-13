@@ -14,6 +14,10 @@ test/google/cryptobench.js:1532:6: [definite] The conditional expression is alwa
 test/google/cryptobench.js:1532:6: [definite] The conditional expression is always true
 test/google/cryptobench.js:1532:6: [definite] The conditional expression is always true
 test/google/cryptobench.js:1550:3: [definite] The conditional expression is always false
+test/google/cryptobench.js:1574:9: [definite] The conditional expression is always false
+test/google/cryptobench.js:1574:9: [definite] The conditional expression is always false
+test/google/cryptobench.js:1579:5: [definite] The conditional expression is always true
+test/google/cryptobench.js:1581:9: [definite] The conditional expression is always false
 test/google/cryptobench.js:1599:3: [definite] The conditional expression is always true
 test/google/cryptobench.js:1599:6: [definite] The conditional expression is always true
 test/google/cryptobench.js:1599:6: [definite] The conditional expression is always true
@@ -265,7 +269,7 @@ test/google/cryptobench.js:1211:25: [maybe] Reading absent property s
 test/google/cryptobench.js:1212:6: [maybe] Reading absent property t
 test/google/cryptobench.js:1214:22: [maybe] Reading absent property t
 test/google/cryptobench.js:1267:6: [maybe] Reading absent property t
-test/google/cryptobench.js: [maybe] Uncaught exception, constructed at [test/google/cryptobench.js:237:11, test/google/cryptobench.js:241:10, test/google/cryptobench.js:439:17, test/google/cryptobench.js:440:27, test/google/cryptobench.js:541:23, test/google/cryptobench.js:606:17, test/google/cryptobench.js:798:5, test/google/cryptobench.js:1098:3, test/google/cryptobench.js:1162:7, test/google/cryptobench.js:1461:10, test/google/cryptobench.js:1542:10]
+test/google/cryptobench.js: [maybe] Uncaught exception, constructed at [test/google/cryptobench.js:131:5, test/google/cryptobench.js:205:38, test/google/cryptobench.js:237:11, test/google/cryptobench.js:241:10, test/google/cryptobench.js:345:34, test/google/cryptobench.js:355:35, test/google/cryptobench.js:369:5, test/google/cryptobench.js:391:5, test/google/cryptobench.js:439:17, test/google/cryptobench.js:440:27, test/google/cryptobench.js:510:9, test/google/cryptobench.js:541:23, test/google/cryptobench.js:606:17, test/google/cryptobench.js:608:5, test/google/cryptobench.js:798:5, test/google/cryptobench.js:843:33, test/google/cryptobench.js:848:30, test/google/cryptobench.js:1025:22, test/google/cryptobench.js:1056:16, test/google/cryptobench.js:1071:19, test/google/cryptobench.js:1098:3, test/google/cryptobench.js:1162:7, test/google/cryptobench.js:1461:10, test/google/cryptobench.js:1542:10]
 test/google/cryptobench.js:54:6: [maybe] The variable a has values with different types
 test/google/cryptobench.js:55:46: [maybe] The variable a has values with different types
 test/google/cryptobench.js:57:26: [maybe] The variable a has values with different types
@@ -591,11 +595,7 @@ test/google/cryptobench.js:1504:36: [maybe] Converting primitive string to objec
 test/google/cryptobench.js:1532:32: [maybe] Converting primitive string to object
 test/google/cryptobench.js:1532:48: [maybe] Converting primitive string to object
 test/google/cryptobench.js:1552:7: [maybe] Converting primitive string to object
-test/google/cryptobench.js:1574:25: [maybe] Reading absent property (computed name)
-test/google/cryptobench.js:1575:27: [maybe] Reading absent property (computed name)
 test/google/cryptobench.js:1578:9: [maybe] Reading absent property (computed name)
-test/google/cryptobench.js:1582:12: [maybe] Conversion to number yields NaN
-test/google/cryptobench.js:1582:32: [maybe] Reading absent property (computed name)
 test/google/cryptobench.js:1599:32: [maybe] Converting primitive string to object
 test/google/cryptobench.js:1599:48: [maybe] Converting primitive string to object
 test/google/cryptobench.js:1664:23: [maybe] The variable ctext has values with different types

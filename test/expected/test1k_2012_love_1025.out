@@ -1,5 +1,6 @@
 test/1k2012love/1025.js:46:3: [definite] Too few parameters to function CanvasRenderingContext2D.prototype.arc
 test/1k2012love/1025.js:47:3: [definite] Too few parameters to function CanvasRenderingContext2D.prototype.arc
+test/1k2012love/1025.js:8:3: [maybe] RangeError, assigning invalid value to array 'length' property
 test/1k2012love/1025.js:13:1: [maybe] TypeError, accessing property of null/undefined
 test/1k2012love/1025.js:14:1: [maybe] TypeError, accessing property of null/undefined
 test/1k2012love/1025.js:72:9: [maybe] TypeError, accessing property of null/undefined
@@ -13,9 +14,23 @@ test/1k2012love/1025.js:14:1: [maybe] Reading absent property style
 test/1k2012love/shim.js:6:9: [maybe] Reading absent property body
 test/1k2012love/shim.js:8:9: [maybe] Reading absent property getContext
 test/1k2012love/shim.js:9:1: [maybe] Reading absent property body
+test/1k2012love/1025.js:8:3: [maybe] Conversion from string to number yields NaN
+test/1k2012love/1025.js:8:3: [maybe] Converting object to number
 test/1k2012love/1025.js:53:23: [maybe] Converting primitive string to object
 test/1k2012love/1025.js:71:9: [maybe] Reading absent property (computed name)
+test/1k2012love/1025.js:72:9: [maybe] Converting primitive number to object
+test/1k2012love/1025.js:72:9: [maybe] Reading absent property (computed name)
+test/1k2012love/1025.js:72:9: [maybe] The variable E has values with different types
+test/1k2012love/1025.js:73:9: [maybe] Converting primitive number to object
+test/1k2012love/1025.js:73:9: [maybe] Reading absent property (computed name)
+test/1k2012love/1025.js:73:9: [maybe] The variable E has values with different types
+test/1k2012love/1025.js:76:11: [maybe] Converting primitive number to object
 test/1k2012love/1025.js:76:11: [maybe] Reading absent property (computed name)
+test/1k2012love/1025.js:80:11: [maybe] Converting primitive number to object
 test/1k2012love/1025.js:80:11: [maybe] Reading absent property (computed name)
+test/1k2012love/1025.js:84:5: [maybe] Conversion to number yields NaN
+test/1k2012love/1025.js:84:20: [maybe] Conversion to number yields NaN
+test/1k2012love/1025.js:85:5: [maybe] Conversion to number yields NaN
+test/1k2012love/1025.js:85:20: [maybe] Conversion to number yields NaN
 test/1k2012love/shim.js:7:9: [maybe] Reading absent property (computed name)
-test/1k2012love/shim.js,test/1k2012love/1025.js: [maybe] Uncaught exception, constructed at [test/1k2012love/1025.js:13:1, test/1k2012love/1025.js:14:1, test/1k2012love/1025.js:72:9, test/1k2012love/1025.js:76:11, test/1k2012love/1025.js:80:11, test/1k2012love/shim.js:8:9, test/1k2012love/shim.js:9:1]
+test/1k2012love/shim.js,test/1k2012love/1025.js: [maybe] Uncaught exception, constructed at [test/1k2012love/1025.js:8:3, test/1k2012love/1025.js:13:1, test/1k2012love/1025.js:14:1, test/1k2012love/1025.js:72:9, test/1k2012love/1025.js:76:11, test/1k2012love/1025.js:80:11, test/1k2012love/shim.js:8:9, test/1k2012love/shim.js:9:1]

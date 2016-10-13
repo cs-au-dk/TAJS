@@ -1,6 +1,7 @@
 test/1k2012love/1057.js:5:7: [maybe] TypeError, accessing property of null/undefined
 test/1k2012love/1057.js:6:2: [maybe] TypeError, accessing property of null/undefined
 test/1k2012love/1057.js:24:14: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1057.js:25:4: [maybe] RangeError, assigning invalid value to array 'length' property
 test/1k2012love/1057.js:25:4: [maybe] TypeError, accessing property of null/undefined
 test/1k2012love/1057.js:30:45: [maybe] TypeError, accessing property of null/undefined
 test/1k2012love/1057.js:37:61: [maybe] RangeError, assigning invalid value to array 'length' property

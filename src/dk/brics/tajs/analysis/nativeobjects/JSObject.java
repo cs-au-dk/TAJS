@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2015 Aarhus University
+ * Copyright 2009-2016 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,13 +27,16 @@ import dk.brics.tajs.lattice.Obj;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.ObjectLabel.Kind;
 import dk.brics.tajs.lattice.State;
+import dk.brics.tajs.lattice.Str;
 import dk.brics.tajs.lattice.UnknownValueResolver;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.solver.Message;
+import dk.brics.tajs.util.AnalysisException;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -95,11 +98,31 @@ public class JSObject {
             case OBJECT_DEFINE_PROPERTY: { // 15.2.3.6
                 NativeFunctions.expectParameters(nativeobject, call, c, 3, 3);
                 Value o = NativeFunctions.readParameter(call, state, 0);
-                Value nameString = Conversion.toString(NativeFunctions.readParameter(call, state, 1), c);
-                pv.writeProperty(o.getObjectLabels(), nameString, Value.makeUndef(), true, false); // FIXME: unsound
-                return NativeFunctions.readParameter(call, state, 0);
+                Value propertyName = Conversion.toString(NativeFunctions.readParameter(call, state, 1), c);
+                Value argument = NativeFunctions.readParameter(call, state, 2);
+                PropertyDescriptor desc = PropertyDescriptor.toDefinePropertyPropertyDescriptor(argument, c);
+                Value value = desc.makePropertyWithAttributes();
+                if (value.isNone())
+                    return Value.makeNone();
+                pv.writeProperty(o.getObjectLabels(), propertyName, value, true, true, false, true); // FIXME: trigger TypeError exception if attempt to overwrite non-writable (#291)
+                return o;
             }
-
+            case OBJECT_DEFINESETTER:
+            case OBJECT_DEFINEGETTER: {
+                PropVarOperations pv1 = c.getAnalysis().getPropVarOperations();
+                NativeFunctions.expectParameters(nativeobject, call, c, 2, 2);
+                State state1 = c.getState();
+                Set<ObjectLabel> objs = state1.readThisObjects();
+                Value propertyName = Conversion.toString(NativeFunctions.readParameter(call, state1, 0), c);
+                Value argument = NativeFunctions.readParameter(call, state1, 1);
+                boolean getter = nativeobject == ECMAScriptObjects.OBJECT_DEFINEGETTER;
+                PropertyDescriptor desc = PropertyDescriptor.toDefineGetterSetterPropertyDescriptor(argument, getter, c);
+                Value value = desc.makePropertyWithAttributes();
+                if (value.isNone())
+                    return Value.makeNone();
+                pv.writeProperty(objs, propertyName, value, true, false, false, true);
+                return Value.makeUndef();
+            }
             case OBJECT_TOSTRING: // 15.2.4.2
             case OBJECT_TOLOCALESTRING: { // 15.2.4.3
                 // TODO slightly unsound as null and undefined will actually produce [object Null] and [object Undefined], when this is called through .call or .apply...
@@ -220,6 +243,29 @@ public class JSObject {
                 NativeFunctions.expectParameters(nativeobject, call, c, 1, 1);
                 c.getMonitoring().addMessage(call.getJSSourceNode(), Message.Severity.TAJS_ERROR, "Warning: Calling Object.freeze, but no side-effects have been implemented for it...");
                 return NativeFunctions.readParameter(call, state, 0);
+
+            case OBJECT_GETOWNPROPERTYDESCRIPTOR: // FIXME: handle toObject/missing-object-typeerror cases
+                NativeFunctions.expectParameters(nativeobject, call, c, 2, 2);
+                Set<ObjectLabel> receivers = Conversion.toObjectLabels(c.getNode(), NativeFunctions.readParameter(call, state, 0), c);
+                Value name = NativeFunctions.readParameter(call, state, 1);
+                Str nameStr = Conversion.toString(name, c);
+                c.getMonitoring().visitPropertyRead(c.getNode(), receivers, nameStr, c.getState(), true);
+                Value property = Value.join(dk.brics.tajs.util.Collections.map(receivers, objlabel ->
+                    UnknownValueResolver.getRealValue(pv.readPropertyDirect(objlabel, nameStr), state)
+                ));
+                Value result = Value.makeNone();
+                if (!property.isNotPresent()) {
+                    Optional<ObjectLabel> descriptorObject = PropertyDescriptor.fromProperty(property).newPropertyDescriptorObject(c);
+                    if (!descriptorObject.isPresent()) {
+                        throw new AnalysisException("It should not be possible to construct an invalid descriptor from an existing property!");
+                    }
+                    result = result.joinObject(descriptorObject.get());
+                }
+                if (property.isMaybeAbsent()) {
+                    result = result.joinUndef();
+                }
+                return result;
+
             default:
                 return null;
         }

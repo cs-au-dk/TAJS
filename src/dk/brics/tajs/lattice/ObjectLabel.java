@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2015 Aarhus University
+ * Copyright 2009-2016 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -33,6 +33,11 @@ public final class ObjectLabel implements Comparable<ObjectLabel> { // TODO: (#1
      * Source location used for host functions.
      */
     private static final SourceLocation initial_source = new SourceLocation(0, 0, "<initial state>");
+
+    /**
+     * Special object label for absent getter/setter.
+     */
+    public static final ObjectLabel absent_accessor_function = new ObjectLabel(null, null, null, Kind.FUNCTION, null, false);
 
     /**
      * Object kinds.
@@ -241,6 +246,8 @@ public final class ObjectLabel implements Comparable<ObjectLabel> { // TODO: (#1
      */
     @Override
     public String toString() {
+        if (this == absent_accessor_function)
+            return "<absent getter/setter>";
         StringBuilder b = new StringBuilder();
         if (singleton)
             b.append('@');
@@ -253,7 +260,7 @@ public final class ObjectLabel implements Comparable<ObjectLabel> { // TODO: (#1
             b.append(f).append("#fun").append(function.getIndex());
         } else if (hostobject != null)
             b.append(hostobject).append('[').append(hostobject.getAPI().getShortName()).append(']');
-        else {
+        else if (node != null) {
             b.append(kind).append("#node").append(node.getIndex());
         }
         b.append(heapContext);

@@ -72,9 +72,9 @@ public class TestGoogle2 {
 		Misc.run(args, monitoring);
 		Misc.checkSystemOutput();
 	}
-	
-	@Test
-	public void google2_crypto() throws Exception { 
+
+	@Test(expected = AssertionError.class) // "reading absent variable DV" is correct!
+	public void google2_crypto() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/google2/crypto.js"};

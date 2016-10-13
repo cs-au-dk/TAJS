@@ -4,8 +4,8 @@ Abstract state:
   Execution context: ScopeChain=[[@<the global object>[native]]], VariableObject=[@<the global object>[native]], this=[@<the global object>[native]]
   Summarized: maybe=[@arguments#node25, @arguments#node19, @activation#node25, @activation#node19, @Object#node7, @Object#node3, @Object#node21, @<anonymous>#fun2, @<anonymous>#fun1], definitely=[@arguments#node25, @arguments#node19, @activation#node25, @activation#node19, @Object#node7, @Object#node3, @Object#node21, @<anonymous>#fun2, @<anonymous>#fun1]
   Store (excluding basis and default objects): 
-    @<the global object>[native] (<initial state>): {C:[@<anonymous>#fun1],TAJS_dumpState:^(@<the global object>[native].TAJS_dumpState[present]),TAJS_dumpValue:^(@<the global object>[native].TAJS_dumpValue[present]),x:[@Object#node7],[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Prototype]]=?,[[Value]]=?,[[Scope]]=?}
-    @Object.prototype[native] (<initial state>): {inc:^(@Object.prototype[native].inc[absent]),[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Prototype]]=Null,[[Value]]=?,[[Scope]]=?}
+    @<the global object>[native] (<initial state>): {C:[@<anonymous>#fun1],TAJS_dumpState:^(@<the global object>[native].TAJS_dumpState[present]),TAJS_dumpValue:^(@<the global object>[native].TAJS_dumpValue[present]),x:[@Object#node7],[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Prototype]]=[@Object.prototype[native]],[[Value]]=?,[[Scope]]=?}
+    @Object.prototype[native] (<initial state>): {C:^(@Object.prototype[native].C[absent]),inc:^(@Object.prototype[native].inc[absent]),x:^(@Object.prototype[native].x[absent]),[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Prototype]]=Null,[[Value]]=?,[[Scope]]=?}
     @<anonymous>#fun1 (test/micro/test141.js:1:9): {length:1.0,prototype:[@Object#node3],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@<the global object>[native]]]}
     @Object#node3 (test/micro/test141.js:1:9): {constructor:[@<anonymous>#fun1],[[Prototype]]=[@Object.prototype[native]],[[Value]]=NaN}
     @activation#node19 (test/micro/test141.js:1:9): {arguments:[@arguments#node19],v:8.0}

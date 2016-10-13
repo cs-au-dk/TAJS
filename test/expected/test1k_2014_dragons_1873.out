@@ -52,7 +52,6 @@ test/1k2014dragons/1873.js:65:45: [maybe] Converting object to number
 test/1k2014dragons/1873.js:65:68: [maybe] Conversion from string to number yields NaN
 test/1k2014dragons/1873.js:65:68: [maybe] The variable height has values with different types
 test/1k2014dragons/1873.js:65:82: [maybe] Conversion to number yields NaN
-test/1k2014dragons/1873.js:65:86: [maybe] Reading absent property (computed name)
 test/1k2014dragons/1873.js:65:100: [maybe] Conversion from string to number yields NaN
 test/1k2014dragons/1873.js:70:9: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1873.js:73:17: [maybe] Conversion to number yields NaN

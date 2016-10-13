@@ -929,6 +929,7 @@ public class Test1K2012Love {
         Misc.checkSystemOutput();
     }
 
+    @Ignore // github #302
     @Test
     public void test1k_2012_love_1280() {
         Misc.init();

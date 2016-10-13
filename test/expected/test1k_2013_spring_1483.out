@@ -5,6 +5,9 @@ test/1k2013spring/1483.js:49:9: [maybe] ReferenceError, reading absent variable 
 test/1k2013spring/1483.js:49:19: [maybe] ReferenceError, reading absent variable x
 test/1k2013spring/1483.js:51:9: [maybe] ReferenceError, reading absent variable y
 test/1k2013spring/1483.js:51:19: [maybe] ReferenceError, reading absent variable y
+test/1k2013spring/1483.js:55:13: [maybe] RangeError, assigning invalid value to array 'length' property
+test/1k2013spring/1483.js:56:13: [maybe] RangeError, assigning invalid value to array 'length' property
+test/1k2013spring/1483.js:57:13: [maybe] RangeError, assigning invalid value to array 'length' property
 test/1k2013spring/shim.js:8:9: [maybe] TypeError, accessing property of null/undefined
 test/1k2013spring/shim.js:8:9: [maybe] TypeError, call to non-function
 test/1k2013spring/shim.js:9:1: [maybe] TypeError, accessing property of null/undefined
@@ -42,4 +45,4 @@ test/1k2013spring/1483.js:65:28: [maybe] Reading absent property (computed name)
 test/1k2013spring/1483.js:65:34: [maybe] Conversion to number yields NaN
 test/1k2013spring/1483.js:65:35: [maybe] Reading absent property (computed name)
 test/1k2013spring/shim.js:7:9: [maybe] Reading absent property (computed name)
-test/1k2013spring/shim.js,test/1k2013spring/1483.js: [maybe] Uncaught exception, constructed at [test/1k2013spring/1483.js:1:1, test/1k2013spring/1483.js:2:5, test/1k2013spring/1483.js:13:5, test/1k2013spring/1483.js:49:9, test/1k2013spring/1483.js:49:19, test/1k2013spring/1483.js:51:9, test/1k2013spring/1483.js:51:19, test/1k2013spring/shim.js:8:9, test/1k2013spring/shim.js:9:1]
+test/1k2013spring/shim.js,test/1k2013spring/1483.js: [maybe] Uncaught exception, constructed at [test/1k2013spring/1483.js:1:1, test/1k2013spring/1483.js:2:5, test/1k2013spring/1483.js:13:5, test/1k2013spring/1483.js:49:9, test/1k2013spring/1483.js:49:19, test/1k2013spring/1483.js:51:9, test/1k2013spring/1483.js:51:19, test/1k2013spring/1483.js:55:13, test/1k2013spring/1483.js:56:13, test/1k2013spring/1483.js:57:13, test/1k2013spring/shim.js:8:9, test/1k2013spring/shim.js:9:1]

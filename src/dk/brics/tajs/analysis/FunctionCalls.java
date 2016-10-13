@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2015 Aarhus University
+ * Copyright 2009-2016 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,6 +31,7 @@ import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.util.AnalysisException;
 
+import java.util.List;
 import java.util.Set;
 
 import static dk.brics.tajs.util.Collections.newSet;
@@ -198,7 +199,7 @@ public class FunctionCalls {
 
         private Value function;
 
-        private Value arg1;
+        private List<Value> args;
 
         private State state;
         /**
@@ -206,12 +207,12 @@ public class FunctionCalls {
          */
         private final Set<ObjectLabel> thisTargets;
 
-        public EventHandlerCall(Node sourceNode, Value function, Value arg1, Set<ObjectLabel> thisTargets, State state) {
+        public EventHandlerCall(Node sourceNode, Value function, List<Value> args, Set<ObjectLabel> thisTargets, State state) {
             this.sourceNode = sourceNode;
             this.function = function;
-            this.arg1 = arg1;
-            this.state = state;
+            this.args = args;
             this.thisTargets = thisTargets;
+            this.state = state;
         }
 
         @Override
@@ -241,18 +242,15 @@ public class FunctionCalls {
 
         @Override
         public Value getArg(int i) {
-            if (arg1 != null && i == 0) {
-                return arg1;
+            if (args.size() > i) {
+                return args.get(i);
             }
             return Value.makeUndef();
         }
 
         @Override
         public int getNumberOfArgs() {
-            if (arg1 != null) {
-                return 1;
-            }
-            return 0;
+            return args.size();
         }
 
         @Override

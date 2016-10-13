@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2015 Aarhus University
+ * Copyright 2009-2016 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +17,7 @@
 package dk.brics.tajs;
 
 import dk.brics.tajs.analysis.Analysis;
+import dk.brics.tajs.analysis.AsyncEvents;
 import dk.brics.tajs.analysis.StaticDeterminacyContextSensitivityStrategy;
 import dk.brics.tajs.flowgraph.FlowGraph;
 import dk.brics.tajs.flowgraph.HostEnvSources;
@@ -92,6 +93,7 @@ public class Main {
         Obj.reset();
         Strings.reset();
         ScopeChain.reset();
+        AsyncEvents.reset();
     }
 
     /**
@@ -108,24 +110,23 @@ public class Main {
      * @throws AnalysisException if internal error
      */
     public static Analysis init(String[] args, IAnalysisMonitoring monitoring, SolverSynchronizer sync) throws AnalysisException {
-        boolean show_usage = false;
-        Options.parse(args);
-        Options.get().checkConsistency();
+        try {
+            Options.parse(args);
+            Options.get().checkConsistency();
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+            System.err.println("TAJS - Type Analyzer for JavaScript");
+            System.err.println("Copyright 2009-2016 Aarhus University\n");
+            System.err.println("Usage: java -jar tajs-all.jar [OPTION]... [FILE]...\n");
+            Options.get().describe(System.err);
+            return null;
+        }
+
         List<String> files = Options.get().getArguments();
 
         Analysis analysis = new Analysis(monitoring, sync);
 
-        if (files.isEmpty()) {
-            System.out.println("No source files");
-            show_usage = true;
-        }
-        if (show_usage) {
-            System.out.println("TAJS - Type Analyzer for JavaScript");
-            System.out.println("Copyright 2009-2015 Aarhus University\n");
-            System.out.println("Usage: java -jar tajs-all.jar [OPTION]... [FILE]...\n");
-            Options.get().describe();
-            return null;
-        }
+
         if (Options.get().isDebugEnabled())
             Options.dump();
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2015 Aarhus University
+ * Copyright 2009-2016 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -753,6 +753,10 @@ public enum DOMObjects implements HostObject {
     }
 
     public static void evaluateDOMSetter(ObjectLabel objlabel, Str prop, Value value, State state) {
+        if (objlabel.getHostObject().getAPI() != HostAPIs.DOCUMENT_OBJECT_MODEL && objlabel.getHostObject().getAPI() != HostAPIs.ECMASCRIPT_NATIVE) {
+            state.setToNone();
+            return;
+        }
         if (prop.isMaybeSingleStr()) {
             DOMEvents.addEventHandler(Collections.singleton(objlabel), state, prop.getStr(), value, true);
             // TODO: other DOM setters to consider?

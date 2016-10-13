@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2015 Aarhus University
+ * Copyright 2009-2016 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,8 +28,10 @@ import dk.brics.tajs.options.Options;
 import dk.brics.tajs.util.Collections;
 import org.apache.log4j.Logger;
 
+import java.util.List;
 import java.util.Set;
 
+import static dk.brics.tajs.util.Collections.newList;
 import static dk.brics.tajs.util.Collections.singleton;
 
 public class DOMEventLoop {
@@ -95,7 +97,7 @@ public class DOMEventLoop {
             // Support the unofficial window.event property that is set by the browser
             PropVarOperations pv = c.getAnalysis().getPropVarOperations();
             pv.writeProperty(DOMWindow.WINDOW, "event", event); // strong write to override old value
-            pv.deleteProperty(Collections.singleton(DOMWindow.WINDOW), Value.makeTemporaryStr("event"), true); // weak delete to emulate unofficial
+            pv.deleteProperty(singleton(DOMWindow.WINDOW), Value.makeTemporaryStr("event"), true); // weak delete to emulate unofficial
         }
 
         Set<ObjectLabel> thisTargets;
@@ -104,23 +106,22 @@ public class DOMEventLoop {
         } else {
             thisTargets = DOMBuilder.getAllDOMEventTargets();
         }
-        //FunctionCalls.callFunction(new FunctionCalls.EventHandlerCall(currentNode, Value.makeObject(handlers), event), c);
-        FunctionCalls.callFunction(
-                new FunctionCalls.EventHandlerCall(currentNode, Value.makeObject(handlers), event, thisTargets, callState),
-                c);
+        List<Value> args = event == null ? newList() : Collections.singletonList(event);
+        FunctionCalls.callFunction(new FunctionCalls.EventHandlerCall(currentNode, Value.makeObject(handlers), args, thisTargets, callState), c);
         c.setState(currentState);
     }
 
-    public void multipleNondeterministicEventLoops(EventDispatcherNode n, State state, Solver.SolverInterface c) {
-        if (n.getType() == EventDispatcherNode.Type.LOAD) {
+    public void multipleNondeterministicEventLoops(EventDispatcherNode n, Solver.SolverInterface c) {
+        State state = c.getState();
+        if (n.getType() == EventDispatcherNode.Type.DOM_LOAD) {
             triggerEventHandler(n, state, DOMRegistry.MaySets.LOAD_EVENT_HANDLER, loadEvent, false, c);
         }
 
-        if (n.getType() == EventDispatcherNode.Type.UNLOAD) {
+        if (n.getType() == EventDispatcherNode.Type.DOM_UNLOAD) {
             triggerEventHandler(n, state, DOMRegistry.MaySets.UNLOAD_EVENT_HANDLERS, null, false, c);
         }
 
-        if (n.getType() == EventDispatcherNode.Type.OTHER) {
+        if (n.getType() == EventDispatcherNode.Type.DOM_OTHER) {
             triggerEventHandler(n, state, DOMRegistry.MaySets.KEYBOARD_EVENT_HANDLER, keyboardEvent, true, c);
             triggerEventHandler(n, state, DOMRegistry.MaySets.MOUSE_EVENT_HANDLER, mouseEvent, true, c);
             triggerEventHandler(n, state, DOMRegistry.MaySets.AJAX_EVENT_HANDLER, ajaxEvent, true, c);

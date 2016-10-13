@@ -54,6 +54,8 @@ function f()
     node 24: exceptional-return (test/flowgraphbuilder/forin_call2.js:1:1)
     ->[]
 
+test/flowgraphbuilder/forin_call2.js:5:5: [definite] Too few parameters to function Object.prototype.__defineGetter__
+test/flowgraphbuilder/forin_call2.js:5:5: [definite] Too few parameters to function Object.prototype.__defineSetter__
 test/flowgraphbuilder/forin_call2.js:5:5: [definite] Too few parameters to function Object.prototype.hasOwnProperty
 test/flowgraphbuilder/forin_call2.js:5:5: [definite] Too few parameters to function Object.prototype.isPrototypeOf
 test/flowgraphbuilder/forin_call2.js:5:5: [definite] Too few parameters to function Object.prototype.propertyIsEnumerable

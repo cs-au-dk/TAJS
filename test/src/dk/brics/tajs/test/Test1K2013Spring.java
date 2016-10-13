@@ -8,6 +8,7 @@ import dk.brics.tajs.options.Options;
 import dk.brics.tajs.test.monitors.OrdinaryExitReachableCheckerMonitor;
 import dk.brics.tajs.util.AnalysisLimitationException;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -406,6 +407,7 @@ public class Test1K2013Spring {
         Misc.checkSystemOutput();
     }
 
+    @Ignore // github #302
     @Test
     public void test1k_2013_spring_1443() {
         Misc.init();
@@ -505,6 +507,7 @@ public class Test1K2013Spring {
         Misc.checkSystemOutput();
     }
 
+    @Ignore // github #302
     @Test
     public void test1k_2013_spring_1478() {
         Misc.init();

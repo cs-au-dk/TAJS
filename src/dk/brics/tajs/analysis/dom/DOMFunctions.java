@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2015 Aarhus University
+ * Copyright 2009-2016 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -266,7 +266,7 @@ public class DOMFunctions {
         s.newObject(label);
         s.writeInternalPrototype(label, Value.makeObject(InitialStateBuilder.OBJECT_PROTOTYPE));
         Value v = Value.makeObject(label).joinAnyStr().joinAnyNum().joinAnyBool();
-        c.getAnalysis().getPropVarOperations().writeProperty(Collections.singleton(label), Value.makeAnyStr(), v, true, false);
+        c.getAnalysis().getPropVarOperations().writeProperty(Collections.singleton(label), Value.makeAnyStr(), v, false, true);
         return v;
     }
 
@@ -283,7 +283,7 @@ public class DOMFunctions {
      */
     public static Value makeAnyHTMLNodeList(Solver.SolverInterface c) {
         ObjectLabel nodeList = makeEmptyNodeList();
-        c.getAnalysis().getPropVarOperations().writeProperty(java.util.Collections.singleton(nodeList), Value.makeAnyStrUInt(), makeAnyHTMLElement(), true, false);
+        c.getAnalysis().getPropVarOperations().writeProperty(java.util.Collections.singleton(nodeList), Value.makeAnyStrUInt(), makeAnyHTMLElement(), false, true);
         return Value.makeObject(nodeList);
     }
 

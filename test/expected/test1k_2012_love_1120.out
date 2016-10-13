@@ -1,12 +1,16 @@
 TAJS-dynamic-code(test/1k2012love/1120.js:22:7):1:36: [definite] The conditional expression is always false
 TAJS-dynamic-code(test/1k2012love/1120.js:22:7):1:47: [definite] The conditional expression is always false
 TAJS-dynamic-code(test/1k2012love/1120.js:32:14):1:38: [definite] The conditional expression is always false
+TAJS-dynamic-code(test/1k2012love/1120.js:38:24):1:122: [definite] Dead assignment, property is never read
+TAJS-dynamic-code(test/1k2012love/1120.js:38:24):1:138: [definite] Dead assignment, property is never read
 TAJS-dynamic-code(test/1k2012love/1120.js:2:5):1:53: [maybe] TypeError, accessing property of null/undefined
 TAJS-dynamic-code(test/1k2012love/1120.js:38:24):1:122: [maybe] ReferenceError, reading absent variable g
 TAJS-dynamic-code(test/1k2012love/1120.js:38:24):1:122: [maybe] TypeError, accessing property of null/undefined
 TAJS-dynamic-code(test/1k2012love/1120.js:38:24):1:138: [maybe] ReferenceError, reading absent variable g
 TAJS-dynamic-code(test/1k2012love/1120.js:38:24):1:138: [maybe] TypeError, accessing property of null/undefined
 TAJS-dynamic-code(test/1k2012love/1120.js:38:24):1:147: [maybe] TypeError, accessing property of null/undefined
+TAJS-dynamic-code(test/1k2012love/1120.js:3:5):1:42: [maybe] RangeError, assigning invalid value to array 'length' property
+TAJS-dynamic-code(test/1k2012love/1120.js:3:5):1:42: [maybe] TypeError when computing default value for object
 TAJS-dynamic-code(test/1k2012love/1120.js:4:5):1:65: [maybe] ReferenceError, reading absent variable g
 TAJS-dynamic-code(test/1k2012love/1120.js:4:5):1:65: [maybe] TypeError, accessing property of null/undefined
 TAJS-dynamic-code(test/1k2012love/1120.js:5:5):1:63: [maybe] TypeError, accessing property of null/undefined
@@ -50,15 +54,21 @@ TAJS-dynamic-code(test/1k2012love/1120.js:38:24):1:61: [maybe] The variable H ha
 TAJS-dynamic-code(test/1k2012love/1120.js:38:24):1:86: [maybe] Converting undefined to string
 TAJS-dynamic-code(test/1k2012love/1120.js:38:24):1:95: [maybe] Converting primitive number to object
 TAJS-dynamic-code(test/1k2012love/1120.js:38:24):1:95: [maybe] The variable H has values with different types
+TAJS-dynamic-code(test/1k2012love/1120.js:38:24):1:122: [maybe] Converting primitive number to object
 TAJS-dynamic-code(test/1k2012love/1120.js:38:24):1:122: [maybe] Reading absent property (computed name)
+TAJS-dynamic-code(test/1k2012love/1120.js:38:24):1:138: [maybe] Converting primitive number to object
 TAJS-dynamic-code(test/1k2012love/1120.js:38:24):1:138: [maybe] Reading absent property (computed name)
+TAJS-dynamic-code(test/1k2012love/1120.js:38:24):1:147: [maybe] Converting primitive number to object
 TAJS-dynamic-code(test/1k2012love/1120.js:38:24):1:147: [maybe] Reading absent property (computed name)
 TAJS-dynamic-code(test/1k2012love/1120.js:38:24):1:147: [maybe] Reading absent property (computed name)
 TAJS-dynamic-code(test/1k2012love/1120.js:38:24):1:162: [maybe] The variable E has values with different types
+TAJS-dynamic-code(test/1k2012love/1120.js:3:5):1:42: [maybe] Conversion from string to number yields NaN
+TAJS-dynamic-code(test/1k2012love/1120.js:3:5):1:42: [maybe] Converting object to number
 TAJS-dynamic-code(test/1k2012love/1120.js:4:5):1:65: [maybe] Reading absent property (computed name)
 TAJS-dynamic-code(test/1k2012love/1120.js:4:5):1:65: [maybe] Reading absent property (computed name)
 TAJS-dynamic-code(test/1k2012love/1120.js:5:5):1:63: [maybe] Reading absent property (computed name)
 TAJS-dynamic-code(test/1k2012love/1120.js:5:5):1:63: [maybe] Reading absent property (computed name)
+TAJS-dynamic-code(test/1k2012love/1120.js:5:5):1:110: [maybe] Converting primitive number to object
 TAJS-dynamic-code(test/1k2012love/1120.js:5:5):1:110: [maybe] Reading absent property (computed name)
 TAJS-dynamic-code(test/1k2012love/1120.js:5:5):1:110: [maybe] Reading absent property (computed name)
 TAJS-dynamic-code(test/1k2012love/1120.js:5:5):1:140: [maybe] Reading absent property (computed name)
@@ -82,4 +92,4 @@ test/1k2012love/1120.js:37:107: [maybe] Reading absent property (computed name)
 test/1k2012love/1120.js:37:119: [maybe] Reading absent property (computed name)
 test/1k2012love/1120.js:37:131: [maybe] Reading absent property (computed name)
 test/1k2012love/shim.js:7:9: [maybe] Reading absent property (computed name)
-test/1k2012love/shim.js,test/1k2012love/1120.js: [maybe] Uncaught exception, constructed at [TAJS-dynamic-code(test/1k2012love/1120.js:2:5):1:53, TAJS-dynamic-code(test/1k2012love/1120.js:38:24):1:122, TAJS-dynamic-code(test/1k2012love/1120.js:38:24):1:138, TAJS-dynamic-code(test/1k2012love/1120.js:38:24):1:147, TAJS-dynamic-code(test/1k2012love/1120.js:4:5):1:65, TAJS-dynamic-code(test/1k2012love/1120.js:5:5):1:63, TAJS-dynamic-code(test/1k2012love/1120.js:5:5):1:110, TAJS-dynamic-code(test/1k2012love/1120.js:5:5):1:140, TAJS-dynamic-code(test/1k2012love/1120.js:5:5):1:159, TAJS-dynamic-code(test/1k2012love/1120.js:5:5):1:177, TAJS-dynamic-code(test/1k2012love/1120.js:8:5):1:24, test/1k2012love/1120.js:37:1, test/1k2012love/1120.js:37:13, test/1k2012love/1120.js:37:25, test/1k2012love/1120.js:37:37, test/1k2012love/1120.js:37:49, test/1k2012love/1120.js:37:59, test/1k2012love/1120.js:37:71, test/1k2012love/1120.js:37:83, test/1k2012love/1120.js:37:95, test/1k2012love/1120.js:37:107, test/1k2012love/1120.js:37:119, test/1k2012love/1120.js:37:131, test/1k2012love/shim.js:8:9, test/1k2012love/shim.js:9:1]
+test/1k2012love/shim.js,test/1k2012love/1120.js: [maybe] Uncaught exception, constructed at [TAJS-dynamic-code(test/1k2012love/1120.js:2:5):1:53, TAJS-dynamic-code(test/1k2012love/1120.js:38:24):1:122, TAJS-dynamic-code(test/1k2012love/1120.js:38:24):1:138, TAJS-dynamic-code(test/1k2012love/1120.js:38:24):1:147, TAJS-dynamic-code(test/1k2012love/1120.js:3:5):1:42, TAJS-dynamic-code(test/1k2012love/1120.js:4:5):1:65, TAJS-dynamic-code(test/1k2012love/1120.js:5:5):1:63, TAJS-dynamic-code(test/1k2012love/1120.js:5:5):1:110, TAJS-dynamic-code(test/1k2012love/1120.js:5:5):1:140, TAJS-dynamic-code(test/1k2012love/1120.js:5:5):1:159, TAJS-dynamic-code(test/1k2012love/1120.js:5:5):1:177, TAJS-dynamic-code(test/1k2012love/1120.js:8:5):1:24, test/1k2012love/1120.js:37:1, test/1k2012love/1120.js:37:13, test/1k2012love/1120.js:37:25, test/1k2012love/1120.js:37:37, test/1k2012love/1120.js:37:49, test/1k2012love/1120.js:37:59, test/1k2012love/1120.js:37:71, test/1k2012love/1120.js:37:83, test/1k2012love/1120.js:37:95, test/1k2012love/1120.js:37:107, test/1k2012love/1120.js:37:119, test/1k2012love/1120.js:37:131, test/1k2012love/shim.js:8:9, test/1k2012love/shim.js:9:1]

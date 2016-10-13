@@ -28,9 +28,9 @@ Abstract state:
   Execution context: ScopeChain=[[@<the global object>[native]]], VariableObject=[@<the global object>[native]], this=[@<the global object>[native]]
   Summarized: maybe=[@arguments#node45, @arguments#node34, @activation#node45, @activation#node34, @Object#node9, @Object#node6, @Object#node5, @Object#node10, @<anonymous>#fun2, @<anonymous>#fun1], definitely=[@Object#node9, @Object#node6, @Object#node5, @Object#node10, @<anonymous>#fun2, @<anonymous>#fun1]
   Store (excluding basis and default objects): 
-    @<the global object>[native] (<initial state>): {Math:[@Math[native]],TAJS_dumpState:[@TAJS_dumpState[native]],TAJS_dumpValue:[@TAJS_dumpValue[native]],x:[@Object#node9, @Object#node5],x1:[@Object#node5],x2:[@Object#node9],y:8.0|"7foo",[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Prototype]]=?,[[Value]]=?,[[Scope]]=?}
+    @<the global object>[native] (<initial state>): {Math:[@Math[native]],TAJS_dumpState:[@TAJS_dumpState[native]],TAJS_dumpValue:[@TAJS_dumpValue[native]],x:[@Object#node9, @Object#node5],x1:[@Object#node5],x2:[@Object#node9],y:8.0|"7foo",[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Prototype]]=[@Object.prototype[native]],[[Value]]=?,[[Scope]]=?}
     @Math[native] (<initial state>): {random:^(@Math[native].random[present]),[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Prototype]]=?,[[Value]]=?,[[Scope]]=?}
-    @Object.prototype[native] (<initial state>): {m:^(@Object.prototype[native].m[absent]),[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Prototype]]=Null,[[Value]]=?,[[Scope]]=?}
+    @Object.prototype[native] (<initial state>): {m:^(@Object.prototype[native].m[absent]),x:^(@Object.prototype[native].x[absent]),x1:^(@Object.prototype[native].x1[absent]),x2:^(@Object.prototype[native].x2[absent]),y:^(@Object.prototype[native].y[absent]),[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Prototype]]=Null,[[Value]]=?,[[Scope]]=?}
     @Object#node5 (test/micro/testCall1.js:1:10): {m:[@<anonymous>#fun1],[[Prototype]]=[@Object.prototype[native]]}
     @<anonymous>#fun1 (test/micro/testCall1.js:1:15): {length:1.0,prototype:[@Object#node6],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@<the global object>[native]]]}
     @Object#node6 (test/micro/testCall1.js:1:15): {constructor:[@<anonymous>#fun1],[[Prototype]]=[@Object.prototype[native]],[[Value]]=NaN}

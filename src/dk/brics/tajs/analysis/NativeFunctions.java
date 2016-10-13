@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2015 Aarhus University
+ * Copyright 2009-2016 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,20 +19,14 @@ package dk.brics.tajs.analysis;
 import dk.brics.tajs.analysis.FunctionCalls.CallInfo;
 import dk.brics.tajs.analysis.dom.DOMFunctions;
 import dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects;
-import dk.brics.tajs.flowgraph.AbstractNode;
 import dk.brics.tajs.lattice.HostObject;
 import dk.brics.tajs.lattice.ObjectLabel;
-import dk.brics.tajs.lattice.ObjectLabel.Kind;
 import dk.brics.tajs.lattice.State;
-import dk.brics.tajs.lattice.Str;
 import dk.brics.tajs.lattice.UnknownValueResolver;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.solver.Message.Severity;
-import dk.brics.tajs.util.Strings;
 
 import java.util.Set;
-
-import static dk.brics.tajs.util.Collections.newSet;
 
 /**
  * Dispatch evaluation of native functions and common functionality used by the native functions.
@@ -75,69 +69,6 @@ public class NativeFunctions {
      */
     public static Value readUnknownParameter(CallInfo call) {
         return call.getUnknownArg().joinUndef();
-    }
-
-    /**
-     * Updates the length property of any arrays among the given objects in accordance with 15.4.5.1. Also models truncation of the array if the
-     * 'length' property is being set. Sets the state to none if an exception is definitely thrown.
-     */
-    public static void updateArrayLength(AbstractNode node, Set<ObjectLabel> objlabels, Str propertystr, Value value,
-                                         Solver.SolverInterface c) {
-        State state = c.getState();
-        PropVarOperations pv = c.getAnalysis().getPropVarOperations();
-        Set<ObjectLabel> arrays = newSet();
-        for (ObjectLabel ol : objlabels)
-            if (ol.getKind() == Kind.ARRAY)
-                arrays.add(ol);
-        if (arrays.isEmpty())
-            return;
-        // step 12-15 assignment to 'length', need to check for RangeError exceptions and array truncation
-        boolean definitely_length = propertystr.isMaybeSingleStr() && propertystr.getStr().equals("length");
-        boolean maybe_length = propertystr.isMaybeStrIdentifier() || propertystr.isMaybeStrIdentifierParts() || propertystr.isMaybeStrJSON()
-                || (propertystr.isMaybeStrPrefixedIdentifierParts() && "length".startsWith(propertystr.getPrefix()));
-        Double old_length = UnknownValueResolver.getRealValue(pv.readPropertyValue(arrays, "length"), state).getNum();
-        if (definitely_length || maybe_length) {
-            value = UnknownValueResolver.getRealValue(value, state);
-            Value numvalue = Conversion.toNumber(value, c);
-            if (!numvalue.isNone()) {
-                // throw RangeError exception if illegal value
-                boolean invalid = false;
-                if (numvalue.isMaybeSingleNum()) {
-                    long uintvalue = Conversion.toUInt32(numvalue.getNum());
-                    if (uintvalue != numvalue.getNum())
-                        invalid = true;
-                    numvalue = Value.makeNum(uintvalue);
-                } else if (numvalue.isMaybeOtherThanNumUInt()) {
-                    invalid = true;
-                    numvalue = Value.makeAnyNumUInt();
-                }
-                if (invalid) {
-                    Exceptions.throwRangeError(c);
-                    c.getMonitoring().addMessage(node, Severity.HIGH, "RangeError, assigning invalid value to array 'length' property");
-                }
-                // truncate
-                Double num = numvalue.getNum();
-                if (definitely_length && num != null && old_length != null && old_length - num < 25) { // note: bound to avoid too many iterations
-                    for (int i = num.intValue(); i < old_length.intValue(); i++) {
-                        pv.deleteProperty(arrays, Value.makeStr(Integer.toString(i)), false);
-                    }
-                } else
-                    pv.deleteProperty(arrays, Value.makeAnyStrUInt(), false);
-                // write 'length' property
-                pv.writePropertyWithAttributes(arrays, "length", numvalue.setAttributes(true, true, false), true, objlabels.size() > 1);
-            }
-        }
-        // step 9-10 assignment to array index, need to magically update 'length'
-        boolean definitely_index = propertystr.isMaybeSingleStr() && Strings.isArrayIndex(propertystr.getStr());
-        boolean maybe_index = propertystr.isMaybeStrSomeUInt();
-        if (definitely_index || maybe_index) {
-            Value v;
-            if ((definitely_index && old_length != null))
-                v = Value.makeNum(Math.max(old_length, Double.valueOf(propertystr.getStr()) + 1));
-            else
-                v = Value.makeAnyNumUInt();
-            pv.writePropertyWithAttributes(arrays, "length", v.setAttributes(true, true, false));
-        }
     }
 
     /**

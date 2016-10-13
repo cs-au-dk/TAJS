@@ -38,4 +38,4 @@ test/1k2012love/1247.js:131:65: [maybe] Conversion to number yields NaN
 test/1k2012love/1247.js:131:70: [maybe] Reading absent property (computed name)
 test/1k2012love/1247.js:133:25: [maybe] Conversion to number yields NaN
 test/1k2012love/shim.js:7:9: [maybe] Reading absent property (computed name)
-test/1k2012love/shim.js,test/1k2012love/1247.js: [maybe] Uncaught exception, constructed at [test/1k2012love/1247.js:106:92, test/1k2012love/shim.js:8:9, test/1k2012love/shim.js:9:1]
+test/1k2012love/shim.js,test/1k2012love/1247.js: [maybe] Uncaught exception, constructed at [test/1k2012love/1247.js:24:13, test/1k2012love/1247.js:106:92, test/1k2012love/shim.js:8:9, test/1k2012love/shim.js:9:1]

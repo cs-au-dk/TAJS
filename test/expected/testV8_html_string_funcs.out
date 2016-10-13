@@ -1,4 +1,6 @@
 test/v8tests/html-string-funcs.js:42:16: [definite] TypeError, call to non-function
+test/v8tests/html-string-funcs.js:32:16: [definite] Too few parameters to function Object.prototype.__defineGetter__
+test/v8tests/html-string-funcs.js:32:16: [definite] Too few parameters to function Object.prototype.__defineSetter__
 test/v8tests/html-string-funcs.js:32:16: [definite] Too few parameters to function Object.prototype.hasOwnProperty
 test/v8tests/html-string-funcs.js:32:16: [definite] Too few parameters to function Object.prototype.isPrototypeOf
 test/v8tests/html-string-funcs.js:32:16: [definite] Too few parameters to function Object.prototype.propertyIsEnumerable
@@ -13,6 +15,7 @@ test/v8tests/html-string-funcs.js:32:16: [definite] Too few parameters to functi
 test/v8tests/html-string-funcs.js:42:16: [definite] Reading absent property (computed name)
 test/v8tests/html-string-funcs.js:42:16: [definite] Unreachable code
 test/v8tests/html-string-funcs.js:45:1: [definite] Unreachable code
+test/v8tests/html-string-funcs.js:32:16: [maybe] TypeError, accessing property of null/undefined
 test/v8tests/html-string-funcs.js:32:16: [maybe] TypeError, call to non-function
 test/v8tests/html-string-funcs.js:32:16: [maybe] TypeError, call to non-function
 test/v8tests/html-string-funcs.js:32:16: [maybe] Reading absent property toLowerCase

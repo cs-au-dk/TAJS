@@ -13,9 +13,9 @@ import com.google.javascript.rhino.head.ErrorReporter;
 import com.google.javascript.rhino.head.EvaluatorException;
 import dk.brics.tajs.flowgraph.SourceLocation;
 import dk.brics.tajs.util.AnalysisException;
+import dk.brics.tajs.util.AnalysisLimitationException;
 import dk.brics.tajs.util.Collections;
 
-import java.io.IOException;
 import java.util.List;
 
 import static dk.brics.tajs.util.Collections.newList;
@@ -85,11 +85,11 @@ class JavaScriptParser {
 
                 @Override
                 public EvaluatorException runtimeError(String s, String s2, int i, String s3, int i2) {
-                    throw new AnalysisException("Runtime error in parser");
+                    throw new AnalysisLimitationException("Runtime error in parser");
                 }
             }, parserLogger);
-        } catch (IOException e) {
-            errors.add(new SyntaxMesssage(String.format("%s: %s", e.getClass(), e.getMessage()), new SourceLocation(-1, -1, name)));
+        } catch (Exception e) {
+            errors.add(new SyntaxMesssage(String.format("Internal parser error: %s: %s", e.getClass(), e.getMessage()), new SourceLocation(-1, -1, name)));
         }
         ProgramTree programAST = null;
         if (errors.isEmpty()) {

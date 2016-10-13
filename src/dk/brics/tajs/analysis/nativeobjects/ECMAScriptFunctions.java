@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2015 Aarhus University
+ * Copyright 2009-2016 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -65,6 +65,9 @@ public class ECMAScriptFunctions {
             case OBJECT_CREATE:
             case OBJECT_FREEZE:
             case OBJECT_KEYS:
+            case OBJECT_DEFINEGETTER:
+            case OBJECT_DEFINESETTER:
+            case OBJECT_GETOWNPROPERTYDESCRIPTOR:
                 res = JSObject.evaluate(nativeobject, call, c);
                 break;
 
@@ -257,6 +260,7 @@ public class ECMAScriptFunctions {
             case TAJS_GET_UI_EVENT:
             case TAJS_GET_EVENT_LISTENER:
             case TAJS_GET_WHEEL_EVENT:
+            case TAJS_ASYNC_LISTEN:
                 res = JSGlobal.evaluate(nativeobject, call, c);
                 break;
 

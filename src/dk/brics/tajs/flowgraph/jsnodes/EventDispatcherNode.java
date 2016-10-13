@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2015 Aarhus University
+ * Copyright 2009-2016 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -33,19 +33,24 @@ public class EventDispatcherNode extends Node {
      */
     public enum Type {
         /**
-         * Load event.
+         * Load DOM event.
          */
-        LOAD,
+        DOM_LOAD,
 
         /**
-         * Unload event.
+         * Unload DOM event.
          */
-        UNLOAD,
+        DOM_UNLOAD,
 
         /**
-         * Other events than load and unload.
+         * Other DOM events than load and unload.
          */
-        OTHER
+        DOM_OTHER,
+
+        /**
+         * Events that are scheduled for asynchronous execution.
+         */
+        ASYNC
     }
 
     private Type type;
@@ -73,7 +78,7 @@ public class EventDispatcherNode extends Node {
 
     @Override
     public String toString() {
-        return "event-dispatcher <" + type + ">";
+        return "event-dispatcher <" + type.name().replace("DOM_", "") + ">";
     }
 
     @Override
@@ -83,8 +88,8 @@ public class EventDispatcherNode extends Node {
 
     @Override
     public void check(BasicBlock b) {
-        if (!Options.get().isDOMEnabled())
-            throw new AnalysisException("EventDispatcherNode found without DOM enabled: " + toString());
+        if (!Options.get().isDOMEnabled() && !Options.get().isAsyncEventsEnabled())
+            throw new AnalysisException("EventDispatcherNode found without DOM or AsyncEvents enabled: " + toString());
         if (b.getNodes().size() != 1)
             throw new AnalysisException("Node should have its own basic block: " + toString());
         if (b.getSuccessors().size() > 1)

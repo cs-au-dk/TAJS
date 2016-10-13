@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2015 Aarhus University
+ * Copyright 2009-2016 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -101,7 +101,7 @@ public class Conversion {
             // 7. Call the [[Call]] method of Result(5), with O as the this value and an empty argument list.
             // 8. If Result(7) is a primitive value, return Result(7).
             // 9. Throw a TypeError exception.
-            Value tostring = pv.readPropertyWithAttributes(Collections.singleton(obj), "toString");
+            Value tostring = pv.readPropertyValue(Collections.singleton(obj), "toString");
             visitPropertyRead(obj, "toString", s, c);
             tostring = UnknownValueResolver.getRealValue(tostring, s);
             State tostringState = s.clone(); // TODO: no need to clone if certain that convertToStringOrValueOf will not call any user-defined functions
@@ -114,7 +114,7 @@ public class Conversion {
             }
             s.propagate(tostringState, false);
             if (isMaybeNonCallable(tostring) || result.isMaybeObject()) {
-                Value valueof = pv.readPropertyWithAttributes(Collections.singleton(obj), "valueOf");
+                Value valueof = pv.readPropertyValue(Collections.singleton(obj), "valueOf");
                 visitPropertyRead(obj, "valueOf", s, c);
                 valueof = UnknownValueResolver.getRealValue(valueof, s);
                 State valueOfState = s.clone(); // TODO: no need to clone if certain that convertToStringOrValueOf will not call any user-defined functions
@@ -141,7 +141,7 @@ public class Conversion {
             // 7. Call the [[Call]] method of Result(5), with O as the this value and an empty argument list.
             // 8. If Result(7) is a primitive value, return Result(7).
             // 9. Throw a TypeError exception.
-            Value valueof = pv.readPropertyWithAttributes(Collections.singleton(obj), "valueOf");
+            Value valueof = pv.readPropertyValue(Collections.singleton(obj), "valueOf");
             visitPropertyRead(obj, "valueOf", s, c);
             valueof = UnknownValueResolver.getRealValue(valueof, s);
             State valueofState = s.clone(); // TODO: no need to clone if certain that convertToStringOrValueOf will not call any user-defined functions
@@ -154,7 +154,7 @@ public class Conversion {
             }
             s.propagate(valueofState, false);
             if (isMaybeNonCallable(valueof) || result.isMaybeObject()) {
-                Value tostring = pv.readPropertyWithAttributes(Collections.singleton(obj), "toString");
+                Value tostring = pv.readPropertyValue(Collections.singleton(obj), "toString");
                 visitPropertyRead(obj, "toString", s, c);
                 tostring = UnknownValueResolver.getRealValue(tostring, s);
                 State toStringState = s.clone(); // TODO: no need to clone if certain that convertToStringOrValueOf will not call any user-defined functions
@@ -167,7 +167,7 @@ public class Conversion {
                     s.setToNone(); // TODO: skip this if we decide to skip the cloning above
                 }
                 s.propagate(toStringState, false);
-                if (tostring.isNone() || isMaybeNonCallable(tostring) || result.isMaybeObject())
+                if (isMaybeNonCallable(tostring) || result.isMaybeObject())
                     maybe_typeerror = true;
             }
         } else
@@ -201,11 +201,9 @@ public class Conversion {
      */
     private static Value convertToStringOrValueOf(ObjectLabel thiss, Set<ObjectLabel> objs, Solver.SolverInterface c, boolean toString) {
         List<Value> result = newList();
-        boolean anyUserFunctions = false, anyHostFunctions = false;
         BasicBlock implicitAfterCall = null;
         for (ObjectLabel obj : objs) {
             if (obj.isHostObject()) {
-                anyHostFunctions = true;
                 switch ((HostAPIs) obj.getHostObject().getAPI()) {
                     case ECMASCRIPT_NATIVE:
                         Value v = toString ? ECMAScriptFunctions.internalToString(thiss, (ECMAScriptObjects) obj.getHostObject(), c) : ECMAScriptFunctions.internalValueOf(thiss, (ECMAScriptObjects) obj.getHostObject(), c);
@@ -218,7 +216,6 @@ public class Conversion {
                         break;
                 }
             } else if (obj.getKind() == Kind.FUNCTION) {
-                anyUserFunctions = true;
                 implicitAfterCall = UserFunctionCalls.implicitUserFunctionCall(obj, new FunctionCalls.CallInfo() {
 
                     @Override
@@ -278,7 +275,7 @@ public class Conversion {
                 }, c);
             }
         }
-        return UserFunctionCalls.implicitUserFunctionReturn(result, anyUserFunctions, anyHostFunctions, implicitAfterCall, c);
+        return UserFunctionCalls.implicitUserFunctionReturn(result, !result.isEmpty(), implicitAfterCall, c);
     }
 
     /**

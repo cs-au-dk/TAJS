@@ -5,8 +5,6 @@ Abstract state:
   Store (excluding basis and default objects): 
     @<the global object>[native] (<initial state>): {TAJS_dumpState:^(@<the global object>[native].TAJS_dumpState[present]),f4:^(@<the global object>[native].f4[present]),x:^(@<the global object>[native].y[present]),y:^(@<the global object>[native].y[present]),[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Prototype]]=?,[[Value]]=?,[[Scope]]=?}
     @activation#node28 (test/micro/test152.js:3:1): {TAJS_dumpState:^(@activation#node28.TAJS_dumpState[absent]),f4:^(@activation#node28.f4[absent]),[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Value]]=?,[[Scope]]=?}
-    @activation#node35 (test/micro/test152.js:4:1): {<none>}
-    @arguments#node35 (test/micro/test152.js:4:1): {<none>}
     @f4#fun4 (test/micro/test152.js:4:1): {prototype:^(@f4#fun4.prototype[present]),[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Prototype]]=?,[[Value]]=?,[[Scope]]=[[@<the global object>[native]]]}
   Registers: 
     v1=Undef

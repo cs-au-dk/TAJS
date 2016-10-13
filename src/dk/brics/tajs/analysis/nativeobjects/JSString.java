@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2015 Aarhus University
+ * Copyright 2009-2016 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -324,7 +324,6 @@ public class JSString {
     private static void invokeCallback(Value callback, Solver.SolverInterface c) {
         for (int i = 0; i < 2; i++) { // 2 enough, we just need the feedback loop
             List<Value> result = newList();
-            boolean anyUserFunctions = false;
             BasicBlock implicitAfterCall = null;
             for (ObjectLabel obj : callback.getObjectLabels()) {
                 if (obj.getKind() == Kind.FUNCTION) {
@@ -332,7 +331,6 @@ public class JSString {
                         // TODO: callback is a host object, should invoke it (but unlikely worthwhile to implement...)
                         c.getMonitoring().addMessage(c.getNode(), Message.Severity.HIGH, "Ignoring host object callback in String.prototype.replace");
                     } else {
-                        anyUserFunctions = true;
                         implicitAfterCall = UserFunctionCalls.implicitUserFunctionCall(obj, new FunctionCalls.DefaultImplicitCallInfo(c) {
                             @Override
                             public Value getArg(int i1) {
@@ -356,7 +354,7 @@ public class JSString {
                         }, c);
                     }
                 }
-                UserFunctionCalls.implicitUserFunctionReturn(result, anyUserFunctions, true, implicitAfterCall, c);
+                UserFunctionCalls.implicitUserFunctionReturn(result, true, implicitAfterCall, c);
             }
         }
     }
@@ -452,7 +450,7 @@ public class JSString {
 
                 if (separator.isMaybeUndef()) {
                     // CASE: undefined separator
-                    pv.writeProperty(Collections.singleton(resultArray), Value.makeStr("0"), thisStringValue, true, false);
+                    pv.writeProperty(Collections.singleton(resultArray), Value.makeStr("0"), thisStringValue, false, true);
                     pv.writePropertyWithAttributes(resultArray, "length", Value.makeNum(1).setAttributes(true, true, false));
                     return Value.makeObject(resultArray);
                 }
@@ -497,7 +495,7 @@ public class JSString {
                     for (int i = 0; i < splitValues.size(); i++) {
                         final Value index = Value.makeStr(String.valueOf(i));
                         final Value value = splitValues.get(i);
-                        pv.writeProperty(toWrite, index, value, true, false);
+                        pv.writeProperty(toWrite, index, value, false, true);
                     }
                     return Value.makeObject(resultArray);
                 } else {

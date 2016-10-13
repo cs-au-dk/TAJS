@@ -1,5 +1,5 @@
-StartTag at (r1126,c7,p167246) missing required end tag
-StartTag at (r1127,c7,p167301) missing required end tag
+StartTag at (r1126,c7,p168371) missing required end tag
+StartTag at (r1127,c7,p168427) missing required end tag
 test/chromeexperiments/sandtrap.html:65:9: [definite] TypeError, accessing property of null/undefined
 test/chromeexperiments/sandtrap.html:71:9: [definite] TypeError, accessing property of null/undefined
 test/chromeexperiments/sandtrap.html:87:9: [definite] TypeError, accessing property of null/undefined

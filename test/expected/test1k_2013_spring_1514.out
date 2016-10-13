@@ -4,6 +4,10 @@ test/1k2013spring/1514.js:14:14: [definite] Reading absent property stringify
 test/1k2013spring/1514.js:7:2: [definite] The variable sqrs is never used
 test/1k2013spring/1514.js:110:26: [definite] Unreachable code
 test/1k2013spring/1514.js:20:1: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1514.js:94:8: [maybe] RangeError, assigning invalid value to array 'length' property
+test/1k2013spring/1514.js:97:5: [maybe] RangeError, assigning invalid value to array 'length' property
+test/1k2013spring/1514.js:101:14: [maybe] RangeError, assigning invalid value to array 'length' property
+test/1k2013spring/1514.js:105:4: [maybe] RangeError, assigning invalid value to array 'length' property
 test/1k2013spring/shim.js:8:9: [maybe] TypeError, accessing property of null/undefined
 test/1k2013spring/shim.js:8:9: [maybe] TypeError, call to non-function
 test/1k2013spring/shim.js:9:1: [maybe] TypeError, accessing property of null/undefined
@@ -28,4 +32,4 @@ test/1k2013spring/1514.js:101:14: [maybe] Reading absent property (computed name
 test/1k2013spring/1514.js:119:10: [maybe] Reading absent property (computed name)
 test/1k2013spring/1514.js:123:14: [maybe] Converting primitive number to object
 test/1k2013spring/shim.js:7:9: [maybe] Reading absent property (computed name)
-test/1k2013spring/shim.js,test/1k2013spring/1514.js: [maybe] Uncaught exception, constructed at [test/1k2013spring/1514.js:20:1, test/1k2013spring/1514.js:110:8, test/1k2013spring/shim.js:8:9, test/1k2013spring/shim.js:9:1]
+test/1k2013spring/shim.js,test/1k2013spring/1514.js: [maybe] Uncaught exception, constructed at [test/1k2013spring/1514.js:20:1, test/1k2013spring/1514.js:94:8, test/1k2013spring/1514.js:97:5, test/1k2013spring/1514.js:101:14, test/1k2013spring/1514.js:105:4, test/1k2013spring/1514.js:110:8, test/1k2013spring/shim.js:8:9, test/1k2013spring/shim.js:9:1]

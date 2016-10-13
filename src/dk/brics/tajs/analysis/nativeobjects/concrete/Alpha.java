@@ -29,12 +29,12 @@ public class Alpha {
         Value length = Value.makeNum(array.getLength());
         Set<ObjectLabel> labels = singleton(label);
         pv.writePropertyWithAttributes(labels, "length", length.setAttributes(true, true, false));
-        array.getExtraProperties().forEach((String k, ConcreteValue v) -> pv.writeProperty(labels, Value.makeTemporaryStr(k), toValue(v), true, false));
+        array.getExtraProperties().forEach((String k, ConcreteValue v) -> pv.writeProperty(labels, Value.makeTemporaryStr(k), toValue(v), false, true));
         for (int i = 0; i < array.getLength(); i++) {
             final Value index = Value.makeStr(String.valueOf(i));
             ConcreteValue concreteValue = array.get(i);
             final Value value = toValue(concreteValue);
-            pv.writeProperty(labels, index, value, true, false);
+            pv.writeProperty(labels, index, value, false, true);
         }
         return Value.makeObject(label);
     }

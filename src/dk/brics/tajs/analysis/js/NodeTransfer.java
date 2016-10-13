@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2015 Aarhus University
+ * Copyright 2009-2016 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,12 +16,12 @@
 
 package dk.brics.tajs.analysis.js;
 
+import dk.brics.tajs.analysis.AsyncEvents;
 import dk.brics.tajs.analysis.Conversion;
 import dk.brics.tajs.analysis.Exceptions;
 import dk.brics.tajs.analysis.FunctionCalls;
 import dk.brics.tajs.analysis.FunctionCalls.OrdinaryCallInfo;
 import dk.brics.tajs.analysis.InitialStateBuilder;
-import dk.brics.tajs.analysis.NativeFunctions;
 import dk.brics.tajs.analysis.PropVarOperations;
 import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.analysis.dom.DOMEventLoop;
@@ -64,6 +64,7 @@ import dk.brics.tajs.lattice.Context;
 import dk.brics.tajs.lattice.HeapContext;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.ObjectLabel.Kind;
+import dk.brics.tajs.lattice.ParallelTransfer;
 import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.State.Properties;
 import dk.brics.tajs.lattice.Str;
@@ -491,20 +492,34 @@ public class NodeTransfer implements NodeVisitor {
         boolean maybe_nan = propertyval.isMaybeNaN();
         propertyval = propertyval.restrictToNotNullNotUndef().restrictToNotNaN();
         Value propertystr = Conversion.toString(propertyval, c);
-        if (propertystr.isNone()) { // TODO: maybe need more aborts like this one?
+        if (propertystr.isNone() && !Options.get().isPropagateDeadFlow()) { // TODO: maybe need more aborts like this one?
+            c.getState().setToNone();
             return;
         }
         // get the value to be written
         Value v = c.getState().readRegister(n.getValueRegister());
-        NativeFunctions.updateArrayLength(n, objlabels, propertystr, v, c);
-        // write the object property value, as fixed property name or unknown property name, and separately for "undefined"/"null"/"NaN"
-        pv.writeProperty(objlabels, propertystr, v, true, maybe_undef || maybe_null || maybe_nan);
+        switch (n.getKind()) {
+            case GETTER:
+                v = v.makeGetter();
+                break;
+            case SETTER:
+                v = v.makeSetter();
+                break;
+            case ORDINARY:
+                // do nothing
+                break;
+        }
+        // write the object property value, and separately for "undefined"/"null"/"NaN"
+        ParallelTransfer pt = new ParallelTransfer(c);
+        Value finalV = v;
+        pt.add(() -> pv.writeProperty(objlabels, propertystr, finalV, false, n.isDecl()));
         if (maybe_undef && !propertystr.isMaybeStr("undefined"))
-            pv.writeProperty(objlabels, Value.makeTemporaryStr("undefined"), v, true, !propertystr.isNotStr());
+            pt.add(() -> pv.writeProperty(objlabels, Value.makeTemporaryStr("undefined"), finalV, false, n.isDecl()));
         if (maybe_null && !propertystr.isMaybeStr("null"))
-            pv.writeProperty(objlabels, Value.makeTemporaryStr("null"), v, true, !propertystr.isNotStr());
+            pt.add(() -> pv.writeProperty(objlabels, Value.makeTemporaryStr("null"), finalV, false, n.isDecl()));
         if (maybe_nan && !propertystr.isMaybeStr("NaN"))
-            pv.writeProperty(objlabels, Value.makeTemporaryStr("NaN"), v, true, !propertystr.isNotStr());
+            pt.add(() -> pv.writeProperty(objlabels, Value.makeTemporaryStr("NaN"), finalV, false, n.isDecl()));
+        pt.complete();
         m.visitPropertyWrite(n, objlabels, propertystr); // TODO: more monitoring around here?
         if (Options.get().isEvalStatistics()
                 && propertystr.getStr() != null
@@ -1013,7 +1028,7 @@ public class NodeTransfer implements NodeVisitor {
                 else if (baseobjs.size() == 1 && baseobjs.iterator().next().isSingleton()) {
                     v = UnknownValueResolver.getRealValue(v, c.getState()); // TODO: limits use of polymorphic values?
                     v = v.restrictToNotNullNotUndef().restrictToNotAbsent();
-                    pv.writePropertyWithAttributes(baseobjs, propname, v, false);
+                    pv.writePropertyWithAttributes(baseobjs, propname, v, false, true);
                 }
                 break;
             }
@@ -1032,6 +1047,11 @@ public class NodeTransfer implements NodeVisitor {
 
     @Override
     public void visit(EventDispatcherNode n) {
-        DOMEventLoop.get().multipleNondeterministicEventLoops(n, c.getState(), c);
+        if (Options.get().isDOMEnabled()) {
+            DOMEventLoop.get().multipleNondeterministicEventLoops(n, c);
+        }
+        if (Options.get().isAsyncEventsEnabled()) {
+            AsyncEvents.get().emit(n, c);
+        }
     }
 }

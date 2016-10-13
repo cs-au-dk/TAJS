@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2015 Aarhus University
+ * Copyright 2009-2016 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -250,7 +250,7 @@ public class JSRegExp { // TODO see https://dev.opera.com/articles/javascript-fo
     private static void updateRegExpLastIndex(Value value, Solver.SolverInterface c) {
         PropVarOperations pv = c.getAnalysis().getPropVarOperations();
         if (UnknownValueResolver.getRealValue(pv.readPropertyValue(value.getObjectLabels(), "global"), c.getState()).isMaybeTrue()) {
-            pv.writeProperty(value.getObjectLabels(), Value.makeTemporaryStr("lastIndex"), Value.makeAnyNumUInt(), true, false);
+            pv.writeProperty(value.getObjectLabels(), Value.makeTemporaryStr("lastIndex"), Value.makeAnyNumUInt(), false, true);
         }
     }
 
@@ -273,7 +273,7 @@ public class JSRegExp { // TODO see https://dev.opera.com/articles/javascript-fo
             ObjectLabel objlabel = JSArray.makeArray(call.getSourceNode(), c);
             PropVarOperations pv = c.getAnalysis().getPropVarOperations();
             Value res = Value.makeObject(objlabel);
-            pv.writeProperty(Collections.singleton(objlabel), Value.makeAnyStrUInt(), Value.makeAnyStr().joinAbsent(), true, false);
+            pv.writeProperty(Collections.singleton(objlabel), Value.makeAnyStrUInt(), Value.makeAnyStr().joinAbsent(), false, true);
             pv.writePropertyWithAttributes(objlabel, "length", Value.makeAnyNumUInt().setAttributes(true, true, false));
             pv.writeProperty(objlabel, "index", Value.makeAnyNumUInt());
             pv.writeProperty(objlabel, "input", c.getState().readThis());

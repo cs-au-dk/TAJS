@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2015 Aarhus University
+ * Copyright 2009-2016 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -79,7 +79,7 @@ public class JSArray {
                 int numArgs = call.getNumberOfArgs();
                 boolean isArrayLiteral = call.getSourceNode() instanceof CallNode && ((CallNode) call.getSourceNode()).getLiteralConstructorKind() == CallNode.LiteralConstructorKinds.ARRAY;
                 if (call.isUnknownNumberOfArgs())
-                    pv.writeProperty(Collections.singleton(objlabel), Value.makeAnyStrUInt(), call.getUnknownArg(), true, false);
+                    pv.writeProperty(Collections.singleton(objlabel), Value.makeAnyStrUInt(), call.getUnknownArg(), false, true);
                 else if (numArgs == 1 && !isArrayLiteral) { // 15.4.2.2, paragraph 2.
                     Value lenarg = NativeFunctions.readParameter(call, state, 0);
                     Status s;
@@ -264,14 +264,14 @@ public class JSArray {
                         boolean maybeAbsent = unfoldedElement.isMaybeAbsent();
                         unfoldedElement = unfoldedElement.restrictToNotAbsent();
                         if (!unfoldedElement.isNone()) {
-                            pv.writeProperty(resultLabelAsSet, Value.makeTemporaryStr(i + ""), unfoldedElement, true, maybeAbsent);
+                            pv.writeProperty(resultLabelAsSet, Value.makeTemporaryStr(i + ""), unfoldedElement, maybeAbsent, true);
                         }
                     }
                     Value length = Value.makeNum(unfoldedElements.size()).setAttributes(true, true, false);
                     writeLength(resultLabel, length, c);
                 } else {
                     Value v = UnknownValueResolver.join(unfoldedElements,state);
-                    pv.writeProperty(Collections.singleton(resultLabel), Value.makeAnyStrUInt(), v, true, false);
+                    pv.writeProperty(Collections.singleton(resultLabel), Value.makeAnyStrUInt(), v, false, true);
                     writeLength(resultLabel, Value.makeAnyNumUInt().setAttributes(true, true, false), c);
                 }
                 return resultArray;
@@ -307,7 +307,7 @@ public class JSArray {
                 Set<ObjectLabel> arr = state.readThisObjects();
                 Value new_len = Value.makeAnyNumUInt();
                 if (call.isUnknownNumberOfArgs()) {
-                    pv.writeProperty(arr, Value.makeAnyStrUInt(), call.getUnknownArg(), true, false);
+                    pv.writeProperty(arr, Value.makeAnyStrUInt(), call.getUnknownArg(), false, true);
                 } else if (arr.size() == 1) {
                     Value len_val = UnknownValueResolver.getRealValue(readLength(arr, c), state);
                     Double length_prop = len_val.getNum();
@@ -316,9 +316,9 @@ public class JSArray {
                     for (i = 0; i < call.getNumberOfArgs(); i++) {
                         Value v = NativeFunctions.readParameter(call, state, i);
                         if (length > -1)
-                            pv.writeProperty(arr, Value.makeTemporaryStr(String.valueOf(i + length)), v, true, false);
+                            pv.writeProperty(arr, Value.makeTemporaryStr(String.valueOf(i + length)), v, false, true);
                         else {
-                            pv.writeProperty(arr, Value.makeAnyStrUInt(), v, true, false);
+                            pv.writeProperty(arr, Value.makeAnyStrUInt(), v, false, true);
                             break;
                         }
                     }
@@ -326,7 +326,7 @@ public class JSArray {
                         new_len = Value.makeNum(i + length);
                 } else
                     for (int i = 0; i < call.getNumberOfArgs(); i++)
-                        pv.writeProperty(arr, Value.makeAnyStrUInt(), NativeFunctions.readParameter(call, state, i), true, false);
+                        pv.writeProperty(arr, Value.makeAnyStrUInt(), NativeFunctions.readParameter(call, state, i), false, true);
                 writeLength(arr, new_len, c);
                 return new_len;
             }
@@ -358,7 +358,7 @@ public class JSArray {
                 } else {
                     Value v = pv.readPropertyWithAttributes(thisobj, Value.makeAnyStrUInt());
                     if (v.isMaybePresent())
-                        pv.writeProperty(thisobj, Value.makeAnyStrUInt(), v, true, false);
+                        pv.writeProperty(thisobj, Value.makeAnyStrUInt(), v, false, true);
                 }
                 return Value.makeObject(thisobj);
             }
@@ -382,7 +382,7 @@ public class JSArray {
                             Bool is_def = pv.hasProperty(thisObj, s);
                             if (is_def.isMaybeTrue()) {
                                 Value elem = pv.readPropertyWithAttributes(thisObj, s);
-                                pv.writeProperty(thisObj, Value.makeTemporaryStr(Integer.toString(i - 1)), elem, false, moreThanOneArray);
+                                pv.writeProperty(thisObj, Value.makeTemporaryStr(Integer.toString(i - 1)), elem, moreThanOneArray, true);
                             } else
                                 pv.deleteProperty(thisObj, Value.makeTemporaryStr(Integer.toString(i - 1)), moreThanOneArray);
                         }
@@ -397,7 +397,7 @@ public class JSArray {
                         new_length = Value.makeAnyNumUInt();
                         Value defaultArrayProperty = UnknownValueResolver.getDefaultArrayProperty(current, state);
                         if (!defaultArrayProperty.restrictToNotAbsent().isNone()) {
-                            pv.writeProperty(thisObj, Value.makeAnyStrUInt(), defaultArrayProperty, false, moreThanOneArray);
+                            pv.writeProperty(thisObj, Value.makeAnyStrUInt(), defaultArrayProperty, moreThanOneArray, true);
                         }
                         pv.deleteProperty(thisObj, Value.makeAnyStrUInt(), moreThanOneArray);
                     }
@@ -484,7 +484,7 @@ public class JSArray {
                                 if (toMove.isMaybeAbsent()) {
                                     toMove = toMove.joinUndef().restrictToNotAbsent();
                                 }
-                                pv.writeProperty(resultLabelAsSet, Value.makeTemporaryStr(offset + ""), toMove, false, thisObjects.size() != 1);
+                                pv.writeProperty(resultLabelAsSet, Value.makeTemporaryStr(offset + ""), toMove, thisObjects.size() != 1, true);
                             }
                             return resultArray;
                         } else {
@@ -499,7 +499,7 @@ public class JSArray {
 
                 // fallback if no more precise branches has returned
                 Value v = pv.readPropertyValue(state.readThisObjects(), Value.makeAnyStrUInt());
-                pv.writeProperty(Collections.singleton(resultLabel), Value.makeAnyStrUInt(), v, true, false);
+                pv.writeProperty(Collections.singleton(resultLabel), Value.makeAnyStrUInt(), v, false, true);
                 writeLength(resultLabel, Value.makeAnyNumUInt().setAttributes(true, true, false), c);
                 return resultArray;
             }
@@ -526,7 +526,7 @@ public class JSArray {
                                     "TypeError, invalid argument to Array.prototype.sort");
                         }
                         List<Value> result = newList();
-                        boolean anyUserFunctions = false, anyHostFunctions = false;
+                        boolean anyHostFunctions = false;
                         if (comparefn.isMaybeUndef()) {
                             anyHostFunctions = true; // 'undefined' is like a special comparefn
                             result.add(Value.makeAnyNum()); // the actual value doesn't matter here
@@ -539,7 +539,6 @@ public class JSArray {
                                     // TODO: comparefn is a host object, should invoke it (but unlikely worthwhile to implement...), see test/micro/arraysort2.js
                                     c.getMonitoring().addMessage(c.getNode(), Message.Severity.HIGH, "Ignoring host object comparefn in Array.prototype.sort");
                                 } else {
-                                    anyUserFunctions = true;
                                     implicitAfterCall = UserFunctionCalls.implicitUserFunctionCall(obj, new FunctionCalls.DefaultImplicitCallInfo(c) {
                                         @Override
                                         public Value getArg(int i) {
@@ -564,10 +563,10 @@ public class JSArray {
                                 }
                             }
                         }
-                        if (UserFunctionCalls.implicitUserFunctionReturn(result, anyUserFunctions, anyHostFunctions, implicitAfterCall, c).isNone())
+                        if (UserFunctionCalls.implicitUserFunctionReturn(result, anyHostFunctions, implicitAfterCall, c).isNone())
                             return Value.makeNone();
                     }
-                    pv.writeProperty(thisobj, Value.makeAnyStrUInt(), pv.readPropertyValue(thisobj, Value.makeAnyStrUInt()), true, false);
+                    pv.writeProperty(thisobj, Value.makeAnyStrUInt(), pv.readPropertyValue(thisobj, Value.makeAnyStrUInt()), false, true);
                     if (comparefn.isNone()) {
                         break;
                     }
@@ -582,11 +581,12 @@ public class JSArray {
                 // construct return value
                 ObjectLabel resultArray = makeArray(call.getSourceNode(), c);
                 Value arrayValues = pv.readPropertyValue(state.readThisObjects(), Value.makeAnyStrUInt());
-                pv.writeProperty(Collections.singleton(resultArray), Value.makeAnyStrUInt(), arrayValues, true, false);
+                pv.writeProperty(Collections.singleton(resultArray), Value.makeAnyStrUInt(), arrayValues, false, true);
                 writeLength(resultArray, Value.makeAnyNumUInt().setAttributes(true, true, false), c);
 
                 // mutate the input
                 Set<ObjectLabel> thisObjects = state.readThisObjects();
+                readLength(thisObjects, c); // force read-side-effects
                 Value parameters = Value.makeNone();
                 if (call.isUnknownNumberOfArgs())
                     parameters = UnknownValueResolver.join(parameters, call.getUnknownArg(), state);
@@ -594,7 +594,7 @@ public class JSArray {
                     for (int i = 2; i < call.getNumberOfArgs(); i++)
                         parameters = UnknownValueResolver.join(parameters, NativeFunctions.readParameter(call, state, i), state);
                 pv.deleteProperty(thisObjects, Value.makeAnyStrUInt(), true);
-                pv.writeProperty(thisObjects, Value.makeAnyStrUInt(), parameters.join(arrayValues).removeAttributes(), false, true);
+                pv.writeProperty(thisObjects, Value.makeAnyStrUInt(), parameters.join(arrayValues), false, false);
                 writeLength(thisObjects, Value.makeAnyNumUInt(), c);
 
                 return Value.makeObject(resultArray);
@@ -620,7 +620,7 @@ public class JSArray {
                             Bool is_def = pv.hasProperty(thisObj, s);
                             if (is_def.isMaybeTrue()) {
                                 Value elem = pv.readPropertyWithAttributes(thisObj, s);
-                                pv.writeProperty(thisObj, Value.makeTemporaryStr(Long.toString(i + 1)), elem, false, moreThanOneArray);
+                                pv.writeProperty(thisObj, Value.makeTemporaryStr(Long.toString(i + 1)), elem, moreThanOneArray, true);
                             } else
                                 pv.deleteProperty(thisObj, Value.makeTemporaryStr(Long.toString(i + 1)), moreThanOneArray);
                         }
@@ -628,13 +628,13 @@ public class JSArray {
                     } else {
                         // imprecise case: length is not known --> mix all array properties
                         new_length = Value.makeAnyNumUInt();
-                        pv.writeProperty(thisObj, Value.makeAnyStrUInt(), pv.readPropertyValue(thisObj, Value.makeAnyStrUInt()).removeAttributes(), false, moreThanOneArray);
+                        pv.writeProperty(thisObj, Value.makeAnyStrUInt(), pv.readPropertyValue(thisObj, Value.makeAnyStrUInt()).removeAttributes(), moreThanOneArray, true);
                         pv.deleteProperty(thisObj, Value.makeAnyStrUInt(), moreThanOneArray);
                     }
                     writeLength(thisObj, new_length, c);
                     sharedNewLength = sharedNewLength.join(new_length);
                 }
-                pv.writeProperty(thisObjects, Value.makeTemporaryStr("0"), NativeFunctions.readParameter(call, state, 0).removeAttributes(), false, moreThanOneArray);
+                pv.writeProperty(thisObjects, Value.makeTemporaryStr("0"), NativeFunctions.readParameter(call, state, 0).removeAttributes(), moreThanOneArray, true);
                 return sharedNewLength;
             }
 
@@ -686,11 +686,11 @@ public class JSArray {
     }
 
     private static void writeLength(ObjectLabel resultLabel, Value length, Solver.SolverInterface c) {
-        c.getAnalysis().getPropVarOperations().writePropertyWithAttributes(resultLabel, "length", length.restrictToNotNaN().setAttributes(true, true, false));
+        writeLength(singleton(resultLabel), length, c);
     }
 
     private static void writeLength(Set<ObjectLabel> thisObj, Value length, Solver.SolverInterface c) {
-        c.getAnalysis().getPropVarOperations().writePropertyWithAttributes(thisObj, "length", length.restrictToNotNaN().setAttributes(true, true, false));
+        c.getAnalysis().getPropVarOperations().writeProperty(thisObj, Value.makeTemporaryStr("length"), length, false, false);
     }
 
     public static ObjectLabel makeArray(AbstractNode allocationNode, Solver.SolverInterface c) {
@@ -715,7 +715,7 @@ public class JSArray {
 
     public static void setUnknownEntries(ObjectLabel array, Value content, Solver.SolverInterface c) {
         PropVarOperations pv = c.getAnalysis().getPropVarOperations();
-        pv.writeProperty(singleton(array), Value.makeAnyStrUInt(), content, true, false);
+        pv.writeProperty(singleton(array), Value.makeAnyStrUInt(), content, false, true);
         writeLength(array, Value.makeAnyNumUInt(), c);
     }
 }

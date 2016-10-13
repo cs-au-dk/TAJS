@@ -10,6 +10,7 @@ import org.kohsuke.args4j.CmdLineException;
 import org.kohsuke.args4j.CmdLineParser;
 import org.kohsuke.args4j.Option;
 
+import java.io.OutputStream;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -238,6 +239,7 @@ public class OptionValues {
         if (polyfillMDN != that.polyfillMDN) return false;
         if (polyfillES6Collections != that.polyfillES6Collections) return false;
         if (polyfillTypedArrays != that.polyfillTypedArrays) return false;
+        if (asyncEvents != that.asyncEvents) return false;
         if (noImplicitGlobalVarDeclarations != that.noImplicitGlobalVarDeclarations) return false;
         if (ignoredLibrariesString != null ? !ignoredLibrariesString.equals(that.ignoredLibrariesString) : that.ignoredLibrariesString != null)
             return false;
@@ -297,10 +299,14 @@ public class OptionValues {
         result = 31 * result + (polyfillMDN ? 1 : 0);
         result = 31 * result + (polyfillES6Collections ? 1 : 0);
         result = 31 * result + (polyfillTypedArrays ? 1 : 0);
+        result = 31 * result + (asyncEvents ? 1 : 0);
         result = 31 * result + (noImplicitGlobalVarDeclarations ? 1 : 0);
         result = 31 * result + (arguments != null ? arguments.hashCode() : 0);
         return result;
     }
+
+    @Option(name = "-async-events", usage = "Enables execution of asynchronous event handlers")
+    private boolean asyncEvents;
 
     @Option(name = "-no-implicit-global-var-declarations", usage = "Enables avoiding creation of global variables outside variable declarations (unsound)")
     private boolean noImplicitGlobalVarDeclarations;
@@ -359,11 +365,10 @@ public class OptionValues {
                     enableDebug();
                 }
                 if (help) {
-                    describe();
+                    describe(System.out);
                 }
             } catch (CmdLineException e) {
-                parser.printUsage(System.err);
-                throw new RuntimeException(e);
+                throw new RuntimeException("Bad arguments: " + e.getMessage());
             }
         }
     }
@@ -380,8 +385,8 @@ public class OptionValues {
     /**
      * Prints a description of the available options.
      */
-    public void describe() {
-        new CmdLineParser(this).printUsage(System.out);
+    public void describe(OutputStream out) {
+        new CmdLineParser(this).printUsage(out);
     }
 
     public Map<String, Object> getOptionValues() {
@@ -1030,5 +1035,13 @@ public class OptionValues {
 
     public boolean isNoImplicitGlobalVarDeclarationsEnabled() {
         return noImplicitGlobalVarDeclarations;
+    }
+
+    public void enableAsyncEvents() {
+        asyncEvents = true;
+    }
+
+    public boolean isAsyncEventsEnabled() {
+        return asyncEvents;
     }
 }

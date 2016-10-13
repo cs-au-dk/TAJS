@@ -503,6 +503,7 @@ public class Test1K2014Dragons {
         Misc.checkSystemOutput();
     }
 
+    @Ignore // github #302
     @Test
     public void test1k_2014_dragons_1836() {
         Misc.init();
@@ -587,6 +588,7 @@ public class Test1K2014Dragons {
         Misc.checkSystemOutput();
     }
 
+    @Ignore // github #302
     @Test
     public void test1k_2014_dragons_1898() {
         Misc.init();

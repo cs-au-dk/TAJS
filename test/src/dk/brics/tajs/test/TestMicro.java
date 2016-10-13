@@ -1,7 +1,10 @@
 package dk.brics.tajs.test;
 
 import dk.brics.tajs.Main;
+import dk.brics.tajs.monitoring.CompositeMonitoring;
+import dk.brics.tajs.monitoring.Monitoring;
 import dk.brics.tajs.options.Options;
+import dk.brics.tajs.test.monitors.OrdinaryExitReachableCheckerMonitor;
 import dk.brics.tajs.util.AnalysisException;
 import dk.brics.tajs.util.AnalysisLimitationException;
 import dk.brics.tajs.util.ParseError;
@@ -3178,5 +3181,288 @@ public class TestMicro {
 				"r(function f1(){r(function f2(){r(function f3(){r(null)})})});"
 		);
 		Misc.checkSystemOutput();
+	}
+	@Test(expected = AnalysisLimitationException.class /* GitHub #257*/)
+	public void classCastExceptionRegression1() {
+		Misc.init();
+		Options.get().enableUnevalizer();
+		Options.get().enableIncludeDom();
+		Misc.runSource(
+				"function f() {",
+				"}",
+				"window[f] = window[f];"
+		);
+	}
+
+	@Test(expected = AnalysisLimitationException.class /* GitHub #257*/)
+	public void classCastExceptionRegression2() {
+		Misc.init();
+		Options.get().enableUnevalizer();
+		Options.get().enableIncludeDom();
+		Misc.runSource(
+				"setTimeout(Function,0);"
+		);
+	}
+
+	@Test
+	public void classCastExceptionRegression3() {
+		Misc.init();
+		Options.get().enableIncludeDom();
+		Misc.runSource(
+				"setTimeout(Array,0);"
+		);
+	}
+
+	@Test(expected = AnalysisLimitationException.class /* should fix itself once we do some more modeling */)
+	public void missingHostFunctionModelOnObject() {
+		Misc.init();
+		Misc.runSource(
+				"var s = Math.random()? 'foo': 'bar';",
+				"Object[s]();"
+		);
+	}
+
+	@Test(expected = AnalysisLimitationException.class /* should fix itself once we do some more modeling */)
+	public void missingHostFunctionModelOnFunction() {
+		Misc.init();
+		Options.get().enableUnevalizer();
+		Misc.runSource(
+				"var s = Math.random()? 'foo': 'bar';",
+				"Function[s]();"
+		);
+	}
+
+	@Test
+	public void missingHostFunctionModelOnString() {
+		Misc.init();
+		Misc.runSource(
+				"var s = Math.random()? 'foo': 'bar';",
+				"TAJS_dumpValue(String('x')[s]);"
+		);
+	}
+
+	@Test
+	public void missingHostFunctionModelOnNumber() {
+		Misc.init();
+		Misc.runSource(
+				"var s = Math.random()? 'foo': 'bar';",
+				"Number(0)[s]();"
+		);
+	}
+
+	@Test
+	public void missingHostFunctionModelOnBoolean() {
+		Misc.init();
+		Misc.runSource(
+				"var s = Math.random()? 'foo': 'bar';",
+				"Boolean(true)[s]();"
+		);
+	}
+
+	@Test
+	public void missingHostFunctionModelOnRegExp() {
+		Misc.init();
+		Misc.runSource(
+				"var s = Math.random()? 'foo': 'bar';",
+				"RegExp('')[s]();"
+		);
+	}
+
+	@Test
+	public void indirectAccessToFunctionConstructor() {
+		Misc.init();
+		Misc.runSource(
+				"TAJS_assert(Object.constructor === Function);",
+				"TAJS_assert(Object.prototype.constructor.constructor === Function);",
+				"TAJS_assert(({}).constructor.constructor === Function);"
+		);
+	}
+
+	@Test
+	public void lazyEventHandler1() {
+		Misc.init();
+		Options.get().enableIncludeDom();
+		Misc.runSource(
+				"var x = false;",
+				"function f(h){",
+				"	setTimeout(h, 0);",
+				"}",
+				"f(function g(){x = true;});",
+				"setTimeout(function(){TAJS_assert(x, 'isMaybeAnyBool');}, 0);"
+		);
+	}
+
+	@Test
+	public void lazyEventHandler2() {
+		Misc.init();
+		Options.get().enableIncludeDom();
+		Misc.runSource(
+				"var x = false;",
+				"function f(h){",
+				"	window.click = h;",
+				"}",
+				"f(function g(){x = true;});",
+				"setTimeout(function(){TAJS_assert(x, 'isMaybeAnyBool');}, 0);"
+		);
+	}
+
+	@Test
+	public void asyncEvents() {
+		Misc.init();
+		Options.get().enableAsyncEvents();
+		Misc.captureSystemOutput();
+		Misc.runSourceWithNamedFile("asyncEvents.js",
+				"function f(){TAJS_dumpValue('executed');}",
+				"TAJS_asyncListen(f);",
+				"");
+		Misc.checkSystemOutput();
+	}
+
+	@Test
+	public void asyncEventsWeak() {
+		Misc.init();
+		Options.get().enableAsyncEvents();
+		Misc.runSource(
+				"var x = false;",
+				"function f(){x = true;}",
+				"function g(){TAJS_assert(x, 'isMaybeAnyBool');}",
+				"TAJS_asyncListen(f);",
+				"TAJS_asyncListen(g);",
+				"");
+	}
+
+	@Test
+	public void asyncEventsDelayed() {
+		Misc.init();
+		Options.get().enableAsyncEvents();
+		Misc.runSource(
+				"var x = false;",
+				"function f(){x = true;}",
+				"TAJS_asyncListen(f);",
+				"TAJS_assert(x === false);",
+				"");
+	}
+
+	@Test
+	public void asyncEventsMultiple() {
+		Misc.init();
+		Options.get().enableAsyncEvents();
+		Misc.runSource(
+				"var i = 0;",
+				"function f(){i++;}",
+				"function g(){TAJS_assert(i, 'isMaybeNumUInt');}",
+				"TAJS_asyncListen(f);",
+				"TAJS_asyncListen(g);",
+				"");
+	}
+
+	@Test
+	public void asyncEventsCrashing() {
+		Misc.init();
+		Options.get().enableAsyncEvents();
+		Misc.runSource(
+				new String[]{
+						"function f(){foo.bar()}",
+						"TAJS_asyncListen(f);",
+				},
+				new CompositeMonitoring(new Monitoring(), new OrdinaryExitReachableCheckerMonitor()));
+	}
+
+	@Test
+	public void presentNoValueBug() throws Exception {
+		Main.reset();
+		Options.get().enableTest();
+		Misc.init();
+		String[] args = {"test/micro/present-no-value-bug.js"};
+		Misc.run(args);
+	}
+
+	@Test
+	public void presentNoValueNoBug() throws Exception {
+		Main.reset();
+		Options.get().enableTest();
+		Misc.init();
+		String[] args = {"test/micro/present-no-value-no-bug.js"};
+		Misc.run(args);
+	}
+
+	@Test
+	public void presentNoValueNoBug2() throws Exception {
+		Main.reset();
+		Options.get().enableTest();
+		Misc.init();
+		String[] args = {"test/micro/present-no-value-no-bug-2.js"};
+		Misc.run(args);
+	}
+
+	@Test
+	public void unexpectedValueBug() throws Exception {
+		Main.reset();
+		Options.get().enableTest();
+		Options.get().enableNoRecency();
+		Misc.init();
+		String[] args = {"test/micro/unexpectedValueBug.js"};
+		Misc.run(args);
+	}
+
+	@Test
+	public void summarizationBug274() throws Exception {
+		Main.reset();
+		Main.initLogging();
+		Options.get().enableTest();
+		Misc.run(new String[]{"test/micro/summarization-bug-274-minimal.js"});
+	}
+
+	@Test
+	public void domEventHandlerSetter() {
+		Misc.init();
+		Options.get().enableIncludeDom();
+		Misc.captureSystemOutput();
+		Misc.run(new String[]{"test/micro/domEventHandlerSetter.js"});
+		Misc.checkSystemOutput();
+	}
+
+	@Test
+	public void propertyAccess_bug_noLazy() {
+		Misc.init();
+		Options.get().enableNoLazy();
+		Misc.runSource(new String[]{
+						"var v1 = Object.prototype.toString;",
+						"TAJS_dumpValue(v1);"
+				}, new CompositeMonitoring(new Monitoring(), new OrdinaryExitReachableCheckerMonitor())
+		);
+	}
+
+	@Test
+	public void bad_array_length_write_bug_minimized() {
+		Misc.init();
+		Misc.run(new String[]{
+						"test/micro/bad-array-length-write-bug_minimized.js"
+				},
+				new CompositeMonitoring(new Monitoring(), new OrdinaryExitReachableCheckerMonitor()));
+	}
+
+	@Test
+	public void maybe_infinite_loop() {
+		Misc.init();
+		Misc.runSource(
+				new String[]{
+						"var f = function() {return 42;}",
+						"if (Math.random()) { f = function g() {g();} } ",
+						"TAJS_dumpValue(f());"
+				},
+				new CompositeMonitoring(new Monitoring(), new OrdinaryExitReachableCheckerMonitor()));
+	}
+
+	@Test
+	public void bad_default_array_property() {
+		Misc.init();
+		Misc.runSource(
+				new String[]{
+						"var o = {};",
+						"o.__defineGetter__('length', function () {/* length: undefined */} );",
+						"Array.prototype.splice.call(o, 0, 0, 'x');"
+				},
+				new CompositeMonitoring(new Monitoring(), new OrdinaryExitReachableCheckerMonitor()));
 	}
 }

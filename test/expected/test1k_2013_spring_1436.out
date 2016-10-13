@@ -1,0 +1,26 @@
+test/1k2013spring/1436.js:42:13: [definite] The conditional expression is always true
+test/1k2013spring/shim.js:6:5: [definite] The variable b is never used
+test/1k2013spring/1436.js:41:6: [maybe] TypeError, call to non-function
+test/1k2013spring/1436.js:51:5: [maybe] ReferenceError, reading absent variable s
+test/1k2013spring/1436.js:55:10: [maybe] ReferenceError, reading absent variable s
+test/1k2013spring/1436.js:55:14: [maybe] ReferenceError, reading absent variable s
+test/1k2013spring/shim.js:8:9: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/shim.js:8:9: [maybe] TypeError, call to non-function
+test/1k2013spring/shim.js:9:1: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/shim.js:6:9: [maybe] Reading absent property body
+test/1k2013spring/shim.js:8:9: [maybe] Reading absent property getContext
+test/1k2013spring/shim.js:9:1: [maybe] Reading absent property body
+test/1k2013spring/1436.js:12:7: [maybe] Conversion to number yields NaN
+test/1k2013spring/1436.js:42:5: [maybe] The variable v has values with different types
+test/1k2013spring/1436.js:44:9: [maybe] The variable v has values with different types
+test/1k2013spring/1436.js:50:7: [maybe] Conversion to number yields NaN
+test/1k2013spring/1436.js:50:11: [maybe] The variable p has values with different types
+test/1k2013spring/1436.js:51:24: [maybe] Reading absent property (computed name)
+test/1k2013spring/1436.js:51:26: [maybe] Conversion to number yields NaN
+test/1k2013spring/1436.js:51:28: [maybe] Conversion to number yields NaN
+test/1k2013spring/1436.js:51:28: [maybe] The variable q has values with different types
+test/1k2013spring/1436.js:51:32: [maybe] The variable p has values with different types
+test/1k2013spring/1436.js:55:20: [maybe] The variable v has values with different types
+test/1k2013spring/1436.js:56:5: [maybe] The variable v has values with different types
+test/1k2013spring/shim.js:7:9: [maybe] Reading absent property (computed name)
+test/1k2013spring/shim.js,test/1k2013spring/1436.js: [maybe] Uncaught exception, constructed at [test/1k2013spring/1436.js:41:6, test/1k2013spring/1436.js:51:5, test/1k2013spring/1436.js:55:10, test/1k2013spring/1436.js:55:14, test/1k2013spring/shim.js:8:9, test/1k2013spring/shim.js:9:1]

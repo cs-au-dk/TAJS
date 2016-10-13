@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2015 Aarhus University
+ * Copyright 2009-2016 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,6 +16,7 @@
 
 package dk.brics.tajs.analysis.nativeobjects;
 
+import dk.brics.tajs.analysis.AsyncEvents;
 import dk.brics.tajs.analysis.Conversion;
 import dk.brics.tajs.analysis.Conversion.Hint;
 import dk.brics.tajs.analysis.EvalCache;
@@ -57,6 +58,7 @@ import dk.brics.tajs.solver.NodeAndContext;
 import dk.brics.tajs.unevalizer.Unevalizer;
 import dk.brics.tajs.unevalizer.UnevalizerLimitations;
 import dk.brics.tajs.util.AnalysisException;
+import dk.brics.tajs.util.AnalysisLimitationException;
 import org.apache.log4j.Logger;
 
 import java.io.File;
@@ -80,7 +82,7 @@ public class JSGlobal {
     private static final Set<ECMAScriptObjects> TAJS_HOOK_FUNCTIONS = newSet();
 
     static {
-        TAJS_HOOK_FUNCTIONS.addAll(Arrays.asList(ECMAScriptObjects.TAJS_DUMPVALUE, ECMAScriptObjects.TAJS_DUMPPROTOTYPE, ECMAScriptObjects.TAJS_DUMPOBJECT, ECMAScriptObjects.TAJS_DUMPSTATE, ECMAScriptObjects.TAJS_DUMPMODIFIEDSTATE, ECMAScriptObjects.TAJS_DUMPATTRIBUTES, ECMAScriptObjects.TAJS_DUMPEXPRESSION, ECMAScriptObjects.TAJS_DUMPNF, ECMAScriptObjects.TAJS_ASSERT, ECMAScriptObjects.TAJS_CONVERSION_TO_PRIMITIVE, ECMAScriptObjects.TAJS_ADD_CONTEXT_SENSITIVITY, ECMAScriptObjects.TAJS_NEW_OBJECT));
+        TAJS_HOOK_FUNCTIONS.addAll(Arrays.asList(ECMAScriptObjects.TAJS_DUMPVALUE, ECMAScriptObjects.TAJS_DUMPPROTOTYPE, ECMAScriptObjects.TAJS_DUMPOBJECT, ECMAScriptObjects.TAJS_DUMPSTATE, ECMAScriptObjects.TAJS_DUMPMODIFIEDSTATE, ECMAScriptObjects.TAJS_DUMPATTRIBUTES, ECMAScriptObjects.TAJS_DUMPEXPRESSION, ECMAScriptObjects.TAJS_DUMPNF, ECMAScriptObjects.TAJS_ASSERT, ECMAScriptObjects.TAJS_CONVERSION_TO_PRIMITIVE, ECMAScriptObjects.TAJS_ADD_CONTEXT_SENSITIVITY, ECMAScriptObjects.TAJS_NEW_OBJECT, ECMAScriptObjects.TAJS_ASYNC_LISTEN));
     }
 
     public static Value removeTAJSSpecificFunctions(Value v) {
@@ -174,7 +176,7 @@ public class JSGlobal {
                     }
                     return Value.makeNone();
                 } else {
-                    throw new AnalysisException("eval of non JSONStr not supported, and unevalizer is not enabled");
+                    throw new AnalysisLimitationException(call.getJSSourceNode(), "eval of non JSONStr not supported, and unevalizer is not enabled");
                 }
             }
             case PARSEINT: { // 15.1.2.2
@@ -233,6 +235,7 @@ public class JSGlobal {
             case TAJS_DUMPVALUE: {
                 NativeFunctions.expectParameters(nativeobject, call, c, 1, 1);
                 Value x = NativeFunctions.readParameter(call, state, 0); // to avoid recover: call.getArg(0);
+                //System.out.println(x);
                 c.getMonitoring().addMessageInfo(c.getNode(), Severity.HIGH, "Abstract value: " + x.restrictToNotModified() /*+ " (context: " + c.getCurrentContext() + ")"*/);
                 return Value.makeUndef();
             }
@@ -391,6 +394,10 @@ public class JSGlobal {
                 return Value.makeObject(objlabel);
             }
 
+            case TAJS_ASYNC_LISTEN: {
+                AsyncEvents.get().listen(call.getSourceNode(), NativeFunctions.readParameter(call, state, 0), c);
+                return Value.makeUndef();
+            }
             case TAJS_GET_UI_EVENT: {
                 return Value.makeObject(UIEvent.INSTANCES);
             }

@@ -1,0 +1,103 @@
+test/1k2014dragons/shims.js:19:5: [definite] The conditional expression is always true
+test/1k2014dragons/shims.js:22:5: [definite] Property is null/undefined
+test/1k2014dragons/shims.js:22:5: [definite] The conditional expression is always false
+test/1k2014dragons/shims.js:22:5: [definite] The conditional expression is always false
+test/1k2014dragons/shims.js:22:5: [definite] The conditional expression is always false
+test/1k2014dragons/shims.js:22:5: [definite] The conditional expression is always false
+test/1k2014dragons/1787.js:70:2: [definite] Too few parameters to function CanvasRenderingContext2D.prototype.arc
+test/1k2014dragons/shims.js:23:5: [definite] Reading absent property mozRequestAnimationFrame
+test/1k2014dragons/shims.js:24:5: [definite] Reading absent property webkitRequestAnimationFrame
+test/1k2014dragons/shims.js:25:5: [definite] Reading absent property msRequestAnimationFrame
+test/1k2014dragons/shims.js:41:19: [definite] Dead assignment, property antialias is never read
+test/1k2014dragons/shims.js:41:36: [definite] Dead assignment, property stencil is never read
+test/1k2014dragons/1787.js:5:5: [definite] Reading absent property (computed name)
+test/1k2014dragons/1787.js:60:5: [definite] The variable m is never used
+test/1k2014dragons/shims.js:11:9: [definite] The variable e is never used
+test/1k2014dragons/shims.js:12:12: [definite] Unreachable function
+test/1k2014dragons/shims.js:18:5: [definite] The variable AudioContext is never used
+test/1k2014dragons/shims.js:39:5: [definite] The variable g is never used
+test/1k2014dragons/1787.js:5:5: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1787.js:7:7: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1787.js:10:1: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1787.js:81:2: [maybe] TypeError, non-HTMLImageElement or non-HTMLCanvasElement as argument to drawImage
+test/1k2014dragons/1787.js:87:3: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1787.js:87:3: [maybe] TypeError, call to non-function
+test/1k2014dragons/shims.js:31:1: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/shims.js:34:1: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/shims.js:34:1: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/shims.js:35:1: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/shims.js:37:9: [maybe] TypeError, call to non-function
+test/1k2014dragons/shims.js:42:18: [maybe] TypeError, call to non-function
+test/1k2014dragons/shims.js:42:46: [maybe] TypeError, call to non-function
+test/1k2014dragons/shims.js:55:9: [maybe] TypeError, accessing property of null/undefined
+test/1k2014dragons/1787.js:4:5: [maybe] Reading absent property targetTouches
+test/1k2014dragons/1787.js:5:5: [maybe] Reading absent property targetTouches
+test/1k2014dragons/1787.js:7:7: [maybe] Reading absent property clientX
+test/1k2014dragons/1787.js:8:7: [maybe] Reading absent property clientY
+test/1k2014dragons/1787.js:82:20: [maybe] Reading absent property width
+test/1k2014dragons/1787.js:82:28: [maybe] Reading absent property height
+test/1k2014dragons/1787.js:87:3: [maybe] Reading absent property draw
+test/1k2014dragons/1787.js:92:9: [maybe] Reading absent property width
+test/1k2014dragons/1787.js:93:10: [maybe] Reading absent property height
+test/1k2014dragons/shims.js:10:9: [maybe] Reading absent property body
+test/1k2014dragons/shims.js:31:1: [maybe] Reading absent property body
+test/1k2014dragons/shims.js:34:1: [maybe] Reading absent property style
+test/1k2014dragons/shims.js:35:1: [maybe] Reading absent property style
+test/1k2014dragons/shims.js:37:9: [maybe] Reading absent property getContext
+test/1k2014dragons/shims.js:42:18: [maybe] Reading absent property getContext
+test/1k2014dragons/shims.js:42:46: [maybe] Reading absent property getContext
+test/1k2014dragons/shims.js:55:9: [maybe] Reading absent property body
+test/1k2014dragons/1787.js:25:2: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1787.js:26:2: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1787.js:29:3: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1787.js:34:3: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1787.js:42:2: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1787.js:48:11: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1787.js:49:11: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1787.js:87:3: [maybe] Reading absent property (computed name)
+test/1k2014dragons/1787.js:92:9: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1787.js:92:9: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1787.js:93:10: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1787.js:93:10: [maybe] Conversion to number yields NaN
+test/1k2014dragons/shims.js:9:9: [maybe] Reading absent property (computed name)
+test/1k2014dragons/shims.js,test/1k2014dragons/1787.js: [maybe] Uncaught exception, constructed at [test/1k2014dragons/1787.js:5:5, test/1k2014dragons/1787.js:7:7, test/1k2014dragons/1787.js:10:1, test/1k2014dragons/1787.js:87:3, test/1k2014dragons/shims.js:31:1, test/1k2014dragons/shims.js:34:1, test/1k2014dragons/shims.js:35:1, test/1k2014dragons/shims.js:37:9, test/1k2014dragons/shims.js:42:18, test/1k2014dragons/shims.js:42:46, test/1k2014dragons/shims.js:55:9]
+test/1k2014dragons/1787.js:18:2: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/1k2014dragons/1787.js:19:2: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/1k2014dragons/1787.js:20:2: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/1k2014dragons/1787.js:21:2: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/1k2014dragons/1787.js:22:2: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/1k2014dragons/1787.js:25:2: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/1k2014dragons/1787.js:25:10: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/1k2014dragons/1787.js:26:2: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/1k2014dragons/1787.js:26:10: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/1k2014dragons/1787.js:27:2: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/1k2014dragons/1787.js:27:11: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/1k2014dragons/1787.js:28:5: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/1k2014dragons/1787.js:28:28: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/1k2014dragons/1787.js:29:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/1k2014dragons/1787.js:29:11: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/1k2014dragons/1787.js:30:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/1k2014dragons/1787.js:30:12: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/1k2014dragons/1787.js:31:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/1k2014dragons/1787.js:33:5: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/1k2014dragons/1787.js:33:27: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/1k2014dragons/1787.js:34:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/1k2014dragons/1787.js:34:11: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/1k2014dragons/1787.js:35:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/1k2014dragons/1787.js:35:12: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/1k2014dragons/1787.js:36:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/1k2014dragons/1787.js:38:6: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/1k2014dragons/1787.js:39:10: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/1k2014dragons/1787.js:41:32: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/1k2014dragons/1787.js:41:60: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/1k2014dragons/1787.js:42:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/1k2014dragons/1787.js:42:20: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/1k2014dragons/1787.js:42:27: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/1k2014dragons/1787.js:42:38: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/1k2014dragons/1787.js:43:5: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/1k2014dragons/1787.js:43:20: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/1k2014dragons/1787.js:44:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/1k2014dragons/1787.js:48:11: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/1k2014dragons/1787.js:49:11: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/1k2014dragons/1787.js:52:14: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/1k2014dragons/1787.js:52:31: [info] 'this' refers to multiple abstract objects, which may cause loss of precision

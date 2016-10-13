@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2015 Aarhus University
+ * Copyright 2009-2016 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -720,11 +720,11 @@ public final class Obj {
     public Set<ObjectLabel> getAllObjectLabels() {
         Set<ObjectLabel> objlabels = newSet();
         for (Value v : properties.values())
-            objlabels.addAll(v.getObjectLabels());
-        objlabels.addAll(default_array_property.getObjectLabels());
-        objlabels.addAll(default_nonarray_property.getObjectLabels());
-        objlabels.addAll(internal_prototype.getObjectLabels());
-        objlabels.addAll(internal_value.getObjectLabels());
+            objlabels.addAll(v.getAllObjectLabels());
+        objlabels.addAll(default_array_property.getAllObjectLabels());
+        objlabels.addAll(default_nonarray_property.getAllObjectLabels());
+        objlabels.addAll(internal_prototype.getAllObjectLabels());
+        objlabels.addAll(internal_value.getAllObjectLabels());
         objlabels.addAll(ScopeChain.getObjectLabels(scope));
         return objlabels;
     }
@@ -749,7 +749,7 @@ public final class Obj {
      * Returns the designated property value of this object.
      * Note that the object label of the property reference is not used.
      */
-    public Value getValue(PropertyReference prop) {
+    public Value getValue(ObjectProperty prop) {
         switch (prop.getKind()) {
             case ORDINARY:
                 return getProperty(prop.getPropertyName());
@@ -770,7 +770,7 @@ public final class Obj {
      * Sets the designated property value of this object.
      * Note that the object label of the property reference is not used.
      */
-    public void setValue(PropertyReference prop, Value v) {
+    public void setValue(ObjectProperty prop, Value v) {
         switch (prop.getKind()) {
             case ORDINARY:
                 setProperty(prop.getPropertyName(), v);
@@ -804,20 +804,20 @@ public final class Obj {
         }
         // reduce those properties that are unknown or polymorphic in obj
         default_array_property = UnknownValueResolver.localize(default_array_property, obj.default_array_property, s,
-                PropertyReference.makeDefaultArrayPropertyReference(objlabel));
+                ObjectProperty.makeDefaultArray(objlabel));
         default_nonarray_property = UnknownValueResolver.localize(default_nonarray_property, obj.default_nonarray_property, s,
-                PropertyReference.makeDefaultNonArrayPropertyReference(objlabel));
+                ObjectProperty.makeDefaultNonArray(objlabel));
         internal_value = UnknownValueResolver.localize(internal_value, obj.internal_value, s,
-                PropertyReference.makeInternalValuePropertyReference(objlabel));
+                ObjectProperty.makeInternalValue(objlabel));
         internal_prototype = UnknownValueResolver.localize(internal_prototype, obj.internal_prototype, s,
-                PropertyReference.makeInternalPrototypePropertyReference(objlabel));
+                ObjectProperty.makeInternalPrototype(objlabel));
         Map<String, Value> new_properties = newMap();
         for (Entry<String, Value> me : properties.entrySet()) { // obj is writable, so materializations from defaults will appear here
             String propertyname = me.getKey();
             Value v = me.getValue();
             Value obj_v = obj.getProperty(propertyname);
             new_properties.put(propertyname, UnknownValueResolver.localize(v, obj_v, s,
-                    PropertyReference.makeOrdinaryPropertyReference(objlabel, propertyname)));
+                    ObjectProperty.makeOrdinary(objlabel, propertyname)));
         }
         properties = new_properties;
         if (obj.scope_unknown) { // TODO: scope chain polymorphic?
