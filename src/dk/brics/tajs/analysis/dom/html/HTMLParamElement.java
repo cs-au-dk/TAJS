@@ -62,7 +62,7 @@ public class HTMLParamElement {
          */
         // DOM Level 1
         createDOMProperty(INSTANCES, "name", Value.makeAnyStr(), c);
-        createDOMProperty(INSTANCES, "type", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "type", Value.makeAnyStr().restrictToNotStrIdentifierParts() /* mime-type */, c);
         createDOMProperty(INSTANCES, "value", Value.makeAnyStr(), c);
         createDOMProperty(INSTANCES, "valueType", Value.makeAnyStr(), c);
 

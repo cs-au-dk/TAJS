@@ -92,8 +92,6 @@ test/google2/navier-stokes.js:141:33: [maybe] Reading absent property (computed 
 test/google2/navier-stokes.js:144:50: [maybe] Conversion to number yields NaN
 test/google2/navier-stokes.js:144:50: [maybe] Reading absent property (computed name)
 test/google2/navier-stokes.js:144:70: [maybe] Conversion to number yields NaN
-test/google2/navier-stokes.js:144:70: [maybe] Conversion to number yields NaN
-test/google2/navier-stokes.js:144:70: [maybe] Conversion to number yields NaN
 test/google2/navier-stokes.js:144:76: [maybe] Reading absent property (computed name)
 test/google2/navier-stokes.js:144:92: [maybe] Reading absent property (computed name)
 test/google2/navier-stokes.js:144:105: [maybe] Reading absent property (computed name)
@@ -116,8 +114,6 @@ test/google2/navier-stokes.js:227:86: [maybe] Reading absent property (computed 
 test/google2/navier-stokes.js:227:102: [maybe] Conversion to number yields NaN
 test/google2/navier-stokes.js:227:107: [maybe] Reading absent property (computed name)
 test/google2/navier-stokes.js:235:34: [maybe] Conversion to number yields NaN
-test/google2/navier-stokes.js:244:42: [maybe] Conversion to number yields NaN
-test/google2/navier-stokes.js:244:42: [maybe] Conversion to number yields NaN
 test/google2/navier-stokes.js:244:42: [maybe] Conversion to number yields NaN
 test/google2/navier-stokes.js:244:42: [maybe] Reading absent property (computed name)
 test/google2/navier-stokes.js:244:59: [maybe] Reading absent property (computed name)

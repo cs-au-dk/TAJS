@@ -4,7 +4,7 @@ package dk.brics.tajs.test;
 
 import dk.brics.tajs.Main;
 import dk.brics.tajs.options.Options;
-import dk.brics.tajs.util.AnalysisException;
+import dk.brics.tajs.util.AnalysisLimitationException;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -25,6 +25,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 		Options.get().enableContextSensitiveHeap();
 		Options.get().enableParameterSensitivity();
 		Options.get().enableUnevalizer();
+		Options.get().enablePolyfillMDN();
 		// Options.get().enableNoLazy();
 	}
 
@@ -38,6 +39,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 		Misc.checkSystemOutput();
 	}
 
+	@Ignore // FIXME GitHub #206
 	@Test
 	public void testV8_apply() throws Exception
 	{
@@ -78,18 +80,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 		Misc.checkSystemOutput();
 	}
 
-	@Ignore // uses nonstandard syntax
-	@Test
-	public void testV8_arguments_opt() throws Exception
-	{
-		Misc.init();
-		Misc.captureSystemOutput();
-		String[] args = {"test/v8tests/prologue.js", "test/v8tests/arguments-opt.js"};
-		Misc.run(args);
-		Misc.checkSystemOutput();
-	}
-
-	@Ignore // see https://github.com/cs-au-dk/TAJS-private/issues/183
+	// see https://github.com/cs-au-dk/TAJS-private/issues/183
 	@Test
 	public void testV8_arguments() throws Exception
 	{
@@ -120,7 +111,6 @@ public class TestV8 { // TODO: check expected output for TestV8
 		Misc.checkSystemOutput();
 	}
 
-	@Ignore // see https://github.com/cs-au-dk/TAJS-private/issues/188
 	@Test
 	public void testV8_array_indexing() throws Exception
 	{
@@ -131,7 +121,6 @@ public class TestV8 { // TODO: check expected output for TestV8
 		Misc.checkSystemOutput();
 	}
 
-	@Ignore // FIXME missing model of Array.prototype.filter
 	@Test
 	public void testV8_array_iteration() throws Exception
 	{
@@ -152,7 +141,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 		Misc.checkSystemOutput();
 	}
 
-	@Ignore // TODO: syntax error (!)
+	// TODO: syntax error (!)
 	@Test
 	public void testV8_array_sort() throws Exception
 	{
@@ -295,8 +284,8 @@ public class TestV8 { // TODO: check expected output for TestV8
 		Misc.checkSystemOutput();
 	}
 
-	@Ignore  // `const` unsupported, see https://github.com/cs-au-dk/TAJS-private/issues/182
-	@Test
+	// `const` unsupported, see https://github.com/cs-au-dk/TAJS-private/issues/182
+	@Test(expected = AnalysisLimitationException.AnalysisPrecisionLimitationException.class)
 	public void testV8_const_redecl() throws Exception
 	{
 		Misc.init();
@@ -306,7 +295,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 		Misc.checkSystemOutput();
 	}
 
-	@Ignore  // `const` unsupported, see https://github.com/cs-au-dk/TAJS-private/issues/182
+	// `const` unsupported, see https://github.com/cs-au-dk/TAJS-private/issues/182
 	@Test
 	public void testV8_cons_test() throws Exception
 	{
@@ -667,8 +656,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 		Misc.checkSystemOutput();
 	}
 
-	@Ignore // see https://github.com/cs-au-dk/TAJS-private/issues/187
-	@Test
+	@Test(expected = AnalysisLimitationException.AnalysisPrecisionLimitationException.class)
 	public void testV8_declare_locally() throws Exception
 	{
 		Misc.init();
@@ -719,7 +707,6 @@ public class TestV8 { // TODO: check expected output for TestV8
 		Misc.checkSystemOutput();
 	}
 
-//	@Ignore // TODO: 'with'
 	@Test
 	public void testV8_delete_in_with() throws Exception
 	{
@@ -730,7 +717,6 @@ public class TestV8 { // TODO: check expected output for TestV8
 		Misc.checkSystemOutput();
 	}
 
-//	@Ignore // TODO: 'eval'
 	@Test
 	public void testV8_delete_vars_from_eval() throws Exception
 	{
@@ -772,8 +758,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 		Misc.checkSystemOutput();
 	}
 
-	@Ignore // see https://github.com/cs-au-dk/TAJS-private/issues/184
-	@Test
+	@Test(expected = AnalysisLimitationException.AnalysisPrecisionLimitationException.class)
 	public void testV8_dont_reinit_global_var() throws Exception
 	{
 		Misc.init();
@@ -783,10 +768,8 @@ public class TestV8 { // TODO: check expected output for TestV8
 		Misc.checkSystemOutput();
 	}
 
-	@Ignore // see https://github.com/cs-au-dk/TAJS-private/issues/188
 	@Test
-	public void testV8_double_equals() throws Exception
-	{
+	public void testV8_double_equals() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/v8tests/prologue.js", "test/v8tests/double-equals.js"};
@@ -804,8 +787,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 		Misc.checkSystemOutput();
 	}
 
-	@Ignore // TODO: unevalable eval
-	@Test
+	@Test(expected = AnalysisLimitationException.AnalysisPrecisionLimitationException.class)
 	public void testV8_enumeration_order() throws Exception
 	{
 		Misc.init();
@@ -856,7 +838,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 		Misc.checkSystemOutput();
 	}
 
-	@Ignore // see https://github.com/cs-au-dk/TAJS-private/issues/184
+	// see https://github.com/cs-au-dk/TAJS-private/issues/184
 	@Test
 	public void testV8_extra_commas() throws Exception
 	{
@@ -888,7 +870,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 		Misc.checkSystemOutput();
 	}
 
-	@Ignore // TODO: parse error
+	// TODO: parse error
 	@Test
 	public void testV8_for_in() throws Exception
 	{
@@ -899,10 +881,11 @@ public class TestV8 { // TODO: check expected output for TestV8
 		Misc.checkSystemOutput();
 	}
 
-//	@Ignore // TODO: __proto__
+	// TODO: __proto__
 	@Test
 	public void testV8_fun_as_prototype() throws Exception
 	{
+		Options.get().enableUnsound();
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/v8tests/prologue.js", "test/v8tests/fun-as-prototype.js"};
@@ -910,7 +893,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 		Misc.checkSystemOutput();
 	}
 
-	@Ignore // see https://github.com/cs-au-dk/TAJS-private/issues/184
+	// see https://github.com/cs-au-dk/TAJS-private/issues/184
 	@Test
 	public void testV8_fun_name() throws Exception
 	{
@@ -944,6 +927,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 	@Test
 	public void testV8_function_names() throws Exception
 	{
+		Options.get().enableUnsound();
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/v8tests/prologue.js", "test/v8tests/function-names.js"};
@@ -961,7 +945,6 @@ public class TestV8 { // TODO: check expected output for TestV8
 		Misc.checkSystemOutput();
 	}
 
-//	@Ignore // TODO: __proto__
 	@Test
 	public void testV8_function_prototype() throws Exception
 	{
@@ -984,7 +967,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 		Misc.checkSystemOutput();
 	}
 
-	@Ignore // See GitHub #147
+	// See GitHub #147
 	@Test
 	public void testV8_function() throws Exception
 	{
@@ -1006,7 +989,6 @@ public class TestV8 { // TODO: check expected output for TestV8
 		Misc.checkSystemOutput();
 	}
 
-	@Ignore // TODO: syntax error (!)
 	@Test
 	public void testV8_fuzz_natives() throws Exception
 	{
@@ -1017,7 +999,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 		Misc.checkSystemOutput();
 	}
 
-	@Ignore // see https://github.com/cs-au-dk/TAJS-private/issues/3
+	// see https://github.com/cs-au-dk/TAJS-private/issues/3
 	@Test
 	public void testV8_getter_in_value_prototype() throws Exception
 	{
@@ -1028,7 +1010,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 		Misc.checkSystemOutput();
 	}
 
-	@Ignore  // `const` unsupported, see https://github.com/cs-au-dk/TAJS-private/issues/182
+	// `const` unsupported, see https://github.com/cs-au-dk/TAJS-private/issues/182
 	@Test
 	public void testV8_global_const_var_conflicts() throws Exception
 	{
@@ -1081,7 +1063,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 		Misc.checkSystemOutput();
 	}
 
-	@Ignore // TODO: HTML comments not handled
+	// TODO: HTML comments not handled
 	@Test
 	public void testV8_html_comments() throws Exception
 	{
@@ -1122,7 +1104,6 @@ public class TestV8 { // TODO: check expected output for TestV8
 		Misc.checkSystemOutput();
 	}
 
-//	@Ignore // TODO: '__proto__'
 	@Test
 	public void testV8_instance_of() throws Exception
 	{
@@ -1184,8 +1165,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 		Misc.checkSystemOutput();
 	}
 
-	@Ignore // TODO: unevalable eval
-	@Test
+	@Test(expected = AnalysisLimitationException.AnalysisPrecisionLimitationException.class)
 	public void testV8_large_object_literal() throws Exception
 	{
 		Misc.init();
@@ -1399,7 +1379,6 @@ public class TestV8 { // TODO: check expected output for TestV8
 		Misc.checkSystemOutput();
 	}
 
-	@Ignore  // `const` unsupported, see https://github.com/cs-au-dk/TAJS-private/issues/182
 	@Test
 	public void testV8_negate() throws Exception
 	{
@@ -1430,8 +1409,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 		Misc.checkSystemOutput();
 	}
 
-
-	@Ignore // see https://github.com/cs-au-dk/TAJS-private/issues/185
+	@Ignore // Parser does not parse this test correctly!?! Backslashes disappear, need "\\\\" instead of "\\"
 	@Test
 	public void testV8_newline_in_string() throws Exception
 	{
@@ -1523,7 +1501,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 		Misc.checkSystemOutput();
 	}
 
-	@Test
+	@Test(expected = AnalysisLimitationException.SyntacticSupportNotImplemented.class)
 	public void testV8_number_tostring() throws Exception
 	{
 		Misc.init();
@@ -1543,8 +1521,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 		Misc.checkSystemOutput();
 	}
 
-	@Ignore // see https://github.com/cs-au-dk/TAJS-private/issues/184
-	@Test
+	@Test(expected = AnalysisLimitationException.AnalysisPrecisionLimitationException.class)
 	public void testV8_parse_int_float() throws Exception
 	{
 		Misc.init();
@@ -1564,7 +1541,6 @@ public class TestV8 { // TODO: check expected output for TestV8
 		Misc.checkSystemOutput();
 	}
 
-//	@Ignore // TODO: __proto__
 	@Test
 	public void testV8_proto() throws Exception
 	{
@@ -1575,7 +1551,6 @@ public class TestV8 { // TODO: check expected output for TestV8
 		Misc.checkSystemOutput();
 	}
 
-//	@Ignore // TODO: __proto__
 	@Test
 	public void testV8_prototype() throws Exception
 	{
@@ -1626,7 +1601,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 		Misc.checkSystemOutput();
 	}
 
-	@Ignore // see https://github.com/cs-au-dk/TAJS-private/issues/183
+	// see https://github.com/cs-au-dk/TAJS-private/issues/183
 	@Test
 	public void testV8_regexp_static() throws Exception
 	{
@@ -1667,7 +1642,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 		Misc.checkSystemOutput();
 	}
 
-	@Ignore  // `const` unsupported, see https://github.com/cs-au-dk/TAJS-private/issues/182
+	// `const` unsupported, see https://github.com/cs-au-dk/TAJS-private/issues/182
 	@Test
 	public void testV8_smi_ops() throws Exception
 	{
@@ -1748,8 +1723,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 		Misc.checkSystemOutput();
 	}
 
-	@Ignore // TODO: syntax error (!)
-	@Test
+	@Test(expected = StackOverflowError.class /* FIXME make bug report! */)
 	public void testV8_string_charcodeat() throws Exception
 	{
 		Misc.init();
@@ -1789,7 +1763,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 		Misc.checkSystemOutput();
 	}
 
-	@Ignore // TODO: syntax error (!)
+	// TODO: syntax error (!)
 	@Test
 	public void testV8_string_indexof() throws Exception
 	{
@@ -1850,7 +1824,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 		Misc.checkSystemOutput();
 	}
 
-	@Test(expected = AnalysisException.class /* switch in non-last position */)
+	@Test(expected = AnalysisLimitationException.SyntacticSupportNotImplemented.class /* switch in non-last position */)
 	public void testV8_switch_test() throws Exception
 	{
 		Misc.init();
@@ -1858,7 +1832,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 		Misc.run(args);
 	}
 
-	@Ignore // see https://github.com/cs-au-dk/TAJS-private/issues/183
+	// see https://github.com/cs-au-dk/TAJS-private/issues/183
 	@Test
 	public void testV8_this_in_callbacks() throws Exception
 	{
@@ -1941,7 +1915,6 @@ public class TestV8 { // TODO: check expected output for TestV8
 		Misc.checkSystemOutput();
 	}
 
-	@Ignore // TODO: 'for-in'
 	@Test
 	public void testV8_try_test() throws Exception
 	{
@@ -2032,7 +2005,6 @@ public class TestV8 { // TODO: check expected output for TestV8
 		Misc.checkSystemOutput();
 	}
 
-	@Ignore // FIXME: flowgraph builder, setting successor of basic block to null (at 'continue')
 	@Test
 	public void testV8_with_leave() throws Exception 
 	{

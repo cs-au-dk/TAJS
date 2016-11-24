@@ -84,7 +84,7 @@ public class HTMLInputElement {
 
         // DOM Level 2
         createDOMProperty(INSTANCES, "size", Value.makeAnyNum(), c);
-        createDOMProperty(INSTANCES, "type", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "type", Value.makeStr("text"), c);
 
         s.multiplyObject(INSTANCES);
         INSTANCES = INSTANCES.makeSingleton().makeSummary();

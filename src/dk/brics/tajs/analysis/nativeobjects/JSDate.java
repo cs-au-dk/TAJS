@@ -16,14 +16,19 @@
 
 package dk.brics.tajs.analysis.nativeobjects;
 
+import dk.brics.tajs.analysis.Exceptions;
 import dk.brics.tajs.analysis.FunctionCalls.CallInfo;
 import dk.brics.tajs.analysis.InitialStateBuilder;
 import dk.brics.tajs.analysis.NativeFunctions;
 import dk.brics.tajs.analysis.Solver;
+import dk.brics.tajs.analysis.nativeobjects.concrete.ConcreteNumber;
+import dk.brics.tajs.analysis.nativeobjects.concrete.SingleGamma;
+import dk.brics.tajs.analysis.nativeobjects.concrete.TAJSSplitConcreteSemantics;
 import dk.brics.tajs.flowgraph.AbstractNode;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.ObjectLabel.Kind;
 import dk.brics.tajs.lattice.State;
+import dk.brics.tajs.lattice.UnknownValueResolver;
 import dk.brics.tajs.lattice.Value;
 
 /**
@@ -49,8 +54,13 @@ public class JSDate {
 
             case DATE: { // 15.9.3
                 if (call.isConstructorCall()) {
-                    NativeFunctions.expectParameters(nativeobject, call, c, 0, 7);
-                    return createDateObject(call.getSourceNode(), state);
+                    Value internal;
+                    if(!call.isUnknownNumberOfArgs() && call.getNumberOfArgs() == 0){
+                        internal = getNow(call, c);
+                    }else{
+                        internal = Value.makeAnyNum();
+                    }
+                    return createDateObject(call.getSourceNode(), internal, state);
                 } else // 15.9.2
                     return Value.makeAnyStr();
             }
@@ -74,14 +84,14 @@ public class JSDate {
             case DATE_GETTIMEZONEOFFSET: // 15.9.5.26
             case DATE_GETYEAR: { // B.2.4
                 NativeFunctions.expectParameters(nativeobject, call, c, 0, 0);
-                return Value.makeAnyNum();
+                return concrete(nativeobject.toString(), Value.makeAnyNum(), c);
             }
 
             case DATE_GETTIME: { // 15.9.5.9
                 NativeFunctions.expectParameters(nativeobject, call, c, 0, 0);
                 if (NativeFunctions.throwTypeErrorIfWrongKindOfThis(nativeobject, call, state, c, Kind.DATE))
                     return Value.makeNone();
-                return Value.makeAnyNum();
+                return concrete(nativeobject.toString(), Value.makeAnyNum(), c);
             }
 
             case DATE_PARSE: // 15.9.4.2
@@ -134,7 +144,7 @@ public class JSDate {
             case DATE_TOLOCALEDATESTRING: // 15.9.5.6
             case DATE_TOLOCALETIMESTRING: { // 15.9.5.7
                 NativeFunctions.expectParameters(nativeobject, call, c, 0, 0);
-                return Value.makeAnyStr();
+                return state.readThisObjectsCoerced((l) -> evaluateToString(l, c));
             }
 
             case DATE_TOUTCSTRING: // 15.9.5.42
@@ -145,17 +155,17 @@ public class JSDate {
 
             case DATE_UTC: { // 15.9.4.3
                 NativeFunctions.expectParameters(nativeobject, call, c, 2, 7);
-                return createDateObject(call.getSourceNode(), state);
+                return createDateObject(call.getSourceNode(), Value.makeAnyNum(), state);
             }
 
             case DATE_VALUEOF: { // 15.9.5.8
                 NativeFunctions.expectParameters(nativeobject, call, c, 0, 0);
-                return Value.makeAnyNum();
+                return concrete(nativeobject.toString(), c.getState().readInternalValue(c.getState().readThisObjects()), c);
             }
 
             case DATE_NOW: { // 15.9.4.4
                 NativeFunctions.expectParameters(nativeobject, call, c, 0, 0);
-                return Value.makeAnyNum();
+                return getNow(call, c);
             }
 
             default:
@@ -163,14 +173,40 @@ public class JSDate {
         }
     }
 
+    private static Value concrete(String functionName, Value defaultValue, Solver.SolverInterface c) {
+        // TODO support Date in ConcreteSemantics?
+        Value internal = c.getState().readInternalValue(c.getState().readThisObjects());
+        internal = UnknownValueResolver.getRealValue(internal, c.getState());
+        if (!SingleGamma.isConcreteNumber(internal, c)) {
+            return defaultValue;
+        }
+        ConcreteNumber concreteInternal = SingleGamma.toConcreteNumber(internal, c);
+        String code = String.format("%s.call(new Date(%d))", functionName, Double.valueOf(concreteInternal.getNumber()).longValue());
+        return TAJSSplitConcreteSemantics.eval(code);
+    }
+
+    private static Value getNow(CallInfo call, Solver.SolverInterface c) {
+        return Value.makeAnyNum();
+    }
+
     /**
      * Creates a new Date object.
      */
-    private static Value createDateObject(AbstractNode n, State state) {
+    private static Value createDateObject(AbstractNode n, Value internal, State state) {
         ObjectLabel objlabel = new ObjectLabel(n, Kind.DATE);
         state.newObject(objlabel);
-        state.writeInternalValue(objlabel, Value.makeAnyNum());
+        state.writeInternalValue(objlabel, internal);
         state.writeInternalPrototype(objlabel, Value.makeObject(InitialStateBuilder.DATE_PROTOTYPE));
         return Value.makeObject(objlabel);
+    }
+
+    public static Value evaluateToString(ObjectLabel thiss, Solver.SolverInterface c) {
+        // 15.9.5.2 Date.prototype.toString ( )
+        // This function returns a string value.
+        if (thiss.getKind() != Kind.DATE) {
+            Exceptions.throwTypeError(c);
+            return Value.makeNone();
+        }
+        return Value.makeAnyStr();
     }
 }

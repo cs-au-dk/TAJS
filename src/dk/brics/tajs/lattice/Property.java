@@ -25,6 +25,8 @@ import dk.brics.tajs.util.Strings;
  */
 public class Property {
 
+    public static final String __PROTO__ = "__proto__";
+
     private String propertyname;
 
     private int hashcode;

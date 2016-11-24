@@ -87,11 +87,8 @@ test/chromeexperiments/raytracer.html:778:6: [maybe] TypeError, accessing proper
 test/chromeexperiments/raytracer.html:782:33: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/raytracer.html:786:4: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/raytracer.html:814:3: [maybe] TypeError, call to non-function
-test/chromeexperiments/raytracer.html:814:3: [maybe] TypeError, call to non-function
 test/chromeexperiments/raytracer.html:816:3: [maybe] TypeError, call to non-function
 test/chromeexperiments/raytracer.html:823:3: [maybe] TypeError, call to non-function
-test/chromeexperiments/raytracer.html:823:3: [maybe] TypeError, call to non-function
-test/chromeexperiments/raytracer.html:825:3: [maybe] TypeError, call to non-function
 test/chromeexperiments/raytracer.html:825:3: [maybe] TypeError, call to non-function
 test/chromeexperiments/raytracer.html:827:3: [maybe] TypeError, call to non-function
 test/chromeexperiments/raytracer.html:829:3: [maybe] TypeError, call to non-function
@@ -102,7 +99,6 @@ test/chromeexperiments/raytracer.html:854:23: [maybe] TypeError, accessing prope
 test/chromeexperiments/raytracer.html:854:23: [maybe] TypeError, call to non-function
 test/chromeexperiments/raytracer.html:855:8: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/raytracer.html:856:19: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/raytracer.html:857:5: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/raytracer.html:857:5: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/raytracer.html:857:5: [maybe] TypeError, call to non-function
 test/chromeexperiments/raytracer.html:863:28: [maybe] TypeError, accessing property of null/undefined
@@ -118,9 +114,6 @@ test/chromeexperiments/raytracer.html:941:3: [maybe] TypeError, accessing proper
 test/chromeexperiments/raytracer.html:942:3: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/raytracer.html:948:15: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/raytracer.html:949:10: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/raytracer.html:949:10: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/raytracer.html:949:10: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/raytracer.html:950:10: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/raytracer.html:950:10: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/raytracer.html:951:10: [maybe] TypeError, call to non-function
 test/chromeexperiments/raytracer.html:956:10: [maybe] TypeError, accessing property of null/undefined
@@ -129,7 +122,6 @@ test/chromeexperiments/raytracer.html:959:5: [maybe] TypeError, accessing proper
 test/chromeexperiments/raytracer.html:961:5: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/raytracer.html:978:18: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/raytracer.html:981:4: [maybe] TypeError, call to non-function
-test/chromeexperiments/raytracer.html:984:4: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/raytracer.html:984:4: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/raytracer.html:989:27: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/raytracer.html:990:6: [maybe] TypeError, call to non-function
@@ -161,7 +153,6 @@ test/chromeexperiments/raytracer.html:1101:36: [maybe] TypeError, accessing prop
 test/chromeexperiments/raytracer.html:1102:11: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/raytracer.html:1109:21: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/raytracer.html:1109:39: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/raytracer.html:1109:39: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/raytracer.html:1109:59: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/raytracer.html:1160:4: [maybe] TypeError, call to non-function
 test/chromeexperiments/raytracer.html:1161:14: [maybe] TypeError, call to non-function
@@ -179,18 +170,11 @@ test/chromeexperiments/raytracer.html:1261:3: [maybe] TypeError, accessing prope
 test/chromeexperiments/raytracer.html:1262:3: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/raytracer.html:1271:11: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/raytracer.html:1285:3: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/raytracer.html:1285:3: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/raytracer.html:1286:3: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/raytracer.html:1289:15: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/raytracer.html:1290:4: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/raytracer.html:1290:4: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/raytracer.html:1290:4: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/raytracer.html:1291:4: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/raytracer.html:1291:4: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/raytracer.html:1296:3: [maybe] ReferenceError, reading absent variable load
 test/chromeexperiments/raytracer.html:1299:36: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/raytracer.html:1327:15: [maybe] ReferenceError, reading absent variable load
-test/chromeexperiments/raytracer.html:1369:19: [maybe] ReferenceError, reading absent variable load
 test/chromeexperiments/raytracer.html:104:16: [maybe] Reading absent property r
 test/chromeexperiments/raytracer.html:105:13: [maybe] Reading absent property x
 test/chromeexperiments/raytracer.html:105:20: [maybe] Reading absent property x
@@ -548,7 +532,7 @@ test/chromeexperiments/raytracer.html:1290:4: [maybe] Reading absent property wi
 test/chromeexperiments/raytracer.html:1291:4: [maybe] Reading absent property attributes
 test/chromeexperiments/raytracer.html:1291:4: [maybe] Reading absent property height
 test/chromeexperiments/raytracer.html:1299:36: [maybe] Reading absent property checked
-test/chromeexperiments/raytracer.html: [maybe] Uncaught exception, constructed at [test/chromeexperiments/raytracer.html:99:3, test/chromeexperiments/raytracer.html:158:3, test/chromeexperiments/raytracer.html:507:3, test/chromeexperiments/raytracer.html:539:3, test/chromeexperiments/raytracer.html:589:3, test/chromeexperiments/raytracer.html:637:3, test/chromeexperiments/raytracer.html:643:5, test/chromeexperiments/raytracer.html:676:3, test/chromeexperiments/raytracer.html:682:12, test/chromeexperiments/raytracer.html:685:13, test/chromeexperiments/raytracer.html:688:13, test/chromeexperiments/raytracer.html:691:13, test/chromeexperiments/raytracer.html:710:3, test/chromeexperiments/raytracer.html:718:3, test/chromeexperiments/raytracer.html:755:13, test/chromeexperiments/raytracer.html:765:7, test/chromeexperiments/raytracer.html:768:5, test/chromeexperiments/raytracer.html:769:5, test/chromeexperiments/raytracer.html:770:5, test/chromeexperiments/raytracer.html:771:13, test/chromeexperiments/raytracer.html:772:5, test/chromeexperiments/raytracer.html:775:8, test/chromeexperiments/raytracer.html:775:17, test/chromeexperiments/raytracer.html:776:23, test/chromeexperiments/raytracer.html:778:6, test/chromeexperiments/raytracer.html:782:33, test/chromeexperiments/raytracer.html:786:4, test/chromeexperiments/raytracer.html:814:3, test/chromeexperiments/raytracer.html:816:3, test/chromeexperiments/raytracer.html:823:3, test/chromeexperiments/raytracer.html:825:3, test/chromeexperiments/raytracer.html:827:3, test/chromeexperiments/raytracer.html:829:3, test/chromeexperiments/raytracer.html:850:4, test/chromeexperiments/raytracer.html:854:8, test/chromeexperiments/raytracer.html:854:23, test/chromeexperiments/raytracer.html:855:8, test/chromeexperiments/raytracer.html:856:19, test/chromeexperiments/raytracer.html:857:5, test/chromeexperiments/raytracer.html:863:28, test/chromeexperiments/raytracer.html:880:17, test/chromeexperiments/raytracer.html:937:7, test/chromeexperiments/raytracer.html:937:52, test/chromeexperiments/raytracer.html:938:7, test/chromeexperiments/raytracer.html:938:52, test/chromeexperiments/raytracer.html:939:7, test/chromeexperiments/raytracer.html:939:52, test/chromeexperiments/raytracer.html:940:3, test/chromeexperiments/raytracer.html:941:3, test/chromeexperiments/raytracer.html:942:3, test/chromeexperiments/raytracer.html:948:15, test/chromeexperiments/raytracer.html:949:10, test/chromeexperiments/raytracer.html:950:10, test/chromeexperiments/raytracer.html:951:10, test/chromeexperiments/raytracer.html:956:10, test/chromeexperiments/raytracer.html:957:10, test/chromeexperiments/raytracer.html:959:5, test/chromeexperiments/raytracer.html:961:5, test/chromeexperiments/raytracer.html:978:18, test/chromeexperiments/raytracer.html:981:4, test/chromeexperiments/raytracer.html:984:4, test/chromeexperiments/raytracer.html:989:27, test/chromeexperiments/raytracer.html:990:6, test/chromeexperiments/raytracer.html:993:4, test/chromeexperiments/raytracer.html:1004:27, test/chromeexperiments/raytracer.html:1009:4, test/chromeexperiments/raytracer.html:1029:10, test/chromeexperiments/raytracer.html:1030:18, test/chromeexperiments/raytracer.html:1033:20, test/chromeexperiments/raytracer.html:1047:17, test/chromeexperiments/raytracer.html:1047:29, test/chromeexperiments/raytracer.html:1048:7, test/chromeexperiments/raytracer.html:1048:18, test/chromeexperiments/raytracer.html:1052:9, test/chromeexperiments/raytracer.html:1053:9, test/chromeexperiments/raytracer.html:1054:9, test/chromeexperiments/raytracer.html:1077:23, test/chromeexperiments/raytracer.html:1078:23, test/chromeexperiments/raytracer.html:1079:23, test/chromeexperiments/raytracer.html:1091:33, test/chromeexperiments/raytracer.html:1094:9, test/chromeexperiments/raytracer.html:1101:18, test/chromeexperiments/raytracer.html:1101:36, test/chromeexperiments/raytracer.html:1102:11, test/chromeexperiments/raytracer.html:1109:21, test/chromeexperiments/raytracer.html:1109:39, test/chromeexperiments/raytracer.html:1109:59, test/chromeexperiments/raytracer.html:1160:4, test/chromeexperiments/raytracer.html:1161:14, test/chromeexperiments/raytracer.html:1165:3, test/chromeexperiments/raytracer.html:1186:7, test/chromeexperiments/raytracer.html:1186:15, test/chromeexperiments/raytracer.html:1186:25, test/chromeexperiments/raytracer.html:1189:6, test/chromeexperiments/raytracer.html:1209:7, test/chromeexperiments/raytracer.html:1227:4, test/chromeexperiments/raytracer.html:1227:67, test/chromeexperiments/raytracer.html:1230:5, test/chromeexperiments/raytracer.html:1260:3, test/chromeexperiments/raytracer.html:1261:3, test/chromeexperiments/raytracer.html:1262:3, test/chromeexperiments/raytracer.html:1271:11, test/chromeexperiments/raytracer.html:1285:3, test/chromeexperiments/raytracer.html:1286:3, test/chromeexperiments/raytracer.html:1289:15, test/chromeexperiments/raytracer.html:1290:4, test/chromeexperiments/raytracer.html:1291:4, test/chromeexperiments/raytracer.html:1296:3, test/chromeexperiments/raytracer.html:1299:36, test/chromeexperiments/raytracer.html:1327:15, test/chromeexperiments/raytracer.html:1369:19]
+test/chromeexperiments/raytracer.html: [maybe] Uncaught exception, constructed at [test/chromeexperiments/raytracer.html:99:3, test/chromeexperiments/raytracer.html:158:3, test/chromeexperiments/raytracer.html:507:3, test/chromeexperiments/raytracer.html:539:3, test/chromeexperiments/raytracer.html:589:3, test/chromeexperiments/raytracer.html:637:3, test/chromeexperiments/raytracer.html:643:5, test/chromeexperiments/raytracer.html:676:3, test/chromeexperiments/raytracer.html:682:12, test/chromeexperiments/raytracer.html:685:13, test/chromeexperiments/raytracer.html:688:13, test/chromeexperiments/raytracer.html:691:13, test/chromeexperiments/raytracer.html:710:3, test/chromeexperiments/raytracer.html:718:3, test/chromeexperiments/raytracer.html:755:13, test/chromeexperiments/raytracer.html:765:7, test/chromeexperiments/raytracer.html:768:5, test/chromeexperiments/raytracer.html:769:5, test/chromeexperiments/raytracer.html:770:5, test/chromeexperiments/raytracer.html:771:13, test/chromeexperiments/raytracer.html:772:5, test/chromeexperiments/raytracer.html:775:8, test/chromeexperiments/raytracer.html:775:17, test/chromeexperiments/raytracer.html:776:23, test/chromeexperiments/raytracer.html:778:6, test/chromeexperiments/raytracer.html:782:33, test/chromeexperiments/raytracer.html:786:4, test/chromeexperiments/raytracer.html:814:3, test/chromeexperiments/raytracer.html:816:3, test/chromeexperiments/raytracer.html:823:3, test/chromeexperiments/raytracer.html:825:3, test/chromeexperiments/raytracer.html:827:3, test/chromeexperiments/raytracer.html:829:3, test/chromeexperiments/raytracer.html:850:4, test/chromeexperiments/raytracer.html:854:8, test/chromeexperiments/raytracer.html:854:23, test/chromeexperiments/raytracer.html:855:8, test/chromeexperiments/raytracer.html:856:19, test/chromeexperiments/raytracer.html:857:5, test/chromeexperiments/raytracer.html:863:28, test/chromeexperiments/raytracer.html:880:17, test/chromeexperiments/raytracer.html:937:7, test/chromeexperiments/raytracer.html:937:52, test/chromeexperiments/raytracer.html:938:7, test/chromeexperiments/raytracer.html:938:52, test/chromeexperiments/raytracer.html:939:7, test/chromeexperiments/raytracer.html:939:52, test/chromeexperiments/raytracer.html:940:3, test/chromeexperiments/raytracer.html:941:3, test/chromeexperiments/raytracer.html:942:3, test/chromeexperiments/raytracer.html:948:15, test/chromeexperiments/raytracer.html:949:10, test/chromeexperiments/raytracer.html:950:10, test/chromeexperiments/raytracer.html:951:10, test/chromeexperiments/raytracer.html:956:10, test/chromeexperiments/raytracer.html:957:10, test/chromeexperiments/raytracer.html:959:5, test/chromeexperiments/raytracer.html:961:5, test/chromeexperiments/raytracer.html:978:18, test/chromeexperiments/raytracer.html:981:4, test/chromeexperiments/raytracer.html:984:4, test/chromeexperiments/raytracer.html:989:27, test/chromeexperiments/raytracer.html:990:6, test/chromeexperiments/raytracer.html:993:4, test/chromeexperiments/raytracer.html:1004:27, test/chromeexperiments/raytracer.html:1009:4, test/chromeexperiments/raytracer.html:1029:10, test/chromeexperiments/raytracer.html:1030:18, test/chromeexperiments/raytracer.html:1033:20, test/chromeexperiments/raytracer.html:1047:17, test/chromeexperiments/raytracer.html:1047:29, test/chromeexperiments/raytracer.html:1048:7, test/chromeexperiments/raytracer.html:1048:18, test/chromeexperiments/raytracer.html:1052:9, test/chromeexperiments/raytracer.html:1053:9, test/chromeexperiments/raytracer.html:1054:9, test/chromeexperiments/raytracer.html:1077:23, test/chromeexperiments/raytracer.html:1078:23, test/chromeexperiments/raytracer.html:1079:23, test/chromeexperiments/raytracer.html:1091:33, test/chromeexperiments/raytracer.html:1094:9, test/chromeexperiments/raytracer.html:1101:18, test/chromeexperiments/raytracer.html:1101:36, test/chromeexperiments/raytracer.html:1102:11, test/chromeexperiments/raytracer.html:1109:21, test/chromeexperiments/raytracer.html:1109:39, test/chromeexperiments/raytracer.html:1109:59, test/chromeexperiments/raytracer.html:1160:4, test/chromeexperiments/raytracer.html:1161:14, test/chromeexperiments/raytracer.html:1165:3, test/chromeexperiments/raytracer.html:1186:7, test/chromeexperiments/raytracer.html:1186:15, test/chromeexperiments/raytracer.html:1186:25, test/chromeexperiments/raytracer.html:1189:6, test/chromeexperiments/raytracer.html:1209:7, test/chromeexperiments/raytracer.html:1227:4, test/chromeexperiments/raytracer.html:1227:67, test/chromeexperiments/raytracer.html:1230:5, test/chromeexperiments/raytracer.html:1260:3, test/chromeexperiments/raytracer.html:1261:3, test/chromeexperiments/raytracer.html:1262:3, test/chromeexperiments/raytracer.html:1271:11, test/chromeexperiments/raytracer.html:1285:3, test/chromeexperiments/raytracer.html:1286:3, test/chromeexperiments/raytracer.html:1289:15, test/chromeexperiments/raytracer.html:1290:4, test/chromeexperiments/raytracer.html:1291:4, test/chromeexperiments/raytracer.html:1299:36]
 test/chromeexperiments/raytracer.html:98:11: [maybe] Reading absent property (computed name)
 test/chromeexperiments/raytracer.html:104:14: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.html:105:13: [maybe] Conversion to number yields NaN
@@ -584,59 +568,43 @@ test/chromeexperiments/raytracer.html:174:35: [maybe] Conversion to number yield
 test/chromeexperiments/raytracer.html:174:49: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.html:193:11: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.html:193:12: [maybe] Conversion to number yields NaN
-test/chromeexperiments/raytracer.html:193:12: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.html:193:42: [maybe] Conversion to number yields NaN
-test/chromeexperiments/raytracer.html:193:43: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.html:193:43: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.html:193:73: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.html:193:74: [maybe] Conversion to number yields NaN
-test/chromeexperiments/raytracer.html:193:74: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.html:202:9: [maybe] Conversion to number yields NaN
-test/chromeexperiments/raytracer.html:202:10: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.html:202:10: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.html:202:40: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.html:202:41: [maybe] Conversion to number yields NaN
-test/chromeexperiments/raytracer.html:202:41: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.html:202:71: [maybe] Conversion to number yields NaN
-test/chromeexperiments/raytracer.html:202:72: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.html:202:72: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.html:209:9: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.html:210:9: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.html:211:9: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.html:213:9: [maybe] Conversion to number yields NaN
-test/chromeexperiments/raytracer.html:213:9: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.html:213:15: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.html:214:9: [maybe] Conversion to number yields NaN
-test/chromeexperiments/raytracer.html:214:9: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.html:214:15: [maybe] Conversion to number yields NaN
-test/chromeexperiments/raytracer.html:215:9: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.html:215:9: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.html:215:15: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.html:225:8: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.html:225:20: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.html:225:32: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.html:226:8: [maybe] Conversion to number yields NaN
-test/chromeexperiments/raytracer.html:226:8: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.html:226:19: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.html:226:31: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.html:226:43: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.html:243:9: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.html:243:10: [maybe] Conversion to number yields NaN
-test/chromeexperiments/raytracer.html:243:10: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.html:243:36: [maybe] Conversion to number yields NaN
-test/chromeexperiments/raytracer.html:243:37: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.html:243:37: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.html:243:63: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.html:243:64: [maybe] Conversion to number yields NaN
-test/chromeexperiments/raytracer.html:243:64: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.html:249:8: [maybe] Conversion to number yields NaN
-test/chromeexperiments/raytracer.html:249:9: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.html:249:9: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.html:249:35: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.html:249:36: [maybe] Conversion to number yields NaN
-test/chromeexperiments/raytracer.html:249:36: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.html:249:62: [maybe] Conversion to number yields NaN
-test/chromeexperiments/raytracer.html:249:63: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.html:249:63: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.html:305:14: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.html:305:38: [maybe] Conversion to number yields NaN
@@ -716,10 +684,7 @@ test/chromeexperiments/raytracer.html:550:6: [maybe] Conversion to number yields
 test/chromeexperiments/raytracer.html:550:21: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.html:550:36: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.html:552:10: [maybe] Conversion to number yields NaN
-test/chromeexperiments/raytracer.html:552:10: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.html:553:10: [maybe] Conversion to number yields NaN
-test/chromeexperiments/raytracer.html:553:10: [maybe] Conversion to number yields NaN
-test/chromeexperiments/raytracer.html:554:10: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.html:554:10: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.html:561:9: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.html:562:9: [maybe] Conversion to number yields NaN
@@ -732,10 +697,7 @@ test/chromeexperiments/raytracer.html:573:59: [maybe] Conversion to number yield
 test/chromeexperiments/raytracer.html:573:72: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.html:573:85: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.html:576:8: [maybe] Conversion to number yields NaN
-test/chromeexperiments/raytracer.html:576:8: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.html:577:8: [maybe] Conversion to number yields NaN
-test/chromeexperiments/raytracer.html:577:8: [maybe] Conversion to number yields NaN
-test/chromeexperiments/raytracer.html:578:8: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.html:578:8: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.html:588:11: [maybe] Reading absent property (computed name)
 test/chromeexperiments/raytracer.html:594:14: [maybe] Conversion to number yields NaN
@@ -922,8 +884,6 @@ test/chromeexperiments/raytracer.html:966:8: [maybe] Conversion from string to n
 test/chromeexperiments/raytracer.html:966:8: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.html:966:8: [maybe] The variable hei has values with different types
 test/chromeexperiments/raytracer.html:969:8: [maybe] Conversion from string to number yields NaN
-test/chromeexperiments/raytracer.html:969:8: [maybe] Conversion from string to number yields NaN
-test/chromeexperiments/raytracer.html:969:8: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.html:969:8: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.html:969:13: [maybe] The variable hei has values with different types
 test/chromeexperiments/raytracer.html:969:17: [maybe] The variable wid has values with different types
@@ -943,8 +903,6 @@ test/chromeexperiments/raytracer.html:987:19: [maybe] The variable hei has value
 test/chromeexperiments/raytracer.html:988:17: [maybe] The variable wid has values with different types
 test/chromeexperiments/raytracer.html:989:6: [maybe] Converting primitive boolean to object
 test/chromeexperiments/raytracer.html:989:6: [maybe] The variable ctx has values with different types
-test/chromeexperiments/raytracer.html:989:20: [maybe] Converting undefined to string
-test/chromeexperiments/raytracer.html:989:20: [maybe] Converting undefined to string
 test/chromeexperiments/raytracer.html:989:20: [maybe] Converting undefined to string
 test/chromeexperiments/raytracer.html:989:27: [maybe] Reading absent property (computed name)
 test/chromeexperiments/raytracer.html:989:37: [maybe] Reading absent property (computed name)
@@ -990,7 +948,6 @@ test/chromeexperiments/raytracer.html:1072:45: [maybe] Conversion to number yiel
 test/chromeexperiments/raytracer.html:1073:10: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.html:1073:16: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.html:1073:22: [maybe] Conversion to number yields NaN
-test/chromeexperiments/raytracer.html:1075:13: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.html:1075:13: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.html:1077:10: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.html:1077:11: [maybe] Conversion to number yields NaN

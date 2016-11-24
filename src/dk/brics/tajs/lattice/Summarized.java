@@ -118,7 +118,7 @@ public final class Summarized {
      * Indicates whether some other object is equal to this one.
      */
     @Override
-    public boolean equals(Object obj) { // XXX: Summarized.equals and hashCode are currently not used
+    public boolean equals(Object obj) { // NOTE: Summarized.equals and hashCode are currently not used
         if (!(obj instanceof Summarized))
             return false;
         Summarized x = (Summarized) obj;

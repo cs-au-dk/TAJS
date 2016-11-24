@@ -1,23 +1,9 @@
-test/10k/stairs_to_heaven.html:26:25: [definite] The conditional expression is always false
 test/10k/stairs_to_heaven.html:154:17: [definite] The conditional expression is always true
-test/10k/stairs_to_heaven.html:174:9: [definite] Dead assignment, property 1 is never read
-test/10k/stairs_to_heaven.html:178:9: [definite] Dead assignment, property 2 is never read
-test/10k/stairs_to_heaven.html:186:20: [definite] Dead assignment, property x is never read
-test/10k/stairs_to_heaven.html:186:26: [definite] Dead assignment, property y is never read
-test/10k/stairs_to_heaven.html:186:30: [definite] Dead assignment, property fc is never read
-test/10k/stairs_to_heaven.html:186:35: [definite] Dead assignment, property sc is never read
-test/10k/stairs_to_heaven.html:186:50: [definite] Dead assignment, property t is never read
-test/10k/stairs_to_heaven.html:186:54: [definite] Dead assignment, property m is never read
-test/10k/stairs_to_heaven.html:186:78: [definite] Dead assignment, property k is never read
-test/10k/stairs_to_heaven.html:192:17: [definite] Dead assignment, property is never read
-test/10k/stairs_to_heaven.html:24:31: [definite] The variable callback is never used
 test/10k/stairs_to_heaven.html:31:9: [definite] The variable q is never used
-test/10k/stairs_to_heaven.html:48:27: [definite] Unreachable function
-test/10k/stairs_to_heaven.html:110:23: [definite] Unreachable function
 test/10k/stairs_to_heaven.html:148:19: [definite] Unreachable code
-test/10k/stairs_to_heaven.html:171:16: [definite] Unreachable function
-test/10k/stairs_to_heaven.html:174:16: [definite] Unreachable function
-test/10k/stairs_to_heaven.html:197:23: [definite] Unreachable function
+test/10k/stairs_to_heaven.html:46:21: [maybe] TypeError, accessing property of null/undefined
+test/10k/stairs_to_heaven.html:49:21: [maybe] TypeError, accessing property of null/undefined
+test/10k/stairs_to_heaven.html:65:118: [maybe] TypeError, accessing property of null/undefined
 test/10k/stairs_to_heaven.html:88:56: [maybe] TypeError, accessing property of null/undefined
 test/10k/stairs_to_heaven.html:90:23: [maybe] TypeError, accessing property of null/undefined
 test/10k/stairs_to_heaven.html:90:32: [maybe] TypeError, accessing property of null/undefined
@@ -30,7 +16,18 @@ test/10k/stairs_to_heaven.html:98:17: [maybe] TypeError, accessing property of n
 test/10k/stairs_to_heaven.html:98:31: [maybe] TypeError, accessing property of null/undefined
 test/10k/stairs_to_heaven.html:99:17: [maybe] TypeError, accessing property of null/undefined
 test/10k/stairs_to_heaven.html:100:20: [maybe] TypeError, accessing property of null/undefined
-test/10k/stairs_to_heaven.html: [maybe] Uncaught exception, constructed at [test/10k/stairs_to_heaven.html:88:56, test/10k/stairs_to_heaven.html:90:23, test/10k/stairs_to_heaven.html:90:32, test/10k/stairs_to_heaven.html:90:41, test/10k/stairs_to_heaven.html:95:45, test/10k/stairs_to_heaven.html:95:55, test/10k/stairs_to_heaven.html:96:17, test/10k/stairs_to_heaven.html:97:17, test/10k/stairs_to_heaven.html:98:17, test/10k/stairs_to_heaven.html:98:31, test/10k/stairs_to_heaven.html:99:17, test/10k/stairs_to_heaven.html:100:20]
+test/10k/stairs_to_heaven.html:111:21: [maybe] TypeError, accessing property of null/undefined
+test/10k/stairs_to_heaven.html:198:31: [maybe] TypeError, accessing property of null/undefined
+test/10k/stairs_to_heaven.html:198:56: [maybe] TypeError, accessing property of null/undefined
+test/10k/stairs_to_heaven.html:198:76: [maybe] TypeError, accessing property of null/undefined
+test/10k/stairs_to_heaven.html:198:96: [maybe] TypeError, accessing property of null/undefined
+test/10k/stairs_to_heaven.html:198:108: [maybe] TypeError, call to non-function
+test/10k/stairs_to_heaven.html:198:110: [maybe] TypeError, accessing property of null/undefined
+test/10k/stairs_to_heaven.html:208:17: [maybe] TypeError, accessing property of null/undefined
+test/10k/stairs_to_heaven.html:202:38: [maybe] Reading absent property pageX
+test/10k/stairs_to_heaven.html:202:103: [maybe] Reading absent property pageX
+test/10k/stairs_to_heaven.html: [maybe] Uncaught exception, constructed at [test/10k/stairs_to_heaven.html:46:21, test/10k/stairs_to_heaven.html:49:21, test/10k/stairs_to_heaven.html:65:118, test/10k/stairs_to_heaven.html:88:56, test/10k/stairs_to_heaven.html:90:23, test/10k/stairs_to_heaven.html:90:32, test/10k/stairs_to_heaven.html:90:41, test/10k/stairs_to_heaven.html:95:45, test/10k/stairs_to_heaven.html:95:55, test/10k/stairs_to_heaven.html:96:17, test/10k/stairs_to_heaven.html:97:17, test/10k/stairs_to_heaven.html:98:17, test/10k/stairs_to_heaven.html:98:31, test/10k/stairs_to_heaven.html:99:17, test/10k/stairs_to_heaven.html:100:20, test/10k/stairs_to_heaven.html:111:21, test/10k/stairs_to_heaven.html:198:31, test/10k/stairs_to_heaven.html:198:56, test/10k/stairs_to_heaven.html:198:76, test/10k/stairs_to_heaven.html:198:96, test/10k/stairs_to_heaven.html:198:108, test/10k/stairs_to_heaven.html:198:110, test/10k/stairs_to_heaven.html:208:17]
+test/10k/stairs_to_heaven.html:27:22: [maybe] Reading absent property (computed name)
 test/10k/stairs_to_heaven.html:67:13: [maybe] Conversion to number yields NaN
 test/10k/stairs_to_heaven.html:88:56: [maybe] Reading absent property (computed name)
 test/10k/stairs_to_heaven.html:90:23: [maybe] Reading absent property (computed name)
@@ -44,4 +41,5 @@ test/10k/stairs_to_heaven.html:98:17: [maybe] Reading absent property (computed 
 test/10k/stairs_to_heaven.html:98:31: [maybe] Reading absent property (computed name)
 test/10k/stairs_to_heaven.html:99:17: [maybe] Reading absent property (computed name)
 test/10k/stairs_to_heaven.html:100:20: [maybe] Reading absent property (computed name)
+test/10k/stairs_to_heaven.html:198:108: [maybe] Reading absent property (computed name)
 test/10k/stairs_to_heaven.html:25:9: [info] Abstract value: [@Array#node226]

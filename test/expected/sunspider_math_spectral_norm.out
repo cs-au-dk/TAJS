@@ -9,4 +9,4 @@ test/sunspider/math-spectral-norm.js:48:12: [maybe] Conversion to number yields 
 test/sunspider/math-spectral-norm.js:48:12: [maybe] Reading absent property (computed name)
 test/sunspider/math-spectral-norm.js:48:17: [maybe] Reading absent property (computed name)
 test/sunspider/math-spectral-norm.js:58:26: [maybe] Converting object to number
-test/sunspider/math-spectral-norm.js:60:1: [info] Abstract value: UInt
+test/sunspider/math-spectral-norm.js:60:1: [info] Abstract value: UInt|NotUInt

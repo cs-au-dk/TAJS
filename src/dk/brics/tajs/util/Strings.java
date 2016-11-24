@@ -31,6 +31,9 @@ public class Strings {
     static private final Pattern NUMBER =
             Pattern.compile("\\-?(([0-9]+(\\.[0-9]*)?|\\.[0-9]+)([eE][-+][0-9]+)?|Infinity)|NaN"); // TODO: check that this over-approximates the possible output of Number.toString
 
+    static private final Pattern NUMBER_CHARACTERS = // derived from NUMBER
+            Pattern.compile("\\-|\\+|\\.|[0-9]|[aeEfIinNty]");
+
     static private final Pattern IDENTIFIER =
             Pattern.compile("[\\p{Lu}\\p{Ll}\\p{Lt}\\p{Lm}\\p{Lo}\\p{Nl}$_]" +
                     "[\\p{Lu}\\p{Ll}\\p{Lt}\\p{Lm}\\p{Lo}\\p{Nl}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Pc}]*");
@@ -285,7 +288,16 @@ public class Strings {
      * Checks whether the given string consists of valid identifier parts.
      */
     public static boolean isIdentifierParts(String s) {
-        return IDENTIFIERPARTS.matcher(s).matches();
+    	return IDENTIFIERPARTS.matcher(s).matches();
+    }
+
+    public static boolean containsNonNumberCharacters(String s) {
+        for (int i = 0; i < s.length(); i ++) {
+            if (!NUMBER_CHARACTERS.matcher(Character.toString(s.charAt(i))).matches()) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**

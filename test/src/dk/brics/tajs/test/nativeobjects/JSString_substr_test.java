@@ -12,6 +12,7 @@ public class JSString_substr_test {
 	@Before
     public void before() {
         Main.reset();
+        Main.initLogging();
         Options.get().enableTest();
     }
 

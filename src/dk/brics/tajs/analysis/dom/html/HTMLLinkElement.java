@@ -75,7 +75,7 @@ public class HTMLLinkElement {
         createDOMProperty(INSTANCES, "rel", Value.makeAnyStr(), c);
         createDOMProperty(INSTANCES, "rev", Value.makeAnyStr(), c);
         createDOMProperty(INSTANCES, "target", Value.makeAnyStr(), c);
-        createDOMProperty(INSTANCES, "type", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "type", Value.makeAnyStr().restrictToNotStrIdentifierParts() /* mime-type */, c);
 
         s.multiplyObject(INSTANCES);
         INSTANCES = INSTANCES.makeSingleton().makeSummary();

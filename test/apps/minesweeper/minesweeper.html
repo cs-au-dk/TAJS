@@ -5,7 +5,7 @@
 <!--
 
   Se prohibe el uso total o parcial del contenido de este fichero con
-  fines comerciales o no comerciales sin autorización previa del autor.
+  fines comerciales o no comerciales sin autorizacin previa del autor.
   
   http://www.inmensia.com/juegos
 
@@ -166,18 +166,18 @@ function Game() {
 
   this.run = function() {
     self.start();
-  }
+  };
   this.start = function() {
     self.hideSmiley();
     self.createBoard();
     self.registerMouse();
     self.startTimer();
     self.updateScore();
-  }
+  };
   this.restart = function() {
     self.board.destroyImgs();
     self.start();
-  }
+  };
 
   this.onMouseDown = function(e) {
     var img = getMouseObject(e);
@@ -189,7 +189,7 @@ function Game() {
     }
     self.updateScore();
     return(false);
-  }
+  };
   this.onLeftClick = function(row, col) {
     if ( self.board.isFlag(row, col) )
       return;
@@ -200,54 +200,54 @@ function Game() {
     self.board.flip(row, col);
     if (0 == self.board.downs)
       self.winGame();
-  }
+  };
   this.onRightClick = function(row, col) {
     if ( self.board.isDown(row, col) )
       return;
     self.board.changeState(row, col);
     if (self.board.flags == self.board.mines)
       self.tryWinGame();
-  }
+  };
   
   this.tryWinGame = function() {
     if ( self.board.testFlags() )
       self.winGame();
-  }
+  };
   this.winGame = function() {
     self.showSmiley("happy");
     self.board.showFlags();
     self.endGame();
-  }
+  };
   this.looseGame = function(row, col) {
     self.showSmiley("sad");
     self.board.showMines(row, col);
     self.endGame();
-  }
+  };
   this.endGame = function() {
     self.stopTimer();
     self.unregisterMouse();
-  }
+  };
 
   this.updateScore = function() {
     document.getElementById("div-mines").innerHTML = String(self.board.mines - self.board.flags);
-  }
+  };
   
   this.showSmiley = function(pic) {
     var img = document.getElementById("img-smiley");
     img.src = self.board.getImgSrc(pic);
     //img.style.visibility = "visible";
-  }
+  };
   this.hideSmiley = function() {
     //document.getElementById("img-smiley").style.visibility = "hidden";
-  }
+  };
 
   this.startTimer = function() {
     self.startTime = new Date().getTime();
     self.timer();
-  }
+  };
   this.stopTimer = function() {
     self.startTime = null;
-  }
+  };
   this.timer = function() {
     if (self.startTime) {
       var diff = Math.floor( ( new Date().getTime() - self.startTime) / 1000);
@@ -257,17 +257,17 @@ function Game() {
 		mins.substring(mins.length - 2) + ":" + secs.substring(secs.length - 2);
       setTimeout(self.timer, 1000);
     }
-  }
+  };
 
   this.registerMouse = function() {
     self.board.div.onmousedown   = self.onMouseDown;
     self.board.div.onclick       = function(){return false;};
     self.board.div.ondblclick    = function(){return false;};
     self.board.div.oncontextmenu = function(){return false;};
-  }
+  };
   this.unregisterMouse = function() {
     self.board.div.onmousedown = null;
-  }
+  };
   
   this.createBoard = function() {
      switch( document.getElementById("lb-level").value ) {
@@ -312,7 +312,7 @@ function Board() {
     self.createCells();
     self.putMines();
     self.createImgs();
-  }
+  };
   
   this.createCells = function() {
     self.cells = new Array(self.rows);
@@ -321,12 +321,12 @@ function Board() {
       for (var col = 0; col != self.cols; ++ col)
         self.cells[row][col] = new Cell();
      }
-  }
+  };
   
   this.putMines = function() {
     for (var mine = 0; mine != self.mines; ++ mine)
       self.putRandMine();
-  }
+  };
   this.putRandMine = function() {
     var row, col;
     do{
@@ -336,22 +336,22 @@ function Board() {
  
     self.putMine(row, col);
     self.roundMine(row, col);
-  }
+  };
   this.putMine = function(row, col) {
     self.cells[row][col].value = 'm';
-  }
+  };
   this.roundMine = function(row, col) {
     for (var r = Math.max(row - 1, 0); r <= Math.min(row + 1, self.rows - 1); ++ r)
       for (var c = Math.max(col - 1, 0); c <= Math.min(col + 1, self.cols - 1); ++ c)
         if ( self.isMine(r, c) == false)
           ++ self.cells[r][c].value;
-  }
+  };
 
   this.createImgs = function() {
     for (var row = 0; row != self.rows; ++ row)
       for (var col = 0; col != self.cols; ++ col)
         this.createImg(row, col);
-  }
+  };
   this.createImg = function(row, col) {
     var img = document.createElement("img");
     
@@ -366,15 +366,15 @@ function Board() {
     img.mCol         = col;
 
     self.div.appendChild(img);
-  }
+  };
   this.destroyImgs = function() {
     for (var row = 0; row != self.rows; ++ row)
       for (var col = 0; col != self.cols; ++ col)
         self.destroyImg(row, col);
-  }
+  };
   this.destroyImg = function(row, col) {
     self.div.removeChild( document.getElementById( self.getImgId(row, col) ) );
-  }
+  };
 
   this.flip = function(row, col) {
     if ( self.isDown(row, col) )
@@ -384,12 +384,12 @@ function Board() {
     self.flipCell(row, col);
     if ( self.isHole(row, col) )
       self.roundFlip(row, col);
-  }
+  };
   this.flipCell = function(row, col) {
     self.getImgElement(row, col).src = self.getImgSrc( self.cells[row][col].value );
     self.cells[row][col].state = "down";
     -- self.downs;
-  }
+  };
   this.roundFlip = function(row, col) {
     var left  = (col > 0);
     var right = (col < self.cols - 1);
@@ -405,7 +405,7 @@ function Board() {
       self.flip(row + 1, col);
       if (right) self.flip(row + 1, col + 1);
     }
-  }
+  };
 
   this.changeState = function(row, col) {
     var change = self.getNextState(row, col);
@@ -419,14 +419,14 @@ function Board() {
 
     self.getImgElement(row, col).src = self.getImgSrc(change);
     self.cells[row][col].state = change;
-  }
+  };
   this.getNextState = function(row, col) {
     switch( self.cells[row][col].state ){
       case "up"      : return("flag");
       case "flag"    : return("question");
       case "question": return("up");
     }
-  }
+  };
 
   this.testFlags = function() {
     for (var row = 0; row != self.rows; ++ row)
@@ -434,14 +434,14 @@ function Board() {
         if ( self.isFlag(row, col) && ( self.isMine(row, col) == false ) )
           return(false);
     return(true);
-  }
+  };
 
   this.showMines = function(rowBoom, colBoom) {
     for (var row = 0; row != self.rows; ++ row)
       for (var col = 0; col != self.cols; ++ col)
         if ( self.isMine(row, col) || self.isFlag(row, col) )
           self.showMine(row, col, rowBoom, colBoom);
-  }
+  };
   this.showMine = function(row, col, rowBoom, colBoom) {
     var pic = "mine";
     if ( self.isFlag(row, col) )
@@ -450,7 +450,7 @@ function Board() {
       pic = "boom";
 
     self.getImgElement(row, col).src = self.getImgSrc(pic);
-  }
+  };
   this.showFlags = function() {
     for (var row = 0; row != self.rows; ++ row)
       for (var col = 0; col != self.cols; ++ col)
@@ -458,30 +458,30 @@ function Board() {
           self.getImgElement(row, col).src = self.getImgSrc("flag");
           ++ self.flags;
         }
-  }
+  };
 
   this.isMine = function(row, col) {
     return( 'm' == self.cells[row][col].value );
-  }
+  };
   this.isHole = function(row, col) {
     return( 0 == self.cells[row][col].value );
-  }
+  };
   this.isFlag = function(row, col) {
     return( 'flag' == self.cells[row][col].state );
-  }
+  };
   this.isDown = function(row, col) {
     return( 'down' == self.cells[row][col].state );
-  }
+  };
 
   this.isCell = function(img) {
     return(img.className == self.imgClass);
-  }
+  };
   this.getImgElement = function(row, col) {
     return( document.getElementById( self.getImgId(row, col) ) );
-  }
+  };
   this.getImgId = function(row, col) {
     return( self.imgClass + String( (row * self.cols) + col) );
-  }
+  };
   this.getImgSrc = function(pic) {
     return(  self.imgURL + pic + self.imgExt );
   }

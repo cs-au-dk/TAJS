@@ -28,6 +28,7 @@ import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.Str;
 import dk.brics.tajs.lattice.UnknownValueResolver;
 import dk.brics.tajs.lattice.Value;
+import dk.brics.tajs.util.Pair;
 import dk.brics.tajs.util.Strings;
 
 import java.util.Collection;
@@ -98,12 +99,29 @@ public class Operators {
      */
     public static Value uminus(Value v, Solver.SolverInterface c) {
         Value nm = Conversion.toNumber(v, c);
-        if (nm.isNotNum())
-            return Value.makeNone();
-        else if (nm.isMaybeSingleNum())
-            return Value.makeNum(-nm.getNum());
-        else
+        if (nm.isMaybeAnyNum()) {
             return nm;
+        }
+        if (nm.isNotNum()) {
+            return Value.makeNone();
+        }
+        if (nm.isMaybeSingleNum()) {
+            return Value.makeNum(-nm.getNum());
+        }
+        Value result = Value.makeNone();
+        if (nm.isMaybeNumUInt()) {
+            result = result.joinAnyNumOther();
+        }
+        if (nm.isMaybeNumOther()) {
+            result = result.joinAnyNumUInt().joinAnyNumOther();
+        }
+        if (nm.isMaybeNaN()) {
+            result = result.joinNumNaN();
+        }
+        if (nm.isMaybeInf()) {
+            result = result.joinNumInf();
+        }
+        return result;
     }
 
     /**
@@ -200,8 +218,14 @@ public class Operators {
                     r = r.joinNumNaN();
                 if (arg1.isMaybeInf() || arg2.isMaybeInf())
                     r = r.joinNumInf();
-                if (((arg1.isMaybeNumUInt() && !arg1.restrictToNotNaN().isMaybeOtherThanNumUInt()) || arg1.isMaybeSingleNumUInt()) &&
+
+                if (arg1.isMaybeSingleNum() && arg1.getNum() == 0 && op == NumericOp.ADD) {
+                    r = r.join(arg2); // 0 + x === x
+                } else if (arg2.isMaybeSingleNum() && arg2.getNum() == 0) {
+                    r = r.join(arg1); // x + 0 === x && x - 0 === x
+                } else if (((arg1.isMaybeNumUInt() && !arg1.restrictToNotNaN().isMaybeOtherThanNumUInt()) || arg1.isMaybeSingleNumUInt()) &&
                         ((arg2.isMaybeNumUInt() && !arg2.restrictToNotNaN().isMaybeOtherThanNumUInt()) || arg2.isMaybeSingleNumUInt())) {
+                    // see github #295
                     // FIXME: this rule ignores overflows from UInt (use Options.get().isUnsound()) - see github #193
                     // FIXME: this rule assumes Uint - Uint => Uint (use Options.get().isUnsound()) ((a fix will break TestMicro#micro_testUintSub)))
 
@@ -317,7 +341,7 @@ public class Operators {
                         && !(s2.isMaybeStrOtherNum() || s2.isMaybeStrOther()))
                     r = r.joinPrefixedIdentifierParts(s1.getPrefix());
                 else if (s1.isMaybeStrUInt() && !s1.isMaybeStrSomeNonUInt() && s2.isMaybeStrUInt() && !s2.isMaybeStrSomeNonUInt()) {
-                    r = r.joinAnyStrOtherNum();
+                    r = r.joinAnyStrOtherNum().joinAnyStrUInt();
                 } else if ((s1.isMaybeStrUInt() || s1.isMaybeStrIdentifier() || s1.isMaybeStrIdentifierParts() || (s1.isMaybeStrPrefixedIdentifierParts() && Strings.isIdentifierParts(s1.getPrefix())))
                         && !(s1.isMaybeStrOtherNum() || s1.isMaybeStrOther())
                         && (s2.isMaybeStrUInt() || s2.isMaybeStrIdentifier() || s2.isMaybeStrIdentifierParts() || (s2.isMaybeStrPrefixedIdentifierParts() && Strings.isIdentifierParts(s2.getPrefix())))
@@ -327,6 +351,20 @@ public class Operators {
                     r = Value.makeAnyStr();
             }
         }
+
+        boolean containsNonIdentifierCharacters = (s1.getStr() != null && !Strings.isIdentifierParts(s1.getStr())) || (s2.getStr() != null && !Strings.isIdentifierParts(s2.getStr()));
+        if (containsNonIdentifierCharacters) {
+            r = r.restrictToNotStrIdentifierParts();
+        }
+        boolean containsNonDigits = (s1.getStr() != null && !Strings.isArrayIndex(s1.getStr())) || (s2.getStr() != null && !Strings.isArrayIndex(s2.getStr()));
+        if (containsNonDigits) {
+            r = r.restrictToNotStrUInt();
+        }
+        boolean containsNonOtherNumCharacters = (s1.getStr() != null && Strings.containsNonNumberCharacters(s1.getStr())) || (s2.getStr() != null && Strings.containsNonNumberCharacters(s2.getStr()));
+        if (containsNonOtherNumCharacters) {
+            r = r.restrictToNotStrOtherNum();
+        }
+
         if (s1.isMaybeStrJSON() || s2.isMaybeStrJSON()) // TODO: better precision for "(" + JSON + ")"
             r = r.join(Value.makeJSONStr());
         return r;
@@ -406,29 +444,33 @@ public class Operators {
      * 11.8.3 <code>&lt;=</code>
      */
     public static Value le(Value v1, Value v2, Solver.SolverInterface c) {
-        return not(abstractRelationalComparison(v2, v1, c));
+        return abstractRelationalComparison(v2, v1, true, c);
     }
 
     /**
      * 11.8.4 <code>&gt;=</code>
      */
     public static Value ge(Value v1, Value v2, Solver.SolverInterface c) {
-        return not(abstractRelationalComparison(v1, v2, c));
+        return abstractRelationalComparison(v1, v2, true, c);
     }
 
     /**
      * 11.8.5 The Abstract Relational Comparison Algorithm.
      */
     private static Value abstractRelationalComparison(Value v1, Value v2, Solver.SolverInterface c) {
+        return abstractRelationalComparison(v1, v2, false, c);
+    }
+
+    private static Value abstractRelationalComparison(Value v1, Value v2, boolean negateResultIfAllowed, Solver.SolverInterface c) {
         Value p1 = Conversion.toPrimitive(v1, Hint.NUM, c);
         Value p2 = Conversion.toPrimitive(v2, Hint.NUM, c);
-        if (p1.isMaybeFuzzyStr() || p2.isMaybeFuzzyStr()
+        if (p1.isMaybeFuzzyStr() || p2.isMaybeFuzzyStr() // TODO: could improve precision using Value.isStringDisjoint?
                 || p1.isMaybeAnyBool() || p2.isMaybeAnyBool()
-                || p1.isMaybeFuzzyNum() || p2.isMaybeFuzzyNum())
+                || (p1.isMaybeFuzzyNum() && !p1.isNaN()) || (p2.isMaybeFuzzyNum() && !p2.isNaN()))
             return Value.makeAnyBool();  // may be undefined according to items 6 and 7, but changed to false in 11.8.1-4
         else if (p1.isNotStr() || p2.isNotStr()) {
             // at most one argument is a string: perform numeric comparison
-            return numericComparison(p1, p2, c);
+            return numericComparison(p1, p2, negateResultIfAllowed, c);
         } else {
             // (at least) two defined string arguments: perform a string comparison
             Value r;
@@ -439,27 +481,39 @@ public class Operators {
                     r = Value.makeBool(true);
                 else
                     r = Value.makeBool(false);
+                r = negateResultIfAllowed ? not(r) : r;
             } else
                 r = Value.makeNone();
-            if (p1.isMaybeOtherThanStr() || p2.isMaybeOtherThanStr())
-                r = r.join(numericComparison(p1, p2, c));
+            if (p1.isMaybeOtherThanStr() || p2.isMaybeOtherThanStr()) {
+                r = r.join(numericComparison(p1, p2, negateResultIfAllowed, c));
+            }
             return r;
         }
     }
 
+    private static Value numericComparison(Value p1, Value p2, boolean negateResultIfAllowed, Solver.SolverInterface c) {
+        Pair<Value, Boolean> comparisonResult = numericComparison(p1, p2, c);
+        Value result = comparisonResult.getFirst();
+        Boolean mayNegate = comparisonResult.getSecond();
+        boolean negate = mayNegate && negateResultIfAllowed;
+        return negate ? not(result) : result;
+    }
+
     /**
      * Numeric comparison, used by abstractRelationalComparison.
+     *
+     * @return pair of comparison result and a boolean that is true if the result may be negated (NaN comparisons always yield false!)
      */
-    private static Value numericComparison(Value p1, Value p2, Solver.SolverInterface c) {
+    private static Pair<Value, Boolean> numericComparison(Value p1, Value p2, Solver.SolverInterface c) {
         if (p1.isNotPresent() || p2.isNotPresent())
-            return Value.makeNone();
+            return Pair.make(Value.makeNone(), true);
         Value n1 = Conversion.toNumber(p1, c);
         Value n2 = Conversion.toNumber(p2, c);
         if (n1.isMaybeSingleNum() && n2.isMaybeSingleNum())
-            return Value.makeBool(n1.getNum() < n2.getNum());
+            return Pair.make(Value.makeBool(n1.getNum() < n2.getNum()), true);
         if (n1.isNaN() || n2.isNaN())
-            return Value.makeBool(false);
-        return Value.makeAnyBool();
+            return Pair.make(Value.makeBool(false), false);
+        return Pair.make(Value.makeAnyBool(), true);
     }
 
     /**
@@ -621,15 +675,7 @@ public class Operators {
                 r = abstractNumberEquality(r, n1, v2);
             }
             if (!v2.isNotStr()) {
-                if (v1.isMaybeFuzzyStr() || v2.isMaybeFuzzyStr())
-                    r = Value.makeAnyBool();
-                else {
-                    String s1 = v1.getStr();
-                    String s2 = v2.getStr();
-                    if (s1 != null && s2 != null) {
-                        r = r.joinBool(s1.equals(s2));
-                    }
-                }
+                r = r.join(stringEqualityComparison(v1, v2));
             }
             if (v2.isMaybeObject()) {
                 Value arg1 = v1.restrictToStr();
@@ -746,6 +792,9 @@ public class Operators {
             if (v2.isMaybeObject())
                 r = r.joinBool(false);
         }
+        if (r.isMaybeAnyBool()) {
+            return r;
+        }
         if (v1.isMaybeNull()) {
             if (v2.isMaybeUndef())
                 r = r.joinBool(false);
@@ -759,6 +808,9 @@ public class Operators {
                 r = r.joinBool(false);
             if (v2.isMaybeObject())
                 r = r.joinBool(false);
+        }
+        if (r.isMaybeAnyBool()) {
+            return r;
         }
         if (!v1.isNotBool()) {
             if (v2.isMaybeUndef())
@@ -780,6 +832,9 @@ public class Operators {
             if (v2.isMaybeObject())
                 r = r.joinBool(false);
         }
+        if (r.isMaybeAnyBool()) {
+            return r;
+        }
         if (!v1.isNotNum()) {
             if (v2.isMaybeUndef())
                 r = r.joinBool(false);
@@ -794,6 +849,9 @@ public class Operators {
             if (v2.isMaybeObject())
                 r = r.joinBool(false);
         }
+        if (r.isMaybeAnyBool()) {
+            return r;
+        }
         if (!v1.isNotStr()) {
             if (v2.isMaybeUndef())
                 r = r.joinBool(false);
@@ -804,17 +862,13 @@ public class Operators {
             if (!v2.isNotNum())
                 r = r.joinBool(false);
             if (!v2.isNotStr()) {
-                if (v1.isMaybeFuzzyStr() || v2.isMaybeFuzzyStr())
-                    return Value.makeAnyBool();
-                else {
-                    String s1 = v1.getStr();
-                    String s2 = v2.getStr();
-                    if (s1 != null && s2 != null)
-                        r = r.joinBool(s1.equals(s2));
-                }
+                r = r.join(stringEqualityComparison(v1, v2));
             }
             if (v2.isMaybeObject())
                 r = r.joinBool(false);
+        }
+        if (r.isMaybeAnyBool()) {
+            return r;
         }
         if (v1.isMaybeObject()) {
             if (v2.isMaybeUndef())
@@ -831,6 +885,27 @@ public class Operators {
                 r = eqObject(r, v1.getObjectLabels(), v2.getObjectLabels());
         }
         return r;
+    }
+
+    private static Value stringEqualityComparison(Value v1, Value v2) {
+        if (!v1.isMaybeFuzzyStr() && !v2.isMaybeFuzzyStr()) {
+            return Value.makeBool(v1.getStr().equals(v2.getStr()));
+        }
+        if (doesSingleStringAndAbstractStringDisagree(v1, v2) || doesSingleStringAndAbstractStringDisagree(v2, v1)) {
+            return Value.makeBool(false);
+        }
+        if (doesStrUIntAndStrIdentifierDisagree(v1, v2) || doesStrUIntAndStrIdentifierDisagree(v2, v1)) {
+            return Value.makeBool(false);
+        }
+        return Value.makeAnyBool();
+    }
+
+    private static boolean doesSingleStringAndAbstractStringDisagree(Value v1, Value v2) {
+        return v1.isMaybeSingleStr() && !v2.isMaybeStr(v1.getStr());
+    }
+
+    private static boolean doesStrUIntAndStrIdentifierDisagree(Value v1, Value v2) {
+        return v1.isMaybeStrUInt() && !v1.isMaybeAnyStr() && v2.isStrIdentifier();
     }
 
     /**

@@ -17,7 +17,6 @@
 package dk.brics.tajs.analysis.nativeobjects;
 
 import dk.brics.tajs.analysis.Analysis;
-import dk.brics.tajs.analysis.Conversion;
 import dk.brics.tajs.analysis.Exceptions;
 import dk.brics.tajs.analysis.FunctionCalls.CallInfo;
 import dk.brics.tajs.analysis.Solver;
@@ -79,6 +78,11 @@ public class ECMAScriptFunctions {
                 res = JSFunction.evaluate(nativeobject, call, c);
                 break;
 
+            case JSON_PARSE:
+            case JSON_STRINGIFY:
+                res = JSJson.evaluate(nativeobject, call, c);
+                break;
+
             case ARRAY:
             case ARRAY_JOIN:
             case ARRAY_TOSTRING:
@@ -89,7 +93,6 @@ public class ECMAScriptFunctions {
             case ARRAY_REVERSE:
             case ARRAY_SHIFT:
             case ARRAY_SLICE:
-            case ARRAY_SOME:
             case ARRAY_SORT:
             case ARRAY_SPLICE:
             case ARRAY_UNSHIFT:
@@ -253,7 +256,9 @@ public class ECMAScriptFunctions {
             case TAJS_DUMPNF:
             case TAJS_CONVERSION_TO_PRIMITIVE:
             case TAJS_ADD_CONTEXT_SENSITIVITY:
+            case TAJS_MAKE_CONTEXT_SENSITIVE:
             case TAJS_NEW_OBJECT:
+            case TAJS_NEW_ARRAY:
             case TAJS_ASSERT:
             case TAJS_GET_KEYBOARD_EVENT:
             case TAJS_GET_MOUSE_EVENT:
@@ -261,6 +266,9 @@ public class ECMAScriptFunctions {
             case TAJS_GET_EVENT_LISTENER:
             case TAJS_GET_WHEEL_EVENT:
             case TAJS_ASYNC_LISTEN:
+            case TAJS_MAKE:
+            case TAJS_JOIN:
+            case TAJS_ASSERT_EQUALS:
                 res = JSGlobal.evaluate(nativeobject, call, c);
                 break;
 
@@ -288,7 +296,7 @@ public class ECMAScriptFunctions {
                     log.error(msg);
                     return Value.makeUndef();
                 }
-                throw new AnalysisLimitationException(call.getSourceNode(), msg);
+                throw new AnalysisLimitationException.AnalysisModelLimitationException(call.getSourceNode().getSourceLocation() + ": " + msg);
         }
         return res;
     }
@@ -300,89 +308,23 @@ public class ECMAScriptFunctions {
         Value result = null;
         switch (obj) {
             case OBJECT_TOSTRING:
-                // 15.2.4.2 Object.prototype.toString ( )
-                // When the toString method is called, the following steps are taken:
-                // 1. Get the [[Class]] property of this object.
-                // 2. Compute a string value by concatenating the three strings "[object ", Result(1), and "]".
-                // 3. Return Result(2).
-                result = Value.makeStr("[object " + thiss.getKind() + "]"); // TODO: warn when this occurs?
-                break;
+                return JSObject.evaluateToString(thiss, c);
             case FUNCTION_TOSTRING:
-                // 15.3.4.2 Function.prototype.toString ( )
-                // An implementation-dependent representation of the function is returned.
-                if (thiss.getKind() == Kind.FUNCTION)
-                    result = Value.makeAnyStr();
-                else
-                    Exceptions.throwTypeError(c);
-                break;
+                return JSFunction.evaluateToString(thiss, c);
             case ARRAY_TOSTRING:
-                // 15.4.4.2 Array.prototype.toString ( )
-                // The result of calling this function is the same as if the built-in join method were invoked for this object with no
-                // argument.
-                if (thiss.getKind() == Kind.ARRAY)
-                    result = Value.makeAnyStr();
-                else
-                    Exceptions.throwTypeError(c);
-                break;
+                return JSArray.evaluateToString(thiss, c);
             case STRING_TOSTRING:
-                // 15.5.4.2 String.prototype.toString ( )
-                // Returns this string value. (Note that, for a String object, the toString method happens to return the same thing as
-                // the valueOf method.)
-                if (thiss.getKind() == Kind.STRING) {
-                    Value v = c.getState().readInternalValue(singleton(thiss));
-                    v = UnknownValueResolver.getRealValue(v, c.getState());
-                    result = v;
-                } else
-                    Exceptions.throwTypeError(c);
-                break;
+                return JSString.evaluateToString(thiss, c);
             case BOOLEAN_TOSTRING:
-                // 15.6.4.2 Boolean.prototype.toString ( )
-                // If this boolean value is true, then the string "true" is returned. Otherwise, this boolean value must be false, and
-                // the string "false" is returned.
-                if (thiss.getKind() == Kind.BOOLEAN) {
-                    Value v = c.getState().readInternalValue(singleton(thiss));
-                    v = UnknownValueResolver.getRealValue(v, c.getState());
-                    if (v.isMaybeTrueButNotFalse())
-                        result = Value.makeStr("true");
-                    else if (v.isMaybeFalseButNotTrue())
-                        result = Value.makeStr("false");
-                    else
-                        result = Value.makeAnyStr();
-                } else
-                    Exceptions.throwTypeError(c);
-                break;
+                return JSBoolean.evaluateToString(thiss, c);
             case NUMBER_TOSTRING:
-                // 15.7.4.2 Number.prototype.toString (radix)
-                // If radix is the number 10 or undefined, then this number value is given as an argument to the ToString operator;
-                // the resulting string value is returned.
-                // If radix is an integer from 2 to 36, but not 10, the result is a string, the choice of which is implementation-dependent.
-                if (thiss.getKind() == Kind.NUMBER) {
-                    Value v = c.getState().readInternalValue(singleton(thiss));
-                    v = UnknownValueResolver.getRealValue(v, c.getState());
-                    result = Conversion.toString(v, c);
-                } else
-                    Exceptions.throwTypeError(c);
-                break;
+                return JSNumber.evaluateToString(thiss, Value.makeUndef(), c);
             case REGEXP_TOSTRING:
-                // 15.10.6.4 RegExp.prototype.toString()
-                if (thiss.getKind() == Kind.REGEXP)
-                    result = Value.makeAnyStr(); // TODO: correct to throw TypeError if thiss is not a REGEXP? (not mentioned in 15.10.6.4)
-                else
-                    Exceptions.throwTypeError(c);
-                break;
+                return JSRegExp.evaluateToString(thiss, c);
             case DATE_TOSTRING:
-                // 15.9.5.2 Date.prototype.toString ( )
-                // This function returns a string value.
-                if (thiss.getKind() == Kind.DATE)
-                    result = Value.makeAnyStr();
-                else
-                    Exceptions.throwTypeError(c); // not generic according to 15.9.5
-                break;
+                return JSDate.evaluateToString(thiss, c);
             case ERROR_TOSTRING:
-                // 15.11.4.4 Error.prototype.toString ( )
-                // Returns an implementation defined string.
-                result = Value.makeAnyStr();
-                break;
+                return JSError.evaluateToString();
             default:
                 c.getMonitoring().addMessage(c.getNode(), Severity.HIGH, "Implicit call to native non-toString method");
                 result = Value.makeAnyStr(); // FIXME: implicit call to native non-toString method - github #254
@@ -436,7 +378,7 @@ public class ECMAScriptFunctions {
                 // 15.9.5.8 Date.prototype.valueOf ( )
                 // The valueOf function returns a number, which is this time value.
                 if (thiss.getKind() == Kind.DATE)
-                    result = Value.makeAnyNumUInt();
+                    result = Value.makeAnyNumNotNaNInf();
                 else
                     Exceptions.throwTypeError(c); // not generic according to 15.9.5
                 break;

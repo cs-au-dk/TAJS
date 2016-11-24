@@ -11,6 +11,9 @@ test/chromeexperiments/anotherworld.html:571:19: [maybe] TypeError, accessing pr
 test/chromeexperiments/anotherworld.html:572:19: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/anotherworld.html:635:8: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/anotherworld.html:637:13: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/anotherworld.html:1140:4: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/anotherworld.html:1332:3: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/anotherworld.html:1379:10: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/anotherworld.html:1179:7: [maybe] Reading absent property _keyMask
 test/chromeexperiments/anotherworld.html:1185:7: [maybe] Reading absent property _keyMask
 test/chromeexperiments/anotherworld.html:1191:7: [maybe] Reading absent property _keyMask
@@ -25,23 +28,19 @@ test/chromeexperiments/anotherworld.html:1270:4: [maybe] Reading absent property
 test/chromeexperiments/anotherworld.html:1276:4: [maybe] Reading absent property _keyMask
 test/chromeexperiments/anotherworld.html:1282:4: [maybe] Reading absent property _keyMask
 test/chromeexperiments/anotherworld.html:1288:4: [maybe] Reading absent property _keyMask
-test/chromeexperiments/anotherworld.html: [maybe] Uncaught exception, constructed at [test/chromeexperiments/anotherworld.html:571:19, test/chromeexperiments/anotherworld.html:572:19, test/chromeexperiments/anotherworld.html:635:8, test/chromeexperiments/anotherworld.html:637:13]
-test/chromeexperiments/anotherworld.html:278:9: [maybe] Conversion to number yields NaN
+test/chromeexperiments/anotherworld.html: [maybe] Uncaught exception, constructed at [test/chromeexperiments/anotherworld.html:571:19, test/chromeexperiments/anotherworld.html:572:19, test/chromeexperiments/anotherworld.html:635:8, test/chromeexperiments/anotherworld.html:637:13, test/chromeexperiments/anotherworld.html:1140:4, test/chromeexperiments/anotherworld.html:1332:3, test/chromeexperiments/anotherworld.html:1379:10]
 test/chromeexperiments/anotherworld.html:278:9: [maybe] Converting object to string
 test/chromeexperiments/anotherworld.html:278:9: [maybe] Converting primitive string to object
 test/chromeexperiments/anotherworld.html:278:21: [maybe] Converting object to string
 test/chromeexperiments/anotherworld.html:278:21: [maybe] Converting primitive string to object
-test/chromeexperiments/anotherworld.html:279:9: [maybe] Conversion to number yields NaN
 test/chromeexperiments/anotherworld.html:279:9: [maybe] Converting object to string
 test/chromeexperiments/anotherworld.html:279:9: [maybe] Converting primitive string to object
 test/chromeexperiments/anotherworld.html:279:21: [maybe] Converting object to string
 test/chromeexperiments/anotherworld.html:279:21: [maybe] Converting primitive string to object
-test/chromeexperiments/anotherworld.html:280:9: [maybe] Conversion to number yields NaN
 test/chromeexperiments/anotherworld.html:280:9: [maybe] Converting object to string
 test/chromeexperiments/anotherworld.html:280:9: [maybe] Converting primitive string to object
 test/chromeexperiments/anotherworld.html:280:21: [maybe] Converting object to string
 test/chromeexperiments/anotherworld.html:280:21: [maybe] Converting primitive string to object
-test/chromeexperiments/anotherworld.html:281:9: [maybe] Conversion to number yields NaN
 test/chromeexperiments/anotherworld.html:281:9: [maybe] Converting object to string
 test/chromeexperiments/anotherworld.html:281:9: [maybe] Converting primitive string to object
 test/chromeexperiments/anotherworld.html:281:21: [maybe] Converting object to string
@@ -67,21 +66,16 @@ test/chromeexperiments/anotherworld.html:402:12: [maybe] Converting undefined to
 test/chromeexperiments/anotherworld.html:411:25: [maybe] Conversion to number yields NaN
 test/chromeexperiments/anotherworld.html:417:13: [maybe] Conversion to number yields NaN
 test/chromeexperiments/anotherworld.html:459:12: [maybe] Converting undefined to string
-test/chromeexperiments/anotherworld.html:459:12: [maybe] Converting undefined to string
-test/chromeexperiments/anotherworld.html:459:12: [maybe] Converting undefined to string
 test/chromeexperiments/anotherworld.html:463:4: [maybe] Conversion to number yields NaN
 test/chromeexperiments/anotherworld.html:469:41: [maybe] Conversion to number yields NaN
 test/chromeexperiments/anotherworld.html:470:36: [maybe] Conversion to number yields NaN
 test/chromeexperiments/anotherworld.html:477:8: [maybe] Reading absent property (computed name)
 test/chromeexperiments/anotherworld.html:477:32: [maybe] Reading absent property (computed name)
 test/chromeexperiments/anotherworld.html:481:16: [maybe] Reading absent property (computed name)
-test/chromeexperiments/anotherworld.html:491:25: [maybe] Conversion to number yields NaN
 test/chromeexperiments/anotherworld.html:491:25: [maybe] Converting object to string
 test/chromeexperiments/anotherworld.html:491:25: [maybe] Converting primitive string to object
-test/chromeexperiments/anotherworld.html:491:51: [maybe] Conversion to number yields NaN
 test/chromeexperiments/anotherworld.html:491:51: [maybe] Converting object to string
 test/chromeexperiments/anotherworld.html:491:51: [maybe] Converting primitive string to object
-test/chromeexperiments/anotherworld.html:496:12: [maybe] Converting undefined to string
 test/chromeexperiments/anotherworld.html:496:12: [maybe] Converting undefined to string
 test/chromeexperiments/anotherworld.html:498:12: [maybe] Conversion to number yields NaN
 test/chromeexperiments/anotherworld.html:498:17: [maybe] Conversion to number yields NaN
@@ -113,8 +107,6 @@ test/chromeexperiments/anotherworld.html:638:21: [maybe] Converting primitive st
 test/chromeexperiments/anotherworld.html:640:24: [maybe] Converting object to string
 test/chromeexperiments/anotherworld.html:640:24: [maybe] Converting primitive string to object
 test/chromeexperiments/anotherworld.html:652:12: [maybe] Converting undefined to string
-test/chromeexperiments/anotherworld.html:652:12: [maybe] Converting undefined to string
-test/chromeexperiments/anotherworld.html:652:12: [maybe] Converting undefined to string
 test/chromeexperiments/anotherworld.html:654:34: [maybe] Conversion to number yields NaN
 test/chromeexperiments/anotherworld.html:657:8: [maybe] Conversion to number yields NaN
 test/chromeexperiments/anotherworld.html:663:4: [maybe] Conversion to number yields NaN
@@ -141,7 +133,6 @@ test/chromeexperiments/anotherworld.html:786:10: [maybe] Conversion to number yi
 test/chromeexperiments/anotherworld.html:788:11: [maybe] Conversion to number yields NaN
 test/chromeexperiments/anotherworld.html:795:14: [maybe] Reading absent property (computed name)
 test/chromeexperiments/anotherworld.html:800:10: [maybe] Conversion to number yields NaN
-test/chromeexperiments/anotherworld.html:821:15: [maybe] Converting undefined to string
 test/chromeexperiments/anotherworld.html:821:15: [maybe] Converting undefined to string
 test/chromeexperiments/anotherworld.html:821:38: [maybe] Reading absent property (computed name)
 test/chromeexperiments/anotherworld.html:828:22: [maybe] Reading absent property (computed name)
@@ -180,8 +171,6 @@ test/chromeexperiments/anotherworld.html:1102:22: [maybe] Reading absent propert
 test/chromeexperiments/anotherworld.html:1104:8: [maybe] Reading absent property (computed name)
 test/chromeexperiments/anotherworld.html:1106:9: [maybe] Reading absent property (computed name)
 test/chromeexperiments/anotherworld.html:1112:25: [maybe] Reading absent property (computed name)
-test/chromeexperiments/anotherworld.html:1127:13: [maybe] Converting undefined to string
-test/chromeexperiments/anotherworld.html:1127:13: [maybe] Converting undefined to string
 test/chromeexperiments/anotherworld.html:1127:13: [maybe] Converting undefined to string
 test/chromeexperiments/anotherworld.html:1179:7: [maybe] Conversion to number yields NaN
 test/chromeexperiments/anotherworld.html:1185:7: [maybe] Conversion to number yields NaN

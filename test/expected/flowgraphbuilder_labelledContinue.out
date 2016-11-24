@@ -1,35 +1,35 @@
 fg2: <main> function()
   block 0: [entry]
-    node 0: constant[undefined,v1] (out/temp-sources/flowgraphbuilder_labelledContinue)
+    node 0: constant[undefined,v1] (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_labelledContinue.js)
     ->[block 1]
   block 1:
-    node 1: constant["PRE",-]* (out/temp-sources/flowgraphbuilder_labelledContinue:1:1)
-    node 2: constant["INIT",-]* (out/temp-sources/flowgraphbuilder_labelledContinue:2:13)
+    node 1: constant["PRE",-]* (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_labelledContinue.js:1:1)
+    node 2: constant["INIT",-]* (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_labelledContinue.js:2:13)
     ->[block 2]
   block 2:
-    node 3: constant["COND",v2] (out/temp-sources/flowgraphbuilder_labelledContinue:2:21)
-    node 4: if[v2](true-block:3,false-block:6) (out/temp-sources/flowgraphbuilder_labelledContinue:2:21)
+    node 3: constant["COND",v2] (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_labelledContinue.js:2:21)
+    node 4: if[v2](true-block:3,false-block:6) (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_labelledContinue.js:2:21)
     ->[block 3,block 6]
   block 3:
-    node 5: constant["BODY",-]* (out/temp-sources/flowgraphbuilder_labelledContinue:3:4)
-    node 6: constant["C-COND",v3] (out/temp-sources/flowgraphbuilder_labelledContinue:4:7)
-    node 7: if[v3](true-block:4,false-block:5)* (out/temp-sources/flowgraphbuilder_labelledContinue:4:4)
+    node 5: constant["BODY",-]* (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_labelledContinue.js:3:4)
+    node 6: constant["C-COND",v3] (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_labelledContinue.js:4:7)
+    node 7: if[v3](true-block:4,false-block:5)* (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_labelledContinue.js:4:4)
     ->[block 4,block 5]
   block 4:
-    node 8: nop(continue label)* (out/temp-sources/flowgraphbuilder_labelledContinue:5:8)
+    node 8: nop(continue label)* (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_labelledContinue.js:5:8)
     ->[block 5]
   block 5:
-    node 9: constant["INC",-]* (out/temp-sources/flowgraphbuilder_labelledContinue:2:29)
+    node 9: constant["INC",-]* (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_labelledContinue.js:2:29)
     ->[block 2]
   block 6:
-    node 10: constant["POST",-]* (out/temp-sources/flowgraphbuilder_labelledContinue:8:1)
+    node 10: constant["POST",-]* (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_labelledContinue.js:8:1)
     ->[block 7]
   block 7: [exit-ordinary]
-    node 11: return[v1] (out/temp-sources/flowgraphbuilder_labelledContinue)
+    node 11: return[v1] (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_labelledContinue.js)
     ->[]
   block 8: [exit-exceptional]
-    node 12: exceptional-return (out/temp-sources/flowgraphbuilder_labelledContinue)
+    node 12: exceptional-return (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_labelledContinue.js)
     ->[]
 
-out/temp-sources/flowgraphbuilder_labelledContinue:2:21: [definite] The conditional expression is always true
-out/temp-sources/flowgraphbuilder_labelledContinue:4:4: [definite] The conditional expression is always true
+out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_labelledContinue.js:2:21: [definite] The conditional expression is always true
+out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_labelledContinue.js:4:4: [definite] The conditional expression is always true

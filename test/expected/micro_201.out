@@ -22,12 +22,12 @@ Abstract state:
     @activation#node57{method="post"} (test/micro/test201.js:3:1): {arguments:[@arguments#node57{method="post"}],method:"post"}
     @arguments#node57{method="get"} (test/micro/test201.js:3:1): {0:"get",callee:[@callback#fun1],length:1.0,[[Prototype]]=[@Object.prototype[native]]}
     @arguments#node57{method="post"} (test/micro/test201.js:3:1): {0:"post",callee:[@callback#fun1],length:1.0,[[Prototype]]=[@Object.prototype[native]]}
-    @callback#fun1 (test/micro/test201.js:3:1): {length:1.0,prototype:[@Object#node2],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@<the global object>[native]]]}
-    *<anonymous>#fun2{method="get"} (test/micro/test201.js:4:20): {length:0.0,prototype:[*Object#node60],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[*activation#node57{method="get"}],[@<the global object>[native]]]}
-    *<anonymous>#fun2{method="post"} (test/micro/test201.js:4:20): {length:0.0,prototype:[*Object#node60],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[*activation#node57{method="post"}],[@<the global object>[native]]]}
+    @callback#fun1 (test/micro/test201.js:3:1): {length:1.0,name:"callback",prototype:[@Object#node2],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@<the global object>[native]]]}
+    *<anonymous>#fun2{method="get"} (test/micro/test201.js:4:20): {length:0.0,name:"",prototype:[*Object#node60],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[*activation#node57{method="get"}],[@<the global object>[native]]]}
+    *<anonymous>#fun2{method="post"} (test/micro/test201.js:4:20): {length:0.0,name:"",prototype:[*Object#node60],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[*activation#node57{method="post"}],[@<the global object>[native]]]}
     *Object#node60 (test/micro/test201.js:4:20): {constructor:[@<anonymous>#fun2{method="post"}, @<anonymous>#fun2{method="get"}, *<anonymous>#fun2{method="post"}, *<anonymous>#fun2{method="get"}],[[Prototype]]=[@Object.prototype[native]],[[Value]]=NaN}
-    @<anonymous>#fun2{method="get"} (test/micro/test201.js:4:20): {length:0.0,prototype:[@Object#node60, *Object#node60],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@activation#node57{method="get"}],[@<the global object>[native]]]}
-    @<anonymous>#fun2{method="post"} (test/micro/test201.js:4:20): {length:0.0,prototype:[@Object#node60, *Object#node60],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@activation#node57{method="post"}],[@<the global object>[native]]]}
+    @<anonymous>#fun2{method="get"} (test/micro/test201.js:4:20): {length:0.0,name:"",prototype:[@Object#node60, *Object#node60],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@activation#node57{method="get"}],[@<the global object>[native]]]}
+    @<anonymous>#fun2{method="post"} (test/micro/test201.js:4:20): {length:0.0,name:"",prototype:[@Object#node60, *Object#node60],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@activation#node57{method="post"}],[@<the global object>[native]]]}
     @Object#node60 (test/micro/test201.js:4:20): {constructor:[@<anonymous>#fun2{method="post"}, @<anonymous>#fun2{method="get"}],[[Prototype]]=[@Object.prototype[native]],[[Value]]=NaN}
     @Object#node11 (test/micro/test201.js:10:11): {0:"get",1:"post",[[Prototype]]=[@Object.prototype[native]]}
   Registers: 
@@ -37,4 +37,4 @@ Abstract state:
     v23=^(@<the global object>[native].TAJS_dumpState[present])
 test/micro/test201.js:16:1: [info] Abstract object: {get:[@<anonymous>#fun2{method="get"}]|absent,post:[@<anonymous>#fun2{method="post"}]|absent,[[Prototype]]=[@Object.prototype[native]]}
 test/micro/test201.js:17:1: [info] Abstract value: "I'm get"
-test/micro/test201.js:18:1: [info] Abstract value: Str
+test/micro/test201.js:18:1: [info] Abstract value: OtherStr

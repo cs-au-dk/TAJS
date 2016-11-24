@@ -1,7 +1,7 @@
-test/chromeexperiments/burncanvas.html:162:5: [definite] Unreachable code
+test/chromeexperiments/burncanvas.html:51:3: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/burncanvas.html:138:11: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/burncanvas.html:140:3: [maybe] TypeError, inf or NaN as arguments to CanvasRenderingContext2D.putImageData
-test/chromeexperiments/burncanvas.html: [maybe] Uncaught exception, constructed at [test/chromeexperiments/burncanvas.html:138:11]
+test/chromeexperiments/burncanvas.html: [maybe] Uncaught exception, constructed at [test/chromeexperiments/burncanvas.html:51:3, test/chromeexperiments/burncanvas.html:138:11]
 test/chromeexperiments/burncanvas.html:70:7: [maybe] Conversion to number yields NaN
 test/chromeexperiments/burncanvas.html:70:7: [maybe] Reading absent property (computed name)
 test/chromeexperiments/burncanvas.html:70:27: [maybe] Conversion to number yields NaN

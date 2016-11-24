@@ -180,6 +180,7 @@ test/uneval/uneval21.html:137:31: [definite] Unreachable function
 test/uneval/uneval21.html:138:31: [definite] Unreachable function
 test/uneval/uneval21.html:139:31: [definite] Unreachable function
 test/uneval/uneval21.html:140:37: [definite] Unreachable function
+TAJS-dynamic-code(test/uneval/uneval21.html:6:5):1:44: [maybe] TypeError, non-function event handler
 test/uneval/uneval21.html:6:5: [maybe] TypeError, call to non-function
 TAJS-dynamic-code(test/uneval/uneval21.html:6:5):1:11: [maybe] Converting primitive string to object
 TAJS-dynamic-code(test/uneval/uneval21.html:6:5):1:11: [maybe] Reading absent property (computed name)
@@ -197,7 +198,6 @@ test/uneval/uneval21.html:5:21: [maybe] Converting primitive string to object
 test/uneval/uneval21.html:5:21: [maybe] The variable wt_va has values with different types
 test/uneval/uneval21.html:5:35: [maybe] The variable i has values with different types
 test/uneval/uneval21.html:6:5: [maybe] The variable eval has values with different types
-test/uneval/uneval21.html:6:10: [maybe] Converting undefined to string
 test/uneval/uneval21.html:6:10: [maybe] Converting undefined to string
 test/uneval/uneval21.html:6:25: [maybe] Converting primitive string to object
 test/uneval/uneval21.html:6:25: [maybe] Reading absent property (computed name)

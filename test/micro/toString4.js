@@ -11,9 +11,9 @@ TAJS_dumpObject(t); // expected: {"[object Object]":true}
 var x2 = {toString: {}};
 try {
   t[x2] = true;
-  TAJS_dumpState();
+  TAJS_assert(false);
 } catch (e) {
-  TAJS_dumpObject(t);
+
 }
 TAJS_dumpObject(t);
 

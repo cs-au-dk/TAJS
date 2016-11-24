@@ -4,9 +4,9 @@ import dk.brics.tajs.Main;
 import dk.brics.tajs.monitoring.CompositeMonitoring;
 import dk.brics.tajs.monitoring.IAnalysisMonitoring;
 import dk.brics.tajs.monitoring.Monitoring;
+import dk.brics.tajs.monitoring.OrdinaryExitReachableChecker;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.test.Misc;
-import dk.brics.tajs.test.monitors.OrdinaryExitReachableCheckerMonitor;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -19,7 +19,7 @@ public class JSObject_getOwnPropertyDescriptor_test {
         Main.reset();
         Main.initLogging();
         Options.get().enableTest();
-        monitor = CompositeMonitoring.buildFromList(new Monitoring(), new OrdinaryExitReachableCheckerMonitor());
+        monitor = CompositeMonitoring.buildFromList(new Monitoring(), new OrdinaryExitReachableChecker());
     }
 
     @Test
@@ -29,9 +29,9 @@ public class JSObject_getOwnPropertyDescriptor_test {
                 "var v1 = Object.getOwnPropertyDescriptor(o, 'p');",
                 "var v2 = Object.getOwnPropertyDescriptor(o, 'q');",
                 "var v3 = Object.getOwnPropertyDescriptor(o, 'toString');",
-                "TAJS_assert(42 === v1.value);",
-                "TAJS_assert(undefined === v2);",
-                "TAJS_assert(undefined === v3);"
+                "TAJS_assertEquals(42, v1.value);",
+                "TAJS_assertEquals(undefined, v2);",
+                "TAJS_assertEquals(undefined, v3);"
         }, monitor);
     }
 

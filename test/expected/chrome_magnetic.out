@@ -1,16 +1,22 @@
-test/chromeexperiments/magnetic.html:100:9: [definite] The conditional expression is always true
-test/chromeexperiments/magnetic.html:100:13: [definite] The conditional expression is always true
 test/chromeexperiments/magnetic.html:276:36: [definite] Reading absent property width
 test/chromeexperiments/magnetic.html:276:58: [definite] Reading absent property height
 test/chromeexperiments/magnetic.html:40:9: [definite] The variable mouseIsDown is never used
 test/chromeexperiments/magnetic.html:200:5: [definite] The variable event is never used
+test/chromeexperiments/magnetic.html:100:23: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/magnetic.html:101:23: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/magnetic.html:113:13: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/magnetic.html:114:13: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/magnetic.html:155:23: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/magnetic.html:190:33: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/magnetic.html:205:13: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/magnetic.html:256:13: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/magnetic.html:256:34: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/magnetic.html:264:9: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/magnetic.html:274:13: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/magnetic.html:275:13: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/magnetic.html:275:33: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/magnetic.html:279:13: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/magnetic.html:279:37: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/magnetic.html:289:17: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/magnetic.html:299:42: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/magnetic.html:300:42: [maybe] TypeError, accessing property of null/undefined
@@ -18,7 +24,7 @@ test/chromeexperiments/magnetic.html:329:51: [maybe] TypeError, accessing proper
 test/chromeexperiments/magnetic.html:329:70: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/magnetic.html:350:17: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/magnetic.html:354:13: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/magnetic.html: [maybe] Uncaught exception, constructed at [test/chromeexperiments/magnetic.html:155:23, test/chromeexperiments/magnetic.html:190:33, test/chromeexperiments/magnetic.html:205:13, test/chromeexperiments/magnetic.html:256:13, test/chromeexperiments/magnetic.html:256:34, test/chromeexperiments/magnetic.html:274:13, test/chromeexperiments/magnetic.html:275:33, test/chromeexperiments/magnetic.html:289:17, test/chromeexperiments/magnetic.html:299:42, test/chromeexperiments/magnetic.html:300:42, test/chromeexperiments/magnetic.html:329:51, test/chromeexperiments/magnetic.html:329:70, test/chromeexperiments/magnetic.html:350:17, test/chromeexperiments/magnetic.html:354:13]
+test/chromeexperiments/magnetic.html: [maybe] Uncaught exception, constructed at [test/chromeexperiments/magnetic.html:100:23, test/chromeexperiments/magnetic.html:101:23, test/chromeexperiments/magnetic.html:113:13, test/chromeexperiments/magnetic.html:114:13, test/chromeexperiments/magnetic.html:155:23, test/chromeexperiments/magnetic.html:190:33, test/chromeexperiments/magnetic.html:205:13, test/chromeexperiments/magnetic.html:256:13, test/chromeexperiments/magnetic.html:256:34, test/chromeexperiments/magnetic.html:264:9, test/chromeexperiments/magnetic.html:274:13, test/chromeexperiments/magnetic.html:275:13, test/chromeexperiments/magnetic.html:275:33, test/chromeexperiments/magnetic.html:279:13, test/chromeexperiments/magnetic.html:279:37, test/chromeexperiments/magnetic.html:289:17, test/chromeexperiments/magnetic.html:299:42, test/chromeexperiments/magnetic.html:300:42, test/chromeexperiments/magnetic.html:329:51, test/chromeexperiments/magnetic.html:329:70, test/chromeexperiments/magnetic.html:350:17, test/chromeexperiments/magnetic.html:354:13]
 test/chromeexperiments/magnetic.html:155:23: [maybe] Reading absent property (computed name)
 test/chromeexperiments/magnetic.html:188:22: [maybe] Reading absent property (computed name)
 test/chromeexperiments/magnetic.html:204:22: [maybe] Reading absent property (computed name)

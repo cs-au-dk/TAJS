@@ -1,8 +1,8 @@
 test/micro/testRegExp.js:17:16: [definite] Reading absent property (computed name)
-test/micro/testRegExp.js:28:5: [definite] The variable d is never used
-test/micro/testRegExp.js:28:9: [definite] Unreachable code
-test/micro/testRegExp.js:28:9: [maybe] SyntaxError, invalid flags at RegExp constructor
-test/micro/testRegExp.js: [maybe] Uncaught exception, constructed at [test/micro/testRegExp.js:28:9]
+test/micro/testRegExp.js:30:5: [definite] Unreachable code
+test/micro/testRegExp.js:36:1: [definite] Unreachable code
+test/micro/testRegExp.js:35:1: [maybe] SyntaxError, invalid flags at RegExp constructor
+test/micro/testRegExp.js: [maybe] Uncaught exception, constructed at [test/micro/testRegExp.js:35:1]
 test/micro/testRegExp.js:2:1: [info] Abstract value: [@RegExp#node11]
 test/micro/testRegExp.js:3:1: [info] Abstract value: "ab*"
 test/micro/testRegExp.js:4:1: [info] Abstract value: 0.0
@@ -17,3 +17,4 @@ test/micro/testRegExp.js:16:1: [info] Abstract value: "abbb"
 test/micro/testRegExp.js:17:1: [info] Abstract value: Undef
 test/micro/testRegExp.js:19:1: [info] Abstract value: Str
 test/micro/testRegExp.js:22:1: [info] Abstract value: [@RegExp#node90]
+test/micro/testRegExp.js:34:1: [info] Abstract value: true

@@ -87,7 +87,7 @@ public class DOMTouchList {
         switch (nativeobject) {
             case TOUCHLIST_ITEM: {
                 return Value.makeObject(DOMTouch.INSTANCES);
-                //    throw new UnsupportedOperationException("NODELIST_ITEM not supported: "
+                //    throw new AnalysisLimitationException(call.getJSSourceNode(), "NODELIST_ITEM not supported: "
                 //           + nativeobject);
             }
             default: {

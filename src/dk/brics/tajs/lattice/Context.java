@@ -26,7 +26,7 @@ import java.util.Set;
  * Context for context sensitive analysis.
  * Immutable.
  */
-public final class Context implements IContext<Context> {
+public final class Context implements IContext<Context> { // TODO: canonicalize? (#140)
 
     /**
      * Cached hashcode for immutable instance.

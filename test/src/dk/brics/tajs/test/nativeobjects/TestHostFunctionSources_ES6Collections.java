@@ -4,9 +4,9 @@ import dk.brics.tajs.Main;
 import dk.brics.tajs.monitoring.CompositeMonitoring;
 import dk.brics.tajs.monitoring.IAnalysisMonitoring;
 import dk.brics.tajs.monitoring.Monitoring;
+import dk.brics.tajs.monitoring.OrdinaryExitReachableChecker;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.test.Misc;
-import dk.brics.tajs.test.monitors.OrdinaryExitReachableCheckerMonitor;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -20,7 +20,7 @@ public class TestHostFunctionSources_ES6Collections {
         Main.reset();
         Options.get().enableTest();
         Options.get().enablePolyfillES6Collections();
-        monitor = CompositeMonitoring.buildFromList(new Monitoring(), new OrdinaryExitReachableCheckerMonitor());
+        monitor = CompositeMonitoring.buildFromList(new Monitoring(), new OrdinaryExitReachableChecker());
     }
 
     @Test
@@ -83,11 +83,7 @@ public class TestHostFunctionSources_ES6Collections {
                 "TAJS_assert(typeof o.has === 'function');",
                 "TAJS_assert(typeof o.delete === 'function');",
                 "TAJS_assert(o.has(42) === false);",
-                "if(o instanceof Map || o instanceof WeakMap){",
-                "   o.set(42);",
-                "}else{",
-                "   o.add(42);",
-                "}",
+                ("Set".equals(functionName) ? "   o.add(42);" : "   o.set(42);"),
                 "TAJS_assert(o.has(42), 'isMaybeAnyBool');",
                 "TAJS_assert(o.has('foo'), 'isMaybeAnyBool');",
                 "o.delete(42);",

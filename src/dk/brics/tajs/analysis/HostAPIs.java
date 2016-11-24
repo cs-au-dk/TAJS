@@ -44,6 +44,10 @@ public enum HostAPIs implements HostAPI {
     }
 
     public static Value evaluate(HostObject hostobject, CallInfo call, Solver.SolverInterface c) {
+        if (NativeFunctionSignatureChecker.get().shouldStopPropagation(hostobject, call, c)) {
+            c.getState().setToNone();
+            return Value.makeNone();
+        }
         switch ((HostAPIs) hostobject.getAPI()) {
             case ECMASCRIPT_NATIVE:
                 return ECMAScriptFunctions.evaluate((ECMAScriptObjects) hostobject, call, c);

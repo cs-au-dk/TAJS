@@ -11,15 +11,15 @@ test/micro/testOO.js:31:1: [info] Abstract object: {count:0.0,name:Undef,[[Proto
 test/micro/testOO.js:33:1: [info] Abstract object: {Super:[@Object#node1],count:0.0,name:Undef,[[Prototype]]=[@Object#node1]}
 test/micro/testOO.js:35:1: [info] Abstract object: {Super:[@Object#node1],count:0.0,name:Undef,sing:[@<anonymous>#fun6],[[Prototype]]=[@Object#node1]}
 test/micro/testOO.js:38:1: [info] Abstract object: {count:0.0,name:"jerry",[[Prototype]]=[@Object#node67]}
-test/micro/testOO.js:39:1: [info] Abstract object: {length:1.0,prototype:[@Object#node67],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@<the global object>[native]]]}
+test/micro/testOO.js:39:1: [info] Abstract object: {length:1.0,name:"Singer",prototype:[@Object#node67],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@<the global object>[native]]]}
 test/micro/testOO.js:40:1: [info] Abstract object: {Super:[@Object#node1],count:0.0,name:Undef,sing:[@<anonymous>#fun6],[[Prototype]]=[@Object#node1]}
-test/micro/testOO.js:41:1: [info] Abstract object: {length:1.0,prototype:[@Object#node1],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@<the global object>[native]]]}
+test/micro/testOO.js:41:1: [info] Abstract object: {length:1.0,name:"Person",prototype:[@Object#node1],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@<the global object>[native]]]}
 test/micro/testOO.js:42:1: [info] Abstract object: {constructor:[@Person#fun1],getName:[@<anonymous>#fun2],say:[@<anonymous>#fun3],slap:[@<anonymous>#fun4],[[Prototype]]=[@Object.prototype[native]],[[Value]]=NaN}
 test/micro/testOO.js:43:1: [info] Abstract value: "jerry"
 test/micro/testOO.js:44:1: [info] Abstract value: "hello"
 test/micro/testOO.js:45:1: [info] Abstract value: "a song tra-la-la"
 test/micro/testOO.js:46:1: [info] Abstract value: "argh"
 test/micro/testOO.js:61:1: [info] Abstract value: "marilyn"
-test/micro/testOO.js:62:1: [info] Abstract value: Str
-test/micro/testOO.js:63:1: [info] Abstract value: Str
+test/micro/testOO.js:62:1: [info] Abstract value: OtherStr
+test/micro/testOO.js:63:1: [info] Abstract value: OtherStr
 test/micro/testOO.js:64:1: [info] Abstract value: "argh"

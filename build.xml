@@ -4,7 +4,7 @@
 
     <property name="project" value="tajs" />
     <property name="version" value="0.9" />
-    <property name="release" value="8" />
+    <property name="release" value="9" />
 
     <property name="optimize" value="on" />
     <property name="debug" value="off" />
@@ -12,11 +12,14 @@
     <property file="local-development.properties"/>
 
     <path id="classpath">
-        <fileset dir="." includes="lib/**/*.jar" />
+        <fileset dir="." includes="lib/*.jar" />
     </path>
 
     <path id="classpath.test">
-        <fileset dir="." includes="lib/**/*.jar" />
+        <fileset dir=".">
+            <include name="lib/*.jar"/>
+            <include name="lib/test/*.jar"/>
+        </fileset>
         <pathelement location="antbuild"/>
     </path>
 
@@ -37,14 +40,11 @@
             -->
         </javac>
         <copy todir="antbuild">
-            <fileset dir="src" includes="**/*.properties"/>
-        </copy>
-        <copy todir="antbuild">
-            <fileset dir="resources" excludes="local-development*.properties,**/*.md"/>
+            <fileset dir="resources"/>
         </copy>
     </target>
 
-    <target name="jar" depends="compile">
+    <target name="jar" depends="clean,compile">
         <mkdir dir="dist" />
         <jar jarfile="dist/${project}.jar" basedir="antbuild" includes="**"/>
     </target>
@@ -70,6 +70,7 @@
         <mkdir dir="doc" />
         <javadoc packagenames="dk.brics.tajs,
                                dk.brics.tajs.analysis,
+                               dk.brics.tajs.analysis.dom,
                                dk.brics.tajs.analysis.js,
                                dk.brics.tajs.analysis.nativeobjects,
                                dk.brics.tajs.analysis.nativeobjects.concrete,
@@ -132,7 +133,7 @@
     <target name="compile-test" depends="compile">
         <javac srcdir="test/src" includes="**" destdir="antbuild" optimize="${optimize}" debug="${debug}"
                includeantruntime="false" source="1.8">
-            <classpath refid="classpath"/>
+            <classpath refid="classpath.test"/>
             <compilerarg line="-encoding ISO-8859-1" compiler="modern"/>
             <compilerarg line="-Xlint -Xlint:-serial -Xlint:-path" compiler="modern"/>
         </javac>
@@ -141,14 +142,6 @@
     <target name="test" depends="compile-test">
         <junit fork="true" printsummary="yes" showoutput="yes" haltonfailure="no" haltonerror="no" maxmemory="2048m">
             <classpath refid="classpath.test" />
-            <test name="dk.brics.tajs.test.RunFast"/>
-        </junit>
-    </target>
-
-    <target name="test-travis" depends="compile-test">
-        <junit fork="true" printsummary="yes" showoutput="yes" haltonfailure="yes" maxmemory="2048m">
-            <classpath refid="classpath.test"/>
-            <formatter type="brief" usefile="false"/>
             <test name="dk.brics.tajs.test.RunFast"/>
         </junit>
     </target>
@@ -167,7 +160,7 @@
     </target>
 
     <target name="publish" depends="all">
-        <fail message="property 'public' should be set in resources/local-development.properties">
+        <fail message="property 'public' should be set in local-development.properties">
             <condition>
                 <not>
                     <isset property="public" />
@@ -205,14 +198,14 @@
                 </not>
             </condition>
         </fail>
-        <fail message="property 'dot' should be set in resources/local-development.properties">
+        <fail message="property 'dot' should be set in local-development.properties">
             <condition>
                 <not>
                     <isset property="dot" />
                 </not>
             </condition>
         </fail>
-        <fail message="property 'imgviewer' should be set in resources/local-development.properties">
+        <fail message="property 'imgviewer' should be set in local-development.properties">
             <condition>
                 <not>
                     <isset property="imgviewer" />
@@ -257,7 +250,7 @@
                 </not>
             </condition>
         </fail>
-        <fail message="property 'dot' should be set in resources/local-development.properties">
+        <fail message="property 'dot' should be set in local-development.properties">
             <condition>
                 <not>
                     <isset property="dot" />

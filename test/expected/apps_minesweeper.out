@@ -1,5 +1,5 @@
-StartTag select at (r137,c1,p2405) has missing whitespace after quoted attribute value at position (r137,c81,p2485)
-StartTag select at (r137,c1,p2405) contains a '/' character before the closing '>', which is ignored because tags of this name cannot be empty-element tags
+test/apps/minesweeper/minesweeper.html: StartTag select at (r137,c1,p2540) has missing whitespace after quoted attribute value at position (r137,c81,p2620)
+test/apps/minesweeper/minesweeper.html: StartTag select at (r137,c1,p2540) contains a '/' character before the closing '>', which is ignored because tags of this name cannot be empty-element tags
 test/apps/minesweeper/minesweeper.html:185:7: [definite] The conditional expression is always false
 test/apps/minesweeper/minesweeper.html:506:10: [definite] The conditional expression is always true
 test/apps/minesweeper/minesweeper.html:509:10: [definite] The conditional expression is always true
@@ -25,56 +25,46 @@ test/apps/minesweeper/minesweeper.html:393:20: [definite] Unreachable function
 test/apps/minesweeper/minesweeper.html:439:20: [definite] Unreachable function
 test/apps/minesweeper/minesweeper.html:445:19: [definite] Unreachable function
 test/apps/minesweeper/minesweeper.html:466:17: [definite] Unreachable function
+test/apps/minesweeper/minesweeper.html:232:5: [maybe] TypeError, accessing property of null/undefined
+test/apps/minesweeper/minesweeper.html:237:5: [maybe] TypeError, accessing property of null/undefined
+test/apps/minesweeper/minesweeper.html:256:7: [maybe] TypeError, accessing property of null/undefined
+test/apps/minesweeper/minesweeper.html:263:5: [maybe] TypeError, accessing property of null/undefined
+test/apps/minesweeper/minesweeper.html:263:5: [maybe] TypeError, non-function event handler
+test/apps/minesweeper/minesweeper.html:269:5: [maybe] TypeError, accessing property of null/undefined
+test/apps/minesweeper/minesweeper.html:269:5: [maybe] TypeError, non-function event handler
+test/apps/minesweeper/minesweeper.html:273:14: [maybe] TypeError, accessing property of null/undefined
 test/apps/minesweeper/minesweeper.html:322:9: [maybe] TypeError, accessing property of null/undefined
 test/apps/minesweeper/minesweeper.html:341:5: [maybe] TypeError, accessing property of null/undefined
-test/apps/minesweeper/minesweeper.html:341:5: [maybe] TypeError, accessing property of null/undefined
 test/apps/minesweeper/minesweeper.html:347:14: [maybe] TypeError, accessing property of null/undefined
-test/apps/minesweeper/minesweeper.html:347:14: [maybe] TypeError, accessing property of null/undefined
+test/apps/minesweeper/minesweeper.html:368:5: [maybe] TypeError, accessing property of null/undefined
+test/apps/minesweeper/minesweeper.html:376:5: [maybe] TypeError, accessing property of null/undefined
 test/apps/minesweeper/minesweeper.html:420:5: [maybe] TypeError, accessing property of null/undefined
 test/apps/minesweeper/minesweeper.html:421:5: [maybe] TypeError, accessing property of null/undefined
-test/apps/minesweeper/minesweeper.html:421:5: [maybe] TypeError, accessing property of null/undefined
-test/apps/minesweeper/minesweeper.html:421:5: [maybe] TypeError, accessing property of null/undefined
-test/apps/minesweeper/minesweeper.html:424:13: [maybe] TypeError, accessing property of null/undefined
-test/apps/minesweeper/minesweeper.html:424:13: [maybe] TypeError, accessing property of null/undefined
 test/apps/minesweeper/minesweeper.html:424:13: [maybe] TypeError, accessing property of null/undefined
 test/apps/minesweeper/minesweeper.html:458:11: [maybe] TypeError, accessing property of null/undefined
 test/apps/minesweeper/minesweeper.html:464:20: [maybe] TypeError, accessing property of null/undefined
-test/apps/minesweeper/minesweeper.html:464:20: [maybe] TypeError, accessing property of null/undefined
-test/apps/minesweeper/minesweeper.html:464:20: [maybe] TypeError, accessing property of null/undefined
 test/apps/minesweeper/minesweeper.html:470:23: [maybe] TypeError, accessing property of null/undefined
-test/apps/minesweeper/minesweeper.html:470:23: [maybe] TypeError, accessing property of null/undefined
-test/apps/minesweeper/minesweeper.html:470:23: [maybe] TypeError, accessing property of null/undefined
-test/apps/minesweeper/minesweeper.html:473:23: [maybe] TypeError, accessing property of null/undefined
-test/apps/minesweeper/minesweeper.html:473:23: [maybe] TypeError, accessing property of null/undefined
 test/apps/minesweeper/minesweeper.html:473:23: [maybe] TypeError, accessing property of null/undefined
 test/apps/minesweeper/minesweeper.html:188:27: [maybe] Reading absent property mRow
 test/apps/minesweeper/minesweeper.html:188:37: [maybe] Reading absent property mCol
+test/apps/minesweeper/minesweeper.html:273:14: [maybe] Reading absent property value
 test/apps/minesweeper/minesweeper.html:477:12: [maybe] Reading absent property className
-test/apps/minesweeper/minesweeper.html: [maybe] Uncaught exception, constructed at [test/apps/minesweeper/minesweeper.html:322:9, test/apps/minesweeper/minesweeper.html:341:5, test/apps/minesweeper/minesweeper.html:347:14, test/apps/minesweeper/minesweeper.html:420:5, test/apps/minesweeper/minesweeper.html:421:5, test/apps/minesweeper/minesweeper.html:424:13, test/apps/minesweeper/minesweeper.html:458:11, test/apps/minesweeper/minesweeper.html:464:20, test/apps/minesweeper/minesweeper.html:470:23, test/apps/minesweeper/minesweeper.html:473:23]
-test/apps/minesweeper/minesweeper.html:257:3: [maybe] Conversion to number yields NaN
+test/apps/minesweeper/minesweeper.html: [maybe] Uncaught exception, constructed at [test/apps/minesweeper/minesweeper.html:232:5, test/apps/minesweeper/minesweeper.html:237:5, test/apps/minesweeper/minesweeper.html:256:7, test/apps/minesweeper/minesweeper.html:263:5, test/apps/minesweeper/minesweeper.html:269:5, test/apps/minesweeper/minesweeper.html:273:14, test/apps/minesweeper/minesweeper.html:322:9, test/apps/minesweeper/minesweeper.html:341:5, test/apps/minesweeper/minesweeper.html:347:14, test/apps/minesweeper/minesweeper.html:368:5, test/apps/minesweeper/minesweeper.html:376:5, test/apps/minesweeper/minesweeper.html:420:5, test/apps/minesweeper/minesweeper.html:421:5, test/apps/minesweeper/minesweeper.html:424:13, test/apps/minesweeper/minesweeper.html:458:11, test/apps/minesweeper/minesweeper.html:464:20, test/apps/minesweeper/minesweeper.html:470:23, test/apps/minesweeper/minesweeper.html:473:23]
 test/apps/minesweeper/minesweeper.html:257:3: [maybe] Converting object to string
 test/apps/minesweeper/minesweeper.html:257:3: [maybe] Converting primitive string to object
 test/apps/minesweeper/minesweeper.html:257:18: [maybe] Converting primitive string to object
-test/apps/minesweeper/minesweeper.html:257:43: [maybe] Conversion to number yields NaN
 test/apps/minesweeper/minesweeper.html:257:43: [maybe] Converting object to string
 test/apps/minesweeper/minesweeper.html:257:43: [maybe] Converting primitive string to object
 test/apps/minesweeper/minesweeper.html:257:58: [maybe] Converting primitive string to object
 test/apps/minesweeper/minesweeper.html:322:9: [maybe] Reading absent property (computed name)
 test/apps/minesweeper/minesweeper.html:341:5: [maybe] Reading absent property (computed name)
-test/apps/minesweeper/minesweeper.html:341:5: [maybe] Reading absent property (computed name)
 test/apps/minesweeper/minesweeper.html:347:11: [maybe] Conversion from string to number yields NaN
 test/apps/minesweeper/minesweeper.html:347:14: [maybe] Reading absent property (computed name)
-test/apps/minesweeper/minesweeper.html:347:14: [maybe] Reading absent property (computed name)
 test/apps/minesweeper/minesweeper.html:421:5: [maybe] Reading absent property (computed name)
-test/apps/minesweeper/minesweeper.html:421:5: [maybe] Reading absent property (computed name)
-test/apps/minesweeper/minesweeper.html:424:13: [maybe] Reading absent property (computed name)
 test/apps/minesweeper/minesweeper.html:424:13: [maybe] Reading absent property (computed name)
 test/apps/minesweeper/minesweeper.html:464:13: [maybe] Conversion from string to number yields NaN
 test/apps/minesweeper/minesweeper.html:464:20: [maybe] Reading absent property (computed name)
-test/apps/minesweeper/minesweeper.html:464:20: [maybe] Reading absent property (computed name)
 test/apps/minesweeper/minesweeper.html:470:23: [maybe] Reading absent property (computed name)
-test/apps/minesweeper/minesweeper.html:470:23: [maybe] Reading absent property (computed name)
-test/apps/minesweeper/minesweeper.html:473:23: [maybe] Reading absent property (computed name)
 test/apps/minesweeper/minesweeper.html:473:23: [maybe] Reading absent property (computed name)
 test/apps/minesweeper/minesweeper.html:483:37: [maybe] Conversion to number yields NaN
 test/apps/minesweeper/minesweeper.html:483:38: [maybe] Conversion to number yields NaN

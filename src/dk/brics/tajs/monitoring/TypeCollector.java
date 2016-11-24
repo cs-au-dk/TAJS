@@ -85,7 +85,7 @@ public class TypeCollector {
         }
     }
 
-    private Map<VariableSummary, Value> type_info_map = new LinkedHashMap<>();
+    private final Map<VariableSummary, Value> type_info_map = new LinkedHashMap<>();
 
     /**
      * Records a variable name along with its source location and abstract value.

@@ -81,6 +81,6 @@ public class HTMLBodyElement {
          */
         // No functions.
 
-        createDOMProperty(HTMLDocument.INSTANCES, "body", Value.makeObject(INSTANCES), c);
+        createDOMProperty(HTMLDocument.INSTANCES, "body", Value.makeObject(INSTANCES).joinNull(), c);
     }
 }

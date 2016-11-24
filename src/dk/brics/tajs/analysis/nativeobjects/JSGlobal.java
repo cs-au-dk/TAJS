@@ -23,16 +23,14 @@ import dk.brics.tajs.analysis.EvalCache;
 import dk.brics.tajs.analysis.FunctionCalls.CallInfo;
 import dk.brics.tajs.analysis.InitialStateBuilder;
 import dk.brics.tajs.analysis.NativeFunctions;
+import dk.brics.tajs.analysis.PropVarOperations;
 import dk.brics.tajs.analysis.Solver;
-import dk.brics.tajs.analysis.dom.DOMFunctions;
 import dk.brics.tajs.analysis.dom.ajax.ReadystateEvent;
 import dk.brics.tajs.analysis.dom.event.EventListener;
 import dk.brics.tajs.analysis.dom.event.KeyboardEvent;
 import dk.brics.tajs.analysis.dom.event.MouseEvent;
 import dk.brics.tajs.analysis.dom.event.UIEvent;
 import dk.brics.tajs.analysis.dom.event.WheelEvent;
-import dk.brics.tajs.analysis.nativeobjects.concrete.ConcreteNumber;
-import dk.brics.tajs.analysis.nativeobjects.concrete.ConcreteString;
 import dk.brics.tajs.analysis.nativeobjects.concrete.TAJSConcreteSemantics;
 import dk.brics.tajs.analysis.uneval.NormalForm;
 import dk.brics.tajs.analysis.uneval.UnevalTools;
@@ -42,8 +40,10 @@ import dk.brics.tajs.flowgraph.FlowGraphFragment;
 import dk.brics.tajs.flowgraph.Function;
 import dk.brics.tajs.flowgraph.SourceLocation;
 import dk.brics.tajs.flowgraph.jsnodes.CallNode;
+import dk.brics.tajs.flowgraph.jsnodes.EventDispatcherNode;
 import dk.brics.tajs.js2flowgraph.FlowGraphMutator;
 import dk.brics.tajs.lattice.Context;
+import dk.brics.tajs.lattice.ContextArguments;
 import dk.brics.tajs.lattice.HeapContext;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.ObjectLabel.Kind;
@@ -67,9 +67,11 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import static dk.brics.tajs.util.Collections.newMap;
 import static dk.brics.tajs.util.Collections.newSet;
 
 /**
@@ -82,7 +84,32 @@ public class JSGlobal {
     private static final Set<ECMAScriptObjects> TAJS_HOOK_FUNCTIONS = newSet();
 
     static {
-        TAJS_HOOK_FUNCTIONS.addAll(Arrays.asList(ECMAScriptObjects.TAJS_DUMPVALUE, ECMAScriptObjects.TAJS_DUMPPROTOTYPE, ECMAScriptObjects.TAJS_DUMPOBJECT, ECMAScriptObjects.TAJS_DUMPSTATE, ECMAScriptObjects.TAJS_DUMPMODIFIEDSTATE, ECMAScriptObjects.TAJS_DUMPATTRIBUTES, ECMAScriptObjects.TAJS_DUMPEXPRESSION, ECMAScriptObjects.TAJS_DUMPNF, ECMAScriptObjects.TAJS_ASSERT, ECMAScriptObjects.TAJS_CONVERSION_TO_PRIMITIVE, ECMAScriptObjects.TAJS_ADD_CONTEXT_SENSITIVITY, ECMAScriptObjects.TAJS_NEW_OBJECT, ECMAScriptObjects.TAJS_ASYNC_LISTEN));
+        TAJS_HOOK_FUNCTIONS.addAll(Arrays.asList(
+                ECMAScriptObjects.TAJS_GET_AJAX_EVENT,
+                ECMAScriptObjects.TAJS_GET_EVENT_LISTENER,
+                ECMAScriptObjects.TAJS_GET_KEYBOARD_EVENT,
+                ECMAScriptObjects.TAJS_GET_MOUSE_EVENT,
+                ECMAScriptObjects.TAJS_GET_UI_EVENT,
+                ECMAScriptObjects.TAJS_GET_WHEEL_EVENT,
+                ECMAScriptObjects.TAJS_DUMPVALUE,
+                ECMAScriptObjects.TAJS_DUMPPROTOTYPE,
+                ECMAScriptObjects.TAJS_DUMPOBJECT,
+                ECMAScriptObjects.TAJS_DUMPSTATE,
+                ECMAScriptObjects.TAJS_DUMPMODIFIEDSTATE,
+                ECMAScriptObjects.TAJS_DUMPATTRIBUTES,
+                ECMAScriptObjects.TAJS_DUMPEXPRESSION,
+                ECMAScriptObjects.TAJS_DUMPNF,
+                ECMAScriptObjects.TAJS_ASSERT,
+                ECMAScriptObjects.TAJS_CONVERSION_TO_PRIMITIVE,
+                ECMAScriptObjects.TAJS_ADD_CONTEXT_SENSITIVITY,
+                ECMAScriptObjects.TAJS_NEW_OBJECT,
+                ECMAScriptObjects.TAJS_ASYNC_LISTEN,
+                ECMAScriptObjects.TAJS_MAKE,
+                ECMAScriptObjects.TAJS_JOIN,
+                ECMAScriptObjects.TAJS_ASSERT_EQUALS,
+                ECMAScriptObjects.TAJS_MAKE_CONTEXT_SENSITIVE,
+                ECMAScriptObjects.TAJS_NEW_ARRAY
+        ));
     }
 
     public static Value removeTAJSSpecificFunctions(Value v) {
@@ -109,6 +136,7 @@ public class JSGlobal {
             return Value.makeNone();
 
         State state = c.getState();
+        PropVarOperations pv = c.getAnalysis().getPropVarOperations();
         switch (nativeobject) {
 
             case EVAL: { // 15.1.2.1
@@ -125,9 +153,15 @@ public class JSGlobal {
                 if (c.isScanning())
                     return Value.makeNone();
                 if (evalValue.isStrJSON()) {
-                    return DOMFunctions.makeAnyJSONObject(c).join(evalValue.restrictToNotStr());
+                    return JSJson.makeAnyJSONObject(c).join(evalValue.restrictToNotStr());
                 } else if (Options.get().isUnevalizerEnabled()) {
-                    CallNode evalCall = (CallNode) call.getSourceNode(); // FIXME: may not be CallNode?
+                    if (!(call.getSourceNode() instanceof CallNode)) {
+                        if (Options.get().isUnsoundEnabled() && call.getSourceNode() instanceof EventDispatcherNode) {
+                            return Value.makeUndef();
+                        }
+                        throw new AnalysisLimitationException.AnalysisModelLimitationException(call.getSourceNode().getSourceLocation() + ": Invoking eval from non-CallNode - unevalizer can't handle that"); // TODO: 'eval' invoked via implicit toString/valueOf coercion? in that case, just return 'undefined'
+                    }
+                    CallNode evalCall = (CallNode) call.getSourceNode();
                     FlowGraph currentFg = c.getFlowGraph();
                     boolean ignoreResult = evalCall.getResultRegister() == AbstractNode.NO_VALUE;
                     String var = ignoreResult ? null : UnevalTools.gensym(); // Do we need the value of the eval call after?
@@ -144,7 +178,7 @@ public class JSGlobal {
                     // of the Unevalizer to the key in the cache. This makes us Uneval more things, but we save the work
                     // of re-extending the flow graph every time.
                     boolean aliased_call = !"eval".equals(UnevalTools.get_call_name(currentFg, evalCall)); // TODO: aliased_call should also affect the execution context?
-                    String unevaled = new Unevalizer().uneval(UnevalTools.unevalizerCallback(currentFg, c, evalCall, input), input.getNormalForm(), aliased_call, var, call.getSourceNode(), c);
+                    String unevaled = new Unevalizer().uneval(UnevalTools.unevalizerCallback(currentFg, c, evalCall, input, true), input.getNormalForm(), aliased_call, var, call.getSourceNode(), c);
 
                     if (unevaled == null)
                         return UnevalizerLimitations.handle("Unevalable eval: " + UnevalTools.rebuildFullExpression(currentFg, evalCall, evalCall.getArgRegister(0)), call.getSourceNode(), c);
@@ -176,20 +210,20 @@ public class JSGlobal {
                     }
                     return Value.makeNone();
                 } else {
-                    throw new AnalysisLimitationException(call.getJSSourceNode(), "eval of non JSONStr not supported, and unevalizer is not enabled");
+                    throw new AnalysisLimitationException.AnalysisPrecisionLimitationException(call.getJSSourceNode().getSourceLocation() + ": eval of non JSONStr not supported, and unevalizer is not enabled");
                 }
             }
             case PARSEINT: { // 15.1.2.2
                 NativeFunctions.expectParameters(nativeobject, call, c, 1, 2);
                 Conversion.toString(NativeFunctions.readParameter(call, state, 0), c);
                 Conversion.toString(NativeFunctions.readParameter(call, state, 1).restrictToNotUndef() /* implementation coercion of undefined -> 0 */, c);
-                return TAJSConcreteSemantics.convertTAJSCall(Value.makeUndef(), nativeobject.toString(), 2, ConcreteNumber.class, state, call, c, Value.makeAnyNumUInt().joinNumNaN());
+                return TAJSConcreteSemantics.convertTAJSCall(Value.makeUndef(), nativeobject.toString(), 2, call, c, Value.makeAnyNumUInt().joinNumNaN());
             }
 
             case PARSEFLOAT: { // 15.1.2.3
                 NativeFunctions.expectParameters(nativeobject, call, c, 1, 1);
                 Conversion.toString(NativeFunctions.readParameter(call, state, 0), c);
-                return TAJSConcreteSemantics.convertTAJSCall(Value.makeUndef(), nativeobject.toString(), 1, ConcreteNumber.class, state, call, c, Value.makeAnyNum());
+                return TAJSConcreteSemantics.convertTAJSCall(Value.makeUndef(), nativeobject.toString(), 1, call, c, Value.makeAnyNum());
             }
 
             case ISNAN: { // 15.1.2.4
@@ -229,13 +263,12 @@ public class JSGlobal {
             case UNESCAPE: { // B.2.2
                 NativeFunctions.expectParameters(nativeobject, call, c, 1, 1);
                 Conversion.toString(NativeFunctions.readParameter(call, state, 0), c);
-                return TAJSConcreteSemantics.convertTAJSCall(Value.makeUndef(), nativeobject.toString(), 1, ConcreteString.class, state, call, c, Value.makeAnyStr());
+                return TAJSConcreteSemantics.convertTAJSCall(Value.makeUndef(), nativeobject.toString(), 1, call, c, Value.makeAnyStr());
             }
 
             case TAJS_DUMPVALUE: {
                 NativeFunctions.expectParameters(nativeobject, call, c, 1, 1);
                 Value x = NativeFunctions.readParameter(call, state, 0); // to avoid recover: call.getArg(0);
-                //System.out.println(x);
                 c.getMonitoring().addMessageInfo(c.getNode(), Severity.HIGH, "Abstract value: " + x.restrictToNotModified() /*+ " (context: " + c.getCurrentContext() + ")"*/);
                 return Value.makeUndef();
             }
@@ -386,16 +419,20 @@ public class JSGlobal {
                 return Value.makeUndef();
             }
 
+            case TAJS_MAKE_CONTEXT_SENSITIVE: {
+                throw new AnalysisException("TAJS_makeContextSensitive not yet supported!");
+            }
+
             case TAJS_NEW_OBJECT: {
-                ObjectLabel objlabel = new ObjectLabel(call.getSourceNode(), Kind.OBJECT,
-                        HeapContext.make(state.getContext().getFunArgs(), null));
-                state.newObject(objlabel);
-                state.writeInternalPrototype(objlabel, Value.makeObject(InitialStateBuilder.OBJECT_PROTOTYPE));
-                return Value.makeObject(objlabel);
+                return newInstanceForContext(Kind.OBJECT, InitialStateBuilder.OBJECT_PROTOTYPE, state, call);
+            }
+
+            case TAJS_NEW_ARRAY: {
+                return newInstanceForContext(Kind.ARRAY, InitialStateBuilder.ARRAY_PROTOTYPE, state, call);
             }
 
             case TAJS_ASYNC_LISTEN: {
-                AsyncEvents.get().listen(call.getSourceNode(), NativeFunctions.readParameter(call, state, 0), c);
+                AsyncEvents.listen(call.getSourceNode(), NativeFunctions.readParameter(call, state, 0), c);
                 return Value.makeUndef();
             }
             case TAJS_GET_UI_EVENT: {
@@ -425,9 +462,101 @@ public class JSGlobal {
             case TAJS_ASSERT: {
                 return tajsValueAssert(nativeobject, call, state, c);
             }
+
+            case TAJS_MAKE: {
+                return tajsMake(nativeobject, call, state, c);
+            }
+
+            case TAJS_JOIN: {
+                NativeFunctions.expectParameters(nativeobject, call, c, 0, -1);
+                final Set<Value> values = newSet();
+                for (int i = 0; i < call.getNumberOfArgs(); i++) {
+                    values.add(NativeFunctions.readParameter(call, state, i));
+                }
+                return Value.join(values);
+            }
+
+            case TAJS_ASSERT_EQUALS: {
+                NativeFunctions.expectParameters(nativeobject, call, c, 2, 3);
+                Value expected = NativeFunctions.readParameter(call, state, 0);
+                Value actual = NativeFunctions.readParameter(call, state, 1);
+                boolean expectedResult;
+                if (call.isUnknownNumberOfArgs() || call.getNumberOfArgs() < 2 || call.getNumberOfArgs() > 3) {
+                    throw new AnalysisException(call.getJSSourceNode().getSourceLocation() + ": " + String.format("Unexpected number of arguments to %s", nativeobject));
+                }
+                if (call.getNumberOfArgs() == 3) {
+                    Value expectedResultValue = NativeFunctions.readParameter(call, state, 2);
+                    if (expectedResultValue.isMaybeOtherThanBool() || expectedResultValue.isMaybeAnyBool()) {
+                        throw new AnalysisException(call.getJSSourceNode().getSourceLocation() + ": " + String.format("Invalid expectedResult-argument: `%s` to %s", expectedResultValue.toString(), nativeobject));
+                    }
+                    expectedResult = expectedResultValue.isMaybeTrueButNotFalse();
+                } else {
+                    expectedResult = true;
+                }
+                if (expected.equals(actual) != expectedResult) {
+                    String reason;
+                    if (expectedResult) {
+                        reason = String.format("Expected=%s, Actual=%s", expected, actual);
+                    } else {
+                        reason = String.format("Got the unexpected value: %s", expected);
+                    }
+                    throw new AssertionError(String.format("Assertion failed. %s (at %s)", reason, call.getJSSourceNode().getSourceLocation()));
+                }
+                return Value.makeUndef();
+            }
+
             default:
                 return null;
         }
+    }
+
+    private static Value tajsMake(ECMAScriptObjects nativeobject, CallInfo call, State state, Solver.SolverInterface c) {
+        Value methodNameSuffix = NativeFunctions.readParameter(call, state, 0);
+        AbstractNode callNode = call.getJSSourceNode();
+        if (!methodNameSuffix.isMaybeSingleStr()) {
+            throw new AnalysisException(callNode.getSourceLocation() + ": " + String.format("Call to %s failed. Method name suffix '%s' is not a single string!", nativeobject, methodNameSuffix));
+        }
+        return reflectiveMake(methodNameSuffix.getStr(), nativeobject, callNode.getSourceLocation());
+    }
+
+    private static Value reflectiveMake(String methodNameSuffix, ECMAScriptObjects nativeobject, SourceLocation sourceLocation) { // TODO: inline?
+        String methodName = "make" + methodNameSuffix;
+        try {
+            Method method = Value.class.getMethod(methodName);
+            return (Value) method.invoke(null);
+        } catch (NoSuchMethodException | SecurityException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+            throw new AnalysisException(sourceLocation + ": " + String.format("Call to %s failed (%s). Method '%s' is not a zero-argument static method on the Value class!", nativeobject.toString(), e.getClass().getSimpleName(), methodName));
+        }
+    }
+
+    /**
+     * Instantiates a new object which inherits (parts of) the current calling context.
+     */
+    public static Value newInstanceForContext(Kind allocationKind, ObjectLabel prototype, State state, CallInfo call) {
+        ContextArguments funArgs = state.getContext().getFunArgs();
+        // crude guard against infinite allocations due to recursion:
+        // if the current receiver is using this allocation site already, then we do not nest the context further
+        // (infinite recursive allocations should be guarded elsewhere)
+        Set<ObjectLabel> callContextReceivers = newSet();
+        if (funArgs.getSelectedClosureVariables() != null) {
+            callContextReceivers.addAll(funArgs.getSelectedClosureVariables().getOrDefault("this", Value.makeNone()).getObjectLabels());
+        }
+        if (state.getContext().getThisVal() != null) {
+            callContextReceivers.addAll(state.getContext().getThisVal());
+        }
+        Set<SourceLocation> callContextReceiverAllocationSites = callContextReceivers.stream().map(l -> l.getSourceLocation()).collect(Collectors.toSet());
+        ObjectLabel objlabel;
+        SourceLocation allocationSite = call.getSourceNode().getSourceLocation();
+        if (callContextReceiverAllocationSites.contains(allocationSite)) {
+            Map<String, Value> recursiveTagger = newMap();
+            recursiveTagger.put("isRecursiveAllocation", Value.makeBool(true)); // XXX: "isRecursiveAllocation"???
+            objlabel = new ObjectLabel(call.getSourceNode(), allocationKind, HeapContext.make(null, recursiveTagger));
+        } else {
+            objlabel = new ObjectLabel(call.getSourceNode(), allocationKind, HeapContext.make(funArgs, null));
+        }
+        state.newObject(objlabel);
+        state.writeInternalPrototype(objlabel, Value.makeObject(prototype));
+        return Value.makeObject(objlabel);
     }
 
     /**

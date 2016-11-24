@@ -1,6 +1,7 @@
 test/10k/gravity.html:62:9: [definite] Dead assignment, property is never read
 test/10k/gravity.html:204:13: [definite] Dead assignment, property is never read
 test/10k/gravity.html:218:13: [definite] Too few parameters to function Window.location.reload
+test/10k/gravity.html:35:5: [maybe] TypeError, accessing property of null/undefined
 test/10k/gravity.html:45:9: [maybe] ReferenceError, reading absent variable ctx
 test/10k/gravity.html:62:45: [maybe] TypeError, accessing property of null/undefined
 test/10k/gravity.html:62:60: [maybe] TypeError, accessing property of null/undefined
@@ -34,10 +35,9 @@ test/10k/gravity.html:204:79: [maybe] TypeError, accessing property of null/unde
 test/10k/gravity.html:66:5: [maybe] Reading absent property body
 test/10k/gravity.html:67:14: [maybe] Reading absent property motion
 test/10k/gravity.html:97:5: [maybe] Reading absent property body
-test/10k/gravity.html:97:5: [maybe] Reading absent property onmousemove
 test/10k/gravity.html:102:5: [maybe] Reading absent property body
 test/10k/gravity.html:104:14: [maybe] Reading absent property motion
-test/10k/gravity.html: [maybe] Uncaught exception, constructed at [test/10k/gravity.html:45:9, test/10k/gravity.html:62:45, test/10k/gravity.html:62:60, test/10k/gravity.html:62:75, test/10k/gravity.html:66:5, test/10k/gravity.html:68:13, test/10k/gravity.html:76:24, test/10k/gravity.html:76:39, test/10k/gravity.html:76:54, test/10k/gravity.html:77:24, test/10k/gravity.html:77:39, test/10k/gravity.html:97:5, test/10k/gravity.html:102:5, test/10k/gravity.html:141:22, test/10k/gravity.html:142:22, test/10k/gravity.html:148:9, test/10k/gravity.html:150:37, test/10k/gravity.html:151:43, test/10k/gravity.html:160:9, test/10k/gravity.html:162:36, test/10k/gravity.html:172:20, test/10k/gravity.html:172:35, test/10k/gravity.html:172:50, test/10k/gravity.html:173:20, test/10k/gravity.html:173:35, test/10k/gravity.html:188:24, test/10k/gravity.html:204:49, test/10k/gravity.html:204:64, test/10k/gravity.html:204:79]
+test/10k/gravity.html: [maybe] Uncaught exception, constructed at [test/10k/gravity.html:35:5, test/10k/gravity.html:45:9, test/10k/gravity.html:62:45, test/10k/gravity.html:62:60, test/10k/gravity.html:62:75, test/10k/gravity.html:66:5, test/10k/gravity.html:68:13, test/10k/gravity.html:76:24, test/10k/gravity.html:76:39, test/10k/gravity.html:76:54, test/10k/gravity.html:77:24, test/10k/gravity.html:77:39, test/10k/gravity.html:97:5, test/10k/gravity.html:102:5, test/10k/gravity.html:141:22, test/10k/gravity.html:142:22, test/10k/gravity.html:148:9, test/10k/gravity.html:150:37, test/10k/gravity.html:151:43, test/10k/gravity.html:160:9, test/10k/gravity.html:162:36, test/10k/gravity.html:172:20, test/10k/gravity.html:172:35, test/10k/gravity.html:172:50, test/10k/gravity.html:173:20, test/10k/gravity.html:173:35, test/10k/gravity.html:188:24, test/10k/gravity.html:204:49, test/10k/gravity.html:204:64, test/10k/gravity.html:204:79]
 test/10k/gravity.html:62:45: [maybe] Reading absent property (computed name)
 test/10k/gravity.html:62:60: [maybe] Reading absent property (computed name)
 test/10k/gravity.html:62:75: [maybe] Reading absent property (computed name)

@@ -17,13 +17,7 @@
 package dk.brics.tajs.analysis.nativeobjects;
 
 import dk.brics.tajs.analysis.HostAPIs;
-import dk.brics.tajs.analysis.dom.DOMObjects;
 import dk.brics.tajs.lattice.HostObject;
-import dk.brics.tajs.lattice.ObjectLabel;
-import dk.brics.tajs.lattice.State;
-import dk.brics.tajs.lattice.Str;
-import dk.brics.tajs.lattice.Value;
-import dk.brics.tajs.options.Options;
 
 /**
  * Native ECMAScript object descriptors.
@@ -49,7 +43,6 @@ public enum ECMAScriptObjects implements HostObject {
     FUNCTION_TOSTRING("Function.prototype.toString"),
     FUNCTION_APPLY("Function.prototype.apply"),
     FUNCTION_CALL("Function.prototype.call"),
-    FUNCTION_BIND("Function.prototype.bind"),
 
     ARRAY("Array"),
     ARRAY_ISARRAY("Array.isArray"),
@@ -63,7 +56,6 @@ public enum ECMAScriptObjects implements HostObject {
     ARRAY_REVERSE("Array.prototype.reverse"),
     ARRAY_SHIFT("Array.prototype.shift"),
     ARRAY_SLICE("Array.prototype.slice"),
-    ARRAY_SOME("Array.prototype.some"),
     ARRAY_SORT("Array.prototype.sort"),
     ARRAY_SPLICE("Array.prototype.splice"),
     ARRAY_UNSHIFT("Array.prototype.unshift"),
@@ -244,16 +236,20 @@ public enum ECMAScriptObjects implements HostObject {
     TAJS_DUMPNF("TAJS_dumpNF"), //nonstandard
     TAJS_CONVERSION_TO_PRIMITIVE("TAJS_conversionToPrimitive"), // nonstandard
     TAJS_GET_UI_EVENT("TAJS_getUIEvent"), // nonstandard
-    TAJS_GET_DOCUMENT_EVENT("TAJS_getDocumentEvent"), // nonstandard
     TAJS_GET_MOUSE_EVENT("TAJS_getMouseEvent"), // nonstandard
     TAJS_GET_KEYBOARD_EVENT("TAJS_getKeyboardEvent"), // nonstandard
     TAJS_GET_EVENT_LISTENER("TAJS_getEventListener"), // nonstandard
     TAJS_GET_WHEEL_EVENT("TAJS_getWheelEvent"), // nonstandard
     TAJS_GET_AJAX_EVENT("TAJS_getAjaxEvent"), // nonstandard
     TAJS_ADD_CONTEXT_SENSITIVITY("TAJS_addContextSensitivity"), // nonstandard
+    TAJS_MAKE_CONTEXT_SENSITIVE("TAJS_makeContextSensitive"), // nonstandard
     TAJS_ASSERT("TAJS_assert"), //nonstandard
     TAJS_NEW_OBJECT("TAJS_newObject"),  // nonstandard
-    TAJS_ASYNC_LISTEN("TAJS_asyncListen") // nonstandard
+    TAJS_NEW_ARRAY("TAJS_newArray"),  // nonstandard
+    TAJS_ASYNC_LISTEN("TAJS_asyncListen"), // nonstandard
+    TAJS_MAKE("TAJS_make"), // nonstandard
+    TAJS_JOIN("TAJS_join"), // nonstandard
+    TAJS_ASSERT_EQUALS("TAJS_assertEquals") // nonstandard
     ;
 
     private HostAPIs api;
@@ -273,13 +269,5 @@ public enum ECMAScriptObjects implements HostObject {
     @Override
     public HostAPIs getAPI() {
         return api;
-    }
-
-    @Override
-    public void evaluateSetter(ObjectLabel objlabel, Str prop, Value value, State state) {
-        if (this == GLOBAL && Options.get().isDOMEnabled()) { // GLOBAL == window, when DOM mode is enabled, so redirect to the DOM setter model
-            DOMObjects.evaluateDOMSetter(objlabel, prop, value, state);
-        } else // not applicable for any other of these host objects
-            state.setToNone();
     }
 }

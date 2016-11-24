@@ -9,7 +9,7 @@ Abstract state:
     @Object.prototype[native] (<initial state>): {a:^(@Object.prototype[native].a[absent]),f:^(@Object.prototype[native].f[absent]),garbage:^(@Object.prototype[native].garbage[absent]),x:^(@Object.prototype[native].x[absent]),y:^(@Object.prototype[native].y[absent]),[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Prototype]]=Null,[[Value]]=?,[[Scope]]=?}
     @Object#node4 (test/micro/test161.js:1:9): {a:7.0,[[Prototype]]=[@Object.prototype[native]]}
     @Object#node3 (test/micro/test161.js:3:1): {constructor:[@f#fun1],[[Prototype]]=[@Object.prototype[native]],[[Value]]=NaN}
-    @f#fun1 (test/micro/test161.js:3:1): {length:1.0,prototype:[@Object#node3],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@<the global object>[native]]]}
+    @f#fun1 (test/micro/test161.js:3:1): {length:1.0,name:"f",prototype:[@Object#node3],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@<the global object>[native]]]}
   Registers: 
     v1=Undef
     v17=[@<the global object>[native]]

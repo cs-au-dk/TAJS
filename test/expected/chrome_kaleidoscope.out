@@ -1,4 +1,4 @@
-StartTag at (r248,c1,p7238) missing required end tag
+test/chromeexperiments/kaleidoscope.html: StartTag at (r248,c1,p7238) missing required end tag
 test/chromeexperiments/kaleidoscope.html:108:4: [definite] Too many parameters to function Math.random
 test/chromeexperiments/kaleidoscope.html:109:4: [definite] Too many parameters to function Math.random
 test/chromeexperiments/kaleidoscope.html:114:8: [definite] Too many parameters to function Math.random
@@ -21,18 +21,15 @@ test/chromeexperiments/kaleidoscope.html:71:5: [definite] The variable google_ad
 test/chromeexperiments/kaleidoscope.html:211:1: [definite] Unreachable function draw_dot
 test/chromeexperiments/kaleidoscope.html:231:6: [definite] The variable ctrl is never used
 test/chromeexperiments/kaleidoscope.html:78:2: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/kaleidoscope.html:78:2: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/kaleidoscope.html:79:2: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/kaleidoscope.html:80:2: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/kaleidoscope.html:81:2: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/kaleidoscope.html:82:2: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/kaleidoscope.html:83:2: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/kaleidoscope.html:85:2: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/kaleidoscope.html:85:2: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/kaleidoscope.html:86:2: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/kaleidoscope.html:87:2: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/kaleidoscope.html:90:10: [maybe] TypeError, call to non-function
-test/chromeexperiments/kaleidoscope.html:92:2: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/kaleidoscope.html:92:2: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/kaleidoscope.html:93:2: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/kaleidoscope.html:94:2: [maybe] TypeError, accessing property of null/undefined
@@ -40,7 +37,9 @@ test/chromeexperiments/kaleidoscope.html:95:2: [maybe] TypeError, accessing prop
 test/chromeexperiments/kaleidoscope.html:96:2: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/kaleidoscope.html:97:2: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/kaleidoscope.html:98:2: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/kaleidoscope.html:98:2: [maybe] TypeError, call to non-function
 test/chromeexperiments/kaleidoscope.html:99:2: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/kaleidoscope.html:99:2: [maybe] TypeError, call to non-function
 test/chromeexperiments/kaleidoscope.html:134:6: [maybe] ReferenceError, reading absent variable radius
 test/chromeexperiments/kaleidoscope.html:146:6: [maybe] ReferenceError, reading absent variable radius
 test/chromeexperiments/kaleidoscope.html:146:37: [maybe] ReferenceError, reading absent variable radius
@@ -65,6 +64,8 @@ test/chromeexperiments/kaleidoscope.html:94:2: [maybe] Reading absent property s
 test/chromeexperiments/kaleidoscope.html:95:2: [maybe] Reading absent property style
 test/chromeexperiments/kaleidoscope.html:96:2: [maybe] Reading absent property style
 test/chromeexperiments/kaleidoscope.html:97:2: [maybe] Reading absent property style
+test/chromeexperiments/kaleidoscope.html:98:2: [maybe] Reading absent property getAttribute
+test/chromeexperiments/kaleidoscope.html:99:2: [maybe] Reading absent property getAttribute
 test/chromeexperiments/kaleidoscope.html: [maybe] Uncaught exception, constructed at [test/chromeexperiments/kaleidoscope.html:78:2, test/chromeexperiments/kaleidoscope.html:79:2, test/chromeexperiments/kaleidoscope.html:80:2, test/chromeexperiments/kaleidoscope.html:81:2, test/chromeexperiments/kaleidoscope.html:82:2, test/chromeexperiments/kaleidoscope.html:83:2, test/chromeexperiments/kaleidoscope.html:85:2, test/chromeexperiments/kaleidoscope.html:86:2, test/chromeexperiments/kaleidoscope.html:87:2, test/chromeexperiments/kaleidoscope.html:90:10, test/chromeexperiments/kaleidoscope.html:92:2, test/chromeexperiments/kaleidoscope.html:93:2, test/chromeexperiments/kaleidoscope.html:94:2, test/chromeexperiments/kaleidoscope.html:95:2, test/chromeexperiments/kaleidoscope.html:96:2, test/chromeexperiments/kaleidoscope.html:97:2, test/chromeexperiments/kaleidoscope.html:98:2, test/chromeexperiments/kaleidoscope.html:99:2, test/chromeexperiments/kaleidoscope.html:134:6, test/chromeexperiments/kaleidoscope.html:146:6, test/chromeexperiments/kaleidoscope.html:146:37, test/chromeexperiments/kaleidoscope.html:146:68, test/chromeexperiments/kaleidoscope.html:147:6, test/chromeexperiments/kaleidoscope.html:147:37, test/chromeexperiments/kaleidoscope.html:147:68, test/chromeexperiments/kaleidoscope.html:152:2]
 test/chromeexperiments/kaleidoscope.html:37:15: [maybe] The variable w has values with different types
 test/chromeexperiments/kaleidoscope.html:37:17: [maybe] The variable h has values with different types

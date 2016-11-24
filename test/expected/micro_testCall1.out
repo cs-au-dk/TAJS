@@ -32,10 +32,10 @@ Abstract state:
     @Math[native] (<initial state>): {random:^(@Math[native].random[present]),[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Prototype]]=?,[[Value]]=?,[[Scope]]=?}
     @Object.prototype[native] (<initial state>): {m:^(@Object.prototype[native].m[absent]),x:^(@Object.prototype[native].x[absent]),x1:^(@Object.prototype[native].x1[absent]),x2:^(@Object.prototype[native].x2[absent]),y:^(@Object.prototype[native].y[absent]),[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Prototype]]=Null,[[Value]]=?,[[Scope]]=?}
     @Object#node5 (test/micro/testCall1.js:1:10): {m:[@<anonymous>#fun1],[[Prototype]]=[@Object.prototype[native]]}
-    @<anonymous>#fun1 (test/micro/testCall1.js:1:15): {length:1.0,prototype:[@Object#node6],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@<the global object>[native]]]}
+    @<anonymous>#fun1 (test/micro/testCall1.js:1:15): {length:1.0,name:"",prototype:[@Object#node6],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@<the global object>[native]]]}
     @Object#node6 (test/micro/testCall1.js:1:15): {constructor:[@<anonymous>#fun1],[[Prototype]]=[@Object.prototype[native]],[[Value]]=NaN}
     @Object#node9 (test/micro/testCall1.js:6:10): {m:[@<anonymous>#fun2],[[Prototype]]=[@Object.prototype[native]]}
-    @<anonymous>#fun2 (test/micro/testCall1.js:6:15): {length:1.0,prototype:[@Object#node10],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@<the global object>[native]]]}
+    @<anonymous>#fun2 (test/micro/testCall1.js:6:15): {length:1.0,name:"",prototype:[@Object#node10],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@<the global object>[native]]]}
     @Object#node10 (test/micro/testCall1.js:6:15): {constructor:[@<anonymous>#fun2],[[Prototype]]=[@Object.prototype[native]],[[Value]]=NaN}
   Registers: 
     v1=Undef

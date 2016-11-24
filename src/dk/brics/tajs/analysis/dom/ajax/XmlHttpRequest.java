@@ -69,11 +69,13 @@ public class XmlHttpRequest {
         /*
          * Constants.
          */
-        createDOMProperty(PROTOTYPE, "UNSENT", Value.makeNum(0), c);
-        createDOMProperty(PROTOTYPE, "OPENED", Value.makeNum(1), c);
-        createDOMProperty(PROTOTYPE, "HEADERS_RECEIVED", Value.makeNum(2), c);
-        createDOMProperty(PROTOTYPE, "LOADING", Value.makeNum(3), c);
-        createDOMProperty(PROTOTYPE, "DONE", Value.makeNum(4), c);
+        for(ObjectLabel WHERE : new ObjectLabel[]{PROTOTYPE, CONSTRUCTOR}) {
+            createDOMProperty(WHERE, "UNSENT", Value.makeNum(0), c);
+            createDOMProperty(WHERE, "OPENED", Value.makeNum(1), c);
+            createDOMProperty(WHERE, "HEADERS_RECEIVED", Value.makeNum(2), c);
+            createDOMProperty(WHERE, "LOADING", Value.makeNum(3), c);
+            createDOMProperty(WHERE, "DONE", Value.makeNum(4), c);
+        }
 
         /*
          * Properties.
@@ -102,6 +104,7 @@ public class XmlHttpRequest {
         // Multiply object
         s.multiplyObject(INSTANCES);
         INSTANCES = INSTANCES.makeSingleton().makeSummary();
+        createDOMProperty(INSTANCES, "withCredentials", Value.makeAnyBool().setReadOnly(), c);
     }
 
     /*

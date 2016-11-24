@@ -4,7 +4,6 @@ package dk.brics.tajs.test;
 
 import dk.brics.tajs.Main;
 import dk.brics.tajs.options.Options;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -86,12 +85,11 @@ public class TestWala {
 		Misc.checkSystemOutput();
 	}
 
-	@Test(expected = AssertionError.class /* bizarre use of DOM */)
+	@Test
 	public void wala_portal_example_simple() throws Exception {
 		Misc.init();
 		String[] args = {"test/wala/portal-example-simple.html"};
 		Misc.run(args);
-		Assert.fail();
 	}
 
 	@Test

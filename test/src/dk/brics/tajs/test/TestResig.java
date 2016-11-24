@@ -4,8 +4,8 @@ import dk.brics.tajs.Main;
 import dk.brics.tajs.monitoring.CompositeMonitoring;
 import dk.brics.tajs.monitoring.IAnalysisMonitoring;
 import dk.brics.tajs.monitoring.Monitoring;
+import dk.brics.tajs.monitoring.OrdinaryExitReachableChecker;
 import dk.brics.tajs.options.Options;
-import dk.brics.tajs.test.monitors.OrdinaryExitReachableCheckerMonitor;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -22,8 +22,8 @@ public class TestResig {
 	public void init() {
 		Main.reset();
 		Options.get().enableTest();
-		monitoring = CompositeMonitoring.buildFromList(new Monitoring(), new OrdinaryExitReachableCheckerMonitor());
-	}
+        monitoring = CompositeMonitoring.buildFromList(new Monitoring(), new OrdinaryExitReachableChecker());
+    }
 
 	@Test
 	public void resig_ejohn12() throws Exception { 
@@ -256,6 +256,15 @@ public class TestResig {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/resig/ejohn45.js"};
+		Misc.run(args, monitoring);
+		Misc.checkSystemOutput();
+	}
+
+	@Test
+	public void resig_ejohn45_bug() throws Exception {
+		Misc.init();
+		Misc.captureSystemOutput();
+		String[] args = {"test/resig/ejohn45-bug.js"};
 		Misc.run(args, monitoring);
 		Misc.checkSystemOutput();
 	}

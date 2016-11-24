@@ -39,9 +39,9 @@ import static dk.brics.tajs.analysis.dom.DOMFunctions.createDOMProperty;
  */
 public class DOMException {
 
-    public static final ObjectLabel DOMEXCEPTION = new ObjectLabel(DOMObjects.DOMEXCEPTION, Kind.OBJECT);
+    private static ObjectLabel DOMEXCEPTION;
 
-    public static final ObjectLabel DOMEXCEPTION_PROTOTYPE = new ObjectLabel(DOMObjects.DOMEXCEPTION_PROTOTYPE, Kind.OBJECT);
+    private static ObjectLabel DOMEXCEPTION_PROTOTYPE;
 
     /**
      * Creates a DOMException.
@@ -56,6 +56,9 @@ public class DOMException {
     }
 
     public static void build(Solver.SolverInterface c) {
+        DOMEXCEPTION = new ObjectLabel(DOMObjects.DOMEXCEPTION, Kind.OBJECT);
+        DOMEXCEPTION_PROTOTYPE = new ObjectLabel(DOMObjects.DOMEXCEPTION_PROTOTYPE, Kind.OBJECT);
+
         State s = c.getState();
         PropVarOperations pv = c.getAnalysis().getPropVarOperations();
         s.newObject(DOMEXCEPTION_PROTOTYPE);

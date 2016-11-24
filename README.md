@@ -31,7 +31,7 @@ Some of the available options (run TAJS without arguments to see the full list):
 
 - `-callgraph` - output call graph as text and in a file `out/callgraph.dot` (process with [Graphviz dot](http://www.graphviz.org/))
 
-- `-collect-variable-info` - output type and line information about all variables
+- `-show-variable-info` - output type and line information about all variables
 
 - `-debug` - output extensive internal information during the analysis
 
@@ -69,8 +69,8 @@ TAJS recognizes a few special built-in functions (defined as properties of the g
 Running regression tests
 ------------------------
 
-The directory `test` contains a collection of tests that can be executed by running `dk.brics.tajs.test.RunFast` with JUnit from Eclipse/IntelliJ or with `ant test` from the command-line. 
-(A more thorough but slower test is located in `dk.brics.tajs.test.RunAll`.)
+The directory `test` contains a collection of tests that can be executed by running [dk.brics.tajs.test.RunFast](test/src/dk/brics/tajs/test/RunFast.java) with JUnit from Eclipse/IntelliJ or with `ant test` from the command-line. 
+(A more thorough but slower test located in [dk.brics.tajs.test.RunAll](test/src/dk/brics/tajs/test/RunAll.java) can be run with `ant test-all`.)
 
 Soundiness
 ----------

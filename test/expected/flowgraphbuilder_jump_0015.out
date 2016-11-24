@@ -5,7 +5,7 @@ fg2: <main> function()
     ->[block 1]
   block 1:
     node 2: constant[true,v2] (test/flowgraphbuilder/flowgraph_builder_jump_0015.js:1:9)
-    node 3: write-variable[v2,'p']* (test/flowgraphbuilder/flowgraph_builder_jump_0015.js:1:9)
+    node 3: write-variable[v2,'p']* (test/flowgraphbuilder/flowgraph_builder_jump_0015.js:1:5)
     node 4: new[v3] (test/flowgraphbuilder/flowgraph_builder_jump_0015.js:2:6)
     node 5: constant[false,v4] (test/flowgraphbuilder/flowgraph_builder_jump_0015.js:2:10)
     node 6: write-property[v3,'p',v4] (test/flowgraphbuilder/flowgraph_builder_jump_0015.js:2:7)

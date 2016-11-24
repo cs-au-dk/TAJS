@@ -45,7 +45,7 @@ fg2: <main> function()
     node 26: call[v28,'random',v26] (test/flowgraphbuilder/flowgraph_builder0188.js:5:13)
     ->[block 9]
   block 9:
-    node 27: write-variable[v26,'r']* (test/flowgraphbuilder/flowgraph_builder0188.js:5:13)
+    node 27: write-variable[v26,'r']* (test/flowgraphbuilder/flowgraph_builder0188.js:5:9)
     node 28: read-variable['z',v30,-] (test/flowgraphbuilder/flowgraph_builder0188.js:6:8)
     node 29: constant[0.1,v31] (test/flowgraphbuilder/flowgraph_builder0188.js:6:12)
     node 30: >[v30,v31,v29] (test/flowgraphbuilder/flowgraph_builder0188.js:6:8)

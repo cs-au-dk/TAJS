@@ -6,7 +6,7 @@ fg2: <main> function()
     ->[block 1]
   block 1:
     node 3: function-expr[function f(x),v2] (test/flowgraphbuilder/flowgraph_builder0121.js:1:11)
-    node 4: write-variable[v2,'fib']* (test/flowgraphbuilder/flowgraph_builder0121.js:1:11)
+    node 4: write-variable[v2,'fib']* (test/flowgraphbuilder/flowgraph_builder0121.js:1:5)
     node 5: read-variable['fib',v5,v4] (test/flowgraphbuilder/flowgraph_builder0121.js:9:9)
     node 6: constant[3.0,v6] (test/flowgraphbuilder/flowgraph_builder0121.js:9:13)
     ->[block 2]
@@ -14,7 +14,7 @@ fg2: <main> function()
     node 7: call[v4,v5,v6,v3] (test/flowgraphbuilder/flowgraph_builder0121.js:9:9)
     ->[block 3]
   block 3:
-    node 8: write-variable[v3,'t']* (test/flowgraphbuilder/flowgraph_builder0121.js:9:9)
+    node 8: write-variable[v3,'t']* (test/flowgraphbuilder/flowgraph_builder0121.js:9:5)
     node 9: read-variable['TAJS_dumpValue',v8,v7] (test/flowgraphbuilder/flowgraph_builder0121.js:10:1)
     node 10: read-variable['t',v9,-] (test/flowgraphbuilder/flowgraph_builder0121.js:10:16)
     ->[block 4]

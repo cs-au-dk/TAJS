@@ -1,6 +1,13 @@
-function tak(x,y) {
- if (x < 1) return y;    
- else return tak(tak(x-1,2),tak(x-1,1));
+function tak(x, y, z) {
+    if (y < x) {
+        return tak(
+            tak(x - 1, y, z),
+            tak(y - 1, z, x),
+            tak(z - 1, x, y)
+        )
+    } else {
+        return z;
+    }
 }
 
-TAJS_dumpValue(tak(1,2));
+TAJS_dumpValue(tak(30, 20, 10));

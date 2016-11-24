@@ -1,8 +1,8 @@
-var d = Date.prototype;
-Object.defineProperty(d, "year", {
+Object.defineProperty(Date.prototype, "year", {
   get: function() { return this.getFullYear() },
   set: function(y) { this.setFullYear(y) }
 });
+var d = new Date();
 
 TAJS_assert(d.year, 'isMaybeAnyNum');
 

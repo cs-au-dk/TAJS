@@ -24,7 +24,7 @@ import static dk.brics.tajs.util.Collections.newSet;
 /**
  * Functionality for renaming object labels.
  */
-public class Renaming { // XXX: Renaming and related methods in other classes are currently unused
+public class Renaming { // NOTE: Renaming and related methods in other classes are currently unused
 
     /**
      * Renames the given object label according to the map.

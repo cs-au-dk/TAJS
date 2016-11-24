@@ -4,8 +4,8 @@ import dk.brics.tajs.Main;
 import dk.brics.tajs.monitoring.CompositeMonitoring;
 import dk.brics.tajs.monitoring.IAnalysisMonitoring;
 import dk.brics.tajs.monitoring.Monitoring;
+import dk.brics.tajs.monitoring.OrdinaryExitReachableChecker;
 import dk.brics.tajs.options.Options;
-import dk.brics.tajs.test.monitors.OrdinaryExitReachableCheckerMonitor;
 import dk.brics.tajs.util.AnalysisLimitationException;
 import org.junit.Before;
 import org.junit.Test;
@@ -24,7 +24,8 @@ public class TestChromeExperiments {
         Main.reset();
         Options.get().enableTest();
         Options.get().enableIncludeDom();
-        monitoring = CompositeMonitoring.buildFromList(new Monitoring(), new OrdinaryExitReachableCheckerMonitor());
+        Options.get().enableUnevalizer();
+        monitoring = CompositeMonitoring.buildFromList(new Monitoring(), new OrdinaryExitReachableChecker());
     }
 
     @Test
@@ -45,7 +46,7 @@ public class TestChromeExperiments {
         Misc.checkSystemOutput();
     }
 
-    @Test(expected = AssertionError.class /* GitHub #219 */)
+    @Test
     public void chrome_apophis() throws Exception {
         Misc.init();
         Misc.captureSystemOutput();
@@ -63,7 +64,7 @@ public class TestChromeExperiments {
         Misc.checkSystemOutput();
     }
 
-    @Test(expected = AssertionError.class /* GitHub #219 */)
+    @Test
     public void chrome_bingbong() throws Exception {
         Misc.init();
         Misc.captureSystemOutput();
@@ -81,7 +82,7 @@ public class TestChromeExperiments {
         Misc.checkSystemOutput();
     }
 
-    @Test
+    @Test(expected = AnalysisLimitationException.SyntacticSupportNotImplemented.class)
     public void chrome_bomomo() throws Exception {
         Misc.init();
         Options.get().enableUnevalizer();
@@ -100,15 +101,15 @@ public class TestChromeExperiments {
         Misc.checkSystemOutput();
     }
 
-    @Test
-    public void chrome_browserball() throws Exception {
-        Options.get().enablePolyfillMDN();
-        Misc.init();
-        Misc.captureSystemOutput();
-        String[] args = { "test/chromeexperiments/browserball.html" };
-        Misc.run(args, monitoring);
-        Misc.checkSystemOutput();
-    }
+//    @Test
+//    public void chrome_browserball() throws Exception {
+//        Options.get().enablePolyfillMDN();
+//        Misc.init();
+//        Misc.captureSystemOutput();
+//        String[] args = { "test/chromeexperiments/browserball.html" };
+//        Misc.run(args, monitoring);
+//        Misc.checkSystemOutput();
+//    }
 
     @Test
     public void chrome_burncanvas() throws Exception {
@@ -152,15 +153,6 @@ public class TestChromeExperiments {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = { "test/chromeexperiments/harmony.html" };
-        Misc.run(args, monitoring);
-        Misc.checkSystemOutput();
-    }
-
-    @Test
-    public void chrome_jstouch_example() throws Exception {
-        Misc.init();
-        Misc.captureSystemOutput();
-        String[] args = { "test/chromeexperiments/jstouch_example.html" };
         Misc.run(args, monitoring);
         Misc.checkSystemOutput();
     }

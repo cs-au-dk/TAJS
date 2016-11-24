@@ -1,3 +1,19 @@
+/*
+ * Copyright 2009-2016 Aarhus University
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package dk.brics.tajs.analysis.nativeobjects.concrete;
 
 import dk.brics.tajs.analysis.PropVarOperations;
@@ -6,7 +22,6 @@ import dk.brics.tajs.analysis.nativeobjects.JSArray;
 import dk.brics.tajs.flowgraph.AbstractNode;
 import dk.brics.tajs.lattice.HeapContext;
 import dk.brics.tajs.lattice.ObjectLabel;
-import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.Value;
 
 import java.util.Map;
@@ -21,14 +36,11 @@ import static dk.brics.tajs.util.Collections.singleton;
 public class Alpha {
 
     public static Value createNewArrayValue(ConcreteArray array, AbstractNode sourceNode, Solver.SolverInterface c) {
-        State state = c.getState();
         PropVarOperations pv = c.getAnalysis().getPropVarOperations();
         final Map<String, Value> map = newMap();
         map.put("<CONCRETE>", Value.makeStr(array.toSourceCode()));
-        ObjectLabel label = JSArray.makeArray(sourceNode, HeapContext.make(null, map), c);
-        Value length = Value.makeNum(array.getLength());
+        ObjectLabel label = JSArray.makeArray(sourceNode, Value.makeNum(array.getLength()), HeapContext.make(null, map), c);
         Set<ObjectLabel> labels = singleton(label);
-        pv.writePropertyWithAttributes(labels, "length", length.setAttributes(true, true, false));
         array.getExtraProperties().forEach((String k, ConcreteValue v) -> pv.writeProperty(labels, Value.makeTemporaryStr(k), toValue(v), false, true));
         for (int i = 0; i < array.getLength(); i++) {
             final Value index = Value.makeStr(String.valueOf(i));

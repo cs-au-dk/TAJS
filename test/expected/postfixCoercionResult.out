@@ -1,0 +1,22 @@
+fg2: <main> function()
+  block 0: [entry]
+    node 0: constant[undefined,v1] (out/temp-sources/TestFlowgraphBuilder.postfixCoercionResult.js)
+    ->[block 1]
+  block 1:
+    node 1: read-variable['a',v2,-] (out/temp-sources/TestFlowgraphBuilder.postfixCoercionResult.js:1:5)
+    node 2: +[v2,v2] (out/temp-sources/TestFlowgraphBuilder.postfixCoercionResult.js:1:5)
+    node 3: constant[1.0,v3] (out/temp-sources/TestFlowgraphBuilder.postfixCoercionResult.js:1:5)
+    node 4: +[v2,v3,v4] (out/temp-sources/TestFlowgraphBuilder.postfixCoercionResult.js:1:5)
+    node 5: write-variable[v4,'a'] (out/temp-sources/TestFlowgraphBuilder.postfixCoercionResult.js:1:5)
+    node 6: write-variable[v2,'x']* (out/temp-sources/TestFlowgraphBuilder.postfixCoercionResult.js:1:1)
+    ->[block 2]
+  block 2: [exit-ordinary]
+    node 7: return[v1] (out/temp-sources/TestFlowgraphBuilder.postfixCoercionResult.js)
+    ->[]
+  block 3: [exit-exceptional]
+    node 8: exceptional-return (out/temp-sources/TestFlowgraphBuilder.postfixCoercionResult.js)
+    ->[]
+
+out/temp-sources/TestFlowgraphBuilder.postfixCoercionResult.js:1:5: [definite] ReferenceError, reading absent variable a
+out/temp-sources/TestFlowgraphBuilder.postfixCoercionResult.js:1:5: [definite] Unreachable code
+out/temp-sources/TestFlowgraphBuilder.postfixCoercionResult.js: [maybe] Uncaught exception, constructed at [out/temp-sources/TestFlowgraphBuilder.postfixCoercionResult.js:1:5]

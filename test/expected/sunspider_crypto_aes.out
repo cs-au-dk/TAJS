@@ -1,0 +1,150 @@
+test/sunspider/crypto-aes.js:169:3: [definite] The conditional expression is always false
+test/sunspider/crypto-aes.js:169:9: [definite] The conditional expression is always false
+test/sunspider/crypto-aes.js:235:3: [definite] The conditional expression is always false
+test/sunspider/crypto-aes.js:235:9: [definite] The conditional expression is always false
+test/sunspider/crypto-aes.js:109:29: [definite] Dead assignment, property is never read
+test/sunspider/crypto-aes.js:61:1: [definite] The variable Nb is never used
+test/sunspider/crypto-aes.js:294:5: [definite] The variable b64 is never used
+test/sunspider/crypto-aes.js:296:1: [definite] Unreachable function encodeBase64
+test/sunspider/crypto-aes.js:324:1: [definite] Unreachable function decodeBase64
+test/sunspider/crypto-aes.js:347:1: [definite] Unreachable function encodeUTF8
+test/sunspider/crypto-aes.js:350:7: [definite] Unreachable function
+test/sunspider/crypto-aes.js:356:7: [definite] Unreachable function
+test/sunspider/crypto-aes.js:363:1: [definite] Unreachable function decodeUTF8
+test/sunspider/crypto-aes.js:366:7: [definite] Unreachable function
+test/sunspider/crypto-aes.js:372:7: [definite] Unreachable function
+test/sunspider/crypto-aes.js:380:1: [definite] Unreachable function byteArrayToHexStr
+test/sunspider/crypto-aes.js:426:5: [definite] The variable decryptedText is never used
+test/sunspider/crypto-aes.js:22:30: [maybe] TypeError, accessing property of null/undefined
+test/sunspider/crypto-aes.js:38:42: [maybe] TypeError, accessing property of null/undefined
+test/sunspider/crypto-aes.js:45:30: [maybe] TypeError, accessing property of null/undefined
+test/sunspider/crypto-aes.js:45:45: [maybe] TypeError, accessing property of null/undefined
+test/sunspider/crypto-aes.js:54:36: [maybe] TypeError, accessing property of null/undefined
+test/sunspider/crypto-aes.js:55:29: [maybe] TypeError, accessing property of null/undefined
+test/sunspider/crypto-aes.js:66:14: [maybe] TypeError, accessing property of null/undefined
+test/sunspider/crypto-aes.js:67:14: [maybe] TypeError, accessing property of null/undefined
+test/sunspider/crypto-aes.js:67:29: [maybe] TypeError, accessing property of null/undefined
+test/sunspider/crypto-aes.js:67:51: [maybe] TypeError, accessing property of null/undefined
+test/sunspider/crypto-aes.js:81:30: [maybe] TypeError, accessing property of null/undefined
+test/sunspider/crypto-aes.js:81:45: [maybe] TypeError, accessing property of null/undefined
+test/sunspider/crypto-aes.js:92:11: [maybe] RangeError, invalid value of array length
+test/sunspider/crypto-aes.js:101:5: [maybe] RangeError, assigning invalid value to array 'length' property
+test/sunspider/crypto-aes.js:102:39: [maybe] TypeError, accessing property of null/undefined
+test/sunspider/crypto-aes.js:105:42: [maybe] TypeError, accessing property of null/undefined
+test/sunspider/crypto-aes.js:109:29: [maybe] TypeError, accessing property of null/undefined
+test/sunspider/crypto-aes.js:109:39: [maybe] TypeError, accessing property of null/undefined
+test/sunspider/crypto-aes.js:266:21: [maybe] TypeError, accessing property of null/undefined
+test/sunspider/crypto-aes.js:268:28: [maybe] TypeError, accessing property of null/undefined
+test/sunspider/crypto-aes.js:283:76: [maybe] TypeError, accessing property of null/undefined
+test/sunspider/crypto-aes.js:283:76: [maybe] TypeError, call to non-function
+test/sunspider/crypto-aes.js:287:10: [maybe] TypeError, accessing property of null/undefined
+test/sunspider/crypto-aes.js:287:78: [maybe] TypeError, accessing property of null/undefined
+test/sunspider/crypto-aes.js:287:78: [maybe] TypeError, call to non-function
+test/sunspider/crypto-aes.js:283:76: [maybe] Reading absent property charCodeAt
+test/sunspider/crypto-aes.js:287:78: [maybe] Reading absent property slice
+test/sunspider/crypto-aes.js: [maybe] Uncaught exception, constructed at [test/sunspider/crypto-aes.js:22:30, test/sunspider/crypto-aes.js:38:42, test/sunspider/crypto-aes.js:45:30, test/sunspider/crypto-aes.js:45:45, test/sunspider/crypto-aes.js:54:36, test/sunspider/crypto-aes.js:55:29, test/sunspider/crypto-aes.js:66:14, test/sunspider/crypto-aes.js:67:14, test/sunspider/crypto-aes.js:67:29, test/sunspider/crypto-aes.js:67:51, test/sunspider/crypto-aes.js:81:30, test/sunspider/crypto-aes.js:81:45, test/sunspider/crypto-aes.js:92:11, test/sunspider/crypto-aes.js:101:5, test/sunspider/crypto-aes.js:102:39, test/sunspider/crypto-aes.js:105:42, test/sunspider/crypto-aes.js:109:29, test/sunspider/crypto-aes.js:109:39, test/sunspider/crypto-aes.js:266:21, test/sunspider/crypto-aes.js:268:28, test/sunspider/crypto-aes.js:283:76, test/sunspider/crypto-aes.js:287:10, test/sunspider/crypto-aes.js:287:78]
+test/sunspider/crypto-aes.js:22:30: [maybe] Reading absent property (computed name)
+test/sunspider/crypto-aes.js:22:60: [maybe] Reading absent property (computed name)
+test/sunspider/crypto-aes.js:38:42: [maybe] Reading absent property (computed name)
+test/sunspider/crypto-aes.js:45:30: [maybe] Reading absent property (computed name)
+test/sunspider/crypto-aes.js:45:40: [maybe] Reading absent property (computed name)
+test/sunspider/crypto-aes.js:45:45: [maybe] Reading absent property (computed name)
+test/sunspider/crypto-aes.js:54:36: [maybe] Reading absent property (computed name)
+test/sunspider/crypto-aes.js:55:29: [maybe] Reading absent property (computed name)
+test/sunspider/crypto-aes.js:55:39: [maybe] Reading absent property (computed name)
+test/sunspider/crypto-aes.js:66:14: [maybe] Reading absent property (computed name)
+test/sunspider/crypto-aes.js:67:14: [maybe] Conversion to number yields NaN
+test/sunspider/crypto-aes.js:67:14: [maybe] Reading absent property (computed name)
+test/sunspider/crypto-aes.js:67:29: [maybe] Conversion to number yields NaN
+test/sunspider/crypto-aes.js:67:29: [maybe] Reading absent property (computed name)
+test/sunspider/crypto-aes.js:67:51: [maybe] Conversion to number yields NaN
+test/sunspider/crypto-aes.js:67:51: [maybe] Reading absent property (computed name)
+test/sunspider/crypto-aes.js:70:15: [maybe] Conversion to number yields NaN
+test/sunspider/crypto-aes.js:70:15: [maybe] Reading absent property (computed name)
+test/sunspider/crypto-aes.js:70:22: [maybe] Reading absent property (computed name)
+test/sunspider/crypto-aes.js:70:29: [maybe] Reading absent property (computed name)
+test/sunspider/crypto-aes.js:70:36: [maybe] Reading absent property (computed name)
+test/sunspider/crypto-aes.js:70:43: [maybe] Reading absent property (computed name)
+test/sunspider/crypto-aes.js:71:15: [maybe] Conversion to number yields NaN
+test/sunspider/crypto-aes.js:71:15: [maybe] Reading absent property (computed name)
+test/sunspider/crypto-aes.js:71:22: [maybe] Reading absent property (computed name)
+test/sunspider/crypto-aes.js:71:29: [maybe] Reading absent property (computed name)
+test/sunspider/crypto-aes.js:71:36: [maybe] Reading absent property (computed name)
+test/sunspider/crypto-aes.js:71:43: [maybe] Reading absent property (computed name)
+test/sunspider/crypto-aes.js:72:15: [maybe] Conversion to number yields NaN
+test/sunspider/crypto-aes.js:72:15: [maybe] Reading absent property (computed name)
+test/sunspider/crypto-aes.js:72:22: [maybe] Reading absent property (computed name)
+test/sunspider/crypto-aes.js:72:29: [maybe] Reading absent property (computed name)
+test/sunspider/crypto-aes.js:72:36: [maybe] Reading absent property (computed name)
+test/sunspider/crypto-aes.js:72:43: [maybe] Reading absent property (computed name)
+test/sunspider/crypto-aes.js:73:15: [maybe] Conversion to number yields NaN
+test/sunspider/crypto-aes.js:73:15: [maybe] Reading absent property (computed name)
+test/sunspider/crypto-aes.js:73:22: [maybe] Reading absent property (computed name)
+test/sunspider/crypto-aes.js:73:29: [maybe] Reading absent property (computed name)
+test/sunspider/crypto-aes.js:73:36: [maybe] Reading absent property (computed name)
+test/sunspider/crypto-aes.js:73:43: [maybe] Reading absent property (computed name)
+test/sunspider/crypto-aes.js:81:30: [maybe] Conversion to number yields NaN
+test/sunspider/crypto-aes.js:81:30: [maybe] Reading absent property (computed name)
+test/sunspider/crypto-aes.js:81:45: [maybe] Converting primitive number to object
+test/sunspider/crypto-aes.js:81:45: [maybe] Reading absent property (computed name)
+test/sunspider/crypto-aes.js:96:14: [maybe] Reading absent property (computed name)
+test/sunspider/crypto-aes.js:96:24: [maybe] Reading absent property (computed name)
+test/sunspider/crypto-aes.js:96:36: [maybe] Reading absent property (computed name)
+test/sunspider/crypto-aes.js:96:48: [maybe] Reading absent property (computed name)
+test/sunspider/crypto-aes.js:101:5: [maybe] Conversion from string to number yields NaN
+test/sunspider/crypto-aes.js:101:5: [maybe] Converting object to number
+test/sunspider/crypto-aes.js:102:39: [maybe] Converting primitive number to object
+test/sunspider/crypto-aes.js:102:39: [maybe] Reading absent property (computed name)
+test/sunspider/crypto-aes.js:105:31: [maybe] Conversion to number yields NaN
+test/sunspider/crypto-aes.js:105:31: [maybe] Reading absent property (computed name)
+test/sunspider/crypto-aes.js:105:42: [maybe] Reading absent property (computed name)
+test/sunspider/crypto-aes.js:109:29: [maybe] Converting primitive number to object
+test/sunspider/crypto-aes.js:109:29: [maybe] Reading absent property (computed name)
+test/sunspider/crypto-aes.js:109:39: [maybe] Conversion to number yields NaN
+test/sunspider/crypto-aes.js:109:39: [maybe] Converting primitive number to object
+test/sunspider/crypto-aes.js:109:39: [maybe] Reading absent property (computed name)
+test/sunspider/crypto-aes.js:109:52: [maybe] Reading absent property (computed name)
+test/sunspider/crypto-aes.js:116:34: [maybe] Reading absent property (computed name)
+test/sunspider/crypto-aes.js:116:39: [maybe] Reading absent property (computed name)
+test/sunspider/crypto-aes.js:121:10: [maybe] Reading absent property (computed name)
+test/sunspider/crypto-aes.js:122:34: [maybe] Reading absent property (computed name)
+test/sunspider/crypto-aes.js:175:45: [maybe] Converting object to string
+test/sunspider/crypto-aes.js:175:45: [maybe] Converting primitive string to object
+test/sunspider/crypto-aes.js:192:30: [maybe] Converting primitive string to object
+test/sunspider/crypto-aes.js:204:53: [maybe] Converting primitive string to object
+test/sunspider/crypto-aes.js:208:27: [maybe] Converting object to string
+test/sunspider/crypto-aes.js:208:27: [maybe] Converting primitive string to object
+test/sunspider/crypto-aes.js:209:24: [maybe] Conversion to number yields NaN
+test/sunspider/crypto-aes.js:209:40: [maybe] Reading absent property (computed name)
+test/sunspider/crypto-aes.js:219:37: [maybe] Conversion to number yields NaN
+test/sunspider/crypto-aes.js:219:57: [maybe] Reading absent property (computed name)
+test/sunspider/crypto-aes.js:239:45: [maybe] Converting object to string
+test/sunspider/crypto-aes.js:239:45: [maybe] Converting primitive string to object
+test/sunspider/crypto-aes.js:246:16: [maybe] Converting object to string
+test/sunspider/crypto-aes.js:246:16: [maybe] Converting primitive string to object
+test/sunspider/crypto-aes.js:251:31: [maybe] Reading absent property (computed name)
+test/sunspider/crypto-aes.js:252:45: [maybe] Converting object to string
+test/sunspider/crypto-aes.js:252:45: [maybe] Converting primitive string to object
+test/sunspider/crypto-aes.js:263:36: [maybe] Reading absent property (computed name)
+test/sunspider/crypto-aes.js:266:21: [maybe] Converting primitive string to object
+test/sunspider/crypto-aes.js:266:21: [maybe] Reading absent property (computed name)
+test/sunspider/crypto-aes.js:268:28: [maybe] Converting object to string
+test/sunspider/crypto-aes.js:268:28: [maybe] Converting primitive string to object
+test/sunspider/crypto-aes.js:268:28: [maybe] Reading absent property (computed name)
+test/sunspider/crypto-aes.js:269:27: [maybe] Conversion to number yields NaN
+test/sunspider/crypto-aes.js:269:44: [maybe] Reading absent property (computed name)
+test/sunspider/crypto-aes.js:283:10: [maybe] Converting object to string
+test/sunspider/crypto-aes.js:283:10: [maybe] Converting primitive string to object
+test/sunspider/crypto-aes.js:283:76: [maybe] Converting object to string
+test/sunspider/crypto-aes.js:283:76: [maybe] Converting primitive number to object
+test/sunspider/crypto-aes.js:283:76: [maybe] Converting primitive string to object
+test/sunspider/crypto-aes.js:283:76: [maybe] The variable c has values with different types
+test/sunspider/crypto-aes.js:287:10: [maybe] Converting object to string
+test/sunspider/crypto-aes.js:287:10: [maybe] Converting primitive string to object
+test/sunspider/crypto-aes.js:287:58: [maybe] Conversion from string to number yields NaN
+test/sunspider/crypto-aes.js:287:78: [maybe] Converting object to string
+test/sunspider/crypto-aes.js:287:78: [maybe] Converting primitive number to object
+test/sunspider/crypto-aes.js:287:78: [maybe] Converting primitive string to object
+test/sunspider/crypto-aes.js:287:78: [maybe] The variable c has values with different types
+test/sunspider/crypto-aes.js:429:26: [maybe] Converting object to number
+test/sunspider/crypto-aes.js:431:1: [info] Abstract value: UInt|NotUInt

@@ -77,6 +77,7 @@ test/chromeexperiments/deepseastress.html:426:99: [maybe] ReferenceError, readin
 test/chromeexperiments/deepseastress.html:428:99: [maybe] ReferenceError, reading absent variable event
 test/chromeexperiments/deepseastress.html:454:20: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/deepseastress.html:459:5: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/deepseastress.html:465:5: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/deepseastress.html:415:110: [maybe] Reading 'this' yields the global object
 test/chromeexperiments/deepseastress.html:415:110: [maybe] Reading absent property form
 test/chromeexperiments/deepseastress.html:417:110: [maybe] Reading 'this' yields the global object

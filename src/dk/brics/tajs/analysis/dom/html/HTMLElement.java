@@ -17,6 +17,7 @@
 package dk.brics.tajs.analysis.dom.html;
 
 import dk.brics.tajs.analysis.Conversion;
+import dk.brics.tajs.analysis.Exceptions;
 import dk.brics.tajs.analysis.FunctionCalls;
 import dk.brics.tajs.analysis.NativeFunctions;
 import dk.brics.tajs.analysis.PropVarOperations;
@@ -53,7 +54,7 @@ public class HTMLElement {
         // Prototype Object
         s.newObject(ELEMENT_PROTOTYPE);
         s.writeInternalPrototype(ELEMENT_PROTOTYPE, Value.makeObject(DOMElement.PROTOTYPE));
-          
+
         // Multiplied Object
         s.newObject(ELEMENT);
         s.writeInternalPrototype(ELEMENT, Value.makeObject(ELEMENT_PROTOTYPE));
@@ -121,6 +122,8 @@ public class HTMLElement {
             }
             case HTMLELEMENT_MATCHES_SELECTOR: {
                 NativeFunctions.expectParameters(nativeObject, call, c, 1, 1);
+                // may throw on bad syntax
+                Exceptions.throwTypeError(c); // FIXME: should be a DOM-Exception
                 return Value.makeAnyBool();
             }
             case HTMLELEMENT_BLUR: {

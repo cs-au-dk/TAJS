@@ -12,6 +12,8 @@ import org.junit.runners.Suite;
 @Suite.SuiteClasses({
         // specific tests
         TestValue.class,
+        TestTAJSFunctions.class,
+        TestSmokeTAJSHookFunctions.class,
         TestHeap.class,
         TestForIn.class,
         TestUnrolling.class,

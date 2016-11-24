@@ -166,7 +166,7 @@ public class TestJQueryUse {
         Options.get().enableTest();
 
         // Successfull tests runs in less than 15 seconds on `Intel(R) Core(TM) i7-3520M CPU @ 2.90GHz`
-        AnalysisTimeLimiter analysisLimiter = new AnalysisTimeLimiter(30);
+        AnalysisTimeLimiter analysisLimiter = new AnalysisTimeLimiter(90);
 
         IAnalysisMonitoring monitor = null;
         boolean showLineAnalysis = false; // for debugging

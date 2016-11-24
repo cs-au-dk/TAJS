@@ -1,10 +1,22 @@
+/*
+ * Copyright 2009-2016 Aarhus University
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package dk.brics.tajs.js2flowgraph;
 
-import com.google.javascript.jscomp.parsing.parser.trees.DoWhileStatementTree;
-import com.google.javascript.jscomp.parsing.parser.trees.ForInStatementTree;
-import com.google.javascript.jscomp.parsing.parser.trees.ForStatementTree;
 import com.google.javascript.jscomp.parsing.parser.trees.ParseTree;
-import com.google.javascript.jscomp.parsing.parser.trees.WhileStatementTree;
 import dk.brics.tajs.flowgraph.AbstractNode;
 import dk.brics.tajs.flowgraph.BasicBlock;
 import dk.brics.tajs.flowgraph.Function;
@@ -507,10 +519,7 @@ public class AstEnv {
 
     public AstEnv makeLoopLabelName(ParseTree loopStatement, String name) {
         assert (loopStatement != null && name != null);
-        assert (loopStatement instanceof ForStatementTree ||
-                loopStatement instanceof WhileStatementTree ||
-                loopStatement instanceof ForInStatementTree ||
-                loopStatement instanceof DoWhileStatementTree);
+        assert (FunctionBuilderHelper.isLoopStatement(loopStatement));
         AstEnv newEnv = new AstEnv(this);
         newEnv.loopLabelName = Pair.make(loopStatement, name);
         return newEnv;

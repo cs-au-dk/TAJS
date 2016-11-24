@@ -17,6 +17,7 @@
 package dk.brics.tajs.flowgraph.jsnodes;
 
 import dk.brics.tajs.flowgraph.BasicBlock;
+import dk.brics.tajs.flowgraph.EventType;
 import dk.brics.tajs.flowgraph.Function;
 import dk.brics.tajs.flowgraph.SourceLocation;
 import dk.brics.tajs.util.AnalysisException;
@@ -31,6 +32,15 @@ public class DeclareFunctionNode extends LoadNode {
     private Function f;
 
     private boolean expression;
+
+    /**
+     * For functions that are declared as inline event handlers.
+     * Example, with the LOAD kind:
+     * <pre>
+     *     &lt;div onload="alert(42)"&gt;...&lt;/div&gt;
+     * </pre>
+     */
+    private EventType domEventType;
 
     /**
      * Constructs a new function declaration node.
@@ -82,5 +92,13 @@ public class DeclareFunctionNode extends LoadNode {
             throw new AnalysisException("Declare function node with null function: " + toString());
         if (!expression && getResultRegister() != NO_VALUE)
             throw new AnalysisException("Declare function node with nonsense result register: " + toString());
+    }
+
+    public void setDomEventType(EventType domEventType) {
+        this.domEventType = domEventType;
+    }
+
+    public EventType getDomEventType() {
+        return domEventType;
     }
 }

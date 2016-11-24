@@ -1,9 +1,26 @@
+/*
+ * Copyright 2009-2016 Aarhus University
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package dk.brics.tajs.js2flowgraph;
 
 import com.google.javascript.jscomp.parsing.parser.LiteralToken;
 import com.google.javascript.jscomp.parsing.parser.SourceFile;
 import com.google.javascript.jscomp.parsing.parser.TokenType;
 import com.google.javascript.jscomp.parsing.parser.trees.BinaryOperatorTree;
+import com.google.javascript.jscomp.parsing.parser.trees.BlockTree;
 import com.google.javascript.jscomp.parsing.parser.trees.ParseTree;
 import com.google.javascript.jscomp.parsing.parser.trees.ParseTreeType;
 import com.google.javascript.jscomp.parsing.parser.util.SourcePosition;
@@ -27,6 +44,7 @@ import dk.brics.tajs.flowgraph.jsnodes.UnaryOperatorNode;
 import dk.brics.tajs.util.AnalysisException;
 import dk.brics.tajs.util.Pair;
 
+import java.net.URL;
 import java.util.Collection;
 import java.util.IdentityHashMap;
 import java.util.Iterator;
@@ -34,6 +52,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static dk.brics.tajs.util.Collections.newList;
 
@@ -322,8 +342,8 @@ public class FunctionBuilderHelper {
     /**
      * Creates a TAJS source location from the start position of given AST node.
      */
-    public static SourceLocation makeSourceLocation(ParseTree tree) {
-        return new SourceLocation(tree.location.start.line + 1, tree.location.start.column + 1, tree.location.start.source.name);
+    public static SourceLocation makeSourceLocation(ParseTree tree, URL location) {
+        return new SourceLocation(tree.location.start.line + 1, tree.location.start.column + 1, tree.location.start.source.name, location);
     }
 
     /**
@@ -339,8 +359,8 @@ public class FunctionBuilderHelper {
     /**
      * Creates a TAJS source location from the end position of the given AST node.
      */
-    public static SourceLocation makeSourceLocationEnd(ParseTree tree) {
-        return new SourceLocation(tree.location.end.line + 1, tree.location.end.column, tree.location.end.source.name);
+    public static SourceLocation makeSourceLocationEnd(ParseTree tree, URL location) {
+        return new SourceLocation(tree.location.end.line + 1, tree.location.end.column, tree.location.end.source.name, location);
     }
 
     /**
@@ -501,6 +521,19 @@ public class FunctionBuilderHelper {
         return tree;
     }
 
+    public static boolean isLoopStatement(ParseTree statement) {
+        switch (statement.type) {
+            case FOR_IN_STATEMENT:
+            case FOR_OF_STATEMENT:
+            case FOR_STATEMENT:
+            case WHILE_STATEMENT:
+            case DO_WHILE_STATEMENT:
+                return true;
+            default:
+                return false;
+        }
+    }
+
     /**
      * Special TAJS directives.
      * Directives are constant strings that appear as expression statements in the JavaScript code.
@@ -525,21 +558,6 @@ public class FunctionBuilderHelper {
          */
         String getName() {
             return name;
-        }
-    }
-
-    /**
-     * Exception for features that are not yet implemented.
-     */
-    public static class NotImplemented extends AnalysisException {
-
-        private static final long serialVersionUID = 1L;
-
-        /**
-         * Constructs a new exception.
-         */
-        NotImplemented(ParseTree tree, String feature) {
-            super(makeSourceLocation(tree) + ": '" + feature + "'-support not implemented yet!");
         }
     }
 }

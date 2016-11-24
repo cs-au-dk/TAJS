@@ -15,9 +15,9 @@ fg2: <main> function()
     node 10: write-property[v2,'c',v5] (test/flowgraphbuilder/flowgraph_builder0094.js:1:21)
     node 11: constant[1234.0,v6] (test/flowgraphbuilder/flowgraph_builder0094.js:1:29)
     node 12: write-property[v2,'d',v6] (test/flowgraphbuilder/flowgraph_builder0094.js:1:26)
-    node 13: write-variable[v2,'x']* (test/flowgraphbuilder/flowgraph_builder0094.js:1:9)
+    node 13: write-variable[v2,'x']* (test/flowgraphbuilder/flowgraph_builder0094.js:1:5)
     node 14: constant[0.0,v7] (test/flowgraphbuilder/flowgraph_builder0094.js:3:9)
-    node 15: write-variable[v7,'z']* (test/flowgraphbuilder/flowgraph_builder0094.js:3:9)
+    node 15: write-variable[v7,'z']* (test/flowgraphbuilder/flowgraph_builder0094.js:3:5)
     node 16: read-variable['x',v8,-] (test/flowgraphbuilder/flowgraph_builder0094.js:4:15)
     ->[block 2]
   block 2:

@@ -1,7 +1,7 @@
 package dk.brics.tajs.test;
 
 import dk.brics.tajs.Main;
-import dk.brics.tajs.util.AnalysisLimitationException;
+import dk.brics.tajs.util.AnalysisException;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -43,25 +43,46 @@ public class TestSourceLocations {
 		Misc.checkSystemOutput();
 	}
 
-	@Test(expected = AnalysisLimitationException.class)
-	public void sourcelocations_htmlWithExternalJavascriptUsingFileProtocol() {
+    @Test
+    public void sourcelocations_htmlWithExternalJavascriptUsingFileProtocol() {
 		Misc.init();
 		String[] args = {"-quiet", "-test", "test/sourcelocations/htmlWithExternalJavascriptUsingFileProtocol.html"};
 		Misc.run(args);
 	}
 
-	@Test(expected = AnalysisLimitationException.class)
-	public void sourcelocations_htmlWithExternalJavascriptUsingHTTPProtocol() {
+    @Test(expected = AnalysisException.class /* no http server running ... */)
+    public void sourcelocations_htmlWithExternalJavascriptUsingHTTPProtocol() {
 		Misc.init();
 		String[] args = {"-quiet", "-test", "test/sourcelocations/htmlWithExternalJavascriptUsingHTTPProtocol.html"};
 		Misc.run(args);
 	}
 
-	@Test(expected = AnalysisLimitationException.class)
-	public void sourcelocations_htmlWithExternalJavascriptUsingAgnosticProtocol() {
+    @Test(expected = AnalysisException.class)
+    public void sourcelocations_htmlWithExternalJavascriptUsingAgnosticProtocol() {
 		Misc.init();
 		String[] args = {"-quiet", "-test", "test/sourcelocations/htmlWithExternalJavascriptUsingAgnosticProtocol.html"};
-		Misc.run(args);
+        Misc.run(args);
+    }
+
+    @Test
+    public void sourcelocations_htmlWithMiscReferences_root() {
+        Misc.init();
+        String[] args = {"-quiet", "-test", "test/sourcelocations/misc-references/in-root.html"};
+        Misc.run(args);
+    }
+
+    @Test
+    public void sourcelocations_htmlWithMiscReferences_dir() {
+        Misc.init();
+        String[] args = {"-quiet", "-test", "test/sourcelocations/misc-references/dir/in-dir.html"};
+        Misc.run(args);
+    }
+
+    @Test
+    public void sourcelocations_htmlWithMiscReferences_dirdir() {
+        Misc.init();
+        String[] args = {"-quiet", "-test", "test/sourcelocations/misc-references/dir/dirdir/in-dirdir.html"};
+        Misc.run(args);
 	}
 
 	@Test

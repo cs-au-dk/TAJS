@@ -21,4 +21,4 @@ test/sunspider/access-fannkuch.js:61:21: [maybe] Conversion to number yields NaN
 test/sunspider/access-fannkuch.js:61:21: [maybe] Reading absent property (computed name)
 test/sunspider/access-fannkuch.js:62:14: [maybe] Reading absent property (computed name)
 test/sunspider/access-fannkuch.js:73:26: [maybe] Converting object to number
-test/sunspider/access-fannkuch.js:75:1: [info] Abstract value: UInt
+test/sunspider/access-fannkuch.js:75:1: [info] Abstract value: UInt|NotUInt

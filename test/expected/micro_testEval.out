@@ -1,9 +1,9 @@
 test/micro/testEval.js:2:16: [definite] Variable a is null/undefined
 test/micro/testEval.js:1:9: [definite] Too few parameters to function eval
 test/micro/testEval.js:10:5: [definite] The variable f is never used
-test/micro/testEval.js:10:9: [definite] Unreachable code
+test/micro/testEval.js:10:5: [definite] Unreachable code
 test/micro/testEval.js:2:1: [info] Abstract value: Undef
 test/micro/testEval.js:4:1: [info] Abstract value: 9.11
 test/micro/testEval.js:6:1: [info] Abstract value: [@Boolean#node22]
 test/micro/testEval.js:8:1: [info] Abstract value: [@funfun#fun1]
-test/micro/testEval.js:9:1: [info] Abstract object: {length:1.0,prototype:[@Object#node51],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@Object#node52],[@<the global object>[native]]]}
+test/micro/testEval.js:9:1: [info] Abstract object: {length:1.0,name:"funfun",prototype:[@Object#node51],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@<the global object>[native]]]}

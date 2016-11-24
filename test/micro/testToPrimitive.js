@@ -18,9 +18,8 @@ TAJS_assert(TAJS_conversionToPrimitive(oo, "STR") === '[object Object]');
 TAJS_assert(TAJS_conversionToPrimitive(Math, "NUM") === '[object Math]');
 TAJS_assert(TAJS_conversionToPrimitive(Math, "STR") === '[object Math]');
 
-// TODO increase precision of RegExp.prototype.toString
-TAJS_assert(TAJS_conversionToPrimitive(/xy*/, "NUM"), 'isMaybeAnyStr');
-TAJS_assert(TAJS_conversionToPrimitive(/xy*/, "STR"), 'isMaybeAnyStr');
+TAJS_assert(TAJS_conversionToPrimitive(/xy*/, "NUM") === '/xy*/');
+TAJS_assert(TAJS_conversionToPrimitive(/xy*/, "STR") === '/xy*/');
 
 var nn = new Number(42.001);
 var g = TAJS_conversionToPrimitive(nn);

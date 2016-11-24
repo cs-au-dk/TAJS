@@ -83,7 +83,7 @@ public class HTMLObjectElement {
         createDOMProperty(INSTANCES, "name", Value.makeAnyStr(), c);
         createDOMProperty(INSTANCES, "standby", Value.makeAnyStr(), c);
         createDOMProperty(INSTANCES, "tabIndex", Value.makeAnyNum(), c);
-        createDOMProperty(INSTANCES, "type", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "type", Value.makeAnyStr().restrictToNotStrIdentifierParts() /* mime-type */, c);
         createDOMProperty(INSTANCES, "useMap", Value.makeAnyStr(), c);
         createDOMProperty(INSTANCES, "vspace", Value.makeAnyNum(), c);
         createDOMProperty(INSTANCES, "width", Value.makeAnyStr(), c);

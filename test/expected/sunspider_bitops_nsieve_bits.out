@@ -4,4 +4,4 @@ test/sunspider/bitops-nsieve-bits.js:22:9: [maybe] Reading absent property (comp
 test/sunspider/bitops-nsieve-bits.js:24:9: [maybe] Conversion to number yields NaN
 test/sunspider/bitops-nsieve-bits.js:24:9: [maybe] Reading absent property (computed name)
 test/sunspider/bitops-nsieve-bits.js:39:26: [maybe] Converting object to number
-test/sunspider/bitops-nsieve-bits.js:41:1: [info] Abstract value: UInt
+test/sunspider/bitops-nsieve-bits.js:41:1: [info] Abstract value: UInt|NotUInt

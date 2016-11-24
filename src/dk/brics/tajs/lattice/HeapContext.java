@@ -17,12 +17,17 @@
 package dk.brics.tajs.lattice;
 
 import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+import static dk.brics.tajs.util.Collections.newSet;
 
 /**
  * Heap context for context sensitive analysis.
  * Immutable.
  */
-public final class HeapContext {
+public final class HeapContext {// TODO: canonicalize? (#140)
 
     private static HeapContext emptyHeapContext = new HeapContext(null, null);
 
@@ -110,4 +115,20 @@ public final class HeapContext {
     public int hashCode() {
         return hashcode;
     }
+
+    /**
+     * Utility function for extracting object labels
+     */
+    public static Set<ObjectLabel> extractTopLevelObjectLabels(HeapContext context) { // XXX: review (+used where?)
+        if (context == null) {
+            return newSet();
+        }
+        return Stream.concat(
+                context.concreteSemanticValueQualifiers != null ?
+                        context.concreteSemanticValueQualifiers.values().stream().flatMap(v -> v.getObjectLabels().stream()) :
+                        Stream.empty(),
+                ContextArguments.extractTopLevelObjectLabels(context.getFunctionArguments()).stream())
+                .collect(Collectors.toSet());
+    }
+
 }

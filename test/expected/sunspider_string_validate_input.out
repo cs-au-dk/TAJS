@@ -1,0 +1,12 @@
+test/sunspider/string-validate-input.js:41:31: [maybe] Converting object to string
+test/sunspider/string-validate-input.js:41:31: [maybe] Converting primitive string to object
+test/sunspider/string-validate-input.js:44:27: [maybe] Converting primitive string to object
+test/sunspider/string-validate-input.js:45:20: [maybe] Converting object to string
+test/sunspider/string-validate-input.js:45:20: [maybe] Converting primitive string to object
+test/sunspider/string-validate-input.js:52:22: [maybe] Converting primitive string to object
+test/sunspider/string-validate-input.js:72:7: [maybe] Converting undefined to string
+test/sunspider/string-validate-input.js:72:14: [maybe] Reading absent property (computed name)
+test/sunspider/string-validate-input.js:83:13: [maybe] Converting object to string
+test/sunspider/string-validate-input.js:83:13: [maybe] Converting primitive string to object
+test/sunspider/string-validate-input.js:96:26: [maybe] Converting object to number
+test/sunspider/string-validate-input.js:98:1: [info] Abstract value: UInt|NotUInt

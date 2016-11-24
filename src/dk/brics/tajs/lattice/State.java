@@ -19,7 +19,6 @@ package dk.brics.tajs.lattice;
 import dk.brics.tajs.flowgraph.AbstractNode;
 import dk.brics.tajs.flowgraph.BasicBlock;
 import dk.brics.tajs.lattice.ObjectLabel.Kind;
-import dk.brics.tajs.monitoring.IAnalysisMonitoring;
 import dk.brics.tajs.options.OptionValues;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.solver.BlockAndContext;
@@ -40,6 +39,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import static dk.brics.tajs.util.Collections.addToMapSet;
@@ -56,7 +56,7 @@ public class State implements IState<State, Context, CallEdge> {
 
     private static Logger log = Logger.getLogger(State.class);
 
-    private GenericSolver<State, Context, CallEdge, IAnalysisMonitoring, ?>.SolverInterface c;
+    private GenericSolver<State, Context, CallEdge, ?, ?>.SolverInterface c;
 
     /**
      * The basic block owning this state.
@@ -121,7 +121,7 @@ public class State implements IState<State, Context, CallEdge> {
     /**
      * Constructs a new none-state (representing the empty set of concrete states).
      */
-    public State(GenericSolver<State, Context, CallEdge, IAnalysisMonitoring, ?>.SolverInterface c, BasicBlock block) {
+    public State(GenericSolver<State, Context, CallEdge, ?, ?>.SolverInterface c, BasicBlock block) {
         this.c = c;
         this.block = block;
         summarized = new Summarized();
@@ -176,7 +176,7 @@ public class State implements IState<State, Context, CallEdge> {
     /**
      * Returns the solver interface.
      */
-    public GenericSolver<State, Context, CallEdge, IAnalysisMonitoring, ?>.SolverInterface getSolverInterface() {
+    public GenericSolver<State, Context, CallEdge, ?, ?>.SolverInterface getSolverInterface() {
         return c;
     }
 
@@ -1280,7 +1280,7 @@ public class State implements IState<State, Context, CallEdge> {
      * Takes recency abstraction into account.
      * Updates sets of summarized objects.
      */
-    public void newObject(ObjectLabel objlabel) { // FIXME: update id/name/tagname/classname
+    public void newObject(ObjectLabel objlabel) {
         if (basis_store != null && basis_store.containsKey(objlabel))
             throw new AnalysisException("Attempt to summarize object from basis store");
         makeWritableStore();
@@ -1309,6 +1309,7 @@ public class State implements IState<State, Context, CallEdge> {
                         registers.set(i, v.replaceObjectLabel(objlabel, summarylabel));
                     }
                 }
+                extras.replaceObjectLabel(objlabel, summarylabel);
                 if (Options.get().isLazyDisabled())
                     if (stacked_objlabels.contains(objlabel)) {
                         makeWritableStackedObjects();
@@ -1386,6 +1387,7 @@ public class State implements IState<State, Context, CallEdge> {
                     registers.set(i, v.replaceObjectLabel(objlabel, summarylabel));
                 }
             }
+            extras.replaceObjectLabel(objlabel, summarylabel);
             if (Options.get().isLazyDisabled())
                 if (stacked_objlabels.contains(objlabel)) {
                     makeWritableStackedObjects();
@@ -1462,14 +1464,19 @@ public class State implements IState<State, Context, CallEdge> {
      */
     private void writeInternalPrototype(Collection<ObjectLabel> objlabels, Value value) {
         value.assertNonEmpty();
-        for (ObjectLabel objlabel : objlabels)
+        for (ObjectLabel objlabel : objlabels) {
+            Value newval;
             if (objlabels.size() == 1 && objlabel.isSingleton()) // strong update
-                getObject(objlabel, true).setInternalPrototype(value.joinModified());
+                newval = value;
             else { // weak update
                 Value oldval = UnknownValueResolver.getInternalPrototype(objlabel, this, true);
-                Value newval = UnknownValueResolver.join(oldval, value, this);
-                getObject(objlabel, true).setInternalPrototype(newval.joinModified());
+                newval = UnknownValueResolver.join(oldval, value, this);
             }
+            newval = newval.joinModified();
+            Obj obj = getObject(objlabel, true);
+            obj.setProperty(Property.__PROTO__, newval.setAttributes(true, true, false));
+            obj.setInternalPrototype(newval);
+        }
         if (log.isDebugEnabled())
             log.debug("writeInternalPrototype(" + objlabels + "," + value + ")");
     }
@@ -1658,8 +1665,11 @@ public class State implements IState<State, Context, CallEdge> {
         b.append("\n  Execution context: ").append(execution_context);
         b.append("\n  Summarized: ").append(summarized);
         b.append("\n  Store (excluding basis and default objects): ");
-        for (Map.Entry<ObjectLabel, Obj> me : sortedEntries(store))
+        for (Map.Entry<ObjectLabel, Obj> me : sortedEntries(store)) {
+            if (me.getKey().equals(Property.__PROTO__))
+                continue;
             b.append("\n    ").append(me.getKey()).append(" (").append(me.getKey().getSourceLocation()).append("): ").append(me.getValue()).append("");
+        }
         //b.append("\n  Default object: ").append(store_default);
         b.append("\n  Registers: ");
         for (int i = 0; i < registers.size(); i++)
@@ -2115,6 +2125,13 @@ public class State implements IState<State, Context, CallEdge> {
         if (log.isDebugEnabled())
             log.debug("readThisObjects() = " + this_objs);
         return this_objs;
+    }
+
+    /**
+     * Returns the object value of 'this', coerced to using the given function.
+     */
+    public Value readThisObjectsCoerced(Function<ObjectLabel,Value> coerce) {
+        return UnknownValueResolver.join(readThisObjects().stream().map(l -> coerce.apply(l)).collect(Collectors.toList()), c.getState());
     }
 
     /**

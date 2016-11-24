@@ -28,6 +28,7 @@ import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.ObjectLabel.Kind;
 import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.Value;
+import dk.brics.tajs.util.AnalysisLimitationException;
 
 import static dk.brics.tajs.analysis.dom.DOMFunctions.createDOMFunction;
 
@@ -93,7 +94,7 @@ public class DOMConfiguration {
                 return Value.makeAnyBool();
             }
             case CONFIGURATION_GET_PARAMETER: {
-                throw new UnsupportedOperationException("CONFIGURATION_GET_PARAMETER not supported");
+                throw new AnalysisLimitationException.AnalysisModelLimitationException(call.getJSSourceNode().getSourceLocation() + ": CONFIGURATION_GET_PARAMETER not supported");
             }
             case CONFIGURATION_SET_PARAMETER: {
                 NativeFunctions.expectParameters(nativeObject, call, c, 2, 2);
@@ -101,6 +102,8 @@ public class DOMConfiguration {
                 Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
                 return Value.makeUndef();
             }
+            case CONFIGURATION_CONSTRUCTOR:
+                throw new AnalysisLimitationException.AnalysisModelLimitationException(call.getJSSourceNode().getSourceLocation() + ": Unimplemented native function: " + nativeObject);
             default: {
                 throw new UnsupportedOperationException("Unsupported Native Object " + nativeObject);
             }

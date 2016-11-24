@@ -642,6 +642,8 @@ public final class Obj {
             Value v = me.getValue();
             if (v == (Strings.isArrayIndex(me.getKey()) ? default_array_property : default_nonarray_property))
                 continue;
+            if (me.getKey().equals(Property.__PROTO__))
+                continue;
             if (any)
                 b.append(",");
             else
@@ -699,6 +701,9 @@ public final class Obj {
         StringBuilder b = new StringBuilder();
         for (Entry<String, Value> me : sortedEntries(properties)) {
             Value v = me.getValue();
+            if (me.getKey().equals(Property.__PROTO__)) {
+                continue;
+            }
             if (v.isMaybeModified() && v.isMaybePresentOrUnknown())
                 b.append("\n    ").append(Strings.escape(me.getKey())).append(": ").append(v);
         }

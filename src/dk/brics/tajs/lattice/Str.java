@@ -16,6 +16,8 @@
 
 package dk.brics.tajs.lattice;
 
+import dk.brics.tajs.util.AnalysisException;
+
 /**
  * 'String' facet for abstract values.
  */
@@ -172,7 +174,54 @@ public interface Str {
     Value restrictToNotStr();
 
     /**
+     * Constructs a value from this value but excluding the category of all strings that consist of identifier parts.
+     */
+    Value restrictToNotStrIdentifierParts();
+
+    /**
+     * Constructs a value from this value but excluding the category of all strings that consist of a fixed nonempty string followed by identifier-parts.
+     */
+    Value restrictToNotStrPrefixedIdentifierParts();
+
+    /**
+     * Constructs a value from this value but excluding the category of all UInt strings.
+     */
+    Value restrictToNotStrUInt();
+
+    /**
+     * Constructs a value from this value but excluding the category of all strings that
+     * represent unbounded non-UInt32 numbers, including Infinity, -Infinity, and NaN.
+     */
+    Value restrictToNotStrOtherNum();
+
+    /**
      * Checks whether the given string is matched by this value.
      */
     boolean isMaybeStr(String s);
+
+    /**
+     * Checks whether the given abstract string value is definitely different from this abstract string string.
+     * (Conservative, true means certainly yes, false means maybe no.)
+     * @throws AnalysisException if the abstract values are maybe non-strings
+     */
+    boolean isStrDisjoint(Str other);
+
+    /**
+     * Checks whether this string value may contain the given substring.
+     * (Conservative, true means certainly yes, false means maybe no.)
+     * @throws AnalysisException if the abstract values are maybe non-strings
+     */
+    boolean isStrMayContainSubstring(Str other);
+
+    /**
+     * Checks whether all strings represented by this abstract value contain a non-identifier character.
+     * (Conservative, true means certainly yes, false means maybe no.)
+     */
+    boolean mustContainNonIdentifierCharacters();
+
+    /**
+     * Checks whether all strings represented by this abstract value contain only identifier characters.
+     * (Conservative, true means certainly yes, false means maybe no.)
+     */
+    boolean mustOnlyBeIdentifierCharacters();
 }

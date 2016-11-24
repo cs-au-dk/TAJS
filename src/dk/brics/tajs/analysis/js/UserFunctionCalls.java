@@ -22,9 +22,11 @@ import dk.brics.tajs.analysis.FunctionCalls.CallInfo;
 import dk.brics.tajs.analysis.InitialStateBuilder;
 import dk.brics.tajs.analysis.PropVarOperations;
 import dk.brics.tajs.analysis.Solver;
+import dk.brics.tajs.analysis.dom.DOMEvents;
 import dk.brics.tajs.flowgraph.AbstractNode;
 import dk.brics.tajs.flowgraph.BasicBlock;
 import dk.brics.tajs.flowgraph.Function;
+import dk.brics.tajs.flowgraph.HostEnvSources;
 import dk.brics.tajs.flowgraph.SourceLocation;
 import dk.brics.tajs.flowgraph.jsnodes.CallNode;
 import dk.brics.tajs.flowgraph.jsnodes.DeclareFunctionNode;
@@ -51,7 +53,6 @@ import dk.brics.tajs.solver.NodeAndContext;
 import dk.brics.tajs.util.AnalysisException;
 import org.apache.log4j.Logger;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
@@ -59,6 +60,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
+import java.util.stream.Collectors;
 
 import static dk.brics.tajs.util.Collections.newList;
 import static dk.brics.tajs.util.Collections.newMap;
@@ -94,22 +96,24 @@ public class UserFunctionCalls {
         state.writeInternalPrototype(fn, Value.makeObject(InitialStateBuilder.FUNCTION_PROTOTYPE));
         // 13.2 step 7
         ScopeChain scope = state.getScopeChain();
-        if (is_expression && fun.getName() != null) {
-            // p.79 (function expression with identifier)
-            ObjectLabel front = new ObjectLabel(fun.getEntry().getFirstNode(), Kind.OBJECT);
-            state.newObject(front);
-            scope = ScopeChain.make(Collections.singleton(front), scope);
-            pv.writePropertyWithAttributes(front, fun.getName(), f.setAttributes(false, true, true));
-            /* From ES5, Annex D:
-             In Edition 3, the algorithm for the production FunctionExpression with an Identifier adds an object 
-             created as if by new Object() to the scope chain to serve as a scope for looking up the name of the 
-             function. The identifier resolution rules (10.1.4 in Edition 3) when applied to such an object will, 
-             if necessary, follow the object's prototype chain when attempting to resolve an identifier. This
-             means all the properties of Object.prototype are visible as identifiers within that scope. In 
-             practice most implementations of Edition 3 have not implemented this semantics. Edition 5 changes 
-             the specified semantics by using a Declarative Environment Record to bind the name of the function.
-             */ // TODO: use ES5 semantics of function expressions with identifier?
-        } else if (!is_expression && fun.getName() != null) {
+/// old code, for ES3 semantics
+//        if (is_expression && fun.getName() != null) {
+//            // p.79 (function expression with identifier)
+//            ObjectLabel front = new ObjectLabel(fun.getEntry().getFirstNode(), Kind.OBJECT);
+//            state.newObject(front);
+//            scope = ScopeChain.make(Collections.singleton(front), scope);
+//            pv.writePropertyWithAttributes(front, fun.getName(), f.setAttributes(false, true, true));
+//            /* From ES5, Annex D:
+//             In Edition 3, the algorithm for the production FunctionExpression with an Identifier adds an object
+//             created as if by new Object() to the scope chain to serve as a scope for looking up the name of the
+//             function. The identifier resolution rules (10.1.4 in Edition 3) when applied to such an object will,
+//             if necessary, follow the object's prototype chain when attempting to resolve an identifier. This
+//             means all the properties of Object.prototype are visible as identifiers within that scope. In
+//             practice most implementations of Edition 3 have not implemented this semantics. Edition 5 changes
+//             the specified semantics by using a Declarative Environment Record to bind the name of the function.
+//             */
+//        }
+        if (!is_expression && fun.getName() != null) {
             // p.79 (function declaration)
             pv.declareAndWriteVariable(fun.getName(), f, true);
         }
@@ -123,10 +127,15 @@ public class UserFunctionCalls {
         // 13.2 step 10
         pv.writePropertyWithAttributes(prototype, "constructor", Value.makeObject(fn).setAttributes(true, false, false));
         // 13.2 step 11
-        pv.writePropertyWithAttributes(fn, "prototype", Value.makeObject(prototype).setAttributes(false, true, false));
+        pv.writePropertyWithAttributes(fn, "prototype", Value.makeObject(prototype).setAttributes(true, true, false));
         state.writeInternalValue(prototype, Value.makeNum(Double.NaN)); // TODO: as in Rhino (?)
+
+        pv.writePropertyWithAttributes(fn, "name", Value.makeStr(fun.getName() == null ? "" : fun.getName()).setAttributes(true, false, true)); // FIXME: "" is sometimes incorrect (if the function is anonymous but used in a simple variable initializer)
         if (result_reg != AbstractNode.NO_VALUE)
             state.writeRegister(result_reg, f);
+        if (Options.get().isDOMEnabled() && n.getDomEventType() != null) {
+            DOMEvents.addEventHandler(Value.makeObject(singleton(fn)), n.getDomEventType(), c);
+        }
     }
 
     /**
@@ -148,94 +157,97 @@ public class UserFunctionCalls {
                     + " to " + f + " at " + f.getSourceLocation());
 
         State edge_state = caller_state.clone();
-        c.setState(edge_state);
-        HeapContext heapContext = c.getAnalysis().getContextSensitivityStrategy().makeActivationAndArgumentsHeapContext(edge_state, obj_f, call, c);
+        c.withState(edge_state, () -> {
 
-        Set<ObjectLabel> this_objs;
-        Summarized extra_summarized = new Summarized();
-        if (call.isConstructorCall()) {
-            // 13.2.2.1-2 create new object
-            this_objs = newSet();
-            ObjectLabel new_obj = new ObjectLabel(n, Kind.OBJECT, heapContext);
-            edge_state.newObject(new_obj);
-            extra_summarized.addDefinitelySummarized(new_obj);
-            this_objs.add(new_obj);
-            // 13.2.2.3-5 provide [[Prototype]]
-            prototype = UnknownValueResolver.getRealValue(prototype, caller_state);
-            if (prototype.isMaybePrimitive())
-                prototype = prototype.restrictToObject().joinObject(InitialStateBuilder.OBJECT_PROTOTYPE);
-            edge_state.writeInternalPrototype(new_obj, prototype);
-        } else {
-            this_objs = call.prepareThis(caller_state, edge_state);
-        }
+                    Set<ObjectLabel> this_objs;
+                    Summarized extra_summarized = new Summarized();
+                    if (call.isConstructorCall()) {
+                        // 13.2.2.1-2 create new object
+                        this_objs = newSet();
+                        HeapContext thisHeapContext = c.getAnalysis().getContextSensitivityStrategy().makeConstructorHeapContext(edge_state, obj_f, call, c);
+                        ObjectLabel new_obj = new ObjectLabel(n, Kind.OBJECT, thisHeapContext);
+                        edge_state.newObject(new_obj);
+                        extra_summarized.addDefinitelySummarized(new_obj);
+                        this_objs.add(new_obj);
+                        // 13.2.2.3-5 provide [[Prototype]]
+                        Value prototypeFinal = UnknownValueResolver.getRealValue(prototype, caller_state);
+                        if (prototypeFinal.isMaybePrimitive())
+                            prototypeFinal = prototypeFinal.restrictToObject().joinObject(InitialStateBuilder.OBJECT_PROTOTYPE);
+                        edge_state.writeInternalPrototype(new_obj, prototypeFinal);
+                    } else {
+                        this_objs = call.prepareThis(caller_state, edge_state);
+                    }
+                    HeapContext heapContext = c.getAnalysis().getContextSensitivityStrategy().makeActivationAndArgumentsHeapContext(edge_state, obj_f, this_objs, call, c);
 
-        // collect arguments and special arguments for context sensitivity
-        int num_actuals = call.getNumberOfArgs();
-        boolean num_actuals_unknown = call.isUnknownNumberOfArgs();
-        Value unknown_arg = null;
-        List<Value> actuals = new ArrayList<>();
-        if (num_actuals_unknown)
-            unknown_arg = call.getUnknownArg();
-        else {
-            for (int i = 0; i < num_actuals; i++)
-                actuals.add(call.getArg(i));
-        }
+                    // 10.2.3 enter new execution context, 13.2.1 transfer parameters, 10.1.6/8 provide 'arguments' object
+                    ObjectLabel varobj = new ObjectLabel(f.getEntry().getFirstNode(), Kind.ACTIVATION, heapContext); // better to use entry than invoke here
+                    edge_state.newObject(varobj);
+                    extra_summarized.addDefinitelySummarized(varobj);
+                    ObjectLabel argobj = new ObjectLabel(f.getEntry().getFirstNode(), Kind.ARGUMENTS, heapContext);
+                    edge_state.newObject(argobj);
+                    extra_summarized.addDefinitelySummarized(argobj);
+                    ScopeChain sc = ScopeChain.make(Collections.singleton(varobj), obj_f_sc);
 
-        // 10.2.3 enter new execution context, 13.2.1 transfer parameters, 10.1.6/8 provide 'arguments' object
-        ObjectLabel varobj = new ObjectLabel(f.getEntry().getFirstNode(), Kind.ACTIVATION, heapContext); // better to use entry than invoke here
-        edge_state.newObject(varobj);
-        extra_summarized.addDefinitelySummarized(varobj);
-        ObjectLabel argobj = new ObjectLabel(f.getEntry().getFirstNode(), Kind.ARGUMENTS, heapContext);
-        edge_state.newObject(argobj);
-        extra_summarized.addDefinitelySummarized(argobj);
-        ScopeChain sc = ScopeChain.make(Collections.singleton(varobj), obj_f_sc);
+                    edge_state.setExecutionContext(new ExecutionContext(sc, singleton(varobj), newSet(this_objs)));
+                    pv.declareAndWriteVariable("arguments", Value.makeObject(argobj), true);
+                    edge_state.writeInternalPrototype(argobj, Value.makeObject(InitialStateBuilder.OBJECT_PROTOTYPE));
+                    pv.writePropertyWithAttributes(argobj, "callee", Value.makeObject(obj_f).setAttributes(true, false, false));
+                    Value argumentCount = call.isUnknownNumberOfArgs() ? Value.makeAnyNumUInt() : Value.makeNum(call.getNumberOfArgs());
+                    pv.writePropertyWithAttributes(argobj, "length", argumentCount.setAttributes(true, false, false));
 
-        edge_state.setExecutionContext(new ExecutionContext(sc, singleton(varobj), newSet(this_objs)));
-        pv.declareAndWriteVariable("arguments", Value.makeObject(argobj), true);
-        edge_state.writeInternalPrototype(argobj, Value.makeObject(InitialStateBuilder.OBJECT_PROTOTYPE));
-        pv.writePropertyWithAttributes(argobj, "callee", Value.makeObject(obj_f).setAttributes(true, false, false));
-        int num_formals = f.getParameterNames().size();
-        pv.writePropertyWithAttributes(argobj, "length",
-                (num_actuals_unknown ? Value.makeAnyNumUInt() : Value.makeNum(num_actuals)).setAttributes(true, false, false));
-        for (int i = 0; i < num_formals || (!num_actuals_unknown && i < num_actuals); i++) {
-            Value v;
-            if (num_actuals_unknown)
-                v = unknown_arg.summarize(extra_summarized);
-            else if (i < num_actuals) {
-                v = actuals.get(i).summarize(extra_summarized);
-                pv.writePropertyWithAttributes(argobj, Integer.toString(i), v.setAttributes(false, false, false)); // from ES5 Annex E: "In Edition 5 the array indexed properties of argument objects that correspond to actual formal parameters are enumerable. In Edition 3, such properties were not enumerable."
-            } else
-                v = Value.makeUndef(); // 10.1.3
-            if (i < num_formals)
-                pv.declareAndWriteVariable(f.getParameterNames().get(i), v, true); // 10.1.3
-        }
-        // FIXME: properties of 'arguments' should be shared with the formal parameters (see 10.1.8 item 4) - easy solution that does not require Reference types? - github #21
-        // (see comment at NodeTransfer/WriteVariable... - also needs the other way around...)
+                    DeclareFunctionNode node = f.getNode();
+                    if (node != null) {
+                        if (node.isExpression() && f.getName() != null) {
+                            Value objVal = Value.makeObject(obj_f);
+                            pv.declareAndWriteVariable(f.getName(), objVal, true); // 10.1.3
+                        }
+                    }
 
-        if (c.isScanning())
-            return;
+                    // if unknown number of arguments, fuzzy write unknown arg to arguments object
+                    if (call.isUnknownNumberOfArgs()) {
+                        Value v = call.getUnknownArg();
+                        if (Options.get().isDebugOrTestEnabled() && !v.isMaybeUndef()) {
+                            throw new AnalysisException("Unknown arg not possibly undefined?");
+                        }
+                        Value summarized = v.summarize(extra_summarized);
+                        pv.writeProperty(singleton(argobj), Value.makeAnyStrUInt(), summarized); // the first arguments will be overwritten below with something more precise
+                    }
+                    // write argument values to the arguments object and the named parameters
+                    final int numberOfUnknownArgumentsToKeepDisjoint = 10; // number of parameters to keep separate, if the actual number is unknown
+                    for (int i = 0; i < f.getParameterNames().size() || i < (call.isUnknownNumberOfArgs() ? numberOfUnknownArgumentsToKeepDisjoint : call.getNumberOfArgs()); i++) {
+                        Value v = call.getArg(i);
+                        Value summarized = v.summarize(extra_summarized);
+                        pv.writeProperty(argobj, Integer.toString(i), summarized); // from ES5 Annex E: "In Edition 5 the array indexed properties of argument objects that correspond to actual formal parameters are enumerable. In Edition 3, such properties were not enumerable."
+                        if (i < f.getParameterNames().size()) {
+                            pv.declareAndWriteVariable(f.getParameterNames().get(i), summarized, true); // 10.1.3
+                        }
+                    }
+                    // FIXME: properties of 'arguments' should be shared with the formal parameters (see 10.1.8 item 4) - easy solution that does not require Reference types? - github #21
+                    // (see comment at NodeTransfer/WriteVariable... - also needs the other way around...)
 
-        edge_state.stackObjectLabels();
-        edge_state.clearRegisters();
+                    if (c.isScanning())
+                        return;
 
-        if (this_objs.size() > 1 && Options.get().isContextSpecializationEnabled()) {
-            // specialize edge_state such that 'this' becomes a singleton
-            if (log.isDebugEnabled())
-                log.debug("specializing edge state, this = " + this_objs);
-            for (Iterator<ObjectLabel> it = this_objs.iterator(); it.hasNext(); ) {
-                ObjectLabel this_obj = it.next();
-                State next_edge_state = it.hasNext() ? edge_state.clone() : edge_state;
-                next_edge_state.getExecutionContext().setThisObject(singleton(this_obj)); // (execution context should be writable here)
-                propagateToFunctionEntry(next_edge_state, n, obj_f, call, implicit, c);
-            }
-        } else
-            propagateToFunctionEntry(edge_state, n, obj_f, call, implicit, c);
+                    edge_state.stackObjectLabels();
+                    edge_state.clearRegisters();
 
-        c.setState(caller_state);
+                    if (this_objs.size() > 1 && Options.get().isContextSpecializationEnabled()) {
+                        // specialize edge_state such that 'this' becomes a singleton
+                        if (log.isDebugEnabled())
+                            log.debug("specializing edge state, this = " + this_objs);
+                        for (Iterator<ObjectLabel> it = this_objs.iterator(); it.hasNext(); ) {
+                            ObjectLabel this_obj = it.next();
+                            State next_edge_state = it.hasNext() ? edge_state.clone() : edge_state;
+                            next_edge_state.getExecutionContext().setThisObject(singleton(this_obj)); // (execution context should be writable here)
+                            propagateToFunctionEntry(next_edge_state, n, obj_f, call, implicit, c);
+                        }
+                    } else
+                        propagateToFunctionEntry(edge_state, n, obj_f, call, implicit, c);
+                });
     }
 
     private static void propagateToFunctionEntry(State edge_state, AbstractNode n, ObjectLabel obj_f, CallInfo callInfo, boolean implicit, Solver.SolverInterface c) {
-        Context edge_context = c.getAnalysis().getContextSensitivityStrategy().makeFunctionEntryContext(edge_state, obj_f, callInfo, c);
+        Context edge_context = c.getAnalysis().getContextSensitivityStrategy().makeFunctionEntryContext(edge_state, obj_f, callInfo, edge_state.readThisObjects(), c);
         c.propagateToFunctionEntry(n, edge_state.getContext(), edge_state, edge_context, obj_f.getFunction().getEntry(), implicit);
     }
 
@@ -252,10 +264,7 @@ public class UserFunctionCalls {
             this_obj.add(InitialStateBuilder.GLOBAL);
         } else {
             // FIXME: see 10.2.3, 11.2.3 and 11.2.1.5 - is following call to toObjectLabels correct?
-            State ts = c.getState();
-            c.setState(callee_state);
-            Set<ObjectLabel> t = Conversion.toObjectLabels(n, caller_state.readRegister(base_reg), c); // TODO: likely loss of precision if multiple object labels (or a summary object) as 'this' value
-            c.setState(ts);
+            Set<ObjectLabel> t = c.withState(callee_state, () -> Conversion.toObjectLabels(n, caller_state.readRegister(base_reg), c)); // TODO: likely loss of precision if multiple object labels (or a summary object) as 'this' value
             // TODO: disable conversion warnings for this call to Conversion.toObjectLabels? (test/micro/test163.js)
             // 11.2.3 and 10.1.6: replace activation objects by the global object
             for (ObjectLabel objlabel : t)
@@ -278,11 +287,11 @@ public class UserFunctionCalls {
             AbstractNode n = f.getOrdinaryExit().getLastNode();
             if (exceptional) {
                 returnval = UnknownValueResolver.getRealValue(returnval, state);
-                TreeSet<SourceLocation> objs = new TreeSet<>(returnval.getObjectSourceLocations());
-                if (!objs.isEmpty()) { // use object source locations
+                TreeSet<SourceLocation> objs = new TreeSet<>(returnval.getObjectSourceLocations().stream().filter(l -> !HostEnvSources.isHostEnvSource(l)).collect(Collectors.toList()));
+                if (!objs.isEmpty()) { // use object source locations, but exclude those originating from host environments
                     c.getMonitoring().addMessage(n, Severity.LOW, msgkey, "Uncaught exception, constructed at " + objs); // TODO: give user-defined exceptions higher severity level?
                 } else { // alternatively, use the primitive values in the message
-                    Value v = returnval.restrictToNotObject();
+                    Value v = returnval.restrictToNotObject(); // TODO: may be <none> if returnval only contains exceptions from host env
                     c.getMonitoring().addMessage(n, Severity.LOW, msgkey, "Uncaught exception: " + v);
                 }
             }

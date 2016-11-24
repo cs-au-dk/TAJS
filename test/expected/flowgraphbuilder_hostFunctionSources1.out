@@ -1,14 +1,14 @@
 fg2: <main> function()
   block 0: [entry]
-    node 0: constant[undefined,v1] (out/temp-sources/flowgraphbuilder_hostFunctionSources1)
+    node 0: constant[undefined,v1] (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_hostFunctionSources1.js)
     ->[block 1]
   block 1:
-    node 1: constant["BODY",-]* (out/temp-sources/flowgraphbuilder_hostFunctionSources1:1:1)
+    node 1: constant["BODY",-]* (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_hostFunctionSources1.js:1:1)
     ->[block 2]
   block 2: [exit-ordinary]
-    node 2: return[v1] (out/temp-sources/flowgraphbuilder_hostFunctionSources1)
+    node 2: return[v1] (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_hostFunctionSources1.js)
     ->[]
   block 3: [exit-exceptional]
-    node 3: exceptional-return (out/temp-sources/flowgraphbuilder_hostFunctionSources1)
+    node 3: exceptional-return (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_hostFunctionSources1.js)
     ->[]
 

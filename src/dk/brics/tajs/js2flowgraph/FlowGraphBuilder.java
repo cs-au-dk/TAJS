@@ -1,3 +1,19 @@
+/*
+ * Copyright 2009-2016 Aarhus University
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package dk.brics.tajs.js2flowgraph;
 
 import com.google.common.collect.ImmutableList;
@@ -8,7 +24,6 @@ import com.google.javascript.jscomp.parsing.parser.trees.ParseTree;
 import com.google.javascript.jscomp.parsing.parser.trees.ProgramTree;
 import dk.brics.tajs.flowgraph.AbstractNode;
 import dk.brics.tajs.flowgraph.BasicBlock;
-import dk.brics.tajs.flowgraph.EventHandlerKind;
 import dk.brics.tajs.flowgraph.FlowGraph;
 import dk.brics.tajs.flowgraph.Function;
 import dk.brics.tajs.flowgraph.HostEnvSources;
@@ -25,11 +40,13 @@ import dk.brics.tajs.js2flowgraph.JavaScriptParser.ParseResult;
 import dk.brics.tajs.js2flowgraph.JavaScriptParser.SyntaxMesssage;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.util.AnalysisException;
+import dk.brics.tajs.util.AnalysisLimitationException;
 import dk.brics.tajs.util.Collections;
 import dk.brics.tajs.util.Pair;
 import dk.brics.tajs.util.ParseError;
 import org.apache.log4j.Logger;
 
+import java.net.URL;
 import java.nio.file.Paths;
 import java.util.Collection;
 import java.util.List;
@@ -59,13 +76,9 @@ public class FlowGraphBuilder {
 
     private final JavaScriptParser parser;
 
-    private final FunctionBuilder functionBuilder;
-
     private final FunctionAndBlockManager functionAndBlocksManager;
 
     private final AstEnv initialEnv;
-
-    private final List<Pair<Function, EventHandlerKind>> eventHandlers;
 
     private boolean closed = false;
 
@@ -73,11 +86,13 @@ public class FlowGraphBuilder {
 
     private ASTInfo astInfo;
 
+    private SyntacticHintsCollector syntacticHintsCollector;
+
     /**
      * Constructs a new flow graph builder using a fresh environment.
      */
-    public FlowGraphBuilder(String descriptiveRootSourceName) {
-        this(null, null, descriptiveRootSourceName);
+    public FlowGraphBuilder(URL location, String prettyFileName) {
+        this(null, null, location, prettyFileName);
     }
 
     /**
@@ -85,30 +100,29 @@ public class FlowGraphBuilder {
      *  @param env traversal environment, or null if fresh
      * @param fab function/block manager, or null if fresh
      */
-    public FlowGraphBuilder(AstEnv env, FunctionAndBlockManager fab, String descriptiveRootSourceName) {
+    public FlowGraphBuilder(AstEnv env, FunctionAndBlockManager fab, URL location, String prettyFileName) {
         if (fab == null) {
             fab = new FunctionAndBlockManager();
         }
         if (env == null) {
             // prepare an initial AstEnv with a dummy main function
             env = AstEnv.makeInitial();
-            Function main = new Function(null, null, null, new SourceLocation(0, 0, descriptiveRootSourceName));
+            Function main = new Function(null, null, null, new SourceLocation(0, 0, prettyFileName, location));
             env = setupFunction(main, env, fab);
         }
         functionAndBlocksManager = fab;
         astInfo = new ASTInfo();
         initialEnv = env;
         parser = new JavaScriptParser(mode);
-        functionBuilder = new FunctionBuilder(new ClosureASTUtil(mode), astInfo, fab);
         processed = TranslationResult.makeAppendBlock(initialEnv.getAppendBlock());
-        eventHandlers = newList();
+        syntacticHintsCollector = new SyntacticHintsCollector();
     }
 
     /**
      * Transforms the given stand-alone JavaScript source code and appends it to the main function.
      */
-    public void transformStandAloneCode(JavaScriptSource source) {
-        transformCode(source, 0, 0);
+    public Function transformStandAloneCode(JavaScriptSource source) {
+        return transformCode(source, 0, 0);
     }
 
     /**
@@ -118,16 +132,17 @@ public class FlowGraphBuilder {
      * @param lineOffset   number of lines preceding the code
      * @param columnOffset number of columns preceding the first line of the code
      */
-    void transformCode(JavaScriptSource source, int lineOffset, int columnOffset) {
+    Function transformCode(JavaScriptSource source, int lineOffset, int columnOffset) {
         final AstEnv env = initialEnv.makeAppendBlock(processed.getAppendBlock());
-        ProgramTree t = makeAST(source.getFileName(), source.getCode(), lineOffset, columnOffset);
-        processed = functionBuilder.process(t, env);
+        ProgramTree t = makeAST(source.getLocation(), source.getPrettyFileName(), source.getCode(), lineOffset, columnOffset);
+        processed = new FunctionBuilder(astInfo, functionAndBlocksManager, source.getLocation(), syntacticHintsCollector).process(t, env);
+        return processed.getAppendBlock().getFunction();
     }
 
     /**
      * Parses the given JavaScript code.
      */
-    private ProgramTree makeAST(String sourceName, String sourceContent, int lineOffset, int columnOffset) {
+    private ProgramTree makeAST(URL location, String prettyFileName, String sourceContent, int lineOffset, int columnOffset) {
         if (closed) {
             throw new RuntimeException("Already closed.");
         }
@@ -142,9 +157,9 @@ public class FlowGraphBuilder {
         }
         s.append(sourceContent);
 
-        ParseResult parseResult = parser.parse(sourceName, s.toString());
-        astInfo.updateWith(parseResult.getProgramAST());
+        ParseResult parseResult = parser.parse(location, prettyFileName, s.toString());
         reportParseMessages(parseResult);
+        astInfo.updateWith(parseResult.getProgramAST());
         return parseResult.getProgramAST();
     }
 
@@ -171,54 +186,27 @@ public class FlowGraphBuilder {
     /**
      * Transforms the given web application JavaScript source code.
      */
-    public void transformWebAppCode(JavaScriptSource s) {
+    public Function transformWebAppCode(JavaScriptSource s) {
         switch (s.getKind()) {
 
             case FILE: { // TODO: (#119) processing order of external JavaScript files (sync/async loading...)
                 // TODO: (#119) should be added as a load event, but that does not work currently...
                 // Function function = processFunctionBody(Collections.<String>newList(), s.getFileName(), s.getJavaScript(), 0, initialEnv);
                 // eventHandlers.add(Pair.make(function, EventHandlerKind.DOM_LOAD));
-                transformStandAloneCode(s);
-                break;
+                return transformStandAloneCode(s);
             }
 
             case EMBEDDED: { // TODO: (#119) currently ignoring events during page load (unsound)
-                transformCode(s, s.getLineOffset(), s.getColumnOffset());
-                break;
+                return transformCode(s, s.getLineOffset(), s.getColumnOffset());
             }
 
             case EVENTHANDLER: {
-                Function function = transformFunctionBody(s.getFileName(), s.getCode(), s.getLineOffset(), s.getColumnOffset(), initialEnv);
-                String name = s.getEventName();
-                final EventHandlerKind k;
-                switch (name) { // TODO: (#118) not all HTML5 events are covered, see https://html.spec.whatwg.org/
-                    case "load":
-                        k = EventHandlerKind.LOAD;
-                        break;
-                    case "unload":
-                        k = EventHandlerKind.UNLOAD;
-                        break;
-                    case "keypress":
-                    case "keydown":
-                    case "keyup":
-                        k = EventHandlerKind.KEYBOARD;
-                        break;
-                    case "click":
-                    case "dblclick":
-                    case "mousedown":
-                    case "mouseup":
-                    case "mouseover":
-                    case "mousemove":
-                    case "mouseout":
-                        k = EventHandlerKind.MOUSE;
-                        break;
-                    default:
-                        k = EventHandlerKind.UNKNOWN;
-                        break;
-                }
-                eventHandlers.add(Pair.make(function, k));
-                break;
+                Function function = transformFunctionBody(s.getLocation(), s.getPrettyFileName(), s.getCode(), s.getLineOffset(), s.getColumnOffset(), initialEnv);
+                function.getNode().setDomEventType(s.getEventKind());
+                return function;
             }
+            default:
+                throw new AnalysisException("Unhandled case: " + s.getKind());
         }
     }
 
@@ -227,17 +215,10 @@ public class FlowGraphBuilder {
      *
      * @return the new function
      */
-    private Function transformFunctionBody(String sourceName, String sourceContent, int lineOffset, int columnOffset, AstEnv env) {
-        ProgramTree tree = makeAST(sourceName, sourceContent, lineOffset, columnOffset);
+    private Function transformFunctionBody(URL location, String prettyFileName, String sourceContent, int lineOffset, int columnOffset, AstEnv env) {
+        ProgramTree tree = makeAST(location, prettyFileName, sourceContent, lineOffset, columnOffset);
         FormalParameterListTree params = new FormalParameterListTree(tree.location, ImmutableList.of());
-        return functionBuilder.processFunctionDeclaration(Kind.DECLARATION, null, params, tree, env, makeSourceLocation(tree), null);
-    }
-
-    /**
-     * Returns the event handlers collected by {@link #transformWebAppCode(JavaScriptSource)}.
-     */
-    public List<Pair<Function, EventHandlerKind>> getEventHandlers() {
-        return eventHandlers;
+        return new FunctionBuilder(astInfo, functionAndBlocksManager, location, syntacticHintsCollector).processFunctionDeclaration(Kind.DECLARATION, null, params, tree, env, makeSourceLocation(tree, location), null);
     }
 
     /**
@@ -276,6 +257,7 @@ public class FlowGraphBuilder {
 
         if (flowGraph == null) {
             flowGraph = new FlowGraph(initialEnv.getFunction());
+            flowGraph.setSyntacticHints(syntacticHintsCollector.getSyntacticHints());
         }
         int origBlockCount = flowGraph.getNumberOfBlocks();
         int origNodeCount = flowGraph.getNumberOfNodes();
@@ -346,11 +328,6 @@ public class FlowGraphBuilder {
             end.getBeginNode().getEndNodes().add(end);
         }
 
-        // add event handers
-        for (Pair<Function, EventHandlerKind> callbackKindPair : eventHandlers) {
-            flowGraph.addEventHandler(callbackKindPair.getFirst(), callbackKindPair.getSecond());
-        }
-
         int blockCount = origBlockCount;
         int nodeCount = origNodeCount;
 
@@ -394,11 +371,9 @@ public class FlowGraphBuilder {
     private static void setEntryBlocks(Function f, FunctionAndBlockManager functionAndBlocksManager) {
         Stack<BasicBlock> entryStack = new Stack<>();
         entryStack.push(f.getEntry());
-        try {
-            setEntryBlocks(null, f.getEntry(), entryStack, newSet(), functionAndBlocksManager);
-        }catch(StackOverflowError e){
-            throw new AnalysisException("Recursive algorithm can not handle large function body");
-        }
+
+        setEntryBlocks(null, f.getEntry(), entryStack, newSet(), functionAndBlocksManager);
+
         // needed if the blocks are unreachable
         f.getOrdinaryExit().setEntryBlock(f.getEntry());
         f.getExceptionalExit().setEntryBlock(f.getEntry());
@@ -408,8 +383,11 @@ public class FlowGraphBuilder {
      * Recursively sets BasicBlock.entry_block
      * All blocks between "Begin" and "End" nodes form a region with a changed entry block see {@link BasicBlock#entry_block}
      */
-    private static void setEntryBlocks(BasicBlock predecessor, BasicBlock target, Stack<BasicBlock> entryStack, Set<BasicBlock> visited, FunctionAndBlockManager functionAndBlocksManager) {
+    public static void setEntryBlocks(BasicBlock predecessor, BasicBlock target, Stack<BasicBlock> entryStack, Set<BasicBlock> visited, FunctionAndBlockManager functionAndBlocksManager) {
         visited.add(target);
+        if (visited.size() > 1000) {
+            throw new AnalysisLimitationException.SyntacticSupportNotImplemented(target.getFunction().getSourceLocation() + ": Recursive algorithm cannot handle large function body");
+        }
         Stack<BasicBlock> successorEntryStack = new Stack<>();
         successorEntryStack.addAll(entryStack);
         Stack<BasicBlock> exceptionEntryStack = new Stack<>();
@@ -422,12 +400,14 @@ public class FlowGraphBuilder {
 
         if (!target.isEmpty()) {
             AbstractNode lastNode = target.getLastNode();
-            if (lastNode instanceof BeginForInNode) {
-                successorEntryStack.push(target.getSingleSuccessor());
-            }
-            if (lastNode instanceof EndForInNode) {
-                successorEntryStack.pop();
-                exceptionEntryStack.pop();
+            if(!Options.get().isForInSpecializationDisabled()) {
+                if (lastNode instanceof BeginForInNode) {
+                    successorEntryStack.push(target.getSingleSuccessor());
+                }
+                if (lastNode instanceof EndForInNode) {
+                    successorEntryStack.pop();
+                    exceptionEntryStack.pop();
+                }
             }
         }
 
@@ -509,14 +489,14 @@ public class FlowGraphBuilder {
 
         sources.stream().map(source -> {
             // make a function for each source ...
-            ProgramTree tree = makeAST(source.getFileName(), source.getCode(), source.getLineOffset(), source.getColumnOffset());
+            ProgramTree tree = makeAST(source.getLocation(), source.getPrettyFileName(), source.getCode(), source.getLineOffset(), source.getColumnOffset());
 
             FormalParameterListTree params = new FormalParameterListTree(tree.location, ImmutableList.<ParseTree>of());
 
             int register = mainEnv.getRegisterManager().nextRegister();
             AstEnv declarationEnv = mainEnv.makeResultRegister(register).makeStatementLevel(false).makeAppendBlock(lastLoaderBlockBox[0]);
-            SourceLocation location = new SourceLocation(0, 0, source.getFileName());
-            functionBuilder.processFunctionDeclaration(Kind.EXPRESSION, "load:" + Paths.get(source.getFileName()).getFileName(), params, tree, declarationEnv, location, null);
+            SourceLocation location = new SourceLocation(0, 0, source.getPrettyFileName(), source.getLocation());
+            new FunctionBuilder(astInfo, functionAndBlocksManager, source.getLocation(), syntacticHintsCollector).processFunctionDeclaration(Kind.EXPRESSION, "load:" + Paths.get(source.getPrettyFileName()).getFileName(), params, tree, declarationEnv, location, null);
             return register;
         }).collect(Collectors.toList() /* order of block side effects is important. sync here */).
                 forEach(functionRegister -> {

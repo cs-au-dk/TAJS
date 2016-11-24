@@ -220,14 +220,14 @@ re.compile(void 0);
 assertEquals('/undefined/', re.toString());
 
 
-// Check for lazy RegExp literal creation
-function lazyLiteral(doit) {
-  if (doit) return "".replace(/foo(/gi, "");
-  return true;
-}
-
-assertTrue(lazyLiteral(false));
-assertThrows("lazyLiteral(true)");
+// TAJS-removed section: SoundnessTester (Jalangi) does not support this code syntactically // Check for lazy RegExp literal creation
+// function lazyLiteral(doit) {
+//   if (doit) return "".replace(/foo(/gi, "");
+//   return true;
+// }
+//
+// assertTrue(lazyLiteral(false));
+// assertThrows("lazyLiteral(true)");
 
 // Check $01 and $10
 re = new RegExp("(.)(.)(.)(.)(.)(.)(.)(.)(.)(.)");

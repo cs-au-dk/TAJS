@@ -1,2 +1,2 @@
-out/temp-sources/eventListenerRegistrationInEventHandler_sameKind.js:2:2: [info] Abstract value: "mousedownHandler triggered"
-out/temp-sources/eventListenerRegistrationInEventHandler_sameKind.js:6:2: [info] Abstract value: "mouseupHandler triggered"
+out/temp-sources/TestMicro.eventListenerRegistrationInEventHandler_sameKind.js:2:2: [info] Abstract value: "mousedownHandler triggered"
+out/temp-sources/TestMicro.eventListenerRegistrationInEventHandler_sameKind.js:6:2: [info] Abstract value: "mouseupHandler triggered"

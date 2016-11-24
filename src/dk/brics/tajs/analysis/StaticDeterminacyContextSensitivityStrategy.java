@@ -1,14 +1,29 @@
+/*
+ * Copyright 2009-2016 Aarhus University
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package dk.brics.tajs.analysis;
 
-import dk.brics.tajs.analysis.nativeobjects.concrete.Gamma;
+import dk.brics.tajs.analysis.nativeobjects.concrete.SingleGamma;
 import dk.brics.tajs.flowgraph.AbstractNode;
 import dk.brics.tajs.flowgraph.Function;
 import dk.brics.tajs.flowgraph.SourceLocation;
+import dk.brics.tajs.flowgraph.SyntacticHints;
 import dk.brics.tajs.flowgraph.jsnodes.BeginForInNode;
 import dk.brics.tajs.flowgraph.jsnodes.BeginLoopNode;
 import dk.brics.tajs.flowgraph.jsnodes.EndLoopNode;
-import dk.brics.tajs.js2flowgraph.ASTInfo;
-import dk.brics.tajs.js2flowgraph.AstEnv;
 import dk.brics.tajs.lattice.Context;
 import dk.brics.tajs.lattice.ContextArguments;
 import dk.brics.tajs.lattice.HeapContext;
@@ -22,8 +37,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
-import static dk.brics.tajs.util.Collections.addToMapSet;
 import static dk.brics.tajs.util.Collections.newList;
 import static dk.brics.tajs.util.Collections.newMap;
 import static dk.brics.tajs.util.Collections.newSet;
@@ -103,7 +118,7 @@ public class StaticDeterminacyContextSensitivityStrategy implements IContextSens
         if (!shouldLiteralBeHeapSensitive(node, funArgs)) {
             return null;
         }
-        return HeapContext.make(funArgs, null);
+        return makeHeapContext(node, funArgs);
     }
 
     @Override
@@ -112,24 +127,26 @@ public class StaticDeterminacyContextSensitivityStrategy implements IContextSens
     }
 
     private boolean shouldLiteralBeHeapSensitive(AbstractNode node, ContextArguments arguments) {
+        if (syntacticHints.isCorrelatedAccessFunction(node.getBlock().getFunction())) {
+            return true;
+        }
         if (arguments == null || arguments.isUnknown()) {
             return false;
         }
-        if (syntacticHints.isIsInForIn(node)) {
-            return true;
-        }
-        List<String> parameterNames = node.getBlock().getFunction().getParameterNames();
-        int argumentNumber = 0;
-        for (Value value : arguments.getArguments()) {
-            boolean isSensitive = value != null;
-            boolean hasParameterNameForArgument = parameterNames.size() > argumentNumber;
-            if (isSensitive && hasParameterNameForArgument) {
-                String parameterName = parameterNames.get(argumentNumber);
-                if (syntacticHints.doesLiteralReferenceParameter(node, parameterName)) {
-                    return true;
+        if (arguments.hasArguments()) {
+            List<String> parameterNames = node.getBlock().getFunction().getParameterNames();
+            int argumentNumber = 0;
+            for (Value value : arguments.getArguments()) {
+                boolean isSensitive = value != null;
+                boolean hasParameterNameForArgument = parameterNames.size() > argumentNumber;
+                if (isSensitive && hasParameterNameForArgument) {
+                    String parameterName = parameterNames.get(argumentNumber);
+                    if (syntacticHints.doesLiteralReferenceParameter(node, parameterName)) {
+                        return true;
+                    }
                 }
+                argumentNumber++;
             }
-            argumentNumber++;
         }
 
         return false;
@@ -144,10 +161,15 @@ public class StaticDeterminacyContextSensitivityStrategy implements IContextSens
      * created callee context.
      */
     @Override
-    public HeapContext makeActivationAndArgumentsHeapContext(State state, ObjectLabel function, FunctionCalls.CallInfo callInfo, Solver.SolverInterface c) {
+    public HeapContext makeActivationAndArgumentsHeapContext(State state, ObjectLabel function, Set<ObjectLabel> this_objs, FunctionCalls.CallInfo callInfo, Solver.SolverInterface c) {
         // Due to implementation details, the callee context is created *after* the activation and argument objects.
         // So the callee-context is computed here (using the same algorithm) as well
-        return HeapContext.make(decideCallContextArguments(function, callInfo, state, c), null);
+        return makeHeapContext(callInfo.getJSSourceNode(), decideCallContextArguments(function, callInfo, state, c)); // TODO: currently not using this_objs...
+    }
+
+    @Override
+    public HeapContext makeConstructorHeapContext(State state, ObjectLabel function, FunctionCalls.CallInfo callInfo, Solver.SolverInterface c) {
+        return makeHeapContext(callInfo.getJSSourceNode(), decideCallContextArguments(function, callInfo, state, c));
     }
 
     /**
@@ -160,7 +182,7 @@ public class StaticDeterminacyContextSensitivityStrategy implements IContextSens
      * allocation site).
      */
     @Override
-    public Context makeFunctionEntryContext(State state, ObjectLabel function, FunctionCalls.CallInfo callInfo, Solver.SolverInterface c) {
+    public Context makeFunctionEntryContext(State state, ObjectLabel function, FunctionCalls.CallInfo callInfo, Set<ObjectLabel> this_objs, Solver.SolverInterface c) {
         assert (function.getKind() == ObjectLabel.Kind.FUNCTION);
         // set thisval for object sensitivity (unlike traditional object sensitivity we allow sets of object labels)
         Set<ObjectLabel> thisval = null;
@@ -182,6 +204,9 @@ public class StaticDeterminacyContextSensitivityStrategy implements IContextSens
 
     @Override
     public Context makeNextLoopUnrollingContext(Context currentContext, BeginLoopNode node) {
+        if (node.isNested()) {
+            return currentContext;
+        }
         return basic.makeNextLoopUnrollingContext(currentContext, node);
     }
 
@@ -208,28 +233,56 @@ public class StaticDeterminacyContextSensitivityStrategy implements IContextSens
         }
 
         List<Value> arguments = newList();
-        for (int i = 0; i < call.getNumberOfArgs(); i++) {
-            Value argument = UnknownValueResolver.getRealValue(call.getArg(i), edge_state);
-            boolean isPrecise = determinateInterestingValue.isPrecise(argument, c);
-            if (!isPrecise) {
-                isPrecise = isPreciseSpecialCaseOnExtendOrIsPlainObject(argument, obj_f.getFunction(), edge_state, call.getJSSourceNode().getSourceLocation(), c);
-            }
-            if (isPrecise) {
-                arguments.add(argument);
-            } else {
-                arguments.add(null);
+        if (!call.isUnknownNumberOfArgs()) {
+            for (int i = 0; i < call.getNumberOfArgs(); i++) {
+                arguments.add(NativeFunctions.readParameter(call, edge_state, i));
             }
         }
 
-        return new ContextArguments(obj_f.getFunction().getParameterNames(), arguments, closureVariables);
+        List<Value> selectedArguments = newList();
+        for (Value argument : arguments) {
+            // avoid directly recursive context sensitivity components
+            argument = argument.removeObjects(
+                    argument.getObjectLabels().stream()
+                            .filter(l -> c.getNode().equals(l.getNode()) || isRecursiveHeapContext(l))
+                            .collect(Collectors.toSet()));
+
+            boolean isPrecise = determinateInterestingValue.isPrecise(argument, c);
+            if (!isPrecise) {
+                isPrecise = isPreciseSpecialCaseOnExtendOrIsPlainObject(argument, obj_f.getFunction(), edge_state, call.getJSSourceNode().getSourceLocation(), c);
+                // argument = argument.restrictToObject().join(argument.restrictToStr());
+            }
+            if (isPrecise) {
+                selectedArguments.add(argument);
+            } else {
+                selectedArguments.add(null);
+            }
+        }
+
+        return new ContextArguments(obj_f.getFunction().getParameterNames(), selectedArguments, closureVariables);
+    }
+
+    private boolean isRecursiveHeapContext(ObjectLabel l) {
+        if (l.getNode() == null) {
+            return false;
+        }
+        Set<ObjectLabel> topLevelObjectLabels = HeapContext.extractTopLevelObjectLabels(l.getHeapContext());
+        Set<ObjectLabel> recursives = topLevelObjectLabels.stream()
+                .filter(innerLabel -> l.getNode().equals(innerLabel.getNode()))
+                .collect(Collectors.toSet());
+        boolean isRecursive = !recursives.isEmpty();
+//        if (isRecursive) {
+//            System.out.printf("Object %s is recursive by: %s%n", l, recursives);
+//        }
+        return isRecursive;
     }
 
     /**
      * From OOPSLA 2014 page 10:
      * <p>
      * When a declare-function instruction with source location n in some
-     * context (t, a, b, d) ∈ C creates a new function object, its abstract
-     * address is selected as (n, a, b, d) ∈ L; that is, the context
+     * context (t, a, b, d) \in C creates a new function object, its abstract
+     * address is selected as (n, a, b, d) \in L; that is, the context
      * sensitivity valuations a, b, and d are taken directly from the current
      * context.
      * <p>
@@ -258,9 +311,18 @@ public class StaticDeterminacyContextSensitivityStrategy implements IContextSens
                 }
             }
         }
-        HeapContext heapContext = HeapContext.make(new ContextArguments(null, map), null);
+        HeapContext heapContext = makeHeapContext(c.getNode(), new ContextArguments(null, map));
         closureVariableValuesAtAllocation.put(heapContext, map);
         return heapContext;
+    }
+
+    public HeapContext makeHeapContext(AbstractNode location, ContextArguments arguments) {
+        boolean recursive = ContextArguments.extractTopLevelObjectLabels(arguments).stream().anyMatch(location::equals); // FIXME: types don't match, wrong 'equals'?
+        if (recursive) {
+            // System.out.printf("Avoiding creation of recursive objectlabel at %s: %s%n", location, arguments);
+            return HeapContext.make(null, null);
+        }
+        return HeapContext.make(arguments, null);
     }
 
     /**
@@ -276,7 +338,7 @@ public class StaticDeterminacyContextSensitivityStrategy implements IContextSens
 
         public boolean isPrecise(Value value, Solver.SolverInterface c) {
             if (value.typeSize() == 1) {
-                if (Gamma.isConcreteString(value, c)) {
+                if (SingleGamma.isConcreteString(value, c)) {
                     return true;
                 }
                 if (value.isMaybeObject()) {
@@ -293,94 +355,6 @@ public class StaticDeterminacyContextSensitivityStrategy implements IContextSens
                 }
             }
             return false;
-        }
-    }
-
-    /**
-     * Various syntactic information that guides the heuristics.
-     */
-    public static class SyntacticHints {
-
-        private static SyntacticHints instance;
-
-        private final Map<AbstractNode, Set<String>> variableDependencies = newMap();
-
-        private final Set<AbstractNode> inForIn = newSet();
-
-        private final Map<Function, Set<String>> loopVariables = newMap();
-
-        private SyntacticHints() {
-        }
-
-        public static SyntacticHints get() {
-            if (instance == null) {
-                instance = new SyntacticHints();
-            }
-            return instance;
-        }
-
-        public static void reset() {
-            instance = null;
-        }
-
-        public void registerLiteral(AbstractNode literalNode, ASTInfo.LiteralTree literalTree, ASTInfo astInfo) {
-            if (astInfo.getLiteralsInForIn().contains(literalTree)) {
-                inForIn.add(literalNode);
-            }
-            if (astInfo.getVariableReadsInLiterals().containsKey(literalTree)) {
-                Set<String> variableReads = astInfo.getVariableReadsInLiterals().get(literalTree);
-                for (String variableRead : variableReads) {
-                    addToMapSet(variableDependencies, literalNode, variableRead);
-                }
-            }
-        }
-
-        /**
-         * From OOPSLA 2014 page 8:
-         * <p>
-         * "However,we include only variables that appear syntactically in
-         * the condition and in the body of a non-nested for loop in the
-         * current function, and are involved in a dynamic property read
-         * operation (i.e. as a sub-expression of e2 in e1[e2])"
-         */
-        public boolean isLoopVariable(Function function, String variable) {
-            return loopVariables.containsKey(function) && loopVariables.get(function).contains(variable);
-        }
-
-        public boolean doesLiteralReferenceParameter(AbstractNode literalAllocationNode, String parameterName) {
-            return variableDependencies.containsKey(literalAllocationNode) && variableDependencies.get(literalAllocationNode).contains(parameterName);
-        }
-
-        public void registerLoop(ASTInfo.LoopTree loopTree, AstEnv env, ASTInfo astInfo) {
-            // avoid nested loops
-            if (astInfo.getNestedLoops().contains(loopTree)) {
-                return;
-            }
-            Set<String> conditionReadVariables = newSet();
-            Set<String> nonInitializerWriteVariables = newSet();
-            Set<String> dpaReadVariables = newSet();
-            if (astInfo.getLoopConditionVariableReads().containsKey(loopTree)) {
-                conditionReadVariables.addAll(astInfo.getLoopConditionVariableReads().get(loopTree));
-            }
-            if (astInfo.getLoopNonInitializerVariableWrites().containsKey(loopTree)) {
-                nonInitializerWriteVariables.addAll(astInfo.getLoopNonInitializerVariableWrites().get(loopTree));
-            }
-            if (astInfo.getLoopNonInitializerDynamicPropertyVariableReads().containsKey(loopTree)) {
-                dpaReadVariables.addAll(astInfo.getLoopNonInitializerDynamicPropertyVariableReads().get(loopTree));
-            }
-
-            // intersect the three sets: a conjunction
-            Set<String> candidateVariables = newSet(conditionReadVariables);
-            candidateVariables.retainAll(nonInitializerWriteVariables);
-            candidateVariables.retainAll(dpaReadVariables);
-
-            for (String candidateVariable : candidateVariables) {
-                addToMapSet(loopVariables, env.getFunction(), candidateVariable);
-            }
-        }
-
-        public boolean isIsInForIn(AbstractNode node) {
-            return inForIn.contains(node);
         }
     }
 }

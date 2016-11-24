@@ -63,7 +63,6 @@ public class HTMLOListElement {
         // DOM Level 1
         createDOMProperty(INSTANCES, "compact", Value.makeAnyBool(), c);
         createDOMProperty(INSTANCES, "start", Value.makeAnyNum(), c);
-        createDOMProperty(INSTANCES, "type", Value.makeAnyStr(), c);
 
         s.multiplyObject(INSTANCES);
         INSTANCES = INSTANCES.makeSingleton().makeSummary();

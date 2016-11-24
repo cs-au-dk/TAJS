@@ -11,16 +11,8 @@ test/google/cryptobench.js:1435:1: [definite] The conditional expression is alwa
 test/google/cryptobench.js:1435:4: [definite] Variable rng_pool is null/undefined
 test/google/cryptobench.js:1532:3: [definite] The conditional expression is always true
 test/google/cryptobench.js:1532:6: [definite] The conditional expression is always true
-test/google/cryptobench.js:1532:6: [definite] The conditional expression is always true
-test/google/cryptobench.js:1532:6: [definite] The conditional expression is always true
 test/google/cryptobench.js:1550:3: [definite] The conditional expression is always false
-test/google/cryptobench.js:1574:9: [definite] The conditional expression is always false
-test/google/cryptobench.js:1574:9: [definite] The conditional expression is always false
-test/google/cryptobench.js:1579:5: [definite] The conditional expression is always true
-test/google/cryptobench.js:1581:9: [definite] The conditional expression is always false
 test/google/cryptobench.js:1599:3: [definite] The conditional expression is always true
-test/google/cryptobench.js:1599:6: [definite] The conditional expression is always true
-test/google/cryptobench.js:1599:6: [definite] The conditional expression is always true
 test/google/cryptobench.js:1599:6: [definite] The conditional expression is always true
 test/google/cryptobench.js:1649:3: [definite] The conditional expression is always false
 test/google/cryptobench.js:1649:6: [definite] The conditional expression is always false
@@ -567,7 +559,6 @@ test/google/cryptobench.js:1278:23: [maybe] Reading absent property (computed na
 test/google/cryptobench.js:1289:8: [maybe] Conversion to number yields NaN
 test/google/cryptobench.js:1293:15: [maybe] Reading absent property (computed name)
 test/google/cryptobench.js:1380:10: [maybe] Conversion to number yields NaN
-test/google/cryptobench.js:1380:10: [maybe] Conversion to number yields NaN
 test/google/cryptobench.js:1380:14: [maybe] Reading absent property (computed name)
 test/google/cryptobench.js:1380:26: [maybe] Reading absent property (computed name)
 test/google/cryptobench.js:1381:9: [maybe] Reading absent property (computed name)
@@ -595,7 +586,11 @@ test/google/cryptobench.js:1504:36: [maybe] Converting primitive string to objec
 test/google/cryptobench.js:1532:32: [maybe] Converting primitive string to object
 test/google/cryptobench.js:1532:48: [maybe] Converting primitive string to object
 test/google/cryptobench.js:1552:7: [maybe] Converting primitive string to object
+test/google/cryptobench.js:1574:25: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:1575:27: [maybe] Reading absent property (computed name)
 test/google/cryptobench.js:1578:9: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:1582:12: [maybe] Conversion to number yields NaN
+test/google/cryptobench.js:1582:32: [maybe] Reading absent property (computed name)
 test/google/cryptobench.js:1599:32: [maybe] Converting primitive string to object
 test/google/cryptobench.js:1599:48: [maybe] Converting primitive string to object
 test/google/cryptobench.js:1664:23: [maybe] The variable ctext has values with different types

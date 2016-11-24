@@ -1,5 +1,5 @@
-StartTag at (r12,c5,p282) missing required end tag
-StartTag at (r31,c5,p4118) missing required end tag
+test/apps/projavascript/gallery/index.html: StartTag at (r12,c5,p282) missing required end tag
+test/apps/projavascript/gallery/index.html: StartTag at (r31,c5,p4118) missing required end tag
 library.js:102:21: [definite] TypeError, call to non-function
 library.js:10:11: [definite] The conditional expression is always true
 library.js:25:11: [definite] The conditional expression is always true
@@ -16,34 +16,45 @@ library.js:28:9: [definite] Reading absent property scrollTop
 library.js:91:14: [definite] Reading absent property currentStyle
 library.js:113:10: [definite] Reading absent property filters
 library.js:177:1: [definite] The variable to is never used
-gallery.js:89:3: [maybe] TypeError, accessing property of null/undefined
+gallery.js:8:13: [maybe] ReferenceError, reading absent variable id
+gallery.js:44:17: [maybe] ReferenceError, reading absent variable id
+gallery.js:78:9: [maybe] ReferenceError, reading absent variable id
+gallery.js:79:9: [maybe] ReferenceError, reading absent variable id
+gallery.js:85:14: [maybe] ReferenceError, reading absent variable id
 gallery.js:89:3: [maybe] TypeError, accessing property of null/undefined
 gallery.js:90:3: [maybe] TypeError, accessing property of null/undefined
+gallery.js:120:13: [maybe] ReferenceError, reading absent variable id
 gallery.js:123:8: [maybe] TypeError, accessing property of null/undefined
+gallery.js:124:5: [maybe] TypeError, call to non-function
+gallery.js:127:3: [maybe] TypeError, call to non-function
 gallery.js:127:20: [maybe] TypeError, accessing property of null/undefined
-gallery.js:127:20: [maybe] TypeError, accessing property of null/undefined
+gallery.js:131:3: [maybe] ReferenceError, reading absent variable id
 gallery.js:131:3: [maybe] TypeError, accessing property of null/undefined
 gallery.js:131:35: [maybe] TypeError, accessing property of null/undefined
-gallery.js:131:35: [maybe] TypeError, accessing property of null/undefined
+gallery.js:135:11: [maybe] ReferenceError, reading absent variable id
+gallery.js:139:11: [maybe] ReferenceError, reading absent variable id
+gallery.js:143:11: [maybe] ReferenceError, reading absent variable id
+gallery.js:147:11: [maybe] ReferenceError, reading absent variable id
+gallery.js:150:17: [maybe] ReferenceError, reading absent variable id
 gallery.js:153:3: [maybe] TypeError, accessing property of null/undefined
 gallery.js:186:3: [maybe] TypeError, accessing property of null/undefined
 gallery.js:199:3: [maybe] TypeError, accessing property of null/undefined
+gallery.js:203:3: [maybe] ReferenceError, reading absent variable id
 gallery.js:203:3: [maybe] TypeError, accessing property of null/undefined
+gallery.js:203:3: [maybe] TypeError, non-function event handler
+gallery.js:204:3: [maybe] ReferenceError, reading absent variable id
 gallery.js:204:3: [maybe] TypeError, accessing property of null/undefined
+gallery.js:204:3: [maybe] TypeError, non-function event handler
 gallery.js:218:7: [maybe] TypeError, accessing property of null/undefined
 gallery.js:241:22: [maybe] TypeError, accessing property of null/undefined
 gallery.js:253:18: [maybe] TypeError, accessing property of null/undefined
-gallery.js:259:5: [maybe] TypeError, accessing property of null/undefined
 gallery.js:259:5: [maybe] TypeError, accessing property of null/undefined
 library.js:13:9: [maybe] TypeError, accessing property of null/undefined
 library.js:28:9: [maybe] TypeError, accessing property of null/undefined
 library.js:43:9: [maybe] TypeError, accessing property of null/undefined
 library.js:58:9: [maybe] TypeError, accessing property of null/undefined
 library.js:76:5: [maybe] TypeError, accessing property of null/undefined
-library.js:76:5: [maybe] TypeError, accessing property of null/undefined
 library.js:82:5: [maybe] TypeError, accessing property of null/undefined
-library.js:82:5: [maybe] TypeError, accessing property of null/undefined
-library.js:87:9: [maybe] TypeError, accessing property of null/undefined
 library.js:87:9: [maybe] TypeError, accessing property of null/undefined
 library.js:88:16: [maybe] TypeError, accessing property of null/undefined
 library.js:95:38: [maybe] TypeError, accessing property of null/undefined
@@ -52,8 +63,6 @@ library.js:113:10: [maybe] TypeError, accessing property of null/undefined
 library.js:118:9: [maybe] TypeError, accessing property of null/undefined
 library.js:127:9: [maybe] TypeError, accessing property of null/undefined
 library.js:130:5: [maybe] TypeError, accessing property of null/undefined
-library.js:130:5: [maybe] TypeError, accessing property of null/undefined
-library.js:137:5: [maybe] TypeError, accessing property of null/undefined
 library.js:137:5: [maybe] TypeError, accessing property of null/undefined
 library.js:143:12: [maybe] TypeError, accessing property of null/undefined
 library.js:148:12: [maybe] TypeError, accessing property of null/undefined
@@ -65,10 +74,11 @@ library.js:235:23: [maybe] TypeError, accessing property of null/undefined
 gallery.js:89:3: [maybe] Reading absent property style
 gallery.js:90:3: [maybe] Reading absent property style
 gallery.js:123:8: [maybe] Reading absent property firstChild
+gallery.js:124:5: [maybe] Reading absent property removeChild
 gallery.js:124:22: [maybe] Reading absent property firstChild
+gallery.js:127:3: [maybe] Reading absent property appendChild
 gallery.js:127:20: [maybe] Reading absent property firstChild
 gallery.js:131:35: [maybe] Reading absent property alt
-gallery.js:131:35: [maybe] Reading absent property firstChild
 gallery.js:131:35: [maybe] Reading absent property firstChild
 gallery.js:153:23: [maybe] Reading absent property className
 gallery.js:186:3: [maybe] Reading absent property body
@@ -97,6 +107,7 @@ library.js:143:12: [maybe] Reading absent property body
 library.js:143:12: [maybe] Reading absent property scrollHeight
 library.js:148:12: [maybe] Reading absent property body
 library.js:148:12: [maybe] Reading absent property scrollWidth
+library.js:219:22: [maybe] Reading absent property className
 library.js:227:16: [maybe] Reading absent property nextSibling
 library.js:234:16: [maybe] Reading absent property previousSibling
 gallery.js:18:11: [maybe] Conversion to number yields NaN
@@ -126,9 +137,10 @@ library.js:98:16: [maybe] Converting primitive string to object
 library.js:126:10: [maybe] Conversion from string to number yields NaN
 library.js:126:10: [maybe] The variable curDisplay has values with different types
 library.js:127:28: [maybe] The variable curDisplay has values with different types
+library.js:219:14: [maybe] Converting undefined to string
 library.js:219:22: [maybe] Reading absent property (computed name)
 library.js:219:48: [maybe] Reading absent property (computed name)
-test/apps/projavascript/gallery/index.html: [maybe] Uncaught exception, constructed at [gallery.js:89:3, gallery.js:90:3, gallery.js:123:8, gallery.js:127:20, gallery.js:131:3, gallery.js:131:35, gallery.js:153:3, gallery.js:186:3, gallery.js:199:3, gallery.js:203:3, gallery.js:204:3, gallery.js:218:7, gallery.js:241:22, gallery.js:253:18, gallery.js:259:5, library.js:13:9, library.js:28:9, library.js:43:9, library.js:58:9, library.js:76:5, library.js:82:5, library.js:87:9, library.js:88:16, library.js:95:38, library.js:101:17, library.js:102:21, library.js:113:10, library.js:118:9, library.js:127:9, library.js:130:5, library.js:137:5, library.js:143:12, library.js:148:12, library.js:219:22, library.js:227:16, library.js:228:23, library.js:234:16, library.js:235:23]
+test/apps/projavascript/gallery/index.html: [maybe] Uncaught exception, constructed at [gallery.js:8:13, gallery.js:44:17, gallery.js:78:9, gallery.js:79:9, gallery.js:85:14, gallery.js:89:3, gallery.js:90:3, gallery.js:120:13, gallery.js:123:8, gallery.js:124:5, gallery.js:127:3, gallery.js:127:20, gallery.js:131:3, gallery.js:131:35, gallery.js:135:11, gallery.js:139:11, gallery.js:143:11, gallery.js:147:11, gallery.js:150:17, gallery.js:153:3, gallery.js:186:3, gallery.js:199:3, gallery.js:203:3, gallery.js:204:3, gallery.js:218:7, gallery.js:241:22, gallery.js:253:18, gallery.js:259:5, library.js:13:9, library.js:28:9, library.js:43:9, library.js:58:9, library.js:76:5, library.js:82:5, library.js:87:9, library.js:88:16, library.js:95:38, library.js:101:17, library.js:102:21, library.js:113:10, library.js:118:9, library.js:127:9, library.js:130:5, library.js:137:5, library.js:143:12, library.js:148:12, library.js:219:22, library.js:227:16, library.js:228:23, library.js:234:16, library.js:235:23]
 gallery.js:253:18: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 library.js:87:9: [info] Reading from unknown property that may cause loss of precision
 library.js:88:16: [info] Reading from unknown property that may cause loss of precision

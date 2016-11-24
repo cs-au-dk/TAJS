@@ -76,7 +76,7 @@ public class TestMicroStringEscaping {
     public void stringWithBackslashes() {
         Misc.init();
         Misc.captureSystemOutput();
-        Misc.runSourceWithNamedFile("stringWithBackslashes.js", "TAJS_dumpValue('\\\\x')");
+        Misc.runSource("TAJS_dumpValue('\\\\x')");
         Misc.checkSystemOutput();
     }
 

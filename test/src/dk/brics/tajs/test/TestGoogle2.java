@@ -4,8 +4,8 @@ import dk.brics.tajs.Main;
 import dk.brics.tajs.monitoring.CompositeMonitoring;
 import dk.brics.tajs.monitoring.IAnalysisMonitoring;
 import dk.brics.tajs.monitoring.Monitoring;
+import dk.brics.tajs.monitoring.OrdinaryExitReachableChecker;
 import dk.brics.tajs.options.Options;
-import dk.brics.tajs.test.monitors.OrdinaryExitReachableCheckerMonitor;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -23,8 +23,8 @@ public class TestGoogle2 {
 	public void init() {
 		Main.reset();
 		Options.get().enableTest();
-		monitoring = CompositeMonitoring.buildFromList(new Monitoring(), new OrdinaryExitReachableCheckerMonitor());
-	}
+        monitoring = CompositeMonitoring.buildFromList(new Monitoring(), new OrdinaryExitReachableChecker());
+    }
 	
 	@Test
 	public void google2_richards() throws Exception { 
@@ -73,12 +73,12 @@ public class TestGoogle2 {
 		Misc.checkSystemOutput();
 	}
 
-	@Test(expected = AssertionError.class) // "reading absent variable DV" is correct!
-	public void google2_crypto() throws Exception {
-		Misc.init();
+    @Test
+    public void google2_crypto() throws Exception {
+        Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/google2/crypto.js"};
-		Misc.run(args, monitoring);
+		Misc.run(args, new Monitoring() /* definite crash: bad variable naming! */);
 		Misc.checkSystemOutput();
 	}
 

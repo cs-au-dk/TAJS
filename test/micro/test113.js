@@ -5,7 +5,7 @@ var NaN = 0/0;
 var x5 = Math.hasOwnProperty();
 var x5str = Math.toString();
 var x6 = parseInt("  4711   ");
-var x7 = this.NaN;
+var x7 = NaN;
 
 var y1 = Math.max(42, 77, -20, 99, -1, 111);
 

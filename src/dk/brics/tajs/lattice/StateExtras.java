@@ -24,6 +24,7 @@ import java.util.Collections;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+import java.util.stream.Stream;
 
 import static dk.brics.tajs.util.Collections.addAllToMapSet;
 import static dk.brics.tajs.util.Collections.newMap;
@@ -288,71 +289,20 @@ public class StateExtras {
         return Collections.unmodifiableSet(result);
     }
 
-//    /**
-//     * Replaces all object labels according to the given map.
-//     */
-//    public void replaceObjectLabels(Map<ObjectLabel, ObjectLabel> m) {
-//        makeMayMapsWritable();
-//        makeMaySetsWritable();
-//        makeMustSetsWritable();
-//        replaceObjectLabels2(may_sets, m);
-//        replaceObjectLabels2(must_sets, m);
-//        replaceObjectLabels3(may_maps, m);
-//        replaceObjectLabels2(may_maps_default, m);
-//    }
-//
-//    private static void replaceObjectLabels2(Map<String, Set<ObjectLabel>> x, Map<ObjectLabel, ObjectLabel> m) {
-//        for (Entry<String, Set<ObjectLabel>> me : x.entrySet())
-//            me.setValue(Renaming.apply(m, me.getValue()));
-//    }
-//
-//    private static void replaceObjectLabels3(Map<String, Map<String, Set<ObjectLabel>>> x, Map<ObjectLabel, ObjectLabel> m) {
-//        for (Entry<String, Map<String, Set<ObjectLabel>>> me : x.entrySet())
-//            for (Entry<String, Set<ObjectLabel>> me2 : me.getValue().entrySet())
-//                me2.setValue(Renaming.apply(m, me2.getValue()));
-//    }
-
-//    /**
-//     * Removes the parts that are also in 'other'.
-//     */
-//    public void remove(StateExtras other) {
-//        makeMaySetsWritable();
-//        makeMustSetsWritable();
-//        makeMayMapsWritable();
-//        for (Entry<String, Set<ObjectLabel>> me : may_sets.entrySet()) {
-//            String s = me.getKey();
-//            Set<ObjectLabel> so = me.getValue();
-//            Set<ObjectLabel> so_other = other.may_sets.get(s);
-//            if (so_other != null)
-//                so.removeAll(so_other);
-//        }
-//        for (Entry<String, Set<ObjectLabel>> me : must_sets.entrySet()) {
-//            String s = me.getKey();
-//            Set<ObjectLabel> so = me.getValue();
-//            Set<ObjectLabel> so_other = other.must_sets.get(s);
-//            if (so_other != null)
-//                so.removeAll(so_other);
-//        }
-//        for (Entry<String, Map<String, Set<ObjectLabel>>> me1 : may_maps.entrySet()) {
-//            String s1 = me1.getKey();
-//            Map<String, Set<ObjectLabel>> mso = me1.getValue();
-//            Map<String, Set<ObjectLabel>> mso_other = other.may_maps.get(s1);
-//            for (Entry<String, Set<ObjectLabel>> me2 : mso.entrySet()) {
-//                String s2 = me2.getKey();
-//                Set<ObjectLabel> so = me2.getValue();
-//                if (mso_other != null) {
-//                    Set<ObjectLabel> so_other = mso_other.get(s2);
-//                    if (so_other != null)
-//                        so.removeAll(so_other);
-//                }
-//            }
-//        }
-//        for (Entry<String, Set<ObjectLabel>> me : may_maps_default.entrySet()) {
-//            String s = me.getKey();
-//            Set<ObjectLabel> so = me.getValue();
-//            Set<ObjectLabel> so_other = other.may_maps_default.get(s);
-//            if (so_other != null)
-//                so.removeAll(so_other);
-//        }
-//    }
+    /**
+     * Replaces oldlabel by newlabel in all object label sets.
+     */
+    public void replaceObjectLabel(ObjectLabel oldlabel, ObjectLabel newlabel) {
+        makeMaySetsWritable();
+        makeMayMapsWritable();
+        Stream<Set<ObjectLabel>> sets = Stream.concat(
+                may_sets.values().stream(),
+                may_maps.values().stream()
+                        .flatMap(may_map -> may_map.values().stream()));
+        sets.filter(members -> members.contains(oldlabel))
+                .forEach(members -> {
+                    members.remove(oldlabel);
+                    members.add(newlabel);
+                });
+    }
 }

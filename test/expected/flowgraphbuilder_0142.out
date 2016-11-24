@@ -30,4 +30,3 @@ fg2: <main> function()
     ->[]
 
 test/flowgraphbuilder/flowgraph_builder0142.js:1:1: [definite] The conditional expression is always false
-test/flowgraphbuilder/flowgraph_builder0142.js:1:1: [definite] The conditional expression is always false

@@ -18,14 +18,12 @@ package dk.brics.tajs.flowgraph;
 
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.util.AnalysisException;
-import dk.brics.tajs.util.Collections;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.file.Path;
 import java.util.Collection;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 import static dk.brics.tajs.util.Collections.newList;
@@ -64,9 +62,9 @@ public class FlowGraph {
     private int number_of_functions;
 
     /**
-     * Callbacks of various kinds.
+     * Syntactic hints to be used for context sensitivity.
      */
-    private Map<EventHandlerKind, Collection<Function>> event_handlers = Collections.newMap(); // TODO: (#116) reconsider how to represent HTML event handlers in flowgraphs
+    private SyntacticHints syntacticHints;
 
     /**
      * Constructs a new uninitialized flow graph.
@@ -118,28 +116,6 @@ public class FlowGraph {
             throw new NullPointerException();
         functions.add(f);
         f.setIndex(number_of_functions++);
-    }
-
-    /**
-     * Adds the given event handler to the flow graph. The function must already be added to the flow graph.
-     */
-    public void addEventHandler(Function f, EventHandlerKind kind) {
-        if (!functions.contains(f)) {
-            throw new IllegalArgumentException("Function not added to flow graph");
-        }
-        Collection<Function> fs = event_handlers.get(kind);
-        if (fs == null) {
-            fs = newList();
-            event_handlers.put(kind, fs);
-        }
-        fs.add(f);
-    }
-
-    /**
-     * Retrieves the event handlers.
-     */
-    public Map<EventHandlerKind, Collection<Function>> getEventHandlers() {
-        return event_handlers;
     }
 
     /**
@@ -211,22 +187,22 @@ public class FlowGraph {
     /**
      * Produces a Graphviz dot representation of each function in this flow graph.
      *
-     * @param dest_dir destination directory
+     * @param dir destination directory
      * @param end      if set, the name contains "final", otherwise "initial"
      * @throws IOException if some file operation fails.
      */
-    public void toDot(String dest_dir, boolean end) throws IOException {
+    public void toDot(Path dir, boolean end) throws IOException {
         for (Function function : functions) {
             String n = function.isMain() ? "Main" : function.getName();
             if (n == null)
                 n = "-";
             SourceLocation loc = function.getSourceLocation();
             if (loc == null) {
-                loc = new SourceLocation(0, 0, "");
+                loc = new SourceLocation(0, 0, "", null);
             }
-            String name = loc.getFileName().replace('/', '.').replace('\\', '.').replace(':', '.') + "." + n + ".line" + loc.getLineNumber();
-            File file = new File(dest_dir + File.separator + (end ? "final-" : "initial-") + name + ".dot");
-            try (PrintWriter writer = new PrintWriter(file)) {
+            String name = loc.getPrettyFileName().replace('/', '.').replace('\\', '.').replace(':', '.') + "." + n + ".line" + loc.getLineNumber();
+            String fileName = (end ? "final-" : "initial-") + name + ".dot";
+            try (PrintWriter writer = new PrintWriter(dir.resolve(fileName).toFile())) {
                 function.toDot(writer, true, function == main);
             }
         }
@@ -248,5 +224,19 @@ public class FlowGraph {
         Set<Integer> seen_functions = newSet();
         for (Function f : functions)
             f.check(main, seen_functions, seen_blocks, seen_nodes);
+    }
+
+    /**
+     * Returns the syntactic hints for context sensitivity.
+     */
+    public SyntacticHints getSyntacticHints() {
+        return syntacticHints;
+    }
+
+    /**
+     * Sets the syntactic hints for context sensitivity.
+     */
+    public void setSyntacticHints(SyntacticHints syntacticHints) {
+        this.syntacticHints = syntacticHints;
     }
 }

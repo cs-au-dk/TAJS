@@ -6,11 +6,11 @@ Abstract state:
   Store (excluding basis and default objects): 
     @<the global object>[native] (<initial state>): {C:[@<anonymous>#fun1],TAJS_dumpState:^(@<the global object>[native].TAJS_dumpState[present]),TAJS_dumpValue:^(@<the global object>[native].TAJS_dumpValue[present]),x:[@Object#node7],[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Prototype]]=[@Object.prototype[native]],[[Value]]=?,[[Scope]]=?}
     @Object.prototype[native] (<initial state>): {C:^(@Object.prototype[native].C[absent]),inc:^(@Object.prototype[native].inc[absent]),x:^(@Object.prototype[native].x[absent]),[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Prototype]]=Null,[[Value]]=?,[[Scope]]=?}
-    @<anonymous>#fun1 (test/micro/test141.js:1:9): {length:1.0,prototype:[@Object#node3],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@<the global object>[native]]]}
+    @<anonymous>#fun1 (test/micro/test141.js:1:9): {length:1.0,name:"",prototype:[@Object#node3],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@<the global object>[native]]]}
     @Object#node3 (test/micro/test141.js:1:9): {constructor:[@<anonymous>#fun1],[[Prototype]]=[@Object.prototype[native]],[[Value]]=NaN}
     @activation#node19 (test/micro/test141.js:1:9): {arguments:[@arguments#node19],v:8.0}
     @arguments#node19 (test/micro/test141.js:1:9): {0:7.0,callee:[@<anonymous>#fun1],length:1.0,[[Prototype]]=[@Object.prototype[native]]}
-    @<anonymous>#fun2 (test/micro/test141.js:2:14): {length:0.0,prototype:[@Object#node21],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@activation#node19],[@<the global object>[native]]]}
+    @<anonymous>#fun2 (test/micro/test141.js:2:14): {length:0.0,name:"",prototype:[@Object#node21],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@activation#node19],[@<the global object>[native]]]}
     @Object#node21 (test/micro/test141.js:2:14): {constructor:[@<anonymous>#fun2],[[Prototype]]=[@Object.prototype[native]],[[Value]]=NaN}
     @Object#node7 (test/micro/test141.js:5:9): {inc:[@<anonymous>#fun2],[[Prototype]]=[@Object#node3]}
   Registers: 

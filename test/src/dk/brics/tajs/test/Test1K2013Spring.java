@@ -1,14 +1,10 @@
 package dk.brics.tajs.test;
 
 import dk.brics.tajs.Main;
-import dk.brics.tajs.monitoring.CompositeMonitoring;
-import dk.brics.tajs.monitoring.IAnalysisMonitoring;
-import dk.brics.tajs.monitoring.Monitoring;
+import dk.brics.tajs.monitoring.AnalysisTimeLimiter;
 import dk.brics.tajs.options.Options;
-import dk.brics.tajs.test.monitors.OrdinaryExitReachableCheckerMonitor;
 import dk.brics.tajs.util.AnalysisLimitationException;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -17,8 +13,6 @@ import org.junit.Test;
  */
 public class Test1K2013Spring {
 
-    private IAnalysisMonitoring monitoring;
-
     @Before
     public void init() {
         Main.reset();
@@ -26,7 +20,6 @@ public class Test1K2013Spring {
         Options.get().enableIncludeDom();
         Options.get().enableUnevalizer();
         Options.get().enablePolyfillMDN();
-        monitoring = CompositeMonitoring.buildFromList(new Monitoring(), new OrdinaryExitReachableCheckerMonitor());
     }
 
     @Test
@@ -34,7 +27,7 @@ public class Test1K2013Spring {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2013spring/shim.js", "test/1k2013spring/1307.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -43,7 +36,7 @@ public class Test1K2013Spring {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2013spring/shim.js", "test/1k2013spring/1309.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -52,7 +45,7 @@ public class Test1K2013Spring {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2013spring/shim.js", "test/1k2013spring/1310.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -61,7 +54,7 @@ public class Test1K2013Spring {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2013spring/shim.js", "test/1k2013spring/1311.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -70,7 +63,7 @@ public class Test1K2013Spring {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2013spring/shim.js", "test/1k2013spring/1316.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -79,7 +72,7 @@ public class Test1K2013Spring {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2013spring/shim.js", "test/1k2013spring/1319.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -88,7 +81,7 @@ public class Test1K2013Spring {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2013spring/shim.js", "test/1k2013spring/1323.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -97,7 +90,7 @@ public class Test1K2013Spring {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2013spring/shim.js", "test/1k2013spring/1334.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -106,7 +99,7 @@ public class Test1K2013Spring {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2013spring/shim.js", "test/1k2013spring/1336.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -115,7 +108,7 @@ public class Test1K2013Spring {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2013spring/shim.js", "test/1k2013spring/1337.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -124,7 +117,7 @@ public class Test1K2013Spring {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2013spring/shim.js", "test/1k2013spring/1344.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -133,7 +126,7 @@ public class Test1K2013Spring {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2013spring/shim.js", "test/1k2013spring/1345.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -142,7 +135,7 @@ public class Test1K2013Spring {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2013spring/shim.js", "test/1k2013spring/1350.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -151,7 +144,7 @@ public class Test1K2013Spring {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2013spring/shim.js", "test/1k2013spring/1358.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -160,7 +153,7 @@ public class Test1K2013Spring {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2013spring/shim.js", "test/1k2013spring/1360.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -169,7 +162,7 @@ public class Test1K2013Spring {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2013spring/shim.js", "test/1k2013spring/1362.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -178,7 +171,7 @@ public class Test1K2013Spring {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2013spring/shim.js", "test/1k2013spring/1375.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -187,7 +180,7 @@ public class Test1K2013Spring {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2013spring/shim.js", "test/1k2013spring/1376.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -196,7 +189,7 @@ public class Test1K2013Spring {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2013spring/shim.js", "test/1k2013spring/1377.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -205,7 +198,7 @@ public class Test1K2013Spring {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2013spring/shim.js", "test/1k2013spring/1379.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -214,7 +207,7 @@ public class Test1K2013Spring {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2013spring/shim.js", "test/1k2013spring/1384.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -223,16 +216,16 @@ public class Test1K2013Spring {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2013spring/shim.js", "test/1k2013spring/1388.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
-    @Test(expected = AssertionError.class /* GitHub #219 */)
+    @Test
     public void test1k_2013_spring_1392() {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2013spring/shim.js", "test/1k2013spring/1392.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -241,7 +234,7 @@ public class Test1K2013Spring {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2013spring/shim.js", "test/1k2013spring/1398.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -250,7 +243,7 @@ public class Test1K2013Spring {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2013spring/shim.js", "test/1k2013spring/1400.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -259,7 +252,7 @@ public class Test1K2013Spring {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2013spring/shim.js", "test/1k2013spring/1404.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -268,7 +261,7 @@ public class Test1K2013Spring {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2013spring/shim.js", "test/1k2013spring/1411.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -277,7 +270,7 @@ public class Test1K2013Spring {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2013spring/shim.js", "test/1k2013spring/1415.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -286,7 +279,7 @@ public class Test1K2013Spring {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2013spring/shim.js", "test/1k2013spring/1417.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -295,7 +288,7 @@ public class Test1K2013Spring {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2013spring/shim.js", "test/1k2013spring/1420.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -304,34 +297,34 @@ public class Test1K2013Spring {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2013spring/shim.js", "test/1k2013spring/1421.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
-    @Test(expected = AnalysisLimitationException.class /* eval precision */)
+    @Test(expected = AnalysisLimitationException.AnalysisPrecisionLimitationException.class)
     public void test1k_2013_spring_1423() {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2013spring/shim.js", "test/1k2013spring/1423.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
-    @Test(expected = AssertionError.class /* GitHub #219 */)
+    @Test
     public void test1k_2013_spring_1425() {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2013spring/shim.js", "test/1k2013spring/1425.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
-    @Test(expected = AnalysisLimitationException.class /* eval precision */)
+    @Test(expected = AnalysisLimitationException.AnalysisPrecisionLimitationException.class)
     public void test1k_2013_spring_1426() {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2013spring/shim.js", "test/1k2013spring/1426.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -340,7 +333,7 @@ public class Test1K2013Spring {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2013spring/shim.js", "test/1k2013spring/1427.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -349,7 +342,7 @@ public class Test1K2013Spring {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2013spring/shim.js", "test/1k2013spring/1428.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -358,7 +351,7 @@ public class Test1K2013Spring {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2013spring/shim.js", "test/1k2013spring/1429.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -367,7 +360,7 @@ public class Test1K2013Spring {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2013spring/shim.js", "test/1k2013spring/1430.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -376,7 +369,7 @@ public class Test1K2013Spring {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2013spring/shim.js", "test/1k2013spring/1436.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -385,7 +378,7 @@ public class Test1K2013Spring {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2013spring/shim.js", "test/1k2013spring/1437.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -394,7 +387,7 @@ public class Test1K2013Spring {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2013spring/shim.js", "test/1k2013spring/1438.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -403,17 +396,16 @@ public class Test1K2013Spring {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2013spring/shim.js", "test/1k2013spring/1442.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
-    @Ignore // github #302
-    @Test
+    @Test(expected = AnalysisLimitationException.AnalysisTimeException.class)
     public void test1k_2013_spring_1443() {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2013spring/shim.js", "test/1k2013spring/1443.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args, new AnalysisTimeLimiter(30, true));
         Misc.checkSystemOutput();
     }
 
@@ -422,7 +414,7 @@ public class Test1K2013Spring {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2013spring/shim.js", "test/1k2013spring/1449.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -431,7 +423,7 @@ public class Test1K2013Spring {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2013spring/shim.js", "test/1k2013spring/1450.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -440,7 +432,7 @@ public class Test1K2013Spring {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2013spring/shim.js", "test/1k2013spring/1454.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -449,7 +441,7 @@ public class Test1K2013Spring {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2013spring/shim.js", "test/1k2013spring/1457.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -458,7 +450,7 @@ public class Test1K2013Spring {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2013spring/shim.js", "test/1k2013spring/1458.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -467,16 +459,16 @@ public class Test1K2013Spring {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2013spring/shim.js", "test/1k2013spring/1462.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
-    @Test(expected = AnalysisLimitationException.class /* Function.bind not modeled */)
+    @Test
     public void test1k_2013_spring_1470() {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2013spring/shim.js", "test/1k2013spring/1470.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -485,7 +477,7 @@ public class Test1K2013Spring {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2013spring/shim.js", "test/1k2013spring/1472.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -494,7 +486,7 @@ public class Test1K2013Spring {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2013spring/shim.js", "test/1k2013spring/1473.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -503,17 +495,16 @@ public class Test1K2013Spring {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2013spring/shim.js", "test/1k2013spring/1475.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
-    @Ignore // github #302
     @Test
     public void test1k_2013_spring_1478() {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2013spring/shim.js", "test/1k2013spring/1478.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -522,7 +513,7 @@ public class Test1K2013Spring {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2013spring/shim.js", "test/1k2013spring/1479.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -531,7 +522,7 @@ public class Test1K2013Spring {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2013spring/shim.js", "test/1k2013spring/1483.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -540,7 +531,7 @@ public class Test1K2013Spring {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2013spring/shim.js", "test/1k2013spring/1484.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -549,7 +540,7 @@ public class Test1K2013Spring {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2013spring/shim.js", "test/1k2013spring/1486.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -558,7 +549,7 @@ public class Test1K2013Spring {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2013spring/shim.js", "test/1k2013spring/1498.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -567,16 +558,16 @@ public class Test1K2013Spring {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2013spring/shim.js", "test/1k2013spring/1502.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
-    @Test(expected = AssertionError.class /* GitHub #219 */)
+    @Test
     public void test1k_2013_spring_1506() {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2013spring/shim.js", "test/1k2013spring/1506.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -585,7 +576,7 @@ public class Test1K2013Spring {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2013spring/shim.js", "test/1k2013spring/1507.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -594,7 +585,7 @@ public class Test1K2013Spring {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2013spring/shim.js", "test/1k2013spring/1510.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -603,7 +594,7 @@ public class Test1K2013Spring {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2013spring/shim.js", "test/1k2013spring/1511.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -612,7 +603,7 @@ public class Test1K2013Spring {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2013spring/shim.js", "test/1k2013spring/1514.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -621,7 +612,7 @@ public class Test1K2013Spring {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2013spring/shim.js", "test/1k2013spring/1524.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -630,25 +621,25 @@ public class Test1K2013Spring {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2013spring/shim.js", "test/1k2013spring/1525.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
-    @Test(expected = AssertionError.class /* GitHub #219 */)
+    @Test
     public void test1k_2013_spring_1526() {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2013spring/shim.js", "test/1k2013spring/1526.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
-    @Test(expected = AssertionError.class /* GitHub #219 */)
+    @Test
     public void test1k_2013_spring_1528() {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2013spring/shim.js", "test/1k2013spring/1528.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -657,7 +648,7 @@ public class Test1K2013Spring {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2013spring/shim.js", "test/1k2013spring/1529.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -666,7 +657,7 @@ public class Test1K2013Spring {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2013spring/shim.js", "test/1k2013spring/1533.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -675,7 +666,7 @@ public class Test1K2013Spring {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2013spring/shim.js", "test/1k2013spring/1535.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -684,7 +675,7 @@ public class Test1K2013Spring {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2013spring/shim.js", "test/1k2013spring/1536.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -693,7 +684,7 @@ public class Test1K2013Spring {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2013spring/shim.js", "test/1k2013spring/1537.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -702,34 +693,34 @@ public class Test1K2013Spring {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2013spring/shim.js", "test/1k2013spring/1539.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
-    @Test(expected = AnalysisLimitationException.class /* Function.bind not modeled */)
+    @Test
     public void test1k_2013_spring_1541() {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2013spring/shim.js", "test/1k2013spring/1541.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
-    @Test(expected = AssertionError.class /* GitHub #219 */)
+    @Test(expected = AnalysisLimitationException.AnalysisTimeException.class /* FIXME improve precision/performance ?!?! */)
     public void test1k_2013_spring_1542() {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2013spring/shim.js", "test/1k2013spring/1542.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args, new AnalysisTimeLimiter(30, true));
         Misc.checkSystemOutput();
     }
 
-    @Test(expected = AnalysisLimitationException.class /* eval precision */)
+    @Test(expected = AnalysisLimitationException.AnalysisPrecisionLimitationException.class)
     public void test1k_2013_spring_1544() {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2013spring/shim.js", "test/1k2013spring/1544.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -738,7 +729,7 @@ public class Test1K2013Spring {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2013spring/shim.js", "test/1k2013spring/1547.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -747,7 +738,7 @@ public class Test1K2013Spring {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2013spring/shim.js", "test/1k2013spring/1557.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 }

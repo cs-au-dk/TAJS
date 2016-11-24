@@ -16,6 +16,7 @@
 
 package dk.brics.tajs.htmlparser;
 
+import dk.brics.tajs.flowgraph.EventType;
 import dk.brics.tajs.flowgraph.JavaScriptSource;
 import dk.brics.tajs.util.AnalysisLimitationException;
 import dk.brics.tajs.util.Loader;
@@ -24,15 +25,19 @@ import net.htmlparser.jericho.Attributes;
 import net.htmlparser.jericho.Element;
 import net.htmlparser.jericho.RowColumnVector;
 import net.htmlparser.jericho.Source;
+import org.apache.log4j.Logger;
 
 import java.io.IOException;
-import java.net.URI;
+import java.net.MalformedURLException;
 import java.net.URISyntaxException;
+import java.net.URL;
+import java.nio.charset.Charset;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
+import java.util.function.Consumer;
 
 import static dk.brics.tajs.util.Collections.newList;
 import static dk.brics.tajs.util.Collections.newSet;
@@ -42,6 +47,8 @@ import static dk.brics.tajs.util.Collections.newSet;
  */
 public class HTMLParser {
 
+    private static final Logger log = Logger.getLogger(HTMLParser.class);
+
     private Source doc;
 
     private List<JavaScriptSource> code;
@@ -49,16 +56,20 @@ public class HTMLParser {
     /**
      * Parses the given HTML file.
      */
-    public HTMLParser(Path htmlFile) throws IOException {
-        Path root = htmlFile.getParent(); // XXX assumes that the directory of the htmlFile is the root for non-relative paths in the htmlFile
-
+    public HTMLParser(URL location, String prettyFileName) throws IOException {
         Set<String> standardJavaScriptScriptTypeNames = newSet(Arrays.asList("text/javascript", "text/ecmascript", "application/javascript", "application/ecmascript"));
         Set<String> allJavaScriptScriptTypeNames = newSet();
         allJavaScriptScriptTypeNames.addAll(standardJavaScriptScriptTypeNames);
         // add some extra names to cater for a common typo
         allJavaScriptScriptTypeNames.addAll(Arrays.asList("javascript", "ecmascript", ""));
 
-        doc = new Source(htmlFile.toFile());
+        try {
+            Path file = Paths.get(location.toURI());
+            doc = new Source(file.toFile());
+            doc.setLogger(new HTMLParserLogger(msg -> log.info(String.format("%s: %s", prettyFileName, msg)))); // squelch errors from the HTML
+        } catch (URISyntaxException e) {
+            throw new RuntimeException(e);
+        }
         code = newList();
         for (Element e : doc.getAllElements()) {
             String name = e.getName();
@@ -66,11 +77,16 @@ public class HTMLParser {
                 String src = e.getAttributeValue("src");
                 if (src != null) {
                     // external script
-                    code.add(JavaScriptSource.makeFileCode(src, Loader.getString(resolveSrcReference(root, htmlFile, src).toString(), "UTF-8")));
+                    try {
+                        URL resolved = new URL(location, src);
+                        code.add(JavaScriptSource.makeFileCode(resolved, src, Loader.getString(resolved, Charset.forName("UTF-8"))));
+                    } catch (MalformedURLException e1) {
+                        throw new RuntimeException(e1);
+                    }
                 } else {
                     // embedded script
                     RowColumnVector pos = doc.getRowColumnVector(e.getStartTag().getEnd());
-                    code.add(JavaScriptSource.makeEmbeddedCode(htmlFile.toString(), e.getContent().toString(), pos.getRow() - 1, pos.getColumn() - 1));
+                    code.add(JavaScriptSource.makeEmbeddedCode(location, prettyFileName, e.getContent().toString(), pos.getRow() - 1, pos.getColumn() - 1));
                 }
             } else if (name.equals("a") || name.equals("form")) {
                 Attributes as = e.getAttributes();
@@ -84,7 +100,8 @@ public class HTMLParser {
                                 // embedded 'javascript:' event handler
                                 String js = val.substring(JAVASCRIPT.length());
                                 RowColumnVector pos = doc.getRowColumnVector(a.getValueSegment().getBegin() + JAVASCRIPT.length());
-                                code.add(JavaScriptSource.makeEventHandlerCode(name.equals("a") ? "click" : "submit", htmlFile.toString(), js, pos.getRow() - 1, pos.getColumn() - 1));
+                                EventType eventType = EventType.getEventHandlerTypeFromString(name.equals("a") ? "click" : "submit");
+                                code.add(JavaScriptSource.makeEventHandlerCode(eventType, location, prettyFileName, js, pos.getRow() - 1, pos.getColumn() - 1));
                             }
                         }
                     }
@@ -94,14 +111,17 @@ public class HTMLParser {
             if (as != null) {
                 for (Attribute a : as) {
                     String aname = a.getKey();
-                    final String ON = "on";
-                    if (aname.startsWith(ON)) { // may include too many attributes in case of bad HTML...
+                    EventType eventKind = EventType.getEventHandlerTypeFromAttributeName(aname);
+                    if (eventKind != EventType.UNKNOWN) { // may include too many attributes in case of bad HTML...
                         String val = a.getValue();
                         if (val != null) {
                             // embedded 'on...' event handler
                             RowColumnVector pos = doc.getRowColumnVector(a.getValueSegment().getBegin());
-                            code.add(JavaScriptSource.makeEventHandlerCode(aname.substring(ON.length()), htmlFile.toString(), val, pos.getRow() - 1, pos.getColumn() - 1));
+                            code.add(JavaScriptSource.makeEventHandlerCode(eventKind, location, prettyFileName, val, pos.getRow() - 1, pos.getColumn() - 1));
                         }
+                    }
+                    if (eventKind == EventType.UNKNOWN && aname.startsWith("on")) {
+                        throw new AnalysisLimitationException.AnalysisModelLimitationException("Likely missing support for event-attribute: " + aname);
                     }
                 }
             }
@@ -123,33 +143,52 @@ public class HTMLParser {
         return code;
     }
 
-    /**
-     * Resolves a reference to a file.
-     *
-     * The reference can be resolved relatively to a root or the file containing the reference.
-     */
-    private Path resolveSrcReference(Path root, Path fileWithReferenceIn, String reference) {
-        try {
-            URI uri = new URI(reference);
-            String scheme = uri.getScheme();
-            if (scheme != null) {
-                // TODO support http, https, file, ...
-                throw new AnalysisLimitationException("Explicit schemes are not supported. Bad reference: " + reference);
-            }
-        } catch (URISyntaxException e) {
-            throw new RuntimeException(e);
-        }
-        if (reference.startsWith("//")) {
-            throw new AnalysisLimitationException("Implicit schemes are not supported. Bad reference: " + reference);
+    private class HTMLParserLogger implements net.htmlparser.jericho.Logger {
+
+        Consumer<String> outerLogger;
+
+        public HTMLParserLogger(Consumer<String> outerLogger) {
+            this.outerLogger = outerLogger;
         }
 
-        // TODO normalize paths to avoid treating `dir/../test.js` and `test.js` as different files!
-        Path parent;
-        if (reference.startsWith(".")) {
-            parent = fileWithReferenceIn.getParent();
-        } else {
-            parent = root;
+        @Override
+        public void error(String message) {
+            outerLogger.accept(message);
         }
-        return parent == null? Paths.get(reference): parent.resolve(reference);
+
+        @Override
+        public void warn(String message) {
+            outerLogger.accept(message);
+        }
+
+        @Override
+        public void info(String message) {
+
+        }
+
+        @Override
+        public void debug(String message) {
+
+        }
+
+        @Override
+        public boolean isErrorEnabled() {
+            return true;
+        }
+
+        @Override
+        public boolean isWarnEnabled() {
+            return true;
+        }
+
+        @Override
+        public boolean isInfoEnabled() {
+            return false;
+        }
+
+        @Override
+        public boolean isDebugEnabled() {
+            return false;
+        }
     }
 }

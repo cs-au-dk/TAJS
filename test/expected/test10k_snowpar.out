@@ -4,9 +4,8 @@ test/10k/snowpar.html:176:55: [definite] Reading absent property scrollLeft
 test/10k/snowpar.html:177:28: [definite] Reading absent property scrollTop
 test/10k/snowpar.html:177:54: [definite] Reading absent property scrollTop
 test/10k/snowpar.html:170:17: [definite] The variable declaration e shadows a parameter
+test/10k/snowpar.html:75:11: [maybe] TypeError, accessing property of null/undefined
 test/10k/snowpar.html:138:9: [maybe] TypeError, accessing property of null/undefined
-test/10k/snowpar.html:138:9: [maybe] TypeError, accessing property of null/undefined
-test/10k/snowpar.html:139:9: [maybe] TypeError, accessing property of null/undefined
 test/10k/snowpar.html:139:9: [maybe] TypeError, accessing property of null/undefined
 test/10k/snowpar.html:176:28: [maybe] TypeError, accessing property of null/undefined
 test/10k/snowpar.html:177:28: [maybe] TypeError, accessing property of null/undefined
@@ -31,6 +30,10 @@ test/10k/snowpar.html:43:65: [maybe] Reading 'this' yields the global object
 test/10k/snowpar.html:43:65: [maybe] Reading absent property value
 test/10k/snowpar.html:138:9: [maybe] Reading absent property style
 test/10k/snowpar.html:139:9: [maybe] Reading absent property style
+test/10k/snowpar.html:171:9: [maybe] Reading absent property pageX
+test/10k/snowpar.html:171:20: [maybe] Reading absent property pageY
+test/10k/snowpar.html:172:16: [maybe] Reading absent property pageX
+test/10k/snowpar.html:173:16: [maybe] Reading absent property pageY
 test/10k/snowpar.html:176:28: [maybe] Reading absent property body
 test/10k/snowpar.html:177:28: [maybe] Reading absent property body
 test/10k/snowpar.html:193:12: [maybe] Reading absent property event
@@ -41,7 +44,7 @@ test/10k/snowpar.html:214:36: [maybe] Reading absent property checked
 test/10k/snowpar.html:218:36: [maybe] Reading absent property checked
 test/10k/snowpar.html:222:37: [maybe] Reading absent property checked
 test/10k/snowpar.html:230:31: [maybe] Reading absent property checked
-test/10k/snowpar.html: [maybe] Uncaught exception, constructed at [test/10k/snowpar.html:138:9, test/10k/snowpar.html:139:9, test/10k/snowpar.html:176:28, test/10k/snowpar.html:177:28, test/10k/snowpar.html:193:28, test/10k/snowpar.html:201:9, test/10k/snowpar.html:201:30, test/10k/snowpar.html:206:9, test/10k/snowpar.html:206:35, test/10k/snowpar.html:210:9, test/10k/snowpar.html:210:37, test/10k/snowpar.html:214:9, test/10k/snowpar.html:214:36, test/10k/snowpar.html:218:9, test/10k/snowpar.html:218:36, test/10k/snowpar.html:222:9, test/10k/snowpar.html:222:37, test/10k/snowpar.html:230:9, test/10k/snowpar.html:230:31]
+test/10k/snowpar.html: [maybe] Uncaught exception, constructed at [test/10k/snowpar.html:75:11, test/10k/snowpar.html:138:9, test/10k/snowpar.html:139:9, test/10k/snowpar.html:176:28, test/10k/snowpar.html:177:28, test/10k/snowpar.html:193:28, test/10k/snowpar.html:201:9, test/10k/snowpar.html:201:30, test/10k/snowpar.html:206:9, test/10k/snowpar.html:206:35, test/10k/snowpar.html:210:9, test/10k/snowpar.html:210:37, test/10k/snowpar.html:214:9, test/10k/snowpar.html:214:36, test/10k/snowpar.html:218:9, test/10k/snowpar.html:218:36, test/10k/snowpar.html:222:9, test/10k/snowpar.html:222:37, test/10k/snowpar.html:230:9, test/10k/snowpar.html:230:31]
 test/10k/snowpar.html:58:31: [maybe] Conversion to number yields NaN
 test/10k/snowpar.html:59:35: [maybe] Conversion to number yields NaN
 test/10k/snowpar.html:107:5: [maybe] Conversion to number yields NaN
@@ -62,8 +65,6 @@ test/10k/snowpar.html:139:56: [maybe] Conversion to number yields NaN
 test/10k/snowpar.html:148:31: [maybe] Conversion to number yields NaN
 test/10k/snowpar.html:149:35: [maybe] Conversion to number yields NaN
 test/10k/snowpar.html:176:16: [maybe] Conversion to number yields NaN
-test/10k/snowpar.html:176:16: [maybe] Conversion to number yields NaN
-test/10k/snowpar.html:177:16: [maybe] Conversion to number yields NaN
 test/10k/snowpar.html:177:16: [maybe] Conversion to number yields NaN
 test/10k/snowpar.html:183:16: [maybe] Conversion from string to number yields NaN
 test/10k/snowpar.html:183:16: [maybe] Conversion to number yields NaN

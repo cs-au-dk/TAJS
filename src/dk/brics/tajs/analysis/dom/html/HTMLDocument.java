@@ -147,7 +147,7 @@ public class HTMLDocument {
                     Value v = Value.makeObject(labels);
                     ObjectLabel nodeList = DOMFunctions.makeEmptyNodeList();
                     if (!labels.isEmpty()) {
-                        c.getAnalysis().getPropVarOperations().writeProperty(Collections.singleton(nodeList), Value.makeAnyStrUInt(), v, false, true);
+                        c.getAnalysis().getPropVarOperations().writeProperty(Collections.singleton(nodeList), Value.makeAnyStrUInt(), v);
                     }
                     return Value.makeObject(nodeList);
                 }

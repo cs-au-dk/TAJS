@@ -4,8 +4,8 @@ import dk.brics.tajs.Main;
 import dk.brics.tajs.monitoring.CompositeMonitoring;
 import dk.brics.tajs.monitoring.IAnalysisMonitoring;
 import dk.brics.tajs.monitoring.Monitoring;
+import dk.brics.tajs.monitoring.OrdinaryExitReachableChecker;
 import dk.brics.tajs.options.Options;
-import dk.brics.tajs.test.monitors.OrdinaryExitReachableCheckerMonitor;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -22,8 +22,8 @@ public class TestGoogle {
 	public void init() {
 		Main.reset();
 		Options.get().enableTest();
-		monitoring = CompositeMonitoring.buildFromList(new Monitoring(), new OrdinaryExitReachableCheckerMonitor());
-	}
+        monitoring = CompositeMonitoring.buildFromList(new Monitoring(), new OrdinaryExitReachableChecker());
+    }
 	
 	@Test
 	public void google_richards() throws Exception { 

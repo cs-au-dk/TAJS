@@ -2,6 +2,9 @@ package dk.brics.tajs.test;
 
 import dk.brics.tajs.Main;
 import dk.brics.tajs.analysis.Analysis;
+import dk.brics.tajs.flowgraph.FlowGraph;
+import dk.brics.tajs.flowgraph.JavaScriptSource;
+import dk.brics.tajs.js2flowgraph.FlowGraphBuilder;
 import dk.brics.tajs.monitoring.IAnalysisMonitoring;
 import dk.brics.tajs.monitoring.Monitoring;
 import dk.brics.tajs.util.AnalysisException;
@@ -12,153 +15,179 @@ import org.apache.log4j.WriterAppender;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
+import java.util.Locale;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
 
 public class Misc {
 
     private static Logger log = Logger.getLogger(Misc.class);
 
-    static ByteArrayOutputStream os;
+    private static ByteArrayOutputStream os;
 
-	static PrintStream ps;
+    private static PrintStream ps;
 
-	static String method_name;
+    private static Locale oldLocaleDefault;
 
-	public static void init() {
+    public static void init() {
         Main.initLogging(); // TODO: different log4j configuration for tests?
-		StackTraceElement[] s = Thread.currentThread().getStackTrace();
-		method_name = s[2].getMethodName();
-		log.info("=========== " + method_name + " ===========");
-	}
+        log.info("=========== " + getClassName() + "." + getMethodName() + " ===========");
+    }
 
-	public static void run(String[] args) throws AnalysisException {
-  		run(args, new Monitoring());
-	}
-
-	public static void run(String[] args, IAnalysisMonitoring monitoring) throws AnalysisException {
-		try {
-			Analysis a = Main.init(args, monitoring, null);
-			if (a == null)
-				throw new AnalysisException("Error during initialization");
-			Main.run(a);
-			Main.reset();
-		} catch (AnalysisException e) {
-			log.info(e.getMessage());
-			throw e;
-		}
-	}
-
-	@SuppressWarnings("resource")
-	public static void checkOutput(String s) {
-		s = s.replace(System.getProperty("line.separator"), "\n").replace("\r\n", "\n");
-		String filename = "test/expected/" + method_name + ".out";
-		try {
-			FileInputStream in = new FileInputStream(filename);
-			try {
-				byte[] b = new byte[in.available()];
-				in.read(b);
-				String sb = new String(b, "UTF-8");
-				sb = sb.replace("\r\n", "\n");
-			    assertEquals(sb, s);
-			} finally {
-				in.close();
-			}
-		} catch (FileNotFoundException e) {
-			try {
-				FileOutputStream out = new FileOutputStream(filename);
-				try {
-					out.write(s.getBytes("UTF-8"));
-				} finally {
-					out.close();
-				}
-				log.info(filename + " generated");
-			} catch (Exception f) {
-				log.error("Unable to write " + filename + ", " + f.getMessage());
-				System.exit(-1);
-			}
-		} catch (Exception e) {
-			fail(e.getMessage());
-		}
-	}
-
-	public static String fix(String s) {
-		return s.replaceAll("\r\n", "\n");
-	}
-
-	public static void captureSystemOutput() {
-		os = new ByteArrayOutputStream();
-		try {
-			ps = new PrintStream(os, false, "UTF-8");
-		} catch (UnsupportedEncodingException e) {
-			throw new AnalysisException(e);
-		}
-		Logger rootlogger = Logger.getRootLogger();
-		Appender old = rootlogger.getAppender("test");
-		if (old != null)
-			rootlogger.removeAppender(old);
-		Appender a = new WriterAppender(new PatternLayout("%m%n"), ps);
-		a.setName("test");
-		rootlogger.addAppender(a);
-	}
-
-	public static void checkSystemOutput() {
-		ps.close();
-		try {
-			Misc.checkOutput(fix(os.toString("UTF-8")));
-		} catch (UnsupportedEncodingException e) {
-			throw new AnalysisException(e);
-		}
-	}
-
-	public static void runSourceWithNamedFile(String name, String... src) {
-		runSourceWithNamedFile(name, src, null);
-	}
-
-	public static void runSourceWithNamedFile(String name, String[] src, IAnalysisMonitoring monitoring) {
-		File dir = new File("out/temp-sources/");
-		if (!dir.exists()) {
-			dir.mkdirs();
-		}
-		runSourceWithFile(new File(dir, name), src, monitoring);
-	}
-
-	public static void runSource(String... src) {
-        runSource(src, null);
-	}
-
-	private static void runSourceWithFile(File file, String[] src, IAnalysisMonitoring monitoring) {
-		StringBuilder sb = new StringBuilder();
-		for (int i = 0; i < src.length; i++) {
-			sb.append(src[i] + "\n");
-		}
-		try (PrintWriter writer = new PrintWriter(file)) {
-			writer.write(sb.toString());
-		} catch (FileNotFoundException e) {
-			throw new RuntimeException(e);
-		}
-		String[] args = new String[]{file.getPath()};
-        if (monitoring == null) {
-            Misc.run(args);
-        } else {
-            Misc.run(args, monitoring);
+    private static String getMethodName() {
+        StackTraceElement[] s = Thread.currentThread().getStackTrace();
+        for (int i = s.length - 1; i >= 0; i--) {
+            if (s[i].getClassName().startsWith("dk.brics.tajs.test")) {
+                String m = s[i].getMethodName();
+                if (!m.equals("main")) {
+                    return m;
+                }
+            }
         }
-        file.deleteOnExit();
-	}
+        throw new AnalysisException("Can't find method name!?");
+    }
 
-    public static void runSource(String[] source, IAnalysisMonitoring monitoring) {
+    private static String getClassName() {
+        StackTraceElement[] s = Thread.currentThread().getStackTrace();
+        for (int i = s.length - 1; i >= 0; i--) {
+            String c = s[i].getClassName();
+            if (c.startsWith("dk.brics.tajs.test")) {
+                if (!s[i].getMethodName().equals("main")) {
+                    return c.substring(c.lastIndexOf('.') + 1);
+                }
+            }
+        }
+        throw new AnalysisException("Can't find class name!?");
+    }
+
+    public static void run(String[] args) throws AnalysisException {
+        run(args, new Monitoring());
+    }
+
+    public static void run(String[] args, IAnalysisMonitoring monitoring) throws AnalysisException {
         try {
-            runSourceWithFile(File.createTempFile("temp-source-file", ".js"), source, monitoring);
+            Analysis a = Main.init(args, monitoring, null);
+            if (a == null)
+                throw new AnalysisException("Error during initialization");
+            Main.run(a);
+            Main.reset();
+        } catch (AnalysisException e) {
+            log.info(e.getMessage());
+            throw e;
+        }
+    }
+
+    private static void checkOutput(String actual) {
+        Path file = Paths.get("test/expected/" + getMethodName() + ".out");
+        Charset charset = Charset.forName("UTF-8");
+        try {
+            boolean RECREATE_EXPECTED_OUTPUT = false; // for quick replacement of all expected outputs
+            if (!Files.exists(file) || RECREATE_EXPECTED_OUTPUT) {
+                if (Files.exists(file) && RECREATE_EXPECTED_OUTPUT) {
+                    log.warn("Recreating all expected output!");
+                }
+                Files.deleteIfExists(file);
+                Files.write(file, actual.getBytes(charset), StandardOpenOption.CREATE_NEW);
+                log.info(file.toAbsolutePath() + " generated");
+            } else {
+                String expected = new String(Files.readAllBytes(file), charset);
+                assertEquals(fix(expected), fix(actual));
+            }
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public static String fix(String s) {
+        return s.replace(System.getProperty("line.separator"), "\n").replace("\r\n", "\n");
+    }
+
+    public static void captureSystemOutput() {
+        fixLocale();
+        os = new ByteArrayOutputStream();
+        try {
+            ps = new PrintStream(os, false, "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            throw new AnalysisException(e);
+        }
+        Logger rootlogger = Logger.getRootLogger();
+        Appender old = rootlogger.getAppender("test");
+        if (old != null)
+            rootlogger.removeAppender(old);
+        Appender a = new WriterAppender(new PatternLayout("%m%n"), ps);
+        a.setName("test");
+        rootlogger.addAppender(a);
+    }
+
+    private static void fixLocale() {
+        // required for consistent textual output (number formatting in particular)
+        oldLocaleDefault = Locale.getDefault();
+        Locale.setDefault(Locale.US);
+    }
+
+    private static void unfixLocale() {
+        Locale.setDefault(oldLocaleDefault);
+    }
+
+    public static void checkSystemOutput() {
+        ps.close();
+        try {
+            Misc.checkOutput(fix(os.toString("UTF-8")));
+        } catch (UnsupportedEncodingException e) {
+            throw new AnalysisException(e);
+        }
+        unfixLocale();
+    }
+
+    public static void runSource(String... src) {
+        runSource(src, null);
+    }
+
+    public static void runSource(String[] src, IAnalysisMonitoring monitoring) {
+        runSource(null, src, monitoring);
+    }
+
+    public static void runSource(String suffix, String[] src, IAnalysisMonitoring monitoring) {
+        try {
+            File dir = new File("out/temp-sources/");
+            if (!dir.exists()) {
+                dir.mkdirs();
+            }
+            File file = new File(dir, getClassName() + "." + getMethodName() + (suffix != null ? "." + suffix : "") + ".js"); // Windows chokes if reusing file names in one execution
+            file.deleteOnExit();
+            try (PrintWriter writer = new PrintWriter(file, "UTF-8")) {
+                for (int i = 0; i < src.length; i++) {
+                    writer.write(src[i]);
+                    writer.write("\n");
+                }
+            }
+            String[] args = {file.getPath()};
+            if (monitoring == null) {
+                Misc.run(args);
+            } else {
+                Misc.run(args, monitoring);
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static FlowGraph build(String... src) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < src.length; i++) {
+            sb.append(src[i]).append("\n");
+        }
+        FlowGraphBuilder flowGraphBuilder = new FlowGraphBuilder(null, "dummy");
+        flowGraphBuilder.transformStandAloneCode(JavaScriptSource.makeEmbeddedCode(null, "-", sb.toString(), 0, 0));
+        return flowGraphBuilder.close();
     }
 }

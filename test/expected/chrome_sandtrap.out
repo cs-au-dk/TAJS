@@ -1,5 +1,5 @@
-StartTag at (r1126,c7,p168371) missing required end tag
-StartTag at (r1127,c7,p168427) missing required end tag
+test/chromeexperiments/sandtrap.html: StartTag at (r1126,c7,p168371) missing required end tag
+test/chromeexperiments/sandtrap.html: StartTag at (r1127,c7,p168427) missing required end tag
 test/chromeexperiments/sandtrap.html:65:9: [definite] TypeError, accessing property of null/undefined
 test/chromeexperiments/sandtrap.html:71:9: [definite] TypeError, accessing property of null/undefined
 test/chromeexperiments/sandtrap.html:87:9: [definite] TypeError, accessing property of null/undefined
@@ -71,7 +71,7 @@ test/chromeexperiments/sandtrap.html:350:1: [definite] Unreachable function show
 test/chromeexperiments/sandtrap.html:365:1: [definite] Unreachable function doNothing
 test/chromeexperiments/sandtrap.html:375:1: [definite] The variable b is never used
 test/chromeexperiments/sandtrap.html:378:13: [definite] The variable d is never used
-test/chromeexperiments/sandtrap.html:378:17: [definite] Unreachable code
+test/chromeexperiments/sandtrap.html:378:13: [definite] Unreachable code
 test/chromeexperiments/sandtrap.html:379:13: [definite] The variable c is never used
 test/chromeexperiments/sandtrap.html:398:5: [definite] The variable startLevelTime is never used
 test/chromeexperiments/sandtrap.html:404:7: [definite] Unreachable code
@@ -124,11 +124,18 @@ test/chromeexperiments/sandtrap.html:1104:9: [definite] The variable b is never 
 test/chromeexperiments/sandtrap.html:1105:9: [definite] The variable a is never used
 test/chromeexperiments/sandtrap.html:1109:13: [definite] Unreachable code
 test/chromeexperiments/sandtrap.html:1114:13: [definite] Unreachable code
+test/chromeexperiments/sandtrap.html:308:9: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/sandtrap.html:323:5: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/sandtrap.html:338:5: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/sandtrap.html:339:5: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/sandtrap.html:355:5: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/sandtrap.html:1086:15: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/sandtrap.html:1089:9: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/sandtrap.html:82:9: [maybe] Reading absent property wheelDelta
 test/chromeexperiments/sandtrap.html:83:19: [maybe] Reading absent property wheelDelta
 test/chromeexperiments/sandtrap.html:84:14: [maybe] Reading absent property detail
 test/chromeexperiments/sandtrap.html:84:33: [maybe] Reading absent property detail
-test/chromeexperiments/sandtrap.html: [maybe] Uncaught exception, constructed at [test/chromeexperiments/sandtrap.html:65:9, test/chromeexperiments/sandtrap.html:71:9, test/chromeexperiments/sandtrap.html:87:9, test/chromeexperiments/sandtrap.html:378:17, test/chromeexperiments/sandtrap.html:1089:9]
+test/chromeexperiments/sandtrap.html: [maybe] Uncaught exception, constructed at [test/chromeexperiments/sandtrap.html:65:9, test/chromeexperiments/sandtrap.html:71:9, test/chromeexperiments/sandtrap.html:87:9, test/chromeexperiments/sandtrap.html:308:9, test/chromeexperiments/sandtrap.html:323:5, test/chromeexperiments/sandtrap.html:338:5, test/chromeexperiments/sandtrap.html:339:5, test/chromeexperiments/sandtrap.html:355:5, test/chromeexperiments/sandtrap.html:378:17, test/chromeexperiments/sandtrap.html:1086:15, test/chromeexperiments/sandtrap.html:1089:9]
 test/chromeexperiments/sandtrap.html:83:19: [maybe] Conversion to number yields NaN
 test/chromeexperiments/sandtrap.html:84:24: [maybe] Conversion to number yields NaN
 test/chromeexperiments/sandtrap.html:202:16: [maybe] Conversion from string to number yields NaN

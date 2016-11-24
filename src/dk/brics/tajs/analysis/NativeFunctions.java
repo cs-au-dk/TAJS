@@ -17,7 +17,6 @@
 package dk.brics.tajs.analysis;
 
 import dk.brics.tajs.analysis.FunctionCalls.CallInfo;
-import dk.brics.tajs.analysis.dom.DOMFunctions;
 import dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects;
 import dk.brics.tajs.lattice.HostObject;
 import dk.brics.tajs.lattice.ObjectLabel;
@@ -36,19 +35,11 @@ public class NativeFunctions {
     private NativeFunctions() {
     }
 
-    public static void evaluateGetter(HostObject nativeobject, ObjectLabel objlabel, String propertyname, Solver.SolverInterface c) {
-        DOMFunctions.evaluateGetter(nativeobject, objlabel, propertyname, c);
-    }
-
-    public static void evaluateSetter(HostObject nativeobject, ObjectLabel objlabel, String propertyname, Value v, Solver.SolverInterface c) {
-        DOMFunctions.evaluateSetter(nativeobject, objlabel, propertyname, v, c);
-    }
-
     /**
      * Issues a warning if the number of parameters is not in the given interval. max is ignored if -1.
      */
     public static void expectParameters(HostObject hostobject, CallInfo call, Solver.SolverInterface c, int min, int max) {
-        c.getMonitoring().visitNativeFunctionCall(call.getSourceNode(), hostobject, call.isUnknownNumberOfArgs(), call.getNumberOfArgs(), min, max);
+        c.getMonitoring().visitNativeFunctionCall(call.getSourceNode(), hostobject, call.isUnknownNumberOfArgs(), call.isUnknownNumberOfArgs() ? -1 : call.getNumberOfArgs(), min, max);
         // TODO: implementations *may* throw TypeError if too many parameters to functions (p.76)
     }
 
@@ -56,9 +47,8 @@ public class NativeFunctions {
      * Reads the value of a call parameter. Returns 'undefined' if too few parameters. The first parameter has number 0.
      */
     public static Value readParameter(CallInfo call, State state, int param) {
-        int num_actuals = call.getNumberOfArgs();
         boolean num_actuals_unknown = call.isUnknownNumberOfArgs();
-        if (num_actuals_unknown || param < num_actuals)
+        if (num_actuals_unknown || param < call.getNumberOfArgs())
             return UnknownValueResolver.getRealValue(call.getArg(param), state);
         else
             return Value.makeUndef();

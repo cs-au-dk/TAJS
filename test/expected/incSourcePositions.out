@@ -1,0 +1,27 @@
+fg2: <main> function()
+  block 0: [entry]
+    node 0: constant[undefined,v1] (out/temp-sources/TestFlowgraphBuilder.incSourcePositions.js)
+    ->[block 1]
+  block 1:
+    node 1: read-variable['a',v2,-] (out/temp-sources/TestFlowgraphBuilder.incSourcePositions.js:1:1)
+    node 2: read-variable['b',v3,-] (out/temp-sources/TestFlowgraphBuilder.incSourcePositions.js:1:6)
+    node 3: +[v2,v3,v4] (out/temp-sources/TestFlowgraphBuilder.incSourcePositions.js:1:1)
+    node 4: write-variable[v4,'a']* (out/temp-sources/TestFlowgraphBuilder.incSourcePositions.js:1:1)
+    node 5: read-variable['c',v5,-] (out/temp-sources/TestFlowgraphBuilder.incSourcePositions.js:2:1)
+    node 6: read-property[v5,'d',v6] (out/temp-sources/TestFlowgraphBuilder.incSourcePositions.js:2:1)
+    node 7: <variable-non-null-undef>['c'] (out/temp-sources/TestFlowgraphBuilder.incSourcePositions.js:2:1)
+    node 8: read-variable['e',v7,-] (out/temp-sources/TestFlowgraphBuilder.incSourcePositions.js:2:8)
+    node 9: +[v6,v7,v8] (out/temp-sources/TestFlowgraphBuilder.incSourcePositions.js:2:1)
+    node 10: write-property[v5,'d',v8] (out/temp-sources/TestFlowgraphBuilder.incSourcePositions.js:2:1)
+    node 11: <variable-non-null-undef>['c']* (out/temp-sources/TestFlowgraphBuilder.incSourcePositions.js:2:1)
+    ->[block 2]
+  block 2: [exit-ordinary]
+    node 12: return[v1] (out/temp-sources/TestFlowgraphBuilder.incSourcePositions.js)
+    ->[]
+  block 3: [exit-exceptional]
+    node 13: exceptional-return (out/temp-sources/TestFlowgraphBuilder.incSourcePositions.js)
+    ->[]
+
+out/temp-sources/TestFlowgraphBuilder.incSourcePositions.js:1:1: [definite] ReferenceError, reading absent variable a
+out/temp-sources/TestFlowgraphBuilder.incSourcePositions.js:1:6: [definite] Unreachable code
+out/temp-sources/TestFlowgraphBuilder.incSourcePositions.js: [maybe] Uncaught exception, constructed at [out/temp-sources/TestFlowgraphBuilder.incSourcePositions.js:1:1]

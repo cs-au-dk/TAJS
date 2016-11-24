@@ -2,7 +2,7 @@ package dk.brics.tajs.test;
 
 import dk.brics.tajs.Main;
 import dk.brics.tajs.options.Options;
-import dk.brics.tajs.util.AnalysisException;
+import dk.brics.tajs.util.AnalysisLimitationException;
 import dk.brics.tajs.util.ParseError;
 import org.junit.Before;
 import org.junit.Ignore;
@@ -381,7 +381,7 @@ public class TestFlowgraphBuilder {
         Misc.checkSystemOutput();
     }
 
-    @Test(expected = ParseError.class /* unnamed function statement */)
+    @Test(expected = ParseError.class) // unnamed function statement
     public void flowgraphbuilder_0040() throws Exception {
         Misc.init();
         String[] args = {"test/flowgraphbuilder/flowgraph_builder0040.js"};
@@ -1321,21 +1321,21 @@ public class TestFlowgraphBuilder {
         Misc.checkSystemOutput();
     }
 
-    @Test(expected = AnalysisException.class /* switch with default in non-last position */)
+    @Test(expected = AnalysisLimitationException.SyntacticSupportNotImplemented.class /* switch with default in non-last position */)
     public void flowgraphbuilder_0145() throws Exception {
         Misc.init();
         String[] args = {"test/flowgraphbuilder/flowgraph_builder0145.js"};
         Misc.run(args);
     }
 
-    @Test(expected = AnalysisException.class /* switch with default in non-last position */)
+    @Test(expected = AnalysisLimitationException.SyntacticSupportNotImplemented.class /* switch with default in non-last position */)
     public void flowgraphbuilder_0146() throws Exception {
         Misc.init();
         String[] args = {"test/flowgraphbuilder/flowgraph_builder0146.js"};
         Misc.run(args);
     }
 
-    @Test(expected = AnalysisException.class /* switch with default in non-last position */)
+    @Test(expected = AnalysisLimitationException.SyntacticSupportNotImplemented.class /* switch with default in non-last position */)
     public void flowgraphbuilder_0147() throws Exception {
         Misc.init();
         String[] args = {"test/flowgraphbuilder/flowgraph_builder0147.js"};
@@ -1420,7 +1420,6 @@ public class TestFlowgraphBuilder {
         Misc.checkSystemOutput();
     }
 
-    @Ignore // inspect output
     @Test
     public void flowgraphbuilder_0156() throws Exception {
         Misc.init();
@@ -2516,17 +2515,15 @@ public class TestFlowgraphBuilder {
         "");
     }
 
-    @Test
+    @Test(expected = AnalysisLimitationException.SyntacticSupportNotImplemented.class)
     public void flowgraphbuilder_labelledLabelledStatement () {
         Misc.init();
-        Misc.captureSystemOutput();
-        Misc.runSourceWithNamedFile("flowgraphbuilder_labelledLabelledStatement",
+        Misc.runSource(
                 "label1: label2: 42;",
                 "");
-        Misc.checkSystemOutput();
     }
 
-    @Test(expected = ParseError.class)
+    @Test(expected = AnalysisLimitationException.SyntacticSupportNotImplemented.class)
     public void labelledLabelledLoop () {
         Misc.init();
         Misc.runSource(
@@ -2541,7 +2538,7 @@ public class TestFlowgraphBuilder {
     public void flowgraphbuilder_labelledContinue () {
         Misc.init();
         Misc.captureSystemOutput();
-        Misc.runSourceWithNamedFile("flowgraphbuilder_labelledContinue",
+        Misc.runSource(
                 "'PRE'",
                 "label: for ('INIT'; 'COND'; 'INC') {",
                 "   'BODY'",
@@ -2557,7 +2554,7 @@ public class TestFlowgraphBuilder {
     @Test
     public void labelledContinueSemantics () {
         Misc.init();
-        Misc.runSourceWithNamedFile("labelledContinueSemantics",
+        Misc.runSource(
                 "function labelledContinue(){",
                 "   var x = 0;",
                 "   var first = true;",
@@ -2585,7 +2582,7 @@ public class TestFlowgraphBuilder {
     public void doWhileContinue_issue195 () {
         Misc.init();
         Misc.captureSystemOutput();
-        Misc.runSourceWithNamedFile("doWhileContinue_issue195",
+        Misc.runSource(
                 "'PRE';",
                 "do { ",
                 "   'BODY1';",
@@ -2602,7 +2599,7 @@ public class TestFlowgraphBuilder {
     public void flowgraphbuilder_hostFunctionSources1() {
         Misc.init();
         Misc.captureSystemOutput();
-        Misc.runSourceWithNamedFile("flowgraphbuilder_hostFunctionSources1",
+        Misc.runSource(
                 "'BODY'"
         );
         Misc.checkSystemOutput();
@@ -2612,7 +2609,7 @@ public class TestFlowgraphBuilder {
     public void flowgraphbuilder_hostFunctionSources2() {
         Misc.init();
         Misc.captureSystemOutput();
-        Misc.runSourceWithNamedFile("flowgraphbuilder_hostFunctionSources2",
+        Misc.runSource(
                 "function f(){'BODY'}"
         );
         Misc.checkSystemOutput();
@@ -2624,7 +2621,7 @@ public class TestFlowgraphBuilder {
         Misc.runSource("const x;");
     }
 
-    @Test/*(expected = ParseError.class) GitHub #182*/
+    @Test
     public void constConstDoubleDeclaration() {
         Misc.init();
         Misc.runSource("const x = 42; const x = 42;");
@@ -2636,16 +2633,65 @@ public class TestFlowgraphBuilder {
         Misc.runSource("const x = 42; var x = 42;");
     }
 
-    @Test/*(expected = ParseError.class) GitHub #182*/
+    @Test
     public void varConstDoubleDeclaration() {
         Misc.init();
         Misc.runSource("var x = 42; const x = 42;");
     }
 
-    @Test/*(expected = ParseError.class) GitHub #182*/
+    @Test
     public void constConstDoubleDeclaration_singleStatement() {
         Misc.init();
         Misc.runSource("const x = 42, x = 42;");
+    }
+
+    @Test
+    public void postfixCoercionResult() {
+        Misc.init();
+        Misc.captureSystemOutput();
+        Misc.runSource(
+                "x = a++"
+        );
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void prefixResult() {
+        Misc.init();
+        Misc.captureSystemOutput();
+        Misc.runSource(
+                "x = ++a"
+        );
+        Misc.checkSystemOutput();
+    }
+
+
+    @Test
+    public void incSourcePositions() {
+        Misc.init();
+        Misc.captureSystemOutput();
+        Misc.runSource(
+                "a += b",
+                "c.d += e"
+        );
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void postfixSourcePositions() {
+        Misc.init();
+        Misc.captureSystemOutput();
+        Misc.runSource(
+//                "a = b++",
+//                "f()",
+//                "c.d = e++",
+//                "f()",
+//                "f += g++",
+//                "f()",
+                "h.i += j++",
+                ""
+        );
+        //Misc.checkSystemOutput();
     }
 }
 

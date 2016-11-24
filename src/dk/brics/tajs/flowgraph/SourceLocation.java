@@ -16,33 +16,60 @@
 
 package dk.brics.tajs.flowgraph;
 
+import java.net.URL;
+
 /**
  * Source location.
  */
 public class SourceLocation implements Comparable<SourceLocation> {
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        SourceLocation that = (SourceLocation) o;
+
+        if (linenumber != that.linenumber) return false;
+        if (columnnumber != that.columnnumber) return false;
+        if (location != null ? !location.equals(that.location) : that.location != null) return false;
+        return prettyFileName != null ? prettyFileName.equals(that.prettyFileName) : that.prettyFileName == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = linenumber;
+        result = 31 * result + columnnumber;
+        result = 31 * result + (location != null ? location.hashCode() : 0);
+        result = 31 * result + (prettyFileName != null ? prettyFileName.hashCode() : 0);
+        return result;
+    }
+
     private int linenumber;
 
     private int columnnumber;
 
-    private String filename;
+    private final URL location;
+
+    private String prettyFileName;
 
     /**
      * Constructs a new source location.
      * 0 means "no number".
-     * Each occurrence of '\' is replaced by '/'.
+     * Each occurrence of '\' is replaced by '/' in the pretty file name.
      */
-    public SourceLocation(int linenumber, int columnnumber, String filename) {
+    public SourceLocation(int linenumber, int columnnumber, String prettyFileName, URL location) {
         this.linenumber = linenumber;
         this.columnnumber = columnnumber;
-        this.filename = filename.replace('\\', '/');
+        this.prettyFileName = prettyFileName.replace('\\', '/');
+        this.location = location;
     }
 
     /**
      * Returns the source file name.
      */
-    public String getFileName() {
-        return filename;
+    public String getPrettyFileName() {
+        return prettyFileName;
     }
 
     /**
@@ -66,35 +93,7 @@ public class SourceLocation implements Comparable<SourceLocation> {
      */
     @Override
     public String toString() {
-        return filename + (linenumber > 0 ? ":" + linenumber + (columnnumber > 0 ? ":" + columnnumber : "") : "");
-    }
-
-    /**
-     * Returns a hash code for this object.
-     */
-    @Override
-    public int hashCode() {
-        return filename.hashCode() * 31 + linenumber * 3 + columnnumber * 7;
-    }
-
-    /**
-     * Checks whether this and the given object represent the same source location.
-     */
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        SourceLocation other = (SourceLocation) obj;
-        if (filename == null) {
-            if (other.filename != null)
-                return false;
-        } else if (!filename.equals(other.filename))
-            return false;
-        return !(linenumber != other.linenumber || columnnumber != other.columnnumber);
+        return prettyFileName + (linenumber > 0 ? ":" + linenumber + (columnnumber > 0 ? ":" + columnnumber : "") : "");
     }
 
     /**
@@ -102,12 +101,16 @@ public class SourceLocation implements Comparable<SourceLocation> {
      */
     @Override
     public int compareTo(SourceLocation e) {
-        int c = filename.compareTo(e.filename);
+        int c = prettyFileName.compareTo(e.prettyFileName);
         if (c != 0)
             return c;
         c = linenumber - e.linenumber;
         if (c != 0)
             return c;
         return columnnumber - e.columnnumber;
+    }
+
+    public URL getLocation() {
+        return location;
     }
 }

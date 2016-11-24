@@ -73,7 +73,7 @@ public class HTMLTextAreaElement {
         createDOMProperty(INSTANCES, "readOnly", Value.makeAnyBool(), c);
         createDOMProperty(INSTANCES, "rows", Value.makeAnyNum(), c);
         createDOMProperty(INSTANCES, "tabIndex", Value.makeAnyNum(), c);
-        createDOMProperty(INSTANCES, "type", Value.makeAnyStr().setReadOnly(), c);
+        createDOMProperty(INSTANCES, "type", Value.makeStr("textarea").setReadOnly(), c);
         createDOMProperty(INSTANCES, "value", Value.makeAnyStr(), c);
 
         // DOM Level 2

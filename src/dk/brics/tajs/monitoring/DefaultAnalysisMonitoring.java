@@ -199,4 +199,7 @@ public class DefaultAnalysisMonitoring implements IAnalysisMonitoring {
     public void visitVariableOrProperty(String var, SourceLocation loc, Value value, Context context, State state) {
     }
 
+    @Override
+    public void visitNativeFunctionReturn(AbstractNode node, HostObject hostObject, Value result) {
+    }
 }

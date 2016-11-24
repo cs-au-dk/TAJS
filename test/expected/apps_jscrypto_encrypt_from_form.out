@@ -51,7 +51,6 @@ jscrypto.js:640:4: [definite] Dead assignment, property is never read
 jscrypto.js:680:4: [definite] Dead assignment, property is never read
 jscrypto.js:728:1: [definite] Dead assignment, property decrypt is never read
 jscrypto.js:819:4: [definite] Dead assignment, property is never read
-jscrypto.js:827:3: [definite] Dead assignment, property is never read
 jscrypto.js:847:2: [definite] Dead assignment, property _cipher is never read
 jscrypto.js:853:1: [definite] Dead assignment, property PMAC is never read
 jscrypto.js:913:1: [definite] Dead assignment, property encrypt is never read
@@ -152,11 +151,17 @@ jscrypto.js:1370:5: [maybe] RangeError, assigning invalid value to array 'length
 jscrypto.js:1499:2: [maybe] TypeError, accessing property of null/undefined
 jscrypto.js:1523:36: [maybe] TypeError, accessing property of null/undefined
 jscrypto.js:1533:3: [maybe] TypeError, call to non-function
+test/apps/jscrypto/encrypt_from_form.html:40:24: [maybe] TypeError, accessing property of null/undefined
+test/apps/jscrypto/encrypt_from_form.html:50:19: [maybe] TypeError, accessing property of null/undefined
+test/apps/jscrypto/encrypt_from_form.html:56:21: [maybe] TypeError, accessing property of null/undefined
+test/apps/jscrypto/encrypt_from_form.html:62:2: [maybe] TypeError, accessing property of null/undefined
+test/apps/jscrypto/encrypt_from_form.html:69:3: [maybe] TypeError, accessing property of null/undefined
+test/apps/jscrypto/encrypt_from_form.html:72:3: [maybe] TypeError, accessing property of null/undefined
 jscrypto.js:1348:4: [maybe] Reading absent property update_words_big_endian
 jscrypto.js:1348:94: [maybe] Reading absent property length
+jscrypto.js:1533:3: [maybe] Reading absent property push
 jscrypto.js:96:38: [maybe] Reading absent property (computed name)
 jscrypto.js:99:14: [maybe] Reading absent property (computed name)
-jscrypto.js:101:11: [maybe] Conversion to number yields NaN
 jscrypto.js:101:11: [maybe] Conversion to number yields NaN
 jscrypto.js:101:11: [maybe] Reading absent property (computed name)
 jscrypto.js:101:13: [maybe] Conversion to number yields NaN
@@ -169,7 +174,6 @@ jscrypto.js:103:6: [maybe] Conversion to number yields NaN
 jscrypto.js:104:4: [maybe] Reading absent property (computed name)
 jscrypto.js:104:6: [maybe] Conversion to number yields NaN
 jscrypto.js:104:21: [maybe] Reading absent property (computed name)
-jscrypto.js:107:11: [maybe] Conversion to number yields NaN
 jscrypto.js:107:11: [maybe] Conversion to number yields NaN
 jscrypto.js:107:11: [maybe] Reading absent property (computed name)
 jscrypto.js:107:13: [maybe] Conversion to number yields NaN
@@ -212,17 +216,11 @@ jscrypto.js:286:11: [maybe] Reading absent property (computed name)
 jscrypto.js:286:22: [maybe] Reading absent property (computed name)
 jscrypto.js:288:7: [maybe] Reading absent property (computed name)
 jscrypto.js:294:8: [maybe] Conversion to number yields NaN
-jscrypto.js:294:8: [maybe] Conversion to number yields NaN
-jscrypto.js:294:8: [maybe] Conversion to number yields NaN
-jscrypto.js:294:8: [maybe] Conversion to number yields NaN
 jscrypto.js:294:8: [maybe] Reading absent property (computed name)
 jscrypto.js:294:25: [maybe] Reading absent property (computed name)
 jscrypto.js:294:54: [maybe] Reading absent property (computed name)
 jscrypto.js:294:75: [maybe] Reading absent property (computed name)
 jscrypto.js:294:96: [maybe] Reading absent property (computed name)
-jscrypto.js:295:8: [maybe] Conversion to number yields NaN
-jscrypto.js:295:8: [maybe] Conversion to number yields NaN
-jscrypto.js:295:8: [maybe] Conversion to number yields NaN
 jscrypto.js:295:8: [maybe] Conversion to number yields NaN
 jscrypto.js:295:8: [maybe] Reading absent property (computed name)
 jscrypto.js:295:25: [maybe] Reading absent property (computed name)
@@ -230,17 +228,11 @@ jscrypto.js:295:54: [maybe] Reading absent property (computed name)
 jscrypto.js:295:75: [maybe] Reading absent property (computed name)
 jscrypto.js:295:96: [maybe] Reading absent property (computed name)
 jscrypto.js:296:8: [maybe] Conversion to number yields NaN
-jscrypto.js:296:8: [maybe] Conversion to number yields NaN
-jscrypto.js:296:8: [maybe] Conversion to number yields NaN
-jscrypto.js:296:8: [maybe] Conversion to number yields NaN
 jscrypto.js:296:8: [maybe] Reading absent property (computed name)
 jscrypto.js:296:25: [maybe] Reading absent property (computed name)
 jscrypto.js:296:54: [maybe] Reading absent property (computed name)
 jscrypto.js:296:75: [maybe] Reading absent property (computed name)
 jscrypto.js:296:96: [maybe] Reading absent property (computed name)
-jscrypto.js:297:8: [maybe] Conversion to number yields NaN
-jscrypto.js:297:8: [maybe] Conversion to number yields NaN
-jscrypto.js:297:8: [maybe] Conversion to number yields NaN
 jscrypto.js:297:8: [maybe] Conversion to number yields NaN
 jscrypto.js:297:8: [maybe] Reading absent property (computed name)
 jscrypto.js:297:25: [maybe] Reading absent property (computed name)
@@ -328,8 +320,6 @@ jscrypto.js:459:25: [maybe] Reading absent property (computed name)
 jscrypto.js:459:33: [maybe] Reading absent property (computed name)
 jscrypto.js:459:42: [maybe] Reading absent property (computed name)
 jscrypto.js:462:12: [maybe] Conversion to number yields NaN
-jscrypto.js:462:12: [maybe] Conversion to number yields NaN
-jscrypto.js:465:13: [maybe] Conversion to number yields NaN
 jscrypto.js:465:13: [maybe] Conversion to number yields NaN
 jscrypto.js:466:13: [maybe] Conversion to number yields NaN
 jscrypto.js:467:13: [maybe] Conversion to number yields NaN
@@ -362,14 +352,10 @@ jscrypto.js:679:11: [maybe] Reading absent property (computed name)
 jscrypto.js:679:19: [maybe] Conversion to number yields NaN
 jscrypto.js:679:20: [maybe] Conversion to number yields NaN
 jscrypto.js:679:20: [maybe] Reading absent property (computed name)
-jscrypto.js:679:20: [maybe] Reading absent property (computed name)
 jscrypto.js:679:43: [maybe] Conversion to number yields NaN
-jscrypto.js:679:43: [maybe] Reading absent property (computed name)
 jscrypto.js:679:43: [maybe] Reading absent property (computed name)
 jscrypto.js:679:66: [maybe] Conversion to number yields NaN
 jscrypto.js:679:66: [maybe] Reading absent property (computed name)
-jscrypto.js:679:66: [maybe] Reading absent property (computed name)
-jscrypto.js:679:88: [maybe] Reading absent property (computed name)
 jscrypto.js:679:88: [maybe] Reading absent property (computed name)
 jscrypto.js:680:15: [maybe] Reading absent property (computed name)
 jscrypto.js:685:12: [maybe] Reading absent property (computed name)
@@ -378,10 +364,8 @@ jscrypto.js:704:23: [maybe] Reading absent property (computed name)
 jscrypto.js:708:19: [maybe] Conversion to number yields NaN
 jscrypto.js:708:19: [maybe] Reading absent property (computed name)
 jscrypto.js:708:34: [maybe] Reading absent property (computed name)
-jscrypto.js:708:34: [maybe] Reading absent property (computed name)
 jscrypto.js:719:26: [maybe] Conversion to number yields NaN
 jscrypto.js:719:26: [maybe] Reading absent property (computed name)
-jscrypto.js:719:38: [maybe] Reading absent property (computed name)
 jscrypto.js:719:38: [maybe] Reading absent property (computed name)
 jscrypto.js:772:11: [maybe] Conversion to number yields NaN
 jscrypto.js:772:11: [maybe] Reading absent property (computed name)
@@ -407,7 +391,6 @@ jscrypto.js:812:12: [maybe] Reading absent property (computed name)
 jscrypto.js:814:29: [maybe] Reading absent property (computed name)
 jscrypto.js:814:42: [maybe] Conversion to number yields NaN
 jscrypto.js:814:42: [maybe] Reading absent property (computed name)
-jscrypto.js:814:42: [maybe] Reading absent property (computed name)
 jscrypto.js:814:55: [maybe] Reading absent property (computed name)
 jscrypto.js:817:20: [maybe] Reading absent property (computed name)
 jscrypto.js:819:15: [maybe] Reading absent property (computed name)
@@ -429,43 +412,51 @@ jscrypto.js:1130:15: [maybe] Reading absent property (computed name)
 jscrypto.js:1130:30: [maybe] Reading absent property (computed name)
 jscrypto.js:1131:21: [maybe] Conversion from string to number yields NaN
 jscrypto.js:1131:22: [maybe] Conversion to number yields NaN
-jscrypto.js:1131:22: [maybe] Conversion to number yields NaN
 jscrypto.js:1131:22: [maybe] Converting undefined to string
 jscrypto.js:1131:23: [maybe] Conversion from string to number yields NaN
 jscrypto.js:1131:23: [maybe] Conversion to number yields NaN
+jscrypto.js:1131:23: [maybe] Converting object to number
 jscrypto.js:1131:23: [maybe] The variable a has values with different types
 jscrypto.js:1131:29: [maybe] Conversion from string to number yields NaN
 jscrypto.js:1131:29: [maybe] Conversion to number yields NaN
+jscrypto.js:1131:29: [maybe] Converting object to number
 jscrypto.js:1131:29: [maybe] The variable a has values with different types
 jscrypto.js:1131:36: [maybe] Conversion from string to number yields NaN
 jscrypto.js:1131:36: [maybe] Conversion to number yields NaN
+jscrypto.js:1131:36: [maybe] Converting object to number
 jscrypto.js:1131:36: [maybe] The variable a has values with different types
 jscrypto.js:1131:42: [maybe] Conversion from string to number yields NaN
 jscrypto.js:1131:42: [maybe] Conversion to number yields NaN
+jscrypto.js:1131:42: [maybe] Converting object to number
 jscrypto.js:1131:42: [maybe] The variable a has values with different types
 jscrypto.js:1131:48: [maybe] Conversion from string to number yields NaN
 jscrypto.js:1131:48: [maybe] Conversion to number yields NaN
+jscrypto.js:1131:48: [maybe] Converting object to number
 jscrypto.js:1131:48: [maybe] The variable a has values with different types
 jscrypto.js:1131:58: [maybe] Conversion from string to number yields NaN
 jscrypto.js:1131:58: [maybe] Conversion to number yields NaN
+jscrypto.js:1131:58: [maybe] Converting object to number
 jscrypto.js:1131:58: [maybe] The variable b has values with different types
 jscrypto.js:1131:65: [maybe] Conversion from string to number yields NaN
 jscrypto.js:1131:65: [maybe] Conversion to number yields NaN
+jscrypto.js:1131:65: [maybe] Converting object to number
 jscrypto.js:1131:65: [maybe] The variable b has values with different types
 jscrypto.js:1131:72: [maybe] Conversion from string to number yields NaN
 jscrypto.js:1131:72: [maybe] Conversion to number yields NaN
+jscrypto.js:1131:72: [maybe] Converting object to number
 jscrypto.js:1131:72: [maybe] The variable b has values with different types
 jscrypto.js:1131:79: [maybe] Conversion from string to number yields NaN
 jscrypto.js:1131:79: [maybe] Conversion to number yields NaN
+jscrypto.js:1131:79: [maybe] Converting object to number
 jscrypto.js:1131:79: [maybe] The variable b has values with different types
 jscrypto.js:1131:85: [maybe] Conversion from string to number yields NaN
 jscrypto.js:1131:85: [maybe] Conversion to number yields NaN
+jscrypto.js:1131:85: [maybe] Converting object to number
 jscrypto.js:1131:85: [maybe] The variable b has values with different types
 jscrypto.js:1131:94: [maybe] Reading absent property (computed name)
 jscrypto.js:1131:104: [maybe] Reading absent property (computed name)
 jscrypto.js:1134:7: [maybe] Conversion to number yields NaN
 jscrypto.js:1134:7: [maybe] The variable tmp has values with different types
-jscrypto.js:1134:14: [maybe] Conversion to number yields NaN
 jscrypto.js:1134:14: [maybe] Conversion to number yields NaN
 jscrypto.js:1134:20: [maybe] Conversion to number yields NaN
 jscrypto.js:1134:27: [maybe] Conversion to number yields NaN
@@ -532,7 +523,6 @@ jscrypto.js:1348:48: [maybe] The variable id has values with different types
 jscrypto.js:1370:5: [maybe] Conversion from string to number yields NaN
 jscrypto.js:1370:5: [maybe] Conversion to number yields NaN
 jscrypto.js:1370:5: [maybe] Converting object to string
-jscrypto.js:1370:5: [maybe] Converting object to string
 jscrypto.js:1370:5: [maybe] Reading absent property (computed name)
 jscrypto.js:1370:24: [maybe] The variable robin has values with different types
 jscrypto.js:1375:30: [maybe] Conversion from string to number yields NaN
@@ -551,7 +541,7 @@ jscrypto.js:1537:28: [maybe] The variable strength has values with different typ
 jscrypto.js:1538:9: [maybe] The variable strength has values with different types
 jscrypto.js:1538:53: [maybe] The variable strength has values with different types
 jscrypto.js:1556:16: [maybe] Reading absent property (computed name)
-test/apps/jscrypto/encrypt_from_form.html: [maybe] Uncaught exception, constructed at [jscrypto.js:104:21, jscrypto.js:115:3, jscrypto.js:116:3, jscrypto.js:117:3, jscrypto.js:118:3, jscrypto.js:283:22, jscrypto.js:294:8, jscrypto.js:294:25, jscrypto.js:294:54, jscrypto.js:294:75, jscrypto.js:294:96, jscrypto.js:310:9, jscrypto.js:310:37, jscrypto.js:310:72, jscrypto.js:310:106, jscrypto.js:310:135, jscrypto.js:374:4, jscrypto.js:380:23, jscrypto.js:476:7, jscrypto.js:477:7, jscrypto.js:500:18, jscrypto.js:501:20, jscrypto.js:586:3, jscrypto.js:596:4, jscrypto.js:608:3, jscrypto.js:618:4, jscrypto.js:635:3, jscrypto.js:637:4, jscrypto.js:640:4, jscrypto.js:679:20, jscrypto.js:679:43, jscrypto.js:679:66, jscrypto.js:679:88, jscrypto.js:708:34, jscrypto.js:719:38, jscrypto.js:793:4, jscrypto.js:810:3, jscrypto.js:810:11, jscrypto.js:811:10, jscrypto.js:812:4, jscrypto.js:812:12, jscrypto.js:814:29, jscrypto.js:814:42, jscrypto.js:1348:4, jscrypto.js:1370:5, jscrypto.js:1499:2, jscrypto.js:1523:36, jscrypto.js:1533:3, jscrypto.js:1562:5]
+test/apps/jscrypto/encrypt_from_form.html: [maybe] Uncaught exception, constructed at [jscrypto.js:104:21, jscrypto.js:115:3, jscrypto.js:116:3, jscrypto.js:117:3, jscrypto.js:118:3, jscrypto.js:283:22, jscrypto.js:294:8, jscrypto.js:294:25, jscrypto.js:294:54, jscrypto.js:294:75, jscrypto.js:294:96, jscrypto.js:310:9, jscrypto.js:310:37, jscrypto.js:310:72, jscrypto.js:310:106, jscrypto.js:310:135, jscrypto.js:374:4, jscrypto.js:380:23, jscrypto.js:476:7, jscrypto.js:477:7, jscrypto.js:500:18, jscrypto.js:501:20, jscrypto.js:586:3, jscrypto.js:596:4, jscrypto.js:608:3, jscrypto.js:618:4, jscrypto.js:635:3, jscrypto.js:637:4, jscrypto.js:640:4, jscrypto.js:679:20, jscrypto.js:679:43, jscrypto.js:679:66, jscrypto.js:679:88, jscrypto.js:708:34, jscrypto.js:719:38, jscrypto.js:793:4, jscrypto.js:810:3, jscrypto.js:810:11, jscrypto.js:811:10, jscrypto.js:812:4, jscrypto.js:812:12, jscrypto.js:814:29, jscrypto.js:814:42, jscrypto.js:1348:4, jscrypto.js:1370:5, jscrypto.js:1499:2, jscrypto.js:1523:36, jscrypto.js:1533:3, jscrypto.js:1562:5, test/apps/jscrypto/encrypt_from_form.html:40:24, test/apps/jscrypto/encrypt_from_form.html:50:19, test/apps/jscrypto/encrypt_from_form.html:56:21, test/apps/jscrypto/encrypt_from_form.html:62:2, test/apps/jscrypto/encrypt_from_form.html:69:3, test/apps/jscrypto/encrypt_from_form.html:72:3]
 jscrypto.js:1319:3: [info] Writing to unknown property that may cause loss of precision
 jscrypto.js:1326:37: [info] Writing to unknown property that may cause loss of precision
 jscrypto.js:1327:5: [info] Writing to unknown property that may cause loss of precision

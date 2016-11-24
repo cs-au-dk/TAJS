@@ -17,10 +17,8 @@
 package dk.brics.tajs.analysis.dom;
 
 import dk.brics.tajs.analysis.FunctionCalls.CallInfo;
-import dk.brics.tajs.analysis.InitialStateBuilder;
 import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.analysis.dom.ajax.ActiveXObject;
-import dk.brics.tajs.analysis.dom.ajax.JSONObject;
 import dk.brics.tajs.analysis.dom.ajax.XmlHttpRequest;
 import dk.brics.tajs.analysis.dom.core.DOMCharacterData;
 import dk.brics.tajs.analysis.dom.core.DOMConfiguration;
@@ -113,6 +111,7 @@ import dk.brics.tajs.analysis.dom.html5.WebGLRenderingContext;
 import dk.brics.tajs.lattice.HostObject;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.State;
+import dk.brics.tajs.lattice.Str;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.solver.Message.Severity;
@@ -166,83 +165,6 @@ public class DOMFunctions {
     }
 
     /**
-     * Write Magic Property
-     */
-    public static void evaluateSetter(HostObject nativeObject, ObjectLabel label, String property, Value v, Solver.SolverInterface c) {
-        // State
-        State s = c.getState();
-
-        // The window.onload / window.onunload properties
-        if (nativeObject == DOMWindow.WINDOW.getHostObject()) {
-            // Load Event Handlers
-            if (DOMEventHelpers.isLoadEventAttribute(property)) {
-                log.debug("Adding Load Event Handler: " + v);
-                DOMEvents.addLoadEventHandler(s, v.getObjectLabels());
-            }
-
-            // Unload Event Handlers
-            if (DOMEventHelpers.isUnloadEventAttribute(property)) {
-                log.debug("Adding Unload Event Handler: " + v);
-                s.getExtras().addToMaySet(DOMRegistry.MaySets.UNLOAD_EVENT_HANDLERS.name(), DOMConversion.toEventHandler(v, c).getObjectLabels());
-            }
-        }
-
-        // The image.onload properties
-        if (nativeObject == HTMLImageElement.INSTANCES.getHostObject()) {
-            // Load Event Handler
-
-            // TODO: Hack: We currently treat image onload event handlers similarly to timeout event handlers
-            // might make a difference in practice.
-            s.getExtras().addToMaySet(DOMRegistry.MaySets.TIMEOUT_EVENT_HANDLERS.name(), DOMConversion.toEventHandler(v, c).getObjectLabels());
-        }
-
-        // Keyboard Event Handlers
-        if (DOMEventHelpers.isKeyboardEventAttribute(property)) {
-            log.debug("Adding Keyboard Event Handler: " + v);
-            DOMEvents.addKeyboardEventHandler(s, v.getObjectLabels());
-        }
-
-        // Mouse Event Handlers
-        if (DOMEventHelpers.isMouseEventAttribute(property)) {
-            log.debug("Adding Mouse Event Handler: " + v);
-            DOMEvents.addMouseEventHandler(s, v.getObjectLabels());
-        }
-
-        // AJAX Event Handlers
-        if (DOMEventHelpers.isAjaxEventProperty(property)) {
-            log.debug("Adding AJAX Event Handler: " + v);
-            // TODO: check object-label
-            if (label == ActiveXObject.INSTANCES || label == XmlHttpRequest.INSTANCES) {
-                DOMEvents.addAjaxEventHandler(s, v.getObjectLabels());
-            }
-        }
-
-        // Unknown Event Handlers
-        if (DOMEventHelpers.isOtherEventAttribute(property)) {
-            log.debug("Adding Unknown Event Handler: " + v);
-            DOMEvents.addUnknownEventHandler(s, v.getObjectLabels());
-        }
-
-        // id attribute
-        if ("id".equalsIgnoreCase(property)) {
-            if (v.isMaybeSingleStr()) {
-                s.getExtras().addToMayMap(DOMRegistry.MayMaps.ELEMENTS_BY_ID.name(), v.getStr(), Collections.singleton(label));
-            } else {
-                s.getExtras().addToDefaultMayMap(DOMRegistry.MayMaps.ELEMENTS_BY_ID.name(), Collections.singleton(label));
-            }
-        }
-
-        // name attribute
-        if ("name".equalsIgnoreCase(property)) {
-            if (v.isMaybeSingleStr()) {
-                s.getExtras().addToMayMap(DOMRegistry.MayMaps.ELEMENTS_BY_NAME.name(), v.getStr(), Collections.singleton(label));
-            } else {
-                s.getExtras().addToDefaultMayMap(DOMRegistry.MayMaps.ELEMENTS_BY_NAME.name(), Collections.singleton(label));
-            }
-        }
-    }
-
-    /**
      * Create a new DOM property with the given name and value on the specified objectlabel.
      */
     public static void createDOMProperty(ObjectLabel label, String property, Value v, Solver.SolverInterface c) {
@@ -255,19 +177,6 @@ public class DOMFunctions {
      */
     public static void createDOMFunction(ObjectLabel label, HostObject nativeObject, String name, int args, Solver.SolverInterface c) {
         createPrimitiveFunction(label, FUNCTION_PROTOTYPE, nativeObject, name, args, c);
-    }
-
-    /**
-     * Returns a Value representing all possible JSON objects.
-     */
-    public static Value makeAnyJSONObject(Solver.SolverInterface c) {
-        State s = c.getState();
-        ObjectLabel label = JSONObject.JSON_OBJECT;
-        s.newObject(label);
-        s.writeInternalPrototype(label, Value.makeObject(InitialStateBuilder.OBJECT_PROTOTYPE));
-        Value v = Value.makeObject(label).joinAnyStr().joinAnyNum().joinAnyBool();
-        c.getAnalysis().getPropVarOperations().writeProperty(Collections.singleton(label), Value.makeAnyStr(), v, false, true);
-        return v;
     }
 
     /**
@@ -443,7 +352,6 @@ public class DOMFunctions {
             case WINDOW_HISTORY_FORWARD:
             case WINDOW_HISTORY_GO:
             case WINDOW_HOME:
-            case WINDOW_JSON_PARSE:
             case WINDOW_LOCATION_ASSIGN:
             case WINDOW_LOCATION_RELOAD:
             case WINDOW_LOCATION_REPLACE:
@@ -736,6 +644,31 @@ public class DOMFunctions {
             default: {
                 c.getMonitoring().addMessage(call.getSourceNode(), Severity.HIGH, "TypeError, call to non-function (DOM): " + nativeObject);
                 return Value.makeNone();
+            }
+        }
+    }
+
+    static boolean canRegisterElementIdentifiersForSetter(Str prop) {
+        // Unsoundly ignorning unknown property name registrations GitHub #296
+        return prop.isMaybeSingleStr() && (prop.getStr().equals("id") || prop.getStr().equals("name"));
+    }
+
+    static void registerElementIdentifiersForSetter(ObjectLabel label, String name, Value value, State state) {
+        // id attribute
+        if ("id".equalsIgnoreCase(name)) {
+            if (value.isMaybeSingleStr()) {
+                state.getExtras().addToMayMap(DOMRegistry.MayMaps.ELEMENTS_BY_ID.name(), value.getStr(), Collections.singleton(label));
+            } else {
+                state.getExtras().addToDefaultMayMap(DOMRegistry.MayMaps.ELEMENTS_BY_ID.name(), Collections.singleton(label));
+            }
+        }
+
+        // name attribute
+        if ("name".equalsIgnoreCase(name)) {
+            if (value.isMaybeSingleStr()) {
+                state.getExtras().addToMayMap(DOMRegistry.MayMaps.ELEMENTS_BY_NAME.name(), value.getStr(), Collections.singleton(label));
+            } else {
+                state.getExtras().addToDefaultMayMap(DOMRegistry.MayMaps.ELEMENTS_BY_NAME.name(), Collections.singleton(label));
             }
         }
     }

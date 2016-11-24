@@ -1,0 +1,125 @@
+test/chromeexperiments/bingbong.html:243:7: [definite] The conditional expression is always true
+test/chromeexperiments/bingbong.html:365:3: [definite] The conditional expression is always true
+test/chromeexperiments/bingbong.html:274:7: [definite] The variable BrickRow is never used
+test/chromeexperiments/bingbong.html:275:7: [definite] The variable BrickCol is never used
+test/chromeexperiments/bingbong.html:116:5: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bingbong.html:118:5: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bingbong.html:218:7: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bingbong.html:304:15: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bingbong.html:311:5: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bingbong.html:312:5: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bingbong.html:313:5: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bingbong.html:321:5: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bingbong.html:322:5: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bingbong.html:323:5: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bingbong.html:331:5: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bingbong.html:332:5: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bingbong.html:333:5: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bingbong.html:341:5: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bingbong.html:342:5: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bingbong.html:343:5: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bingbong.html:350:5: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bingbong.html:351:5: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bingbong.html:413:5: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bingbong.html:442:24: [maybe] ReferenceError, reading absent variable ballH
+test/chromeexperiments/bingbong.html:442:35: [maybe] ReferenceError, reading absent variable ballV
+test/chromeexperiments/bingbong.html:510:19: [maybe] ReferenceError, reading absent variable ballH
+test/chromeexperiments/bingbong.html:510:26: [maybe] ReferenceError, reading absent variable ballV
+test/chromeexperiments/bingbong.html:518:15: [maybe] ReferenceError, reading absent variable ballH
+test/chromeexperiments/bingbong.html:519:15: [maybe] ReferenceError, reading absent variable ballV
+test/chromeexperiments/bingbong.html:523:15: [maybe] ReferenceError, reading absent variable ballH
+test/chromeexperiments/bingbong.html:524:15: [maybe] ReferenceError, reading absent variable ballV
+test/chromeexperiments/bingbong.html:529:7: [maybe] ReferenceError, reading absent variable ballV
+test/chromeexperiments/bingbong.html:531:9: [maybe] ReferenceError, reading absent variable ballH
+test/chromeexperiments/bingbong.html:531:36: [maybe] ReferenceError, reading absent variable ballH
+test/chromeexperiments/bingbong.html:533:19: [maybe] ReferenceError, reading absent variable ballH
+test/chromeexperiments/bingbong.html:534:19: [maybe] ReferenceError, reading absent variable ballV
+test/chromeexperiments/bingbong.html:542:18: [maybe] ReferenceError, reading absent variable ballH
+test/chromeexperiments/bingbong.html:557:7: [maybe] ReferenceError, reading absent variable ballH
+test/chromeexperiments/bingbong.html:562:7: [maybe] ReferenceError, reading absent variable ballH
+test/chromeexperiments/bingbong.html:567:7: [maybe] ReferenceError, reading absent variable ballV
+test/chromeexperiments/bingbong.html:574:7: [maybe] ReferenceError, reading absent variable ballV
+test/chromeexperiments/bingbong.html:591:11: [maybe] ReferenceError, reading absent variable ballH
+test/chromeexperiments/bingbong.html:591:38: [maybe] ReferenceError, reading absent variable ballH
+test/chromeexperiments/bingbong.html:591:65: [maybe] ReferenceError, reading absent variable ballV
+test/chromeexperiments/bingbong.html:591:92: [maybe] ReferenceError, reading absent variable ballV
+test/chromeexperiments/bingbong.html:595:31: [maybe] ReferenceError, reading absent variable ballV
+test/chromeexperiments/bingbong.html:596:29: [maybe] ReferenceError, reading absent variable ballV
+test/chromeexperiments/bingbong.html:597:30: [maybe] ReferenceError, reading absent variable ballH
+test/chromeexperiments/bingbong.html:598:30: [maybe] ReferenceError, reading absent variable ballH
+test/chromeexperiments/bingbong.html:627:11: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bingbong.html:632:11: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bingbong.html:763:5: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bingbong.html:814:60: [maybe] ReferenceError, reading absent variable event
+test/chromeexperiments/bingbong.html:837:187: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bingbong.html:837:278: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bingbong.html:839:186: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bingbong.html:839:277: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bingbong.html:872:190: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bingbong.html:872:281: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bingbong.html:874:188: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bingbong.html:874:277: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bingbong.html:116:5: [maybe] Reading absent property style
+test/chromeexperiments/bingbong.html:118:5: [maybe] Reading absent property style
+test/chromeexperiments/bingbong.html:312:5: [maybe] Reading absent property style
+test/chromeexperiments/bingbong.html:313:5: [maybe] Reading absent property style
+test/chromeexperiments/bingbong.html:322:5: [maybe] Reading absent property style
+test/chromeexperiments/bingbong.html:323:5: [maybe] Reading absent property style
+test/chromeexperiments/bingbong.html:332:5: [maybe] Reading absent property style
+test/chromeexperiments/bingbong.html:333:5: [maybe] Reading absent property style
+test/chromeexperiments/bingbong.html:342:5: [maybe] Reading absent property style
+test/chromeexperiments/bingbong.html:343:5: [maybe] Reading absent property style
+test/chromeexperiments/bingbong.html:350:5: [maybe] Reading absent property style
+test/chromeexperiments/bingbong.html:351:5: [maybe] Reading absent property style
+test/chromeexperiments/bingbong.html:413:5: [maybe] Reading absent property style
+test/chromeexperiments/bingbong.html: [maybe] Uncaught exception, constructed at [test/chromeexperiments/bingbong.html:116:5, test/chromeexperiments/bingbong.html:118:5, test/chromeexperiments/bingbong.html:218:7, test/chromeexperiments/bingbong.html:304:15, test/chromeexperiments/bingbong.html:311:5, test/chromeexperiments/bingbong.html:312:5, test/chromeexperiments/bingbong.html:313:5, test/chromeexperiments/bingbong.html:321:5, test/chromeexperiments/bingbong.html:322:5, test/chromeexperiments/bingbong.html:323:5, test/chromeexperiments/bingbong.html:331:5, test/chromeexperiments/bingbong.html:332:5, test/chromeexperiments/bingbong.html:333:5, test/chromeexperiments/bingbong.html:341:5, test/chromeexperiments/bingbong.html:342:5, test/chromeexperiments/bingbong.html:343:5, test/chromeexperiments/bingbong.html:350:5, test/chromeexperiments/bingbong.html:351:5, test/chromeexperiments/bingbong.html:413:5, test/chromeexperiments/bingbong.html:442:24, test/chromeexperiments/bingbong.html:442:35, test/chromeexperiments/bingbong.html:510:19, test/chromeexperiments/bingbong.html:510:26, test/chromeexperiments/bingbong.html:518:15, test/chromeexperiments/bingbong.html:519:15, test/chromeexperiments/bingbong.html:523:15, test/chromeexperiments/bingbong.html:524:15, test/chromeexperiments/bingbong.html:529:7, test/chromeexperiments/bingbong.html:531:9, test/chromeexperiments/bingbong.html:531:36, test/chromeexperiments/bingbong.html:533:19, test/chromeexperiments/bingbong.html:534:19, test/chromeexperiments/bingbong.html:542:18, test/chromeexperiments/bingbong.html:557:7, test/chromeexperiments/bingbong.html:562:7, test/chromeexperiments/bingbong.html:567:7, test/chromeexperiments/bingbong.html:574:7, test/chromeexperiments/bingbong.html:591:11, test/chromeexperiments/bingbong.html:591:38, test/chromeexperiments/bingbong.html:591:65, test/chromeexperiments/bingbong.html:591:92, test/chromeexperiments/bingbong.html:595:31, test/chromeexperiments/bingbong.html:596:29, test/chromeexperiments/bingbong.html:597:30, test/chromeexperiments/bingbong.html:598:30, test/chromeexperiments/bingbong.html:627:11, test/chromeexperiments/bingbong.html:632:11, test/chromeexperiments/bingbong.html:763:5, test/chromeexperiments/bingbong.html:814:60, test/chromeexperiments/bingbong.html:837:187, test/chromeexperiments/bingbong.html:837:278, test/chromeexperiments/bingbong.html:839:186, test/chromeexperiments/bingbong.html:839:277, test/chromeexperiments/bingbong.html:872:190, test/chromeexperiments/bingbong.html:872:281, test/chromeexperiments/bingbong.html:874:188, test/chromeexperiments/bingbong.html:874:277]
+test/chromeexperiments/bingbong.html:112:7: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bingbong.html:115:15: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bingbong.html:115:15: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bingbong.html:117:16: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bingbong.html:117:16: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bingbong.html:211:11: [maybe] Converting primitive string to object
+test/chromeexperiments/bingbong.html:218:62: [maybe] Converting object to string
+test/chromeexperiments/bingbong.html:218:62: [maybe] Converting primitive string to object
+test/chromeexperiments/bingbong.html:304:15: [maybe] Converting object to string
+test/chromeexperiments/bingbong.html:304:15: [maybe] Converting primitive string to object
+test/chromeexperiments/bingbong.html:304:15: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bingbong.html:312:55: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bingbong.html:313:54: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bingbong.html:322:55: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bingbong.html:323:54: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bingbong.html:332:55: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bingbong.html:333:54: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bingbong.html:342:55: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bingbong.html:343:54: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bingbong.html:412:24: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bingbong.html:412:24: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bingbong.html:412:46: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bingbong.html:412:46: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bingbong.html:589:9: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bingbong.html:591:25: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bingbong.html:591:47: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bingbong.html:591:47: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bingbong.html:591:74: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bingbong.html:591:74: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bingbong.html:591:106: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bingbong.html:595:40: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bingbong.html:595:40: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bingbong.html:596:28: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bingbong.html:596:43: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bingbong.html:597:39: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bingbong.html:597:39: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bingbong.html:598:29: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bingbong.html:598:44: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bingbong.html:624:13: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bingbong.html:629:18: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bingbong.html:634:18: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bingbong.html:640:18: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bingbong.html:640:39: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bingbong.html:653:15: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bingbong.html:653:36: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bingbong.html:653:57: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bingbong.html:653:78: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bingbong.html:756:9: [maybe] Converting primitive string to object
+test/chromeexperiments/bingbong.html:763:60: [maybe] Converting object to string
+test/chromeexperiments/bingbong.html:763:60: [maybe] Converting primitive string to object

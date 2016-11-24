@@ -75,5 +75,4 @@ function f()
 
 test/flowgraphbuilder/flowgraph_builder_jump_return_0011.js:1:5: [definite] The variable v is never used
 test/flowgraphbuilder/flowgraph_builder_jump_return_0011.js:7:11: [definite] Unreachable code
-test/flowgraphbuilder/flowgraph_builder_jump_return_0011.js:7:11: [definite] Unreachable code
 test/flowgraphbuilder/flowgraph_builder_jump_return_0011.js:12:1: [info] Abstract value: "OK"

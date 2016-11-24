@@ -1,16 +1,38 @@
+/*
+ * Copyright 2009-2016 Aarhus University
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package dk.brics.tajs.lattice;
 
+import dk.brics.tajs.options.Options;
 import dk.brics.tajs.util.AnalysisException;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
+import static dk.brics.tajs.util.Collections.newList;
 import static dk.brics.tajs.util.Collections.newMap;
+import static dk.brics.tajs.util.Collections.newSet;
 
 /**
  * Representation of arguments to a function.
  */
-public class ContextArguments {
+public class ContextArguments {// TODO: canonicalize? (#140)
 
     private final Value unknownArg;
 
@@ -20,16 +42,25 @@ public class ContextArguments {
 
     private final List<Value> arguments;
 
+    private ContextArguments(Value unknownArg, List<String> parameterNames, List<Value> arguments, Map<String, Value> selectedClosureVariables) { // XXX: review, compare with 19b80eac3
+        List<String> relevantParameterNames = parameterNames != null ? parameterNames.subList(0, arguments == null ? 0 : Math.min(parameterNames.size(), arguments.size())) : null;
+        this.unknownArg = unknownArg;
+        this.arguments = arguments == null || arguments.isEmpty() ? null : arguments;
+        this.parameterNames = relevantParameterNames == null || relevantParameterNames.isEmpty() ? null : parameterNames;
+        this.selectedClosureVariables = selectedClosureVariables == null || selectedClosureVariables.isEmpty() ? null : selectedClosureVariables;
+        if (Options.get().isDebugOrTestEnabled()) {
+            if ((this.arguments != null && this.arguments.stream().anyMatch(a -> a != null && a.isPolymorphicOrUnknown())) || (this.selectedClosureVariables != null && this.selectedClosureVariables.values().stream().anyMatch(a -> a != null && a.isPolymorphicOrUnknown()))) {
+                throw new AnalysisException("Attempting to be context sensitive in polymorphic or unknown value");
+            }
+        }
+    }
     /**
      * Context arguments for a function invocation with unknown arguments.
      *
      * @param unknownArg all the arguments in a single value
      */
     public ContextArguments(Value unknownArg, Map<String, Value> selectedClosureVariables) {
-        this.unknownArg = unknownArg;
-        this.arguments = null;
-        this.parameterNames = null;
-        this.selectedClosureVariables = selectedClosureVariables;
+        this(unknownArg, null, null, selectedClosureVariables);
     }
 
     /**
@@ -40,10 +71,7 @@ public class ContextArguments {
      * @param selectedClosureVariables as the values of closure-variables
      */
     public ContextArguments(List<String> parameterNames, List<Value> arguments, Map<String, Value> selectedClosureVariables) {
-        this.parameterNames = parameterNames;
-        this.arguments = arguments;
-        this.unknownArg = null;
-        this.selectedClosureVariables = selectedClosureVariables;
+        this(null, parameterNames, arguments, selectedClosureVariables);
     }
 
     /**
@@ -53,32 +81,28 @@ public class ContextArguments {
         return unknownArg != null;
     }
 
-    private String toString(boolean sourcesOnly) {
+    private String toString(boolean sourcesOnly) { // XXX: review
         String closureVariablesString = selectedClosureVariables == null? "": "&" + selectedClosureVariables;
         if (isUnknown()) {
             return "UnknownArg(" + unknownArg + ")" + closureVariablesString;
         }
 
-        String argumentsString;
-        if(arguments != null) {
-            final Map<String, String> mapLike = newMap();
-            int i = 0;
-            for (Value value : arguments) {
-                if (parameterNames.size() > i) {
-                    mapLike.put(parameterNames.get(i), value == null ? "-" : sourcesOnly ? toSourcesOnly(value) : value.toString());
-                }
-                i++;
-            }
-            for (; i < arguments.size(); i++) {
-                Value value = arguments.get(i);
-                mapLike.put("<" + i + ">", value == null ? "-" : sourcesOnly ? toSourcesOnly(value) : value.toString());
-            }
-            argumentsString = mapLike.toString();
-        }else{
-            argumentsString = "{}";
+        Map<String, String> mapLike = newMap();
+        List<String> parameterNames = this.parameterNames != null ? this.parameterNames : newList();
+        List<Value> arguments = this.arguments != null ? this.arguments : newList();
+        int max = Math.max(parameterNames.size(), arguments.size());
+        for (int i = 0; i < max; i++) {
+            Value argument = arguments.size() > i ? arguments.get(i) : null;
+            String parameterName = parameterNames.size() > i ? parameterNames.get(i) : "<" + i + ">";
+            mapLike.put(parameterName, makeArgumentString(argument, sourcesOnly));
         }
+        String argumentsString = mapLike.toString();
 
         return argumentsString + closureVariablesString;
+    }
+
+    private String makeArgumentString(Value argument, boolean sourcesOnly) {
+        return argument == null ? "-" : sourcesOnly ? toSourcesOnly(argument) : argument.toString();
     }
 
     private static String toSourcesOnly(Value value) {
@@ -114,6 +138,10 @@ public class ContextArguments {
         return result;
     }
 
+    public boolean hasArguments() { // XXX: used where?
+        return arguments != null;
+    }
+
     /**
      * Returns the arguments the function was invoked with.
      */
@@ -128,4 +156,27 @@ public class ContextArguments {
         return selectedClosureVariables;
     }
 
+    public Value getParameterValue(String name) { // XXX: review
+        int index = parameterNames.indexOf(name);
+        if (index == -1) {
+            return null;
+        }
+        return arguments.get(index);
+    }
+
+    /**
+     * Utility function for extracting object labels
+     */
+    public static Set<ObjectLabel> extractTopLevelObjectLabels(ContextArguments arguments) { // XXX: review
+        if (arguments == null) {
+            return newSet();
+        }
+        Stream<Value> closureParameterValues = arguments.getSelectedClosureVariables() != null ? arguments.getSelectedClosureVariables().values().stream() : Stream.empty();
+        Stream<Value> argumentValues = arguments.hasArguments() ? arguments.getArguments().stream() : Stream.empty();
+        Stream<Value> unknownValues = arguments.unknownArg != null ? Stream.of(arguments.unknownArg) : Stream.empty();
+        return Stream.concat(unknownValues, Stream.concat(argumentValues, closureParameterValues))
+                .filter(v -> v != null)
+                .flatMap(v -> v.getObjectLabels().stream())
+                .collect(Collectors.toSet());
+    }
 }

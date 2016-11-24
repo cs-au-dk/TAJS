@@ -42,9 +42,12 @@ test/10k/filterrific.html:339:13: [maybe] TypeError, accessing property of null/
 test/10k/filterrific.html:339:29: [maybe] TypeError, accessing property of null/undefined
 test/10k/filterrific.html:340:13: [maybe] TypeError, accessing property of null/undefined
 test/10k/filterrific.html:341:13: [maybe] TypeError, accessing property of null/undefined
+test/10k/filterrific.html:346:17: [maybe] TypeError, call to non-function
 test/10k/filterrific.html:347:31: [maybe] TypeError, call to non-function
+test/10k/filterrific.html:348:17: [maybe] TypeError, call to non-function
+test/10k/filterrific.html:349:17: [maybe] TypeError, call to non-function
+test/10k/filterrific.html:350:17: [maybe] TypeError, call to non-function
 test/10k/filterrific.html:357:13: [maybe] TypeError, call to non-function
-test/10k/filterrific.html:358:13: [maybe] TypeError, accessing property of null/undefined
 test/10k/filterrific.html:358:13: [maybe] TypeError, accessing property of null/undefined
 test/10k/filterrific.html:358:13: [maybe] TypeError, call to non-function
 test/10k/filterrific.html:359:9: [maybe] TypeError, call to non-function
@@ -52,7 +55,6 @@ test/10k/filterrific.html:361:29: [maybe] TypeError, call to non-function
 test/10k/filterrific.html:361:32: [maybe] TypeError, call to non-function
 test/10k/filterrific.html:361:44: [maybe] TypeError, call to non-function
 test/10k/filterrific.html:362:9: [maybe] TypeError, call to non-function
-test/10k/filterrific.html:363:29: [maybe] ReferenceError, reading absent variable l
 test/10k/filterrific.html:364:17: [maybe] TypeError, call to non-function
 test/10k/filterrific.html:365:21: [maybe] TypeError, call to non-function
 test/10k/filterrific.html:366:21: [maybe] TypeError, call to non-function
@@ -68,6 +70,7 @@ test/10k/filterrific.html:386:13: [maybe] TypeError, accessing property of null/
 test/10k/filterrific.html:389:21: [maybe] TypeError, call to non-function
 test/10k/filterrific.html:392:13: [maybe] TypeError, call to non-function
 test/10k/filterrific.html:396:16: [maybe] TypeError, accessing property of null/undefined
+test/10k/filterrific.html:396:16: [maybe] TypeError, call to non-function
 test/10k/filterrific.html:418:18: [maybe] TypeError, accessing property of null/undefined
 test/10k/filterrific.html:418:42: [maybe] TypeError, call to non-function
 test/10k/filterrific.html:422:48: [maybe] TypeError, call to non-function
@@ -116,6 +119,7 @@ test/10k/filterrific.html:570:148: [maybe] TypeError, call to non-function
 test/10k/filterrific.html:570:180: [maybe] TypeError, call to non-function
 test/10k/filterrific.html:571:22: [maybe] TypeError, call to non-function
 test/10k/filterrific.html:575:9: [maybe] TypeError, accessing property of null/undefined
+test/10k/filterrific.html:575:9: [maybe] TypeError, call to non-function
 test/10k/filterrific.html:575:9: [maybe] TypeError, non-HTMLImageElement or non-HTMLCanvasElement as argument to drawImage
 test/10k/filterrific.html:584:17: [maybe] TypeError, call to non-function
 test/10k/filterrific.html:584:31: [maybe] TypeError, call to non-function
@@ -139,6 +143,7 @@ test/10k/filterrific.html:614:9: [maybe] TypeError, call to non-function
 test/10k/filterrific.html:615:19: [maybe] TypeError, call to non-function
 test/10k/filterrific.html:616:9: [maybe] TypeError, accessing property of null/undefined
 test/10k/filterrific.html:616:9: [maybe] TypeError, argument is not of expected type: ImageData
+test/10k/filterrific.html:616:9: [maybe] TypeError, call to non-function
 test/10k/filterrific.html:616:24: [maybe] TypeError, call to non-function
 test/10k/filterrific.html:617:9: [maybe] TypeError, call to non-function
 test/10k/filterrific.html:621:21: [maybe] TypeError, call to non-function
@@ -162,7 +167,6 @@ test/10k/filterrific.html:645:30: [maybe] TypeError, call to non-function
 test/10k/filterrific.html:645:35: [maybe] TypeError, call to non-function
 test/10k/filterrific.html:646:23: [maybe] TypeError, accessing property of null/undefined
 test/10k/filterrific.html:647:17: [maybe] TypeError, accessing property of null/undefined
-test/10k/filterrific.html:647:17: [maybe] TypeError, accessing property of null/undefined
 test/10k/filterrific.html:648:17: [maybe] TypeError, call to non-function
 test/10k/filterrific.html:648:23: [maybe] RangeError in Number function
 test/10k/filterrific.html:648:23: [maybe] TypeError, call to non-function
@@ -176,6 +180,10 @@ test/10k/filterrific.html:266:13: [maybe] Reading absent property getBoundingCli
 test/10k/filterrific.html:283:38: [maybe] Reading absent property style
 test/10k/filterrific.html:319:20: [maybe] Reading 'this' yields the global object
 test/10k/filterrific.html:319:20: [maybe] Reading absent property innerHTML
+test/10k/filterrific.html:346:17: [maybe] Reading absent property beginPath
+test/10k/filterrific.html:348:17: [maybe] Reading absent property moveTo
+test/10k/filterrific.html:349:17: [maybe] Reading absent property lineTo
+test/10k/filterrific.html:350:17: [maybe] Reading absent property stroke
 test/10k/filterrific.html:358:13: [maybe] Reading absent property innerHTML
 test/10k/filterrific.html:358:13: [maybe] Reading absent property split
 test/10k/filterrific.html:379:16: [maybe] Reading 'this' yields the global object
@@ -183,14 +191,17 @@ test/10k/filterrific.html:382:16: [maybe] Reading 'this' yields the global objec
 test/10k/filterrific.html:385:29: [maybe] Reading absent property wheelDelta
 test/10k/filterrific.html:385:45: [maybe] Reading absent property detail
 test/10k/filterrific.html:386:13: [maybe] Reading absent property style
+test/10k/filterrific.html:396:16: [maybe] Reading absent property getImageData
 test/10k/filterrific.html:461:18: [maybe] Reading absent property a
 test/10k/filterrific.html:465:20: [maybe] Reading absent property a
 test/10k/filterrific.html:474:20: [maybe] Reading absent property a
+test/10k/filterrific.html:575:9: [maybe] Reading absent property drawImage
+test/10k/filterrific.html:616:9: [maybe] Reading absent property putImageData
 test/10k/filterrific.html:631:13: [maybe] Reading absent property style
 test/10k/filterrific.html:646:23: [maybe] Reading absent property b
 test/10k/filterrific.html:647:17: [maybe] Reading absent property style
 test/10k/filterrific.html:648:23: [maybe] Reading absent property toFixed
-test/10k/filterrific.html: [maybe] Uncaught exception, constructed at [test/10k/filterrific.html:246:16, test/10k/filterrific.html:249:16, test/10k/filterrific.html:253:16, test/10k/filterrific.html:257:16, test/10k/filterrific.html:260:9, test/10k/filterrific.html:266:13, test/10k/filterrific.html:270:9, test/10k/filterrific.html:283:38, test/10k/filterrific.html:299:9, test/10k/filterrific.html:299:19, test/10k/filterrific.html:319:17, test/10k/filterrific.html:324:21, test/10k/filterrific.html:330:18, test/10k/filterrific.html:333:9, test/10k/filterrific.html:334:21, test/10k/filterrific.html:337:20, test/10k/filterrific.html:338:13, test/10k/filterrific.html:339:13, test/10k/filterrific.html:339:29, test/10k/filterrific.html:340:13, test/10k/filterrific.html:341:13, test/10k/filterrific.html:347:31, test/10k/filterrific.html:358:13, test/10k/filterrific.html:363:29, test/10k/filterrific.html:364:17, test/10k/filterrific.html:365:21, test/10k/filterrific.html:366:21, test/10k/filterrific.html:367:25, test/10k/filterrific.html:378:9, test/10k/filterrific.html:379:13, test/10k/filterrific.html:382:13, test/10k/filterrific.html:386:13, test/10k/filterrific.html:389:21, test/10k/filterrific.html:392:13, test/10k/filterrific.html:396:16, test/10k/filterrific.html:418:18, test/10k/filterrific.html:418:42, test/10k/filterrific.html:422:48, test/10k/filterrific.html:424:13, test/10k/filterrific.html:440:59, test/10k/filterrific.html:442:21, test/10k/filterrific.html:442:61, test/10k/filterrific.html:443:21, test/10k/filterrific.html:443:30, test/10k/filterrific.html:443:58, test/10k/filterrific.html:443:67, test/10k/filterrific.html:453:59, test/10k/filterrific.html:455:17, test/10k/filterrific.html:455:22, test/10k/filterrific.html:455:31, test/10k/filterrific.html:455:66, test/10k/filterrific.html:455:71, test/10k/filterrific.html:461:16, test/10k/filterrific.html:461:18, test/10k/filterrific.html:461:21, test/10k/filterrific.html:465:18, test/10k/filterrific.html:465:20, test/10k/filterrific.html:465:23, test/10k/filterrific.html:465:56, test/10k/filterrific.html:465:72, test/10k/filterrific.html:472:9, test/10k/filterrific.html:474:18, test/10k/filterrific.html:474:20, test/10k/filterrific.html:474:54, test/10k/filterrific.html:474:84, test/10k/filterrific.html:478:17, test/10k/filterrific.html:482:56, test/10k/filterrific.html:482:71, test/10k/filterrific.html:484:44, test/10k/filterrific.html:484:79, test/10k/filterrific.html:549:21, test/10k/filterrific.html:550:18, test/10k/filterrific.html:550:25, test/10k/filterrific.html:551:51, test/10k/filterrific.html:556:9, test/10k/filterrific.html:570:34, test/10k/filterrific.html:570:66, test/10k/filterrific.html:570:91, test/10k/filterrific.html:570:123, test/10k/filterrific.html:570:148, test/10k/filterrific.html:570:180, test/10k/filterrific.html:571:22, test/10k/filterrific.html:575:9, test/10k/filterrific.html:584:17, test/10k/filterrific.html:584:31, test/10k/filterrific.html:586:9, test/10k/filterrific.html:588:13, test/10k/filterrific.html:589:13, test/10k/filterrific.html:590:13, test/10k/filterrific.html:592:9, test/10k/filterrific.html:596:24, test/10k/filterrific.html:596:38, test/10k/filterrific.html:596:40, test/10k/filterrific.html:603:21, test/10k/filterrific.html:606:9, test/10k/filterrific.html:607:13, test/10k/filterrific.html:608:13, test/10k/filterrific.html:608:31, test/10k/filterrific.html:610:9, test/10k/filterrific.html:610:12, test/10k/filterrific.html:613:13, test/10k/filterrific.html:614:9, test/10k/filterrific.html:615:19, test/10k/filterrific.html:616:9, test/10k/filterrific.html:616:24, test/10k/filterrific.html:617:9, test/10k/filterrific.html:621:21, test/10k/filterrific.html:621:34, test/10k/filterrific.html:621:39, test/10k/filterrific.html:622:13, test/10k/filterrific.html:623:13, test/10k/filterrific.html:631:13, test/10k/filterrific.html:632:13, test/10k/filterrific.html:636:48, test/10k/filterrific.html:637:9, test/10k/filterrific.html:638:9, test/10k/filterrific.html:639:17, test/10k/filterrific.html:640:13, test/10k/filterrific.html:640:16, test/10k/filterrific.html:640:21, test/10k/filterrific.html:640:34, test/10k/filterrific.html:641:13, test/10k/filterrific.html:643:9, test/10k/filterrific.html:645:25, test/10k/filterrific.html:645:30, test/10k/filterrific.html:645:35, test/10k/filterrific.html:646:23, test/10k/filterrific.html:647:17, test/10k/filterrific.html:648:17, test/10k/filterrific.html:648:23, test/10k/filterrific.html:651:9, test/10k/filterrific.html:651:12, test/10k/filterrific.html:652:9, test/10k/filterrific.html:653:13]
+test/10k/filterrific.html: [maybe] Uncaught exception, constructed at [test/10k/filterrific.html:246:16, test/10k/filterrific.html:249:16, test/10k/filterrific.html:253:16, test/10k/filterrific.html:257:16, test/10k/filterrific.html:260:9, test/10k/filterrific.html:266:13, test/10k/filterrific.html:270:9, test/10k/filterrific.html:283:38, test/10k/filterrific.html:299:9, test/10k/filterrific.html:299:19, test/10k/filterrific.html:319:17, test/10k/filterrific.html:324:21, test/10k/filterrific.html:330:18, test/10k/filterrific.html:333:9, test/10k/filterrific.html:334:21, test/10k/filterrific.html:337:20, test/10k/filterrific.html:338:13, test/10k/filterrific.html:339:13, test/10k/filterrific.html:339:29, test/10k/filterrific.html:340:13, test/10k/filterrific.html:341:13, test/10k/filterrific.html:346:17, test/10k/filterrific.html:347:31, test/10k/filterrific.html:348:17, test/10k/filterrific.html:349:17, test/10k/filterrific.html:350:17, test/10k/filterrific.html:358:13, test/10k/filterrific.html:364:17, test/10k/filterrific.html:365:21, test/10k/filterrific.html:366:21, test/10k/filterrific.html:367:25, test/10k/filterrific.html:378:9, test/10k/filterrific.html:379:13, test/10k/filterrific.html:382:13, test/10k/filterrific.html:386:13, test/10k/filterrific.html:389:21, test/10k/filterrific.html:392:13, test/10k/filterrific.html:396:16, test/10k/filterrific.html:418:18, test/10k/filterrific.html:418:42, test/10k/filterrific.html:422:48, test/10k/filterrific.html:424:13, test/10k/filterrific.html:440:59, test/10k/filterrific.html:442:21, test/10k/filterrific.html:442:61, test/10k/filterrific.html:443:21, test/10k/filterrific.html:443:30, test/10k/filterrific.html:443:58, test/10k/filterrific.html:443:67, test/10k/filterrific.html:453:59, test/10k/filterrific.html:455:17, test/10k/filterrific.html:455:22, test/10k/filterrific.html:455:31, test/10k/filterrific.html:455:66, test/10k/filterrific.html:455:71, test/10k/filterrific.html:461:16, test/10k/filterrific.html:461:18, test/10k/filterrific.html:461:21, test/10k/filterrific.html:465:18, test/10k/filterrific.html:465:20, test/10k/filterrific.html:465:23, test/10k/filterrific.html:465:56, test/10k/filterrific.html:465:72, test/10k/filterrific.html:472:9, test/10k/filterrific.html:474:18, test/10k/filterrific.html:474:20, test/10k/filterrific.html:474:54, test/10k/filterrific.html:474:84, test/10k/filterrific.html:478:17, test/10k/filterrific.html:482:56, test/10k/filterrific.html:482:71, test/10k/filterrific.html:484:44, test/10k/filterrific.html:484:79, test/10k/filterrific.html:549:21, test/10k/filterrific.html:550:18, test/10k/filterrific.html:550:25, test/10k/filterrific.html:551:51, test/10k/filterrific.html:556:9, test/10k/filterrific.html:570:34, test/10k/filterrific.html:570:66, test/10k/filterrific.html:570:91, test/10k/filterrific.html:570:123, test/10k/filterrific.html:570:148, test/10k/filterrific.html:570:180, test/10k/filterrific.html:571:22, test/10k/filterrific.html:575:9, test/10k/filterrific.html:584:17, test/10k/filterrific.html:584:31, test/10k/filterrific.html:586:9, test/10k/filterrific.html:588:13, test/10k/filterrific.html:589:13, test/10k/filterrific.html:590:13, test/10k/filterrific.html:592:9, test/10k/filterrific.html:596:24, test/10k/filterrific.html:596:38, test/10k/filterrific.html:596:40, test/10k/filterrific.html:603:21, test/10k/filterrific.html:606:9, test/10k/filterrific.html:607:13, test/10k/filterrific.html:608:13, test/10k/filterrific.html:608:31, test/10k/filterrific.html:610:9, test/10k/filterrific.html:610:12, test/10k/filterrific.html:613:13, test/10k/filterrific.html:614:9, test/10k/filterrific.html:615:19, test/10k/filterrific.html:616:9, test/10k/filterrific.html:616:24, test/10k/filterrific.html:617:9, test/10k/filterrific.html:621:21, test/10k/filterrific.html:621:34, test/10k/filterrific.html:621:39, test/10k/filterrific.html:622:13, test/10k/filterrific.html:623:13, test/10k/filterrific.html:631:13, test/10k/filterrific.html:632:13, test/10k/filterrific.html:636:48, test/10k/filterrific.html:637:9, test/10k/filterrific.html:638:9, test/10k/filterrific.html:639:17, test/10k/filterrific.html:640:13, test/10k/filterrific.html:640:16, test/10k/filterrific.html:640:21, test/10k/filterrific.html:640:34, test/10k/filterrific.html:641:13, test/10k/filterrific.html:643:9, test/10k/filterrific.html:645:25, test/10k/filterrific.html:645:30, test/10k/filterrific.html:645:35, test/10k/filterrific.html:646:23, test/10k/filterrific.html:647:17, test/10k/filterrific.html:648:17, test/10k/filterrific.html:648:23, test/10k/filterrific.html:651:9, test/10k/filterrific.html:651:12, test/10k/filterrific.html:652:9, test/10k/filterrific.html:653:13]
 test/10k/filterrific.html:266:13: [maybe] Converting primitive number to object
 test/10k/filterrific.html:266:13: [maybe] The variable a has values with different types
 test/10k/filterrific.html:270:23: [maybe] The variable c has values with different types
@@ -232,23 +243,20 @@ test/10k/filterrific.html:358:13: [maybe] Converting object to string
 test/10k/filterrific.html:358:13: [maybe] Converting primitive number to object
 test/10k/filterrific.html:358:13: [maybe] Converting primitive string to object
 test/10k/filterrific.html:361:56: [maybe] Reading absent property (computed name)
+test/10k/filterrific.html:363:29: [maybe] The variable l has values with different types
 test/10k/filterrific.html:365:24: [maybe] Reading absent property (computed name)
 test/10k/filterrific.html:367:28: [maybe] Reading absent property (computed name)
 test/10k/filterrific.html:385:45: [maybe] Conversion to number yields NaN
 test/10k/filterrific.html:390:17: [maybe] Conversion to number yields NaN
 test/10k/filterrific.html:390:21: [maybe] Conversion to number yields NaN
-test/10k/filterrific.html:390:21: [maybe] Conversion to number yields NaN
-test/10k/filterrific.html:391:17: [maybe] Conversion to number yields NaN
 test/10k/filterrific.html:391:17: [maybe] Conversion to number yields NaN
 test/10k/filterrific.html:396:16: [maybe] Conversion to number yields NaN
 test/10k/filterrific.html:400:34: [maybe] Conversion to number yields NaN
 test/10k/filterrific.html:400:38: [maybe] Reading absent property (computed name)
 test/10k/filterrific.html:405:17: [maybe] Conversion to number yields NaN
-test/10k/filterrific.html:405:17: [maybe] Conversion to number yields NaN
 test/10k/filterrific.html:405:17: [maybe] Reading absent property (computed name)
 test/10k/filterrific.html:405:24: [maybe] Reading absent property (computed name)
 test/10k/filterrific.html:405:35: [maybe] Reading absent property (computed name)
-test/10k/filterrific.html:411:18: [maybe] Conversion to number yields NaN
 test/10k/filterrific.html:411:18: [maybe] Conversion to number yields NaN
 test/10k/filterrific.html:411:18: [maybe] Reading absent property (computed name)
 test/10k/filterrific.html:411:25: [maybe] Reading absent property (computed name)
@@ -259,7 +267,6 @@ test/10k/filterrific.html:418:63: [maybe] Conversion from string to number yield
 test/10k/filterrific.html:418:63: [maybe] Conversion to number yields NaN
 test/10k/filterrific.html:418:63: [maybe] The variable e has values with different types
 test/10k/filterrific.html:418:73: [maybe] Conversion from string to number yields NaN
-test/10k/filterrific.html:418:73: [maybe] Conversion to number yields NaN
 test/10k/filterrific.html:418:73: [maybe] Conversion to number yields NaN
 test/10k/filterrific.html:418:73: [maybe] Reading absent property (computed name)
 test/10k/filterrific.html:418:84: [maybe] The variable e has values with different types
@@ -280,7 +287,6 @@ test/10k/filterrific.html:435:37: [maybe] Conversion to number yields NaN
 test/10k/filterrific.html:435:45: [maybe] Conversion to number yields NaN
 test/10k/filterrific.html:435:63: [maybe] Conversion to number yields NaN
 test/10k/filterrific.html:437:34: [maybe] Reading absent property (computed name)
-test/10k/filterrific.html:437:36: [maybe] Conversion to number yields NaN
 test/10k/filterrific.html:437:36: [maybe] Conversion to number yields NaN
 test/10k/filterrific.html:437:37: [maybe] Conversion to number yields NaN
 test/10k/filterrific.html:437:74: [maybe] Conversion to number yields NaN
@@ -307,7 +313,6 @@ test/10k/filterrific.html:454:23: [maybe] Conversion to number yields NaN
 test/10k/filterrific.html:455:17: [maybe] Conversion to number yields NaN
 test/10k/filterrific.html:455:24: [maybe] Conversion to number yields NaN
 test/10k/filterrific.html:455:73: [maybe] Conversion to number yields NaN
-test/10k/filterrific.html:455:80: [maybe] Conversion to number yields NaN
 test/10k/filterrific.html:455:80: [maybe] Conversion to number yields NaN
 test/10k/filterrific.html:455:81: [maybe] Conversion to number yields NaN
 test/10k/filterrific.html:456:20: [maybe] Reading absent property (computed name)
@@ -377,10 +382,6 @@ test/10k/filterrific.html:551:24: [maybe] The variable c has values with differe
 test/10k/filterrific.html:551:67: [maybe] Conversion to number yields NaN
 test/10k/filterrific.html:551:67: [maybe] Reading absent property (computed name)
 test/10k/filterrific.html:558:49: [maybe] Conversion to number yields NaN
-test/10k/filterrific.html:558:49: [maybe] Conversion to number yields NaN
-test/10k/filterrific.html:558:49: [maybe] Conversion to number yields NaN
-test/10k/filterrific.html:558:49: [maybe] Conversion to number yields NaN
-test/10k/filterrific.html:558:49: [maybe] Conversion to number yields NaN
 test/10k/filterrific.html:558:49: [maybe] Reading absent property (computed name)
 test/10k/filterrific.html:558:56: [maybe] Reading absent property (computed name)
 test/10k/filterrific.html:558:67: [maybe] Reading absent property (computed name)
@@ -420,11 +421,9 @@ test/10k/filterrific.html:590:29: [maybe] Conversion to number yields NaN
 test/10k/filterrific.html:590:36: [maybe] Conversion to number yields NaN
 test/10k/filterrific.html:598:25: [maybe] Conversion to number yields NaN
 test/10k/filterrific.html:599:28: [maybe] Conversion to number yields NaN
-test/10k/filterrific.html:599:28: [maybe] Conversion to number yields NaN
 test/10k/filterrific.html:599:28: [maybe] Reading absent property (computed name)
 test/10k/filterrific.html:599:37: [maybe] Reading absent property (computed name)
 test/10k/filterrific.html:599:46: [maybe] Reading absent property (computed name)
-test/10k/filterrific.html:599:67: [maybe] Conversion to number yields NaN
 test/10k/filterrific.html:599:67: [maybe] Conversion to number yields NaN
 test/10k/filterrific.html:600:13: [maybe] Conversion to number yields NaN
 test/10k/filterrific.html:600:13: [maybe] Reading absent property (computed name)

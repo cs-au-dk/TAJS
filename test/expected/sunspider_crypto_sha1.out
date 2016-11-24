@@ -15,8 +15,6 @@ test/sunspider/crypto-sha1.js:47:3: [maybe] Conversion to number yields NaN
 test/sunspider/crypto-sha1.js:47:3: [maybe] Reading absent property (computed name)
 test/sunspider/crypto-sha1.js:67:25: [maybe] Reading absent property (computed name)
 test/sunspider/crypto-sha1.js:68:23: [maybe] Conversion to number yields NaN
-test/sunspider/crypto-sha1.js:68:23: [maybe] Conversion to number yields NaN
-test/sunspider/crypto-sha1.js:68:23: [maybe] Conversion to number yields NaN
 test/sunspider/crypto-sha1.js:68:23: [maybe] Reading absent property (computed name)
 test/sunspider/crypto-sha1.js:68:32: [maybe] Reading absent property (computed name)
 test/sunspider/crypto-sha1.js:68:41: [maybe] Reading absent property (computed name)
@@ -38,4 +36,4 @@ test/sunspider/crypto-sha1.js:182:12: [maybe] Converting primitive string to obj
 test/sunspider/crypto-sha1.js:182:28: [maybe] Conversion to number yields NaN
 test/sunspider/crypto-sha1.js:182:28: [maybe] Reading absent property (computed name)
 test/sunspider/crypto-sha1.js:231:26: [maybe] Converting object to number
-test/sunspider/crypto-sha1.js:233:1: [info] Abstract value: UInt
+test/sunspider/crypto-sha1.js:233:1: [info] Abstract value: UInt|NotUInt

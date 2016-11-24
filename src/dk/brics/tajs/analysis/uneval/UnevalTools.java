@@ -63,7 +63,7 @@ public class UnevalTools {
      * Rebuilds the expression used to create the value in a register from the flow graph.
      */
     public static String rebuildFullExpression(FlowGraph fg, AbstractNode n, int register) {
-        Decorator dr = new Decorator(fg); //TODO Cache the decorator.
+        Decorator dr = new Decorator(n.getBlock().getFunction()); //TODO Cache the decorator.
 
         return p_build_full(register, n, dr);
     }
@@ -73,7 +73,7 @@ public class UnevalTools {
      */
     public static NormalForm rebuildNormalForm(FlowGraph fg, CallNode n, State s, Solver.SolverInterface c) {
         int register = n.getNumberOfArgs() == 0? AbstractNode.NO_VALUE: n.getArgRegister(0);
-        Decorator dr = new Decorator(fg); //TODO Cache the decorator.
+        Decorator dr = new Decorator(n.getBlock().getFunction()); //TODO Cache the decorator.
 
         Map<String, Integer> mapping = Collections.newMap();
         Set<String> args = newSet();
@@ -313,7 +313,7 @@ public class UnevalTools {
      * p: TODO: Not implemented.
      * n: TODO: Not implemented.
      */
-    public static AnalyzerCallback unevalizerCallback(final FlowGraph fg, final Solver.SolverInterface c, final AbstractNode evalCall, final NormalForm input) {
+    public static AnalyzerCallback unevalizerCallback(final FlowGraph fg, final Solver.SolverInterface c, final AbstractNode evalCall, final NormalForm input, boolean isEvalCall) {
         final State state = c.getState();
 
         return new AnalyzerCallback() {
@@ -323,6 +323,8 @@ public class UnevalTools {
              */
             @Override
             public boolean anyDeclared(Set<String> vars) {
+                if (!isEvalCall)
+                    return false;
                 for (String ss : vars) {
                     if (c.getAnalysis().getPropVarOperations().readVariable(ss, null).isMaybePresent())
                         return true;
@@ -418,7 +420,7 @@ public class UnevalTools {
     public static String get_call_name(FlowGraph fg, CallNode n) {
         if (n.getFunctionRegister() == AbstractNode.NO_VALUE)
             return null; // TODO: what if eval is accessed by a read-property operation instead of a read-variable?
-        return get_read_variable_node(new Decorator(fg), n, n.getFunctionRegister(), Collections.<Integer>newSet());
+        return get_read_variable_node(new Decorator(n.getBlock().getFunction()), n, n.getFunctionRegister(), Collections.<Integer>newSet());
     }
 
     /**

@@ -47,7 +47,7 @@ public final class Analysis implements IAnalysis<State, Context, CallEdge, IAnal
 
     private final EvalCache eval_cache;
 
-    private final IContextSensitivityStrategy context_sensitivity_strategy;
+    private IContextSensitivityStrategy context_sensitivity_strategy;
 
     private final PropVarOperations state_util;
 
@@ -60,11 +60,6 @@ public final class Analysis implements IAnalysis<State, Context, CallEdge, IAnal
         transfer = new Transfer();
         worklist_strategy = new WorkListStrategy();
         eval_cache = new EvalCache();
-        if (Options.get().isDeterminacyEnabled()) {
-            context_sensitivity_strategy = new StaticDeterminacyContextSensitivityStrategy(StaticDeterminacyContextSensitivityStrategy.SyntacticHints.get());
-        } else {
-            context_sensitivity_strategy = new BasicContextSensitivityStrategy();
-        }
         solver = new Solver(this, sync);
         state_util = new PropVarOperations();
     }
@@ -72,6 +67,15 @@ public final class Analysis implements IAnalysis<State, Context, CallEdge, IAnal
     @Override
     public AnalysisLatticeElement makeAnalysisLattice(FlowGraph fg) {
         return new AnalysisLatticeElement(fg);
+    }
+
+    @Override
+    public void initContextSensitivity(FlowGraph fg) {
+        if (Options.get().isDeterminacyEnabled()) {
+            context_sensitivity_strategy = new StaticDeterminacyContextSensitivityStrategy(fg.getSyntacticHints());
+        } else {
+            context_sensitivity_strategy = new BasicContextSensitivityStrategy();
+        }
     }
 
     @Override

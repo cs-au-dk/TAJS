@@ -1,0 +1,2 @@
+test/apps/projavascript/clock/07-clock.html:23:13: [maybe] TypeError, accessing property of null/undefined
+test/apps/projavascript/clock/07-clock.html: [maybe] Uncaught exception, constructed at [test/apps/projavascript/clock/07-clock.html:23:13]

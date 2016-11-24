@@ -18,7 +18,6 @@ package dk.brics.tajs;
 
 import dk.brics.tajs.analysis.Analysis;
 import dk.brics.tajs.analysis.AsyncEvents;
-import dk.brics.tajs.analysis.StaticDeterminacyContextSensitivityStrategy;
 import dk.brics.tajs.flowgraph.FlowGraph;
 import dk.brics.tajs.flowgraph.HostEnvSources;
 import dk.brics.tajs.flowgraph.JavaScriptSource;
@@ -42,10 +41,12 @@ import net.htmlparser.jericho.Source;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.Properties;
@@ -85,7 +86,6 @@ public class Main {
      * Resets all internal counters and caches.
      */
     public static void reset() {
-        StaticDeterminacyContextSensitivityStrategy.SyntacticHints.reset();
         ExperimentalOptions.ExperimentalOptionsManager.reset();
         Options.reset();
         State.reset();
@@ -93,7 +93,6 @@ public class Main {
         Obj.reset();
         Strings.reset();
         ScopeChain.reset();
-        AsyncEvents.reset();
     }
 
     /**
@@ -126,7 +125,6 @@ public class Main {
 
         Analysis analysis = new Analysis(monitoring, sync);
 
-
         if (Options.get().isDebugEnabled())
             Options.dump();
 
@@ -135,38 +133,39 @@ public class Main {
         FlowGraph fg;
         try {
             // split into JS files and HTML files
-            String html_file = null;
+            String htmlFileName = null;
             List<String> js_files = newList();
             for (String fn : files) {
-                String l = fn.toLowerCase();
-                if (l.endsWith(".html") || l.endsWith(".xhtml") || l.endsWith(".htm")) {
-                    if (html_file != null)
+                if (isHTMLFileName(fn)) {
+                    if (htmlFileName != null)
                         throw new AnalysisException("Only one HTML file can be analyzed at a time.");
-                    html_file = fn;
+                    htmlFileName = fn;
                 } else
                     js_files.add(fn);
             }
-            FlowGraphBuilder builder = new FlowGraphBuilder(String.join(",", files));
+            FlowGraphBuilder builder = new FlowGraphBuilder(null, String.join(",", files));
             builder.transformHostFunctionSources(HostEnvSources.get());
             if (!js_files.isEmpty()) {
-                if (html_file != null)
-                    throw new AnalysisException("Cannot analyze a HTML file and JavaScript files at the same time.");
+                if (htmlFileName != null)
+                    throw new AnalysisException("Cannot analyze an HTML file and JavaScript files at the same time.");
                 // build flowgraph for JS files
                 for (String js_file : js_files) {
                     if (!Options.get().isQuietEnabled())
                         log.info("Loading " + js_file);
-                    builder.transformStandAloneCode(JavaScriptSource.makeFileCode(js_file, Loader.getString(js_file, "UTF-8")));
+                    Path file = Paths.get(js_file).toAbsolutePath();
+                    builder.transformStandAloneCode(JavaScriptSource.makeFileCode(file.toUri().toURL(), js_file, Loader.getString(file, Charset.forName("UTF-8"))));
                 }
             } else {
                 // build flowgraph for JavaScript code in or referenced from HTML file
                 Options.get().enableIncludeDom(); // always enable DOM if any HTML files are involved
                 if (!Options.get().isQuietEnabled())
-                    log.info("Loading " + html_file);
-                HTMLParser p = new HTMLParser(Paths.get(html_file));
+                    log.info("Loading " + htmlFileName);
+                Path htmlFile = Paths.get(htmlFileName).toAbsolutePath();
+                HTMLParser p = new HTMLParser(htmlFile.toUri().toURL(), htmlFileName);
                 document = p.getHTML();
                 for (JavaScriptSource js : p.getJavaScript()) {
                     if (!Options.get().isQuietEnabled() && js.getKind() == Kind.FILE)
-                        log.info("Loading " + js.getFileName());
+                        log.info("Loading " + js.getPrettyFileName());
                     builder.transformWebAppCode(js);
                 }
             }
@@ -189,12 +188,17 @@ public class Main {
         return analysis;
     }
 
+    private static boolean isHTMLFileName(String fileName) {
+        String f = fileName.toLowerCase();
+        return f.endsWith(".html") || f.endsWith(".xhtml") || f.endsWith(".htm");
+    }
+
     /**
      * Configures log4j.
      */
     public static void initLogging() {
         Properties prop = new Properties();
-        prop.put("log4j.rootLogger", "INFO, tajs"); // DEBUG / INFO / WARN / ERROR 
+        prop.put("log4j.rootLogger", "INFO, tajs"); // DEBUG / INFO / WARN / ERROR
         prop.put("log4j.appender.tajs", "org.apache.log4j.ConsoleAppender");
         prop.put("log4j.appender.tajs.layout", "org.apache.log4j.PatternLayout");
         prop.put("log4j.appender.tajs.layout.ConversionPattern", "%m%n");
@@ -233,23 +237,17 @@ public class Main {
     private static void dumpFlowGraph(FlowGraph g, boolean end) {
         try {
             // create directories
-            File outdir = new File("out");
-            if (!outdir.exists()) {
-                outdir.mkdir();
-            }
-            String path = "out" + File.separator + "flowgraphs";
-            File outdir2 = new File(path);
-            if (!outdir2.exists()) {
-                outdir2.mkdir();
-            }
+            Path outdir = Paths.get("out").resolve("flowgraphs");
+            Files.createDirectories(outdir);
             // dump the flowgraph to file
-            try (PrintWriter pw = new PrintWriter(new FileWriter(path + File.separator + (end ? "final" : "initial") + ".dot"))) {
+            String fileName = end ? "final" : "initial" + ".dot";
+            try (PrintWriter pw = new PrintWriter(new FileWriter(outdir.resolve(fileName).toFile()))) {
                 g.toDot(pw);
             } catch (IOException e) {
                 throw new AnalysisException(e);
             }
             // dump each function to file
-            g.toDot(path, end);
+            g.toDot(outdir, end);
             // also print flowgraph
             log.info(g.toString());
         } catch (IOException e) {

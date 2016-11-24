@@ -22,8 +22,15 @@ var r = /ab+/ig
 TAJS_dumpValue(r);
 
 
-var f = new Object();
-f.tos = a.exec;
-f.tos("nudel")
-var d = RegExp(c, "xxxxyyyy");
-
+var threw = false;
+try {
+    var f = new Object();
+    f.tos = a.exec;
+    f.tos("nudel");
+    TAJS_assert(false);
+}catch(e){
+    threw = true;
+}
+TAJS_dumpValue(threw);
+RegExp(c, "xxxxyyyy");
+TAJS_assert(false);

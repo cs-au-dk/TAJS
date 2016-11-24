@@ -19,13 +19,13 @@ test/10k/3d_maker.html:106:12: [definite] Reading 'this' yields the global objec
 test/10k/3d_maker.html:78:18: [definite] Unreachable function
 test/10k/3d_maker.html:102:17: [definite] Unreachable function
 test/10k/3d_maker.html:123:1: [definite] Unreachable function drawLine
+test/10k/3d_maker.html:19:19: [maybe] TypeError, accessing property of null/undefined
 test/10k/3d_maker.html:41:22: [maybe] TypeError, accessing property of null/undefined
 test/10k/3d_maker.html:42:50: [maybe] TypeError, accessing property of null/undefined
 test/10k/3d_maker.html:42:67: [maybe] TypeError, accessing property of null/undefined
 test/10k/3d_maker.html:92:13: [maybe] TypeError, accessing property of null/undefined
 test/10k/3d_maker.html:92:24: [maybe] TypeError, accessing property of null/undefined
 test/10k/3d_maker.html:94:17: [maybe] TypeError, accessing property of null/undefined
-test/10k/3d_maker.html:94:29: [maybe] TypeError, accessing property of null/undefined
 test/10k/3d_maker.html:94:29: [maybe] TypeError, accessing property of null/undefined
 test/10k/3d_maker.html:94:40: [maybe] TypeError, accessing property of null/undefined
 test/10k/3d_maker.html:96:21: [maybe] TypeError, accessing property of null/undefined
@@ -39,32 +39,24 @@ test/10k/3d_maker.html:136:5: [maybe] TypeError, accessing property of null/unde
 test/10k/3d_maker.html:146:13: [maybe] TypeError, accessing property of null/undefined
 test/10k/3d_maker.html:147:13: [maybe] TypeError, accessing property of null/undefined
 test/10k/3d_maker.html:147:32: [maybe] TypeError, accessing property of null/undefined
-test/10k/3d_maker.html:147:32: [maybe] TypeError, accessing property of null/undefined
-test/10k/3d_maker.html:147:51: [maybe] TypeError, accessing property of null/undefined
 test/10k/3d_maker.html:147:51: [maybe] TypeError, accessing property of null/undefined
 test/10k/3d_maker.html:151:13: [maybe] TypeError, accessing property of null/undefined
 test/10k/3d_maker.html:152:13: [maybe] TypeError, accessing property of null/undefined
 test/10k/3d_maker.html:152:32: [maybe] TypeError, accessing property of null/undefined
-test/10k/3d_maker.html:152:32: [maybe] TypeError, accessing property of null/undefined
-test/10k/3d_maker.html:152:51: [maybe] TypeError, accessing property of null/undefined
 test/10k/3d_maker.html:152:51: [maybe] TypeError, accessing property of null/undefined
 test/10k/3d_maker.html:157:9: [maybe] TypeError, accessing property of null/undefined
 test/10k/3d_maker.html:157:28: [maybe] TypeError, accessing property of null/undefined
-test/10k/3d_maker.html:157:28: [maybe] TypeError, accessing property of null/undefined
-test/10k/3d_maker.html:157:47: [maybe] TypeError, accessing property of null/undefined
 test/10k/3d_maker.html:157:47: [maybe] TypeError, accessing property of null/undefined
 test/10k/3d_maker.html:159:13: [maybe] TypeError, accessing property of null/undefined
 test/10k/3d_maker.html:159:32: [maybe] TypeError, accessing property of null/undefined
-test/10k/3d_maker.html:159:32: [maybe] TypeError, accessing property of null/undefined
-test/10k/3d_maker.html:159:51: [maybe] TypeError, accessing property of null/undefined
 test/10k/3d_maker.html:159:51: [maybe] TypeError, accessing property of null/undefined
 test/10k/3d_maker.html:161:9: [maybe] TypeError, accessing property of null/undefined
 test/10k/3d_maker.html:161:28: [maybe] TypeError, accessing property of null/undefined
-test/10k/3d_maker.html:161:28: [maybe] TypeError, accessing property of null/undefined
-test/10k/3d_maker.html:161:47: [maybe] TypeError, accessing property of null/undefined
 test/10k/3d_maker.html:161:47: [maybe] TypeError, accessing property of null/undefined
 test/10k/3d_maker.html:164:5: [maybe] TypeError, accessing property of null/undefined
 test/10k/3d_maker.html:165:5: [maybe] TypeError, accessing property of null/undefined
+test/10k/3d_maker.html:247:17: [maybe] TypeError, accessing property of null/undefined
+test/10k/3d_maker.html:248:17: [maybe] TypeError, accessing property of null/undefined
 test/10k/3d_maker.html:260:25: [maybe] TypeError, accessing property of null/undefined
 test/10k/3d_maker.html:273:25: [maybe] TypeError, accessing property of null/undefined
 test/10k/3d_maker.html:274:25: [maybe] TypeError, accessing property of null/undefined
@@ -121,6 +113,8 @@ test/10k/3d_maker.html:350:37: [maybe] TypeError, accessing property of null/und
 test/10k/3d_maker.html:354:13: [maybe] TypeError, accessing property of null/undefined
 test/10k/3d_maker.html:356:9: [maybe] TypeError, accessing property of null/undefined
 test/10k/3d_maker.html:378:68: [maybe] TypeError, accessing property of null/undefined
+test/10k/3d_maker.html:384:5: [maybe] TypeError, accessing property of null/undefined
+test/10k/3d_maker.html:385:5: [maybe] TypeError, accessing property of null/undefined
 test/10k/3d_maker.html:386:15: [maybe] TypeError, accessing property of null/undefined
 test/10k/3d_maker.html:387:16: [maybe] TypeError, accessing property of null/undefined
 test/10k/3d_maker.html:17:9: [maybe] Reading absent property cv
@@ -174,7 +168,7 @@ test/10k/3d_maker.html:354:13: [maybe] Reading absent property ct
 test/10k/3d_maker.html:356:9: [maybe] Reading absent property ct
 test/10k/3d_maker.html:386:15: [maybe] Reading absent property cv
 test/10k/3d_maker.html:387:16: [maybe] Reading absent property cv
-test/10k/3d_maker.html: [maybe] Uncaught exception, constructed at [test/10k/3d_maker.html:41:22, test/10k/3d_maker.html:42:50, test/10k/3d_maker.html:42:67, test/10k/3d_maker.html:92:13, test/10k/3d_maker.html:92:24, test/10k/3d_maker.html:94:17, test/10k/3d_maker.html:94:29, test/10k/3d_maker.html:94:40, test/10k/3d_maker.html:96:21, test/10k/3d_maker.html:96:33, test/10k/3d_maker.html:96:44, test/10k/3d_maker.html:129:5, test/10k/3d_maker.html:130:5, test/10k/3d_maker.html:131:5, test/10k/3d_maker.html:132:5, test/10k/3d_maker.html:136:5, test/10k/3d_maker.html:146:13, test/10k/3d_maker.html:147:13, test/10k/3d_maker.html:147:32, test/10k/3d_maker.html:147:51, test/10k/3d_maker.html:151:13, test/10k/3d_maker.html:152:13, test/10k/3d_maker.html:152:32, test/10k/3d_maker.html:152:51, test/10k/3d_maker.html:157:9, test/10k/3d_maker.html:157:28, test/10k/3d_maker.html:157:47, test/10k/3d_maker.html:159:13, test/10k/3d_maker.html:159:32, test/10k/3d_maker.html:159:51, test/10k/3d_maker.html:161:9, test/10k/3d_maker.html:161:28, test/10k/3d_maker.html:161:47, test/10k/3d_maker.html:164:5, test/10k/3d_maker.html:165:5, test/10k/3d_maker.html:260:25, test/10k/3d_maker.html:273:25, test/10k/3d_maker.html:274:25, test/10k/3d_maker.html:276:26, test/10k/3d_maker.html:278:26, test/10k/3d_maker.html:280:12, test/10k/3d_maker.html:280:14, test/10k/3d_maker.html:284:5, test/10k/3d_maker.html:285:5, test/10k/3d_maker.html:286:5, test/10k/3d_maker.html:287:5, test/10k/3d_maker.html:288:5, test/10k/3d_maker.html:289:15, test/10k/3d_maker.html:290:16, test/10k/3d_maker.html:291:5, test/10k/3d_maker.html:293:5, test/10k/3d_maker.html:306:5, test/10k/3d_maker.html:310:39, test/10k/3d_maker.html:315:5, test/10k/3d_maker.html:319:25, test/10k/3d_maker.html:325:5, test/10k/3d_maker.html:326:5, test/10k/3d_maker.html:327:5, test/10k/3d_maker.html:328:5, test/10k/3d_maker.html:329:5, test/10k/3d_maker.html:330:5, test/10k/3d_maker.html:331:5, test/10k/3d_maker.html:332:5, test/10k/3d_maker.html:333:5, test/10k/3d_maker.html:334:5, test/10k/3d_maker.html:336:9, test/10k/3d_maker.html:336:23, test/10k/3d_maker.html:336:37, test/10k/3d_maker.html:337:13, test/10k/3d_maker.html:337:32, test/10k/3d_maker.html:337:50, test/10k/3d_maker.html:337:68, test/10k/3d_maker.html:340:9, test/10k/3d_maker.html:340:23, test/10k/3d_maker.html:340:37, test/10k/3d_maker.html:341:13, test/10k/3d_maker.html:341:32, test/10k/3d_maker.html:341:50, test/10k/3d_maker.html:341:68, test/10k/3d_maker.html:344:9, test/10k/3d_maker.html:344:23, test/10k/3d_maker.html:344:41, test/10k/3d_maker.html:346:5, test/10k/3d_maker.html:348:9, test/10k/3d_maker.html:349:9, test/10k/3d_maker.html:350:9, test/10k/3d_maker.html:350:23, test/10k/3d_maker.html:350:37, test/10k/3d_maker.html:354:13, test/10k/3d_maker.html:356:9, test/10k/3d_maker.html:378:68, test/10k/3d_maker.html:386:15, test/10k/3d_maker.html:387:16]
+test/10k/3d_maker.html: [maybe] Uncaught exception, constructed at [test/10k/3d_maker.html:19:19, test/10k/3d_maker.html:41:22, test/10k/3d_maker.html:42:50, test/10k/3d_maker.html:42:67, test/10k/3d_maker.html:92:13, test/10k/3d_maker.html:92:24, test/10k/3d_maker.html:94:17, test/10k/3d_maker.html:94:29, test/10k/3d_maker.html:94:40, test/10k/3d_maker.html:96:21, test/10k/3d_maker.html:96:33, test/10k/3d_maker.html:96:44, test/10k/3d_maker.html:129:5, test/10k/3d_maker.html:130:5, test/10k/3d_maker.html:131:5, test/10k/3d_maker.html:132:5, test/10k/3d_maker.html:136:5, test/10k/3d_maker.html:146:13, test/10k/3d_maker.html:147:13, test/10k/3d_maker.html:147:32, test/10k/3d_maker.html:147:51, test/10k/3d_maker.html:151:13, test/10k/3d_maker.html:152:13, test/10k/3d_maker.html:152:32, test/10k/3d_maker.html:152:51, test/10k/3d_maker.html:157:9, test/10k/3d_maker.html:157:28, test/10k/3d_maker.html:157:47, test/10k/3d_maker.html:159:13, test/10k/3d_maker.html:159:32, test/10k/3d_maker.html:159:51, test/10k/3d_maker.html:161:9, test/10k/3d_maker.html:161:28, test/10k/3d_maker.html:161:47, test/10k/3d_maker.html:164:5, test/10k/3d_maker.html:165:5, test/10k/3d_maker.html:247:17, test/10k/3d_maker.html:248:17, test/10k/3d_maker.html:260:25, test/10k/3d_maker.html:273:25, test/10k/3d_maker.html:274:25, test/10k/3d_maker.html:276:26, test/10k/3d_maker.html:278:26, test/10k/3d_maker.html:280:12, test/10k/3d_maker.html:280:14, test/10k/3d_maker.html:284:5, test/10k/3d_maker.html:285:5, test/10k/3d_maker.html:286:5, test/10k/3d_maker.html:287:5, test/10k/3d_maker.html:288:5, test/10k/3d_maker.html:289:15, test/10k/3d_maker.html:290:16, test/10k/3d_maker.html:291:5, test/10k/3d_maker.html:293:5, test/10k/3d_maker.html:306:5, test/10k/3d_maker.html:310:39, test/10k/3d_maker.html:315:5, test/10k/3d_maker.html:319:25, test/10k/3d_maker.html:325:5, test/10k/3d_maker.html:326:5, test/10k/3d_maker.html:327:5, test/10k/3d_maker.html:328:5, test/10k/3d_maker.html:329:5, test/10k/3d_maker.html:330:5, test/10k/3d_maker.html:331:5, test/10k/3d_maker.html:332:5, test/10k/3d_maker.html:333:5, test/10k/3d_maker.html:334:5, test/10k/3d_maker.html:336:9, test/10k/3d_maker.html:336:23, test/10k/3d_maker.html:336:37, test/10k/3d_maker.html:337:13, test/10k/3d_maker.html:337:32, test/10k/3d_maker.html:337:50, test/10k/3d_maker.html:337:68, test/10k/3d_maker.html:340:9, test/10k/3d_maker.html:340:23, test/10k/3d_maker.html:340:37, test/10k/3d_maker.html:341:13, test/10k/3d_maker.html:341:32, test/10k/3d_maker.html:341:50, test/10k/3d_maker.html:341:68, test/10k/3d_maker.html:344:9, test/10k/3d_maker.html:344:23, test/10k/3d_maker.html:344:41, test/10k/3d_maker.html:346:5, test/10k/3d_maker.html:348:9, test/10k/3d_maker.html:349:9, test/10k/3d_maker.html:350:9, test/10k/3d_maker.html:350:23, test/10k/3d_maker.html:350:37, test/10k/3d_maker.html:354:13, test/10k/3d_maker.html:356:9, test/10k/3d_maker.html:378:68, test/10k/3d_maker.html:384:5, test/10k/3d_maker.html:385:5, test/10k/3d_maker.html:386:15, test/10k/3d_maker.html:387:16]
 test/10k/3d_maker.html:27:18: [maybe] Converting primitive number to object
 test/10k/3d_maker.html:27:18: [maybe] Reading absent property (computed name)
 test/10k/3d_maker.html:27:18: [maybe] The variable m has values with different types
@@ -190,7 +184,6 @@ test/10k/3d_maker.html:27:99: [maybe] The variable m has values with different t
 test/10k/3d_maker.html:41:22: [maybe] Reading absent property (computed name)
 test/10k/3d_maker.html:42:50: [maybe] Conversion to number yields NaN
 test/10k/3d_maker.html:42:50: [maybe] Reading absent property (computed name)
-test/10k/3d_maker.html:42:50: [maybe] Reading absent property (computed name)
 test/10k/3d_maker.html:42:67: [maybe] Reading absent property (computed name)
 test/10k/3d_maker.html:92:13: [maybe] Reading absent property (computed name)
 test/10k/3d_maker.html:92:24: [maybe] Reading absent property (computed name)
@@ -198,50 +191,26 @@ test/10k/3d_maker.html:94:17: [maybe] Reading absent property (computed name)
 test/10k/3d_maker.html:94:29: [maybe] Conversion to number yields NaN
 test/10k/3d_maker.html:94:29: [maybe] Reading absent property (computed name)
 test/10k/3d_maker.html:94:40: [maybe] Reading absent property (computed name)
-test/10k/3d_maker.html:94:40: [maybe] Reading absent property (computed name)
 test/10k/3d_maker.html:96:21: [maybe] Conversion to number yields NaN
-test/10k/3d_maker.html:96:21: [maybe] Reading absent property (computed name)
 test/10k/3d_maker.html:96:21: [maybe] Reading absent property (computed name)
 test/10k/3d_maker.html:96:33: [maybe] Conversion to number yields NaN
 test/10k/3d_maker.html:96:33: [maybe] Reading absent property (computed name)
-test/10k/3d_maker.html:96:33: [maybe] Reading absent property (computed name)
-test/10k/3d_maker.html:96:44: [maybe] Reading absent property (computed name)
 test/10k/3d_maker.html:96:44: [maybe] Reading absent property (computed name)
 test/10k/3d_maker.html:110:25: [maybe] Conversion to number yields NaN
 test/10k/3d_maker.html:113:24: [maybe] Conversion to number yields NaN
 test/10k/3d_maker.html:146:13: [maybe] Reading absent property (computed name)
 test/10k/3d_maker.html:146:36: [maybe] Reading absent property (computed name)
 test/10k/3d_maker.html:147:32: [maybe] Reading absent property (computed name)
-test/10k/3d_maker.html:147:32: [maybe] Reading absent property (computed name)
-test/10k/3d_maker.html:147:32: [maybe] Reading absent property (computed name)
-test/10k/3d_maker.html:147:51: [maybe] Reading absent property (computed name)
-test/10k/3d_maker.html:147:51: [maybe] Reading absent property (computed name)
 test/10k/3d_maker.html:147:51: [maybe] Reading absent property (computed name)
 test/10k/3d_maker.html:151:13: [maybe] Reading absent property (computed name)
 test/10k/3d_maker.html:151:36: [maybe] Reading absent property (computed name)
 test/10k/3d_maker.html:152:32: [maybe] Reading absent property (computed name)
-test/10k/3d_maker.html:152:32: [maybe] Reading absent property (computed name)
-test/10k/3d_maker.html:152:32: [maybe] Reading absent property (computed name)
-test/10k/3d_maker.html:152:51: [maybe] Reading absent property (computed name)
-test/10k/3d_maker.html:152:51: [maybe] Reading absent property (computed name)
 test/10k/3d_maker.html:152:51: [maybe] Reading absent property (computed name)
 test/10k/3d_maker.html:157:28: [maybe] Reading absent property (computed name)
-test/10k/3d_maker.html:157:28: [maybe] Reading absent property (computed name)
-test/10k/3d_maker.html:157:28: [maybe] Reading absent property (computed name)
-test/10k/3d_maker.html:157:47: [maybe] Reading absent property (computed name)
-test/10k/3d_maker.html:157:47: [maybe] Reading absent property (computed name)
 test/10k/3d_maker.html:157:47: [maybe] Reading absent property (computed name)
 test/10k/3d_maker.html:159:32: [maybe] Reading absent property (computed name)
-test/10k/3d_maker.html:159:32: [maybe] Reading absent property (computed name)
-test/10k/3d_maker.html:159:32: [maybe] Reading absent property (computed name)
-test/10k/3d_maker.html:159:51: [maybe] Reading absent property (computed name)
-test/10k/3d_maker.html:159:51: [maybe] Reading absent property (computed name)
 test/10k/3d_maker.html:159:51: [maybe] Reading absent property (computed name)
 test/10k/3d_maker.html:161:28: [maybe] Reading absent property (computed name)
-test/10k/3d_maker.html:161:28: [maybe] Reading absent property (computed name)
-test/10k/3d_maker.html:161:28: [maybe] Reading absent property (computed name)
-test/10k/3d_maker.html:161:47: [maybe] Reading absent property (computed name)
-test/10k/3d_maker.html:161:47: [maybe] Reading absent property (computed name)
 test/10k/3d_maker.html:161:47: [maybe] Reading absent property (computed name)
 test/10k/3d_maker.html:260:25: [maybe] Reading absent property (computed name)
 test/10k/3d_maker.html:310:39: [maybe] Reading absent property (computed name)
@@ -266,7 +235,6 @@ test/10k/3d_maker.html:363:23: [maybe] Conversion to number yields NaN
 test/10k/3d_maker.html:368:12: [maybe] Conversion to number yields NaN
 test/10k/3d_maker.html:368:28: [maybe] Conversion to number yields NaN
 test/10k/3d_maker.html:378:15: [maybe] Conversion to number yields NaN
-test/10k/3d_maker.html:378:68: [maybe] Reading absent property (computed name)
 test/10k/3d_maker.html:378:68: [maybe] Reading absent property (computed name)
 test/10k/3d_maker.html:27:26: [info] 'this' refers to a summary abstract object, which may cause loss of precision
 test/10k/3d_maker.html:27:53: [info] 'this' refers to a summary abstract object, which may cause loss of precision

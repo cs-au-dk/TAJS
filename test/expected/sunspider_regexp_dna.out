@@ -1,0 +1,15 @@
+test/sunspider/regexp-dna.js:1715:13: [definite] Too many parameters to function String.prototype.replace
+test/sunspider/regexp-dna.js:11:5: [definite] The variable l is never used
+test/sunspider/regexp-dna.js:1686:5: [definite] The variable ilen is never used
+test/sunspider/regexp-dna.js:1686:11: [definite] The variable clen is never used
+test/sunspider/regexp-dna.js:1702:8: [maybe] Converting primitive string to object
+test/sunspider/regexp-dna.js:1705:12: [maybe] Converting object to string
+test/sunspider/regexp-dna.js:1705:12: [maybe] Converting primitive string to object
+test/sunspider/regexp-dna.js:1706:8: [maybe] Converting primitive string to object
+test/sunspider/regexp-dna.js:1711:5: [maybe] Converting undefined to string
+test/sunspider/regexp-dna.js:1711:48: [maybe] Converting object to string
+test/sunspider/regexp-dna.js:1711:48: [maybe] Converting primitive string to object
+test/sunspider/regexp-dna.js:1715:13: [maybe] Converting object to string
+test/sunspider/regexp-dna.js:1715:13: [maybe] Converting primitive string to object
+test/sunspider/regexp-dna.js:1719:26: [maybe] Converting object to number
+test/sunspider/regexp-dna.js:1721:1: [info] Abstract value: UInt|NotUInt

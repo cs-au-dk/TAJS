@@ -17,8 +17,6 @@ test/uneval/uneval23.html:67:18: [definite] The variable d is never used
 TAJS-dynamic-code(test/uneval/uneval23.html:68:16):1:24: [maybe] TypeError, accessing property of null/undefined
 TAJS-dynamic-code(test/uneval/uneval23.html:68:16):1:54: [maybe] TypeError, accessing property of null/undefined
 test/uneval/uneval23.html:7:28: [maybe] TypeError, accessing property of null/undefined
-test/uneval/uneval23.html:7:28: [maybe] TypeError, accessing property of null/undefined
-test/uneval/uneval23.html:7:28: [maybe] TypeError, accessing property of null/undefined
 TAJS-dynamic-code(test/uneval/uneval23.html:68:16):1:24: [maybe] Reading absent property left
 TAJS-dynamic-code(test/uneval/uneval23.html:68:16):1:54: [maybe] Reading absent property left
 test/uneval/uneval23.html:7:28: [maybe] Reading absent property cells

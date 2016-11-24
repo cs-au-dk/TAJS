@@ -1,3 +1,19 @@
+/*
+ * Copyright 2009-2016 Aarhus University
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package dk.brics.tajs.analysis;
 
 import dk.brics.tajs.flowgraph.AbstractNode;
@@ -44,7 +60,12 @@ public class BasicContextSensitivityStrategy implements IContextSensitivityStrat
     }
 
     @Override
-    public HeapContext makeActivationAndArgumentsHeapContext(State state, ObjectLabel function, FunctionCalls.CallInfo callInfo, Solver.SolverInterface c) {
+    public HeapContext makeActivationAndArgumentsHeapContext(State state, ObjectLabel function, Set<ObjectLabel> this_objs, FunctionCalls.CallInfo callInfo, Solver.SolverInterface c) {
+        return makeHeapContext(makeContextArgumentsForCall(function, state, callInfo)); // TODO: currently ignoring this_objs (recency abstraction avoids some of the precision loss...)
+    }
+
+    @Override
+    public HeapContext makeConstructorHeapContext(State state, ObjectLabel function, FunctionCalls.CallInfo callInfo, Solver.SolverInterface c) {
         return makeHeapContext(makeContextArgumentsForCall(function, state, callInfo));
     }
 
@@ -60,13 +81,13 @@ public class BasicContextSensitivityStrategy implements IContextSensitivityStrat
         if (!Options.get().isParameterSensitivityEnabled()) {
             return null;
         }
-        int num_actuals = callInfo.getNumberOfArgs();
         boolean num_actuals_unknown = callInfo.isUnknownNumberOfArgs();
         Value unknown_arg = null;
         List<Value> actuals = new ArrayList<>();
         if (num_actuals_unknown)
             unknown_arg = callInfo.getUnknownArg();
         else {
+            int num_actuals = callInfo.getNumberOfArgs();
             for (int i = 0; i < num_actuals; i++)
                 actuals.add(callInfo.getArg(i));
         }
@@ -83,8 +104,8 @@ public class BasicContextSensitivityStrategy implements IContextSensitivityStrat
                 for (String parameterName : f.getParameterNames()) {
                     Value v;
                     int i = f.getParameterNames().indexOf(parameterName);  // by construction: never -1!
-                    if (contextSensitiveParameterNames.contains(parameterName)) {
-                        if (i < num_actuals) {
+                    if (contextSensitiveParameterNames.contains(parameterName) && !callInfo.isUnknownNumberOfArgs()) {
+                        if (i < callInfo.getNumberOfArgs()) {
                             v = UnknownValueResolver.getRealValue(actuals.get(i), edge_state);
                         } else {
                             v = Value.makeUndef();
@@ -114,7 +135,7 @@ public class BasicContextSensitivityStrategy implements IContextSensitivityStrat
     }
 
     @Override
-    public Context makeFunctionEntryContext(State state, ObjectLabel function, FunctionCalls.CallInfo callInfo, Solver.SolverInterface c) {
+    public Context makeFunctionEntryContext(State state, ObjectLabel function, FunctionCalls.CallInfo callInfo, Set<ObjectLabel> this_objs, Solver.SolverInterface c) {
         assert (function.getKind() == ObjectLabel.Kind.FUNCTION);
         // set thisval for object sensitivity (unlike traditional object sensitivity we allow sets of object labels)
         Set<ObjectLabel> thisval = null;

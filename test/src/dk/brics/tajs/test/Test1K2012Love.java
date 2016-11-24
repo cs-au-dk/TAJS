@@ -1,14 +1,10 @@
 package dk.brics.tajs.test;
 
 import dk.brics.tajs.Main;
-import dk.brics.tajs.monitoring.CompositeMonitoring;
-import dk.brics.tajs.monitoring.IAnalysisMonitoring;
-import dk.brics.tajs.monitoring.Monitoring;
+import dk.brics.tajs.monitoring.AnalysisTimeLimiter;
 import dk.brics.tajs.options.Options;
-import dk.brics.tajs.test.monitors.OrdinaryExitReachableCheckerMonitor;
 import dk.brics.tajs.util.AnalysisLimitationException;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -17,8 +13,6 @@ import org.junit.Test;
  */
 public class Test1K2012Love {
 
-    private IAnalysisMonitoring monitoring;
-
     @Before
     public void init() {
         Main.reset();
@@ -26,7 +20,6 @@ public class Test1K2012Love {
         Options.get().enableIncludeDom();
         Options.get().enableUnevalizer();
         Options.get().enablePolyfillMDN();
-        monitoring = CompositeMonitoring.buildFromList(new Monitoring(), new OrdinaryExitReachableCheckerMonitor());
     }
 
     @Test
@@ -34,7 +27,7 @@ public class Test1K2012Love {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1001.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -43,7 +36,7 @@ public class Test1K2012Love {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1005.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -52,7 +45,7 @@ public class Test1K2012Love {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1008.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -61,7 +54,7 @@ public class Test1K2012Love {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1010.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -70,7 +63,7 @@ public class Test1K2012Love {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1015.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -79,7 +72,7 @@ public class Test1K2012Love {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1018.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -88,17 +81,16 @@ public class Test1K2012Love {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1019.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
-    @Ignore // TODO Fix testcase-bug: undefined reference to 'cvs'
-    @Test
+    @Test(expected = AnalysisLimitationException.AnalysisPrecisionLimitationException.class)
     public void test1k_2012_love_1024() {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1024.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -107,7 +99,7 @@ public class Test1K2012Love {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1025.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -116,27 +108,25 @@ public class Test1K2012Love {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1027.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
-    @Ignore // FIXME TAJS model of String-indexing
     @Test
     public void test1k_2012_love_1028() {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1028.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
-    @Ignore // TODO Fix testcase-bug: missing invocation of main function
     @Test
     public void test1k_2012_love_1030() {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1030.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -145,7 +135,7 @@ public class Test1K2012Love {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1031.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -154,7 +144,7 @@ public class Test1K2012Love {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1041.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -163,7 +153,7 @@ public class Test1K2012Love {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1044.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -172,7 +162,7 @@ public class Test1K2012Love {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1045.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -181,7 +171,7 @@ public class Test1K2012Love {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1047.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -190,7 +180,7 @@ public class Test1K2012Love {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1048.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -199,7 +189,7 @@ public class Test1K2012Love {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1050.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -208,7 +198,7 @@ public class Test1K2012Love {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1053.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -217,7 +207,7 @@ public class Test1K2012Love {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1054.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -226,7 +216,7 @@ public class Test1K2012Love {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1055.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -235,7 +225,7 @@ public class Test1K2012Love {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1057.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -244,7 +234,7 @@ public class Test1K2012Love {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1061.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -253,16 +243,16 @@ public class Test1K2012Love {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1063.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
-    @Test(expected = AnalysisLimitationException.class /* eval of crazy string: (("({" + (((((((d).getElementById)(("l"))).value).trim)()).replace)(((RegExp)(("\n"),("g"))),(","))) + "})")*/)
+    @Test(expected = AnalysisLimitationException.AnalysisPrecisionLimitationException.class)
     public void test1k_2012_love_1066() {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1066.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -271,7 +261,7 @@ public class Test1K2012Love {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1068.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -280,7 +270,7 @@ public class Test1K2012Love {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1071.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -289,7 +279,7 @@ public class Test1K2012Love {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1072.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -298,7 +288,7 @@ public class Test1K2012Love {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1079.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -307,7 +297,7 @@ public class Test1K2012Love {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1091.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -316,17 +306,16 @@ public class Test1K2012Love {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1092.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
-    @Ignore // FIXME TAJS model of String-indexing
     @Test
     public void test1k_2012_love_1093() {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1093.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -335,7 +324,7 @@ public class Test1K2012Love {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1095.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -344,7 +333,7 @@ public class Test1K2012Love {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1102.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -353,7 +342,7 @@ public class Test1K2012Love {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1103.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -362,7 +351,7 @@ public class Test1K2012Love {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1107.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -371,7 +360,7 @@ public class Test1K2012Love {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1113.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -380,7 +369,7 @@ public class Test1K2012Love {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1115.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -389,17 +378,16 @@ public class Test1K2012Love {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1120.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
-    @Ignore // FIXME TAJS model of String-indexing
     @Test
     public void test1k_2012_love_1134() {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1134.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -408,7 +396,7 @@ public class Test1K2012Love {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1140.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -417,7 +405,7 @@ public class Test1K2012Love {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1143.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -426,7 +414,7 @@ public class Test1K2012Love {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1148.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -435,7 +423,7 @@ public class Test1K2012Love {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1149.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -444,17 +432,16 @@ public class Test1K2012Love {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1154.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
-    @Ignore // TODO Fix testcase-bug: missing invocation of main function
     @Test
     public void test1k_2012_love_1155() {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1155.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -463,7 +450,7 @@ public class Test1K2012Love {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1156.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -472,17 +459,16 @@ public class Test1K2012Love {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1157.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
-    @Ignore // FIXME TAJS model of JSON.stringify
-    @Test
+    @Test(expected = AnalysisLimitationException.AnalysisModelLimitationException.class /* FIXME */)
     public void test1k_2012_love_1160() {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1160.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -491,7 +477,7 @@ public class Test1K2012Love {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1163.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -500,16 +486,16 @@ public class Test1K2012Love {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1166.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
-    @Test(expected = StringIndexOutOfBoundsException.class /* Bug in the JavaScript parser... */)
+    @Test
     public void test1k_2012_love_1168() {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1168.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -518,7 +504,7 @@ public class Test1K2012Love {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1169.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -527,27 +513,25 @@ public class Test1K2012Love {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1170.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
-    @Ignore // FIXME TAJS model of JSON.stringify
     @Test
     public void test1k_2012_love_1171() {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1171.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
-    @Ignore // FIXME TAJS model of String-indexing (it seems)
-    @Test
+    @Test(expected = AnalysisLimitationException.AnalysisPrecisionLimitationException.class)
     public void test1k_2012_love_1175() {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1175.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -556,7 +540,7 @@ public class Test1K2012Love {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1176.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -565,7 +549,7 @@ public class Test1K2012Love {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1183.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -574,7 +558,7 @@ public class Test1K2012Love {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1186.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -583,27 +567,25 @@ public class Test1K2012Love {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1188.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
-    @Ignore // FIXME TAJS model of insertAdjacentHTML
     @Test
     public void test1k_2012_love_1189() {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1189.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
-    @Ignore // FIXME TAJS model of String-indexing
     @Test
     public void test1k_2012_love_1190() {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1190.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -612,7 +594,7 @@ public class Test1K2012Love {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1191.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -621,7 +603,7 @@ public class Test1K2012Love {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1195.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -630,7 +612,7 @@ public class Test1K2012Love {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1196.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -639,7 +621,7 @@ public class Test1K2012Love {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1199.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -648,7 +630,7 @@ public class Test1K2012Love {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1201.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -657,7 +639,7 @@ public class Test1K2012Love {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1203.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -666,7 +648,7 @@ public class Test1K2012Love {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1209.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -675,7 +657,7 @@ public class Test1K2012Love {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1218.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -684,7 +666,7 @@ public class Test1K2012Love {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1219.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -693,7 +675,7 @@ public class Test1K2012Love {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1224.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -702,7 +684,7 @@ public class Test1K2012Love {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1225.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -711,7 +693,7 @@ public class Test1K2012Love {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1229.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -720,7 +702,7 @@ public class Test1K2012Love {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1230.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -729,17 +711,16 @@ public class Test1K2012Love {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1232.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
-    @Ignore // FIXME TAJS model of innerHTML
     @Test
     public void test1k_2012_love_1240() {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1240.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -748,7 +729,7 @@ public class Test1K2012Love {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1243.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -757,7 +738,7 @@ public class Test1K2012Love {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1245.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -766,7 +747,7 @@ public class Test1K2012Love {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1246.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -775,7 +756,7 @@ public class Test1K2012Love {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1247.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -784,7 +765,7 @@ public class Test1K2012Love {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1249.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -793,7 +774,7 @@ public class Test1K2012Love {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1250.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -802,7 +783,7 @@ public class Test1K2012Love {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1251.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -811,17 +792,16 @@ public class Test1K2012Love {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1252.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
-    @Ignore // FIXME TAJS model of String-indexing
     @Test
     public void test1k_2012_love_1254() {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1254.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -830,7 +810,7 @@ public class Test1K2012Love {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1257.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -839,17 +819,16 @@ public class Test1K2012Love {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1258.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
-    @Ignore // FIXME TAJS model of String-indexing
     @Test
     public void test1k_2012_love_1260() {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1260.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -858,17 +837,16 @@ public class Test1K2012Love {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1265.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
-    @Ignore // FIXME TAJS model of String-indexing
     @Test
     public void test1k_2012_love_1269() {
         Misc.init();
         //Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1269.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         //Misc.checkSystemOutput();
     }
 
@@ -877,27 +855,25 @@ public class Test1K2012Love {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1270.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
-    @Ignore // FIXME TAJS model of webkitAudioContext
     @Test
     public void test1k_2012_love_1271() {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1271.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
-    @Ignore // FIXME TAJS model of String-indexing
     @Test
     public void test1k_2012_love_1274() {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1274.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -906,17 +882,16 @@ public class Test1K2012Love {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1275.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
-    @Ignore // FIXME TAJS model of String-indexing (& for-in on strings)
-    @Test
+    @Test(expected = AnalysisLimitationException.AnalysisTimeException.class)
     public void test1k_2012_love_1276() {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1276.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args, new AnalysisTimeLimiter(10, true));
         Misc.checkSystemOutput();
     }
 
@@ -925,27 +900,25 @@ public class Test1K2012Love {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1279.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
-    @Ignore // github #302
-    @Test
+    @Test(expected = AnalysisLimitationException.AnalysisTimeException.class)
     public void test1k_2012_love_1280() {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1280.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args, new AnalysisTimeLimiter(30, true));
         Misc.checkSystemOutput();
     }
 
-    @Ignore // FIXME TAJS model of WebSocket
     @Test
     public void test1k_2012_love_1281() {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1281.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -954,7 +927,7 @@ public class Test1K2012Love {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1284.js"};
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 }

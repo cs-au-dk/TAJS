@@ -14,6 +14,8 @@ test/10k/zmeyko.html:30:5: [maybe] TypeError, accessing property of null/undefin
 test/10k/zmeyko.html:46:5: [maybe] TypeError, accessing property of null/undefined
 test/10k/zmeyko.html:62:5: [maybe] TypeError, accessing property of null/undefined
 test/10k/zmeyko.html:79:23: [maybe] TypeError, accessing property of null/undefined
+test/10k/zmeyko.html:87:13: [maybe] TypeError, accessing property of null/undefined
+test/10k/zmeyko.html:133:5: [maybe] TypeError, accessing property of null/undefined
 test/10k/zmeyko.html:164:19: [maybe] ReferenceError, reading absent variable interval
 test/10k/zmeyko.html:172:9: [maybe] ReferenceError, reading absent variable snakeBody
 test/10k/zmeyko.html:177:5: [maybe] ReferenceError, reading absent variable ctx
@@ -47,8 +49,13 @@ test/10k/zmeyko.html:250:26: [maybe] ReferenceError, reading absent variable sgP
 test/10k/zmeyko.html:253:12: [maybe] TypeError, accessing property of null/undefined
 test/10k/zmeyko.html:258:5: [maybe] ReferenceError, reading absent variable ctx
 test/10k/zmeyko.html:258:25: [maybe] ReferenceError, reading absent variable cns
+test/10k/zmeyko.html:274:5: [maybe] TypeError, accessing property of null/undefined
 test/10k/zmeyko.html:277:14: [maybe] ReferenceError, reading absent variable snakeLength
+test/10k/zmeyko.html:279:5: [maybe] TypeError, accessing property of null/undefined
+test/10k/zmeyko.html:291:5: [maybe] TypeError, accessing property of null/undefined
 test/10k/zmeyko.html:301:10: [maybe] ReferenceError, reading absent variable allowPressKeys
+test/10k/zmeyko.html:305:9: [maybe] TypeError, accessing property of null/undefined
+test/10k/zmeyko.html:310:9: [maybe] TypeError, accessing property of null/undefined
 test/10k/zmeyko.html:314:27: [maybe] ReferenceError, reading absent variable drc
 test/10k/zmeyko.html:317:27: [maybe] ReferenceError, reading absent variable drc
 test/10k/zmeyko.html:320:27: [maybe] ReferenceError, reading absent variable drc
@@ -57,7 +64,7 @@ test/10k/zmeyko.html:330:13: [maybe] ReferenceError, reading absent variable drc
 test/10k/zmeyko.html:79:23: [maybe] Reading absent property offsetLeft
 test/10k/zmeyko.html:80:22: [maybe] Reading absent property offsetTop
 test/10k/zmeyko.html:82:22: [maybe] Reading absent property offsetParent
-test/10k/zmeyko.html: [maybe] Uncaught exception, constructed at [test/10k/zmeyko.html:30:5, test/10k/zmeyko.html:46:5, test/10k/zmeyko.html:62:5, test/10k/zmeyko.html:79:23, test/10k/zmeyko.html:164:19, test/10k/zmeyko.html:172:9, test/10k/zmeyko.html:177:5, test/10k/zmeyko.html:178:38, test/10k/zmeyko.html:178:48, test/10k/zmeyko.html:179:28, test/10k/zmeyko.html:181:23, test/10k/zmeyko.html:181:57, test/10k/zmeyko.html:181:67, test/10k/zmeyko.html:183:21, test/10k/zmeyko.html:185:9, test/10k/zmeyko.html:191:12, test/10k/zmeyko.html:191:23, test/10k/zmeyko.html:194:12, test/10k/zmeyko.html:194:23, test/10k/zmeyko.html:197:12, test/10k/zmeyko.html:197:23, test/10k/zmeyko.html:200:12, test/10k/zmeyko.html:200:23, test/10k/zmeyko.html:210:16, test/10k/zmeyko.html:224:16, test/10k/zmeyko.html:232:5, test/10k/zmeyko.html:236:40, test/10k/zmeyko.html:236:52, test/10k/zmeyko.html:236:65, test/10k/zmeyko.html:236:115, test/10k/zmeyko.html:236:128, test/10k/zmeyko.html:242:17, test/10k/zmeyko.html:250:12, test/10k/zmeyko.html:250:26, test/10k/zmeyko.html:253:12, test/10k/zmeyko.html:258:5, test/10k/zmeyko.html:258:25, test/10k/zmeyko.html:277:14, test/10k/zmeyko.html:301:10, test/10k/zmeyko.html:314:27, test/10k/zmeyko.html:317:27, test/10k/zmeyko.html:320:27, test/10k/zmeyko.html:323:27, test/10k/zmeyko.html:330:13]
+test/10k/zmeyko.html: [maybe] Uncaught exception, constructed at [test/10k/zmeyko.html:30:5, test/10k/zmeyko.html:46:5, test/10k/zmeyko.html:62:5, test/10k/zmeyko.html:79:23, test/10k/zmeyko.html:87:13, test/10k/zmeyko.html:133:5, test/10k/zmeyko.html:164:19, test/10k/zmeyko.html:172:9, test/10k/zmeyko.html:177:5, test/10k/zmeyko.html:178:38, test/10k/zmeyko.html:178:48, test/10k/zmeyko.html:179:28, test/10k/zmeyko.html:181:23, test/10k/zmeyko.html:181:57, test/10k/zmeyko.html:181:67, test/10k/zmeyko.html:183:21, test/10k/zmeyko.html:185:9, test/10k/zmeyko.html:191:12, test/10k/zmeyko.html:191:23, test/10k/zmeyko.html:194:12, test/10k/zmeyko.html:194:23, test/10k/zmeyko.html:197:12, test/10k/zmeyko.html:197:23, test/10k/zmeyko.html:200:12, test/10k/zmeyko.html:200:23, test/10k/zmeyko.html:210:16, test/10k/zmeyko.html:224:16, test/10k/zmeyko.html:232:5, test/10k/zmeyko.html:236:40, test/10k/zmeyko.html:236:52, test/10k/zmeyko.html:236:65, test/10k/zmeyko.html:236:115, test/10k/zmeyko.html:236:128, test/10k/zmeyko.html:242:17, test/10k/zmeyko.html:250:12, test/10k/zmeyko.html:250:26, test/10k/zmeyko.html:253:12, test/10k/zmeyko.html:258:5, test/10k/zmeyko.html:258:25, test/10k/zmeyko.html:274:5, test/10k/zmeyko.html:277:14, test/10k/zmeyko.html:279:5, test/10k/zmeyko.html:291:5, test/10k/zmeyko.html:301:10, test/10k/zmeyko.html:305:9, test/10k/zmeyko.html:310:9, test/10k/zmeyko.html:314:27, test/10k/zmeyko.html:317:27, test/10k/zmeyko.html:320:27, test/10k/zmeyko.html:323:27, test/10k/zmeyko.html:330:13]
 test/10k/zmeyko.html:13:30: [maybe] Reading absent property (computed name)
 test/10k/zmeyko.html:79:9: [maybe] Conversion to number yields NaN
 test/10k/zmeyko.html:80:9: [maybe] Conversion to number yields NaN

@@ -65,7 +65,6 @@ test/flowgraphbuilder/forin_call2.js:5:5: [maybe] RangeError in Number function
 test/flowgraphbuilder/forin_call2.js:5:5: [maybe] TypeError, call to non-function
 test/flowgraphbuilder/forin_call2.js: [maybe] Uncaught exception, constructed at [test/flowgraphbuilder/forin_call2.js:5:5]
 test/flowgraphbuilder/forin_call2.js:5:5: [maybe] Converting object to string
-test/flowgraphbuilder/forin_call2.js:5:5: [maybe] Converting object to string
 test/flowgraphbuilder/forin_call2.js:5:5: [maybe] Converting primitive number to object
 test/flowgraphbuilder/forin_call2.js:5:5: [maybe] Converting undefined to string
 test/flowgraphbuilder/forin_call2.js:5:5: [maybe] Reading absent property (computed name)

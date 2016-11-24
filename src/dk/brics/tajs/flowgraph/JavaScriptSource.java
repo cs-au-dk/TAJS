@@ -16,6 +16,8 @@
 
 package dk.brics.tajs.flowgraph;
 
+import java.net.URL;
+
 /**
  * JavaScript code snippet with meta-information.
  */
@@ -23,7 +25,7 @@ public class JavaScriptSource {
 
     private final Kind kind;
 
-    private final String fileName;
+    private final String prettyFileName;
 
     private final String code;
 
@@ -31,49 +33,52 @@ public class JavaScriptSource {
 
     private final int columnOffset;
 
-    private final String eventName;
+    private final EventType eventkind;
 
-    private JavaScriptSource(Kind kind, String eventName, String fileName, String code, int lineOffset, int columnOffset) {
+    private final URL location;
+
+    private JavaScriptSource(Kind kind, EventType eventkind, String prettyFileName, String code, int lineOffset, int columnOffset, URL location) {
         this.kind = kind;
-        this.eventName = eventName;
-        this.fileName = fileName;
+        this.eventkind = eventkind;
+        this.prettyFileName = prettyFileName;
         this.code = code;
         this.lineOffset = lineOffset;
         this.columnOffset = columnOffset;
+        this.location = location;
     }
 
     /**
      * Constructs a new code snippet descriptor for JavaScript code in a separate file.
      */
-    public static JavaScriptSource makeFileCode(String fileName, String code) {
-        return new JavaScriptSource(Kind.FILE, null, fileName, code, 0, 0);
+    public static JavaScriptSource makeFileCode(URL location, String prettyFileName, String code) {
+        return new JavaScriptSource(Kind.FILE, null, prettyFileName, code, 0, 0, location);
     }
 
     /**
      * Constructs a new code snippet descriptor for JavaScript code embedded in a 'script' tag in an HTML file.
      *
-     * @param fileName     file nam or URL of the code
+     * @param prettyFileName file nam or URL of the code
      * @param code         the JavaScript code
      * @param lineOffset   number of lines preceding the code
      * @param columnOffset number of columns preceding the first line of the code
      * @return new JavaScriptSource object
      */
-    public static JavaScriptSource makeEmbeddedCode(String fileName, String code, int lineOffset, int columnOffset) {
-        return new JavaScriptSource(Kind.EMBEDDED, null, fileName, code, lineOffset, columnOffset);
+    public static JavaScriptSource makeEmbeddedCode(URL location, String prettyFileName, String code, int lineOffset, int columnOffset) {
+        return new JavaScriptSource(Kind.EMBEDDED, null, prettyFileName, code, lineOffset, columnOffset, location);
     }
 
     /**
      * Constructs a new code snippet descriptor for JavaScript code embedded in an event handler attribute in an HTML file.
      *
-     * @param eventName    event kind, e.g. "click" or "submit"
+     * @param kind    event kind, e.g. "click" or "submit"
      * @param fileName     file nam or URL of the code
      * @param code         the JavaScript code
      * @param lineOffset   number of lines preceding the code
      * @param columnOffset number of columns preceding the first line of the code
      * @return new JavaScriptSource object
      */
-    public static JavaScriptSource makeEventHandlerCode(String eventName, String fileName, String code, int lineOffset, int columnOffset) {
-        return new JavaScriptSource(Kind.EVENTHANDLER, eventName, fileName, code, lineOffset, columnOffset);
+    public static JavaScriptSource makeEventHandlerCode(EventType kind, URL location, String fileName, String code, int lineOffset, int columnOffset) {
+        return new JavaScriptSource(Kind.EVENTHANDLER, kind, fileName, code, lineOffset, columnOffset, location);
     }
 
     /**
@@ -86,8 +91,8 @@ public class JavaScriptSource {
     /**
      * Returns the file name associated with the code.
      */
-    public String getFileName() {
-        return fileName;
+    public String getPrettyFileName() {
+        return prettyFileName;
     }
 
     /**
@@ -111,11 +116,15 @@ public class JavaScriptSource {
         return columnOffset;
     }
 
+    public URL getLocation() {
+        return location;
+    }
+
     /**
-     * Returns the event name, or null if not event handler code.
+     * Returns the event kind, or null if not event handler code.
      */
-    public String getEventName() {
-        return eventName;
+    public EventType getEventKind() {
+        return eventkind;
     }
 
     public enum Kind {

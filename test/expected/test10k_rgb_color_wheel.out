@@ -24,30 +24,23 @@ test/10k/rgb_color_wheel.html:144:27: [maybe] TypeError, accessing property of n
 test/10k/rgb_color_wheel.html:169:5: [maybe] TypeError, accessing property of null/undefined
 test/10k/rgb_color_wheel.html:192:28: [maybe] TypeError, accessing property of null/undefined
 test/10k/rgb_color_wheel.html:200:5: [maybe] TypeError, accessing property of null/undefined
-test/10k/rgb_color_wheel.html:200:5: [maybe] TypeError, accessing property of null/undefined
 test/10k/rgb_color_wheel.html:201:27: [maybe] TypeError, accessing property of null/undefined
 test/10k/rgb_color_wheel.html:202:5: [maybe] TypeError, accessing property of null/undefined
 test/10k/rgb_color_wheel.html:219:26: [maybe] TypeError, accessing property of null/undefined
 test/10k/rgb_color_wheel.html:219:34: [maybe] TypeError, accessing property of null/undefined
 test/10k/rgb_color_wheel.html:225:30: [maybe] TypeError, accessing property of null/undefined
 test/10k/rgb_color_wheel.html:225:38: [maybe] TypeError, accessing property of null/undefined
-test/10k/rgb_color_wheel.html:246:9: [maybe] TypeError, accessing property of null/undefined
 test/10k/rgb_color_wheel.html:248:24: [maybe] TypeError, accessing property of null/undefined
 test/10k/rgb_color_wheel.html:280:5: [maybe] TypeError, accessing property of null/undefined
-test/10k/rgb_color_wheel.html:280:5: [maybe] TypeError, accessing property of null/undefined
-test/10k/rgb_color_wheel.html:281:5: [maybe] TypeError, accessing property of null/undefined
 test/10k/rgb_color_wheel.html:281:5: [maybe] TypeError, accessing property of null/undefined
 test/10k/rgb_color_wheel.html:286:15: [maybe] TypeError, accessing property of null/undefined
 test/10k/rgb_color_wheel.html:286:15: [maybe] TypeError, call to non-function
 test/10k/rgb_color_wheel.html:292:17: [maybe] TypeError, accessing property of null/undefined
 test/10k/rgb_color_wheel.html:296:9: [maybe] TypeError, accessing property of null/undefined
-test/10k/rgb_color_wheel.html:296:9: [maybe] TypeError, accessing property of null/undefined
 test/10k/rgb_color_wheel.html:297:9: [maybe] TypeError, accessing property of null/undefined
 test/10k/rgb_color_wheel.html:325:12: [maybe] TypeError, accessing property of null/undefined
 test/10k/rgb_color_wheel.html:328:25: [maybe] TypeError, accessing property of null/undefined
 test/10k/rgb_color_wheel.html:342:5: [maybe] TypeError, accessing property of null/undefined
-test/10k/rgb_color_wheel.html:342:5: [maybe] TypeError, accessing property of null/undefined
-test/10k/rgb_color_wheel.html:343:5: [maybe] TypeError, accessing property of null/undefined
 test/10k/rgb_color_wheel.html:343:5: [maybe] TypeError, accessing property of null/undefined
 test/10k/rgb_color_wheel.html:348:9: [maybe] TypeError, accessing property of null/undefined
 test/10k/rgb_color_wheel.html:349:9: [maybe] TypeError, accessing property of null/undefined
@@ -55,8 +48,6 @@ test/10k/rgb_color_wheel.html:350:9: [maybe] TypeError, accessing property of nu
 test/10k/rgb_color_wheel.html:356:25: [maybe] TypeError, accessing property of null/undefined
 test/10k/rgb_color_wheel.html:363:5: [maybe] TypeError, accessing property of null/undefined
 test/10k/rgb_color_wheel.html:373:5: [maybe] TypeError, accessing property of null/undefined
-test/10k/rgb_color_wheel.html:373:5: [maybe] TypeError, accessing property of null/undefined
-test/10k/rgb_color_wheel.html:374:5: [maybe] TypeError, accessing property of null/undefined
 test/10k/rgb_color_wheel.html:374:5: [maybe] TypeError, accessing property of null/undefined
 test/10k/rgb_color_wheel.html:379:11: [maybe] TypeError, accessing property of null/undefined
 test/10k/rgb_color_wheel.html:379:11: [maybe] TypeError, call to non-function
@@ -73,6 +64,8 @@ test/10k/rgb_color_wheel.html:246:9: [maybe] Reading absent property offsetParen
 test/10k/rgb_color_wheel.html:248:24: [maybe] Reading absent property offsetLeft
 test/10k/rgb_color_wheel.html:249:24: [maybe] Reading absent property offsetTop
 test/10k/rgb_color_wheel.html:250:29: [maybe] Reading absent property offsetParent
+test/10k/rgb_color_wheel.html:256:9: [maybe] Reading absent property pageX
+test/10k/rgb_color_wheel.html:257:9: [maybe] Reading absent property pageY
 test/10k/rgb_color_wheel.html:280:5: [maybe] Reading absent property style
 test/10k/rgb_color_wheel.html:281:5: [maybe] Reading absent property style
 test/10k/rgb_color_wheel.html:286:15: [maybe] Reading absent property getContext
@@ -88,7 +81,7 @@ test/10k/rgb_color_wheel.html:374:5: [maybe] Reading absent property style
 test/10k/rgb_color_wheel.html:379:11: [maybe] Reading absent property getContext
 test/10k/rgb_color_wheel.html:381:14: [maybe] Reading absent property width
 test/10k/rgb_color_wheel.html:382:15: [maybe] Reading absent property height
-test/10k/rgb_color_wheel.html: [maybe] Uncaught exception, constructed at [test/10k/rgb_color_wheel.html:73:12, test/10k/rgb_color_wheel.html:79:12, test/10k/rgb_color_wheel.html:109:24, test/10k/rgb_color_wheel.html:127:5, test/10k/rgb_color_wheel.html:130:13, test/10k/rgb_color_wheel.html:130:21, test/10k/rgb_color_wheel.html:134:20, test/10k/rgb_color_wheel.html:134:28, test/10k/rgb_color_wheel.html:135:20, test/10k/rgb_color_wheel.html:135:28, test/10k/rgb_color_wheel.html:137:19, test/10k/rgb_color_wheel.html:137:27, test/10k/rgb_color_wheel.html:141:20, test/10k/rgb_color_wheel.html:141:28, test/10k/rgb_color_wheel.html:142:20, test/10k/rgb_color_wheel.html:142:28, test/10k/rgb_color_wheel.html:144:19, test/10k/rgb_color_wheel.html:144:27, test/10k/rgb_color_wheel.html:169:5, test/10k/rgb_color_wheel.html:192:28, test/10k/rgb_color_wheel.html:200:5, test/10k/rgb_color_wheel.html:201:27, test/10k/rgb_color_wheel.html:202:5, test/10k/rgb_color_wheel.html:219:26, test/10k/rgb_color_wheel.html:219:34, test/10k/rgb_color_wheel.html:225:30, test/10k/rgb_color_wheel.html:225:38, test/10k/rgb_color_wheel.html:246:9, test/10k/rgb_color_wheel.html:248:24, test/10k/rgb_color_wheel.html:280:5, test/10k/rgb_color_wheel.html:281:5, test/10k/rgb_color_wheel.html:286:15, test/10k/rgb_color_wheel.html:292:17, test/10k/rgb_color_wheel.html:296:9, test/10k/rgb_color_wheel.html:297:9, test/10k/rgb_color_wheel.html:325:12, test/10k/rgb_color_wheel.html:328:25, test/10k/rgb_color_wheel.html:342:5, test/10k/rgb_color_wheel.html:343:5, test/10k/rgb_color_wheel.html:348:9, test/10k/rgb_color_wheel.html:349:9, test/10k/rgb_color_wheel.html:350:9, test/10k/rgb_color_wheel.html:356:25, test/10k/rgb_color_wheel.html:363:5, test/10k/rgb_color_wheel.html:373:5, test/10k/rgb_color_wheel.html:374:5, test/10k/rgb_color_wheel.html:379:11, test/10k/rgb_color_wheel.html:388:5, test/10k/rgb_color_wheel.html:389:5]
+test/10k/rgb_color_wheel.html: [maybe] Uncaught exception, constructed at [test/10k/rgb_color_wheel.html:73:12, test/10k/rgb_color_wheel.html:79:12, test/10k/rgb_color_wheel.html:109:24, test/10k/rgb_color_wheel.html:127:5, test/10k/rgb_color_wheel.html:130:13, test/10k/rgb_color_wheel.html:130:21, test/10k/rgb_color_wheel.html:134:20, test/10k/rgb_color_wheel.html:134:28, test/10k/rgb_color_wheel.html:135:20, test/10k/rgb_color_wheel.html:135:28, test/10k/rgb_color_wheel.html:137:19, test/10k/rgb_color_wheel.html:137:27, test/10k/rgb_color_wheel.html:141:20, test/10k/rgb_color_wheel.html:141:28, test/10k/rgb_color_wheel.html:142:20, test/10k/rgb_color_wheel.html:142:28, test/10k/rgb_color_wheel.html:144:19, test/10k/rgb_color_wheel.html:144:27, test/10k/rgb_color_wheel.html:169:5, test/10k/rgb_color_wheel.html:192:28, test/10k/rgb_color_wheel.html:200:5, test/10k/rgb_color_wheel.html:201:27, test/10k/rgb_color_wheel.html:202:5, test/10k/rgb_color_wheel.html:219:26, test/10k/rgb_color_wheel.html:219:34, test/10k/rgb_color_wheel.html:225:30, test/10k/rgb_color_wheel.html:225:38, test/10k/rgb_color_wheel.html:248:24, test/10k/rgb_color_wheel.html:280:5, test/10k/rgb_color_wheel.html:281:5, test/10k/rgb_color_wheel.html:286:15, test/10k/rgb_color_wheel.html:292:17, test/10k/rgb_color_wheel.html:296:9, test/10k/rgb_color_wheel.html:297:9, test/10k/rgb_color_wheel.html:325:12, test/10k/rgb_color_wheel.html:328:25, test/10k/rgb_color_wheel.html:342:5, test/10k/rgb_color_wheel.html:343:5, test/10k/rgb_color_wheel.html:348:9, test/10k/rgb_color_wheel.html:349:9, test/10k/rgb_color_wheel.html:350:9, test/10k/rgb_color_wheel.html:356:25, test/10k/rgb_color_wheel.html:363:5, test/10k/rgb_color_wheel.html:373:5, test/10k/rgb_color_wheel.html:374:5, test/10k/rgb_color_wheel.html:379:11, test/10k/rgb_color_wheel.html:388:5, test/10k/rgb_color_wheel.html:389:5]
 test/10k/rgb_color_wheel.html:70:12: [maybe] Converting undefined to string
 test/10k/rgb_color_wheel.html:86:33: [maybe] Conversion to number yields NaN
 test/10k/rgb_color_wheel.html:87:22: [maybe] Conversion to number yields NaN
@@ -98,6 +91,7 @@ test/10k/rgb_color_wheel.html:99:14: [maybe] Conversion to number yields NaN
 test/10k/rgb_color_wheel.html:100:14: [maybe] Conversion to number yields NaN
 test/10k/rgb_color_wheel.html:104:12: [maybe] Conversion to number yields NaN
 test/10k/rgb_color_wheel.html:104:12: [maybe] Converting primitive string to object
+test/10k/rgb_color_wheel.html:104:12: [maybe] Converting undefined to string
 test/10k/rgb_color_wheel.html:104:12: [maybe] Reading absent property (computed name)
 test/10k/rgb_color_wheel.html:104:20: [maybe] Conversion to number yields NaN
 test/10k/rgb_color_wheel.html:104:38: [maybe] Converting primitive string to object
@@ -111,12 +105,14 @@ test/10k/rgb_color_wheel.html:109:63: [maybe] Conversion to number yields NaN
 test/10k/rgb_color_wheel.html:109:74: [maybe] Reading absent property (computed name)
 test/10k/rgb_color_wheel.html:130:13: [maybe] Reading absent property (computed name)
 test/10k/rgb_color_wheel.html:130:21: [maybe] Reading absent property (computed name)
+test/10k/rgb_color_wheel.html:132:9: [maybe] The variable scheme has values with different types
 test/10k/rgb_color_wheel.html:134:20: [maybe] Reading absent property (computed name)
 test/10k/rgb_color_wheel.html:134:28: [maybe] Reading absent property (computed name)
 test/10k/rgb_color_wheel.html:135:20: [maybe] Reading absent property (computed name)
 test/10k/rgb_color_wheel.html:135:28: [maybe] Reading absent property (computed name)
 test/10k/rgb_color_wheel.html:137:19: [maybe] Reading absent property (computed name)
 test/10k/rgb_color_wheel.html:137:27: [maybe] Reading absent property (computed name)
+test/10k/rgb_color_wheel.html:139:9: [maybe] The variable scheme has values with different types
 test/10k/rgb_color_wheel.html:141:20: [maybe] Reading absent property (computed name)
 test/10k/rgb_color_wheel.html:141:28: [maybe] Reading absent property (computed name)
 test/10k/rgb_color_wheel.html:142:20: [maybe] Reading absent property (computed name)
@@ -139,8 +135,11 @@ test/10k/rgb_color_wheel.html:183:35: [maybe] Conversion to number yields NaN
 test/10k/rgb_color_wheel.html:201:27: [maybe] Reading absent property (computed name)
 test/10k/rgb_color_wheel.html:201:41: [maybe] Reading absent property (computed name)
 test/10k/rgb_color_wheel.html:201:55: [maybe] Reading absent property (computed name)
+test/10k/rgb_color_wheel.html:210:13: [maybe] The variable scheme has values with different types
+test/10k/rgb_color_wheel.html:218:9: [maybe] The variable scheme has values with different types
 test/10k/rgb_color_wheel.html:219:26: [maybe] Reading absent property (computed name)
 test/10k/rgb_color_wheel.html:219:34: [maybe] Reading absent property (computed name)
+test/10k/rgb_color_wheel.html:224:13: [maybe] The variable scheme has values with different types
 test/10k/rgb_color_wheel.html:225:30: [maybe] Reading absent property (computed name)
 test/10k/rgb_color_wheel.html:225:38: [maybe] Reading absent property (computed name)
 test/10k/rgb_color_wheel.html:242:28: [maybe] Converting undefined to string
@@ -149,15 +148,22 @@ test/10k/rgb_color_wheel.html:244:27: [maybe] Converting undefined to string
 test/10k/rgb_color_wheel.html:245:26: [maybe] Converting undefined to string
 test/10k/rgb_color_wheel.html:248:13: [maybe] Conversion to number yields NaN
 test/10k/rgb_color_wheel.html:249:13: [maybe] Conversion to number yields NaN
+test/10k/rgb_color_wheel.html:256:9: [maybe] Conversion to number yields NaN
+test/10k/rgb_color_wheel.html:257:9: [maybe] Conversion to number yields NaN
 test/10k/rgb_color_wheel.html:258:29: [maybe] Conversion to number yields NaN
 test/10k/rgb_color_wheel.html:258:57: [maybe] Conversion to number yields NaN
 test/10k/rgb_color_wheel.html:272:25: [maybe] Reading absent property (computed name)
+test/10k/rgb_color_wheel.html:288:9: [maybe] The variable scheme has values with different types
 test/10k/rgb_color_wheel.html:290:25: [maybe] Reading absent property (computed name)
+test/10k/rgb_color_wheel.html:292:44: [maybe] Conversion from string to number yields NaN
+test/10k/rgb_color_wheel.html:292:44: [maybe] The variable scheme has values with different types
 test/10k/rgb_color_wheel.html:293:25: [maybe] Conversion to number yields NaN
 test/10k/rgb_color_wheel.html:293:43: [maybe] Conversion to number yields NaN
 test/10k/rgb_color_wheel.html:296:34: [maybe] Reading absent property (computed name)
 test/10k/rgb_color_wheel.html:298:17: [maybe] Reading absent property (computed name)
 test/10k/rgb_color_wheel.html:299:34: [maybe] Reading absent property (computed name)
+test/10k/rgb_color_wheel.html:302:13: [maybe] Conversion from string to number yields NaN
+test/10k/rgb_color_wheel.html:302:13: [maybe] The variable scheme has values with different types
 test/10k/rgb_color_wheel.html:303:38: [maybe] Reading absent property (computed name)
 test/10k/rgb_color_wheel.html:303:44: [maybe] Conversion to number yields NaN
 test/10k/rgb_color_wheel.html:307:38: [maybe] Reading absent property (computed name)

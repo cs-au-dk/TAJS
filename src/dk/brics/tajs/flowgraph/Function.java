@@ -16,6 +16,7 @@
 
 package dk.brics.tajs.flowgraph;
 
+import dk.brics.tajs.flowgraph.jsnodes.DeclareFunctionNode;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.util.AnalysisException;
 import dk.brics.tajs.util.Strings;
@@ -96,13 +97,19 @@ public class Function {
      */
     private boolean uses_this;
 
+
+    /**
+     * The node where this function is declared.
+     */
+    private DeclareFunctionNode node;
+
     /**
      * The variables read by the function that are defined in an outer function.
      */
     private Set<String> closureVariableNames;
 
     /**
-     * The source code of the function, null if full source code is not available (e.g. eventhandlers in html)
+     * The source code of the function, null if full source code is not available (e.g. eventhandlers in html).
      */
     private final String source;
 
@@ -253,6 +260,13 @@ public class Function {
      */
     public BasicBlock getExceptionalExit() {
         return exceptional_exit;
+    }
+
+    /**
+     * Sets the source location.
+     */
+    public void setSourceLocation(SourceLocation location) {
+        this.location = location;
     }
 
     /**
@@ -496,6 +510,23 @@ public class Function {
             bb.check(entry, ordinary_exit, exceptional_exit, seen_blocks, seen_nodes);
     }
 
+    /**
+     * Returns the node where this function is declared.
+     */
+    public DeclareFunctionNode getNode() {
+        return node;
+    }
+
+    /**
+     * Sets the node where this function is declared.
+     */
+    public void setNode(DeclareFunctionNode node) {
+        this.node = node;
+    }
+
+    /**
+     * Returns the source code of the function, null if full source code is not available (e.g. eventhandlers in html).
+     */
     public String getSource() {
         return source;
     }

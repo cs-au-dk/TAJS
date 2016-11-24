@@ -7,9 +7,11 @@ test/chromeexperiments/liquidparticles.html:13:5: [definite] The variable outerD
 test/chromeexperiments/liquidparticles.html:195:1: [definite] The variable e is never used
 test/chromeexperiments/liquidparticles.html:201:1: [definite] The variable e is never used
 test/chromeexperiments/liquidparticles.html:225:1: [definite] Unreachable function rect
+test/chromeexperiments/liquidparticles.html:30:9: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/liquidparticles.html:68:5: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/liquidparticles.html:95:17: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/liquidparticles.html: [maybe] Uncaught exception, constructed at [test/chromeexperiments/liquidparticles.html:68:5, test/chromeexperiments/liquidparticles.html:95:17]
+test/chromeexperiments/liquidparticles.html:239:5: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/liquidparticles.html: [maybe] Uncaught exception, constructed at [test/chromeexperiments/liquidparticles.html:30:9, test/chromeexperiments/liquidparticles.html:68:5, test/chromeexperiments/liquidparticles.html:95:17, test/chromeexperiments/liquidparticles.html:239:5]
 test/chromeexperiments/liquidparticles.html:73:15: [maybe] Conversion to number yields NaN
 test/chromeexperiments/liquidparticles.html:74:15: [maybe] Conversion to number yields NaN
 test/chromeexperiments/liquidparticles.html:94:17: [maybe] Reading absent property (computed name)

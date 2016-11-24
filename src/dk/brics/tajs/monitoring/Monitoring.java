@@ -617,14 +617,17 @@ public class Monitoring implements IAnalysisMonitoring {
             reportUnusedVariableOrParameter(flowgraph);
             reportDeadAssignments();
             reportShadowing(flowgraph);
-            if (Options.get().isCollectVariableInfoEnabled()) {
+            if (Options.get().isShowVariableInfoEnabled()) {
                 type_collector.logTypeInformation();
             }
+            // TODO: this de-duplication should happen somewhere else?
+            Set<String> emittedOutput = newSet(); // avoid redundant output
             for (Message message : getSortedMessages()) {
-                if (HostEnvSources.isHostEnvSource(message.getNode().getSourceLocation())) {
+                if (HostEnvSources.isHostEnvSource(message.getNode().getSourceLocation()) || emittedOutput.contains(message.toString())) {
                     continue;
                 }
                 message.emit();
+                emittedOutput.add(message.toString());
             }
         }
 
@@ -1150,9 +1153,14 @@ public class Monitoring implements IAnalysisMonitoring {
      */
     @Override
     public void visitVariableOrProperty(String var, SourceLocation loc, Value value, Context context, State state) {
-        if (scan_phase && Options.get().isCollectVariableInfoEnabled()) {
+        if (scan_phase && Options.get().isShowVariableInfoEnabled()) {
             type_collector.record(var, loc, UnknownValueResolver.getRealValue(value, state), context);
         }
+    }
+
+    @Override
+    public void visitNativeFunctionReturn(AbstractNode node, HostObject hostObject, Value result) {
+        // ignore
     }
 
     /**
@@ -1622,7 +1630,8 @@ public class Monitoring implements IAnalysisMonitoring {
             AbstractNode d = n.getDuplicateOf();
             if (d != null) // if n is a duplicate, use the original instead
                 n = d;
-            Message m = new Message(n, s, key, msg, severity);
+            boolean ifGeneratedOrPseudoNode = n.getSourceLocation().getLocation() == null;
+            Message m = new Message(n, s, key, msg, severity, ifGeneratedOrPseudoNode);
             Message mo = messages.get(m);
             if (mo != null) {
                 Status old = mo.getStatus();

@@ -29,6 +29,7 @@ import org.apache.log4j.Logger;
 import java.util.Iterator;
 import java.util.Locale;
 import java.util.Map.Entry;
+import java.util.function.Supplier;
 
 /**
  * Generic fixpoint solver for flow graphs.
@@ -96,6 +97,27 @@ public class GenericSolver<StateType extends IState<StateType, ContextType, Call
          */
         public void setState(StateType state) {
             current_state = state;
+        }
+
+        /**
+         * Runs the given supplier function with the given state set to current.
+         */
+        public <T> T withState(StateType state, Supplier<T> fun) {
+            StateType old = current_state;
+            current_state = state;
+            T res = fun.get();
+            current_state = old;
+            return res;
+        }
+
+        /**
+         * Runs the given function with the given state set to current.
+         */
+        public void withState(StateType state, Runnable fun) {
+            withState(state, () -> {
+                fun.run();
+                return null;
+            });
         }
 
         /**
@@ -244,6 +266,7 @@ public class GenericSolver<StateType extends IState<StateType, ContextType, Call
         flowgraph = fg;
         global_entry_block = fg.getEntryBlock();
         the_analysis_lattice_element = analysis.makeAnalysisLattice(fg);
+        analysis.initContextSensitivity(fg);
         c = new SolverInterface();
         analysis.setSolverInterface(c);
 

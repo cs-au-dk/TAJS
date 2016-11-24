@@ -25,6 +25,7 @@ import dk.brics.tajs.analysis.dom.DOMRegistry;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.Value;
+import dk.brics.tajs.util.AnalysisLimitationException;
 
 import static dk.brics.tajs.analysis.dom.DOMFunctions.createDOMFunction;
 import static dk.brics.tajs.analysis.dom.DOMFunctions.createDOMProperty;
@@ -128,7 +129,7 @@ public class KeyboardEvent {
                 return Value.makeUndef();
             }
             case KEYBOARD_EVENT_INIT_KEYBOARD_EVENT_NS: {
-                throw new UnsupportedOperationException("KeyboardEvent.initKeyboardEventNS not supported!");
+                throw new AnalysisLimitationException.AnalysisModelLimitationException(call.getJSSourceNode().getSourceLocation() + ": KeyboardEvent.initKeyboardEventNS not supported!");
             }
             default: {
                 throw new UnsupportedOperationException("Unsupported Native Object");

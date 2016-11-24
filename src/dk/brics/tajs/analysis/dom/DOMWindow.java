@@ -26,9 +26,11 @@ import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.analysis.dom.style.CSSStyleDeclaration;
 import dk.brics.tajs.analysis.uneval.NormalForm;
 import dk.brics.tajs.analysis.uneval.UnevalTools;
+import dk.brics.tajs.flowgraph.EventType;
 import dk.brics.tajs.flowgraph.FlowGraph;
 import dk.brics.tajs.flowgraph.FlowGraphFragment;
 import dk.brics.tajs.flowgraph.jsnodes.CallNode;
+import dk.brics.tajs.flowgraph.jsnodes.EventDispatcherNode;
 import dk.brics.tajs.js2flowgraph.FlowGraphMutator;
 import dk.brics.tajs.lattice.Context;
 import dk.brics.tajs.lattice.ObjectLabel;
@@ -40,6 +42,7 @@ import dk.brics.tajs.solver.NodeAndContext;
 import dk.brics.tajs.unevalizer.Unevalizer;
 import dk.brics.tajs.unevalizer.UnevalizerLimitations;
 import dk.brics.tajs.util.AnalysisException;
+import dk.brics.tajs.util.AnalysisLimitationException;
 import dk.brics.tajs.util.Strings;
 import org.apache.log4j.Logger;
 
@@ -68,15 +71,12 @@ public class DOMWindow {
 
     public static ObjectLabel SCREEN;
 
-    public static ObjectLabel JSON;
-
     public static void build(Solver.SolverInterface c) {
         State s = c.getState();
         HISTORY = new ObjectLabel(DOMObjects.WINDOW_HISTORY, Kind.OBJECT);
         LOCATION = new ObjectLabel(DOMObjects.WINDOW_LOCATION, Kind.OBJECT);
         NAVIGATOR = new ObjectLabel(DOMObjects.WINDOW_NAVIGATOR, Kind.OBJECT);
         SCREEN = new ObjectLabel(DOMObjects.WINDOW_SCREEN, Kind.OBJECT);
-        JSON = new ObjectLabel(DOMObjects.WINDOW_JSON, Kind.OBJECT);
 
         // NB: The WINDOW object has already been instantiated.
 
@@ -137,6 +137,8 @@ public class DOMWindow {
         createDOMFunction(WINDOW, DOMObjects.WINDOW_SCROLLTO, "scrollTo", 2, c);
         createDOMFunction(WINDOW, DOMObjects.WINDOW_SET_INTERVAL, "setInterval", 2, c);
         createDOMFunction(WINDOW, DOMObjects.WINDOW_SET_TIMEOUT, "setTimeout", 2, c);
+        createDOMFunction(WINDOW, DOMObjects.WINDOW_SET_TIMEOUT /* FIXME implement proper function for this */, "requestAnimationFrame", 1, c);
+        createDOMFunction(WINDOW, DOMObjects.WINDOW_SET_TIMEOUT /* FIXME implement proper function for this */, "webkitRequestAnimationFrame", 1, c);
         createDOMFunction(WINDOW, DOMObjects.WINDOW_STOP, "stop", 0, c);
         createDOMFunction(WINDOW, DOMObjects.WINDOW_UNESCAPE, "unescape", 1, c);
 
@@ -209,13 +211,6 @@ public class DOMWindow {
         createDOMProperty(SCREEN, "top", Value.makeAnyNumUInt(), c);
         createDOMProperty(SCREEN, "width", Value.makeAnyNumUInt(), c);
 
-        /*
-         * WINDOW JSON object
-         */
-        s.newObject(JSON);
-        s.writeInternalPrototype(JSON, Value.makeObject(InitialStateBuilder.OBJECT_PROTOTYPE));
-        createDOMProperty(WINDOW, "JSON", Value.makeObject(JSON), c); // TODO: DOMSpec.LEVEL_0?
-        createDOMFunction(JSON, DOMObjects.WINDOW_JSON_PARSE, "parse", 1, c); // TODO: DOMSpec.LEVEL_0?
     }
 
     public static Value evaluate(DOMObjects nativeObject, final CallInfo call, Solver.SolverInterface c) {
@@ -302,12 +297,6 @@ public class DOMWindow {
             /* Value url =*/
                 Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
                 return Value.makeUndef();
-            }
-            case WINDOW_JSON_PARSE: {
-                NativeFunctions.expectParameters(nativeObject, call, c, 1, 1);
-            /* Value data =*/
-                NativeFunctions.readParameter(call, s, 0);
-                return DOMFunctions.makeAnyJSONObject(c);
             }
             case WINDOW_LOCATION_RELOAD: {
                 NativeFunctions.expectParameters(nativeObject, call, c, 1, 1);
@@ -430,45 +419,52 @@ public class DOMWindow {
                 if (!c.isScanning()) {
                     if (!callbackSourceCode.isNotStr()) {
                         if (Options.get().isUnevalizerEnabled()) {
-                            CallNode callNode = (CallNode) call.getSourceNode(); // FIXME: may not be CallNode?
-                            FlowGraph currFg = c.getFlowGraph();
-                            NormalForm nf = UnevalTools.rebuildNormalForm(currFg, callNode, s, c);
+                            if(call.getSourceNode() instanceof CallNode) {
+                                CallNode callNode = (CallNode) call.getSourceNode();
+                                FlowGraph currFg = c.getFlowGraph();
+                                NormalForm nf = UnevalTools.rebuildNormalForm(currFg, callNode, s, c);
 
-                            String uneval_input = callbackSourceCode.getStr() != null ? "\"" + Strings.escapeSource(callbackSourceCode.getStr()) + "\"" : nf.getNormalForm();
-                            String unevaled = new Unevalizer().uneval(UnevalTools.unevalizerCallback(currFg, c, callNode, nf), uneval_input, false, null, call.getSourceNode(), c);
-                            if (unevaled == null) {
-                                return UnevalizerLimitations.handle("Could not uneval setTimeout/setInterval string (you should use higher-order functions instead): " + uneval_input, call.getSourceNode(), Value.makeAnyNumUInt(), c);
-                            }
-                            log.debug("Unevalized:" + unevaled);
-
-                            if (callbackSourceCode.getStr() == null) // Called with non-constant.
-                                unevaled = UnevalTools.rebuildFullFromMapping(currFg, unevaled, nf.getMapping(), callNode);
-
-                            EvalCache evalCache = c.getAnalysis().getEvalCache(); // TODO: refactor to avoid duplicated code (see JSFunction.FUNCTION and JSGlobal.EVAL)
-                            NodeAndContext<Context> cc = new NodeAndContext<>(callNode, s.getContext());
-                            FlowGraphFragment e = evalCache.getCode(cc);
-
-                            // Cache miss.
-                            if (e == null || !e.getKey().equals(unevaled)) {
-                                e = FlowGraphMutator.extendFlowGraph(currFg, unevaled, unevaled, e, callNode, true, null);
-                            }
-
-                            ObjectLabel callbackUnevaled = new ObjectLabel(e.getEntryFunction());
-                            allCallbacks = allCallbacks.join(Value.makeObject(callbackUnevaled));
-                            evalCache.setCode(cc, e);
-                            if (Options.get().isFlowGraphEnabled()) {
-                                try (PrintWriter pw = new PrintWriter(new File("out" + File.separator + "flowgraphs" + File.separator + "uneval-" +
-                                        callNode.getIndex() + "-" + Integer.toHexString(s.getContext().hashCode()) + ".dot"))) {
-                                    currFg.toDot(pw);
-                                    pw.flush();
-                                } catch (Exception ee) {
-                                    throw new AnalysisException(ee);
+                                String uneval_input = callbackSourceCode.getStr() != null ? "\"" + Strings.escapeSource(callbackSourceCode.getStr()) + "\"" : nf.getNormalForm();
+                                String unevaled = new Unevalizer().uneval(UnevalTools.unevalizerCallback(currFg, c, callNode, nf, false), uneval_input, false, null, call.getSourceNode(), c);
+                                if (unevaled == null) {
+                                    return UnevalizerLimitations.handle("Could not uneval setTimeout/setInterval string (you should use higher-order functions instead): " + uneval_input, call.getSourceNode(), Value.makeAnyNumUInt(), c);
                                 }
+                                log.debug("Unevalized:" + unevaled);
+
+                                if (callbackSourceCode.getStr() == null) // Called with non-constant.
+                                    unevaled = UnevalTools.rebuildFullFromMapping(currFg, unevaled, nf.getMapping(), callNode);
+
+                                EvalCache evalCache = c.getAnalysis().getEvalCache(); // TODO: refactor to avoid duplicated code (see JSFunction.FUNCTION and JSGlobal.EVAL)
+                                NodeAndContext<Context> cc = new NodeAndContext<>(callNode, s.getContext());
+                                FlowGraphFragment e = evalCache.getCode(cc);
+
+                                // Cache miss.
+                                if (e == null || !e.getKey().equals(unevaled)) {
+                                    e = FlowGraphMutator.extendFlowGraph(currFg, unevaled, unevaled, e, callNode, true, null);
+                                }
+
+                                ObjectLabel callbackUnevaled = new ObjectLabel(e.getEntryFunction());
+                                allCallbacks = allCallbacks.join(Value.makeObject(callbackUnevaled));
+                                evalCache.setCode(cc, e);
+                                if (Options.get().isFlowGraphEnabled()) {
+                                    try (PrintWriter pw = new PrintWriter(new File("out" + File.separator + "flowgraphs" + File.separator + "uneval-" +
+                                            callNode.getIndex() + "-" + Integer.toHexString(s.getContext().hashCode()) + ".dot"))) {
+                                        currFg.toDot(pw);
+                                        pw.flush();
+                                    } catch (Exception ee) {
+                                        throw new AnalysisException(ee);
+                                    }
+                                }
+                            }else{
+                                if (Options.get().isUnsoundEnabled() && call.getSourceNode() instanceof EventDispatcherNode) {
+                                    return Value.makeUndef();
+                                }
+                                throw new AnalysisLimitationException.AnalysisModelLimitationException(call.getSourceNode().getSourceLocation() + ": Invoking setTimeout/setInterval from non-CallNode - unevalizer can't handle that");
                             }
                         } else
-                            throw new UnsupportedOperationException("Can't handle arbitrary strings in setInterval/setTimeout. Try with -uneval");
+                            throw new AnalysisLimitationException.AnalysisModelLimitationException(call.getJSSourceNode().getSourceLocation() + ": Can't handle arbitrary strings in setInterval/setTimeout. Try with -uneval");
                     }
-                    DOMEvents.addTimeoutEventHandler(s, allCallbacks.getObjectLabels());
+                    DOMEvents.addEventHandler(allCallbacks, EventType.TIMEOUT, c);
                 }
                 return Value.makeAnyNumUInt();
             }

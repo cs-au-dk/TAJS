@@ -9,7 +9,7 @@ fg2: <main> function()
     node 4: +[v3,v4] (test/flowgraphbuilder/flowgraph_builder0089.js:1:1)
     node 5: constant[1.0,v5] (test/flowgraphbuilder/flowgraph_builder0089.js:1:1)
     node 6: +[v4,v5,v6] (test/flowgraphbuilder/flowgraph_builder0089.js:1:1)
-    node 7: write-property[v2,'x',v6] (test/flowgraphbuilder/flowgraph_builder0089.js:1:1)
+    node 7: write-property[v2,'x',v6] (test/flowgraphbuilder/flowgraph_builder0089.js:1:3)
     node 8: <variable-non-null-undef>['o']* (test/flowgraphbuilder/flowgraph_builder0089.js:1:3)
     ->[block 2]
   block 2: [exit-ordinary]

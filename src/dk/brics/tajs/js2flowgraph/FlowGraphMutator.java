@@ -1,23 +1,46 @@
+/*
+ * Copyright 2009-2016 Aarhus University
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package dk.brics.tajs.js2flowgraph;
 
 import dk.brics.tajs.flowgraph.AbstractNode;
 import dk.brics.tajs.flowgraph.BasicBlock;
+import dk.brics.tajs.flowgraph.EventType;
 import dk.brics.tajs.flowgraph.FlowGraph;
 import dk.brics.tajs.flowgraph.FlowGraphFragment;
 import dk.brics.tajs.flowgraph.Function;
 import dk.brics.tajs.flowgraph.JavaScriptSource;
+import dk.brics.tajs.flowgraph.SourceLocation;
 import dk.brics.tajs.flowgraph.jsnodes.ConstantNode;
 import dk.brics.tajs.flowgraph.jsnodes.LoadNode;
 import dk.brics.tajs.util.Pair;
 
 import java.util.List;
+import java.util.Set;
+import java.util.Stack;
 
 import static dk.brics.tajs.js2flowgraph.FunctionBuilderHelper.makeBasicBlock;
+import static dk.brics.tajs.util.Collections.newSet;
 
 /**
  * Operations for extending an existing flow graph.
  */
 public class FlowGraphMutator {
+
+    private final static String dynamicSourceCodePrefix = "TAJS-dynamic-code";
 
     /**
      * Extends the given flow graph.
@@ -36,6 +59,7 @@ public class FlowGraphMutator {
         BasicBlock extenderBlock = extenderNode.getBlock();
         BasicBlock extenderSuccessor = extenderBlock.getSingleSuccessor();
         Function function = extenderNode.getBlock().getFunction();
+        Set<BasicBlock> oldBlocks = newSet(function.getBlocks());
         FunctionAndBlockManager functionAndBlocksManager = new FunctionAndBlockManager();
 
         if (previousExtension != null) {
@@ -59,25 +83,23 @@ public class FlowGraphMutator {
         }
 
         // (a bit hacky way to indicate this, but it supports nested dynamic code, and simplifies the SourceLocation type)
-        String fileName = String.format("TAJS-dynamic-code(%s)", extenderNode.getSourceLocation().toString());
-        FlowGraphBuilder flowGraphBuilder = new FlowGraphBuilder(env, functionAndBlocksManager, fileName);
+        String fileName = formatDynamicSourceCodeFileName(extenderNode.getSourceLocation().toString());
+        FlowGraphBuilder flowGraphBuilder = new FlowGraphBuilder(env, functionAndBlocksManager, null, fileName);
         Function entryFunction;
         BasicBlock entryBlock;
         if (asTimeOutEvent) {
             // transform the code as event handler code
-            JavaScriptSource script = JavaScriptSource.makeEventHandlerCode("TIMEOUT", fileName, newSourceCode, 0, 0); // using dummy event name
-            flowGraphBuilder.transformWebAppCode(script);
+            JavaScriptSource script = JavaScriptSource.makeEventHandlerCode(EventType.TIMEOUT, null, fileName, newSourceCode, 0, 0); // using dummy event name
+            entryFunction = flowGraphBuilder.transformWebAppCode(script);
 
             // insert the new code right after the extendedNode (to model function reachability and preserve the number of successors of extendedNode)
             extenderBlock.getSuccessors().clear();
             extenderBlock.addSuccessor(declarationBlock); // the edge to the successor of extendedNode is set via close(..) below
 
-            // extract the created callback
-            entryFunction = flowGraphBuilder.getEventHandlers().get(flowGraphBuilder.getEventHandlers().size() - 1).getFirst(); // TODO: (#129) a bit hacky to depend on the list order...
             entryBlock = null; // this variant is a (pseudo) function, not just a collection of basic blocks
         } else {
             // transform the code as embedded code
-            JavaScriptSource script = JavaScriptSource.makeEmbeddedCode(fileName, newSourceCode, 0, 0);
+            JavaScriptSource script = JavaScriptSource.makeEmbeddedCode(null, fileName, newSourceCode, 0, 0);
             flowGraphBuilder.transformCode(script, 0, 0);
 
             if (declarationBlock.getNodes().isEmpty()) {
@@ -90,6 +112,10 @@ public class FlowGraphMutator {
             entryFunction = null; // this variant is not a (pseudo) function but a collection of basic blocks
             entryBlock = declarationBlock;
             functionAndBlocksManager.registerUnreachableSyntacticSuccessor(extenderBlock, declarationBlock);
+
+            Stack<BasicBlock> entryStack = new Stack<>();
+            entryStack.push(extenderBlock.getEntryBlock());
+            FlowGraphBuilder.setEntryBlocks(extenderBlock, entryBlock, entryStack, newSet(oldBlocks), functionAndBlocksManager);
         }
 
         // FIXME: (#124) does not include surrounding break/continue targets or finally blocks - so exceptions and jumps are not handled soundly
@@ -100,4 +126,13 @@ public class FlowGraphMutator {
         Pair<List<Function>, List<BasicBlock>> blocksAndFunctions = functionAndBlocksManager.close();
         return new FlowGraphFragment(sourceCodeIdentifier, entryBlock, entryFunction, blocksAndFunctions.getFirst(), blocksAndFunctions.getSecond());
     }
+
+    private static String formatDynamicSourceCodeFileName(String fileName) {
+        return String.format("%s(%s)", dynamicSourceCodePrefix, fileName);
+    }
+
+    public static boolean isDynamicSourceCode(SourceLocation sourceLocation) {
+        return sourceLocation.getPrettyFileName().startsWith(dynamicSourceCodePrefix);
+    }
+
 }

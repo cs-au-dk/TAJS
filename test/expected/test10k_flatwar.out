@@ -1,56 +1,29 @@
-test/10k/flatwar.html:358:9: [definite] ReferenceError, reading absent variable levelInfo
-test/10k/flatwar.html:365:9: [definite] ReferenceError, reading absent variable levelInfo
-test/10k/flatwar.html:104:9: [definite] The conditional expression is always true
-test/10k/flatwar.html:127:25: [definite] The conditional expression is always false
-test/10k/flatwar.html:139:25: [definite] The conditional expression is always false
-test/10k/flatwar.html:177:25: [definite] The conditional expression is always false
-test/10k/flatwar.html:186:25: [definite] The conditional expression is always false
-test/10k/flatwar.html:193:9: [definite] The conditional expression is always false
-test/10k/flatwar.html:203:25: [definite] The conditional expression is always false
-test/10k/flatwar.html:215:25: [definite] The conditional expression is always false
-test/10k/flatwar.html:231:21: [definite] The conditional expression is always false
-test/10k/flatwar.html:256:21: [definite] The conditional expression is always false
-test/10k/flatwar.html:264:21: [definite] The conditional expression is always false
-test/10k/flatwar.html:277:21: [definite] The conditional expression is always false
-test/10k/flatwar.html:352:9: [definite] The conditional expression is always false
-test/10k/flatwar.html:361:21: [definite] The conditional expression is always false
-test/10k/flatwar.html:375:25: [definite] The conditional expression is always false
-test/10k/flatwar.html:32:5: [definite] Dead assignment, property is never read
-test/10k/flatwar.html:33:5: [definite] Dead assignment, property is never read
-test/10k/flatwar.html:34:5: [definite] Dead assignment, property is never read
-test/10k/flatwar.html:35:5: [definite] Dead assignment, property is never read
-test/10k/flatwar.html:37:5: [definite] Dead assignment, property is never read
-test/10k/flatwar.html:38:5: [definite] Dead assignment, property is never read
 test/10k/flatwar.html:13:24: [definite] The variable e is never used
 test/10k/flatwar.html:16:22: [definite] The variable e is never used
 test/10k/flatwar.html:30:1: [definite] The variable rad is never used
 test/10k/flatwar.html:94:1: [definite] Unreachable function round
-test/10k/flatwar.html:358:31: [definite] Unreachable code
-test/10k/flatwar.html:365:9: [definite] Unreachable code
 test/10k/flatwar.html:384:37: [definite] The variable pcGT is never used
-test/10k/flatwar.html:384:118: [definite] The variable cX is never used
-test/10k/flatwar.html:384:121: [definite] The variable cY is never used
-test/10k/flatwar.html:384:124: [definite] The variable cE is never used
-test/10k/flatwar.html:384:127: [definite] The variable cR is never used
 test/10k/flatwar.html:384:130: [definite] The variable cEN is never used
-test/10k/flatwar.html:384:134: [definite] The variable cMR is never used
-test/10k/flatwar.html:384:161: [definite] The variable lKA is never used
 test/10k/flatwar.html:384:177: [definite] The variable uN is never used
 test/10k/flatwar.html:10:27: [maybe] ReferenceError, reading absent variable event
 test/10k/flatwar.html:11:27: [maybe] ReferenceError, reading absent variable event
 test/10k/flatwar.html:20:28: [maybe] ReferenceError, reading absent variable event
 test/10k/flatwar.html:25:25: [maybe] ReferenceError, reading absent variable event
 test/10k/flatwar.html:328:28: [maybe] ReferenceError, reading absent variable color
-test/10k/flatwar.html:362:9: [maybe] TypeError, accessing property of null/undefined
+test/10k/flatwar.html:357:9: [maybe] TypeError, accessing property of null/undefined
+test/10k/flatwar.html:359:9: [maybe] TypeError, accessing property of null/undefined
 test/10k/flatwar.html:362:9: [maybe] TypeError, accessing property of null/undefined
 test/10k/flatwar.html:363:9: [maybe] TypeError, accessing property of null/undefined
-test/10k/flatwar.html:370:13: [maybe] TypeError, accessing property of null/undefined
 test/10k/flatwar.html:370:13: [maybe] TypeError, accessing property of null/undefined
 test/10k/flatwar.html:371:13: [maybe] TypeError, accessing property of null/undefined
 test/10k/flatwar.html:383:5: [maybe] TypeError, accessing property of null/undefined
 test/10k/flatwar.html:383:5: [maybe] TypeError, call to non-function
 test/10k/flatwar.html:10:11: [maybe] Reading absent property event
+test/10k/flatwar.html:10:27: [maybe] Reading absent property pageX
+test/10k/flatwar.html:10:41: [maybe] Reading absent property pageX
 test/10k/flatwar.html:11:11: [maybe] Reading absent property event
+test/10k/flatwar.html:11:27: [maybe] Reading absent property pageY
+test/10k/flatwar.html:11:41: [maybe] Reading absent property pageY
 test/10k/flatwar.html:20:12: [maybe] Reading absent property event
 test/10k/flatwar.html:25:9: [maybe] Reading absent property event
 test/10k/flatwar.html:362:9: [maybe] Reading absent property style
@@ -58,7 +31,7 @@ test/10k/flatwar.html:363:9: [maybe] Reading absent property style
 test/10k/flatwar.html:370:13: [maybe] Reading absent property style
 test/10k/flatwar.html:371:13: [maybe] Reading absent property style
 test/10k/flatwar.html:383:5: [maybe] Reading absent property getContext
-test/10k/flatwar.html: [maybe] Uncaught exception, constructed at [test/10k/flatwar.html:10:27, test/10k/flatwar.html:11:27, test/10k/flatwar.html:20:28, test/10k/flatwar.html:25:25, test/10k/flatwar.html:328:28, test/10k/flatwar.html:358:9, test/10k/flatwar.html:362:9, test/10k/flatwar.html:363:9, test/10k/flatwar.html:365:9, test/10k/flatwar.html:370:13, test/10k/flatwar.html:371:13, test/10k/flatwar.html:383:5]
+test/10k/flatwar.html: [maybe] Uncaught exception, constructed at [test/10k/flatwar.html:10:27, test/10k/flatwar.html:11:27, test/10k/flatwar.html:20:28, test/10k/flatwar.html:25:25, test/10k/flatwar.html:328:28, test/10k/flatwar.html:357:9, test/10k/flatwar.html:359:9, test/10k/flatwar.html:362:9, test/10k/flatwar.html:363:9, test/10k/flatwar.html:370:13, test/10k/flatwar.html:371:13, test/10k/flatwar.html:383:5]
 test/10k/flatwar.html:37:15: [maybe] Conversion to number yields NaN
 test/10k/flatwar.html:37:15: [maybe] Reading absent property (computed name)
 test/10k/flatwar.html:38:15: [maybe] Conversion to number yields NaN
@@ -77,6 +50,31 @@ test/10k/flatwar.html:59:85: [maybe] Conversion to number yields NaN
 test/10k/flatwar.html:79:5: [maybe] Conversion to number yields NaN
 test/10k/flatwar.html:99:19: [maybe] Conversion to number yields NaN
 test/10k/flatwar.html:100:19: [maybe] Conversion to number yields NaN
+test/10k/flatwar.html:112:32: [maybe] Conversion to number yields NaN
+test/10k/flatwar.html:112:32: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:112:47: [maybe] Conversion to number yields NaN
+test/10k/flatwar.html:112:53: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:113:32: [maybe] Conversion to number yields NaN
+test/10k/flatwar.html:113:32: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:113:47: [maybe] Conversion to number yields NaN
+test/10k/flatwar.html:113:53: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:114:27: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:114:36: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:114:57: [maybe] Conversion to number yields NaN
+test/10k/flatwar.html:114:57: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:128:21: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:129:29: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:130:29: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:131:30: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:132:30: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:133:29: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:134:29: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:140:25: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:141:25: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:142:26: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:143:26: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:145:25: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:146:25: [maybe] Reading absent property (computed name)
 test/10k/flatwar.html:155:21: [maybe] Reading absent property (computed name)
 test/10k/flatwar.html:156:29: [maybe] Reading absent property (computed name)
 test/10k/flatwar.html:157:29: [maybe] Reading absent property (computed name)
@@ -88,6 +86,13 @@ test/10k/flatwar.html:166:26: [maybe] Reading absent property (computed name)
 test/10k/flatwar.html:168:26: [maybe] Reading absent property (computed name)
 test/10k/flatwar.html:169:26: [maybe] Reading absent property (computed name)
 test/10k/flatwar.html:170:26: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:178:21: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:179:29: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:180:29: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:181:29: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:187:25: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:188:25: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:190:25: [maybe] Reading absent property (computed name)
 test/10k/flatwar.html:194:15: [maybe] Reading absent property (computed name)
 test/10k/flatwar.html:197:13: [maybe] Reading absent property (computed name)
 test/10k/flatwar.html:197:23: [maybe] Reading absent property (computed name)
@@ -98,11 +103,96 @@ test/10k/flatwar.html:199:23: [maybe] Reading absent property (computed name)
 test/10k/flatwar.html:200:13: [maybe] Reading absent property (computed name)
 test/10k/flatwar.html:200:23: [maybe] Reading absent property (computed name)
 test/10k/flatwar.html:201:16: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:204:21: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:205:21: [maybe] Conversion to number yields NaN
+test/10k/flatwar.html:205:21: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:206:21: [maybe] Conversion to number yields NaN
+test/10k/flatwar.html:206:21: [maybe] Reading absent property (computed name)
 test/10k/flatwar.html:210:21: [maybe] Reading absent property (computed name)
 test/10k/flatwar.html:211:21: [maybe] Conversion to number yields NaN
 test/10k/flatwar.html:211:21: [maybe] Reading absent property (computed name)
 test/10k/flatwar.html:212:21: [maybe] Conversion to number yields NaN
 test/10k/flatwar.html:212:21: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:216:21: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:217:21: [maybe] Conversion to number yields NaN
+test/10k/flatwar.html:217:21: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:218:21: [maybe] Conversion to number yields NaN
+test/10k/flatwar.html:218:21: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:232:17: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:234:25: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:235:34: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:235:41: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:235:48: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:235:56: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:235:66: [maybe] Conversion to number yields NaN
+test/10k/flatwar.html:235:66: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:235:74: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:237:29: [maybe] Conversion to number yields NaN
+test/10k/flatwar.html:237:29: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:237:39: [maybe] Conversion to number yields NaN
+test/10k/flatwar.html:237:39: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:238:29: [maybe] Conversion to number yields NaN
+test/10k/flatwar.html:238:29: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:242:47: [maybe] Conversion to number yields NaN
+test/10k/flatwar.html:242:47: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:242:56: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:242:64: [maybe] Conversion to number yields NaN
+test/10k/flatwar.html:242:64: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:242:73: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:243:47: [maybe] Conversion to number yields NaN
+test/10k/flatwar.html:243:47: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:243:56: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:243:64: [maybe] Conversion to number yields NaN
+test/10k/flatwar.html:243:64: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:243:73: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:246:33: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:251:34: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:251:41: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:257:17: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:259:28: [maybe] Conversion to number yields NaN
+test/10k/flatwar.html:259:28: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:259:36: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:259:43: [maybe] Conversion to number yields NaN
+test/10k/flatwar.html:259:43: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:259:51: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:259:58: [maybe] Conversion to number yields NaN
+test/10k/flatwar.html:259:58: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:259:69: [maybe] Conversion to number yields NaN
+test/10k/flatwar.html:259:69: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:260:17: [maybe] Conversion to number yields NaN
+test/10k/flatwar.html:260:17: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:260:26: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:261:17: [maybe] Conversion to number yields NaN
+test/10k/flatwar.html:261:17: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:261:26: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:265:17: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:266:28: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:266:35: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:267:27: [maybe] Conversion to number yields NaN
+test/10k/flatwar.html:267:27: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:278:17: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:280:28: [maybe] Conversion to number yields NaN
+test/10k/flatwar.html:280:28: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:280:36: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:280:43: [maybe] Conversion to number yields NaN
+test/10k/flatwar.html:280:43: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:280:51: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:280:58: [maybe] Conversion to number yields NaN
+test/10k/flatwar.html:280:58: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:280:69: [maybe] Conversion to number yields NaN
+test/10k/flatwar.html:280:69: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:281:26: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:281:33: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:282:37: [maybe] Conversion to number yields NaN
+test/10k/flatwar.html:282:43: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:283:37: [maybe] Conversion to number yields NaN
+test/10k/flatwar.html:283:43: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:287:21: [maybe] Conversion to number yields NaN
+test/10k/flatwar.html:287:21: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:287:31: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:288:21: [maybe] Conversion to number yields NaN
+test/10k/flatwar.html:288:21: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:288:31: [maybe] Reading absent property (computed name)
 test/10k/flatwar.html:293:17: [maybe] Reading absent property (computed name)
 test/10k/flatwar.html:294:28: [maybe] Reading absent property (computed name)
 test/10k/flatwar.html:294:36: [maybe] Reading absent property (computed name)
@@ -135,9 +225,14 @@ test/10k/flatwar.html:311:17: [maybe] Reading absent property (computed name)
 test/10k/flatwar.html:311:28: [maybe] Reading absent property (computed name)
 test/10k/flatwar.html:330:14: [maybe] Reading absent property (computed name)
 test/10k/flatwar.html:330:25: [maybe] Reading absent property (computed name)
+test/10k/flatwar.html:338:34: [maybe] Conversion to number yields NaN
+test/10k/flatwar.html:338:44: [maybe] Conversion to number yields NaN
+test/10k/flatwar.html:341:34: [maybe] Conversion to number yields NaN
+test/10k/flatwar.html:341:51: [maybe] Conversion to number yields NaN
+test/10k/flatwar.html:344:34: [maybe] Conversion to number yields NaN
+test/10k/flatwar.html:344:44: [maybe] Conversion to number yields NaN
+test/10k/flatwar.html:347:34: [maybe] Conversion to number yields NaN
+test/10k/flatwar.html:347:51: [maybe] Conversion to number yields NaN
 test/10k/flatwar.html:374:13: [maybe] Reading absent property (computed name)
-test/10k/flatwar.html:438:17: [maybe] Conversion to number yields NaN
 test/10k/flatwar.html:438:17: [maybe] Converting object to string
-test/10k/flatwar.html:438:17: [maybe] Converting object to string
-test/10k/flatwar.html:438:17: [maybe] Converting primitive string to object
 test/10k/flatwar.html:438:17: [maybe] Converting primitive string to object

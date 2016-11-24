@@ -6,6 +6,5 @@ test/micro/toString2.js:21:10: [maybe] Converting object to number
 test/micro/toString2.js:24:10: [maybe] Converting object to number
 test/micro/toString2.js:27:10: [maybe] Converting object to number
 test/micro/toString2.js:30:10: [maybe] Converting object to number
-test/micro/toString2.js:35:10: [maybe] Converting object to number
 test/micro/toString2.js:65:13: [maybe] The variable p9 has values with different types
 test/micro/toString2.js:76:1: [maybe] Converting object to string

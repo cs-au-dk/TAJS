@@ -11,7 +11,7 @@ fg2: <main> function()
     node 4: call[v3,v4,v5,v2] (test/flowgraphbuilder/flowgraph_builder0126.js:1:10)
     ->[block 3]
   block 3:
-    node 5: write-variable[v2,'t2']* (test/flowgraphbuilder/flowgraph_builder0126.js:1:10)
+    node 5: write-variable[v2,'t2']* (test/flowgraphbuilder/flowgraph_builder0126.js:1:5)
     node 6: read-variable['TAJS_dumpObject',v7,v6] (test/flowgraphbuilder/flowgraph_builder0126.js:3:1)
     node 7: read-variable['t2',v8,-] (test/flowgraphbuilder/flowgraph_builder0126.js:3:17)
     ->[block 4]

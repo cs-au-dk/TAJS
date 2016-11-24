@@ -1,6 +1,6 @@
 test/uneval/uneval29.html:12:19: [definite] ReferenceError, reading absent variable ActiveXObject
 test/uneval/uneval29.html:23:19: [definite] ReferenceError, reading absent variable ActiveXObject
-test/uneval/uneval29.html:181:19: [definite] Too many parameters to function HTMLImageElement.constructor
+test/uneval/uneval29.html:181:19: [definite] Too many parameters to function HTMLImageElement constructor
 TAJS-dynamic-code(test/uneval/uneval29.html:121:2):1:223: [definite] Property is null/undefined
 TAJS-dynamic-code(test/uneval/uneval29.html:121:2):1:470: [definite] Property is null/undefined
 TAJS-dynamic-code(test/uneval/uneval29.html:121:2):2:50: [definite] Property is null/undefined
@@ -40,13 +40,9 @@ TAJS-dynamic-code(test/uneval/uneval29.html:104:2):1:64: [maybe] TypeError, acce
 TAJS-dynamic-code(test/uneval/uneval29.html:121:2):1:56: [maybe] TypeError, accessing property of null/undefined
 TAJS-dynamic-code(test/uneval/uneval29.html:121:2):1:356: [maybe] TypeError, accessing property of null/undefined
 TAJS-dynamic-code(test/uneval/uneval29.html:49:2):1:168: [maybe] TypeError, accessing property of null/undefined
-TAJS-dynamic-code(test/uneval/uneval29.html:49:2):1:168: [maybe] TypeError, accessing property of null/undefined
 test/uneval/uneval29.html:150:2: [maybe] TypeError, accessing property of null/undefined
-test/uneval/uneval29.html:150:2: [maybe] TypeError, accessing property of null/undefined
-test/uneval/uneval29.html:160:28: [maybe] TypeError, accessing property of null/undefined
 test/uneval/uneval29.html:160:28: [maybe] TypeError, accessing property of null/undefined
 test/uneval/uneval29.html:163:25: [maybe] TypeError, accessing property of null/undefined
-test/uneval/uneval29.html:171:17: [maybe] TypeError, accessing property of null/undefined
 test/uneval/uneval29.html:171:17: [maybe] TypeError, accessing property of null/undefined
 TAJS-dynamic-code(test/uneval/uneval29.html:104:2):1:64: [maybe] Reading absent property offsetTop
 TAJS-dynamic-code(test/uneval/uneval29.html:104:2):1:84: [maybe] Reading absent property offsetLeft

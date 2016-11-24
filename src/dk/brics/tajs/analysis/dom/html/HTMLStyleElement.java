@@ -68,7 +68,7 @@ public class HTMLStyleElement {
         // DOM Level 1
         createDOMProperty(INSTANCES, "disabled", Value.makeAnyBool(), c);
         createDOMProperty(INSTANCES, "media", Value.makeAnyStr(), c);
-        createDOMProperty(INSTANCES, "type", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "type", Value.makeAnyStr().restrictToNotStrIdentifierParts() /* mime-type */, c);
 
         s.multiplyObject(INSTANCES);
         INSTANCES = INSTANCES.makeSingleton().makeSummary();

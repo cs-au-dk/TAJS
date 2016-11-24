@@ -93,4 +93,4 @@ test/sunspider/crypto-md5.js:236:12: [maybe] Converting primitive string to obje
 test/sunspider/crypto-md5.js:236:28: [maybe] Conversion to number yields NaN
 test/sunspider/crypto-md5.js:236:28: [maybe] Reading absent property (computed name)
 test/sunspider/crypto-md5.js:293:26: [maybe] Converting object to number
-test/sunspider/crypto-md5.js:295:1: [info] Abstract value: UInt
+test/sunspider/crypto-md5.js:295:1: [info] Abstract value: UInt|NotUInt

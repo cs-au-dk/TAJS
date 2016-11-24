@@ -1,9 +1,11 @@
 package dk.brics.tajs.test;
 
 import dk.brics.tajs.Main;
+import dk.brics.tajs.monitoring.CompositeMonitoring;
 import dk.brics.tajs.monitoring.IAnalysisMonitoring;
+import dk.brics.tajs.monitoring.Monitoring;
+import dk.brics.tajs.monitoring.OrdinaryExitReachableChecker;
 import dk.brics.tajs.options.Options;
-import dk.brics.tajs.test.monitors.OrdinaryExitReachableCheckerMonitor;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -18,7 +20,6 @@ public class TestJQueryEach {
     @Before
     public void before() {
         Main.reset();
-        Options.get().enableUnsound();
         Options.get().enableQuiet();
         Options.get().enableTiming();
         Options.get().enableTest();
@@ -26,7 +27,7 @@ public class TestJQueryEach {
         Options.get().enableUnreachable();
         Options.get().enableLoopUnrolling(100);
 
-        monitor = new OrdinaryExitReachableCheckerMonitor();
+        monitor = new CompositeMonitoring(new Monitoring(), new OrdinaryExitReachableChecker());
     }
 
     @Test

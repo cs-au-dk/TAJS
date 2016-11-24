@@ -1,1 +1,1 @@
-out/temp-sources/stringWithBackslashes.js:1:1: [info] Abstract value: "\\x"
+out/temp-sources/TestMicroStringEscaping.stringWithBackslashes.js:1:1: [info] Abstract value: "\\x"

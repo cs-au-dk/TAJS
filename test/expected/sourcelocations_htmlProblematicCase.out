@@ -1,4 +1,3 @@
-TAJS-dynamic-code(test/sourcelocations/htmlProblematicCase.html:17:16):1:24: [definite] TypeError, accessing property of null/undefined
 test/sourcelocations/htmlProblematicCase.html:11:14: [definite] The conditional expression is always true
 TAJS-dynamic-code(test/sourcelocations/htmlProblematicCase.html:17:16):1:24: [definite] Reading absent property c
 test/sourcelocations/htmlProblematicCase.html:13:9: [definite] Dead assignment, property intrvl is never read
@@ -9,4 +8,5 @@ test/sourcelocations/htmlProblematicCase.html:10:1: [definite] The variable n is
 test/sourcelocations/htmlProblematicCase.html:14:9: [definite] Unreachable code
 test/sourcelocations/htmlProblematicCase.html:16:18: [definite] The variable d is never used
 test/sourcelocations/htmlProblematicCase.html:26:36: [definite] Unreachable code
+TAJS-dynamic-code(test/sourcelocations/htmlProblematicCase.html:17:16):1:24: [maybe] TypeError, accessing property of null/undefined
 test/sourcelocations/htmlProblematicCase.html: [maybe] Uncaught exception, constructed at [TAJS-dynamic-code(test/sourcelocations/htmlProblematicCase.html:17:16):1:24]

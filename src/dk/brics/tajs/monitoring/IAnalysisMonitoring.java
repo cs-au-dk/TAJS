@@ -225,7 +225,7 @@ public interface IAnalysisMonitoring extends ISolverMonitoring<State, Context> {
      * @param state       current abstract state
      * @param v           property value with attributes
      */
-    void visitReadProperty(ReadPropertyNode n, Set<ObjectLabel> objlabels, Str propertystr, boolean maybe, State state, Value v);
+    void visitReadProperty(ReadPropertyNode n, Set<ObjectLabel> objlabels, Str propertystr, boolean maybe, State state, Value v); // TODO these checks should be done for CallNodes as well!
 
     /**
      * Checks whether the read of 'this' yields the global object.
@@ -266,4 +266,9 @@ public interface IAnalysisMonitoring extends ISolverMonitoring<State, Context> {
      * Registers the name, location, and value of a variable being read or written.
      */
     void visitVariableOrProperty(String var, SourceLocation loc, Value value, Context context, State state);
+
+    /**
+     * Registers the return value of a native function call.
+     */
+    void visitNativeFunctionReturn(AbstractNode node, HostObject hostObject, Value result);
 }

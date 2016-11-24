@@ -151,6 +151,7 @@ test/chromeexperiments/3ddemo.html:113:24: [maybe] TypeError, accessing property
 test/chromeexperiments/3ddemo.html:167:34: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/3ddemo.html:227:29: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/3ddemo.html:581:33: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/3ddemo.html:769:26: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/3ddemo.html:793:48: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/3ddemo.html:869:25: [maybe] TypeError, call to non-function
 test/chromeexperiments/3ddemo.html:979:24: [maybe] TypeError, accessing property of null/undefined
@@ -182,7 +183,7 @@ test/chromeexperiments/3ddemo.html:996:17: [maybe] Reading absent property setSt
 test/chromeexperiments/3ddemo.html:1078:29: [maybe] Reading absent property setFillColor
 test/chromeexperiments/3ddemo.html:1142:21: [maybe] Reading absent property body
 test/chromeexperiments/3ddemo.html:1145:21: [maybe] Reading absent property body
-test/chromeexperiments/3ddemo.html: [maybe] Uncaught exception, constructed at [test/chromeexperiments/3ddemo.html:84:26, test/chromeexperiments/3ddemo.html:84:33, test/chromeexperiments/3ddemo.html:88:26, test/chromeexperiments/3ddemo.html:88:33, test/chromeexperiments/3ddemo.html:92:17, test/chromeexperiments/3ddemo.html:92:24, test/chromeexperiments/3ddemo.html:113:17, test/chromeexperiments/3ddemo.html:113:24, test/chromeexperiments/3ddemo.html:167:34, test/chromeexperiments/3ddemo.html:227:29, test/chromeexperiments/3ddemo.html:581:33, test/chromeexperiments/3ddemo.html:793:48, test/chromeexperiments/3ddemo.html:869:25, test/chromeexperiments/3ddemo.html:979:24, test/chromeexperiments/3ddemo.html:979:43, test/chromeexperiments/3ddemo.html:989:21, test/chromeexperiments/3ddemo.html:996:17, test/chromeexperiments/3ddemo.html:1001:27, test/chromeexperiments/3ddemo.html:1010:36, test/chromeexperiments/3ddemo.html:1017:40, test/chromeexperiments/3ddemo.html:1054:30, test/chromeexperiments/3ddemo.html:1068:31, test/chromeexperiments/3ddemo.html:1068:40, test/chromeexperiments/3ddemo.html:1069:31, test/chromeexperiments/3ddemo.html:1069:40, test/chromeexperiments/3ddemo.html:1070:31, test/chromeexperiments/3ddemo.html:1070:40, test/chromeexperiments/3ddemo.html:1072:35, test/chromeexperiments/3ddemo.html:1072:44, test/chromeexperiments/3ddemo.html:1078:29, test/chromeexperiments/3ddemo.html:1141:21, test/chromeexperiments/3ddemo.html:1142:21, test/chromeexperiments/3ddemo.html:1145:21, test/chromeexperiments/3ddemo.html:1148:30]
+test/chromeexperiments/3ddemo.html: [maybe] Uncaught exception, constructed at [test/chromeexperiments/3ddemo.html:84:26, test/chromeexperiments/3ddemo.html:84:33, test/chromeexperiments/3ddemo.html:88:26, test/chromeexperiments/3ddemo.html:88:33, test/chromeexperiments/3ddemo.html:92:17, test/chromeexperiments/3ddemo.html:92:24, test/chromeexperiments/3ddemo.html:113:17, test/chromeexperiments/3ddemo.html:113:24, test/chromeexperiments/3ddemo.html:167:34, test/chromeexperiments/3ddemo.html:227:29, test/chromeexperiments/3ddemo.html:581:33, test/chromeexperiments/3ddemo.html:769:26, test/chromeexperiments/3ddemo.html:793:48, test/chromeexperiments/3ddemo.html:869:25, test/chromeexperiments/3ddemo.html:979:24, test/chromeexperiments/3ddemo.html:979:43, test/chromeexperiments/3ddemo.html:989:21, test/chromeexperiments/3ddemo.html:996:17, test/chromeexperiments/3ddemo.html:1001:27, test/chromeexperiments/3ddemo.html:1010:36, test/chromeexperiments/3ddemo.html:1017:40, test/chromeexperiments/3ddemo.html:1054:30, test/chromeexperiments/3ddemo.html:1068:31, test/chromeexperiments/3ddemo.html:1068:40, test/chromeexperiments/3ddemo.html:1069:31, test/chromeexperiments/3ddemo.html:1069:40, test/chromeexperiments/3ddemo.html:1070:31, test/chromeexperiments/3ddemo.html:1070:40, test/chromeexperiments/3ddemo.html:1072:35, test/chromeexperiments/3ddemo.html:1072:44, test/chromeexperiments/3ddemo.html:1078:29, test/chromeexperiments/3ddemo.html:1141:21, test/chromeexperiments/3ddemo.html:1142:21, test/chromeexperiments/3ddemo.html:1145:21, test/chromeexperiments/3ddemo.html:1148:30]
 test/chromeexperiments/3ddemo.html:218:36: [maybe] Reading absent property (computed name)
 test/chromeexperiments/3ddemo.html:226:30: [maybe] Reading absent property (computed name)
 test/chromeexperiments/3ddemo.html:578:30: [maybe] Reading absent property (computed name)
@@ -203,5 +204,23 @@ test/chromeexperiments/3ddemo.html:1034:62: [maybe] Reading absent property (com
 test/chromeexperiments/3ddemo.html:1034:73: [maybe] Reading absent property (computed name)
 test/chromeexperiments/3ddemo.html:1053:30: [maybe] Reading absent property (computed name)
 test/chromeexperiments/3ddemo.html:306:24: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/3ddemo.html:309:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/3ddemo.html:312:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/3ddemo.html:312:41: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/3ddemo.html:315:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/3ddemo.html:315:41: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/3ddemo.html:321:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/3ddemo.html:321:49: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/chromeexperiments/3ddemo.html:378:24: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/chromeexperiments/3ddemo.html:603:24: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/3ddemo.html:793:26: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/3ddemo.html:807:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/3ddemo.html:808:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/3ddemo.html:809:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/3ddemo.html:811:29: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/3ddemo.html:985:26: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/3ddemo.html:990:39: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/3ddemo.html:990:52: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/3ddemo.html:997:26: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/3ddemo.html:1004:26: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/3ddemo.html:1055:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision

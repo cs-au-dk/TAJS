@@ -20,6 +20,7 @@ import dk.brics.tajs.analysis.js.UserFunctionCalls;
 import dk.brics.tajs.analysis.nativeobjects.ECMAScriptFunctions;
 import dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects;
 import dk.brics.tajs.analysis.nativeobjects.concrete.ConcreteString;
+import dk.brics.tajs.analysis.nativeobjects.concrete.InvocationResult;
 import dk.brics.tajs.analysis.nativeobjects.concrete.TAJSConcreteSemantics;
 import dk.brics.tajs.flowgraph.AbstractNode;
 import dk.brics.tajs.flowgraph.BasicBlock;
@@ -33,9 +34,6 @@ import dk.brics.tajs.lattice.UnknownValueResolver;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.solver.Message.Severity;
 import dk.brics.tajs.util.AnalysisException;
-import dk.brics.tajs.util.None;
-import dk.brics.tajs.util.OptionalObjectVisitor;
-import dk.brics.tajs.util.Some;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -82,7 +80,7 @@ public class Conversion {
      * Can only return primitive values.
      */
     private static Value defaultValue(ObjectLabel obj, Hint hint, Solver.SolverInterface c) {
-        // When the [[DefaultValue]] method of O is called with no hint, then it behaves as if the hint were Number, 
+        // When the [[DefaultValue]] method of O is called with no hint, then it behaves as if the hint were Number,
         // unless O is a Date object (section 15.9), in which case it behaves as if the hint were String.
         if (hint == Hint.NONE)
             hint = obj.getKind() == Kind.DATE ? Hint.STR : Hint.NUM;
@@ -106,7 +104,7 @@ public class Conversion {
             tostring = UnknownValueResolver.getRealValue(tostring, s);
             State tostringState = s.clone(); // TODO: no need to clone if certain that convertToStringOrValueOf will not call any user-defined functions
             c.setState(tostringState);
-            result = convertToStringOrValueOf(obj, tostring.getObjectLabels(), c, true);
+            result = convertToStringOrValueOf(obj, tostring.getObjectLabels(), true, c);
             result = UnknownValueResolver.getRealValue(result, tostringState);
             c.setState(s);
             if (!isMaybeNonCallable(tostring)) {
@@ -119,7 +117,7 @@ public class Conversion {
                 valueof = UnknownValueResolver.getRealValue(valueof, s);
                 State valueOfState = s.clone(); // TODO: no need to clone if certain that convertToStringOrValueOf will not call any user-defined functions
                 c.setState(valueOfState);
-                Value result2 = convertToStringOrValueOf(obj, valueof.getObjectLabels(), c, false);
+                Value result2 = convertToStringOrValueOf(obj, valueof.getObjectLabels(), false, c);
                 result2 = UnknownValueResolver.getRealValue(result2, valueOfState);
                 result = result.restrictToNotObject().join(result2);
                 c.setState(s);
@@ -146,7 +144,7 @@ public class Conversion {
             valueof = UnknownValueResolver.getRealValue(valueof, s);
             State valueofState = s.clone(); // TODO: no need to clone if certain that convertToStringOrValueOf will not call any user-defined functions
             c.setState(valueofState);
-            result = convertToStringOrValueOf(obj, valueof.getObjectLabels(), c, false);
+            result = convertToStringOrValueOf(obj, valueof.getObjectLabels(), false, c);
             result = UnknownValueResolver.getRealValue(result, valueofState);
             c.setState(s);
             if (!isMaybeNonCallable(valueof)) {
@@ -159,7 +157,7 @@ public class Conversion {
                 tostring = UnknownValueResolver.getRealValue(tostring, s);
                 State toStringState = s.clone(); // TODO: no need to clone if certain that convertToStringOrValueOf will not call any user-defined functions
                 c.setState(toStringState);
-                Value result2 = convertToStringOrValueOf(obj, tostring.getObjectLabels(), c, true);
+                Value result2 = convertToStringOrValueOf(obj, tostring.getObjectLabels(), true, c);
                 result2 = UnknownValueResolver.getRealValue(result2, toStringState);
                 result = result.restrictToNotObject().join(result2);
                 c.setState(s);
@@ -199,7 +197,7 @@ public class Conversion {
      * @param objs     the toString or valueOf functions
      * @param toString true if toString, false if valueOf
      */
-    private static Value convertToStringOrValueOf(ObjectLabel thiss, Set<ObjectLabel> objs, Solver.SolverInterface c, boolean toString) {
+    private static Value convertToStringOrValueOf(ObjectLabel thiss, Set<ObjectLabel> objs, boolean toString, Solver.SolverInterface c) {
         List<Value> result = newList();
         BasicBlock implicitAfterCall = null;
         for (ObjectLabel obj : objs) {
@@ -583,17 +581,8 @@ public class Conversion {
      */
     private static String specialNumberToString(double dbl, Solver.SolverInterface c) {
         final List<Value> noArgs = newList();
-        return TAJSConcreteSemantics.convertTAJSCallExplicit(Value.makeNum(dbl), "Number.prototype.toString", noArgs, ConcreteString.class, c).apply(new OptionalObjectVisitor<String, ConcreteString>() {
-            @Override
-            public String visit(None<ConcreteString> obj) {
-                return null;
-            }
-
-            @Override
-            public String visit(Some<ConcreteString> obj) {
-                return obj.get().getString();
-            }
-        });
+        InvocationResult<ConcreteString> concreteResult = TAJSConcreteSemantics.convertTAJSCallExplicit(Value.makeNum(dbl), "Number.prototype.toString", noArgs, c);
+        return concreteResult.getValue().getString();
     }
 
     /**

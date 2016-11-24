@@ -4,9 +4,9 @@ import dk.brics.tajs.Main;
 import dk.brics.tajs.monitoring.CompositeMonitoring;
 import dk.brics.tajs.monitoring.IAnalysisMonitoring;
 import dk.brics.tajs.monitoring.Monitoring;
+import dk.brics.tajs.monitoring.OrdinaryExitReachableChecker;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.test.Misc;
-import dk.brics.tajs.test.monitors.OrdinaryExitReachableCheckerMonitor;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -19,7 +19,7 @@ public class JSObject_defineProperty_test {
         Main.reset();
         Main.initLogging();
         Options.get().enableTest();
-        monitor = CompositeMonitoring.buildFromList(new Monitoring(), new OrdinaryExitReachableCheckerMonitor());
+        monitor = CompositeMonitoring.buildFromList(new Monitoring(), new OrdinaryExitReachableChecker());
     }
 
     @Test
@@ -110,28 +110,84 @@ public class JSObject_defineProperty_test {
     }
 
     @Test
-    public void configurable() {
-        Misc.runSource(new String[]{
-                "var o1 = {};",
+    public void configurable1() {
+        Misc.runSource("var o1 = {};",
                 "Object.defineProperty(o1, 'p', {configurable: true, writable: true});",
                 "o1.p = 42;",
                 "TAJS_assert(o1.p === 42);",
                 "delete o1.p",
-                "TAJS_assert(o1.hasOwnProperty('p') === false);",
-                "var o2 = {};",
+                "TAJS_assert(o1.hasOwnProperty('p') === false);");
+    }
+
+    @Test
+    public void configurable2() {
+        Misc.runSource("var o2 = {};",
                 "Object.defineProperty(o2, 'p', {configurable: false, writable: true});",
                 "o2.p = 42;",
                 "TAJS_assert(o2.p === 42);",
                 "delete o2.p",
-                "TAJS_assert(o2.p === 42);",
-                // default false
+                "TAJS_assert(o2.p === 42);");
+    }
+
+    @Test
+    public void configurable3() {
+        Misc.runSource(// default false
                 "var o3 = {};",
                 "Object.defineProperty(o3, 'p', {configurable: false, writable: true});",
                 "o3.p = 42;",
                 "TAJS_assert(o3.p === 42);",
                 "delete o3.p",
-                "TAJS_assert(o3.p === 42);",
-        }, monitor);
+                "TAJS_assert(o3.p === 42);");
+    }
+
+    @Test(expected = AssertionError.class) // GitHub #291
+    public void configurable4() {
+        Misc.runSource(
+                "var o4 = {};",
+                "Object.defineProperty(o4, 'p', {configurable: false});",
+                "var threwException = false;",
+                "try{",
+                "   Object.defineProperty(o4, 'p', {value: 42});", // different
+                "   TAJS_assert(false);",
+                "}catch(e){",
+                "   threwException = true;",
+                "}",
+                "TAJS_assert(threwException);");
+    }
+
+    @Test
+    public void nonConfigurable1() {
+        Misc.runSource(
+                "var o = {};",
+                "Object.defineProperty(o, 'p', {configurable: false});",
+                // OK to redefine with same attributes
+                "Object.defineProperty(o, 'p', {configurable: false});",
+                "Object.defineProperty(o, 'p', {writable: false});",
+                // NOT OK to redefine with other attributes
+                "Object.defineProperty(o, 'p', {writable: true});"
+                // (fails soundness testing) // GitHub #291
+        );
+    }
+
+    @Test
+    public void nonConfigurable2() {
+        Misc.runSource(
+                "var o = {};",
+                "Object.defineProperty(o, 'p', {configurable: false});",
+                // OK to delete
+                "delete o.p;"
+        );
+    }
+
+    @Test
+    public void configurable5() {
+        Misc.runSource("var o5 = {};",
+                "Object.defineProperty(o5, 'p', {configurable: false});",
+                "try{",
+                "   Object.defineProperty(o5, 'p', {configurable: false});", // same
+                "}catch(e){",
+                "   TAJS_assert(false);",
+                "}");
     }
 
     @Test
@@ -151,6 +207,30 @@ public class JSObject_defineProperty_test {
                 "Object.defineProperty(o, 'p', {set: function(v){x = v;}});",
                 "o.p = 42;",
                 "TAJS_assert(x === 42);",
+        }, monitor);
+    }
+
+    @Test
+    public void getter_setter() {
+        Misc.runSource(new String[]{
+                "var o = {};",
+                "var x;",
+                "Object.defineProperty(o, 'p', {get: function(){return 42;}, set: function(v){x = v;}});",
+                "o.p = 87;",
+                "TAJS_assertEquals(87, x);",
+                "TAJS_assertEquals(42, o.p);",
+        }, monitor);
+    }
+
+    @Test
+    public void setter_getter() {
+        Misc.runSource(new String[]{
+                "var o = {};",
+                "var x;",
+                "Object.defineProperty(o, 'p', {set: function(v){x = v;}, get: function(){return 42;}});",
+                "o.p = 87;",
+                "TAJS_assertEquals(87, x);",
+                "TAJS_assertEquals(42, o.p);",
         }, monitor);
     }
 }

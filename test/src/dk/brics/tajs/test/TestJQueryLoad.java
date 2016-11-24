@@ -92,7 +92,7 @@ public class TestJQueryLoad {
         Options.get().enableTest();
 
         // Each tests runs in less than 30 seconds on `Intel(R) Core(TM) i7-3520M CPU @ 2.90GHz`
-        analysisLimiter = new AnalysisTimeLimiter(1 * 60);
+        analysisLimiter = new AnalysisTimeLimiter(1 * 90);
 
         boolean showLineAnalysis = false; // for debugging
         if (showLineAnalysis) {

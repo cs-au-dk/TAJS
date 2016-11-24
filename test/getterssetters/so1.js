@@ -20,11 +20,11 @@ var name = new Name("foo", "bar");
 TAJS_dumpObject(name)
 TAJS_dumpObject(Name.prototype)
 TAJS_dumpValue(name)
-TAJS_assert(name.first === "foo");
-TAJS_assert(name.last === "bar");
+TAJS_assertEquals("foo", name.first);
+TAJS_assertEquals("bar", name.last);
 TAJS_dumpValue(name.fullName)
-TAJS_assert(name.fullName === "foo bar");
+TAJS_assertEquals("foo bar", name.fullName);
 name.fullName = "baz qux";
 TAJS_dumpObject(name)
-TAJS_assert(name.first === "baz");
-TAJS_assert(name.last === "qux");
+//TAJS_assertEquals("baz", name.first);
+//TAJS_assertEquals("qux", name.last);

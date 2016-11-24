@@ -64,7 +64,6 @@ public class HTMLLIElement {
          * Properties.
          */
         // DOM Level 1
-        createDOMProperty(INSTANCES, "type", Value.makeAnyStr(), c);
         createDOMProperty(INSTANCES, "value", Value.makeAnyNum(), c);
 
         s.multiplyObject(INSTANCES);

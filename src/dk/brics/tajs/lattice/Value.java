@@ -23,6 +23,7 @@ import dk.brics.tajs.util.AnalysisException;
 import dk.brics.tajs.util.Strings;
 
 import java.lang.ref.WeakReference;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Map;
 import java.util.Set;
@@ -1071,17 +1072,7 @@ public final class Value implements Undef, Null, Bool, Num, Str {
      * Constructs a value as the join of the given collection of values.
      */
     public static Value join(Value... values) {
-        Value r = null;
-        boolean first = true;
-        for (Value v : values)
-            if (first) {
-                r = new Value(v);
-                first = false;
-            } else
-                r.joinMutable(v);
-        if (r == null)
-            r = makeNone();
-        return canonicalize(r);
+        return join(Arrays.asList(values));
     }
 
     /**
@@ -1905,6 +1896,14 @@ public final class Value implements Undef, Null, Bool, Num, Str {
         return canonicalize(r);
     }
 
+    @Override
+    public Value restrictToNotBool() {
+        checkNotPolymorphicOrUnknown();
+        Value r = new Value(this);
+        r.flags &= ~BOOL;
+        return canonicalize(r);
+    }
+
     /**
      * Constructs the value representing any boolean.
      */
@@ -1997,6 +1996,12 @@ public final class Value implements Undef, Null, Bool, Num, Str {
     public boolean isMaybeAnyNum() {
         checkNotPolymorphicOrUnknown();
         return (flags & NUM) == NUM;
+    }
+
+    @Override
+    public boolean isMaybeAnyNumNotNaNInf() {
+        checkNotPolymorphicOrUnknown();
+        return (flags & NUM) == (NUM & ~NUM_INF & ~NUM_NAN);
     }
 
     @Override
@@ -2124,12 +2129,11 @@ public final class Value implements Undef, Null, Bool, Num, Str {
         return canonicalize(r);
     }
 
-    private static boolean checkUInt32(double v) {
-        return v >= 0 && v <= Integer.MAX_VALUE * 2.0 + 1 && (v % 1) == 0;
-    }
-
-    private static boolean isUInt32(double v) {
-        return !Double.isNaN(v) && !Double.isInfinite(v) && checkUInt32(v);
+    /**
+     * Checks whether the given number is a UInt32.
+     */
+    public static boolean isUInt32(double v) {
+        return !Double.isNaN(v) && !Double.isInfinite(v) && v >= 0 && v <= Integer.MAX_VALUE * 2.0 + 1 && (v % 1) == 0;
     }
 
     /**
@@ -2298,6 +2302,14 @@ public final class Value implements Undef, Null, Bool, Num, Str {
         Value r = new Value(this);
         r.flags &= ~NUM;
         r.num = null;
+        return canonicalize(r);
+    }
+
+    @Override
+    public Value restrictToNotNumUInt() {
+        checkNotPolymorphicOrUnknown();
+        Value r = new Value(this);
+        r.flags &= ~NUM_UINT;
         return canonicalize(r);
     }
 
@@ -2789,6 +2801,74 @@ public final class Value implements Undef, Null, Bool, Num, Str {
         r.flags &= ~STR;
         r.str = null;
         return canonicalize(r);
+    }
+
+    @Override
+    public Value restrictToNotStrIdentifierParts() {
+        checkNotPolymorphicOrUnknown();
+        Value r = new Value(this);
+        r.flags &= ~STR_IDENTIFIER;
+        r.flags &= ~STR_IDENTIFIERPARTS;
+        return canonicalize(r);
+    }
+
+    @Override
+    public Value restrictToNotStrPrefixedIdentifierParts() {
+        checkNotPolymorphicOrUnknown();
+        Value r = new Value(this);
+        if ((r.flags & STR_PREFIX) != 0) {
+            str = null;
+        }
+        r.flags &= ~STR_PREFIX;
+        return canonicalize(r);
+    }
+
+    @Override
+    public Value restrictToNotStrUInt() {
+        checkNotPolymorphicOrUnknown();
+        Value r = new Value(this);
+        r.flags &= ~STR_UINT;
+        return canonicalize(r);
+    }
+
+    @Override
+    public Value restrictToNotStrOtherNum() {
+        checkNotPolymorphicOrUnknown();
+        Value r = new Value(this);
+        r.flags &= ~STR_OTHERNUM;
+        return canonicalize(r);
+    }
+
+    @Override
+    public boolean isStrDisjoint(Str other) {
+        if (Options.get().isDebugOrTestEnabled()) {
+            if (isMaybeOtherThanStr() || other.isMaybeOtherThanStr()) {
+                throw new AnalysisException(String.format("Expects String-only values, got (%s, %s)", this, other));
+            }
+        }
+        return (this.mustOnlyBeIdentifierCharacters() && other.mustContainNonIdentifierCharacters()) ||
+                (this.mustContainNonIdentifierCharacters() && other.mustOnlyBeIdentifierCharacters()); // TODO: add more cases ...
+    }
+
+    @Override
+    public boolean isStrMayContainSubstring(Str other) {
+        if (Options.get().isDebugOrTestEnabled()) {
+            if (isMaybeOtherThanStr() || other.isMaybeOtherThanStr()) {
+                throw new AnalysisException(String.format("Expects String-only values, got (%s, %s)", this, other));
+            }
+        }
+        return !this.mustOnlyBeIdentifierCharacters() || !other.mustContainNonIdentifierCharacters(); // TODO: add more cases ...
+    }
+
+    @Override
+    public boolean mustContainNonIdentifierCharacters() {
+        return isMaybeSingleStr() && !Strings.isIdentifierParts(getStr()); // TODO: add more cases ...
+    }
+
+    @Override
+    public boolean mustOnlyBeIdentifierCharacters() {
+        return (isMaybeStrPrefixedIdentifierParts() && Strings.isIdentifierParts(getStr())) ||
+                (isStrIdentifierOrIdentifierParts()); // TODO: add more cases?
     }
 
     /* object labels */

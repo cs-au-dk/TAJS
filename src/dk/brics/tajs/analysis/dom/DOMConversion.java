@@ -58,30 +58,6 @@ public class DOMConversion {
     }
 
     /**
-     * Converts the given value to an EventHandler value.
-     */
-    public static Value toEventHandler(Value value, Solver.SolverInterface c) {
-        final String message = "TypeError, non-function event handler";
-        Set<ObjectLabel> result = Collections.newSet();
-
-        boolean maybeNonFunction = value.isMaybePrimitive();
-
-        for (ObjectLabel objectLabel : value.getObjectLabels()) {
-            if (objectLabel.getKind() == ObjectLabel.Kind.FUNCTION) {
-                result.add(objectLabel);
-            } else {
-                maybeNonFunction = true;
-            }
-        }
-
-        if (maybeNonFunction) {
-            c.getMonitoring().addMessage(c.getNode(), Message.Severity.HIGH, message);
-        }
-
-        return Value.makeObject(result);
-    }
-
-    /**
      * Converts the given value to the given NativeObject (optionally following
      * the prototype chains).
      *

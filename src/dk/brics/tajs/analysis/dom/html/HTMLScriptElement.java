@@ -70,7 +70,7 @@ public class HTMLScriptElement {
         createDOMProperty(INSTANCES, "charset", Value.makeAnyStr(), c);
         createDOMProperty(INSTANCES, "defer", Value.makeAnyBool(), c);
         createDOMProperty(INSTANCES, "src", Value.makeAnyStr(), c);
-        createDOMProperty(INSTANCES, "type", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "type", Value.makeAnyStr().restrictToNotStrIdentifierParts() /* mime-type */, c);
 
         s.multiplyObject(INSTANCES);
         INSTANCES = INSTANCES.makeSingleton().makeSummary();

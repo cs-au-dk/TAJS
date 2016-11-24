@@ -1,2 +1,2 @@
 test/sunspider/bitops-bitwise-and.js:35:26: [maybe] Converting object to number
-test/sunspider/bitops-bitwise-and.js:37:1: [info] Abstract value: UInt
+test/sunspider/bitops-bitwise-and.js:37:1: [info] Abstract value: UInt|NotUInt

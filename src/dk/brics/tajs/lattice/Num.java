@@ -92,6 +92,11 @@ public interface Num {
     boolean isMaybeOtherThanNumUInt();
 
     /**
+     * Returns true if this value is maybe any number but not NaN or infinite.
+     */
+    boolean isMaybeAnyNumNotNaNInf();
+
+    /**
      * Constructs a value as the join of this value and any number.
      */
     Value joinAnyNum();
@@ -135,4 +140,9 @@ public interface Num {
      * Constructs a value from this value but definitely not a number.
      */
     Value restrictToNotNum();
+
+    /**
+     * Constructs a value from this value but definitely not a UInt number.
+     */
+    Value restrictToNotNumUInt();
 }

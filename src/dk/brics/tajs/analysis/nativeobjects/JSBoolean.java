@@ -17,6 +17,7 @@
 package dk.brics.tajs.analysis.nativeobjects;
 
 import dk.brics.tajs.analysis.Conversion;
+import dk.brics.tajs.analysis.Exceptions;
 import dk.brics.tajs.analysis.FunctionCalls.CallInfo;
 import dk.brics.tajs.analysis.InitialStateBuilder;
 import dk.brics.tajs.analysis.NativeFunctions;
@@ -26,6 +27,8 @@ import dk.brics.tajs.lattice.ObjectLabel.Kind;
 import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.UnknownValueResolver;
 import dk.brics.tajs.lattice.Value;
+
+import static dk.brics.tajs.util.Collections.singleton;
 
 /**
  * 15.6 native Boolean functions.
@@ -47,7 +50,6 @@ public class JSBoolean {
         switch (nativeobject) {
 
             case BOOLEAN: {
-                NativeFunctions.expectParameters(nativeobject, call, c, 0, 1);
                 Value b = Conversion.toBoolean(NativeFunctions.readParameter(call, state, 0));
                 if (call.isConstructorCall()) { // 15.6.2
                     ObjectLabel objlabel = new ObjectLabel(call.getSourceNode(), Kind.BOOLEAN);
@@ -60,25 +62,10 @@ public class JSBoolean {
             }
 
             case BOOLEAN_TOSTRING: { // 15.6.4.2
-                NativeFunctions.expectParameters(nativeobject, call, c, 0, 0);
-                if (NativeFunctions.throwTypeErrorIfWrongKindOfThis(nativeobject, call, state, c, Kind.BOOLEAN))
-                    return Value.makeNone();
-                Value val = state.readInternalValue(state.readThisObjects());
-                val = UnknownValueResolver.getRealValue(val, c.getState());
-
-                Value result = Value.makeNone();
-                if (val.isMaybeTrue()) {
-                    result = result.joinStr("true");
-                }
-                if (val.isMaybeFalse()) {
-                    result = result.joinStr("false");
-                }
-                // TODO: treat {"true","false"} specially in Value?
-                return result;
+                return state.readThisObjectsCoerced((l) -> evaluateToString(l, c));
             }
 
             case BOOLEAN_VALUEOF: { // 15.6.4.3
-                NativeFunctions.expectParameters(nativeobject, call, c, 0, 0);
                 if (NativeFunctions.throwTypeErrorIfWrongKindOfThis(nativeobject, call, state, c, Kind.BOOLEAN))
                     return Value.makeNone();
                 return state.readInternalValue(state.readThisObjects());
@@ -87,5 +74,22 @@ public class JSBoolean {
             default:
                 return null;
         }
+    }
+
+    public static Value evaluateToString(ObjectLabel thiss, Solver.SolverInterface c) {
+        // 15.6.4.2 Boolean.prototype.toString ( )
+        // If this boolean value is true, then the string "true" is returned. Otherwise, this boolean value must be false, and
+        // the string "false" is returned.
+        if (thiss.getKind() != Kind.BOOLEAN) {
+            Exceptions.throwTypeError(c);
+            return Value.makeNone();
+        }
+        Value v = c.getState().readInternalValue(singleton(thiss));
+        v = UnknownValueResolver.getRealValue(v, c.getState());
+        if (v.isMaybeTrueButNotFalse())
+            return Value.makeStr("true");
+        else if (v.isMaybeFalseButNotTrue())
+            return Value.makeStr("false");
+        return Value.makeAnyStr();
     }
 }

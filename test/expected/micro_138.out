@@ -16,6 +16,7 @@ test/micro/test138.js:18:1: [info] Abstract state (modified parts):
     [[Value]] = NaN
   @make#fun1 (test/micro/test138.js:1:1):
     length: 0.0
+    name: "make"
     prototype: [@Object#node1]
     [[Prototype]] = [@Function.prototype[native]]
   *Object#node40 (test/micro/test138.js:2:9):

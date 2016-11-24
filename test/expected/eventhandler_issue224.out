@@ -1,0 +1,2 @@
+test/micro/eventhandler_issue224.html:4:9: [info] Abstract value: "OK: element"
+test/micro/eventhandler_issue224.html:8:14: [info] Abstract value: "OK: attribute"

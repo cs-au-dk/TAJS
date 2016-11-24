@@ -67,7 +67,7 @@ public class HTMLSelectElement {
          * Properties.
          */
         // DOM Level 1
-        createDOMProperty(INSTANCES, "type", Value.makeAnyStr().setReadOnly(), c);
+        createDOMProperty(INSTANCES, "type", Value.makeStr("select-one").joinStr("select-multiple").setReadOnly(), c);
         createDOMProperty(INSTANCES, "selectedIndex", Value.makeAnyNum(), c);
         createDOMProperty(INSTANCES, "value", Value.makeAnyStr(), c);
         createDOMProperty(INSTANCES, "form", Value.makeObject(HTMLFormElement.INSTANCES).setReadOnly(), c);

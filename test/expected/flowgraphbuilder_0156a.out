@@ -14,7 +14,7 @@ fg2: <main> function()
     node 7: construct[-,v3,v4,v5,v6,v2] (test/flowgraphbuilder/flowgraph_builder0156a.js:13:11)
     ->[block 3]
   block 3:
-    node 8: write-variable[v2,'cs1']* (test/flowgraphbuilder/flowgraph_builder0156a.js:13:11)
+    node 8: write-variable[v2,'cs1']* (test/flowgraphbuilder/flowgraph_builder0156a.js:13:5)
     node 9: read-variable['cs1',v8,-] (test/flowgraphbuilder/flowgraph_builder0156a.js:14:1)
     node 10: read-property[v8,'startSlide',-] (test/flowgraphbuilder/flowgraph_builder0156a.js:14:1)
     node 11: <variable-non-null-undef>['cs1'] (test/flowgraphbuilder/flowgraph_builder0156a.js:14:1)
@@ -172,7 +172,7 @@ fg2: <main> function()
     node 7: construct[-,v3,v4,v5,v6,v2] (test/flowgraphbuilder/flowgraph_builder0156a.js:13:11)
     ->[block 3]
   block 3:
-    node 8: write-variable[v2,'cs1']* (test/flowgraphbuilder/flowgraph_builder0156a.js:13:11)
+    node 8: write-variable[v2,'cs1']* (test/flowgraphbuilder/flowgraph_builder0156a.js:13:5)
     node 9: read-variable['cs1',v8,-] (test/flowgraphbuilder/flowgraph_builder0156a.js:14:1)
     node 10: read-property[v8,'startSlide',-] (test/flowgraphbuilder/flowgraph_builder0156a.js:14:1)
     node 11: <variable-non-null-undef>['cs1'] (test/flowgraphbuilder/flowgraph_builder0156a.js:14:1)
@@ -352,7 +352,7 @@ fg2: <main> function()
     node 7: construct[-,v3,v4,v5,v6,v2] (test/flowgraphbuilder/flowgraph_builder0156a.js:13:11)
     ->[block 3]
   block 3:
-    node 8: write-variable[v2,'cs1']* (test/flowgraphbuilder/flowgraph_builder0156a.js:13:11)
+    node 8: write-variable[v2,'cs1']* (test/flowgraphbuilder/flowgraph_builder0156a.js:13:5)
     node 9: read-variable['cs1',v8,-] (test/flowgraphbuilder/flowgraph_builder0156a.js:14:1)
     node 10: read-property[v8,'startSlide',-] (test/flowgraphbuilder/flowgraph_builder0156a.js:14:1)
     node 11: <variable-non-null-undef>['cs1'] (test/flowgraphbuilder/flowgraph_builder0156a.js:14:1)
@@ -547,7 +547,6 @@ function()
     node 91: exceptional-return (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0156a.js:4:23):1:1)
     ->[]
 
-TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0156a.js:8:16):1:24: [definite] TypeError, accessing property of null/undefined
 test/flowgraphbuilder/flowgraph_builder0156a.js:2:14: [definite] The conditional expression is always true
 TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0156a.js:8:16):1:24: [definite] Reading absent property c
 test/flowgraphbuilder/flowgraph_builder0156a.js:4:9: [definite] Dead assignment, property intrvl is never read
@@ -558,4 +557,5 @@ test/flowgraphbuilder/flowgraph_builder0156a.js:1:1: [definite] The variable n i
 test/flowgraphbuilder/flowgraph_builder0156a.js:5:9: [definite] Unreachable code
 test/flowgraphbuilder/flowgraph_builder0156a.js:7:18: [definite] The variable d is never used
 test/flowgraphbuilder/flowgraph_builder0156a.js:15:1: [definite] Unreachable code
+TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0156a.js:8:16):1:24: [maybe] TypeError, accessing property of null/undefined
 test/flowgraphbuilder/flowgraph_builder0156a.js: [maybe] Uncaught exception, constructed at [TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0156a.js:8:16):1:24]

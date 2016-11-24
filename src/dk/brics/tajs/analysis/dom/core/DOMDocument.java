@@ -26,6 +26,7 @@ import dk.brics.tajs.analysis.dom.DOMFunctions;
 import dk.brics.tajs.analysis.dom.DOMObjects;
 import dk.brics.tajs.analysis.dom.DOMRegistry;
 import dk.brics.tajs.analysis.dom.DOMWindow;
+import dk.brics.tajs.analysis.dom.html.HTMLCollection;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.ObjectLabel.Kind;
 import dk.brics.tajs.lattice.State;
@@ -94,6 +95,7 @@ public class DOMDocument {
         createDOMProperty(INSTANCES, "strictErrorChecking", Value.makeAnyBool(), c);
         createDOMProperty(INSTANCES, "documentURI", Value.makeAnyStr(), c);
         createDOMProperty(INSTANCES, "domConfig", Value.makeObject(DOMConfiguration.INSTANCES), c);
+        createDOMProperty(INSTANCES, "compatMode", Value.makeAnyStr(), c);
 
         // Summarize:
         // NB: The objectlabel is summarized in HTMLBuilder, because a property is added to it there.
@@ -219,7 +221,7 @@ public class DOMDocument {
                 if (id.isMaybeSingleStr()) {
                     Set<ObjectLabel> labels = s.getExtras().getFromMayMap(DOMRegistry.MayMaps.ELEMENTS_BY_ID.name(), id.getStr());
                     if (!labels.isEmpty()) {
-                        return Value.makeObject(labels);
+                        return Value.makeObject(labels).joinNull();
                     }
                     return DOMFunctions.makeAnyHTMLElement().joinNull();
                 }
@@ -227,17 +229,8 @@ public class DOMDocument {
             }
             case DOCUMENT_GET_ELEMENTS_BY_TAGNAME: {
                 NativeFunctions.expectParameters(nativeobject, call, c, 1, 1);
-                Value tagname = Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
-                if (tagname.isMaybeSingleStr() && (!"*".equals(tagname.getStr()))) {
-                    Set<ObjectLabel> labels = s.getExtras().getFromMayMap(DOMRegistry.MayMaps.ELEMENTS_BY_TAGNAME.name(), tagname.getStr());
-                    Value v = Value.makeObject(labels);
-                    ObjectLabel nodeList = DOMFunctions.makeEmptyNodeList();
-                    if (!labels.isEmpty()) {
-                        c.getAnalysis().getPropVarOperations().writeProperty(Collections.singleton(nodeList), Value.makeAnyStrUInt(), v, false, true);
-                    }
-                    return Value.makeObject(nodeList);
-                }
-                return DOMFunctions.makeAnyHTMLNodeList(c);
+                Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
+                return Value.makeObject(HTMLCollection.INSTANCES);
             }
             case DOCUMENT_RENAME_NODE: {
                 NativeFunctions.expectParameters(nativeobject, call, c, 1, 3);

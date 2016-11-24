@@ -12,6 +12,7 @@ public class JSString_splitTest {
     @Before
     public void init() {
         Main.reset();
+        Main.initLogging();
         Options.get().enableTest();
     }
 

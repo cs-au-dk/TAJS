@@ -33,6 +33,11 @@ public interface IAnalysis<StateType extends IState<StateType, ContextType, Call
     IAnalysisLatticeElement<StateType, ContextType, CallEdgeType> makeAnalysisLattice(FlowGraph fg);
 
     /**
+     * Initializes the context sensitivity heuristics.
+     */
+    void initContextSensitivity(FlowGraph fg);
+
+    /**
      * Returns the initial state builder.
      */
     IInitialStateBuilder<StateType, ContextType, CallEdgeType, MonitoringType, AnalysisType> getInitialStateBuilder();

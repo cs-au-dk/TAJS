@@ -3,7 +3,7 @@ test/sunspider/access-binary-trees.js:17:28: [maybe] TypeError, accessing proper
 test/sunspider/access-binary-trees.js:17:52: [maybe] TypeError, accessing property of null/undefined
 test/sunspider/access-binary-trees.js: [maybe] Uncaught exception, constructed at [test/sunspider/access-binary-trees.js:17:28, test/sunspider/access-binary-trees.js:17:52]
 test/sunspider/access-binary-trees.js:57:26: [maybe] Converting object to number
-test/sunspider/access-binary-trees.js:59:1: [info] Abstract value: UInt
+test/sunspider/access-binary-trees.js:59:1: [info] Abstract value: UInt|NotUInt
 test/sunspider/access-binary-trees.js:16:8: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/sunspider/access-binary-trees.js:16:32: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/sunspider/access-binary-trees.js:17:16: [info] 'this' refers to multiple abstract objects, which may cause loss of precision

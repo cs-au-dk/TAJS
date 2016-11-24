@@ -4,13 +4,17 @@ import dk.brics.tajs.Main;
 import dk.brics.tajs.monitoring.CompositeMonitoring;
 import dk.brics.tajs.monitoring.IAnalysisMonitoring;
 import dk.brics.tajs.monitoring.Monitoring;
+import dk.brics.tajs.monitoring.OrdinaryExitReachableChecker;
 import dk.brics.tajs.options.Options;
-import dk.brics.tajs.test.monitors.OrdinaryExitReachableCheckerMonitor;
-import dk.brics.tajs.util.AnalysisException;
 import dk.brics.tajs.util.AnalysisLimitationException;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @SuppressWarnings("static-method")
 public class TestUneval {
@@ -28,7 +32,7 @@ public class TestUneval {
         Options.get().enableUnevalizer();
 		Options.get().enableContextSensitiveHeap();
 		Options.get().enableParameterSensitivity();
-        monitoring = CompositeMonitoring.buildFromList(new Monitoring(), new OrdinaryExitReachableCheckerMonitor());
+        monitoring = CompositeMonitoring.buildFromList(new Monitoring(), new OrdinaryExitReachableChecker());
     }
 
 	@Test
@@ -148,7 +152,7 @@ public class TestUneval {
         Misc.checkSystemOutput();
 	}
 
-    @Test(expected = AnalysisException.class /* GitHub #248 */)
+    @Test
     public void uneval_13() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
@@ -283,7 +287,7 @@ public class TestUneval {
         Misc.checkSystemOutput();
     }
 
-    @Test(expected = AnalysisException.class /* GitHub #248 */)
+    @Test(expected = AnalysisLimitationException.class /* Imprecise eval */)
     public void uneval_26() throws Exception {
         Misc.init();
         Misc.captureSystemOutput();
@@ -599,7 +603,7 @@ public class TestUneval {
                 monitoring);
     }
 
-    @Test(expected = AnalysisLimitationException.class /* attempting to parse 'TAJS_TEMPORARY_11;}'*/)
+    @Test
     public void uneval_syntaxParts() throws Exception {
         Misc.init();
         Misc.runSource(
@@ -613,5 +617,178 @@ public class TestUneval {
                         "f();"
                 },
                 monitoring);
+    }
+
+    @Test(expected = AnalysisLimitationException.class)
+    public void uneval_newFunction_nonString1() throws Exception {
+        Misc.init();
+        Misc.runSource(
+                new String[]{"var f = new Function(42);",
+                },
+                monitoring);
+    }
+
+    @Test(expected = AnalysisLimitationException.class)
+    public void uneval_newFunction_nonString2() throws Exception {
+        Misc.init();
+        Misc.runSource(
+                new String[]{"var f = new Function('', 42);",
+                },
+                monitoring);
+    }
+
+    @Test(expected = AnalysisLimitationException.class)
+    public void impreciseFunctionConstructor() {
+        Misc.init();
+        Misc.runSource(
+                new String[]{
+                        "var x = Math.random()? 'a': 'b'",
+                        "Function(x)();"
+                },
+                new CompositeMonitoring(new Monitoring(), new OrdinaryExitReachableChecker()));
+    }
+
+    @Test
+    public void impreciseFunctionConstructor_ignored() {
+        Misc.init();
+        Options.get().enableUnsound();
+        Misc.runSource(
+                new String[]{
+                        "var x = Math.random()? 'this': 'toString'",
+                        "TAJS_assert(Function(x)() === undefined);"
+                },
+                new CompositeMonitoring(new Monitoring(), new OrdinaryExitReachableChecker()));
+    }
+
+    @Test(expected = AnalysisLimitationException.class /* Imprecise eval, but not an internal crash */)
+    public void uneval_missing_entry_block() throws Exception {
+        Misc.init();
+        Options.get().enableIncludeDom();
+        String[] args = {"test/uneval/uneval_missing_entry_block.js"};
+        Misc.run(args, monitoring);
+    }
+
+    @Test
+    public void freeBreakStatement() {
+        Misc.init();
+        Misc.runSource(
+                new String[]{
+                        "var exception = false;",
+                        "try {",
+                        "   eval('break');",
+                        "} catch (e) {",
+                        "   exception = true;",
+                        "}",
+                        "TAJS_assert(exception);"
+                },
+                new CompositeMonitoring(new Monitoring(), new OrdinaryExitReachableChecker()));
+    }
+
+    @Test
+    public void freeContinueStatement() {
+        Misc.init();
+        Misc.runSource(
+                new String[]{
+                        "var exception = false;",
+                        "try {",
+                        "   eval('continue');",
+                        "} catch (e) {",
+                        "   exception = true;",
+                        "}",
+                        "TAJS_assert(exception);"},
+                new CompositeMonitoring(new Monitoring(), new OrdinaryExitReachableChecker()));
+    }
+
+    @Test
+    public void implicictlyBoundBreakStatement() {
+        Misc.init();
+        Misc.runSource(
+                new String[]{
+                        "var exception = false;",
+                        "try {",
+                        "   while(Math.random())eval('break');",
+                        "} catch (e) {",
+                        "   exception = true;",
+                        "}",
+                        "TAJS_assert(exception, 'isMaybeAnyBool');"},
+                new CompositeMonitoring(new Monitoring(), new OrdinaryExitReachableChecker()));
+    }
+
+    @Test
+    public void implicitlyBoundContinueStatement() {
+        Misc.init();
+        Misc.runSource(
+                new String[]{
+                        "var exception = false;",
+                        "try {",
+                        "   while(Math.random())eval('continue');",
+                        "} catch (e) {",
+                        "   exception = true;",
+                        "}",
+                        "TAJS_assert(exception, 'isMaybeAnyBool');"},
+                new CompositeMonitoring(new Monitoring(), new OrdinaryExitReachableChecker()));
+    }
+
+    @Test
+    public void boundBreakStatement() {
+        Misc.init();
+        Misc.runSource(
+                new String[]{
+                        "eval('while(Math.random())break');"
+                },
+                new CompositeMonitoring(new Monitoring(), new OrdinaryExitReachableChecker()));
+    }
+
+    @Test
+    public void boundContinueStatement() {
+        Misc.init();
+        Misc.runSource(
+                new String[]{
+                        "eval('while(Math.random())continue');"
+                },
+                new CompositeMonitoring(new Monitoring(), new OrdinaryExitReachableChecker()));
+    }
+
+    @Test
+    public void characterEncodings() {
+        List<String> rnCharsList = Arrays.asList(new String[]{
+                "foo" + new Character((char) 0xD) + new Character((char) 0xA) + "bar",
+                "foo\r\nbar",
+                "foo\nbar"
+        });
+        rnCharsList.stream().forEach(rnChars -> {
+            Pattern p = Pattern.compile("\\R");
+            Matcher matcher = p.matcher(rnChars);
+            String replaced = matcher.replaceAll("X");
+            Assert.assertEquals("fooXbar", replaced);
+        });
+    }
+
+    @Test
+    public void eval_escapes() {
+        Misc.init();
+        Misc.runSource(
+                new String[]{
+                        "eval('\"use strict\";');"
+                },
+                new CompositeMonitoring(new Monitoring(), new OrdinaryExitReachableChecker()));
+    }
+
+    @Test
+    public void eval_escapes_2() {
+        Misc.init();
+        Misc.runSource(
+                new String[]{
+                        "eval('\"use strict\"; var x = \"\\\\\" + \"1\";');"
+                });
+    }
+
+    @Test
+    public void eval_escapes_3() {
+        Misc.init();
+        Misc.runSource(
+                new String[]{
+                        "eval('var x = \"\\\\\" + \"1\";');"
+                });
     }
 }

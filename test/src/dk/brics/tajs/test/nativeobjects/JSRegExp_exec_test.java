@@ -12,6 +12,7 @@ public class JSRegExp_exec_test {
 	@Before
     public void before() {
         Main.reset();
+        Main.initLogging();
         Options.get().enableTest();
     }
 

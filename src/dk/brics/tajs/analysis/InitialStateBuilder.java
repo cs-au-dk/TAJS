@@ -17,11 +17,8 @@
 package dk.brics.tajs.analysis;
 
 import dk.brics.tajs.analysis.dom.DOMBuilder;
-import dk.brics.tajs.analysis.dom.DOMEvents;
 import dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects;
 import dk.brics.tajs.flowgraph.BasicBlock;
-import dk.brics.tajs.flowgraph.EventHandlerKind;
-import dk.brics.tajs.flowgraph.Function;
 import dk.brics.tajs.lattice.CallEdge;
 import dk.brics.tajs.lattice.Context;
 import dk.brics.tajs.lattice.ExecutionContext;
@@ -34,12 +31,8 @@ import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.monitoring.IAnalysisMonitoring;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.solver.IInitialStateBuilder;
-import dk.brics.tajs.util.AnalysisException;
 import dk.brics.tajs.util.Collections;
 import net.htmlparser.jericho.Source;
-
-import java.util.Collection;
-import java.util.Map.Entry;
 
 import static dk.brics.tajs.util.Collections.singleton;
 
@@ -51,47 +44,47 @@ public class InitialStateBuilder implements IInitialStateBuilder<State, Context,
     /**
      * Object label for the global object.
      */
-    public static final ObjectLabel GLOBAL = new ObjectLabel(ECMAScriptObjects.GLOBAL, Kind.OBJECT);
+    public static ObjectLabel GLOBAL;
 
     /**
      * Object label for Object.prototype.
      */
-    public static final ObjectLabel OBJECT_PROTOTYPE = new ObjectLabel(ECMAScriptObjects.OBJECT_PROTOTYPE, Kind.OBJECT);
+    public static ObjectLabel OBJECT_PROTOTYPE;
 
     /**
      * Object label for Function.prototype.
      */
-    public static final ObjectLabel FUNCTION_PROTOTYPE = new ObjectLabel(ECMAScriptObjects.FUNCTION_PROTOTYPE, Kind.FUNCTION);
+    public static ObjectLabel FUNCTION_PROTOTYPE;
 
     /**
      * Object label for Array.prototype.
      */
-    public static final ObjectLabel ARRAY_PROTOTYPE = new ObjectLabel(ECMAScriptObjects.ARRAY_PROTOTYPE, Kind.ARRAY);
+    public static ObjectLabel ARRAY_PROTOTYPE;
 
     /**
      * Object label for String.prototype.
      */
-    public static final ObjectLabel STRING_PROTOTYPE = new ObjectLabel(ECMAScriptObjects.STRING_PROTOTYPE, Kind.STRING);
+    public static ObjectLabel STRING_PROTOTYPE;
 
     /**
      * Object label for Boolean.prototype.
      */
-    public static final ObjectLabel BOOLEAN_PROTOTYPE = new ObjectLabel(ECMAScriptObjects.BOOLEAN_PROTOTYPE, Kind.BOOLEAN);
+    public static ObjectLabel BOOLEAN_PROTOTYPE;
 
     /**
      * Object label for Number.prototype.
      */
-    public static final ObjectLabel NUMBER_PROTOTYPE = new ObjectLabel(ECMAScriptObjects.NUMBER_PROTOTYPE, Kind.NUMBER);
+    public static ObjectLabel NUMBER_PROTOTYPE;
 
     /**
      * Object label for Date.prototype.
      */
-    public static final ObjectLabel DATE_PROTOTYPE = new ObjectLabel(ECMAScriptObjects.DATE_PROTOTYPE, Kind.DATE);
+    public static ObjectLabel DATE_PROTOTYPE;
 
     /**
      * Object label for RegExp.prototype.
      */
-    public static final ObjectLabel REGEXP_PROTOTYPE = new ObjectLabel(ECMAScriptObjects.REGEXP_PROTOTYPE, Kind.OBJECT);
+    public static ObjectLabel REGEXP_PROTOTYPE;
     /* From ES5, Annex D:
      RegExp.prototype is now a RegExp object rather than an instance of Object. The value of its [[Class]] internal 
      property which is observable using Object.prototype.toString is now 'RegExp' rather than 'Object'.
@@ -100,42 +93,68 @@ public class InitialStateBuilder implements IInitialStateBuilder<State, Context,
     /**
      * Object label for Error.prototype.
      */
-    public static final ObjectLabel ERROR_PROTOTYPE = new ObjectLabel(ECMAScriptObjects.ERROR_PROTOTYPE, Kind.ERROR);
+    public static ObjectLabel ERROR_PROTOTYPE;
 
     /**
      * Object label for EvalError.prototype.
      */
-    public static final ObjectLabel EVAL_ERROR_PROTOTYPE = new ObjectLabel(ECMAScriptObjects.EVAL_ERROR_PROTOTYPE, Kind.ERROR);
+    public static ObjectLabel EVAL_ERROR_PROTOTYPE;
 
     /**
      * Object label for RangeError.prototype.
      */
-    public static final ObjectLabel RANGE_ERROR_PROTOTYPE = new ObjectLabel(ECMAScriptObjects.RANGE_ERROR_PROTOTYPE, Kind.ERROR);
+    public static ObjectLabel RANGE_ERROR_PROTOTYPE;
 
     /**
      * Object label for ReferenceError.prototype.
      */
-    public static final ObjectLabel REFERENCE_ERROR_PROTOTYPE = new ObjectLabel(ECMAScriptObjects.REFERENCE_ERROR_PROTOTYPE, Kind.ERROR);
+    public static ObjectLabel REFERENCE_ERROR_PROTOTYPE;
 
     /**
      * Object label for SyntaxError.prototype.
      */
-    public static final ObjectLabel SYNTAX_ERROR_PROTOTYPE = new ObjectLabel(ECMAScriptObjects.SYNTAX_ERROR_PROTOTYPE, Kind.ERROR);
+    public static ObjectLabel SYNTAX_ERROR_PROTOTYPE;
 
     /**
      * Object label for TypeError.prototype.
      */
-    public static final ObjectLabel TYPE_ERROR_PROTOTYPE = new ObjectLabel(ECMAScriptObjects.TYPE_ERROR_PROTOTYPE, Kind.ERROR);
+    public static ObjectLabel TYPE_ERROR_PROTOTYPE;
 
     /**
      * Object label for URIError.prototype.
      */
-    public static final ObjectLabel URI_ERROR_PROTOTYPE = new ObjectLabel(ECMAScriptObjects.URI_ERROR_PROTOTYPE, Kind.ERROR);
+    public static ObjectLabel URI_ERROR_PROTOTYPE;
+
+    /**
+     * Object label for JSON object
+     */
+    public static ObjectLabel JSON_OBJECT;
 
     /**
      * Constructs a new InitialStateBuilder object.
      */
     public InitialStateBuilder() {
+        init();
+    }
+
+    private static void init() {
+        GLOBAL = new ObjectLabel(ECMAScriptObjects.GLOBAL, Kind.OBJECT);
+        OBJECT_PROTOTYPE = new ObjectLabel(ECMAScriptObjects.OBJECT_PROTOTYPE, Kind.OBJECT);
+        FUNCTION_PROTOTYPE = new ObjectLabel(ECMAScriptObjects.FUNCTION_PROTOTYPE, Kind.FUNCTION);
+        ARRAY_PROTOTYPE = new ObjectLabel(ECMAScriptObjects.ARRAY_PROTOTYPE, Kind.ARRAY);
+        STRING_PROTOTYPE = new ObjectLabel(ECMAScriptObjects.STRING_PROTOTYPE, Kind.STRING); // FIXME: as of ES6, String.prototype is an ordinary object, not a string object -- but not yet supported by Chrome...
+        BOOLEAN_PROTOTYPE = new ObjectLabel(ECMAScriptObjects.BOOLEAN_PROTOTYPE, Kind.BOOLEAN);
+        NUMBER_PROTOTYPE = new ObjectLabel(ECMAScriptObjects.NUMBER_PROTOTYPE, Kind.NUMBER);
+        DATE_PROTOTYPE = new ObjectLabel(ECMAScriptObjects.DATE_PROTOTYPE, Kind.DATE);
+        REGEXP_PROTOTYPE = new ObjectLabel(ECMAScriptObjects.REGEXP_PROTOTYPE, Kind.OBJECT);
+        ERROR_PROTOTYPE = new ObjectLabel(ECMAScriptObjects.ERROR_PROTOTYPE, Kind.ERROR);
+        EVAL_ERROR_PROTOTYPE = new ObjectLabel(ECMAScriptObjects.EVAL_ERROR_PROTOTYPE, Kind.ERROR);
+        RANGE_ERROR_PROTOTYPE = new ObjectLabel(ECMAScriptObjects.RANGE_ERROR_PROTOTYPE, Kind.ERROR);
+        REFERENCE_ERROR_PROTOTYPE = new ObjectLabel(ECMAScriptObjects.REFERENCE_ERROR_PROTOTYPE, Kind.ERROR);
+        SYNTAX_ERROR_PROTOTYPE = new ObjectLabel(ECMAScriptObjects.SYNTAX_ERROR_PROTOTYPE, Kind.ERROR);
+        TYPE_ERROR_PROTOTYPE = new ObjectLabel(ECMAScriptObjects.TYPE_ERROR_PROTOTYPE, Kind.ERROR);
+        URI_ERROR_PROTOTYPE = new ObjectLabel(ECMAScriptObjects.URI_ERROR_PROTOTYPE, Kind.ERROR);
+        JSON_OBJECT = new ObjectLabel(ECMAScriptObjects.JSON, Kind.OBJECT);
     }
 
     /**
@@ -184,7 +203,7 @@ public class InitialStateBuilder implements IInitialStateBuilder<State, Context,
         ObjectLabel lMath = new ObjectLabel(ECMAScriptObjects.MATH, Kind.MATH);
         s.newObject(lMath);
 
-        ObjectLabel lJson = new ObjectLabel(ECMAScriptObjects.JSON, Kind.OBJECT);
+        ObjectLabel lJson = JSON_OBJECT;
         s.newObject(lJson);
 
         ObjectLabel lObjectPrototype = OBJECT_PROTOTYPE;
@@ -298,7 +317,6 @@ public class InitialStateBuilder implements IInitialStateBuilder<State, Context,
         createPrimitiveFunction(lFunProto, lFunProto, ECMAScriptObjects.FUNCTION_TOSTRING, "toString", 0, c);
         createPrimitiveFunction(lFunProto, lFunProto, ECMAScriptObjects.FUNCTION_APPLY, "apply", 2, c);
         createPrimitiveFunction(lFunProto, lFunProto, ECMAScriptObjects.FUNCTION_CALL, "call", 1, c);
-        createPrimitiveFunction(lFunProto, lFunProto, ECMAScriptObjects.FUNCTION_BIND, "bind", 1, c);
         // TODO pv.writePropertyWithAttributes(lFunction, "prototype", Value.makeObject(EMPTY).setAttributes(false, false, false);
 
         // 15.4.3.2 properties of the Array constructor
@@ -317,7 +335,6 @@ public class InitialStateBuilder implements IInitialStateBuilder<State, Context,
         createPrimitiveFunction(lArrayProto, lFunProto, ECMAScriptObjects.ARRAY_REVERSE, "reverse", 0, c);
         createPrimitiveFunction(lArrayProto, lFunProto, ECMAScriptObjects.ARRAY_SHIFT, "shift", 0, c);
         createPrimitiveFunction(lArrayProto, lFunProto, ECMAScriptObjects.ARRAY_SLICE, "slice", 2, c);
-        createPrimitiveFunction(lArrayProto, lFunProto, ECMAScriptObjects.ARRAY_SOME, "some", 1, c);
         createPrimitiveFunction(lArrayProto, lFunProto, ECMAScriptObjects.ARRAY_SORT, "sort", 1, c);
         createPrimitiveFunction(lArrayProto, lFunProto, ECMAScriptObjects.ARRAY_SPLICE, "splice", 2, c);
         createPrimitiveFunction(lArrayProto, lFunProto, ECMAScriptObjects.ARRAY_UNSHIFT, "unshift", 1, c);
@@ -328,8 +345,9 @@ public class InitialStateBuilder implements IInitialStateBuilder<State, Context,
 
         // 15.5.4 properties of the String prototype object
         s.writeInternalPrototype(lStringProto, Value.makeObject(lObjectPrototype));
+        pv.writePropertyWithAttributes(lStringProto, "length", Value.makeNum(0).setAttributes(true, true, false));  // FIXME: remove this line if switching to ES6 mode (see comment where STRING_PROTOTYPE is created)
+        s.writeInternalValue(lStringProto, Value.makeStr("")); // FIXME: remove this line if switching to ES6 mode (see comment where STRING_PROTOTYPE is created)
         pv.writePropertyWithAttributes(lStringProto, "constructor", Value.makeObject(lString).setAttributes(true, false, false));
-        s.writeInternalValue(lStringProto, Value.makeStr(""));
 
         createPrimitiveFunction(lStringProto, lFunProto, ECMAScriptObjects.STRING_TOSTRING, "toString", 0, c);
         createPrimitiveFunction(lStringProto, lFunProto, ECMAScriptObjects.STRING_VALUEOF, "valueOf", 0, c);
@@ -350,7 +368,6 @@ public class InitialStateBuilder implements IInitialStateBuilder<State, Context,
         createPrimitiveFunction(lStringProto, lFunProto, ECMAScriptObjects.STRING_TOUPPERCASE, "toUpperCase", 0, c);
         createPrimitiveFunction(lStringProto, lFunProto, ECMAScriptObjects.STRING_TOLOCALEUPPERCASE, "toLocaleUpperCase", 0, c);
         createPrimitiveFunction(lStringProto, lFunProto, ECMAScriptObjects.STRING_TRIM, "trim", 0, c);
-        pv.writePropertyWithAttributes(lStringProto, "length", Value.makeAnyNum().setAttributes(true, true, true));
 
 
         // 15.6.4 properties of the Boolean prototype object
@@ -544,9 +561,16 @@ public class InitialStateBuilder implements IInitialStateBuilder<State, Context,
         createPrimitiveFunction(global, lFunProto, ECMAScriptObjects.TAJS_DUMPNF, ECMAScriptObjects.TAJS_DUMPNF.toString(), 1, c);
         createPrimitiveFunction(global, lFunProto, ECMAScriptObjects.TAJS_CONVERSION_TO_PRIMITIVE, ECMAScriptObjects.TAJS_CONVERSION_TO_PRIMITIVE.toString(), 2, c);
         createPrimitiveFunction(global, lFunProto, ECMAScriptObjects.TAJS_ADD_CONTEXT_SENSITIVITY, ECMAScriptObjects.TAJS_ADD_CONTEXT_SENSITIVITY.toString(), 1, c);
+        createPrimitiveFunction(global, lFunProto, ECMAScriptObjects.TAJS_MAKE_CONTEXT_SENSITIVE, ECMAScriptObjects.TAJS_MAKE_CONTEXT_SENSITIVE.toString(), 3, c);
         createPrimitiveFunction(global, lFunProto, ECMAScriptObjects.TAJS_ASSERT, ECMAScriptObjects.TAJS_ASSERT.toString(), 3, c);
         createPrimitiveFunction(global, lFunProto, ECMAScriptObjects.TAJS_NEW_OBJECT, ECMAScriptObjects.TAJS_NEW_OBJECT.toString(), 0, c);
-        createPrimitiveFunction(global, lFunProto, ECMAScriptObjects.TAJS_ASYNC_LISTEN, ECMAScriptObjects.TAJS_ASYNC_LISTEN.toString(), 0, c);
+        createPrimitiveFunction(global, lFunProto, ECMAScriptObjects.TAJS_NEW_ARRAY, ECMAScriptObjects.TAJS_NEW_ARRAY.toString(), 0, c);
+        if (Options.get().isAsyncEventsEnabled()) {
+            createPrimitiveFunction(global, lFunProto, ECMAScriptObjects.TAJS_ASYNC_LISTEN, ECMAScriptObjects.TAJS_ASYNC_LISTEN.toString(), 0, c);
+        }
+        createPrimitiveFunction(global, lFunProto, ECMAScriptObjects.TAJS_MAKE, ECMAScriptObjects.TAJS_MAKE.toString(), 1, c);
+        createPrimitiveFunction(global, lFunProto, ECMAScriptObjects.TAJS_JOIN, ECMAScriptObjects.TAJS_JOIN.toString(), 0, c);
+        createPrimitiveFunction(global, lFunProto, ECMAScriptObjects.TAJS_ASSERT_EQUALS, ECMAScriptObjects.TAJS_ASSERT_EQUALS.toString(), 0, c);
 
         if (Options.get().isDOMEnabled()) {
             // build initial DOM state
@@ -555,17 +579,9 @@ public class InitialStateBuilder implements IInitialStateBuilder<State, Context,
             createPrimitiveFunction(global, lFunProto, ECMAScriptObjects.TAJS_GET_KEYBOARD_EVENT, ECMAScriptObjects.TAJS_GET_KEYBOARD_EVENT.toString(), 0, c);
             createPrimitiveFunction(global, lFunProto, ECMAScriptObjects.TAJS_GET_EVENT_LISTENER, ECMAScriptObjects.TAJS_GET_EVENT_LISTENER.toString(), 0, c);
             createPrimitiveFunction(global, lFunProto, ECMAScriptObjects.TAJS_GET_WHEEL_EVENT, ECMAScriptObjects.TAJS_GET_WHEEL_EVENT.toString(), 0, c);
+            createPrimitiveFunction(global, lFunProto, ECMAScriptObjects.TAJS_GET_AJAX_EVENT, ECMAScriptObjects.TAJS_GET_AJAX_EVENT.toString(), 0, c);
 
             DOMBuilder.addInitialState(document, c);
-        }
-
-        if (Options.get().isDOMEnabled()) {
-            for (Entry<EventHandlerKind, Collection<Function>> me : c.getFlowGraph().getEventHandlers().entrySet()) {
-                EventHandlerKind e = me.getKey();
-                for (Function f : me.getValue()) {
-                    createAndRegisterEventHandler(f, e, c);
-                }
-            }
         }
 
         s.clearEffects();
@@ -587,22 +603,9 @@ public class InitialStateBuilder implements IInitialStateBuilder<State, Context,
      * Creates a new built-in function.
      */
     public static void createPrimitiveFunction(ObjectLabel target, ObjectLabel internal_proto, HostObject primitive, String name, int arity, Solver.SolverInterface c) {
-        State s = c.getState();
-        PropVarOperations pv = c.getAnalysis().getPropVarOperations();
         ObjectLabel objlabel = new ObjectLabel(primitive, Kind.FUNCTION);
-        s.newObject(objlabel);
-        pv.writePropertyWithAttributes(target, name, Value.makeObject(objlabel).setAttributes(true, false, false));
-        pv.writePropertyWithAttributes(objlabel, "length", Value.makeNum(arity).setAttributes(true, true, true));
-        s.writeInternalPrototype(objlabel, Value.makeObject(internal_proto));
-    }
-
-    public static void createPrimitiveFunctionWeakly(ObjectLabel target, ObjectLabel internal_proto, HostObject primitive, String name, int arity, Solver.SolverInterface c) {
-        State s = c.getState();
-        PropVarOperations pv = c.getAnalysis().getPropVarOperations();
-        ObjectLabel objlabel = new ObjectLabel(primitive, Kind.FUNCTION);
-        s.newObject(objlabel);
-        pv.writePropertyWithAttributes(Collections.singleton(target), name, Value.makeObject(objlabel).setAttributes(true, false, false), false, true, true);
-        pv.writePropertyWithAttributes(objlabel, "length", Value.makeNum(arity).setAttributes(true, true, true));
+        c.getState().newObject(objlabel);
+        createPrimitiveFunctionOrConstructor(target, internal_proto, name, arity, objlabel, c);
     }
 
     /**
@@ -610,39 +613,16 @@ public class InitialStateBuilder implements IInitialStateBuilder<State, Context,
      */
     public static void createPrimitiveConstructor(ObjectLabel target, ObjectLabel internal_proto, ObjectLabel prototype,
                                                   ObjectLabel objlabel, String name, int arity, Solver.SolverInterface c) {
-        State s = c.getState();
+        PropVarOperations pv = c.getAnalysis().getPropVarOperations();
+        createPrimitiveFunctionOrConstructor(target, internal_proto, name, arity, objlabel, c);
+        pv.writePropertyWithAttributes(objlabel, "prototype", Value.makeObject(prototype).setAttributes(true, true, true));
+    }
+
+    private static void createPrimitiveFunctionOrConstructor(ObjectLabel target, ObjectLabel internal_proto, String name, int arity, ObjectLabel objlabel, Solver.SolverInterface c) {
         PropVarOperations pv = c.getAnalysis().getPropVarOperations();
         pv.writePropertyWithAttributes(target, name, Value.makeObject(objlabel).setAttributes(true, false, false));
         pv.writePropertyWithAttributes(objlabel, "length", Value.makeNum(arity).setAttributes(true, true, true));
-        pv.writePropertyWithAttributes(objlabel, "prototype", Value.makeObject(prototype).setAttributes(true, true, true));
-        s.writeInternalPrototype(objlabel, Value.makeObject(internal_proto));
-    }
-
-    /**
-     * Creates and registers event handlers
-     */
-    private static void createAndRegisterEventHandler(Function f, EventHandlerKind kind, Solver.SolverInterface c) {
-        State s = c.getState();
-        if (Options.get().isDOMEnabled()) {
-            switch (kind) {
-                case LOAD:
-                    DOMEvents.addLoadEventHandler(s, singleton(new ObjectLabel(f)));
-                    break;
-                case UNLOAD:
-                    DOMEvents.addUnloadEventHandler(s, singleton(new ObjectLabel(f)));
-                    break;
-                case KEYBOARD:
-                    DOMEvents.addKeyboardEventHandler(s, singleton(new ObjectLabel(f)));
-                    break;
-                case MOUSE:
-                    DOMEvents.addMouseEventHandler(s, singleton(new ObjectLabel(f)));
-                    break;
-                case UNKNOWN:
-                    DOMEvents.addUnknownEventHandler(s, singleton(new ObjectLabel(f)));
-                    break;
-                default:
-                    throw new AnalysisException("Unknown event handler type");
-            }
-        }
+        pv.writePropertyWithAttributes(objlabel, "name", Value.makeStr(name).setAttributes(true, false, true));
+        c.getState().writeInternalPrototype(objlabel, Value.makeObject(internal_proto));
     }
 }

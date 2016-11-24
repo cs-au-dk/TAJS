@@ -1,23 +1,24 @@
 test/10k/fractal_landscape.html:51:13: [definite] The conditional expression is always false
 test/10k/fractal_landscape.html:51:17: [definite] Reading absent property Count
+test/10k/fractal_landscape.html:9:44: [maybe] TypeError, accessing property of null/undefined
+test/10k/fractal_landscape.html:11:36: [maybe] TypeError, accessing property of null/undefined
+test/10k/fractal_landscape.html:12:31: [maybe] TypeError, accessing property of null/undefined
+test/10k/fractal_landscape.html:13:30: [maybe] TypeError, accessing property of null/undefined
+test/10k/fractal_landscape.html:14:30: [maybe] TypeError, accessing property of null/undefined
+test/10k/fractal_landscape.html:15:28: [maybe] TypeError, accessing property of null/undefined
+test/10k/fractal_landscape.html:25:13: [maybe] TypeError, accessing property of null/undefined
 test/10k/fractal_landscape.html:39:17: [maybe] ReferenceError, reading absent variable IntervalCounter
-test/10k/fractal_landscape.html:39:35: [maybe] ReferenceError, reading absent variable detail
 test/10k/fractal_landscape.html:40:40: [maybe] ReferenceError, reading absent variable theCoords
 test/10k/fractal_landscape.html:40:51: [maybe] ReferenceError, reading absent variable displacement
-test/10k/fractal_landscape.html:40:67: [maybe] ReferenceError, reading absent variable extremity
 test/10k/fractal_landscape.html:42:17: [maybe] ReferenceError, reading absent variable IntervalCounter
 test/10k/fractal_landscape.html:45:31: [maybe] ReferenceError, reading absent variable animInterval
 test/10k/fractal_landscape.html:73:13: [maybe] ReferenceError, reading absent variable ctx
-test/10k/fractal_landscape.html:73:33: [maybe] ReferenceError, reading absent variable xsize
-test/10k/fractal_landscape.html:73:40: [maybe] ReferenceError, reading absent variable ysize
 test/10k/fractal_landscape.html:74:29: [maybe] ReferenceError, reading absent variable lineargradient
-test/10k/fractal_landscape.html:76:27: [maybe] ReferenceError, reading absent variable ysize
-test/10k/fractal_landscape.html:80:27: [maybe] ReferenceError, reading absent variable xsize
-test/10k/fractal_landscape.html:82:26: [maybe] ReferenceError, reading absent variable ysize
-test/10k/fractal_landscape.html:82:50: [maybe] ReferenceError, reading absent variable ysize
-test/10k/fractal_landscape.html:85:24: [maybe] ReferenceError, reading absent variable xsize
-test/10k/fractal_landscape.html:85:31: [maybe] ReferenceError, reading absent variable ysize
-test/10k/fractal_landscape.html: [maybe] Uncaught exception, constructed at [test/10k/fractal_landscape.html:39:17, test/10k/fractal_landscape.html:39:35, test/10k/fractal_landscape.html:40:40, test/10k/fractal_landscape.html:40:51, test/10k/fractal_landscape.html:40:67, test/10k/fractal_landscape.html:42:17, test/10k/fractal_landscape.html:45:31, test/10k/fractal_landscape.html:73:13, test/10k/fractal_landscape.html:73:33, test/10k/fractal_landscape.html:73:40, test/10k/fractal_landscape.html:74:29, test/10k/fractal_landscape.html:76:27, test/10k/fractal_landscape.html:80:27, test/10k/fractal_landscape.html:82:26, test/10k/fractal_landscape.html:82:50, test/10k/fractal_landscape.html:85:24, test/10k/fractal_landscape.html:85:31]
+test/10k/fractal_landscape.html: [maybe] Uncaught exception, constructed at [test/10k/fractal_landscape.html:9:44, test/10k/fractal_landscape.html:11:36, test/10k/fractal_landscape.html:12:31, test/10k/fractal_landscape.html:13:30, test/10k/fractal_landscape.html:14:30, test/10k/fractal_landscape.html:15:28, test/10k/fractal_landscape.html:25:13, test/10k/fractal_landscape.html:39:17, test/10k/fractal_landscape.html:40:40, test/10k/fractal_landscape.html:40:51, test/10k/fractal_landscape.html:42:17, test/10k/fractal_landscape.html:45:31, test/10k/fractal_landscape.html:73:13, test/10k/fractal_landscape.html:74:29]
+test/10k/fractal_landscape.html:39:35: [maybe] The variable detail has values with different types
+test/10k/fractal_landscape.html:40:51: [maybe] Conversion from string to number yields NaN
+test/10k/fractal_landscape.html:40:51: [maybe] Converting object to number
+test/10k/fractal_landscape.html:40:67: [maybe] The variable extremity has values with different types
 test/10k/fractal_landscape.html:51:17: [maybe] Conversion to number yields NaN
 test/10k/fractal_landscape.html:60:39: [maybe] Conversion to number yields NaN
 test/10k/fractal_landscape.html:60:39: [maybe] Reading absent property (computed name)
@@ -26,5 +27,25 @@ test/10k/fractal_landscape.html:62:33: [maybe] Conversion to number yields NaN
 test/10k/fractal_landscape.html:62:33: [maybe] Reading absent property (computed name)
 test/10k/fractal_landscape.html:64:32: [maybe] Reading absent property (computed name)
 test/10k/fractal_landscape.html:67:28: [maybe] Reading absent property (computed name)
+test/10k/fractal_landscape.html:73:13: [maybe] Conversion from string to number yields NaN
+test/10k/fractal_landscape.html:73:13: [maybe] Converting object to number
+test/10k/fractal_landscape.html:73:33: [maybe] The variable xsize has values with different types
+test/10k/fractal_landscape.html:73:40: [maybe] The variable ysize has values with different types
+test/10k/fractal_landscape.html:76:13: [maybe] Conversion from string to number yields NaN
+test/10k/fractal_landscape.html:76:13: [maybe] Converting object to number
+test/10k/fractal_landscape.html:76:27: [maybe] The variable ysize has values with different types
+test/10k/fractal_landscape.html:80:27: [maybe] Conversion from string to number yields NaN
+test/10k/fractal_landscape.html:80:27: [maybe] Converting object to number
+test/10k/fractal_landscape.html:80:27: [maybe] The variable xsize has values with different types
+test/10k/fractal_landscape.html:82:26: [maybe] Conversion from string to number yields NaN
+test/10k/fractal_landscape.html:82:26: [maybe] Converting object to number
+test/10k/fractal_landscape.html:82:26: [maybe] The variable ysize has values with different types
+test/10k/fractal_landscape.html:82:35: [maybe] Conversion from string to number yields NaN
 test/10k/fractal_landscape.html:82:35: [maybe] Conversion to number yields NaN
+test/10k/fractal_landscape.html:82:35: [maybe] Converting object to number
 test/10k/fractal_landscape.html:82:35: [maybe] Reading absent property (computed name)
+test/10k/fractal_landscape.html:82:50: [maybe] The variable ysize has values with different types
+test/10k/fractal_landscape.html:85:13: [maybe] Conversion from string to number yields NaN
+test/10k/fractal_landscape.html:85:13: [maybe] Converting object to number
+test/10k/fractal_landscape.html:85:24: [maybe] The variable xsize has values with different types
+test/10k/fractal_landscape.html:85:31: [maybe] The variable ysize has values with different types

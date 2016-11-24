@@ -4,10 +4,10 @@ import dk.brics.tajs.Main;
 import dk.brics.tajs.monitoring.CompositeMonitoring;
 import dk.brics.tajs.monitoring.IAnalysisMonitoring;
 import dk.brics.tajs.monitoring.Monitoring;
+import dk.brics.tajs.monitoring.OrdinaryExitReachableChecker;
 import dk.brics.tajs.options.OptionValues;
 import dk.brics.tajs.solver.Message;
 import dk.brics.tajs.solver.Message.Status;
-import dk.brics.tajs.test.monitors.OrdinaryExitReachableCheckerMonitor;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -206,7 +206,7 @@ public class TestAssumeNonNullUndef {
     public void testWithSource(final int expectedWarnings, final String... source) {
         OptionValues baseOptions = new OptionValues();
         baseOptions.enableTest();
-        IAnalysisMonitoring monitoring = CompositeMonitoring.buildFromList(new Monitoring(), new OrdinaryExitReachableCheckerMonitor());
+        IAnalysisMonitoring monitoring = CompositeMonitoring.buildFromList(new Monitoring(), new OrdinaryExitReachableChecker());
 
         Misc.runSource(source, monitoring);
         Set<Message> nullUndefWarnings = new HashSet<>();

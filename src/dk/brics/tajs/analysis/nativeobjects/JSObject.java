@@ -36,6 +36,7 @@ import dk.brics.tajs.util.AnalysisException;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -63,7 +64,6 @@ public class JSObject {
         switch (nativeobject) {
 
             case OBJECT: { // 15.2.1 and 15.2.2
-                NativeFunctions.expectParameters(nativeobject, call, c, 0, 1);
                 Value arg = NativeFunctions.readParameter(call, state, 0);
                 Value arg2 = arg.restrictToNotNullNotUndef().restrictToNotObject();
                 boolean arg_maybe_other = arg2.isMaybeOtherThanUndef() && arg2.isMaybeOtherThanNull();
@@ -80,21 +80,23 @@ public class JSObject {
                 }
                 return res;
             }
+
             case OBJECT_CREATE: {
                 // FIXME: support second argument of Object.create
                 NativeFunctions.expectParameters(nativeobject, call, c, 1, 2);
                 ObjectLabel obj = new ObjectLabel(call.getSourceNode(), Kind.OBJECT);
                 state.newObject(obj);
                 Value prototype = UnknownValueResolver.getRealValue(NativeFunctions.readParameter(call, state, 0), state);
-                if(prototype.restrictToNotNull().isMaybeOtherThanObject()) {
+                if (prototype.restrictToNotNull().isMaybeOtherThanObject()) {
                     Exceptions.throwTypeError(c);
                 }
-                if(prototype.restrictToObject().isNone() && prototype.restrictToNull().isNone()){
+                if (prototype.restrictToObject().isNone() && prototype.restrictToNull().isNone()) {
                     return Value.makeNone();
                 }
                 state.writeInternalPrototype(obj, prototype);
                 return Value.makeObject(obj);
             }
+
             case OBJECT_DEFINE_PROPERTY: { // 15.2.3.6
                 NativeFunctions.expectParameters(nativeobject, call, c, 3, 3);
                 Value o = NativeFunctions.readParameter(call, state, 0);
@@ -107,9 +109,9 @@ public class JSObject {
                 pv.writeProperty(o.getObjectLabels(), propertyName, value, true, true, false, true); // FIXME: trigger TypeError exception if attempt to overwrite non-writable (#291)
                 return o;
             }
+
             case OBJECT_DEFINESETTER:
             case OBJECT_DEFINEGETTER: {
-                PropVarOperations pv1 = c.getAnalysis().getPropVarOperations();
                 NativeFunctions.expectParameters(nativeobject, call, c, 2, 2);
                 State state1 = c.getState();
                 Set<ObjectLabel> objs = state1.readThisObjects();
@@ -123,17 +125,15 @@ public class JSObject {
                 pv.writeProperty(objs, propertyName, value, true, false, false, true);
                 return Value.makeUndef();
             }
+
             case OBJECT_TOSTRING: // 15.2.4.2
             case OBJECT_TOLOCALESTRING: { // 15.2.4.3
-                // TODO slightly unsound as null and undefined will actually produce [object Null] and [object Undefined], when this is called through .call or .apply...
                 NativeFunctions.expectParameters(nativeobject, call, c, 0, 0);
-                Set<ObjectLabel> thisobj = state.readThisObjects();
-                List<Value> kinds = thisobj.stream()
-                        .map(ObjectLabel::getKind)
-                        .collect(Collectors.toSet()).stream()
-                        .map(kind -> Value.makeStr("[object " + kind + "]"))
-                        .collect(Collectors.toList());
-                return Value.join(kinds);
+                Value v = state.readThisObjectsCoerced((l) -> evaluateToString(l, c));
+                if (nativeobject == ECMAScriptObjects.OBJECT_TOLOCALESTRING && !Options.get().isUnsoundEnabled()) {
+                    return Value.makeAnyStr();
+                }
+                return v;
             }
 
             case OBJECT_VALUEOF: { // 15.2.4.4
@@ -142,6 +142,7 @@ public class JSObject {
             }
 
             case OBJECT_HASOWNPROPERTY: { // 15.2.4.5
+                // TODO: avoid special-casing on strings (they implicitly have indices for their characters)
                 NativeFunctions.expectParameters(nativeobject, call, c, 1, 1);
                 Set<ObjectLabel> thisobj = state.readThisObjects();
                 Value v = NativeFunctions.readParameter(call, state, 0);
@@ -152,13 +153,26 @@ public class JSObject {
                 if (propval.isNotStr())
                     return Value.makeNone();
                 else if (propval.isMaybeSingleStr()) {
+                    Map<Boolean, List<ObjectLabel>> stringNonStringLabels = thisobj.stream().collect(Collectors.groupingBy(l -> l.getKind() == Kind.STRING));
                     String propname = propval.getStr();
-                    Value val = pv.readPropertyDirect(thisobj, propname);
                     Value res = Value.makeNone();
+                    Value val = pv.readPropertyDirect(thisobj, propname);
                     if (val.isMaybeAbsent() || val.isNotPresent())
                         res = res.joinBool(false);
                     if (val.isMaybePresent())
                         res = res.joinBool(true);
+                    Value propNum = Conversion.fromStrtoNum(propval, c);
+                    Double stringIndex = propNum.getNum();
+                    if (stringNonStringLabels.containsKey(true) && propNum.isMaybeSingleNum() && Math.floor(stringIndex) == stringIndex) {
+                        Value internalStringValues = UnknownValueResolver.getRealValue(state.readInternalValue(stringNonStringLabels.get(true)), state);
+                        if (internalStringValues.isMaybeSingleStr()) {
+                            if (0 <= stringIndex && stringIndex <= internalStringValues.getStr().length()) {
+                                res = res.joinBool(true);
+                            } else {
+                                res = res.joinBool(false);
+                            }
+                        }
+                    }
                     return res;
                 }
                 for (ObjectLabel ol : thisobj) {
@@ -170,6 +184,9 @@ public class JSObject {
                     if (UnknownValueResolver.getDefaultArrayProperty(ol, state).isMaybePresent() ||
                             UnknownValueResolver.getDefaultNonArrayProperty(ol, state).isMaybePresent())
                         return Value.makeAnyBool();
+                    if (ol.getKind() == Kind.STRING && propval.isMaybeStrUInt()) {
+                        return Value.makeAnyBool();
+                    }
                 }
                 return Value.makeBool(false);
             }
@@ -238,6 +255,12 @@ public class JSObject {
                         }
                     }
                 }
+                if (properties.isArray()) {
+                    JSArray.setUnknownEntries(array, Value.makeAnyStrUInt(), c);
+                }
+                if (properties.isNonArray()) {
+                    JSArray.setUnknownEntries(array, Value.makeAnyStrNotUInt(), c);
+                }
                 return Value.makeObject(array);
             case OBJECT_FREEZE: /* GitHub #249 */
                 NativeFunctions.expectParameters(nativeobject, call, c, 1, 1);
@@ -269,5 +292,16 @@ public class JSObject {
             default:
                 return null;
         }
+    }
+
+    public static Value evaluateToString(ObjectLabel thiss, Solver.SolverInterface c) {
+        // 15.2.4.2 Object.prototype.toString ( )
+        // When the toString method is called, the following steps are taken:
+        // 1. Get the [[Class]] property of this object.
+        // 2. Compute a string value by concatenating the three strings "[object ", Result(1), and "]".
+        // 3. Return Result(2).
+
+        // FIXME: slightly unsound as null and undefined will actually produce [object Null] and [object Undefined], when this is called through .call or .apply...
+        return Value.makeStr("[object " + thiss.getKind() + "]");
     }
 }

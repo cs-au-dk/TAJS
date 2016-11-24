@@ -100,7 +100,7 @@ var ƒ = (function(el,globals,_x,key,axies) {
 	for( key in ƒ.p ) ƒ[key] = ƒ.p[key];											
 	//Extend object with prototype
 	return ƒ;
-})(cvs,Math);																		
+})(c,Math);
 //Pass canvas and Math Object for constants + functions
 
 //Calling of ƒ

@@ -3,7 +3,11 @@
  *
  * shim rovides a, b, c
  */
-var b = document.body;
-var c = document.getElementsByTagName('canvas')[0];
-var a = c.getContext('2d');
-document.body.clientWidth; // fix bug in webkit: http://qfox.nl/weblog/218
+(function () {
+    var canvas = document.createElement('canvas');
+    var body = document.body;
+    body.appendChild(canvas);
+    window.a = canvas.getContext('2d');
+    window.b = body;
+    window.c = canvas;
+})();

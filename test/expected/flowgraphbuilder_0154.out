@@ -87,7 +87,7 @@ function position_CM(o)
     node 16: new[v2] (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0154.html:3:9):1:31)
     node 17: constant[0.0,v3] (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0154.html:3:9):1:37)
     node 18: write-property[v2,'Left',v3] (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0154.html:3:9):1:32)
-    node 19: write-variable[v2,'p']* (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0154.html:3:9):1:31)
+    node 19: write-variable[v2,'p']* (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0154.html:3:9):1:29)
     ->[block 15]
   block 15:
     node 20: read-variable['o',v6,-] (TAJS-dynamic-code(test/flowgraphbuilder/flowgraph_builder0154.html:3:9):1:48)

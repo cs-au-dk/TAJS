@@ -12,6 +12,7 @@ public class JSString_concat_test {
 	@Before
     public void before() {
         Main.reset();
+        Main.initLogging();
         Options.get().enableTest();
     }
 
@@ -41,6 +42,18 @@ public class JSString_concat_test {
     }
 
     @Test
+    public void manyArgs() {
+        Misc.runSource("var v = 'foo'.concat('x', 'y', 'z', 'a', 'b', 'c');",
+                "TAJS_assert(v === 'fooxyzabc');");
+    }
+
+//    @Test
+//    public void manyMultiArgs() {
+//        Misc.runSource("var v = 'foo'.concat('x', 'y', 'z', 'a', 'b', 'c', Math.random()? 0: '0');",
+//                "TAJS_assert(v === 'fooxyzabc0');");
+//    }
+
+    @Test
     public void unknown() {
         Misc.runSource("var v = (Math.random()? 'foo': 'bar').concat();",
                 "TAJS_assert(v, 'isMaybeAnyStr', true);");
@@ -49,6 +62,6 @@ public class JSString_concat_test {
     @Test
     public void unknownArgs() {
         Misc.runSource("var v = String.prototype.concat.apply('foo', Math.random()? []: ['x']);",
-                "TAJS_assert(v, 'isMaybeAnyStr', true);");
+                "TAJS_assert(v, 'isMaybeStrIdentifier', true);");
     }
 }

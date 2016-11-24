@@ -74,15 +74,15 @@ public class Event {
         /*
          * Properties.
          */
-        createDOMProperty(PROTOTYPE, "type", Value.makeAnyStr().setReadOnly(), c);
+        createDOMProperty(PROTOTYPE, "type", Value.makeNone().joinAnyStrIdentifier().setReadOnly(), c);
         createDOMProperty(PROTOTYPE, "eventPhase", Value.makeAnyNumUInt().setReadOnly(), c);
         createDOMProperty(PROTOTYPE, "bubbles", Value.makeAnyBool().setReadOnly(), c);
         createDOMProperty(PROTOTYPE, "cancelable", Value.makeAnyBool().setReadOnly(), c);
-        createDOMProperty(PROTOTYPE, "timeStamp", Value.makeAnyNumUInt().setReadOnly(), c);
+        createDOMProperty(PROTOTYPE, "timeStamp", Value.makeAnyNumUInt().joinAnyNumOther().setReadOnly(), c);
 
         // DOM LEVEL 0
-        createDOMProperty(PROTOTYPE, "pageX", Value.makeAnyNumUInt(), c);
-        createDOMProperty(PROTOTYPE, "pageY", Value.makeAnyNumUInt(), c);
+        createDOMProperty(PROTOTYPE, "pageX", Value.makeAnyNumUInt().joinAbsent(), c);
+        createDOMProperty(PROTOTYPE, "pageY", Value.makeAnyNumUInt().joinAbsent(), c);
 
         s.multiplyObject(INSTANCES);
         INSTANCES = INSTANCES.makeSingleton().makeSummary();

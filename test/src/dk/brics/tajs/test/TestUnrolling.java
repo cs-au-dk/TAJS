@@ -4,8 +4,8 @@ import dk.brics.tajs.Main;
 import dk.brics.tajs.monitoring.CompositeMonitoring;
 import dk.brics.tajs.monitoring.IAnalysisMonitoring;
 import dk.brics.tajs.monitoring.Monitoring;
+import dk.brics.tajs.monitoring.OrdinaryExitReachableChecker;
 import dk.brics.tajs.options.Options;
-import dk.brics.tajs.test.monitors.OrdinaryExitReachableCheckerMonitor;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -18,7 +18,7 @@ public class TestUnrolling {
         Main.reset();
         Options.get().enableTest();
         Options.get().enableLoopUnrolling(100);
-        monitoring = new CompositeMonitoring(new Monitoring(), new OrdinaryExitReachableCheckerMonitor());
+        monitoring = new CompositeMonitoring(new Monitoring(), new OrdinaryExitReachableChecker());
     }
 
     @Test
@@ -27,7 +27,7 @@ public class TestUnrolling {
         Misc.init();
         Options.get().enableFlowgraph();
         Misc.captureSystemOutput();
-        Misc.runSourceWithNamedFile("loopunrolling_flowgraph_strings",
+        Misc.runSource(
                 "'PRE'; for('INIT'; 'COND'; 'INC'){ 'BODY'; } 'POST';",
                 "");
         Misc.checkSystemOutput();
@@ -39,7 +39,7 @@ public class TestUnrolling {
         Misc.init();
         Options.get().enableFlowgraph();
         Misc.captureSystemOutput();
-        Misc.runSourceWithNamedFile("loopunrolling_flowgraph_calls",
+        Misc.runSource(
                 "PRE(); for(INIT(); COND(); INC()){ BODY(); } POST();",
                 "");
         Misc.checkSystemOutput();
@@ -50,7 +50,7 @@ public class TestUnrolling {
         Misc.init();
         Options.get().enableFlowgraph();
         Misc.captureSystemOutput();
-        Misc.runSourceWithNamedFile("loopunrolling_flowgraph_continueBreak",
+        Misc.runSource(
                 "'PRE'; for('INIT'; 'COND'; 'INC'){ 'BODY0'; if('CONTINUE'){continue;} 'BODY1'; if('BREAK'){break;}; 'BODY2';} 'POST';",
                 "");
         Misc.checkSystemOutput();
@@ -61,7 +61,7 @@ public class TestUnrolling {
         Misc.init();
         Misc.captureSystemOutput();
         Options.get().enableFlowgraph();
-        Misc.runSourceWithNamedFile("loopunrolling_flowgraph_continue2.js",
+        Misc.runSource(
                 "while1: while('COND1'){ while2: while('COND2'){continue while2;}}",
                 "");
         Misc.checkSystemOutput();
@@ -73,7 +73,7 @@ public class TestUnrolling {
         Options.get().enableFlowgraph();
         Misc.captureSystemOutput();
 
-        Misc.runSourceWithNamedFile("loopunrolling_flowgraph_labelledcontinue.js",
+        Misc.runSource(
                 "function labelled(){label: while('COND'){continue label;}}",
                 "function unlabelled(){while('COND'){continue;}}",
                 "");
@@ -548,7 +548,6 @@ public class TestUnrolling {
                 "}",
                 ""}, monitoring);
     }
-
 
     @Test
     public void nestedThroughCall_big() {

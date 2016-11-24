@@ -92,7 +92,7 @@ public class DOMNodeList {
         switch (nativeobject) {
             case NODELIST_ITEM: {
                 return DOMFunctions.makeAnyHTMLElement();
-                //    throw new UnsupportedOperationException("NODELIST_ITEM not supported: "
+                //    throw new AnalysisLimitationException(call.getJSSourceNode(), "NODELIST_ITEM not supported: "
                 //           + nativeobject);
             }
             default: {

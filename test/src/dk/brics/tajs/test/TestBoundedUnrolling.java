@@ -1,10 +1,7 @@
 package dk.brics.tajs.test;
 
 import dk.brics.tajs.Main;
-import dk.brics.tajs.lattice.Context;
-import dk.brics.tajs.js2flowgraph.FunctionBuilder;
 import dk.brics.tajs.options.Options;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 

@@ -95,5 +95,4 @@ function f()
     ->[]
 
 test/flowgraphbuilder/flowgraph_builder_jump_return_0010.js:8:11: [definite] Unreachable code
-test/flowgraphbuilder/flowgraph_builder_jump_return_0010.js:8:11: [definite] Unreachable code
 test/flowgraphbuilder/flowgraph_builder_jump_return_0010.js:14:1: [info] Abstract value: "OK"

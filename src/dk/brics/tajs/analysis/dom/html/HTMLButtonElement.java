@@ -70,7 +70,7 @@ public class HTMLButtonElement {
         createDOMProperty(INSTANCES, "name", Value.makeAnyStr(), c);
         createDOMProperty(INSTANCES, "tabIndex", Value.makeAnyNum(), c);
         createDOMProperty(INSTANCES, "type", Value.makeAnyStr().setReadOnly(), c);
-        createDOMProperty(INSTANCES, "value", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "value", Value.makeStr("submit"), c);
 
         s.multiplyObject(INSTANCES);
         INSTANCES = INSTANCES.makeSingleton().makeSummary();

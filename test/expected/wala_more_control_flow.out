@@ -1,10 +1,4 @@
 test/wala/more-control-flow.js:4:3: [definite] The conditional expression is always false
-test/wala/more-control-flow.js:4:3: [definite] The conditional expression is always false
-test/wala/more-control-flow.js:4:3: [definite] The conditional expression is always false
-test/wala/more-control-flow.js:4:3: [definite] The conditional expression is always false
-test/wala/more-control-flow.js:26:3: [definite] The conditional expression is always false
-test/wala/more-control-flow.js:26:3: [definite] The conditional expression is always false
-test/wala/more-control-flow.js:26:3: [definite] The conditional expression is always false
 test/wala/more-control-flow.js:26:3: [definite] The conditional expression is always false
 test/wala/more-control-flow.js:48:3: [definite] The conditional expression is always false
 test/wala/more-control-flow.js:49:5: [definite] The conditional expression is always false

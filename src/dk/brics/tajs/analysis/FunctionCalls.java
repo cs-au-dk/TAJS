@@ -159,7 +159,11 @@ public class FunctionCalls {
         @Override
         public Value getArg(int i) {
             if (i < n.getNumberOfArgs()) {
-                return state.readRegister(n.getArgRegister(i));
+                int argRegister = n.getArgRegister(i);
+                if (argRegister == AbstractNode.NO_VALUE) {
+                    return Value.makeAbsent(); // happens for array literal with empty entries: `[foo, , , 42]`
+                }
+                return state.readRegister(argRegister);
             } else
                 return Value.makeUndef();
         }
@@ -335,28 +339,29 @@ public class FunctionCalls {
             if (objlabel.getKind() == Kind.FUNCTION) {
                 maybe_function = true;
                 if (objlabel.isHostObject()) { // host function
-                    State newstate = caller_state.clone();
-                    State ts = c.getState();
-                    c.setState(newstate); // note that the calling context is not affected, even though e.g. 'this' may get a different value
-                    if (!call.isConstructorCall() &&
-                            !objlabel.getHostObject().equals(ECMAScriptObjects.EVAL) &&
-                            !objlabel.getHostObject().equals(ECMAScriptObjects.FUNCTION) &&
-                            !objlabel.getHostObject().equals(DOMObjects.WINDOW_SET_INTERVAL) &&
-                            !objlabel.getHostObject().equals(DOMObjects.WINDOW_SET_TIMEOUT)) {
-                        ExecutionContext old_ec = newstate.getExecutionContext();
-                        newstate.setExecutionContext(new ExecutionContext(old_ec.getScopeChain(), newSet(old_ec.getVariableObject()), newSet(call.prepareThis(caller_state, newstate))));
-                    }
-                    Value res = HostAPIs.evaluate(objlabel.getHostObject(), call, c);
-                    newstate = c.getState();
-                    if (call.getSourceNode().isRegistersDone())
-                        newstate.clearOrdinaryRegisters();
-                    if ((!res.isNone() && !newstate.isNone()) || Options.get().isPropagateDeadFlow()) {
-                        newstate.setExecutionContext(call.getExecutionContext());
-                        if (call.getResultRegister() != AbstractNode.NO_VALUE)
-                            newstate.writeRegister(call.getResultRegister(), res);
-                        c.propagateToBasicBlock(newstate, call.getSourceNode().getBlock().getSingleSuccessor(), newstate.getContext());
-                    }
-                    c.setState(ts);
+                    c.withState(caller_state.clone(), () -> { // note that the calling context is not affected, even though e.g. 'this' may get a different value
+                                if (!call.isConstructorCall() &&
+                                        !objlabel.getHostObject().equals(ECMAScriptObjects.EVAL) &&
+                                        !objlabel.getHostObject().equals(ECMAScriptObjects.FUNCTION) &&
+                                        !objlabel.getHostObject().equals(DOMObjects.WINDOW_SET_INTERVAL) &&
+                                        !objlabel.getHostObject().equals(DOMObjects.WINDOW_SET_TIMEOUT)) {
+                                    ExecutionContext old_ec = c.getState().getExecutionContext();
+                                    c.getState().setExecutionContext(new ExecutionContext(old_ec.getScopeChain(), newSet(old_ec.getVariableObject()), newSet(call.prepareThis(caller_state, c.getState()))));
+                                }
+                                Value res = HostAPIs.evaluate(objlabel.getHostObject(), call, c);
+                                if (res == null) {
+                                    throw new AnalysisException("null result from " + objlabel.getHostObject());
+                                }
+                                c.getMonitoring().visitNativeFunctionReturn(call.getSourceNode(), objlabel.getHostObject(), res);
+                                if (call.getSourceNode().isRegistersDone())
+                                    c.getState().clearOrdinaryRegisters();
+                                if ((!res.isNone() && !c.getState().isNone()) || Options.get().isPropagateDeadFlow()) {
+                                    c.getState().setExecutionContext(call.getExecutionContext());
+                                    if (call.getResultRegister() != AbstractNode.NO_VALUE)
+                                        c.getState().writeRegister(call.getResultRegister(), res);
+                                    c.propagateToBasicBlock(c.getState(), call.getSourceNode().getBlock().getSingleSuccessor(), c.getState().getContext());
+                                }
+                            });
                 } else { // user-defined function
                     UserFunctionCalls.enterUserFunction(objlabel, call, false, c);
                     c.getMonitoring().visitUserFunctionCall(objlabel.getFunction(), call.getSourceNode(), call.isConstructorCall());

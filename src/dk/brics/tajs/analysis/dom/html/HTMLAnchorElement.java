@@ -79,7 +79,7 @@ public class HTMLAnchorElement {
         createDOMProperty(INSTANCES, "shape", Value.makeAnyStr(), c);
         createDOMProperty(INSTANCES, "tabIndex", Value.makeAnyNum(), c);
         createDOMProperty(INSTANCES, "target", Value.makeAnyStr(), c);
-        createDOMProperty(INSTANCES, "type", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "type", Value.makeAnyStr().restrictToNotStrIdentifierParts() /* mime-type */, c);
 
         s.multiplyObject(INSTANCES);
         INSTANCES = INSTANCES.makeSingleton().makeSummary();

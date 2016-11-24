@@ -17,13 +17,14 @@
 package dk.brics.tajs.analysis.dom;
 
 import dk.brics.tajs.analysis.HostAPIs;
+import dk.brics.tajs.analysis.ParallelTransfer;
+import dk.brics.tajs.analysis.Solver;
+import dk.brics.tajs.flowgraph.EventType;
 import dk.brics.tajs.lattice.HostObject;
 import dk.brics.tajs.lattice.ObjectLabel;
-import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.Str;
 import dk.brics.tajs.lattice.Value;
-
-import java.util.Collections;
+import org.apache.log4j.Logger;
 
 /**
  * Native DOM objects.
@@ -92,9 +93,6 @@ public enum DOMObjects implements HostObject {
     WINDOW_ADD_EVENT_LISTENER("Window.addEventListener"),
     WINDOW_REMOVE_EVENT_LISTENER("Window.removeEventListener"),
 
-    // Window JSON
-    WINDOW_JSON("Window.JSON"), // TODO: JSON.parse is in ES5
-    WINDOW_JSON_PARSE("Window.JSON.parse"),
 
     // /////////////////////////////////////////////////////////////////////////
     // / DOCUMENT ///
@@ -525,20 +523,20 @@ public enum DOMObjects implements HostObject {
     // / NON-STANDARD HTML OBJECTS ///
     // /////////////////////////////////////////////////////////////////////////
     HTMLELEMENT_ATTRIBUTES("HTMLElement.attributes"), // DOM LEVEL 0
-    HTMLIMAGEELEMENT_CONSTRUCTOR("HTMLImageElement.constructor"), // DOM LEVEL 0
+    HTMLIMAGEELEMENT_CONSTRUCTOR("HTMLImageElement constructor"), // DOM LEVEL 0
 
     // /////////////////////////////////////////////////////////////////////////
     // / CSS ///
     // /////////////////////////////////////////////////////////////////////////
     CSSSTYLEDECLARATION("CSSStyleDeclaration"),
-    CLIENTBOUNDINGRECT_CONSTRUCTOR("ClientBoundingRect.constructor"),
+    CLIENTBOUNDINGRECT_CONSTRUCTOR("ClientBoundingRect constructor"),
     CLIENTBOUNDINGRECT_PROTOTYPE("ClientBoundingRect.prototype"),
     CLIENTBOUNDINGRECT_INSTANCES("ClientBoundingRect.instances"),
 
     // /////////////////////////////////////////////////////////////////////////
     // / HTML5 CANVAS (WHATWG) ///
     // /////////////////////////////////////////////////////////////////////////
-    HTMLCANVASELEMENT_CONSTRUCTOR("HTMLCanvasElement"),
+    HTMLCANVASELEMENT_CONSTRUCTOR("HTMLCanvasElement constructor"),
     HTMLCANVASELEMENT_PROTOTYPE("HTMLCanvasElement.prototype"),
     HTMLCANVASELEMENT_INSTANCES("HTMLCanvasElement instances"),
     HTMLCANVASELEMENT_TO_DATA_URL("HTMLCanvasElement.prototype.toDataURL"),
@@ -607,7 +605,7 @@ public enum DOMObjects implements HostObject {
     // /////////////////////////////////////////////////////////////////////////
     // / HTML5 WebGL ///
     // /////////////////////////////////////////////////////////////////////////
-    WEBGLRENDERINGCONTEXT_CONSTRCUTOR("WebGLRenderingContext.constructor"),
+    WEBGLRENDERINGCONTEXT_CONSTRCUTOR("WebGLRenderingContext constructor"),
     WEBGLRENDERINGCONTEXT_PROTOTYPE("WebGLRenderingContext.prototype"),
     WEBGLRENDERINGCONTEXT_INSTANCES("WebGLRenderingContext.instances"),
     WEBGLRENDERINGCONTEXT_TAJS_UNSUPPORTED_FUNCTION("WebGLRenderingContext.prototype.TAJS_UNSUPPORTED_FUNCTION"),
@@ -615,7 +613,7 @@ public enum DOMObjects implements HostObject {
     // /////////////////////////////////////////////////////////////////////////
     // / HTML5 Media ///
     // /////////////////////////////////////////////////////////////////////////
-    HTMLMEDIAELEMENT_CONSTRUCTOR("HTMLMediaElement"),
+    HTMLMEDIAELEMENT_CONSTRUCTOR("HTMLMediaElement constructor"),
     HTMLMEDIAELEMENT_PROTOTYPE("HTMLMediaElement.prototype"),
     HTMLMEDIAELEMENT_INSTANCES("HTMLMediaElement instances"),
     HTMLMEDIAELEMENT_CAN_PLAY_TYPE("HTMLMediaElement.prototype.canPlayType"),
@@ -627,14 +625,14 @@ public enum DOMObjects implements HostObject {
     // /////////////////////////////////////////////////////////////////////////
     // / HTML5 Audio ///
     // /////////////////////////////////////////////////////////////////////////
-    HTMLAUDIOELEMENT_CONSTRUCTOR("HTMLAudioElement"),
+    HTMLAUDIOELEMENT_CONSTRUCTOR("HTMLAudioElement constructor"),
     HTMLAUDIOELEMENT_PROTOTYPE("HTMLAudioElement.prototype"),
     HTMLAUDIOELEMENT_INSTANCES("HTMLAudioElement.instances"),
 
     // /////////////////////////////////////////////////////////////////////////
     // / HTML5 AudioContext ///
     // /////////////////////////////////////////////////////////////////////////
-    AUDIOCONTEXT_CONSTRUCTOR("AudioContext"),
+    AUDIOCONTEXT_CONSTRUCTOR("AudioContext constructor"),
     AUDIOCONTEXT_PROTOTYPE("AudioContext.prototype"),
     AUDIOCONTEXT_INSTANCES("AudioContext instances"),
     AUDIOCONTEXT_CREATE_ANALYSER("AudioContext.createAnalyser"),
@@ -645,7 +643,7 @@ public enum DOMObjects implements HostObject {
     // /////////////////////////////////////////////////////////////////////////
     // / HTML5 AudioNode ///
     // /////////////////////////////////////////////////////////////////////////
-    AUDIONODE_CONSTRUCTOR("AudioNode"),
+    AUDIONODE_CONSTRUCTOR("AudioNode constructor"),
     AUDIONODE_PROTOTYPE("AudioNode.prototype"),
     AUDIONODE_INSTANCES("AudioNode.instances"),
     AUDIONODE_CONNECT("AudioNode.prototype.connect"),
@@ -654,7 +652,7 @@ public enum DOMObjects implements HostObject {
     // /////////////////////////////////////////////////////////////////////////
     // / HTML5 OscillatorNode ///
     // /////////////////////////////////////////////////////////////////////////
-    OSCILLATORNODE_CONSTRUCTOR("OscillatorNode"),
+    OSCILLATORNODE_CONSTRUCTOR("OscillatorNode constructor"),
     OSCILLATORNODE_PROTOTYPE("OscillatorNode.prototype"),
     OSCILLATORNODE_INSTANCES("OscillatorNode instances"),
     OSCILLATORNODE_START("OscillatorNode.prototype.start"),
@@ -664,7 +662,7 @@ public enum DOMObjects implements HostObject {
     // /////////////////////////////////////////////////////////////////////////
     // / HTML5 AudioParam ///
     // /////////////////////////////////////////////////////////////////////////
-    AUDIOPARAM_CONSTRUCTOR("AudioParam"),
+    AUDIOPARAM_CONSTRUCTOR("AudioParam constructor"),
     AUDIOPARAM_PROTOTYPE("AudioParam.prototype"),
     AUDIOPARAM_INSTANCES("AudioParam.instances"),
     AUDIOPARAM_TAJS_UNSUPPORTED_FUNCTION("AudioParam.prototype.TAJS_UNSUPPORTED_FUNCTION"),
@@ -672,21 +670,21 @@ public enum DOMObjects implements HostObject {
     // /////////////////////////////////////////////////////////////////////////
     // / HTML5 ScriptProcessorNode ///
     // /////////////////////////////////////////////////////////////////////////
-    SCRIPTPROCESSORNODE_CONSTRUCTOR("ScriptProcessorNode"),
+    SCRIPTPROCESSORNODE_CONSTRUCTOR("ScriptProcessorNode constructor"),
     SCRIPTPROCESSORNODE_PROTOTYPE("ScriptProcessorNode.prototype"),
     SCRIPTPROCESSORNODE_INSTANCES("ScriptProcessorNode.instances"),
 
     // /////////////////////////////////////////////////////////////////////////
     // / HTML5 AudioDestinationNdoe ///
     // /////////////////////////////////////////////////////////////////////////
-    AUDIODESTINATIONNODE_CONSTRUCTOR("AudioDestinationNode"),
+    AUDIODESTINATIONNODE_CONSTRUCTOR("AudioDestinationNode constructor"),
     AUDIODESTINATIONNODE_PROTOTYPE("AudioDestinationNode.prototype"),
     AUDIODESTINATIONNODE_INSTANCES("AudioDestinationNode.instances"),
 
     // /////////////////////////////////////////////////////////////////////////
     // / HTML5 TimeRanges (used in Media) ///
     // /////////////////////////////////////////////////////////////////////////
-    TIMERANGES_CONSTRUCTOR("TimeRanges"),
+    TIMERANGES_CONSTRUCTOR("TimeRanges constructor"),
     TIMERANGES_PROTOTYPE("TimeRanges.prototype"),
     TIMERANGES_INSTANCES("TimeRanges instances"),
     TIMERANGES_START("TimeRanges.prototype.start"),
@@ -709,7 +707,7 @@ public enum DOMObjects implements HostObject {
     READY_STATE_EVENT_PROTOTYPE("ReadystateEvent.prototype"),
     READY_STATE_EVENT_INSTANCES("ReadystateEvent instances"),
     XML_HTTP_REQUEST_INSTANCES("XmlHttpRequest"),
-    XML_HTTP_REQUEST_CONSTRUCTOR("XmlHttpRequest"),
+    XML_HTTP_REQUEST_CONSTRUCTOR("XmlHttpRequest constructor"),
     XML_HTTP_REQUEST_OPEN("XmlHttpRequest.open"),
     XML_HTTP_REQUEST_SEND("XmlHttpRequest.send"),
     XML_HTTP_REQUEST_SET_REQUEST_HEADER("XmlHttpRequest.setRequestHeader"),
@@ -719,14 +717,15 @@ public enum DOMObjects implements HostObject {
     XML_HTTP_REQUEST_PROTOTYPE("XmlHttpRequest.prototype"),
     ACTIVE_X_OBJECT_INSTANCES("ActiveXObject"),
     ACTIVE_X_OBJECT_PROTOTYPE("ActiveXObject.prototype"),
-    ACTIVE_X_OBJECT_CONSTRUCTOR("ActiveXObject"),
+    ACTIVE_X_OBJECT_CONSTRUCTOR("ActiveXObject constructor"),
     ACTIVE_X_OBJECT_OPEN("ActiveXObject.open"),
     ACTIVE_X_OBJECT_SEND("ActiveXObject.send"),
     ACTIVE_X_OBJECT_SET_REQUEST_HEADER("ActiveXObject.setRequestHeader"),
     ACTIVE_X_OBJECT_ABORT("ActiveXObject.abort"),
     ACTIVE_X_OBJECT_GET_RESPONSE_HEADER("ActiveXObject.getResponseHeader"),
-    ACTIVE_X_OBJECT_GET_ALL_RESPONSE_HEADERS("ActiveXObject.getAllResponseHeaders"),
-    JSON_OBJECT("JSONObject");
+    ACTIVE_X_OBJECT_GET_ALL_RESPONSE_HEADERS("ActiveXObject.getAllResponseHeaders");
+
+    private static final Logger log = Logger.getLogger(DOMObjects.class);
 
     private HostAPIs api;
 
@@ -747,19 +746,30 @@ public enum DOMObjects implements HostObject {
         return api;
     }
 
-    @Override
-    public void evaluateSetter(ObjectLabel objlabel, Str prop, Value value, State state) {
-        evaluateDOMSetter(objlabel, prop, value, state);
+    public static void evaluateDOMSetter(ObjectLabel objlabel, Str prop, Value value, Solver.SolverInterface c) {
+        ParallelTransfer pt = new ParallelTransfer(c);
+        if (DOMFunctions.canRegisterElementIdentifiersForSetter(prop)) {
+            pt.add(() -> DOMFunctions.registerElementIdentifiersForSetter(objlabel, prop.getStr(), value, c.getState()));
+        }
+        EventType eventHandlerKind;
+        if (prop.isMaybeSingleStr()) {
+            eventHandlerKind = EventType.getEventHandlerTypeFromAttributeName(prop.getStr());
+        } else {
+            eventHandlerKind = EventType.UNKNOWN;
+        }
+        if (eventHandlerKind == EventType.UNKNOWN) {
+            // FIXME: currently ignoring unknown property assignments in DOM setters
+            // ignore eventhandler registration through setters for event names we are not aware of:
+            // it is likely a regular property that is being written
+            // (esp. properties on window as it is the global object!)
+            // This is unsound, see #235
+            if (log.isDebugEnabled()) {
+                log.debug("Ignoring event handler registration through setter for event type: " + prop);
+            }
+        } else {
+            pt.add(() -> DOMEvents.addEventHandler(value, eventHandlerKind, c));
+        }
+        pt.complete();
     }
 
-    public static void evaluateDOMSetter(ObjectLabel objlabel, Str prop, Value value, State state) {
-        if (objlabel.getHostObject().getAPI() != HostAPIs.DOCUMENT_OBJECT_MODEL && objlabel.getHostObject().getAPI() != HostAPIs.ECMASCRIPT_NATIVE) {
-            state.setToNone();
-            return;
-        }
-        if (prop.isMaybeSingleStr()) {
-            DOMEvents.addEventHandler(Collections.singleton(objlabel), state, prop.getStr(), value, true);
-            // TODO: other DOM setters to consider?
-        } // FIXME: currently ignoring unknown property assignments in DOM setters
-    }
 }

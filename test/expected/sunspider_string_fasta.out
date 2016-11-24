@@ -1,6 +1,7 @@
 test/sunspider/string-fasta.js:83:5: [definite] The variable ret is never used
 test/sunspider/string-fasta.js:43:9: [maybe] The variable last has values with different types
 test/sunspider/string-fasta.js:43:15: [maybe] Conversion to number yields NaN
+test/sunspider/string-fasta.js:43:15: [maybe] Converting null to string
 test/sunspider/string-fasta.js:43:15: [maybe] Converting undefined to string
 test/sunspider/string-fasta.js:43:15: [maybe] Reading absent property (computed name)
 test/sunspider/string-fasta.js:43:27: [maybe] Reading absent property (computed name)
@@ -8,7 +9,6 @@ test/sunspider/string-fasta.js:43:33: [maybe] The variable last has values with 
 test/sunspider/string-fasta.js:52:25: [maybe] Converting primitive string to object
 test/sunspider/string-fasta.js:53:13: [maybe] Converting object to string
 test/sunspider/string-fasta.js:53:13: [maybe] Converting primitive string to object
-test/sunspider/string-fasta.js:56:15: [maybe] Conversion to number yields NaN
 test/sunspider/string-fasta.js:56:15: [maybe] Converting object to string
 test/sunspider/string-fasta.js:56:15: [maybe] Converting primitive string to object
 test/sunspider/string-fasta.js:57:23: [maybe] Converting primitive string to object
@@ -16,5 +16,5 @@ test/sunspider/string-fasta.js:58:17: [maybe] Converting object to string
 test/sunspider/string-fasta.js:58:17: [maybe] Converting primitive string to object
 test/sunspider/string-fasta.js:72:17: [maybe] Reading absent property (computed name)
 test/sunspider/string-fasta.js:92:26: [maybe] Converting object to number
-test/sunspider/string-fasta.js:94:1: [info] Abstract value: UInt
+test/sunspider/string-fasta.js:94:1: [info] Abstract value: UInt|NotUInt
 test/sunspider/string-fasta.js:43:27: [info] Reading from unknown property that may cause loss of precision

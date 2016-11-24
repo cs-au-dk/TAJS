@@ -69,12 +69,12 @@ public class TestCollections {
 
     public List<SourceLocation> makeElements_6_3() {
         List<SourceLocation> list = newList();
-        list.add(new SourceLocation(1, 1, "test1.js"));
-        list.add(new SourceLocation(1, 1, "test1.js"));
-        list.add(new SourceLocation(1, 1, "test2.js"));
-        list.add(new SourceLocation(1, 1, "test2.js"));
-        list.add(new SourceLocation(1, 1, "test3.js"));
-        list.add(new SourceLocation(1, 1, "test3.js"));
+        list.add(new SourceLocation(1, 1, "test1.js", null));
+        list.add(new SourceLocation(1, 1, "test1.js", null));
+        list.add(new SourceLocation(1, 1, "test2.js", null));
+        list.add(new SourceLocation(1, 1, "test2.js", null));
+        list.add(new SourceLocation(1, 1, "test3.js", null));
+        list.add(new SourceLocation(1, 1, "test3.js", null));
         return list;
     }
 }

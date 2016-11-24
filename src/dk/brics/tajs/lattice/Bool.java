@@ -70,4 +70,10 @@ public interface Bool {
      * Constructs a value as the join of this value and the given concrete boolean value.
      */
     Value joinBool(Value x);
+
+    /**
+     * Constructs a value as a copy of this value but definitely not a boolean.
+     */
+    @SuppressWarnings("unused"/* used in TAJS-meta */)
+    Value restrictToNotBool();
 }

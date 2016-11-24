@@ -38,10 +38,6 @@ public class JSError {
      * Evaluates the given native function.
      */
     public static Value evaluate(ECMAScriptObjects nativeobject, CallInfo call, Solver.SolverInterface c) {
-        if (nativeobject == ECMAScriptObjects.ERROR_TOSTRING)
-            if (NativeFunctions.throwTypeErrorIfConstructor(call, c))
-                return Value.makeNone();
-
         switch (nativeobject) {
 
             case ERROR: { // 15.11.1 / 15.11.2 (function calls act like constructors here, also below)
@@ -73,8 +69,7 @@ public class JSError {
             }
 
             case ERROR_TOSTRING: { // 15.11.4.4
-                NativeFunctions.expectParameters(nativeobject, call, c, 0, 0);
-                return Value.makeAnyStr();
+                return evaluateToString();
             }
 
             default:
@@ -87,7 +82,6 @@ public class JSError {
      */
     private static Value createErrorObject(ObjectLabel proto, ECMAScriptObjects nativeobject, CallInfo call, Solver.SolverInterface c) {
         State state = c.getState();
-        NativeFunctions.expectParameters(nativeobject, call, c, 0, 1);
         ObjectLabel obj = new ObjectLabel(call.getSourceNode(), Kind.ERROR);
         state.newObject(obj);
         state.writeInternalPrototype(obj, Value.makeObject(proto));
@@ -95,5 +89,11 @@ public class JSError {
         if (message.isMaybeOtherThanUndef())
             c.getAnalysis().getPropVarOperations().writeProperty(obj, "message", Conversion.toString(message.restrictToNotUndef(), c).removeAttributes());
         return Value.makeObject(obj);
+    }
+
+    public static Value evaluateToString() {
+        // 15.11.4.4 Error.prototype.toString ( )
+        // Returns an implementation defined string.
+        return Value.makeAnyStr();
     }
 }

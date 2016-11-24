@@ -99,11 +99,9 @@ test/sunspider/3d-raytrace.js:168:62: [maybe] Conversion to number yields NaN
 test/sunspider/3d-raytrace.js:168:72: [maybe] Reading absent property (computed name)
 test/sunspider/3d-raytrace.js:169:25: [maybe] The variable far has values with different types
 test/sunspider/3d-raytrace.js:171:14: [maybe] Conversion to number yields NaN
-test/sunspider/3d-raytrace.js:171:14: [maybe] Conversion to number yields NaN
 test/sunspider/3d-raytrace.js:171:14: [maybe] Reading absent property (computed name)
 test/sunspider/3d-raytrace.js:171:24: [maybe] Conversion to number yields NaN
 test/sunspider/3d-raytrace.js:171:28: [maybe] Reading absent property (computed name)
-test/sunspider/3d-raytrace.js:172:14: [maybe] Conversion to number yields NaN
 test/sunspider/3d-raytrace.js:172:14: [maybe] Conversion to number yields NaN
 test/sunspider/3d-raytrace.js:172:14: [maybe] Reading absent property (computed name)
 test/sunspider/3d-raytrace.js:172:24: [maybe] Conversion to number yields NaN
@@ -131,9 +129,8 @@ test/sunspider/3d-raytrace.js:399:13: [maybe] Reading absent property (computed 
 test/sunspider/3d-raytrace.js:416:18: [maybe] Converting null to string
 test/sunspider/3d-raytrace.js:416:18: [maybe] Converting undefined to string
 test/sunspider/3d-raytrace.js:416:24: [maybe] Reading absent property (computed name)
-test/sunspider/3d-raytrace.js:416:24: [maybe] Reading absent property (computed name)
 test/sunspider/3d-raytrace.js:448:26: [maybe] Converting object to number
-test/sunspider/3d-raytrace.js:450:1: [info] Abstract value: UInt
+test/sunspider/3d-raytrace.js:450:1: [info] Abstract value: UInt|NotUInt
 test/sunspider/3d-raytrace.js:165:14: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/sunspider/3d-raytrace.js:166:14: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/sunspider/3d-raytrace.js:167:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision

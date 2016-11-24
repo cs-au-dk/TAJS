@@ -4,9 +4,9 @@ import dk.brics.tajs.Main;
 import dk.brics.tajs.monitoring.CompositeMonitoring;
 import dk.brics.tajs.monitoring.IAnalysisMonitoring;
 import dk.brics.tajs.monitoring.Monitoring;
+import dk.brics.tajs.monitoring.OrdinaryExitReachableChecker;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.test.Misc;
-import dk.brics.tajs.test.monitors.OrdinaryExitReachableCheckerMonitor;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -21,7 +21,15 @@ public class TestHostFunctionSources_ArrayPrototype {
         Options.get().enableTest();
         Options.get().enableLoopUnrolling(100);
         Options.get().enablePolyfillMDN();
-        monitor = CompositeMonitoring.buildFromList(new Monitoring(), new OrdinaryExitReachableCheckerMonitor());
+        Options.get().enableUnsound();
+        monitor = CompositeMonitoring.buildFromList(new Monitoring(), new OrdinaryExitReachableChecker());
+    }
+
+    @Test
+    public void createsNonEnumerableProperties() {
+        Misc.runSource(new String[]{
+                "TAJS_assert(Object.keys([]).length === 0);"
+        }, monitor);
     }
 
     @Test
@@ -101,6 +109,82 @@ public class TestHostFunctionSources_ArrayPrototype {
                 "var x = 'a';",
                 "['b', 'c'].forEach(function(e){x = e;});",
                 "TAJS_assert(x === 'c');"
+        }, monitor);
+    }
+
+    @Test
+    public void forEach_callbackIsArgumentSensitive() {
+        Misc.runSource(new String[]{
+                "function f(e){TAJS_assert(e, 'isMaybeSingleStr');}",
+                "['b', 'c'].forEach(f);",
+                "['d', 'e'].forEach(f);",
+        }, monitor);
+    }
+
+    @Test
+    public void forEach_callbackIsArgumentForNativeCalls() {
+        Misc.runSource(new String[]{
+                "['b', 'c'].forEach(function(n){",
+                "   Object.defineProperty({}, n, {});",
+                "});",
+        }, monitor);
+    }
+
+    @Test
+    public void forEach_callbackIsGuardedArgumentSensitive() {
+        Misc.runSource(new String[]{
+                "function f(e, x){TAJS_assert(e, 'isMaybeSingleStr', x !== true);}",
+                "['b', 'c'].forEach(f);",
+                "['d', 'e'].forEach(f);",
+                "f('foo', true)",
+                "f('bar', true)",
+        }, monitor);
+    }
+
+    @Test
+    public void forEach_isArgumentSensitive() {
+        Misc.runSource(new String[]{
+                "var x = 0;",
+                "function f(e){x++;}",
+                "function g(e){x++;}",
+                "var arr = ['b', 'c'];",
+                "arr.forEach(f);",
+                "arr[0] = 'd';",
+                "arr[1] = 'e';",
+                "arr.forEach(g);",
+                "TAJS_assert(x === 4);"
+        }, monitor);
+    }
+
+    @Test
+    public void forEach_isObjectSensitive() {
+        Misc.runSource(new String[]{
+                "var x = 0;",
+                "function f(e){x++;}",
+                "['b', 'c'].forEach(f);",
+                "['d', 'e'].forEach(f);",
+                "TAJS_assert(x === 4);"
+        }, monitor);
+    }
+
+    @Test
+    public void map_isOrdered() {
+        Misc.runSource(new String[]{
+                "var a = [42, 97].map(function(e){return e + 1;});",
+                "TAJS_assert(a[0] === 43);",
+                "TAJS_assert(a[1] === 98);"
+        }, monitor);
+    }
+
+    @Test
+    public void map_heapSensitiveResult() {
+        Misc.runSource(new String[]{
+                "var a = [42, 97].map(function(e){return e + 1;});",
+                "var b = [56, 64].map(function(e){return e * -1;});",
+                "TAJS_assert(a[0] === 43);",
+                "TAJS_assert(a[1] === 98);",
+                "TAJS_assert(b[0] === -56);",
+                "TAJS_assert(b[1] === -64);"
         }, monitor);
     }
 

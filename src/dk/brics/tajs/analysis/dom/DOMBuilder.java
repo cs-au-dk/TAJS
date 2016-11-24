@@ -17,6 +17,7 @@
 package dk.brics.tajs.analysis.dom;
 
 import dk.brics.tajs.analysis.InitialStateBuilder;
+import dk.brics.tajs.analysis.PropVarOperations;
 import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.analysis.dom.ajax.AjaxBuilder;
 import dk.brics.tajs.analysis.dom.core.CoreBuilder;
@@ -30,6 +31,7 @@ import dk.brics.tajs.analysis.dom.event.MouseEvent;
 import dk.brics.tajs.analysis.dom.event.TouchEvent;
 import dk.brics.tajs.analysis.dom.html.HTMLBuilder;
 import dk.brics.tajs.analysis.dom.html.HTMLCollection;
+import dk.brics.tajs.analysis.dom.html.HTMLElement;
 import dk.brics.tajs.analysis.dom.html5.AudioContext;
 import dk.brics.tajs.analysis.dom.html5.AudioDestinationNode;
 import dk.brics.tajs.analysis.dom.html5.HTML5Builder;
@@ -38,6 +40,7 @@ import dk.brics.tajs.analysis.dom.html5.ScriptProcessorNode;
 import dk.brics.tajs.analysis.dom.style.CSSStyleDeclaration;
 import dk.brics.tajs.analysis.dom.style.StyleBuilder;
 import dk.brics.tajs.analysis.dom.view.ViewBuilder;
+import dk.brics.tajs.flowgraph.EventType;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.Value;
@@ -151,6 +154,8 @@ public class DOMBuilder {
             createDOMProperty(element, "attributes", Value.makeObject(DOMNamedNodeMap.INSTANCES), c);
             createDOMProperty(element, "ownerDocument", Value.makeObject(DOMDocument.INSTANCES).joinNull().setReadOnly(), c);
             createDOMProperty(element, "offsetParent", htmlElementsProperty, c);
+            createDOMProperty(element, "innerHTML", Value.makeAnyStr(), c);
+            createDOMProperty(element, "outerHTML", Value.makeAnyStr(), c);
         }
 
         createDOMProperty(Event.PROTOTYPE, "target", Value.makeObject(getAllDOMEventTargets()), c);
@@ -174,11 +179,12 @@ public class DOMBuilder {
             createDOMProperty(instance, "channelCountMode", Value.makeAnyStr(), c);
             createDOMProperty(instance, "channelInterpretation", Value.makeAnyStr(), c);
         }
+        writeNullOnEventProperties(singleton(HTMLElement.ELEMENT_PROTOTYPE), c.getAnalysis().getPropVarOperations());
+        writeNullOnEventProperties(singleton(DOMWindow.WINDOW), c.getAnalysis().getPropVarOperations());
 
+        DOMFunctions.makeAnyHTMLNodeList(c);
         if (document != null) {
-            buildHTML(document, c);
-        } else {
-            DOMFunctions.makeAnyHTMLNodeList(c);
+            buildHTML(document, c); // FIXME: Does this raise precision significantly?
         }
     }
 
@@ -203,8 +209,8 @@ public class DOMBuilder {
                 if (id != null) {
                     s.getExtras().addToMayMap(DOMRegistry.MayMaps.ELEMENTS_BY_ID.name(), id, Collections.singleton(label));
 
-                    // TODO An element with id FOO is available as FOO
-                    // pv.writeProperty(DOMWindow.WINDOW, id, Value.makeObject(label));
+                    // NB: technically, the property resides in a scope *outside* window!
+                    c.getAnalysis().getPropVarOperations().writeProperty(DOMWindow.WINDOW, id, Value.makeObject(label));
                 }
 
                 // Special Property: name
@@ -234,5 +240,12 @@ public class DOMBuilder {
             throw new AnalysisException("DOM is not done building, can not request object labels yet.");
         }
         return ALL_HTML_OBJECT_LABELS;
+    }
+
+    public static void writeNullOnEventProperties(Set<ObjectLabel> targets, PropVarOperations pv){
+        EventType.getAllEventTypeNames().stream().forEach(name -> {
+            String onName = "on" + name;
+            pv.writeProperty(targets, Value.makeTemporaryStr(onName), Value.makeNull().setAttributes(false, false, false), false, true);
+        });
     }
 }

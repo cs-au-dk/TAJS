@@ -22,9 +22,10 @@ import dk.brics.tajs.analysis.Exceptions;
 import dk.brics.tajs.analysis.FunctionCalls;
 import dk.brics.tajs.analysis.FunctionCalls.OrdinaryCallInfo;
 import dk.brics.tajs.analysis.InitialStateBuilder;
+import dk.brics.tajs.analysis.ParallelTransfer;
 import dk.brics.tajs.analysis.PropVarOperations;
 import dk.brics.tajs.analysis.Solver;
-import dk.brics.tajs.analysis.dom.DOMEventLoop;
+import dk.brics.tajs.analysis.dom.DOMEvents;
 import dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects;
 import dk.brics.tajs.analysis.nativeobjects.JSGlobal;
 import dk.brics.tajs.flowgraph.AbstractNode;
@@ -64,7 +65,6 @@ import dk.brics.tajs.lattice.Context;
 import dk.brics.tajs.lattice.HeapContext;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.ObjectLabel.Kind;
-import dk.brics.tajs.lattice.ParallelTransfer;
 import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.State.Properties;
 import dk.brics.tajs.lattice.Str;
@@ -389,7 +389,7 @@ public class NodeTransfer implements NodeVisitor {
      * 11.2.1 assignment with right-hand-side property accessor.
      */
     @Override
-    public void visit(ReadPropertyNode n) {
+    public void visit(ReadPropertyNode n) { // FIXME: use ParallelTransfer, github #315
         // get the base value, coerce with ToObject
         Value baseval = c.getState().readRegister(n.getBaseRegister());
         baseval = UnknownValueResolver.getRealValue(baseval, c.getState());
@@ -492,11 +492,11 @@ public class NodeTransfer implements NodeVisitor {
         boolean maybe_nan = propertyval.isMaybeNaN();
         propertyval = propertyval.restrictToNotNullNotUndef().restrictToNotNaN();
         Value propertystr = Conversion.toString(propertyval, c);
-        if (propertystr.isNone() && !Options.get().isPropagateDeadFlow()) { // TODO: maybe need more aborts like this one?
+        if ((propertystr.isNone() && !maybe_undef && !maybe_null && !maybe_nan) && !Options.get().isPropagateDeadFlow()) { // TODO: maybe need more aborts like this one?
             c.getState().setToNone();
             return;
         }
-        // get the value to be written
+
         Value v = c.getState().readRegister(n.getValueRegister());
         switch (n.getKind()) {
             case GETTER:
@@ -508,11 +508,14 @@ public class NodeTransfer implements NodeVisitor {
             case ORDINARY:
                 // do nothing
                 break;
+            default:
+                throw new AnalysisException("Unexpected case: " + n.getKind());
         }
         // write the object property value, and separately for "undefined"/"null"/"NaN"
         ParallelTransfer pt = new ParallelTransfer(c);
         Value finalV = v;
-        pt.add(() -> pv.writeProperty(objlabels, propertystr, finalV, false, n.isDecl()));
+        if (!propertystr.isNone())
+            pt.add(() -> pv.writeProperty(objlabels, propertystr, finalV, false, n.isDecl()));
         if (maybe_undef && !propertystr.isMaybeStr("undefined"))
             pt.add(() -> pv.writeProperty(objlabels, Value.makeTemporaryStr("undefined"), finalV, false, n.isDecl()));
         if (maybe_null && !propertystr.isMaybeStr("null"))
@@ -1048,10 +1051,10 @@ public class NodeTransfer implements NodeVisitor {
     @Override
     public void visit(EventDispatcherNode n) {
         if (Options.get().isDOMEnabled()) {
-            DOMEventLoop.get().multipleNondeterministicEventLoops(n, c);
+            DOMEvents.emit(n, c);
         }
         if (Options.get().isAsyncEventsEnabled()) {
-            AsyncEvents.get().emit(n, c);
+            AsyncEvents.emit(n, c);
         }
     }
 }

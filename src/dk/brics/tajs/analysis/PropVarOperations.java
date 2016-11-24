@@ -1,5 +1,22 @@
+/*
+ * Copyright 2009-2016 Aarhus University
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package dk.brics.tajs.analysis;
 
+import dk.brics.tajs.analysis.dom.DOMObjects;
 import dk.brics.tajs.analysis.js.UserFunctionCalls;
 import dk.brics.tajs.flowgraph.AbstractNode;
 import dk.brics.tajs.flowgraph.BasicBlock;
@@ -8,7 +25,6 @@ import dk.brics.tajs.lattice.ExecutionContext;
 import dk.brics.tajs.lattice.Obj;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.ObjectProperty;
-import dk.brics.tajs.lattice.ParallelTransfer;
 import dk.brics.tajs.lattice.Property;
 import dk.brics.tajs.lattice.ScopeChain;
 import dk.brics.tajs.lattice.State;
@@ -26,6 +42,7 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.Set;
 
+import static dk.brics.tajs.analysis.InitialStateBuilder.GLOBAL;
 import static dk.brics.tajs.util.Collections.newList;
 import static dk.brics.tajs.util.Collections.newSet;
 import static dk.brics.tajs.util.Collections.singleton;
@@ -117,23 +134,13 @@ public class PropVarOperations {
                 for (ObjectLabel l : ol)
                     if (!visited.contains(l)) {
                         visited.add(l);
-                        Value v = readPropertyDirect(l, propertystr);
-                        // String objects have their own [[GetOwnProperty]], see 15.5.5.2 in the ECMAScript 5 standard.
-/*                    if (v.isMaybeAbsent() && l.getKind() == Kind.STRING && (propertystr.isMaybeStrOnlyUInt() || (propertystr.getStr() != null && Strings.isArrayIndex(propertystr.getStr())))) { // TODO: review (note that this is new in ES5)
-                        Value tmp = null;
-                        Value internal_value = UnknownValueResolver.getInternalValue(l, this, true);
-                        Value lenV = UnknownValueResolver.getProperty(l, "length", this, true).restrictToNum();
-                        String value = internal_value.getStr();
-                        Double obj_len = lenV.getNum();
-                        Integer prop_len = propertystr.getStr() == null ? -1 : Integer.valueOf(propertystr.getStr());
-                        if (obj_len != null && value != null && prop_len > -1 && prop_len < obj_len)
-                            tmp = Value.makeStr(value.substring(prop_len, prop_len + 1));
-                        else if (obj_len != null && prop_len > -1 && prop_len >= obj_len)
-                            tmp = Value.makeUndef();
-                        if (tmp != null)
-                            v = v.isNotPresent() ? tmp : v.join(tmp);
-                }*/
-
+                        Value v;
+                        if (l.getKind() == ObjectLabel.Kind.STRING) {
+                            // String objects have their own [[GetOwnProperty]], see 15.5.5.2 in the ECMAScript 5 standard.
+                            v = readStringPropertyDirect(l, propertystr);
+                        } else {
+                            v = readPropertyDirect(l, propertystr);
+                        }
                         if (!no_call_getters) {
                             if (v.isMaybePresentAccessor())
                                 v = UnknownValueResolver.getRealValue(v, c.getState());
@@ -229,6 +236,84 @@ public class PropVarOperations {
     }
 
     /**
+     * Variant of {@link #readPropertyDirect(ObjectLabel, Str)} for string objects.
+     * String objects have their own [[GetOwnProperty]], see 15.5.5.2 in the ECMAScript 5 standard.
+     */
+    private Value readStringPropertyDirect(ObjectLabel str, Str propertystr) {
+        Value internal_value = UnknownValueResolver.getInternalValue(str, c.getState(), false);
+        Value character = readStringCharacter(internal_value, propertystr);
+        Value length = readStringLength(internal_value, propertystr);
+        Value result = Value.makeNone();
+        if (character.isMaybePresent()) {
+            result = result.join(character);
+        }
+        if (length.isMaybePresent()) {
+            result = result.join(length);
+        }
+        if (character.isNotPresent() && result.isNotPresent()) {
+            result = Value.makeAbsent();
+        }
+        if (result.isMaybeAbsent()) { //  not "length" or character index
+            Value v = readPropertyDirect(str, propertystr);
+            if (result.isNotPresent())
+                result = v;
+            else
+                result = UnknownValueResolver.join(result, v, c.getState());
+        }
+        return result;
+    }
+
+    /**
+     * Reads the string length, provided that propertystr matches "length" and otherwise returns 'absent'.
+     */
+    private Value readStringLength(Str str, Str propertystr) {
+        Value result = Value.makeNone();
+        if (propertystr.isMaybeFuzzyStr()) {
+            result = result.joinAbsent();
+        }
+        if (propertystr.isMaybeStr("length")) {
+            if (str.isMaybeFuzzyStr()) {
+                result = result.joinAnyNumUInt();
+            } else {
+                result = result.joinNum(str.getStr().length());
+            }
+        }
+        return result.isNone() ? Value.makeAbsent() : result;
+    }
+
+    /**
+     * Reads a char from the string, provided that propertystr is a valid index and otherwise returns 'absent'.
+     */
+    private Value readStringCharacter(Str str, Str propertystr) {
+        boolean isUnknownUIntIndex = propertystr.isMaybeStrUInt();
+        boolean isKnownUIntIndex = propertystr.isMaybeSingleStr() && Strings.isArrayIndex(propertystr.getStr());
+        if (!isUnknownUIntIndex && !isKnownUIntIndex) {
+            // not reading a character
+            return Value.makeAbsent();
+        }
+        if (str.isMaybeFuzzyStr()) {
+            // unknown string
+            return Value.makeAnyStr().joinAbsent(); // TODO: improve precision: e.g. identifierparts are preserved
+        }
+        String string = str.getStr();
+        if (isKnownUIntIndex) {
+            Integer index = Integer.valueOf(propertystr.getStr());
+            if (index >= string.length()) {
+                // index out of bounds
+                return Value.makeAbsent();
+            }
+            // known index, known string
+            return Value.makeStr(Character.toString(string.charAt(index)));
+        }
+        Set<Value> chars = newSet();
+        for (int i = 0; i < string.length(); i++) {
+            chars.add(Value.makeStr(Character.toString(string.charAt(i))));
+        }
+        // unknown index, known string
+        return Value.join(chars).joinAbsent();
+    }
+
+    /**
      * Returns the value of the given property in the objects.
      * The internal prototype chains and scope chains are <em>not</em> used.
      */
@@ -315,6 +400,22 @@ public class PropVarOperations {
     }
 
     /**
+     * Same as {@link #writeProperty(Collection, Str, Value, boolean)},
+     * with force_weak set to false.
+     */
+    public void writeProperty(Collection<ObjectLabel> objlabels, Str propertystr, Value value) {
+        writeProperty(objlabels, propertystr, value, false);
+    }
+
+    /**
+     * Same as {@link #writeProperty(Collection, Str, Value, boolean, boolean)},
+     * with not_invoke_setters set to false.
+     */
+    public void writeProperty(Collection<ObjectLabel> objlabels, Str propertystr, Value value, boolean force_weak) {
+        writeProperty(objlabels, propertystr, value, force_weak, false);
+    }
+
+    /**
      * Same as {@link #writeProperty(Collection, Str, Value, boolean, boolean, boolean, boolean)},
      * with process_attributes set to true and value_has_attributes set to false.
      */
@@ -333,6 +434,9 @@ public class PropVarOperations {
      * @param not_invoke_setters if set, do not invoke setter (e.g. for property declarations in literals)
      */
     public void writeProperty(Collection<ObjectLabel> objlabels, Str propertystr, Value value, boolean process_attributes, boolean value_has_attributes, boolean force_weak, boolean not_invoke_setters) {
+        if (Options.get().isDebugOrTestEnabled() && propertystr.isMaybeOtherThanStr()) {
+            throw new AnalysisException("Uncoerced property name: " + propertystr);
+        }
         value.assertNonEmpty();
         ParallelTransfer pt = new ParallelTransfer(c);
         for (ObjectLabel objlabel : objlabels) {
@@ -486,7 +590,7 @@ public class PropVarOperations {
                                 if (i == 0) {
                                     return theValue;
                                 } else {
-                                    return Value.makeUndef(); // FIXME: else case necessary?
+                                    return Value.makeUndef();
                                 }
                             }
 
@@ -519,16 +623,32 @@ public class PropVarOperations {
                         if (!not_invoke_setters) {
                             value2 = updateArrayLength(objprop, value2, c);
                         }
-                        c.getState().getObject(objprop.getObjectLabel(), true).setValue(objprop, value2);
+                        if (objprop.getProperty().getKind() == Property.Kind.ORDINARY && objprop.getPropertyName().equals(Property.__PROTO__)) {
+                            c.getState().getObject(objprop.getObjectLabel(), true).setInternalPrototype(finalValue); // FIXME: unsound, only writing to __proto__ on non-DPAs
+                        } else {
+                            c.getState().getObject(objprop.getObjectLabel(), true).setValue(objprop, value2);
+                        }
                     });
                 } else {
                     pt.add(() -> {}); // nop transfer
                 }
             }
             if (!not_invoke_setters && objprop.getObjectLabel().isHostObject()) {
-                pt.add(() -> objprop.getObjectLabel().getHostObject().evaluateSetter(objprop.getObjectLabel(), objprop.getProperty().toStr(), theValue, c.getState()));
+                pt.add(() -> evaluateHostObjectSetter(objprop.getObjectLabel(), objprop.getProperty(), theValue));
             }
             pt.complete();
+        }
+    }
+
+    /**
+     * Evaluates a setter for the given host object property, if any.
+     */
+    private void evaluateHostObjectSetter(ObjectLabel objlabel, Property prop, Value value) {
+        if (Options.get().isDOMEnabled() &&
+                (objlabel.getHostObject().getAPI() == HostAPIs.DOCUMENT_OBJECT_MODEL || objlabel == GLOBAL)) {
+            DOMObjects.evaluateDOMSetter(objlabel, prop.toStr(), value, c); // TODO: refactor to use Property instead of Str
+        } else { // not applicable for any other family of host objects
+            c.getState().setToNone();
         }
     }
 
@@ -576,7 +696,7 @@ public class PropVarOperations {
                     }
                     // write 'length' property
                     numvalue = numvalue.setAttributes(true, true, false);
-                    c.getState().getObject(objprop.getObjectLabel(), true).setProperty("length", numvalue);
+                    c.getState().getObject(objprop.getObjectLabel(), true).setProperty("length", numvalue.joinModified());
                     if (definitely_length) {
                         value = numvalue;
                     } else {
@@ -593,7 +713,7 @@ public class PropVarOperations {
                     v = Value.makeNum(Math.max(old_length, Double.valueOf(propertystr.getStr()) + 1));
                 else
                     v = Value.makeAnyNumUInt();
-                c.getState().getObject(objprop.getObjectLabel(), true).setProperty("length", v.setAttributes(true, true, false));
+                c.getState().getObject(objprop.getObjectLabel(), true).setProperty("length", v.setAttributes(true, true, false).joinModified());
             }
         }
         return value;
@@ -698,16 +818,18 @@ public class PropVarOperations {
             definitely_found = true;
             for (ObjectLabel objlabel : sc) {
                 Bool h = hasPropertyRaw(Collections.singleton(objlabel), varname);
-                if (h.isMaybeTrue() || !it.hasNext() && !Options.get().isNoImplicitGlobalVarDeclarationsEnabled()) {
-                    // 8.6.2.2 [[Put]]
-                    // 1. Call the [[CanPut]] method of O with name P.
-                    // 2. If Result(1) is false, return.
-                    // 3. If O doesn't have a property with name P, go to step 6.
-                    // 4. Set the value of the property to V. The attributes of the property are not changed.
-                    // 5. Return.
-                    // 6. Create a property with name P, set its value to V and give it empty attributes.
-                    pf.add(() -> writeProperty(ObjectProperty.makeOrdinary(objlabel, varname), value, true, false, set_modified, true, false, false));
-                    objlabels.add(objlabel);
+                if (h.isMaybeTrue() || !it.hasNext()) {
+                    pf.add(() -> {
+                        // 8.6.2.2 [[Put]]
+                        // 1. Call the [[CanPut]] method of O with name P.
+                        // 2. If Result(1) is false, return.
+                        // 3. If O doesn't have a property with name P, go to step 6.
+                        // 4. Set the value of the property to V. The attributes of the property are not changed.
+                        // 5. Return.
+                        // 6. Create a property with name P, set its value to V and give it empty attributes.
+                        writeProperty(ObjectProperty.makeOrdinary(objlabel, varname), value, true, false, set_modified, true, false, false);
+                        objlabels.add(objlabel);
+                    });
                 }
                 if (h.isMaybeFalse())
                     definitely_found = false;
@@ -750,7 +872,7 @@ public class PropVarOperations {
      * @param varname   the variable name
      * @param base_objs collection where base objects are added (ignored if null)
      */
-    public Value readVariable(String varname, Collection<ObjectLabel> base_objs) {
+    public Value readVariable(String varname, Collection<ObjectLabel> base_objs) {// FIXME: use ParallelTransfer, github #315
         State state = c.getState();
         Collection<Value> values = newList();
         boolean definitely_found = false;

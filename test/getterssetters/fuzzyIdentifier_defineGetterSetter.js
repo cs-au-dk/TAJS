@@ -93,7 +93,7 @@ function fuzzyWrite_minimalBug() {
     });
     o[ALL_IDENT] = 42;
 
-    TAJS_assert(set_triggered, 'isMaybeAnyBool'); // XXX setter definitely triggered, despite fuzzy write?
+    TAJS_assert(set_triggered, 'isMaybeAnyBool');
 }
 function fuzzyRefinition() {
     var set_triggered = false;

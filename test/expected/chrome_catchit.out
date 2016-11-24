@@ -1,6 +1,8 @@
 test/chromeexperiments/catchit.html:71:13: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/catchit.html:72:13: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/catchit.html:74:13: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/catchit.html:123:19: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/catchit.html:123:19: [maybe] TypeError, call to non-function
 test/chromeexperiments/catchit.html:130:13: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/catchit.html:143:17: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/catchit.html:146:25: [maybe] TypeError, accessing property of null/undefined
@@ -15,20 +17,32 @@ test/chromeexperiments/catchit.html:170:17: [maybe] TypeError, accessing propert
 test/chromeexperiments/catchit.html:170:34: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/catchit.html:171:17: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/catchit.html:171:34: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/catchit.html: [maybe] Uncaught exception, constructed at [test/chromeexperiments/catchit.html:71:13, test/chromeexperiments/catchit.html:72:13, test/chromeexperiments/catchit.html:74:13, test/chromeexperiments/catchit.html:130:13, test/chromeexperiments/catchit.html:143:17, test/chromeexperiments/catchit.html:146:25, test/chromeexperiments/catchit.html:146:66, test/chromeexperiments/catchit.html:147:25, test/chromeexperiments/catchit.html:147:66, test/chromeexperiments/catchit.html:148:37, test/chromeexperiments/catchit.html:148:62, test/chromeexperiments/catchit.html:148:87, test/chromeexperiments/catchit.html:148:112, test/chromeexperiments/catchit.html:170:17, test/chromeexperiments/catchit.html:170:34, test/chromeexperiments/catchit.html:171:17, test/chromeexperiments/catchit.html:171:34]
+test/chromeexperiments/catchit.html:123:19: [maybe] Reading absent property getContext
+test/chromeexperiments/catchit.html:177:23: [maybe] Reading absent property pageX
+test/chromeexperiments/catchit.html:178:23: [maybe] Reading absent property pageY
+test/chromeexperiments/catchit.html: [maybe] Uncaught exception, constructed at [test/chromeexperiments/catchit.html:71:13, test/chromeexperiments/catchit.html:72:13, test/chromeexperiments/catchit.html:74:13, test/chromeexperiments/catchit.html:123:19, test/chromeexperiments/catchit.html:130:13, test/chromeexperiments/catchit.html:143:17, test/chromeexperiments/catchit.html:146:25, test/chromeexperiments/catchit.html:146:66, test/chromeexperiments/catchit.html:147:25, test/chromeexperiments/catchit.html:147:66, test/chromeexperiments/catchit.html:148:37, test/chromeexperiments/catchit.html:148:62, test/chromeexperiments/catchit.html:148:87, test/chromeexperiments/catchit.html:148:112, test/chromeexperiments/catchit.html:170:17, test/chromeexperiments/catchit.html:170:34, test/chromeexperiments/catchit.html:171:17, test/chromeexperiments/catchit.html:171:34]
+test/chromeexperiments/catchit.html:137:13: [maybe] Conversion to number yields NaN
 test/chromeexperiments/catchit.html:143:17: [maybe] Reading absent property (computed name)
 test/chromeexperiments/catchit.html:146:25: [maybe] Reading absent property (computed name)
+test/chromeexperiments/catchit.html:146:39: [maybe] Conversion to number yields NaN
 test/chromeexperiments/catchit.html:146:66: [maybe] Reading absent property (computed name)
 test/chromeexperiments/catchit.html:147:25: [maybe] Reading absent property (computed name)
+test/chromeexperiments/catchit.html:147:39: [maybe] Conversion to number yields NaN
 test/chromeexperiments/catchit.html:147:66: [maybe] Reading absent property (computed name)
+test/chromeexperiments/catchit.html:148:27: [maybe] Conversion to number yields NaN
 test/chromeexperiments/catchit.html:148:37: [maybe] Reading absent property (computed name)
+test/chromeexperiments/catchit.html:148:52: [maybe] Conversion to number yields NaN
 test/chromeexperiments/catchit.html:148:62: [maybe] Reading absent property (computed name)
+test/chromeexperiments/catchit.html:148:77: [maybe] Conversion to number yields NaN
 test/chromeexperiments/catchit.html:148:87: [maybe] Reading absent property (computed name)
+test/chromeexperiments/catchit.html:148:102: [maybe] Conversion to number yields NaN
 test/chromeexperiments/catchit.html:148:112: [maybe] Reading absent property (computed name)
 test/chromeexperiments/catchit.html:170:17: [maybe] Reading absent property (computed name)
 test/chromeexperiments/catchit.html:170:34: [maybe] Reading absent property (computed name)
 test/chromeexperiments/catchit.html:171:17: [maybe] Reading absent property (computed name)
 test/chromeexperiments/catchit.html:171:34: [maybe] Reading absent property (computed name)
+test/chromeexperiments/catchit.html:182:27: [maybe] Conversion to number yields NaN
+test/chromeexperiments/catchit.html:182:79: [maybe] Conversion to number yields NaN
 test/chromeexperiments/catchit.html:86:21: [info] 'this' refers to a summary abstract object, which may cause loss of precision
 test/chromeexperiments/catchit.html:86:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/chromeexperiments/catchit.html:87:21: [info] 'this' refers to a summary abstract object, which may cause loss of precision

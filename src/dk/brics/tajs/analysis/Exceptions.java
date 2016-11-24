@@ -41,11 +41,8 @@ public class Exceptions {
     public static void throwTypeError(Solver.SolverInterface c) {
         if (Options.get().isExceptionsDisabled())
             return;
-        State newstate = c.getState().clone();
-        State oldstate = c.getState();
-        c.setState(newstate);
-        throwException(newstate, makeException(InitialStateBuilder.TYPE_ERROR_PROTOTYPE, c), c, c.getNode());
-        c.setState(oldstate);
+        c.withState(c.getState().clone(), () ->
+                throwException(c.getState(), makeException(InitialStateBuilder.TYPE_ERROR_PROTOTYPE, c), c, c.getNode()));
     }
 
     /**
@@ -56,11 +53,8 @@ public class Exceptions {
     public static void throwReferenceError(Solver.SolverInterface c) {
         if (Options.get().isExceptionsDisabled())
             return;
-        State newstate = c.getState().clone();
-        State oldstate = c.getState();
-        c.setState(newstate);
-        throwException(newstate, makeException(InitialStateBuilder.REFERENCE_ERROR_PROTOTYPE, c), c, c.getNode());
-        c.setState(oldstate);
+        c.withState(c.getState().clone(), () ->
+                throwException(c.getState(), makeException(InitialStateBuilder.REFERENCE_ERROR_PROTOTYPE, c), c, c.getNode()));
     }
 
     /**
@@ -71,11 +65,8 @@ public class Exceptions {
     public static void throwRangeError(Solver.SolverInterface c) {
         if (Options.get().isExceptionsDisabled())
             return;
-        State newstate = c.getState().clone();
-        State oldstate = c.getState();
-        c.setState(newstate);
-        throwException(newstate, makeException(InitialStateBuilder.RANGE_ERROR_PROTOTYPE, c), c, c.getNode());
-        c.setState(oldstate);
+        c.withState(c.getState().clone(), () ->
+                throwException(c.getState(), makeException(InitialStateBuilder.RANGE_ERROR_PROTOTYPE, c), c, c.getNode()));
     }
 
     /**
@@ -86,11 +77,8 @@ public class Exceptions {
     public static void throwSyntaxError(Solver.SolverInterface c) {
         if (Options.get().isExceptionsDisabled())
             return;
-        State newstate = c.getState().clone();
-        State oldstate = c.getState();
-        c.setState(newstate);
-        throwException(newstate, makeException(InitialStateBuilder.SYNTAX_ERROR_PROTOTYPE, c), c, c.getNode());
-        c.setState(oldstate);
+        c.withState(c.getState().clone(), () ->
+                throwException(c.getState(), makeException(InitialStateBuilder.SYNTAX_ERROR_PROTOTYPE, c), c, c.getNode()));
     }
 
     /**

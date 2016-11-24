@@ -123,7 +123,7 @@ public class DOMElement {
                 NativeFunctions.expectParameters(nativeObject, call, c, 1, 1);
                 /* Value name =*/
                 Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
-                return Value.makeAnyStr();
+                return Value.makeAnyStr().joinNull();
             }
             case ELEMENT_SET_ATTRIBUTE: {
                 NativeFunctions.expectParameters(nativeObject, call, c, 2, 2);
@@ -145,7 +145,7 @@ public class DOMElement {
                 Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
                 /* Value name =*/
                 Conversion.toString(NativeFunctions.readParameter(call, s, 1), c);
-                return Value.makeAnyStr();
+                return Value.makeAnyStr().joinNull();
             }
             case ELEMENT_GET_ATTRIBUTE_NODE: {
                 NativeFunctions.expectParameters(nativeObject, call, c, 1, 1);

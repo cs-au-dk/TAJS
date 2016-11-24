@@ -1,3 +1,19 @@
+/*
+ * Copyright 2009-2016 Aarhus University
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package dk.brics.tajs.options;
 
 import dk.brics.tajs.util.AnalysisException;
@@ -90,8 +106,8 @@ public class OptionValues {
     @Option(name = "-debug", usage = "Output debug information")
     private boolean debug;
 
-    @Option(name = "-collect-variable-info", usage = "Output type and line information on reachable variables")
-    private boolean collectVariableInfo;
+    @Option(name = "-show-variable-info", usage = "Output type and line information about all variables")
+    private boolean showVariableInfo;
 
     @Option(name = "-newflow", usage = "Report summary of new flow at function entries")
     private boolean newflow;
@@ -185,6 +201,12 @@ public class OptionValues {
     @Option(name = "-polyfill-typed-arrays", usage = "Enables use of polyfills for typed arrays (Int8Array, Float64Array ...)")
     private boolean polyfillTypedArrays;
 
+    @Option(name = "-async-events", usage = "Enables execution of asynchronous event handlers with TAJS_asyncListen")
+    private boolean asyncEvents;
+
+    @Argument
+    private List<String> arguments = new ArrayList<>();
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -210,7 +232,7 @@ public class OptionValues {
         if (flowgraph != that.flowgraph) return false;
         if (callgraph != that.callgraph) return false;
         if (debug != that.debug) return false;
-        if (collectVariableInfo != that.collectVariableInfo) return false;
+        if (showVariableInfo != that.showVariableInfo) return false;
         if (newflow != that.newflow) return false;
         if (states != that.states) return false;
         if (test != that.test) return false;
@@ -240,7 +262,6 @@ public class OptionValues {
         if (polyfillES6Collections != that.polyfillES6Collections) return false;
         if (polyfillTypedArrays != that.polyfillTypedArrays) return false;
         if (asyncEvents != that.asyncEvents) return false;
-        if (noImplicitGlobalVarDeclarations != that.noImplicitGlobalVarDeclarations) return false;
         if (ignoredLibrariesString != null ? !ignoredLibrariesString.equals(that.ignoredLibrariesString) : that.ignoredLibrariesString != null)
             return false;
         if (ignoredLibraries != null ? !ignoredLibraries.equals(that.ignoredLibraries) : that.ignoredLibraries != null)
@@ -268,7 +289,7 @@ public class OptionValues {
         result = 31 * result + (flowgraph ? 1 : 0);
         result = 31 * result + (callgraph ? 1 : 0);
         result = 31 * result + (debug ? 1 : 0);
-        result = 31 * result + (collectVariableInfo ? 1 : 0);
+        result = 31 * result + (showVariableInfo ? 1 : 0);
         result = 31 * result + (newflow ? 1 : 0);
         result = 31 * result + (states ? 1 : 0);
         result = 31 * result + (test ? 1 : 0);
@@ -300,19 +321,9 @@ public class OptionValues {
         result = 31 * result + (polyfillES6Collections ? 1 : 0);
         result = 31 * result + (polyfillTypedArrays ? 1 : 0);
         result = 31 * result + (asyncEvents ? 1 : 0);
-        result = 31 * result + (noImplicitGlobalVarDeclarations ? 1 : 0);
         result = 31 * result + (arguments != null ? arguments.hashCode() : 0);
         return result;
     }
-
-    @Option(name = "-async-events", usage = "Enables execution of asynchronous event handlers")
-    private boolean asyncEvents;
-
-    @Option(name = "-no-implicit-global-var-declarations", usage = "Enables avoiding creation of global variables outside variable declarations (unsound)")
-    private boolean noImplicitGlobalVarDeclarations;
-
-    @Argument
-    private List<String> arguments = new ArrayList<>();
 
     public OptionValues() {
         this(null, null);
@@ -450,8 +461,8 @@ public class OptionValues {
         callgraph = false;
     }
 
-    public void disableCollectVariableInfo() {
-        collectVariableInfo = false;
+    public void disableShowVariableInfo() {
+        showVariableInfo = false;
     }
 
     public void disableContextSensitiveHeap() {
@@ -624,8 +635,8 @@ public class OptionValues {
         callgraph = true;
     }
 
-    public void enableCollectVariableInfo() {
-        collectVariableInfo = true;
+    public void enableShowVariableInfo() {
+        showVariableInfo = true;
     }
 
 //	public void enableErrorBatchMode() {
@@ -827,8 +838,8 @@ public class OptionValues {
         return noChargedCalls;
     }
 
-    public boolean isCollectVariableInfoEnabled() {
-        return collectVariableInfo;
+    public boolean isShowVariableInfoEnabled() {
+        return showVariableInfo;
     }
 
     public boolean isContextSensitiveHeapEnabled() {
@@ -1027,14 +1038,6 @@ public class OptionValues {
 
     public boolean isPolyfillTypedArraysEnabled() {
         return polyfillTypedArrays;
-    }
-
-    public void enableNoImplicitGlobalVarDeclarations() {
-        noImplicitGlobalVarDeclarations = true;
-    }
-
-    public boolean isNoImplicitGlobalVarDeclarationsEnabled() {
-        return noImplicitGlobalVarDeclarations;
     }
 
     public void enableAsyncEvents() {

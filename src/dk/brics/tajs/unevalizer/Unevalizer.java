@@ -28,9 +28,12 @@ import com.google.javascript.rhino.Node;
 import com.google.javascript.rhino.Token;
 import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.flowgraph.AbstractNode;
+import dk.brics.tajs.util.AnalysisLimitationException;
 import org.apache.log4j.Logger;
 
+import java.nio.charset.Charset;
 import java.util.Set;
+import java.util.regex.Pattern;
 
 import static com.google.javascript.rhino.Node.newString;
 import static dk.brics.tajs.util.Collections.newSet;
@@ -43,6 +46,7 @@ public class Unevalizer {
      * Unevalizes the given code.
      */
     public String uneval(AnalyzerCallback callback, String source, boolean aliasedEval, String resVar, AbstractNode sourceNode, Solver.SolverInterface c) { // TODO: javadoc
+        source = normalize(source);
         log.debug("Starting on: " + source);
 
         // TODO: Immediately fail on aliased calls. Not hard to handle, but no real use cases yet.
@@ -54,7 +58,7 @@ public class Unevalizer {
 
         // Input was not syntactically valid (s \notin P)
         if (comp.getErrorCount() > 0)
-            throw new IllegalArgumentException("Invalid abstract expression: " + source);
+            return "throw new SyntaxError()";
 
         // log(comp.toSource());
         String code = getConst(root);
@@ -72,9 +76,9 @@ public class Unevalizer {
             // TODO: Check for shadowing.
 
             // We got a constant string that wasn't valid javascript. Weird, but legal, so return a syntax error.
-            if (comp.getErrorCount() > 0)
+            if (comp.getErrorCount() > 0) {
                 return "throw new SyntaxError()";
-
+            }
             log.debug("Valid program");
 
             // Basic sanity checking complete; jump to the interesting work for the constant string case.
@@ -111,6 +115,11 @@ public class Unevalizer {
 
         log.debug("Failed to refactor, returning null");
         return null;
+    }
+
+    private String normalize(String source) {
+        Pattern p = Pattern.compile("\\R");
+        return p.matcher(source).replaceAll("\\n");
     }
 
     /**
@@ -171,8 +180,7 @@ public class Unevalizer {
         compiler.setErrorManager(em);
         CompilerOptions options = new CompilerOptions();
         // Try very hard to interpret the meaning of our code string.
-        options.setIdeMode(true);
-        options.setOutputCharset("UTF-8");
+        options.setOutputCharset(Charset.forName("UTF-8"));
         // We only care about the AST, and that is gotten through "compiling" whitespace mode only.
         CompilationLevel.WHITESPACE_ONLY.setOptionsForCompilationLevel(options);
 
@@ -347,6 +355,9 @@ public class Unevalizer {
      */
     private String contractEval(AnalyzerCallback callback, Compiler comp, Set<String> map, String resVar) {
         Node stringRoot = getParentOfFirstInterestingNode(comp).getLastChild();
+        if (stringRoot == null) {
+            throw new AnalysisLimitationException.AnalysisModelLimitationException("Unevalizer did not expect this syntactic structure");
+        }
 
         // LHS of the assignment to the result of the eval
         String res;

@@ -6,7 +6,7 @@ fg2: <main> function()
     ->[block 1]
   block 1:
     node 3: function-expr[function g(x),v2] (test/flowgraphbuilder/flowgraph_builder0136.js:7:9)
-    node 4: write-variable[v2,'f']* (test/flowgraphbuilder/flowgraph_builder0136.js:7:9)
+    node 4: write-variable[v2,'f']* (test/flowgraphbuilder/flowgraph_builder0136.js:7:5)
     node 5: read-variable['f',v4,v3] (test/flowgraphbuilder/flowgraph_builder0136.js:16:1)
     node 6: constant[1.0,v5] (test/flowgraphbuilder/flowgraph_builder0136.js:16:3)
     ->[block 2]
@@ -63,6 +63,6 @@ function g(x)
     node 27: exceptional-return (test/flowgraphbuilder/flowgraph_builder0136.js:7:9)
     ->[]
 
-test/flowgraphbuilder/flowgraph_builder0136.js:8:2: [info] Abstract value: 0.0
-test/flowgraphbuilder/flowgraph_builder0136.js:8:2: [info] Abstract value: 1.0
-test/flowgraphbuilder/flowgraph_builder0136.js:19:1: [info] Abstract value: [@Object#node13]
+test/flowgraphbuilder/flowgraph_builder0136.js:10:10: [definite] Reading 'this' yields the global object
+test/flowgraphbuilder/flowgraph_builder0136.js:8:2: [info] Abstract value: UInt
+test/flowgraphbuilder/flowgraph_builder0136.js:19:1: [info] Abstract value: Undef|[@<the global object>[native]]

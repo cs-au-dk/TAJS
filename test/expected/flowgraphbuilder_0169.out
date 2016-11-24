@@ -88,7 +88,7 @@ function(rows,cols)
     node 47: +[v9,v10] (test/flowgraphbuilder/flowgraph_builder0169.js:10:33)
     node 48: constant[1.0,v11] (test/flowgraphbuilder/flowgraph_builder0169.js:10:33)
     node 49: +[v10,v11,v12] (test/flowgraphbuilder/flowgraph_builder0169.js:10:33)
-    node 50: write-variable[v12,'row']* (test/flowgraphbuilder/flowgraph_builder0169.js:10:33)
+    node 50: write-variable[v12,'row']* (test/flowgraphbuilder/flowgraph_builder0169.js:10:36)
     ->[block 15]
   block 19:
     node 51: read-variable['this',v23,-] (test/flowgraphbuilder/flowgraph_builder0169.js:12:9)
@@ -103,7 +103,7 @@ function(rows,cols)
     node 58: +[v17,v18] (test/flowgraphbuilder/flowgraph_builder0169.js:11:34)
     node 59: constant[1.0,v19] (test/flowgraphbuilder/flowgraph_builder0169.js:11:34)
     node 60: +[v18,v19,v20] (test/flowgraphbuilder/flowgraph_builder0169.js:11:34)
-    node 61: write-variable[v20,'col']* (test/flowgraphbuilder/flowgraph_builder0169.js:11:34)
+    node 61: write-variable[v20,'col']* (test/flowgraphbuilder/flowgraph_builder0169.js:11:37)
     ->[block 17]
   block 21: [exit-ordinary]
     node 62: return[v1] (test/flowgraphbuilder/flowgraph_builder0169.js:8:17)

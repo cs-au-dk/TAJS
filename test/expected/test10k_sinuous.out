@@ -1,7 +1,5 @@
 test/10k/sinuous.html:124:21: [definite] TypeError, accessing property of null/undefined
 test/10k/sinuous.html:133:21: [definite] TypeError, accessing property of null/undefined
-test/10k/sinuous.html:60:13: [definite] The conditional expression is always true
-test/10k/sinuous.html:60:17: [definite] The conditional expression is always true
 test/10k/sinuous.html:342:9: [definite] Dead assignment, property f is never read
 test/10k/sinuous.html:343:9: [definite] Dead assignment, property color is never read
 test/10k/sinuous.html:48:13: [definite] The variable J is never used
@@ -15,34 +13,53 @@ test/10k/sinuous.html:133:43: [definite] Unreachable code
 test/10k/sinuous.html:138:9: [definite] The variable L is never used
 test/10k/sinuous.html:165:9: [definite] The variable L is never used
 test/10k/sinuous.html:180:23: [definite] The variable L is never used
+test/10k/sinuous.html:60:22: [maybe] TypeError, accessing property of null/undefined
+test/10k/sinuous.html:61:21: [maybe] TypeError, accessing property of null/undefined
+test/10k/sinuous.html:72:17: [maybe] TypeError, accessing property of null/undefined
+test/10k/sinuous.html:92:17: [maybe] TypeError, accessing property of null/undefined
+test/10k/sinuous.html:96:17: [maybe] TypeError, accessing property of null/undefined
+test/10k/sinuous.html:97:17: [maybe] TypeError, accessing property of null/undefined
+test/10k/sinuous.html:104:13: [maybe] TypeError, accessing property of null/undefined
+test/10k/sinuous.html:105:13: [maybe] TypeError, accessing property of null/undefined
 test/10k/sinuous.html:122:17: [maybe] TypeError, accessing property of null/undefined
 test/10k/sinuous.html:124:21: [maybe] TypeError, accessing property of null/undefined
 test/10k/sinuous.html:131:17: [maybe] TypeError, accessing property of null/undefined
 test/10k/sinuous.html:133:21: [maybe] TypeError, accessing property of null/undefined
+test/10k/sinuous.html:145:13: [maybe] TypeError, accessing property of null/undefined
+test/10k/sinuous.html:153:17: [maybe] TypeError, accessing property of null/undefined
+test/10k/sinuous.html:155:17: [maybe] TypeError, accessing property of null/undefined
+test/10k/sinuous.html:158:17: [maybe] TypeError, accessing property of null/undefined
+test/10k/sinuous.html:160:17: [maybe] TypeError, accessing property of null/undefined
+test/10k/sinuous.html:178:13: [maybe] TypeError, accessing property of null/undefined
+test/10k/sinuous.html:178:31: [maybe] TypeError, accessing property of null/undefined
+test/10k/sinuous.html:183:22: [maybe] TypeError, accessing property of null/undefined
 test/10k/sinuous.html:203:30: [maybe] TypeError, accessing property of null/undefined
+test/10k/sinuous.html:217:23: [maybe] TypeError, accessing property of null/undefined
+test/10k/sinuous.html:218:19: [maybe] TypeError, accessing property of null/undefined
+test/10k/sinuous.html:224:25: [maybe] TypeError, accessing property of null/undefined
 test/10k/sinuous.html:224:40: [maybe] TypeError, accessing property of null/undefined
 test/10k/sinuous.html:225:27: [maybe] TypeError, accessing property of null/undefined
 test/10k/sinuous.html:231:29: [maybe] TypeError, accessing property of null/undefined
 test/10k/sinuous.html:239:23: [maybe] TypeError, accessing property of null/undefined
 test/10k/sinuous.html:250:21: [maybe] TypeError, accessing property of null/undefined
+test/10k/sinuous.html:250:34: [maybe] TypeError, accessing property of null/undefined
 test/10k/sinuous.html:254:29: [maybe] TypeError, accessing property of null/undefined
+test/10k/sinuous.html:276:58: [maybe] TypeError, accessing property of null/undefined
 test/10k/sinuous.html:281:17: [maybe] TypeError, accessing property of null/undefined
+test/10k/sinuous.html:295:17: [maybe] TypeError, accessing property of null/undefined
 test/10k/sinuous.html:109:17: [maybe] Reading absent property clientX
 test/10k/sinuous.html:110:17: [maybe] Reading absent property clientY
 test/10k/sinuous.html:122:17: [maybe] Reading absent property touches
 test/10k/sinuous.html:124:21: [maybe] Reading absent property touches
 test/10k/sinuous.html:131:17: [maybe] Reading absent property touches
 test/10k/sinuous.html:133:21: [maybe] Reading absent property touches
-test/10k/sinuous.html: [maybe] Uncaught exception, constructed at [test/10k/sinuous.html:122:17, test/10k/sinuous.html:124:21, test/10k/sinuous.html:131:17, test/10k/sinuous.html:133:21, test/10k/sinuous.html:203:30, test/10k/sinuous.html:224:40, test/10k/sinuous.html:225:27, test/10k/sinuous.html:231:29, test/10k/sinuous.html:239:23, test/10k/sinuous.html:250:21, test/10k/sinuous.html:254:29, test/10k/sinuous.html:281:17]
+test/10k/sinuous.html: [maybe] Uncaught exception, constructed at [test/10k/sinuous.html:60:22, test/10k/sinuous.html:61:21, test/10k/sinuous.html:72:17, test/10k/sinuous.html:92:17, test/10k/sinuous.html:96:17, test/10k/sinuous.html:97:17, test/10k/sinuous.html:104:13, test/10k/sinuous.html:105:13, test/10k/sinuous.html:122:17, test/10k/sinuous.html:124:21, test/10k/sinuous.html:131:17, test/10k/sinuous.html:133:21, test/10k/sinuous.html:145:13, test/10k/sinuous.html:153:17, test/10k/sinuous.html:155:17, test/10k/sinuous.html:158:17, test/10k/sinuous.html:160:17, test/10k/sinuous.html:178:13, test/10k/sinuous.html:178:31, test/10k/sinuous.html:183:22, test/10k/sinuous.html:203:30, test/10k/sinuous.html:217:23, test/10k/sinuous.html:218:19, test/10k/sinuous.html:224:25, test/10k/sinuous.html:224:40, test/10k/sinuous.html:225:27, test/10k/sinuous.html:231:29, test/10k/sinuous.html:239:23, test/10k/sinuous.html:250:21, test/10k/sinuous.html:250:34, test/10k/sinuous.html:254:29, test/10k/sinuous.html:276:58, test/10k/sinuous.html:281:17, test/10k/sinuous.html:295:17]
 test/10k/sinuous.html:32:17: [maybe] Converting object to string
 test/10k/sinuous.html:32:17: [maybe] Converting primitive string to object
-test/10k/sinuous.html:33:18: [maybe] Conversion to number yields NaN
 test/10k/sinuous.html:33:18: [maybe] Converting object to string
 test/10k/sinuous.html:33:18: [maybe] Converting primitive string to object
-test/10k/sinuous.html:33:50: [maybe] Conversion to number yields NaN
 test/10k/sinuous.html:33:50: [maybe] Converting object to string
 test/10k/sinuous.html:33:50: [maybe] Converting primitive string to object
-test/10k/sinuous.html:33:81: [maybe] Conversion to number yields NaN
 test/10k/sinuous.html:33:81: [maybe] Converting object to string
 test/10k/sinuous.html:33:81: [maybe] Converting primitive string to object
 test/10k/sinuous.html:109:17: [maybe] Conversion to number yields NaN

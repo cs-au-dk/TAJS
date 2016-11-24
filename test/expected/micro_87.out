@@ -36,7 +36,7 @@ Abstract state:
     *Object#node2 (test/micro/test87.js:3:1): {<none>}
     *f#fun1 (test/micro/test87.js:3:1): {<none>}
     @Object#node2 (test/micro/test87.js:3:1): {constructor:[@f#fun1],[[Prototype]]=[@Object.prototype[native]],[[Value]]=NaN}
-    @f#fun1 (test/micro/test87.js:3:1): {length:1.0,prototype:[@Object#node2],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@<the global object>[native]]]}
+    @f#fun1 (test/micro/test87.js:3:1): {length:1.0,name:"f",prototype:[@Object#node2],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@<the global object>[native]]]}
   Registers: 
     v1=Undef
     v5=[@<the global object>[native]]
@@ -50,7 +50,7 @@ Abstract state:
     @Object.prototype[native] (<initial state>): {a:^(@Object.prototype[native].a[absent]),b:^(@Object.prototype[native].b[absent]),c:^(@Object.prototype[native].c[absent]),f:^(@Object.prototype[native].f[absent]),[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Prototype]]=Null,[[Value]]=?,[[Scope]]=?}
     @Object#node3 (test/micro/test87.js:1:9): {b:17.0,c:true,[[Prototype]]=[@Object.prototype[native]]}
     @Object#node2 (test/micro/test87.js:3:1): {constructor:[@f#fun1],[[Prototype]]=[@Object.prototype[native]],[[Value]]=NaN}
-    @f#fun1 (test/micro/test87.js:3:1): {length:1.0,prototype:[@Object#node2],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@<the global object>[native]]]}
+    @f#fun1 (test/micro/test87.js:3:1): {length:1.0,name:"f",prototype:[@Object#node2],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@<the global object>[native]]]}
   Registers: 
     v1=Undef
     v10=[@<the global object>[native]]

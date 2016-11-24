@@ -7,7 +7,7 @@ Abstract state:
     @<the global object>[native] (<initial state>): {TAJS_dumpState:^(@<the global object>[native].TAJS_dumpState[present]),f:[@f#fun1],t:42.0,[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Prototype]]=[@Object.prototype[native]],[[Value]]=?,[[Scope]]=?}
     @Object.prototype[native] (<initial state>): {f:^(@Object.prototype[native].f[absent]),t:^(@Object.prototype[native].t[absent]),[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Prototype]]=Null,[[Value]]=?,[[Scope]]=?}
     @Object#node1 (test/micro/test192.js:1:1): {constructor:[@f#fun1],[[Prototype]]=[@Object.prototype[native]],[[Value]]=NaN}
-    @f#fun1 (test/micro/test192.js:1:1): {length:1.0,prototype:[@Object#node1],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@<the global object>[native]]]}
+    @f#fun1 (test/micro/test192.js:1:1): {length:1.0,name:"f",prototype:[@Object#node1],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@<the global object>[native]]]}
   Registers: 
     v1=Undef
     v6=[@<the global object>[native]]

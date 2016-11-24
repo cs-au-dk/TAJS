@@ -111,7 +111,7 @@ public class TestValue {
 		Misc.init();
 		Misc.captureSystemOutput();
 
-		SourceLocation loc = new SourceLocation(117, -1, "foo.js");
+		SourceLocation loc = new SourceLocation(117, -1, "foo.js", null);
 		List<String> args = Collections.emptyList();
 		Function f = new Function("foo", args, null, loc);
 		FlowGraph fg = new FlowGraph(f);

@@ -24,6 +24,5 @@ public class AjaxBuilder {
         XmlHttpRequest.build(c);
         ActiveXObject.build(c);
         ReadystateEvent.build(c);
-        JSONObject.build(c);
     }
 }

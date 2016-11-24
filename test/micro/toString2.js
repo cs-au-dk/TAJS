@@ -32,7 +32,7 @@ var m8 = 42 - x4;
 var b = Math.random();
 
 var p9 = (b ? x1 : x3) + 42;
-var m9 = (b ? x1 : x3) - 42;
+var m9 = 100 + (b ? x1 : x3) - 42;
 
 var t10 = "a" + x5;
 var t11 = 1000 + x5;
@@ -63,7 +63,7 @@ TAJS_assert(m7 === 39);
 TAJS_assert(p8 === 46);
 TAJS_assert(m8 === 38);
 TAJS_assert(p9, 'isMaybeSingleStr || isMaybeNumUInt', true); //TAJS_assert(p9 === "142" || p9 === 45);
-TAJS_assert(m9, 'isMaybeNumUInt', true); //TAJS_assert(m9 === -41 || m9 === -39);
+TAJS_assert(m9, 'isMaybeNumUInt', true); //TAJS_assert(m9 === (100 + -41) || m9 === (100 + -39));
 TAJS_assert(t10 === "a[object Object]");
 TAJS_assert(t11 === "1000[object Object]");
 TAJS_assert(t12 === "a6");

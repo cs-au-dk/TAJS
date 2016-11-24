@@ -19,7 +19,7 @@
 //             A B             I                 R S T     W X Y 
 // packing                       j k           q                 z
 //  	           C D E F G H   J K L   N O P Q       U V       Z
-
+start = 0;
 // cost map generation
 genMap = function(e,i,x,y) {
   for(i = dir = [], // directions

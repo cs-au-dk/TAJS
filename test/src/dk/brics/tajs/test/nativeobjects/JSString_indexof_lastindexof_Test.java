@@ -12,6 +12,7 @@ public class JSString_indexof_lastindexof_Test {
 	@Before
 	public void before() {
 		Main.reset();
+		Main.initLogging();
 		Options.get().enableTest();
 	}
 
@@ -92,7 +93,7 @@ public class JSString_indexof_lastindexof_Test {
 				"TAJS_assert(h.lastIndexOf('i', 1) === -1, 'isMaybeTrueButNotFalse', true)",
 				"g.lastIndexOf = h.lastIndexOf;  ",
 				"TAJS_assert(g.lastIndexOf('.') === -1, 'isMaybeTrueButNotFalse', true);  "
-				);
+		);
 
 	}
 

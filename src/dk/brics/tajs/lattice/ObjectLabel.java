@@ -32,7 +32,7 @@ public final class ObjectLabel implements Comparable<ObjectLabel> { // TODO: (#1
     /**
      * Source location used for host functions.
      */
-    private static final SourceLocation initial_source = new SourceLocation(0, 0, "<initial state>");
+    private static final SourceLocation initial_source = new SourceLocation(0, 0, "<initial state>", null);
 
     /**
      * Special object label for absent getter/setter.

@@ -10,8 +10,8 @@ import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.monitoring.CompositeMonitoring;
 import dk.brics.tajs.monitoring.DefaultAnalysisMonitoring;
 import dk.brics.tajs.monitoring.Monitoring;
+import dk.brics.tajs.monitoring.OrdinaryExitReachableChecker;
 import dk.brics.tajs.options.Options;
-import dk.brics.tajs.test.monitors.OrdinaryExitReachableCheckerMonitor;
 import dk.brics.tajs.util.Collections;
 import org.junit.Before;
 import org.junit.Test;
@@ -60,8 +60,8 @@ public class TestLiteralContextSensitivity {
     }
 
     @Test
-    public void forIn() {
-        test("o", set("x"), "var o ; function f(p1, p2){for(v in {x: 43}){o = {};}}; f('x');");
+    public void correlatedPropertyAccess() {
+        test("o", set("x"), "var o ; function f(p1, p2){for(v in {x: 43}){o = {};}([][v] = [][v])}; f('x');");
     }
 
     @Test
@@ -100,18 +100,12 @@ public class TestLiteralContextSensitivity {
 
     private void test(String objectVariable, Set<Value> contextValues, String... sourceLines) {
         TestMonitor testMonitor = new TestMonitor();
-        CompositeMonitoring.buildFromList(testMonitor, new Monitoring());
-        Misc.runSource(sourceLines, CompositeMonitoring.buildFromList(testMonitor, new OrdinaryExitReachableCheckerMonitor()));
+        Misc.runSource(sourceLines, CompositeMonitoring.buildFromList(new Monitoring(), testMonitor, new OrdinaryExitReachableChecker()));
         Set<ObjectLabel> objectLabels = testMonitor.state.readVariableDirect(objectVariable).getObjectLabels();
         Set<Value> values = newSet();
         for (ObjectLabel objectLabel : objectLabels) {
             HeapContext heapContext = objectLabel.getHeapContext();
-            ContextArguments arguments;
-            if(heapContext instanceof HeapContext) {
-                arguments = ((HeapContext) heapContext).getFunctionArguments();
-            }else{
-                arguments = null;
-            }
+            ContextArguments arguments = heapContext.getFunctionArguments();
             if (arguments != null)
                 values.addAll(arguments.getArguments().stream().filter(e -> e != null).collect(Collectors.toList()));
         }

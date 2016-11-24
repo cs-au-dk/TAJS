@@ -19,10 +19,12 @@ test/micro/testPaper.js:26:1: [info] Abstract state (modified parts):
     [[Value]] = NaN
   @Person#fun1 (test/micro/testPaper.js:1:2):
     length: 1.0
+    name: "Person"
     prototype: [@Object#node1]
     [[Prototype]] = [@Function.prototype[native]]
   @<anonymous>#fun2 (test/micro/testPaper.js:6:30):
     length: 1.0
+    name: ""
     prototype: [@Object#node15]
     [[Prototype]] = [@Function.prototype[native]]
   @Object#node15 (test/micro/testPaper.js:6:30):
@@ -31,6 +33,7 @@ test/micro/testPaper.js:26:1: [info] Abstract state (modified parts):
     [[Value]] = NaN
   @Student#fun3 (test/micro/testPaper.js:7:3):
     length: 2.0
+    name: "Student"
     prototype: [@Object#node20]
     [[Prototype]] = [@Function.prototype[native]]
   @Object#node20 (test/micro/testPaper.js:13:23):

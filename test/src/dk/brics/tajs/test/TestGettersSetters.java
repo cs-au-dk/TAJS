@@ -3,8 +3,8 @@ package dk.brics.tajs.test;
 import dk.brics.tajs.Main;
 import dk.brics.tajs.monitoring.CompositeMonitoring;
 import dk.brics.tajs.monitoring.Monitoring;
+import dk.brics.tajs.monitoring.OrdinaryExitReachableChecker;
 import dk.brics.tajs.options.Options;
-import dk.brics.tajs.test.monitors.OrdinaryExitReachableCheckerMonitor;
 import dk.brics.tajs.util.ParseError;
 import org.junit.Before;
 import org.junit.Test;
@@ -18,7 +18,7 @@ public class TestGettersSetters {
         Main.initLogging();
         Main.reset();
         Options.get().enableTest();
-        monitor = new CompositeMonitoring(new Monitoring(), new OrdinaryExitReachableCheckerMonitor());
+        monitor = new CompositeMonitoring(new Monitoring(), new OrdinaryExitReachableChecker());
     }
 
     @Test
@@ -39,13 +39,12 @@ public class TestGettersSetters {
         Misc.checkSystemOutput();
     }
 
-    @Test(expected = ParseError.class) // FIXME: actually expected SyntaxError exception (see test/micro/testGettersSetters3.js)
+    @Test(expected = ParseError.class)
     public void gs3() throws Exception {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = {"test/getterssetters/gs3.js"};
         Misc.run(args);
-        //Misc.checkSystemOutput();
     }
 
     @Test
@@ -180,12 +179,12 @@ public class TestGettersSetters {
 
     @Test
     public void implicits() {
-        Misc.run(new String[]{"test/getterssetters/implicits.js"}, new CompositeMonitoring(new Monitoring(), new OrdinaryExitReachableCheckerMonitor()));
+        Misc.run(new String[]{"test/getterssetters/implicits.js"}, new CompositeMonitoring(new Monitoring(), new OrdinaryExitReachableChecker()));
     }
 
     @Test
     public void implicits_unsound() {
-        Misc.run(new String[]{"test/getterssetters/implicits_unsound.js"}, new CompositeMonitoring(new Monitoring(), new OrdinaryExitReachableCheckerMonitor()));
+        Misc.run(new String[]{"test/getterssetters/implicits_unsound.js"}, new CompositeMonitoring(new Monitoring(), new OrdinaryExitReachableChecker()));
     }
 
     @Test
@@ -199,7 +198,7 @@ public class TestGettersSetters {
 
     @Test
     public void callToWeakSetter() throws Exception {
-        Options.get().enableCollectVariableInfo();
+        Options.get().enableShowVariableInfo();
         Misc.init();
         String[] args = {"test/getterssetters/callToWeakSetter.js"};
         Misc.run(args);
@@ -209,7 +208,7 @@ public class TestGettersSetters {
     public void callToWeakRecursiveGetter() throws Exception {
         Misc.init();
         String[] args = {"test/getterssetters/callToWeakRecursiveGetter.js"};
-        Misc.run(args, new CompositeMonitoring(new Monitoring(), new OrdinaryExitReachableCheckerMonitor()));
+        Misc.run(args, new CompositeMonitoring(new Monitoring(), new OrdinaryExitReachableChecker()));
     }
 
     @Test
@@ -253,7 +252,7 @@ public class TestGettersSetters {
                 "var UINT = Math.random() ? 0 : 1;",
                 "var maybeFunction = Math.random()? function(){}: UINT;",
                 "({}).__defineSetter__(UINT, maybeFunction);"
-        }, new CompositeMonitoring(new Monitoring(), new OrdinaryExitReachableCheckerMonitor()));
+        }, new CompositeMonitoring(new Monitoring(), new OrdinaryExitReachableChecker()));
     }
 
 }

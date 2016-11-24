@@ -12,9 +12,10 @@ public class JSString_toLowerUpperCase_test {
 	@Before
     public void before() {
         Main.reset();
+        Main.initLogging();
+        Options.get().enableUnsound();
         Options.get().enableTest();
     }
-
 
     @Test
     public void lower() {
