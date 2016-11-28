@@ -67,6 +67,25 @@ public class JSNumber {
                     return v;
             }
 
+            case NUMBER_ISFINITE: {
+                Value n = NativeFunctions.readParameter(call, state, 0);
+                Value result = Value.makeNone();
+
+                if (n.isMaybeOtherThanNum()) {
+                    result = result.joinBool(false);
+                }
+                Value num = n.restrictToNum();
+                if (!num.isNone()) {
+                    if (num.isMaybeNaN() || num.isMaybeInf()) {
+                        result = result.joinBool(false);
+                    }
+                    if (num.isMaybeAnyNum() || num.isMaybeNumUInt() || num.isMaybeSingleNum() || num.isMaybeNumOther()) {
+                        result = result.joinBool(true);
+                    }
+                }
+                return result;
+            }
+
             case NUMBER_TOFIXED: // 15.7.4.5
             case NUMBER_TOEXPONENTIAL: // 15.7.4.6
             case NUMBER_TOPRECISION: { // 15.7.4.7

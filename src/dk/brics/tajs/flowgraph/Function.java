@@ -432,7 +432,7 @@ public class Function {
         Collections.sort(rootOrder, (o1, o2) -> o1.getSourceLocation().compareTo(o2.getSourceLocation()));
 
         int i = 0;
-        for (BasicBlock block : produceDependencyOrder(topologicalBlocks, nonTopologicalBlocks, rootOrder)) {
+        for (BasicBlock block : BlockDependencyOrderer.produceDependencyOrder(topologicalBlocks, nonTopologicalBlocks, rootOrder)) {
             block.setOrder(i++);
         }
 
@@ -440,56 +440,6 @@ public class Function {
             ordinary_exit.setOrder(i++);
         if (exceptional_exit != null)
             exceptional_exit.setOrder(i);
-    }
-
-    /**
-     * Produces a topological sorting of blocks with a depth-first search that ignores cycles.
-     * Algorithm: wikipedia on topological sorting with depth-first (Cormen2001/Tarjan1976).
-     * - slightly modified to produce prettier orders
-     */
-    private static List<BasicBlock> produceDependencyOrder(Collection<BasicBlock> blocks, Set<BasicBlock> ignored, List<BasicBlock> rootOrder) {
-        List<BasicBlock> sorted = newList();
-        Set<BasicBlock> notPermanentlyMarked = newSet(blocks);
-        Set<BasicBlock> temporarilyMarked = newSet();
-
-        // Implementation choice in topological sort: process roots only, and in reverse order
-        List<BasicBlock> reverseRootOrder = newList(rootOrder);
-        Collections.reverse(reverseRootOrder);
-        for (BasicBlock root : reverseRootOrder) {
-            visit(root, temporarilyMarked, notPermanentlyMarked, sorted, ignored);
-        }
-        if (!notPermanentlyMarked.isEmpty()) {
-            // sanity check that it is ok to iterate roots instead of "notPermanentlyMarked"
-            throw new AnalysisException("Bad topological sort implementation");
-        }
-        Collections.reverse(sorted); // the list has been built backwards...
-        return sorted;
-    }
-
-    private static void visit(BasicBlock n, Set<BasicBlock> temporarilyMarked, Set<BasicBlock> notPermanentlyMarked, List<BasicBlock> sorted, Set<BasicBlock> ignored) {
-        if (temporarilyMarked.contains(n)) {
-            return;
-        }
-        if (notPermanentlyMarked.contains(n)) {
-            temporarilyMarked.add(n);
-            List<BasicBlock> successors = newList(n.getSuccessors());
-            BasicBlock exceptionHandler = n.getExceptionHandler();
-            if (exceptionHandler != null) {
-                successors.add(exceptionHandler);
-            }
-
-            // Implementation choice in topological sort: process multiple successors in reverse source position order.
-            // A benefit of this is that loop back edges receive lower order than the loop successors.
-            Collections.sort(successors, (o1, o2) -> -o1.getSourceLocation().compareTo(o2.getSourceLocation()));
-
-            successors.removeAll(ignored);
-            for (BasicBlock m : successors) {
-                visit(m, temporarilyMarked, notPermanentlyMarked, sorted, ignored);
-            }
-            notPermanentlyMarked.remove(n);
-            temporarilyMarked.remove(n);
-            sorted.add(n);
-        }
     }
 
     /**

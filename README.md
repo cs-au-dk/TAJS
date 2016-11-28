@@ -103,5 +103,5 @@ This software includes components from:
 - Google Closure Compiler (<http://code.google.com/p/closure-compiler/>)
 - Jericho HTML Parser (<http://jericho.htmlparser.net/>)
 - Log4j (<http://logging.apache.org/log4>)
-
-
+- args4j (<http://args4j.kohsuke.org/>)
+- JUnit (<http://junit.org/>) (development only)

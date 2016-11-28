@@ -108,6 +108,7 @@ public class ECMAScriptFunctions {
             case NUMBER_TOLOCALESTRING:
             case NUMBER_TOSTRING:
             case NUMBER_VALUEOF:
+            case NUMBER_ISFINITE:
                 res = JSNumber.evaluate(nativeobject, call, c);
                 break;
 
@@ -203,6 +204,8 @@ public class ECMAScriptFunctions {
             case STRING_CHARCODEAT:
             case STRING_CHARAT:
             case STRING_TRIM:
+            case STRING_ENDSWITH:
+            case STRING_STARTSWITH:
                 res = JSString.evaluate(nativeobject, call, c);
                 break;
 

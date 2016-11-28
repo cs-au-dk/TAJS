@@ -368,6 +368,8 @@ public class InitialStateBuilder implements IInitialStateBuilder<State, Context,
         createPrimitiveFunction(lStringProto, lFunProto, ECMAScriptObjects.STRING_TOUPPERCASE, "toUpperCase", 0, c);
         createPrimitiveFunction(lStringProto, lFunProto, ECMAScriptObjects.STRING_TOLOCALEUPPERCASE, "toLocaleUpperCase", 0, c);
         createPrimitiveFunction(lStringProto, lFunProto, ECMAScriptObjects.STRING_TRIM, "trim", 0, c);
+        createPrimitiveFunction(lStringProto, lFunProto, ECMAScriptObjects.STRING_STARTSWITH, "startsWith", 2, c);
+        createPrimitiveFunction(lStringProto, lFunProto, ECMAScriptObjects.STRING_ENDSWITH, "endsWith", 2, c);
 
 
         // 15.6.4 properties of the Boolean prototype object
@@ -394,6 +396,7 @@ public class InitialStateBuilder implements IInitialStateBuilder<State, Context,
         createPrimitiveFunction(lNumberProto, lFunProto, ECMAScriptObjects.NUMBER_TOFIXED, "toFixed", 1, c);
         createPrimitiveFunction(lNumberProto, lFunProto, ECMAScriptObjects.NUMBER_TOEXPONENTIAL, "toExponential", 1, c);
         createPrimitiveFunction(lNumberProto, lFunProto, ECMAScriptObjects.NUMBER_TOPRECISION, "toPrecision", 1, c);
+        createPrimitiveFunction(lNumber, lFunProto, ECMAScriptObjects.NUMBER_ISFINITE, "isFinite", 1, c);
 
         // 15.8 the Math object
         pv.writePropertyWithAttributes(global, "Math", Value.makeObject(lMath).setAttributes(true, false, false));

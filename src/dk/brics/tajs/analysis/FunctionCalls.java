@@ -21,7 +21,6 @@ import dk.brics.tajs.analysis.js.UserFunctionCalls;
 import dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects;
 import dk.brics.tajs.flowgraph.AbstractNode;
 import dk.brics.tajs.flowgraph.jsnodes.CallNode;
-import dk.brics.tajs.flowgraph.jsnodes.Node;
 import dk.brics.tajs.lattice.ExecutionContext;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.ObjectLabel.Kind;
@@ -199,7 +198,7 @@ public class FunctionCalls {
      */
     public static class EventHandlerCall implements CallInfo {
 
-        private Node sourceNode;
+        private AbstractNode sourceNode;
 
         private Value function;
 
@@ -211,7 +210,7 @@ public class FunctionCalls {
          */
         private final Set<ObjectLabel> thisTargets;
 
-        public EventHandlerCall(Node sourceNode, Value function, List<Value> args, Set<ObjectLabel> thisTargets, State state) {
+        public EventHandlerCall(AbstractNode sourceNode, Value function, List<Value> args, Set<ObjectLabel> thisTargets, State state) {
             this.sourceNode = sourceNode;
             this.function = function;
             this.args = args;
@@ -225,7 +224,7 @@ public class FunctionCalls {
         }
 
         @Override
-        public Node getJSSourceNode() {
+        public AbstractNode getJSSourceNode() {
             return sourceNode;
         }
 

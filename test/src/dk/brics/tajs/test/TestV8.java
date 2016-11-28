@@ -1501,7 +1501,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 		Misc.checkSystemOutput();
 	}
 
-	@Test(expected = AnalysisLimitationException.SyntacticSupportNotImplemented.class)
+	@Test
 	public void testV8_number_tostring() throws Exception
 	{
 		Misc.init();

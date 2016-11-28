@@ -657,7 +657,7 @@ public class JSArray {
     }
 
     public static ObjectLabel makeArray(AbstractNode allocationNode, Solver.SolverInterface c) {
-        return makeArray(allocationNode, Value.makeNum(0), null, c);
+        return makeArray(allocationNode, Value.makeNum(0), c);
     }
 
     public static ObjectLabel makeArray(AbstractNode allocationNode, Value length, Solver.SolverInterface c) {

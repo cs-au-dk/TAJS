@@ -207,6 +207,6 @@ public class JSDate {
             Exceptions.throwTypeError(c);
             return Value.makeNone();
         }
-        return Value.makeAnyStr();
+        return concrete("Date.prototype.toString", Value.makeAnyStr(), c);
     }
 }

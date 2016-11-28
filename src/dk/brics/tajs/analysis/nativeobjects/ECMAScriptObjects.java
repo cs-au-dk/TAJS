@@ -84,6 +84,8 @@ public enum ECMAScriptObjects implements HostObject {
     STRING_TOUPPERCASE("String.prototype.toUpperCase"),
     STRING_TOLOCALEUPPERCASE("String.prototype.toLocaleUpperCase"),
     STRING_TRIM("String.prototype.trim"),
+    STRING_STARTSWITH("String.prototype.startsWith"),
+    STRING_ENDSWITH("String.prototype.endsWith"),
 
     BOOLEAN("Boolean"),
     BOOLEAN_PROTOTYPE("Boolean.prototype"),
@@ -98,6 +100,7 @@ public enum ECMAScriptObjects implements HostObject {
     NUMBER_TOFIXED("Number.prototype.toFixed"),
     NUMBER_TOEXPONENTIAL("Number.prototype.toExponential"),
     NUMBER_TOPRECISION("Number.prototype.toPrecision"),
+    NUMBER_ISFINITE("Number.isFinite"),
 
     MATH("Math"),
     MATH_MAX("Math.max"),

@@ -115,7 +115,7 @@ public class FlowGraphMutator {
 
             Stack<BasicBlock> entryStack = new Stack<>();
             entryStack.push(extenderBlock.getEntryBlock());
-            FlowGraphBuilder.setEntryBlocks(extenderBlock, entryBlock, entryStack, newSet(oldBlocks), functionAndBlocksManager);
+            FlowGraphBuilder.setEntryBlocks(new FlowGraphBuilder.TripleForSetEntryBlocksWorklist(extenderBlock, entryBlock, entryStack), newSet(oldBlocks), functionAndBlocksManager);
         }
 
         // FIXME: (#124) does not include surrounding break/continue targets or finally blocks - so exceptions and jumps are not handled soundly

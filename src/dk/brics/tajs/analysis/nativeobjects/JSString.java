@@ -243,6 +243,14 @@ public class JSString {
                 }
             }
 
+            case STRING_STARTSWITH: {
+                return TAJSConcreteSemantics.convertTAJSCall(state.readThis(), "String.prototype.startsWith", 2, call, c, Value.makeAnyBool());
+            }
+
+            case STRING_ENDSWITH:{
+                return TAJSConcreteSemantics.convertTAJSCall(state.readThis(), "String.prototype.endsWith", 2, call, c, Value.makeAnyBool());
+            }
+
             default:
                 return null;
         }

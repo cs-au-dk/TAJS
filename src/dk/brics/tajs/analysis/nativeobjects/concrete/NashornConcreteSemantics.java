@@ -63,9 +63,63 @@ public class NashornConcreteSemantics { // XXX: singleton, but no reset method? 
         return String.join(",", arguments.stream().map(ConcreteValue::toSourceCode).collect(Collectors.toList()));
     }
 
+    @SuppressWarnings("unchecked")
     public <T extends ConcreteValue> InvocationResult<T> apply(String functionName, ConcreteValue base, List<ConcreteValue> arguments) {
+        if ("String.prototype.startsWith".equals(functionName)) { // Nashorn does not implement this "standard" feature
+            if (isConcreteString(base) && arguments.size() == 1 && isConcreteString(arguments.get(0))) {
+                boolean startsWith = ((ConcreteString) base).getString().startsWith(((ConcreteString) arguments.get(0)).getString());
+                return InvocationResult.makeValue((T) new ConcreteBoolean(startsWith));
+            }
+            return InvocationResult.makeNonConcrete();
+        }
+        if ("String.prototype.endsWith".equals(functionName)) { // Nashorn does not implement this "standard" feature
+            if (isConcreteString(base) && arguments.size() == 1 && isConcreteString(arguments.get(0))) {
+                boolean endsWith = ((ConcreteString) base).getString().endsWith(((ConcreteString) arguments.get(0)).getString());
+                return InvocationResult.makeValue((T) new ConcreteBoolean(endsWith));
+            }
+            return InvocationResult.makeNonConcrete();
+        }
         String script = String.format("%s.apply(%s, [%s]);", functionName, base.toSourceCode(), makeList(arguments));
         return eval(script);
+    }
+
+    private Boolean isConcreteString(ConcreteValue base) {
+        return base.accept(new ConcreteValueVisitor<Boolean>() {
+            @Override
+            public Boolean visit(ConcreteNumber v) {
+                return false;
+            }
+
+            @Override
+            public Boolean visit(ConcreteString v) {
+                return true;
+            }
+
+            @Override
+            public Boolean visit(ConcreteArray v) {
+                return false;
+            }
+
+            @Override
+            public Boolean visit(ConcreteUndefined v) {
+                return false;
+            }
+
+            @Override
+            public Boolean visit(ConcreteRegularExpression v) {
+                return false;
+            }
+
+            @Override
+            public Boolean visit(ConcreteNull v) {
+                return false;
+            }
+
+            @Override
+            public Boolean visit(ConcreteBoolean v) {
+                return false;
+            }
+        });
     }
 
     @SuppressWarnings("unchecked")

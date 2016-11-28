@@ -2544,21 +2544,37 @@ public class TestMicro {
 				"");
 	}
 
-	@Test(expected = AnalysisLimitationException.SyntacticSupportNotImplemented.class)
-	public void testLargeFunctionBody_1944_calls() throws Exception {
-		Misc.init();
-		// should not crash
-		String[] args = {"test/micro/largeFunctionBody_1944_calls.js"};
-		Misc.run(args);
-	}
+    @Test
+    public void testLargeFunctionBody_1500_calls() throws Exception {
+        Misc.init();
+        // should not crash
+        String[] args = {"test/micro/largeFunctionBody_1500_calls.js"};
+        Misc.run(args);
+    }
 
-	@Test(expected = AnalysisLimitationException.SyntacticSupportNotImplemented.class)
-	public void testLargeFunctionBody_3888_calls() throws Exception {
-		Misc.init();
-		// should not crash
-		String[] args = {"test/micro/largeFunctionBody_3888_calls.js"};
-		Misc.run(args);
-	}
+//	@Test
+//	public void testLargeFunctionBody_1944_calls() throws Exception {
+//		Misc.init();
+//		// should not crash
+//		String[] args = {"test/micro/largeFunctionBody_1944_calls.js"};
+//		Misc.run(args);
+//	}
+
+//	@Test
+//	public void testLargeFunctionBody_3888_calls() throws Exception {
+//		Misc.init();
+//		// should not crash
+//		String[] args = {"test/micro/largeFunctionBody_3888_calls.js"};
+//		Misc.run(args);
+//	}
+
+//    @Test
+//    public void testLargeFunctionBody_10000_calls() throws Exception {
+//        Misc.init();
+//        // should not crash
+//        String[] args = {"test/micro/largeFunctionBody_10000_calls.js"};
+//        Misc.run(args);
+//    }
 
 	@Test
 	public void infinityToStringOtherNum(){
@@ -4162,13 +4178,13 @@ public class TestMicro {
 	}
 
 	@Test
-	public void element_onEvent_isNull() {
+	public void element_onEvent_isMaybeNull() {
 		Misc.init();
 		Options.get().enableIncludeDom();
 		Misc.runSource(new String[]{
-				"TAJS_assertEquals(null, window.document.body.onkeyup);",
-				"TAJS_assertEquals(null, window.document.body.onload);",
-				"TAJS_assertEquals(null, window.document.body.onunload);"
+				"TAJS_assert(window.document.body.onkeyup, 'isMaybeNull');",
+				"TAJS_assert(window.document.body.onload, 'isMaybeNull');",
+				"TAJS_assert(window.document.body.onunload, 'isMaybeNull');"
 		});
 	}
 
@@ -4518,19 +4534,20 @@ public class TestMicro {
 				"e.onmousemove = 0;",
 				"onmouseover = 1;",
 				"function onmouseout(){}",
-				"TAJS_assertEquals(TAJS_join(true, null), onclick);", // weak update on variable writes
-				"TAJS_assertEquals(TAJS_join(false, null), window.ondblclick);", // sweak update on singleton property writes
-				"TAJS_assertEquals(TAJS_join(0, null), e.onmousemove);", // weak update on summary property writes
-				"TAJS_assertEquals(TAJS_join(1, null), onmouseover);", // weak update on implicit variable writes
-				"TAJS_assert(onmouseout, 'isMaybeObject||isMaybeNull');", // weak update on function declarations
-				"onclick = false;",
-				"window.ondblclick = true;",
-				"e.onmousemove = 1;",
-				"onmouseover = 0;",
-				"TAJS_assertEquals(TAJS_join(!!Math.random(), null), onclick);", // weak update on variable writes
-				"TAJS_assertEquals(TAJS_join(!!Math.random(), null), window.ondblclick);", // weak update on singleton property writes
-				"TAJS_assertEquals(TAJS_join(Math.random()? 42: 87, null), e.onmousemove);", // weak update on summary property writes
-				"TAJS_assertEquals(TAJS_join(Math.random()? 42: 87, null), onmouseover);" // weak update on implicit variable writes
+				"TAJS_assert(onclick, 'isMaybeTrueButNotFalse');", // weak update on variable writes
+				"TAJS_assert(onclick, 'isMaybeNull');", // weak update on variable writes
+				"TAJS_assert(onclick, 'isMaybeObject');", // weak update on variable writes
+				"TAJS_assert(window.ondblclick, 'isMaybeFalseButNotTrue');", // weak update on singleton property writes
+				"TAJS_assert(window.ondblclick, 'isMaybeNull');", // weak update on singleton property writes
+				"TAJS_assert(window.ondblclick, 'isMaybeObject');", // weak update on singleton property writes
+				"TAJS_assert(e.onmousemove, 'isMaybeSingleNum');", // weak update on summary property writes
+				"TAJS_assert(e.onmousemove, 'isMaybeNull');", // weak update on summary property writes
+				"TAJS_assert(e.onmousemove, 'isMaybeObject');", // weak update on summary property writes
+				"TAJS_assert(onmouseover, 'isMaybeSingleNum');", // weak update on implicit variable writes
+				"TAJS_assert(onmouseover, 'isMaybeNull');", // weak update on implicit variable writes
+				"TAJS_assert(onmouseover, 'isMaybeObject');", // weak update on implicit variable writes
+				"TAJS_assert(onmouseout, 'isMaybeObject');", // weak update on function declarations
+				"TAJS_assert(onmouseout, 'isMaybeNull');" // weak update on function declarations
 		);
 	}
 
@@ -4679,4 +4696,48 @@ public class TestMicro {
 				},
 				new CompositeMonitoring(new Monitoring(), new OrdinaryExitReachableChecker()));
 	}
+
+    @Test
+    public void staticNumberIsFinite() {
+        Misc.init();
+        Misc.runSource(
+                new String[]{
+                        "TAJS_assertEquals(true, Number.isFinite(42));",
+                        "TAJS_assertEquals(false, Number.isFinite(Infinity));",
+                        "TAJS_assertEquals(false, Number.isFinite(NaN));",
+                        "TAJS_assertEquals(false, Number.isFinite('foo'));",
+                        "TAJS_assertEquals(false, Number.isFinite('42'));",
+                        "TAJS_assertEquals(false, Number.isFinite());"
+                },
+                new CompositeMonitoring(new Monitoring(), new OrdinaryExitReachableChecker()));
+    }
+
+    @Test
+    public void string_startsWith() {
+        Misc.init();
+        Misc.runSource(
+                new String[]{
+                        "TAJS_assert('foo'.startsWith('f'));",
+                        "TAJS_assert('foo'.startsWith('fo'));",
+                        "TAJS_assert('foo'.startsWith('foo'));",
+                        "TAJS_assert(!'foo'.startsWith('fooo'));",
+                        "TAJS_assert(!'bar'.startsWith('foo'));",
+                },
+                new CompositeMonitoring(new Monitoring(), new OrdinaryExitReachableChecker()));
+    }
+
+    @Test
+    public void string_endsWith() {
+        Misc.init();
+        Misc.runSource(
+                new String[]{
+                        "TAJS_assert('foo'.endsWith('o'));",
+                        "TAJS_assert('foo'.endsWith('oo'));",
+                        "TAJS_assert('foo'.endsWith('foo'));",
+                        "TAJS_assert(!'foo'.endsWith('ffoo'));",
+                        "TAJS_assert(!'bar'.endsWith('foo'));",
+                },
+                new CompositeMonitoring(new Monitoring(), new OrdinaryExitReachableChecker()));
+    }
+
 }

@@ -106,7 +106,7 @@ public class OptionValues {
     @Option(name = "-debug", usage = "Output debug information")
     private boolean debug;
 
-    @Option(name = "-show-variable-info", usage = "Output type and line information about all variables")
+    @Option(name = "-show-variable-info", usage = "Output type and line information for variables")
     private boolean showVariableInfo;
 
     @Option(name = "-newflow", usage = "Report summary of new flow at function entries")

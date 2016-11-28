@@ -317,7 +317,11 @@ public class StaticDeterminacyContextSensitivityStrategy implements IContextSens
     }
 
     public HeapContext makeHeapContext(AbstractNode location, ContextArguments arguments) {
-        boolean recursive = ContextArguments.extractTopLevelObjectLabels(arguments).stream().anyMatch(location::equals); // FIXME: types don't match, wrong 'equals'?
+        boolean recursive = ContextArguments.extractTopLevelObjectLabels(arguments).stream().anyMatch(l -> {
+            SourceLocation thisAllocationSite = location.getSourceLocation();
+            SourceLocation otherAllocationSite = l.getSourceLocation();
+            return thisAllocationSite.equals(otherAllocationSite);
+        });
         if (recursive) {
             // System.out.printf("Avoiding creation of recursive objectlabel at %s: %s%n", location, arguments);
             return HeapContext.make(null, null);

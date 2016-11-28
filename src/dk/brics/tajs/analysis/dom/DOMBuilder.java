@@ -51,6 +51,7 @@ import net.htmlparser.jericho.Element;
 import net.htmlparser.jericho.Source;
 
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Set;
 
 import static dk.brics.tajs.analysis.dom.DOMFunctions.createDOMProperty;
@@ -179,8 +180,9 @@ public class DOMBuilder {
             createDOMProperty(instance, "channelCountMode", Value.makeAnyStr(), c);
             createDOMProperty(instance, "channelInterpretation", Value.makeAnyStr(), c);
         }
-        writeNullOnEventProperties(singleton(HTMLElement.ELEMENT_PROTOTYPE), c.getAnalysis().getPropVarOperations());
-        writeNullOnEventProperties(singleton(DOMWindow.WINDOW), c.getAnalysis().getPropVarOperations());
+
+        Collection<ObjectLabel> evenNameContainers = Arrays.asList(HTMLElement.ELEMENT_PROTOTYPE, HTMLElement.ELEMENT_ATTRIBUTES, DOMWindow.WINDOW);
+        writeEventListenerProperties(evenNameContainers, c.getAnalysis().getPropVarOperations());
 
         DOMFunctions.makeAnyHTMLNodeList(c);
         if (document != null) {
@@ -242,10 +244,16 @@ public class DOMBuilder {
         return ALL_HTML_OBJECT_LABELS;
     }
 
-    public static void writeNullOnEventProperties(Set<ObjectLabel> targets, PropVarOperations pv){
-        EventType.getAllEventTypeNames().stream().forEach(name -> {
-            String onName = "on" + name;
-            pv.writeProperty(targets, Value.makeTemporaryStr(onName), Value.makeNull().setAttributes(false, false, false), false, true);
-        });
+    public static void writeEventListenerProperties(Collection<ObjectLabel> targets, PropVarOperations pv) {
+        Arrays.asList(EventType.values()).stream().forEach(type ->
+                EventType.getEventHandlerAttributeNames(type).forEach(attributeName ->
+                        targets.forEach(target -> {
+                                    Value event = DOMEvents.getEvent(type);
+                                    boolean maybePresent = type == EventType.OTHER; // support for some of these event types is spotty
+                                    pv.writeProperty(singleton(target), Value.makeTemporaryStr(attributeName), Value.makeNull().join(event).setAttributes(false, false, false), maybePresent, true);
+                                }
+                        )
+                )
+        );
     }
 }

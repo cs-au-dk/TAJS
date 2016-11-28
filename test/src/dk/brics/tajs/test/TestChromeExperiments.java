@@ -82,7 +82,7 @@ public class TestChromeExperiments {
         Misc.checkSystemOutput();
     }
 
-    @Test(expected = AnalysisLimitationException.SyntacticSupportNotImplemented.class)
+    @Test
     public void chrome_bomomo() throws Exception {
         Misc.init();
         Options.get().enableUnevalizer();

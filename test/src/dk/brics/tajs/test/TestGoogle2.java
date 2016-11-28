@@ -35,7 +35,6 @@ public class TestGoogle2 {
 		Misc.checkSystemOutput();
 	}
 
-	@Ignore // Recursive algorithm can not handle large function body
 	@Test
 	public void google2_earley_boyer() throws Exception {
 		Misc.init();

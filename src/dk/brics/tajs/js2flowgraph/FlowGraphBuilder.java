@@ -40,7 +40,6 @@ import dk.brics.tajs.js2flowgraph.JavaScriptParser.ParseResult;
 import dk.brics.tajs.js2flowgraph.JavaScriptParser.SyntaxMesssage;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.util.AnalysisException;
-import dk.brics.tajs.util.AnalysisLimitationException;
 import dk.brics.tajs.util.Collections;
 import dk.brics.tajs.util.Pair;
 import dk.brics.tajs.util.ParseError;
@@ -49,6 +48,7 @@ import org.apache.log4j.Logger;
 import java.net.URL;
 import java.nio.file.Paths;
 import java.util.Collection;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 import java.util.Stack;
@@ -372,58 +372,76 @@ public class FlowGraphBuilder {
         Stack<BasicBlock> entryStack = new Stack<>();
         entryStack.push(f.getEntry());
 
-        setEntryBlocks(null, f.getEntry(), entryStack, newSet(), functionAndBlocksManager);
+        setEntryBlocks(new TripleForSetEntryBlocksWorklist(null, f.getEntry(), entryStack), newSet(), functionAndBlocksManager);
 
         // needed if the blocks are unreachable
         f.getOrdinaryExit().setEntryBlock(f.getEntry());
         f.getExceptionalExit().setEntryBlock(f.getEntry());
     }
 
+    public static final class TripleForSetEntryBlocksWorklist {
+
+        private final BasicBlock predecessor;
+
+        private final BasicBlock target;
+
+        private final Stack<BasicBlock> entryStack;
+
+        public TripleForSetEntryBlocksWorklist(BasicBlock predecessor, BasicBlock target, Stack<BasicBlock> entryStack) {
+            this.predecessor = predecessor;
+            this.target = target;
+            this.entryStack = entryStack;
+        }
+    }
+
     /**
      * Recursively sets BasicBlock.entry_block
      * All blocks between "Begin" and "End" nodes form a region with a changed entry block see {@link BasicBlock#entry_block}
      */
-    public static void setEntryBlocks(BasicBlock predecessor, BasicBlock target, Stack<BasicBlock> entryStack, Set<BasicBlock> visited, FunctionAndBlockManager functionAndBlocksManager) {
-        visited.add(target);
-        if (visited.size() > 1000) {
-            throw new AnalysisLimitationException.SyntacticSupportNotImplemented(target.getFunction().getSourceLocation() + ": Recursive algorithm cannot handle large function body");
-        }
-        Stack<BasicBlock> successorEntryStack = new Stack<>();
-        successorEntryStack.addAll(entryStack);
-        Stack<BasicBlock> exceptionEntryStack = new Stack<>();
-        exceptionEntryStack.addAll(entryStack);
+    public static void setEntryBlocks(TripleForSetEntryBlocksWorklist startingPoint, Set<BasicBlock> visited, FunctionAndBlockManager functionAndBlocksManager) {
+        // Implementation note: this should not be re-written in recursive style: the Java callstack will overflow on large function bodies!
+        LinkedList<TripleForSetEntryBlocksWorklist> worklist = new LinkedList<>();
+        worklist.add(startingPoint);
+        while (!worklist.isEmpty()) {
+            TripleForSetEntryBlocksWorklist current = worklist.removeFirst();
+            if (visited.contains(current.target)) {
+                continue;
+            }
+            visited.add(current.target);
 
-        target.setEntryBlock(successorEntryStack.peek());
-        if (target == target.getEntryBlock()) {
-            target.setEntryPredecessorBlock(predecessor);
-        }
-
-        if (!target.isEmpty()) {
-            AbstractNode lastNode = target.getLastNode();
-            if(!Options.get().isForInSpecializationDisabled()) {
-                if (lastNode instanceof BeginForInNode) {
-                    successorEntryStack.push(target.getSingleSuccessor());
-                }
-                if (lastNode instanceof EndForInNode) {
-                    successorEntryStack.pop();
-                    exceptionEntryStack.pop();
+            Stack<BasicBlock> successorEntryStack = new Stack<>();
+            successorEntryStack.addAll(current.entryStack);
+            Stack<BasicBlock> exceptionEntryStack = new Stack<>();
+            exceptionEntryStack.addAll(current.entryStack);
+            current.target.setEntryBlock(successorEntryStack.peek());
+            if (current.target == current.target.getEntryBlock()) {
+                current.target.setEntryPredecessorBlock(current.predecessor);
+            }
+            if (!current.target.isEmpty()) {
+                AbstractNode lastNode = current.target.getLastNode();
+                if (!Options.get().isForInSpecializationDisabled()) {
+                    if (lastNode instanceof BeginForInNode) {
+                        successorEntryStack.push(current.target.getSingleSuccessor());
+                    }
+                    if (lastNode instanceof EndForInNode) {
+                        successorEntryStack.pop();
+                        exceptionEntryStack.pop();
+                    }
                 }
             }
-        }
-
-        if (successorEntryStack.isEmpty()) {
-            throw new AnalysisException("Empty entry_block stack due to " + target);
-        }
-
-        Set<BasicBlock> unvisitedSuccessors = newSet();
-        unvisitedSuccessors.addAll(target.getSuccessors());
-        unvisitedSuccessors.addAll(functionAndBlocksManager.getUnreachableSyntacticSuccessors(target));
-        unvisitedSuccessors.removeAll(visited);
-        unvisitedSuccessors.remove(null);
-        unvisitedSuccessors.forEach(s -> setEntryBlocks(target, s, successorEntryStack, visited, functionAndBlocksManager));
-        BasicBlock exceptionHandler = target.getExceptionHandler();
-        if (exceptionHandler != null && !visited.contains(exceptionHandler)) {
-            setEntryBlocks(target, exceptionHandler, exceptionEntryStack, visited, functionAndBlocksManager);
+            if (successorEntryStack.isEmpty()) {
+                throw new AnalysisException("Empty entry_block stack due to " + current.target);
+            }
+            Set<BasicBlock> unvisitedSuccessors = newSet();
+            unvisitedSuccessors.addAll(current.target.getSuccessors());
+            unvisitedSuccessors.addAll(functionAndBlocksManager.getUnreachableSyntacticSuccessors(current.target));
+            unvisitedSuccessors.removeAll(visited);
+            unvisitedSuccessors.remove(null);
+            worklist.addAll(unvisitedSuccessors.stream().map(b -> new TripleForSetEntryBlocksWorklist(current.target, b, successorEntryStack)).collect(Collectors.toList()));
+            BasicBlock exceptionHandler = current.target.getExceptionHandler();
+            if (exceptionHandler != null && !visited.contains(exceptionHandler)) {
+                worklist.add(new TripleForSetEntryBlocksWorklist(current.target, exceptionHandler, exceptionEntryStack));
+            }
         }
     }
 

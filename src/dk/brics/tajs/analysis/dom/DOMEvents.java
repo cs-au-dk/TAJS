@@ -20,6 +20,7 @@ import dk.brics.tajs.analysis.FunctionCalls;
 import dk.brics.tajs.analysis.InitialStateBuilder;
 import dk.brics.tajs.analysis.PropVarOperations;
 import dk.brics.tajs.analysis.Solver;
+import dk.brics.tajs.flowgraph.AbstractNode;
 import dk.brics.tajs.flowgraph.EventType;
 import dk.brics.tajs.flowgraph.jsnodes.EventDispatcherNode;
 import dk.brics.tajs.lattice.ObjectLabel;
@@ -53,9 +54,15 @@ public class DOMEvents {
 
     private static final Value anyEvent;
 
+    private static final Value timeoutEvent;
+
+    private static final Value unloadEvent;
+
     static {
         anyEvent = createAnyEvent();
         loadEvent = createAnyLoadEvent();
+        timeoutEvent = Value.makeNone();
+        unloadEvent = Value.makeNone();
         if (Options.get().isSingleEventHandlerType()) {
             keyboardEvent = anyEvent;
         } else {
@@ -150,11 +157,8 @@ public class DOMEvents {
      */
     private static Set<ObjectLabel> toEventHandler(Value value, Solver.SolverInterface c) {
         value = UnknownValueResolver.getRealValue(value, c.getState());
-
         Set<ObjectLabel> handlers = Collections.newSet();
-
         boolean maybeNonFunction = value.isMaybePrimitive();
-
         for (ObjectLabel objectLabel : value.getObjectLabels()) {
             if (objectLabel.getKind() == ObjectLabel.Kind.FUNCTION) {
                 handlers.add(objectLabel);
@@ -162,61 +166,104 @@ public class DOMEvents {
                 maybeNonFunction = true;
             }
         }
-
         if (maybeNonFunction) {
             c.getMonitoring().addMessage(c.getNode(), Message.Severity.HIGH, "TypeError, non-function event handler");
         }
-
         return handlers;
     }
 
-    private static void triggerEventHandler(EventDispatcherNode currentNode, State currentState, DOMRegistry.MaySets eventhandlerKind, Value event, boolean requiresStateCloning, Solver.SolverInterface c) {
-        Set<ObjectLabel> handlers = currentState.getExtras().getFromMaySet(eventhandlerKind.name());
+    private static void triggerEventHandler(AbstractNode currentNode, State currentState, EventType type, boolean requiresStateCloning, Solver.SolverInterface c, Set<ObjectLabel> handlers) {
+        Value event = getEvent(type);
         if (handlers.isEmpty()) {
             return;
         }
         State callState = requiresStateCloning ? currentState.clone() : currentState;
         c.withState(callState, () -> {
             for (ObjectLabel l : handlers) {
-                log.debug("Triggering eventHandlers <" + eventhandlerKind + ">: " + l);
+                log.debug("Triggering eventHandlers <" + type.toString() + ">: " + l);
             }
-
-            if (event != null) {
+            if (!event.isNone()) {
                 // Support the unofficial window.event property that is set by the browser
                 PropVarOperations pv = c.getAnalysis().getPropVarOperations();
                 pv.writeProperty(DOMWindow.WINDOW, "event", event); // strong write to override old value
                 pv.deleteProperty(singleton(DOMWindow.WINDOW), Value.makeTemporaryStr("event"), true); // weak delete to emulate unofficial
             }
-
             Set<ObjectLabel> thisTargets;
-            if (eventhandlerKind == DOMRegistry.MaySets.TIMEOUT_EVENT_HANDLERS) {
+            if (type == EventType.TIMEOUT) {
                 thisTargets = singleton(InitialStateBuilder.GLOBAL);
             } else {
                 thisTargets = DOMBuilder.getAllDOMEventTargets();
             }
-            List<Value> args = event == null ? newList() : Collections.singletonList(event);
+            List<Value> args = event.isNone() ? newList() : Collections.singletonList(event);
             FunctionCalls.callFunction(new FunctionCalls.EventHandlerCall(currentNode, Value.makeObject(handlers), args, thisTargets, callState), c);
         });
     }
 
-    public static void emit(EventDispatcherNode n, Solver.SolverInterface c) {
-        State state = c.getState();
-        if (n.getType() == EventDispatcherNode.Type.DOM_LOAD) {
-            triggerEventHandler(n, state, DOMRegistry.MaySets.LOAD_EVENT_HANDLER, loadEvent, false, c);
-        }
-
-        if (n.getType() == EventDispatcherNode.Type.DOM_UNLOAD) {
-            triggerEventHandler(n, state, DOMRegistry.MaySets.UNLOAD_EVENT_HANDLERS, null, false, c);
-        }
-
-        if (n.getType() == EventDispatcherNode.Type.DOM_OTHER) {
-            triggerEventHandler(n, state, DOMRegistry.MaySets.KEYBOARD_EVENT_HANDLER, keyboardEvent, true, c);
-            triggerEventHandler(n, state, DOMRegistry.MaySets.MOUSE_EVENT_HANDLER, mouseEvent, true, c);
-            triggerEventHandler(n, state, DOMRegistry.MaySets.AJAX_EVENT_HANDLER, ajaxEvent, true, c);
-            // not adding precise support for touch events, they are represented in the anyEvent
-            triggerEventHandler(n, state, DOMRegistry.MaySets.UNKNOWN_EVENT_HANDLERS, anyEvent, true, c);
-            triggerEventHandler(n, state, DOMRegistry.MaySets.TIMEOUT_EVENT_HANDLERS, null, true, c);
+    public static Value getEvent(EventType type) {
+        switch (type) {
+            case LOAD:
+                return loadEvent;
+            case UNLOAD:
+                return unloadEvent;
+            case KEYBOARD:
+                return keyboardEvent;
+            case MOUSE:
+                return mouseEvent;
+            case AJAX:
+                return ajaxEvent;
+            case TIMEOUT:
+                return timeoutEvent;
+            case OTHER:
+            case UNKNOWN:
+                return anyEvent;
+            default:
+                throw new AnalysisException("Unhandleded case: " + type);
         }
     }
 
+    private static void triggerEventHandler(EventType type, Solver.SolverInterface c) {
+        boolean requiresStateCloning = type == EventType.LOAD || type == EventType.UNLOAD;
+        DOMRegistry.MaySets maysetKey = convertEventTypeToHandlerKey(type);
+        triggerEventHandler(c.getNode(), c.getState(), type, requiresStateCloning, c, c.getState().getExtras().getFromMaySet(maysetKey.name()));
+    }
+
+    private static DOMRegistry.MaySets convertEventTypeToHandlerKey(EventType type) {
+        switch (type) {
+            case LOAD:
+                return DOMRegistry.MaySets.LOAD_EVENT_HANDLER;
+            case UNLOAD:
+                return DOMRegistry.MaySets.UNLOAD_EVENT_HANDLERS;
+            case KEYBOARD:
+                return DOMRegistry.MaySets.KEYBOARD_EVENT_HANDLER;
+            case MOUSE:
+                return DOMRegistry.MaySets.MOUSE_EVENT_HANDLER;
+            case UNKNOWN:
+                return DOMRegistry.MaySets.UNKNOWN_EVENT_HANDLERS;
+            case OTHER:
+                return DOMRegistry.MaySets.UNKNOWN_EVENT_HANDLERS; // TODO improve precision
+            case AJAX:
+                return DOMRegistry.MaySets.AJAX_EVENT_HANDLER;
+            case TIMEOUT:
+                return DOMRegistry.MaySets.TIMEOUT_EVENT_HANDLERS;
+            default:
+                throw new AnalysisException("Unhandled case: " + type);
+        }
+    }
+
+    public static void emit(EventDispatcherNode n, Solver.SolverInterface c) {
+        if (n.getType() == EventDispatcherNode.Type.DOM_LOAD) {
+            triggerEventHandler(EventType.LOAD, c);
+        }
+        if (n.getType() == EventDispatcherNode.Type.DOM_UNLOAD) {
+            triggerEventHandler(EventType.UNLOAD, c);
+        }
+        if (n.getType() == EventDispatcherNode.Type.DOM_OTHER) {
+            triggerEventHandler(EventType.KEYBOARD, c);
+            triggerEventHandler(EventType.MOUSE, c);
+            triggerEventHandler(EventType.AJAX, c);
+            triggerEventHandler(EventType.UNKNOWN, c);
+            triggerEventHandler(EventType.OTHER, c);
+            triggerEventHandler(EventType.TIMEOUT, c);
+        }
+    }
 }

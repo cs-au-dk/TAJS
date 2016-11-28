@@ -49,6 +49,7 @@ import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.FUNCTION;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.JSON_PARSE;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.JSON_STRINGIFY;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.NUMBER;
+import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.NUMBER_ISFINITE;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.NUMBER_TOEXPONENTIAL;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.NUMBER_TOFIXED;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.NUMBER_TOLOCALESTRING;
@@ -65,6 +66,7 @@ import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.STRING;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.STRING_CHARAT;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.STRING_CHARCODEAT;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.STRING_CONCAT;
+import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.STRING_ENDSWITH;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.STRING_FROMCHARCODE;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.STRING_INDEXOF;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.STRING_LASTINDEXOF;
@@ -74,6 +76,7 @@ import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.STRING_REPL
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.STRING_SEARCH;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.STRING_SLICE;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.STRING_SPLIT;
+import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.STRING_STARTSWITH;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.STRING_SUBSTR;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.STRING_SUBSTRING;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.STRING_TOLOCALELOWERCASE;
@@ -246,8 +249,11 @@ public class NativeFunctionSignatureChecker { // TODO: review + javadoc + inspec
         addSig(signatures, STRING_TOUPPERCASE, rCoerceString);
         addSig(signatures, STRING_TOLOCALEUPPERCASE, rCoerceString);
         addSig(signatures, STRING_TRIM, rCoerceString);
+        addSig(signatures, STRING_STARTSWITH, rCoerceString, mpStringIfNotRegExp, pInteger);
+        addSig(signatures, STRING_ENDSWITH, rCoerceString, mpStringIfNotRegExp, pInteger);
 
         // NUMBER FUNCTIONS
+        addStaticSig(signatures, NUMBER_ISFINITE, false, mpDontCare);
         addSig(signatures, NUMBER_TOFIXED, rNumber, pInteger);
         addSig(signatures, NUMBER_TOEXPONENTIAL, rNumber, pInteger);
         addSig(signatures, NUMBER_TOPRECISION, rNumber, pInteger);
@@ -609,6 +615,9 @@ public class NativeFunctionSignatureChecker { // TODO: review + javadoc + inspec
             this.fixedParameterCount = fixedParameters.size();
             this.simpleSignature = new SimpleSignature(isConstructor, base, fixedParameters);
             this.varParameter = parameters.get(parameters.size() - 1);
+            if (this.varParameter.mustBePresent) {
+                throw new AnalysisException("The last VarSig parameter should not be mandatory.");
+            }
         }
 
         @Override

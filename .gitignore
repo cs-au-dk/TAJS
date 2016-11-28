@@ -6,3 +6,4 @@
 .idea/workspace.xml
 **/*.iml
 /local-development.properties
+!/test/expected/**

@@ -18,11 +18,16 @@ package dk.brics.tajs.flowgraph;
 
 import dk.brics.tajs.util.AnalysisException;
 
+import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import static dk.brics.tajs.util.Collections.newMap;
 
+/**
+ * Auxiliary methods for recognizing HTML attribute names related to event handlers.
+ */
 public enum EventType { // TODO: (#116) javadoc
     // TODO rename toStrings
     LOAD("LoadEventHandler"),
@@ -33,6 +38,8 @@ public enum EventType { // TODO: (#116) javadoc
     OTHER("OtherEventHandler"),
     AJAX("AjaxEventHandler"),
     TIMEOUT("TimeoutEventHandler");
+
+    private static final String attributePrefix = "on";
 
     private String name;
 
@@ -98,17 +105,24 @@ public enum EventType { // TODO: (#116) javadoc
                 .findAny().orElseGet(() -> EventType.UNKNOWN);
     }
 
+    public static Collection<String> getEventHandlerAttributeNames(EventType type) {
+        return eventTypes.entrySet().stream()
+                .filter(e -> e.getValue() == type)
+                .map(e -> attributePrefix + e.getKey())
+                .collect(Collectors.toList());
+    }
+
     public static EventType getEventHandlerTypeFromAttributeName(String eventName) {
-        if (!eventName.startsWith("on")) {
+        if (!eventName.startsWith(attributePrefix)) {
             return EventType.UNKNOWN;
         }
         return getEventHandlerTypeFromString(convertEventAttributeToType(eventName));
     }
 
     private static String convertEventAttributeToType(String eventName) {
-        if (!eventName.startsWith("on")) {
+        if (!eventName.startsWith(attributePrefix)) {
             throw new AnalysisException("Inconsistent use of attribute names: " + eventName);
         }
-        return eventName.substring(2);
+        return eventName.substring(attributePrefix.length());
     }
 }
