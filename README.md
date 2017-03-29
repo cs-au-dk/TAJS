@@ -102,6 +102,6 @@ The following people have contributed to the source code:
 This software includes components from:
 - Google Closure Compiler (<http://code.google.com/p/closure-compiler/>)
 - Jericho HTML Parser (<http://jericho.htmlparser.net/>)
-- Log4j (<http://logging.apache.org/log4>)
+- Log4j (<http://logging.apache.org/log4j>)
 - args4j (<http://args4j.kohsuke.org/>)
 - JUnit (<http://junit.org/>) (development only)
