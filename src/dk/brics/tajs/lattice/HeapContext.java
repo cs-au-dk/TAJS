@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,6 +16,9 @@
 
 package dk.brics.tajs.lattice;
 
+import dk.brics.tajs.util.Canonicalizer;
+import dk.brics.tajs.util.DeepImmutable;
+
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -27,9 +30,7 @@ import static dk.brics.tajs.util.Collections.newSet;
  * Heap context for context sensitive analysis.
  * Immutable.
  */
-public final class HeapContext {// TODO: canonicalize? (#140)
-
-    private static HeapContext emptyHeapContext = new HeapContext(null, null);
+public final class HeapContext implements DeepImmutable {
 
     /**
      * Values of special variables at function entry in the context where the object was created, or null if none.
@@ -62,11 +63,8 @@ public final class HeapContext {// TODO: canonicalize? (#140)
      * Constructs a new heap context object.
      */
     public static HeapContext make(ContextArguments funargs, Map<String, Value> concreteSemanticValueQualifiers) {
-        if (funargs == null && concreteSemanticValueQualifiers == null) {
-            return emptyHeapContext;
-        } else {
-            return new HeapContext(funargs, concreteSemanticValueQualifiers);
-        }
+        HeapContext instance = new HeapContext(funargs, concreteSemanticValueQualifiers);
+        return Canonicalizer.get().canonicalize(instance);
     }
 
     /**
@@ -119,7 +117,7 @@ public final class HeapContext {// TODO: canonicalize? (#140)
     /**
      * Utility function for extracting object labels
      */
-    public static Set<ObjectLabel> extractTopLevelObjectLabels(HeapContext context) { // XXX: review (+used where?)
+    public static Set<ObjectLabel> extractTopLevelObjectLabels(HeapContext context) { // TODO: review (+used where?)
         if (context == null) {
             return newSet();
         }

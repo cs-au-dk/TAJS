@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,13 +17,14 @@
 package dk.brics.tajs.flowgraph;
 
 import dk.brics.tajs.flowgraph.jsnodes.ReturnNode;
+import dk.brics.tajs.flowgraph.jsnodes.ThrowNode;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.util.AnalysisException;
 import dk.brics.tajs.util.Strings;
 
 import java.io.PrintWriter;
 import java.util.Collection;
-import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
 
@@ -272,12 +273,12 @@ public class BasicBlock {
             s.append(" (").append(n.getSourceLocation()).append(")\n");
         }
         s.append("    ->[");
-        boolean first = true;
         if (Options.get().isDebugOrTestEnabled()) {
             List<BasicBlock> ss = newList(successors);
             sort(ss);
             successors = ss;
         }
+        boolean first = true;
         for (BasicBlock b : successors) {
             if (first)
                 first = false;
@@ -293,7 +294,7 @@ public class BasicBlock {
     }
 
     private static void sort(List<BasicBlock> blocks) {
-        Collections.sort(blocks, (o1, o2) -> o1.getIndex() - o2.getIndex());
+        blocks.sort(Comparator.comparingInt(BasicBlock::getIndex));
     }
 
     /**
@@ -333,7 +334,7 @@ public class BasicBlock {
      * Perform a consistency check of the basic block.
      */
     public void check(BasicBlock entry, BasicBlock ordinary_exit, BasicBlock exceptional_exit, Set<Integer> seen_blocks, Set<Integer> seen_nodes) {
-        if (this != ordinary_exit && this != exceptional_exit && successors.isEmpty())
+        if (this != ordinary_exit && this != exceptional_exit && !(this.getLastNode() instanceof ThrowNode) && successors.isEmpty())
             throw new AnalysisException("No successor for block: " + toString());
         if (isEmpty())
             throw new AnalysisException("Basic block is empty: " + toString());

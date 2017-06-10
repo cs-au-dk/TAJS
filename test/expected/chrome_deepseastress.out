@@ -1,16 +1,14 @@
 test/chromeexperiments/deepseastress.html:454:20: [definite] TypeError, accessing property of null/undefined
 test/chromeexperiments/deepseastress.html:459:5: [definite] TypeError, accessing property of null/undefined
 test/chromeexperiments/deepseastress.html:465:5: [definite] TypeError, accessing property of null/undefined
-test/chromeexperiments/deepseastress.html:459:25: [definite] The conditional expression is always false
 test/chromeexperiments/deepseastress.html:13:1: [definite] Dead assignment, property g is never read
 test/chromeexperiments/deepseastress.html:95:1: [definite] Dead assignment, property l is never read
 test/chromeexperiments/deepseastress.html:330:1: [definite] Dead assignment, property p is never read
 test/chromeexperiments/deepseastress.html:402:5: [definite] Dead assignment, property init is never read
 test/chromeexperiments/deepseastress.html:404:5: [definite] Dead assignment, property setMouseInteraction is never read
-test/chromeexperiments/deepseastress.html:452:32: [definite] Reading absent property which
-test/chromeexperiments/deepseastress.html:454:20: [definite] Reading absent property numCreatures
-test/chromeexperiments/deepseastress.html:459:5: [definite] Reading absent property toggle
-test/chromeexperiments/deepseastress.html:465:5: [definite] Reading absent property numCreatures
+test/chromeexperiments/deepseastress.html:454:20: [definite] Reading absent property numCreatures of host object
+test/chromeexperiments/deepseastress.html:459:5: [definite] Reading absent property toggle of host object
+test/chromeexperiments/deepseastress.html:465:5: [definite] Reading absent property numCreatures of host object
 test/chromeexperiments/deepseastress.html:13:9: [definite] Unreachable function
 test/chromeexperiments/deepseastress.html:14:5: [definite] Unreachable function s
 test/chromeexperiments/deepseastress.html:17:5: [definite] Unreachable function C
@@ -79,21 +77,22 @@ test/chromeexperiments/deepseastress.html:454:20: [maybe] TypeError, accessing p
 test/chromeexperiments/deepseastress.html:459:5: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/deepseastress.html:465:5: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/deepseastress.html:415:110: [maybe] Reading 'this' yields the global object
-test/chromeexperiments/deepseastress.html:415:110: [maybe] Reading absent property form
+test/chromeexperiments/deepseastress.html:415:110: [maybe] Reading absent property form of host object
 test/chromeexperiments/deepseastress.html:417:110: [maybe] Reading 'this' yields the global object
-test/chromeexperiments/deepseastress.html:417:110: [maybe] Reading absent property form
+test/chromeexperiments/deepseastress.html:417:110: [maybe] Reading absent property form of host object
 test/chromeexperiments/deepseastress.html:419:104: [maybe] Reading 'this' yields the global object
-test/chromeexperiments/deepseastress.html:419:104: [maybe] Reading absent property form
+test/chromeexperiments/deepseastress.html:419:104: [maybe] Reading absent property form of host object
 test/chromeexperiments/deepseastress.html:421:110: [maybe] Reading 'this' yields the global object
-test/chromeexperiments/deepseastress.html:421:110: [maybe] Reading absent property form
+test/chromeexperiments/deepseastress.html:421:110: [maybe] Reading absent property form of host object
 test/chromeexperiments/deepseastress.html:423:102: [maybe] Reading 'this' yields the global object
-test/chromeexperiments/deepseastress.html:423:102: [maybe] Reading absent property form
+test/chromeexperiments/deepseastress.html:423:102: [maybe] Reading absent property form of host object
 test/chromeexperiments/deepseastress.html:426:106: [maybe] Reading 'this' yields the global object
-test/chromeexperiments/deepseastress.html:426:106: [maybe] Reading absent property form
+test/chromeexperiments/deepseastress.html:426:106: [maybe] Reading absent property form of host object
 test/chromeexperiments/deepseastress.html:428:106: [maybe] Reading 'this' yields the global object
-test/chromeexperiments/deepseastress.html:428:106: [maybe] Reading absent property form
+test/chromeexperiments/deepseastress.html:428:106: [maybe] Reading absent property form of host object
 test/chromeexperiments/deepseastress.html:430:81: [maybe] Reading 'this' yields the global object
-test/chromeexperiments/deepseastress.html:430:81: [maybe] Reading absent property form
+test/chromeexperiments/deepseastress.html:430:81: [maybe] Reading absent property form of host object
+test/chromeexperiments/deepseastress.html:452:32: [maybe] Reading absent property which of host object
 test/chromeexperiments/deepseastress.html: [maybe] Uncaught exception, constructed at [test/chromeexperiments/deepseastress.html:415:103, test/chromeexperiments/deepseastress.html:417:103, test/chromeexperiments/deepseastress.html:419:97, test/chromeexperiments/deepseastress.html:421:103, test/chromeexperiments/deepseastress.html:423:95, test/chromeexperiments/deepseastress.html:426:99, test/chromeexperiments/deepseastress.html:428:99, test/chromeexperiments/deepseastress.html:454:20, test/chromeexperiments/deepseastress.html:459:5, test/chromeexperiments/deepseastress.html:465:5]
 test/chromeexperiments/deepseastress.html:415:110: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/chromeexperiments/deepseastress.html:417:110: [info] 'this' refers to multiple abstract objects, which may cause loss of precision

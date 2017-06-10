@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,10 +21,13 @@ import dk.brics.tajs.analysis.dom.DOMFunctions;
 import dk.brics.tajs.analysis.dom.DOMObjects;
 import dk.brics.tajs.analysis.nativeobjects.ECMAScriptFunctions;
 import dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects;
+import dk.brics.tajs.analysis.nativeobjects.TAJSFunction;
+import dk.brics.tajs.analysis.signatures.NativeFunctionSignatureChecker;
 import dk.brics.tajs.lattice.HostAPI;
 import dk.brics.tajs.lattice.HostObject;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.util.AnalysisException;
+import dk.brics.tajs.util.AnalysisLimitationException;
 
 /**
  * Descriptors and dispatching for the supported host APIs.
@@ -32,7 +35,9 @@ import dk.brics.tajs.util.AnalysisException;
 public enum HostAPIs implements HostAPI {
 
     ECMASCRIPT_NATIVE("ECMAScript native functions", "native"),
-    DOCUMENT_OBJECT_MODEL("The Document Object Model", "dom");
+    DOCUMENT_OBJECT_MODEL("The Document Object Model", "dom"),
+    TAJS("TAJS_-functions", "tajs"),
+    PARTIAL_HOST_MODEL("Partially modeled host APIs", "partial");
 
     private String name;
 
@@ -53,6 +58,10 @@ public enum HostAPIs implements HostAPI {
                 return ECMAScriptFunctions.evaluate((ECMAScriptObjects) hostobject, call, c);
             case DOCUMENT_OBJECT_MODEL:
                 return DOMFunctions.evaluate((DOMObjects) hostobject, call, c);
+            case TAJS:
+                return TAJSFunctionEvaluator.evaluate((TAJSFunction) hostobject, call, c);
+            case PARTIAL_HOST_MODEL:
+                throw new AnalysisLimitationException.AnalysisModelLimitationException(call.getSourceNode().getSourceLocation() + ": No model for " + hostobject);
             default:
                 throw new AnalysisException("Unexpected host API");
         }

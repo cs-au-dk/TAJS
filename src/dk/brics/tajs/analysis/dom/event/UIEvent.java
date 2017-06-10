@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,8 +18,8 @@ package dk.brics.tajs.analysis.dom.event;
 
 import dk.brics.tajs.analysis.Conversion;
 import dk.brics.tajs.analysis.FunctionCalls;
-import dk.brics.tajs.analysis.NativeFunctions;
 import dk.brics.tajs.analysis.Solver;
+import dk.brics.tajs.analysis.dom.DOMFunctions;
 import dk.brics.tajs.analysis.dom.DOMObjects;
 import dk.brics.tajs.analysis.dom.DOMWindow;
 import dk.brics.tajs.lattice.ObjectLabel;
@@ -41,8 +41,8 @@ public class UIEvent {
 
     public static void build(Solver.SolverInterface c) {
         State s = c.getState();
-        PROTOTYPE = new ObjectLabel(DOMObjects.UI_EVENT_PROTOTYPE, ObjectLabel.Kind.OBJECT);
-        INSTANCES = new ObjectLabel(DOMObjects.UI_EVENT_INSTANCES, ObjectLabel.Kind.OBJECT);
+        PROTOTYPE = ObjectLabel.make(DOMObjects.UI_EVENT_PROTOTYPE, ObjectLabel.Kind.OBJECT);
+        INSTANCES = ObjectLabel.make(DOMObjects.UI_EVENT_INSTANCES, ObjectLabel.Kind.OBJECT);
 
         // Prototype object.
         s.newObject(PROTOTYPE);
@@ -68,16 +68,16 @@ public class UIEvent {
         State s = c.getState();
         switch (nativeObject) {
             case UI_EVENT_INIT_UI_EVENT: {
-                NativeFunctions.expectParameters(nativeObject, call, c, 5, 5);
+                DOMFunctions.expectParameters(nativeObject, call, c, 5, 5);
                 /* Value typeArg =*/
-                Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
+                Conversion.toString(FunctionCalls.readParameter(call, s, 0), c);
                 /* Value canBubble =*/
-                Conversion.toBoolean(NativeFunctions.readParameter(call, s, 1));
+                Conversion.toBoolean(FunctionCalls.readParameter(call, s, 1));
                 /* Value cancelableArg =*/
-                Conversion.toBoolean(NativeFunctions.readParameter(call, s, 2));
+                Conversion.toBoolean(FunctionCalls.readParameter(call, s, 2));
                 // View arg not modelled...
                 /* Value detailArg =*/
-                Conversion.toNumber(NativeFunctions.readParameter(call, s, 4), c);
+                Conversion.toNumber(FunctionCalls.readParameter(call, s, 4), c);
                 return Value.makeUndef();
             }
             default:

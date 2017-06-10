@@ -1,0 +1,62 @@
+test/1k2012love/1134.js:65:12: [definite] Too many parameters to function Object.prototype.toLocaleString
+test/1k2012love/1134.js:65:12: [definite] Too many parameters to function Object.prototype.toString
+test/1k2012love/1134.js:65:12: [definite] Too many parameters to function Object.prototype.valueOf
+test/1k2012love/1134.js:65:12: [definite] Too few parameters to function Object.prototype.__defineGetter__
+test/1k2012love/1134.js:65:12: [definite] Too few parameters to function Object.prototype.__defineSetter__
+test/1k2012love/1134.js:5:7: [definite] The variable timeout is never used
+test/1k2012love/1134.js:16:27: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1134.js:20:19: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1134.js:29:39: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1134.js:43:13: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1134.js:43:25: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1134.js:51:10: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1134.js:54:19: [maybe] ReferenceError, reading absent variable b
+test/1k2012love/1134.js:61:25: [maybe] ReferenceError, reading absent variable b
+test/1k2012love/1134.js:65:12: [maybe] TypeError, call to non-function
+test/1k2012love/1134.js:65:17: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1134.js:69:17: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1134.js:69:29: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1134.js:16:27: [maybe] Reading absent property c
+test/1k2012love/1134.js:20:19: [maybe] Reading absent property c
+test/1k2012love/1134.js:24:11: [maybe] Reading absent property p
+test/1k2012love/1134.js:26:13: [maybe] Reading absent property i
+test/1k2012love/1134.js:29:20: [maybe] Reading absent property i
+test/1k2012love/1134.js:29:39: [maybe] Reading absent property c
+test/1k2012love/1134.js:43:13: [maybe] Reading absent property c
+test/1k2012love/1134.js:43:25: [maybe] Reading absent property c
+test/1k2012love/1134.js:51:10: [maybe] Reading absent property t
+test/1k2012love/1134.js:52:13: [maybe] Reading absent property t
+test/1k2012love/1134.js:53:15: [maybe] Reading absent property txt
+test/1k2012love/1134.js:56:31: [maybe] Reading absent property t
+test/1k2012love/1134.js:60:15: [maybe] Reading absent property txt
+test/1k2012love/1134.js:65:17: [maybe] Reading absent property c
+test/1k2012love/1134.js:69:17: [maybe] Reading absent property c
+test/1k2012love/1134.js:69:29: [maybe] Reading absent property c
+test/1k2012love/1134.js: [maybe] Uncaught exception, constructed at [test/1k2012love/1134.js:16:27, test/1k2012love/1134.js:20:19, test/1k2012love/1134.js:29:39, test/1k2012love/1134.js:43:13, test/1k2012love/1134.js:43:25, test/1k2012love/1134.js:51:10, test/1k2012love/1134.js:54:19, test/1k2012love/1134.js:61:25, test/1k2012love/1134.js:65:12, test/1k2012love/1134.js:65:17, test/1k2012love/1134.js:69:17, test/1k2012love/1134.js:69:29, test/1k2012love/shim.js:9:5]
+test/1k2012love/1134.js:16:27: [maybe] Converting object to string
+test/1k2012love/1134.js:16:27: [maybe] Converting primitive string to object
+test/1k2012love/1134.js:20:19: [maybe] Converting object to string
+test/1k2012love/1134.js:20:19: [maybe] Converting primitive string to object
+test/1k2012love/1134.js:29:20: [maybe] Conversion to number yields NaN
+test/1k2012love/1134.js:29:39: [maybe] Converting object to string
+test/1k2012love/1134.js:29:39: [maybe] Converting primitive string to object
+test/1k2012love/1134.js:41:13: [maybe] Reading absent property (computed name)
+test/1k2012love/1134.js:43:25: [maybe] Converting primitive string to object
+test/1k2012love/1134.js:43:25: [maybe] Reading absent property (computed name)
+test/1k2012love/1134.js:50:14: [maybe] Reading absent property (computed name)
+test/1k2012love/1134.js:57:30: [maybe] Converting undefined to string
+test/1k2012love/1134.js:65:12: [maybe] Converting object to string
+test/1k2012love/1134.js:65:12: [maybe] Reading absent property (computed name)
+test/1k2012love/1134.js:65:17: [maybe] Converting primitive string to object
+test/1k2012love/1134.js:65:17: [maybe] Reading absent property (computed name)
+test/1k2012love/1134.js:67:18: [maybe] Conversion to number yields NaN
+test/1k2012love/1134.js:68:19: [maybe] Reading absent property (computed name)
+test/1k2012love/1134.js:69:29: [maybe] Converting primitive string to object
+test/1k2012love/1134.js:69:29: [maybe] Reading absent property (computed name)
+test/1k2012love/1134.js:92:13: [maybe] Converting primitive string to object
+test/1k2012love/1134.js:93:11: [maybe] Converting primitive string to object
+test/1k2012love/1134.js:93:11: [maybe] Reading absent property (computed name)
+test/1k2012love/1134.js:94:29: [maybe] Converting primitive string to object
+test/1k2012love/1134.js:114:9: [maybe] Converting undefined to string
+test/1k2012love/1134.js:65:12: [info] Reading from unknown property that may cause loss of precision

@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -96,7 +96,12 @@ public class Message implements Comparable<Message> {
         /**
          * Information about TAJS internal behavior.
          */
-        TAJS_META
+        TAJS_META,
+
+        /**
+         * Information about known use of unsoundness.
+         */
+        TAJS_UNSOUNDNESS;
     }
 
     private AbstractNode node;
@@ -218,7 +223,13 @@ public class Message implements Comparable<Message> {
      */
     @Override
     public String toString() {
-        return node.getSourceLocation() + ": [" + status + "] " + msg;
+        String bracketText;
+        if (severity == Severity.TAJS_UNSOUNDNESS) {
+            bracketText = "unsound";
+        } else {
+            bracketText = status + "";
+        }
+        return String.format("%s: [%s] %s", node.getSourceLocation(), bracketText, msg);
     }
 
     /**

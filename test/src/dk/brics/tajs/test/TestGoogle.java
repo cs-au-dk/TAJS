@@ -1,18 +1,12 @@
 package dk.brics.tajs.test;
 
 import dk.brics.tajs.Main;
-import dk.brics.tajs.monitoring.CompositeMonitoring;
-import dk.brics.tajs.monitoring.IAnalysisMonitoring;
-import dk.brics.tajs.monitoring.Monitoring;
-import dk.brics.tajs.monitoring.OrdinaryExitReachableChecker;
 import dk.brics.tajs.options.Options;
 import org.junit.Before;
 import org.junit.Test;
 
 @SuppressWarnings("static-method")
 public class TestGoogle {
-
-	private IAnalysisMonitoring monitoring;
 
 	public static void main(String[] args) {
 		org.junit.runner.JUnitCore.main("dk.brics.tajs.test.TestGoogle");
@@ -22,7 +16,6 @@ public class TestGoogle {
 	public void init() {
 		Main.reset();
 		Options.get().enableTest();
-        monitoring = CompositeMonitoring.buildFromList(new Monitoring(), new OrdinaryExitReachableChecker());
     }
 	
 	@Test
@@ -30,7 +23,7 @@ public class TestGoogle {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/google/richards.js"};
-		Misc.run(args, monitoring);
+		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 	
@@ -39,7 +32,7 @@ public class TestGoogle {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/google/benchpress.js"};
-		Misc.run(args, monitoring);
+		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 	
@@ -48,7 +41,7 @@ public class TestGoogle {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/google/splay.js"};
-		Misc.run(args, monitoring);
+		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 	
@@ -57,7 +50,7 @@ public class TestGoogle {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/google/cryptobench.js"};
-		Misc.run(args, monitoring);
+		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
@@ -66,7 +59,7 @@ public class TestGoogle {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/google/delta-blue.js"};
-		Misc.run(args, monitoring);
+		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 }

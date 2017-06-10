@@ -38,7 +38,7 @@ public class JSString_match_test {
     public void notFound() {
         Misc.init();
         Misc.runSource("var v = 'foo'.match('x');",
-                "TAJS_assert(v === null);");
+                "TAJS_assert(v, 'isMaybeNull||isMaybeUndef');");
     }
 
     @Test

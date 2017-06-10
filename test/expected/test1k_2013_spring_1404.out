@@ -2,32 +2,6 @@ test/1k2013spring/1404.js:40:7: [definite] Too few parameters to function Canvas
 test/1k2013spring/1404.js:46:7: [definite] Too few parameters to function CanvasRenderingContext2D.prototype.arc
 test/1k2013spring/1404.js:58:7: [definite] Too few parameters to function CanvasRenderingContext2D.prototype.arc
 test/1k2013spring/1404.js:65:9: [definite] Reading 'this' yields the global object
-test/1k2013spring/shim.js:6:5: [definite] The variable b is never used
-test/1k2013spring/shim.js:8:9: [maybe] TypeError, accessing property of null/undefined
-test/1k2013spring/shim.js:8:9: [maybe] TypeError, call to non-function
-test/1k2013spring/shim.js:9:1: [maybe] TypeError, accessing property of null/undefined
-test/1k2013spring/1404.js:9:7: [maybe] Reading absent property width
-test/1k2013spring/1404.js:11:7: [maybe] Reading absent property height
-test/1k2013spring/shim.js:6:9: [maybe] Reading absent property body
-test/1k2013spring/shim.js:8:9: [maybe] Reading absent property getContext
-test/1k2013spring/shim.js:9:1: [maybe] Reading absent property body
-test/1k2013spring/1404.js:13:8: [maybe] Conversion from string to number yields NaN
-test/1k2013spring/1404.js:13:8: [maybe] Conversion to number yields NaN
-test/1k2013spring/1404.js:13:8: [maybe] The variable w has values with different types
-test/1k2013spring/1404.js:15:8: [maybe] Conversion from string to number yields NaN
-test/1k2013spring/1404.js:15:8: [maybe] Conversion to number yields NaN
-test/1k2013spring/1404.js:15:8: [maybe] The variable h has values with different types
-test/1k2013spring/1404.js:17:7: [maybe] The variable w has values with different types
-test/1k2013spring/1404.js:17:11: [maybe] The variable h has values with different types
-test/1k2013spring/1404.js:17:15: [maybe] Conversion from string to number yields NaN
-test/1k2013spring/1404.js:17:15: [maybe] Conversion to number yields NaN
-test/1k2013spring/1404.js:17:15: [maybe] The variable h has values with different types
-test/1k2013spring/1404.js:17:23: [maybe] Conversion from string to number yields NaN
-test/1k2013spring/1404.js:17:23: [maybe] Conversion to number yields NaN
-test/1k2013spring/1404.js:17:23: [maybe] The variable w has values with different types
-test/1k2013spring/1404.js:21:7: [maybe] Conversion from string to number yields NaN
-test/1k2013spring/1404.js:21:7: [maybe] Conversion to number yields NaN
-test/1k2013spring/1404.js:21:25: [maybe] The variable w has values with different types
-test/1k2013spring/1404.js:21:28: [maybe] The variable h has values with different types
-test/1k2013spring/shim.js:7:9: [maybe] Reading absent property (computed name)
-test/1k2013spring/shim.js,test/1k2013spring/1404.js: [maybe] Uncaught exception, constructed at [test/1k2013spring/shim.js:8:9, test/1k2013spring/shim.js:9:1]
+test/1k2013spring/1404.js:21:7: [maybe] ReferenceError, reading absent variable a
+test/1k2013spring/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1404.js: [maybe] Uncaught exception, constructed at [test/1k2013spring/1404.js:21:7, test/1k2013spring/shim.js:9:5]

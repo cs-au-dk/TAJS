@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -351,7 +351,7 @@ public class UnevalTools {
                 Value v = state.readRegister(input.getMapping().get(placeholder));
                 v = UnknownValueResolver.getRealValue(v, state);
                 v = v.restrictToStr();
-                return v.isStrIdentifierOrIdentifierParts();
+                return v.isStrIdentifierParts();
             }
 
             /**

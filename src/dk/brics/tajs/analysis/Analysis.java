@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -47,7 +47,9 @@ public final class Analysis implements IAnalysis<State, Context, CallEdge, IAnal
 
     private final EvalCache eval_cache;
 
-    private IContextSensitivityStrategy context_sensitivity_strategy;
+    private final Unsoundness unsoundness;
+
+    private CustomContextSensitivityStrategy context_sensitivity_strategy;
 
     private final PropVarOperations state_util;
 
@@ -55,13 +57,14 @@ public final class Analysis implements IAnalysis<State, Context, CallEdge, IAnal
      * Constructs a new analysis object.
      */
     public Analysis(IAnalysisMonitoring monitoring, SolverSynchronizer sync) {
+        unsoundness = new Unsoundness(Options.get().getUnsoundness(), monitoring::addMessageInfo);
         this.monitoring = monitoring;
         initial_state_builder = new InitialStateBuilder();
         transfer = new Transfer();
         worklist_strategy = new WorkListStrategy();
         eval_cache = new EvalCache();
         solver = new Solver(this, sync);
-        state_util = new PropVarOperations();
+        state_util = new PropVarOperations(unsoundness);
     }
 
     @Override
@@ -71,11 +74,13 @@ public final class Analysis implements IAnalysis<State, Context, CallEdge, IAnal
 
     @Override
     public void initContextSensitivity(FlowGraph fg) {
+        IContextSensitivityStrategy s;
         if (Options.get().isDeterminacyEnabled()) {
-            context_sensitivity_strategy = new StaticDeterminacyContextSensitivityStrategy(fg.getSyntacticHints());
+            s = new StaticDeterminacyContextSensitivityStrategy(fg.getSyntacticInformation());
         } else {
-            context_sensitivity_strategy = new BasicContextSensitivityStrategy();
+            s = new BasicContextSensitivityStrategy();
         }
+        context_sensitivity_strategy = new CustomContextSensitivityStrategy(s);
     }
 
     @Override
@@ -132,7 +137,7 @@ public final class Analysis implements IAnalysis<State, Context, CallEdge, IAnal
     /**
      * Returns the context sensitivity strategy.
      */
-    public IContextSensitivityStrategy getContextSensitivityStrategy() {
+    public CustomContextSensitivityStrategy getContextSensitivityStrategy() {
         return context_sensitivity_strategy;
     }
 
@@ -141,5 +146,9 @@ public final class Analysis implements IAnalysis<State, Context, CallEdge, IAnal
      */
     public PropVarOperations getPropVarOperations() {
         return state_util;
+    }
+
+    public Unsoundness getUnsoundness() {
+        return unsoundness;
     }
 }

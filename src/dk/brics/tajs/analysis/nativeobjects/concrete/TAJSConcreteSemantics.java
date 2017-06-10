@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,58 +16,102 @@
 
 package dk.brics.tajs.analysis.nativeobjects.concrete;
 
-import dk.brics.tajs.analysis.Analysis;
-import dk.brics.tajs.analysis.FunctionCalls;
+import dk.brics.tajs.analysis.FunctionCalls.CallInfo;
 import dk.brics.tajs.analysis.Solver;
-import dk.brics.tajs.lattice.CallEdge;
-import dk.brics.tajs.lattice.Context;
+import dk.brics.tajs.analysis.nativeobjects.concrete.NativeResult.Kind;
 import dk.brics.tajs.lattice.ObjectLabel;
-import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.Value;
-import dk.brics.tajs.monitoring.IAnalysisMonitoring;
-import dk.brics.tajs.solver.GenericSolver;
-import dk.brics.tajs.util.AnalysisException;
+import dk.brics.tajs.util.AnalysisLimitationException.AnalysisModelLimitationException;
 
 import java.util.List;
 import java.util.Set;
+import java.util.function.Supplier;
+import java.util.stream.Collectors;
 
 /**
- * A bridge between TAJS and a concrete semantics.
- *
- * @see TAJSSplitConcreteSemantics for more general and precise version that returns sets of values
+ * Interface for relaying evaluation of calls to a concrete semantics.
+ * <p>
+ * NB: the methods of this class do not have side-effects on values that are not provided as arguments to the methods.
+ * In general, the invocation of non-pure functions is not recommended, but some side-effects are supported (e.g. RegExp#lastIndex).
  */
 public class TAJSConcreteSemantics {
 
-    private TAJSConcreteSemantics() {}
+    private static final NativeConcreteSemantics nativeConcreteSemantics = new CachingNativeConcreteSemantics(new NashornConcreteSemantics());
 
-    private static <T> InvocationResult<T> pick(Set<InvocationResult<T>> obj) {
-        if (obj.size() != 1) {
-            throw new AnalysisException("Not producing exactly one result: " + obj);
+    /**
+     * Implements a general call with implicit arguments. The default behavior is used if the concrete semantics was inapplicable to the call. The default behavior is used if the concrete semantics was inapplicable to the call.
+     */
+    public static Value convertTAJSCall(Value vThis, String functionName, int maxArguments, CallInfo call, Solver.SolverInterface c, Supplier<Value> defaultBehavior) {
+        Set<Value> result = getGeneralCalls(c).convertTAJSCall(vThis, functionName, maxArguments, call, defaultBehavior);
+        return Value.join(result);
+    }
+
+    /**
+     * Implements a general call with explicit arguments. The default behavior is used if the concrete semantics was inapplicable to the call.
+     */
+    public static Value convertTAJSCallExplicit(Value vThis, String functionName, List<Value> arguments, Solver.SolverInterface c, Supplier<Value> defaultBehavior) {
+        Set<Value> result = getGeneralCalls(c).convertTAJSCallExplicit(vThis, functionName, arguments, defaultBehavior);
+        return Value.join(result);
+    }
+
+    private static TAJSConcreteSemanticsForGeneralCalls getGeneralCalls(Solver.SolverInterface c) {
+        return new TAJSConcreteSemanticsForGeneralCalls(c); // NB we could avoid this constructor call on every use by making this class a singleton
+    }
+
+    /**
+     * Implements a general call with explicit arguments. Throws exception if the concrete semantics was inapplicable to the call.
+     */
+    public static Value convertTAJSCallExplicit(Value vThis, String functionName, List<Value> arguments, Solver.SolverInterface c) {
+        Set<NativeResult<ConcreteValue>> result = getGeneralCalls(c).convertTAJSCallExplicit(vThis, functionName, arguments);
+        if (result.stream().anyMatch(r -> r.kind != Kind.VALUE)) {
+            throw makeNonValueFailure();
         }
-        return obj.iterator().next();
+        return Value.join(result.stream().map(r -> Alpha.toValue(r.getValue(), c)).collect(Collectors.toSet()));
     }
 
-    public static <T extends PrimitiveConcreteValue> Value convertTAJSCall(Value vThis, String functionName, int maxArguments, FunctionCalls.CallInfo call, GenericSolver<State, Context, CallEdge, IAnalysisMonitoring, Analysis>.SolverInterface c, Value defaultValue) {
-        Set<Value> splitResult = TAJSSplitConcreteSemantics.convertTAJSCall(vThis, functionName, maxArguments, call, c, defaultValue);
-        return Value.join(splitResult);
+    private static AnalysisModelLimitationException makeNonValueFailure() {
+        return new AnalysisModelLimitationException("Implementation only supports value-results here: supply a valid, non-crashing program!");
     }
 
-    public static Value convertFunctionToString(ObjectLabel functionLabel) {
-        return TAJSSplitConcreteSemantics.convertFunctionToString(functionLabel);
+    public static NativeConcreteSemantics getNative() {
+        return nativeConcreteSemantics;
     }
 
-    public static <T extends PrimitiveConcreteValue> Value convertTAJSCallExplicit(Value vThis, String functionName, List<Value> arguments, GenericSolver<State, Context, CallEdge, IAnalysisMonitoring, Analysis>.SolverInterface c, Value defaultValue) {
-        Set<Value> splitResult = TAJSSplitConcreteSemantics.convertTAJSCallExplicit(vThis, functionName, arguments, c, defaultValue);
-        return Value.join(splitResult);
+    /**
+     * Implements eval.Throws exception if the concrete semantics was inapplicable to the call.
+     */
+    public static Value eval(String code) {
+        NativeResult<ConcreteValue> result = getNative().eval(code);
+        if (result.kind != Kind.VALUE) {
+            throw makeNonValueFailure();
+        }
+        return Alpha.toValue(result.getValue(), null);
     }
 
-    public static <T extends ConcreteValue> InvocationResult<T> convertTAJSCall(Value vThis, String functionName, int maxArguments, FunctionCalls.CallInfo call, Solver.SolverInterface c) {
-        Set<InvocationResult<T>> splitResult = TAJSSplitConcreteSemantics.convertTAJSCall(vThis, functionName, maxArguments, call, c);
-        return pick(splitResult);
-    }
-
-    public static <T extends ConcreteValue> InvocationResult<T> convertTAJSCallExplicit(Value vThis, String functionName, List<Value> arguments, Solver.SolverInterface c) {
-        Set<InvocationResult<T>> splitResult = TAJSSplitConcreteSemantics.convertTAJSCallExplicit(vThis, functionName, arguments, c);
-        return pick(splitResult);
+    /**
+     * Implements Function.prototype.toString. Throws exception if the function is syntactically invalid (it should not be possible to make such an ObjectLabel).
+     */
+    public static String convertFunctionToString(ObjectLabel functionLabel) {
+        if (functionLabel.isHostObject()) {
+            String enumString = functionLabel.getHostObject().toString();
+            String functionName = enumString.substring(enumString.lastIndexOf(".") + 1) /* abusing convention of host objects names pointing to their definition */;
+            String source = String.format("function %s() { [native code] }", functionName);
+            return source;
+        }
+        // In google chrome, the toString of a function is ignoring inline comments in certain places:
+        // ```
+        // $ (function /**/foo/**/(/**/bar/**/)/**/{/**/baz;/**/}).toString()
+        // > "function foo(/**/bar/**/)/**/{/**/baz;/**/}"
+        // ```
+        // So we can not simply return the source of the function object
+        // (but nashorn does return the entire source of the function declaration, so the call to concrete semantics is actually moot currently)
+        String toStringCallCode = String.format("(%s).toString()", functionLabel.getFunction().getSource());
+        NativeResult<ConcreteValue> result = getNative().eval(toStringCallCode);
+        if (result.kind != Kind.VALUE) {
+            throw new AnalysisModelLimitationException("Implementation only supports value-results here: supply a valid, non-crashing program!");
+        }
+        @SuppressWarnings("unchecked")
+        ConcreteString value = (ConcreteString) result.getValue();
+        return value.getString();
     }
 }

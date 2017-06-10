@@ -1,0 +1,53 @@
+<html>
+<head>
+<script type="text/javascript" src="jquery-hacked.js"></script>
+<script type="text/javascript">
+	//When the page is ready
+	$(document)
+			.ready(
+					function() {
+						$(".article .thebody").hide();
+						$("#container .article ul")
+								.prepend(
+										"<li class='readbody'><a href='' title='Read the article'>Read Body</a></li>");
+
+						$(".actions li.readbody a").click(function(event) {
+							$(this).parents("ul").prev(".thebody").toggle();
+
+							// Stop the link click from doing its normal thing
+							event.preventDefault();
+						});
+					});
+</script>
+</head>
+
+<body>
+<div id="container">
+   <div class="article">
+     <h3>Title 01</h3>
+     
+     <p class="summary">Summary 01</p>
+     <p class="thebody">Lorem ipsum....</p>
+     
+     <ul class="actions">
+       <li><a href="">comment</a></li>
+       <li><a href="">Trackback</a></li>
+     </ul> 
+     
+   </div>
+   
+   <div class="article">
+     <h3>Title 02</h3>
+     
+     <p class="summary">Summary 02</p>
+     <p class="thebody">Lorem ipsum....</p>
+     
+     <ul class="actions">
+       <li><a href="">comment</a></li>
+       <li><a href="">Trackback</a></li>
+     </ul>
+   </div>
+ </div>
+</body>
+
+</html>

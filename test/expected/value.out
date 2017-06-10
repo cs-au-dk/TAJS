@@ -2246,7 +2246,7 @@ isReadOnly = false
 isMaybeReadOnly = false
 isMaybeNotReadOnly = false
 isNotReadOnly = false
-****UInt
+****UIntPos
 Attributes: 
 isBottom = false
 isNoValue = false
@@ -2299,7 +2299,7 @@ isReadOnly = false
 isMaybeReadOnly = false
 isMaybeNotReadOnly = false
 isNotReadOnly = false
-****UInt|NotUInt
+****UIntPos|NotUInt
 Attributes: 
 isBottom = false
 isNoValue = false
@@ -2460,7 +2460,7 @@ isReadOnly = false
 isMaybeReadOnly = false
 isMaybeNotReadOnly = false
 isNotReadOnly = false
-****UInt|NotUInt
+****UIntPos|NotUInt
 Attributes: 
 isBottom = false
 isNoValue = false
@@ -2513,7 +2513,7 @@ isReadOnly = false
 isMaybeReadOnly = false
 isMaybeNotReadOnly = false
 isNotReadOnly = false
-****IdentPartsStr
+****IdentStr|OtherIdentPartsStr
 Attributes: 
 isBottom = false
 isNoValue = false
@@ -4898,7 +4898,7 @@ isReadOnly = false
 isMaybeReadOnly = false
 isMaybeNotReadOnly = false
 isNotReadOnly = false
-****UInt|NotUInt
+****UIntPos|NotUInt
 Attributes: 
 isBottom = false
 isNoValue = false
@@ -5163,7 +5163,7 @@ isReadOnly = false
 isMaybeReadOnly = false
 isMaybeNotReadOnly = false
 isNotReadOnly = false
-****UInt|NotUInt
+****UIntPos|NotUInt
 Attributes: 
 isBottom = false
 isNoValue = false
@@ -5216,7 +5216,7 @@ isReadOnly = false
 isMaybeReadOnly = false
 isMaybeNotReadOnly = false
 isNotReadOnly = false
-****UInt|NotUInt
+****UIntPos|NotUInt
 Attributes: 
 isBottom = false
 isNoValue = false
@@ -6011,7 +6011,7 @@ isReadOnly = false
 isMaybeReadOnly = false
 isMaybeNotReadOnly = false
 isNotReadOnly = false
-****UInt|NaN
+****UIntPos|NaN
 Attributes: 
 isBottom = false
 isNoValue = false
@@ -6064,7 +6064,7 @@ isReadOnly = false
 isMaybeReadOnly = false
 isMaybeNotReadOnly = false
 isNotReadOnly = false
-****UInt|Inf
+****UIntPos|Inf
 Attributes: 
 isBottom = false
 isNoValue = false
@@ -6117,7 +6117,7 @@ isReadOnly = false
 isMaybeReadOnly = false
 isMaybeNotReadOnly = false
 isNotReadOnly = false
-****UInt|NaN
+****UIntPos|NaN
 Attributes: 
 isBottom = false
 isNoValue = false
@@ -6170,7 +6170,7 @@ isReadOnly = false
 isMaybeReadOnly = false
 isMaybeNotReadOnly = false
 isNotReadOnly = false
-****UInt|Inf
+****UIntPos|Inf
 Attributes: 
 isBottom = false
 isNoValue = false

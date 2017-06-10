@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,9 +19,9 @@ package dk.brics.tajs.analysis.dom.core;
 import dk.brics.tajs.analysis.Conversion;
 import dk.brics.tajs.analysis.FunctionCalls;
 import dk.brics.tajs.analysis.InitialStateBuilder;
-import dk.brics.tajs.analysis.NativeFunctions;
 import dk.brics.tajs.analysis.PropVarOperations;
 import dk.brics.tajs.analysis.Solver;
+import dk.brics.tajs.analysis.dom.DOMFunctions;
 import dk.brics.tajs.analysis.dom.DOMObjects;
 import dk.brics.tajs.analysis.dom.DOMWindow;
 import dk.brics.tajs.lattice.ObjectLabel;
@@ -49,9 +49,9 @@ public class DOMConfiguration {
     public static void build(Solver.SolverInterface c) {
         State s = c.getState();
         PropVarOperations pv = c.getAnalysis().getPropVarOperations();
-        CONSTRUCTOR = new ObjectLabel(DOMObjects.CONFIGURATION_CONSTRUCTOR, Kind.FUNCTION);
-        PROTOTYPE = new ObjectLabel(DOMObjects.CONFIGURATION_PROTOTYPE, Kind.OBJECT);
-        INSTANCES = new ObjectLabel(DOMObjects.CONFIGURATION_INSTANCES, Kind.OBJECT);
+        CONSTRUCTOR = ObjectLabel.make(DOMObjects.CONFIGURATION_CONSTRUCTOR, Kind.FUNCTION);
+        PROTOTYPE = ObjectLabel.make(DOMObjects.CONFIGURATION_PROTOTYPE, Kind.OBJECT);
+        INSTANCES = ObjectLabel.make(DOMObjects.CONFIGURATION_INSTANCES, Kind.OBJECT);
 
         // Constructor Object
         s.newObject(CONSTRUCTOR);
@@ -88,18 +88,18 @@ public class DOMConfiguration {
         State s = c.getState();
         switch (nativeObject) {
             case CONFIGURATION_CAN_SET_PARAMETER: {
-                NativeFunctions.expectParameters(nativeObject, call, c, 2, 2);
+                DOMFunctions.expectParameters(nativeObject, call, c, 2, 2);
                 /* Value name =*/
-                Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
+                Conversion.toString(FunctionCalls.readParameter(call, s, 0), c);
                 return Value.makeAnyBool();
             }
             case CONFIGURATION_GET_PARAMETER: {
                 throw new AnalysisLimitationException.AnalysisModelLimitationException(call.getJSSourceNode().getSourceLocation() + ": CONFIGURATION_GET_PARAMETER not supported");
             }
             case CONFIGURATION_SET_PARAMETER: {
-                NativeFunctions.expectParameters(nativeObject, call, c, 2, 2);
+                DOMFunctions.expectParameters(nativeObject, call, c, 2, 2);
                 /* Value name =*/
-                Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
+                Conversion.toString(FunctionCalls.readParameter(call, s, 0), c);
                 return Value.makeUndef();
             }
             case CONFIGURATION_CONSTRUCTOR:

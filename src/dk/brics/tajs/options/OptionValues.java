@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,10 +26,8 @@ import org.kohsuke.args4j.CmdLineException;
 import org.kohsuke.args4j.CmdLineParser;
 import org.kohsuke.args4j.Option;
 
-import java.io.OutputStream;
+import java.io.PrintStream;
 import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -85,6 +83,9 @@ public class OptionValues {
     @Option(name = "-no-for-in", usage = "Disable for-in specialization")
     private boolean noForInSpecialization;
 
+    @Option(name = "-no-user-events", usage = "Disable modeling of user events")
+    private boolean noUserEvents;
+
 //	@Optional(name = "-flowgraph-optimization", usage = "Enable flowgraph optimization")
 //	private boolean flowgraphOptimization;
 
@@ -95,7 +96,9 @@ public class OptionValues {
     private boolean lowSeverity;
 
     @Option(name = "-unsound", usage = "Enable unsound assumptions")
-    private boolean unsound;
+    private String unsoundnessString;
+
+    private UnsoundnessOptionValues unsoundness = new UnsoundnessOptionValues(null, null);
 
     @Option(name = "-flowgraph", usage = "Output flowgraph.dot")
     private boolean flowgraph;
@@ -115,7 +118,7 @@ public class OptionValues {
     @Option(name = "-states", usage = "Output intermediate abstract states")
     private boolean states;
 
-    @Option(name = "-test", usage = "Test mode (implies quiet), ensures predictable iteration orders")
+    @Option(name = "-test", usage = "Test mode (ensures deterministic behavior and performs extra runtime checks)")
     private boolean test;
 
     @Option(name = "-test-flowgraph-builder", usage = "Test flow graph builder (implies test mode)")
@@ -144,9 +147,6 @@ public class OptionValues {
 
     @Option(name = "-eval-statistics", usage = "Report uses of eval and innerHTML")
     private boolean evalStatistics;
-
-    @Option(name = "-coverage", usage = "Output a view of the source with unreachable lines highlighted")
-    private boolean coverage;
 
 //	@Optional(name = "-introduce-error", usage = "Measure precision by randomly introducing syntax errors")
 //	private boolean introduceError;
@@ -204,6 +204,33 @@ public class OptionValues {
     @Option(name = "-async-events", usage = "Enables execution of asynchronous event handlers with TAJS_asyncListen")
     private boolean asyncEvents;
 
+    @Option(name = "-config", usage = "The location of .tajsconfig properties file")
+    private String config;
+
+    @Option(name = "-show-internal-messages", usage = "Shows messages for host functions modeled as JavaScript source code")
+    private boolean showInternalMessages;
+
+    @Option(name = "-console-model", usage = "Adds a model of the console object")
+    private boolean consoleModel;
+
+    @Option(name = "-common-async-polyfill", usage = "Adds a model of the setTimeout/setInterval functions")
+    private boolean commonAsyncPolyfill;
+
+    @Option(name = "-no-strict", usage = "Disables support for the 'use strict' directive")
+    private boolean noStrict;
+
+    @Option(name = "-deterministic-collections", usage = "Use collections with deterministic iteration order")
+    private boolean deterministicCollections;
+
+    @Option(name = "-specialize-all-boxed-primitives", usage = "Enables the specialized boxing of all primitives, instead of only concrete primitives")
+    private boolean specializeAllBoxedPrimitives;
+
+    @Option(name = "-time-limit", usage = "Limits how many seconds the analysis is allowed to run")
+    private int analysisTimeLimit = -1;
+
+    @Option(name = "-do-not-expect-ordinary-exit", usage = "Do not expect the program to reach the ordinary exit (for testing)")
+    private boolean doNotExpectOrdinaryExit;
+
     @Argument
     private List<String> arguments = new ArrayList<>();
 
@@ -226,9 +253,9 @@ public class OptionValues {
         if (noChargedCalls != that.noChargedCalls) return false;
         if (noConcreteNative != that.noConcreteNative) return false;
         if (noForInSpecialization != that.noForInSpecialization) return false;
+        if (noUserEvents != that.noUserEvents) return false;
         if (contextSpecialization != that.contextSpecialization) return false;
         if (lowSeverity != that.lowSeverity) return false;
-        if (unsound != that.unsound) return false;
         if (flowgraph != that.flowgraph) return false;
         if (callgraph != that.callgraph) return false;
         if (debug != that.debug) return false;
@@ -245,7 +272,6 @@ public class OptionValues {
         if (propagateDeadFlow != that.propagateDeadFlow) return false;
         if (alwaysCanput != that.alwaysCanput) return false;
         if (evalStatistics != that.evalStatistics) return false;
-        if (coverage != that.coverage) return false;
         if (no_messages != that.no_messages) return false;
         if (single_event_handler_type != that.single_event_handler_type) return false;
         if (ignore_html_content != that.ignore_html_content) return false;
@@ -262,10 +288,22 @@ public class OptionValues {
         if (polyfillES6Collections != that.polyfillES6Collections) return false;
         if (polyfillTypedArrays != that.polyfillTypedArrays) return false;
         if (asyncEvents != that.asyncEvents) return false;
+        if (showInternalMessages != that.showInternalMessages) return false;
+        if (consoleModel != that.consoleModel) return false;
+        if (commonAsyncPolyfill != that.commonAsyncPolyfill) return false;
+        if (noStrict != that.noStrict) return false;
+        if (deterministicCollections != that.deterministicCollections) return false;
+        if (specializeAllBoxedPrimitives != that.specializeAllBoxedPrimitives) return false;
+        if (analysisTimeLimit != that.analysisTimeLimit) return false;
+        if (doNotExpectOrdinaryExit != that.doNotExpectOrdinaryExit) return false;
+        if (unsoundnessString != null ? !unsoundnessString.equals(that.unsoundnessString) : that.unsoundnessString != null)
+            return false;
+        if (unsoundness != null ? !unsoundness.equals(that.unsoundness) : that.unsoundness != null) return false;
         if (ignoredLibrariesString != null ? !ignoredLibrariesString.equals(that.ignoredLibrariesString) : that.ignoredLibrariesString != null)
             return false;
         if (ignoredLibraries != null ? !ignoredLibraries.equals(that.ignoredLibraries) : that.ignoredLibraries != null)
             return false;
+        if (config != null ? !config.equals(that.config) : that.config != null) return false;
         return arguments != null ? arguments.equals(that.arguments) : that.arguments == null;
     }
 
@@ -283,9 +321,11 @@ public class OptionValues {
         result = 31 * result + (noChargedCalls ? 1 : 0);
         result = 31 * result + (noConcreteNative ? 1 : 0);
         result = 31 * result + (noForInSpecialization ? 1 : 0);
+        result = 31 * result + (noUserEvents ? 1 : 0);
         result = 31 * result + (contextSpecialization ? 1 : 0);
         result = 31 * result + (lowSeverity ? 1 : 0);
-        result = 31 * result + (unsound ? 1 : 0);
+        result = 31 * result + (unsoundnessString != null ? unsoundnessString.hashCode() : 0);
+        result = 31 * result + (unsoundness != null ? unsoundness.hashCode() : 0);
         result = 31 * result + (flowgraph ? 1 : 0);
         result = 31 * result + (callgraph ? 1 : 0);
         result = 31 * result + (debug ? 1 : 0);
@@ -302,7 +342,6 @@ public class OptionValues {
         result = 31 * result + (propagateDeadFlow ? 1 : 0);
         result = 31 * result + (alwaysCanput ? 1 : 0);
         result = 31 * result + (evalStatistics ? 1 : 0);
-        result = 31 * result + (coverage ? 1 : 0);
         result = 31 * result + (no_messages ? 1 : 0);
         result = 31 * result + (single_event_handler_type ? 1 : 0);
         result = 31 * result + (ignore_html_content ? 1 : 0);
@@ -321,6 +360,15 @@ public class OptionValues {
         result = 31 * result + (polyfillES6Collections ? 1 : 0);
         result = 31 * result + (polyfillTypedArrays ? 1 : 0);
         result = 31 * result + (asyncEvents ? 1 : 0);
+        result = 31 * result + (config != null ? config.hashCode() : 0);
+        result = 31 * result + (showInternalMessages ? 1 : 0);
+        result = 31 * result + (consoleModel ? 1 : 0);
+        result = 31 * result + (commonAsyncPolyfill ? 1 : 0);
+        result = 31 * result + (noStrict ? 1 : 0);
+        result = 31 * result + (deterministicCollections ? 1 : 0);
+        result = 31 * result + (specializeAllBoxedPrimitives ? 1 : 0);
+        result = 31 * result + analysisTimeLimit;
+        result = 31 * result + (doNotExpectOrdinaryExit ? 1 : 0);
         result = 31 * result + (arguments != null ? arguments.hashCode() : 0);
         return result;
     }
@@ -335,24 +383,7 @@ public class OptionValues {
 
     public OptionValues(OptionValues base, String[] args) {
         if (base != null) {
-            // copy values from base
-            for (Field f : OptionValues.class.getDeclaredFields()) {
-                f.setAccessible(true);
-                try {
-                    Object value = f.get(base);
-                    if (value instanceof Cloneable) {
-                        for (Method possibleClone : value.getClass().getDeclaredMethods()) {
-                            possibleClone.setAccessible(true);
-                            if ("clone".equals(possibleClone.getName()) && possibleClone.getParameterTypes().length == 0) {
-                                value = possibleClone.invoke(value);
-                            }
-                        }
-                    }
-                    f.set(this, value);
-                } catch (IllegalArgumentException | IllegalAccessException | InvocationTargetException e) {
-                    throw new RuntimeException(e);
-                }
-            }
+            OptionsUtil.cloneAllFields(base, this);
         }
         if (args != null) {
             // parse args
@@ -378,6 +409,9 @@ public class OptionValues {
                 if (help) {
                     describe(System.out);
                 }
+                if (unsoundnessString != null) {
+                    unsoundness = new UnsoundnessOptionValues(unsoundness, unsoundnessString.split(","));
+                }
             } catch (CmdLineException e) {
                 throw new RuntimeException("Bad arguments: " + e.getMessage());
             }
@@ -396,8 +430,10 @@ public class OptionValues {
     /**
      * Prints a description of the available options.
      */
-    public void describe(OutputStream out) {
+    public void describe(PrintStream out) {
         new CmdLineParser(this).printUsage(out);
+        out.println("\n Arguments to option '-unsound':\n");
+        new CmdLineParser(unsoundness).printUsage(out);
     }
 
     public Map<String, Object> getOptionValues() {
@@ -493,6 +529,10 @@ public class OptionValues {
 
     public void disableNoForInSpecialization() {
         noForInSpecialization = false;
+    }
+
+    public void disableNoUserEvents() {
+        noUserEvents = false;
     }
 
     public void disableIgnoreHTMLContent() {
@@ -598,12 +638,9 @@ public class OptionValues {
 
     public void disableTest() {
         test = false;
-        quiet = false;
-        lowSeverity = false;
     }
 
     public void disableTestFlowGraphBuilder() {
-        disableTest();
         testFlowgraphBuilder = false;
     }
 
@@ -617,10 +654,6 @@ public class OptionValues {
 
     public void disableUnreachable() {
         ignoreUnreachable = false;
-    }
-
-    public void disableUnsound() {
-        unsound = false;
     }
 
     public void enableAjaxReturnsJson() {
@@ -659,10 +692,6 @@ public class OptionValues {
         noControlSensitivity = false;
     }
 
-    public void enableCoverage() {
-        coverage = true;
-    }
-
     public void enableDebug() {
         debug = true;
         Logger.getRootLogger().setLevel(Level.DEBUG);
@@ -681,6 +710,10 @@ public class OptionValues {
 
     public void enableNoForInSpecialization() {
         noForInSpecialization = true;
+    }
+
+    public void enableNoUserEvents() {
+        noUserEvents = true;
     }
 
     public void enableIgnoreHTMLContent() {
@@ -786,6 +819,7 @@ public class OptionValues {
         test = true;
         quiet = true;
         lowSeverity = true;
+        deterministicCollections = true;
     }
 
     public void enableTestFlowGraphBuiler() {
@@ -803,10 +837,6 @@ public class OptionValues {
 
     public void enableUnreachable() {
         ignoreUnreachable = true;
-    }
-
-    public void enableUnsound() {
-        unsound = true;
     }
 
     public List<String> getArguments() {
@@ -860,10 +890,6 @@ public class OptionValues {
 
     public boolean isCopyOnWriteDisabled() {
         return noCopyOnWrite;
-    }
-
-    public boolean isCoverageEnabled() {
-        return coverage;
     }
 
     public boolean isDebugEnabled() {
@@ -1006,10 +1032,6 @@ public class OptionValues {
         return noConcreteNative;
     }
 
-    public boolean isUnsoundEnabled() {
-        return unsound;
-    }
-
     public void checkConsistency() {
         if (arguments == null || arguments.isEmpty()) {
             throw new AnalysisException("No arguments provided!");
@@ -1046,5 +1068,89 @@ public class OptionValues {
 
     public boolean isAsyncEventsEnabled() {
         return asyncEvents;
+    }
+
+    public String getConfig() {
+        return config;
+    }
+
+    public UnsoundnessOptionValues getUnsoundness() {
+        return unsoundness;
+    }
+
+    public void setUnsoundness(UnsoundnessOptionValues unsoundness) {
+        this.unsoundness = unsoundness;
+    }
+
+    public void enableShowInternalMessages() {
+        showInternalMessages = true;
+    }
+
+    public boolean isShowInternalMessagesEnabled() {
+        return showInternalMessages;
+    }
+
+    public boolean isConsoleModelEnabled() {
+        return consoleModel;
+    }
+
+    public void enableConsoleModel() {
+        consoleModel = true;
+    }
+
+    public boolean isCommonAsyncPolyfillEnabled() {
+        return commonAsyncPolyfill;
+    }
+
+    public void enableCommonAsyncPolyfill() {
+        commonAsyncPolyfill = true;
+    }
+
+    public boolean isNoStrictEnabled() {
+        return noStrict;
+    }
+
+    public void enableNoStrict() {
+        noStrict = true;
+    }
+
+    public boolean isUserEventsDisabled() {
+        return noUserEvents;
+    }
+
+    public void enableDeterministicCollections() {
+        deterministicCollections = true;
+    }
+
+    public boolean isDeterministicCollectionsEnabled() {
+        return deterministicCollections;
+    }
+
+    public void enableSpecializeAllBoxedPrimitives() {
+        specializeAllBoxedPrimitives = true;
+    }
+
+    public boolean isSpecializeAllBoxedPrimitivesEnabled() {
+        return specializeAllBoxedPrimitives;
+    }
+
+    public void setAnalysisTimeLimit(int seconds) {
+        analysisTimeLimit = seconds;
+    }
+
+    public int getAnalysisTimeLimit() {
+        return analysisTimeLimit;
+    }
+
+    public boolean isDoNotExpectOrdinaryExitEnabled() {
+        return doNotExpectOrdinaryExit;
+    }
+
+    public void enableDoNotExpectOrdinaryExit() {
+        doNotExpectOrdinaryExit = true;
+    }
+
+    public void disableDoNotExpectOrdinaryExit() {
+        doNotExpectOrdinaryExit = false;
     }
 }

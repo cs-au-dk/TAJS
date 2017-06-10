@@ -1,0 +1,43 @@
+<html>
+<!-- from http://www.wired.com/wired/archive/webmonkey/Prototype/advanced.html -->
+<head>
+	<title>Testing Prototype</title>
+	<script src="prototype.js"></script>
+	<style>
+		div
+		{
+			padding: 10px;
+			margin: 5px;
+			border: 1px solid black;
+			width: 75%;
+		}
+	</style>
+	<script>
+
+	document.observe('dom:loaded', function() {
+		$$('ol#rambolist li').each(function(elmt) {
+			elmt.observe('click', function(ev) {
+				var listitem = ev.target;
+				var aboveitems = listitem.previousSiblings();
+				if (aboveitems.length > 0)
+				{
+					var itemtext = aboveitems[0].innerHTML;
+					aboveitems[0].innerHTML = listitem.innerHTML;
+					listitem.innerHTML = itemtext;
+				}
+			});
+		});
+	});
+	</script>
+</head>
+<body>
+
+<ol id="rambolist">
+<li>First Blood (1982)</li>
+<li>Rambo: First Blood Part II (1985)</li>
+<li>Rambo III (1988)</li>
+<li>Rambo (2008)</li>
+</ol>
+
+</body>
+</html>

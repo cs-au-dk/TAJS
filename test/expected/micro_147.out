@@ -1,1 +1,2 @@
-test/micro/test147.js:16:1: [info] Abstract value: UInt
+test/micro/test147.js: [definite] Exceptional program exit is unreachable
+test/micro/test147.js:16:1: [info] Abstract value: UInt|NotUInt

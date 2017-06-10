@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,24 +21,18 @@ import dk.brics.tajs.analysis.Exceptions;
 import dk.brics.tajs.analysis.FunctionCalls;
 import dk.brics.tajs.analysis.FunctionCalls.CallInfo;
 import dk.brics.tajs.analysis.InitialStateBuilder;
-import dk.brics.tajs.analysis.NativeFunctions;
 import dk.brics.tajs.analysis.PropVarOperations;
 import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.analysis.js.UserFunctionCalls;
-import dk.brics.tajs.analysis.nativeobjects.JSRegExp.RegExpExecHandler;
 import dk.brics.tajs.analysis.nativeobjects.concrete.Alpha;
-import dk.brics.tajs.analysis.nativeobjects.concrete.ConcreteArray;
 import dk.brics.tajs.analysis.nativeobjects.concrete.ConcreteBoolean;
-import dk.brics.tajs.analysis.nativeobjects.concrete.ConcreteNull;
 import dk.brics.tajs.analysis.nativeobjects.concrete.ConcreteNumber;
 import dk.brics.tajs.analysis.nativeobjects.concrete.ConcreteRegularExpression;
 import dk.brics.tajs.analysis.nativeobjects.concrete.ConcreteString;
-import dk.brics.tajs.analysis.nativeobjects.concrete.ConcreteUndefined;
 import dk.brics.tajs.analysis.nativeobjects.concrete.ConcreteValue;
-import dk.brics.tajs.analysis.nativeobjects.concrete.ConcreteValueVisitor;
-import dk.brics.tajs.analysis.nativeobjects.concrete.InvocationResult;
-import dk.brics.tajs.analysis.nativeobjects.concrete.NashornConcreteSemantics;
-import dk.brics.tajs.analysis.nativeobjects.concrete.SingleGamma;
+import dk.brics.tajs.analysis.nativeobjects.concrete.MappedNativeResult;
+import dk.brics.tajs.analysis.nativeobjects.concrete.NativeResult;
+import dk.brics.tajs.analysis.nativeobjects.concrete.PrimitiveConcreteValue;
 import dk.brics.tajs.analysis.nativeobjects.concrete.TAJSConcreteSemantics;
 import dk.brics.tajs.flowgraph.BasicBlock;
 import dk.brics.tajs.lattice.HeapContext;
@@ -46,7 +40,6 @@ import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.ObjectLabel.Kind;
 import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.Value;
-import dk.brics.tajs.options.Options;
 import dk.brics.tajs.solver.Message;
 import dk.brics.tajs.util.AnalysisException;
 
@@ -56,10 +49,13 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.regex.Pattern;
 
+import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.STRING_TRIM;
+import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.STRING_TRIMLEFT;
+import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.STRING_TRIMRIGHT;
 import static dk.brics.tajs.util.Collections.newList;
 import static dk.brics.tajs.util.Collections.newMap;
-import static dk.brics.tajs.util.Collections.newSet;
 import static dk.brics.tajs.util.Collections.singleton;
 
 /**
@@ -74,19 +70,15 @@ public class JSString {
      * Evaluates the given native function.
      */
     public static Value evaluate(ECMAScriptObjects nativeobject, final CallInfo call, final Solver.SolverInterface c) {
-        if (nativeobject != ECMAScriptObjects.STRING)
-            if (NativeFunctions.throwTypeErrorIfConstructor(call, c))
-                return Value.makeNone();
-
         State state = c.getState();
         switch (nativeobject) {
 
             case STRING: { // 15.5.1/2
                 Value s;
                 if (call.isUnknownNumberOfArgs())
-                    s = Conversion.toString(NativeFunctions.readParameter(call, state, 0), c).joinStr("");
+                    s = Conversion.toString(FunctionCalls.readParameter(call, state, 0), c).joinStr("");
                 else
-                    s = call.getNumberOfArgs() >= 1 ? Conversion.toString(NativeFunctions.readParameter(call, state, 0), c) : Value.makeStr("");
+                    s = call.getNumberOfArgs() >= 1 ? Conversion.toString(FunctionCalls.readParameter(call, state, 0), c) : Value.makeStr("");
 
                 if (s.isNone()) {
                     // we might be waiting for implicit toString calls
@@ -94,110 +86,69 @@ public class JSString {
                 }
 
                 if (call.isConstructorCall()) { // 15.5.2
-                    ObjectLabel objlabel = new ObjectLabel(call.getSourceNode(), Kind.STRING);
-                    state.newObject(objlabel);
-                    state.writeInternalValue(objlabel, s);
-                    state.writeInternalPrototype(objlabel, Value.makeObject(InitialStateBuilder.STRING_PROTOTYPE));
-                    Value len = s.isMaybeSingleStr() ? Value.makeNum(s.getStr().length()) : Value.makeAnyNumUInt();
-                    c.getAnalysis().getPropVarOperations().writePropertyWithAttributes(objlabel, "length", len.setAttributes(true, true, true));
-                    return Value.makeObject(objlabel);
+                    return Conversion.toObject(call.getSourceNode(), s, false, c);
                 } else // 15.5.1
                     return s;
             }
 
             case STRING_FROMCHARCODE: { // 15.5.3.2
-                return TAJSConcreteSemantics.convertTAJSCall(Value.makeUndef(), "String.fromCharCode", -1, call, c, Value.makeAnyStr());
+                return TAJSConcreteSemantics.convertTAJSCall(Value.makeUndef(), "String.fromCharCode", -1, call, c, () -> Value.makeAnyStr());
             }
 
             case STRING_TOSTRING: // 15.5.4.2
             case STRING_VALUEOF: { // 15.5.4.3
-                return state.readThisObjectsCoerced((l) -> evaluateToString(l, c));
+                return evaluateToString(state.readThis(), c);
             }
 
             case STRING_CHARAT: {// 15.5.4.4
-                return TAJSConcreteSemantics.convertTAJSCall(state.readThis(), "String.prototype.charAt", 1, call, c, Value.makeAnyStr());
+                return TAJSConcreteSemantics.convertTAJSCall(state.readThis(), "String.prototype.charAt", 1, call, c, () -> Value.makeAnyStr());
             }
             case STRING_CHARCODEAT: { // 15.5.4.5
-                return TAJSConcreteSemantics.convertTAJSCall(state.readThis(), "String.prototype.charCodeAt", 1, call, c, Value.makeAnyNumUInt().joinNumNaN());
+                return TAJSConcreteSemantics.convertTAJSCall(state.readThis(), "String.prototype.charCodeAt", 1, call, c, () -> Value.makeAnyNumUInt().joinNumNaN());
             }
 
             case STRING_CONCAT: { // 15.5.4.6
-                return TAJSConcreteSemantics.convertTAJSCall(state.readThis(), "String.prototype.concat", -1, call, c, Value.makeAnyStr());
+                return TAJSConcreteSemantics.convertTAJSCall(state.readThis(), "String.prototype.concat", -1, call, c, () -> Value.makeAnyStr());
             }
 
             case STRING_INDEXOF: {// 15.5.4.7
-                Value receiver = Value.makeObject(state.readThisObjects());
+                Value receiver = state.readThis();
                 Value haystack = Conversion.toString(receiver, c);
-                Value needle = Conversion.toString(NativeFunctions.readParameter(call, state, 0), c);
+                Value needle = Conversion.toString(FunctionCalls.readParameter(call, state, 0), c);
                 if (!haystack.isStrMayContainSubstring(needle)) {
                     return Value.makeNum(-1);
                 }
-                return TAJSConcreteSemantics.convertTAJSCall(state.readThis(), "String.prototype.indexOf", 2, call, c, Value.makeAnyNumNotNaNInf());
+                return TAJSConcreteSemantics.convertTAJSCall(state.readThis(), "String.prototype.indexOf", 2, call, c, () -> Value.makeAnyNumNotNaNInf());
             }
 
             case STRING_LASTINDEXOF: { // 15.5.4.8
-                return TAJSConcreteSemantics.convertTAJSCall(state.readThis(), "String.prototype.lastIndexOf", 2, call, c, Value.makeAnyNumNotNaNInf());
+                return TAJSConcreteSemantics.convertTAJSCall(state.readThis(), "String.prototype.lastIndexOf", 2, call, c, () -> Value.makeAnyNumNotNaNInf());
             }
 
             case STRING_LOCALECOMPARE: { // 15.5.4.9
                 Value defaultValue = Value.makeAnyNumNotNaNInf();
-                if (Options.get().isUnsoundEnabled()) {
-                    return TAJSConcreteSemantics.convertTAJSCall(state.readThis(), "String.prototype.localeCompare", 1, call, c, defaultValue);
+                if (c.getAnalysis().getUnsoundness().mayAssumeFixedLocale(call.getSourceNode())) {
+                    return TAJSConcreteSemantics.convertTAJSCall(state.readThis(), "String.prototype.localeCompare", 1, call, c, () -> defaultValue);
                 }
                 return defaultValue;
             }
 
             case STRING_MATCH: { // 15.5.4.10 (see REGEXP_EXEC)
-                return RegExpExecHandler.handle(TAJSConcreteSemantics.convertTAJSCall(state.readThis(), "String.prototype.match", 1, call, c), call, c);
-            }
-
-            case STRING_REPLACE: { // 15.5.4.11
-                // TODO: support regex-version of String.replace
-
-                final Value toReplaceWith;
-                final Value toReplace;
-                if (call.isUnknownNumberOfArgs()) {
-                    toReplace = NativeFunctions.readParameter(call, state, 0);
-                    toReplaceWith = call.getUnknownArg().joinUndef();
-                } else {
-                    toReplace = NativeFunctions.readParameter(call, state, 0);
-                    toReplaceWith = NativeFunctions.readParameter(call, state, 1);
-                }
-
-                if (SingleGamma.isConcreteValue(state.readThis(), c) && SingleGamma.isConcreteValue(toReplace, c)) {
-                    // sound "optimization": if a function is given as second argument, then it is only a problem if it could be invoked..
-                    InvocationResult<ConcreteNumber> concreteResult = NashornConcreteSemantics.get().apply("String.prototype.search", SingleGamma.toConcreteValue(state.readThis(), c), Collections.singletonList(escapeAnyStringForRegExp(SingleGamma.toConcreteValue(toReplace, c))));
-                    if (concreteResult.kind != InvocationResult.Kind.VALUE) {
-                        handleFunctionCallbacks(toReplaceWith, call, c);
-                        return Value.makeAnyStr();
-                    }
-
-                    boolean hasAnyMatches = (int) (concreteResult.getValue()).getNumber() != -1;
-                    if (hasAnyMatches) {
-                        boolean anyCallbacks = handleFunctionCallbacks(toReplaceWith, call, c);
-                        if (anyCallbacks) {
-                            return Value.makeAnyStr();
-                        }
-                    }
-                    return TAJSConcreteSemantics.convertTAJSCall(state.readThis(), "String.prototype.replace", hasAnyMatches ? 2 : 1, call, c, Value.makeAnyStr());
-                }
-
-                invokeCallback(toReplaceWith, c);
-                return Value.makeAnyStr();
+                return TAJSConcreteSemantics.convertTAJSCall(state.readThis(), "String.prototype.match", 1, call, c, () -> JSRegExp.handleUnknownRegexMatchResult(call.getSourceNode(), FunctionCalls.readParameter(call, c.getState(), 0), c));
             }
 
             case STRING_SEARCH: { // 15.5.4.12
-                return TAJSConcreteSemantics.convertTAJSCall(state.readThis(), "String.prototype.search", 1, call, c, Value.makeAnyNumNotNaNInf());
+                return TAJSConcreteSemantics.convertTAJSCall(state.readThis(), "String.prototype.search", 1, call, c, () -> Value.makeAnyNumNotNaNInf());
             }
 
             case STRING_SLICE: {  // 15.5.4.13
-                return TAJSConcreteSemantics.convertTAJSCall(state.readThis(), "String.prototype.slice", 2, call, c, Value.makeAnyStr());
+                return TAJSConcreteSemantics.convertTAJSCall(state.readThis(), "String.prototype.slice", 2, call, c, () -> Value.makeAnyStr());
             }
             case STRING_SUBSTRING: {  // 15.5.4.15
-                return TAJSConcreteSemantics.convertTAJSCall(state.readThis(), "String.prototype.substring", 2, call, c, Value.makeAnyStr());
+                return TAJSConcreteSemantics.convertTAJSCall(state.readThis(), "String.prototype.substring", 2, call, c, () -> Value.makeAnyStr());
             }
             case STRING_SUBSTR: { // B.2.3
-                return TAJSConcreteSemantics.convertTAJSCall(state.readThis(), "String.prototype.substr", 2, call, c, Value.makeAnyStr());
+                return TAJSConcreteSemantics.convertTAJSCall(state.readThis(), "String.prototype.substr", 2, call, c, () -> Value.makeAnyStr());
             }
 
             case STRING_SPLIT: { // 15.5.4.14
@@ -205,50 +156,66 @@ public class JSString {
             }
 
             case STRING_TOLOWERCASE: { // 15.5.4.16
-                return TAJSConcreteSemantics.convertTAJSCall(state.readThis(), "String.prototype.toLowerCase", 0, call, c, Value.makeAnyStr());
+                return TAJSConcreteSemantics.convertTAJSCall(state.readThis(), "String.prototype.toLowerCase", 0, call, c, () -> Value.makeAnyStr());
             }
+
             case STRING_TOUPPERCASE: { // 15.5.4.18
-                return TAJSConcreteSemantics.convertTAJSCall(state.readThis(), "String.prototype.toUpperCase", 0, call, c, Value.makeAnyStr());
+                return TAJSConcreteSemantics.convertTAJSCall(state.readThis(), "String.prototype.toUpperCase", 0, call, c, () -> Value.makeAnyStr());
             }
 
             case STRING_TOLOCALELOWERCASE: { // 15.5.4.17
                 Value defaultValue = Value.makeAnyStr();
-                if (Options.get().isUnsoundEnabled()) {
-                    return TAJSConcreteSemantics.convertTAJSCall(state.readThis(), "String.prototype.toLocaleLowerCase", 0, call, c, defaultValue);
+                if (c.getAnalysis().getUnsoundness().mayAssumeFixedLocale(call.getSourceNode())) {
+                    return TAJSConcreteSemantics.convertTAJSCall(state.readThis(), "String.prototype.toLocaleLowerCase", 0, call, c, () -> defaultValue);
                 }
                 return defaultValue;
             }
             case STRING_TOLOCALEUPPERCASE: { // 15.5.4.19
                 Value defaultValue = Value.makeAnyStr();
-                if (Options.get().isUnsoundEnabled()) {
-                    return TAJSConcreteSemantics.convertTAJSCall(state.readThis(), "String.prototype.toLocaleUpperCase", 0, call, c, defaultValue);
+                if (c.getAnalysis().getUnsoundness().mayAssumeFixedLocale(call.getSourceNode())) {
+                    return TAJSConcreteSemantics.convertTAJSCall(state.readThis(), "String.prototype.toLocaleUpperCase", 0, call, c, () -> defaultValue);
                 }
                 return defaultValue;
             }
 
-            case STRING_TRIM: { // 15.5.4.20
-                Value s = Conversion.toString(Value.makeObject(state.readThisObjects()), c);
-                if (s.isMaybeSingleStr()) {
-                    return Value.makeStr(s.getStr().trim());
-                } else if (s.isMaybeStrUInt()
-                        || s.isMaybeStrOtherNum()
-                        || s.isMaybeStrJSON()
-                        || s.isMaybeStrIdentifier()
-                        || s.isMaybeStrIdentifierParts()) {
-                    return s;
-                } else if (s.isMaybeStrPrefixedIdentifierParts()) {
-                    return Value.makeNone().joinPrefixedIdentifierParts(s.getPrefix().trim());
-                } else {
+            case STRING_TRIM: // 15.5.4.20
+            case STRING_TRIMLEFT:
+            case STRING_TRIMRIGHT: {
+                Value thisString = Conversion.toString(state.readThis(), c);
+                if (thisString.isMaybeAnyStr()) {
                     return Value.makeAnyStr();
                 }
+                Value trimmedString;
+                if (thisString.isMaybeSingleStr()) {
+                    String m = null;
+                    if (nativeobject == STRING_TRIM)
+                        m = "String.prototype.trim";
+                    else if (nativeobject == STRING_TRIMRIGHT)
+                        m = "String.prototype.trimRight";
+                    else if (nativeobject == STRING_TRIMLEFT)
+                        m = "String.prototype.trimLeft";
+                    return TAJSConcreteSemantics.convertTAJSCall(thisString, m, 0, call, c, () -> Value.makeAnyStr());
+                } else if (thisString.isMaybeStrUInt()
+                        || thisString.isMaybeStrOtherNum()
+                        || thisString.isMaybeStrJSON()
+                        || thisString.isMaybeStrIdentifier()
+                        || thisString.isMaybeStrOtherIdentifierParts()) {
+                    trimmedString = thisString;
+                } else if (thisString.isMaybeStrPrefix() && (nativeobject == STRING_TRIM || nativeobject == STRING_TRIMLEFT)) {
+                    Pattern LTRIM = Pattern.compile("^[\\s\\uFEFF\\xA0]+");
+                    trimmedString = Value.makeNone().joinPrefix(thisString.getPrefix().replaceAll(LTRIM.toString(),""));
+                } else {
+                    trimmedString = Value.makeAnyStr();
+                }
+                return trimmedString;
             }
 
             case STRING_STARTSWITH: {
-                return TAJSConcreteSemantics.convertTAJSCall(state.readThis(), "String.prototype.startsWith", 2, call, c, Value.makeAnyBool());
+                return TAJSConcreteSemantics.convertTAJSCall(state.readThis(), "String.prototype.startsWith", 2, call, c, () -> Value.makeAnyBool());
             }
 
-            case STRING_ENDSWITH:{
-                return TAJSConcreteSemantics.convertTAJSCall(state.readThis(), "String.prototype.endsWith", 2, call, c, Value.makeAnyBool());
+            case STRING_ENDSWITH: {
+                return TAJSConcreteSemantics.convertTAJSCall(state.readThis(), "String.prototype.endsWith", 2, call, c, () -> Value.makeAnyBool());
             }
 
             default:
@@ -256,6 +223,7 @@ public class JSString {
         }
     }
 
+    // TODO unused, remove?
     private static void invokeCallback(Value callback, Solver.SolverInterface c) {
         for (int i = 0; i < 2; i++) { // 2 enough, we just need the feedback loop
             List<Value> result = newList();
@@ -295,82 +263,39 @@ public class JSString {
     }
 
     /**
-     * Escapes characters in a string such that it can be used as a regular expression for that exact string. Non-strings are not effected.
+     * Escapes characters in a string such that it can be used as a regular expression for that exact string.
      */
-    private static ConcreteValue escapeAnyStringForRegExp(ConcreteValue concreteValue) {
-        return concreteValue.accept(new ConcreteValueVisitor<ConcreteValue>() {
-            @Override
-            public ConcreteValue visit(ConcreteNumber v) {
-                return v;
-            }
-
-            @Override
-            public ConcreteValue visit(ConcreteString v) {
-                // http://stackoverflow.com/questions/3446170/escape-string-for-use-in-javascript-regex
+    // TODO unused (really???), remove?
+    private static String escapeRegExp(String v, Solver.SolverInterface c) {
+        // http://stackoverflow.com/questions/3446170/escape-string-for-use-in-javascript-regex
                 /*
                 function escapeRegExp(str) {
                     return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
                 }
                 */
-                // NB more escapings for using the regular expression as source code in concrete semantics is done in ConcreteString
-                ConcreteRegularExpression toReplace = new ConcreteRegularExpression(new ConcreteString("[\\-\\[\\]\\/\\{\\}\\(\\)\\*\\+\\?\\.\\\\\\^\\$\\|]"), new ConcreteBoolean(true), new ConcreteBoolean(false), new ConcreteBoolean(false));
-                ConcreteString toReplaceWith = new ConcreteString("\\$&");
-                InvocationResult<ConcreteValue> concreteResult = NashornConcreteSemantics.get().apply("String.prototype.replace", v, Arrays.asList(toReplace, toReplaceWith));
-                if (concreteResult.kind != InvocationResult.Kind.VALUE) {
-                    new AnalysisException("Unable to escape string to RegExp?!?");
-                }
-                return concreteResult.getValue();
-            }
-
-            @Override
-            public ConcreteValue visit(ConcreteArray v) {
-                return v;
-            }
-
-            @Override
-            public ConcreteValue visit(ConcreteUndefined v) {
-                return v;
-            }
-
-            @Override
-            public ConcreteValue visit(ConcreteRegularExpression v) {
-                return v;
-            }
-
-            @Override
-            public ConcreteValue visit(ConcreteNull v) {
-                return v;
-            }
-
-            @Override
-            public ConcreteValue visit(ConcreteBoolean v) {
-                return v;
-            }
-        });
+        // NB more escapings for using the regular expression as source code in concrete semantics is done in ConcreteString
+        ConcreteRegularExpression toReplace = new ConcreteRegularExpression(new ConcreteString("[\\-\\[\\]\\/\\{\\}\\(\\)\\*\\+\\?\\.\\\\\\^\\$\\|]"), new ConcreteBoolean(true), new ConcreteBoolean(false), new ConcreteBoolean(false), new ConcreteNumber(0.0));
+        ConcreteString toReplaceWith = new ConcreteString("\\$&");
+        MappedNativeResult<ConcreteValue> concreteResult = TAJSConcreteSemantics.getNative().apply("String.prototype.replace", new ConcreteString(v), Arrays.asList(toReplace, toReplaceWith));
+        if (concreteResult.getResult().kind != NativeResult.Kind.VALUE) {
+            new AnalysisException("Unable to escape string to RegExp?!?");
+        }
+        return Alpha.toValue((PrimitiveConcreteValue) concreteResult.getResult().getValue(), c).getStr();
     }
 
     private static Value splitString(ECMAScriptObjects nativeobject, final CallInfo call, final Solver.SolverInterface c) {
         State state = c.getState();
-        InvocationResult<ConcreteArray> concreteResult = TAJSConcreteSemantics.convertTAJSCall(state.readThis(), "String.prototype.split", 2, call, c);
-        switch (concreteResult.kind) {
-            case VALUE:
-                return Alpha.createNewArrayValue(concreteResult.getValue(), call.getSourceNode(), c);
-            case BOTTOM:
-                return Value.makeNone();
-            case EXCEPTION:
-                Exceptions.throwTypeError(c);  // assuming type-errors are the right thing to throw
-                return Value.makeNone();
-            case NON_CONCRETE:
-                break;
-            default:
-                throw new AnalysisException("Unhandled switch case: " + concreteResult.kind);
+        Value sentinel = Value.makeNull();
+        Value concreteResult = TAJSConcreteSemantics.convertTAJSCall(state.readThis(), "String.prototype.split", 2, call, c, () -> sentinel);
+        if (!concreteResult.equals(sentinel)) { // alternative: wrap the remining statements of this method in the default-behavior callback
+            return concreteResult;
         }
-        Value separator = NativeFunctions.readParameter(call, state, 0);
-        Value origLimit = NativeFunctions.readParameter(call, state, 1);
+        Value separator = FunctionCalls.readParameter(call, state, 0);
+        Value origLimit = FunctionCalls.readParameter(call, state, 1);
         boolean isUnlimited = !origLimit.isNotUndef();
         Value limit = isUnlimited ? Value.makeNum(Math.pow(2, 32) - 1) /* limit by spec! */ : Conversion.toNumber(origLimit, c);
 
-        ObjectLabel resultArray = new ObjectLabel(call.getSourceNode(), Kind.ARRAY);
+        ObjectLabel resultArray = ObjectLabel.make(call.getSourceNode(), Kind.ARRAY);
 
         state.newObject(resultArray);
         state.writeInternalPrototype(resultArray, Value.makeObject(InitialStateBuilder.ARRAY_PROTOTYPE));
@@ -401,7 +326,7 @@ public class JSString {
             argsMap.put("<base/this>", Value.makeStr(thisStringValue.getStr()));
             argsMap.put("<arg/separator>", Value.makeStr(separator.getStr()));
             // we are precise, so allocate a unique array
-            resultArray = new ObjectLabel(call.getSourceNode(), Kind.ARRAY, HeapContext.make(null, argsMap));
+            resultArray = ObjectLabel.make(call.getSourceNode(), Kind.ARRAY, HeapContext.make(null, argsMap));
             state.newObject(resultArray);
             state.writeInternalPrototype(resultArray, Value.makeObject(InitialStateBuilder.ARRAY_PROTOTYPE));
             final List<Value> splitValues = new ArrayList<>();
@@ -446,45 +371,20 @@ public class JSString {
         }
     }
 
-    private static boolean handleFunctionCallbacks(Value toReplaceWith, CallInfo call, Solver.SolverInterface c) {
-        boolean anyCallbacks = false;
-        if (toReplaceWith.isMaybeObject()) {
-            for (ObjectLabel objectLabel : toReplaceWith.getObjectLabels()) {
-                if (objectLabel.getKind() == Kind.FUNCTION) {
-                    if (Options.get().isUnsoundEnabled()) {
-                        c.getMonitoring().addMessage(call.getSourceNode(), Message.Severity.HIGH, "Ignoring String.replace(..., function(){...})");
-                    } else {
-                        anyCallbacks = true;
-                    }
-                }
+    public static Value evaluateToString(Value thisval, Solver.SolverInterface c) {
+        List<Value> strs = newList();
+        boolean is_maybe_typeerror = thisval.isMaybePrimitive();
+        strs.add(thisval.restrictToStr());
+        for (ObjectLabel thisObj : thisval.getObjectLabels()) {
+            if (thisObj.getKind() == Kind.STRING) {
+                strs.add(c.getState().readInternalValue(singleton(thisObj)));
+            } else {
+                is_maybe_typeerror = true;
             }
         }
-        if (anyCallbacks) {
-            invokeCallback(toReplaceWith, c);
-        }
-        return anyCallbacks;
-    }
-
-    public static Value evaluateToString(ObjectLabel thiss, Solver.SolverInterface c) {
-        // 15.5.4.2 String.prototype.toString ( )
-        // Returns this string value. (Note that, for a String object, the toString method happens to return the same thing as
-        // the valueOf method.)
-        if (thiss.getKind() != Kind.STRING) {
+        if (is_maybe_typeerror) {
             Exceptions.throwTypeError(c);
-            return Value.makeNone();
         }
-        return c.getState().readInternalValue(singleton(thiss));
-    }
-
-    public static Set<Value> getEnumerableStringPropertyNames(Value v) {
-        Set<Value> propertyNames = newSet();
-        if (v.isMaybeSingleStr()) {
-            for (int i = 0; i < v.getStr().length(); i++) {
-                propertyNames.add(Value.makeStr(Integer.toString(i)));
-            }
-        } else if (v.isMaybeFuzzyStr()) {
-            propertyNames.add(Value.makeAnyStrUInt());
-        }
-        return propertyNames;
+        return Value.join(strs);
     }
 }

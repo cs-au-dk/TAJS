@@ -15,4 +15,4 @@ try {
     ww = p;
     TAJS_dumpObject(e);
 }
-TAJS_assert(ww, "isMaybeTrueButNotFalse || isMaybeStrIdentifierParts || isMaybeStrOther");
+TAJS_assert(ww, "isMaybeTrueButNotFalse || isMaybeStrOtherIdentifierParts || isMaybeStrOther");

@@ -1,12 +1,20 @@
-test/1k2012love/shim.js:6:5: [definite] The variable b is never used
-test/1k2012love/shim.js:8:9: [maybe] TypeError, accessing property of null/undefined
-test/1k2012love/shim.js:8:9: [maybe] TypeError, call to non-function
-test/1k2012love/shim.js:9:1: [maybe] TypeError, accessing property of null/undefined
-test/1k2012love/shim.js:6:9: [maybe] Reading absent property body
-test/1k2012love/shim.js:8:9: [maybe] Reading absent property getContext
-test/1k2012love/shim.js:9:1: [maybe] Reading absent property body
+test/1k2012love/1140.js:56:10: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1140.js:64:4: [maybe] ReferenceError, reading absent variable a
+test/1k2012love/1140.js:93:11: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1140.js: [maybe] Uncaught exception, constructed at [test/1k2012love/1140.js:56:10, test/1k2012love/1140.js:64:4, test/1k2012love/1140.js:93:11, test/1k2012love/shim.js:9:5]
+test/1k2012love/1140.js:32:4: [maybe] Conversion to number yields NaN
+test/1k2012love/1140.js:35:27: [maybe] Conversion to number yields NaN
+test/1k2012love/1140.js:36:30: [maybe] Conversion to number yields NaN
+test/1k2012love/1140.js:37:22: [maybe] Conversion to number yields NaN
+test/1k2012love/1140.js:37:23: [maybe] Conversion to number yields NaN
+test/1k2012love/1140.js:40:19: [maybe] Conversion to number yields NaN
+test/1k2012love/1140.js:41:19: [maybe] Conversion to number yields NaN
+test/1k2012love/1140.js:67:13: [maybe] Converting undefined to string
+test/1k2012love/1140.js:68:25: [maybe] Conversion to number yields NaN
+test/1k2012love/1140.js:68:35: [maybe] Conversion to number yields NaN
 test/1k2012love/1140.js:87:11: [maybe] Conversion to number yields NaN
 test/1k2012love/1140.js:87:16: [maybe] Conversion to number yields NaN
+test/1k2012love/1140.js:92:12: [maybe] Conversion to number yields NaN
+test/1k2012love/1140.js:92:21: [maybe] Conversion to number yields NaN
 test/1k2012love/1140.js:93:11: [maybe] Reading absent property (computed name)
-test/1k2012love/shim.js:7:9: [maybe] Reading absent property (computed name)
-test/1k2012love/shim.js,test/1k2012love/1140.js: [maybe] Uncaught exception, constructed at [test/1k2012love/shim.js:8:9, test/1k2012love/shim.js:9:1]

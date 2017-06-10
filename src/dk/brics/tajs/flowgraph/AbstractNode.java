@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -147,12 +147,12 @@ public abstract class AbstractNode implements Cloneable {
      * Returns a string description of this node.
      */
     @Override
-    abstract public String toString();
+    public abstract String toString();
 
     /**
      * Returns true if this node may throw exceptions.
      */
-    abstract public boolean canThrowExceptions();
+    public abstract boolean canThrowExceptions();
 
     /**
      * Returns true if this node is an artifact and should not appear in analysis messages.
@@ -171,7 +171,7 @@ public abstract class AbstractNode implements Cloneable {
     /**
      * Visits this node with the given visitor.
      */
-    abstract public void visitBy(AbstractNodeVisitor v);
+    public abstract void visitBy(AbstractNodeVisitor v);
 
     /**
      * Perform a consistency check of this node.

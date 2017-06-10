@@ -1,13 +1,14 @@
 test/micro/test187.js:1:10: [definite] Dead assignment, property a is never read
 test/micro/test187.js:3:16: [definite] Reading absent property a
 test/micro/test187.js:5:16: [definite] Reading absent property b
+test/micro/test187.js: [definite] Exceptional program exit is unreachable
 test/micro/test187.js:25:1: [definite] Unreachable function f
 test/micro/test187.js:2:1: [info] Abstract value: true
 test/micro/test187.js:3:1: [info] Abstract value: Undef
 test/micro/test187.js:4:1: [info] Abstract value: true
 test/micro/test187.js:5:1: [info] Abstract value: Undef
 test/micro/test187.js:6:1: [info] Abstract value: false
-test/micro/test187.js:7:1: [info] Abstract value: [@Object#node3]
+test/micro/test187.js:7:1: [info] Abstract value: [@Object#node7]
 test/micro/test187.js:10:1: [info] Abstract value: true
 test/micro/test187.js:15:2: [info] Abstract value: false
 test/micro/test187.js:16:2: [info] Abstract value: 7.0

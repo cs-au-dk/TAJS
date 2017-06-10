@@ -14,8 +14,11 @@
  - Array.prototype.reduce
  - Array.prototype.reduceRight
  - Array.prototype.filter
+ - Array.prototype.fill
+ - Array.prototype.find
+ - Array.prototype.findIndex
  - Function.prototype.bind
- */
+*/
 if (!String.prototype.trim) {
     Object.defineProperty(String.prototype, 'trim', {
         writable: true, enumerable: false, configurable: true,
@@ -26,7 +29,7 @@ if (!String.prototype.trim) {
 }
 
 if (!Array.prototype.indexOf) {
-    Object.defineProperties(Array.prototype, 'indexOf', {
+    Object.defineProperty(Array.prototype, 'indexOf', {
         writable: true, enumerable: false, configurable: true,
         value: function (searchElement, fromIndex) {
             if (this === undefined || this === null) {
@@ -129,6 +132,8 @@ if (!Function.prototype.bind) {
             TAJS_makeContextSensitive(contextSensitivityHack, 0);
             TAJS_makeContextSensitive(contextSensitivityHack, 1);
             TAJS_makeContextSensitive(contextSensitivityHack, 2);
+            TAJS_makeContextSensitive(contextSensitivityHack, 3);
+            TAJS_makeContextSensitive(contextSensitivityHack, 4);
 
             var fBound = contextSensitivityHack(fToBind, oThis, aArgs[0], aArgs[1], aArgs[2], aArgs);
             TAJS_makeContextSensitive(fBound, -2);
@@ -367,4 +372,126 @@ if (!Array.prototype.map) {
     TAJS_makeContextSensitive(Array.prototype.map, -1);
 }
 
+if (!Array.prototype.fill) {
+    Object.defineProperty(Array.prototype, "fill", {
+        writable: true, enumerable: false, configurable: true,
+        value: function fill(value) {
+        // Steps 1-2.
+        if (this == null) {
+            throw new TypeError('this is null or not defined');
+        }
+        var O = Object(this);
+
+        // Steps 3-5.
+        var len = O.length >>> 0;
+
+        // Steps 6-7.
+        var start = arguments[1];
+        var relativeStart = start >> 0;
+
+        // Step 8.
+        var k = relativeStart < 0 ?
+            Math.max(len + relativeStart, 0) :
+            Math.min(relativeStart, len);
+
+    // Steps 9-10.
+        var end = arguments[2];
+        var relativeEnd = end === undefined ?
+            len : end >> 0;
+
+        // Step 11.
+        var final1 = relativeEnd < 0 ?
+            Math.max(len + relativeEnd, 0) :
+            Math.min(relativeEnd, len);
+
+        // Step 12.
+        while (k < final1) {
+            O[k] = value;
+            k++;
+        }
+
+        // Step 13.
+        return O;
+    }});
+}
+
+if (!Array.prototype.find) {
+    Object.defineProperty(Array.prototype, 'find', {
+        value: function(predicate) {
+            'use strict';
+            if (this == null) {
+                throw new TypeError('Array.prototype.find called on null or undefined');
+            }
+            if (typeof predicate !== 'function') {
+                throw new TypeError('predicate must be a function');
+            }
+            var list = Object(this);
+            var length = list.length >>> 0;
+            var thisArg = arguments[1];
+            var value;
+
+            for (var i = 0; i < length; i++) {
+                value = list[i];
+                if (predicate.call(thisArg, value, i, list)) {
+                    return value;
+                }
+            }
+            return undefined;
+        }
+    });
+}
+
+if (!Array.prototype.findIndex) {
+    Object.defineProperty(Array.prototype, 'findIndex', {
+        value: function(predicate) {
+            'use strict';
+            if (this == null) {
+                throw new TypeError('Array.prototype.findIndex called on null or undefined');
+            }
+            if (typeof predicate !== 'function') {
+                throw new TypeError('predicate must be a function');
+            }
+            var list = Object(this);
+            var length = list.length >>> 0;
+            var thisArg = arguments[1];
+            var value;
+
+            for (var i = 0; i < length; i++) {
+                value = list[i];
+                if (predicate.call(thisArg, value, i, list)) {
+                    return i;
+                }
+            }
+            return -1;
+        },
+        enumerable: false,
+        configurable: false,
+        writable: false
+    });
+}
+
+
+if (!Date.prototype.toISOString) {
+    (function() {
+
+        function pad(number) {
+            if (number < 10) {
+                return '0' + number;
+            }
+            return number;
+        }
+
+        Date.prototype.toISOString = function() {
+            return this.getUTCFullYear() +
+                '-' + pad(this.getUTCMonth() + 1) +
+                '-' + pad(this.getUTCDate()) +
+                'T' + pad(this.getUTCHours()) +
+                ':' + pad(this.getUTCMinutes()) +
+                ':' + pad(this.getUTCSeconds()) +
+                '.' + (this.getUTCMilliseconds() / 1000).toFixed(3).slice(2, 5) +
+                'Z';
+        };
+
+    }());
+}
 /*End of developer.mozilla.org Polyfill*/

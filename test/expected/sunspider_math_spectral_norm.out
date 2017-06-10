@@ -1,3 +1,4 @@
+test/sunspider/math-spectral-norm.js: [definite] Exceptional program exit is unreachable
 test/sunspider/math-spectral-norm.js:18:12: [maybe] Conversion to number yields NaN
 test/sunspider/math-spectral-norm.js:18:21: [maybe] Reading absent property (computed name)
 test/sunspider/math-spectral-norm.js:27:12: [maybe] Conversion to number yields NaN

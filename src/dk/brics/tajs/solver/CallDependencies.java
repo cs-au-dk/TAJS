@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,6 +26,7 @@ import java.util.Map;
 import java.util.Set;
 
 import static dk.brics.tajs.util.Collections.addToMapSet;
+import static dk.brics.tajs.util.Collections.newList;
 import static dk.brics.tajs.util.Collections.newMap;
 import static dk.brics.tajs.util.Collections.newSet;
 
@@ -112,7 +113,12 @@ class CallDependencies<ContextType extends IContext<ContextType>> {
     /**
      * Map from function entry to its outgoing charged call edges.
      */
-    private Map<BlockAndContext<ContextType>, Set<Edge>> charged_call_edges_map;
+    private Map<BlockAndContext<ContextType>, Set<Edge>> charged_call_edges_forward_map;
+
+    /**
+     * Map from function entry to its incoming charged call edges.
+     */
+    private Map<BlockAndContext<ContextType>, Set<Edge>> charged_call_edges_backward_map;
 
     /**
      * Number of items in the worklist for the given function entry.
@@ -122,7 +128,8 @@ class CallDependencies<ContextType extends IContext<ContextType>> {
     public CallDependencies() {
         if (!Options.get().isChargedCallsDisabled()) {
             charged_call_edges = newSet();
-            charged_call_edges_map = newMap();
+            charged_call_edges_forward_map = newMap();
+            charged_call_edges_backward_map = newMap();
             function_activity_level = newMap();
         }
     }
@@ -137,30 +144,52 @@ class CallDependencies<ContextType extends IContext<ContextType>> {
         Edge e = new Edge(caller, caller_context, edge_context, callee, callee_context);
         if (charged_call_edges.add(e)) {
             BlockAndContext<ContextType> caller_entry = BlockAndContext.makeEntry(caller, caller_context);
-            addToMapSet(charged_call_edges_map, caller_entry, e);
+            BlockAndContext<ContextType> callee_entry = BlockAndContext.makeEntry(callee, callee_context);
+            addToMapSet(charged_call_edges_forward_map, caller_entry, e);
+            addToMapSet(charged_call_edges_backward_map, callee_entry, e);
             if (log.isDebugEnabled())
                 log.debug("charging call edge " + e);
         }
     }
 
-    /**
-     * Discharges return flow for a call edge.
-     * Has no effect if charged edges are disabled.
-     */
-    public void dischargeCallEdge(BasicBlock caller, ContextType caller_context, ContextType edge_context, BlockAndContext<ContextType> callee) {
-        if (Options.get().isChargedCallsDisabled())
-            return;
-        Edge e = new Edge(caller, caller_context, edge_context, callee.getBlock(), callee.getContext());
+    private void dischargeCallEdge(Edge e) {
         if (charged_call_edges.remove(e)) {
-            BlockAndContext<ContextType> caller_entry = BlockAndContext.makeEntry(caller, caller_context);
-            Set<Edge> s = charged_call_edges_map.get(caller_entry);
-            if (s == null)
+            BlockAndContext<ContextType> caller_entry = BlockAndContext.makeEntry(e.caller, e.caller_context);
+            BlockAndContext<ContextType> callee_entry = BlockAndContext.makeEntry(e.callee, e.callee_context);
+            Set<Edge> sf = charged_call_edges_forward_map.get(caller_entry);
+            if (sf == null)
                 throw new AnalysisException("unexpected null set");
-            s.remove(e);
-            if (s.isEmpty())
-                charged_call_edges_map.remove(caller_entry);
+            sf.remove(e);
+            if (sf.isEmpty()) {
+                charged_call_edges_forward_map.remove(caller_entry);
+            }
+            Set<Edge> sb = charged_call_edges_backward_map.get(callee_entry);
+            if (sb == null)
+                throw new AnalysisException("unexpected null set");
+            sb.remove(e);
+            if (sb.isEmpty()) {
+                charged_call_edges_backward_map.remove(callee_entry);
+            }
             if (log.isDebugEnabled())
                 log.debug("discharging call edge " + e);
+            dischargeIfInactive(caller_entry);
+        }
+    }
+
+    /**
+     * Discharges the incoming call edges if the function is inactive.
+     * Has no effect if charged edges are disabled.
+     */
+    public void dischargeIfInactive(BlockAndContext<ContextType> entry) {
+        if (Options.get().isChargedCallsDisabled())
+            return;
+        if (!isFunctionActive(entry)) {
+            Set<Edge> es = charged_call_edges_backward_map.get(entry);
+            if (es != null) {
+                for (Edge f : newList(es)) {
+                    dischargeCallEdge(f);
+                }
+            }
         }
     }
 
@@ -215,7 +244,7 @@ class CallDependencies<ContextType extends IContext<ContextType>> {
     public boolean isFunctionActive(BlockAndContext<ContextType> bc) {
         if (Options.get().isChargedCallsDisabled())
             return true;
-        return isFunctionActive(bc, Collections.<BlockAndContext<ContextType>>newSet());
+        return isFunctionActive(bc, Collections.newSet());
     }
 
     private boolean isFunctionActive(BlockAndContext<ContextType> bc, Set<BlockAndContext<ContextType>> visited) {
@@ -226,7 +255,7 @@ class CallDependencies<ContextType extends IContext<ContextType>> {
         if (function_activity_level.containsKey(bc))
             return true;
         // 2) the function is active if it contains a charged outgoing edge to an active function (inductively)
-        Set<Edge> edges = charged_call_edges_map.get(bc);
+        Set<Edge> edges = charged_call_edges_forward_map.get(bc);
         if (edges != null)
             for (Edge e : edges)
                 if (isFunctionActive(e.getCallee(), visited))
@@ -243,9 +272,8 @@ class CallDependencies<ContextType extends IContext<ContextType>> {
     public void assertEmpty() {
         if (Options.get().isChargedCallsDisabled())
             return;
-        if (!charged_call_edges.isEmpty()) // there may be charged call edges when analysis has completed (due to unfortunate worklist order)
-            if (log.isDebugEnabled())
-                log.debug("remaining charged call edges: " + charged_call_edges);
+        if (!charged_call_edges.isEmpty())
+            throw new AnalysisException("unexpected charged call edges: " + charged_call_edges);
         if (!function_activity_level.isEmpty())
             throw new AnalysisException("unexpected active functions: " + function_activity_level);
     }

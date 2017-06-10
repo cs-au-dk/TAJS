@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -160,6 +160,9 @@ public class Property {
      * Returns the property name (for ordinary properties).
      */
     public String getPropertyName() {
+        if (kind != Kind.ORDINARY) {
+            throw new AnalysisException("Call to getPropertyName on non-ORDINARY property");
+        }
         return propertyname;
     }
 

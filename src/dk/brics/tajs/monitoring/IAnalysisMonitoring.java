@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,12 +27,12 @@ import dk.brics.tajs.flowgraph.jsnodes.ReadVariableNode;
 import dk.brics.tajs.lattice.CallEdge;
 import dk.brics.tajs.lattice.Context;
 import dk.brics.tajs.lattice.HostObject;
+import dk.brics.tajs.lattice.ILatticeMonitoring;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.Str;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.solver.CallGraph;
-import dk.brics.tajs.solver.ISolverMonitoring;
 import dk.brics.tajs.solver.Message;
 import dk.brics.tajs.solver.Message.Severity;
 
@@ -40,13 +40,14 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * Extended monitoring interface.
+ * Monitoring interface.
+ * <p>
+ * This interface contains callbacks for solver-specific, lattice-specific, and analysis-specific operations.
  * <p>
  * Implementations of the interface should not have side effects on the analysis state before the scan phase begins.
- * <p>
- * In particular, <tt>UnknownValueResolver.getRealValue(v, state);</tt> should not be used before the scan phase.
+ * In particular, <tt>UnknownValueResolver.getRealValue(v, state)</tt> should not be used before the scan phase.
  */
-public interface IAnalysisMonitoring extends ISolverMonitoring<State, Context> {
+public interface IAnalysisMonitoring extends ILatticeMonitoring {
 
     /**
      * Adds a message for the given node. If not in scan phase, nothing is done.
@@ -70,16 +71,6 @@ public interface IAnalysisMonitoring extends ISolverMonitoring<State, Context> {
     void addMessageInfo(AbstractNode n, Severity severity, String msg);
 
     /**
-     * Marks the beginning of a phase.
-     */
-    void beginPhase(AnalysisPhase phase);
-
-    /**
-     * Marks the end of a phase.
-     */
-    void endPhase(AnalysisPhase phase);
-
-    /**
      * Returns the collected messages.
      * (Used by the Eclipse plugin.)
      */
@@ -94,17 +85,27 @@ public interface IAnalysisMonitoring extends ISolverMonitoring<State, Context> {
     Map<TypeCollector.VariableSummary, Value> getTypeInformation();
 
     /**
-     * Registers the final callgraph of the analysis
+     * Sets the call graph of the analysis.
      */
     void setCallGraph(CallGraph<State, Context, CallEdge> callGraph);
 
     /**
-     * Registers the flowgraph which will be used by the analysis
+     * Sets the flow graph which will be used by the analysis.
      */
     void setFlowgraph(FlowGraph fg);
 
     /**
-     * Registers a potential call/construct to a non-function value.
+     * Invoked at the beginning of a phase.
+     */
+    void visitPhasePre(AnalysisPhase phase);
+
+    /**
+     * Invoked at the end of a phase.
+     */
+    void visitPhasePost(AnalysisPhase phase);
+
+    /**
+     * Invoked when a functin call occurs.
      *
      * @param n                  node responsible for the call
      * @param maybe_non_function if set, this call may involve a non-function value
@@ -113,7 +114,7 @@ public interface IAnalysisMonitoring extends ISolverMonitoring<State, Context> {
     void visitCall(AbstractNode n, boolean maybe_non_function, boolean maybe_function);
 
     /**
-     * Registers a call to eval.
+     * Invoked when a call to eval occurs.
      *
      * @param n node that may call eval
      * @param v value being eval'ed
@@ -121,7 +122,7 @@ public interface IAnalysisMonitoring extends ISolverMonitoring<State, Context> {
     void visitEvalCall(AbstractNode n, Value v);
 
     /**
-     * Checks whether the branch condition is always true or always false.
+     * Invoked when a IfNode is processed.
      *
      * @param n if node
      * @param v the boolean value
@@ -129,7 +130,7 @@ public interface IAnalysisMonitoring extends ISolverMonitoring<State, Context> {
     void visitIf(IfNode n, Value v);
 
     /**
-     * Checks whether the 'in' operation may fail.
+     * Invoked when an 'in' operation is processed.
      *
      * @param n                  node performing the operation
      * @param maybe_v2_object    if the second parameter may be an object value
@@ -138,7 +139,7 @@ public interface IAnalysisMonitoring extends ISolverMonitoring<State, Context> {
     void visitIn(AbstractNode n, boolean maybe_v2_object, boolean maybe_v2_nonobject);
 
     /**
-     * Registers a write to innerHTML.
+     * Invoked when a write to innerHTML occurs.
      *
      * @param n node where the write occurs
      * @param v value being written
@@ -146,7 +147,7 @@ public interface IAnalysisMonitoring extends ISolverMonitoring<State, Context> {
     void visitInnerHTMLWrite(Node n, Value v);
 
     /**
-     * Checks whether the 'instanceof' operation may fail.
+     * Invoked when an 'instanceof' operation is processed.
      *
      * @param n                               node performing the operation
      * @param maybe_v2_non_function           set if the second parameter may be a non-function value
@@ -159,7 +160,7 @@ public interface IAnalysisMonitoring extends ISolverMonitoring<State, Context> {
                          boolean maybe_v2_prototype_primitive, boolean maybe_v2_prototype_nonprimitive);
 
     /**
-     * Checks the number of parameters for a call to a native function.
+     * Invoked when a call to a native function occurs.
      *
      * @param n                   node responsible for the call
      * @param hostobject          the native function being called
@@ -171,7 +172,7 @@ public interface IAnalysisMonitoring extends ISolverMonitoring<State, Context> {
     void visitNativeFunctionCall(AbstractNode n, HostObject hostobject, boolean num_actuals_unknown, int num_actuals, int min, int max);
 
     /**
-     * Checks whether the property access operation may dereference null or undefined.
+     * Invoked when a property access occurs.
      *
      * @param n       operation that accesses a property
      * @param baseval base value for the access
@@ -179,9 +180,7 @@ public interface IAnalysisMonitoring extends ISolverMonitoring<State, Context> {
     void visitPropertyAccess(Node n, Value baseval);
 
     /**
-     * Warns about reads from unknown properties;
-     * also registers a read operation on abstract objects.
-     * Properties named 'length' on array objects are ignored.
+     * Invoked when a property read operation cccurs.
      *
      * @param n             the node responsible for the read
      * @param objs          the objects being read from
@@ -191,10 +190,7 @@ public interface IAnalysisMonitoring extends ISolverMonitoring<State, Context> {
     void visitPropertyRead(AbstractNode n, Set<ObjectLabel> objs, Str propertystr, State state, boolean check_unknown);
 
     /**
-     * Warns about writes to unknown properties;
-     * also registers a write operation on abstract objects.
-     * Properties named 'length' on array objects are ignored.
-     * Writes to the arguments object are also ignored.
+     * Invoked when a property write operation cccurs.
      *
      * @param n           the node responsible for the write
      * @param objs        the objects being written to
@@ -203,12 +199,12 @@ public interface IAnalysisMonitoring extends ISolverMonitoring<State, Context> {
     void visitPropertyWrite(Node n, Set<ObjectLabel> objs, Str propertystr);
 
     /**
-     * Records type information about a var/prop read.
+     * Invoked when a variable or property read operation cccurs.
      */
     void visitRead(Node n, Value v, State state);
 
     /**
-     * Checks whether an absent variable is read.
+     * Invoked when a non-this variable read operation cccurs.
      *
      * @param n (non-this) read variable operation
      * @param v the value being read
@@ -216,7 +212,7 @@ public interface IAnalysisMonitoring extends ISolverMonitoring<State, Context> {
     void visitReadNonThisVariable(ReadVariableNode n, Value v);
 
     /**
-     * Checks whether the property read operation accesses an absent property and whether the operation returns null/undefined.
+     * Invoked when a property read operation cccurs.
      *
      * @param n           read property operation
      * @param objlabels   objects being read from
@@ -224,11 +220,13 @@ public interface IAnalysisMonitoring extends ISolverMonitoring<State, Context> {
      * @param maybe       if there may be more than one value
      * @param state       current abstract state
      * @param v           property value with attributes
+     * @param global_obj  the global object
      */
-    void visitReadProperty(ReadPropertyNode n, Set<ObjectLabel> objlabels, Str propertystr, boolean maybe, State state, Value v); // TODO these checks should be done for CallNodes as well!
+    void visitReadProperty(ReadPropertyNode n, Set<ObjectLabel> objlabels, Str propertystr, boolean maybe, State state, Value v, ObjectLabel global_obj); // TODO these checks should be done for CallNodes as well!
+    // TODO: we have both visitReadProperty and visitPropertyRead - merge them, or give them better names?
 
     /**
-     * Checks whether the read of 'this' yields the global object.
+     * Invoked when 'this' is read.
      *
      * @param n     (this) read variable operation
      * @param v     the value being read
@@ -237,38 +235,47 @@ public interface IAnalysisMonitoring extends ISolverMonitoring<State, Context> {
     void visitReadThis(ReadVariableNode n, Value v, State state, ObjectLabel global_obj);
 
     /**
-     * Checks whether the variable read yields null/undefined.
+     * Invoked when a variable read operation occurs.
      * Variables named 'undefined' are ignored.
      *
      * @param n read variable operation
      * @param v the value being read
      */
-    void visitReadVariable(ReadVariableNode n, Value v, State state);
+    void visitReadVariable(ReadVariableNode n, Value v, State state); // TODO: why "Variables named 'undefined' are ignored" (see javadoc)? ignored by the caller or the implementation? (also in implementation in Monitoring)
+    // TODO: merge visitReadVariable, visitReadThis, visitReadNonThisVariable, visitVariableAsRead?
 
     /**
-     * Checks whether the function is invoked both as a constructor (with 'new') and as a function/method (without 'new').
+     * Invoked when a user-function call occurs.
      *
      * @param f           function being called
      * @param call        node responsible for the call
      * @param constructor if set, the call uses 'new'
      */
     void visitUserFunctionCall(Function f, AbstractNode call, boolean constructor);
+    // TODO: merge visitUserFunctionCall, visitNativeFunctionCall, visitEvalCall, visitCall?
 
     /**
-     * Registers that the given variable is read; also checks for suspicious type mixings.
+     * Invoked when a variable read operation occurs.
      *
-     * @param n (non-this) read variable operation
-     * @param v value being read
+     * @param n       (non-this) read variable operation
+     * @param varname the name of the variable
+     * @param v       value being read
      */
-    void visitVariableAsRead(ReadVariableNode n, Value v, State state);
+    void visitVariableAsRead(AbstractNode n, String varname, Value v, State state);
 
     /**
-     * Registers the name, location, and value of a variable being read or written.
+     * Invoked when a variable or property is read or written.
      */
     void visitVariableOrProperty(String var, SourceLocation loc, Value value, Context context, State state);
+    // TODO: merge with other variable/property read/write methods?
 
     /**
-     * Registers the return value of a native function call.
+     * Invoked when returning from a native function call.
      */
     void visitNativeFunctionReturn(AbstractNode node, HostObject hostObject, Value result);
+
+    /**
+     * Invoked when an event handler is registered.
+     */
+    void visitEventHandlerRegistration(AbstractNode node, Context context, Value handler);
 }

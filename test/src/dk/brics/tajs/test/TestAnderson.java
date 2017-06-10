@@ -22,6 +22,7 @@ public class TestAnderson {
 	public void anderson_1() throws Exception
 	{
 		Misc.init();
+		Options.get().enableDoNotExpectOrdinaryExit();
 		Misc.captureSystemOutput();
 		String[] args = {"test/anderson/anderson1.js"};
 		Misc.run(args);
@@ -62,6 +63,7 @@ public class TestAnderson {
 	public void anderson_5() throws Exception
 	{
 		Misc.init();
+		Options.get().enableDoNotExpectOrdinaryExit();
 		Misc.captureSystemOutput();
 		String[] args = {"test/anderson/anderson5.js"};
 		Misc.run(args);
@@ -72,6 +74,7 @@ public class TestAnderson {
 	public void anderson_6() throws Exception
 	{
 		Misc.init();
+		Options.get().enableDoNotExpectOrdinaryExit();
 		Misc.captureSystemOutput();
 		String[] args = {"test/anderson/anderson6.js"};
 		Misc.run(args);
@@ -82,6 +85,7 @@ public class TestAnderson {
 	public void anderson_7() throws Exception
 	{
 		Misc.init();
+		Options.get().enableDoNotExpectOrdinaryExit();
 		Misc.captureSystemOutput();
 		String[] args = {"test/anderson/anderson7.js"};
 		Misc.run(args);
@@ -92,6 +96,7 @@ public class TestAnderson {
 	public void anderson_8() throws Exception
 	{
 		Misc.init();
+		Options.get().enableDoNotExpectOrdinaryExit();
 		Misc.captureSystemOutput();
 		String[] args = {"test/anderson/anderson8.js"};
 		Misc.run(args);
@@ -102,6 +107,7 @@ public class TestAnderson {
 	public void anderson_9() throws Exception
 	{
 		Misc.init();
+		Options.get().enableDoNotExpectOrdinaryExit();
 		Misc.captureSystemOutput();
 		String[] args = {"test/anderson/anderson9.js"};
 		Misc.run(args);
@@ -202,6 +208,7 @@ public class TestAnderson {
 	public void anderson_19() throws Exception
 	{
 		Misc.init();
+		Options.get().enableDoNotExpectOrdinaryExit();
 		Misc.captureSystemOutput();
 		String[] args = {"test/anderson/anderson19.js"};
 		Misc.run(args);

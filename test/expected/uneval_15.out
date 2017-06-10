@@ -1,3 +1,4 @@
+test/uneval/uneval15.html: [definite] Exceptional program exit is unreachable
 test/uneval/uneval15.html:7:19: [maybe] The variable ed has values with different types
-TAJS-dynamic-code(test/uneval/uneval15.html:7:1):1:1: [info] Abstract value: 42.0
 test/uneval/uneval15.html:2:15: [info] Abstract value: 33.0
+TAJS-dynamic-code(test/uneval/uneval15.html:7:1):1:1: [info] Abstract value: 42.0

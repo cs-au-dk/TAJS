@@ -1,0 +1,11 @@
+test/1k2012love/1189.js:69:1: [definite] TypeError, call to non-function
+test/1k2012love/1189.js:69:1: [definite] Reading absent property insertAdjacentHTML of host object
+test/1k2012love/1189.js:1:5: [definite] Unreachable function
+test/1k2012love/1189.js:5:5: [definite] Unreachable function
+test/1k2012love/1189.js:9:9: [definite] Unreachable function
+test/1k2012love/1189.js:46:12: [definite] Unreachable function
+test/1k2012love/1189.js:65:5: [definite] Unreachable function
+test/1k2012love/1189.js:79:1: [definite] Unreachable code
+test/1k2012love/1189.js:79:18: [definite] Unreachable function
+test/1k2012love/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1189.js: [maybe] Uncaught exception, constructed at [test/1k2012love/1189.js:69:1, test/1k2012love/shim.js:9:5]

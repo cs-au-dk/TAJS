@@ -1,1 +1,2 @@
+test/resig/ejohn13.js: [definite] Exceptional program exit is unreachable
 test/resig/ejohn13.js:3:20: [maybe] TypeError, accessing property of null/undefined

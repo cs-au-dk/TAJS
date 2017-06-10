@@ -1,2 +1,3 @@
+test/micro/test191.js: [definite] Exceptional program exit is unreachable
 test/micro/test191.js:1:9: [maybe] Converting primitive number to object
 test/micro/test191.js:2:1: [info] Abstract value: "7"

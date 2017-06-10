@@ -1,3 +1,4 @@
+test/anderson/anderson1.js: [definite] Ordinary program exit is unreachable
 test/anderson/anderson1.js:18:5: [definite] TypeError, accessing property of null/undefined
 test/anderson/anderson1.js:4:5: [definite] Dead assignment, property value is never read
 test/anderson/anderson1.js:5:5: [definite] Dead assignment, property disabled is never read

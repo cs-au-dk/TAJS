@@ -1,2 +1,3 @@
 test/micro/test88.js:6:5: [definite] The function Polygon is invoked both as constructor and function
+test/micro/test88.js: [definite] Exceptional program exit is unreachable
 test/micro/test88.js:12:1: [info] Abstract object: {temp:[@Polygon#fun1],[[Prototype]]=[@Object#node2]}

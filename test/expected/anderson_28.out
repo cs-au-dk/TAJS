@@ -1,2 +1,3 @@
 test/anderson/anderson28.js:4:7: [definite] Dead assignment, property r is never read
 test/anderson/anderson28.js:9:2: [definite] Dead assignment, property n is never read
+test/anderson/anderson28.js: [definite] Exceptional program exit is unreachable

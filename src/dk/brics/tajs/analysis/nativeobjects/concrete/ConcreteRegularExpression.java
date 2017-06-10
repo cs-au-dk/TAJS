@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,11 +26,14 @@ public class ConcreteRegularExpression implements ConcreteValue {
 
     private final ConcreteBoolean multiline;
 
-    public ConcreteRegularExpression(ConcreteString source, ConcreteBoolean global, ConcreteBoolean ignoreCase, ConcreteBoolean multiline) {
+    private final ConcreteNumber lastIndex;
+
+    public ConcreteRegularExpression(ConcreteString source, ConcreteBoolean global, ConcreteBoolean ignoreCase, ConcreteBoolean multiline, ConcreteNumber lastIndex) {
         this.source = source;
         this.global = global;
         this.ignoreCase = ignoreCase;
         this.multiline = multiline;
+        this.lastIndex = lastIndex;
     }
 
     @Override
@@ -54,8 +57,36 @@ public class ConcreteRegularExpression implements ConcreteValue {
         return source;
     }
 
+    public ConcreteNumber getLastIndex() {
+        return lastIndex;
+    }
+
     @Override
     public String toSourceCode() {
-        return String.format("/%s/%s%s%s", source.toRegExpSourceCodeComponent(), global.getBooleanValue() ? "g" : "", ignoreCase.getBooleanValue() ? "i" : "", multiline.getBooleanValue() ? "m" : "");
+        return String.format("(function(){ var r = /%s/%s%s%s; r.lastIndex = %s; return r;})()", source.toRegExpSourceCodeComponent(), global.getBooleanValue() ? "g" : "", ignoreCase.getBooleanValue() ? "i" : "", multiline.getBooleanValue() ? "m" : "", lastIndex.toSourceCode());
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        ConcreteRegularExpression that = (ConcreteRegularExpression) o;
+
+        if (source != null ? !source.equals(that.source) : that.source != null) return false;
+        if (global != null ? !global.equals(that.global) : that.global != null) return false;
+        if (ignoreCase != null ? !ignoreCase.equals(that.ignoreCase) : that.ignoreCase != null) return false;
+        if (multiline != null ? !multiline.equals(that.multiline) : that.multiline != null) return false;
+        return lastIndex != null ? lastIndex.equals(that.lastIndex) : that.lastIndex == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = source != null ? source.hashCode() : 0;
+        result = 31 * result + (global != null ? global.hashCode() : 0);
+        result = 31 * result + (ignoreCase != null ? ignoreCase.hashCode() : 0);
+        result = 31 * result + (multiline != null ? multiline.hashCode() : 0);
+        result = 31 * result + (lastIndex != null ? lastIndex.hashCode() : 0);
+        return result;
     }
 }

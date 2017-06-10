@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -109,8 +109,7 @@ import com.google.javascript.jscomp.parsing.parser.trees.VariableStatementTree;
 import com.google.javascript.jscomp.parsing.parser.trees.WhileStatementTree;
 import com.google.javascript.jscomp.parsing.parser.trees.WithStatementTree;
 import com.google.javascript.jscomp.parsing.parser.trees.YieldExpressionTree;
-import dk.brics.tajs.js2flowgraph.FunctionBuilderHelper;
-import dk.brics.tajs.util.AnalysisLimitationException;
+import dk.brics.tajs.util.AnalysisLimitationException.SyntacticSupportNotImplemented;
 
 import java.util.List;
 
@@ -1322,7 +1321,7 @@ public abstract class InOrderVisitor extends DispatchingParseTreeVisitor<Void> {
 
     @Override
     public Void unsupportedLanguageFeature(ParseTree tree, String feature) {
-        throw new AnalysisLimitationException.SyntacticSupportNotImplemented(FunctionBuilderHelper.makeSourceLocation(tree, null) + ": " + feature + " not yet supported");
+        throw new SyntacticSupportNotImplemented(tree.location + ": " + feature + " not yet supported");
     }
 
     @Override

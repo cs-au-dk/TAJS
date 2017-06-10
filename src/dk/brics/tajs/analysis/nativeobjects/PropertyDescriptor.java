@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,21 +16,15 @@
 
 package dk.brics.tajs.analysis.nativeobjects;
 
-import dk.brics.tajs.analysis.Analysis;
 import dk.brics.tajs.analysis.Conversion;
 import dk.brics.tajs.analysis.Exceptions;
 import dk.brics.tajs.analysis.InitialStateBuilder;
 import dk.brics.tajs.analysis.PropVarOperations;
 import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.lattice.Bool;
-import dk.brics.tajs.lattice.CallEdge;
-import dk.brics.tajs.lattice.Context;
 import dk.brics.tajs.lattice.ObjectLabel;
-import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.UnknownValueResolver;
 import dk.brics.tajs.lattice.Value;
-import dk.brics.tajs.monitoring.IAnalysisMonitoring;
-import dk.brics.tajs.solver.GenericSolver;
 
 import java.util.Optional;
 import java.util.Set;
@@ -69,10 +63,13 @@ public class PropertyDescriptor {
     /**
      * ES5 8.10.5
      */
-    public static PropertyDescriptor toDefinePropertyPropertyDescriptor(Value obj, Solver.SolverInterface c) { // FIXME: check for "TypeError: Invalid property descriptor. Cannot both specify accessors and a value or writable attribute"
+    public static PropertyDescriptor toDefinePropertyPropertyDescriptor(Value obj, Solver.SolverInterface c) { // FIXME: check for "TypeError: Invalid property descriptor. Cannot both specify accessors and a value or writable attribute" (GitHub #354)
         obj = UnknownValueResolver.getRealValue(obj, c.getState());
+        if (obj.isNone()) {
+            return makeBottomPropertyDescriptor();
+        }
         if (!obj.isMaybeObject()) {
-            Exceptions.throwTypeError(c); // FIXME: should also throw type error if *maybe* non-object? (but in that case only weakly)
+            Exceptions.throwTypeError(c); // FIXME: should also throw type error if *maybe* non-object? (but in that case only weakly)  (GitHub #354)
             c.getState().setToNone();
         }
 
@@ -144,7 +141,7 @@ public class PropertyDescriptor {
                 set);
     }
 
-    private static PropertyDescriptor constructAndCheck(Value enumerable, Value configurable, Value writable, Value value, Value get, Value set, GenericSolver<State, Context, CallEdge, IAnalysisMonitoring, Analysis>.SolverInterface c) {
+    private static PropertyDescriptor constructAndCheck(Value enumerable, Value configurable, Value writable, Value value, Value get, Value set, Solver.SolverInterface c) {
         boolean definitelyInvalid = false;
         if (!get.isMaybeAbsent()) {
             definitelyInvalid |= checkCallableGetterSetter(get, c); // 8.10.5#7.b
@@ -161,20 +158,24 @@ public class PropertyDescriptor {
         definitelyInvalid |= checkUnambiguous(descriptor, c); // 8.10.5#9
 
         if (definitelyInvalid) {
-            return new PropertyDescriptor(enumerable, configurable, writable, value, getLabels, setLabels) {
-                @Override
-                public Value makePropertyWithAttributes() {
-                    return Value.makeNone();
-                }
-
-                @Override
-                public Optional<ObjectLabel> newPropertyDescriptorObject(Solver.SolverInterface c) {
-                    return Optional.empty();
-                }
-            };
+            return makeBottomPropertyDescriptor();
         }
 
         return descriptor;
+    }
+
+    private static PropertyDescriptor makeBottomPropertyDescriptor() {
+        return new PropertyDescriptor(Value.makeNone(), Value.makeNone(), Value.makeNone(), Value.makeNone(), newSet(), newSet()) {
+            @Override
+            public Value makePropertyWithAttributes() {
+                return Value.makeNone();
+            }
+
+            @Override
+            public Optional<ObjectLabel> newPropertyDescriptorObject(Solver.SolverInterface c) {
+                return Optional.empty();
+            }
+        };
     }
 
     private static boolean checkUnambiguous(PropertyDescriptor descriptor, Solver.SolverInterface c) {
@@ -320,7 +321,7 @@ public class PropertyDescriptor {
      */
     public Optional<ObjectLabel> newPropertyDescriptorObject(Solver.SolverInterface c) {
         PropVarOperations pv = c.getAnalysis().getPropVarOperations();
-        ObjectLabel desc = new ObjectLabel(c.getNode(), ObjectLabel.Kind.OBJECT);
+        ObjectLabel desc = ObjectLabel.make(c.getNode(), ObjectLabel.Kind.OBJECT);
         c.getState().newObject(desc);
         c.getState().writeInternalPrototype(desc, Value.makeObject(InitialStateBuilder.OBJECT_PROTOTYPE));
         if (isMaybeDataDescriptor()) {

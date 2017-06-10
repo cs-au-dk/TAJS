@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -108,25 +108,25 @@ public class AnalysisLatticeElement implements
 //    }
 
     @Override
-    public MergeResult propagate(State s, BasicBlock b, Context c, boolean localize) {
+    public MergeResult propagate(State s, BlockAndContext<Context> bc, boolean localize) {
         if (log.isDebugEnabled()) {
-            log.debug("propagating state to block " + b.getIndex() + " at " + b.getSourceLocation());
+            log.debug("propagating state to block " + bc.getBlock().getIndex() + " at " + bc.getBlock().getSourceLocation());
             if (Options.get().isIntermediateStatesEnabled() && localize) {
                 log.debug("before localization: " + s);
             }
         }
         boolean add;
         String diff = null;
-        Map<Context, State> m = getStates(b);
-        State state_current = m.get(c);
+        Map<Context, State> m = getStates(bc.getBlock());
+        State state_current = m.get(bc.getContext());
         if (state_current == null) { // existing state at (b,c) is implicitly bottom, so just store s
             add = true;
             if (localize) {
                 s.localize(null);
             }
-            s.setBasicBlock(b);
-            s.setContext(c);
-            m.put(c, s);
+            s.setBasicBlock(bc.getBlock());
+            s.setContext(bc.getContext());
+            m.put(bc.getContext(), s);
             state_current = s;
         } else { // a nontrivial state already exists at (b,c), so join s into it
             if (Options.get().isIntermediateStatesEnabled()) {
@@ -157,7 +157,7 @@ public class AnalysisLatticeElement implements
         if (add) {
             if (Options.get().isIntermediateStatesEnabled()) {
                 if (log.isDebugEnabled())
-                    log.debug("Added block entry state at block " + b.getIndex() + ": " + state_current);
+                    log.debug("Added block entry state at block " + bc.getBlock().getIndex() + ": " + state_current);
             }
             return new MergeResult(diff);
         } else

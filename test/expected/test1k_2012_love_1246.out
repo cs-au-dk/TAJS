@@ -1,16 +1,6 @@
-test/1k2012love/1246.js:41:8: [definite] ReferenceError, reading absent variable start
-test/1k2012love/1246.js:119:67: [definite] ReferenceError, reading absent variable start
-test/1k2012love/1246.js:154:69: [definite] ReferenceError, reading absent variable start
-test/1k2012love/1246.js:66:3: [definite] The conditional expression is always true
-test/1k2012love/1246.js:119:19: [definite] The conditional expression is always true
-test/1k2012love/1246.js:36:9: [definite] Dead assignment, property is never read
-test/1k2012love/1246.js:36:23: [definite] Dead assignment, property x is never read
-test/1k2012love/1246.js:36:29: [definite] Dead assignment, property y is never read
-test/1k2012love/1246.js:79:32: [definite] Dead assignment, property x is never read
-test/1k2012love/1246.js:79:36: [definite] Dead assignment, property y is never read
-test/1k2012love/1246.js:154:63: [definite] Dead assignment, property x is never read
-test/1k2012love/1246.js:40:27: [definite] Unreachable function
-test/1k2012love/1246.js:41:6: [definite] Unreachable code
+test/1k2012love/1246.js:40:27: [definite] The variable i is never used
+test/1k2012love/1246.js:40:27: [definite] The variable x is never used
+test/1k2012love/1246.js:40:27: [definite] The variable y is never used
 test/1k2012love/1246.js:45:9: [definite] The variable e is never used
 test/1k2012love/1246.js:45:9: [definite] The variable i is never used
 test/1k2012love/1246.js:45:9: [definite] The variable x is never used
@@ -19,41 +9,117 @@ test/1k2012love/1246.js:64:11: [definite] The variable i is never used
 test/1k2012love/1246.js:96:13: [definite] The variable e is never used
 test/1k2012love/1246.js:96:13: [definite] The variable x is never used
 test/1k2012love/1246.js:96:13: [definite] The variable y is never used
-test/1k2012love/1246.js:119:14: [definite] Reading absent property (computed name)
-test/1k2012love/1246.js:119:73: [definite] Unreachable code
-test/1k2012love/1246.js:124:28: [definite] Unreachable function
-test/1k2012love/1246.js:135:18: [definite] Unreachable function
-test/1k2012love/1246.js:143:35: [definite] Unreachable function
-test/1k2012love/1246.js:146:21: [definite] Unreachable function
-test/1k2012love/1246.js:154:67: [definite] Unreachable code
-test/1k2012love/shim.js:6:5: [definite] The variable b is never used
+test/1k2012love/1246.js:124:28: [definite] The variable i is never used
+test/1k2012love/1246.js:124:28: [definite] The variable x is never used
+test/1k2012love/1246.js:124:28: [definite] The variable y is never used
+test/1k2012love/1246.js:135:18: [definite] The variable i is never used
+test/1k2012love/1246.js:135:18: [definite] The variable x is never used
+test/1k2012love/1246.js:135:18: [definite] The variable y is never used
+test/1k2012love/1246.js:143:35: [definite] The variable x is never used
+test/1k2012love/1246.js:143:35: [definite] The variable y is never used
+test/1k2012love/1246.js:146:21: [definite] The variable x is never used
+test/1k2012love/1246.js:146:21: [definite] The variable y is never used
 test/1k2012love/1246.js:31:11: [maybe] TypeError, accessing property of null/undefined
 test/1k2012love/1246.js:36:9: [maybe] RangeError, assigning invalid value to array 'length' property
-test/1k2012love/1246.js:74:18: [maybe] RangeError, assigning invalid value to array 'length' property
+test/1k2012love/1246.js:40:13: [maybe] ReferenceError, reading absent variable creeps
+test/1k2012love/1246.js:40:51: [maybe] ReferenceError, reading absent variable dir
+test/1k2012love/1246.js:40:55: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1246.js:41:8: [maybe] ReferenceError, reading absent variable start
+test/1k2012love/1246.js:46:3: [maybe] ReferenceError, reading absent variable genMap
+test/1k2012love/1246.js:66:3: [maybe] ReferenceError, reading absent variable life
+test/1k2012love/1246.js:66:11: [maybe] ReferenceError, reading absent variable setup
+test/1k2012love/1246.js:70:15: [maybe] ReferenceError, reading absent variable paused
+test/1k2012love/1246.js:70:34: [maybe] ReferenceError, reading absent variable paused
+test/1k2012love/1246.js:71:7: [maybe] ReferenceError, reading absent variable board
+test/1k2012love/1246.js:74:11: [maybe] ReferenceError, reading absent variable genMap
+test/1k2012love/1246.js:74:35: [maybe] ReferenceError, reading absent variable money
 test/1k2012love/1246.js:76:11: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1246.js:76:28: [maybe] ReferenceError, reading absent variable money
 test/1k2012love/1246.js:76:39: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1246.js:76:60: [maybe] ReferenceError, reading absent variable money
 test/1k2012love/1246.js:76:69: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1246.js:77:11: [maybe] ReferenceError, reading absent variable money
+test/1k2012love/1246.js:79:9: [maybe] ReferenceError, reading absent variable genMap
 test/1k2012love/1246.js:79:16: [maybe] RangeError, assigning invalid value to array 'length' property
+test/1k2012love/1246.js:81:13: [maybe] ReferenceError, reading absent variable genMap
+test/1k2012love/1246.js:83:13: [maybe] ReferenceError, reading absent variable money
+test/1k2012love/1246.js:89:3: [maybe] ReferenceError, reading absent variable a
+test/1k2012love/1246.js:98:13: [maybe] ReferenceError, reading absent variable c
+test/1k2012love/1246.js:99:16: [maybe] ReferenceError, reading absent variable step
+test/1k2012love/1246.js:100:7: [maybe] ReferenceError, reading absent variable a
+test/1k2012love/1246.js:103:5: [maybe] ReferenceError, reading absent variable a
+test/1k2012love/1246.js:106:5: [maybe] ReferenceError, reading absent variable paused
+test/1k2012love/1246.js:106:16: [maybe] ReferenceError, reading absent variable life
+test/1k2012love/1246.js:115:5: [maybe] ReferenceError, reading absent variable drawText
+test/1k2012love/1246.js:115:18: [maybe] ReferenceError, reading absent variable money
+test/1k2012love/1246.js:119:5: [maybe] ReferenceError, reading absent variable drawText
+test/1k2012love/1246.js:119:19: [maybe] ReferenceError, reading absent variable life
+test/1k2012love/1246.js:119:67: [maybe] ReferenceError, reading absent variable start
+test/1k2012love/1246.js:120:15: [maybe] ReferenceError, reading absent variable drawText
+test/1k2012love/1246.js:120:28: [maybe] ReferenceError, reading absent variable life
+test/1k2012love/1246.js:124:14: [maybe] ReferenceError, reading absent variable creeps
+test/1k2012love/1246.js:125:11: [maybe] ReferenceError, reading absent variable dir
+test/1k2012love/1246.js:125:15: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1246.js:127:7: [maybe] ReferenceError, reading absent variable paused
+test/1k2012love/1246.js:127:17: [maybe] ReferenceError, reading absent variable step
+test/1k2012love/1246.js:127:36: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1246.js:129:7: [maybe] ReferenceError, reading absent variable drawText
+test/1k2012love/1246.js:129:36: [maybe] ReferenceError, reading absent variable step
+test/1k2012love/1246.js:129:44: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1246.js:129:55: [maybe] ReferenceError, reading absent variable step
+test/1k2012love/1246.js:131:14: [maybe] ReferenceError, reading absent variable paused
+test/1k2012love/1246.js:131:51: [maybe] ReferenceError, reading absent variable money
+test/1k2012love/1246.js:131:59: [maybe] ReferenceError, reading absent variable life
+test/1k2012love/1246.js:135:5: [maybe] ReferenceError, reading absent variable board
 test/1k2012love/1246.js:135:5: [maybe] TypeError, call to non-function
-test/1k2012love/shim.js:8:9: [maybe] TypeError, accessing property of null/undefined
-test/1k2012love/shim.js:8:9: [maybe] TypeError, call to non-function
-test/1k2012love/shim.js:9:1: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1246.js:136:11: [maybe] ReferenceError, reading absent variable dir
+test/1k2012love/1246.js:136:15: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1246.js:141:9: [maybe] ReferenceError, reading absent variable drawText
+test/1k2012love/1246.js:144:21: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1246.js:145:25: [maybe] ReferenceError, reading absent variable step
+test/1k2012love/1246.js:145:33: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1246.js:145:55: [maybe] ReferenceError, reading absent variable step
+test/1k2012love/1246.js:147:21: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1246.js:154:15: [maybe] ReferenceError, reading absent variable step
+test/1k2012love/1246.js:154:69: [maybe] ReferenceError, reading absent variable start
+test/1k2012love/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1246.js:40:61: [maybe] Reading absent property y
 test/1k2012love/1246.js:76:11: [maybe] Reading absent property e
 test/1k2012love/1246.js:76:39: [maybe] Reading absent property e
 test/1k2012love/1246.js:76:69: [maybe] Reading absent property e
-test/1k2012love/shim.js:6:9: [maybe] Reading absent property body
-test/1k2012love/shim.js:8:9: [maybe] Reading absent property getContext
-test/1k2012love/shim.js:9:1: [maybe] Reading absent property body
+test/1k2012love/1246.js:125:21: [maybe] Reading absent property y
+test/1k2012love/1246.js:127:41: [maybe] Reading absent property y
+test/1k2012love/1246.js:129:20: [maybe] Reading absent property e
+test/1k2012love/1246.js:129:24: [maybe] Reading absent property m
+test/1k2012love/1246.js:129:67: [maybe] Reading absent property y
+test/1k2012love/1246.js:131:30: [maybe] Reading absent property y
+test/1k2012love/1246.js:131:39: [maybe] Reading absent property e
+test/1k2012love/1246.js:135:5: [maybe] Reading absent property filter
+test/1k2012love/1246.js:136:15: [maybe] Reading absent property x
+test/1k2012love/1246.js:136:21: [maybe] Reading absent property y
+test/1k2012love/1246.js:141:24: [maybe] Reading absent property e
+test/1k2012love/1246.js:141:32: [maybe] Reading absent property x
+test/1k2012love/1246.js:141:39: [maybe] Reading absent property y
+test/1k2012love/1246.js:144:27: [maybe] Reading absent property y
+test/1k2012love/1246.js:145:44: [maybe] Reading absent property x
+test/1k2012love/1246.js:145:70: [maybe] Reading absent property y
+test/1k2012love/1246.js:145:74: [maybe] Reading absent property y
+test/1k2012love/1246.js:147:27: [maybe] Reading absent property y
+test/1k2012love/1246.js:149:20: [maybe] Reading absent property e
+test/1k2012love/1246.js:149:48: [maybe] Reading absent property e
+test/1k2012love/1246.js:149:55: [maybe] Reading absent property e
+test/1k2012love/1246.js: [maybe] Uncaught exception, constructed at [test/1k2012love/1246.js:31:11, test/1k2012love/1246.js:36:9, test/1k2012love/1246.js:40:13, test/1k2012love/1246.js:40:51, test/1k2012love/1246.js:40:55, test/1k2012love/1246.js:41:8, test/1k2012love/1246.js:46:3, test/1k2012love/1246.js:66:3, test/1k2012love/1246.js:66:11, test/1k2012love/1246.js:70:15, test/1k2012love/1246.js:70:34, test/1k2012love/1246.js:71:7, test/1k2012love/1246.js:74:11, test/1k2012love/1246.js:74:18, test/1k2012love/1246.js:74:35, test/1k2012love/1246.js:76:11, test/1k2012love/1246.js:76:28, test/1k2012love/1246.js:76:39, test/1k2012love/1246.js:76:60, test/1k2012love/1246.js:76:69, test/1k2012love/1246.js:77:11, test/1k2012love/1246.js:79:9, test/1k2012love/1246.js:79:16, test/1k2012love/1246.js:81:13, test/1k2012love/1246.js:81:20, test/1k2012love/1246.js:83:13, test/1k2012love/1246.js:89:3, test/1k2012love/1246.js:98:13, test/1k2012love/1246.js:99:16, test/1k2012love/1246.js:100:7, test/1k2012love/1246.js:103:5, test/1k2012love/1246.js:106:5, test/1k2012love/1246.js:106:16, test/1k2012love/1246.js:115:5, test/1k2012love/1246.js:115:18, test/1k2012love/1246.js:119:5, test/1k2012love/1246.js:119:19, test/1k2012love/1246.js:119:67, test/1k2012love/1246.js:120:15, test/1k2012love/1246.js:120:28, test/1k2012love/1246.js:124:14, test/1k2012love/1246.js:125:11, test/1k2012love/1246.js:125:15, test/1k2012love/1246.js:127:7, test/1k2012love/1246.js:127:17, test/1k2012love/1246.js:127:36, test/1k2012love/1246.js:129:7, test/1k2012love/1246.js:129:36, test/1k2012love/1246.js:129:44, test/1k2012love/1246.js:129:55, test/1k2012love/1246.js:131:14, test/1k2012love/1246.js:131:51, test/1k2012love/1246.js:131:59, test/1k2012love/1246.js:135:5, test/1k2012love/1246.js:136:11, test/1k2012love/1246.js:136:15, test/1k2012love/1246.js:141:9, test/1k2012love/1246.js:144:21, test/1k2012love/1246.js:145:25, test/1k2012love/1246.js:145:33, test/1k2012love/1246.js:145:55, test/1k2012love/1246.js:147:21, test/1k2012love/1246.js:154:15, test/1k2012love/1246.js:154:69, test/1k2012love/shim.js:9:5]
 test/1k2012love/1246.js:34:25: [maybe] Reading absent property (computed name)
 test/1k2012love/1246.js:36:9: [maybe] Conversion from string to number yields NaN
 test/1k2012love/1246.js:36:9: [maybe] Converting object to number
 test/1k2012love/1246.js:38:9: [maybe] Reading absent property (computed name)
+test/1k2012love/1246.js:40:51: [maybe] Reading absent property (computed name)
+test/1k2012love/1246.js:40:55: [maybe] Conversion to number yields NaN
+test/1k2012love/1246.js:41:6: [maybe] Reading absent property (computed name)
 test/1k2012love/1246.js:41:18: [maybe] Reading absent property (computed name)
 test/1k2012love/1246.js:70:15: [maybe] The variable paused has values with different types
 test/1k2012love/1246.js:70:34: [maybe] The variable paused has values with different types
 test/1k2012love/1246.js:71:7: [maybe] Reading absent property (computed name)
-test/1k2012love/1246.js:74:18: [maybe] Conversion from string to number yields NaN
-test/1k2012love/1246.js:74:18: [maybe] Converting object to number
 test/1k2012love/1246.js:76:11: [maybe] Conversion to number yields NaN
 test/1k2012love/1246.js:76:11: [maybe] Converting primitive number to object
 test/1k2012love/1246.js:76:11: [maybe] Reading absent property (computed name)
@@ -65,18 +131,61 @@ test/1k2012love/1246.js:76:69: [maybe] Reading absent property (computed name)
 test/1k2012love/1246.js:79:16: [maybe] Conversion from string to number yields NaN
 test/1k2012love/1246.js:79:16: [maybe] Converting object to number
 test/1k2012love/1246.js:92:3: [maybe] Converting undefined to string
-test/1k2012love/1246.js:99:16: [maybe] Conversion from string to number yields NaN
 test/1k2012love/1246.js:99:16: [maybe] Converting object to number
 test/1k2012love/1246.js:99:16: [maybe] The variable step has values with different types
 test/1k2012love/1246.js:106:5: [maybe] The variable paused has values with different types
 test/1k2012love/1246.js:119:14: [maybe] Converting primitive string to object
-test/1k2012love/1246.js:154:15: [maybe] Conversion from string to number yields NaN
-test/1k2012love/1246.js:154:15: [maybe] Conversion from string to number yields NaN
-test/1k2012love/1246.js:154:15: [maybe] Converting object to number
+test/1k2012love/1246.js:119:14: [maybe] Reading absent property (computed name)
+test/1k2012love/1246.js:125:11: [maybe] Reading absent property (computed name)
+test/1k2012love/1246.js:125:15: [maybe] Conversion to number yields NaN
+test/1k2012love/1246.js:127:7: [maybe] The variable paused has values with different types
+test/1k2012love/1246.js:127:17: [maybe] Converting object to number
+test/1k2012love/1246.js:127:17: [maybe] The variable step has values with different types
+test/1k2012love/1246.js:127:41: [maybe] Conversion to number yields NaN
+test/1k2012love/1246.js:129:20: [maybe] Conversion to number yields NaN
+test/1k2012love/1246.js:129:36: [maybe] Converting object to number
+test/1k2012love/1246.js:129:36: [maybe] The variable step has values with different types
+test/1k2012love/1246.js:129:55: [maybe] Converting object to number
+test/1k2012love/1246.js:129:55: [maybe] The variable step has values with different types
+test/1k2012love/1246.js:129:67: [maybe] Conversion to number yields NaN
+test/1k2012love/1246.js:131:14: [maybe] The variable paused has values with different types
+test/1k2012love/1246.js:131:24: [maybe] Conversion to number yields NaN
+test/1k2012love/1246.js:136:11: [maybe] Reading absent property (computed name)
+test/1k2012love/1246.js:136:15: [maybe] Conversion to number yields NaN
+test/1k2012love/1246.js:136:15: [maybe] Converting primitive number to object
+test/1k2012love/1246.js:136:15: [maybe] The variable e has values with different types
+test/1k2012love/1246.js:136:21: [maybe] Converting primitive number to object
+test/1k2012love/1246.js:136:21: [maybe] The variable e has values with different types
+test/1k2012love/1246.js:139:13: [maybe] The variable e has values with different types
+test/1k2012love/1246.js:141:18: [maybe] Converting primitive string to object
+test/1k2012love/1246.js:141:18: [maybe] Reading absent property (computed name)
+test/1k2012love/1246.js:141:24: [maybe] Converting primitive number to object
+test/1k2012love/1246.js:141:24: [maybe] The variable e has values with different types
+test/1k2012love/1246.js:141:32: [maybe] Conversion to number yields NaN
+test/1k2012love/1246.js:141:32: [maybe] Converting primitive number to object
+test/1k2012love/1246.js:141:32: [maybe] The variable e has values with different types
+test/1k2012love/1246.js:141:39: [maybe] Conversion to number yields NaN
+test/1k2012love/1246.js:141:39: [maybe] Converting primitive number to object
+test/1k2012love/1246.js:141:39: [maybe] The variable e has values with different types
+test/1k2012love/1246.js:144:17: [maybe] Reading absent property (computed name)
+test/1k2012love/1246.js:144:21: [maybe] Conversion to number yields NaN
+test/1k2012love/1246.js:145:25: [maybe] Conversion to number yields NaN
+test/1k2012love/1246.js:145:25: [maybe] Converting object to number
+test/1k2012love/1246.js:145:25: [maybe] The variable step has values with different types
+test/1k2012love/1246.js:145:44: [maybe] Converting primitive number to object
+test/1k2012love/1246.js:145:44: [maybe] The variable ee has values with different types
+test/1k2012love/1246.js:145:55: [maybe] Conversion to number yields NaN
+test/1k2012love/1246.js:145:55: [maybe] Converting object to number
+test/1k2012love/1246.js:145:55: [maybe] The variable step has values with different types
+test/1k2012love/1246.js:145:74: [maybe] Converting primitive number to object
+test/1k2012love/1246.js:145:74: [maybe] The variable ee has values with different types
+test/1k2012love/1246.js:147:17: [maybe] Reading absent property (computed name)
+test/1k2012love/1246.js:147:21: [maybe] Conversion to number yields NaN
+test/1k2012love/1246.js:149:20: [maybe] Converting primitive number to object
+test/1k2012love/1246.js:149:20: [maybe] The variable ee has values with different types
+test/1k2012love/1246.js:149:48: [maybe] Conversion to number yields NaN
+test/1k2012love/1246.js:149:55: [maybe] Conversion to number yields NaN
+test/1k2012love/1246.js:149:55: [maybe] Converting primitive number to object
+test/1k2012love/1246.js:149:55: [maybe] The variable ee has values with different types
 test/1k2012love/1246.js:154:15: [maybe] Converting object to number
 test/1k2012love/1246.js:154:15: [maybe] The variable step has values with different types
-test/1k2012love/1246.js:154:28: [maybe] Conversion from string to number yields NaN
-test/1k2012love/1246.js:154:28: [maybe] Converting object to number
-test/1k2012love/1246.js:154:28: [maybe] The variable step has values with different types
-test/1k2012love/shim.js:7:9: [maybe] Reading absent property (computed name)
-test/1k2012love/shim.js,test/1k2012love/1246.js: [maybe] Uncaught exception, constructed at [test/1k2012love/1246.js:31:11, test/1k2012love/1246.js:36:9, test/1k2012love/1246.js:41:8, test/1k2012love/1246.js:74:18, test/1k2012love/1246.js:76:11, test/1k2012love/1246.js:76:39, test/1k2012love/1246.js:76:69, test/1k2012love/1246.js:79:16, test/1k2012love/1246.js:119:67, test/1k2012love/1246.js:135:5, test/1k2012love/1246.js:154:69, test/1k2012love/shim.js:8:9, test/1k2012love/shim.js:9:1]

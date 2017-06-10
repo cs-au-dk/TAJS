@@ -1,22 +1,17 @@
 test/1k2012love/1103.js:13:9: [definite] The variable circleOffset is never used
 test/1k2012love/1103.js:14:9: [definite] The variable diameter is never used
-test/1k2012love/1103.js:5:5: [maybe] TypeError, accessing property of null/undefined
-test/1k2012love/1103.js:5:11: [maybe] TypeError, accessing property of null/undefined
 test/1k2012love/1103.js:8:17: [maybe] TypeError, call to non-function
 test/1k2012love/1103.js:9:17: [maybe] TypeError, call to non-function
-test/1k2012love/1103.js:84:29: [maybe] TypeError, accessing property of null/undefined
-test/1k2012love/shim.js:8:9: [maybe] TypeError, accessing property of null/undefined
-test/1k2012love/shim.js:8:9: [maybe] TypeError, call to non-function
-test/1k2012love/shim.js:9:1: [maybe] TypeError, accessing property of null/undefined
-test/1k2012love/1103.js:8:17: [maybe] Reading absent property a
-test/1k2012love/1103.js:9:17: [maybe] Reading absent property a
-test/1k2012love/1103.js:67:20: [maybe] Reading absent property pageX
-test/1k2012love/1103.js:67:30: [maybe] Reading absent property offsetLeft
-test/1k2012love/1103.js:68:20: [maybe] Reading absent property pageY
-test/1k2012love/1103.js:68:30: [maybe] Reading absent property offsetTop
-test/1k2012love/shim.js:6:9: [maybe] Reading absent property body
-test/1k2012love/shim.js:8:9: [maybe] Reading absent property getContext
-test/1k2012love/shim.js:9:1: [maybe] Reading absent property body
+test/1k2012love/1103.js:59:9: [maybe] TypeError, non-function event handler
+test/1k2012love/1103.js:67:30: [maybe] ReferenceError, reading absent variable c
+test/1k2012love/1103.js:84:29: [maybe] ReferenceError, reading absent variable b
+test/1k2012love/1103.js:91:9: [maybe] ReferenceError, reading absent variable a
+test/1k2012love/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1103.js:8:17: [maybe] Reading absent property a of host object
+test/1k2012love/1103.js:9:17: [maybe] Reading absent property a of host object
+test/1k2012love/1103.js:67:20: [maybe] Reading absent property pageX of host object
+test/1k2012love/1103.js:68:20: [maybe] Reading absent property pageY of host object
+test/1k2012love/1103.js: [maybe] Uncaught exception, constructed at [test/1k2012love/1103.js:8:17, test/1k2012love/1103.js:9:17, test/1k2012love/1103.js:67:30, test/1k2012love/1103.js:84:29, test/1k2012love/1103.js:91:9, test/1k2012love/shim.js:9:5]
 test/1k2012love/1103.js:67:20: [maybe] Conversion to number yields NaN
 test/1k2012love/1103.js:67:20: [maybe] Converting primitive number to object
 test/1k2012love/1103.js:67:20: [maybe] The variable e has values with different types
@@ -30,5 +25,3 @@ test/1k2012love/1103.js:125:17: [maybe] Conversion to number yields NaN
 test/1k2012love/1103.js:125:17: [maybe] Reading absent property (computed name)
 test/1k2012love/1103.js:126:17: [maybe] Conversion to number yields NaN
 test/1k2012love/1103.js:126:17: [maybe] Reading absent property (computed name)
-test/1k2012love/shim.js:7:9: [maybe] Reading absent property (computed name)
-test/1k2012love/shim.js,test/1k2012love/1103.js: [maybe] Uncaught exception, constructed at [test/1k2012love/1103.js:5:5, test/1k2012love/1103.js:5:11, test/1k2012love/1103.js:8:17, test/1k2012love/1103.js:9:17, test/1k2012love/1103.js:84:29, test/1k2012love/shim.js:8:9, test/1k2012love/shim.js:9:1]

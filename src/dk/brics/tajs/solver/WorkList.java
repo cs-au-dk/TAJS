@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -155,8 +155,8 @@ public class WorkList<ContextType extends IContext<?>> {
         public boolean equals(Object obj) {
             if (obj == null || !getClass().equals(obj.getClass()))
                 return false;
-            @SuppressWarnings("rawtypes")
-            WorkList.Entry p = (WorkList.Entry) obj; // WorkList<?>.Entry gives parse error in e.g. javadoc
+            @SuppressWarnings("unchecked")
+            WorkList<?>.Entry p = (WorkList<?>.Entry) obj;
             return p.b == b && p.c.equals(c);
         }
 

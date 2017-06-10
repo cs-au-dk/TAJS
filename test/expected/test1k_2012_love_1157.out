@@ -1,17 +1,9 @@
-test/1k2012love/shim.js:8:5: [definite] The variable a is never used
-test/1k2012love/1157.js:16:1: [maybe] TypeError, accessing property of null/undefined
-test/1k2012love/1157.js:20:1: [maybe] TypeError, accessing property of null/undefined
 test/1k2012love/1157.js:20:1: [maybe] TypeError, accessing property of null/undefined
 test/1k2012love/1157.js:23:1: [maybe] TypeError, accessing property of null/undefined
-test/1k2012love/1157.js:23:1: [maybe] TypeError, accessing property of null/undefined
-test/1k2012love/shim.js:8:9: [maybe] TypeError, accessing property of null/undefined
-test/1k2012love/shim.js:8:9: [maybe] TypeError, call to non-function
-test/1k2012love/shim.js:9:1: [maybe] TypeError, accessing property of null/undefined
-test/1k2012love/1157.js:20:1: [maybe] Reading absent property children
-test/1k2012love/1157.js:23:1: [maybe] Reading absent property children
-test/1k2012love/shim.js:6:9: [maybe] Reading absent property body
-test/1k2012love/shim.js:8:9: [maybe] Reading absent property getContext
-test/1k2012love/shim.js:9:1: [maybe] Reading absent property body
+test/1k2012love/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1157.js:20:1: [maybe] Reading absent property children of host object
+test/1k2012love/1157.js:23:1: [maybe] Reading absent property children of host object
+test/1k2012love/1157.js: [maybe] Uncaught exception, constructed at [test/1k2012love/1157.js:20:1, test/1k2012love/1157.js:23:1, test/1k2012love/shim.js:9:5]
 test/1k2012love/1157.js:20:1: [maybe] Reading absent property (computed name)
 test/1k2012love/1157.js:20:25: [maybe] Converting object to string
 test/1k2012love/1157.js:20:25: [maybe] Converting primitive string to object
@@ -28,5 +20,3 @@ test/1k2012love/1157.js:23:57: [maybe] Converting undefined to string
 test/1k2012love/1157.js:23:76: [maybe] Converting object to string
 test/1k2012love/1157.js:23:76: [maybe] Converting primitive string to object
 test/1k2012love/1157.js:23:76: [maybe] Reading absent property (computed name)
-test/1k2012love/shim.js:7:9: [maybe] Reading absent property (computed name)
-test/1k2012love/shim.js,test/1k2012love/1157.js: [maybe] Uncaught exception, constructed at [test/1k2012love/1157.js:16:1, test/1k2012love/1157.js:20:1, test/1k2012love/1157.js:23:1, test/1k2012love/shim.js:8:9, test/1k2012love/shim.js:9:1]

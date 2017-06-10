@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,7 +28,7 @@ public interface IAnalysisLatticeElement<StateType extends IState<StateType, Con
         CallEdgeType extends ICallEdge<StateType>> {
 
     /**
-     * Result from {@link IAnalysisLatticeElement#propagate(IState, BasicBlock, IContext, boolean)}.
+     * Result from {@link IAnalysisLatticeElement#propagate(IState, BlockAndContext, boolean)}.
      */
     class MergeResult {
 
@@ -72,12 +72,17 @@ public interface IAnalysisLatticeElement<StateType extends IState<StateType, Con
      */
     CallGraph<StateType, ContextType, CallEdgeType> getCallGraph();
 
+//    /**
+//     * Returns the number of states stored for the given basic block.
+//     */
+//    int getSize(BasicBlock block); // (currently unused)
+
     /**
-     * Propagates s into the entry state of b in context c.
+     * Propagates s into the entry state at the given location.
      * The given state may be modified by the operation.
      *
      * @param localize if set, localize the state while joining
      * @return a merge result, or null if no new flow added.
      */
-    MergeResult propagate(StateType s, BasicBlock b, ContextType c, boolean localize);
+    MergeResult propagate(StateType s, BlockAndContext<ContextType> bc, boolean localize);
 }

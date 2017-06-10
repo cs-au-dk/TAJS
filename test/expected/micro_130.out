@@ -1,3 +1,4 @@
 test/micro/test130.js:8:30: [definite] Reading 'this' yields the global object
 test/micro/test130.js:14:23: [definite] Reading 'this' yields the global object
+test/micro/test130.js: [definite] Exceptional program exit is unreachable
 test/micro/test130.js:13:1: [info] Abstract value: [@<the global object>[native]]

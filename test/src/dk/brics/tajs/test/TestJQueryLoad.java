@@ -12,7 +12,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-public class TestJQueryLoad {
+public class TestJQueryLoad { // TODO: code contains "dk.brics.tajs.directives.unreachable" and "TAJS_" strings (for nondet. values), currently analyzing without "-ignore-unreachable" (same for TestJQueryUse and TestJQueryUse_unanalyzable)
 
     private IAnalysisMonitoring monitor;
 
@@ -25,62 +25,62 @@ public class TestJQueryLoad {
 
     @Test
     public void load_1_0() {
-        Misc.run(new String[]{"test/jquery-load/jquery-1.0.js-sliced.js"}, monitor);
+        Misc.run("test/jquery-load/jquery-1.0.js-sliced.js", monitor);
     }
 
     @Test
     public void load_1_1() {
-        Misc.run(new String[]{"test/jquery-load/jquery-1.1.js-sliced.js"}, monitor);
+        Misc.run("test/jquery-load/jquery-1.1.js-sliced.js", monitor);
     }
 
     @Test
     public void load_1_2() {
-        Misc.run(new String[]{"test/jquery-load/jquery-1.2.js-sliced.js"}, monitor);
+        Misc.run("test/jquery-load/jquery-1.2.js-sliced.js", monitor);
     }
 
     @Test
     public void load_1_3() {
-        Misc.run(new String[]{"test/jquery-load/jquery-1.3.js-sliced.js"}, monitor);
+        Misc.run("test/jquery-load/jquery-1.3.js-sliced.js", monitor);
     }
 
     @Test
     public void load_1_4() {
-        Misc.run(new String[]{"test/jquery-load/jquery-1.4.js-sliced.js"}, monitor);
+        Misc.run("test/jquery-load/jquery-1.4.js-sliced.js", monitor);
     }
 
     @Test
     public void load_1_5() {
-        Misc.run(new String[]{"test/jquery-load/jquery-1.5.js-sliced.js"}, monitor);
+        Misc.run("test/jquery-load/jquery-1.5.js-sliced.js", monitor);
     }
 
     @Test
     public void load_1_6() {
-        Misc.run(new String[]{"test/jquery-load/jquery-1.6.js-sliced.js"}, monitor);
+        Misc.run("test/jquery-load/jquery-1.6.js-sliced.js", monitor);
     }
 
     @Test
     public void load_1_7() {
-        Misc.run(new String[]{"test/jquery-load/jquery-1.7.js-sliced.js"}, monitor);
+        Misc.run("test/jquery-load/jquery-1.7.js-sliced.js", monitor);
     }
 
     @Test
     public void load_1_8() {
-        Misc.run(new String[]{"test/jquery-load/jquery-1.8.js-sliced.js"}, monitor);
+        Misc.run("test/jquery-load/jquery-1.8.js-sliced.js", monitor);
     }
 
     @Test
     public void load_1_9() {
-        Misc.run(new String[]{"test/jquery-load/jquery-1.9.js-sliced.js"}, monitor);
+        Misc.run("test/jquery-load/jquery-1.9.js-sliced.js", monitor);
     }
 
     @Test
     public void load_1_10() {
-        Misc.run(new String[]{"test/jquery-load/jquery-1.10.js-sliced.js"}, monitor);
+        Misc.run("test/jquery-load/jquery-1.10.js-sliced.js", monitor);
     }
 
     @Test
     public void load_1_11() {
-        Misc.run(new String[]{"test/jquery-load/jquery-1.11.0.js-sliced.js"}, monitor);
+        Misc.run("test/jquery-load/jquery-1.11.0.js-sliced.js", monitor);
     }
 
     @Before

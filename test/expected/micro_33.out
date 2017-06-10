@@ -2,6 +2,7 @@ test/micro/test33.js:6:1: [definite] Reading 'this' yields the global object
 test/micro/test33.js:9:16: [definite] Reading 'this' yields the global object
 test/micro/test33.js:10:16: [definite] Reading 'this' yields the global object
 test/micro/test33.js:11:16: [definite] Reading 'this' yields the global object
+test/micro/test33.js: [definite] Exceptional program exit is unreachable
 test/micro/test33.js:9:1: [info] Abstract value: 43.0
 test/micro/test33.js:10:1: [info] Abstract value: 89.0
 test/micro/test33.js:11:1: [info] Abstract value: 120.0

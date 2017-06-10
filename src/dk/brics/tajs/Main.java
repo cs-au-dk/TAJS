@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,25 +17,34 @@
 package dk.brics.tajs;
 
 import dk.brics.tajs.analysis.Analysis;
-import dk.brics.tajs.analysis.AsyncEvents;
 import dk.brics.tajs.flowgraph.FlowGraph;
 import dk.brics.tajs.flowgraph.HostEnvSources;
 import dk.brics.tajs.flowgraph.JavaScriptSource;
 import dk.brics.tajs.flowgraph.JavaScriptSource.Kind;
+import dk.brics.tajs.flowgraph.SourceLocation;
 import dk.brics.tajs.htmlparser.HTMLParser;
 import dk.brics.tajs.js2flowgraph.FlowGraphBuilder;
+import dk.brics.tajs.js2flowgraph.FlowGraphMutator;
 import dk.brics.tajs.lattice.Obj;
 import dk.brics.tajs.lattice.ScopeChain;
 import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.monitoring.AnalysisPhase;
+import dk.brics.tajs.monitoring.AnalysisTimeLimiter;
+import dk.brics.tajs.monitoring.CompositeMonitoring;
 import dk.brics.tajs.monitoring.IAnalysisMonitoring;
 import dk.brics.tajs.monitoring.Monitoring;
+import dk.brics.tajs.monitoring.ProgramExitReachabilityChecker;
 import dk.brics.tajs.options.ExperimentalOptions;
+import dk.brics.tajs.options.OptionValues;
 import dk.brics.tajs.options.Options;
+import dk.brics.tajs.options.TAJSEnvironmentConfig;
 import dk.brics.tajs.solver.SolverSynchronizer;
 import dk.brics.tajs.util.AnalysisException;
+import dk.brics.tajs.util.Canonicalizer;
 import dk.brics.tajs.util.Loader;
+import dk.brics.tajs.util.Pair;
+import dk.brics.tajs.util.PathAndURLUtils;
 import dk.brics.tajs.util.Strings;
 import net.htmlparser.jericho.Source;
 import org.apache.log4j.Logger;
@@ -44,12 +53,14 @@ import org.apache.log4j.PropertyConfigurator;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URL;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.Properties;
+import java.util.stream.Collectors;
 
 import static dk.brics.tajs.util.Collections.newList;
 
@@ -86,6 +97,7 @@ public class Main {
      * Resets all internal counters and caches.
      */
     public static void reset() {
+        Canonicalizer.reset();
         ExperimentalOptions.ExperimentalOptionsManager.reset();
         Options.reset();
         State.reset();
@@ -93,13 +105,23 @@ public class Main {
         Obj.reset();
         Strings.reset();
         ScopeChain.reset();
+        FlowGraphMutator.reset();
     }
 
     /**
-     * Reads the input and prepares an analysis object, using the default monitoring.
+     * Reads the input and prepares an analysis object, using the default monitoring and command-line arguments.
      */
     public static Analysis init(String[] args, SolverSynchronizer sync) throws AnalysisException {
-        return init(args, new Monitoring(), sync);
+        try {
+            return init(new OptionValues(args), new Monitoring(), sync);
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+            System.err.println("TAJS - Type Analyzer for JavaScript");
+            System.err.println("Copyright 2009-2017 Aarhus University\n");
+            System.err.println("Usage: java -jar tajs-all.jar [OPTION]... [FILE]...\n");
+            Options.get().describe(System.err);
+            return null;
+        }
     }
 
     /**
@@ -108,65 +130,69 @@ public class Main {
      * @return analysis object, null if invalid input
      * @throws AnalysisException if internal error
      */
-    public static Analysis init(String[] args, IAnalysisMonitoring monitoring, SolverSynchronizer sync) throws AnalysisException {
-        try {
-            Options.parse(args);
-            Options.get().checkConsistency();
-        } catch (Exception e) {
-            System.err.println(e.getMessage());
-            System.err.println("TAJS - Type Analyzer for JavaScript");
-            System.err.println("Copyright 2009-2016 Aarhus University\n");
-            System.err.println("Usage: java -jar tajs-all.jar [OPTION]... [FILE]...\n");
-            Options.get().describe(System.err);
-            return null;
-        }
+    public static Analysis init(OptionValues options, IAnalysisMonitoring monitoring, SolverSynchronizer sync) throws AnalysisException {
+        options.checkConsistency();
+        Options.set(options);
+        TAJSEnvironmentConfig.init();
 
-        List<String> files = Options.get().getArguments();
+        List<IAnalysisMonitoring> extraMonitors = newList();
+        int timeLimit = Options.get().getAnalysisTimeLimit();
+        AnalysisTimeLimiter timeLimiter = new AnalysisTimeLimiter(timeLimit, true);
+        if (timeLimit >= 0) {
+            extraMonitors.add(timeLimiter);
+        }
+        if (Options.get().isTestEnabled()) {
+            extraMonitors.add(new ProgramExitReachabilityChecker(true, !Options.get().isDoNotExpectOrdinaryExitEnabled(), true, false, true, () -> !timeLimiter.analysisExceededTimeLimit()));
+        }
+        if (!extraMonitors.isEmpty()) {
+            extraMonitors.add(0, monitoring);
+            monitoring = CompositeMonitoring.buildFromList(extraMonitors);
+        }
 
         Analysis analysis = new Analysis(monitoring, sync);
 
         if (Options.get().isDebugEnabled())
             Options.dump();
 
-        enterPhase(AnalysisPhase.LOADING_FILES, analysis.getMonitoring());
+        enterPhase(AnalysisPhase.INITIALIZATION, analysis.getMonitoring());
         Source document = null;
         FlowGraph fg;
         try {
             // split into JS files and HTML files
-            String htmlFileName = null;
-            List<String> js_files = newList();
-            for (String fn : files) {
-                if (isHTMLFileName(fn)) {
-                    if (htmlFileName != null)
+            URL htmlFile = null;
+            List<URL> js_files = newList();
+            List<URL> resolvedFiles = resolveInputs(Options.get().getArguments());
+            for (URL fn : resolvedFiles) {
+                if (isHTMLFileName(fn.toString())) {
+                    if (htmlFile != null)
                         throw new AnalysisException("Only one HTML file can be analyzed at a time.");
-                    htmlFileName = fn;
+                    htmlFile = fn;
                 } else
                     js_files.add(fn);
             }
-            FlowGraphBuilder builder = new FlowGraphBuilder(null, String.join(",", files));
-            builder.transformHostFunctionSources(HostEnvSources.get());
+
+            FlowGraphBuilder builder = FlowGraphBuilder.makeForMain(new SourceLocation.StaticLocationMaker(resolvedFiles.get(resolvedFiles.size() - 1)));
+            builder.addLoadersForHostFunctionSources(HostEnvSources.getAccordingToOptions());
             if (!js_files.isEmpty()) {
-                if (htmlFileName != null)
+                if (htmlFile != null)
                     throw new AnalysisException("Cannot analyze an HTML file and JavaScript files at the same time.");
                 // build flowgraph for JS files
-                for (String js_file : js_files) {
+                for (URL js_file : js_files) {
                     if (!Options.get().isQuietEnabled())
                         log.info("Loading " + js_file);
-                    Path file = Paths.get(js_file).toAbsolutePath();
-                    builder.transformStandAloneCode(JavaScriptSource.makeFileCode(file.toUri().toURL(), js_file, Loader.getString(file, Charset.forName("UTF-8"))));
+                    builder.transformStandAloneCode(Loader.getString(js_file, Charset.forName("UTF-8")), new SourceLocation.StaticLocationMaker(js_file));
                 }
             } else {
                 // build flowgraph for JavaScript code in or referenced from HTML file
                 Options.get().enableIncludeDom(); // always enable DOM if any HTML files are involved
                 if (!Options.get().isQuietEnabled())
-                    log.info("Loading " + htmlFileName);
-                Path htmlFile = Paths.get(htmlFileName).toAbsolutePath();
-                HTMLParser p = new HTMLParser(htmlFile.toUri().toURL(), htmlFileName);
+                    log.info("Loading " + htmlFile);
+                HTMLParser p = new HTMLParser(htmlFile);
                 document = p.getHTML();
-                for (JavaScriptSource js : p.getJavaScript()) {
-                    if (!Options.get().isQuietEnabled() && js.getKind() == Kind.FILE)
-                        log.info("Loading " + js.getPrettyFileName());
-                    builder.transformWebAppCode(js);
+                for (Pair<URL, JavaScriptSource> js : p.getJavaScript()) {
+                    if (!Options.get().isQuietEnabled() && js.getSecond().getKind() == Kind.FILE)
+                        log.info("Loading " + PathAndURLUtils.getRelativeToWorkingDirectory(PathAndURLUtils.toPath(js.getFirst())));
+                    builder.transformWebAppCode(js.getSecond(), new SourceLocation.StaticLocationMaker(js.getFirst()));
                 }
             }
             fg = builder.close();
@@ -174,7 +200,6 @@ public class Main {
             log.error("Unable to parse " + e.getMessage());
             return null;
         }
-        leavePhase(AnalysisPhase.LOADING_FILES, analysis.getMonitoring());
         if (sync != null)
             sync.setFlowGraph(fg);
         if (Options.get().isFlowGraphEnabled())
@@ -185,7 +210,13 @@ public class Main {
         monitoring.setFlowgraph(analysis.getSolver().getFlowGraph());
         monitoring.setCallGraph(analysis.getSolver().getAnalysisLatticeElement().getCallGraph());
 
+        leavePhase(AnalysisPhase.INITIALIZATION, analysis.getMonitoring());
+
         return analysis;
+    }
+
+    private static List<URL> resolveInputs(List<String> files) {
+        return files.stream().map(f -> PathAndURLUtils.normalizeFileURL(PathAndURLUtils.toURL(Paths.get(f)))).collect(Collectors.toList());
     }
 
     private static boolean isHTMLFileName(String fileName) {
@@ -215,9 +246,9 @@ public class Main {
 
         long time = System.currentTimeMillis();
 
-        enterPhase(AnalysisPhase.DATAFLOW_ANALYSIS, monitoring);
+        enterPhase(AnalysisPhase.ANALYSIS, monitoring);
         analysis.getSolver().solve();
-        leavePhase(AnalysisPhase.DATAFLOW_ANALYSIS, monitoring);
+        leavePhase(AnalysisPhase.ANALYSIS, monitoring);
 
         long elapsed = System.currentTimeMillis() - time;
         if (Options.get().isTimingEnabled())
@@ -258,7 +289,7 @@ public class Main {
     private static void enterPhase(AnalysisPhase phase, IAnalysisMonitoring monitoring) {
         String phaseName = prettyPhaseName(phase);
         showPhaseStart(phaseName);
-        monitoring.beginPhase(phase);
+        monitoring.visitPhasePre(phase);
     }
 
     private static void showPhaseStart(String phaseName) {
@@ -268,14 +299,14 @@ public class Main {
     }
 
     private static void leavePhase(AnalysisPhase phase, IAnalysisMonitoring monitoring) {
-        monitoring.endPhase(phase);
+        monitoring.visitPhasePost(phase);
     }
 
     private static String prettyPhaseName(AnalysisPhase phase) {
         switch (phase) {
-            case LOADING_FILES:
+            case INITIALIZATION:
                 return "Loading files";
-            case DATAFLOW_ANALYSIS:
+            case ANALYSIS:
                 return "Data flow analysis";
             case SCAN:
                 return "Scan";

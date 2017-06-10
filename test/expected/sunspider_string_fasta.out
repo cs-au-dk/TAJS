@@ -1,4 +1,6 @@
 test/sunspider/string-fasta.js:83:5: [definite] The variable ret is never used
+test/sunspider/string-fasta.js:68:31: [maybe] RangeError, invalid value of array length
+test/sunspider/string-fasta.js: [maybe] Uncaught exception, constructed at [test/sunspider/string-fasta.js:68:31]
 test/sunspider/string-fasta.js:43:9: [maybe] The variable last has values with different types
 test/sunspider/string-fasta.js:43:15: [maybe] Conversion to number yields NaN
 test/sunspider/string-fasta.js:43:15: [maybe] Converting null to string

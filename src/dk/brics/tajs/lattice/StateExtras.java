@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,6 +24,7 @@ import java.util.Collections;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static dk.brics.tajs.util.Collections.addAllToMapSet;
@@ -304,5 +305,9 @@ public class StateExtras {
                     members.remove(oldlabel);
                     members.add(newlabel);
                 });
+    }
+
+    public Set<ObjectLabel> getValuesFromMayMap(String name) {
+        return may_maps.getOrDefault(name, newMap()).values().stream().flatMap(Set::stream).collect(Collectors.toSet());
     }
 }

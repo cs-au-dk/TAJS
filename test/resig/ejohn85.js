@@ -1,4 +1,7 @@
-Function.prototype.bind = function(object){ 
+var resultsDiv = document.createElement('div');
+resultsDiv.id = 'results';
+
+Function.prototype.bind = function(object){
   var fn = this; 
   return function(){ 
     return fn.apply(object, arguments); 

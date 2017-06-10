@@ -1,1 +1,2 @@
 test/wala/simple-lexical.js:15:5: [definite] The conditional expression is always false
+test/wala/simple-lexical.js: [definite] Exceptional program exit is unreachable

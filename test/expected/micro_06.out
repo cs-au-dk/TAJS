@@ -1,4 +1,5 @@
 test/micro/test06.js:2:1: [definite] The conditional expression is always false
+test/micro/test06.js: [definite] Exceptional program exit is unreachable
 test/micro/test06.js:18:7: [maybe] The variable bar has values with different types
 test/micro/test06.js:20:16: [maybe] The variable foo has values with different types
 test/micro/test06.js:21:13: [maybe] The variable foo has values with different types

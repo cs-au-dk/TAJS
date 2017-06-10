@@ -4,26 +4,33 @@ test/10k/heatmap.html:145:27: [definite] Variable color is null/undefined
 test/10k/heatmap.html:204:13: [definite] The conditional expression is always false
 test/10k/heatmap.html:229:9: [definite] The conditional expression is always false
 test/10k/heatmap.html:130:9: [definite] Dead assignment, property getContext is never read
-test/10k/heatmap.html:204:17: [definite] Reading absent property targetTouches
+test/10k/heatmap.html:204:17: [definite] Reading absent property targetTouches of host object
 test/10k/heatmap.html:70:21: [definite] The variable declaration x shadows a parameter
 test/10k/heatmap.html:71:21: [definite] The variable declaration y shadows a parameter
 test/10k/heatmap.html:89:24: [definite] The variable event is never used
 test/10k/heatmap.html:130:21: [definite] Unreachable function
 test/10k/heatmap.html:69:26: [maybe] TypeError, accessing property of null/undefined
 test/10k/heatmap.html:101:25: [maybe] TypeError, accessing property of null/undefined
-test/10k/heatmap.html:152:13: [maybe] TypeError, inf or NaN as arguments to CanvasRenderingContext2D.putImageData
 test/10k/heatmap.html:163:32: [maybe] TypeError, accessing property of null/undefined
 test/10k/heatmap.html:195:13: [maybe] TypeError, accessing property of null/undefined
+test/10k/heatmap.html:200:13: [maybe] TypeError, accessing property of null/undefined
+test/10k/heatmap.html:215:21: [maybe] TypeError, accessing property of null/undefined
 test/10k/heatmap.html:227:9: [maybe] TypeError, accessing property of null/undefined
 test/10k/heatmap.html:242:9: [maybe] TypeError, accessing property of null/undefined
+test/10k/heatmap.html:243:13: [maybe] TypeError, accessing property of null/undefined
+test/10k/heatmap.html:243:39: [maybe] TypeError, accessing property of null/undefined
 test/10k/heatmap.html:245:9: [maybe] TypeError, accessing property of null/undefined
+test/10k/heatmap.html:246:13: [maybe] TypeError, accessing property of null/undefined
+test/10k/heatmap.html:246:25: [maybe] TypeError, accessing property of null/undefined
 test/10k/heatmap.html:160:31: [maybe] Reading absent property element
 test/10k/heatmap.html:166:32: [maybe] Reading absent property width
 test/10k/heatmap.html:167:33: [maybe] Reading absent property height
-test/10k/heatmap.html:195:13: [maybe] Reading absent property innerHTML
-test/10k/heatmap.html:243:39: [maybe] Reading absent property selectedIndex
-test/10k/heatmap.html:246:25: [maybe] Reading absent property selectedIndex
-test/10k/heatmap.html: [maybe] Uncaught exception, constructed at [test/10k/heatmap.html:69:26, test/10k/heatmap.html:101:25, test/10k/heatmap.html:163:32, test/10k/heatmap.html:195:13, test/10k/heatmap.html:227:9, test/10k/heatmap.html:242:9, test/10k/heatmap.html:245:9]
+test/10k/heatmap.html:195:13: [maybe] Reading absent property innerHTML of host object
+test/10k/heatmap.html:243:39: [maybe] Reading absent property selectedIndex of host object
+test/10k/heatmap.html:246:25: [maybe] Reading absent property selectedIndex of host object
+test/10k/heatmap.html: [maybe] Uncaught exception, constructed at [test/10k/heatmap.html:69:26, test/10k/heatmap.html:101:25, test/10k/heatmap.html:163:32, test/10k/heatmap.html:195:13, test/10k/heatmap.html:200:13, test/10k/heatmap.html:215:21, test/10k/heatmap.html:227:9, test/10k/heatmap.html:242:9, test/10k/heatmap.html:243:13, test/10k/heatmap.html:243:39, test/10k/heatmap.html:245:9, test/10k/heatmap.html:246:13, test/10k/heatmap.html:246:25]
+test/10k/heatmap.html:70:25: [maybe] Conversion to number yields NaN
+test/10k/heatmap.html:71:25: [maybe] Conversion to number yields NaN
 test/10k/heatmap.html:76:25: [maybe] Conversion to number yields NaN
 test/10k/heatmap.html:76:25: [maybe] Reading absent property (computed name)
 test/10k/heatmap.html:78:17: [maybe] Conversion to number yields NaN
@@ -43,6 +50,8 @@ test/10k/heatmap.html:107:50: [maybe] Conversion to number yields NaN
 test/10k/heatmap.html:146:13: [maybe] Conversion to number yields NaN
 test/10k/heatmap.html:155:20: [maybe] Conversion to number yields NaN
 test/10k/heatmap.html:195:13: [maybe] Converting undefined to string
+test/10k/heatmap.html:212:30: [maybe] Conversion to number yields NaN
+test/10k/heatmap.html:212:54: [maybe] Conversion to number yields NaN
 test/10k/heatmap.html:234:17: [maybe] Conversion to number yields NaN
 test/10k/heatmap.html:239:13: [maybe] Conversion to number yields NaN
 test/10k/heatmap.html:243:39: [maybe] Conversion to number yields NaN

@@ -10,6 +10,9 @@ test/sunspider/crypto-md5.js:166:1: [definite] Unreachable function core_hmac_md
 test/sunspider/crypto-md5.js:217:1: [definite] Unreachable function binl2str
 test/sunspider/crypto-md5.js:244:1: [definite] Unreachable function binl2b64
 test/sunspider/crypto-md5.js:290:5: [definite] The variable md5Output is never used
+test/sunspider/crypto-md5.js:47:3: [maybe] RangeError, assigning invalid value to array 'length' property
+test/sunspider/crypto-md5.js:48:3: [maybe] RangeError, assigning invalid value to array 'length' property
+test/sunspider/crypto-md5.js: [maybe] Uncaught exception, constructed at [test/sunspider/crypto-md5.js:47:3, test/sunspider/crypto-md5.js:48:3, test/sunspider/crypto-md5.js:210:5]
 test/sunspider/crypto-md5.js:26:60: [maybe] Converting primitive string to object
 test/sunspider/crypto-md5.js:47:3: [maybe] Conversion to number yields NaN
 test/sunspider/crypto-md5.js:47:3: [maybe] Reading absent property (computed name)

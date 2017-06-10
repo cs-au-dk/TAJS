@@ -3,7 +3,7 @@ var ninja = {
     return n > 0 ? ninja.yell(n-1) + "a" : "hiy"; 
   } 
 };
-TAJS_assert( ninja.yell(4), 'isMaybeStrIdentifierParts');
+TAJS_assert( ninja.yell(4), 'isMaybeStrPrefix');
  
 var samurai = { yell: ninja.yell }; 
 var ninja = null; 

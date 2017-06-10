@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -34,7 +34,7 @@ import java.util.stream.Collectors;
 
 /**
  * Miscellaneous collection construction methods.
- * If {@link OptionValues#isTestEnabled()} is enabled, the methods return collections with predictable iteration order.
+ * If {@link OptionValues#isDeterministicCollectionsEnabled()} is enabled, the methods return collections with predictable iteration order.
  */
 public class Collections {
 
@@ -45,7 +45,7 @@ public class Collections {
      * Constructs a new empty map.
      */
     public static <T1, T2> Map<T1, T2> newMap() {
-        if (Options.get().isTestEnabled())
+        if (Options.get().isDeterministicCollectionsEnabled())
             return new LinkedHashMap<>();
         else if (!Options.get().isHybridCollectionsDisabled())
             return new HybridArrayHashMap<>();
@@ -57,7 +57,7 @@ public class Collections {
      * Constructs a new map as a copy of the given map.
      */
     public static <T1, T2> Map<T1, T2> newMap(Map<T1, T2> m) {
-        if (Options.get().isTestEnabled())
+        if (Options.get().isDeterministicCollectionsEnabled())
             return new LinkedHashMap<>(m);
         else if (!Options.get().isHybridCollectionsDisabled())
             return new HybridArrayHashMap<>(m);
@@ -66,39 +66,31 @@ public class Collections {
     }
 
     /**
-     * Adds an element to a map of lists. Creates a new list for the key if it does not already exist in the map.
+     * Adds an element to a map of maps. Creates a new map for the key if it does not already exist.
+     */
+    public static <T1, T2, T3> void addToMapMap(Map<T1, Map<T2, T3>> map, T1 key1, T2 key2, T3 value) {
+        map.computeIfAbsent(key1, k -> newMap()).put(key2, value);
+    }
+
+    /**
+     * Adds an element to a map of lists. Creates a new list for the key if it does not already exist.
      */
     public static <T1, T2> void addToMapList(Map<T1, List<T2>> map, T1 key, T2 value) {
-        List<T2> list = map.get(key);
-        if (list == null) {
-            list = newList();
-            map.put(key, list);
-        }
-        list.add(value);
+        map.computeIfAbsent(key, k -> newList()).add(value);
     }
 
     /**
-     * Adds an element to a map of sets. Creates a new set for the key if it does not already exist in the map.
+     * Adds an element to a map of sets. Creates a new set for the key if it does not already exist.
      */
     public static <T1, T2> void addToMapSet(Map<T1, Set<T2>> map, T1 key, T2 value) {
-        Set<T2> set = map.get(key);
-        if (set == null) {
-            set = newSet();
-            map.put(key, set);
-        }
-        set.add(value);
+        map.computeIfAbsent(key, k -> newSet()).add(value);
     }
 
     /**
-     * Adds elements to a map of sets. Creates a new set for the key if it does not already exist in the map.
+     * Adds elements to a map of sets. Creates a new set for the key if it does not already exist.
      */
     public static <T1, T2> void addAllToMapSet(Map<T1, Set<T2>> map, T1 key, Collection<T2> values) {
-        Set<T2> set = map.get(key);
-        if (set == null) {
-            set = newSet();
-            map.put(key, set);
-        }
-        set.addAll(values);
+        map.computeIfAbsent(key, k -> newSet()).addAll(values);
     }
 
     /**
@@ -106,7 +98,7 @@ public class Collections {
      */
     public static <T1, T2> Map<T1, Set<T2>> newMapSet(Map<T1, Set<T2>> m) {
         Map<T1, Set<T2>> result;
-        if (Options.get().isTestEnabled()) {
+        if (Options.get().isDeterministicCollectionsEnabled()) {
             result = new LinkedHashMap<>();
         } else if (!Options.get().isHybridCollectionsDisabled()) {
             result = new HybridArrayHashMap<>();
@@ -124,7 +116,7 @@ public class Collections {
      */
     public static <T1, T2, T3> Map<T1, Map<T2, Set<T3>>> newMapMapSet(Map<T1, Map<T2, Set<T3>>> m) {
         Map<T1, Map<T2, Set<T3>>> result;
-        if (Options.get().isTestEnabled()) {
+        if (Options.get().isDeterministicCollectionsEnabled()) {
             result = new LinkedHashMap<>();
         } else if (!Options.get().isHybridCollectionsDisabled()) {
             result = new HybridArrayHashMap<>();
@@ -135,6 +127,13 @@ public class Collections {
             result.put(e.getKey(), newMapSet(e.getValue()));
         }
         return result;
+    }
+
+    /**
+     * Adds an element to a map of maps of sets. Creates a new set for the key if it does not already exist in the map.
+     */
+    public static <T1, T2, T3> void addToMapMapSet(Map<T1, Map<T2, Set<T3>>> map, T1 key1, T2 key2, T3 value) {
+        map.computeIfAbsent(key1, k -> newMap()).computeIfAbsent(key2, k -> newSet()).add(value);
     }
 
     /**
@@ -161,7 +160,7 @@ public class Collections {
      * Constructs a new empty set.
      */
     public static <T> Set<T> newSet() {
-        if (Options.get().isTestEnabled())
+        if (Options.get().isDeterministicCollectionsEnabled())
             return new LinkedHashSetWithSortedToString<>();
         else if (!Options.get().isHybridCollectionsDisabled())
             return new HybridArrayHashSet<>();
@@ -173,7 +172,7 @@ public class Collections {
      * Constructs a new set from the given collection.
      */
     public static <T> Set<T> newSet(Collection<T> s) {
-        if (Options.get().isTestEnabled())
+        if (Options.get().isDeterministicCollectionsEnabled())
             return new LinkedHashSetWithSortedToString<>(s);
         else if (!Options.get().isHybridCollectionsDisabled())
             return new HybridArrayHashSet<>(s);
@@ -241,10 +240,10 @@ public class Collections {
 
         private static final long serialVersionUID = 1L;
 
-        public LinkedHashSetWithSortedToString() {
+        LinkedHashSetWithSortedToString() {
         }
 
-        public LinkedHashSetWithSortedToString(Collection<T> c) {
+        LinkedHashSetWithSortedToString(Collection<T> c) {
             super(c);
         }
 

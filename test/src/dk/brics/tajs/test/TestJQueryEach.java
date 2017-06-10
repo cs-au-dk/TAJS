@@ -1,10 +1,6 @@
 package dk.brics.tajs.test;
 
 import dk.brics.tajs.Main;
-import dk.brics.tajs.monitoring.CompositeMonitoring;
-import dk.brics.tajs.monitoring.IAnalysisMonitoring;
-import dk.brics.tajs.monitoring.Monitoring;
-import dk.brics.tajs.monitoring.OrdinaryExitReachableChecker;
 import dk.brics.tajs.options.Options;
 import org.junit.Before;
 import org.junit.Test;
@@ -15,8 +11,6 @@ import org.junit.Test;
 @SuppressWarnings("static-method")
 public class TestJQueryEach {
 
-    private IAnalysisMonitoring monitor;
-
     @Before
     public void before() {
         Main.reset();
@@ -26,8 +20,6 @@ public class TestJQueryEach {
         Options.get().enableParameterSensitivity();
         Options.get().enableUnreachable();
         Options.get().enableLoopUnrolling(100);
-
-        monitor = new CompositeMonitoring(new Monitoring(), new OrdinaryExitReachableChecker());
     }
 
     @Test
@@ -35,7 +27,7 @@ public class TestJQueryEach {
         // no calls to each, just a check that everything is fine
         Misc.init();
         String[] args = {"test/jquery-each/full.js"};
-        Misc.run(args, monitor);
+        Misc.run(args);
     }
 
     @Test

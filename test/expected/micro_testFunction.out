@@ -1,10 +1,11 @@
-TAJS-dynamic-code(test/micro/testFunction.js:1:9):1:13: [definite] Unreachable function
-TAJS-dynamic-code(test/micro/testFunction.js:3:9):1:13: [definite] Unreachable function
-TAJS-dynamic-code(test/micro/testFunction.js:4:9):1:13: [definite] Unreachable function
+test/micro/testFunction.js: [definite] Exceptional program exit is unreachable
 test/micro/testFunction.js:2:1: [definite] Unreachable function g
-test/micro/testFunction.js:6:1: [info] Abstract value: [@Object#node59]
+TAJS-dynamic-code(test/micro/testFunction.js:1:9):1:1: [definite] Unreachable function
+TAJS-dynamic-code(test/micro/testFunction.js:3:9):1:1: [definite] Unreachable function
+TAJS-dynamic-code(test/micro/testFunction.js:4:9):1:1: [definite] Unreachable function
+test/micro/testFunction.js:6:1: [info] Abstract value: [@Object#node12]
 test/micro/testFunction.js:7:1: [info] Abstract value: [@Object#node2]
-test/micro/testFunction.js:8:1: [info] Abstract value: [@Object#node65]
-test/micro/testFunction.js:9:1: [info] Abstract value: [@<anonymous>#fun4]
+test/micro/testFunction.js:8:1: [info] Abstract value: [@Object#node16]
+test/micro/testFunction.js:9:1: [info] Abstract value: [@<anonymous>#fun6]
 test/micro/testFunction.js:11:1: [info] Abstract value: [@Function.prototype[native]]
 test/micro/testFunction.js:12:1: [info] Abstract value: Undef

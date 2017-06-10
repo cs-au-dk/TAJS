@@ -1,7 +1,8 @@
 test/micro/toString4.js:3:11: [definite] Dead assignment, property valueOf is never read
 test/micro/toString4.js:5:3: [definite] Dead assignment, property [object Object] is never read
+test/micro/toString4.js: [definite] Exceptional program exit is unreachable
 test/micro/toString4.js:6:3: [definite] Unreachable code
-test/micro/toString4.js:14:3: [definite] Unreachable code
+test/micro/toString4.js:14:15: [definite] Unreachable code
 test/micro/toString4.js:24:3: [definite] Unreachable code
 test/micro/toString4.js:31:3: [definite] Unreachable code
 test/micro/toString4.js:13:3: [maybe] TypeError when computing default value for object

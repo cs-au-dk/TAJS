@@ -1,1 +1,2 @@
 test/resig/ejohn24.js:2:3: [definite] Reading 'this' yields the global object
+test/resig/ejohn24.js: [definite] Exceptional program exit is unreachable

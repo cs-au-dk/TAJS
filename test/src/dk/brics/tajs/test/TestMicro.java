@@ -1,11 +1,7 @@
 package dk.brics.tajs.test;
 
 import dk.brics.tajs.Main;
-import dk.brics.tajs.monitoring.CompositeMonitoring;
-import dk.brics.tajs.monitoring.Monitoring;
-import dk.brics.tajs.monitoring.OrdinaryExitReachableChecker;
 import dk.brics.tajs.options.Options;
-import dk.brics.tajs.util.AnalysisException;
 import dk.brics.tajs.util.AnalysisLimitationException;
 import dk.brics.tajs.util.ParseError;
 import org.junit.Before;
@@ -182,6 +178,7 @@ public class TestMicro {
 	@Test
 	public void micro_16() throws Exception {
 		Misc.init();
+		Options.get().enableDoNotExpectOrdinaryExit();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test16.js"};
 		Misc.run(args);
@@ -218,6 +215,7 @@ public class TestMicro {
 	@Test
 	public void micro_20() throws Exception {
 		Misc.init();
+		Options.get().enableDoNotExpectOrdinaryExit();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test20.js"};
 		Misc.run(args);
@@ -281,6 +279,7 @@ public class TestMicro {
 	@Test
 	public void micro_27() throws Exception {
 		Misc.init();
+		Options.get().enableDoNotExpectOrdinaryExit();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test27.js"};
 		Misc.run(args);
@@ -416,6 +415,7 @@ public class TestMicro {
 	@Test
 	public void micro_42() throws Exception {
 		Misc.init();
+		Options.get().enableDoNotExpectOrdinaryExit();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test42.js"};
 		Misc.run(args);
@@ -506,6 +506,7 @@ public class TestMicro {
 	@Test
 	public void micro_52() throws Exception {
 		Misc.init();
+		Options.get().enableDoNotExpectOrdinaryExit();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test52.js"};
 		Misc.run(args);
@@ -701,15 +702,15 @@ public class TestMicro {
 		Misc.checkSystemOutput();
 	}
 
-	@Test
-	public void micro_73simple() throws Exception {
-		Options.get().enableFlowgraph();
-		Misc.init();
-		Misc.captureSystemOutput();
-		String[] args = {"test/micro/test73simple.js"};
-		Misc.run(args);
-		Misc.checkSystemOutput();
-	}
+    @Test
+    public void micro_73simple() throws Exception {
+        Options.get().enableFlowgraph();
+        Misc.init();
+        Misc.captureSystemOutput();
+        String[] args = {"test/micro/test73simple.js"};
+        Misc.run(args);
+        Misc.checkSystemOutput();
+    }
 
 	@Test
 	public void micro_74() throws Exception {
@@ -954,7 +955,7 @@ public class TestMicro {
 		Misc.checkSystemOutput();
 	}
 
-	@Test(expected = AssertionError.class /* GitHub #36 */)
+	@Test(expected = AssertionError.class /* TODO: GitHub #36 */)
 	public void micro_101() throws Exception {
 		Misc.init();
 		String[] args = {"test/micro/test101.js"};
@@ -982,6 +983,7 @@ public class TestMicro {
 	@Test
 	public void micro_104() throws Exception {
 		Misc.init();
+		Options.get().enableDoNotExpectOrdinaryExit();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test104.js"};
 		Misc.run(args);
@@ -1075,6 +1077,7 @@ public class TestMicro {
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test114.js"}; // Should be runtime error, but Sec 16 p.149 allows us to report the error early
 		Misc.run(args);
+		Misc.checkSystemOutput();
 	}
 
 	@Test
@@ -1158,7 +1161,7 @@ public class TestMicro {
 		Misc.checkSystemOutput();
 	}
 
-	@Test(expected = AssertionError.class /* GitHub #191 */)
+	@Test(expected = AssertionError.class /* TODO: GitHub #191 */)
 	public void micro_125() throws Exception {
 		Misc.init();
 		String[] args = {"test/micro/test125.js"};
@@ -1186,7 +1189,7 @@ public class TestMicro {
 		Misc.run(args);
 	}
 
-	@Test(expected = AssertionError.class /* GitHub #191 */)
+	@Test(expected = AssertionError.class /* TODO: GitHub #191 */)
 	public void micro_125d () throws Exception {
 		Misc.init();
 		String[] args = {"test/micro/test125d.js"};
@@ -1196,6 +1199,7 @@ public class TestMicro {
 	@Test
 	public void micro_126() throws Exception {
 		Misc.init();
+		Options.get().enableDoNotExpectOrdinaryExit();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test126.js"};
 		Misc.run(args);
@@ -1211,7 +1215,7 @@ public class TestMicro {
 		Misc.checkSystemOutput();
 	}
 
-	@Test(expected = AssertionError.class /* GitHub #191 */)
+	@Test(expected = AssertionError.class /* TODO: GitHub #191 */)
 	public void micro_128() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
@@ -1352,7 +1356,7 @@ public class TestMicro {
 		Misc.checkSystemOutput();
 	}
 
-	@Test(expected = AssertionError.class /* GitHub #3 */)
+	@Test(expected = AssertionError.class /* TODO: GitHub #3 */)
 	public void micro_143() throws Exception {
 		fail("Add support for getters/setters");
 		Misc.init();
@@ -1687,13 +1691,13 @@ public class TestMicro {
 		Misc.checkSystemOutput();
 	}
 
-	@Test(expected = AssertionError.class /* GitHub #191 */)
+	@Test
 	public void micro_179() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test179.js"};
 		Misc.run(args);
-		fail(); // Misc.checkSystemOutput();
+		Misc.checkSystemOutput();
 	}
 
 	@Test
@@ -1742,14 +1746,14 @@ public class TestMicro {
 		Misc.checkSystemOutput();
 	}
 
-	@Test(expected = AssertionError.class /* GitHub #243 */)
+	@Test(expected = AssertionError.class /* TODO: GitHub #243 */)
 	public void micro_185() throws Exception {
 		Misc.init();
 		String[] args = {"test/micro/test185.js"};
 		Misc.run(args);
 	}
 
-	@Test(expected = AssertionError.class /* GitHub #244 */)
+	@Test(expected = AssertionError.class /* TODO: GitHub #244 */)
 	public void micro_186() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
@@ -1879,6 +1883,7 @@ public class TestMicro {
 	@Test
 	public void micro_207() throws Exception {
 		Misc.init();
+		Options.get().enableDoNotExpectOrdinaryExit();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test207.js"};
 		Misc.run(args);
@@ -1910,6 +1915,7 @@ public class TestMicro {
 	@Test
 	public void micro_210() throws Exception {
 		Misc.init();
+		Options.get().enableDoNotExpectOrdinaryExit();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/test210.js"};
 		Misc.run(args);
@@ -1937,6 +1943,7 @@ public class TestMicro {
 	@Test
 	public void micro_testBoolean() throws Exception {
 		Misc.init();
+		Options.get().enableDoNotExpectOrdinaryExit();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/testBoolean.js"};
 		Misc.run(args);
@@ -1948,6 +1955,7 @@ public class TestMicro {
 		Misc.init();
 		Misc.captureSystemOutput();
 		Options.get().enableUnevalizer();
+		Options.get().enableDoNotExpectOrdinaryExit();
 		String[] args = {"test/micro/testEval.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
@@ -2011,6 +2019,7 @@ public class TestMicro {
 	@Test
 	public void micro_testRegExp() throws Exception {
 		Misc.init();
+		Options.get().enableDoNotExpectOrdinaryExit();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/testRegExp.js"};
 		Misc.run(args);
@@ -2020,7 +2029,7 @@ public class TestMicro {
 	@Test
 	public void micro_testString() throws Exception {
 		Misc.init();
-		Options.get().enableUnsound();
+		Options.get().getUnsoundness().setIgnoreLocale(true);
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/testString.js"};
 		Misc.run(args);
@@ -2055,20 +2064,20 @@ public class TestMicro {
 	@Test
 	public void micro_testForIn2() throws Exception {
 		Misc.init();
-		Misc.captureSystemOutput();
+        Misc.captureSystemOutput();
 		String[] args = {"test/micro/testForIn2.js"};
 		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
-	@Test
-	public void micro_testForIn2simple() throws Exception {
-		Misc.init();
-		Misc.captureSystemOutput();
-		String[] args = {"test/micro/testForIn2simple.js"};
-		Misc.run(args);
-		Misc.checkSystemOutput();
-	}
+    @Test
+    public void micro_testForIn2simple() throws Exception {
+        Misc.init();
+        Misc.captureSystemOutput();
+        String[] args = {"test/micro/testForIn2simple.js"};
+        Misc.run(args);
+        Misc.checkSystemOutput();
+    }
 
 	@Test
 	public void micro_testForIn3() throws Exception {
@@ -2115,14 +2124,14 @@ public class TestMicro {
 		Misc.checkSystemOutput();
 	}
 
-	@Test
-	public void micro_testForIn8() throws Exception {
-		Misc.init();
-		Misc.captureSystemOutput();
-		String[] args = {"test/micro/testForIn8.js"};
-		Misc.run(args);
-		Misc.checkSystemOutput();
-	}
+    @Test
+    public void micro_testForIn8() throws Exception {
+        Misc.init();
+        Misc.captureSystemOutput();
+        String[] args = { "test/micro/testForIn8.js" };
+        Misc.run(args);
+        Misc.checkSystemOutput();
+    }
 
 	@Test
 	public void micro_testForInHasOwn() throws Exception {
@@ -2131,13 +2140,13 @@ public class TestMicro {
 		Misc.run(args);
 	}
 
-	@Test
-	public void micro_testForInException() throws Exception {
-		Misc.init();
-		Options.get().enableFlowgraph();
-		String[] args = {"test/micro/testForInException.js"};
-		Misc.run(args);
-	}
+    @Test
+    public void micro_testForInException() throws Exception {
+        Misc.init();
+        Options.get().enableFlowgraph();
+        String[] args = { "test/micro/testForInException.js" };
+        Misc.run(args);
+    }
 
 	@Test
 	public void micro_testForInPrototypeProperties() throws Exception {
@@ -2153,7 +2162,7 @@ public class TestMicro {
 		Misc.run(args);
 	}
 
-	@Test
+    @Test
 	public void micro_testForInEach() throws Exception {
 		Misc.init();
 		String[] args = {"test/micro/testForInEach.js"};
@@ -2171,7 +2180,7 @@ public class TestMicro {
 
 	@Test
 	public void micro_testCall2() throws Exception {
-		Misc.init();
+        Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/micro/testCall2.js"};
 		Misc.run(args);
@@ -2236,8 +2245,7 @@ public class TestMicro {
 	@Test
 	public void micro_testConreteStrings() throws Exception {
 		Misc.init();
-		Misc.runSource(
-				"TAJS_assert(/x/.test('x'));",
+		Misc.runSource("TAJS_assert(/x/.test('x'));",
 				"TAJS_assert(/-\\[/.test('-['));",
 				"TAJS_assert(/\\[-/.test('[-'));"
 		);
@@ -2246,8 +2254,7 @@ public class TestMicro {
 	@Test
 	public void micro_testReplaceUnclosedCharacterClass() throws Exception {
 		Misc.init();
-		Misc.runSource(
-				"TAJS_assert('['.replace('[', 'x') === 'x');"
+		Misc.runSource("TAJS_assert('['.replace('[', 'x') === 'x');"
 		);
 	}
 
@@ -2262,8 +2269,7 @@ public class TestMicro {
 	public void micro_testFunctionConstructor() throws Exception {
 		Misc.init();
 		Options.get().enableUnevalizer();
-		Misc.runSource(
-				"TAJS_assert((typeof new Function('')) === 'function');",
+		Misc.runSource("TAJS_assert((typeof new Function('')) === 'function');",
 				"TAJS_assert(new Function('')() === undefined);",
 				"TAJS_assert((typeof new Function('', '')) === 'function');",
 				"TAJS_assert(new Function('', '')() === undefined);"
@@ -2274,8 +2280,7 @@ public class TestMicro {
 	public void micro_testEmptyFunctionConstructor() throws Exception {
 		Misc.init();
 		Options.get().enableUnevalizer();
-		Misc.runSource(
-				"TAJS_assert((typeof new Function()) === 'function');",
+		Misc.runSource("TAJS_assert((typeof new Function()) === 'function');",
 				"TAJS_assert(new Function()() === undefined);"
 		);
 	}
@@ -2283,8 +2288,7 @@ public class TestMicro {
 	@Test
 	public void micro_testConcreteDecodeURI() throws Exception {
 		Misc.init();
-		Misc.runSource(
-				"TAJS_assert(decodeURI() === 'undefined');",
+		Misc.runSource("TAJS_assert(decodeURI() === 'undefined');",
 				"TAJS_assert(decodeURI('http://test.com/%20') === 'http://test.com/ ');"
 		);
 	}
@@ -2292,8 +2296,7 @@ public class TestMicro {
 	@Test
 	public void micro_testConcreteDecodeURIComponent() throws Exception {
 		Misc.init();
-		Misc.runSource(
-				"TAJS_assert(decodeURIComponent() === 'undefined');",
+		Misc.runSource("TAJS_assert(decodeURIComponent() === 'undefined');",
 				"TAJS_assert(decodeURIComponent('%20') === ' ');"
 		);
 	}
@@ -2301,8 +2304,7 @@ public class TestMicro {
 	@Test
 	public void micro_testConcreteEncodeURI() throws Exception {
 		Misc.init();
-		Misc.runSource(
-				"TAJS_assert(encodeURI() === 'undefined');",
+		Misc.runSource("TAJS_assert(encodeURI() === 'undefined');",
 				"TAJS_assert(encodeURI('http://test.com/ ') === 'http://test.com/%20');"
 		);
 	}
@@ -2310,8 +2312,7 @@ public class TestMicro {
 	@Test
 	public void micro_testConcreteEncodeURIComponent() throws Exception {
 		Misc.init();
-		Misc.runSource(
-				"TAJS_assert(encodeURIComponent() === 'undefined');",
+		Misc.runSource("TAJS_assert(encodeURIComponent() === 'undefined');",
 				"TAJS_assert(encodeURIComponent(' ') === '%20');"
 		);
 	}
@@ -2319,8 +2320,7 @@ public class TestMicro {
 	@Test
 	public void micro_testConcreteEscape() throws Exception {
 		Misc.init();
-		Misc.runSource(
-				"TAJS_assert(escape() === 'undefined');",
+		Misc.runSource("TAJS_assert(escape() === 'undefined');",
 				"TAJS_assert(escape(' ') === '%20');"
 		);
 	}
@@ -2328,8 +2328,7 @@ public class TestMicro {
 	@Test
 	public void micro_testConcreteUnescape() throws Exception {
 		Misc.init();
-		Misc.runSource(
-				"TAJS_assert(unescape() === 'undefined');",
+		Misc.runSource("TAJS_assert(unescape() === 'undefined');",
 				"TAJS_assert(unescape('%20') === ' ');"
 		);
 	}
@@ -2337,8 +2336,7 @@ public class TestMicro {
 	@Test
 	public void micro_testConcreteParseInt() throws Exception {
 		Misc.init();
-		Misc.runSource(
-				"TAJS_assert(parseInt(42) === 42);",
+		Misc.runSource("TAJS_assert(parseInt(42) === 42);",
 				"TAJS_assert(parseInt('42') === 42);",
 				"TAJS_assert(parseInt('0x42') === 66);",
 				"TAJS_assert(parseInt('42', 5) === 22);",
@@ -2350,8 +2348,7 @@ public class TestMicro {
 	@Test
 	public void micro_testConcreteParseFloat() throws Exception {
 		Misc.init();
-		Misc.runSource(
-				"TAJS_assert(parseFloat(42) === 42);",
+		Misc.runSource("TAJS_assert(parseFloat(42) === 42);",
 				"TAJS_assert(parseFloat('42') === 42);",
 				"TAJS_assert(parseFloat('42.3') === 42.3);",
 				"TAJS_assert(parseFloat('0x42') === 0);",
@@ -2363,20 +2360,19 @@ public class TestMicro {
 	@Test
 	public void micro_testToString() throws Exception {
 		Misc.init();
-		Misc.runSource(
-				"var U = !!Math.random();",
+		Misc.runSource("var U = !!Math.random();",
 				"TAJS_assert(Object.prototype.toString.call({}) === '[object Object]');",
 				"TAJS_assert(Object.prototype.toString.call([]) === '[object Array]');",
 				"TAJS_assert(Object.prototype.toString.call(U? {}: {}) === '[object Object]');",
-				"TAJS_assert(Object.prototype.toString.call(U? {}: []), 'isMaybeStrOther');"
+				"TAJS_assert(Object.prototype.toString.call(U? {}: []), 'isMaybeStrPrefix');"
 		);
 	}
 
 	@Test
 	public void micro_testAbstractGCPrecision() throws Exception {
 		Misc.init();
-		Misc.runSource(
-				"function f(v){return v.p;}",
+		Options.get().enableDoNotExpectOrdinaryExit();
+		Misc.runSource("function f(v){return v.p;}",
 				"f({p: true})",
 				"if(f()){", // definite error (mainly due to abstract GC)
 				"	TAJS_assert(false);",
@@ -2409,8 +2405,7 @@ public class TestMicro {
 	@Test
 	public void micro_numberNaN() {
 		Misc.init();
-		Misc.runSource(
-				"TAJS_assert(isNaN(NaN));",
+		Misc.runSource("TAJS_assert(isNaN(NaN));",
 				"TAJS_assert(isNaN(Number(NaN)));",
 				"TAJS_assert(isNaN(Number('NaN')));",
 				"TAJS_assert(isNaN(Number(' NaN ')));",
@@ -2601,7 +2596,7 @@ public class TestMicro {
 				"var uint = Math.random()? '0': '1';",
 				"var sequenceOfDigits = uint + uint;",
 				"TAJS_assert(sequenceOfDigits, 'isMaybeStrOtherNum');",
-				"TAJS_assert(sequenceOfDigits + sequenceOfDigits, 'isMaybeStrIdentifierParts');",
+				"TAJS_assert(sequenceOfDigits + sequenceOfDigits, 'isMaybeStrOtherIdentifierParts');",
 				"");
 	}
 
@@ -2638,7 +2633,7 @@ public class TestMicro {
 		Misc.init();
 		Misc.runSource("",
 				"function Array(x, y, z){};",
-				"[,,,,]",
+		        "[,,,,]",
 				"");
 	}
 
@@ -2673,8 +2668,7 @@ public class TestMicro {
 	@Test
 	public void stringEscapingForRegExp(){
 		Misc.init();
-		Misc.runSource(
-				"var replaced = '['.replace('[', 'x');",
+		Misc.runSource("var replaced = '['.replace('[', 'x');",
 				"TAJS_assert(replaced === 'x');");
 	}
 
@@ -2683,8 +2677,7 @@ public class TestMicro {
 		Misc.init();
 		Options.get().enableIncludeDom();
 		Misc.captureSystemOutput();
-		Misc.runSource(
-				"var element = document.getElementById('ELEMENT');",
+		Misc.runSource("var element = document.body;",
 
 				"window.addEventListener('click', function(){ TAJS_dumpValue('window.addEventListener(\\'click\\', ...)'); });",
 				"element.addEventListener('click', function(){ TAJS_dumpValue('element.addEventListener(\\'click\\', ...)'); });",
@@ -2720,8 +2713,7 @@ public class TestMicro {
 		Misc.init();
 		Options.get().enableIncludeDom();
 		Misc.captureSystemOutput();
-		Misc.runSource(
-				"function direct_click_click_registration(){",
+		Misc.runSource("function direct_click_click_registration(){",
 				"	TAJS_dumpValue('direct_click_click_registration invoked');",
 				"	function indirect_click_click_registration(){ TAJS_dumpValue('indirect_click_click_registration invoked');}",
 				"	window.addEventListener('click', indirect_click_click_registration);",
@@ -2759,8 +2751,7 @@ public class TestMicro {
 		Misc.init();
 		Options.get().enableIncludeDom();
 		Misc.captureSystemOutput();
-		Misc.runSource(
-				"function mousedownHandler(){",
+		Misc.runSource("function mousedownHandler(){",
 				"	TAJS_dumpValue('mousedownHandler triggered');",
 				"	addEventListener('mouseup', mouseupHandler);",
 				"}",
@@ -2778,8 +2769,7 @@ public class TestMicro {
 		Misc.init();
 		Options.get().enableIncludeDom();
 		Misc.captureSystemOutput();
-		Misc.runSource(
-				"function mousedownHandler(){",
+		Misc.runSource("function mousedownHandler(){",
 				"	TAJS_dumpValue('mousedownHandler triggered');",
 				"	addEventListener('mouseup', keydownHandler);",
 				"}",
@@ -2804,8 +2794,7 @@ public class TestMicro {
 	@Test
 	public void regexp_compile(){
 		Misc.init();
-		Misc.runSource(
-				"var r = /x/;",
+		Misc.runSource("var r = /x/;",
 				"TAJS_assert(r.source === 'x');",
 				"r.compile('y');",
 				"TAJS_assert(r.source === 'y');",
@@ -2821,8 +2810,7 @@ public class TestMicro {
 	public void object_create() {
 		Misc.init();
 		Misc.captureSystemOutput();
-		Misc.runSource(
-				"var U = !!Math.random();",
+		Misc.runSource("var U = !!Math.random();",
 				"if(U){",
 				"	var o1 = Object.create();",
 				"	TAJS_assert(false);",
@@ -2857,7 +2845,7 @@ public class TestMicro {
 		Misc.run(args);
 	}
 
-	@Test // Regression for GitHub issue #236
+	@Test // TODO: Regression for GitHub issue #236
 	public void absentPresentRecovery_regression() {
 		Misc.init();
 		Main.reset();
@@ -2924,9 +2912,10 @@ public class TestMicro {
 				"");
 	}
 
-	@Test(expected = AssertionError.class /* current implementation only throws a maybe-error */)
+	@Test
 	public void invalidArrayLengthThrows() {
 		Misc.init();
+		Options.get().enableDoNotExpectOrdinaryExit();
 		Misc.runSource("",
 				"var arr = [];",
 				"arr.length = undefined;", // should throw a definite exception
@@ -2972,6 +2961,7 @@ public class TestMicro {
 	public void emptyblock() {
 		Misc.init();
 		Options.get().enableFlowgraph();
+		Options.get().enableDoNotExpectOrdinaryExit();
 		Misc.runSource("",
 				"function f () {",
 				"}",
@@ -2986,7 +2976,7 @@ public class TestMicro {
 				"");
 	}
 
-	@Test(expected = AnalysisLimitationException.class /* github #257 */)
+	@Test(expected = AnalysisLimitationException.class /* TODO: github #257 */)
 	public void castbug() {
 		Misc.init();
 		Options.get().enableUnevalizer();
@@ -3007,8 +2997,7 @@ public class TestMicro {
 	public void thisObjectForSetTimeoutAndSetInterval() {
 		Options.get().enableIncludeDom();
 		Misc.init();
-		Misc.runSource(
-				"setInterval(function(){TAJS_assert(window === this);}, 0);",
+		Misc.runSource("setInterval(function(){TAJS_assert(window === this);}, 0);",
 				"setTimeout(function(){TAJS_assert(window === this);}, 0);",
 				"");
 	}
@@ -3016,8 +3005,7 @@ public class TestMicro {
 	@Test
 	public void constInitialization() {
 		Misc.init();
-		Misc.runSource(
-				"const x = 42;",
+		Misc.runSource("const x = 42;",
 				"TAJS_assert(x === 42);",
 				"");
 	}
@@ -3025,8 +3013,7 @@ public class TestMicro {
 	@Test(expected = AssertionError.class /* GitHub #182*/)
 	public void constReassignment() {
 		Misc.init();
-		Misc.runSource(
-				"const x = 42;",
+		Misc.runSource("const x = 42;",
 				"x = 87;",
 				"TAJS_assert(x === 42);",
 				"");
@@ -3035,15 +3022,17 @@ public class TestMicro {
 	@Test
 	public void objectFreeze_return() {
 		Misc.init();
+		Options.get().getUnsoundness().setIgnoreMissingNativeModels(true);
 		Misc.runSource(
 				"var o = {};",
 				"TAJS_assert(Object.freeze(o) === o);",
 				"");
 	}
 
-	@Test(expected = AssertionError.class /* GitHub #249 */)
+	@Test(expected = AssertionError.class /* TODO: GitHub #249 */)
 	public void objectFreeze_immutable() {
 		Misc.init();
+		Options.get().getUnsoundness().setIgnoreMissingNativeModels(true);
 		Misc.runSource(
 				"var o = {p: 'foo'};",
 				"Object.freeze(o)",
@@ -3057,6 +3046,7 @@ public class TestMicro {
 	@Test(expected = AssertionError.class /* GitHub #249 */)
 	public void objectFreeze_strict() {
 		Misc.init();
+		Options.get().getUnsoundness().setIgnoreMissingNativeModels(true);
 		Misc.runSource(
 				"'use strict';",
 				"var o = {};",
@@ -3069,8 +3059,8 @@ public class TestMicro {
 	@Test
 	public void objectKeys_typeError() {
 		Misc.init();
-		Misc.runSource(
-				"Object.keys(undefined);",
+		Options.get().enableDoNotExpectOrdinaryExit();
+		Misc.runSource("Object.keys(undefined);",
 				"TAJS_assert(false);"
 		);
 	}
@@ -3078,8 +3068,7 @@ public class TestMicro {
 	@Test
 	public void objectKeys_sound() {
 		Misc.init();
-		Misc.runSource(
-				"var o0 = {};",
+		Misc.runSource("var o0 = {};",
 				"TAJS_assert(Object.keys(o0).length === 0);",
 
 				"var o1 = {p: 42};",
@@ -3114,8 +3103,7 @@ public class TestMicro {
 	@Test
 	public void objectKeys_unknownProperties() {
 		Misc.init();
-		Misc.runSource(
-				"var o0 = {};",
+		Misc.runSource("var o0 = {};",
 				"o0[Math.random()? 'a': 'b'] = 42;",
 				"TAJS_assert(Object.keys(o0).length, 'isMaybeNumUInt');",
 				"TAJS_assert(Object.keys(o0)[0], 'isMaybeSingleStr', false);",
@@ -3162,9 +3150,8 @@ public class TestMicro {
 	@Test
 	public void objectKeys_unsound() {
 		Misc.init();
-		Options.get().enableUnsound();
-		Misc.runSource(
-				"var o0 = {};",
+		Options.get().getUnsoundness().setUseOrderedObjectKeys(true);
+		Misc.runSource("var o0 = {};",
 				"TAJS_assert(Object.keys(o0).length === 0);",
 
 				"var o1 = {p: 42};",
@@ -3199,9 +3186,8 @@ public class TestMicro {
 	@Test
 	public void functionToString_unsound() {
 		Misc.init();
-		Options.get().enableUnsound();
-		Misc.runSource(
-				// plain content
+		Options.get().getUnsoundness().setUsePreciseFunctionToString(true);
+		Misc.runSource(// plain content
 				"TAJS_assertEquals((function foo(bar){baz;}).toString(), 'function foo(bar){baz;}');",
 				// whitespace
 				"TAJS_assertEquals((function foo ( bar ){ baz ; }).toString(), 'function foo ( bar ){ baz ; }');",
@@ -3214,7 +3200,7 @@ public class TestMicro {
 				"TAJS_assertEquals(f.toString(), 'function f(){}');",
 				// different functions
 				"var fg = !!Math.random()? function f(){}: function g(){};",
-				"TAJS_assert(fg.toString(), 'isMaybeStrOther');",
+				"TAJS_assert(fg.toString(), 'isMaybeStrPrefix');",
 				// natives
 				"TAJS_assertEquals(toString.toString(), 'function toString() { [native code] }');",
 				"TAJS_assertEquals(Array.prototype.push.toString(), 'function push() { [native code] }');"
@@ -3224,18 +3210,16 @@ public class TestMicro {
 	@Test
 	public void functionToString_sound() {
 		Misc.init();
-		Misc.runSource(
-				"TAJS_assert(toString.toString(), 'isMaybeAnyStr');",
+		Misc.runSource("TAJS_assert(toString.toString(), 'isMaybeAnyStr');",
 				"TAJS_assert((function f(){}).toString(), 'isMaybeAnyStr');"
 		);
 	}
 
 	@Test
 	public void functionToString_prototypejsExample() {
-		Options.get().enableUnsound();
+		Options.get().getUnsoundness().setUsePreciseFunctionToString(true);
 		Misc.init();
-		Misc.runSource(
-				// prototype.js depends on Function.prototype.toString for extracting argument names
+		Misc.runSource(// prototype.js depends on Function.prototype.toString for extracting argument names
 				"function f(a, b, c){foo;}",
 				"var args = f.toString().match(/^[\\s\\(]*function[^(]*\\((.*?)\\)/)[1].split(',');",
 				"TAJS_assert(args.length === 3);",
@@ -3248,44 +3232,41 @@ public class TestMicro {
 	public void addEventListenerOnAllHTMLElements() {
 		Misc.init();
 		Options.get().enableIncludeDom();
-		Misc.runSource(
+		Misc.runSource("document.createElement('div').id = 'ELEMENT';",
 				"var element = document.getElementById('ELEMENT');",
 				"TAJS_assert(element.addEventListener, 'isMaybeUndef', false);",
 				"");
 	}
 
-//	@Test
-//	public void testNoImplicitGlobalVarDeclarations() {
-//		Misc.init();
-//		Options.get().enableNoImplicitGlobalVarDeclarations();
-//		Misc.runSource(
-//				"var v1 = 42;",
-//				"TAJS_assert(v1 === 42);",
-//				"v2 = 42;",
-//				"TAJS_assert(typeof v2 === 'undefined');"
-//		);
-//	}
+	@Test
+	public void testNoImplicitGlobalVarDeclarations() {
+		Misc.init();
+		Options.get().getUnsoundness().setNoImplicitGlobalVarDeclarations(true);
+		Misc.runSource("var v1 = 42;",
+				"TAJS_assert(v1 === 42);",
+				"v2 = 42;",
+				"TAJS_assert(typeof v2 === 'undefined');"
+		);
+	}
 
 	@Test
 	public void recursiveSetTimeoutWithNulls() {
 		Misc.init();
 		Options.get().enableIncludeDom();
 		Misc.captureSystemOutput();
-		Misc.runSource(
-				"function r(f){",
+		Misc.runSource("function r(f){",
 				"	setTimeout(f, 0);",
 				"}",
 				"r(function f1(){r(function f2(){r(function f3(){r(null)})})});"
 		);
 		Misc.checkSystemOutput();
 	}
-	@Test(expected = AnalysisLimitationException.class /* GitHub #257*/)
+	@Test(expected = AnalysisLimitationException.class /* TODO: GitHub #257*/)
 	public void classCastExceptionRegression1() {
 		Misc.init();
 		Options.get().enableUnevalizer();
 		Options.get().enableIncludeDom();
-		Misc.runSource(
-				"function f() {",
+		Misc.runSource("function f() {",
 				"}",
 				"window[f] = window[f];"
 		);
@@ -3296,8 +3277,7 @@ public class TestMicro {
 		Misc.init();
 		Options.get().enableUnevalizer();
 		Options.get().enableIncludeDom();
-		Misc.runSource(
-				"setTimeout(Function,0);"
+		Misc.runSource("setTimeout(Function,0);"
 		);
 	}
 
@@ -3305,16 +3285,15 @@ public class TestMicro {
 	public void classCastExceptionRegression3() {
 		Misc.init();
 		Options.get().enableIncludeDom();
-		Misc.runSource(
-				"setTimeout(Array,0);"
+		Misc.runSource("setTimeout(Array,0);"
 		);
 	}
 
-	@Test(expected = AnalysisLimitationException.class /* should fix itself once we do some more modeling */)
+	@Test
 	public void missingHostFunctionModelOnObject() {
+		// check that all static functions on Object have a transfer function // TODO generalize this test?
 		Misc.init();
-		Misc.runSource(
-				"var s = Math.random()? 'foo': 'bar';",
+		Misc.runSource("var s = Math.random()? 'foo': 'bar';",
 				"Object[s]();"
 		);
 	}
@@ -3323,8 +3302,7 @@ public class TestMicro {
 	public void missingHostFunctionModelOnFunction() {
 		Misc.init();
 		Options.get().enableUnevalizer();
-		Misc.runSource(
-				"var s = Math.random()? 'foo': 'bar';",
+		Misc.runSource("var s = Math.random()? 'foo': 'bar';",
 				"Function[s]();"
 		);
 	}
@@ -3332,8 +3310,7 @@ public class TestMicro {
 	@Test
 	public void missingHostFunctionModelOnString() {
 		Misc.init();
-		Misc.runSource(
-				"var s = Math.random()? 'foo': 'bar';",
+		Misc.runSource("var s = Math.random()? 'foo': 'bar';",
 				"TAJS_dumpValue(String('x')[s]);"
 		);
 	}
@@ -3341,8 +3318,7 @@ public class TestMicro {
 	@Test
 	public void missingHostFunctionModelOnNumber() {
 		Misc.init();
-		Misc.runSource(
-				"var s = Math.random()? 'foo': 'bar';",
+		Misc.runSource("var s = Math.random()? 'foo': 'bar';",
 				"Number(0)[s]();"
 		);
 	}
@@ -3350,8 +3326,7 @@ public class TestMicro {
 	@Test
 	public void missingHostFunctionModelOnBoolean() {
 		Misc.init();
-		Misc.runSource(
-				"var s = Math.random()? 'foo': 'bar';",
+		Misc.runSource("var s = Math.random()? 'foo': 'bar';",
 				"Boolean(true)[s]();"
 		);
 	}
@@ -3359,8 +3334,7 @@ public class TestMicro {
 	@Test
 	public void missingHostFunctionModelOnRegExp() {
 		Misc.init();
-		Misc.runSource(
-				"var s = Math.random()? 'foo': 'bar';",
+		Misc.runSource("var s = Math.random()? 'foo': 'bar';",
 				"RegExp('')[s]();"
 		);
 	}
@@ -3368,8 +3342,7 @@ public class TestMicro {
 	@Test
 	public void indirectAccessToFunctionConstructor() {
 		Misc.init();
-		Misc.runSource(
-				"TAJS_assert(Object.constructor === Function);",
+		Misc.runSource("TAJS_assert(Object.constructor === Function);",
 				"TAJS_assert(Object.prototype.constructor.constructor === Function);",
 				"TAJS_assert(({}).constructor.constructor === Function);"
 		);
@@ -3379,8 +3352,7 @@ public class TestMicro {
 	public void lazyEventHandler1() {
 		Misc.init();
 		Options.get().enableIncludeDom();
-		Misc.runSource(
-				"var x = false;",
+		Misc.runSource("var x = false;",
 				"function f(h){",
 				"	setTimeout(h, 0);",
 				"}",
@@ -3393,8 +3365,7 @@ public class TestMicro {
 	public void lazyEventHandler2() {
 		Misc.init();
 		Options.get().enableIncludeDom();
-		Misc.runSource(
-				"var x = false;",
+		Misc.runSource("var x = false;",
 				"function f(h){",
 				"	window.onclick = h;",
 				"}",
@@ -3408,8 +3379,7 @@ public class TestMicro {
 		Misc.init();
 		Options.get().enableAsyncEvents();
 		Misc.captureSystemOutput();
-		Misc.runSource(
-				"function f(){TAJS_dumpValue('executed');}",
+		Misc.runSource("function f(){TAJS_dumpValue('executed');}",
 				"TAJS_asyncListen(f);",
 				"");
 		Misc.checkSystemOutput();
@@ -3419,8 +3389,7 @@ public class TestMicro {
 	public void asyncEventsWeak() {
 		Misc.init();
 		Options.get().enableAsyncEvents();
-		Misc.runSource(
-				"var x = false;",
+		Misc.runSource("var x = false;",
 				"function f(){x = true;}",
 				"function g(){TAJS_assert(x, 'isMaybeAnyBool');}",
 				"TAJS_asyncListen(f);",
@@ -3432,8 +3401,7 @@ public class TestMicro {
 	public void asyncEventsDelayed() {
 		Misc.init();
 		Options.get().enableAsyncEvents();
-		Misc.runSource(
-				"var x = false;",
+		Misc.runSource("var x = false;",
 				"function f(){x = true;}",
 				"TAJS_asyncListen(f);",
 				"TAJS_assert(x === false);",
@@ -3444,8 +3412,7 @@ public class TestMicro {
 	public void asyncEventsMultiple() {
 		Misc.init();
 		Options.get().enableAsyncEvents();
-		Misc.runSource(
-				"var i = 0;",
+		Misc.runSource("var i = 0;",
 				"function f(){i++;}",
 				"function g(){TAJS_assert(i, 'isMaybeNumUInt');}",
 				"TAJS_asyncListen(f);",
@@ -3457,20 +3424,15 @@ public class TestMicro {
 	public void asyncEventsCrashing() {
 		Misc.init();
 		Options.get().enableAsyncEvents();
-		Misc.runSource(
-				new String[]{
-						"function f(){foo.bar()}",
-						"TAJS_asyncListen(f);",
-				},
-				new CompositeMonitoring(new Monitoring(), new OrdinaryExitReachableChecker()));
+		Misc.runSource("function f(){foo.bar()}",
+						"TAJS_asyncListen(f);");
 	}
 
 	@Test
 	public void asyncEventsRecency() {
 		Misc.init();
 		Options.get().enableAsyncEvents();
-		Misc.runSource(
-				"function mk(x){",
+		Misc.runSource("function mk(x){",
 				"	return function(){",
 				"		TAJS_assert(x, 'isMaybeSingleStr', false);",
 				"	}",
@@ -3485,10 +3447,8 @@ public class TestMicro {
 	@Test
 	public void toStringConversions() {
 		Misc.init();
-		Options.get().enableUnsound();
-		Misc.runSource(
-				new String[]{
-						"TAJS_assertEquals([].toString(), '');",
+		Options.get().getUnsoundness().setUsePreciseFunctionToString(true);
+		Misc.runSource("TAJS_assertEquals([].toString(), '');",
 						"TAJS_assertEquals([] + '', '');",
 						"TAJS_assertEquals(({}).toString(), '[object Object]');",
 						"TAJS_assertEquals(({}) + '', '[object Object]');",
@@ -3501,85 +3461,56 @@ public class TestMicro {
 						"TAJS_assertEquals(true.toString(), 'true');",
 						"TAJS_assertEquals(true + '', 'true');",
 						"TAJS_assertEquals(0..toString(), '0');",
-						"TAJS_assertEquals(0 + '', '0');",
-				},
-				new CompositeMonitoring(new Monitoring(), new OrdinaryExitReachableChecker()));
+						"TAJS_assertEquals(0 + '', '0');");
 	}
 
 	@Test
 	public void arrayToStringWithUndefinedJoin() {
 		Misc.init();
-		Misc.runSource(
-				new String[]{
-						"var a = [];",
+		Misc.runSource("var a = [];",
 						"a.join = undefined;",
-						"TAJS_assert(a.toString() === '[object Array]');"
-				},
-				new CompositeMonitoring(new Monitoring(), new OrdinaryExitReachableChecker()));
+						"TAJS_assert(a.toString() === '[object Array]');");
 	}
 
 	@Test(expected = AnalysisLimitationException.class)
 	public void arrayToStringWithRedefinedJoin() {
 		Misc.init();
-		Misc.runSource(
-				new String[]{
-						"var a = [];",
+		Misc.runSource("var a = [];",
 						"a.join = function(){};",
-						"a.toString();"
-				},
-				new CompositeMonitoring(new Monitoring(), new OrdinaryExitReachableChecker()));
+						"a.toString();");
 	}
 
 	@Test
 	public void cyclicArrayJoin() {
 		Misc.init();
-		Misc.runSource(
-				new String[]{
-						"var a = [];",
+		Misc.runSource("var a = [];",
 						"a[0] = a;",
-						"TAJS_assert(a.join(), 'isMaybeAnyStr');"
-				},
-				new CompositeMonitoring(new Monitoring(), new OrdinaryExitReachableChecker()));
+						"TAJS_assert(a.join(), 'isMaybeAnyStr');");
 	}
 
 	@Test
 	public void localeString_sound() {
 		Misc.init();
-		Misc.runSource(
-				new String[]{
-						"TAJS_assert(1..toLocaleString(), 'isMaybeAnyStr');"
-				},
-				new CompositeMonitoring(new Monitoring(), new OrdinaryExitReachableChecker()));
+		Misc.runSource("TAJS_assert(1..toLocaleString(), 'isMaybeAnyStr');");
 	}
 
 	@Test
 	public void localeString_unsound() {
 		Misc.init();
-		Options.get().enableUnsound();
-		Misc.runSource(
-				new String[]{
-						"TAJS_assert(1..toLocaleString() === '1');"
-				},
-				new CompositeMonitoring(new Monitoring(), new OrdinaryExitReachableChecker()));
+		Options.get().getUnsoundness().setIgnoreLocale(true);
+		Misc.runSource("TAJS_assert(1..toLocaleString() === '1');");
 	}
 
-	@Test
-	public void functionName() {
-		Misc.init();
-		Options.get().enableUnsound();
-		Misc.runSource(
-				new String[]{
-						"TAJS_assert((function f(){}).name === 'f');"
-				},
-				new CompositeMonitoring(new Monitoring(), new OrdinaryExitReachableChecker()));
-	}
+    @Test
+    public void functionName() {
+        Misc.init();
+        Misc.runSource("TAJS_assert((function f(){}).name === 'f');");
+    }
 
 	@Test
 	public void maybeCoercionError() {
 		Misc.init();
-		Misc.runSource(
-				new String[]{
-						"var x = {toString: {}};",
+		Misc.runSource("var x = {toString: {}};",
 						"var o = {y: 'z'};",
 						"var thrown = false;",
 						"var notThrown = false;",
@@ -3590,17 +3521,13 @@ public class TestMicro {
 						"	thrown = true;",
 						"}",
 						"TAJS_assert(notThrown, 'isMaybeAnyBool');",
-						"TAJS_assert(thrown, 'isMaybeAnyBool');",
-				},
-				new CompositeMonitoring(new Monitoring(), new OrdinaryExitReachableChecker()));
+						"TAJS_assert(thrown, 'isMaybeAnyBool');");
 	}
 
 	@Test
 	public void stringConcatenation_identifierAndNumbersExclusions() {
 		Misc.init();
-		Misc.runSource(
-				new String[]{
-						"var x = (Math.random()? 'x y': '234') || 'foo' || 'NaN' || '11ar';",
+		Misc.runSource("var x = TAJS_join('x y', '234', 'foo', 'NaN', '11ar');",
 						"var y = '<foobar';",
 						"var z = x + y;",
 						"TAJS_assert(x, 'isMaybeAnyStr');",
@@ -3608,46 +3535,19 @@ public class TestMicro {
 						"TAJS_assert('foo' !== z);",
 						"TAJS_assert('234' !== z);",
 						"TAJS_assert('Infinity' !== z);",
-						"TAJS_assert('3.14' !== z);",
-				},
-				new CompositeMonitoring(new Monitoring(), new OrdinaryExitReachableChecker()));
+						"TAJS_assert('3.14' !== z);");
 	}
 
 	@Test
 	public void negateUInt() {
 		Misc.init();
-		Misc.runSource(
-				new String[]{
-						"TAJS_assert(-(Math.random()? 2: 3), 'isMaybeNumUInt', false)"
-				},
-				new CompositeMonitoring(new Monitoring(), new OrdinaryExitReachableChecker()));
-	}
-
-	@Test
-	public void trimFuzzyStrings() {
-		Misc.init();
-		Misc.runSource(
-				new String[]{
-						"var ident = Math.random()? 'a': 'b';",
-						"var prefix = 'x' + ident",
-						"var ident_prefix = Math.random()? ident: prefix",
-						"TAJS_assert(ident.trim(), 'isMaybeStrIdentifier');",
-						"TAJS_assert(prefix.trim(), 'isMaybeStrPrefixedIdentifierParts');",
-						"TAJS_assert(ident_prefix.trim(), 'isMaybeStrIdentifier||isMaybeStrPrefixedIdentifierParts');",
-						"TAJS_assert(ident_prefix.trim(), 'isMaybeAnyStr', false);",
-						"var num_obj = String.prototype.trim.call(Math.random()? 1: {});",
-						"TAJS_assert(num_obj, 'isMaybeStrOther||isMaybeStrUInt');",
-						"TAJS_assert(num_obj, 'isMaybeAnyStr', false);",
-				},
-				new CompositeMonitoring(new Monitoring(), new OrdinaryExitReachableChecker()));
+		Misc.runSource("TAJS_assert(-(Math.random()? 2: 3), 'isMaybeNumUInt', false)");
 	}
 
 	@Test
 	public void stringIndexing() {
 		Misc.init();
-		Misc.runSource(
-				new String[]{
-						"var s = 'xyz';",
+		Misc.runSource("var s = 'xyz';",
 						"var S = new String('xyz');",
 						"var str = Math.random()? 'xyz': 'abc';",
 						"var UInt = Math.random()? 0: 1;",
@@ -3667,9 +3567,7 @@ public class TestMicro {
 						"TAJS_assert(S[UInt], 'isMaybeUndef');",
 						"TAJS_assert(S[UInt], 'isMaybeStrIdentifier');",
 						"S[0] = 0;",
-						"TAJS_assert(S[0], 'isMaybeSingleStr');",
-				},
-				new CompositeMonitoring(new Monitoring(), new OrdinaryExitReachableChecker()));
+						"TAJS_assert(S[0], 'isMaybeSingleStr');");
 	}
 
 	@Test
@@ -3677,6 +3575,7 @@ public class TestMicro {
 		Misc.init();
 		Main.reset();
 		Options.get().enableTest();
+		Options.get().enableDoNotExpectOrdinaryExit();
 		String[] args = {"test/micro/present-no-value-bug.js"};
 		Misc.run(args);
 	}
@@ -3695,6 +3594,7 @@ public class TestMicro {
 		Misc.init();
 		Main.reset();
 		Options.get().enableTest();
+		Options.get().enableDoNotExpectOrdinaryExit();
 		String[] args = {"test/micro/present-no-value-no-bug-2.js"};
 		Misc.run(args);
 	}
@@ -3705,6 +3605,7 @@ public class TestMicro {
 		Main.reset();
 		Options.get().enableTest();
 		Options.get().enableNoRecency();
+		Options.get().enableDoNotExpectOrdinaryExit();
 		String[] args = {"test/micro/unexpectedValueBug.js"};
 		Misc.run(args);
 	}
@@ -3714,65 +3615,49 @@ public class TestMicro {
 		Misc.init();
 		Main.reset();
 		Options.get().enableTest();
-		Misc.run(new String[]{"test/micro/summarization-bug-274-minimal.js"});
+		Misc.run("test/micro/summarization-bug-274-minimal.js");
 	}
 
 	@Test
 	public void stringPropertyAccess() {
 		Misc.init();
 		Options.get().enableNoRecency();
-		Misc.runSource(
-				new String[]{
-						"var s1 = 'foo';",
+		Misc.runSource("var s1 = 'foo';",
 						"TAJS_assert(s1.search, 'isMaybeObject');",
 						"var U = !!Math.random();",
 						"var s2 = U? '%W': U? 42: U? 4.2: undefined;",
-						"TAJS_assert(s2.search, 'isMaybeObject')"
-				},
-				new CompositeMonitoring(new Monitoring(), new OrdinaryExitReachableChecker()));
+						"TAJS_assert(s2.search, 'isMaybeObject')");
 	}
 
 	@Test
 	public void stringPropertyAccess2() {
 		Misc.init();
-		Misc.runSource(
-				new String[]{
-						"TAJS_assert('foo'.search, 'isMaybeObject');",
-				});
+		Misc.runSource("TAJS_assert('foo'.search, 'isMaybeObject');");
 	}
 
 	@Test
 	public void stringPropertyAccess3() {
 		Misc.init();
 		Options.get().enableNoRecency();
-		Misc.runSource(
-				new String[]{
-						"TAJS_assert('foo'.search, 'isMaybeObject');",
-				});
+		Misc.runSource("TAJS_assert('foo'.search, 'isMaybeObject');");
 	}
 
 	@Test
 	public void objectPropertyAccess() {
 		Misc.init();
 		Options.get().enableNoRecency();
-		Misc.runSource(
-				new String[]{
-						"TAJS_assert(({}).toString, 'isMaybeObject');",
-				});
+		Misc.runSource("TAJS_assert(({}).toString, 'isMaybeObject');");
 	}
 
 	@Test
 	public void primitiveProperties() {
 		Misc.init();
 		Options.get().enableNoRecency();
-		Misc.runSource(new String[]{
-						"TAJS_assert(''.toString, 'isMaybeObject');",
+		Misc.runSource("TAJS_assert(''.toString, 'isMaybeObject');",
 						"TAJS_assert(''.search, 'isMaybeObject');",
 						"TAJS_assert(42..toString, 'isMaybeObject');",
 						"TAJS_assert(42..toFixed, 'isMaybeObject');",
-						"TAJS_assert(true.toString, 'isMaybeObject');",
-				},
-				new CompositeMonitoring(new Monitoring(), new OrdinaryExitReachableChecker()));
+						"TAJS_assert(true.toString, 'isMaybeObject');");
 	}
 
 	@Test
@@ -3780,86 +3665,70 @@ public class TestMicro {
 		Misc.init();
 		Main.reset();
 		Options.get().enableTest();
-		Misc.runSource("a", new String[]{"this.x = 42; TAJS_assert(this.x === 42)"}, new CompositeMonitoring(new Monitoring(), new OrdinaryExitReachableChecker()));
+		Misc.runSourcePart("a", "this.x = 42; TAJS_assert(this.x === 42)");
 		Main.reset();
 		Options.get().enableTest();
 		Options.get().enableNoRecency();
-		Misc.runSource("b", new String[]{"", "this.x = 42; TAJS_assert(this.x, 'isMaybeSingleNum'); TAJS_assert(this.x, 'isMaybeUndef');"}, new CompositeMonitoring(new Monitoring(), new OrdinaryExitReachableChecker()));
+		Misc.runSourcePart("b", "", "this.x = 42; TAJS_assert(this.x, 'isMaybeSingleNum'); TAJS_assert(this.x, 'isMaybeUndef');");
 		Main.reset();
 		Options.get().enableTest();
-		Misc.runSource("c", new String[]{"", "", "this.x = 42; TAJS_assert(x === 42)"}, new CompositeMonitoring(new Monitoring(), new OrdinaryExitReachableChecker()));
+		Misc.runSourcePart("c", "", "", "this.x = 42; TAJS_assert(x === 42)");
 	}
 
-//	@Test
-//	public void testFunction_bind_creatingBoundFunction() {
-//		Misc.init();
-//		Main.reset();
-//		Options.get().enableTest();
-//		Options.get().enablePolyfillMDN();
-//		Misc.run(new String[]{"test/micro/function_bind_creatingBoundFunction.js"});
-//	}
+	@Test
+	public void testFunction_bind_creatingBoundFunction() {
+		Misc.init();
+		Main.reset();
+		Options.get().enableTest();
+		Options.get().enablePolyfillMDN();
+		Misc.run("test/micro/function_bind_creatingBoundFunction.js");
+	}
 
-//	@Test
-//	public void testFunction_bind_partiallyAppliedFunctions() {
-//		Misc.init();
-//		Main.reset();
-//		Options.get().enableTest();
-//		Options.get().enablePolyfillMDN();
-//		Misc.run(new String[]{"test/micro/function_bind_partiallyAppliedFunctions.js"});
-//	}
+	@Test
+	public void testFunction_bind_partiallyAppliedFunctions() {
+		Misc.init();
+		Main.reset();
+		Options.get().enableTest();
+		Options.get().enablePolyfillMDN();
+		Misc.run("test/micro/function_bind_partiallyAppliedFunctions.js");
+	}
 
-	@Test(expected = AnalysisException.class /* https://github.com/cs-au-dk/TAJS-private/issues/281 */)
+	@Test(expected = AssertionError.class /* TODO: github #281 */)
 	public void testFunction_bind_boundFunctionsUsedAsConstructors() {
 		Misc.init();
 		Options.get().enableTest();
 		Options.get().enablePolyfillMDN();
-		Misc.run(new String[]{"test/micro/function_bind_boundFunctionsUsedAsConstructors.js"});
+		Misc.run("test/micro/function_bind_boundFunctionsUsedAsConstructors.js");
 	}
 
-	@Test
-	public void substring() {
-		Misc.init();
-		Misc.runSource(
-				new String[]{
-						"'foo'.substring();"
-				},
-				new CompositeMonitoring(new Monitoring(), new OrdinaryExitReachableChecker()));
-	}
+    @Test
+    public void substring() {
+        Misc.init();
+        Misc.runSource("'foo'.substring();");
+    }
 
-	@Test
-	public void stringMethod_noLazy() {
-		Misc.init();
+    @Test
+    public void stringMethod_noLazy() {
+        Misc.init();
 		Options.get().enableNoLazy();
-		Misc.runSource(
-				new String[]{
-						"'foo'.substring(2);"
-				},
-				new CompositeMonitoring(new Monitoring(), new OrdinaryExitReachableChecker()));
-	}
+        Misc.runSource("'foo'.substring(2);");
+    }
 
 	@Test
 	public void numberMethod_noLazy() {
 		Misc.init();
 		Options.get().enableNoLazy();
-		Misc.runSource(
-				new String[]{
-						"42.0.toFixed()"
-				},
-				new CompositeMonitoring(new Monitoring(), new OrdinaryExitReachableChecker()));
+		Misc.runSource("42.0.toFixed()");
 	}
 
 	@Test
 	public void coercionWarnings() {
 		Misc.init();
 		Misc.captureSystemOutput();
-		Misc.runSource(
-				new String[]{
-						"'foo'.charAt();",
+		Misc.runSource("'foo'.charAt();",
 						"'foo'.charAt(undefined);",
 						"String.fromCharCode();", // does not cause a warning, since argument is optional (i.e. the default undefined is not coerced to NaN)
-						"String.fromCharCode(undefined);",
-				},
-				new CompositeMonitoring(new Monitoring(), new OrdinaryExitReachableChecker()));
+						"String.fromCharCode(undefined);");
 		Misc.checkSystemOutput();
 	}
 
@@ -3867,22 +3736,18 @@ public class TestMicro {
 	public void __proto__soundness_check() {
 		Misc.init();
 		Misc.captureSystemOutput();
-		Misc.runSource(new String[]{
-				"var x = {n : 5}",
+		Misc.runSource("var x = {n : 5}",
 				"var y = {__proto__ : x}",
-				"if(y.n == 5) {} else { TAJS_assert(false); }"
-		});
+				"if(y.n == 5) {} else { TAJS_assert(false); }");
 	}
 
 	@Test(expected = AssertionError.class)
 	public void __proto__soundness_check_error() {
 		Misc.init();
 		Misc.captureSystemOutput();
-		Misc.runSource(new String[]{
-				"var x = {n : 5}",
+		Misc.runSource("var x = {n : 5}",
 				"var y = {__proto__ : x}",
-				"if(y.n == 5) {TAJS_assert(false);} else {  }"
-		});
+				"if(y.n == 5) {TAJS_assert(false);} else {  }");
 	}
 
 	@Test
@@ -3891,7 +3756,7 @@ public class TestMicro {
 		Main.reset();
 		Options.get().enableTest();
 		String file = "test/micro/bug-9-8-2016-a.js";
-		Misc.run(new String[]{file}, new CompositeMonitoring(new Monitoring(), new OrdinaryExitReachableChecker()));
+		Misc.run(file);
 	}
 
 	@Test
@@ -3900,70 +3765,57 @@ public class TestMicro {
 		Main.reset();
 		Options.get().enableTest();
 		String file = "test/micro/bug-9-8-2016-b.js";
-		Misc.run(new String[]{file}, new CompositeMonitoring(new Monitoring(), new OrdinaryExitReachableChecker()));
+		Misc.run(file);
 	}
 
 	@Test
 	public void postfixCoercionResult() {
 		Misc.init();
-		Misc.runSource(new String[]{
-				"var a = '';",
+		Misc.runSource("var a = '';",
 				"TAJS_assert(a++ === 0);",
-				"TAJS_assert(a === 1);",
-		});
+				"TAJS_assert(a === 1);");
 	}
 
 	@Test
 	public void prefixCoercionResult() {
 		Misc.init();
-		Misc.runSource(new String[]{
-				"var a = '';",
+		Misc.runSource("var a = '';",
 				"TAJS_assert(++a === 1);",
-				"TAJS_assert(a === 1);",
-		});
+				"TAJS_assert(a === 1);");
 	}
 
 	@Test
 	public void prefixPropertyResult() {
 		Misc.init();
-		Misc.runSource(new String[]{
-				"var o = {p: 0};",
+		Misc.runSource("var o = {p: 0};",
 				"TAJS_assert(++o.p === 1);",
-				"TAJS_assert(o.p === 1);",
-		});
+				"TAJS_assert(o.p === 1);");
 	}
 
 	@Test
 	public void negation() throws Exception {
 		Misc.init();
-		Misc.runSource(new String[]{
-						"var UINT = Math.random()? 1: 2;",
+		Misc.runSource("var UINT = Math.random()? 1: 2;",
 						"var OTHER = Math.random()? 0.1: 0.2;",
 						"TAJS_assert(-UINT, 'isMaybeNumUInt', false);",
 						"TAJS_assert(-UINT, 'isMaybeNumOther', true);",
 						"TAJS_assert(-OTHER, 'isMaybeNumUInt', true);",
-						"TAJS_assert(-OTHER, 'isMaybeNumOther', true);",
-				},
-				new CompositeMonitoring(new Monitoring(), new OrdinaryExitReachableChecker()));
+						"TAJS_assert(-OTHER, 'isMaybeNumOther', true);");
 	}
 
 	@Test
 	public void keyword() {
 		Misc.init();
-		Misc.runSource(new String[]{
-				"var byte = 0;"
-		});
+		Misc.runSource("var byte = 0;");
 	}
 
 	@Test
 	public void onload() {
 		Misc.init();
 		Options.get().enableIncludeDom();
-		Misc.runSource(new String[]{
-				"var TRIGGERED = false;",
+		Misc.runSource("var TRIGGERED = false;",
 				"window.onload = function(){TRIGGERED = true;}",
-				"window.addEventListener('load', function(){TAJS_assert(TRIGGERED, 'isMaybeAnyBool')});"
-		}, new CompositeMonitoring(new Monitoring(), new OrdinaryExitReachableChecker()));
+				"window.addEventListener('load', function(){TAJS_assert(TRIGGERED, 'isMaybeAnyBool')});");
 	}
 
 	@Test
@@ -3987,8 +3839,7 @@ public class TestMicro {
 	@Test
 	public void stringContainment() {
 		Misc.init();
-		Misc.runSource(new String[]{
-						"var ANY_STR = TAJS_make('AnyStr');",
+		Misc.runSource("var ANY_STR = TAJS_make('AnyStr');",
 						"var IDENT_STR = TAJS_join('foo', 'bar');",
 						"var PREFIX_IDENT_STR = TAJS_join('xfoo', 'xbar');",
 						"TAJS_assert(ANY_STR.indexOf('x'), 'isMaybeNumUInt');",
@@ -3996,203 +3847,172 @@ public class TestMicro {
 						"TAJS_assert(IDENT_STR.indexOf('x'), 'isMaybeNumUInt');",
 						"TAJS_assert(IDENT_STR.indexOf('.') === -1);",
 						"TAJS_assert(PREFIX_IDENT_STR.indexOf('x'), 'isMaybeNumUInt');",
-						"TAJS_assert(PREFIX_IDENT_STR.indexOf('.') === -1);",
-				},
-				new CompositeMonitoring(new Monitoring(), new OrdinaryExitReachableChecker()));
+						"TAJS_assert(PREFIX_IDENT_STR.indexOf('.') === -1);");
 	}
 
 	@Test
 	public void forInString() {
 		Misc.init();
-		Misc.runSource(new String[]{
-				"for (var i in 'foo'){",
+		Misc.runSource("for (var i in 'foo'){",
 				"	TAJS_dumpValue(i);",
-				"}"
-		}, new CompositeMonitoring(new Monitoring(), new OrdinaryExitReachableChecker()));
+				"}");
 	}
 
 	@Test
 	public void le_ge_leq_geq() {
 		Misc.init();
-		Misc.runSource(new String[]{
-				"TAJS_assertEquals(false, 1 > 2);",
+		Misc.runSource("TAJS_assertEquals(false, 1 > 2);",
 				"TAJS_assertEquals(true, 2 > 1);",
 				"TAJS_assertEquals(true, 1 < 2);",
 				"TAJS_assertEquals(false, 2 < 1);",
 				"TAJS_assertEquals(false, 1 >= 2);",
 				"TAJS_assertEquals(true, 2 >= 1);",
 				"TAJS_assertEquals(true, 1 <= 2);",
-				"TAJS_assertEquals(false, 2 <= 1);"
-		}, new CompositeMonitoring(new Monitoring(), new OrdinaryExitReachableChecker()));
+				"TAJS_assertEquals(false, 2 <= 1);");
 	}
 
 	@Test
 	public void le_ge_leq_geq_NAN() {
 		Misc.init();
-		Misc.runSource(new String[]{
-				"TAJS_assertEquals(false, 1 > NaN);",
+		Misc.runSource("TAJS_assertEquals(false, 1 > NaN);",
 				"TAJS_assertEquals(false, 2 > NaN);",
 				"TAJS_assertEquals(false, 1 < NaN);",
 				"TAJS_assertEquals(false, 2 < NaN);",
 				"TAJS_assertEquals(false, 1 >= NaN);",
 				"TAJS_assertEquals(false, 2 >= NaN);",
 				"TAJS_assertEquals(false, 1 <= NaN);",
-				"TAJS_assertEquals(false, 2 <= NaN);"
-		}, new CompositeMonitoring(new Monitoring(), new OrdinaryExitReachableChecker()));
+				"TAJS_assertEquals(false, 2 <= NaN);");
 	}
 
 	@Test
 	public void le_ge_leq_geq_NAN_negate() {
 		Misc.init();
-		Misc.runSource(new String[]{
-				"TAJS_assert(!(1 > NaN));",
+		Misc.runSource("TAJS_assert(!(1 > NaN));",
 				"TAJS_assert(!(2 > NaN));",
 				"TAJS_assert(!(1 < NaN));",
 				"TAJS_assert(!(2 < NaN));",
 				"TAJS_assert(!(1 >= NaN));",
 				"TAJS_assert(!(2 >= NaN));",
 				"TAJS_assert(!(1 <= NaN));",
-				"TAJS_assert(!(2 <= NaN));"
-		}, new CompositeMonitoring(new Monitoring(), new OrdinaryExitReachableChecker()));
+				"TAJS_assert(!(2 <= NaN));");
 	}
 
 	@Test
 	public void le_ge_leq_geq_coercedNAN() {
 		Misc.init();
-		Misc.runSource(new String[]{
-				"TAJS_assertEquals(false, 1 > undefined);",
+		Misc.runSource("TAJS_assertEquals(false, 1 > undefined);",
 				"TAJS_assertEquals(false, 2 > undefined);",
 				"TAJS_assertEquals(false, 1 < undefined);",
 				"TAJS_assertEquals(false, 2 < undefined);",
 				"TAJS_assertEquals(false, 1 >= undefined);",
 				"TAJS_assertEquals(false, 2 >= undefined);",
 				"TAJS_assertEquals(false, 1 <= undefined);",
-				"TAJS_assertEquals(false, 2 <= undefined);"
-		}, new CompositeMonitoring(new Monitoring(), new OrdinaryExitReachableChecker()));
+				"TAJS_assertEquals(false, 2 <= undefined);");
 	}
 
-	@Test
-	public void le_ge_leq_geq_str() {
-		Misc.init();
-		Misc.runSource(new String[]{
-				"TAJS_assertEquals(false, 'a' > 'b');",
-				"TAJS_assertEquals(true, 'b' > 'a');",
-				"TAJS_assertEquals(true, 'a' < 'b');",
-				"TAJS_assertEquals(false, 'b' < 'a');",
-				"TAJS_assertEquals(false, 'a' >= 'b');",
-				"TAJS_assertEquals(true, 'b' >= 'a');",
-				"TAJS_assertEquals(true, 'a' <= 'b');",
-				"TAJS_assertEquals(false, 'b' <= 'a');"
-		}, new CompositeMonitoring(new Monitoring(), new OrdinaryExitReachableChecker()));
-	}
+    @Test
+    public void le_ge_leq_geq_str() {
+        Misc.init();
+        Misc.runSource("TAJS_assertEquals(false, 'a' > 'b');",
+                "TAJS_assertEquals(true, 'b' > 'a');",
+                "TAJS_assertEquals(true, 'a' < 'b');",
+                "TAJS_assertEquals(false, 'b' < 'a');",
+                "TAJS_assertEquals(false, 'a' >= 'b');",
+                "TAJS_assertEquals(true, 'b' >= 'a');",
+                "TAJS_assertEquals(true, 'a' <= 'b');",
+                "TAJS_assertEquals(false, 'b' <= 'a');");
+    }
 
-	@Test
-	public void bonusPrototypesOnPrimitives() {
-		Misc.init();
-		Options.get().enableUnsound();
-		Misc.runSource(new String[]{
-				"var x = 0;",
-				"function Funky(a, b, c) { return 7; }",
-				"Number.prototype.__proto__ = Funky;",
-				"TAJS_assertEquals(3, x.length);",
-				"TAJS_assertEquals('Funky', Funky.name);",
-				"TAJS_assertEquals('Funky', x.name);"
-		}, new CompositeMonitoring(new Monitoring(), new OrdinaryExitReachableChecker()));
-	}
+    @Test
+    public void bonusPrototypesOnPrimitives() {
+        Misc.init();
+        Misc.runSource("var x = 0;",
+                "function Funky(a, b, c) { return 7; }",
+                "Number.prototype.__proto__ = Funky;",
+                "TAJS_assertEquals(3, x.length);",
+                "TAJS_assertEquals('Funky', Funky.name);",
+                "TAJS_assertEquals('Funky', x.name);");
+    }
 
 	@Test
 	public void toStringValueOfBug() {
 		Misc.init();
-		Misc.runSource(new String[]{
-				"/a/.test({toString:function(){return {};}, valueOf:function(){return '';}});"
-		}, new CompositeMonitoring(new Monitoring(), new OrdinaryExitReachableChecker()));
+		Misc.runSource("/a/.test({toString:function(){return {};}, valueOf:function(){return '';}});");
 	}
 
 	@Test
 	public void exceptionFromNativeFunction1() {
 		Misc.init();
-		Misc.runSource(new String[]{
-				"1.2.toFixed(10);",
+		Options.get().enableDoNotExpectOrdinaryExit();
+		Misc.runSource("1.2.toFixed(10);",
 				"3.4.toFixed(100);",
-				"TAJS_assert(false);"
-		});
+				"TAJS_assert(false);");
 	}
 
 	@Test
 	public void exceptionFromNativeFunction2() {
 		Misc.init();
-		Misc.runSource(new String[]{
-				"'x'.match('y');",
+		Options.get().enableDoNotExpectOrdinaryExit();
+		Misc.runSource("'x'.match('y');",
 				"'z'.match(')');",
-				"TAJS_assert(false);"
-		});
+				"TAJS_assert(false);");
 	}
 
 	@Test
 	public void exceptionFromNativeFunction3() {
 		Misc.init();
-		Misc.runSource(new String[]{
-				"'x'.search('y');",
+		Options.get().enableDoNotExpectOrdinaryExit();
+		Misc.runSource("'x'.search('y');",
 				"'z'.search(')');",
-				"TAJS_assert(false);"
-		});
+				"TAJS_assert(false);");
 	}
 
 	@Test
 	public void plusMinus0() {
 		Misc.init();
-		Misc.runSource(new String[]{
-				"var uint = Math.random()? 42: 87;",
+		Misc.runSource("var uint = Math.random()? 42: 87;",
 				"TAJS_assertEquals(uint, uint + 0);",
 				"TAJS_assertEquals(uint, uint - 0);",
-				"TAJS_assertEquals(uint, 0 + uint);"
-		}, new CompositeMonitoring(new Monitoring(), new OrdinaryExitReachableChecker()));
+				"TAJS_assertEquals(uint, 0 + uint);");
 	}
 
-	@Test
-	public void dateNumber() {
-		Misc.init();
-		Misc.runSource(new String[]{
-				"TAJS_assert(new Date() - 0, 'isMaybeNumUInt||isMaybeNumOther');",
-				"TAJS_assert(+new Date(), 'isMaybeNumUInt||isMaybeNumOther');"
-		}, new CompositeMonitoring(new Monitoring(), new OrdinaryExitReachableChecker()));
-	}
+    @Test
+    public void dateNumber() {
+        Misc.init();
+        Misc.runSource("TAJS_assert(new Date() - 0, 'isMaybeNumUInt||isMaybeNumOther');",
+			"TAJS_assert(+new Date(), 'isMaybeNumUInt||isMaybeNumOther');");
+    }
 
 	@Test
 	public void tracifier2() { // from unit/iterate_scripts_for_in
 		Misc.init();
-		Misc.runSource(new String[]{
-				"var srcs",
-				"(srcs = [])",
-				"(srcs[\"push\"])(67)"
-		});
+		Options.get().enableDoNotExpectOrdinaryExit();
+		Misc.runSource("var srcs",
+                "(srcs = [])",
+                "(srcs[\"push\"])(67)");
 	}
 
 	@Test
 	public void tracifier2_desugared() { // from unit/iterate_scripts_for_in
 		Misc.init();
-		Misc.runSource(new String[]{
-				"var srcs",
-				"(srcs = [])(srcs.push)(67)"
-		});
+		Options.get().enableDoNotExpectOrdinaryExit();
+		Misc.runSource("var srcs",
+				"(srcs = [])(srcs.push)(67)");
 	}
 
 	@Test
 	public void element_onEvent_isMaybeNull() {
 		Misc.init();
 		Options.get().enableIncludeDom();
-		Misc.runSource(new String[]{
-				"TAJS_assert(window.document.body.onkeyup, 'isMaybeNull');",
+		Misc.runSource("TAJS_assert(window.document.body.onkeyup, 'isMaybeNull');",
 				"TAJS_assert(window.document.body.onload, 'isMaybeNull');",
-				"TAJS_assert(window.document.body.onunload, 'isMaybeNull');"
-		});
+				"TAJS_assert(window.document.body.onunload, 'isMaybeNull');");
 	}
 
 	@Test
 	public void withThis() {
 		Misc.init();
-		Misc.runSource(new String[]{
-				"var global = this",
+		Misc.runSource("var global = this",
 				"with ({}){",
 				"	TAJS_assertEquals(global, this);",
 				"	(function(){",
@@ -4206,69 +4026,57 @@ public class TestMicro {
 				"		TAJS_assertEquals(global, this);",
 				"	};",
 				"	g();",
-				"}"
-		}, new CompositeMonitoring(new Monitoring(), new OrdinaryExitReachableChecker()));
+				"}");
 	}
 
 	@Test
 	public void sanity_writeProperty() {
 		Misc.init();
-		Misc.runSource(new String[]{
-				"var o = {p: 42}",
+		Misc.runSource("var o = {p: 42}",
 				"o.q = 'foo';",
 				"TAJS_assertEquals(42, o.p);",
-				"TAJS_assertEquals('foo', o.q);"
-		});
+				"TAJS_assertEquals('foo', o.q);");
 	}
 
 	@Test
 	public void stringProtoModification() {
 		Misc.init();
-		Misc.runSource(new String[]{
-				"String.prototype.FOO = function () {",
+		Misc.runSource("String.prototype.FOO = function () {",
 				"	this.indexOf();",
 				"};",
 				"'X'.FOO();",
-				"TAJS_dumpValue('Hello');"
-		});
+				"TAJS_dumpValue('Hello');");
 	}
 
 	@Test
 	public void stringProtoModification_noPolymorphism() {
 		Misc.init();
 		Options.get().enableNoPolymorphic();
-		Misc.runSource(new String[]{
-				"String.prototype.FOO = function () {",
+		Misc.runSource("String.prototype.FOO = function () {",
 				"	this.indexOf();",
 				"};",
 				"'X'.FOO();",
-				"TAJS_dumpValue('Hello');"
-		});
+				"TAJS_dumpValue('Hello');");
 	}
 
 	@Test
 	public void stringLength() {
 		Misc.init();
-		Misc.runSource(new String[]{
-				"TAJS_assertEquals(3, 'foo'.length);"
-		});
+		Misc.runSource("TAJS_assertEquals(3, 'foo'.length);");
 	}
 
 	@Test
 	public void stringCharacter() {
 		Misc.init();
-		Misc.runSource(new String[]{
-				"TAJS_assertEquals('b', 'abc'[1]);"
-		});
+		Misc.runSource("TAJS_assertEquals('b', 'abc'[1]);");
 	}
 
 	@Test
 	public void throwOnNewNativeNonConstructor() {
 		Misc.init();
-		Misc.runSource(new String[]{
-				"new Number.toString()",
-				"TAJS_assert(false);"
-		});
+		Options.get().enableDoNotExpectOrdinaryExit();
+		Misc.runSource("new Number.toString()",
+				"TAJS_assert(false);");
 	}
 
 	@Test
@@ -4276,82 +4084,82 @@ public class TestMicro {
 		Misc.init();
 		Main.reset();
 		Options.get().enableTest();
-		Misc.run(new String[]{"test/micro/noLazy-required-for-soundness-bug.js"});
+		Misc.run("test/micro/noLazy-required-for-soundness-bug.js");
 		Main.reset();
 		Options.get().enableTest();
 		Options.get().enableNoLazy();
-		Misc.run(new String[]{"test/micro/noLazy-required-for-soundness-bug.js"});
+		Misc.run("test/micro/noLazy-required-for-soundness-bug.js");
 	}
 
-	@Test
-	public void emptyValueWithoutLazyBug() {
+    @Test
+    public void emptyValueWithoutLazyBug() {
 		Misc.init();
-		Main.reset();
-		Options.get().enableTest();
-		Misc.run(new String[]{"test/micro/empty-value-bug.js"});
-		Main.reset();
-		Options.get().enableTest();
-		Options.get().enableNoLazy();
-		Misc.run(new String[]{"test/micro/empty-value-bug.js"});
-	}
+        Main.reset();
+        Options.get().enableTest();
+        Misc.run("test/micro/empty-value-bug.js");
+
+        Main.reset();
+        Options.get().enableTest();
+        Options.get().enableNoLazy();
+        Misc.run("test/micro/empty-value-bug.js");
+    }
 
 	@Test
 	public void argumentsMutation() {
 		Misc.init();
 		Misc.runSource(
-				"function f(){",
-				"	TAJS_assertEquals('foo', arguments[0]);",
-				"	TAJS_assertEquals(undefined, arguments[1]);",
-				"	TAJS_assertEquals(1, arguments.length);",
-				"",
-				"	arguments[0] = 42;",
-				"	arguments[1] = true;",
-				"	TAJS_assertEquals(42, arguments[0]);",
-				"	TAJS_assertEquals(true, arguments[1]);",
-				"	TAJS_assertEquals(1, arguments.length);",
-				"",
-				"	Array.prototype.push.call(arguments, false);",
-				"	TAJS_assertEquals(42, arguments[0]);",
-				"	TAJS_assertEquals(false, arguments[1]);",
-				"	TAJS_assertEquals(undefined, arguments[2]);",
-				"	TAJS_assertEquals(2, arguments.length);",
-				"",
-				"	Array.prototype.pop.call(arguments);",
-				"	TAJS_assertEquals(42, arguments[0]);",
-				"	TAJS_assertEquals(undefined, arguments[1]);",
-				"	TAJS_assertEquals(undefined, arguments[2]);",
-				"	TAJS_assertEquals(1, arguments.length);",
-				"}",
-				"f('foo')");
-	}
+		        "function f(){",
+                "	TAJS_assertEquals('foo', arguments[0]);",
+                "	TAJS_assertEquals(undefined, arguments[1]);",
+                "	TAJS_assertEquals(1, arguments.length);",
+                "",
+                "	arguments[0] = 42;",
+                "	arguments[1] = true;",
+                "	TAJS_assertEquals(42, arguments[0]);",
+                "	TAJS_assertEquals(true, arguments[1]);",
+                "	TAJS_assertEquals(1, arguments.length);",
+                "",
+                "	Array.prototype.push.call(arguments, false);",
+                "	TAJS_assertEquals(42, arguments[0]);",
+                "	TAJS_assertEquals(false, arguments[1]);",
+                "	TAJS_assertEquals(undefined, arguments[2]);",
+                "	TAJS_assertEquals(2, arguments.length);",
+                "",
+                "	Array.prototype.pop.call(arguments);",
+                "	TAJS_assertEquals(42, arguments[0]);",
+                "	TAJS_assertEquals(undefined, arguments[1]);",
+                "	TAJS_assertEquals(undefined, arguments[2]);",
+                "	TAJS_assertEquals(1, arguments.length);",
+                "}",
+                "f('foo')");
+    }
 
-	@Test
-	public void sortPropertyPrecision() {
-		Misc.init();
-		Misc.runSource(
-				"function f(x, y){",
-				"   TAJS_assert(x, 'isMaybeUndef', false);",
-				"   TAJS_assert(y, 'isMaybeUndef', false);",
-				"}",
-				"[1, 2, 3, 4].sort(f);");
-	}
+    @Test
+    public void sortPropertyPrecision() {
+        Misc.init();
+        Misc.runSource(
+                "function f(x, y){",
+                "   TAJS_assert(x, 'isMaybeUndef', false);",
+                "   TAJS_assert(y, 'isMaybeUndef', false);",
+                "}",
+                "[1, 2, 3, 4].sort(f);");
+    }
 
-	@Test
-	public void sortShortArrays() {
-		Misc.init();
-		Misc.runSource(
-				"function f(x, y){",
-				"   TAJS_assert(false);",
-				"}",
-				"[].sort(f);",
-				"[1].sort(f);");
-	}
+    @Test
+    public void sortShortArrays() {
+        Misc.init();
+        Misc.runSource(
+                "function f(x, y){",
+                "   TAJS_assert(false);",
+                "}",
+                "[].sort(f);",
+                "[1].sort(f);");
+    }
 
 	@Test
 	public void preciseApplyWithMixedArgumentCounts() {
 		Misc.init();
-		Misc.runSource(
-				"function f(x, y, z){",
+		Misc.runSource("function f(x, y, z){",
 				"   TAJS_assertEquals(true, x);",
 				"   TAJS_assertEquals(false, y);",
 				"   TAJS_assertEquals(undefined, z);",
@@ -4373,52 +4181,51 @@ public class TestMicro {
 		);
 	}
 
-	@Test
-	public void preciseApplyWithUnknownArgumentCounts() {
-		Misc.init();
-		Misc.runSource(
-				"function f(){",
-				"	TAJS_assertEquals(0, arguments[0])",
-				"	TAJS_assertEquals(1, arguments[1])",
-				"	TAJS_assertEquals(2, arguments[2])",
-				"	TAJS_assertEquals(3, arguments[3])",
-				"	TAJS_assertEquals(4, arguments[4])",
-				"	TAJS_assertEquals(5, arguments[5])",
-				"	TAJS_assertEquals(6, arguments[6])",
-				"	TAJS_assertEquals(7, arguments[7])",
-				"	TAJS_assertEquals(8, arguments[8])",
-				"	TAJS_assertEquals(9, arguments[9])",
-				"	TAJS_assertEquals(MIXED, arguments[10])",
-				"	TAJS_assertEquals(MIXED, arguments[11])",
-				"}",
-				"var U = !!Math.random();",
-				"var UINT = U? 20: 50;",
-				"var MIXED = U? UINT: U? true: undefined",
-				"var args = []",
-				"args[UINT] = true;",
-				"args[0] = 0;",
-				"args[1] = 1;",
-				"args[2] = 2;",
-				"args[3] = 3;",
-				"args[4] = 4;",
-				"args[5] = 5;",
-				"args[6] = 6;",
-				"args[7] = 7;",
-				"args[8] = 8;",
-				"args[9] = 9;",
-				"args[10] = 10;",
-				"args[11] = 11;",
-				"args[12] = 12;",
-				"args[13] = 13;",
-				"f.apply(this, args);"
-		);
-	}
+//	@Test
+//	public void preciseApplyWithUnknownArgumentCounts() {
+//		Misc.init();
+//		Misc.runSource(
+//				"function f(){",
+//				"	TAJS_assertEquals(0, arguments[0])",
+//				"	TAJS_assertEquals(1, arguments[1])",
+//				"	TAJS_assertEquals(2, arguments[2])",
+//				"	TAJS_assertEquals(3, arguments[3])",
+//				"	TAJS_assertEquals(4, arguments[4])",
+//				"	TAJS_assertEquals(5, arguments[5])",
+//				"	TAJS_assertEquals(6, arguments[6])",
+//				"	TAJS_assertEquals(7, arguments[7])",
+//				"	TAJS_assertEquals(8, arguments[8])",
+//				"	TAJS_assertEquals(9, arguments[9])",
+//				"	TAJS_assertEquals(MIXED, arguments[10])",
+//				"	TAJS_assertEquals(MIXED, arguments[11])",
+//				"}",
+//				"var U = !!Math.random();",
+//				"var UINT = U? 20: 50;",
+//				"var MIXED = U? UINT: U? true: undefined",
+//				"var args = []",
+//				"args[UINT] = true;",
+//				"args[0] = 0;",
+//				"args[1] = 1;",
+//				"args[2] = 2;",
+//				"args[3] = 3;",
+//				"args[4] = 4;",
+//				"args[5] = 5;",
+//				"args[6] = 6;",
+//				"args[7] = 7;",
+//				"args[8] = 8;",
+//				"args[9] = 9;",
+//				"args[10] = 10;",
+//				"args[11] = 11;",
+//				"args[12] = 12;",
+//				"args[13] = 13;",
+//				"f.apply(this, args);"
+//		);
+//	}
 
 	@Test
 	public void preciseApplyWithUnknownArgumentCounts_small() {
 		Misc.init();
-		Misc.runSource(
-				"function f(x){",
+		Misc.runSource("function f(x){",
 				"	TAJS_assertEquals(0, x)",
 				"}",
 				"var U = !!Math.random();",
@@ -4435,7 +4242,7 @@ public class TestMicro {
 		Misc.init();
 		Options.get().enableIncludeDom();
 		Misc.captureSystemOutput();
-		Misc.run(new String[]{"test/micro/domEventHandlerSetter.js"});
+		Misc.run("test/micro/domEventHandlerSetter.js");
 		Misc.checkSystemOutput();
 	}
 
@@ -4443,19 +4250,15 @@ public class TestMicro {
 	public void propertyAccess_bug_noLazy() {
 		Misc.init();
 		Options.get().enableNoLazy();
-		Misc.runSource(new String[]{
-						"var v1 = Object.prototype.toString;",
-						"TAJS_dumpValue(v1);"
-				}, new CompositeMonitoring(new Monitoring(), new OrdinaryExitReachableChecker())
-		);
+		Misc.runSource("var v1 = Object.prototype.toString;",
+						"TAJS_dumpValue(v1);");
 	}
 
 	@Test
 	public void domObjectPropertyReadWrites() {
 		Misc.init();
 		Options.get().enableIncludeDom();
-		Misc.runSource(
-				"var p1 = true;",
+		Misc.runSource("var p1 = true;",
 				"window.p2 = false;",
 				"var e = document.body;",
 				"e.p3 = 0;",
@@ -4473,7 +4276,7 @@ public class TestMicro {
 				"p4 = 0;",
 				"TAJS_assertEquals(false, p1);", // strong update on variable writes
 				"TAJS_assertEquals(true, window.p2);", // strong update on singleton property writes
-				"TAJS_assertEquals(TAJS_join(undefined, Math.random()? 42: 87), e.p3);", // weak update on summary property writes
+				"TAJS_assertEquals(TAJS_join(undefined, 0, 42), e.p3);", // weak update on summary property writes
 				"TAJS_assertEquals(0, p4);", // strong update on implicit variable writes
 
 				// test typeof-accesses
@@ -4488,8 +4291,7 @@ public class TestMicro {
 	public void arrayLiteralUses() {
 		Misc.init();
 		Options.get().enableNoLazy();
-		Misc.runSource(
-				"var v1 = [].length;",
+		Misc.runSource("var v1 = [].length;",
 				"var v2 = [].sort;",
 				"var v3 = [].sort()",
 				"var v4 = [].sort(function f(){})",
@@ -4502,8 +4304,7 @@ public class TestMicro {
 	public void arrayPropertyAccesses_noLazy() {
 		Misc.init();
 		Options.get().enableNoLazy();
-		Misc.runSource(
-				"var v1 = [].xxx;",
+		Misc.runSource("var v1 = [].xxx;",
 				"var v2 = [].length;",
 				"var v3 = [].toString;",
 				"var v4 = ['x'][0];",
@@ -4518,8 +4319,7 @@ public class TestMicro {
 	public void arrayPropertyAccesses_bug_noLazy() {
 		Misc.init();
 		Options.get().enableNoLazy();
-		Misc.runSource(
-				"var v1 = [].xxx;"
+		Misc.runSource("var v1 = [].xxx;"
 		);
 	}
 
@@ -4527,8 +4327,7 @@ public class TestMicro {
 	public void domObjectSetterReadWrites() {
 		Misc.init();
 		Options.get().enableIncludeDom();
-		Misc.runSource(
-				"var onclick = true;",
+		Misc.runSource("var onclick = true;",
 				"window.ondblclick = false;",
 				"var e = document.body;",
 				"e.onmousemove = 0;",
@@ -4554,8 +4353,7 @@ public class TestMicro {
 	@Test
 	public void writingToArrayLengthInWith() {
 		Misc.init();
-		Misc.runSource(
-				"var x = []",
+		Misc.runSource("var x = []",
 				"with (x) {length = 87}",
 				"TAJS_assertEquals(87, x.length);",
 				"var y = []",
@@ -4567,20 +4365,16 @@ public class TestMicro {
 	@Test
 	public void maybe_infinite_loop() {
 		Misc.init();
-		Misc.runSource(
-				new String[]{
-						"var f = function() {return 42;}",
+		Misc.runSource("var f = function() {return 42;}",
 						"if (Math.random()) { f = function g() {g();} } ",
-						"TAJS_dumpValue(f());"
-				},
-				new CompositeMonitoring(new Monitoring(), new OrdinaryExitReachableChecker()));
+						"TAJS_dumpValue(f());");
 	}
 
 //	@Test
 //	public void bad_array_length_write_bug() {
 //		Misc.init();
 //		Options.get().enablePolyfillMDN();
-//		Misc.run(new String[]{
+//		Misc.run(
 //				"test/micro/bad-array-length-write-bug.js"
 //		});
 //	}
@@ -4588,19 +4382,15 @@ public class TestMicro {
 	@Test
 	public void bad_array_length_write_bug_minimized() {
 		Misc.init();
-		Misc.run(new String[]{
-						"test/micro/bad-array-length-write-bug_minimized.js"
-				},
-				new CompositeMonitoring(new Monitoring(), new OrdinaryExitReachableChecker()));
+		Misc.run("test/micro/bad-array-length-write-bug_minimized.js");
 	}
 
 	@Test
 	public void invalidArrayLengths() {
 		Misc.init();
-		// NB: it would be an improvement to throw definite exceptions
+		Options.get().enableDoNotExpectOrdinaryExit();
 		Misc.captureSystemOutput();
-		Misc.runSource(
-				"var a = [];",
+		Misc.runSource("var a = [];",
 				"a.length = 1;", // OK for sanity
 				"a.length = NaN;",
 				"a.length = {};",
@@ -4612,66 +4402,51 @@ public class TestMicro {
 	@Test
 	public void nativeLengthUpdate() {
 		Misc.init();
-		Misc.runSource(new String[]{
-						"var a = [];",
+		Misc.runSource("var a = [];",
 						"TAJS_assertEquals(0, a.length);",
 						"a.push(42);",
-						"TAJS_assertEquals(1, a.length);",
-				},
-				new CompositeMonitoring(new Monitoring(), new OrdinaryExitReachableChecker()));
+						"TAJS_assertEquals(1, a.length);");
 	}
 
 	@Test
 	public void nativeLengthUpdate_bug() {
 		Misc.init();
-		Misc.runSource(new String[]{
-						"var a = [];",
+		Misc.runSource("var a = [];",
 						"function push(){",
 						"	a.push(42);",
 						"}",
 						"TAJS_assertEquals(0, a.length);",
 						"push();",
-						"TAJS_assertEquals(1, a.length);",
-				},
-				new CompositeMonitoring(new Monitoring(), new OrdinaryExitReachableChecker()));
+						"TAJS_assertEquals(1, a.length);");
 	}
 
 	@Test
 	public void nativeLengthUpdate_bug_noLazy() {
 		Misc.init();
 		Options.get().enableNoLazy();
-		Misc.runSource(new String[]{
-						"var a = [];",
+		Misc.runSource("var a = [];",
 						"function push(){",
 						"	a.push(42);",
 						"}",
 						"TAJS_assertEquals(0, a.length);",
 						"push();",
-						"TAJS_assertEquals(1, a.length);",
-				},
-				new CompositeMonitoring(new Monitoring(), new OrdinaryExitReachableChecker()));
+						"TAJS_assertEquals(1, a.length);");
 	}
 
 	@Test
 	public void bad_default_array_property() {
 		Misc.init();
-		Misc.runSource(
-				new String[]{
-						"var o = {};",
+		Misc.runSource("var o = {};",
 						"o.__defineGetter__('length', function () {/* length: undefined */} );",
 						"try{",
 						"	Array.prototype.splice.call(o, 0, 0, 'x');",
-						"}catch(e){/* squelch type errors (not relevant for this test) */}"
-				},
-				new CompositeMonitoring(new Monitoring(), new OrdinaryExitReachableChecker()));
+						"}catch(e){/* squelch type errors (not relevant for this test) */}");
 	}
 
 	@Test
 	public void nonNumberCharactersInImpreciseConcatenation() {
 		Misc.init();
-		Misc.runSource(
-				new String[]{
-						"var STR = TAJS_make('AnyStr');",
+		Misc.runSource("var STR = TAJS_make('AnyStr');",
 						"var STR_OTHER_NUM = '' + TAJS_make('AnyNumOther');",
 						"var NON_NUMBER_CHARS = 'x';",
 						"var NUMBER_CHARS_UINT = '9';",
@@ -4682,62 +4457,445 @@ public class TestMicro {
 						"TAJS_assert(STR + NUMBER_CHARS_Y, 'isMaybeStrOtherNum');",
 						"",
 						"TAJS_assert(NON_NUMBER_CHARS + STR, 'isMaybeStrOtherNum', false);",
-						"TAJS_assert(NUMBER_CHARS_UINT + STR, 'isMaybeStrOtherNum');",
-						"TAJS_assert(NUMBER_CHARS_Y + STR, 'isMaybeStrOtherNum');",
+						"TAJS_assert(NUMBER_CHARS_UINT + STR, 'isMaybeStrPrefix');",
+						"TAJS_assert(NUMBER_CHARS_Y + STR, 'isMaybeStrPrefix');",
 						"",
 						"TAJS_assert(STR_OTHER_NUM + NON_NUMBER_CHARS, 'isMaybeStrOtherNum', false);",
 						"TAJS_assert(STR_OTHER_NUM + NUMBER_CHARS_UINT, 'isMaybeStrOtherNum');",
 						"TAJS_assert(STR_OTHER_NUM + NUMBER_CHARS_Y, 'isMaybeStrOtherNum');",
 						"",
 						"TAJS_assert(NON_NUMBER_CHARS + STR_OTHER_NUM, 'isMaybeStrOtherNum', false);",
-						"TAJS_assert(NUMBER_CHARS_UINT + STR_OTHER_NUM, 'isMaybeStrOtherNum');",
-						"TAJS_assert(NUMBER_CHARS_Y + STR_OTHER_NUM, 'isMaybeStrOtherNum');",
+						"TAJS_assert(NUMBER_CHARS_UINT + STR_OTHER_NUM, 'isMaybeStrPrefix');",
+						"TAJS_assert(NUMBER_CHARS_Y + STR_OTHER_NUM, 'isMaybeStrPrefix');");
+	}
 
-				},
-				new CompositeMonitoring(new Monitoring(), new OrdinaryExitReachableChecker()));
+	@Test
+	public void consoleModel() {
+		Options.get().enableConsoleModel();
+		Misc.runSource("console.log()");
+	}
+
+	@Test
+	public void commonAsync() {
+		Misc.init();
+		Options.get().enableAsyncEvents();
+		Options.get().enableCommonAsyncPolyfill();
+		Misc.runSource("var timeoutTriggered = false;",
+						"var intervalTriggered = false;",
+						"var r1 = setTimeout(function(){timeoutTriggered = true;});",
+						"var r2 = setInterval(function(){intervalTriggered = true;}, 1000);",
+						"var r3 = clearInterval(42);",
+						"var r4 = clearTimeout(42);",
+						"TAJS_asyncListen(function(){",
+						"	TAJS_assert(timeoutTriggered, 'isMaybeAnyBool');",
+						"	TAJS_assert(intervalTriggered, 'isMaybeAnyBool');",
+						"	TAJS_assert(r1, 'isMaybeNumUInt');",
+						"	TAJS_assert(r2, 'isMaybeNumUInt');",
+						"	TAJS_assert(r3, 'isMaybeUndef');",
+						"	TAJS_assert(r4, 'isMaybeUndef');",
+						"});");
 	}
 
     @Test
     public void staticNumberIsFinite() {
         Misc.init();
-        Misc.runSource(
-                new String[]{
-                        "TAJS_assertEquals(true, Number.isFinite(42));",
+        Misc.runSource("TAJS_assertEquals(true, Number.isFinite(42));",
                         "TAJS_assertEquals(false, Number.isFinite(Infinity));",
                         "TAJS_assertEquals(false, Number.isFinite(NaN));",
                         "TAJS_assertEquals(false, Number.isFinite('foo'));",
                         "TAJS_assertEquals(false, Number.isFinite('42'));",
-                        "TAJS_assertEquals(false, Number.isFinite());"
-                },
-                new CompositeMonitoring(new Monitoring(), new OrdinaryExitReachableChecker()));
+                        "TAJS_assertEquals(false, Number.isFinite());");
     }
 
     @Test
     public void string_startsWith() {
         Misc.init();
-        Misc.runSource(
-                new String[]{
-                        "TAJS_assert('foo'.startsWith('f'));",
+        Misc.runSource("TAJS_assert('foo'.startsWith('f'));",
                         "TAJS_assert('foo'.startsWith('fo'));",
                         "TAJS_assert('foo'.startsWith('foo'));",
                         "TAJS_assert(!'foo'.startsWith('fooo'));",
-                        "TAJS_assert(!'bar'.startsWith('foo'));",
-                },
-                new CompositeMonitoring(new Monitoring(), new OrdinaryExitReachableChecker()));
+                        "TAJS_assert(!'bar'.startsWith('foo'));");
     }
 
     @Test
     public void string_endsWith() {
         Misc.init();
-        Misc.runSource(
-                new String[]{
-                        "TAJS_assert('foo'.endsWith('o'));",
+        Misc.runSource("TAJS_assert('foo'.endsWith('o'));",
                         "TAJS_assert('foo'.endsWith('oo'));",
                         "TAJS_assert('foo'.endsWith('foo'));",
                         "TAJS_assert(!'foo'.endsWith('ffoo'));",
-                        "TAJS_assert(!'bar'.endsWith('foo'));",
-                },
-                new CompositeMonitoring(new Monitoring(), new OrdinaryExitReachableChecker()));
+                        "TAJS_assert(!'bar'.endsWith('foo'));");
     }
 
+    @Test
+    public void testPrimitiveCall() {
+        Misc.init();
+        //Options.get().enableFlowgraph();
+        Misc.runSource("var x = 'dyt'.toString();",
+                        "TAJS_assertEquals(x, 'dyt');");
+    }
+
+	@Test
+	public void testToStringCall() {
+		Misc.init();
+		//Options.get().enableFlowgraph();
+		Misc.runSource("var y = { dyt: function() { return this.baat }, baat: 42 };",
+						"var z = { toString: function() { return 'dyt'; } };",
+						"var x = y[z]();",
+						"TAJS_assertEquals(x, 42);");
+	}
+
+	@Test
+	public void testPartialCreate() {
+		Misc.init();
+		Misc.runSource("TAJS_makePartial('FUNCTION', 'dummy1');",
+						"TAJS_makePartial('OBJECT', 'dummy2');",
+						"TAJS_makePartial('ARRAY', 'dummy3');");
+	}
+
+	@Test
+	public void testPartialIdentity() {
+		Misc.init();
+		Misc.runSource("var v1 = TAJS_makePartial('OBJECT', 'dummy1');",
+						"var v2a = TAJS_makePartial('OBJECT', 'dummy2');",
+						"var v2b = TAJS_makePartial('OBJECT', 'dummy2');",
+						"var v2c = TAJS_makePartial('OBJECT', 'dummy2');",
+						"TAJS_assert(v1 !== v2a);",
+						"TAJS_assert(v1 !== v2b);",
+						"TAJS_assert(v1 !== v2c);",
+						"TAJS_assert(v2a !== v2c);",
+						"TAJS_assert(v2b !== v2c);",
+						"TAJS_assert(v2a === v2b, 'isMaybeAnyBool');");
+	}
+
+	@Test(expected = AnalysisLimitationException.AnalysisModelLimitationException.class)
+	public void testPartialInvoke() {
+		Misc.init();
+		Misc.runSource("var f = TAJS_makePartial('FUNCTION', 'dummy');",
+						"f();");
+	}
+
+	@Test
+	public void escapingArguments1() {
+        Misc.init();
+		Misc.runSource(
+				new String[]{
+						"function mkArgs() { return arguments; }",
+						"var args = mkArgs();",
+						"args.foo;" // discovers bottom-object -> stops propagation
+				});
+	}
+
+    @Test
+    public void escapingArguments2() {
+        Misc.init();
+        Misc.runSource("function mkArgs() { return arguments; }",
+                        "var args = mkArgs('dyt');",
+                        "TAJS_assertEquals(args[0], 'dyt');");
+    }
+
+	@Test
+	public void toStringCallUndefined() {
+		Misc.init();
+		Misc.runSource("var x = Object.prototype.toString.call();",
+				"TAJS_assertEquals('[object Undefined]', x);"
+		);
+	}
+
+	@Test
+	public void toStringCallNull() {
+		Misc.init();
+		Misc.runSource("var x = Object.prototype.toString.call(null);",
+				"TAJS_assertEquals('[object Null]', x);");
+	}
+
+	@Test
+	public void toStringApplyUndefined() {
+		Misc.init();
+		Misc.runSource("var x = Object.prototype.toString.apply();",
+				"TAJS_assertEquals('[object Undefined]', x);");
+	}
+
+	@Test
+	public void toStringApplyNull() {
+		Misc.init();
+		Misc.runSource("var x = Object.prototype.toString.apply(null);",
+				"TAJS_assertEquals('[object Null]', x);");
+	}
+
+	@Test
+	public void trimCallUndefined() {
+		Misc.init();
+		Misc.runSource("try { ",
+				"  String.prototype.trim.call(undefined);",
+				"  TAJS_assert(false);",
+				"} catch (e) { ",
+				"  TAJS_assert(e instanceof TypeError);",
+				"}");
+	}
+
+	@Test
+	public void trimCallNull() {
+		Misc.init();
+		Misc.runSource("try { ",
+				"  String.prototype.trim.call(null);",
+				"  TAJS_assert(false);",
+				"} catch (e) { ",
+				"  TAJS_assert(e instanceof TypeError);",
+				"}");
+	}
+
+	@Test
+	public void trimCallString() {
+		Misc.init();
+		Misc.runSource("try { ",
+				"  TAJS_assertEquals(String.prototype.trim.call(' x '), 'x');",
+				"} catch (e) { ",
+				"  TAJS_assert(false);",
+				"}");
+	}
+
+	@Test
+	public void callStringThisNonStrict() {
+		Misc.init();
+		Misc.runSource("try { ",
+				"  function f(){TAJS_assert(this instanceof String)};",
+				"  f.call('foo');",
+				"} catch (e) { ",
+				"  TAJS_assert(false);",
+				"}");
+	}
+
+    @Test
+    public void callStringThisStrict() {
+        Misc.init();
+        Misc.runSource(
+                "(function(){",
+                "   'use strict';",
+                "   try { ",
+                "     function f(){TAJS_assertEquals('foo', this)};",
+                "     f.call('foo');",
+                "   } catch (e) { ",
+                "     TAJS_assert(false);",
+                "   }",
+                "})();");
+    }
+
+    @Test
+    public void callStrictWithoutReceiver() {
+        Misc.init();
+        Misc.runSource(
+                "(function(){",
+                "   'use strict';",
+                "   try { ",
+                "     function f(){TAJS_assertEquals(undefined, this)};",
+                "     f();",
+                "   } catch (e) { ",
+                "     TAJS_assert(false);",
+                "   }",
+                "})();");
+    }
+
+    @Test
+    public void inheritStrict() {
+        Misc.init();
+        Misc.runSource(
+                "(function(){",
+                "   'use strict';",
+                "   try { ",
+                "     function f(){TAJS_assertEquals(undefined, this)};",
+                "     f();",
+                "   } catch (e) { ",
+                "     TAJS_assert(false);",
+                "   }",
+                "})();");
+    }
+
+    @Test
+    public void deepInheritStrict() {
+        Misc.init();
+        Misc.runSource(
+                "(function(){",
+                "   'use strict';",
+                "   (function(){",
+                "       try { ",
+                "           function f(){TAJS_assertEquals(undefined, this)};",
+                "           f();",
+                "       } catch (e) { ",
+                "           TAJS_assert(false);",
+                "       }",
+                "   })();",
+                "})();");
+    }
+
+    @Test
+    public void selfStrict() {
+        Misc.init();
+        Misc.runSource(
+                "(function(){",
+                "   try { ",
+                "     function f(){'use strict'; TAJS_assertEquals(undefined, this)};",
+                "     f();",
+                "   } catch (e) { ",
+                "     TAJS_assert(false);",
+                "   }",
+                "})();");
+    }
+
+    @Test(expected = AssertionError.class /* Top level 'use strict' is not yet supported (for architectural reasons */)
+    public void topLevelStrict() {
+        Misc.init();
+        Misc.runSource(
+                "'use strict';",
+                "try { ",
+                "  function f(){TAJS_assertEquals(undefined, this)};",
+                "  f();",
+                "} catch (e) { ",
+                "  TAJS_assert(false);",
+                "}");
+    }
+
+	@Test
+	public void hasOwnPropertyCallString() {
+		Misc.init();
+		Misc.runSource("try { ",
+				"TAJS_assert(Object.prototype.hasOwnProperty.call('', 'length'));",
+				"} catch (e) { ",
+				"  TAJS_assert(false);",
+				"}");
+	}
+
+//	@Test(expected = AssertionError.class)
+//	public void uninvoked__TAJS_assert() {
+//		Misc.runSource(
+//				"if(false)TAJS_assert(true);"
+//		);
+//	}
+
+//	@Test(expected = AssertionError.class)
+//	public void uninvoked__TAJS_assertEquals() {
+//		Misc.runSource(
+//				"if(false)TAJS_assertEquals(true, true);"
+//		);
+//	}
+
+	@Test
+	public void uninvoked__TAJS_assertFalse() {
+		Misc.runSource("if(false)TAJS_assert(false);");
+	}
+
+//    @Test
+//    public void htmlErrorWarnings() {
+//	    Misc.init();
+//	    Misc.captureSystemOutput();
+//        Misc.run(
+//                "test/micro/bad-html.html"
+//        });
+//        Misc.checkSystemOutput();
+//	}
+
+//	@Test
+//	public void typeofComplements_equalityInCondition() {
+//		Misc.runSource(
+//				"if(typeof TAJS_join('foo', 42) === 'function'){",
+//				"	TAJS_assert(false);",
+//				"}"
+//		);
+//	}
+
+//	@Test
+//	public void typeofComplements_inequalityInCondition() {
+//		Misc.runSource(
+//				"if(typeof TAJS_join('foo', 42) !== 'function'){",
+//				"}else{",
+//				"	TAJS_assert(false);",
+//				"}"
+//		);
+//	}
+
+	@Test
+	public void whiteSpaceToNumberCoercion() {
+		Misc.runSource("TAJS_assert(0 == '\\r');",
+				"TAJS_assert(0 == '');",
+				"TAJS_assert(0 == ' ');",
+				"TAJS_assert(0 == '  ');",
+				"TAJS_assert(0 == '\\n');",
+				"TAJS_assert(0 == '\\r');",
+				"TAJS_assert(0 == '\\r\\n');",
+				"TAJS_assert(0 == ' \\r\\n ');"
+		);
+	}
+
+	@Test
+	public void regExpConstructionWithUndefinedOrAbsent() {
+		Misc.runSource("var re;",
+				"re = /undefined/",
+				"TAJS_assertEquals('/undefined/', re.toString());",
+				"re = new RegExp();",
+				"TAJS_assertEquals('/(?:)/', re.toString());",
+				"re = new RegExp(undefined);",
+				"TAJS_assertEquals('/(?:)/', re.toString());",
+				"re.compile()",
+				"TAJS_assertEquals('/(?:)/', re.toString());",
+				"re.compile(undefined)",
+				"TAJS_assertEquals('/undefined/', re.toString());"
+		);
+	}
+
+    @Test
+    public void htmlErrorWarnings() {
+        Misc.init();
+        Misc.captureSystemOutput();
+        Misc.run("test/micro/bad-html.html");
+        Misc.checkSystemOutput();
+    }
+
+	@Test
+	public void polymorphicGetter() {
+		Misc.runSource("function f(x) {var t = x.p; return t;}",
+				"var a1 = {p: 42};",
+				"var a2 = {get p() {return 'foo'}};",
+				"var t1 = f(a1);",
+				"var t2 = f(a2);",
+				"TAJS_assertEquals(t1, 42);",
+				"TAJS_assert(t2, 'isMaybeSingleNum || isMaybeSingleStr');"
+		);
+	}
+
+	@Test
+	public void sizzle1() {
+		Misc.init();
+        Misc.captureSystemOutput();
+		Misc.runSource("var done = false;",
+				"var Obj = {",
+				"  f: function () {},",
+				"  g: function () {",
+				"    done = true;",
+				"    tokenize();",
+				"  }",
+				"};",
+				"function tokenize() {",
+				"  if (done) return;",
+				"  var type;",
+				"  for (type in Obj) {",
+				"    // TAJS_dumpState();",
+				"    Obj[type]();",
+				"    TAJS_dumpValue(type);",
+				"  }",
+				"}",
+				"tokenize();");
+        Misc.checkSystemOutput();
+	}
+
+	@Test
+	public void joinTwoPrefixStringsModifiedBug() throws Exception {
+		Misc.runSource("var anyString = Math.random() ? 'a' : 'b'",
+				"function f(x) {",
+				"	var expected = 'str' + anyString", // STR_PREFIX[str]
+				"	var actual = x + anyString", // Without bugfix: STR_PREFIX[string]
+				"	TAJS_assertEquals(expected, actual)",
+				"}",
+				"f('string')",
+				"f('str')");
+	}
 }

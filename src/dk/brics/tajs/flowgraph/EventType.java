@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,8 +28,8 @@ import static dk.brics.tajs.util.Collections.newMap;
 /**
  * Auxiliary methods for recognizing HTML attribute names related to event handlers.
  */
-public enum EventType { // TODO: (#116) javadoc
-    // TODO rename toStrings
+public enum EventType { // TODO: (#116) reconsider how to represent HTML event handlers in flowgraphs
+
     LOAD("LoadEventHandler"),
     UNLOAD("UnloadEventHandler"),
     KEYBOARD("KeyboardEventHandler"),
@@ -51,10 +51,14 @@ public enum EventType { // TODO: (#116) javadoc
         return name;
     }
 
+    public boolean isUserEvent() {
+        return this == EventType.KEYBOARD || this == EventType.MOUSE || this == EventType.OTHER;
+    }
+
     /**
      * Auxiliary methods for recognizing HTML attribute names related to event handlers.
      */
-    private static Map<String, EventType> eventTypes = newMap();
+    private static final Map<String, EventType> eventTypes = newMap();
 
     static {
         eventTypes.put("load", EventType.LOAD);
@@ -79,6 +83,7 @@ public enum EventType { // TODO: (#116) javadoc
         eventTypes.put("focus", EventType.OTHER);
         eventTypes.put("focusin", EventType.OTHER);
         eventTypes.put("focusout", EventType.OTHER);
+        eventTypes.put("hashchange", EventType.OTHER);
         eventTypes.put("blur", EventType.OTHER);
         eventTypes.put("submit", EventType.OTHER);
         eventTypes.put("reset", EventType.OTHER);
@@ -91,9 +96,12 @@ public enum EventType { // TODO: (#116) javadoc
         eventTypes.put("touchend", EventType.OTHER);
         eventTypes.put("touchmove", EventType.OTHER);
         eventTypes.put("touchcancel", EventType.OTHER);
-        eventTypes.put("orientationchange", EventType.OTHER);/* FIXME make event-object for this event type */
+        eventTypes.put("orientationchange", EventType.OTHER); // TODO: make event-object for this event type?
     }
 
+    /**
+     * All event type names, e.g. click, reset, submit.
+     */
     public static Set<String> getAllEventTypeNames() {
         return eventTypes.keySet();
     }
@@ -101,10 +109,13 @@ public enum EventType { // TODO: (#116) javadoc
     public static EventType getEventHandlerTypeFromString(String typeString) {
         return eventTypes.entrySet().stream()
                 .filter(e -> e.getKey().equalsIgnoreCase(typeString))
-                .map(e -> e.getValue())
+                .map(Map.Entry::getValue)
                 .findAny().orElseGet(() -> EventType.UNKNOWN);
     }
 
+    /**
+     * The DOM element attribute names that can trigger the event type, e.g. MOUSE -> {onclick, ondblclick, ...}.
+     */
     public static Collection<String> getEventHandlerAttributeNames(EventType type) {
         return eventTypes.entrySet().stream()
                 .filter(e -> e.getValue() == type)
@@ -112,6 +123,9 @@ public enum EventType { // TODO: (#116) javadoc
                 .collect(Collectors.toList());
     }
 
+    /**
+     * The event type that can be triggered by the DOM element attribute name, e.g. onclick -> MOUSE.
+     */
     public static EventType getEventHandlerTypeFromAttributeName(String eventName) {
         if (!eventName.startsWith(attributePrefix)) {
             return EventType.UNKNOWN;

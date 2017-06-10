@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,7 +21,7 @@ import com.google.javascript.jscomp.parsing.parser.trees.LiteralExpressionTree;
 public abstract class DispatchingLiteralTreeAuxVisitor<T, V> implements LiteralTreeAuxVisitor<T, V> {
 
     /**
-     * From {@link com.google.javascript.jscomp.parsing.IRFactory.TransformDispatcher#processLiteralExpression(com.google.javascript.jscomp.parsing.parser.trees.LiteralExpressionTree)}
+     * From {@link com.google.javascript.jscomp.parsing.IRFactory.TransformDispatcher#processLiteralExpression(LiteralExpressionTree)}
      */
     public T process(LiteralExpressionTree tree, V aux) {
         switch (tree.literalToken.type) {

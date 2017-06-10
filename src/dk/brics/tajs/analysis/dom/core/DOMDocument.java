@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,9 +17,10 @@
 package dk.brics.tajs.analysis.dom.core;
 
 import dk.brics.tajs.analysis.Conversion;
+import dk.brics.tajs.analysis.Exceptions;
+import dk.brics.tajs.analysis.FunctionCalls;
 import dk.brics.tajs.analysis.FunctionCalls.CallInfo;
 import dk.brics.tajs.analysis.InitialStateBuilder;
-import dk.brics.tajs.analysis.NativeFunctions;
 import dk.brics.tajs.analysis.PropVarOperations;
 import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.analysis.dom.DOMFunctions;
@@ -33,7 +34,6 @@ import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.solver.Message.Severity;
 
-import java.util.Collections;
 import java.util.Set;
 
 import static dk.brics.tajs.analysis.dom.DOMFunctions.createDOMFunction;
@@ -55,9 +55,9 @@ public class DOMDocument {
     public static void build(Solver.SolverInterface c) {
         State s = c.getState();
         PropVarOperations pv = c.getAnalysis().getPropVarOperations();
-        CONSTRUCTOR = new ObjectLabel(DOMObjects.DOCUMENT_CONSTRUCTOR, Kind.FUNCTION);
-        PROTOTYPE = new ObjectLabel(DOMObjects.DOCUMENT_PROTOTYPE, Kind.OBJECT);
-        INSTANCES = new ObjectLabel(DOMObjects.DOCUMENT_INSTANCES, Kind.OBJECT);
+        CONSTRUCTOR = ObjectLabel.make(DOMObjects.DOCUMENT_CONSTRUCTOR, Kind.FUNCTION);
+        PROTOTYPE = ObjectLabel.make(DOMObjects.DOCUMENT_PROTOTYPE, Kind.OBJECT);
+        INSTANCES = ObjectLabel.make(DOMObjects.DOCUMENT_INSTANCES, Kind.OBJECT);
 
         // Constructor Object
         s.newObject(CONSTRUCTOR);
@@ -133,7 +133,9 @@ public class DOMDocument {
         createDOMFunction(PROTOTYPE, DOMObjects.DOCUMENT_RENAME_NODE, "renameNode", 3, c);
 
         // semistandard
+        createDOMFunction(PROTOTYPE, DOMObjects.DOCUMENT_EVALUATE, "evaluate", 2, c);
         createDOMFunction(PROTOTYPE, DOMObjects.DOCUMENT_QUERY_SELECTOR_ALL, "querySelectorAll", 1, c);
+        createDOMFunction(PROTOTYPE, DOMObjects.DOCUMENT_QUERY_SELECTOR, "querySelector", 1, c);
     }
 
     /**
@@ -143,35 +145,60 @@ public class DOMDocument {
         State s = c.getState();
         switch (nativeobject) {
             case DOCUMENT_ADOPT_NODE: {
-                NativeFunctions.expectParameters(nativeobject, call, c, 1, 1);
+                DOMFunctions.expectParameters(nativeobject, call, c, 1, 1);
+                if (!call.isUnknownNumberOfArgs() && call.getNumberOfArgs() < 1) {
+                    Exceptions.throwTypeError(c);
+                    return Value.makeNone();
+                }
                 return Value.makeObject(DOMElement.INSTANCES);
             }
             case DOCUMENT_CREATE_ATTRIBUTE: {
-                NativeFunctions.expectParameters(nativeobject, call, c, 1, 1);
+                DOMFunctions.expectParameters(nativeobject, call, c, 1, 1);
+                if (!call.isUnknownNumberOfArgs() && call.getNumberOfArgs() < 1) {
+                    Exceptions.throwTypeError(c);
+                    return Value.makeNone();
+                }
                 /* Value name =*/
-                Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
+                Conversion.toString(FunctionCalls.readParameter(call, s, 0), c);
                 return Value.makeObject(DOMAttr.INSTANCES);
             }
 
             case DOCUMENT_CREATE_CDATASECTION: {
-                NativeFunctions.expectParameters(nativeobject, call, c, 1, 1);
-                Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
-                ObjectLabel label = new ObjectLabel(DOMObjects.CDATASECTION_INSTANCES, Kind.OBJECT);
+                DOMFunctions.expectParameters(nativeobject, call, c, 1, 1);
+                if (!call.isUnknownNumberOfArgs() && call.getNumberOfArgs() < 1) {
+                    Exceptions.throwTypeError(c);
+                    return Value.makeNone();
+                }
+                Conversion.toString(FunctionCalls.readParameter(call, s, 0), c);
+                ObjectLabel label = ObjectLabel.make(DOMObjects.CDATASECTION_INSTANCES, Kind.OBJECT);
                 s.newObject(label);
                 return Value.makeObject(label);
             }
             case DOCUMENT_CREATE_COMMENT: {
-                NativeFunctions.expectParameters(nativeobject, call, c, 1, 1);
-                Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
-                ObjectLabel label = new ObjectLabel(DOMObjects.COMMENT_INSTANCES, Kind.OBJECT);
+                DOMFunctions.expectParameters(nativeobject, call, c, 1, 1);
+                if (!call.isUnknownNumberOfArgs() && call.getNumberOfArgs() < 1) {
+                    Exceptions.throwTypeError(c);
+                    return Value.makeNone();
+                }
+                Conversion.toString(FunctionCalls.readParameter(call, s, 0), c);
+                ObjectLabel label = ObjectLabel.make(DOMObjects.COMMENT_INSTANCES, Kind.OBJECT);
                 s.newObject(label);
                 return Value.makeObject(label);
             }
             case DOCUMENT_CREATE_ELEMENT: {
-                NativeFunctions.expectParameters(nativeobject, call, c, 1, 1);
-                Value tagname = Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
+                DOMFunctions.expectParameters(nativeobject, call, c, 1, 1);
+                if (!call.isUnknownNumberOfArgs() && call.getNumberOfArgs() < 1) {
+                    Exceptions.throwTypeError(c);
+                    return Value.makeNone();
+                }
+                Value tagname = Conversion.toString(FunctionCalls.readParameter(call, s, 0), c);
                 if (tagname.isMaybeSingleStr()) {
                     String t = tagname.getStr();
+                    if (t.length() > 0 && t.charAt(0) == '<') {
+                        // Extended createElement syntax is being used
+                        DOMException.throwException(call.getSourceNode(), c);
+                        return Value.makeNone();
+                    }
                     return Value.makeObject(DOMFunctions.getHTMLObjectLabel(t));
                 } else if (tagname.isMaybeFuzzyStr()) { // TODO: could be more precise...
                     return Value.makeObject(html_object_labels);
@@ -180,10 +207,19 @@ public class DOMDocument {
                 }
             }
             case DOCUMENT_CREATE_ELEMENT_NS: {
-                NativeFunctions.expectParameters(nativeobject, call, c, 1, 2);
-                Value tagname = Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
+                DOMFunctions.expectParameters(nativeobject, call, c, 1, 2);
+                if (!call.isUnknownNumberOfArgs() && call.getNumberOfArgs() < 1) {
+                    Exceptions.throwTypeError(c);
+                    return Value.makeNone();
+                }
+                Value tagname = Conversion.toString(FunctionCalls.readParameter(call, s, 0), c);
                 if (tagname.isMaybeSingleStr()) {
                     String t = tagname.getStr();
+                    if (t.length() > 0 && t.charAt(0) == '<') {
+                        // Extended createElement syntax is being used
+                        DOMException.throwException(call.getSourceNode(), c);
+                        return Value.makeNone();
+                    }
                     return Value.makeObject(DOMFunctions.getHTMLObjectLabel(t));
                 } else if (tagname.isMaybeFuzzyStr()) { // TODO: could be more precise...
                     return Value.makeObject(html_object_labels);
@@ -192,53 +228,84 @@ public class DOMDocument {
                 }
             }
             case DOCUMENT_CREATE_ENTITYREFERENCE: {
-                NativeFunctions.expectParameters(nativeobject, call, c, 1, 1);
+                DOMFunctions.expectParameters(nativeobject, call, c, 1, 1);
+                if (!call.isUnknownNumberOfArgs() && call.getNumberOfArgs() < 1) {
+                    Exceptions.throwTypeError(c);
+                    return Value.makeNone();
+                }
                 /* Value name =*/
-                Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
+                Conversion.toString(FunctionCalls.readParameter(call, s, 0), c);
                 return Value.makeObject(DOMEntityReference.INSTANCES);
             }
             case DOCUMENT_CREATEPROCESSINGINSTRUCTION: {
-                NativeFunctions.expectParameters(nativeobject, call, c, 2, 2);
+                DOMFunctions.expectParameters(nativeobject, call, c, 2, 2);
+                if (!call.isUnknownNumberOfArgs() && call.getNumberOfArgs() < 2) {
+                    Exceptions.throwTypeError(c);
+                    return Value.makeNone();
+                }
                 /* Value target =*/
-                Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
+                Conversion.toString(FunctionCalls.readParameter(call, s, 0), c);
                 /* Value data =*/
-                Conversion.toString(NativeFunctions.readParameter(call, s, 1), c);
+                Conversion.toString(FunctionCalls.readParameter(call, s, 1), c);
                 return Value.makeObject(DOMProcessingInstruction.INSTANCES);
             }
             case DOCUMENT_CREATE_TEXTNODE: {
-                NativeFunctions.expectParameters(nativeobject, call, c, 1, 1);
+                DOMFunctions.expectParameters(nativeobject, call, c, 1, 1);
+                if (!call.isUnknownNumberOfArgs() && call.getNumberOfArgs() < 1) {
+                    Exceptions.throwTypeError(c);
+                    return Value.makeNone();
+                }
                 /* Value data =*/
-                Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
+                Conversion.toString(FunctionCalls.readParameter(call, s, 0), c);
                 return Value.makeObject(DOMText.INSTANCES);
             }
             case DOCUMENT_CREATE_DOCUMENTFRAGMENT: {
-                NativeFunctions.expectParameters(nativeobject, call, c, 0, 0);
+                DOMFunctions.expectParameters(nativeobject, call, c, 0, 0);
                 return Value.makeObject(DOMDocumentFragment.INSTANCES);
             }
             case DOCUMENT_GET_ELEMENT_BY_ID: {
-                NativeFunctions.expectParameters(nativeobject, call, c, 1, 1);
-                Value id = Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
-                if (id.isMaybeSingleStr()) {
-                    Set<ObjectLabel> labels = s.getExtras().getFromMayMap(DOMRegistry.MayMaps.ELEMENTS_BY_ID.name(), id.getStr());
-                    if (!labels.isEmpty()) {
-                        return Value.makeObject(labels).joinNull();
-                    }
-                    return DOMFunctions.makeAnyHTMLElement().joinNull();
+                if (!call.isUnknownNumberOfArgs() && call.getNumberOfArgs() < 1) {
+                    Exceptions.throwTypeError(c);
+                    return Value.makeNone();
                 }
-                return DOMFunctions.makeAnyHTMLElement().joinNull();
+                DOMFunctions.expectParameters(nativeobject, call, c, 1, 1);
+                Value id = Conversion.toString(FunctionCalls.readParameter(call, s, 0), c);
+                Set<ObjectLabel> labels;
+                if (id.isMaybeSingleStr()) {
+                    labels = s.getExtras().getFromMayMap(DOMRegistry.MayMaps.ELEMENTS_BY_ID.name(), id.getStr());
+                    if (labels.isEmpty()) {
+                        c.getMonitoring().addMessage(call.getSourceNode(), Severity.HIGH, String.format("<%s>(%s) did not match any elements", nativeobject, id));
+                    }
+                } else {
+                    labels = s.getExtras().getValuesFromMayMap(DOMRegistry.MayMaps.ELEMENTS_BY_ID.name());
+                }
+                return Value.makeObject(labels).joinNull();
             }
             case DOCUMENT_GET_ELEMENTS_BY_TAGNAME: {
-                NativeFunctions.expectParameters(nativeobject, call, c, 1, 1);
-                Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
+                DOMFunctions.expectParameters(nativeobject, call, c, 1, 1);
+                Conversion.toString(FunctionCalls.readParameter(call, s, 0), c);
                 return Value.makeObject(HTMLCollection.INSTANCES);
             }
             case DOCUMENT_RENAME_NODE: {
-                NativeFunctions.expectParameters(nativeobject, call, c, 1, 3);
+                DOMFunctions.expectParameters(nativeobject, call, c, 1, 3);
+                if (!call.isUnknownNumberOfArgs() && call.getNumberOfArgs() < 1) {
+                    Exceptions.throwTypeError(c);
+                    return Value.makeNone();
+                }
                 return DOMFunctions.makeAnyHTMLElement();
             }
             case DOCUMENT_QUERY_SELECTOR_ALL: {
-                NativeFunctions.expectParameters(nativeobject, call, c, 1, 1);
-                return Value.makeObject(DOMNodeList.INSTANCES);
+                DOMFunctions.expectParameters(nativeobject, call, c, 1, 1);
+                if (!call.isUnknownNumberOfArgs() && call.getNumberOfArgs() < 1) {
+                    Exceptions.throwTypeError(c);
+                    return Value.makeNone();
+                }
+                return DOMNodeList.makeNaiveInstance();
+            }
+            case DOCUMENT_QUERY_SELECTOR: {
+                DOMFunctions.expectParameters(nativeobject, call, c, 1, 1);
+                Value selector = Conversion.toString(FunctionCalls.readParameter(call, s, 0), c);
+                return DOMFunctions.makeAnyHTMLElement().joinNull();
             }
             case DOCUMENT_CREATE_ATTRIBUTE_NS:
             case DOCUMENT_GET_ELEMENTS_BY_TAGNAME_NS:

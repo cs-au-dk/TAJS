@@ -1,0 +1,3 @@
+out/temp-sources/TestMicro.sizzle1.js: [definite] Exceptional program exit is unreachable
+out/temp-sources/TestMicro.sizzle1.js:15:5: [info] Abstract value: "f"
+out/temp-sources/TestMicro.sizzle1.js:15:5: [info] Abstract value: "g"

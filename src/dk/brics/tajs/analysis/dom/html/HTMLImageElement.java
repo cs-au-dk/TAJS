@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,9 +18,9 @@ package dk.brics.tajs.analysis.dom.html;
 
 import dk.brics.tajs.analysis.FunctionCalls;
 import dk.brics.tajs.analysis.InitialStateBuilder;
-import dk.brics.tajs.analysis.NativeFunctions;
 import dk.brics.tajs.analysis.PropVarOperations;
 import dk.brics.tajs.analysis.Solver;
+import dk.brics.tajs.analysis.dom.DOMFunctions;
 import dk.brics.tajs.analysis.dom.DOMObjects;
 import dk.brics.tajs.analysis.dom.DOMWindow;
 import dk.brics.tajs.lattice.ObjectLabel;
@@ -41,9 +41,9 @@ public class HTMLImageElement {
     public static void build(Solver.SolverInterface c) {
         State s = c.getState();
         PropVarOperations pv = c.getAnalysis().getPropVarOperations();
-        CONSTRUCTOR = new ObjectLabel(DOMObjects.HTMLIMAGEELEMENT_CONSTRUCTOR, ObjectLabel.Kind.FUNCTION);
-        INSTANCES = new ObjectLabel(DOMObjects.HTMLIMAGEELEMENT_INSTANCES, ObjectLabel.Kind.OBJECT);
-        PROTOTYPE = new ObjectLabel(DOMObjects.HTMLIMAGEELEMENT_PROTOTYPE, ObjectLabel.Kind.OBJECT);
+        CONSTRUCTOR = ObjectLabel.make(DOMObjects.HTMLIMAGEELEMENT_CONSTRUCTOR, ObjectLabel.Kind.FUNCTION);
+        INSTANCES = ObjectLabel.make(DOMObjects.HTMLIMAGEELEMENT_INSTANCES, ObjectLabel.Kind.OBJECT);
+        PROTOTYPE = ObjectLabel.make(DOMObjects.HTMLIMAGEELEMENT_PROTOTYPE, ObjectLabel.Kind.OBJECT);
 
         // Constructor Object
         s.newObject(CONSTRUCTOR);
@@ -68,7 +68,6 @@ public class HTMLImageElement {
 
         // DOM Level 1
         createDOMProperty(INSTANCES, "lowSrc", Value.makeAnyStr(), c);
-        createDOMProperty(INSTANCES, "name", Value.makeAnyStr(), c);
         createDOMProperty(INSTANCES, "align", Value.makeAnyStr(), c);
         createDOMProperty(INSTANCES, "alt", Value.makeAnyStr(), c);
         createDOMProperty(INSTANCES, "border", Value.makeAnyStr(), c);
@@ -105,7 +104,7 @@ public class HTMLImageElement {
     public static Value evaluate(DOMObjects nativeObject, FunctionCalls.CallInfo call, Solver.SolverInterface c) {
         switch (nativeObject) {
             case HTMLIMAGEELEMENT_CONSTRUCTOR: {
-                NativeFunctions.expectParameters(nativeObject, call, c, 0, 0);
+                DOMFunctions.expectParameters(nativeObject, call, c, 0, 0);
                 return Value.makeObject(INSTANCES);
             }
             default: {

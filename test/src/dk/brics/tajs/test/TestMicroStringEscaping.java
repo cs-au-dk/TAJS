@@ -69,7 +69,7 @@ public class TestMicroStringEscaping {
     @Test
     public void stringReplace_withBackslashes_inFile() {
         Misc.init();
-        Misc.run(new String[]{"test/micro/stringReplace_withBackslashes.js"});
+        Misc.run("test/micro/stringReplace_withBackslashes.js");
     }
 
     @Test

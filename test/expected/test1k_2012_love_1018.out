@@ -1,7 +1,10 @@
 test/1k2012love/1018.js:62:1: [definite] The variable b is never used
-test/1k2012love/1018.js:1:1: [maybe] TypeError, call to non-function
-test/1k2012love/1018.js:2:1: [maybe] TypeError, call to non-function
-test/1k2012love/1018.js:3:1: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1018.js:7:9: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1018.js:34:3: [maybe] ReferenceError, reading absent variable a
+test/1k2012love/1018.js:35:6: [maybe] ReferenceError, reading absent variable x
+test/1k2012love/1018.js:35:9: [maybe] ReferenceError, reading absent variable y
+test/1k2012love/1018.js:38:5: [maybe] ReferenceError, reading absent variable x
+test/1k2012love/1018.js:38:8: [maybe] ReferenceError, reading absent variable y
 test/1k2012love/1018.js:46:2: [maybe] TypeError, call to non-function
 test/1k2012love/1018.js:47:2: [maybe] TypeError, call to non-function
 test/1k2012love/1018.js:48:2: [maybe] TypeError, call to non-function
@@ -22,33 +25,63 @@ test/1k2012love/1018.js:68:2: [maybe] TypeError, call to non-function
 test/1k2012love/1018.js:69:2: [maybe] TypeError, call to non-function
 test/1k2012love/1018.js:70:2: [maybe] TypeError, call to non-function
 test/1k2012love/1018.js:71:2: [maybe] TypeError, call to non-function
-test/1k2012love/shim.js:8:9: [maybe] TypeError, accessing property of null/undefined
-test/1k2012love/shim.js:8:9: [maybe] TypeError, call to non-function
-test/1k2012love/shim.js:9:1: [maybe] TypeError, accessing property of null/undefined
-test/1k2012love/1018.js:1:1: [maybe] Reading absent property setAttribute
-test/1k2012love/1018.js:2:1: [maybe] Reading absent property setAttribute
-test/1k2012love/1018.js:46:2: [maybe] Reading absent property bp
-test/1k2012love/1018.js:47:2: [maybe] Reading absent property b
-test/1k2012love/1018.js:48:2: [maybe] Reading absent property b
-test/1k2012love/1018.js:49:2: [maybe] Reading absent property b
-test/1k2012love/1018.js:51:3: [maybe] Reading absent property b
-test/1k2012love/1018.js:52:3: [maybe] Reading absent property b
-test/1k2012love/1018.js:53:3: [maybe] Reading absent property b
-test/1k2012love/1018.js:55:3: [maybe] Reading absent property l
-test/1k2012love/1018.js:56:3: [maybe] Reading absent property l
-test/1k2012love/1018.js:57:3: [maybe] Reading absent property l
-test/1k2012love/1018.js:59:2: [maybe] Reading absent property cp
-test/1k2012love/1018.js:63:2: [maybe] Reading absent property bp
-test/1k2012love/1018.js:64:2: [maybe] Reading absent property l
-test/1k2012love/1018.js:65:2: [maybe] Reading absent property l
-test/1k2012love/1018.js:66:2: [maybe] Reading absent property l
-test/1k2012love/1018.js:67:2: [maybe] Reading absent property l
-test/1k2012love/1018.js:68:2: [maybe] Reading absent property b
-test/1k2012love/1018.js:69:2: [maybe] Reading absent property b
-test/1k2012love/1018.js:70:2: [maybe] Reading absent property b
-test/1k2012love/1018.js:71:2: [maybe] Reading absent property cp
-test/1k2012love/shim.js:6:9: [maybe] Reading absent property body
-test/1k2012love/shim.js:8:9: [maybe] Reading absent property getContext
-test/1k2012love/shim.js:9:1: [maybe] Reading absent property body
-test/1k2012love/shim.js:7:9: [maybe] Reading absent property (computed name)
-test/1k2012love/shim.js,test/1k2012love/1018.js: [maybe] Uncaught exception, constructed at [test/1k2012love/1018.js:1:1, test/1k2012love/1018.js:2:1, test/1k2012love/1018.js:3:1, test/1k2012love/1018.js:46:2, test/1k2012love/1018.js:47:2, test/1k2012love/1018.js:48:2, test/1k2012love/1018.js:49:2, test/1k2012love/1018.js:51:3, test/1k2012love/1018.js:52:3, test/1k2012love/1018.js:53:3, test/1k2012love/1018.js:55:3, test/1k2012love/1018.js:56:3, test/1k2012love/1018.js:57:3, test/1k2012love/1018.js:59:2, test/1k2012love/1018.js:63:2, test/1k2012love/1018.js:64:2, test/1k2012love/1018.js:65:2, test/1k2012love/1018.js:66:2, test/1k2012love/1018.js:67:2, test/1k2012love/1018.js:68:2, test/1k2012love/1018.js:69:2, test/1k2012love/1018.js:70:2, test/1k2012love/1018.js:71:2, test/1k2012love/shim.js:8:9, test/1k2012love/shim.js:9:1]
+test/1k2012love/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1018.js:46:2: [maybe] Reading absent property bp of host object
+test/1k2012love/1018.js:47:2: [maybe] Reading absent property b of host object
+test/1k2012love/1018.js:48:2: [maybe] Reading absent property b of host object
+test/1k2012love/1018.js:49:2: [maybe] Reading absent property b of host object
+test/1k2012love/1018.js:51:3: [maybe] Reading absent property b of host object
+test/1k2012love/1018.js:52:3: [maybe] Reading absent property b of host object
+test/1k2012love/1018.js:53:3: [maybe] Reading absent property b of host object
+test/1k2012love/1018.js:55:3: [maybe] Reading absent property l of host object
+test/1k2012love/1018.js:56:3: [maybe] Reading absent property l of host object
+test/1k2012love/1018.js:57:3: [maybe] Reading absent property l of host object
+test/1k2012love/1018.js:59:2: [maybe] Reading absent property cp of host object
+test/1k2012love/1018.js:63:2: [maybe] Reading absent property bp of host object
+test/1k2012love/1018.js:64:2: [maybe] Reading absent property l of host object
+test/1k2012love/1018.js:65:2: [maybe] Reading absent property l of host object
+test/1k2012love/1018.js:66:2: [maybe] Reading absent property l of host object
+test/1k2012love/1018.js:67:2: [maybe] Reading absent property l of host object
+test/1k2012love/1018.js:68:2: [maybe] Reading absent property b of host object
+test/1k2012love/1018.js:69:2: [maybe] Reading absent property b of host object
+test/1k2012love/1018.js:70:2: [maybe] Reading absent property b of host object
+test/1k2012love/1018.js:71:2: [maybe] Reading absent property cp of host object
+test/1k2012love/1018.js: [maybe] Uncaught exception, constructed at [test/1k2012love/1018.js:7:9, test/1k2012love/1018.js:34:3, test/1k2012love/1018.js:35:6, test/1k2012love/1018.js:35:9, test/1k2012love/1018.js:38:5, test/1k2012love/1018.js:38:8, test/1k2012love/1018.js:46:2, test/1k2012love/1018.js:47:2, test/1k2012love/1018.js:48:2, test/1k2012love/1018.js:49:2, test/1k2012love/1018.js:51:3, test/1k2012love/1018.js:52:3, test/1k2012love/1018.js:53:3, test/1k2012love/1018.js:55:3, test/1k2012love/1018.js:56:3, test/1k2012love/1018.js:57:3, test/1k2012love/1018.js:59:2, test/1k2012love/1018.js:63:2, test/1k2012love/1018.js:64:2, test/1k2012love/1018.js:65:2, test/1k2012love/1018.js:66:2, test/1k2012love/1018.js:67:2, test/1k2012love/1018.js:68:2, test/1k2012love/1018.js:69:2, test/1k2012love/1018.js:70:2, test/1k2012love/1018.js:71:2, test/1k2012love/shim.js:9:5]
+test/1k2012love/1018.js:40:16: [maybe] Conversion to number yields NaN
+test/1k2012love/1018.js:47:6: [maybe] Conversion to number yields NaN
+test/1k2012love/1018.js:47:13: [maybe] Conversion to number yields NaN
+test/1k2012love/1018.js:48:6: [maybe] Conversion to number yields NaN
+test/1k2012love/1018.js:48:16: [maybe] Conversion to number yields NaN
+test/1k2012love/1018.js:48:23: [maybe] Conversion to number yields NaN
+test/1k2012love/1018.js:48:29: [maybe] Conversion to number yields NaN
+test/1k2012love/1018.js:48:35: [maybe] Conversion to number yields NaN
+test/1k2012love/1018.js:49:6: [maybe] Conversion to number yields NaN
+test/1k2012love/1018.js:49:37: [maybe] Conversion to number yields NaN
+test/1k2012love/1018.js:51:23: [maybe] Conversion to number yields NaN
+test/1k2012love/1018.js:51:38: [maybe] Conversion to number yields NaN
+test/1k2012love/1018.js:51:45: [maybe] Conversion to number yields NaN
+test/1k2012love/1018.js:52:15: [maybe] Conversion to number yields NaN
+test/1k2012love/1018.js:52:22: [maybe] Conversion to number yields NaN
+test/1k2012love/1018.js:53:7: [maybe] Conversion to number yields NaN
+test/1k2012love/1018.js:53:17: [maybe] Conversion to number yields NaN
+test/1k2012love/1018.js:53:24: [maybe] Conversion to number yields NaN
+test/1k2012love/1018.js:53:31: [maybe] Conversion to number yields NaN
+test/1k2012love/1018.js:53:38: [maybe] Conversion to number yields NaN
+test/1k2012love/1018.js:55:7: [maybe] Conversion to number yields NaN
+test/1k2012love/1018.js:55:14: [maybe] Conversion to number yields NaN
+test/1k2012love/1018.js:57:7: [maybe] Conversion to number yields NaN
+test/1k2012love/1018.js:64:6: [maybe] Conversion to number yields NaN
+test/1k2012love/1018.js:66:6: [maybe] Conversion to number yields NaN
+test/1k2012love/1018.js:66:13: [maybe] Conversion to number yields NaN
+test/1k2012love/1018.js:67:6: [maybe] Conversion to number yields NaN
+test/1k2012love/1018.js:68:22: [maybe] Conversion to number yields NaN
+test/1k2012love/1018.js:68:37: [maybe] Conversion to number yields NaN
+test/1k2012love/1018.js:68:44: [maybe] Conversion to number yields NaN
+test/1k2012love/1018.js:69:6: [maybe] Conversion to number yields NaN
+test/1k2012love/1018.js:69:13: [maybe] Conversion to number yields NaN
+test/1k2012love/1018.js:69:20: [maybe] Conversion to number yields NaN
+test/1k2012love/1018.js:70:6: [maybe] Conversion to number yields NaN
+test/1k2012love/1018.js:70:16: [maybe] Conversion to number yields NaN
+test/1k2012love/1018.js:70:23: [maybe] Conversion to number yields NaN
+test/1k2012love/1018.js:70:30: [maybe] Conversion to number yields NaN
+test/1k2012love/1018.js:70:37: [maybe] Conversion to number yields NaN

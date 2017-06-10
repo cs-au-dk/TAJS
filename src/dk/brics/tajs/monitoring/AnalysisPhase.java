@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,9 +21,12 @@ package dk.brics.tajs.monitoring;
 */
 public enum AnalysisPhase {
 
-    LOADING_FILES,
+    // loading of the initial files, and setup of initial state
+    INITIALIZATION,
 
-    DATAFLOW_ANALYSIS,
+    // the actual fix-point solving phase
+    ANALYSIS,
 
+    // the scanning phase, data should be collected here
     SCAN
 }

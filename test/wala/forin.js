@@ -12,5 +12,5 @@ var q = testForIn({
 });
 
 TAJS_assert(q, 'isMaybeStrUInt');
-TAJS_assert(q, 'isMaybeStrIdentifierParts');
+TAJS_assert(q, 'isMaybeStrOtherIdentifierParts');
 

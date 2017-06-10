@@ -99,7 +99,6 @@ test/google/delta-blue.js:699:12: [maybe] TypeError, accessing property of null/
 test/google/delta-blue.js:699:12: [maybe] TypeError, call to non-function
 test/google/delta-blue.js:705:34: [maybe] TypeError, accessing property of null/undefined
 test/google/delta-blue.js:705:34: [maybe] TypeError, call to non-function
-test/google/delta-blue.js:706:9: [maybe] TypeError, accessing property of null/undefined
 test/google/delta-blue.js:706:9: [maybe] TypeError, call to non-function
 test/google/delta-blue.js:707:18: [maybe] TypeError, call to non-function
 test/google/delta-blue.js:715:21: [maybe] TypeError, accessing property of null/undefined

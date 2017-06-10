@@ -1,3 +1,4 @@
+test/chromeexperiments/raytracer.html:775:4: [definite] The conditional expression is always true
 test/chromeexperiments/raytracer.html:803:17: [definite] The conditional expression is always true
 test/chromeexperiments/raytracer.html:804:18: [definite] The conditional expression is always true
 test/chromeexperiments/raytracer.html:952:4: [definite] The conditional expression is always true
@@ -14,10 +15,6 @@ test/chromeexperiments/raytracer.html:276:4: [definite] Dead assignment, propert
 test/chromeexperiments/raytracer.html:283:5: [definite] Dead assignment, property obj is never read
 test/chromeexperiments/raytracer.html:283:28: [definite] Dead assignment, property parent is never read
 test/chromeexperiments/raytracer.html:284:5: [definite] Dead assignment, property setbitmap is never read
-test/chromeexperiments/raytracer.html:949:10: [definite] Reading absent property value
-test/chromeexperiments/raytracer.html:950:10: [definite] Reading absent property value
-test/chromeexperiments/raytracer.html:1290:4: [definite] Dead assignment, property value is never read
-test/chromeexperiments/raytracer.html:1291:4: [definite] Dead assignment, property value is never read
 test/chromeexperiments/raytracer.html:14:2: [definite] Unreachable function checked
 test/chromeexperiments/raytracer.html:17:6: [definite] The variable fovy is never used
 test/chromeexperiments/raytracer.html:121:10: [definite] The variable v is never used
@@ -136,7 +133,6 @@ test/chromeexperiments/raytracer.html:1030:18: [maybe] TypeError, call to non-fu
 test/chromeexperiments/raytracer.html:1033:20: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/raytracer.html:1033:20: [maybe] TypeError, call to non-function
 test/chromeexperiments/raytracer.html:1047:17: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/raytracer.html:1047:29: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/raytracer.html:1048:7: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/raytracer.html:1048:18: [maybe] TypeError, call to non-function
 test/chromeexperiments/raytracer.html:1052:9: [maybe] TypeError, accessing property of null/undefined
@@ -170,7 +166,6 @@ test/chromeexperiments/raytracer.html:1261:3: [maybe] TypeError, accessing prope
 test/chromeexperiments/raytracer.html:1262:3: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/raytracer.html:1271:11: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/raytracer.html:1285:3: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/raytracer.html:1286:3: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/raytracer.html:1289:15: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/raytracer.html:1290:4: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/raytracer.html:1291:4: [maybe] TypeError, accessing property of null/undefined
@@ -412,13 +407,13 @@ test/chromeexperiments/raytracer.html:751:13: [maybe] Reading absent property ob
 test/chromeexperiments/raytracer.html:753:21: [maybe] Reading absent property obj
 test/chromeexperiments/raytracer.html:755:13: [maybe] Reading absent property bmp
 test/chromeexperiments/raytracer.html:764:9: [maybe] Reading 'this' yields the global object
-test/chromeexperiments/raytracer.html:764:9: [maybe] Reading absent property ownerobj
+test/chromeexperiments/raytracer.html:764:9: [maybe] Reading absent property ownerobj of host object
 test/chromeexperiments/raytracer.html:765:7: [maybe] Reading absent property tex
 test/chromeexperiments/raytracer.html:766:10: [maybe] Reading absent property tex
 test/chromeexperiments/raytracer.html:766:19: [maybe] Reading 'this' yields the global object
-test/chromeexperiments/raytracer.html:766:19: [maybe] Reading absent property width
+test/chromeexperiments/raytracer.html:766:19: [maybe] Reading absent property width of host object
 test/chromeexperiments/raytracer.html:766:33: [maybe] Reading 'this' yields the global object
-test/chromeexperiments/raytracer.html:766:33: [maybe] Reading absent property height
+test/chromeexperiments/raytracer.html:766:33: [maybe] Reading absent property height of host object
 test/chromeexperiments/raytracer.html:769:5: [maybe] Reading absent property canv
 test/chromeexperiments/raytracer.html:770:5: [maybe] Reading absent property canv
 test/chromeexperiments/raytracer.html:771:13: [maybe] Reading absent property canv
@@ -432,7 +427,7 @@ test/chromeexperiments/raytracer.html:782:33: [maybe] Reading absent property bm
 test/chromeexperiments/raytracer.html:786:4: [maybe] Reading absent property tex
 test/chromeexperiments/raytracer.html:786:16: [maybe] Reading absent property bmp
 test/chromeexperiments/raytracer.html:788:27: [maybe] Reading 'this' yields the global object
-test/chromeexperiments/raytracer.html:788:27: [maybe] Reading absent property src
+test/chromeexperiments/raytracer.html:788:27: [maybe] Reading absent property src of host object
 test/chromeexperiments/raytracer.html:814:3: [maybe] Reading absent property setbitmap
 test/chromeexperiments/raytracer.html:814:3: [maybe] Reading absent property setuv
 test/chromeexperiments/raytracer.html:816:3: [maybe] Reading absent property sethalf
@@ -471,23 +466,20 @@ test/chromeexperiments/raytracer.html:895:7: [maybe] Reading absent property wx
 test/chromeexperiments/raytracer.html:896:18: [maybe] Reading absent property wx
 test/chromeexperiments/raytracer.html:896:24: [maybe] Reading absent property wy
 test/chromeexperiments/raytracer.html:896:30: [maybe] Reading absent property wz
-test/chromeexperiments/raytracer.html:937:7: [maybe] Reading absent property value
-test/chromeexperiments/raytracer.html:937:52: [maybe] Reading absent property value
-test/chromeexperiments/raytracer.html:938:7: [maybe] Reading absent property value
-test/chromeexperiments/raytracer.html:938:52: [maybe] Reading absent property value
-test/chromeexperiments/raytracer.html:939:7: [maybe] Reading absent property value
-test/chromeexperiments/raytracer.html:939:52: [maybe] Reading absent property value
-test/chromeexperiments/raytracer.html:948:15: [maybe] Reading absent property getContext
-test/chromeexperiments/raytracer.html:949:10: [maybe] Reading absent property attributes
-test/chromeexperiments/raytracer.html:949:10: [maybe] Reading absent property width
-test/chromeexperiments/raytracer.html:950:10: [maybe] Reading absent property attributes
-test/chromeexperiments/raytracer.html:950:10: [maybe] Reading absent property height
-test/chromeexperiments/raytracer.html:951:10: [maybe] Reading absent property getContext
-test/chromeexperiments/raytracer.html:956:10: [maybe] Reading absent property clientWidth
-test/chromeexperiments/raytracer.html:957:10: [maybe] Reading absent property clientHeight
-test/chromeexperiments/raytracer.html:981:4: [maybe] Reading absent property putImageData
-test/chromeexperiments/raytracer.html:984:4: [maybe] Reading absent property style
-test/chromeexperiments/raytracer.html:990:6: [maybe] Reading absent property fillRect
+test/chromeexperiments/raytracer.html:937:7: [maybe] Reading absent property value of host object
+test/chromeexperiments/raytracer.html:937:52: [maybe] Reading absent property value of host object
+test/chromeexperiments/raytracer.html:938:7: [maybe] Reading absent property value of host object
+test/chromeexperiments/raytracer.html:938:52: [maybe] Reading absent property value of host object
+test/chromeexperiments/raytracer.html:939:7: [maybe] Reading absent property value of host object
+test/chromeexperiments/raytracer.html:939:52: [maybe] Reading absent property value of host object
+test/chromeexperiments/raytracer.html:948:15: [maybe] Reading absent property getContext of host object
+test/chromeexperiments/raytracer.html:949:10: [maybe] Reading absent property value of host object
+test/chromeexperiments/raytracer.html:949:10: [maybe] Reading absent property width of host object
+test/chromeexperiments/raytracer.html:950:10: [maybe] Reading absent property height of host object
+test/chromeexperiments/raytracer.html:950:10: [maybe] Reading absent property value of host object
+test/chromeexperiments/raytracer.html:951:10: [maybe] Reading absent property getContext of host object
+test/chromeexperiments/raytracer.html:981:4: [maybe] Reading absent property putImageData of host object
+test/chromeexperiments/raytracer.html:990:6: [maybe] Reading absent property fillRect of host object
 test/chromeexperiments/raytracer.html:1004:27: [maybe] Reading absent property intersect
 test/chromeexperiments/raytracer.html:1009:4: [maybe] Reading absent property hit
 test/chromeexperiments/raytracer.html:1030:18: [maybe] Reading absent property li_intersect
@@ -520,19 +512,15 @@ test/chromeexperiments/raytracer.html:1104:11: [maybe] Reading absent property c
 test/chromeexperiments/raytracer.html:1109:21: [maybe] Reading absent property inside
 test/chromeexperiments/raytracer.html:1109:39: [maybe] Reading absent property inside
 test/chromeexperiments/raytracer.html:1109:59: [maybe] Reading absent property rf
-test/chromeexperiments/raytracer.html:1160:4: [maybe] Reading absent property fillRect
-test/chromeexperiments/raytracer.html:1161:14: [maybe] Reading absent property getImageData
-test/chromeexperiments/raytracer.html:1230:5: [maybe] Reading absent property innerHTML
-test/chromeexperiments/raytracer.html:1271:11: [maybe] Reading absent property value
-test/chromeexperiments/raytracer.html:1285:3: [maybe] Reading absent property style
-test/chromeexperiments/raytracer.html:1286:3: [maybe] Reading absent property style
-test/chromeexperiments/raytracer.html:1289:15: [maybe] Reading absent property getContext
-test/chromeexperiments/raytracer.html:1290:4: [maybe] Reading absent property attributes
-test/chromeexperiments/raytracer.html:1290:4: [maybe] Reading absent property width
-test/chromeexperiments/raytracer.html:1291:4: [maybe] Reading absent property attributes
-test/chromeexperiments/raytracer.html:1291:4: [maybe] Reading absent property height
-test/chromeexperiments/raytracer.html:1299:36: [maybe] Reading absent property checked
-test/chromeexperiments/raytracer.html: [maybe] Uncaught exception, constructed at [test/chromeexperiments/raytracer.html:99:3, test/chromeexperiments/raytracer.html:158:3, test/chromeexperiments/raytracer.html:507:3, test/chromeexperiments/raytracer.html:539:3, test/chromeexperiments/raytracer.html:589:3, test/chromeexperiments/raytracer.html:637:3, test/chromeexperiments/raytracer.html:643:5, test/chromeexperiments/raytracer.html:676:3, test/chromeexperiments/raytracer.html:682:12, test/chromeexperiments/raytracer.html:685:13, test/chromeexperiments/raytracer.html:688:13, test/chromeexperiments/raytracer.html:691:13, test/chromeexperiments/raytracer.html:710:3, test/chromeexperiments/raytracer.html:718:3, test/chromeexperiments/raytracer.html:755:13, test/chromeexperiments/raytracer.html:765:7, test/chromeexperiments/raytracer.html:768:5, test/chromeexperiments/raytracer.html:769:5, test/chromeexperiments/raytracer.html:770:5, test/chromeexperiments/raytracer.html:771:13, test/chromeexperiments/raytracer.html:772:5, test/chromeexperiments/raytracer.html:775:8, test/chromeexperiments/raytracer.html:775:17, test/chromeexperiments/raytracer.html:776:23, test/chromeexperiments/raytracer.html:778:6, test/chromeexperiments/raytracer.html:782:33, test/chromeexperiments/raytracer.html:786:4, test/chromeexperiments/raytracer.html:814:3, test/chromeexperiments/raytracer.html:816:3, test/chromeexperiments/raytracer.html:823:3, test/chromeexperiments/raytracer.html:825:3, test/chromeexperiments/raytracer.html:827:3, test/chromeexperiments/raytracer.html:829:3, test/chromeexperiments/raytracer.html:850:4, test/chromeexperiments/raytracer.html:854:8, test/chromeexperiments/raytracer.html:854:23, test/chromeexperiments/raytracer.html:855:8, test/chromeexperiments/raytracer.html:856:19, test/chromeexperiments/raytracer.html:857:5, test/chromeexperiments/raytracer.html:863:28, test/chromeexperiments/raytracer.html:880:17, test/chromeexperiments/raytracer.html:937:7, test/chromeexperiments/raytracer.html:937:52, test/chromeexperiments/raytracer.html:938:7, test/chromeexperiments/raytracer.html:938:52, test/chromeexperiments/raytracer.html:939:7, test/chromeexperiments/raytracer.html:939:52, test/chromeexperiments/raytracer.html:940:3, test/chromeexperiments/raytracer.html:941:3, test/chromeexperiments/raytracer.html:942:3, test/chromeexperiments/raytracer.html:948:15, test/chromeexperiments/raytracer.html:949:10, test/chromeexperiments/raytracer.html:950:10, test/chromeexperiments/raytracer.html:951:10, test/chromeexperiments/raytracer.html:956:10, test/chromeexperiments/raytracer.html:957:10, test/chromeexperiments/raytracer.html:959:5, test/chromeexperiments/raytracer.html:961:5, test/chromeexperiments/raytracer.html:978:18, test/chromeexperiments/raytracer.html:981:4, test/chromeexperiments/raytracer.html:984:4, test/chromeexperiments/raytracer.html:989:27, test/chromeexperiments/raytracer.html:990:6, test/chromeexperiments/raytracer.html:993:4, test/chromeexperiments/raytracer.html:1004:27, test/chromeexperiments/raytracer.html:1009:4, test/chromeexperiments/raytracer.html:1029:10, test/chromeexperiments/raytracer.html:1030:18, test/chromeexperiments/raytracer.html:1033:20, test/chromeexperiments/raytracer.html:1047:17, test/chromeexperiments/raytracer.html:1047:29, test/chromeexperiments/raytracer.html:1048:7, test/chromeexperiments/raytracer.html:1048:18, test/chromeexperiments/raytracer.html:1052:9, test/chromeexperiments/raytracer.html:1053:9, test/chromeexperiments/raytracer.html:1054:9, test/chromeexperiments/raytracer.html:1077:23, test/chromeexperiments/raytracer.html:1078:23, test/chromeexperiments/raytracer.html:1079:23, test/chromeexperiments/raytracer.html:1091:33, test/chromeexperiments/raytracer.html:1094:9, test/chromeexperiments/raytracer.html:1101:18, test/chromeexperiments/raytracer.html:1101:36, test/chromeexperiments/raytracer.html:1102:11, test/chromeexperiments/raytracer.html:1109:21, test/chromeexperiments/raytracer.html:1109:39, test/chromeexperiments/raytracer.html:1109:59, test/chromeexperiments/raytracer.html:1160:4, test/chromeexperiments/raytracer.html:1161:14, test/chromeexperiments/raytracer.html:1165:3, test/chromeexperiments/raytracer.html:1186:7, test/chromeexperiments/raytracer.html:1186:15, test/chromeexperiments/raytracer.html:1186:25, test/chromeexperiments/raytracer.html:1189:6, test/chromeexperiments/raytracer.html:1209:7, test/chromeexperiments/raytracer.html:1227:4, test/chromeexperiments/raytracer.html:1227:67, test/chromeexperiments/raytracer.html:1230:5, test/chromeexperiments/raytracer.html:1260:3, test/chromeexperiments/raytracer.html:1261:3, test/chromeexperiments/raytracer.html:1262:3, test/chromeexperiments/raytracer.html:1271:11, test/chromeexperiments/raytracer.html:1285:3, test/chromeexperiments/raytracer.html:1286:3, test/chromeexperiments/raytracer.html:1289:15, test/chromeexperiments/raytracer.html:1290:4, test/chromeexperiments/raytracer.html:1291:4, test/chromeexperiments/raytracer.html:1299:36]
+test/chromeexperiments/raytracer.html:1160:4: [maybe] Reading absent property fillRect of host object
+test/chromeexperiments/raytracer.html:1161:14: [maybe] Reading absent property getImageData of host object
+test/chromeexperiments/raytracer.html:1230:5: [maybe] Reading absent property innerHTML of host object
+test/chromeexperiments/raytracer.html:1271:11: [maybe] Reading absent property value of host object
+test/chromeexperiments/raytracer.html:1289:15: [maybe] Reading absent property getContext of host object
+test/chromeexperiments/raytracer.html:1290:4: [maybe] Reading absent property width of host object
+test/chromeexperiments/raytracer.html:1291:4: [maybe] Reading absent property height of host object
+test/chromeexperiments/raytracer.html:1299:36: [maybe] Reading absent property checked of host object
+test/chromeexperiments/raytracer.html: [maybe] Uncaught exception, constructed at [test/chromeexperiments/raytracer.html:99:3, test/chromeexperiments/raytracer.html:158:3, test/chromeexperiments/raytracer.html:507:3, test/chromeexperiments/raytracer.html:539:3, test/chromeexperiments/raytracer.html:589:3, test/chromeexperiments/raytracer.html:637:3, test/chromeexperiments/raytracer.html:643:5, test/chromeexperiments/raytracer.html:676:3, test/chromeexperiments/raytracer.html:682:12, test/chromeexperiments/raytracer.html:685:13, test/chromeexperiments/raytracer.html:688:13, test/chromeexperiments/raytracer.html:691:13, test/chromeexperiments/raytracer.html:710:3, test/chromeexperiments/raytracer.html:718:3, test/chromeexperiments/raytracer.html:755:13, test/chromeexperiments/raytracer.html:765:7, test/chromeexperiments/raytracer.html:768:5, test/chromeexperiments/raytracer.html:769:5, test/chromeexperiments/raytracer.html:770:5, test/chromeexperiments/raytracer.html:771:13, test/chromeexperiments/raytracer.html:772:5, test/chromeexperiments/raytracer.html:775:8, test/chromeexperiments/raytracer.html:775:17, test/chromeexperiments/raytracer.html:776:23, test/chromeexperiments/raytracer.html:778:6, test/chromeexperiments/raytracer.html:782:33, test/chromeexperiments/raytracer.html:786:4, test/chromeexperiments/raytracer.html:814:3, test/chromeexperiments/raytracer.html:816:3, test/chromeexperiments/raytracer.html:823:3, test/chromeexperiments/raytracer.html:825:3, test/chromeexperiments/raytracer.html:827:3, test/chromeexperiments/raytracer.html:829:3, test/chromeexperiments/raytracer.html:850:4, test/chromeexperiments/raytracer.html:854:8, test/chromeexperiments/raytracer.html:854:23, test/chromeexperiments/raytracer.html:855:8, test/chromeexperiments/raytracer.html:856:19, test/chromeexperiments/raytracer.html:857:5, test/chromeexperiments/raytracer.html:863:28, test/chromeexperiments/raytracer.html:880:17, test/chromeexperiments/raytracer.html:937:7, test/chromeexperiments/raytracer.html:937:52, test/chromeexperiments/raytracer.html:938:7, test/chromeexperiments/raytracer.html:938:52, test/chromeexperiments/raytracer.html:939:7, test/chromeexperiments/raytracer.html:939:52, test/chromeexperiments/raytracer.html:940:3, test/chromeexperiments/raytracer.html:941:3, test/chromeexperiments/raytracer.html:942:3, test/chromeexperiments/raytracer.html:948:15, test/chromeexperiments/raytracer.html:949:10, test/chromeexperiments/raytracer.html:950:10, test/chromeexperiments/raytracer.html:951:10, test/chromeexperiments/raytracer.html:956:10, test/chromeexperiments/raytracer.html:957:10, test/chromeexperiments/raytracer.html:959:5, test/chromeexperiments/raytracer.html:961:5, test/chromeexperiments/raytracer.html:978:18, test/chromeexperiments/raytracer.html:981:4, test/chromeexperiments/raytracer.html:984:4, test/chromeexperiments/raytracer.html:989:27, test/chromeexperiments/raytracer.html:990:6, test/chromeexperiments/raytracer.html:993:4, test/chromeexperiments/raytracer.html:1004:27, test/chromeexperiments/raytracer.html:1009:4, test/chromeexperiments/raytracer.html:1029:10, test/chromeexperiments/raytracer.html:1030:18, test/chromeexperiments/raytracer.html:1033:20, test/chromeexperiments/raytracer.html:1047:17, test/chromeexperiments/raytracer.html:1048:7, test/chromeexperiments/raytracer.html:1048:18, test/chromeexperiments/raytracer.html:1052:9, test/chromeexperiments/raytracer.html:1053:9, test/chromeexperiments/raytracer.html:1054:9, test/chromeexperiments/raytracer.html:1077:23, test/chromeexperiments/raytracer.html:1078:23, test/chromeexperiments/raytracer.html:1079:23, test/chromeexperiments/raytracer.html:1091:33, test/chromeexperiments/raytracer.html:1094:9, test/chromeexperiments/raytracer.html:1101:18, test/chromeexperiments/raytracer.html:1101:36, test/chromeexperiments/raytracer.html:1102:11, test/chromeexperiments/raytracer.html:1109:21, test/chromeexperiments/raytracer.html:1109:39, test/chromeexperiments/raytracer.html:1109:59, test/chromeexperiments/raytracer.html:1160:4, test/chromeexperiments/raytracer.html:1161:14, test/chromeexperiments/raytracer.html:1165:3, test/chromeexperiments/raytracer.html:1186:7, test/chromeexperiments/raytracer.html:1186:15, test/chromeexperiments/raytracer.html:1186:25, test/chromeexperiments/raytracer.html:1189:6, test/chromeexperiments/raytracer.html:1209:7, test/chromeexperiments/raytracer.html:1227:4, test/chromeexperiments/raytracer.html:1227:67, test/chromeexperiments/raytracer.html:1230:5, test/chromeexperiments/raytracer.html:1260:3, test/chromeexperiments/raytracer.html:1261:3, test/chromeexperiments/raytracer.html:1262:3, test/chromeexperiments/raytracer.html:1271:11, test/chromeexperiments/raytracer.html:1285:3, test/chromeexperiments/raytracer.html:1289:15, test/chromeexperiments/raytracer.html:1290:4, test/chromeexperiments/raytracer.html:1291:4, test/chromeexperiments/raytracer.html:1299:36]
 test/chromeexperiments/raytracer.html:98:11: [maybe] Reading absent property (computed name)
 test/chromeexperiments/raytracer.html:104:14: [maybe] Conversion to number yields NaN
 test/chromeexperiments/raytracer.html:105:13: [maybe] Conversion to number yields NaN
@@ -874,8 +862,6 @@ test/chromeexperiments/raytracer.html:938:41: [maybe] Converting undefined to st
 test/chromeexperiments/raytracer.html:939:41: [maybe] Converting undefined to string
 test/chromeexperiments/raytracer.html:945:7: [maybe] The variable timer has values with different types
 test/chromeexperiments/raytracer.html:945:29: [maybe] The variable timer has values with different types
-test/chromeexperiments/raytracer.html:949:10: [maybe] Converting primitive string to object
-test/chromeexperiments/raytracer.html:950:10: [maybe] Converting primitive string to object
 test/chromeexperiments/raytracer.html:958:9: [maybe] The variable ctx has values with different types
 test/chromeexperiments/raytracer.html:965:8: [maybe] Conversion from string to number yields NaN
 test/chromeexperiments/raytracer.html:965:8: [maybe] Conversion to number yields NaN
@@ -1025,8 +1011,6 @@ test/chromeexperiments/raytracer.html:1225:8: [maybe] The variable updatetimer h
 test/chromeexperiments/raytracer.html:1225:37: [maybe] The variable updatetimer has values with different types
 test/chromeexperiments/raytracer.html:1229:8: [maybe] The variable ctx has values with different types
 test/chromeexperiments/raytracer.html:1230:5: [maybe] Converting undefined to string
-test/chromeexperiments/raytracer.html:1290:4: [maybe] Converting primitive string to object
-test/chromeexperiments/raytracer.html:1291:4: [maybe] Converting primitive string to object
 test/chromeexperiments/raytracer.html:104:4: [info] 'this' refers to a summary abstract object, which may cause loss of precision
 test/chromeexperiments/raytracer.html:104:4: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/chromeexperiments/raytracer.html:104:16: [info] 'this' refers to a summary abstract object, which may cause loss of precision
@@ -1126,29 +1110,53 @@ test/chromeexperiments/raytracer.html:140:46: [info] 'this' refers to multiple a
 test/chromeexperiments/raytracer.html:140:68: [info] 'this' refers to a summary abstract object, which may cause loss of precision
 test/chromeexperiments/raytracer.html:140:68: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/chromeexperiments/raytracer.html:148:11: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.html:148:11: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/chromeexperiments/raytracer.html:148:26: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.html:148:26: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/chromeexperiments/raytracer.html:148:41: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.html:148:41: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/chromeexperiments/raytracer.html:149:22: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.html:149:22: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/chromeexperiments/raytracer.html:149:32: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.html:149:32: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/chromeexperiments/raytracer.html:149:42: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.html:149:42: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/chromeexperiments/raytracer.html:149:51: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.html:149:51: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/chromeexperiments/raytracer.html:150:11: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.html:150:11: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/chromeexperiments/raytracer.html:150:21: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.html:150:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/chromeexperiments/raytracer.html:150:31: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.html:150:31: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/chromeexperiments/raytracer.html:150:41: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.html:150:41: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/chromeexperiments/raytracer.html:151:4: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.html:151:4: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/chromeexperiments/raytracer.html:151:13: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.html:151:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/chromeexperiments/raytracer.html:152:4: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.html:152:4: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/chromeexperiments/raytracer.html:152:13: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.html:152:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/chromeexperiments/raytracer.html:153:11: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.html:153:11: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/chromeexperiments/raytracer.html:153:21: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.html:153:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/chromeexperiments/raytracer.html:153:31: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.html:153:31: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/chromeexperiments/raytracer.html:153:43: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.html:153:43: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/chromeexperiments/raytracer.html:153:52: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.html:153:52: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/chromeexperiments/raytracer.html:154:4: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.html:154:4: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/chromeexperiments/raytracer.html:154:14: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.html:154:14: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/chromeexperiments/raytracer.html:155:4: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.html:155:4: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/chromeexperiments/raytracer.html:155:14: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test/chromeexperiments/raytracer.html:155:14: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/chromeexperiments/raytracer.html:168:10: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/chromeexperiments/raytracer.html:170:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/chromeexperiments/raytracer.html:172:8: [info] 'this' refers to multiple abstract objects, which may cause loss of precision

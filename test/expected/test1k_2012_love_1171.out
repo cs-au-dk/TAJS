@@ -1,0 +1,132 @@
+test/1k2012love/1171.js:62:19: [definite] Dead assignment, property is never read
+test/1k2012love/1171.js:21:34: [definite] The variable value is never used
+test/1k2012love/1171.js:6:43: [maybe] TypeError, call to non-function
+test/1k2012love/1171.js:10:2: [maybe] ReferenceError, reading absent variable a
+test/1k2012love/1171.js:11:6: [maybe] TypeError, call to non-function
+test/1k2012love/1171.js:13:29: [maybe] TypeError, call to non-function
+test/1k2012love/1171.js:16:2: [maybe] ReferenceError, reading absent variable c
+test/1k2012love/1171.js:20:7: [maybe] TypeError, call to non-function
+test/1k2012love/1171.js:21:17: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1171.js:21:17: [maybe] TypeError, call to non-function
+test/1k2012love/1171.js:25:8: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1171.js:26:53: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1171.js:26:53: [maybe] TypeError, call to non-function
+test/1k2012love/1171.js:32:8: [maybe] TypeError when computing default value for object
+test/1k2012love/1171.js:32:16: [maybe] TypeError when computing default value for object
+test/1k2012love/1171.js:33:4: [maybe] TypeError when computing default value for object
+test/1k2012love/1171.js:35:4: [maybe] TypeError when computing default value for object
+test/1k2012love/1171.js:57:12: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1171.js:59:1: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1171.js:60:13: [maybe] TypeError, call to non-function
+test/1k2012love/1171.js:60:24: [maybe] ReferenceError, reading absent variable n
+test/1k2012love/1171.js:61:6: [maybe] ReferenceError, reading absent variable elements
+test/1k2012love/1171.js:61:6: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1171.js:62:6: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1171.js:62:19: [maybe] RangeError, assigning invalid value to array 'length' property
+test/1k2012love/1171.js:64:2: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1171.js:64:2: [maybe] TypeError, call to non-function
+test/1k2012love/1171.js:65:2: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1171.js:66:2: [maybe] TypeError, call to non-function
+test/1k2012love/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1171.js:21:17: [maybe] Reading absent property forEach of host object
+test/1k2012love/1171.js:26:53: [maybe] Reading absent property charCodeAt
+test/1k2012love/1171.js:57:12: [maybe] Reading absent property children of host object
+test/1k2012love/1171.js:61:6: [maybe] Reading absent property value of host object
+test/1k2012love/1171.js:64:2: [maybe] Reading absent property push of host object
+test/1k2012love/1171.js: [maybe] Uncaught exception, constructed at [test/1k2012love/1171.js:6:43, test/1k2012love/1171.js:10:2, test/1k2012love/1171.js:11:6, test/1k2012love/1171.js:13:29, test/1k2012love/1171.js:16:2, test/1k2012love/1171.js:20:7, test/1k2012love/1171.js:21:17, test/1k2012love/1171.js:25:8, test/1k2012love/1171.js:26:53, test/1k2012love/1171.js:32:8, test/1k2012love/1171.js:32:16, test/1k2012love/1171.js:33:4, test/1k2012love/1171.js:35:4, test/1k2012love/1171.js:57:12, test/1k2012love/1171.js:59:1, test/1k2012love/1171.js:60:13, test/1k2012love/1171.js:60:24, test/1k2012love/1171.js:61:6, test/1k2012love/1171.js:62:6, test/1k2012love/1171.js:62:19, test/1k2012love/1171.js:64:2, test/1k2012love/1171.js:65:2, test/1k2012love/1171.js:66:2, test/1k2012love/shim.js:9:5, HOST(mdn-polyfills.js):204:23]
+test/1k2012love/1171.js:4:9: [maybe] Converting null to string
+test/1k2012love/1171.js:6:43: [maybe] Conversion to number yields NaN
+test/1k2012love/1171.js:6:49: [maybe] The variable timestamp has values with different types
+test/1k2012love/1171.js:13:2: [maybe] Converting primitive boolean to object
+test/1k2012love/1171.js:13:2: [maybe] Converting primitive number to object
+test/1k2012love/1171.js:13:2: [maybe] Converting primitive string to object
+test/1k2012love/1171.js:13:11: [maybe] The variable tasks has values with different types
+test/1k2012love/1171.js:17:6: [maybe] Reading absent property (computed name)
+test/1k2012love/1171.js:19:8: [maybe] The variable d has values with different types
+test/1k2012love/1171.js:19:15: [maybe] Conversion to number yields NaN
+test/1k2012love/1171.js:19:15: [maybe] The variable d has values with different types
+test/1k2012love/1171.js:20:18: [maybe] The variable d has values with different types
+test/1k2012love/1171.js:21:7: [maybe] Converting primitive boolean to object
+test/1k2012love/1171.js:21:7: [maybe] Converting primitive number to object
+test/1k2012love/1171.js:21:7: [maybe] Converting primitive string to object
+test/1k2012love/1171.js:21:7: [maybe] Reading absent property (computed name)
+test/1k2012love/1171.js:21:7: [maybe] The variable tasks has values with different types
+test/1k2012love/1171.js:21:17: [maybe] Converting primitive boolean to object
+test/1k2012love/1171.js:21:17: [maybe] Converting primitive number to object
+test/1k2012love/1171.js:21:17: [maybe] Converting primitive string to object
+test/1k2012love/1171.js:21:17: [maybe] Reading absent property (computed name)
+test/1k2012love/1171.js:21:17: [maybe] The variable tasks has values with different types
+test/1k2012love/1171.js:25:8: [maybe] Converting primitive boolean to object
+test/1k2012love/1171.js:25:8: [maybe] Converting primitive number to object
+test/1k2012love/1171.js:25:8: [maybe] Converting primitive string to object
+test/1k2012love/1171.js:25:8: [maybe] Reading absent property (computed name)
+test/1k2012love/1171.js:25:8: [maybe] The variable tasks has values with different types
+test/1k2012love/1171.js:26:53: [maybe] Converting object to string
+test/1k2012love/1171.js:26:53: [maybe] Converting primitive boolean to object
+test/1k2012love/1171.js:26:53: [maybe] Converting primitive number to object
+test/1k2012love/1171.js:26:53: [maybe] Converting primitive string to object
+test/1k2012love/1171.js:26:53: [maybe] The variable t has values with different types
+test/1k2012love/1171.js:32:8: [maybe] Converting boolean to string
+test/1k2012love/1171.js:32:8: [maybe] Converting object to string
+test/1k2012love/1171.js:32:8: [maybe] Reading absent property (computed name)
+test/1k2012love/1171.js:32:12: [maybe] The variable t has values with different types
+test/1k2012love/1171.js:32:16: [maybe] Converting boolean to string
+test/1k2012love/1171.js:32:16: [maybe] Converting object to string
+test/1k2012love/1171.js:32:20: [maybe] The variable t has values with different types
+test/1k2012love/1171.js:33:4: [maybe] Conversion from string to number yields NaN
+test/1k2012love/1171.js:33:4: [maybe] Conversion to number yields NaN
+test/1k2012love/1171.js:33:4: [maybe] Converting boolean to string
+test/1k2012love/1171.js:33:4: [maybe] Converting object to number
+test/1k2012love/1171.js:33:4: [maybe] Converting object to string
+test/1k2012love/1171.js:33:4: [maybe] Reading absent property (computed name)
+test/1k2012love/1171.js:33:8: [maybe] The variable t has values with different types
+test/1k2012love/1171.js:35:4: [maybe] Converting boolean to string
+test/1k2012love/1171.js:35:4: [maybe] Converting object to string
+test/1k2012love/1171.js:35:14: [maybe] The variable t has values with different types
+test/1k2012love/1171.js:43:11: [maybe] Conversion from string to number yields NaN
+test/1k2012love/1171.js:43:11: [maybe] Conversion to number yields NaN
+test/1k2012love/1171.js:43:11: [maybe] Converting object to number
+test/1k2012love/1171.js:43:11: [maybe] Reading absent property (computed name)
+test/1k2012love/1171.js:48:33: [maybe] Reading absent property (computed name)
+test/1k2012love/1171.js:50:16: [maybe] Converting null to string
+test/1k2012love/1171.js:50:16: [maybe] Converting undefined to string
+test/1k2012love/1171.js:50:16: [maybe] Reading absent property (computed name)
+test/1k2012love/1171.js:57:12: [maybe] Reading absent property (computed name)
+test/1k2012love/1171.js:59:1: [maybe] Reading absent property (computed name)
+test/1k2012love/1171.js:61:6: [maybe] Reading absent property (computed name)
+test/1k2012love/1171.js:62:6: [maybe] Converting primitive boolean to object
+test/1k2012love/1171.js:62:6: [maybe] Converting primitive number to object
+test/1k2012love/1171.js:62:6: [maybe] Converting primitive string to object
+test/1k2012love/1171.js:62:6: [maybe] Reading absent property (computed name)
+test/1k2012love/1171.js:62:6: [maybe] The variable tasks has values with different types
+test/1k2012love/1171.js:62:19: [maybe] Conversion from string to number yields NaN
+test/1k2012love/1171.js:62:19: [maybe] Converting object to number
+test/1k2012love/1171.js:62:19: [maybe] Converting primitive boolean to object
+test/1k2012love/1171.js:62:19: [maybe] Converting primitive number to object
+test/1k2012love/1171.js:62:19: [maybe] Converting primitive string to object
+test/1k2012love/1171.js:62:19: [maybe] The variable tasks has values with different types
+test/1k2012love/1171.js:63:6: [maybe] The variable t has values with different types
+test/1k2012love/1171.js:64:2: [maybe] Converting primitive boolean to object
+test/1k2012love/1171.js:64:2: [maybe] Converting primitive number to object
+test/1k2012love/1171.js:64:2: [maybe] Converting primitive string to object
+test/1k2012love/1171.js:64:2: [maybe] Reading absent property (computed name)
+test/1k2012love/1171.js:64:2: [maybe] The variable tasks has values with different types
+test/1k2012love/1171.js:64:19: [maybe] The variable t has values with different types
+test/1k2012love/1171.js:65:2: [maybe] Converting undefined to string
+test/1k2012love/1171.js:65:40: [maybe] The variable tasks has values with different types
+test/1k2012love/1171.js:32:16: [info] Writing to unknown property that may cause loss of precision
+test/1k2012love/1171.js:33:4: [info] Writing to unknown property that may cause loss of precision
+test/1k2012love/1171.js:35:4: [info] Writing to unknown property that may cause loss of precision
+test/1k2012love/1171.js:62:19: [info] Writing to unknown property that may cause loss of precision
+test/1k2012love/1171.js:13:2: [info] Reading from unknown property that may cause loss of precision
+test/1k2012love/1171.js:21:7: [info] Reading from unknown property that may cause loss of precision
+test/1k2012love/1171.js:21:17: [info] Reading from unknown property that may cause loss of precision
+test/1k2012love/1171.js:25:8: [info] Reading from unknown property that may cause loss of precision
+test/1k2012love/1171.js:32:8: [info] Reading from unknown property that may cause loss of precision
+test/1k2012love/1171.js:33:4: [info] Reading from unknown property that may cause loss of precision
+test/1k2012love/1171.js:42:2: [info] Reading from unknown property that may cause loss of precision
+test/1k2012love/1171.js:43:11: [info] Reading from unknown property that may cause loss of precision
+test/1k2012love/1171.js:48:33: [info] Reading from unknown property that may cause loss of precision
+test/1k2012love/1171.js:50:16: [info] Reading from unknown property that may cause loss of precision
+test/1k2012love/1171.js:62:6: [info] Reading from unknown property that may cause loss of precision
+test/1k2012love/1171.js:64:2: [info] Reading from unknown property that may cause loss of precision

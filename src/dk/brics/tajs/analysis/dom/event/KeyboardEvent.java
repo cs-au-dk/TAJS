@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,8 +18,8 @@ package dk.brics.tajs.analysis.dom.event;
 
 import dk.brics.tajs.analysis.Conversion;
 import dk.brics.tajs.analysis.FunctionCalls;
-import dk.brics.tajs.analysis.NativeFunctions;
 import dk.brics.tajs.analysis.Solver;
+import dk.brics.tajs.analysis.dom.DOMFunctions;
 import dk.brics.tajs.analysis.dom.DOMObjects;
 import dk.brics.tajs.analysis.dom.DOMRegistry;
 import dk.brics.tajs.lattice.ObjectLabel;
@@ -44,8 +44,8 @@ public class KeyboardEvent {
 
     public static void build(Solver.SolverInterface c) {
         State s = c.getState();
-        PROTOTYPE = new ObjectLabel(DOMObjects.KEYBOARD_EVENT_PROTOTYPE, ObjectLabel.Kind.OBJECT);
-        INSTANCES = new ObjectLabel(DOMObjects.KEYBOARD_EVENT_INSTANCES, ObjectLabel.Kind.OBJECT);
+        PROTOTYPE = ObjectLabel.make(DOMObjects.KEYBOARD_EVENT_PROTOTYPE, ObjectLabel.Kind.OBJECT);
+        INSTANCES = ObjectLabel.make(DOMObjects.KEYBOARD_EVENT_INSTANCES, ObjectLabel.Kind.OBJECT);
 
         // Prototype object
         s.newObject(PROTOTYPE);
@@ -77,9 +77,11 @@ public class KeyboardEvent {
         createDOMProperty(INSTANCES, "repeat", Value.makeAnyBool().setReadOnly(), c);
 
         // DOM LEVEL 0:
-        createDOMProperty(PROTOTYPE, "charCode", Value.makeAnyNumUInt(), c);
-        createDOMProperty(PROTOTYPE, "key", Value.makeAnyNumUInt(), c);
-        createDOMProperty(PROTOTYPE, "keyCode", Value.makeAnyNumUInt(), c);
+        createDOMProperty(INSTANCES, "charCode", Value.makeAnyNumUInt(), c);
+        createDOMProperty(INSTANCES, "key", Value.makeAnyNumUInt(), c);
+        createDOMProperty(INSTANCES, "keyCode", Value.makeAnyNumUInt(), c);
+
+        createDOMProperty(INSTANCES, "which", Value.makeAnyNumUInt().joinAbsent(), c);
 
         /*
          * Functions
@@ -106,26 +108,26 @@ public class KeyboardEvent {
         State s = c.getState();
         switch (nativeObject) {
             case KEYBOARD_EVENT_GET_MODIFIER_STATE: {
-                NativeFunctions.expectParameters(nativeObject, call, c, 1, 1);
+                DOMFunctions.expectParameters(nativeObject, call, c, 1, 1);
                 /* Value keyIdentifierArg =*/
-                Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
+                Conversion.toString(FunctionCalls.readParameter(call, s, 0), c);
                 return Value.makeAnyBool();
             }
             case KEYBOARD_EVENT_INIT_KEYBOARD_EVENT: {
-                NativeFunctions.expectParameters(nativeObject, call, c, 7, 7);
+                DOMFunctions.expectParameters(nativeObject, call, c, 7, 7);
                 /* Value typeArg =*/
-                Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
+                Conversion.toString(FunctionCalls.readParameter(call, s, 0), c);
                 /* Value canBubbleArg =*/
-                Conversion.toBoolean(NativeFunctions.readParameter(call, s, 1));
+                Conversion.toBoolean(FunctionCalls.readParameter(call, s, 1));
                 /* Value cancelableArg =*/
-                Conversion.toBoolean(NativeFunctions.readParameter(call, s, 2));
+                Conversion.toBoolean(FunctionCalls.readParameter(call, s, 2));
                 // viewArg not checked...
                 /* Value keyIdentifierArg =*/
-                Conversion.toString(NativeFunctions.readParameter(call, s, 4), c);
+                Conversion.toString(FunctionCalls.readParameter(call, s, 4), c);
                 /* Value keyLocationArg =*/
-                Conversion.toNumber(NativeFunctions.readParameter(call, s, 5), c);
+                Conversion.toNumber(FunctionCalls.readParameter(call, s, 5), c);
                 /* Value modifiersListArg =*/
-                Conversion.toString(NativeFunctions.readParameter(call, s, 6), c);
+                Conversion.toString(FunctionCalls.readParameter(call, s, 6), c);
                 return Value.makeUndef();
             }
             case KEYBOARD_EVENT_INIT_KEYBOARD_EVENT_NS: {

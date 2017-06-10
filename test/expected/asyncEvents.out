@@ -1,1 +1,2 @@
+out/temp-sources/TestMicro.asyncEvents.js: [definite] Exceptional program exit is unreachable
 out/temp-sources/TestMicro.asyncEvents.js:1:14: [info] Abstract value: "executed"

@@ -1,60 +1,21 @@
 test/10k/canvas_aquarium.html:37:17: [definite] The conditional expression is always true
-test/10k/canvas_aquarium.html:197:23: [definite] The conditional expression is always true
-test/10k/canvas_aquarium.html:270:13: [definite] The conditional expression is always true
-test/10k/canvas_aquarium.html:288:13: [definite] The conditional expression is always true
-test/10k/canvas_aquarium.html:297:13: [definite] The conditional expression is always true
-test/10k/canvas_aquarium.html:303:13: [definite] The conditional expression is always true
 test/10k/canvas_aquarium.html:373:13: [definite] The conditional expression is always true
 test/10k/canvas_aquarium.html:174:9: [definite] Dead assignment, property n is never read
 test/10k/canvas_aquarium.html:200:5: [definite] The variable b is never used
 test/10k/canvas_aquarium.html:34:9: [maybe] TypeError, accessing property of null/undefined
 test/10k/canvas_aquarium.html:34:9: [maybe] TypeError, call to non-function
-test/10k/canvas_aquarium.html:41:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.arc
-test/10k/canvas_aquarium.html:41:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.arcTo
-test/10k/canvas_aquarium.html:41:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.beginPath
-test/10k/canvas_aquarium.html:41:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.bezierCurveTo
-test/10k/canvas_aquarium.html:41:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.clearRect
-test/10k/canvas_aquarium.html:41:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.clip
-test/10k/canvas_aquarium.html:41:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.closePath
 test/10k/canvas_aquarium.html:41:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.createImageData
 test/10k/canvas_aquarium.html:41:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.createLinearGradient
 test/10k/canvas_aquarium.html:41:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.createPattern
 test/10k/canvas_aquarium.html:41:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.createRadialGradient
-test/10k/canvas_aquarium.html:41:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.drawFocusRing
-test/10k/canvas_aquarium.html:41:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.fill
-test/10k/canvas_aquarium.html:41:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.fillRect
-test/10k/canvas_aquarium.html:41:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.fillText
-test/10k/canvas_aquarium.html:41:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.getImageData
-test/10k/canvas_aquarium.html:41:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.isPointInPath
-test/10k/canvas_aquarium.html:41:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.lineTo
-test/10k/canvas_aquarium.html:41:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.measureText
-test/10k/canvas_aquarium.html:41:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.moveTo
-test/10k/canvas_aquarium.html:41:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.quadraticCurveTo
-test/10k/canvas_aquarium.html:41:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.rect
-test/10k/canvas_aquarium.html:41:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.restore
-test/10k/canvas_aquarium.html:41:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.rotate
-test/10k/canvas_aquarium.html:41:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.save
-test/10k/canvas_aquarium.html:41:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.scale
-test/10k/canvas_aquarium.html:41:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.setTransform
-test/10k/canvas_aquarium.html:41:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.stroke
-test/10k/canvas_aquarium.html:41:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.strokeRect
-test/10k/canvas_aquarium.html:41:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.strokeText
-test/10k/canvas_aquarium.html:41:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.transform
-test/10k/canvas_aquarium.html:41:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.translate
-test/10k/canvas_aquarium.html:41:20: [maybe] Too many parameters to function Object
-test/10k/canvas_aquarium.html:41:20: [maybe] Too many parameters to function Object.prototype.__defineGetter__
-test/10k/canvas_aquarium.html:41:20: [maybe] Too many parameters to function Object.prototype.__defineSetter__
-test/10k/canvas_aquarium.html:41:20: [maybe] Too many parameters to function Object.prototype.hasOwnProperty
-test/10k/canvas_aquarium.html:41:20: [maybe] Too many parameters to function Object.prototype.isPrototypeOf
-test/10k/canvas_aquarium.html:41:20: [maybe] Too many parameters to function Object.prototype.propertyIsEnumerable
-test/10k/canvas_aquarium.html:41:20: [maybe] Too many parameters to function Object.prototype.toLocaleString
-test/10k/canvas_aquarium.html:41:20: [maybe] Too many parameters to function Object.prototype.toString
-test/10k/canvas_aquarium.html:41:20: [maybe] Too many parameters to function Object.prototype.valueOf
 test/10k/canvas_aquarium.html:41:20: [maybe] TypeError, accessing property of null/undefined
-test/10k/canvas_aquarium.html:41:20: [maybe] TypeError, call to non-function
-test/10k/canvas_aquarium.html:41:20: [maybe] TypeError, inf or NaN as arguments to CanvasRenderingContext2D.putImageData
-test/10k/canvas_aquarium.html:41:20: [maybe] TypeError, non-HTMLImageElement or non-HTMLCanvasElement as argument to drawImage
 test/10k/canvas_aquarium.html:159:18: [maybe] TypeError, accessing property of null/undefined
+test/10k/canvas_aquarium.html:202:16: [maybe] TypeError, call to non-function
+test/10k/canvas_aquarium.html:206:16: [maybe] TypeError, call to non-function
+test/10k/canvas_aquarium.html:211:16: [maybe] TypeError, call to non-function
+test/10k/canvas_aquarium.html:225:16: [maybe] TypeError, call to non-function
+test/10k/canvas_aquarium.html:232:16: [maybe] TypeError, call to non-function
+test/10k/canvas_aquarium.html:240:13: [maybe] TypeError, call to non-function
 test/10k/canvas_aquarium.html:254:9: [maybe] TypeError, accessing property of null/undefined
 test/10k/canvas_aquarium.html:255:9: [maybe] TypeError, accessing property of null/undefined
 test/10k/canvas_aquarium.html:256:36: [maybe] TypeError, accessing property of null/undefined
@@ -63,24 +24,20 @@ test/10k/canvas_aquarium.html:327:27: [maybe] TypeError, accessing property of n
 test/10k/canvas_aquarium.html:344:39: [maybe] TypeError, accessing property of null/undefined
 test/10k/canvas_aquarium.html:358:9: [maybe] TypeError, non-HTMLImageElement or non-HTMLCanvasElement as argument to drawImage
 test/10k/canvas_aquarium.html:384:5: [maybe] TypeError, accessing property of null/undefined
+test/10k/canvas_aquarium.html:386:9: [maybe] TypeError, accessing property of null/undefined
+test/10k/canvas_aquarium.html:387:25: [maybe] TypeError, accessing property of null/undefined
 test/10k/canvas_aquarium.html:388:21: [maybe] TypeError, accessing property of null/undefined
 test/10k/canvas_aquarium.html:390:29: [maybe] TypeError, accessing property of null/undefined
 test/10k/canvas_aquarium.html:390:46: [maybe] TypeError, accessing property of null/undefined
-test/10k/canvas_aquarium.html:34:9: [maybe] Reading absent property addColorStop
-test/10k/canvas_aquarium.html:41:20: [maybe] Reading absent property apply
-test/10k/canvas_aquarium.html: [maybe] Uncaught exception, constructed at [test/10k/canvas_aquarium.html:34:9, test/10k/canvas_aquarium.html:41:20, test/10k/canvas_aquarium.html:159:18, test/10k/canvas_aquarium.html:254:9, test/10k/canvas_aquarium.html:255:9, test/10k/canvas_aquarium.html:256:36, test/10k/canvas_aquarium.html:315:30, test/10k/canvas_aquarium.html:327:27, test/10k/canvas_aquarium.html:344:39, test/10k/canvas_aquarium.html:384:5, test/10k/canvas_aquarium.html:388:21, test/10k/canvas_aquarium.html:390:29, test/10k/canvas_aquarium.html:390:46]
-test/10k/canvas_aquarium.html:34:9: [maybe] Converting primitive boolean to object
-test/10k/canvas_aquarium.html:34:9: [maybe] Converting primitive string to object
-test/10k/canvas_aquarium.html:34:9: [maybe] The variable b has values with different types
+test/10k/canvas_aquarium.html:391:9: [maybe] TypeError, accessing property of null/undefined
+test/10k/canvas_aquarium.html:34:9: [maybe] Reading absent property addColorStop of host object
+test/10k/canvas_aquarium.html: [maybe] Uncaught exception, constructed at [test/10k/canvas_aquarium.html:34:9, test/10k/canvas_aquarium.html:41:20, test/10k/canvas_aquarium.html:159:18, test/10k/canvas_aquarium.html:202:16, test/10k/canvas_aquarium.html:206:16, test/10k/canvas_aquarium.html:211:16, test/10k/canvas_aquarium.html:225:16, test/10k/canvas_aquarium.html:232:16, test/10k/canvas_aquarium.html:240:13, test/10k/canvas_aquarium.html:254:9, test/10k/canvas_aquarium.html:255:9, test/10k/canvas_aquarium.html:256:36, test/10k/canvas_aquarium.html:315:30, test/10k/canvas_aquarium.html:327:27, test/10k/canvas_aquarium.html:344:39, test/10k/canvas_aquarium.html:384:5, test/10k/canvas_aquarium.html:386:9, test/10k/canvas_aquarium.html:387:25, test/10k/canvas_aquarium.html:388:21, test/10k/canvas_aquarium.html:390:29, test/10k/canvas_aquarium.html:390:46, test/10k/canvas_aquarium.html:391:9]
 test/10k/canvas_aquarium.html:37:21: [maybe] Reading absent property (computed name)
 test/10k/canvas_aquarium.html:41:20: [maybe] Conversion to number yields NaN
-test/10k/canvas_aquarium.html:41:20: [maybe] Converting primitive boolean to object
-test/10k/canvas_aquarium.html:41:20: [maybe] Converting primitive number to object
-test/10k/canvas_aquarium.html:41:20: [maybe] Converting primitive string to object
-test/10k/canvas_aquarium.html:41:20: [maybe] The variable c has values with different types
-test/10k/canvas_aquarium.html:241:11: [maybe] The variable b has values with different types
-test/10k/canvas_aquarium.html:242:11: [maybe] The variable b has values with different types
-test/10k/canvas_aquarium.html:243:23: [maybe] The variable b has values with different types
+test/10k/canvas_aquarium.html:149:26: [maybe] Conversion to number yields NaN
+test/10k/canvas_aquarium.html:150:26: [maybe] Conversion to number yields NaN
+test/10k/canvas_aquarium.html:150:34: [maybe] Conversion to number yields NaN
+test/10k/canvas_aquarium.html:197:36: [maybe] Reading absent property (computed name)
 test/10k/canvas_aquarium.html:254:9: [maybe] Reading absent property (computed name)
 test/10k/canvas_aquarium.html:255:9: [maybe] Reading absent property (computed name)
 test/10k/canvas_aquarium.html:256:17: [maybe] Reading absent property (computed name)
@@ -88,11 +45,19 @@ test/10k/canvas_aquarium.html:264:27: [maybe] Reading absent property (computed 
 test/10k/canvas_aquarium.html:293:31: [maybe] Reading absent property (computed name)
 test/10k/canvas_aquarium.html:307:25: [maybe] Reading absent property (computed name)
 test/10k/canvas_aquarium.html:326:17: [maybe] Reading absent property (computed name)
+test/10k/canvas_aquarium.html:327:23: [maybe] Conversion to number yields NaN
 test/10k/canvas_aquarium.html:334:17: [maybe] Reading absent property (computed name)
 test/10k/canvas_aquarium.html:337:17: [maybe] Reading absent property (computed name)
+test/10k/canvas_aquarium.html:340:46: [maybe] Conversion to number yields NaN
+test/10k/canvas_aquarium.html:344:26: [maybe] Conversion to number yields NaN
+test/10k/canvas_aquarium.html:354:13: [maybe] Conversion to number yields NaN
+test/10k/canvas_aquarium.html:362:33: [maybe] Conversion to number yields NaN
+test/10k/canvas_aquarium.html:387:25: [maybe] Reading absent property (computed name)
 test/10k/canvas_aquarium.html:388:21: [maybe] Reading absent property (computed name)
 test/10k/canvas_aquarium.html:390:29: [maybe] Reading absent property (computed name)
 test/10k/canvas_aquarium.html:390:46: [maybe] Reading absent property (computed name)
+test/10k/canvas_aquarium.html:398:29: [maybe] Conversion to number yields NaN
+test/10k/canvas_aquarium.html:398:45: [maybe] Conversion to number yields NaN
 test/10k/canvas_aquarium.html:37:21: [info] Reading from unknown property that may cause loss of precision
 test/10k/canvas_aquarium.html:147:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/10k/canvas_aquarium.html:148:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision

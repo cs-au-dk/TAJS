@@ -1,4 +1,7 @@
-function bind(context, name){ 
+var resultsDiv = document.createElement('div');
+resultsDiv.id = 'results';
+
+function bind(context, name){
   return function(){ 
     return context[name].apply(context, arguments); 
   }; 

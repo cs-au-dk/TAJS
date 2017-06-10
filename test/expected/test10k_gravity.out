@@ -8,36 +8,66 @@ test/10k/gravity.html:62:60: [maybe] TypeError, accessing property of null/undef
 test/10k/gravity.html:62:75: [maybe] TypeError, accessing property of null/undefined
 test/10k/gravity.html:66:5: [maybe] TypeError, accessing property of null/undefined
 test/10k/gravity.html:68:13: [maybe] ReferenceError, reading absent variable ctx
+test/10k/gravity.html:75:33: [maybe] TypeError, accessing property of null/undefined
 test/10k/gravity.html:76:24: [maybe] TypeError, accessing property of null/undefined
 test/10k/gravity.html:76:39: [maybe] TypeError, accessing property of null/undefined
 test/10k/gravity.html:76:54: [maybe] TypeError, accessing property of null/undefined
 test/10k/gravity.html:77:24: [maybe] TypeError, accessing property of null/undefined
 test/10k/gravity.html:77:39: [maybe] TypeError, accessing property of null/undefined
-test/10k/gravity.html:97:5: [maybe] TypeError, accessing property of null/undefined
 test/10k/gravity.html:97:5: [maybe] TypeError, call to non-function
-test/10k/gravity.html:102:5: [maybe] TypeError, accessing property of null/undefined
+test/10k/gravity.html:108:28: [maybe] TypeError, accessing property of null/undefined
+test/10k/gravity.html:108:36: [maybe] TypeError, accessing property of null/undefined
+test/10k/gravity.html:108:44: [maybe] TypeError, accessing property of null/undefined
+test/10k/gravity.html:108:72: [maybe] TypeError, accessing property of null/undefined
+test/10k/gravity.html:109:29: [maybe] TypeError, accessing property of null/undefined
+test/10k/gravity.html:109:37: [maybe] TypeError, accessing property of null/undefined
+test/10k/gravity.html:116:13: [maybe] TypeError, accessing property of null/undefined
 test/10k/gravity.html:141:22: [maybe] TypeError, accessing property of null/undefined
 test/10k/gravity.html:142:22: [maybe] TypeError, accessing property of null/undefined
 test/10k/gravity.html:148:9: [maybe] ReferenceError, reading absent variable ctx
 test/10k/gravity.html:150:37: [maybe] ReferenceError, reading absent variable lastframe
 test/10k/gravity.html:151:43: [maybe] ReferenceError, reading absent variable itercount
 test/10k/gravity.html:160:9: [maybe] ReferenceError, reading absent variable itercount
+test/10k/gravity.html:162:19: [maybe] TypeError, accessing property of null/undefined
 test/10k/gravity.html:162:36: [maybe] ReferenceError, reading absent variable motion
+test/10k/gravity.html:171:29: [maybe] TypeError, accessing property of null/undefined
 test/10k/gravity.html:172:20: [maybe] TypeError, accessing property of null/undefined
 test/10k/gravity.html:172:35: [maybe] TypeError, accessing property of null/undefined
 test/10k/gravity.html:172:50: [maybe] TypeError, accessing property of null/undefined
 test/10k/gravity.html:173:20: [maybe] TypeError, accessing property of null/undefined
 test/10k/gravity.html:173:35: [maybe] TypeError, accessing property of null/undefined
+test/10k/gravity.html:181:9: [maybe] TypeError, accessing property of null/undefined
+test/10k/gravity.html:182:13: [maybe] TypeError, accessing property of null/undefined
+test/10k/gravity.html:182:37: [maybe] TypeError, accessing property of null/undefined
+test/10k/gravity.html:185:20: [maybe] TypeError, accessing property of null/undefined
+test/10k/gravity.html:185:28: [maybe] TypeError, accessing property of null/undefined
+test/10k/gravity.html:186:22: [maybe] TypeError, accessing property of null/undefined
+test/10k/gravity.html:187:21: [maybe] TypeError, accessing property of null/undefined
 test/10k/gravity.html:188:24: [maybe] TypeError, accessing property of null/undefined
+test/10k/gravity.html:194:20: [maybe] TypeError, accessing property of null/undefined
+test/10k/gravity.html:194:28: [maybe] TypeError, accessing property of null/undefined
+test/10k/gravity.html:195:20: [maybe] TypeError, accessing property of null/undefined
+test/10k/gravity.html:195:50: [maybe] TypeError, accessing property of null/undefined
+test/10k/gravity.html:200:24: [maybe] TypeError, accessing property of null/undefined
+test/10k/gravity.html:200:32: [maybe] TypeError, accessing property of null/undefined
+test/10k/gravity.html:200:40: [maybe] TypeError, accessing property of null/undefined
+test/10k/gravity.html:200:57: [maybe] TypeError, accessing property of null/undefined
+test/10k/gravity.html:203:29: [maybe] TypeError, accessing property of null/undefined
+test/10k/gravity.html:204:13: [maybe] TypeError, accessing property of null/undefined
+test/10k/gravity.html:204:33: [maybe] TypeError, accessing property of null/undefined
+test/10k/gravity.html:204:41: [maybe] TypeError, accessing property of null/undefined
 test/10k/gravity.html:204:49: [maybe] TypeError, accessing property of null/undefined
 test/10k/gravity.html:204:64: [maybe] TypeError, accessing property of null/undefined
 test/10k/gravity.html:204:79: [maybe] TypeError, accessing property of null/undefined
-test/10k/gravity.html:66:5: [maybe] Reading absent property body
+test/10k/gravity.html:208:16: [maybe] TypeError, accessing property of null/undefined
+test/10k/gravity.html:208:36: [maybe] TypeError, accessing property of null/undefined
+test/10k/gravity.html:210:13: [maybe] TypeError, accessing property of null/undefined
+test/10k/gravity.html:210:30: [maybe] TypeError, accessing property of null/undefined
+test/10k/gravity.html:211:20: [maybe] TypeError, accessing property of null/undefined
+test/10k/gravity.html:211:37: [maybe] TypeError, accessing property of null/undefined
 test/10k/gravity.html:67:14: [maybe] Reading absent property motion
-test/10k/gravity.html:97:5: [maybe] Reading absent property body
-test/10k/gravity.html:102:5: [maybe] Reading absent property body
 test/10k/gravity.html:104:14: [maybe] Reading absent property motion
-test/10k/gravity.html: [maybe] Uncaught exception, constructed at [test/10k/gravity.html:35:5, test/10k/gravity.html:45:9, test/10k/gravity.html:62:45, test/10k/gravity.html:62:60, test/10k/gravity.html:62:75, test/10k/gravity.html:66:5, test/10k/gravity.html:68:13, test/10k/gravity.html:76:24, test/10k/gravity.html:76:39, test/10k/gravity.html:76:54, test/10k/gravity.html:77:24, test/10k/gravity.html:77:39, test/10k/gravity.html:97:5, test/10k/gravity.html:102:5, test/10k/gravity.html:141:22, test/10k/gravity.html:142:22, test/10k/gravity.html:148:9, test/10k/gravity.html:150:37, test/10k/gravity.html:151:43, test/10k/gravity.html:160:9, test/10k/gravity.html:162:36, test/10k/gravity.html:172:20, test/10k/gravity.html:172:35, test/10k/gravity.html:172:50, test/10k/gravity.html:173:20, test/10k/gravity.html:173:35, test/10k/gravity.html:188:24, test/10k/gravity.html:204:49, test/10k/gravity.html:204:64, test/10k/gravity.html:204:79]
+test/10k/gravity.html: [maybe] Uncaught exception, constructed at [test/10k/gravity.html:35:5, test/10k/gravity.html:45:9, test/10k/gravity.html:62:45, test/10k/gravity.html:62:60, test/10k/gravity.html:62:75, test/10k/gravity.html:66:5, test/10k/gravity.html:68:13, test/10k/gravity.html:75:33, test/10k/gravity.html:76:24, test/10k/gravity.html:76:39, test/10k/gravity.html:76:54, test/10k/gravity.html:77:24, test/10k/gravity.html:77:39, test/10k/gravity.html:97:5, test/10k/gravity.html:108:28, test/10k/gravity.html:108:36, test/10k/gravity.html:108:44, test/10k/gravity.html:108:72, test/10k/gravity.html:109:29, test/10k/gravity.html:109:37, test/10k/gravity.html:116:13, test/10k/gravity.html:141:22, test/10k/gravity.html:142:22, test/10k/gravity.html:148:9, test/10k/gravity.html:150:37, test/10k/gravity.html:151:43, test/10k/gravity.html:160:9, test/10k/gravity.html:162:19, test/10k/gravity.html:162:36, test/10k/gravity.html:171:29, test/10k/gravity.html:172:20, test/10k/gravity.html:172:35, test/10k/gravity.html:172:50, test/10k/gravity.html:173:20, test/10k/gravity.html:173:35, test/10k/gravity.html:181:9, test/10k/gravity.html:182:13, test/10k/gravity.html:182:37, test/10k/gravity.html:185:20, test/10k/gravity.html:185:28, test/10k/gravity.html:186:22, test/10k/gravity.html:187:21, test/10k/gravity.html:188:24, test/10k/gravity.html:194:20, test/10k/gravity.html:194:28, test/10k/gravity.html:195:20, test/10k/gravity.html:195:50, test/10k/gravity.html:200:24, test/10k/gravity.html:200:32, test/10k/gravity.html:200:40, test/10k/gravity.html:200:57, test/10k/gravity.html:203:29, test/10k/gravity.html:204:13, test/10k/gravity.html:204:33, test/10k/gravity.html:204:41, test/10k/gravity.html:204:49, test/10k/gravity.html:204:64, test/10k/gravity.html:204:79, test/10k/gravity.html:208:16, test/10k/gravity.html:208:36, test/10k/gravity.html:210:13, test/10k/gravity.html:210:30, test/10k/gravity.html:211:20, test/10k/gravity.html:211:37]
 test/10k/gravity.html:62:45: [maybe] Reading absent property (computed name)
 test/10k/gravity.html:62:60: [maybe] Reading absent property (computed name)
 test/10k/gravity.html:62:75: [maybe] Reading absent property (computed name)

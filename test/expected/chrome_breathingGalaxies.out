@@ -51,23 +51,16 @@ test/chromeexperiments/breathinggalaxies.html:86:8: [maybe] ReferenceError, read
 test/chromeexperiments/breathinggalaxies.html:89:37: [maybe] ReferenceError, reading absent variable R
 test/chromeexperiments/breathinggalaxies.html:90:2: [maybe] TypeError, call to non-function
 test/chromeexperiments/breathinggalaxies.html:33:6: [maybe] Reading absent property T
-test/chromeexperiments/breathinggalaxies.html:37:7: [maybe] Reading absent property pageX
-test/chromeexperiments/breathinggalaxies.html:38:7: [maybe] Reading absent property pageY
-test/chromeexperiments/breathinggalaxies.html:43:6: [maybe] Reading absent property pageX
-test/chromeexperiments/breathinggalaxies.html:44:6: [maybe] Reading absent property pageY
-test/chromeexperiments/breathinggalaxies.html:45:5: [maybe] Reading absent property pageX
-test/chromeexperiments/breathinggalaxies.html:49:4: [maybe] Reading absent property save
-test/chromeexperiments/breathinggalaxies.html:53:5: [maybe] Reading absent property fillRect
-test/chromeexperiments/breathinggalaxies.html:55:4: [maybe] Reading absent property restore
-test/chromeexperiments/breathinggalaxies.html:57:5: [maybe] Reading absent property beginPath
-test/chromeexperiments/breathinggalaxies.html:76:6: [maybe] Reading absent property moveTo
-test/chromeexperiments/breathinggalaxies.html:77:6: [maybe] Reading absent property lineTo
-test/chromeexperiments/breathinggalaxies.html:80:5: [maybe] Reading absent property stroke
+test/chromeexperiments/breathinggalaxies.html:49:4: [maybe] Reading absent property save of host object
+test/chromeexperiments/breathinggalaxies.html:53:5: [maybe] Reading absent property fillRect of host object
+test/chromeexperiments/breathinggalaxies.html:55:4: [maybe] Reading absent property restore of host object
+test/chromeexperiments/breathinggalaxies.html:57:5: [maybe] Reading absent property beginPath of host object
+test/chromeexperiments/breathinggalaxies.html:76:6: [maybe] Reading absent property moveTo of host object
+test/chromeexperiments/breathinggalaxies.html:77:6: [maybe] Reading absent property lineTo of host object
+test/chromeexperiments/breathinggalaxies.html:80:5: [maybe] Reading absent property stroke of host object
 test/chromeexperiments/breathinggalaxies.html: [maybe] Uncaught exception, constructed at [test/chromeexperiments/breathinggalaxies.html:23:6, test/chromeexperiments/breathinggalaxies.html:34:7, test/chromeexperiments/breathinggalaxies.html:34:35, test/chromeexperiments/breathinggalaxies.html:35:17, test/chromeexperiments/breathinggalaxies.html:43:14, test/chromeexperiments/breathinggalaxies.html:44:14, test/chromeexperiments/breathinggalaxies.html:45:13, test/chromeexperiments/breathinggalaxies.html:49:4, test/chromeexperiments/breathinggalaxies.html:53:5, test/chromeexperiments/breathinggalaxies.html:53:22, test/chromeexperiments/breathinggalaxies.html:53:25, test/chromeexperiments/breathinggalaxies.html:55:4, test/chromeexperiments/breathinggalaxies.html:57:5, test/chromeexperiments/breathinggalaxies.html:58:8, test/chromeexperiments/breathinggalaxies.html:62:9, test/chromeexperiments/breathinggalaxies.html:65:11, test/chromeexperiments/breathinggalaxies.html:66:6, test/chromeexperiments/breathinggalaxies.html:69:11, test/chromeexperiments/breathinggalaxies.html:70:6, test/chromeexperiments/breathinggalaxies.html:72:10, test/chromeexperiments/breathinggalaxies.html:72:14, test/chromeexperiments/breathinggalaxies.html:73:10, test/chromeexperiments/breathinggalaxies.html:73:14, test/chromeexperiments/breathinggalaxies.html:73:19, test/chromeexperiments/breathinggalaxies.html:73:26, test/chromeexperiments/breathinggalaxies.html:73:30, test/chromeexperiments/breathinggalaxies.html:73:38, test/chromeexperiments/breathinggalaxies.html:73:43, test/chromeexperiments/breathinggalaxies.html:73:47, test/chromeexperiments/breathinggalaxies.html:73:65, test/chromeexperiments/breathinggalaxies.html:73:69, test/chromeexperiments/breathinggalaxies.html:74:10, test/chromeexperiments/breathinggalaxies.html:74:14, test/chromeexperiments/breathinggalaxies.html:74:19, test/chromeexperiments/breathinggalaxies.html:74:26, test/chromeexperiments/breathinggalaxies.html:74:30, test/chromeexperiments/breathinggalaxies.html:74:38, test/chromeexperiments/breathinggalaxies.html:74:43, test/chromeexperiments/breathinggalaxies.html:74:47, test/chromeexperiments/breathinggalaxies.html:75:9, test/chromeexperiments/breathinggalaxies.html:76:6, test/chromeexperiments/breathinggalaxies.html:76:15, test/chromeexperiments/breathinggalaxies.html:76:18, test/chromeexperiments/breathinggalaxies.html:77:6, test/chromeexperiments/breathinggalaxies.html:79:32, test/chromeexperiments/breathinggalaxies.html:80:5, test/chromeexperiments/breathinggalaxies.html:84:4, test/chromeexperiments/breathinggalaxies.html:85:8, test/chromeexperiments/breathinggalaxies.html:86:8, test/chromeexperiments/breathinggalaxies.html:89:37, test/chromeexperiments/breathinggalaxies.html:90:2]
-test/chromeexperiments/breathinggalaxies.html:43:6: [maybe] Conversion to number yields NaN
-test/chromeexperiments/breathinggalaxies.html:44:6: [maybe] Conversion to number yields NaN
-test/chromeexperiments/breathinggalaxies.html:45:5: [maybe] Conversion to number yields NaN
-test/chromeexperiments/breathinggalaxies.html:73:38: [maybe] Conversion to number yields NaN
-test/chromeexperiments/breathinggalaxies.html:73:43: [maybe] Conversion to number yields NaN
-test/chromeexperiments/breathinggalaxies.html:74:38: [maybe] Conversion to number yields NaN
-test/chromeexperiments/breathinggalaxies.html:74:43: [maybe] Conversion to number yields NaN
+test/chromeexperiments/breathinggalaxies.html:65:6: [maybe] Conversion to number yields NaN
+test/chromeexperiments/breathinggalaxies.html:69:6: [maybe] Conversion to number yields NaN
+test/chromeexperiments/breathinggalaxies.html:72:9: [maybe] Conversion to number yields NaN
+test/chromeexperiments/breathinggalaxies.html:73:19: [maybe] Conversion to number yields NaN
+test/chromeexperiments/breathinggalaxies.html:74:19: [maybe] Conversion to number yields NaN

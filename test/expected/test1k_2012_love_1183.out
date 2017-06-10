@@ -1,36 +1,103 @@
-test/1k2012love/1183.js:9:21: [definite] The conditional expression is always false
-test/1k2012love/1183.js:9:26: [definite] Reading absent property which
 test/1k2012love/1183.js:8:27: [definite] The variable l is never used
 test/1k2012love/1183.js:8:27: [definite] The variable m is never used
-test/1k2012love/1183.js:76:37: [definite] Reading absent property (computed name)
 test/1k2012love/1183.js:80:13: [definite] The variable i is never used
 test/1k2012love/1183.js:80:13: [definite] The variable j is never used
 test/1k2012love/1183.js:80:13: [definite] The variable k is never used
 test/1k2012love/1183.js:80:13: [definite] The variable l is never used
 test/1k2012love/1183.js:80:13: [definite] The variable m is never used
 test/1k2012love/1183.js:9:11: [maybe] ReferenceError, reading absent variable s
+test/1k2012love/1183.js:9:26: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1183.js:10:14: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1183.js:15:11: [maybe] ReferenceError, reading absent variable a
+test/1k2012love/1183.js:25:13: [maybe] ReferenceError, reading absent variable C
+test/1k2012love/1183.js:25:15: [maybe] ReferenceError, reading absent variable x
+test/1k2012love/1183.js:25:19: [maybe] ReferenceError, reading absent variable v
+test/1k2012love/1183.js:26:13: [maybe] ReferenceError, reading absent variable C
+test/1k2012love/1183.js:26:15: [maybe] ReferenceError, reading absent variable y
+test/1k2012love/1183.js:26:19: [maybe] ReferenceError, reading absent variable w
+test/1k2012love/1183.js:26:25: [maybe] ReferenceError, reading absent variable h
+test/1k2012love/1183.js:29:13: [maybe] ReferenceError, reading absent variable y
+test/1k2012love/1183.js:29:17: [maybe] ReferenceError, reading absent variable h
+test/1k2012love/1183.js:29:21: [maybe] ReferenceError, reading absent variable w
+test/1k2012love/1183.js:29:30: [maybe] ReferenceError, reading absent variable J
+test/1k2012love/1183.js:32:13: [maybe] ReferenceError, reading absent variable L
+test/1k2012love/1183.js:32:22: [maybe] ReferenceError, reading absent variable R
+test/1k2012love/1183.js:35:13: [maybe] ReferenceError, reading absent variable C
+test/1k2012love/1183.js:35:23: [maybe] ReferenceError, reading absent variable x
+test/1k2012love/1183.js:35:34: [maybe] ReferenceError, reading absent variable y
+test/1k2012love/1183.js:38:17: [maybe] ReferenceError, reading absent variable e
+test/1k2012love/1183.js:41:17: [maybe] ReferenceError, reading absent variable x
+test/1k2012love/1183.js:42:17: [maybe] ReferenceError, reading absent variable y
 test/1k2012love/1183.js:45:27: [maybe] ReferenceError, reading absent variable U
+test/1k2012love/1183.js:45:31: [maybe] ReferenceError, reading absent variable v
+test/1k2012love/1183.js:45:45: [maybe] ReferenceError, reading absent variable w
+test/1k2012love/1183.js:48:17: [maybe] ReferenceError, reading absent variable C
+test/1k2012love/1183.js:48:24: [maybe] ReferenceError, reading absent variable C
 test/1k2012love/1183.js:48:26: [maybe] ReferenceError, reading absent variable U
+test/1k2012love/1183.js:48:31: [maybe] ReferenceError, reading absent variable v
+test/1k2012love/1183.js:48:47: [maybe] ReferenceError, reading absent variable w
+test/1k2012love/1183.js:54:9: [maybe] ReferenceError, reading absent variable O
+test/1k2012love/1183.js:54:14: [maybe] ReferenceError, reading absent variable x
+test/1k2012love/1183.js:54:17: [maybe] ReferenceError, reading absent variable y
+test/1k2012love/1183.js:57:9: [maybe] ReferenceError, reading absent variable O
+test/1k2012love/1183.js:57:18: [maybe] ReferenceError, reading absent variable x
+test/1k2012love/1183.js:57:34: [maybe] ReferenceError, reading absent variable y
+test/1k2012love/1183.js:60:17: [maybe] ReferenceError, reading absent variable C
+test/1k2012love/1183.js:61:9: [maybe] ReferenceError, reading absent variable O
+test/1k2012love/1183.js:61:29: [maybe] ReferenceError, reading absent variable e
+test/1k2012love/1183.js:64:9: [maybe] ReferenceError, reading absent variable O
+test/1k2012love/1183.js:64:19: [maybe] ReferenceError, reading absent variable x
+test/1k2012love/1183.js:64:37: [maybe] ReferenceError, reading absent variable y
+test/1k2012love/1183.js:70:35: [maybe] ReferenceError, reading absent variable y
 test/1k2012love/1183.js:71:21: [maybe] ReferenceError, reading absent variable U
+test/1k2012love/1183.js:72:17: [maybe] ReferenceError, reading absent variable x
+test/1k2012love/1183.js:76:18: [maybe] ReferenceError, reading absent variable J
+test/1k2012love/1183.js:81:5: [maybe] ReferenceError, reading absent variable P
+test/1k2012love/1183.js:83:9: [maybe] ReferenceError, reading absent variable O
+test/1k2012love/1183.js:83:25: [maybe] ReferenceError, reading absent variable h
 test/1k2012love/1183.js:86:9: [maybe] ReferenceError, reading absent variable Y
 test/1k2012love/1183.js:86:14: [maybe] ReferenceError, reading absent variable V
+test/1k2012love/1183.js:89:13: [maybe] ReferenceError, reading absent variable C
 test/1k2012love/1183.js:89:15: [maybe] ReferenceError, reading absent variable X
 test/1k2012love/1183.js:89:20: [maybe] ReferenceError, reading absent variable U
 test/1k2012love/1183.js:90:32: [maybe] ReferenceError, reading absent variable U
+test/1k2012love/1183.js:94:32: [maybe] ReferenceError, reading absent variable R
+test/1k2012love/1183.js:94:38: [maybe] ReferenceError, reading absent variable T
+test/1k2012love/1183.js:97:9: [maybe] ReferenceError, reading absent variable S
 test/1k2012love/1183.js:97:26: [maybe] ReferenceError, reading absent variable s
+test/1k2012love/1183.js:98:9: [maybe] ReferenceError, reading absent variable S
 test/1k2012love/1183.js:98:28: [maybe] ReferenceError, reading absent variable t
+test/1k2012love/1183.js:101:13: [maybe] ReferenceError, reading absent variable C
 test/1k2012love/1183.js:101:47: [maybe] ReferenceError, reading absent variable U
 test/1k2012love/1183.js:101:71: [maybe] ReferenceError, reading absent variable U
-test/1k2012love/shim.js:8:9: [maybe] TypeError, accessing property of null/undefined
-test/1k2012love/shim.js:8:9: [maybe] TypeError, call to non-function
-test/1k2012love/shim.js:9:1: [maybe] TypeError, accessing property of null/undefined
-test/1k2012love/shim.js:6:9: [maybe] Reading absent property body
-test/1k2012love/shim.js:8:9: [maybe] Reading absent property getContext
-test/1k2012love/shim.js:9:1: [maybe] Reading absent property body
+test/1k2012love/1183.js:104:9: [maybe] ReferenceError, reading absent variable O
+test/1k2012love/1183.js:107:9: [maybe] ReferenceError, reading absent variable O
+test/1k2012love/1183.js:110:9: [maybe] ReferenceError, reading absent variable O
+test/1k2012love/1183.js:110:14: [maybe] ReferenceError, reading absent variable R
+test/1k2012love/1183.js:111:9: [maybe] ReferenceError, reading absent variable O
+test/1k2012love/1183.js:111:14: [maybe] ReferenceError, reading absent variable T
+test/1k2012love/1183.js:112:11: [maybe] ReferenceError, reading absent variable W
+test/1k2012love/1183.js:114:17: [maybe] ReferenceError, reading absent variable h
+test/1k2012love/1183.js:115:17: [maybe] ReferenceError, reading absent variable h
+test/1k2012love/1183.js:116:14: [maybe] ReferenceError, reading absent variable Q
+test/1k2012love/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1183.js:9:26: [maybe] Reading absent property which of host object
+test/1k2012love/1183.js:10:14: [maybe] Reading absent property type of host object
+test/1k2012love/1183.js: [maybe] Uncaught exception, constructed at [test/1k2012love/1183.js:9:11, test/1k2012love/1183.js:9:26, test/1k2012love/1183.js:10:14, test/1k2012love/1183.js:15:11, test/1k2012love/1183.js:25:13, test/1k2012love/1183.js:25:15, test/1k2012love/1183.js:25:19, test/1k2012love/1183.js:26:13, test/1k2012love/1183.js:26:15, test/1k2012love/1183.js:26:19, test/1k2012love/1183.js:26:25, test/1k2012love/1183.js:29:13, test/1k2012love/1183.js:29:17, test/1k2012love/1183.js:29:21, test/1k2012love/1183.js:29:30, test/1k2012love/1183.js:32:13, test/1k2012love/1183.js:32:22, test/1k2012love/1183.js:35:13, test/1k2012love/1183.js:35:23, test/1k2012love/1183.js:35:34, test/1k2012love/1183.js:38:17, test/1k2012love/1183.js:41:17, test/1k2012love/1183.js:42:17, test/1k2012love/1183.js:45:27, test/1k2012love/1183.js:45:31, test/1k2012love/1183.js:45:45, test/1k2012love/1183.js:48:17, test/1k2012love/1183.js:48:24, test/1k2012love/1183.js:48:26, test/1k2012love/1183.js:48:31, test/1k2012love/1183.js:48:47, test/1k2012love/1183.js:54:9, test/1k2012love/1183.js:54:14, test/1k2012love/1183.js:54:17, test/1k2012love/1183.js:57:9, test/1k2012love/1183.js:57:18, test/1k2012love/1183.js:57:34, test/1k2012love/1183.js:60:17, test/1k2012love/1183.js:61:9, test/1k2012love/1183.js:61:29, test/1k2012love/1183.js:64:9, test/1k2012love/1183.js:64:19, test/1k2012love/1183.js:64:37, test/1k2012love/1183.js:70:35, test/1k2012love/1183.js:71:21, test/1k2012love/1183.js:72:17, test/1k2012love/1183.js:76:18, test/1k2012love/1183.js:81:5, test/1k2012love/1183.js:83:9, test/1k2012love/1183.js:83:25, test/1k2012love/1183.js:86:9, test/1k2012love/1183.js:86:14, test/1k2012love/1183.js:89:13, test/1k2012love/1183.js:89:15, test/1k2012love/1183.js:89:20, test/1k2012love/1183.js:90:32, test/1k2012love/1183.js:94:32, test/1k2012love/1183.js:94:38, test/1k2012love/1183.js:97:9, test/1k2012love/1183.js:97:26, test/1k2012love/1183.js:98:9, test/1k2012love/1183.js:98:28, test/1k2012love/1183.js:101:13, test/1k2012love/1183.js:101:47, test/1k2012love/1183.js:101:71, test/1k2012love/1183.js:104:9, test/1k2012love/1183.js:107:9, test/1k2012love/1183.js:110:9, test/1k2012love/1183.js:110:14, test/1k2012love/1183.js:111:9, test/1k2012love/1183.js:111:14, test/1k2012love/1183.js:112:11, test/1k2012love/1183.js:114:17, test/1k2012love/1183.js:115:17, test/1k2012love/1183.js:116:14, test/1k2012love/shim.js:9:5]
 test/1k2012love/1183.js:9:26: [maybe] Converting primitive number to object
+test/1k2012love/1183.js:9:26: [maybe] Converting primitive string to object
 test/1k2012love/1183.js:9:26: [maybe] The variable i has values with different types
+test/1k2012love/1183.js:10:14: [maybe] Converting primitive number to object
+test/1k2012love/1183.js:10:14: [maybe] Converting primitive string to object
+test/1k2012love/1183.js:10:14: [maybe] Reading absent property (computed name)
+test/1k2012love/1183.js:10:14: [maybe] The variable i has values with different types
+test/1k2012love/1183.js:10:25: [maybe] Conversion to number yields NaN
+test/1k2012love/1183.js:10:34: [maybe] Conversion to number yields NaN
+test/1k2012love/1183.js:10:43: [maybe] Conversion to number yields NaN
 test/1k2012love/1183.js:10:84: [maybe] Conversion to number yields NaN
+test/1k2012love/1183.js:10:96: [maybe] Conversion from string to number yields NaN
 test/1k2012love/1183.js:10:96: [maybe] Conversion to number yields NaN
+test/1k2012love/1183.js:10:96: [maybe] Converting object to number
 test/1k2012love/1183.js:10:108: [maybe] The variable i has values with different types
 test/1k2012love/1183.js:10:124: [maybe] Conversion from string to number yields NaN
 test/1k2012love/1183.js:10:124: [maybe] Converting object to number
@@ -39,17 +106,118 @@ test/1k2012love/1183.js:10:128: [maybe] The variable i has values with different
 test/1k2012love/1183.js:10:132: [maybe] Conversion to number yields NaN
 test/1k2012love/1183.js:16:25: [maybe] Converting object to string
 test/1k2012love/1183.js:16:25: [maybe] Converting primitive string to object
+test/1k2012love/1183.js:17:15: [maybe] Conversion from string to number yields NaN
+test/1k2012love/1183.js:17:15: [maybe] Conversion to number yields NaN
+test/1k2012love/1183.js:17:15: [maybe] Converting undefined to string
 test/1k2012love/1183.js:17:24: [maybe] The variable j has values with different types
+test/1k2012love/1183.js:17:27: [maybe] The variable k has values with different types
 test/1k2012love/1183.js:18:17: [maybe] Conversion from string to number yields NaN
 test/1k2012love/1183.js:18:17: [maybe] Conversion to number yields NaN
 test/1k2012love/1183.js:18:26: [maybe] The variable j has values with different types
+test/1k2012love/1183.js:18:29: [maybe] The variable k has values with different types
 test/1k2012love/1183.js:18:54: [maybe] Conversion from string to number yields NaN
 test/1k2012love/1183.js:18:54: [maybe] Conversion to number yields NaN
 test/1k2012love/1183.js:18:58: [maybe] The variable j has values with different types
+test/1k2012love/1183.js:18:61: [maybe] The variable k has values with different types
 test/1k2012love/1183.js:18:67: [maybe] Conversion to number yields NaN
+test/1k2012love/1183.js:25:15: [maybe] Conversion to number yields NaN
+test/1k2012love/1183.js:25:15: [maybe] The variable x has values with different types
+test/1k2012love/1183.js:26:15: [maybe] Conversion to number yields NaN
+test/1k2012love/1183.js:26:15: [maybe] The variable y has values with different types
+test/1k2012love/1183.js:29:13: [maybe] Conversion from string to number yields NaN
+test/1k2012love/1183.js:29:13: [maybe] Conversion to number yields NaN
+test/1k2012love/1183.js:29:13: [maybe] The variable y has values with different types
+test/1k2012love/1183.js:29:30: [maybe] The variable J has values with different types
+test/1k2012love/1183.js:32:13: [maybe] The variable L has values with different types
+test/1k2012love/1183.js:32:22: [maybe] The variable R has values with different types
+test/1k2012love/1183.js:35:19: [maybe] Conversion from string to number yields NaN
+test/1k2012love/1183.js:35:19: [maybe] Conversion to number yields NaN
+test/1k2012love/1183.js:35:19: [maybe] The variable X has values with different types
+test/1k2012love/1183.js:35:23: [maybe] The variable x has values with different types
+test/1k2012love/1183.js:35:30: [maybe] Conversion from string to number yields NaN
+test/1k2012love/1183.js:35:30: [maybe] Conversion to number yields NaN
+test/1k2012love/1183.js:35:30: [maybe] The variable Y has values with different types
+test/1k2012love/1183.js:35:34: [maybe] The variable y has values with different types
+test/1k2012love/1183.js:36:9: [maybe] The variable f has values with different types
+test/1k2012love/1183.js:37:17: [maybe] Conversion from string to number yields NaN
+test/1k2012love/1183.js:37:17: [maybe] Conversion to number yields NaN
+test/1k2012love/1183.js:37:21: [maybe] The variable f has values with different types
+test/1k2012love/1183.js:38:17: [maybe] Conversion from string to number yields NaN
+test/1k2012love/1183.js:38:17: [maybe] Conversion to number yields NaN
+test/1k2012love/1183.js:38:17: [maybe] The variable e has values with different types
+test/1k2012love/1183.js:38:21: [maybe] The variable f has values with different types
+test/1k2012love/1183.js:41:17: [maybe] Conversion to number yields NaN
+test/1k2012love/1183.js:41:17: [maybe] The variable x has values with different types
+test/1k2012love/1183.js:42:17: [maybe] Conversion to number yields NaN
+test/1k2012love/1183.js:42:17: [maybe] The variable y has values with different types
+test/1k2012love/1183.js:48:19: [maybe] Conversion from string to number yields NaN
+test/1k2012love/1183.js:48:19: [maybe] Conversion to number yields NaN
+test/1k2012love/1183.js:49:18: [maybe] Conversion from string to number yields NaN
+test/1k2012love/1183.js:49:18: [maybe] Conversion to number yields NaN
+test/1k2012love/1183.js:49:18: [maybe] The variable d has values with different types
+test/1k2012love/1183.js:50:13: [maybe] Conversion from string to number yields NaN
+test/1k2012love/1183.js:50:13: [maybe] Conversion to number yields NaN
+test/1k2012love/1183.js:50:18: [maybe] The variable d has values with different types
+test/1k2012love/1183.js:54:14: [maybe] The variable x has values with different types
+test/1k2012love/1183.js:54:17: [maybe] The variable y has values with different types
+test/1k2012love/1183.js:57:18: [maybe] Conversion from string to number yields NaN
+test/1k2012love/1183.js:57:18: [maybe] Conversion to number yields NaN
+test/1k2012love/1183.js:57:18: [maybe] The variable x has values with different types
+test/1k2012love/1183.js:57:34: [maybe] Conversion from string to number yields NaN
+test/1k2012love/1183.js:57:34: [maybe] Conversion to number yields NaN
+test/1k2012love/1183.js:57:34: [maybe] The variable y has values with different types
+test/1k2012love/1183.js:60:13: [maybe] Conversion from string to number yields NaN
+test/1k2012love/1183.js:60:13: [maybe] Conversion to number yields NaN
+test/1k2012love/1183.js:60:23: [maybe] Conversion from string to number yields NaN
+test/1k2012love/1183.js:60:23: [maybe] Conversion to number yields NaN
+test/1k2012love/1183.js:60:23: [maybe] The variable X has values with different types
+test/1k2012love/1183.js:60:34: [maybe] Conversion from string to number yields NaN
+test/1k2012love/1183.js:60:34: [maybe] The variable Y has values with different types
+test/1k2012love/1183.js:61:29: [maybe] Conversion from string to number yields NaN
+test/1k2012love/1183.js:61:29: [maybe] Conversion to number yields NaN
+test/1k2012love/1183.js:61:29: [maybe] The variable e has values with different types
+test/1k2012love/1183.js:64:19: [maybe] Conversion from string to number yields NaN
+test/1k2012love/1183.js:64:19: [maybe] Conversion to number yields NaN
+test/1k2012love/1183.js:64:19: [maybe] The variable x has values with different types
+test/1k2012love/1183.js:64:36: [maybe] Conversion from string to number yields NaN
+test/1k2012love/1183.js:64:36: [maybe] Conversion to number yields NaN
+test/1k2012love/1183.js:64:37: [maybe] The variable y has values with different types
+test/1k2012love/1183.js:70:27: [maybe] Conversion from string to number yields NaN
+test/1k2012love/1183.js:70:27: [maybe] Conversion to number yields NaN
+test/1k2012love/1183.js:70:35: [maybe] The variable y has values with different types
+test/1k2012love/1183.js:70:44: [maybe] The variable Y has values with different types
+test/1k2012love/1183.js:71:17: [maybe] Conversion to number yields NaN
+test/1k2012love/1183.js:71:17: [maybe] The variable X has values with different types
+test/1k2012love/1183.js:72:17: [maybe] Conversion from string to number yields NaN
+test/1k2012love/1183.js:72:17: [maybe] Conversion to number yields NaN
+test/1k2012love/1183.js:72:17: [maybe] The variable x has values with different types
+test/1k2012love/1183.js:72:26: [maybe] The variable e has values with different types
+test/1k2012love/1183.js:73:17: [maybe] The variable e has values with different types
+test/1k2012love/1183.js:76:18: [maybe] The variable J has values with different types
+test/1k2012love/1183.js:76:36: [maybe] Conversion from string to number yields NaN
 test/1k2012love/1183.js:76:36: [maybe] Conversion to number yields NaN
 test/1k2012love/1183.js:76:37: [maybe] Converting primitive string to object
+test/1k2012love/1183.js:76:37: [maybe] Reading absent property (computed name)
 test/1k2012love/1183.js:81:5: [maybe] The variable P has values with different types
+test/1k2012love/1183.js:86:9: [maybe] The variable Y has values with different types
+test/1k2012love/1183.js:89:15: [maybe] Conversion to number yields NaN
+test/1k2012love/1183.js:89:15: [maybe] The variable X has values with different types
+test/1k2012love/1183.js:90:9: [maybe] Conversion from string to number yields NaN
+test/1k2012love/1183.js:90:9: [maybe] The variable X has values with different types
+test/1k2012love/1183.js:90:14: [maybe] The variable d has values with different types
+test/1k2012love/1183.js:90:24: [maybe] The variable d has values with different types
+test/1k2012love/1183.js:93:14: [maybe] The variable Y has values with different types
+test/1k2012love/1183.js:94:19: [maybe] The variable X has values with different types
+test/1k2012love/1183.js:94:30: [maybe] Conversion from string to number yields NaN
+test/1k2012love/1183.js:94:30: [maybe] Conversion to number yields NaN
+test/1k2012love/1183.js:94:32: [maybe] The variable R has values with different types
+test/1k2012love/1183.js:101:9: [maybe] Conversion from string to number yields NaN
+test/1k2012love/1183.js:101:9: [maybe] Conversion to number yields NaN
+test/1k2012love/1183.js:101:9: [maybe] The variable X has values with different types
+test/1k2012love/1183.js:101:15: [maybe] The variable X has values with different types
+test/1k2012love/1183.js:101:32: [maybe] The variable Y has values with different types
+test/1k2012love/1183.js:101:76: [maybe] The variable Y has values with different types
+test/1k2012love/1183.js:107:14: [maybe] The variable X has values with different types
+test/1k2012love/1183.js:107:17: [maybe] The variable Y has values with different types
+test/1k2012love/1183.js:110:14: [maybe] The variable R has values with different types
 test/1k2012love/1183.js:116:14: [maybe] The variable Q has values with different types
-test/1k2012love/shim.js:7:9: [maybe] Reading absent property (computed name)
-test/1k2012love/shim.js,test/1k2012love/1183.js: [maybe] Uncaught exception, constructed at [test/1k2012love/1183.js:9:11, test/1k2012love/1183.js:45:27, test/1k2012love/1183.js:48:26, test/1k2012love/1183.js:71:21, test/1k2012love/1183.js:86:9, test/1k2012love/1183.js:86:14, test/1k2012love/1183.js:89:15, test/1k2012love/1183.js:89:20, test/1k2012love/1183.js:90:32, test/1k2012love/1183.js:97:26, test/1k2012love/1183.js:98:28, test/1k2012love/1183.js:101:47, test/1k2012love/1183.js:101:71, test/1k2012love/shim.js:8:9, test/1k2012love/shim.js:9:1]

@@ -1,5 +1,5 @@
 test/apps/simplecalc/math2.html:48:17: [definite] TypeError, accessing property of null/undefined
-test/apps/simplecalc/math2.html:48:17: [definite] Reading absent property calculator
+test/apps/simplecalc/math2.html:48:17: [definite] Reading absent property calculator of host object
 test/apps/simplecalc/math2.html:6:5: [definite] The variable Result is never used
 test/apps/simplecalc/math2.html:6:15: [definite] The variable Operator is never used
 test/apps/simplecalc/math2.html:6:27: [definite] The variable Second is never used

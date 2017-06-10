@@ -3,10 +3,11 @@ package dk.brics.tajs.test;
 import dk.brics.tajs.Main;
 import dk.brics.tajs.analysis.Analysis;
 import dk.brics.tajs.flowgraph.FlowGraph;
-import dk.brics.tajs.flowgraph.JavaScriptSource;
+import dk.brics.tajs.flowgraph.SourceLocation;
 import dk.brics.tajs.js2flowgraph.FlowGraphBuilder;
 import dk.brics.tajs.monitoring.IAnalysisMonitoring;
 import dk.brics.tajs.monitoring.Monitoring;
+import dk.brics.tajs.options.Options;
 import dk.brics.tajs.util.AnalysisException;
 import org.apache.log4j.Appender;
 import org.apache.log4j.Logger;
@@ -24,6 +25,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.util.Arrays;
 import java.util.Locale;
 
 import static org.junit.Assert.assertEquals;
@@ -69,13 +71,22 @@ public class Misc {
         throw new AnalysisException("Can't find class name!?");
     }
 
-    public static void run(String[] args) throws AnalysisException {
+    public static void run(String arg) throws AnalysisException {
+        run(new String[]{arg});
+    }
+
+    public static void run(String... args) throws AnalysisException {
         run(args, new Monitoring());
+    }
+
+    public static void run(String arg, IAnalysisMonitoring monitoring) throws AnalysisException {
+        run(new String[]{arg}, monitoring);
     }
 
     public static void run(String[] args, IAnalysisMonitoring monitoring) throws AnalysisException {
         try {
-            Analysis a = Main.init(args, monitoring, null);
+            Options.get().getArguments().addAll(Arrays.asList(args));
+            Analysis a = Main.init(Options.get(), monitoring, null);
             if (a == null)
                 throw new AnalysisException("Error during initialization");
             Main.run(a);
@@ -153,10 +164,14 @@ public class Misc {
     }
 
     public static void runSource(String[] src, IAnalysisMonitoring monitoring) {
-        runSource(null, src, monitoring);
+        runSourcePart(null, src, monitoring);
     }
 
-    public static void runSource(String suffix, String[] src, IAnalysisMonitoring monitoring) {
+    public static void runSourcePart(String suffix, String... src) {
+        runSourcePart(suffix, src, null);
+    }
+
+    private static void runSourcePart(String suffix, String[] src, IAnalysisMonitoring monitoring) {
         try {
             File dir = new File("out/temp-sources/");
             if (!dir.exists()) {
@@ -165,8 +180,8 @@ public class Misc {
             File file = new File(dir, getClassName() + "." + getMethodName() + (suffix != null ? "." + suffix : "") + ".js"); // Windows chokes if reusing file names in one execution
             file.deleteOnExit();
             try (PrintWriter writer = new PrintWriter(file, "UTF-8")) {
-                for (int i = 0; i < src.length; i++) {
-                    writer.write(src[i]);
+                for (String aSrc : src) {
+                    writer.write(aSrc);
                     writer.write("\n");
                 }
             }
@@ -186,8 +201,10 @@ public class Misc {
         for (int i = 0; i < src.length; i++) {
             sb.append(src[i]).append("\n");
         }
-        FlowGraphBuilder flowGraphBuilder = new FlowGraphBuilder(null, "dummy");
-        flowGraphBuilder.transformStandAloneCode(JavaScriptSource.makeEmbeddedCode(null, "-", sb.toString(), 0, 0));
+
+        SourceLocation.SyntheticLocationMaker sourceLocationMaker = new SourceLocation.SyntheticLocationMaker("synthetic");
+        FlowGraphBuilder flowGraphBuilder = FlowGraphBuilder.makeForMain(sourceLocationMaker);
+        flowGraphBuilder.transformStandAloneCode(sb.toString(), sourceLocationMaker);
         return flowGraphBuilder.close();
     }
 }

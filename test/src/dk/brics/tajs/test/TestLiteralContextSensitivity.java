@@ -10,7 +10,6 @@ import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.monitoring.CompositeMonitoring;
 import dk.brics.tajs.monitoring.DefaultAnalysisMonitoring;
 import dk.brics.tajs.monitoring.Monitoring;
-import dk.brics.tajs.monitoring.OrdinaryExitReachableChecker;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.util.Collections;
 import org.junit.Before;
@@ -100,7 +99,7 @@ public class TestLiteralContextSensitivity {
 
     private void test(String objectVariable, Set<Value> contextValues, String... sourceLines) {
         TestMonitor testMonitor = new TestMonitor();
-        Misc.runSource(sourceLines, CompositeMonitoring.buildFromList(new Monitoring(), testMonitor, new OrdinaryExitReachableChecker()));
+        Misc.runSource(sourceLines, CompositeMonitoring.buildFromList(new Monitoring(), testMonitor));
         Set<ObjectLabel> objectLabels = testMonitor.state.readVariableDirect(objectVariable).getObjectLabels();
         Set<Value> values = newSet();
         for (ObjectLabel objectLabel : objectLabels) {
@@ -118,7 +117,7 @@ public class TestLiteralContextSensitivity {
         private State state;
 
         @Override
-        public void visitPostBlockTransfer(BasicBlock b, State state) {
+        public void visitBlockTransferPost(BasicBlock b, State state) {
             if (b.getFunction().isMain() && b.getFunction().getOrdinaryExit() == b) {
                 this.state = state;
             }

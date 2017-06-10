@@ -1,9 +1,6 @@
 package dk.brics.tajs.test;
 
 import dk.brics.tajs.Main;
-import dk.brics.tajs.monitoring.AnalysisTimeLimiter;
-import dk.brics.tajs.monitoring.CompositeMonitoring;
-import dk.brics.tajs.monitoring.Monitoring;
 import dk.brics.tajs.options.OptionValues;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.util.AnalysisLimitationException;
@@ -44,6 +41,9 @@ public class TestOptionToggling {
                 .map(m -> {
                     OptionValues optionValues = new OptionValues();
                     try {
+                        if (m.getName().equals("enableCommonAsyncPolyfill")) {
+                            optionValues.enableAsyncEvents();
+                        }
                         m.invoke(optionValues);
                     } catch (IllegalAccessException | InvocationTargetException e) {
                         throw new RuntimeException(e);
@@ -83,7 +83,8 @@ public class TestOptionToggling {
     public void test(String file) {
         String[] args = {file};
         try {
-            Misc.run(args, new CompositeMonitoring(new Monitoring(), new AnalysisTimeLimiter(30, false)));
+            Options.get().setAnalysisTimeLimit(30);
+            Misc.run(args);
         } catch (AnalysisLimitationException e) {
             // ignore
         }

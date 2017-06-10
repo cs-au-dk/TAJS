@@ -22,8 +22,8 @@ test/uneval/uneval28.html:67:24: [definite] Variable PWAd is null/undefined
 test/uneval/uneval28.html:70:27: [definite] Variable PWAd is null/undefined
 test/uneval/uneval28.html:73:27: [definite] Variable PWAd is null/undefined
 test/uneval/uneval28.html:76:27: [definite] Variable PWAd is null/undefined
-test/uneval/uneval28.html:107:5: [definite] The conditional expression is always true
 test/uneval/uneval28.html:107:9: [definite] The conditional expression is always true
+test/uneval/uneval28.html: [definite] Exceptional program exit is unreachable
 test/uneval/uneval28.html:78:7: [definite] Unreachable code
 test/uneval/uneval28.html:83:1: [definite] Unreachable function PWAjel
 test/uneval/uneval28.html:106:1: [definite] The variable c is never used

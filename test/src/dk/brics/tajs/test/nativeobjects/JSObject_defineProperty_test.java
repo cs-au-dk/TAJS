@@ -1,10 +1,6 @@
 package dk.brics.tajs.test.nativeobjects;
 
 import dk.brics.tajs.Main;
-import dk.brics.tajs.monitoring.CompositeMonitoring;
-import dk.brics.tajs.monitoring.IAnalysisMonitoring;
-import dk.brics.tajs.monitoring.Monitoring;
-import dk.brics.tajs.monitoring.OrdinaryExitReachableChecker;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.test.Misc;
 import org.junit.Before;
@@ -12,56 +8,49 @@ import org.junit.Test;
 
 public class JSObject_defineProperty_test {
 
-    private IAnalysisMonitoring monitor;
-
     @Before
     public void before() {
         Main.reset();
         Main.initLogging();
         Options.get().enableTest();
-        monitor = CompositeMonitoring.buildFromList(new Monitoring(), new OrdinaryExitReachableChecker());
     }
 
     @Test
     public void callable() {
-        Misc.runSource(new String[]{
+        Misc.runSource(
                 "var o = {};",
-                "Object.defineProperty(o, 'p', {});"
-        }, monitor);
+                "Object.defineProperty(o, 'p', {});");
     }
 
     @Test
     public void data() {
-        Misc.runSource(new String[]{
+        Misc.runSource(
                 "var o = {};",
-                "Object.defineProperty(o, 'p', {value: 42});",
-        }, monitor);
+                "Object.defineProperty(o, 'p', {value: 42});");
     }
 
     @Test
     public void accessor() {
-        Misc.runSource(new String[]{
+        Misc.runSource(
                 "var o = {};",
-                "Object.defineProperty(o, 'p', {get: function(){ return 42; }});"
-        }, monitor);
+                "Object.defineProperty(o, 'p', {get: function(){ return 42; }});");
     }
 
     @Test
     public void dataAndAccessor() {
-        Misc.runSource(new String[]{
+        Misc.runSource(
                 // Should throw definite TypeError:
                 // "TypeError:Invalid property.A property cannot both have accessors and be writable or have a value"
                 "var o = {};",
                 "try{",
                 "   Object.defineProperty(o, 'p', {value: 42, get: function(){return 42;}});",
                 "   TAJS_assert(false);",
-                "}catch(e){}"
-        }, monitor);
+                "}catch(e){}");
     }
 
     @Test
     public void value() {
-        Misc.runSource(new String[]{
+        Misc.runSource(
                 "var o1 = {};",
                 "Object.defineProperty(o1, 'p', {value: 42});",
                 "TAJS_assert(o1.p === 42);",
@@ -69,13 +58,12 @@ public class JSObject_defineProperty_test {
                 "var o2 = {};",
                 "Object.defineProperty(o2, 'p', {});",
                 "TAJS_assert(o2.hasOwnProperty('p'));",
-                "TAJS_assert(o2.p === undefined);",
-        }, monitor);
+                "TAJS_assert(o2.p === undefined);");
     }
 
     @Test
     public void enumerable() {
-        Misc.runSource(new String[]{
+        Misc.runSource(
                         "var o1 = {};",
                         "Object.defineProperty(o1, 'p', {enumerable: true});",
                         "TAJS_assert(Object.keys(o1).length === 1);",
@@ -85,14 +73,12 @@ public class JSObject_defineProperty_test {
                         // default false
                         "var o3 = {};",
                         "Object.defineProperty(o3, 'p', {enumerable: false});",
-                        "TAJS_assert(Object.keys(o3).length === 0);"
-                },
-                monitor);
+                        "TAJS_assert(Object.keys(o3).length === 0);");
     }
 
     @Test
     public void writable() {
-        Misc.runSource(new String[]{
+        Misc.runSource(
                 "var o1 = {};",
                 "Object.defineProperty(o1, 'p', {writable: true});",
                 "o1.p = 42;",
@@ -105,8 +91,7 @@ public class JSObject_defineProperty_test {
                 "var o3 = {};",
                 "Object.defineProperty(o3, 'p', {writable: false});",
                 "o3.p = 42;",
-                "TAJS_assert(o3.p === undefined);",
-        }, monitor);
+                "TAJS_assert(o3.p === undefined);");
     }
 
     @Test
@@ -140,7 +125,7 @@ public class JSObject_defineProperty_test {
                 "TAJS_assert(o3.p === 42);");
     }
 
-    @Test(expected = AssertionError.class) // GitHub #291
+    @Test(expected = AssertionError.class) // TODO: GitHub #291
     public void configurable4() {
         Misc.runSource(
                 "var o4 = {};",
@@ -165,7 +150,7 @@ public class JSObject_defineProperty_test {
                 "Object.defineProperty(o, 'p', {writable: false});",
                 // NOT OK to redefine with other attributes
                 "Object.defineProperty(o, 'p', {writable: true});"
-                // (fails soundness testing) // GitHub #291
+                // (fails soundness testing) // TODO: GitHub #291
         );
     }
 
@@ -192,45 +177,41 @@ public class JSObject_defineProperty_test {
 
     @Test
     public void getter() {
-        Misc.runSource(new String[]{
+        Misc.runSource(
                 "var o = {};",
                 "Object.defineProperty(o, 'p', {get: function(){return 42;}});",
-                "TAJS_assert(o.p === 42);"
-        }, monitor);
+                "TAJS_assert(o.p === 42);");
     }
 
     @Test
     public void setter() {
-        Misc.runSource(new String[]{
+        Misc.runSource(
                 "var o = {};",
                 "var x;",
                 "Object.defineProperty(o, 'p', {set: function(v){x = v;}});",
                 "o.p = 42;",
-                "TAJS_assert(x === 42);",
-        }, monitor);
+                "TAJS_assert(x === 42);");
     }
 
     @Test
     public void getter_setter() {
-        Misc.runSource(new String[]{
+        Misc.runSource(
                 "var o = {};",
                 "var x;",
                 "Object.defineProperty(o, 'p', {get: function(){return 42;}, set: function(v){x = v;}});",
                 "o.p = 87;",
                 "TAJS_assertEquals(87, x);",
-                "TAJS_assertEquals(42, o.p);",
-        }, monitor);
+                "TAJS_assertEquals(42, o.p);");
     }
 
     @Test
     public void setter_getter() {
-        Misc.runSource(new String[]{
+        Misc.runSource(
                 "var o = {};",
                 "var x;",
                 "Object.defineProperty(o, 'p', {set: function(v){x = v;}, get: function(){return 42;}});",
                 "o.p = 87;",
                 "TAJS_assertEquals(87, x);",
-                "TAJS_assertEquals(42, o.p);",
-        }, monitor);
+                "TAJS_assertEquals(42, o.p);");
     }
 }

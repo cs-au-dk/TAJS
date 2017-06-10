@@ -1,3 +1,4 @@
 test/anderson/anderson23.js:6:2: [definite] Dead assignment, property m1 is never read
 test/anderson/anderson23.js:11:2: [definite] Reading absent property m2
 test/anderson/anderson23.js:12:2: [definite] Dead assignment, property m2 is never read
+test/anderson/anderson23.js: [definite] Exceptional program exit is unreachable

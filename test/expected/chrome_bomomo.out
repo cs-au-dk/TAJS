@@ -1,0 +1,1609 @@
+test/chromeexperiments/bomomo.html:308:5: [definite] Dead assignment, property intervalID is never read
+test/chromeexperiments/bomomo.html:329:13: [definite] Reading absent property x of host object
+test/chromeexperiments/bomomo.html:330:13: [definite] Reading absent property y of host object
+test/chromeexperiments/bomomo.html:516:5: [definite] Dead assignment, property pressed is never read
+test/chromeexperiments/bomomo.html:524:5: [definite] Dead assignment, property intervalID is never read
+test/chromeexperiments/bomomo.html:580:5: [definite] Dead assignment, property teleported is never read
+test/chromeexperiments/bomomo.html:709:1: [definite] Dead assignment, property drawBackground is never read
+test/chromeexperiments/bomomo.html:796:5: [definite] Dead assignment, property energy is never read
+test/chromeexperiments/bomomo.html:2397:1: [definite] Dead assignment, property getRGBString is never read
+test/chromeexperiments/bomomo.html:2772:1: [definite] Dead assignment, property showLayer is never read
+test/chromeexperiments/bomomo.html:2779:1: [definite] Dead assignment, property hideLayer is never read
+test/chromeexperiments/bomomo.html:2786:1: [definite] Dead assignment, property debug is never read
+test/chromeexperiments/bomomo.html:2790:1: [definite] Dead assignment, property debug2 is never read
+test/chromeexperiments/bomomo.html:2794:1: [definite] Dead assignment, property writeInLayer is never read
+test/chromeexperiments/bomomo.html:340:1: [definite] The variable e is never used
+test/chromeexperiments/bomomo.html:347:1: [definite] The variable e is never used
+test/chromeexperiments/bomomo.html:362:1: [definite] The variable e is never used
+test/chromeexperiments/bomomo.html:366:1: [definite] The variable e is never used
+test/chromeexperiments/bomomo.html:481:17: [definite] The variable win is never used
+test/chromeexperiments/bomomo.html:709:32: [definite] Unreachable function
+test/chromeexperiments/bomomo.html:711:18: [definite] Unreachable function
+test/chromeexperiments/bomomo.html:2397:33: [definite] Unreachable function
+test/chromeexperiments/bomomo.html:2772:35: [definite] Unreachable function
+test/chromeexperiments/bomomo.html:2779:35: [definite] Unreachable function
+test/chromeexperiments/bomomo.html:2786:31: [definite] Unreachable function
+test/chromeexperiments/bomomo.html:2790:32: [definite] Unreachable function
+test/chromeexperiments/bomomo.html:2794:38: [definite] Unreachable function
+test/chromeexperiments/bomomo.html:314:9: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:316:9: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:343:9: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:353:9: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:420:13: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:427:13: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:438:5: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:443:5: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:447:32: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:453:13: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:455:13: [maybe] TypeError, non-HTMLImageElement or non-HTMLCanvasElement as argument to drawImage
+test/chromeexperiments/bomomo.html:458:24: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:460:13: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:462:13: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:475:20: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:608:9: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:618:5: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:621:9: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:622:9: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:678:5: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:678:42: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:678:79: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:679:5: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:679:42: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:679:81: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:680:5: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:680:42: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:680:81: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:681:5: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:681:40: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:681:79: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:682:5: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:682:40: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:682:79: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:683:5: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:683:40: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:683:78: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:684:5: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:684:42: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:684:81: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:685:5: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:685:40: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:685:79: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:686:5: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:686:42: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:686:80: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:687:5: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:687:42: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:687:79: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:688:5: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:688:42: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:688:80: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:689:5: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:689:42: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:689:81: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:690:5: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:690:42: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:690:81: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:691:5: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:691:42: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:691:81: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:692:5: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:692:42: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:692:81: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:697:36: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:700:36: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:759:5: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:1152:31: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:1515:35: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:1690:29: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:1799:30: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:1818:33: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:1840:34: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:1859:34: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:1944:26: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:1976:35: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:2058:34: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:2059:34: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:2060:34: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:2061:34: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:2062:34: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:2063:34: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:2081:19: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:2127:17: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:2128:17: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:2129:17: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:2417:17: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:2425:17: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:2440:17: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:2454:17: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:2468:17: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:2477:17: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:2480:28: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:2500:21: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:2504:32: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:2518:21: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:2522:32: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:2527:17: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:2541:17: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:2556:17: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:2570:17: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:2573:28: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:2579:17: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:2582:28: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:2601:17: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:2604:28: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:2610:17: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:2613:28: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:2632:17: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:2639:17: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:2654:17: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:2661:17: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:2679:21: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:2689:17: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:2702:75: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:2702:122: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:2703:75: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:2703:122: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:2706:21: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:2716:17: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:2734:17: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:2741:17: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:2821:16: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:2826:16: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/bomomo.html:2844:79: [maybe] ReferenceError, reading absent variable event
+test/chromeexperiments/bomomo.html:2844:112: [maybe] ReferenceError, reading absent variable event
+test/chromeexperiments/bomomo.html:2844:147: [maybe] ReferenceError, reading absent variable event
+test/chromeexperiments/bomomo.html:2844:182: [maybe] ReferenceError, reading absent variable event
+test/chromeexperiments/bomomo.html:2844:220: [maybe] ReferenceError, reading absent variable event
+test/chromeexperiments/bomomo.html:2678:23: [maybe] Reading absent property teleported
+test/chromeexperiments/bomomo.html: [maybe] Uncaught exception, constructed at [test/chromeexperiments/bomomo.html:314:9, test/chromeexperiments/bomomo.html:316:9, test/chromeexperiments/bomomo.html:343:9, test/chromeexperiments/bomomo.html:353:9, test/chromeexperiments/bomomo.html:420:13, test/chromeexperiments/bomomo.html:427:13, test/chromeexperiments/bomomo.html:438:5, test/chromeexperiments/bomomo.html:443:5, test/chromeexperiments/bomomo.html:447:32, test/chromeexperiments/bomomo.html:453:13, test/chromeexperiments/bomomo.html:458:24, test/chromeexperiments/bomomo.html:460:13, test/chromeexperiments/bomomo.html:462:13, test/chromeexperiments/bomomo.html:475:20, test/chromeexperiments/bomomo.html:608:9, test/chromeexperiments/bomomo.html:618:5, test/chromeexperiments/bomomo.html:621:9, test/chromeexperiments/bomomo.html:622:9, test/chromeexperiments/bomomo.html:678:5, test/chromeexperiments/bomomo.html:678:42, test/chromeexperiments/bomomo.html:678:79, test/chromeexperiments/bomomo.html:679:5, test/chromeexperiments/bomomo.html:679:42, test/chromeexperiments/bomomo.html:679:81, test/chromeexperiments/bomomo.html:680:5, test/chromeexperiments/bomomo.html:680:42, test/chromeexperiments/bomomo.html:680:81, test/chromeexperiments/bomomo.html:681:5, test/chromeexperiments/bomomo.html:681:40, test/chromeexperiments/bomomo.html:681:79, test/chromeexperiments/bomomo.html:682:5, test/chromeexperiments/bomomo.html:682:40, test/chromeexperiments/bomomo.html:682:79, test/chromeexperiments/bomomo.html:683:5, test/chromeexperiments/bomomo.html:683:40, test/chromeexperiments/bomomo.html:683:78, test/chromeexperiments/bomomo.html:684:5, test/chromeexperiments/bomomo.html:684:42, test/chromeexperiments/bomomo.html:684:81, test/chromeexperiments/bomomo.html:685:5, test/chromeexperiments/bomomo.html:685:40, test/chromeexperiments/bomomo.html:685:79, test/chromeexperiments/bomomo.html:686:5, test/chromeexperiments/bomomo.html:686:42, test/chromeexperiments/bomomo.html:686:80, test/chromeexperiments/bomomo.html:687:5, test/chromeexperiments/bomomo.html:687:42, test/chromeexperiments/bomomo.html:687:79, test/chromeexperiments/bomomo.html:688:5, test/chromeexperiments/bomomo.html:688:42, test/chromeexperiments/bomomo.html:688:80, test/chromeexperiments/bomomo.html:689:5, test/chromeexperiments/bomomo.html:689:42, test/chromeexperiments/bomomo.html:689:81, test/chromeexperiments/bomomo.html:690:5, test/chromeexperiments/bomomo.html:690:42, test/chromeexperiments/bomomo.html:690:81, test/chromeexperiments/bomomo.html:691:5, test/chromeexperiments/bomomo.html:691:42, test/chromeexperiments/bomomo.html:691:81, test/chromeexperiments/bomomo.html:692:5, test/chromeexperiments/bomomo.html:692:42, test/chromeexperiments/bomomo.html:692:81, test/chromeexperiments/bomomo.html:697:36, test/chromeexperiments/bomomo.html:700:36, test/chromeexperiments/bomomo.html:759:5, test/chromeexperiments/bomomo.html:1152:31, test/chromeexperiments/bomomo.html:1515:35, test/chromeexperiments/bomomo.html:1690:29, test/chromeexperiments/bomomo.html:1799:30, test/chromeexperiments/bomomo.html:1818:33, test/chromeexperiments/bomomo.html:1840:34, test/chromeexperiments/bomomo.html:1859:34, test/chromeexperiments/bomomo.html:1944:26, test/chromeexperiments/bomomo.html:1976:35, test/chromeexperiments/bomomo.html:2058:34, test/chromeexperiments/bomomo.html:2059:34, test/chromeexperiments/bomomo.html:2060:34, test/chromeexperiments/bomomo.html:2061:34, test/chromeexperiments/bomomo.html:2062:34, test/chromeexperiments/bomomo.html:2063:34, test/chromeexperiments/bomomo.html:2081:19, test/chromeexperiments/bomomo.html:2127:17, test/chromeexperiments/bomomo.html:2128:17, test/chromeexperiments/bomomo.html:2129:17, test/chromeexperiments/bomomo.html:2417:17, test/chromeexperiments/bomomo.html:2425:17, test/chromeexperiments/bomomo.html:2440:17, test/chromeexperiments/bomomo.html:2454:17, test/chromeexperiments/bomomo.html:2468:17, test/chromeexperiments/bomomo.html:2477:17, test/chromeexperiments/bomomo.html:2480:28, test/chromeexperiments/bomomo.html:2500:21, test/chromeexperiments/bomomo.html:2504:32, test/chromeexperiments/bomomo.html:2518:21, test/chromeexperiments/bomomo.html:2522:32, test/chromeexperiments/bomomo.html:2527:17, test/chromeexperiments/bomomo.html:2541:17, test/chromeexperiments/bomomo.html:2556:17, test/chromeexperiments/bomomo.html:2570:17, test/chromeexperiments/bomomo.html:2573:28, test/chromeexperiments/bomomo.html:2579:17, test/chromeexperiments/bomomo.html:2582:28, test/chromeexperiments/bomomo.html:2601:17, test/chromeexperiments/bomomo.html:2604:28, test/chromeexperiments/bomomo.html:2610:17, test/chromeexperiments/bomomo.html:2613:28, test/chromeexperiments/bomomo.html:2632:17, test/chromeexperiments/bomomo.html:2639:17, test/chromeexperiments/bomomo.html:2654:17, test/chromeexperiments/bomomo.html:2661:17, test/chromeexperiments/bomomo.html:2679:21, test/chromeexperiments/bomomo.html:2689:17, test/chromeexperiments/bomomo.html:2702:75, test/chromeexperiments/bomomo.html:2702:122, test/chromeexperiments/bomomo.html:2703:75, test/chromeexperiments/bomomo.html:2703:122, test/chromeexperiments/bomomo.html:2706:21, test/chromeexperiments/bomomo.html:2716:17, test/chromeexperiments/bomomo.html:2734:17, test/chromeexperiments/bomomo.html:2741:17, test/chromeexperiments/bomomo.html:2821:16, test/chromeexperiments/bomomo.html:2826:16, test/chromeexperiments/bomomo.html:2844:79, test/chromeexperiments/bomomo.html:2844:112, test/chromeexperiments/bomomo.html:2844:147, test/chromeexperiments/bomomo.html:2844:182, test/chromeexperiments/bomomo.html:2844:220]
+test/chromeexperiments/bomomo.html:314:9: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bomomo.html:316:9: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bomomo.html:316:35: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bomomo.html:316:66: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bomomo.html:343:9: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bomomo.html:353:9: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bomomo.html:477:20: [maybe] Converting primitive string to object
+test/chromeexperiments/bomomo.html:584:16: [maybe] Converting object to string
+test/chromeexperiments/bomomo.html:584:16: [maybe] Converting primitive string to object
+test/chromeexperiments/bomomo.html:597:12: [maybe] Converting object to string
+test/chromeexperiments/bomomo.html:597:12: [maybe] Converting primitive string to object
+test/chromeexperiments/bomomo.html:608:9: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bomomo.html:621:9: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bomomo.html:621:78: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bomomo.html:622:9: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bomomo.html:622:75: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bomomo.html:678:5: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bomomo.html:678:42: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bomomo.html:678:79: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bomomo.html:679:5: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bomomo.html:679:42: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bomomo.html:679:81: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bomomo.html:680:5: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bomomo.html:680:42: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bomomo.html:680:81: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bomomo.html:681:5: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bomomo.html:681:40: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bomomo.html:681:79: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bomomo.html:682:5: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bomomo.html:682:40: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bomomo.html:682:79: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bomomo.html:683:5: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bomomo.html:683:40: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bomomo.html:683:78: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bomomo.html:684:5: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bomomo.html:684:42: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bomomo.html:684:81: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bomomo.html:685:5: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bomomo.html:685:40: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bomomo.html:685:79: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bomomo.html:686:5: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bomomo.html:686:42: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bomomo.html:686:80: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bomomo.html:687:5: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bomomo.html:687:42: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bomomo.html:687:79: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bomomo.html:688:5: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bomomo.html:688:42: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bomomo.html:688:80: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bomomo.html:689:5: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bomomo.html:689:42: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bomomo.html:689:81: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bomomo.html:690:5: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bomomo.html:690:42: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bomomo.html:690:81: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bomomo.html:691:5: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bomomo.html:691:42: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bomomo.html:691:81: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bomomo.html:692:5: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bomomo.html:692:42: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bomomo.html:692:81: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bomomo.html:724:13: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:725:13: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:733:44: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:734:46: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:735:45: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:743:13: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:743:24: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:751:13: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:751:24: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:829:5: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:830:5: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:1029:46: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:1030:46: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:1034:29: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:1037:29: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:1043:29: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:1046:29: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:1062:30: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:1063:30: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:1082:42: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:1083:42: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:1272:30: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:1273:30: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:1276:30: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:1277:30: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:1345:26: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:1346:26: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:1438:30: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:1438:71: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:1616:26: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:1617:26: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:1651:26: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:1652:26: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:1689:30: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bomomo.html:1690:29: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:1690:54: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:1776:39: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:1777:39: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:1781:27: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:1781:62: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:1784:27: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:1784:62: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:1799:30: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:1818:33: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:1818:55: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:1818:77: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:1828:37: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:1829:53: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:1829:62: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:1831:34: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:1834:34: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:1838:33: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:1840:34: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:1847:37: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:1848:53: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:1848:62: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:1850:34: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:1853:34: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:1857:46: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:1860:34: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:1944:26: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:1945:26: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:1964:30: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:1965:30: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:2058:34: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:2058:71: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:2059:57: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:2060:34: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:2060:71: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:2061:34: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:2061:71: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:2062:57: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:2063:34: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:2063:71: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:2081:19: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:2082:19: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:2083:19: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:2123:13: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:2126:9: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bomomo.html:2127:17: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bomomo.html:2128:17: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bomomo.html:2129:17: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bomomo.html:2133:26: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:2139:36: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:2150:23: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bomomo.html:2151:23: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bomomo.html:2152:23: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bomomo.html:2201:5: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:2208:5: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:2215:5: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:2223:30: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:2224:30: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:2230:30: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:2231:30: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:2356:19: [maybe] The variable highR has values with different types
+test/chromeexperiments/bomomo.html:2357:19: [maybe] The variable highG has values with different types
+test/chromeexperiments/bomomo.html:2358:19: [maybe] The variable highB has values with different types
+test/chromeexperiments/bomomo.html:2362:30: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:2363:33: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:2367:30: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:2368:33: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:2408:31: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:2409:31: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:2419:35: [maybe] Converting undefined to string
+test/chromeexperiments/bomomo.html:2420:17: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:2428:17: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:2442:35: [maybe] Converting undefined to string
+test/chromeexperiments/bomomo.html:2444:28: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:2444:50: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:2445:28: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:2445:50: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:2447:28: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:2447:50: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:2448:28: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:2448:50: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:2457:17: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:2470:35: [maybe] Converting undefined to string
+test/chromeexperiments/bomomo.html:2471:17: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:2472:17: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:2480:17: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:2481:17: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:2488:17: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:2499:34: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bomomo.html:2502:39: [maybe] Converting undefined to string
+test/chromeexperiments/bomomo.html:2503:21: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:2504:21: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:2509:37: [maybe] Converting undefined to string
+test/chromeexperiments/bomomo.html:2510:21: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:2517:34: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bomomo.html:2521:21: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:2522:21: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:2530:17: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:2543:35: [maybe] Converting undefined to string
+test/chromeexperiments/bomomo.html:2544:17: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:2545:17: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:2550:33: [maybe] Converting undefined to string
+test/chromeexperiments/bomomo.html:2551:17: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:2559:17: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:2572:35: [maybe] Converting undefined to string
+test/chromeexperiments/bomomo.html:2573:17: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:2574:17: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:2582:17: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:2583:17: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:2590:17: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:2603:35: [maybe] Converting undefined to string
+test/chromeexperiments/bomomo.html:2604:17: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:2605:17: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:2613:17: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:2614:17: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:2621:17: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:2633:33: [maybe] Converting undefined to string
+test/chromeexperiments/bomomo.html:2634:17: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:2641:33: [maybe] Converting undefined to string
+test/chromeexperiments/bomomo.html:2642:17: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:2655:33: [maybe] Converting undefined to string
+test/chromeexperiments/bomomo.html:2656:17: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:2664:17: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:2681:39: [maybe] Converting undefined to string
+test/chromeexperiments/bomomo.html:2682:21: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:2683:21: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:2692:17: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:2702:75: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bomomo.html:2702:122: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bomomo.html:2703:75: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bomomo.html:2703:122: [maybe] Reading absent property (computed name)
+test/chromeexperiments/bomomo.html:2708:39: [maybe] Converting undefined to string
+test/chromeexperiments/bomomo.html:2709:21: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:2710:21: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:2718:33: [maybe] Converting undefined to string
+test/chromeexperiments/bomomo.html:2719:17: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:2722:21: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:2723:21: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:2735:33: [maybe] Converting undefined to string
+test/chromeexperiments/bomomo.html:2736:17: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:2744:17: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:2830:21: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:2831:21: [maybe] Conversion to number yields NaN
+test/chromeexperiments/bomomo.html:813:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:813:23: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:814:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:814:23: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:816:14: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:816:29: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:817:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:817:24: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:820:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:820:23: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:821:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:821:23: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:823:14: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:823:29: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:824:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:824:24: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:827:5: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:827:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:828:5: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:828:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:829:5: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:829:15: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:830:5: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:830:15: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:834:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:834:33: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:835:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:835:40: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:835:58: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:836:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:836:40: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:836:58: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:838:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:838:22: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:839:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:839:28: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:841:18: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:841:27: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:842:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:842:28: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:845:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:845:22: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:846:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:846:28: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:848:18: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:848:27: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:849:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:849:28: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:855:5: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:856:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:860:18: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:861:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:862:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:863:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:864:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:864:34: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:865:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:866:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:867:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:868:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:869:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:870:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:873:18: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:874:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:875:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:879:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:879:33: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:880:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:880:41: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:884:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:885:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:886:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:887:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:887:34: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:888:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:891:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:892:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:892:34: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:893:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:896:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:898:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:901:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:903:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:909:18: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:910:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:911:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:912:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:913:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:914:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:914:34: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:915:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:916:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:917:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:918:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:919:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:920:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:924:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:925:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:925:34: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:927:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:928:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:929:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:932:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:932:48: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:933:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:934:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:936:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:938:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:941:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:942:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:943:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:946:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:946:48: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:947:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:948:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:950:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:952:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:956:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:957:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:957:34: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:958:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:966:18: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:967:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:968:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:969:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:970:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:971:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:971:34: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:972:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:973:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:974:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:975:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:976:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:977:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:981:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:982:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:982:34: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:983:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:984:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:985:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:988:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:989:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:989:34: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:990:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:991:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:992:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:996:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:996:46: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:996:70: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:999:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1000:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1008:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1009:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1010:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1011:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1012:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1012:38: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1013:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1014:46: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1015:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1016:46: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1018:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1019:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1020:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1022:49: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1023:33: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1025:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1029:46: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1030:46: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1033:29: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1034:29: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1034:39: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1037:29: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1037:39: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1042:29: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1043:29: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1043:39: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1046:29: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1046:39: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1050:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1054:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1055:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1057:53: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1058:37: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1061:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1062:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1062:44: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1063:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1063:44: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1069:22: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1070:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1071:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1072:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1073:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1074:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1074:38: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1075:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1076:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1077:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1078:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1079:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1082:42: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1083:42: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1086:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1088:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1092:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1094:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1098:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1099:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1101:26: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1102:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1105:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1106:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1108:26: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1109:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1112:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1119:18: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1120:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1121:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1122:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1123:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1124:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1125:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1125:34: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1126:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1127:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1128:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1129:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1132:30: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1133:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1134:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1136:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1137:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1140:18: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1141:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1142:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1143:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1147:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1150:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1151:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1152:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1158:18: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1159:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1160:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1161:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1162:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1163:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1163:34: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1164:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1165:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1166:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1167:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1170:18: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1171:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1172:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1173:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1174:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1177:18: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1178:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1182:23: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1183:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1184:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1189:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1190:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1192:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1193:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1195:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1196:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1196:32: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1199:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1199:31: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1202:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1208:18: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1209:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1212:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1213:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1216:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1217:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1220:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1221:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1221:34: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1222:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1223:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1224:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1225:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1227:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1228:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1229:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1232:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1233:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1234:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1237:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1239:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1242:18: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1243:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1244:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1245:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1248:18: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1249:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1250:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1254:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1254:37: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1257:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1258:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1262:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1263:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1263:52: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1266:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1269:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1269:33: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1272:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1272:30: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1272:45: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1272:64: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1273:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1273:30: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1273:45: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1273:64: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1276:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1276:44: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1276:63: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1277:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1277:44: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1277:63: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1281:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1282:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1285:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1291:18: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1292:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1296:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1297:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1300:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1301:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1304:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1305:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1305:34: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1306:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1307:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1308:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1309:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1310:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1311:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1312:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1313:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1314:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1318:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1319:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1320:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1323:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1324:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1325:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1331:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1332:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1333:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1336:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1336:33: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1339:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1339:44: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1342:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1342:44: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1342:79: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1342:104: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1345:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1345:40: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1345:59: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1346:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1346:40: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1346:59: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1349:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1352:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1358:18: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1359:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1360:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1361:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1362:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1363:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1364:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1365:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1366:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1367:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1368:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1368:35: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1370:29: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1371:29: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1372:29: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1374:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1377:19: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1380:33: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1381:33: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1382:33: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1385:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1386:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1389:18: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1390:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1391:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1395:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1396:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1400:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1401:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1401:41: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1404:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1404:35: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1408:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1409:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1409:34: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1410:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1411:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1411:35: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1416:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1419:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1421:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1424:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1425:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1426:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1427:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1427:35: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1430:29: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1431:29: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1432:29: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1434:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1437:18: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1438:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1438:57: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1438:98: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1441:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1442:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1448:18: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1449:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1450:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1451:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1452:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1453:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1454:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1456:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1460:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1461:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1462:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1468:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1469:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1471:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1472:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1476:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1476:29: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1477:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1477:41: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1478:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1480:64: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1480:88: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1482:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1483:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1485:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1486:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1492:18: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1493:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1494:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1495:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1496:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1497:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1498:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1499:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1499:34: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1500:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1501:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1502:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1503:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1504:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1509:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1510:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1512:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1515:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1519:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1520:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1521:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1522:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1523:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1526:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1527:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1528:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1529:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1530:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1533:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1534:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1540:18: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1541:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1542:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1543:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1544:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1545:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1546:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1546:34: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1547:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1548:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1549:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1550:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1551:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1555:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1556:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1557:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1561:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1562:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1563:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1568:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1569:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1569:34: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1570:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1573:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1574:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1574:34: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1575:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1579:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1582:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1584:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1585:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1591:18: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1592:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1593:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1594:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1595:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1596:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1597:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1601:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1602:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1603:41: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1603:66: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1604:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1604:32: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1608:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1609:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1609:48: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1612:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1616:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1616:40: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1617:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1617:40: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1620:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1620:48: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1621:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1621:49: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1624:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1630:18: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1631:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1632:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1633:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1634:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1637:29: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1638:29: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1639:29: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1640:29: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1642:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1646:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1647:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1651:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1651:53: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1652:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1652:53: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1655:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1655:48: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1656:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1656:49: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1659:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1665:18: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1666:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1667:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1668:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1669:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1669:34: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1670:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1671:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1672:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1673:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1674:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1675:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1677:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1678:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1680:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1681:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1686:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1690:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1690:40: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1690:65: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1694:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1695:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1696:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1696:34: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1699:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1700:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1701:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1701:34: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1704:18: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1705:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1706:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1709:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1710:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1716:18: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1717:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1718:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1719:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1720:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1721:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1721:34: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1722:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1723:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1724:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1725:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1729:33: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1730:33: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1731:33: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1732:33: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1733:33: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1734:33: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1738:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1741:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1742:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1745:19: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1748:33: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1749:33: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1750:33: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1751:33: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1752:33: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1753:33: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1757:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1762:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1763:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1767:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1768:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1768:41: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1771:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1772:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1772:40: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1775:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1776:53: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1777:53: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1778:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1781:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1781:52: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1782:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1784:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1784:52: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1785:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1793:18: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1795:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1796:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1799:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1800:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1802:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1803:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1804:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1805:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1806:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1807:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1808:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1811:18: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1812:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1813:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1815:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1818:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1822:18: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1823:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1828:37: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1829:53: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1829:62: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1830:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1831:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1831:34: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1834:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1834:34: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1838:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1840:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1841:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1847:37: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1848:53: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1848:62: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1849:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1850:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1850:34: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1853:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1853:34: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1857:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1859:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1860:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1865:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1866:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1873:18: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1874:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1877:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1878:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1879:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1879:38: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1880:28: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1880:48: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1881:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1882:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1886:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1887:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1889:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1890:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1890:34: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1891:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1892:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1893:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1894:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1897:18: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1899:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1899:38: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1900:28: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1900:48: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1901:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1902:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1906:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1907:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1910:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1916:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1917:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1918:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1921:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1924:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1926:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1927:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1927:34: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1928:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1928:34: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1929:24: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1929:44: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1930:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1931:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1935:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1936:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1937:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1938:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1938:36: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1938:55: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1938:70: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1939:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1940:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1940:34: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1944:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1944:41: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1945:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1945:41: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1948:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1949:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1955:18: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1956:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1957:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1958:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1959:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1962:18: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1963:22: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1964:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1965:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1966:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1967:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1971:18: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1973:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1976:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1983:33: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1984:33: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1985:33: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1989:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1992:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1995:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:1996:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2000:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2001:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2002:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2003:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2004:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2008:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2009:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2012:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2013:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2019:18: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2020:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2021:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2022:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2026:23: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2027:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2028:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2029:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2030:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2031:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2032:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2034:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2035:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2036:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2037:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2038:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2043:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2046:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2050:23: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2050:43: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2053:23: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2053:43: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2057:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2058:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2058:49: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2058:62: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2058:86: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2059:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2059:48: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2059:72: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2060:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2060:49: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2060:62: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2060:86: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2061:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2061:49: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2061:62: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2061:86: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2062:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2062:48: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2062:72: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2063:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2063:49: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2063:62: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2063:86: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2067:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2070:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2075:5: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2076:5: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2077:5: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2081:5: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2082:5: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2083:5: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2087:18: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2088:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2089:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2090:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2092:14: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2093:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2094:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2097:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2098:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2099:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2101:14: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2102:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2103:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2108:34: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2111:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2112:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2115:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2116:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2150:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2151:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2152:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2157:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2157:28: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2158:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2158:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2159:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2159:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2160:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2161:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2162:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2165:14: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2165:33: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2166:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2166:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2167:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2167:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2168:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2169:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2170:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2173:14: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2173:33: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2174:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2174:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2175:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2175:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2176:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2177:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2178:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2181:14: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2181:33: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2182:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2182:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2183:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2183:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2184:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2185:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2186:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2191:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2192:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2193:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2194:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2195:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2196:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2201:5: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2201:20: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2202:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2202:29: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2203:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2208:5: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2208:20: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2209:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2209:29: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2210:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2215:5: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2215:20: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2216:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2216:29: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2217:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2223:44: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2224:44: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2230:44: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2231:44: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2236:5: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2237:5: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2241:5: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2246:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2246:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2247:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2247:28: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2247:47: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2247:62: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2250:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2250:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2251:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2251:33: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2266:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2267:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2267:24: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2268:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2268:28: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2268:46: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2268:61: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2270:14: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2271:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2271:24: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2272:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2272:27: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2272:45: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2272:59: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2275:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2276:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2276:24: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2277:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2277:28: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2277:46: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2277:61: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2279:14: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2280:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2280:24: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2281:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2281:27: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2281:45: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2281:59: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2286:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2287:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2287:24: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2288:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2288:28: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2288:46: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2288:61: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2290:14: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2291:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2291:24: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2292:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2292:27: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2292:45: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2292:59: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2295:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2296:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2296:24: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2297:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2297:28: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2297:46: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2297:61: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2299:14: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2300:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2300:24: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2301:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2301:27: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2301:45: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2301:58: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2314:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2315:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2315:24: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2316:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2316:28: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2316:46: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2316:61: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2318:14: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2319:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2319:24: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2320:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2320:27: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2320:45: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2320:59: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2333:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2334:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2334:24: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2335:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2335:28: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2335:46: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2335:61: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2337:14: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2338:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2338:24: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2339:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2339:27: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2339:45: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2339:59: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2344:5: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2345:5: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2346:5: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2350:5: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2351:5: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2352:5: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2356:5: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2357:5: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2358:5: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2362:11: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2362:30: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2362:39: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2363:14: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2363:33: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2363:42: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2364:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2367:11: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2367:30: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2367:39: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2368:14: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2368:33: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2368:42: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2369:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2374:11: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2374:30: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2375:14: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2375:33: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2376:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2379:11: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2379:30: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2380:14: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2380:33: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2381:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2386:11: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2386:30: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2387:14: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2387:33: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2388:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2391:11: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2391:30: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2392:14: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2392:33: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2393:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2406:16: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2406:34: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2407:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2408:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2409:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2412:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2419:45: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2419:65: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2419:85: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2419:105: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2420:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2420:33: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2420:41: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2428:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2428:33: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2428:41: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2442:45: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2442:65: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2442:85: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2442:105: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2444:28: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2444:37: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2444:50: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2444:59: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2445:28: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2445:37: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2445:50: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2445:59: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2447:28: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2447:37: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2447:50: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2447:59: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2448:28: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2448:37: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2448:50: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2448:59: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2457:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2457:33: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2457:41: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2470:45: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2470:65: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2470:85: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2470:105: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2472:28: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2472:36: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2481:28: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2481:36: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2488:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2488:33: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2488:41: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2502:49: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2502:69: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2502:89: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2502:109: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2503:32: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2503:40: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2509:47: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2509:67: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2509:87: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2509:107: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2510:29: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2510:37: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2510:45: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2521:32: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2521:40: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2530:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2530:33: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2530:41: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2543:45: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2543:65: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2543:85: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2543:105: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2545:28: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2545:36: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2550:43: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2550:63: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2550:83: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2550:103: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2551:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2551:33: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2551:41: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2559:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2559:33: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2559:41: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2572:45: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2572:65: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2572:85: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2572:105: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2574:28: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2574:36: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2583:28: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2583:36: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2590:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2590:33: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2590:41: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2603:45: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2603:65: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2603:85: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2603:105: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2605:28: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2605:36: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2614:28: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2614:36: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2621:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2621:33: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2621:41: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2633:43: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2633:63: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2633:83: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2633:103: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2634:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2634:33: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2634:41: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2641:43: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2641:63: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2641:83: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2642:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2642:33: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2642:41: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2655:43: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2655:63: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2655:83: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2655:103: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2656:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2656:33: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2656:41: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2664:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2664:33: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2664:41: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2678:23: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2678:74: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2678:82: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2680:37: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2681:49: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2681:69: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2681:89: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2681:109: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2683:32: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2683:40: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2692:26: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2692:34: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2692:56: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2707:37: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2708:49: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2708:69: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2708:89: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2708:109: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2710:32: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2710:40: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2718:43: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2718:63: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2718:83: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2719:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2719:33: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2719:41: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2723:32: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2723:40: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2735:43: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2735:63: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2735:83: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2735:103: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2736:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2736:33: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2736:41: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2744:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2744:33: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/chromeexperiments/bomomo.html:2744:41: [info] 'this' refers to multiple abstract objects, which may cause loss of precision

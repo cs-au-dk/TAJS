@@ -21,7 +21,6 @@ import dk.brics.tajs.test.nativeobjects.JSString_substr_test;
 import dk.brics.tajs.test.nativeobjects.JSString_substring_test;
 import dk.brics.tajs.test.nativeobjects.JSString_toLowerUpperCase_test;
 import dk.brics.tajs.test.nativeobjects.TestFunctionBind;
-import dk.brics.tajs.test.nativeobjects.TestHostFunctionSources_ES6Collections;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
@@ -33,10 +32,9 @@ import org.junit.runners.Suite;
         TestFlowgraphBuilder.class,
         TestUneval.class,
 //        TestHostFunctionSources_ArrayPrototype.class,
-        TestHostFunctionSources_ES6Collections.class,
+//        TestHostFunctionSources_ES6Collections.class,
 //        TestHostFunctionSources_TypedArrays.class,
         TestFunctionBind.class,
-        TestConcreteSemantics.class,
         JSRegExp_exec_test.class,
         JSRegExp_test_test.class,
         JSString_charAt_charCodeAt_test.class,

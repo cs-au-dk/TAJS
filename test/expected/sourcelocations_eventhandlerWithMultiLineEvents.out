@@ -1,1 +1,2 @@
+test/sourcelocations/eventhandlerWithMultiLineEvents.html: [definite] Exceptional program exit is unreachable
 test/sourcelocations/eventhandlerWithMultiLineEvents.html:8:86: [definite] The variable loooooooooooongVarName is never used

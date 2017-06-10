@@ -6,35 +6,44 @@ test/micro/test201.js: [maybe] Uncaught exception, constructed at [test/micro/te
 test/micro/test201.js:12:3: [maybe] Converting primitive string to object
 test/micro/test201.js:15:1: [info] Abstract state:
 Abstract state:
-  Execution context: ScopeChain=[[@<the global object>[native]]], VariableObject=[@<the global object>[native]], this=[@<the global object>[native]]
-  Summarized: maybe=[@callback#fun1, @Object#node5, @Object#node2, @Object#node11], definitely=[@callback#fun1, @Object#node5, @Object#node2, @Object#node11]
+  Execution context: ScopeChain=[[@<the global object>[native]]], VariableObject=[@<the global object>[native]], this=Null
+  Summarized: maybe=[@replace#fun4, @callback#fun1, @arguments#node70, @activation#node70, @Object#node9, @Object#node85, @Object#node78, @Object#node7, @Object#node2, @Object#node14, @<anonymous>#fun3], definitely=[@replace#fun4, @callback#fun1, @arguments#node70, @activation#node70, @Object#node9, @Object#node85, @Object#node78, @Object#node7, @Object#node2, @Object#node14, @<anonymous>#fun3]
   Store (excluding basis and default objects): 
-    @<the global object>[native] (<initial state>): {TAJS_addContextSensitivity:^(@<the global object>[native].TAJS_addContextSensitivity[present]),TAJS_dumpState:^(@<the global object>[native].TAJS_dumpState[present]),callback:[@callback#fun1],jQuery:[@Object#node5],name:Undef|UIntStr,obj:[@Object#node11],[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Prototype]]=[@Object.prototype[native]],[[Value]]=?,[[Scope]]=?}
+    @<the global object>[native] (<initial state>): {Object:[@Object[native]],String:[@String[native]],callback:[@callback#fun1],jQuery:[@Object#node9],name:Undef|UIntStr,obj:[@Object#node14],[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Prototype]]=[@Object.prototype[native]],[[Value]]=?,[[Scope]]=?}
     @Function.prototype[native] (<initial state>): {call:[@Function.prototype.call[native]],[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Prototype]]=?,[[Value]]=?,[[Scope]]=?}
-    @Object.prototype[native] (<initial state>): {0:^(@Object.prototype[native].0[absent]),1:^(@Object.prototype[native].1[absent]),__defineGetter__:^(@Object.prototype[native].__defineGetter__[present]),__defineSetter__:^(@Object.prototype[native].__defineSetter__[present]),callback:^(@Object.prototype[native].callback[absent]),constructor:^(@Object.prototype[native].constructor[present]),hasOwnProperty:^(@Object.prototype[native].hasOwnProperty[present]),isPrototypeOf:^(@Object.prototype[native].isPrototypeOf[present]),jQuery:^(@Object.prototype[native].jQuery[absent]),name:^(@Object.prototype[native].name[absent]),obj:^(@Object.prototype[native].obj[absent]),propertyIsEnumerable:^(@Object.prototype[native].propertyIsEnumerable[present]),toLocaleString:^(@Object.prototype[native].toLocaleString[present]),toString:^(@Object.prototype[native].toString[present]),valueOf:^(@Object.prototype[native].valueOf[present]),[[Prototype]]=Null,[[Value]]=?,[[Scope]]=?}
-    @Object#node5 (test/micro/test201.js:1:14): {get:[@<anonymous>#fun2{method="get"}]|absent,post:[@<anonymous>#fun2{method="post"}]|absent,[[Prototype]]=[@Object.prototype[native]]}
-    *activation#node57{method="get"} (test/micro/test201.js:3:1): {arguments:[*arguments#node57{method="get"}],method:"get"}
-    *activation#node57{method="post"} (test/micro/test201.js:3:1): {arguments:[*arguments#node57{method="post"}],method:"post"}
-    *arguments#node57{method="get"} (test/micro/test201.js:3:1): {0:"get",callee:[@callback#fun1],length:1.0,[[Prototype]]=[@Object.prototype[native]]}
-    *arguments#node57{method="post"} (test/micro/test201.js:3:1): {0:"post",callee:[@callback#fun1],length:1.0,[[Prototype]]=[@Object.prototype[native]]}
+    @Object.prototype[native] (<initial state>): {0:^(@Object.prototype[native].0[absent]),1:^(@Object.prototype[native].1[absent]),__defineGetter__:^(@Object.prototype[native].__defineGetter__[present]),__defineSetter__:^(@Object.prototype[native].__defineSetter__[present]),callback:^(@Object.prototype[native].callback[absent]),configurable:^(@Object.prototype[native].configurable[absent]),constructor:^(@Object.prototype[native].constructor[present]),enumerable:^(@Object.prototype[native].enumerable[absent]),get:^(@Object.prototype[native].get[absent]),hasOwnProperty:^(@Object.prototype[native].hasOwnProperty[present]),isPrototypeOf:^(@Object.prototype[native].isPrototypeOf[present]),jQuery:^(@Object.prototype[native].jQuery[absent]),name:^(@Object.prototype[native].name[absent]),obj:^(@Object.prototype[native].obj[absent]),propertyIsEnumerable:^(@Object.prototype[native].propertyIsEnumerable[present]),replace:^(@Object.prototype[native].replace[absent]),set:^(@Object.prototype[native].set[absent]),toLocaleString:^(@Object.prototype[native].toLocaleString[present]),toString:^(@Object.prototype[native].toString[present]),value:^(@Object.prototype[native].value[absent]),valueOf:^(@Object.prototype[native].valueOf[present]),writable:^(@Object.prototype[native].writable[absent]),[[Prototype]]=Null,[[Value]]=?,[[Scope]]=?}
+    @Object[native] (<initial state>): {defineProperty:[@Object.defineProperty[native]],[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Prototype]]=?,[[Value]]=?,[[Scope]]=?}
+    @String.prototype[native] (<initial state>): {replace:[@replace#fun4],[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Prototype]]=[@Object.prototype[native]],[[Value]]="",[[Scope]]=?}
+    @String[native] (<initial state>): {prototype:[@String.prototype[native]],[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Prototype]]=?,[[Value]]=?,[[Scope]]=?}
+    @Object#node7 (host-environment-sources-loader): {constructor:[@<anonymous>#fun3],[[Prototype]]=[@Object.prototype[native]],[[Value]]=NaN}
+    @Object#node9 (test/micro/test201.js:1:14): {get:[@<anonymous>#fun2{method="get"}]|absent,post:[@<anonymous>#fun2{method="post"}]|absent,[[Prototype]]=[@Object.prototype[native]]}
+    *activation#node56{method="get"} (test/micro/test201.js:3:1): {arguments:[*arguments#node56{method="get"}],method:"get"}
+    *activation#node56{method="post"} (test/micro/test201.js:3:1): {arguments:[*arguments#node56{method="post"}],method:"post"}
+    *arguments#node56{method="get"} (test/micro/test201.js:3:1): {0:"get",callee:[@callback#fun1],length:1.0,[[Prototype]]=[@Object.prototype[native]]}
+    *arguments#node56{method="post"} (test/micro/test201.js:3:1): {0:"post",callee:[@callback#fun1],length:1.0,[[Prototype]]=[@Object.prototype[native]]}
     @Object#node2 (test/micro/test201.js:3:1): {constructor:[@callback#fun1],[[Prototype]]=[@Object.prototype[native]],[[Value]]=NaN}
-    @activation#node57{method="get"} (test/micro/test201.js:3:1): {arguments:[@arguments#node57{method="get"}],method:"get"}
-    @activation#node57{method="post"} (test/micro/test201.js:3:1): {arguments:[@arguments#node57{method="post"}],method:"post"}
-    @arguments#node57{method="get"} (test/micro/test201.js:3:1): {0:"get",callee:[@callback#fun1],length:1.0,[[Prototype]]=[@Object.prototype[native]]}
-    @arguments#node57{method="post"} (test/micro/test201.js:3:1): {0:"post",callee:[@callback#fun1],length:1.0,[[Prototype]]=[@Object.prototype[native]]}
+    @activation#node56{method="get"} (test/micro/test201.js:3:1): {arguments:[@arguments#node56{method="get"}],method:"get"}
+    @activation#node56{method="post"} (test/micro/test201.js:3:1): {arguments:[@arguments#node56{method="post"}],method:"post"}
+    @arguments#node56{method="get"} (test/micro/test201.js:3:1): {0:"get",callee:[@callback#fun1],length:1.0,[[Prototype]]=[@Object.prototype[native]]}
+    @arguments#node56{method="post"} (test/micro/test201.js:3:1): {0:"post",callee:[@callback#fun1],length:1.0,[[Prototype]]=[@Object.prototype[native]]}
     @callback#fun1 (test/micro/test201.js:3:1): {length:1.0,name:"callback",prototype:[@Object#node2],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@<the global object>[native]]]}
-    *<anonymous>#fun2{method="get"} (test/micro/test201.js:4:20): {length:0.0,name:"",prototype:[*Object#node60],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[*activation#node57{method="get"}],[@<the global object>[native]]]}
-    *<anonymous>#fun2{method="post"} (test/micro/test201.js:4:20): {length:0.0,name:"",prototype:[*Object#node60],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[*activation#node57{method="post"}],[@<the global object>[native]]]}
-    *Object#node60 (test/micro/test201.js:4:20): {constructor:[@<anonymous>#fun2{method="post"}, @<anonymous>#fun2{method="get"}, *<anonymous>#fun2{method="post"}, *<anonymous>#fun2{method="get"}],[[Prototype]]=[@Object.prototype[native]],[[Value]]=NaN}
-    @<anonymous>#fun2{method="get"} (test/micro/test201.js:4:20): {length:0.0,name:"",prototype:[@Object#node60, *Object#node60],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@activation#node57{method="get"}],[@<the global object>[native]]]}
-    @<anonymous>#fun2{method="post"} (test/micro/test201.js:4:20): {length:0.0,name:"",prototype:[@Object#node60, *Object#node60],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@activation#node57{method="post"}],[@<the global object>[native]]]}
-    @Object#node60 (test/micro/test201.js:4:20): {constructor:[@<anonymous>#fun2{method="post"}, @<anonymous>#fun2{method="get"}],[[Prototype]]=[@Object.prototype[native]],[[Value]]=NaN}
-    @Object#node11 (test/micro/test201.js:10:11): {0:"get",1:"post",[[Prototype]]=[@Object.prototype[native]]}
+    *<anonymous>#fun2{method="get"} (test/micro/test201.js:4:20): {length:0.0,name:"",prototype:[*Object#node59{method="get"}],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[*activation#node56{method="get"}],[@<the global object>[native]]]}
+    *<anonymous>#fun2{method="post"} (test/micro/test201.js:4:20): {length:0.0,name:"",prototype:[*Object#node59{method="post"}],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[*activation#node56{method="post"}],[@<the global object>[native]]]}
+    *Object#node59{method="get"} (test/micro/test201.js:4:20): {constructor:[*<anonymous>#fun2{method="get"}],[[Prototype]]=[@Object.prototype[native]],[[Value]]=NaN}
+    *Object#node59{method="post"} (test/micro/test201.js:4:20): {constructor:[*<anonymous>#fun2{method="post"}],[[Prototype]]=[@Object.prototype[native]],[[Value]]=NaN}
+    @<anonymous>#fun2{method="get"} (test/micro/test201.js:4:20): {length:0.0,name:"",prototype:[@Object#node59{method="get"}],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@activation#node56{method="get"}],[@<the global object>[native]]]}
+    @<anonymous>#fun2{method="post"} (test/micro/test201.js:4:20): {length:0.0,name:"",prototype:[@Object#node59{method="post"}],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@activation#node56{method="post"}],[@<the global object>[native]]]}
+    @Object#node59{method="get"} (test/micro/test201.js:4:20): {constructor:[@<anonymous>#fun2{method="get"}],[[Prototype]]=[@Object.prototype[native]],[[Value]]=NaN}
+    @Object#node59{method="post"} (test/micro/test201.js:4:20): {constructor:[@<anonymous>#fun2{method="post"}],[[Prototype]]=[@Object.prototype[native]],[[Value]]=NaN}
+    @Object#node14 (test/micro/test201.js:10:11): {0:"get",1:"post",[[Prototype]]=[@Object.prototype[native]]}
+    @<anonymous>#fun3 (HOST(string-replace-model.js):1:1): {length:0.0,name:"",prototype:[@Object#node7],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@<the global object>[native]]]}
+    @activation#node70 (HOST(string-replace-model.js):1:1): {arguments:[@arguments#node70]}
+    @arguments#node70 (HOST(string-replace-model.js):1:1): {callee:[@<anonymous>#fun3],length:0.0,[[Prototype]]=[@Object.prototype[native]]}
+    @Object#node85 (HOST(string-replace-model.js):3:12): {constructor:[@replace#fun4],[[Prototype]]=[@Object.prototype[native]],[[Value]]=NaN}
+    @replace#fun4 (HOST(string-replace-model.js):3:12): {length:2.0,name:"replace",prototype:[@Object#node85],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@activation#node70],[@<the global object>[native]]]}
   Registers: 
     v1=Undef
-    v10=[@Object#node11]
-    v22=[@<the global object>[native]]
-    v23=^(@<the global object>[native].TAJS_dumpState[present])
+    v13=[@Object#node14]
 test/micro/test201.js:16:1: [info] Abstract object: {get:[@<anonymous>#fun2{method="get"}]|absent,post:[@<anonymous>#fun2{method="post"}]|absent,[[Prototype]]=[@Object.prototype[native]]}
 test/micro/test201.js:17:1: [info] Abstract value: "I'm get"
-test/micro/test201.js:18:1: [info] Abstract value: OtherStr
+test/micro/test201.js:18:1: [info] Abstract value: PrefixStr[I'm ]

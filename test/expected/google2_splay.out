@@ -10,7 +10,6 @@ test/google2/splay.js:224:10: [maybe] TypeError, accessing property of null/unde
 test/google2/splay.js:236:10: [maybe] TypeError, accessing property of null/undefined
 test/google2/splay.js:256:7: [maybe] TypeError, accessing property of null/undefined
 test/google2/splay.js:272:5: [maybe] TypeError, accessing property of null/undefined
-test/google2/splay.js:272:55: [maybe] TypeError, accessing property of null/undefined
 test/google2/splay.js:301:15: [maybe] TypeError, accessing property of null/undefined
 test/google2/splay.js:305:17: [maybe] TypeError, accessing property of null/undefined
 test/google2/splay.js:308:24: [maybe] TypeError, accessing property of null/undefined
@@ -18,8 +17,7 @@ test/google2/splay.js:323:17: [maybe] TypeError, accessing property of null/unde
 test/google2/splay.js:326:25: [maybe] TypeError, accessing property of null/undefined
 test/google2/splay.js:384:16: [maybe] TypeError, accessing property of null/undefined
 test/google2/splay.js:385:15: [maybe] TypeError, accessing property of null/undefined
-test/google2/splay.js:387:15: [maybe] TypeError, accessing property of null/undefined
-test/google2/splay.js: [maybe] Uncaught exception, constructed at [test/google2/splay.js:95:11, test/google2/splay.js:101:13, test/google2/splay.js:113:27, test/google2/splay.js:163:7, test/google2/splay.js:190:11, test/google2/splay.js:193:7, test/google2/splay.js:194:11, test/google2/splay.js:206:5, test/google2/splay.js:224:10, test/google2/splay.js:236:10, test/google2/splay.js:256:7, test/google2/splay.js:272:5, test/google2/splay.js:272:55, test/google2/splay.js:301:15, test/google2/splay.js:305:17, test/google2/splay.js:308:24, test/google2/splay.js:323:17, test/google2/splay.js:326:25, test/google2/splay.js:384:16, test/google2/splay.js:385:15, test/google2/splay.js:387:15]
+test/google2/splay.js: [maybe] Uncaught exception, constructed at [test/google2/splay.js:95:11, test/google2/splay.js:101:13, test/google2/splay.js:113:27, test/google2/splay.js:163:7, test/google2/splay.js:190:11, test/google2/splay.js:193:7, test/google2/splay.js:194:11, test/google2/splay.js:206:5, test/google2/splay.js:224:10, test/google2/splay.js:236:10, test/google2/splay.js:256:7, test/google2/splay.js:272:5, test/google2/splay.js:301:15, test/google2/splay.js:305:17, test/google2/splay.js:308:24, test/google2/splay.js:323:17, test/google2/splay.js:326:25, test/google2/splay.js:384:16, test/google2/splay.js:385:15]
 test/google2/splay.js:100:9: [maybe] Reading absent property (computed name)
 test/google2/splay.js:100:20: [maybe] Reading absent property (computed name)
 test/google2/splay.js:382:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision

@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,6 +32,7 @@ import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.Str;
 import dk.brics.tajs.lattice.Value;
+import dk.brics.tajs.solver.BlockAndContext;
 import dk.brics.tajs.solver.CallGraph;
 import dk.brics.tajs.solver.Message;
 import dk.brics.tajs.util.AnalysisException;
@@ -107,15 +108,15 @@ public class CompositeMonitoring implements IAnalysisMonitoring {
     }
 
     @Override
-    public void beginPhase(AnalysisPhase phase) {
-        m1.beginPhase(phase);
-        m2.beginPhase(phase);
+    public void visitPhasePre(AnalysisPhase phase) {
+        m1.visitPhasePre(phase);
+        m2.visitPhasePre(phase);
     }
 
     @Override
-    public void endPhase(AnalysisPhase phase) {
-        m1.endPhase(phase);
-        m2.endPhase(phase);
+    public void visitPhasePost(AnalysisPhase phase) {
+        m1.visitPhasePost(phase);
+        m2.visitPhasePost(phase);
     }
 
     @Override
@@ -155,9 +156,9 @@ public class CompositeMonitoring implements IAnalysisMonitoring {
     }
 
     @Override
-    public void visitBlockTransfer(BasicBlock b, State s) {
-        m1.visitBlockTransfer(b, s);
-        m2.visitBlockTransfer(b, s);
+    public void visitBlockTransferPre(BasicBlock b, State s) {
+        m1.visitBlockTransferPre(b, s);
+        m2.visitBlockTransferPre(b, s);
     }
 
     @Override
@@ -209,9 +210,9 @@ public class CompositeMonitoring implements IAnalysisMonitoring {
     }
 
     @Override
-    public void visitPostBlockTransfer(BasicBlock b, State state) {
-        m1.visitPostBlockTransfer(b, state);
-        m2.visitPostBlockTransfer(b, state);
+    public void visitBlockTransferPost(BasicBlock b, State state) {
+        m1.visitBlockTransferPost(b, state);
+        m2.visitBlockTransferPost(b, state);
     }
 
     @Override
@@ -227,9 +228,15 @@ public class CompositeMonitoring implements IAnalysisMonitoring {
     }
 
     @Override
-    public void visitNodeTransfer(AbstractNode n) {
-        m1.visitNodeTransfer(n);
-        m2.visitNodeTransfer(n);
+    public void visitNodeTransferPre(AbstractNode n, State s) {
+        m1.visitNodeTransferPre(n, s);
+        m2.visitNodeTransferPre(n, s);
+    }
+
+    @Override
+    public void visitNodeTransferPost(AbstractNode n, State s) {
+        m1.visitNodeTransferPost(n, s);
+        m2.visitNodeTransferPost(n, s);
     }
 
     @Override
@@ -251,12 +258,6 @@ public class CompositeMonitoring implements IAnalysisMonitoring {
     }
 
     @Override
-    public void visitReachableNode(AbstractNode n) {
-        m1.visitReachableNode(n);
-        m2.visitReachableNode(n);
-    }
-
-    @Override
     public void visitRead(Node n, Value v, State state) {
         m1.visitRead(n, v, state);
         m2.visitRead(n, v, state);
@@ -269,9 +270,9 @@ public class CompositeMonitoring implements IAnalysisMonitoring {
     }
 
     @Override
-    public void visitReadProperty(ReadPropertyNode n, Set<ObjectLabel> objlabels, Str propertystr, boolean maybe, State state, Value v) {
-        m1.visitReadProperty(n, objlabels, propertystr, maybe, state, v);
-        m2.visitReadProperty(n, objlabels, propertystr, maybe, state, v);
+    public void visitReadProperty(ReadPropertyNode n, Set<ObjectLabel> objlabels, Str propertystr, boolean maybe, State state, Value v, ObjectLabel global_obj) {
+        m1.visitReadProperty(n, objlabels, propertystr, maybe, state, v, global_obj);
+        m2.visitReadProperty(n, objlabels, propertystr, maybe, state, v, global_obj);
     }
 
     @Override
@@ -287,15 +288,15 @@ public class CompositeMonitoring implements IAnalysisMonitoring {
     }
 
     @Override
-    public void visitRecoveryGraph(int size) {
-        m1.visitRecoveryGraph(size);
-        m2.visitRecoveryGraph(size);
+    public void visitRecoveryGraph(AbstractNode node, int size) {
+        m1.visitRecoveryGraph(node, size);
+        m2.visitRecoveryGraph(node, size);
     }
 
     @Override
-    public void visitUnknownValueResolve(boolean partial, boolean scanning) {
-        m1.visitUnknownValueResolve(partial, scanning);
-        m2.visitUnknownValueResolve(partial, scanning);
+    public void visitUnknownValueResolve(AbstractNode node, boolean partial, boolean scanning) {
+        m1.visitUnknownValueResolve(node, partial, scanning);
+        m2.visitUnknownValueResolve(node, partial, scanning);
     }
 
     @Override
@@ -305,9 +306,9 @@ public class CompositeMonitoring implements IAnalysisMonitoring {
     }
 
     @Override
-    public void visitVariableAsRead(ReadVariableNode n, Value v, State state) {
-        m1.visitVariableAsRead(n, v, state);
-        m2.visitVariableAsRead(n, v, state);
+    public void visitVariableAsRead(AbstractNode n, String varname, Value v, State state) {
+        m1.visitVariableAsRead(n, varname, v, state);
+        m2.visitVariableAsRead(n, varname, v, state);
     }
 
     @Override
@@ -320,6 +321,36 @@ public class CompositeMonitoring implements IAnalysisMonitoring {
     public void visitNativeFunctionReturn(AbstractNode node, HostObject hostObject, Value result) {
         m1.visitNativeFunctionReturn(node, hostObject, result);
         m2.visitNativeFunctionReturn(node, hostObject, result);
+    }
+
+    @Override
+    public void visitEventHandlerRegistration(AbstractNode node, Context context, Value handler) {
+        m1.visitEventHandlerRegistration(node, context, handler);
+        m2.visitEventHandlerRegistration(node, context, handler);
+    }
+
+    @Override
+    public void visitPropagationPre(BlockAndContext<Context> from, BlockAndContext<Context> to) {
+        m1.visitPropagationPre(from, to);
+        m2.visitPropagationPre(from, to);
+    }
+
+    @Override
+    public void visitPropagationPost(BlockAndContext<Context> from, BlockAndContext<Context> to, boolean changed) {
+        m1.visitPropagationPost(from, to, changed);
+        m2.visitPropagationPost(from, to, changed);
+    }
+
+    @Override
+    public void visitNewObject(AbstractNode node, ObjectLabel label, State s) {
+        m1.visitNewObject(node, label, s);
+        m2.visitNewObject(node, label, s);
+    }
+
+    @Override
+    public void visitRenameObject(AbstractNode node, ObjectLabel from, ObjectLabel to, State s) {
+        m1.visitRenameObject(node, from, to, s);
+        m2.visitRenameObject(node, from, to, s);
     }
 
     protected interface Factory<T> {

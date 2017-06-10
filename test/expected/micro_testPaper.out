@@ -1,16 +1,25 @@
 test/micro/testPaper.js:9:5: [definite] The function Person is invoked both as constructor and function
+test/micro/testPaper.js: [definite] Exceptional program exit is unreachable
 test/micro/testPaper.js:11:22: [maybe] Converting primitive number to object
-test/micro/testPaper.js:19:3: [info] Abstract object: {name:"Joe Average",studentid:"100026",[[Prototype]]=[@Object#node20]}
-test/micro/testPaper.js:20:3: [info] Abstract object: {name:"John Q. Doe",studentid:"100027",[[Prototype]]=[@Object#node20]}
+test/micro/testPaper.js:19:3: [info] Abstract object: {name:"Joe Average",studentid:"100026",[[Prototype]]=[@Object#node24]}
+test/micro/testPaper.js:20:3: [info] Abstract object: {name:"John Q. Doe",studentid:"100027",[[Prototype]]=[@Object#node24]}
 test/micro/testPaper.js:26:1: [info] Abstract state (modified parts):
   @<the global object>[native] (<initial state>):
     Person: [@Person#fun1]
     Student: [@Student#fun3]
     t: 100027.0
-    x: [@Object#node32]
-    y: [@Object#node37]
+    x: [@Object#node36]
+    y: [@Object#node41]
   @Number.prototype[native] (<initial state>):
   @Object.prototype[native] (<initial state>):
+  @Object[native] (<initial state>):
+  @String.prototype[native] (<initial state>):
+    replace: [@replace#fun5]
+  @String[native] (<initial state>):
+  @Object#node8 (host-environment-sources-loader):
+    constructor: [@<anonymous>#fun4]
+    [[Prototype]] = [@Object.prototype[native]]
+    [[Value]] = NaN
   @Object#node1 (test/micro/testPaper.js:1:2):
     constructor: [@Person#fun1]
     count: 3.0
@@ -25,25 +34,45 @@ test/micro/testPaper.js:26:1: [info] Abstract state (modified parts):
   @<anonymous>#fun2 (test/micro/testPaper.js:6:30):
     length: 1.0
     name: ""
-    prototype: [@Object#node15]
+    prototype: [@Object#node19]
     [[Prototype]] = [@Function.prototype[native]]
-  @Object#node15 (test/micro/testPaper.js:6:30):
+  @Object#node19 (test/micro/testPaper.js:6:30):
     constructor: [@<anonymous>#fun2]
     [[Prototype]] = [@Object.prototype[native]]
     [[Value]] = NaN
   @Student#fun3 (test/micro/testPaper.js:7:3):
     length: 2.0
     name: "Student"
-    prototype: [@Object#node20]
+    prototype: [@Object#node24]
     [[Prototype]] = [@Function.prototype[native]]
-  @Object#node20 (test/micro/testPaper.js:13:23):
+  @Object#node24 (test/micro/testPaper.js:13:23):
     name: Undef
     [[Prototype]] = [@Object#node1]
-  @Object#node32 (test/micro/testPaper.js:16:11):
+  @Object#node36 (test/micro/testPaper.js:16:11):
     name: "Joe Average"
     studentid: "100026"
-    [[Prototype]] = [@Object#node20]
-  @Object#node37 (test/micro/testPaper.js:17:11):
+    [[Prototype]] = [@Object#node24]
+  @Object#node41 (test/micro/testPaper.js:17:11):
     name: "John Q. Doe"
     studentid: "100027"
-    [[Prototype]] = [@Object#node20]
+    [[Prototype]] = [@Object#node24]
+  @<anonymous>#fun4 (HOST(string-replace-model.js):1:1):
+    length: 0.0
+    name: ""
+    prototype: [@Object#node8]
+    [[Prototype]] = [@Function.prototype[native]]
+  @activation#node120 (HOST(string-replace-model.js):1:1):
+    arguments: [@arguments#node120]
+  @arguments#node120 (HOST(string-replace-model.js):1:1):
+    callee: [@<anonymous>#fun4]
+    length: 0.0
+    [[Prototype]] = [@Object.prototype[native]]
+  @Object#node135 (HOST(string-replace-model.js):3:12):
+    constructor: [@replace#fun5]
+    [[Prototype]] = [@Object.prototype[native]]
+    [[Value]] = NaN
+  @replace#fun5 (HOST(string-replace-model.js):3:12):
+    length: 2.0
+    name: "replace"
+    prototype: [@Object#node135]
+    [[Prototype]] = [@Function.prototype[native]]

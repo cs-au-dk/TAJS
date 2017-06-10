@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,15 +24,16 @@ import dk.brics.tajs.flowgraph.jsnodes.EndLoopNode;
 import dk.brics.tajs.lattice.Context;
 import dk.brics.tajs.lattice.ContextArguments;
 import dk.brics.tajs.lattice.HeapContext;
+import dk.brics.tajs.lattice.LocalContext;
+import dk.brics.tajs.lattice.LocalContext.LoopUnrollingQualifier;
+import dk.brics.tajs.lattice.LocalContext.Qualifier;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.State;
-import dk.brics.tajs.lattice.UnknownValueResolver;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.util.Collections;
 import org.apache.log4j.Logger;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -77,46 +78,33 @@ public class BasicContextSensitivityStrategy implements IContextSensitivityStrat
     }
 
     private ContextArguments makeContextArgumentsForCall(ObjectLabel obj_f, State edge_state, FunctionCalls.CallInfo callInfo) {
-        ContextArguments funArgs = null;
         if (!Options.get().isParameterSensitivityEnabled()) {
             return null;
         }
-        boolean num_actuals_unknown = callInfo.isUnknownNumberOfArgs();
-        Value unknown_arg = null;
-        List<Value> actuals = new ArrayList<>();
-        if (num_actuals_unknown)
-            unknown_arg = callInfo.getUnknownArg();
-        else {
-            int num_actuals = callInfo.getNumberOfArgs();
-            for (int i = 0; i < num_actuals; i++)
-                actuals.add(callInfo.getArg(i));
-        }
         Function f = obj_f.getFunction();
         Set<String> contextSensitiveParameterNames = this.contextSensitiveParameters.get(f);
-        if (contextSensitiveParameterNames != null) {
-            // apply the parameter sensitivity on the chosen special vars
-            if (!contextSensitiveParameterNames.isEmpty() && num_actuals_unknown) {
-                // sensitive in an unknown argument value
-                funArgs = new ContextArguments(unknown_arg, null);
-            } else {
-                // sensitive in specific argument values
-                List<Value> contextSensitiveArguments = newList();
-                for (String parameterName : f.getParameterNames()) {
-                    Value v;
-                    int i = f.getParameterNames().indexOf(parameterName);  // by construction: never -1!
-                    if (contextSensitiveParameterNames.contains(parameterName) && !callInfo.isUnknownNumberOfArgs()) {
-                        if (i < callInfo.getNumberOfArgs()) {
-                            v = UnknownValueResolver.getRealValue(actuals.get(i), edge_state);
-                        } else {
-                            v = Value.makeUndef();
-                        }
-                    } else {
-                        v = null;
-                    }
-                    contextSensitiveArguments.add(v);
+        if (contextSensitiveParameterNames == null) {
+            return null;
+        }
+        final ContextArguments funArgs;
+        // apply the parameter sensitivity on the chosen special vars
+        if (!contextSensitiveParameterNames.isEmpty() && callInfo.isUnknownNumberOfArgs()) {
+            // sensitive in an unknown argument value
+            funArgs = new ContextArguments(callInfo.getUnknownArg(), null);
+        } else {
+            // sensitive in specific argument values
+            List<Value> contextSensitiveArguments = newList();
+            for (String parameterName : f.getParameterNames()) {
+                Value v;
+                if (contextSensitiveParameterNames.contains(parameterName)) {
+                    int parameterPosition = f.getParameterNames().indexOf(parameterName);
+                    v = FunctionCalls.readParameter(callInfo, edge_state, parameterPosition);
+                } else {
+                    v = null;
                 }
-                funArgs = new ContextArguments(f.getParameterNames(), contextSensitiveArguments, null);
+                contextSensitiveArguments.add(v);
             }
+            funArgs = new ContextArguments(f.getParameterNames(), contextSensitiveArguments, null);
         }
         return funArgs;
     }
@@ -128,7 +116,7 @@ public class BasicContextSensitivityStrategy implements IContextSensitivityStrat
 
     @Override
     public Context makeInitialContext() {
-        Context c = new Context(null, null, null, null, null);
+        Context c = Context.make(null, null, null, null, null);
         if (log.isDebugEnabled())
             log.debug("creating initial context " + c);
         return c;
@@ -140,14 +128,14 @@ public class BasicContextSensitivityStrategy implements IContextSensitivityStrat
         // set thisval for object sensitivity (unlike traditional object sensitivity we allow sets of object labels)
         Set<ObjectLabel> thisval = null;
         if (!Options.get().isObjectSensitivityDisabled()) {
-            if (function.getFunction().isUsesThis()) {
+            if (c.getFlowGraph().getSyntacticInformation().isFunctionWithThisReference(function.getFunction())) {
                 thisval = newSet(state.readThisObjects());
             }
         }
         ContextArguments contextArguments = makeContextArgumentsForCall(function, state, callInfo);
 
-        // note: c.loopUnrolling and c.loopUnrollingsAtEntry are null by default, which will kill unrollings across calls
-        Context context = new Context(thisval, contextArguments, null, null, null);
+        // note: c.localContext and c.localContextAtEntry are null by default, which will kill unrollings across calls
+        Context context = Context.make(thisval, contextArguments, null, null, null);
 
         if (log.isDebugEnabled())
             log.debug("creating function entry context " + context);
@@ -169,9 +157,9 @@ public class BasicContextSensitivityStrategy implements IContextSensitivityStrat
             specialRegs.put(reg, v);
         }
 
-        // for-in acts as entry, so update loopUnrollingsAtEntry
-        Context c = new Context(currentContext.getThisVal(), currentContext.getFunArgs(), specialRegs,
-                currentContext.getLoopUnrolling(), currentContext.getLoopUnrolling());
+        // for-in acts as entry, so update localContextAtEntry
+        Context c = Context.make(currentContext.getThisVal(), currentContext.getFunArgs(), specialRegs,
+                currentContext.getLocalContext(), currentContext.getLocalContext());
 
         if (log.isDebugEnabled())
             log.debug("creating for-in entry context " + c);
@@ -180,15 +168,16 @@ public class BasicContextSensitivityStrategy implements IContextSensitivityStrat
 
     @Override
     public Context makeNextLoopUnrollingContext(Context currentContext, BeginLoopNode node) {
+        LoopUnrollingQualifier key = LoopUnrollingQualifier.make(node);
         // update loopUnrolling
-        Map<BeginLoopNode, Integer> loopUnrolling = newMap();
-        if (currentContext.getLoopUnrolling() != null) {
-            loopUnrolling.putAll(currentContext.getLoopUnrolling());
+        Map<Qualifier, Value> localContextQualifiers = newMap();
+        if (currentContext.getLocalContext() != null) {
+            localContextQualifiers.putAll(currentContext.getLocalContext().getQualifiers());
         }
         int nextUnrollingCount;
-        if (loopUnrolling.containsKey(node)) {
-            int currentUnrollingCount = loopUnrolling.get(node);
-            if (currentUnrollingCount <= Options.get().getLoopUnrollings()) {
+        if (localContextQualifiers.containsKey(key)) {
+            int currentUnrollingCount = localContextQualifiers.get(key).getNum().intValue();
+            if (currentUnrollingCount < Options.get().getLoopUnrollings()) {
                 nextUnrollingCount = currentUnrollingCount + 1;
             } else {
                 // keep at max + 1 (if the count is reset to zero/removed here, it will begin increasing again!)
@@ -199,57 +188,29 @@ public class BasicContextSensitivityStrategy implements IContextSensitivityStrat
         } else {
             nextUnrollingCount = 0;
         }
-        loopUnrolling.put(node, nextUnrollingCount);
+        localContextQualifiers.put(key, Value.makeNum(nextUnrollingCount));
 
-        Context c = new Context(currentContext.getThisVal(), currentContext.getFunArgs(), currentContext.getSpecialRegisters(),
-                loopUnrolling, currentContext.getLoopUnrollingsAtEntry());
+        Context c = Context.make(currentContext.getThisVal(), currentContext.getFunArgs(), currentContext.getSpecialRegisters(),
+                LocalContext.make(localContextQualifiers), currentContext.getLocalContextAtEntry());
 
         if (log.isDebugEnabled())
             log.debug("creating loop unrolling context " + c);
         return c;
     }
 
-//    /**
-//     * Constructs a new context for leaving a for-in body.
-//     */
-//    public static Context makeForInExitContext(Context currentContext, EndForInNode n) { // TODO: currently unused...
-//        // inherit properties from currentContext
-//        Context c = new Context();
-//        c.thisval = currentContext.thisval;
-//        c.funArgs = currentContext.funArgs;
-//        c.specialVars = currentContext.specialVars;
-//        c.loopUnrolling = currentContext.loopUnrolling;
-//        c.loopUnrollingsAtEntry = currentContext.loopUnrollingsAtEntry;
-//
-//        // remove the the given register from specialRegs
-//        if (currentContext.specialRegs != null) {
-//            c.specialRegs = newMap(currentContext.specialRegs);
-//            c.specialRegs.remove(n.getBeginNode().getPropertyListRegister()); // note: this will kill unrollings in recursive calls
-//            if (c.specialRegs.isEmpty()) {
-//                c.specialRegs = null;
-//            }
-//        }
-//
-//        if (log.isDebugEnabled())
-//            log.debug("creating for-in exit context " + c);
-//        return c;
-//    }
-
     @Override
     public Context makeLoopExitContext(Context currentContext, EndLoopNode node) {
+        LoopUnrollingQualifier key = LoopUnrollingQualifier.make(node.getBeginNode());
         // reuse currentContext if possible
-        if (currentContext.getLoopUnrolling() == null || !currentContext.getLoopUnrolling().containsKey(node.getBeginNode()))
+        if (currentContext.getLocalContext() == null || !currentContext.getLocalContext().getQualifiers().containsKey(key))
             return currentContext;
 
         // remove the begin-loop node from loopUnrolling
-        Map<BeginLoopNode, Integer> loopUnrolling = newMap(currentContext.getLoopUnrolling());
-        loopUnrolling.remove(node.getBeginNode()); // note: this will kill unrollings in recursive calls
-        if (loopUnrolling.isEmpty()) {
-            loopUnrolling = null;
-        }
+        Map<Qualifier, Value> localContextQualifiers = newMap(currentContext.getLocalContext().getQualifiers());
+        localContextQualifiers.remove(key);
 
-        Context c = new Context(currentContext.getThisVal(), currentContext.getFunArgs(), currentContext.getSpecialRegisters(),
-                loopUnrolling, currentContext.getLoopUnrollingsAtEntry());
+        Context c = Context.make(currentContext.getThisVal(), currentContext.getFunArgs(), currentContext.getSpecialRegisters(),
+                LocalContext.make(localContextQualifiers), currentContext.getLocalContextAtEntry());
 
         if (log.isDebugEnabled())
             log.debug("creating loop unrolling exit context " + c);

@@ -1,3 +1,4 @@
+test/micro/test126.js: [definite] Ordinary program exit is unreachable
 test/micro/test126.js:12:20: [definite] ReferenceError, reading absent variable gt
 test/micro/test126.js:4:23: [definite] Dead assignment, property b is never read
 test/micro/test126.js:4:30: [definite] Dead assignment, property c is never read

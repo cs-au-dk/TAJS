@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,44 +17,33 @@
 package dk.brics.tajs.analysis.nativeobjects;
 
 import dk.brics.tajs.analysis.Conversion;
-import dk.brics.tajs.analysis.EvalCache;
 import dk.brics.tajs.analysis.Exceptions;
 import dk.brics.tajs.analysis.FunctionCalls;
 import dk.brics.tajs.analysis.FunctionCalls.CallInfo;
-import dk.brics.tajs.analysis.InitialStateBuilder;
-import dk.brics.tajs.analysis.NativeFunctions;
 import dk.brics.tajs.analysis.ParallelTransfer;
 import dk.brics.tajs.analysis.PropVarOperations;
 import dk.brics.tajs.analysis.Solver;
-import dk.brics.tajs.analysis.nativeobjects.concrete.TAJSConcreteSemantics;
-import dk.brics.tajs.analysis.uneval.NormalForm;
-import dk.brics.tajs.analysis.uneval.UnevalTools;
 import dk.brics.tajs.flowgraph.AbstractNode;
-import dk.brics.tajs.flowgraph.FlowGraph;
-import dk.brics.tajs.flowgraph.FlowGraphFragment;
 import dk.brics.tajs.flowgraph.jsnodes.CallNode;
-import dk.brics.tajs.flowgraph.jsnodes.EventDispatcherNode;
-import dk.brics.tajs.js2flowgraph.FlowGraphMutator;
-import dk.brics.tajs.lattice.Context;
 import dk.brics.tajs.lattice.ExecutionContext;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.ObjectLabel.Kind;
 import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.UnknownValueResolver;
 import dk.brics.tajs.lattice.Value;
-import dk.brics.tajs.options.Options;
 import dk.brics.tajs.solver.Message.Severity;
-import dk.brics.tajs.solver.NodeAndContext;
-import dk.brics.tajs.unevalizer.Unevalizer;
+import dk.brics.tajs.unevalizer.SimpleUnevalizerAPI;
 import dk.brics.tajs.unevalizer.UnevalizerLimitations;
 import dk.brics.tajs.util.AnalysisException;
 import dk.brics.tajs.util.AnalysisLimitationException;
 import dk.brics.tajs.util.Strings;
 import org.apache.log4j.Logger;
 
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -75,10 +64,6 @@ public class JSFunction {
      * Evaluates the given native function.
      */
     public static Value evaluate(ECMAScriptObjects nativeobject, final CallInfo call, final Solver.SolverInterface c) {
-        if (nativeobject != ECMAScriptObjects.FUNCTION && nativeobject != ECMAScriptObjects.FUNCTION_PROTOTYPE)
-            if (NativeFunctions.throwTypeErrorIfConstructor(call, c))
-                return Value.makeNone();
-
         State state = c.getState();
         switch (nativeobject) {
 
@@ -86,96 +71,58 @@ public class JSFunction {
                 if (c.isScanning())
                     return Value.makeNone();
 
-                if (Options.get().isUnevalizerEnabled()) {
-                    FlowGraph currentFg = c.getFlowGraph();
+                //First parse the argument string
+                if (call.isUnknownNumberOfArgs()) {
+                    return UnevalizerLimitations.handle("Unable to handle unknown args to Function", call.getSourceNode(), c);
+                }
 
-                    //First parse the argument string
-                    if (call.isUnknownNumberOfArgs()) {
-                        return UnevalizerLimitations.handle("Unable to handle unknown args to Function", call.getSourceNode(), c);
+                if (!(call.getSourceNode() instanceof CallNode)) {
+                    if (c.getAnalysis().getUnsoundness().mayIgnoreEvalCallAtNonCallNode(call.getSourceNode())) {
+                        return Value.makeUndef();
                     }
+                    throw new AnalysisLimitationException.AnalysisModelLimitationException(call.getSourceNode().getSourceLocation() + ": Invoking Function from non-CallNode - unevalizer can't handle that"); // TODO: generalize unevalizer to handle calls from EventDispatcherNode and implicit calls?
+                }
+                CallNode callNode = (CallNode) call.getSourceNode();
+                int nrArgs = call.getNumberOfArgs();
 
-                    if (call.getSourceNode() instanceof CallNode) {
-                        CallNode callNode = (CallNode) call.getSourceNode();
-
-                        int nrArgs = call.getNumberOfArgs();
-
-                        String stringArgs = "";
-                        boolean tooImprecise = false;
-                        if (nrArgs > 1) { // if only one arg: no parameters!
-                            for (int i = 0; i < nrArgs - 1; i++) {
-                                if (!stringArgs.isEmpty()) {
-                                    stringArgs += ",";
-                                }
-                                Value arg = UnknownValueResolver.getRealValue(call.getArg(i), state);
-                                if (arg.isNotStr()) {
-                                    tooImprecise |= true; // very likely a spurious call/argument, might as well give up now
-                                }
-                                Value v = Conversion.toString(arg, c);
-                                if (v.getStr() == null) {
-                                    tooImprecise |= true;
-                                } else {
-                                    stringArgs += v.getStr();
-                                }
-                            }
-                        }
-
-                        final Value vBody;
-                        if (nrArgs > 0) {
-                            Value arg = UnknownValueResolver.getRealValue(call.getArg(nrArgs - 1), state);
-                            if (arg.isNotStr()) {
-                                tooImprecise |= true; // very likely a spurious call/argument, might as well give up now
-                            }
-                            vBody = Conversion.toString(arg, c);
-                        } else {
-                            vBody = Value.makeStr("");
-                        }
-
-                        String body = Strings.escapeSource(vBody.getStr());
-                        if (body == null)
-                            tooImprecise |= true;
-
-                        if (tooImprecise) {
-                            if (Options.get().isUnsoundEnabled()) {
-                                stringArgs = "";
-                                body = "";
-                            } else {
-                                throw new AnalysisLimitationException.AnalysisPrecisionLimitationException(call.getJSSourceNode().getSourceLocation() + ": Too imprecise calls to Function");
-                            }
-                        }
-
-                        String var = call.getResultRegister() == AbstractNode.NO_VALUE ? null : UnevalTools.gensym();
-                        String complete_function = (var == null ? "\"" : "\"" + var + " = ") + "(function (" + stringArgs + ") {" + body + "})\"";
-
-                        NormalForm input = UnevalTools.rebuildNormalForm(currentFg, callNode, state, c);
-                        String unevaled = new Unevalizer().uneval(UnevalTools.unevalizerCallback(currentFg, c, callNode, input, false), complete_function, false, null, call.getSourceNode(), c);
-
-                        if (unevaled == null)
-                            return UnevalizerLimitations.handle("Unevalable eval: " + UnevalTools.rebuildFullExpression(currentFg, callNode, callNode.getArgRegister(0)), call.getSourceNode(), c);
-
-                        String unevaledSubst = var == null ? unevaled : unevaled.replace(var, UnevalTools.VAR_PLACEHOLDER); // to avoid the random string in the cache
-
-                        if (log.isDebugEnabled())
-                            log.debug("Unevalized: " + unevaled);
-
-                        EvalCache evalCache = c.getAnalysis().getEvalCache();
-                        NodeAndContext<Context> cc = new NodeAndContext<>(call.getSourceNode(), state.getContext());
-                        FlowGraphFragment e = evalCache.getCode(cc);
-
-                        if (e == null || !e.getKey().equals(unevaledSubst)) {
-                            e = FlowGraphMutator.extendFlowGraph(currentFg, unevaled, unevaledSubst, e, callNode, false, var);
-                        }
-
-                        evalCache.setCode(cc, e);
-                        c.propagateToBasicBlock(state.clone(), e.getEntryBlock(), state.getContext());
-                        return Value.makeNone();
-                    } else {
-                        if (Options.get().isUnsoundEnabled() && call.getSourceNode() instanceof EventDispatcherNode) {
-                            return Value.makeUndef();
-                        }
-                        throw new AnalysisLimitationException.AnalysisModelLimitationException(call.getSourceNode().getSourceLocation() + ": Invoking Function from non-CallNode - unevalizer can't handle that"); // TODO: generalize unevalizer to handle calls from EventDispatcherNode and implicit calls?
+                List<Value> vParameterNames = newList();
+                if (nrArgs > 1) { // if only one arg: no parameters!
+                    for (int i = 0; i < nrArgs - 1; i++) {
+                        Value parameterName = Conversion.toString(FunctionCalls.readParameter(call, state, i), c);
+                        vParameterNames.add(parameterName);
                     }
                 }
-                throw new AnalysisLimitationException.AnalysisModelLimitationException(call.getJSSourceNode().getSourceLocation() + ": Don't know how to handle call to 'Function' - unevalizer isn't enabled");
+
+                Value vBody;
+                if (nrArgs > 0) {
+                    vBody = Conversion.toString(FunctionCalls.readParameter(call, state, nrArgs - 1), c);
+                } else {
+                    vBody = Value.makeStr("");
+                }
+
+                Set<Value> toStringedArguments = newSet();
+                toStringedArguments.add(vBody);
+                toStringedArguments.addAll(vParameterNames);
+                if (toStringedArguments.stream().anyMatch(Value::isNone)) {
+                    return Value.makeNone();
+                }
+                if (toStringedArguments.stream().anyMatch(v -> v.isMaybeFuzzyStr())) {
+                    if (c.getAnalysis().getUnsoundness().maySimplifyImpreciseFunctionConstructor(callNode)) {
+                        vParameterNames.clear();
+                        vBody = Value.makeStr("");
+                    } else {
+                        throw new AnalysisLimitationException.AnalysisPrecisionLimitationException(call.getJSSourceNode().getSourceLocation() + ": Too imprecise calls to Function");
+                    }
+                }
+
+                // TODO: no escaping of parameters?
+                String body = Strings.escapeSource(vBody.getStr());
+                List<String> parameterNames = vParameterNames.stream()
+                        .flatMap(v -> Arrays.stream(v.getStr().split(",")))
+                        .map(String::trim)
+                        .collect(Collectors.toList());
+
+                return SimpleUnevalizerAPI.evaluateFunctionCall(call.getSourceNode(), parameterNames, body, c);
             }
 
             case FUNCTION_PROTOTYPE: { // 15.3.4
@@ -183,14 +130,12 @@ public class JSFunction {
             }
 
             case FUNCTION_TOSTRING: { // 15.3.4.2
-                NativeFunctions.expectParameters(nativeobject, call, c, 0, 0);
-                return state.readThisObjectsCoerced((l) -> evaluateToString(l, c));
+                return evaluateToString(state.readThis(), c);
             }
 
             case FUNCTION_APPLY: { // 15.3.4.3
                 final PropVarOperations pv = c.getAnalysis().getPropVarOperations();
-                NativeFunctions.expectParameters(nativeobject, call, c, 0, 2);
-                Value argarray = NativeFunctions.readParameter(call, state, 1);
+                Value argarray = FunctionCalls.readParameter(call, state, 1);
 
                 // handle bad arguments
                 boolean hasBadPrimitives = !argarray.restrictToNotObject().restrictToNotNull().restrictToNotUndef().isNone();
@@ -245,18 +190,18 @@ public class JSFunction {
                         }
 
                         @Override
-                        public Set<ObjectLabel> prepareThis(State caller_state, State callee_state) {
-                            return JSFunction.prepareThis(call, callee_state, c);
+                        public Value getThis() {
+                            return FunctionCalls.readParameter(call, c.getState(), 0);
                         }
 
                         @Override
                         public Value getArg(int i) {
                             if (!isUnknownNumberOfArgs() && lengthValue.getNum() <= i) {
-                                return Value.makeUndef(); // asking out of bounds
+                                return Value.makeAbsent(); // asking out of bounds
                             }
                             Value result = c.withState(state, () -> pv.readPropertyValue(argumentObjectsForLength, Integer.toString(i)));
                             if (maybeEmpty && lengthValue.getNum() == 0) {
-                                result = result.joinUndef(); // special case with null and undef acting as an empty array
+                                result = result.joinAbsent(); // special case with null and undef acting as an empty array
                             }
                             return result;
                         }
@@ -294,7 +239,6 @@ public class JSFunction {
             }
 
             case FUNCTION_CALL: { // 15.3.4.4
-                NativeFunctions.expectParameters(nativeobject, call, c, 1, -1);
                 FunctionCalls.callFunction(new CallInfo() {
 
                     @Override
@@ -318,8 +262,8 @@ public class JSFunction {
                     }
 
                     @Override
-                    public Set<ObjectLabel> prepareThis(State caller_state, State callee_state) {
-                        return JSFunction.prepareThis(call, callee_state, c);
+                    public Value getThis() {
+                        return FunctionCalls.readParameter(call, c.getState(), 0);
                     }
 
                     @Override
@@ -377,27 +321,24 @@ public class JSFunction {
         throw new AnalysisException("Unhandled coerced-number case: " + n);
     }
 
-    private static Set<ObjectLabel> prepareThis(CallInfo call, State callee_state, Solver.SolverInterface c) {
-        Value thisval = NativeFunctions.readParameter(call, callee_state, 0);
-        // 15.3.4.3/4
-        boolean maybe_null_or_undef = thisval.isMaybeNull() || thisval.isMaybeUndef();
-        Value thisvalFinal = thisval.restrictToNotNullNotUndef();
-        Set<ObjectLabel> this_objs = c.withState(callee_state, () -> newSet(Conversion.toObjectLabels(call.getSourceNode(), thisvalFinal, c))); // TODO: disable messages? (but not side-effects!)
-        if (maybe_null_or_undef)
-            this_objs.add(InitialStateBuilder.GLOBAL);
-        return this_objs;
-    }
-
-    public static Value evaluateToString(ObjectLabel thiss, Solver.SolverInterface c) {
-        // 15.3.4.2 Function.prototype.toString ( )
-        // An implementation-dependent representation of the function is returned.
-        if (thiss.getKind() != Kind.FUNCTION) {
+    public static Value evaluateToString(Value thisval, Solver.SolverInterface c) {
+        List<Value> strs = newList();
+        boolean is_maybe_typeerror = thisval.isMaybePrimitive();
+        for (ObjectLabel thisObj : thisval.getObjectLabels()) {
+            if (thisObj.getKind() != Kind.FUNCTION) {
+                is_maybe_typeerror = true;
+            } else {
+                Optional<String> toString = c.getAnalysis().getUnsoundness().evaluate_FunctionToString(c.getNode(), thisObj);
+                if (toString.isPresent()) {
+                    strs.add(Value.makeStr(toString.get()));
+                } else {
+                    strs.add(Value.makeAnyStr());
+                }
+            }
+        }
+        if (is_maybe_typeerror) {
             Exceptions.throwTypeError(c);
-            return Value.makeNone();
         }
-        if (Options.get().isUnsoundEnabled()) {
-            return TAJSConcreteSemantics.convertFunctionToString(thiss);
-        }
-        return Value.makeAnyStr();
+        return Value.join(strs);
     }
 }

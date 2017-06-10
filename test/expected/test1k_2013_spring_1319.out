@@ -1,25 +1,54 @@
 test/1k2013spring/1319.js:86:9: [definite] Too few parameters to function CanvasRenderingContext2D.prototype.arc
 test/1k2013spring/1319.js:92:9: [definite] Too few parameters to function CanvasRenderingContext2D.prototype.arc
 test/1k2013spring/1319.js:163:13: [definite] Too few parameters to function CanvasRenderingContext2D.prototype.arc
-test/1k2013spring/1319.js:21:5: [maybe] TypeError, accessing property of null/undefined
 test/1k2013spring/1319.js:52:29: [maybe] ReferenceError, reading absent variable m
 test/1k2013spring/1319.js:52:32: [maybe] ReferenceError, reading absent variable terrainm
+test/1k2013spring/1319.js:76:19: [maybe] ReferenceError, reading absent variable explx
 test/1k2013spring/1319.js:76:40: [maybe] ReferenceError, reading absent variable exply
+test/1k2013spring/1319.js:78:13: [maybe] ReferenceError, reading absent variable a
+test/1k2013spring/1319.js:80:13: [maybe] ReferenceError, reading absent variable explt
+test/1k2013spring/1319.js:84:9: [maybe] ReferenceError, reading absent variable a
 test/1k2013spring/1319.js:106:17: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1319.js:108:27: [maybe] ReferenceError, reading absent variable player
+test/1k2013spring/1319.js:108:34: [maybe] ReferenceError, reading absent variable n
+test/1k2013spring/1319.js:110:43: [maybe] ReferenceError, reading absent variable n
+test/1k2013spring/1319.js:112:34: [maybe] ReferenceError, reading absent variable n
+test/1k2013spring/1319.js:113:44: [maybe] ReferenceError, reading absent variable n
+test/1k2013spring/1319.js:118:21: [maybe] ReferenceError, reading absent variable a
+test/1k2013spring/1319.js:119:26: [maybe] ReferenceError, reading absent variable trail
 test/1k2013spring/1319.js:119:33: [maybe] TypeError, inf or NaN as arguments to CanvasRenderingContext2D.putImageData
+test/1k2013spring/1319.js:119:56: [maybe] ReferenceError, reading absent variable trail
+test/1k2013spring/1319.js:123:17: [maybe] ReferenceError, reading absent variable n
+test/1k2013spring/1319.js:125:18: [maybe] RangeError, assigning invalid value to array 'length' property
+test/1k2013spring/1319.js:125:18: [maybe] ReferenceError, reading absent variable player
+test/1k2013spring/1319.js:125:25: [maybe] ReferenceError, reading absent variable n
+test/1k2013spring/1319.js:130:9: [maybe] ReferenceError, reading absent variable DrawTank
+test/1k2013spring/1319.js:130:24: [maybe] ReferenceError, reading absent variable a
+test/1k2013spring/1319.js:130:26: [maybe] ReferenceError, reading absent variable player
+test/1k2013spring/1319.js:131:24: [maybe] ReferenceError, reading absent variable a
+test/1k2013spring/1319.js:131:27: [maybe] ReferenceError, reading absent variable player
+test/1k2013spring/1319.js:131:27: [maybe] TypeError, call to non-function
+test/1k2013spring/1319.js:134:13: [maybe] ReferenceError, reading absent variable bulletx
+test/1k2013spring/1319.js:135:13: [maybe] ReferenceError, reading absent variable bulletx
 test/1k2013spring/1319.js:135:24: [maybe] ReferenceError, reading absent variable bulletsx
 test/1k2013spring/1319.js:136:13: [maybe] ReferenceError, reading absent variable bullety
 test/1k2013spring/1319.js:136:24: [maybe] ReferenceError, reading absent variable bulletsy
 test/1k2013spring/1319.js:137:13: [maybe] ReferenceError, reading absent variable bulletsy
+test/1k2013spring/1319.js:138:17: [maybe] ReferenceError, reading absent variable a
 test/1k2013spring/1319.js:148:17: [maybe] TypeError, inf or NaN as arguments to CanvasRenderingContext2D.putImageData
+test/1k2013spring/1319.js:148:44: [maybe] ReferenceError, reading absent variable trail
+test/1k2013spring/1319.js:155:13: [maybe] ReferenceError, reading absent variable explx
+test/1k2013spring/1319.js:158:8: [maybe] ReferenceError, reading absent variable a
+test/1k2013spring/1319.js:159:13: [maybe] ReferenceError, reading absent variable trail
 test/1k2013spring/1319.js:159:20: [maybe] TypeError, inf or NaN as arguments to CanvasRenderingContext2D.putImageData
+test/1k2013spring/1319.js:159:43: [maybe] ReferenceError, reading absent variable trail
+test/1k2013spring/1319.js:163:19: [maybe] ReferenceError, reading absent variable explx
 test/1k2013spring/1319.js:163:26: [maybe] ReferenceError, reading absent variable exply
-test/1k2013spring/shim.js:8:9: [maybe] TypeError, accessing property of null/undefined
-test/1k2013spring/shim.js:8:9: [maybe] TypeError, call to non-function
-test/1k2013spring/shim.js:9:1: [maybe] TypeError, accessing property of null/undefined
-test/1k2013spring/shim.js:6:9: [maybe] Reading absent property body
-test/1k2013spring/shim.js:8:9: [maybe] Reading absent property getContext
-test/1k2013spring/shim.js:9:1: [maybe] Reading absent property body
+test/1k2013spring/1319.js:163:33: [maybe] ReferenceError, reading absent variable explt
+test/1k2013spring/1319.js:164:27: [maybe] ReferenceError, reading absent variable explt
+test/1k2013spring/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1319.js:131:27: [maybe] Reading absent property slice
+test/1k2013spring/1319.js: [maybe] Uncaught exception, constructed at [test/1k2013spring/1319.js:52:29, test/1k2013spring/1319.js:52:32, test/1k2013spring/1319.js:76:19, test/1k2013spring/1319.js:76:40, test/1k2013spring/1319.js:78:13, test/1k2013spring/1319.js:80:13, test/1k2013spring/1319.js:84:9, test/1k2013spring/1319.js:106:17, test/1k2013spring/1319.js:108:27, test/1k2013spring/1319.js:108:34, test/1k2013spring/1319.js:110:43, test/1k2013spring/1319.js:112:34, test/1k2013spring/1319.js:113:44, test/1k2013spring/1319.js:118:21, test/1k2013spring/1319.js:119:26, test/1k2013spring/1319.js:119:56, test/1k2013spring/1319.js:123:17, test/1k2013spring/1319.js:125:18, test/1k2013spring/1319.js:125:25, test/1k2013spring/1319.js:130:9, test/1k2013spring/1319.js:130:24, test/1k2013spring/1319.js:130:26, test/1k2013spring/1319.js:131:24, test/1k2013spring/1319.js:131:27, test/1k2013spring/1319.js:134:13, test/1k2013spring/1319.js:135:13, test/1k2013spring/1319.js:135:24, test/1k2013spring/1319.js:136:13, test/1k2013spring/1319.js:136:24, test/1k2013spring/1319.js:137:13, test/1k2013spring/1319.js:138:17, test/1k2013spring/1319.js:148:44, test/1k2013spring/1319.js:155:13, test/1k2013spring/1319.js:158:8, test/1k2013spring/1319.js:159:13, test/1k2013spring/1319.js:159:43, test/1k2013spring/1319.js:163:19, test/1k2013spring/1319.js:163:26, test/1k2013spring/1319.js:163:33, test/1k2013spring/1319.js:164:27, test/1k2013spring/shim.js:9:5]
 test/1k2013spring/1319.js:32:21: [maybe] Reading absent property (computed name)
 test/1k2013spring/1319.js:76:17: [maybe] Conversion from string to number yields NaN
 test/1k2013spring/1319.js:76:17: [maybe] Conversion to number yields NaN
@@ -76,6 +105,7 @@ test/1k2013spring/1319.js:119:33: [maybe] Conversion to number yields NaN
 test/1k2013spring/1319.js:119:33: [maybe] Converting object to number
 test/1k2013spring/1319.js:119:52: [maybe] Conversion from string to number yields NaN
 test/1k2013spring/1319.js:119:56: [maybe] Reading absent property (computed name)
+test/1k2013spring/1319.js:125:18: [maybe] Conversion from string to number yields NaN
 test/1k2013spring/1319.js:125:18: [maybe] Conversion to number yields NaN
 test/1k2013spring/1319.js:125:18: [maybe] Reading absent property (computed name)
 test/1k2013spring/1319.js:134:13: [maybe] The variable bulletx has values with different types
@@ -102,8 +132,6 @@ test/1k2013spring/1319.js:159:43: [maybe] Reading absent property (computed name
 test/1k2013spring/1319.js:163:13: [maybe] Conversion from string to number yields NaN
 test/1k2013spring/1319.js:163:19: [maybe] The variable explx has values with different types
 test/1k2013spring/1319.js:163:26: [maybe] The variable exply has values with different types
-test/1k2013spring/shim.js:7:9: [maybe] Reading absent property (computed name)
-test/1k2013spring/shim.js,test/1k2013spring/1319.js: [maybe] Uncaught exception, constructed at [test/1k2013spring/1319.js:21:5, test/1k2013spring/1319.js:52:29, test/1k2013spring/1319.js:52:32, test/1k2013spring/1319.js:76:40, test/1k2013spring/1319.js:106:17, test/1k2013spring/1319.js:135:24, test/1k2013spring/1319.js:136:13, test/1k2013spring/1319.js:136:24, test/1k2013spring/1319.js:137:13, test/1k2013spring/1319.js:163:26, test/1k2013spring/shim.js:8:9, test/1k2013spring/shim.js:9:1]
 test/1k2013spring/1319.js:148:44: [info] Writing to unknown property that may cause loss of precision
 test/1k2013spring/1319.js:119:17: [info] Reading from unknown property that may cause loss of precision
 test/1k2013spring/1319.js:119:56: [info] Reading from unknown property that may cause loss of precision

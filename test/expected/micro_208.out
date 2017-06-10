@@ -1,2 +1,3 @@
+test/micro/test208.js: [definite] Exceptional program exit is unreachable
 test/micro/test208.js:2:15: [maybe] The variable x has values with different types
 test/micro/test208.js:9:1: [info] Abstract value: 2.0

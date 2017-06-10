@@ -1,87 +1,39 @@
 test/1k2012love/1048.js:5:3: [definite] The variable r is never used
-test/1k2012love/shim.js:6:5: [definite] The variable b is never used
+test/1k2012love/1048.js:6:6: [maybe] TypeError, call to non-function
 test/1k2012love/1048.js:7:10: [maybe] TypeError, accessing property of null/undefined
-test/1k2012love/1048.js:7:20: [maybe] TypeError, accessing property of null/undefined
-test/1k2012love/1048.js:8:10: [maybe] TypeError, accessing property of null/undefined
-test/1k2012love/1048.js:8:33: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1048.js:10:4: [maybe] ReferenceError, reading absent variable a
 test/1k2012love/1048.js:12:11: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1048.js:25:4: [maybe] TypeError, accessing property of null/undefined
 test/1k2012love/1048.js:25:49: [maybe] TypeError, accessing property of null/undefined
 test/1k2012love/1048.js:25:63: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1048.js:28:4: [maybe] TypeError, accessing property of null/undefined
 test/1k2012love/1048.js:28:47: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1048.js:36:6: [maybe] TypeError, call to non-function
 test/1k2012love/1048.js:37:7: [maybe] TypeError, accessing property of null/undefined
 test/1k2012love/1048.js:44:38: [maybe] TypeError, accessing property of null/undefined
-test/1k2012love/shim.js:8:9: [maybe] TypeError, accessing property of null/undefined
-test/1k2012love/shim.js:8:9: [maybe] TypeError, call to non-function
-test/1k2012love/shim.js:9:1: [maybe] TypeError, accessing property of null/undefined
-test/1k2012love/1048.js:7:10: [maybe] Reading absent property s
-test/1k2012love/1048.js:8:10: [maybe] Reading absent property m
-test/1k2012love/1048.js:12:11: [maybe] Reading absent property s
-test/1k2012love/1048.js:14:17: [maybe] Reading absent property c
-test/1k2012love/1048.js:19:10: [maybe] Reading absent property c
-test/1k2012love/1048.js:25:49: [maybe] Reading absent property s
-test/1k2012love/1048.js:25:63: [maybe] Reading absent property m
-test/1k2012love/1048.js:28:47: [maybe] Reading absent property c
-test/1k2012love/shim.js:6:9: [maybe] Reading absent property body
-test/1k2012love/shim.js:8:9: [maybe] Reading absent property getContext
-test/1k2012love/shim.js:9:1: [maybe] Reading absent property body
-test/1k2012love/1048.js:6:8: [maybe] Conversion from string to number yields NaN
-test/1k2012love/1048.js:6:8: [maybe] The variable i has values with different types
-test/1k2012love/1048.js:6:15: [maybe] Conversion from string to number yields NaN
-test/1k2012love/1048.js:6:15: [maybe] The variable i has values with different types
-test/1k2012love/1048.js:7:10: [maybe] Converting primitive number to object
-test/1k2012love/1048.js:7:10: [maybe] The variable q has values with different types
-test/1k2012love/1048.js:7:20: [maybe] Converting primitive number to object
-test/1k2012love/1048.js:7:20: [maybe] The variable q has values with different types
-test/1k2012love/1048.js:8:10: [maybe] Converting primitive number to object
-test/1k2012love/1048.js:8:10: [maybe] The variable q has values with different types
-test/1k2012love/1048.js:8:33: [maybe] Converting primitive number to object
-test/1k2012love/1048.js:8:33: [maybe] The variable q has values with different types
-test/1k2012love/1048.js:12:11: [maybe] Converting primitive number to object
-test/1k2012love/1048.js:12:11: [maybe] The variable q has values with different types
-test/1k2012love/1048.js:14:6: [maybe] Converting undefined to string
-test/1k2012love/1048.js:14:17: [maybe] Converting primitive number to object
-test/1k2012love/1048.js:14:17: [maybe] The variable q has values with different types
-test/1k2012love/1048.js:19:10: [maybe] Converting primitive number to object
-test/1k2012love/1048.js:19:10: [maybe] The variable q has values with different types
-test/1k2012love/1048.js:20:11: [maybe] The variable i has values with different types
+test/1k2012love/1048.js:49:33: [maybe] TypeError, call to non-function
+test/1k2012love/1048.js:49:50: [maybe] TypeError, call to non-function
+test/1k2012love/1048.js:49:69: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1048.js: [maybe] Uncaught exception, constructed at [test/1k2012love/1048.js:6:6, test/1k2012love/1048.js:7:10, test/1k2012love/1048.js:10:4, test/1k2012love/1048.js:12:11, test/1k2012love/1048.js:25:4, test/1k2012love/1048.js:25:49, test/1k2012love/1048.js:25:63, test/1k2012love/1048.js:28:4, test/1k2012love/1048.js:28:47, test/1k2012love/1048.js:36:6, test/1k2012love/1048.js:37:7, test/1k2012love/1048.js:44:38, test/1k2012love/1048.js:49:33, test/1k2012love/1048.js:49:50, test/1k2012love/1048.js:49:69, test/1k2012love/shim.js:9:5]
+test/1k2012love/1048.js:7:28: [maybe] Conversion to number yields NaN
+test/1k2012love/1048.js:10:4: [maybe] Conversion to number yields NaN
+test/1k2012love/1048.js:10:16: [maybe] Conversion to number yields NaN
+test/1k2012love/1048.js:10:20: [maybe] Conversion to number yields NaN
+test/1k2012love/1048.js:14:21: [maybe] Conversion to number yields NaN
+test/1k2012love/1048.js:14:28: [maybe] Conversion to number yields NaN
+test/1k2012love/1048.js:17:17: [maybe] Conversion to number yields NaN
+test/1k2012love/1048.js:17:23: [maybe] Conversion to number yields NaN
+test/1k2012love/1048.js:17:29: [maybe] Conversion to number yields NaN
+test/1k2012love/1048.js:17:33: [maybe] Conversion to number yields NaN
 test/1k2012love/1048.js:25:28: [maybe] Conversion to number yields NaN
-test/1k2012love/1048.js:25:28: [maybe] Converting undefined to string
-test/1k2012love/1048.js:25:28: [maybe] The variable q has values with different types
-test/1k2012love/1048.js:25:30: [maybe] The variable i has values with different types
-test/1k2012love/1048.js:25:36: [maybe] The variable v has values with different types
-test/1k2012love/1048.js:25:42: [maybe] The variable v has values with different types
-test/1k2012love/1048.js:25:49: [maybe] Converting primitive number to object
 test/1k2012love/1048.js:25:49: [maybe] Reading absent property (computed name)
-test/1k2012love/1048.js:25:51: [maybe] The variable v has values with different types
-test/1k2012love/1048.js:25:63: [maybe] Converting primitive number to object
 test/1k2012love/1048.js:25:63: [maybe] Reading absent property (computed name)
-test/1k2012love/1048.js:25:65: [maybe] The variable v has values with different types
 test/1k2012love/1048.js:25:74: [maybe] Reading absent property (computed name)
-test/1k2012love/1048.js:25:76: [maybe] The variable v has values with different types
-test/1k2012love/1048.js:25:79: [maybe] The variable v has values with different types
 test/1k2012love/1048.js:28:28: [maybe] Conversion to number yields NaN
-test/1k2012love/1048.js:28:28: [maybe] Converting undefined to string
-test/1k2012love/1048.js:28:28: [maybe] The variable q has values with different types
-test/1k2012love/1048.js:28:30: [maybe] The variable i has values with different types
-test/1k2012love/1048.js:28:35: [maybe] The variable v has values with different types
-test/1k2012love/1048.js:28:41: [maybe] The variable v has values with different types
-test/1k2012love/1048.js:28:47: [maybe] Conversion to number yields NaN
-test/1k2012love/1048.js:28:47: [maybe] Converting primitive number to object
 test/1k2012love/1048.js:28:47: [maybe] Reading absent property (computed name)
-test/1k2012love/1048.js:28:49: [maybe] The variable v has values with different types
-test/1k2012love/1048.js:31:7: [maybe] Conversion from string to number yields NaN
-test/1k2012love/1048.js:31:7: [maybe] The variable l has values with different types
-test/1k2012love/1048.js:31:19: [maybe] The variable l has values with different types
-test/1k2012love/1048.js:32:12: [maybe] Conversion from string to number yields NaN
-test/1k2012love/1048.js:32:12: [maybe] The variable l has values with different types
-test/1k2012love/1048.js:32:24: [maybe] The variable l has values with different types
-test/1k2012love/1048.js:33:13: [maybe] The variable l has values with different types
 test/1k2012love/1048.js:37:7: [maybe] Reading absent property (computed name)
 test/1k2012love/1048.js:44:38: [maybe] Reading absent property (computed name)
+test/1k2012love/1048.js:49:35: [maybe] Conversion to number yields NaN
+test/1k2012love/1048.js:49:52: [maybe] Conversion to number yields NaN
 test/1k2012love/1048.js:49:69: [maybe] Reading absent property (computed name)
-test/1k2012love/shim.js:7:9: [maybe] Reading absent property (computed name)
-test/1k2012love/shim.js,test/1k2012love/1048.js: [maybe] Uncaught exception, constructed at [test/1k2012love/1048.js:7:10, test/1k2012love/1048.js:7:20, test/1k2012love/1048.js:8:10, test/1k2012love/1048.js:8:33, test/1k2012love/1048.js:12:11, test/1k2012love/1048.js:25:49, test/1k2012love/1048.js:25:63, test/1k2012love/1048.js:28:47, test/1k2012love/1048.js:37:7, test/1k2012love/1048.js:44:38, test/1k2012love/shim.js:8:9, test/1k2012love/shim.js:9:1]
-test/1k2012love/1048.js:25:49: [info] Reading from unknown property that may cause loss of precision
-test/1k2012love/1048.js:25:63: [info] Reading from unknown property that may cause loss of precision
-test/1k2012love/1048.js:25:74: [info] Reading from unknown property that may cause loss of precision
-test/1k2012love/1048.js:28:47: [info] Reading from unknown property that may cause loss of precision

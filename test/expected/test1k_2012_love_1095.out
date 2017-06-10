@@ -1,56 +1,72 @@
-test/1k2012love/1095.js:13:5: [definite] The conditional expression is always false
-test/1k2012love/1095.js:13:5: [definite] The conditional expression is always false
-test/1k2012love/1095.js:13:5: [definite] The conditional expression is always false
-test/1k2012love/1095.js:13:5: [definite] The conditional expression is always false
-test/1k2012love/1095.js:13:5: [definite] The conditional expression is always false
-test/1k2012love/1095.js:89:5: [definite] The conditional expression is always false
-test/1k2012love/1095.js:89:5: [definite] The conditional expression is always false
-test/1k2012love/1095.js:89:5: [definite] The conditional expression is always false
-test/1k2012love/1095.js:89:5: [definite] The conditional expression is always false
-TAJS-dynamic-code(test/1k2012love/1095.js:93:22):1:16: [definite] Reading absent property x
-TAJS-dynamic-code(test/1k2012love/1095.js:93:22):1:16: [definite] Reading absent property x
-TAJS-dynamic-code(test/1k2012love/1095.js:93:22):1:16: [definite] Reading absent property x
-TAJS-dynamic-code(test/1k2012love/1095.js:93:22):1:16: [definite] Reading absent property x
-TAJS-dynamic-code(test/1k2012love/1095.js:93:22):1:16: [definite] Reading absent property x
-TAJS-dynamic-code(test/1k2012love/1095.js:93:22):1:16: [definite] Reading absent property x
-TAJS-dynamic-code(test/1k2012love/1095.js:93:22):1:16: [definite] Reading absent property x
-TAJS-dynamic-code(test/1k2012love/1095.js:93:22):1:23: [definite] Reading absent property y
-TAJS-dynamic-code(test/1k2012love/1095.js:93:22):1:23: [definite] Reading absent property y
-TAJS-dynamic-code(test/1k2012love/1095.js:93:22):1:23: [definite] Reading absent property y
-TAJS-dynamic-code(test/1k2012love/1095.js:93:22):1:23: [definite] Reading absent property y
-TAJS-dynamic-code(test/1k2012love/1095.js:93:22):1:23: [definite] Reading absent property y
-TAJS-dynamic-code(test/1k2012love/1095.js:93:22):1:23: [definite] Reading absent property y
-TAJS-dynamic-code(test/1k2012love/1095.js:93:22):1:23: [definite] Reading absent property y
-test/1k2012love/1095.js:13:13: [definite] Reading absent property which
-test/1k2012love/shim.js:6:5: [definite] The variable b is never used
+test/1k2012love/1095.js:19:21: [maybe] ReferenceError, reading absent variable d
+test/1k2012love/1095.js:21:13: [maybe] ReferenceError, reading absent variable l
+test/1k2012love/1095.js:25:18: [maybe] ReferenceError, reading absent variable t
+test/1k2012love/1095.js:31:18: [maybe] ReferenceError, reading absent variable t
+test/1k2012love/1095.js:35:17: [maybe] ReferenceError, reading absent variable t
+test/1k2012love/1095.js:41:17: [maybe] ReferenceError, reading absent variable t
+test/1k2012love/1095.js:51:19: [maybe] ReferenceError, reading absent variable R
+test/1k2012love/1095.js:52:19: [maybe] ReferenceError, reading absent variable R
+test/1k2012love/1095.js:64:5: [maybe] ReferenceError, reading absent variable a
+test/1k2012love/1095.js:64:19: [maybe] ReferenceError, reading absent variable z
+test/1k2012love/1095.js:66:5: [maybe] ReferenceError, reading absent variable F
+test/1k2012love/1095.js:66:13: [maybe] ReferenceError, reading absent variable e
+test/1k2012love/1095.js:66:16: [maybe] ReferenceError, reading absent variable e
+test/1k2012love/1095.js:68:10: [maybe] ReferenceError, reading absent variable S
+test/1k2012love/1095.js:70:5: [maybe] ReferenceError, reading absent variable F
+test/1k2012love/1095.js:70:7: [maybe] ReferenceError, reading absent variable t
+test/1k2012love/1095.js:70:10: [maybe] ReferenceError, reading absent variable t
+test/1k2012love/1095.js:72:10: [maybe] ReferenceError, reading absent variable T
+test/1k2012love/1095.js:75:5: [maybe] ReferenceError, reading absent variable x
+test/1k2012love/1095.js:75:10: [maybe] ReferenceError, reading absent variable h
+test/1k2012love/1095.js:75:17: [maybe] ReferenceError, reading absent variable y
+test/1k2012love/1095.js:75:41: [maybe] ReferenceError, reading absent variable s
+test/1k2012love/1095.js:75:46: [maybe] ReferenceError, reading absent variable t
+test/1k2012love/1095.js:75:54: [maybe] ReferenceError, reading absent variable L
+test/1k2012love/1095.js:78:10: [maybe] ReferenceError, reading absent variable L
+test/1k2012love/1095.js:84:10: [maybe] ReferenceError, reading absent variable S
+test/1k2012love/1095.js:85:10: [maybe] ReferenceError, reading absent variable T
+test/1k2012love/1095.js:89:5: [maybe] ReferenceError, reading absent variable x
+test/1k2012love/1095.js:89:9: [maybe] ReferenceError, reading absent variable t
+test/1k2012love/1095.js:89:14: [maybe] ReferenceError, reading absent variable y
+test/1k2012love/1095.js:89:18: [maybe] ReferenceError, reading absent variable t
+test/1k2012love/1095.js:89:29: [maybe] ReferenceError, reading absent variable x
+test/1k2012love/1095.js:89:40: [maybe] ReferenceError, reading absent variable y
+test/1k2012love/1095.js:89:49: [maybe] ReferenceError, reading absent variable k
+test/1k2012love/1095.js:89:58: [maybe] ReferenceError, reading absent variable T
+test/1k2012love/1095.js:89:93: [maybe] ReferenceError, reading absent variable S
+test/1k2012love/1095.js:89:112: [maybe] ReferenceError, reading absent variable T
+test/1k2012love/1095.js:93:27: [maybe] ReferenceError, reading absent variable T
+test/1k2012love/1095.js:93:67: [maybe] ReferenceError, reading absent variable x
+test/1k2012love/1095.js:93:72: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1095.js:93:82: [maybe] ReferenceError, reading absent variable y
+test/1k2012love/1095.js:93:87: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
+TAJS-dynamic-code(test/1k2012love/1095.js:72:5):1:21: [maybe] ReferenceError, reading absent variable s
+TAJS-dynamic-code(test/1k2012love/1095.js:72:5):1:23: [maybe] ReferenceError, reading absent variable t
+TAJS-dynamic-code(test/1k2012love/1095.js:72:5):1:25: [maybe] ReferenceError, reading absent variable e
+TAJS-dynamic-code(test/1k2012love/1095.js:75:49):1:1: [maybe] ReferenceError, reading absent variable l
+TAJS-dynamic-code(test/1k2012love/1095.js:75:49):1:17: [maybe] ReferenceError, reading absent variable x
+TAJS-dynamic-code(test/1k2012love/1095.js:75:49):1:19: [maybe] ReferenceError, reading absent variable y
+TAJS-dynamic-code(test/1k2012love/1095.js:78:5):1:1: [maybe] ReferenceError, reading absent variable l
+TAJS-dynamic-code(test/1k2012love/1095.js:78:5):1:17: [maybe] ReferenceError, reading absent variable x
+TAJS-dynamic-code(test/1k2012love/1095.js:78:5):1:19: [maybe] ReferenceError, reading absent variable y
+TAJS-dynamic-code(test/1k2012love/1095.js:85:5):1:24: [maybe] ReferenceError, reading absent variable t
+TAJS-dynamic-code(test/1k2012love/1095.js:85:5):1:26: [maybe] ReferenceError, reading absent variable t
+TAJS-dynamic-code(test/1k2012love/1095.js:89:53):1:24: [maybe] ReferenceError, reading absent variable d
+TAJS-dynamic-code(test/1k2012love/1095.js:89:53):1:28: [maybe] ReferenceError, reading absent variable d
+TAJS-dynamic-code(test/1k2012love/1095.js:89:107):1:16: [maybe] ReferenceError, reading absent variable x
+TAJS-dynamic-code(test/1k2012love/1095.js:89:107):1:19: [maybe] ReferenceError, reading absent variable v
+TAJS-dynamic-code(test/1k2012love/1095.js:89:107):1:22: [maybe] ReferenceError, reading absent variable y
+TAJS-dynamic-code(test/1k2012love/1095.js:89:107):1:25: [maybe] ReferenceError, reading absent variable w
+TAJS-dynamic-code(test/1k2012love/1095.js:89:107):1:28: [maybe] ReferenceError, reading absent variable t
+TAJS-dynamic-code(test/1k2012love/1095.js:89:107):1:30: [maybe] ReferenceError, reading absent variable t
 TAJS-dynamic-code(test/1k2012love/1095.js:93:22):1:16: [maybe] TypeError, accessing property of null/undefined
 TAJS-dynamic-code(test/1k2012love/1095.js:93:22):1:23: [maybe] TypeError, accessing property of null/undefined
-test/1k2012love/1095.js:93:72: [maybe] TypeError, accessing property of null/undefined
-test/1k2012love/1095.js:93:87: [maybe] TypeError, accessing property of null/undefined
-test/1k2012love/shim.js:8:9: [maybe] TypeError, accessing property of null/undefined
-test/1k2012love/shim.js:8:9: [maybe] TypeError, call to non-function
-test/1k2012love/shim.js:9:1: [maybe] TypeError, accessing property of null/undefined
-test/1k2012love/1095.js:93:72: [maybe] Reading absent property x
-test/1k2012love/shim.js:6:9: [maybe] Reading absent property body
-test/1k2012love/shim.js:8:9: [maybe] Reading absent property getContext
-test/1k2012love/shim.js:9:1: [maybe] Reading absent property body
-TAJS-dynamic-code(test/1k2012love/1095.js:93:22):1:1: [maybe] Conversion to number yields NaN
-TAJS-dynamic-code(test/1k2012love/1095.js:93:22):1:1: [maybe] Conversion to number yields NaN
-TAJS-dynamic-code(test/1k2012love/1095.js:93:22):1:1: [maybe] Conversion to number yields NaN
-TAJS-dynamic-code(test/1k2012love/1095.js:93:22):1:1: [maybe] Conversion to number yields NaN
-TAJS-dynamic-code(test/1k2012love/1095.js:93:22):1:1: [maybe] Conversion to number yields NaN
-TAJS-dynamic-code(test/1k2012love/1095.js:93:22):1:1: [maybe] Conversion to number yields NaN
-TAJS-dynamic-code(test/1k2012love/1095.js:93:22):1:1: [maybe] Conversion to number yields NaN
-TAJS-dynamic-code(test/1k2012love/1095.js:93:22):1:16: [maybe] Reading absent property (computed name)
-TAJS-dynamic-code(test/1k2012love/1095.js:93:22):1:23: [maybe] Conversion to number yields NaN
-TAJS-dynamic-code(test/1k2012love/1095.js:93:22):1:23: [maybe] Conversion to number yields NaN
-TAJS-dynamic-code(test/1k2012love/1095.js:93:22):1:23: [maybe] Conversion to number yields NaN
-TAJS-dynamic-code(test/1k2012love/1095.js:93:22):1:23: [maybe] Conversion to number yields NaN
-TAJS-dynamic-code(test/1k2012love/1095.js:93:22):1:23: [maybe] Conversion to number yields NaN
-TAJS-dynamic-code(test/1k2012love/1095.js:93:22):1:23: [maybe] Conversion to number yields NaN
-TAJS-dynamic-code(test/1k2012love/1095.js:93:22):1:23: [maybe] Conversion to number yields NaN
-TAJS-dynamic-code(test/1k2012love/1095.js:93:22):1:23: [maybe] Reading absent property (computed name)
+TAJS-dynamic-code(test/1k2012love/1095.js:93:22):1:30: [maybe] ReferenceError, reading absent variable t
+TAJS-dynamic-code(test/1k2012love/1095.js:93:22):1:32: [maybe] ReferenceError, reading absent variable t
+test/1k2012love/1095.js:13:13: [maybe] Reading absent property which of host object
+test/1k2012love/1095.js: [maybe] Uncaught exception, constructed at [test/1k2012love/1095.js:19:21, test/1k2012love/1095.js:21:13, test/1k2012love/1095.js:25:18, test/1k2012love/1095.js:31:18, test/1k2012love/1095.js:35:17, test/1k2012love/1095.js:41:17, test/1k2012love/1095.js:51:19, test/1k2012love/1095.js:52:19, test/1k2012love/1095.js:64:5, test/1k2012love/1095.js:64:19, test/1k2012love/1095.js:66:5, test/1k2012love/1095.js:66:13, test/1k2012love/1095.js:66:16, test/1k2012love/1095.js:68:10, test/1k2012love/1095.js:70:5, test/1k2012love/1095.js:70:7, test/1k2012love/1095.js:70:10, test/1k2012love/1095.js:72:10, test/1k2012love/1095.js:75:5, test/1k2012love/1095.js:75:10, test/1k2012love/1095.js:75:17, test/1k2012love/1095.js:75:41, test/1k2012love/1095.js:75:46, test/1k2012love/1095.js:75:54, test/1k2012love/1095.js:78:10, test/1k2012love/1095.js:84:10, test/1k2012love/1095.js:85:10, test/1k2012love/1095.js:89:5, test/1k2012love/1095.js:89:9, test/1k2012love/1095.js:89:14, test/1k2012love/1095.js:89:18, test/1k2012love/1095.js:89:29, test/1k2012love/1095.js:89:40, test/1k2012love/1095.js:89:49, test/1k2012love/1095.js:89:58, test/1k2012love/1095.js:89:93, test/1k2012love/1095.js:89:112, test/1k2012love/1095.js:93:27, test/1k2012love/1095.js:93:67, test/1k2012love/1095.js:93:72, test/1k2012love/1095.js:93:82, test/1k2012love/1095.js:93:87, test/1k2012love/shim.js:9:5, TAJS-dynamic-code(test/1k2012love/1095.js:72:5):1:21, TAJS-dynamic-code(test/1k2012love/1095.js:72:5):1:23, TAJS-dynamic-code(test/1k2012love/1095.js:72:5):1:25, TAJS-dynamic-code(test/1k2012love/1095.js:75:49):1:1, TAJS-dynamic-code(test/1k2012love/1095.js:75:49):1:17, TAJS-dynamic-code(test/1k2012love/1095.js:75:49):1:19, TAJS-dynamic-code(test/1k2012love/1095.js:78:5):1:1, TAJS-dynamic-code(test/1k2012love/1095.js:78:5):1:17, TAJS-dynamic-code(test/1k2012love/1095.js:78:5):1:19, TAJS-dynamic-code(test/1k2012love/1095.js:85:5):1:24, TAJS-dynamic-code(test/1k2012love/1095.js:85:5):1:26, TAJS-dynamic-code(test/1k2012love/1095.js:89:53):1:24, TAJS-dynamic-code(test/1k2012love/1095.js:89:53):1:28, TAJS-dynamic-code(test/1k2012love/1095.js:89:107):1:16, TAJS-dynamic-code(test/1k2012love/1095.js:89:107):1:19, TAJS-dynamic-code(test/1k2012love/1095.js:89:107):1:22, TAJS-dynamic-code(test/1k2012love/1095.js:89:107):1:25, TAJS-dynamic-code(test/1k2012love/1095.js:89:107):1:28, TAJS-dynamic-code(test/1k2012love/1095.js:89:107):1:30, TAJS-dynamic-code(test/1k2012love/1095.js:93:22):1:16, TAJS-dynamic-code(test/1k2012love/1095.js:93:22):1:23, TAJS-dynamic-code(test/1k2012love/1095.js:93:22):1:30, TAJS-dynamic-code(test/1k2012love/1095.js:93:22):1:32]
 test/1k2012love/1095.js:93:72: [maybe] Reading absent property (computed name)
 test/1k2012love/1095.js:93:87: [maybe] Reading absent property (computed name)
-test/1k2012love/shim.js:7:9: [maybe] Reading absent property (computed name)
-test/1k2012love/shim.js,test/1k2012love/1095.js: [maybe] Uncaught exception, constructed at [TAJS-dynamic-code(test/1k2012love/1095.js:93:22):1:16, TAJS-dynamic-code(test/1k2012love/1095.js:93:22):1:23, test/1k2012love/1095.js:93:72, test/1k2012love/1095.js:93:87, test/1k2012love/shim.js:8:9, test/1k2012love/shim.js:9:1]
+TAJS-dynamic-code(test/1k2012love/1095.js:93:22):1:16: [maybe] Reading absent property (computed name)
+TAJS-dynamic-code(test/1k2012love/1095.js:93:22):1:23: [maybe] Reading absent property (computed name)

@@ -4,12 +4,8 @@ test/1k2012love/1230.js:100:19: [maybe] ReferenceError, reading absent variable 
 test/1k2012love/1230.js:129:22: [maybe] TypeError, accessing property of null/undefined
 test/1k2012love/1230.js:134:55: [maybe] ReferenceError, reading absent variable u
 test/1k2012love/1230.js:141:26: [maybe] TypeError, accessing property of null/undefined
-test/1k2012love/shim.js:8:9: [maybe] TypeError, accessing property of null/undefined
-test/1k2012love/shim.js:8:9: [maybe] TypeError, call to non-function
-test/1k2012love/shim.js:9:1: [maybe] TypeError, accessing property of null/undefined
-test/1k2012love/shim.js:6:9: [maybe] Reading absent property body
-test/1k2012love/shim.js:8:9: [maybe] Reading absent property getContext
-test/1k2012love/shim.js:9:1: [maybe] Reading absent property body
+test/1k2012love/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1230.js: [maybe] Uncaught exception, constructed at [test/1k2012love/1230.js:51:12, test/1k2012love/1230.js:52:12, test/1k2012love/1230.js:100:19, test/1k2012love/1230.js:129:22, test/1k2012love/1230.js:134:55, test/1k2012love/1230.js:141:26, test/1k2012love/shim.js:9:5]
 test/1k2012love/1230.js:96:35: [maybe] Reading absent property (computed name)
 test/1k2012love/1230.js:98:19: [maybe] Reading absent property (computed name)
 test/1k2012love/1230.js:98:21: [maybe] Conversion from string to number yields NaN
@@ -19,5 +15,3 @@ test/1k2012love/1230.js:98:27: [maybe] Reading absent property (computed name)
 test/1k2012love/1230.js:123:17: [maybe] Reading absent property (computed name)
 test/1k2012love/1230.js:134:37: [maybe] Reading absent property (computed name)
 test/1k2012love/1230.js:134:53: [maybe] Reading absent property (computed name)
-test/1k2012love/shim.js:7:9: [maybe] Reading absent property (computed name)
-test/1k2012love/shim.js,test/1k2012love/1230.js: [maybe] Uncaught exception, constructed at [test/1k2012love/1230.js:51:12, test/1k2012love/1230.js:52:12, test/1k2012love/1230.js:100:19, test/1k2012love/1230.js:129:22, test/1k2012love/1230.js:134:55, test/1k2012love/1230.js:141:26, test/1k2012love/shim.js:8:9, test/1k2012love/shim.js:9:1]

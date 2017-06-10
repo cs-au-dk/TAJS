@@ -1,6 +1,7 @@
 test/google2/crypto.js:187:37: [definite] ReferenceError, reading absent variable DV
 test/google2/crypto.js:768:5: [definite] TypeError, call to non-function
 test/google2/crypto.js:53:50: [definite] Variable c is null/undefined
+test/google2/crypto.js:54:10: [definite] The conditional expression is always true
 test/google2/crypto.js:199:8: [definite] The conditional expression is always false
 test/google2/crypto.js:200:8: [definite] The conditional expression is always true
 test/google2/crypto.js:246:3: [definite] The conditional expression is always true
@@ -106,9 +107,12 @@ test/google2/crypto.js:409:17: [maybe] TypeError, accessing property of null/und
 test/google2/crypto.js:410:27: [maybe] TypeError, accessing property of null/undefined
 test/google2/crypto.js:511:23: [maybe] TypeError, accessing property of null/undefined
 test/google2/crypto.js:576:17: [maybe] TypeError, accessing property of null/undefined
+test/google2/crypto.js:767:5: [maybe] RangeError, assigning invalid value to array 'length' property
 test/google2/crypto.js:768:5: [maybe] TypeError, accessing property of null/undefined
 test/google2/crypto.js:1068:3: [maybe] TypeError, accessing property of null/undefined
 test/google2/crypto.js:1132:7: [maybe] TypeError, accessing property of null/undefined
+test/google2/crypto.js:1364:3: [maybe] RangeError, assigning invalid value to array 'length' property
+test/google2/crypto.js:1392:3: [maybe] RangeError, assigning invalid value to array 'length' property
 test/google2/crypto.js:1433:10: [maybe] TypeError, accessing property of null/undefined
 test/google2/crypto.js:1514:10: [maybe] TypeError, accessing property of null/undefined
 test/google2/crypto.js:176:15: [maybe] Reading absent property t
@@ -253,8 +257,9 @@ test/google2/crypto.js:1181:25: [maybe] Reading absent property s
 test/google2/crypto.js:1182:6: [maybe] Reading absent property t
 test/google2/crypto.js:1184:22: [maybe] Reading absent property t
 test/google2/crypto.js:1237:6: [maybe] Reading absent property t
-test/google2/crypto.js: [maybe] Uncaught exception, constructed at [test/google2/crypto.js:111:5, test/google2/crypto.js:176:38, test/google2/crypto.js:187:37, test/google2/crypto.js:207:11, test/google2/crypto.js:211:10, test/google2/crypto.js:315:34, test/google2/crypto.js:325:35, test/google2/crypto.js:339:5, test/google2/crypto.js:361:5, test/google2/crypto.js:409:17, test/google2/crypto.js:410:27, test/google2/crypto.js:480:9, test/google2/crypto.js:511:23, test/google2/crypto.js:576:17, test/google2/crypto.js:578:5, test/google2/crypto.js:768:5, test/google2/crypto.js:813:33, test/google2/crypto.js:818:30, test/google2/crypto.js:995:22, test/google2/crypto.js:1026:16, test/google2/crypto.js:1041:19, test/google2/crypto.js:1068:3, test/google2/crypto.js:1132:7, test/google2/crypto.js:1433:10, test/google2/crypto.js:1514:10, test/google2/crypto.js:1688:11]
+test/google2/crypto.js: [maybe] Uncaught exception, constructed at [test/google2/crypto.js:111:5, test/google2/crypto.js:176:38, test/google2/crypto.js:187:37, test/google2/crypto.js:207:11, test/google2/crypto.js:211:10, test/google2/crypto.js:218:7, test/google2/crypto.js:222:7, test/google2/crypto.js:315:34, test/google2/crypto.js:325:35, test/google2/crypto.js:339:5, test/google2/crypto.js:361:5, test/google2/crypto.js:409:17, test/google2/crypto.js:410:27, test/google2/crypto.js:480:9, test/google2/crypto.js:511:23, test/google2/crypto.js:576:17, test/google2/crypto.js:578:5, test/google2/crypto.js:767:5, test/google2/crypto.js:768:5, test/google2/crypto.js:813:33, test/google2/crypto.js:818:30, test/google2/crypto.js:995:22, test/google2/crypto.js:1026:16, test/google2/crypto.js:1041:19, test/google2/crypto.js:1068:3, test/google2/crypto.js:1132:7, test/google2/crypto.js:1353:5, test/google2/crypto.js:1364:3, test/google2/crypto.js:1365:3, test/google2/crypto.js:1392:3, test/google2/crypto.js:1433:10, test/google2/crypto.js:1476:26, test/google2/crypto.js:1483:5, test/google2/crypto.js:1514:10, test/google2/crypto.js:1688:11]
 test/google2/crypto.js:52:6: [maybe] The variable a has values with different types
+test/google2/crypto.js:53:20: [maybe] The variable a has values with different types
 test/google2/crypto.js:53:46: [maybe] The variable a has values with different types
 test/google2/crypto.js:55:26: [maybe] The variable a has values with different types
 test/google2/crypto.js:104:12: [maybe] Conversion to number yields NaN
@@ -272,7 +277,6 @@ test/google2/crypto.js:160:6: [maybe] Converting object to string
 test/google2/crypto.js:160:6: [maybe] Converting primitive string to object
 test/google2/crypto.js:162:6: [maybe] Converting object to string
 test/google2/crypto.js:162:6: [maybe] Converting primitive string to object
-test/google2/crypto.js:165:31: [maybe] Conversion to number yields NaN
 test/google2/crypto.js:165:31: [maybe] Converting object to string
 test/google2/crypto.js:165:31: [maybe] Converting primitive string to object
 test/google2/crypto.js:167:11: [maybe] Reading absent property (computed name)
@@ -448,7 +452,6 @@ test/google2/crypto.js:767:17: [maybe] The variable a has values with different 
 test/google2/crypto.js:768:5: [maybe] Converting primitive number to object
 test/google2/crypto.js:781:26: [maybe] Conversion to number yields NaN
 test/google2/crypto.js:781:26: [maybe] Reading absent property (computed name)
-test/google2/crypto.js:782:16: [maybe] Conversion to number yields NaN
 test/google2/crypto.js:785:14: [maybe] Conversion to number yields NaN
 test/google2/crypto.js:785:14: [maybe] Reading absent property (computed name)
 test/google2/crypto.js:786:14: [maybe] Conversion to number yields NaN
@@ -556,6 +559,7 @@ test/google2/crypto.js:1352:17: [maybe] Reading absent property (computed name)
 test/google2/crypto.js:1362:13: [maybe] Conversion to number yields NaN
 test/google2/crypto.js:1362:22: [maybe] Reading absent property (computed name)
 test/google2/crypto.js:1363:7: [maybe] Reading absent property (computed name)
+test/google2/crypto.js:1364:3: [maybe] Conversion to number yields NaN
 test/google2/crypto.js:1364:20: [maybe] Reading absent property (computed name)
 test/google2/crypto.js:1366:10: [maybe] Reading absent property (computed name)
 test/google2/crypto.js:1366:18: [maybe] Conversion to number yields NaN

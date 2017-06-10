@@ -1,10 +1,6 @@
 package dk.brics.tajs.test;
 
 import dk.brics.tajs.Main;
-import dk.brics.tajs.monitoring.CompositeMonitoring;
-import dk.brics.tajs.monitoring.IAnalysisMonitoring;
-import dk.brics.tajs.monitoring.Monitoring;
-import dk.brics.tajs.monitoring.OrdinaryExitReachableChecker;
 import dk.brics.tajs.options.Options;
 import org.junit.Before;
 import org.junit.Ignore;
@@ -12,8 +8,6 @@ import org.junit.Test;
 
 @SuppressWarnings("static-method")
 public class TestGoogle2 {
-
-	private IAnalysisMonitoring monitoring;
 
 	public static void main(String[] args) {
 		org.junit.runner.JUnitCore.main("dk.brics.tajs.test.TestGoogle2");
@@ -23,7 +17,6 @@ public class TestGoogle2 {
 	public void init() {
 		Main.reset();
 		Options.get().enableTest();
-        monitoring = CompositeMonitoring.buildFromList(new Monitoring(), new OrdinaryExitReachableChecker());
     }
 	
 	@Test
@@ -31,16 +24,17 @@ public class TestGoogle2 {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/google2/richards.js"};
-		Misc.run(args, monitoring);
+		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
+	@Ignore // TODO: very slow, investigate...
 	@Test
 	public void google2_earley_boyer() throws Exception {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/google2/earley-boyer.js"};
-		Misc.run(args, monitoring);
+		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
@@ -50,7 +44,7 @@ public class TestGoogle2 {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/google2/raytrace.js"};
-		Misc.run(args, monitoring);
+		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 	
@@ -59,7 +53,7 @@ public class TestGoogle2 {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/google2/splay.js"};
-		Misc.run(args, monitoring);
+		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 	
@@ -68,7 +62,7 @@ public class TestGoogle2 {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/google2/regexp.js"};
-		Misc.run(args, monitoring);
+		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
@@ -77,7 +71,7 @@ public class TestGoogle2 {
         Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/google2/crypto.js"};
-		Misc.run(args, new Monitoring() /* definite crash: bad variable naming! */);
+		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
@@ -86,7 +80,7 @@ public class TestGoogle2 {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/google2/deltablue.js"};
-		Misc.run(args, monitoring);
+		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
@@ -95,7 +89,7 @@ public class TestGoogle2 {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/google2/navier-stokes.js"};
-		Misc.run(args, monitoring);
+		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 }

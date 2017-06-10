@@ -1,10 +1,20 @@
-test/1k2012love/shim.js:6:5: [definite] The variable b is never used
 test/1k2012love/1044.js:6:4: [maybe] TypeError, accessing property of null/undefined
-test/1k2012love/shim.js:8:9: [maybe] TypeError, accessing property of null/undefined
-test/1k2012love/shim.js:8:9: [maybe] TypeError, call to non-function
-test/1k2012love/shim.js:9:1: [maybe] TypeError, accessing property of null/undefined
-test/1k2012love/shim.js:6:9: [maybe] Reading absent property body
-test/1k2012love/shim.js:8:9: [maybe] Reading absent property getContext
-test/1k2012love/shim.js:9:1: [maybe] Reading absent property body
-test/1k2012love/shim.js:7:9: [maybe] Reading absent property (computed name)
-test/1k2012love/shim.js,test/1k2012love/1044.js: [maybe] Uncaught exception, constructed at [test/1k2012love/1044.js:6:4, test/1k2012love/shim.js:8:9, test/1k2012love/shim.js:9:1]
+test/1k2012love/1044.js:15:14: [maybe] TypeError, call to non-function
+test/1k2012love/1044.js:15:22: [maybe] TypeError, call to non-function
+test/1k2012love/1044.js:15:30: [maybe] TypeError, call to non-function
+test/1k2012love/1044.js:15:50: [maybe] TypeError, call to non-function
+test/1k2012love/1044.js:15:52: [maybe] TypeError, call to non-function
+test/1k2012love/1044.js:15:69: [maybe] TypeError, call to non-function
+test/1k2012love/1044.js:15:71: [maybe] TypeError, call to non-function
+test/1k2012love/1044.js:15:84: [maybe] TypeError, call to non-function
+test/1k2012love/1044.js:15:86: [maybe] TypeError, call to non-function
+test/1k2012love/1044.js:20:27: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1044.js:21:4: [maybe] ReferenceError, reading absent variable a
+test/1k2012love/1044.js:24:4: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1044.js: [maybe] Uncaught exception, constructed at [test/1k2012love/1044.js:6:4, test/1k2012love/1044.js:15:14, test/1k2012love/1044.js:15:22, test/1k2012love/1044.js:15:30, test/1k2012love/1044.js:15:50, test/1k2012love/1044.js:15:52, test/1k2012love/1044.js:15:69, test/1k2012love/1044.js:15:71, test/1k2012love/1044.js:15:84, test/1k2012love/1044.js:15:86, test/1k2012love/1044.js:20:27, test/1k2012love/1044.js:21:4, test/1k2012love/1044.js:24:4, test/1k2012love/shim.js:9:5]
+test/1k2012love/1044.js:15:14: [maybe] Conversion to number yields NaN
+test/1k2012love/1044.js:15:22: [maybe] Conversion to number yields NaN
+test/1k2012love/1044.js:19:4: [maybe] Conversion to number yields NaN
+test/1k2012love/1044.js:21:4: [maybe] Conversion to number yields NaN
+test/1k2012love/1044.js:23:4: [maybe] Conversion to number yields NaN

@@ -1,1 +1,2 @@
-test/micro/test48.js:11:1: [info] Abstract object: {[[Prototype]]=[@Object#node16]}
+test/micro/test48.js: [definite] Exceptional program exit is unreachable
+test/micro/test48.js:11:1: [info] Abstract object: {[[Prototype]]=[@Object#node19]}

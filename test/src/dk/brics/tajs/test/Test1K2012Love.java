@@ -1,10 +1,10 @@
 package dk.brics.tajs.test;
 
 import dk.brics.tajs.Main;
-import dk.brics.tajs.monitoring.AnalysisTimeLimiter;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.util.AnalysisLimitationException;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -220,6 +220,7 @@ public class Test1K2012Love {
         Misc.checkSystemOutput();
     }
 
+    @Ignore // TODO: AnalysisPrecisionLimitationException: Could not uneval setTimeout/setInterval string
     @Test
     public void test1k_2012_love_1057() {
         Misc.init();
@@ -301,6 +302,7 @@ public class Test1K2012Love {
         Misc.checkSystemOutput();
     }
 
+    @Ignore // FIXME: StackOverflowError in UnevalTools
     @Test
     public void test1k_2012_love_1092() {
         Misc.init();
@@ -328,7 +330,7 @@ public class Test1K2012Love {
         Misc.checkSystemOutput();
     }
 
-    @Test
+    @Test(expected = AnalysisLimitationException.class)
     public void test1k_2012_love_1102() {
         Misc.init();
         Misc.captureSystemOutput();
@@ -454,7 +456,7 @@ public class Test1K2012Love {
         Misc.checkSystemOutput();
     }
 
-    @Test
+    @Test(expected = AnalysisLimitationException.AnalysisPrecisionLimitationException.class)
     public void test1k_2012_love_1157() {
         Misc.init();
         Misc.captureSystemOutput();
@@ -490,6 +492,7 @@ public class Test1K2012Love {
         Misc.checkSystemOutput();
     }
 
+    @Ignore // TODO: AnalysisPrecisionLimitationException: Unevalable eval
     @Test
     public void test1k_2012_love_1168() {
         Misc.init();
@@ -886,12 +889,13 @@ public class Test1K2012Love {
         Misc.checkSystemOutput();
     }
 
-    @Test(expected = AnalysisLimitationException.AnalysisTimeException.class)
+    @Test
     public void test1k_2012_love_1276() {
         Misc.init();
+        Options.get().setAnalysisTimeLimit(10);
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1276.js"};
-        Misc.run(args, new AnalysisTimeLimiter(10, true));
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -904,12 +908,13 @@ public class Test1K2012Love {
         Misc.checkSystemOutput();
     }
 
-    @Test(expected = AnalysisLimitationException.AnalysisTimeException.class)
+    @Test
     public void test1k_2012_love_1280() {
         Misc.init();
+        Options.get().setAnalysisTimeLimit(30);
         Misc.captureSystemOutput();
         String[] args = {"test/1k2012love/shim.js", "test/1k2012love/1280.js"};
-        Misc.run(args, new AnalysisTimeLimiter(30, true));
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 

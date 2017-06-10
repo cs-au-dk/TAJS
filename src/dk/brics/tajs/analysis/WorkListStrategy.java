@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +17,8 @@
 package dk.brics.tajs.analysis;
 
 import dk.brics.tajs.flowgraph.BasicBlock;
+import dk.brics.tajs.flowgraph.jsnodes.EventDispatcherNode;
+import dk.brics.tajs.flowgraph.jsnodes.ExceptionalReturnNode;
 import dk.brics.tajs.lattice.CallEdge;
 import dk.brics.tajs.lattice.Context;
 import dk.brics.tajs.lattice.State;
@@ -56,6 +58,18 @@ public class WorkListStrategy implements IWorkListStrategy<Context> {
 
         final int E1_FIRST = -1;
         final int E2_FIRST = 1;
+
+        // low priority for event dispatcher node
+        if (n1.getFirstNode() instanceof EventDispatcherNode && !(n2.getFirstNode() instanceof EventDispatcherNode))
+            return E2_FIRST;
+        if (n2.getFirstNode() instanceof EventDispatcherNode && !(n1.getFirstNode() instanceof EventDispatcherNode))
+            return E1_FIRST;
+
+        // low priority for exceptional return nodes
+        if (n1.getFirstNode() instanceof ExceptionalReturnNode && !(n2.getFirstNode() instanceof ExceptionalReturnNode))
+            return E2_FIRST;
+        if (n2.getFirstNode() instanceof ExceptionalReturnNode && !(n1.getFirstNode() instanceof ExceptionalReturnNode))
+            return E1_FIRST;
 
         if (n1.getFunction().equals(n2.getFunction()) && e1.getContext().equals(e2.getContext())) {
             // same function and same context: use block order

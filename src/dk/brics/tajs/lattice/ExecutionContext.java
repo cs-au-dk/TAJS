@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,16 +32,16 @@ public final class ExecutionContext implements Cloneable {
 
     private Set<ObjectLabel> var_obj;
 
-    private Set<ObjectLabel> this_obj;
+    private Value thisval;
 
     /**
      * Constructs a new execution context.
      * The new object gets ownership of the given sets.
      */
-    public ExecutionContext(ScopeChain scope_chain, Set<ObjectLabel> var_obj, Set<ObjectLabel> this_obj) {
+    public ExecutionContext(ScopeChain scope_chain, Set<ObjectLabel> var_obj, Value thisval) {
         this.scope_chain = scope_chain;
         this.var_obj = var_obj;
-        this.this_obj = this_obj;
+        this.thisval = thisval;
     }
 
     /**
@@ -50,19 +50,19 @@ public final class ExecutionContext implements Cloneable {
     public ExecutionContext() {
         scope_chain = null;
         var_obj = newSet();
-        this_obj = newSet();
+        thisval = Value.makeNone();
     }
 
     @Override
     public ExecutionContext clone() {
-        return new ExecutionContext(scope_chain, newSet(var_obj), newSet(this_obj));
+        return new ExecutionContext(scope_chain, newSet(var_obj), thisval);
     }
 
     /**
      * Checks whether all sets are empty.
      */
     public boolean isEmpty() {
-        return scope_chain == null && var_obj.isEmpty() && this_obj.isEmpty();
+        return scope_chain == null && var_obj.isEmpty() && thisval.isNone();
     }
 
     /**
@@ -74,7 +74,10 @@ public final class ExecutionContext implements Cloneable {
         ScopeChain new_scope_chain = ScopeChain.add(scope_chain, other.scope_chain);
         boolean scope_chain_changed = new_scope_chain != null && !new_scope_chain.equals(scope_chain);
         scope_chain = new_scope_chain;
-        return scope_chain_changed | var_obj.addAll(other.var_obj) | this_obj.addAll(other.this_obj);
+        Value new_thisval = thisval.join(other.thisval);
+        boolean this_changed = !new_thisval.equals(thisval);
+        thisval = new_thisval;
+        return scope_chain_changed | this_changed | var_obj.addAll(other.var_obj);
     }
 
     /**
@@ -92,17 +95,17 @@ public final class ExecutionContext implements Cloneable {
     }
 
     /**
-     * Returns the 'this' object of this execution context.
+     * Returns the 'this' value of this execution context.
      */
-    public Set<ObjectLabel> getThisObject() {
-        return this_obj;
+    public Value getThis() {
+        return thisval;
     }
 
     /**
-     * Sets the 'this' object of this execution context.
+     * Sets the 'this' value of this execution context.
      */
-    public void setThisObject(Set<ObjectLabel> new_this_obj) {
-        this_obj = new_this_obj;
+    public void setThis(Value new_this) {
+        thisval = new_this;
     }
 
     /**
@@ -134,7 +137,7 @@ public final class ExecutionContext implements Cloneable {
     public void summarize(Summarized s) {
         scope_chain = ScopeChain.summarize(scope_chain, s);
         var_obj = s.summarize(var_obj);
-        this_obj = s.summarize(this_obj);
+        thisval = thisval.summarize(s);
     }
 
     /**
@@ -143,7 +146,7 @@ public final class ExecutionContext implements Cloneable {
     public void replaceObjectLabel(ObjectLabel oldlabel, ObjectLabel newlabel, Map<ScopeChain, ScopeChain> cache) {
         scope_chain = ScopeChain.replaceObjectLabel(scope_chain, oldlabel, newlabel, cache);
         var_obj = replaceObjectLabel(var_obj, oldlabel, newlabel);
-        this_obj = replaceObjectLabel(this_obj, oldlabel, newlabel);
+        thisval = thisval.replaceObjectLabel(oldlabel, newlabel);
     }
 
     /**
@@ -156,6 +159,24 @@ public final class ExecutionContext implements Cloneable {
         return res;
     }
 
+//    /**
+//     * Replaces all object labels according to the given map.
+//     */
+//    public void replaceObjectLabels(Map<ObjectLabel, ObjectLabel> m, Map<ScopeChain, ScopeChain> cache) {
+//        scope_chain = ScopeChain.replaceObjectLabels(scope_chain, m, cache);
+//        var_obj = Renaming.apply(m, var_obj);
+//        thisval = Renaming.apply(m, thisval);
+//    }
+
+//    /**
+//     * Removes components in the other state from this state.
+//     */
+//    public void remove(ExecutionContext other) {
+//        scope_chain = ScopeChain.remove(scope_chain, other.scope_chain);
+//        var_obj.removeAll(other.var_obj);
+//        thisval.removeAll(other.thisval);
+//    }
+
     /**
      * Returns the set of object labels within the execution context.
      */
@@ -163,16 +184,40 @@ public final class ExecutionContext implements Cloneable {
         Set<ObjectLabel> objs = newSet();
         for (Set<ObjectLabel> ls : ScopeChain.iterable(scope_chain))
             objs.addAll(ls);
-        objs.addAll(this_obj);
+        objs.addAll(thisval.getObjectLabels());
         objs.addAll(var_obj);
         return objs;
     }
+
+//    /**
+//     * Checks whether the given execution context is equal to this one.
+//     */
+//    @Override
+//    public boolean equals(Object obj) { // (currently not used)
+//        if (obj == this)
+//            return true;
+//        if (!(obj instanceof ExecutionContext))
+//            return false;
+//        ExecutionContext e = (ExecutionContext) obj;
+//        if ((scope_chain == null) != (e.scope_chain == null) ||
+//                (scope_chain != null && !scope_chain.equals(e.scope_chain)))
+//            return false;
+//        return var_obj.equals(e.var_obj) && thisval.equals(e.thisval);
+//    }
+//
+//    /**
+//     * Computes the hash code for this execution context.
+//     */
+//    @Override
+//    public int hashCode() { // (currently not used)
+//        return (scope_chain != null ? scope_chain.hashCode() * 7 : 0) + var_obj.hashCode() * 3 + thisval.hashCode() * 11;
+//    }
 
     /**
      * Returns a string representation of this execution context.
      */
     @Override
     public String toString() {
-        return "ScopeChain=" + scope_chain + ", VariableObject=" + var_obj + ", this=" + this_obj;
+        return "ScopeChain=" + scope_chain + ", VariableObject=" + var_obj + ", this=" + thisval;
     }
 }

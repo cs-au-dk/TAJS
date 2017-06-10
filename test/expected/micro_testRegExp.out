@@ -1,20 +1,22 @@
+test/micro/testRegExp.js: [definite] Ordinary program exit is unreachable
 test/micro/testRegExp.js:17:16: [definite] Reading absent property (computed name)
-test/micro/testRegExp.js:30:5: [definite] Unreachable code
-test/micro/testRegExp.js:36:1: [definite] Unreachable code
+test/micro/testRegExp.js:30:17: [definite] Unreachable code
+test/micro/testRegExp.js:36:13: [definite] Unreachable code
+test/micro/testRegExp.js:29:5: [maybe] TypeError, native function RegExp.prototype.exec called on invalid object kind
 test/micro/testRegExp.js:35:1: [maybe] SyntaxError, invalid flags at RegExp constructor
 test/micro/testRegExp.js: [maybe] Uncaught exception, constructed at [test/micro/testRegExp.js:35:1]
-test/micro/testRegExp.js:2:1: [info] Abstract value: [@RegExp#node11]
+test/micro/testRegExp.js:2:1: [info] Abstract value: [@RegExp#node15]
 test/micro/testRegExp.js:3:1: [info] Abstract value: "ab*"
 test/micro/testRegExp.js:4:1: [info] Abstract value: 0.0
 test/micro/testRegExp.js:5:1: [info] Abstract value: true
 test/micro/testRegExp.js:7:1: [info] Abstract value: [@RegExp#node33]
-test/micro/testRegExp.js:9:1: [info] Abstract value: [@RegExp#node11]
-test/micro/testRegExp.js:12:1: [info] Abstract value: [@Array#node49{<CONCRETE>="[\"abbb\"]"}]
+test/micro/testRegExp.js:9:1: [info] Abstract value: [@RegExp#node15]
+test/micro/testRegExp.js:12:1: [info] Abstract value: [@Array#node47{<CONCRETE>="[\"abbb\"]"}]
 test/micro/testRegExp.js:13:1: [info] Abstract value: 1.0
 test/micro/testRegExp.js:14:1: [info] Abstract value: "abbb"
 test/micro/testRegExp.js:15:1: [info] Abstract value: 0.0
 test/micro/testRegExp.js:16:1: [info] Abstract value: "abbb"
 test/micro/testRegExp.js:17:1: [info] Abstract value: Undef
-test/micro/testRegExp.js:19:1: [info] Abstract value: Str
-test/micro/testRegExp.js:22:1: [info] Abstract value: [@RegExp#node90]
+test/micro/testRegExp.js:19:1: [info] Abstract value: "/ab*/gi"
+test/micro/testRegExp.js:22:1: [info] Abstract value: [@RegExp#node81]
 test/micro/testRegExp.js:34:1: [info] Abstract value: true

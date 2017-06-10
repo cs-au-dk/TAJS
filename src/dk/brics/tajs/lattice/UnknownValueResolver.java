@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -293,8 +293,8 @@ public final class UnknownValueResolver {
         }
         if (log.isDebugEnabled())
             log.debug((partial ? "partially" : "fully") + " recovering " + prop + " at block " + s.getBasicBlock().getIndex() + " context " + s.getContext());
-        GenericSolver<State, Context, CallEdge, ?, ?>.SolverInterface c = s.getSolverInterface();
-        c.getMonitoring().visitUnknownValueResolve(partial, c.isScanning());
+        GenericSolver<State, Context, CallEdge, ? extends ILatticeMonitoring, ?>.SolverInterface c = s.getSolverInterface();
+        c.getMonitoring().visitUnknownValueResolve(s.getBasicBlock().getFirstNode(), partial, c.isScanning());
         // build recovery graph
         RecoveryGraph g = new RecoveryGraph();
         State entry_state = getEntryState(s);
@@ -331,8 +331,7 @@ public final class UnknownValueResolver {
                 }
             }
         }
-        if (Options.get().isStatisticsEnabled())
-            c.getMonitoring().visitRecoveryGraph(g.getNumberOfNodes());
+        c.getMonitoring().visitRecoveryGraph(s.getBasicBlock().getFirstNode(), g.getNumberOfNodes());
         // recover at roots
         for (RGNode n : g.getRoots()) { // TODO: recover at roots as soon as we mark them as roots instead of having a separate phase?
             State callee_functionentry_state = getEntryState(c, n.getContext(), n.getNode());
@@ -579,6 +578,16 @@ public final class UnknownValueResolver {
                 }
                 dst_v = dst_v.makeNonPolymorphic();
             }
+            if (r == Kind.DEFAULT_ARRAY || r == Kind.DEFAULT_NONARRAY)
+                for (String p : src_obj.getPropertyNames())
+                    if (Strings.isArrayIndex(p) == (r == Kind.DEFAULT_ARRAY) && !dst_obj.getProperties().containsKey(p)) {
+                        if (log.isDebugEnabled())
+                            log.debug("materialized property " + p);
+                        if (!dst_obj.isWritable())
+                            dst_obj = dst_s.getObject(dst_prop.getObjectLabel(), true);
+                        dst_obj.setProperty(p, Value.makeUnknown());
+                        changed = true;
+                    }
             Value new_dst_v = src_v.join(dst_v);
             if (new_dst_v != old_dst_v) {
                 if (!dst_obj.isWritable())
@@ -589,13 +598,6 @@ public final class UnknownValueResolver {
                             ") into " + old_dst_v + " (" + dst_prop + " at " + dst_s.getBasicBlock().getFirstNode().getSourceLocation() +
                             " block " + dst_s.getBasicBlock().getIndex() +
                             ") resulting in " + new_dst_v);
-                if (r == Kind.DEFAULT_ARRAY || r == Kind.DEFAULT_NONARRAY)
-                    for (String p : src_obj.getPropertyNames())
-                        if (Strings.isArrayIndex(p) == (r == Kind.DEFAULT_ARRAY) && !dst_obj.getProperties().containsKey(p)) {
-                            if (log.isDebugEnabled())
-                                log.debug("materialized property " + p);
-                            dst_obj.setProperty(p, Value.makeUnknown());
-                        }
                 changed = true;
             }
         } else {
@@ -898,5 +900,20 @@ public final class UnknownValueResolver {
             res = v.restrictToNotModified();
         }
         return res;
+    }
+
+    /**
+     * Localizes the scope chain for function entry propagation.
+     *
+     * @param obj    object with scope chain to be localized
+     * @param other  existing object at destination
+     * @param s      current state containing obj
+     */
+    public static void localizeScopeChain(ObjectLabel objlabel, Obj obj, Obj other, State s) {
+        if (other.isScopeChainUnknown()) { // TODO: scope chain polymorphic?
+            obj.setScopeChainUnknown();
+        } else if (obj.isScopeChainUnknown()) { // scope known in the given object but not in this one, so recover it
+            obj.setScopeChain(getScopeChain(objlabel, s));
+        }
     }
 }

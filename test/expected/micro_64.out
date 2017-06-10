@@ -4,12 +4,13 @@ test/micro/test64.js:7:17: [definite] Reading 'this' yields the global object
 test/micro/test64.js:9:21: [definite] Reading 'this' yields the global object
 test/micro/test64.js:10:23: [definite] Reading 'this' yields the global object
 test/micro/test64.js:11:17: [definite] Reading 'this' yields the global object
+test/micro/test64.js: [definite] Exceptional program exit is unreachable
 test/micro/test64.js:3:1: [info] Abstract object: {gb:10.0,gh:32.0,[[Prototype]]=[@Object.prototype[native]]}
 test/micro/test64.js:5:1: [info] Abstract object: {gh:32.0,[[Prototype]]=[@Object.prototype[native]]}
-test/micro/test64.js:7:1: [info] Abstract object: {TAJS_dumpObject:^(@<the global object>[native].TAJS_dumpObject[present]),arr:Undef,id:[@id#fun1],p:[@Object#node6],s:Undef,t:Undef,[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Prototype]]=[@Object.prototype[native]],[[Value]]=?,[[Scope]]=?}
+test/micro/test64.js:7:1: [info] Abstract object: {Object:[@Object[native]],String:[@String[native]],arr:Undef,id:[@id#fun1],p:[@Object#node10],s:Undef,t:Undef,[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Prototype]]=[@Object.prototype[native]],[[Value]]=?,[[Scope]]=?}
 test/micro/test64.js:9:1: [info] Property attributes: (DontDelete-)(DontEnum+)(ReadOnly-)
 test/micro/test64.js:10:1: [info] Abstract value: true
-test/micro/test64.js:11:1: [info] Abstract object: {Function:absent,TAJS_dumpAttributes:^(@<the global object>[native].TAJS_dumpAttributes[present]),TAJS_dumpObject:^(@<the global object>[native].TAJS_dumpObject[present]),TAJS_dumpValue:^(@<the global object>[native].TAJS_dumpValue[present]),arr:Undef,id:[@id#fun1],p:[@Object#node6],s:Undef,t:Undef,[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Prototype]]=[@Object.prototype[native]],[[Value]]=?,[[Scope]]=?}
+test/micro/test64.js:11:1: [info] Abstract object: {Function:absent,Object:[@Object[native]],String:[@String[native]],arr:Undef,id:[@id#fun1],p:[@Object#node10],s:Undef,t:Undef,[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Prototype]]=[@Object.prototype[native]],[[Value]]=?,[[Scope]]=?}
 test/micro/test64.js:13:1: [info] Property attributes: (DontDelete+)(DontEnum+)(ReadOnly+)
 test/micro/test64.js:14:1: [info] Abstract value: false
 test/micro/test64.js:15:1: [info] Abstract object: {length:^(@Number[native].length[present]),[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Prototype]]=?,[[Value]]=?,[[Scope]]=?}

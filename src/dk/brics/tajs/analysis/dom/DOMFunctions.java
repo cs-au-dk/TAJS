@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -95,6 +95,7 @@ import dk.brics.tajs.analysis.dom.html.HTMLTableSectionElement;
 import dk.brics.tajs.analysis.dom.html.HTMLTextAreaElement;
 import dk.brics.tajs.analysis.dom.html.HTMLTitleElement;
 import dk.brics.tajs.analysis.dom.html.HTMLUListElement;
+import dk.brics.tajs.analysis.dom.html.HTMLUnknownElement;
 import dk.brics.tajs.analysis.dom.html5.AudioContext;
 import dk.brics.tajs.analysis.dom.html5.AudioDestinationNode;
 import dk.brics.tajs.analysis.dom.html5.AudioNode;
@@ -103,17 +104,19 @@ import dk.brics.tajs.analysis.dom.html5.CanvasRenderingContext2D;
 import dk.brics.tajs.analysis.dom.html5.HTMLAudioElement;
 import dk.brics.tajs.analysis.dom.html5.HTMLCanvasElement;
 import dk.brics.tajs.analysis.dom.html5.HTMLMediaElement;
+import dk.brics.tajs.analysis.dom.html5.MutationObserver;
 import dk.brics.tajs.analysis.dom.html5.OscillatorNode;
 import dk.brics.tajs.analysis.dom.html5.ScriptProcessorNode;
 import dk.brics.tajs.analysis.dom.html5.StorageElement;
 import dk.brics.tajs.analysis.dom.html5.TimeRanges;
 import dk.brics.tajs.analysis.dom.html5.WebGLRenderingContext;
+import dk.brics.tajs.analysis.dom.style.CSSStyleDeclaration;
 import dk.brics.tajs.lattice.HostObject;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.Str;
+import dk.brics.tajs.lattice.UnknownValueResolver;
 import dk.brics.tajs.lattice.Value;
-import dk.brics.tajs.options.Options;
 import dk.brics.tajs.solver.Message.Severity;
 import dk.brics.tajs.util.AnalysisException;
 import dk.brics.tajs.util.Collections;
@@ -131,20 +134,20 @@ public class DOMFunctions {
 
     /*
      * The following properties are magic:
-     * 
+     *
      * DOM Level 0: Window.location
-     * 
+     *
      * DOM Level 2 Core:
      * Attr.value -> raises DOMEx on setting
      * CharacterData.data -> raises DOMEx on setting and retrieval
      * Node.nodeValue -> raises DOMEx on setting and retrieval
      * Node.prefix -> raises DOMEx on setting
      * ProcessingInstruction.data -> raises DOMEx on setting
-     * 
+     *
      * DOm Level 3:
      * Document.xmlStandalone -> raises DOMEx on setting
      * Document.xmlVersion -> raises DOMEx on setting
-     * 
+     *
      * DOM HTML:
      * HTMLDocument.cookie -> raises DOMEx on setting
      * Element.id, Element.name, Element.className, Element.innerHTML,
@@ -187,152 +190,136 @@ public class DOMFunctions {
     }
 
     /**
-     * Returns a Value representing a NodeList containg all possible HTML
-     * elements.
-     */
-    public static Value makeAnyHTMLNodeList(Solver.SolverInterface c) {
-        ObjectLabel nodeList = makeEmptyNodeList();
-        c.getAnalysis().getPropVarOperations().writeProperty(java.util.Collections.singleton(nodeList), Value.makeAnyStrUInt(), makeAnyHTMLElement(), false, true);
-        return Value.makeObject(nodeList);
-    }
-
-    /**
-     * Returns a new empty NodeList object.
-     */
-    public static ObjectLabel makeEmptyNodeList() {
-        return DOMNodeList.INSTANCES;
-    }
-
-    /**
      * Returns the object label belonging to the given tagname.
      */
     public static ObjectLabel getHTMLObjectLabel(String tagname) {
-        if ("a".equalsIgnoreCase(tagname)) {
-            return HTMLAnchorElement.INSTANCES;
-        } else if ("applet".equalsIgnoreCase(tagname)) {
-            return HTMLAppletElement.INSTANCES;
-        } else if ("area".equalsIgnoreCase(tagname)) {
-            return HTMLAreaElement.INSTANCES;
-        } else if ("base".equalsIgnoreCase(tagname)) {
-            return HTMLBaseElement.INSTANCES;
-        } else if ("basefont".equalsIgnoreCase(tagname)) {
-            return HTMLBaseFontElement.INSTANCES;
-        } else if ("body".equalsIgnoreCase(tagname)) {
-            return HTMLBodyElement.INSTANCES;
-        } else if ("br".equalsIgnoreCase(tagname)) {
-            return HTMLBRElement.INSTANCES;
-        } else if ("button".equalsIgnoreCase(tagname)) {
-            return HTMLButtonElement.INSTANCES;
-        } else if ("dir".equalsIgnoreCase(tagname)) {
-            return HTMLDirectoryElement.INSTANCES;
-        } else if ("div".equalsIgnoreCase(tagname)) {
-            return HTMLDivElement.INSTANCES;
-        } else if ("dl".equalsIgnoreCase(tagname)) {
-            return HTMLDListElement.INSTANCES;
-        } else if ("fieldset".equalsIgnoreCase(tagname)) {
-            return HTMLFieldSetElement.INSTANCES;
-        } else if ("font".equalsIgnoreCase(tagname)) {
-            return HTMLFontElement.INSTANCES;
-        } else if ("form".equalsIgnoreCase(tagname)) {
-            return HTMLFormElement.INSTANCES;
-        } else if ("frame".equalsIgnoreCase(tagname)) {
-            return HTMLFrameElement.INSTANCES;
-        } else if ("frameset".equalsIgnoreCase(tagname)) {
-            return HTMLFrameSetElement.INSTANCES;
-        } else if ("h1".equalsIgnoreCase(tagname)
-                || "h2".equalsIgnoreCase(tagname)
-                || "h3".equalsIgnoreCase(tagname)
-                || "h4".equalsIgnoreCase(tagname)
-                || "h5".equalsIgnoreCase(tagname)
-                || "h6".equalsIgnoreCase(tagname)) {
-            return HTMLHeadingElement.INSTANCES;
-        } else if ("head".equalsIgnoreCase(tagname)) {
-            return HTMLHeadElement.INSTANCES;
-        } else if ("hr".equalsIgnoreCase(tagname)) {
-            return HTMLHRElement.INSTANCES;
-        } else if ("html".equalsIgnoreCase(tagname)) {
-            return HTMLHtmlElement.INSTANCES;
-        } else if ("iframe".equalsIgnoreCase(tagname)) {
-            return HTMLIFrameElement.INSTANCES;
-        } else if ("img".equalsIgnoreCase(tagname)) {
-            return HTMLImageElement.INSTANCES;
-        } else if ("input".equalsIgnoreCase(tagname)) {
-            return HTMLInputElement.INSTANCES;
-        } else if ("isindex".equalsIgnoreCase(tagname)) {
-            return HTMLIsIndexElement.INSTANCES;
-        } else if ("label".equalsIgnoreCase(tagname)) {
-            return HTMLLabelElement.INSTANCES;
-        } else if ("legend".equalsIgnoreCase(tagname)) {
-            return HTMLLegendElement.INSTANCES;
-        } else if ("li".equalsIgnoreCase(tagname)) {
-            return HTMLLIElement.INSTANCES;
-        } else if ("link".equalsIgnoreCase(tagname)) {
-            return HTMLLinkElement.INSTANCES;
-        } else if ("map".equalsIgnoreCase(tagname)) {
-            return HTMLMapElement.INSTANCES;
-        } else if ("menu".equalsIgnoreCase(tagname)) {
-            return HTMLMenuElement.INSTANCES;
-        } else if ("meta".equalsIgnoreCase(tagname)) {
-            return HTMLMetaElement.INSTANCES;
-        } else if ("ins".equalsIgnoreCase(tagname) || "del".equalsIgnoreCase(tagname)) {
-            return HTMLModElement.INSTANCES;
-        } else if ("object".equalsIgnoreCase(tagname)) {
-            return HTMLObjectElement.INSTANCES;
-        } else if ("ol".equalsIgnoreCase(tagname)) {
-            return HTMLOListElement.INSTANCES;
-        } else if ("optgroup".equalsIgnoreCase(tagname)) {
-            return HTMLOptGroupElement.INSTANCES;
-        } else if ("option".equalsIgnoreCase(tagname)) {
-            return HTMLOptionElement.INSTANCES;
-        } else if ("p".equalsIgnoreCase(tagname)) {
-            return HTMLParagraphElement.INSTANCES;
-        } else if ("param".equalsIgnoreCase(tagname)) {
-            return HTMLParamElement.INSTANCES;
-        } else if ("pre".equalsIgnoreCase(tagname)) {
-            return HTMLPreElement.INSTANCES;
-        } else if ("q".equalsIgnoreCase(tagname) || "blockquote".equalsIgnoreCase(tagname)) {
-            return HTMLQuoteElement.INSTANCES;
-        } else if ("script".equalsIgnoreCase(tagname)) {
-            return HTMLScriptElement.INSTANCES;
-        } else if ("select".equalsIgnoreCase(tagname)) {
-            return HTMLSelectElement.INSTANCES;
-        } else if ("style".equalsIgnoreCase(tagname)) {
-            return HTMLStyleElement.INSTANCES;
-        } else if ("caption".equalsIgnoreCase(tagname)) {
-            return HTMLTableCaptionElement.INSTANCES;
-        } else if ("th".equalsIgnoreCase(tagname) || "td".equalsIgnoreCase(tagname)) {
-            return HTMLTableCellElement.INSTANCES;
-        } else if ("col".equalsIgnoreCase(tagname) || "colgroup".equalsIgnoreCase(tagname)) {
-            return HTMLTableColElement.INSTANCES;
-        } else if ("table".equalsIgnoreCase(tagname)) {
-            return HTMLTableElement.INSTANCES;
-        } else if ("tr".equalsIgnoreCase(tagname)) {
-            return HTMLTableRowElement.INSTANCES;
-        } else if ("thead".equalsIgnoreCase(tagname)
-                || "tfoot".equalsIgnoreCase(tagname)
-                || "tbody".equalsIgnoreCase(tagname)) {
-            return HTMLTableSectionElement.INSTANCES;
-        } else if ("textarea".equalsIgnoreCase(tagname)) {
-            return HTMLTextAreaElement.INSTANCES;
-        } else if ("title".equalsIgnoreCase(tagname)) {
-            return HTMLTitleElement.INSTANCES;
-        } else if ("ul".equalsIgnoreCase(tagname)) {
-            return HTMLUListElement.INSTANCES;
+        switch (tagname.toLowerCase()) {
+            case "a":
+                return HTMLAnchorElement.INSTANCES;
+            case "applet":
+                return HTMLAppletElement.INSTANCES;
+            case "area":
+                return HTMLAreaElement.INSTANCES;
+            case "base":
+                return HTMLBaseElement.INSTANCES;
+            case "basefont":
+                return HTMLBaseFontElement.INSTANCES;
+            case "body":
+                return HTMLBodyElement.INSTANCES;
+            case "br":
+                return HTMLBRElement.INSTANCES;
+            case "button":
+                return HTMLButtonElement.INSTANCES;
+            case "dir":
+                return HTMLDirectoryElement.INSTANCES;
+            case "div":
+                return HTMLDivElement.INSTANCES;
+            case "dl":
+                return HTMLDListElement.INSTANCES;
+            case "fieldset":
+                return HTMLFieldSetElement.INSTANCES;
+            case "font":
+                return HTMLFontElement.INSTANCES;
+            case "form":
+                return HTMLFormElement.INSTANCES;
+            case "frame":
+                return HTMLFrameElement.INSTANCES;
+            case "frameset":
+                return HTMLFrameSetElement.INSTANCES;
+            case "h1":
+            case "h2":
+            case "h3":
+            case "h4":
+            case "h5":
+            case "h6":
+                return HTMLHeadingElement.INSTANCES;
+            case "head":
+                return HTMLHeadElement.INSTANCES;
+            case "hr":
+                return HTMLHRElement.INSTANCES;
+            case "html":
+                return HTMLHtmlElement.INSTANCES;
+            case "iframe":
+                return HTMLIFrameElement.INSTANCES;
+            case "img":
+                return HTMLImageElement.INSTANCES;
+            case "input":
+                return HTMLInputElement.INSTANCES;
+            case "isindex":
+                return HTMLIsIndexElement.INSTANCES;
+            case "label":
+                return HTMLLabelElement.INSTANCES;
+            case "legend":
+                return HTMLLegendElement.INSTANCES;
+            case "li":
+                return HTMLLIElement.INSTANCES;
+            case "link":
+                return HTMLLinkElement.INSTANCES;
+            case "map":
+                return HTMLMapElement.INSTANCES;
+            case "menu":
+                return HTMLMenuElement.INSTANCES;
+            case "meta":
+                return HTMLMetaElement.INSTANCES;
+            case "ins":
+            case "del":
+                return HTMLModElement.INSTANCES;
+            case "object":
+                return HTMLObjectElement.INSTANCES;
+            case "ol":
+                return HTMLOListElement.INSTANCES;
+            case "optgroup":
+                return HTMLOptGroupElement.INSTANCES;
+            case "option":
+                return HTMLOptionElement.INSTANCES;
+            case "p":
+                return HTMLParagraphElement.INSTANCES;
+            case "param":
+                return HTMLParamElement.INSTANCES;
+            case "pre":
+                return HTMLPreElement.INSTANCES;
+            case "q":
+            case "blockquote":
+                return HTMLQuoteElement.INSTANCES;
+            case "script":
+                return HTMLScriptElement.INSTANCES;
+            case "select":
+                return HTMLSelectElement.INSTANCES;
+            case "style":
+                return HTMLStyleElement.INSTANCES;
+            case "caption":
+                return HTMLTableCaptionElement.INSTANCES;
+            case "th":
+            case "td":
+                return HTMLTableCellElement.INSTANCES;
+            case "col":
+            case "colgroup":
+                return HTMLTableColElement.INSTANCES;
+            case "table":
+                return HTMLTableElement.INSTANCES;
+            case "tr":
+                return HTMLTableRowElement.INSTANCES;
+            case "thead":
+            case "tfoot":
+            case "tbody":
+                return HTMLTableSectionElement.INSTANCES;
+            case "textarea":
+                return HTMLTextAreaElement.INSTANCES;
+            case "title":
+                return HTMLTitleElement.INSTANCES;
+            case "ul":
+                return HTMLUListElement.INSTANCES;
+            case "canvas":
+                return HTMLCanvasElement.INSTANCES;
+            case "audio":
+                return HTMLMediaElement.INSTANCES;
+            default:
+                return HTMLUnknownElement.INSTANCES;
         }
-        // HTML 5
-        else if ("canvas".equalsIgnoreCase(tagname)) {
-            return HTMLCanvasElement.INSTANCES;
-        }
-        if (Options.get().isDebugEnabled()) {
-            log.warn("unknown tagname: "
-                    + tagname
-                    + ". Using default HTMLElement.");
-        }
-        return HTMLElement.ELEMENT;
     }
 
     /**
-     * Evaluate the native function
+         * Evaluate the native function
      */
     public static Value evaluate(DOMObjects nativeObject, CallInfo call, Solver.SolverInterface c) {
         switch (nativeObject) {
@@ -351,6 +338,7 @@ public class DOMFunctions {
             case WINDOW_HISTORY_BACK:
             case WINDOW_HISTORY_FORWARD:
             case WINDOW_HISTORY_GO:
+            case WINDOW_HISTORY_PUSH_STATE:
             case WINDOW_HOME:
             case WINDOW_LOCATION_ASSIGN:
             case WINDOW_LOCATION_RELOAD:
@@ -361,6 +349,7 @@ public class DOMFunctions {
             case WINDOW_MOVEBY:
             case WINDOW_MOVETO:
             case WINDOW_OPEN:
+            case WINDOW_PERFORMANCE_NOW:
             case WINDOW_PRINT:
             case WINDOW_PROMPT:
             case WINDOW_RESIZEBY:
@@ -375,7 +364,12 @@ public class DOMFunctions {
             case WINDOW_STOP:
             case WINDOW_UNESCAPE:
             case WINDOW_GET_COMPUTED_STYLE:
+            case WINDOW_CANCEL_ANIM_FRAME:
+            case WINDOW_CANCEL_ANIMATION_FRAME:
+            case WINDOW_MATCH_MEDIA:
                 return DOMWindow.evaluate(nativeObject, call, c);
+            case CSSSTYLEDECLARATION_GETPROPERTYVALUE:
+                return CSSStyleDeclaration.evaluate(nativeObject, call, c);
             case DOCUMENT_ADOPT_NODE:
             case DOCUMENT_CREATE_ATTRIBUTE:
             case DOCUMENT_CREATE_ATTRIBUTE_NS:
@@ -391,6 +385,7 @@ public class DOMFunctions {
             case DOCUMENT_GET_ELEMENTS_BY_TAGNAME:
             case DOCUMENT_GET_ELEMENTS_BY_TAGNAME_NS:
             case DOCUMENT_QUERY_SELECTOR_ALL:
+            case DOCUMENT_QUERY_SELECTOR:
             case DOCUMENT_IMPORT_NODE:
             case DOCUMENT_NORMALIZEDOCUMENT:
             case DOCUMENT_RENAME_NODE:
@@ -398,6 +393,7 @@ public class DOMFunctions {
             case DOMIMPLEMENTATION_HASFEATURE:
             case DOMIMPLEMENTATION_CREATEDOCUMENTTYPE:
             case DOMIMPLEMENTATION_CREATEDOCUMENT:
+            case DOMIMPLEMENTATION_CREATEHTMLDOCUMENT:
                 return DOMImplementation.evaluate(nativeObject, call, c);
             case NODELIST_ITEM:
                 return DOMNodeList.evaluate(nativeObject, call, c);
@@ -467,6 +463,7 @@ public class DOMFunctions {
             case HTMLELEMENT_GET_ELEMENTS_BY_CLASS_NAME:
             case HTMLELEMENT_BLUR:
             case HTMLELEMENT_FOCUS:
+            case HTMLELEMENT_MATCHES:
             case HTMLELEMENT_MATCHES_SELECTOR:
                 return HTMLElement.evaluate(nativeObject, call, c);
             case HTMLIMAGEELEMENT_CONSTRUCTOR:
@@ -598,6 +595,7 @@ public class DOMFunctions {
             case CONFIGURATION_INSTANCES:
             case CONFIGURATION_PROTOTYPE:
                 return DOMConfiguration.evaluate(nativeObject, call, c);
+            case EVENT_CONSTRUCTOR:
             case EVENT_INIT_EVENT:
             case EVENT_PREVENT_DEFAULT:
             case EVENT_STOP_PROPAGATION:
@@ -641,6 +639,11 @@ public class DOMFunctions {
             case ACTIVE_X_OBJECT_GET_ALL_RESPONSE_HEADERS:
             case ACTIVE_X_OBJECT_CONSTRUCTOR:
                 return ActiveXObject.evaluate(nativeObject, call, c);
+            case CSSSTYLEDECLARATION_CONSTRUCTOR:
+                return CSSStyleDeclaration.evaluate(nativeObject, call, c);
+            case MUTATIONOBSERVER_CONSTRUCTOR:
+            case MUTATIONOBSERVER_OBSERVE:
+                return MutationObserver.evaluate(nativeObject, call, c);
             default: {
                 c.getMonitoring().addMessage(call.getSourceNode(), Severity.HIGH, "TypeError, call to non-function (DOM): " + nativeObject);
                 return Value.makeNone();
@@ -649,13 +652,14 @@ public class DOMFunctions {
     }
 
     static boolean canRegisterElementIdentifiersForSetter(Str prop) {
-        // Unsoundly ignorning unknown property name registrations GitHub #296
+        // TODO Unsoundly ignoring unknown property name registrations GitHub #296
         return prop.isMaybeSingleStr() && (prop.getStr().equals("id") || prop.getStr().equals("name"));
     }
 
     static void registerElementIdentifiersForSetter(ObjectLabel label, String name, Value value, State state) {
         // id attribute
         if ("id".equalsIgnoreCase(name)) {
+            value = UnknownValueResolver.getRealValue(value, state);
             if (value.isMaybeSingleStr()) {
                 state.getExtras().addToMayMap(DOMRegistry.MayMaps.ELEMENTS_BY_ID.name(), value.getStr(), Collections.singleton(label));
             } else {
@@ -665,11 +669,20 @@ public class DOMFunctions {
 
         // name attribute
         if ("name".equalsIgnoreCase(name)) {
+            value = UnknownValueResolver.getRealValue(value, state);
             if (value.isMaybeSingleStr()) {
                 state.getExtras().addToMayMap(DOMRegistry.MayMaps.ELEMENTS_BY_NAME.name(), value.getStr(), Collections.singleton(label));
             } else {
                 state.getExtras().addToDefaultMayMap(DOMRegistry.MayMaps.ELEMENTS_BY_NAME.name(), Collections.singleton(label));
             }
         }
+    }
+
+    /**
+     * Issues a warning if the number of parameters is not in the given interval. max is ignored if -1.
+     */
+    public static void expectParameters(HostObject hostobject, CallInfo call, Solver.SolverInterface c, int min, int max) {
+        c.getMonitoring().visitNativeFunctionCall(call.getSourceNode(), hostobject, call.isUnknownNumberOfArgs(), call.isUnknownNumberOfArgs() ? -1 : call.getNumberOfArgs(), min, max);
+        // TODO: implementations *may* throw TypeError if too many parameters to functions (p.76)
     }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,30 +18,34 @@ package dk.brics.tajs.analysis.nativeobjects;
 
 import dk.brics.tajs.analysis.Conversion;
 import dk.brics.tajs.analysis.Exceptions;
+import dk.brics.tajs.analysis.FunctionCalls;
 import dk.brics.tajs.analysis.FunctionCalls.CallInfo;
 import dk.brics.tajs.analysis.InitialStateBuilder;
-import dk.brics.tajs.analysis.NativeFunctions;
+import dk.brics.tajs.analysis.NativeObjectToString;
+import dk.brics.tajs.analysis.ParallelTransfer;
 import dk.brics.tajs.analysis.PropVarOperations;
 import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.lattice.Obj;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.ObjectLabel.Kind;
 import dk.brics.tajs.lattice.State;
+import dk.brics.tajs.lattice.State.Properties;
 import dk.brics.tajs.lattice.Str;
 import dk.brics.tajs.lattice.UnknownValueResolver;
 import dk.brics.tajs.lattice.Value;
-import dk.brics.tajs.options.Options;
 import dk.brics.tajs.solver.Message;
 import dk.brics.tajs.util.AnalysisException;
+import dk.brics.tajs.util.AnalysisLimitationException;
+import dk.brics.tajs.util.Strings;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 import static dk.brics.tajs.util.Collections.newList;
+import static dk.brics.tajs.util.Collections.singleton;
 
 /**
  * 15.2 native Object functions.
@@ -55,16 +59,12 @@ public class JSObject {
      * Evaluates the given native function.
      */
     public static Value evaluate(ECMAScriptObjects nativeobject, CallInfo call, Solver.SolverInterface c) {
-        if (nativeobject != ECMAScriptObjects.OBJECT)
-            if (NativeFunctions.throwTypeErrorIfConstructor(call, c))
-                return Value.makeNone();
-
         State state = c.getState();
         PropVarOperations pv = c.getAnalysis().getPropVarOperations();
         switch (nativeobject) {
 
             case OBJECT: { // 15.2.1 and 15.2.2
-                Value arg = NativeFunctions.readParameter(call, state, 0);
+                Value arg = FunctionCalls.readParameter(call, state, 0);
                 Value arg2 = arg.restrictToNotNullNotUndef().restrictToNotObject();
                 boolean arg_maybe_other = arg2.isMaybeOtherThanUndef() && arg2.isMaybeOtherThanNull();
                 // 15.2.1.1 step 2 for objects and 15.2.2.1 step 3 in one swoop. Slightly cheating, but toObject(Obj) = Obj.
@@ -73,7 +73,7 @@ public class JSObject {
                 res = arg_maybe_other ? res.join(Conversion.toObject(call.getSourceNode(), arg2.restrictToStrBoolNum(), c)) : res;
                 if (arg.isMaybeNull() || arg.isMaybeUndef()) {
                     // 15.2.1.1 step 1 and 15.2.2.1 step 8
-                    ObjectLabel obj = new ObjectLabel(call.getSourceNode(), Kind.OBJECT);
+                    ObjectLabel obj = ObjectLabel.make(call.getSourceNode(), Kind.OBJECT);
                     state.newObject(obj);
                     state.writeInternalPrototype(obj, Value.makeObject(InitialStateBuilder.OBJECT_PROTOTYPE));
                     res = res.joinObject(obj);
@@ -82,11 +82,9 @@ public class JSObject {
             }
 
             case OBJECT_CREATE: {
-                // FIXME: support second argument of Object.create
-                NativeFunctions.expectParameters(nativeobject, call, c, 1, 2);
-                ObjectLabel obj = new ObjectLabel(call.getSourceNode(), Kind.OBJECT);
+                ObjectLabel obj = ObjectLabel.make(call.getSourceNode(), Kind.OBJECT);
                 state.newObject(obj);
-                Value prototype = UnknownValueResolver.getRealValue(NativeFunctions.readParameter(call, state, 0), state);
+                Value prototype = FunctionCalls.readParameter(call, state, 0);
                 if (prototype.restrictToNotNull().isMaybeOtherThanObject()) {
                     Exceptions.throwTypeError(c);
                 }
@@ -94,29 +92,38 @@ public class JSObject {
                     return Value.makeNone();
                 }
                 state.writeInternalPrototype(obj, prototype);
-                return Value.makeObject(obj);
+
+                Value properties = FunctionCalls.readParameter(call, state, 1);
+                Value propertiesObject = Conversion.toObject(call.getSourceNode(), properties.restrictToNotUndef(), c);
+                boolean stopPropagation = false;
+                if (propertiesObject.isMaybeObject()) {
+                    stopPropagation = definePropertiesFromDescriptorsObject(Value.makeObject(obj), propertiesObject.getObjectLabels(), state, c);
+                }
+
+                return stopPropagation? Value.makeNone(): Value.makeObject(obj);
             }
 
             case OBJECT_DEFINE_PROPERTY: { // 15.2.3.6
-                NativeFunctions.expectParameters(nativeobject, call, c, 3, 3);
-                Value o = NativeFunctions.readParameter(call, state, 0);
-                Value propertyName = Conversion.toString(NativeFunctions.readParameter(call, state, 1), c);
-                Value argument = NativeFunctions.readParameter(call, state, 2);
-                PropertyDescriptor desc = PropertyDescriptor.toDefinePropertyPropertyDescriptor(argument, c);
-                Value value = desc.makePropertyWithAttributes();
-                if (value.isNone())
-                    return Value.makeNone();
-                pv.writeProperty(o.getObjectLabels(), propertyName, value, true, true, false, true); // FIXME: trigger TypeError exception if attempt to overwrite non-writable (#291)
-                return o;
+                Value o = FunctionCalls.readParameter(call, state, 0);
+                Value propertyName = Conversion.toString(FunctionCalls.readParameter(call, state, 1), c);
+                Value argument = FunctionCalls.readParameter(call, state, 2);
+                return defineProperty(o, propertyName, argument, false, c);
+            }
+
+            case OBJECT_DEFINE_PROPERTIES: { // 15.2.3.6
+                Value o = FunctionCalls.readParameter(call, state, 0);
+                Value propertiesArgument = FunctionCalls.readParameter(call, state, 1);
+                propertiesArgument = Conversion.toObject(call.getSourceNode(), propertiesArgument, c);
+                boolean stopPropagation = definePropertiesFromDescriptorsObject(o, propertiesArgument.getObjectLabels(), state, c);
+                return stopPropagation ? Value.makeNone() : o;
             }
 
             case OBJECT_DEFINESETTER:
             case OBJECT_DEFINEGETTER: {
-                NativeFunctions.expectParameters(nativeobject, call, c, 2, 2);
                 State state1 = c.getState();
                 Set<ObjectLabel> objs = state1.readThisObjects();
-                Value propertyName = Conversion.toString(NativeFunctions.readParameter(call, state1, 0), c);
-                Value argument = NativeFunctions.readParameter(call, state1, 1);
+                Value propertyName = Conversion.toString(FunctionCalls.readParameter(call, state1, 0), c);
+                Value argument = FunctionCalls.readParameter(call, state1, 1);
                 boolean getter = nativeobject == ECMAScriptObjects.OBJECT_DEFINEGETTER;
                 PropertyDescriptor desc = PropertyDescriptor.toDefineGetterSetterPropertyDescriptor(argument, getter, c);
                 Value value = desc.makePropertyWithAttributes();
@@ -128,63 +135,50 @@ public class JSObject {
 
             case OBJECT_TOSTRING: // 15.2.4.2
             case OBJECT_TOLOCALESTRING: { // 15.2.4.3
-                NativeFunctions.expectParameters(nativeobject, call, c, 0, 0);
-                Value v = state.readThisObjectsCoerced((l) -> evaluateToString(l, c));
-                if (nativeobject == ECMAScriptObjects.OBJECT_TOLOCALESTRING && !Options.get().isUnsoundEnabled()) {
+                Value v = evaluateToString(state.readThis(), c);
+                if (nativeobject == ECMAScriptObjects.OBJECT_TOLOCALESTRING && !c.getAnalysis().getUnsoundness().mayAssumeFixedLocale(call.getSourceNode())) {
                     return Value.makeAnyStr();
                 }
                 return v;
             }
 
             case OBJECT_VALUEOF: { // 15.2.4.4
-                NativeFunctions.expectParameters(nativeobject, call, c, 0, 0);
-                return Value.makeObject(state.readThisObjects());
+                return state.readThis();
             }
 
             case OBJECT_HASOWNPROPERTY: { // 15.2.4.5
-                // TODO: avoid special-casing on strings (they implicitly have indices for their characters)
-                NativeFunctions.expectParameters(nativeobject, call, c, 1, 1);
-                Set<ObjectLabel> thisobj = state.readThisObjects();
-                Value v = NativeFunctions.readParameter(call, state, 0);
+                Set<ObjectLabel> thisobj = Conversion.toObject(c.getNode(), state.readThis(), c).getObjectLabels();
+                Value v = FunctionCalls.readParameter(call, state, 0);
                 // Result is only defined when called with a parameter. Return false if not, just like Safari.
                 if (!v.isMaybeOtherThanUndef())
                     return Value.makeBool(false);
                 Value propval = Conversion.toString(v, c);
                 if (propval.isNotStr())
                     return Value.makeNone();
-                else if (propval.isMaybeSingleStr()) {
-                    Map<Boolean, List<ObjectLabel>> stringNonStringLabels = thisobj.stream().collect(Collectors.groupingBy(l -> l.getKind() == Kind.STRING));
-                    String propname = propval.getStr();
-                    Value res = Value.makeNone();
-                    Value val = pv.readPropertyDirect(thisobj, propname);
-                    if (val.isMaybeAbsent() || val.isNotPresent())
-                        res = res.joinBool(false);
-                    if (val.isMaybePresent())
-                        res = res.joinBool(true);
-                    Value propNum = Conversion.fromStrtoNum(propval, c);
-                    Double stringIndex = propNum.getNum();
-                    if (stringNonStringLabels.containsKey(true) && propNum.isMaybeSingleNum() && Math.floor(stringIndex) == stringIndex) {
-                        Value internalStringValues = UnknownValueResolver.getRealValue(state.readInternalValue(stringNonStringLabels.get(true)), state);
-                        if (internalStringValues.isMaybeSingleStr()) {
-                            if (0 <= stringIndex && stringIndex <= internalStringValues.getStr().length()) {
-                                res = res.joinBool(true);
-                            } else {
-                                res = res.joinBool(false);
-                            }
-                        }
+
+                State.Properties properties = state.getProperties(thisobj, false, false);
+                if (propval.isMaybeSingleStr()) {
+                    String str = propval.getStr();
+                    if (properties.getDefinitely().contains(str)) {
+                        return Value.makeBool(true);
                     }
-                    return res;
-                }
-                for (ObjectLabel ol : thisobj) {
-                    Obj o = state.getObject(ol, false);
-                    for (String propname : o.getProperties().keySet()) {
-                        if (UnknownValueResolver.getProperty(ol, propname, state, true).isMaybePresent())
-                            return Value.makeAnyBool();
-                    }
-                    if (UnknownValueResolver.getDefaultArrayProperty(ol, state).isMaybePresent() ||
-                            UnknownValueResolver.getDefaultNonArrayProperty(ol, state).isMaybePresent())
+                    if (properties.getMaybe().contains(str)) {
                         return Value.makeAnyBool();
-                    if (ol.getKind() == Kind.STRING && propval.isMaybeStrUInt()) {
+                    }
+                    if (Strings.isArrayIndex(str) && properties.isArray()) {
+                        return Value.makeAnyBool();
+                    }
+                    if (!Strings.isArrayIndex(str) && properties.isNonArray()) {
+                        return Value.makeAnyBool();
+                    }
+                } else {
+                    if (propval.isMaybeStrSomeNonUInt() && properties.isNonArray()) {
+                        return Value.makeAnyBool();
+                    }
+                    if (propval.isMaybeStrUInt() && properties.isArray()) {
+                        return Value.makeAnyBool();
+                    }
+                    if (properties.getMaybe().stream().anyMatch(p -> propval.isMaybeStr(p))) {
                         return Value.makeAnyBool();
                     }
                 }
@@ -192,16 +186,12 @@ public class JSObject {
             }
 
             case OBJECT_ISPROTOTYPEOF: { // 15.2.4.6
-                NativeFunctions.expectParameters(nativeobject, call, c, 1, 1);
-            /* Value arg = */
-                NativeFunctions.readParameter(call, state, 0);
                 return Value.makeAnyBool(); // TODO: improve precision for OBJECT_ISPROTOTYPEOF
             }
 
             case OBJECT_PROPERTYISENUMERABLE: { // 15.2.4.7
-                NativeFunctions.expectParameters(nativeobject, call, c, 1, 1);
                 Set<ObjectLabel> thisobj = state.readThisObjects();
-                Value propval = Conversion.toString(NativeFunctions.readParameter(call, state, 0), c);
+                Value propval = Conversion.toString(FunctionCalls.readParameter(call, state, 0), c);
                 if (propval.isNotStr())
                     return Value.makeNone();
                 else if (propval.isMaybeSingleStr()) {
@@ -227,16 +217,16 @@ public class JSObject {
                 return Value.makeBool(false);
             }
             case OBJECT_KEYS:
-                NativeFunctions.expectParameters(nativeobject, call, c, 1, 1);
-                Value objectArg = UnknownValueResolver.getRealValue(NativeFunctions.readParameter(call, state, 0), state).restrictToObject();
+            case OBJECT_GETOWNPROPERTYNAMES:
+                Value objectArg = UnknownValueResolver.getRealValue(FunctionCalls.readParameter(call, state, 0), state).restrictToObject();
                 if (objectArg.isNone()) {
                     Exceptions.throwTypeError(c);
                     return Value.makeNone();
                 }
                 ObjectLabel array = JSArray.makeArray(call.getSourceNode(), c);
-                State.Properties properties = state.getEnumProperties(objectArg.getObjectLabels());
+                State.Properties properties = state.getProperties(objectArg.getObjectLabels(), true, false);
                 if (!properties.getMaybe().isEmpty()) {
-                    if ((properties.getMaybe().size() < 2 || Options.get().isUnsoundEnabled()) && properties.isDefinite()) {
+                    if ((properties.getMaybe().size() < 2 || c.getAnalysis().getUnsoundness().mayUseSortedObjectKeys(call.getSourceNode())) && properties.isDefinite()) {
                         // we know the *order* of property names
                         List<String> sortedNames = newList(properties.getDefinitely());
                         Collections.sort(sortedNames);
@@ -262,15 +252,19 @@ public class JSObject {
                     JSArray.setUnknownEntries(array, Value.makeAnyStrNotUInt(), c);
                 }
                 return Value.makeObject(array);
-            case OBJECT_FREEZE: /* GitHub #249 */
-                NativeFunctions.expectParameters(nativeobject, call, c, 1, 1);
-                c.getMonitoring().addMessage(call.getJSSourceNode(), Message.Severity.TAJS_ERROR, "Warning: Calling Object.freeze, but no side-effects have been implemented for it...");
-                return NativeFunctions.readParameter(call, state, 0);
+            case OBJECT_FREEZE:
+            case OBJECT_PREVENTEXTENSIONS:
+            case OBJECT_SEAL:
+                if (c.getAnalysis().getUnsoundness().maySkipMissingModelOfNativeFunction(call.getSourceNode(), nativeobject)) {
+                    c.getMonitoring().addMessage(call.getJSSourceNode(), Message.Severity.TAJS_ERROR, "Warning: Calling " + nativeobject + ", but no side-effects have been implemented for it...");
+                    return FunctionCalls.readParameter(call, state, 0);
+                }
+                // TODO: GitHub #249
+                throw new AnalysisLimitationException.AnalysisModelLimitationException(call.getSourceNode().getSourceLocation() + ": No transfer function for native function " + nativeobject);
 
             case OBJECT_GETOWNPROPERTYDESCRIPTOR: // FIXME: handle toObject/missing-object-typeerror cases
-                NativeFunctions.expectParameters(nativeobject, call, c, 2, 2);
-                Set<ObjectLabel> receivers = Conversion.toObjectLabels(c.getNode(), NativeFunctions.readParameter(call, state, 0), c);
-                Value name = NativeFunctions.readParameter(call, state, 1);
+                Set<ObjectLabel> receivers = Conversion.toObjectLabels(c.getNode(), FunctionCalls.readParameter(call, state, 0), c);
+                Value name = FunctionCalls.readParameter(call, state, 1);
                 Str nameStr = Conversion.toString(name, c);
                 c.getMonitoring().visitPropertyRead(c.getNode(), receivers, nameStr, c.getState(), true);
                 Value property = Value.join(dk.brics.tajs.util.Collections.map(receivers, objlabel ->
@@ -289,19 +283,74 @@ public class JSObject {
                 }
                 return result;
 
+            case OBJECT_GETPROTOTYPEOF: {
+                Value arg = UnknownValueResolver.getRealValue(FunctionCalls.readParameter(call, state, 0), state);
+                Set<ObjectLabel> labels = Conversion.toObject(call.getSourceNode(), arg, c).getObjectLabels();
+                if (labels.isEmpty()) {
+                    Exceptions.throwTypeError(c);
+                }
+                return state.readInternalPrototype(labels);
+            }
+
+            case OBJECT_SETPROTOTYPEOF: {
+                Set<ObjectLabel> rec = FunctionCalls.readParameter(call, state, 0).getObjectLabels();
+                Value proto = FunctionCalls.readParameter(call, state, 1);
+                boolean notNullOrObject = proto.restrictToNotObject().isMaybeOtherThanNull() || proto.restrictToNotNull().isMaybeOtherThanObject();
+                if (notNullOrObject) {
+                    Exceptions.throwTypeError(c);
+                }
+                Value nullOrObject = proto.restrictToNull().join(proto.restrictToObject());
+                if (nullOrObject.isNone()) {
+                    return Value.makeNone();
+                }
+                state.writeInternalPrototype(rec, nullOrObject);
+                return Value.makeObject(rec);
+            }
+
             default:
                 return null;
         }
     }
 
-    public static Value evaluateToString(ObjectLabel thiss, Solver.SolverInterface c) {
-        // 15.2.4.2 Object.prototype.toString ( )
-        // When the toString method is called, the following steps are taken:
-        // 1. Get the [[Class]] property of this object.
-        // 2. Compute a string value by concatenating the three strings "[object ", Result(1), and "]".
-        // 3. Return Result(2).
+    /**
+     * Implementation of 'Object.defineProperties(target, propertyDescriptorsObject)' after argument resolution.
+     *
+     * @return true if propagation should be stopped (e.g. due to definite exception)
+     */
+    private static boolean definePropertiesFromDescriptorsObject(Value target, Set<ObjectLabel> propertyDescriptorsObject, State state, Solver.SolverInterface c) {
+        final boolean[] stopPropagation = {false};
+        ParallelTransfer.process(propertyDescriptorsObject, props -> {
+            Properties properties = state.getProperties(singleton(props), true, false);
+            properties.getMaybe().forEach(prop -> {
+                boolean forceWeak = !properties.getDefinitely().contains(prop);
+                stopPropagation[0] |= definePropertyFromDescriptorsObjectProperty(target, props, Value.makeStr(prop), forceWeak, c).isNone();
+            });
+            if (properties.isArray()) {
+                stopPropagation[0] |= definePropertyFromDescriptorsObjectProperty(target, props, Value.makeAnyStrUInt(), true, c).isNone();
+            }
+            if (properties.isNonArray()) {
+                stopPropagation[0] |= definePropertyFromDescriptorsObjectProperty(target, props, Value.makeAnyStrNotUInt(), true, c).isNone();
+            }
+        }, c);
+        return stopPropagation[0];
+    }
 
-        // FIXME: slightly unsound as null and undefined will actually produce [object Null] and [object Undefined], when this is called through .call or .apply...
-        return Value.makeStr("[object " + thiss.getKind() + "]");
+    private static Value definePropertyFromDescriptorsObjectProperty(Value target, ObjectLabel propertyDescriptorsObject, Value propertyName, boolean forceWeak, Solver.SolverInterface c) {
+        c.getMonitoring().visitPropertyRead(c.getNode(), singleton(propertyDescriptorsObject), propertyName, c.getState(), true);
+        Value propertyDescriptorObject = c.getAnalysis().getPropVarOperations().readPropertyValue(singleton(propertyDescriptorsObject), propertyName);
+        return defineProperty(target, propertyName, propertyDescriptorObject, forceWeak, c);
+    }
+
+    private static Value defineProperty(Value o, Value propertyName, Value propertyDescriptorObject, boolean forceWeak, Solver.SolverInterface c) {
+        PropertyDescriptor desc = PropertyDescriptor.toDefinePropertyPropertyDescriptor(propertyDescriptorObject, c);
+        Value value = desc.makePropertyWithAttributes();
+        if (value.isNone())
+            return Value.makeNone();
+        c.getAnalysis().getPropVarOperations().writeProperty(o.getObjectLabels(), propertyName, value, true, true, forceWeak, true); // FIXME: trigger TypeError exception if attempt to overwrite non-writable (#291)
+        return o;
+    }
+
+    public static Value evaluateToString(Value value, Solver.SolverInterface c) {
+        return NativeObjectToString.evaluate(value, c);
     }
 }

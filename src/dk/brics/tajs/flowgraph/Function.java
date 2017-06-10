@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,6 +25,7 @@ import java.io.PrintWriter;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
 
@@ -93,25 +94,19 @@ public class Function {
     private int max_register;
 
     /**
-     * True iff this function has a syntactic 'this' in its source code.
-     */
-    private boolean uses_this;
-
-
-    /**
      * The node where this function is declared.
      */
     private DeclareFunctionNode node;
 
     /**
-     * The variables read by the function that are defined in an outer function.
-     */
-    private Set<String> closureVariableNames;
-
-    /**
      * The source code of the function, null if full source code is not available (e.g. eventhandlers in html).
      */
     private final String source;
+
+    /**
+     * If this flag is set, the function has "use strict".
+     */
+    private final boolean strict;
 
     /**
      * Constructs a new function.
@@ -124,24 +119,23 @@ public class Function {
      * @param location        source location
      * @param source          full source code of function, null if not available
      */
-    public Function(String name, List<String> parameter_names, Function outer_function, SourceLocation location, String source) {
+    public Function(String name, List<String> parameter_names, Function outer_function, boolean strict, SourceLocation location, String source) {
         assert (location != null);
         this.name = name;
         this.location = location;
-        this.parameter_names = parameter_names == null ? Collections.<String>emptyList() : parameter_names;
+        this.parameter_names = parameter_names == null ? Collections.emptyList() : parameter_names;
         this.outer_function = outer_function;
         this.source = source;
         variable_names = newSet();
-        uses_this = false;
         blocks = newList();
-        closureVariableNames = newSet();
+        this.strict = strict;
     }
 
     /**
-     * @see #Function(String, List, Function, SourceLocation, String)
+     * @see #Function(String, List, Function, boolean, SourceLocation, String)
      */
     public Function(String name, List<String> parameter_names, Function outer_function, SourceLocation location) {
-        this(name, parameter_names, outer_function, location, null);
+        this(name, parameter_names, outer_function, false, location, null);
     }
 
     /**
@@ -341,7 +335,7 @@ public class Function {
                 + " [tailport=s, headport=n, headlabel=\"    " + entry.getIndex() + "\"]");
         labels.add(entry);
         List<BasicBlock> sortedBlocks = newList(this.blocks);
-        java.util.Collections.sort(sortedBlocks, (o1, o2) -> o1.getOrder() - o2.getOrder());
+        sortedBlocks.sort(Comparator.comparingInt(BasicBlock::getOrder));
         for (BasicBlock b : sortedBlocks) {
             b.toDot(pw, false);
 //	        int color_index = 0;
@@ -392,27 +386,6 @@ public class Function {
     }
 
     /**
-     * Marks the function as having a syntactic 'this' in its source code or not.
-     */
-    public void setUsesThis(boolean uses_this) {
-        this.uses_this = uses_this;
-    }
-
-    /**
-     * Returns true if this function has a syntactic 'this' in its source code.
-     */
-    public boolean isUsesThis() {
-        return uses_this;
-    }
-
-    /**
-     * Returns the (mutable) set of variables read by the function that are defined in an outer function.
-     */
-    public Set<String> getClosureVariableNames() {
-        return closureVariableNames;
-    }
-
-    /**
      * Sets the block orders. Call after construction or modification of the function.
      */
     public void complete() {
@@ -429,7 +402,7 @@ public class Function {
             roots.remove(b.getExceptionHandler());
         });
         List<BasicBlock> rootOrder = newList(roots);
-        Collections.sort(rootOrder, (o1, o2) -> o1.getSourceLocation().compareTo(o2.getSourceLocation()));
+        rootOrder.sort(Comparator.comparing(BasicBlock::getSourceLocation));
 
         int i = 0;
         for (BasicBlock block : BlockDependencyOrderer.produceDependencyOrder(topologicalBlocks, nonTopologicalBlocks, rootOrder)) {
@@ -479,5 +452,12 @@ public class Function {
      */
     public String getSource() {
         return source;
+    }
+
+    /**
+     * Returns true if this function is in strict mode.
+     */
+    public boolean isStrict() {
+        return strict;
     }
 }

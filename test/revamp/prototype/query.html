@@ -1,0 +1,79 @@
+<html>
+<!-- from http://www.wired.com/wired/archive/webmonkey/Prototype/basic.html -->
+<head>
+	<title>Testing Prototype</title>
+	<script src="prototype.js"></script>
+	<style>
+		#container div, #container span
+		{
+			width: 150px;
+			height: 150px;
+			display: block;
+			float: left;
+			border: 1px solid black;
+		}
+		#container .highlight
+		{
+			border: 3px solid orange;
+		}
+		p
+		{
+			clear: left;
+		}
+		p input
+		{
+			display: block;
+		}
+	</style>
+	<script>
+	function test_byid()
+	{
+		$("second").toggleClassName("highlight");
+	}
+	function test_byclass()
+	{
+		$$(".test").each(function(elmt) { elmt.toggleClassName("highlight") });
+	}
+	function test_bytag()
+	{
+		$$("span").each(function(elmt) { elmt.toggleClassName("highlight") });
+	}
+	function test_byfirstresult()
+	{
+		$$("span:first-child").each(function(elmt) { elmt.toggleClassName("highlight") });
+	}
+	function test_byfunction()
+	{
+		$$("span:not(#second)").each(function(spanobj) {
+		  spanobj.toggleClassName("highlight");
+		});
+	}
+	document.observe('dom:loaded', function() {
+		$("myclicker").observe("click", function() { alert('Clicked!'); });
+	});
+	</script>
+</head>
+<body>
+
+<div id="container">
+
+<span>SPAN<br/>No id<br/>No class</span>
+<span class="test" id="second">SPAN<br/>id="second"<br/>class "test"</span>
+<div class="test">DIV<br/>No id<br/>class "test"</div>
+
+
+</div>
+
+<div id="myclicker">Click me!</div>
+
+<p>
+<strong>Toggles:</strong>
+<input type="button" onClick="test_byid();" value="id='second'" />
+<input type="button" onClick="test_byclass();" value="class='test'" />
+<input type="button" onClick="test_bytag();" value="tag is 'span'" />
+<input type="button" onClick="test_byfirstresult();" value="the first object where tag is 'span'" />
+<input type="button" onClick="test_byfunction();" value="tag is 'span', but id is not 'second'" />
+</p>
+
+</body>
+</html>

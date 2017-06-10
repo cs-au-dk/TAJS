@@ -62,6 +62,6 @@ public class JSString_concat_test {
     @Test
     public void unknownArgs() {
         Misc.runSource("var v = String.prototype.concat.apply('foo', Math.random()? []: ['x']);",
-                "TAJS_assert(v, 'isMaybeStrIdentifier', true);");
+                "TAJS_assert(v, 'isMaybeStrPrefix', true);");
     }
 }

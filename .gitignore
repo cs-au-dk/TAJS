@@ -3,7 +3,9 @@
 /dist
 /out
 /doc
-.idea/workspace.xml
-**/*.iml
+/.idea/workspace.xml
+/.idea/kotlinc.xml
 /local-development.properties
+/.tajsconfig
+*.iml
 !/test/expected/**

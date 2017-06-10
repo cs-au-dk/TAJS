@@ -1,59 +1,9 @@
-test/1k2013spring/1362.js:9:3: [definite] The variable palette is never used
-test/1k2013spring/shim.js:6:5: [definite] The variable b is never used
-test/1k2013spring/1362.js:2:6: [maybe] TypeError, accessing property of null/undefined
-test/1k2013spring/1362.js:2:6: [maybe] TypeError, call to non-function
-test/1k2013spring/1362.js:6:2: [maybe] TypeError, accessing property of null/undefined
-test/1k2013spring/1362.js:21:6: [maybe] TypeError, accessing property of null/undefined
-test/1k2013spring/1362.js:35:4: [maybe] TypeError, accessing property of null/undefined
-test/1k2013spring/1362.js:35:19: [maybe] TypeError, accessing property of null/undefined
-test/1k2013spring/1362.js:36:7: [maybe] TypeError, accessing property of null/undefined
-test/1k2013spring/1362.js:36:26: [maybe] TypeError, accessing property of null/undefined
-test/1k2013spring/1362.js:37:5: [maybe] TypeError, accessing property of null/undefined
-test/1k2013spring/1362.js:37:20: [maybe] TypeError, accessing property of null/undefined
-test/1k2013spring/1362.js:39:4: [maybe] TypeError, accessing property of null/undefined
-test/1k2013spring/1362.js:39:19: [maybe] TypeError, accessing property of null/undefined
-test/1k2013spring/1362.js:40:7: [maybe] TypeError, accessing property of null/undefined
-test/1k2013spring/1362.js:40:26: [maybe] TypeError, accessing property of null/undefined
-test/1k2013spring/1362.js:41:5: [maybe] TypeError, accessing property of null/undefined
-test/1k2013spring/1362.js:41:20: [maybe] TypeError, accessing property of null/undefined
-test/1k2013spring/1362.js:57:15: [maybe] TypeError, accessing property of null/undefined
-test/1k2013spring/1362.js:57:30: [maybe] TypeError, accessing property of null/undefined
-test/1k2013spring/1362.js:58:22: [maybe] TypeError, accessing property of null/undefined
-test/1k2013spring/1362.js:58:37: [maybe] TypeError, accessing property of null/undefined
-test/1k2013spring/1362.js:58:58: [maybe] TypeError, accessing property of null/undefined
-test/1k2013spring/1362.js:58:71: [maybe] TypeError, accessing property of null/undefined
-test/1k2013spring/1362.js:59:30: [maybe] TypeError, accessing property of null/undefined
-test/1k2013spring/1362.js:59:50: [maybe] TypeError, accessing property of null/undefined
-test/1k2013spring/1362.js:59:70: [maybe] TypeError, accessing property of null/undefined
-test/1k2013spring/shim.js:8:9: [maybe] TypeError, accessing property of null/undefined
-test/1k2013spring/shim.js:8:9: [maybe] TypeError, call to non-function
-test/1k2013spring/shim.js:9:1: [maybe] TypeError, accessing property of null/undefined
-test/1k2013spring/1362.js:2:6: [maybe] Reading absent property getContext
-test/1k2013spring/1362.js:6:2: [maybe] Reading absent property body
-test/1k2013spring/shim.js:6:9: [maybe] Reading absent property body
-test/1k2013spring/shim.js:8:9: [maybe] Reading absent property getContext
-test/1k2013spring/shim.js:9:1: [maybe] Reading absent property body
-test/1k2013spring/1362.js:21:6: [maybe] Reading absent property (computed name)
-test/1k2013spring/1362.js:35:4: [maybe] Reading absent property (computed name)
-test/1k2013spring/1362.js:35:19: [maybe] Reading absent property (computed name)
-test/1k2013spring/1362.js:36:7: [maybe] Reading absent property (computed name)
-test/1k2013spring/1362.js:36:26: [maybe] Reading absent property (computed name)
-test/1k2013spring/1362.js:37:5: [maybe] Reading absent property (computed name)
-test/1k2013spring/1362.js:37:20: [maybe] Reading absent property (computed name)
-test/1k2013spring/1362.js:39:4: [maybe] Reading absent property (computed name)
-test/1k2013spring/1362.js:39:19: [maybe] Reading absent property (computed name)
-test/1k2013spring/1362.js:40:7: [maybe] Reading absent property (computed name)
-test/1k2013spring/1362.js:40:26: [maybe] Reading absent property (computed name)
-test/1k2013spring/1362.js:41:5: [maybe] Reading absent property (computed name)
-test/1k2013spring/1362.js:41:20: [maybe] Reading absent property (computed name)
-test/1k2013spring/1362.js:57:15: [maybe] Reading absent property (computed name)
-test/1k2013spring/1362.js:57:30: [maybe] Reading absent property (computed name)
-test/1k2013spring/1362.js:58:22: [maybe] Reading absent property (computed name)
-test/1k2013spring/1362.js:58:37: [maybe] Reading absent property (computed name)
-test/1k2013spring/1362.js:58:58: [maybe] Reading absent property (computed name)
-test/1k2013spring/1362.js:58:71: [maybe] Reading absent property (computed name)
-test/1k2013spring/1362.js:59:30: [maybe] Reading absent property (computed name)
-test/1k2013spring/1362.js:59:50: [maybe] Reading absent property (computed name)
-test/1k2013spring/1362.js:59:70: [maybe] Reading absent property (computed name)
-test/1k2013spring/shim.js:7:9: [maybe] Reading absent property (computed name)
-test/1k2013spring/shim.js,test/1k2013spring/1362.js: [maybe] Uncaught exception, constructed at [test/1k2013spring/1362.js:2:6, test/1k2013spring/1362.js:6:2, test/1k2013spring/1362.js:21:6, test/1k2013spring/1362.js:35:4, test/1k2013spring/1362.js:35:19, test/1k2013spring/1362.js:36:7, test/1k2013spring/1362.js:36:26, test/1k2013spring/1362.js:37:5, test/1k2013spring/1362.js:37:20, test/1k2013spring/1362.js:39:4, test/1k2013spring/1362.js:39:19, test/1k2013spring/1362.js:40:7, test/1k2013spring/1362.js:40:26, test/1k2013spring/1362.js:41:5, test/1k2013spring/1362.js:41:20, test/1k2013spring/1362.js:57:15, test/1k2013spring/1362.js:57:30, test/1k2013spring/1362.js:58:22, test/1k2013spring/1362.js:58:37, test/1k2013spring/1362.js:58:58, test/1k2013spring/1362.js:58:71, test/1k2013spring/1362.js:59:30, test/1k2013spring/1362.js:59:50, test/1k2013spring/1362.js:59:70, test/1k2013spring/shim.js:8:9, test/1k2013spring/shim.js:9:1]
+test/1k2013spring/1362.js:2:6: [definite] TypeError, accessing property of null/undefined
+test/1k2013spring/1362.js:2:6: [definite] Variable c is null/undefined
+test/1k2013spring/1362.js:2:2: [definite] The variable a is never used
+test/1k2013spring/1362.js:2:19: [definite] Unreachable code
+test/1k2013spring/1362.js:4:15: [definite] Unreachable function
+test/1k2013spring/1362.js:32:21: [definite] Unreachable function
+test/1k2013spring/1362.js:1:9: [maybe] <Document.getElementById>("canvas") did not match any elements
+test/1k2013spring/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1362.js: [maybe] Uncaught exception, constructed at [test/1k2013spring/1362.js:2:6, test/1k2013spring/shim.js:9:5]

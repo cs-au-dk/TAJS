@@ -1,1 +1,2 @@
-test/uneval/uneval05.js:3:5: [definite] Unreachable code
+test/uneval/uneval05.js: [definite] Exceptional program exit is unreachable
+test/uneval/uneval05.js:3:17: [definite] Unreachable code

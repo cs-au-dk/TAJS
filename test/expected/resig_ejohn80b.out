@@ -1,5 +1,6 @@
 test/resig/ejohn80b.js:1:1: [definite] The conditional expression is always true
-test/resig/ejohn80b.js:1:6: [definite] Reading absent property forEach2
+test/resig/ejohn80b.js:1:6: [definite] Reading absent property forEach2 of host object
+test/resig/ejohn80b.js: [definite] Exceptional program exit is unreachable
 test/resig/ejohn80b.js:4:11: [maybe] Reading absent property (computed name)
 test/resig/ejohn80b.js:11:3: [info] Abstract value: Undef|IdentStr
 test/resig/ejohn80b.js:12:3: [info] Abstract value: UInt

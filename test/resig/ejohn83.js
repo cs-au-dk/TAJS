@@ -1,4 +1,7 @@
-var Button = { 
+var resultsDiv = document.createElement('div');
+resultsDiv.id = 'results';
+
+var Button = {
   click: function(){ 
     this.clicked = true; 
   } 

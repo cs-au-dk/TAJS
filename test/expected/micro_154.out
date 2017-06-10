@@ -1,3 +1,4 @@
+test/micro/test154.js: [definite] Exceptional program exit is unreachable
 test/micro/test154.js:9:17: [maybe] Reading absent property p
 test/micro/test154.js:15:16: [maybe] Reading absent property p
 test/micro/test154.js:7:2: [info] Abstract value: 42.0

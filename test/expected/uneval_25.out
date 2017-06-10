@@ -16,4 +16,5 @@ test/uneval/uneval25.html:19:5: [definite] Dead assignment, property boomerang_d
 test/uneval/uneval25.html:20:5: [definite] Dead assignment, property boomerang_action_probability_upload/upload_new is never read
 test/uneval/uneval25.html:21:5: [definite] Dead assignment, property boomerang_action_probability_user_document_collections/show is never read
 test/uneval/uneval25.html:25:5: [definite] Dead assignment, property boomerang_send_to_scribd is never read
+test/uneval/uneval25.html: [definite] Exceptional program exit is unreachable
 test/uneval/uneval25.html:29:25: [definite] The variable default_value is never used

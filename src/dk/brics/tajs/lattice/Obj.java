@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -503,6 +503,15 @@ public final class Obj {
     }
 
     /**
+     * Sets the internal [[Scope]] property to 'unknown'.
+     */
+    public void setScopeChainUnknown() {
+        checkWritable();
+        this.scope = null;
+        scope_unknown = true;
+    }
+
+    /**
      * Adds to the internal [[Scope]] property.
      *
      * @return true if changed
@@ -600,7 +609,7 @@ public final class Obj {
             b.append(" was: ").append(old.internal_value);
         }
         if (scope_unknown != old.scope_unknown) {
-            b.append("\n        changed scope_unknown");
+            b.append("\n        changed scope_unknown: ").append(scope_unknown).append(" was: ").append(old.scope_unknown);
         }
     }
 
@@ -816,6 +825,7 @@ public final class Obj {
                 ObjectProperty.makeInternalValue(objlabel));
         internal_prototype = UnknownValueResolver.localize(internal_prototype, obj.internal_prototype, s,
                 ObjectProperty.makeInternalPrototype(objlabel));
+        UnknownValueResolver.localizeScopeChain(objlabel, this, obj, s);
         Map<String, Value> new_properties = newMap();
         for (Entry<String, Value> me : properties.entrySet()) { // obj is writable, so materializations from defaults will appear here
             String propertyname = me.getKey();
@@ -825,10 +835,6 @@ public final class Obj {
                     ObjectProperty.makeOrdinary(objlabel, propertyname)));
         }
         properties = new_properties;
-        if (obj.scope_unknown) { // TODO: scope chain polymorphic?
-            scope = null;
-            scope_unknown = true;
-        }
     }
 
 //    /**

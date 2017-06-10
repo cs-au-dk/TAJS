@@ -13,7 +13,7 @@ public class JSString_toLowerUpperCase_test {
     public void before() {
         Main.reset();
         Main.initLogging();
-        Options.get().enableUnsound();
+        Options.get().getUnsoundness().setIgnoreLocale(true);
         Options.get().enableTest();
     }
 

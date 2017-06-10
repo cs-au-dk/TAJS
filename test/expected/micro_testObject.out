@@ -1,5 +1,6 @@
 test/micro/testObject.js:4:10: [definite] Too many parameters to function Object
 test/micro/testObject.js:24:10: [definite] Too many parameters to function Object
+test/micro/testObject.js: [definite] Exceptional program exit is unreachable
 test/micro/testObject.js:4:10: [maybe] Converting primitive number to object
 test/micro/testObject.js:5:10: [maybe] Converting primitive string to object
 test/micro/testObject.js:24:10: [maybe] Converting primitive number to object
@@ -9,24 +10,24 @@ test/micro/testObject.js:8:1: [info] Abstract object: {[[Prototype]]=[@Object.pr
 test/micro/testObject.js:9:1: [info] Abstract object: {[[Prototype]]=[@Object.prototype[native]]}
 test/micro/testObject.js:10:1: [info] Abstract object: {[[Prototype]]=[@Number.prototype[native]],[[Value]]=1.0}
 test/micro/testObject.js:11:1: [info] Abstract object: {length:3.0,[[Prototype]]=[@String.prototype[native]],[[Value]]="foo"}
-test/micro/testObject.js:13:1: [info] Abstract value: [@Object#node18]
-test/micro/testObject.js:14:1: [info] Abstract value: [@Object#node22]
-test/micro/testObject.js:15:1: [info] Abstract value: [@Object#node26]
-test/micro/testObject.js:16:1: [info] Abstract value: [@Number#node31]
-test/micro/testObject.js:17:1: [info] Abstract value: [@String#node35]
+test/micro/testObject.js:13:1: [info] Abstract value: [@Object#node22]
+test/micro/testObject.js:14:1: [info] Abstract value: [@Object#node26]
+test/micro/testObject.js:15:1: [info] Abstract value: [@Object#node30]
+test/micro/testObject.js:16:1: [info] Abstract value: [@Number#node35{boxed-primitive=1.0}]
+test/micro/testObject.js:17:1: [info] Abstract value: [@String#node39{boxed-primitive="foo"}]
 test/micro/testObject.js:27:1: [info] Abstract object: {[[Prototype]]=[@Object.prototype[native]]}
 test/micro/testObject.js:28:1: [info] Abstract object: {[[Prototype]]=[@Object.prototype[native]]}
 test/micro/testObject.js:29:1: [info] Abstract object: {[[Prototype]]=[@Object.prototype[native]]}
 test/micro/testObject.js:30:1: [info] Abstract object: {[[Prototype]]=[@Number.prototype[native]],[[Value]]=1.0}
 test/micro/testObject.js:31:1: [info] Abstract object: {length:3.0,[[Prototype]]=[@String.prototype[native]],[[Value]]="foo"}
-test/micro/testObject.js:33:1: [info] Abstract value: [@Object#node68]
-test/micro/testObject.js:34:1: [info] Abstract value: [@Object#node72]
-test/micro/testObject.js:35:1: [info] Abstract value: [@Object#node76]
-test/micro/testObject.js:36:1: [info] Abstract value: [@Number#node81]
-test/micro/testObject.js:37:1: [info] Abstract value: [@String#node85]
+test/micro/testObject.js:33:1: [info] Abstract value: [@Object#node62]
+test/micro/testObject.js:34:1: [info] Abstract value: [@Object#node66]
+test/micro/testObject.js:35:1: [info] Abstract value: [@Object#node70]
+test/micro/testObject.js:36:1: [info] Abstract value: [@Number#node75{boxed-primitive=1.0}]
+test/micro/testObject.js:37:1: [info] Abstract value: [@String#node79{boxed-primitive="foo"}]
 test/micro/testObject.js:47:1: [info] Abstract value: "[object Object]"
 test/micro/testObject.js:48:1: [info] Abstract value: "1"
 test/micro/testObject.js:49:1: [info] Abstract value: "foo"
-test/micro/testObject.js:50:1: [info] Abstract value: [@Object#node76]
+test/micro/testObject.js:50:1: [info] Abstract value: [@Object#node70]
 test/micro/testObject.js:51:1: [info] Abstract value: 1.0
 test/micro/testObject.js:52:1: [info] Abstract value: "foo"

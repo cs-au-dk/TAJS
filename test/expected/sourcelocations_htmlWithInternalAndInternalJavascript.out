@@ -1,2 +1,3 @@
+test/sourcelocations/htmlWithInternalAndInternalJavascript.html: [definite] Exceptional program exit is unreachable
 test/sourcelocations/htmlWithInternalAndInternalJavascript.html:9:5: [definite] The variable htmlVar is never used
 test/sourcelocations/htmlWithInternalAndInternalJavascript.html:14:5: [definite] The variable htmlVar2 is never used

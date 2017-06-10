@@ -1,14 +1,11 @@
-test/1k2012love/1257.js:23:9: [maybe] TypeError, accessing property of null/undefined
-test/1k2012love/shim.js:8:9: [maybe] TypeError, accessing property of null/undefined
-test/1k2012love/shim.js:8:9: [maybe] TypeError, call to non-function
-test/1k2012love/shim.js:9:1: [maybe] TypeError, accessing property of null/undefined
-test/1k2012love/shim.js:6:9: [maybe] Reading absent property body
-test/1k2012love/shim.js:8:9: [maybe] Reading absent property getContext
-test/1k2012love/shim.js:9:1: [maybe] Reading absent property body
+test/1k2012love/1257.js:18:46: [maybe] ReferenceError, reading absent variable rn
+test/1k2012love/1257.js:18:68: [maybe] ReferenceError, reading absent variable rn
+test/1k2012love/1257.js:32:23: [maybe] ReferenceError, reading absent variable rn
+test/1k2012love/1257.js:32:30: [maybe] ReferenceError, reading absent variable rn
+test/1k2012love/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1257.js: [maybe] Uncaught exception, constructed at [test/1k2012love/1257.js:18:46, test/1k2012love/1257.js:18:68, test/1k2012love/1257.js:32:23, test/1k2012love/1257.js:32:30, test/1k2012love/shim.js:9:5]
 test/1k2012love/1257.js:18:7: [maybe] Converting undefined to string
 test/1k2012love/1257.js:18:20: [maybe] Reading absent property (computed name)
 test/1k2012love/1257.js:23:38: [maybe] Reading absent property (computed name)
 test/1k2012love/1257.js:25:23: [maybe] Reading absent property (computed name)
 test/1k2012love/1257.js:30:38: [maybe] Reading absent property (computed name)
-test/1k2012love/shim.js:7:9: [maybe] Reading absent property (computed name)
-test/1k2012love/shim.js,test/1k2012love/1257.js: [maybe] Uncaught exception, constructed at [test/1k2012love/1257.js:23:9, test/1k2012love/shim.js:8:9, test/1k2012love/shim.js:9:1]

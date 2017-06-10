@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,6 @@
 package dk.brics.tajs.analysis.dom.event;
 
 import dk.brics.tajs.analysis.Solver;
-import dk.brics.tajs.lattice.State;
 
 /**
  * Initial State Builder for DOM Events.
@@ -37,6 +36,7 @@ public class EventBuilder {
         EventListener.build(c);
         EventException.build(c);
         DocumentEvent.build(c);
+        HashChangeEvent.build(c);
         MutationEvent.build(c);
         UIEvent.build(c);
         KeyboardEvent.build(c);

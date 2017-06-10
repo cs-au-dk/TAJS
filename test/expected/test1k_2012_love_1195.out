@@ -1,20 +1,63 @@
+test/1k2012love/1195.js:14:38: [maybe] ReferenceError, reading absent variable K
+test/1k2012love/1195.js:17:2: [maybe] ReferenceError, reading absent variable c
+test/1k2012love/1195.js:17:11: [maybe] ReferenceError, reading absent variable W
+test/1k2012love/1195.js:18:8: [maybe] ReferenceError, reading absent variable W
+test/1k2012love/1195.js:18:10: [maybe] ReferenceError, reading absent variable W
+test/1k2012love/1195.js:19:2: [maybe] ReferenceError, reading absent variable a
+test/1k2012love/1195.js:21:13: [maybe] ReferenceError, reading absent variable E
 test/1k2012love/1195.js:23:12: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1195.js:24:25: [maybe] ReferenceError, reading absent variable W
+test/1k2012love/1195.js:25:8: [maybe] ReferenceError, reading absent variable t
+test/1k2012love/1195.js:26:11: [maybe] ReferenceError, reading absent variable W
+test/1k2012love/1195.js:28:14: [maybe] ReferenceError, reading absent variable C
+test/1k2012love/1195.js:29:29: [maybe] ReferenceError, reading absent variable C
 test/1k2012love/1195.js:29:29: [maybe] TypeError, accessing property of null/undefined
 test/1k2012love/1195.js:29:46: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1195.js:34:15: [maybe] ReferenceError, reading absent variable v
+test/1k2012love/1195.js:34:20: [maybe] ReferenceError, reading absent variable R
+test/1k2012love/1195.js:35:13: [maybe] ReferenceError, reading absent variable R
+test/1k2012love/1195.js:35:17: [maybe] ReferenceError, reading absent variable W
+test/1k2012love/1195.js:35:24: [maybe] ReferenceError, reading absent variable R
+test/1k2012love/1195.js:35:28: [maybe] ReferenceError, reading absent variable W
+test/1k2012love/1195.js:35:30: [maybe] ReferenceError, reading absent variable w
+test/1k2012love/1195.js:36:3: [maybe] ReferenceError, reading absent variable t
+test/1k2012love/1195.js:36:6: [maybe] ReferenceError, reading absent variable t
+test/1k2012love/1195.js:38:14: [maybe] ReferenceError, reading absent variable B
 test/1k2012love/1195.js:41:11: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1195.js:41:15: [maybe] ReferenceError, reading absent variable n
 test/1k2012love/1195.js:47:13: [maybe] TypeError, accessing property of null/undefined
 test/1k2012love/1195.js:47:20: [maybe] TypeError, accessing property of null/undefined
 test/1k2012love/1195.js:47:28: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1195.js:47:35: [maybe] ReferenceError, reading absent variable W
 test/1k2012love/1195.js:47:47: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1195.js:50:5: [maybe] ReferenceError, reading absent variable P
+test/1k2012love/1195.js:53:2: [maybe] ReferenceError, reading absent variable X
+test/1k2012love/1195.js:53:5: [maybe] ReferenceError, reading absent variable K
+test/1k2012love/1195.js:54:2: [maybe] ReferenceError, reading absent variable Y
+test/1k2012love/1195.js:55:16: [maybe] ReferenceError, reading absent variable L
+test/1k2012love/1195.js:56:6: [maybe] ReferenceError, reading absent variable L
+test/1k2012love/1195.js:58:5: [maybe] ReferenceError, reading absent variable w
 test/1k2012love/1195.js:58:8: [maybe] ReferenceError, reading absent variable q
+test/1k2012love/1195.js:58:10: [maybe] ReferenceError, reading absent variable w
+test/1k2012love/1195.js:58:13: [maybe] ReferenceError, reading absent variable L
+test/1k2012love/1195.js:58:16: [maybe] ReferenceError, reading absent variable W
 test/1k2012love/1195.js:58:19: [maybe] ReferenceError, reading absent variable Q
+test/1k2012love/1195.js:58:21: [maybe] ReferenceError, reading absent variable W
+test/1k2012love/1195.js:58:24: [maybe] ReferenceError, reading absent variable L
+test/1k2012love/1195.js:59:3: [maybe] ReferenceError, reading absent variable L
 test/1k2012love/1195.js:60:24: [maybe] ReferenceError, reading absent variable q
 test/1k2012love/1195.js:60:30: [maybe] ReferenceError, reading absent variable Q
+test/1k2012love/1195.js:63:12: [maybe] ReferenceError, reading absent variable C
+test/1k2012love/1195.js:63:17: [maybe] ReferenceError, reading absent variable C
 test/1k2012love/1195.js:63:17: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1195.js:63:25: [maybe] ReferenceError, reading absent variable W
+test/1k2012love/1195.js:63:28: [maybe] ReferenceError, reading absent variable v
 test/1k2012love/1195.js:63:32: [maybe] TypeError, accessing property of null/undefined
-test/1k2012love/shim.js:8:9: [maybe] TypeError, accessing property of null/undefined
-test/1k2012love/shim.js:8:9: [maybe] TypeError, call to non-function
-test/1k2012love/shim.js:9:1: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1195.js:65:13: [maybe] ReferenceError, reading absent variable n
+test/1k2012love/1195.js:66:13: [maybe] ReferenceError, reading absent variable P
+test/1k2012love/1195.js:66:19: [maybe] ReferenceError, reading absent variable v
+test/1k2012love/1195.js:68:21: [maybe] ReferenceError, reading absent variable a
+test/1k2012love/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
 test/1k2012love/1195.js:23:12: [maybe] Reading absent property s
 test/1k2012love/1195.js:24:12: [maybe] Reading absent property s
 test/1k2012love/1195.js:24:16: [maybe] Reading absent property e
@@ -44,9 +87,7 @@ test/1k2012love/1195.js:48:26: [maybe] Reading absent property z
 test/1k2012love/1195.js:50:25: [maybe] Reading absent property z
 test/1k2012love/1195.js:63:17: [maybe] Reading absent property x
 test/1k2012love/1195.js:63:32: [maybe] Reading absent property h
-test/1k2012love/shim.js:6:9: [maybe] Reading absent property body
-test/1k2012love/shim.js:8:9: [maybe] Reading absent property getContext
-test/1k2012love/shim.js:9:1: [maybe] Reading absent property body
+test/1k2012love/1195.js: [maybe] Uncaught exception, constructed at [test/1k2012love/1195.js:14:38, test/1k2012love/1195.js:17:2, test/1k2012love/1195.js:17:11, test/1k2012love/1195.js:18:8, test/1k2012love/1195.js:18:10, test/1k2012love/1195.js:19:2, test/1k2012love/1195.js:21:13, test/1k2012love/1195.js:23:12, test/1k2012love/1195.js:24:25, test/1k2012love/1195.js:25:8, test/1k2012love/1195.js:26:11, test/1k2012love/1195.js:28:14, test/1k2012love/1195.js:29:29, test/1k2012love/1195.js:29:46, test/1k2012love/1195.js:34:15, test/1k2012love/1195.js:34:20, test/1k2012love/1195.js:35:13, test/1k2012love/1195.js:35:17, test/1k2012love/1195.js:35:24, test/1k2012love/1195.js:35:28, test/1k2012love/1195.js:35:30, test/1k2012love/1195.js:36:3, test/1k2012love/1195.js:36:6, test/1k2012love/1195.js:38:14, test/1k2012love/1195.js:41:11, test/1k2012love/1195.js:41:15, test/1k2012love/1195.js:47:13, test/1k2012love/1195.js:47:20, test/1k2012love/1195.js:47:28, test/1k2012love/1195.js:47:35, test/1k2012love/1195.js:47:47, test/1k2012love/1195.js:50:5, test/1k2012love/1195.js:53:2, test/1k2012love/1195.js:53:5, test/1k2012love/1195.js:54:2, test/1k2012love/1195.js:55:16, test/1k2012love/1195.js:56:6, test/1k2012love/1195.js:58:5, test/1k2012love/1195.js:58:8, test/1k2012love/1195.js:58:10, test/1k2012love/1195.js:58:13, test/1k2012love/1195.js:58:16, test/1k2012love/1195.js:58:19, test/1k2012love/1195.js:58:21, test/1k2012love/1195.js:58:24, test/1k2012love/1195.js:59:3, test/1k2012love/1195.js:60:24, test/1k2012love/1195.js:60:30, test/1k2012love/1195.js:63:12, test/1k2012love/1195.js:63:17, test/1k2012love/1195.js:63:25, test/1k2012love/1195.js:63:28, test/1k2012love/1195.js:63:32, test/1k2012love/1195.js:65:13, test/1k2012love/1195.js:66:13, test/1k2012love/1195.js:66:19, test/1k2012love/1195.js:68:21, test/1k2012love/shim.js:9:5]
 test/1k2012love/1195.js:22:5: [maybe] Reading absent property (computed name)
 test/1k2012love/1195.js:23:3: [maybe] Conversion to number yields NaN
 test/1k2012love/1195.js:24:3: [maybe] Conversion to number yields NaN
@@ -86,5 +127,3 @@ test/1k2012love/1195.js:63:17: [maybe] Reading absent property (computed name)
 test/1k2012love/1195.js:63:31: [maybe] Conversion to number yields NaN
 test/1k2012love/1195.js:63:32: [maybe] Reading absent property (computed name)
 test/1k2012love/1195.js:68:21: [maybe] Conversion to number yields NaN
-test/1k2012love/shim.js:7:9: [maybe] Reading absent property (computed name)
-test/1k2012love/shim.js,test/1k2012love/1195.js: [maybe] Uncaught exception, constructed at [test/1k2012love/1195.js:23:12, test/1k2012love/1195.js:29:29, test/1k2012love/1195.js:29:46, test/1k2012love/1195.js:41:11, test/1k2012love/1195.js:47:13, test/1k2012love/1195.js:47:20, test/1k2012love/1195.js:47:28, test/1k2012love/1195.js:47:47, test/1k2012love/1195.js:58:8, test/1k2012love/1195.js:58:19, test/1k2012love/1195.js:60:24, test/1k2012love/1195.js:60:30, test/1k2012love/1195.js:63:17, test/1k2012love/1195.js:63:32, test/1k2012love/shim.js:8:9, test/1k2012love/shim.js:9:1]

@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -47,7 +47,7 @@ public class JSJson {
      */
     public static Value makeAnyJSONObject(Solver.SolverInterface c) {
         State s = c.getState();
-        ObjectLabel objLabel = new ObjectLabel(c.getNode(), ObjectLabel.Kind.OBJECT);
+        ObjectLabel objLabel = ObjectLabel.make(c.getNode(), ObjectLabel.Kind.OBJECT);
         s.newObject(objLabel);
         s.writeInternalPrototype(objLabel, Value.makeObject(InitialStateBuilder.OBJECT_PROTOTYPE));
 

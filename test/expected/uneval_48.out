@@ -1,1 +1,4 @@
-TAJS-dynamic-code(test/uneval/uneval48.js:6:5):1:26: [definite] Reading 'this' yields the global object
+TAJS-dynamic-code(test/uneval/uneval48.js:6:5):1:13: [definite] ReferenceError, reading absent variable globalThis
+test/uneval/uneval48.js:3:9: [definite] The variable globalThis is never used
+TAJS-dynamic-code(test/uneval/uneval48.js:6:5):1:28: [definite] Unreachable code
+test/uneval/uneval48.js: [maybe] Uncaught exception, constructed at [TAJS-dynamic-code(test/uneval/uneval48.js:6:5):1:13]

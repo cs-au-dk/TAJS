@@ -10,15 +10,11 @@ test/1k2012love/1209.js:41:33: [definite] Dead assignment, property 21 is never 
 test/1k2012love/1209.js:41:40: [definite] Dead assignment, property 28 is never read
 test/1k2012love/1209.js:41:47: [definite] Dead assignment, property 33 is never read
 test/1k2012love/1209.js:29:3: [definite] The variable xPos is never used
-test/1k2012love/1209.js:60:2: [maybe] TypeError, accessing property of null/undefined
 test/1k2012love/1209.js:95:11: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1209.js:126:4: [maybe] RangeError, assigning invalid value to array 'length' property
 test/1k2012love/1209.js:130:3: [maybe] TypeError, accessing property of null/undefined
-test/1k2012love/shim.js:8:9: [maybe] TypeError, accessing property of null/undefined
-test/1k2012love/shim.js:8:9: [maybe] TypeError, call to non-function
-test/1k2012love/shim.js:9:1: [maybe] TypeError, accessing property of null/undefined
-test/1k2012love/shim.js:6:9: [maybe] Reading absent property body
-test/1k2012love/shim.js:8:9: [maybe] Reading absent property getContext
-test/1k2012love/shim.js:9:1: [maybe] Reading absent property body
+test/1k2012love/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1209.js: [maybe] Uncaught exception, constructed at [test/1k2012love/1209.js:95:11, test/1k2012love/1209.js:126:4, test/1k2012love/1209.js:130:3, test/1k2012love/shim.js:9:5]
 test/1k2012love/1209.js:56:3: [maybe] Conversion to number yields NaN
 test/1k2012love/1209.js:73:4: [maybe] Reading absent property (computed name)
 test/1k2012love/1209.js:86:15: [maybe] Conversion to number yields NaN
@@ -32,7 +28,7 @@ test/1k2012love/1209.js:102:20: [maybe] Reading absent property (computed name)
 test/1k2012love/1209.js:106:18: [maybe] Reading absent property (computed name)
 test/1k2012love/1209.js:114:8: [maybe] Reading absent property (computed name)
 test/1k2012love/1209.js:121:35: [maybe] Conversion to number yields NaN
+test/1k2012love/1209.js:126:4: [maybe] Conversion from string to number yields NaN
+test/1k2012love/1209.js:126:4: [maybe] Converting object to number
 test/1k2012love/1209.js:130:3: [maybe] Reading absent property (computed name)
 test/1k2012love/1209.js:136:13: [maybe] Conversion to number yields NaN
-test/1k2012love/shim.js:7:9: [maybe] Reading absent property (computed name)
-test/1k2012love/shim.js,test/1k2012love/1209.js: [maybe] Uncaught exception, constructed at [test/1k2012love/1209.js:60:2, test/1k2012love/1209.js:95:11, test/1k2012love/1209.js:130:3, test/1k2012love/shim.js:8:9, test/1k2012love/shim.js:9:1]

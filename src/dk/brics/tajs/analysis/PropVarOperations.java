@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -43,6 +43,7 @@ import java.util.Iterator;
 import java.util.Set;
 
 import static dk.brics.tajs.analysis.InitialStateBuilder.GLOBAL;
+import static dk.brics.tajs.lattice.Property.Kind.ORDINARY;
 import static dk.brics.tajs.util.Collections.newList;
 import static dk.brics.tajs.util.Collections.newSet;
 import static dk.brics.tajs.util.Collections.singleton;
@@ -54,12 +55,15 @@ public class PropVarOperations {
 
     private static Logger log = Logger.getLogger(PropVarOperations.class);
 
+    private final Unsoundness unsoundness;
+
     private Solver.SolverInterface c;
 
     /**
      * Constructs a new PropVarOperations object.
      */
-    public PropVarOperations() {
+    public PropVarOperations(Unsoundness unsoundness) {
+        this.unsoundness = unsoundness;
     }
 
     /**
@@ -170,8 +174,8 @@ public class PropVarOperations {
                                         }
 
                                         @Override
-                                        public Set<ObjectLabel> prepareThis(State caller_state, State callee_state) {
-                                            return singleton(base);
+                                        public Value getThis() {
+                                            return Value.makeObject(base);
                                         }
 
                                         @Override
@@ -186,7 +190,7 @@ public class PropVarOperations {
 
                                         @Override
                                         public Value getArg(int i) {
-                                            return Value.makeUndef();
+                                            return Value.makeAbsent();
                                         }
 
                                         @Override
@@ -220,7 +224,7 @@ public class PropVarOperations {
                             }
                         }
                         // if maybe absent, proceed along prototype chain
-                        if (v.isMaybeAbsent()) {
+                        if (v.isMaybeAbsent() && !unsoundness.maySkipPrototypesForPropertyRead(c.getNode(), propertystr, v)) {
                             Value proto = UnknownValueResolver.getInternalPrototype(l, c.getState(), false);
                             ol2.addAll(proto.getObjectLabels());
                             if (proto.isMaybeAbsent() || proto.isMaybeNull()) {
@@ -241,6 +245,9 @@ public class PropVarOperations {
      */
     private Value readStringPropertyDirect(ObjectLabel str, Str propertystr) {
         Value internal_value = UnknownValueResolver.getInternalValue(str, c.getState(), false);
+        if (internal_value.isNone()) {
+            return Value.makeNone();
+        }
         Value character = readStringCharacter(internal_value, propertystr);
         Value length = readStringLength(internal_value, propertystr);
         Value result = Value.makeNone();
@@ -272,10 +279,10 @@ public class PropVarOperations {
             result = result.joinAbsent();
         }
         if (propertystr.isMaybeStr("length")) {
-            if (str.isMaybeFuzzyStr()) {
-                result = result.joinAnyNumUInt();
-            } else {
+            if (str.isMaybeSingleStr()) {
                 result = result.joinNum(str.getStr().length());
+            } else {
+                result = result.joinAnyNumUInt();
             }
         }
         return result.isNone() ? Value.makeAbsent() : result;
@@ -343,8 +350,12 @@ public class PropVarOperations {
             values.add(UnknownValueResolver.getDefaultNonArrayProperty(objlabel, state));
         // the calls to UnknownValueResolver above have materialized all relevant properties
         for (String propertyname : state.getObject(objlabel, false).getPropertyNames())
-            if (propertystr.isMaybeStr(propertyname))
+            if (propertystr.isMaybeStr(propertyname)) {
+                if (unsoundness.maySkipSpecificDynamicPropertyRead(c.getNode(), propertyname)) {
+                    continue;
+                }
                 values.add(UnknownValueResolver.getProperty(objlabel, propertyname, state, false));
+            }
         return UnknownValueResolver.join(values, state);
     }
 
@@ -477,6 +488,7 @@ public class PropVarOperations {
     private void writeProperty(ObjectProperty objprop, Value value,
                                boolean process_attributes, boolean value_has_attributes, boolean set_modified, boolean allow_overwrite, boolean force_weak, boolean not_invoke_setters) {
         State state = c.getState();
+        final Value origValue = value; // keep the given value for setters
         Value oldvalue = UnknownValueResolver.getValue(objprop, state, true);
         if (!allow_overwrite && oldvalue.isNotAbsent()) // not allowed to overwrite and definitely present already, so just return
             return; // TODO: warn that the operation definitely has no effect? (double declaration of variable)
@@ -495,7 +507,7 @@ public class PropVarOperations {
                     value = value.removeAttributes(); // 8.6.2.2 item 6
             } else if (oldvalue.isNotAbsent()) // definitely present already
                 value = value.setAttributes(oldvalue); // 8.6.2.2 item 4
-            else {// maybe present already
+            else { // maybe present already
                 if (value_has_attributes)
                     value = value.setAttributes(oldvalue).join(value);
                 else
@@ -536,7 +548,6 @@ public class PropVarOperations {
             if (set_modified || oldvalue.isMaybeModified())
                 value = value.joinModified();
             checkProperty(value);
-            final Value theValue = value;
             ParallelTransfer pt = new ParallelTransfer(c);
             boolean hasDummySetter = false;
             if (maybeSetterCall) {
@@ -571,8 +582,8 @@ public class PropVarOperations {
                             }
 
                             @Override
-                            public Set<ObjectLabel> prepareThis(State caller_state, State callee_state) {
-                                return singleton(objprop.getObjectLabel());
+                            public Value getThis() {
+                                return Value.makeObject(objprop.getObjectLabel());
                             }
 
                             @Override
@@ -588,9 +599,9 @@ public class PropVarOperations {
                             @Override
                             public Value getArg(int i) {
                                 if (i == 0) {
-                                    return theValue;
+                                    return origValue.removeAttributes();
                                 } else {
-                                    return Value.makeUndef();
+                                    return Value.makeAbsent();
                                 }
                             }
 
@@ -619,14 +630,22 @@ public class PropVarOperations {
                 if (!value.equals(oldvalue)) { // don't request writable obj if the value doesn't change anyway
                     Value finalValue = value;
                     pt.add(() -> {
-                        Value value2 = finalValue;
                         if (!not_invoke_setters) {
-                            value2 = updateArrayLength(objprop, value2, c);
+                            boolean wroteToArrayLength = updateArrayLength(objprop, finalValue, c);
+                            if (wroteToArrayLength) {
+                                return;
+                            }
                         }
-                        if (objprop.getProperty().getKind() == Property.Kind.ORDINARY && objprop.getPropertyName().equals(Property.__PROTO__)) {
-                            c.getState().getObject(objprop.getObjectLabel(), true).setInternalPrototype(finalValue); // FIXME: unsound, only writing to __proto__ on non-DPAs
-                        } else {
-                            c.getState().getObject(objprop.getObjectLabel(), true).setValue(objprop, value2);
+                        boolean writeInternalPrototype_fixed = objprop.getProperty().getKind() == Property.Kind.ORDINARY && Property.__PROTO__.equals(objprop.getPropertyName());
+                        boolean writeProperty = !writeInternalPrototype_fixed;
+                        boolean writeInternalPrototype_dynamic = objprop.getProperty().getKind() == Property.Kind.DEFAULT_NONARRAY;
+                        boolean writeInternalPrototype = writeInternalPrototype_fixed || writeInternalPrototype_dynamic;
+                        if (writeInternalPrototype && !unsoundness.maySkipInternalProtoPropertyWrite(c.getNode(), objprop)) {
+                            // TODO: make use of c.getState().writeInternalPrototype(objprop.getObjectLabel(), finalValue) instead? (GitHub #356) + currently ignoring old value of the internal prototype!
+                            c.getState().getObject(objprop.getObjectLabel(), true).setInternalPrototype(finalValue);
+                        }
+                        if (writeProperty && !unsoundness.maySkipPropertyWrite(c.getNode(), objprop)) {
+                            c.getState().getObject(objprop.getObjectLabel(), true).setValue(objprop, finalValue);
                         }
                     });
                 } else {
@@ -634,7 +653,7 @@ public class PropVarOperations {
                 }
             }
             if (!not_invoke_setters && objprop.getObjectLabel().isHostObject()) {
-                pt.add(() -> evaluateHostObjectSetter(objprop.getObjectLabel(), objprop.getProperty(), theValue));
+                pt.add(() -> evaluateHostObjectSetter(objprop.getObjectLabel(), objprop.getProperty(), origValue.removeAttributes()));
             }
             pt.complete();
         }
@@ -654,10 +673,11 @@ public class PropVarOperations {
 
     /**
      * Updates the length property of arrays in accordance with 15.4.5.1. Also models truncation of the array if the 'length' property is being set.
+     * @return true iff the write is to the length property of an array object (in which case all required writes have been performed by this method)
      */
-    private Value updateArrayLength(ObjectProperty objprop, Value value, Solver.SolverInterface c) {
+    private boolean updateArrayLength(ObjectProperty objprop, Value value, Solver.SolverInterface c) {
         if (objprop.getObjectLabel().getKind() != ObjectLabel.Kind.ARRAY)
-            return value;
+            return false;
         Str propertystr = objprop.getProperty().toStr();
         boolean maybe_length = propertystr.isMaybeStr("length");
         boolean maybe_index = propertystr.isMaybeStrSomeUInt();
@@ -669,40 +689,49 @@ public class PropVarOperations {
                 Value numvalue = Conversion.toNumber(value, c);
                 if (!numvalue.isNone()) {
                     // throw RangeError exception if illegal value
-                    boolean invalid = false;
+                    boolean maybeInvalid = false;
+                    boolean maybeValid = false;
                     Double n = numvalue.getNum();
                     if (numvalue.isMaybeSingleNum() && n != null) {
                         long uintvalue = Conversion.toUInt32(n);
-                        if (uintvalue != n)
-                            invalid = true;
+                        if (uintvalue != n) {
+                            maybeInvalid = true;
+                        } else {
+                            maybeValid = true;
+                        }
                         numvalue = Value.makeNum(uintvalue);
-                    } else if (numvalue.isMaybeOtherThanNumUInt()) {
-                        invalid = true;
-                        numvalue = Value.makeAnyNumUInt();
+                    } else {
+                        if (numvalue.isMaybeOtherThanNumUInt()) {
+                            maybeInvalid = true;
+                        }
+                        if (numvalue.isMaybeNumUInt()) {
+                            maybeValid = true;
+                        }
+                        numvalue = numvalue.restrictToNotNumOther().restrictToNotNaN().restrictToNotInf();
                     }
-                    if (invalid) {
+
+                    boolean definitely_length = propertystr.isMaybeSingleStr() && propertystr.getStr().equals("length");
+                    if (maybeInvalid) {
                         Exceptions.throwRangeError(c);
                         c.getMonitoring().addMessage(c.getNode(), Message.Severity.HIGH, "RangeError, assigning invalid value to array 'length' property");
-                    }
-                    // truncate
-                    Double num = numvalue.getNum();
-                    boolean definitely_length = propertystr.isMaybeSingleStr() && propertystr.getStr().equals("length");
-                    if (definitely_length && num != null && old_length != null && old_length - num < 25) { // note: bound to avoid too many iterations
-                        for (int i = num.intValue(); i < old_length.intValue(); i++) {
-                            deleteProperty(Collections.singleton(objprop.getObjectLabel()), Value.makeStr(Integer.toString(i)), false);
+                        if (definitely_length && !maybeValid) {
+                            c.getState().setToNone();
                         }
-                    } else {
-                        deleteProperty(Collections.singleton(objprop.getObjectLabel()), Value.makeAnyStrUInt(), false);
                     }
-                    // write 'length' property
-                    numvalue = numvalue.setAttributes(true, true, false);
-                    c.getState().getObject(objprop.getObjectLabel(), true).setProperty("length", numvalue.joinModified());
-                    if (definitely_length) {
-                        value = numvalue;
-                    } else {
-                        value = value.join(numvalue);
+                    if (maybeValid) {
+                        // truncate
+                        Double num = numvalue.getNum();
+                        if (definitely_length && num != null && old_length != null && old_length - num < 25) { // note: bound to avoid too many iterations
+                            for (int i = num.intValue(); i < old_length.intValue(); i++) {
+                                deleteProperty(Collections.singleton(objprop.getObjectLabel()), Value.makeStr(Integer.toString(i)), false);
+                            }
+                        } else {
+                            deleteProperty(Collections.singleton(objprop.getObjectLabel()), Value.makeAnyStrUInt(), false);
+                        }
+                        // write 'length' property
+                        numvalue = numvalue.setAttributes(true, true, false);
+                        c.getState().getObject(objprop.getObjectLabel(), true).setProperty("length", numvalue.joinModified());
                     }
-                    value = value.joinModified();
                 }
             }
             // step 9-10 assignment to array index, need to magically update 'length'
@@ -716,7 +745,7 @@ public class PropVarOperations {
                 c.getState().getObject(objprop.getObjectLabel(), true).setProperty("length", v.setAttributes(true, true, false).joinModified());
             }
         }
-        return value;
+        return objprop.getKind() == ORDINARY && "length".equals(objprop.getPropertyName());
     }
 
     /**
@@ -736,8 +765,9 @@ public class PropVarOperations {
 
     /**
      * Assigns the given value to the given property of the given object.
-     * Attributes are taken from the given value. Setters are not invoked.
+     * Attributes are set to (false,false,false). Setters are not invoked.
      * Modified is set on all values being written.
+     *
      */
     public void writeProperty(ObjectLabel objlabel, String propertyname, Value value) {
         writePropertyWithAttributes(objlabel, propertyname, value.setAttributes(false, false, false));
@@ -778,7 +808,7 @@ public class PropVarOperations {
 
     /**
      * Assigns the given value to the given property of the given object, with attributes.
-     * Attributes are taken from the given value.
+     * Attributes are taken from the given value. Setters are not invoked.
      * Modified is set on all values being written.
      */
     public void writePropertyWithAttributes(ObjectLabel objlabel, String propertyname, Value value) {
@@ -794,14 +824,22 @@ public class PropVarOperations {
     }
 
     /**
+     * @see #writeVariable(String, Value, boolean, boolean)
+     */
+    public Set<ObjectLabel> writeVariable(String varname, Value value, boolean set_modified) {
+        return writeVariable(varname, value, set_modified, false);
+    }
+
+    /**
      * Assigns the given value to the given variable.
      *
      * @param varname the variable name
      * @param value   the new value
      * @param set_modified if set, the modified flag is set on written values (false for 'assume' operations)
+     * @param not_invoke_setters if set, do not invoke setter (e.g. for assume-node variable updates)
      * @return the set of objects where the variable may be stored (i.e. the base objects)
      */
-    public Set<ObjectLabel> writeVariable(String varname, Value value, boolean set_modified) {
+    public Set<ObjectLabel> writeVariable(String varname, Value value, boolean set_modified, boolean not_invoke_setters) {
         State state = c.getState();
         value.assertNonEmpty();
         // 10.1.4 Identifier Resolution
@@ -827,7 +865,10 @@ public class PropVarOperations {
                         // 4. Set the value of the property to V. The attributes of the property are not changed.
                         // 5. Return.
                         // 6. Create a property with name P, set its value to V and give it empty attributes.
-                        writeProperty(ObjectProperty.makeOrdinary(objlabel, varname), value, true, false, set_modified, true, false, false);
+                        if (h.isMaybeFalseButNotTrue() && !it.hasNext() && unsoundness.maySkipDeclaringGlobalVariablesImplicitly(c.getNode(), varname)) {
+                            return;
+                        }
+                        writeProperty(ObjectProperty.makeOrdinary(objlabel, varname), value, true, false, set_modified, true, false, not_invoke_setters);
                         objlabels.add(objlabel);
                     });
                 }
@@ -867,33 +908,44 @@ public class PropVarOperations {
     }
 
     /**
+     * @see #readVariable(String, Collection, boolean)
+     */
+    public Value readVariable(String varname, Collection<ObjectLabel> base_objs) {
+        return readVariable(varname, base_objs, false);
+    }
+
+    /**
      * Returns the value of the given variable.
      *
      * @param varname   the variable name
      * @param base_objs collection where base objects are added (ignored if null)
+     * @param not_invoke_getters if set, do not invoke getter (e.g. for assume-node variable updates)
      */
-    public Value readVariable(String varname, Collection<ObjectLabel> base_objs) {// FIXME: use ParallelTransfer, github #315
-        State state = c.getState();
+    public Value readVariable(String varname, Collection<ObjectLabel> base_objs, boolean not_invoke_getters) {
         Collection<Value> values = newList();
-        boolean definitely_found = false;
-        for (Set<ObjectLabel> sc : ScopeChain.iterable(state.getExecutionContext().getScopeChain())) {
-            definitely_found = true;
+        boolean definitely_found_at_some_level = false;
+        for (Set<ObjectLabel> sc : ScopeChain.iterable(c.getState().getExecutionContext().getScopeChain())) {
+            boolean definitely_found_at_current_level = true;
             for (ObjectLabel objlabel : sc) {
-                Value v = readPropertyRaw(Collections.singleton(objlabel), Value.makeTemporaryStr(varname), false, false);
+                Value v = readPropertyRaw(Collections.singleton(objlabel), Value.makeTemporaryStr(varname), false, not_invoke_getters);
                 if (v.isMaybePresent()) { // found one (maybe)
                     values.add(v.setBottomPropertyData());
                     if (base_objs != null)
                         base_objs.add(objlabel); // collecting the object from the scope chain (although the property may be in its prototype chain)
                 }
-                if (v.isMaybeAbsent())
-                    definitely_found = false;
+                if (v.isMaybeAbsent()) {
+                    definitely_found_at_current_level = false;
+                }
             }
-            if (definitely_found)
+            if (definitely_found_at_current_level) {
+                definitely_found_at_some_level = true;
                 break;
+            }
         }
-        if (!definitely_found)
+        if (!definitely_found_at_some_level) {
             values.add(Value.makeAbsent()); // end of scope chain, so add absent
-        Value res = UnknownValueResolver.join(values, state);
+        }
+        Value res = UnknownValueResolver.join(values, c.getState());
         if (log.isDebugEnabled())
             log.debug("readVariable(" + varname + ") = " + res + (base_objs != null ? " at " + base_objs : ""));
         return res;

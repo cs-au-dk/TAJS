@@ -1,1 +1,2 @@
-TAJS-dynamic-code(test/uneval/uneval38.js:1:1):1:2: [definite] Unreachable function
+test/uneval/uneval38.js: [definite] Exceptional program exit is unreachable
+TAJS-dynamic-code(test/uneval/uneval38.js:1:1):1:1: [definite] Unreachable function

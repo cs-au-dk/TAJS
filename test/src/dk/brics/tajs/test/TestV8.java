@@ -80,7 +80,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 		Misc.checkSystemOutput();
 	}
 
-	// see https://github.com/cs-au-dk/TAJS-private/issues/183
+	// TODO: github #183
 	@Test
 	public void testV8_arguments() throws Exception
 	{
@@ -284,7 +284,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 		Misc.checkSystemOutput();
 	}
 
-	// `const` unsupported, see https://github.com/cs-au-dk/TAJS-private/issues/182
+	// TODO: `const` unsupported, github #182
 	@Test(expected = AnalysisLimitationException.AnalysisPrecisionLimitationException.class)
 	public void testV8_const_redecl() throws Exception
 	{
@@ -295,7 +295,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 		Misc.checkSystemOutput();
 	}
 
-	// `const` unsupported, see https://github.com/cs-au-dk/TAJS-private/issues/182
+	// TODO: `const` unsupported, github #182
 	@Test
 	public void testV8_cons_test() throws Exception
 	{
@@ -838,7 +838,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 		Misc.checkSystemOutput();
 	}
 
-	// see https://github.com/cs-au-dk/TAJS-private/issues/184
+	// TODO: github #184
 	@Test
 	public void testV8_extra_commas() throws Exception
 	{
@@ -885,7 +885,6 @@ public class TestV8 { // TODO: check expected output for TestV8
 	@Test
 	public void testV8_fun_as_prototype() throws Exception
 	{
-		Options.get().enableUnsound();
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/v8tests/prologue.js", "test/v8tests/fun-as-prototype.js"};
@@ -893,7 +892,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 		Misc.checkSystemOutput();
 	}
 
-	// see https://github.com/cs-au-dk/TAJS-private/issues/184
+	// TODO: github #184
 	@Test
 	public void testV8_fun_name() throws Exception
 	{
@@ -927,7 +926,6 @@ public class TestV8 { // TODO: check expected output for TestV8
 	@Test
 	public void testV8_function_names() throws Exception
 	{
-		Options.get().enableUnsound();
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/v8tests/prologue.js", "test/v8tests/function-names.js"};
@@ -967,7 +965,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 		Misc.checkSystemOutput();
 	}
 
-	// See GitHub #147
+	// TODO: GitHub #147
 	@Test
 	public void testV8_function() throws Exception
 	{
@@ -999,7 +997,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 		Misc.checkSystemOutput();
 	}
 
-	// see https://github.com/cs-au-dk/TAJS-private/issues/3
+	// TODO: github #3
 	@Test
 	public void testV8_getter_in_value_prototype() throws Exception
 	{
@@ -1010,7 +1008,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 		Misc.checkSystemOutput();
 	}
 
-	// `const` unsupported, see https://github.com/cs-au-dk/TAJS-private/issues/182
+	// TODO: `const` unsupported, github #182
 	@Test
 	public void testV8_global_const_var_conflicts() throws Exception
 	{
@@ -1601,7 +1599,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 		Misc.checkSystemOutput();
 	}
 
-	// see https://github.com/cs-au-dk/TAJS-private/issues/183
+	// TODO: github #183
 	@Test
 	public void testV8_regexp_static() throws Exception
 	{
@@ -1642,7 +1640,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 		Misc.checkSystemOutput();
 	}
 
-	// `const` unsupported, see https://github.com/cs-au-dk/TAJS-private/issues/182
+	// TODO: `const` unsupported, github #182
 	@Test
 	public void testV8_smi_ops() throws Exception
 	{
@@ -1832,7 +1830,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 		Misc.run(args);
 	}
 
-	// see https://github.com/cs-au-dk/TAJS-private/issues/183
+	// TODO: github #183
 	@Test
 	public void testV8_this_in_callbacks() throws Exception
 	{

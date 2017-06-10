@@ -1,0 +1,16 @@
+<html>
+<head>
+<script type="text/javascript" src="jquery-hacked.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+         $("div.contentToChange p:not(.alert)")
+               .append("<strong class='addedtext'> This text was just appended to this paragraph</strong>");
+          $("strong.addedtext").remove();
+    });
+</script>
+</head>
+<body>
+<p>Test.</p>
+</body>
+
+</html>

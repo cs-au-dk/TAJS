@@ -1,3 +1,4 @@
+out/temp-sources/TestMicro.eventListenerRegistrationInEventHandlerVariants.js: [definite] Exceptional program exit is unreachable
 out/temp-sources/TestMicro.eventListenerRegistrationInEventHandlerVariants.js:24:2: [definite] Unreachable function indirect_click_load_registration
 out/temp-sources/TestMicro.eventListenerRegistrationInEventHandlerVariants.js:2:2: [info] Abstract value: "direct_click_click_registration invoked"
 out/temp-sources/TestMicro.eventListenerRegistrationInEventHandlerVariants.js:3:48: [info] Abstract value: "indirect_click_click_registration invoked"

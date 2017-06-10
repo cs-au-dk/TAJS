@@ -1,3 +1,4 @@
+test/micro/toString2.js: [definite] Exceptional program exit is unreachable
 test/micro/toString2.js:9:10: [maybe] Converting object to number
 test/micro/toString2.js:12:10: [maybe] Converting object to number
 test/micro/toString2.js:15:10: [maybe] Converting object to number

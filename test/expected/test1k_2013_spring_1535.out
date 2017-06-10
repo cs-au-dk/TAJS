@@ -1,20 +1,26 @@
-test/1k2013spring/shim.js:6:5: [definite] The variable b is never used
 test/1k2013spring/1535.js:37:3: [maybe] TypeError, accessing property of null/undefined
 test/1k2013spring/1535.js:38:3: [maybe] TypeError, accessing property of null/undefined
 test/1k2013spring/1535.js:39:3: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1535.js:41:2: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1535.js:59:4: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1535.js:65:2: [maybe] ReferenceError, reading absent variable a
+test/1k2013spring/1535.js:70:3: [maybe] TypeError, accessing property of null/undefined
 test/1k2013spring/1535.js:70:11: [maybe] TypeError, accessing property of null/undefined
 test/1k2013spring/1535.js:78:7: [maybe] TypeError, accessing property of null/undefined
-test/1k2013spring/shim.js:8:9: [maybe] TypeError, accessing property of null/undefined
-test/1k2013spring/shim.js:8:9: [maybe] TypeError, call to non-function
-test/1k2013spring/shim.js:9:1: [maybe] TypeError, accessing property of null/undefined
-test/1k2013spring/shim.js:6:9: [maybe] Reading absent property body
-test/1k2013spring/shim.js:8:9: [maybe] Reading absent property getContext
-test/1k2013spring/shim.js:9:1: [maybe] Reading absent property body
+test/1k2013spring/1535.js:129:26: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1535.js: [maybe] Uncaught exception, constructed at [test/1k2013spring/1535.js:37:3, test/1k2013spring/1535.js:38:3, test/1k2013spring/1535.js:39:3, test/1k2013spring/1535.js:41:2, test/1k2013spring/1535.js:59:4, test/1k2013spring/1535.js:65:2, test/1k2013spring/1535.js:70:3, test/1k2013spring/1535.js:70:11, test/1k2013spring/1535.js:78:7, test/1k2013spring/1535.js:129:26, test/1k2013spring/shim.js:9:5]
+test/1k2013spring/1535.js:35:2: [maybe] Conversion to number yields NaN
 test/1k2013spring/1535.js:37:3: [maybe] Reading absent property (computed name)
 test/1k2013spring/1535.js:38:3: [maybe] Reading absent property (computed name)
 test/1k2013spring/1535.js:39:3: [maybe] Reading absent property (computed name)
+test/1k2013spring/1535.js:51:23: [maybe] Conversion to number yields NaN
+test/1k2013spring/1535.js:51:47: [maybe] Conversion to number yields NaN
+test/1k2013spring/1535.js:51:62: [maybe] Conversion to number yields NaN
+test/1k2013spring/1535.js:51:88: [maybe] Conversion to number yields NaN
 test/1k2013spring/1535.js:54:7: [maybe] The variable color has values with different types
 test/1k2013spring/1535.js:57:22: [maybe] The variable color has values with different types
+test/1k2013spring/1535.js:58:19: [maybe] Conversion to number yields NaN
 test/1k2013spring/1535.js:70:3: [maybe] Conversion to number yields NaN
 test/1k2013spring/1535.js:70:3: [maybe] Converting primitive number to object
 test/1k2013spring/1535.js:70:3: [maybe] Reading absent property (computed name)
@@ -66,9 +72,9 @@ test/1k2013spring/1535.js:127:6: [maybe] Conversion from string to number yields
 test/1k2013spring/1535.js:127:6: [maybe] The variable color has values with different types
 test/1k2013spring/1535.js:129:26: [maybe] Reading absent property (computed name)
 test/1k2013spring/1535.js:148:48: [maybe] The variable p has values with different types
+test/1k2013spring/1535.js:148:61: [maybe] Conversion to number yields NaN
 test/1k2013spring/1535.js:149:7: [maybe] The variable reflection_color has values with different types
 test/1k2013spring/1535.js:150:17: [maybe] The variable color has values with different types
 test/1k2013spring/1535.js:150:24: [maybe] The variable reflection_color has values with different types
 test/1k2013spring/1535.js:153:10: [maybe] The variable color has values with different types
-test/1k2013spring/shim.js:7:9: [maybe] Reading absent property (computed name)
-test/1k2013spring/shim.js,test/1k2013spring/1535.js: [maybe] Uncaught exception, constructed at [test/1k2013spring/1535.js:37:3, test/1k2013spring/1535.js:38:3, test/1k2013spring/1535.js:39:3, test/1k2013spring/1535.js:70:11, test/1k2013spring/1535.js:78:7, test/1k2013spring/shim.js:8:9, test/1k2013spring/shim.js:9:1]
+test/1k2013spring/1535.js:169:21: [maybe] Conversion to number yields NaN

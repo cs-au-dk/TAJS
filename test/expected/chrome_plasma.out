@@ -2,6 +2,7 @@ test/chromeexperiments/plasma.html:21:20: [definite] The conditional expression 
 test/chromeexperiments/plasma.html:21:20: [definite] Variable test2504afjd is null/undefined
 test/chromeexperiments/plasma.html:50:11: [definite] The conditional expression is always true
 test/chromeexperiments/plasma.html:51:8: [definite] The conditional expression is always true
+test/chromeexperiments/plasma.html:53:2: [definite] The conditional expression is always true
 test/chromeexperiments/plasma.html:58:6: [definite] The conditional expression is always true
 test/chromeexperiments/plasma.html:30:9: [definite] The variable xscale is never used
 test/chromeexperiments/plasma.html:30:21: [definite] The variable yscale is never used

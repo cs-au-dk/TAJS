@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,6 +29,8 @@ public interface ConcreteValueVisitor<T> {
     T visit(ConcreteRegularExpression v);
 
     T visit(ConcreteNull v);
+
+    T visit(ConcreteNullOrUndefined v);
 
     T visit(ConcreteBoolean v);
 }

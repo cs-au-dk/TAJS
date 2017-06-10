@@ -1,0 +1,15 @@
+test/micro/test179.js: [definite] Exceptional program exit is unreachable
+test/micro/test179.js:3:1: [maybe] Converting primitive string to object
+test/micro/test179.js:5:17: [maybe] Converting primitive string to object
+test/micro/test179.js:7:9: [maybe] Converting primitive string to object
+test/micro/test179.js:4:2: [info] Abstract value: "0"
+test/micro/test179.js:4:2: [info] Abstract value: "1"
+test/micro/test179.js:4:2: [info] Abstract value: "2"
+test/micro/test179.js:4:2: [info] Abstract value: "3"
+test/micro/test179.js:4:2: [info] Abstract value: "4"
+test/micro/test179.js:5:2: [info] Abstract value: "e"
+test/micro/test179.js:5:2: [info] Abstract value: "h"
+test/micro/test179.js:5:2: [info] Abstract value: "l"
+test/micro/test179.js:5:2: [info] Abstract value: "o"
+test/micro/test179.js:9:1: [info] Abstract object: {length:UInt,[[DefaultArray]]=UIntStr|absent,[[Prototype]]=[@Array.prototype[native]]}
+test/micro/test179.js:10:1: [info] Abstract object: {length:UInt,[[DefaultArray]]=IdentStr|absent,[[Prototype]]=[@Array.prototype[native]]}

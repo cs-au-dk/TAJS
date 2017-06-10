@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -42,9 +42,9 @@ public class HTMLBaseFontElement {
     public static void build(Solver.SolverInterface c) {
         State s = c.getState();
         PropVarOperations pv = c.getAnalysis().getPropVarOperations();
-        CONSTRUCTOR = new ObjectLabel(DOMObjects.HTMLBASEFONTELEMENT_CONSTRUCTOR, ObjectLabel.Kind.FUNCTION);
-        INSTANCES = new ObjectLabel(DOMObjects.HTMLBASEFONTELEMENT_INSTANCES, ObjectLabel.Kind.OBJECT);
-        PROTOTYPE = new ObjectLabel(DOMObjects.HTMLBASEFONTELEMENT_PROTOTYPE, ObjectLabel.Kind.OBJECT);
+        CONSTRUCTOR = ObjectLabel.make(DOMObjects.HTMLBASEFONTELEMENT_CONSTRUCTOR, ObjectLabel.Kind.FUNCTION);
+        INSTANCES = ObjectLabel.make(DOMObjects.HTMLBASEFONTELEMENT_INSTANCES, ObjectLabel.Kind.OBJECT);
+        PROTOTYPE = ObjectLabel.make(DOMObjects.HTMLBASEFONTELEMENT_PROTOTYPE, ObjectLabel.Kind.OBJECT);
 
         // Constructor Object
         s.newObject(CONSTRUCTOR);

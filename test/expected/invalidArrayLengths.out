@@ -1,7 +1,4 @@
+out/temp-sources/TestMicro.invalidArrayLengths.js: [definite] Ordinary program exit is unreachable
+out/temp-sources/TestMicro.invalidArrayLengths.js:4:1: [definite] Unreachable code
 out/temp-sources/TestMicro.invalidArrayLengths.js:3:1: [maybe] RangeError, assigning invalid value to array 'length' property
-out/temp-sources/TestMicro.invalidArrayLengths.js:4:1: [maybe] RangeError, assigning invalid value to array 'length' property
-out/temp-sources/TestMicro.invalidArrayLengths.js:5:1: [maybe] RangeError, assigning invalid value to array 'length' property
-out/temp-sources/TestMicro.invalidArrayLengths.js:6:1: [maybe] RangeError, assigning invalid value to array 'length' property
-out/temp-sources/TestMicro.invalidArrayLengths.js: [maybe] Uncaught exception, constructed at [out/temp-sources/TestMicro.invalidArrayLengths.js:3:1, out/temp-sources/TestMicro.invalidArrayLengths.js:4:1, out/temp-sources/TestMicro.invalidArrayLengths.js:5:1, out/temp-sources/TestMicro.invalidArrayLengths.js:6:1]
-out/temp-sources/TestMicro.invalidArrayLengths.js:4:1: [maybe] Conversion from string to number yields NaN
-out/temp-sources/TestMicro.invalidArrayLengths.js:4:1: [maybe] Converting object to number
+out/temp-sources/TestMicro.invalidArrayLengths.js: [maybe] Uncaught exception, constructed at [out/temp-sources/TestMicro.invalidArrayLengths.js:3:1]

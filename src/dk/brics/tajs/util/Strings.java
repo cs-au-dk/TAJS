@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -36,10 +36,10 @@ public class Strings {
 
     static private final Pattern IDENTIFIER =
             Pattern.compile("[\\p{Lu}\\p{Ll}\\p{Lt}\\p{Lm}\\p{Lo}\\p{Nl}$_]" +
-                    "[\\p{Lu}\\p{Ll}\\p{Lt}\\p{Lm}\\p{Lo}\\p{Nl}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Pc}]*");
+                    "[\\p{Lu}\\p{Ll}\\p{Lt}\\p{Lm}\\p{Lo}\\p{Nl}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Pc}$_]*");
 
     static private final Pattern IDENTIFIERPARTS =
-    		Pattern.compile("[\\p{Lu}\\p{Ll}\\p{Lt}\\p{Lm}\\p{Lo}\\p{Nl}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Pc}]*");
+    		Pattern.compile("[\\p{Lu}\\p{Ll}\\p{Lt}\\p{Lm}\\p{Lo}\\p{Nl}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Pc}$_]*");
 
     // TODO: what about Unicode escape sequences in IDENTIFIER and IDENTIFIERPARTS?
 
@@ -308,5 +308,18 @@ public class Strings {
         for (int i = 0; i < len; i++)
             sb.append(AB.charAt(rnd.nextInt(AB.length())));
         return sb.toString();
+    }
+
+    /**
+     * Returns the longest common prefix of the two given strings.
+     */
+    public static String getSharedPrefix(String a, String b) {
+        int prefixLength;
+        for (prefixLength = 0; prefixLength < a.length() && prefixLength < b.length(); prefixLength++) {
+            if (a.charAt(prefixLength) != b.charAt(prefixLength)) {
+                break;
+            }
+        }
+        return a.substring(0, prefixLength);
     }
 }

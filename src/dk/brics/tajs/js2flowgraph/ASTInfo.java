@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,19 +22,25 @@ import com.google.javascript.jscomp.parsing.parser.SourceFile;
 import com.google.javascript.jscomp.parsing.parser.TokenType;
 import com.google.javascript.jscomp.parsing.parser.trees.ArrayLiteralExpressionTree;
 import com.google.javascript.jscomp.parsing.parser.trees.BinaryOperatorTree;
+import com.google.javascript.jscomp.parsing.parser.trees.CallExpressionTree;
+import com.google.javascript.jscomp.parsing.parser.trees.ConditionalExpressionTree;
 import com.google.javascript.jscomp.parsing.parser.trees.DoWhileStatementTree;
 import com.google.javascript.jscomp.parsing.parser.trees.EmptyStatementTree;
 import com.google.javascript.jscomp.parsing.parser.trees.ForInStatementTree;
 import com.google.javascript.jscomp.parsing.parser.trees.ForStatementTree;
 import com.google.javascript.jscomp.parsing.parser.trees.FormalParameterListTree;
 import com.google.javascript.jscomp.parsing.parser.trees.FunctionDeclarationTree;
+import com.google.javascript.jscomp.parsing.parser.trees.FunctionDeclarationTree.Builder;
+import com.google.javascript.jscomp.parsing.parser.trees.FunctionDeclarationTree.Kind;
 import com.google.javascript.jscomp.parsing.parser.trees.IdentifierExpressionTree;
+import com.google.javascript.jscomp.parsing.parser.trees.IfStatementTree;
 import com.google.javascript.jscomp.parsing.parser.trees.MemberLookupExpressionTree;
 import com.google.javascript.jscomp.parsing.parser.trees.ObjectLiteralExpressionTree;
 import com.google.javascript.jscomp.parsing.parser.trees.ParseTree;
 import com.google.javascript.jscomp.parsing.parser.trees.ParseTreeType;
 import com.google.javascript.jscomp.parsing.parser.trees.PostfixExpressionTree;
 import com.google.javascript.jscomp.parsing.parser.trees.ProgramTree;
+import com.google.javascript.jscomp.parsing.parser.trees.ThisExpressionTree;
 import com.google.javascript.jscomp.parsing.parser.trees.UnaryExpressionTree;
 import com.google.javascript.jscomp.parsing.parser.trees.VariableDeclarationTree;
 import com.google.javascript.jscomp.parsing.parser.trees.WhileStatementTree;
@@ -42,18 +48,20 @@ import com.google.javascript.jscomp.parsing.parser.util.SourcePosition;
 import com.google.javascript.jscomp.parsing.parser.util.SourceRange;
 import dk.brics.tajs.js2flowgraph.asttraversals.InOrderVisitor;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.Stack;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+import static dk.brics.tajs.util.Collections.addAllToMapSet;
 import static dk.brics.tajs.util.Collections.addToMapSet;
 import static dk.brics.tajs.util.Collections.newMap;
 import static dk.brics.tajs.util.Collections.newSet;
 
 /**
- * Misc. information about the AST
+ * @see dk.brics.tajs.flowgraph.WritableSyntacticInformation.SyntacticInformation
  */
 public class ASTInfo {
 
@@ -114,6 +122,11 @@ public class ASTInfo {
     private Map<FunctionDeclarationTree, Set<String>> functionClosureVariables = newMap();
 
     /**
+     * The variables defined by a function that are used by inner functions (potential closures)
+     */
+    private Map<FunctionDeclarationTree, Set<String>> nonStackVariables = newMap();
+
+    /**
      * The function hierarchy, where each function maps to its outer function
      */
     private Map<FunctionDeclarationTree, FunctionDeclarationTree> functionHierarchy = newMap();
@@ -124,14 +137,33 @@ public class ASTInfo {
     private Set<FunctionDeclarationTree> functions = newSet();
 
     /**
+     * Function declarations with `this` references, e.g. `this`.
+     */
+    private Set<FunctionDeclarationTree> functionsWithThisReference = newSet();
+    /**
      * Functions with variables that are used as property read names, e.g. `o[p]` or `o[p] = x` -> o[p] is in the map
      */
     private Map<FunctionDeclarationTree, Set<MemberLookupExpressionTree>> functionsWithVariablesAsPropertyAccessName = newMap();
 
     /**
-     * Functions with variables that are used as both property read and write names, e.g. `o[p]` and `o[p] = x` -> 'p' is in the map
+     * Functions with variables that are used as both property read and write names, e.g. `o[p]` and `o[p] = x` -> {'p'} is in the map
      */
     private Map<FunctionDeclarationTree, Set<String>> functionsWithVariableCorrelatedPropertyAccesses = newMap();
+
+    /**
+     * Conditional structures with variable reads in the condition-part, e.g. `if(x){}` -> 'x' is in the map
+     */
+    private Map<ConditionTree, Set<String>> conditionsWithVariableReadsInTheCondition = newMap();
+
+    /**
+     * Conditional structures with variable reads as arguments in the condition-part, e.g. `if(f(x, y)){}` -> {'[x, y]'} is in the map
+     */
+    private Map<ConditionTree, Set<List<String>>> conditionsWithVariableReadsAsArgumentsInTheCondition = newMap();
+
+    /**
+     * Conditional structures with variable reads in the body-parts, e.g. `if(_){x} else if{y} else {z}` -> {'x', 'y', 'z'} is in the map
+     */
+    private Map<ConditionTree, Set<String>> conditionsWithVariableReadsInTheBodies = newMap();
 
     private void updateClosureVariables(FunctionDeclarationTree function) {
         Set<String> closureVariables = newSet();
@@ -150,16 +182,28 @@ public class ASTInfo {
             Set<String> outerDeclarations = newSet();
             if (functionVariableDeclarations.containsKey(outer)) {
                 outerDeclarations.addAll(functionVariableDeclarations.get(outer));
+
+                Set<String> closureVariablesOfOuterFunction = newSet(closureVariablesNotDefinedInOuterFunctions);
+                closureVariablesOfOuterFunction.retainAll(functionVariableDeclarations.get(outer));
+                addAllToMapSet(nonStackVariables, outer, closureVariablesOfOuterFunction);
             }
             closureVariablesNotDefinedInOuterFunctions.removeAll(outerDeclarations);
         }
         closureVariables.removeAll(closureVariablesNotDefinedInOuterFunctions);
 
-        functionClosureVariables.put(function, closureVariables.isEmpty() ? null : closureVariables);
+        functionClosureVariables.put(function, closureVariables);
     }
 
     public Map<FunctionDeclarationTree, Set<String>> getFunctionClosureVariables() {
         return functionClosureVariables;
+    }
+
+    public Set<FunctionDeclarationTree> getFunctionsWithThisReference() {
+        return functionsWithThisReference;
+    }
+
+    public Map<FunctionDeclarationTree, Set<String>> getNonStackVariables() {
+        return nonStackVariables;
     }
 
     public Set<LiteralTree> getLiteralsInForIn() {
@@ -190,6 +234,18 @@ public class ASTInfo {
         return functionsOrLoopsWithDynamicPropertyReads;
     }
 
+    public Map<ConditionTree, Set<String>> getConditionsWithVariableReadsInTheCondition() {
+        return conditionsWithVariableReadsInTheCondition;
+    }
+
+    public Map<ConditionTree, Set<List<String>>> getConditionsWithVariableReadsAsArgumentsInTheCondition() {
+        return conditionsWithVariableReadsAsArgumentsInTheCondition;
+    }
+
+    public Map<ConditionTree, Set<String>> getConditionsWithVariableReadsInTheBodies() {
+        return conditionsWithVariableReadsInTheBodies;
+    }
+
     /**
      * Does a single pass of the tree, extracting relevant information.
      */
@@ -202,13 +258,53 @@ public class ASTInfo {
         newFunctions.forEach(this::updateFunctionsWithVariableCorrelatedPropertyAccesses);
     }
 
+    public Map<ConditionTree, Set<String>> getConditionRefinedVariables() {
+        Map<ConditionTree, Set<String>> map = newMap();
+        conditionsWithVariableReadsInTheCondition.forEach((tree, conditionVariables) -> {
+            Set<String> bodyVariables = conditionsWithVariableReadsInTheBodies.getOrDefault(tree, newSet());
+            Set<String> refinedVariables = newSet(conditionVariables);
+            refinedVariables.retainAll(bodyVariables);
+            if (!refinedVariables.isEmpty()) {
+                map.put(tree, refinedVariables);
+            }
+        });
+        return map;
+    }
+
+    public Map<ConditionTree, Set<List<String>>> getConditionRefinedArgumentVariables() {
+        Map<ConditionTree, Set<List<String>>> map = newMap();
+        conditionsWithVariableReadsAsArgumentsInTheCondition.forEach((tree, conditionArgumentVariablesLists) -> {
+            Set<String> bodyVariables = conditionsWithVariableReadsInTheBodies.getOrDefault(tree, newSet());
+            conditionArgumentVariablesLists.forEach(conditionArgumentVariables -> {
+                List<String> refinedVariables = conditionArgumentVariables.stream()
+                        .map(conditionArgumentVariable -> bodyVariables.contains(conditionArgumentVariable) ? conditionArgumentVariable : null)
+                        .collect(Collectors.toList());
+                if (!refinedVariables.stream().allMatch(v -> v == null)) {
+                    addToMapSet(map, tree, refinedVariables);
+                }
+            });
+        });
+        return map;
+    }
+
+    public Map<ConditionTree, Set<String>> getConditionRefined1ArgumentVariables() {
+        Map<ConditionTree, Set<String>> map = newMap();
+        getConditionRefinedArgumentVariables().forEach((tree, argumentLists) -> {
+            Set<String> variables = argumentLists.stream().filter(list -> list.size() == 1).map(list -> list.get(0)).collect(Collectors.toSet());
+            if (!variables.isEmpty()) {
+                addAllToMapSet(map, tree, variables);
+            }
+        });
+        return map;
+    }
+
     private void updateFunctionsWithVariableCorrelatedPropertyAccesses(FunctionDeclarationTree fun) {
         if (!functionsWithVariablesAsPropertyAccessName.containsKey(fun)) {
             return;
         }
         Set<MemberLookupExpressionTree> es = functionsWithVariablesAsPropertyAccessName.get(fun);
         Set<MemberLookupExpressionTree> readTrees = es.stream()
-                .filter(e -> dynamicPropertyWrites.contains(e))
+                .filter(dynamicPropertyWrites::contains)
                 .collect(Collectors.toSet());
         Set<MemberLookupExpressionTree> writeTrees = newSet(es);
         writeTrees.removeAll(readTrees);
@@ -300,6 +396,46 @@ public class ASTInfo {
         }
     }
 
+    public static class ConditionTree {
+
+        public final ParseTree tree;
+
+        public ConditionTree(ParseTree tree) {
+            this.tree = tree;
+        }
+
+        public ConditionTree(IfStatementTree tree) {
+            this((ParseTree) tree);
+        }
+
+        public ConditionTree(ConditionalExpressionTree tree) {
+            this((ParseTree) tree);
+        }
+
+        public ConditionTree(BinaryOperatorTree tree) {
+            this((ParseTree) tree);
+        }
+
+        public static ConditionTree makeUnsafe(ParseTree tree) {
+            return new ConditionTree(tree);
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+
+            ConditionTree that = (ConditionTree) o;
+
+            return tree != null ? tree.equals(that.tree) : that.tree == null;
+        }
+
+        @Override
+        public int hashCode() {
+            return tree != null ? tree.hashCode() : 0;
+        }
+    }
+
     public static class FunctionOrLoopTree {
 
         private final ParseTree tree;
@@ -344,8 +480,12 @@ public class ASTInfo {
 
         private final Set<IdentifierExpressionTree> variableWrites = newSet();
 
+        private final Stack<ConditionTree> conditionConditionNesting = new Stack<>();
+
+        private final Stack<ConditionTree> conditionBodyNesting = new Stack<>();
+
         public InfoVisitor() {
-            FunctionDeclarationTree.Builder builder = FunctionDeclarationTree.builder(FunctionDeclarationTree.Kind.DECLARATION);
+            Builder builder = FunctionDeclarationTree.builder(Kind.DECLARATION);
             builder.setName(new IdentifierToken(null, "DUMMY_GLOBAL"));
             SourcePosition dummyPos = new SourcePosition(new SourceFile("DUMMY_GLOBAL_FILE", ""), 0, 0, 0);
             SourceRange dummyRange = new SourceRange(dummyPos, dummyPos);
@@ -355,6 +495,13 @@ public class ASTInfo {
             functionNesting.push(dummyGlobal);
             functionOrLoopNesting.push(new FunctionOrLoopTree(dummyGlobal));
         }
+
+
+        @Override
+        public void in(ThisExpressionTree tree) {
+            functionsWithThisReference.add(functionNesting.peek());
+        }
+
 
         @Override
         public void in(ForInStatementTree tree) {
@@ -411,6 +558,8 @@ public class ASTInfo {
                         registerDynamicPropertyWrite(tree.operand.asMemberLookupExpression());
                     }
                 }
+                default:
+                    // ignore
             }
         }
 
@@ -545,6 +694,36 @@ public class ASTInfo {
         }
 
         @Override
+        public Void process(IfStatementTree tree) {
+            in(tree);
+            conditionConditionNesting.push(new ConditionTree(tree));
+            {
+                process(tree.condition);
+            }
+            conditionConditionNesting.pop();
+            conditionBodyNesting.push(new ConditionTree(tree));
+            {
+                process(tree.ifClause);
+                process(tree.elseClause);
+            }
+            conditionBodyNesting.pop();
+            out(tree);
+            return null;
+        }
+
+        @Override
+        public void out(CallExpressionTree tree) {
+            if (!conditionConditionNesting.isEmpty()) {
+                List<String> argumentVariables =
+                        tree.arguments.arguments.stream()
+                                .filter(t -> t.type == ParseTreeType.IDENTIFIER_EXPRESSION)
+                                .map(t -> t.asIdentifierExpression().identifierToken.value)
+                                .collect(Collectors.toList());
+                addToMapSet(conditionsWithVariableReadsAsArgumentsInTheCondition, conditionConditionNesting.peek(), argumentVariables);
+            }
+        }
+
+        @Override
         public Void process(ForInStatementTree tree) {
             in(tree);
             if (tree.initializer.type == ParseTreeType.IDENTIFIER_EXPRESSION) {
@@ -600,14 +779,14 @@ public class ASTInfo {
 
         private void registerDynamicPropertyWrite(MemberLookupExpressionTree tree) {
             dynamicPropertyWrites.add(tree);
-            if (tree.memberExpression.type.equals(ParseTreeType.IDENTIFIER_EXPRESSION)) {
+            if (tree.memberExpression.type == ParseTreeType.IDENTIFIER_EXPRESSION) {
                 addToMapSet(functionsWithVariablesAsPropertyAccessName, functionNesting.peek(), tree);
             }
         }
 
         private void registerDynamicPropertyRead(MemberLookupExpressionTree tree) {
             functionsOrLoopsWithDynamicPropertyReads.add(functionOrLoopNesting.peek());
-            if (tree.memberExpression.type.equals(ParseTreeType.IDENTIFIER_EXPRESSION)) {
+            if (tree.memberExpression.type == ParseTreeType.IDENTIFIER_EXPRESSION) {
                 addToMapSet(functionsWithVariablesAsPropertyAccessName, functionNesting.peek(), tree);
             }
         }
@@ -625,6 +804,13 @@ public class ASTInfo {
             for (LiteralTree literalTree : literalNesting) {
                 addToMapSet(variableReadsInLiterals, literalTree, variableName);
             }
+            for (ConditionTree conditionTree : conditionConditionNesting) {
+                addToMapSet(conditionsWithVariableReadsInTheCondition, conditionTree, variableName);
+            }
+            for (ConditionTree conditionTree : conditionBodyNesting) {
+                addToMapSet(conditionsWithVariableReadsInTheBodies, conditionTree, variableName);
+            }
+
             addToMapSet(functionVariableReads, functionNesting.peek(), variableName);
         }
 

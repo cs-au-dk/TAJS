@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -93,6 +93,7 @@ public class HTMLBuilder {
         HTMLTextAreaElement.build(c);
         HTMLTitleElement.build(c);
         HTMLUListElement.build(c);
+        HTMLUnknownElement.build(c);
 
         HTML4_OBJECT_LABELS.add(HTMLAnchorElement.INSTANCES);
         HTML4_OBJECT_LABELS.add(HTMLAppletElement.INSTANCES);
@@ -148,10 +149,9 @@ public class HTMLBuilder {
         HTML4_OBJECT_LABELS.add(HTMLTextAreaElement.INSTANCES);
         HTML4_OBJECT_LABELS.add(HTMLTitleElement.INSTANCES);
         HTML4_OBJECT_LABELS.add(HTMLUListElement.INSTANCES);
+        HTML4_OBJECT_LABELS.add(HTMLUnknownElement.INSTANCES);
 
-        // Write documentElement (due to cyclic dependency) and summarize DOMDocument.
+        // Write documentElement (due to cyclic dependency)
         createDOMProperty(DOMDocument.INSTANCES, "documentElement", Value.makeObject(HTMLHtmlElement.INSTANCES).setReadOnly(), c);
-        s.multiplyObject(DOMDocument.INSTANCES);
-        DOMDocument.INSTANCES = DOMDocument.INSTANCES.makeSingleton().makeSummary();
     }
 }

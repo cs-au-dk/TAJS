@@ -7,7 +7,7 @@ function f(x) {
 
 var a = f(true) + f(false);
 TAJS_dumpValue(a);
-TAJS_assert(a, 'isMaybeStrPrefixedIdentifierParts');
+TAJS_assert(a, 'isMaybeStrPrefix');
 
 a = 'ab'
 var x = {};

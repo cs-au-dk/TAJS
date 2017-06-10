@@ -1,2 +1,3 @@
+test/resig/ejohn41.js: [definite] Exceptional program exit is unreachable
 test/resig/ejohn41.js:9:1: [info] Abstract value: 0.0
 test/resig/ejohn41.js:10:1: [info] Abstract value: 3.0
