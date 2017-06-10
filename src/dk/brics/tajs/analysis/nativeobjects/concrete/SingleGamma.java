@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,6 +22,7 @@ import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.UnknownValueResolver;
 import dk.brics.tajs.lattice.Value;
+import dk.brics.tajs.util.AnalysisException;
 
 /**
  * Converts abstract values to concrete values, if possible.
@@ -90,10 +91,14 @@ public class SingleGamma {
         State state = c.getState();
         PropVarOperations pv = c.getAnalysis().getPropVarOperations();
         Value source = UnknownValueResolver.getRealValue(pv.readPropertyValue(value.getObjectLabels(), "source"), state);
+        Value lastIndex = UnknownValueResolver.getRealValue(pv.readPropertyValue(value.getObjectLabels(), "lastIndex"), state);
+        if (lastIndex.isMaybeOtherThanNum()) {
+            lastIndex = Value.makeNum(0);
+        }
         Value global = UnknownValueResolver.getRealValue(pv.readPropertyValue(value.getObjectLabels(), "global"), state);
         Value ignoreCase = UnknownValueResolver.getRealValue(pv.readPropertyValue(value.getObjectLabels(), "ignoreCase"), state);
         Value multiline = UnknownValueResolver.getRealValue(pv.readPropertyValue(value.getObjectLabels(), "multiline"), state);
-        return new ConcreteRegularExpression(toConcreteString(source, c), toConcreteBoolean(global, c), toConcreteBoolean(ignoreCase, c), toConcreteBoolean(multiline, c));
+        return new ConcreteRegularExpression(toConcreteString(source, c), toConcreteBoolean(global, c), toConcreteBoolean(ignoreCase, c), toConcreteBoolean(multiline, c), toConcreteNumber(lastIndex, c));
     }
 
     private static ConcreteBoolean toConcreteBoolean(Value value, Solver.SolverInterface c) {
@@ -120,12 +125,15 @@ public class SingleGamma {
         }
         if (value.getObjectLabels().isEmpty())
             return false;
+
+        if (value.isMaybeOtherThanObject()) return false;
         for (ObjectLabel label : value.getObjectLabels()) {
             boolean isRegExp = label.getKind() == ObjectLabel.Kind.REGEXP;
             if (!isRegExp) {
                 return false;
             }
         }
+
         State state = c.getState();
         PropVarOperations pv = c.getAnalysis().getPropVarOperations();
         Value source = UnknownValueResolver.getRealValue(pv.readPropertyValue(value.getObjectLabels(), "source"), state);
@@ -135,7 +143,7 @@ public class SingleGamma {
         Value multiline = UnknownValueResolver.getRealValue(pv.readPropertyValue(value.getObjectLabels(), "multiline"), state);
 
         boolean concreteValues = isConcreteValues(c, source, lastIndex, global, ignoreCase, multiline);
-        return concreteValues && (lastIndex.isMaybeSingleNum() && lastIndex.getNum().intValue() == 0); // syntactic limitation: can not construct regexep expression with lastIndex equal to anything but 0!
+        return concreteValues;
     }
 
     public static boolean isConcreteValues(Solver.SolverInterface c, Value... values) {
@@ -157,7 +165,7 @@ public class SingleGamma {
 
     private static void checkConcrete(boolean success) {
         if (!success) {
-            throw new IllegalArgumentException("Not a concrete value!");
+            throw new AnalysisException("Not a concrete value!");
         }
     }
 

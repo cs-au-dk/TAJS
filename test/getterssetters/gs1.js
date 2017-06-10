@@ -16,7 +16,9 @@ TAJS_dumpValue(rectangle.area); // calls the getter
 try {
   rectangle.area = 42; // calls the setter
   TAJS_dumpValue("shouldn't be here");
+  TAJS_assert(false);
 } catch (e) {
   TAJS_dumpValue(e);
 }
 TAJS_dumpValue(rectangle.area);
+TAJS_assertEquals(200, rectangle.area);

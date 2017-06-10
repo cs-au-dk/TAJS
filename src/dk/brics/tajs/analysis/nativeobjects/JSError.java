@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,9 +17,9 @@
 package dk.brics.tajs.analysis.nativeobjects;
 
 import dk.brics.tajs.analysis.Conversion;
+import dk.brics.tajs.analysis.FunctionCalls;
 import dk.brics.tajs.analysis.FunctionCalls.CallInfo;
 import dk.brics.tajs.analysis.InitialStateBuilder;
-import dk.brics.tajs.analysis.NativeFunctions;
 import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.ObjectLabel.Kind;
@@ -82,10 +82,10 @@ public class JSError {
      */
     private static Value createErrorObject(ObjectLabel proto, ECMAScriptObjects nativeobject, CallInfo call, Solver.SolverInterface c) {
         State state = c.getState();
-        ObjectLabel obj = new ObjectLabel(call.getSourceNode(), Kind.ERROR);
+        ObjectLabel obj = ObjectLabel.make(call.getSourceNode(), Kind.ERROR);
         state.newObject(obj);
         state.writeInternalPrototype(obj, Value.makeObject(proto));
-        Value message = NativeFunctions.readParameter(call, state, 0);
+        Value message = FunctionCalls.readParameter(call, state, 0);
         if (message.isMaybeOtherThanUndef())
             c.getAnalysis().getPropVarOperations().writeProperty(obj, "message", Conversion.toString(message.restrictToNotUndef(), c).removeAttributes());
         return Value.makeObject(obj);

@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -41,9 +41,9 @@ public class HTMLHeadElement {
     public static void build(Solver.SolverInterface c) {
         State s = c.getState();
         PropVarOperations pv = c.getAnalysis().getPropVarOperations();
-        CONSTRUCTOR = new ObjectLabel(DOMObjects.HTMLHEADELEMENT_CONSTRUCTOR, ObjectLabel.Kind.FUNCTION);
-        PROTOTYPE = new ObjectLabel(DOMObjects.HTMLHEADELEMENT_PROTOTYPE, ObjectLabel.Kind.OBJECT);
-        INSTANCES = new ObjectLabel(DOMObjects.HTMLHEADELEMENT_INSTANCES, ObjectLabel.Kind.OBJECT);
+        CONSTRUCTOR = ObjectLabel.make(DOMObjects.HTMLHEADELEMENT_CONSTRUCTOR, ObjectLabel.Kind.FUNCTION);
+        PROTOTYPE = ObjectLabel.make(DOMObjects.HTMLHEADELEMENT_PROTOTYPE, ObjectLabel.Kind.OBJECT);
+        INSTANCES = ObjectLabel.make(DOMObjects.HTMLHEADELEMENT_INSTANCES, ObjectLabel.Kind.OBJECT);
 
         // Constructor Object
         s.newObject(CONSTRUCTOR);
@@ -73,5 +73,7 @@ public class HTMLHeadElement {
          * Functions.
          */
         // No functions.
+
+        createDOMProperty(HTMLDocument.INSTANCES, "head", Value.makeObject(INSTANCES).setReadOnly(), c);
     }
 }

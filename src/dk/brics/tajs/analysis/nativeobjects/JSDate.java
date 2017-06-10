@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,11 +19,10 @@ package dk.brics.tajs.analysis.nativeobjects;
 import dk.brics.tajs.analysis.Exceptions;
 import dk.brics.tajs.analysis.FunctionCalls.CallInfo;
 import dk.brics.tajs.analysis.InitialStateBuilder;
-import dk.brics.tajs.analysis.NativeFunctions;
 import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.analysis.nativeobjects.concrete.ConcreteNumber;
 import dk.brics.tajs.analysis.nativeobjects.concrete.SingleGamma;
-import dk.brics.tajs.analysis.nativeobjects.concrete.TAJSSplitConcreteSemantics;
+import dk.brics.tajs.analysis.nativeobjects.concrete.TAJSConcreteSemantics;
 import dk.brics.tajs.flowgraph.AbstractNode;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.ObjectLabel.Kind;
@@ -43,10 +42,6 @@ public class JSDate {
      * Evaluates the given native function.
      */
     public static Value evaluate(ECMAScriptObjects nativeobject, CallInfo call, Solver.SolverInterface c) {
-        if (nativeobject != ECMAScriptObjects.DATE)
-            if (NativeFunctions.throwTypeErrorIfConstructor(call, c))
-                return Value.makeNone();
-
         // TODO: warn about year 2000 problem for getYear/setYear?
 
         State state = c.getState();
@@ -83,57 +78,31 @@ public class JSDate {
             case DATE_GETUTCMILLISECONDS: // 15.9.5.25
             case DATE_GETTIMEZONEOFFSET: // 15.9.5.26
             case DATE_GETYEAR: { // B.2.4
-                NativeFunctions.expectParameters(nativeobject, call, c, 0, 0);
                 return concrete(nativeobject.toString(), Value.makeAnyNum(), c);
             }
 
             case DATE_GETTIME: { // 15.9.5.9
-                NativeFunctions.expectParameters(nativeobject, call, c, 0, 0);
-                if (NativeFunctions.throwTypeErrorIfWrongKindOfThis(nativeobject, call, state, c, Kind.DATE))
-                    return Value.makeNone();
                 return concrete(nativeobject.toString(), Value.makeAnyNum(), c);
             }
 
             case DATE_PARSE: // 15.9.4.2
             case DATE_SETDATE: // 15.9.5.36
             case DATE_SETUTCDATE: // 15.9.5.37
-            case DATE_SETYEAR: { // B.2.5
-                NativeFunctions.expectParameters(nativeobject, call, c, 1, 1);
-                return Value.makeAnyNum();
-            }
-
+            case DATE_SETYEAR: // B.2.5
             case DATE_SETHOURS: // 15.9.5.35
-            case DATE_SETUTCHOURS: { // 15.9.5.36
-                NativeFunctions.expectParameters(nativeobject, call, c, 1, 4);
-                return Value.makeAnyNum();
-            }
-
+            case DATE_SETUTCHOURS: // 15.9.5.36
             case DATE_SETMILLISECONDS: // 15.9.5.28
-            case DATE_SETUTCMILLISECONDS: { // 15.9.5.29
-                NativeFunctions.expectParameters(nativeobject, call, c, 1, 1);
-                return Value.makeAnyNum();
-            }
-
+            case DATE_SETUTCMILLISECONDS: // 15.9.5.29
             case DATE_SETMINUTES: // 15.9.5.33
             case DATE_SETUTCMINUTES: // 15.9.5.34
             case DATE_SETFULLYEAR: // 15.9.5.40
-            case DATE_SETUTCFULLYEAR: { // 15.9.5.41
-                NativeFunctions.expectParameters(nativeobject, call, c, 1, 3);
-                return Value.makeAnyNum();
-            }
-
+            case DATE_SETUTCFULLYEAR: // 15.9.5.41
             case DATE_SETSECONDS: // 15.9.5.30
             case DATE_SETUTCSECONDS: // 15.9.5.31
             case DATE_SETMONTH: // 15.9.5.38
-            case DATE_SETUTCMONTH: { // 15.9.5.39
-                NativeFunctions.expectParameters(nativeobject, call, c, 1, 2);
-                return Value.makeAnyNum();
-            }
-
+            case DATE_SETUTCMONTH: // 15.9.5.39
             case DATE_SETTIME: { // 15.9.5.27
-                NativeFunctions.expectParameters(nativeobject, call, c, 1, 1);
-                if (NativeFunctions.throwTypeErrorIfWrongKindOfThis(nativeobject, call, state, c, Kind.DATE))
-                    return Value.makeNone();
+                // TODO perform side-effects on the date object (currently unsound)
                 return Value.makeAnyNum();
             }
 
@@ -143,28 +112,23 @@ public class JSDate {
             case DATE_TOLOCALESTRING: // 15.9.5.5
             case DATE_TOLOCALEDATESTRING: // 15.9.5.6
             case DATE_TOLOCALETIMESTRING: { // 15.9.5.7
-                NativeFunctions.expectParameters(nativeobject, call, c, 0, 0);
-                return state.readThisObjectsCoerced((l) -> evaluateToString(l, c));
+                return evaluateToString(state.readThis(), c);
             }
 
             case DATE_TOUTCSTRING: // 15.9.5.42
             case DATE_TOGMTSTRING: { // B.2.6
-                NativeFunctions.expectParameters(nativeobject, call, c, 0, 0);
                 return Value.makeAnyStr();
             }
 
             case DATE_UTC: { // 15.9.4.3
-                NativeFunctions.expectParameters(nativeobject, call, c, 2, 7);
-                return createDateObject(call.getSourceNode(), Value.makeAnyNum(), state);
+                return c.getState().readInternalValue(createDateObject(call.getSourceNode(), Value.makeAnyNum(), state).getObjectLabels());
             }
 
             case DATE_VALUEOF: { // 15.9.5.8
-                NativeFunctions.expectParameters(nativeobject, call, c, 0, 0);
                 return concrete(nativeobject.toString(), c.getState().readInternalValue(c.getState().readThisObjects()), c);
             }
 
             case DATE_NOW: { // 15.9.4.4
-                NativeFunctions.expectParameters(nativeobject, call, c, 0, 0);
                 return getNow(call, c);
             }
 
@@ -182,7 +146,7 @@ public class JSDate {
         }
         ConcreteNumber concreteInternal = SingleGamma.toConcreteNumber(internal, c);
         String code = String.format("%s.call(new Date(%d))", functionName, Double.valueOf(concreteInternal.getNumber()).longValue());
-        return TAJSSplitConcreteSemantics.eval(code);
+        return TAJSConcreteSemantics.eval(code);
     }
 
     private static Value getNow(CallInfo call, Solver.SolverInterface c) {
@@ -193,20 +157,30 @@ public class JSDate {
      * Creates a new Date object.
      */
     private static Value createDateObject(AbstractNode n, Value internal, State state) {
-        ObjectLabel objlabel = new ObjectLabel(n, Kind.DATE);
+        ObjectLabel objlabel = ObjectLabel.make(n, Kind.DATE);
         state.newObject(objlabel);
         state.writeInternalValue(objlabel, internal);
         state.writeInternalPrototype(objlabel, Value.makeObject(InitialStateBuilder.DATE_PROTOTYPE));
         return Value.makeObject(objlabel);
     }
 
-    public static Value evaluateToString(ObjectLabel thiss, Solver.SolverInterface c) {
-        // 15.9.5.2 Date.prototype.toString ( )
-        // This function returns a string value.
-        if (thiss.getKind() != Kind.DATE) {
+    public static Value evaluateToString(Value thisval, Solver.SolverInterface c) {
+        boolean is_maybe_typeerror = thisval.isMaybePrimitive();
+        boolean is_maybe_anystring = false;
+        for (ObjectLabel thisObj : thisval.getObjectLabels()) {
+            if (thisObj.getKind() == Kind.DATE) {
+                is_maybe_anystring = true;
+            } else {
+                is_maybe_typeerror = true;
+            }
+        }
+        if (is_maybe_typeerror) {
             Exceptions.throwTypeError(c);
+        }
+        if (is_maybe_anystring) {
+            return Value.makeAnyStr();
+        } else {
             return Value.makeNone();
         }
-        return concrete("Date.prototype.toString", Value.makeAnyStr(), c);
     }
 }

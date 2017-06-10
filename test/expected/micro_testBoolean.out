@@ -1,6 +1,8 @@
+test/micro/testBoolean.js: [definite] Ordinary program exit is unreachable
 test/micro/testBoolean.js:5:16: [definite] Reading absent property xy
 test/micro/testBoolean.js:20:1: [definite] Unreachable code
 test/micro/testBoolean.js:24:5: [definite] The variable i is never used
+test/micro/testBoolean.js:19:1: [maybe] TypeError, native function Boolean.prototype.toString called on invalid object kind
 test/micro/testBoolean.js: [maybe] Uncaught exception, constructed at [test/micro/testBoolean.js:19:1]
 test/micro/testBoolean.js:2:1: [info] Abstract object: {[[Prototype]]=[@Boolean.prototype[native]],[[Value]]=false}
 test/micro/testBoolean.js:4:1: [info] Abstract object: {[[Prototype]]=[@Boolean.prototype[native]],[[Value]]=true}

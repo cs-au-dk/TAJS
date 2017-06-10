@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+	  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- from http://particletree.com/features/quick-guide-to-prototype/ -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title></title>
+    <script type="text/javascript" src="prototype.js"></script>
+    <script type="text/javascript">
+    	function f() {
+    		return Try.these(
+    		    function() {
+    	        	alert("first");
+    	        	jkgjhgjhg        //intentional error
+    	        	alert("firsterror");
+    	        	return 1;
+    	    	},
+    	    	function() {
+    	        	alert("second");
+    	        	return 2;
+    	    	}
+    	    );
+    	}
+    </script>
+  </head>
+  <body>
+  <textarea id="result" rows="1" cols="5"></textarea>
+  <script type="text/javascript">
+  $("result").value = f();
+  </script>
+  </body>
+</html>

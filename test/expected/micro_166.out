@@ -1,1 +1,2 @@
-test/micro/test166.js:10:1: [info] Abstract value: OtherStr
+test/micro/test166.js: [definite] Exceptional program exit is unreachable
+test/micro/test166.js:10:1: [info] Abstract value: PrefixStr[z =]

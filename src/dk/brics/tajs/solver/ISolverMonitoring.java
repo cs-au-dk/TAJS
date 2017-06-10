@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,58 +23,59 @@ import dk.brics.tajs.flowgraph.Function;
 import java.util.Collection;
 
 /**
- * Records various information during fixpoint solving.
+ * Monitoring interface.
+ * <p>
+ * This interface contains callbacks for solver-specific operations.
  */
 public interface ISolverMonitoring<StateType extends IState<StateType, ContextType, ?>, ContextType extends IContext<ContextType>> {
-
-    /**
-     * Registers a node transfer occurrence.
-     */
-    void visitNodeTransfer(AbstractNode n);
-
-    /**
-     * Registers the beginning of a block transfer
-     */
-    void visitBlockTransfer(BasicBlock b, StateType s);
-
-    /**
-     * Registers the end of a block transfer
-     */
-    void visitPostBlockTransfer(BasicBlock b, StateType s);
-
-    /**
-     * Registers new dataflow being propagated.
-     */
-    void visitNewFlow(BasicBlock b, ContextType c, StateType s, String diff, String info);
-
-    /**
-     * Registers a recovery of an unknown value.
-     */
-    void visitUnknownValueResolve(boolean partial, boolean scanning);
-
-    /**
-     * Registers a property recovery graph size.
-     */
-    void visitRecoveryGraph(int size);
-
-    /**
-     * Registers the given function in the scan phase.
-     * (Invoked once on each function.)
-     */
-    void visitFunction(Function f, Collection<StateType> entry_states);
-
-    /**
-     * Registers a maybe reachable node.
-     */
-    void visitReachableNode(AbstractNode n);
-
-    /**
-     * Registers a state join operation.
-     */
-    void visitJoin();
 
     /**
      * Returns true if the fixpoint solver should continue with its next iteration or abort early and unsoundly.
      */
     boolean allowNextIteration();
+
+    /**
+     * Invoked immediately before processing a node transfer.
+     */
+    void visitNodeTransferPre(AbstractNode n, StateType s);
+
+    /**
+     * Invoked immediately after processing a node transfer.
+     */
+    void visitNodeTransferPost(AbstractNode n, StateType s);
+
+    /**
+     * Invoked immediately before processing a block transfer.
+     */
+    void visitBlockTransferPre(BasicBlock b, StateType s);
+
+    /**
+     * Invoked immediately after processing a block transfer.
+     */
+    void visitBlockTransferPost(BasicBlock b, StateType s);
+
+    /**
+     * Invoked when new dataflow is being propagated.
+     */
+    void visitNewFlow(BasicBlock b, ContextType c, StateType s, String diff, String info);
+
+    /**
+     * Invoked when a function is encountered in the scan phase.
+     * (Invoked once on each function.)
+     */
+    void visitFunction(Function f, Collection<StateType> entry_states);
+
+    /**
+     * Invoked immediately before propagating dataflow from one location to another.
+     * (This does not include the merging of states that occurs in some specialized transfers, such as {@link dk.brics.tajs.analysis.ParallelTransfer}.)
+     */
+    void visitPropagationPre(BlockAndContext<ContextType> from, BlockAndContext<ContextType> to);
+
+    /**
+     * Invoked immediately after propagating dataflow from one location to another
+     *
+     * @param changed true if the destination state was changed
+     * @see #visitPropagationPre(BlockAndContext, BlockAndContext)
+     */
+    void visitPropagationPost(BlockAndContext<ContextType> from, BlockAndContext<ContextType> to, boolean changed);
 }

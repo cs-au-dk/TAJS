@@ -80,7 +80,7 @@ function fuzzyWrite() {
     o[ALL_IDENT] = 42;
 
     TAJS_assert(get_triggered);
-    TAJS_assert(set_triggered, 'isMaybeAnyBool'); // XXX setter definitely triggered, despite fuzzy write?
+    TAJS_assert(set_triggered, 'isMaybeAnyBool'); // TODO: setter definitely triggered, despite fuzzy write?
     TAJS_assert(!other_get_triggered);
     TAJS_assert(!other_set_triggered);
 }
@@ -95,7 +95,7 @@ function fuzzyWrite_minimalBug() {
 
     TAJS_assert(set_triggered, 'isMaybeAnyBool');
 }
-function fuzzyRefinition() {
+function fuzzyRedefinition() {
     var set_triggered = false;
 
     var o = {};
@@ -239,6 +239,7 @@ fuzzyWrite();
 fuzzyWrite_minimalBug();
 fuzzyWrite_maybe();
 fuzzyWrite_weakDefinition();
+fuzzyRedefinition();
 fuzzyRedefinition_1();
 fuzzyRedefinition_2();
 
@@ -249,6 +250,7 @@ while (Math.random()) { // backwards flow
     fuzzyWrite_minimalBug();
     fuzzyWrite_maybe();
     fuzzyWrite_weakDefinition();
+    fuzzyRedefinition();
     fuzzyRedefinition_1();
     fuzzyRedefinition_2();
 }

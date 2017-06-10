@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,9 +19,9 @@ package dk.brics.tajs.analysis.dom.event;
 import dk.brics.tajs.analysis.Conversion;
 import dk.brics.tajs.analysis.FunctionCalls;
 import dk.brics.tajs.analysis.InitialStateBuilder;
-import dk.brics.tajs.analysis.NativeFunctions;
 import dk.brics.tajs.analysis.PropVarOperations;
 import dk.brics.tajs.analysis.Solver;
+import dk.brics.tajs.analysis.dom.DOMFunctions;
 import dk.brics.tajs.analysis.dom.DOMObjects;
 import dk.brics.tajs.analysis.dom.DOMWindow;
 import dk.brics.tajs.lattice.ObjectLabel;
@@ -52,9 +52,9 @@ public class Event {
     public static void build(Solver.SolverInterface c) {
         State s = c.getState();
         PropVarOperations pv = c.getAnalysis().getPropVarOperations();
-        CONSTRUCTOR = new ObjectLabel(DOMObjects.EVENT_CONSTRUCTOR, ObjectLabel.Kind.FUNCTION);
-        PROTOTYPE = new ObjectLabel(DOMObjects.EVENT_PROTOTYPE, ObjectLabel.Kind.OBJECT);
-        INSTANCES = new ObjectLabel(DOMObjects.EVENT_INSTANCES, ObjectLabel.Kind.OBJECT);
+        CONSTRUCTOR = ObjectLabel.make(DOMObjects.EVENT_CONSTRUCTOR, ObjectLabel.Kind.FUNCTION);
+        PROTOTYPE = ObjectLabel.make(DOMObjects.EVENT_PROTOTYPE, ObjectLabel.Kind.OBJECT);
+        INSTANCES = ObjectLabel.make(DOMObjects.EVENT_INSTANCES, ObjectLabel.Kind.OBJECT);
 
         // Constructor Object
         s.newObject(CONSTRUCTOR);
@@ -74,6 +74,7 @@ public class Event {
         /*
          * Properties.
          */
+        // TODO these belong on the event instances, and not on the prototype...
         createDOMProperty(PROTOTYPE, "type", Value.makeNone().joinAnyStrIdentifier().setReadOnly(), c);
         createDOMProperty(PROTOTYPE, "eventPhase", Value.makeAnyNumUInt().setReadOnly(), c);
         createDOMProperty(PROTOTYPE, "bubbles", Value.makeAnyBool().setReadOnly(), c);
@@ -109,22 +110,28 @@ public class Event {
     public static Value evaluate(DOMObjects nativeObject, FunctionCalls.CallInfo call, Solver.SolverInterface c) {
         State s = c.getState();
         switch (nativeObject) {
+            case EVENT_CONSTRUCTOR: {
+                DOMFunctions.expectParameters(nativeObject, call, c, 1, 1);
+                Value event_name = FunctionCalls.readParameter(call, s, 0);
+            /* Value useCapture =*/
+                return Value.makeObject(INSTANCES);
+            }
             case EVENT_INIT_EVENT: {
-                NativeFunctions.expectParameters(nativeObject, call, c, 3, 3);
+                DOMFunctions.expectParameters(nativeObject, call, c, 3, 3);
                 /* Value eventType =*/
-                Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
+                Conversion.toString(FunctionCalls.readParameter(call, s, 0), c);
                 /* Value canBubble =*/
-                Conversion.toBoolean(NativeFunctions.readParameter(call, s, 0));
+                Conversion.toBoolean(FunctionCalls.readParameter(call, s, 0));
                 /* Value cancelable =*/
-                Conversion.toBoolean(NativeFunctions.readParameter(call, s, 0));
+                Conversion.toBoolean(FunctionCalls.readParameter(call, s, 0));
                 return Value.makeUndef();
             }
             case EVENT_PREVENT_DEFAULT: {
-                NativeFunctions.expectParameters(nativeObject, call, c, 0, 0);
+                DOMFunctions.expectParameters(nativeObject, call, c, 0, 0);
                 return Value.makeUndef();
             }
             case EVENT_STOP_PROPAGATION: {
-                NativeFunctions.expectParameters(nativeObject, call, c, 0, 0);
+                DOMFunctions.expectParameters(nativeObject, call, c, 0, 0);
                 return Value.makeUndef();
             }
             default: {

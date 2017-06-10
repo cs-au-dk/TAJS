@@ -1,1 +1,2 @@
+test/uneval/uneval39.js: [definite] Exceptional program exit is unreachable
 test/uneval/uneval39.js:2:1: [info] Abstract value: 3.0

@@ -39,6 +39,14 @@
             Object.defineProperty(this, '_bytes', {value: _bytes});
         }
 
+        ArrayBuffer.prototype.slice = function slice(begin, end) {
+            var arraybuffer = new ArrayBuffer(0);
+
+            arraybuffer._data = this._data.slice(begin, end);
+            arraybuffer.byteLength = arraybuffer._data.length;
+
+            return arraybuffer;
+        };
 
         function $TypedArray$(obj) {
             if (obj && obj.length) {
@@ -73,6 +81,13 @@
         $TypedArray$.prototype = $TypedArrayPrototype$;
 
         Object.defineProperty($TypedArray$.prototype, 'constructor', {value: $TypedArray$});
+
+        Object.defineProperty($TypedArray$.prototype, 'set', {
+            value: function (arrayLike, offset) {
+                this[TAJS.UInt + offset] = arrayLike[TAJS.UInt];
+            }
+        });
+
         Object.defineProperty($TypedArray$.prototype, 'copyWithin', {
             value: function () {
 
@@ -206,11 +221,7 @@
             TypedArray.__proto__ = $TypedArray$;
             TypedArray.BYTES_PER_ELEMENT = TAJS.UInt;
 
-            var TypedArrayPrototype = function () {
-            };
-            TypedArrayPrototype.prototype = $TypedArrayPrototype$;
-
-            TypedArray.prototype = new TypedArrayPrototype();
+            TypedArray.prototype = $TypedArrayPrototype$;
 
             Object.defineProperty(TypedArray.prototype, 'BYTES_PER_ELEMENT', {value: TypedArray.BYTES_PER_ELEMENT});
 

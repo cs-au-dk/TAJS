@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,11 +16,11 @@
 
 package dk.brics.tajs.monitoring;
 
+import dk.brics.tajs.analysis.HostAPIs;
 import dk.brics.tajs.flowgraph.AbstractNode;
 import dk.brics.tajs.flowgraph.BasicBlock;
 import dk.brics.tajs.flowgraph.FlowGraph;
 import dk.brics.tajs.flowgraph.Function;
-import dk.brics.tajs.flowgraph.HostEnvSources;
 import dk.brics.tajs.flowgraph.SourceLocation;
 import dk.brics.tajs.flowgraph.jsnodes.AssumeNode;
 import dk.brics.tajs.flowgraph.jsnodes.BeginForInNode;
@@ -53,6 +53,7 @@ import dk.brics.tajs.flowgraph.jsnodes.TypeofNode;
 import dk.brics.tajs.flowgraph.jsnodes.UnaryOperatorNode;
 import dk.brics.tajs.flowgraph.jsnodes.WritePropertyNode;
 import dk.brics.tajs.flowgraph.jsnodes.WriteVariableNode;
+import dk.brics.tajs.js2flowgraph.FlowGraphMutator;
 import dk.brics.tajs.lattice.CallEdge;
 import dk.brics.tajs.lattice.Context;
 import dk.brics.tajs.lattice.HostObject;
@@ -67,19 +68,17 @@ import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.monitoring.ObjReadsWrites.R_Status;
 import dk.brics.tajs.monitoring.ObjReadsWrites.W_Status;
 import dk.brics.tajs.options.Options;
+import dk.brics.tajs.solver.BlockAndContext;
 import dk.brics.tajs.solver.CallGraph;
 import dk.brics.tajs.solver.Message;
 import dk.brics.tajs.solver.Message.Severity;
 import dk.brics.tajs.solver.Message.Status;
 import dk.brics.tajs.solver.NodeAndContext;
-import dk.brics.tajs.util.AnalysisException;
 import dk.brics.tajs.util.Pair;
 import dk.brics.tajs.util.Strings;
 import org.apache.log4j.Logger;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -146,11 +145,6 @@ public class Monitoring implements IAnalysisMonitoring {
      * Number of abstract state join operations.
      */
     private int joins = 0;
-
-    /**
-     * Reachable functions.
-     */
-    private Set<Function> reachable_functions;
 
     /**
      * All functions
@@ -223,11 +217,6 @@ public class Monitoring implements IAnalysisMonitoring {
     private long max_memory = 0;
 
     /**
-     * Map from line URL to set of guaranteed undefined lines in the source text.
-     */
-    private Map<String, Set<Integer>> unreachable_lines;
-
-    /**
      * Information about read/written properties in all abstract objects.
      * Singleton/summary information is stored for the singleton variant.
      */
@@ -238,11 +227,6 @@ public class Monitoring implements IAnalysisMonitoring {
      * Undeclared variables belong to the main function.
      */
     private Map<Function, Set<String>> read_variables;
-
-    /**
-     * All reachable nodes.
-     */
-    private Set<AbstractNode> reachable_nodes;
 
     /**
      * Functions that may be called as constructors.
@@ -277,6 +261,10 @@ public class Monitoring implements IAnalysisMonitoring {
      */
     private CallGraph<State, Context, CallEdge> callgraph;
 
+    // TODO this monitor ought to be provided as a monitor that is invoked by some outer composite monitoring in order to make sure all of its methods are invoked properly! (GitHub #350)
+    // (but that would ruin all the calls to `new Monitoring()` in the current codebase! Solution: factory-method)
+    private ReachabilityMonitor reachabilityMonitor = new ReachabilityMonitor();
+
     /**
      * Constructs a new monitoring object.
      */
@@ -288,75 +276,15 @@ public class Monitoring implements IAnalysisMonitoring {
         newflows = newMap();
         eval_calls = newMap();
         inner_html_writes = newMap();
-        unreachable_lines = newMap();
         value_reads = newMap();
         obj_reads_writes = newMap();
         read_variables = newMap();
-        reachable_functions = newSet();
         functions = newSet();
-        reachable_nodes = newSet();
         called_as_constructor = newSet();
         type_collector = new TypeCollector();
         recovery_graph_sizes = newMap();
 //        next_newflow_file = 1;
         messages = null;
-    }
-
-    private void reportUnreachableFunctions() {
-        for (Function f : functions) {
-            if (!reachable_functions.contains(f))
-                addMessage(f.getEntry().getFirstNode(), Status.CERTAIN, Severity.LOW, "Unreachable function" + (f.getName() != null ? " " + Strings.escape(f.getName()) : ""));
-        }
-    }
-
-    private void reportUnreachableCode(FlowGraph fg) {
-        for (Function f : fg.getFunctions()) {
-            if (!reachable_functions.contains(f)) // do not report blocks inside functions that are unreachable themselves.
-                continue;
-            Set<BasicBlock> successors = newSet();
-            Set<BasicBlock> successors_of_blocks_where_last_non_artificial_node_is_reachable = newSet();
-            for (BasicBlock b : f.getBlocks()) {
-                successors.addAll(b.getSuccessors());
-                if (b.getExceptionHandler() != null)
-                    successors.add(b.getExceptionHandler());
-                AbstractNode lastNonArtificialNode = null;
-                for (AbstractNode node : b.getNodes()) {
-                    if (!node.isArtificial()) {
-                        lastNonArtificialNode = node;
-                    }
-                }
-                if (((lastNonArtificialNode == null && successors_of_blocks_where_last_non_artificial_node_is_reachable.contains(b)) || reachable_nodes.contains(lastNonArtificialNode)) &&
-                        !(b.getLastNode() instanceof IfNode)) // exclude if nodes, those are reported separately if always true/false
-                    successors_of_blocks_where_last_non_artificial_node_is_reachable.addAll(b.getSuccessors());
-            }
-            for (BasicBlock b : f.getBlocks()) {
-                boolean prev_reachable = false;
-                boolean isFirstNonArtificialNodeInBlock = true;
-                for (AbstractNode n : b.getNodes()) {
-                    if (n.getDuplicateOf() == null && !n.isArtificial() && !(n instanceof ReturnNode)) { // ignore duplicate nodes, artificial nodes, and return nodes
-                        if (!reachable_nodes.contains(n)) {
-                            final boolean shouldWarn;
-                            if (isFirstNonArtificialNodeInBlock) {
-                                shouldWarn = (n instanceof CatchNode || // unreachable catch block
-                                        successors_of_blocks_where_last_non_artificial_node_is_reachable.contains(b) || // unreachable first node but predecessor block is reachable
-                                        (!b.isEntry() && !successors.contains(b))); // block is neither function entry nor successor of another block
-                            } else {
-                                shouldWarn = prev_reachable;
-                            }
-                            if (shouldWarn) { // previous node in the block killed the flow
-                                addMessage(n, Status.CERTAIN, Severity.LOW, "Unreachable code"); // see also "Unreachable function" and "The conditional expression is always true/false"
-                                break; // no more messages for this block
-                            }
-                        }
-
-                        prev_reachable = reachable_nodes.contains(n);
-                    }
-                    if (!n.isArtificial()) {
-                        isFirstNonArtificialNodeInBlock = false;
-                    }
-                }
-            }
-        }
     }
 
     private void reportDeadAssignments() {
@@ -385,7 +313,6 @@ public class Monitoring implements IAnalysisMonitoring {
                 }
             }
         }
-
         Set<Pair<AbstractNode, String>> deadWrites = newSet();
         deadWrites.addAll(potentiallyDeadWrites);
         deadWrites.removeAll(undeadWrites);
@@ -396,11 +323,8 @@ public class Monitoring implements IAnalysisMonitoring {
         }
     }
 
-    private void reportUnusedVariableOrParameter(FlowGraph fg) {
-        for (Function f : fg.getFunctions()) {
-            // Skip reporting unused variables and parameters for dead code.
-            if (!reachable_functions.contains(f))
-                continue;
+    private void reportUnusedVariableOrParameter() {
+        for (Function f : reachabilityMonitor.getReachableFunctions()) { // Skip reporting unused variables and parameters for dead code.
             Set<String> names = newSet(f.getVariableNames());
             names.addAll(f.getParameterNames());
             Set<String> rv = read_variables.get(f);
@@ -434,10 +358,10 @@ public class Monitoring implements IAnalysisMonitoring {
     }
 
     /**
-     * Add messages about shadowing. Shadowing occurs when a declared variable clashes either local functions or parameters.
+     * Add messages about shadowing. Shadowing occurs when a declared variable clashes with local functions or parameters.
      * This is a purely syntactic property, no analysis results are used.
      */
-    public void reportShadowing(FlowGraph fg) { // FIXME: variable declarations cannot shadow functions or parameters (see 10.1.3 and micro/test181.js) - but the programmer may think so
+    private void reportShadowing(FlowGraph fg) { // FIXME: variable declarations cannot shadow functions or parameters (see 10.1.3 and micro/test181.js) - but the programmer may think so
         for (Function f : fg.getFunctions()) {
             Map<String, DeclareFunctionNode> declared_functions = newMap();
             Map<String, DeclareVariableNode> declared_variables = newMap();
@@ -470,6 +394,9 @@ public class Monitoring implements IAnalysisMonitoring {
         }
     }
 
+    /**
+     * Counts number of nodes of different kinds.
+     */
     private void visitBeginScanPhase() {
         messages = newMap();
         scan_phase = true;
@@ -610,11 +537,10 @@ public class Monitoring implements IAnalysisMonitoring {
                     }));
     }
 
-    private void visitEndScanPhase() {
+    private void emit() {
         if (!Options.get().isNoMessages()) {
-            reportUnreachableFunctions();
-            reportUnreachableCode(flowgraph);
-            reportUnusedVariableOrParameter(flowgraph);
+            reportUnreachable();
+            reportUnusedVariableOrParameter();
             reportDeadAssignments();
             reportShadowing(flowgraph);
             if (Options.get().isShowVariableInfoEnabled()) {
@@ -623,27 +549,130 @@ public class Monitoring implements IAnalysisMonitoring {
             // TODO: this de-duplication should happen somewhere else?
             Set<String> emittedOutput = newSet(); // avoid redundant output
             for (Message message : getSortedMessages()) {
-                if (HostEnvSources.isHostEnvSource(message.getNode().getSourceLocation()) || emittedOutput.contains(message.toString())) {
+                if (emittedOutput.contains(message.toString())) {
                     continue;
                 }
-                message.emit();
                 emittedOutput.add(message.toString());
+                if (!Options.get().isShowInternalMessagesEnabled()) {
+                    boolean isInternal = FlowGraphMutator.get().isHostEnvironmentSource(message.getNode().getSourceLocation());
+                    if (isInternal) {
+                        continue;
+                    }
+                }
+                message.emit();
             }
         }
 
-        if (Options.get().isStatisticsEnabled()) {
-            log.info(this.toString());
-            log.info(callgraph.getCallGraphStatistics());
-            log.info("BlockState: created=" + State.getNumberOfStatesCreated() + ", makeWritableStore=" + State.getNumberOfMakeWritableStoreCalls());
-            log.info("Obj: created=" + Obj.getNumberOfObjsCreated() + ", makeWritableProperties=" + Obj.getNumberOfMakeWritablePropertiesCalls());
-            log.info("Value cache: hits=" + Value.getNumberOfValueCacheHits() + ", misses=" + Value.getNumberOfValueCacheMisses() + ", finalSize=" + Value.getValueCacheSize());
-            log.info("Value object set cache: hits=" + Value.getNumberOfObjectSetCacheHits() + ", misses=" + Value.getNumberOfObjectSetCacheMisses() + ", finalSize=" + Value.getObjectSetCacheSize());
-            log.info("ScopeChain cache: hits=" + ScopeChain.getNumberOfCacheHits() + ", misses=" + ScopeChain.getNumberOfCacheMisses() + ", finalSize=" + ScopeChain.getCacheSize());
-            log.info("Basic blocks: " + flowgraph.getNumberOfBlocks());
+        if (Options.get().isNewFlowEnabled()) {
+            TreeMap<Integer, String> sorted = new TreeMap<>();
+            StringBuilder b = new StringBuilder();
+            b.append("New flow at each function for each context:");
+            for (Entry<BasicBlock, Map<Context, List<String>>> me1 : newflows.entrySet()) {
+                Function f = me1.getKey().getFunction();
+                b.append("\n").append(f).append(" at ").append(f.getSourceLocation()).append(":");
+                for (Entry<Context, List<String>> me2 : me1.getValue().entrySet()) {
+                    b.append("\n  ").append(me2.getKey()).append(" state diffs: ").append(me2.getValue().size());
+                    for (String diff : me2.getValue()) {
+                        if (diff != null) {
+                            b.append("\n    state diff:").append(diff);
+                        }
+                    }
+                    sorted.put(me2.getValue().size(), me1.getKey().getFunction() + " " + me1.getKey().getFunction().getSourceLocation() + ", context " + me2.getKey());
+                }
+            }
+            b.append("\nSorted new flow:");
+            for (Entry<Integer, String> me : sorted.entrySet())
+                b.append("\n").append(me.getKey()).append(" new flows at ").append(me.getValue());
+            log.info(b);
         }
 
-        if (Options.get().isCoverageEnabled()) {
-            logUnreachableMap();
+        if (Options.get().isStatisticsEnabled()) {
+            StringBuilder b = new StringBuilder();
+            b.append("\nCall/construct nodes with potential call to non-function:                     ").append(call_to_non_function.size());
+            b.append("\nTotal number of call/construct nodes:                                         ").append(call_nodes);
+            b.append("\nCall/construct nodes that are certain to never call non-functions:            ").append(call_nodes > 0 ? ((call_nodes - call_to_non_function.size()) * 1000 / call_nodes) / 10f + "%" : "-");
+
+            b.append("\n\nRead variable nodes with potential absent variable:                           ").append(absent_variable_read.size());
+            b.append("\nTotal number of (non-this) read variable nodes:                               ").append(read_variable_nodes);
+            b.append("\nRead variable nodes that are certain to never read absent variables:          ").append(read_variable_nodes > 0 ? ((read_variable_nodes - absent_variable_read.size()) * 1000 / read_variable_nodes) / 10f + "%" : "-");
+
+            b.append("\n\nProperty access nodes with potential null/undef base:                         ").append(null_undef_base.size());
+            b.append("\nTotal number of property access nodes:                                        ").append(property_access_nodes);
+            b.append("\nProperty access nodes that are certain to never have null/undef base:         ").append(property_access_nodes > 0 ? ((property_access_nodes - null_undef_base.size()) * 1000 / property_access_nodes) / 10f + "%" : "-");
+
+            b.append("\n\nProperty reads resulting in singleton types:                                  ").append(getSingletonPropertyReads());
+            b.append("\nVariable reads resulting in singleton types:                                  ").append(getSingletonVariableReads());
+            // FIXME: only compare with reads with typeSize>0 ? (typeSize is 0 for polymorphic values...)
+            float p_var = getVarReadsSize() > 0 ? (float) getSingletonVariableReads() * 100 / getVarReadsSize() : -1;
+            float p_prop = getPropReadsSize() > 0 ? (float) getSingletonPropertyReads() * 100 / getPropReadsSize() : -1;
+            float p_all = !value_reads.isEmpty() ? (float) (getSingletonPropertyReads() + getSingletonVariableReads()) * 100 / value_reads.size() : -1;
+            b.append("\nVariable reads with singleton results:                                        ").append(p_var == -1 ? "-" : p_var + "%");
+            b.append("\nProperty reads with singleton results:                                        ").append(p_prop == -1 ? "-" : p_prop + "%");
+            b.append("\nReads with singleton results:                                                 ").append(p_all == -1 ? "-" : p_all + "%");
+
+            NumberFormat formatter = NumberFormat.getNumberInstance(Locale.US);
+            b.append("\n\nAverage type size in property reads:                                          ").append(formatter.format(getAveragePropertyTypeSize()));
+            b.append("\nAverage type size in variable reads:                                          ").append(formatter.format(getAverageVariableTypeSize()));
+            b.append("\nAverage type size in all reads:                                               ").append(formatter.format(geTotalAverageTypeSize()));
+            b.append("\nReads with at most one type:                                                  ").append(formatter.format(getReadsWithAtMostOneType()));
+            b.append("\nReads with at least two types:                                                ").append(formatter.format(getReadsWithAtleastTwoTypes()));
+
+            b.append("\n\nFixed-property read nodes with potential absent property:                     ").append(absent_fixed_property_read.size());
+            b.append("\nTotal number of fixed-property read nodes:                                    ").append(read_fixed_property_nodes);
+            b.append("\nFixed-property read nodes that are certain to never have absent property:     ").append(read_fixed_property_nodes > 0 ? ((read_fixed_property_nodes - absent_fixed_property_read.size()) * 1000 / read_fixed_property_nodes) / 10f + "%" : "-");
+
+            b.append("\n\nTotal number of functions:                                                    ").append(functions.size());
+            b.append("\nNumber of unreachable functions:                                              ").append(functions.size() - reachabilityMonitor.getReachableFunctions().size()); // FIXME: reports "1" for an empty program
+
+            b.append("\n\nNode transfers:                                                               ").append(node_transfers);
+            b.append("\nBlock transfers:                                                              ").append(block_transfers);
+            b.append("\nUnknown-value recoveries: \n" + " analysis: partial=").append(unknown_value_resolve_analyzing_partial).append(", full=").append(unknown_value_resolve_analyzing_full).append("\n").append(" scanning: partial=").append(unknown_value_resolve_scanning_partial).append(", full=").append(unknown_value_resolve_scanning_full);
+
+            b.append("\n\nState joins:                                                                  ").append(joins).append("\n\n");
+
+            b.append(callgraph.getCallGraphStatistics());
+
+            b.append("\nBlockState: created=").append(State.getNumberOfStatesCreated()).append(", makeWritableStore=").append(State.getNumberOfMakeWritableStoreCalls());
+            b.append("\nObj: created=").append(Obj.getNumberOfObjsCreated()).append(", makeWritableProperties=").append(Obj.getNumberOfMakeWritablePropertiesCalls());
+            b.append("\nValue cache: hits=").append(Value.getNumberOfValueCacheHits()).append(", misses=").append(Value.getNumberOfValueCacheMisses()).append(", finalSize=").append(Value.getValueCacheSize());
+            b.append("\nValue object set cache: hits=").append(Value.getNumberOfObjectSetCacheHits()).append(", misses=").append(Value.getNumberOfObjectSetCacheMisses()).append(", finalSize=").append(Value.getObjectSetCacheSize());
+            b.append("\nScopeChain cache: hits=").append(ScopeChain.getNumberOfCacheHits()).append(", misses=").append(ScopeChain.getNumberOfCacheMisses()).append(", finalSize=").append(ScopeChain.getCacheSize());
+            b.append("\nBasic blocks: ").append(flowgraph.getNumberOfBlocks());
+            b.append("\nRecovery graph sizes: ").append(recovery_graph_sizes);
+
+            if (Options.get().isMemoryMeasurementEnabled()) {
+                formatter.setMaximumFractionDigits(2);
+                b.append("\n\nMax memory used: ").append(formatter.format((max_memory / (1024L * 1024L)))).append("M\n");
+            }
+            log.info(b);
+        }
+
+        if (Options.get().isEvalStatistics()) {
+            StringBuilder b = new StringBuilder();
+            Set<String> eval_const_use = newSet();
+            Set<String> inner_const_use = newSet();
+            Map<AbstractNode, String> eval_anystr_use = newMap();
+            Map<AbstractNode, String> inner_anystr_use = newMap();
+            sortMustFromMaybe(eval_const_use, eval_anystr_use, eval_calls);
+            sortMustFromMaybe(inner_const_use, inner_anystr_use, inner_html_writes);
+            b.append("Use of eval/innerHTML\n");
+            b.append(" Constant eval'ed strings:\n");
+            for (String s : eval_const_use) {
+                b.append("  ").append(s).append("\n").append("  ==\n");
+            }
+            b.append(" Constant innerHTML strings:\n");
+            for (String s : inner_const_use) {
+                b.append("  ").append(s).append("\n").append("  ==\n");
+            }
+            b.append(" Source locations with maybe values for eval:\n");
+            for (Entry<AbstractNode, String> g : eval_anystr_use.entrySet()) {
+                b.append("   ").append(g.getKey().getSourceLocation()).append(": ").append(g.getValue());
+            }
+            b.append("\n Source locations with maybe values for innerHTML:\n");
+            for (Entry<AbstractNode, String> g : inner_anystr_use.entrySet()) {
+                b.append("   ").append(g.getKey().getSourceLocation()).append(": ").append(g.getValue());
+            }
+            log.info(b);
         }
 
         if (Options.get().isCallGraphEnabled()) {
@@ -662,29 +691,55 @@ public class Monitoring implements IAnalysisMonitoring {
         }
     }
 
-    @Override
-    public void visitNodeTransfer(AbstractNode n) {
-        node_transfers++;
+    private void reportUnreachable() {
+        Set<Function> unreachableFunctions = reachabilityMonitor.getUnreachableFunctions();
+        Set<Function> reachableFunctions = reachabilityMonitor.getReachableFunctions();
+        unreachableFunctions.forEach(f ->
+                addMessage(f.getEntry().getFirstNode(), Status.CERTAIN, Severity.LOW, "Unreachable function" + (f.getName() != null ? " " + Strings.escape(f.getName()) : "")));
+        reachableFunctions.stream().flatMap(f -> reachabilityMonitor.getUndominatedUnreachableNodes(f, true).stream()).forEach(n ->
+                addMessage(n, Status.CERTAIN, Severity.LOW, "Unreachable code") // see also "The conditional expression is always true/false"
+        );
+        reportProgramExitReachability(flowgraph.getMain().getOrdinaryExit().getLastNode(), "Ordinary", Severity.HIGH);
+        reportProgramExitReachability(flowgraph.getMain().getExceptionalExit().getLastNode(), "Exceptional", Severity.LOW);
+    }
+
+    private void reportProgramExitReachability(AbstractNode programExitNode, String kind, Severity severity) {
+        if (!reachabilityMonitor.getReachableNodes().contains(programExitNode)) {
+            addMessage(programExitNode, Status.CERTAIN, severity, kind + " program exit is unreachable");
+        }
     }
 
     /**
-     * Registers a block transfer occurrence.
-     * Also measures memory usage if enabled.
+     * Counts node transfers and registers reachability information.
      */
     @Override
-    public void visitBlockTransfer(BasicBlock block, State state) {
+    public void visitNodeTransferPre(AbstractNode n, State s) {
+        node_transfers++;
+        reachabilityMonitor.visitNodeTransferPre(n, s);
+    }
+
+    /**
+     * Counts block transfers and measures memory usage.
+     */
+    @Override
+    public void visitBlockTransferPre(BasicBlock block, State state) {
         block_transfers++;
         if (Options.get().isMemoryMeasurementEnabled()) {
-            System.gc();
-            long m = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
-            if (m > max_memory) {
-                max_memory = m;
+            if (block_transfers % 10 == 0) {
+                System.gc();
+                long m = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
+                if (m > max_memory) {
+                    max_memory = m;
+                }
             }
         }
     }
 
+    /**
+     * Counts unknown-value-resolve operations.
+     */
     @Override
-    public void visitUnknownValueResolve(boolean partial, boolean scanning) {
+    public void visitUnknownValueResolve(AbstractNode node, boolean partial, boolean scanning) {
         if (scanning) {
             if (partial)
                 unknown_value_resolve_scanning_partial++;
@@ -698,21 +753,22 @@ public class Monitoring implements IAnalysisMonitoring {
         }
     }
 
+    /**
+     * Counts join operations.
+     */
     @Override
     public void visitJoin() {
         joins++;
     }
 
+    /**
+     * Collects new dataflow (if enabled).
+     */
     @Override
     public void visitNewFlow(BasicBlock b, Context c, State s, String diff, String info) {
         if (Options.get().isNewFlowEnabled() && b.isEntry()) {
             if (diff != null) {
-                Map<Context, List<String>> m = newflows.get(b);
-                if (m == null) {
-                    m = newMap();
-                    newflows.put(b, m);
-                }
-                addToMapList(m, c, diff);
+                addToMapList(newflows.computeIfAbsent(b, k -> newMap()), c, diff);
             }
 //			if (info != null) {
 //				try {
@@ -720,7 +776,7 @@ public class Monitoring implements IAnalysisMonitoring {
 //					if (!outdir.exists()) {
 //						outdir.mkdirs();
 //					}
-//					try (FileWriter fw = new FileWriter("out" + File.separator + "newflows" + File.separator + "line" + b.getFunction().getSourceLocation().getLineNumber() + "-" + 
+//					try (FileWriter fw = new FileWriter("out" + File.separator + "newflows" + File.separator + "line" + b.getFunction().getSourceLocation().getLineNumber() + "-" +
 //							(next_newflow_file++) + "-" + info + ".dot")) {
 //						fw.write(s.toDot());
 //					}
@@ -730,7 +786,7 @@ public class Monitoring implements IAnalysisMonitoring {
 //			}
 
         }
-//					try (FileWriter fw = new FileWriter("out" + File.separator + "newflows" + File.separator + "line" + b.getFunction().getSourceLocation().getLineNumber() + "-" + 
+//					try (FileWriter fw = new FileWriter("out" + File.separator + "newflows" + File.separator + "line" + b.getFunction().getSourceLocation().getLineNumber() + "-" +
 //							(next_newflow_file++) + "-" + info + ".dot")) {
 //						fw.write(s.toDot());
 //					}
@@ -742,32 +798,16 @@ public class Monitoring implements IAnalysisMonitoring {
     }
 
     /**
-     * Registers the function and checks whether it is unreachable.
+     * Registers reachability information.
      */
     @Override
     public void visitFunction(Function f, Collection<State> entry_states) {
         functions.add(f);
-        for (State s : entry_states) {
-            if (!s.isNone()) {
-                reachable_functions.add(f); // see also "Unreachable code" and "The conditional expression is always true/false"
-                break;
-            }
-        }
-    }
-
-    @Override
-    public void visitReachableNode(AbstractNode n) {
-        AbstractNode d = n.getDuplicateOf();
-        if (d != null)
-            n = d;
-        reachable_nodes.add(n);
+        reachabilityMonitor.visitFunction(f, entry_states);
     }
 
     /**
      * Checks whether an absent variable is read.
-     *
-     * @param n (non-this) read variable operation
-     * @param v the value being read
      */
     @Override
     public void visitReadNonThisVariable(ReadVariableNode n, Value v) {
@@ -789,10 +829,7 @@ public class Monitoring implements IAnalysisMonitoring {
     }
 
     /**
-     * Checks whether the read of 'this' yields the global object.
-     *
-     * @param n (this) read variable operation
-     * @param v the value being read
+     * Checks whether the read of 'this' yields the global object or an imprecise value.
      */
     @Override
     public void visitReadThis(ReadVariableNode n, Value v, State state, ObjectLabel global_obj) {
@@ -827,9 +864,6 @@ public class Monitoring implements IAnalysisMonitoring {
     /**
      * Checks whether the variable read yields null/undefined.
      * Variables named 'undefined' are ignored.
-     *
-     * @param n read variable operation
-     * @param v the value being read
      */
     @Override
     public void visitReadVariable(ReadVariableNode n, Value v, State state) {
@@ -854,9 +888,6 @@ public class Monitoring implements IAnalysisMonitoring {
 
     /**
      * Checks whether the branch condition is always true or always false.
-     *
-     * @param n if node
-     * @param v the boolean value
      */
     @Override
     public void visitIf(IfNode n, Value v) { // see also "Unreachable code" and "Unreachable function"
@@ -865,6 +896,11 @@ public class Monitoring implements IAnalysisMonitoring {
         }
         boolean is_maybe_true = v.isMaybeTrue();
         boolean is_maybe_false = v.isMaybeFalse();
+
+        // NB these messages are more incomplete than what the abstract states would have us believe.
+        // Example for the expression `x && y && z`: if `y` is always false, only the latter conjunction is reported as always false.
+        // This is caused by sound, precision-improving flowgraph optimizations.
+        // If more complete messages are desired, commit 0d3257a (TAJS-private/master-not-reviewed) should be reverted.
         addMessage(n, is_maybe_true ? (is_maybe_false ? Status.MAYBE : Status.CERTAIN) : Status.NONE,
                 Severity.MEDIUM_IF_CERTAIN_NONE_OTHERWISE, "The conditional expression is always true");
         addMessage(n, is_maybe_false ? (is_maybe_true ? Status.MAYBE : Status.CERTAIN) : Status.NONE,
@@ -872,13 +908,7 @@ public class Monitoring implements IAnalysisMonitoring {
     }
 
     /**
-     * Checks whether the 'instanceof' operation may fail.
-     *
-     * @param n                               node performing the operation
-     * @param maybe_v2_non_function           set if the second parameter may be a non-function value
-     * @param maybe_v2_function               set if the second parameter may be a function value
-     * @param maybe_v2_prototype_primitive    set if the prototype property of the second parameter may be a primitive value
-     * @param maybe_v2_prototype_nonprimitive set if the prototype property of the second parameter may be an object value
+     * Checks whether the 'instanceof' operation may fail with a TypeError.
      */
     @Override
     public void visitInstanceof(AbstractNode n,
@@ -912,11 +942,7 @@ public class Monitoring implements IAnalysisMonitoring {
     }
 
     /**
-     * Checks whether the 'in' operation may fail.
-     *
-     * @param n                  node performing the operation
-     * @param maybe_v2_object    if the second parameter may be an object value
-     * @param maybe_v2_nonobject if the second parameter may be a non-object value
+     * Checks whether the 'in' operation may fail with a TypeError.
      */
     @Override
     public void visitIn(AbstractNode n, boolean maybe_v2_object, boolean maybe_v2_nonobject) {
@@ -937,10 +963,7 @@ public class Monitoring implements IAnalysisMonitoring {
     }
 
     /**
-     * Checks whether the property access operation may dereference null or undefined.
-     *
-     * @param n       operation that accesses a property
-     * @param baseval base value for the access
+     * Checks whether the property access operation may dereference null or undefined causing a TypeError.
      */
     @Override
     public void visitPropertyAccess(Node n, Value baseval) {
@@ -963,18 +986,11 @@ public class Monitoring implements IAnalysisMonitoring {
 
     /**
      * Checks whether the property read operation accesses an absent property and whether the operation returns null/undefined.
-     *
-     * @param n           read property operation
-     * @param objlabels   objects being read from
-     * @param propertystr description of the property name
-     * @param maybe       if there may be more than one value
-     * @param state       current abstract state
-     * @param v           property value with attributes
      */
     @Override
-    public void visitReadProperty(ReadPropertyNode n, Set<ObjectLabel> objlabels, Str propertystr, boolean maybe, State state, Value v) {
+    public void visitReadProperty(ReadPropertyNode n, Set<ObjectLabel> objlabels, Str propertystr, boolean maybe, State state, Value v, ObjectLabel global_obj) {
         if (!scan_phase) {
-            throw new AnalysisException("Should only be invoked in scan phase");
+            return;
         }
         Status s;
         if (!maybe && v.isMaybeAbsent() && !v.isMaybePresent()) {
@@ -988,7 +1004,16 @@ public class Monitoring implements IAnalysisMonitoring {
             absent_fixed_property_read.add(n);
         }
         if (n.isPropertyFixed()) {
-            addMessage(n, s, Severity.MEDIUM, "Reading absent property " + n.getPropertyString());
+            if (objlabels.stream().anyMatch(l -> l.isHostObject() && !l.equals(global_obj))) {
+                boolean isPartial = objlabels.stream().anyMatch(l -> l.isHostObject() && l.getHostObject().getAPI() == HostAPIs.PARTIAL_HOST_MODEL);
+                if (isPartial) {
+                    addMessage(n, s, Severity.MEDIUM, "Reading absent property " + n.getPropertyString() + " of partially modeled host object!");
+                } else {
+                    addMessage(n, s, Severity.MEDIUM, "Reading absent property " + n.getPropertyString() + " of host object");
+                }
+            } else {
+                addMessage(n, s, Severity.MEDIUM, "Reading absent property " + n.getPropertyString());
+            }
         } else {
             addMessage(n, s, Severity.LOW, "Reading absent property (computed name)");
         }
@@ -1005,14 +1030,9 @@ public class Monitoring implements IAnalysisMonitoring {
     }
 
     /**
-     * Warns about reads from unknown properties;
+     * Checks for reads from unknown properties;
      * also registers a read operation on abstract objects.
      * Properties named 'length' on array objects are ignored.
-     *
-     * @param n             the node responsible for the read
-     * @param objs          the objects being read from
-     * @param propertystr   description of the property name
-     * @param check_unknown if set, warn about reads from unknown properties
      */
     @Override
     public void visitPropertyRead(AbstractNode n, Set<ObjectLabel> objs, Str propertystr, State state, boolean check_unknown) {
@@ -1043,7 +1063,7 @@ public class Monitoring implements IAnalysisMonitoring {
         for (ObjectLabel objlabel : objs) {
             // TODO: objlabel.isHostObject() exists, but does not do precisely the same thing. Figure out what the correct behavior is.
             if (objlabel.getNode() != null) {
-                for (ObjectLabel oo : (propertyname == null ? state.getPrototypesUsedForUnknown(objlabel) : state.getPrototypeWithProperty(objlabel, propertyname))) { // TODO: this is also used for ReadVariableNode?
+                for (ObjectLabel oo : (propertyname == null ? state.getPrototypeWithProperty(objlabel, Value.makeAnyStr()) : state.getPrototypeWithProperty(objlabel, propertyname) /* TODO replace this expression with a lookup using the *coerced* property name! */)) { // TODO: this is also used for ReadVariableNode?
                     if (oo.getNode() != null) { // TODO: Only give warnings for user objects, others maybe DOM or similar with side effects
                         os.add(oo.makeSingleton());
                     }
@@ -1068,11 +1088,7 @@ public class Monitoring implements IAnalysisMonitoring {
                 else
                     addToMapSet(read_variables, f, arg);
             }
-            ObjReadsWrites i = obj_reads_writes.get(objlabel);
-            if (i == null) {
-                i = new ObjReadsWrites();
-                obj_reads_writes.put(objlabel, i);
-            }
+            ObjReadsWrites i = obj_reads_writes.computeIfAbsent(objlabel, k -> new ObjReadsWrites());
             if (propertyname == null) {
                 i.readUnknown();
             } else if (os.size() == 1) {
@@ -1085,19 +1101,15 @@ public class Monitoring implements IAnalysisMonitoring {
 
     private static boolean checkPropertyNameMayInterfereWithBuiltInProperties(Str propertystr) {
         return !propertystr.isMaybeSingleStr() &&
-                (propertystr.isMaybeStrIdentifier() || propertystr.isMaybeStrIdentifierParts() ||
-                        propertystr.isMaybeStrPrefixedIdentifierParts() || propertystr.isMaybeStrJSON()); // TODO: more precise pattern of what may interfere?
+                (propertystr.isMaybeStrIdentifier() || propertystr.isMaybeStrOtherIdentifierParts() ||
+                        propertystr.isMaybeStrPrefix() || propertystr.isMaybeStrJSON()); // TODO: more precise pattern of what may interfere?
     }
 
     /**
-     * Warns about writes to unknown properties;
+     * Checks for writes to unknown properties;
      * also registers a write operation on abstract objects.
      * Properties named 'length' on array objects are ignored.
      * Writes to the arguments object are also ignored.
-     *
-     * @param n           the node responsible for the write
-     * @param objs        the objects being written to
-     * @param propertystr description of the property name
      */
     @Override
     public void visitPropertyWrite(Node n, Set<ObjectLabel> objs, Str propertystr) {
@@ -1133,11 +1145,7 @@ public class Monitoring implements IAnalysisMonitoring {
             }
         }
         for (ObjectLabel objlabel : os) {
-            ObjReadsWrites i = obj_reads_writes.get(objlabel);
-            if (i == null) {
-                i = new ObjReadsWrites();
-                obj_reads_writes.put(objlabel, i);
-            }
+            ObjReadsWrites i = obj_reads_writes.computeIfAbsent(objlabel, k -> new ObjReadsWrites());
             if (propertyname == null) {
                 i.writeUnknown(n);
             } else if (objs.size() == 1) {
@@ -1158,17 +1166,24 @@ public class Monitoring implements IAnalysisMonitoring {
         }
     }
 
+    /**
+     * Ignored.
+     */
     @Override
     public void visitNativeFunctionReturn(AbstractNode node, HostObject hostObject, Value result) {
         // ignore
     }
 
     /**
+     * Ignored.
+     */
+    @Override
+    public void visitEventHandlerRegistration(AbstractNode node, Context context, Value handler) {
+        // ignore
+    }
+
+    /**
      * Checks whether the function is invoked both as a constructor (with 'new') and as a function/method (without 'new').
-     *
-     * @param f           function being called
-     * @param call        node responsible for the call
-     * @param constructor if set, the call uses 'new'
      */
     @Override
     public void visitUserFunctionCall(Function f, AbstractNode call, boolean constructor) { // TODO: avoid warning if the call is a super-call in a constructor
@@ -1189,11 +1204,7 @@ public class Monitoring implements IAnalysisMonitoring {
     }
 
     /**
-     * Registers a potential call/construct to a non-function value.
-     *
-     * @param n                  node responsible for the call
-     * @param maybe_non_function if set, this call may involve a non-function value
-     * @param maybe_function     if set, this call may involve a function value
+     * Checks for call/construct to a non-function value causing a TypeError.
      */
     @Override
     public void visitCall(AbstractNode n, boolean maybe_non_function, boolean maybe_function) {
@@ -1209,9 +1220,6 @@ public class Monitoring implements IAnalysisMonitoring {
 
     /**
      * Registers a call to eval.
-     *
-     * @param n node that may call eval
-     * @param v value being eval'ed
      */
     @Override
     public void visitEvalCall(AbstractNode n, Value v) {
@@ -1227,9 +1235,6 @@ public class Monitoring implements IAnalysisMonitoring {
 
     /**
      * Registers a write to innerHTML.
-     *
-     * @param n node where the write occurs
-     * @param v value being written
      */
     @Override
     public void visitInnerHTMLWrite(Node n, Value v) {
@@ -1245,13 +1250,6 @@ public class Monitoring implements IAnalysisMonitoring {
 
     /**
      * Checks the number of parameters for a call to a native function.
-     *
-     * @param n                   node responsible for the call
-     * @param hostobject          the native function being called
-     * @param num_actuals_unknown if set, the number of actuals is unknown
-     * @param num_actuals         number of actuals (if num_actuals_unknown is not set)
-     * @param min                 minimum number of parameters expected
-     * @param max                 maximum number of paramaters expected (-1 for any number)
      */
     @Override
     public void visitNativeFunctionCall(AbstractNode n, HostObject hostobject, boolean num_actuals_unknown, int num_actuals, int min, int max) {
@@ -1267,7 +1265,7 @@ public class Monitoring implements IAnalysisMonitoring {
     }
 
     /**
-     * Record type information about a var/prop read.
+     * Registers type information about a var/prop read.
      */
     @Override
     public void visitRead(Node n, Value v, State state) {
@@ -1280,17 +1278,13 @@ public class Monitoring implements IAnalysisMonitoring {
 
     /**
      * Registers that the given variable is read; also checks for suspicious type mixings.
-     *
-     * @param n (non-this) read variable operation
-     * @param v value being read
      */
     @Override
-    public void visitVariableAsRead(ReadVariableNode n, Value v, State state) {
+    public void visitVariableAsRead(AbstractNode n, String varname, Value v, State state) {
         if (!scan_phase) {
             return;
         }
         // record in read_variables
-        String varname = n.getVariableName();
         Function f = n.getBlock().getFunction();
         // The arguments object is special, but other than that walk upwards in scope to find where the variable belongs.
         while (!"arguments".equals(varname) && !f.getVariableNames().contains(varname) && !f.getParameterNames().contains(varname)) {
@@ -1324,115 +1318,15 @@ public class Monitoring implements IAnalysisMonitoring {
         addMessage(n, s, Severity.LOW, "The variable " + Strings.escape(varname) + " has values with different types"); // TODO: also check property reads with different types?
     }
 
+    /**
+     * Registers the recovery graph size.
+     */
     @Override
-    public void visitRecoveryGraph(int size) {
+    public void visitRecoveryGraph(AbstractNode node, int size) {
         Integer count = recovery_graph_sizes.get(size);
         if (count == null)
             count = 0;
         recovery_graph_sizes.put(size, count + 1);
-    }
-
-    /**
-     * Returns a string description of the results.
-     */
-    @Override
-    public String toString() {
-        NumberFormat formatter = NumberFormat.getNumberInstance(Locale.US);
-        StringBuilder b = new StringBuilder();
-
-        if (Options.get().isNewFlowEnabled()) {
-            TreeMap<Integer, String> sorted = new TreeMap<>();
-            b.append("\nNew flow at each function for each context:");
-            for (Entry<BasicBlock, Map<Context, List<String>>> me1 : newflows.entrySet()) {
-                Function f = me1.getKey().getFunction();
-                b.append("\n").append(f).append(" at ").append(f.getSourceLocation()).append(":");
-                for (Entry<Context, List<String>> me2 : me1.getValue().entrySet()) {
-                    b.append("\n  ").append(me2.getKey()).append(" state diffs: ").append(me2.getValue().size());
-                    for (String diff : me2.getValue()) {
-                        if (diff != null) {
-                            b.append("\n    state diff:").append(diff);
-                        }
-                    }
-                    sorted.put(me2.getValue().size(), me1.getKey().getFunction() + " " + me1.getKey().getFunction().getSourceLocation() + ", context " + me2.getKey());
-                }
-            }
-            b.append("\nSorted new flow:");
-            for (Entry<Integer, String> me : sorted.entrySet())
-                b.append("\n").append(me.getKey()).append(" new flows at ").append(me.getValue());
-        }
-
-        b.append("\n\nCall/construct nodes with potential call to non-function:                     ").append(call_to_non_function.size());
-        b.append("\nTotal number of call/construct nodes:                                         ").append(call_nodes);
-        b.append("\n==> Call/construct nodes that are certain to never call non-functions:        ").append(call_nodes > 0 ? ((call_nodes - call_to_non_function.size()) * 1000 / call_nodes) / 10f + "%" : "-");
-
-        b.append("\n\nRead variable nodes with potential absent variable:                           ").append(absent_variable_read.size());
-        b.append("\nTotal number of (non-this) read variable nodes:                               ").append(read_variable_nodes);
-        b.append("\n==> Read variable nodes that are certain to never read absent variables:      ").append(read_variable_nodes > 0 ? ((read_variable_nodes - absent_variable_read.size()) * 1000 / read_variable_nodes) / 10f + "%" : "-");
-
-        b.append("\n\nProperty access nodes with potential null/undef base:                         ").append(null_undef_base.size());
-        b.append("\nTotal number of property access nodes:                                        ").append(property_access_nodes);
-        b.append("\n==> Property access nodes that are certain to never have null/undef base:     ").append(property_access_nodes > 0 ? ((property_access_nodes - null_undef_base.size()) * 1000 / property_access_nodes) / 10f + "%" : "-");
-
-        b.append("\n\nProperty reads resulting in singleton types:                                  ").append(getSingletonPropertyReads());
-        b.append("\nVariable reads resulting in singleton types:                                  ").append(getSingletonVariableReads());
-        // FIXME: only compare with reads with typeSize>0 ? (typeSize is 0 for polymorphic values...)
-        float p_var = getVarReadsSize() > 0 ? (float) getSingletonVariableReads() * 100 / getVarReadsSize() : -1;
-        float p_prop = getPropReadsSize() > 0 ? (float) getSingletonPropertyReads() * 100 / getPropReadsSize() : -1;
-        float p_all = !value_reads.isEmpty() ? (float) (getSingletonPropertyReads() + getSingletonVariableReads()) * 100 / value_reads.size() : -1;
-        b.append("\n==> Variable reads with singleton results:                                    ").append(p_var == -1 ? "-" : p_var + "%");
-        b.append("\n==> Property reads with singleton results:                                    ").append(p_prop == -1 ? "-" : p_prop + "%");
-        b.append("\n==> Reads with singleton results:                                             ").append(p_all == -1 ? "-" : p_all + "%");
-
-        b.append("\n==> Average type size in property reads:                                      ").append(formatter.format(getAveragePropertyTypeSize()));
-        b.append("\n==> Average type size in variable reads:                                      ").append(formatter.format(getAverageVariableTypeSize()));
-        b.append("\n==> Average type size in all reads:                                           ").append(formatter.format(geTotalAverageTypeSize()));
-        b.append("\n==> Reads with at most one type:                                              ").append(formatter.format(getReadsWithAtMostOneType()));
-        b.append("\n==> Reads with at least two types:                                            ").append(formatter.format(getReadsWithAtleastTwoTypes()));
-
-        b.append("\n\nFixed-property read nodes with potential absent property:                     ").append(absent_fixed_property_read.size());
-        b.append("\nTotal number of fixed-property read nodes:                                    ").append(read_fixed_property_nodes);
-        b.append("\n==> Fixed-property read nodes that are certain to never have absent property: ").append(read_fixed_property_nodes > 0 ? ((read_fixed_property_nodes - absent_fixed_property_read.size()) * 1000 / read_fixed_property_nodes) / 10f + "%" : "-");
-
-        b.append("\n\nTotal number of functions:                                                    ").append(functions.size());
-        b.append("\nNumber of unreachable functions:                                              ").append(functions.size() - reachable_functions.size());
-
-        b.append("\n\nNode transfers: ").append(node_transfers);
-        b.append("\nBlock transfers: ").append(block_transfers);
-        b.append("\nUnknown-value recoveries: \n" + " analysis: partial=").append(unknown_value_resolve_analyzing_partial).append(", full=").append(unknown_value_resolve_analyzing_full).append("\n").append(" scanning: partial=").append(unknown_value_resolve_scanning_partial).append(", full=").append(unknown_value_resolve_scanning_full);
-        b.append("\nState joins: ").append(joins).append("\n");
-
-        if (Options.get().isMemoryMeasurementEnabled()) {
-            formatter.setMaximumFractionDigits(2);
-            b.append(" Max memory used: ").append(formatter.format((max_memory / (1024L * 1024L)))).append("M\n");
-        }
-        if (Options.get().isEvalStatistics()) {
-            Set<String> eval_const_use = newSet();
-            Set<String> inner_const_use = newSet();
-            Map<AbstractNode, String> eval_anystr_use = newMap();
-            Map<AbstractNode, String> inner_anystr_use = newMap();
-            sortMustFromMaybe(eval_const_use, eval_anystr_use, eval_calls);
-            sortMustFromMaybe(inner_const_use, inner_anystr_use, inner_html_writes);
-            b.append("\nUse of eval/innerHTML\n");
-            b.append(" Constant eval'ed strings:\n");
-            for (String s : eval_const_use) {
-                b.append("  ").append(s).append("\n").append("  ==\n");
-            }
-            b.append(" Constant innerHTML strings:\n");
-            for (String s : inner_const_use) {
-                b.append("  ").append(s).append("\n").append("  ==\n");
-            }
-            b.append(" Source locations with maybe values for eval:\n");
-            for (Entry<AbstractNode, String> g : eval_anystr_use.entrySet()) {
-                b.append("   ").append(g.getKey().getSourceLocation()).append(": ").append(g.getValue());
-            }
-            b.append("\n Source locations with maybe values for innerHTML:\n");
-            for (Entry<AbstractNode, String> g : inner_anystr_use.entrySet()) {
-                b.append("   ").append(g.getKey().getSourceLocation()).append(": ").append(g.getValue());
-            }
-            b.append("\n");
-        }
-        b.append("Recovery graph sizes: ").append(recovery_graph_sizes).append("\n");
-        return b.toString();
     }
 
     private int getVarReadsSize() {
@@ -1554,33 +1448,6 @@ public class Monitoring implements IAnalysisMonitoring {
     }
 
     /**
-     * Produces output showing the parts of the code that is determined unreachable by the analysis.
-     */
-    private void logUnreachableMap() {
-        for (String fs : unreachable_lines.keySet()) {
-            log.info("== unreachable info for " + fs + " ==");
-            try (BufferedReader r = new BufferedReader(new FileReader(fs))) {
-                Set<Integer> ls = unreachable_lines.get(fs);
-                if (ls == null) {
-                    ls = Collections.emptySet();
-                }
-                String line;
-                int i = 1;
-                while ((line = r.readLine()) != null) {
-                    String prefix;
-                    if (ls.contains(i++)) {
-                        prefix = "!!!";
-                    } else
-                        prefix = "   ";
-                    log.info(prefix + line);
-                }
-            } catch (IOException e) {
-                throw new AnalysisException(e);
-            }
-        }
-    }
-
-    /**
      * Adds a message for the given node. If not in scan phase, nothing is done.
      * Uses Status.INFO.
      * Uses the message as key (must be a fixed string).
@@ -1605,7 +1472,7 @@ public class Monitoring implements IAnalysisMonitoring {
      * If the message already exists, the status is joined.
      * Uses the message as key (must be a fixed string).
      */
-    private void addMessage(AbstractNode n, Status s, Severity severity, String msg) { // TODO: collect all message generation in Monitoring? (then make addMessage private?) 
+    private void addMessage(AbstractNode n, Status s, Severity severity, String msg) { // TODO: collect all message generation in Monitoring? (then make addMessage private?)
         addMessage(n, s, severity, msg, msg);
     }
 
@@ -1673,9 +1540,6 @@ public class Monitoring implements IAnalysisMonitoring {
         return es;
     }
 
-    /**
-     * Returns the collected type information.
-     */
     @Override
     public Map<TypeCollector.VariableSummary, Value> getTypeInformation() {
         return type_collector.getTypeInformation();
@@ -1687,26 +1551,73 @@ public class Monitoring implements IAnalysisMonitoring {
     }
 
     @Override
-    public void beginPhase(AnalysisPhase phase) {
+    public void visitPhasePre(AnalysisPhase phase) {
         if (phase == AnalysisPhase.SCAN) {
             visitBeginScanPhase();
         }
     }
 
     @Override
-    public void endPhase(AnalysisPhase phase) {
+    public void visitPhasePost(AnalysisPhase phase) {
         if (phase == AnalysisPhase.SCAN) {
-            visitEndScanPhase();
+            emit();
         }
     }
 
+
+    /**
+     * Ignored.
+     */
     @Override
     public void setCallGraph(CallGraph<State, Context, CallEdge> callgraph) {
         this.callgraph = callgraph;
     }
 
+    /**
+     * Ignored.
+     */
     @Override
-    public void visitPostBlockTransfer(BasicBlock b, State state) {
+    public void visitBlockTransferPost(BasicBlock b, State state) {
+        // ignore
+    }
+
+    /**
+     * Ignored.
+     */
+    @Override
+    public void visitPropagationPre(BlockAndContext<Context> from, BlockAndContext<Context> to) {
+        // ignore
+    }
+
+    /**
+     * Ignored.
+     */
+    @Override
+    public void visitPropagationPost(BlockAndContext<Context> from, BlockAndContext<Context> to, boolean changed) {
+        // ignore
+    }
+
+    /**
+     * Ignored.
+     */
+    @Override
+    public void visitNodeTransferPost(AbstractNode n, State s) {
+        // ignore
+    }
+
+    /**
+     * Ignored.
+     */
+    @Override
+    public void visitNewObject(AbstractNode node, ObjectLabel label, State s) {
+        // ignore
+    }
+
+    /**
+     * Ignored.
+     */
+    @Override
+    public void visitRenameObject(AbstractNode node, ObjectLabel from, ObjectLabel to, State s) {
         // ignore
     }
 }

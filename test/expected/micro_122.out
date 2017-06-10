@@ -1,2 +1,3 @@
+test/micro/test122.js: [definite] Exceptional program exit is unreachable
 test/micro/test122.js:4:5: [definite] The variable a is never used
 test/micro/test122.js:9:1: [info] Abstract value: UInt

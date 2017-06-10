@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -37,11 +37,11 @@ public class AnalysisTimeLimiter extends DefaultAnalysisMonitoring {
 
     /**
      * @param secondsTimeLimit as the number of second the analysis is allowed to run
-     * @param crash true if an exception should be thrown when the analysis exceed the time limit
+     * @param crashImmediately true if an exception should be thrown when the analysis exceed the time limit
      */
-    public AnalysisTimeLimiter(int secondsTimeLimit, boolean crash) {
+    public AnalysisTimeLimiter(int secondsTimeLimit, boolean crashImmediately) {
         this.secondsTimeLimit = secondsTimeLimit;
-        this.crash = crash;
+        this.crash = crashImmediately;
     }
 
     public AnalysisTimeLimiter(int secondsTimeLimit) {
@@ -69,8 +69,8 @@ public class AnalysisTimeLimiter extends DefaultAnalysisMonitoring {
     }
 
     @Override
-    public void beginPhase(AnalysisPhase phase) {
-        if (phase == AnalysisPhase.DATAFLOW_ANALYSIS) {
+    public void visitPhasePre(AnalysisPhase phase) {
+        if (phase == AnalysisPhase.ANALYSIS) {
             if (secondsTimeLimit != -1) {
                 long now = System.nanoTime();
                 long delta = secondsTimeLimit * nanoFactor;

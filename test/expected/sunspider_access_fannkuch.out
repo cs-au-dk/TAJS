@@ -2,6 +2,7 @@ test/sunspider/access-fannkuch.js:21:11: [definite] The conditional expression i
 test/sunspider/access-fannkuch.js:50:14: [definite] The conditional expression is always true
 test/sunspider/access-fannkuch.js:46:41: [definite] Dead assignment, property is never read
 test/sunspider/access-fannkuch.js:69:5: [definite] The variable ret is never used
+test/sunspider/access-fannkuch.js: [maybe] Uncaught exception, constructed at [test/sunspider/access-fannkuch.js:29:24, test/sunspider/access-fannkuch.js:39:59, test/sunspider/access-fannkuch.js:59:10, test/sunspider/access-fannkuch.js:61:10]
 test/sunspider/access-fannkuch.js:25:38: [maybe] Converting primitive number to object
 test/sunspider/access-fannkuch.js:25:39: [maybe] Conversion to number yields NaN
 test/sunspider/access-fannkuch.js:25:39: [maybe] Reading absent property (computed name)

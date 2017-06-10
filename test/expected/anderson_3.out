@@ -2,5 +2,6 @@ test/anderson/anderson3.js:11:2: [definite] Dead assignment, property b is never
 test/anderson/anderson3.js:12:2: [definite] Dead assignment, property c is never read
 test/anderson/anderson3.js:16:2: [definite] Dead assignment, property b is never read
 test/anderson/anderson3.js:20:2: [definite] Dead assignment, property c is never read
+test/anderson/anderson3.js: [definite] Exceptional program exit is unreachable
 test/anderson/anderson3.js:8:6: [definite] The variable y is never used
 test/anderson/anderson3.js:23:5: [definite] The variable xx is never used

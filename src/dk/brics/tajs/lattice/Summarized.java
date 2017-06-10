@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -64,6 +64,17 @@ public final class Summarized {
      */
     public Set<ObjectLabel> getDefinitelySummarized() {
         return definitely_summarized;
+    }
+
+    /**
+     * Marks the specified object label as definitely not summarized.
+     * @param strong if set, remove from both 'definitely' and 'maybe'; otherwise, remove only from 'definitely'
+     */
+    public void removeSummarized(ObjectLabel objlabel, boolean strong) {
+        definitely_summarized.remove(objlabel);
+        if (strong) {
+            maybe_summarized.remove(objlabel);
+        }
     }
 
     /**

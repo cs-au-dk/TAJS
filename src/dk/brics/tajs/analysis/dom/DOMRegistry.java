@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -38,6 +38,8 @@ public class DOMRegistry {
         ELEMENTS_BY_TAGNAME
     }
 
+    private static ObjectLabel hashChangeEvent;
+
     private static ObjectLabel keyboardEvent;
 
     private static ObjectLabel mouseEvent;
@@ -53,6 +55,7 @@ public class DOMRegistry {
     private static ObjectLabel touchEvent;
 
     public static void reset() {
+        hashChangeEvent = null;
         keyboardEvent = null;
         mouseEvent = null;
         ajaxEvent = null;
@@ -60,6 +63,10 @@ public class DOMRegistry {
         mutationEvent = null;
         wheelEvent = null;
         touchEvent = null;
+    }
+
+    public static void registerHashChangeEventLabel(ObjectLabel l) {
+        hashChangeEvent = l;
     }
 
     public static void registerKeyboardEventLabel(ObjectLabel l) {
@@ -89,6 +96,13 @@ public class DOMRegistry {
     public static void registerTouchEventLabel(ObjectLabel l) {
 		touchEvent = l;
 	}
+
+    public static ObjectLabel getHashChangeEventLabel() {
+        if (hashChangeEvent == null) {
+            throw new AnalysisException("No hash change event object labels registered");
+        }
+        return hashChangeEvent;
+    }
 
     public static ObjectLabel getKeyboardEventLabel() {
         if (keyboardEvent == null) {

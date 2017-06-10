@@ -1,6 +1,7 @@
 test/google/cryptobench.js:798:5: [definite] TypeError, call to non-function
 test/google/cryptobench.js:1702:3: [definite] ReferenceError, reading absent variable document
 test/google/cryptobench.js:55:50: [definite] Variable c is null/undefined
+test/google/cryptobench.js:56:10: [definite] The conditional expression is always true
 test/google/cryptobench.js:229:8: [definite] The conditional expression is always false
 test/google/cryptobench.js:230:8: [definite] The conditional expression is always true
 test/google/cryptobench.js:276:3: [definite] The conditional expression is always true
@@ -111,9 +112,11 @@ test/google/cryptobench.js:439:17: [maybe] TypeError, accessing property of null
 test/google/cryptobench.js:440:27: [maybe] TypeError, accessing property of null/undefined
 test/google/cryptobench.js:541:23: [maybe] TypeError, accessing property of null/undefined
 test/google/cryptobench.js:606:17: [maybe] TypeError, accessing property of null/undefined
+test/google/cryptobench.js:797:5: [maybe] RangeError, assigning invalid value to array 'length' property
 test/google/cryptobench.js:798:5: [maybe] TypeError, accessing property of null/undefined
 test/google/cryptobench.js:1098:3: [maybe] TypeError, accessing property of null/undefined
 test/google/cryptobench.js:1162:7: [maybe] TypeError, accessing property of null/undefined
+test/google/cryptobench.js:1394:3: [maybe] RangeError, assigning invalid value to array 'length' property
 test/google/cryptobench.js:1461:10: [maybe] TypeError, accessing property of null/undefined
 test/google/cryptobench.js:1542:10: [maybe] TypeError, accessing property of null/undefined
 test/google/cryptobench.js:205:15: [maybe] Reading absent property t
@@ -261,8 +264,9 @@ test/google/cryptobench.js:1211:25: [maybe] Reading absent property s
 test/google/cryptobench.js:1212:6: [maybe] Reading absent property t
 test/google/cryptobench.js:1214:22: [maybe] Reading absent property t
 test/google/cryptobench.js:1267:6: [maybe] Reading absent property t
-test/google/cryptobench.js: [maybe] Uncaught exception, constructed at [test/google/cryptobench.js:131:5, test/google/cryptobench.js:205:38, test/google/cryptobench.js:237:11, test/google/cryptobench.js:241:10, test/google/cryptobench.js:345:34, test/google/cryptobench.js:355:35, test/google/cryptobench.js:369:5, test/google/cryptobench.js:391:5, test/google/cryptobench.js:439:17, test/google/cryptobench.js:440:27, test/google/cryptobench.js:510:9, test/google/cryptobench.js:541:23, test/google/cryptobench.js:606:17, test/google/cryptobench.js:608:5, test/google/cryptobench.js:798:5, test/google/cryptobench.js:843:33, test/google/cryptobench.js:848:30, test/google/cryptobench.js:1025:22, test/google/cryptobench.js:1056:16, test/google/cryptobench.js:1071:19, test/google/cryptobench.js:1098:3, test/google/cryptobench.js:1162:7, test/google/cryptobench.js:1461:10, test/google/cryptobench.js:1542:10]
+test/google/cryptobench.js: [maybe] Uncaught exception, constructed at [test/google/cryptobench.js:131:5, test/google/cryptobench.js:205:38, test/google/cryptobench.js:237:11, test/google/cryptobench.js:241:10, test/google/cryptobench.js:248:7, test/google/cryptobench.js:252:7, test/google/cryptobench.js:345:34, test/google/cryptobench.js:355:35, test/google/cryptobench.js:369:5, test/google/cryptobench.js:391:5, test/google/cryptobench.js:439:17, test/google/cryptobench.js:440:27, test/google/cryptobench.js:510:9, test/google/cryptobench.js:541:23, test/google/cryptobench.js:606:17, test/google/cryptobench.js:608:5, test/google/cryptobench.js:797:5, test/google/cryptobench.js:798:5, test/google/cryptobench.js:843:33, test/google/cryptobench.js:848:30, test/google/cryptobench.js:1025:22, test/google/cryptobench.js:1056:16, test/google/cryptobench.js:1071:19, test/google/cryptobench.js:1098:3, test/google/cryptobench.js:1162:7, test/google/cryptobench.js:1383:5, test/google/cryptobench.js:1394:3, test/google/cryptobench.js:1395:3, test/google/cryptobench.js:1461:10, test/google/cryptobench.js:1504:26, test/google/cryptobench.js:1511:5, test/google/cryptobench.js:1542:10]
 test/google/cryptobench.js:54:6: [maybe] The variable a has values with different types
+test/google/cryptobench.js:55:20: [maybe] The variable a has values with different types
 test/google/cryptobench.js:55:46: [maybe] The variable a has values with different types
 test/google/cryptobench.js:57:26: [maybe] The variable a has values with different types
 test/google/cryptobench.js:124:12: [maybe] Conversion to number yields NaN
@@ -280,7 +284,6 @@ test/google/cryptobench.js:189:6: [maybe] Converting object to string
 test/google/cryptobench.js:189:6: [maybe] Converting primitive string to object
 test/google/cryptobench.js:191:6: [maybe] Converting object to string
 test/google/cryptobench.js:191:6: [maybe] Converting primitive string to object
-test/google/cryptobench.js:194:31: [maybe] Conversion to number yields NaN
 test/google/cryptobench.js:194:31: [maybe] Converting object to string
 test/google/cryptobench.js:194:31: [maybe] Converting primitive string to object
 test/google/cryptobench.js:196:11: [maybe] Reading absent property (computed name)
@@ -457,7 +460,6 @@ test/google/cryptobench.js:797:17: [maybe] The variable a has values with differ
 test/google/cryptobench.js:798:5: [maybe] Converting primitive number to object
 test/google/cryptobench.js:811:26: [maybe] Conversion to number yields NaN
 test/google/cryptobench.js:811:26: [maybe] Reading absent property (computed name)
-test/google/cryptobench.js:812:16: [maybe] Conversion to number yields NaN
 test/google/cryptobench.js:815:14: [maybe] Conversion to number yields NaN
 test/google/cryptobench.js:815:14: [maybe] Reading absent property (computed name)
 test/google/cryptobench.js:816:14: [maybe] Conversion to number yields NaN
@@ -566,6 +568,7 @@ test/google/cryptobench.js:1382:17: [maybe] Reading absent property (computed na
 test/google/cryptobench.js:1392:13: [maybe] Conversion to number yields NaN
 test/google/cryptobench.js:1392:22: [maybe] Reading absent property (computed name)
 test/google/cryptobench.js:1393:7: [maybe] Reading absent property (computed name)
+test/google/cryptobench.js:1394:3: [maybe] Conversion to number yields NaN
 test/google/cryptobench.js:1394:20: [maybe] Reading absent property (computed name)
 test/google/cryptobench.js:1396:10: [maybe] Reading absent property (computed name)
 test/google/cryptobench.js:1396:18: [maybe] Conversion to number yields NaN

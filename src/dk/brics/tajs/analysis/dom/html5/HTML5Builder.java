@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -44,10 +44,15 @@ public class HTML5Builder {
         OscillatorNode.build(c);
         ScriptProcessorNode.build(c);
         AudioContext.build(c);
+        MediaQueryList.build(c);
+        OfflineResourceList.build(c);
+        MutationObserver.build(c);
 
         // HTML5 properties on Window
         createDOMProperty(DOMWindow.WINDOW, "localStorage", Value.makeObject(StorageElement.INSTANCES), c);
         createDOMProperty(DOMWindow.WINDOW, "sessionStorage", Value.makeObject(StorageElement.INSTANCES), c);
+        createDOMProperty(DOMWindow.WINDOW, "applicationCache", Value.makeObject(OfflineResourceList.INSTANCES), c);
+
 
         HTML5_OBJECT_LABELS.add(HTMLCanvasElement.INSTANCES);
         HTML5_OBJECT_LABELS.add(HTMLAudioElement.INSTANCES);

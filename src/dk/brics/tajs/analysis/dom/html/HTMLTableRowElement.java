@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,9 +19,9 @@ package dk.brics.tajs.analysis.dom.html;
 import dk.brics.tajs.analysis.Conversion;
 import dk.brics.tajs.analysis.FunctionCalls;
 import dk.brics.tajs.analysis.InitialStateBuilder;
-import dk.brics.tajs.analysis.NativeFunctions;
 import dk.brics.tajs.analysis.PropVarOperations;
 import dk.brics.tajs.analysis.Solver;
+import dk.brics.tajs.analysis.dom.DOMFunctions;
 import dk.brics.tajs.analysis.dom.DOMObjects;
 import dk.brics.tajs.analysis.dom.DOMWindow;
 import dk.brics.tajs.lattice.ObjectLabel;
@@ -46,9 +46,9 @@ public class HTMLTableRowElement {
     public static void build(Solver.SolverInterface c) {
         State s = c.getState();
         PropVarOperations pv = c.getAnalysis().getPropVarOperations();
-        CONSTRUCTOR = new ObjectLabel(DOMObjects.HTMLTABLEROWELEMENT_CONSTRUCTOR, ObjectLabel.Kind.FUNCTION);
-        PROTOTYPE = new ObjectLabel(DOMObjects.HTMLTABLEROWELEMENT_PROTOTYPE, ObjectLabel.Kind.OBJECT);
-        INSTANCES = new ObjectLabel(DOMObjects.HTMLTABLEROWELEMENT_INSTANCES, ObjectLabel.Kind.OBJECT);
+        CONSTRUCTOR = ObjectLabel.make(DOMObjects.HTMLTABLEROWELEMENT_CONSTRUCTOR, ObjectLabel.Kind.FUNCTION);
+        PROTOTYPE = ObjectLabel.make(DOMObjects.HTMLTABLEROWELEMENT_PROTOTYPE, ObjectLabel.Kind.OBJECT);
+        INSTANCES = ObjectLabel.make(DOMObjects.HTMLTABLEROWELEMENT_INSTANCES, ObjectLabel.Kind.OBJECT);
 
         // Constructor Object
         s.newObject(CONSTRUCTOR);
@@ -95,15 +95,15 @@ public class HTMLTableRowElement {
         State s = c.getState();
         switch (nativeObject) {
             case HTMLTABLEROWELEMENT_INSERTCELL: {
-                NativeFunctions.expectParameters(nativeObject, call, c, 1, 1);
+                DOMFunctions.expectParameters(nativeObject, call, c, 1, 1);
                 /* Value index =*/
-                Conversion.toNumber(NativeFunctions.readParameter(call, s, 0), c);
+                Conversion.toNumber(FunctionCalls.readParameter(call, s, 0), c);
                 return Value.makeObject(HTMLElement.ELEMENT_PROTOTYPE);
             }
             case HTMLTABLEROWELEMENT_DELETECELL: {
-                NativeFunctions.expectParameters(nativeObject, call, c, 1, 1);
+                DOMFunctions.expectParameters(nativeObject, call, c, 1, 1);
                 /* Value index =*/
-                Conversion.toNumber(NativeFunctions.readParameter(call, s, 0), c);
+                Conversion.toNumber(FunctionCalls.readParameter(call, s, 0), c);
                 return Value.makeUndef();
             }
             default: {

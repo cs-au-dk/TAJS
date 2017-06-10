@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,7 +19,6 @@ package dk.brics.tajs.analysis.dom.html;
 import dk.brics.tajs.analysis.Conversion;
 import dk.brics.tajs.analysis.FunctionCalls;
 import dk.brics.tajs.analysis.InitialStateBuilder;
-import dk.brics.tajs.analysis.NativeFunctions;
 import dk.brics.tajs.analysis.PropVarOperations;
 import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.analysis.dom.DOMFunctions;
@@ -27,12 +26,13 @@ import dk.brics.tajs.analysis.dom.DOMObjects;
 import dk.brics.tajs.analysis.dom.DOMRegistry;
 import dk.brics.tajs.analysis.dom.DOMWindow;
 import dk.brics.tajs.analysis.dom.core.DOMDocument;
+import dk.brics.tajs.analysis.dom.core.DOMNodeList;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.Value;
+import dk.brics.tajs.solver.Message;
 import dk.brics.tajs.util.AnalysisException;
 
-import java.util.Collections;
 import java.util.Set;
 
 import static dk.brics.tajs.analysis.dom.DOMFunctions.createDOMFunction;
@@ -55,9 +55,9 @@ public class HTMLDocument {
     public static void build(Solver.SolverInterface c) {
         State s = c.getState();
         PropVarOperations pv = c.getAnalysis().getPropVarOperations();
-        CONSTRUCTOR = new ObjectLabel(DOMObjects.HTMLDOCUMENT_CONSTRUCTOR, ObjectLabel.Kind.FUNCTION);
-        PROTOTYPE = new ObjectLabel(DOMObjects.HTMLDOCUMENT_PROTOTYPE, ObjectLabel.Kind.OBJECT);
-        INSTANCES = new ObjectLabel(DOMObjects.HTMLDOCUMENT_INSTANCES, ObjectLabel.Kind.OBJECT);
+        CONSTRUCTOR = ObjectLabel.make(DOMObjects.HTMLDOCUMENT_CONSTRUCTOR, ObjectLabel.Kind.FUNCTION);
+        PROTOTYPE = ObjectLabel.make(DOMObjects.HTMLDOCUMENT_PROTOTYPE, ObjectLabel.Kind.OBJECT);
+        INSTANCES = ObjectLabel.make(DOMObjects.HTMLDOCUMENT_INSTANCES, ObjectLabel.Kind.OBJECT);
 
         // Constructor Object
         s.newObject(CONSTRUCTOR);
@@ -98,9 +98,6 @@ public class HTMLDocument {
         createDOMProperty(INSTANCES, "nodeValue", Value.makeNull().setReadOnly(), c);
         createDOMProperty(INSTANCES, "nodeType", Value.makeNum(9).setReadOnly(), c);
 
-        s.multiplyObject(INSTANCES);
-        INSTANCES = INSTANCES.makeSingleton().makeSummary();
-
         /*
          * Functions.
          */
@@ -122,42 +119,41 @@ public class HTMLDocument {
         State s = c.getState();
         switch (nativeObject) {
             case HTMLDOCUMENT_OPEN: {
-                NativeFunctions.expectParameters(nativeObject, call, c, 0, 0);
+                DOMFunctions.expectParameters(nativeObject, call, c, 0, 0);
                 return Value.makeUndef();
             }
             case HTMLDOCUMENT_CLOSE: {
-                NativeFunctions.expectParameters(nativeObject, call, c, 0, 0);
+                DOMFunctions.expectParameters(nativeObject, call, c, 0, 0);
                 return Value.makeUndef();
             }
             case HTMLDOCUMENT_WRITE: {
-                NativeFunctions.expectParameters(nativeObject, call, c, 1, 1);
-                Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
+                DOMFunctions.expectParameters(nativeObject, call, c, 1, 1);
+                Conversion.toString(FunctionCalls.readParameter(call, s, 0), c);
                 return Value.makeUndef();
             }
             case HTMLDOCUMENT_WRITELN: {
-                NativeFunctions.expectParameters(nativeObject, call, c, 1, 1);
-                Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
+                DOMFunctions.expectParameters(nativeObject, call, c, 1, 1);
+                Conversion.toString(FunctionCalls.readParameter(call, s, 0), c);
                 return Value.makeUndef();
             }
             case HTMLDOCUMENT_GET_ELEMENTS_BY_NAME: {
-                NativeFunctions.expectParameters(nativeObject, call, c, 1, 1);
-                Value name = Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
+                DOMFunctions.expectParameters(nativeObject, call, c, 1, 1);
+                Value name = Conversion.toString(FunctionCalls.readParameter(call, s, 0), c);
                 if (name.isMaybeSingleStr()) {
                     Set<ObjectLabel> labels = s.getExtras().getFromMayMap(DOMRegistry.MayMaps.ELEMENTS_BY_NAME.name(), name.getStr());
-                    Value v = Value.makeObject(labels);
-                    ObjectLabel nodeList = DOMFunctions.makeEmptyNodeList();
-                    if (!labels.isEmpty()) {
-                        c.getAnalysis().getPropVarOperations().writeProperty(Collections.singleton(nodeList), Value.makeAnyStrUInt(), v);
+                    if (labels.isEmpty()) {
+                        c.getMonitoring().addMessage(call.getSourceNode(), Message.Severity.HIGH, String.format("<%s>(%s) did not match any elements", nativeObject, name.getStr()));
                     }
+                    ObjectLabel nodeList = DOMNodeList.makeAllocationSiteInstanceWithUnorderedContent(call.getSourceNode(), labels, c);
                     return Value.makeObject(nodeList);
                 }
-                return DOMFunctions.makeAnyHTMLNodeList(c);
+                return DOMNodeList.makeNaiveInstance();
             }
             case HTMLDOCUMENT_GET_ELEMENTS_BY_CLASS_NAME: {
-                NativeFunctions.expectParameters(nativeObject, call, c, 1, 1);
+                DOMFunctions.expectParameters(nativeObject, call, c, 1, 1);
                 /* Value className =*/
-                Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
-                return DOMFunctions.makeAnyHTMLNodeList(c);
+                Conversion.toString(FunctionCalls.readParameter(call, s, 0), c);
+                return Value.makeObject(HTMLCollection.INSTANCES);
             }
             default: {
                 throw new AnalysisException("Unsupported Native Object: " + nativeObject);

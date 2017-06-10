@@ -1,7 +1,6 @@
 package dk.brics.tajs.test;
 
 import dk.brics.tajs.Main;
-import dk.brics.tajs.monitoring.AnalysisTimeLimiter;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.util.AnalysisLimitationException;
 import org.junit.Before;
@@ -400,12 +399,13 @@ public class Test1K2013Spring {
         Misc.checkSystemOutput();
     }
 
-    @Test(expected = AnalysisLimitationException.AnalysisTimeException.class)
+    @Test
     public void test1k_2013_spring_1443() {
         Misc.init();
+        Options.get().setAnalysisTimeLimit(2 * 60);
         Misc.captureSystemOutput();
         String[] args = {"test/1k2013spring/shim.js", "test/1k2013spring/1443.js"};
-        Misc.run(args, new AnalysisTimeLimiter(30, true));
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -706,12 +706,13 @@ public class Test1K2013Spring {
         Misc.checkSystemOutput();
     }
 
-    @Test(expected = AnalysisLimitationException.AnalysisTimeException.class /* FIXME improve precision/performance ?!?! */)
+    @Test(expected = AnalysisLimitationException.AnalysisModelLimitationException.class /* FIXME improve precision/performance ?!?! */)
     public void test1k_2013_spring_1542() {
         Misc.init();
+        Options.get().setAnalysisTimeLimit(30);
         Misc.captureSystemOutput();
         String[] args = {"test/1k2013spring/shim.js", "test/1k2013spring/1542.js"};
-        Misc.run(args, new AnalysisTimeLimiter(30, true));
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 

@@ -16,7 +16,7 @@ TAJS_assert(t1, "isMaybeUndef || isMaybeFalseButNotTrue");
 
 foo.foo123bar = p; // writes to x or to foo.foo123bar
 TAJS_dumpValue(x)
-TAJS_assert(x, "isMaybeStrPrefixedIdentifierParts || isMaybeAnyBool")
+TAJS_assert(x, "isMaybeStrPrefix || isMaybeAnyBool")
 
 var t3 = foo.foo123bar; // either false or p
 TAJS_dumpValue(t3)

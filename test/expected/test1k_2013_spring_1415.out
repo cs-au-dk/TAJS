@@ -1,38 +1,90 @@
-test/1k2013spring/1415.js:62:3: [definite] The conditional expression is always false
-test/1k2013spring/1415.js:62:7: [definite] The conditional expression is always false
-test/1k2013spring/1415.js:62:8: [definite] The conditional expression is always false
-test/1k2013spring/1415.js:62:8: [definite] Variable tc is null/undefined
-test/1k2013spring/1415.js:62:23: [definite] Variable tc is null/undefined
-test/1k2013spring/1415.js:93:2: [definite] The conditional expression is always false
-test/1k2013spring/1415.js:93:5: [definite] The conditional expression is always false
-test/1k2013spring/1415.js:93:5: [definite] Variable tc is null/undefined
-test/1k2013spring/1415.js:93:14: [definite] Variable tc is null/undefined
-test/1k2013spring/1415.js:96:7: [definite] The conditional expression is always false
-test/1k2013spring/1415.js:96:10: [definite] Variable tc is null/undefined
-test/1k2013spring/1415.js:76:1: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1415.js:15:30: [maybe] ReferenceError, reading absent variable t
+test/1k2013spring/1415.js:15:36: [maybe] ReferenceError, reading absent variable t
+test/1k2013spring/1415.js:20:7: [maybe] ReferenceError, reading absent variable r
+test/1k2013spring/1415.js:20:20: [maybe] ReferenceError, reading absent variable r
+test/1k2013spring/1415.js:23:15: [maybe] ReferenceError, reading absent variable t
+test/1k2013spring/1415.js:23:28: [maybe] ReferenceError, reading absent variable bl
+test/1k2013spring/1415.js:33:9: [maybe] ReferenceError, reading absent variable t
+test/1k2013spring/1415.js:37:6: [maybe] ReferenceError, reading absent variable r
+test/1k2013spring/1415.js:38:22: [maybe] ReferenceError, reading absent variable r
+test/1k2013spring/1415.js:40:14: [maybe] ReferenceError, reading absent variable t
+test/1k2013spring/1415.js:40:16: [maybe] ReferenceError, reading absent variable t
+test/1k2013spring/1415.js:40:24: [maybe] ReferenceError, reading absent variable t
+test/1k2013spring/1415.js:45:10: [maybe] ReferenceError, reading absent variable r
+test/1k2013spring/1415.js:49:8: [maybe] ReferenceError, reading absent variable t
+test/1k2013spring/1415.js:56:2: [maybe] ReferenceError, reading absent variable a
+test/1k2013spring/1415.js:56:36: [maybe] ReferenceError, reading absent variable W
+test/1k2013spring/1415.js:56:38: [maybe] ReferenceError, reading absent variable H
+test/1k2013spring/1415.js:57:27: [maybe] ReferenceError, reading absent variable t
+test/1k2013spring/1415.js:57:41: [maybe] ReferenceError, reading absent variable t
+test/1k2013spring/1415.js:57:62: [maybe] ReferenceError, reading absent variable s
+test/1k2013spring/1415.js:57:70: [maybe] ReferenceError, reading absent variable s
+test/1k2013spring/1415.js:57:77: [maybe] ReferenceError, reading absent variable s
+test/1k2013spring/1415.js:57:79: [maybe] ReferenceError, reading absent variable s
+test/1k2013spring/1415.js:60:27: [maybe] ReferenceError, reading absent variable lvl
+test/1k2013spring/1415.js:62:18: [maybe] ReferenceError, reading absent variable st
+test/1k2013spring/1415.js:63:8: [maybe] ReferenceError, reading absent variable t
+test/1k2013spring/1415.js:63:16: [maybe] ReferenceError, reading absent variable t
+test/1k2013spring/1415.js:64:17: [maybe] ReferenceError, reading absent variable s
+test/1k2013spring/1415.js:64:25: [maybe] ReferenceError, reading absent variable s
+test/1k2013spring/1415.js:64:32: [maybe] ReferenceError, reading absent variable s
+test/1k2013spring/1415.js:64:34: [maybe] ReferenceError, reading absent variable s
+test/1k2013spring/1415.js:69:14: [maybe] ReferenceError, reading absent variable w
+test/1k2013spring/1415.js:69:45: [maybe] ReferenceError, reading absent variable s
+test/1k2013spring/1415.js:69:57: [maybe] ReferenceError, reading absent variable s
+test/1k2013spring/1415.js:69:66: [maybe] ReferenceError, reading absent variable s
+test/1k2013spring/1415.js:69:68: [maybe] ReferenceError, reading absent variable s
+test/1k2013spring/1415.js:70:32: [maybe] ReferenceError, reading absent variable E
+test/1k2013spring/1415.js:70:36: [maybe] ReferenceError, reading absent variable s
+test/1k2013spring/1415.js:70:48: [maybe] ReferenceError, reading absent variable s
+test/1k2013spring/1415.js:70:57: [maybe] ReferenceError, reading absent variable s
+test/1k2013spring/1415.js:70:59: [maybe] ReferenceError, reading absent variable s
+test/1k2013spring/1415.js:79:6: [maybe] ReferenceError, reading absent variable st
+test/1k2013spring/1415.js:79:10: [maybe] ReferenceError, reading absent variable w
+test/1k2013spring/1415.js:85:11: [maybe] ReferenceError, reading absent variable P
+test/1k2013spring/1415.js:85:19: [maybe] ReferenceError, reading absent variable t
+test/1k2013spring/1415.js:86:5: [maybe] ReferenceError, reading absent variable lvl
 test/1k2013spring/1415.js:101:12: [maybe] ReferenceError, reading absent variable LP
-test/1k2013spring/shim.js:8:9: [maybe] TypeError, accessing property of null/undefined
-test/1k2013spring/shim.js:8:9: [maybe] TypeError, call to non-function
-test/1k2013spring/shim.js:9:1: [maybe] TypeError, accessing property of null/undefined
-test/1k2013spring/shim.js:6:9: [maybe] Reading absent property body
-test/1k2013spring/shim.js:8:9: [maybe] Reading absent property getContext
-test/1k2013spring/shim.js:9:1: [maybe] Reading absent property body
+test/1k2013spring/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1415.js:16:29: [maybe] Reading absent property x
+test/1k2013spring/1415.js:16:35: [maybe] Reading absent property y
+test/1k2013spring/1415.js:69:41: [maybe] Reading absent property x
+test/1k2013spring/1415.js:69:47: [maybe] Reading absent property x
+test/1k2013spring/1415.js:69:53: [maybe] Reading absent property y
+test/1k2013spring/1415.js:69:59: [maybe] Reading absent property y
+test/1k2013spring/1415.js:85:11: [maybe] Reading absent property y
+test/1k2013spring/1415.js:85:27: [maybe] Reading absent property x
+test/1k2013spring/1415.js:89:12: [maybe] Reading absent property x
+test/1k2013spring/1415.js:90:12: [maybe] Reading absent property y
+test/1k2013spring/1415.js: [maybe] Uncaught exception, constructed at [test/1k2013spring/1415.js:15:30, test/1k2013spring/1415.js:15:36, test/1k2013spring/1415.js:20:7, test/1k2013spring/1415.js:20:20, test/1k2013spring/1415.js:23:15, test/1k2013spring/1415.js:23:28, test/1k2013spring/1415.js:33:9, test/1k2013spring/1415.js:37:6, test/1k2013spring/1415.js:38:22, test/1k2013spring/1415.js:40:14, test/1k2013spring/1415.js:40:16, test/1k2013spring/1415.js:40:24, test/1k2013spring/1415.js:45:10, test/1k2013spring/1415.js:49:8, test/1k2013spring/1415.js:56:2, test/1k2013spring/1415.js:56:36, test/1k2013spring/1415.js:56:38, test/1k2013spring/1415.js:57:27, test/1k2013spring/1415.js:57:41, test/1k2013spring/1415.js:57:62, test/1k2013spring/1415.js:57:70, test/1k2013spring/1415.js:57:77, test/1k2013spring/1415.js:57:79, test/1k2013spring/1415.js:60:27, test/1k2013spring/1415.js:62:18, test/1k2013spring/1415.js:63:8, test/1k2013spring/1415.js:63:16, test/1k2013spring/1415.js:64:17, test/1k2013spring/1415.js:64:25, test/1k2013spring/1415.js:64:32, test/1k2013spring/1415.js:64:34, test/1k2013spring/1415.js:69:14, test/1k2013spring/1415.js:69:45, test/1k2013spring/1415.js:69:57, test/1k2013spring/1415.js:69:66, test/1k2013spring/1415.js:69:68, test/1k2013spring/1415.js:70:32, test/1k2013spring/1415.js:70:36, test/1k2013spring/1415.js:70:48, test/1k2013spring/1415.js:70:57, test/1k2013spring/1415.js:70:59, test/1k2013spring/1415.js:79:6, test/1k2013spring/1415.js:79:10, test/1k2013spring/1415.js:85:11, test/1k2013spring/1415.js:85:19, test/1k2013spring/1415.js:86:5, test/1k2013spring/1415.js:101:12, test/1k2013spring/shim.js:9:5]
+test/1k2013spring/1415.js:30:13: [maybe] Conversion to number yields NaN
+test/1k2013spring/1415.js:31:13: [maybe] Conversion to number yields NaN
 test/1k2013spring/1415.js:34:7: [maybe] Converting object to string
 test/1k2013spring/1415.js:34:7: [maybe] Converting primitive string to object
-test/1k2013spring/1415.js:34:28: [maybe] Conversion to number yields NaN
 test/1k2013spring/1415.js:34:28: [maybe] Converting object to string
 test/1k2013spring/1415.js:34:28: [maybe] Converting primitive string to object
+test/1k2013spring/1415.js:36:30: [maybe] The variable tc has values with different types
 test/1k2013spring/1415.js:41:7: [maybe] Converting primitive string to object
 test/1k2013spring/1415.js:41:7: [maybe] Reading absent property (computed name)
+test/1k2013spring/1415.js:49:4: [maybe] Conversion to number yields NaN
 test/1k2013spring/1415.js:50:6: [maybe] Converting object to string
 test/1k2013spring/1415.js:50:6: [maybe] Converting primitive string to object
-test/1k2013spring/1415.js:50:27: [maybe] Conversion to number yields NaN
 test/1k2013spring/1415.js:50:27: [maybe] Converting object to string
 test/1k2013spring/1415.js:50:27: [maybe] Converting primitive string to object
 test/1k2013spring/1415.js:60:27: [maybe] Converting primitive string to object
 test/1k2013spring/1415.js:61:6: [maybe] Converting primitive string to object
 test/1k2013spring/1415.js:61:6: [maybe] Reading absent property (computed name)
+test/1k2013spring/1415.js:69:41: [maybe] Conversion to number yields NaN
+test/1k2013spring/1415.js:69:53: [maybe] Conversion to number yields NaN
+test/1k2013spring/1415.js:70:32: [maybe] Conversion to number yields NaN
+test/1k2013spring/1415.js:70:44: [maybe] Conversion to number yields NaN
+test/1k2013spring/1415.js:85:11: [maybe] Conversion to number yields NaN
+test/1k2013spring/1415.js:85:27: [maybe] Conversion to number yields NaN
 test/1k2013spring/1415.js:86:5: [maybe] Converting primitive string to object
 test/1k2013spring/1415.js:86:5: [maybe] Reading absent property (computed name)
-test/1k2013spring/shim.js:7:9: [maybe] Reading absent property (computed name)
-test/1k2013spring/shim.js,test/1k2013spring/1415.js: [maybe] Uncaught exception, constructed at [test/1k2013spring/1415.js:76:1, test/1k2013spring/1415.js:101:12, test/1k2013spring/shim.js:8:9, test/1k2013spring/shim.js:9:1]
+test/1k2013spring/1415.js:89:12: [maybe] Conversion to number yields NaN
+test/1k2013spring/1415.js:90:12: [maybe] Conversion to number yields NaN
+test/1k2013spring/1415.js:93:27: [maybe] Converting object to string
+test/1k2013spring/1415.js:93:27: [maybe] Converting primitive string to object
+test/1k2013spring/1415.js:93:48: [maybe] Converting object to string
+test/1k2013spring/1415.js:93:48: [maybe] Converting primitive string to object

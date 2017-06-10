@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,6 +16,8 @@
 
 package dk.brics.tajs.flowgraph;
 
+import dk.brics.tajs.flowgraph.WritableSyntacticInformation.SyntacticInformation;
+import dk.brics.tajs.js2flowgraph.FlowGraphMutator;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.util.AnalysisException;
 
@@ -23,6 +25,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.file.Path;
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
 
@@ -64,7 +67,7 @@ public class FlowGraph {
     /**
      * Syntactic hints to be used for context sensitivity.
      */
-    private SyntacticHints syntacticHints;
+    private WritableSyntacticInformation syntacticInformation;
 
     /**
      * Constructs a new uninitialized flow graph.
@@ -72,6 +75,7 @@ public class FlowGraph {
     public FlowGraph(Function main) {
         this.main = main;
         this.functions = newSet();
+        this.syntacticInformation = new WritableSyntacticInformation();
     }
 
     /**
@@ -154,14 +158,14 @@ public class FlowGraph {
     public String toString() {
         StringBuilder b = new StringBuilder();
         for (Function f : functions) {
-            if (HostEnvSources.isHostEnvSource(f.getSourceLocation())) {
+            if (FlowGraphMutator.get().isHostEnvironmentSource(f.getSourceLocation())) {
                 continue;
             }
             if (f == main)
                 b.append("<main> ");
             b.append(f).append('\n');
             List<BasicBlock> sortedBlocks = newList(f.getBlocks());
-            java.util.Collections.sort(sortedBlocks, (o1, o2) -> o1.getOrder() - o2.getOrder());
+            sortedBlocks.sort(Comparator.comparingInt(BasicBlock::getOrder));
             for (BasicBlock k : sortedBlocks) {
                 b.append("  ").append(k).append("\n");
             }
@@ -176,7 +180,7 @@ public class FlowGraph {
         pw.println("digraph {");
         pw.println("compound=true");
         for (Function f : functions) {
-            if (HostEnvSources.isHostEnvSource(f.getSourceLocation())) {
+            if (FlowGraphMutator.get().isHostEnvironmentSource(f.getSourceLocation())) {
                 continue;
             }
             f.toDot(pw, false, f == main);
@@ -197,10 +201,16 @@ public class FlowGraph {
             if (n == null)
                 n = "-";
             SourceLocation loc = function.getSourceLocation();
+            String prettyFileName;
+            int lineNumber;
             if (loc == null) {
-                loc = new SourceLocation(0, 0, "", null);
+                lineNumber = 0;
+                prettyFileName = "";
+            } else {
+                lineNumber = loc.getLineNumber();
+                prettyFileName = loc.toUserFriendlyString(false);
             }
-            String name = loc.getPrettyFileName().replace('/', '.').replace('\\', '.').replace(':', '.') + "." + n + ".line" + loc.getLineNumber();
+            String name = prettyFileName.replace('/', '.').replace('\\', '.').replace(':', '.') + "." + n + ".line" + lineNumber;
             String fileName = (end ? "final-" : "initial-") + name + ".dot";
             try (PrintWriter writer = new PrintWriter(dir.resolve(fileName).toFile())) {
                 function.toDot(writer, true, function == main);
@@ -227,16 +237,16 @@ public class FlowGraph {
     }
 
     /**
-     * Returns the syntactic hints for context sensitivity.
+     * Returns the syntactic information.
      */
-    public SyntacticHints getSyntacticHints() {
-        return syntacticHints;
+    public SyntacticInformation getSyntacticInformation() {
+        return syntacticInformation.asReadOnly();
     }
 
     /**
-     * Sets the syntactic hints for context sensitivity.
+     * Adds more syntactic hints.
      */
-    public void setSyntacticHints(SyntacticHints syntacticHints) {
-        this.syntacticHints = syntacticHints;
+    public void addSyntacticInformation(WritableSyntacticInformation syntacticInformation) {
+        this.syntacticInformation.add(syntacticInformation);
     }
 }

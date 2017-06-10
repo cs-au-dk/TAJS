@@ -1,2 +1,3 @@
+test/wala/upward.js: [definite] Exceptional program exit is unreachable
 test/wala/upward.js:21:1: [info] Abstract value: 3.0
 test/wala/upward.js:22:1: [info] Abstract value: 7.0

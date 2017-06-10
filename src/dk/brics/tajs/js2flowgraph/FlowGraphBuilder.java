@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,11 +17,13 @@
 package dk.brics.tajs.js2flowgraph;
 
 import com.google.common.collect.ImmutableList;
+import com.google.javascript.jscomp.parsing.parser.IdentifierToken;
 import com.google.javascript.jscomp.parsing.parser.Parser.Config.Mode;
 import com.google.javascript.jscomp.parsing.parser.trees.FormalParameterListTree;
 import com.google.javascript.jscomp.parsing.parser.trees.FunctionDeclarationTree.Kind;
-import com.google.javascript.jscomp.parsing.parser.trees.ParseTree;
+import com.google.javascript.jscomp.parsing.parser.trees.IdentifierExpressionTree;
 import com.google.javascript.jscomp.parsing.parser.trees.ProgramTree;
+import dk.brics.tajs.analysis.nativeobjects.TAJSFunction;
 import dk.brics.tajs.flowgraph.AbstractNode;
 import dk.brics.tajs.flowgraph.BasicBlock;
 import dk.brics.tajs.flowgraph.FlowGraph;
@@ -29,13 +31,18 @@ import dk.brics.tajs.flowgraph.Function;
 import dk.brics.tajs.flowgraph.HostEnvSources;
 import dk.brics.tajs.flowgraph.JavaScriptSource;
 import dk.brics.tajs.flowgraph.SourceLocation;
+import dk.brics.tajs.flowgraph.SourceLocation.SourceLocationMaker;
+import dk.brics.tajs.flowgraph.SourceLocation.SyntheticLocationMaker;
 import dk.brics.tajs.flowgraph.jsnodes.BeginForInNode;
 import dk.brics.tajs.flowgraph.jsnodes.CallNode;
+import dk.brics.tajs.flowgraph.jsnodes.CatchNode;
+import dk.brics.tajs.flowgraph.jsnodes.ConstantNode;
 import dk.brics.tajs.flowgraph.jsnodes.EndForInNode;
 import dk.brics.tajs.flowgraph.jsnodes.EventDispatcherNode;
 import dk.brics.tajs.flowgraph.jsnodes.EventDispatcherNode.Type;
 import dk.brics.tajs.flowgraph.jsnodes.IfNode;
 import dk.brics.tajs.flowgraph.jsnodes.NopNode;
+import dk.brics.tajs.flowgraph.jsnodes.ThrowNode;
 import dk.brics.tajs.js2flowgraph.JavaScriptParser.ParseResult;
 import dk.brics.tajs.js2flowgraph.JavaScriptParser.SyntaxMesssage;
 import dk.brics.tajs.options.Options;
@@ -46,8 +53,9 @@ import dk.brics.tajs.util.ParseError;
 import org.apache.log4j.Logger;
 
 import java.net.URL;
-import java.nio.file.Paths;
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
@@ -55,6 +63,8 @@ import java.util.Stack;
 import java.util.stream.Collectors;
 
 import static dk.brics.tajs.js2flowgraph.FunctionBuilderHelper.addNodeToBlock;
+import static dk.brics.tajs.js2flowgraph.FunctionBuilderHelper.makeBasicBlock;
+import static dk.brics.tajs.js2flowgraph.FunctionBuilderHelper.makeCatchBasicBlock;
 import static dk.brics.tajs.js2flowgraph.FunctionBuilderHelper.makeSourceLocation;
 import static dk.brics.tajs.js2flowgraph.FunctionBuilderHelper.makeSuccessorBasicBlock;
 import static dk.brics.tajs.js2flowgraph.FunctionBuilderHelper.setupFunction;
@@ -86,43 +96,29 @@ public class FlowGraphBuilder {
 
     private ASTInfo astInfo;
 
-    private SyntacticHintsCollector syntacticHintsCollector;
+    private SyntacticHintsCollector syntacticInformationCollector;
 
     /**
-     * Constructs a new flow graph builder using a fresh environment.
+     * Constructs a flow graph builder.
+     * @param env traversal environment
+     * @param fab function/block manager
      */
-    public FlowGraphBuilder(URL location, String prettyFileName) {
-        this(null, null, location, prettyFileName);
-    }
-
-    /**
-     * Constructs a new flow graph builder.
-     *  @param env traversal environment, or null if fresh
-     * @param fab function/block manager, or null if fresh
-     */
-    public FlowGraphBuilder(AstEnv env, FunctionAndBlockManager fab, URL location, String prettyFileName) {
-        if (fab == null) {
-            fab = new FunctionAndBlockManager();
-        }
-        if (env == null) {
-            // prepare an initial AstEnv with a dummy main function
-            env = AstEnv.makeInitial();
-            Function main = new Function(null, null, null, new SourceLocation(0, 0, prettyFileName, location));
-            env = setupFunction(main, env, fab);
-        }
+    public FlowGraphBuilder(AstEnv env, FunctionAndBlockManager fab) {
+        assert env != null;
+        assert fab != null;
         functionAndBlocksManager = fab;
         astInfo = new ASTInfo();
         initialEnv = env;
         parser = new JavaScriptParser(mode);
         processed = TranslationResult.makeAppendBlock(initialEnv.getAppendBlock());
-        syntacticHintsCollector = new SyntacticHintsCollector();
+        syntacticInformationCollector = new SyntacticHintsCollector();
     }
 
     /**
      * Transforms the given stand-alone JavaScript source code and appends it to the main function.
      */
-    public Function transformStandAloneCode(JavaScriptSource source) {
-        return transformCode(source, 0, 0);
+    public Function transformStandAloneCode(String source, SourceLocationMaker sourceLocationMaker) {
+        return transformCode(source, 0, 0, sourceLocationMaker);
     }
 
     /**
@@ -132,17 +128,17 @@ public class FlowGraphBuilder {
      * @param lineOffset   number of lines preceding the code
      * @param columnOffset number of columns preceding the first line of the code
      */
-    Function transformCode(JavaScriptSource source, int lineOffset, int columnOffset) {
+    Function transformCode(String source, int lineOffset, int columnOffset, SourceLocationMaker sourceLocationMaker) {
         final AstEnv env = initialEnv.makeAppendBlock(processed.getAppendBlock());
-        ProgramTree t = makeAST(source.getLocation(), source.getPrettyFileName(), source.getCode(), lineOffset, columnOffset);
-        processed = new FunctionBuilder(astInfo, functionAndBlocksManager, source.getLocation(), syntacticHintsCollector).process(t, env);
+        ProgramTree t = makeAST(source, lineOffset, columnOffset, sourceLocationMaker);
+        processed = new FunctionBuilder(astInfo, functionAndBlocksManager, sourceLocationMaker, syntacticInformationCollector).process(t, env);
         return processed.getAppendBlock().getFunction();
     }
 
     /**
      * Parses the given JavaScript code.
      */
-    private ProgramTree makeAST(URL location, String prettyFileName, String sourceContent, int lineOffset, int columnOffset) {
+    private ProgramTree makeAST(String sourceContent, int lineOffset, int columnOffset, SourceLocationMaker sourceLocationMaker) {
         if (closed) {
             throw new RuntimeException("Already closed.");
         }
@@ -157,7 +153,7 @@ public class FlowGraphBuilder {
         }
         s.append(sourceContent);
 
-        ParseResult parseResult = parser.parse(location, prettyFileName, s.toString());
+        ParseResult parseResult = parser.parse(s.toString(), sourceLocationMaker);
         reportParseMessages(parseResult);
         astInfo.updateWith(parseResult.getProgramAST());
         return parseResult.getProgramAST();
@@ -186,22 +182,22 @@ public class FlowGraphBuilder {
     /**
      * Transforms the given web application JavaScript source code.
      */
-    public Function transformWebAppCode(JavaScriptSource s) {
+    public Function transformWebAppCode(JavaScriptSource s, SourceLocationMaker sourceLocationMaker) {
         switch (s.getKind()) {
 
             case FILE: { // TODO: (#119) processing order of external JavaScript files (sync/async loading...)
                 // TODO: (#119) should be added as a load event, but that does not work currently...
                 // Function function = processFunctionBody(Collections.<String>newList(), s.getFileName(), s.getJavaScript(), 0, initialEnv);
                 // eventHandlers.add(Pair.make(function, EventHandlerKind.DOM_LOAD));
-                return transformStandAloneCode(s);
+                return transformStandAloneCode(s.getCode(), sourceLocationMaker);
             }
 
             case EMBEDDED: { // TODO: (#119) currently ignoring events during page load (unsound)
-                return transformCode(s, s.getLineOffset(), s.getColumnOffset());
+                return transformCode(s.getCode(), s.getLineOffset(), s.getColumnOffset(), sourceLocationMaker);
             }
 
             case EVENTHANDLER: {
-                Function function = transformFunctionBody(s.getLocation(), s.getPrettyFileName(), s.getCode(), s.getLineOffset(), s.getColumnOffset(), initialEnv);
+                Function function = transformFunctionBody(s.getCode(), s.getLineOffset(), s.getColumnOffset(), initialEnv, sourceLocationMaker);
                 function.getNode().setDomEventType(s.getEventKind());
                 return function;
             }
@@ -215,10 +211,10 @@ public class FlowGraphBuilder {
      *
      * @return the new function
      */
-    private Function transformFunctionBody(URL location, String prettyFileName, String sourceContent, int lineOffset, int columnOffset, AstEnv env) {
-        ProgramTree tree = makeAST(location, prettyFileName, sourceContent, lineOffset, columnOffset);
+    private Function transformFunctionBody(String sourceContent, int lineOffset, int columnOffset, AstEnv env, SourceLocationMaker sourceLocationMaker) {
+        ProgramTree tree = makeAST(sourceContent, lineOffset, columnOffset, sourceLocationMaker);
         FormalParameterListTree params = new FormalParameterListTree(tree.location, ImmutableList.of());
-        return new FunctionBuilder(astInfo, functionAndBlocksManager, location, syntacticHintsCollector).processFunctionDeclaration(Kind.DECLARATION, null, params, tree, env, makeSourceLocation(tree, location), null);
+        return new FunctionBuilder(astInfo, functionAndBlocksManager, sourceLocationMaker, syntacticInformationCollector).processFunctionDeclaration(Kind.DECLARATION, null, params, tree, env, makeSourceLocation(tree, sourceLocationMaker), null);
     }
 
     /**
@@ -248,22 +244,20 @@ public class FlowGraphBuilder {
         closed = true;
 
         if (flowGraph == null) {
-            // assume old flowgraph already has these.
-
-            // TODO: (#129) but this means that there could be added a path to the main-exit that does not go through the event handlers.
-            // but that is only a problem if dynamically added blocks are added to (end of) main, instead of as load-events (which is supposed to be fixed elsewhere)!
-            addEventDispatchers(initialEnv.getFunction().getEntry().getSourceLocation());
+            processed = addEventDispatchers(initialEnv.getFunction().getEntry().getSourceLocation(), initialEnv.makeAppendBlock(processed.getAppendBlock()));
         }
 
         if (flowGraph == null) {
             flowGraph = new FlowGraph(initialEnv.getFunction());
-            flowGraph.setSyntacticHints(syntacticHintsCollector.getSyntacticHints());
         }
+        flowGraph.addSyntacticInformation(syntacticInformationCollector.getSyntacticHints());
         int origBlockCount = flowGraph.getNumberOfBlocks();
         int origNodeCount = flowGraph.getNumberOfNodes();
 
         // wire the last processed block to the exit
-        processed.getAppendBlock().addSuccessor(exitBlock);
+        if (exitBlock != null) {
+            processed.getAppendBlock().addSuccessor(exitBlock);
+        }
 
         Pair<List<Function>, List<BasicBlock>> blocksAndFunctions = functionAndBlocksManager.close();
 
@@ -319,7 +313,7 @@ public class FlowGraphBuilder {
                         ends.add((EndForInNode) n);
                     }
                     if (n instanceof BeginForInNode) {
-                        ((BeginForInNode) n).setEndNodes(Collections.<EndForInNode>newSet());
+                        ((BeginForInNode) n).setEndNodes(Collections.newSet());
                     }
                 }
             }
@@ -328,26 +322,25 @@ public class FlowGraphBuilder {
             end.getBeginNode().getEndNodes().add(end);
         }
 
-        int blockCount = origBlockCount;
-        int nodeCount = origNodeCount;
-
         // set block orders
         flowGraph.complete();
 
         // Avoid changes to block- & node-indexes due to a change in a hostenv-source.
         // (dynamically added code from eval et. al will still change)
         List<Function> sortedFunctions = newList(flowGraph.getFunctions());
-        java.util.Collections.sort(sortedFunctions, (f1, f2) -> {
-            boolean f1host = HostEnvSources.isHostEnvSource(f1.getSourceLocation());
-            boolean f2host = HostEnvSources.isHostEnvSource(f2.getSourceLocation());
+        sortedFunctions.sort((f1, f2) -> {
+            boolean f1host = FlowGraphMutator.get().isHostEnvironmentSource(f1.getSourceLocation());
+            boolean f2host = FlowGraphMutator.get().isHostEnvironmentSource(f2.getSourceLocation());
             if (f1host != f2host) {
                 return f1host ? 1 : -1;
             }
             return 0;
         });
+        int nodeCount = origNodeCount;
+        int blockCount = origBlockCount;
         for (Function function : sortedFunctions) {
             List<BasicBlock> blocks = newList(function.getBlocks());
-            java.util.Collections.sort(blocks, (o1, o2) -> o1.getOrder() - o2.getOrder());
+            blocks.sort(Comparator.comparingInt(BasicBlock::getOrder));
 
             for (BasicBlock block : blocks) {
                 if (block.getIndex() == -1) {
@@ -399,7 +392,6 @@ public class FlowGraphBuilder {
      * All blocks between "Begin" and "End" nodes form a region with a changed entry block see {@link BasicBlock#entry_block}
      */
     public static void setEntryBlocks(TripleForSetEntryBlocksWorklist startingPoint, Set<BasicBlock> visited, FunctionAndBlockManager functionAndBlocksManager) {
-        // Implementation note: this should not be re-written in recursive style: the Java callstack will overflow on large function bodies!
         LinkedList<TripleForSetEntryBlocksWorklist> worklist = new LinkedList<>();
         worklist.add(startingPoint);
         while (!worklist.isEmpty()) {
@@ -448,45 +440,112 @@ public class FlowGraphBuilder {
     /**
      * Creates the nodes responsible for execution of registered event-handlers.
      */
-    private void addEventDispatchers(SourceLocation location) {
-        BasicBlock appendBlock = processed.getAppendBlock();
-
+    private TranslationResult addEventDispatchers(SourceLocation location, AstEnv env) {
+        BasicBlock appendBlock = env.getAppendBlock();
         boolean needsEventLoop = Options.get().isDOMEnabled() || Options.get().isAsyncEventsEnabled();
         if (needsEventLoop) {
-            appendBlock = makeSuccessorBasicBlock(initialEnv.getFunction(), processed.getAppendBlock(), functionAndBlocksManager);
+            appendBlock = makeSuccessorBasicBlock(appendBlock, functionAndBlocksManager);
+
+            BasicBlock weakCatcher = injectCatcherForFunction(location, env);
+            weakCatcher.addSuccessor(appendBlock);
+
             NopNode nopEntryNode = new NopNode("eventDispatchers: entry", location);
             nopEntryNode.setArtificial();
             appendBlock.addNode(nopEntryNode);
 
             if (Options.get().isDOMEnabled()) {
-                BasicBlock lastLoadEventLoopBlock = addEventHandlerLoop(appendBlock, Type.DOM_LOAD, "Load", location);
-                BasicBlock lastOtherEventLoopBlock = addEventHandlerLoop(lastLoadEventLoopBlock, Type.DOM_OTHER, "Other", location);
-                BasicBlock lastUnloadEventLoopBlock = addEventHandlerLoop(lastOtherEventLoopBlock, Type.DOM_UNLOAD, "Unload", location);
+                BasicBlock lastLoadEventLoopBlock = addAsyncBlocks(Type.DOM_LOAD, true, "Load", location, env.makeAppendBlock(appendBlock));
+                BasicBlock lastOtherEventLoopBlock = addAsyncBlocks(Type.DOM_OTHER, true, "Other", location, env.makeAppendBlock(lastLoadEventLoopBlock));
+                BasicBlock lastUnloadEventLoopBlock = addAsyncBlocks(Type.DOM_UNLOAD, true, "Unload", location, env.makeAppendBlock(lastOtherEventLoopBlock));
                 appendBlock = lastUnloadEventLoopBlock;
             } else if (Options.get().isAsyncEventsEnabled()) {
-                appendBlock = addEventHandlerLoop(appendBlock, Type.ASYNC, "Async", location);
+                appendBlock = addAsyncBlocks(Type.ASYNC, true, "Async", location, env.makeAppendBlock(appendBlock));
             }
         }
-        processed = TranslationResult.makeAppendBlock(appendBlock);
+        return TranslationResult.makeAppendBlock(appendBlock);
     }
 
     /**
-     * Creates a zero-or-more loop in the flowgraph.
-     * The loop contains an event dispatcher for the chosen event type.
+     * Injects an intermediary block before the exceptional exit of a function which can be used to maybe-ignore the exceptional data flow.
+     *
+     * @return block which maybe-ignores the exceptional dataflow of the function
      */
-    private BasicBlock addEventHandlerLoop(BasicBlock appendBlock, Type eventType, String prettyEventName, SourceLocation location) {
-        BasicBlock firstEventLoopBlock = makeSuccessorBasicBlock(initialEnv.getFunction(), appendBlock, functionAndBlocksManager);
-        EventDispatcherNode eventDispatcherNode = new EventDispatcherNode(eventType, location);
-        firstEventLoopBlock.addNode(eventDispatcherNode);
+    private BasicBlock injectCatcherForFunction(SourceLocation location, AstEnv env) {
+        // Implementation note: this replaces the current exceptional exit of the function.
+        // Alternative strategies are:
+        // (A) rewire all blocks with the current excepitonal exit as exception handler (this is a different hacky solution)
+        // (B) use intermediary exception handler while constructing a function, and wire that handler and the exceptional exit together when done building the function (this is not hacky, but requires some refactorings)
 
-        BasicBlock lastEventLoopBlock = makeSuccessorBasicBlock(initialEnv.getFunction(), firstEventLoopBlock, functionAndBlocksManager);
-        NopNode nopPostNode = new NopNode("eventDispatchers: post" + prettyEventName, location);
-        nopPostNode.setArtificial();
-        lastEventLoopBlock.addNode(nopPostNode);
+        BasicBlock catchBlock = env.getFunction().getExceptionalExit();
+        List<AbstractNode> exciptionalExitNodes = newList(catchBlock.getNodes());
+        catchBlock.getNodes().clear();
+        BasicBlock rethrowBlock = makeBasicBlock(env.getFunction(), functionAndBlocksManager);
+        catchBlock.addSuccessor(rethrowBlock);
+        BasicBlock newExceptionalExit = makeBasicBlock(env.getFunction(), functionAndBlocksManager);
+        newExceptionalExit.getNodes().addAll(exciptionalExitNodes);
+        rethrowBlock.setExceptionHandler(newExceptionalExit);
+        env.getFunction().setExceptionalExit(newExceptionalExit);
 
-        appendBlock.addSuccessor(lastEventLoopBlock); // may skip loop entirely
-        lastEventLoopBlock.addSuccessor(firstEventLoopBlock); // back loop
-        return lastEventLoopBlock;
+        int catchRegister = env.getRegisterManager().nextRegister();
+        CatchNode catchNode = new CatchNode(catchRegister, location);
+        ThrowNode rethrowNode = new ThrowNode(catchRegister, location);
+        catchNode.setArtificial();
+        rethrowNode.setArtificial();
+        addNodeToBlock(catchNode, catchBlock, env.makeStatementLevel(false));
+        addNodeToBlock(rethrowNode, rethrowBlock, env);
+
+        return catchBlock;
+    }
+
+    /**
+     * Appends the required blocks for handling asyncronous dataflow in the flowgraph.
+     * The blocks contains an event dispatcher for the chosen event type.
+     */
+    private BasicBlock addAsyncBlocks(Type eventType, boolean loop, String prettyEventName, SourceLocation location, AstEnv env) {
+        Function fun = initialEnv.getFunction();
+        BasicBlock appendBlock = env.getAppendBlock();
+        // TODO support fire-once, but in unknown order handlers (e.g. load)
+
+        // block structure
+        BasicBlock first = makeSuccessorBasicBlock(appendBlock, functionAndBlocksManager);
+        BasicBlock ordinaryExit = makeSuccessorBasicBlock(first, functionAndBlocksManager);
+        BasicBlock exceptionalExit = makeCatchBasicBlock(first, functionAndBlocksManager);
+        BasicBlock exceptionalExitRethrow = makeSuccessorBasicBlock(exceptionalExit, functionAndBlocksManager);
+        // TODO minor optimization: make ordinaryExit and last the same block (also skips a node)
+        BasicBlock last = makeSuccessorBasicBlock(ordinaryExit, functionAndBlocksManager);
+
+        // will continue execution ...
+        exceptionalExit.addSuccessor(last);
+        exceptionalExit.setExceptionHandler(null);
+        // ... but the global exceptional exit also gets flow (for error reporting only)
+        exceptionalExitRethrow.setExceptionHandler(fun.getExceptionalExit());
+
+        appendBlock.addSuccessor(last); // may skip loop entirely
+        if (loop) {
+            last.addSuccessor(first); // back loop
+        }
+
+        // nodes
+        EventDispatcherNode dispatcherNode = new EventDispatcherNode(eventType, location);
+        NopNode nopOrdinaryExitNode = new NopNode("eventDispatchers: ordinary exit " + prettyEventName, location);
+        NopNode nopExceptionExitNode = new NopNode("eventDispatchers: exceptional exit " + prettyEventName, location);
+        int catchRegister = env.getRegisterManager().nextRegister();
+        CatchNode catchNode = new CatchNode(catchRegister, location);
+        ThrowNode rethrowNode = new ThrowNode(catchRegister, location);
+        NopNode nopLastNode = new NopNode("eventDispatchers: post " + prettyEventName, location);
+        nopOrdinaryExitNode.setArtificial();
+        nopExceptionExitNode.setArtificial();
+        catchNode.setArtificial();
+        rethrowNode.setArtificial();
+        nopLastNode.setArtificial();
+        addNodeToBlock(dispatcherNode, first, env);
+        addNodeToBlock(nopOrdinaryExitNode, ordinaryExit, env);
+        addNodeToBlock(catchNode, exceptionalExit, env.makeStatementLevel(false));
+        addNodeToBlock(nopExceptionExitNode, exceptionalExit, env.makeStatementLevel(false));
+        addNodeToBlock(rethrowNode, exceptionalExitRethrow, env);
+        addNodeToBlock(nopLastNode, last, env);
+
+        return last;
     }
 
     public ASTInfo getAstInfo() {
@@ -498,33 +557,69 @@ public class FlowGraphBuilder {
      *
      * @see HostEnvSources
      */
-    public void transformHostFunctionSources(List<JavaScriptSource> sources) {
+    public void addLoadersForHostFunctionSources(List<URL> sources) {
+        if (sources.isEmpty()) {
+            return;
+        }
         // make loader
         AstEnv mainEnv = this.initialEnv;
-        SourceLocation loaderDummySourceLocation = HostEnvSources.getLoaderDummySourceLocation();
+        SourceLocation loaderDummySourceLocation = new SyntheticLocationMaker("host-environment-sources-loader").makeUnspecifiedPosition();
 
-        final BasicBlock[] lastLoaderBlockBox = {mainEnv.getFunction().getEntry().getSingleSuccessor()};
+        BasicBlock appendBlock = mainEnv.getFunction().getEntry().getSingleSuccessor();
+        for (URL source : sources) {
+            appendBlock = makeSuccessorBasicBlock(appendBlock, functionAndBlocksManager);
+            int sourceRegister = mainEnv.getRegisterManager().nextRegister();
+            int internalRegister = mainEnv.getRegisterManager().nextRegister();
+            int loadedFunctionRegister = mainEnv.getRegisterManager().nextRegister();
 
-        sources.stream().map(source -> {
-            // make a function for each source ...
-            ProgramTree tree = makeAST(source.getLocation(), source.getPrettyFileName(), source.getCode(), source.getLineOffset(), source.getColumnOffset());
+            ConstantNode sourceStringNode = ConstantNode.makeString(source.toString(), sourceRegister, loaderDummySourceLocation);
+            ConstantNode internalFlagNode = ConstantNode.makeBoolean(true, internalRegister, loaderDummySourceLocation);
+            CallNode callLoadNode = new CallNode(loadedFunctionRegister, TAJSFunction.TAJS_LOAD, newList(Arrays.asList(sourceRegister, internalRegister)), loaderDummySourceLocation);
+            CallNode callLoadedNode = new CallNode(false, AbstractNode.NO_VALUE, AbstractNode.NO_VALUE, loadedFunctionRegister, newList(), loaderDummySourceLocation);
 
-            FormalParameterListTree params = new FormalParameterListTree(tree.location, ImmutableList.<ParseTree>of());
+            addNodeToBlock(sourceStringNode, appendBlock, mainEnv.makeStatementLevel(false));
+            addNodeToBlock(internalFlagNode, appendBlock, mainEnv.makeStatementLevel(false));
+            appendBlock = makeSuccessorBasicBlock(appendBlock, functionAndBlocksManager);
+            addNodeToBlock(callLoadNode, appendBlock, mainEnv.makeStatementLevel(false));
+            appendBlock = makeSuccessorBasicBlock(appendBlock, functionAndBlocksManager);
+            addNodeToBlock(callLoadedNode, appendBlock, mainEnv.makeStatementLevel(false));
+        }
 
-            int register = mainEnv.getRegisterManager().nextRegister();
-            AstEnv declarationEnv = mainEnv.makeResultRegister(register).makeStatementLevel(false).makeAppendBlock(lastLoaderBlockBox[0]);
-            SourceLocation location = new SourceLocation(0, 0, source.getPrettyFileName(), source.getLocation());
-            new FunctionBuilder(astInfo, functionAndBlocksManager, source.getLocation(), syntacticHintsCollector).processFunctionDeclaration(Kind.EXPRESSION, "load:" + Paths.get(source.getPrettyFileName()).getFileName(), params, tree, declarationEnv, location, null);
-            return register;
-        }).collect(Collectors.toList() /* order of block side effects is important. sync here */).
-                forEach(functionRegister -> {
-                    // ... call each function
-                    lastLoaderBlockBox[0] = makeSuccessorBasicBlock(mainEnv.getFunction(), lastLoaderBlockBox[0], functionAndBlocksManager);
-                    CallNode callNode = new CallNode(false, AbstractNode.NO_VALUE, AbstractNode.NO_VALUE, functionRegister, newList(), loaderDummySourceLocation);
-                    addNodeToBlock(callNode, lastLoaderBlockBox[0], mainEnv.makeStatementLevel(false));
-                });
-
-        BasicBlock postCallLoaderBlock = makeSuccessorBasicBlock(mainEnv.getFunction(), lastLoaderBlockBox[0], functionAndBlocksManager);
+        BasicBlock postCallLoaderBlock = makeSuccessorBasicBlock(appendBlock, functionAndBlocksManager);
         processed = TranslationResult.makeAppendBlock(postCallLoaderBlock);
+    }
+
+    /**
+     * Creates a Function for the given source.
+     * <p>
+     * <pre>
+     *  function (parameters[0], parameters[1], ...) {
+     *      SOURCE
+     *  }
+     * </pre>
+     */
+    public Function transformFunctionBody(String source, List<String> parameterNames, SourceLocationMaker sourceLocationMaker) {
+        final AstEnv env = initialEnv.makeAppendBlock(processed.getAppendBlock());
+
+        // create a synthetic wrapper function with the source as body
+        ProgramTree tree = makeAST(source, 0, 0, sourceLocationMaker);
+        List<IdentifierExpressionTree> parameters =
+                parameterNames.stream().map(
+                        n -> new IdentifierExpressionTree(null, new IdentifierToken(null, n)))
+                        .collect(Collectors.toList());
+
+        FormalParameterListTree params = new FormalParameterListTree(tree.location, ImmutableList.copyOf(parameters));
+
+        Function function = new FunctionBuilder(astInfo, functionAndBlocksManager, sourceLocationMaker, syntacticInformationCollector).processFunctionDeclaration(Kind.EXPRESSION, null, params, tree, env.makeResultRegister(AbstractNode.NO_VALUE), makeSourceLocation(tree, sourceLocationMaker), source);
+
+        return function;
+    }
+
+    public static FlowGraphBuilder makeForMain(SourceLocationMaker sourceLocationMaker) {
+        AstEnv env = AstEnv.makeInitial();
+        Function main = new Function(null, null, null, sourceLocationMaker.makeUnspecifiedPosition());
+        FunctionAndBlockManager fab = new FunctionAndBlockManager();
+        env = setupFunction(main, env, fab);
+        return new FlowGraphBuilder(env, fab);
     }
 }

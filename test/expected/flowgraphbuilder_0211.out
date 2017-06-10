@@ -3,47 +3,610 @@ fg2: <main> function()
     node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0211.js)
     ->[block 1]
   block 1:
-    node 1: read-variable['i',v3,-] (test/flowgraphbuilder/flowgraph_builder0211.js:1:9)
-    node 2: read-property[v3,'move',v2] (test/flowgraphbuilder/flowgraph_builder0211.js:1:9)
-    node 3: <variable-non-null-undef>['i'] (test/flowgraphbuilder/flowgraph_builder0211.js:1:9)
-    node 4: constant["r",v4] (test/flowgraphbuilder/flowgraph_builder0211.js:2:10)
-    node 5: ===[v2,v4,v5] (test/flowgraphbuilder/flowgraph_builder0211.js:1:1)
-    node 6: if[v5](true-block:2,false-block:8) (test/flowgraphbuilder/flowgraph_builder0211.js:1:1)
-    ->[block 2,block 8]
+    node 1: constant["tajs-host-env:string-replace-model.js",v2] (host-environment-sources-loader)
+    node 2: constant[true,v3] (host-environment-sources-loader)
+    ->[block 2]
   block 2:
-    node 7: read-variable['b',v7,-] (test/flowgraphbuilder/flowgraph_builder0211.js:3:9)
-    node 8: read-variable['E',v8,-] (test/flowgraphbuilder/flowgraph_builder0211.js:3:11)
-    node 9: read-variable['f',v10,-] (test/flowgraphbuilder/flowgraph_builder0211.js:3:17)
-    node 10: ![v10,v9] (test/flowgraphbuilder/flowgraph_builder0211.js:3:16)
-    node 11: if[v9](true-block:3,false-block:4) (test/flowgraphbuilder/flowgraph_builder0211.js:3:16)
-    ->[block 3,block 4]
+    node 3: call[TAJS_load,v2,v3,v4] (host-environment-sources-loader)
+    ->[block 3]
   block 3:
-    node 12: constant[0.0,v6] (test/flowgraphbuilder/flowgraph_builder0211.js:3:21)
-    ->[block 7]
+    node 4: call[-,v4,-] (host-environment-sources-loader)
+    ->[block 4]
   block 4:
-    node 13: read-variable['w',v16,v15] (test/flowgraphbuilder/flowgraph_builder0211.js:3:25)
-    node 14: read-variable['f',v17,-] (test/flowgraphbuilder/flowgraph_builder0211.js:3:27)
-    ->[block 5]
+    node 5: read-variable['i',v6,-] (test/flowgraphbuilder/flowgraph_builder0211.js:1:9)
+    node 6: read-property[v6,'move',v5] (test/flowgraphbuilder/flowgraph_builder0211.js:1:9)
+    node 7: <variable-non-null-undef>['i'] (test/flowgraphbuilder/flowgraph_builder0211.js:1:9)
+    node 8: constant["r",v7] (test/flowgraphbuilder/flowgraph_builder0211.js:2:10)
+    node 9: ===[v5,v7,v8] (test/flowgraphbuilder/flowgraph_builder0211.js:1:1)
+    node 10: if[v8](true-block:5,false-block:11) (test/flowgraphbuilder/flowgraph_builder0211.js:1:1)
+    ->[block 5,block 11]
   block 5:
-    node 15: call[v15,v16,v17,v13] (test/flowgraphbuilder/flowgraph_builder0211.js:3:25)
-    ->[block 6]
+    node 11: read-variable['b',v10,-] (test/flowgraphbuilder/flowgraph_builder0211.js:3:9)
+    node 12: read-variable['E',v11,-] (test/flowgraphbuilder/flowgraph_builder0211.js:3:11)
+    node 13: read-variable['f',v13,-] (test/flowgraphbuilder/flowgraph_builder0211.js:3:17)
+    node 14: ![v13,v12] (test/flowgraphbuilder/flowgraph_builder0211.js:3:16)
+    node 15: if[v12](true-block:6,false-block:7) (test/flowgraphbuilder/flowgraph_builder0211.js:3:16)
+    ->[block 6,block 7]
   block 6:
-    node 16: read-variable['a',v14,-] (test/flowgraphbuilder/flowgraph_builder0211.js:3:32)
-    node 17: +[v13,v14,v11] (test/flowgraphbuilder/flowgraph_builder0211.js:3:25)
-    node 18: constant["px",v12] (test/flowgraphbuilder/flowgraph_builder0211.js:3:36)
-    node 19: +[v11,v12,v6] (test/flowgraphbuilder/flowgraph_builder0211.js:3:25)
-    ->[block 7]
+    node 16: constant[0.0,v9] (test/flowgraphbuilder/flowgraph_builder0211.js:3:21)
+    ->[block 10]
   block 7:
-    node 20: write-property[v7,v8,v6] (test/flowgraphbuilder/flowgraph_builder0211.js:3:9)
-    node 21: <variable-non-null-undef>['b']* (test/flowgraphbuilder/flowgraph_builder0211.js:3:9)
+    node 17: read-variable['w',v19,v18] (test/flowgraphbuilder/flowgraph_builder0211.js:3:25)
+    node 18: read-variable['f',v20,-] (test/flowgraphbuilder/flowgraph_builder0211.js:3:27)
     ->[block 8]
-  block 8: [exit-ordinary]
-    node 22: return[v1] (test/flowgraphbuilder/flowgraph_builder0211.js)
+  block 8:
+    node 19: call[v18,v19,v20,v16] (test/flowgraphbuilder/flowgraph_builder0211.js:3:25)
+    ->[block 9]
+  block 9:
+    node 20: read-variable['a',v17,-] (test/flowgraphbuilder/flowgraph_builder0211.js:3:32)
+    node 21: +[v16,v17,v14] (test/flowgraphbuilder/flowgraph_builder0211.js:3:25)
+    node 22: constant["px",v15] (test/flowgraphbuilder/flowgraph_builder0211.js:3:36)
+    node 23: +[v14,v15,v9] (test/flowgraphbuilder/flowgraph_builder0211.js:3:25)
+    ->[block 10]
+  block 10:
+    node 24: write-property[v10,v11,v9] (test/flowgraphbuilder/flowgraph_builder0211.js:3:9)
+    node 25: <variable-non-null-undef>['b']* (test/flowgraphbuilder/flowgraph_builder0211.js:3:9)
+    ->[block 11]
+  block 11: [exit-ordinary]
+    node 26: return[v1] (test/flowgraphbuilder/flowgraph_builder0211.js)
     ->[]
-  block 9: [exit-exceptional]
-    node 23: exceptional-return (test/flowgraphbuilder/flowgraph_builder0211.js)
+  block 12: [exit-exceptional]
+    node 27: exceptional-return (test/flowgraphbuilder/flowgraph_builder0211.js)
     ->[]
 
+fg2: <main> function()
+  block 0: [entry]
+    node 0: constant[undefined,v1] (test/flowgraphbuilder/flowgraph_builder0211.js)
+    ->[block 1]
+  block 1:
+    node 1: constant["tajs-host-env:string-replace-model.js",v2] (host-environment-sources-loader)
+    node 2: constant[true,v3] (host-environment-sources-loader)
+    ->[block 2]
+  block 2:
+    node 3: call[TAJS_load,v2,v3,v4] (host-environment-sources-loader)
+    ->[block 3]
+  block 3:
+    node 4: call[-,v4,-] (host-environment-sources-loader)
+    ->[block 4]
+  block 4:
+    node 5: read-variable['i',v6,-] (test/flowgraphbuilder/flowgraph_builder0211.js:1:9)
+    node 6: read-property[v6,'move',v5] (test/flowgraphbuilder/flowgraph_builder0211.js:1:9)
+    node 7: <variable-non-null-undef>['i'] (test/flowgraphbuilder/flowgraph_builder0211.js:1:9)
+    node 8: constant["r",v7] (test/flowgraphbuilder/flowgraph_builder0211.js:2:10)
+    node 9: ===[v5,v7,v8] (test/flowgraphbuilder/flowgraph_builder0211.js:1:1)
+    node 10: if[v8](true-block:5,false-block:11) (test/flowgraphbuilder/flowgraph_builder0211.js:1:1)
+    ->[block 5,block 11]
+  block 5:
+    node 11: read-variable['b',v10,-] (test/flowgraphbuilder/flowgraph_builder0211.js:3:9)
+    node 12: read-variable['E',v11,-] (test/flowgraphbuilder/flowgraph_builder0211.js:3:11)
+    node 13: read-variable['f',v13,-] (test/flowgraphbuilder/flowgraph_builder0211.js:3:17)
+    node 14: ![v13,v12] (test/flowgraphbuilder/flowgraph_builder0211.js:3:16)
+    node 15: if[v12](true-block:6,false-block:7) (test/flowgraphbuilder/flowgraph_builder0211.js:3:16)
+    ->[block 6,block 7]
+  block 6:
+    node 16: constant[0.0,v9] (test/flowgraphbuilder/flowgraph_builder0211.js:3:21)
+    ->[block 10]
+  block 7:
+    node 17: read-variable['w',v19,v18] (test/flowgraphbuilder/flowgraph_builder0211.js:3:25)
+    node 18: read-variable['f',v20,-] (test/flowgraphbuilder/flowgraph_builder0211.js:3:27)
+    ->[block 8]
+  block 8:
+    node 19: call[v18,v19,v20,v16] (test/flowgraphbuilder/flowgraph_builder0211.js:3:25)
+    ->[block 9]
+  block 9:
+    node 20: read-variable['a',v17,-] (test/flowgraphbuilder/flowgraph_builder0211.js:3:32)
+    node 21: +[v16,v17,v14] (test/flowgraphbuilder/flowgraph_builder0211.js:3:25)
+    node 22: constant["px",v15] (test/flowgraphbuilder/flowgraph_builder0211.js:3:36)
+    node 23: +[v14,v15,v9] (test/flowgraphbuilder/flowgraph_builder0211.js:3:25)
+    ->[block 10]
+  block 10:
+    node 24: write-property[v10,v11,v9] (test/flowgraphbuilder/flowgraph_builder0211.js:3:9)
+    node 25: <variable-non-null-undef>['b']* (test/flowgraphbuilder/flowgraph_builder0211.js:3:9)
+    ->[block 11]
+  block 11: [exit-ordinary]
+    node 26: return[v1] (test/flowgraphbuilder/flowgraph_builder0211.js)
+    ->[]
+  block 12: [exit-exceptional]
+    node 27: exceptional-return (test/flowgraphbuilder/flowgraph_builder0211.js)
+    ->[]
+function()
+  block 13: [entry]
+    node 28: constant[undefined,v1] (HOST(string-replace-model.js):1:1)
+    ->[block 14]
+  block 14:
+    node 29: read-variable['Object',v4,-] (HOST(string-replace-model.js):1:1)
+    node 30: read-property[v4,'defineProperty',-] (HOST(string-replace-model.js):1:1)
+    node 31: <variable-non-null-undef>['Object'] (HOST(string-replace-model.js):1:1)
+    node 32: read-variable['String',v6,v2] (HOST(string-replace-model.js):1:23)
+    node 33: read-property[v6,'prototype',v5] (HOST(string-replace-model.js):1:23)
+    node 34: <variable-non-null-undef>['String'] (HOST(string-replace-model.js):1:23)
+    node 35: constant["replace",v7] (HOST(string-replace-model.js):1:41)
+    node 36: new[v8] (HOST(string-replace-model.js):1:52)
+    node 37: constant[true,v9] (HOST(string-replace-model.js):2:15)
+    node 38: write-property[v8,'writable',v9] (HOST(string-replace-model.js):2:5)
+    node 39: constant[false,v10] (HOST(string-replace-model.js):2:33)
+    node 40: write-property[v8,'enumerable',v10] (HOST(string-replace-model.js):2:21)
+    node 41: constant[true,v11] (HOST(string-replace-model.js):2:54)
+    node 42: write-property[v8,'configurable',v11] (HOST(string-replace-model.js):2:40)
+    node 43: function-expr[function replace(searchValue,replaceValue),v12] (HOST(string-replace-model.js):3:12)
+    node 44: write-property[v8,'value',v12] (HOST(string-replace-model.js):3:5)
+    ->[block 15]
+  block 15:
+    node 45: call[v4,'defineProperty',v5,v7,v8,-]* (HOST(string-replace-model.js):1:1)
+    ->[block 16]
+  block 16:
+    node 46: read-variable['String',v17,v2] (HOST(string-replace-model.js):69:27)
+    node 47: read-property[v17,'prototype',v16] (HOST(string-replace-model.js):69:27)
+    node 48: <variable-non-null-undef>['String'] (HOST(string-replace-model.js):69:27)
+    node 49: read-property[v16,'replace',v15] (HOST(string-replace-model.js):69:27)
+    node 50: <property-non-null-undef>[v17,'prototype'] (HOST(string-replace-model.js):69:27)
+    node 51: constant[-1.0,v18] (HOST(string-replace-model.js):69:53)
+    ->[block 17]
+  block 17:
+    node 52: call[TAJS_makeContextSensitive,v15,v18,-]* (HOST(string-replace-model.js):69:1)
+    ->[block 18]
+  block 18:
+    node 53: read-variable['String',v23,v2] (HOST(string-replace-model.js):70:27)
+    node 54: read-property[v23,'prototype',v22] (HOST(string-replace-model.js):70:27)
+    node 55: <variable-non-null-undef>['String'] (HOST(string-replace-model.js):70:27)
+    node 56: read-property[v22,'replace',v21] (HOST(string-replace-model.js):70:27)
+    node 57: <property-non-null-undef>[v23,'prototype'] (HOST(string-replace-model.js):70:27)
+    node 58: constant[0.0,v24] (HOST(string-replace-model.js):70:53)
+    ->[block 19]
+  block 19:
+    node 59: call[TAJS_makeContextSensitive,v21,v24,-]* (HOST(string-replace-model.js):70:1)
+    ->[block 20]
+  block 20:
+    node 60: read-variable['String',v29,v2] (HOST(string-replace-model.js):71:27)
+    node 61: read-property[v29,'prototype',v28] (HOST(string-replace-model.js):71:27)
+    node 62: <variable-non-null-undef>['String'] (HOST(string-replace-model.js):71:27)
+    node 63: read-property[v28,'replace',v27] (HOST(string-replace-model.js):71:27)
+    node 64: <property-non-null-undef>[v29,'prototype'] (HOST(string-replace-model.js):71:27)
+    node 65: constant[1.0,v30] (HOST(string-replace-model.js):71:53)
+    ->[block 21]
+  block 21:
+    node 66: call[TAJS_makeContextSensitive,v27,v30,-]* (HOST(string-replace-model.js):71:1)
+    ->[block 22]
+  block 22: [exit-ordinary]
+    node 67: return[v1] (HOST(string-replace-model.js):1:1)
+    ->[]
+  block 23: [exit-exceptional]
+    node 68: exceptional-return (HOST(string-replace-model.js):1:1)
+    ->[]
+function replace(searchValue,replaceValue)
+  block 24: [entry]
+    node 69: constant[undefined,v1] (HOST(string-replace-model.js):3:12)
+    node 70: vardecl['receiver']* (HOST(string-replace-model.js):8:13)
+    node 71: vardecl['string']* (HOST(string-replace-model.js):10:13)
+    node 72: vardecl['searchValueIsRegExp']* (HOST(string-replace-model.js):16:13)
+    node 73: vardecl['matches']* (HOST(string-replace-model.js):18:13)
+    node 74: vardecl['matchThatIsFound']* (HOST(string-replace-model.js):21:17)
+    node 75: vardecl['callbackArguments']* (HOST(string-replace-model.js):25:25)
+    node 76: vardecl['i']* (HOST(string-replace-model.js):26:30)
+    node 77: vardecl['indexMatch']* (HOST(string-replace-model.js):37:17)
+    node 78: vardecl['replacementSubstrings']* (HOST(string-replace-model.js):45:13)
+    node 79: vardecl['j']* (HOST(string-replace-model.js):47:18)
+    node 80: vardecl['matchToUse']* (HOST(string-replace-model.js):48:17)
+    node 81: vardecl['startIndex']* (HOST(string-replace-model.js):49:17)
+    node 82: vardecl['endIndex']* (HOST(string-replace-model.js):50:17)
+    node 83: vardecl['replacementSubstring']* (HOST(string-replace-model.js):51:17)
+    node 84: vardecl['replacement']* (HOST(string-replace-model.js):52:17)
+    node 85: vardecl['k']* (HOST(string-replace-model.js):59:18)
+    node 86: vardecl['prefix']* (HOST(string-replace-model.js):61:17)
+    node 87: vardecl['suffix']* (HOST(string-replace-model.js):62:17)
+    node 88: vardecl['result']* (HOST(string-replace-model.js):63:17)
+    ->[block 25]
+  block 25:
+    node 89: read-variable['this',v4,-] (HOST(string-replace-model.js):5:13)
+    node 90: constant[null,v5] (HOST(string-replace-model.js):5:22)
+    node 91: ===[v4,v5,v3] (HOST(string-replace-model.js):5:13)
+    ->[block 26]
+  block 26:
+    node 92: if[v3](true-block:28,false-block:27) (HOST(string-replace-model.js):5:13)
+    ->[block 27,block 28]
+  block 27:
+    node 93: read-variable['this',v6,-] (HOST(string-replace-model.js):5:30)
+    node 94: read-variable['undefined',v7,v2] (HOST(string-replace-model.js):5:39)
+    node 95: ===[v6,v7,v3] (HOST(string-replace-model.js):5:30)
+    node 96: if[v3](true-block:28,false-block:31)* (HOST(string-replace-model.js):5:9)
+    ->[block 28,block 31]
+  block 28:
+    node 97: read-variable['TypeError',v9,-] (HOST(string-replace-model.js):6:23)
+    ->[block 29]
+  block 29:
+    node 98: construct[-,v9,v8] (HOST(string-replace-model.js):6:19)
+    ->[block 30]
+  block 30:
+    node 99: throw[v8]* (HOST(string-replace-model.js):6:13)
+    ->[block 31]
+  block 31:
+    node 100: read-variable['this',v8,-] (HOST(string-replace-model.js):8:24)
+    node 101: write-variable[v8,'receiver']* (HOST(string-replace-model.js):8:13)
+    node 102: read-variable['receiver',v10,v2] (HOST(string-replace-model.js):10:22)
+    node 103: constant["",v11] (HOST(string-replace-model.js):10:33)
+    node 104: +[v10,v11,v9] (HOST(string-replace-model.js):10:22)
+    node 105: write-variable[v9,'string']* (HOST(string-replace-model.js):10:13)
+    node 106: typeof['replaceValue',v13] (HOST(string-replace-model.js):11:13)
+    node 107: constant["function",v14] (HOST(string-replace-model.js):11:37)
+    node 108: !==[v13,v14,v12] (HOST(string-replace-model.js):11:13)
+    node 109: if[v12](true-block:32,false-block:34)* (HOST(string-replace-model.js):11:9)
+    ->[block 32,block 34]
+  block 32:
+    node 110: read-variable['string',v17,v2] (HOST(string-replace-model.js):13:49)
+    node 111: read-variable['searchValue',v18,v2] (HOST(string-replace-model.js):13:57)
+    node 112: read-variable['replaceValue',v20,v2] (HOST(string-replace-model.js):13:70)
+    node 113: constant["",v21] (HOST(string-replace-model.js):13:85)
+    node 114: +[v20,v21,v19] (HOST(string-replace-model.js):13:70)
+    ->[block 33]
+  block 33:
+    node 115: call[TAJS_firstOrderStringReplace,v17,v18,v19,v1] (HOST(string-replace-model.js):13:20)
+    ->[block 99]
+  block 34:
+    node 116: read-variable['searchValue',v16,v2] (HOST(string-replace-model.js):16:35)
+    node 117: read-variable['RegExp',v17,v2] (HOST(string-replace-model.js):16:58)
+    node 118: instanceof[v16,v17,v15] (HOST(string-replace-model.js):16:35)
+    node 119: write-variable[v15,'searchValueIsRegExp']* (HOST(string-replace-model.js):16:13)
+    ->[block 35]
+  block 35:
+    node 120: call[TAJS_newArray,v18] (HOST(string-replace-model.js):18:23)
+    ->[block 36]
+  block 36:
+    node 121: write-variable[v18,'matches']* (HOST(string-replace-model.js):18:13)
+    node 122: read-variable['searchValueIsRegExp',v21,v2] (HOST(string-replace-model.js):19:13)
+    node 123: if[v21](true-block:48,false-block:37)* (HOST(string-replace-model.js):19:9)
+    ->[block 37,block 48]
+  block 37:
+    node 124: read-variable['searchValue',v23,v2] (HOST(string-replace-model.js):35:27)
+    node 125: constant["",v24] (HOST(string-replace-model.js):35:41)
+    node 126: +[v23,v24,v22] (HOST(string-replace-model.js):35:27)
+    node 127: write-variable[v22,'searchValue']* (HOST(string-replace-model.js):35:13)
+    ->[block 38]
+  block 38:
+    node 128: call[TAJS_newArray,v25] (HOST(string-replace-model.js):36:37)
+    ->[block 39]
+  block 39:
+    node 129: write-variable[v25,'callbackArguments']* (HOST(string-replace-model.js):36:17)
+    node 130: read-variable['string',v30,-] (HOST(string-replace-model.js):37:30)
+    node 131: read-property[v30,'indexOf',-] (HOST(string-replace-model.js):37:30)
+    node 132: <variable-non-null-undef>['string'] (HOST(string-replace-model.js):37:30)
+    node 133: read-variable['searchValue',v31,v2] (HOST(string-replace-model.js):37:45)
+    ->[block 40]
+  block 40:
+    node 134: call[v30,'indexOf',v31,v28] (HOST(string-replace-model.js):37:30)
+    ->[block 41]
+  block 41:
+    node 135: write-variable[v28,'indexMatch']* (HOST(string-replace-model.js):37:17)
+    node 136: read-variable['indexMatch',v33,v2] (HOST(string-replace-model.js):38:17)
+    node 137: constant[-1.0,v34] (HOST(string-replace-model.js):38:32)
+    node 138: !==[v33,v34,v32] (HOST(string-replace-model.js):38:17)
+    node 139: if[v32](true-block:42,false-block:73)* (HOST(string-replace-model.js):38:13)
+    ->[block 42,block 73]
+  block 42:
+    node 140: read-variable['callbackArguments',v36,v2] (HOST(string-replace-model.js):39:17)
+    node 141: constant[0.0,v37] (HOST(string-replace-model.js):39:35)
+    node 142: read-variable['searchValue',v35,v2] (HOST(string-replace-model.js):39:40)
+    node 143: write-property[v36,v37,v35] (HOST(string-replace-model.js):39:17)
+    node 144: <variable-non-null-undef>['callbackArguments']* (HOST(string-replace-model.js):39:17)
+    node 145: read-variable['callbackArguments',v39,-] (HOST(string-replace-model.js):40:17)
+    node 146: read-property[v39,'push',-] (HOST(string-replace-model.js):40:17)
+    node 147: <variable-non-null-undef>['callbackArguments'] (HOST(string-replace-model.js):40:17)
+    node 148: read-variable['indexMatch',v40,v2] (HOST(string-replace-model.js):40:40)
+    ->[block 43]
+  block 43:
+    node 149: call[v39,'push',v40,-]* (HOST(string-replace-model.js):40:17)
+    ->[block 44]
+  block 44:
+    node 150: read-variable['callbackArguments',v42,-] (HOST(string-replace-model.js):41:17)
+    node 151: read-property[v42,'push',-] (HOST(string-replace-model.js):41:17)
+    node 152: <variable-non-null-undef>['callbackArguments'] (HOST(string-replace-model.js):41:17)
+    node 153: read-variable['string',v43,v2] (HOST(string-replace-model.js):41:40)
+    ->[block 45]
+  block 45:
+    node 154: call[v42,'push',v43,-]* (HOST(string-replace-model.js):41:17)
+    ->[block 46]
+  block 46:
+    node 155: read-variable['matches',v45,-] (HOST(string-replace-model.js):42:17)
+    node 156: read-property[v45,'push',-] (HOST(string-replace-model.js):42:17)
+    node 157: <variable-non-null-undef>['matches'] (HOST(string-replace-model.js):42:17)
+    node 158: read-variable['callbackArguments',v46,v2] (HOST(string-replace-model.js):42:30)
+    ->[block 47]
+  block 47:
+    node 159: call[v45,'push',v46,-]* (HOST(string-replace-model.js):42:17)
+    ->[block 73]
+  block 48:
+    node 160: read-variable['searchValue',v28,-] (HOST(string-replace-model.js):23:36)
+    node 161: read-property[v28,'exec',-] (HOST(string-replace-model.js):23:36)
+    node 162: <variable-non-null-undef>['searchValue'] (HOST(string-replace-model.js):23:36)
+    node 163: read-variable['string',v29,v2] (HOST(string-replace-model.js):23:53)
+    ->[block 49] ~>[block 71]
+  block 49:
+    node 164: call[v28,'exec',v29,v26] (HOST(string-replace-model.js):23:36)
+    ->[block 50] ~>[block 71]
+  block 50:
+    node 165: write-variable[v26,'matchThatIsFound']* (HOST(string-replace-model.js):23:17)
+    node 166: read-variable['matchThatIsFound',v31,v2] (HOST(string-replace-model.js):24:21)
+    node 167: constant[null,v32] (HOST(string-replace-model.js):24:42)
+    node 168: !==[v31,v32,v30] (HOST(string-replace-model.js):24:21)
+    node 169: if[v30](true-block:51,false-block:66)* (HOST(string-replace-model.js):24:17)
+    ->[block 51,block 66] ~>[block 71]
+  block 51:
+    node 170: call[TAJS_newArray,v33] (HOST(string-replace-model.js):25:45)
+    ->[block 52] ~>[block 71]
+  block 52:
+    node 171: write-variable[v33,'callbackArguments']* (HOST(string-replace-model.js):25:25)
+    ->[block 53] ~>[block 71]
+  block 53:
+    node 172: constant[0.0,v36] (HOST(string-replace-model.js):26:34)
+    node 173: write-variable[v36,'i']* (HOST(string-replace-model.js):26:30)
+    ->[block 54] ~>[block 71]
+  block 54:
+    node 174: read-variable['i',v38,v2] (HOST(string-replace-model.js):26:37)
+    node 175: read-variable['matchThatIsFound',v40,v2] (HOST(string-replace-model.js):26:41)
+    node 176: read-property[v40,'length',v39] (HOST(string-replace-model.js):26:41)
+    node 177: <variable-non-null-undef>['matchThatIsFound'] (HOST(string-replace-model.js):26:41)
+    node 178: <[v38,v39,v37] (HOST(string-replace-model.js):26:37)
+    node 179: begin-loop[v37] (HOST(string-replace-model.js):26:71)
+    ->[block 55] ~>[block 58]
+  block 55:
+    node 180: if[v37](true-block:56,false-block:59)* (HOST(string-replace-model.js):26:37)
+    ->[block 56,block 59] ~>[block 58]
+  block 56:
+    node 181: read-variable['callbackArguments',v42,v2] (HOST(string-replace-model.js):27:25)
+    node 182: read-variable['i',v43,v2] (HOST(string-replace-model.js):27:43)
+    node 183: read-variable['matchThatIsFound',v44,v2] (HOST(string-replace-model.js):27:48)
+    node 184: read-variable['i',v45,v2] (HOST(string-replace-model.js):27:65)
+    node 185: read-property[v44,v45,v41] (HOST(string-replace-model.js):27:48)
+    node 186: <variable-non-null-undef>['matchThatIsFound'] (HOST(string-replace-model.js):27:48)
+    node 187: write-property[v42,v43,v41] (HOST(string-replace-model.js):27:25)
+    node 188: <variable-non-null-undef>['callbackArguments']* (HOST(string-replace-model.js):27:25)
+    ->[block 57] ~>[block 58]
+  block 57:
+    node 189: read-variable['i',v46,v2] (HOST(string-replace-model.js):26:66)
+    node 190: +[v46,v47] (HOST(string-replace-model.js):26:66)
+    node 191: constant[1.0,v48] (HOST(string-replace-model.js):26:66)
+    node 192: +[v47,v48,v49] (HOST(string-replace-model.js):26:66)
+    node 193: write-variable[v49,'i']* (HOST(string-replace-model.js):26:66)
+    ->[block 54] ~>[block 58]
+  block 58:
+    node 194: end-loop[v37]* (HOST(string-replace-model.js):26:37)
+    ->[block 71]
+  block 59:
+    node 195: end-loop[v37]* (HOST(string-replace-model.js):26:37)
+    ->[block 60] ~>[block 71]
+  block 60:
+    node 196: read-variable['callbackArguments',v51,-] (HOST(string-replace-model.js):29:21)
+    node 197: read-property[v51,'push',-] (HOST(string-replace-model.js):29:21)
+    node 198: <variable-non-null-undef>['callbackArguments'] (HOST(string-replace-model.js):29:21)
+    node 199: read-variable['matchThatIsFound',v53,v2] (HOST(string-replace-model.js):29:44)
+    node 200: read-property[v53,'index',v52] (HOST(string-replace-model.js):29:44)
+    node 201: <variable-non-null-undef>['matchThatIsFound'] (HOST(string-replace-model.js):29:44)
+    ->[block 61] ~>[block 71]
+  block 61:
+    node 202: call[v51,'push',v52,-]* (HOST(string-replace-model.js):29:21)
+    ->[block 62] ~>[block 71]
+  block 62:
+    node 203: read-variable['callbackArguments',v55,-] (HOST(string-replace-model.js):30:21)
+    node 204: read-property[v55,'push',-] (HOST(string-replace-model.js):30:21)
+    node 205: <variable-non-null-undef>['callbackArguments'] (HOST(string-replace-model.js):30:21)
+    node 206: read-variable['matchThatIsFound',v57,v2] (HOST(string-replace-model.js):30:44)
+    node 207: read-property[v57,'input',v56] (HOST(string-replace-model.js):30:44)
+    node 208: <variable-non-null-undef>['matchThatIsFound'] (HOST(string-replace-model.js):30:44)
+    ->[block 63] ~>[block 71]
+  block 63:
+    node 209: call[v55,'push',v56,-]* (HOST(string-replace-model.js):30:21)
+    ->[block 64] ~>[block 71]
+  block 64:
+    node 210: read-variable['matches',v59,-] (HOST(string-replace-model.js):31:21)
+    node 211: read-property[v59,'push',-] (HOST(string-replace-model.js):31:21)
+    node 212: <variable-non-null-undef>['matches'] (HOST(string-replace-model.js):31:21)
+    node 213: read-variable['callbackArguments',v60,v2] (HOST(string-replace-model.js):31:34)
+    ->[block 65] ~>[block 71]
+  block 65:
+    node 214: call[v59,'push',v60,-]* (HOST(string-replace-model.js):31:21)
+    ->[block 66] ~>[block 71]
+  block 66:
+    node 215: read-variable['matchThatIsFound',v23,v2] (HOST(string-replace-model.js):33:22)
+    node 216: constant[null,v24] (HOST(string-replace-model.js):33:43)
+    node 217: !==[v23,v24,v22] (HOST(string-replace-model.js):33:22)
+    ->[block 67] ~>[block 71]
+  block 67:
+    node 218: if[v22](true-block:68,false-block:69) (HOST(string-replace-model.js):33:22)
+    ->[block 68,block 69] ~>[block 71]
+  block 68:
+    node 219: read-variable['searchValue',v25,v2] (HOST(string-replace-model.js):33:51)
+    node 220: read-property[v25,'global',v22] (HOST(string-replace-model.js):33:51)
+    node 221: <variable-non-null-undef>['searchValue'] (HOST(string-replace-model.js):33:51)
+    ->[block 69] ~>[block 71]
+  block 69:
+    node 222: begin-loop[v22] (HOST(string-replace-model.js):22:16)
+    ->[block 70] ~>[block 71]
+  block 70:
+    node 223: if[v22](true-block:48,false-block:72)* (HOST(string-replace-model.js):33:22)
+    ->[block 48,block 72] ~>[block 71]
+  block 71:
+    node 224: end-loop[v22]* (HOST(string-replace-model.js):33:22)
+    ->[block 100]
+  block 72:
+    node 225: end-loop[v22]* (HOST(string-replace-model.js):33:22)
+    ->[block 73]
+  block 73:
+    node 226: call[TAJS_newArray,v22] (HOST(string-replace-model.js):45:37)
+    ->[block 74]
+  block 74:
+    node 227: write-variable[v22,'replacementSubstrings']* (HOST(string-replace-model.js):45:13)
+    ->[block 75]
+  block 75:
+    node 228: constant[0.0,v25] (HOST(string-replace-model.js):47:22)
+    node 229: write-variable[v25,'j']* (HOST(string-replace-model.js):47:18)
+    ->[block 76]
+  block 76:
+    node 230: read-variable['j',v27,v2] (HOST(string-replace-model.js):47:25)
+    node 231: read-variable['matches',v29,v2] (HOST(string-replace-model.js):47:29)
+    node 232: read-property[v29,'length',v28] (HOST(string-replace-model.js):47:29)
+    node 233: <variable-non-null-undef>['matches'] (HOST(string-replace-model.js):47:29)
+    node 234: <[v27,v28,v26] (HOST(string-replace-model.js):47:25)
+    node 235: begin-loop[v26] (HOST(string-replace-model.js):47:50)
+    ->[block 77] ~>[block 85]
+  block 77:
+    node 236: if[v26](true-block:78,false-block:86)* (HOST(string-replace-model.js):47:25)
+    ->[block 78,block 86] ~>[block 85]
+  block 78:
+    node 237: read-variable['matches',v31,v2] (HOST(string-replace-model.js):48:30)
+    node 238: read-variable['j',v32,v2] (HOST(string-replace-model.js):48:38)
+    node 239: read-property[v31,v32,v30] (HOST(string-replace-model.js):48:30)
+    node 240: <variable-non-null-undef>['matches'] (HOST(string-replace-model.js):48:30)
+    node 241: write-variable[v30,'matchToUse']* (HOST(string-replace-model.js):48:17)
+    node 242: read-variable['matchToUse',v34,v2] (HOST(string-replace-model.js):49:30)
+    node 243: read-variable['matchToUse',v38,v2] (HOST(string-replace-model.js):49:41)
+    node 244: read-property[v38,'length',v36] (HOST(string-replace-model.js):49:41)
+    node 245: <variable-non-null-undef>['matchToUse'] (HOST(string-replace-model.js):49:41)
+    node 246: constant[2.0,v37] (HOST(string-replace-model.js):49:61)
+    node 247: -[v36,v37,v35] (HOST(string-replace-model.js):49:41)
+    node 248: read-property[v34,v35,v33] (HOST(string-replace-model.js):49:30)
+    node 249: <variable-non-null-undef>['matchToUse'] (HOST(string-replace-model.js):49:30)
+    node 250: write-variable[v33,'startIndex']* (HOST(string-replace-model.js):49:17)
+    node 251: read-variable['startIndex',v40,v2] (HOST(string-replace-model.js):50:28)
+    node 252: read-variable['matchToUse',v43,v2] (HOST(string-replace-model.js):50:41)
+    node 253: constant[0.0,v44] (HOST(string-replace-model.js):50:52)
+    node 254: read-property[v43,v44,v42] (HOST(string-replace-model.js):50:41)
+    node 255: <variable-non-null-undef>['matchToUse'] (HOST(string-replace-model.js):50:41)
+    node 256: read-property[v42,'length',v41] (HOST(string-replace-model.js):50:41)
+    node 257: <property-non-null-undef>[v43,v44] (HOST(string-replace-model.js):50:41)
+    node 258: +[v40,v41,v39] (HOST(string-replace-model.js):50:28)
+    node 259: write-variable[v39,'endIndex']* (HOST(string-replace-model.js):50:17)
+    node 260: read-variable['replaceValue',v49,-] (HOST(string-replace-model.js):51:40)
+    node 261: read-property[v49,'apply',-] (HOST(string-replace-model.js):51:40)
+    node 262: <variable-non-null-undef>['replaceValue'] (HOST(string-replace-model.js):51:40)
+    node 263: read-variable['undefined',v50,v2] (HOST(string-replace-model.js):51:59)
+    node 264: read-variable['matchToUse',v51,v2] (HOST(string-replace-model.js):51:70)
+    ->[block 79] ~>[block 85]
+  block 79:
+    node 265: call[v49,'apply',v50,v51,v46] (HOST(string-replace-model.js):51:40)
+    ->[block 80] ~>[block 85]
+  block 80:
+    node 266: constant["",v47] (HOST(string-replace-model.js):51:84)
+    node 267: +[v46,v47,v45] (HOST(string-replace-model.js):51:40)
+    node 268: write-variable[v45,'replacementSubstring']* (HOST(string-replace-model.js):51:17)
+    ->[block 81] ~>[block 85]
+  block 81:
+    node 269: call[TAJS_newObject,v52] (HOST(string-replace-model.js):52:31)
+    ->[block 82] ~>[block 85]
+  block 82:
+    node 270: write-variable[v52,'replacement']* (HOST(string-replace-model.js):52:17)
+    node 271: read-variable['replacement',v56,v2] (HOST(string-replace-model.js):53:13)
+    node 272: read-variable['startIndex',v55,v2] (HOST(string-replace-model.js):53:38)
+    node 273: write-property[v56,'startIndex',v55] (HOST(string-replace-model.js):53:13)
+    node 274: <variable-non-null-undef>['replacement']* (HOST(string-replace-model.js):53:13)
+    node 275: read-variable['replacement',v58,v2] (HOST(string-replace-model.js):54:13)
+    node 276: read-variable['replacementSubstring',v57,v2] (HOST(string-replace-model.js):54:37)
+    node 277: write-property[v58,'substring',v57] (HOST(string-replace-model.js):54:13)
+    node 278: <variable-non-null-undef>['replacement']* (HOST(string-replace-model.js):54:13)
+    node 279: read-variable['replacement',v60,v2] (HOST(string-replace-model.js):55:13)
+    node 280: read-variable['endIndex',v59,v2] (HOST(string-replace-model.js):55:36)
+    node 281: write-property[v60,'endIndex',v59] (HOST(string-replace-model.js):55:13)
+    node 282: <variable-non-null-undef>['replacement']* (HOST(string-replace-model.js):55:13)
+    node 283: read-variable['replacementSubstrings',v62,-] (HOST(string-replace-model.js):56:13)
+    node 284: read-property[v62,'unshift',-] (HOST(string-replace-model.js):56:13)
+    node 285: <variable-non-null-undef>['replacementSubstrings'] (HOST(string-replace-model.js):56:13)
+    node 286: read-variable['replacement',v63,v2] (HOST(string-replace-model.js):56:43)
+    ->[block 83] ~>[block 85]
+  block 83:
+    node 287: call[v62,'unshift',v63,-]* (HOST(string-replace-model.js):56:13)
+    ->[block 84] ~>[block 85]
+  block 84:
+    node 288: read-variable['j',v64,v2] (HOST(string-replace-model.js):47:45)
+    node 289: +[v64,v65] (HOST(string-replace-model.js):47:45)
+    node 290: constant[1.0,v66] (HOST(string-replace-model.js):47:45)
+    node 291: +[v65,v66,v67] (HOST(string-replace-model.js):47:45)
+    node 292: write-variable[v67,'j']* (HOST(string-replace-model.js):47:45)
+    ->[block 76] ~>[block 85]
+  block 85:
+    node 293: end-loop[v26]* (HOST(string-replace-model.js):47:25)
+    ->[block 100]
+  block 86:
+    node 294: end-loop[v26]* (HOST(string-replace-model.js):47:25)
+    ->[block 87]
+  block 87:
+    node 295: constant[0.0,v68] (HOST(string-replace-model.js):59:22)
+    node 296: write-variable[v68,'k']* (HOST(string-replace-model.js):59:18)
+    ->[block 88]
+  block 88:
+    node 297: read-variable['k',v70,v2] (HOST(string-replace-model.js):59:25)
+    node 298: read-variable['replacementSubstrings',v72,v2] (HOST(string-replace-model.js):59:29)
+    node 299: read-property[v72,'length',v71] (HOST(string-replace-model.js):59:29)
+    node 300: <variable-non-null-undef>['replacementSubstrings'] (HOST(string-replace-model.js):59:29)
+    node 301: <[v70,v71,v69] (HOST(string-replace-model.js):59:25)
+    node 302: begin-loop[v69] (HOST(string-replace-model.js):59:64)
+    ->[block 89] ~>[block 96]
+  block 89:
+    node 303: if[v69](true-block:90,false-block:97)* (HOST(string-replace-model.js):59:25)
+    ->[block 90,block 97] ~>[block 96]
+  block 90:
+    node 304: read-variable['replacementSubstrings',v74,v2] (HOST(string-replace-model.js):60:31)
+    node 305: read-variable['k',v75,v2] (HOST(string-replace-model.js):60:53)
+    node 306: read-property[v74,v75,v73] (HOST(string-replace-model.js):60:31)
+    node 307: <variable-non-null-undef>['replacementSubstrings'] (HOST(string-replace-model.js):60:31)
+    node 308: write-variable[v73,'replacement']* (HOST(string-replace-model.js):60:17)
+    node 309: read-variable['string',v78,-] (HOST(string-replace-model.js):61:26)
+    node 310: read-property[v78,'substring',-] (HOST(string-replace-model.js):61:26)
+    node 311: <variable-non-null-undef>['string'] (HOST(string-replace-model.js):61:26)
+    node 312: constant[0.0,v79] (HOST(string-replace-model.js):61:43)
+    node 313: read-variable['replacement',v81,v2] (HOST(string-replace-model.js):61:46)
+    node 314: read-property[v81,'startIndex',v80] (HOST(string-replace-model.js):61:46)
+    node 315: <variable-non-null-undef>['replacement'] (HOST(string-replace-model.js):61:46)
+    ->[block 91] ~>[block 96]
+  block 91:
+    node 316: call[v78,'substring',v79,v80,v76] (HOST(string-replace-model.js):61:26)
+    ->[block 92] ~>[block 96]
+  block 92:
+    node 317: write-variable[v76,'prefix']* (HOST(string-replace-model.js):61:17)
+    node 318: read-variable['string',v84,-] (HOST(string-replace-model.js):62:26)
+    node 319: read-property[v84,'substring',-] (HOST(string-replace-model.js):62:26)
+    node 320: <variable-non-null-undef>['string'] (HOST(string-replace-model.js):62:26)
+    node 321: read-variable['replacement',v86,v2] (HOST(string-replace-model.js):62:43)
+    node 322: read-property[v86,'endIndex',v85] (HOST(string-replace-model.js):62:43)
+    node 323: <variable-non-null-undef>['replacement'] (HOST(string-replace-model.js):62:43)
+    ->[block 93] ~>[block 96]
+  block 93:
+    node 324: call[v84,'substring',v85,v82] (HOST(string-replace-model.js):62:26)
+    ->[block 94] ~>[block 96]
+  block 94:
+    node 325: write-variable[v82,'suffix']* (HOST(string-replace-model.js):62:17)
+    node 326: read-variable['prefix',v90,v2] (HOST(string-replace-model.js):63:26)
+    node 327: read-variable['replacement',v92,v2] (HOST(string-replace-model.js):63:35)
+    node 328: read-property[v92,'substring',v91] (HOST(string-replace-model.js):63:35)
+    node 329: <variable-non-null-undef>['replacement'] (HOST(string-replace-model.js):63:35)
+    node 330: +[v90,v91,v88] (HOST(string-replace-model.js):63:26)
+    node 331: read-variable['suffix',v89,v2] (HOST(string-replace-model.js):63:59)
+    node 332: +[v88,v89,v87] (HOST(string-replace-model.js):63:26)
+    node 333: write-variable[v87,'result']* (HOST(string-replace-model.js):63:17)
+    node 334: read-variable['result',v93,v2] (HOST(string-replace-model.js):64:22)
+    node 335: write-variable[v93,'string']* (HOST(string-replace-model.js):64:13)
+    ->[block 95] ~>[block 96]
+  block 95:
+    node 336: read-variable['k',v94,v2] (HOST(string-replace-model.js):59:59)
+    node 337: +[v94,v95] (HOST(string-replace-model.js):59:59)
+    node 338: constant[1.0,v96] (HOST(string-replace-model.js):59:59)
+    node 339: +[v95,v96,v97] (HOST(string-replace-model.js):59:59)
+    node 340: write-variable[v97,'k']* (HOST(string-replace-model.js):59:59)
+    ->[block 88] ~>[block 96]
+  block 96:
+    node 341: end-loop[v69]* (HOST(string-replace-model.js):59:25)
+    ->[block 100]
+  block 97:
+    node 342: end-loop[v69]* (HOST(string-replace-model.js):59:25)
+    ->[block 98]
+  block 98:
+    node 343: read-variable['string',v1,v2]* (HOST(string-replace-model.js):66:16)
+    ->[block 99]
+  block 99: [exit-ordinary]
+    node 344: return[v1] (HOST(string-replace-model.js):3:12)
+    ->[]
+  block 100: [exit-exceptional]
+    node 345: exceptional-return (HOST(string-replace-model.js):3:12)
+    ->[]
+
+test/flowgraphbuilder/flowgraph_builder0211.js: [definite] Ordinary program exit is unreachable
 test/flowgraphbuilder/flowgraph_builder0211.js:1:9: [definite] ReferenceError, reading absent variable i
 test/flowgraphbuilder/flowgraph_builder0211.js:1:9: [definite] Unreachable code
 test/flowgraphbuilder/flowgraph_builder0211.js: [maybe] Uncaught exception, constructed at [test/flowgraphbuilder/flowgraph_builder0211.js:1:9]

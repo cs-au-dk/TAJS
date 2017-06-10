@@ -1,3 +1,4 @@
 test/micro/test54.js:1:10: [definite] Dead assignment, property gt is never read
 test/micro/test54.js:1:17: [definite] Dead assignment, property funtimes is never read
+test/micro/test54.js: [definite] Exceptional program exit is unreachable
 test/micro/test54.js:3:1: [info] Abstract object: {funtimes:"goodtimes",[[Prototype]]=[@Object.prototype[native]]}

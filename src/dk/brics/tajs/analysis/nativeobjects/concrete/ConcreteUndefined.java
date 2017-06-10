@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,5 +26,18 @@ public class ConcreteUndefined implements PrimitiveConcreteValue {
     @Override
     public <T> T accept(ConcreteValueVisitor<T> v) {
         return v.visit(this);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return 0;
     }
 }

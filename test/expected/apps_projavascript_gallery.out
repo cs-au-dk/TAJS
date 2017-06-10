@@ -1,146 +1,131 @@
-test/apps/projavascript/gallery/index.html: StartTag at (r12,c5,p282) missing required end tag
-test/apps/projavascript/gallery/index.html: StartTag at (r31,c5,p4118) missing required end tag
-library.js:102:21: [definite] TypeError, call to non-function
-library.js:10:11: [definite] The conditional expression is always true
-library.js:25:11: [definite] The conditional expression is always true
-library.js:40:11: [definite] The conditional expression is always true
-library.js:55:11: [definite] The conditional expression is always true
-library.js:91:10: [definite] The conditional expression is always false
-library.js:102:16: [definite] The conditional expression is always true
-library.js:113:5: [definite] The conditional expression is always false
-library.js:216:43: [definite] The conditional expression is always true
-library.js:10:17: [definite] Reading absent property scrollLeft
-library.js:13:9: [definite] Reading absent property scrollLeft
-library.js:25:17: [definite] Reading absent property scrollTop
-library.js:28:9: [definite] Reading absent property scrollTop
-library.js:91:14: [definite] Reading absent property currentStyle
-library.js:113:10: [definite] Reading absent property filters
-library.js:177:1: [definite] The variable to is never used
-gallery.js:8:13: [maybe] ReferenceError, reading absent variable id
-gallery.js:44:17: [maybe] ReferenceError, reading absent variable id
-gallery.js:78:9: [maybe] ReferenceError, reading absent variable id
-gallery.js:79:9: [maybe] ReferenceError, reading absent variable id
-gallery.js:85:14: [maybe] ReferenceError, reading absent variable id
-gallery.js:89:3: [maybe] TypeError, accessing property of null/undefined
-gallery.js:90:3: [maybe] TypeError, accessing property of null/undefined
-gallery.js:120:13: [maybe] ReferenceError, reading absent variable id
-gallery.js:123:8: [maybe] TypeError, accessing property of null/undefined
-gallery.js:124:5: [maybe] TypeError, call to non-function
-gallery.js:127:3: [maybe] TypeError, call to non-function
-gallery.js:127:20: [maybe] TypeError, accessing property of null/undefined
-gallery.js:131:3: [maybe] ReferenceError, reading absent variable id
-gallery.js:131:3: [maybe] TypeError, accessing property of null/undefined
-gallery.js:131:35: [maybe] TypeError, accessing property of null/undefined
-gallery.js:135:11: [maybe] ReferenceError, reading absent variable id
-gallery.js:139:11: [maybe] ReferenceError, reading absent variable id
-gallery.js:143:11: [maybe] ReferenceError, reading absent variable id
-gallery.js:147:11: [maybe] ReferenceError, reading absent variable id
-gallery.js:150:17: [maybe] ReferenceError, reading absent variable id
-gallery.js:153:3: [maybe] TypeError, accessing property of null/undefined
-gallery.js:186:3: [maybe] TypeError, accessing property of null/undefined
-gallery.js:199:3: [maybe] TypeError, accessing property of null/undefined
-gallery.js:203:3: [maybe] ReferenceError, reading absent variable id
-gallery.js:203:3: [maybe] TypeError, accessing property of null/undefined
-gallery.js:203:3: [maybe] TypeError, non-function event handler
-gallery.js:204:3: [maybe] ReferenceError, reading absent variable id
-gallery.js:204:3: [maybe] TypeError, accessing property of null/undefined
-gallery.js:204:3: [maybe] TypeError, non-function event handler
-gallery.js:218:7: [maybe] TypeError, accessing property of null/undefined
-gallery.js:241:22: [maybe] TypeError, accessing property of null/undefined
-gallery.js:253:18: [maybe] TypeError, accessing property of null/undefined
-gallery.js:259:5: [maybe] TypeError, accessing property of null/undefined
-library.js:13:9: [maybe] TypeError, accessing property of null/undefined
-library.js:28:9: [maybe] TypeError, accessing property of null/undefined
-library.js:43:9: [maybe] TypeError, accessing property of null/undefined
-library.js:58:9: [maybe] TypeError, accessing property of null/undefined
-library.js:76:5: [maybe] TypeError, accessing property of null/undefined
-library.js:82:5: [maybe] TypeError, accessing property of null/undefined
-library.js:87:9: [maybe] TypeError, accessing property of null/undefined
-library.js:88:16: [maybe] TypeError, accessing property of null/undefined
-library.js:95:38: [maybe] TypeError, accessing property of null/undefined
-library.js:101:17: [maybe] TypeError, accessing property of null/undefined
-library.js:113:10: [maybe] TypeError, accessing property of null/undefined
-library.js:118:9: [maybe] TypeError, accessing property of null/undefined
-library.js:127:9: [maybe] TypeError, accessing property of null/undefined
-library.js:130:5: [maybe] TypeError, accessing property of null/undefined
-library.js:137:5: [maybe] TypeError, accessing property of null/undefined
-library.js:143:12: [maybe] TypeError, accessing property of null/undefined
-library.js:148:12: [maybe] TypeError, accessing property of null/undefined
-library.js:219:22: [maybe] TypeError, accessing property of null/undefined
-library.js:227:16: [maybe] TypeError, accessing property of null/undefined
-library.js:228:23: [maybe] TypeError, accessing property of null/undefined
-library.js:234:16: [maybe] TypeError, accessing property of null/undefined
-library.js:235:23: [maybe] TypeError, accessing property of null/undefined
-gallery.js:89:3: [maybe] Reading absent property style
-gallery.js:90:3: [maybe] Reading absent property style
-gallery.js:123:8: [maybe] Reading absent property firstChild
-gallery.js:124:5: [maybe] Reading absent property removeChild
-gallery.js:124:22: [maybe] Reading absent property firstChild
-gallery.js:127:3: [maybe] Reading absent property appendChild
-gallery.js:127:20: [maybe] Reading absent property firstChild
-gallery.js:131:35: [maybe] Reading absent property alt
-gallery.js:131:35: [maybe] Reading absent property firstChild
-gallery.js:153:23: [maybe] Reading absent property className
-gallery.js:186:3: [maybe] Reading absent property body
-gallery.js:199:3: [maybe] Reading absent property body
-gallery.js:253:18: [maybe] Reading 'this' yields the global object
-gallery.js:253:18: [maybe] Reading absent property nextSibling
-gallery.js:253:18: [maybe] Reading absent property parentNode
-gallery.js:259:5: [maybe] Reading absent property parentNode
-library.js:13:9: [maybe] Reading absent property body
-library.js:28:9: [maybe] Reading absent property body
-library.js:43:9: [maybe] Reading absent property body
-library.js:58:9: [maybe] Reading absent property body
-library.js:76:5: [maybe] Reading absent property style
-library.js:82:5: [maybe] Reading absent property style
-library.js:87:9: [maybe] Reading absent property style
-library.js:88:16: [maybe] Reading absent property style
-library.js:95:14: [maybe] Reading absent property defaultView
-library.js:95:38: [maybe] Reading absent property defaultView
-library.js:101:17: [maybe] Reading absent property defaultView
-library.js:102:21: [maybe] Reading absent property getPropertyValue
-library.js:118:9: [maybe] Reading absent property style
-library.js:130:5: [maybe] Reading absent property style
-library.js:137:5: [maybe] Reading absent property style
-library.js:137:26: [maybe] Reading absent property $oldDisplay
-library.js:143:12: [maybe] Reading absent property body
-library.js:143:12: [maybe] Reading absent property scrollHeight
-library.js:148:12: [maybe] Reading absent property body
-library.js:148:12: [maybe] Reading absent property scrollWidth
-library.js:219:22: [maybe] Reading absent property className
-library.js:227:16: [maybe] Reading absent property nextSibling
-library.js:234:16: [maybe] Reading absent property previousSibling
-gallery.js:18:11: [maybe] Conversion to number yields NaN
-gallery.js:18:25: [maybe] Conversion from string to number yields NaN
-gallery.js:24:11: [maybe] Conversion to number yields NaN
-gallery.js:24:25: [maybe] Conversion from string to number yields NaN
-gallery.js:49:15: [maybe] Reading absent property (computed name)
-gallery.js:89:23: [maybe] Converting undefined to string
-gallery.js:90:22: [maybe] Converting undefined to string
-gallery.js:212:26: [maybe] Reading absent property (computed name)
-gallery.js:218:7: [maybe] Reading absent property (computed name)
-gallery.js:241:22: [maybe] Reading absent property (computed name)
-gallery.js:259:5: [maybe] Reading absent property (computed name)
-gallery.js:259:40: [maybe] Reading absent property (computed name)
-library.js:64:12: [maybe] Converting null to string
-library.js:64:12: [maybe] Converting object to string
-library.js:64:12: [maybe] Converting undefined to string
-library.js:70:12: [maybe] Converting null to string
-library.js:70:12: [maybe] Converting object to string
-library.js:70:12: [maybe] Converting undefined to string
-library.js:87:9: [maybe] Reading absent property (computed name)
-library.js:88:16: [maybe] Reading absent property (computed name)
-library.js:97:16: [maybe] Converting object to string
-library.js:97:16: [maybe] Converting primitive string to object
-library.js:98:16: [maybe] Converting object to string
-library.js:98:16: [maybe] Converting primitive string to object
-library.js:126:10: [maybe] Conversion from string to number yields NaN
-library.js:126:10: [maybe] The variable curDisplay has values with different types
-library.js:127:28: [maybe] The variable curDisplay has values with different types
-library.js:219:14: [maybe] Converting undefined to string
-library.js:219:22: [maybe] Reading absent property (computed name)
-library.js:219:48: [maybe] Reading absent property (computed name)
-test/apps/projavascript/gallery/index.html: [maybe] Uncaught exception, constructed at [gallery.js:8:13, gallery.js:44:17, gallery.js:78:9, gallery.js:79:9, gallery.js:85:14, gallery.js:89:3, gallery.js:90:3, gallery.js:120:13, gallery.js:123:8, gallery.js:124:5, gallery.js:127:3, gallery.js:127:20, gallery.js:131:3, gallery.js:131:35, gallery.js:135:11, gallery.js:139:11, gallery.js:143:11, gallery.js:147:11, gallery.js:150:17, gallery.js:153:3, gallery.js:186:3, gallery.js:199:3, gallery.js:203:3, gallery.js:204:3, gallery.js:218:7, gallery.js:241:22, gallery.js:253:18, gallery.js:259:5, library.js:13:9, library.js:28:9, library.js:43:9, library.js:58:9, library.js:76:5, library.js:82:5, library.js:87:9, library.js:88:16, library.js:95:38, library.js:101:17, library.js:102:21, library.js:113:10, library.js:118:9, library.js:127:9, library.js:130:5, library.js:137:5, library.js:143:12, library.js:148:12, library.js:219:22, library.js:227:16, library.js:228:23, library.js:234:16, library.js:235:23]
-gallery.js:253:18: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-library.js:87:9: [info] Reading from unknown property that may cause loss of precision
-library.js:88:16: [info] Reading from unknown property that may cause loss of precision
+test/apps/projavascript/gallery/index.html:12:5: StartTag missing required end tag
+test/apps/projavascript/gallery/index.html:31:5: StartTag missing required end tag
+test/apps/projavascript/gallery/library.js:10:11: [definite] The conditional expression is always true
+test/apps/projavascript/gallery/library.js:25:11: [definite] The conditional expression is always true
+test/apps/projavascript/gallery/library.js:40:11: [definite] The conditional expression is always true
+test/apps/projavascript/gallery/library.js:55:11: [definite] The conditional expression is always true
+test/apps/projavascript/gallery/library.js:91:10: [definite] The conditional expression is always false
+test/apps/projavascript/gallery/library.js:95:10: [definite] The conditional expression is always true
+test/apps/projavascript/gallery/library.js:102:16: [definite] The conditional expression is always true
+test/apps/projavascript/gallery/library.js:113:5: [definite] The conditional expression is always false
+test/apps/projavascript/gallery/library.js:216:43: [definite] The conditional expression is always true
+test/apps/projavascript/gallery/library.js:91:14: [definite] Reading absent property currentStyle of host object
+test/apps/projavascript/gallery/library.js:113:10: [definite] Reading absent property filters of host object
+test/apps/projavascript/gallery/library.js:177:1: [definite] The variable to is never used
+test/apps/projavascript/gallery/gallery.js:8:13: [maybe] ReferenceError, reading absent variable id
+test/apps/projavascript/gallery/gallery.js:44:17: [maybe] ReferenceError, reading absent variable id
+test/apps/projavascript/gallery/gallery.js:78:9: [maybe] ReferenceError, reading absent variable id
+test/apps/projavascript/gallery/gallery.js:79:9: [maybe] ReferenceError, reading absent variable id
+test/apps/projavascript/gallery/gallery.js:85:14: [maybe] ReferenceError, reading absent variable id
+test/apps/projavascript/gallery/gallery.js:89:3: [maybe] TypeError, accessing property of null/undefined
+test/apps/projavascript/gallery/gallery.js:90:3: [maybe] TypeError, accessing property of null/undefined
+test/apps/projavascript/gallery/gallery.js:120:13: [maybe] ReferenceError, reading absent variable id
+test/apps/projavascript/gallery/gallery.js:123:8: [maybe] TypeError, accessing property of null/undefined
+test/apps/projavascript/gallery/gallery.js:124:5: [maybe] TypeError, call to non-function
+test/apps/projavascript/gallery/gallery.js:127:3: [maybe] TypeError, call to non-function
+test/apps/projavascript/gallery/gallery.js:127:20: [maybe] TypeError, accessing property of null/undefined
+test/apps/projavascript/gallery/gallery.js:131:3: [maybe] ReferenceError, reading absent variable id
+test/apps/projavascript/gallery/gallery.js:131:3: [maybe] TypeError, accessing property of null/undefined
+test/apps/projavascript/gallery/gallery.js:131:35: [maybe] TypeError, accessing property of null/undefined
+test/apps/projavascript/gallery/gallery.js:135:11: [maybe] ReferenceError, reading absent variable id
+test/apps/projavascript/gallery/gallery.js:139:11: [maybe] ReferenceError, reading absent variable id
+test/apps/projavascript/gallery/gallery.js:143:11: [maybe] ReferenceError, reading absent variable id
+test/apps/projavascript/gallery/gallery.js:147:11: [maybe] ReferenceError, reading absent variable id
+test/apps/projavascript/gallery/gallery.js:150:17: [maybe] ReferenceError, reading absent variable id
+test/apps/projavascript/gallery/gallery.js:153:3: [maybe] TypeError, accessing property of null/undefined
+test/apps/projavascript/gallery/gallery.js:186:3: [maybe] TypeError, accessing property of null/undefined
+test/apps/projavascript/gallery/gallery.js:203:3: [maybe] ReferenceError, reading absent variable id
+test/apps/projavascript/gallery/gallery.js:203:3: [maybe] TypeError, accessing property of null/undefined
+test/apps/projavascript/gallery/gallery.js:204:3: [maybe] ReferenceError, reading absent variable id
+test/apps/projavascript/gallery/gallery.js:204:3: [maybe] TypeError, accessing property of null/undefined
+test/apps/projavascript/gallery/gallery.js:218:7: [maybe] TypeError, accessing property of null/undefined
+test/apps/projavascript/gallery/gallery.js:241:22: [maybe] TypeError, accessing property of null/undefined
+test/apps/projavascript/gallery/gallery.js:253:18: [maybe] TypeError, accessing property of null/undefined
+test/apps/projavascript/gallery/gallery.js:259:5: [maybe] TypeError, accessing property of null/undefined
+test/apps/projavascript/gallery/library.js:13:9: [maybe] TypeError, accessing property of null/undefined
+test/apps/projavascript/gallery/library.js:28:9: [maybe] TypeError, accessing property of null/undefined
+test/apps/projavascript/gallery/library.js:43:9: [maybe] TypeError, accessing property of null/undefined
+test/apps/projavascript/gallery/library.js:58:9: [maybe] TypeError, accessing property of null/undefined
+test/apps/projavascript/gallery/library.js:76:5: [maybe] TypeError, accessing property of null/undefined
+test/apps/projavascript/gallery/library.js:82:5: [maybe] TypeError, accessing property of null/undefined
+test/apps/projavascript/gallery/library.js:87:9: [maybe] TypeError, accessing property of null/undefined
+test/apps/projavascript/gallery/library.js:88:16: [maybe] TypeError, accessing property of null/undefined
+test/apps/projavascript/gallery/library.js:95:38: [maybe] TypeError, accessing property of null/undefined
+test/apps/projavascript/gallery/library.js:102:21: [maybe] TypeError, call to non-function
+test/apps/projavascript/gallery/library.js:113:10: [maybe] TypeError, accessing property of null/undefined
+test/apps/projavascript/gallery/library.js:118:9: [maybe] TypeError, accessing property of null/undefined
+test/apps/projavascript/gallery/library.js:127:9: [maybe] TypeError, accessing property of null/undefined
+test/apps/projavascript/gallery/library.js:130:5: [maybe] TypeError, accessing property of null/undefined
+test/apps/projavascript/gallery/library.js:137:5: [maybe] TypeError, accessing property of null/undefined
+test/apps/projavascript/gallery/library.js:143:12: [maybe] TypeError, accessing property of null/undefined
+test/apps/projavascript/gallery/library.js:148:12: [maybe] TypeError, accessing property of null/undefined
+test/apps/projavascript/gallery/library.js:219:22: [maybe] TypeError, accessing property of null/undefined
+test/apps/projavascript/gallery/library.js:227:16: [maybe] TypeError, accessing property of null/undefined
+test/apps/projavascript/gallery/library.js:228:23: [maybe] TypeError, accessing property of null/undefined
+test/apps/projavascript/gallery/library.js:234:16: [maybe] TypeError, accessing property of null/undefined
+test/apps/projavascript/gallery/library.js:235:23: [maybe] TypeError, accessing property of null/undefined
+test/apps/projavascript/gallery/gallery.js:89:3: [maybe] Reading absent property style of host object
+test/apps/projavascript/gallery/gallery.js:90:3: [maybe] Reading absent property style of host object
+test/apps/projavascript/gallery/gallery.js:123:8: [maybe] Reading absent property firstChild of host object
+test/apps/projavascript/gallery/gallery.js:124:5: [maybe] Reading absent property removeChild of host object
+test/apps/projavascript/gallery/gallery.js:124:22: [maybe] Reading absent property firstChild of host object
+test/apps/projavascript/gallery/gallery.js:127:3: [maybe] Reading absent property appendChild of host object
+test/apps/projavascript/gallery/gallery.js:127:20: [maybe] Reading absent property firstChild of host object
+test/apps/projavascript/gallery/gallery.js:131:35: [maybe] Reading absent property alt of host object
+test/apps/projavascript/gallery/gallery.js:131:35: [maybe] Reading absent property firstChild of host object
+test/apps/projavascript/gallery/gallery.js:153:23: [maybe] Reading absent property className of host object
+test/apps/projavascript/gallery/gallery.js:253:18: [maybe] Reading 'this' yields the global object
+test/apps/projavascript/gallery/gallery.js:253:18: [maybe] Reading absent property nextSibling of host object
+test/apps/projavascript/gallery/gallery.js:253:18: [maybe] Reading absent property parentNode of host object
+test/apps/projavascript/gallery/library.js:10:17: [maybe] Reading absent property scrollLeft of host object
+test/apps/projavascript/gallery/library.js:13:9: [maybe] Reading absent property scrollLeft of host object
+test/apps/projavascript/gallery/library.js:25:17: [maybe] Reading absent property scrollTop of host object
+test/apps/projavascript/gallery/library.js:28:9: [maybe] Reading absent property scrollTop of host object
+test/apps/projavascript/gallery/library.js:76:5: [maybe] Reading absent property style of host object
+test/apps/projavascript/gallery/library.js:82:5: [maybe] Reading absent property style of host object
+test/apps/projavascript/gallery/library.js:87:9: [maybe] Reading absent property style of host object
+test/apps/projavascript/gallery/library.js:88:16: [maybe] Reading absent property style of host object
+test/apps/projavascript/gallery/library.js:102:21: [maybe] Reading absent property getPropertyValue of host object
+test/apps/projavascript/gallery/library.js:118:9: [maybe] Reading absent property style of host object
+test/apps/projavascript/gallery/library.js:130:5: [maybe] Reading absent property style of host object
+test/apps/projavascript/gallery/library.js:137:5: [maybe] Reading absent property style of host object
+test/apps/projavascript/gallery/library.js:137:26: [maybe] Reading absent property $oldDisplay of host object
+test/apps/projavascript/gallery/library.js:143:12: [maybe] Reading absent property scrollHeight of host object
+test/apps/projavascript/gallery/library.js:148:12: [maybe] Reading absent property scrollWidth of host object
+test/apps/projavascript/gallery/library.js:219:22: [maybe] Reading absent property className of host object
+test/apps/projavascript/gallery/library.js:227:16: [maybe] Reading absent property nextSibling of host object
+test/apps/projavascript/gallery/library.js:234:16: [maybe] Reading absent property previousSibling of host object
+test/apps/projavascript/gallery/gallery.js:18:11: [maybe] Conversion to number yields NaN
+test/apps/projavascript/gallery/gallery.js:18:25: [maybe] Conversion from string to number yields NaN
+test/apps/projavascript/gallery/gallery.js:24:11: [maybe] Conversion to number yields NaN
+test/apps/projavascript/gallery/gallery.js:24:25: [maybe] Conversion from string to number yields NaN
+test/apps/projavascript/gallery/gallery.js:49:15: [maybe] Reading absent property (computed name)
+test/apps/projavascript/gallery/gallery.js:89:23: [maybe] Converting undefined to string
+test/apps/projavascript/gallery/gallery.js:90:22: [maybe] Converting undefined to string
+test/apps/projavascript/gallery/gallery.js:131:3: [maybe] Converting undefined to string
+test/apps/projavascript/gallery/gallery.js:212:26: [maybe] Reading absent property (computed name)
+test/apps/projavascript/gallery/gallery.js:218:7: [maybe] Reading absent property (computed name)
+test/apps/projavascript/gallery/gallery.js:241:22: [maybe] Reading absent property (computed name)
+test/apps/projavascript/gallery/gallery.js:259:5: [maybe] Reading absent property (computed name)
+test/apps/projavascript/gallery/gallery.js:259:40: [maybe] Reading absent property (computed name)
+test/apps/projavascript/gallery/index.html: [maybe] Uncaught exception, constructed at [test/apps/projavascript/gallery/gallery.js:8:13, test/apps/projavascript/gallery/gallery.js:44:17, test/apps/projavascript/gallery/gallery.js:78:9, test/apps/projavascript/gallery/gallery.js:79:9, test/apps/projavascript/gallery/gallery.js:85:14, test/apps/projavascript/gallery/gallery.js:89:3, test/apps/projavascript/gallery/gallery.js:90:3, test/apps/projavascript/gallery/gallery.js:120:13, test/apps/projavascript/gallery/gallery.js:123:8, test/apps/projavascript/gallery/gallery.js:124:5, test/apps/projavascript/gallery/gallery.js:127:3, test/apps/projavascript/gallery/gallery.js:127:20, test/apps/projavascript/gallery/gallery.js:131:3, test/apps/projavascript/gallery/gallery.js:131:35, test/apps/projavascript/gallery/gallery.js:135:11, test/apps/projavascript/gallery/gallery.js:139:11, test/apps/projavascript/gallery/gallery.js:143:11, test/apps/projavascript/gallery/gallery.js:147:11, test/apps/projavascript/gallery/gallery.js:150:17, test/apps/projavascript/gallery/gallery.js:153:3, test/apps/projavascript/gallery/gallery.js:186:3, test/apps/projavascript/gallery/gallery.js:203:3, test/apps/projavascript/gallery/gallery.js:204:3, test/apps/projavascript/gallery/gallery.js:218:7, test/apps/projavascript/gallery/gallery.js:241:22, test/apps/projavascript/gallery/gallery.js:253:18, test/apps/projavascript/gallery/gallery.js:259:5, test/apps/projavascript/gallery/library.js:13:9, test/apps/projavascript/gallery/library.js:28:9, test/apps/projavascript/gallery/library.js:43:9, test/apps/projavascript/gallery/library.js:58:9, test/apps/projavascript/gallery/library.js:76:5, test/apps/projavascript/gallery/library.js:82:5, test/apps/projavascript/gallery/library.js:87:9, test/apps/projavascript/gallery/library.js:88:16, test/apps/projavascript/gallery/library.js:95:38, test/apps/projavascript/gallery/library.js:102:21, test/apps/projavascript/gallery/library.js:113:10, test/apps/projavascript/gallery/library.js:118:9, test/apps/projavascript/gallery/library.js:127:9, test/apps/projavascript/gallery/library.js:130:5, test/apps/projavascript/gallery/library.js:137:5, test/apps/projavascript/gallery/library.js:143:12, test/apps/projavascript/gallery/library.js:148:12, test/apps/projavascript/gallery/library.js:219:22, test/apps/projavascript/gallery/library.js:227:16, test/apps/projavascript/gallery/library.js:228:23, test/apps/projavascript/gallery/library.js:234:16, test/apps/projavascript/gallery/library.js:235:23]
+test/apps/projavascript/gallery/library.js:64:12: [maybe] Converting null to string
+test/apps/projavascript/gallery/library.js:64:12: [maybe] Converting object to string
+test/apps/projavascript/gallery/library.js:64:12: [maybe] Converting undefined to string
+test/apps/projavascript/gallery/library.js:70:12: [maybe] Converting null to string
+test/apps/projavascript/gallery/library.js:70:12: [maybe] Converting object to string
+test/apps/projavascript/gallery/library.js:70:12: [maybe] Converting undefined to string
+test/apps/projavascript/gallery/library.js:87:9: [maybe] Reading absent property (computed name)
+test/apps/projavascript/gallery/library.js:88:16: [maybe] Reading absent property (computed name)
+test/apps/projavascript/gallery/library.js:97:16: [maybe] Converting primitive string to object
+test/apps/projavascript/gallery/library.js:98:16: [maybe] Converting object to string
+test/apps/projavascript/gallery/library.js:98:16: [maybe] Converting primitive string to object
+test/apps/projavascript/gallery/library.js:126:10: [maybe] Conversion from string to number yields NaN
+test/apps/projavascript/gallery/library.js:126:10: [maybe] The variable curDisplay has values with different types
+test/apps/projavascript/gallery/library.js:127:28: [maybe] The variable curDisplay has values with different types
+test/apps/projavascript/gallery/library.js:219:14: [maybe] Converting undefined to string
+test/apps/projavascript/gallery/library.js:219:22: [maybe] Reading absent property (computed name)
+test/apps/projavascript/gallery/library.js:219:48: [maybe] Reading absent property (computed name)
+test/apps/projavascript/gallery/gallery.js:253:18: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test/apps/projavascript/gallery/library.js:87:9: [info] Reading from unknown property that may cause loss of precision
+test/apps/projavascript/gallery/library.js:88:16: [info] Reading from unknown property that may cause loss of precision

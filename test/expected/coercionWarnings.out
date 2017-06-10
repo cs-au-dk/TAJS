@@ -1,4 +1,5 @@
 out/temp-sources/TestMicro.coercionWarnings.js:1:1: [definite] Too few parameters to function String.prototype.charAt
+out/temp-sources/TestMicro.coercionWarnings.js: [definite] Exceptional program exit is unreachable
 out/temp-sources/TestMicro.coercionWarnings.js:1:1: [maybe] Conversion to number yields NaN
 out/temp-sources/TestMicro.coercionWarnings.js:1:1: [maybe] Converting object to string
 out/temp-sources/TestMicro.coercionWarnings.js:1:1: [maybe] Converting primitive string to object

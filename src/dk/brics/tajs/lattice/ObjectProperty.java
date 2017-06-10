@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -140,7 +140,7 @@ public class ObjectProperty {
     /**
      * Returns the kind.
      */
-    public Property.Kind getKind() { // FIXME: inline all calls
+    public Property.Kind getKind() {
         return property.getKind();
     }
 
@@ -154,7 +154,7 @@ public class ObjectProperty {
     /**
      * Returns the property name (for ordinary properties).
      */
-    public String getPropertyName() {// FIXME: inline all calls
+    public String getPropertyName() {
         return property.getPropertyName();
     }
 

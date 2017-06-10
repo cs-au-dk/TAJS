@@ -5,39 +5,69 @@ test/1k2012love/1284.js:8:13: [definite] The variable e is never used
 test/1k2012love/1284.js:14:3: [definite] The variable e is never used
 test/1k2012love/1284.js:95:10: [definite] The variable d is never used
 test/1k2012love/1284.js:95:10: [definite] The variable e is never used
-test/1k2012love/shim.js:6:5: [definite] The variable b is never used
+test/1k2012love/1284.js:9:15: [maybe] ReferenceError, reading absent variable w
+test/1k2012love/1284.js:10:15: [maybe] ReferenceError, reading absent variable h
 test/1k2012love/1284.js:20:5: [maybe] TypeError, call to non-function
+test/1k2012love/1284.js:23:38: [maybe] ReferenceError, reading absent variable W
+test/1k2012love/1284.js:23:49: [maybe] ReferenceError, reading absent variable W
+test/1k2012love/1284.js:23:61: [maybe] ReferenceError, reading absent variable W
+test/1k2012love/1284.js:23:73: [maybe] ReferenceError, reading absent variable W
+test/1k2012love/1284.js:60:5: [maybe] ReferenceError, reading absent variable L
+test/1k2012love/1284.js:60:7: [maybe] ReferenceError, reading absent variable s
+test/1k2012love/1284.js:60:9: [maybe] ReferenceError, reading absent variable L
+test/1k2012love/1284.js:60:11: [maybe] ReferenceError, reading absent variable v
+test/1k2012love/1284.js:60:13: [maybe] ReferenceError, reading absent variable l
+test/1k2012love/1284.js:62:5: [maybe] ReferenceError, reading absent variable L
+test/1k2012love/1284.js:62:7: [maybe] ReferenceError, reading absent variable L
+test/1k2012love/1284.js:62:9: [maybe] ReferenceError, reading absent variable n
+test/1k2012love/1284.js:62:18: [maybe] ReferenceError, reading absent variable L
+test/1k2012love/1284.js:62:20: [maybe] ReferenceError, reading absent variable n
+test/1k2012love/1284.js:62:22: [maybe] ReferenceError, reading absent variable v
+test/1k2012love/1284.js:64:5: [maybe] ReferenceError, reading absent variable L
+test/1k2012love/1284.js:64:7: [maybe] ReferenceError, reading absent variable v
+test/1k2012love/1284.js:64:9: [maybe] ReferenceError, reading absent variable L
+test/1k2012love/1284.js:64:11: [maybe] ReferenceError, reading absent variable L
+test/1k2012love/1284.js:64:13: [maybe] ReferenceError, reading absent variable l
+test/1k2012love/1284.js:64:22: [maybe] ReferenceError, reading absent variable v
+test/1k2012love/1284.js:67:3: [maybe] ReferenceError, reading absent variable a
+test/1k2012love/1284.js:68:18: [maybe] ReferenceError, reading absent variable w
+test/1k2012love/1284.js:68:20: [maybe] ReferenceError, reading absent variable h
 test/1k2012love/1284.js:76:7: [maybe] ReferenceError, reading absent variable t
 test/1k2012love/1284.js:78:7: [maybe] ReferenceError, reading absent variable t
+test/1k2012love/1284.js:83:9: [maybe] ReferenceError, reading absent variable S
 test/1k2012love/1284.js:83:11: [maybe] ReferenceError, reading absent variable t
+test/1k2012love/1284.js:84:9: [maybe] ReferenceError, reading absent variable S
 test/1k2012love/1284.js:84:11: [maybe] ReferenceError, reading absent variable t
+test/1k2012love/1284.js:86:21: [maybe] ReferenceError, reading absent variable W
+test/1k2012love/1284.js:86:38: [maybe] ReferenceError, reading absent variable W
+test/1k2012love/1284.js:88:9: [maybe] ReferenceError, reading absent variable M
 test/1k2012love/1284.js:89:7: [maybe] RangeError, assigning invalid value to array 'length' property
+test/1k2012love/1284.js:89:18: [maybe] ReferenceError, reading absent variable w
+test/1k2012love/1284.js:89:26: [maybe] ReferenceError, reading absent variable h
 test/1k2012love/1284.js:95:35: [maybe] TypeError, accessing property of null/undefined
 test/1k2012love/1284.js:95:40: [maybe] TypeError, accessing property of null/undefined
 test/1k2012love/1284.js:98:7: [maybe] ReferenceError, reading absent variable t
 test/1k2012love/1284.js:98:16: [maybe] TypeError, accessing property of null/undefined
-test/1k2012love/1284.js:112:5: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.moveTo
+test/1k2012love/1284.js:104:7: [maybe] ReferenceError, reading absent variable S
+test/1k2012love/1284.js:104:32: [maybe] ReferenceError, reading absent variable X
+test/1k2012love/1284.js:104:34: [maybe] ReferenceError, reading absent variable X
+test/1k2012love/1284.js:104:36: [maybe] ReferenceError, reading absent variable Y
+test/1k2012love/1284.js:104:38: [maybe] ReferenceError, reading absent variable Y
+test/1k2012love/1284.js:104:45: [maybe] ReferenceError, reading absent variable M
+test/1k2012love/1284.js:104:53: [maybe] ReferenceError, reading absent variable S
+test/1k2012love/1284.js:104:66: [maybe] ReferenceError, reading absent variable X
+test/1k2012love/1284.js:104:68: [maybe] ReferenceError, reading absent variable Y
 test/1k2012love/1284.js:112:5: [maybe] TypeError, invalid arguments to 'apply'
-test/1k2012love/1284.js:113:5: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.lineTo
 test/1k2012love/1284.js:113:5: [maybe] TypeError, invalid arguments to 'apply'
-test/1k2012love/1284.js:114:5: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.lineTo
 test/1k2012love/1284.js:114:5: [maybe] TypeError, invalid arguments to 'apply'
-test/1k2012love/1284.js:115:5: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.lineTo
 test/1k2012love/1284.js:115:5: [maybe] TypeError, invalid arguments to 'apply'
-test/1k2012love/shim.js:8:9: [maybe] TypeError, accessing property of null/undefined
-test/1k2012love/shim.js:8:9: [maybe] TypeError, call to non-function
-test/1k2012love/shim.js:9:1: [maybe] TypeError, accessing property of null/undefined
-test/1k2012love/shim.js:6:9: [maybe] Reading absent property body
-test/1k2012love/shim.js:8:9: [maybe] Reading absent property getContext
-test/1k2012love/shim.js:9:1: [maybe] Reading absent property body
+test/1k2012love/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1284.js:20:5: [maybe] Reading absent property slice
+test/1k2012love/1284.js: [maybe] Uncaught exception, constructed at [test/1k2012love/1284.js:9:15, test/1k2012love/1284.js:10:15, test/1k2012love/1284.js:20:5, test/1k2012love/1284.js:23:7, test/1k2012love/1284.js:23:38, test/1k2012love/1284.js:23:49, test/1k2012love/1284.js:23:61, test/1k2012love/1284.js:23:73, test/1k2012love/1284.js:47:5, test/1k2012love/1284.js:60:5, test/1k2012love/1284.js:60:7, test/1k2012love/1284.js:60:9, test/1k2012love/1284.js:60:11, test/1k2012love/1284.js:60:13, test/1k2012love/1284.js:62:5, test/1k2012love/1284.js:62:7, test/1k2012love/1284.js:62:9, test/1k2012love/1284.js:62:18, test/1k2012love/1284.js:62:20, test/1k2012love/1284.js:62:22, test/1k2012love/1284.js:64:5, test/1k2012love/1284.js:64:7, test/1k2012love/1284.js:64:9, test/1k2012love/1284.js:64:11, test/1k2012love/1284.js:64:13, test/1k2012love/1284.js:64:22, test/1k2012love/1284.js:67:3, test/1k2012love/1284.js:68:18, test/1k2012love/1284.js:68:20, test/1k2012love/1284.js:76:7, test/1k2012love/1284.js:78:7, test/1k2012love/1284.js:83:9, test/1k2012love/1284.js:83:11, test/1k2012love/1284.js:84:9, test/1k2012love/1284.js:84:11, test/1k2012love/1284.js:86:9, test/1k2012love/1284.js:86:21, test/1k2012love/1284.js:86:38, test/1k2012love/1284.js:88:9, test/1k2012love/1284.js:89:7, test/1k2012love/1284.js:89:18, test/1k2012love/1284.js:89:26, test/1k2012love/1284.js:95:35, test/1k2012love/1284.js:95:40, test/1k2012love/1284.js:98:7, test/1k2012love/1284.js:98:16, test/1k2012love/1284.js:104:7, test/1k2012love/1284.js:104:32, test/1k2012love/1284.js:104:34, test/1k2012love/1284.js:104:36, test/1k2012love/1284.js:104:38, test/1k2012love/1284.js:104:45, test/1k2012love/1284.js:104:53, test/1k2012love/1284.js:104:66, test/1k2012love/1284.js:104:68, test/1k2012love/1284.js:112:5, test/1k2012love/1284.js:113:5, test/1k2012love/1284.js:114:5, test/1k2012love/1284.js:115:5, test/1k2012love/shim.js:9:5]
 test/1k2012love/1284.js:15:10: [maybe] Reading absent property (computed name)
 test/1k2012love/1284.js:23:7: [maybe] Conversion to number yields NaN
 test/1k2012love/1284.js:23:7: [maybe] Reading absent property (computed name)
 test/1k2012love/1284.js:23:18: [maybe] Conversion to number yields NaN
-test/1k2012love/1284.js:23:25: [maybe] Conversion to number yields NaN
-test/1k2012love/1284.js:23:25: [maybe] Conversion to number yields NaN
-test/1k2012love/1284.js:23:25: [maybe] Conversion to number yields NaN
-test/1k2012love/1284.js:23:25: [maybe] Conversion to number yields NaN
 test/1k2012love/1284.js:23:25: [maybe] Conversion to number yields NaN
 test/1k2012love/1284.js:23:28: [maybe] Reading absent property (computed name)
 test/1k2012love/1284.js:23:84: [maybe] Reading absent property (computed name)
@@ -53,13 +83,11 @@ test/1k2012love/1284.js:101:19: [maybe] Reading absent property (computed name)
 test/1k2012love/1284.js:101:24: [maybe] Reading absent property (computed name)
 test/1k2012love/1284.js:106:42: [maybe] Conversion to number yields NaN
 test/1k2012love/1284.js:106:46: [maybe] Reading absent property (computed name)
-test/1k2012love/1284.js:112:5: [maybe] Conversion to number yields NaN
+test/1k2012love/1284.js:112:5: [maybe] Converting primitive number to object
 test/1k2012love/1284.js:112:22: [maybe] Reading absent property (computed name)
-test/1k2012love/1284.js:113:5: [maybe] Conversion to number yields NaN
+test/1k2012love/1284.js:113:5: [maybe] Converting primitive number to object
 test/1k2012love/1284.js:113:22: [maybe] Reading absent property (computed name)
-test/1k2012love/1284.js:114:5: [maybe] Conversion to number yields NaN
+test/1k2012love/1284.js:114:5: [maybe] Converting primitive number to object
 test/1k2012love/1284.js:114:22: [maybe] Reading absent property (computed name)
-test/1k2012love/1284.js:115:5: [maybe] Conversion to number yields NaN
+test/1k2012love/1284.js:115:5: [maybe] Converting primitive number to object
 test/1k2012love/1284.js:115:22: [maybe] Reading absent property (computed name)
-test/1k2012love/shim.js:7:9: [maybe] Reading absent property (computed name)
-test/1k2012love/shim.js,test/1k2012love/1284.js: [maybe] Uncaught exception, constructed at [test/1k2012love/1284.js:20:5, test/1k2012love/1284.js:23:7, test/1k2012love/1284.js:47:5, test/1k2012love/1284.js:76:7, test/1k2012love/1284.js:78:7, test/1k2012love/1284.js:83:11, test/1k2012love/1284.js:84:11, test/1k2012love/1284.js:86:9, test/1k2012love/1284.js:89:7, test/1k2012love/1284.js:95:35, test/1k2012love/1284.js:95:40, test/1k2012love/1284.js:98:7, test/1k2012love/1284.js:98:16, test/1k2012love/1284.js:112:5, test/1k2012love/1284.js:113:5, test/1k2012love/1284.js:114:5, test/1k2012love/1284.js:115:5, test/1k2012love/shim.js:8:9, test/1k2012love/shim.js:9:1]

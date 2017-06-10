@@ -35,4 +35,4 @@ TAJS_assert(TAJS_conversionToPrimitive(bb, "STR") === "false");
 var bn = Math.random() ? nn : bb;
 TAJS_assert(TAJS_conversionToPrimitive(bn), 'isMaybeSingleNum||isMaybeFalseButNotTrue');
 TAJS_assert(TAJS_conversionToPrimitive(bn, "NUM"), 'isMaybeSingleNum||isMaybeFalseButNotTrue');
-TAJS_assert(TAJS_conversionToPrimitive(bn, "STR"), 'isMaybeStrOther||isMaybeStrIdentifierParts');
+TAJS_assert(TAJS_conversionToPrimitive(bn, "STR"), 'isMaybeStrOther||isMaybeStrOtherIdentifierParts');

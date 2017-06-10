@@ -1,1 +1,2 @@
 test/anderson/anderson22.js:4:2: [definite] Dead assignment, property m1 is never read
+test/anderson/anderson22.js: [definite] Exceptional program exit is unreachable

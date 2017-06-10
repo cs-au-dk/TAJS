@@ -1,13 +1,13 @@
 test/uneval/uneval22.html:5:18: [definite] The conditional expression is always false
 test/uneval/uneval22.html:5:18: [definite] Variable clicky_obj is null/undefined
-TAJS-dynamic-code(test/uneval/uneval22.html:9:21):1:15: [maybe] TypeError, accessing property of null/undefined
 test/uneval/uneval22.html:10:33: [maybe] TypeError, accessing property of null/undefined
-TAJS-dynamic-code(test/uneval/uneval22.html:9:21):1:15: [maybe] Converting object to string
-TAJS-dynamic-code(test/uneval/uneval22.html:9:21):1:15: [maybe] Converting primitive string to object
-TAJS-dynamic-code(test/uneval/uneval22.html:9:21):1:15: [maybe] Reading absent property (computed name)
-test/uneval/uneval22.html: [maybe] Uncaught exception, constructed at [TAJS-dynamic-code(test/uneval/uneval22.html:9:21):1:15, test/uneval/uneval22.html:10:33]
+TAJS-dynamic-code(test/uneval/uneval22.html:9:21):1:15: [maybe] TypeError, accessing property of null/undefined
+test/uneval/uneval22.html: [maybe] Uncaught exception, constructed at [test/uneval/uneval22.html:10:33, TAJS-dynamic-code(test/uneval/uneval22.html:9:21):1:15]
 test/uneval/uneval22.html:7:22: [maybe] Converting object to string
 test/uneval/uneval22.html:7:22: [maybe] Converting primitive string to object
 test/uneval/uneval22.html:10:33: [maybe] Converting object to string
 test/uneval/uneval22.html:10:33: [maybe] Converting primitive string to object
 test/uneval/uneval22.html:10:33: [maybe] Reading absent property (computed name)
+TAJS-dynamic-code(test/uneval/uneval22.html:9:21):1:15: [maybe] Converting object to string
+TAJS-dynamic-code(test/uneval/uneval22.html:9:21):1:15: [maybe] Converting primitive string to object
+TAJS-dynamic-code(test/uneval/uneval22.html:9:21):1:15: [maybe] Reading absent property (computed name)

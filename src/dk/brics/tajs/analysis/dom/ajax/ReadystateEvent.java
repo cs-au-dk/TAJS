@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -38,8 +38,8 @@ public class ReadystateEvent {
 
     public static void build(Solver.SolverInterface c) {
         State s = c.getState();
-        PROTOTYPE = new ObjectLabel(DOMObjects.READY_STATE_EVENT_PROTOTYPE, ObjectLabel.Kind.OBJECT);
-        INSTANCES = new ObjectLabel(DOMObjects.READY_STATE_EVENT_INSTANCES, ObjectLabel.Kind.OBJECT);
+        PROTOTYPE = ObjectLabel.make(DOMObjects.READY_STATE_EVENT_PROTOTYPE, ObjectLabel.Kind.OBJECT);
+        INSTANCES = ObjectLabel.make(DOMObjects.READY_STATE_EVENT_INSTANCES, ObjectLabel.Kind.OBJECT);
 
         // Prototype object
         s.newObject(PROTOTYPE);

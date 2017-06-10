@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -109,7 +109,7 @@ public class Operators {
             return Value.makeNum(-nm.getNum());
         }
         Value result = Value.makeNone();
-        if (nm.isMaybeNumUInt()) {
+        if (nm.isMaybeNumUIntPos()) {
             result = result.joinAnyNumOther();
         }
         if (nm.isMaybeNumOther()) {
@@ -120,6 +120,11 @@ public class Operators {
         }
         if (nm.isMaybeInf()) {
             result = result.joinNumInf();
+        }
+        if (nm.isMaybeZero()) {
+            result = result.joinNum(0); // will become abstract zero (both positive and negative)
+        } else {
+            result = result.restrictToNotNumZero();
         }
         return result;
     }
@@ -213,39 +218,63 @@ public class Operators {
         }
         switch (op) {
             case ADD:
+                if (arg1.isMaybeInf() && arg2.isMaybeInf())
+                    r = r.joinNumNaN();
+                if (arg1.isMaybeInf() || arg2.isMaybeInf())
+                    r = r.joinNumInf();
+                if (arg1.isMaybeSingleNum() && arg1.getNum() == 0) {
+                    r = r.join(arg2); // 0 + x === x
+                } else if (arg2.isMaybeSingleNum() && arg2.getNum() == 0) {
+                    r = r.join(arg1); // x + 0 === x
+                } else if (((arg1.isMaybeNumUInt() && !arg1.restrictToNotNaN().isMaybeOtherThanNumUInt()) || arg1.isMaybeSingleNumUInt()) &&
+                           ((arg2.isMaybeNumUInt() && !arg2.restrictToNotNaN().isMaybeOtherThanNumUInt()) || arg2.isMaybeSingleNumUInt())) {
+                    r = r.joinAnyNumUInt();
+                    if (!c.getAnalysis().getUnsoundness().mayAssumeClosedUIntAddition(c.getNode())) {
+                        r = r.joinAnyNumOther().joinNumInf();
+                    }
+                } else {
+                    r = r.joinAnyNumUInt().joinAnyNumOther();
+                    if (isExtremeSingleNumber(arg1) || isExtremeSingleNumber(arg2)) {
+                        // avoids ignoring deliberate overflows
+                        r = r.joinNumInf();
+                    }
+                }
+
+                if (!arg1.isMaybeSameNumberWhenNegated(arg2)) {
+                    r = r.restrictToNotNumZero();
+                }
+                break;
             case SUB:
                 if (arg1.isMaybeInf() && arg2.isMaybeInf())
                     r = r.joinNumNaN();
                 if (arg1.isMaybeInf() || arg2.isMaybeInf())
                     r = r.joinNumInf();
-
-                if (arg1.isMaybeSingleNum() && arg1.getNum() == 0 && op == NumericOp.ADD) {
-                    r = r.join(arg2); // 0 + x === x
-                } else if (arg2.isMaybeSingleNum() && arg2.getNum() == 0) {
-                    r = r.join(arg1); // x + 0 === x && x - 0 === x
-                } else if (((arg1.isMaybeNumUInt() && !arg1.restrictToNotNaN().isMaybeOtherThanNumUInt()) || arg1.isMaybeSingleNumUInt()) &&
-                        ((arg2.isMaybeNumUInt() && !arg2.restrictToNotNaN().isMaybeOtherThanNumUInt()) || arg2.isMaybeSingleNumUInt())) {
-                    // see github #295
-                    // FIXME: this rule ignores overflows from UInt (use Options.get().isUnsound()) - see github #193
-                    // FIXME: this rule assumes Uint - Uint => Uint (use Options.get().isUnsound()) ((a fix will break TestMicro#micro_testUintSub)))
-
-                    // NB: Number.MAX_VALUE + Number.MAX_VALUE == Infinity, but Number.MAX_VALUE + (Number.MAX_VALUE / 100000000000000000) == Number.MAX_VALUE
-                    // So it is sound to treat UInt as closed under "small" additions.
-                    r = r.joinAnyNumUInt();
+                if (arg2.isMaybeSingleNum() && arg2.getNum() == 0) {
+                    r = r.join(arg1); // x - 0 === x
                 } else {
-                    // TODO: ignores overflow to +/-Infinity (use Options.get().isUnsound())
                     r = r.joinAnyNumUInt().joinAnyNumOther();
+                    if (isExtremeSingleNumber(arg1) || isExtremeSingleNumber(arg2)) {
+                        // avoids ignoring deliberate overflows
+                        r = r.joinNumInf();
+                    }
+                }
+                if (!arg1.restrictToNotNaN().restrictToNotNumInf().isMaybeSameNumber(arg2)) {
+                    r = r.restrictToNotNumZero();
                 }
                 break;
-            case MUL: // TODO: it would be useful to know if a value is 0, too
+            case MUL:
                 if (arg1.isMaybeInf() && arg2.isMaybeInf())
                     r = r.joinNumInf();
                 if (arg1.isMaybeInf() && !arg2.isNotNum())
                     r = r.joinNumNaN().joinNumInf();
                 if (!arg1.isNotNum() && arg2.isMaybeInf())
                     r = r.joinNumNaN().joinNumInf();
-                if (!arg1.isNotNum() && !arg2.isNotNum())
-                    r = r.joinAnyNumUInt().joinAnyNumOther();
+                if (!arg1.isNotNum() && !arg2.isNotNum()) {
+                    r = r.joinAnyNumUInt().joinNumInf().joinAnyNumOther();
+                }
+                if (!arg1.isMaybeZero() && !arg2.isMaybeZero()) {
+                    r = r.restrictToNotNumZero();
+                }
                 break;
             case DIV:
                 if (arg1.isMaybeInf() && arg2.isMaybeInf())
@@ -256,8 +285,14 @@ public class Operators {
                     Value zero = r.joinNum(0.0).joinNum(-0.0); // TODO: bad for precision?
                     r = r.join(zero);
                 }
-                if (!arg1.isNotNum() && !arg2.isNotNum())
-                    r = r.joinAnyNumUInt().joinAnyNumOther().joinNumNaN().joinNumInf(); // TODO: (use Options.get().isUnsound())   - can avoid NaN here sometimes! requires isZero
+                if (!arg1.isNotNum() && !arg2.isNotNum()) {
+                    r = r.joinAnyNumUInt().joinAnyNumOther().joinNumNaN(); // TODO: (use Options.get().isUnsound())
+                }
+                if (!arg1.isMaybeZero() && !arg2.isMaybeInf() && !arg1.isMaybeNumOther() /* very small numbers can be divided to zero! */) {
+                    r = r.restrictToNotNumZero();
+                }
+                if (arg2.isMaybeZero())
+                    r = r.joinNumInf();
                 break;
             case MOD:
                 if (arg1.isMaybeInf() && arg2.isMaybeInf())
@@ -267,10 +302,16 @@ public class Operators {
                 if (!arg1.isNotNum() && arg2.isMaybeInf())
                     r = r.join(arg1);
                 if (!arg1.isNotNum() && !arg2.isNotNum())
-                    r = r.joinAnyNumUInt().joinAnyNumOther().joinNumNaN(); // TODO: (use Options.get().isUnsound())   - can avoid NaN here sometimes! requires isZero (benchpress2.js)
+                    r = r.joinAnyNumUInt().joinAnyNumOther(); // TODO: (use Options.get().isUnsound())
+                if (arg2.isMaybeZero())
+                    r = r.joinNumNaN();
                 break;
         }
         return r;
+    }
+
+    private static boolean isExtremeSingleNumber(Value v) {
+        return v.isMaybeSingleNum() && (v.getNum() == Double.MAX_VALUE || v.getNum() == Double.MIN_VALUE);
     }
 
     /**
@@ -308,27 +349,23 @@ public class Operators {
             if (s2.isMaybeSingleStr()) {
                 // s1 and s2 are both single strings
                 r = r.joinStr(s1.getStr() + s2.getStr());
+            } else if (s1.getStr().isEmpty()) {
+                r = r.join(s2.restrictToStr());
+            } else if (s2.isMaybeStrPrefix()) {
+                r = r.joinPrefix(s1.getStr() + s2.getPrefix());
             } else if (s2.isMaybeFuzzyStr()) {
                 // s1 is single string, s2 is fuzzy string
-                if (Strings.isIdentifier(s1.getStr())
-                        && (s2.isMaybeStrUInt() || s2.isMaybeStrIdentifier() || s2.isMaybeStrIdentifierParts() || (s2.isMaybeStrPrefixedIdentifierParts() && Strings.isIdentifierParts(s2.getPrefix())))
-                        && !(s2.isMaybeStrOtherNum() || s2.isMaybeStrOther()))
-                    r = r.joinPrefixedIdentifierParts(s1.getStr());
-                else if (Strings.isIdentifierParts(s1.getStr())
-                        && (s2.isMaybeStrUInt() || s2.isMaybeStrIdentifier() || s2.isMaybeStrIdentifierParts() || (s2.isMaybeStrPrefixedIdentifierParts() && Strings.isIdentifierParts(s2.getPrefix())))
-                        && !(s2.isMaybeStrOtherNum() || s2.isMaybeStrOther()))
-                    r = r.joinAnyStrIdentifierParts();
-                else
-                    r = Value.makeAnyStr();
+                r = r.joinPrefix(s1.getStr());
             }
         } else if (s1.isMaybeFuzzyStr()) {
             // s1 is fuzzy string, handle string parts of s2
             if (s2.isMaybeSingleStr()) {
                 // s1 is fuzzy string, p2 is single string
-                if (s1.isMaybeStrPrefixedIdentifierParts()
-                        && Strings.isIdentifierParts(s2.getStr()))
-                    r = r.joinPrefixedIdentifierParts(s1.getPrefix());
-                else if ((s1.isMaybeStrUInt() || s1.isMaybeStrIdentifier() || s1.isMaybeStrIdentifierParts() || (s1.isMaybeStrPrefixedIdentifierParts() && Strings.isIdentifierParts(s1.getPrefix())))
+                if (s2.getStr().isEmpty()) {
+                    r = r.join(s1.restrictToStr());
+                } else if (s1.isMaybeStrPrefix())
+                    r = r.joinPrefix(s1.getPrefix());
+                else if ((s1.isMaybeStrUInt() || s1.isMaybeStrIdentifier() || s1.isMaybeStrOtherIdentifierParts())
                         && !(s1.isMaybeStrOtherNum() || s1.isMaybeStrOther())
                         && Strings.isIdentifierParts(s2.getStr()))
                     r = r.joinAnyStrIdentifierParts();
@@ -336,15 +373,13 @@ public class Operators {
                     r = Value.makeAnyStr();
             } else if (s2.isMaybeFuzzyStr()) {
                 // s1 and s2 are both fuzzy strings
-                if (s1.isMaybeStrPrefixedIdentifierParts()
-                        && (s2.isMaybeStrUInt() || s2.isMaybeStrIdentifier() || s2.isMaybeStrIdentifierParts() || (s2.isMaybeStrPrefixedIdentifierParts() && Strings.isIdentifierParts(s2.getPrefix())))
-                        && !(s2.isMaybeStrOtherNum() || s2.isMaybeStrOther()))
-                    r = r.joinPrefixedIdentifierParts(s1.getPrefix());
+                if (s1.isMaybeStrPrefix())
+                    r = r.joinPrefix(s1.getPrefix());
                 else if (s1.isMaybeStrUInt() && !s1.isMaybeStrSomeNonUInt() && s2.isMaybeStrUInt() && !s2.isMaybeStrSomeNonUInt()) {
                     r = r.joinAnyStrOtherNum().joinAnyStrUInt();
-                } else if ((s1.isMaybeStrUInt() || s1.isMaybeStrIdentifier() || s1.isMaybeStrIdentifierParts() || (s1.isMaybeStrPrefixedIdentifierParts() && Strings.isIdentifierParts(s1.getPrefix())))
+                } else if ((s1.isMaybeStrUInt() || s1.isMaybeStrIdentifier() || s1.isMaybeStrOtherIdentifierParts())
                         && !(s1.isMaybeStrOtherNum() || s1.isMaybeStrOther())
-                        && (s2.isMaybeStrUInt() || s2.isMaybeStrIdentifier() || s2.isMaybeStrIdentifierParts() || (s2.isMaybeStrPrefixedIdentifierParts() && Strings.isIdentifierParts(s2.getPrefix())))
+                        && (s2.isMaybeStrUInt() || s2.isMaybeStrIdentifier() || s2.isMaybeStrOtherIdentifierParts())
                         && !(s2.isMaybeStrOtherNum() || s2.isMaybeStrOther()))
                     r = r.joinAnyStrIdentifierParts();
                 else
@@ -352,20 +387,21 @@ public class Operators {
             }
         }
 
-        boolean containsNonIdentifierCharacters = (s1.getStr() != null && !Strings.isIdentifierParts(s1.getStr())) || (s2.getStr() != null && !Strings.isIdentifierParts(s2.getStr()));
+        String s1characters = s1.isMaybeSingleStr() ? s1.getStr() : s1.isMaybeStrPrefix() ? s1.getPrefix() : "";
+        String s2characters = s2.isMaybeSingleStr() ? s2.getStr() : s2.isMaybeStrPrefix() ? s2.getPrefix() : "";
+        boolean containsNonIdentifierCharacters = (!s1characters.isEmpty() && !Strings.isIdentifierParts(s1characters)) || (!s2characters.isEmpty() && !Strings.isIdentifierParts(s2characters));
         if (containsNonIdentifierCharacters) {
             r = r.restrictToNotStrIdentifierParts();
         }
-        boolean containsNonDigits = (s1.getStr() != null && !Strings.isArrayIndex(s1.getStr())) || (s2.getStr() != null && !Strings.isArrayIndex(s2.getStr()));
+        boolean containsNonDigits = (!s1characters.isEmpty() && !Strings.isArrayIndex(s1characters)) || (!s2characters.isEmpty() && !Strings.isArrayIndex(s2characters));
         if (containsNonDigits) {
             r = r.restrictToNotStrUInt();
         }
-        boolean containsNonOtherNumCharacters = (s1.getStr() != null && Strings.containsNonNumberCharacters(s1.getStr())) || (s2.getStr() != null && Strings.containsNonNumberCharacters(s2.getStr()));
+        boolean containsNonOtherNumCharacters = Strings.containsNonNumberCharacters(s1characters) || Strings.containsNonNumberCharacters(s2characters);
         if (containsNonOtherNumCharacters) {
             r = r.restrictToNotStrOtherNum();
         }
-
-        if (s1.isMaybeStrJSON() || s2.isMaybeStrJSON()) // TODO: better precision for "(" + JSON + ")"
+        if (s1.isMaybeStrJSON() || s2.isMaybeStrJSON()) // FIXME: hack to handle "(" + JSON + ")", github #374
             r = r.join(Value.makeJSONStr());
         return r;
     }
@@ -402,7 +438,7 @@ public class Operators {
             }
             return Value.makeNum(r);
         } else
-            return Value.makeNone().joinAnyNumUInt();
+            return Value.makeAnyNumNotNaNInf();
     }
 
     /**
@@ -933,7 +969,8 @@ public class Operators {
             }
             return Value.makeNum(r);
         } else // TODO: Improve precision: NaN | 0 gives AnyNumUInt (testMicro186).
-            return Value.makeAnyNumUInt();
+            return Value.makeAnyNumNotNaNInf();
+
     }
 
     /**

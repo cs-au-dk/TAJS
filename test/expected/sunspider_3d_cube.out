@@ -23,6 +23,7 @@ test/sunspider/3d-cube.js:122:31: [maybe] TypeError, accessing property of null/
 test/sunspider/3d-cube.js:122:41: [maybe] TypeError, accessing property of null/undefined
 test/sunspider/3d-cube.js:122:48: [maybe] TypeError, accessing property of null/undefined
 test/sunspider/3d-cube.js:122:65: [maybe] TypeError, accessing property of null/undefined
+test/sunspider/3d-cube.js:195:23: [maybe] RangeError, assigning invalid value to array 'length' property
 test/sunspider/3d-cube.js:196:7: [maybe] TypeError, accessing property of null/undefined
 test/sunspider/3d-cube.js:202:7: [maybe] TypeError, accessing property of null/undefined
 test/sunspider/3d-cube.js:208:7: [maybe] TypeError, accessing property of null/undefined
@@ -40,7 +41,7 @@ test/sunspider/3d-cube.js:309:108: [maybe] TypeError, accessing property of null
 test/sunspider/3d-cube.js:323:5: [maybe] TypeError, accessing property of null/undefined
 test/sunspider/3d-cube.js:323:29: [maybe] TypeError, accessing property of null/undefined
 test/sunspider/3d-cube.js:96:3: [maybe] Reading 'this' yields the global object
-test/sunspider/3d-cube.js: [maybe] Uncaught exception, constructed at [test/sunspider/3d-cube.js:106:24, test/sunspider/3d-cube.js:106:34, test/sunspider/3d-cube.js:106:56, test/sunspider/3d-cube.js:106:78, test/sunspider/3d-cube.js:106:100, test/sunspider/3d-cube.js:115:31, test/sunspider/3d-cube.js:115:48, test/sunspider/3d-cube.js:115:65, test/sunspider/3d-cube.js:115:82, test/sunspider/3d-cube.js:122:31, test/sunspider/3d-cube.js:122:41, test/sunspider/3d-cube.js:122:48, test/sunspider/3d-cube.js:122:65, test/sunspider/3d-cube.js:196:7, test/sunspider/3d-cube.js:202:7, test/sunspider/3d-cube.js:208:7, test/sunspider/3d-cube.js:214:7, test/sunspider/3d-cube.js:220:7, test/sunspider/3d-cube.js:226:7, test/sunspider/3d-cube.js:248:5, test/sunspider/3d-cube.js:248:29, test/sunspider/3d-cube.js:309:68, test/sunspider/3d-cube.js:309:70, test/sunspider/3d-cube.js:309:87, test/sunspider/3d-cube.js:309:89, test/sunspider/3d-cube.js:309:106, test/sunspider/3d-cube.js:309:108, test/sunspider/3d-cube.js:323:5, test/sunspider/3d-cube.js:323:29]
+test/sunspider/3d-cube.js: [maybe] Uncaught exception, constructed at [test/sunspider/3d-cube.js:106:24, test/sunspider/3d-cube.js:106:34, test/sunspider/3d-cube.js:106:56, test/sunspider/3d-cube.js:106:78, test/sunspider/3d-cube.js:106:100, test/sunspider/3d-cube.js:115:31, test/sunspider/3d-cube.js:115:48, test/sunspider/3d-cube.js:115:65, test/sunspider/3d-cube.js:115:82, test/sunspider/3d-cube.js:122:31, test/sunspider/3d-cube.js:122:41, test/sunspider/3d-cube.js:122:48, test/sunspider/3d-cube.js:122:65, test/sunspider/3d-cube.js:195:23, test/sunspider/3d-cube.js:196:7, test/sunspider/3d-cube.js:202:7, test/sunspider/3d-cube.js:208:7, test/sunspider/3d-cube.js:214:7, test/sunspider/3d-cube.js:220:7, test/sunspider/3d-cube.js:226:7, test/sunspider/3d-cube.js:248:5, test/sunspider/3d-cube.js:248:29, test/sunspider/3d-cube.js:309:68, test/sunspider/3d-cube.js:309:70, test/sunspider/3d-cube.js:309:87, test/sunspider/3d-cube.js:309:89, test/sunspider/3d-cube.js:309:106, test/sunspider/3d-cube.js:309:108, test/sunspider/3d-cube.js:323:5, test/sunspider/3d-cube.js:323:29]
 test/sunspider/3d-cube.js:22:12: [maybe] Reading absent property (computed name)
 test/sunspider/3d-cube.js:23:12: [maybe] Reading absent property (computed name)
 test/sunspider/3d-cube.js:24:12: [maybe] Reading absent property (computed name)
@@ -108,12 +109,20 @@ test/sunspider/3d-cube.js:122:48: [maybe] Conversion to number yields NaN
 test/sunspider/3d-cube.js:122:48: [maybe] Reading absent property (computed name)
 test/sunspider/3d-cube.js:122:65: [maybe] Conversion to number yields NaN
 test/sunspider/3d-cube.js:122:65: [maybe] Reading absent property (computed name)
+test/sunspider/3d-cube.js:195:23: [maybe] Conversion from string to number yields NaN
+test/sunspider/3d-cube.js:195:23: [maybe] Converting object to number
 test/sunspider/3d-cube.js:195:48: [maybe] Reading absent property (computed name)
+test/sunspider/3d-cube.js:196:7: [maybe] Converting primitive number to object
 test/sunspider/3d-cube.js:196:7: [maybe] Reading absent property (computed name)
+test/sunspider/3d-cube.js:202:7: [maybe] Converting primitive number to object
 test/sunspider/3d-cube.js:202:7: [maybe] Reading absent property (computed name)
+test/sunspider/3d-cube.js:208:7: [maybe] Converting primitive number to object
 test/sunspider/3d-cube.js:208:7: [maybe] Reading absent property (computed name)
+test/sunspider/3d-cube.js:214:7: [maybe] Converting primitive number to object
 test/sunspider/3d-cube.js:214:7: [maybe] Reading absent property (computed name)
+test/sunspider/3d-cube.js:220:7: [maybe] Converting primitive number to object
 test/sunspider/3d-cube.js:220:7: [maybe] Reading absent property (computed name)
+test/sunspider/3d-cube.js:226:7: [maybe] Converting primitive number to object
 test/sunspider/3d-cube.js:226:7: [maybe] Reading absent property (computed name)
 test/sunspider/3d-cube.js:239:10: [maybe] Converting primitive string to object
 test/sunspider/3d-cube.js:240:25: [maybe] Conversion to number yields NaN

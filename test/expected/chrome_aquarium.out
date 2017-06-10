@@ -1,4 +1,6 @@
 test/chromeexperiments/aquarium.html:27:16: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/aquarium.html:85:2: [maybe] TypeError, non-HTMLImageElement or non-HTMLCanvasElement as argument to drawImage
+test/chromeexperiments/aquarium.html:107:2: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/aquarium.html:120:12: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/aquarium.html:120:23: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/aquarium.html:121:12: [maybe] TypeError, accessing property of null/undefined
@@ -13,11 +15,21 @@ test/chromeexperiments/aquarium.html:136:4: [maybe] TypeError, accessing propert
 test/chromeexperiments/aquarium.html:137:4: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/aquarium.html:140:3: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/aquarium.html:141:3: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/aquarium.html:154:2: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/aquarium.html:159:1: [maybe] TypeError, non-function event handler
 test/chromeexperiments/aquarium.html:161:1: [maybe] TypeError, non-function event handler
-test/chromeexperiments/aquarium.html:149:9: [maybe] Reading absent property pageX
-test/chromeexperiments/aquarium.html:150:9: [maybe] Reading absent property pageY
-test/chromeexperiments/aquarium.html: [maybe] Uncaught exception, constructed at [test/chromeexperiments/aquarium.html:27:16, test/chromeexperiments/aquarium.html:120:12, test/chromeexperiments/aquarium.html:120:23, test/chromeexperiments/aquarium.html:121:12, test/chromeexperiments/aquarium.html:121:23, test/chromeexperiments/aquarium.html:124:6, test/chromeexperiments/aquarium.html:125:6, test/chromeexperiments/aquarium.html:127:6, test/chromeexperiments/aquarium.html:128:6, test/chromeexperiments/aquarium.html:132:17, test/chromeexperiments/aquarium.html:133:17, test/chromeexperiments/aquarium.html:136:4, test/chromeexperiments/aquarium.html:137:4, test/chromeexperiments/aquarium.html:140:3, test/chromeexperiments/aquarium.html:141:3]
+test/chromeexperiments/aquarium.html:35:23: [maybe] Reading absent property width of host object
+test/chromeexperiments/aquarium.html:36:23: [maybe] Reading absent property height of host object
+test/chromeexperiments/aquarium.html:62:21: [maybe] Reading absent property width of host object
+test/chromeexperiments/aquarium.html:63:21: [maybe] Reading absent property height of host object
+test/chromeexperiments/aquarium.html:111:19: [maybe] Reading absent property width of host object
+test/chromeexperiments/aquarium.html:111:40: [maybe] Reading absent property height of host object
+test/chromeexperiments/aquarium.html: [maybe] Uncaught exception, constructed at [test/chromeexperiments/aquarium.html:27:16, test/chromeexperiments/aquarium.html:107:2, test/chromeexperiments/aquarium.html:120:12, test/chromeexperiments/aquarium.html:120:23, test/chromeexperiments/aquarium.html:121:12, test/chromeexperiments/aquarium.html:121:23, test/chromeexperiments/aquarium.html:124:6, test/chromeexperiments/aquarium.html:125:6, test/chromeexperiments/aquarium.html:127:6, test/chromeexperiments/aquarium.html:128:6, test/chromeexperiments/aquarium.html:132:17, test/chromeexperiments/aquarium.html:133:17, test/chromeexperiments/aquarium.html:136:4, test/chromeexperiments/aquarium.html:137:4, test/chromeexperiments/aquarium.html:140:3, test/chromeexperiments/aquarium.html:141:3, test/chromeexperiments/aquarium.html:154:2]
+test/chromeexperiments/aquarium.html:35:9: [maybe] Conversion to number yields NaN
+test/chromeexperiments/aquarium.html:36:9: [maybe] Conversion to number yields NaN
+test/chromeexperiments/aquarium.html:62:21: [maybe] Conversion to number yields NaN
+test/chromeexperiments/aquarium.html:63:21: [maybe] Conversion to number yields NaN
+test/chromeexperiments/aquarium.html:111:2: [maybe] Conversion to number yields NaN
 test/chromeexperiments/aquarium.html:120:12: [maybe] Reading absent property (computed name)
 test/chromeexperiments/aquarium.html:120:23: [maybe] Reading absent property (computed name)
 test/chromeexperiments/aquarium.html:121:12: [maybe] Reading absent property (computed name)

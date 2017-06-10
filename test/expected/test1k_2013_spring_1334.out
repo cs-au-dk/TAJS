@@ -1,18 +1,12 @@
 test/1k2013spring/1334.js:7:5: [definite] The conditional expression is always false
-test/1k2013spring/1334.js:7:5: [definite] The conditional expression is always false
 test/1k2013spring/1334.js:38:7: [definite] Too few parameters to function Node.cloneNode
 test/1k2013spring/1334.js:7:5: [definite] Reading absent property (computed name)
 test/1k2013spring/1334.js:7:19: [definite] Reading absent property (computed name)
-test/1k2013spring/1334.js:2:5: [maybe] TypeError, accessing property of null/undefined
-test/1k2013spring/1334.js:10:1: [maybe] TypeError, accessing property of null/undefined
-test/1k2013spring/1334.js:40:42: [maybe] TypeError, call to non-function
-test/1k2013spring/shim.js:8:9: [maybe] TypeError, accessing property of null/undefined
-test/1k2013spring/shim.js:8:9: [maybe] TypeError, call to non-function
-test/1k2013spring/shim.js:9:1: [maybe] TypeError, accessing property of null/undefined
-test/1k2013spring/1334.js:10:1: [maybe] Reading absent property style
-test/1k2013spring/1334.js:40:42: [maybe] Reading absent property toDataURL
-test/1k2013spring/shim.js:6:9: [maybe] Reading absent property body
-test/1k2013spring/shim.js:8:9: [maybe] Reading absent property getContext
-test/1k2013spring/shim.js:9:1: [maybe] Reading absent property body
-test/1k2013spring/shim.js:7:9: [maybe] Reading absent property (computed name)
-test/1k2013spring/shim.js,test/1k2013spring/1334.js: [maybe] Uncaught exception, constructed at [test/1k2013spring/1334.js:2:5, test/1k2013spring/1334.js:10:1, test/1k2013spring/1334.js:40:42, test/1k2013spring/shim.js:8:9, test/1k2013spring/shim.js:9:1]
+test/1k2013spring/1334.js:35:29: [maybe] ReferenceError, reading absent variable c
+test/1k2013spring/1334.js:35:42: [maybe] ReferenceError, reading absent variable a
+test/1k2013spring/1334.js:40:29: [maybe] ReferenceError, reading absent variable g
+test/1k2013spring/1334.js:40:42: [maybe] ReferenceError, reading absent variable c
+test/1k2013spring/1334.js:60:5: [maybe] ReferenceError, reading absent variable a
+test/1k2013spring/1334.js:61:5: [maybe] ReferenceError, reading absent variable q
+test/1k2013spring/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1334.js: [maybe] Uncaught exception, constructed at [test/1k2013spring/1334.js:35:29, test/1k2013spring/1334.js:35:42, test/1k2013spring/1334.js:40:29, test/1k2013spring/1334.js:40:42, test/1k2013spring/1334.js:60:5, test/1k2013spring/1334.js:61:5, test/1k2013spring/shim.js:9:5]

@@ -3,19 +3,12 @@ package dk.brics.tajs.test;
 // import static org.junit.Assert.fail;
 
 import dk.brics.tajs.Main;
-import dk.brics.tajs.monitoring.CompositeMonitoring;
-import dk.brics.tajs.monitoring.IAnalysisMonitoring;
-import dk.brics.tajs.monitoring.Monitoring;
-import dk.brics.tajs.monitoring.OrdinaryExitReachableChecker;
 import dk.brics.tajs.options.Options;
-import dk.brics.tajs.util.AnalysisLimitationException;
 import org.junit.Before;
 import org.junit.Test;
 
 @SuppressWarnings("static-method")
 public class Test10K {
-
-    private IAnalysisMonitoring monitoring;
 
     public static void main(String[] args) {
 		org.junit.runner.JUnitCore.main("dk.brics.tajs.test.Test10K");
@@ -26,18 +19,17 @@ public class Test10K {
         Main.reset();
         Options.get().enableTest();
         Options.get().enableIncludeDom();
-        monitoring = CompositeMonitoring.buildFromList(new Monitoring(), new OrdinaryExitReachableChecker());
     }
 
-//    @Test
-//    public void test10k_10k_snake() throws Exception {
-//        Options.get().enablePolyfillMDN();
-//        Misc.init();
-//        Misc.captureSystemOutput();
-//        String[] args = { "test/10k/10k_snake.html" };
-//        Misc.run(args);
-//        Misc.checkSystemOutput();
-//    }
+    @Test
+    public void test10k_10k_snake() throws Exception {
+        Options.get().enablePolyfillMDN();
+        Misc.init();
+        Misc.captureSystemOutput();
+        String[] args = { "test/10k/10k_snake.html" };
+        Misc.run(args);
+        Misc.checkSystemOutput();
+    }
 
     @Test
     public void test10k_10k_world() throws Exception {
@@ -63,7 +55,7 @@ public class Test10K {
         Misc.init();
         Misc.captureSystemOutput();
         String[] args = { "test/10k/attractor.html" };
-        Misc.run(args, monitoring);
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 
@@ -112,15 +104,15 @@ public class Test10K {
         Misc.checkSystemOutput();
     }
 
-//    @Test
-//    public void test10k_floating_bubbles() throws Exception {
-//        Options.get().enablePolyfillMDN();
-//        Misc.init();
-//        Misc.captureSystemOutput();
-//        String[] args = { "test/10k/floating_bubbles.html" };
-//        Misc.run(args);
-//        Misc.checkSystemOutput();
-//    }
+    @Test
+    public void test10k_floating_bubbles() throws Exception {
+        Options.get().enablePolyfillMDN();
+        Misc.init();
+        Misc.captureSystemOutput();
+        String[] args = { "test/10k/floating_bubbles.html" };
+        Misc.run(args);
+        Misc.checkSystemOutput();
+    }
 
     @Test
     public void test10k_fractal_landscape() throws Exception {
@@ -177,7 +169,7 @@ public class Test10K {
         Misc.checkSystemOutput();
     }
 
-    @Test(expected = AnalysisLimitationException.class /* FIXME GitHub #275 */)
+    @Test
     public void test10k_nbody() throws Exception {
         Misc.init();
         Options.get().enableUnevalizer();

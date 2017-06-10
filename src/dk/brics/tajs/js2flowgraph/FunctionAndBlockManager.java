@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -114,7 +114,7 @@ public class FunctionAndBlockManager {
     /**
      * Marks the start of a session.
      * Blocks created in this session can be extracted later with
-     * {@link #getSessionBlocks(FunctionAndBlockManager.SessionKey)}.
+     * {@link #getSessionBlocks(SessionKey)}.
      * Sessions do not have to nest properly.
      *
      * @return a unique key identifying the session.
@@ -136,7 +136,7 @@ public class FunctionAndBlockManager {
 
     /**
      * Returns the blocks produced between a call to {@link #startSession()} and
-     * {@link #endSession(FunctionAndBlockManager.SessionKey)}
+     * {@link #endSession(SessionKey)}
      */
     Collection<BasicBlock> getSessionBlocks(SessionKey key) {
         if (activeSessions.contains(key)) {

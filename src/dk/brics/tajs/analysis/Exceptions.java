@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,12 +18,15 @@ package dk.brics.tajs.analysis;
 
 import dk.brics.tajs.flowgraph.AbstractNode;
 import dk.brics.tajs.flowgraph.BasicBlock;
+import dk.brics.tajs.lattice.ExecutionContext;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.ObjectLabel.Kind;
 import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.util.AnalysisException;
+
+import static dk.brics.tajs.util.Collections.newSet;
 
 /**
  * Models exceptions.
@@ -86,7 +89,7 @@ public class Exceptions {
      * Does not modify the given state.
      */
     private static Value makeException(ObjectLabel prototype, Solver.SolverInterface c) {
-        ObjectLabel ex = new ObjectLabel(c.getNode(), Kind.ERROR);
+        ObjectLabel ex = ObjectLabel.make(c.getNode(), Kind.ERROR);
         c.getState().newObject(ex);
         c.getState().writeInternalPrototype(ex, Value.makeObject(prototype));
         c.getAnalysis().getPropVarOperations().writeProperty(ex, "message", Value.makeAnyStr());
@@ -104,6 +107,10 @@ public class Exceptions {
         if (v.isMaybePresent() || Options.get().isPropagateDeadFlow()) {
             BasicBlock handlerblock = source.getBlock().getExceptionHandler();
             state.writeRegister(AbstractNode.EXCEPTION_REG, v);
+            state.setExecutionContext(
+                    new ExecutionContext(state.getExecutionContext().getScopeChain(),
+                            newSet(state.getExecutionContext().getVariableObject()),
+                            c.getAnalysisLatticeElement().getState(source.getBlock(), state.getContext()).readThis())); // 'this' may have been changed via call/apply, so restore from the block entry
             c.propagateToBasicBlock(state, handlerblock, state.getContext());
         }
     }

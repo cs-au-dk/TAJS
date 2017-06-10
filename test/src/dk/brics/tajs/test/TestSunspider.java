@@ -1,7 +1,6 @@
 package dk.brics.tajs.test;
 
 import dk.brics.tajs.Main;
-import dk.brics.tajs.monitoring.AnalysisTimeLimiter;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.util.AnalysisLimitationException;
 import org.junit.Before;
@@ -222,9 +221,10 @@ public class TestSunspider {
     public void sunspider_string_tagcloud() throws Exception {
         Misc.init();
         Options.get().enableUnevalizer();
+        Options.get().setAnalysisTimeLimit(10);
         Misc.captureSystemOutput();
         String[] args = {"test/sunspider/string-tagcloud.js"}; // can't specialize for-in due to r/w conflict
-        Misc.run(args, new AnalysisTimeLimiter(10, true));
+        Misc.run(args);
         Misc.checkSystemOutput();
     }
 

@@ -1,1 +1,2 @@
+test/micro/test108.js: [definite] Exceptional program exit is unreachable
 test/micro/test108.js:1:9: [maybe] Converting primitive number to object

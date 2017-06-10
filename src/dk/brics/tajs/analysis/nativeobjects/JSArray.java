@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,13 +16,11 @@
 
 package dk.brics.tajs.analysis.nativeobjects;
 
-import dk.brics.tajs.analysis.Analysis;
 import dk.brics.tajs.analysis.Conversion;
 import dk.brics.tajs.analysis.Exceptions;
 import dk.brics.tajs.analysis.FunctionCalls;
 import dk.brics.tajs.analysis.FunctionCalls.CallInfo;
 import dk.brics.tajs.analysis.InitialStateBuilder;
-import dk.brics.tajs.analysis.NativeFunctions;
 import dk.brics.tajs.analysis.ParallelTransfer;
 import dk.brics.tajs.analysis.PropVarOperations;
 import dk.brics.tajs.analysis.Solver;
@@ -32,17 +30,12 @@ import dk.brics.tajs.flowgraph.BasicBlock;
 import dk.brics.tajs.flowgraph.jsnodes.CallNode;
 import dk.brics.tajs.flowgraph.jsnodes.Node;
 import dk.brics.tajs.lattice.Bool;
-import dk.brics.tajs.lattice.CallEdge;
-import dk.brics.tajs.lattice.Context;
 import dk.brics.tajs.lattice.HeapContext;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.ObjectLabel.Kind;
 import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.UnknownValueResolver;
 import dk.brics.tajs.lattice.Value;
-import dk.brics.tajs.monitoring.IAnalysisMonitoring;
-import dk.brics.tajs.options.Options;
-import dk.brics.tajs.solver.GenericSolver;
 import dk.brics.tajs.solver.Message;
 import dk.brics.tajs.solver.Message.Severity;
 import dk.brics.tajs.solver.Message.Status;
@@ -77,67 +70,65 @@ public class JSArray {
      * Evaluates the given native function.
      */
     public static Value evaluate(ECMAScriptObjects nativeobject, CallInfo call, Solver.SolverInterface c) {
-        if (nativeobject != ECMAScriptObjects.ARRAY)
-            if (NativeFunctions.throwTypeErrorIfConstructor(call, c))
-                return Value.makeNone();
-
         final State state = c.getState();
         final PropVarOperations pv = c.getAnalysis().getPropVarOperations();
         switch (nativeobject) {
 
             case ARRAY: { // 15.4, no difference between function and constructor
-                NativeFunctions.expectParameters(nativeobject, call, c, 0, -1);
                 // 15.4.1.1, 15.4.2.1 paragraph 2 and 3, 15.4.2.2 paragraph 1.
                 ObjectLabel objlabel = makeArray(call.getSourceNode(), c);
 
                 Value length = Value.makeAnyNumUInt();
-                int numArgs = call.getNumberOfArgs();
+
                 boolean isArrayLiteral = call.getSourceNode() instanceof CallNode && ((CallNode) call.getSourceNode()).getLiteralConstructorKind() == CallNode.LiteralConstructorKinds.ARRAY;
                 if (call.isUnknownNumberOfArgs())
                     pv.writeProperty(Collections.singleton(objlabel), Value.makeAnyStrUInt(), call.getUnknownArg());
-                else if (numArgs == 1 && !isArrayLiteral) { // 15.4.2.2, paragraph 2.
-                    Value lenarg = NativeFunctions.readParameter(call, state, 0);
-                    Status s;
-                    if (lenarg.isMaybeSingleNum()) {
-                        double d = lenarg.getNum();
-                        if (d >= 0 && d < 2147483647d && Math.floor(d) == d) {
-                            s = Status.NONE;
-                            length = Value.makeNum(d);
-                        } else
-                            s = Status.CERTAIN;
-                    } else if (lenarg.isMaybeNumUInt() && !lenarg.isMaybeNumOther() && !lenarg.isMaybeInf() && !lenarg.isMaybeNaN())
-                        s = Status.NONE; // We're good: unknown UInt and nothing else.
-                    else if (!lenarg.isMaybeNumUInt() && (lenarg.isMaybeNumOther() || lenarg.isMaybeInf() || lenarg.isMaybeNaN()))
-                        s = Status.CERTAIN; // We're not good: definitely not UInt but something else.
-                    else if (lenarg.isMaybeFuzzyNum())
-                        s = Status.MAYBE; // Who knows: might be an UInt.
-                    else {
-                        s = Status.NONE; // Definitely not a number. See writing of zeroprop below.
-                        length = Value.makeNone();
-                    }
-                    if (s == Status.CERTAIN && lenarg.isMaybeOtherThanNum())
-                        s = Status.MAYBE;
-                    if (s != Status.NONE) {
-                        Exceptions.throwRangeError(c);
-                        c.getMonitoring().addMessage(call.getSourceNode(), Severity.HIGH, "RangeError, invalid value of array length");
-                    }
-                    if (s == Status.CERTAIN)
-                        return Value.makeNone();
-                    if (lenarg.isMaybeOtherThanNum()) { // 15.4.2.2, paragraph 3.
-                        length = length.joinNum(1);
-                        Value zeroprop = lenarg.restrictToNotNum();
-                        if (!lenarg.isNotNum())
-                            zeroprop = zeroprop.joinAbsent();
-                        pv.writeProperty(objlabel, "0", zeroprop);
-                    }
-                } else { // 15.4.2.1
-                    length = Value.makeNum(numArgs);
-                    for (int i = 0; i < numArgs; i++) {
-                        boolean isAbsent = isArrayLiteral && ((CallNode) call.getSourceNode()).getArgRegister(i) == AbstractNode.NO_VALUE;
-                        // support for the array literal syntax with omitted values: ['foo',,,,'bar']
-                        if (!isAbsent) {
-                            Value parameter = NativeFunctions.readParameter(call, state, i);
-                            pv.writeProperty(objlabel, Integer.toString(i), parameter);
+                else {
+                    int numArgs = call.getNumberOfArgs();
+                    if (numArgs == 1 && !isArrayLiteral) { // 15.4.2.2, paragraph 2.
+                        Value lenarg = FunctionCalls.readParameter(call, state, 0);
+                        Status s;
+                        if (lenarg.isMaybeSingleNum()) {
+                            double d = lenarg.getNum();
+                            if (d >= 0 && d < Math.pow(2, 32) && Math.floor(d) == d) {
+                                s = Status.NONE;
+                                length = Value.makeNum(d);
+                            } else
+                                s = Status.CERTAIN;
+                        } else if (lenarg.isMaybeNumUInt() && !lenarg.isMaybeNumOther() && !lenarg.isMaybeInf() && !lenarg.isMaybeNaN())
+                            s = Status.NONE; // We're good: unknown UInt and nothing else.
+                        else if (!lenarg.isMaybeNumUInt() && (lenarg.isMaybeNumOther() || lenarg.isMaybeInf() || lenarg.isMaybeNaN()))
+                            s = Status.CERTAIN; // We're not good: definitely not UInt but something else.
+                        else if (lenarg.isMaybeFuzzyNum())
+                            s = Status.MAYBE; // Who knows: might be an UInt.
+                        else {
+                            s = Status.NONE; // Definitely not a number. See writing of zeroprop below.
+                            length = Value.makeNone();
+                        }
+                        if (s == Status.CERTAIN && lenarg.isMaybeOtherThanNum())
+                            s = Status.MAYBE;
+                        if (s != Status.NONE) {
+                            Exceptions.throwRangeError(c);
+                            c.getMonitoring().addMessage(call.getSourceNode(), Severity.HIGH, "RangeError, invalid value of array length");
+                        }
+                        if (s == Status.CERTAIN)
+                            return Value.makeNone();
+                        if (lenarg.isMaybeOtherThanNum()) { // 15.4.2.2, paragraph 3.
+                            length = length.joinNum(1);
+                            Value zeroprop = lenarg.restrictToNotNum();
+                            if (!lenarg.isNotNum())
+                                zeroprop = zeroprop.joinAbsent();
+                            pv.writeProperty(objlabel, "0", zeroprop);
+                        }
+                    } else { // 15.4.2.1
+                        length = Value.makeNum(numArgs);
+                        for (int i = 0; i < numArgs; i++) {
+                            boolean isAbsent = isArrayLiteral && ((CallNode) call.getSourceNode()).getArgRegister(i) == AbstractNode.NO_VALUE;
+                            // support for the array literal syntax with omitted values: ['foo',,,,'bar']
+                            if (!isAbsent) {
+                                Value parameter = FunctionCalls.readParameter(call, state, i);
+                                pv.writeProperty(objlabel, Integer.toString(i), parameter);
+                            }
                         }
                     }
                 }
@@ -146,8 +137,7 @@ public class JSArray {
             }
 
             case ARRAY_ISARRAY: { // 15.4.3.2
-                NativeFunctions.expectParameters(nativeobject, call, c, 1, 1);
-                Value arg = NativeFunctions.readParameter(call, state, 0);
+                Value arg = FunctionCalls.readParameter(call, state, 0);
                 Value result = Value.makeNone();
                 if (arg.isMaybePrimitive())
                     result = result.joinBool(false);
@@ -161,24 +151,19 @@ public class JSArray {
             }
 
             case ARRAY_TOSTRING: { // 15.4.4.2
-                NativeFunctions.expectParameters(nativeobject, call, c, 0, 0);
-                return state.readThisObjectsCoerced((l) -> evaluateToString(l, c));
+                return evaluateToString(state.readThis(), c);
             }
 
             case ARRAY_TOLOCALESTRING: // 15.4.4.3
             case ARRAY_JOIN: { // 15.4.4.5
-                boolean is_join = nativeobject == ECMAScriptObjects.ARRAY_JOIN;
                 boolean is_toLocaleString = nativeobject == ECMAScriptObjects.ARRAY_TOLOCALESTRING;
-                NativeFunctions.expectParameters(nativeobject, call, c, 0, is_join ? 1 : 0);
                 Set<ObjectLabel> objlabels = state.readThisObjects();
-                Value sepArg = is_toLocaleString? Value.makeStr(","): NativeFunctions.readParameter(call, state, 0);
+                Value sepArg = is_toLocaleString? Value.makeStr(","): FunctionCalls.readParameter(call, state, 0);
                 AbstractNode node = call.getJSSourceNode();
-                return evaluateJoinOrToLocaleString(node, objlabels, sepArg, is_toLocaleString && !Options.get().isUnsoundEnabled(), c);
+                return evaluateJoinOrToLocaleString(node, objlabels, sepArg, is_toLocaleString && !c.getAnalysis().getUnsoundness().mayAssumeFixedLocale(call.getSourceNode()), c);
             }
 
             case ARRAY_CONCAT: { // 15.4.4.4
-                NativeFunctions.expectParameters(nativeobject, call, c, 0, -1);
-
                 ObjectLabel resultLabel = makeArray(call.getSourceNode(), c);
 
                 Set<ObjectLabel> resultLabelAsSet = Collections.singleton(resultLabel);
@@ -195,7 +180,7 @@ public class JSArray {
                         if (i == -1) {
                             element = state.readThis();
                         } else {
-                            element = call.getArg(i);
+                            element = FunctionCalls.readParameter(call, state, i);
                         }
 
                         Pair<Set<ObjectLabel>, Value> separatedArrayValues = separateArrayValues(element, state);
@@ -259,13 +244,22 @@ public class JSArray {
                 } else {
                     Value v = UnknownValueResolver.join(unfoldedElements,state);
                     pv.writeProperty(Collections.singleton(resultLabel), Value.makeAnyStrUInt(), v);
+
+                    Value receiverLength = readLength(state.readThisObjects(), c);
+                    if (receiverLength.isMaybeSingleNum()) {
+                        // recover precision for the prefix of the result array if the receivers length is precise
+                        for (int i = 0; i < receiverLength.getNum(); i++) {
+                            Value propertyName = Value.makeStr(i + "");
+                            pv.writeProperty(Collections.singleton(resultLabel), propertyName, pv.readPropertyValue(state.readThisObjects(), propertyName));
+                        }
+                    }
+
                     writeLength(resultLabel, Value.makeAnyNumUInt(), c);
                 }
                 return resultArray;
             }
 
             case ARRAY_POP: { // 15.4.4.6
-                NativeFunctions.expectParameters(nativeobject, call, c, 0, 0);
                 Set<ObjectLabel> thisobj = state.readThisObjects();
                 Value length_val = readLength(thisobj, c);
                 Double length_prop_num = UnknownValueResolver.getRealValue(length_val, state).getNum();
@@ -292,7 +286,7 @@ public class JSArray {
 
             case ARRAY_PUSH: { // 15.4.4.7
                 Set<ObjectLabel> arr = state.readThisObjects();
-                Value new_len = Value.makeAnyNumUInt();
+                Value new_len = Value.makeAnyNumUIntPos();
                 if (call.isUnknownNumberOfArgs()) {
                     pv.writeProperty(arr, Value.makeAnyStrUInt(), call.getUnknownArg());
                 } else if (arr.size() == 1) {
@@ -301,7 +295,7 @@ public class JSArray {
                     long length = length_prop != null ? Conversion.toUInt32(length_prop) : -1;
                     int i;
                     for (i = 0; i < call.getNumberOfArgs(); i++) {
-                        Value v = NativeFunctions.readParameter(call, state, i);
+                        Value v = FunctionCalls.readParameter(call, state, i);
                         if (length > -1)
                             pv.writeProperty(arr, Value.makeTemporaryStr(String.valueOf(i + length)), v);
                         else {
@@ -313,13 +307,12 @@ public class JSArray {
                         new_len = Value.makeNum(i + length);
                 } else
                     for (int i = 0; i < call.getNumberOfArgs(); i++)
-                        pv.writeProperty(arr, Value.makeAnyStrUInt(), NativeFunctions.readParameter(call, state, i));
+                        pv.writeProperty(arr, Value.makeAnyStrUInt(), FunctionCalls.readParameter(call, state, i));
                 writeLength(arr, new_len, c);
                 return new_len;
             }
 
             case ARRAY_REVERSE: { // 15.4.4.8
-                NativeFunctions.expectParameters(nativeobject, call, c, 0, 0);
                 Set<ObjectLabel> thisobj = state.readThisObjects();
                 Value length_val = readLength(thisobj, c);
                 Double length_prop_num = UnknownValueResolver.getRealValue(length_val, state).getNum();
@@ -351,7 +344,6 @@ public class JSArray {
             }
 
             case ARRAY_SHIFT: {
-                NativeFunctions.expectParameters(nativeobject, call, c, 0, 0);
                 // perform the operation on a per-array basis to avoid exchange of values among arrays
                 Set<ObjectLabel> thisObjects = newSet(state.readThisObjects());
                 Value firstElement = UnknownValueResolver.getRealValue(pv.readPropertyValue(thisObjects, "0"), state);
@@ -394,12 +386,10 @@ public class JSArray {
             }
 
             case ARRAY_SLICE: {
-                NativeFunctions.expectParameters(nativeobject, call, c, 0, 2);
-
                 ObjectLabel resultArray = makeArray(call.getSourceNode(), c);
 
                 // resolve the fromIndex, a value of null means that it is not coercible to a single, precise number
-                Value fromIndexValue = NativeFunctions.readParameter(call, state, 0);
+                Value fromIndexValue = FunctionCalls.readParameter(call, state, 0);
                 if (fromIndexValue.isMaybeUndef()) {
                     fromIndexValue = fromIndexValue.restrictToNotUndef().joinNum(0);
                 }
@@ -407,7 +397,7 @@ public class JSArray {
                 Long fromIndex = fromIndexNum != null ? Conversion.toUInt32(fromIndexNum) : null;
 
                 // resolve the toIndex, a value of null means that it is not coercible to a single, precise number
-                Value toIndexValue = NativeFunctions.readParameter(call, state, 1);
+                Value toIndexValue = FunctionCalls.readParameter(call, state, 1);
                 Long toIndex;
                 if (toIndexValue.isMaybeUndef() && !toIndexValue.isMaybeOtherThanUndef()) {
                     toIndex = Long.MAX_VALUE; // default value: array length, resolved later
@@ -431,16 +421,19 @@ public class JSArray {
                     } else {
                         // imprecise case: merge all properties (could be special cased for a little extra precision (e.g. known length of output, precise prefix of output...)
                         Value read = pv.readPropertyValue(singleton(thisObject), Value.makeAnyStrUInt());
-                        pv.writeProperty(singleton(resultArray), Value.makeAnyStrUInt(), read);
-                        writeLength(resultArray, Value.makeAnyNumUInt(), c);
+                        if (read.isNone()) {
+                            c.getState().setToNone();
+                        } else {
+                            pv.writeProperty(singleton(resultArray), Value.makeAnyStrUInt(), read);
+                            writeLength(resultArray, Value.makeAnyNumUInt(), c);
+                        }
                     }
                 }, c);
                 return Value.makeObject(resultArray);
             }
 
             case ARRAY_SORT: {
-                NativeFunctions.expectParameters(nativeobject, call, c, 0, 1);
-                Value comparefn = NativeFunctions.readParameter(call, state, 0);
+                Value comparefn = FunctionCalls.readParameter(call, state, 0);
                 Set<ObjectLabel> thisobj = state.readThisObjects();
                 Value length = UnknownValueResolver.getRealValue(pv.readPropertyValue(thisobj, "length"), state);
                 if (length.isMaybeSingleNum() && (length.getNum() == 0 || length.getNum() == 1)) {
@@ -456,7 +449,7 @@ public class JSArray {
                             c.getMonitoring().addMessage(call.getSourceNode(), Severity.HIGH,
                                     "TypeError, invalid argument to Array.prototype.sort");
                         }
-                        if(!comparefn.isMaybeUndef() && comparefn.getObjectLabels().stream().noneMatch(l -> l.getKind() == Kind.FUNCTION)){
+                        if (!comparefn.isMaybeUndef() && comparefn.getObjectLabels().stream().noneMatch(l -> l.getKind() == Kind.FUNCTION)) {
                             return Value.makeNone(); // definitely invalid comparefn;
                         }
                         shuffleArrayWeakly(thisobj, c);
@@ -510,11 +503,12 @@ public class JSArray {
 
             case ARRAY_SPLICE: {
                 // TODO: improve precision?
-                NativeFunctions.expectParameters(nativeobject, call, c, 2, -1);
-
                 // construct return value
                 ObjectLabel resultArray = makeArray(call.getSourceNode(), c);
                 Value arrayValues = pv.readPropertyValue(state.readThisObjects(), Value.makeAnyStrUInt());
+                if (arrayValues.isNone()) {
+                    return Value.makeNone();
+                }
                 pv.writeProperty(Collections.singleton(resultArray), Value.makeAnyStrUInt(), arrayValues);
                 writeLength(resultArray, Value.makeAnyNumUInt(), c);
 
@@ -526,7 +520,7 @@ public class JSArray {
                     parameters = UnknownValueResolver.join(parameters, call.getUnknownArg(), state);
                 else
                     for (int i = 2; i < call.getNumberOfArgs(); i++)
-                        parameters = UnknownValueResolver.join(parameters, NativeFunctions.readParameter(call, state, i), state);
+                        parameters = UnknownValueResolver.join(parameters, FunctionCalls.readParameter(call, state, i), state);
                 pv.deleteProperty(thisObjects, Value.makeAnyStrUInt(), true);
                 pv.writeProperty(thisObjects, Value.makeAnyStrUInt(), parameters.join(arrayValues).removeAttributes(), true);
                 writeLength(thisObjects, Value.makeAnyNumUInt(), c);
@@ -536,7 +530,6 @@ public class JSArray {
 
             case ARRAY_UNSHIFT: { // 15.4.4.13
                 // TODO merge implementation with ARRAY_SHIFT?
-                NativeFunctions.expectParameters(nativeobject, call, c, 0, 1);
                 // perform the operation on a per-array basis to avoid exchange of values among arrays
                 Set<ObjectLabel> thisObjects = state.readThisObjects();
                 boolean moreThanOneArray = thisObjects.size() > 1;
@@ -568,16 +561,15 @@ public class JSArray {
                     writeLength(thisObj, new_length, c);
                     sharedNewLength = sharedNewLength.join(new_length);
                 }
-                pv.writeProperty(thisObjects, Value.makeTemporaryStr("0"), NativeFunctions.readParameter(call, state, 0).removeAttributes(), moreThanOneArray);
+                pv.writeProperty(thisObjects, Value.makeTemporaryStr("0"), FunctionCalls.readParameter(call, state, 0).removeAttributes(), moreThanOneArray);
                 return sharedNewLength;
             }
 
             case ARRAY_INDEXOF: { // 15.4.4.14
-                NativeFunctions.expectParameters(nativeobject, call, c, 1, 2);
                 c.getMonitoring().visitPropertyRead(call.getJSSourceNode(), state.readThisObjects(), Value.makeAnyStrUInt(), state, false);
             /* Value searchElement =*/
-                NativeFunctions.readParameter(call, state, 0);
-                Value fromIndex = call.getNumberOfArgs() > 1 ? Conversion.toInteger(NativeFunctions.readParameter(call, state, 1), c) : Value.makeNum(0); // TODO: sometimes certain?
+                FunctionCalls.readParameter(call, state, 0);
+                Value fromIndex = call.getNumberOfArgs() > 1 ? Conversion.toInteger(FunctionCalls.readParameter(call, state, 1), c) : Value.makeNum(0); // TODO: sometimes certain?
                 Double fromindex_num = UnknownValueResolver.getRealValue(fromIndex, state).getNum();
                 int n = fromindex_num == null ? -1 : fromindex_num.intValue();
                 Set<ObjectLabel> thisobj = state.readThisObjects();
@@ -665,7 +657,7 @@ public class JSArray {
     }
 
     public static ObjectLabel makeArray(AbstractNode allocationNode, Value length, HeapContext heapContext, Solver.SolverInterface c) {
-        ObjectLabel array = new ObjectLabel(allocationNode, Kind.ARRAY, heapContext);
+        ObjectLabel array = ObjectLabel.make(allocationNode, Kind.ARRAY, heapContext);
         c.getState().newObject(array);
         c.getState().writeInternalPrototype(array, Value.makeObject(InitialStateBuilder.ARRAY_PROTOTYPE));
         writeLength(array, length, c);
@@ -686,43 +678,44 @@ public class JSArray {
         writeLength(array, Value.makeAnyNumUInt(), c);
     }
 
-    public static Value evaluateToString(ObjectLabel thiss, Solver.SolverInterface c) {
-        // 15.4.4.2 Array.prototype.toString ( ) - defined in terms of this.join() or Object.prototype.toString
-        Value join = c.getAnalysis().getPropVarOperations().readPropertyValue(singleton(thiss), "join");
-        c.getMonitoring().visitPropertyRead(c.getNode(), singleton(thiss), Value.makeStr("join"), c.getState(), false);
-        join = UnknownValueResolver.getRealValue(join, c.getState());
-        boolean hasNonCallable = false;
-        boolean hasArrayJoin = false;
-        boolean hasOtherCallable = false;
-        if (join.isMaybeOtherThanObject()) {
-            hasNonCallable = true;
-        }
-        for (ObjectLabel l : join.getObjectLabels()) {
-            if (l.isHostObject() && l.getHostObject() == ECMAScriptObjects.ARRAY_JOIN) {
-                hasArrayJoin = true;
-            } else if (l.getKind() != Kind.FUNCTION) {
+    public static Value evaluateToString(Value thisval, Solver.SolverInterface c) {
+        List<Value> strs = newList();
+        for (ObjectLabel thisObj : Conversion.toObjectLabels(c.getNode(), thisval, c)) {
+            // 15.4.4.2 Array.prototype.toString ( ) - defined in terms of this.join() or Object.prototype.toString
+            Value join = c.getAnalysis().getPropVarOperations().readPropertyValue(singleton(thisObj), "join");
+            c.getMonitoring().visitPropertyRead(c.getNode(), singleton(thisObj), Value.makeStr("join"), c.getState(), false);
+            join = UnknownValueResolver.getRealValue(join, c.getState());
+            boolean hasNonCallable = false;
+            boolean hasArrayJoin = false;
+            boolean hasOtherCallable = false;
+            if (join.isMaybeOtherThanObject()) {
                 hasNonCallable = true;
-            } else {
-                hasOtherCallable = true;
+            }
+            for (ObjectLabel joinObj : join.getObjectLabels()) {
+                if (joinObj.isHostObject() && joinObj.getHostObject() == ECMAScriptObjects.ARRAY_JOIN) {
+                    hasArrayJoin = true;
+                } else if (joinObj.getKind() != Kind.FUNCTION) {
+                    hasNonCallable = true;
+                } else {
+                    hasOtherCallable = true;
+                }
+            }
+            if (hasArrayJoin) {
+                // common case: take a fast path
+                strs.add(evaluateJoinOrToLocaleString(c.getNode(), singleton(thisObj), Value.makeUndef(), false, c));
+            }
+            if (hasNonCallable) {
+                strs.add(JSObject.evaluateToString(Value.makeObject(thisObj), c));
+            }
+            if (hasOtherCallable) {
+                // FIXME: make the implicit calls (GitHub #353)
+                throw new AnalysisLimitationException.AnalysisModelLimitationException(c.getNode().getSourceLocation() + ": Trying to call toString for Array with redefined join-property.");
             }
         }
-
-        List<Value> results = newList();
-        if (hasArrayJoin) {
-            // common case: take a fast path
-            results.add(evaluateJoinOrToLocaleString(c.getNode(), singleton(thiss), Value.makeUndef(), false, c));
-        }
-        if (hasNonCallable){
-            results.add(JSObject.evaluateToString(thiss, c));
-        }
-        if (hasOtherCallable) {
-            // FIXME: make the implicit calls
-            throw new AnalysisLimitationException.AnalysisModelLimitationException(c.getNode().getSourceLocation() + ": Trying to call toString for Array with redefined join-property.");
-        }
-        return Value.join(results);
+        return Value.join(strs);
     }
 
-    public static Value evaluateJoinOrToLocaleString(AbstractNode node, Set<ObjectLabel> objlabels, Value separatorValue, boolean is_toLocaleString, GenericSolver<State, Context, CallEdge, IAnalysisMonitoring, Analysis>.SolverInterface c) {
+    public static Value evaluateJoinOrToLocaleString(AbstractNode node, Set<ObjectLabel> objlabels, Value separatorValue, boolean is_toLocaleString, Solver.SolverInterface c) {
             State state = c.getState();
             PropVarOperations pv = c.getAnalysis().getPropVarOperations();
             c.getMonitoring().visitPropertyRead(node, objlabels, Value.makeAnyStrUInt(), state, false);

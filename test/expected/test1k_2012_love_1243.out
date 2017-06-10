@@ -1,11 +1,16 @@
 test/1k2012love/1243.js:175:13: [definite] Too many parameters to function CanvasRenderingContext2D.prototype.stroke
 test/1k2012love/1243.js:116:13: [definite] The variable l is never used
 test/1k2012love/1243.js:116:13: [definite] The variable r is never used
-test/1k2012love/shim.js:6:5: [definite] The variable b is never used
+test/1k2012love/1243.js:120:5: [maybe] ReferenceError, reading absent variable t
+test/1k2012love/1243.js:125:5: [maybe] ReferenceError, reading absent variable a
+test/1k2012love/1243.js:125:19: [maybe] ReferenceError, reading absent variable a
 test/1k2012love/1243.js:126:5: [maybe] TypeError, call to non-function
 test/1k2012love/1243.js:127:5: [maybe] TypeError, call to non-function
 test/1k2012love/1243.js:128:5: [maybe] TypeError, call to non-function
 test/1k2012love/1243.js:129:5: [maybe] TypeError, call to non-function
+test/1k2012love/1243.js:130:22: [maybe] ReferenceError, reading absent variable w
+test/1k2012love/1243.js:130:25: [maybe] ReferenceError, reading absent variable h
+test/1k2012love/1243.js:142:14: [maybe] ReferenceError, reading absent variable L
 test/1k2012love/1243.js:142:14: [maybe] TypeError, accessing property of null/undefined
 test/1k2012love/1243.js:144:13: [maybe] TypeError, accessing property of null/undefined
 test/1k2012love/1243.js:145:22: [maybe] TypeError, accessing property of null/undefined
@@ -19,13 +24,16 @@ test/1k2012love/1243.js:158:18: [maybe] TypeError, accessing property of null/un
 test/1k2012love/1243.js:158:29: [maybe] TypeError, accessing property of null/undefined
 test/1k2012love/1243.js:159:18: [maybe] TypeError, accessing property of null/undefined
 test/1k2012love/1243.js:159:29: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1243.js:172:25: [maybe] ReferenceError, reading absent variable B
 test/1k2012love/1243.js:172:25: [maybe] TypeError, accessing property of null/undefined
 test/1k2012love/1243.js:173:31: [maybe] TypeError, accessing property of null/undefined
 test/1k2012love/1243.js:173:42: [maybe] TypeError, accessing property of null/undefined
 test/1k2012love/1243.js:173:55: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1243.js:175:40: [maybe] ReferenceError, reading absent variable B
 test/1k2012love/1243.js:175:40: [maybe] TypeError, accessing property of null/undefined
 test/1k2012love/1243.js:175:51: [maybe] TypeError, accessing property of null/undefined
 test/1k2012love/1243.js:175:64: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1243.js:181:14: [maybe] ReferenceError, reading absent variable L
 test/1k2012love/1243.js:181:14: [maybe] TypeError, accessing property of null/undefined
 test/1k2012love/1243.js:183:13: [maybe] TypeError, accessing property of null/undefined
 test/1k2012love/1243.js:184:22: [maybe] TypeError, accessing property of null/undefined
@@ -39,16 +47,18 @@ test/1k2012love/1243.js:197:18: [maybe] TypeError, accessing property of null/un
 test/1k2012love/1243.js:197:29: [maybe] TypeError, accessing property of null/undefined
 test/1k2012love/1243.js:198:18: [maybe] TypeError, accessing property of null/undefined
 test/1k2012love/1243.js:198:29: [maybe] TypeError, accessing property of null/undefined
-test/1k2012love/shim.js:8:9: [maybe] TypeError, accessing property of null/undefined
-test/1k2012love/shim.js:8:9: [maybe] TypeError, call to non-function
-test/1k2012love/shim.js:9:1: [maybe] TypeError, accessing property of null/undefined
-test/1k2012love/1243.js:126:5: [maybe] Reading absent property addColorStop
-test/1k2012love/1243.js:127:5: [maybe] Reading absent property addColorStop
-test/1k2012love/1243.js:128:5: [maybe] Reading absent property addColorStop
-test/1k2012love/1243.js:129:5: [maybe] Reading absent property addColorStop
-test/1k2012love/shim.js:6:9: [maybe] Reading absent property body
-test/1k2012love/shim.js:8:9: [maybe] Reading absent property getContext
-test/1k2012love/shim.js:9:1: [maybe] Reading absent property body
+test/1k2012love/1243.js:213:26: [maybe] ReferenceError, reading absent variable h
+test/1k2012love/1243.js:220:43: [maybe] ReferenceError, reading absent variable h
+test/1k2012love/1243.js:220:82: [maybe] ReferenceError, reading absent variable w
+test/1k2012love/1243.js:222:36: [maybe] ReferenceError, reading absent variable h
+test/1k2012love/1243.js:225:19: [maybe] ReferenceError, reading absent variable h
+test/1k2012love/1243.js:225:26: [maybe] ReferenceError, reading absent variable w
+test/1k2012love/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1243.js:126:5: [maybe] Reading absent property addColorStop of host object
+test/1k2012love/1243.js:127:5: [maybe] Reading absent property addColorStop of host object
+test/1k2012love/1243.js:128:5: [maybe] Reading absent property addColorStop of host object
+test/1k2012love/1243.js:129:5: [maybe] Reading absent property addColorStop of host object
+test/1k2012love/1243.js: [maybe] Uncaught exception, constructed at [test/1k2012love/1243.js:120:5, test/1k2012love/1243.js:125:5, test/1k2012love/1243.js:125:19, test/1k2012love/1243.js:126:5, test/1k2012love/1243.js:127:5, test/1k2012love/1243.js:128:5, test/1k2012love/1243.js:129:5, test/1k2012love/1243.js:130:22, test/1k2012love/1243.js:130:25, test/1k2012love/1243.js:142:14, test/1k2012love/1243.js:144:13, test/1k2012love/1243.js:145:22, test/1k2012love/1243.js:145:35, test/1k2012love/1243.js:155:33, test/1k2012love/1243.js:155:47, test/1k2012love/1243.js:155:62, test/1k2012love/1243.js:157:18, test/1k2012love/1243.js:157:29, test/1k2012love/1243.js:158:18, test/1k2012love/1243.js:158:29, test/1k2012love/1243.js:159:18, test/1k2012love/1243.js:159:29, test/1k2012love/1243.js:172:25, test/1k2012love/1243.js:173:31, test/1k2012love/1243.js:173:42, test/1k2012love/1243.js:173:55, test/1k2012love/1243.js:175:40, test/1k2012love/1243.js:175:51, test/1k2012love/1243.js:175:64, test/1k2012love/1243.js:181:14, test/1k2012love/1243.js:183:13, test/1k2012love/1243.js:184:22, test/1k2012love/1243.js:184:35, test/1k2012love/1243.js:194:33, test/1k2012love/1243.js:194:47, test/1k2012love/1243.js:194:62, test/1k2012love/1243.js:196:18, test/1k2012love/1243.js:196:29, test/1k2012love/1243.js:197:18, test/1k2012love/1243.js:197:29, test/1k2012love/1243.js:198:18, test/1k2012love/1243.js:198:29, test/1k2012love/1243.js:213:26, test/1k2012love/1243.js:220:43, test/1k2012love/1243.js:220:82, test/1k2012love/1243.js:222:36, test/1k2012love/1243.js:225:19, test/1k2012love/1243.js:225:26, test/1k2012love/shim.js:9:5]
 test/1k2012love/1243.js:126:5: [maybe] Converting primitive boolean to object
 test/1k2012love/1243.js:126:5: [maybe] Converting primitive number to object
 test/1k2012love/1243.js:126:5: [maybe] Converting primitive string to object
@@ -75,7 +85,6 @@ test/1k2012love/1243.js:158:29: [maybe] Reading absent property (computed name)
 test/1k2012love/1243.js:159:18: [maybe] Reading absent property (computed name)
 test/1k2012love/1243.js:159:29: [maybe] Reading absent property (computed name)
 test/1k2012love/1243.js:172:25: [maybe] Reading absent property (computed name)
-test/1k2012love/1243.js:172:25: [maybe] Reading absent property (computed name)
 test/1k2012love/1243.js:173:31: [maybe] Reading absent property (computed name)
 test/1k2012love/1243.js:173:42: [maybe] Reading absent property (computed name)
 test/1k2012love/1243.js:173:55: [maybe] Reading absent property (computed name)
@@ -95,5 +104,3 @@ test/1k2012love/1243.js:197:18: [maybe] Reading absent property (computed name)
 test/1k2012love/1243.js:197:29: [maybe] Reading absent property (computed name)
 test/1k2012love/1243.js:198:18: [maybe] Reading absent property (computed name)
 test/1k2012love/1243.js:198:29: [maybe] Reading absent property (computed name)
-test/1k2012love/shim.js:7:9: [maybe] Reading absent property (computed name)
-test/1k2012love/shim.js,test/1k2012love/1243.js: [maybe] Uncaught exception, constructed at [test/1k2012love/1243.js:126:5, test/1k2012love/1243.js:127:5, test/1k2012love/1243.js:128:5, test/1k2012love/1243.js:129:5, test/1k2012love/1243.js:142:14, test/1k2012love/1243.js:144:13, test/1k2012love/1243.js:145:22, test/1k2012love/1243.js:145:35, test/1k2012love/1243.js:155:33, test/1k2012love/1243.js:155:47, test/1k2012love/1243.js:155:62, test/1k2012love/1243.js:157:18, test/1k2012love/1243.js:157:29, test/1k2012love/1243.js:158:18, test/1k2012love/1243.js:158:29, test/1k2012love/1243.js:159:18, test/1k2012love/1243.js:159:29, test/1k2012love/1243.js:172:25, test/1k2012love/1243.js:173:31, test/1k2012love/1243.js:173:42, test/1k2012love/1243.js:173:55, test/1k2012love/1243.js:175:40, test/1k2012love/1243.js:175:51, test/1k2012love/1243.js:175:64, test/1k2012love/1243.js:181:14, test/1k2012love/1243.js:183:13, test/1k2012love/1243.js:184:22, test/1k2012love/1243.js:184:35, test/1k2012love/1243.js:194:33, test/1k2012love/1243.js:194:47, test/1k2012love/1243.js:194:62, test/1k2012love/1243.js:196:18, test/1k2012love/1243.js:196:29, test/1k2012love/1243.js:197:18, test/1k2012love/1243.js:197:29, test/1k2012love/1243.js:198:18, test/1k2012love/1243.js:198:29, test/1k2012love/shim.js:8:9, test/1k2012love/shim.js:9:1]

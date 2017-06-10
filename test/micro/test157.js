@@ -1,5 +1,5 @@
 function recursive(d) {
-  var other;
+  var other = true;
   if (d) {
     other = "FOO";
     recursive(!d);

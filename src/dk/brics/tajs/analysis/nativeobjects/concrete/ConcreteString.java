@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,7 +25,12 @@ public class ConcreteString implements PrimitiveConcreteValue {
     }
 
     private String escapeDoubleQuotesAndNewLines(String string) {
-        return string.replace("\"", "\\\"").replaceAll("(\\r|\\n|\\r\\n|\u2028|\u2029)+", "\\\\n");
+        String v1 = string.replace("\"", "\\\"");
+        String v2 = v1.replace("\u2028", "\n"); // need to normalize for Nashorn
+        String v3 = v2.replace("\u2029", "\n"); // need to normalize for Nashorn
+        String v4 = v3.replace("\n", "\\n");
+        String v5 = v4.replace("\r", "\\r");
+        return v5;
     }
 
     private String escapeBackslashes(String string) {
@@ -48,5 +53,20 @@ public class ConcreteString implements PrimitiveConcreteValue {
 
     public String getString() {
         return string;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        ConcreteString that = (ConcreteString) o;
+
+        return string != null ? string.equals(that.string) : that.string == null;
+    }
+
+    @Override
+    public int hashCode() {
+        return string != null ? string.hashCode() : 0;
     }
 }

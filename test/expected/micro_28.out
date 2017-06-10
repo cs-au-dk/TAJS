@@ -1,1 +1,2 @@
+test/micro/test28.js: [definite] Exceptional program exit is unreachable
 test/micro/test28.js:16:1: [info] Abstract value: 21.0

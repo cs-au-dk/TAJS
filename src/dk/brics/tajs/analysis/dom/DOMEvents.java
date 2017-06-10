@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -38,6 +38,7 @@ import java.util.List;
 import java.util.Set;
 
 import static dk.brics.tajs.util.Collections.newList;
+import static dk.brics.tajs.util.Collections.newSet;
 import static dk.brics.tajs.util.Collections.singleton;
 
 public class DOMEvents {
@@ -113,6 +114,7 @@ public class DOMEvents {
      */
     private static Value createAnyEvent() {
         Set<ObjectLabel> labels = Collections.newSet();
+        labels.add(DOMRegistry.getHashChangeEventLabel()); // NB: this event does not have its own field in this class. That is deliberate since there currently is no EventType.HASH_CHANGE event type.
         labels.add(DOMRegistry.getKeyboardEventLabel());
         labels.add(DOMRegistry.getMouseEventLabel());
         labels.add(DOMRegistry.getMutationEventLabel());
@@ -127,6 +129,7 @@ public class DOMEvents {
     public static void addEventHandler(Value handler, EventType kind, Solver.SolverInterface c) {
         Collection<ObjectLabel> labels = toEventHandler(handler, c);
         DOMRegistry.MaySets key = mapEventTypeToMaySetKey(kind);
+        c.getMonitoring().visitEventHandlerRegistration(c.getNode(), c.getState().getContext(), Value.makeObject(newSet(labels)));
         c.getState().getExtras().addToMaySet(key.name(), labels);
     }
 
@@ -174,6 +177,9 @@ public class DOMEvents {
 
     private static void triggerEventHandler(AbstractNode currentNode, State currentState, EventType type, boolean requiresStateCloning, Solver.SolverInterface c, Set<ObjectLabel> handlers) {
         Value event = getEvent(type);
+        if (Options.get().isUserEventsDisabled() && type.isUserEvent()) {
+            return;
+        }
         if (handlers.isEmpty()) {
             return;
         }

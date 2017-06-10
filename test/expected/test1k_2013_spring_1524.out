@@ -1,16 +1,37 @@
 test/1k2013spring/1524.js:52:3: [definite] The conditional expression is always false
-test/1k2013spring/1524.js:52:3: [definite] The conditional expression is always false
-test/1k2013spring/1524.js:52:3: [definite] The conditional expression is always false
 test/1k2013spring/1524.js:52:3: [definite] Reading absent property requestAnimationFrame
 test/1k2013spring/1524.js:53:3: [definite] Reading absent property webkitRequestAnimationFrame
 test/1k2013spring/1524.js:54:3: [definite] Reading absent property mozRequestAnimationFrame
 test/1k2013spring/1524.js:103:3: [definite] Too few parameters to function CanvasRenderingContext2D.prototype.arc
-test/1k2013spring/1524.js:20:19: [maybe] TypeError, accessing property of null/undefined
-test/1k2013spring/shim.js:8:9: [maybe] TypeError, accessing property of null/undefined
-test/1k2013spring/shim.js:8:9: [maybe] TypeError, call to non-function
-test/1k2013spring/shim.js:9:1: [maybe] TypeError, accessing property of null/undefined
-test/1k2013spring/shim.js:6:9: [maybe] Reading absent property body
-test/1k2013spring/shim.js:8:9: [maybe] Reading absent property getContext
-test/1k2013spring/shim.js:9:1: [maybe] Reading absent property body
-test/1k2013spring/shim.js:7:9: [maybe] Reading absent property (computed name)
-test/1k2013spring/shim.js,test/1k2013spring/1524.js: [maybe] Uncaught exception, constructed at [test/1k2013spring/1524.js:20:19, test/1k2013spring/shim.js:8:9, test/1k2013spring/shim.js:9:1]
+test/1k2013spring/1524.js:75:27: [maybe] ReferenceError, reading absent variable horizon
+test/1k2013spring/1524.js:75:42: [maybe] ReferenceError, reading absent variable block
+test/1k2013spring/1524.js:78:26: [maybe] ReferenceError, reading absent variable block
+test/1k2013spring/1524.js:78:33: [maybe] ReferenceError, reading absent variable width
+test/1k2013spring/1524.js:78:41: [maybe] ReferenceError, reading absent variable block
+test/1k2013spring/1524.js:79:18: [maybe] ReferenceError, reading absent variable height
+test/1k2013spring/1524.js:79:27: [maybe] ReferenceError, reading absent variable horizon
+test/1k2013spring/1524.js:79:37: [maybe] ReferenceError, reading absent variable block
+test/1k2013spring/1524.js:83:20: [maybe] ReferenceError, reading absent variable block
+test/1k2013spring/1524.js:101:3: [maybe] ReferenceError, reading absent variable a
+test/1k2013spring/1524.js:103:24: [maybe] ReferenceError, reading absent variable block
+test/1k2013spring/1524.js:103:47: [maybe] ReferenceError, reading absent variable pi
+test/1k2013spring/1524.js:103:62: [maybe] ReferenceError, reading absent variable pi
+test/1k2013spring/1524.js:109:13: [maybe] ReferenceError, reading absent variable block
+test/1k2013spring/1524.js:110:33: [maybe] ReferenceError, reading absent variable block
+test/1k2013spring/1524.js:110:68: [maybe] ReferenceError, reading absent variable block
+test/1k2013spring/1524.js:110:94: [maybe] ReferenceError, reading absent variable block
+test/1k2013spring/1524.js:124:3: [maybe] ReferenceError, reading absent variable a
+test/1k2013spring/1524.js:125:17: [maybe] ReferenceError, reading absent variable block
+test/1k2013spring/1524.js:134:17: [maybe] ReferenceError, reading absent variable height
+test/1k2013spring/1524.js:134:26: [maybe] ReferenceError, reading absent variable horizon
+test/1k2013spring/1524.js:134:35: [maybe] ReferenceError, reading absent variable width
+test/1k2013spring/1524.js:134:42: [maybe] ReferenceError, reading absent variable horizon
+test/1k2013spring/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1524.js: [maybe] Uncaught exception, constructed at [test/1k2013spring/1524.js:75:27, test/1k2013spring/1524.js:75:42, test/1k2013spring/1524.js:78:26, test/1k2013spring/1524.js:78:33, test/1k2013spring/1524.js:78:41, test/1k2013spring/1524.js:79:18, test/1k2013spring/1524.js:79:27, test/1k2013spring/1524.js:79:37, test/1k2013spring/1524.js:83:20, test/1k2013spring/1524.js:101:3, test/1k2013spring/1524.js:103:24, test/1k2013spring/1524.js:103:47, test/1k2013spring/1524.js:103:62, test/1k2013spring/1524.js:109:13, test/1k2013spring/1524.js:110:33, test/1k2013spring/1524.js:110:68, test/1k2013spring/1524.js:110:94, test/1k2013spring/1524.js:124:3, test/1k2013spring/1524.js:125:17, test/1k2013spring/1524.js:134:17, test/1k2013spring/1524.js:134:26, test/1k2013spring/1524.js:134:35, test/1k2013spring/1524.js:134:42, test/1k2013spring/shim.js:9:5]
+test/1k2013spring/1524.js:103:3: [maybe] Conversion to number yields NaN
+test/1k2013spring/1524.js:110:24: [maybe] Conversion to number yields NaN
+test/1k2013spring/1524.js:110:59: [maybe] Conversion to number yields NaN
+test/1k2013spring/1524.js:127:3: [maybe] Conversion to number yields NaN
+test/1k2013spring/1524.js:128:3: [maybe] Conversion to number yields NaN
+test/1k2013spring/1524.js:137:3: [maybe] Conversion to number yields NaN
+test/1k2013spring/1524.js:138:3: [maybe] Conversion to number yields NaN

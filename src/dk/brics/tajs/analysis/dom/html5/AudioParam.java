@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -49,9 +49,9 @@ public class AudioParam {
         // Scraped from google chrome:
         Set<String> scrapedFunctionPropertyNames = newSet(Arrays.asList("setValueAtTime", "linearRampToValueAtTime", "exponentialRampToValueAtTime", "setTargetAtTime", "setValueCurveAtTime", "cancelScheduledValues"));
 
-        CONSTRUCTOR = new ObjectLabel(DOMObjects.AUDIOPARAM_CONSTRUCTOR, ObjectLabel.Kind.FUNCTION);
-        PROTOTYPE = new ObjectLabel(DOMObjects.AUDIOPARAM_PROTOTYPE, ObjectLabel.Kind.OBJECT);
-        INSTANCES = new ObjectLabel(DOMObjects.AUDIOPARAM_INSTANCES, ObjectLabel.Kind.OBJECT);
+        CONSTRUCTOR = ObjectLabel.make(DOMObjects.AUDIOPARAM_CONSTRUCTOR, ObjectLabel.Kind.FUNCTION);
+        PROTOTYPE = ObjectLabel.make(DOMObjects.AUDIOPARAM_PROTOTYPE, ObjectLabel.Kind.OBJECT);
+        INSTANCES = ObjectLabel.make(DOMObjects.AUDIOPARAM_INSTANCES, ObjectLabel.Kind.OBJECT);
 
         // Constructor Object
         s.newObject(CONSTRUCTOR);
@@ -82,7 +82,7 @@ public class AudioParam {
          * Functions.
          */
 
-        ObjectLabel dummyFunction = new ObjectLabel(DOMObjects.AUDIOPARAM_TAJS_UNSUPPORTED_FUNCTION, ObjectLabel.Kind.FUNCTION);
+        ObjectLabel dummyFunction = ObjectLabel.make(DOMObjects.AUDIOPARAM_TAJS_UNSUPPORTED_FUNCTION, ObjectLabel.Kind.FUNCTION);
         for (String propertyName : scrapedFunctionPropertyNames) {
             // explicit implementation of: createDOMFunction(PROTOTYPE, DOMObjects.WEBGLRENDERINGCONTEXT_SOME_FUNCTION, propertyName, ***Value.makeAnyNum()***);
             s.newObject(dummyFunction);

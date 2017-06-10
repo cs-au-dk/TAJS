@@ -1,1 +1,2 @@
 TAJS-dynamic-code(test/uneval/uneval32.html:3:1):1:1: [definite] Reading absent property opera
+test/uneval/uneval32.html: [definite] Exceptional program exit is unreachable

@@ -1,36 +1,46 @@
-test/1k2013spring/1358.js:27:6: [definite] The conditional expression is always false
-test/1k2013spring/1358.js:27:6: [definite] Reading absent property which
 test/1k2013spring/1358.js:41:15: [definite] The variable e is never used
+test/1k2013spring/1358.js:2:2: [maybe] ReferenceError, reading absent variable a
+test/1k2013spring/1358.js:2:21: [maybe] ReferenceError, reading absent variable c
 test/1k2013spring/1358.js:10:17: [maybe] TypeError, accessing property of null/undefined
 test/1k2013spring/1358.js:11:14: [maybe] TypeError, accessing property of null/undefined
 test/1k2013spring/1358.js:11:24: [maybe] TypeError, accessing property of null/undefined
 test/1k2013spring/1358.js:11:35: [maybe] TypeError, accessing property of null/undefined
 test/1k2013spring/1358.js:11:46: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1358.js:15:2: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1358.js:16:2: [maybe] TypeError, accessing property of null/undefined
 test/1k2013spring/1358.js:23:1: [maybe] TypeError, accessing property of null/undefined
-test/1k2013spring/shim.js:8:9: [maybe] TypeError, accessing property of null/undefined
-test/1k2013spring/shim.js:8:9: [maybe] TypeError, call to non-function
-test/1k2013spring/shim.js:9:1: [maybe] TypeError, accessing property of null/undefined
-test/1k2013spring/1358.js:2:21: [maybe] Reading absent property width
-test/1k2013spring/1358.js:2:30: [maybe] Reading absent property height
-test/1k2013spring/1358.js:23:1: [maybe] Reading absent property body
-test/1k2013spring/shim.js:6:9: [maybe] Reading absent property body
-test/1k2013spring/shim.js:8:9: [maybe] Reading absent property getContext
-test/1k2013spring/shim.js:9:1: [maybe] Reading absent property body
-test/1k2013spring/1358.js:2:2: [maybe] Conversion from string to number yields NaN
-test/1k2013spring/1358.js:2:2: [maybe] Conversion to number yields NaN
+test/1k2013spring/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1358.js:27:6: [maybe] Reading absent property which of host object
+test/1k2013spring/1358.js: [maybe] Uncaught exception, constructed at [test/1k2013spring/1358.js:2:2, test/1k2013spring/1358.js:2:21, test/1k2013spring/1358.js:10:17, test/1k2013spring/1358.js:11:14, test/1k2013spring/1358.js:11:24, test/1k2013spring/1358.js:11:35, test/1k2013spring/1358.js:11:46, test/1k2013spring/1358.js:15:2, test/1k2013spring/1358.js:16:2, test/1k2013spring/1358.js:23:1, test/1k2013spring/shim.js:9:5]
+test/1k2013spring/1358.js:6:13: [maybe] Converting undefined to string
+test/1k2013spring/1358.js:7:13: [maybe] Converting undefined to string
+test/1k2013spring/1358.js:8:13: [maybe] Converting undefined to string
+test/1k2013spring/1358.js:10:17: [maybe] Converting primitive number to object
+test/1k2013spring/1358.js:10:17: [maybe] Converting primitive string to object
 test/1k2013spring/1358.js:10:17: [maybe] Reading absent property (computed name)
-test/1k2013spring/1358.js:10:17: [maybe] Reading absent property (computed name)
+test/1k2013spring/1358.js:11:3: [maybe] Conversion from string to number yields NaN
 test/1k2013spring/1358.js:11:3: [maybe] Conversion to number yields NaN
+test/1k2013spring/1358.js:11:14: [maybe] Converting primitive number to object
+test/1k2013spring/1358.js:11:14: [maybe] Converting primitive string to object
 test/1k2013spring/1358.js:11:14: [maybe] Reading absent property (computed name)
-test/1k2013spring/1358.js:11:14: [maybe] Reading absent property (computed name)
+test/1k2013spring/1358.js:11:24: [maybe] Converting primitive number to object
+test/1k2013spring/1358.js:11:24: [maybe] Converting primitive string to object
 test/1k2013spring/1358.js:11:24: [maybe] Reading absent property (computed name)
-test/1k2013spring/1358.js:11:24: [maybe] Reading absent property (computed name)
+test/1k2013spring/1358.js:11:35: [maybe] Converting primitive number to object
+test/1k2013spring/1358.js:11:35: [maybe] Converting primitive string to object
 test/1k2013spring/1358.js:11:35: [maybe] Reading absent property (computed name)
-test/1k2013spring/1358.js:11:35: [maybe] Reading absent property (computed name)
+test/1k2013spring/1358.js:11:46: [maybe] Converting primitive number to object
+test/1k2013spring/1358.js:11:46: [maybe] Converting primitive string to object
 test/1k2013spring/1358.js:11:46: [maybe] Reading absent property (computed name)
-test/1k2013spring/1358.js:11:46: [maybe] Reading absent property (computed name)
-test/1k2013spring/shim.js:7:9: [maybe] Reading absent property (computed name)
-test/1k2013spring/shim.js,test/1k2013spring/1358.js: [maybe] Uncaught exception, constructed at [test/1k2013spring/1358.js:10:17, test/1k2013spring/1358.js:11:14, test/1k2013spring/1358.js:11:24, test/1k2013spring/1358.js:11:35, test/1k2013spring/1358.js:11:46, test/1k2013spring/1358.js:23:1, test/1k2013spring/shim.js:8:9, test/1k2013spring/shim.js:9:1]
+test/1k2013spring/1358.js:28:5: [maybe] Converting undefined to string
+test/1k2013spring/1358.js:29:12: [maybe] Conversion to number yields NaN
+test/1k2013spring/1358.js:30:12: [maybe] Conversion to number yields NaN
+test/1k2013spring/1358.js:31:12: [maybe] Conversion to number yields NaN
+test/1k2013spring/1358.js:32:12: [maybe] Conversion to number yields NaN
+test/1k2013spring/1358.js:33:12: [maybe] Conversion to number yields NaN
+test/1k2013spring/1358.js:34:12: [maybe] Conversion to number yields NaN
+test/1k2013spring/1358.js:35:12: [maybe] Conversion to number yields NaN
+test/1k2013spring/1358.js:36:12: [maybe] Conversion to number yields NaN
 test/1k2013spring/1358.js:18:9: [info] Writing to unknown property that may cause loss of precision
 test/1k2013spring/1358.js:9:2: [info] Reading from unknown property that may cause loss of precision
 test/1k2013spring/1358.js:10:17: [info] Reading from unknown property that may cause loss of precision

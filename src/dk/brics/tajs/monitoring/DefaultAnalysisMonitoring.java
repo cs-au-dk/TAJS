@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,6 +32,7 @@ import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.Str;
 import dk.brics.tajs.lattice.Value;
+import dk.brics.tajs.solver.BlockAndContext;
 import dk.brics.tajs.solver.CallGraph;
 import dk.brics.tajs.solver.Message;
 
@@ -63,13 +64,11 @@ public class DefaultAnalysisMonitoring implements IAnalysisMonitoring {
     }
 
     @Override
-    public void beginPhase(AnalysisPhase phase) {
-
+    public void visitPhasePre(AnalysisPhase phase) {
     }
 
     @Override
-    public void endPhase(AnalysisPhase phase) {
-
+    public void visitPhasePost(AnalysisPhase phase) {
     }
 
     @Override
@@ -92,7 +91,7 @@ public class DefaultAnalysisMonitoring implements IAnalysisMonitoring {
     }
 
     @Override
-    public void visitBlockTransfer(BasicBlock b, State s) {
+    public void visitBlockTransferPre(BasicBlock b, State s) {
     }
 
     @Override
@@ -128,7 +127,7 @@ public class DefaultAnalysisMonitoring implements IAnalysisMonitoring {
     }
 
     @Override
-    public void visitPostBlockTransfer(BasicBlock b, State state) {
+    public void visitBlockTransferPost(BasicBlock b, State state) {
     }
 
     @Override
@@ -140,7 +139,11 @@ public class DefaultAnalysisMonitoring implements IAnalysisMonitoring {
     }
 
     @Override
-    public void visitNodeTransfer(AbstractNode n) {
+    public void visitNodeTransferPre(AbstractNode n, State s) {
+    }
+
+    @Override
+    public void visitNodeTransferPost(AbstractNode n, State s) {
     }
 
     @Override
@@ -156,10 +159,6 @@ public class DefaultAnalysisMonitoring implements IAnalysisMonitoring {
     }
 
     @Override
-    public void visitReachableNode(AbstractNode n) {
-    }
-
-    @Override
     public void visitRead(Node n, Value v, State state) {
     }
 
@@ -168,7 +167,7 @@ public class DefaultAnalysisMonitoring implements IAnalysisMonitoring {
     }
 
     @Override
-    public void visitReadProperty(ReadPropertyNode n, Set<ObjectLabel> objlabels, Str propertystr, boolean maybe, State state, Value v) {
+    public void visitReadProperty(ReadPropertyNode n, Set<ObjectLabel> objlabels, Str propertystr, boolean maybe, State state, Value v, ObjectLabel global_obj) {
     }
 
     @Override
@@ -180,11 +179,11 @@ public class DefaultAnalysisMonitoring implements IAnalysisMonitoring {
     }
 
     @Override
-    public void visitRecoveryGraph(int size) {
+    public void visitRecoveryGraph(AbstractNode node, int size) {
     }
 
     @Override
-    public void visitUnknownValueResolve(boolean partial, boolean scanning) {
+    public void visitUnknownValueResolve(AbstractNode node, boolean partial, boolean scanning) {
     }
 
     @Override
@@ -192,7 +191,7 @@ public class DefaultAnalysisMonitoring implements IAnalysisMonitoring {
     }
 
     @Override
-    public void visitVariableAsRead(ReadVariableNode n, Value v, State state) {
+    public void visitVariableAsRead(AbstractNode n, String varname, Value v, State state) {
     }
 
     @Override
@@ -201,5 +200,25 @@ public class DefaultAnalysisMonitoring implements IAnalysisMonitoring {
 
     @Override
     public void visitNativeFunctionReturn(AbstractNode node, HostObject hostObject, Value result) {
+    }
+
+    @Override
+    public void visitEventHandlerRegistration(AbstractNode node, Context context, Value handler) {
+    }
+
+    @Override
+    public void visitPropagationPre(BlockAndContext<Context> from, BlockAndContext<Context> to) {
+    }
+
+    @Override
+    public void visitPropagationPost(BlockAndContext<Context> from, BlockAndContext<Context> to, boolean changed) {
+    }
+
+    @Override
+    public void visitNewObject(AbstractNode node, ObjectLabel label, State s) {
+    }
+
+    @Override
+    public void visitRenameObject(AbstractNode node, ObjectLabel from, ObjectLabel to, State s) {
     }
 }

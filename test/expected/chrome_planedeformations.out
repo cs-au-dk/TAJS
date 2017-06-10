@@ -13,27 +13,39 @@ test/chromeexperiments/planedeformations.html:286:26: [definite] The variable pi
 test/chromeexperiments/planedeformations.html:477:17: [definite] The variable w is never used
 test/chromeexperiments/planedeformations.html:51:5: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/planedeformations.html:76:6: [maybe] TypeError, non-HTMLImageElement or non-HTMLCanvasElement as argument to drawImage
+test/chromeexperiments/planedeformations.html:128:5: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/planedeformations.html:165:7: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/planedeformations.html:165:31: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/planedeformations.html:202:7: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/planedeformations.html:202:31: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/planedeformations.html:237:7: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/planedeformations.html:237:31: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/planedeformations.html:273:7: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/planedeformations.html:273:31: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/planedeformations.html:312:7: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/planedeformations.html:312:31: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/planedeformations.html:350:7: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/planedeformations.html:350:31: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/planedeformations.html:388:7: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/planedeformations.html:388:31: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/planedeformations.html:426:7: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/planedeformations.html:426:31: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/planedeformations.html:464:7: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/planedeformations.html:464:31: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/planedeformations.html:501:7: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/planedeformations.html:501:31: [maybe] TypeError, accessing property of null/undefined
+test/chromeexperiments/planedeformations.html:539:7: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/planedeformations.html:539:31: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/planedeformations.html:72:25: [maybe] Reading 'this' yields the global object
-test/chromeexperiments/planedeformations.html:72:25: [maybe] Reading absent property width
+test/chromeexperiments/planedeformations.html:72:25: [maybe] Reading absent property width of host object
 test/chromeexperiments/planedeformations.html:73:26: [maybe] Reading 'this' yields the global object
-test/chromeexperiments/planedeformations.html:73:26: [maybe] Reading absent property height
+test/chromeexperiments/planedeformations.html:73:26: [maybe] Reading absent property height of host object
 test/chromeexperiments/planedeformations.html:76:29: [maybe] Reading 'this' yields the global object
 test/chromeexperiments/planedeformations.html:78:50: [maybe] Reading 'this' yields the global object
-test/chromeexperiments/planedeformations.html:78:50: [maybe] Reading absent property width
+test/chromeexperiments/planedeformations.html:78:50: [maybe] Reading absent property width of host object
 test/chromeexperiments/planedeformations.html:78:62: [maybe] Reading 'this' yields the global object
-test/chromeexperiments/planedeformations.html:78:62: [maybe] Reading absent property height
-test/chromeexperiments/planedeformations.html: [maybe] Uncaught exception, constructed at [test/chromeexperiments/planedeformations.html:51:5, test/chromeexperiments/planedeformations.html:165:31, test/chromeexperiments/planedeformations.html:202:31, test/chromeexperiments/planedeformations.html:237:31, test/chromeexperiments/planedeformations.html:273:31, test/chromeexperiments/planedeformations.html:312:31, test/chromeexperiments/planedeformations.html:350:31, test/chromeexperiments/planedeformations.html:388:31, test/chromeexperiments/planedeformations.html:426:31, test/chromeexperiments/planedeformations.html:464:31, test/chromeexperiments/planedeformations.html:501:31, test/chromeexperiments/planedeformations.html:539:31]
+test/chromeexperiments/planedeformations.html:78:62: [maybe] Reading absent property height of host object
+test/chromeexperiments/planedeformations.html: [maybe] Uncaught exception, constructed at [test/chromeexperiments/planedeformations.html:51:5, test/chromeexperiments/planedeformations.html:128:5, test/chromeexperiments/planedeformations.html:165:7, test/chromeexperiments/planedeformations.html:165:31, test/chromeexperiments/planedeformations.html:202:7, test/chromeexperiments/planedeformations.html:202:31, test/chromeexperiments/planedeformations.html:237:7, test/chromeexperiments/planedeformations.html:237:31, test/chromeexperiments/planedeformations.html:273:7, test/chromeexperiments/planedeformations.html:273:31, test/chromeexperiments/planedeformations.html:312:7, test/chromeexperiments/planedeformations.html:312:31, test/chromeexperiments/planedeformations.html:350:7, test/chromeexperiments/planedeformations.html:350:31, test/chromeexperiments/planedeformations.html:388:7, test/chromeexperiments/planedeformations.html:388:31, test/chromeexperiments/planedeformations.html:426:7, test/chromeexperiments/planedeformations.html:426:31, test/chromeexperiments/planedeformations.html:464:7, test/chromeexperiments/planedeformations.html:464:31, test/chromeexperiments/planedeformations.html:501:7, test/chromeexperiments/planedeformations.html:501:31, test/chromeexperiments/planedeformations.html:539:7, test/chromeexperiments/planedeformations.html:539:31]
 test/chromeexperiments/planedeformations.html:78:18: [maybe] Conversion from string to number yields NaN
 test/chromeexperiments/planedeformations.html:78:18: [maybe] Conversion to number yields NaN
 test/chromeexperiments/planedeformations.html:165:31: [maybe] Reading absent property (computed name)

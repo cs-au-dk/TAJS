@@ -1,3 +1,4 @@
+test/micro/test210.js: [definite] Ordinary program exit is unreachable
 test/micro/test210.js:3:1: [definite] Unreachable code
 test/micro/test210.js:1:22: [maybe] TypeError, accessing property of null/undefined
 test/micro/test210.js: [maybe] Uncaught exception, constructed at [test/micro/test210.js:1:22]

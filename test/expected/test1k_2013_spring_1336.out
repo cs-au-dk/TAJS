@@ -1,14 +1,56 @@
 test/1k2013spring/1336.js:36:21: [definite] Too few parameters to function CanvasRenderingContext2D.prototype.arc
-test/1k2013spring/shim.js:6:5: [definite] The variable b is never used
+test/1k2013spring/1336.js:24:27: [maybe] ReferenceError, reading absent variable J
+test/1k2013spring/1336.js:24:31: [maybe] ReferenceError, reading absent variable q
+test/1k2013spring/1336.js:29:5: [maybe] ReferenceError, reading absent variable t
+test/1k2013spring/1336.js:29:13: [maybe] ReferenceError, reading absent variable q
+test/1k2013spring/1336.js:29:15: [maybe] ReferenceError, reading absent variable w
+test/1k2013spring/1336.js:42:8: [maybe] ReferenceError, reading absent variable z
+test/1k2013spring/1336.js:43:9: [maybe] ReferenceError, reading absent variable a
+test/1k2013spring/1336.js:43:25: [maybe] ReferenceError, reading absent variable J
+test/1k2013spring/1336.js:43:27: [maybe] ReferenceError, reading absent variable J
+test/1k2013spring/1336.js:44:9: [maybe] ReferenceError, reading absent variable o
+test/1k2013spring/1336.js:44:12: [maybe] ReferenceError, reading absent variable l
+test/1k2013spring/1336.js:44:15: [maybe] ReferenceError, reading absent variable o
+test/1k2013spring/1336.js:44:21: [maybe] ReferenceError, reading absent variable o
+test/1k2013spring/1336.js:45:12: [maybe] ReferenceError, reading absent variable j
+test/1k2013spring/1336.js:45:20: [maybe] ReferenceError, reading absent variable r
+test/1k2013spring/1336.js:45:22: [maybe] ReferenceError, reading absent variable p
+test/1k2013spring/1336.js:46:13: [maybe] ReferenceError, reading absent variable k
+test/1k2013spring/1336.js:46:23: [maybe] ReferenceError, reading absent variable p
+test/1k2013spring/1336.js:46:25: [maybe] ReferenceError, reading absent variable u
+test/1k2013spring/1336.js:46:29: [maybe] ReferenceError, reading absent variable D
+test/1k2013spring/1336.js:49:26: [maybe] ReferenceError, reading absent variable D
+test/1k2013spring/1336.js:51:27: [maybe] ReferenceError, reading absent variable O
+test/1k2013spring/1336.js:51:36: [maybe] ReferenceError, reading absent variable U
+test/1k2013spring/1336.js:53:13: [maybe] ReferenceError, reading absent variable m
+test/1k2013spring/1336.js:53:17: [maybe] ReferenceError, reading absent variable y
+test/1k2013spring/1336.js:53:19: [maybe] ReferenceError, reading absent variable p
+test/1k2013spring/1336.js:53:21: [maybe] ReferenceError, reading absent variable y
+test/1k2013spring/1336.js:53:23: [maybe] ReferenceError, reading absent variable y
+test/1k2013spring/1336.js:57:11: [maybe] ReferenceError, reading absent variable k
+test/1k2013spring/1336.js:57:22: [maybe] ReferenceError, reading absent variable t
 test/1k2013spring/1336.js:59:25: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1336.js:59:43: [maybe] ReferenceError, reading absent variable p
+test/1k2013spring/1336.js:59:63: [maybe] ReferenceError, reading absent variable p
 test/1k2013spring/1336.js:59:104: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1336.js:64:35: [maybe] ReferenceError, reading absent variable q
+test/1k2013spring/1336.js:64:39: [maybe] ReferenceError, reading absent variable w
+test/1k2013spring/1336.js:64:71: [maybe] ReferenceError, reading absent variable p
+test/1k2013spring/1336.js:64:75: [maybe] ReferenceError, reading absent variable y
 test/1k2013spring/1336.js:64:88: [maybe] TypeError, accessing property of null/undefined
-test/1k2013spring/shim.js:8:9: [maybe] TypeError, accessing property of null/undefined
-test/1k2013spring/shim.js:8:9: [maybe] TypeError, call to non-function
-test/1k2013spring/shim.js:9:1: [maybe] TypeError, accessing property of null/undefined
-test/1k2013spring/shim.js:6:9: [maybe] Reading absent property body
-test/1k2013spring/shim.js:8:9: [maybe] Reading absent property getContext
-test/1k2013spring/shim.js:9:1: [maybe] Reading absent property body
+test/1k2013spring/1336.js:64:93: [maybe] ReferenceError, reading absent variable J
+test/1k2013spring/1336.js:64:175: [maybe] ReferenceError, reading absent variable X
+test/1k2013spring/1336.js:64:186: [maybe] ReferenceError, reading absent variable U
+test/1k2013spring/1336.js:64:189: [maybe] ReferenceError, reading absent variable O
+test/1k2013spring/1336.js:64:206: [maybe] ReferenceError, reading absent variable U
+test/1k2013spring/1336.js:64:211: [maybe] ReferenceError, reading absent variable O
+test/1k2013spring/1336.js:64:214: [maybe] ReferenceError, reading absent variable J
+test/1k2013spring/1336.js:67:19: [maybe] ReferenceError, reading absent variable q
+test/1k2013spring/1336.js:67:21: [maybe] ReferenceError, reading absent variable w
+test/1k2013spring/1336.js:69:11: [maybe] ReferenceError, reading absent variable r
+test/1k2013spring/1336.js:69:20: [maybe] ReferenceError, reading absent variable j
+test/1k2013spring/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1336.js: [maybe] Uncaught exception, constructed at [test/1k2013spring/1336.js:24:27, test/1k2013spring/1336.js:24:31, test/1k2013spring/1336.js:29:5, test/1k2013spring/1336.js:29:13, test/1k2013spring/1336.js:29:15, test/1k2013spring/1336.js:42:8, test/1k2013spring/1336.js:43:9, test/1k2013spring/1336.js:43:25, test/1k2013spring/1336.js:43:27, test/1k2013spring/1336.js:44:9, test/1k2013spring/1336.js:44:12, test/1k2013spring/1336.js:44:15, test/1k2013spring/1336.js:44:21, test/1k2013spring/1336.js:45:12, test/1k2013spring/1336.js:45:20, test/1k2013spring/1336.js:45:22, test/1k2013spring/1336.js:46:13, test/1k2013spring/1336.js:46:23, test/1k2013spring/1336.js:46:25, test/1k2013spring/1336.js:46:29, test/1k2013spring/1336.js:49:26, test/1k2013spring/1336.js:51:27, test/1k2013spring/1336.js:51:36, test/1k2013spring/1336.js:53:13, test/1k2013spring/1336.js:53:17, test/1k2013spring/1336.js:53:19, test/1k2013spring/1336.js:53:21, test/1k2013spring/1336.js:53:23, test/1k2013spring/1336.js:57:11, test/1k2013spring/1336.js:57:22, test/1k2013spring/1336.js:59:25, test/1k2013spring/1336.js:59:43, test/1k2013spring/1336.js:59:63, test/1k2013spring/1336.js:59:104, test/1k2013spring/1336.js:64:35, test/1k2013spring/1336.js:64:39, test/1k2013spring/1336.js:64:71, test/1k2013spring/1336.js:64:75, test/1k2013spring/1336.js:64:88, test/1k2013spring/1336.js:64:93, test/1k2013spring/1336.js:64:175, test/1k2013spring/1336.js:64:186, test/1k2013spring/1336.js:64:189, test/1k2013spring/1336.js:64:206, test/1k2013spring/1336.js:64:211, test/1k2013spring/1336.js:64:214, test/1k2013spring/1336.js:67:19, test/1k2013spring/1336.js:67:21, test/1k2013spring/1336.js:69:11, test/1k2013spring/1336.js:69:20, test/1k2013spring/shim.js:9:5]
 test/1k2013spring/1336.js:33:21: [maybe] The variable n has values with different types
 test/1k2013spring/1336.js:35:12: [maybe] Converting undefined to string
 test/1k2013spring/1336.js:36:13: [maybe] The variable C has values with different types
@@ -22,5 +64,3 @@ test/1k2013spring/1336.js:59:52: [maybe] Conversion to number yields NaN
 test/1k2013spring/1336.js:59:57: [maybe] Reading absent property (computed name)
 test/1k2013spring/1336.js:59:97: [maybe] Reading absent property (computed name)
 test/1k2013spring/1336.js:64:82: [maybe] Reading absent property (computed name)
-test/1k2013spring/shim.js:7:9: [maybe] Reading absent property (computed name)
-test/1k2013spring/shim.js,test/1k2013spring/1336.js: [maybe] Uncaught exception, constructed at [test/1k2013spring/1336.js:59:25, test/1k2013spring/1336.js:59:104, test/1k2013spring/1336.js:64:88, test/1k2013spring/shim.js:8:9, test/1k2013spring/shim.js:9:1]

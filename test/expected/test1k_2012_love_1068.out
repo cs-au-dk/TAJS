@@ -1,35 +1,72 @@
 test/1k2012love/1068.js:13:52: [definite] Dead assignment, property z is never read
-test/1k2012love/shim.js:6:5: [definite] The variable b is never used
+test/1k2012love/1068.js:12:9: [maybe] ReferenceError, reading absent variable oX
+test/1k2012love/1068.js:12:19: [maybe] ReferenceError, reading absent variable oZ
+test/1k2012love/1068.js:18:5: [maybe] TypeError, call to non-function
+test/1k2012love/1068.js:18:17: [maybe] TypeError, call to non-function
+test/1k2012love/1068.js:20:6: [maybe] TypeError, call to non-function
+test/1k2012love/1068.js:20:18: [maybe] TypeError, call to non-function
+test/1k2012love/1068.js:33:2: [maybe] ReferenceError, reading absent variable a
+test/1k2012love/1068.js:37:3: [maybe] ReferenceError, reading absent variable rY
+test/1k2012love/1068.js:38:6: [maybe] TypeError, call to non-function
+test/1k2012love/1068.js:41:16: [maybe] ReferenceError, reading absent variable _
+test/1k2012love/1068.js:42:16: [maybe] TypeError, call to non-function
+test/1k2012love/1068.js:42:22: [maybe] ReferenceError, reading absent variable _
+test/1k2012love/1068.js:42:27: [maybe] ReferenceError, reading absent variable H
+test/1k2012love/1068.js:43:8: [maybe] ReferenceError, reading absent variable H
+test/1k2012love/1068.js:47:6: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1068.js:47:14: [maybe] ReferenceError, reading absent variable H
 test/1k2012love/1068.js:50:10: [maybe] TypeError, accessing property of null/undefined
 test/1k2012love/1068.js:50:17: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1068.js:50:25: [maybe] TypeError, call to non-function
 test/1k2012love/1068.js:50:41: [maybe] TypeError, accessing property of null/undefined
 test/1k2012love/1068.js:51:8: [maybe] TypeError, accessing property of null/undefined
 test/1k2012love/1068.js:51:17: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1068.js:51:27: [maybe] TypeError, call to non-function
 test/1k2012love/1068.js:51:43: [maybe] TypeError, accessing property of null/undefined
 test/1k2012love/1068.js:52:8: [maybe] TypeError, accessing property of null/undefined
 test/1k2012love/1068.js:52:17: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1068.js:52:27: [maybe] TypeError, call to non-function
 test/1k2012love/1068.js:52:44: [maybe] TypeError, accessing property of null/undefined
 test/1k2012love/1068.js:53:8: [maybe] TypeError, accessing property of null/undefined
 test/1k2012love/1068.js:53:15: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1068.js:53:23: [maybe] TypeError, call to non-function
 test/1k2012love/1068.js:53:39: [maybe] TypeError, accessing property of null/undefined
-test/1k2012love/shim.js:8:9: [maybe] TypeError, accessing property of null/undefined
-test/1k2012love/shim.js:8:9: [maybe] TypeError, call to non-function
-test/1k2012love/shim.js:9:1: [maybe] TypeError, accessing property of null/undefined
-test/1k2012love/shim.js:6:9: [maybe] Reading absent property body
-test/1k2012love/shim.js:8:9: [maybe] Reading absent property getContext
-test/1k2012love/shim.js:9:1: [maybe] Reading absent property body
+test/1k2012love/1068.js:62:26: [maybe] TypeError, call to non-function
+test/1k2012love/1068.js:62:41: [maybe] TypeError, call to non-function
+test/1k2012love/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1068.js: [maybe] Uncaught exception, constructed at [test/1k2012love/1068.js:12:9, test/1k2012love/1068.js:12:19, test/1k2012love/1068.js:18:5, test/1k2012love/1068.js:18:17, test/1k2012love/1068.js:20:6, test/1k2012love/1068.js:20:18, test/1k2012love/1068.js:33:2, test/1k2012love/1068.js:37:3, test/1k2012love/1068.js:38:6, test/1k2012love/1068.js:41:16, test/1k2012love/1068.js:42:16, test/1k2012love/1068.js:42:22, test/1k2012love/1068.js:42:27, test/1k2012love/1068.js:43:8, test/1k2012love/1068.js:47:6, test/1k2012love/1068.js:47:14, test/1k2012love/1068.js:50:10, test/1k2012love/1068.js:50:17, test/1k2012love/1068.js:50:25, test/1k2012love/1068.js:50:41, test/1k2012love/1068.js:51:8, test/1k2012love/1068.js:51:17, test/1k2012love/1068.js:51:27, test/1k2012love/1068.js:51:43, test/1k2012love/1068.js:52:8, test/1k2012love/1068.js:52:17, test/1k2012love/1068.js:52:27, test/1k2012love/1068.js:52:44, test/1k2012love/1068.js:53:8, test/1k2012love/1068.js:53:15, test/1k2012love/1068.js:53:23, test/1k2012love/1068.js:53:39, test/1k2012love/1068.js:62:26, test/1k2012love/1068.js:62:41, test/1k2012love/shim.js:9:5]
+test/1k2012love/1068.js:13:12: [maybe] Conversion to number yields NaN
+test/1k2012love/1068.js:13:15: [maybe] Conversion to number yields NaN
+test/1k2012love/1068.js:13:23: [maybe] Conversion to number yields NaN
+test/1k2012love/1068.js:13:33: [maybe] Conversion to number yields NaN
+test/1k2012love/1068.js:13:36: [maybe] Conversion to number yields NaN
+test/1k2012love/1068.js:13:44: [maybe] Conversion to number yields NaN
+test/1k2012love/1068.js:32:2: [maybe] Conversion to number yields NaN
+test/1k2012love/1068.js:34:2: [maybe] Conversion to number yields NaN
+test/1k2012love/1068.js:42:9: [maybe] Conversion to number yields NaN
+test/1k2012love/1068.js:42:18: [maybe] Conversion to number yields NaN
+test/1k2012love/1068.js:44:5: [maybe] Conversion to number yields NaN
 test/1k2012love/1068.js:47:6: [maybe] Reading absent property (computed name)
 test/1k2012love/1068.js:50:10: [maybe] Reading absent property (computed name)
 test/1k2012love/1068.js:50:17: [maybe] Reading absent property (computed name)
+test/1k2012love/1068.js:50:25: [maybe] Conversion to number yields NaN
+test/1k2012love/1068.js:50:27: [maybe] Conversion to number yields NaN
 test/1k2012love/1068.js:50:41: [maybe] Reading absent property (computed name)
 test/1k2012love/1068.js:51:8: [maybe] Reading absent property (computed name)
 test/1k2012love/1068.js:51:17: [maybe] Reading absent property (computed name)
+test/1k2012love/1068.js:51:27: [maybe] Conversion to number yields NaN
+test/1k2012love/1068.js:51:29: [maybe] Conversion to number yields NaN
 test/1k2012love/1068.js:51:43: [maybe] Reading absent property (computed name)
 test/1k2012love/1068.js:52:8: [maybe] Reading absent property (computed name)
+test/1k2012love/1068.js:52:10: [maybe] Conversion to number yields NaN
 test/1k2012love/1068.js:52:17: [maybe] Reading absent property (computed name)
+test/1k2012love/1068.js:52:19: [maybe] Conversion to number yields NaN
+test/1k2012love/1068.js:52:27: [maybe] Conversion to number yields NaN
+test/1k2012love/1068.js:52:29: [maybe] Conversion to number yields NaN
 test/1k2012love/1068.js:52:44: [maybe] Reading absent property (computed name)
+test/1k2012love/1068.js:52:46: [maybe] Conversion to number yields NaN
 test/1k2012love/1068.js:53:8: [maybe] Reading absent property (computed name)
 test/1k2012love/1068.js:53:15: [maybe] Reading absent property (computed name)
+test/1k2012love/1068.js:53:23: [maybe] Conversion to number yields NaN
+test/1k2012love/1068.js:53:25: [maybe] Conversion to number yields NaN
 test/1k2012love/1068.js:53:39: [maybe] Reading absent property (computed name)
-test/1k2012love/shim.js:7:9: [maybe] Reading absent property (computed name)
-test/1k2012love/shim.js,test/1k2012love/1068.js: [maybe] Uncaught exception, constructed at [test/1k2012love/1068.js:50:10, test/1k2012love/1068.js:50:17, test/1k2012love/1068.js:50:41, test/1k2012love/1068.js:51:8, test/1k2012love/1068.js:51:17, test/1k2012love/1068.js:51:43, test/1k2012love/1068.js:52:8, test/1k2012love/1068.js:52:17, test/1k2012love/1068.js:52:44, test/1k2012love/1068.js:53:8, test/1k2012love/1068.js:53:15, test/1k2012love/1068.js:53:39, test/1k2012love/shim.js:8:9, test/1k2012love/shim.js:9:1]

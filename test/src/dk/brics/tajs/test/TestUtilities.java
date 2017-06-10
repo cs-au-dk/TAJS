@@ -48,7 +48,7 @@ public class TestUtilities {
         String[] args = {"test/micro/test00.js"};
         Misc.run(args, new CompositeMonitoring(new Monitoring(), new DefaultAnalysisMonitoring() {
             @Override
-            public void visitPostBlockTransfer(BasicBlock b, State state) {
+            public void visitBlockTransferPost(BasicBlock b, State state) {
                 state.toDot();
             }
         }));
@@ -80,12 +80,6 @@ public class TestUtilities {
     public void coverage() throws Exception {
         Options.get().enableMemoryUsage();
         String[] args = {"test/micro/test00.js"};
-        Misc.run(args);
-    }
-
-    @Test
-    public void help() throws Exception {
-        String[] args = {"-help", "test/micro/test00.js"};
         Misc.run(args);
     }
 }

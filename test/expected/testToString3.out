@@ -1,3 +1,4 @@
+test/micro/toString3.js: [definite] Exceptional program exit is unreachable
 test/micro/toString3.js:20:5: [definite] The variable q is never used
 test/micro/toString3.js:9:16: [maybe] Reading absent property dyt
 test/micro/toString3.js:17:16: [maybe] Reading absent property foo

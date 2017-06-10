@@ -1,4 +1,5 @@
 test/resig/ejohn34.js:8:16: [definite] Variable user is null/undefined
 test/resig/ejohn34.js:2:3: [definite] Reading 'this' yields the global object
+test/resig/ejohn34.js: [definite] Exceptional program exit is unreachable
 test/resig/ejohn34.js:7:1: [info] Abstract value: "undefined"
 test/resig/ejohn34.js:8:1: [info] Abstract value: Undef

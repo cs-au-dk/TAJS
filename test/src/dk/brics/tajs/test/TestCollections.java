@@ -4,10 +4,13 @@ import dk.brics.tajs.Main;
 import dk.brics.tajs.flowgraph.SourceLocation;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.util.HybridArrayHashSet;
+import dk.brics.tajs.util.PathAndURLUtils;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
@@ -69,12 +72,26 @@ public class TestCollections {
 
     public List<SourceLocation> makeElements_6_3() {
         List<SourceLocation> list = newList();
-        list.add(new SourceLocation(1, 1, "test1.js", null));
-        list.add(new SourceLocation(1, 1, "test1.js", null));
-        list.add(new SourceLocation(1, 1, "test2.js", null));
-        list.add(new SourceLocation(1, 1, "test2.js", null));
-        list.add(new SourceLocation(1, 1, "test3.js", null));
-        list.add(new SourceLocation(1, 1, "test3.js", null));
+        try {
+            SourceLocation.StaticLocationMaker m1 = new SourceLocation.StaticLocationMaker(mkURL("file:/test1.js"));
+            list.add(m1.make(1, 1, 1,1));
+            list.add(m1.make(1, 1, 1,1));
+
+            SourceLocation.StaticLocationMaker m2 = new SourceLocation.StaticLocationMaker(mkURL("file:/test2.js"));
+            list.add(m2.make(1, 1, 1,1));
+            list.add(m2.make(1, 1, 1,1));
+
+            SourceLocation.StaticLocationMaker m3 = new SourceLocation.StaticLocationMaker(mkURL("file:/test3.js"));
+            list.add(m3.make(1, 1, 1,1));
+            list.add(m3.make(1, 1, 1,1));
+
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        }
         return list;
+    }
+
+    private URL mkURL(String f) throws MalformedURLException {
+        return PathAndURLUtils.normalizeFileURL(new URL(f));
     }
 }

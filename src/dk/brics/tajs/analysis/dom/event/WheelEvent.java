@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,9 +18,9 @@ package dk.brics.tajs.analysis.dom.event;
 
 import dk.brics.tajs.analysis.Conversion;
 import dk.brics.tajs.analysis.FunctionCalls;
-import dk.brics.tajs.analysis.NativeFunctions;
 import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.analysis.dom.DOMConversion;
+import dk.brics.tajs.analysis.dom.DOMFunctions;
 import dk.brics.tajs.analysis.dom.DOMObjects;
 import dk.brics.tajs.analysis.dom.DOMRegistry;
 import dk.brics.tajs.lattice.ObjectLabel;
@@ -38,8 +38,8 @@ public class WheelEvent {
 
     public static void build(Solver.SolverInterface c) {
         State s = c.getState();
-        PROTOTYPE = new ObjectLabel(DOMObjects.WHEEL_EVENT_PROTOTYPE, ObjectLabel.Kind.OBJECT);
-        INSTANCES = new ObjectLabel(DOMObjects.WHEEL_EVENT_INSTANCES, ObjectLabel.Kind.OBJECT);
+        PROTOTYPE = ObjectLabel.make(DOMObjects.WHEEL_EVENT_PROTOTYPE, ObjectLabel.Kind.OBJECT);
+        INSTANCES = ObjectLabel.make(DOMObjects.WHEEL_EVENT_INSTANCES, ObjectLabel.Kind.OBJECT);
 
         // Prototype object
         s.newObject(PROTOTYPE);
@@ -89,38 +89,38 @@ public class WheelEvent {
             // TODO check if it correct to handle the _NS version in the same way as the non _NS one
             case WHEEL_EVENT_INIT_WHEEL_EVENT:
             case WHEEL_EVENT_INIT_WHEEL_EVENT_NS:{
-                NativeFunctions.expectParameters(nativeObject, call, c, 16, 16);
+                DOMFunctions.expectParameters(nativeObject, call, c, 16, 16);
                 /* Value typeArg =*/
-                Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
+                Conversion.toString(FunctionCalls.readParameter(call, s, 0), c);
                 /* Value canBubbleArg =*/
-                Conversion.toBoolean(NativeFunctions.readParameter(call, s, 1));
+                Conversion.toBoolean(FunctionCalls.readParameter(call, s, 1));
                 /* Value cancelableArg =*/
-                Conversion.toBoolean(NativeFunctions.readParameter(call, s, 2));
+                Conversion.toBoolean(FunctionCalls.readParameter(call, s, 2));
                 // viewArg not checked
                 /* Value detailArg =*/
-                Conversion.toNumber(NativeFunctions.readParameter(call, s, 4), c);
+                Conversion.toNumber(FunctionCalls.readParameter(call, s, 4), c);
                 /* Value screenXArg =*/
-                Conversion.toNumber(NativeFunctions.readParameter(call, s, 5), c);
+                Conversion.toNumber(FunctionCalls.readParameter(call, s, 5), c);
                 /* Value screenYArg =*/
-                Conversion.toNumber(NativeFunctions.readParameter(call, s, 6), c);
+                Conversion.toNumber(FunctionCalls.readParameter(call, s, 6), c);
                 /* Value clientXArg =*/
-                Conversion.toNumber(NativeFunctions.readParameter(call, s, 7), c);
+                Conversion.toNumber(FunctionCalls.readParameter(call, s, 7), c);
                 /* Value clientYArg =*/
-                Conversion.toNumber(NativeFunctions.readParameter(call, s, 8), c);
+                Conversion.toNumber(FunctionCalls.readParameter(call, s, 8), c);
                 /* Value buttonArg =*/
-                Conversion.toNumber(NativeFunctions.readParameter(call, s, 9), c);
+                Conversion.toNumber(FunctionCalls.readParameter(call, s, 9), c);
                 /* Value relatedTargetArg =*/
-                DOMConversion.toEventTarget(NativeFunctions.readParameter(call, s, 10), c);
+                DOMConversion.toEventTarget(FunctionCalls.readParameter(call, s, 10), c);
                 /* Value modifiersListArg =*/
-                Conversion.toString(NativeFunctions.readParameter(call, s, 11), c);
+                Conversion.toString(FunctionCalls.readParameter(call, s, 11), c);
                 /* Value deltaXArg =*/
-                Conversion.toNumber(NativeFunctions.readParameter(call, s, 12), c);
+                Conversion.toNumber(FunctionCalls.readParameter(call, s, 12), c);
                 /* Value deltaYArg =*/
-                Conversion.toNumber(NativeFunctions.readParameter(call, s, 13), c);
+                Conversion.toNumber(FunctionCalls.readParameter(call, s, 13), c);
                 /* Value deltaZArg =*/
-                Conversion.toNumber(NativeFunctions.readParameter(call, s, 14), c);
+                Conversion.toNumber(FunctionCalls.readParameter(call, s, 14), c);
                 /* Value deltaMode =*/
-                Conversion.toNumber(NativeFunctions.readParameter(call, s, 15), c);
+                Conversion.toNumber(FunctionCalls.readParameter(call, s, 15), c);
                 return Value.makeUndef();
             }
             default: {

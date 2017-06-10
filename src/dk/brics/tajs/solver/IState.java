@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -97,4 +97,9 @@ public interface IState
      * Returns the context for this state.
      */
     ContextType getContext();
+
+    /**
+     * Returns the basic block for this state.
+     */
+    BasicBlock getBasicBlock();
 }

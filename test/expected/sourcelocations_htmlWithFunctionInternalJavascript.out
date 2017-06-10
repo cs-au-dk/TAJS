@@ -1,2 +1,3 @@
+test/sourcelocations/htmlWithFunctionInternalJavaScript.html: [definite] Exceptional program exit is unreachable
 test/sourcelocations/htmlWithFunctionInternalJavaScript.html:10:9: [definite] The variable functionVar is never used
 test/sourcelocations/htmlWithFunctionInternalJavaScript.html:14:5: [definite] The variable returnVar is never used

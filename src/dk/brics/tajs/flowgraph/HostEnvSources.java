@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,13 +18,15 @@ package dk.brics.tajs.flowgraph;
 
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.util.AnalysisException;
-import dk.brics.tajs.util.Loader;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.MalformedURLException;
 import java.net.URL;
-import java.nio.charset.Charset;
+import java.net.URLConnection;
+import java.net.URLStreamHandler;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static dk.brics.tajs.util.Collections.newList;
 
@@ -33,18 +35,51 @@ import static dk.brics.tajs.util.Collections.newList;
  */
 public class HostEnvSources {
 
-    private final static String fileNamePrefix = "TAJS-host-environment-sources";
+    private static final String PROTOCOL_NAME = "tajs-host-env";
 
-    private final static SourceLocation loaderDummySourceLocation = new SourceLocation(0, 0, formatFileName("loader"), null);
+    static {
+        registerProtocol();
+    }
+
+    private static void registerProtocol() {
+        // custom protocol to avoid system-specific paths in the output
+        URL.setURLStreamHandlerFactory(protocol -> PROTOCOL_NAME.equals(protocol) ? new URLStreamHandler() {
+            protected URLConnection openConnection(URL url) {
+                return new URLConnection(url) {
+                    public void connect() throws IOException {
+                        resolve(url.getPath()).openConnection().connect();
+                    }
+
+                    @Override
+                    public InputStream getInputStream() throws IOException {
+                        return resolve(url.getPath()).openConnection().getInputStream();
+                    }
+
+                    private URL resolve(String path) {
+                        String root = "/hostenv";
+                        String fullSourcePath = root + "/" + path;
+                        URL resource = HostEnvSources.class.getResource(fullSourcePath);
+                        if (resource == null) {
+                            throw new AnalysisException("Can't find resource " + fullSourcePath);
+                        }
+                        return resource;
+                    }
+                };
+            }
+        } : null);
+    }
 
     /**
      * Loads all host environment JavaScript models according to currently selected options.
      */
-    public static List<JavaScriptSource> get() {
+    public static List<URL> getAccordingToOptions() {
 
         // note: not using java.nio.Path since Windows uses \ instead of /
         List<String> sourcePaths = newList();
 
+        sourcePaths.add("string-replace-model.js");
+
+        // be careful about changing orders here! the later files might depend on the earlier ones
         if (Options.get().isPolyfillMDNEnabled() || Options.get().isPolyfillTypedArraysEnabled()) {
             sourcePaths.add("mdn-polyfills.js");
         }
@@ -54,39 +89,18 @@ public class HostEnvSources {
         if (Options.get().isPolyfillTypedArraysEnabled()) {
             sourcePaths.add("typed-arrays-model.js");
         }
-
-        if (Options.get().isDOMEnabled()) {
-            // TODO: add extra paths...
+        if (Options.get().isCommonAsyncPolyfillEnabled()) {
+            sourcePaths.add("common-async-polyfill.js");
         }
-
-        String root = "/hostenv";
-        List<JavaScriptSource> sources = newList();
-        for (String sourcePath : sourcePaths) {
+        if (Options.get().isConsoleModelEnabled()) {
+            sourcePaths.add("console-model.js");
+        }
+        return sourcePaths.stream().map(s -> {
             try {
-                String fullSourcePath = root + "/" + sourcePath;
-                URL resource = HostEnvSources.class.getResource(fullSourcePath);
-                InputStream sourceStream = resource.openStream();
-                if (sourceStream == null) {
-                    throw new AnalysisException("Can't find resource " + fullSourcePath);
-                }
-                String code = Loader.getString(sourceStream, Charset.forName("UTF-8"));
-                sources.add(JavaScriptSource.makeFileCode(resource, formatFileName(sourcePath), code));
-            } catch (IOException e) {
+                return new URL(PROTOCOL_NAME, null, s);
+            } catch (MalformedURLException e) {
                 throw new RuntimeException(e);
             }
-        }
-        return sources;
-    }
-
-    public static String formatFileName(String fileName) {
-        return String.format("%s(%s)", fileNamePrefix, fileName);
-    }
-
-    public static boolean isHostEnvSource(SourceLocation sourceLocation) {
-        return sourceLocation.getPrettyFileName().startsWith(fileNamePrefix);
-    }
-
-    public static SourceLocation getLoaderDummySourceLocation() {
-        return loaderDummySourceLocation;
+        }).collect(Collectors.toList());
     }
 }

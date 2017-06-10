@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,8 +18,8 @@ package dk.brics.tajs.analysis.dom.event;
 
 import dk.brics.tajs.analysis.FunctionCalls;
 import dk.brics.tajs.analysis.InitialStateBuilder;
-import dk.brics.tajs.analysis.NativeFunctions;
 import dk.brics.tajs.analysis.Solver;
+import dk.brics.tajs.analysis.dom.DOMFunctions;
 import dk.brics.tajs.analysis.dom.DOMObjects;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.State;
@@ -41,8 +41,8 @@ public class EventListener {
 
     public static void build(Solver.SolverInterface c) {
         State s = c.getState();
-        PROTOTYPE = new ObjectLabel(DOMObjects.EVENT_LISTENER_PROTOTYPE, ObjectLabel.Kind.OBJECT);
-        INSTANCES = new ObjectLabel(DOMObjects.EVENT_LISTENER_INSTANCES, ObjectLabel.Kind.OBJECT);
+        PROTOTYPE = ObjectLabel.make(DOMObjects.EVENT_LISTENER_PROTOTYPE, ObjectLabel.Kind.OBJECT);
+        INSTANCES = ObjectLabel.make(DOMObjects.EVENT_LISTENER_INSTANCES, ObjectLabel.Kind.OBJECT);
 
         // Prototype object.
         s.newObject(PROTOTYPE);
@@ -68,7 +68,7 @@ public class EventListener {
     public static Value evaluate(DOMObjects nativeObject, FunctionCalls.CallInfo call, Solver.SolverInterface c) {
         switch (nativeObject) {
             case EVENT_LISTENER_HANDLE_EVENT: {
-                NativeFunctions.expectParameters(nativeObject, call, c, 1, 1);
+                DOMFunctions.expectParameters(nativeObject, call, c, 1, 1);
                 return Value.makeUndef();
             }
             default:

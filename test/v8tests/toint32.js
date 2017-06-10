@@ -57,7 +57,7 @@
 // Should be -1
 // FIXME: Fix testtoint321.js and uncomment the line below.
 // TAJS_dumpValue(4294967295 | 0);
-// XXX: What is the expected result?
+// TODO: What is the expected result?
 // TAJS_dumpValue(4294967296 | 0);
 // Should be 1.
 // FIXME: Fix testtoint321.js and uncomment the line below.
@@ -76,7 +76,7 @@
 // Should be 1
 // FIXME: Fix testtoint321.js and uncomment the line below.
 // TAJS_dumpValue(-4294967295 | 0);
-// XXX: What is the expected result?
+// TODO: What is the expected result?
 // TAJS_dumpValue(-4294967296 | 0);
 // Should be -1
 // FIXME: Fix testtoint321.js and uncomment the line below.

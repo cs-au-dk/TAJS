@@ -19,6 +19,7 @@ public class TestFlowgraphBuilder {
     public void init() {
         Main.reset();
         Options.get().enableTestFlowGraphBuiler();
+        Options.get().enableDoNotExpectOrdinaryExit();
     }
 
     @Test
@@ -1203,7 +1204,7 @@ public class TestFlowgraphBuilder {
         Misc.checkSystemOutput();
     }
 
-    @Ignore // see https://github.com/cs-au-dk/TAJS-private/issues/112
+    @Ignore // TODO: github #112
     @Test
     public void flowgraphbuilder_0132() throws Exception {
         Misc.init();
@@ -2390,7 +2391,7 @@ public class TestFlowgraphBuilder {
         Misc.checkSystemOutput();
     }
 
-    @Ignore // see https://github.com/cs-au-dk/TAJS-private/issues/112
+    @Ignore // TODO: github #112
     @Test
     public void flowgraphbuilder_multipleLazyOrs() throws Exception {
         Misc.init();
@@ -2439,13 +2440,13 @@ public class TestFlowgraphBuilder {
     @Test(expected = AssertionError.class /* GitHub #194 */)
     public void forwardSlashRegExpConstructor () {
         Misc.init();
-        Misc.run(new String[]{"test/flowgraphbuilder/forwardSlashRegExpConstructor.js"});
+        Misc.run("test/flowgraphbuilder/forwardSlashRegExpConstructor.js");
     }
 
     @Test
     public void forwardSlashRegExpLiteral () {
         Misc.init();
-        Misc.run(new String[]{"test/flowgraphbuilder/forwardSlashRegExpLiteral.js"});
+        Misc.run("test/flowgraphbuilder/forwardSlashRegExpLiteral.js");
     }
 
     @Test(expected = ParseError.class)
@@ -2682,16 +2683,57 @@ public class TestFlowgraphBuilder {
         Misc.init();
         Misc.captureSystemOutput();
         Misc.runSource(
-//                "a = b++",
-//                "f()",
-//                "c.d = e++",
-//                "f()",
-//                "f += g++",
-//                "f()",
+                "a = b++",
+                "f()",
+                "c.d = e++",
+                "f()",
+                "f += g++",
+                "f()",
                 "h.i += j++",
                 ""
         );
-        //Misc.checkSystemOutput();
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void flowgraphbuilder_innerHTMLIds() throws Exception {
+        Misc.init();
+        Options.get().enableIncludeDom();
+        Misc.captureSystemOutput();
+        Misc.runSource(
+                "document.body.innerHTML = '<div id=\"foo\"></div>';",
+                "var e = document.getElementById('foo');",
+                "TAJS_assert(e, 'isMaybeObject');",
+                "TAJS_assert(e, 'isMaybeNull');"
+        );
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void flowgraphbuilder_innerHTMLFunctions() throws Exception {
+        Misc.init();
+        Options.get().enableIncludeDom();
+        Misc.captureSystemOutput();
+        Misc.runSource(
+                "var triggered = false;",
+                "document.body.innerHTML = '<div onclick=\"triggered = true; TAJS_assert(true);\"></div>';",
+                "setTimeout(function(){TAJS_assertEquals(TAJS_make('AnyBool'), triggered)});"
+        );
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void doWhileLoopLocations() throws Exception {
+        Misc.init();
+        Misc.captureSystemOutput();
+        Misc.runSource(
+                "'PRE';",
+                "do {",
+                "   'IN';",
+                "} while ('COND')",
+                "'POST'"
+        );
+        Misc.checkSystemOutput();
     }
 }
 

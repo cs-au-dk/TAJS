@@ -1,10 +1,6 @@
 package dk.brics.tajs.test.nativeobjects;
 
 import dk.brics.tajs.Main;
-import dk.brics.tajs.monitoring.CompositeMonitoring;
-import dk.brics.tajs.monitoring.IAnalysisMonitoring;
-import dk.brics.tajs.monitoring.Monitoring;
-import dk.brics.tajs.monitoring.OrdinaryExitReachableChecker;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.test.Misc;
 import org.junit.Before;
@@ -12,33 +8,28 @@ import org.junit.Test;
 
 public class TestHostFunctionSources_TypedArrays {
 
-    private IAnalysisMonitoring monitor;
-
     @Before
     public void before() {
         Main.initLogging();
         Main.reset();
         Options.get().enableTest();
         Options.get().enablePolyfillTypedArrays();
-        monitor = CompositeMonitoring.buildFromList(new Monitoring(), new OrdinaryExitReachableChecker());
     }
 
     @Test
     public void ArrayBuffer() {
-        Misc.runSource(new String[]{
+        Misc.runSource(
                 "var buffer = new ArrayBuffer(16);",
                 "TAJS_assertEquals('object', typeof buffer);",
-                "TAJS_assert(buffer.byteLength, 'isMaybeNumUInt');"
-        }, monitor);
+                "TAJS_assert(buffer.byteLength, 'isMaybeNumUInt');");
     }
 
     @Test
     public void DataView() {
-        Misc.runSource(new String[]{
+        Misc.runSource(
                 "var buffer = new ArrayBuffer(16);",
                 "var view = new DataView(buffer);",
-                "TAJS_assertEquals('function', typeof view.getInt8);"
-        }, monitor);
+                "TAJS_assertEquals('function', typeof view.getInt8);");
     }
 
     @Test
@@ -86,18 +77,25 @@ public class TestHostFunctionSources_TypedArrays {
         arrayBasics("Float64Array");
     }
 
-    public void arrayBasics(String constructor) {
-        Misc.runSource(new String[]{
+    private void arrayBasics(String constructor) {
+        Misc.runSource(
                 "var buffer = new ArrayBuffer(200);",
                 "TAJS_assert(" + constructor + " !== undefined)",
                 "TAJS_assert(typeof " + constructor + " === 'function');",
                 "var arr = new " + constructor + "(buffer);",
                 "TAJS_assert(arr, 'isMaybeObject');",
                 "",
+                "TAJS_assertEquals('object', typeof arr.__proto__);",
+                "TAJS_assertEquals('object', typeof arr.__proto__.__proto__);",
+                "TAJS_assertEquals('object', typeof arr.__proto__.__proto__.__proto__);",
+                "TAJS_assertEquals(null, arr.__proto__.__proto__.__proto__);",
+                "",
                 "arr[2] = 2;",
                 "arr[10] = 10;",
                 "TAJS_assert(arr[0], 'isMaybeAnyNumNotNaNInf || isMaybeUndef');",
                 "TAJS_assert(arr[100], 'isMaybeAnyNumNotNaNInf || isMaybeUndef');",
+                "",
+                "arr.set([]);",
                 "",
                 "arr.copyWithin();",
                 "",
@@ -133,7 +131,6 @@ public class TestHostFunctionSources_TypedArrays {
                 "",
                 "TAJS_assert(arr.sort(function(v){return v;})[100], 'isMaybeAnyNumNotNaNInf || isMaybeUndef')",
                 "",
-                "TAJS_assert(arr.subarray(5, 20)[100], 'isMaybeAnyNumNotNaNInf || isMaybeUndef')",
-        }, monitor);
+                "TAJS_assert(arr.subarray(5, 20)[100], 'isMaybeAnyNumNotNaNInf || isMaybeUndef')");
     }
 }

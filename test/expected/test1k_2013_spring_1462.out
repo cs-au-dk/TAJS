@@ -17,33 +17,33 @@ test/1k2013spring/1462.js:180:15: [definite] Too few parameters to function Canv
 test/1k2013spring/1462.js:38:5: [definite] The variable e is never used
 test/1k2013spring/1462.js:43:5: [definite] The variable d is never used
 test/1k2013spring/1462.js:43:5: [definite] The variable e is never used
-test/1k2013spring/1462.js:29:1: [maybe] TypeError, accessing property of null/undefined
-test/1k2013spring/1462.js:35:1: [maybe] TypeError, accessing property of null/undefined
 test/1k2013spring/1462.js:47:9: [maybe] TypeError, call to non-function
 test/1k2013spring/1462.js:94:9: [maybe] TypeError, accessing property of null/undefined
 test/1k2013spring/1462.js:98:58: [maybe] ReferenceError, reading absent variable R
 test/1k2013spring/1462.js:108:7: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1462.js:150:17: [maybe] ReferenceError, reading absent variable H
+test/1k2013spring/1462.js:154:9: [maybe] ReferenceError, reading absent variable I
+test/1k2013spring/1462.js:157:25: [maybe] ReferenceError, reading absent variable X
 test/1k2013spring/1462.js:163:15: [maybe] TypeError, accessing property of null/undefined
 test/1k2013spring/1462.js:165:17: [maybe] TypeError, accessing property of null/undefined
 test/1k2013spring/1462.js:165:33: [maybe] ReferenceError, reading absent variable R
+test/1k2013spring/1462.js:173:31: [maybe] ReferenceError, reading absent variable G
+test/1k2013spring/1462.js:174:32: [maybe] ReferenceError, reading absent variable G
+test/1k2013spring/1462.js:175:31: [maybe] ReferenceError, reading absent variable G
 test/1k2013spring/1462.js:178:17: [maybe] TypeError, accessing property of null/undefined
 test/1k2013spring/1462.js:181:79: [maybe] ReferenceError, reading absent variable R
+test/1k2013spring/1462.js:187:33: [maybe] ReferenceError, reading absent variable G
+test/1k2013spring/1462.js:193:18: [maybe] ReferenceError, reading absent variable N
+test/1k2013spring/1462.js:205:23: [maybe] ReferenceError, reading absent variable X
 test/1k2013spring/1462.js:206:18: [maybe] TypeError, accessing property of null/undefined
 test/1k2013spring/1462.js:207:32: [maybe] ReferenceError, reading absent variable P
-test/1k2013spring/shim.js:8:9: [maybe] TypeError, accessing property of null/undefined
-test/1k2013spring/shim.js:8:9: [maybe] TypeError, call to non-function
-test/1k2013spring/shim.js:9:1: [maybe] TypeError, accessing property of null/undefined
-test/1k2013spring/1462.js:35:1: [maybe] Reading absent property style
-test/1k2013spring/1462.js:47:9: [maybe] Reading absent property getContext
-test/1k2013spring/1462.js:65:11: [maybe] Reading absent property G
-test/1k2013spring/1462.js:150:17: [maybe] Reading absent property G
-test/1k2013spring/1462.js:169:21: [maybe] Reading absent property G
+test/1k2013spring/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1462.js:47:9: [maybe] Reading absent property getContext of host object
+test/1k2013spring/1462.js:65:11: [maybe] Reading absent property G of host object
+test/1k2013spring/1462.js:150:17: [maybe] Reading absent property G of host object
+test/1k2013spring/1462.js:169:21: [maybe] Reading absent property G of host object
 test/1k2013spring/1462.js:198:11: [maybe] Reading absent property t
-test/1k2013spring/shim.js:6:9: [maybe] Reading absent property body
-test/1k2013spring/shim.js:8:9: [maybe] Reading absent property getContext
-test/1k2013spring/shim.js:9:1: [maybe] Reading absent property body
+test/1k2013spring/1462.js: [maybe] Uncaught exception, constructed at [test/1k2013spring/1462.js:47:9, test/1k2013spring/1462.js:65:1, test/1k2013spring/1462.js:94:9, test/1k2013spring/1462.js:98:58, test/1k2013spring/1462.js:108:7, test/1k2013spring/1462.js:150:7, test/1k2013spring/1462.js:150:17, test/1k2013spring/1462.js:154:9, test/1k2013spring/1462.js:157:25, test/1k2013spring/1462.js:163:15, test/1k2013spring/1462.js:165:17, test/1k2013spring/1462.js:165:33, test/1k2013spring/1462.js:169:11, test/1k2013spring/1462.js:173:31, test/1k2013spring/1462.js:174:32, test/1k2013spring/1462.js:175:31, test/1k2013spring/1462.js:178:17, test/1k2013spring/1462.js:181:79, test/1k2013spring/1462.js:187:33, test/1k2013spring/1462.js:193:18, test/1k2013spring/1462.js:205:23, test/1k2013spring/1462.js:206:18, test/1k2013spring/1462.js:207:32, test/1k2013spring/shim.js:9:5]
 test/1k2013spring/1462.js:157:25: [maybe] Reading absent property (computed name)
 test/1k2013spring/1462.js:198:11: [maybe] Conversion to number yields NaN
 test/1k2013spring/1462.js:205:23: [maybe] Reading absent property (computed name)
-test/1k2013spring/shim.js:7:9: [maybe] Reading absent property (computed name)
-test/1k2013spring/shim.js,test/1k2013spring/1462.js: [maybe] Uncaught exception, constructed at [test/1k2013spring/1462.js:29:1, test/1k2013spring/1462.js:35:1, test/1k2013spring/1462.js:47:9, test/1k2013spring/1462.js:65:1, test/1k2013spring/1462.js:94:9, test/1k2013spring/1462.js:98:58, test/1k2013spring/1462.js:108:7, test/1k2013spring/1462.js:150:7, test/1k2013spring/1462.js:163:15, test/1k2013spring/1462.js:165:17, test/1k2013spring/1462.js:165:33, test/1k2013spring/1462.js:169:11, test/1k2013spring/1462.js:178:17, test/1k2013spring/1462.js:181:79, test/1k2013spring/1462.js:206:18, test/1k2013spring/1462.js:207:32, test/1k2013spring/shim.js:8:9, test/1k2013spring/shim.js:9:1]

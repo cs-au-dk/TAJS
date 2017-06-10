@@ -1,0 +1,26 @@
+test/1k2012love/1274.js:29:24: [definite] TypeError, accessing property of null/undefined
+test/1k2012love/1274.js:29:12: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1274.js:29:24: [maybe] <Document.getElementById>("d") did not match any elements
+test/1k2012love/1274.js:36:8: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1274.js:29:12: [maybe] Reading absent property which of host object
+test/1k2012love/1274.js:29:79: [maybe] Reading absent property which of host object
+test/1k2012love/1274.js: [maybe] Uncaught exception, constructed at [test/1k2012love/1274.js:29:12, test/1k2012love/1274.js:29:24, test/1k2012love/1274.js:36:8, test/1k2012love/shim.js:9:5]
+test/1k2012love/1274.js:29:59: [maybe] Conversion to number yields NaN
+test/1k2012love/1274.js:29:107: [maybe] Converting primitive string to object
+test/1k2012love/1274.js:34:9: [maybe] Reading absent property (computed name)
+test/1k2012love/1274.js:34:494: [maybe] Converting primitive string to object
+test/1k2012love/1274.js:34:494: [maybe] Reading absent property (computed name)
+test/1k2012love/1274.js:36:8: [maybe] Conversion to number yields NaN
+test/1k2012love/1274.js:36:8: [maybe] Reading absent property (computed name)
+test/1k2012love/1274.js:37:8: [maybe] Conversion to number yields NaN
+test/1k2012love/1274.js:37:8: [maybe] Reading absent property (computed name)
+test/1k2012love/1274.js:38:22: [maybe] Conversion to number yields NaN
+test/1k2012love/1274.js:38:22: [maybe] Reading absent property (computed name)
+test/1k2012love/1274.js:38:37: [maybe] Reading absent property (computed name)
+test/1k2012love/1274.js:39:22: [maybe] Conversion to number yields NaN
+test/1k2012love/1274.js:39:22: [maybe] Reading absent property (computed name)
+test/1k2012love/1274.js:39:37: [maybe] Reading absent property (computed name)
+test/1k2012love/1274.js:41:42: [maybe] Conversion to number yields NaN
+test/1k2012love/1274.js:41:48: [maybe] Reading absent property (computed name)
+test/1k2012love/1274.js:34:9: [info] Reading from unknown property that may cause loss of precision

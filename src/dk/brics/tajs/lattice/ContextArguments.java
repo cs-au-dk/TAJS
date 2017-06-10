@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -42,7 +42,7 @@ public class ContextArguments {// TODO: canonicalize? (#140)
 
     private final List<Value> arguments;
 
-    private ContextArguments(Value unknownArg, List<String> parameterNames, List<Value> arguments, Map<String, Value> selectedClosureVariables) { // XXX: review, compare with 19b80eac3
+    private ContextArguments(Value unknownArg, List<String> parameterNames, List<Value> arguments, Map<String, Value> selectedClosureVariables) { // TODO: review, compare with 19b80eac3
         List<String> relevantParameterNames = parameterNames != null ? parameterNames.subList(0, arguments == null ? 0 : Math.min(parameterNames.size(), arguments.size())) : null;
         this.unknownArg = unknownArg;
         this.arguments = arguments == null || arguments.isEmpty() ? null : arguments;
@@ -81,7 +81,7 @@ public class ContextArguments {// TODO: canonicalize? (#140)
         return unknownArg != null;
     }
 
-    private String toString(boolean sourcesOnly) { // XXX: review
+    private String toString(boolean sourcesOnly) { // TODO: review
         String closureVariablesString = selectedClosureVariables == null? "": "&" + selectedClosureVariables;
         if (isUnknown()) {
             return "UnknownArg(" + unknownArg + ")" + closureVariablesString;
@@ -138,7 +138,7 @@ public class ContextArguments {// TODO: canonicalize? (#140)
         return result;
     }
 
-    public boolean hasArguments() { // XXX: used where?
+    public boolean hasArguments() {
         return arguments != null;
     }
 
@@ -156,9 +156,12 @@ public class ContextArguments {// TODO: canonicalize? (#140)
         return selectedClosureVariables;
     }
 
-    public Value getParameterValue(String name) { // XXX: review
+    public Value getParameterValue(String name) { // TODO: review
         int index = parameterNames.indexOf(name);
         if (index == -1) {
+            return null;
+        }
+        if (arguments.size() <= index) {
             return null;
         }
         return arguments.get(index);
@@ -167,7 +170,7 @@ public class ContextArguments {// TODO: canonicalize? (#140)
     /**
      * Utility function for extracting object labels
      */
-    public static Set<ObjectLabel> extractTopLevelObjectLabels(ContextArguments arguments) { // XXX: review
+    public static Set<ObjectLabel> extractTopLevelObjectLabels(ContextArguments arguments) { // TODO: review
         if (arguments == null) {
             return newSet();
         }

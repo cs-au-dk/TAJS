@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -37,5 +37,22 @@ public class ConcreteNumber implements PrimitiveConcreteValue {
 
     public double getNumber() {
         return number;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        ConcreteNumber that = (ConcreteNumber) o;
+
+        return Double.compare(that.number, number) == 0;
+
+    }
+
+    @Override
+    public int hashCode() {
+        long temp = Double.doubleToLongBits(number);
+        return (int) (temp ^ (temp >>> 32));
     }
 }

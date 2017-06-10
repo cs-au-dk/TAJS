@@ -14,7 +14,8 @@ import org.junit.runners.Suite;
         TestJSAI2014.class,
         TestJSAI2015.class,
         TestStrLat2014.class,
-        TestSparse2014.class
+        TestSparse2014.class,
+        TestRevamp2016.class
 })
 public class RunPapers {
 

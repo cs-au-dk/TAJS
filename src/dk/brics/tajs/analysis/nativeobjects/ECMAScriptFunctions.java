@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,20 +16,13 @@
 
 package dk.brics.tajs.analysis.nativeobjects;
 
-import dk.brics.tajs.analysis.Analysis;
 import dk.brics.tajs.analysis.Exceptions;
 import dk.brics.tajs.analysis.FunctionCalls.CallInfo;
 import dk.brics.tajs.analysis.Solver;
-import dk.brics.tajs.lattice.CallEdge;
-import dk.brics.tajs.lattice.Context;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.ObjectLabel.Kind;
-import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.UnknownValueResolver;
 import dk.brics.tajs.lattice.Value;
-import dk.brics.tajs.monitoring.IAnalysisMonitoring;
-import dk.brics.tajs.options.Options;
-import dk.brics.tajs.solver.GenericSolver;
 import dk.brics.tajs.solver.Message.Severity;
 import dk.brics.tajs.util.AnalysisException;
 import dk.brics.tajs.util.AnalysisLimitationException;
@@ -61,12 +54,16 @@ public class ECMAScriptFunctions {
             case OBJECT_ISPROTOTYPEOF:
             case OBJECT_PROPERTYISENUMERABLE:
             case OBJECT_DEFINE_PROPERTY:
+            case OBJECT_DEFINE_PROPERTIES:
             case OBJECT_CREATE:
             case OBJECT_FREEZE:
             case OBJECT_KEYS:
+            case OBJECT_GETOWNPROPERTYNAMES:
             case OBJECT_DEFINEGETTER:
             case OBJECT_DEFINESETTER:
             case OBJECT_GETOWNPROPERTYDESCRIPTOR:
+            case OBJECT_GETPROTOTYPEOF:
+            case OBJECT_SETPROTOTYPEOF:
                 res = JSObject.evaluate(nativeobject, call, c);
                 break;
 
@@ -185,7 +182,6 @@ public class ECMAScriptFunctions {
             case STRING:
             case STRING_VALUEOF:
             case STRING_TOSTRING:
-            case STRING_REPLACE:
             case STRING_TOUPPERCASE:
             case STRING_TOLOCALEUPPERCASE:
             case STRING_TOLOWERCASE:
@@ -204,6 +200,8 @@ public class ECMAScriptFunctions {
             case STRING_CHARCODEAT:
             case STRING_CHARAT:
             case STRING_TRIM:
+            case STRING_TRIMLEFT:
+            case STRING_TRIMRIGHT:
             case STRING_ENDSWITH:
             case STRING_STARTSWITH:
                 res = JSString.evaluate(nativeobject, call, c);
@@ -249,29 +247,6 @@ public class ECMAScriptFunctions {
             case ALERT:
             case ESCAPE:
             case UNESCAPE:
-            case TAJS_DUMPVALUE:
-            case TAJS_DUMPPROTOTYPE:
-            case TAJS_DUMPOBJECT:
-            case TAJS_DUMPSTATE:
-            case TAJS_DUMPMODIFIEDSTATE:
-            case TAJS_DUMPATTRIBUTES:
-            case TAJS_DUMPEXPRESSION:
-            case TAJS_DUMPNF:
-            case TAJS_CONVERSION_TO_PRIMITIVE:
-            case TAJS_ADD_CONTEXT_SENSITIVITY:
-            case TAJS_MAKE_CONTEXT_SENSITIVE:
-            case TAJS_NEW_OBJECT:
-            case TAJS_NEW_ARRAY:
-            case TAJS_ASSERT:
-            case TAJS_GET_KEYBOARD_EVENT:
-            case TAJS_GET_MOUSE_EVENT:
-            case TAJS_GET_UI_EVENT:
-            case TAJS_GET_EVENT_LISTENER:
-            case TAJS_GET_WHEEL_EVENT:
-            case TAJS_ASYNC_LISTEN:
-            case TAJS_MAKE:
-            case TAJS_JOIN:
-            case TAJS_ASSERT_EQUALS:
                 res = JSGlobal.evaluate(nativeobject, call, c);
                 break;
 
@@ -295,11 +270,10 @@ public class ECMAScriptFunctions {
 
             default:
                 String msg = call.getSourceNode().getSourceLocation() + ": No transfer function for native function " + nativeobject;
-                if (Options.get().isUnsoundEnabled()) {
-                    log.error(msg);
+                if (c.getAnalysis().getUnsoundness().maySkipMissingModelOfNativeFunction(c.getNode(), nativeobject)) {
                     return Value.makeUndef();
                 }
-                throw new AnalysisLimitationException.AnalysisModelLimitationException(call.getSourceNode().getSourceLocation() + ": " + msg);
+                throw new AnalysisLimitationException.AnalysisModelLimitationException(msg);
         }
         return res;
     }
@@ -307,25 +281,26 @@ public class ECMAScriptFunctions {
     /**
      * toString conversion for ECMAScript built-in objects.
      */
-    public static Value internalToString(ObjectLabel thiss, ECMAScriptObjects obj, GenericSolver<State, Context, CallEdge, IAnalysisMonitoring, Analysis>.SolverInterface c) {
+    public static Value internalToString(ObjectLabel thisobj, ECMAScriptObjects obj, Solver.SolverInterface c) {
+        Value thisval = Value.makeObject(thisobj);
         Value result = null;
         switch (obj) {
             case OBJECT_TOSTRING:
-                return JSObject.evaluateToString(thiss, c);
+                return JSObject.evaluateToString(thisval, c);
             case FUNCTION_TOSTRING:
-                return JSFunction.evaluateToString(thiss, c);
+                return JSFunction.evaluateToString(thisval, c);
             case ARRAY_TOSTRING:
-                return JSArray.evaluateToString(thiss, c);
+                return JSArray.evaluateToString(thisval, c);
             case STRING_TOSTRING:
-                return JSString.evaluateToString(thiss, c);
+                return JSString.evaluateToString(thisval, c);
             case BOOLEAN_TOSTRING:
-                return JSBoolean.evaluateToString(thiss, c);
+                return JSBoolean.evaluateToString(thisval, c);
             case NUMBER_TOSTRING:
-                return JSNumber.evaluateToString(thiss, Value.makeUndef(), c);
+                return JSNumber.evaluateToString(thisval, Value.makeUndef(), c);
             case REGEXP_TOSTRING:
-                return JSRegExp.evaluateToString(thiss, c);
+                return JSRegExp.evaluateToString(thisval, c);
             case DATE_TOSTRING:
-                return JSDate.evaluateToString(thiss, c);
+                return JSDate.evaluateToString(thisval, c);
             case ERROR_TOSTRING:
                 return JSError.evaluateToString();
             default:
@@ -339,7 +314,7 @@ public class ECMAScriptFunctions {
     /**
      * valueOf conversion for ECMAScript built-in objects.
      */
-    public static Value internalValueOf(ObjectLabel thiss, ECMAScriptObjects obj, GenericSolver<State, Context, CallEdge, IAnalysisMonitoring, Analysis>.SolverInterface c) {
+    public static Value internalValueOf(ObjectLabel thiss, ECMAScriptObjects obj, Solver.SolverInterface c) {
         Value result = null;
         switch (obj) {
             case OBJECT_VALUEOF:

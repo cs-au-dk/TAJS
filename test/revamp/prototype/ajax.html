@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+	  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- from http://webdesign.torn.be/tutorials/javascript/prototype/retrieve-and-display-data/index.php -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Ajax Retrieve Comments System</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="pragma" content="no-cache" />
+    <script type="text/javascript" src="prototype.js"></script>
+    <script type="text/javascript">
+      //<![CDATA[
+                   document.observe('dom:loaded', function () {
+                        $$('.toggle').each(function(item) {	
+                            $('comments_'+item.id).hide();
+                            item.update('<img src="../images/get.gif" alt="Show comments" /> Show comments');
+                        
+                            Event.observe(item, 'click', function(event){ 		
+                                $('comments_'+item.id).toggle();
+                                if($('comments_'+item.id).visible()){
+                                    var sId = item.id;
+                                    var oOptions = {
+                                        method: "get",
+                                        parameters: "id=" + sId
+                                    };
+                                    var oRequest = new Ajax.Updater({success: "comments_"+item.id}, "getComments.php", oOptions);			
+                                    item.update('<img src="../images/lose.gif" alt="Hide comments" /> Hide comments');
+                                } else {
+                                    item.update('<img src="../images/get.gif" alt="Show comments" /> Show comments');
+                                }
+                            });
+                        });
+                    });
+				// ]]>
+    </script>
+  </head>
+  <body>
+    <div class="newsItem">
+      <h2>News Item heading one</h2>
+      <div id="news_20081031" class="news">I love films based on true stories like Schindler's List, Titanic, Rain man and Star Wars.</div>
+      <p><span id="20081031" class="toggle"></span></p>
+      <div id="comments_20081031" class="comments"></div>
+    </div>    
+    
+    <div class="newsItem">
+      <h2>News Item heading two</h2>
+      <div id="news_20081030" class="news">I like cats, frogs and ponies.</div>
+      <p><span id="20081030" class="toggle"></span></p>
+      <div id="comments_20081030" class="comments"></div>
+    </div> 
+  </body>
+</html>

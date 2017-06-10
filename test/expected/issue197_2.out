@@ -1,5 +1,4 @@
 test/micro/issue197_2.html:6:11: [maybe] TypeError, accessing property of null/undefined
-test/micro/issue197_2.html:6:11: [maybe] Reading absent property ownerDocument
 test/micro/issue197_2.html: [maybe] Uncaught exception, constructed at [test/micro/issue197_2.html:6:11]
 test/micro/issue197_2.html:5:3: [info] Abstract value: Null|[*HTMLDivElement instances[dom]]
-test/micro/issue197_2.html:7:3: [info] Abstract value: Undef|Null|[*Document instances[dom]]
+test/micro/issue197_2.html:7:3: [info] Abstract value: Null|[@HTMLDocument instances[dom], @Document instances[dom]]

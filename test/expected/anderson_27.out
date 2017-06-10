@@ -1,1 +1,2 @@
 test/anderson/anderson27.js:9:2: [definite] Reading absent property n
+test/anderson/anderson27.js: [definite] Exceptional program exit is unreachable

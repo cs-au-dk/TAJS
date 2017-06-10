@@ -1,18 +1,12 @@
 package dk.brics.tajs.test;
 
 import dk.brics.tajs.Main;
-import dk.brics.tajs.monitoring.CompositeMonitoring;
-import dk.brics.tajs.monitoring.IAnalysisMonitoring;
-import dk.brics.tajs.monitoring.Monitoring;
-import dk.brics.tajs.monitoring.OrdinaryExitReachableChecker;
 import dk.brics.tajs.options.Options;
 import org.junit.Before;
 import org.junit.Test;
 
 @SuppressWarnings("static-method")
 public class TestResig {
-
-	private IAnalysisMonitoring monitoring;
 
 	public static void main(String[] args) {
 		org.junit.runner.JUnitCore.main("dk.brics.tajs.test.TestResig");
@@ -22,7 +16,6 @@ public class TestResig {
 	public void init() {
 		Main.reset();
 		Options.get().enableTest();
-        monitoring = CompositeMonitoring.buildFromList(new Monitoring(), new OrdinaryExitReachableChecker());
     }
 
 	@Test
@@ -30,7 +23,7 @@ public class TestResig {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/resig/ejohn12.js"};
-		Misc.run(args, monitoring);
+		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
@@ -39,7 +32,7 @@ public class TestResig {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/resig/ejohn13.js"};
-		Misc.run(args, monitoring);
+		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
@@ -48,7 +41,7 @@ public class TestResig {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/resig/ejohn14.js"};
-		Misc.run(args, monitoring);
+		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
@@ -57,7 +50,7 @@ public class TestResig {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/resig/ejohn15.js"};
-		Misc.run(args, monitoring);
+		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
@@ -66,7 +59,7 @@ public class TestResig {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/resig/ejohn17.js"};
-		Misc.run(args, monitoring);
+		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
@@ -75,7 +68,7 @@ public class TestResig {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/resig/ejohn18.js"};
-		Misc.run(args, monitoring);
+		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
@@ -85,7 +78,7 @@ public class TestResig {
         Options.get().enableIncludeDom();
 		Misc.captureSystemOutput();
 		String[] args = {"test/resig/ejohn19.js"};
-		Misc.run(args, monitoring);
+		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
@@ -94,7 +87,7 @@ public class TestResig {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/resig/ejohn20.js"};
-		Misc.run(args, monitoring);
+		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
@@ -103,7 +96,7 @@ public class TestResig {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/resig/ejohn21.js"};
-		Misc.run(args, monitoring);
+		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
@@ -112,7 +105,7 @@ public class TestResig {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/resig/ejohn23.js"};
-		Misc.run(args, monitoring);
+		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
@@ -121,7 +114,7 @@ public class TestResig {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/resig/ejohn24.js"};
-		Misc.run(args, monitoring);
+		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
@@ -130,7 +123,7 @@ public class TestResig {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/resig/ejohn25.js"};
-		Misc.run(args, monitoring);
+		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
@@ -139,7 +132,7 @@ public class TestResig {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/resig/ejohn26.js"};
-		Misc.run(args, monitoring);
+		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
@@ -148,7 +141,7 @@ public class TestResig {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/resig/ejohn28.js"};
-		Misc.run(args, monitoring);
+		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
@@ -157,7 +150,7 @@ public class TestResig {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/resig/ejohn30.js"};
-		Misc.run(args, monitoring);
+		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
@@ -166,7 +159,7 @@ public class TestResig {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/resig/ejohn31.js"};
-		Misc.run(args, monitoring);
+		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
@@ -175,7 +168,7 @@ public class TestResig {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/resig/ejohn33.js"};
-		Misc.run(args, monitoring);
+		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
@@ -184,7 +177,7 @@ public class TestResig {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/resig/ejohn34.js"};
-		Misc.run(args, monitoring);
+		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
@@ -193,7 +186,7 @@ public class TestResig {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/resig/ejohn35.js"};
-		Misc.run(args, monitoring);
+		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
@@ -202,7 +195,7 @@ public class TestResig {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/resig/ejohn36.js"};
-		Misc.run(args, monitoring);
+		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
@@ -211,7 +204,7 @@ public class TestResig {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/resig/ejohn38.js"};
-		Misc.run(args, monitoring);
+		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
@@ -220,7 +213,7 @@ public class TestResig {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/resig/ejohn40.js"};
-		Misc.run(args, monitoring);
+		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
@@ -229,7 +222,7 @@ public class TestResig {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/resig/ejohn41.js"};
-		Misc.run(args, monitoring);
+		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
@@ -238,13 +231,14 @@ public class TestResig {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/resig/ejohn42.js"};
-		Misc.run(args, monitoring);
+		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
 	@Test
 	public void resig_ejohn43() throws Exception {
 		Misc.init();
+		Options.get().enableDoNotExpectOrdinaryExit();
 		Misc.captureSystemOutput();
 		String[] args = {"test/resig/ejohn43.js"};
 		Misc.run(args /* is supposed to throw definite exception */);
@@ -256,7 +250,7 @@ public class TestResig {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/resig/ejohn45.js"};
-		Misc.run(args, monitoring);
+		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
@@ -265,7 +259,7 @@ public class TestResig {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/resig/ejohn45-bug.js"};
-		Misc.run(args, monitoring);
+		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
@@ -274,7 +268,7 @@ public class TestResig {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/resig/ejohn47.js"};
-		Misc.run(args, monitoring);
+		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
@@ -283,7 +277,7 @@ public class TestResig {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/resig/ejohn49.js"};
-		Misc.run(args, monitoring);
+		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
@@ -292,7 +286,7 @@ public class TestResig {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/resig/ejohn50.js"};
-		Misc.run(args, monitoring);
+		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
@@ -301,7 +295,7 @@ public class TestResig {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/resig/ejohn51.js"};
-		Misc.run(args, monitoring);
+		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
@@ -311,7 +305,7 @@ public class TestResig {
 		Options.get().enableIncludeDom();
 		Misc.captureSystemOutput();
 		String[] args = {"test/resig/ejohn52.js"};
-		Misc.run(args, monitoring);
+		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
@@ -321,7 +315,7 @@ public class TestResig {
 		Options.get().enableIncludeDom();
 		Misc.captureSystemOutput();
 		String[] args = {"test/resig/ejohn53.js"};
-		Misc.run(args, monitoring);
+		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
@@ -330,7 +324,7 @@ public class TestResig {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/resig/ejohn54.js"};
-		Misc.run(args, monitoring);
+		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
@@ -341,7 +335,7 @@ public class TestResig {
 		Options.get().enableLoopUnrolling(5);
 		Misc.captureSystemOutput();
 		String[] args = {"test/resig/ejohn56.js"};
-		Misc.run(args, monitoring);
+		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
@@ -351,7 +345,7 @@ public class TestResig {
 		Options.get().enableIncludeDom();
 		Misc.captureSystemOutput();
 		String[] args = {"test/resig/ejohn58.js"};
-		Misc.run(args, monitoring);
+		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
@@ -361,7 +355,7 @@ public class TestResig {
 		Options.get().enableIncludeDom();
 		Misc.captureSystemOutput();
 		String[] args = {"test/resig/ejohn59.js"};
-		Misc.run(args, monitoring);
+		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
@@ -371,7 +365,7 @@ public class TestResig {
 		Options.get().enableIncludeDom();
 		Misc.captureSystemOutput();
 		String[] args = {"test/resig/ejohn63.js"};
-		Misc.run(args, monitoring);
+		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
@@ -380,7 +374,7 @@ public class TestResig {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/resig/ejohn65.js"};
-		Misc.run(args, monitoring);
+		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
@@ -389,7 +383,7 @@ public class TestResig {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/resig/ejohn66.js"};
-		Misc.run(args, monitoring);
+		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
@@ -398,7 +392,7 @@ public class TestResig {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/resig/ejohn67.js"};
-		Misc.run(args, monitoring);
+		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
@@ -407,7 +401,7 @@ public class TestResig {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/resig/ejohn69.js"};
-		Misc.run(args, monitoring);
+		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
@@ -416,7 +410,7 @@ public class TestResig {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/resig/ejohn71.js"};
-		Misc.run(args, monitoring);
+		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
@@ -425,7 +419,7 @@ public class TestResig {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/resig/ejohn72.js"};
-		Misc.run(args, monitoring);
+		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
@@ -434,7 +428,7 @@ public class TestResig {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/resig/ejohn74.js"};
-		Misc.run(args, monitoring);
+		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
@@ -443,7 +437,7 @@ public class TestResig {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/resig/ejohn76.js"};
-		Misc.run(args, monitoring);
+		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
@@ -452,7 +446,7 @@ public class TestResig {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/resig/ejohn78.js"};
-		Misc.run(args, monitoring);
+		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
@@ -461,7 +455,7 @@ public class TestResig {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/resig/ejohn80.js"};
-		Misc.run(args, monitoring);
+		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
@@ -470,7 +464,7 @@ public class TestResig {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/resig/ejohn80b.js"};
-		Misc.run(args, monitoring);
+		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
@@ -479,7 +473,7 @@ public class TestResig {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/resig/ejohn81.js"};
-		Misc.run(args, monitoring);
+		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
@@ -489,7 +483,7 @@ public class TestResig {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/resig/ejohn83.js"};
-		Misc.run(args, monitoring);
+		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
@@ -499,7 +493,7 @@ public class TestResig {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/resig/ejohn84.js"};
-		Misc.run(args, monitoring);
+		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
@@ -509,7 +503,7 @@ public class TestResig {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/resig/ejohn85.js"};
-		Misc.run(args, monitoring);
+		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
@@ -519,7 +513,7 @@ public class TestResig {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/resig/ejohn86.js"};
-		Misc.run(args, monitoring);
+		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
@@ -528,7 +522,7 @@ public class TestResig {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/resig/ejohn88.js"};
-		Misc.run(args, monitoring);
+		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 
@@ -537,7 +531,7 @@ public class TestResig {
 		Misc.init();
 		Misc.captureSystemOutput();
 		String[] args = {"test/resig/ejohn90.js"};
-		Misc.run(args, monitoring);
+		Misc.run(args);
 		Misc.checkSystemOutput();
 	}
 }

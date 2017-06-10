@@ -1,2 +1,3 @@
+test/micro/issue197_1.js: [definite] Exceptional program exit is unreachable
 test/micro/issue197_1.js:2:11: [definite] The variable name is never used
 test/micro/issue197_1.js:8:1: [info] Abstract value: "OK"

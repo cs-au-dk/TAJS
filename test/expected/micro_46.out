@@ -1,5 +1,6 @@
 test/micro/test46.js:3:3: [definite] Dead assignment, property area is never read
 test/micro/test46.js:8:5: [definite] The function Polygon is invoked both as constructor and function
+test/micro/test46.js: [definite] Exceptional program exit is unreachable
 test/micro/test46.js:3:15: [definite] Unreachable function
 test/micro/test46.js:25:1: [info] Abstract object: {area:[@<anonymous>#fun2],temp:[@Polygon#fun1],[[Prototype]]=[@Object#node2]}
-test/micro/test46.js:26:1: [info] Abstract object: {[[Prototype]]=[@Object#node10]}
+test/micro/test46.js:26:1: [info] Abstract object: {[[Prototype]]=[@Object#node14]}

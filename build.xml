@@ -3,8 +3,7 @@
 <project name="TAJS" default="all" basedir=".">
 
     <property name="project" value="tajs" />
-    <property name="version" value="0.9" />
-    <property name="release" value="10" />
+    <property name="version" value="0.11" />
 
     <property name="optimize" value="on" />
     <property name="debug" value="off" />
@@ -74,6 +73,7 @@
                                dk.brics.tajs.analysis.js,
                                dk.brics.tajs.analysis.nativeobjects,
                                dk.brics.tajs.analysis.nativeobjects.concrete,
+                               dk.brics.tajs.analysis.signatures,
                                dk.brics.tajs.analysis.uneval,
                                dk.brics.tajs.flowgraph,
                                dk.brics.tajs.flowgraph.jsnodes,
@@ -91,7 +91,7 @@
             <doctitle>
                 <![CDATA[Type Analyzer for JavaScript (TAJS) API Specification]]>
             </doctitle>
-            <bottom><![CDATA[<i> Copyright &#169; 2009-2016 Aarhus University </i>]]></bottom>
+            <bottom><![CDATA[<i> Copyright &#169; 2009-2017 Aarhus University </i>]]></bottom>
             <link href="http://docs.oracle.com/javase/8/docs/api/"/>
             <link href="http://www.mozilla.org/rhino/apidocs/" />
             <classpath refid="classpath" />
@@ -121,11 +121,11 @@
         <copy todir="${dir}/src">
             <fileset dir="src" excludes="**/*.class" />
         </copy>
-        <zip zipfile="dist/${dir}-${release}.zip" basedir="." includes="${dir}/**" />
+        <zip zipfile="dist/${dir}.zip" basedir="." includes="${dir}/**" />
         <!--
-        <tar tarfile="${dir}-${release}.tar" basedir="." includes="${dir}/**" />
-        <gzip zipfile="${dir}-${release}.tar.gz" src="${dir}-${release}.tar" />
-        <delete file="${dir}-${release}.tar" />
+        <tar tarfile="${dir}.tar" basedir="." includes="${dir}/**" />
+        <gzip zipfile="${dir}.tar.gz" src="${dir}.tar" />
+        <delete file="${dir}.tar" />
         -->
         <delete dir="${dir}" />
     </target>
@@ -172,8 +172,8 @@
                 <istrue value="${debug}" />
             </condition>
         </fail>
-        <property name="doc" value="doc-${version}-${release}" />
-        <property name="dist" value="dist-${version}-${release}" />
+        <property name="doc" value="doc-${version}" />
+        <property name="dist" value="dist-${version}" />
         <delete dir="${public}/${doc}" />
         <mkdir dir="${public}/${doc}" />
         <copy todir="${public}/${doc}">

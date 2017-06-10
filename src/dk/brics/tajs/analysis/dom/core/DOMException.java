@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,11 +16,13 @@
 
 package dk.brics.tajs.analysis.dom.core;
 
+import dk.brics.tajs.analysis.Exceptions;
 import dk.brics.tajs.analysis.InitialStateBuilder;
 import dk.brics.tajs.analysis.PropVarOperations;
 import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.analysis.dom.DOMObjects;
 import dk.brics.tajs.analysis.dom.DOMWindow;
+import dk.brics.tajs.flowgraph.AbstractNode;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.ObjectLabel.Kind;
 import dk.brics.tajs.lattice.State;
@@ -46,18 +48,18 @@ public class DOMException {
     /**
      * Creates a DOMException.
      */
-    public static Value newDOMException(int code, Solver.SolverInterface c) {
+    public static Value newDOMException(Value code, Solver.SolverInterface c) {
         State s = c.getState();
         PropVarOperations pv = c.getAnalysis().getPropVarOperations();
         s.newObject(DOMEXCEPTION);
         s.writeInternalPrototype(DOMEXCEPTION, Value.makeObject(DOMEXCEPTION_PROTOTYPE));
-        pv.writeProperty(DOMEXCEPTION, "code", Value.makeNum(code));
+        pv.writeProperty(DOMEXCEPTION, "code", code);
         return Value.makeObject(DOMEXCEPTION);
     }
 
     public static void build(Solver.SolverInterface c) {
-        DOMEXCEPTION = new ObjectLabel(DOMObjects.DOMEXCEPTION, Kind.OBJECT);
-        DOMEXCEPTION_PROTOTYPE = new ObjectLabel(DOMObjects.DOMEXCEPTION_PROTOTYPE, Kind.OBJECT);
+        DOMEXCEPTION = ObjectLabel.make(DOMObjects.DOMEXCEPTION, Kind.OBJECT);
+        DOMEXCEPTION_PROTOTYPE = ObjectLabel.make(DOMObjects.DOMEXCEPTION_PROTOTYPE, Kind.OBJECT);
 
         State s = c.getState();
         PropVarOperations pv = c.getAnalysis().getPropVarOperations();
@@ -86,5 +88,9 @@ public class DOMException {
         createDOMProperty(DOMEXCEPTION_PROTOTYPE, "INVALID_MODIFICATION_ERR", Value.makeNum(13), c);
         createDOMProperty(DOMEXCEPTION_PROTOTYPE, "NAMESPACE_ERR", Value.makeNum(14), c);
         createDOMProperty(DOMEXCEPTION_PROTOTYPE, "INVALID_ACCESS_ERR", Value.makeNum(15), c);
+    }
+
+    public static void throwException(AbstractNode sourceNode, Solver.SolverInterface c) {
+        Exceptions.throwException(c.getState().clone(), newDOMException(Value.makeAnyNumUInt(), c), c, sourceNode);
     }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,9 +18,9 @@ package dk.brics.tajs.analysis.dom.html;
 
 import dk.brics.tajs.analysis.FunctionCalls;
 import dk.brics.tajs.analysis.InitialStateBuilder;
-import dk.brics.tajs.analysis.NativeFunctions;
 import dk.brics.tajs.analysis.PropVarOperations;
 import dk.brics.tajs.analysis.Solver;
+import dk.brics.tajs.analysis.dom.DOMFunctions;
 import dk.brics.tajs.analysis.dom.DOMObjects;
 import dk.brics.tajs.analysis.dom.DOMWindow;
 import dk.brics.tajs.lattice.ObjectLabel;
@@ -45,9 +45,9 @@ public class HTMLAnchorElement {
     public static void build(Solver.SolverInterface c) {
         State s = c.getState();
         PropVarOperations pv = c.getAnalysis().getPropVarOperations();
-        CONSTRUCTOR = new ObjectLabel(DOMObjects.HTMLANCHORELEMENT_CONSTRUCTOR, ObjectLabel.Kind.FUNCTION);
-        INSTANCES = new ObjectLabel(DOMObjects.HTMLANCHORELEMENT_INSTANCES, ObjectLabel.Kind.OBJECT);
-        PROTOTYPE = new ObjectLabel(DOMObjects.HTMLANCHORELEMENT_PROTOTYPE, ObjectLabel.Kind.OBJECT);
+        CONSTRUCTOR = ObjectLabel.make(DOMObjects.HTMLANCHORELEMENT_CONSTRUCTOR, ObjectLabel.Kind.FUNCTION);
+        INSTANCES = ObjectLabel.make(DOMObjects.HTMLANCHORELEMENT_INSTANCES, ObjectLabel.Kind.OBJECT);
+        PROTOTYPE = ObjectLabel.make(DOMObjects.HTMLANCHORELEMENT_PROTOTYPE, ObjectLabel.Kind.OBJECT);
 
         // Constructor Object
         s.newObject(CONSTRUCTOR);
@@ -71,14 +71,20 @@ public class HTMLAnchorElement {
         createDOMProperty(INSTANCES, "accessKey", Value.makeAnyStr(), c);
         createDOMProperty(INSTANCES, "charset", Value.makeAnyStr(), c);
         createDOMProperty(INSTANCES, "coords", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "hash", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "host", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "hostname", Value.makeAnyStr(), c);
         createDOMProperty(INSTANCES, "href", Value.makeAnyStr(), c);
         createDOMProperty(INSTANCES, "hreflang", Value.makeAnyStr(), c);
-        createDOMProperty(INSTANCES, "name", Value.makeAnyStr(), c);
         createDOMProperty(INSTANCES, "rel", Value.makeAnyStr(), c);
         createDOMProperty(INSTANCES, "rev", Value.makeAnyStr(), c);
         createDOMProperty(INSTANCES, "shape", Value.makeAnyStr(), c);
         createDOMProperty(INSTANCES, "tabIndex", Value.makeAnyNum(), c);
         createDOMProperty(INSTANCES, "target", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "pathname", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "port", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "protocol", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "search", Value.makeAnyStr(), c);
         createDOMProperty(INSTANCES, "type", Value.makeAnyStr().restrictToNotStrIdentifierParts() /* mime-type */, c);
 
         s.multiplyObject(INSTANCES);
@@ -99,11 +105,11 @@ public class HTMLAnchorElement {
     public static Value evaluate(DOMObjects nativeObject, FunctionCalls.CallInfo call, Solver.SolverInterface c) {
         switch (nativeObject) {
             case HTMLANCHORELEMENT_BLUR: {
-                NativeFunctions.expectParameters(nativeObject, call, c, 0, 0);
+                DOMFunctions.expectParameters(nativeObject, call, c, 0, 0);
                 return Value.makeUndef();
             }
             case HTMLANCHORELEMENT_FOCUS: {
-                NativeFunctions.expectParameters(nativeObject, call, c, 0, 0);
+                DOMFunctions.expectParameters(nativeObject, call, c, 0, 0);
                 return Value.makeUndef();
             }
             default: {

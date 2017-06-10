@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,10 +19,10 @@ package dk.brics.tajs.analysis.dom.html5;
 import dk.brics.tajs.analysis.Conversion;
 import dk.brics.tajs.analysis.FunctionCalls;
 import dk.brics.tajs.analysis.InitialStateBuilder;
-import dk.brics.tajs.analysis.NativeFunctions;
 import dk.brics.tajs.analysis.PropVarOperations;
 import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.analysis.dom.DOMConversion;
+import dk.brics.tajs.analysis.dom.DOMFunctions;
 import dk.brics.tajs.analysis.dom.DOMObjects;
 import dk.brics.tajs.analysis.dom.DOMWindow;
 import dk.brics.tajs.lattice.ObjectLabel;
@@ -53,14 +53,14 @@ public class CanvasRenderingContext2D {
     public static void build(Solver.SolverInterface c) {
         State s = c.getState();
         PropVarOperations pv = c.getAnalysis().getPropVarOperations();
-        CONTEXT2D = new ObjectLabel(DOMObjects.CANVASRENDERINGCONTEXT2D, ObjectLabel.Kind.OBJECT);
-        CONTEXT2D_PROTOTYPE = new ObjectLabel(DOMObjects.CANVASRENDERINGCONTEXT2D_PROTOTYPE, ObjectLabel.Kind.OBJECT);
+        CONTEXT2D = ObjectLabel.make(DOMObjects.CANVASRENDERINGCONTEXT2D, ObjectLabel.Kind.OBJECT);
+        CONTEXT2D_PROTOTYPE = ObjectLabel.make(DOMObjects.CANVASRENDERINGCONTEXT2D_PROTOTYPE, ObjectLabel.Kind.OBJECT);
 
-        GRADIENT = new ObjectLabel(DOMObjects.CANVASGRADIENT, ObjectLabel.Kind.OBJECT);
-        PATTERN = new ObjectLabel(DOMObjects.CANVASPATTERN, ObjectLabel.Kind.OBJECT);
-        PIXEL_ARRAY = new ObjectLabel(DOMObjects.CANVASPIXELARRAY, ObjectLabel.Kind.OBJECT);
-        IMAGE_DATA = new ObjectLabel(DOMObjects.IMAGEDATA, ObjectLabel.Kind.OBJECT);
-        TEXT_METRICS = new ObjectLabel(DOMObjects.TEXTMETRICS, ObjectLabel.Kind.OBJECT);
+        GRADIENT = ObjectLabel.make(DOMObjects.CANVASGRADIENT, ObjectLabel.Kind.OBJECT);
+        PATTERN = ObjectLabel.make(DOMObjects.CANVASPATTERN, ObjectLabel.Kind.OBJECT);
+        PIXEL_ARRAY = ObjectLabel.make(DOMObjects.CANVASPIXELARRAY, ObjectLabel.Kind.OBJECT);
+        IMAGE_DATA = ObjectLabel.make(DOMObjects.IMAGEDATA, ObjectLabel.Kind.OBJECT);
+        TEXT_METRICS = ObjectLabel.make(DOMObjects.TEXTMETRICS, ObjectLabel.Kind.OBJECT);
 
         // Prototype Object
         s.newObject(CONTEXT2D_PROTOTYPE);
@@ -217,87 +217,87 @@ public class CanvasRenderingContext2D {
             // State
             case CANVASRENDERINGCONTEXT2D_SAVE:
             case CANVASRENDERINGCONTEXT2D_RESTORE: {
-                NativeFunctions.expectParameters(nativeObject, call, c, 0, 0);
+                DOMFunctions.expectParameters(nativeObject, call, c, 0, 0);
                 return Value.makeUndef();
             }
 
             // Transformations
             case CANVASRENDERINGCONTEXT2D_SCALE: {
-                NativeFunctions.expectParameters(nativeObject, call, c, 2, 2);
+                DOMFunctions.expectParameters(nativeObject, call, c, 2, 2);
                 /* Value x =*/
-                Conversion.toNumber(NativeFunctions.readParameter(call, s, 0), c);
+                Conversion.toNumber(FunctionCalls.readParameter(call, s, 0), c);
                 /* Value y =*/
-                Conversion.toNumber(NativeFunctions.readParameter(call, s, 1), c);
+                Conversion.toNumber(FunctionCalls.readParameter(call, s, 1), c);
                 return Value.makeUndef();
             }
             case CANVASRENDERINGCONTEXT2D_ROTATE: {
-                NativeFunctions.expectParameters(nativeObject, call, c, 1, 1);
+                DOMFunctions.expectParameters(nativeObject, call, c, 1, 1);
                 /* Value angle =*/
-                Conversion.toNumber(NativeFunctions.readParameter(call, s, 0), c);
+                Conversion.toNumber(FunctionCalls.readParameter(call, s, 0), c);
                 return Value.makeUndef();
             }
             case CANVASRENDERINGCONTEXT2D_TRANSLATE: {
-                NativeFunctions.expectParameters(nativeObject, call, c, 2, 2);
+                DOMFunctions.expectParameters(nativeObject, call, c, 2, 2);
                 /* Value x =*/
-                Conversion.toNumber(NativeFunctions.readParameter(call, s, 0), c);
+                Conversion.toNumber(FunctionCalls.readParameter(call, s, 0), c);
                 /* Value y =*/
-                Conversion.toNumber(NativeFunctions.readParameter(call, s, 1), c);
+                Conversion.toNumber(FunctionCalls.readParameter(call, s, 1), c);
                 return Value.makeUndef();
             }
             case CANVASRENDERINGCONTEXT2D_TRANSFORM:
             case CANVASRENDERINGCONTEXT2D_SETTRANSFORM: {
-                NativeFunctions.expectParameters(nativeObject, call, c, 6, 6);
+                DOMFunctions.expectParameters(nativeObject, call, c, 6, 6);
                 /* Value m11 =*/
-                Conversion.toNumber(NativeFunctions.readParameter(call, s, 0), c);
+                Conversion.toNumber(FunctionCalls.readParameter(call, s, 0), c);
                 /* Value m12 =*/
-                Conversion.toNumber(NativeFunctions.readParameter(call, s, 1), c);
+                Conversion.toNumber(FunctionCalls.readParameter(call, s, 1), c);
                 /* Value m21 =*/
-                Conversion.toNumber(NativeFunctions.readParameter(call, s, 2), c);
+                Conversion.toNumber(FunctionCalls.readParameter(call, s, 2), c);
                 /* Value m22 =*/
-                Conversion.toNumber(NativeFunctions.readParameter(call, s, 3), c);
+                Conversion.toNumber(FunctionCalls.readParameter(call, s, 3), c);
                 /* Value dx =*/
-                Conversion.toNumber(NativeFunctions.readParameter(call, s, 4), c);
+                Conversion.toNumber(FunctionCalls.readParameter(call, s, 4), c);
                 /* Value dy =*/
-                Conversion.toNumber(NativeFunctions.readParameter(call, s, 5), c);
+                Conversion.toNumber(FunctionCalls.readParameter(call, s, 5), c);
                 return Value.makeUndef();
             }
 
             // Colors & Styles
             case CANVASRENDERINGCONTEXT2D_CREATE_LINEAR_GRADIENT: {
-                NativeFunctions.expectParameters(nativeObject, call, c, 4, 4);
+                DOMFunctions.expectParameters(nativeObject, call, c, 4, 4);
                 /* Value x0 =*/
-                Conversion.toNumber(NativeFunctions.readParameter(call, s, 0), c);
+                Conversion.toNumber(FunctionCalls.readParameter(call, s, 0), c);
                 /* Value y0 =*/
-                Conversion.toNumber(NativeFunctions.readParameter(call, s, 1), c);
+                Conversion.toNumber(FunctionCalls.readParameter(call, s, 1), c);
                 /* Value x1 =*/
-                Conversion.toNumber(NativeFunctions.readParameter(call, s, 2), c);
+                Conversion.toNumber(FunctionCalls.readParameter(call, s, 2), c);
                 /* Value y1 =*/
-                Conversion.toNumber(NativeFunctions.readParameter(call, s, 3), c);
+                Conversion.toNumber(FunctionCalls.readParameter(call, s, 3), c);
                 return Value.makeObject(GRADIENT);
             }
             case CANVASRENDERINGCONTEXT2D_CREATE_RADIAL_GRADIENT: {
-                NativeFunctions.expectParameters(nativeObject, call, c, 6, 6);
+                DOMFunctions.expectParameters(nativeObject, call, c, 6, 6);
                 /* Value x0 =*/
-                Conversion.toNumber(NativeFunctions.readParameter(call, s, 0), c);
+                Conversion.toNumber(FunctionCalls.readParameter(call, s, 0), c);
                 /* Value y0 =*/
-                Conversion.toNumber(NativeFunctions.readParameter(call, s, 1), c);
+                Conversion.toNumber(FunctionCalls.readParameter(call, s, 1), c);
                 /* Value r0 =*/
-                Conversion.toNumber(NativeFunctions.readParameter(call, s, 2), c);
+                Conversion.toNumber(FunctionCalls.readParameter(call, s, 2), c);
                 /* Value x1 =*/
-                Conversion.toNumber(NativeFunctions.readParameter(call, s, 3), c);
+                Conversion.toNumber(FunctionCalls.readParameter(call, s, 3), c);
                 /* Value y1 =*/
-                Conversion.toNumber(NativeFunctions.readParameter(call, s, 4), c);
+                Conversion.toNumber(FunctionCalls.readParameter(call, s, 4), c);
                 /* Value r1 =*/
-                Conversion.toNumber(NativeFunctions.readParameter(call, s, 5), c);
+                Conversion.toNumber(FunctionCalls.readParameter(call, s, 5), c);
                 return Value.makeObject(GRADIENT);
             }
             case CANVASRENDERINGCONTEXT2D_CREATE_PATTERN: {
-                NativeFunctions.expectParameters(nativeObject, call, c, 2, 2);
+                DOMFunctions.expectParameters(nativeObject, call, c, 2, 2);
                 // TODO: Check the arguments
                 /* Value image = */
-                NativeFunctions.readParameter(call, s, 0);
+                FunctionCalls.readParameter(call, s, 0);
                 /* Value repetitionString =*/
-                Conversion.toString(NativeFunctions.readParameter(call, s, 1), c);
+                Conversion.toString(FunctionCalls.readParameter(call, s, 1), c);
                 return Value.makeObject(PATTERN);
             }
 
@@ -305,135 +305,135 @@ public class CanvasRenderingContext2D {
             case CANVASRENDERINGCONTEXT2D_CLEAR_RECT:
             case CANVASRENDERINGCONTEXT2D_FILL_RECT:
             case CANVASRENDERINGCONTEXT2D_STROKE_RECT: {
-                NativeFunctions.expectParameters(nativeObject, call, c, 4, 4);
+                DOMFunctions.expectParameters(nativeObject, call, c, 4, 4);
                 /* Value x =*/
-                Conversion.toNumber(NativeFunctions.readParameter(call, s, 0), c);
+                Conversion.toNumber(FunctionCalls.readParameter(call, s, 0), c);
                 /* Value y =*/
-                Conversion.toNumber(NativeFunctions.readParameter(call, s, 1), c);
+                Conversion.toNumber(FunctionCalls.readParameter(call, s, 1), c);
                 /* Value width =*/
-                Conversion.toNumber(NativeFunctions.readParameter(call, s, 2), c);
+                Conversion.toNumber(FunctionCalls.readParameter(call, s, 2), c);
                 /* Value height =*/
-                Conversion.toNumber(NativeFunctions.readParameter(call, s, 3), c);
+                Conversion.toNumber(FunctionCalls.readParameter(call, s, 3), c);
                 return Value.makeUndef();
             }
 
             // Paths
             case CANVASRENDERINGCONTEXT2D_BEGIN_PATH: {
-                NativeFunctions.expectParameters(nativeObject, call, c, 0, 0);
+                DOMFunctions.expectParameters(nativeObject, call, c, 0, 0);
                 return Value.makeUndef();
             }
             case CANVASRENDERINGCONTEXT2D_CLOSE_PATH: {
-                NativeFunctions.expectParameters(nativeObject, call, c, 0, 0);
+                DOMFunctions.expectParameters(nativeObject, call, c, 0, 0);
                 return Value.makeUndef();
             }
             case CANVASRENDERINGCONTEXT2D_MOVE_TO: {
-                NativeFunctions.expectParameters(nativeObject, call, c, 2, 2);
+                DOMFunctions.expectParameters(nativeObject, call, c, 2, 2);
                 /* Value x =*/
-                Conversion.toNumber(NativeFunctions.readParameter(call, s, 0), c);
+                Conversion.toNumber(FunctionCalls.readParameter(call, s, 0), c);
                 /* Value y =*/
-                Conversion.toNumber(NativeFunctions.readParameter(call, s, 1), c);
+                Conversion.toNumber(FunctionCalls.readParameter(call, s, 1), c);
                 return Value.makeUndef();
             }
             case CANVASRENDERINGCONTEXT2D_LINE_TO: {
-                NativeFunctions.expectParameters(nativeObject, call, c, 2, 2);
+                DOMFunctions.expectParameters(nativeObject, call, c, 2, 2);
                 /* Value x =*/
-                Conversion.toNumber(NativeFunctions.readParameter(call, s, 0), c);
+                Conversion.toNumber(FunctionCalls.readParameter(call, s, 0), c);
                 /* Value y =*/
-                Conversion.toNumber(NativeFunctions.readParameter(call, s, 1), c);
+                Conversion.toNumber(FunctionCalls.readParameter(call, s, 1), c);
                 return Value.makeUndef();
             }
             case CANVASRENDERINGCONTEXT2D_QUADRATIC_CURVE_TO: {
-                NativeFunctions.expectParameters(nativeObject, call, c, 4, 4);
+                DOMFunctions.expectParameters(nativeObject, call, c, 4, 4);
                 /* Value cpx =*/
-                Conversion.toNumber(NativeFunctions.readParameter(call, s, 0), c);
+                Conversion.toNumber(FunctionCalls.readParameter(call, s, 0), c);
                 /* Value cpy =*/
-                Conversion.toNumber(NativeFunctions.readParameter(call, s, 1), c);
+                Conversion.toNumber(FunctionCalls.readParameter(call, s, 1), c);
                 /* Value x =*/
-                Conversion.toNumber(NativeFunctions.readParameter(call, s, 2), c);
+                Conversion.toNumber(FunctionCalls.readParameter(call, s, 2), c);
                 /* Value y =*/
-                Conversion.toNumber(NativeFunctions.readParameter(call, s, 3), c);
+                Conversion.toNumber(FunctionCalls.readParameter(call, s, 3), c);
                 return Value.makeUndef();
             }
             case CANVASRENDERINGCONTEXT2D_BEZIER_CURVE_TO: {
-                NativeFunctions.expectParameters(nativeObject, call, c, 6, 6);
+                DOMFunctions.expectParameters(nativeObject, call, c, 6, 6);
                 /* Value cp1x =*/
-                Conversion.toNumber(NativeFunctions.readParameter(call, s, 0), c);
+                Conversion.toNumber(FunctionCalls.readParameter(call, s, 0), c);
                 /* Value cp1y =*/
-                Conversion.toNumber(NativeFunctions.readParameter(call, s, 1), c);
+                Conversion.toNumber(FunctionCalls.readParameter(call, s, 1), c);
                 /* Value cp2x =*/
-                Conversion.toNumber(NativeFunctions.readParameter(call, s, 2), c);
+                Conversion.toNumber(FunctionCalls.readParameter(call, s, 2), c);
                 /* Value cp2y =*/
-                Conversion.toNumber(NativeFunctions.readParameter(call, s, 3), c);
+                Conversion.toNumber(FunctionCalls.readParameter(call, s, 3), c);
                 /* Value x =*/
-                Conversion.toNumber(NativeFunctions.readParameter(call, s, 4), c);
+                Conversion.toNumber(FunctionCalls.readParameter(call, s, 4), c);
                 /* Value y =*/
-                Conversion.toNumber(NativeFunctions.readParameter(call, s, 5), c);
+                Conversion.toNumber(FunctionCalls.readParameter(call, s, 5), c);
                 return Value.makeUndef();
             }
             case CANVASRENDERINGCONTEXT2D_RECT: {
-                NativeFunctions.expectParameters(nativeObject, call, c, 4, 4);
+                DOMFunctions.expectParameters(nativeObject, call, c, 4, 4);
                 /* Value x =*/
-                Conversion.toNumber(NativeFunctions.readParameter(call, s, 0), c);
+                Conversion.toNumber(FunctionCalls.readParameter(call, s, 0), c);
                 /* Value y =*/
-                Conversion.toNumber(NativeFunctions.readParameter(call, s, 1), c);
+                Conversion.toNumber(FunctionCalls.readParameter(call, s, 1), c);
                 /* Value w =*/
-                Conversion.toNumber(NativeFunctions.readParameter(call, s, 2), c);
+                Conversion.toNumber(FunctionCalls.readParameter(call, s, 2), c);
                 /* Value h =*/
-                Conversion.toNumber(NativeFunctions.readParameter(call, s, 3), c);
+                Conversion.toNumber(FunctionCalls.readParameter(call, s, 3), c);
                 return Value.makeUndef();
             }
             case CANVASRENDERINGCONTEXT2D_ARC: {
-                NativeFunctions.expectParameters(nativeObject, call, c, 6, 6);
+                DOMFunctions.expectParameters(nativeObject, call, c, 6, 6);
                 /* Value x =*/
-                Conversion.toNumber(NativeFunctions.readParameter(call, s, 0), c);
+                Conversion.toNumber(FunctionCalls.readParameter(call, s, 0), c);
                 /* Value y =*/
-                Conversion.toNumber(NativeFunctions.readParameter(call, s, 1), c);
+                Conversion.toNumber(FunctionCalls.readParameter(call, s, 1), c);
                 /* Value radius =*/
-                Conversion.toNumber(NativeFunctions.readParameter(call, s, 2), c);
+                Conversion.toNumber(FunctionCalls.readParameter(call, s, 2), c);
                 /* Value startAngle =*/
-                Conversion.toNumber(NativeFunctions.readParameter(call, s, 3), c);
+                Conversion.toNumber(FunctionCalls.readParameter(call, s, 3), c);
                 /* Value endAngle =*/
-                Conversion.toNumber(NativeFunctions.readParameter(call, s, 4), c);
+                Conversion.toNumber(FunctionCalls.readParameter(call, s, 4), c);
                 /* Value anticlockwise =*/
-                Conversion.toBoolean(NativeFunctions.readParameter(call, s, 5));
+                Conversion.toBoolean(FunctionCalls.readParameter(call, s, 5));
                 return Value.makeUndef();
             }
             case CANVASRENDERINGCONTEXT2D_ARC_TO: {
-                NativeFunctions.expectParameters(nativeObject, call, c, 5, 5);
+                DOMFunctions.expectParameters(nativeObject, call, c, 5, 5);
                 /* Value x1 =*/
-                Conversion.toNumber(NativeFunctions.readParameter(call, s, 0), c);
+                Conversion.toNumber(FunctionCalls.readParameter(call, s, 0), c);
                 /* Value y1 =*/
-                Conversion.toNumber(NativeFunctions.readParameter(call, s, 1), c);
+                Conversion.toNumber(FunctionCalls.readParameter(call, s, 1), c);
                 /* Value x2 =*/
-                Conversion.toNumber(NativeFunctions.readParameter(call, s, 2), c);
+                Conversion.toNumber(FunctionCalls.readParameter(call, s, 2), c);
                 /* Value y2 =*/
-                Conversion.toNumber(NativeFunctions.readParameter(call, s, 3), c);
+                Conversion.toNumber(FunctionCalls.readParameter(call, s, 3), c);
                 /* Value radius =*/
-                Conversion.toNumber(NativeFunctions.readParameter(call, s, 4), c);
+                Conversion.toNumber(FunctionCalls.readParameter(call, s, 4), c);
                 return Value.makeUndef();
             }
             case CANVASRENDERINGCONTEXT2D_CLIP: {
-                NativeFunctions.expectParameters(nativeObject, call, c, 0, 0);
+                DOMFunctions.expectParameters(nativeObject, call, c, 0, 0);
                 return Value.makeUndef();
             }
             case CANVASRENDERINGCONTEXT2D_IS_POINT_IN_PATH: {
-                NativeFunctions.expectParameters(nativeObject, call, c, 2, 2);
+                DOMFunctions.expectParameters(nativeObject, call, c, 2, 2);
                 /* Value x =*/
-                Conversion.toNumber(NativeFunctions.readParameter(call, s, 0), c);
+                Conversion.toNumber(FunctionCalls.readParameter(call, s, 0), c);
                 /* Value y =*/
-                Conversion.toNumber(NativeFunctions.readParameter(call, s, 1), c);
+                Conversion.toNumber(FunctionCalls.readParameter(call, s, 1), c);
                 return Value.makeAnyBool();
             }
             case CANVASRENDERINGCONTEXT2D_FILL:
             case CANVASRENDERINGCONTEXT2D_STROKE: {
-                NativeFunctions.expectParameters(nativeObject, call, c, 0, 0);
+                DOMFunctions.expectParameters(nativeObject, call, c, 0, 0);
                 return Value.makeUndef();
             }
             case CANVASRENDERINGCONTEXT2D_DRAW_IMAGE: {
-                NativeFunctions.expectParameters(nativeObject, call, c, 3, -1);
+                DOMFunctions.expectParameters(nativeObject, call, c, 3, -1);
 
-                boolean bad = NativeFunctions.readParameter(call, s, 0).isMaybePrimitive();
-                for (ObjectLabel l : NativeFunctions.readParameter(call, s, 0).getObjectLabels()) {
+                boolean bad = FunctionCalls.readParameter(call, s, 0).isMaybePrimitive();
+                for (ObjectLabel l : FunctionCalls.readParameter(call, s, 0).getObjectLabels()) {
                     if (!l.isHostObject() || (l.getHostObject() != DOMObjects.HTMLIMAGEELEMENT_INSTANCES && l.getHostObject() != DOMObjects.HTMLCANVASELEMENT_INSTANCES)) {
                         bad = true;
                     }
@@ -443,28 +443,28 @@ public class CanvasRenderingContext2D {
                     c.getMonitoring().addMessage(c.getNode(), Message.Severity.HIGH, msg);
                 }
 
-                Conversion.toNumber(NativeFunctions.readParameter(call, s, 1), c);
-                Conversion.toNumber(NativeFunctions.readParameter(call, s, 2), c);
+                Conversion.toNumber(FunctionCalls.readParameter(call, s, 1), c);
+                Conversion.toNumber(FunctionCalls.readParameter(call, s, 2), c);
                 return Value.makeUndef();
             }
             case CANVASRENDERINGCONTEXT2D_GET_IMAGE_DATA: {
-                NativeFunctions.expectParameters(nativeObject, call, c, 4, 4);
+                DOMFunctions.expectParameters(nativeObject, call, c, 4, 4);
                 /* Value sx =*/
-                Conversion.toNumber(NativeFunctions.readParameter(call, s, 0), c);
+                Conversion.toNumber(FunctionCalls.readParameter(call, s, 0), c);
                 /* Value sy =*/
-                Conversion.toNumber(NativeFunctions.readParameter(call, s, 1), c);
+                Conversion.toNumber(FunctionCalls.readParameter(call, s, 1), c);
                 /* Value sw =*/
-                Conversion.toNumber(NativeFunctions.readParameter(call, s, 2), c);
+                Conversion.toNumber(FunctionCalls.readParameter(call, s, 2), c);
                 /* Value sh =*/
-                Conversion.toNumber(NativeFunctions.readParameter(call, s, 3), c);
+                Conversion.toNumber(FunctionCalls.readParameter(call, s, 3), c);
                 return Value.makeObject(IMAGE_DATA);
             }
             case CANVASRENDERINGCONTEXT2D_PUT_IMAGE_DATA: {
-                NativeFunctions.expectParameters(nativeObject, call, c, 3, -1);
+                DOMFunctions.expectParameters(nativeObject, call, c, 3, -1);
                 /* Value imageData =*/
-                DOMConversion.toNativeObject(DOMObjects.IMAGEDATA, NativeFunctions.readParameter(call, s, 0), false, c);
-                Value dx = Conversion.toNumber(NativeFunctions.readParameter(call, s, 1), c);
-                Value dy = Conversion.toNumber(NativeFunctions.readParameter(call, s, 2), c);
+                DOMConversion.toNativeObject(DOMObjects.IMAGEDATA, FunctionCalls.readParameter(call, s, 0), false, c);
+                Value dx = Conversion.toNumber(FunctionCalls.readParameter(call, s, 1), c);
+                Value dy = Conversion.toNumber(FunctionCalls.readParameter(call, s, 2), c);
 
                 if (dx.isNaN() || dy.isNaN() || dx.isMaybeInf() || dy.isMaybeInf()) {
                     final String message = "TypeError, inf or NaN as arguments to CanvasRenderingContext2D.putImageData";
@@ -474,60 +474,60 @@ public class CanvasRenderingContext2D {
                 return Value.makeUndef();
             }
             case CANVASGRADIENT_ADD_COLOR_STOP: {
-                NativeFunctions.expectParameters(nativeObject, call, c, 2, 2);
+                DOMFunctions.expectParameters(nativeObject, call, c, 2, 2);
                 /* Value offset =*/
-                Conversion.toNumber(NativeFunctions.readParameter(call, s, 0), c);
+                Conversion.toNumber(FunctionCalls.readParameter(call, s, 0), c);
                 /* Value color =*/
-                Conversion.toString(NativeFunctions.readParameter(call, s, 1), c);
+                Conversion.toString(FunctionCalls.readParameter(call, s, 1), c);
                 return Value.makeUndef();
             }
             case CANVASRENDERINGCONTEXT2D_STROKE_TEXT:
             case CANVASRENDERINGCONTEXT2D_FILL_TEXT: {
-                NativeFunctions.expectParameters(nativeObject, call, c, 3, 4);
+                DOMFunctions.expectParameters(nativeObject, call, c, 3, 4);
                 /* Value text =*/
-                Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
+                Conversion.toString(FunctionCalls.readParameter(call, s, 0), c);
                 /* Value x =*/
-                Conversion.toNumber(NativeFunctions.readParameter(call, s, 1), c);
+                Conversion.toNumber(FunctionCalls.readParameter(call, s, 1), c);
                 /* Value y =*/
-                Conversion.toNumber(NativeFunctions.readParameter(call, s, 2), c);
-                if (NativeFunctions.readParameter(call, s, 3) != Value.makeUndef()) {
+                Conversion.toNumber(FunctionCalls.readParameter(call, s, 2), c);
+                if (FunctionCalls.readParameter(call, s, 3) != Value.makeUndef()) {
                     /* Value maxWidth =*/
-                    Conversion.toNumber(NativeFunctions.readParameter(call, s, 3), c);
+                    Conversion.toNumber(FunctionCalls.readParameter(call, s, 3), c);
                 }
                 return Value.makeUndef();
             }
             case CANVASRENDERINGCONTEXT2D_MEASURE_TEXT: {
-                NativeFunctions.expectParameters(nativeObject, call, c, 1, 1);
+                DOMFunctions.expectParameters(nativeObject, call, c, 1, 1);
                 /* Value text =*/
-                Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
+                Conversion.toString(FunctionCalls.readParameter(call, s, 0), c);
                 return Value.makeObject(TEXT_METRICS);
             }
             case CANVASRENDERINGCONTEXT2D_CREATE_IMAGE_DATA: {
-                NativeFunctions.expectParameters(nativeObject, call, c, 1, 2);
-                if (NativeFunctions.readParameter(call, s, 1) == Value.makeUndef()) {
+                DOMFunctions.expectParameters(nativeObject, call, c, 1, 2);
+                if (FunctionCalls.readParameter(call, s, 1) == Value.makeUndef()) {
                     // Version with only one argument
                     /* Value imageData =*/
-                    DOMConversion.toNativeObject(DOMObjects.IMAGEDATA, NativeFunctions.readParameter(call, s, 0), false, c);
+                    DOMConversion.toNativeObject(DOMObjects.IMAGEDATA, FunctionCalls.readParameter(call, s, 0), false, c);
                 } else {
                     // Version with two arguments
                     /* Value sw =*/
-                    Conversion.toNumber(NativeFunctions.readParameter(call, s, 0), c);
+                    Conversion.toNumber(FunctionCalls.readParameter(call, s, 0), c);
                     /* Value sh =*/
-                    Conversion.toNumber(NativeFunctions.readParameter(call, s, 1), c);
+                    Conversion.toNumber(FunctionCalls.readParameter(call, s, 1), c);
                 }
                 return Value.makeObject(IMAGE_DATA);
             }
             // Focus Management
             case CANVASRENDERINGCONTEXT2D_DRAW_FOCUS_RING: {
-                NativeFunctions.expectParameters(nativeObject, call, c, 3, 4);
+                DOMFunctions.expectParameters(nativeObject, call, c, 3, 4);
                 /* Value element = */
-                DOMConversion.toHTMLElement(NativeFunctions.readParameter(call, s, 0), c);
+                DOMConversion.toHTMLElement(FunctionCalls.readParameter(call, s, 0), c);
                 /* Value xCaret = */
-                Conversion.toNumber(NativeFunctions.readParameter(call, s, 1), c);
+                Conversion.toNumber(FunctionCalls.readParameter(call, s, 1), c);
                 /* Value yCaret =*/
-                Conversion.toNumber(NativeFunctions.readParameter(call, s, 2), c);
+                Conversion.toNumber(FunctionCalls.readParameter(call, s, 2), c);
                 /* Value canDrawCustom (optional) = */
-                Conversion.toBoolean(NativeFunctions.readParameter(call, s, 3));
+                Conversion.toBoolean(FunctionCalls.readParameter(call, s, 3));
                 return Value.makeAnyBool();
             }
             default: {

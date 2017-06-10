@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -39,13 +39,15 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
-import java.util.function.Function;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
+import static dk.brics.tajs.lattice.Property.__PROTO__;
 import static dk.brics.tajs.util.Collections.addToMapSet;
 import static dk.brics.tajs.util.Collections.newList;
 import static dk.brics.tajs.util.Collections.newMap;
 import static dk.brics.tajs.util.Collections.newSet;
+import static dk.brics.tajs.util.Collections.singleton;
 import static dk.brics.tajs.util.Collections.sortedEntries;
 
 /**
@@ -56,7 +58,7 @@ public class State implements IState<State, Context, CallEdge> {
 
     private static Logger log = Logger.getLogger(State.class);
 
-    private GenericSolver<State, Context, CallEdge, ?, ?>.SolverInterface c;
+    private GenericSolver<State, Context, CallEdge, ? extends ILatticeMonitoring, ?>.SolverInterface c;
 
     /**
      * The basic block owning this state.
@@ -121,7 +123,7 @@ public class State implements IState<State, Context, CallEdge> {
     /**
      * Constructs a new none-state (representing the empty set of concrete states).
      */
-    public State(GenericSolver<State, Context, CallEdge, ?, ?>.SolverInterface c, BasicBlock block) {
+    public State(GenericSolver<State, Context, CallEdge, ? extends ILatticeMonitoring, ?>.SolverInterface c, BasicBlock block) {
         this.c = c;
         this.block = block;
         summarized = new Summarized();
@@ -143,7 +145,7 @@ public class State implements IState<State, Context, CallEdge> {
 //        if (Options.get().isCopyOnWriteDisabled()) {
         store = newMap();
         for (Map.Entry<ObjectLabel, Obj> xs : x.store.entrySet())
-            store.put(xs.getKey(), xs.getValue().freeze());
+            writeToStore(xs.getKey(), xs.getValue().freeze());
         basis_store = x.basis_store;
         writable_store = true;
         execution_context = x.execution_context.clone();
@@ -176,7 +178,7 @@ public class State implements IState<State, Context, CallEdge> {
     /**
      * Returns the solver interface.
      */
-    public GenericSolver<State, Context, CallEdge, ?, ?>.SolverInterface getSolverInterface() {
+    public GenericSolver<State, Context, CallEdge, ? extends ILatticeMonitoring, ?>.SolverInterface getSolverInterface() {
         return c;
     }
 
@@ -187,9 +189,7 @@ public class State implements IState<State, Context, CallEdge> {
         return extras;
     }
 
-    /**
-     * Returns the basic block owning this state.
-     */
+    @Override
     public BasicBlock getBasicBlock() {
         return block;
     }
@@ -240,6 +240,10 @@ public class State implements IState<State, Context, CallEdge> {
      */
     public void putObject(ObjectLabel objlabel, Obj obj) {
         makeWritableStore();
+        writeToStore(objlabel, obj);
+    }
+
+    private void writeToStore(ObjectLabel objlabel, Obj obj) {
         store.put(objlabel, obj);
     }
 
@@ -261,7 +265,7 @@ public class State implements IState<State, Context, CallEdge> {
         if (obj != null && writable && !obj.isWritable()) {
             // object exists but isn't yet writable, make it writable
             obj = new Obj(obj);
-            store.put(objlabel, obj);
+            writeToStore(objlabel, obj);
             if (log.isDebugEnabled())
                 log.debug("making writable object from store: " + objlabel);
         }
@@ -270,7 +274,7 @@ public class State implements IState<State, Context, CallEdge> {
             obj = basis_store.get(objlabel);
             if (obj != null && writable) {
                 obj = new Obj(obj);
-                store.put(objlabel, obj);
+                writeToStore(objlabel, obj);
                 if (log.isDebugEnabled())
                     log.debug("making writable object from basis store: " + objlabel);
             }
@@ -280,9 +284,9 @@ public class State implements IState<State, Context, CallEdge> {
             obj = store_default;
             if (writable) {
                 obj = new Obj(obj);
-                store.put(objlabel, obj);
+                writeToStore(objlabel, obj);
                 if (log.isDebugEnabled())
-                    log.debug("making writable object from store default: " + objlabel);
+                    log.debug("making writable object from store default: " + objlabel + " at " + block.getSourceLocation());
             }
         }
         return obj;
@@ -429,16 +433,16 @@ public class State implements IState<State, Context, CallEdge> {
      * Ignores the basis store.
      */
     private void clearModified() {
-        Map<ObjectLabel, Obj> new_store = newMap();
-        for (Map.Entry<ObjectLabel, Obj> xs : store.entrySet()) {
+        Map<ObjectLabel, Obj> oldStore = store;
+        store = newMap();
+        for (Map.Entry<ObjectLabel, Obj> xs : oldStore.entrySet()) {
             Obj obj = xs.getValue();
             if (obj.isSomeModified()) {
                 obj = new Obj(obj);
                 obj.clearModified();
             }
-            new_store.put(xs.getKey(), obj);
+            writeToStore(xs.getKey(), obj);
         }
-        store = new_store;
         writable_store = true;
         number_of_makewritable_store++;
         log.debug("clearModified()");
@@ -855,7 +859,7 @@ public class State implements IState<State, Context, CallEdge> {
         if (store_default.isAllNone() && !s.store_default.isAllNone()) {
             for (ObjectLabel lab : s.store.keySet()) { // materialize before changing default
                 if (!store.containsKey(lab)) {
-                    store.put(lab, store_default);
+                    writeToStore(lab, store_default);
                 }
             }
             store_default = s.store_default;
@@ -897,7 +901,7 @@ public class State implements IState<State, Context, CallEdge> {
             // obj_to is none, so just copy from obj_from
             makeWritableStore();
             obj_to = new Obj(obj_from);
-            store.put(objlabel_to, obj_to);
+            writeToStore(objlabel_to, obj_to);
             return true;
         }
         // join all properties from obj_from into obj_to
@@ -1140,28 +1144,32 @@ public class State implements IState<State, Context, CallEdge> {
     }
 
     /**
-     * Returns a description of the names of the enumerable properties of the given objects.
+     * Returns a description of the names of the [enumerable] properties of the given objects [and their prototypes].
      */
-    public Properties getEnumProperties(Collection<ObjectLabel> objlabels) {
+    public Properties getProperties(Collection<ObjectLabel> objlabels, boolean onlyEnumerable, boolean usePrototypes) {
         Map<ObjectLabel, Set<ObjectLabel>> inverse_proto = newMap();
-        // find relevant objects, prepare inverse_proto
-        LinkedList<ObjectLabel> worklist = new LinkedList<>(objlabels);
-        Set<ObjectLabel> visited = newSet(objlabels);
         Set<ObjectLabel> roots = newSet();
-        while (!worklist.isEmpty()) {
-            ObjectLabel ol = worklist.removeFirst();
-            if (!inverse_proto.containsKey(ol))
-                inverse_proto.put(ol, dk.brics.tajs.util.Collections.<ObjectLabel>newSet());
-            Value proto = UnknownValueResolver.getInternalPrototype(ol, this, false);
-            if (proto.isMaybeNull())
-                roots.add(ol);
-            for (ObjectLabel p : proto.getObjectLabels()) {
-                addToMapSet(inverse_proto, p, ol);
-                if (!visited.contains(p)) {
-                    worklist.add(p);
-                    visited.add(p);
+        if (usePrototypes) {
+            // find relevant objects, prepare inverse_proto
+            LinkedList<ObjectLabel> worklist = new LinkedList<>(objlabels);
+            Set<ObjectLabel> visited = newSet(objlabels);
+            while (!worklist.isEmpty()) {
+                ObjectLabel ol = worklist.removeFirst();
+                if (!inverse_proto.containsKey(ol))
+                    inverse_proto.put(ol, dk.brics.tajs.util.Collections.<ObjectLabel>newSet());
+                Value proto = UnknownValueResolver.getInternalPrototype(ol, this, false);
+                if (proto.isMaybeNull())
+                    roots.add(ol);
+                for (ObjectLabel p : proto.getObjectLabels()) {
+                    addToMapSet(inverse_proto, p, ol);
+                    if (!visited.contains(p)) {
+                        worklist.add(p);
+                        visited.add(p);
+                    }
                 }
             }
+        } else {
+            roots.addAll(objlabels);
         }
         // find properties info with fixpoint computation starting from the roots
         Map<ObjectLabel, Properties> props = newMap();
@@ -1169,33 +1177,71 @@ public class State implements IState<State, Context, CallEdge> {
         while (!workset.isEmpty()) {
             ObjectLabel ol = workset.iterator().next();
             workset.remove(ol);
-            // inherit from prototypes
-            Value proto = UnknownValueResolver.getInternalPrototype(ol, this, false);
-            Properties p = mergeEnumProperties(proto.getObjectLabels(), props);
-            // overwrite with properties in the current object
-            if (UnknownValueResolver.getDefaultArrayProperty(ol, this).isMaybeNotDontEnum())
-                p.array = true;
-            if (UnknownValueResolver.getDefaultNonArrayProperty(ol, this).isMaybeNotDontEnum())
-                p.nonarray = true;
-            for (Map.Entry<String, Value> me : UnknownValueResolver.getProperties(ol, this).entrySet()) {
-                String propertyname = me.getKey();
-                Value v = UnknownValueResolver.getProperty(ol, propertyname, this, true);
-                if (v.isMaybeNotDontEnum()) {
-                    p.maybe.add(propertyname);
-                    if (!v.isMaybeDontEnum() && !v.isMaybeAbsent())
-                        p.definitely.add(propertyname);
+            if (usePrototypes) {
+                // inherit from prototypes
+                Value proto = UnknownValueResolver.getInternalPrototype(ol, this, false);
+                Properties p = mergeProperties(proto.getObjectLabels(), props);
+                // overwrite with properties in the current object
+                addOwnProperties(ol, onlyEnumerable, p);
+                Properties oldp = props.get(ol);
+                if (oldp == null || !oldp.equals(p)) {
+                    props.put(ol, p);
+                    workset.addAll(inverse_proto.get(ol));
                 }
-            }
-            Properties oldp = props.get(ol);
-            if (oldp == null || !oldp.equals(p)) {
+            } else {
+                Properties p = new Properties();
+                addOwnProperties(ol, onlyEnumerable, p);
                 props.put(ol, p);
-                workset.addAll(inverse_proto.get(ol));
             }
         }
-        return mergeEnumProperties(objlabels, props);
+        return mergeProperties(objlabels, props);
     }
 
-    private static Properties mergeEnumProperties(Collection<ObjectLabel> objlabels, Map<ObjectLabel, Properties> props) {
+    /**
+     * @see #getProperties(Collection, boolean, boolean)
+     */
+    private void addOwnProperties(ObjectLabel ol, boolean onlyEnumerable, Properties p) {
+        Predicate<Value> isEligible = v -> v.isMaybePresent() && (!onlyEnumerable || v.isMaybeNotDontEnum());
+        if (isEligible.test(UnknownValueResolver.getDefaultArrayProperty(ol, this))) {
+            p.array = true;
+        }
+        if (isEligible.test(UnknownValueResolver.getDefaultNonArrayProperty(ol, this))) {
+            p.nonarray = true;
+        }
+        for (Map.Entry<String, Value> me : UnknownValueResolver.getProperties(ol, this).entrySet()) {
+            String propertyname = me.getKey();
+            if (__PROTO__.equals(propertyname)) { // magic property that is invisible for reflection
+                continue;
+            }
+            Value v = UnknownValueResolver.getProperty(ol, propertyname, this, true);
+            if (isEligible.test(v)) {
+                p.maybe.add(propertyname);
+                if ((!onlyEnumerable || !v.isMaybeDontEnum()) && !v.isMaybeAbsent())
+                    p.definitely.add(propertyname);
+            }
+        }
+        if (ol.getKind() == ObjectLabel.Kind.STRING) {
+            // String objects have index-properties
+            Value internalValue = UnknownValueResolver.getRealValue(readInternalValue(singleton(ol)), this);
+            if (internalValue.isMaybeSingleStr()) {
+                for (int i = 0; i < internalValue.getStr().length(); i++) {
+                    p.maybe.add(Integer.toString(i));
+                    p.definitely.add(Integer.toString(i));
+                }
+            }
+            if (internalValue.isMaybeStrPrefix()) {
+                for (int i = 0; i < internalValue.getPrefix().length(); i++) {
+                    p.maybe.add(Integer.toString(i));
+                    p.definitely.add(Integer.toString(i));
+                }
+            }
+            if (internalValue.isMaybeFuzzyStr()) {
+                p.array = true;
+            }
+        }
+    }
+
+    private static Properties mergeProperties(Collection<ObjectLabel> objlabels, Map<ObjectLabel, Properties> props) {
         Properties res = new Properties();
         boolean first = true;
         for (ObjectLabel objlabel : objlabels) {
@@ -1219,9 +1265,19 @@ public class State implements IState<State, Context, CallEdge> {
     }
 
     /**
+     * @see #getPrototypeWithProperty(ObjectLabel, Str)
+     */
+    public Set<ObjectLabel> getPrototypeWithProperty(ObjectLabel objlabel, String propertyName) {
+        return getPrototypeWithProperty(objlabel, Value.makeStr(propertyName));
+    }
+
+    /**
      * Returns the set of objects in the prototype chain that contain the property.
      */
-    public Set<ObjectLabel> getPrototypeWithProperty(ObjectLabel objlabel, String propertyname) { // TODO: review (used only in Monitoring)
+    public Set<ObjectLabel> getPrototypeWithProperty(ObjectLabel objlabel, Str propertyName) { // TODO: review
+        if (Options.get().isDebugOrTestEnabled() && propertyName.isMaybeOtherThanStr()) {
+            throw new AnalysisException("Uncoerced property name: " + propertyName);
+        }
         Set<ObjectLabel> ol = Collections.singleton(objlabel);
         Set<ObjectLabel> visited = newSet();
         Set<ObjectLabel> res = newSet();
@@ -1230,17 +1286,31 @@ public class State implements IState<State, Context, CallEdge> {
             for (ObjectLabel l : ol)
                 if (!visited.contains(l)) {
                     visited.add(l);
-                    Value v = UnknownValueResolver.getProperty(l, propertyname, this, true);
-                    /*if (v.isMaybeAbsent()) {
-                        Value proto = UnknownValueResolver.getInternalPrototype(l, this, false);
-                        ol2.addAll(proto.getObjectLabels());
+
+                    Collection<Value> values = newList();
+                    if (propertyName.isMaybeFuzzyStr()) {
+                        if (propertyName.isMaybeStrSomeNonUInt()) {
+                            values.add(UnknownValueResolver.getDefaultNonArrayProperty(l, this));
+                        }
+                        if (propertyName.isMaybeStrSomeUInt()) {
+                            values.add(UnknownValueResolver.getDefaultNonArrayProperty(l, this));
+                        }
+                        // relevant properties have been materialized now
+                        values.addAll(getObject(l, false).getProperties().keySet().stream()
+                                .filter(n -> propertyName.isMaybeStr(n))
+                                .map(n -> UnknownValueResolver.getProperty(l, n, this, true))
+                                .collect(Collectors.toList()));
                     } else {
-                        res.add(l);
-                    }*/
-                    if (v.isNotPresent()) { //defintely absent
+                        values.add(UnknownValueResolver.getProperty(l, propertyName.getStr(), this, true));
+                    }
+
+                    boolean definitelyAbsent = values.stream().allMatch(Value::isNotPresent);
+                    boolean maybeAbsent = values.stream().anyMatch(v -> v.isMaybeAbsent());
+
+                    if (definitelyAbsent) {
                         Value proto = UnknownValueResolver.getInternalPrototype(l, this, false);
                         ol2.addAll(proto.getObjectLabels());
-                    } else if (v.isMaybeAbsent()) {
+                    } else if (maybeAbsent) {
                         Value proto = UnknownValueResolver.getInternalPrototype(l, this, false);
                         ol2.addAll(proto.getObjectLabels());
                         res.add(l);
@@ -1253,6 +1323,7 @@ public class State implements IState<State, Context, CallEdge> {
         return res;
     }
 
+    // TODO: replace with getPrototypeWithProperty, but check messages!
     public Set<ObjectLabel> getPrototypesUsedForUnknown(ObjectLabel objlabel) { // TODO: review (used only in Monitoring)
         State state = c.getState();
         Set<ObjectLabel> ol = Collections.singleton(objlabel);
@@ -1276,6 +1347,27 @@ public class State implements IState<State, Context, CallEdge> {
     }
 
     /**
+     * Materializes a singleton object from the given summary object.
+     * @param definitely_only_one set to true if the object has been created only once since function entry
+     * @return object label of the materialized singleton
+     */
+    public ObjectLabel materializeObj(ObjectLabel summary, boolean definitely_only_one) {
+        if (basis_store != null && basis_store.containsKey(summary))
+            throw new AnalysisException("Attempt to summarize object from basis store");
+        if (summary.isSingleton())
+            throw new AnalysisException("Expected summary object");
+        if (Options.get().isRecencyDisabled())
+            throw new AnalysisException("Can't materialize when recency is disabled");
+        makeWritableStore();
+        ObjectLabel singleton = summary.makeSingleton();
+        Obj oldSummaryObj = getObject(summary, true);
+        summarizeObj(singleton, summary, new Obj(oldSummaryObj));
+        summarized.removeSummarized(singleton, definitely_only_one);
+        if (log.isDebugEnabled())
+            log.debug("materializeObj(" + summary + ")");
+        return singleton;
+    }
+    /**
      * Adds an object label, representing a new empty object, to the store.
      * Takes recency abstraction into account.
      * Updates sets of summarized objects.
@@ -1284,45 +1376,11 @@ public class State implements IState<State, Context, CallEdge> {
         if (basis_store != null && basis_store.containsKey(objlabel))
             throw new AnalysisException("Attempt to summarize object from basis store");
         makeWritableStore();
-        Obj oldobj = getObject(objlabel, false);
+        c.getMonitoring().visitNewObject(c.getNode(), objlabel, this);
         if (!Options.get().isRecencyDisabled()) {
             if (!objlabel.isSingleton())
                 throw new AnalysisException("Expected singleton object label");
-            if (!oldobj.isSomeNone()) {
-                // join singleton object into its summary object
-                ObjectLabel summarylabel = objlabel.makeSummary();
-                propagateObj(summarylabel, this, objlabel, true);
-                // update references
-                Map<ScopeChain, ScopeChain> cache = new HashMap<>();
-                for (ObjectLabel objlabel2 : newList(store.keySet())) {
-                    if (getObject(objlabel2, false).containsObjectLabel(objlabel)) {
-                        Obj obj = getObject(objlabel2, true);
-                        obj.replaceObjectLabel(objlabel, summarylabel, cache);
-                    }
-                }
-                makeWritableExecutionContext();
-                execution_context.replaceObjectLabel(objlabel, summarylabel, cache);
-                makeWritableRegisters();
-                for (int i = 0; i < registers.size(); i++) {
-                    Value v = registers.get(i);
-                    if (v != null) {
-                        registers.set(i, v.replaceObjectLabel(objlabel, summarylabel));
-                    }
-                }
-                extras.replaceObjectLabel(objlabel, summarylabel);
-                if (Options.get().isLazyDisabled())
-                    if (stacked_objlabels.contains(objlabel)) {
-                        makeWritableStackedObjects();
-                        stacked_objlabels.remove(objlabel);
-                        stacked_objlabels.add(summarylabel);
-                    }
-                if (getObject(summarylabel, false).isUnknown() && store_default.isUnknown())
-                    store.remove(summarylabel);
-            }
-            // now the old object is gone
-            summarized.addDefinitelySummarized(objlabel);
-            makeWritableStore();
-            store.put(objlabel, Obj.makeAbsentModified());
+            summarizeObj(objlabel, objlabel.makeSummary(), Obj.makeAbsentModified());
         } else {
             // join the empty object into oldobj (only relevant if recency abstraction is disabled)
             Obj obj = getObject(objlabel, true);
@@ -1342,6 +1400,45 @@ public class State implements IState<State, Context, CallEdge> {
         }
         if (log.isDebugEnabled())
             log.debug("newObject(" + objlabel + ")");
+    }
+
+    private void summarizeObj(ObjectLabel singleton, ObjectLabel summary, Obj newObj) {
+        Obj oldobj = getObject(singleton, false);
+        if (!oldobj.isSomeNone()) {
+            // join singleton object into its summary object
+// XXX           c.getMonitoring().visitRenameObject(c.getNode(), singleton, summary, this);
+            propagateObj(summary, this, singleton, true);
+            // update references
+            Map<ScopeChain, ScopeChain> cache = new HashMap<>();
+            for (ObjectLabel objlabel2 : newList(store.keySet())) {
+                if (getObject(objlabel2, false).containsObjectLabel(singleton)) {
+                    Obj obj = getObject(objlabel2, true);
+                    obj.replaceObjectLabel(singleton, summary, cache);
+                }
+            }
+            makeWritableExecutionContext();
+            execution_context.replaceObjectLabel(singleton, summary, cache);
+            makeWritableRegisters();
+            for (int i = 0; i < registers.size(); i++) {
+                Value v = registers.get(i);
+                if (v != null) {
+                    registers.set(i, v.replaceObjectLabel(singleton, summary));
+                }
+            }
+            extras.replaceObjectLabel(singleton, summary);
+            if (Options.get().isLazyDisabled())
+                if (stacked_objlabels.contains(singleton)) {
+                    makeWritableStackedObjects();
+                    stacked_objlabels.remove(singleton);
+                    stacked_objlabels.add(summary);
+                }
+            if (getObject(summary, false).isUnknown() && store_default.isUnknown())
+                store.remove(summary);
+        }
+        // now the old object is gone
+        summarized.addDefinitelySummarized(singleton);
+        makeWritableStore();
+        writeToStore(singleton, newObj);
     }
 
     /**
@@ -1365,9 +1462,10 @@ public class State implements IState<State, Context, CallEdge> {
         if (!store.containsKey(objlabel))
             throw new AnalysisException("Object " + objlabel + " not found!?");
         makeWritableStore();
-        if (objlabel.isSingleton()) {
+        if (objlabel.isSingleton()) { // TODO merge this implementation with the one in #newObject?
             // move the object
             ObjectLabel summarylabel = objlabel.makeSummary();
+            c.getMonitoring().visitRenameObject(c.getNode(), objlabel, summarylabel, this);
             propagateObj(summarylabel, this, objlabel, true);
             store.remove(objlabel);
             // update references
@@ -1462,7 +1560,7 @@ public class State implements IState<State, Context, CallEdge> {
      * Assigns the given value to the internal prototype links of the given objects.
      * Modified is set on all values being written.
      */
-    private void writeInternalPrototype(Collection<ObjectLabel> objlabels, Value value) {
+    public void writeInternalPrototype(Collection<ObjectLabel> objlabels, Value value) {
         value.assertNonEmpty();
         for (ObjectLabel objlabel : objlabels) {
             Value newval;
@@ -1474,6 +1572,8 @@ public class State implements IState<State, Context, CallEdge> {
             }
             newval = newval.joinModified();
             Obj obj = getObject(objlabel, true);
+            // FIXME only null or object values are actually written! (see JSObject -> OBJECT_SETPROTOTYPEOF for example)
+            // FIXME Property.__PROTO__ should be assigned `absent` when `newval.isMaybeNull`
             obj.setProperty(Property.__PROTO__, newval.setAttributes(true, true, false));
             obj.setInternalPrototype(newval);
         }
@@ -1615,6 +1715,32 @@ public class State implements IState<State, Context, CallEdge> {
         writable_execution_context = true;
     }
 
+//    protected void remove(State other) { // (currently unused)
+//        makeWritableStore();
+//        makeWritableExecutionContext();
+//        makeWritableRegisters();
+//        makeWritableStackedObjects();
+//        store_default = new Obj(store_default);
+//        store_default.remove(other.store_default);
+//        for (ObjectLabel objlabel : store.keySet()) {
+//            Obj obj = getObject(objlabel, true);
+//            Obj other_obj = other.getObject(objlabel, false);
+//            obj.remove(other_obj);
+//        }
+//        execution_context.remove(other.execution_context);
+//        // don't remove from summarized (lattice order of definitely_summarized is reversed, so removal isn't trivial)
+//        for (int i = 0; i < registers.size(); i++) {
+//            Value v_this = registers.get(i);
+//            if (v_this != null) {
+//                Value v_other = other.registers.get(i);
+//                if (v_other != null)
+//                    registers.set(i, v_this.remove(v_other));
+//            }
+//        }
+//        stacked_objlabels.removeAll(other.stacked_objlabels);
+//        extras.remove(other.extras);
+//    }
+
     /**
      * Returns a string description of the differences between this state and the given one.
      */
@@ -1632,10 +1758,10 @@ public class State implements IState<State, Context, CallEdge> {
         temp.removeAll(old.execution_context.getVariableObject());
         if (!temp.isEmpty())
             b.append("\n      new varobj: ").append(temp);
-        temp = newSet(execution_context.getThisObject());
-        temp.removeAll(old.execution_context.getThisObject());
-        if (!temp.isEmpty())
-            b.append("\n      new this: ").append(temp);
+        if (!execution_context.getThis().equals(old.execution_context.getThis())) {
+            b.append("\n      new this: ");
+            execution_context.getThis().diff(old.execution_context.getThis(), b);
+        }
         if (!ScopeChain.isEmpty(ScopeChain.remove(execution_context.getScopeChain(), old.execution_context.getScopeChain())))
             b.append("\n      new scope chain: ").append(ScopeChain.remove(execution_context.getScopeChain(), old.execution_context.getScopeChain()));
         temp = newSet(summarized.getMaybeSummarized());
@@ -1666,11 +1792,12 @@ public class State implements IState<State, Context, CallEdge> {
         b.append("\n  Summarized: ").append(summarized);
         b.append("\n  Store (excluding basis and default objects): ");
         for (Map.Entry<ObjectLabel, Obj> me : sortedEntries(store)) {
-            if (me.getKey().equals(Property.__PROTO__))
+            if (me.getKey().equals(Property.__PROTO__)) {
                 continue;
+            }
             b.append("\n    ").append(me.getKey()).append(" (").append(me.getKey().getSourceLocation()).append("): ").append(me.getValue()).append("");
-        }
-        //b.append("\n  Default object: ").append(store_default);
+        }//b.append("\n  Default object: ").append(store_default);
+//        b.append("\n  Store default: ").append(store_default);
         b.append("\n  Registers: ");
         for (int i = 0; i < registers.size(); i++)
             if (registers.get(i) != null)
@@ -1824,7 +1951,7 @@ public class State implements IState<State, Context, CallEdge> {
                 }
             }
         }
-        for (ObjectLabel objlabel : execution_context.getThisObject())
+        for (ObjectLabel objlabel : execution_context.getThis().getObjectLabels())
             es.append("\tthis -> ").append(node(objlabel)).append(";\n");
         for (ObjectLabel objlabel : execution_context.getVariableObject())
             es.append("\tvar -> ").append(node(objlabel)).append(";\n");
@@ -1850,6 +1977,73 @@ public class State implements IState<State, Context, CallEdge> {
     private static String esc(String s) {
         return Strings.escape(s).replace("|", " \\| ");
     }
+
+// TODO: toDotDOM() ?
+//    public String toDotDOM() { // (currently unused)
+//           StringBuilder ns = new StringBuilder("\n\t/* Nodes */\n");
+//        StringBuilder es = new StringBuilder("\n\t/* Edges */\n");
+//
+//        for (Map.Entry<ObjectLabel, Obj> e : sortedEntries(store)) {
+//            ObjectLabel label = e.getKey();
+//            Obj object = e.getValue();
+//            if (!label.isHostObject()) {
+//                // Ignore non-host objects
+//                continue;
+//            }
+//            if (object.getInternalPrototype().getObjectLabels().contains(FUNCTION_PROTOTYPE)) {
+//                // Ignore functions objects
+//                continue;
+//            }
+//            if (Options.get().isDOMEnabled()) {
+//                if ((label.getHostObject().getAPI() != HostAPIs.DOCUMENT_OBJECT_MODEL
+//                        && label.getHostObject().getAPI() != HostAPIs.DSL_OBJECT_MODEL)) {
+//                    // Ignore non-DOM objects (if DOM is enabled)
+//                    continue;
+//                }
+//            }
+//
+//            // Build label (i.e. the box)
+//            // The intended format is: FOO [shape=record label="{NAME\lEntry_1\lEntry2\l}"]
+//            String name = label.toString();
+//            StringBuilder lbl = new StringBuilder();
+//            lbl.append(name);
+//            Map<String, Value> properties = new TreeMap<String, Value>(object.getProperties());
+//            Iterator<String> iter = properties.keySet().iterator();
+//            int i = 0;
+//            int limit = 10;
+//            while (i < limit && iter.hasNext()) {
+//                if (i == 0) {
+//                    lbl.append("|");
+//                } else {
+//                    lbl.append("\\l");
+//                }
+//                String property = iter.next();
+//                lbl.append(property);
+//                i++;
+//            }
+//            lbl.append("\\l");
+//            if (iter.hasNext()) {
+//                lbl.append("...\\l");
+//            }
+//            ns.append("\t").append("\"").append(name).append("\"").append(" [shape=record label=\"{").append(lbl).append("}\"]").append("\n");
+//
+//            // Build arrows
+//            for (ObjectLabel prototype : object.getInternalPrototype().getObjectLabels()) {
+//                es.append("\t").append("\"").append(name).append("\"").append(" -> ").append("\"").append(prototype).append("\"").append("\n");
+//            }
+//        }
+//
+//        // Put everything together
+//        StringBuilder sb = new StringBuilder();
+//        sb.append("digraph {\n");
+//        sb.append("\tcompound=true\n");
+//        sb.append("\trankdir=\"BT\"\n");
+//        sb.append("\tnode [fontname=\"Arial\"]\n");
+//        sb.append(ns);
+//        sb.append(es);
+//        sb.append("}");
+//        return sb.toString();
+//    }
 
     /**
      * Reduces this state.
@@ -1881,7 +2075,7 @@ public class State implements IState<State, Context, CallEdge> {
             if (noneAtEntry(objlabel, entry_state))
                 store.remove(objlabel);
             else
-                store.put(objlabel, Obj.makeNoneModified());
+                writeToStore(objlabel, Obj.makeNoneModified());
         }
         // don't remove from summarized (it may contain dead object labels)
         if (Options.get().isIntermediateStatesEnabled())
@@ -2111,27 +2305,17 @@ public class State implements IState<State, Context, CallEdge> {
      * Returns the value of 'this'.
      */
     public Value readThis() {
-        Value res = Value.makeObject(execution_context.getThisObject());
+        Value res = execution_context.getThis();
         if (log.isDebugEnabled())
             log.debug("readThis() = " + res);
         return res;
     }
 
     /**
-     * Returns the object value of 'this'.
+     * Returns the value of 'this'.
      */
     public Set<ObjectLabel> readThisObjects() {
-        Set<ObjectLabel> this_objs = execution_context.getThisObject();
-        if (log.isDebugEnabled())
-            log.debug("readThisObjects() = " + this_objs);
-        return this_objs;
-    }
-
-    /**
-     * Returns the object value of 'this', coerced to using the given function.
-     */
-    public Value readThisObjectsCoerced(Function<ObjectLabel,Value> coerce) {
-        return UnknownValueResolver.join(readThisObjects().stream().map(l -> coerce.apply(l)).collect(Collectors.toList()), c.getState());
+        return readThis().getObjectLabels(); // TODO: assert no primitive values?
     }
 
     /**
@@ -2160,11 +2344,11 @@ public class State implements IState<State, Context, CallEdge> {
                     obj.localize(other, objlabel, this);
                 }
                 // remove all-unknown objects
-                Map<ObjectLabel, Obj> new_store = newMap();
-                for (Map.Entry<ObjectLabel, Obj> xs : store.entrySet())
+                Map<ObjectLabel, Obj> oldStore = store;
+                store = newMap();
+                for (Map.Entry<ObjectLabel, Obj> xs : oldStore.entrySet())
                     if (!xs.getValue().isUnknown())
-                        new_store.put(xs.getKey(), xs.getValue());
-                store = new_store;
+                        writeToStore(xs.getKey(), xs.getValue());
                 store_default = Obj.makeUnknown();
             }
         } else {

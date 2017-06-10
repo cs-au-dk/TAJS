@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -41,9 +41,9 @@ public class HTMLButtonElement {
     public static void build(Solver.SolverInterface c) {
         State s = c.getState();
         PropVarOperations pv = c.getAnalysis().getPropVarOperations();
-        CONSTRUCTOR = new ObjectLabel(DOMObjects.HTMLBUTTONELEMENT_CONSTRUCTOR, ObjectLabel.Kind.FUNCTION);
-        PROTOTYPE = new ObjectLabel(DOMObjects.HTMLBUTTONELEMENT_PROTOTYPE, ObjectLabel.Kind.OBJECT);
-        INSTANCES = new ObjectLabel(DOMObjects.HTMLBUTTONELEMENT_INSTANCES, ObjectLabel.Kind.OBJECT);
+        CONSTRUCTOR = ObjectLabel.make(DOMObjects.HTMLBUTTONELEMENT_CONSTRUCTOR, ObjectLabel.Kind.FUNCTION);
+        PROTOTYPE = ObjectLabel.make(DOMObjects.HTMLBUTTONELEMENT_PROTOTYPE, ObjectLabel.Kind.OBJECT);
+        INSTANCES = ObjectLabel.make(DOMObjects.HTMLBUTTONELEMENT_INSTANCES, ObjectLabel.Kind.OBJECT);
 
         // Constructor Object
         s.newObject(CONSTRUCTOR);
@@ -67,7 +67,6 @@ public class HTMLButtonElement {
         createDOMProperty(INSTANCES, "form", Value.makeObject(HTMLFormElement.INSTANCES).setReadOnly(), c);
         createDOMProperty(INSTANCES, "accessKey", Value.makeAnyStr(), c);
         createDOMProperty(INSTANCES, "disabled", Value.makeAnyBool(), c);
-        createDOMProperty(INSTANCES, "name", Value.makeAnyStr(), c);
         createDOMProperty(INSTANCES, "tabIndex", Value.makeAnyNum(), c);
         createDOMProperty(INSTANCES, "type", Value.makeAnyStr().setReadOnly(), c);
         createDOMProperty(INSTANCES, "value", Value.makeStr("submit"), c);

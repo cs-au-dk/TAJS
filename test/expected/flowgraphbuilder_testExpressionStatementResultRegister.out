@@ -3,157 +3,901 @@ fg2: <main> function()
     node 0: constant[undefined,v1] (test/flowgraphbuilder/testExpressionStatementResultRegister.js)
     ->[block 1]
   block 1:
-    node 1: function-expr[function(),v2] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:1:5)
-    node 2: write-variable[v2,'g']* (test/flowgraphbuilder/testExpressionStatementResultRegister.js:1:1)
-    node 3: read-variable['g',v4,-] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:9:1)
-    node 4: new[v3] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:9:15)
-    node 5: constant[0.0,v5] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:10:12)
-    node 6: write-property[v3,'xxx14',v5] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:10:5)
-    node 7: constant[0.0,v6] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:11:11)
-    node 8: write-property[v3,'xxx9',v6] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:11:5)
-    node 9: constant[0.0,v7] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:12:11)
-    node 10: write-property[v3,'xxx5',v7] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:12:5)
-    node 11: constant[0.0,v8] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:13:11)
-    node 12: write-property[v3,'xxx6',v8] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:13:5)
-    node 13: constant[0.0,v9] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:14:11)
-    node 14: write-property[v3,'xxx7',v9] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:14:5)
-    node 15: constant[0.0,v10] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:15:11)
-    node 16: write-property[v3,'xxx8',v10] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:15:5)
-    node 17: constant[0.0,v11] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:16:11)
-    node 18: write-property[v3,'xxx0',v11] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:16:5)
-    node 19: constant[0.0,v12] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:17:11)
-    node 20: write-property[v3,'xxx1',v12] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:17:5)
-    node 21: constant[0.0,v13] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:18:11)
-    node 22: write-property[v3,'xxx2',v13] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:18:5)
-    node 23: constant[0.0,v14] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:19:11)
-    node 24: write-property[v3,'xxx3',v14] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:19:5)
-    node 25: function-expr[function(o),v15] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:20:8)
-    node 26: write-property[v3,'f',v15] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:20:5)
-    node 27: write-property[v4,'prototype',v3] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:9:1)
-    node 28: <variable-non-null-undef>['g']* (test/flowgraphbuilder/testExpressionStatementResultRegister.js:9:1)
-    node 29: read-variable['g',v16,-] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:30:5)
-    ->[block 2]
+    node 1: constant["tajs-host-env:string-replace-model.js",v2] (host-environment-sources-loader)
+    node 2: constant[true,v3] (host-environment-sources-loader)
+    ->[block 2] ~>[block 22]
   block 2:
-    node 30: construct[-,v16,-]* (test/flowgraphbuilder/testExpressionStatementResultRegister.js:30:1)
-    ->[block 3]
+    node 3: call[TAJS_load,v2,v3,v4] (host-environment-sources-loader)
+    ->[block 3] ~>[block 22]
   block 3:
-    node 31: nop(eventDispatchers: entry) (test/flowgraphbuilder/testExpressionStatementResultRegister.js)
-    ->[block 4,block 5]
+    node 4: call[-,v4,-] (host-environment-sources-loader)
+    ->[block 4] ~>[block 22]
   block 4:
-    node 32: event-dispatcher <LOAD> (test/flowgraphbuilder/testExpressionStatementResultRegister.js)
-    ->[block 5]
+    node 5: function-expr[function(),v5] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:1:5)
+    node 6: write-variable[v5,'g']* (test/flowgraphbuilder/testExpressionStatementResultRegister.js:1:1)
+    node 7: read-variable['g',v7,-] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:9:1)
+    node 8: new[v6] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:9:15)
+    node 9: constant[0.0,v8] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:10:12)
+    node 10: write-property[v6,'xxx14',v8] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:10:5)
+    node 11: constant[0.0,v9] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:11:11)
+    node 12: write-property[v6,'xxx9',v9] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:11:5)
+    node 13: constant[0.0,v10] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:12:11)
+    node 14: write-property[v6,'xxx5',v10] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:12:5)
+    node 15: constant[0.0,v11] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:13:11)
+    node 16: write-property[v6,'xxx6',v11] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:13:5)
+    node 17: constant[0.0,v12] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:14:11)
+    node 18: write-property[v6,'xxx7',v12] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:14:5)
+    node 19: constant[0.0,v13] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:15:11)
+    node 20: write-property[v6,'xxx8',v13] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:15:5)
+    node 21: constant[0.0,v14] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:16:11)
+    node 22: write-property[v6,'xxx0',v14] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:16:5)
+    node 23: constant[0.0,v15] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:17:11)
+    node 24: write-property[v6,'xxx1',v15] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:17:5)
+    node 25: constant[0.0,v16] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:18:11)
+    node 26: write-property[v6,'xxx2',v16] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:18:5)
+    node 27: constant[0.0,v17] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:19:11)
+    node 28: write-property[v6,'xxx3',v17] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:19:5)
+    node 29: function-expr[function(o),v18] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:20:8)
+    node 30: write-property[v6,'f',v18] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:20:5)
+    node 31: write-property[v7,'prototype',v6] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:9:1)
+    node 32: <variable-non-null-undef>['g']* (test/flowgraphbuilder/testExpressionStatementResultRegister.js:9:1)
+    node 33: read-variable['g',v19,-] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:30:5)
+    ->[block 5] ~>[block 22]
   block 5:
-    node 33: nop(eventDispatchers: postLoad) (test/flowgraphbuilder/testExpressionStatementResultRegister.js)
-    ->[block 4,block 6,block 7]
+    node 34: construct[-,v19,-]* (test/flowgraphbuilder/testExpressionStatementResultRegister.js:30:1)
+    ->[block 6] ~>[block 22]
   block 6:
-    node 34: event-dispatcher <OTHER> (test/flowgraphbuilder/testExpressionStatementResultRegister.js)
-    ->[block 7]
+    node 35: nop(eventDispatchers: entry) (test/flowgraphbuilder/testExpressionStatementResultRegister.js)
+    ->[block 7,block 11] ~>[block 22]
   block 7:
-    node 35: nop(eventDispatchers: postOther) (test/flowgraphbuilder/testExpressionStatementResultRegister.js)
-    ->[block 6,block 8,block 9]
+    node 36: event-dispatcher <LOAD>* (test/flowgraphbuilder/testExpressionStatementResultRegister.js)
+    ->[block 10] ~>[block 8]
   block 8:
-    node 36: event-dispatcher <UNLOAD> (test/flowgraphbuilder/testExpressionStatementResultRegister.js)
-    ->[block 9]
+    node 37: catch[v21] (test/flowgraphbuilder/testExpressionStatementResultRegister.js)
+    node 38: nop(eventDispatchers: exceptional exit Load) (test/flowgraphbuilder/testExpressionStatementResultRegister.js)
+    ->[block 9,block 11]
   block 9:
-    node 37: nop(eventDispatchers: postUnload) (test/flowgraphbuilder/testExpressionStatementResultRegister.js)
-    ->[block 8,block 10]
-  block 10: [exit-ordinary]
-    node 38: return[v1] (test/flowgraphbuilder/testExpressionStatementResultRegister.js)
+    node 39: throw[v21]* (test/flowgraphbuilder/testExpressionStatementResultRegister.js)
     ->[]
-  block 11: [exit-exceptional]
-    node 39: exceptional-return (test/flowgraphbuilder/testExpressionStatementResultRegister.js)
+  block 10:
+    node 40: nop(eventDispatchers: ordinary exit Load)* (test/flowgraphbuilder/testExpressionStatementResultRegister.js)
+    ->[block 11] ~>[block 22]
+  block 11:
+    node 41: nop(eventDispatchers: post Load)* (test/flowgraphbuilder/testExpressionStatementResultRegister.js)
+    ->[block 7,block 12,block 16] ~>[block 22]
+  block 12:
+    node 42: event-dispatcher <OTHER>* (test/flowgraphbuilder/testExpressionStatementResultRegister.js)
+    ->[block 15] ~>[block 13]
+  block 13:
+    node 43: catch[v22] (test/flowgraphbuilder/testExpressionStatementResultRegister.js)
+    node 44: nop(eventDispatchers: exceptional exit Other) (test/flowgraphbuilder/testExpressionStatementResultRegister.js)
+    ->[block 14,block 16]
+  block 14:
+    node 45: throw[v22]* (test/flowgraphbuilder/testExpressionStatementResultRegister.js)
+    ->[]
+  block 15:
+    node 46: nop(eventDispatchers: ordinary exit Other)* (test/flowgraphbuilder/testExpressionStatementResultRegister.js)
+    ->[block 16] ~>[block 22]
+  block 16:
+    node 47: nop(eventDispatchers: post Other)* (test/flowgraphbuilder/testExpressionStatementResultRegister.js)
+    ->[block 12,block 17,block 21] ~>[block 22]
+  block 17:
+    node 48: event-dispatcher <UNLOAD>* (test/flowgraphbuilder/testExpressionStatementResultRegister.js)
+    ->[block 20] ~>[block 18]
+  block 18:
+    node 49: catch[v23] (test/flowgraphbuilder/testExpressionStatementResultRegister.js)
+    node 50: nop(eventDispatchers: exceptional exit Unload) (test/flowgraphbuilder/testExpressionStatementResultRegister.js)
+    ->[block 19,block 21]
+  block 19:
+    node 51: throw[v23]* (test/flowgraphbuilder/testExpressionStatementResultRegister.js)
+    ->[]
+  block 20:
+    node 52: nop(eventDispatchers: ordinary exit Unload)* (test/flowgraphbuilder/testExpressionStatementResultRegister.js)
+    ->[block 21] ~>[block 22]
+  block 21:
+    node 53: nop(eventDispatchers: post Unload)* (test/flowgraphbuilder/testExpressionStatementResultRegister.js)
+    ->[block 17,block 24] ~>[block 22]
+  block 22:
+    node 54: catch[v20] (test/flowgraphbuilder/testExpressionStatementResultRegister.js)
+    ->[block 6,block 23]
+  block 23:
+    node 55: throw[v20]* (test/flowgraphbuilder/testExpressionStatementResultRegister.js)
+    ->[]
+  block 24: [exit-ordinary]
+    node 56: return[v1] (test/flowgraphbuilder/testExpressionStatementResultRegister.js)
+    ->[]
+  block 25: [exit-exceptional]
+    node 57: exceptional-return (test/flowgraphbuilder/testExpressionStatementResultRegister.js)
     ->[]
 function()
-  block 12: [entry]
-    node 40: constant[undefined,v1] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:1:5)
-    node 41: vardecl['o']* (test/flowgraphbuilder/testExpressionStatementResultRegister.js:2:9)
-    node 42: vardecl['var0']* (test/flowgraphbuilder/testExpressionStatementResultRegister.js:5:9)
-    ->[block 13]
-  block 13:
-    node 43: new[v3] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:2:13)
-    node 44: write-variable[v3,'o']* (test/flowgraphbuilder/testExpressionStatementResultRegister.js:2:9)
-    node 45: read-variable['o',v5,v2] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:3:5)
-    node 46: new[v4] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:3:12)
-    node 47: write-property[v5,'p1',v4] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:3:5)
-    node 48: <variable-non-null-undef>['o']* (test/flowgraphbuilder/testExpressionStatementResultRegister.js:3:5)
-    node 49: read-variable['this',v7,-] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:4:5)
-    node 50: read-property[v7,'f',-] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:4:5)
-    node 51: read-variable['o',v8,v2] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:4:12)
-    ->[block 14]
-  block 14:
-    node 52: call[v7,'f',v8,-]* (test/flowgraphbuilder/testExpressionStatementResultRegister.js:4:5)
-    ->[block 15]
-  block 15:
-    node 53: read-variable['o',v10,v2] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:5:16)
-    node 54: read-property[v10,'p2',v9] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:5:16)
-    node 55: <variable-non-null-undef>['o'] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:5:16)
-    node 56: write-variable[v9,'var0']* (test/flowgraphbuilder/testExpressionStatementResultRegister.js:5:9)
-    node 57: read-variable['TAJS_assert',v12,v11] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:6:5)
-    node 58: read-variable['var0',v14,v2] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:6:17)
-    node 59: read-variable['undefined',v15,v2] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:6:26)
-    node 60: !==[v14,v15,v13] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:6:17)
-    ->[block 16]
-  block 16:
-    node 61: call[v11,v12,v13,-]* (test/flowgraphbuilder/testExpressionStatementResultRegister.js:6:5)
-    ->[block 17]
-  block 17: [exit-ordinary]
-    node 62: return[v1] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:1:5)
+  block 26: [entry]
+    node 58: constant[undefined,v1] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:1:5)
+    node 59: vardecl['o']* (test/flowgraphbuilder/testExpressionStatementResultRegister.js:2:9)
+    node 60: vardecl['var0']* (test/flowgraphbuilder/testExpressionStatementResultRegister.js:5:9)
+    ->[block 27]
+  block 27:
+    node 61: new[v3] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:2:13)
+    node 62: write-variable[v3,'o']* (test/flowgraphbuilder/testExpressionStatementResultRegister.js:2:9)
+    node 63: read-variable['o',v5,v2] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:3:5)
+    node 64: new[v4] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:3:12)
+    node 65: write-property[v5,'p1',v4] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:3:5)
+    node 66: <variable-non-null-undef>['o']* (test/flowgraphbuilder/testExpressionStatementResultRegister.js:3:5)
+    node 67: read-variable['this',v7,-] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:4:5)
+    node 68: read-property[v7,'f',-] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:4:5)
+    node 69: read-variable['o',v8,v2] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:4:12)
+    ->[block 28]
+  block 28:
+    node 70: call[v7,'f',v8,-]* (test/flowgraphbuilder/testExpressionStatementResultRegister.js:4:5)
+    ->[block 29]
+  block 29:
+    node 71: read-variable['o',v10,v2] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:5:16)
+    node 72: read-property[v10,'p2',v9] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:5:16)
+    node 73: <variable-non-null-undef>['o'] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:5:16)
+    node 74: write-variable[v9,'var0']* (test/flowgraphbuilder/testExpressionStatementResultRegister.js:5:9)
+    node 75: read-variable['var0',v14,v2] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:6:17)
+    node 76: read-variable['undefined',v15,v2] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:6:26)
+    node 77: !==[v14,v15,v13] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:6:17)
+    ->[block 30]
+  block 30:
+    node 78: call[TAJS_assert,v13,-]* (test/flowgraphbuilder/testExpressionStatementResultRegister.js:6:5)
+    ->[block 31]
+  block 31: [exit-ordinary]
+    node 79: return[v1] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:1:5)
     ->[]
-  block 18: [exit-exceptional]
-    node 63: exceptional-return (test/flowgraphbuilder/testExpressionStatementResultRegister.js:1:5)
+  block 32: [exit-exceptional]
+    node 80: exceptional-return (test/flowgraphbuilder/testExpressionStatementResultRegister.js:1:5)
     ->[]
 function(o)
-  block 19: [entry]
-    node 64: constant[undefined,v1] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:20:8)
-    node 65: vardecl['var1']* (test/flowgraphbuilder/testExpressionStatementResultRegister.js:21:13)
-    node 66: vardecl['var2']* (test/flowgraphbuilder/testExpressionStatementResultRegister.js:22:13)
-    ->[block 20]
-  block 20:
-    node 67: read-variable['document',v5,-] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:21:20)
-    node 68: read-property[v5,'createElement',-] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:21:20)
-    node 69: <variable-non-null-undef>['document'] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:21:20)
-    node 70: constant["canvas",v6] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:21:43)
-    ->[block 21]
-  block 21:
-    node 71: call[v5,'createElement',v6,v3] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:21:20)
-    ->[block 22]
-  block 22:
-    node 72: write-variable[v3,'var1']* (test/flowgraphbuilder/testExpressionStatementResultRegister.js:21:13)
-    node 73: read-variable['o',v9,v2] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:22:20)
-    node 74: read-property[v9,'p1',v8] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:22:20)
-    node 75: <variable-non-null-undef>['o'] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:22:20)
-    node 76: read-property[v8,'xxx15',v7] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:22:20)
-    node 77: <property-non-null-undef>[v9,'p1'] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:22:20)
-    node 78: write-variable[v7,'var2']* (test/flowgraphbuilder/testExpressionStatementResultRegister.js:22:13)
-    node 79: read-variable['var1',v11,v2] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:23:9)
-    node 80: constant[0.0,v10] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:23:22)
-    node 81: write-property[v11,'xxx10',v10] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:23:9)
-    node 82: <variable-non-null-undef>['var1']* (test/flowgraphbuilder/testExpressionStatementResultRegister.js:23:9)
-    node 83: read-variable['o',v13,v2] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:24:9)
-    node 84: constant[0.0,v12] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:24:19)
-    node 85: write-property[v13,'xxx12',v12] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:24:9)
-    node 86: <variable-non-null-undef>['o']* (test/flowgraphbuilder/testExpressionStatementResultRegister.js:24:9)
-    node 87: read-variable['var2',v14,v2] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:25:13)
-    node 88: if[v14](true-block:23,false-block:23)* (test/flowgraphbuilder/testExpressionStatementResultRegister.js:25:9)
-    ->[block 23]
-  block 23:
-    node 89: read-variable['o',v16,v2] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:27:9)
-    node 90: read-variable['var1',v18,-] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:27:16)
-    node 91: read-property[v18,'getContext',-] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:27:16)
-    node 92: <variable-non-null-undef>['var1'] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:27:16)
-    ->[block 24]
-  block 24:
-    node 93: call[v18,'getContext',v15] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:27:16)
-    ->[block 25]
-  block 25:
-    node 94: write-property[v16,'p2',v15] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:27:9)
-    node 95: <variable-non-null-undef>['o']* (test/flowgraphbuilder/testExpressionStatementResultRegister.js:27:9)
-    ->[block 26]
-  block 26: [exit-ordinary]
-    node 96: return[v1] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:20:8)
+  block 33: [entry]
+    node 81: constant[undefined,v1] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:20:8)
+    node 82: vardecl['var1']* (test/flowgraphbuilder/testExpressionStatementResultRegister.js:21:13)
+    node 83: vardecl['var2']* (test/flowgraphbuilder/testExpressionStatementResultRegister.js:22:13)
+    ->[block 34]
+  block 34:
+    node 84: read-variable['document',v5,-] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:21:20)
+    node 85: read-property[v5,'createElement',-] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:21:20)
+    node 86: <variable-non-null-undef>['document'] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:21:20)
+    node 87: constant["canvas",v6] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:21:43)
+    ->[block 35]
+  block 35:
+    node 88: call[v5,'createElement',v6,v3] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:21:20)
+    ->[block 36]
+  block 36:
+    node 89: write-variable[v3,'var1']* (test/flowgraphbuilder/testExpressionStatementResultRegister.js:21:13)
+    node 90: read-variable['o',v9,v2] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:22:20)
+    node 91: read-property[v9,'p1',v8] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:22:20)
+    node 92: <variable-non-null-undef>['o'] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:22:20)
+    node 93: read-property[v8,'xxx15',v7] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:22:20)
+    node 94: <property-non-null-undef>[v9,'p1'] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:22:20)
+    node 95: write-variable[v7,'var2']* (test/flowgraphbuilder/testExpressionStatementResultRegister.js:22:13)
+    node 96: read-variable['var1',v11,v2] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:23:9)
+    node 97: constant[0.0,v10] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:23:22)
+    node 98: write-property[v11,'xxx10',v10] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:23:9)
+    node 99: <variable-non-null-undef>['var1']* (test/flowgraphbuilder/testExpressionStatementResultRegister.js:23:9)
+    node 100: read-variable['o',v13,v2] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:24:9)
+    node 101: constant[0.0,v12] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:24:19)
+    node 102: write-property[v13,'xxx12',v12] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:24:9)
+    node 103: <variable-non-null-undef>['o']* (test/flowgraphbuilder/testExpressionStatementResultRegister.js:24:9)
+    node 104: read-variable['var2',v14,v2] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:25:13)
+    node 105: if[v14](true-block:37,false-block:37)* (test/flowgraphbuilder/testExpressionStatementResultRegister.js:25:9)
+    ->[block 37]
+  block 37:
+    node 106: read-variable['o',v16,v2] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:27:9)
+    node 107: read-variable['var1',v18,-] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:27:16)
+    node 108: read-property[v18,'getContext',-] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:27:16)
+    node 109: <variable-non-null-undef>['var1'] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:27:16)
+    ->[block 38]
+  block 38:
+    node 110: call[v18,'getContext',v15] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:27:16)
+    ->[block 39]
+  block 39:
+    node 111: write-property[v16,'p2',v15] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:27:9)
+    node 112: <variable-non-null-undef>['o']* (test/flowgraphbuilder/testExpressionStatementResultRegister.js:27:9)
+    ->[block 40]
+  block 40: [exit-ordinary]
+    node 113: return[v1] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:20:8)
     ->[]
-  block 27: [exit-exceptional]
-    node 97: exceptional-return (test/flowgraphbuilder/testExpressionStatementResultRegister.js:20:8)
+  block 41: [exit-exceptional]
+    node 114: exceptional-return (test/flowgraphbuilder/testExpressionStatementResultRegister.js:20:8)
+    ->[]
+
+fg2: <main> function()
+  block 0: [entry]
+    node 0: constant[undefined,v1] (test/flowgraphbuilder/testExpressionStatementResultRegister.js)
+    ->[block 1]
+  block 1:
+    node 1: constant["tajs-host-env:string-replace-model.js",v2] (host-environment-sources-loader)
+    node 2: constant[true,v3] (host-environment-sources-loader)
+    ->[block 2] ~>[block 22]
+  block 2:
+    node 3: call[TAJS_load,v2,v3,v4] (host-environment-sources-loader)
+    ->[block 3] ~>[block 22]
+  block 3:
+    node 4: call[-,v4,-] (host-environment-sources-loader)
+    ->[block 4] ~>[block 22]
+  block 4:
+    node 5: function-expr[function(),v5] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:1:5)
+    node 6: write-variable[v5,'g']* (test/flowgraphbuilder/testExpressionStatementResultRegister.js:1:1)
+    node 7: read-variable['g',v7,-] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:9:1)
+    node 8: new[v6] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:9:15)
+    node 9: constant[0.0,v8] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:10:12)
+    node 10: write-property[v6,'xxx14',v8] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:10:5)
+    node 11: constant[0.0,v9] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:11:11)
+    node 12: write-property[v6,'xxx9',v9] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:11:5)
+    node 13: constant[0.0,v10] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:12:11)
+    node 14: write-property[v6,'xxx5',v10] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:12:5)
+    node 15: constant[0.0,v11] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:13:11)
+    node 16: write-property[v6,'xxx6',v11] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:13:5)
+    node 17: constant[0.0,v12] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:14:11)
+    node 18: write-property[v6,'xxx7',v12] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:14:5)
+    node 19: constant[0.0,v13] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:15:11)
+    node 20: write-property[v6,'xxx8',v13] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:15:5)
+    node 21: constant[0.0,v14] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:16:11)
+    node 22: write-property[v6,'xxx0',v14] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:16:5)
+    node 23: constant[0.0,v15] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:17:11)
+    node 24: write-property[v6,'xxx1',v15] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:17:5)
+    node 25: constant[0.0,v16] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:18:11)
+    node 26: write-property[v6,'xxx2',v16] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:18:5)
+    node 27: constant[0.0,v17] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:19:11)
+    node 28: write-property[v6,'xxx3',v17] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:19:5)
+    node 29: function-expr[function(o),v18] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:20:8)
+    node 30: write-property[v6,'f',v18] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:20:5)
+    node 31: write-property[v7,'prototype',v6] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:9:1)
+    node 32: <variable-non-null-undef>['g']* (test/flowgraphbuilder/testExpressionStatementResultRegister.js:9:1)
+    node 33: read-variable['g',v19,-] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:30:5)
+    ->[block 5] ~>[block 22]
+  block 5:
+    node 34: construct[-,v19,-]* (test/flowgraphbuilder/testExpressionStatementResultRegister.js:30:1)
+    ->[block 6] ~>[block 22]
+  block 6:
+    node 35: nop(eventDispatchers: entry) (test/flowgraphbuilder/testExpressionStatementResultRegister.js)
+    ->[block 7,block 11] ~>[block 22]
+  block 7:
+    node 36: event-dispatcher <LOAD>* (test/flowgraphbuilder/testExpressionStatementResultRegister.js)
+    ->[block 10] ~>[block 8]
+  block 8:
+    node 37: catch[v21] (test/flowgraphbuilder/testExpressionStatementResultRegister.js)
+    node 38: nop(eventDispatchers: exceptional exit Load) (test/flowgraphbuilder/testExpressionStatementResultRegister.js)
+    ->[block 9,block 11]
+  block 9:
+    node 39: throw[v21]* (test/flowgraphbuilder/testExpressionStatementResultRegister.js)
+    ->[]
+  block 10:
+    node 40: nop(eventDispatchers: ordinary exit Load)* (test/flowgraphbuilder/testExpressionStatementResultRegister.js)
+    ->[block 11] ~>[block 22]
+  block 11:
+    node 41: nop(eventDispatchers: post Load)* (test/flowgraphbuilder/testExpressionStatementResultRegister.js)
+    ->[block 7,block 12,block 16] ~>[block 22]
+  block 12:
+    node 42: event-dispatcher <OTHER>* (test/flowgraphbuilder/testExpressionStatementResultRegister.js)
+    ->[block 15] ~>[block 13]
+  block 13:
+    node 43: catch[v22] (test/flowgraphbuilder/testExpressionStatementResultRegister.js)
+    node 44: nop(eventDispatchers: exceptional exit Other) (test/flowgraphbuilder/testExpressionStatementResultRegister.js)
+    ->[block 14,block 16]
+  block 14:
+    node 45: throw[v22]* (test/flowgraphbuilder/testExpressionStatementResultRegister.js)
+    ->[]
+  block 15:
+    node 46: nop(eventDispatchers: ordinary exit Other)* (test/flowgraphbuilder/testExpressionStatementResultRegister.js)
+    ->[block 16] ~>[block 22]
+  block 16:
+    node 47: nop(eventDispatchers: post Other)* (test/flowgraphbuilder/testExpressionStatementResultRegister.js)
+    ->[block 12,block 17,block 21] ~>[block 22]
+  block 17:
+    node 48: event-dispatcher <UNLOAD>* (test/flowgraphbuilder/testExpressionStatementResultRegister.js)
+    ->[block 20] ~>[block 18]
+  block 18:
+    node 49: catch[v23] (test/flowgraphbuilder/testExpressionStatementResultRegister.js)
+    node 50: nop(eventDispatchers: exceptional exit Unload) (test/flowgraphbuilder/testExpressionStatementResultRegister.js)
+    ->[block 19,block 21]
+  block 19:
+    node 51: throw[v23]* (test/flowgraphbuilder/testExpressionStatementResultRegister.js)
+    ->[]
+  block 20:
+    node 52: nop(eventDispatchers: ordinary exit Unload)* (test/flowgraphbuilder/testExpressionStatementResultRegister.js)
+    ->[block 21] ~>[block 22]
+  block 21:
+    node 53: nop(eventDispatchers: post Unload)* (test/flowgraphbuilder/testExpressionStatementResultRegister.js)
+    ->[block 17,block 24] ~>[block 22]
+  block 22:
+    node 54: catch[v20] (test/flowgraphbuilder/testExpressionStatementResultRegister.js)
+    ->[block 6,block 23]
+  block 23:
+    node 55: throw[v20]* (test/flowgraphbuilder/testExpressionStatementResultRegister.js)
+    ->[]
+  block 24: [exit-ordinary]
+    node 56: return[v1] (test/flowgraphbuilder/testExpressionStatementResultRegister.js)
+    ->[]
+  block 25: [exit-exceptional]
+    node 57: exceptional-return (test/flowgraphbuilder/testExpressionStatementResultRegister.js)
+    ->[]
+function()
+  block 26: [entry]
+    node 58: constant[undefined,v1] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:1:5)
+    node 59: vardecl['o']* (test/flowgraphbuilder/testExpressionStatementResultRegister.js:2:9)
+    node 60: vardecl['var0']* (test/flowgraphbuilder/testExpressionStatementResultRegister.js:5:9)
+    ->[block 27]
+  block 27:
+    node 61: new[v3] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:2:13)
+    node 62: write-variable[v3,'o']* (test/flowgraphbuilder/testExpressionStatementResultRegister.js:2:9)
+    node 63: read-variable['o',v5,v2] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:3:5)
+    node 64: new[v4] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:3:12)
+    node 65: write-property[v5,'p1',v4] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:3:5)
+    node 66: <variable-non-null-undef>['o']* (test/flowgraphbuilder/testExpressionStatementResultRegister.js:3:5)
+    node 67: read-variable['this',v7,-] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:4:5)
+    node 68: read-property[v7,'f',-] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:4:5)
+    node 69: read-variable['o',v8,v2] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:4:12)
+    ->[block 28]
+  block 28:
+    node 70: call[v7,'f',v8,-]* (test/flowgraphbuilder/testExpressionStatementResultRegister.js:4:5)
+    ->[block 29]
+  block 29:
+    node 71: read-variable['o',v10,v2] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:5:16)
+    node 72: read-property[v10,'p2',v9] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:5:16)
+    node 73: <variable-non-null-undef>['o'] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:5:16)
+    node 74: write-variable[v9,'var0']* (test/flowgraphbuilder/testExpressionStatementResultRegister.js:5:9)
+    node 75: read-variable['var0',v14,v2] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:6:17)
+    node 76: read-variable['undefined',v15,v2] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:6:26)
+    node 77: !==[v14,v15,v13] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:6:17)
+    ->[block 30]
+  block 30:
+    node 78: call[TAJS_assert,v13,-]* (test/flowgraphbuilder/testExpressionStatementResultRegister.js:6:5)
+    ->[block 31]
+  block 31: [exit-ordinary]
+    node 79: return[v1] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:1:5)
+    ->[]
+  block 32: [exit-exceptional]
+    node 80: exceptional-return (test/flowgraphbuilder/testExpressionStatementResultRegister.js:1:5)
+    ->[]
+function(o)
+  block 33: [entry]
+    node 81: constant[undefined,v1] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:20:8)
+    node 82: vardecl['var1']* (test/flowgraphbuilder/testExpressionStatementResultRegister.js:21:13)
+    node 83: vardecl['var2']* (test/flowgraphbuilder/testExpressionStatementResultRegister.js:22:13)
+    ->[block 34]
+  block 34:
+    node 84: read-variable['document',v5,-] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:21:20)
+    node 85: read-property[v5,'createElement',-] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:21:20)
+    node 86: <variable-non-null-undef>['document'] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:21:20)
+    node 87: constant["canvas",v6] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:21:43)
+    ->[block 35]
+  block 35:
+    node 88: call[v5,'createElement',v6,v3] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:21:20)
+    ->[block 36]
+  block 36:
+    node 89: write-variable[v3,'var1']* (test/flowgraphbuilder/testExpressionStatementResultRegister.js:21:13)
+    node 90: read-variable['o',v9,v2] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:22:20)
+    node 91: read-property[v9,'p1',v8] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:22:20)
+    node 92: <variable-non-null-undef>['o'] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:22:20)
+    node 93: read-property[v8,'xxx15',v7] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:22:20)
+    node 94: <property-non-null-undef>[v9,'p1'] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:22:20)
+    node 95: write-variable[v7,'var2']* (test/flowgraphbuilder/testExpressionStatementResultRegister.js:22:13)
+    node 96: read-variable['var1',v11,v2] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:23:9)
+    node 97: constant[0.0,v10] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:23:22)
+    node 98: write-property[v11,'xxx10',v10] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:23:9)
+    node 99: <variable-non-null-undef>['var1']* (test/flowgraphbuilder/testExpressionStatementResultRegister.js:23:9)
+    node 100: read-variable['o',v13,v2] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:24:9)
+    node 101: constant[0.0,v12] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:24:19)
+    node 102: write-property[v13,'xxx12',v12] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:24:9)
+    node 103: <variable-non-null-undef>['o']* (test/flowgraphbuilder/testExpressionStatementResultRegister.js:24:9)
+    node 104: read-variable['var2',v14,v2] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:25:13)
+    node 105: if[v14](true-block:37,false-block:37)* (test/flowgraphbuilder/testExpressionStatementResultRegister.js:25:9)
+    ->[block 37]
+  block 37:
+    node 106: read-variable['o',v16,v2] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:27:9)
+    node 107: read-variable['var1',v18,-] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:27:16)
+    node 108: read-property[v18,'getContext',-] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:27:16)
+    node 109: <variable-non-null-undef>['var1'] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:27:16)
+    ->[block 38]
+  block 38:
+    node 110: call[v18,'getContext',v15] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:27:16)
+    ->[block 39]
+  block 39:
+    node 111: write-property[v16,'p2',v15] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:27:9)
+    node 112: <variable-non-null-undef>['o']* (test/flowgraphbuilder/testExpressionStatementResultRegister.js:27:9)
+    ->[block 40]
+  block 40: [exit-ordinary]
+    node 113: return[v1] (test/flowgraphbuilder/testExpressionStatementResultRegister.js:20:8)
+    ->[]
+  block 41: [exit-exceptional]
+    node 114: exceptional-return (test/flowgraphbuilder/testExpressionStatementResultRegister.js:20:8)
+    ->[]
+function()
+  block 42: [entry]
+    node 115: constant[undefined,v1] (HOST(string-replace-model.js):1:1)
+    ->[block 43]
+  block 43:
+    node 116: read-variable['Object',v4,-] (HOST(string-replace-model.js):1:1)
+    node 117: read-property[v4,'defineProperty',-] (HOST(string-replace-model.js):1:1)
+    node 118: <variable-non-null-undef>['Object'] (HOST(string-replace-model.js):1:1)
+    node 119: read-variable['String',v6,v2] (HOST(string-replace-model.js):1:23)
+    node 120: read-property[v6,'prototype',v5] (HOST(string-replace-model.js):1:23)
+    node 121: <variable-non-null-undef>['String'] (HOST(string-replace-model.js):1:23)
+    node 122: constant["replace",v7] (HOST(string-replace-model.js):1:41)
+    node 123: new[v8] (HOST(string-replace-model.js):1:52)
+    node 124: constant[true,v9] (HOST(string-replace-model.js):2:15)
+    node 125: write-property[v8,'writable',v9] (HOST(string-replace-model.js):2:5)
+    node 126: constant[false,v10] (HOST(string-replace-model.js):2:33)
+    node 127: write-property[v8,'enumerable',v10] (HOST(string-replace-model.js):2:21)
+    node 128: constant[true,v11] (HOST(string-replace-model.js):2:54)
+    node 129: write-property[v8,'configurable',v11] (HOST(string-replace-model.js):2:40)
+    node 130: function-expr[function replace(searchValue,replaceValue),v12] (HOST(string-replace-model.js):3:12)
+    node 131: write-property[v8,'value',v12] (HOST(string-replace-model.js):3:5)
+    ->[block 44]
+  block 44:
+    node 132: call[v4,'defineProperty',v5,v7,v8,-]* (HOST(string-replace-model.js):1:1)
+    ->[block 45]
+  block 45:
+    node 133: read-variable['String',v17,v2] (HOST(string-replace-model.js):69:27)
+    node 134: read-property[v17,'prototype',v16] (HOST(string-replace-model.js):69:27)
+    node 135: <variable-non-null-undef>['String'] (HOST(string-replace-model.js):69:27)
+    node 136: read-property[v16,'replace',v15] (HOST(string-replace-model.js):69:27)
+    node 137: <property-non-null-undef>[v17,'prototype'] (HOST(string-replace-model.js):69:27)
+    node 138: constant[-1.0,v18] (HOST(string-replace-model.js):69:53)
+    ->[block 46]
+  block 46:
+    node 139: call[TAJS_makeContextSensitive,v15,v18,-]* (HOST(string-replace-model.js):69:1)
+    ->[block 47]
+  block 47:
+    node 140: read-variable['String',v23,v2] (HOST(string-replace-model.js):70:27)
+    node 141: read-property[v23,'prototype',v22] (HOST(string-replace-model.js):70:27)
+    node 142: <variable-non-null-undef>['String'] (HOST(string-replace-model.js):70:27)
+    node 143: read-property[v22,'replace',v21] (HOST(string-replace-model.js):70:27)
+    node 144: <property-non-null-undef>[v23,'prototype'] (HOST(string-replace-model.js):70:27)
+    node 145: constant[0.0,v24] (HOST(string-replace-model.js):70:53)
+    ->[block 48]
+  block 48:
+    node 146: call[TAJS_makeContextSensitive,v21,v24,-]* (HOST(string-replace-model.js):70:1)
+    ->[block 49]
+  block 49:
+    node 147: read-variable['String',v29,v2] (HOST(string-replace-model.js):71:27)
+    node 148: read-property[v29,'prototype',v28] (HOST(string-replace-model.js):71:27)
+    node 149: <variable-non-null-undef>['String'] (HOST(string-replace-model.js):71:27)
+    node 150: read-property[v28,'replace',v27] (HOST(string-replace-model.js):71:27)
+    node 151: <property-non-null-undef>[v29,'prototype'] (HOST(string-replace-model.js):71:27)
+    node 152: constant[1.0,v30] (HOST(string-replace-model.js):71:53)
+    ->[block 50]
+  block 50:
+    node 153: call[TAJS_makeContextSensitive,v27,v30,-]* (HOST(string-replace-model.js):71:1)
+    ->[block 51]
+  block 51: [exit-ordinary]
+    node 154: return[v1] (HOST(string-replace-model.js):1:1)
+    ->[]
+  block 52: [exit-exceptional]
+    node 155: exceptional-return (HOST(string-replace-model.js):1:1)
+    ->[]
+function replace(searchValue,replaceValue)
+  block 53: [entry]
+    node 156: constant[undefined,v1] (HOST(string-replace-model.js):3:12)
+    node 157: vardecl['receiver']* (HOST(string-replace-model.js):8:13)
+    node 158: vardecl['string']* (HOST(string-replace-model.js):10:13)
+    node 159: vardecl['searchValueIsRegExp']* (HOST(string-replace-model.js):16:13)
+    node 160: vardecl['matches']* (HOST(string-replace-model.js):18:13)
+    node 161: vardecl['matchThatIsFound']* (HOST(string-replace-model.js):21:17)
+    node 162: vardecl['callbackArguments']* (HOST(string-replace-model.js):25:25)
+    node 163: vardecl['i']* (HOST(string-replace-model.js):26:30)
+    node 164: vardecl['indexMatch']* (HOST(string-replace-model.js):37:17)
+    node 165: vardecl['replacementSubstrings']* (HOST(string-replace-model.js):45:13)
+    node 166: vardecl['j']* (HOST(string-replace-model.js):47:18)
+    node 167: vardecl['matchToUse']* (HOST(string-replace-model.js):48:17)
+    node 168: vardecl['startIndex']* (HOST(string-replace-model.js):49:17)
+    node 169: vardecl['endIndex']* (HOST(string-replace-model.js):50:17)
+    node 170: vardecl['replacementSubstring']* (HOST(string-replace-model.js):51:17)
+    node 171: vardecl['replacement']* (HOST(string-replace-model.js):52:17)
+    node 172: vardecl['k']* (HOST(string-replace-model.js):59:18)
+    node 173: vardecl['prefix']* (HOST(string-replace-model.js):61:17)
+    node 174: vardecl['suffix']* (HOST(string-replace-model.js):62:17)
+    node 175: vardecl['result']* (HOST(string-replace-model.js):63:17)
+    ->[block 54]
+  block 54:
+    node 176: read-variable['this',v4,-] (HOST(string-replace-model.js):5:13)
+    node 177: constant[null,v5] (HOST(string-replace-model.js):5:22)
+    node 178: ===[v4,v5,v3] (HOST(string-replace-model.js):5:13)
+    ->[block 55]
+  block 55:
+    node 179: if[v3](true-block:57,false-block:56) (HOST(string-replace-model.js):5:13)
+    ->[block 56,block 57]
+  block 56:
+    node 180: read-variable['this',v6,-] (HOST(string-replace-model.js):5:30)
+    node 181: read-variable['undefined',v7,v2] (HOST(string-replace-model.js):5:39)
+    node 182: ===[v6,v7,v3] (HOST(string-replace-model.js):5:30)
+    node 183: if[v3](true-block:57,false-block:60)* (HOST(string-replace-model.js):5:9)
+    ->[block 57,block 60]
+  block 57:
+    node 184: read-variable['TypeError',v9,-] (HOST(string-replace-model.js):6:23)
+    ->[block 58]
+  block 58:
+    node 185: construct[-,v9,v8] (HOST(string-replace-model.js):6:19)
+    ->[block 59]
+  block 59:
+    node 186: throw[v8]* (HOST(string-replace-model.js):6:13)
+    ->[block 60]
+  block 60:
+    node 187: read-variable['this',v8,-] (HOST(string-replace-model.js):8:24)
+    node 188: write-variable[v8,'receiver']* (HOST(string-replace-model.js):8:13)
+    node 189: read-variable['receiver',v10,v2] (HOST(string-replace-model.js):10:22)
+    node 190: constant["",v11] (HOST(string-replace-model.js):10:33)
+    node 191: +[v10,v11,v9] (HOST(string-replace-model.js):10:22)
+    node 192: write-variable[v9,'string']* (HOST(string-replace-model.js):10:13)
+    node 193: typeof['replaceValue',v13] (HOST(string-replace-model.js):11:13)
+    node 194: constant["function",v14] (HOST(string-replace-model.js):11:37)
+    node 195: !==[v13,v14,v12] (HOST(string-replace-model.js):11:13)
+    node 196: if[v12](true-block:61,false-block:63)* (HOST(string-replace-model.js):11:9)
+    ->[block 61,block 63]
+  block 61:
+    node 197: read-variable['string',v17,v2] (HOST(string-replace-model.js):13:49)
+    node 198: read-variable['searchValue',v18,v2] (HOST(string-replace-model.js):13:57)
+    node 199: read-variable['replaceValue',v20,v2] (HOST(string-replace-model.js):13:70)
+    node 200: constant["",v21] (HOST(string-replace-model.js):13:85)
+    node 201: +[v20,v21,v19] (HOST(string-replace-model.js):13:70)
+    ->[block 62]
+  block 62:
+    node 202: call[TAJS_firstOrderStringReplace,v17,v18,v19,v1] (HOST(string-replace-model.js):13:20)
+    ->[block 128]
+  block 63:
+    node 203: read-variable['searchValue',v16,v2] (HOST(string-replace-model.js):16:35)
+    node 204: read-variable['RegExp',v17,v2] (HOST(string-replace-model.js):16:58)
+    node 205: instanceof[v16,v17,v15] (HOST(string-replace-model.js):16:35)
+    node 206: write-variable[v15,'searchValueIsRegExp']* (HOST(string-replace-model.js):16:13)
+    ->[block 64]
+  block 64:
+    node 207: call[TAJS_newArray,v18] (HOST(string-replace-model.js):18:23)
+    ->[block 65]
+  block 65:
+    node 208: write-variable[v18,'matches']* (HOST(string-replace-model.js):18:13)
+    node 209: read-variable['searchValueIsRegExp',v21,v2] (HOST(string-replace-model.js):19:13)
+    node 210: if[v21](true-block:77,false-block:66)* (HOST(string-replace-model.js):19:9)
+    ->[block 66,block 77]
+  block 66:
+    node 211: read-variable['searchValue',v23,v2] (HOST(string-replace-model.js):35:27)
+    node 212: constant["",v24] (HOST(string-replace-model.js):35:41)
+    node 213: +[v23,v24,v22] (HOST(string-replace-model.js):35:27)
+    node 214: write-variable[v22,'searchValue']* (HOST(string-replace-model.js):35:13)
+    ->[block 67]
+  block 67:
+    node 215: call[TAJS_newArray,v25] (HOST(string-replace-model.js):36:37)
+    ->[block 68]
+  block 68:
+    node 216: write-variable[v25,'callbackArguments']* (HOST(string-replace-model.js):36:17)
+    node 217: read-variable['string',v30,-] (HOST(string-replace-model.js):37:30)
+    node 218: read-property[v30,'indexOf',-] (HOST(string-replace-model.js):37:30)
+    node 219: <variable-non-null-undef>['string'] (HOST(string-replace-model.js):37:30)
+    node 220: read-variable['searchValue',v31,v2] (HOST(string-replace-model.js):37:45)
+    ->[block 69]
+  block 69:
+    node 221: call[v30,'indexOf',v31,v28] (HOST(string-replace-model.js):37:30)
+    ->[block 70]
+  block 70:
+    node 222: write-variable[v28,'indexMatch']* (HOST(string-replace-model.js):37:17)
+    node 223: read-variable['indexMatch',v33,v2] (HOST(string-replace-model.js):38:17)
+    node 224: constant[-1.0,v34] (HOST(string-replace-model.js):38:32)
+    node 225: !==[v33,v34,v32] (HOST(string-replace-model.js):38:17)
+    node 226: if[v32](true-block:71,false-block:102)* (HOST(string-replace-model.js):38:13)
+    ->[block 71,block 102]
+  block 71:
+    node 227: read-variable['callbackArguments',v36,v2] (HOST(string-replace-model.js):39:17)
+    node 228: constant[0.0,v37] (HOST(string-replace-model.js):39:35)
+    node 229: read-variable['searchValue',v35,v2] (HOST(string-replace-model.js):39:40)
+    node 230: write-property[v36,v37,v35] (HOST(string-replace-model.js):39:17)
+    node 231: <variable-non-null-undef>['callbackArguments']* (HOST(string-replace-model.js):39:17)
+    node 232: read-variable['callbackArguments',v39,-] (HOST(string-replace-model.js):40:17)
+    node 233: read-property[v39,'push',-] (HOST(string-replace-model.js):40:17)
+    node 234: <variable-non-null-undef>['callbackArguments'] (HOST(string-replace-model.js):40:17)
+    node 235: read-variable['indexMatch',v40,v2] (HOST(string-replace-model.js):40:40)
+    ->[block 72]
+  block 72:
+    node 236: call[v39,'push',v40,-]* (HOST(string-replace-model.js):40:17)
+    ->[block 73]
+  block 73:
+    node 237: read-variable['callbackArguments',v42,-] (HOST(string-replace-model.js):41:17)
+    node 238: read-property[v42,'push',-] (HOST(string-replace-model.js):41:17)
+    node 239: <variable-non-null-undef>['callbackArguments'] (HOST(string-replace-model.js):41:17)
+    node 240: read-variable['string',v43,v2] (HOST(string-replace-model.js):41:40)
+    ->[block 74]
+  block 74:
+    node 241: call[v42,'push',v43,-]* (HOST(string-replace-model.js):41:17)
+    ->[block 75]
+  block 75:
+    node 242: read-variable['matches',v45,-] (HOST(string-replace-model.js):42:17)
+    node 243: read-property[v45,'push',-] (HOST(string-replace-model.js):42:17)
+    node 244: <variable-non-null-undef>['matches'] (HOST(string-replace-model.js):42:17)
+    node 245: read-variable['callbackArguments',v46,v2] (HOST(string-replace-model.js):42:30)
+    ->[block 76]
+  block 76:
+    node 246: call[v45,'push',v46,-]* (HOST(string-replace-model.js):42:17)
+    ->[block 102]
+  block 77:
+    node 247: read-variable['searchValue',v28,-] (HOST(string-replace-model.js):23:36)
+    node 248: read-property[v28,'exec',-] (HOST(string-replace-model.js):23:36)
+    node 249: <variable-non-null-undef>['searchValue'] (HOST(string-replace-model.js):23:36)
+    node 250: read-variable['string',v29,v2] (HOST(string-replace-model.js):23:53)
+    ->[block 78] ~>[block 100]
+  block 78:
+    node 251: call[v28,'exec',v29,v26] (HOST(string-replace-model.js):23:36)
+    ->[block 79] ~>[block 100]
+  block 79:
+    node 252: write-variable[v26,'matchThatIsFound']* (HOST(string-replace-model.js):23:17)
+    node 253: read-variable['matchThatIsFound',v31,v2] (HOST(string-replace-model.js):24:21)
+    node 254: constant[null,v32] (HOST(string-replace-model.js):24:42)
+    node 255: !==[v31,v32,v30] (HOST(string-replace-model.js):24:21)
+    node 256: if[v30](true-block:80,false-block:95)* (HOST(string-replace-model.js):24:17)
+    ->[block 80,block 95] ~>[block 100]
+  block 80:
+    node 257: call[TAJS_newArray,v33] (HOST(string-replace-model.js):25:45)
+    ->[block 81] ~>[block 100]
+  block 81:
+    node 258: write-variable[v33,'callbackArguments']* (HOST(string-replace-model.js):25:25)
+    ->[block 82] ~>[block 100]
+  block 82:
+    node 259: constant[0.0,v36] (HOST(string-replace-model.js):26:34)
+    node 260: write-variable[v36,'i']* (HOST(string-replace-model.js):26:30)
+    ->[block 83] ~>[block 100]
+  block 83:
+    node 261: read-variable['i',v38,v2] (HOST(string-replace-model.js):26:37)
+    node 262: read-variable['matchThatIsFound',v40,v2] (HOST(string-replace-model.js):26:41)
+    node 263: read-property[v40,'length',v39] (HOST(string-replace-model.js):26:41)
+    node 264: <variable-non-null-undef>['matchThatIsFound'] (HOST(string-replace-model.js):26:41)
+    node 265: <[v38,v39,v37] (HOST(string-replace-model.js):26:37)
+    node 266: begin-loop[v37] (HOST(string-replace-model.js):26:71)
+    ->[block 84] ~>[block 87]
+  block 84:
+    node 267: if[v37](true-block:85,false-block:88)* (HOST(string-replace-model.js):26:37)
+    ->[block 85,block 88] ~>[block 87]
+  block 85:
+    node 268: read-variable['callbackArguments',v42,v2] (HOST(string-replace-model.js):27:25)
+    node 269: read-variable['i',v43,v2] (HOST(string-replace-model.js):27:43)
+    node 270: read-variable['matchThatIsFound',v44,v2] (HOST(string-replace-model.js):27:48)
+    node 271: read-variable['i',v45,v2] (HOST(string-replace-model.js):27:65)
+    node 272: read-property[v44,v45,v41] (HOST(string-replace-model.js):27:48)
+    node 273: <variable-non-null-undef>['matchThatIsFound'] (HOST(string-replace-model.js):27:48)
+    node 274: write-property[v42,v43,v41] (HOST(string-replace-model.js):27:25)
+    node 275: <variable-non-null-undef>['callbackArguments']* (HOST(string-replace-model.js):27:25)
+    ->[block 86] ~>[block 87]
+  block 86:
+    node 276: read-variable['i',v46,v2] (HOST(string-replace-model.js):26:66)
+    node 277: +[v46,v47] (HOST(string-replace-model.js):26:66)
+    node 278: constant[1.0,v48] (HOST(string-replace-model.js):26:66)
+    node 279: +[v47,v48,v49] (HOST(string-replace-model.js):26:66)
+    node 280: write-variable[v49,'i']* (HOST(string-replace-model.js):26:66)
+    ->[block 83] ~>[block 87]
+  block 87:
+    node 281: end-loop[v37]* (HOST(string-replace-model.js):26:37)
+    ->[block 100]
+  block 88:
+    node 282: end-loop[v37]* (HOST(string-replace-model.js):26:37)
+    ->[block 89] ~>[block 100]
+  block 89:
+    node 283: read-variable['callbackArguments',v51,-] (HOST(string-replace-model.js):29:21)
+    node 284: read-property[v51,'push',-] (HOST(string-replace-model.js):29:21)
+    node 285: <variable-non-null-undef>['callbackArguments'] (HOST(string-replace-model.js):29:21)
+    node 286: read-variable['matchThatIsFound',v53,v2] (HOST(string-replace-model.js):29:44)
+    node 287: read-property[v53,'index',v52] (HOST(string-replace-model.js):29:44)
+    node 288: <variable-non-null-undef>['matchThatIsFound'] (HOST(string-replace-model.js):29:44)
+    ->[block 90] ~>[block 100]
+  block 90:
+    node 289: call[v51,'push',v52,-]* (HOST(string-replace-model.js):29:21)
+    ->[block 91] ~>[block 100]
+  block 91:
+    node 290: read-variable['callbackArguments',v55,-] (HOST(string-replace-model.js):30:21)
+    node 291: read-property[v55,'push',-] (HOST(string-replace-model.js):30:21)
+    node 292: <variable-non-null-undef>['callbackArguments'] (HOST(string-replace-model.js):30:21)
+    node 293: read-variable['matchThatIsFound',v57,v2] (HOST(string-replace-model.js):30:44)
+    node 294: read-property[v57,'input',v56] (HOST(string-replace-model.js):30:44)
+    node 295: <variable-non-null-undef>['matchThatIsFound'] (HOST(string-replace-model.js):30:44)
+    ->[block 92] ~>[block 100]
+  block 92:
+    node 296: call[v55,'push',v56,-]* (HOST(string-replace-model.js):30:21)
+    ->[block 93] ~>[block 100]
+  block 93:
+    node 297: read-variable['matches',v59,-] (HOST(string-replace-model.js):31:21)
+    node 298: read-property[v59,'push',-] (HOST(string-replace-model.js):31:21)
+    node 299: <variable-non-null-undef>['matches'] (HOST(string-replace-model.js):31:21)
+    node 300: read-variable['callbackArguments',v60,v2] (HOST(string-replace-model.js):31:34)
+    ->[block 94] ~>[block 100]
+  block 94:
+    node 301: call[v59,'push',v60,-]* (HOST(string-replace-model.js):31:21)
+    ->[block 95] ~>[block 100]
+  block 95:
+    node 302: read-variable['matchThatIsFound',v23,v2] (HOST(string-replace-model.js):33:22)
+    node 303: constant[null,v24] (HOST(string-replace-model.js):33:43)
+    node 304: !==[v23,v24,v22] (HOST(string-replace-model.js):33:22)
+    ->[block 96] ~>[block 100]
+  block 96:
+    node 305: if[v22](true-block:97,false-block:98) (HOST(string-replace-model.js):33:22)
+    ->[block 97,block 98] ~>[block 100]
+  block 97:
+    node 306: read-variable['searchValue',v25,v2] (HOST(string-replace-model.js):33:51)
+    node 307: read-property[v25,'global',v22] (HOST(string-replace-model.js):33:51)
+    node 308: <variable-non-null-undef>['searchValue'] (HOST(string-replace-model.js):33:51)
+    ->[block 98] ~>[block 100]
+  block 98:
+    node 309: begin-loop[v22] (HOST(string-replace-model.js):22:16)
+    ->[block 99] ~>[block 100]
+  block 99:
+    node 310: if[v22](true-block:77,false-block:101)* (HOST(string-replace-model.js):33:22)
+    ->[block 77,block 101] ~>[block 100]
+  block 100:
+    node 311: end-loop[v22]* (HOST(string-replace-model.js):33:22)
+    ->[block 129]
+  block 101:
+    node 312: end-loop[v22]* (HOST(string-replace-model.js):33:22)
+    ->[block 102]
+  block 102:
+    node 313: call[TAJS_newArray,v22] (HOST(string-replace-model.js):45:37)
+    ->[block 103]
+  block 103:
+    node 314: write-variable[v22,'replacementSubstrings']* (HOST(string-replace-model.js):45:13)
+    ->[block 104]
+  block 104:
+    node 315: constant[0.0,v25] (HOST(string-replace-model.js):47:22)
+    node 316: write-variable[v25,'j']* (HOST(string-replace-model.js):47:18)
+    ->[block 105]
+  block 105:
+    node 317: read-variable['j',v27,v2] (HOST(string-replace-model.js):47:25)
+    node 318: read-variable['matches',v29,v2] (HOST(string-replace-model.js):47:29)
+    node 319: read-property[v29,'length',v28] (HOST(string-replace-model.js):47:29)
+    node 320: <variable-non-null-undef>['matches'] (HOST(string-replace-model.js):47:29)
+    node 321: <[v27,v28,v26] (HOST(string-replace-model.js):47:25)
+    node 322: begin-loop[v26] (HOST(string-replace-model.js):47:50)
+    ->[block 106] ~>[block 114]
+  block 106:
+    node 323: if[v26](true-block:107,false-block:115)* (HOST(string-replace-model.js):47:25)
+    ->[block 107,block 115] ~>[block 114]
+  block 107:
+    node 324: read-variable['matches',v31,v2] (HOST(string-replace-model.js):48:30)
+    node 325: read-variable['j',v32,v2] (HOST(string-replace-model.js):48:38)
+    node 326: read-property[v31,v32,v30] (HOST(string-replace-model.js):48:30)
+    node 327: <variable-non-null-undef>['matches'] (HOST(string-replace-model.js):48:30)
+    node 328: write-variable[v30,'matchToUse']* (HOST(string-replace-model.js):48:17)
+    node 329: read-variable['matchToUse',v34,v2] (HOST(string-replace-model.js):49:30)
+    node 330: read-variable['matchToUse',v38,v2] (HOST(string-replace-model.js):49:41)
+    node 331: read-property[v38,'length',v36] (HOST(string-replace-model.js):49:41)
+    node 332: <variable-non-null-undef>['matchToUse'] (HOST(string-replace-model.js):49:41)
+    node 333: constant[2.0,v37] (HOST(string-replace-model.js):49:61)
+    node 334: -[v36,v37,v35] (HOST(string-replace-model.js):49:41)
+    node 335: read-property[v34,v35,v33] (HOST(string-replace-model.js):49:30)
+    node 336: <variable-non-null-undef>['matchToUse'] (HOST(string-replace-model.js):49:30)
+    node 337: write-variable[v33,'startIndex']* (HOST(string-replace-model.js):49:17)
+    node 338: read-variable['startIndex',v40,v2] (HOST(string-replace-model.js):50:28)
+    node 339: read-variable['matchToUse',v43,v2] (HOST(string-replace-model.js):50:41)
+    node 340: constant[0.0,v44] (HOST(string-replace-model.js):50:52)
+    node 341: read-property[v43,v44,v42] (HOST(string-replace-model.js):50:41)
+    node 342: <variable-non-null-undef>['matchToUse'] (HOST(string-replace-model.js):50:41)
+    node 343: read-property[v42,'length',v41] (HOST(string-replace-model.js):50:41)
+    node 344: <property-non-null-undef>[v43,v44] (HOST(string-replace-model.js):50:41)
+    node 345: +[v40,v41,v39] (HOST(string-replace-model.js):50:28)
+    node 346: write-variable[v39,'endIndex']* (HOST(string-replace-model.js):50:17)
+    node 347: read-variable['replaceValue',v49,-] (HOST(string-replace-model.js):51:40)
+    node 348: read-property[v49,'apply',-] (HOST(string-replace-model.js):51:40)
+    node 349: <variable-non-null-undef>['replaceValue'] (HOST(string-replace-model.js):51:40)
+    node 350: read-variable['undefined',v50,v2] (HOST(string-replace-model.js):51:59)
+    node 351: read-variable['matchToUse',v51,v2] (HOST(string-replace-model.js):51:70)
+    ->[block 108] ~>[block 114]
+  block 108:
+    node 352: call[v49,'apply',v50,v51,v46] (HOST(string-replace-model.js):51:40)
+    ->[block 109] ~>[block 114]
+  block 109:
+    node 353: constant["",v47] (HOST(string-replace-model.js):51:84)
+    node 354: +[v46,v47,v45] (HOST(string-replace-model.js):51:40)
+    node 355: write-variable[v45,'replacementSubstring']* (HOST(string-replace-model.js):51:17)
+    ->[block 110] ~>[block 114]
+  block 110:
+    node 356: call[TAJS_newObject,v52] (HOST(string-replace-model.js):52:31)
+    ->[block 111] ~>[block 114]
+  block 111:
+    node 357: write-variable[v52,'replacement']* (HOST(string-replace-model.js):52:17)
+    node 358: read-variable['replacement',v56,v2] (HOST(string-replace-model.js):53:13)
+    node 359: read-variable['startIndex',v55,v2] (HOST(string-replace-model.js):53:38)
+    node 360: write-property[v56,'startIndex',v55] (HOST(string-replace-model.js):53:13)
+    node 361: <variable-non-null-undef>['replacement']* (HOST(string-replace-model.js):53:13)
+    node 362: read-variable['replacement',v58,v2] (HOST(string-replace-model.js):54:13)
+    node 363: read-variable['replacementSubstring',v57,v2] (HOST(string-replace-model.js):54:37)
+    node 364: write-property[v58,'substring',v57] (HOST(string-replace-model.js):54:13)
+    node 365: <variable-non-null-undef>['replacement']* (HOST(string-replace-model.js):54:13)
+    node 366: read-variable['replacement',v60,v2] (HOST(string-replace-model.js):55:13)
+    node 367: read-variable['endIndex',v59,v2] (HOST(string-replace-model.js):55:36)
+    node 368: write-property[v60,'endIndex',v59] (HOST(string-replace-model.js):55:13)
+    node 369: <variable-non-null-undef>['replacement']* (HOST(string-replace-model.js):55:13)
+    node 370: read-variable['replacementSubstrings',v62,-] (HOST(string-replace-model.js):56:13)
+    node 371: read-property[v62,'unshift',-] (HOST(string-replace-model.js):56:13)
+    node 372: <variable-non-null-undef>['replacementSubstrings'] (HOST(string-replace-model.js):56:13)
+    node 373: read-variable['replacement',v63,v2] (HOST(string-replace-model.js):56:43)
+    ->[block 112] ~>[block 114]
+  block 112:
+    node 374: call[v62,'unshift',v63,-]* (HOST(string-replace-model.js):56:13)
+    ->[block 113] ~>[block 114]
+  block 113:
+    node 375: read-variable['j',v64,v2] (HOST(string-replace-model.js):47:45)
+    node 376: +[v64,v65] (HOST(string-replace-model.js):47:45)
+    node 377: constant[1.0,v66] (HOST(string-replace-model.js):47:45)
+    node 378: +[v65,v66,v67] (HOST(string-replace-model.js):47:45)
+    node 379: write-variable[v67,'j']* (HOST(string-replace-model.js):47:45)
+    ->[block 105] ~>[block 114]
+  block 114:
+    node 380: end-loop[v26]* (HOST(string-replace-model.js):47:25)
+    ->[block 129]
+  block 115:
+    node 381: end-loop[v26]* (HOST(string-replace-model.js):47:25)
+    ->[block 116]
+  block 116:
+    node 382: constant[0.0,v68] (HOST(string-replace-model.js):59:22)
+    node 383: write-variable[v68,'k']* (HOST(string-replace-model.js):59:18)
+    ->[block 117]
+  block 117:
+    node 384: read-variable['k',v70,v2] (HOST(string-replace-model.js):59:25)
+    node 385: read-variable['replacementSubstrings',v72,v2] (HOST(string-replace-model.js):59:29)
+    node 386: read-property[v72,'length',v71] (HOST(string-replace-model.js):59:29)
+    node 387: <variable-non-null-undef>['replacementSubstrings'] (HOST(string-replace-model.js):59:29)
+    node 388: <[v70,v71,v69] (HOST(string-replace-model.js):59:25)
+    node 389: begin-loop[v69] (HOST(string-replace-model.js):59:64)
+    ->[block 118] ~>[block 125]
+  block 118:
+    node 390: if[v69](true-block:119,false-block:126)* (HOST(string-replace-model.js):59:25)
+    ->[block 119,block 126] ~>[block 125]
+  block 119:
+    node 391: read-variable['replacementSubstrings',v74,v2] (HOST(string-replace-model.js):60:31)
+    node 392: read-variable['k',v75,v2] (HOST(string-replace-model.js):60:53)
+    node 393: read-property[v74,v75,v73] (HOST(string-replace-model.js):60:31)
+    node 394: <variable-non-null-undef>['replacementSubstrings'] (HOST(string-replace-model.js):60:31)
+    node 395: write-variable[v73,'replacement']* (HOST(string-replace-model.js):60:17)
+    node 396: read-variable['string',v78,-] (HOST(string-replace-model.js):61:26)
+    node 397: read-property[v78,'substring',-] (HOST(string-replace-model.js):61:26)
+    node 398: <variable-non-null-undef>['string'] (HOST(string-replace-model.js):61:26)
+    node 399: constant[0.0,v79] (HOST(string-replace-model.js):61:43)
+    node 400: read-variable['replacement',v81,v2] (HOST(string-replace-model.js):61:46)
+    node 401: read-property[v81,'startIndex',v80] (HOST(string-replace-model.js):61:46)
+    node 402: <variable-non-null-undef>['replacement'] (HOST(string-replace-model.js):61:46)
+    ->[block 120] ~>[block 125]
+  block 120:
+    node 403: call[v78,'substring',v79,v80,v76] (HOST(string-replace-model.js):61:26)
+    ->[block 121] ~>[block 125]
+  block 121:
+    node 404: write-variable[v76,'prefix']* (HOST(string-replace-model.js):61:17)
+    node 405: read-variable['string',v84,-] (HOST(string-replace-model.js):62:26)
+    node 406: read-property[v84,'substring',-] (HOST(string-replace-model.js):62:26)
+    node 407: <variable-non-null-undef>['string'] (HOST(string-replace-model.js):62:26)
+    node 408: read-variable['replacement',v86,v2] (HOST(string-replace-model.js):62:43)
+    node 409: read-property[v86,'endIndex',v85] (HOST(string-replace-model.js):62:43)
+    node 410: <variable-non-null-undef>['replacement'] (HOST(string-replace-model.js):62:43)
+    ->[block 122] ~>[block 125]
+  block 122:
+    node 411: call[v84,'substring',v85,v82] (HOST(string-replace-model.js):62:26)
+    ->[block 123] ~>[block 125]
+  block 123:
+    node 412: write-variable[v82,'suffix']* (HOST(string-replace-model.js):62:17)
+    node 413: read-variable['prefix',v90,v2] (HOST(string-replace-model.js):63:26)
+    node 414: read-variable['replacement',v92,v2] (HOST(string-replace-model.js):63:35)
+    node 415: read-property[v92,'substring',v91] (HOST(string-replace-model.js):63:35)
+    node 416: <variable-non-null-undef>['replacement'] (HOST(string-replace-model.js):63:35)
+    node 417: +[v90,v91,v88] (HOST(string-replace-model.js):63:26)
+    node 418: read-variable['suffix',v89,v2] (HOST(string-replace-model.js):63:59)
+    node 419: +[v88,v89,v87] (HOST(string-replace-model.js):63:26)
+    node 420: write-variable[v87,'result']* (HOST(string-replace-model.js):63:17)
+    node 421: read-variable['result',v93,v2] (HOST(string-replace-model.js):64:22)
+    node 422: write-variable[v93,'string']* (HOST(string-replace-model.js):64:13)
+    ->[block 124] ~>[block 125]
+  block 124:
+    node 423: read-variable['k',v94,v2] (HOST(string-replace-model.js):59:59)
+    node 424: +[v94,v95] (HOST(string-replace-model.js):59:59)
+    node 425: constant[1.0,v96] (HOST(string-replace-model.js):59:59)
+    node 426: +[v95,v96,v97] (HOST(string-replace-model.js):59:59)
+    node 427: write-variable[v97,'k']* (HOST(string-replace-model.js):59:59)
+    ->[block 117] ~>[block 125]
+  block 125:
+    node 428: end-loop[v69]* (HOST(string-replace-model.js):59:25)
+    ->[block 129]
+  block 126:
+    node 429: end-loop[v69]* (HOST(string-replace-model.js):59:25)
+    ->[block 127]
+  block 127:
+    node 430: read-variable['string',v1,v2]* (HOST(string-replace-model.js):66:16)
+    ->[block 128]
+  block 128: [exit-ordinary]
+    node 431: return[v1] (HOST(string-replace-model.js):3:12)
+    ->[]
+  block 129: [exit-exceptional]
+    node 432: exceptional-return (HOST(string-replace-model.js):3:12)
     ->[]
 
 test/flowgraphbuilder/testExpressionStatementResultRegister.js:5:16: [definite] Property is null/undefined
@@ -172,4 +916,5 @@ test/flowgraphbuilder/testExpressionStatementResultRegister.js:18:5: [definite] 
 test/flowgraphbuilder/testExpressionStatementResultRegister.js:19:5: [definite] Dead assignment, property xxx3 is never read
 test/flowgraphbuilder/testExpressionStatementResultRegister.js:22:20: [definite] Reading absent property xxx15
 test/flowgraphbuilder/testExpressionStatementResultRegister.js:24:9: [definite] Dead assignment, property xxx12 is never read
+test/flowgraphbuilder/testExpressionStatementResultRegister.js: [definite] Exceptional program exit is unreachable
 test/flowgraphbuilder/testExpressionStatementResultRegister.js:27:16: [maybe] Converting undefined to string

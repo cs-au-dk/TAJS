@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,8 +22,6 @@ import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.UnknownValueResolver;
 import dk.brics.tajs.lattice.Value;
-import dk.brics.tajs.options.Options;
-import dk.brics.tajs.util.AnalysisException;
 import dk.brics.tajs.util.Collections;
 
 import java.util.List;
@@ -44,6 +42,7 @@ public class AsyncEvents {
         State state = c.getState();
         handler = UnknownValueResolver.getRealValue(handler, state);
         Set<ObjectLabel> objectLabels = Conversion.toObjectLabels(node, handler, c);
+        c.getMonitoring().visitEventHandlerRegistration(node, c.getState().getContext(), Value.makeObject(objectLabels));
         state.getExtras().addToMaySet(maySetKey, objectLabels);
     }
 

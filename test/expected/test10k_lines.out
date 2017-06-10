@@ -1,3 +1,4 @@
+test/10k/lines.html:75:17: [definite] The conditional expression is always true
 test/10k/lines.html:293:25: [definite] The conditional expression is always true
 test/10k/lines.html:437:36: [definite] Too few parameters to function String.prototype.charAt
 test/10k/lines.html:60:13: [maybe] TypeError, accessing property of null/undefined
@@ -47,6 +48,7 @@ test/10k/lines.html:266:17: [maybe] TypeError, accessing property of null/undefi
 test/10k/lines.html:270:21: [maybe] TypeError, accessing property of null/undefined
 test/10k/lines.html:273:30: [maybe] TypeError, accessing property of null/undefined
 test/10k/lines.html:278:30: [maybe] TypeError, accessing property of null/undefined
+test/10k/lines.html:279:21: [maybe] RangeError, assigning invalid value to array 'length' property
 test/10k/lines.html:279:21: [maybe] TypeError, accessing property of null/undefined
 test/10k/lines.html:279:31: [maybe] TypeError, accessing property of null/undefined
 test/10k/lines.html:280:21: [maybe] TypeError, accessing property of null/undefined
@@ -106,62 +108,72 @@ test/10k/lines.html:420:56: [maybe] TypeError, call to non-function
 test/10k/lines.html:421:56: [maybe] TypeError, call to non-function
 test/10k/lines.html:422:56: [maybe] TypeError, call to non-function
 test/10k/lines.html:437:36: [maybe] TypeError, accessing property of null/undefined
-test/10k/lines.html:162:13: [maybe] Reading absent property hide
+test/10k/lines.html:162:13: [maybe] Reading absent property hide of host object
 test/10k/lines.html:202:31: [maybe] Reading 'this' yields the global object
-test/10k/lines.html:202:31: [maybe] Reading absent property dirty
+test/10k/lines.html:202:31: [maybe] Reading absent property dirty of host object
 test/10k/lines.html:203:21: [maybe] Reading 'this' yields the global object
-test/10k/lines.html:204:17: [maybe] Reading absent property jumpTo
+test/10k/lines.html:204:17: [maybe] Reading absent property jumpTo of host object
 test/10k/lines.html:204:26: [maybe] Reading 'this' yields the global object
-test/10k/lines.html:204:26: [maybe] Reading absent property x
+test/10k/lines.html:204:26: [maybe] Reading absent property x of host object
 test/10k/lines.html:204:34: [maybe] Reading 'this' yields the global object
-test/10k/lines.html:204:34: [maybe] Reading absent property y
-test/10k/lines.html:206:28: [maybe] Reading absent property x
-test/10k/lines.html:206:33: [maybe] Reading absent property y
+test/10k/lines.html:204:34: [maybe] Reading absent property y of host object
+test/10k/lines.html:206:28: [maybe] Reading absent property x of host object
+test/10k/lines.html:206:33: [maybe] Reading absent property y of host object
 test/10k/lines.html:206:38: [maybe] Reading 'this' yields the global object
-test/10k/lines.html:206:38: [maybe] Reading absent property x
+test/10k/lines.html:206:38: [maybe] Reading absent property x of host object
 test/10k/lines.html:206:46: [maybe] Reading 'this' yields the global object
-test/10k/lines.html:206:46: [maybe] Reading absent property y
-test/10k/lines.html:208:43: [maybe] Reading absent property x
-test/10k/lines.html:208:51: [maybe] Reading absent property y
-test/10k/lines.html:211:28: [maybe] Reading absent property ctx
-test/10k/lines.html:211:41: [maybe] Reading absent property dirty
-test/10k/lines.html:215:28: [maybe] Reading absent property x
-test/10k/lines.html:215:34: [maybe] Reading absent property y
-test/10k/lines.html:216:21: [maybe] Reading absent property hide
-test/10k/lines.html:226:19: [maybe] Reading absent property ctx
-test/10k/lines.html:226:26: [maybe] Reading absent property dirty
-test/10k/lines.html:229:30: [maybe] Reading absent property move
-test/10k/lines.html:230:21: [maybe] Reading absent property style
-test/10k/lines.html:233:25: [maybe] Reading absent property move
-test/10k/lines.html:233:95: [maybe] Reading absent property x
-test/10k/lines.html:233:100: [maybe] Reading absent property y
-test/10k/lines.html:233:175: [maybe] Reading absent property x
-test/10k/lines.html:233:181: [maybe] Reading absent property y
-test/10k/lines.html:233:257: [maybe] Reading absent property x
-test/10k/lines.html:233:266: [maybe] Reading absent property y
-test/10k/lines.html:233:338: [maybe] Reading absent property x
-test/10k/lines.html:233:347: [maybe] Reading absent property y
-test/10k/lines.html:235:29: [maybe] Reading absent property path
-test/10k/lines.html:238:25: [maybe] Reading absent property removing
-test/10k/lines.html:238:55: [maybe] Reading absent property removing
-test/10k/lines.html:245:27: [maybe] Reading absent property ctx
-test/10k/lines.html:262:13: [maybe] Reading absent property style
-test/10k/lines.html:263:13: [maybe] Reading absent property style
-test/10k/lines.html:266:27: [maybe] Reading absent property dirty
-test/10k/lines.html:268:19: [maybe] Reading absent property ctx
-test/10k/lines.html:269:19: [maybe] Reading absent property ctx
-test/10k/lines.html:269:26: [maybe] Reading absent property dirty
-test/10k/lines.html:270:21: [maybe] Reading absent property path
-test/10k/lines.html:271:30: [maybe] Reading absent property path
-test/10k/lines.html:273:30: [maybe] Reading absent property path
-test/10k/lines.html:351:19: [maybe] Reading absent property ctx
-test/10k/lines.html:352:19: [maybe] Reading absent property ctx
-test/10k/lines.html:353:17: [maybe] Reading absent property ctx
-test/10k/lines.html:354:17: [maybe] Reading absent property ctx
-test/10k/lines.html:355:19: [maybe] Reading absent property ctx
-test/10k/lines.html:371:37: [maybe] Reading absent property num
-test/10k/lines.html:373:43: [maybe] Reading absent property num
-test/10k/lines.html:392:23: [maybe] Reading absent property ctx
+test/10k/lines.html:206:46: [maybe] Reading absent property y of host object
+test/10k/lines.html:208:43: [maybe] Reading absent property x of host object
+test/10k/lines.html:208:51: [maybe] Reading absent property y of host object
+test/10k/lines.html:211:28: [maybe] Reading absent property ctx of host object
+test/10k/lines.html:211:41: [maybe] Reading absent property dirty of host object
+test/10k/lines.html:215:28: [maybe] Reading absent property x of host object
+test/10k/lines.html:215:34: [maybe] Reading absent property y of host object
+test/10k/lines.html:216:21: [maybe] Reading absent property hide of host object
+test/10k/lines.html:225:36: [maybe] Reading absent property x
+test/10k/lines.html:225:43: [maybe] Reading absent property y
+test/10k/lines.html:226:19: [maybe] Reading absent property ctx of host object
+test/10k/lines.html:226:26: [maybe] Reading absent property dirty of host object
+test/10k/lines.html:229:30: [maybe] Reading absent property move of host object
+test/10k/lines.html:230:21: [maybe] Reading absent property style of host object
+test/10k/lines.html:233:25: [maybe] Reading absent property move of host object
+test/10k/lines.html:233:95: [maybe] Reading absent property x of host object
+test/10k/lines.html:233:100: [maybe] Reading absent property y of host object
+test/10k/lines.html:233:175: [maybe] Reading absent property x of host object
+test/10k/lines.html:233:181: [maybe] Reading absent property y of host object
+test/10k/lines.html:233:257: [maybe] Reading absent property x of host object
+test/10k/lines.html:233:266: [maybe] Reading absent property y of host object
+test/10k/lines.html:233:338: [maybe] Reading absent property x of host object
+test/10k/lines.html:233:347: [maybe] Reading absent property y of host object
+test/10k/lines.html:235:29: [maybe] Reading absent property path of host object
+test/10k/lines.html:238:25: [maybe] Reading absent property removing of host object
+test/10k/lines.html:238:55: [maybe] Reading absent property removing of host object
+test/10k/lines.html:245:27: [maybe] Reading absent property ctx of host object
+test/10k/lines.html:262:13: [maybe] Reading absent property style of host object
+test/10k/lines.html:263:13: [maybe] Reading absent property style of host object
+test/10k/lines.html:266:27: [maybe] Reading absent property dirty of host object
+test/10k/lines.html:268:19: [maybe] Reading absent property ctx of host object
+test/10k/lines.html:269:19: [maybe] Reading absent property ctx of host object
+test/10k/lines.html:269:26: [maybe] Reading absent property dirty of host object
+test/10k/lines.html:270:21: [maybe] Reading absent property path of host object
+test/10k/lines.html:271:30: [maybe] Reading absent property path of host object
+test/10k/lines.html:273:30: [maybe] Reading absent property path of host object
+test/10k/lines.html:351:19: [maybe] Reading absent property ctx of host object
+test/10k/lines.html:352:19: [maybe] Reading absent property ctx of host object
+test/10k/lines.html:353:17: [maybe] Reading absent property ctx of host object
+test/10k/lines.html:354:17: [maybe] Reading absent property ctx of host object
+test/10k/lines.html:355:19: [maybe] Reading absent property ctx of host object
+test/10k/lines.html:361:47: [maybe] Reading absent property x
+test/10k/lines.html:361:62: [maybe] Reading absent property y
+test/10k/lines.html:371:19: [maybe] Reading absent property x
+test/10k/lines.html:371:27: [maybe] Reading absent property y
+test/10k/lines.html:371:37: [maybe] Reading absent property num of host object
+test/10k/lines.html:373:19: [maybe] Reading absent property x
+test/10k/lines.html:373:27: [maybe] Reading absent property y
+test/10k/lines.html:373:43: [maybe] Reading absent property num of host object
+test/10k/lines.html:374:19: [maybe] Reading absent property x
+test/10k/lines.html:374:27: [maybe] Reading absent property y
+test/10k/lines.html:392:23: [maybe] Reading absent property ctx of host object
 test/10k/lines.html:419:56: [maybe] Reading absent property push
 test/10k/lines.html:420:56: [maybe] Reading absent property push
 test/10k/lines.html:421:56: [maybe] Reading absent property push
@@ -333,6 +345,7 @@ test/10k/lines.html:276:21: [maybe] The variable i has values with different typ
 test/10k/lines.html:276:30: [maybe] Converting primitive boolean to object
 test/10k/lines.html:276:30: [maybe] Converting primitive number to object
 test/10k/lines.html:276:30: [maybe] The variable i has values with different types
+test/10k/lines.html:279:21: [maybe] Conversion to number yields NaN
 test/10k/lines.html:279:21: [maybe] Reading absent property (computed name)
 test/10k/lines.html:279:31: [maybe] Reading absent property (computed name)
 test/10k/lines.html:280:21: [maybe] Reading absent property (computed name)

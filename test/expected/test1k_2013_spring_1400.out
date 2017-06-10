@@ -1,23 +1,43 @@
-test/1k2013spring/1400.js:148:7: [definite] Reading absent property which
 test/1k2013spring/1400.js:101:10: [definite] The variable c is never used
 test/1k2013spring/1400.js:114:10: [definite] The variable c is never used
 test/1k2013spring/1400.js:160:13: [definite] The variable c is never used
+test/1k2013spring/1400.js:14:9: [maybe] RangeError, assigning invalid value to array 'length' property
+test/1k2013spring/1400.js:14:9: [maybe] ReferenceError, reading absent variable I
+test/1k2013spring/1400.js:15:26: [maybe] ReferenceError, reading absent variable d
+test/1k2013spring/1400.js:23:11: [maybe] ReferenceError, reading absent variable w
+test/1k2013spring/1400.js:27:25: [maybe] ReferenceError, reading absent variable w
+test/1k2013spring/1400.js:28:21: [maybe] ReferenceError, reading absent variable b
 test/1k2013spring/1400.js:41:18: [maybe] TypeError, accessing property of null/undefined
 test/1k2013spring/1400.js:48:15: [maybe] RangeError, assigning invalid value to array 'length' property
 test/1k2013spring/1400.js:58:18: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1400.js:80:5: [maybe] RangeError, assigning invalid value to array 'length' property
+test/1k2013spring/1400.js:104:15: [maybe] RangeError, assigning invalid value to array 'length' property
+test/1k2013spring/1400.js:104:15: [maybe] ReferenceError, reading absent variable I
+test/1k2013spring/1400.js:104:38: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1400.js:104:142: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1400.js:116:11: [maybe] RangeError, assigning invalid value to array 'length' property
+test/1k2013spring/1400.js:116:11: [maybe] ReferenceError, reading absent variable I
+test/1k2013spring/1400.js:121:16: [maybe] ReferenceError, reading absent variable w
+test/1k2013spring/1400.js:121:23: [maybe] ReferenceError, reading absent variable b
+test/1k2013spring/1400.js:128:16: [maybe] ReferenceError, reading absent variable w
+test/1k2013spring/1400.js:128:23: [maybe] ReferenceError, reading absent variable b
+test/1k2013spring/1400.js:134:16: [maybe] ReferenceError, reading absent variable w
+test/1k2013spring/1400.js:134:23: [maybe] ReferenceError, reading absent variable b
+test/1k2013spring/1400.js:161:6: [maybe] ReferenceError, reading absent variable S
+test/1k2013spring/1400.js:163:20: [maybe] ReferenceError, reading absent variable e
 test/1k2013spring/1400.js:164:7: [maybe] TypeError, accessing property of null/undefined
 test/1k2013spring/1400.js:164:7: [maybe] TypeError, call to non-function
+test/1k2013spring/1400.js:165:7: [maybe] ReferenceError, reading absent variable I
+test/1k2013spring/1400.js:171:9: [maybe] ReferenceError, reading absent variable a
 test/1k2013spring/1400.js:171:23: [maybe] TypeError, accessing property of null/undefined
-test/1k2013spring/shim.js:8:9: [maybe] TypeError, accessing property of null/undefined
-test/1k2013spring/shim.js:8:9: [maybe] TypeError, call to non-function
-test/1k2013spring/shim.js:9:1: [maybe] TypeError, accessing property of null/undefined
-test/1k2013spring/1400.js:41:18: [maybe] Reading absent property d
+test/1k2013spring/1400.js:171:25: [maybe] ReferenceError, reading absent variable I
+test/1k2013spring/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1400.js:41:18: [maybe] Reading absent property d of host object
+test/1k2013spring/1400.js:148:7: [maybe] Reading absent property which of host object
 test/1k2013spring/1400.js:164:7: [maybe] Reading absent property m
 test/1k2013spring/1400.js:165:9: [maybe] Reading absent property p
-test/1k2013spring/1400.js:171:23: [maybe] Reading absent property c
-test/1k2013spring/shim.js:6:9: [maybe] Reading absent property body
-test/1k2013spring/shim.js:8:9: [maybe] Reading absent property getContext
-test/1k2013spring/shim.js:9:1: [maybe] Reading absent property body
+test/1k2013spring/1400.js:171:23: [maybe] Reading absent property c of host object
+test/1k2013spring/1400.js: [maybe] Uncaught exception, constructed at [test/1k2013spring/1400.js:14:9, test/1k2013spring/1400.js:15:26, test/1k2013spring/1400.js:23:11, test/1k2013spring/1400.js:27:25, test/1k2013spring/1400.js:28:21, test/1k2013spring/1400.js:41:18, test/1k2013spring/1400.js:48:15, test/1k2013spring/1400.js:52:24, test/1k2013spring/1400.js:58:18, test/1k2013spring/1400.js:80:5, test/1k2013spring/1400.js:104:15, test/1k2013spring/1400.js:104:38, test/1k2013spring/1400.js:104:142, test/1k2013spring/1400.js:116:11, test/1k2013spring/1400.js:121:16, test/1k2013spring/1400.js:121:23, test/1k2013spring/1400.js:128:16, test/1k2013spring/1400.js:128:23, test/1k2013spring/1400.js:134:16, test/1k2013spring/1400.js:134:23, test/1k2013spring/1400.js:161:6, test/1k2013spring/1400.js:163:20, test/1k2013spring/1400.js:164:7, test/1k2013spring/1400.js:165:7, test/1k2013spring/1400.js:171:9, test/1k2013spring/1400.js:171:23, test/1k2013spring/1400.js:171:25, test/1k2013spring/shim.js:9:5]
 test/1k2013spring/1400.js:14:9: [maybe] Converting object to string
 test/1k2013spring/1400.js:17:12: [maybe] Converting object to string
 test/1k2013spring/1400.js:17:12: [maybe] Reading absent property (computed name)
@@ -72,6 +92,8 @@ test/1k2013spring/1400.js:104:25: [maybe] Conversion to number yields NaN
 test/1k2013spring/1400.js:104:25: [maybe] Converting object to number
 test/1k2013spring/1400.js:104:25: [maybe] Converting object to string
 test/1k2013spring/1400.js:104:25: [maybe] Reading absent property (computed name)
+test/1k2013spring/1400.js:104:38: [maybe] Reading absent property (computed name)
+test/1k2013spring/1400.js:104:142: [maybe] Reading absent property (computed name)
 test/1k2013spring/1400.js:116:11: [maybe] Converting object to string
 test/1k2013spring/1400.js:118:14: [maybe] Converting object to string
 test/1k2013spring/1400.js:118:14: [maybe] Reading absent property (computed name)
@@ -99,8 +121,6 @@ test/1k2013spring/1400.js:171:23: [maybe] Converting primitive number to object
 test/1k2013spring/1400.js:171:23: [maybe] Reading absent property (computed name)
 test/1k2013spring/1400.js:171:25: [maybe] Converting object to string
 test/1k2013spring/1400.js:171:25: [maybe] Reading absent property (computed name)
-test/1k2013spring/shim.js:7:9: [maybe] Reading absent property (computed name)
-test/1k2013spring/shim.js,test/1k2013spring/1400.js: [maybe] Uncaught exception, constructed at [test/1k2013spring/1400.js:41:18, test/1k2013spring/1400.js:48:15, test/1k2013spring/1400.js:58:18, test/1k2013spring/1400.js:164:7, test/1k2013spring/1400.js:171:23, test/1k2013spring/shim.js:8:9, test/1k2013spring/shim.js:9:1]
 test/1k2013spring/1400.js:14:9: [info] Writing to unknown property that may cause loss of precision
 test/1k2013spring/1400.js:47:15: [info] Writing to unknown property that may cause loss of precision
 test/1k2013spring/1400.js:48:15: [info] Writing to unknown property that may cause loss of precision

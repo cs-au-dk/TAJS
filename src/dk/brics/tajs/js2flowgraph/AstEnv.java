@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,6 +20,7 @@ import com.google.javascript.jscomp.parsing.parser.trees.ParseTree;
 import dk.brics.tajs.flowgraph.AbstractNode;
 import dk.brics.tajs.flowgraph.BasicBlock;
 import dk.brics.tajs.flowgraph.Function;
+import dk.brics.tajs.flowgraph.jsnodes.IfNode;
 import dk.brics.tajs.util.AnalysisException;
 import dk.brics.tajs.util.Pair;
 
@@ -118,6 +119,11 @@ public class AstEnv {
      * The label-name of a labelled loop statement
      */
     private Pair<ParseTree /* loop-statement type */, String> loopLabelName;
+
+    /**
+     * Expressions that are used in as a condition value.
+     */
+    private Pair<ParseTree, IfNode> enclosingIfNode;
 
     /**
      * Constructs an enviromentment with a parent environment.
@@ -543,5 +549,22 @@ public class AstEnv {
             return parentEnv.getLoopLabelName(loopStatement);
         }
         throw new AnalysisException("No loop label name present (query with hasLoopLabel first)");
+    }
+
+    public AstEnv makeEnclosingIfNode(ParseTree condition, IfNode ifNode) {
+        assert (condition != null && ifNode != null);
+        AstEnv newEnv = new AstEnv(this);
+        newEnv.enclosingIfNode = Pair.make(condition, ifNode);
+        return newEnv;
+    }
+
+    public IfNode getEnclosingIfNode(ParseTree expressionTree) {
+        if (enclosingIfNode != null && enclosingIfNode.getFirst() == expressionTree) {
+            return enclosingIfNode.getSecond();
+        }
+        if (parentEnv != null) {
+            return parentEnv.getEnclosingIfNode(expressionTree);
+        }
+        return null;
     }
 }

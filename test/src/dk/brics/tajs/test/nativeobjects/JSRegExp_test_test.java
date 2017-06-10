@@ -85,7 +85,7 @@ public class JSRegExp_test_test {
         Misc.init();
         Misc.runSource("var r = /o/g; var v = r.test('foo');",
                 "TAJS_assert(v === true);",
-                "TAJS_assert(r.lastIndex, 'isMaybeNumUInt', true);"
+                "TAJS_assertEquals(2, r.lastIndex);"
         );
     }
 
@@ -94,7 +94,6 @@ public class JSRegExp_test_test {
         Misc.init();
         Misc.runSource("var v =/(o)(.)/.test('foxoy')",
                 "TAJS_assert(v === true);"
-
         );
     }
 

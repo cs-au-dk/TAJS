@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,22 +22,24 @@ import dk.brics.tajs.flowgraph.SourceLocation;
 import dk.brics.tajs.options.OptionValues;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.util.AnalysisException;
+import dk.brics.tajs.util.Canonicalizer;
+import dk.brics.tajs.util.DeepImmutable;
 
 /**
  * Label of abstract object.
  * Immutable.
  */
-public final class ObjectLabel implements Comparable<ObjectLabel> { // TODO: (#127) canonicalize?
+public final class ObjectLabel implements Comparable<ObjectLabel>, DeepImmutable {
 
     /**
      * Source location used for host functions.
      */
-    private static final SourceLocation initial_source = new SourceLocation(0, 0, "<initial state>", null);
+    private static final SourceLocation initial_source = new SourceLocation.SyntheticLocationMaker("<initial state>").makeUnspecifiedPosition();
 
     /**
      * Special object label for absent getter/setter.
      */
-    public static final ObjectLabel absent_accessor_function = new ObjectLabel(null, null, null, Kind.FUNCTION, null, false);
+    public static final ObjectLabel absent_accessor_function = make(null, null, null, Kind.FUNCTION, null, false);
 
     /**
      * Object kinds.
@@ -113,11 +115,14 @@ public final class ObjectLabel implements Comparable<ObjectLabel> { // TODO: (#1
                 this.kind.ordinal() * 117; // avoids using enum hashcodes
     }
 
+    public static ObjectLabel make(HostObject hostobject, AbstractNode node, Function function, Kind kind, HeapContext heapContext, boolean singleton){
+        return Canonicalizer.get().canonicalize(new ObjectLabel(hostobject, node, function, kind, heapContext, singleton));
+    }
     /**
      * Constructs a new object label for a user defined non-function object.
      */
-    public ObjectLabel(AbstractNode n, Kind kind) {
-        this(null, n, null, kind, null, true);
+    public static ObjectLabel make(AbstractNode n, Kind kind) {
+        return make(null, n, null, kind, null, true);
     }
 
     /**
@@ -126,15 +131,15 @@ public final class ObjectLabel implements Comparable<ObjectLabel> { // TODO: (#1
      * represents a single concrete object (otherwise, it may represent any
      * number of concrete objects).
      */
-    public ObjectLabel(AbstractNode n, Kind kind, HeapContext heapContext) {
-        this(null, n, null, kind, heapContext, true);
+    public static ObjectLabel make(AbstractNode n, Kind kind, HeapContext heapContext) {
+        return make(null, n, null, kind, heapContext, true);
     }
 
     /**
      * Constructs a new object label for a user defined function object.
      */
-    public ObjectLabel(Function f) {
-        this(null, null, f, Kind.FUNCTION, null, true);
+    public static ObjectLabel make(Function f) {
+        return make(null, null, f, Kind.FUNCTION, null, true);
     }
 
     /**
@@ -143,8 +148,8 @@ public final class ObjectLabel implements Comparable<ObjectLabel> { // TODO: (#1
      * represents a single concrete object (otherwise, it may represent any
      * number of concrete objects).
      */
-    public ObjectLabel(Function f, HeapContext heapContext) {
-        this(null, null, f, Kind.FUNCTION, heapContext, true);
+    public static ObjectLabel make(Function f, HeapContext heapContext) {
+        return make(null, null, f, Kind.FUNCTION, heapContext, true);
     }
 
     /**
@@ -153,8 +158,8 @@ public final class ObjectLabel implements Comparable<ObjectLabel> { // TODO: (#1
      * represents a single concrete object (otherwise, it may represent any
      * number of concrete objects).
      */
-    public ObjectLabel(HostObject hostobject, Kind kind) {
-        this(hostobject, null, null, kind, null, true);
+    public static ObjectLabel make(HostObject hostobject, Kind kind) {
+        return make(hostobject, null, null, kind, null, true);
     }
 
     /**
@@ -229,7 +234,7 @@ public final class ObjectLabel implements Comparable<ObjectLabel> { // TODO: (#1
     public ObjectLabel makeSummary() {
         if (!singleton && !Options.get().isRecencyDisabled())
             throw new AnalysisException("Attempt to obtain summary of non-singleton");
-        return new ObjectLabel(hostobject, node, function, kind, heapContext, false);
+        return make(hostobject, node, function, kind, heapContext, false);
     }
 
     /**
@@ -238,7 +243,7 @@ public final class ObjectLabel implements Comparable<ObjectLabel> { // TODO: (#1
     public ObjectLabel makeSingleton() {
         if (singleton)
             return this;
-        return new ObjectLabel(hostobject, node, function, kind, heapContext, true);
+        return make(hostobject, node, function, kind, heapContext, true);
     }
 
     /**

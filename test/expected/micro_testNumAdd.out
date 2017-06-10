@@ -1,3 +1,4 @@
+test/micro/testNumAdd.js: [definite] Exceptional program exit is unreachable
 test/micro/testNumAdd.js:11:1: [info] Abstract value: Num
 test/micro/testNumAdd.js:12:1: [info] Abstract value: 1.0
 test/micro/testNumAdd.js:13:1: [info] Abstract value: Num

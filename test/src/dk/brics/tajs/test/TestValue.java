@@ -22,12 +22,15 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import static junit.framework.TestCase.assertTrue;
+import static org.junit.Assert.assertEquals;
+
 @SuppressWarnings("static-method")
 public class TestValue {
 
-    private static Logger log = Logger.getLogger(TestValue.class);
+	private static Logger log = Logger.getLogger(TestValue.class);
 
-    public static void main(String[] args) {
+	public static void main(String[] args) {
 		org.junit.runner.JUnitCore.main("dk.brics.tajs.test.TestValue");
 	}
 
@@ -111,7 +114,8 @@ public class TestValue {
 		Misc.init();
 		Misc.captureSystemOutput();
 
-		SourceLocation loc = new SourceLocation(117, -1, "foo.js", null);
+		SourceLocation.SyntheticLocationMaker sourceLocationMaker = new SourceLocation.SyntheticLocationMaker("synthetic");
+		SourceLocation loc = sourceLocationMaker.make(117, -1, 117, -1);
 		List<String> args = Collections.emptyList();
 		Function f = new Function("foo", args, null, loc);
 		FlowGraph fg = new FlowGraph(f);
@@ -143,8 +147,8 @@ public class TestValue {
 		Value vAnyStr = Value.makeAnyStr();
 		Value vEmptyStr = Value.makeStr("");
 		Value vSomeStr = Value.makeStr("bar");
-		Value vObject1 = Value.makeObject(new ObjectLabel(n, Kind.OBJECT));
-		Value vObject2 = Value.makeObject(new ObjectLabel(n, Kind.BOOLEAN));
+		Value vObject1 = Value.makeObject(ObjectLabel.make(n, Kind.OBJECT));
+		Value vObject2 = Value.makeObject(ObjectLabel.make(n, Kind.BOOLEAN));
 
 		log.info(vBottom);
 		log.info(vAbsent);
@@ -288,7 +292,7 @@ public class TestValue {
 		printInfo(Value.makeAnyBool().join(vSomeStr).restrictToStrBoolNum());
 
 		Set<ObjectLabel> objs = new HashSet<>();
-		objs.add(new ObjectLabel(ECMAScriptObjects.ARRAY_SORT, Kind.FUNCTION));
+		objs.add(ObjectLabel.make(ECMAScriptObjects.ARRAY_SORT, Kind.FUNCTION));
 		Value v7 = Value.makeObject(objs);
 		printInfo(v7);
 		v7 = v7.joinAnyStr();
@@ -359,5 +363,57 @@ public class TestValue {
 		Misc.checkSystemOutput();
 
 		// TODO: obtain full coverage of the Value class
+	}
+
+	@Test
+	public void joinPrefix() {
+		Value string = Value.makeStr("A");
+		Value prefix = Value.makeNone().joinPrefix("A");
+		Value other = Value.makeStr("B");
+		Value number = Value.makeAnyNumUInt();
+		Value any = Value.makeAnyStr();
+
+		Value string_prefix = string.join(prefix);
+		assertEquals(prefix, string_prefix);
+
+		Value prefix_string = prefix.join(string);
+		assertEquals(prefix, prefix_string);
+
+		Value other_prefix = other.join(prefix);
+		assertEquals(any, other_prefix);
+
+		Value prefix_other = prefix.join(other);
+		assertEquals(any, prefix_other);
+
+		Value prefix_other__number = prefix_other.join(number);
+		assertEquals(any.joinAnyNumUInt(), prefix_other__number);
+
+		Value number__prefix_other = number.join(prefix_other);
+		assertEquals(any.joinAnyNumUInt(), number__prefix_other);
+
+		Value number_prefix = number.join(prefix);
+		assertEquals(Value.makeAnyNumUInt().joinPrefix("A"), number_prefix);
+
+		Value prefix_number = prefix.join(number);
+		assertEquals(Value.makeAnyNumUInt().joinPrefix("A"), prefix_number);
+
+		Value number_prefix__other = number_prefix.join(other);
+		assertEquals(any.joinAnyNumUInt(), number_prefix__other);
+
+		Value other__number_prefix = other.join(number_prefix);
+		assertEquals(any.joinAnyNumUInt(), other__number_prefix);
+
+		assertEquals(any, Value.makeNone().joinPrefix("#").joinStr(""));
+	}
+
+
+	@Test
+	public void restrictToNotPrefix() {
+		Value prefixA = Value.makeStr("Axxx").joinStr("Ayyy");
+		Value notPrefix = prefixA.restrictToNotStrPrefix();
+
+		assertTrue(prefixA.isMaybeStrPrefix());
+		assertEquals("A", prefixA.getPrefix());
+		assertTrue(notPrefix.isNone());
 	}
 }

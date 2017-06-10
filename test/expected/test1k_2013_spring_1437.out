@@ -1,4 +1,6 @@
-test/1k2013spring/1437.js:5:1: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1437.js:7:3: [maybe] ReferenceError, reading absent variable a
+test/1k2013spring/1437.js:8:5: [maybe] ReferenceError, reading absent variable b
+test/1k2013spring/1437.js:9:3: [maybe] ReferenceError, reading absent variable c
 test/1k2013spring/1437.js:34:11: [maybe] RangeError, invalid value of array length
 test/1k2013spring/1437.js:41:28: [maybe] TypeError, accessing property of null/undefined
 test/1k2013spring/1437.js:41:50: [maybe] TypeError, accessing property of null/undefined
@@ -13,12 +15,8 @@ test/1k2013spring/1437.js:74:12: [maybe] TypeError, accessing property of null/u
 test/1k2013spring/1437.js:74:20: [maybe] TypeError, accessing property of null/undefined
 test/1k2013spring/1437.js:76:14: [maybe] TypeError, accessing property of null/undefined
 test/1k2013spring/1437.js:76:22: [maybe] TypeError, accessing property of null/undefined
-test/1k2013spring/shim.js:8:9: [maybe] TypeError, accessing property of null/undefined
-test/1k2013spring/shim.js:8:9: [maybe] TypeError, call to non-function
-test/1k2013spring/shim.js:9:1: [maybe] TypeError, accessing property of null/undefined
-test/1k2013spring/shim.js:6:9: [maybe] Reading absent property body
-test/1k2013spring/shim.js:8:9: [maybe] Reading absent property getContext
-test/1k2013spring/shim.js:9:1: [maybe] Reading absent property body
+test/1k2013spring/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1437.js: [maybe] Uncaught exception, constructed at [test/1k2013spring/1437.js:7:3, test/1k2013spring/1437.js:8:5, test/1k2013spring/1437.js:9:3, test/1k2013spring/1437.js:34:11, test/1k2013spring/1437.js:41:28, test/1k2013spring/1437.js:41:50, test/1k2013spring/1437.js:42:28, test/1k2013spring/1437.js:42:50, test/1k2013spring/1437.js:43:10, test/1k2013spring/1437.js:45:10, test/1k2013spring/1437.js:54:12, test/1k2013spring/1437.js:61:9, test/1k2013spring/1437.js:62:9, test/1k2013spring/1437.js:65:22, test/1k2013spring/1437.js:66:22, test/1k2013spring/1437.js:74:12, test/1k2013spring/1437.js:74:20, test/1k2013spring/1437.js:76:14, test/1k2013spring/1437.js:76:22, test/1k2013spring/shim.js:9:5]
 test/1k2013spring/1437.js:39:10: [maybe] Reading absent property (computed name)
 test/1k2013spring/1437.js:40:10: [maybe] Reading absent property (computed name)
 test/1k2013spring/1437.js:41:18: [maybe] Conversion to number yields NaN
@@ -47,5 +45,3 @@ test/1k2013spring/1437.js:74:20: [maybe] Reading absent property (computed name)
 test/1k2013spring/1437.js:76:14: [maybe] Reading absent property (computed name)
 test/1k2013spring/1437.js:76:22: [maybe] Reading absent property (computed name)
 test/1k2013spring/1437.js:80:21: [maybe] Converting primitive number to object
-test/1k2013spring/shim.js:7:9: [maybe] Reading absent property (computed name)
-test/1k2013spring/shim.js,test/1k2013spring/1437.js: [maybe] Uncaught exception, constructed at [test/1k2013spring/1437.js:5:1, test/1k2013spring/1437.js:34:11, test/1k2013spring/1437.js:41:28, test/1k2013spring/1437.js:41:50, test/1k2013spring/1437.js:42:28, test/1k2013spring/1437.js:42:50, test/1k2013spring/1437.js:43:10, test/1k2013spring/1437.js:45:10, test/1k2013spring/1437.js:54:12, test/1k2013spring/1437.js:65:22, test/1k2013spring/1437.js:66:22, test/1k2013spring/1437.js:74:12, test/1k2013spring/1437.js:74:20, test/1k2013spring/1437.js:76:14, test/1k2013spring/1437.js:76:22, test/1k2013spring/shim.js:8:9, test/1k2013spring/shim.js:9:1]

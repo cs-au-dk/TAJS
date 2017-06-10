@@ -12,4 +12,4 @@ TAJS_assert(gaz === 123);
 foo.value('bar', 456);
 var gaz = foo.value('bar');
 gaz.KILL_UNDEFINED;
-TAJS_assert(gaz, 'isMaybeNumUInt');
+TAJS_assert(gaz, 'isMaybeNumUIntPos');

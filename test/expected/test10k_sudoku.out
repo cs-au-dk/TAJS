@@ -1,15 +1,15 @@
 test/10k/sudoku.html:89:9: [maybe] RangeError, assigning invalid value to array 'length' property
+test/10k/sudoku.html:94:9: [maybe] RangeError, assigning invalid value to array 'length' property
+test/10k/sudoku.html:95:9: [maybe] RangeError, assigning invalid value to array 'length' property
+test/10k/sudoku.html:96:9: [maybe] RangeError, assigning invalid value to array 'length' property
 test/10k/sudoku.html:102:9: [maybe] RangeError, assigning invalid value to array 'length' property
 test/10k/sudoku.html:103:21: [maybe] RangeError, assigning invalid value to array 'length' property
 test/10k/sudoku.html:124:5: [maybe] TypeError, accessing property of null/undefined
 test/10k/sudoku.html:124:23: [maybe] RangeError, invalid value of array length
 test/10k/sudoku.html:125:5: [maybe] TypeError, accessing property of null/undefined
 test/10k/sudoku.html:125:24: [maybe] RangeError, invalid value of array length
-test/10k/sudoku.html:129:5: [maybe] TypeError, accessing property of null/undefined
-test/10k/sudoku.html:130:5: [maybe] TypeError, accessing property of null/undefined
 test/10k/sudoku.html:132:5: [maybe] TypeError, accessing property of null/undefined
 test/10k/sudoku.html:133:5: [maybe] TypeError, accessing property of null/undefined
-test/10k/sudoku.html:133:5: [maybe] TypeError, non-function event handler
 test/10k/sudoku.html:134:5: [maybe] TypeError, accessing property of null/undefined
 test/10k/sudoku.html:135:5: [maybe] TypeError, accessing property of null/undefined
 test/10k/sudoku.html:136:5: [maybe] TypeError, accessing property of null/undefined
@@ -18,51 +18,57 @@ test/10k/sudoku.html:141:14: [maybe] TypeError, call to non-function
 test/10k/sudoku.html:146:9: [maybe] TypeError, accessing property of null/undefined
 test/10k/sudoku.html:147:9: [maybe] TypeError, accessing property of null/undefined
 test/10k/sudoku.html:148:9: [maybe] TypeError, accessing property of null/undefined
+test/10k/sudoku.html:154:21: [maybe] TypeError, accessing property of null/undefined
+test/10k/sudoku.html:155:21: [maybe] TypeError, accessing property of null/undefined
 test/10k/sudoku.html:156:21: [maybe] TypeError, accessing property of null/undefined
 test/10k/sudoku.html:157:21: [maybe] TypeError, accessing property of null/undefined
 test/10k/sudoku.html:158:41: [maybe] ReferenceError, reading absent variable buttons
 test/10k/sudoku.html:159:25: [maybe] TypeError, accessing property of null/undefined
 test/10k/sudoku.html:159:50: [maybe] TypeError, accessing property of null/undefined
+test/10k/sudoku.html:159:74: [maybe] TypeError, accessing property of null/undefined
 test/10k/sudoku.html:166:9: [maybe] TypeError, accessing property of null/undefined
 test/10k/sudoku.html:167:9: [maybe] TypeError, accessing property of null/undefined
 test/10k/sudoku.html:168:9: [maybe] TypeError, accessing property of null/undefined
+test/10k/sudoku.html:170:21: [maybe] TypeError, accessing property of null/undefined
 test/10k/sudoku.html:173:21: [maybe] TypeError, accessing property of null/undefined
+test/10k/sudoku.html:181:9: [maybe] TypeError, accessing property of null/undefined
 test/10k/sudoku.html:182:9: [maybe] TypeError, accessing property of null/undefined
 test/10k/sudoku.html:185:13: [maybe] ReferenceError, reading absent variable grids
 test/10k/sudoku.html:185:13: [maybe] TypeError, accessing property of null/undefined
 test/10k/sudoku.html:186:13: [maybe] TypeError, accessing property of null/undefined
+test/10k/sudoku.html:187:39: [maybe] TypeError, accessing property of null/undefined
 test/10k/sudoku.html:239:24: [maybe] TypeError, call to non-function
 test/10k/sudoku.html:242:25: [maybe] TypeError, call to non-function
 test/10k/sudoku.html:254:9: [maybe] TypeError, accessing property of null/undefined
 test/10k/sudoku.html:255:9: [maybe] TypeError, accessing property of null/undefined
 test/10k/sudoku.html:260:9: [maybe] TypeError, accessing property of null/undefined
 test/10k/sudoku.html:261:9: [maybe] TypeError, accessing property of null/undefined
-test/10k/sudoku.html:129:5: [maybe] Reading absent property style
-test/10k/sudoku.html:130:5: [maybe] Reading absent property style
+test/10k/sudoku.html:268:17: [maybe] TypeError, accessing property of null/undefined
+test/10k/sudoku.html:141:14: [maybe] Reading absent property slice
 test/10k/sudoku.html:149:32: [maybe] Reading 'this' yields the global object
-test/10k/sudoku.html:149:32: [maybe] Reading absent property num
+test/10k/sudoku.html:149:32: [maybe] Reading absent property num of host object
 test/10k/sudoku.html:150:24: [maybe] Reading 'this' yields the global object
-test/10k/sudoku.html:150:24: [maybe] Reading absent property num
+test/10k/sudoku.html:150:24: [maybe] Reading absent property num of host object
 test/10k/sudoku.html:151:27: [maybe] Reading 'this' yields the global object
-test/10k/sudoku.html:151:27: [maybe] Reading absent property num
+test/10k/sudoku.html:151:27: [maybe] Reading absent property num of host object
 test/10k/sudoku.html:155:33: [maybe] Reading 'this' yields the global object
-test/10k/sudoku.html:155:33: [maybe] Reading absent property num
-test/10k/sudoku.html:156:21: [maybe] Reading absent property style
+test/10k/sudoku.html:155:33: [maybe] Reading absent property num of host object
 test/10k/sudoku.html:156:43: [maybe] Reading 'this' yields the global object
-test/10k/sudoku.html:156:43: [maybe] Reading absent property num
-test/10k/sudoku.html:157:21: [maybe] Reading absent property style
+test/10k/sudoku.html:156:43: [maybe] Reading absent property num of host object
 test/10k/sudoku.html:157:42: [maybe] Reading 'this' yields the global object
-test/10k/sudoku.html:157:42: [maybe] Reading absent property num
-test/10k/sudoku.html:159:50: [maybe] Reading absent property checked
-test/10k/sudoku.html:159:74: [maybe] Reading absent property num
+test/10k/sudoku.html:157:42: [maybe] Reading absent property num of host object
+test/10k/sudoku.html:159:50: [maybe] Reading absent property checked of host object
+test/10k/sudoku.html:159:74: [maybe] Reading absent property num of host object
 test/10k/sudoku.html:169:17: [maybe] Reading 'this' yields the global object
-test/10k/sudoku.html:169:17: [maybe] Reading absent property innerHTML
-test/10k/sudoku.html:170:21: [maybe] Reading absent property num
+test/10k/sudoku.html:169:17: [maybe] Reading absent property innerHTML of host object
+test/10k/sudoku.html:170:21: [maybe] Reading absent property num of host object
 test/10k/sudoku.html:170:32: [maybe] Reading 'this' yields the global object
-test/10k/sudoku.html:170:32: [maybe] Reading absent property n
-test/10k/sudoku.html:187:39: [maybe] Reading absent property checked
-test/10k/sudoku.html:268:17: [maybe] Reading absent property value
-test/10k/sudoku.html: [maybe] Uncaught exception, constructed at [test/10k/sudoku.html:89:9, test/10k/sudoku.html:102:9, test/10k/sudoku.html:103:21, test/10k/sudoku.html:124:5, test/10k/sudoku.html:124:23, test/10k/sudoku.html:125:5, test/10k/sudoku.html:125:24, test/10k/sudoku.html:129:5, test/10k/sudoku.html:130:5, test/10k/sudoku.html:132:5, test/10k/sudoku.html:133:5, test/10k/sudoku.html:134:5, test/10k/sudoku.html:135:5, test/10k/sudoku.html:136:5, test/10k/sudoku.html:140:5, test/10k/sudoku.html:141:14, test/10k/sudoku.html:146:9, test/10k/sudoku.html:147:9, test/10k/sudoku.html:148:9, test/10k/sudoku.html:156:21, test/10k/sudoku.html:157:21, test/10k/sudoku.html:158:41, test/10k/sudoku.html:159:25, test/10k/sudoku.html:159:50, test/10k/sudoku.html:166:9, test/10k/sudoku.html:167:9, test/10k/sudoku.html:168:9, test/10k/sudoku.html:173:21, test/10k/sudoku.html:182:9, test/10k/sudoku.html:185:13, test/10k/sudoku.html:186:13, test/10k/sudoku.html:239:24, test/10k/sudoku.html:242:25, test/10k/sudoku.html:254:9, test/10k/sudoku.html:255:9, test/10k/sudoku.html:260:9, test/10k/sudoku.html:261:9]
+test/10k/sudoku.html:170:32: [maybe] Reading absent property n of host object
+test/10k/sudoku.html:187:39: [maybe] Reading absent property checked of host object
+test/10k/sudoku.html:239:24: [maybe] Reading absent property slice
+test/10k/sudoku.html:242:25: [maybe] Reading absent property slice
+test/10k/sudoku.html:268:17: [maybe] Reading absent property value of host object
+test/10k/sudoku.html: [maybe] Uncaught exception, constructed at [test/10k/sudoku.html:89:9, test/10k/sudoku.html:94:9, test/10k/sudoku.html:95:9, test/10k/sudoku.html:96:9, test/10k/sudoku.html:102:9, test/10k/sudoku.html:103:21, test/10k/sudoku.html:124:5, test/10k/sudoku.html:124:23, test/10k/sudoku.html:125:5, test/10k/sudoku.html:125:24, test/10k/sudoku.html:132:5, test/10k/sudoku.html:133:5, test/10k/sudoku.html:134:5, test/10k/sudoku.html:135:5, test/10k/sudoku.html:136:5, test/10k/sudoku.html:140:5, test/10k/sudoku.html:141:14, test/10k/sudoku.html:146:9, test/10k/sudoku.html:147:9, test/10k/sudoku.html:148:9, test/10k/sudoku.html:154:21, test/10k/sudoku.html:155:21, test/10k/sudoku.html:156:21, test/10k/sudoku.html:157:21, test/10k/sudoku.html:158:41, test/10k/sudoku.html:159:25, test/10k/sudoku.html:159:50, test/10k/sudoku.html:159:74, test/10k/sudoku.html:166:9, test/10k/sudoku.html:167:9, test/10k/sudoku.html:168:9, test/10k/sudoku.html:170:21, test/10k/sudoku.html:173:21, test/10k/sudoku.html:181:9, test/10k/sudoku.html:182:9, test/10k/sudoku.html:185:13, test/10k/sudoku.html:186:13, test/10k/sudoku.html:187:39, test/10k/sudoku.html:239:24, test/10k/sudoku.html:242:25, test/10k/sudoku.html:254:9, test/10k/sudoku.html:255:9, test/10k/sudoku.html:260:9, test/10k/sudoku.html:261:9, test/10k/sudoku.html:268:17]
 test/10k/sudoku.html:12:29: [maybe] Converting object to string
 test/10k/sudoku.html:12:29: [maybe] Converting primitive string to object
 test/10k/sudoku.html:35:16: [maybe] Reading absent property (computed name)
@@ -109,6 +115,7 @@ test/10k/sudoku.html:168:9: [maybe] Reading absent property (computed name)
 test/10k/sudoku.html:169:17: [maybe] Conversion from string to number yields NaN
 test/10k/sudoku.html:185:13: [maybe] Reading absent property (computed name)
 test/10k/sudoku.html:185:78: [maybe] Reading absent property (computed name)
+test/10k/sudoku.html:186:13: [maybe] Converting undefined to string
 test/10k/sudoku.html:186:13: [maybe] Reading absent property (computed name)
 test/10k/sudoku.html:187:21: [maybe] Reading absent property (computed name)
 test/10k/sudoku.html:187:29: [maybe] Reading absent property (computed name)

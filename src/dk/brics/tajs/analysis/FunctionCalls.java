@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -34,7 +34,6 @@ import java.util.List;
 import java.util.Set;
 
 import static dk.brics.tajs.util.Collections.newSet;
-import static dk.brics.tajs.util.Collections.singleton;
 
 /**
  * Models function calls.
@@ -72,15 +71,14 @@ public class FunctionCalls {
         Value getFunctionValue();
 
         /**
-         * Creates the object value of 'this'.
-         * Note that this may have side-effects on the callee_state.
+         * Returns the value of 'this'.
          */
-        Set<ObjectLabel> prepareThis(State caller_state, State callee_state);
+        Value getThis();
 
         /**
          * Returns the value of the i'th argument.
          * The first argument is number 0.
-         * Returns Undef if the argument is not provided.
+         * Returns 'absent' if the argument is not provided.
          * Can be used even if the number of arguments is unknown.
          *
          * @see #getUnknownArg()
@@ -97,6 +95,7 @@ public class FunctionCalls {
         /**
          * Returns the value of an unknown argument.
          * Only to be called if the number of arguments is unknown.
+         * Always includes 'undefined' (not 'absent').
          */
         Value getUnknownArg(); // TODO: would simplify things if this could also be used with fixed number of args
 
@@ -151,7 +150,7 @@ public class FunctionCalls {
         }
 
         @Override
-        public Set<ObjectLabel> prepareThis(State caller_state, State callee_state) {
+        public Value getThis() {
             throw new AnalysisException();
         }
 
@@ -164,7 +163,7 @@ public class FunctionCalls {
                 }
                 return state.readRegister(argRegister);
             } else
-                return Value.makeUndef();
+                return Value.makeAbsent();
         }
 
         @Override
@@ -239,8 +238,8 @@ public class FunctionCalls {
         }
 
         @Override
-        public Set<ObjectLabel> prepareThis(State caller_state, State callee_state) {
-            return thisTargets;
+        public Value getThis() {
+            return Value.makeObject(thisTargets);
         }
 
         @Override
@@ -248,7 +247,7 @@ public class FunctionCalls {
             if (args.size() > i) {
                 return args.get(i);
             }
-            return Value.makeUndef();
+            return Value.makeAbsent();
         }
 
         @Override
@@ -310,8 +309,8 @@ public class FunctionCalls {
         }
 
         @Override
-        public Set<ObjectLabel> prepareThis(State caller_state, State callee_state) {
-            return singleton(InitialStateBuilder.GLOBAL);
+        public Value getThis() {
+            return Value.makeObject(InitialStateBuilder.GLOBAL);
         }
 
         @Override
@@ -345,7 +344,7 @@ public class FunctionCalls {
                                         !objlabel.getHostObject().equals(DOMObjects.WINDOW_SET_INTERVAL) &&
                                         !objlabel.getHostObject().equals(DOMObjects.WINDOW_SET_TIMEOUT)) {
                                     ExecutionContext old_ec = c.getState().getExecutionContext();
-                                    c.getState().setExecutionContext(new ExecutionContext(old_ec.getScopeChain(), newSet(old_ec.getVariableObject()), newSet(call.prepareThis(caller_state, c.getState()))));
+                                    c.getState().setExecutionContext(new ExecutionContext(old_ec.getScopeChain(), newSet(old_ec.getVariableObject()), call.getThis()));
                                 }
                                 Value res = HostAPIs.evaluate(objlabel.getHostObject(), call, c);
                                 if (res == null) {
@@ -377,5 +376,27 @@ public class FunctionCalls {
         c.getMonitoring().visitCall(c.getNode(), maybe_non_function, maybe_function);
         if (maybe_non_function)
             Exceptions.throwTypeError(c);
+    }
+
+    /**
+     * Reads the value of a call parameter. Returns 'undefined' if too few parameters. The first parameter has number 0.
+     */
+    public static Value readParameter(CallInfo call, State state, int param) {
+        boolean num_actuals_unknown = call.isUnknownNumberOfArgs();
+        if (num_actuals_unknown || param < call.getNumberOfArgs()) {
+            Value v = UnknownValueResolver.getRealValue(call.getArg(param), state);
+            if (v.isMaybeAbsent()) { // convert absent to undefined
+                v = v.restrictToNotAbsent().joinUndef();
+            }
+            return v;
+        } else
+            return Value.makeUndef();
+    }
+
+    /**
+     * Reads the value of a call parameter. Only to be called if the number of arguments is unknown.
+     */
+    public static Value readUnknownParameter(CallInfo call) {
+        return call.getUnknownArg();
     }
 }

@@ -1,1 +1,2 @@
+test/sourcelocations/javascript.js: [definite] Exceptional program exit is unreachable
 test/sourcelocations/javascript.js:1:5: [definite] The variable jsVar is never used

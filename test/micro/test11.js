@@ -18,7 +18,7 @@ TAJS_assert(qqq1 == 306);
 
 var qqq2 = foo("x101", "x102", "x103");
 TAJS_dumpValue(qqq2);
-TAJS_assert(qqq2, 'isMaybeSingleNum||isMaybeStrIdentifierParts');
+TAJS_assert(qqq2, 'isMaybeSingleNum||isMaybeStrOtherIdentifierParts');
 
 var qqq22 = foo2("x101", "x102", "x103");
 TAJS_dumpValue(qqq22);

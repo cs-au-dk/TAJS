@@ -18,13 +18,14 @@ test/1k2012love/1245.js:43:100: [definite] The variable a4s is never used
 test/1k2012love/1245.js:43:111: [definite] The variable b4 is never used
 test/1k2012love/1245.js:45:5: [definite] The variable mod_1990_melody is never used
 test/1k2012love/1245.js:48:5: [definite] The variable mod_1990_bassLine is never used
-test/1k2012love/shim.js:6:5: [definite] The variable b is never used
-test/1k2012love/shim.js:8:9: [maybe] TypeError, accessing property of null/undefined
-test/1k2012love/shim.js:8:9: [maybe] TypeError, call to non-function
-test/1k2012love/shim.js:9:1: [maybe] TypeError, accessing property of null/undefined
-test/1k2012love/shim.js:6:9: [maybe] Reading absent property body
-test/1k2012love/shim.js:8:9: [maybe] Reading absent property getContext
-test/1k2012love/shim.js:9:1: [maybe] Reading absent property body
+test/1k2012love/1245.js:101:1: [maybe] ReferenceError, reading absent variable a
+test/1k2012love/1245.js:110:13: [maybe] TypeError, call to non-function
+test/1k2012love/1245.js:110:23: [maybe] TypeError, call to non-function
+test/1k2012love/1245.js:110:33: [maybe] TypeError, call to non-function
+test/1k2012love/1245.js:110:50: [maybe] TypeError, call to non-function
+test/1k2012love/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
+TAJS-dynamic-code(test/1k2012love/1245.js:116:1):1:1: [maybe] ReferenceError, reading absent variable heart
+test/1k2012love/1245.js: [maybe] Uncaught exception, constructed at [test/1k2012love/1245.js:101:1, test/1k2012love/1245.js:110:13, test/1k2012love/1245.js:110:23, test/1k2012love/1245.js:110:33, test/1k2012love/1245.js:110:50, test/1k2012love/shim.js:9:5, TAJS-dynamic-code(test/1k2012love/1245.js:116:1):1:1]
 test/1k2012love/1245.js:6:14: [maybe] Conversion to number yields NaN
 test/1k2012love/1245.js:7:29: [maybe] Conversion to number yields NaN
 test/1k2012love/1245.js:85:30: [maybe] Reading absent property (computed name)
@@ -32,5 +33,20 @@ test/1k2012love/1245.js:85:43: [maybe] Reading absent property (computed name)
 test/1k2012love/1245.js:92:28: [maybe] Conversion to number yields NaN
 test/1k2012love/1245.js:92:28: [maybe] Reading absent property (computed name)
 test/1k2012love/1245.js:92:46: [maybe] Reading absent property (computed name)
-test/1k2012love/shim.js:7:9: [maybe] Reading absent property (computed name)
-test/1k2012love/shim.js,test/1k2012love/1245.js: [maybe] Uncaught exception, constructed at [test/1k2012love/shim.js:8:9, test/1k2012love/shim.js:9:1]
+test/1k2012love/1245.js:101:1: [maybe] Conversion to number yields NaN
+test/1k2012love/1245.js:103:18: [maybe] Conversion to number yields NaN
+test/1k2012love/1245.js:103:32: [maybe] Conversion to number yields NaN
+test/1k2012love/1245.js:106:8: [maybe] Conversion to number yields NaN
+test/1k2012love/1245.js:110:8: [maybe] Conversion to number yields NaN
+test/1k2012love/1245.js:110:15: [maybe] Conversion to number yields NaN
+test/1k2012love/1245.js:110:35: [maybe] Conversion to number yields NaN
+test/1k2012love/1245.js:110:52: [maybe] Conversion to number yields NaN
+test/1k2012love/1245.js:111:13: [maybe] Conversion to number yields NaN
+test/1k2012love/1245.js:111:19: [maybe] Conversion to number yields NaN
+test/1k2012love/1245.js:111:35: [maybe] Conversion to number yields NaN
+test/1k2012love/1245.js:111:41: [maybe] Conversion to number yields NaN
+test/1k2012love/1245.js:112:13: [maybe] Conversion to number yields NaN
+test/1k2012love/1245.js:112:19: [maybe] Conversion to number yields NaN
+test/1k2012love/1245.js:112:35: [maybe] Conversion to number yields NaN
+test/1k2012love/1245.js:112:41: [maybe] Conversion to number yields NaN
+TAJS-dynamic-code(test/1k2012love/1245.js:116:1):1:9: [maybe] Conversion to number yields NaN

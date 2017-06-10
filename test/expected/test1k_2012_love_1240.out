@@ -1,0 +1,17 @@
+test/1k2012love/1240.js:61:2: [definite] Dead assignment, property i is never read
+test/1k2012love/1240.js:78:2: [definite] Dead assignment, property u is never read
+test/1k2012love/1240.js:101:2: [definite] Dead assignment, property j is never read
+test/1k2012love/1240.js:26:1: [definite] Unreachable function A
+test/1k2012love/1240.js:27:5: [definite] Unreachable function A
+test/1k2012love/1240.js:32:1: [definite] Unreachable function B
+test/1k2012love/1240.js:38:1: [definite] Unreachable function C
+test/1k2012love/1240.js:44:1: [definite] Unreachable function D
+test/1k2012love/1240.js:49:1: [definite] Unreachable function E
+test/1k2012love/1240.js:54:1: [definite] Unreachable function F
+test/1k2012love/1240.js:61:5: [definite] Unreachable function
+test/1k2012love/1240.js:78:5: [definite] Unreachable function
+test/1k2012love/1240.js:101:5: [definite] Unreachable function
+test/1k2012love/1240.js:110:1: [definite] Unreachable function f
+test/1k2012love/1240.js:127:11: [maybe] ReferenceError, reading absent variable t
+test/1k2012love/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1240.js: [maybe] Uncaught exception, constructed at [test/1k2012love/1240.js:127:11, test/1k2012love/shim.js:9:5]

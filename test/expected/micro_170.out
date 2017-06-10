@@ -1,1 +1,2 @@
+test/micro/test170.js: [definite] Exceptional program exit is unreachable
 test/micro/test170.js:3:7: [maybe] Reading absent property (computed name)

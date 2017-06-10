@@ -1,1 +1,2 @@
 test/micro/test133.js:5:21: [definite] Dead assignment, property a is never read
+test/micro/test133.js: [definite] Exceptional program exit is unreachable

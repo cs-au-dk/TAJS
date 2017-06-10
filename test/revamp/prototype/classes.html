@@ -1,0 +1,81 @@
+<html>
+<!-- from http://www.prototypejs.org/learn/class-inheritance -->
+<title>Defining classes and inheritance</title>
+<script type="text/javascript" src="prototype.js"></script>
+<script type="text/javascript">
+	//properties are directly passed to `create` method
+	var Person = Class.create({
+		initialize : function(name) {
+			this.name = name;
+		},
+		say : function(message) {
+			return this.name + ': ' + message;
+		}
+	});
+
+	// when subclassing, specify the class you want to inherit from
+	var Pirate = Class.create(Person, {
+		// redefine the speak method
+		say : function($super, message) {
+			return $super(message) + ', yarr!';
+		}
+	});
+
+	var john = new Pirate('Long John');
+	john.say('ahoy matey');
+	// -> "Long John: ahoy matey, yarr!"
+
+	// define a module
+	var Vulnerable = {
+		wound : function(hp) {
+			this.health -= hp;
+			if (this.health < 0)
+				this.kill();
+		},
+		kill : function() {
+			this.dead = true;
+		}
+	};
+
+	// the first argument isn't a class object, so there is no inheritance ...
+	// simply mix in all the arguments as methods:
+	var Person = Class.create(Vulnerable, {
+		initialize : function() {
+			this.health = 100;
+			this.dead = false;
+		}
+	});
+
+	var bruce = new Person;
+	bruce.wound(55);
+	bruce.health; //-> 45
+
+	Pirate.allHandsOnDeck = function(n) {
+		var voices = [];
+		n.times(function(i) {
+			voices.push(new Pirate('Sea dog').say(i + 1));
+		});
+		return voices;
+	}
+
+	Pirate.allHandsOnDeck(3);
+	// -> ["Sea dog: 1, yarr!", "Sea dog: 2, yarr!", "Sea dog: 3, yarr!"]
+
+	var Captain = Class.create(Pirate, {});
+	var john = new Pirate('Long John');
+	john.sleep();
+	// -> ERROR: sleep is not a method
+
+	// every person should be able to sleep, not just pirates!
+	Person.addMethods({
+		sleep : function() {
+			return this.say('ZzZ');
+		}
+	});
+
+	john.sleep();
+	// -> "Long John: ZzZ, yarr!"
+</script>
+<body>
+</body>
+</html>

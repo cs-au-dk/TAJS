@@ -231,9 +231,6 @@ test/10k/3d_maker.html:344:23: [maybe] Reading absent property (computed name)
 test/10k/3d_maker.html:344:41: [maybe] Reading absent property (computed name)
 test/10k/3d_maker.html:350:23: [maybe] Reading absent property (computed name)
 test/10k/3d_maker.html:350:37: [maybe] Reading absent property (computed name)
-test/10k/3d_maker.html:363:23: [maybe] Conversion to number yields NaN
-test/10k/3d_maker.html:368:12: [maybe] Conversion to number yields NaN
-test/10k/3d_maker.html:368:28: [maybe] Conversion to number yields NaN
 test/10k/3d_maker.html:378:15: [maybe] Conversion to number yields NaN
 test/10k/3d_maker.html:378:68: [maybe] Reading absent property (computed name)
 test/10k/3d_maker.html:27:26: [info] 'this' refers to a summary abstract object, which may cause loss of precision

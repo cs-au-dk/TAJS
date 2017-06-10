@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,6 +19,7 @@ package dk.brics.tajs.analysis.nativeobjects.concrete;
 import dk.brics.tajs.analysis.PropVarOperations;
 import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.analysis.nativeobjects.JSArray;
+import dk.brics.tajs.analysis.nativeobjects.JSRegExp;
 import dk.brics.tajs.flowgraph.AbstractNode;
 import dk.brics.tajs.lattice.HeapContext;
 import dk.brics.tajs.lattice.ObjectLabel;
@@ -35,27 +36,37 @@ import static dk.brics.tajs.util.Collections.singleton;
  */
 public class Alpha {
 
-    public static Value createNewArrayValue(ConcreteArray array, AbstractNode sourceNode, Solver.SolverInterface c) {
+    private static Value createNewArrayValue(ConcreteArray array, AbstractNode sourceNode, Solver.SolverInterface c) {
         PropVarOperations pv = c.getAnalysis().getPropVarOperations();
         final Map<String, Value> map = newMap();
         map.put("<CONCRETE>", Value.makeStr(array.toSourceCode()));
         ObjectLabel label = JSArray.makeArray(sourceNode, Value.makeNum(array.getLength()), HeapContext.make(null, map), c);
         Set<ObjectLabel> labels = singleton(label);
-        array.getExtraProperties().forEach((String k, ConcreteValue v) -> pv.writeProperty(labels, Value.makeTemporaryStr(k), toValue(v), false, true));
+        array.getExtraProperties().forEach((String k, ConcreteValue v) -> pv.writeProperty(labels, Value.makeTemporaryStr(k), toValue(v, c), false, true));
         for (int i = 0; i < array.getLength(); i++) {
             final Value index = Value.makeStr(String.valueOf(i));
             ConcreteValue concreteValue = array.get(i);
-            final Value value = toValue(concreteValue);
+            final Value value = toValue(concreteValue, c);
             pv.writeProperty(labels, index, value, false, true);
         }
         return Value.makeObject(label);
     }
 
-    public static Value toValue(PrimitiveConcreteValue concreteValue) {
-        return toValue((ConcreteValue) concreteValue);
+    private static Value createNewRegExpValue(ConcreteRegularExpression regExp, AbstractNode sourceNode, Solver.SolverInterface c) {
+        PropVarOperations pv = c.getAnalysis().getPropVarOperations();
+        final Map<String, Value> map = newMap();
+        map.put("<CONCRETE>", Value.makeStr(regExp.toSourceCode()));
+        ObjectLabel label = JSRegExp.makeRegExp(sourceNode, regExp.getSource().getString(), regExp.getGlobal().getBooleanValue(), regExp.getIgnoreCase().getBooleanValue(), regExp.getMultiline().getBooleanValue(), regExp.getLastIndex().getNumber(), HeapContext.make(null, map), c);
+        return Value.makeObject(label);
     }
 
-    private static Value toValue(ConcreteValue concreteValue) { // convenience signature to be used internally
+    /**
+     * Converts a concrete value to an abstract value.
+     *
+     * @param concreteValue value to abstract
+     * @param c             used for allocating new objects
+     */
+    public static Value toValue(ConcreteValue concreteValue, Solver.SolverInterface c) {
         return concreteValue.accept(new ConcreteValueVisitor<Value>() {
             @Override
             public Value visit(ConcreteNumber v) {
@@ -76,7 +87,7 @@ public class Alpha {
 
             @Override
             public Value visit(ConcreteArray v) {
-                throw new IllegalArgumentException("Can only create arrays explicitly: use createNewArrayValue instead!");
+                return createNewArrayValue(v, c.getNode(), c);
             }
 
             @Override
@@ -86,12 +97,17 @@ public class Alpha {
 
             @Override
             public Value visit(ConcreteRegularExpression v) {
-                throw new IllegalArgumentException("Can not create new regular expressions");
+                return createNewRegExpValue(v, c.getNode(), c);
             }
 
             @Override
             public Value visit(ConcreteNull v) {
                 return Value.makeNull();
+            }
+
+            @Override
+            public Value visit(ConcreteNullOrUndefined v) {
+                return Value.makeNull().join(Value.makeUndef());
             }
 
             @Override

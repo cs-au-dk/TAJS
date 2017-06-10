@@ -1,2 +1,3 @@
+test/resig/ejohn74.js: [definite] Exceptional program exit is unreachable
 test/resig/ejohn74.js:10:1: [info] Abstract value: [@Ninja#fun2]
 test/resig/ejohn74.js:11:1: [info] Abstract value: [@Ninja#fun2]

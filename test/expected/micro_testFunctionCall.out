@@ -1,16 +1,9 @@
-test/micro/testFunctionCall.js:24:10: [maybe] Converting object to string
+test/micro/testFunctionCall.js: [definite] Exceptional program exit is unreachable
 test/micro/testFunctionCall.js:24:10: [maybe] Converting primitive string to object
-test/micro/testFunctionCall.js:28:10: [maybe] Converting object to string
 test/micro/testFunctionCall.js:28:10: [maybe] Converting primitive string to object
 test/micro/testFunctionCall.js:28:36: [maybe] Converting primitive string to object
-test/micro/testFunctionCall.js:31:10: [maybe] Converting object to string
-test/micro/testFunctionCall.js:31:10: [maybe] Converting primitive string to object
 test/micro/testFunctionCall.js:31:29: [maybe] Converting primitive string to object
-test/micro/testFunctionCall.js:34:10: [maybe] Converting object to string
-test/micro/testFunctionCall.js:34:10: [maybe] Converting primitive string to object
 test/micro/testFunctionCall.js:34:22: [maybe] Converting primitive string to object
-test/micro/testFunctionCall.js:37:10: [maybe] Converting object to string
-test/micro/testFunctionCall.js:37:10: [maybe] Converting primitive string to object
 test/micro/testFunctionCall.js:37:27: [maybe] Converting primitive string to object
 test/micro/testFunctionCall.js:6:1: [info] Abstract value: 21.0
 test/micro/testFunctionCall.js:13:1: [info] Abstract value: 100.0

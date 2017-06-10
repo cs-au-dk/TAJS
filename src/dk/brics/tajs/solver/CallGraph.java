@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -112,19 +112,17 @@ public class CallGraph<StateType extends IState<StateType, ContextType, CallEdge
      * @return true if the call edge changed as result of this operation
      */
     public boolean addTarget(AbstractNode caller, ContextType caller_context, BasicBlock callee, ContextType edge_context,
-                             StateType edge_state, SolverSynchronizer sync, IAnalysis<StateType, ContextType, CallEdgeType, ?, ?> analysis) {
+                             StateType edge_state, SolverSynchronizer sync, IAnalysis<StateType, ContextType, CallEdgeType, ?, ?> analysis, ISolverMonitoring<StateType, ContextType> monitoring) {
         boolean changed;
         NodeAndContext<ContextType> nc = new NodeAndContext<>(caller, caller_context);
-        Map<BlockAndContext<ContextType>, CallEdgeType> mb = call_edge_info.get(nc);
-        if (mb == null) {
-            mb = newMap();
-            call_edge_info.put(nc, mb);
-        }
-        BlockAndContext<ContextType> fc = new BlockAndContext<>(callee, edge_context);
-        CallEdgeType call_edge = mb.get(fc); // old call edge state must be subsumed by the new edge state *modulo recovery operations*
+        Map<BlockAndContext<ContextType>, CallEdgeType> mb = call_edge_info.computeIfAbsent(nc, k -> newMap());
+        BlockAndContext<ContextType> to = new BlockAndContext<>(callee, edge_context);
+        CallEdgeType call_edge = mb.get(to); // old call edge state must be subsumed by the new edge state *modulo recovery operations*
+        BlockAndContext<ContextType> from = new BlockAndContext<>(edge_state.getBasicBlock(), edge_state.getContext());
+        monitoring.visitPropagationPre(from, to);
         if (call_edge == null) {
             // new edge
-            mb.put(fc, analysis.makeCallEdge(edge_state.clone()));
+            mb.put(to, analysis.makeCallEdge(edge_state.clone()));
             if (sync != null && isOrdinaryCallEdge(callee))
                 sync.callEdgeAdded(caller.getBlock().getFunction(), callee.getFunction());
             changed = true;
@@ -132,6 +130,7 @@ public class CallGraph<StateType extends IState<StateType, ContextType, CallEdge
             // propagate into existing edge
             changed = call_edge.getState().propagate(edge_state, true);
         }
+        monitoring.visitPropagationPost(from, to, changed);
         if (log.isDebugEnabled())
             log.debug((call_edge == null ? "adding" : "updating") + " call edge from node " + caller.getIndex() + " to " +
                     (isOrdinaryCallEdge(callee) ? "function " : "for-in body ") + callee.getIndex() + " context " + edge_context);
@@ -156,10 +155,9 @@ public class CallGraph<StateType extends IState<StateType, ContextType, CallEdge
     /**
      * Assigns an order to the given (basic block,context).
      */
-    public void registerBlockContext(BasicBlock b, ContextType context) {
-        BlockAndContext<ContextType> fc = new BlockAndContext<>(b, context);
-        if (!block_context_order.containsKey(fc))
-            block_context_order.put(fc, next_block_context_order++);
+    public void registerBlockContext(BlockAndContext<ContextType> bc) {
+        if (!block_context_order.containsKey(bc))
+            block_context_order.put(bc, next_block_context_order++);
     }
 
     /**
@@ -333,9 +331,9 @@ public class CallGraph<StateType extends IState<StateType, ContextType, CallEdge
         StringBuilder sb = new StringBuilder();
         int total = getNumberOfInvocationsInDifferentContexts(0);
         int single = getNumberOfInvocationsInDifferentContexts(1);
-        sb.append("Total invocations: ").append(total).append("\n");
-        sb.append("Total invocations with single target: ").append(single).append("\n");
-        sb.append("==> % single target invocations: ").append((100 * ((float) single) / total)).append("%\n");
+        sb.append("Total invocations:                                                            ").append(total).append("\n");
+        sb.append("Total invocations with single target:                                         ").append(single).append("\n");
+        sb.append("Single target invocations:                                                    ").append(total > 0 ? (100 * ((float) single) / total) + "%" : "-").append("\n");
         return sb.toString();
     }
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,9 +18,9 @@ package dk.brics.tajs.analysis.dom.html;
 
 import dk.brics.tajs.analysis.FunctionCalls;
 import dk.brics.tajs.analysis.InitialStateBuilder;
-import dk.brics.tajs.analysis.NativeFunctions;
 import dk.brics.tajs.analysis.PropVarOperations;
 import dk.brics.tajs.analysis.Solver;
+import dk.brics.tajs.analysis.dom.DOMFunctions;
 import dk.brics.tajs.analysis.dom.DOMObjects;
 import dk.brics.tajs.analysis.dom.DOMWindow;
 import dk.brics.tajs.lattice.ObjectLabel;
@@ -42,9 +42,9 @@ public class HTMLFormElement {
     public static void build(Solver.SolverInterface c) {
         State s = c.getState();
         PropVarOperations pv = c.getAnalysis().getPropVarOperations();
-        CONSTRUCTOR = new ObjectLabel(DOMObjects.HTMLFORMELEMENT_CONSTRUCTOR, ObjectLabel.Kind.FUNCTION);
-        PROTOTYPE = new ObjectLabel(DOMObjects.HTMLFORMELEMENT_PROTOTYPE, ObjectLabel.Kind.OBJECT);
-        INSTANCES = new ObjectLabel(DOMObjects.HTMLFORMELEMENT_INSTANCES, ObjectLabel.Kind.OBJECT);
+        CONSTRUCTOR = ObjectLabel.make(DOMObjects.HTMLFORMELEMENT_CONSTRUCTOR, ObjectLabel.Kind.FUNCTION);
+        PROTOTYPE = ObjectLabel.make(DOMObjects.HTMLFORMELEMENT_PROTOTYPE, ObjectLabel.Kind.OBJECT);
+        INSTANCES = ObjectLabel.make(DOMObjects.HTMLFORMELEMENT_INSTANCES, ObjectLabel.Kind.OBJECT);
 
         // Constructor Object
         s.newObject(CONSTRUCTOR);
@@ -67,7 +67,6 @@ public class HTMLFormElement {
         // DOM Level 1
         createDOMProperty(INSTANCES, "elements", Value.makeObject(HTMLCollection.INSTANCES).setReadOnly(), c);
         createDOMProperty(INSTANCES, "length", Value.makeNum(0).setReadOnly(), c);
-        createDOMProperty(INSTANCES, "name", Value.makeAnyStr(), c);
         createDOMProperty(INSTANCES, "acceptCharset", Value.makeAnyStr(), c);
         createDOMProperty(INSTANCES, "action", Value.makeAnyStr(), c);
         createDOMProperty(INSTANCES, "enctype", Value.makeAnyStr(), c);
@@ -88,10 +87,10 @@ public class HTMLFormElement {
     public static Value evaluate(DOMObjects nativeObject, FunctionCalls.CallInfo call, Solver.SolverInterface c) {
         switch (nativeObject) {
             case HTMLFORMELEMENT_SUBMIT:
-                NativeFunctions.expectParameters(nativeObject, call, c, 0, 0);
+                DOMFunctions.expectParameters(nativeObject, call, c, 0, 0);
                 return Value.makeUndef();
             case HTMLFORMELEMENT_RESET:
-                NativeFunctions.expectParameters(nativeObject, call, c, 0, 0);
+                DOMFunctions.expectParameters(nativeObject, call, c, 0, 0);
                 return Value.makeUndef();
             default:
                 throw new AnalysisException("Unsupported Native Object: " + nativeObject);

@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,5 +31,5 @@ public interface IInitialStateBuilder<StateType extends IState<StateType, Contex
     /**
      * Builds the initial state.
      */
-    void addInitialState(BasicBlock global_entry_block, GenericSolver<StateType, ContextType, CallEdgeType, MonitoringType, AnalysisType>.SolverInterface c, Source document);
+    StateType build(BasicBlock global_entry_block, GenericSolver<StateType, ContextType, CallEdgeType, MonitoringType, AnalysisType>.SolverInterface c, Source document);
 }

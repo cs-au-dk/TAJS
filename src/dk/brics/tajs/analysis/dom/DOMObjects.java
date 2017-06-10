@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,15 +16,26 @@
 
 package dk.brics.tajs.analysis.dom;
 
+import dk.brics.tajs.analysis.Conversion;
 import dk.brics.tajs.analysis.HostAPIs;
 import dk.brics.tajs.analysis.ParallelTransfer;
 import dk.brics.tajs.analysis.Solver;
+import dk.brics.tajs.analysis.js.UserFunctionCalls;
 import dk.brics.tajs.flowgraph.EventType;
+import dk.brics.tajs.flowgraph.Function;
+import dk.brics.tajs.flowgraph.JavaScriptSource.Kind;
+import dk.brics.tajs.flowgraph.SourceLocation;
+import dk.brics.tajs.flowgraph.SourceLocation.DynamicLocationMaker;
+import dk.brics.tajs.htmlparser.HTMLParser;
+import dk.brics.tajs.js2flowgraph.FlowGraphMutator;
 import dk.brics.tajs.lattice.HostObject;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.Str;
 import dk.brics.tajs.lattice.Value;
+import dk.brics.tajs.util.AnalysisLimitationException.AnalysisPrecisionLimitationException;
 import org.apache.log4j.Logger;
+
+import static dk.brics.tajs.util.Collections.newList;
 
 /**
  * Native DOM objects.
@@ -39,6 +50,7 @@ public enum DOMObjects implements HostObject {
     WINDOW_HISTORY_BACK("Window.history.back"),
     WINDOW_HISTORY_FORWARD("Window.history.forward"),
     WINDOW_HISTORY_GO("Window.history.go"),
+    WINDOW_HISTORY_PUSH_STATE("Window.history.pushState"),
 
     // DOM LEVEL 0: WINDOW LOCATION
     WINDOW_LOCATION("Window.location"),
@@ -49,6 +61,10 @@ public enum DOMObjects implements HostObject {
 
     // DOM LEVEL 0: WINDOW NAVIGATOR
     WINDOW_NAVIGATOR("Navigator"),
+
+    // DOM LEVEL 0: WINDOW PERFORMANCE
+    WINDOW_PERFORMANCE("Window.performance"),
+    WINDOW_PERFORMANCE_NOW("Window.performance.now"),
 
     // DOM LEVEL 0: WINDOW SCREEN
     WINDOW_SCREEN("Window.screen"),
@@ -93,6 +109,11 @@ public enum DOMObjects implements HostObject {
     WINDOW_ADD_EVENT_LISTENER("Window.addEventListener"),
     WINDOW_REMOVE_EVENT_LISTENER("Window.removeEventListener"),
 
+    WINDOW_CANCEL_ANIMATION_FRAME("Window.cancelAnimationFrame"),
+    WINDOW_CANCEL_ANIM_FRAME("Window.cancelAnimFrame"),
+    WINDOW_MATCH_MEDIA("Window.matchMedia"),
+
+
 
     // /////////////////////////////////////////////////////////////////////////
     // / DOCUMENT ///
@@ -125,7 +146,9 @@ public enum DOMObjects implements HostObject {
     DOCUMENT_ADOPT_NODE("Document.adoptNode"),
 
     // semistandard
+    DOCUMENT_EVALUATE("Document.evaluate"),
     DOCUMENT_QUERY_SELECTOR_ALL("Document.querySelectorAll"),
+    DOCUMENT_QUERY_SELECTOR("Document.querySelector"),
 
     // /////////////////////////////////////////////////////////////////////////
     // / EVENT ///
@@ -171,6 +194,9 @@ public enum DOMObjects implements HostObject {
     WHEEL_EVENT_PROTOTYPE("WheelEvent.prototype"),
     TOUCH_EVENT_INSTANCES("TouchEvent"),
     TOUCH_EVENT_PROTOTYPE("TouchEvent.prototype"),
+
+    HASH_CHANGE_EVENT_PROTOTYPE("HashChangeEvent.prototype"),
+    HASH_CHANGE_EVENT_INSTANCES("HashChangeEvent instances"),
 
     LOAD_EVENT_PROTOTYPE("LoadEvent.prototype"),
     LOAD_EVENT_INSTANCES("LoadEvent instances"),
@@ -274,6 +300,7 @@ public enum DOMObjects implements HostObject {
     DOMIMPLEMENTATION_HASFEATURE("hasFeature"),
     DOMIMPLEMENTATION_CREATEDOCUMENTTYPE("createDocumentType"),
     DOMIMPLEMENTATION_CREATEDOCUMENT("createDocument"),
+    DOMIMPLEMENTATION_CREATEHTMLDOCUMENT("createHTMLDocument"),
     NAMEDNODEMAP_CONSTRUCTOR("NamedNodeMap constructor"),
     NAMEDNODEMAP_PROTOTYPE("NamedNodeMap.prototype"),
     NAMEDNODEMAP_INSTANCES("NamedNodeMap instances"),
@@ -366,6 +393,7 @@ public enum DOMObjects implements HostObject {
     HTMLELEMENT_FOCUS("HTMLElement.prototype.focus"),
     HTMLELEMENT_BLUR("HTMLElement.prototype.blur"),
     HTMLELEMENT_MATCHES_SELECTOR("HTMLElement.prototype.(*)MatchesSelector"),
+    HTMLELEMENT_MATCHES("HTMLElement.prototype.matches"),
     HTMLFIELDSETELEMENT_CONSTRUCTOR("HTMLFieldsetElement constructor"),
     HTMLFIELDSETELEMENT_PROTOTYPE("HTMLFieldsetElement.prototype"),
     HTMLFIELDSETELEMENT_INSTANCES("HTMLFieldsetElement instances"),
@@ -518,20 +546,27 @@ public enum DOMObjects implements HostObject {
     HTMLULISTELEMENT_CONSTRUCTOR("HTMLUListElement constructor"),
     HTMLULISTELEMENT_PROTOTYPE("HTMLUListElement.prototype"),
     HTMLULISTELEMENT_INSTANCES("HTMLUListElement instances"),
+    HTMLUNKNOWNELEMENT_CONSTRUCTOR("HTMLUnkownElement constructor"),
+    HTMLUNKNOWNELEMENT_PROTOTYPE("HTMLUnkownElement.prototype"),
+    HTMLUNKNOWNELEMENT_INSTANCES("HTMLUnkownElement instances"),
 
     // /////////////////////////////////////////////////////////////////////////
     // / NON-STANDARD HTML OBJECTS ///
     // /////////////////////////////////////////////////////////////////////////
-    HTMLELEMENT_ATTRIBUTES("HTMLElement.attributes"), // DOM LEVEL 0
     HTMLIMAGEELEMENT_CONSTRUCTOR("HTMLImageElement constructor"), // DOM LEVEL 0
 
     // /////////////////////////////////////////////////////////////////////////
     // / CSS ///
     // /////////////////////////////////////////////////////////////////////////
-    CSSSTYLEDECLARATION("CSSStyleDeclaration"),
+
+    CSSSTYLEDECLARATION_CONSTRUCTOR("CSSStyleDeclaration constructor"),
+    CSSSTYLEDECLARATION_PROTOTYPE("CSSStyleDeclaration.prototype"),
+    CSSSTYLEDECLARATION_INSTANCES("CSSStyleDeclaration instances"),
+    CSSSTYLEDECLARATION_GETPROPERTYVALUE("CSSStyleDeclaration.prototype.getPropertyValue"),
+
     CLIENTBOUNDINGRECT_CONSTRUCTOR("ClientBoundingRect constructor"),
     CLIENTBOUNDINGRECT_PROTOTYPE("ClientBoundingRect.prototype"),
-    CLIENTBOUNDINGRECT_INSTANCES("ClientBoundingRect.instances"),
+    CLIENTBOUNDINGRECT_INSTANCES("ClientBoundingRect instances"),
 
     // /////////////////////////////////////////////////////////////////////////
     // / HTML5 CANVAS (WHATWG) ///
@@ -607,7 +642,7 @@ public enum DOMObjects implements HostObject {
     // /////////////////////////////////////////////////////////////////////////
     WEBGLRENDERINGCONTEXT_CONSTRCUTOR("WebGLRenderingContext constructor"),
     WEBGLRENDERINGCONTEXT_PROTOTYPE("WebGLRenderingContext.prototype"),
-    WEBGLRENDERINGCONTEXT_INSTANCES("WebGLRenderingContext.instances"),
+    WEBGLRENDERINGCONTEXT_INSTANCES("WebGLRenderingContext instances"),
     WEBGLRENDERINGCONTEXT_TAJS_UNSUPPORTED_FUNCTION("WebGLRenderingContext.prototype.TAJS_UNSUPPORTED_FUNCTION"),
 
     // /////////////////////////////////////////////////////////////////////////
@@ -627,7 +662,7 @@ public enum DOMObjects implements HostObject {
     // /////////////////////////////////////////////////////////////////////////
     HTMLAUDIOELEMENT_CONSTRUCTOR("HTMLAudioElement constructor"),
     HTMLAUDIOELEMENT_PROTOTYPE("HTMLAudioElement.prototype"),
-    HTMLAUDIOELEMENT_INSTANCES("HTMLAudioElement.instances"),
+    HTMLAUDIOELEMENT_INSTANCES("HTMLAudioElement instances"),
 
     // /////////////////////////////////////////////////////////////////////////
     // / HTML5 AudioContext ///
@@ -645,7 +680,7 @@ public enum DOMObjects implements HostObject {
     // /////////////////////////////////////////////////////////////////////////
     AUDIONODE_CONSTRUCTOR("AudioNode constructor"),
     AUDIONODE_PROTOTYPE("AudioNode.prototype"),
-    AUDIONODE_INSTANCES("AudioNode.instances"),
+    AUDIONODE_INSTANCES("AudioNode instances"),
     AUDIONODE_CONNECT("AudioNode.prototype.connect"),
     AUDIONODE_DISCONNECT("AudioNode.prototype.disconnect"),
 
@@ -664,7 +699,7 @@ public enum DOMObjects implements HostObject {
     // /////////////////////////////////////////////////////////////////////////
     AUDIOPARAM_CONSTRUCTOR("AudioParam constructor"),
     AUDIOPARAM_PROTOTYPE("AudioParam.prototype"),
-    AUDIOPARAM_INSTANCES("AudioParam.instances"),
+    AUDIOPARAM_INSTANCES("AudioParam instances"),
     AUDIOPARAM_TAJS_UNSUPPORTED_FUNCTION("AudioParam.prototype.TAJS_UNSUPPORTED_FUNCTION"),
 
     // /////////////////////////////////////////////////////////////////////////
@@ -672,14 +707,14 @@ public enum DOMObjects implements HostObject {
     // /////////////////////////////////////////////////////////////////////////
     SCRIPTPROCESSORNODE_CONSTRUCTOR("ScriptProcessorNode constructor"),
     SCRIPTPROCESSORNODE_PROTOTYPE("ScriptProcessorNode.prototype"),
-    SCRIPTPROCESSORNODE_INSTANCES("ScriptProcessorNode.instances"),
+    SCRIPTPROCESSORNODE_INSTANCES("ScriptProcessorNode instances"),
 
     // /////////////////////////////////////////////////////////////////////////
     // / HTML5 AudioDestinationNdoe ///
     // /////////////////////////////////////////////////////////////////////////
     AUDIODESTINATIONNODE_CONSTRUCTOR("AudioDestinationNode constructor"),
     AUDIODESTINATIONNODE_PROTOTYPE("AudioDestinationNode.prototype"),
-    AUDIODESTINATIONNODE_INSTANCES("AudioDestinationNode.instances"),
+    AUDIODESTINATIONNODE_INSTANCES("AudioDestinationNode instances"),
 
     // /////////////////////////////////////////////////////////////////////////
     // / HTML5 TimeRanges (used in Media) ///
@@ -723,7 +758,29 @@ public enum DOMObjects implements HostObject {
     ACTIVE_X_OBJECT_SET_REQUEST_HEADER("ActiveXObject.setRequestHeader"),
     ACTIVE_X_OBJECT_ABORT("ActiveXObject.abort"),
     ACTIVE_X_OBJECT_GET_RESPONSE_HEADER("ActiveXObject.getResponseHeader"),
-    ACTIVE_X_OBJECT_GET_ALL_RESPONSE_HEADERS("ActiveXObject.getAllResponseHeaders");
+    ACTIVE_X_OBJECT_GET_ALL_RESPONSE_HEADERS("ActiveXObject.getAllResponseHeaders"),
+
+
+    // /////////////////////////////////////////////////////////////////////////
+    // / OTHERS ///
+    // /////////////////////////////////////////////////////////////////////////
+    DOMSTRINGMAP_CONSTRUCTOR("DOMStringMap.constructor"),
+    DOMSTRINGMAP_PROTOTYPE("DOMStringMap.prototype"),
+    DOMSTRINGMAP_INSTANCES("DOMStringMap instances"),
+
+    MEDIAQUERYLIST_CONSTRUCTOR("MediaQueryList.constructor"),
+    MEDIAQUERYLIST_PROTOTYPE("MediaQueryList.prototype"),
+    MEDIAQUERYLIST_INSTANCES("MediaQueryList instances"),
+
+    OFFLINERESOURCELIST_CONSTRUCTOR("OfflineResourceList.constructor"),
+    OFFLINERESOURCELIST_PROTOTYPE("OfflineResourceList.prototype"),
+    OFFLINERESOURCELIST_INSTANCES("OfflineResourceList instances"),
+
+    MUTATIONOBSERVER("MutationObserver"),
+    MUTATIONOBSERVER_CONSTRUCTOR("MutationObserver.constructor"),
+    MUTATIONOBSERVER_INSTANCES("MutationObserver instances"),
+    MUTATIONOBSERVER_PROTOTYPE("MutationObserver.prototype"),
+    MUTATIONOBSERVER_OBSERVE("MutationObserver.observe");
 
     private static final Logger log = Logger.getLogger(DOMObjects.class);
 
@@ -746,11 +803,15 @@ public enum DOMObjects implements HostObject {
         return api;
     }
 
-    public static void evaluateDOMSetter(ObjectLabel objlabel, Str prop, Value value, Solver.SolverInterface c) {
+    public static void evaluateDOMSetter(ObjectLabel objlabel, Str prop, Value rhsValue, Solver.SolverInterface c) {
         ParallelTransfer pt = new ParallelTransfer(c);
+
+        // element ids
         if (DOMFunctions.canRegisterElementIdentifiersForSetter(prop)) {
-            pt.add(() -> DOMFunctions.registerElementIdentifiersForSetter(objlabel, prop.getStr(), value, c.getState()));
+            pt.add(() -> DOMFunctions.registerElementIdentifiersForSetter(objlabel, prop.getStr(), rhsValue, c.getState()));
         }
+
+        // element event handlers
         EventType eventHandlerKind;
         if (prop.isMaybeSingleStr()) {
             eventHandlerKind = EventType.getEventHandlerTypeFromAttributeName(prop.getStr());
@@ -767,8 +828,36 @@ public enum DOMObjects implements HostObject {
                 log.debug("Ignoring event handler registration through setter for event type: " + prop);
             }
         } else {
-            pt.add(() -> DOMEvents.addEventHandler(value, eventHandlerKind, c));
+            pt.add(() -> DOMEvents.addEventHandler(rhsValue, eventHandlerKind, c));
         }
+
+        // element innerHTML
+        if (prop.isMaybeSingleStr() && (prop.getStr().equals("innerHTML") || prop.getStr().equals("outerHTML"))) { // FIXME: what about fuzzy property names for innerHTML/outerHTML? emit unsoundness warning?
+            pt.add(() -> {
+                SourceLocation loaderLocation = c.getNode().getSourceLocation();
+                Value innerHTMLText = Conversion.toString(rhsValue, c);
+                if (innerHTMLText.isMaybeFuzzyStr()) { // TODO: some fuzzy strings can safely be ignored (e.g. isMaybeStrUInt)
+                    if (!c.getAnalysis().getUnsoundness().mayIgnoreImpreciseInnerOuterHTML(c.getNode(), prop.getStr(), innerHTMLText)) {
+                        throw new AnalysisPrecisionLimitationException(loaderLocation + ": write to .innerHTML with fuzzy string (" + prop + ")");
+                    } else {
+                        innerHTMLText = Value.makeStr(""); // unsound assumption, treat fuzzy HTML string as ""
+                    }
+                }
+                // extract event handlers from the new HTML code
+                HTMLParser parser = new HTMLParser(innerHTMLText.getStr(), loaderLocation.getLocation(), new DynamicLocationMaker(loaderLocation));
+                DOMBuilder.registerHTML(parser.getHTML(), c);
+                parser.getJavaScript().stream()
+                        .map(e -> e.getSecond())
+                        .filter(e -> e.getKind() == Kind.EVENTHANDLER)
+                        .forEach(e -> {
+                            DynamicLocationMaker dynamicLocationMaker = new DynamicLocationMaker(c.getNode().getSourceLocation());
+                            Function handlerDeclaration = FlowGraphMutator.get().extendFlowGraphWithTopLevelFunction(c.getNode().toString(), e.getCode(), newList(), c.getFlowGraph(), dynamicLocationMaker);
+                            handlerDeclaration.getNode().setDomEventType(e.getEventKind());
+                            UserFunctionCalls.declareFunction(handlerDeclaration.getNode(), c);
+                        });
+            });
+        }
+
         pt.complete();
     }
 

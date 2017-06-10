@@ -1,5 +1,6 @@
 test/wala/string-op.js:7:10: [definite] Reading 'this' yields the global object
 test/wala/string-op.js:7:10: [definite] Reading absent property val
 test/wala/string-op.js:10:13: [definite] Dead assignment, property val is never read
+test/wala/string-op.js: [definite] Exceptional program exit is unreachable
 test/wala/string-op.js:7:10: [maybe] Conversion to number yields NaN
 test/wala/string-op.js:13:1: [info] Abstract value: NaN

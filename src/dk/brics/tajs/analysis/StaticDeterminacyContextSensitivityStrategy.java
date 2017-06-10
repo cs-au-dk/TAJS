@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,7 @@ import dk.brics.tajs.analysis.nativeobjects.concrete.SingleGamma;
 import dk.brics.tajs.flowgraph.AbstractNode;
 import dk.brics.tajs.flowgraph.Function;
 import dk.brics.tajs.flowgraph.SourceLocation;
-import dk.brics.tajs.flowgraph.SyntacticHints;
+import dk.brics.tajs.flowgraph.WritableSyntacticInformation.SyntacticInformation;
 import dk.brics.tajs.flowgraph.jsnodes.BeginForInNode;
 import dk.brics.tajs.flowgraph.jsnodes.BeginLoopNode;
 import dk.brics.tajs.flowgraph.jsnodes.EndLoopNode;
@@ -33,7 +33,6 @@ import dk.brics.tajs.lattice.UnknownValueResolver;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.options.Options;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -48,7 +47,7 @@ import static dk.brics.tajs.util.Collections.newSet;
  */
 public class StaticDeterminacyContextSensitivityStrategy implements IContextSensitivityStrategy {
 
-    private final SyntacticHints syntacticHints;
+    private final SyntacticInformation syntacticInformation;
 
     private final PreciseInterestingValuePredicate determinateInterestingValue = new PreciseInterestingValuePredicate(1);
 
@@ -56,50 +55,8 @@ public class StaticDeterminacyContextSensitivityStrategy implements IContextSens
 
     private final BasicContextSensitivityStrategy basic = new BasicContextSensitivityStrategy();
 
-    public StaticDeterminacyContextSensitivityStrategy(SyntacticHints syntacticHints) {
-        this.syntacticHints = syntacticHints;
-    }
-
-    /**
-     * The heuristic for which values that are allowed in contexts is now insufficient in a complex case:
-     * <p>
-     * <tt>Recursive calls in $.extend which includes $.isPlainObject</tt>
-     * <p>
-     * The definition of a precise value is loosened slightly for these two functions.
-     */
-    private static boolean isPreciseSpecialCaseOnExtendOrIsPlainObject(Value argument, Function function, State state, SourceLocation sourceLocation, Solver.SolverInterface c) {
-        PreciseInterestingValuePredicate precisionPredicateLarge = new PreciseInterestingValuePredicate(4);
-        if (!precisionPredicateLarge.isPrecise(argument, c)) {
-            return false;
-        }
-
-        boolean DEBUG = false;
-
-        boolean isPrecise;
-        Value jQuery = UnknownValueResolver.getRealValue(c.getAnalysis().getPropVarOperations().readVariable("jQuery", null), state);
-        boolean isJQueryExtend = false;
-        boolean isJQueryIsPlainObject = false;
-        if (jQuery.getObjectLabels().size() == 1) {
-            Value extend = UnknownValueResolver.getProperty(jQuery.getObjectLabels().iterator().next(), "extend", state, false);
-            if (extend.getObjectLabels().size() == 1) {
-                isJQueryExtend = extend.getObjectLabels().iterator().next().getFunction() == function;
-            }
-            Value isPlainObject = UnknownValueResolver.getProperty(jQuery.getObjectLabels().iterator().next(), "isPlainObject", state, false);
-            if (isPlainObject.getObjectLabels().size() == 1) {
-                isJQueryIsPlainObject = isPlainObject.getObjectLabels().iterator().next().getFunction() == function;
-            }
-        }
-        isPrecise = isJQueryExtend || isJQueryIsPlainObject;
-        if (DEBUG) {
-            if (!isPrecise) {
-                Set<SourceLocation> objectSourceLocations = argument.getObjectSourceLocations();
-                List<Integer> lineNumbers = newList();
-                objectSourceLocations.forEach(l -> lineNumbers.add(l.getLineNumber()));
-                Collections.sort(lineNumbers);
-                System.out.println(String.format("small/large discrepancy at line %s for arg with objects from lines: %s", sourceLocation.getLineNumber(), lineNumbers));
-            }
-        }
-        return isPrecise;
+    public StaticDeterminacyContextSensitivityStrategy(SyntacticInformation syntacticInformation) {
+        this.syntacticInformation = syntacticInformation;
     }
 
     /**
@@ -127,7 +84,7 @@ public class StaticDeterminacyContextSensitivityStrategy implements IContextSens
     }
 
     private boolean shouldLiteralBeHeapSensitive(AbstractNode node, ContextArguments arguments) {
-        if (syntacticHints.isCorrelatedAccessFunction(node.getBlock().getFunction())) {
+        if (syntacticInformation.isCorrelatedAccessFunction(node.getBlock().getFunction())) {
             return true;
         }
         if (arguments == null || arguments.isUnknown()) {
@@ -141,7 +98,7 @@ public class StaticDeterminacyContextSensitivityStrategy implements IContextSens
                 boolean hasParameterNameForArgument = parameterNames.size() > argumentNumber;
                 if (isSensitive && hasParameterNameForArgument) {
                     String parameterName = parameterNames.get(argumentNumber);
-                    if (syntacticHints.doesLiteralReferenceParameter(node, parameterName)) {
+                    if (syntacticInformation.doesLiteralReferenceParameter(node, parameterName)) {
                         return true;
                     }
                 }
@@ -187,14 +144,14 @@ public class StaticDeterminacyContextSensitivityStrategy implements IContextSens
         // set thisval for object sensitivity (unlike traditional object sensitivity we allow sets of object labels)
         Set<ObjectLabel> thisval = null;
         if (!Options.get().isObjectSensitivityDisabled()) {
-            if (function.getFunction().isUsesThis()) {
+            if (c.getFlowGraph().getSyntacticInformation().isFunctionWithThisReference(function.getFunction())) {
                 thisval = newSet(state.readThisObjects());
             }
         }
 
         ContextArguments funArgs = decideCallContextArguments(function, callInfo, state, c);
 
-        return new Context(thisval, funArgs, null, null, null);
+        return Context.make(thisval, funArgs, null, null, null);
     }
 
     @Override
@@ -235,7 +192,7 @@ public class StaticDeterminacyContextSensitivityStrategy implements IContextSens
         List<Value> arguments = newList();
         if (!call.isUnknownNumberOfArgs()) {
             for (int i = 0; i < call.getNumberOfArgs(); i++) {
-                arguments.add(NativeFunctions.readParameter(call, edge_state, i));
+                arguments.add(FunctionCalls.readParameter(call, edge_state, i));
             }
         }
 
@@ -248,10 +205,6 @@ public class StaticDeterminacyContextSensitivityStrategy implements IContextSens
                             .collect(Collectors.toSet()));
 
             boolean isPrecise = determinateInterestingValue.isPrecise(argument, c);
-            if (!isPrecise) {
-                isPrecise = isPreciseSpecialCaseOnExtendOrIsPlainObject(argument, obj_f.getFunction(), edge_state, call.getJSSourceNode().getSourceLocation(), c);
-                // argument = argument.restrictToObject().join(argument.restrictToStr());
-            }
             if (isPrecise) {
                 selectedArguments.add(argument);
             } else {
@@ -299,11 +252,11 @@ public class StaticDeterminacyContextSensitivityStrategy implements IContextSens
     public HeapContext makeFunctionHeapContext(Function function, Solver.SolverInterface c) {
         final Map<String, Value> map = newMap();
 
-        Set<String> closureVariableNames = function.getClosureVariableNames();
+        Set<String> closureVariableNames = c.getFlowGraph().getSyntacticInformation().getClosureVariableNames(function);
         if (closureVariableNames != null) {
             for (String closureVariableName : closureVariableNames) {
                 Value value = UnknownValueResolver.getRealValue(c.getAnalysis().getPropVarOperations().readVariable(closureVariableName, null), c.getState());
-                boolean isLoopVariable = syntacticHints.isLoopVariable(function.getOuterFunction(), closureVariableName)
+                boolean isLoopVariable = syntacticInformation.isLoopVariable(function.getOuterFunction(), closureVariableName)
                         && value.isMaybeSingleNum();
                 boolean isValidClosureVariables = isLoopVariable || determinateInterestingValue.isPrecise(value, c);
                 if (isValidClosureVariables) {
@@ -330,7 +283,7 @@ public class StaticDeterminacyContextSensitivityStrategy implements IContextSens
     }
 
     /**
-     * A value is precise ("determinate") if it is a single string value or a bounded number of abstract objects/functions/arrays.
+     * A value is precise ("determinate") if it is a single string value or a bounded (ideally a single) number of abstract objects.
      */
     private static class PreciseInterestingValuePredicate {
 
@@ -348,11 +301,9 @@ public class StaticDeterminacyContextSensitivityStrategy implements IContextSens
                 if (value.isMaybeObject()) {
                     for (ObjectLabel objectLabel : value.getObjectLabels()) {
                         switch (objectLabel.getKind()) {
-                            case OBJECT:
-                                return value.getObjectSourceLocations().size() <= objectLimit;
-                            case FUNCTION:
-                            case ARGUMENTS:
-                            case ARRAY:
+                            case OBJECT: // special case for experiments, limit is 1 in practice
+                                return value.getObjectLabels().size() <= objectLimit;
+                            default:
                                 return value.getObjectLabels().size() == 1;
                         }
                     }

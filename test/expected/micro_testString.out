@@ -1,4 +1,5 @@
 test/micro/testString.js:61:16: [definite] Too few parameters to function String.prototype.localeCompare
+test/micro/testString.js: [definite] Exceptional program exit is unreachable
 test/micro/testString.js:4:9: [maybe] Converting boolean to string
 test/micro/testString.js:10:16: [maybe] Converting primitive string to object
 test/micro/testString.js:13:9: [maybe] Converting boolean to string
@@ -27,14 +28,14 @@ test/micro/testString.js:7:1: [info] Abstract value: ""
 test/micro/testString.js:8:1: [info] Abstract value: "true"
 test/micro/testString.js:9:1: [info] Abstract value: "77"
 test/micro/testString.js:10:1: [info] Abstract value: "77"
-test/micro/testString.js:16:1: [info] Abstract value: [@String#node37]
+test/micro/testString.js:16:1: [info] Abstract value: [@String#node37{boxed-primitive=""}]
 test/micro/testString.js:17:1: [info] Abstract value: ""
 test/micro/testString.js:18:1: [info] Abstract value: 0.0
-test/micro/testString.js:19:1: [info] Abstract value: [@String#node41]
+test/micro/testString.js:19:1: [info] Abstract value: [@String#node41{boxed-primitive="false"}]
 test/micro/testString.js:20:1: [info] Abstract value: "false"
 test/micro/testString.js:21:1: [info] Abstract value: "FALSE"
 test/micro/testString.js:22:1: [info] Abstract value: 5.0
-test/micro/testString.js:23:1: [info] Abstract value: [@String#node45]
+test/micro/testString.js:23:1: [info] Abstract value: [@String#node45{boxed-primitive="77.77"}]
 test/micro/testString.js:24:1: [info] Abstract value: "77.77"
 test/micro/testString.js:25:1: [info] Abstract value: 5.0
 test/micro/testString.js:27:1: [info] Abstract value: ""

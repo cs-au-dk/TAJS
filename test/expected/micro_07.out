@@ -1,4 +1,5 @@
 test/micro/test07.js:12:11: [definite] Variable y is null/undefined
+test/micro/test07.js: [definite] Exceptional program exit is unreachable
 test/micro/test07.js:26:1: [definite] The variable x is never used
 test/micro/test07.js:26:1: [definite] The variable y is never used
 test/micro/test07.js:12:9: [maybe] Conversion to number yields NaN

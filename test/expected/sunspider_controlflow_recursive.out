@@ -1,2 +1,3 @@
+test/sunspider/controlflow-recursive.js: [definite] Exceptional program exit is unreachable
 test/sunspider/controlflow-recursive.js:32:26: [maybe] Converting object to number
 test/sunspider/controlflow-recursive.js:34:1: [info] Abstract value: UInt|NotUInt

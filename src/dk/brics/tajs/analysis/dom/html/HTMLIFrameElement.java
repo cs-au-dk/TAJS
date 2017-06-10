@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -42,9 +42,9 @@ public class HTMLIFrameElement {
     public static void build(Solver.SolverInterface c) {
         State s = c.getState();
         PropVarOperations pv = c.getAnalysis().getPropVarOperations();
-        CONSTRUCTOR = new ObjectLabel(DOMObjects.HTMLIFRAMEELEMENT_CONSTRUCTOR, ObjectLabel.Kind.FUNCTION);
-        PROTOTYPE = new ObjectLabel(DOMObjects.HTMLIFRAMEELEMENT_PROTOTYPE, ObjectLabel.Kind.OBJECT);
-        INSTANCES = new ObjectLabel(DOMObjects.HTMLIFRAMEELEMENT_INSTANCES, ObjectLabel.Kind.OBJECT);
+        CONSTRUCTOR = ObjectLabel.make(DOMObjects.HTMLIFRAMEELEMENT_CONSTRUCTOR, ObjectLabel.Kind.FUNCTION);
+        PROTOTYPE = ObjectLabel.make(DOMObjects.HTMLIFRAMEELEMENT_PROTOTYPE, ObjectLabel.Kind.OBJECT);
+        INSTANCES = ObjectLabel.make(DOMObjects.HTMLIFRAMEELEMENT_INSTANCES, ObjectLabel.Kind.OBJECT);
 
         // Constructor Object
         s.newObject(CONSTRUCTOR);
@@ -71,7 +71,6 @@ public class HTMLIFrameElement {
         createDOMProperty(INSTANCES, "longDesc", Value.makeAnyStr(), c);
         createDOMProperty(INSTANCES, "marginHeight", Value.makeAnyStr(), c);
         createDOMProperty(INSTANCES, "marginWidth", Value.makeAnyStr(), c);
-        createDOMProperty(INSTANCES, "name", Value.makeAnyStr(), c);
         createDOMProperty(INSTANCES, "scrolling", Value.makeAnyStr(), c);
         createDOMProperty(INSTANCES, "src", Value.makeAnyStr(), c);
         createDOMProperty(INSTANCES, "width", Value.makeAnyStr(), c);

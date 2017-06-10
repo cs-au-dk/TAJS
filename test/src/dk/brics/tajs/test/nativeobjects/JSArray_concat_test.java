@@ -166,4 +166,17 @@ public class JSArray_concat_test {
                 "f();",
                 "");
     }
+
+    @Test
+    public void precisePrefix() {
+        Misc.init();
+        Misc.runSource(//
+                "var imprecise = [];",
+                "imprecise[TAJS_make('AnyNum')] = false;",
+                "var concatenated = [true].concat(imprecise);",
+                "TAJS_assert(concatenated.length, 'isMaybeNumUInt');",
+                "TAJS_assertEquals(true, concatenated[0]);",
+                "TAJS_assertEquals(TAJS_join(true, false, undefined), concatenated[1]);",
+                "");
+    }
 }

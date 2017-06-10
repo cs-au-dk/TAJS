@@ -1,1 +1,2 @@
+test/micro/test51.js: [definite] Exceptional program exit is unreachable
 test/micro/test51.js:5:1: [info] Abstract value: "this should remain"

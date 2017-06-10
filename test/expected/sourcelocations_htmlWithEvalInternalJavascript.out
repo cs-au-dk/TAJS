@@ -1,1 +1,2 @@
+test/sourcelocations/htmlWithEvalInternalJavascript.html: [definite] Exceptional program exit is unreachable
 TAJS-dynamic-code(test/sourcelocations/htmlWithEvalInternalJavascript.html:9:1):1:5: [definite] The variable x is never used

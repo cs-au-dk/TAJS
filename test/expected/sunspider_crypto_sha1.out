@@ -10,6 +10,9 @@ test/sunspider/crypto-sha1.js:112:1: [definite] Unreachable function core_hmac_s
 test/sunspider/crypto-sha1.js:163:1: [definite] Unreachable function binb2str
 test/sunspider/crypto-sha1.js:190:1: [definite] Unreachable function binb2b64
 test/sunspider/crypto-sha1.js:228:5: [definite] The variable sha1Output is never used
+test/sunspider/crypto-sha1.js:47:3: [maybe] RangeError, assigning invalid value to array 'length' property
+test/sunspider/crypto-sha1.js:48:3: [maybe] RangeError, assigning invalid value to array 'length' property
+test/sunspider/crypto-sha1.js: [maybe] Uncaught exception, constructed at [test/sunspider/crypto-sha1.js:47:3, test/sunspider/crypto-sha1.js:48:3, test/sunspider/crypto-sha1.js:156:5]
 test/sunspider/crypto-sha1.js:26:60: [maybe] Converting primitive string to object
 test/sunspider/crypto-sha1.js:47:3: [maybe] Conversion to number yields NaN
 test/sunspider/crypto-sha1.js:47:3: [maybe] Reading absent property (computed name)

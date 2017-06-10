@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +17,7 @@
 package dk.brics.tajs.analysis.nativeobjects.concrete;
 
 import dk.brics.tajs.options.Options;
+import dk.brics.tajs.util.AnalysisException;
 import jdk.nashorn.api.scripting.ScriptObjectMirror;
 import jdk.nashorn.api.scripting.ScriptUtils;
 import jdk.nashorn.internal.runtime.ECMAException;
@@ -25,10 +26,11 @@ import org.apache.log4j.Logger;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
+import javax.script.ScriptException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
+import java.util.Optional;
 
 import static dk.brics.tajs.util.Collections.newMap;
 
@@ -36,51 +38,55 @@ import static dk.brics.tajs.util.Collections.newMap;
  * Concrete semantics implementation.
  * Will perform concrete evaluation of concrete values using the Java native implementation of JavaScript.
  */
-public class NashornConcreteSemantics { // XXX: singleton, but no reset method? just use static methods instead?
+public class NashornConcreteSemantics implements NativeConcreteSemantics {
 
     private static final Logger log = Logger.getLogger(NashornConcreteSemantics.class);
 
-    private static NashornConcreteSemantics instance;
-
     private final ScriptEngine engine;
 
-    private NashornConcreteSemantics() {
+    public NashornConcreteSemantics() {
         engine = new ScriptEngineManager().getEngineByName("JavaScript");
     }
 
-    public static NashornConcreteSemantics get() {
-        if (instance == null) {
-            instance = new NashornConcreteSemantics();
-        }
-        return instance;
-    }
-
-//    public static void main(String[] args) throws ScriptException {
-//        System.out.println(get().toConcreteValue((get().makeEngine().eval("[null, undefined]"))));
-//    }
-
-    private static String makeList(List<ConcreteValue> arguments) {
-        return String.join(",", arguments.stream().map(ConcreteValue::toSourceCode).collect(Collectors.toList()));
+    public static void main(String[] args) throws ScriptException {
+        Object o = new NashornConcreteSemantics()._eval("var base = \"abcdefg\"; var argumentsList = [1.00000000000000000000]; var result = String.prototype.substring.apply(base, argumentsList); ({base: base, argumentsList: argumentsList, result: result, MAPPING_OBJECT: true});");
+        System.out.println(o);
     }
 
     @SuppressWarnings("unchecked")
-    public <T extends ConcreteValue> InvocationResult<T> apply(String functionName, ConcreteValue base, List<ConcreteValue> arguments) {
+    @Override
+    public MappedNativeResult<ConcreteValue> apply(String functionName, ConcreteValue base, List<ConcreteValue> arguments) {
         if ("String.prototype.startsWith".equals(functionName)) { // Nashorn does not implement this "standard" feature
             if (isConcreteString(base) && arguments.size() == 1 && isConcreteString(arguments.get(0))) {
                 boolean startsWith = ((ConcreteString) base).getString().startsWith(((ConcreteString) arguments.get(0)).getString());
-                return InvocationResult.makeValue((T) new ConcreteBoolean(startsWith));
+                return new MappedNativeResult<>(Optional.empty(), NativeResult.makeValue(new ConcreteBoolean(startsWith)));
             }
-            return InvocationResult.makeNonConcrete();
+            return new MappedNativeResult<>(Optional.empty(), NativeResult.makeNonConcrete());
         }
         if ("String.prototype.endsWith".equals(functionName)) { // Nashorn does not implement this "standard" feature
             if (isConcreteString(base) && arguments.size() == 1 && isConcreteString(arguments.get(0))) {
                 boolean endsWith = ((ConcreteString) base).getString().endsWith(((ConcreteString) arguments.get(0)).getString());
-                return InvocationResult.makeValue((T) new ConcreteBoolean(endsWith));
+                return new MappedNativeResult<>(Optional.empty(), NativeResult.makeValue(new ConcreteBoolean(endsWith)));
             }
-            return InvocationResult.makeNonConcrete();
+            return new MappedNativeResult<>(Optional.empty(), NativeResult.makeNonConcrete());
         }
-        String script = String.format("%s.apply(%s, [%s]);", functionName, base.toSourceCode(), makeList(arguments));
-        return eval(script);
+        Object evalResult;
+        try {
+            String script = ConcreteApplyMapping.formatMappedValuesScript(functionName, base, arguments);
+            evalResult = _eval(script);
+        } catch (Throwable t) {
+            return new MappedNativeResult<>(Optional.empty(), handleEvalThrowable(t));
+        }
+        if (evalResult instanceof ScriptObjectMirror && ((ScriptObjectMirror) evalResult).containsKey(ConcreteApplyMapping.MAGIC_IDENTIFIER)) {
+            ScriptObjectMirror mirror = (ScriptObjectMirror) evalResult;
+            ConcreteApplyMapping mappedInvocation = new ConcreteApplyMapping(
+                    toConcreteValue(mirror.get(ConcreteApplyMapping.BASE)),
+                    toConcreteArray((ScriptObjectMirror) mirror.get(ConcreteApplyMapping.ARGUMENTS_LIST)),
+                    toConcreteValue(mirror.get(ConcreteApplyMapping.RESULT))
+            );
+            return new MappedNativeResult<>(Optional.of(mappedInvocation), NativeResult.makeValue(mappedInvocation.getResult()));
+        }
+        throw new AnalysisException("Cound not read result (" + evalResult + ") of call to " + functionName);
     }
 
     private Boolean isConcreteString(ConcreteValue base) {
@@ -116,6 +122,11 @@ public class NashornConcreteSemantics { // XXX: singleton, but no reset method? 
             }
 
             @Override
+            public Boolean visit(ConcreteNullOrUndefined v) {
+                return false;
+            }
+
+            @Override
             public Boolean visit(ConcreteBoolean v) {
                 return false;
             }
@@ -123,22 +134,31 @@ public class NashornConcreteSemantics { // XXX: singleton, but no reset method? 
     }
 
     @SuppressWarnings("unchecked")
-    public <T extends ConcreteValue> InvocationResult<T> eval(String script) {
-        // System.out.println(script);
+    @Override
+    public NativeResult<ConcreteValue> eval(String script) {
         try {
-            Object resultObject = engine.eval(script);
-            // System.out.println("   ==> " + result);
-            //System.out.println(scripts.getResults().size());
-            return InvocationResult.makeValue((T) toConcreteValue(resultObject));
+            return NativeResult.makeValue(toConcreteValue(_eval(script)));
         } catch (Throwable t) {
-            if (t.getCause() instanceof ECMAException) {
-                return InvocationResult.makeException();
-            }
-            if (Options.get().isDebugEnabled()) {
-                log.error(t);
-            }
-            return InvocationResult.makeNonConcrete();
+            return handleEvalThrowable(t);
         }
+    }
+
+    private <T extends ConcreteValue> NativeResult<T> handleEvalThrowable(Throwable t) {
+        if (t.getCause() instanceof ECMAException) {
+            return NativeResult.makeException();
+        }
+        if (Options.get().isDebugEnabled()) {
+            log.error(t);
+        }
+        return NativeResult.makeNonConcrete();
+    }
+
+    private Object _eval(String script) throws ScriptException {
+        Object resultObject = engine.eval(script);
+        // System.out.println("   ==> " + result);
+        //System.out.println(scripts.getResults().size());
+
+        return resultObject;
     }
 
     private ConcreteArray toConcreteArray(ScriptObjectMirror array) {
@@ -154,7 +174,7 @@ public class NashornConcreteSemantics { // XXX: singleton, but no reset method? 
 
     private ConcreteValue toConcreteValue(Object value) {
         if (value == null) {
-            return new ConcreteNull();
+            return new ConcreteNullOrUndefined(); // Nashorn explicitly coerces `undefined` to `null` :(
         }
         if (value instanceof ScriptObjectMirror) {
             ScriptObjectMirror mirror = (ScriptObjectMirror) value;
@@ -172,7 +192,7 @@ public class NashornConcreteSemantics { // XXX: singleton, but no reset method? 
         if (value instanceof String) {
             return new ConcreteString((String) value);
         }
-        if (value instanceof Undefined) {
+        if (value instanceof Undefined) { // type is internal, and Nashorn explicitly converts this value to null, the branch is likely dead
             return new ConcreteUndefined();
         }
         if (value instanceof Boolean) {
@@ -183,9 +203,11 @@ public class NashornConcreteSemantics { // XXX: singleton, but no reset method? 
 
     private ConcreteValue toConcreteRegularExpression(ScriptObjectMirror mirror) {
         ConcreteString source = new ConcreteString((String) mirror.get("source"));
+        Object lastIndexObject = mirror.get("lastIndex");
+        ConcreteNumber lastIndex = new ConcreteNumber(lastIndexObject instanceof Integer ? ((Integer) lastIndexObject).doubleValue() : (Double) lastIndexObject);
         ConcreteBoolean global = new ConcreteBoolean((Boolean) mirror.get("global"));
         ConcreteBoolean ignoreCase = new ConcreteBoolean((Boolean) mirror.get("ignoreCase"));
         ConcreteBoolean multiline = new ConcreteBoolean((Boolean) mirror.get("multiline"));
-        return new ConcreteRegularExpression(source, global, ignoreCase, multiline);
+        return new ConcreteRegularExpression(source, global, ignoreCase, multiline, lastIndex);
     }
 }

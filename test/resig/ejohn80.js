@@ -19,7 +19,7 @@ Array.prototype.forEach2 = function (fn) {
 };
 
 ["a", "b", "c"].forEach2(function(value, index, array){
-  TAJS_assert( value, 'isMaybeSingleStr||isMaybeStrIdentifierParts||isMaybeUndef' );
+  TAJS_assert( value, 'isMaybeSingleStr||isMaybeStrOtherIdentifierParts||isMaybeUndef' );
   TAJS_dumpValue( value );
   TAJS_dumpValue( index );
   TAJS_dumpValue(array.length);

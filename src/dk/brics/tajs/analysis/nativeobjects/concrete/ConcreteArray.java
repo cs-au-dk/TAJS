@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,6 +18,7 @@ package dk.brics.tajs.analysis.nativeobjects.concrete;
 
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class ConcreteArray implements ConcreteValue {
 
@@ -43,18 +44,9 @@ public class ConcreteArray implements ConcreteValue {
 
     @Override
     public String toSourceCode() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("[");
-        boolean first = true;
-        for (ConcreteValue argument : array) {
-            if (!first) {
-                sb.append(", ");
-            }
-            first = false;
-            sb.append(argument.toSourceCode());
-        }
-        sb.append("]");
-        return sb.toString();
+        return array.stream()
+                .map(ConcreteValue::toSourceCode)
+                .collect(Collectors.joining(",", "[", "]"));
     }
 
     @Override
@@ -73,5 +65,24 @@ public class ConcreteArray implements ConcreteValue {
 
     public ConcreteValue get(int i) {
         return array.get(i);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        ConcreteArray that = (ConcreteArray) o;
+
+        if (array != null ? !array.equals(that.array) : that.array != null) return false;
+        return extraProperties != null ? extraProperties.equals(that.extraProperties) : that.extraProperties == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = array != null ? array.hashCode() : 0;
+        result = 31 * result + (extraProperties != null ? extraProperties.hashCode() : 0);
+        return result;
     }
 }

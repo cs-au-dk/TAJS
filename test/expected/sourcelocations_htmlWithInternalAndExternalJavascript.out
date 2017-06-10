@@ -1,2 +1,3 @@
-javascript.js:1:5: [definite] The variable jsVar is never used
+test/sourcelocations/htmlWithInternalAndExternalJavascript.html: [definite] Exceptional program exit is unreachable
 test/sourcelocations/htmlWithInternalAndExternalJavascript.html:9:5: [definite] The variable htmlVar is never used
+test/sourcelocations/javascript.js:1:5: [definite] The variable jsVar is never used

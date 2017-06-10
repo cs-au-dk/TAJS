@@ -1,1 +1,2 @@
+test/micro/test58.js: [definite] Exceptional program exit is unreachable
 test/micro/test58.js:2:7: [definite] The variable local is never used

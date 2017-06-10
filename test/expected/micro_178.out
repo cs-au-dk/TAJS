@@ -1,5 +1,6 @@
 test/micro/test178.js:3:1: [definite] The conditional expression is always false
 test/micro/test178.js:3:5: [definite] Reading absent property foo
+test/micro/test178.js: [definite] Exceptional program exit is unreachable
 test/micro/test178.js:9:5: [maybe] Reading absent property foo
 test/micro/test178.js:11:16: [maybe] The variable y has values with different types
 test/micro/test178.js:5:1: [info] Abstract value: "bla"

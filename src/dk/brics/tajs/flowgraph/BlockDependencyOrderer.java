@@ -1,5 +1,22 @@
+/*
+ * Copyright 2009-2017 Aarhus University
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package dk.brics.tajs.flowgraph;
 
+import dk.brics.tajs.flowgraph.jsnodes.IfNode;
 import dk.brics.tajs.util.AnalysisException;
 
 import java.util.Collection;
@@ -11,7 +28,12 @@ import java.util.Stack;
 import static dk.brics.tajs.util.Collections.newList;
 import static dk.brics.tajs.util.Collections.newSet;
 
-public class BlockDependencyOrderer { // TODO: javadoc
+/**
+ * Orders blocks according to their dependencies.
+ *
+ * @see #produceDependencyOrder(Collection, Set, List)
+ */
+public class BlockDependencyOrderer {
 
     private final Set<BasicBlock> ignored;
 
@@ -77,13 +99,28 @@ public class BlockDependencyOrderer { // TODO: javadoc
             if (notPermanentlyMarked.contains(block)) {
                 temporarilyMarked.add(block);
                 List<BasicBlock> successors = newList(block.getSuccessors());
+
+                // Implementation choice in topological sort: disambiguate the following ambiguous successors in specific order:
+                // - true-branches before false-branches: ensures loop bodies are processed completely before exiting the loop
+                // - ordinary flow, then exceptional (no good reason right now)
+
+                if (successors.size() > 1 && block.getLastNode() instanceof IfNode) {
+                    IfNode ifNode = (IfNode) block.getLastNode();
+                    successors.sort((succ1, succ2) -> {
+                        if (succ1 == ifNode.getSuccTrue() && succ2 == ifNode.getSuccFalse()) {
+                            return -1;
+                        }
+                        if (succ2 == ifNode.getSuccTrue() && succ1 == ifNode.getSuccFalse()) {
+                            return -1;
+                        }
+                        return 0;
+                    });
+                }
+
                 if (block.getExceptionHandler() != null) {
                     successors.add(block.getExceptionHandler());
                 }
 
-                // Implementation choice in topological sort: process multiple successors in reverse source position order.
-                // A benefit of this is that loop back edges receive lower order than the loop successors.
-                Collections.sort(successors, (o1, o2) -> -o1.getSourceLocation().compareTo(o2.getSourceLocation()));
 
                 successors.removeAll(ignored);
                 worklist.push(new PostProcessBlock(block)); // post-process needs to be below the processing of the current block's successors!

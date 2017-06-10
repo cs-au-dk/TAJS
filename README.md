@@ -1,7 +1,7 @@
 TAJS - Type Analyzer for JavaScript
 ===================================
 
-Copyright 2009-2016 Aarhus University
+Copyright 2009-2017 Aarhus University
 
 TAJS is a dataflow analysis for JavaScript that infers type information and call graphs.
 The current version of the analysis contains a model of ECMAScript 3rd edition, including the standard library, and partial models of the ECMAScript 5 and its standard library, the HTML DOM, and the browser API.
@@ -43,9 +43,13 @@ Some of the available options (run TAJS without arguments to see the full list):
 
 - `-states` - output intermediate abstract states during the analysis
 
+- `-statistics` - output various statistics about the analysis results
+
 - `-uneval` - enable the Unevalizer for on-the-fly translation of `eval` calls, as described in 'Remedying the Eval that Men Do', ISSTA 2012
 
 - `-determinacy` - enable the techniques described in 'Determinacy in Static Analysis of jQuery', OOPSLA 2014
+
+- `-unsound X` - enable unsound assumption X, e.g. `ignore-unlikely-property-reads` causes some unlikely properties to be ignored during dynamic property read operations, and `show-unsoundness-usage` outputs usage of unsound assumptions
 
 Note that the analysis produces lots of addition information that is not output by default. If you want full access to the abstract states and call graphs, as a starting point see the source code for `dk.brics.tajs.Main`. 
 The javadoc for TAJS is available at <http://www.brics.dk/TAJS/doc/>.
@@ -63,8 +67,10 @@ TAJS recognizes a few special built-in functions (defined as properties of the g
 
 - `TAJS_assert(value)` - tests that `value` is `true`, failure will result in an AssertionError. 
 
-- `TAJS_assert(value, predicate)` - a generalized version of the single-argument TAJS_assert, supports disjunctions of the predicate methods in Value.java. E.g. to check that a value is either a single concrete string or some unsigned integer: 
+- `TAJS_assert(value, predicate)` - a generalized version of the single-argument `TAJS_assert`, supports disjunctions of the predicate methods in Value.java. E.g. to check that a value is either a single concrete string or some unsigned integer: 
   - `TAJS_assert(myValue, 'isMaybeSingleStr || isMaybeNumUInt')`
+  
+- `TAJS_load(file,arg1,...)` - injects the given JavaScript file as a function, and calls it with the given arguments `arg1,...` 
 
 Running regression tests
 ------------------------
@@ -75,7 +81,7 @@ The directory `test` contains a collection of tests that can be executed by runn
 Soundiness
 ----------
 
-The analysis models of the HTML DOM, the browser API, and the ECMAScript native library are not complete. 
+The analysis models of the HTML DOM, the browser API, and the ECMAScript native library are not 100% complete. 
 For a list of other known sources of unsoundness, see <https://github.com/cs-au-dk/TAJS/issues?q=is%3Aopen+is%3Aissue+label%3Asoundiness>.
 
 Package dependencies
@@ -98,10 +104,14 @@ The following people have contributed to the source code:
 - Magnus Madsen
 - Matthias Diehn Ingesman
 - Peter Jonsson
+- Benjamin Barslev Nielsen
+- Christoffer Quist Adamsen
+- Gianluca Mezzetti
+- Martin Torp
 
 This software includes components from:
 - Google Closure Compiler (<http://code.google.com/p/closure-compiler/>)
 - Jericho HTML Parser (<http://jericho.htmlparser.net/>)
-- Log4j (<http://logging.apache.org/log4>)
+- Log4j (<http://logging.apache.org/log4j>)
 - args4j (<http://args4j.kohsuke.org/>)
 - JUnit (<http://junit.org/>) (development only)

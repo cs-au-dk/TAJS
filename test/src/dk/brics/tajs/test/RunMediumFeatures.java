@@ -11,6 +11,7 @@ import org.junit.runners.Suite;
         TestCollections.class,
         TestNoFlowNodeInsertion.class,
         TestAddContextSensitivity.class,
+        TestMakeContextSensitive.class,
         TestSyntacticObjectSensitivity.class,
         TestUnrollingUnknownValueRecovery.class,
         TestUnrollingTermination.class,

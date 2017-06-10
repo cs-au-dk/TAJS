@@ -35,7 +35,7 @@ public class JSRegExp_exec_test {
     public void notFound() {
         Misc.init();
         Misc.runSource("var v = /x/.exec('foo');",
-                "TAJS_assert(v === null);");
+                "TAJS_assert(v, 'isMaybeNull||isMaybeUndef');");
     }
 
     @Test
@@ -97,6 +97,14 @@ public class JSRegExp_exec_test {
     public void match_global_advance_lastIndex() {
         Misc.init();
         Misc.runSource("var r = /o/g; var v = r.exec('foo');",
+                "TAJS_assertEquals(2, r.lastIndex);"
+        );
+    }
+
+    @Test
+    public void match_global_advance_lastIndex_fuzzy() {
+        Misc.init();
+        Misc.runSource("var r = /o/g; var v = r.exec(TAJS_make('AnyStr'));",
                 "TAJS_assert(r.lastIndex, 'isMaybeNumUInt');"
         );
     }

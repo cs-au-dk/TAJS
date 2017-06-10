@@ -4,6 +4,7 @@ test/wala/try.js:34:10: [definite] The conditional expression is always true
 test/wala/try.js:36:7: [definite] The conditional expression is always true
 test/wala/try.js:48:5: [definite] The conditional expression is always true
 test/wala/try.js:61:5: [definite] The conditional expression is always true
+test/wala/try.js: [definite] Exceptional program exit is unreachable
 test/wala/try.js:6:1: [definite] Unreachable function targetTwo
 test/wala/try.js:10:1: [definite] The variable targetTwo is never used
 test/wala/try.js:16:5: [definite] Unreachable code
@@ -15,8 +16,8 @@ test/wala/try.js:52:5: [definite] Unreachable code
 test/wala/try.js:59:1: [definite] The variable targetOne is never used
 test/wala/try.js:59:1: [definite] The variable targetTwo is never used
 test/wala/try.js:65:5: [definite] Unreachable code
-test/wala/try.js:84:1: [info] Abstract value: [@Object#node8]
-test/wala/try.js:85:1: [info] Abstract value: [@Object#node8]
-test/wala/try.js:86:1: [info] Abstract value: [@Object#node8]
+test/wala/try.js:84:1: [info] Abstract value: [@Object#node12]
+test/wala/try.js:85:1: [info] Abstract value: [@Object#node12]
+test/wala/try.js:86:1: [info] Abstract value: [@Object#node12]
 test/wala/try.js:87:1: [info] Abstract value: 8.0
 test/wala/try.js:88:1: [info] Abstract value: 8.0

@@ -1,18 +1,16 @@
 test/1k2013spring/1479.js:89:5: [definite] Too few parameters to function CanvasRenderingContext2D.prototype.arc
 test/1k2013spring/1479.js:116:31: [definite] The variable e is never used
-test/1k2013spring/shim.js:6:5: [definite] The variable b is never used
 test/1k2013spring/1479.js:32:5: [maybe] TypeError, accessing property of null/undefined
 test/1k2013spring/1479.js:67:12: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1479.js:88:5: [maybe] ReferenceError, reading absent variable a
+test/1k2013spring/1479.js:98:3: [maybe] ReferenceError, reading absent variable a
 test/1k2013spring/1479.js:104:12: [maybe] TypeError, accessing property of null/undefined
 test/1k2013spring/1479.js:104:26: [maybe] TypeError, accessing property of null/undefined
-test/1k2013spring/shim.js:8:9: [maybe] TypeError, accessing property of null/undefined
-test/1k2013spring/shim.js:8:9: [maybe] TypeError, call to non-function
-test/1k2013spring/shim.js:9:1: [maybe] TypeError, accessing property of null/undefined
-test/1k2013spring/shim.js:6:9: [maybe] Reading absent property body
-test/1k2013spring/shim.js:8:9: [maybe] Reading absent property getContext
-test/1k2013spring/shim.js:9:1: [maybe] Reading absent property body
+test/1k2013spring/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1479.js: [maybe] Uncaught exception, constructed at [test/1k2013spring/1479.js:32:5, test/1k2013spring/1479.js:67:12, test/1k2013spring/1479.js:88:5, test/1k2013spring/1479.js:98:3, test/1k2013spring/1479.js:104:12, test/1k2013spring/1479.js:104:26, test/1k2013spring/shim.js:9:5]
 test/1k2013spring/1479.js:29:14: [maybe] Reading absent property (computed name)
+test/1k2013spring/1479.js:44:18: [maybe] Conversion to number yields NaN
+test/1k2013spring/1479.js:49:18: [maybe] Conversion to number yields NaN
 test/1k2013spring/1479.js:65:15: [maybe] Reading absent property (computed name)
+test/1k2013spring/1479.js:99:3: [maybe] Conversion to number yields NaN
 test/1k2013spring/1479.js:103:16: [maybe] Reading absent property (computed name)
-test/1k2013spring/shim.js:7:9: [maybe] Reading absent property (computed name)
-test/1k2013spring/shim.js,test/1k2013spring/1479.js: [maybe] Uncaught exception, constructed at [test/1k2013spring/1479.js:32:5, test/1k2013spring/1479.js:67:12, test/1k2013spring/1479.js:104:12, test/1k2013spring/1479.js:104:26, test/1k2013spring/shim.js:8:9, test/1k2013spring/shim.js:9:1]

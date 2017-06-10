@@ -1,2 +1,3 @@
-test/micro/test160.js:5:3: [info] Abstract object: {0:42.0,length:1.0,push:^(@Array#node4.push[absent]),[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Prototype]]=[@Array.prototype[native]],[[Value]]=?,[[Scope]]=?}
+test/micro/test160.js: [definite] Exceptional program exit is unreachable
+test/micro/test160.js:5:3: [info] Abstract object: {0:42.0,length:1.0,push:^(@Array#node8.push[absent]),[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Prototype]]=[@Array.prototype[native]],[[Value]]=?,[[Scope]]=?}
 test/micro/test160.js:10:1: [info] Abstract object: {0:42.0,length:1.0,[[Prototype]]=[@Array.prototype[native]]}

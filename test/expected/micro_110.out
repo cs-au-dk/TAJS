@@ -2,5 +2,5 @@ test/micro/test110.js:9:1: [maybe] TypeError, accessing property of null/undefin
 test/micro/test110.js: [maybe] Uncaught exception, constructed at [test/micro/test110.js:9:1]
 test/micro/test110.js:4:1: [info] Abstract value: 43.0
 test/micro/test110.js:6:1: [info] Abstract value: 44.0
-test/micro/test110.js:8:1: [info] Abstract value: Null|[@Object#node4]
+test/micro/test110.js:8:1: [info] Abstract value: Null|[@Object#node8]
 test/micro/test110.js:10:1: [info] Abstract value: 45.0

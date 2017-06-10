@@ -1,0 +1,6 @@
+test/1k2012love/1066.js:30:19: [definite] TypeError, accessing property of null/undefined
+test/1k2012love/1066.js:30:19: [definite] Unreachable code
+test/1k2012love/1066.js:45:7: [definite] Unreachable function
+test/1k2012love/1066.js:30:19: [maybe] <Document.getElementById>("l") did not match any elements
+test/1k2012love/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
+test/1k2012love/1066.js: [maybe] Uncaught exception, constructed at [test/1k2012love/1066.js:30:19, test/1k2012love/shim.js:9:5]

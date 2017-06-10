@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,8 +16,9 @@
 
 package dk.brics.tajs.lattice;
 
-import dk.brics.tajs.flowgraph.jsnodes.BeginLoopNode;
 import dk.brics.tajs.solver.IContext;
+import dk.brics.tajs.util.Canonicalizer;
+import dk.brics.tajs.util.DeepImmutable;
 
 import java.util.Map;
 import java.util.Set;
@@ -26,7 +27,7 @@ import java.util.Set;
  * Context for context sensitive analysis.
  * Immutable.
  */
-public final class Context implements IContext<Context> { // TODO: canonicalize? (#140)
+public final class Context implements IContext<Context>, DeepImmutable {
 
     /**
      * Cached hashcode for immutable instance.
@@ -46,32 +47,48 @@ public final class Context implements IContext<Context> { // TODO: canonicalize?
     private final Map<Integer, Value> specialRegs;
 
     /**
-     * The number of times loops have been unrolled, or null if none.
+     * Local context: e.g. number of times loops have been unrolled, or null if none.
      */
-    private final Map<BeginLoopNode, Integer> loopUnrolling;
+    private final LocalContext localContext;
 
     /**
-     * Unrolling information at the function entry, or null if none.
+     * Local context information at the function entry, or null if none.
+     * (Unlike the other components of this bean, {@link #localContext} can change without interacting with the call graph. This field is used to restore the original context without querying the call graph.)
      */
-    private final Map<BeginLoopNode, Integer> loopUnrollingsAtEntry;
+    private final LocalContext localContextAtEntry;
 
     /**
      * Constructs a new context object.
      */
-    public Context(Set<ObjectLabel> thisval, ContextArguments funArgs, Map<Integer, Value> specialRegs,
-                   Map<BeginLoopNode, Integer> loopUnrolling, Map<BeginLoopNode, Integer> loopUnrollingsAtEntry) {
+    private Context(Set<ObjectLabel> thisval, ContextArguments funArgs, Map<Integer, Value> specialRegs,
+                    LocalContext localContext, LocalContext localContextAtEntry) {
+        // ensure canonical representation of empty maps
+        if (localContext != null && localContext.getQualifiers().isEmpty()) {
+            localContext = null;
+        }
+        if (localContextAtEntry != null && localContextAtEntry.getQualifiers().isEmpty()) {
+            localContextAtEntry = null;
+        }
+        if (specialRegs != null && specialRegs.isEmpty()) {
+            specialRegs = null;
+        }
         this.thisval = thisval;
         this.funArgs = funArgs;
         this.specialRegs = specialRegs;
-        this.loopUnrolling = loopUnrolling;
-        this.loopUnrollingsAtEntry = loopUnrollingsAtEntry;
+        this.localContext = localContext;
+        this.localContextAtEntry = localContextAtEntry;
 
         int hashcode = 1;
         hashcode = 31 * hashcode + (thisval != null ? thisval.hashCode() : 0);
         hashcode = 31 * hashcode + (funArgs != null ? funArgs.hashCode() : 0);
         hashcode = 31 * hashcode + (specialRegs != null ? specialRegs.hashCode() : 0);
-        hashcode = 31 * hashcode + (loopUnrolling != null ? loopUnrolling.hashCode() : 0);
+        hashcode = 31 * hashcode + (localContext != null ? localContext.hashCode() : 0);
         this.hashcode = hashcode;
+    }
+
+    public static Context make(Set<ObjectLabel> thisval, ContextArguments funArgs, Map<Integer, Value> specialRegs,
+                               LocalContext localContext, LocalContext localContextAtEntry) {
+        return Canonicalizer.get().canonicalize(new Context(thisval, funArgs, specialRegs, localContext, localContextAtEntry));
     }
 
     /**
@@ -96,17 +113,17 @@ public final class Context implements IContext<Context> { // TODO: canonicalize?
     }
 
     /**
-     * Returns the loop unrolling information.
+     * Returns the local context information.
      */
-    public Map<BeginLoopNode, Integer> getLoopUnrolling() {
-        return loopUnrolling;
+    public LocalContext getLocalContext() {
+        return localContext;
     }
 
     /**
-     * Returns the loop unrolling at entry information.
+     * Returns the local context at entry information.
      */
-    public Map<BeginLoopNode, Integer> getLoopUnrollingsAtEntry() {
-        return loopUnrollingsAtEntry;
+    public LocalContext getLocalContextAtEntry() {
+        return localContextAtEntry;
     }
 
     /**
@@ -114,11 +131,11 @@ public final class Context implements IContext<Context> { // TODO: canonicalize?
      */
     @Override
     public Context makeEntryContext() {
-        // reconstruct loopUnrolling from loopUnrollingsAtEntry (all other properties are unchanged within a function or for-in body)
-        if (loopUnrollingsAtEntry != null && loopUnrollingsAtEntry.equals(loopUnrolling)) {
+        // reconstruct localContext from localContextAtEntry (all other properties are unchanged within a function or for-in body)
+        if (localContextAtEntry != null && localContextAtEntry.equals(localContext)) {
             return this;
         }
-        return new Context(thisval, funArgs, specialRegs, loopUnrollingsAtEntry, loopUnrollingsAtEntry);
+        return make(thisval, funArgs, specialRegs, localContextAtEntry, localContextAtEntry);
     }
 
     @Override
@@ -143,9 +160,9 @@ public final class Context implements IContext<Context> { // TODO: canonicalize?
             return false;
         if (specialRegs != null && !specialRegs.equals(c.specialRegs))
             return false;
-        if ((loopUnrolling == null) != (c.loopUnrolling == null))
+        if ((localContext == null) != (c.localContext == null))
             return false;
-        return !(loopUnrolling != null && !loopUnrolling.equals(c.loopUnrolling));
+        return !(localContext != null && !localContext.equals(c.localContext));
     }
 
     @Override
@@ -174,10 +191,10 @@ public final class Context implements IContext<Context> { // TODO: canonicalize?
             s.append("specialRegs=").append(specialRegs);
             any = true;
         }
-        if (loopUnrolling != null) {
+        if (localContext != null) {
             if (any)
                 s.append(", ");
-            s.append("loopUnrolling=").append(loopUnrolling);
+            s.append("localContext=").append(localContext);
             //any = true;
         }
         s.append("}");

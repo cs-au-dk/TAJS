@@ -1,3 +1,4 @@
+test/anderson/anderson9.js: [definite] Ordinary program exit is unreachable
 test/anderson/anderson9.js:6:6: [definite] TypeError, accessing property of null/undefined
 test/anderson/anderson9.js:5:2: [definite] The conditional expression is always true
 test/anderson/anderson9.js:6:6: [definite] Variable x is null/undefined

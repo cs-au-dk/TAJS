@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,6 +27,21 @@ public enum ECMAScriptObjects implements HostObject {
     GLOBAL("<the global object>"),
 
     OBJECT("Object"),
+    OBJECT_DEFINE_PROPERTY("Object.defineProperty"),
+    OBJECT_CREATE("Object.create"),
+    OBJECT_DEFINE_PROPERTIES("Object.defineProperties"),
+    OBJECT_FREEZE("Object.freeze"),
+    OBJECT_GETOWNPROPERTYDESCRIPTOR("Object.getOwnPropertyDescriptor"),
+    OBJECT_GETOWNPROPERTYNAMES("Object.getOwnPropertyNames"),
+    OBJECT_GETPROTOTYPEOF("Object.getPrototypeOf"),
+    OBJECT_SETPROTOTYPEOF("Object.setPrototypeOf"),
+    OBJECT_ISEXTENSIBLE("Object.isExtensible"),
+    OBJECT_ISFROZEN("Object.isFrozen"),
+    OBJECT_ISSEALED("Object.isSealed"),
+    OBJECT_KEYS("Object.keys"),
+    OBJECT_PREVENTEXTENSIONS("Object.preventExtensions"),
+    OBJECT_SEAL("Object.seal"),
+
     OBJECT_PROTOTYPE("Object.prototype"),
     OBJECT_TOSTRING("Object.prototype.toString"),
     OBJECT_TOLOCALESTRING("Object.prototype.toLocaleString"),
@@ -34,7 +49,6 @@ public enum ECMAScriptObjects implements HostObject {
     OBJECT_HASOWNPROPERTY("Object.prototype.hasOwnProperty"),
     OBJECT_ISPROTOTYPEOF("Object.prototype.isPrototypeOf"),
     OBJECT_PROPERTYISENUMERABLE("Object.prototype.propertyIsEnumerable"),
-    OBJECT_DEFINE_PROPERTY("Object.defineProperty"),
     OBJECT_DEFINEGETTER("Object.prototype.__defineGetter__"),
     OBJECT_DEFINESETTER("Object.prototype.__defineSetter__"),
 
@@ -73,7 +87,6 @@ public enum ECMAScriptObjects implements HostObject {
     STRING_LASTINDEXOF("String.prototype.lastIndexOf"),
     STRING_LOCALECOMPARE("String.prototype.localeCompare"),
     STRING_MATCH("String.prototype.match"),
-    STRING_REPLACE("String.prototype.replace"),
     STRING_SEARCH("String.prototype.search"),
     STRING_SLICE("String.prototype.slice"),
     STRING_SPLIT("String.prototype.split"),
@@ -84,6 +97,8 @@ public enum ECMAScriptObjects implements HostObject {
     STRING_TOUPPERCASE("String.prototype.toUpperCase"),
     STRING_TOLOCALEUPPERCASE("String.prototype.toLocaleUpperCase"),
     STRING_TRIM("String.prototype.trim"),
+    STRING_TRIMLEFT("String.prototype.trimLeft"),
+    STRING_TRIMRIGHT("String.prototype.trimRight"),
     STRING_STARTSWITH("String.prototype.startsWith"),
     STRING_ENDSWITH("String.prototype.endsWith"),
 
@@ -167,7 +182,6 @@ public enum ECMAScriptObjects implements HostObject {
     DATE_SETUTCMONTH("Date.prototype.setUTCMonth"),
     DATE_SETFULLYEAR("Date.prototype.setFullYear"),
     DATE_SETUTCFULLYEAR("Date.prototype.setUTCFullYear"),
-    DATE_TOISOSTRING("Date.prototype.toISOString"),
     DATE_TOJSON("Date.prototype.toJSON"),
     DATE_TOUTCSTRING("Date.prototype.toUTCString"),
     DATE_GETYEAR("Date.prototype.getYear"),
@@ -202,19 +216,6 @@ public enum ECMAScriptObjects implements HostObject {
     JSON_PARSE("JSON.parse"),
     JSON_STRINGIFY("JSON.stringify"),
 
-    OBJECT_CREATE("Object.create"),
-    OBJECT_DEFINEPPROPERTIES("Object.defineProperties"),
-    OBJECT_FREEZE("Object.freeze"),
-    OBJECT_GETOWNPROPERTYDESCRIPTOR("Object.getOwnPropertyDescriptor"),
-    OBJECT_GETOWNPROPERTYNAMES("Object.getOwnPropertyNames"),
-    OBJECT_GETPROTOTYPEOF("Object.getPrototypeOf"),
-    OBJECT_ISEXTENSIBLE("Object.isExtensible"),
-    OBJECT_ISFROZEN("Object.isFrozen"),
-    OBJECT_ISSEALED("Object.isSealed"),
-    OBJECT_KEYS("Object.keys"),
-    OBJECT_PREVENTEXTENSIONS("Object.preventExtensions"),
-    OBJECT_SEAL("Object.seal"),
-
     EVAL("eval"),
     PARSEINT("parseInt"),
     PARSEFLOAT("parseFloat"),
@@ -229,30 +230,6 @@ public enum ECMAScriptObjects implements HostObject {
     ESCAPE("escape"),
     UNESCAPE("unescape"),
 
-    TAJS_DUMPVALUE("TAJS_dumpValue"), // nonstandard
-    TAJS_DUMPPROTOTYPE("TAJS_dumpPrototype"), // nonstandard
-    TAJS_DUMPOBJECT("TAJS_dumpObject"), // nonstandard
-    TAJS_DUMPSTATE("TAJS_dumpState"), // nonstandard
-    TAJS_DUMPMODIFIEDSTATE("TAJS_dumpModifiedState"), // nonstandard
-    TAJS_DUMPATTRIBUTES("TAJS_dumpAttributes"), // nonstandard
-    TAJS_DUMPEXPRESSION("TAJS_dumpExp"), //nonstandard
-    TAJS_DUMPNF("TAJS_dumpNF"), //nonstandard
-    TAJS_CONVERSION_TO_PRIMITIVE("TAJS_conversionToPrimitive"), // nonstandard
-    TAJS_GET_UI_EVENT("TAJS_getUIEvent"), // nonstandard
-    TAJS_GET_MOUSE_EVENT("TAJS_getMouseEvent"), // nonstandard
-    TAJS_GET_KEYBOARD_EVENT("TAJS_getKeyboardEvent"), // nonstandard
-    TAJS_GET_EVENT_LISTENER("TAJS_getEventListener"), // nonstandard
-    TAJS_GET_WHEEL_EVENT("TAJS_getWheelEvent"), // nonstandard
-    TAJS_GET_AJAX_EVENT("TAJS_getAjaxEvent"), // nonstandard
-    TAJS_ADD_CONTEXT_SENSITIVITY("TAJS_addContextSensitivity"), // nonstandard
-    TAJS_MAKE_CONTEXT_SENSITIVE("TAJS_makeContextSensitive"), // nonstandard
-    TAJS_ASSERT("TAJS_assert"), //nonstandard
-    TAJS_NEW_OBJECT("TAJS_newObject"),  // nonstandard
-    TAJS_NEW_ARRAY("TAJS_newArray"),  // nonstandard
-    TAJS_ASYNC_LISTEN("TAJS_asyncListen"), // nonstandard
-    TAJS_MAKE("TAJS_make"), // nonstandard
-    TAJS_JOIN("TAJS_join"), // nonstandard
-    TAJS_ASSERT_EQUALS("TAJS_assertEquals") // nonstandard
     ;
 
     private HostAPIs api;

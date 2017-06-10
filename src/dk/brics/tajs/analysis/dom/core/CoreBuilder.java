@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,6 @@
 package dk.brics.tajs.analysis.dom.core;
 
 import dk.brics.tajs.analysis.Solver;
-import dk.brics.tajs.lattice.State;
 
 public class CoreBuilder {
 
@@ -39,6 +38,7 @@ public class CoreBuilder {
         DOMEntityReference.build(c);
         DOMProcessingInstruction.build(c);
         DOMStringList.build(c);
+        DOMStringMap.build(c);
         DOMDocumentFragment.build(c);
         // Document
         DOMDocument.build(c);

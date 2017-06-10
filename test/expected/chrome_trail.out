@@ -1,7 +1,6 @@
 test/chromeexperiments/trail.html:125:13: [definite] TypeError, accessing property of null/undefined
 test/chromeexperiments/trail.html:134:13: [definite] TypeError, accessing property of null/undefined
-test/chromeexperiments/trail.html:166:29: [definite] Reading absent property width
-test/chromeexperiments/trail.html:166:51: [definite] Reading absent property height
+test/chromeexperiments/trail.html:70:3: [definite] The conditional expression is always true
 test/chromeexperiments/trail.html:113:2: [definite] The variable event is never used
 test/chromeexperiments/trail.html:117:2: [definite] The variable event is never used
 test/chromeexperiments/trail.html:125:13: [definite] Reading absent property (computed name)
@@ -9,7 +8,6 @@ test/chromeexperiments/trail.html:125:39: [definite] Unreachable code
 test/chromeexperiments/trail.html:134:13: [definite] Reading absent property (computed name)
 test/chromeexperiments/trail.html:134:39: [definite] Unreachable code
 test/chromeexperiments/trail.html:70:17: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/trail.html:71:14: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/trail.html:122:6: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/trail.html:125:13: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/trail.html:131:6: [maybe] TypeError, accessing property of null/undefined
@@ -18,11 +16,13 @@ test/chromeexperiments/trail.html:143:3: [maybe] TypeError, accessing property o
 test/chromeexperiments/trail.html:165:3: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/trail.html:168:21: [maybe] TypeError, accessing property of null/undefined
 test/chromeexperiments/trail.html:171:18: [maybe] TypeError, accessing property of null/undefined
-test/chromeexperiments/trail.html:122:6: [maybe] Reading absent property touches
-test/chromeexperiments/trail.html:125:13: [maybe] Reading absent property touches
-test/chromeexperiments/trail.html:131:6: [maybe] Reading absent property touches
-test/chromeexperiments/trail.html:134:13: [maybe] Reading absent property touches
-test/chromeexperiments/trail.html: [maybe] Uncaught exception, constructed at [test/chromeexperiments/trail.html:70:17, test/chromeexperiments/trail.html:71:14, test/chromeexperiments/trail.html:122:6, test/chromeexperiments/trail.html:125:13, test/chromeexperiments/trail.html:131:6, test/chromeexperiments/trail.html:134:13, test/chromeexperiments/trail.html:143:3, test/chromeexperiments/trail.html:165:3, test/chromeexperiments/trail.html:168:21, test/chromeexperiments/trail.html:171:18]
+test/chromeexperiments/trail.html:122:6: [maybe] Reading absent property touches of host object
+test/chromeexperiments/trail.html:125:13: [maybe] Reading absent property touches of host object
+test/chromeexperiments/trail.html:131:6: [maybe] Reading absent property touches of host object
+test/chromeexperiments/trail.html:134:13: [maybe] Reading absent property touches of host object
+test/chromeexperiments/trail.html:166:29: [maybe] Reading absent property width of host object
+test/chromeexperiments/trail.html:166:51: [maybe] Reading absent property height of host object
+test/chromeexperiments/trail.html: [maybe] Uncaught exception, constructed at [test/chromeexperiments/trail.html:70:17, test/chromeexperiments/trail.html:122:6, test/chromeexperiments/trail.html:125:13, test/chromeexperiments/trail.html:131:6, test/chromeexperiments/trail.html:134:13, test/chromeexperiments/trail.html:143:3, test/chromeexperiments/trail.html:165:3, test/chromeexperiments/trail.html:168:21, test/chromeexperiments/trail.html:171:18]
 test/chromeexperiments/trail.html:100:22: [maybe] Converting primitive number to object
 test/chromeexperiments/trail.html:166:6: [maybe] Conversion to number yields NaN
 test/chromeexperiments/trail.html:169:19: [maybe] Reading absent property (computed name)

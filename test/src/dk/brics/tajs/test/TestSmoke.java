@@ -1,9 +1,6 @@
 package dk.brics.tajs.test;
 
 import dk.brics.tajs.Main;
-import dk.brics.tajs.monitoring.AnalysisTimeLimiter;
-import dk.brics.tajs.monitoring.CompositeMonitoring;
-import dk.brics.tajs.monitoring.Monitoring;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.util.AnalysisLimitationException;
 import org.junit.Assert;
@@ -123,7 +120,8 @@ public class TestSmoke {
             Options.get().enableIncludeDom();
         }
         try {
-            Misc.run(new String[]{configuration.file}, new CompositeMonitoring(new Monitoring(), new AnalysisTimeLimiter(10 /* should be enough to excercise interesting paths */, true)));
+            Options.get().setAnalysisTimeLimit(10); //  should be enough to excercise interesting paths
+            Misc.run(configuration.file);
         } catch (AnalysisLimitationException e) {
             // ignore
         } catch (Exception e) {

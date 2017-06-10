@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,10 +26,10 @@ import com.google.javascript.jscomp.parsing.parser.trees.ProgramTree;
 import com.google.javascript.jscomp.parsing.parser.util.ErrorReporter;
 import com.google.javascript.jscomp.parsing.parser.util.SourcePosition;
 import dk.brics.tajs.flowgraph.SourceLocation;
+import dk.brics.tajs.flowgraph.SourceLocation.SourceLocationMaker;
 import dk.brics.tajs.util.AnalysisException;
 import dk.brics.tajs.util.Collections;
 
-import java.net.URL;
 import java.util.List;
 
 import static dk.brics.tajs.util.Collections.newList;
@@ -38,7 +38,7 @@ import static dk.brics.tajs.util.Collections.newList;
  * JavaScript parser.
  * Based on the parser from the Google Closure Compiler.
  */
-class JavaScriptParser {
+public class JavaScriptParser {
 
     private final Mode mode;
 
@@ -47,7 +47,7 @@ class JavaScriptParser {
     /**
      * Constructs a new parser.
      */
-    JavaScriptParser(Mode languageMode) {
+    public JavaScriptParser(Mode languageMode) {
         mode = languageMode;
         LanguageMode m;
         switch (mode) {
@@ -76,30 +76,29 @@ class JavaScriptParser {
      * Parses the given JavaScript code.
      * The syntax check includes break/continue label consistency and no duplicate parameters.
      *
-     * @param prettyFileName     file name or URL of the code
      * @param contents the code
      */
-    ParseResult parse(URL location, String prettyFileName, String contents) {
+    public ParseResult parse(String contents, SourceLocationMaker sourceLocationMaker) {
         final List<SyntaxMesssage> warnings = newList();
         final List<SyntaxMesssage> errors = newList();
 
         ErrorReporter errorReporter = new ErrorReporter() {
             @Override
             protected void reportError(SourcePosition sourcePosition, String message) {
-                errors.add(new SyntaxMesssage(message, new SourceLocation(sourcePosition.line, sourcePosition.column + 1, prettyFileName, location)));
+                errors.add(new SyntaxMesssage(message, sourceLocationMaker.make(sourcePosition.line, sourcePosition.column + 1, sourcePosition.line, sourcePosition.column + 1)));
             }
 
             @Override
             protected void reportWarning(SourcePosition sourcePosition, String message) {
-                warnings.add(new SyntaxMesssage(message, new SourceLocation(sourcePosition.line, sourcePosition.column + 1, prettyFileName, location)));
+                warnings.add(new SyntaxMesssage(message, sourceLocationMaker.make(sourcePosition.line, sourcePosition.column + 1, sourcePosition.line, sourcePosition.column + 1)));
             }
         };
 
         ProgramTree programAST = null;
         try {
-            programAST = new Parser(new Parser.Config(mode), errorReporter, new SourceFile(prettyFileName, contents)).parseProgram();
+            programAST = new Parser(new Parser.Config(mode), errorReporter, new SourceFile(sourceLocationMaker.makeUnspecifiedPosition().toString(), contents)).parseProgram();
         } catch (Exception e) {
-            errors.add(new SyntaxMesssage(String.format("%s: %s", e.getClass(), e.getMessage()), new SourceLocation(0, 0, prettyFileName, location)));
+            errors.add(new SyntaxMesssage(String.format("%s: %s", e.getClass(), e.getMessage()), sourceLocationMaker.makeUnspecifiedPosition()));
         }
         return new ParseResult(programAST, errors, warnings);
     }
@@ -139,7 +138,7 @@ class JavaScriptParser {
     /**
      * Result from parser.
      */
-    static class ParseResult {
+    public static class ParseResult {
 
         private ProgramTree programAST;
 
@@ -156,7 +155,7 @@ class JavaScriptParser {
         /**
          * Returns the AST, or null if parse error.
          */
-        ProgramTree getProgramAST() {
+        public ProgramTree getProgramAST() {
             return programAST;
         }
 

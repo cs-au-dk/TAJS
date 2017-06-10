@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,9 +19,9 @@ package dk.brics.tajs.analysis.dom.core;
 import dk.brics.tajs.analysis.Conversion;
 import dk.brics.tajs.analysis.FunctionCalls;
 import dk.brics.tajs.analysis.InitialStateBuilder;
-import dk.brics.tajs.analysis.NativeFunctions;
 import dk.brics.tajs.analysis.PropVarOperations;
 import dk.brics.tajs.analysis.Solver;
+import dk.brics.tajs.analysis.dom.DOMFunctions;
 import dk.brics.tajs.analysis.dom.DOMObjects;
 import dk.brics.tajs.analysis.dom.DOMWindow;
 import dk.brics.tajs.lattice.ObjectLabel;
@@ -50,9 +50,9 @@ public class DOMCharacterData {
     public static void build(Solver.SolverInterface c) {
         State s = c.getState();
         PropVarOperations pv = c.getAnalysis().getPropVarOperations();
-        CONSTRUCTOR = new ObjectLabel(DOMObjects.CHARACTERDATA_CONSTRUCTOR, ObjectLabel.Kind.FUNCTION);
-        PROTOTYPE = new ObjectLabel(DOMObjects.CHARACTERDATA_PROTOTYPE, ObjectLabel.Kind.OBJECT);
-        INSTANCES = new ObjectLabel(DOMObjects.CHARACTERDATA_INSTANCES, ObjectLabel.Kind.OBJECT);
+        CONSTRUCTOR = ObjectLabel.make(DOMObjects.CHARACTERDATA_CONSTRUCTOR, ObjectLabel.Kind.FUNCTION);
+        PROTOTYPE = ObjectLabel.make(DOMObjects.CHARACTERDATA_PROTOTYPE, ObjectLabel.Kind.OBJECT);
+        INSTANCES = ObjectLabel.make(DOMObjects.CHARACTERDATA_INSTANCES, ObjectLabel.Kind.OBJECT);
 
         // Constructor Object
         s.newObject(CONSTRUCTOR);
@@ -94,43 +94,43 @@ public class DOMCharacterData {
         State s = c.getState();
         switch (nativeobject) {
             case CHARACTERDATA_APPENDDATA: {
-                NativeFunctions.expectParameters(nativeobject, call, c, 1, 1);
+                DOMFunctions.expectParameters(nativeobject, call, c, 1, 1);
                 /* Value arg =*/
-                Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
+                Conversion.toString(FunctionCalls.readParameter(call, s, 0), c);
                 return Value.makeUndef();
             }
             case CHARACTERDATA_DELETEDATA: {
-                NativeFunctions.expectParameters(nativeobject, call, c, 2, 2);
+                DOMFunctions.expectParameters(nativeobject, call, c, 2, 2);
                 /* Value offset =*/
-                Conversion.toNumber(NativeFunctions.readParameter(call, s, 0), c);
+                Conversion.toNumber(FunctionCalls.readParameter(call, s, 0), c);
                 /* Value count =*/
-                Conversion.toNumber(NativeFunctions.readParameter(call, s, 1), c);
+                Conversion.toNumber(FunctionCalls.readParameter(call, s, 1), c);
                 return Value.makeUndef();
             }
             case CHARACTERDATA_REPLACEDATA: {
-                NativeFunctions.expectParameters(nativeobject, call, c, 3, 3);
+                DOMFunctions.expectParameters(nativeobject, call, c, 3, 3);
                 /* Value offset =*/
-                Conversion.toNumber(NativeFunctions.readParameter(call, s, 0), c);
+                Conversion.toNumber(FunctionCalls.readParameter(call, s, 0), c);
                 /* Value count =*/
-                Conversion.toNumber(NativeFunctions.readParameter(call, s, 1), c);
+                Conversion.toNumber(FunctionCalls.readParameter(call, s, 1), c);
                 /* Value arg =*/
-                Conversion.toString(NativeFunctions.readParameter(call, s, 2), c);
+                Conversion.toString(FunctionCalls.readParameter(call, s, 2), c);
                 return Value.makeUndef();
             }
             case CHARACTERDATA_SUBSTRINGDATA: {
-                NativeFunctions.expectParameters(nativeobject, call, c, 2, 2);
+                DOMFunctions.expectParameters(nativeobject, call, c, 2, 2);
                 /* Value offset =*/
-                Conversion.toNumber(NativeFunctions.readParameter(call, s, 0), c);
+                Conversion.toNumber(FunctionCalls.readParameter(call, s, 0), c);
                 /* Value count =*/
-                Conversion.toNumber(NativeFunctions.readParameter(call, s, 1), c);
+                Conversion.toNumber(FunctionCalls.readParameter(call, s, 1), c);
                 return Value.makeAnyStr();
             }
             case CHARACTERDATA_INSERTDATA: {
-                NativeFunctions.expectParameters(nativeobject, call, c, 2, 2);
+                DOMFunctions.expectParameters(nativeobject, call, c, 2, 2);
                 /* Value offset =*/
-                Conversion.toNumber(NativeFunctions.readParameter(call, s, 0), c);
+                Conversion.toNumber(FunctionCalls.readParameter(call, s, 0), c);
                 /* Value arg =*/
-                Conversion.toString(NativeFunctions.readParameter(call, s, 1), c);
+                Conversion.toString(FunctionCalls.readParameter(call, s, 1), c);
                 return Value.makeUndef();
             }
             default:

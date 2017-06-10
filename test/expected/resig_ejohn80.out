@@ -1,3 +1,4 @@
+test/resig/ejohn80.js: [definite] Exceptional program exit is unreachable
 test/resig/ejohn80.js:3:8: [maybe] Reading absent property (computed name)
 test/resig/ejohn80.js:17:8: [maybe] Reading absent property (computed name)
 test/resig/ejohn80.js:9:3: [info] Abstract value: Undef|IdentStr

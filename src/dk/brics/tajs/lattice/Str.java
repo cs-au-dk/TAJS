@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -59,14 +59,15 @@ public interface Str {
     boolean isMaybeStrIdentifier();
 
     /**
-     * Returns true if this value is maybe any string consisting of identifier parts.
+     * Returns true if this value is maybe any string consisting of identifier parts,
+     * ignoring identifier strings and UInt strings.
      */
-    boolean isMaybeStrIdentifierParts();
+    boolean isMaybeStrOtherIdentifierParts();
 
     /**
-     * Returns true if this value is maybe a fixed nonempty string followed by identifier parts.
+     * Returns true if this value is maybe a fixed nonempty prefix string.
      */
-    boolean isMaybeStrPrefixedIdentifierParts();
+    boolean isMaybeStrPrefix();
 
     /**
      * Returns true if this value is maybe any non-number, non-identifier-parts string.
@@ -84,9 +85,9 @@ public interface Str {
     boolean isStrJSON();
 
     /**
-     * Returns true if this value is definitely an identifier or identifier-parts string.
+     * Returns true if this value is definitely an identifier-parts string.
      */
-    boolean isStrIdentifierOrIdentifierParts();
+    boolean isStrIdentifierParts();
 
     /**
      * Returns true if this value is definitely an identifier string.
@@ -114,7 +115,7 @@ public interface Str {
     String getStr();
 
     /**
-     * Returns the prefix value, or null if definitely not a fixed nonempty string followed by identifier parts.
+     * Returns the prefix value, or null if definitely not a fixed nonempty prefix string.
      */
     String getPrefix();
 
@@ -159,9 +160,9 @@ public interface Str {
     Value joinStr(String v);
 
     /**
-     * Constructs a value as the join of this value and the given prefixed identifier-parts string.
+     * Constructs a value as the join of this value and the given prefix string.
      */
-    Value joinPrefixedIdentifierParts(String v);
+    Value joinPrefix(String v);
 
     /**
      * Constructs a value from this value where only the string facet is considered.
@@ -179,9 +180,9 @@ public interface Str {
     Value restrictToNotStrIdentifierParts();
 
     /**
-     * Constructs a value from this value but excluding the category of all strings that consist of a fixed nonempty string followed by identifier-parts.
+     * Constructs a value from this value but excluding the category of all strings that consist of a fixed nonempty prefix string.
      */
-    Value restrictToNotStrPrefixedIdentifierParts();
+    Value restrictToNotStrPrefix();
 
     /**
      * Constructs a value from this value but excluding the category of all UInt strings.

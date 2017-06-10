@@ -1,8 +1,9 @@
 test/micro/test04.js:5:16: [definite] Property is null/undefined
 test/micro/test04.js:4:52: [definite] Dead assignment, property wwwww is never read
-test/micro/test04.js:2:1: [info] Abstract value: [@Object#node7]
+test/micro/test04.js: [definite] Exceptional program exit is unreachable
+test/micro/test04.js:2:1: [info] Abstract value: [@Object#node11]
 test/micro/test04.js:5:1: [info] Abstract value: Null
-test/micro/test04.js:6:1: [info] Abstract value: [@Object#node7]
+test/micro/test04.js:6:1: [info] Abstract value: [@Object#node11]
 test/micro/test04.js:7:1: [info] Abstract value: true
 test/micro/test04.js:8:1: [info] Abstract value: 99999.0
 test/micro/test04.js:9:1: [info] Abstract value: "dfgcfdc"

@@ -2,17 +2,19 @@ package dk.brics.tajs.test;
 
 import com.google.javascript.jscomp.parsing.parser.trees.FunctionDeclarationTree;
 import com.google.javascript.jscomp.parsing.parser.trees.MemberLookupExpressionTree;
-import dk.brics.tajs.flowgraph.JavaScriptSource;
+import dk.brics.tajs.flowgraph.SourceLocation;
 import dk.brics.tajs.js2flowgraph.ASTInfo;
 import dk.brics.tajs.js2flowgraph.FlowGraphBuilder;
-import dk.brics.tajs.util.Collections;
 import org.junit.Test;
 
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
+import static dk.brics.tajs.util.Collections.newMap;
+import static dk.brics.tajs.util.Collections.newSet;
 import static org.junit.Assert.assertEquals;
 
 public class TestASTInfo {
@@ -20,7 +22,7 @@ public class TestASTInfo {
     @SafeVarargs
     @SuppressWarnings("varargs")
     private static <T> Set<T> set(T... vs) {
-        return Collections.newSet(Arrays.asList(vs));
+        return newSet(Arrays.asList(vs));
     }
 
     private static <T> T singleton(Collection<T> vs) {
@@ -264,6 +266,202 @@ public class TestASTInfo {
         assertEquals("x", map.values().iterator().next().iterator().next());
     }
 
+    @Test
+    public void conditionVariableReads1() {
+        ASTInfo astInfo = makeInfo("if(x){}");
+        assertEquals(set("x"), singleton(astInfo.getConditionsWithVariableReadsInTheCondition().values()));
+    }
+
+    @Test
+    public void conditionVariableReads2() {
+        ASTInfo astInfo = makeInfo("if(x){}if(y){}");
+        assertEquals(set(set("x"), set("y")), newSet(astInfo.getConditionsWithVariableReadsInTheCondition().values()));
+    }
+
+    @Test
+    public void conditionVariableReads3() {
+        ASTInfo astInfo = makeInfo("if(x){if(y){}}");
+        assertEquals(set(set("x"), set("y")), newSet(astInfo.getConditionsWithVariableReadsInTheCondition().values()));
+    }
+
+    @Test
+    public void conditionBodyVariableReads1() {
+        ASTInfo astInfo = makeInfo("if(_){x}");
+        assertEquals(set("x"), singleton(astInfo.getConditionsWithVariableReadsInTheBodies().values()));
+    }
+
+    @Test
+    public void conditionBodyVariableReads2() {
+        ASTInfo astInfo = makeInfo("if(_){x}if(_){y}");
+        assertEquals(set(set("x"), set("y")), newSet(astInfo.getConditionsWithVariableReadsInTheBodies().values()));
+    }
+
+    @Test
+    public void conditionBodyVariableReads3() {
+        ASTInfo astInfo = makeInfo("if(_){if(_){x}y}");
+        assertEquals(set(set("x"), set("_", "x", "y")), newSet(astInfo.getConditionsWithVariableReadsInTheBodies().values()));
+    }
+
+    @Test
+    public void conditionBodyVariableReads4() {
+        ASTInfo astInfo = makeInfo("if(_){}else{x}");
+        assertEquals(set("x"), singleton(astInfo.getConditionsWithVariableReadsInTheBodies().values()));
+    }
+
+    @Test
+    public void conditionBodyVariableReads5() {
+        ASTInfo astInfo = makeInfo("if(_){}else if(_){x}");
+        assertEquals(set(set("_", "x"), set("x")), newSet(astInfo.getConditionsWithVariableReadsInTheBodies().values()));
+    }
+
+    @Test
+    public void conditionVariableArgumentReads1() {
+        ASTInfo astInfo = makeInfo("if(f(x)){}");
+        assertEquals(set(Arrays.asList("x")), singleton(astInfo.getConditionsWithVariableReadsAsArgumentsInTheCondition().values()));
+    }
+
+    @Test
+    public void conditionVariableArgumentReads2() {
+        ASTInfo astInfo = makeInfo("if(f(x)){}if(f(y)){}");
+        assertEquals(set(set(Arrays.asList("x")), set(Arrays.asList("y"))), newSet(astInfo.getConditionsWithVariableReadsAsArgumentsInTheCondition().values()));
+    }
+
+    @Test
+    public void conditionVariableArgumentReads3() {
+        ASTInfo astInfo = makeInfo("if(f(x, y)){if(f(z)){}}");
+        assertEquals(set(set(Arrays.asList("x", "y")), set(Arrays.asList("z"))), newSet(astInfo.getConditionsWithVariableReadsAsArgumentsInTheCondition().values()));
+    }
+
+    @Test
+    public void conditionVariableArgumentReads4() {
+        ASTInfo astInfo = makeInfo("if(f(x, y) || f(z)){}");
+        assertEquals(set(set(Arrays.asList("x", "y"), Arrays.asList("z"))), newSet(astInfo.getConditionsWithVariableReadsAsArgumentsInTheCondition().values()));
+    }
+
+    @Test
+    public void conditionRefinedVariables1() {
+        ASTInfo astInfo = makeInfo("if(x){x}");
+        assertEquals(set("x"), singleton(astInfo.getConditionRefinedVariables().values()));
+    }
+
+    @Test
+    public void conditionRefinedVariables2() {
+        ASTInfo astInfo = makeInfo("if(x){x}if(y){}if(_){z}");
+        assertEquals(set("x"), singleton(astInfo.getConditionRefinedVariables().values()));
+    }
+
+    @Test
+    public void conditionRefinedArgumentVariables1() {
+        ASTInfo astInfo = makeInfo("if(f(x)){x}");
+        assertEquals(set(Arrays.asList("x")), singleton(astInfo.getConditionRefinedArgumentVariables().values()));
+    }
+
+    @Test
+    public void conditionRefinedArgumentVariables2() {
+        ASTInfo astInfo = makeInfo("if(f(x, y, z)){x; z}");
+        assertEquals(set(Arrays.asList("x", null, "z")), singleton(astInfo.getConditionRefinedArgumentVariables().values()));
+    }
+
+    @Test
+    public void conditionRefinedArgumentVariables3() {
+        ASTInfo astInfo = makeInfo("if(f(x, y) && g(z)){x; y; z;}");
+        assertEquals(set(Arrays.asList("x", "y"), Arrays.asList("z")), singleton(astInfo.getConditionRefinedArgumentVariables().values()));
+    }
+
+    @Test
+    public void nonStackVariables0() {
+        ASTInfo astInfo = makeInfo("function f(){}");
+        assertEquals(newMap(), astInfo.getNonStackVariables());
+    }
+
+    @Test
+    public void nonStackVariables1() {
+        ASTInfo astInfo = makeInfo("function f(){v}");
+        assertEquals(newMap(), astInfo.getNonStackVariables());
+    }
+
+    @Test
+    public void nonStackVariables2() {
+        ASTInfo astInfo = makeInfo("function f(v){}");
+        assertEquals(newMap(), astInfo.getNonStackVariables());
+    }
+
+    @Test
+    public void nonStackVariables3() {
+        ASTInfo astInfo = makeInfo("function f(v){v}");
+        assertEquals(newMap(), astInfo.getNonStackVariables());
+    }
+
+    @Test
+    public void nonStackVariables4() {
+        ASTInfo astInfo = makeInfo("function f(){ function g(v){v}}");
+        assertEquals(newMap(), astInfo.getNonStackVariables());
+    }
+
+    @Test
+    public void nonStackVariables5() {
+        ASTInfo astInfo = makeInfo("function f(){ function g(){v}}");
+        assertEquals(newMap(), astInfo.getNonStackVariables());
+    }
+
+    @Test
+    public void nonStackVariables6() {
+        ASTInfo astInfo = makeInfo("function f(v){ function g(v){v}}");
+        assertEquals(newMap(), astInfo.getNonStackVariables());
+    }
+
+    @Test
+    public void nonStackVariables7() {
+        ASTInfo astInfo = makeInfo("function f(v){ v; function g(v){v}}");
+        assertEquals(newMap(), astInfo.getNonStackVariables());
+    }
+
+    @Test
+    public void nonStackVariables8() {
+        ASTInfo astInfo = makeInfo("function f(v){ function g(){v}}");
+        assertEquals(set("v"), extractNonStackVariables(astInfo));
+    }
+
+    @Test
+    public void nonStackVariables9() {
+        ASTInfo astInfo = makeInfo("function f(v1){ function g(){v1} function h(v2){v2}}");
+        assertEquals(set("v1"), extractNonStackVariables(astInfo));
+    }
+
+    @Test
+    public void nonStackVariables10() {
+        ASTInfo astInfo = makeInfo("function f(v1, v2){ function g(){v1} function h(){v2}}");
+        assertEquals(set("v1", "v2"), extractNonStackVariables(astInfo));
+    }
+
+    @Test
+    public void nonStackVariables11() {
+        ASTInfo astInfo = makeInfo("function f(){ var v; function g(){v}}");
+        assertEquals(set("v"), extractNonStackVariables(astInfo));
+    }
+
+    @Test
+    public void nonStackVariables12() {
+        ASTInfo astInfo = makeInfo("function f(v1, v2){ function g(){v1; function h(){v2}}}");
+        assertEquals(set("v1", "v2"), extractNonStackVariables(astInfo));
+    }
+
+    @Test
+    public void nonStackVariables13() {
+        ASTInfo astInfo = makeInfo("function f(v1){ function g(v2){v1; function h(){v2}}}");
+        assertEquals(set("v1", "v2"), extractNonStackVariables(astInfo));
+    }
+
+    @Test
+    public void nonStackVariables14() {
+        ASTInfo astInfo = makeInfo("function f(){ for(var v in o){} function g(){v;}}");
+        assertEquals(set("v"), extractNonStackVariables(astInfo));
+    }
+
+    private Set<String> extractNonStackVariables(ASTInfo astInfo) {
+        return astInfo.getNonStackVariables().values().stream().flatMap(Set::stream).collect(Collectors.toSet());
+    }
+
     private <T> T getFunctionEntry(String name, Map<FunctionDeclarationTree, T> map) {
         for (Map.Entry<FunctionDeclarationTree, T> functionDeclarationTreeTEntry : map.entrySet()) {
             FunctionDeclarationTree declaration = functionDeclarationTreeTEntry.getKey();
@@ -275,8 +473,9 @@ public class TestASTInfo {
     }
 
     private ASTInfo makeInfo(String source) {
-        FlowGraphBuilder builder = new FlowGraphBuilder(null, "dummy.js");
-        builder.transformStandAloneCode(JavaScriptSource.makeFileCode(null, "dummy.js", source));
+        SourceLocation.SyntheticLocationMaker sourceLocationMaker = new SourceLocation.SyntheticLocationMaker("synthetic");
+        FlowGraphBuilder builder = FlowGraphBuilder.makeForMain(sourceLocationMaker);
+        builder.transformStandAloneCode(source, sourceLocationMaker);
         builder.close();
         return builder.getAstInfo();
     }

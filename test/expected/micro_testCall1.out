@@ -1,43 +1,43 @@
+test/micro/testCall1.js: [definite] Exceptional program exit is unreachable
 test/micro/testCall1.js:18:5: [definite] The variable y is never used
-test/micro/testCall1.js:2:2: [info] Abstract value: [@Object#node5]
+test/micro/testCall1.js:2:2: [info] Abstract value: [@Object#node9]
 test/micro/testCall1.js:3:2: [info] Abstract state:
 Abstract state:
-  Execution context: ScopeChain=[[@activation#node34],[@<the global object>[native]]], VariableObject=[@activation#node34], this=[@<the global object>[native]]
+  Execution context: ScopeChain=[[@activation#node37],[@<the global object>[native]]], VariableObject=[@activation#node37], this=Null
   Summarized: maybe=[], definitely=[]
   Store (excluding basis and default objects): 
-    @<the global object>[native] (<initial state>): {TAJS_dumpState:^(@<the global object>[native].TAJS_dumpState[present]),TAJS_dumpValue:^(@<the global object>[native].TAJS_dumpValue[present]),[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Prototype]]=?,[[Value]]=?,[[Scope]]=?}
-    @activation#node34 (test/micro/testCall1.js:1:15): {TAJS_dumpState:^(@activation#node34.TAJS_dumpState[absent]),TAJS_dumpValue:^(@activation#node34.TAJS_dumpValue[absent]),[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Value]]=?,[[Scope]]=?}
   Registers: 
     v1=Undef
-    v6=[@<the global object>[native]]
-    v7=^(@<the global object>[native].TAJS_dumpState[present])
-test/micro/testCall1.js:7:2: [info] Abstract value: [@Object#node9]
+test/micro/testCall1.js:7:2: [info] Abstract value: [@Object#node13]
 test/micro/testCall1.js:8:2: [info] Abstract state:
 Abstract state:
-  Execution context: ScopeChain=[[@activation#node45],[@<the global object>[native]]], VariableObject=[@activation#node45], this=[@<the global object>[native]]
+  Execution context: ScopeChain=[[@activation#node46],[@<the global object>[native]]], VariableObject=[@activation#node46], this=Null
   Summarized: maybe=[], definitely=[]
   Store (excluding basis and default objects): 
-    @<the global object>[native] (<initial state>): {TAJS_dumpState:^(@<the global object>[native].TAJS_dumpState[present]),TAJS_dumpValue:^(@<the global object>[native].TAJS_dumpValue[present]),[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Prototype]]=?,[[Value]]=?,[[Scope]]=?}
-    @activation#node45 (test/micro/testCall1.js:6:15): {TAJS_dumpState:^(@activation#node45.TAJS_dumpState[absent]),TAJS_dumpValue:^(@activation#node45.TAJS_dumpValue[absent]),[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Value]]=?,[[Scope]]=?}
   Registers: 
     v1=Undef
-    v6=[@<the global object>[native]]
-    v7=^(@<the global object>[native].TAJS_dumpState[present])
 test/micro/testCall1.js:19:1: [info] Abstract state:
 Abstract state:
-  Execution context: ScopeChain=[[@<the global object>[native]]], VariableObject=[@<the global object>[native]], this=[@<the global object>[native]]
-  Summarized: maybe=[@arguments#node45, @arguments#node34, @activation#node45, @activation#node34, @Object#node9, @Object#node6, @Object#node5, @Object#node10, @<anonymous>#fun2, @<anonymous>#fun1], definitely=[@Object#node9, @Object#node6, @Object#node5, @Object#node10, @<anonymous>#fun2, @<anonymous>#fun1]
+  Execution context: ScopeChain=[[@<the global object>[native]]], VariableObject=[@<the global object>[native]], this=Null
+  Summarized: maybe=[@replace#fun4, @arguments#node55, @arguments#node46, @arguments#node37, @activation#node55, @activation#node46, @activation#node37, @Object#node9, @Object#node70, @Object#node7, @Object#node63, @Object#node14, @Object#node13, @Object#node10, @<anonymous>#fun3, @<anonymous>#fun2, @<anonymous>#fun1], definitely=[@replace#fun4, @arguments#node55, @activation#node55, @Object#node9, @Object#node70, @Object#node7, @Object#node63, @Object#node14, @Object#node13, @Object#node10, @<anonymous>#fun3, @<anonymous>#fun2, @<anonymous>#fun1]
   Store (excluding basis and default objects): 
-    @<the global object>[native] (<initial state>): {Math:[@Math[native]],TAJS_dumpState:[@TAJS_dumpState[native]],TAJS_dumpValue:[@TAJS_dumpValue[native]],x:[@Object#node9, @Object#node5],x1:[@Object#node5],x2:[@Object#node9],y:8.0|"7foo",[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Prototype]]=[@Object.prototype[native]],[[Value]]=?,[[Scope]]=?}
+    @<the global object>[native] (<initial state>): {Math:[@Math[native]],Object:[@Object[native]],String:[@String[native]],x:[@Object#node9, @Object#node13],x1:[@Object#node9],x2:[@Object#node13],y:8.0|"7foo",[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Prototype]]=[@Object.prototype[native]],[[Value]]=?,[[Scope]]=?}
     @Math[native] (<initial state>): {random:^(@Math[native].random[present]),[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Prototype]]=?,[[Value]]=?,[[Scope]]=?}
-    @Object.prototype[native] (<initial state>): {m:^(@Object.prototype[native].m[absent]),x:^(@Object.prototype[native].x[absent]),x1:^(@Object.prototype[native].x1[absent]),x2:^(@Object.prototype[native].x2[absent]),y:^(@Object.prototype[native].y[absent]),[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Prototype]]=Null,[[Value]]=?,[[Scope]]=?}
-    @Object#node5 (test/micro/testCall1.js:1:10): {m:[@<anonymous>#fun1],[[Prototype]]=[@Object.prototype[native]]}
-    @<anonymous>#fun1 (test/micro/testCall1.js:1:15): {length:1.0,name:"",prototype:[@Object#node6],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@<the global object>[native]]]}
-    @Object#node6 (test/micro/testCall1.js:1:15): {constructor:[@<anonymous>#fun1],[[Prototype]]=[@Object.prototype[native]],[[Value]]=NaN}
-    @Object#node9 (test/micro/testCall1.js:6:10): {m:[@<anonymous>#fun2],[[Prototype]]=[@Object.prototype[native]]}
-    @<anonymous>#fun2 (test/micro/testCall1.js:6:15): {length:1.0,name:"",prototype:[@Object#node10],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@<the global object>[native]]]}
-    @Object#node10 (test/micro/testCall1.js:6:15): {constructor:[@<anonymous>#fun2],[[Prototype]]=[@Object.prototype[native]],[[Value]]=NaN}
+    @Object.prototype[native] (<initial state>): {configurable:^(@Object.prototype[native].configurable[absent]),enumerable:^(@Object.prototype[native].enumerable[absent]),get:^(@Object.prototype[native].get[absent]),m:^(@Object.prototype[native].m[absent]),replace:^(@Object.prototype[native].replace[absent]),set:^(@Object.prototype[native].set[absent]),value:^(@Object.prototype[native].value[absent]),writable:^(@Object.prototype[native].writable[absent]),x:^(@Object.prototype[native].x[absent]),x1:^(@Object.prototype[native].x1[absent]),x2:^(@Object.prototype[native].x2[absent]),y:^(@Object.prototype[native].y[absent]),[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Prototype]]=Null,[[Value]]=?,[[Scope]]=?}
+    @Object[native] (<initial state>): {defineProperty:[@Object.defineProperty[native]],[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Prototype]]=?,[[Value]]=?,[[Scope]]=?}
+    @String.prototype[native] (<initial state>): {replace:[@replace#fun4],[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Prototype]]=[@Object.prototype[native]],[[Value]]="",[[Scope]]=?}
+    @String[native] (<initial state>): {prototype:[@String.prototype[native]],[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Prototype]]=?,[[Value]]=?,[[Scope]]=?}
+    @Object#node7 (host-environment-sources-loader): {constructor:[@<anonymous>#fun3],[[Prototype]]=[@Object.prototype[native]],[[Value]]=NaN}
+    @Object#node9 (test/micro/testCall1.js:1:10): {m:[@<anonymous>#fun1],[[Prototype]]=[@Object.prototype[native]]}
+    @<anonymous>#fun1 (test/micro/testCall1.js:1:15): {length:1.0,name:"",prototype:[@Object#node10],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@<the global object>[native]]]}
+    @Object#node10 (test/micro/testCall1.js:1:15): {constructor:[@<anonymous>#fun1],[[Prototype]]=[@Object.prototype[native]],[[Value]]=NaN}
+    @Object#node13 (test/micro/testCall1.js:6:10): {m:[@<anonymous>#fun2],[[Prototype]]=[@Object.prototype[native]]}
+    @<anonymous>#fun2 (test/micro/testCall1.js:6:15): {length:1.0,name:"",prototype:[@Object#node14],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@<the global object>[native]]]}
+    @Object#node14 (test/micro/testCall1.js:6:15): {constructor:[@<anonymous>#fun2],[[Prototype]]=[@Object.prototype[native]],[[Value]]=NaN}
+    @<anonymous>#fun3 (HOST(string-replace-model.js):1:1): {length:0.0,name:"",prototype:[@Object#node7],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@<the global object>[native]]]}
+    @activation#node55 (HOST(string-replace-model.js):1:1): {arguments:[@arguments#node55]}
+    @arguments#node55 (HOST(string-replace-model.js):1:1): {callee:[@<anonymous>#fun3],length:0.0,[[Prototype]]=[@Object.prototype[native]]}
+    @Object#node70 (HOST(string-replace-model.js):3:12): {constructor:[@replace#fun4],[[Prototype]]=[@Object.prototype[native]],[[Value]]=NaN}
+    @replace#fun4 (HOST(string-replace-model.js):3:12): {length:2.0,name:"replace",prototype:[@Object#node70],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@activation#node55],[@<the global object>[native]]]}
   Registers: 
     v1=Undef
-    v15=[@<the global object>[native]]
-    v16=[@TAJS_dumpState[native]]

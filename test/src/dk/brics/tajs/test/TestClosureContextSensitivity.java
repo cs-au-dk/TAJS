@@ -8,7 +8,6 @@ import dk.brics.tajs.monitoring.CompositeMonitoring;
 import dk.brics.tajs.monitoring.DefaultAnalysisMonitoring;
 import dk.brics.tajs.monitoring.IAnalysisMonitoring;
 import dk.brics.tajs.monitoring.Monitoring;
-import dk.brics.tajs.monitoring.OrdinaryExitReachableChecker;
 import dk.brics.tajs.options.Options;
 import org.junit.Before;
 import org.junit.Test;
@@ -167,7 +166,7 @@ public class TestClosureContextSensitivity {
 
     private void test(Value expected, String... sourceLines) {
         TestMonitor testMonitor = new TestMonitor();
-        IAnalysisMonitoring monitor = CompositeMonitoring.buildFromList(testMonitor, new Monitoring(), new OrdinaryExitReachableChecker());
+        IAnalysisMonitoring monitor = CompositeMonitoring.buildFromList(testMonitor, new Monitoring());
         Misc.runSource(sourceLines, monitor);
         assertEquals(expected.toString(), testMonitor.state.readVariableDirect("RESULT").toString());
     }
@@ -177,7 +176,7 @@ public class TestClosureContextSensitivity {
         private State state;
 
         @Override
-        public void visitPostBlockTransfer(BasicBlock b, State state) {
+        public void visitBlockTransferPost(BasicBlock b, State state) {
             if (b.getFunction().isMain() && b.getFunction().getOrdinaryExit() == b) {
                 this.state = state;
             }

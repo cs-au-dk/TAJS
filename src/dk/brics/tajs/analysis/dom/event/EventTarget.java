@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2016 Aarhus University
+ * Copyright 2009-2017 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,9 +18,9 @@ package dk.brics.tajs.analysis.dom.event;
 
 import dk.brics.tajs.analysis.Conversion;
 import dk.brics.tajs.analysis.FunctionCalls;
-import dk.brics.tajs.analysis.NativeFunctions;
 import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.analysis.dom.DOMEvents;
+import dk.brics.tajs.analysis.dom.DOMFunctions;
 import dk.brics.tajs.analysis.dom.DOMObjects;
 import dk.brics.tajs.analysis.dom.DOMWindow;
 import dk.brics.tajs.analysis.dom.core.DOMNode;
@@ -58,6 +58,7 @@ public class EventTarget {
         // DOM LEVEL 0
         createDOMFunction(DOMWindow.WINDOW, DOMObjects.WINDOW_ADD_EVENT_LISTENER, "addEventListener", 3, c);
         createDOMFunction(DOMWindow.WINDOW, DOMObjects.WINDOW_REMOVE_EVENT_LISTENER, "removeEventListener", 3, c);
+        createDOMFunction(DOMWindow.WINDOW, DOMObjects.EVENT_TARGET_DISPATCH_EVENT, "dispatchEvent", 1, c);
     }
 
     public static Value evaluate(DOMObjects nativeObject, FunctionCalls.CallInfo call, Solver.SolverInterface c) {
@@ -69,11 +70,11 @@ public class EventTarget {
          */
             case EVENT_TARGET_ADD_EVENT_LISTENER:
             case WINDOW_ADD_EVENT_LISTENER: {
-                NativeFunctions.expectParameters(nativeObject, call, c, 2, 3);
-                Value type = Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
-                Value function = NativeFunctions.readParameter(call, s, 1);
+                DOMFunctions.expectParameters(nativeObject, call, c, 2, 3);
+                Value type = Conversion.toString(FunctionCalls.readParameter(call, s, 0), c);
+                Value function = FunctionCalls.readParameter(call, s, 1);
             /* Value useCapture =*/
-                Conversion.toBoolean(NativeFunctions.readParameter(call, s, 2));
+                Conversion.toBoolean(FunctionCalls.readParameter(call, s, 2));
                 EventType kind;
                 if (type.isMaybeSingleStr()) {
                     kind = EventType.getEventHandlerTypeFromString(type.getStr());
@@ -85,19 +86,19 @@ public class EventTarget {
             }
             case EVENT_TARGET_REMOVE_EVENT_LISTENER:
             case WINDOW_REMOVE_EVENT_LISTENER: {
-                NativeFunctions.expectParameters(nativeObject, call, c, 2, 3);
-                Value type = Conversion.toString(NativeFunctions.readParameter(call, s, 0), c);
-                Value function = NativeFunctions.readParameter(call, s, 1);
+                DOMFunctions.expectParameters(nativeObject, call, c, 2, 3);
+                Value type = Conversion.toString(FunctionCalls.readParameter(call, s, 0), c);
+                Value function = FunctionCalls.readParameter(call, s, 1);
             /* Value useCapture =*/
-                Conversion.toBoolean(NativeFunctions.readParameter(call, s, 2));
-                // FIXME: testUneval29 triggers this message.
+                Conversion.toBoolean(FunctionCalls.readParameter(call, s, 2));
+                // TODO: testUneval29 triggers this message.
 
                 // sound to ignore these functions
                 // c.getMonitoring().addMessage(call.getSourceNode(), Severity.HIGH, nativeObject + " not implemented");
                 return Value.makeUndef();
             }
             case EVENT_TARGET_DISPATCH_EVENT: {
-                NativeFunctions.expectParameters(nativeObject, call, c, 1, 1);
+                DOMFunctions.expectParameters(nativeObject, call, c, 1, 1);
                 c.getMonitoring().addMessage(call.getSourceNode(), Severity.HIGH, nativeObject + " not implemented");
                 return Value.makeUndef();
             }

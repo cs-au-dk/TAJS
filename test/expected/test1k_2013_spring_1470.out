@@ -1,0 +1,52 @@
+test/1k2013spring/1470.js:45:14: [definite] The conditional expression is always true
+test/1k2013spring/1470.js:73:13: [definite] The conditional expression is always true
+test/1k2013spring/1470.js:85:11: [definite] The conditional expression is always true
+test/1k2013spring/1470.js:20:21: [maybe] ReferenceError, reading absent variable K
+test/1k2013spring/1470.js:32:3: [maybe] ReferenceError, reading absent variable a
+test/1k2013spring/1470.js:33:23: [maybe] ReferenceError, reading absent variable D
+test/1k2013spring/1470.js:33:25: [maybe] ReferenceError, reading absent variable D
+test/1k2013spring/1470.js:35:14: [maybe] ReferenceError, reading absent variable u
+test/1k2013spring/1470.js:37:3: [maybe] ReferenceError, reading absent variable x
+test/1k2013spring/1470.js:37:6: [maybe] ReferenceError, reading absent variable K
+test/1k2013spring/1470.js:38:3: [maybe] ReferenceError, reading absent variable y
+test/1k2013spring/1470.js:40:5: [maybe] ReferenceError, reading absent variable A
+test/1k2013spring/1470.js:40:5: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1470.js:41:5: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1470.js:43:9: [maybe] ReferenceError, reading absent variable n
+test/1k2013spring/1470.js:43:11: [maybe] ReferenceError, reading absent variable N
+test/1k2013spring/1470.js:45:5: [maybe] ReferenceError, reading absent variable s
+test/1k2013spring/1470.js:45:10: [maybe] ReferenceError, reading absent variable s
+test/1k2013spring/1470.js:45:35: [maybe] ReferenceError, reading absent variable W
+test/1k2013spring/1470.js:45:44: [maybe] ReferenceError, reading absent variable W
+test/1k2013spring/1470.js:45:62: [maybe] ReferenceError, reading absent variable $
+test/1k2013spring/1470.js:48:10: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1470.js:52:25: [maybe] ReferenceError, reading absent variable D
+test/1k2013spring/1470.js:52:41: [maybe] ReferenceError, reading absent variable G
+test/1k2013spring/1470.js:56:12: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1470.js:67:13: [maybe] ReferenceError, reading absent variable G
+test/1k2013spring/1470.js:67:29: [maybe] ReferenceError, reading absent variable G
+test/1k2013spring/1470.js:78:11: [maybe] ReferenceError, reading absent variable u
+test/1k2013spring/1470.js:93:15: [maybe] ReferenceError, reading absent variable G
+test/1k2013spring/1470.js:93:26: [maybe] ReferenceError, reading absent variable $
+test/1k2013spring/1470.js:99:15: [maybe] ReferenceError, reading absent variable G
+test/1k2013spring/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
+test/1k2013spring/1470.js:20:23: [maybe] Reading absent property which of host object
+test/1k2013spring/1470.js: [maybe] Uncaught exception, constructed at [test/1k2013spring/1470.js:20:21, test/1k2013spring/1470.js:32:3, test/1k2013spring/1470.js:33:23, test/1k2013spring/1470.js:33:25, test/1k2013spring/1470.js:35:14, test/1k2013spring/1470.js:37:3, test/1k2013spring/1470.js:37:6, test/1k2013spring/1470.js:38:3, test/1k2013spring/1470.js:40:5, test/1k2013spring/1470.js:41:5, test/1k2013spring/1470.js:43:9, test/1k2013spring/1470.js:43:11, test/1k2013spring/1470.js:45:5, test/1k2013spring/1470.js:45:10, test/1k2013spring/1470.js:45:35, test/1k2013spring/1470.js:45:44, test/1k2013spring/1470.js:45:62, test/1k2013spring/1470.js:48:10, test/1k2013spring/1470.js:52:25, test/1k2013spring/1470.js:52:41, test/1k2013spring/1470.js:56:12, test/1k2013spring/1470.js:67:13, test/1k2013spring/1470.js:67:29, test/1k2013spring/1470.js:78:11, test/1k2013spring/1470.js:93:15, test/1k2013spring/1470.js:93:26, test/1k2013spring/1470.js:99:15, test/1k2013spring/shim.js:9:5]
+test/1k2013spring/1470.js:37:6: [maybe] Conversion to number yields NaN
+test/1k2013spring/1470.js:37:6: [maybe] Reading absent property (computed name)
+test/1k2013spring/1470.js:37:12: [maybe] Conversion to number yields NaN
+test/1k2013spring/1470.js:37:14: [maybe] Reading absent property (computed name)
+test/1k2013spring/1470.js:38:6: [maybe] Conversion to number yields NaN
+test/1k2013spring/1470.js:38:6: [maybe] Reading absent property (computed name)
+test/1k2013spring/1470.js:38:12: [maybe] Conversion to number yields NaN
+test/1k2013spring/1470.js:38:14: [maybe] Reading absent property (computed name)
+test/1k2013spring/1470.js:40:5: [maybe] Reading absent property (computed name)
+test/1k2013spring/1470.js:41:5: [maybe] Reading absent property (computed name)
+test/1k2013spring/1470.js:45:14: [maybe] Reading absent property (computed name)
+test/1k2013spring/1470.js:46:20: [maybe] Reading absent property (computed name)
+test/1k2013spring/1470.js:49:21: [maybe] Conversion to number yields NaN
+test/1k2013spring/1470.js:49:21: [maybe] Reading absent property (computed name)
+test/1k2013spring/1470.js:52:28: [maybe] Conversion to number yields NaN
+test/1k2013spring/1470.js:52:30: [maybe] Reading absent property (computed name)
+test/1k2013spring/1470.js:54:27: [maybe] Reading absent property (computed name)
+test/1k2013spring/1470.js:87:49: [maybe] Reading absent property (computed name)
