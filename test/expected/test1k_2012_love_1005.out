@@ -71,3 +71,4 @@ test/1k2012love/1005.js:58:15: [maybe] The variable cl has values with different
 test/1k2012love/1005.js:59:11: [maybe] Converting primitive string to object
 test/1k2012love/1005.js:67:20: [maybe] Converting undefined to string
 test/1k2012love/1005.js:67:24: [maybe] The variable cl has values with different types
+Soundness testing succeeded for 262 checks (with 0 expected failures)

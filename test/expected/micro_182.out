@@ -1,2 +1,3 @@
 test/micro/test182.js: [definite] Exceptional program exit is unreachable
 test/micro/test182.js:15:1: [maybe] Converting object to number
+Soundness testing succeeded for 9 checks (with 0 expected failures)

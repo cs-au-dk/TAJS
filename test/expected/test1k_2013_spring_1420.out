@@ -156,3 +156,4 @@ test/1k2013spring/1420.js:73:5: [info] Reading from unknown property that may ca
 test/1k2013spring/1420.js:74:12: [info] Reading from unknown property that may cause loss of precision
 test/1k2013spring/1420.js:110:7: [info] Reading from unknown property that may cause loss of precision
 test/1k2013spring/1420.js:111:32: [info] Reading from unknown property that may cause loss of precision
+Soundness testing succeeded for 547 checks (with 0 expected failures)

@@ -4,3 +4,4 @@ test/micro/test102.js:4:1: [info] Abstract value: 799.0
 test/micro/test102.js:6:2: [info] Abstract value: "foo"
 test/micro/test102.js:9:1: [info] Abstract value: UInt
 test/micro/test102.js:10:1: [info] Abstract value: "bar"
+Soundness testing succeeded for 214 checks (with 0 expected failures)

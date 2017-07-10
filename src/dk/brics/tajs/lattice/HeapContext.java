@@ -17,11 +17,11 @@
 package dk.brics.tajs.lattice;
 
 import dk.brics.tajs.util.Canonicalizer;
+import dk.brics.tajs.util.Collectors;
 import dk.brics.tajs.util.DeepImmutable;
 
 import java.util.Map;
 import java.util.Set;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static dk.brics.tajs.util.Collections.newSet;

@@ -42,8 +42,9 @@ import dk.brics.tajs.flowgraph.jsnodes.IfNode;
 import dk.brics.tajs.flowgraph.jsnodes.ReturnNode;
 import dk.brics.tajs.flowgraph.jsnodes.ThrowNode;
 import dk.brics.tajs.flowgraph.jsnodes.UnaryOperatorNode;
-import dk.brics.tajs.js2flowgraph.Reference.DynamicProperty;
-import dk.brics.tajs.js2flowgraph.Reference.StaticProperty;
+import dk.brics.tajs.flowgraph.syntaticinfo.DynamicProperty;
+import dk.brics.tajs.flowgraph.syntaticinfo.StaticProperty;
+import dk.brics.tajs.flowgraph.syntaticinfo.SyntacticReference;
 import dk.brics.tajs.util.AnalysisException;
 import dk.brics.tajs.util.Pair;
 
@@ -105,11 +106,7 @@ public class FunctionBuilderHelper {
                     ((IfNode) clonedNode).setSuccessors(translationMap.get(origIfNode.getSuccTrue()), translationMap.get(origIfNode.getSuccFalse()));
                 }
                 if (clonedNode.getDuplicateOf() == null) {
-                    if (clonedNode instanceof EndForInNode || clonedNode instanceof EndWithNode) {
-                        // FIXME remove this special case. But somehow avoid doing it such that the original node has index = -1!
-                    } else {
-                        clonedNode.setDuplicateOf(origNode);
-                    }
+                    clonedNode.setDuplicateOf(origNode);
                 }
                 clone.addNode(clonedNode);
             }
@@ -315,7 +312,7 @@ public class FunctionBuilderHelper {
     /**
      * Creates an assume node for the given reference being non-null/undefined.
      */
-    public static AssumeNode makeAssumeNonNullUndef(Reference base) {
+    public static AssumeNode makeAssumeNonNullUndef(SyntacticReference base) {
         if (base == null)
             return null;
         switch (base.type) {

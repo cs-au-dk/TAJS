@@ -16,20 +16,23 @@
 
 package dk.brics.tajs.flowgraph;
 
-import dk.brics.tajs.flowgraph.WritableSyntacticInformation.SyntacticInformation;
-import dk.brics.tajs.js2flowgraph.FlowGraphMutator;
+import dk.brics.tajs.flowgraph.syntaticinfo.RawSyntacticInformation;
+import dk.brics.tajs.flowgraph.syntaticinfo.SyntacticQueries;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.util.AnalysisException;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URL;
 import java.nio.file.Path;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import static dk.brics.tajs.util.Collections.newList;
+import static dk.brics.tajs.util.Collections.newMap;
 import static dk.brics.tajs.util.Collections.newSet;
 
 /**
@@ -60,6 +63,11 @@ public class FlowGraph {
     private int number_of_nodes;
 
     /**
+     * Total number of user-code (i.e. not from host environment and not marked as artificial) nodes.
+     */
+    private int number_of_user_code_nodes;
+
+    /**
      * Total number of functions.
      */
     private int number_of_functions;
@@ -67,7 +75,22 @@ public class FlowGraph {
     /**
      * Syntactic hints to be used for context sensitivity.
      */
-    private WritableSyntacticInformation syntacticInformation;
+    private RawSyntacticInformation rawSyntacticInformation;
+
+    /**
+     * Sources in the flowgraph that belongs to the host-environment, as opposed to user-provided source code.
+     */
+    private Set<URL> hostEnvironmentLocations;
+
+    /**
+     * Cache of dynamically created functions.
+     */
+    private Map<FunctionCacheKey, Function> functionCache = newMap();
+
+    /**
+     * Additional syntactic information to be used for mapping between flowgraph locations and locations from value logs (mainly used for soundness testing)
+     */
+    private ValueLogLocationInformation valueLogLocationInformation;
 
     /**
      * Constructs a new uninitialized flow graph.
@@ -75,7 +98,9 @@ public class FlowGraph {
     public FlowGraph(Function main) {
         this.main = main;
         this.functions = newSet();
-        this.syntacticInformation = new WritableSyntacticInformation();
+        this.rawSyntacticInformation = new RawSyntacticInformation();
+        this.hostEnvironmentLocations = newSet();
+        this.valueLogLocationInformation = new ValueLogLocationInformation();
     }
 
     /**
@@ -89,6 +114,10 @@ public class FlowGraph {
         b.getFunction().addBlock(b);
         number_of_blocks++;
         number_of_nodes += b.getNodes().size();
+        for (AbstractNode n : b.getNodes()) {
+            if (isUserCode(n))
+                number_of_user_code_nodes++;
+        }
     }
 
     /**
@@ -96,6 +125,13 @@ public class FlowGraph {
      */
     public int getNumberOfNodes() {
         return number_of_nodes;
+    }
+
+    /**
+     * Returns the total number of user-code (i.e. not from host environment and not marked as artificial) nodes in this flow graph.
+     */
+    public int getNumberOfUserCodeNodes() {
+        return number_of_user_code_nodes;
     }
 
     /**
@@ -158,7 +194,7 @@ public class FlowGraph {
     public String toString() {
         StringBuilder b = new StringBuilder();
         for (Function f : functions) {
-            if (FlowGraphMutator.get().isHostEnvironmentSource(f.getSourceLocation())) {
+            if (isHostEnvironmentSource(f.getSourceLocation())) {
                 continue;
             }
             if (f == main)
@@ -180,7 +216,7 @@ public class FlowGraph {
         pw.println("digraph {");
         pw.println("compound=true");
         for (Function f : functions) {
-            if (FlowGraphMutator.get().isHostEnvironmentSource(f.getSourceLocation())) {
+            if (isHostEnvironmentSource(f.getSourceLocation())) {
                 continue;
             }
             f.toDot(pw, false, f == main);
@@ -239,14 +275,144 @@ public class FlowGraph {
     /**
      * Returns the syntactic information.
      */
-    public SyntacticInformation getSyntacticInformation() {
-        return syntacticInformation.asReadOnly();
+    public SyntacticQueries getSyntacticInformation() {
+        return rawSyntacticInformation.getQueryView();
     }
 
     /**
-     * Adds more syntactic hints.
+     * Adds additional syntactic information to this flowgraph
      */
-    public void addSyntacticInformation(WritableSyntacticInformation syntacticInformation) {
-        this.syntacticInformation.add(syntacticInformation);
+    public void addSyntacticInformation(RawSyntacticInformation rawSyntacticInformation, ValueLogLocationInformation valueLogLocationInformation) {
+        // remember to keep this up to date when new fields are added!!!
+        this.rawSyntacticInformation.getVariableDependencies().putAll(rawSyntacticInformation.getVariableDependencies());
+        this.rawSyntacticInformation.getCorrelatedAccessFunctions().addAll(rawSyntacticInformation.getCorrelatedAccessFunctions());
+        this.rawSyntacticInformation.getInForIn().addAll(rawSyntacticInformation.getInForIn());
+        this.rawSyntacticInformation.getLoopVariables().putAll(rawSyntacticInformation.getLoopVariables());
+        this.rawSyntacticInformation.getTajsCallsWithLiteralFalseAsFirstOrFourthArgument().addAll(rawSyntacticInformation.getTajsCallsWithLiteralFalseAsFirstOrFourthArgument());
+        this.rawSyntacticInformation.getConditionPatterns().putAll(rawSyntacticInformation.getConditionPatterns());
+        this.rawSyntacticInformation.getNodeWithBaseReferences().putAll(rawSyntacticInformation.getNodeWithBaseReferences());
+        this.rawSyntacticInformation.getSimpleReads().putAll(rawSyntacticInformation.getSimpleReads());
+        this.rawSyntacticInformation.getExpressionRegisters().putAll(rawSyntacticInformation.getExpressionRegisters());
+        this.rawSyntacticInformation.getConditionRefined1ArgumentVariables().putAll(rawSyntacticInformation.getConditionRefined1ArgumentVariables());
+        this.rawSyntacticInformation.getConditionRefinedArgumentVariables().putAll(rawSyntacticInformation.getConditionRefinedArgumentVariables());
+        this.rawSyntacticInformation.getStackVariables().putAll(rawSyntacticInformation.getStackVariables());
+        this.rawSyntacticInformation.getFunctionClosureVariables().putAll(rawSyntacticInformation.getFunctionClosureVariables());
+        this.rawSyntacticInformation.getFunctionsWithThisReference().addAll(rawSyntacticInformation.getFunctionsWithThisReference());
+
+        this.valueLogLocationInformation.getDeclaredAccessorAllocationSites().addAll(valueLogLocationInformation.getDeclaredAccessorAllocationSites());
+        this.valueLogLocationInformation.getTajsLocation2jalangiLocation().putAll(valueLogLocationInformation.getTajsLocation2jalangiLocation());
+    }
+
+    /**
+     * Registers a file as belonging to the host-environment.
+     */
+    public void registerHostEnvironmentSource(URL file) {
+        this.hostEnvironmentLocations.add(file);
+    }
+
+    /**
+     * Checks if the given location belongs to the host environment.
+     */
+    public boolean isHostEnvironmentSource(SourceLocation sourceLocation) {
+        return hostEnvironmentLocations.contains(sourceLocation.getLocation());
+    }
+
+    /**
+     * Checks if the given node belongs to user code, i.e. it is not from host environment and not marked as artificial.
+     */
+    public boolean isUserCode(AbstractNode n) {
+        return !isHostEnvironmentSource(n.getSourceLocation()) && n.getSourceLocation().getLocation() != null && !n.isArtificial();
+    }
+
+    /**
+     * Returns the cache of dynamically created functions. Should be consulted before new dynamic functions are added to the flowgraph.
+     */
+    public Map<FunctionCacheKey, Function> getFunctionCache() {
+        return functionCache;
+    }
+
+    public ValueLogLocationInformation getValueLogLocationInformation() {
+        return valueLogLocationInformation;
+    }
+
+    /**
+     * Cache key for dynamically created functions.
+     */
+    public interface FunctionCacheKey {
+
+    }
+
+    /**
+     * Cache key for functions that are created from string expressions at runtime.
+     */
+    public static class FunctionDynamicSourceCacheKey implements FunctionCacheKey {
+
+        private final SourceLocation location;
+
+        private final List<String> parameterNames;
+
+        private final String source;
+
+        public FunctionDynamicSourceCacheKey(SourceLocation location, List<String> parameterNames, String source) {
+            this.location = location;
+            this.parameterNames = parameterNames;
+            this.source = source;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+
+            FunctionDynamicSourceCacheKey that = (FunctionDynamicSourceCacheKey) o;
+
+            if (location != null ? !location.equals(that.location) : that.location != null)
+                return false;
+            if (parameterNames != null ? !parameterNames.equals(that.parameterNames) : that.parameterNames != null)
+                return false;
+            return source != null ? source.equals(that.source) : that.source == null;
+        }
+
+        @Override
+        public int hashCode() {
+            int result = location != null ? location.hashCode() : 0;
+            result = 31 * result + (parameterNames != null ? parameterNames.hashCode() : 0);
+            result = 31 * result + (source != null ? source.hashCode() : 0);
+            return result;
+        }
+    }
+
+    /**
+     * Cache key for functions that are created from files at runtime.
+     */
+    public static class FunctionFileSourceCacheKey implements FunctionCacheKey {
+
+        private final URL file;
+
+        private final List<String> parameterNames;
+
+        public FunctionFileSourceCacheKey(URL file, List<String> parameterNames) {
+            this.file = file;
+            this.parameterNames = parameterNames;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+
+            FunctionFileSourceCacheKey that = (FunctionFileSourceCacheKey) o;
+
+            if (file != null ? !file.equals(that.file) : that.file != null) return false;
+            return parameterNames != null ? parameterNames.equals(that.parameterNames) : that.parameterNames == null;
+        }
+
+        @Override
+        public int hashCode() {
+            int result = file != null ? file.hashCode() : 0;
+            result = 31 * result + (parameterNames != null ? parameterNames.hashCode() : 0);
+            return result;
+        }
     }
 }

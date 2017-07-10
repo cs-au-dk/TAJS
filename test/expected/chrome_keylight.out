@@ -193,3 +193,4 @@ test/chromeexperiments/keylight.html:652:2: [info] 'this' refers to multiple abs
 test/chromeexperiments/keylight.html:653:2: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/chromeexperiments/keylight.html:661:16: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/chromeexperiments/keylight.html:680:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+Soundness testing succeeded for 4827 checks (with 0 expected failures)

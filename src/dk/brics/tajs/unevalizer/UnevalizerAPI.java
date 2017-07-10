@@ -41,6 +41,7 @@ import dk.brics.tajs.solver.CallGraph.ReverseEdge;
 import dk.brics.tajs.solver.GenericSolver;
 import dk.brics.tajs.solver.NodeAndContext;
 import dk.brics.tajs.util.AnalysisException;
+import dk.brics.tajs.util.Collectors;
 import dk.brics.tajs.util.Pair;
 import dk.brics.tajs.util.Strings;
 import org.apache.log4j.Logger;
@@ -50,7 +51,6 @@ import java.io.PrintWriter;
 import java.util.Collection;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 import static dk.brics.tajs.util.Collections.newSet;
 

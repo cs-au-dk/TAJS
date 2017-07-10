@@ -9,3 +9,4 @@ test/micro/testFunction.js:8:1: [info] Abstract value: [@Object#node16]
 test/micro/testFunction.js:9:1: [info] Abstract value: [@<anonymous>#fun6]
 test/micro/testFunction.js:11:1: [info] Abstract value: [@Function.prototype[native]]
 test/micro/testFunction.js:12:1: [info] Abstract value: Undef
+Soundness testing succeeded for 46 checks (with 0 expected failures)

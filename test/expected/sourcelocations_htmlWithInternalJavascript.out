@@ -1,2 +1,3 @@
 test/sourcelocations/htmlWithInternalJavascript.html: [definite] Exceptional program exit is unreachable
 test/sourcelocations/htmlWithInternalJavascript.html:9:5: [definite] The variable htmlVar is never used
+Soundness testing succeeded for 0 checks (with 0 expected failures)

@@ -38,3 +38,4 @@ test/chromeexperiments/magnetic.html:299:42: [maybe] Reading absent property (co
 test/chromeexperiments/magnetic.html:300:42: [maybe] Reading absent property (computed name)
 test/chromeexperiments/magnetic.html:317:24: [maybe] Reading absent property (computed name)
 test/chromeexperiments/magnetic.html:327:26: [maybe] Reading absent property (computed name)
+Soundness testing succeeded for 0 checks (with 0 expected failures)

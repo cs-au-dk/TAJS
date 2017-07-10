@@ -7,3 +7,4 @@ test/micro/testForIn5.js:17:1: [info] Abstract object: {a:1.0,[[Prototype]]=[@Ob
 test/micro/testForIn5.js:18:1: [info] Abstract object: {a:2.0,[[Prototype]]=[@Object.prototype[native]]}
 test/micro/testForIn5.js:22:1: [info] Abstract value: 1.0
 test/micro/testForIn5.js:23:1: [info] Abstract value: "dyt"
+Soundness testing succeeded for 42 checks (with 0 expected failures)

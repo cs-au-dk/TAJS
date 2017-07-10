@@ -81,9 +81,9 @@ public class AnalysisTimeLimiter extends DefaultAnalysisMonitoring {
     }
 
     /**
-     * @return true iff the analysis spent more time than allowed
+     * @return true iff the analysis did not spent more time than allowed
      */
-    public boolean analysisExceededTimeLimit() {
-        return analysisWasLimited;
+    public boolean analysisNotExceededTimeLimit() {
+        return !analysisWasLimited;
     }
 }

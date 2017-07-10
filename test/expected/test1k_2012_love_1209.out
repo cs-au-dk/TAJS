@@ -32,3 +32,4 @@ test/1k2012love/1209.js:126:4: [maybe] Conversion from string to number yields N
 test/1k2012love/1209.js:126:4: [maybe] Converting object to number
 test/1k2012love/1209.js:130:3: [maybe] Reading absent property (computed name)
 test/1k2012love/1209.js:136:13: [maybe] Conversion to number yields NaN
+Soundness testing succeeded for 137 checks (with 0 expected failures)

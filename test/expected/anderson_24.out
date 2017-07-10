@@ -1,2 +1,3 @@
 test/anderson/anderson24.js: [definite] Exceptional program exit is unreachable
 test/anderson/anderson24.js:6:6: [definite] The variable y is never used
+Soundness testing succeeded for 11 checks (with 0 expected failures)

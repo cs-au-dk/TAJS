@@ -22,3 +22,4 @@ test/1k2012love/1224.js:45:27: [maybe] Reading absent property (computed name)
 test/1k2012love/1224.js:45:36: [maybe] Conversion to number yields NaN
 test/1k2012love/1224.js:45:36: [maybe] Reading absent property (computed name)
 test/1k2012love/1224.js:47:17: [maybe] Reading absent property (computed name)
+Soundness testing succeeded for 228 checks (with 0 expected failures)

@@ -18,3 +18,4 @@ test/1k2012love/1044.js:15:22: [maybe] Conversion to number yields NaN
 test/1k2012love/1044.js:19:4: [maybe] Conversion to number yields NaN
 test/1k2012love/1044.js:21:4: [maybe] Conversion to number yields NaN
 test/1k2012love/1044.js:23:4: [maybe] Conversion to number yields NaN
+Soundness testing succeeded for 165 checks (with 0 expected failures)

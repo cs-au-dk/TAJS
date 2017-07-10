@@ -101,3 +101,4 @@ test/1k2012love/1219.js:62:30: [maybe] The variable n has values with different 
 test/1k2012love/1219.js:94:34: [maybe] Reading absent property (computed name)
 test/1k2012love/1219.js:98:5: [maybe] Reading absent property (computed name)
 test/1k2012love/1219.js:98:26: [maybe] Reading absent property (computed name)
+Soundness testing succeeded for 120 checks (with 1 expected failures)

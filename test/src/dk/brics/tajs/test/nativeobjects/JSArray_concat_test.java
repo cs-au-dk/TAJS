@@ -11,7 +11,6 @@ public class JSArray_concat_test {
     @Before
     public void before() {
         Main.reset();
-        Main.initLogging();
         Options.get().enableTest();
     }
 

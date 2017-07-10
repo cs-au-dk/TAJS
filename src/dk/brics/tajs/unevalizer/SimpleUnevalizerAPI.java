@@ -47,7 +47,7 @@ public class SimpleUnevalizerAPI { // TODO: GitHub #364
     private static Value makeFunction(AbstractNode callNode, List<String> parameterNames, String body, Solver.SolverInterface c) {
         DynamicLocationMaker sourceLocationMaker = new DynamicLocationMaker(callNode.getSourceLocation());
         try {
-            Function function = FlowGraphMutator.get().extendFlowGraphWithTopLevelFunction(callNode.toString(), body, parameterNames, c.getFlowGraph(), sourceLocationMaker);
+            Function function = FlowGraphMutator.extendFlowGraphWithTopLevelFunction(parameterNames, body, c.getFlowGraph(), sourceLocationMaker);
             ObjectLabel functionLabel = UserFunctionCalls.instantiateGlobalScopeFunction(function, callNode, c.getState(), c);
             return Value.makeObject(functionLabel);
         } catch (ParseError e) {

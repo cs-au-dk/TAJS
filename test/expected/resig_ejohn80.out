@@ -7,3 +7,4 @@ test/resig/ejohn80.js:11:3: [info] Abstract value: 3.0
 test/resig/ejohn80.js:23:3: [info] Abstract value: Undef|IdentStr
 test/resig/ejohn80.js:24:3: [info] Abstract value: UInt
 test/resig/ejohn80.js:25:3: [info] Abstract value: 3.0
+Soundness testing succeeded for 139 checks (with 0 expected failures)

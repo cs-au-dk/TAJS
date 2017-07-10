@@ -1,8 +1,8 @@
 <main> function()
   block 0: [entry]
     node 0: constant[undefined,v1] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_labelledcontinue.js)
-    node 1: function-decl[function labelled(),-] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_labelledcontinue.js:1:1)
-    node 2: function-decl[function unlabelled(),-] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_labelledcontinue.js:2:1)
+    node 1: function-decl[function labelled(),-]* (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_labelledcontinue.js:1:1)
+    node 2: function-decl[function unlabelled(),-]* (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_labelledcontinue.js:2:1)
     ->[block 1]
   block 1:
     node 3: constant["tajs-host-env:string-replace-model.js",v2] (host-environment-sources-loader)
@@ -76,8 +76,8 @@ function unlabelled()
 <main> function()
   block 0: [entry]
     node 0: constant[undefined,v1] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_labelledcontinue.js)
-    node 1: function-decl[function labelled(),-] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_labelledcontinue.js:1:1)
-    node 2: function-decl[function unlabelled(),-] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_labelledcontinue.js:2:1)
+    node 1: function-decl[function labelled(),-]* (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_labelledcontinue.js:1:1)
+    node 2: function-decl[function unlabelled(),-]* (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_labelledcontinue.js:2:1)
     ->[block 1]
   block 1:
     node 3: constant["tajs-host-env:string-replace-model.js",v2] (host-environment-sources-loader)
@@ -151,3 +151,4 @@ function unlabelled()
 out/temp-sources/TestUnrolling.loopunrolling_flowgraph_labelledcontinue.js: [definite] Exceptional program exit is unreachable
 out/temp-sources/TestUnrolling.loopunrolling_flowgraph_labelledcontinue.js:1:1: [definite] Unreachable function labelled
 out/temp-sources/TestUnrolling.loopunrolling_flowgraph_labelledcontinue.js:2:1: [definite] Unreachable function unlabelled
+Soundness testing succeeded for 1 checks (with 0 expected failures)

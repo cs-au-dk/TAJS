@@ -13,3 +13,4 @@ test/micro/toString3.js:17:1: [info] Abstract value: Undef|true
 test/micro/toString3.js:18:1: [info] Abstract value: Undef|true
 test/micro/toString3.js:16:1: [info] Writing to unknown property that may cause loss of precision
 test/micro/toString3.js:20:9: [info] Reading from unknown property that may cause loss of precision
+Soundness testing succeeded for 37 checks (with 0 expected failures)

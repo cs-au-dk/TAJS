@@ -22,3 +22,4 @@ test/google/splay.js: [maybe] Uncaught exception, constructed at [test/google/sp
 test/google/splay.js:64:9: [maybe] Reading absent property (computed name)
 test/google/splay.js:64:20: [maybe] Reading absent property (computed name)
 test/google/splay.js:331:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+Soundness testing succeeded for 1388 checks (with 0 expected failures)

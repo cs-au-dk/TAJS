@@ -33,6 +33,7 @@ import dk.brics.tajs.options.Options;
 import dk.brics.tajs.solver.GenericSolver;
 import dk.brics.tajs.solver.Message;
 import dk.brics.tajs.util.AnalysisException;
+import dk.brics.tajs.util.Collectors;
 import dk.brics.tajs.util.Pair;
 
 import java.util.Arrays;
@@ -41,7 +42,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 import static dk.brics.tajs.util.Collections.newList;
 import static dk.brics.tajs.util.Collections.newMap;
@@ -138,7 +138,7 @@ public class NativeFunctionSignatureChecker {
             this.minArguments = firstOptional;
             for (int lastMandatory = 0; lastMandatory < parameters.size(); lastMandatory++) {
                 if (lastMandatory > firstOptional && parameters.get(lastMandatory).isMandatory()) {
-                    throw new AnalysisException("Mandatory parameters after optional parameters: " + this);
+                    throw new AnalysisException("Mandatory parameters after optional parameters: " + parameters);
                 }
             }
         }
@@ -222,7 +222,7 @@ public class NativeFunctionSignatureChecker {
 
         @Override
         public int getParametersLength() {
-            return signatures.keySet().stream().mapToInt(e -> e.getSecond()).max().getAsInt();
+            return signatures.keySet().stream().mapToInt(Pair::getSecond).max().getAsInt();
         }
 
         private Collection<Signature> pickTargetsByArity(FunctionCalls.CallInfo call) {

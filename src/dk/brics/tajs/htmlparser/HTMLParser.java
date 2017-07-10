@@ -22,6 +22,7 @@ import dk.brics.tajs.flowgraph.SourceLocation.SourceLocationMaker;
 import dk.brics.tajs.flowgraph.SourceLocation.StaticLocationMaker;
 import dk.brics.tajs.util.AnalysisException;
 import dk.brics.tajs.util.AnalysisLimitationException.AnalysisModelLimitationException;
+import dk.brics.tajs.util.Collectors;
 import dk.brics.tajs.util.Loader;
 import dk.brics.tajs.util.Pair;
 import dk.brics.tajs.util.PathAndURLUtils;
@@ -43,7 +44,6 @@ import java.util.Set;
 import java.util.function.Consumer;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.util.stream.Collectors;
 
 import static dk.brics.tajs.util.Collections.newList;
 import static dk.brics.tajs.util.Collections.newSet;

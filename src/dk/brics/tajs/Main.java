@@ -24,7 +24,6 @@ import dk.brics.tajs.flowgraph.JavaScriptSource.Kind;
 import dk.brics.tajs.flowgraph.SourceLocation;
 import dk.brics.tajs.htmlparser.HTMLParser;
 import dk.brics.tajs.js2flowgraph.FlowGraphBuilder;
-import dk.brics.tajs.js2flowgraph.FlowGraphMutator;
 import dk.brics.tajs.lattice.Obj;
 import dk.brics.tajs.lattice.ScopeChain;
 import dk.brics.tajs.lattice.State;
@@ -33,8 +32,12 @@ import dk.brics.tajs.monitoring.AnalysisPhase;
 import dk.brics.tajs.monitoring.AnalysisTimeLimiter;
 import dk.brics.tajs.monitoring.CompositeMonitoring;
 import dk.brics.tajs.monitoring.IAnalysisMonitoring;
+import dk.brics.tajs.monitoring.MaxMemoryUsageMonitor;
 import dk.brics.tajs.monitoring.Monitoring;
 import dk.brics.tajs.monitoring.ProgramExitReachabilityChecker;
+import dk.brics.tajs.monitoring.TAJSAssertionReachabilityCheckerMonitor;
+import dk.brics.tajs.monitoring.inspector.datacollection.InspectorFactory;
+import dk.brics.tajs.monitoring.soundness.SoundnessTesterMonitor;
 import dk.brics.tajs.options.ExperimentalOptions;
 import dk.brics.tajs.options.OptionValues;
 import dk.brics.tajs.options.Options;
@@ -42,6 +45,7 @@ import dk.brics.tajs.options.TAJSEnvironmentConfig;
 import dk.brics.tajs.solver.SolverSynchronizer;
 import dk.brics.tajs.util.AnalysisException;
 import dk.brics.tajs.util.Canonicalizer;
+import dk.brics.tajs.util.Collectors;
 import dk.brics.tajs.util.Loader;
 import dk.brics.tajs.util.Pair;
 import dk.brics.tajs.util.PathAndURLUtils;
@@ -49,6 +53,7 @@ import dk.brics.tajs.util.Strings;
 import net.htmlparser.jericho.Source;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
+import org.kohsuke.args4j.CmdLineException;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -60,7 +65,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.Properties;
-import java.util.stream.Collectors;
 
 import static dk.brics.tajs.util.Collections.newList;
 
@@ -88,7 +92,8 @@ public class Main {
             run(a);
             System.exit(0);
         } catch (AnalysisException e) {
-            e.printStackTrace();
+            log.error("Error: " + e.getMessage());
+            //e.printStackTrace();
             System.exit(-2);
         }
     }
@@ -105,21 +110,22 @@ public class Main {
         Obj.reset();
         Strings.reset();
         ScopeChain.reset();
-        FlowGraphMutator.reset();
     }
 
     /**
      * Reads the input and prepares an analysis object, using the default monitoring and command-line arguments.
      */
     public static Analysis init(String[] args, SolverSynchronizer sync) throws AnalysisException {
+        OptionValues options = new OptionValues();
         try {
-            return init(new OptionValues(args), new Monitoring(), sync);
-        } catch (Exception e) {
-            System.err.println(e.getMessage());
-            System.err.println("TAJS - Type Analyzer for JavaScript");
-            System.err.println("Copyright 2009-2017 Aarhus University\n");
-            System.err.println("Usage: java -jar tajs-all.jar [OPTION]... [FILE]...\n");
-            Options.get().describe(System.err);
+            options.parse(args);
+            options.checkConsistency();
+            return init(options, Monitoring.make(), sync);
+        } catch (CmdLineException e) {
+            showHeader();
+            log.info(e.getMessage() + "\n");
+            log.info("Usage: java -jar tajs-all.jar [OPTION]... [FILE]...\n");
+            Options.showUsage();
             return null;
         }
     }
@@ -131,25 +137,14 @@ public class Main {
      * @throws AnalysisException if internal error
      */
     public static Analysis init(OptionValues options, IAnalysisMonitoring monitoring, SolverSynchronizer sync) throws AnalysisException {
-        options.checkConsistency();
         Options.set(options);
         TAJSEnvironmentConfig.init();
 
-        List<IAnalysisMonitoring> extraMonitors = newList();
-        int timeLimit = Options.get().getAnalysisTimeLimit();
-        AnalysisTimeLimiter timeLimiter = new AnalysisTimeLimiter(timeLimit, true);
-        if (timeLimit >= 0) {
-            extraMonitors.add(timeLimiter);
-        }
-        if (Options.get().isTestEnabled()) {
-            extraMonitors.add(new ProgramExitReachabilityChecker(true, !Options.get().isDoNotExpectOrdinaryExitEnabled(), true, false, true, () -> !timeLimiter.analysisExceededTimeLimit()));
-        }
-        if (!extraMonitors.isEmpty()) {
-            extraMonitors.add(0, monitoring);
-            monitoring = CompositeMonitoring.buildFromList(extraMonitors);
-        }
+        monitoring = addOptionalMonitors(monitoring);
 
         Analysis analysis = new Analysis(monitoring, sync);
+
+        showHeader();
 
         if (Options.get().isDebugEnabled())
             Options.dump();
@@ -165,7 +160,7 @@ public class Main {
             for (URL fn : resolvedFiles) {
                 if (isHTMLFileName(fn.toString())) {
                     if (htmlFile != null)
-                        throw new AnalysisException("Only one HTML file can be analyzed at a time.");
+                        throw new AnalysisException("Only one HTML file can be analyzed at a time");
                     htmlFile = fn;
                 } else
                     js_files.add(fn);
@@ -175,7 +170,7 @@ public class Main {
             builder.addLoadersForHostFunctionSources(HostEnvSources.getAccordingToOptions());
             if (!js_files.isEmpty()) {
                 if (htmlFile != null)
-                    throw new AnalysisException("Cannot analyze an HTML file and JavaScript files at the same time.");
+                    throw new AnalysisException("Cannot analyze an HTML file and JavaScript files at the same time");
                 // build flowgraph for JS files
                 for (URL js_file : js_files) {
                     if (!Options.get().isQuietEnabled())
@@ -197,7 +192,7 @@ public class Main {
             }
             fg = builder.close();
         } catch (IOException e) {
-            log.error("Unable to parse " + e.getMessage());
+            log.error("Error: Unable to load and parse " + e.getMessage());
             return null;
         }
         if (sync != null)
@@ -207,12 +202,50 @@ public class Main {
 
         analysis.getSolver().init(fg, document);
 
-        monitoring.setFlowgraph(analysis.getSolver().getFlowGraph());
-        monitoring.setCallGraph(analysis.getSolver().getAnalysisLatticeElement().getCallGraph());
-
         leavePhase(AnalysisPhase.INITIALIZATION, analysis.getMonitoring());
 
         return analysis;
+    }
+
+    /**
+     * Adds additional monitors according to the options.
+     */
+    private static IAnalysisMonitoring addOptionalMonitors(IAnalysisMonitoring monitoring) {
+        List<IAnalysisMonitoring> extraMonitors = newList();
+
+        // Analysis timeout monitor
+        int timeLimit = Options.get().getAnalysisTimeLimit();
+        AnalysisTimeLimiter timeLimiter = new AnalysisTimeLimiter(timeLimit, Options.get().isTestEnabled());
+        if (timeLimit >= 0) {
+            extraMonitors.add(timeLimiter);
+        }
+
+        // Analysis result measuring monitors
+        if (Options.get().isMemoryMeasurementEnabled()) {
+            extraMonitors.add(new MaxMemoryUsageMonitor());
+            // extraMonitors.add(new MemoryUsageDiagnosisMonitor()); // for development use only
+        }
+
+        // Analysis results checking monitors
+        // Note: the first one to throw an exception will prevent the others from reporting errors
+        if (Options.get().getSoundnessTesterOptions().isTest()) {
+            extraMonitors.add(SoundnessTesterMonitor.make());
+        } else if (Options.get().isTestEnabled()) {
+            // (no need to test reachability if using soundness testing)
+            extraMonitors.add(new ProgramExitReachabilityChecker(true, !Options.get().isDoNotExpectOrdinaryExitEnabled(), true, false, true, timeLimiter::analysisNotExceededTimeLimit));
+        }
+        extraMonitors.add(new TAJSAssertionReachabilityCheckerMonitor(timeLimiter::analysisNotExceededTimeLimit));
+
+        // put inspector *after* checking
+        if (Options.get().isInspectorEnabled()) {
+            extraMonitors.add(InspectorFactory.createInspectorMonitor());
+        }
+
+        if (!extraMonitors.isEmpty()) {
+            extraMonitors.add(0, monitoring);
+            monitoring = CompositeMonitoring.buildFromList(extraMonitors);
+        }
+        return monitoring;
     }
 
     private static List<URL> resolveInputs(List<String> files) {
@@ -290,6 +323,13 @@ public class Main {
         String phaseName = prettyPhaseName(phase);
         showPhaseStart(phaseName);
         monitoring.visitPhasePre(phase);
+    }
+
+    private static void showHeader() {
+        if (!Options.get().isQuietEnabled()) {
+            log.info("TAJS - Type Analyzer for JavaScript\n" +
+                "Copyright 2009-2017 Aarhus University\n");
+        }
     }
 
     private static void showPhaseStart(String phaseName) {

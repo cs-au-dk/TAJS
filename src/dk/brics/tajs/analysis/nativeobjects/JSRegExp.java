@@ -34,11 +34,11 @@ import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.UnknownValueResolver;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.solver.Message.Severity;
+import dk.brics.tajs.util.Collectors;
 
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 import static dk.brics.tajs.util.Collections.newList;
 import static dk.brics.tajs.util.Collections.singleton;
@@ -244,7 +244,7 @@ public class JSRegExp {
         PropVarOperations pv = c.getAnalysis().getPropVarOperations();
         State state = c.getState();
         UnknownValueResolver.getRealValue(value, state).getObjectLabels().stream()
-                .filter(l -> l.getKind().equals(Kind.REGEXP))
+                .filter(l -> l.getKind() == Kind.REGEXP)
                 .filter(l -> UnknownValueResolver.getRealValue(pv.readPropertyValue(singleton(l), "global"), state).isMaybeTrue())
                 .forEach(l -> pv.writeProperty(singleton(l), Value.makeStr("lastIndex"), Value.makeAnyNumUInt(), true));
     }
@@ -254,7 +254,7 @@ public class JSRegExp {
         boolean is_maybe_typeerror = thisval.isMaybePrimitive();
         for (ObjectLabel thisObj : thisval.getObjectLabels()) {
             if (thisObj.getKind() == Kind.REGEXP) {
-                strs.add(TAJSConcreteSemantics.convertTAJSCallExplicit(Value.makeObject(thisObj), "RegExp.prototype.toString", newList(), c, () -> Value.makeAnyStr()));
+                strs.add(TAJSConcreteSemantics.convertTAJSCallExplicit(Value.makeObject(thisObj), "RegExp.prototype.toString", newList(), c, Value::makeAnyStr));
             } else {
                 is_maybe_typeerror = true;
             }

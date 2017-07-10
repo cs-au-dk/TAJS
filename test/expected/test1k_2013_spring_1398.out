@@ -18,3 +18,4 @@ test/1k2013spring/1398.js:87:22: [definite] Unreachable function
 test/1k2013spring/1398.js:1:31: [maybe] <Document.getElementById>("d") did not match any elements
 test/1k2013spring/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
 test/1k2013spring/1398.js: [maybe] Uncaught exception, constructed at [test/1k2013spring/1398.js:2:9, test/1k2013spring/shim.js:9:5]
+Soundness testing succeeded for 18 checks (with 0 expected failures)

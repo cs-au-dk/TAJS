@@ -6,3 +6,4 @@ test/getterssetters/gs1.js:13:1: [info] Abstract object: {area:getter [@<anonymo
 test/getterssetters/gs1.js:15:1: [info] Abstract value: 200.0
 test/getterssetters/gs1.js:21:3: [info] Abstract value: "I\u2019m sorry Dave, I\u2019m afraid I can\u2019t do that"
 test/getterssetters/gs1.js:23:1: [info] Abstract value: 200.0
+Soundness testing succeeded for 27 checks (with 0 expected failures)

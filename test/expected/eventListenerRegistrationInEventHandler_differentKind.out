@@ -1,3 +1,4 @@
 out/temp-sources/TestMicro.eventListenerRegistrationInEventHandler_differentKind.js: [definite] Exceptional program exit is unreachable
 out/temp-sources/TestMicro.eventListenerRegistrationInEventHandler_differentKind.js:2:2: [info] Abstract value: "mousedownHandler triggered"
 out/temp-sources/TestMicro.eventListenerRegistrationInEventHandler_differentKind.js:6:2: [info] Abstract value: "keydownHandler triggered"
+Soundness testing succeeded for 0 checks (with 0 expected failures)

@@ -99,3 +99,4 @@ test/10k/minesweeper.html:134:15: [maybe] Converting undefined to string
 test/10k/minesweeper.html:164:13: [maybe] Reading absent property (computed name)
 test/10k/minesweeper.html:165:13: [maybe] Reading absent property (computed name)
 test/10k/minesweeper.html:166:123: [maybe] Reading absent property (computed name)
+Soundness testing succeeded for 847 checks (with 0 expected failures)

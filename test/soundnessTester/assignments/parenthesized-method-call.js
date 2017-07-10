@@ -1,0 +1,3 @@
+function f() {
+}
+(this.f)();

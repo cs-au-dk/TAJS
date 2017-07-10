@@ -2,3 +2,4 @@ test/micro/test156.js:14:16: [definite] Reading absent property p
 test/micro/test156.js: [definite] Exceptional program exit is unreachable
 test/micro/test156.js:14:1: [info] Abstract value: Undef
 test/micro/test156.js:15:1: [info] Abstract value: 43.0
+Soundness testing succeeded for 32 checks (with 0 expected failures)

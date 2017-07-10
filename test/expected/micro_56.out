@@ -10,3 +10,4 @@ test/micro/test56.js:14:1: [info] Abstract value: 45.0
 test/micro/test56.js:15:1: [info] Abstract value: [@f#fun1]
 test/micro/test56.js:16:1: [info] Abstract value: [@<the global object>[native]]
 test/micro/test56.js:17:1: [info] Abstract value: [@<the global object>[native]]
+Soundness testing succeeded for 31 checks (with 0 expected failures)

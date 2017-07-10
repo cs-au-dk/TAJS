@@ -85,3 +85,5 @@ test/1k2013spring/1442.js:139:31: [maybe] Reading absent property (computed name
 test/1k2013spring/1442.js:149:13: [maybe] Conversion to number yields NaN
 test/1k2013spring/1442.js:150:17: [maybe] Conversion to number yields NaN
 test/1k2013spring/1442.js:153:12: [maybe] Conversion to number yields NaN
+Disabling soundness testing for test/1k2013spring/1442.js entirely (8 uninspected soundness errors).
+Soundness testing succeeded for 50358 checks (with 8 expected failures)

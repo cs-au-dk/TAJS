@@ -1,3 +1,4 @@
 test/micro/domEventHandlerSetter.js: [definite] Exceptional program exit is unreachable
 test/micro/domEventHandlerSetter.js:1:67: [info] Abstract value: "from_addEventListener invoked"
 test/micro/domEventHandlerSetter.js:2:42: [info] Abstract value: "from_onclick invoked"
+Soundness testing succeeded for 15 checks (with 0 expected failures)

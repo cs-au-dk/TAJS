@@ -17,6 +17,7 @@
 package dk.brics.tajs.monitoring;
 
 import dk.brics.tajs.analysis.HostAPIs;
+import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.flowgraph.AbstractNode;
 import dk.brics.tajs.flowgraph.BasicBlock;
 import dk.brics.tajs.flowgraph.FlowGraph;
@@ -53,7 +54,6 @@ import dk.brics.tajs.flowgraph.jsnodes.TypeofNode;
 import dk.brics.tajs.flowgraph.jsnodes.UnaryOperatorNode;
 import dk.brics.tajs.flowgraph.jsnodes.WritePropertyNode;
 import dk.brics.tajs.flowgraph.jsnodes.WriteVariableNode;
-import dk.brics.tajs.js2flowgraph.FlowGraphMutator;
 import dk.brics.tajs.lattice.CallEdge;
 import dk.brics.tajs.lattice.Context;
 import dk.brics.tajs.lattice.HostObject;
@@ -212,11 +212,6 @@ public class Monitoring implements IAnalysisMonitoring {
     private Map<BasicBlock, Map<Context, List<String>>> newflows;
 
     /**
-     * Maximum memory usage measured.
-     */
-    private long max_memory = 0;
-
-    /**
      * Information about read/written properties in all abstract objects.
      * Singleton/summary information is stored for the singleton variant.
      */
@@ -261,14 +256,14 @@ public class Monitoring implements IAnalysisMonitoring {
      */
     private CallGraph<State, Context, CallEdge> callgraph;
 
-    // TODO this monitor ought to be provided as a monitor that is invoked by some outer composite monitoring in order to make sure all of its methods are invoked properly! (GitHub #350)
-    // (but that would ruin all the calls to `new Monitoring()` in the current codebase! Solution: factory-method)
-    private ReachabilityMonitor reachabilityMonitor = new ReachabilityMonitor();
+    private final ReachabilityMonitor reachabilityMonitor;
 
     /**
      * Constructs a new monitoring object.
+     * New instances should be constructed with {@link #make()} to ensure auxiliary monitors are invoked properly.
      */
-    public Monitoring() {
+    private Monitoring(ReachabilityMonitor reachabilityMonitor) {
+        this.reachabilityMonitor = reachabilityMonitor;
         call_to_non_function = newSet();
         absent_variable_read = newSet();
         null_undef_base = newSet();
@@ -285,6 +280,20 @@ public class Monitoring implements IAnalysisMonitoring {
         recovery_graph_sizes = newMap();
 //        next_newflow_file = 1;
         messages = null;
+    }
+
+    /**
+     * Constructs a new monitoring object.
+     */
+    public static IAnalysisMonitoring make() {
+        List<IAnalysisMonitoring> monitors = newList();
+        ReachabilityMonitor reachabilityMonitor = new ReachabilityMonitor();
+        monitors.add(reachabilityMonitor);
+        monitors.add(new Monitoring(reachabilityMonitor));
+        if (log.isDebugEnabled() || (!log.isDebugEnabled() && log.isInfoEnabled() && !Options.get().isQuietEnabled() && !Options.get().isTestEnabled() && !Options.get().isIntermediateStatesEnabled())) {
+            monitors.add(new ProgressMonitor());
+        }
+        return CompositeMonitoring.buildFromList(monitors);
     }
 
     private void reportDeadAssignments() {
@@ -353,8 +362,9 @@ public class Monitoring implements IAnalysisMonitoring {
     }
 
     @Override
-    public void setFlowgraph(FlowGraph fg) {
-        flowgraph = fg;
+    public void setSolverInterface(Solver.SolverInterface c) {
+        flowgraph = c.getFlowGraph();
+        callgraph = c.getAnalysisLatticeElement().getCallGraph();
     }
 
     /**
@@ -554,7 +564,7 @@ public class Monitoring implements IAnalysisMonitoring {
                 }
                 emittedOutput.add(message.toString());
                 if (!Options.get().isShowInternalMessagesEnabled()) {
-                    boolean isInternal = FlowGraphMutator.get().isHostEnvironmentSource(message.getNode().getSourceLocation());
+                    boolean isInternal = flowgraph.isHostEnvironmentSource(message.getNode().getSourceLocation());
                     if (isInternal) {
                         continue;
                     }
@@ -634,16 +644,10 @@ public class Monitoring implements IAnalysisMonitoring {
 
             b.append("\nBlockState: created=").append(State.getNumberOfStatesCreated()).append(", makeWritableStore=").append(State.getNumberOfMakeWritableStoreCalls());
             b.append("\nObj: created=").append(Obj.getNumberOfObjsCreated()).append(", makeWritableProperties=").append(Obj.getNumberOfMakeWritablePropertiesCalls());
-            b.append("\nValue cache: hits=").append(Value.getNumberOfValueCacheHits()).append(", misses=").append(Value.getNumberOfValueCacheMisses()).append(", finalSize=").append(Value.getValueCacheSize());
-            b.append("\nValue object set cache: hits=").append(Value.getNumberOfObjectSetCacheHits()).append(", misses=").append(Value.getNumberOfObjectSetCacheMisses()).append(", finalSize=").append(Value.getObjectSetCacheSize());
             b.append("\nScopeChain cache: hits=").append(ScopeChain.getNumberOfCacheHits()).append(", misses=").append(ScopeChain.getNumberOfCacheMisses()).append(", finalSize=").append(ScopeChain.getCacheSize());
             b.append("\nBasic blocks: ").append(flowgraph.getNumberOfBlocks());
             b.append("\nRecovery graph sizes: ").append(recovery_graph_sizes);
 
-            if (Options.get().isMemoryMeasurementEnabled()) {
-                formatter.setMaximumFractionDigits(2);
-                b.append("\n\nMax memory used: ").append(formatter.format((max_memory / (1024L * 1024L)))).append("M\n");
-            }
             log.info(b);
         }
 
@@ -715,24 +719,14 @@ public class Monitoring implements IAnalysisMonitoring {
     @Override
     public void visitNodeTransferPre(AbstractNode n, State s) {
         node_transfers++;
-        reachabilityMonitor.visitNodeTransferPre(n, s);
     }
 
     /**
-     * Counts block transfers and measures memory usage.
+     * Counts block transfers.
      */
     @Override
     public void visitBlockTransferPre(BasicBlock block, State state) {
         block_transfers++;
-        if (Options.get().isMemoryMeasurementEnabled()) {
-            if (block_transfers % 10 == 0) {
-                System.gc();
-                long m = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
-                if (m > max_memory) {
-                    max_memory = m;
-                }
-            }
-        }
     }
 
     /**
@@ -803,7 +797,6 @@ public class Monitoring implements IAnalysisMonitoring {
     @Override
     public void visitFunction(Function f, Collection<State> entry_states) {
         functions.add(f);
-        reachabilityMonitor.visitFunction(f, entry_states);
     }
 
     /**
@@ -1564,15 +1557,6 @@ public class Monitoring implements IAnalysisMonitoring {
         }
     }
 
-
-    /**
-     * Ignored.
-     */
-    @Override
-    public void setCallGraph(CallGraph<State, Context, CallEdge> callgraph) {
-        this.callgraph = callgraph;
-    }
-
     /**
      * Ignored.
      */
@@ -1618,6 +1602,14 @@ public class Monitoring implements IAnalysisMonitoring {
      */
     @Override
     public void visitRenameObject(AbstractNode node, ObjectLabel from, ObjectLabel to, State s) {
+        // ignore
+    }
+
+    /**
+     * Ignored.
+     */
+    @Override
+    public void visitIterationDone() {
         // ignore
     }
 }

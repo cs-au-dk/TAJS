@@ -325,3 +325,4 @@ test/10k/floating_bubbles.html:347:35: [info] 'this' refers to multiple abstract
 test/10k/floating_bubbles.html:348:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/10k/floating_bubbles.html:349:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/10k/floating_bubbles.html:352:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+Soundness testing succeeded for 1278 checks (with 0 expected failures)

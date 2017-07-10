@@ -60,3 +60,4 @@ test/1k2013spring/1421.js:117:11: [maybe] Conversion to number yields NaN
 test/1k2013spring/1421.js:118:11: [maybe] Conversion to number yields NaN
 test/1k2013spring/1421.js:135:12: [maybe] Converting undefined to string
 test/1k2013spring/1421.js:138:14: [maybe] Reading absent property (computed name)
+Soundness testing succeeded for 364 checks (with 0 expected failures)

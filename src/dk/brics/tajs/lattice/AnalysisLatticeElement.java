@@ -51,6 +51,11 @@ public class AnalysisLatticeElement implements
     private final CallGraph<State, Context, CallEdge> call_graph;
 
     /**
+     * Total number of states in block_entry_states.
+     */
+    private int number_of_states;
+
+    /**
      * Constructs a new global analysis lattice element.
      */
     public AnalysisLatticeElement(FlowGraph fg) {
@@ -94,12 +99,7 @@ public class AnalysisLatticeElement implements
 
     @Override
     public Map<Context, State> getStates(BasicBlock block) {
-        Map<Context, State> m = block_entry_states.get(block);
-        if (m == null) {
-            m = newMap();
-            block_entry_states.put(block, m);
-        }
-        return m;
+        return block_entry_states.computeIfAbsent(block, k -> newMap());
     }
 
 //    @Override
@@ -128,6 +128,7 @@ public class AnalysisLatticeElement implements
             s.setContext(bc.getContext());
             m.put(bc.getContext(), s);
             state_current = s;
+            number_of_states++;
         } else { // a nontrivial state already exists at (b,c), so join s into it
             if (Options.get().isIntermediateStatesEnabled()) {
                 if (log.isDebugEnabled())
@@ -162,5 +163,10 @@ public class AnalysisLatticeElement implements
             return new MergeResult(diff);
         } else
             return null;
+    }
+
+    @Override
+    public int getNumberOfStates() {
+        return number_of_states;
     }
 }

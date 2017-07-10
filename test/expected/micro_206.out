@@ -60,3 +60,4 @@ Abstract state:
     v1=Undef
 test/micro/test206.js:123:1: [info] Abstract value: [@Object#node42]
 test/micro/test206.js:124:1: [info] Abstract object: {accepts:[@Object#node59, @Object#node43, @Object#node281{ARG1=true, ARG2=[@Object#node42], ARG3=[@Object#node58]}, *Object#node281{ARG1=true, ARG2=[@Object#node42], ARG3=[@Object#node58]}],contents:[@Object#node63, @Object#node281{ARG1=true, ARG2=[@Object#node42], ARG3=[@Object#node58]}, @Object#node186, *Object#node281{ARG1=true, ARG2=[@Object#node42], ARG3=[@Object#node58]}, *Object#node186]|absent,converters:[@Object#node69, @Object#node281{ARG1=true, ARG2=[@Object#node42], ARG3=[@Object#node58]}, @Object#node186, *Object#node281{ARG1=true, ARG2=[@Object#node42], ARG3=[@Object#node58]}, *Object#node186]|absent,jsonp:"callback"|absent,jsonpCallback:[@FOO#fun4]|absent,[[Prototype]]=[@Object.prototype[native]]}
+Soundness testing succeeded for 335 checks (with 0 expected failures)

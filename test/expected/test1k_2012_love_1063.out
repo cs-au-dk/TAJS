@@ -61,3 +61,4 @@ test/1k2012love/1063.js:57:3: [info] 'this' refers to a summary abstract object,
 test/1k2012love/1063.js:57:13: [info] 'this' refers to a summary abstract object, which may cause loss of precision
 test/1k2012love/1063.js:57:23: [info] 'this' refers to a summary abstract object, which may cause loss of precision
 test/1k2012love/1063.js:58:3: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+Soundness testing succeeded for 292 checks (with 0 expected failures)

@@ -60,3 +60,4 @@ test/1k2012love/1134.js:93:11: [maybe] Reading absent property (computed name)
 test/1k2012love/1134.js:94:29: [maybe] Converting primitive string to object
 test/1k2012love/1134.js:114:9: [maybe] Converting undefined to string
 test/1k2012love/1134.js:65:12: [info] Reading from unknown property that may cause loss of precision
+Soundness testing succeeded for 308 checks (with 0 expected failures)

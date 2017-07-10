@@ -11,3 +11,4 @@ test/micro/test59.js:18:1: [info] Abstract value: Undef
 test/micro/test59.js:19:1: [info] Abstract value: Undef
 test/micro/test59.js:20:1: [info] Abstract value: Undef
 test/micro/test59.js:21:1: [info] Abstract value: "hello"
+Soundness testing succeeded for 50 checks (with 0 expected failures)

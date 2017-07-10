@@ -1,3 +1,19 @@
+/*
+ * Copyright 2009-2017 Aarhus University
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package dk.brics.tajs.analysis;
 
 import dk.brics.tajs.analysis.dom.DOMObjects;
@@ -5,13 +21,13 @@ import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.util.AnalysisException;
+import dk.brics.tajs.util.Collectors;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.function.Function;
-import java.util.stream.Collectors;
 
 import static dk.brics.tajs.util.Collections.newList;
 import static dk.brics.tajs.util.Collections.newSet;
@@ -24,7 +40,7 @@ import static dk.brics.tajs.util.Collections.newSet;
 public class NativeObjectToString {
 
     private static final Set<DOMObjects> DOMElementInstanceHostObjects = newSet(
-            Arrays.asList(DOMObjects.values()).stream()
+            Arrays.stream(DOMObjects.values())
                     .filter(e -> e == DOMObjects.HTMLDOCUMENT_INSTANCES || e.toString().endsWith("Element instances")) // NB: relying on enum.toString
                     .collect(Collectors.toList()));
 

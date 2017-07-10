@@ -124,3 +124,4 @@ test/10k/last_man_standing.html:90:36: [info] 'this' refers to multiple abstract
 test/10k/last_man_standing.html:90:56: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/10k/last_man_standing.html:90:71: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/10k/last_man_standing.html:92:16: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+Soundness testing succeeded for 1103 checks (with 0 expected failures)

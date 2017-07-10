@@ -6,3 +6,4 @@ test/resig/ejohn25.js:7:1: [info] Abstract value: [@<the global object>[native]]
 test/resig/ejohn25.js:8:1: [info] Abstract value: [@<the global object>[native]]
 test/resig/ejohn25.js:11:1: [info] Abstract value: [@Object#node7]
 test/resig/ejohn25.js:12:1: [info] Abstract value: [@Object#node7]
+Soundness testing succeeded for 29 checks (with 0 expected failures)

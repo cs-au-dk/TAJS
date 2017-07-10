@@ -77,7 +77,7 @@ public class UnevalTools {
 
         Map<String, Integer> mapping = Collections.newMap();
         Set<String> args = newSet();
-        String nf = p_build_nf(register, n, dr, mapping, args, Collections.<Integer>newSet(), s, c, false);
+        String nf = p_build_nf(register, n, dr, mapping, args, Collections.newSet(), s, c, false);
         return new NormalForm(nf, mapping, args);
     }
 
@@ -420,7 +420,7 @@ public class UnevalTools {
     public static String get_call_name(FlowGraph fg, CallNode n) {
         if (n.getFunctionRegister() == AbstractNode.NO_VALUE)
             return null; // TODO: what if eval is accessed by a read-property operation instead of a read-variable?
-        return get_read_variable_node(new Decorator(n.getBlock().getFunction()), n, n.getFunctionRegister(), Collections.<Integer>newSet());
+        return get_read_variable_node(new Decorator(n.getBlock().getFunction()), n, n.getFunctionRegister(), Collections.newSet());
     }
 
     /**

@@ -163,7 +163,7 @@ public final class UnknownValueResolver {
          * (Modifications of the returned set will affect subsequent calls to the method.)
          */
         public Set<RGNode> getRoots() {
-            return roots != null ? roots : java.util.Collections.<RGNode>emptySet();
+            return roots != null ? roots : java.util.Collections.emptySet();
         }
 
         /**
@@ -171,7 +171,7 @@ public final class UnknownValueResolver {
          */
         public void addNode(RGNode n) {
             prepare();
-            graph.put(n, dk.brics.tajs.util.Collections.<Pair<Context, RGNode>, Set<RGNode>>newMap());
+            graph.put(n, dk.brics.tajs.util.Collections.newMap());
             pending.add(n);
             if (log.isDebugEnabled())
                 log.debug("adding node " + n);
@@ -195,7 +195,7 @@ public final class UnknownValueResolver {
          * Returns the set of nodes.
          */
         public Set<RGNode> getNodes() {
-            return graph != null ? graph.keySet() : java.util.Collections.<RGNode>emptySet();
+            return graph != null ? graph.keySet() : java.util.Collections.emptySet();
         }
 
         /**
@@ -236,7 +236,7 @@ public final class UnknownValueResolver {
          */
         public Set<Entry<Pair<Context, RGNode>, Set<RGNode>>> getCallees(RGNode n) {
             return graph != null ? graph.get(n).entrySet() :
-                    java.util.Collections.<Entry<Pair<Context, RGNode>, Set<RGNode>>>emptySet();
+                    java.util.Collections.emptySet();
         }
 
         /**

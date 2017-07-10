@@ -4,3 +4,4 @@ test/micro/testUintSub.js:15:1: [info] Abstract value: UInt|NotUInt
 test/micro/testUintSub.js:16:1: [info] Abstract value: UInt|NotUInt
 test/micro/testUintSub.js:18:1: [info] Abstract value: Num
 test/micro/testUintSub.js:19:1: [info] Abstract value: Num
+Soundness testing succeeded for 45 checks (with 0 expected failures)

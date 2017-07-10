@@ -26,8 +26,8 @@ import org.kohsuke.args4j.CmdLineException;
 import org.kohsuke.args4j.CmdLineParser;
 import org.kohsuke.args4j.Option;
 
-import java.io.PrintStream;
 import java.lang.reflect.Field;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -35,6 +35,7 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Optional;
 import java.util.Set;
 import java.util.TreeMap;
 
@@ -115,13 +116,13 @@ public class OptionValues {
     @Option(name = "-newflow", usage = "Report summary of new flow at function entries")
     private boolean newflow;
 
-    @Option(name = "-states", usage = "Output intermediate abstract states")
+    @Option(name = "-states", usage = "Output intermediate abstract states (implies -debug)")
     private boolean states;
 
-    @Option(name = "-test", usage = "Test mode (ensures deterministic behavior and performs extra runtime checks)")
+    @Option(name = "-test", usage = "Test mode (ensures deterministic behavior, performs extra runtime checks, and implies -test-soundness)")
     private boolean test;
 
-    @Option(name = "-test-flowgraph-builder", usage = "Test flow graph builder (implies test mode)")
+    @Option(name = "-test-flowgraph-builder", usage = "Test flow graph builder (implies -test)")
     private boolean testFlowgraphBuilder;
 
     @Option(name = "-timing", usage = "Report analysis time")
@@ -130,10 +131,10 @@ public class OptionValues {
     @Option(name = "-statistics", usage = "Report statistics")
     private boolean statistics;
 
-    @Option(name = "-memory-usage", usage = "Report the memory usage of the analysis")
+    @Option(name = "-memory-usage", usage = "Report the memory usage of the analysis (makes analysis slower due to GC'ing)")
     private boolean memoryUsage;
 
-    @Option(name = "-quiet", usage = "Only output results, not progress")
+    @Option(name = "-quiet", usage = "Only output results, not progress (makes analysis slightly faster)")
     private boolean quiet;
 
     @Option(name = "-dom", usage = "Enable Mozilla DOM browser model")
@@ -169,9 +170,6 @@ public class OptionValues {
     @Option(name = "-return-json", usage = "Assume that AJAX calls return JSON")
     private boolean ajaxReturnsJson;
 
-    @Option(name = "-help", usage = "Prints this message")
-    private boolean help;
-
     @Option(name = "-ignore-libraries", usage = "Ignore unreachable code messages from libraries (library names separated by comma)")
     private String ignoredLibrariesString;
 
@@ -180,59 +178,78 @@ public class OptionValues {
     @Option(name = "-context-sensitive-heap", usage = "Enable selective context sensitive heap abstractions")
     private boolean contextSensitiveHeap;
 
-    @Option(name = "-parameter-sensitivity", usage = "Enabled usage of different contexts for (some) calls based on the argument values")
+    @Option(name = "-parameter-sensitivity", usage = "Enable usage of different contexts for (some) calls based on the argument values")
     private boolean parameterSensitivity;
 
     @Option(name = "-ignore-unreachable", usage = "Ignore code parts which has been marked as unreachable")
     private boolean ignoreUnreachable;
 
-    @Option(name = "-loop-unrolling", usage = "Enables unrolling of loops up to [n] times")
+    @Option(name = "-loop-unrolling", usage = "Enable unrolling of loops up to [n] times")
     private int loopUnrollings = -1;
 
-    @Option(name = "-determinacy", usage = "Enables all of the techniques described in 'Determinacy in Static Analysis of jQuery', OOPSLA 2014")
+    @Option(name = "-determinacy", usage = "Enable all of the techniques described in 'Determinacy in Static Analysis of jQuery', OOPSLA 2014")
     private boolean determinacy;
 
-    @Option(name = "-polyfill-mdn", usage = "Enables use of polyfills from the Mozilla Developer Network web pages")
+    @Option(name = "-polyfill-mdn", usage = "Enable use of polyfills from the Mozilla Developer Network web pages")
     private boolean polyfillMDN;
 
-    @Option(name = "-polyfill-es6-collections", usage = "Enables use of polyfills for ES6 collections")
+    @Option(name = "-polyfill-es6-collections", usage = "Enable use of polyfills for ES6 collections")
     private boolean polyfillES6Collections;
 
-    @Option(name = "-polyfill-typed-arrays", usage = "Enables use of polyfills for typed arrays (Int8Array, Float64Array ...)")
+    @Option(name = "-polyfill-typed-arrays", usage = "Enable use of polyfills for typed arrays (Int8Array, Float64Array ...)")
     private boolean polyfillTypedArrays;
 
-    @Option(name = "-async-events", usage = "Enables execution of asynchronous event handlers with TAJS_asyncListen")
+    @Option(name = "-async-events", usage = "Enable execution of asynchronous event handlers with TAJS_asyncListen")
     private boolean asyncEvents;
+
+    @Option(name = "-test-soundness", usage = "Test that the analysis fixpoint over-approximates concrete behaviors")
+    private boolean testSoundness;
+
+    @Option(name = "-generate-log", usage = "Produce the log to be used by -test-soundness (unless already up-to-date)")
+    private boolean generateLog;
+
+    @Option(name = "-log-file", usage = "Specify the location of the soundness log file to use")
+    private String logFile;
 
     @Option(name = "-config", usage = "The location of .tajsconfig properties file")
     private String config;
 
-    @Option(name = "-show-internal-messages", usage = "Shows messages for host functions modeled as JavaScript source code")
+    @Option(name = "-show-internal-messages", usage = "Show messages for host functions modeled as JavaScript source code")
     private boolean showInternalMessages;
 
-    @Option(name = "-console-model", usage = "Adds a model of the console object")
+    @Option(name = "-console-model", usage = "Add a model of the console object")
     private boolean consoleModel;
 
-    @Option(name = "-common-async-polyfill", usage = "Adds a model of the setTimeout/setInterval functions")
+    @Option(name = "-common-async-polyfill", usage = "Add a model of the setTimeout/setInterval functions")
     private boolean commonAsyncPolyfill;
 
-    @Option(name = "-no-strict", usage = "Disables support for the 'use strict' directive")
+    @Option(name = "-no-strict", usage = "Disable support for the 'use strict' directive")
     private boolean noStrict;
 
     @Option(name = "-deterministic-collections", usage = "Use collections with deterministic iteration order")
     private boolean deterministicCollections;
 
-    @Option(name = "-specialize-all-boxed-primitives", usage = "Enables the specialized boxing of all primitives, instead of only concrete primitives")
+    @Option(name = "-specialize-all-boxed-primitives", usage = "Enable the specialized boxing of all primitives, instead of only concrete primitives")
     private boolean specializeAllBoxedPrimitives;
 
-    @Option(name = "-time-limit", usage = "Limits how many seconds the analysis is allowed to run")
+    @Option(name = "-time-limit", usage = "Limit how many seconds the analysis is allowed to run")
     private int analysisTimeLimit = -1;
 
     @Option(name = "-do-not-expect-ordinary-exit", usage = "Do not expect the program to reach the ordinary exit (for testing)")
     private boolean doNotExpectOrdinaryExit;
 
+    @Option(name = "-inspector", usage = "Start TAJS Inspector after analysis")
+    private boolean inspector;
+
     @Argument
     private List<String> arguments = new ArrayList<>();
+
+    private SoundnessTesterOptions soundnessTesterOptions = new SoundnessTesterOptions();
+
+    /**
+     * Constructs a new <code>OptionValues</code> object with default settings.
+     */
+    public OptionValues() { }
 
     @Override
     public boolean equals(Object o) {
@@ -278,7 +295,6 @@ public class OptionValues {
         if (unevalizer != that.unevalizer) return false;
         if (no_polymorphic != that.no_polymorphic) return false;
         if (ajaxReturnsJson != that.ajaxReturnsJson) return false;
-        if (help != that.help) return false;
         if (contextSensitiveHeap != that.contextSensitiveHeap) return false;
         if (parameterSensitivity != that.parameterSensitivity) return false;
         if (ignoreUnreachable != that.ignoreUnreachable) return false;
@@ -288,6 +304,8 @@ public class OptionValues {
         if (polyfillES6Collections != that.polyfillES6Collections) return false;
         if (polyfillTypedArrays != that.polyfillTypedArrays) return false;
         if (asyncEvents != that.asyncEvents) return false;
+        if (testSoundness != that.testSoundness) return false;
+        if (generateLog != that.generateLog) return false;
         if (showInternalMessages != that.showInternalMessages) return false;
         if (consoleModel != that.consoleModel) return false;
         if (commonAsyncPolyfill != that.commonAsyncPolyfill) return false;
@@ -296,6 +314,7 @@ public class OptionValues {
         if (specializeAllBoxedPrimitives != that.specializeAllBoxedPrimitives) return false;
         if (analysisTimeLimit != that.analysisTimeLimit) return false;
         if (doNotExpectOrdinaryExit != that.doNotExpectOrdinaryExit) return false;
+        if (inspector != that.inspector) return false;
         if (unsoundnessString != null ? !unsoundnessString.equals(that.unsoundnessString) : that.unsoundnessString != null)
             return false;
         if (unsoundness != null ? !unsoundness.equals(that.unsoundness) : that.unsoundness != null) return false;
@@ -303,8 +322,11 @@ public class OptionValues {
             return false;
         if (ignoredLibraries != null ? !ignoredLibraries.equals(that.ignoredLibraries) : that.ignoredLibraries != null)
             return false;
+        if (logFile != null ? !logFile.equals(that.logFile) : that.logFile != null)
+            return false;
         if (config != null ? !config.equals(that.config) : that.config != null) return false;
-        return arguments != null ? arguments.equals(that.arguments) : that.arguments == null;
+        if (arguments != null ? !arguments.equals(that.arguments) : that.arguments != null) return false;
+        return soundnessTesterOptions != null ? soundnessTesterOptions.equals(that.soundnessTesterOptions) : that.soundnessTesterOptions == null;
     }
 
     @Override
@@ -348,7 +370,6 @@ public class OptionValues {
         result = 31 * result + (unevalizer ? 1 : 0);
         result = 31 * result + (no_polymorphic ? 1 : 0);
         result = 31 * result + (ajaxReturnsJson ? 1 : 0);
-        result = 31 * result + (help ? 1 : 0);
         result = 31 * result + (ignoredLibrariesString != null ? ignoredLibrariesString.hashCode() : 0);
         result = 31 * result + (ignoredLibraries != null ? ignoredLibraries.hashCode() : 0);
         result = 31 * result + (contextSensitiveHeap ? 1 : 0);
@@ -360,6 +381,9 @@ public class OptionValues {
         result = 31 * result + (polyfillES6Collections ? 1 : 0);
         result = 31 * result + (polyfillTypedArrays ? 1 : 0);
         result = 31 * result + (asyncEvents ? 1 : 0);
+        result = 31 * result + (testSoundness ? 1 : 0);
+        result = 31 * result + (generateLog ? 1 : 0);
+        result = 31 * result + (logFile != null ? logFile.hashCode() : 0);
         result = 31 * result + (config != null ? config.hashCode() : 0);
         result = 31 * result + (showInternalMessages ? 1 : 0);
         result = 31 * result + (consoleModel ? 1 : 0);
@@ -369,30 +393,37 @@ public class OptionValues {
         result = 31 * result + (specializeAllBoxedPrimitives ? 1 : 0);
         result = 31 * result + analysisTimeLimit;
         result = 31 * result + (doNotExpectOrdinaryExit ? 1 : 0);
+        result = 31 * result + (inspector ? 1 : 0);
         result = 31 * result + (arguments != null ? arguments.hashCode() : 0);
+        result = 31 * result + (soundnessTesterOptions != null ? soundnessTesterOptions.hashCode() : 0);
         return result;
     }
 
-    public OptionValues() {
-        this(null, null);
-    }
-
-    public OptionValues(OptionValues base) {
-        this(base, null);
-    }
-
-    public OptionValues(OptionValues base, String[] args) {
-        if (base != null) {
-            OptionsUtil.cloneAllFields(base, this);
-        }
-        if (args != null) {
-            // parse args
+    public void parse(String[] args) throws CmdLineException {
             CmdLineParser parser = new CmdLineParser(this);
             try {
                 parser.parseArgument(args);
                 // handle flags that have side-effects, for example imply other flags
                 if (ignoredLibrariesString != null && !ignoredLibrariesString.isEmpty()) {
                     ignoredLibraries = newSet(Arrays.asList(ignoredLibrariesString.split(",")));
+                }
+                if (testSoundness) {
+                    soundnessTesterOptions.setTest(true);
+                    if (logFile == null) {
+                        throw new CmdLineException(parser, "-test-soundness requires -log-file");
+                    }
+                }
+                if (generateLog) {
+                    soundnessTesterOptions.setGenerate(true);
+                    if (logFile == null) {
+                        throw new CmdLineException(parser, "-generate-log requires -log-file");
+                    }
+                    if (!testSoundness) {
+                        throw new CmdLineException(parser, "-generate-log requires -test-soundness"); // TODO: could support -generate-log without -test-soundness (and then without running the static analysis!)
+                    }
+                }
+                if (logFile != null) {
+                    soundnessTesterOptions.setExplicitSoundnessLogFile(Optional.of(Paths.get(logFile)));
                 }
                 if (determinacy) {
                     enableDeterminacy();
@@ -403,37 +434,22 @@ public class OptionValues {
                 if (testFlowgraphBuilder) {
                     enableTestFlowGraphBuiler();
                 }
-                if (debug) {
+                if (debug || states) {
                     enableDebug();
-                }
-                if (help) {
-                    describe(System.out);
                 }
                 if (unsoundnessString != null) {
                     unsoundness = new UnsoundnessOptionValues(unsoundness, unsoundnessString.split(","));
                 }
             } catch (CmdLineException e) {
-                throw new RuntimeException("Bad arguments: " + e.getMessage());
-            }
+                throw new CmdLineException(null, "Bad arguments: " + e.getMessage());
         }
-    }
-
-    public OptionValues(String[] args) {
-        this(null, args);
     }
 
     @Override
     protected OptionValues clone() {
-        return new OptionValues(this);
-    }
-
-    /**
-     * Prints a description of the available options.
-     */
-    public void describe(PrintStream out) {
-        new CmdLineParser(this).printUsage(out);
-        out.println("\n Arguments to option '-unsound':\n");
-        new CmdLineParser(unsoundness).printUsage(out);
+        OptionValues options = new OptionValues();
+        OptionsUtil.cloneAllFields(this, options);
+        return options;
     }
 
     public Map<String, Object> getOptionValues() {
@@ -455,7 +471,7 @@ public class OptionValues {
             }
             return options;
         } catch (IllegalArgumentException | IllegalAccessException e) {
-            throw new RuntimeException(e);
+            throw new AnalysisException(e);
         }
     }
 
@@ -820,6 +836,9 @@ public class OptionValues {
         quiet = true;
         lowSeverity = true;
         deterministicCollections = true;
+        testSoundness = true;
+        soundnessTesterOptions.setTest(true);
+        soundnessTesterOptions.setGenerate(true);
     }
 
     public void enableTestFlowGraphBuiler() {
@@ -1032,9 +1051,9 @@ public class OptionValues {
         return noConcreteNative;
     }
 
-    public void checkConsistency() {
+    public void checkConsistency() throws CmdLineException {
         if (arguments == null || arguments.isEmpty()) {
-            throw new AnalysisException("No arguments provided!");
+            throw new CmdLineException(null, "No arguments provided!");
         }
     }
 
@@ -1080,6 +1099,10 @@ public class OptionValues {
 
     public void setUnsoundness(UnsoundnessOptionValues unsoundness) {
         this.unsoundness = unsoundness;
+    }
+
+    public SoundnessTesterOptions getSoundnessTesterOptions() {
+        return soundnessTesterOptions;
     }
 
     public void enableShowInternalMessages() {
@@ -1152,5 +1175,13 @@ public class OptionValues {
 
     public void disableDoNotExpectOrdinaryExit() {
         doNotExpectOrdinaryExit = false;
+    }
+
+    public boolean isInspectorEnabled() {
+        return inspector;
+    }
+
+    public void enableInspector() {
+        inspector = true;
     }
 }

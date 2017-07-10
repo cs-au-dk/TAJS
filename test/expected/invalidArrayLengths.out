@@ -2,3 +2,4 @@ out/temp-sources/TestMicro.invalidArrayLengths.js: [definite] Ordinary program e
 out/temp-sources/TestMicro.invalidArrayLengths.js:4:1: [definite] Unreachable code
 out/temp-sources/TestMicro.invalidArrayLengths.js:3:1: [maybe] RangeError, assigning invalid value to array 'length' property
 out/temp-sources/TestMicro.invalidArrayLengths.js: [maybe] Uncaught exception, constructed at [out/temp-sources/TestMicro.invalidArrayLengths.js:3:1]
+Soundness testing succeeded for 5 checks (with 0 expected failures)

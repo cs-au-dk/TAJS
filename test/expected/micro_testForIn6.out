@@ -4,3 +4,4 @@ test/micro/testForIn6.js: [definite] Exceptional program exit is unreachable
 test/micro/testForIn6.js:12:1: [info] Abstract value: [@Object#node15]
 test/micro/testForIn6.js:13:1: [info] Abstract value: UInt
 test/micro/testForIn6.js:14:1: [info] Abstract object: {bar:2.0|absent,foo:1.0|absent,[[Prototype]]=[@Object.prototype[native]]}
+Soundness testing succeeded for 26 checks (with 0 expected failures)

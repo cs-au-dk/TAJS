@@ -14,3 +14,4 @@ test/micro/test118.js:16:1: [info] Abstract value: Undef|[@Object#node29]
 test/micro/test118.js:19:1: [info] Abstract value: 87.0
 test/micro/test118.js:20:1: [info] Abstract value: 87.0
 test/micro/test118.js:21:1: [info] Abstract value: Undef|[@Object#node29]
+Soundness testing succeeded for 10 checks (with 0 expected failures)

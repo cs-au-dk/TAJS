@@ -58,3 +58,4 @@ TAJS-dynamic-code(test/uneval/uneval29.html:49:2):1:125: [maybe] Reading absent 
 TAJS-dynamic-code(test/uneval/uneval29.html:121:2):1:56: [maybe] Conversion to number yields NaN
 TAJS-dynamic-code(test/uneval/uneval29.html:121:2):1:223: [maybe] Conversion to number yields NaN
 TAJS-dynamic-code(test/uneval/uneval29.html:121:2):1:223: [maybe] Converting undefined to string
+Soundness testing succeeded for 96 checks (with 0 expected failures)

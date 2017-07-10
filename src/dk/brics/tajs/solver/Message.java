@@ -101,7 +101,7 @@ public class Message implements Comparable<Message> {
         /**
          * Information about known use of unsoundness.
          */
-        TAJS_UNSOUNDNESS;
+        TAJS_UNSOUNDNESS
     }
 
     private AbstractNode node;

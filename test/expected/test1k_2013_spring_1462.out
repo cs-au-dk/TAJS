@@ -47,3 +47,4 @@ test/1k2013spring/1462.js: [maybe] Uncaught exception, constructed at [test/1k20
 test/1k2013spring/1462.js:157:25: [maybe] Reading absent property (computed name)
 test/1k2013spring/1462.js:198:11: [maybe] Conversion to number yields NaN
 test/1k2013spring/1462.js:205:23: [maybe] Reading absent property (computed name)
+Soundness testing succeeded for 119 checks (with 1 expected failures)

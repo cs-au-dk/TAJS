@@ -1,7 +1,7 @@
 <main> function()
   block 0: [entry]
     node 0: constant[undefined,v1] (test/micro/test73simple.js)
-    node 1: function-decl[function foo(),-] (test/micro/test73simple.js:1:1)
+    node 1: function-decl[function foo(),-]* (test/micro/test73simple.js:1:1)
     ->[block 1]
   block 1:
     node 2: constant["tajs-host-env:string-replace-model.js",v2] (host-environment-sources-loader)
@@ -51,7 +51,7 @@ function foo()
 <main> function()
   block 0: [entry]
     node 0: constant[undefined,v1] (test/micro/test73simple.js)
-    node 1: function-decl[function foo(),-] (test/micro/test73simple.js:1:1)
+    node 1: function-decl[function foo(),-]* (test/micro/test73simple.js:1:1)
     ->[block 1]
   block 1:
     node 2: constant["tajs-host-env:string-replace-model.js",v2] (host-environment-sources-loader)
@@ -101,3 +101,4 @@ function foo()
 test/micro/test73simple.js: [definite] Exceptional program exit is unreachable
 test/micro/test73simple.js:2:5: [info] Abstract value: [@Object#node7]
 test/micro/test73simple.js:2:5: [info] Abstract value: [@Object#node9]
+Soundness testing succeeded for 14 checks (with 0 expected failures)

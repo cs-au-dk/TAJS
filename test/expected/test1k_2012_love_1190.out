@@ -30,3 +30,5 @@ test/1k2012love/1190.js:113:21: [maybe] Reading absent property (computed name)
 test/1k2012love/1190.js:113:29: [maybe] Reading absent property (computed name)
 test/1k2012love/1190.js:116:10: [maybe] Conversion to number yields NaN
 test/1k2012love/1190.js:120:9: [maybe] Conversion to number yields NaN
+Disabling soundness testing for test/1k2012love/1190.js entirely (210 uninspected soundness errors).
+Soundness testing succeeded for 416 checks (with 210 expected failures)

@@ -4,3 +4,4 @@ test/micro/test209.js:1:5: [definite] The variable dummyVar is never used
 test/micro/test209.js:6:1: [info] Abstract value: true
 test/micro/test209.js:7:1: [info] Abstract value: true
 test/micro/test209.js:8:1: [info] Abstract value: false
+Soundness testing succeeded for 10 checks (with 0 expected failures)

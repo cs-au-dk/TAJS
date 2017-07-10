@@ -122,6 +122,22 @@ public class GenericSolver<StateType extends IState<StateType, ContextType, Call
         }
 
         /**
+         * Runs the given supplier function with the given state and node set to current.
+         */
+        public <T> T withStateAndNode(StateType state, AbstractNode node, Supplier<T> fun) {
+            // TODO merge implementation with withState?
+            // TODO implement return-void variant?
+            AbstractNode old_node = current_node;
+            StateType old_state = current_state;
+            current_state = state;
+            current_node = node;
+            T res = fun.get();
+            current_node = old_node;
+            current_state = old_state;
+            return res;
+        }
+
+        /**
          * Returns the flow graph.
          */
         public FlowGraph getFlowGraph() {
@@ -265,6 +281,14 @@ public class GenericSolver<StateType extends IState<StateType, ContextType, Call
                                          BlockAndContext<ContextType> callee_entry) {
             return deps.isCallEdgeCharged(caller, caller_context, edge_context, callee_entry.getBlock(), callee_entry.getContext());
         }
+
+        public void setNode(AbstractNode node) {
+            current_node = node;
+        }
+
+        public WorkList<ContextType> getWorklist() {
+            return worklist;
+        }
     }
 
     /**
@@ -301,115 +325,94 @@ public class GenericSolver<StateType extends IState<StateType, ContextType, Call
      * Runs the solver.
      */
     public void solve() {
-        int nodeTransfers = 0;
-        boolean terminatedEarly = false;
-        // iterate until fixpoint
-        block_loop:
-        while (!worklist.isEmpty()) {
-            if (!analysis.getMonitoring().allowNextIteration()) {
-                if (!Options.get().isQuietEnabled()) {
-                    log.warn("Terminating fixpoint solver early and unsoundly");
+        String terminatedEarly = null;
+        try {
+            // iterate until fixpoint
+            block_loop:
+            while (!worklist.isEmpty()) {
+                if (!analysis.getMonitoring().allowNextIteration()) {
+                    terminatedEarly = "Terminating fixpoint solver early and unsoundly!";
+                    break;
                 }
-                terminatedEarly = true;
-                break;
-            }
-            if (sync != null) {
-                if (sync.isSingleStep())
-                    if (log.isDebugEnabled())
-                        log.debug("Worklist: " + worklist);
-                sync.waitIfSingleStep();
-            }
-            // pick a pending entry
-            WorkList<ContextType>.Entry p = worklist.removeNext();
-            if (p == null)
-                continue; // entry may have been removed
-            BasicBlock block = p.getBlock();
-            ContextType context = p.getContext();
-            if (sync != null)
-                sync.markActiveBlock(block);
-            deps.decrementFunctionActivityLevel(BlockAndContext.makeEntry(block, context));
-            StateType state = the_analysis_lattice_element.getState(block, p.getContext());
-            if (state == null)
-                throw new AnalysisException();
-            if (log.isDebugEnabled()) {
-                log.debug("Selecting worklist entry for block " + block.getIndex() + " at " + block.getSourceLocation());
-                log.debug("Worklist: " + worklist);
-                log.debug("Visiting " + block);
-//    			log.debug("Number of abstract states at this block: " + the_analysis_lattice_element.getSize(block));
-                log.debug("Context: " + context);
-            } else if (!Options.get().isQuietEnabled() && !Options.get().isTestEnabled() && log.isInfoEnabled()) {
-//    			if (block.isEntry())
-//    				log.debug("Entering " + block.getFunction() + " at " + block.getFunction().getSourceLocation());
-//    			if (block.isOrdinaryExit())
-//    				log.debug("Returning from " + block.getFunction() + " at " + block.getFunction().getSourceLocation());
-//    			if (block.isExceptionalExit())
-//    				log.debug("Exception from " + block.getFunction() + " at " + block.getFunction().getSourceLocation());
-                log.info(//"block " + block.getIndex() + " at " +
-                        block.getSourceLocation() +
-//    					", context " + context +
-                                " (node transfers: " + (nodeTransfers + 1) +
-//    					" (avg/node: " + ((float) ((analysis.getMonitoring().getTotalNumberOfNodeTransfers() + 1) * 1000 / flowgraph.getNumberOfNodes())) / 1000 + ")" + 
-                                ", worklist size: " + (worklist.size() + 1) +
-//    					", contexts: " + the_analysis_lattice_element.getSize(block) +
-                                ")");
-            }
-            // basic block transfer
-            current_state = state.clone();
-            analysis.getMonitoring().visitBlockTransferPre(block, current_state);
-            if (global_entry_block == block)
-                current_state.localize(null); // use *localized* initial state
-            if (Options.get().isIntermediateStatesEnabled())
-                if (log.isDebugEnabled())
-                    log.debug("Before block transfer: " + current_state);
-            try {
-                try {
-                    for (AbstractNode n : block.getNodes()) {
-                        nodeTransfers++;
-                        current_node = n;
+                if (sync != null) {
+                    if (sync.isSingleStep())
                         if (log.isDebugEnabled())
-                            log.debug("Visiting node " + current_node.getIndex() + ": "
-                                    + current_node + " at " + current_node.getSourceLocation());
-                        analysis.getMonitoring().visitNodeTransferPre(current_node, current_state);
-                        try {
-                            analysis.getNodeTransferFunctions().transfer(current_node);
-                        } catch (AnalysisLimitationException e) {
-                            if (Options.get().isTestEnabled()) {
-                                throw e;
-                            } else {
-                                log.warn(String.format("Stopping analysis prematurely: %s", e.getMessage()));
-                                terminatedEarly = true;
-                                break block_loop;
-                            }
-                        } finally {
-                            analysis.getMonitoring().visitNodeTransferPost(current_node, current_state);
-                        }
-                        if (current_state.isNone()) {
-                            log.debug("No non-exceptional flow");
-                            continue block_loop;
-                        }
-                        if (Options.get().isIntermediateStatesEnabled())
+                            log.debug("Worklist: " + worklist);
+                    sync.waitIfSingleStep();
+                }
+                // pick a pending entry
+                WorkList<ContextType>.Entry p = worklist.removeNext();
+                if (p == null)
+                    continue; // entry may have been removed
+                BasicBlock block = p.getBlock();
+                ContextType context = p.getContext();
+                if (sync != null)
+                    sync.markActiveBlock(block);
+                deps.decrementFunctionActivityLevel(BlockAndContext.makeEntry(block, context));
+                StateType state = the_analysis_lattice_element.getState(block, p.getContext());
+                if (state == null)
+                    throw new AnalysisException();
+                // basic block transfer
+                current_state = state.clone();
+                analysis.getMonitoring().visitBlockTransferPre(block, current_state);
+                if (global_entry_block == block)
+                    current_state.localize(null); // use *localized* initial state
+                if (Options.get().isIntermediateStatesEnabled())
+                    if (log.isDebugEnabled())
+                        log.debug("Before block transfer: " + current_state);
+                try {
+                    try {
+                        for (AbstractNode n : block.getNodes()) {
+                            current_node = n;
                             if (log.isDebugEnabled())
-                                log.debug("After node transfer: " + current_state.toStringBrief());
+                                log.debug("Visiting node " + current_node.getIndex() + ": "
+                                        + current_node + " at " + current_node.getSourceLocation());
+                            analysis.getMonitoring().visitNodeTransferPre(current_node, current_state);
+                            try {
+                                analysis.getNodeTransferFunctions().transfer(current_node);
+                            } catch (AnalysisLimitationException e) {
+                                if (Options.get().isTestEnabled()) {
+                                    throw e;
+                                } else {
+                                    terminatedEarly = String.format("Stopping analysis prematurely: %s", e.getMessage());
+                                    break block_loop;
+                                }
+                            } finally {
+                                analysis.getMonitoring().visitNodeTransferPost(current_node, current_state);
+                            }
+                            if (current_state.isNone()) {
+                                log.debug("No non-exceptional flow");
+                                continue block_loop;
+                            }
+                            if (Options.get().isIntermediateStatesEnabled())
+                                if (log.isDebugEnabled())
+                                    log.debug("After node transfer: " + current_state.toStringBrief());
+                        }
+                    } finally {
+                        analysis.getMonitoring().visitBlockTransferPost(block, current_state);
+                    }
+                    // edge transfer
+                    for (Iterator<BasicBlock> i = block.getSuccessors().iterator(); i.hasNext(); ) {
+                        BasicBlock succ = i.next();
+                        StateType s = i.hasNext() ? current_state.clone() : current_state;
+                        ContextType new_context = analysis.getEdgeTransferFunctions().transfer(block, succ, s);
+                        if (new_context != null) {
+                            c.propagateToBasicBlock(s, succ, new_context);
+                        }
                     }
                 } finally {
-                    analysis.getMonitoring().visitBlockTransferPost(block, current_state);
+                    // discharge incoming call edges if the function is now inactive
+                    deps.dischargeIfInactive(BlockAndContext.makeEntry(block, context));
                 }
-                // edge transfer
-                for (Iterator<BasicBlock> i = block.getSuccessors().iterator(); i.hasNext(); ) {
-                    BasicBlock succ = i.next();
-                    StateType s = i.hasNext() ? current_state.clone() : current_state;
-                    ContextType new_context = analysis.getEdgeTransferFunctions().transfer(block, succ, s);
-                    if (new_context != null) {
-                        c.propagateToBasicBlock(s, succ, new_context);
-                    }
-                }
-            } finally {
-                // discharge incoming call edges if the function is now inactive
-                deps.dischargeIfInactive(BlockAndContext.makeEntry(block, context));
             }
+        } finally {
+            analysis.getMonitoring().visitIterationDone();
         }
-        if (!terminatedEarly)
+        if (terminatedEarly != null) {
+            log.warn(terminatedEarly);
+        } else {
             deps.assertEmpty();
+        }
         messages_enabled = true;
     }
 
@@ -431,29 +434,36 @@ public class GenericSolver<StateType extends IState<StateType, ContextType, Call
                 block_loop:
                 for (Entry<ContextType, StateType> me : the_analysis_lattice_element.getStates(block).entrySet()) {
                     current_state = me.getValue().clone();
-                    ContextType context = me.getKey();
-                    if (global_entry_block == block)
-                        current_state.localize(null); // use *localized* initial state
-                    if (log.isDebugEnabled()) {
-                        log.debug("Context: " + context);
-                        if (Options.get().isIntermediateStatesEnabled())
-                            log.debug("Before block transfer: " + current_state);
-                    }
-                    for (AbstractNode node : block.getNodes()) {
-                        current_node = node;
-                        if (log.isDebugEnabled())
-                            log.debug("node " + current_node.getIndex() + ": " + current_node);
-                        if (current_state.isNone())
-                            continue block_loop; // unreachable, so skip the rest of the block
-                        try {
-                            analysis.getNodeTransferFunctions().transfer(node);
-                        } catch (AnalysisLimitationException e) {
-                            if (Options.get().isTestEnabled()) {
-                                throw e;
+                    analysis.getMonitoring().visitBlockTransferPre(block, current_state);
+                    try {
+                        ContextType context = me.getKey();
+                        if (global_entry_block == block)
+                            current_state.localize(null); // use *localized* initial state
+                        if (log.isDebugEnabled()) {
+                            log.debug("Context: " + context);
+                            if (Options.get().isIntermediateStatesEnabled())
+                                log.debug("Before block transfer: " + current_state);
+                        }
+                        for (AbstractNode node : block.getNodes()) {
+                            current_node = node;
+                            if (log.isDebugEnabled())
+                                log.debug("node " + current_node.getIndex() + ": " + current_node);
+                            if (current_state.isNone())
+                                continue block_loop; // unreachable, so skip the rest of the block
+                            analysis.getMonitoring().visitNodeTransferPre(current_node, current_state);
+                            try {
+                                analysis.getNodeTransferFunctions().transfer(node);
+                            } catch (AnalysisLimitationException e) {
+                                if (Options.get().isTestEnabled()) {
+                                    throw e;
+                                }
+                            } finally {
+                                analysis.getMonitoring().visitNodeTransferPost(current_node, current_state);
                             }
                         }
+                    } finally {
+                        analysis.getMonitoring().visitBlockTransferPost(block, current_state);
                     }
-                    analysis.getMonitoring().visitBlockTransferPost(block, current_state);
                 }
             }
         }

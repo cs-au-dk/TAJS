@@ -55,3 +55,5 @@ test/10k/heatmap.html:212:54: [maybe] Conversion to number yields NaN
 test/10k/heatmap.html:234:17: [maybe] Conversion to number yields NaN
 test/10k/heatmap.html:239:13: [maybe] Conversion to number yields NaN
 test/10k/heatmap.html:243:39: [maybe] Conversion to number yields NaN
+Disabling soundness testing for test/10k/heatmap.html entirely (36 uninspected soundness errors).
+Soundness testing succeeded for 456 checks (with 36 expected failures)

@@ -4,6 +4,7 @@ import dk.brics.tajs.Main;
 import dk.brics.tajs.options.OptionValues;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.util.AnalysisLimitationException;
+import dk.brics.tajs.util.Collectors;
 import org.apache.log4j.PropertyConfigurator;
 import org.junit.Before;
 import org.junit.Test;
@@ -14,7 +15,6 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Properties;
-import java.util.stream.Collectors;
 
 /**
  * Tests that each togglable option makes sense with and without debug. The analyzability of the test targets are not important in this test.
@@ -37,6 +37,7 @@ public class TestOptionToggling {
         return Arrays.stream(OptionValues.class.getDeclaredMethods())
                 .filter(m -> m.getName().startsWith("enable"))
                 .filter(m -> !m.getName().equals("enableDebug"))
+                .filter(m -> !m.getName().equals("enableInspector"))
                 .filter(m -> m.getParameterCount() == 0)
                 .map(m -> {
                     OptionValues optionValues = new OptionValues();
@@ -84,6 +85,7 @@ public class TestOptionToggling {
         String[] args = {file};
         try {
             Options.get().setAnalysisTimeLimit(30);
+            Options.get().getSoundnessTesterOptions().setTest(false);
             Misc.run(args);
         } catch (AnalysisLimitationException e) {
             // ignore

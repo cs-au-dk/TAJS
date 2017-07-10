@@ -15,3 +15,4 @@ test/1k2012love/shim.js:9:5: [maybe] TypeError, accessing property of null/undef
 test/1k2012love/1166.js: [maybe] Uncaught exception, constructed at [test/1k2012love/1166.js:17:5, test/1k2012love/1166.js:19:3, test/1k2012love/1166.js:32:20, test/1k2012love/1166.js:43:3, test/1k2012love/1166.js:43:11, test/1k2012love/1166.js:44:3, test/1k2012love/1166.js:46:5, test/1k2012love/1166.js:47:5, test/1k2012love/shim.js:9:5]
 test/1k2012love/1166.js:20:157: [maybe] Conversion to number yields NaN
 test/1k2012love/1166.js:32:20: [maybe] Conversion to number yields NaN
+Soundness testing succeeded for 231 checks (with 0 expected failures)

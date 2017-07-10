@@ -16,16 +16,15 @@
 
 package dk.brics.tajs.monitoring;
 
+import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.flowgraph.AbstractNode;
 import dk.brics.tajs.flowgraph.BasicBlock;
-import dk.brics.tajs.flowgraph.FlowGraph;
 import dk.brics.tajs.flowgraph.Function;
 import dk.brics.tajs.flowgraph.SourceLocation;
 import dk.brics.tajs.flowgraph.jsnodes.IfNode;
 import dk.brics.tajs.flowgraph.jsnodes.Node;
 import dk.brics.tajs.flowgraph.jsnodes.ReadPropertyNode;
 import dk.brics.tajs.flowgraph.jsnodes.ReadVariableNode;
-import dk.brics.tajs.lattice.CallEdge;
 import dk.brics.tajs.lattice.Context;
 import dk.brics.tajs.lattice.HostObject;
 import dk.brics.tajs.lattice.ObjectLabel;
@@ -33,7 +32,6 @@ import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.Str;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.solver.BlockAndContext;
-import dk.brics.tajs.solver.CallGraph;
 import dk.brics.tajs.solver.Message;
 
 import java.util.Collection;
@@ -82,12 +80,7 @@ public class DefaultAnalysisMonitoring implements IAnalysisMonitoring {
     }
 
     @Override
-    public void setCallGraph(CallGraph<State, Context, CallEdge> callGraph) {
-
-    }
-
-    @Override
-    public void setFlowgraph(FlowGraph fg) {
+    public void setSolverInterface(Solver.SolverInterface c) {
     }
 
     @Override
@@ -220,5 +213,9 @@ public class DefaultAnalysisMonitoring implements IAnalysisMonitoring {
 
     @Override
     public void visitRenameObject(AbstractNode node, ObjectLabel from, ObjectLabel to, State s) {
+    }
+
+    @Override
+    public void visitIterationDone() {
     }
 }

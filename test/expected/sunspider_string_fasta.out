@@ -20,3 +20,4 @@ test/sunspider/string-fasta.js:72:17: [maybe] Reading absent property (computed 
 test/sunspider/string-fasta.js:92:26: [maybe] Converting object to number
 test/sunspider/string-fasta.js:94:1: [info] Abstract value: UInt|NotUInt
 test/sunspider/string-fasta.js:43:27: [info] Reading from unknown property that may cause loss of precision
+Soundness testing succeeded for 2850 checks (with 0 expected failures)

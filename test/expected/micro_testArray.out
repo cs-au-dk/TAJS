@@ -67,3 +67,4 @@ test/micro/testArray.js:139:1: [info] Abstract value: 0.0
 test/micro/testArray.js:140:1: [info] Abstract object: {0:1.0,2:3.0,3:4.0,4:5.0,5:6.0,6:7.0,7:8.0,8:9.0,length:9.0,[[Prototype]]=[@Array.prototype[native]]}
 test/micro/testArray.js:143:1: [info] Abstract value: Undef|1.0
 test/micro/testArray.js:144:1: [info] Abstract object: {0:1.0|absent,2:3.0|absent,3:4.0|absent,4:5.0|absent,5:6.0|absent,6:7.0|absent,7:8.0|absent,8:9.0|absent,length:UInt,[[Prototype]]=[@Array.prototype[native]]}
+Soundness testing succeeded for 339 checks (with 0 expected failures)

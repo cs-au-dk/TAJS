@@ -150,7 +150,7 @@ public class Property {
                 return false;
             case DEFAULT_ARRAY:
             case DEFAULT_NONARRAY:
-                return false;
+                return true;
             default:
                 throw new AnalysisException(kind + " not expected");
         }

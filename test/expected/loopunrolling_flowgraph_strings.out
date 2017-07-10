@@ -99,3 +99,4 @@
 out/temp-sources/TestUnrolling.loopunrolling_flowgraph_strings.js: [definite] Ordinary program exit is unreachable
 out/temp-sources/TestUnrolling.loopunrolling_flowgraph_strings.js:1:20: [definite] The conditional expression is always true
 out/temp-sources/TestUnrolling.loopunrolling_flowgraph_strings.js: [definite] Exceptional program exit is unreachable
+Soundness testing succeeded for 0 checks (with 0 expected failures)

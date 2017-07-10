@@ -113,6 +113,7 @@ public final class Analysis implements IAnalysis<State, Context, CallEdge, IAnal
         transfer.setSolverInterface(c);
         state_util.setSolverInterface(c);
         worklist_strategy.setCallGraph(c.getAnalysisLatticeElement().getCallGraph());
+        monitoring.setSolverInterface(c);
     }
 
     /**

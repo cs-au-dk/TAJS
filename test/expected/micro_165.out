@@ -8,3 +8,4 @@ test/micro/test165.js:10:8: [maybe] Reading absent property (computed name)
 test/micro/test165.js:11:8: [maybe] Reading absent property (computed name)
 test/micro/test165.js:7:5: [info] Abstract value: Undef|[@aaaBBB#fun2, @aaaAAA#fun1]
 test/micro/test165.js:7:20: [info] Reading from unknown property that may cause loss of precision
+Soundness testing succeeded for 23 checks (with 0 expected failures)

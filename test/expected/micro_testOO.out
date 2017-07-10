@@ -24,3 +24,4 @@ test/micro/testOO.js:61:1: [info] Abstract value: "marilyn"
 test/micro/testOO.js:62:1: [info] Abstract value: "Gee, I'm bad"
 test/micro/testOO.js:63:1: [info] Abstract value: PrefixStr[Gee, ]
 test/micro/testOO.js:64:1: [info] Abstract value: "argh"
+Soundness testing succeeded for 260 checks (with 0 expected failures)

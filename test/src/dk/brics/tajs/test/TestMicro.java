@@ -5,6 +5,7 @@ import dk.brics.tajs.options.Options;
 import dk.brics.tajs.util.AnalysisLimitationException;
 import dk.brics.tajs.util.ParseError;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.junit.Assert.fail;
@@ -18,7 +19,6 @@ public class TestMicro {
 
 	@Before
 	public void init() {
-		Main.initLogging();
 		Main.reset();
 		Options.get().enableTest();
 		Options.get().enableContextSensitiveHeap();
@@ -4107,6 +4107,7 @@ public class TestMicro {
 	@Test
 	public void argumentsMutation() {
 		Misc.init();
+		Options.get().getSoundnessTesterOptions().setTest(false); // use of TAJS_make
 		Misc.runSource(
 		        "function f(){",
                 "	TAJS_assertEquals('foo', arguments[0]);",
@@ -4446,6 +4447,7 @@ public class TestMicro {
 	@Test
 	public void nonNumberCharactersInImpreciseConcatenation() {
 		Misc.init();
+		Options.get().getSoundnessTesterOptions().setTest(false);
 		Misc.runSource("var STR = TAJS_make('AnyStr');",
 						"var STR_OTHER_NUM = '' + TAJS_make('AnyNumOther');",
 						"var NON_NUMBER_CHARS = 'x';",
@@ -4548,6 +4550,7 @@ public class TestMicro {
 	@Test
 	public void testPartialCreate() {
 		Misc.init();
+		Options.get().getSoundnessTesterOptions().setTest(false);
 		Misc.runSource("TAJS_makePartial('FUNCTION', 'dummy1');",
 						"TAJS_makePartial('OBJECT', 'dummy2');",
 						"TAJS_makePartial('ARRAY', 'dummy3');");
@@ -4556,6 +4559,7 @@ public class TestMicro {
 	@Test
 	public void testPartialIdentity() {
 		Misc.init();
+		Options.get().getSoundnessTesterOptions().setTest(false);
 		Misc.runSource("var v1 = TAJS_makePartial('OBJECT', 'dummy1');",
 						"var v2a = TAJS_makePartial('OBJECT', 'dummy2');",
 						"var v2b = TAJS_makePartial('OBJECT', 'dummy2');",
@@ -4589,6 +4593,7 @@ public class TestMicro {
     @Test
     public void escapingArguments2() {
         Misc.init();
+        Options.get().getSoundnessTesterOptions().setTest(false);
         Misc.runSource("function mkArgs() { return arguments; }",
                         "var args = mkArgs('dyt');",
                         "TAJS_assertEquals(args[0], 'dyt');");
@@ -4654,106 +4659,6 @@ public class TestMicro {
 				"  TAJS_assert(false);",
 				"}");
 	}
-
-	@Test
-	public void callStringThisNonStrict() {
-		Misc.init();
-		Misc.runSource("try { ",
-				"  function f(){TAJS_assert(this instanceof String)};",
-				"  f.call('foo');",
-				"} catch (e) { ",
-				"  TAJS_assert(false);",
-				"}");
-	}
-
-    @Test
-    public void callStringThisStrict() {
-        Misc.init();
-        Misc.runSource(
-                "(function(){",
-                "   'use strict';",
-                "   try { ",
-                "     function f(){TAJS_assertEquals('foo', this)};",
-                "     f.call('foo');",
-                "   } catch (e) { ",
-                "     TAJS_assert(false);",
-                "   }",
-                "})();");
-    }
-
-    @Test
-    public void callStrictWithoutReceiver() {
-        Misc.init();
-        Misc.runSource(
-                "(function(){",
-                "   'use strict';",
-                "   try { ",
-                "     function f(){TAJS_assertEquals(undefined, this)};",
-                "     f();",
-                "   } catch (e) { ",
-                "     TAJS_assert(false);",
-                "   }",
-                "})();");
-    }
-
-    @Test
-    public void inheritStrict() {
-        Misc.init();
-        Misc.runSource(
-                "(function(){",
-                "   'use strict';",
-                "   try { ",
-                "     function f(){TAJS_assertEquals(undefined, this)};",
-                "     f();",
-                "   } catch (e) { ",
-                "     TAJS_assert(false);",
-                "   }",
-                "})();");
-    }
-
-    @Test
-    public void deepInheritStrict() {
-        Misc.init();
-        Misc.runSource(
-                "(function(){",
-                "   'use strict';",
-                "   (function(){",
-                "       try { ",
-                "           function f(){TAJS_assertEquals(undefined, this)};",
-                "           f();",
-                "       } catch (e) { ",
-                "           TAJS_assert(false);",
-                "       }",
-                "   })();",
-                "})();");
-    }
-
-    @Test
-    public void selfStrict() {
-        Misc.init();
-        Misc.runSource(
-                "(function(){",
-                "   try { ",
-                "     function f(){'use strict'; TAJS_assertEquals(undefined, this)};",
-                "     f();",
-                "   } catch (e) { ",
-                "     TAJS_assert(false);",
-                "   }",
-                "})();");
-    }
-
-    @Test(expected = AssertionError.class /* Top level 'use strict' is not yet supported (for architectural reasons */)
-    public void topLevelStrict() {
-        Misc.init();
-        Misc.runSource(
-                "'use strict';",
-                "try { ",
-                "  function f(){TAJS_assertEquals(undefined, this)};",
-                "  f();",
-                "} catch (e) { ",
-                "  TAJS_assert(false);",
-                "}");
-    }
 
 	@Test
 	public void hasOwnPropertyCallString() {
@@ -4898,4 +4803,22 @@ public class TestMicro {
 				"f('string')",
 				"f('str')");
 	}
+
+	@Ignore // TODO: Escaped line breaks in strings parsed incorrectly (github #432)
+	@Test
+	public void multilineStrings() {
+		Misc.init();
+		Misc.captureSystemOutput();
+		Misc.run("test/micro/multilineStrings.js");
+		Misc.checkSystemOutput();
+	}
+
+	@Ignore
+	@Test
+	public void httpURLInHTMLFile() {
+		Misc.init();
+		String[] args = {"test/micro/http-url.html"};
+		Misc.run(args);
+	}
+
 }

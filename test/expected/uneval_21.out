@@ -198,3 +198,4 @@ TAJS-dynamic-code(test/uneval/uneval21.html:6:5):1:52: [maybe] Reading absent pr
 TAJS-dynamic-code(test/uneval/uneval21.html:6:5):1:53: [maybe] The variable wt_va has values with different types
 TAJS-dynamic-code(test/uneval/uneval21.html:6:5):1:44: [info] Writing to unknown property that may cause loss of precision
 TAJS-dynamic-code(test/uneval/uneval21.html:6:5):1:11: [info] Reading from unknown property that may cause loss of precision
+Soundness testing succeeded for 458 checks (with 0 expected failures)

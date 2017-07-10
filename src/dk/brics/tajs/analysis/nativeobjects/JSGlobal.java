@@ -64,7 +64,7 @@ public class JSGlobal {
             }
 
             case PARSEFLOAT: { // 15.1.2.3
-                return TAJSConcreteSemantics.convertTAJSCall(Value.makeUndef(), nativeobject.toString(), 1, call, c, () -> Value.makeAnyNum());
+                return TAJSConcreteSemantics.convertTAJSCall(Value.makeUndef(), nativeobject.toString(), 1, call, c, Value::makeAnyNum);
             }
 
             case ISNAN: { // 15.1.2.4

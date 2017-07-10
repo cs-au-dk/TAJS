@@ -23,7 +23,6 @@ import com.google.javascript.jscomp.parsing.parser.trees.FormalParameterListTree
 import com.google.javascript.jscomp.parsing.parser.trees.FunctionDeclarationTree.Kind;
 import com.google.javascript.jscomp.parsing.parser.trees.IdentifierExpressionTree;
 import com.google.javascript.jscomp.parsing.parser.trees.ProgramTree;
-import dk.brics.tajs.analysis.nativeobjects.TAJSFunction;
 import dk.brics.tajs.flowgraph.AbstractNode;
 import dk.brics.tajs.flowgraph.BasicBlock;
 import dk.brics.tajs.flowgraph.FlowGraph;
@@ -33,6 +32,8 @@ import dk.brics.tajs.flowgraph.JavaScriptSource;
 import dk.brics.tajs.flowgraph.SourceLocation;
 import dk.brics.tajs.flowgraph.SourceLocation.SourceLocationMaker;
 import dk.brics.tajs.flowgraph.SourceLocation.SyntheticLocationMaker;
+import dk.brics.tajs.flowgraph.TAJSFunctionName;
+import dk.brics.tajs.flowgraph.ValueLogLocationInformation;
 import dk.brics.tajs.flowgraph.jsnodes.BeginForInNode;
 import dk.brics.tajs.flowgraph.jsnodes.CallNode;
 import dk.brics.tajs.flowgraph.jsnodes.CatchNode;
@@ -43,11 +44,13 @@ import dk.brics.tajs.flowgraph.jsnodes.EventDispatcherNode.Type;
 import dk.brics.tajs.flowgraph.jsnodes.IfNode;
 import dk.brics.tajs.flowgraph.jsnodes.NopNode;
 import dk.brics.tajs.flowgraph.jsnodes.ThrowNode;
+import dk.brics.tajs.flowgraph.syntaticinfo.RawSyntacticInformation;
 import dk.brics.tajs.js2flowgraph.JavaScriptParser.ParseResult;
 import dk.brics.tajs.js2flowgraph.JavaScriptParser.SyntaxMesssage;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.util.AnalysisException;
 import dk.brics.tajs.util.Collections;
+import dk.brics.tajs.util.Collectors;
 import dk.brics.tajs.util.Pair;
 import dk.brics.tajs.util.ParseError;
 import org.apache.log4j.Logger;
@@ -60,7 +63,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 import java.util.Stack;
-import java.util.stream.Collectors;
 
 import static dk.brics.tajs.js2flowgraph.FunctionBuilderHelper.addNodeToBlock;
 import static dk.brics.tajs.js2flowgraph.FunctionBuilderHelper.makeBasicBlock;
@@ -96,7 +98,9 @@ public class FlowGraphBuilder {
 
     private ASTInfo astInfo;
 
-    private SyntacticHintsCollector syntacticInformationCollector;
+    private final RawSyntacticInformation syntacticInformation;
+
+    private final ValueLogLocationInformation valueLogMappingInformation;
 
     /**
      * Constructs a flow graph builder.
@@ -111,7 +115,8 @@ public class FlowGraphBuilder {
         initialEnv = env;
         parser = new JavaScriptParser(mode);
         processed = TranslationResult.makeAppendBlock(initialEnv.getAppendBlock());
-        syntacticInformationCollector = new SyntacticHintsCollector();
+        syntacticInformation = new RawSyntacticInformation();
+        valueLogMappingInformation = new ValueLogLocationInformation();
     }
 
     /**
@@ -131,7 +136,7 @@ public class FlowGraphBuilder {
     Function transformCode(String source, int lineOffset, int columnOffset, SourceLocationMaker sourceLocationMaker) {
         final AstEnv env = initialEnv.makeAppendBlock(processed.getAppendBlock());
         ProgramTree t = makeAST(source, lineOffset, columnOffset, sourceLocationMaker);
-        processed = new FunctionBuilder(astInfo, functionAndBlocksManager, sourceLocationMaker, syntacticInformationCollector).process(t, env);
+        processed = new FunctionBuilder(astInfo, functionAndBlocksManager, sourceLocationMaker, makeSyntacticAnalysis()).process(t, env);
         return processed.getAppendBlock().getFunction();
     }
 
@@ -214,7 +219,7 @@ public class FlowGraphBuilder {
     private Function transformFunctionBody(String sourceContent, int lineOffset, int columnOffset, AstEnv env, SourceLocationMaker sourceLocationMaker) {
         ProgramTree tree = makeAST(sourceContent, lineOffset, columnOffset, sourceLocationMaker);
         FormalParameterListTree params = new FormalParameterListTree(tree.location, ImmutableList.of());
-        return new FunctionBuilder(astInfo, functionAndBlocksManager, sourceLocationMaker, syntacticInformationCollector).processFunctionDeclaration(Kind.DECLARATION, null, params, tree, env, makeSourceLocation(tree, sourceLocationMaker), null);
+        return new FunctionBuilder(astInfo, functionAndBlocksManager, sourceLocationMaker, makeSyntacticAnalysis()).processFunctionDeclaration(Kind.DECLARATION, null, params, tree, env, makeSourceLocation(tree, sourceLocationMaker), null);
     }
 
     /**
@@ -229,6 +234,8 @@ public class FlowGraphBuilder {
      */
     public FlowGraph close() {
         FlowGraph flowGraph = close(null, initialEnv.getFunction().getOrdinaryExit());
+        if (Options.get().isTestFlowGraphBuilderEnabled())
+            log.info("fg2: " + flowGraph);
         flowGraph.check();
         return flowGraph;
     }
@@ -250,7 +257,8 @@ public class FlowGraphBuilder {
         if (flowGraph == null) {
             flowGraph = new FlowGraph(initialEnv.getFunction());
         }
-        flowGraph.addSyntacticInformation(syntacticInformationCollector.getSyntacticHints());
+        flowGraph.addSyntacticInformation(syntacticInformation, valueLogMappingInformation);
+
         int origBlockCount = flowGraph.getNumberOfBlocks();
         int origNodeCount = flowGraph.getNumberOfNodes();
 
@@ -328,9 +336,10 @@ public class FlowGraphBuilder {
         // Avoid changes to block- & node-indexes due to a change in a hostenv-source.
         // (dynamically added code from eval et. al will still change)
         List<Function> sortedFunctions = newList(flowGraph.getFunctions());
+        FlowGraph finalFlowGraph = flowGraph;
         sortedFunctions.sort((f1, f2) -> {
-            boolean f1host = FlowGraphMutator.get().isHostEnvironmentSource(f1.getSourceLocation());
-            boolean f2host = FlowGraphMutator.get().isHostEnvironmentSource(f2.getSourceLocation());
+            boolean f1host = finalFlowGraph.isHostEnvironmentSource(f1.getSourceLocation());
+            boolean f2host = finalFlowGraph.isHostEnvironmentSource(f2.getSourceLocation());
             if (f1host != f2host) {
                 return f1host ? 1 : -1;
             }
@@ -353,8 +362,6 @@ public class FlowGraphBuilder {
             }
         }
 
-        if (Options.get().isTestFlowGraphBuilderEnabled())
-            log.info("fg2: " + flowGraph);
         return flowGraph;
     }
 
@@ -574,7 +581,7 @@ public class FlowGraphBuilder {
 
             ConstantNode sourceStringNode = ConstantNode.makeString(source.toString(), sourceRegister, loaderDummySourceLocation);
             ConstantNode internalFlagNode = ConstantNode.makeBoolean(true, internalRegister, loaderDummySourceLocation);
-            CallNode callLoadNode = new CallNode(loadedFunctionRegister, TAJSFunction.TAJS_LOAD, newList(Arrays.asList(sourceRegister, internalRegister)), loaderDummySourceLocation);
+            CallNode callLoadNode = new CallNode(loadedFunctionRegister, TAJSFunctionName.TAJS_LOAD, newList(Arrays.asList(sourceRegister, internalRegister)), loaderDummySourceLocation);
             CallNode callLoadedNode = new CallNode(false, AbstractNode.NO_VALUE, AbstractNode.NO_VALUE, loadedFunctionRegister, newList(), loaderDummySourceLocation);
 
             addNodeToBlock(sourceStringNode, appendBlock, mainEnv.makeStatementLevel(false));
@@ -610,7 +617,7 @@ public class FlowGraphBuilder {
 
         FormalParameterListTree params = new FormalParameterListTree(tree.location, ImmutableList.copyOf(parameters));
 
-        Function function = new FunctionBuilder(astInfo, functionAndBlocksManager, sourceLocationMaker, syntacticInformationCollector).processFunctionDeclaration(Kind.EXPRESSION, null, params, tree, env.makeResultRegister(AbstractNode.NO_VALUE), makeSourceLocation(tree, sourceLocationMaker), source);
+        Function function = new FunctionBuilder(astInfo, functionAndBlocksManager, sourceLocationMaker, makeSyntacticAnalysis()).processFunctionDeclaration(Kind.EXPRESSION, null, params, tree, env.makeResultRegister(AbstractNode.NO_VALUE), makeSourceLocation(tree, sourceLocationMaker), source);
 
         return function;
     }
@@ -621,5 +628,9 @@ public class FlowGraphBuilder {
         FunctionAndBlockManager fab = new FunctionAndBlockManager();
         env = setupFunction(main, env, fab);
         return new FlowGraphBuilder(env, fab);
+    }
+
+    private SyntacticAnalysis makeSyntacticAnalysis() {
+        return new SyntacticAnalysis(syntacticInformation, new ValueLogLocationRemapping(valueLogMappingInformation));
     }
 }

@@ -64,7 +64,7 @@ public class FunctionFileLoader {
                 URL location = c.getNode().getSourceLocation().getLocation();
                 Path callDirectory;
                 if (location == null) {
-                    throw new AnalysisException(c.getNode() + ": Cannot load relative path from unknown location: " + location);
+                    throw new AnalysisException(c.getNode() + ": Cannot load relative path from unknown physical location: " + c.getNode().getSourceLocation());
                 } else {
                     callDirectory = PathAndURLUtils.toPath(location).getParent();
                 }
@@ -72,11 +72,8 @@ public class FunctionFileLoader {
             }
 
             if (!Files.exists(likelyPath)) {
-                throw new RuntimeException(new NoSuchFileException(likelyPath.toAbsolutePath().toString()));
+                throw new AnalysisException("File to be loaded does not exist (could be an error in the analyzed program)", new NoSuchFileException(likelyPath.toAbsolutePath().toString()));
             }
-
-            // normalize the path before making it a URL, the URL normalization might not work!
-            likelyPath = likelyPath.normalize();
 
             // now we have a valid URL
             url = PathAndURLUtils.toURL(likelyPath);
@@ -91,7 +88,7 @@ public class FunctionFileLoader {
             sourceLocationMaker = new SourceLocation.StaticLocationMaker(url);
         }
 
-        Function function = FlowGraphMutator.get().extendFlowGraphWithTopLevelFunction(url, parameterNames, isHostEnvironment, c.getFlowGraph(), sourceLocationMaker);
+        Function function = FlowGraphMutator.extendFlowGraphWithTopLevelFunction(parameterNames, url, isHostEnvironment, c.getFlowGraph(), sourceLocationMaker);
 
         ObjectLabel functionLabel = UserFunctionCalls.instantiateFunction(function, ScopeChain.make(InitialStateBuilder.GLOBAL), c.getNode(), c.getState(), c);
         return Value.makeObject(functionLabel);

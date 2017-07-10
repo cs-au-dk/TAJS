@@ -1,3 +1,4 @@
 test/micro/test90.js:5:16: [maybe] ReferenceError, reading absent variable xxx
 test/micro/test90.js: [maybe] Uncaught exception, constructed at [test/micro/test90.js:5:16]
 test/micro/test90.js:5:1: [info] Abstract value: 42.0
+Soundness testing succeeded for 9 checks (with 0 expected failures)

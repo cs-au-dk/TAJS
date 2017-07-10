@@ -5,13 +5,14 @@ import com.google.javascript.jscomp.parsing.parser.trees.MemberLookupExpressionT
 import dk.brics.tajs.flowgraph.SourceLocation;
 import dk.brics.tajs.js2flowgraph.ASTInfo;
 import dk.brics.tajs.js2flowgraph.FlowGraphBuilder;
+import dk.brics.tajs.util.Collectors;
 import org.junit.Test;
 
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 import static dk.brics.tajs.util.Collections.newMap;
 import static dk.brics.tajs.util.Collections.newSet;
@@ -353,19 +354,19 @@ public class TestASTInfo {
     @Test
     public void conditionRefinedArgumentVariables1() {
         ASTInfo astInfo = makeInfo("if(f(x)){x}");
-        assertEquals(set(Arrays.asList("x")), singleton(astInfo.getConditionRefinedArgumentVariables().values()));
+        assertEquals(set(Arrays.asList(Optional.of("x"))), singleton(astInfo.getConditionRefinedArgumentVariables().values()));
     }
 
     @Test
     public void conditionRefinedArgumentVariables2() {
         ASTInfo astInfo = makeInfo("if(f(x, y, z)){x; z}");
-        assertEquals(set(Arrays.asList("x", null, "z")), singleton(astInfo.getConditionRefinedArgumentVariables().values()));
+        assertEquals(set(Arrays.asList(Optional.of("x"), Optional.empty(), Optional.of("z"))), singleton(astInfo.getConditionRefinedArgumentVariables().values()));
     }
 
     @Test
     public void conditionRefinedArgumentVariables3() {
         ASTInfo astInfo = makeInfo("if(f(x, y) && g(z)){x; y; z;}");
-        assertEquals(set(Arrays.asList("x", "y"), Arrays.asList("z")), singleton(astInfo.getConditionRefinedArgumentVariables().values()));
+        assertEquals(set(Arrays.asList(Optional.of("x"), Optional.of("y")), Arrays.asList(Optional.of("z"))), singleton(astInfo.getConditionRefinedArgumentVariables().values()));
     }
 
     @Test

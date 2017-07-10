@@ -16,9 +16,6 @@
 
 package dk.brics.tajs.js2flowgraph;
 
-import com.google.javascript.jscomp.parsing.Config;
-import com.google.javascript.jscomp.parsing.Config.LanguageMode;
-import com.google.javascript.jscomp.parsing.ConfigExposer;
 import com.google.javascript.jscomp.parsing.parser.Parser;
 import com.google.javascript.jscomp.parsing.parser.Parser.Config.Mode;
 import com.google.javascript.jscomp.parsing.parser.SourceFile;
@@ -27,8 +24,6 @@ import com.google.javascript.jscomp.parsing.parser.util.ErrorReporter;
 import com.google.javascript.jscomp.parsing.parser.util.SourcePosition;
 import dk.brics.tajs.flowgraph.SourceLocation;
 import dk.brics.tajs.flowgraph.SourceLocation.SourceLocationMaker;
-import dk.brics.tajs.util.AnalysisException;
-import dk.brics.tajs.util.Collections;
 
 import java.util.List;
 
@@ -42,34 +37,11 @@ public class JavaScriptParser {
 
     private final Mode mode;
 
-    private final Config config;
-
     /**
      * Constructs a new parser.
      */
     public JavaScriptParser(Mode languageMode) {
         mode = languageMode;
-        LanguageMode m;
-        switch (mode) {
-            case ES3:
-                m = LanguageMode.ECMASCRIPT3;
-                break;
-            case ES5:
-                m = LanguageMode.ECMASCRIPT5;
-                break;
-            case ES5_STRICT:
-                m = LanguageMode.ECMASCRIPT5_STRICT;
-                break;
-            case ES6:
-                m = LanguageMode.ECMASCRIPT6;
-                break;
-            case ES6_STRICT:
-                m = LanguageMode.ECMASCRIPT6_STRICT;
-                break;
-            default:
-                throw new AnalysisException("Unexpected enum: " + mode);
-        }
-        config = ConfigExposer.createConfig(Collections.newSet(), Collections.newSet(), m);
     }
 
     /**
@@ -140,11 +112,11 @@ public class JavaScriptParser {
      */
     public static class ParseResult {
 
-        private ProgramTree programAST;
-
         private final List<SyntaxMesssage> errors;
 
         private final List<SyntaxMesssage> warnings;
+
+        private ProgramTree programAST;
 
         private ParseResult(ProgramTree programAST, List<SyntaxMesssage> errors, List<SyntaxMesssage> warnings) {
             this.programAST = programAST;

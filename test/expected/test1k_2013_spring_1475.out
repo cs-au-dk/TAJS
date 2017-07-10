@@ -62,3 +62,4 @@ test/1k2013spring/1475.js:145:13: [maybe] Conversion to number yields NaN
 test/1k2013spring/1475.js:147:25: [maybe] Conversion to number yields NaN
 test/1k2013spring/1475.js:147:32: [maybe] Conversion to number yields NaN
 test/1k2013spring/1475.js:76:5: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+Soundness testing succeeded for 160 checks (with 0 expected failures)

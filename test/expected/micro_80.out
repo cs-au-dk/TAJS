@@ -2,3 +2,4 @@ test/micro/test80.js: [definite] Exceptional program exit is unreachable
 test/micro/test80.js:31:5: [info] Abstract value: 12345.0
 test/micro/test80.js:33:5: [info] Abstract value: "Exception!"
 test/micro/test80.js:35:1: [info] Abstract value: Undef|12345.0
+Soundness testing succeeded for 33 checks (with 0 expected failures)

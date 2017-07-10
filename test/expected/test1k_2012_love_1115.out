@@ -11,3 +11,4 @@ test/1k2012love/1115.js:36:25: [maybe] Reading absent property (computed name)
 test/1k2012love/1115.js:37:31: [maybe] Converting undefined to string
 test/1k2012love/1115.js:37:46: [maybe] Conversion to number yields NaN
 test/1k2012love/1115.js:37:46: [maybe] Converting undefined to string
+Soundness testing succeeded for 186 checks (with 0 expected failures)

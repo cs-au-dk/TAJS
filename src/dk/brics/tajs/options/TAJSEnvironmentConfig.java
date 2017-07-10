@@ -16,6 +16,9 @@
 
 package dk.brics.tajs.options;
 
+import dk.brics.tajs.util.AnalysisException;
+import dk.brics.tajs.util.Collectors;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -25,7 +28,6 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Properties;
-import java.util.stream.Collectors;
 
 import static dk.brics.tajs.util.Collections.newList;
 
@@ -65,7 +67,7 @@ public class TAJSEnvironmentConfig {
                             }
                         });
                     } catch (IOException e) {
-                        throw new RuntimeException(e);
+                        throw new AnalysisException(e);
                     }
                 }
         );
@@ -103,7 +105,7 @@ public class TAJSEnvironmentConfig {
             try (FileInputStream fis = new FileInputStream(Options.get().getConfig())) {
                 properties.load(fis);
             } catch (IOException e) {
-                throw new RuntimeException(e);
+                throw new AnalysisException(e);
             }
             TAJSEnvironmentConfig.init(properties);
         }
@@ -145,7 +147,7 @@ public class TAJSEnvironmentConfig {
     private String getRequiredProperty(String name) {
         String property = properties.getProperty(name);
         if (property == null) {
-            throw new RuntimeException(String.format("Property '%s' in %s is needed, but not defined!", name, filename));
+            throw new AnalysisException(String.format("Property '%s' in %s is needed, but not defined!", name, filename));
         }
         return property;
     }
@@ -157,7 +159,7 @@ public class TAJSEnvironmentConfig {
         }
         Boolean desktop = Boolean.valueOf(property);
         if (desktop && !java.awt.Desktop.isDesktopSupported()) {
-            throw new RuntimeException("Invalid TAJS configuration: desktop-usage is explicitly enabled, but the platform does not support desktops!");
+            throw new AnalysisException("Invalid TAJS configuration: desktop-usage is explicitly enabled, but the platform does not support desktops!");
         }
         return desktop;
     }
@@ -175,8 +177,8 @@ public class TAJSEnvironmentConfig {
         if (property == null) {
             return newList(); // default none
         }
-        return Arrays.asList(property.split(" ")).stream()
-                .map(s -> Integer.parseInt(s))
+        return Arrays.stream(property.split(" "))
+                .map(Integer::parseInt)
                 .collect(Collectors.toList());
     }
 

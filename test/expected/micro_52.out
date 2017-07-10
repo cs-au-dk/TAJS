@@ -2,3 +2,4 @@ test/micro/test52.js: [definite] Ordinary program exit is unreachable
 test/micro/test52.js:2:1: [maybe] RangeError, assigning invalid value to array 'length' property
 test/micro/test52.js: [maybe] Uncaught exception, constructed at [test/micro/test52.js:2:1]
 test/micro/test52.js:2:1: [maybe] Conversion from string to number yields NaN
+Soundness testing succeeded for 3 checks (with 0 expected failures)

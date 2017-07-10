@@ -3,3 +3,4 @@ test/micro/test16.js:1:9: [definite] ReferenceError, reading absent variable flu
 test/micro/test16.js:1:5: [definite] The variable x is never used
 test/micro/test16.js:1:14: [definite] Unreachable code
 test/micro/test16.js: [maybe] Uncaught exception, constructed at [test/micro/test16.js:1:9]
+Soundness testing succeeded for 1 checks (with 0 expected failures)

@@ -18,3 +18,4 @@ test/micro/test65.js:45:1: [info] Abstract object: {[[Prototype]]=[@Object#node8
 test/micro/test65.js:11:1: [info] Writing to unknown property that may cause loss of precision
 test/micro/test65.js:9:16: [info] Reading from unknown property that may cause loss of precision
 test/micro/test65.js:12:16: [info] Reading from unknown property that may cause loss of precision
+Soundness testing succeeded for 90 checks (with 0 expected failures)

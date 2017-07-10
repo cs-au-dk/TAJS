@@ -97,3 +97,5 @@ test/sunspider/crypto-md5.js:236:28: [maybe] Conversion to number yields NaN
 test/sunspider/crypto-md5.js:236:28: [maybe] Reading absent property (computed name)
 test/sunspider/crypto-md5.js:293:26: [maybe] Converting object to number
 test/sunspider/crypto-md5.js:295:1: [info] Abstract value: UInt|NotUInt
+Could not create value log file: main file is known to be unsupported (limitation of the jalangilogger project)
+Log of soundness facts is not available for test/sunspider/crypto-md5.js, skipping soundness checking

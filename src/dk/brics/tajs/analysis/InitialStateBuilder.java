@@ -364,8 +364,8 @@ public class InitialStateBuilder implements IInitialStateBuilder<State, Context,
 
         // 15.5.4 properties of the String prototype object
         s.writeInternalPrototype(lStringProto, Value.makeObject(lObjectPrototype));
-        pv.writePropertyWithAttributes(lStringProto, "length", Value.makeNum(0).setAttributes(true, true, false));  // FIXME: remove this line if switching to ES6 mode (see comment where STRING_PROTOTYPE is created)
-        s.writeInternalValue(lStringProto, Value.makeStr("")); // FIXME: remove this line if switching to ES6 mode (see comment where STRING_PROTOTYPE is created)
+        pv.writePropertyWithAttributes(lStringProto, "length", Value.makeNum(0).setAttributes(true, true, false));  // FIXME: remove this line if switching to ES6 mode (see comment where STRING_PROTOTYPE is created) (GitHub #351)
+        s.writeInternalValue(lStringProto, Value.makeStr("")); // FIXME: remove this line if switching to ES6 mode (see comment where STRING_PROTOTYPE is created) (GitHub #351)
         pv.writePropertyWithAttributes(lStringProto, "constructor", Value.makeObject(lString).setAttributes(true, false, false));
 
         createPrimitiveFunction(lStringProto, lFunProto, ECMAScriptObjects.STRING_TOSTRING, "toString", 0, c);

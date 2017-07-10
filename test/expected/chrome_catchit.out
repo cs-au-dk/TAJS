@@ -74,3 +74,4 @@ test/chromeexperiments/catchit.html:106:25: [info] 'this' refers to a summary ab
 test/chromeexperiments/catchit.html:106:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/chromeexperiments/catchit.html:106:33: [info] 'this' refers to a summary abstract object, which may cause loss of precision
 test/chromeexperiments/catchit.html:106:33: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+Soundness testing succeeded for 0 checks (with 0 expected failures)

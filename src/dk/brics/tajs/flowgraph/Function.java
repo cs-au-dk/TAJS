@@ -22,6 +22,7 @@ import dk.brics.tajs.util.AnalysisException;
 import dk.brics.tajs.util.Strings;
 
 import java.io.PrintWriter;
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
@@ -36,7 +37,7 @@ import static dk.brics.tajs.util.Collections.newSet;
  * Function sub-graph.
  * Whenever a function has been created or modified, {@link #complete()} must be called.
  */
-public class Function {
+public class Function implements Serializable {
 
     /**
      * Unique index of this function in the flow graph, or -1 if not belonging to a flow graph.

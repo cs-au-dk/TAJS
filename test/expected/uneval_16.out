@@ -2,3 +2,4 @@ test/uneval/uneval16.html: [definite] Exceptional program exit is unreachable
 TAJS-dynamic-code(test/uneval/uneval16.html:8:17):1:15: [maybe] Reading absent property (computed name)
 test/uneval/uneval16.html:8:2: [info] Abstract value: Undef|true|1.0|"str"
 TAJS-dynamic-code(test/uneval/uneval16.html:8:17):1:15: [info] Reading from unknown property that may cause loss of precision
+Soundness testing succeeded for 16 checks (with 0 expected failures)

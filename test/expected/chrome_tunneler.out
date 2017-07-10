@@ -264,3 +264,4 @@ test/chromeexperiments/tunneler.html:351:39: [info] 'this' refers to a summary a
 test/chromeexperiments/tunneler.html:351:39: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/chromeexperiments/tunneler.html:351:58: [info] 'this' refers to a summary abstract object, which may cause loss of precision
 test/chromeexperiments/tunneler.html:351:58: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+Soundness testing succeeded for 1632 checks (with 0 expected failures)

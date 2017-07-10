@@ -10,3 +10,4 @@ test/1k2013spring/1360.js:48:23: [maybe] Conversion to number yields NaN
 test/1k2013spring/1360.js:52:15: [maybe] Conversion to number yields NaN
 test/1k2013spring/1360.js:52:25: [maybe] Conversion to number yields NaN
 test/1k2013spring/1360.js:56:14: [maybe] Conversion to number yields NaN
+Soundness testing succeeded for 374 checks (with 0 expected failures)

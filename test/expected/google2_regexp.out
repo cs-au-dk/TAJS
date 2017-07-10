@@ -1191,3 +1191,4 @@ test/google2/regexp.js:1583:7: [maybe] Converting primitive string to object
 test/google2/regexp.js:1584:7: [maybe] Converting primitive string to object
 test/google2/regexp.js:1585:7: [maybe] Converting primitive string to object
 test/google2/regexp.js:1586:7: [maybe] Converting primitive string to object
+Soundness testing succeeded for 35791 checks (with 0 expected failures)

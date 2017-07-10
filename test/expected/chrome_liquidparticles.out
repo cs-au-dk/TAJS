@@ -1,5 +1,7 @@
 test/chromeexperiments/liquidparticles.html:30:5: [definite] The conditional expression is always true
 test/chromeexperiments/liquidparticles.html:190:14: [definite] The conditional expression is always true
+test/chromeexperiments/liquidparticles.html:57:9: [definite] Dead assignment, property size is never read
+test/chromeexperiments/liquidparticles.html:218:5: [definite] Dead assignment, property size is never read
 test/chromeexperiments/liquidparticles.html:12:5: [definite] The variable canvasDiv is never used
 test/chromeexperiments/liquidparticles.html:13:5: [definite] The variable outerDiv is never used
 test/chromeexperiments/liquidparticles.html:195:1: [definite] The variable e is never used
@@ -18,3 +20,4 @@ test/chromeexperiments/liquidparticles.html:74:15: [maybe] Conversion to number 
 test/chromeexperiments/liquidparticles.html:94:17: [maybe] Reading absent property (computed name)
 test/chromeexperiments/liquidparticles.html:100:18: [maybe] Conversion to number yields NaN
 test/chromeexperiments/liquidparticles.html:101:18: [maybe] Conversion to number yields NaN
+Soundness testing succeeded for 576 checks (with 0 expected failures)

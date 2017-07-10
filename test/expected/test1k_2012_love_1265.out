@@ -74,3 +74,4 @@ test/1k2012love/1265.js:106:32: [maybe] Converting primitive string to object
 test/1k2012love/1265.js:110:19: [maybe] The variable hit has values with different types
 test/1k2012love/1265.js:111:14: [maybe] The variable hit has values with different types
 test/1k2012love/1265.js:111:30: [maybe] Reading absent property (computed name)
+Soundness testing succeeded for 114 checks (with 0 expected failures)

@@ -5,3 +5,4 @@ test/micro/test107.js:10:4: [definite] Dead assignment, property dept is never r
 test/micro/test107.js:11:4: [definite] The function product is invoked both as constructor and function
 test/micro/test107.js: [definite] Exceptional program exit is unreachable
 test/micro/test107.js:3:7: [maybe] Conversion to number yields NaN
+Soundness testing succeeded for 65 checks (with 0 expected failures)

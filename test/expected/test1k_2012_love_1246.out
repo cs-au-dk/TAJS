@@ -94,7 +94,6 @@ test/1k2012love/1246.js:129:24: [maybe] Reading absent property m
 test/1k2012love/1246.js:129:67: [maybe] Reading absent property y
 test/1k2012love/1246.js:131:30: [maybe] Reading absent property y
 test/1k2012love/1246.js:131:39: [maybe] Reading absent property e
-test/1k2012love/1246.js:135:5: [maybe] Reading absent property filter
 test/1k2012love/1246.js:136:15: [maybe] Reading absent property x
 test/1k2012love/1246.js:136:21: [maybe] Reading absent property y
 test/1k2012love/1246.js:141:24: [maybe] Reading absent property e
@@ -189,3 +188,4 @@ test/1k2012love/1246.js:149:55: [maybe] Converting primitive number to object
 test/1k2012love/1246.js:149:55: [maybe] The variable ee has values with different types
 test/1k2012love/1246.js:154:15: [maybe] Converting object to number
 test/1k2012love/1246.js:154:15: [maybe] The variable step has values with different types
+Soundness testing succeeded for 2253 checks (with 0 expected failures)

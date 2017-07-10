@@ -19,6 +19,7 @@ public class TestUtilities {
     public void init() {
         Main.initLogging();
         Main.reset();
+        Options.get().enableTest();
     }
 
     @Test
@@ -46,7 +47,7 @@ public class TestUtilities {
     @Test
     public void stateToDot() throws Exception {
         String[] args = {"test/micro/test00.js"};
-        Misc.run(args, new CompositeMonitoring(new Monitoring(), new DefaultAnalysisMonitoring() {
+        Misc.run(args, new CompositeMonitoring(Monitoring.make(), new DefaultAnalysisMonitoring() {
             @Override
             public void visitBlockTransferPost(BasicBlock b, State state) {
                 state.toDot();

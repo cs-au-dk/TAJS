@@ -75,7 +75,7 @@ public class Unsoundness {
     /**
      * Records that unsoundness was used.
      */
-    private void addMessage(AbstractNode node, String msg) {
+    public void addMessage(AbstractNode node, String msg) {
         if (options.isShowUnsoundnessUsage()) {
             messageCollector.accept(node, Severity.TAJS_UNSOUNDNESS, msg);
         }
@@ -214,8 +214,7 @@ public class Unsoundness {
         if (!isFuzzy) {
             return false;
         }
-        boolean isOnlyFuzzyUInt = isFuzzy
-                && !currentPropertyValue.isMaybeStrSomeNonUInt()
+        boolean isOnlyFuzzyUInt = !currentPropertyValue.isMaybeStrSomeNonUInt()
                 && currentPropertyValue.isMaybeStrSomeUInt();
         if (isOnlyFuzzyUInt) {
             addMessage(node, "Assuming array-like reads do not use prototypes");
@@ -246,7 +245,7 @@ public class Unsoundness {
         return addMessageIfUnsound(
                 node,
                 property.getProperty().isFuzzy(), // TODO: enable by option? (GitHub #357)
-                String.format("Skipping write to property '__proto__'"));
+                "Skipping write to property '__proto__'");
     }
 
     @FunctionalInterface

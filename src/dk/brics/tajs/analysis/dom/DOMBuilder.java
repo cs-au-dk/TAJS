@@ -20,6 +20,7 @@ import dk.brics.tajs.analysis.InitialStateBuilder;
 import dk.brics.tajs.analysis.PropVarOperations;
 import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.analysis.dom.ajax.AjaxBuilder;
+import dk.brics.tajs.analysis.dom.ajax.ReadystateEvent;
 import dk.brics.tajs.analysis.dom.core.CoreBuilder;
 import dk.brics.tajs.analysis.dom.core.DOMAttr;
 import dk.brics.tajs.analysis.dom.core.DOMCDataSection;
@@ -39,10 +40,14 @@ import dk.brics.tajs.analysis.dom.core.DOMProcessingInstruction;
 import dk.brics.tajs.analysis.dom.core.DOMText;
 import dk.brics.tajs.analysis.dom.core.DOMTouch;
 import dk.brics.tajs.analysis.dom.core.DOMTouchList;
-import dk.brics.tajs.analysis.dom.event.Event;
 import dk.brics.tajs.analysis.dom.event.EventBuilder;
+import dk.brics.tajs.analysis.dom.event.HashChangeEvent;
+import dk.brics.tajs.analysis.dom.event.KeyboardEvent;
+import dk.brics.tajs.analysis.dom.event.LoadEvent;
 import dk.brics.tajs.analysis.dom.event.MouseEvent;
+import dk.brics.tajs.analysis.dom.event.MutationEvent;
 import dk.brics.tajs.analysis.dom.event.TouchEvent;
+import dk.brics.tajs.analysis.dom.event.WheelEvent;
 import dk.brics.tajs.analysis.dom.html.HTMLBodyElement;
 import dk.brics.tajs.analysis.dom.html.HTMLBuilder;
 import dk.brics.tajs.analysis.dom.html.HTMLCollection;
@@ -71,6 +76,7 @@ import net.htmlparser.jericho.Source;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Set;
+import java.util.stream.Stream;
 
 import static dk.brics.tajs.analysis.dom.DOMFunctions.createDOMProperty;
 import static dk.brics.tajs.analysis.dom.html5.CanvasRenderingContext2D.CONTEXT2D;
@@ -205,13 +211,21 @@ public class DOMBuilder {
         createDOMProperty(DOMDocumentFragment.INSTANCES, "nextSibling", htmlElementsProperty, c);
         createDOMProperty(DOMDocumentFragment.INSTANCES, "children", Value.makeObject(HTMLCollection.INSTANCES), c);
 
-        // TODO these belong on the event instances, and not on the prototype... (GitHub #358)
-        createDOMProperty(Event.PROTOTYPE, "target", Value.makeObject(getAllDOMEventTargets()), c);
-        createDOMProperty(Event.PROTOTYPE, "currentTarget", htmlElementsProperty, c);
-        createDOMProperty(Event.PROTOTYPE, "fromElement", htmlElementsProperty.joinAbsent(), c);
-        createDOMProperty(Event.PROTOTYPE, "toElement", htmlElementsProperty.joinAbsent(), c);
-        createDOMProperty(Event.PROTOTYPE, "defaultPrevented", Value.makeAnyBool(), c);
-        createDOMProperty(Event.PROTOTYPE, "returnValue", Value.makeAnyBool(), c);
+        Stream.of(HashChangeEvent.INSTANCES,
+                KeyboardEvent.INSTANCES,
+                MouseEvent.INSTANCES,
+                ReadystateEvent.INSTANCES,
+                LoadEvent.INSTANCES,
+                MutationEvent.INSTANCES,
+                WheelEvent.INSTANCES,
+                TouchEvent.INSTANCES).forEach(eventInstance -> {
+            createDOMProperty(eventInstance, "target", Value.makeObject(getAllDOMEventTargets()), c);
+            createDOMProperty(eventInstance, "currentTarget", htmlElementsProperty, c);
+            createDOMProperty(eventInstance, "fromElement", htmlElementsProperty.joinAbsent(), c);
+            createDOMProperty(eventInstance, "toElement", htmlElementsProperty.joinAbsent(), c);
+            createDOMProperty(eventInstance, "defaultPrevented", Value.makeAnyBool(), c);
+            createDOMProperty(eventInstance, "returnValue", Value.makeAnyBool(), c);
+        });
         createDOMProperty(MouseEvent.INSTANCES, "relatedTarget", htmlElementsProperty, c);
 
         Set<ObjectLabel> htmlElementsAndWindow = newSet(ALL_HTML_OBJECT_LABELS);
@@ -319,7 +333,7 @@ public class DOMBuilder {
     }
 
     public static void writeEventListenerProperties(Collection<ObjectLabel> targets, PropVarOperations pv) {
-        Arrays.asList(EventType.values()).stream().forEach(type ->
+        Arrays.stream(EventType.values()).forEach(type ->
                 EventType.getEventHandlerAttributeNames(type).forEach(attributeName ->
                         targets.forEach(target -> {
                                     Value event = DOMEvents.getEvent(type);

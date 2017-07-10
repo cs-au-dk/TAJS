@@ -132,3 +132,4 @@ out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continueBreak.js: [defini
 out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continueBreak.js:1:20: [definite] The conditional expression is always true
 out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continueBreak.js:1:45: [definite] The conditional expression is always true
 out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continueBreak.js: [definite] Exceptional program exit is unreachable
+Soundness testing succeeded for 0 checks (with 0 expected failures)

@@ -19,3 +19,4 @@ test/resig/ejohn90.js:4:4: [info] Abstract value: [@<anonymous>#fun6, @<anonymou
 test/resig/ejohn90.js:35:5: [info] Abstract value: [@Object#node9]
 test/resig/ejohn90.js:36:2: [info] Abstract value: Undef|IdentStr
 test/resig/ejohn90.js:37:2: [info] Abstract value: Undef|IdentStr
+Soundness testing succeeded for 193 checks (with 0 expected failures)

@@ -1,16 +1,15 @@
-TAJS - Type Analyzer for JavaScript
-===================================
+# TAJS - Type Analyzer for JavaScript
 
 Copyright 2009-2017 Aarhus University
 
 TAJS is a dataflow analysis for JavaScript that infers type information and call graphs.
+
 The current version of the analysis contains a model of ECMAScript 3rd edition, including the standard library, and partial models of the ECMAScript 5 and its standard library, the HTML DOM, and the browser API.
 Later version of ECMAScript are partially supported via [Babel](http://babeljs.io/).
 
 For research publications and other information about this tool see <http://www.brics.dk/TAJS>.
 
-How to build and run the tool
------------------------------
+## How to build and run the tool
 
 The simplest way to build TAJS is to run `ant`, which will build two jar files: `dist/tajs.jar` (which contains only TAJS itself) and `dist/tajs-all.jar` (which also includes the relevant extra libraries).
 
@@ -29,6 +28,8 @@ By default, TAJS outputs some information about its progress and eventually a li
 
 Some of the available options (run TAJS without arguments to see the full list):
 
+- `-inspector` - start *TAJS Inspector* after analysis (see [below](#tajs-inspector))
+
 - `-callgraph` - output call graph as text and in a file `out/callgraph.dot` (process with [Graphviz dot](http://www.graphviz.org/))
 
 - `-show-variable-info` - output type and line information about all variables
@@ -45,56 +46,126 @@ Some of the available options (run TAJS without arguments to see the full list):
 
 - `-statistics` - output various statistics about the analysis results
 
-- `-uneval` - enable the Unevalizer for on-the-fly translation of `eval` calls, as described in 'Remedying the Eval that Men Do', ISSTA 2012
+- `-uneval` - enable the Unevalizer for on-the-fly translation of `eval` calls, as described in ['Remedying the Eval that Men Do', ISSTA 2012](http://cs.au.dk/~amoeller/papers/unevalizer/)
 
-- `-determinacy` - enable the techniques described in 'Determinacy in Static Analysis of jQuery', OOPSLA 2014
+- `-determinacy` - enable the techniques described in ['Determinacy in Static Analysis of jQuery', OOPSLA 2014](http://cs.au.dk/~amoeller/papers/jquery/)
+
+- `-test-soundness` - test soundness using concrete execution as described in ['Systematic Approaches for Increasing Soundness and Precision of Static Analyzers', SOAP 2017](http://cs.au.dk/~amoeller/papers/tajsexperience/) (see [below](#soundness-testing))
 
 - `-unsound X` - enable unsound assumption X, e.g. `ignore-unlikely-property-reads` causes some unlikely properties to be ignored during dynamic property read operations, and `show-unsoundness-usage` outputs usage of unsound assumptions
 
 Note that the analysis produces lots of addition information that is not output by default. If you want full access to the abstract states and call graphs, as a starting point see the source code for `dk.brics.tajs.Main`. 
 The javadoc for TAJS is available at <http://www.brics.dk/TAJS/doc/>.
 
-Special built-in functions
---------------------------
+## TAJS Inspector
 
-TAJS recognizes a few special built-in functions (defined as properties of the global object) to support debugging and testing of the tool, including:
+*TAJS Inspector* (enabled using option `-inspector`) is a web-based interface to the analysis results. 
+It is primarily intended as a development tool for investigating information collected during analysis. 
+This includes abstract values of variables and properties, call graphs, and type warnings, but also internal analysis
+information, such as, number of times each primitive instruction is processed, number of contexts for each function,
+and "imprecision suspiciousness" of abstract states.
 
-- `TAJS_dumpValue(exp)` - report the abstract value of expression `exp` after analysis has completed
+## Special built-in functions
 
-- `TAJS_dumpObject(obj)` - report the properties of the abstract object `obj` after analysis has completed
+TAJS recognizes a few special built-in functions to support debugging and testing of the tool.
+For example, calling `TAJS_dumpState()` in the JavaScript program being analyzed will report the abstract state at the program point of the call.
+The full list of functions is documented in [TAJS-functions.md](TAJS-functions.md).
 
-- `TAJS_dumpState()` - report the abstract state at this program point after analysis has completed
-
-- `TAJS_assert(value)` - tests that `value` is `true`, failure will result in an AssertionError. 
-
-- `TAJS_assert(value, predicate)` - a generalized version of the single-argument `TAJS_assert`, supports disjunctions of the predicate methods in Value.java. E.g. to check that a value is either a single concrete string or some unsigned integer: 
-  - `TAJS_assert(myValue, 'isMaybeSingleStr || isMaybeNumUInt')`
-  
-- `TAJS_load(file,arg1,...)` - injects the given JavaScript file as a function, and calls it with the given arguments `arg1,...` 
-
-Running regression tests
-------------------------
-
-The directory `test` contains a collection of tests that can be executed by running [dk.brics.tajs.test.RunFast](test/src/dk/brics/tajs/test/RunFast.java) with JUnit from Eclipse/IntelliJ or with `ant test` from the command-line. 
-(A more thorough but slower test located in [dk.brics.tajs.test.RunAll](test/src/dk/brics/tajs/test/RunAll.java) can be run with `ant test-all`.)
-
-Soundiness
-----------
+## Soundiness
 
 The analysis models of the HTML DOM, the browser API, and the ECMAScript native library are not 100% complete. 
 For a list of other known sources of unsoundness, see <https://github.com/cs-au-dk/TAJS/issues?q=is%3Aopen+is%3Aissue+label%3Asoundiness>.
 
-Package dependencies
---------------------
+## Soundness testing
 
-This diagram shows the main package dependencies:
+It is possible to test that the analysis fixpoint over-approximates concrete behaviors. 
+This requires a log file of concrete behaviors to be provided to TAJS. 
+Sample log files are located in [test-resources/jalangilogfiles](test-resources/jalangilogfiles).
+
+Soundness testing, with an existing log file can be performed like this:
+```
+java -jar dist/tajs-all.jar -test-soundness -log-file test-resources/jalangilogfiles/test/google/richards.js.log.gz test/google/richards.js
+```
+
+This will produce the usual output, with the following line appended:
+```
+...
+Soundness testing succeeded for 1884 checks (with 0 expected failures)
+```
+
+Expected mismatches can be registered in [KnownUnsoundnesses.java](src/dk/brics/tajs/analysis/KnownUnsoundnesses.java).
+
+New log files can be generated by running the analyzed program concretely and monitoring its behavior using [jalangilogger](https://www.npmjs.com/package/jalangilogger) (see [below](#environment-configuration)).
+ 
+Soundness testing with a freshly generated log file can be performed like this:
+```
+java -jar dist/tajs-all.jar -test-soundness -generate-log -log-file my-log-file.log test/google/richards.js
+```
+If DOM modeling is enabled (e.g. if the given file is an HTML file) then a browser is spawned and user input is processed (until stopped or timeout).
+If analyzing a stand-alone JavaScript file, the log file is generated with Node.js instead of using a browser.
+
+Changes to the source code of the analyzed program requires a new log file to be created. 
+
+## Environment configuration
+
+Some advanced features of TAJS require additional environment configuration which can be defined in a .tajsconfig [properties](https://docs.oracle.com/javase/8/docs/api/java/util/Properties.html) file. 
+These features will automatically look for a .tajsconfig file in the working directory and its ancestor directories. 
+
+### Installing external dependencies 
+
+To generate log files for soundness testing, [Node.js](https://nodejs.org/en/download/) and [jalangilogger](https://www.npmjs.com/package/jalangilogger) must be installed.
+The jalangilogger tool can be installed like this:
+```
+cd external-dependencies/jalangilogger
+npm install
+```
+
+Individual external dependencies can be registered in .tajsconfig like this:
+
+```properties
+jalangilogger = /home/tajs-user/tajs/external-dependencies/jalangilogger/node_modules/jalangilogger
+```
+
+Alternatively, register the location of the TAJS installation:
+
+```properties
+tajs = /home/tajs-user/tajs
+```
+
+### Configurations for log file generation 
+
+For generation of log files for soundness testing, TAJS needs to know the locations of `jjs` and `node`: 
+
+```properties
+jjs = /usr/bin/jjs
+node = /usr/bin/nodejs
+```
+(On Windows, the paths are something like `C:/Program Files/Java/jdk1.8.0_131/bin/jjs.exe` and `C:/Program Files/nodejs/node.exe`.)
+
+## Running regression tests
+
+The directory `test` contains a collection of tests that can be executed by running [dk.brics.tajs.test.RunFast](test/src/dk/brics/tajs/test/RunFast.java) with JUnit from Eclipse/IntelliJ or with `ant test` from the command-line. 
+(A more thorough but slower test located in [dk.brics.tajs.test.RunAll](test/src/dk/brics/tajs/test/RunAll.java) can be run with `ant test-all`.)
+
+## Dependencies
+
+This software includes components from:
+
+- Google Closure Compiler (<https://closure-compiler.github.io//>)
+- Jericho HTML Parser (<http://jericho.htmlparser.net/>)
+- Log4j (<http://logging.apache.org/log4j>)
+- args4j (<http://args4j.kohsuke.org/>)
+- Gson (<https://github.com/google/gson>)
+- JUnit (<http://junit.org/>) (for development only)
+- Jetty (<http://www.eclipse.org/jetty/>) (for *TAJS Inspector* only)
+
+This diagram shows the main package source code dependencies:
 
 ![package dependencies](misc/package-dependencies.png)
 
 Modifications of the source code should avoid introducing upwards dependencies in this diagram.
 
-Authors
--------
+## Authors
 
 The following people have contributed to the source code:
 - Anders Møller
@@ -108,10 +179,5 @@ The following people have contributed to the source code:
 - Christoffer Quist Adamsen
 - Gianluca Mezzetti
 - Martin Torp
+- Simon Gregersen
 
-This software includes components from:
-- Google Closure Compiler (<http://code.google.com/p/closure-compiler/>)
-- Jericho HTML Parser (<http://jericho.htmlparser.net/>)
-- Log4j (<http://logging.apache.org/log4j>)
-- args4j (<http://args4j.kohsuke.org/>)
-- JUnit (<http://junit.org/>) (development only)

@@ -17,3 +17,4 @@ test/micro/test13.js:32:1: [info] Abstract object: {glossary:[@Object#node9],[[P
 test/micro/test13.js:33:1: [info] Abstract object: {GlossDiv:[@Object#node12],title:"example glossary",[[Prototype]]=[@Object.prototype[native]]}
 test/micro/test13.js:34:1: [info] Abstract object: {GlossDiv:[@Object#node12],title:"example glossary",[[Prototype]]=[@Object.prototype[native]]}
 test/micro/test13.js:35:1: [info] Abstract object: {GlossList:[@Object#node15],title:"S",[[Prototype]]=[@Object.prototype[native]]}
+Soundness testing succeeded for 24 checks (with 0 expected failures)

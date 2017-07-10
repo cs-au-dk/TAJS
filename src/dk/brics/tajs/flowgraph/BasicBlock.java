@@ -23,6 +23,7 @@ import dk.brics.tajs.util.AnalysisException;
 import dk.brics.tajs.util.Strings;
 
 import java.io.PrintWriter;
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.List;
@@ -36,7 +37,7 @@ import static dk.brics.tajs.util.Collections.newSet;
  * Must be non-empty.
  * Has a unique entry node and proceeds through the sequence unless exceptions are thrown.
  */
-public class BasicBlock {
+public class BasicBlock implements Serializable {
 
     /**
      * Unique index of this block in the flow graph, or -1 if not belonging to a flow graph.

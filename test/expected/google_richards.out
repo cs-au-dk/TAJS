@@ -90,3 +90,4 @@ test/google/richards.js:479:10: [info] 'this' refers to multiple abstract object
 test/google/richards.js:517:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/google/richards.js:518:29: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/google/richards.js:522:15: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+Soundness testing succeeded for 1884 checks (with 0 expected failures)

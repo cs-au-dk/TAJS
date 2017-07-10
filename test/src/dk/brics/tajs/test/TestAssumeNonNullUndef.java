@@ -4,6 +4,7 @@ import dk.brics.tajs.Main;
 import dk.brics.tajs.monitoring.IAnalysisMonitoring;
 import dk.brics.tajs.monitoring.Monitoring;
 import dk.brics.tajs.options.OptionValues;
+import dk.brics.tajs.options.Options;
 import dk.brics.tajs.solver.Message;
 import dk.brics.tajs.solver.Message.Status;
 import org.junit.Assert;
@@ -24,6 +25,7 @@ public class TestAssumeNonNullUndef {
     public void before() {
         Main.reset();
         Main.initLogging();
+        Options.get().enableTest();
     }
 
     @Test
@@ -204,7 +206,7 @@ public class TestAssumeNonNullUndef {
     public void testWithSource(final int expectedWarnings, final String... source) {
         OptionValues baseOptions = new OptionValues();
         baseOptions.enableTest();
-        IAnalysisMonitoring monitoring = new Monitoring();
+        IAnalysisMonitoring monitoring = Monitoring.make();
 
         Misc.runSource(source, monitoring);
         Set<Message> nullUndefWarnings = new HashSet<>();

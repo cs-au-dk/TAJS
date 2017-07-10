@@ -78,3 +78,5 @@ test/1k2013spring/1535.js:150:17: [maybe] The variable color has values with dif
 test/1k2013spring/1535.js:150:24: [maybe] The variable reflection_color has values with different types
 test/1k2013spring/1535.js:153:10: [maybe] The variable color has values with different types
 test/1k2013spring/1535.js:169:21: [maybe] Conversion to number yields NaN
+Could not create value log file: main file is known to be unsupported (limitation of the jalangilogger project)
+Log of soundness facts is not available for test/1k2013spring/1535.js, skipping soundness checking

@@ -72,3 +72,4 @@ test/10k/sinuous.html:253:29: [maybe] Reading absent property (computed name)
 test/10k/sinuous.html:280:21: [maybe] Reading absent property (computed name)
 test/10k/sinuous.html:314:23: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/10k/sinuous.html:315:23: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+Soundness testing succeeded for 1558 checks (with 0 expected failures)

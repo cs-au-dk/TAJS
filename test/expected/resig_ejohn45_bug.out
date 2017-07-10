@@ -1,1 +1,2 @@
 test/resig/ejohn45-bug.js: [definite] Exceptional program exit is unreachable
+Soundness testing succeeded for 57 checks (with 0 expected failures)

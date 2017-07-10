@@ -16,3 +16,4 @@ out/temp-sources/TestMicro.eventListenerRegistrationVariants.js:14:52: [info] Ab
 out/temp-sources/TestMicro.eventListenerRegistrationVariants.js:15:53: [info] Abstract value: "element.addEventListener('onmousedown', ...)"
 out/temp-sources/TestMicro.eventListenerRegistrationVariants.js:16:34: [info] Abstract value: "window.onmousedown = ..."
 out/temp-sources/TestMicro.eventListenerRegistrationVariants.js:17:35: [info] Abstract value: "element.onmousedown = ..."
+Soundness testing succeeded for 75 checks (with 0 expected failures)

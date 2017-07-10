@@ -1,2 +1,3 @@
 test/micro/test12.js: [definite] Exceptional program exit is unreachable
 test/micro/test12.js:4:1: [info] Abstract value: 777.0
+Soundness testing succeeded for 7 checks (with 0 expected failures)

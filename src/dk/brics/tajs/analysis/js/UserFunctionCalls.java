@@ -51,6 +51,7 @@ import dk.brics.tajs.solver.GenericSolver;
 import dk.brics.tajs.solver.Message.Severity;
 import dk.brics.tajs.solver.NodeAndContext;
 import dk.brics.tajs.util.AnalysisException;
+import dk.brics.tajs.util.Collectors;
 import org.apache.log4j.Logger;
 
 import java.util.Collection;
@@ -59,7 +60,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 import static dk.brics.tajs.util.Collections.newList;
 import static dk.brics.tajs.util.Collections.newMap;
@@ -153,7 +153,7 @@ public class UserFunctionCalls {
         pv.writePropertyWithAttributes(fn, "prototype", Value.makeObject(prototype).setAttributes(true, true, false));
         state.writeInternalValue(prototype, Value.makeNum(Double.NaN)); // TODO: as in Rhino (?)
 
-        // FIXME: "" is sometimes incorrect (if the function is anonymous but used in a simple variable initializer)
+        // FIXME: "" is sometimes incorrect (if the function is anonymous but used in a simple variable initializer) (GitHub #410)
         String name = fun.getName() == null ? "" : fun.getName();
         pv.writePropertyWithAttributes(fn, "name", Value.makeStr(name).setAttributes(true, false, true));
 

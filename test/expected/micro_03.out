@@ -1,2 +1,3 @@
 test/micro/test03.js: [definite] Exceptional program exit is unreachable
 test/micro/test03.js:12:1: [info] Abstract value: UIntPos
+Soundness testing succeeded for 18 checks (with 0 expected failures)

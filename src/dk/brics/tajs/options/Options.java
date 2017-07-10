@@ -17,7 +17,9 @@
 package dk.brics.tajs.options;
 
 import org.apache.log4j.Logger;
+import org.kohsuke.args4j.CmdLineParser;
 
+import java.io.StringWriter;
 import java.util.Map.Entry;
 
 /**
@@ -63,9 +65,17 @@ public class Options {
     }
 
     /**
-     * Parses command line arguments <em>in addition to</em> the already set options.
+     * Prints a description of the available options.
      */
-    public static void parse(String[] args) {
-        optionValues = new OptionValues(optionValues, args);
+    public static void showUsage() {
+        StringWriter w = new StringWriter();
+        CmdLineParser p = new CmdLineParser(optionValues);
+        p.setUsageWidth(150);
+        p.printUsage(w, null);
+        w.write("\n Arguments to option '-unsound':\n\n");
+        CmdLineParser pu = new CmdLineParser(optionValues.getUnsoundness());
+        pu.setUsageWidth(150);
+        pu.printUsage(w, null);
+        log.info(w);
     }
 }

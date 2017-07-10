@@ -18,6 +18,7 @@ package dk.brics.tajs.flowgraph;
 
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.util.AnalysisException;
+import dk.brics.tajs.util.Collectors;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -26,7 +27,6 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLStreamHandler;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static dk.brics.tajs.util.Collections.newList;
 
@@ -41,32 +41,38 @@ public class HostEnvSources {
         registerProtocol();
     }
 
-    private static void registerProtocol() {
-        // custom protocol to avoid system-specific paths in the output
-        URL.setURLStreamHandlerFactory(protocol -> PROTOCOL_NAME.equals(protocol) ? new URLStreamHandler() {
-            protected URLConnection openConnection(URL url) {
-                return new URLConnection(url) {
-                    public void connect() throws IOException {
-                        resolve(url.getPath()).openConnection().connect();
-                    }
-
-                    @Override
-                    public InputStream getInputStream() throws IOException {
-                        return resolve(url.getPath()).openConnection().getInputStream();
-                    }
-
-                    private URL resolve(String path) {
-                        String root = "/hostenv";
-                        String fullSourcePath = root + "/" + path;
-                        URL resource = HostEnvSources.class.getResource(fullSourcePath);
-                        if (resource == null) {
-                            throw new AnalysisException("Can't find resource " + fullSourcePath);
+    public static void registerProtocol() {
+        try {
+            // custom protocol to avoid system-specific paths in the output
+            URL.setURLStreamHandlerFactory(protocol -> PROTOCOL_NAME.equals(protocol) ? new URLStreamHandler() {
+                protected URLConnection openConnection(URL url) {
+                    return new URLConnection(url) {
+                        public void connect() throws IOException {
+                            resolve(url.getPath()).openConnection().connect();
                         }
-                        return resource;
-                    }
-                };
+
+                        @Override
+                        public InputStream getInputStream() throws IOException {
+                            return resolve(url.getPath()).openConnection().getInputStream();
+                        }
+
+                        private URL resolve(String path) {
+                            String root = "/hostenv";
+                            String fullSourcePath = root + "/" + path;
+                            URL resource = HostEnvSources.class.getResource(fullSourcePath);
+                            if (resource == null) {
+                                throw new AnalysisException("Can't find resource " + fullSourcePath);
+                            }
+                            return resource;
+                        }
+                    };
+                }
+            } : null);
+        } catch (Error error) {
+            if (!"factory already defined".equals(error.getMessage())) { // allow duplicate registration
+                throw error;
             }
-        } : null);
+        }
     }
 
     /**

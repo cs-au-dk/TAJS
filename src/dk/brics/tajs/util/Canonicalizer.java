@@ -18,6 +18,7 @@ package dk.brics.tajs.util;
 
 import java.lang.ref.WeakReference;
 import java.util.Map;
+import java.util.Set;
 
 import static dk.brics.tajs.util.Collections.newMap;
 
@@ -53,6 +54,9 @@ public class Canonicalizer {
         return cacheMisses;
     }
 
+    /**
+     * Canonicalizes the given instance.
+     */
     @SuppressWarnings("unchecked")
     public <T extends DeepImmutable> T canonicalize(T instance) {
         WeakReference<T> canonical = (WeakReference<T>) canonicalInstances.get(instance);
@@ -60,8 +64,48 @@ public class Canonicalizer {
             canonicalInstances.put(instance, new WeakReference<>(instance));
             cacheMisses++;
             return instance;
+        } else {
+            cacheHits++;
+            return canonical.get();
         }
-        cacheHits++;
-        return canonical.get();
+    }
+
+    /**
+     * Canonicalizes a set into an immutable version.
+     */
+    public <T extends DeepImmutable> Set<T> canonicalizeSet(Set<T> set) {
+        return canonicalize(new ImmutableBox<>(java.util.Collections.unmodifiableSet(set))).get();
+    }
+
+    /**
+     * Immutable-type wrapper for mutable objects. The wrapped object must be immutable in practice!
+     */
+    private static class ImmutableBox<T> implements DeepImmutable {
+
+        private final T element;
+
+        private final int hashCode;
+
+        public ImmutableBox(T element) {
+            this.element = element;
+            this.hashCode = element.hashCode();
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            ImmutableBox<?> that = (ImmutableBox<?>) o;
+            return element != null ? element.equals(that.element) : that.element == null;
+        }
+
+        @Override
+        public int hashCode() {
+            return hashCode;
+        }
+
+        public T get() {
+            return element;
+        }
     }
 }

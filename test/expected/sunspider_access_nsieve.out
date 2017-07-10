@@ -4,3 +4,4 @@ test/sunspider/access-nsieve.js: [maybe] Uncaught exception, constructed at [tes
 test/sunspider/access-nsieve.js:26:11: [maybe] Reading absent property (computed name)
 test/sunspider/access-nsieve.js:45:26: [maybe] Converting object to number
 test/sunspider/access-nsieve.js:47:1: [info] Abstract value: UInt|NotUInt
+Soundness testing succeeded for 1073 checks (with 0 expected failures)

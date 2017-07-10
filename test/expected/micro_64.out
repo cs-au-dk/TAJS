@@ -18,3 +18,4 @@ test/micro/test64.js:19:1: [info] Abstract object: {0:0.0,1:1.0,10:34.0,11:55.0,
 test/micro/test64.js:21:1: [info] Abstract object: {0:0.0,1:1.0,10:34.0,11:55.0,12:89.0,2:1.0,3:2.0,4:3.0,5:5.0,6:8.0,7:13.0,9:21.0,length:13.0,[[Prototype]]=[@Array.prototype[native]]}
 test/micro/test64.js:25:1: [info] Abstract value: "ab"
 test/micro/test64.js:27:1: [info] Abstract object: {0:0.0,1:1.0,10:34.0,11:55.0,12:89.0,2:1.0,3:2.0,4:3.0,5:5.0,6:8.0,7:13.0,9:21.0,length:13.0,[[Prototype]]=[@Array.prototype[native]]}
+Soundness testing succeeded for 50 checks (with 1 expected failures)

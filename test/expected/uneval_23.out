@@ -29,3 +29,4 @@ test/uneval/uneval23.html:62:37: [maybe] Conversion to number yields NaN
 TAJS-dynamic-code(test/uneval/uneval23.html:68:16):1:24: [maybe] Converting object to string
 TAJS-dynamic-code(test/uneval/uneval23.html:68:16):1:24: [maybe] Converting primitive string to object
 TAJS-dynamic-code(test/uneval/uneval23.html:68:16):1:54: [maybe] Converting primitive string to object
+Soundness testing succeeded for 24 checks (with 0 expected failures)

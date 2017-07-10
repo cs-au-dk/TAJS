@@ -7,3 +7,4 @@ test/micro/test163.js:12:1: [info] Abstract value: UInt
 test/micro/test163.js:14:1: [info] Abstract value: UIntPos
 test/micro/test163.js:16:1: [info] Abstract value: UIntStr
 test/micro/test163.js:17:1: [info] Abstract value: UIntStr
+Soundness testing succeeded for 46 checks (with 0 expected failures)

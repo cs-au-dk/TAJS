@@ -18,11 +18,12 @@ package dk.brics.tajs.lattice;
 
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.util.AnalysisException;
+import dk.brics.tajs.util.Collectors;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static dk.brics.tajs.util.Collections.newList;
@@ -178,7 +179,7 @@ public class ContextArguments {// TODO: canonicalize? (#140)
         Stream<Value> argumentValues = arguments.hasArguments() ? arguments.getArguments().stream() : Stream.empty();
         Stream<Value> unknownValues = arguments.unknownArg != null ? Stream.of(arguments.unknownArg) : Stream.empty();
         return Stream.concat(unknownValues, Stream.concat(argumentValues, closureParameterValues))
-                .filter(v -> v != null)
+                .filter(Objects::nonNull)
                 .flatMap(v -> v.getObjectLabels().stream())
                 .collect(Collectors.toSet());
     }

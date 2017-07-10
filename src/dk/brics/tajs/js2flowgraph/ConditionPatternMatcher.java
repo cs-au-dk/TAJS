@@ -21,7 +21,12 @@ import com.google.javascript.jscomp.parsing.parser.TokenType;
 import com.google.javascript.jscomp.parsing.parser.trees.BinaryOperatorTree;
 import com.google.javascript.jscomp.parsing.parser.trees.ParseTree;
 import com.google.javascript.jscomp.parsing.parser.trees.ParseTreeType;
-import dk.brics.tajs.flowgraph.WritableSyntacticInformation.SyntacticInformation;
+import dk.brics.tajs.flowgraph.syntaticinfo.ConditionPattern;
+import dk.brics.tajs.flowgraph.syntaticinfo.OrdinaryEquality;
+import dk.brics.tajs.flowgraph.syntaticinfo.SyntacticQueries;
+import dk.brics.tajs.flowgraph.syntaticinfo.Truthiness;
+import dk.brics.tajs.flowgraph.syntaticinfo.TypeofEquality;
+import dk.brics.tajs.flowgraph.syntaticinfo.Variable;
 
 import java.util.Optional;
 import java.util.Set;
@@ -33,9 +38,9 @@ import static dk.brics.tajs.util.Collections.newSet;
  */
 public class ConditionPatternMatcher {
 
-    private final SyntacticInformation syntacticInformation;
+    private final SyntacticQueries syntacticInformation;
 
-    public ConditionPatternMatcher(SyntacticInformation syntacticInformation) {
+    public ConditionPatternMatcher(SyntacticQueries syntacticInformation) {
         this.syntacticInformation = syntacticInformation;
     }
 
@@ -44,8 +49,8 @@ public class ConditionPatternMatcher {
                 || token.type == TokenType.NOT_EQUAL_EQUAL;
     }
 
-    private Reference.Variable getVariable(ParseTree tree) {
-        return new Reference.Variable(tree.asIdentifierExpression().identifierToken.value, null);
+    private Variable getVariable(ParseTree tree) {
+        return new Variable(tree.asIdentifierExpression().identifierToken.value, null);
     }
 
     private boolean isTypeof(ParseTree tree) {
@@ -117,95 +122,5 @@ public class ConditionPatternMatcher {
             return Optional.of(new TypeofEquality(syntacticInformation.getSimpleRead(left.asUnaryExpression().operand), syntacticInformation.getExpressionRegister(right), isSomeStrictEquality, isSomeInequality));
         }
         return Optional.empty();
-    }
-
-    public interface ConditionPatternVisitor<T> {
-
-        T visit(Truthiness p);
-
-        T visit(TypeofEquality p);
-
-        T visit(OrdinaryEquality p);
-    }
-
-    public interface ConditionPattern {
-
-        <T> T accept(ConditionPatternVisitor<T> v);
-
-        Reference getReference();
-    }
-
-    public class TypeofEquality extends AbstractEquality {
-
-        public TypeofEquality(Reference reference, int comparateeRegister, boolean isStrict, boolean negated) {
-            super(reference, comparateeRegister, isStrict, negated);
-        }
-
-        public <T> T accept(ConditionPatternVisitor<T> v) {
-            return v.visit(this);
-        }
-    }
-
-    public class OrdinaryEquality extends AbstractEquality {
-
-        public OrdinaryEquality(Reference reference, int comparateeRegister, boolean isStrict, boolean negated) {
-            super(reference, comparateeRegister, isStrict, negated);
-        }
-
-        public <T> T accept(ConditionPatternVisitor<T> v) {
-            return v.visit(this);
-        }
-    }
-
-    public abstract class AbstractEquality extends AbstractConditionPattern {
-
-        public final boolean isStrict;
-
-        private final int comparateeRegister;
-
-        public AbstractEquality(Reference reference, int comparateeRegister, boolean isStrict, boolean negated) {
-            super(reference, negated);
-            this.comparateeRegister = comparateeRegister;
-            this.isStrict = isStrict;
-        }
-
-        public boolean isStrict() {
-            return isStrict;
-        }
-
-        public int getComparateeRegister() {
-            return comparateeRegister;
-        }
-    }
-
-    public class Truthiness extends AbstractConditionPattern {
-
-        public Truthiness(Reference reference, boolean negated) {
-            super(reference, negated);
-        }
-
-        public <T> T accept(ConditionPatternVisitor<T> v) {
-            return v.visit(this);
-        }
-    }
-
-    private abstract class AbstractConditionPattern implements ConditionPattern {
-
-        private final Reference reference;
-
-        private final boolean negated;
-
-        public AbstractConditionPattern(Reference reference, boolean negated) {
-            this.reference = reference;
-            this.negated = negated;
-        }
-
-        public Reference getReference() {
-            return reference;
-        }
-
-        public boolean isNegated() {
-            return negated;
-        }
     }
 }

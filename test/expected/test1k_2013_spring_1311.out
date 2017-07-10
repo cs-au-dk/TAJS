@@ -9,3 +9,4 @@ test/1k2013spring/1311.js: [maybe] Uncaught exception, constructed at [test/1k20
 test/1k2013spring/1311.js:30:7: [maybe] Reading absent property (computed name)
 test/1k2013spring/1311.js:35:45: [maybe] Reading absent property (computed name)
 test/1k2013spring/1311.js:35:54: [maybe] Reading absent property (computed name)
+Soundness testing succeeded for 38 checks (with 0 expected failures)

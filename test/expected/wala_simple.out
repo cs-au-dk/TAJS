@@ -7,3 +7,4 @@ test/wala/simple.js:11:1: [definite] The variable one is never used
 test/wala/simple.js:91:1: [info] Abstract value: [@fib#fun6]
 test/wala/simple.js:94:3: [info] Abstract value: UInt|NotUInt
 test/wala/simple.js:96:3: [info] Abstract value: Num
+Soundness testing succeeded for 162 checks (with 0 expected failures)

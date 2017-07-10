@@ -7,3 +7,4 @@ test/micro/test174.js:4:1: [info] Abstract value: true
 test/micro/test174.js:5:1: [info] Abstract value: false
 test/micro/test174.js:6:1: [info] Abstract value: false
 test/micro/test174.js:11:1: [info] Abstract value: Bool
+Soundness testing succeeded for 57 checks (with 0 expected failures)

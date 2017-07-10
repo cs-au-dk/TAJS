@@ -185,3 +185,4 @@ test/10k/snowpar.html:324:9: [maybe] The variable draw_points has values with di
 test/10k/snowpar.html:325:9: [maybe] The variable draw_rects has values with different types
 test/10k/snowpar.html:43:37: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/10k/snowpar.html:43:65: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+Soundness testing succeeded for 2651 checks (with 0 expected failures)

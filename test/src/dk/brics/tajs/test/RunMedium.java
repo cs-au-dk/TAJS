@@ -11,7 +11,10 @@ import org.junit.runners.Suite;
         RunMediumModels.class,
         RunMediumFeatures.class,
         RunMediumECMAApps.class,
-        RunMediumDOMApps.class
+        RunMediumDOMApps.class,
+
+        // code inspection
+        PackageDependencyTest.class
 })
 public class RunMedium {
 

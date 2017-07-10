@@ -7,3 +7,4 @@ test/sunspider/bitops-nsieve-bits.js:24:9: [maybe] Conversion to number yields N
 test/sunspider/bitops-nsieve-bits.js:24:9: [maybe] Reading absent property (computed name)
 test/sunspider/bitops-nsieve-bits.js:39:26: [maybe] Converting object to number
 test/sunspider/bitops-nsieve-bits.js:41:1: [info] Abstract value: UInt|NotUInt
+Soundness testing succeeded for 1247 checks (with 0 expected failures)

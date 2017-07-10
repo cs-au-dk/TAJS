@@ -4,9 +4,10 @@ test/micro/test11.js:12:9: [maybe] Conversion to number yields NaN
 test/micro/test11.js:20:16: [maybe] The variable qqq2 has values with different types
 test/micro/test11.js:21:13: [maybe] The variable qqq2 has values with different types
 test/micro/test11.js:16:1: [info] Abstract value: 306.0
-test/micro/test11.js:20:1: [info] Abstract value: 306.0|IdentStr|OtherIdentPartsStr|OtherStr
+test/micro/test11.js:20:1: [info] Abstract value: 306.0|Str
 test/micro/test11.js:24:1: [info] Abstract value: "x101x102x103"
 test/micro/test11.js:28:1: [info] Abstract value: 306.0
 test/micro/test11.js:32:1: [info] Abstract value: NaN
 test/micro/test11.js:34:1: [info] Abstract value: true
 test/micro/test11.js:41:1: [info] Abstract value: 306.0
+Soundness testing succeeded for 128 checks (with 0 expected failures)

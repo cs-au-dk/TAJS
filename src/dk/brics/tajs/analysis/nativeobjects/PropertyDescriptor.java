@@ -25,10 +25,10 @@ import dk.brics.tajs.lattice.Bool;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.UnknownValueResolver;
 import dk.brics.tajs.lattice.Value;
+import dk.brics.tajs.util.Collectors;
 
 import java.util.Optional;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 import static dk.brics.tajs.util.Collections.newSet;
 

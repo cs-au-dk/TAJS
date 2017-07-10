@@ -64,3 +64,4 @@ test/chromeexperiments/breathinggalaxies.html:69:6: [maybe] Conversion to number
 test/chromeexperiments/breathinggalaxies.html:72:9: [maybe] Conversion to number yields NaN
 test/chromeexperiments/breathinggalaxies.html:73:19: [maybe] Conversion to number yields NaN
 test/chromeexperiments/breathinggalaxies.html:74:19: [maybe] Conversion to number yields NaN
+Soundness testing succeeded for 287 checks (with 0 expected failures)

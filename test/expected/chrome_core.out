@@ -82,3 +82,4 @@ test/chromeexperiments/core.html:409:136: [maybe] Converting primitive string to
 test/chromeexperiments/core.html:524:13: [maybe] Reading absent property (computed name)
 test/chromeexperiments/core.html:475:19: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/chromeexperiments/core.html:476:15: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+Soundness testing succeeded for 1712 checks (with 0 expected failures)

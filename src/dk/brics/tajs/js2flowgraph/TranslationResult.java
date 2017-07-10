@@ -17,6 +17,7 @@
 package dk.brics.tajs.js2flowgraph;
 
 import dk.brics.tajs.flowgraph.BasicBlock;
+import dk.brics.tajs.flowgraph.syntaticinfo.SyntacticReference;
 
 /**
  * Information about the result of translating a program fragment.
@@ -31,7 +32,7 @@ class TranslationResult {
     /**
      * Holds the result reference, or null if the result if not a reference.
      */
-    private Reference resultReference;
+    private SyntacticReference resultReference;
 
     private TranslationResult() {
     }
@@ -46,7 +47,7 @@ class TranslationResult {
     /**
      * Returns the result reference, or null if none.
      */
-    Reference getResultReference() {
+    SyntacticReference getResultReference() {
         return resultReference;
     }
 
@@ -62,7 +63,7 @@ class TranslationResult {
     /**
      * Creates a translation result that stores the result of an expression and the last basic block that been generated.
      */
-    static TranslationResult makeResultReference(Reference resultReference, BasicBlock appendBlock) {
+    static TranslationResult makeResultReference(SyntacticReference resultReference, BasicBlock appendBlock) {
         TranslationResult res = new TranslationResult();
         res.resultReference = resultReference;
         res.appendBlock = appendBlock;

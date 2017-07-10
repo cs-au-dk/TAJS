@@ -370,3 +370,5 @@ test/chromeexperiments/jstouch.html:1304:25: [info] 'this' refers to multiple ab
 test/chromeexperiments/jstouch.html:1327:27: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/chromeexperiments/jstouch.html:1341:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/chromeexperiments/jstouch.html:1342:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+Disabling soundness testing for test/chromeexperiments/jstouch.html entirely (568 uninspected soundness errors).
+Soundness testing succeeded for 3212 checks (with 568 expected failures)

@@ -161,3 +161,4 @@ test/10k/rgb_color_wheel.html:330:48: [maybe] Reading absent property (computed 
 test/10k/rgb_color_wheel.html:356:16: [maybe] Converting undefined to string
 test/10k/rgb_color_wheel.html:381:14: [maybe] Conversion to number yields NaN
 test/10k/rgb_color_wheel.html:382:15: [maybe] Conversion to number yields NaN
+Log of soundness facts is not available because of syntax errors in source of test/10k/rgb_color_wheel.html, skipping soundness checking

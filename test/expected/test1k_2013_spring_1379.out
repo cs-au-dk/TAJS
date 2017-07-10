@@ -15,3 +15,4 @@ test/1k2013spring/1379.js:53:42: [maybe] ReferenceError, reading absent variable
 test/1k2013spring/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
 test/1k2013spring/1379.js: [maybe] Uncaught exception, constructed at [test/1k2013spring/1379.js:27:12, test/1k2013spring/1379.js:32:9, test/1k2013spring/1379.js:38:17, test/1k2013spring/1379.js:38:34, test/1k2013spring/1379.js:48:7, test/1k2013spring/1379.js:49:7, test/1k2013spring/1379.js:51:22, test/1k2013spring/1379.js:53:42, test/1k2013spring/shim.js:9:5]
 test/1k2013spring/1379.js:27:12: [maybe] Reading absent property (computed name)
+Soundness testing succeeded for 227 checks (with 1 expected failures)

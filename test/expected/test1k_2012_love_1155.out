@@ -7,3 +7,4 @@ test/1k2012love/1155.js:11:3: [definite] Unreachable function p
 test/1k2012love/1155.js:12:12: [definite] Unreachable function
 test/1k2012love/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
 test/1k2012love/1155.js: [maybe] Uncaught exception, constructed at [test/1k2012love/shim.js:9:5]
+Soundness testing succeeded for 11 checks (with 0 expected failures)

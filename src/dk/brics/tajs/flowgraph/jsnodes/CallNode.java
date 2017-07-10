@@ -16,10 +16,10 @@
 
 package dk.brics.tajs.flowgraph.jsnodes;
 
-import dk.brics.tajs.analysis.nativeobjects.TAJSFunction;
 import dk.brics.tajs.flowgraph.AbstractNode;
 import dk.brics.tajs.flowgraph.BasicBlock;
 import dk.brics.tajs.flowgraph.SourceLocation;
+import dk.brics.tajs.flowgraph.TAJSFunctionName;
 import dk.brics.tajs.util.AnalysisException;
 
 import java.util.List;
@@ -63,7 +63,7 @@ public class CallNode extends LoadNode {
 
     private int[] arg_regs;
 
-    private final TAJSFunction tajsFunction; // null if not used
+    private final TAJSFunctionName tajsFunctionName; // null if not used
 
     /**
      * Constructs a new call/construct node.
@@ -83,7 +83,7 @@ public class CallNode extends LoadNode {
         this.arg_regs = new int[arg_regs.size()];
         for (int i = 0; i < this.arg_regs.length; i++)
             this.arg_regs[i] = arg_regs.get(i);
-        this.tajsFunction = null;
+        this.tajsFunctionName = null;
     }
 
     /**
@@ -105,7 +105,7 @@ public class CallNode extends LoadNode {
         this.arg_regs = new int[arg_regs.size()];
         for (int i = 0; i < this.arg_regs.length; i++)
             this.arg_regs[i] = arg_regs.get(i);
-        this.tajsFunction = null;
+        this.tajsFunctionName = null;
     }
 
     /**
@@ -128,18 +128,18 @@ public class CallNode extends LoadNode {
         this.arg_regs = new int[arg_regs.size()];
         for (int i = 0; i < this.arg_regs.length; i++)
             this.arg_regs[i] = arg_regs.get(i);
-        this.tajsFunction = null;
+        this.tajsFunctionName = null;
     }
 
     /**
      * Constructs a new call/construct node for a TAJS_* function.
      *
      * @param result_reg The register for the result.
-     * @param tajs_fun   The TAJS_* function.
+     * @param tajsFunctionName   The TAJS_* function.
      * @param arg_regs   The argument registers as a list.
      * @param location   The source location.
      */
-    public CallNode(int result_reg, TAJSFunction tajs_fun, List<Integer> arg_regs, SourceLocation location) {
+    public CallNode(int result_reg, TAJSFunctionName tajsFunctionName, List<Integer> arg_regs, SourceLocation location) {
         super(result_reg, location);
         this.constructor = false;
         this.base_reg = AbstractNode.NO_VALUE;
@@ -148,7 +148,7 @@ public class CallNode extends LoadNode {
         this.arg_regs = new int[arg_regs.size()];
         for (int i = 0; i < this.arg_regs.length; i++)
             this.arg_regs[i] = arg_regs.get(i);
-        this.tajsFunction = tajs_fun;
+        this.tajsFunctionName = tajsFunctionName;
     }
 
     /**
@@ -210,10 +210,10 @@ public class CallNode extends LoadNode {
     }
 
     /**
-     * Returns the TAJS_* function to call, or null.
+     * Returns the name of the TAJS_* function to call, or null.
      */
-    public TAJSFunction getTajsFunction() {
-        return tajsFunction;
+    public TAJSFunctionName getTajsFunctionName() {
+        return tajsFunctionName;
     }
 
     @Override
@@ -224,8 +224,8 @@ public class CallNode extends LoadNode {
         else
             b.append("call");
         b.append('[');
-        if (tajsFunction != null)
-            b.append(tajsFunction);
+        if (tajsFunctionName != null)
+            b.append(tajsFunctionName);
         else {
             if (base_reg == NO_VALUE)
                 b.append('-');

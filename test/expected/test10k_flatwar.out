@@ -442,3 +442,4 @@ test/10k/flatwar.html:374:13: [maybe] Reading absent property (computed name)
 test/10k/flatwar.html:376:13: [maybe] Conversion to number yields NaN
 test/10k/flatwar.html:438:17: [maybe] Converting object to string
 test/10k/flatwar.html:438:17: [maybe] Converting primitive string to object
+Soundness testing succeeded for 1550 checks (with 0 expected failures)

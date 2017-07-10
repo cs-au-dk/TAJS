@@ -91,3 +91,4 @@ Abstract state:
 test/micro/test164.js:36:1: [info] Abstract value: "v1#"
 test/micro/test164.js:37:1: [info] Abstract value: "w1#"
 test/micro/test164.js:38:1: [info] Abstract value: 42.0
+Soundness testing succeeded for 64 checks (with 0 expected failures)

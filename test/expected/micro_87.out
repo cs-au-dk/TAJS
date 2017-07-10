@@ -63,3 +63,4 @@ Abstract state:
   Registers: 
     v1=Undef
 test/micro/test87.js:15:1: [info] Abstract object: {b:17.0,c:true,[[Prototype]]=[@Object.prototype[native]]}
+Soundness testing succeeded for 15 checks (with 0 expected failures)

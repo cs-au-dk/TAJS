@@ -45,3 +45,4 @@ test/1k2013spring/1437.js:74:20: [maybe] Reading absent property (computed name)
 test/1k2013spring/1437.js:76:14: [maybe] Reading absent property (computed name)
 test/1k2013spring/1437.js:76:22: [maybe] Reading absent property (computed name)
 test/1k2013spring/1437.js:80:21: [maybe] Converting primitive number to object
+Soundness testing succeeded for 488 checks (with 0 expected failures)

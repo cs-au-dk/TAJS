@@ -1,3 +1,4 @@
 test/micro/test45.js: [definite] Exceptional program exit is unreachable
 test/micro/test45.js:2:1: [info] Abstract object: {[[Prototype]]=[@Object.prototype[native]]}
 test/micro/test45.js:5:1: [info] Abstract object: {[[Prototype]]=[@Object.prototype[native]]}
+Soundness testing succeeded for 11 checks (with 0 expected failures)

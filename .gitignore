@@ -3,9 +3,11 @@
 /dist
 /out
 /doc
+/external-dependencies
 /.idea/workspace.xml
 /.idea/kotlinc.xml
 /local-development.properties
-/.tajsconfig
+.tajsconfig
 *.iml
+!/test-resources/jalangilogfiles/**
 !/test/expected/**

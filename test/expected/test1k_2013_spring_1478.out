@@ -4,7 +4,6 @@ test/1k2013spring/1478.js:36:17: [maybe] TypeError, accessing property of null/u
 test/1k2013spring/1478.js:36:17: [maybe] TypeError, call to non-function
 test/1k2013spring/1478.js:74:5: [maybe] TypeError, accessing property of null/undefined
 test/1k2013spring/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
-test/1k2013spring/1478.js:36:17: [maybe] Reading absent property slice
 test/1k2013spring/1478.js: [maybe] Uncaught exception, constructed at [test/1k2013spring/1478.js:21:5, test/1k2013spring/1478.js:36:17, test/1k2013spring/1478.js:74:5, test/1k2013spring/shim.js:9:5]
 test/1k2013spring/1478.js:23:21: [maybe] Conversion to number yields NaN
 test/1k2013spring/1478.js:24:17: [maybe] Reading absent property (computed name)
@@ -16,3 +15,4 @@ test/1k2013spring/1478.js:55:23: [maybe] Conversion to number yields NaN
 test/1k2013spring/1478.js:57:25: [maybe] Conversion to number yields NaN
 test/1k2013spring/1478.js:61:25: [maybe] Conversion to number yields NaN
 test/1k2013spring/1478.js:74:9: [maybe] Conversion to number yields NaN
+Soundness testing succeeded for 88 checks (with 0 expected failures)

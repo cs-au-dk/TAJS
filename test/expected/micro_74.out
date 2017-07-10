@@ -6,3 +6,4 @@ test/micro/test74.js:9:5: [info] Abstract value: "a"
 test/micro/test74.js:9:5: [info] Abstract value: "b"
 test/micro/test74.js:9:5: [info] Abstract value: "t"
 test/micro/test74.js:12:1: [info] Abstract value: UInt|UIntStr|IdentStr|OtherIdentPartsStr
+Soundness testing succeeded for 29 checks (with 0 expected failures)

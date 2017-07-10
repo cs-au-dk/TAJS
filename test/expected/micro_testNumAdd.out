@@ -4,3 +4,4 @@ test/micro/testNumAdd.js:12:1: [info] Abstract value: 1.0
 test/micro/testNumAdd.js:13:1: [info] Abstract value: Num
 test/micro/testNumAdd.js:14:1: [info] Abstract value: Num
 test/micro/testNumAdd.js:15:1: [info] Abstract value: Num
+Soundness testing succeeded for 33 checks (with 0 expected failures)

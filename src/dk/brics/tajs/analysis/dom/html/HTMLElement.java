@@ -17,7 +17,6 @@
 package dk.brics.tajs.analysis.dom.html;
 
 import dk.brics.tajs.analysis.Conversion;
-import dk.brics.tajs.analysis.Exceptions;
 import dk.brics.tajs.analysis.FunctionCalls;
 import dk.brics.tajs.analysis.PropVarOperations;
 import dk.brics.tajs.analysis.Solver;
@@ -25,6 +24,7 @@ import dk.brics.tajs.analysis.dom.DOMFunctions;
 import dk.brics.tajs.analysis.dom.DOMObjects;
 import dk.brics.tajs.analysis.dom.DOMWindow;
 import dk.brics.tajs.analysis.dom.core.DOMElement;
+import dk.brics.tajs.analysis.dom.core.DOMException;
 import dk.brics.tajs.analysis.dom.core.DOMNamedNodeMap;
 import dk.brics.tajs.analysis.dom.core.DOMStringMap;
 import dk.brics.tajs.analysis.dom.style.CSSStyleDeclaration;
@@ -55,7 +55,7 @@ public class HTMLElement {
         // Multiplied Object
         s.newObject(ELEMENT);
         s.writeInternalPrototype(ELEMENT, Value.makeObject(ELEMENT_PROTOTYPE));
-        pv.writePropertyWithAttributes(ELEMENT, "length", Value.makeNum(0).setAttributes(true, true, true)); // FIXME: ?
+        pv.writePropertyWithAttributes(ELEMENT, "length", Value.makeNum(0).setAttributes(true, true, true)); // FIXME: ? (GitHub #407)
         pv.writePropertyWithAttributes(ELEMENT, "prototype", Value.makeObject(ELEMENT_PROTOTYPE).setAttributes(true, true, true));
         pv.writeProperty(DOMWindow.WINDOW, "HTMLElement", Value.makeObject(ELEMENT));
 
@@ -124,7 +124,7 @@ public class HTMLElement {
             case HTMLELEMENT_MATCHES_SELECTOR: {
                 DOMFunctions.expectParameters(nativeObject, call, c, 1, 1);
                 // may throw on bad syntax
-                Exceptions.throwTypeError(c); // FIXME: should be a DOM-Exception
+                DOMException.throwException(call.getSourceNode(), c);
                 return Value.makeAnyBool();
             }
             case HTMLELEMENT_MATCHES: {

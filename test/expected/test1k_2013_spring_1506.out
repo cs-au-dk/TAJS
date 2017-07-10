@@ -27,3 +27,5 @@ test/1k2013spring/1506.js:130:38: [definite] Unreachable function
 test/1k2013spring/1506.js:139:11: [definite] Unreachable function
 test/1k2013spring/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
 test/1k2013spring/1506.js: [maybe] Uncaught exception, constructed at [test/1k2013spring/1506.js:54:19, test/1k2013spring/shim.js:9:5]
+Disabling soundness testing for test/1k2013spring/1506.js entirely (52 uninspected soundness errors).
+Soundness testing succeeded for 77 checks (with 52 expected failures)

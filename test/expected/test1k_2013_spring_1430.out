@@ -37,3 +37,5 @@ test/1k2013spring/1430.js:25:17: [maybe] Converting primitive string to object
 test/1k2013spring/1430.js:25:17: [maybe] Reading absent property (computed name)
 test/1k2013spring/1430.js:25:35: [maybe] Reading absent property (computed name)
 test/1k2013spring/1430.js:32:5: [maybe] Conversion to number yields NaN
+Disabling soundness testing for test/1k2013spring/1430.js entirely (60 uninspected soundness errors).
+Soundness testing succeeded for 370 checks (with 60 expected failures)

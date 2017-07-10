@@ -8,3 +8,4 @@ test/uneval/uneval18.js:15:1: [info] Abstract value: 42.0
 test/uneval/uneval18.js:17:1: [info] Abstract value: 42.0
 test/uneval/uneval18.js:19:1: [info] Abstract value: 42.0
 test/uneval/uneval18.js:21:1: [info] Abstract value: 42.0
+Soundness testing succeeded for 84 checks (with 0 expected failures)

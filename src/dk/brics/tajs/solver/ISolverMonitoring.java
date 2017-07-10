@@ -72,10 +72,15 @@ public interface ISolverMonitoring<StateType extends IState<StateType, ContextTy
     void visitPropagationPre(BlockAndContext<ContextType> from, BlockAndContext<ContextType> to);
 
     /**
-     * Invoked immediately after propagating dataflow from one location to another
+     * Invoked immediately after propagating dataflow from one location to another.
      *
      * @param changed true if the destination state was changed
      * @see #visitPropagationPre(BlockAndContext, BlockAndContext)
      */
     void visitPropagationPost(BlockAndContext<ContextType> from, BlockAndContext<ContextType> to, boolean changed);
+
+    /**
+     * Invoked when dataflow solver iteration is done.
+     */
+    void visitIterationDone();
 }

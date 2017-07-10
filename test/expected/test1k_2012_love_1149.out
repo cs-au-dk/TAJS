@@ -70,3 +70,4 @@ test/1k2012love/1149.js:42:7: [maybe] Conversion to number yields NaN
 test/1k2012love/1149.js:42:7: [maybe] Reading absent property (computed name)
 test/1k2012love/1149.js:42:16: [maybe] Conversion to number yields NaN
 test/1k2012love/1149.js:42:16: [maybe] Reading absent property (computed name)
+Soundness testing succeeded for 451 checks (with 0 expected failures)

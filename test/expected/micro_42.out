@@ -6,3 +6,4 @@ test/micro/test42.js: [maybe] Uncaught exception, constructed at [test/micro/tes
 test/micro/test42.js:10:16: [maybe] The variable f has values with different types
 test/micro/test42.js:11:9: [maybe] The variable f has values with different types
 test/micro/test42.js:10:1: [info] Abstract value: 1.0|"sdf"|[@Object#node28]
+Soundness testing succeeded for 13 checks (with 0 expected failures)

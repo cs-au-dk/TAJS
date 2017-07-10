@@ -15,3 +15,4 @@ test/micro/test187.js:16:2: [info] Abstract value: 7.0
 test/micro/test187.js:19:2: [info] Abstract value: true
 test/micro/test187.js:23:1: [info] Abstract value: true
 test/micro/test187.js:26:1: [info] Abstract value: false
+Soundness testing succeeded for 30 checks (with 0 expected failures)

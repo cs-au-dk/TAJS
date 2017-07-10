@@ -3,3 +3,4 @@ test/micro/test115.js:14:1: [definite] Reading absent property a
 test/micro/test115.js:6:1: [maybe] TypeError, call to non-function
 test/micro/test115.js:14:1: [maybe] TypeError, accessing property of null/undefined
 test/micro/test115.js: [maybe] Uncaught exception, constructed at [test/micro/test115.js:6:1, test/micro/test115.js:14:1]
+Soundness testing succeeded for 8 checks (with 0 expected failures)

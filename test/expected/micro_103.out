@@ -7,3 +7,4 @@ test/micro/test103.js:6:1: [info] Abstract value: Undef
 test/micro/test103.js:7:1: [info] Abstract value: Undef
 test/micro/test103.js:8:1: [info] Abstract value: 42.0
 test/micro/test103.js:9:1: [info] Abstract value: 42.0
+Soundness testing succeeded for 22 checks (with 0 expected failures)

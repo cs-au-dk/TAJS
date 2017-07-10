@@ -12,3 +12,4 @@ test/1k2012love/1163.js:100:16: [maybe] Reading absent property (computed name)
 test/1k2012love/1163.js:100:53: [maybe] Reading absent property (computed name)
 test/1k2012love/1163.js:104:3: [maybe] Converting undefined to string
 test/1k2012love/1163.js:105:3: [maybe] Converting undefined to string
+Soundness testing succeeded for 186 checks (with 0 expected failures)

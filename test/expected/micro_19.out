@@ -4,3 +4,4 @@ test/micro/test19.js:8:1: [info] Abstract value: [@Object#node17, @Boolean#node1
 test/micro/test19.js:9:1: [info] Abstract value: [@Object[native]]
 test/micro/test19.js:10:1: [info] Abstract value: [@Object#node26]
 test/micro/test19.js:12:1: [info] Abstract object: {foo:42.0|absent,[[Prototype]]=[@Boolean.prototype[native]],[[Value]]=false}, {foo:42.0|absent,[[Prototype]]=[@Object.prototype[native]]}
+Soundness testing succeeded for 28 checks (with 0 expected failures)

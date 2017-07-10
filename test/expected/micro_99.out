@@ -1,3 +1,4 @@
 test/micro/test99.js: [definite] Exceptional program exit is unreachable
 test/micro/test99.js:20:3: [definite] Unreachable code
 test/micro/test99.js:23:1: [info] Abstract value: true
+Soundness testing succeeded for 24 checks (with 0 expected failures)

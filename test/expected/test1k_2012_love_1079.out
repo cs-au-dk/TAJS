@@ -17,3 +17,4 @@ test/1k2012love/1079.js:38:3: [maybe] Converting primitive string to object
 test/1k2012love/1079.js:38:3: [maybe] Reading absent property (computed name)
 test/1k2012love/1079.js:39:4: [maybe] Converting undefined to string
 test/1k2012love/1079.js:39:7: [maybe] Reading absent property (computed name)
+Soundness testing succeeded for 347 checks (with 0 expected failures)

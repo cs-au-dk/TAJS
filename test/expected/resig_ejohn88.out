@@ -3,3 +3,4 @@ test/resig/ejohn88.js:1:1: [definite] Unreachable function makeNinja
 test/resig/ejohn88.js:2:1: [definite] Unreachable function makeSamurai
 test/resig/ejohn88.js:5:1: [info] Abstract value: 1.0
 test/resig/ejohn88.js:6:1: [info] Abstract value: 2.0
+Soundness testing succeeded for 13 checks (with 0 expected failures)

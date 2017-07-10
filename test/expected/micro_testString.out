@@ -59,3 +59,4 @@ test/micro/testString.js:58:1: [info] Abstract value: 0.0
 test/micro/testString.js:59:1: [info] Abstract value: 1.0
 test/micro/testString.js:60:1: [info] Abstract value: -1.0
 test/micro/testString.js:61:1: [info] Abstract value: -1.0
+Soundness testing succeeded for 278 checks (with 0 expected failures)

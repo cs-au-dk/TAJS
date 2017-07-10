@@ -89,3 +89,4 @@ test/1k2013spring/1344.js:129:14: [maybe] Reading absent property (computed name
 test/1k2013spring/1344.js:129:28: [maybe] Reading absent property (computed name)
 test/1k2013spring/1344.js:130:14: [maybe] Reading absent property (computed name)
 test/1k2013spring/1344.js:130:28: [maybe] Reading absent property (computed name)
+Soundness testing succeeded for 2167 checks (with 0 expected failures)

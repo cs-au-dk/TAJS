@@ -10,7 +10,6 @@ public class TestTAJSFunctions {
 
     @Before
     public void init() {
-        Main.initLogging();
         Main.reset();
         Options.get().enableTest();
     }

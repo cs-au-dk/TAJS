@@ -9,3 +9,4 @@ test/micro/testForIn1.js:10:1: [info] Abstract value: Undef|1.0
 test/micro/testForIn1.js:11:1: [info] Abstract value: Undef|2.0
 test/micro/testForIn1.js:12:1: [info] Abstract value: Undef
 test/micro/testForIn1.js:13:1: [info] Abstract object: {x:1.0|absent,y:2.0|absent,[[Prototype]]=[@Object.prototype[native]]}
+Soundness testing succeeded for 33 checks (with 0 expected failures)

@@ -16,15 +16,14 @@
 
 package dk.brics.tajs.monitoring;
 
+import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.flowgraph.AbstractNode;
-import dk.brics.tajs.flowgraph.FlowGraph;
 import dk.brics.tajs.flowgraph.Function;
 import dk.brics.tajs.flowgraph.SourceLocation;
 import dk.brics.tajs.flowgraph.jsnodes.IfNode;
 import dk.brics.tajs.flowgraph.jsnodes.Node;
 import dk.brics.tajs.flowgraph.jsnodes.ReadPropertyNode;
 import dk.brics.tajs.flowgraph.jsnodes.ReadVariableNode;
-import dk.brics.tajs.lattice.CallEdge;
 import dk.brics.tajs.lattice.Context;
 import dk.brics.tajs.lattice.HostObject;
 import dk.brics.tajs.lattice.ILatticeMonitoring;
@@ -32,7 +31,6 @@ import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.Str;
 import dk.brics.tajs.lattice.Value;
-import dk.brics.tajs.solver.CallGraph;
 import dk.brics.tajs.solver.Message;
 import dk.brics.tajs.solver.Message.Severity;
 
@@ -85,14 +83,9 @@ public interface IAnalysisMonitoring extends ILatticeMonitoring {
     Map<TypeCollector.VariableSummary, Value> getTypeInformation();
 
     /**
-     * Sets the call graph of the analysis.
+     * Sets the solver interface which will be used by the analysis.
      */
-    void setCallGraph(CallGraph<State, Context, CallEdge> callGraph);
-
-    /**
-     * Sets the flow graph which will be used by the analysis.
-     */
-    void setFlowgraph(FlowGraph fg);
+    void setSolverInterface(Solver.SolverInterface s);
 
     /**
      * Invoked at the beginning of a phase.

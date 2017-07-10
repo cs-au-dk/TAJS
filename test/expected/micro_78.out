@@ -1,3 +1,4 @@
 test/micro/test78.js: [definite] Exceptional program exit is unreachable
 test/micro/test78.js:7:20: [maybe] The variable e has values with different types
 test/micro/test78.js:7:5: [info] Abstract value: 10.0|"String"
+Soundness testing succeeded for 8 checks (with 0 expected failures)

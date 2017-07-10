@@ -10,3 +10,4 @@ Abstract state:
   Registers: 
     v1=Undef
 test/micro/test152.js:8:1: [info] Abstract value: 2.0
+Soundness testing succeeded for 31 checks (with 0 expected failures)

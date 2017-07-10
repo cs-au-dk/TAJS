@@ -32,7 +32,6 @@ import dk.brics.tajs.analysis.nativeobjects.concrete.ConcreteString;
 import dk.brics.tajs.analysis.nativeobjects.concrete.ConcreteValue;
 import dk.brics.tajs.analysis.nativeobjects.concrete.MappedNativeResult;
 import dk.brics.tajs.analysis.nativeobjects.concrete.NativeResult;
-import dk.brics.tajs.analysis.nativeobjects.concrete.PrimitiveConcreteValue;
 import dk.brics.tajs.analysis.nativeobjects.concrete.TAJSConcreteSemantics;
 import dk.brics.tajs.flowgraph.BasicBlock;
 import dk.brics.tajs.lattice.HeapContext;
@@ -92,7 +91,7 @@ public class JSString {
             }
 
             case STRING_FROMCHARCODE: { // 15.5.3.2
-                return TAJSConcreteSemantics.convertTAJSCall(Value.makeUndef(), "String.fromCharCode", -1, call, c, () -> Value.makeAnyStr());
+                return TAJSConcreteSemantics.convertTAJSCall(Value.makeUndef(), "String.fromCharCode", -1, call, c, Value::makeAnyStr);
             }
 
             case STRING_TOSTRING: // 15.5.4.2
@@ -101,14 +100,14 @@ public class JSString {
             }
 
             case STRING_CHARAT: {// 15.5.4.4
-                return TAJSConcreteSemantics.convertTAJSCall(state.readThis(), "String.prototype.charAt", 1, call, c, () -> Value.makeAnyStr());
+                return TAJSConcreteSemantics.convertTAJSCall(state.readThis(), "String.prototype.charAt", 1, call, c, Value::makeAnyStr);
             }
             case STRING_CHARCODEAT: { // 15.5.4.5
                 return TAJSConcreteSemantics.convertTAJSCall(state.readThis(), "String.prototype.charCodeAt", 1, call, c, () -> Value.makeAnyNumUInt().joinNumNaN());
             }
 
             case STRING_CONCAT: { // 15.5.4.6
-                return TAJSConcreteSemantics.convertTAJSCall(state.readThis(), "String.prototype.concat", -1, call, c, () -> Value.makeAnyStr());
+                return TAJSConcreteSemantics.convertTAJSCall(state.readThis(), "String.prototype.concat", -1, call, c, Value::makeAnyStr);
             }
 
             case STRING_INDEXOF: {// 15.5.4.7
@@ -118,11 +117,11 @@ public class JSString {
                 if (!haystack.isStrMayContainSubstring(needle)) {
                     return Value.makeNum(-1);
                 }
-                return TAJSConcreteSemantics.convertTAJSCall(state.readThis(), "String.prototype.indexOf", 2, call, c, () -> Value.makeAnyNumNotNaNInf());
+                return TAJSConcreteSemantics.convertTAJSCall(state.readThis(), "String.prototype.indexOf", 2, call, c, Value::makeAnyNumNotNaNInf);
             }
 
             case STRING_LASTINDEXOF: { // 15.5.4.8
-                return TAJSConcreteSemantics.convertTAJSCall(state.readThis(), "String.prototype.lastIndexOf", 2, call, c, () -> Value.makeAnyNumNotNaNInf());
+                return TAJSConcreteSemantics.convertTAJSCall(state.readThis(), "String.prototype.lastIndexOf", 2, call, c, Value::makeAnyNumNotNaNInf);
             }
 
             case STRING_LOCALECOMPARE: { // 15.5.4.9
@@ -138,17 +137,17 @@ public class JSString {
             }
 
             case STRING_SEARCH: { // 15.5.4.12
-                return TAJSConcreteSemantics.convertTAJSCall(state.readThis(), "String.prototype.search", 1, call, c, () -> Value.makeAnyNumNotNaNInf());
+                return TAJSConcreteSemantics.convertTAJSCall(state.readThis(), "String.prototype.search", 1, call, c, Value::makeAnyNumNotNaNInf);
             }
 
             case STRING_SLICE: {  // 15.5.4.13
-                return TAJSConcreteSemantics.convertTAJSCall(state.readThis(), "String.prototype.slice", 2, call, c, () -> Value.makeAnyStr());
+                return TAJSConcreteSemantics.convertTAJSCall(state.readThis(), "String.prototype.slice", 2, call, c, Value::makeAnyStr);
             }
             case STRING_SUBSTRING: {  // 15.5.4.15
-                return TAJSConcreteSemantics.convertTAJSCall(state.readThis(), "String.prototype.substring", 2, call, c, () -> Value.makeAnyStr());
+                return TAJSConcreteSemantics.convertTAJSCall(state.readThis(), "String.prototype.substring", 2, call, c, Value::makeAnyStr);
             }
             case STRING_SUBSTR: { // B.2.3
-                return TAJSConcreteSemantics.convertTAJSCall(state.readThis(), "String.prototype.substr", 2, call, c, () -> Value.makeAnyStr());
+                return TAJSConcreteSemantics.convertTAJSCall(state.readThis(), "String.prototype.substr", 2, call, c, Value::makeAnyStr);
             }
 
             case STRING_SPLIT: { // 15.5.4.14
@@ -156,11 +155,11 @@ public class JSString {
             }
 
             case STRING_TOLOWERCASE: { // 15.5.4.16
-                return TAJSConcreteSemantics.convertTAJSCall(state.readThis(), "String.prototype.toLowerCase", 0, call, c, () -> Value.makeAnyStr());
+                return TAJSConcreteSemantics.convertTAJSCall(state.readThis(), "String.prototype.toLowerCase", 0, call, c, Value::makeAnyStr);
             }
 
             case STRING_TOUPPERCASE: { // 15.5.4.18
-                return TAJSConcreteSemantics.convertTAJSCall(state.readThis(), "String.prototype.toUpperCase", 0, call, c, () -> Value.makeAnyStr());
+                return TAJSConcreteSemantics.convertTAJSCall(state.readThis(), "String.prototype.toUpperCase", 0, call, c, Value::makeAnyStr);
             }
 
             case STRING_TOLOCALELOWERCASE: { // 15.5.4.17
@@ -194,7 +193,7 @@ public class JSString {
                         m = "String.prototype.trimRight";
                     else if (nativeobject == STRING_TRIMLEFT)
                         m = "String.prototype.trimLeft";
-                    return TAJSConcreteSemantics.convertTAJSCall(thisString, m, 0, call, c, () -> Value.makeAnyStr());
+                    return TAJSConcreteSemantics.convertTAJSCall(thisString, m, 0, call, c, Value::makeAnyStr);
                 } else if (thisString.isMaybeStrUInt()
                         || thisString.isMaybeStrOtherNum()
                         || thisString.isMaybeStrJSON()
@@ -211,11 +210,11 @@ public class JSString {
             }
 
             case STRING_STARTSWITH: {
-                return TAJSConcreteSemantics.convertTAJSCall(state.readThis(), "String.prototype.startsWith", 2, call, c, () -> Value.makeAnyBool());
+                return TAJSConcreteSemantics.convertTAJSCall(state.readThis(), "String.prototype.startsWith", 2, call, c, Value::makeAnyBool);
             }
 
             case STRING_ENDSWITH: {
-                return TAJSConcreteSemantics.convertTAJSCall(state.readThis(), "String.prototype.endsWith", 2, call, c, () -> Value.makeAnyBool());
+                return TAJSConcreteSemantics.convertTAJSCall(state.readThis(), "String.prototype.endsWith", 2, call, c, Value::makeAnyBool);
             }
 
             default:
@@ -278,9 +277,9 @@ public class JSString {
         ConcreteString toReplaceWith = new ConcreteString("\\$&");
         MappedNativeResult<ConcreteValue> concreteResult = TAJSConcreteSemantics.getNative().apply("String.prototype.replace", new ConcreteString(v), Arrays.asList(toReplace, toReplaceWith));
         if (concreteResult.getResult().kind != NativeResult.Kind.VALUE) {
-            new AnalysisException("Unable to escape string to RegExp?!?");
+            throw new AnalysisException("Unable to escape string to RegExp?!?");
         }
-        return Alpha.toValue((PrimitiveConcreteValue) concreteResult.getResult().getValue(), c).getStr();
+        return Alpha.toValue(concreteResult.getResult().getValue(), c).getStr();
     }
 
     private static Value splitString(ECMAScriptObjects nativeobject, final CallInfo call, final Solver.SolverInterface c) {

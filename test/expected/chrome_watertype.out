@@ -51,3 +51,5 @@ test/chromeexperiments/watertype.html:297:12: [maybe] Conversion to number yield
 test/chromeexperiments/watertype.html:297:25: [maybe] Conversion to number yields NaN
 test/chromeexperiments/watertype.html:298:12: [maybe] Conversion to number yields NaN
 test/chromeexperiments/watertype.html:298:25: [maybe] Conversion to number yields NaN
+Could not create value log file: main file is known to be unsupported (limitation of the jalangilogger project)
+Log of soundness facts is not available for test/chromeexperiments/watertype.html, skipping soundness checking

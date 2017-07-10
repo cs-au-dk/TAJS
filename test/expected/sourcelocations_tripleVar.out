@@ -2,3 +2,4 @@ test/sourcelocations/tripleVar.js: [definite] Exceptional program exit is unreac
 test/sourcelocations/tripleVar.js:1:5: [definite] The variable jsVar is never used
 test/sourcelocations/tripleVar.js:1:12: [definite] The variable jsVar2 is never used
 test/sourcelocations/tripleVar.js:2:5: [definite] The variable jsVar3 is never used
+Soundness testing succeeded for 1 checks (with 0 expected failures)

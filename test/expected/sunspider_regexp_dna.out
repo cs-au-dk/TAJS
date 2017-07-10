@@ -11,3 +11,5 @@ test/sunspider/regexp-dna.js:1711:48: [maybe] Converting primitive string to obj
 test/sunspider/regexp-dna.js:1715:13: [maybe] Converting primitive string to object
 test/sunspider/regexp-dna.js:1719:26: [maybe] Converting object to number
 test/sunspider/regexp-dna.js:1721:1: [info] Abstract value: UInt|NotUInt
+Could not create value log file: main file is known to be unsupported (limitation of the jalangilogger project)
+Log of soundness facts is not available for test/sunspider/regexp-dna.js, skipping soundness checking

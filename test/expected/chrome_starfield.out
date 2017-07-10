@@ -187,3 +187,4 @@ test/chromeexperiments/starfield.html:211:173: [maybe] Converting primitive stri
 test/chromeexperiments/starfield.html:211:193: [maybe] Converting primitive string to object
 test/chromeexperiments/starfield.html:211:219: [maybe] Converting primitive string to object
 test/chromeexperiments/starfield.html:228:106: [maybe] Converting undefined to string
+Soundness testing succeeded for 304 checks (with 0 expected failures)

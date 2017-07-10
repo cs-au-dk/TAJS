@@ -16,10 +16,12 @@
 
 package dk.brics.tajs.flowgraph;
 
+import java.io.Serializable;
+
 /**
  * Abstract base class for all nodes.
  */
-public abstract class AbstractNode implements Cloneable {
+public abstract class AbstractNode implements Cloneable, Serializable {
 
     /**
      * Register number used for absent values.

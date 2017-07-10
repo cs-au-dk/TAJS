@@ -27,6 +27,7 @@ import org.apache.log4j.Logger;
 import java.io.PrintWriter;
 import java.util.AbstractMap;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -62,6 +63,8 @@ public class CallGraph<StateType extends IState<StateType, ContextType, CallEdge
     private Map<BlockAndContext<ContextType>, Integer> block_context_order;
 
     private int next_block_context_order;
+
+    private int size;
 
     public static class ReverseEdge<ContextType extends IContext<?>> {
 
@@ -126,6 +129,7 @@ public class CallGraph<StateType extends IState<StateType, ContextType, CallEdge
             if (sync != null && isOrdinaryCallEdge(callee))
                 sync.callEdgeAdded(caller.getBlock().getFunction(), callee.getFunction());
             changed = true;
+            size++;
         } else {
             // propagate into existing edge
             changed = call_edge.getState().propagate(edge_state, true);
@@ -201,6 +205,10 @@ public class CallGraph<StateType extends IState<StateType, ContextType, CallEdge
         return mb;
     }
 
+    public int size() {
+        return size;
+    }
+
     /**
      * Returns a textual description of this call graph.
      * Contexts and pseudo-call-edges are disregarded in the output.
@@ -224,11 +232,7 @@ public class CallGraph<StateType extends IState<StateType, ContextType, CallEdge
             BasicBlock b = me.getKey().getBlock();
             if (isOrdinaryCallEdge(b)) {
                 Function f = b.getFunction();
-                Set<AbstractNode> s = m.get(f);
-                if (s == null) {
-                    s = newSet();
-                    m.put(f, s);
-                }
+                Set<AbstractNode> s = m.computeIfAbsent(f, k -> newSet());
                 for (ReverseEdge<ContextType> re : me.getValue())
                     s.add(re.getCallNode());
             }
@@ -240,10 +244,10 @@ public class CallGraph<StateType extends IState<StateType, ContextType, CallEdge
         List<Map.Entry<Function, List<AbstractNode>>> res = newList();
         for (Map.Entry<Function, Set<AbstractNode>> me : s) {
             List<AbstractNode> ns = newList(me.getValue());
-            ns.sort((n1, n2) -> n1.getSourceLocation().compareTo(n2.getSourceLocation()));
+            ns.sort(Comparator.comparing(AbstractNode::getSourceLocation));
             res.add(new AbstractMap.SimpleEntry<>(me.getKey(), ns));
         }
-        res.sort((o1, o2) -> o1.getKey().getSourceLocation().compareTo(o2.getKey().getSourceLocation()));
+        res.sort(Comparator.comparing(o -> o.getKey().getSourceLocation()));
         return res;
     }
 

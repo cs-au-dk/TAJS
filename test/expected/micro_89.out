@@ -3,3 +3,4 @@ test/micro/test89.js:2:12: [maybe] The variable v has values with different type
 test/micro/test89.js:11:1: [info] Abstract value: 87.0
 test/micro/test89.js:13:1: [info] Abstract value: [*Object#node31]
 test/micro/test89.js:14:1: [info] Abstract object: {a:87.0,[[Prototype]]=[@Object.prototype[native]]}
+Soundness testing succeeded for 34 checks (with 0 expected failures)

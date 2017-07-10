@@ -59,3 +59,4 @@ test/1k2012love/1249.js: [maybe] Uncaught exception, constructed at [test/1k2012
 test/1k2012love/1249.js:117:10: [maybe] Conversion to number yields NaN
 test/1k2012love/1249.js:117:10: [maybe] Reading absent property (computed name)
 test/1k2012love/1249.js:123:17: [maybe] Reading absent property (computed name)
+Soundness testing succeeded for 361 checks (with 0 expected failures)

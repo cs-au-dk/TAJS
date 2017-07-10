@@ -197,3 +197,4 @@ test/chromeexperiments/anotherworld.html:1270:4: [maybe] Conversion to number yi
 test/chromeexperiments/anotherworld.html:1276:4: [maybe] Conversion to number yields NaN
 test/chromeexperiments/anotherworld.html:1282:4: [maybe] Conversion to number yields NaN
 test/chromeexperiments/anotherworld.html:1288:4: [maybe] Conversion to number yields NaN
+Soundness testing succeeded for 14001 checks (with 0 expected failures)

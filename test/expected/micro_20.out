@@ -16,3 +16,4 @@ test/micro/test20.js:14:1: [info] Abstract value: [@foo#fun1]
 test/micro/test20.js:19:1: [info] Abstract value: 129.0
 test/micro/test20.js:20:1: [info] Abstract value: UIntPos
 test/micro/test20.js:21:1: [info] Abstract value: UIntPos|NaN
+Soundness testing succeeded for 59 checks (with 0 expected failures)

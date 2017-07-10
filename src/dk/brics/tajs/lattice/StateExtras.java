@@ -17,6 +17,7 @@
 package dk.brics.tajs.lattice;
 
 import dk.brics.tajs.options.Options;
+import dk.brics.tajs.util.Collectors;
 import org.apache.log4j.Logger;
 
 import java.util.Collection;
@@ -24,7 +25,6 @@ import java.util.Collections;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static dk.brics.tajs.util.Collections.addAllToMapSet;
@@ -256,12 +256,7 @@ public class StateExtras {
      */
     public void addToMayMap(String name, String key, Collection<ObjectLabel> labels) {
         makeMayMapsWritable();
-        Map<String, Set<ObjectLabel>> maymap = may_maps.get(name);
-        if (maymap == null) {
-            maymap = newMap();
-            may_maps.put(name, maymap);
-        }
-        addAllToMapSet(maymap, key, labels);
+        addAllToMapSet(may_maps.computeIfAbsent(name, k -> newMap()), key, labels);
     }
 
     /**
@@ -285,7 +280,7 @@ public class StateExtras {
             }
         }
         Set<ObjectLabel> maydefault = may_maps_default.get(name);
-        maydefault = maydefault == null ? Collections.<ObjectLabel>emptySet() : maydefault;
+        maydefault = maydefault == null ? Collections.emptySet() : maydefault;
         result.addAll(maydefault);
         return Collections.unmodifiableSet(result);
     }

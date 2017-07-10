@@ -47,3 +47,4 @@ Abstract state:
 test/micro/test201.js:16:1: [info] Abstract object: {get:[@<anonymous>#fun2{method="get"}]|absent,post:[@<anonymous>#fun2{method="post"}]|absent,[[Prototype]]=[@Object.prototype[native]]}
 test/micro/test201.js:17:1: [info] Abstract value: "I'm get"
 test/micro/test201.js:18:1: [info] Abstract value: PrefixStr[I'm ]
+Soundness testing succeeded for 49 checks (with 0 expected failures)

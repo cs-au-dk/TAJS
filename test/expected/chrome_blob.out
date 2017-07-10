@@ -167,3 +167,4 @@ test/chromeexperiments/blob.html:563:5: [info] 'this' refers to multiple abstrac
 test/chromeexperiments/blob.html:563:68: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/chromeexperiments/blob.html:564:5: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/chromeexperiments/blob.html:565:5: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+Soundness testing succeeded for 2153 checks (with 0 expected failures)

@@ -393,3 +393,5 @@ test/chromeexperiments/voxels.html:2808:4: [definite] Unreachable function encod
 test/chromeexperiments/voxels.html:2811:20: [definite] Unreachable function
 test/chromeexperiments/voxels.html: [maybe] Uncaught exception, constructed at [test/chromeexperiments/voxels.html:2171:13, test/chromeexperiments/voxels.html:2757:5, test/chromeexperiments/voxels.html:2780:17]
 test/chromeexperiments/voxels.html:1283:34: [maybe] Conversion to number yields NaN
+Disabling soundness testing for test/chromeexperiments/voxels.html entirely (8645 uninspected soundness errors).
+Soundness testing succeeded for 10119 checks (with 8645 expected failures)

@@ -178,3 +178,5 @@ test/chromeexperiments/strangeattractor.html:909:17: [maybe] Reading absent prop
 test/chromeexperiments/strangeattractor.html:328:16: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/chromeexperiments/strangeattractor.html:384:17: [info] 'this' refers to a summary abstract object, which may cause loss of precision
 test/chromeexperiments/strangeattractor.html:390:17: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+Disabling soundness testing for test/chromeexperiments/strangeattractor.html entirely (76 uninspected soundness errors).
+Soundness testing succeeded for 2132 checks (with 76 expected failures)

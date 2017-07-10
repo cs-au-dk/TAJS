@@ -4,3 +4,4 @@ out/temp-sources/TestForIn.unorderedForInImplementation_withSemiLazyPropagation.
 out/temp-sources/TestForIn.unorderedForInImplementation_withSemiLazyPropagation.js:6:4: [info] Abstract object: {x:"A",y:^(@Object#node14.y[absent|present]),[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Prototype]]=[@Object.prototype[native]],[[Value]]=?,[[Scope]]=?}
 out/temp-sources/TestForIn.unorderedForInImplementation_withSemiLazyPropagation.js:6:4: [info] Abstract object: {x:^(@Object#node14.x[absent|present]),y:"A",[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Prototype]]=[@Object.prototype[native]],[[Value]]=?,[[Scope]]=?}
 out/temp-sources/TestForIn.unorderedForInImplementation_withSemiLazyPropagation.js:8:1: [info] Abstract object: {x:"A"|absent,y:"A"|absent,[[Prototype]]=[@Object.prototype[native]]}
+Soundness testing succeeded for 25 checks (with 0 expected failures)

@@ -329,3 +329,5 @@ test/chromeexperiments/harmony.html:729:9: [info] 'this' refers to multiple abst
 test/chromeexperiments/harmony.html:729:52: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/chromeexperiments/harmony.html:729:75: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/chromeexperiments/harmony.html:735:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+Disabling soundness testing for test/chromeexperiments/harmony.html entirely (26 uninspected soundness errors).
+Soundness testing succeeded for 3394 checks (with 26 expected failures)

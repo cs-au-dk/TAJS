@@ -2,3 +2,4 @@ test/micro/test29.js:4:4: [definite] TypeError, accessing property of null/undef
 test/micro/test29.js:4:4: [definite] Variable x is null/undefined
 test/micro/test29.js: [definite] Exceptional program exit is unreachable
 test/micro/test29.js:4:2: [definite] Unreachable code
+Soundness testing succeeded for 6 checks (with 0 expected failures)

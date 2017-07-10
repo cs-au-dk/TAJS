@@ -8,3 +8,4 @@ test/micro/test79.js:12:2: [info] Abstract value: 30.0
 test/micro/test79.js:17:5: [info] Abstract value: "30"|[@Object#node36]
 test/micro/test79.js:18:5: [info] Abstract object: {ex:"yes",[[Prototype]]=[@Object.prototype[native]]}
 test/micro/test79.js:21:1: [info] Abstract value: 42.0|"42"
+Soundness testing succeeded for 27 checks (with 0 expected failures)

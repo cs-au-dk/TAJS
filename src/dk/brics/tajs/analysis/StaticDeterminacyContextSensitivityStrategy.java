@@ -20,10 +20,10 @@ import dk.brics.tajs.analysis.nativeobjects.concrete.SingleGamma;
 import dk.brics.tajs.flowgraph.AbstractNode;
 import dk.brics.tajs.flowgraph.Function;
 import dk.brics.tajs.flowgraph.SourceLocation;
-import dk.brics.tajs.flowgraph.WritableSyntacticInformation.SyntacticInformation;
 import dk.brics.tajs.flowgraph.jsnodes.BeginForInNode;
 import dk.brics.tajs.flowgraph.jsnodes.BeginLoopNode;
 import dk.brics.tajs.flowgraph.jsnodes.EndLoopNode;
+import dk.brics.tajs.flowgraph.syntaticinfo.SyntacticQueries;
 import dk.brics.tajs.lattice.Context;
 import dk.brics.tajs.lattice.ContextArguments;
 import dk.brics.tajs.lattice.HeapContext;
@@ -32,11 +32,11 @@ import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.UnknownValueResolver;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.options.Options;
+import dk.brics.tajs.util.Collectors;
 
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 import static dk.brics.tajs.util.Collections.newList;
 import static dk.brics.tajs.util.Collections.newMap;
@@ -47,7 +47,7 @@ import static dk.brics.tajs.util.Collections.newSet;
  */
 public class StaticDeterminacyContextSensitivityStrategy implements IContextSensitivityStrategy {
 
-    private final SyntacticInformation syntacticInformation;
+    private final SyntacticQueries syntacticInformation;
 
     private final PreciseInterestingValuePredicate determinateInterestingValue = new PreciseInterestingValuePredicate(1);
 
@@ -55,7 +55,7 @@ public class StaticDeterminacyContextSensitivityStrategy implements IContextSens
 
     private final BasicContextSensitivityStrategy basic = new BasicContextSensitivityStrategy();
 
-    public StaticDeterminacyContextSensitivityStrategy(SyntacticInformation syntacticInformation) {
+    public StaticDeterminacyContextSensitivityStrategy(SyntacticQueries syntacticInformation) {
         this.syntacticInformation = syntacticInformation;
     }
 

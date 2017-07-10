@@ -8,3 +8,4 @@ test/1k2013spring/1539.js:86:9: [definite] Unreachable function f
 test/1k2013spring/1539.js:8:10: [maybe] <Document.getElementById>("frame") did not match any elements
 test/1k2013spring/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
 test/1k2013spring/1539.js: [maybe] Uncaught exception, constructed at [test/1k2013spring/1539.js:10:1, test/1k2013spring/shim.js:9:5]
+Soundness testing succeeded for 14 checks (with 0 expected failures)

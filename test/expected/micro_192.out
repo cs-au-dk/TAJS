@@ -20,3 +20,4 @@ Abstract state:
     @replace#fun3 (HOST(string-replace-model.js):3:12): {length:2.0,name:"replace",prototype:[@Object#node42],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@activation#node27],[@<the global object>[native]]]}
   Registers: 
     v1=Undef
+Soundness testing succeeded for 35 checks (with 0 expected failures)

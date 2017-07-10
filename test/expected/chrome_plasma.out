@@ -46,3 +46,4 @@ test/chromeexperiments/plasma.html:132:22: [maybe] Reading absent property (comp
 test/chromeexperiments/plasma.html:133:21: [maybe] Conversion to number yields NaN
 test/chromeexperiments/plasma.html:133:22: [maybe] Conversion to number yields NaN
 test/chromeexperiments/plasma.html:133:22: [maybe] Reading absent property (computed name)
+Soundness testing succeeded for 474 checks (with 0 expected failures)

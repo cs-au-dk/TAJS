@@ -498,3 +498,4 @@ test/10k/lines.html:204:26: [info] 'this' refers to multiple abstract objects, w
 test/10k/lines.html:204:34: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/10k/lines.html:206:38: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/10k/lines.html:206:46: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+Soundness testing succeeded for 0 checks (with 0 expected failures)

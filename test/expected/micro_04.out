@@ -12,3 +12,4 @@ test/micro/test04.js:18:1: [info] Abstract value: 958818.0
 test/micro/test04.js:23:1: [info] Abstract value: "x11418458"
 test/micro/test04.js:26:1: [info] Abstract value: 4.060226064E9
 test/micro/test04.js:29:1: [info] Abstract value: 99999.0
+Soundness testing succeeded for 54 checks (with 0 expected failures)

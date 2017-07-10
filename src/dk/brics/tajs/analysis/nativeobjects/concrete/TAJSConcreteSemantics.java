@@ -22,11 +22,11 @@ import dk.brics.tajs.analysis.nativeobjects.concrete.NativeResult.Kind;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.util.AnalysisLimitationException.AnalysisModelLimitationException;
+import dk.brics.tajs.util.Collectors;
 
 import java.util.List;
 import java.util.Set;
 import java.util.function.Supplier;
-import java.util.stream.Collectors;
 
 /**
  * Interface for relaying evaluation of calls to a concrete semantics.

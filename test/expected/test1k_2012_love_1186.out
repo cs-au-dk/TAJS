@@ -123,3 +123,4 @@ test/1k2012love/1186.js:112:19: [maybe] The variable o has values with different
 test/1k2012love/1186.js:115:9: [maybe] The variable s has values with different types
 test/1k2012love/1186.js:115:15: [maybe] The variable o has values with different types
 test/1k2012love/1186.js:137:5: [maybe] Reading absent property (computed name)
+Soundness testing succeeded for 467 checks (with 0 expected failures)

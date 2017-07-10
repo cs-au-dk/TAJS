@@ -7,3 +7,4 @@ test/micro/test189.js:6:6: [info] Abstract object: {browser:^(@Object#node14.bro
 test/micro/test189.js:18:1: [info] Abstract object: {browser:[@Object#node17]|absent,each:[@<anonymous>#fun3]|absent,extend:[@<anonymous>#fun2],length:0.0,name:"",prototype:[@Object#node5],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@<the global object>[native]]]}
 test/micro/test189.js:19:1: [info] Abstract value: Undef|[@Object#node17]
 test/micro/test189.js:20:1: [info] Abstract value: Undef|[@<anonymous>#fun3]
+Soundness testing succeeded for 41 checks (with 0 expected failures)

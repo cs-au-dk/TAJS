@@ -303,7 +303,7 @@ public class Conversion {
             if (!last) {
                 c.setState(orig.clone());
             }
-            vs.add(defaultValue(ol, hint, c)); // FIXME: defaultValue may have side-effects, use ParallelTransfer (see below...)
+            vs.add(defaultValue(ol, hint, c)); // FIXME: defaultValue may have side-effects, use ParallelTransfer (see below...) (Github #404)
             if (first) {
                 res = c.getState();
                 first = false;
@@ -317,7 +317,7 @@ public class Conversion {
         if (!first) {
             c.setState(res);
         }
-// FIXME: use of ParallelTransfer may change current state to a different object, which may affect callers?
+// FIXME: use of ParallelTransfer may change current state to a different object, which may affect callers? (Github #404)
 //        if (v.isMaybeObject()) {
 //            int fresh = c.getState().getRegisters().size();
 //            ParallelTransfer.process(v.getObjectLabels(), ol -> {

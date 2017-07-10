@@ -182,3 +182,4 @@ test/chromeexperiments/apophis.html:929:3: [maybe] Converting primitive string t
 test/chromeexperiments/apophis.html:929:3: [maybe] The variable obj has values with different types
 test/chromeexperiments/apophis.html:930:3: [maybe] Converting primitive string to object
 test/chromeexperiments/apophis.html:930:3: [maybe] The variable obj has values with different types
+Soundness testing succeeded for 147 checks (with 0 expected failures)

@@ -2,3 +2,4 @@ test/resig/ejohn21.js: [definite] Exceptional program exit is unreachable
 test/resig/ejohn21.js:2:8: [maybe] Reading absent property (computed name)
 test/resig/ejohn21.js:3:12: [maybe] Reading absent property (computed name)
 test/resig/ejohn21.js:23:1: [info] Abstract value: Undef|Bool
+Soundness testing succeeded for 50 checks (with 0 expected failures)

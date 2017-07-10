@@ -12,3 +12,4 @@ test/micro/test27.js: [maybe] Uncaught exception, constructed at [test/micro/tes
 test/micro/test27.js:2:1: [info] Abstract object: {a:42.0,b:Undef,c:[@<the global object>[native]],d:^(@<the global object>[native].Math[present]),[[Prototype]]=[@Object.prototype[native]]}
 test/micro/test27.js:4:1: [info] Abstract value: [@<the global object>[native]]
 test/micro/test27.js:11:1: [info] Abstract value: 42.0
+Soundness testing succeeded for 18 checks (with 0 expected failures)

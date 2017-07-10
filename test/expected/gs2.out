@@ -20,3 +20,4 @@ test/getterssetters/gs2.js:44:1: [info] Abstract value: 2.0
 test/getterssetters/gs2.js:49:26: [info] Abstract value: 123.0
 test/getterssetters/gs2.js:51:1: [info] Abstract object: {f:getter [<absent getter/setter>]|setter [@<anonymous>#fun8],q:false,[[Prototype]]=[@Object.prototype[native]]}
 test/getterssetters/gs2.js:53:1: [info] Abstract value: 2.0
+Soundness testing succeeded for 74 checks (with 0 expected failures)

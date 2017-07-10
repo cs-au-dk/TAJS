@@ -190,3 +190,4 @@ test/10k/defend_yourself.html:231:15: [info] 'this' refers to multiple abstract 
 test/10k/defend_yourself.html:232:5: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/10k/defend_yourself.html:232:15: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/10k/defend_yourself.html:242:5: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+Soundness testing succeeded for 1276 checks (with 0 expected failures)

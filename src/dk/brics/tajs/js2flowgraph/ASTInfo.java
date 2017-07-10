@@ -47,22 +47,20 @@ import com.google.javascript.jscomp.parsing.parser.trees.WhileStatementTree;
 import com.google.javascript.jscomp.parsing.parser.util.SourcePosition;
 import com.google.javascript.jscomp.parsing.parser.util.SourceRange;
 import dk.brics.tajs.js2flowgraph.asttraversals.InOrderVisitor;
+import dk.brics.tajs.util.Collectors;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 import java.util.Stack;
 import java.util.function.Function;
-import java.util.stream.Collectors;
 
 import static dk.brics.tajs.util.Collections.addAllToMapSet;
 import static dk.brics.tajs.util.Collections.addToMapSet;
 import static dk.brics.tajs.util.Collections.newMap;
 import static dk.brics.tajs.util.Collections.newSet;
 
-/**
- * @see dk.brics.tajs.flowgraph.WritableSyntacticInformation.SyntacticInformation
- */
 public class ASTInfo {
 
     // very ad-hoc information gathered during a single pass of multiple ASTs
@@ -271,15 +269,15 @@ public class ASTInfo {
         return map;
     }
 
-    public Map<ConditionTree, Set<List<String>>> getConditionRefinedArgumentVariables() {
-        Map<ConditionTree, Set<List<String>>> map = newMap();
+    public Map<ConditionTree, Set<List<Optional<String>>>> getConditionRefinedArgumentVariables() {
+        Map<ConditionTree, Set<List<Optional<String>>>> map = newMap();
         conditionsWithVariableReadsAsArgumentsInTheCondition.forEach((tree, conditionArgumentVariablesLists) -> {
             Set<String> bodyVariables = conditionsWithVariableReadsInTheBodies.getOrDefault(tree, newSet());
             conditionArgumentVariablesLists.forEach(conditionArgumentVariables -> {
-                List<String> refinedVariables = conditionArgumentVariables.stream()
-                        .map(conditionArgumentVariable -> bodyVariables.contains(conditionArgumentVariable) ? conditionArgumentVariable : null)
+                List<Optional<String>> refinedVariables = conditionArgumentVariables.stream()
+                        .map(conditionArgumentVariable -> bodyVariables.contains(conditionArgumentVariable) ? Optional.of(conditionArgumentVariable) : Optional.<String>empty())
                         .collect(Collectors.toList());
-                if (!refinedVariables.stream().allMatch(v -> v == null)) {
+                if (refinedVariables.stream().anyMatch(Optional::isPresent)) {
                     addToMapSet(map, tree, refinedVariables);
                 }
             });
@@ -290,7 +288,12 @@ public class ASTInfo {
     public Map<ConditionTree, Set<String>> getConditionRefined1ArgumentVariables() {
         Map<ConditionTree, Set<String>> map = newMap();
         getConditionRefinedArgumentVariables().forEach((tree, argumentLists) -> {
-            Set<String> variables = argumentLists.stream().filter(list -> list.size() == 1).map(list -> list.get(0)).collect(Collectors.toSet());
+            Set<String> variables = argumentLists.stream()
+                    .filter(list -> list.size() == 1)
+                    .map(list -> list.get(0))
+                    .filter(Optional::isPresent)
+                    .map(Optional::get)
+                    .collect(Collectors.toSet());
             if (!variables.isEmpty()) {
                 addAllToMapSet(map, tree, variables);
             }

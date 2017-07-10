@@ -1,2 +1,3 @@
 test/micro/test119.js: [definite] Exceptional program exit is unreachable
 test/micro/test119.js:10:5: [info] Abstract value: "FOO"
+Soundness testing succeeded for 71 checks (with 0 expected failures)

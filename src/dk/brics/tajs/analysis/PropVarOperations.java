@@ -1029,7 +1029,7 @@ public class PropVarOperations {
         else {
             Value newval;
             if (v.isNotDontDelete()) { // maybe present already, definitely can delete
-                newval = Value.makeAbsentModified(); // FIXME: deleting magic properties? (also other places...)
+                newval = Value.makeAbsentModified(); // FIXME: deleting magic properties? (also other places...) (GitHub #405)
                 res = Value.makeBool(true);
             } else { // don't know, maybe delete
                 newval = v.joinAbsentModified();

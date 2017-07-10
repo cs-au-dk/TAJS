@@ -190,12 +190,12 @@ public class TestForIn {
                 "try {",
                 "   (function(){",
                 "       for(var p in {a: 'a'}){",
-                "           return 42;",
+                "           throw 42;",
                 "       }",
                 "})();",
                 "}catch(e){",
                 "   TAJS_assert(e, 'isMaybeSingleNum');",
-                "   TAJS_assert(e, 'isMaybeUndef');",
+                "   TAJS_assert(e, 'isMaybeUndef', false);",
                 "}");
     }
 

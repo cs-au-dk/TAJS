@@ -227,3 +227,5 @@ test/10k/10k_world.html:431:23: [maybe] Converting undefined to string
 test/10k/10k_world.html:90:46: [info] Reading from unknown property that may cause loss of precision
 test/10k/10k_world.html:90:64: [info] Reading from unknown property that may cause loss of precision
 test/10k/10k_world.html:118:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+Disabling soundness testing for test/10k/10k_world.html entirely (26 uninspected soundness errors).
+Soundness testing succeeded for 1538 checks (with 26 expected failures)

@@ -52,7 +52,7 @@ public class HTMLMediaElement {
         s.writeInternalPrototype(CONSTRUCTOR, Value.makeObject(InitialStateBuilder.OBJECT_PROTOTYPE));
         pv.writeProperty(DOMWindow.WINDOW, "HTMLMediaElement", Value.makeObject(CONSTRUCTOR));
 
-        // FIXME: not all media element prototype properties implemented
+        // FIXME: not all media element prototype properties implemented (GitHub #409)
 
         // Prototype Object
         s.newObject(PROTOTYPE);

@@ -2,3 +2,4 @@ test/micro/arraysort1.js: [definite] Exceptional program exit is unreachable
 test/micro/arraysort1.js:5:1: [info] Abstract object: {0:UIntPos,1:UIntPos,2:UIntPos,length:3.0,[[Prototype]]=[@Array.prototype[native]]}
 test/micro/arraysort1.js:6:1: [info] Abstract value: UIntPos
 test/micro/arraysort1.js:7:1: [info] Abstract value: UInt
+Soundness testing succeeded for 31 checks (with 0 expected failures)

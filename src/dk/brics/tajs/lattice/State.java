@@ -25,6 +25,7 @@ import dk.brics.tajs.solver.BlockAndContext;
 import dk.brics.tajs.solver.GenericSolver;
 import dk.brics.tajs.solver.IState;
 import dk.brics.tajs.util.AnalysisException;
+import dk.brics.tajs.util.Collectors;
 import dk.brics.tajs.util.Strings;
 import org.apache.log4j.Logger;
 
@@ -40,7 +41,6 @@ import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
 import static dk.brics.tajs.lattice.Property.__PROTO__;
 import static dk.brics.tajs.util.Collections.addToMapSet;
@@ -1156,7 +1156,7 @@ public class State implements IState<State, Context, CallEdge> {
             while (!worklist.isEmpty()) {
                 ObjectLabel ol = worklist.removeFirst();
                 if (!inverse_proto.containsKey(ol))
-                    inverse_proto.put(ol, dk.brics.tajs.util.Collections.<ObjectLabel>newSet());
+                    inverse_proto.put(ol, dk.brics.tajs.util.Collections.newSet());
                 Value proto = UnknownValueResolver.getInternalPrototype(ol, this, false);
                 if (proto.isMaybeNull())
                     roots.add(ol);
@@ -1297,7 +1297,7 @@ public class State implements IState<State, Context, CallEdge> {
                         }
                         // relevant properties have been materialized now
                         values.addAll(getObject(l, false).getProperties().keySet().stream()
-                                .filter(n -> propertyName.isMaybeStr(n))
+                                .filter(propertyName::isMaybeStr)
                                 .map(n -> UnknownValueResolver.getProperty(l, n, this, true))
                                 .collect(Collectors.toList()));
                     } else {
@@ -1305,7 +1305,7 @@ public class State implements IState<State, Context, CallEdge> {
                     }
 
                     boolean definitelyAbsent = values.stream().allMatch(Value::isNotPresent);
-                    boolean maybeAbsent = values.stream().anyMatch(v -> v.isMaybeAbsent());
+                    boolean maybeAbsent = values.stream().anyMatch(Value::isMaybeAbsent);
 
                     if (definitelyAbsent) {
                         Value proto = UnknownValueResolver.getInternalPrototype(l, this, false);
@@ -1406,7 +1406,7 @@ public class State implements IState<State, Context, CallEdge> {
         Obj oldobj = getObject(singleton, false);
         if (!oldobj.isSomeNone()) {
             // join singleton object into its summary object
-// XXX           c.getMonitoring().visitRenameObject(c.getNode(), singleton, summary, this);
+            // FIXME Support c.getMonitoring().visitRenameObject(c.getNode(), singleton, summary, this); (GitHub #413)
             propagateObj(summary, this, singleton, true);
             // update references
             Map<ScopeChain, ScopeChain> cache = new HashMap<>();
@@ -1572,8 +1572,8 @@ public class State implements IState<State, Context, CallEdge> {
             }
             newval = newval.joinModified();
             Obj obj = getObject(objlabel, true);
-            // FIXME only null or object values are actually written! (see JSObject -> OBJECT_SETPROTOTYPEOF for example)
-            // FIXME Property.__PROTO__ should be assigned `absent` when `newval.isMaybeNull`
+            // FIXME only null or object values are actually written! (see JSObject -> OBJECT_SETPROTOTYPEOF for example) (GitHub #356)
+            // FIXME Property.__PROTO__ should be assigned `absent` when `newval.isMaybeNull` (GitHub #356)
             obj.setProperty(Property.__PROTO__, newval.setAttributes(true, true, false));
             obj.setInternalPrototype(newval);
         }
@@ -1704,7 +1704,7 @@ public class State implements IState<State, Context, CallEdge> {
      */
     public void clearVariableObject() {
         makeWritableExecutionContext();
-        execution_context.setVariableObject(dk.brics.tajs.util.Collections.<ObjectLabel>newSet());
+        execution_context.setVariableObject(dk.brics.tajs.util.Collections.newSet());
     }
 
     /**
@@ -1792,11 +1792,9 @@ public class State implements IState<State, Context, CallEdge> {
         b.append("\n  Summarized: ").append(summarized);
         b.append("\n  Store (excluding basis and default objects): ");
         for (Map.Entry<ObjectLabel, Obj> me : sortedEntries(store)) {
-            if (me.getKey().equals(Property.__PROTO__)) {
-                continue;
-            }
             b.append("\n    ").append(me.getKey()).append(" (").append(me.getKey().getSourceLocation()).append("): ").append(me.getValue()).append("");
-        }//b.append("\n  Default object: ").append(store_default);
+        }
+//        b.append("\n  Default object: ").append(store_default);
 //        b.append("\n  Store default: ").append(store_default);
         b.append("\n  Registers: ");
         for (int i = 0; i < registers.size(); i++)

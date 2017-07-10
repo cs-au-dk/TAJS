@@ -20,14 +20,13 @@ import dk.brics.tajs.flowgraph.SourceLocation;
 import dk.brics.tajs.lattice.ObjectLabel.Kind;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.util.AnalysisException;
+import dk.brics.tajs.util.Canonicalizer;
+import dk.brics.tajs.util.DeepImmutable;
 import dk.brics.tajs.util.Strings;
 
-import java.lang.ref.WeakReference;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.Map;
 import java.util.Set;
-import java.util.WeakHashMap;
 
 import static dk.brics.tajs.util.Collections.newSet;
 
@@ -35,7 +34,7 @@ import static dk.brics.tajs.util.Collections.newSet;
  * Abstract value.
  * Value objects are immutable.
  */
-public final class Value implements Undef, Null, Bool, Num, Str {
+public final class Value implements Undef, Null, Bool, Num, Str, DeepImmutable {
 
     private final static int BOOL_TRUE = 0x00000001; // true
 
@@ -114,18 +113,6 @@ public final class Value implements Undef, Null, Bool, Num, Str {
     private final static int PROPERTYDATA = ATTR | MODIFIED;
 
     private final static int PRIMITIVE = UNDEF | NULL | BOOL | NUM | STR;
-
-    private static Map<Value, WeakReference<Value>> value_cache;
-
-    private static int value_cache_hits;
-
-    private static int value_cache_misses;
-
-    private static Map<Set<ObjectLabel>, WeakReference<Set<ObjectLabel>>> objset_cache;
-
-    private static int objset_cache_hits;
-
-    private static int objset_cache_misses;
 
     private static Value theNone;
 
@@ -243,12 +230,6 @@ public final class Value implements Undef, Null, Bool, Num, Str {
     }
 
     private static void init() {
-        value_cache = new WeakHashMap<>();
-        objset_cache = new WeakHashMap<>();
-        value_cache_hits = 0;
-        value_cache_misses = 0;
-        objset_cache_hits = 0;
-        objset_cache_misses = 0;
         theNone = reallyMakeNone();
         theNoneModified = reallyMakeNoneModified();
         theUndef = reallyMakeUndef(null);
@@ -345,11 +326,11 @@ public final class Value implements Undef, Null, Bool, Num, Str {
             v.num = 0.0;
         }
         if (v.object_labels != null)
-            v.object_labels = canonicalize(v.object_labels);
+            v.object_labels = Canonicalizer.get().canonicalizeSet(v.object_labels);
         if (v.getters != null)
-            v.getters = canonicalize(v.getters);
+            v.getters = Canonicalizer.get().canonicalizeSet(v.getters);
         if (v.setters != null)
-            v.setters = canonicalize(v.setters);
+            v.setters = Canonicalizer.get().canonicalizeSet(v.setters);
         v.hashcode = v.flags * 17
                 + (v.var != null ? v.var.hashCode() : 0)
                 + (v.num != null ? v.num.hashCode() : 0)
@@ -357,79 +338,9 @@ public final class Value implements Undef, Null, Bool, Num, Str {
                 + (v.object_labels != null ? v.object_labels.hashCode() : 0)
                 + (v.getters != null ? v.getters.hashCode() : 0)
                 + (v.setters != null ? v.setters.hashCode() : 0);
-        WeakReference<Value> ref2 = value_cache.get(v);
-        Value cv = ref2 != null ? ref2.get() : null;
-        if (cv == null) {
-            cv = v;
-            value_cache.put(v, new WeakReference<>(v));
-            value_cache_misses++;
-        } else
-            value_cache_hits++;
+        Value cv = Canonicalizer.get().canonicalize(v);
         canonicalizing = false;
         return cv;
-    }
-
-    /**
-     * Put the object label set into canonical form.
-     * The resulting set is immutable.
-     */
-    private static Set<ObjectLabel> canonicalize(Set<ObjectLabel> objlabels) { // TODO: use this method for all immutable object label sets (but only for those that are immutable!)
-        Set<ObjectLabel> res;
-        WeakReference<Set<ObjectLabel>> ref1 = objset_cache.get(objlabels);
-        Set<ObjectLabel> so = ref1 != null ? ref1.get() : null;
-        if (so == null) {
-            objset_cache.put(objlabels, new WeakReference<>(objlabels));
-            res = objlabels;
-            objset_cache_misses++;
-        } else {
-            res = so;
-            objset_cache_hits++;
-        }
-        if (Options.get().isDebugOrTestEnabled())
-            return Collections.unmodifiableSet(res);
-        return res;
-    }
-
-    /**
-     * Returns the value cache size.
-     */
-    public static int getValueCacheSize() {
-        return value_cache.size();
-    }
-
-    /**
-     * Returns the number of value cache misses.
-     */
-    public static int getNumberOfValueCacheMisses() {
-        return value_cache_misses;
-    }
-
-    /**
-     * Returns the number of value cache hits.
-     */
-    public static int getNumberOfValueCacheHits() {
-        return value_cache_hits;
-    }
-
-    /**
-     * Returns the object set cache size.
-     */
-    public static int getObjectSetCacheSize() {
-        return objset_cache.size();
-    }
-
-    /**
-     * Returns the number of object set cache misses.
-     */
-    public static int getNumberOfObjectSetCacheMisses() {
-        return objset_cache_misses;
-    }
-
-    /**
-     * Returns the number of object set cache hits.
-     */
-    public static int getNumberOfObjectSetCacheHits() {
-        return objset_cache_hits;
     }
 
     /**

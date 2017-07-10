@@ -4,3 +4,4 @@ test/micro/test137.js:6:17: [maybe] The variable ttttt has values with different
 test/micro/test137.js:8:17: [maybe] The variable ttttt has values with different types
 test/micro/test137.js:6:2: [info] Abstract value: 42.0|"dyt"
 test/micro/test137.js:8:2: [info] Abstract value: 42.0|"dyt"
+Soundness testing succeeded for 32 checks (with 0 expected failures)

@@ -31,3 +31,4 @@ test/micro/testObject.js:49:1: [info] Abstract value: "foo"
 test/micro/testObject.js:50:1: [info] Abstract value: [@Object#node70]
 test/micro/testObject.js:51:1: [info] Abstract value: 1.0
 test/micro/testObject.js:52:1: [info] Abstract value: "foo"
+Soundness testing succeeded for 149 checks (with 0 expected failures)

@@ -102,3 +102,5 @@ test/chromeexperiments/deepseastress.html:423:102: [info] 'this' refers to multi
 test/chromeexperiments/deepseastress.html:426:106: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/chromeexperiments/deepseastress.html:428:106: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/chromeexperiments/deepseastress.html:430:81: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+Disabling soundness testing for test/chromeexperiments/deepseastress.html entirely (1350 uninspected soundness errors).
+Soundness testing succeeded for 1640 checks (with 1350 expected failures)

@@ -36,3 +36,4 @@ test/1k2013spring/1529.js:56:86: [maybe] Conversion to number yields NaN
 test/1k2013spring/1529.js:56:133: [maybe] Conversion to number yields NaN
 test/1k2013spring/1529.js:56:201: [maybe] Converting primitive number to object
 test/1k2013spring/1529.js:69:13: [maybe] Conversion to number yields NaN
+Soundness testing succeeded for 210 checks (with 1 expected failures)

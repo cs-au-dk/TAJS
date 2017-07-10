@@ -1607,3 +1607,4 @@ test/chromeexperiments/bomomo.html:2736:41: [info] 'this' refers to multiple abs
 test/chromeexperiments/bomomo.html:2744:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/chromeexperiments/bomomo.html:2744:33: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/chromeexperiments/bomomo.html:2744:41: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+Soundness testing succeeded for 3013 checks (with 0 expected failures)

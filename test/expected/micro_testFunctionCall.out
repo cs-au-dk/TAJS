@@ -13,3 +13,4 @@ test/micro/testFunctionCall.js:29:1: [info] Abstract value: "xxxyyy"
 test/micro/testFunctionCall.js:32:1: [info] Abstract value: "xxxyyy"
 test/micro/testFunctionCall.js:35:1: [info] Abstract value: "xxxyyy"
 test/micro/testFunctionCall.js:38:1: [info] Abstract value: "xxxyyy"
+Soundness testing succeeded for 71 checks (with 0 expected failures)

@@ -79,3 +79,4 @@ test/sunspider/string-base64.js:98:24: [maybe] Reading absent property (computed
 test/sunspider/string-base64.js:103:20: [maybe] Conversion to number yields NaN
 test/sunspider/string-base64.js:142:26: [maybe] Converting object to number
 test/sunspider/string-base64.js:144:1: [info] Abstract value: UInt|NotUInt
+Soundness testing succeeded for 1351 checks (with 0 expected failures)

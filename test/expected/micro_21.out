@@ -3,3 +3,4 @@ test/micro/test21.js: [definite] Exceptional program exit is unreachable
 test/micro/test21.js:2:2: [maybe] Reading 'this' yields the global object
 test/micro/test21.js:25:1: [info] Abstract value: 42.0
 test/micro/test21.js:26:1: [info] Abstract value: 100.0
+Soundness testing succeeded for 58 checks (with 0 expected failures)

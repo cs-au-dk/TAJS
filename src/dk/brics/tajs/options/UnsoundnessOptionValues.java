@@ -16,13 +16,9 @@
 
 package dk.brics.tajs.options;
 
-import dk.brics.tajs.flowgraph.SourceLocation;
-import dk.brics.tajs.util.Pair;
 import org.kohsuke.args4j.CmdLineException;
 import org.kohsuke.args4j.CmdLineParser;
 import org.kohsuke.args4j.Option;
-
-import java.net.URL;
 
 /**
  * Option values for unsoundness.
@@ -118,6 +114,7 @@ public class UnsoundnessOptionValues {
         result = 31 * result + (ignoreImpreciseFunctionConstructor ? 1 : 0);
         result = 31 * result + (ignoreUnlikelyPropertyReads ? 1 : 0);
         result = 31 * result + (showUnsoundnessUsage ? 1 : 0);
+        result = 31 * result + (ignoreSomePrototypesDuringDynamicPropertyReads ? 1 : 0);
         return result;
     }
 
@@ -183,11 +180,6 @@ public class UnsoundnessOptionValues {
 
     public void setIgnoreImpreciseFunctionConstructor(boolean ignoreImpreciseFunctionConstructor) {
         this.ignoreImpreciseFunctionConstructor = ignoreImpreciseFunctionConstructor;
-    }
-
-    private Pair<URL, Pair<Integer, Integer>> makeSourceLocationKey(SourceLocation sourceLocation) {
-        Pair<Integer, Integer> position = Pair.make(sourceLocation.getLineNumber(), sourceLocation.getColumnNumber());
-        return Pair.make(sourceLocation.getLocation(), position);
     }
 
     public boolean isNoImplicitGlobalVarDeclarations() {

@@ -226,3 +226,4 @@ test/chromeexperiments/3ddemo.html:990:52: [info] 'this' refers to multiple abst
 test/chromeexperiments/3ddemo.html:997:26: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/chromeexperiments/3ddemo.html:1004:26: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/chromeexperiments/3ddemo.html:1055:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+Soundness testing succeeded for 3539 checks (with 0 expected failures)

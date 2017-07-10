@@ -50,3 +50,5 @@ test/1k2012love/1245.js:112:19: [maybe] Conversion to number yields NaN
 test/1k2012love/1245.js:112:35: [maybe] Conversion to number yields NaN
 test/1k2012love/1245.js:112:41: [maybe] Conversion to number yields NaN
 TAJS-dynamic-code(test/1k2012love/1245.js:116:1):1:9: [maybe] Conversion to number yields NaN
+Could not create value log file: main file is known to be unsupported (limitation of the jalangilogger project)
+Log of soundness facts is not available for test/1k2012love/1245.js, skipping soundness checking

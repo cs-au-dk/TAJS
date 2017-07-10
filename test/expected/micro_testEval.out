@@ -10,3 +10,4 @@ test/micro/testEval.js:6:1: [info] Abstract value: 9.11
 test/micro/testEval.js:10:1: [info] Abstract value: [@Boolean#node33{boxed-primitive=true}]
 test/micro/testEval.js:13:1: [info] Abstract value: [@funfun#fun3]
 test/micro/testEval.js:14:1: [info] Abstract object: {length:1.0,name:"funfun",prototype:[@Object#node382],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@<the global object>[native]]]}
+Soundness testing succeeded for 44 checks (with 1 expected failures)

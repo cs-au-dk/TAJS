@@ -37,35 +37,16 @@ import java.io.IOException;
 import java.net.URL;
 import java.nio.charset.Charset;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 import java.util.Stack;
 
 import static dk.brics.tajs.js2flowgraph.FunctionBuilderHelper.makeBasicBlock;
-import static dk.brics.tajs.util.Collections.newMap;
 import static dk.brics.tajs.util.Collections.newSet;
 
 /**
  * Operations for extending an existing flow graph.
  */
 public class FlowGraphMutator {
-
-    private static FlowGraphMutator instance;
-
-    private final Map<Pair<URL, List<String>>, Function> fileCache;
-
-    private final Map<Pair<String, Pair<String, List<String>>>, Function> sourceCache;
-
-    private Set<URL> hostEnvironmentLocations;
-
-    private Set<Function> functionsWithSyntheticParameters;
-
-    private FlowGraphMutator() {
-        fileCache = newMap();
-        sourceCache = newMap();
-        hostEnvironmentLocations = newSet();
-        functionsWithSyntheticParameters = newSet();
-    }
 
     /**
      * Extends the given flow graph.
@@ -150,62 +131,55 @@ public class FlowGraphMutator {
         return new FlowGraphFragment(sourceCodeIdentifier, entryBlock, entryFunction, blocksAndFunctions.getFirst(), blocksAndFunctions.getSecond());
     }
 
-    public static FlowGraphMutator get() {
-        if (instance == null) {
-            instance = new FlowGraphMutator();
-        }
-        return instance;
-    }
-
-    public static void reset() {
-        instance = null;
-    }
-
     /**
      * Adds a top-level function to the current flowgraph.
      *
-     * @param file              source code of the function body
      * @param parameterNames    pararmeter names of the function
+     * @param sourceFile        source code of the function body
      * @param isHostEnvironment true if the function is part of the host environment
      * @param existingFlowgraph flowgraph to extend
      * @return newly created function
      */
-    public Function extendFlowGraphWithTopLevelFunction(URL file, List<String> parameterNames, boolean isHostEnvironment, FlowGraph existingFlowgraph, SourceLocationMaker sourceLocationMaker) {
-        Pair<URL, List<String>> key = Pair.make(file, parameterNames);
-        if (!fileCache.containsKey(key)) {
+    public static Function extendFlowGraphWithTopLevelFunction(List<String> parameterNames, URL sourceFile, boolean isHostEnvironment, FlowGraph existingFlowgraph, SourceLocationMaker sourceLocationMaker) {
+        if (isHostEnvironment) {
+            existingFlowgraph.registerHostEnvironmentSource(sourceFile);
+        }
+        FlowGraph.FunctionFileSourceCacheKey key = new FlowGraph.FunctionFileSourceCacheKey(sourceFile, parameterNames);
+        if (!existingFlowgraph.getFunctionCache().containsKey(key)) {
             try {
-                String source = Loader.getString(file, Charset.forName("UTF-8"));
-                Function function = extendFlowGraphWithTopLevelFunction(file.toExternalForm(), source, parameterNames, existingFlowgraph, sourceLocationMaker);
-                fileCache.put(key, function);
-                functionsWithSyntheticParameters.add(function);
-                if (isHostEnvironment) {
-                    hostEnvironmentLocations.add(file);
-                }
+                String source = Loader.getString(sourceFile, Charset.forName("UTF-8"));
+                Function function = addTopLevelFunction(parameterNames, source, existingFlowgraph, sourceLocationMaker);
+                existingFlowgraph.getFunctionCache().put(key, function);
             } catch (IOException e) {
                 throw new AnalysisException(e);
             }
         }
-        return fileCache.get(key);
+        return existingFlowgraph.getFunctionCache().get(key);
     }
 
-    public Function extendFlowGraphWithTopLevelFunction(String uniqueIdentifier, String source, List<String> parameterNames, FlowGraph existingFlowgraph, SourceLocationMaker sourceLocationMaker) {
-        Pair<String, Pair<String, List<String>>> key = Pair.make(uniqueIdentifier, Pair.make(source, parameterNames)); // TODO make use of something more robust than a string for identifiers? (GitHub #363)
-        if (!sourceCache.containsKey(key)) {
-            BasicBlock standaloneBlock = new BasicBlock(existingFlowgraph.getMain());
-            AstEnv env = AstEnv.makeInitial().makeEnclosingFunction(existingFlowgraph.getMain()).makeAppendBlock(standaloneBlock);
-            FlowGraphBuilder builder = new FlowGraphBuilder(env, new FunctionAndBlockManager());
-            Function function = builder.transformFunctionBody(source, parameterNames, sourceLocationMaker);
-            builder.close(existingFlowgraph, null);
-            sourceCache.put(key, function);
+    /**
+     * Adds a top-level function to the current flowgraph.
+     */
+    public static Function extendFlowGraphWithTopLevelFunction(List<String> parameterNames, String source, FlowGraph existingFlowgraph, SourceLocationMaker sourceLocationMaker) {
+        // use location as part of the cache key, otherwise identical functions from different source locations would use the same cache entry!
+        SourceLocation location = sourceLocationMaker.makeUnspecifiedPosition();
+        FlowGraph.FunctionDynamicSourceCacheKey key = new FlowGraph.FunctionDynamicSourceCacheKey(location, parameterNames, source);
+        if (!existingFlowgraph.getFunctionCache().containsKey(key)) {
+            Function function = addTopLevelFunction(parameterNames, source, existingFlowgraph, sourceLocationMaker);
+            existingFlowgraph.getFunctionCache().put(key, function);
         }
-        return sourceCache.get(key);
+        return existingFlowgraph.getFunctionCache().get(key);
     }
 
-    public boolean isHostEnvironmentSource(SourceLocation location) {
-        return hostEnvironmentLocations.contains(location.getLocation());
-    }
-
-    public boolean hasSyntheticParameters(Function function) {
-        return functionsWithSyntheticParameters.contains(function);
+    /**
+     * Adds a new top level function with the given parameter names and body source.
+     */
+    private static Function addTopLevelFunction(List<String> parameterNames, String source, FlowGraph existingFlowgraph, SourceLocationMaker sourceLocationMaker) {
+        BasicBlock standaloneBlock = new BasicBlock(existingFlowgraph.getMain());
+        AstEnv env = AstEnv.makeInitial().makeEnclosingFunction(existingFlowgraph.getMain()).makeAppendBlock(standaloneBlock);
+        FlowGraphBuilder builder = new FlowGraphBuilder(env, new FunctionAndBlockManager());
+        Function function = builder.transformFunctionBody(source, parameterNames, sourceLocationMaker);
+        builder.close(existingFlowgraph, null);
+        return function;
     }
 }

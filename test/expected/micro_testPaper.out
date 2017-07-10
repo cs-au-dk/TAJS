@@ -76,3 +76,4 @@ test/micro/testPaper.js:26:1: [info] Abstract state (modified parts):
     name: "replace"
     prototype: [@Object#node135]
     [[Prototype]] = [@Function.prototype[native]]
+Soundness testing succeeded for 116 checks (with 0 expected failures)

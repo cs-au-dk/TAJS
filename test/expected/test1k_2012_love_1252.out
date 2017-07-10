@@ -84,3 +84,4 @@ test/1k2012love/1252.js:98:3: [maybe] Conversion to number yields NaN
 test/1k2012love/1252.js:115:3: [maybe] Conversion to number yields NaN
 test/1k2012love/1252.js:97:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/1k2012love/1252.js:98:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+Soundness testing succeeded for 394 checks (with 1 expected failures)

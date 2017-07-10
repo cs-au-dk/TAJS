@@ -20,3 +20,4 @@ test/micro/testRegExp.js:17:1: [info] Abstract value: Undef
 test/micro/testRegExp.js:19:1: [info] Abstract value: "/ab*/gi"
 test/micro/testRegExp.js:22:1: [info] Abstract value: [@RegExp#node81]
 test/micro/testRegExp.js:34:1: [info] Abstract value: true
+Soundness testing succeeded for 93 checks (with 0 expected failures)

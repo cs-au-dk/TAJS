@@ -333,10 +333,10 @@ public class Operators {
         Value r = addStrings(p1, p2, Value.makeNone());
         // handle string parts of p1 + non-string parts of p2
         if (!p1.isNotStr() && p2.isMaybeOtherThanStr())
-            r = addStrings(p1, Conversion.toString(r2, c), r);
+            r = r.join(addStrings(p1, Conversion.toString(r2, c), r));
         // handle non-string parts of p1 + string parts of p2
         if (!p2.isNotStr() && p1.isMaybeOtherThanStr())
-            r = addStrings(Conversion.toString(r1, c), p2, r);
+            r = r.join(addStrings(Conversion.toString(r1, c), p2, r));
         // handle non-string parts of p1 + non-string parts of p2
         if (r1.isMaybePresent() && r2.isMaybePresent())
             r = r.join(addNumbers(r1, r2, c));
@@ -786,11 +786,8 @@ public class Operators {
         if (n1.isMaybeSingleNum() && n2.isMaybeSingleNum()) {
             double d1 = n1.getNum();
             double d2 = n2.getNum();
-            if (d1 == d2 || d1 == 0.0 && d2 == -0.0 || d1 == -0.0 && d2 == 0.0) // FIXME: comparisons with 0.0 or -0.0 always false?!
-                // absolute weirdness, but required by standard 11.9.3 points 8 and 9
-                return r.joinBool(true);
-            else
-                return r.joinBool(false);
+            // (NB Java-== does not distinguish -0.0 and +0.0)
+            return r.joinBool(d1 == d2);
         }
         return Value.makeAnyBool();
     }

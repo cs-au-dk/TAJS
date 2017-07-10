@@ -27,6 +27,7 @@ import dk.brics.tajs.analysis.PropVarOperations;
 import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.analysis.dom.DOMEvents;
 import dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects;
+import dk.brics.tajs.analysis.nativeobjects.TAJSFunction;
 import dk.brics.tajs.flowgraph.AbstractNode;
 import dk.brics.tajs.flowgraph.BasicBlock;
 import dk.brics.tajs.flowgraph.Function;
@@ -619,11 +620,11 @@ public class NodeTransfer implements NodeVisitor {
      */
     @Override
     public void visit(CallNode n) {
-        if (n.getTajsFunction() != null) {
+        if (n.getTajsFunctionName() != null) {
             FunctionCalls.callFunction(new OrdinaryCallInfo(n, c.getState()) {
                 @Override
                 public Value getFunctionValue() {
-                    return Value.makeObject(ObjectLabel.make(n.getTajsFunction(), Kind.FUNCTION));
+                    return Value.makeObject(ObjectLabel.make(new TAJSFunction(n.getTajsFunctionName()), Kind.FUNCTION));
                 }
 
                 @Override
@@ -1020,6 +1021,7 @@ public class NodeTransfer implements NodeVisitor {
     public void visit(AssumeNode n) {
         if (Options.get().isControlSensitivityDisabled())
             return;
+        // FIXME esoteric unsoundness: check if side-effects (i.e. implicit calls) has occured since the read of the beginning of the expression's evaluation. (GitHub #403)
         switch (n.getKind()) {
 
             case VARIABLE_NON_NULL_UNDEF: {

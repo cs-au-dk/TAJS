@@ -24,3 +24,4 @@ test/micro/testNumber.js:36:1: [info] Abstract value: "4.3e+1"
 test/micro/testNumber.js:37:1: [info] Abstract value: "47"
 test/micro/testNumber.js:38:1: [info] Abstract value: "4.7110e+1"
 test/micro/testNumber.js:39:1: [info] Abstract value: "47.11000000"
+Soundness testing succeeded for 138 checks (with 0 expected failures)

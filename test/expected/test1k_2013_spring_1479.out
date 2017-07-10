@@ -14,3 +14,4 @@ test/1k2013spring/1479.js:49:18: [maybe] Conversion to number yields NaN
 test/1k2013spring/1479.js:65:15: [maybe] Reading absent property (computed name)
 test/1k2013spring/1479.js:99:3: [maybe] Conversion to number yields NaN
 test/1k2013spring/1479.js:103:16: [maybe] Reading absent property (computed name)
+Soundness testing succeeded for 272 checks (with 0 expected failures)

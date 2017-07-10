@@ -12,11 +12,12 @@ import dk.brics.tajs.monitoring.DefaultAnalysisMonitoring;
 import dk.brics.tajs.monitoring.Monitoring;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.util.Collections;
+import dk.brics.tajs.util.Collectors;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.Objects;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 import static dk.brics.tajs.util.Collections.newSet;
 import static org.junit.Assert.assertEquals;
@@ -99,14 +100,14 @@ public class TestLiteralContextSensitivity {
 
     private void test(String objectVariable, Set<Value> contextValues, String... sourceLines) {
         TestMonitor testMonitor = new TestMonitor();
-        Misc.runSource(sourceLines, CompositeMonitoring.buildFromList(new Monitoring(), testMonitor));
+        Misc.runSource(sourceLines, CompositeMonitoring.buildFromList(Monitoring.make(), testMonitor));
         Set<ObjectLabel> objectLabels = testMonitor.state.readVariableDirect(objectVariable).getObjectLabels();
         Set<Value> values = newSet();
         for (ObjectLabel objectLabel : objectLabels) {
             HeapContext heapContext = objectLabel.getHeapContext();
             ContextArguments arguments = heapContext.getFunctionArguments();
             if (arguments != null)
-                values.addAll(arguments.getArguments().stream().filter(e -> e != null).collect(Collectors.toList()));
+                values.addAll(arguments.getArguments().stream().filter(Objects::nonNull).collect(Collectors.toList()));
         }
         values.remove(null);
         assertEquals(contextValues, values);

@@ -94,18 +94,12 @@ public class TestJQueryLoad { // TODO: code contains "dk.brics.tajs.directives.u
         // Each tests runs in less than 30 seconds on `Intel(R) Core(TM) i7-3520M CPU @ 2.90GHz`
         analysisLimiter = new AnalysisTimeLimiter(1 * 90);
 
-        boolean showLineAnalysis = false; // for debugging
-        if (showLineAnalysis) {
-            // NB: requires TAJS-meta to be on the classpath
-            // monitor = new CompositeMonitoring(analysisLimiter, MonitorFactory.createLineAnalysisMonitor());
-        } else {
-            monitor = CompositeMonitoring.buildFromList(new Monitoring(), analysisLimiter);
-        }
+        monitor = CompositeMonitoring.buildFromList(Monitoring.make(), analysisLimiter);
     }
 
     @After
     public void after() {
-        if (analysisLimiter.analysisExceededTimeLimit()) {
+        if (!analysisLimiter.analysisNotExceededTimeLimit()) {
             Assert.fail("Analysis exceeded time limit");
         }
     }

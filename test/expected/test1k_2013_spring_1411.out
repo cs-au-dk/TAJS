@@ -37,3 +37,4 @@ test/1k2013spring/1411.js:111:37: [maybe] Conversion to number yields NaN
 test/1k2013spring/1411.js:118:9: [maybe] Conversion to number yields NaN
 test/1k2013spring/1411.js:126:13: [maybe] Conversion to number yields NaN
 test/1k2013spring/1411.js:129:13: [maybe] Conversion to number yields NaN
+Soundness testing succeeded for 315 checks (with 0 expected failures)

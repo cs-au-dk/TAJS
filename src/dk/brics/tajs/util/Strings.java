@@ -29,10 +29,10 @@ public class Strings {
     static private Random rnd;
 
     static private final Pattern NUMBER =
-            Pattern.compile("\\-?(([0-9]+(\\.[0-9]*)?|\\.[0-9]+)([eE][-+][0-9]+)?|Infinity)|NaN"); // TODO: check that this over-approximates the possible output of Number.toString
+            Pattern.compile("-?(([0-9]+(\\.[0-9]*)?|\\.[0-9]+)([eE][-+][0-9]+)?|Infinity)|NaN"); // TODO: check that this over-approximates the possible output of Number.toString
 
     static private final Pattern NUMBER_CHARACTERS = // derived from NUMBER
-            Pattern.compile("\\-|\\+|\\.|[0-9]|[aeEfIinNty]");
+            Pattern.compile("-|\\+|\\.|[0-9]|[aeEfIinNty]");
 
     static private final Pattern IDENTIFIER =
             Pattern.compile("[\\p{Lu}\\p{Ll}\\p{Lt}\\p{Lm}\\p{Lo}\\p{Nl}$_]" +

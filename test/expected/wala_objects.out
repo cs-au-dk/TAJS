@@ -4,3 +4,4 @@ test/wala/objects.js:48:1: [info] Abstract object: {3:7.0,4:[@Number#node37{boxe
 test/wala/objects.js:49:1: [info] Abstract value: [@Number#node37{boxed-primitive=4.0}]
 test/wala/objects.js:50:1: [info] Abstract value: [@String#node41{boxed-primitive="whatever"}]
 test/wala/objects.js:51:1: [info] Abstract value: "whatever"
+Soundness testing succeeded for 115 checks (with 0 expected failures)

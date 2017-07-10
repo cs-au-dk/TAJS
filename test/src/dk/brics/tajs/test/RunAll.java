@@ -13,8 +13,8 @@ import org.junit.runners.Suite;
         // medium tests
         RunMedium.class,
         // slow tests
-        RunSlow.class,
-        RunPapers.class
+//        RunSlow.class,
+//        RunPapers.class
 })
 public class RunAll {
 

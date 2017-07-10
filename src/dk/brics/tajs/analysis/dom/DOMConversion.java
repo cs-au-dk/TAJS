@@ -83,7 +83,7 @@ public class DOMConversion {
                         Value prototypeValue = state.readInternalPrototype(java.util.Collections.singleton(objectLabel));
                         prototypeValue = UnknownValueResolver.getRealValue(prototypeValue, state);
 
-                        // FIXME: Needs code review. Looks fishy to compare objects with toString().
+                        // FIXME: Needs code review. Looks fishy to compare objects with toString(). (GitHub #406)
                         String nativeObjectPrototype = nativeObject.toString();
                         String objectLabelPrototype = "";
                         if (objectLabel.getHostObject() != null) {

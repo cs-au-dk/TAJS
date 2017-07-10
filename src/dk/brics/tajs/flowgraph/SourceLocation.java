@@ -22,15 +22,14 @@ import dk.brics.tajs.util.Canonicalizer;
 import dk.brics.tajs.util.DeepImmutable;
 import dk.brics.tajs.util.PathAndURLUtils;
 
-import java.io.File;
+import java.io.Serializable;
 import java.net.URL;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 
 /**
  * Source location.
  */
-public class SourceLocation implements Comparable<SourceLocation>, DeepImmutable {
+public class SourceLocation implements Comparable<SourceLocation>, DeepImmutable, Serializable {
 
     /**
      * A custom name for this source location (only used for pretty printing and sorting).
@@ -246,12 +245,14 @@ public class SourceLocation implements Comparable<SourceLocation>, DeepImmutable
                 selectedFileName = wrapDynamic(loaderLocation.toUserFriendlyString(showPosition));
                 break;
             case STATIC:
-                if (customName != null) {
+                if (location.getProtocol().equalsIgnoreCase("http") || location.getProtocol().equalsIgnoreCase("https")) {
+                    selectedFileName = location.toString();
+                } else if (customName != null) {
                     selectedFileName = customName;
                 } else {
                     Path actual = PathAndURLUtils.toPath(location);
-                    Path workingDirectory = Paths.get("");
-                    selectedFileName = workingDirectory.toAbsolutePath().relativize(actual).normalize().toString().replace(File.separatorChar, '/');
+                    Path relativeToWorkingDirectory = PathAndURLUtils.getRelativeToWorkingDirectory(actual);
+                    selectedFileName = PathAndURLUtils.toPortableString(relativeToWorkingDirectory);
                 }
                 break;
             default:

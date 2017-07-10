@@ -24,7 +24,6 @@ test/1k2013spring/1436.js:63:50: [maybe] ReferenceError, reading absent variable
 test/1k2013spring/1436.js:63:52: [maybe] ReferenceError, reading absent variable R
 test/1k2013spring/1436.js:63:64: [maybe] ReferenceError, reading absent variable T
 test/1k2013spring/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
-test/1k2013spring/1436.js:41:6: [maybe] Reading absent property map
 test/1k2013spring/1436.js: [maybe] Uncaught exception, constructed at [test/1k2013spring/1436.js:37:16, test/1k2013spring/1436.js:37:30, test/1k2013spring/1436.js:39:5, test/1k2013spring/1436.js:39:22, test/1k2013spring/1436.js:39:25, test/1k2013spring/1436.js:41:6, test/1k2013spring/1436.js:44:74, test/1k2013spring/1436.js:44:76, test/1k2013spring/1436.js:44:79, test/1k2013spring/1436.js:44:86, test/1k2013spring/1436.js:44:89, test/1k2013spring/1436.js:48:3, test/1k2013spring/1436.js:50:9, test/1k2013spring/1436.js:51:19, test/1k2013spring/1436.js:51:30, test/1k2013spring/1436.js:63:12, test/1k2013spring/1436.js:63:27, test/1k2013spring/1436.js:63:33, test/1k2013spring/1436.js:63:35, test/1k2013spring/1436.js:63:47, test/1k2013spring/1436.js:63:50, test/1k2013spring/1436.js:63:52, test/1k2013spring/1436.js:63:64, test/1k2013spring/shim.js:9:5]
 test/1k2013spring/1436.js:12:7: [maybe] Conversion to number yields NaN
 test/1k2013spring/1436.js:42:5: [maybe] The variable v has values with different types
@@ -35,3 +34,4 @@ test/1k2013spring/1436.js:51:26: [maybe] Conversion to number yields NaN
 test/1k2013spring/1436.js:51:28: [maybe] Conversion to number yields NaN
 test/1k2013spring/1436.js:55:20: [maybe] The variable v has values with different types
 test/1k2013spring/1436.js:56:5: [maybe] The variable v has values with different types
+Soundness testing succeeded for 225 checks (with 0 expected failures)

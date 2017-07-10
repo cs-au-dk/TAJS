@@ -1,3 +1,19 @@
+/*
+ * Copyright 2009-2017 Aarhus University
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package dk.brics.tajs.analysis.signatures;
 
 import dk.brics.tajs.analysis.Conversion;
@@ -8,9 +24,9 @@ import dk.brics.tajs.analysis.signatures.types.Requirement;
 import dk.brics.tajs.analysis.signatures.types.ValueDescription;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.Value;
+import dk.brics.tajs.util.Collectors;
 
 import java.util.Set;
-import java.util.stream.Collectors;
 
 /**
  * Utility values for defining signatures of native functions.
@@ -49,7 +65,10 @@ public class NativeFunctionSignatureUtilities {
         }
 
         public static boolean regExp(Value v, Solver.SolverInterface c) {
-            return false; // FIXME this might involve toString on v, and exceptions from the RegExp constructor!
+            Value nonRegExps = v.removeObjects(v.getObjectLabels().stream()
+                    .filter(l -> l.getKind() != ObjectLabel.Kind.REGEXP)
+                    .collect(Collectors.toSet()));
+            return Conversion.toString(nonRegExps, c).isNone(); // TODO this might involve exceptions from the RegExp constructor!
         }
 
         public static boolean regExpIfNotString(Value v, Solver.SolverInterface c) {
@@ -208,6 +227,8 @@ public class NativeFunctionSignatureUtilities {
         public static final Mandatory RegExp = new Mandatory(new ValueDescriptionImpl(java.util.Optional.empty(), java.util.Optional.of(Coercions::regExp)));
 
         public static final Mandatory StringIfNotRegExp = new Mandatory(new ValueDescriptionImpl(java.util.Optional.empty(), java.util.Optional.of(Coercions::stringIfNotRegExp)));
+
+        public static final Mandatory StringThrowOnRegExp = new Mandatory(new ValueDescriptionImpl(java.util.Optional.of(Requirements.isNotRegExp), java.util.Optional.of(Coercions::stringIfNotRegExp)));
 
         public static final Mandatory StringIfNotFunction = new Mandatory(new ValueDescriptionImpl(java.util.Optional.empty(), java.util.Optional.of(Coercions::stringIfNotFunction)));
 

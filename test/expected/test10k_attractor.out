@@ -291,3 +291,5 @@ test/10k/attractor.html:326:84: [info] Reading from unknown property that may ca
 test/10k/attractor.html:329:12: [info] Reading from unknown property that may cause loss of precision
 test/10k/attractor.html:332:31: [info] Reading from unknown property that may cause loss of precision
 test/10k/attractor.html:332:47: [info] Reading from unknown property that may cause loss of precision
+Could not create value log file: main file is known to be unsupported (limitation of the jalangilogger project)
+Log of soundness facts is not available for test/10k/attractor.html, skipping soundness checking

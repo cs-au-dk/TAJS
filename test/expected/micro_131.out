@@ -5,3 +5,4 @@ test/micro/test131.js:13:2: [info] Abstract value: "5"
 test/micro/test131.js:13:2: [info] Abstract value: 5.0|[@Object#node25]
 test/micro/test131.js:14:2: [info] Abstract object: 
 test/micro/test131.js:14:2: [info] Abstract object: {[[Prototype]]=[@Object.prototype[native]]}
+Soundness testing succeeded for 17 checks (with 0 expected failures)

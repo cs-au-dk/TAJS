@@ -60,3 +60,4 @@ test/10k/stairs_to_heaven.html:99:17: [maybe] Reading absent property (computed 
 test/10k/stairs_to_heaven.html:100:20: [maybe] Reading absent property (computed name)
 test/10k/stairs_to_heaven.html:198:108: [maybe] Reading absent property (computed name)
 test/10k/stairs_to_heaven.html:25:9: [info] Abstract value: [@Array#node249]
+Soundness testing succeeded for 764 checks (with 0 expected failures)

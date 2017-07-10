@@ -74,3 +74,4 @@ test/1k2013spring/1525.js:59:12: [maybe] Converting primitive string to object
 test/1k2013spring/1525.js:59:23: [maybe] Converting primitive string to object
 test/1k2013spring/1525.js:62:28: [maybe] Conversion to number yields NaN
 test/1k2013spring/1525.js:70:7: [maybe] Reading absent property (computed name)
+Soundness testing succeeded for 94 checks (with 2 expected failures)

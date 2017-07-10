@@ -76,7 +76,7 @@ public class Misc {
     }
 
     public static void run(String... args) throws AnalysisException {
-        run(args, new Monitoring());
+        run(args, Monitoring.make());
     }
 
     public static void run(String arg, IAnalysisMonitoring monitoring) throws AnalysisException {
@@ -172,6 +172,16 @@ public class Misc {
     }
 
     private static void runSourcePart(String suffix, String[] src, IAnalysisMonitoring monitoring) {
+            File file = makeTempSourceFile(suffix, src);
+            String[] args = {file.getPath()};
+            if (monitoring == null) {
+                Misc.run(args);
+            } else {
+                Misc.run(args, monitoring);
+            }
+    }
+
+    public static File makeTempSourceFile(String suffix, String[] src) {
         try {
             File dir = new File("out/temp-sources/");
             if (!dir.exists()) {
@@ -185,12 +195,7 @@ public class Misc {
                     writer.write("\n");
                 }
             }
-            String[] args = {file.getPath()};
-            if (monitoring == null) {
-                Misc.run(args);
-            } else {
-                Misc.run(args, monitoring);
-            }
+            return file;
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

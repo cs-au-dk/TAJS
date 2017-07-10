@@ -40,3 +40,4 @@ test/1k2013spring/1417.js:72:27: [maybe] Reading absent property (computed name)
 test/1k2013spring/1417.js:73:82: [maybe] Reading absent property (computed name)
 test/1k2013spring/1417.js:75:33: [maybe] Reading absent property (computed name)
 test/1k2013spring/1417.js:79:3: [maybe] Conversion to number yields NaN
+Soundness testing succeeded for 574 checks (with 0 expected failures)

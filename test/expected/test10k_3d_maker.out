@@ -237,3 +237,4 @@ test/10k/3d_maker.html:27:26: [info] 'this' refers to a summary abstract object,
 test/10k/3d_maker.html:27:53: [info] 'this' refers to a summary abstract object, which may cause loss of precision
 test/10k/3d_maker.html:27:80: [info] 'this' refers to a summary abstract object, which may cause loss of precision
 test/10k/3d_maker.html:27:107: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+Soundness testing succeeded for 766 checks (with 0 expected failures)

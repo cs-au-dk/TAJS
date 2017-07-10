@@ -138,3 +138,4 @@ test/sunspider/3d-raytrace.js:173:19: [info] 'this' refers to multiple abstract 
 test/sunspider/3d-raytrace.js:173:35: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/sunspider/3d-raytrace.js:176:19: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/sunspider/3d-raytrace.js:176:35: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+Soundness testing succeeded for 3076 checks (with 0 expected failures)

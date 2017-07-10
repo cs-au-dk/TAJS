@@ -10,3 +10,4 @@ test/micro/test68.js:5:1: [info] Property attributes:
 test/micro/test68.js:6:1: [info] Property attributes: (DontDelete+)(DontEnum+)(ReadOnly-)
 test/micro/test68.js:7:1: [info] Property attributes: (DontDelete+)(DontEnum+)(ReadOnly+)
 test/micro/test68.js:9:1: [info] Property attributes: (DontDelete-)(DontEnum+)(ReadOnly-)
+Soundness testing succeeded for 17 checks (with 0 expected failures)

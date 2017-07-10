@@ -83,3 +83,5 @@ test/1k2013spring/1547.js:70:19: [info] 'this' refers to a summary abstract obje
 test/1k2013spring/1547.js:70:19: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/1k2013spring/1547.js:71:9: [info] 'this' refers to a summary abstract object, which may cause loss of precision
 test/1k2013spring/1547.js:71:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+Could not create value log file: main file is known to be unsupported (limitation of the jalangilogger project)
+Log of soundness facts is not available for test/1k2013spring/1547.js, skipping soundness checking

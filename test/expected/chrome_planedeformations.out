@@ -107,3 +107,4 @@ test/chromeexperiments/planedeformations.html:73:26: [info] 'this' refers to mul
 test/chromeexperiments/planedeformations.html:76:29: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/chromeexperiments/planedeformations.html:78:50: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/chromeexperiments/planedeformations.html:78:62: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+Soundness testing succeeded for 353 checks (with 0 expected failures)

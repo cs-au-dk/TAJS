@@ -1,3 +1,4 @@
 test/micro/test208.js: [definite] Exceptional program exit is unreachable
 test/micro/test208.js:2:15: [maybe] The variable x has values with different types
 test/micro/test208.js:9:1: [info] Abstract value: 2.0
+Soundness testing succeeded for 31 checks (with 0 expected failures)

@@ -11,3 +11,4 @@ test/sunspider/math-spectral-norm.js:48:12: [maybe] Reading absent property (com
 test/sunspider/math-spectral-norm.js:48:17: [maybe] Reading absent property (computed name)
 test/sunspider/math-spectral-norm.js:58:26: [maybe] Converting object to number
 test/sunspider/math-spectral-norm.js:60:1: [info] Abstract value: UInt|NotUInt
+Soundness testing succeeded for 2335 checks (with 0 expected failures)

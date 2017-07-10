@@ -140,3 +140,4 @@ out/temp-sources/TestUnrolling.loopunrolling_flowgraph_calls.js: [definite] Ordi
 out/temp-sources/TestUnrolling.loopunrolling_flowgraph_calls.js:1:1: [definite] ReferenceError, reading absent variable PRE
 out/temp-sources/TestUnrolling.loopunrolling_flowgraph_calls.js:1:1: [definite] Unreachable code
 out/temp-sources/TestUnrolling.loopunrolling_flowgraph_calls.js: [maybe] Uncaught exception, constructed at [out/temp-sources/TestUnrolling.loopunrolling_flowgraph_calls.js:1:1]
+Soundness testing succeeded for 1 checks (with 0 expected failures)

@@ -14,3 +14,4 @@ test/sunspider/access-nbody.js:138:19: [maybe] Reading absent property (computed
 test/sunspider/access-nbody.js:146:22: [maybe] Reading absent property (computed name)
 test/sunspider/access-nbody.js:176:26: [maybe] Converting object to number
 test/sunspider/access-nbody.js:178:1: [info] Abstract value: UInt|NotUInt
+Soundness testing succeeded for 952 checks (with 0 expected failures)

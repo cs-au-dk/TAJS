@@ -71,12 +71,12 @@ import com.google.javascript.jscomp.parsing.parser.trees.VariableStatementTree;
 import com.google.javascript.jscomp.parsing.parser.trees.WhileStatementTree;
 import com.google.javascript.jscomp.parsing.parser.trees.WithStatementTree;
 import com.google.javascript.jscomp.parsing.parser.util.SourceRange;
-import dk.brics.tajs.analysis.nativeobjects.TAJSFunction;
 import dk.brics.tajs.flowgraph.AbstractNode;
 import dk.brics.tajs.flowgraph.BasicBlock;
 import dk.brics.tajs.flowgraph.Function;
 import dk.brics.tajs.flowgraph.SourceLocation;
 import dk.brics.tajs.flowgraph.SourceLocation.SourceLocationMaker;
+import dk.brics.tajs.flowgraph.TAJSFunctionName;
 import dk.brics.tajs.flowgraph.jsnodes.AssumeNode;
 import dk.brics.tajs.flowgraph.jsnodes.BeginForInNode;
 import dk.brics.tajs.flowgraph.jsnodes.BeginLoopNode;
@@ -106,13 +106,13 @@ import dk.brics.tajs.flowgraph.jsnodes.UnaryOperatorNode.Op;
 import dk.brics.tajs.flowgraph.jsnodes.WritePropertyNode;
 import dk.brics.tajs.flowgraph.jsnodes.WritePropertyNode.Kind;
 import dk.brics.tajs.flowgraph.jsnodes.WriteVariableNode;
+import dk.brics.tajs.flowgraph.syntaticinfo.DynamicProperty;
+import dk.brics.tajs.flowgraph.syntaticinfo.StaticProperty;
+import dk.brics.tajs.flowgraph.syntaticinfo.SyntacticReference;
+import dk.brics.tajs.flowgraph.syntaticinfo.Variable;
 import dk.brics.tajs.js2flowgraph.ASTInfo.LiteralTree;
 import dk.brics.tajs.js2flowgraph.ASTInfo.LoopTree;
 import dk.brics.tajs.js2flowgraph.FunctionAndBlockManager.SessionKey;
-import dk.brics.tajs.js2flowgraph.Reference.DynamicProperty;
-import dk.brics.tajs.js2flowgraph.Reference.StaticProperty;
-import dk.brics.tajs.js2flowgraph.Reference.Type;
-import dk.brics.tajs.js2flowgraph.Reference.Variable;
 import dk.brics.tajs.js2flowgraph.asttraversals.DefaultDispatchingParseTreeAuxVisitor;
 import dk.brics.tajs.js2flowgraph.asttraversals.DispatchingLiteralTreeAuxVisitor;
 import dk.brics.tajs.options.Options;
@@ -124,6 +124,7 @@ import dk.brics.tajs.util.ParseError;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Stream;
 
 import static dk.brics.tajs.js2flowgraph.FunctionBuilderHelper.addNodeToBlock;
 import static dk.brics.tajs.js2flowgraph.FunctionBuilderHelper.getFlowGraphBinaryNonAssignmentOp;
@@ -170,12 +171,12 @@ public class FunctionBuilder extends DefaultDispatchingParseTreeAuxVisitor<Trans
 
     private final LiteralBuilder literalBuilder;
 
-    private SyntacticHintsCollector syntacticInformationCollector;
+    private final SyntacticAnalysis syntacticInformationCollector;
 
     /**
      * Constructs a new function builder.
      */
-    FunctionBuilder(ASTInfo astInfo, FunctionAndBlockManager functionAndBlocksManager, SourceLocationMaker sourceLocationMaker, SyntacticHintsCollector syntacticInformationCollector) {
+    FunctionBuilder(ASTInfo astInfo, FunctionAndBlockManager functionAndBlocksManager, SourceLocationMaker sourceLocationMaker,SyntacticAnalysis syntacticInformationCollector) {
         this.literalBuilder = new LiteralBuilder();
         this.astInfo = astInfo;
         this.functionAndBlocksManager = functionAndBlocksManager;
@@ -186,10 +187,10 @@ public class FunctionBuilder extends DefaultDispatchingParseTreeAuxVisitor<Trans
     /**
      * Registers a value access (read/write), potentially adding relevant assume nodes.
      */
-    private BasicBlock access(AbstractNode accessNode, Reference target, AstEnv env) {
+    private BasicBlock access(AbstractNode accessNode, SyntacticReference target, AstEnv env) {
         // try to make an assume node
         final AssumeNode assumeNode;
-        if (target.type == Type.StaticProperty || target.type == Type.DynamicProperty) {
+        if (target.type == SyntacticReference.Type.StaticProperty || target.type == SyntacticReference.Type.DynamicProperty) {
             assumeNode = makeAssumeNonNullUndef(target.asProperty().base);
             syntacticInformationCollector.registerPropertyAccess(accessNode, target.asProperty());
         } else {
@@ -360,7 +361,7 @@ public class FunctionBuilder extends DefaultDispatchingParseTreeAuxVisitor<Trans
      */
     private TranslationResult processCompoundAssignmentOperation(boolean updatedValueIsResult, boolean coerceToNumber, BinaryOperatorNode.Op op, ParseTree target, ParseTree operand, AstEnv env, SourceLocation sourceLocation) {
         TranslationResult processedTarget = processAccessPartly(target, env.makeStatementLevel(false));
-        final Reference targetReference = processedTarget.getResultReference();
+        final SyntacticReference targetReference = processedTarget.getResultReference();
 
         int readRegister = updatedValueIsResult ? nextRegister(env) : (getUsableResultRegister(env));
         AstEnv readEnv = env.makeResultRegister(readRegister).makeStatementLevel(false).makeAppendBlock(processedTarget.getAppendBlock());
@@ -385,6 +386,8 @@ public class FunctionBuilder extends DefaultDispatchingParseTreeAuxVisitor<Trans
         AstEnv operationEnv = env.makeResultRegister(operationResultRegister).makeStatementLevel(false);
         addNodeToBlock(new BinaryOperatorNode(op, coercionEnv.getResultRegister(), operandEnv.getResultRegister(), operationEnv.getResultRegister(), sourceLocation), appendBlock, operationEnv);
 
+        syntacticInformationCollector.registerCompoundAssignmentOperation(operand, processedTarget.getResultReference().location, sourceLocationMaker);
+
         appendBlock = write(targetReference, operationEnv.getResultRegister(), env.makeAppendBlock(appendBlock));
 
         return TranslationResult.makeAppendBlock(appendBlock);
@@ -404,14 +407,14 @@ public class FunctionBuilder extends DefaultDispatchingParseTreeAuxVisitor<Trans
                 return TranslationResult.makeResultReference(new Variable("this", makeSourceLocation(access)), env.getAppendBlock());
             }
             case IDENTIFIER_EXPRESSION: {
-                Reference reference = new Variable(access.asIdentifierExpression().identifierToken.value, makeSourceLocation(access));
+                SyntacticReference reference = new Variable(access.asIdentifierExpression().identifierToken.value, makeSourceLocation(access));
                 return TranslationResult.makeResultReference(reference, env.getAppendBlock());
             }
             case MEMBER_EXPRESSION: {
                 MemberExpressionTree memberExpression = access.asMemberExpression();
                 final AstEnv baseEnv = env.makeResultRegister(nextRegister(env)).makeStatementLevel(false);
                 TranslationResult processedBase = process(memberExpression.operand, baseEnv);
-                Reference reference = new StaticProperty(processedBase.getResultReference(), baseEnv.getResultRegister(), memberExpression.memberName.value, makeSourceLocation(access));
+                SyntacticReference reference = new StaticProperty(processedBase.getResultReference(), baseEnv.getResultRegister(), memberExpression.memberName.value, makeSourceLocation(access));
                 return TranslationResult.makeResultReference(reference, processedBase.getAppendBlock());
             }
             case MEMBER_LOOKUP_EXPRESSION:
@@ -420,8 +423,8 @@ public class FunctionBuilder extends DefaultDispatchingParseTreeAuxVisitor<Trans
                 TranslationResult processedBase = process(memberLookupExpression.operand, baseEnv);
                 final AstEnv memberEnv = env.makeResultRegister(nextRegister(env)).makeAppendBlock(processedBase.getAppendBlock()).makeStatementLevel(false);
                 TranslationResult processedMember = process(memberLookupExpression.memberExpression, memberEnv);
-                Reference baseReference = processedBase.getResultReference();
-                Reference reference = new DynamicProperty(baseReference, baseEnv.getResultRegister(), processedMember.getResultReference(), memberEnv.getResultRegister(), makeSourceLocation(access));
+                SyntacticReference baseReference = processedBase.getResultReference();
+                SyntacticReference reference = new DynamicProperty(baseReference, baseEnv.getResultRegister(), processedMember.getResultReference(), memberEnv.getResultRegister(), makeSourceLocation(access));
                 return TranslationResult.makeResultReference(reference, processedMember.getAppendBlock());
             default:
                 throw new RuntimeException("Unhandled reference type: " + access.type);
@@ -431,14 +434,14 @@ public class FunctionBuilder extends DefaultDispatchingParseTreeAuxVisitor<Trans
     /**
      * Produces a WriteVariableNode or a WritePropertyNode.
      */
-    private BasicBlock write(Reference target, int valueRegister, AstEnv env) {
+    private BasicBlock write(SyntacticReference target, int valueRegister, AstEnv env) {
         return writeWithCustomLocation(target, valueRegister, env, target.location);
     }
 
     /**
      * Produces a WriteVariableNode or a WritePropertyNode, using the given source location.
      */
-    private BasicBlock writeWithCustomLocation(Reference target, int valueRegister, AstEnv env, SourceLocation location) {
+    private BasicBlock writeWithCustomLocation(SyntacticReference target, int valueRegister, AstEnv env, SourceLocation location) {
         final AbstractNode write;
         switch (target.type) {
             case Variable:
@@ -461,7 +464,7 @@ public class FunctionBuilder extends DefaultDispatchingParseTreeAuxVisitor<Trans
     /**
      * Produces a ReadVariableNode or a ReadPropertyNode.
      */
-    private BasicBlock read(Reference target, AstEnv env) {
+    private BasicBlock read(SyntacticReference target, AstEnv env) {
         final AbstractNode read;
         switch (target.type) {
             case Variable:
@@ -500,23 +503,23 @@ public class FunctionBuilder extends DefaultDispatchingParseTreeAuxVisitor<Trans
         String propertyNameString = null;
         int propertyNameRegister = AbstractNode.NO_VALUE;
         TranslationResult processed;
-        Reference resultReference;
+        SyntacticReference resultReference;
 
         // TAJS_-functions can only be accessed as simple function call expressions.
-        final TAJSFunction tajsFunction;
+        final TAJSFunctionName tajsFunctionName;
         if (isAccess(operand) && operand.type == ParseTreeType.IDENTIFIER_EXPRESSION
                 && operand.asIdentifierExpression().identifierToken.value.startsWith("TAJS_")) {
             String name = operand.asIdentifierExpression().identifierToken.value;
-            Optional<TAJSFunction> tajsFunctionOptional = Arrays.stream(TAJSFunction.values()).filter(o -> o.toString().equals(name)).findAny();
-            if (tajsFunctionOptional.isPresent()) {
-                tajsFunction = tajsFunctionOptional.get();
+            Optional<TAJSFunctionName> tajsFunctionNameOptional = Arrays.stream(TAJSFunctionName.values()).filter(o -> o.toString().equals(name)).findAny();
+            if (tajsFunctionNameOptional.isPresent()) {
+                tajsFunctionName = tajsFunctionNameOptional.get();
             } else {
                 throw new AnalysisException("Bad use of TAJS_. No such function: " + name);
             }
         } else {
-            tajsFunction = null;
+            tajsFunctionName = null;
         }
-        if (tajsFunction != null) {
+        if (tajsFunctionName != null) {
             processed = TranslationResult.makeAppendBlock(funEnv.getAppendBlock());
             propertyAccessCall = false;
             resultReference = null;
@@ -532,7 +535,7 @@ public class FunctionBuilder extends DefaultDispatchingParseTreeAuxVisitor<Trans
                 case StaticProperty:
                 case DynamicProperty:
                     propertyAccessCall = true;
-                    if (resultReference.type == Type.StaticProperty) {
+                    if (resultReference.type == SyntacticReference.Type.StaticProperty) {
                         propertyObjectRegister = resultReference.asStaticProperty().baseRegister;
                         propertyNameString = resultReference.asStaticProperty().propertyName;
                     } else {
@@ -560,8 +563,8 @@ public class FunctionBuilder extends DefaultDispatchingParseTreeAuxVisitor<Trans
         }
 
         final CallNode callNode;
-        if (tajsFunction != null) {
-            callNode = new CallNode(env.getResultRegister(), tajsFunction, argumentRegisters, location);
+        if (tajsFunctionName != null) {
+            callNode = new CallNode(env.getResultRegister(), tajsFunctionName, argumentRegisters, location);
         } else if (propertyAccessCall) {
             callNode = new CallNode(constructor, env.getResultRegister(), propertyObjectRegister, propertyNameRegister, propertyNameString, argumentRegisters, location);
         } else {
@@ -697,13 +700,13 @@ public class FunctionBuilder extends DefaultDispatchingParseTreeAuxVisitor<Trans
 
         // rhs
         TranslationResult rightAppendBlock = process(tree.right, env.makeAppendBlock(firstBlockForRHS).makeStatementLevel(false));
-        if(enclosingIfNode != null){
+        if (enclosingIfNode != null) {
             syntacticInformationCollector.registerIfNodeCondition(enclosingIfNode, tree.right);
         }
         BasicBlock appendBlock;
-        if (enclosingIfNode == null){
+        if (enclosingIfNode == null) {
             appendBlock = makeJoinBasicBlock(abortBlock, rightAppendBlock.getAppendBlock(), functionAndBlocksManager);
-        }else{
+        } else {
             appendBlock = rightAppendBlock.getAppendBlock();
         }
 
@@ -770,7 +773,7 @@ public class FunctionBuilder extends DefaultDispatchingParseTreeAuxVisitor<Trans
         SourceLocation loopEndLocation = conditionLocation;
         endNodeScopeExceptionally(new EndLoopNode(beginLoopNode, loopEndLocation), env.makeStatementLevel(true).makeAppendBlock(firstConditionBlock));
         BasicBlock bodyExceptionHandler = firstConditionBlock.getExceptionHandler();
-        Arrays.asList(firstConditionBlock, lastConditionBlock, firstBodyBlock, lastBodyBlock, firstIncrementBlock, lastIncrementBlock).stream()
+        Stream.of(firstConditionBlock, lastConditionBlock, firstBodyBlock, lastBodyBlock, firstIncrementBlock, lastIncrementBlock)
                 .forEach(b -> b.setExceptionHandler(bodyExceptionHandler));
 
         // process condition
@@ -853,7 +856,7 @@ public class FunctionBuilder extends DefaultDispatchingParseTreeAuxVisitor<Trans
         } else {
             DeclareFunctionNode declarationNode = new DeclareFunctionNode(function, false, AbstractNode.NO_VALUE, location);
             function.setNode(declarationNode);
-            addNodeToBlock(declarationNode, env.getDeclarationBlock(), env.makeStatementLevel(false /* FIXME, this should be true. But setInterval strings reach this case... */));
+            addNodeToBlock(declarationNode, env.getDeclarationBlock(), env);
             if (USE_REPRESENTATION_NODES) {
                 addNodeToBlock(new NopNode("function " + name, declarationNode.getSourceLocation()), env.getAppendBlock(), env.makeStatementLevel(false));
             }
@@ -1067,6 +1070,8 @@ public class FunctionBuilder extends DefaultDispatchingParseTreeAuxVisitor<Trans
 
         addNodeToBlock(nextPropertyNode, appendBlock, bodyEnv.makeStatementLevel(false));
 
+        syntacticInformationCollector.registerForIn(tree, lhsLocation, sourceLocationMaker);
+
         writeWithCustomLocation(processedLoopVariable.getResultReference(), propertyRegister, bodyEnv.makeAppendBlock(appendBlock).makeStatementLevel(true), lhsLocation);
 
         // 7. create body
@@ -1103,6 +1108,9 @@ public class FunctionBuilder extends DefaultDispatchingParseTreeAuxVisitor<Trans
 
     @Override
     public TranslationResult process(FunctionDeclarationTree tree, AstEnv env) {
+        if (tree.kind == FunctionDeclarationTree.Kind.ARROW) {
+            unsupportedLanguageFeature(tree, "ES6 arrow functions");
+        }
         String name = tree.name == null ? null : tree.name.value;
         Function function = processFunctionDeclaration(tree.kind, name, tree.formalParameterList, tree.functionBody, env, makeSourceLocation(tree), getSource(tree));
         syntacticInformationCollector.registerFunction(function, tree, astInfo);
@@ -1128,7 +1136,7 @@ public class FunctionBuilder extends DefaultDispatchingParseTreeAuxVisitor<Trans
                 TranslationResult processedLhs = processAccessPartly(lhs, env);
 
                 UnevalExpressionResult unevalHack = null;
-                if (Options.get().isUnevalizerEnabled() && processedLhs.getResultReference().type == Type.Variable) {
+                if (Options.get().isUnevalizerEnabled() && processedLhs.getResultReference().type == SyntacticReference.Type.Variable) {
                     UnevalExpressionResult maybeHack = env.getUnevalExpressionResult();
                     if (maybeHack != null) {
                         String variableName = processedLhs.getResultReference().asVariable().name;
@@ -1146,8 +1154,13 @@ public class FunctionBuilder extends DefaultDispatchingParseTreeAuxVisitor<Trans
                 TranslationResult processed = process(rhs, rhsEnv);
 
                 if (unevalHack == null) {
-                    boolean lhsIsVariable = processedLhs.getResultReference().type == Type.Variable;
+                    boolean lhsIsVariable = processedLhs.getResultReference().type ==
+                            SyntacticReference.Type.Variable;
                     SourceLocation location = processedLhs.getResultReference().location;
+
+                    if (lhsIsVariable) {
+                        syntacticInformationCollector.registerWriteVariable(tree, location, sourceLocationMaker);
+                    }
 
                     BasicBlock writeAppendBlock = writeWithCustomLocation(processedLhs.getResultReference(), rhsEnv.getResultRegister(), env.makeAppendBlock(processed.getAppendBlock()), location);
                     processed = TranslationResult.makeAppendBlock(writeAppendBlock);
@@ -1489,7 +1502,7 @@ public class FunctionBuilder extends DefaultDispatchingParseTreeAuxVisitor<Trans
                 // typeof is a special unary operator, with two variants
                 if (operand.type == ParseTreeType.IDENTIFIER_EXPRESSION) {
                     node = new TypeofNode(operand.asIdentifierExpression().identifierToken.value, env.getResultRegister(), sourceLocation, makeSourceLocation(operand));
-                    syntacticInformationCollector.registerSimpleRead(operand.asIdentifierExpression(), new Reference.Variable(operand.asIdentifierExpression().identifierToken.value, null));
+                    syntacticInformationCollector.registerSimpleRead(operand.asIdentifierExpression(), new Variable(operand.asIdentifierExpression().identifierToken.value, null));
                     processedSub = TranslationResult.makeAppendBlock(env.getAppendBlock());
                 } else {
                     AstEnv subEnv = env.makeResultRegister(nextRegister(env));
@@ -1513,7 +1526,7 @@ public class FunctionBuilder extends DefaultDispatchingParseTreeAuxVisitor<Trans
                     throw new AnalysisModelLimitationException(makeSourceLocation(tree) + ": delete of non-references are not supported.");
                 }
                 processedSub = processAccessPartly(tree.operand, subEnv);
-                Reference reference = processedSub.getResultReference();
+                SyntacticReference reference = processedSub.getResultReference();
                 switch (reference.type) {
                     case Variable:
                         node = new DeletePropertyNode(reference.asVariable().name, env.getResultRegister(), sourceLocation);
@@ -1592,6 +1605,9 @@ public class FunctionBuilder extends DefaultDispatchingParseTreeAuxVisitor<Trans
         if (declaration.initializer != null) {
             AstEnv rhsEnv = env.makeResultRegister(nextRegister(env)).makeStatementLevel(false);
             processed = process(declaration.initializer, rhsEnv);
+
+            syntacticInformationCollector.registerVariableDeclaration(declaration, variableLocation, sourceLocationMaker);
+
             addNodeToBlock(new WriteVariableNode(rhsEnv.getResultRegister(), variableName, variableLocation), processed.getAppendBlock(), env.makeStatementLevel(true));
         } else {
             processed = TranslationResult.makeAppendBlock(env.getAppendBlock());
@@ -1678,6 +1694,8 @@ public class FunctionBuilder extends DefaultDispatchingParseTreeAuxVisitor<Trans
     }
 
     private TranslationResult processAccessor(ParseTree accessorTree, Token propertyName, FormalParameterListTree parameters, ParseTree body, Kind propertyKind, AstEnv env, SourceLocation location, String prettySource) {
+        syntacticInformationCollector.registerDeclaredAccessor(accessorTree, location, sourceLocationMaker);
+
         int functionRegister = env.getRegisterManager().nextRegister();
         processFunctionDeclaration(FunctionDeclarationTree.Kind.EXPRESSION, null, parameters, body, env.makeResultRegister(functionRegister), location, prettySource);
         Integer base = env.getThisRegister();
@@ -1688,6 +1706,9 @@ public class FunctionBuilder extends DefaultDispatchingParseTreeAuxVisitor<Trans
 
     @Override
     public TranslationResult process(PropertyNameAssignmentTree tree, AstEnv env) {
+        if (tree.value == null) {
+            unsupportedLanguageFeature(tree, "Implicit property value assignment");
+        }
         AstEnv rhsEnv = env.makeResultRegister(nextRegister(env)).makeStatementLevel(false);
         TranslationResult processedRhs = process(tree.value, rhsEnv);
         Integer base = env.getThisRegister();
@@ -1782,7 +1803,7 @@ public class FunctionBuilder extends DefaultDispatchingParseTreeAuxVisitor<Trans
 
     @Override
     public TranslationResult unsupportedLanguageFeature(ParseTree tree, String feature) {
-        throw new SyntacticSupportNotImplemented(FunctionBuilderHelper.makeSourceLocation(tree, sourceLocationMaker) + ": " + tree.getClass().getSimpleName() + " not yet supported");
+        throw new SyntacticSupportNotImplemented(FunctionBuilderHelper.makeSourceLocation(tree, sourceLocationMaker) + ": " + feature + " not yet supported");
     }
 
     @Override

@@ -136,3 +136,4 @@ test/10k/tictactoe.html:238:41: [maybe] Reading absent property (computed name)
 test/10k/tictactoe.html:247:15: [maybe] Reading absent property (computed name)
 test/10k/tictactoe.html:252:14: [maybe] Conversion to number yields NaN
 test/10k/tictactoe.html:253:15: [maybe] Conversion to number yields NaN
+Soundness testing succeeded for 823 checks (with 0 expected failures)

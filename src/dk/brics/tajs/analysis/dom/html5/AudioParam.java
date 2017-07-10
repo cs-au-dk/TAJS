@@ -75,7 +75,7 @@ public class AudioParam {
         createDOMProperty(INSTANCES, "defaultValue", Value.makeAnyNumUInt().setReadOnly(), c);
 
         s.multiplyObject(INSTANCES);
-        // FIXME AudioParam is an interface, GainNode is an example of an (yet unmodelled) instance
+        // FIXME AudioParam is an interface, GainNode is an example of an (yet unmodelled) instance (GitHub #408)
         INSTANCES = INSTANCES.makeSingleton().makeSummary();
 
         /*

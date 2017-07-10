@@ -36,7 +36,6 @@ import dk.brics.tajs.lattice.ObjectLabel.Kind;
 import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.UnknownValueResolver;
 import dk.brics.tajs.lattice.Value;
-import dk.brics.tajs.solver.Message;
 import dk.brics.tajs.solver.Message.Severity;
 import dk.brics.tajs.solver.Message.Status;
 import dk.brics.tajs.util.AnalysisException;
@@ -286,28 +285,37 @@ public class JSArray {
 
             case ARRAY_PUSH: { // 15.4.4.7
                 Set<ObjectLabel> arr = state.readThisObjects();
-                Value new_len = Value.makeAnyNumUIntPos();
+                Value new_len;
                 if (call.isUnknownNumberOfArgs()) {
+                    new_len = Value.makeAnyNumUInt();
                     pv.writeProperty(arr, Value.makeAnyStrUInt(), call.getUnknownArg());
-                } else if (arr.size() == 1) {
-                    Value len_val = UnknownValueResolver.getRealValue(readLength(arr, c), state);
-                    Double length_prop = len_val.getNum();
-                    long length = length_prop != null ? Conversion.toUInt32(length_prop) : -1;
-                    int i;
-                    for (i = 0; i < call.getNumberOfArgs(); i++) {
-                        Value v = FunctionCalls.readParameter(call, state, i);
-                        if (length > -1)
-                            pv.writeProperty(arr, Value.makeTemporaryStr(String.valueOf(i + length)), v);
-                        else {
-                            pv.writeProperty(arr, Value.makeAnyStrUInt(), v);
-                            break;
-                        }
+                } else {
+                    Value old_len = UnknownValueResolver.getRealValue(readLength(arr, c), state);
+                    if (call.getNumberOfArgs() == 0) {
+                        new_len = old_len;
+                    } else {
+                        new_len = Value.makeAnyNumUIntPos();
                     }
-                    if (length > -1)
-                        new_len = Value.makeNum(i + length);
-                } else
-                    for (int i = 0; i < call.getNumberOfArgs(); i++)
-                        pv.writeProperty(arr, Value.makeAnyStrUInt(), FunctionCalls.readParameter(call, state, i));
+                    if (arr.size() == 1) {
+                        Double length_prop = old_len.getNum();
+                        long length = length_prop != null ? Conversion.toUInt32(length_prop) : -1;
+                        int i;
+                        for (i = 0; i < call.getNumberOfArgs(); i++) {
+                            Value v = FunctionCalls.readParameter(call, state, i);
+                            if (length > -1)
+                                pv.writeProperty(arr, Value.makeTemporaryStr(String.valueOf(i + length)), v);
+                            else {
+                                pv.writeProperty(arr, Value.makeAnyStrUInt(), v);
+                                break;
+                            }
+                        }
+                        if (length > -1)
+                            new_len = Value.makeNum(i + length);
+                    } else {
+                        for (int i = 0; i < call.getNumberOfArgs(); i++)
+                            pv.writeProperty(arr, Value.makeAnyStrUInt(), FunctionCalls.readParameter(call, state, i));
+                    }
+                }
                 writeLength(arr, new_len, c);
                 return new_len;
             }
@@ -465,7 +473,7 @@ public class JSArray {
                                 if (obj.isHostObject()) { // weird, but possible
                                     anyHostFunctions = true;
                                     // TODO: comparefn is a host object, should invoke it (but unlikely worthwhile to implement...), see test/micro/arraysort2.js
-                                    c.getMonitoring().addMessage(c.getNode(), Message.Severity.HIGH, "Ignoring host object comparefn in Array.prototype.sort");
+                                    c.getAnalysis().getUnsoundness().addMessage(c.getNode(), "Ignoring host object comparefn in Array.prototype.sort");
                                 } else {
                                     implicitAfterCall = UserFunctionCalls.implicitUserFunctionCall(obj, new FunctionCalls.DefaultImplicitCallInfo(c) {
                                         @Override

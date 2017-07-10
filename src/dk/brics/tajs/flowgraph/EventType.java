@@ -17,11 +17,11 @@
 package dk.brics.tajs.flowgraph;
 
 import dk.brics.tajs.util.AnalysisException;
+import dk.brics.tajs.util.Collectors;
 
 import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 import static dk.brics.tajs.util.Collections.newMap;
 
@@ -110,7 +110,7 @@ public enum EventType { // TODO: (#116) reconsider how to represent HTML event h
         return eventTypes.entrySet().stream()
                 .filter(e -> e.getKey().equalsIgnoreCase(typeString))
                 .map(Map.Entry::getValue)
-                .findAny().orElseGet(() -> EventType.UNKNOWN);
+                .findAny().orElse(EventType.UNKNOWN);
     }
 
     /**

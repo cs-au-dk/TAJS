@@ -2,3 +2,4 @@ test/wala/newfn.js: [definite] Exceptional program exit is unreachable
 test/wala/newfn.js:17:1: [info] Abstract value: 16.0
 test/wala/newfn.js:18:1: [info] Abstract value: 13.0
 test/wala/newfn.js:19:1: [info] Abstract value: 10.0
+Soundness testing succeeded for 61 checks (with 0 expected failures)

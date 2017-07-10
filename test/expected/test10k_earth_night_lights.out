@@ -41,3 +41,4 @@ test/10k/earth_night_lights.html:58:39: [maybe] Conversion to number yields NaN
 test/10k/earth_night_lights.html:70:41: [maybe] Conversion to number yields NaN
 test/10k/earth_night_lights.html:82:24: [maybe] Conversion to number yields NaN
 test/10k/earth_night_lights.html:89:21: [maybe] Reading absent property (computed name)
+Soundness testing succeeded for 94 checks (with 0 expected failures)

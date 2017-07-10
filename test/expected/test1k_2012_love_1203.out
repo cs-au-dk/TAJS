@@ -4,3 +4,4 @@ test/1k2012love/shim.js:9:5: [maybe] TypeError, accessing property of null/undef
 test/1k2012love/1203.js:63:13: [maybe] Reading absent property getContext of host object
 test/1k2012love/1203.js: [maybe] Uncaught exception, constructed at [test/1k2012love/1203.js:63:13, test/1k2012love/shim.js:9:5]
 test/1k2012love/1203.js:199:45: [maybe] Conversion from string to number yields NaN
+Soundness testing succeeded for 332 checks (with 0 expected failures)

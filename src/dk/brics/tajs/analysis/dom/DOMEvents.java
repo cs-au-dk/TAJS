@@ -186,7 +186,7 @@ public class DOMEvents {
         State callState = requiresStateCloning ? currentState.clone() : currentState;
         c.withState(callState, () -> {
             for (ObjectLabel l : handlers) {
-                log.debug("Triggering eventHandlers <" + type.toString() + ">: " + l);
+                log.debug("Triggering eventHandlers <" + type + ">: " + l);
             }
             if (!event.isNone()) {
                 // Support the unofficial window.event property that is set by the browser

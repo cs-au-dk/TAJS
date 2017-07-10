@@ -1,1 +1,2 @@
 test/micro/test132.js: [definite] Exceptional program exit is unreachable
+Soundness testing succeeded for 40 checks (with 0 expected failures)

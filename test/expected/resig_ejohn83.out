@@ -7,3 +7,4 @@ test/resig/ejohn83.js:14:1: [info] Abstract value: Null|[*HTMLDivElement instanc
 test/resig/ejohn83.js:17:1: [info] Abstract value: Undef|true
 test/resig/ejohn83.js:6:5: [info] 'this' refers to a summary abstract object, which may cause loss of precision
 test/resig/ejohn83.js:6:5: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+Soundness testing succeeded for 29 checks (with 0 expected failures)

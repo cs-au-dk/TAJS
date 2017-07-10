@@ -119,7 +119,7 @@ public class JSNumber {
                 if (definitely_rangeerror)
                     return Value.makeNone();
 
-                return TAJSConcreteSemantics.convertTAJSCall(base, nativeobject.toString(), 1, call, c, () -> Value.makeAnyStr());
+                return TAJSConcreteSemantics.convertTAJSCall(base, nativeobject.toString(), 1, call, c, Value::makeAnyStr);
             }
 
             case NUMBER_TOLOCALESTRING: // 15.7.4.3
@@ -171,7 +171,7 @@ public class JSNumber {
         for (Value v : numvals) {
             Value str;
             if (radix.getNum() == null || radix.getNum() != 10) {
-                str = TAJSConcreteSemantics.convertTAJSCallExplicit(v, "Number.prototype.toString", singletonList(radix), c, () -> Value.makeAnyStr());
+                str = TAJSConcreteSemantics.convertTAJSCallExplicit(v, "Number.prototype.toString", singletonList(radix), c, Value::makeAnyStr);
             } else {
                 str = Conversion.toString(v, c);
             }

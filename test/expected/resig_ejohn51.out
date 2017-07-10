@@ -1,0 +1,7 @@
+test/resig/ejohn51.js: [definite] Ordinary program exit is unreachable
+test/resig/ejohn51.js:1:15: [definite] ReferenceError, reading absent variable jQuery
+test/resig/ejohn51.js:1:5: [definite] The variable results is never used
+test/resig/ejohn51.js:1:22: [definite] Unreachable code
+test/resig/ejohn51.js:3:25: [definite] Unreachable function
+test/resig/ejohn51.js: [maybe] Uncaught exception, constructed at [test/resig/ejohn51.js:1:15]
+Soundness testing succeeded for 1 checks (with 0 expected failures)

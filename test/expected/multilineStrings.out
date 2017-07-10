@@ -1,0 +1,20 @@
+test/micro/multilineStrings.js: [definite] Exceptional program exit is unreachable
+test/micro/multilineStrings.js:28:10: [maybe] Converting primitive string to object
+test/micro/multilineStrings.js:29:10: [maybe] Converting primitive string to object
+test/micro/multilineStrings.js:30:10: [maybe] Converting primitive string to object
+test/micro/multilineStrings.js:31:10: [maybe] Converting primitive string to object
+test/micro/multilineStrings.js:32:10: [maybe] Converting primitive string to object
+test/micro/multilineStrings.js:33:10: [maybe] Converting primitive string to object
+test/micro/multilineStrings.js:35:1: [info] Abstract value: "asdf"
+test/micro/multilineStrings.js:36:1: [info] Abstract value: "\nasdf"
+test/micro/multilineStrings.js:37:1: [info] Abstract value: "\tasdf"
+test/micro/multilineStrings.js:38:1: [info] Abstract value: "\\"
+test/micro/multilineStrings.js:39:1: [info] Abstract value: ""
+test/micro/multilineStrings.js:40:1: [info] Abstract value: "asdf\nasdf\rasdf\tasdf\\"
+test/micro/multilineStrings.js:42:1: [info] Abstract value: 4.0
+test/micro/multilineStrings.js:43:1: [info] Abstract value: 5.0
+test/micro/multilineStrings.js:44:1: [info] Abstract value: 5.0
+test/micro/multilineStrings.js:45:1: [info] Abstract value: 1.0
+test/micro/multilineStrings.js:46:1: [info] Abstract value: 0.0
+test/micro/multilineStrings.js:47:1: [info] Abstract value: 20.0
+Soundness testing succeeded for 49 checks (with 0 expected failures)

@@ -7,3 +7,4 @@ test/1k2013spring/1362.js:32:21: [definite] Unreachable function
 test/1k2013spring/1362.js:1:9: [maybe] <Document.getElementById>("canvas") did not match any elements
 test/1k2013spring/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
 test/1k2013spring/1362.js: [maybe] Uncaught exception, constructed at [test/1k2013spring/1362.js:2:6, test/1k2013spring/shim.js:9:5]
+Soundness testing succeeded for 8 checks (with 0 expected failures)

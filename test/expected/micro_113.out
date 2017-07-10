@@ -13,3 +13,4 @@ test/micro/test113.js:22:1: [info] Abstract value: 4711.0
 test/micro/test113.js:23:1: [info] Abstract value: NaN
 test/micro/test113.js:25:1: [info] Abstract value: 111.0
 test/micro/test113.js:27:1: [info] Abstract value: [@String#node66{boxed-primitive=""}]
+Soundness testing succeeded for 73 checks (with 0 expected failures)

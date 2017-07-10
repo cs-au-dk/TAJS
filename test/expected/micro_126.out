@@ -5,3 +5,4 @@ test/micro/test126.js:4:30: [definite] Dead assignment, property c is never read
 test/micro/test126.js:12:5: [definite] Unreachable code
 test/micro/test126.js: [maybe] Uncaught exception, constructed at [test/micro/test126.js:12:20]
 test/micro/test126.js:11:5: [info] Abstract value: "funny"
+Soundness testing succeeded for 15 checks (with 0 expected failures)

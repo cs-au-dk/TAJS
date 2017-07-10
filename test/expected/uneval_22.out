@@ -11,3 +11,4 @@ test/uneval/uneval22.html:10:33: [maybe] Reading absent property (computed name)
 TAJS-dynamic-code(test/uneval/uneval22.html:9:21):1:15: [maybe] Converting object to string
 TAJS-dynamic-code(test/uneval/uneval22.html:9:21):1:15: [maybe] Converting primitive string to object
 TAJS-dynamic-code(test/uneval/uneval22.html:9:21):1:15: [maybe] Reading absent property (computed name)
+Soundness testing succeeded for 60 checks (with 0 expected failures)

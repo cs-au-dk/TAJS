@@ -4,3 +4,4 @@ test/micro/test81.js:8:2: [info] Abstract value: "Exception!"|[@Object[native]]
 test/micro/test81.js:12:2: [info] Abstract value: [@Number[native]]
 test/micro/test81.js:19:6: [info] Abstract value: [@Number[native]]
 test/micro/test81.js:24:1: [info] Abstract value: Undef|[@Number[native]]
+Soundness testing succeeded for 26 checks (with 0 expected failures)

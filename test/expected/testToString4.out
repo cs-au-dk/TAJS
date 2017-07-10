@@ -18,3 +18,4 @@ test/micro/toString4.js:22:3: [info] Abstract value: NaN
 test/micro/toString4.js:27:1: [info] Abstract value: "reached"
 test/micro/toString4.js:34:3: [info] Abstract value: "type error"
 test/micro/toString4.js:36:1: [info] Abstract value: "reached"
+Soundness testing succeeded for 20 checks (with 0 expected failures)

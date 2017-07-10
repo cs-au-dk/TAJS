@@ -153,7 +153,7 @@ public class BasicContextSensitivityStrategy implements IContextSensitivityStrat
         // extend specialRegs with the given (register,value)
         Map<Integer, Value> specialRegs = null;
         if (!Options.get().isForInSpecializationDisabled()) {
-            specialRegs = (currentContext.getSpecialRegisters() != null) ? newMap(currentContext.getSpecialRegisters()) : Collections.<Integer, Value>newMap();
+            specialRegs = (currentContext.getSpecialRegisters() != null) ? newMap(currentContext.getSpecialRegisters()) : Collections.newMap();
             specialRegs.put(reg, v);
         }
 

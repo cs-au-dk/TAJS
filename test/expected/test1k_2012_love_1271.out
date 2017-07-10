@@ -8,3 +8,5 @@ test/1k2012love/1271.js:157:12: [definite] Unreachable function
 test/1k2012love/1271.js:159:25: [definite] Unreachable function
 test/1k2012love/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
 test/1k2012love/1271.js: [maybe] Uncaught exception, constructed at [test/1k2012love/1271.js:154:19, test/1k2012love/shim.js:9:5]
+Disabling soundness testing for test/1k2012love/1271.js entirely (116 uninspected soundness errors).
+Soundness testing succeeded for 144 checks (with 116 expected failures)

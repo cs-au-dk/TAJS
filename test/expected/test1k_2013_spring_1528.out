@@ -254,3 +254,4 @@ test/1k2013spring/1528.js:185:46: [maybe] Converting primitive string to object
 test/1k2013spring/1528.js:185:46: [maybe] Reading absent property (computed name)
 test/1k2013spring/1528.js:185:46: [maybe] The variable m has values with different types
 test/1k2013spring/1528.js:185:30: [info] Reading from unknown property that may cause loss of precision
+Soundness testing succeeded for 53 checks (with 0 expected failures)

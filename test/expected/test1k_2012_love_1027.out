@@ -11,3 +11,4 @@ test/1k2012love/shim.js:9:5: [maybe] TypeError, accessing property of null/undef
 test/1k2012love/1027.js:2:5: [maybe] Reading absent property getContext of host object
 test/1k2012love/1027.js: [maybe] Uncaught exception, constructed at [test/1k2012love/1027.js:2:5, test/1k2012love/1027.js:17:11, test/1k2012love/1027.js:17:17, test/1k2012love/1027.js:18:11, test/1k2012love/1027.js:18:17, test/1k2012love/1027.js:19:16, test/1k2012love/1027.js:20:13, test/1k2012love/1027.js:22:9, test/1k2012love/1027.js:30:5, test/1k2012love/shim.js:9:5]
 test/1k2012love/1027.js:22:9: [maybe] Reading absent property (computed name)
+Soundness testing succeeded for 140 checks (with 0 expected failures)

@@ -71,22 +71,39 @@ public class NashornConcreteSemantics implements NativeConcreteSemantics {
             return new MappedNativeResult<>(Optional.empty(), NativeResult.makeNonConcrete());
         }
         Object evalResult;
+        String script = ConcreteApplyMapping.formatMappedValuesScript(functionName, base, arguments);
         try {
-            String script = ConcreteApplyMapping.formatMappedValuesScript(functionName, base, arguments);
             evalResult = _eval(script);
         } catch (Throwable t) {
             return new MappedNativeResult<>(Optional.empty(), handleEvalThrowable(t));
         }
         if (evalResult instanceof ScriptObjectMirror && ((ScriptObjectMirror) evalResult).containsKey(ConcreteApplyMapping.MAGIC_IDENTIFIER)) {
             ScriptObjectMirror mirror = (ScriptObjectMirror) evalResult;
+            Object value = mirror.get(ConcreteApplyMapping.RESULT);
+            ConcreteValue concreteResultValue;
+            if (value == null) {
+                // Nashorn represents the ECMAScript values `null` and `undefined` as java `null`. It can be disambiguated by checking in ECMAScript if the result is indeed null.
+                concreteResultValue = isResultReallyNull(functionName, base, arguments) ? new ConcreteNull() : new ConcreteUndefined();
+            } else {
+                concreteResultValue = toConcreteValue(value);
+            }
             ConcreteApplyMapping mappedInvocation = new ConcreteApplyMapping(
                     toConcreteValue(mirror.get(ConcreteApplyMapping.BASE)),
                     toConcreteArray((ScriptObjectMirror) mirror.get(ConcreteApplyMapping.ARGUMENTS_LIST)),
-                    toConcreteValue(mirror.get(ConcreteApplyMapping.RESULT))
+                    concreteResultValue
             );
             return new MappedNativeResult<>(Optional.of(mappedInvocation), NativeResult.makeValue(mappedInvocation.getResult()));
         }
         throw new AnalysisException("Cound not read result (" + evalResult + ") of call to " + functionName);
+    }
+
+    private boolean isResultReallyNull(String functionName, ConcreteValue base, List<ConcreteValue> arguments) {
+        String script = ConcreteApplyMapping.formatNullResultCheckScript(functionName, base, arguments);
+        try {
+            return (Boolean) _eval(script);
+        } catch (ScriptException e) {
+            return false;
+        }
     }
 
     private Boolean isConcreteString(ConcreteValue base) {

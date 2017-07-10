@@ -13,3 +13,4 @@ test/micro/test179.js:5:2: [info] Abstract value: "l"
 test/micro/test179.js:5:2: [info] Abstract value: "o"
 test/micro/test179.js:9:1: [info] Abstract object: {length:UInt,[[DefaultArray]]=UIntStr|absent,[[Prototype]]=[@Array.prototype[native]]}
 test/micro/test179.js:10:1: [info] Abstract object: {length:UInt,[[DefaultArray]]=IdentStr|absent,[[Prototype]]=[@Array.prototype[native]]}
+Soundness testing succeeded for 74 checks (with 0 expected failures)

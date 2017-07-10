@@ -70,3 +70,4 @@ test/1k2013spring/1345.js:112:45: [maybe] Converting undefined to string
 test/1k2013spring/1345.js:112:51: [maybe] Reading absent property (computed name)
 test/1k2013spring/1345.js:125:25: [maybe] Converting object to string
 test/1k2013spring/1345.js:125:34: [maybe] The variable flower has values with different types
+Soundness testing succeeded for 18 checks (with 0 expected failures)

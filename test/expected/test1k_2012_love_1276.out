@@ -136,3 +136,4 @@ test/1k2012love/1276.js:56:4: [info] Reading from unknown property that may caus
 test/1k2012love/1276.js:79:3: [info] Reading from unknown property that may cause loss of precision
 test/1k2012love/1276.js:81:11: [info] Reading from unknown property that may cause loss of precision
 test/1k2012love/1276.js:93:44: [info] Reading from unknown property that may cause loss of precision
+Soundness testing succeeded for 0 checks (with 0 expected failures)

@@ -60,3 +60,4 @@ test/chromeexperiments/orangetunnel.html:69:40: [maybe] Reading absent property 
 test/chromeexperiments/orangetunnel.html:69:47: [maybe] Conversion to number yields NaN
 test/chromeexperiments/orangetunnel.html:69:75: [maybe] Reading absent property (computed name)
 test/chromeexperiments/orangetunnel.html:69:82: [maybe] Conversion to number yields NaN
+Soundness testing succeeded for 452 checks (with 0 expected failures)

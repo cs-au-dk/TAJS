@@ -110,3 +110,4 @@ test/chromeexperiments/bingbong.html:653:78: [maybe] Reading absent property (co
 test/chromeexperiments/bingbong.html:756:9: [maybe] Converting primitive string to object
 test/chromeexperiments/bingbong.html:763:60: [maybe] Converting object to string
 test/chromeexperiments/bingbong.html:763:60: [maybe] Converting primitive string to object
+Soundness testing succeeded for 94 checks (with 0 expected failures)

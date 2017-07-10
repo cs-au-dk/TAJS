@@ -176,3 +176,4 @@ test/10k/10k_snake.html:93:30: [info] Reading from unknown property that may cau
 test/10k/10k_snake.html:176:22: [info] Reading from unknown property that may cause loss of precision
 test/10k/10k_snake.html:177:27: [info] Reading from unknown property that may cause loss of precision
 test/10k/10k_snake.html:193:34: [info] Reading from unknown property that may cause loss of precision
+Soundness testing succeeded for 504 checks (with 0 expected failures)

@@ -36,6 +36,7 @@ import dk.brics.tajs.unevalizer.SimpleUnevalizerAPI;
 import dk.brics.tajs.unevalizer.UnevalizerLimitations;
 import dk.brics.tajs.util.AnalysisException;
 import dk.brics.tajs.util.AnalysisLimitationException;
+import dk.brics.tajs.util.Collectors;
 import dk.brics.tajs.util.Strings;
 import org.apache.log4j.Logger;
 
@@ -45,7 +46,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 import static dk.brics.tajs.util.Collections.newList;
 import static dk.brics.tajs.util.Collections.newSet;
@@ -106,7 +106,7 @@ public class JSFunction {
                 if (toStringedArguments.stream().anyMatch(Value::isNone)) {
                     return Value.makeNone();
                 }
-                if (toStringedArguments.stream().anyMatch(v -> v.isMaybeFuzzyStr())) {
+                if (toStringedArguments.stream().anyMatch(Value::isMaybeFuzzyStr)) {
                     if (c.getAnalysis().getUnsoundness().maySimplifyImpreciseFunctionConstructor(callNode)) {
                         vParameterNames.clear();
                         vBody = Value.makeStr("");

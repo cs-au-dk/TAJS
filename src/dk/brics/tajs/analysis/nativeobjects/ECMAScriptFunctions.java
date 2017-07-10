@@ -283,7 +283,7 @@ public class ECMAScriptFunctions {
      */
     public static Value internalToString(ObjectLabel thisobj, ECMAScriptObjects obj, Solver.SolverInterface c) {
         Value thisval = Value.makeObject(thisobj);
-        Value result = null;
+        Value result;
         switch (obj) {
             case OBJECT_TOSTRING:
                 return JSObject.evaluateToString(thisval, c);

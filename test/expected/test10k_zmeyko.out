@@ -73,3 +73,4 @@ test/10k/zmeyko.html:13:30: [maybe] Reading absent property (computed name)
 test/10k/zmeyko.html:79:9: [maybe] Conversion to number yields NaN
 test/10k/zmeyko.html:80:9: [maybe] Conversion to number yields NaN
 test/10k/zmeyko.html:232:5: [info] Writing to unknown property that may cause loss of precision
+Soundness testing succeeded for 1034 checks (with 0 expected failures)

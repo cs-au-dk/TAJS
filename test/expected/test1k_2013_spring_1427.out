@@ -48,3 +48,5 @@ test/1k2013spring/1427.js:103:17: [maybe] Conversion to number yields NaN
 test/1k2013spring/1427.js:104:6: [maybe] Conversion to number yields NaN
 test/1k2013spring/1427.js:109:8: [maybe] Conversion to number yields NaN
 test/1k2013spring/1427.js:110:8: [maybe] Conversion to number yields NaN
+Could not create value log file: main file is known to be unsupported (limitation of the jalangilogger project)
+Log of soundness facts is not available for test/1k2013spring/1427.js, skipping soundness checking

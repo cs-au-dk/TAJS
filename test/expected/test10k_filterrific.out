@@ -291,3 +291,4 @@ test/10k/filterrific.html:603:9: [info] Reading from unknown property that may c
 test/10k/filterrific.html:603:61: [info] Reading from unknown property that may cause loss of precision
 test/10k/filterrific.html:603:74: [info] Reading from unknown property that may cause loss of precision
 test/10k/filterrific.html:607:13: [info] Reading from unknown property that may cause loss of precision
+Soundness testing succeeded for 0 checks (with 0 expected failures)

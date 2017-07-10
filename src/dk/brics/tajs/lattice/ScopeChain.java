@@ -179,7 +179,7 @@ public final class ScopeChain {
      * Constructs a scope chain as a copy of the given one but with object labels summarized.
      */
     public static ScopeChain summarize(ScopeChain sc, Summarized s) {
-        return summarize(sc, s, Collections.<ScopeChain, ScopeChain>newMap());
+        return summarize(sc, s, Collections.newMap());
     }
 
     /**

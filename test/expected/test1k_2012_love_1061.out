@@ -12,7 +12,6 @@ test/1k2012love/1061.js: [maybe] Uncaught exception, constructed at [test/1k2012
 test/1k2012love/1061.js:50:4: [maybe] Conversion from string to number yields NaN
 test/1k2012love/1061.js:50:4: [maybe] Converting object to number
 test/1k2012love/1061.js:62:7: [maybe] Reading absent property (computed name)
-test/1k2012love/1061.js:63:12: [maybe] Converting primitive number to object
 test/1k2012love/1061.js:63:12: [maybe] Reading absent property (computed name)
-test/1k2012love/1061.js:63:29: [maybe] Converting primitive number to object
 test/1k2012love/1061.js:63:29: [maybe] Reading absent property (computed name)
+Soundness testing succeeded for 142 checks (with 0 expected failures)

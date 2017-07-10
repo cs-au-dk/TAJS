@@ -776,3 +776,4 @@ test/google/cryptobench.js:1214:22: [info] 'this' refers to multiple abstract ob
 test/google/cryptobench.js:1285:12: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/google/cryptobench.js:1294:24: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/google/cryptobench.js:1298:27: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+Soundness testing succeeded for 15956 checks (with 0 expected failures)

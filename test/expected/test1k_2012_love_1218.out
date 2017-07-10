@@ -39,3 +39,4 @@ test/1k2012love/1218.js:40:17: [maybe] Conversion to number yields NaN
 test/1k2012love/1218.js:47:7: [maybe] Converting object to string
 test/1k2012love/1218.js:47:7: [maybe] Converting primitive string to object
 test/1k2012love/1218.js:7:2: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+Soundness testing succeeded for 131 checks (with 4 expected failures)

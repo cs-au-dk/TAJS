@@ -7,3 +7,4 @@ test/wala/inherit.js: [definite] Exceptional program exit is unreachable
 test/wala/inherit.js:6:15: [definite] Unreachable function area
 test/wala/inherit.js:41:1: [info] Abstract value: 15.0
 test/wala/inherit.js:42:1: [info] Abstract value: "rectangle"
+Soundness testing succeeded for 114 checks (with 0 expected failures)

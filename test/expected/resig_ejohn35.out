@@ -2,3 +2,4 @@ test/resig/ejohn35.js:2:3: [definite] Reading 'this' yields the global object
 test/resig/ejohn35.js: [definite] Exceptional program exit is unreachable
 test/resig/ejohn35.js:6:5: [definite] The variable user is never used
 test/resig/ejohn35.js:9:1: [info] Abstract value: "John Resig"
+Soundness testing succeeded for 21 checks (with 0 expected failures)

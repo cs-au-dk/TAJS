@@ -33,6 +33,7 @@ import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.Str;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.util.AnalysisLimitationException.AnalysisPrecisionLimitationException;
+import dk.brics.tajs.util.Pair;
 import org.apache.log4j.Logger;
 
 import static dk.brics.tajs.util.Collections.newList;
@@ -819,7 +820,7 @@ public enum DOMObjects implements HostObject {
             eventHandlerKind = EventType.UNKNOWN;
         }
         if (eventHandlerKind == EventType.UNKNOWN) {
-            // FIXME: currently ignoring unknown property assignments in DOM setters
+            // FIXME: currently ignoring unknown property assignments in DOM setters (GitHub #235) (GitHub #400)
             // ignore eventhandler registration through setters for event names we are not aware of:
             // it is likely a regular property that is being written
             // (esp. properties on window as it is the global object!)
@@ -832,7 +833,7 @@ public enum DOMObjects implements HostObject {
         }
 
         // element innerHTML
-        if (prop.isMaybeSingleStr() && (prop.getStr().equals("innerHTML") || prop.getStr().equals("outerHTML"))) { // FIXME: what about fuzzy property names for innerHTML/outerHTML? emit unsoundness warning?
+        if (prop.isMaybeSingleStr() && (prop.getStr().equals("innerHTML") || prop.getStr().equals("outerHTML"))) { // FIXME: what about fuzzy property names for innerHTML/outerHTML? emit unsoundness warning? (GitHub #400)
             pt.add(() -> {
                 SourceLocation loaderLocation = c.getNode().getSourceLocation();
                 Value innerHTMLText = Conversion.toString(rhsValue, c);
@@ -847,11 +848,11 @@ public enum DOMObjects implements HostObject {
                 HTMLParser parser = new HTMLParser(innerHTMLText.getStr(), loaderLocation.getLocation(), new DynamicLocationMaker(loaderLocation));
                 DOMBuilder.registerHTML(parser.getHTML(), c);
                 parser.getJavaScript().stream()
-                        .map(e -> e.getSecond())
+                        .map(Pair::getSecond)
                         .filter(e -> e.getKind() == Kind.EVENTHANDLER)
                         .forEach(e -> {
                             DynamicLocationMaker dynamicLocationMaker = new DynamicLocationMaker(c.getNode().getSourceLocation());
-                            Function handlerDeclaration = FlowGraphMutator.get().extendFlowGraphWithTopLevelFunction(c.getNode().toString(), e.getCode(), newList(), c.getFlowGraph(), dynamicLocationMaker);
+                            Function handlerDeclaration = FlowGraphMutator.extendFlowGraphWithTopLevelFunction(newList(), e.getCode(), c.getFlowGraph(), dynamicLocationMaker);
                             handlerDeclaration.getNode().setDomEventType(e.getEventKind());
                             UserFunctionCalls.declareFunction(handlerDeclaration.getNode(), c);
                         });

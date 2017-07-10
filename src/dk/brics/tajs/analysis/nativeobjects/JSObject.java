@@ -36,13 +36,13 @@ import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.solver.Message;
 import dk.brics.tajs.util.AnalysisException;
 import dk.brics.tajs.util.AnalysisLimitationException;
+import dk.brics.tajs.util.Collectors;
 import dk.brics.tajs.util.Strings;
 
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 import static dk.brics.tajs.util.Collections.newList;
 import static dk.brics.tajs.util.Collections.singleton;
@@ -178,7 +178,7 @@ public class JSObject {
                     if (propval.isMaybeStrUInt() && properties.isArray()) {
                         return Value.makeAnyBool();
                     }
-                    if (properties.getMaybe().stream().anyMatch(p -> propval.isMaybeStr(p))) {
+                    if (properties.getMaybe().stream().anyMatch(propval::isMaybeStr)) {
                         return Value.makeAnyBool();
                     }
                 }
@@ -262,7 +262,7 @@ public class JSObject {
                 // TODO: GitHub #249
                 throw new AnalysisLimitationException.AnalysisModelLimitationException(call.getSourceNode().getSourceLocation() + ": No transfer function for native function " + nativeobject);
 
-            case OBJECT_GETOWNPROPERTYDESCRIPTOR: // FIXME: handle toObject/missing-object-typeerror cases
+            case OBJECT_GETOWNPROPERTYDESCRIPTOR: // FIXME: handle toObject/missing-object-typeerror cases (GitHub #354)
                 Set<ObjectLabel> receivers = Conversion.toObjectLabels(c.getNode(), FunctionCalls.readParameter(call, state, 0), c);
                 Value name = FunctionCalls.readParameter(call, state, 1);
                 Str nameStr = Conversion.toString(name, c);

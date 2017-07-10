@@ -108,3 +108,4 @@ test/10k/canvas_aquarium.html:351:29: [info] 'this' refers to multiple abstract 
 test/10k/canvas_aquarium.html:353:14: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/10k/canvas_aquarium.html:358:24: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/10k/canvas_aquarium.html:358:32: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+Soundness testing succeeded for 0 checks (with 0 expected failures)

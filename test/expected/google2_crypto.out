@@ -761,3 +761,4 @@ test/google2/crypto.js:1184:22: [info] 'this' refers to multiple abstract object
 test/google2/crypto.js:1255:12: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/google2/crypto.js:1264:24: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test/google2/crypto.js:1268:27: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+Soundness testing succeeded for 14998 checks (with 0 expected failures)

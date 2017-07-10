@@ -112,17 +112,11 @@ test/sunspider/3d-cube.js:122:65: [maybe] Reading absent property (computed name
 test/sunspider/3d-cube.js:195:23: [maybe] Conversion from string to number yields NaN
 test/sunspider/3d-cube.js:195:23: [maybe] Converting object to number
 test/sunspider/3d-cube.js:195:48: [maybe] Reading absent property (computed name)
-test/sunspider/3d-cube.js:196:7: [maybe] Converting primitive number to object
 test/sunspider/3d-cube.js:196:7: [maybe] Reading absent property (computed name)
-test/sunspider/3d-cube.js:202:7: [maybe] Converting primitive number to object
 test/sunspider/3d-cube.js:202:7: [maybe] Reading absent property (computed name)
-test/sunspider/3d-cube.js:208:7: [maybe] Converting primitive number to object
 test/sunspider/3d-cube.js:208:7: [maybe] Reading absent property (computed name)
-test/sunspider/3d-cube.js:214:7: [maybe] Converting primitive number to object
 test/sunspider/3d-cube.js:214:7: [maybe] Reading absent property (computed name)
-test/sunspider/3d-cube.js:220:7: [maybe] Converting primitive number to object
 test/sunspider/3d-cube.js:220:7: [maybe] Reading absent property (computed name)
-test/sunspider/3d-cube.js:226:7: [maybe] Converting primitive number to object
 test/sunspider/3d-cube.js:226:7: [maybe] Reading absent property (computed name)
 test/sunspider/3d-cube.js:239:10: [maybe] Converting primitive string to object
 test/sunspider/3d-cube.js:240:25: [maybe] Conversion to number yields NaN
@@ -146,3 +140,4 @@ test/sunspider/3d-cube.js:323:5: [maybe] Reading absent property (computed name)
 test/sunspider/3d-cube.js:323:29: [maybe] Reading absent property (computed name)
 test/sunspider/3d-cube.js:344:26: [maybe] Converting object to number
 test/sunspider/3d-cube.js:346:1: [info] Abstract value: UInt|NotUInt
+Soundness testing succeeded for 3399 checks (with 0 expected failures)

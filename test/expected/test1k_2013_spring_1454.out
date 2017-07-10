@@ -67,3 +67,5 @@ test/1k2013spring/1454.js:13:61: [maybe] Reading absent property (computed name)
 test/1k2013spring/1454.js:13:79: [maybe] Reading absent property (computed name)
 test/1k2013spring/1454.js:14:27: [maybe] Reading absent property (computed name)
 test/1k2013spring/1454.js:21:94: [maybe] Reading absent property (computed name)
+Could not create value log file: main file is known to be unsupported (limitation of the jalangilogger project)
+Log of soundness facts is not available for test/1k2013spring/1454.js, skipping soundness checking

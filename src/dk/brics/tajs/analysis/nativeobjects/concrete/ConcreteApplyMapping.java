@@ -16,8 +16,9 @@
 
 package dk.brics.tajs.analysis.nativeobjects.concrete;
 
+import dk.brics.tajs.util.Collectors;
+
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static dk.brics.tajs.util.Collections.newList;
 
@@ -50,14 +51,23 @@ public class ConcreteApplyMapping {
      * Formats the call to Function.prototype.apply as an expression that produces the mapping for this class.
      */
     public static String formatMappedValuesScript(String functionName, ConcreteValue base, List<ConcreteValue> arguments) {
+        return format(functionName, base, arguments, String.format("({%s: %s, %s: %s, %s: %s, %s: %s});", BASE, BASE, ARGUMENTS_LIST, ARGUMENTS_LIST, RESULT, RESULT, MAGIC_IDENTIFIER, true));
+    }
+
+    /**
+     * Formats the call to Function.prototype.apply as an expression that is true if the result is null.
+     */
+    public static String formatNullResultCheckScript(String functionName, ConcreteValue base, List<ConcreteValue> arguments){
+        return format(functionName, base, arguments, String.format("%s === null;", RESULT));
+    }
+
+    private static String format(String functionName, ConcreteValue base, List<ConcreteValue> arguments, String resultExpression) {
         List<String> lines = newList();
         String argumentsList = String.join(",", arguments.stream().map(ConcreteValue::toSourceCode).collect(Collectors.toList()));
-
         lines.add(String.format("var %s = %s;", BASE, base.toSourceCode()));
         lines.add(String.format("var %s = [%s];", ARGUMENTS_LIST, argumentsList));
         lines.add(String.format("var %s = %s.apply(%s, %s);", RESULT, functionName, BASE, ARGUMENTS_LIST));
-        lines.add(String.format("({%s: %s, %s: %s, %s: %s, %s: %s});", BASE, BASE, ARGUMENTS_LIST, ARGUMENTS_LIST, RESULT, RESULT, MAGIC_IDENTIFIER, true));
-
+        lines.add(resultExpression);
         return String.join(" ", lines);
     }
 

@@ -85,4 +85,9 @@ public interface IAnalysisLatticeElement<StateType extends IState<StateType, Con
      * @return a merge result, or null if no new flow added.
      */
     MergeResult propagate(StateType s, BlockAndContext<ContextType> bc, boolean localize);
+
+    /**
+     * Returns the total number of (non-bottom) abstract states.
+     */
+    int getNumberOfStates();
 }

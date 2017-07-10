@@ -11,3 +11,4 @@ test/sourcelocations/htmlProblematicCase.html:26:36: [definite] Unreachable code
 TAJS-dynamic-code(test/sourcelocations/htmlProblematicCase.html:17:16):1:24: [definite] Unreachable code
 TAJS-dynamic-code(test/sourcelocations/htmlProblematicCase.html:17:16):1:24: [maybe] TypeError, accessing property of null/undefined
 test/sourcelocations/htmlProblematicCase.html: [maybe] Uncaught exception, constructed at [TAJS-dynamic-code(test/sourcelocations/htmlProblematicCase.html:13:23):1:1, TAJS-dynamic-code(test/sourcelocations/htmlProblematicCase.html:17:16):1:24]
+Soundness testing succeeded for 17 checks (with 0 expected failures)

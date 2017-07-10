@@ -21,3 +21,5 @@ test/1k2012love/1254.js:42:3: [maybe] Reading absent property (computed name)
 test/1k2012love/1254.js:42:10: [maybe] Converting primitive string to object
 test/1k2012love/1254.js:42:10: [maybe] Reading absent property (computed name)
 test/1k2012love/1254.js:47:5: [maybe] Reading absent property (computed name)
+Disabling soundness testing for test/1k2012love/1254.js entirely (247 uninspected soundness errors).
+Soundness testing succeeded for 423 checks (with 247 expected failures)
